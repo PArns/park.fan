@@ -3,6 +3,7 @@ import { getGeoStructure } from '@/lib/api/discovery';
 import { getParkImageSet } from '@/lib/utils/park-assets';
 import { locales, SITE_URL } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
+import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import type { GlossaryTerm } from '@/lib/glossary/types';
 
 const BASE_URL = SITE_URL;
@@ -29,6 +30,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const parksAlternates = buildAlternates(() => '/parks');
   const searchAlternates = buildAlternates(() => '/search');
   const howtoAlternates = buildAlternates(() => '/howto');
+  const fancastAlternates = buildAlternates(() => '/fancast');
 
   for (const locale of locales) {
     routes.push(
@@ -55,8 +57,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         changeFrequency: 'monthly',
         priority: 0.4,
         alternates: howtoAlternates,
+      },
+      {
+        url: `${BASE_URL}/${locale}/fancast`,
+        changeFrequency: 'weekly',
+        priority: 0.5,
+        alternates: fancastAlternates,
       }
     );
+  }
+
+  // ── Best time to visit hub ────────────────────────────────────────────────
+  const bestTimeAlternates = buildAlternates(
+    (l) => `/${BEST_TIME_SEGMENTS[l as keyof typeof BEST_TIME_SEGMENTS]}`
+  );
+
+  for (const locale of locales) {
+    routes.push({
+      url: `${BASE_URL}/${locale}/${BEST_TIME_SEGMENTS[locale as keyof typeof BEST_TIME_SEGMENTS]}`,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+      alternates: bestTimeAlternates,
+    });
   }
 
   // ── Glossary pages ────────────────────────────────────────────────────────

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { List } from 'lucide-react';
 import type { TocEntry } from '@/lib/blog/toc';
 
@@ -20,6 +20,7 @@ interface BlogTocListProps {
  */
 export function BlogTocList({ entries, title, label }: BlogTocListProps) {
   const [activeId, setActiveId] = useState<string | null>(null);
+  const activeRef = useRef<HTMLAnchorElement | null>(null);
 
   useEffect(() => {
     const ids = entries.map((e) => e.id);
@@ -86,6 +87,29 @@ export function BlogTocList({ entries, title, label }: BlogTocListProps) {
     };
   }, [entries]);
 
+  // Keep the active entry visible inside the sticky sidebar's own scroll box as
+  // the reader moves through the article. On a long ToC the highlighted section
+  // otherwise scrolls out of the sidebar's clipped viewport and the reader loses
+  // their place. Scrolls ONLY the sidebar container (found via its
+  // `data-toc-scroll` marker) — never the window — so it can't fight the page
+  // scroll, and does nothing when the sidebar isn't its own scroll area (mobile,
+  // or a short ToC that fits without overflowing).
+  useEffect(() => {
+    if (!activeId) return;
+    const link = activeRef.current;
+    const container = link?.closest('[data-toc-scroll]');
+    if (!link || !(container instanceof HTMLElement)) return;
+    if (container.scrollHeight <= container.clientHeight) return;
+    const pad = 24;
+    const linkRect = link.getBoundingClientRect();
+    const boxRect = container.getBoundingClientRect();
+    if (linkRect.top < boxRect.top + pad) {
+      container.scrollTop -= boxRect.top + pad - linkRect.top;
+    } else if (linkRect.bottom > boxRect.bottom - pad) {
+      container.scrollTop += linkRect.bottom - (boxRect.bottom - pad);
+    }
+  }, [activeId]);
+
   return (
     <nav
       aria-label={label}
@@ -101,6 +125,7 @@ export function BlogTocList({ entries, title, label }: BlogTocListProps) {
           return (
             <li key={`${entry.id}-${i}`} className={entry.depth === 3 ? 'ml-4' : ''}>
               <a
+                ref={active ? activeRef : undefined}
                 href={`#${entry.id}`}
                 aria-current={active ? 'location' : undefined}
                 className={

@@ -207,6 +207,8 @@ export async function GET(
       imprint: { namespace: 'impressum', key: 'title' },
       parks: { namespace: 'explore', key: 'parksTitle' },
       howto: { namespace: 'howto', key: 'title' },
+      fancast: { namespace: 'fancast', key: 'title' },
+      'best-time-to-visit': { namespace: 'bestTime', key: 'title' },
       ...glossaryEntries,
     };
 

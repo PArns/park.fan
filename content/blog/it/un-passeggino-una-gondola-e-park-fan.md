@@ -219,7 +219,7 @@ minuto per minuto. Previsioni che stimano l'affluenza fino a **365 giorni** in
 anticipo. E siccome per principio mi fido dei numeri solo se devono dimostrare
 qualcosa, il modello si dà un voto da sé: ogni previsione viene poi confrontata
 con il tempo di attesa effettivamente misurato, e quello che ne esce sta sulla
-[pagina how-to](/howto).
+[pagina di Fancast](/fancast).
 
 ## Qual è il giorno migliore? Vale la pena una domenica?
 
@@ -256,7 +256,7 @@ Per questo andiamo qualche passo più in là:
   condensati in una risposta semplice: si va, o meglio di no.
 - **Tassi di successo pubblici.** Ogni previsione viene poi confrontata con il
   tempo di attesa effettivamente misurato. Chi vuole sapere quanto vale il
-  modello non deve credere a me: può guardare sulla [pagina how-to](/howto).
+  modello non deve credere a me: può guardare sulla [pagina di Fancast](/fancast).
 - **Tutto in un posto solo.** Tempi di attesa, livelli di affluenza, meteo
   all'ingresso del parco, orari e storici delle attrazioni, in sei lingue.
 - **Gratuito e senza pubblicità.** Nessun gruppo, nessun paywall. Un sito di fan

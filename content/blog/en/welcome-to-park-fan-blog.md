@@ -208,7 +208,7 @@ times from over **200 parks** and **7,000 attractions**, updated by the minute.
 Forecasts that estimate crowds up to **365 days** ahead. And because I only ever
 trust numbers that have to prove themselves, the model grades itself: every
 prediction is later held against the wait time actually measured, and whatever
-comes out of that is on the [how-to page](/howto).
+comes out of that is on the [Fancast page](/fancast).
 
 ## When is the best day? Is a Sunday worth it?
 
@@ -244,7 +244,7 @@ So we go a few steps further:
   history condensed into one simple answer: go, or better not.
 - **Hit rates in public.** Every forecast is later held against the wait time
   actually measured. If you want to know how good the model is, you don't have
-  to take my word for it, you can look it up on the [how-to page](/howto).
+  to take my word for it, you can look it up on the [Fancast page](/fancast).
 - **Everything in one place.** Wait times, crowd levels, weather at the park
   entrance, opening hours and attraction histories, in six languages.
 - **Free and without ads.** No corporation, no paywall. A fan site in the best

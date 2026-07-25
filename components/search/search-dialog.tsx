@@ -1,62 +1,30 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
-import { useQuery } from '@tanstack/react-query';
-import { TreePalm, Cog, Utensils, Music, MapPin, Clock, BookOpen, Leaf } from 'lucide-react';
 import {
   CommandDialog,
   CommandEmpty,
   CommandGroup,
   CommandInput,
-  CommandItem,
   CommandList,
 } from '@/components/ui/command';
 import { Button } from '@/components/ui/button';
-import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
-import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { stripNewPrefix } from '@/lib/utils';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
-import { translateGeoSlug } from '@/lib/utils/geo-translate';
-import type { SearchResult, SearchResultItem, ParkStatus, CrowdLevel } from '@/lib/api/types';
+import type { SearchResultItem } from '@/lib/api/types';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import type { Locale } from '@/i18n/config';
+import { trackSearchResultClicked, trackSearchViewAll } from '@/lib/analytics/umami';
+import { useSearchResults, type GlossarySearchItem } from '@/lib/hooks/use-search-results';
 import {
-  trackSearchResultClicked,
-  trackSearchViewAll,
-  trackSearchNoResults,
-} from '@/lib/analytics/umami';
-import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
-import type { NearbyParksData, NearbyAttractionsData } from '@/types/nearby';
-
-const typeIcons = {
-  park: TreePalm,
-  attraction: Cog,
-  show: Music,
-  restaurant: Utensils,
-  location: MapPin,
-  glossary: BookOpen,
-};
-
-function SkeletonItem({ width }: { width: string }) {
-  return (
-    <div className="flex items-center gap-2.5 rounded-lg px-3 py-2 sm:gap-4 sm:py-3.5">
-      <div className="bg-foreground/10 h-9 w-9 shrink-0 animate-pulse rounded-lg sm:h-11 sm:w-11 sm:rounded-xl" />
-      <div className="flex min-w-0 flex-1 flex-col gap-2">
-        <div className="flex items-center justify-between gap-3">
-          <div className="bg-foreground/10 h-3.5 animate-pulse rounded-full" style={{ width }} />
-          <div className="bg-foreground/[8%] h-4 w-14 animate-pulse rounded-full" />
-        </div>
-        <div className="flex items-center justify-between gap-3">
-          <div className="bg-foreground/[8%] h-2.5 w-28 animate-pulse rounded-full" />
-          <div className="bg-foreground/[8%] h-2.5 w-10 animate-pulse rounded-full" />
-        </div>
-      </div>
-    </div>
-  );
-}
+  SkeletonItem,
+  SearchResultRow,
+  GlossaryResultItem,
+} from '@/components/search/search-result-items';
+import type { NearbyAttractionsData } from '@/types/nearby';
 
 interface SearchDialogProps {
   /** Controlled open state — owned by the lightweight <SearchCommand> trigger. */
@@ -70,7 +38,8 @@ interface SearchDialogProps {
 /**
  * The heavy search palette: cmdk + live result/glossary/nearby queries + result rendering. Code-
  * split out of the always-rendered <SearchCommand> trigger (see search-bar.tsx) so cmdk and this
- * ~600-line tree stay OUT of every page's initial bundle — it only loads on first open.
+ * tree stay OUT of every page's initial bundle — it only loads on first open. Data fetching +
+ * match scoring live in `useSearchResults`; the result rows live in search-result-items.tsx.
  */
 export default function SearchDialog({
   open,
@@ -80,123 +49,19 @@ export default function SearchDialog({
 }: SearchDialogProps) {
   const t = useTranslations('common');
   const tSearch = useTranslations('search');
-  const tGeo = useTranslations('geo');
   const router = useRouter();
   const locale = useLocale();
-  const [debouncedQuery, setDebouncedQuery] = useState('');
 
-  // React Query for search with caching
-  const { data: results, isLoading: loading } = useQuery<SearchResult>({
-    queryKey: ['search', debouncedQuery],
-    queryFn: async () => {
-      const response = await fetch(`/api/search?q=${encodeURIComponent(debouncedQuery)}`);
-      if (!response.ok) throw new Error('Search failed');
-      const data = (await response.json()) as SearchResult;
-
-      // Track no results (no query text for privacy — only length)
-      if (data.results.length === 0) {
-        trackSearchNoResults({ queryLength: debouncedQuery.length });
-      }
-
-      return data;
-    },
-    enabled: debouncedQuery.length >= 3,
-    staleTime: 60_000, // 1 min cache
-    gcTime: 5 * 60_000, // 5 min garbage collection
-    retry: 1,
-  });
-
-  // Glossary search
-  const { data: glossaryData } = useQuery<{
-    results: Array<{
-      type: 'glossary';
-      id: string;
-      name: string;
-      slug: string;
-      shortDefinition: string;
-      category: string;
-    }>;
-  }>({
-    queryKey: ['glossary-search', debouncedQuery, locale],
-    queryFn: async () => {
-      const response = await fetch(
-        `/api/glossary-search?q=${encodeURIComponent(debouncedQuery)}&locale=${locale}`
-      );
-      if (!response.ok) throw new Error('Glossary search failed');
-      return response.json() as Promise<{
-        results: Array<{
-          type: 'glossary';
-          id: string;
-          name: string;
-          slug: string;
-          shortDefinition: string;
-          category: string;
-        }>;
-      }>;
-    },
-    enabled: debouncedQuery.length >= 3,
-    staleTime: 300_000,
-  });
-
-  // Nearby parks for pre-populating the dialog when no query is entered. Shares the
-  // canonical homepage query (radius 200, limit 6) so header/hero/card/search-bar all
-  // dedupe into a single backend request instead of firing a separate limit-5 query.
-  const { data: nearbyData } = useHomeNearbyParks();
-
-  const nearbyItems = useMemo((): (SearchResultItem & { distanceM?: number })[] => {
-    if (!nearbyData) return [];
-
-    if (nearbyData.type === 'in_park') {
-      const d = nearbyData.data as NearbyAttractionsData;
-      return [
-        {
-          type: 'park',
-          id: d.park.id,
-          name: d.park.name,
-          slug: d.park.slug,
-          url: d.park.url,
-          status: d.park.status as ParkStatus,
-          load: d.park.analytics?.crowdLevel as CrowdLevel | undefined,
-          distanceM: d.park.distance,
-        },
-        ...d.rides.slice(0, 3).map((ride) => ({
-          type: 'attraction' as const,
-          id: ride.id,
-          name: ride.name,
-          slug: ride.slug,
-          url: ride.url,
-          status: ride.status,
-          waitTime: ride.waitTime ?? undefined,
-          parentPark: {
-            id: d.park.id,
-            name: d.park.name,
-            slug: d.park.slug,
-            url: d.park.url ?? '',
-          },
-          distanceM: ride.distance,
-        })),
-      ];
-    }
-
-    if (nearbyData.type === 'nearby_parks') {
-      const d = nearbyData.data as NearbyParksData;
-      return d.parks.slice(0, 5).map((park) => ({
-        type: 'park' as const,
-        id: park.id,
-        name: park.name,
-        slug: park.slug,
-        url: park.url,
-        city: park.city,
-        country: park.country,
-        continent: park.continent,
-        status: park.status as ParkStatus,
-        load: park.analytics?.crowdLevel as CrowdLevel | undefined,
-        distanceM: park.distance,
-      }));
-    }
-
-    return [];
-  }, [nearbyData]);
+  // Three live queries (search / glossary / nearby) + debounce + match scoring.
+  const {
+    debouncedQuery,
+    results,
+    loading,
+    glossaryData,
+    nearbyData,
+    nearbyItems,
+    sortResultsByMatch,
+  } = useSearchResults(query);
 
   const nearbyHeading =
     nearbyData?.type === 'in_park'
@@ -208,15 +73,6 @@ export default function SearchDialog({
   // Open state lives in the lightweight <SearchCommand> trigger; closing just notifies it
   // (the query reset is handled by the open/close effect above).
   const handleOpenChange = (newOpen: boolean) => onOpenChange(newOpen);
-
-  // Debounce the search query
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setDebouncedQuery(query);
-    }, 300);
-
-    return () => clearTimeout(timer);
-  }, [query]);
 
   // Handle selecting a result
   const handleSelect = (result: SearchResultItem, position?: number) => {
@@ -258,95 +114,17 @@ export default function SearchDialog({
     }
   };
 
-  // Render a search result item
-  const renderResultItem = (
-    result: SearchResultItem & { distanceM?: number },
-    position?: number
-  ) => {
-    const Icon = typeIcons[result.type];
-
-    const formatDistance = (m: number) =>
-      m < 1000 ? `${Math.round(m)} m` : `${(m / 1000).toFixed(1)} km`;
-
-    const isClosed = result.status && result.status !== 'OPERATING';
-
-    return (
-      <CommandItem
-        key={result.id}
-        value={`${stripNewPrefix(result.name)} ${result.type} ${result.id}`}
-        onSelect={() => handleSelect(result, position)}
-        className="flex cursor-pointer items-center gap-2.5 sm:gap-4"
-      >
-        {/* Icon */}
-        <div className="bg-foreground/10 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg sm:h-11 sm:w-11 sm:rounded-xl">
-          <Icon className="text-foreground/65 h-4 w-4 sm:h-5 sm:w-5" />
-        </div>
-
-        {/* Content */}
-        <div className="flex min-w-0 flex-1 flex-col gap-1 sm:gap-1.5">
-          {/* Row 1: Name + Status */}
-          <div className="flex items-center justify-between gap-3">
-            <span className="truncate text-sm leading-none font-semibold sm:text-[15px]">
-              {stripNewPrefix(result.name)}
-            </span>
-            {result.status && <ParkStatusBadge status={result.status} className="text-[11px]" />}
-          </div>
-
-          {/* Row 2: Location (left) + Crowd / Wait / Distance (right) */}
-          <div className="flex items-center justify-between gap-3">
-            <div className="text-foreground/45 flex min-w-0 items-center gap-1 text-xs">
-              {/* Location */}
-              {(result.city || result.country) && (
-                <span className="flex min-w-0 items-center gap-1">
-                  <MapPin className="h-3 w-3 shrink-0" />
-                  <span className="truncate">
-                    {[
-                      result.city,
-                      result.country
-                        ? translateGeoSlug(tGeo, 'countries', result.country, result.country)
-                        : null,
-                    ]
-                      .filter(Boolean)
-                      .join(', ')}
-                  </span>
-                </span>
-              )}
-
-              {/* Parent Park for attractions */}
-              {result.parentPark && (
-                <span className="truncate">
-                  {tSearch('at', { park: stripNewPrefix(result.parentPark.name) })}
-                </span>
-              )}
-            </div>
-
-            {/* Right: Wait Time + Crowd + Distance */}
-            <div className="flex shrink-0 items-center gap-2">
-              {result.isSeasonal && result.isCurrentlyInSeason === true && (
-                <Leaf className="h-3.5 w-3.5 shrink-0 text-violet-400" />
-              )}
-
-              {result.type === 'attraction' && result.waitTime != null && (
-                <span className="text-foreground/70 flex items-center gap-1 text-xs font-semibold">
-                  <Clock className="h-3 w-3" />
-                  {result.waitTime} min
-                </span>
-              )}
-
-              {result.type === 'park' && result.load && !isClosed && (
-                <CrowdLevelBadge level={result.load} className="text-[11px]" />
-              )}
-
-              {result.distanceM != null && (
-                <span className="text-foreground/35 text-[11px] font-medium tabular-nums">
-                  {formatDistance(result.distanceM)}
-                </span>
-              )}
-            </div>
-          </div>
-        </div>
-      </CommandItem>
-    );
+  // Handle selecting a glossary term (shared by both glossary render branches)
+  const handleGlossarySelect = (item: GlossarySearchItem) => {
+    handleOpenChange(false);
+    trackSearchResultClicked({
+      resultType: 'glossary',
+      term_id: item.id,
+      hasQuery: query.trim().length > 0,
+      queryLength: query.trim().length,
+    });
+    const seg = GLOSSARY_SEGMENTS[locale as Locale] ?? 'glossary';
+    router.push(`/${seg}/${item.slug}` as '/parks/europe');
   };
 
   const [isMobile, setIsMobile] = useState(false);
@@ -371,45 +149,6 @@ export default function SearchDialog({
 
   // Show skeleton as soon as user types ≥3 chars (covers debounce window + fetch)
   const isPending = loading || (query.trim().length >= 3 && debouncedQuery.trim().length < 3);
-
-  // Calculate match score for exact matches: name should be compared with query
-  const calculateMatchScore = (item: SearchResultItem): number => {
-    const lowerName = item.name.toLowerCase();
-    const lowerQuery = debouncedQuery.toLowerCase();
-
-    // Exact name match = 100 points
-    if (lowerName === lowerQuery) {
-      return 100;
-    }
-
-    // Name starts with query = 50 points
-    if (lowerName.startsWith(lowerQuery)) {
-      return 50;
-    }
-
-    // Substring match = 30 points
-    if (lowerName.includes(lowerQuery)) {
-      return 30;
-    }
-
-    return 0;
-  };
-
-  // Sort results within each category by match score (exact matches first), then by status (OPERATING first)
-  const sortResultsByMatch = (
-    items: SearchResultItem[]
-  ): { item: SearchResultItem; score: number }[] => {
-    return items
-      .map((item) => ({ item, score: calculateMatchScore(item) }))
-      .sort((a, b) => {
-        const scoreDiff = b.score - a.score;
-        if (scoreDiff !== 0) return scoreDiff;
-        // Prefer OPERATING over non-OPERATING when scores are equal
-        const aOperating = a.item.status === 'OPERATING' ? 0 : 1;
-        const bOperating = b.item.status === 'OPERATING' ? 0 : 1;
-        return aOperating - bOperating;
-      });
-  };
 
   return (
     <CommandDialog
@@ -470,38 +209,9 @@ export default function SearchDialog({
             <CommandGroup
               heading={tSearch('headings.glossary', { count: glossaryData.results.length })}
             >
-              {glossaryData.results.map((item) => {
-                const seg = GLOSSARY_SEGMENTS[locale as Locale] ?? 'glossary';
-                return (
-                  <CommandItem
-                    key={item.id}
-                    value={`${item.name} glossary`}
-                    onSelect={() => {
-                      handleOpenChange(false);
-                      trackSearchResultClicked({
-                        resultType: 'glossary',
-                        term_id: item.id,
-                        hasQuery: query.trim().length > 0,
-                        queryLength: query.trim().length,
-                      });
-                      router.push(`/${seg}/${item.slug}` as '/parks/europe');
-                    }}
-                    className="flex cursor-pointer items-center gap-2.5 sm:gap-4"
-                  >
-                    <div className="bg-foreground/10 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg sm:h-11 sm:w-11 sm:rounded-xl">
-                      <BookOpen className="text-foreground/65 h-4 w-4 sm:h-5 sm:w-5" />
-                    </div>
-                    <div className="flex min-w-0 flex-1 flex-col gap-1 sm:gap-1.5">
-                      <span className="truncate text-sm leading-none font-semibold sm:text-[15px]">
-                        {item.name}
-                      </span>
-                      <span className="text-foreground/45 truncate text-xs">
-                        {item.shortDefinition}
-                      </span>
-                    </div>
-                  </CommandItem>
-                );
-              })}
+              {glossaryData.results.map((item) => (
+                <GlossaryResultItem key={item.id} item={item} onSelect={handleGlossarySelect} />
+              ))}
             </CommandGroup>
           )}
 
@@ -530,16 +240,20 @@ export default function SearchDialog({
                       key={type}
                       heading={tSearch(`headings.${type}`, { count: items.length })}
                     >
-                      {scoredSortedItems
-                        .slice(0, 5)
-                        .map(({ item }, index) => renderResultItem(item, index))}
+                      {scoredSortedItems.slice(0, 5).map(({ item }, index) => (
+                        <SearchResultRow
+                          key={item.id}
+                          result={item}
+                          position={index}
+                          onSelect={handleSelect}
+                        />
+                      ))}
                     </CommandGroup>
                   ),
                 });
               });
 
               if (glossaryData && glossaryData.results.length > 0) {
-                const seg = GLOSSARY_SEGMENTS[locale as Locale] ?? 'glossary';
                 // Glossary results found by API (which searches English names + aliases)
                 // should rank higher than substring matches in other categories
                 const glossaryBestScore = 40;
@@ -554,33 +268,11 @@ export default function SearchDialog({
                       })}
                     >
                       {glossaryData.results.map((item) => (
-                        <CommandItem
+                        <GlossaryResultItem
                           key={item.id}
-                          value={`${item.name} glossary`}
-                          onSelect={() => {
-                            handleOpenChange(false);
-                            trackSearchResultClicked({
-                              resultType: 'glossary',
-                              term_id: item.id,
-                              hasQuery: query.trim().length > 0,
-                              queryLength: query.trim().length,
-                            });
-                            router.push(`/${seg}/${item.slug}` as '/parks/europe');
-                          }}
-                          className="flex cursor-pointer items-center gap-2.5 sm:gap-4"
-                        >
-                          <div className="bg-foreground/10 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg sm:h-11 sm:w-11 sm:rounded-xl">
-                            <BookOpen className="text-foreground/65 h-4 w-4 sm:h-5 sm:w-5" />
-                          </div>
-                          <div className="flex min-w-0 flex-1 flex-col gap-1 sm:gap-1.5">
-                            <span className="truncate text-sm leading-none font-semibold sm:text-[15px]">
-                              {item.name}
-                            </span>
-                            <span className="text-foreground/45 truncate text-xs">
-                              {item.shortDefinition}
-                            </span>
-                          </div>
-                        </CommandItem>
+                          item={item}
+                          onSelect={handleGlossarySelect}
+                        />
                       ))}
                     </CommandGroup>
                   ),
@@ -614,7 +306,14 @@ export default function SearchDialog({
           <>
             {nearbyItems.length > 0 ? (
               <CommandGroup heading={nearbyHeading}>
-                {nearbyItems.map((item, index) => renderResultItem(item, index))}
+                {nearbyItems.map((item, index) => (
+                  <SearchResultRow
+                    key={item.id}
+                    result={item}
+                    position={index}
+                    onSelect={handleSelect}
+                  />
+                ))}
               </CommandGroup>
             ) : (
               <div className="text-muted-foreground py-10 text-center text-sm">

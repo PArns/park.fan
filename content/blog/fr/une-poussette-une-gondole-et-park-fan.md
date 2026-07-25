@@ -228,7 +228,7 @@ d'attractions. Des temps d'attente en direct dans plus de **200 parcs** et
 jusqu'à **365 jours** à l'avance. Et comme je ne fais par principe confiance aux
 chiffres que lorsqu'ils doivent faire leurs preuves, le modèle se note lui-même :
 chaque prévision est ensuite confrontée au temps d'attente réellement mesuré, et
-ce qui en ressort figure sur la [page how-to](/howto).
+ce qui en ressort figure sur la [page Fancast](/fancast).
 
 ## Quel est le meilleur jour ? Un dimanche, ça vaut le coup ?
 
@@ -268,7 +268,7 @@ C'est pourquoi nous allons quelques pas plus loin :
   d'historique, condensés en une réponse simple : on y va, ou plutôt pas.
 - **Des taux de réussite publics.** Chaque prévision est ensuite confrontée au
   temps d'attente réellement mesuré. Qui veut savoir ce que vaut le modèle n'est
-  pas obligé de me croire, il peut aller voir sur la [page how-to](/howto).
+  pas obligé de me croire, il peut aller voir sur la [page Fancast](/fancast).
 - **Tout au même endroit.** Temps d'attente, niveaux d'affluence, météo à
   l'entrée du parc, horaires et historiques des attractions, en six langues.
 - **Gratuit et sans publicité.** Pas de groupe, pas de paywall. Un site de fans

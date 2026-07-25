@@ -169,6 +169,7 @@
       "dailyScheduleLocal": "Dagelijks · 06:00 UTC · {time} lokaal",
       "howTitle": "Hoe Voorspellingen Tot Stand Komen",
       "howText": "Elke wachttijdvoorspelling is opgebouwd uit drie lagen data: historische wachtrij-records die jarenlang in parken zijn verzameld, externe signalen zoals weersvoorspellingen en schoolvakantieschema's, en contextuele factoren zoals speciale evenementen en seizoenspatronen. Het model genereert zowel uurlijkse wachttijdprognoses voor individuele attracties als dagelijkse drukte-beoordelingen — tot 365 dagen vooruit.",
+      "fancastLink": "Zo werkt Fancast, ons voorspelmodel",
       "improvingTitle": "Actief in Ontwikkeling — Elke Dag Beter",
       "improvingText": "park.fan is een levend platform, nog altijd in actieve ontwikkeling. Elke dag vergelijkt het systeem automatisch zijn eerdere voorspellingen met de werkelijk geregistreerde wachttijden bij de parken, en voert die vergelijkingen terug in de volgende trainingscyclus. De nauwkeurigheidsstatistieken hierboven weerspiegelen deze echte prestaties — geen synthetische benchmarks. Nieuwe parken en attracties worden regelmatig toegevoegd, en het model wordt nauwkeuriger naarmate er meer geverifieerde data beschikbaar komt.",
       "badge": {
@@ -195,6 +196,7 @@
       "howTitle": "Hoe gebruik je park.fan?",
       "p4": "Zoek je park via de zoekbalk of blader per continent, land en stad. Op de parkpagina vind je live wachttijden voor elke attractie, restaurant en show — elke minuut bijgewerkt — samen met AI-druktevoorspellingen en een dag-voor-dag druktekalender. Groene dagen betekenen korte rijen en weinig drukte; oranje of rode dagen signaleren hogere bezetting en langere wachttijden.",
       "p5": "park.fan is een levend project dat voortdurend wordt uitgebreid met nieuwe functies en parken. Sla je favoriete parken op voor snelle toegang, gebruik de navigatie in het park voor de meest efficiënte route, en check altijd de druktekalender vóór het boeken om je bezoek op de best mogelijke dag te plannen.",
+      "fancastLink": "Ontdek Fancast",
       "howtoLink": "Lees de volledige gids"
     }
   },
@@ -217,6 +219,8 @@
     "api": "API Documentatie",
     "impressum": "Colofon",
     "howto": "Hoe het werkt",
+    "fancast": "Fancast",
+    "bestTime": "Beste bezoektijd",
     "glossaryLink": "Woordenboek",
     "blog": "Blog",
     "datenschutz": "Privacybeleid",
@@ -308,6 +312,11 @@
     "attractions": "Attracties",
     "shows": "Shows",
     "predictions": "Wachttijd Voorspelling",
+    "purchases": {
+      "title": "Skip-the-line-prijzen",
+      "forDate": "voor {date}",
+      "soldOut": "Uitverkocht"
+    },
     "nextPredicted": "Volgende: {time} min voorspeld",
     "otherAttractions": "Andere Attracties",
     "headlinersSection": "Highlights",
@@ -569,7 +578,10 @@
       "noUpcomingQuiet": "Geen bijzonder rustige dagen in de komende 30 dagen.",
       "noData": "Nog niet genoeg voorspellingsdata beschikbaar.",
       "bestWeekendDayTitle": "Beste weekenddag",
-      "titleCompact": "Beste reistijd"
+      "titleCompact": "Beste reistijd",
+      "fancastLink": "Voorspellingen van Fancast",
+      "bestTimeLink": "Beste tijd in alle parken",
+      "viewCalendarLink": "Volledige druktekalender bekijken"
     },
     "weatherWarnings": {
       "severity": {
@@ -595,10 +607,14 @@
       "extreme": "Extreem druk – zeer lange wachttijden. Kom vroeg of overweeg Fast Lane."
     },
     "dayDetail": {
+      "fancastLink": "Hoe we dit voorspellen: Fancast",
       "forecastLabel": "Voorspelling",
       "hourlyTitle": "Voorspelling per uur",
       "holidaysTitle": "Feestdagen & schoolvakanties",
-      "actualWaitsTitle": "Gemiddelde wachttijden"
+      "actualWaitsTitle": "Gemiddelde wachttijden",
+      "openToday": "Details van vandaag bekijken",
+      "prevDay": "Vorige dag",
+      "nextDay": "Volgende dag"
     },
     "legendHints": {
       "closed": "Park gesloten op deze dag",
@@ -765,6 +781,7 @@
       "min": "min.",
       "todayMin": "Min.",
       "todayMax": "Max.",
+      "fancastLink": "Hoe we dit voorspellen: Fancast",
       "aiBadge": "AI-voorspelling",
       "aiExplainer": "Tijden in het verleden zijn echte metingen; komende waarden zijn AI-voorspellingen.",
       "legendRecorded": "Geregistreerd",
@@ -780,7 +797,14 @@
       "min": "min",
       "peak": "Record {value} min · {date}"
     },
-    "sectionPlanVisit": "Plan de beste bezoektijd"
+    "sectionPlanVisit": "Plan de beste bezoektijd",
+    "meta": {
+      "minHeight": "Vanaf {cm} cm",
+      "minHeightTitle": "Minimale lengte: {cm} cm",
+      "maxHeight": "Tot {cm} cm",
+      "mayGetWet": "Je kunt nat worden",
+      "rcdbTitle": "Technische gegevens op RCDB (Roller Coaster DataBase)"
+    }
   },
   "calendar": {
     "legend": "Legenda",
@@ -1096,6 +1120,7 @@
     "overviewH1": "Pretpark Woordenboek – Alle begrippen & definities",
     "relatedTerms": "Gerelateerde begrippen",
     "alsoKnownAs": "Ook bekend als",
+    "fancastCta": "Ons voorspelmodel, live: Fancast",
     "backToGlossary": "Terug naar woordenboek",
     "category": {
       "wait-times": "Wachttijden",
@@ -1143,6 +1168,14 @@
         "dive": "Duik"
       }
     }
+  },
+  "fancast": {
+    "title": "Fancast – ons voorspelmodel voor wachttijden",
+    "description": "Fancast is het AI-model van park.fan: het voorspelt drukte en wachttijden tot 365 dagen vooruit en beoordeelt de eigen nauwkeurigheid in het openbaar."
+  },
+  "bestTime": {
+    "title": "Beste tijd om pretparken te bezoeken",
+    "description": "De rustigste weekdagen en maanden uit echte wachttijddata van 150+ parken — plus tips voor korte rijen en de drukte-kalender voor jouw park."
   },
   "howto": {
     "title": "Hoe het werkt – De complete gids",

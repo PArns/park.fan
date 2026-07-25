@@ -184,6 +184,7 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
             alsoKnownAs: t('alsoKnownAs'),
             category: t(`category.${term.category}`),
             termH1Suffix: t('termH1Suffix'),
+            fancastCta: t('fancastCta'),
           }}
           playerLabels={playerLabels}
         />

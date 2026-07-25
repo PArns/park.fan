@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useTranslations } from 'next-intl';
 import { LayoutGrid } from 'lucide-react';
 import { AttractionCard } from './attraction-card';
@@ -14,7 +15,12 @@ interface LandSectionProps {
   timezone?: string;
 }
 
-export function LandSection({
+// Memoized: on the park page the parent `TabsWithHash` re-renders on every search keystroke
+// and every input focus/blur. All props here are shallow-stable across those renders (the
+// `attractions` array is `useDeferredValue`-stable, the rest are primitives / value-equal
+// strings), so the whole land — 100+ glass cards with sparklines on big parks — bails out
+// instead of reconciling. It still re-renders when the 5-min live poll changes the data.
+export const LandSection = memo(function LandSection({
   landName,
   attractions,
   parkPath,
@@ -61,4 +67,4 @@ export function LandSection({
       </ul>
     </section>
   );
-}
+});

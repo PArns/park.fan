@@ -37,11 +37,15 @@ export function HeroRotationProvider({ children }: { children: ReactNode }) {
   const parkImages = useMemo(() => getParkHeroImages(parkSlug), [parkSlug]);
 
   // Monotonic counter; active = step % length, so it stays in range across park changes without
-  // resetting state inside the effect.
+  // resetting state inside the effect. The tick is skipped while the tab is hidden — the
+  // crossfade is invisible there, and the provider sits high enough in the tree that every
+  // step re-renders the whole hero subtree for nothing.
   const [step, setStep] = useState(0);
   useEffect(() => {
     if (parkImages.length <= 1) return;
-    const id = setInterval(() => setStep((s) => s + 1), PARK_ROTATE_MS);
+    const id = setInterval(() => {
+      if (!document.hidden) setStep((s) => s + 1);
+    }, PARK_ROTATE_MS);
     return () => clearInterval(id);
   }, [parkImages]);
 

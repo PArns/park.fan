@@ -3,7 +3,9 @@
 import { useState, useMemo, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import {
+  addDays,
   format,
+  parseISO,
   startOfMonth,
   endOfMonth,
   eachDayOfInterval,
@@ -25,6 +27,7 @@ import {
 } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useCalendarData } from '@/lib/hooks/use-calendar-data';
+import { CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
 import type { IntegratedCalendarResponse, ParkWithAttractions } from '@/lib/api/types';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -44,6 +47,7 @@ interface ParkCalendarGridProps {
 }
 
 export function ParkCalendarGrid({
+  park,
   initialCalendarData,
   continent,
   country,
@@ -51,6 +55,7 @@ export function ParkCalendarGrid({
   parkSlug,
 }: ParkCalendarGridProps) {
   const locale = useLocale();
+  const parkTimezone = park.timezone ?? 'UTC';
   const pathname = usePathname();
   const t = useTranslations('parks');
   const tAttractions = useTranslations('attractions');
@@ -167,6 +172,18 @@ export function ParkCalendarGrid({
     // React Query will automatically fetch when currentMonth changes (from/to change)
   };
 
+  // Flip a day forward/back from inside the detail dialog. Crossing a month boundary also
+  // navigates the grid month so the target day's data loads — the dialog keeps showing the
+  // previous day dimmed until it lands (see ParkCalendarDayDetail's lastDay retention).
+  const handleDayNavigate = (direction: -1 | 1) => {
+    if (!selectedDate) return;
+    const target = format(addDays(parseISO(selectedDate), direction), 'yyyy-MM-dd');
+    setSelectedDate(target);
+    if (target.slice(0, 7) !== format(currentMonth, 'yyyy-MM')) {
+      handleMonthChange(direction === 1 ? 'next' : 'prev');
+    }
+  };
+
   // Memoize expensive calendar layout calculations — only recalculate when month or locale changes
   const { weeks, weekdayHeaders, reversedDays } = useMemo(() => {
     // Compute start/end inside the memo so Date object identity doesn't cause spurious invalidation
@@ -235,7 +252,7 @@ export function ParkCalendarGrid({
   // Compute best-day set — lowest crowd level among OPERATING/UNKNOWN days without school/public holidays.
   // Falls back to backend recommendation field once the API provides it.
   const bestDayDates = useMemo(() => {
-    const crowdOrder = ['very_low', 'low', 'moderate', 'high', 'very_high', 'extreme'];
+    const crowdOrder: readonly string[] = CROWD_LEVEL_ORDER;
     const candidates = Array.from(calendarMap.values()).filter(
       (d) =>
         d.date >= todayStr && // never recommend a day that has already passed
@@ -412,9 +429,10 @@ export function ParkCalendarGrid({
                       <ParkCalendarDay
                         key={dateStr}
                         day={dayData}
+                        parkTimezone={parkTimezone}
                         isToday={isToday}
                         isBest={bestDayDates.has(dateStr)}
-                        onSelect={() => setSelectedDate(dateStr)}
+                        onSelect={setSelectedDate}
                       />
                     );
                   })}
@@ -446,9 +464,10 @@ export function ParkCalendarGrid({
                           <ParkCalendarDay
                             key={dateStr}
                             day={dayData}
+                            parkTimezone={parkTimezone}
                             isToday={isToday}
                             isBest={bestDayDates.has(dateStr)}
-                            onSelect={() => setSelectedDate(dateStr)}
+                            onSelect={setSelectedDate}
                           />
                         );
                       })}
@@ -461,13 +480,16 @@ export function ParkCalendarGrid({
       </div>
 
       {/* Click-to-open day detail (weather + forecast + predictions) — works on
-          touch and desktop, unlike the calendar's former hover-only tooltips. */}
+          touch and desktop, unlike the calendar's former hover-only tooltips.
+          Prev/next flips days without leaving the dialog (incl. month crossing). */}
       <ParkCalendarDayDetail
         day={selectedDate ? (calendarMap.get(selectedDate) ?? null) : null}
+        parkTimezone={parkTimezone}
         open={selectedDate !== null}
         onOpenChange={(o) => {
           if (!o) setSelectedDate(null);
         }}
+        onNavigate={handleDayNavigate}
       />
     </Card>
   );

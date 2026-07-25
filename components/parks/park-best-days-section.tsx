@@ -1,14 +1,19 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { CalendarDays, TrendingDown, AlertTriangle, Sunset } from 'lucide-react';
+import { CalendarDays, TrendingDown, AlertTriangle, Sunset, ArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { GlassCard } from '@/components/common/glass-card';
-import type { IntegratedCalendarResponse, CrowdLevel } from '@/lib/api/types';
+import { CrowdCalendarFaqLink } from '@/components/faq/crowd-calendar-faq-link';
+import { Link } from '@/i18n/navigation';
+import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
+import type { Locale } from '@/i18n/config';
+import type { IntegratedCalendarResponse } from '@/lib/api/types';
 import type { BestDaysByDayOfWeek, BestDaysSnapshot } from '@/lib/api/integrated-calendar';
-import { analyzeBestDays } from '@/lib/utils/crowd-analysis';
+import { analyzeBestDays, scoreToCrowdLevel } from '@/lib/utils/crowd-analysis';
+import { CROWD_CHIP_CLASS } from '@/lib/utils/crowd-level-styles';
 import { getGermanArticle } from '@/lib/utils';
 import { cn } from '@/lib/utils';
 import { useParkBestDaysCalendar } from '@/lib/hooks/use-park-best-days-calendar';
@@ -27,6 +32,12 @@ interface ParkBestDaysSectionProps {
   locale: string;
   /** Renders as a compact card without section heading — for embedding in the header area */
   compact?: boolean;
+  /**
+   * When true, the (non-compact) section header shows a visible "view full crowd calendar" link
+   * that jumps to the park page's `#calendar` tab. Only meaningful on the park page (where that
+   * tab exists) — left off elsewhere (e.g. the blog widget renders `compact`, which has no header).
+   */
+  showCalendarLink?: boolean;
   className?: string;
   /**
    * Server-fetched calendar seed (data-cached `getBestDaysCalendarSeed`). When present, the
@@ -40,24 +51,6 @@ interface ParkBestDaysSectionProps {
    *  render byte-identical (no hydration mismatch from two clock reads). */
   seedNowMs?: number;
 }
-
-function scoreToCrowdLevel(score: number): CrowdLevel {
-  if (score <= 1.5) return 'very_low';
-  if (score <= 2.5) return 'low';
-  if (score <= 3.5) return 'moderate';
-  if (score <= 4.5) return 'high';
-  if (score <= 5.5) return 'very_high';
-  return 'extreme';
-}
-
-const CROWD_CHIP: Record<string, string> = {
-  very_low: 'bg-crowd-very-low/20 text-crowd-very-low border border-crowd-very-low/30',
-  low: 'bg-crowd-low/20 text-crowd-low border border-crowd-low/30',
-  moderate: 'bg-crowd-moderate/20 text-crowd-moderate border border-crowd-moderate/30',
-  high: 'bg-crowd-high/20 text-crowd-high border border-crowd-high/30',
-  very_high: 'bg-crowd-very-high/20 text-crowd-very-high border border-crowd-very-high/30',
-  extreme: 'bg-crowd-extreme/20 text-crowd-extreme border border-crowd-extreme/30',
-};
 
 function getDayShort(dayIndex: number, locale: string): string {
   const refMonday = new Date(2025, 0, 6);
@@ -79,7 +72,7 @@ function DayChip({ dayIndex, score, locale }: { dayIndex: number; score: number;
     <span
       className={cn(
         'inline-flex items-center rounded-md px-3 py-1 text-sm font-medium',
-        CROWD_CHIP[level]
+        CROWD_CHIP_CLASS[level]
       )}
     >
       {getDayShort(dayIndex, locale)}
@@ -105,6 +98,7 @@ export function ParkBestDaysSection({
   parkName,
   locale,
   compact = false,
+  showCalendarLink = false,
   className,
   initialCalendar,
   seedNowMs,
@@ -148,6 +142,7 @@ export function ParkBestDaysSection({
           parkSlug={parkSlug}
           locale={locale}
           compact={compact}
+          showCalendarLink={showCalendarLink}
           className={className}
         />
       );
@@ -169,6 +164,7 @@ export function ParkBestDaysSection({
       parkSlug={parkSlug}
       locale={locale}
       compact={compact}
+      showCalendarLink={showCalendarLink}
       className={className}
     />
   );
@@ -185,6 +181,7 @@ interface BestDaysContentProps {
   parkSlug: string;
   locale: string;
   compact?: boolean;
+  showCalendarLink?: boolean;
   className?: string;
 }
 
@@ -196,6 +193,7 @@ function BestDaysContent({
   parkSlug,
   locale,
   compact = false,
+  showCalendarLink = false,
   className,
 }: BestDaysContentProps) {
   const t = useTranslations('parks.bestDays');
@@ -296,13 +294,40 @@ function BestDaysContent({
   return (
     <section aria-labelledby="best-days-heading" className="mt-8 space-y-4">
       <div className="bg-background/70 rounded-xl px-4 py-3 backdrop-blur-md">
-        <div className="flex items-center gap-2">
-          <CalendarDays className="text-primary h-5 w-5" aria-hidden="true" />
-          <h2 id="best-days-heading" className="text-xl font-semibold">
-            {t('title', { park: displayName })}
-          </h2>
+        <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-3">
+          <div className="min-w-0">
+            <div className="flex items-center gap-2">
+              <CalendarDays className="text-primary h-5 w-5" aria-hidden="true" />
+              <h2 id="best-days-heading" className="text-xl font-semibold">
+                {t('title', { park: displayName })}
+              </h2>
+            </div>
+            <p className="text-muted-foreground mt-1 text-sm">{t('subtitle')}</p>
+            <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1">
+              <Link
+                href="/fancast"
+                className="text-primary hover:text-primary/80 inline-flex items-center gap-1 text-xs font-medium transition-colors"
+              >
+                {t('fancastLink')}
+                <ArrowRight className="h-3 w-3" aria-hidden="true" />
+              </Link>
+              <Link
+                href={`/${BEST_TIME_SEGMENTS[locale as Locale]}`}
+                className="text-primary hover:text-primary/80 inline-flex items-center gap-1 text-xs font-medium transition-colors"
+              >
+                {t('bestTimeLink')}
+                <ArrowRight className="h-3 w-3" aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+          {showCalendarLink && (
+            <CrowdCalendarFaqLink className="border-primary/30 bg-primary/10 text-primary hover:bg-primary/20 hover:border-primary/50 inline-flex shrink-0 items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm font-medium no-underline transition-colors">
+              <CalendarDays className="h-4 w-4" aria-hidden="true" />
+              {t('viewCalendarLink')}
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </CrowdCalendarFaqLink>
+          )}
         </div>
-        <p className="text-muted-foreground mt-1 text-sm">{t('subtitle')}</p>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -369,14 +394,14 @@ function BestDaysContent({
                   })
                     .format(date)
                     .replace(/\.$/, '');
-                  const level = day.crowdLevel as CrowdLevel;
+                  // Loose lookup: crowdLevel can be 'closed'/'unknown', which carry no chip color.
+                  const chipClass = (CROWD_CHIP_CLASS as Record<string, string>)[day.crowdLevel];
                   return (
                     <span
                       key={day.date}
                       className={cn(
                         'inline-flex items-center rounded-md px-3 py-1 text-sm font-medium',
-                        CROWD_CHIP[level] ??
-                          'bg-muted/20 text-muted-foreground border border-transparent'
+                        chipClass ?? 'bg-muted/20 text-muted-foreground border border-transparent'
                       )}
                     >
                       {label}
@@ -392,9 +417,20 @@ function BestDaysContent({
       </div>
 
       {analysis.schoolHolidaysAreBusy && (
-        <div className="flex items-start gap-2 rounded-lg border border-yellow-500/30 bg-yellow-500/10 px-4 py-3 text-sm text-yellow-700 dark:text-yellow-400">
-          <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
-          <p>{t('schoolHolidayWarning', { park: displayName })}</p>
+        <div className="relative overflow-hidden rounded-lg border border-yellow-500/30 text-sm text-yellow-700 dark:text-yellow-400">
+          {/* Frosted surface + semantic tint so the warning stays legible over the hero. */}
+          <div
+            className="bg-background/85 pointer-events-none absolute inset-0 rounded-lg backdrop-blur-md"
+            aria-hidden="true"
+          />
+          <div
+            className="pointer-events-none absolute inset-0 rounded-lg bg-yellow-500/10 dark:bg-yellow-500/15"
+            aria-hidden="true"
+          />
+          <div className="relative flex items-start gap-2 px-4 py-3">
+            <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+            <p>{t('schoolHolidayWarning', { park: displayName })}</p>
+          </div>
         </div>
       )}
     </section>

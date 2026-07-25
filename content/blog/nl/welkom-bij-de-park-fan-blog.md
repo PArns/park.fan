@@ -213,7 +213,7 @@ ververst. Voorspellingen die de drukte tot **365 dagen** vooruit inschatten. En
 omdat ik cijfers principieel alleen vertrouw als ze zich moeten bewijzen, geeft
 het model zichzelf een cijfer: elke voorspelling wordt later naast de werkelijk
 gemeten wachttijd gelegd, en wat daaruit komt staat op de
-[how-to-pagina](/howto).
+[Fancast-pagina](/fancast).
 
 ## Wanneer is de beste dag? Is een zondag de moeite waard?
 
@@ -249,7 +249,7 @@ Daarom gaan we een paar stappen verder:
   historie, verdicht tot één eenvoudig antwoord: gaan of liever niet.
 - **Trefferpercentages in het openbaar.** Elke voorspelling wordt later naast de
   werkelijk gemeten wachttijd gelegd. Wie wil weten hoe goed het model is, hoeft
-  mij niet te geloven maar kan het nakijken op de [how-to-pagina](/howto).
+  mij niet te geloven maar kan het nakijken op de [Fancast-pagina](/fancast).
 - **Alles op één plek.** Wachttijden, drukteniveaus, weer bij de parkingang,
   openingstijden en attractiehistories, in zes talen.
 - **Gratis en zonder reclame.** Geen concern, geen paywall. Een fansite in de

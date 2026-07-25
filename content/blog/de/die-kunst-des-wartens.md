@@ -396,7 +396,7 @@ Voraus prognostiziert, modelliert es im Kern nichts anderes als diese beiden
 Größen: **Nachfrage** (wie viele Menschen wollen heute zu dieser Bahn?) und
 **Durchsatz** (wie viele schafft sie weg?). Little wäre vermutlich erstaunt,
 wofür seine Formel heute so alles benutzt wird. Wie oft unsere Prognosen die
-Realität treffen, steht auf der [How-to-Seite](/howto).
+Realität treffen, steht auf der [Fancast-Seite](/fancast).
 
 ## Warum Peter Pan's Flight immer „eskaliert“
 

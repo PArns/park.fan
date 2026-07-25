@@ -55,14 +55,16 @@ const RAIN_AREA_PCT = 30;
 // mm/h that fills the rain area ("moderate" rain); heavier slots scale the chart up.
 const RAIN_SCALE_TOP_MM = 2.5;
 
-// Temperature palette (concrete colours; the normal 10–30 band is amber-400, the
-// same as the SVG's `currentColor`). Drives the now-dot, mirroring the line gradient.
-const TEMP_PALETTE: [number, string][] = [
-  [30, '#ef4444'], // hot
-  [26, '#fbbf24'], // amber-400 (= currentColor)
-  [10, '#fbbf24'],
-  [5, '#38bdf8'], // cool
-  [0, '#2563eb'], // cold
+// Single temperature scale for both faces of the chart: `hex` drives the
+// now-dot (needs a concrete colour), `gradient` the line/fill gradient —
+// 'currentColor' is the SVG's amber-400 in the normal 10–26 °C band, so the
+// two columns are the same colour there, just theme-resolved differently.
+const TEMP_STOPS: [temp: number, hex: string, gradient: string][] = [
+  [30, '#ef4444', '#ef4444'], // hot
+  [26, '#fbbf24', 'currentColor'], // amber-400 (= currentColor)
+  [10, '#fbbf24', 'currentColor'],
+  [5, '#38bdf8', '#38bdf8'], // cool
+  [0, '#2563eb', '#2563eb'], // cold (and below, via clamp)
 ];
 
 function lerpColor(a: string, b: string, f: number): string {
@@ -76,7 +78,7 @@ function lerpColor(a: string, b: string, f: number): string {
 
 /** Colour for a temperature, interpolated to match the line gradient. */
 function tempColorAt(t: number): string {
-  const s = TEMP_PALETTE;
+  const s = TEMP_STOPS;
   if (t >= s[0][0]) return s[0][1];
   if (t <= s[s.length - 1][0]) return s[s.length - 1][1];
   for (let i = 0; i < s.length - 1; i++) {
@@ -217,18 +219,12 @@ export function WeatherHourlyChart({
   // in a band takes that colour, with a smooth transition between. `currentColor`
   // (the SVG's amber) is the normal 10–30 °C band, so it looks unchanged there;
   // only > 30 °C (hot/red) and < 10 °C (cool → cold/blue) diverge.
-  const TEMP_COLORS: [number, string][] = [
-    [30, '#ef4444'], // hot
-    [26, 'currentColor'], // back to the normal colour just below 30
-    [10, 'currentColor'], // normal band (10–26 °C)
-    [5, '#38bdf8'], // cool
-    [0, '#2563eb'], // cold (and below, via clamp)
-  ];
+  const tempLineStops: { offset: number; color: string }[] = [];
   let runOff = 0;
-  const tempLineStops = TEMP_COLORS.map(([temp, color]) => {
+  for (const [temp, , color] of TEMP_STOPS) {
     runOff = Math.max(runOff, Math.min(1, Math.max(0, yFor(temp) / 100)));
-    return { offset: runOff, color };
-  });
+    tempLineStops.push({ offset: runOff, color });
+  }
   // Same colours under the curve, faded top→bottom — a subtle temperature wash.
   const tempFillStops = tempLineStops.map((s) => ({
     ...s,

@@ -60,13 +60,13 @@ Short guide for frequent problems and how to fix them.
 
 ---
 
-## Debug Geo Mode (Vercel Toolbar)
+## Simulating "Near / In Park" (geo debugging)
 
-**Context:** Experiments like "Near Phantasialand" or "In Phantasialand" use Vercel Toolbar Flags Explorer.
+**Context:** Developing the in-park / nearby views without physically standing in a park.
 
-**Setup:** Run `vercel link`, deploy or open preview, complete Flags Explorer setup. Use `vercel env pull` to get `FLAGS_SECRET` locally if needed for toolbar in dev.
+**Setup:** Append `?sim=in_park`, a preset (`?sim=efteling`), or coordinates (`?sim=50.79,6.87`) to any page on local dev or a preview deployment. The gate lives in `isSimulationEnabled()` (`lib/nearby-simulation.ts`); it is disabled on the real production deployment.
 
-**Note:** Flags are defined in `flags.ts` and `app/.well-known/vercel/flags/route.ts`. Do not build custom env switchers for experiments.
+**Note:** Build-time feature flags live in `lib/config/features.ts`. Do not build custom env switchers for experiments.
 
 **See:** [Flags & Debug](../development/flags-and-debug.md).
 

@@ -27,7 +27,7 @@ Reminders and context for AI or human sessions working on the codebase.
 9. **URLs from API** – Always use `convertApiUrlToFrontendUrl()` or `getParkUrlFromAttractionUrl()`; never manually construct from string splits.  
    → [Routing & URLs](../architecture/routing-and-urls.md)
 
-10. **Flags / experiments** – Use Vercel Toolbar Flags Explorer and `flags.ts`; do not add env-based feature toggles.
+10. **Flags / experiments** – Use the build-time flags in `lib/config/features.ts` and `?sim=` for geo/debug overrides; do not add ad-hoc env feature toggles.
     → [Flags & Debug](flags-and-debug.md)
 
 11. **Locale switching** – Both `LocaleSwitcher` and `LanguageBanner` use hreflang `<link>` tags (from `generateMetadata`) to navigate, not naive `String.replace()`. This is critical for pages with localized URL segments (e.g. `/en/glossary` ↔ `/de/glossar`). The hreflang URL is parsed via `new URL(el.href).pathname` to strip the domain. Fallback regex replaces only the leading `/:locale/` segment. Never use bare `path.replace(`/${locale}`, ...)` for locale switching.
@@ -58,7 +58,8 @@ Reminders and context for AI or human sessions working on the codebase.
 14. **Shared hooks (`lib/hooks/use-mounted.ts`)** — Use these instead of raw `useState + useEffect` for hydration-safe client state:
     - `useMounted()` → `boolean`, true after hydration
     - `useBrowserTimezone()` → browser timezone string after mount
-    - `useBrowserNow(intervalMs | null)` → `Date | null`, refreshed every interval. Pass `null` for one-shot (no polling).
+    - `useBrowserNow(null)` → `Date | null`, one-shot mount value (no polling).
+    - For a **repeating minute tick**, do NOT pass an interval to `useBrowserNow` — use `useMinuteNow()` / `useMinuteNowDate()` (`lib/hooks/use-minute-now.ts`): one shared, visibility-paused timer for all subscribers instead of a private `setInterval` per component.
 
     **`lib/i18n/helpers.ts` is server-only** — it transitively imports `fs` via `lib/i18n/logger.ts`. Never import it in client components; use local inline helpers or `useTranslations()` instead.
 
@@ -78,6 +79,13 @@ Reminders and context for AI or human sessions working on the codebase.
     - Neue Locale-Segmente → zu `localeSegments` in BEIDEN Blöcken (`redirects` + `rewrites`) hinzufügen
     - Kein Hardcoding von Locales in Redirect-Destinations (z.B. `/en/parks/…`); stattdessen ohne Locale-Prefix damit next-intl die Locale per Accept-Language erkennt
       → [Routing & URLs](../architecture/routing-and-urls.md)
+
+19. **Shared UI-Primitives (reuse-Regel, siehe CLAUDE.md)** — vor dem Inline-Bauen prüfen:
+    - **Crowd-Level-Farben/Schwellen** → `lib/utils/crowd-level-styles.ts` (`CROWD_TEXT_CLASS` / `CROWD_BADGE_CLASS` / `CROWD_OUTLINE_CLASS` / `CROWD_CHIP_CLASS`, `CROWD_LEVEL_ORDER`, `waitTimeCrowdTier`). Nie eine weitere `crowd → Farbe`-Map anlegen. Score→Level: `scoreToCrowdLevel` in `lib/utils/crowd-analysis.ts`.
+    - **Section-Header** → `SectionHeading` (`components/common/section-heading.tsx`): `variant="chapter"` (default, Icon-Kachel) oder `variant="plain"` (schlichtes Icon+Titel+optional Badge). `SectionHeader` gibt es nicht mehr.
+    - **Frosted-Glass-Titel-Pill** über Hero/Bildern → `GlassSectionTitle` (`components/parks/glass-section-title.tsx`).
+    - **„Live"-Punkt** (pulsierend oder Ping-Ring) → `LiveDot` (`components/common/live-dot.tsx`, `variant="pulse" | "ping"`).
+    - **Wartezeit-Min/Max-Zeile** → `TodayWaitRange`; **Trend-Pfeil** → `TrendIcon` (beide `components/parks/`).
 
 ---
 

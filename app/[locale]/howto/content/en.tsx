@@ -4,6 +4,7 @@ import { Link } from '@/i18n/navigation';
 import { PopularParksGrid } from '@/components/home/featured-parks-slot';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { cn } from '@/lib/utils';
+import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { HeroSearchInput } from '@/components/search/hero-search-input';
 import { NearbyParksCard } from '@/components/parks/nearby-parks-card';
 import {
@@ -852,6 +853,20 @@ function ContentENSections() {
           hourly forecast on the attraction page to find the quietest slot. You&apos;ll always
           arrive at the shortest queue.
         </TipBox>
+        <p className="text-muted-foreground">
+          Our forecasting model has a name —{' '}
+          <Link href="/fancast" className="text-primary hover:underline">
+            Fancast
+          </Link>{' '}
+          — and its own page explaining how it works and how accurate it currently is.
+        </p>
+        <p className="text-muted-foreground">
+          Not sure when to go? The{' '}
+          <Link href={`/${BEST_TIME_SEGMENTS.en}`} className="text-primary hover:underline">
+            best time to visit
+          </Link>{' '}
+          rounds up the quietest weekdays and months across all parks.
+        </p>
       </Section>
 
       {/* ── 8. Personas ─────────────────────────────────────────────────────── */}

@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { BlogPostCard } from './blog-post-card';
 import { listPosts } from '@/lib/blog';
-import { filterPostsByCategory, parseCategoryPath } from '@/lib/blog/categories';
+import { parseCategoryPath } from '@/lib/blog/categories';
 import type { Locale } from '@/i18n/config';
 import type { BlogListItem } from '@/lib/blog/types';
 
@@ -46,13 +46,18 @@ export async function BlogRelatedPosts({
   const t = await getTranslations('blog');
   const all = listPosts(locale).filter((p) => p.translationKey !== currentTranslationKey);
 
-  // Prefer same-category posts; fall back to recent across the blog.
-  const sameTree = category ? filterPostsByCategory(all, parseCategoryPath(category)) : all;
-  const pool = sameTree.length > 0 ? sameTree : all;
-
-  const ranked = [...pool]
+  // Rank the whole blog by relevance — same-category posts score highest (category
+  // depth is weighted heavily in scorePost), then shared tags, with recency as the
+  // tiebreaker. Ranking across ALL posts (instead of only the same-category pool)
+  // means a thin category — e.g. a second "guides" post — still fills the row
+  // instead of surfacing a single lonely card.
+  const ranked = [...all]
     .map((post) => ({ post, score: scorePost(post, category, tags) }))
-    .sort((a, b) => (b.score === a.score ? 0 : b.score - a.score))
+    .sort((a, b) =>
+      b.score !== a.score
+        ? b.score - a.score
+        : (b.post.frontmatter.date ?? '').localeCompare(a.post.frontmatter.date ?? '')
+    )
     .slice(0, limit)
     .map(({ post }) => post);
 

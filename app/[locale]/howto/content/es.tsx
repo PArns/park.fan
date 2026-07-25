@@ -3,6 +3,7 @@ import { Link } from '@/i18n/navigation';
 import { PopularParksGrid } from '@/components/home/featured-parks-slot';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { cn } from '@/lib/utils';
+import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { HeroSearchInput } from '@/components/search/hero-search-input';
 import { NearbyParksCard } from '@/components/parks/nearby-parks-card';
 import {
@@ -872,6 +873,20 @@ function ContentESSections() {
           previsión horaria en la página de la atracción para encontrar el momento más tranquilo.
           Siempre llegarás a la cola más corta.
         </TipBox>
+        <p className="text-muted-foreground">
+          Nuestro modelo de predicción tiene un nombre —{' '}
+          <Link href="/fancast" className="text-primary hover:underline">
+            Fancast
+          </Link>{' '}
+          — y su propia página que explica cómo funciona y qué precisión tiene actualmente.
+        </p>
+        <p className="text-muted-foreground">
+          ¿No sabes cuándo ir? La{' '}
+          <Link href={`/${BEST_TIME_SEGMENTS.es}`} className="text-primary hover:underline">
+            mejor época para visitar
+          </Link>{' '}
+          reúne los días de diario y los meses más tranquilos de todos los parques.
+        </p>
       </Section>
 
       {/* ── 8. Para quién ────────────────────────────────────────────────────── */}

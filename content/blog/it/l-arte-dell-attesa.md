@@ -398,7 +398,7 @@ altro che quelle due grandezze: la **domanda** (quante persone vogliono salire
 oggi su questa attrazione?) e la **portata** (quante ne smaltisce?). Little
 sarebbe probabilmente stupito di tutti gli usi che si fanno oggi della sua
 formula. Quanto spesso le nostre previsioni colgano la realtà sta sulla
-[pagina how-to](/howto).
+[pagina di Fancast](/fancast).
 
 ## Perché Peter Pan's Flight “esplode” sempre
 

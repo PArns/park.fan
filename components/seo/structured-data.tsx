@@ -82,6 +82,35 @@ export function ArticleStructuredData({
 }
 
 /**
+ * FAQPage JSON-LD for guide pages that answer a set of recurring questions
+ * (e.g. the Fancast model page). Enables the FAQ rich result in Google when the
+ * page is eligible. Pass plain-text Q&A pairs — no markup inside answers.
+ */
+export function FaqStructuredData({
+  items,
+}: {
+  items: ReadonlyArray<{ question: string; answer: string }>;
+}) {
+  // schema-dts doesn't ship a `FAQPage` member in the pinned version, so we
+  // build the JSON-LD as a plain object and reuse the shared escaper/renderer.
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  };
+  return (
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeJsonLd(data) }} />
+  );
+}
+
+/**
  * Builds the JSON-LD `image` value from a park/ride image set.
  *
  * Real park/ride photos are always preferred; the OG card is used ONLY as a

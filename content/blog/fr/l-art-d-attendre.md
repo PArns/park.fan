@@ -411,7 +411,7 @@ ces deux grandeurs : la **demande** (combien de personnes veulent monter dans
 cette attraction aujourd'hui ?) et le **débit** (combien peut-elle en évacuer
 ?). Little serait sans doute étonné de tous les usages qu'on fait aujourd'hui
 de sa formule. La fréquence à laquelle nos prévisions collent à la réalité
-figure sur la [page how-to](/howto).
+figure sur la [page Fancast](/fancast).
 
 ## Pourquoi Peter Pan's Flight « déraille » toujours
 

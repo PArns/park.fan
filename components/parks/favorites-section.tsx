@@ -4,6 +4,7 @@ import { useEffect, useCallback, useMemo, useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
 import { Separator } from '@/components/ui/separator';
 import { Card, CardContent } from '@/components/ui/card';
+import { GlassSectionTitle } from '@/components/parks/glass-section-title';
 import { ParkCard } from '@/components/parks/park-card';
 import { ParkCardNearbySkeleton } from '@/components/parks/park-card-nearby-skeleton';
 import { AttractionCard } from '@/components/parks/attraction-card';
@@ -110,10 +111,9 @@ export function FavoritesSection() {
     return (
       <section className="bg-muted/30 px-4 py-8">
         <div className="container mx-auto">
-          <div className="bg-background/70 mb-4 flex w-fit items-center gap-2 rounded-xl px-4 py-2.5 backdrop-blur-md">
-            <Star className="text-primary h-5 w-5" />
-            <h2 className="text-xl font-bold">{t('title')}</h2>
-          </div>
+          <GlassSectionTitle icon={Star} iconClassName="text-primary" className="mb-4">
+            {t('title')}
+          </GlassSectionTitle>
           <div className="space-y-6">
             {showParkSkeletons && (
               <div>
@@ -160,10 +160,9 @@ export function FavoritesSection() {
     return (
       <section className="bg-muted/30 px-4 py-12">
         <div className="container mx-auto">
-          <div className="bg-background/70 mb-4 flex w-fit items-center gap-2 rounded-xl px-4 py-2.5 backdrop-blur-md">
-            <Star className="text-primary h-5 w-5" />
-            <h2 className="text-xl font-bold">{t('title')}</h2>
-          </div>
+          <GlassSectionTitle icon={Star} iconClassName="text-primary" className="mb-4">
+            {t('title')}
+          </GlassSectionTitle>
           <p className="text-foreground mt-4 text-center text-base font-semibold">{t('empty')}</p>
           <p className="text-muted-foreground mt-2 text-center text-sm">{t('emptyHint')}</p>
         </div>

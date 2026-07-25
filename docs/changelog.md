@@ -4,6 +4,140 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: late-load flicker sweep (homepage, park-page weather, search)
+
+Fixes the remaining "flickers once or twice a few seconds after load" reports. Root causes were
+found empirically (headless Chromium + MutationObserver/layout-shift tracing on the built app).
+
+- **Park-page weather no longer double-jumps:** the hour-by-hour chart now reserves its space with
+  a same-size placeholder (fixed `h-28` plot + axis row — deterministic, not a guessed height)
+  while the hourly fetch is still in flight and a nowcast is already shown. Previously the section
+  shifted once when the nowcast landed (~3 s) and again ~1 s later when the chart mounted
+  (layout-shift 0.037); now it settles in a single step. This resolves the "known, deferred"
+  weather-chart CLS note from the re-render sweep.
+- **Search palette stops flashing while typing:** the main search and glossary queries use
+  `placeholderData: keepPreviousData`, so a new debounced query updates results in place instead of
+  results → skeleton → results (the cmdk list height stopped jumping between 176/331/420 px).
+- **Nearby card no longer flashes the "enable location" prompt:** the card keyed its skeleton off
+  `isLoading` (actively fetching), but the nearby query is gated behind the after-load idle window
+  and the initial permission check — in those first seconds nothing is in flight, so the prompt
+  rendered and was then replaced by skeleton → parks. It now uses `isPending` (no data yet).
+- **Nearby consumers survive the GPS key change:** `useNearbyParks` `placeholderData` now prefers
+  the previous query's in-memory data before falling back to the localStorage cache, so the header
+  pill / hero variant / search-dialog nearby group no longer blank out when coords arrive
+  mid-session and re-key the query.
+- **In-park hero takeover can't flash the background:** the base hero image holds its fade-out
+  until the first park image has actually loaded (`onLoad`-gated), and the stacked park layers are
+  `loading="eager"` (they're `opacity-0`, so lazy heuristics must not defer them).
+
+---
+
+## Unreleased – perf: re-render sweep (map re-pan fix, memoized grids/markers)
+
+Follow-up render-churn pass on top of the code-quality sweep; no user-facing behaviour changes
+except the map fix, which removes an unwanted motion.
+
+- **Park map no longer re-pans every minute (visible fix):** `center` is now `useMemo`'d on the
+  primitive coords, so the shared `useMinuteNow` tick no longer hands `MapViewController` a fresh
+  array that re-triggered `map.setView(…, { animate: true })` every 60 s. `AttractionMarkers` and
+  `RestaurantMarkers` are `React.memo`'d (no time-relative content) so the minute tick only
+  re-renders the show markers that actually need it.
+- **Attraction grid stops re-rendering on every keystroke/focus:** `LandSection` is `React.memo`'d
+  and `TabsWithHash` is `React.memo`'d — on a big park the 100+ glass cards now bail out on search
+  input and on the 5-min poll's `isFetching` flip, and only re-render when the data really changes.
+- **Calendar day memo restored:** `ParkCalendarDay.onSelect` now receives the date, so the grid
+  passes the stable `setSelectedDate` setter instead of a per-day arrow that defeated the existing
+  `memo` (all ~35 day cards used to re-render on any day click / today-poll).
+- Known, deferred (need a server-side data seed, not a skeleton): the hour-by-hour weather chart and
+  the daily-wait chart still expand on their client fetch/mount (CLS); reserving space cleanly
+  requires seeding those queries server-side rather than a guessed skeleton height.
+
+---
+
+## Unreleased – refactor: code-quality sweep (dedup, component splits, client→server, repaint gates, stale docs)
+
+Cross-cutting cleanup driven by a full-codebase audit; no user-facing behavior changes intended.
+
+- **Dead code removed:** `BlogRelatedParks`, `ShowCountdown`, `GlossaryInjectLoader` (all imported
+  nowhere).
+- **Client → Server components:** `RopeDropCard` (only its embedded `ParkTime` islands hydrate now)
+  and `AttractionTypicalWaitsDemo` dropped `'use client'`. NOT converted: `ParkBackground` — its
+  `next/image` `loader` function prop cannot cross the server→client boundary.
+- **Repaint/CPU gates (continues #219):** `weather-nowcast-banner` 1 s countdown now pauses
+  offscreen/hidden (`useActiveOnScreen`); hero rotation, geolocation auto-refresh and the shared
+  `useMinuteNow()` clock skip ticks while the tab is hidden; `park-map` and the former
+  `useBrowserNow(60_000)` consumers (`park-time-info`, `peak-hour-badge`, `use-today-schedule`) now
+  share ONE minute timer via `useMinuteNow()`/`useMinuteNowDate()` instead of private intervals.
+- **Dedup:** new `lib/utils/crowd-level-styles.ts` is the single source for crowd-level →
+  text/badge/outline/chip classes + the wait-time threshold ladder (`waitTimeCrowdTier`) + the
+  level order — `CrowdLevelBadge`, `WaitTimeValue`, blog live-display, live ticker, best-days
+  chips and both calendar components now derive from it. `scoreToCrowdLevel` moved to
+  `crowd-analysis.ts` (was copy-pasted twice). Shared `<TodayWaitRange>` + `<TrendIcon>` replace
+  byte-identical blocks in `attraction-live-panel` / `wait-time-info-card`. The hourly weather
+  chart's two temperature palettes merged into one `TEMP_STOPS` table.
+- **Best practices:** added `app/global-error.tsx` (branded last-resort boundary); attraction
+  `generateMetadata` uses `catchNonFatal` (maintenance outages no longer masked as not-found);
+  `components/ui/progress.tsx` dropped `forwardRef` (React 19 ref prop).
+- **Large-component splits (behaviour-identical):** `search-dialog` 651→350 (data layer →
+  `lib/hooks/use-search-results.ts`, rows → `search-result-items.tsx`), `tabs-with-hash` 631→328
+  (`use-tab-hash-routing` + `use-attraction-filter` hooks, `park-tabs-list` + `off-season-toggle`
+  components), `park-map` ~550→263 (`lib/utils/leaflet-icons.ts`, `use-park-map-geolocation` hook,
+  `park-map-markers` components), and `nearby-parks-card` split into a state-router + view/analytics
+  pieces.
+- **More dedup:** merged the two near-identical `SectionHeader`/`SectionHeading` components into one
+  (`variant="plain"` absorbs the old `SectionHeader`; former component deleted, 2 call sites
+  migrated); new `GlassSectionTitle` replaces the frosted section-title pill copy-pasted 6× across
+  `nearby-parks-card`/`favorites-section`; new `<LiveDot>` primitive replaces the pulse/ping "live"
+  dot hand-rolled in the live ticker, ML badge, weather-card and training-status badge.
+- **More repaint gates:** `weather-background`'s declarative CSS animations (clouds/stars/fog/flash)
+  now pause via `animation-play-state` when the card scrolls offscreen (IntersectionObserver →
+  `data-paused`, no scroll-time re-renders); the precipitation canvas was already gated.
+- **Version:** `package.json` bumped 2.10.0 → 2.10.1 to match the latest released changelog entry
+  (was lagging).
+- **Stale docs/comments fixed:** removed the long-gone Vercel Toolbar/Flags + `debug-geo-mode`
+  subsystem from 8 docs + `.env.example`; caching-strategy doc got a "superseded" note (PPR →
+  force-dynamic reality); `cache-config.ts` comments now reference `PARK_REVALIDATE`/
+  `ATTRACTION_REVALIDATE`; tech-stack table (TS 6.x, custom SVG charts, no recharts); scripts doc
+  lists all prebuild generators.
+
+---
+
+## Unreleased – feat: header "Prognose heute" opens the day-detail dialog (+ day navigation, park-tz times)
+
+The forecast cell in the park-header stats band is now clickable and opens the SAME
+day-detail dialog the crowd calendar shows when clicking today (status & hours, live vs.
+forecast split, headliner waits, hourly prediction chart, weather, holiday context).
+
+- `ParkHeaderStats` reuses `ParkCalendarDayDetail` 1:1 — no new dialog UI. The full
+  `CalendarDay` for today comes from a one-day `/calendar` fetch with the same query key +
+  staleTime as the calendar grid's today-patch (shared React Query cache; opening the
+  calendar tab later reuses it), deferred via `useLoadLast` so it never competes with the
+  live/weather queries (loads-last rule).
+- The cell value becomes a button (hover pill + chevron affordance, `aria-haspopup`,
+  focus ring) only once today's data is cached — a click therefore always opens instantly;
+  until then (or if the fetch fails) it renders static as before.
+- **Day navigation in the dialog**: prev/next chevron buttons (and ←/→ keys) flip through
+  days without leaving the dialog — from both entry points. The dialog retains the last
+  shown day and dims (`aria-busy`) while the target day loads instead of unmounting. In the
+  header each visited day is its own small cached one-day query; in the calendar grid,
+  crossing a month boundary also navigates the grid month (hash stays in sync).
+- **Park-timezone times everywhere**: the dialog and the calendar grid cells now render
+  opening hours via `ParkTimeRange` (park-local time, viewer-local tooltip on hover) instead
+  of `format(parseISO(...))`, which silently used the BROWSER timezone — for viewers outside
+  the park's timezone the calendar showed shifted hours (e.g. 07:00–17:00 UTC instead of
+  09:00–19:00 park time). `ParkCalendarDay`/`ParkCalendarDayDetail` gained a required
+  `parkTimezone` prop.
+- New translation keys `parks.dayDetail.openToday` / `prevDay` / `nextDay` in all 6 locales.
+- **Fix: header holiday panel no longer swallows neighbouring school breaks.** The
+  `useTodaySchedule` influencing filter dropped every neighbour entry whose NAME matched the
+  local holiday — with generic school-break names ("Summer Holidays" in NRW _and_ HE/NI/RP/
+  NL/BE) that erased whole countries from <HeaderHolidayPanel> (only "Belgien" survived)
+  while the day-detail dialog listed them all. The name-echo suppression now applies only to
+  non-school entries (a shared public holiday like Whit Monday is still told once, by the
+  local badge); region-specific school breaks always show — header and dialog tell one story.
+  The panel's region chips now also carry their country's flag emoji (🇩🇪 Hessen · 🇳🇱
+  Niederlande · 🇧🇪 Belgien), matching the dialog's visual language.
+
 ## Unreleased – perf: page-wide re-render/flicker sweep (memory & repaint fixes)
 
 Audit of all pages for state/effect patterns that forced unnecessary re-renders, repaints or
@@ -536,12 +670,12 @@ render-blocking stylesheet (not inlined), and a redundant font preload.
   extraction also previously caused FOUC. `build:webpack` remains for an inlined-CSS build if
   ever needed.
 
-### Follow-ups (audited, not yet done)
+### Follow-ups (both since done)
 
-- ML sparkline still pulls **recharts (~100 KB)** for one line — migrate to the lightweight
-  SVG `Sparkline` (needs a custom y-domain + active-dot).
-- Header `SearchCommand` ships **cmdk** on every page though the dialog only opens on click —
-  lazy-load the `CommandDialog`.
+- ~~ML sparkline still pulls **recharts (~100 KB)** for one line~~ — done: migrated to the
+  hand-rolled SVG in `components/home/ml-sparkline.tsx`; recharts removed from the dependencies.
+- ~~Header `SearchCommand` ships **cmdk** on every page~~ — done: the palette is code-split via
+  `next/dynamic` in `components/search/search-bar.tsx` and only loads on first open.
 
 ---
 

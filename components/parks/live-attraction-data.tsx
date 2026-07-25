@@ -2,7 +2,17 @@
 
 import { useLiveAttractionData } from '@/lib/hooks/use-live-attraction-data';
 import { useAttractionDetail } from '@/lib/hooks/use-attraction-detail';
-import { AlertCircle, Loader2, Clock, AlertTriangle, Wrench, XCircle, Layers } from 'lucide-react';
+import {
+  AlertCircle,
+  Loader2,
+  Clock,
+  AlertTriangle,
+  Wrench,
+  XCircle,
+  Layers,
+  ArrowRight,
+} from 'lucide-react';
+import { Link } from '@/i18n/navigation';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -247,6 +257,15 @@ export function LiveAttractionData({
                 legendForecast: tChart('legendForecast'),
               }}
             />
+            <div className="mt-3">
+              <Link
+                href="/fancast"
+                className="text-primary hover:text-primary/80 inline-flex items-center gap-1 text-xs font-medium transition-colors"
+              >
+                {tChart('fancastLink')}
+                <ArrowRight className="h-3 w-3" aria-hidden="true" />
+              </Link>
+            </div>
           </div>
         ) : null}
       </Card>

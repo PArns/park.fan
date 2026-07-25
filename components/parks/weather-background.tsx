@@ -65,6 +65,7 @@ export const WeatherBackground = memo(function WeatherBackground({
   glassBlur = 8,
 }: WeatherBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   const { scene, intensity, precipitation } = useMemo(() => weatherCodeToScene(code), [code]);
 
@@ -94,6 +95,23 @@ export const WeatherBackground = memo(function WeatherBackground({
           }))
     );
   }, [showCelestial]);
+
+  // Pause the declarative CSS animations (clouds, stars, fog, flash, sheen) while
+  // the card is scrolled out of view. Driven imperatively via a `data-paused`
+  // attribute so scrolling never triggers a React re-render; the CSS rule lives in
+  // weather-background.css. The precipitation canvas has its own rAF gate below.
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        root.dataset.paused = entries.some((e) => e.isIntersecting) ? 'false' : 'true';
+      },
+      { rootMargin: '100px' }
+    );
+    io.observe(root);
+    return () => io.disconnect();
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -216,6 +234,7 @@ export const WeatherBackground = memo(function WeatherBackground({
 
   return (
     <div
+      ref={rootRef}
       className={`weather-bg${className ? ` ${className}` : ''}`}
       data-scene={scene}
       data-day={day ? 'day' : 'night'}

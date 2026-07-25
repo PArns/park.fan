@@ -12,10 +12,22 @@ import { BLOG_POSTS_PER_PAGE, listPosts, hasPublishedPosts } from '@/lib/blog';
 import { BlogPostGrid } from '@/components/blog/blog-post-grid';
 import { BlogCategoryTree } from '@/components/blog/blog-category-tree';
 import { BlogTagCloud } from '@/components/blog/blog-tag-cloud';
-import { BlogSectionHeader } from '@/components/blog/blog-section-header';
 import { BlogBottomSections } from '@/components/blog/blog-bottom-sections';
 import { BlogStructuredData } from '@/components/seo/blog-structured-data';
+import { Hero } from '@/components/marketing/editorial-ui';
 import { getOgImageUrl } from '@/lib/utils/og-image';
+
+/** Scenic establishing shot for the blog hero (distinct from Fancast/the hub). */
+const BLOG_HERO_IMAGE = '/images/parks/europa-park/background.jpg';
+
+const SCROLL_LABELS: Record<Locale, string> = {
+  de: 'Scrollen',
+  en: 'Scroll',
+  es: 'Desliza',
+  fr: 'Défiler',
+  it: 'Scorri',
+  nl: 'Scroll',
+};
 
 interface BlogIndexPageProps {
   params: Promise<{ locale: string }>;
@@ -115,9 +127,18 @@ export default async function BlogIndexPage({ params }: BlogIndexPageProps) {
         posts={visiblePosts}
         path="/blog"
       />
-      <div className="container mx-auto px-4 py-10 sm:py-14">
-        <BlogSectionHeader as="h1" badge={t('badge')} title={t('heroTitle')} intro={t('intro')} />
+      <Hero
+        kicker={t('badge')}
+        title={t('heroTitle')}
+        tagline={t('intro')}
+        imageSrc={BLOG_HERO_IMAGE}
+        imageAlt={t('heroTitle')}
+        stats={[]}
+        scrollLabel={SCROLL_LABELS[locale as Locale]}
+        titleClassName="max-w-4xl text-4xl font-black tracking-tight sm:text-6xl"
+      />
 
+      <div id="start" className="container mx-auto px-4 py-10 sm:py-14">
         <div className="grid gap-8 lg:grid-cols-[1fr_280px]">
           <BlogPostGrid posts={visiblePosts} />
           <aside className="space-y-6 lg:sticky lg:top-20 lg:self-start">

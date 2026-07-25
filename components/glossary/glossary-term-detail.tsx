@@ -8,7 +8,19 @@ import { CoasterPlayer, type CoasterPlayerLabels } from '@/components/glossary/c
 import type { GlossaryTerm } from '@/lib/glossary/types';
 import type { Breadcrumb } from '@/lib/api/types';
 import type { Locale } from '@/i18n/config';
-import { ArrowLeft, Tag } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Sparkles, Tag } from 'lucide-react';
+
+/** Glossary terms describing the prediction model or its accuracy metrics — each
+ *  gets a CTA linking to the Fancast model page (where the live scorecard lives). */
+const FANCAST_TERM_IDS = new Set([
+  'ai-forecast',
+  'ki',
+  'crowd-forecast',
+  'mae',
+  'rmse',
+  'mape',
+  'r-squared',
+]);
 
 interface GlossaryTermDetailProps {
   term: GlossaryTerm;
@@ -22,6 +34,7 @@ interface GlossaryTermDetailProps {
     alsoKnownAs: string;
     category: string;
     termH1Suffix: string;
+    fancastCta: string;
   };
   /** Localised strings for the 3-D player; only needed when `term.player` is set. */
   playerLabels?: CoasterPlayerLabels;
@@ -80,6 +93,24 @@ export function GlossaryTermDetail({
     </div>
   );
 
+  // Model / accuracy-metric terms get a CTA to the Fancast model page.
+  const fancastCta = FANCAST_TERM_IDS.has(term.id) ? (
+    <Card className="border-primary/30 from-primary/10 gap-0 bg-gradient-to-br to-transparent py-0 shadow-sm">
+      <Link
+        href={`/${locale}/fancast`}
+        className="group flex items-center justify-between gap-3 px-4 py-3"
+      >
+        <span className="flex items-center gap-2.5">
+          <span className="bg-primary/15 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg">
+            <Sparkles className="text-primary h-4 w-4" />
+          </span>
+          <span className="text-sm font-semibold">{labels.fancastCta}</span>
+        </span>
+        <ArrowRight className="text-primary h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
+      </Link>
+    </Card>
+  ) : null;
+
   const sidebar = relatedTerms.length > 0 && (
     <aside aria-label={labels.relatedTerms}>
       {/* Sidebar wrapped in its own glass card so the heading is readable */}
@@ -130,6 +161,7 @@ export function GlossaryTermDetail({
               <div className="px-6 pt-5 pb-4">{headerBlock}</div>
               <div className="border-primary/10 border-t px-6 py-6">{definitionBlock}</div>
             </Card>
+            {fancastCta}
             {backButton}
           </div>
           {sidebar}
@@ -142,6 +174,7 @@ export function GlossaryTermDetail({
               <div className="px-6 pt-5 pb-4">{headerBlock}</div>
               <div className="border-primary/10 border-t px-6 py-6">{definitionBlock}</div>
             </Card>
+            {fancastCta}
             {backButton}
           </div>
           {sidebar}

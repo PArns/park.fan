@@ -3,22 +3,14 @@ import { TrendingDown, TrendingUp, Star } from 'lucide-react';
 import { GlassCard } from '@/components/common/glass-card';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { Link } from '@/i18n/navigation';
-import type { CountrySummary, CrowdLevel } from '@/lib/api/types';
+import type { CountrySummary } from '@/lib/api/types';
+import { scoreToCrowdLevel } from '@/lib/utils/crowd-analysis';
 
 interface CountrySummarySectionProps {
   summary: CountrySummary;
   countryName: string;
   locale: string;
 }
-
-const scoreToCrowdLevel = (score: number): CrowdLevel => {
-  if (score <= 1.5) return 'very_low';
-  if (score <= 2.5) return 'low';
-  if (score <= 3.5) return 'moderate';
-  if (score <= 4.5) return 'high';
-  if (score <= 5.5) return 'very_high';
-  return 'extreme';
-};
 
 function MonthList({ months, locale }: { months: number[]; locale: string }) {
   const names = months.map((m) =>

@@ -383,7 +383,7 @@ ahead, at its core it's modelling nothing other than those two quantities:
 **demand** (how many people want to ride this thing today?) and **throughput**
 (how many can it move?). Little would probably be astonished at what his
 formula gets used for these days. How often our forecasts match reality is on
-the [how-to page](/howto).
+the [Fancast page](/fancast).
 
 ## Why Peter Pan's Flight always “escalates”
 

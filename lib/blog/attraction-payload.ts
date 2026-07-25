@@ -1,6 +1,7 @@
 import type { ResolvedAttraction, ResolvedPark } from '@/lib/blog/park-resolver';
 import type { FavoriteAttraction } from '@/lib/api/favorites';
 import type { AttractionStatistics } from '@/lib/api/types';
+import { waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 
 /**
  * Map the slim `AttractionStatistics` from the detail endpoint to the richer
@@ -52,12 +53,24 @@ export function buildAttractionPayload(
   };
 
   if (detail) {
+    // Surface the ride's crowd level so AttractionCard renders the same
+    // "Sehr niedrig … Extrem" CrowdLevelBadge it shows on the park page — both
+    // in the inline hover card and the `?full` spotlight card. Prefer the
+    // backend's per-ride level; fall back to the canonical wait-time tier (the
+    // same thresholds that colour the inline wait badge) so an open ride with a
+    // live wait always carries a level.
+    const crowdLevel =
+      attraction.crowdLevel ??
+      (typeof attraction.currentWaitTime === 'number'
+        ? waitTimeCrowdTier(attraction.currentWaitTime)
+        : undefined);
     return {
       id: detail.id,
       name: detail.name,
       slug: detail.slug,
       url: attraction.href,
       status: detail.status,
+      crowdLevel,
       queues: (detail.queues ?? []).map((q) => ({
         queueType: q.queueType,
         waitTime: 'waitTime' in q ? (q.waitTime ?? null) : null,

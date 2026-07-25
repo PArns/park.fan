@@ -1,11 +1,13 @@
 import { getTranslations } from 'next-intl/server';
-import { Brain, Database, RefreshCw } from 'lucide-react';
+import { Brain, Database, RefreshCw, ArrowRight } from 'lucide-react';
+import { Link } from '@/i18n/navigation';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { Card, CardContent } from '@/components/ui/card';
 import { getMLDashboard, getMLMetricsHistory } from '@/lib/api/ml';
 import { MLSparklineLoader } from './ml-sparkline-loader';
 import { MLTrainingCountdown } from './ml-training-countdown';
 import { cn } from '@/lib/utils';
+import { LiveDot } from '@/components/common/live-dot';
 import type { AccuracyBadge } from '@/lib/api/types';
 
 function formatCompact(n: number): string {
@@ -59,7 +61,7 @@ function getR2Color(r2: number | null | undefined) {
   return 'text-destructive';
 }
 
-export async function MLStatsSection() {
+export async function MLStatsSection({ linkToFancast = false }: { linkToFancast?: boolean } = {}) {
   const [t, tCommon] = await Promise.all([getTranslations('home'), getTranslations('common')]);
 
   const [dashboard, metricsHistory] = await Promise.all([
@@ -110,7 +112,7 @@ export async function MLStatsSection() {
             <CardContent className="flex flex-1 flex-col p-5">
               {/* Live badge pill */}
               <div className="flex items-center gap-2">
-                <span className={cn('h-2.5 w-2.5 animate-pulse rounded-full', styles.dot)} />
+                <LiveDot variant="pulse" size="h-2.5 w-2.5" color={styles.dot} />
                 <Brain className={cn('h-4 w-4', styles.text)} />
                 <span className={cn('text-sm font-semibold tracking-wide uppercase', styles.text)}>
                   {t(`ai.badge.${badgeKey}` as Parameters<typeof t>[0])}
@@ -246,6 +248,18 @@ export async function MLStatsSection() {
             </p>
           </div>
         </div>
+
+        {linkToFancast && (
+          <div className="mt-8 flex justify-center border-t pt-8">
+            <Link
+              href="/fancast"
+              className="text-primary inline-flex items-center gap-1.5 text-sm font-semibold hover:underline"
+            >
+              {t('ai.fancastLink')}
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -3,6 +3,7 @@ import { Link } from '@/i18n/navigation';
 import { PopularParksGrid } from '@/components/home/featured-parks-slot';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { cn } from '@/lib/utils';
+import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { HeroSearchInput } from '@/components/search/hero-search-input';
 import { NearbyParksCard } from '@/components/parks/nearby-parks-card';
 import {
@@ -858,6 +859,20 @@ function ContentNLSections() {
           de uursvoorspelling op de attractiepagina voor het rustigste tijdslot. Je arriveert altijd
           bij de kortste wachtrij.
         </TipBox>
+        <p className="text-muted-foreground">
+          Ons voorspellingsmodel heeft een naam —{' '}
+          <Link href="/fancast" className="text-primary hover:underline">
+            Fancast
+          </Link>{' '}
+          — met een eigen pagina die uitlegt hoe het werkt en hoe nauwkeurig het momenteel is.
+        </p>
+        <p className="text-muted-foreground">
+          Weet je nog niet wanneer je moet gaan? De{' '}
+          <Link href={`/${BEST_TIME_SEGMENTS.nl}`} className="text-primary hover:underline">
+            beste tijd om te bezoeken
+          </Link>{' '}
+          verzamelt de rustigste weekdagen en maanden van alle parken.
+        </p>
       </Section>
 
       {/* ── 8. Voor wie ──────────────────────────────────────────────────────── */}

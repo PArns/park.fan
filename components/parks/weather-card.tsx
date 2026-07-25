@@ -22,6 +22,7 @@ import { WindCompass } from './wind-compass';
 import { TemperatureUnitToggle } from '@/components/common/temperature-unit-toggle';
 import { Temp, Wind, Precip, Distance } from '@/components/common/unit-display';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
+import { LiveDot } from '@/components/common/live-dot';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { useWeatherHourly } from '@/lib/hooks/use-weather-hourly';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
@@ -91,7 +92,7 @@ export function WeatherCard({
   // Rendering below still requires a nowcast (parks with live weather coverage); for
   // parks without one the single CDN-cached fetch is cheap. A static `hourly` prop
   // (showcases/demos) takes precedence and disables the fetch.
-  const { data: fetchedHourly } = useWeatherHourly({
+  const { data: fetchedHourly, isLoading: hourlyLoading } = useWeatherHourly({
     latitude,
     longitude,
     timezone,
@@ -166,13 +167,11 @@ export function WeatherCard({
               {tParks('weatherLabel')}
               {activeNowcast && (
                 <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-1.5 py-0.5 text-[10px] font-medium text-emerald-600 dark:text-emerald-400">
-                  <span className="relative inline-flex h-1.5 w-1.5">
-                    <span
-                      className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500/50"
-                      aria-hidden="true"
-                    />
-                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                  </span>
+                  <LiveDot
+                    size="h-1.5 w-1.5"
+                    color="bg-emerald-500"
+                    pingColor="bg-emerald-500/50"
+                  />
                   {t('liveLabel')}
                 </span>
               )}
@@ -288,14 +287,22 @@ export function WeatherCard({
             )}
           </div>
 
-          {activeNowcast && timezone && activeHourly && activeHourly.points.length > 0 && (
+          {activeNowcast && timezone && activeHourly && activeHourly.points.length > 0 ? (
             <WeatherHourlyChart
               points={activeHourly.points}
               timezone={timezone}
               schedule={schedule ?? undefined}
               nowcast={activeNowcast}
             />
-          )}
+          ) : activeNowcast && timezone && hourlyLoading ? (
+            /* The nowcast and the hourly fetch land ~1s apart, and the chart is ~143px tall —
+               without a same-size placeholder everything below the card jumped twice
+               (nowcast row, then chart). Mirrors the chart's layout: h-28 plot + mt-1 axis. */
+            <div className="min-w-0" aria-hidden="true">
+              <div className="bg-muted/30 h-28 animate-pulse rounded-lg" />
+              <div className="mt-1 h-[31px]" />
+            </div>
+          ) : null}
 
           {(forecast || (activeWeather.forecast && activeWeather.forecast.length > 0)) && (
             <WeatherForecastStrip forecast={forecast || (activeWeather.forecast ?? [])} />

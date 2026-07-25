@@ -1,5 +1,3 @@
-'use client';
-
 import { AttractionTypicalWaits } from '@/components/parks/attraction-typical-waits';
 import type { TypicalWaits } from '@/lib/api/types';
 

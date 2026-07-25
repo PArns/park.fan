@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { Badge } from '@/components/ui/badge';
 import { Clock } from 'lucide-react';
-import { useBrowserNow } from '@/lib/hooks/use-mounted';
+import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
 import { formatDuration } from '@/lib/i18n/time';
 
 interface PeakHourBadgeProps {
@@ -13,7 +13,7 @@ interface PeakHourBadgeProps {
 
 export function PeakHourBadge({ peakHour }: PeakHourBadgeProps) {
   const tCommon = useTranslations('common');
-  const now = useBrowserNow(60_000);
+  const now = useMinuteNowDate();
 
   if (!now) return null;
 

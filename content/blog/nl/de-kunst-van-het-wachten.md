@@ -386,7 +386,7 @@ in de kern niets anders dan die twee grootheden: **vraag** (hoeveel mensen
 willen vandaag naar deze baan?) en **doorstroom** (hoeveel werkt hij er weg?).
 Little zou vermoedelijk verbaasd zijn waar zijn formule tegenwoordig allemaal
 voor gebruikt wordt. Hoe vaak onze voorspellingen de realiteit raken, staat op
-de [how-to-pagina](/howto).
+de [Fancast-pagina](/fancast).
 
 ## Waarom Peter Pan's Flight altijd “escaleert”
 

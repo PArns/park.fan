@@ -217,7 +217,7 @@ atracciones**, minuto a minuto. Previsiones que estiman la afluencia hasta
 **365 días** por adelantado. Y como por principio solo me fío de las cifras que
 tienen que demostrarse, el modelo se pone nota a sí mismo: cada previsión se
 contrasta después con el tiempo de espera realmente medido, y lo que sale de ahí
-está en la [página how-to](/howto).
+está en la [página de Fancast](/fancast).
 
 ## ¿Cuál es el mejor día? ¿Merece la pena un domingo?
 
@@ -254,7 +254,7 @@ Por eso damos unos pasos más:
   histórico, condensados en una respuesta sencilla: se va, o mejor no.
 - **Tasas de acierto públicas.** Cada previsión se contrasta después con el
   tiempo de espera realmente medido. Quien quiera saber qué tal es el modelo no
-  tiene que creerme: puede mirarlo en la [página how-to](/howto).
+  tiene que creerme: puede mirarlo en la [página de Fancast](/fancast).
 - **Todo en un sitio.** Tiempos de espera, niveles de afluencia, tiempo en la
   entrada del parque, horarios e históricos de atracciones, en seis idiomas.
 - **Gratis y sin publicidad.** Ni corporación ni muro de pago. Una web de fans

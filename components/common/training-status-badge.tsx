@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils';
+import { LiveDot } from '@/components/common/live-dot';
 
 export type TrainingState = 'training' | 'idle' | 'error' | 'unknown';
 
@@ -48,17 +49,12 @@ export function TrainingStatusBadge({ state, label, className }: TrainingStatusB
 
   return (
     <span className={cn('inline-flex items-center gap-1.5', config.text, className)}>
-      <span className="relative flex h-2 w-2 shrink-0">
-        {config.pulse && (
-          <span
-            className={cn(
-              'absolute inline-flex h-full w-full animate-ping rounded-full opacity-75',
-              config.dot
-            )}
-          />
-        )}
-        <span className={cn('relative inline-flex h-2 w-2 rounded-full', config.dot)} />
-      </span>
+      <LiveDot
+        color={config.dot}
+        pingColor={cn(config.dot, 'opacity-75')}
+        showPing={config.pulse}
+        className="flex shrink-0"
+      />
       <span className="text-sm font-medium">{config.label}</span>
       {label && <span className="text-muted-foreground font-mono text-xs">{label}</span>}
     </span>

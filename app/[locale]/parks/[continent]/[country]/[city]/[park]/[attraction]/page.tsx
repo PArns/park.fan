@@ -8,6 +8,7 @@ import { Link } from '@/i18n/navigation';
 import { MapPin, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { SeasonalBadge } from '@/components/parks/seasonal-badge';
+import { AttractionMetaBadges } from '@/components/parks/attraction-meta-badges';
 import { SectionHeading } from '@/components/common/section-heading';
 import { getParkByGeoPath } from '@/lib/api/parks';
 import { catchNonFatal } from '@/lib/api/client';
@@ -59,7 +60,9 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
     locale,
   } = await params;
 
-  const park = await getParkByGeoPath(continent, country, city, parkSlug).catch(() => null);
+  // catchNonFatal (not a bare .catch(() => null)): maintenance/502 must re-throw so an
+  // API outage surfaces the maintenance page instead of a not-found title — same as the body.
+  const park = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));
   const attraction = park?.attractions?.find((a) => a.slug === attractionSlug);
 
   if (!attraction) {
@@ -295,6 +298,12 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                         isCurrentlyInSeason={attraction.isCurrentlyInSeason}
                       />
                     )}
+                    <AttractionMetaBadges
+                      minimumHeight={attraction.minimumHeight}
+                      maximumHeight={attraction.maximumHeight}
+                      mayGetWet={attraction.mayGetWet}
+                      rcdbId={attraction.rcdbId}
+                    />
                   </div>
                 </div>
               </div>

@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Luggage } from 'lucide-react';
 import { useTodaySchedule } from '@/lib/hooks/use-today-schedule';
-import { DE_STATES } from '@/lib/utils/region-names';
+import { DE_STATES, countryFlagEmoji } from '@/lib/utils/region-names';
 import { cn } from '@/lib/utils';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
@@ -63,12 +63,13 @@ export function HeaderHolidayPanel({
     } catch {
       countryNames = null;
     }
-    const labels: string[] = [];
+    const labels: { label: string; flag: string }[] = [];
     const seen = new Set<string>();
     for (const h of sched.holiday?.influencing ?? []) {
       const { countryCode, regionCode } = h.source;
       // German states keep their proper name; every other region collapses to its COUNTRY name
-      // (so e.g. the Basel cantons BL/BS show as one "Schweiz", not two raw codes).
+      // (so e.g. the Basel cantons BL/BS show as one "Schweiz", not two raw codes). Each chip
+      // carries its country's flag emoji — same visual language as the day-detail dialog.
       let label: string;
       if (countryCode === 'DE' && regionCode && DE_STATES[regionCode]) {
         label = DE_STATES[regionCode];
@@ -77,7 +78,7 @@ export function HeaderHolidayPanel({
       }
       if (!seen.has(label)) {
         seen.add(label);
-        labels.push(label);
+        labels.push({ label, flag: countryFlagEmoji(countryCode) });
       }
     }
     return labels;
@@ -109,10 +110,11 @@ export function HeaderHolidayPanel({
       <div className="mt-2.5 flex flex-wrap gap-1.5">
         {shown.map((r) => (
           <span
-            key={r}
-            className="rounded-md border border-amber-300/60 bg-amber-50/50 px-2 py-0.5 text-xs font-medium text-amber-700 dark:border-amber-800/50 dark:bg-amber-950/30 dark:text-amber-300"
+            key={r.label}
+            className="inline-flex items-center gap-1 rounded-md border border-amber-300/60 bg-amber-50/50 px-2 py-0.5 text-xs font-medium text-amber-700 dark:border-amber-800/50 dark:bg-amber-950/30 dark:text-amber-300"
           >
-            {r}
+            {r.flag && <span aria-hidden="true">{r.flag}</span>}
+            {r.label}
           </span>
         ))}
         {overflow > 0 && (

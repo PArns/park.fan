@@ -2,13 +2,17 @@
 
 ## Build Scripts
 
-| Script                           | Purpose                                    |
-| -------------------------------- | ------------------------------------------ |
-| `generate-build-info.mjs`        | Writes build metadata (version, timestamp) |
-| `generate-hero-images.mjs`       | Generates hero section images              |
-| `generate-attraction-images.mjs` | Generates attraction image configs         |
+| Script                           | Purpose                                                      |
+| -------------------------------- | ------------------------------------------------------------ |
+| `generate-build-info.mjs`        | Writes build metadata (version, timestamp)                   |
+| `generate-client-glossary.mjs`   | Generates the client-side glossary search index              |
+| `generate-blog-manifest.mjs`     | Generates the blog manifest (posts, galleries, translations) |
+| `generate-hero-images.mjs`       | Generates hero section images                                |
+| `generate-attraction-images.mjs` | Generates attraction image configs                           |
+| `generate-image-crops.mjs`       | Generates image crop configs                                 |
+| `fetch-hero-textures.mjs`        | Fetches textures for the 3-D hero (`generate:hero-textures`) |
 
-All run automatically via `prebuild` before `pnpm build`. See [Assets, Images & Content](assets.md) for what each generates.
+All except `fetch-hero-textures.mjs` (manual, `pnpm generate:hero-textures`) run automatically via `prebuild` before `pnpm build`. See [Assets, Images & Content](assets.md) for what each generates.
 
 ## Translation Scripts
 

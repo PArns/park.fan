@@ -316,6 +316,34 @@ const nextConfig: NextConfig = {
     // crawlers still request the conventional /manifest.json.
     rules.push({ source: '/manifest.json', destination: '/manifest.webmanifest', permanent: true });
 
+    // Best-time-to-visit hub: localized segment canonicalization (mirrors glossary).
+    // The canonical route folder is the EN slug; non-EN locales live on localized
+    // slugs (served via the rewrite below). Redirect wrong-segment + unprefixed URLs.
+    const bestTimeSegments: Record<string, string> = {
+      en: 'best-time-to-visit',
+      de: 'beste-reisezeit',
+      fr: 'meilleure-periode-pour-visiter',
+      it: 'periodo-migliore-per-visitare',
+      nl: 'beste-tijd-om-te-bezoeken',
+      es: 'mejor-epoca-para-visitar',
+    };
+    const bestTimeAll = Object.values(bestTimeSegments);
+    for (const [locale, correct] of Object.entries(bestTimeSegments)) {
+      for (const wrong of bestTimeAll) {
+        if (wrong === correct) continue;
+        rules.push({
+          source: `/${locale}/${wrong}`,
+          destination: `/${locale}/${correct}`,
+          permanent: true,
+        });
+      }
+      rules.push({
+        source: `/${correct}`,
+        destination: `/${locale}/${correct}`,
+        permanent: true,
+      });
+    }
+
     return rules;
   },
   async rewrites() {
@@ -335,6 +363,22 @@ const nextConfig: NextConfig = {
         { source: `/${locale}/${segment}/:term`, destination: `/${locale}/glossary/:term` }
       );
     }
+    // Best-time-to-visit hub: serve localized segments via the canonical route
+    // folder (app/[locale]/best-time-to-visit). EN needs no rewrite.
+    const bestTimeSegments: Record<string, string> = {
+      de: 'beste-reisezeit',
+      fr: 'meilleure-periode-pour-visiter',
+      it: 'periodo-migliore-per-visitare',
+      nl: 'beste-tijd-om-te-bezoeken',
+      es: 'mejor-epoca-para-visitar',
+    };
+    for (const [locale, segment] of Object.entries(bestTimeSegments)) {
+      rules.push({
+        source: `/${locale}/${segment}`,
+        destination: `/${locale}/best-time-to-visit`,
+      });
+    }
+
     return rules;
   },
   async headers() {

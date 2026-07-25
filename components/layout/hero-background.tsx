@@ -39,13 +39,22 @@ interface RandomHeroImageProps {
  * Driven by {@link useHeroRotation} so it stays in sync with the image attribution. Runs after the
  * nearby lookup resolves — i.e. after LCP — so it never affects the server hero image's load.
  */
-function InParkHeroImages({ noAnimation }: { noAnimation?: boolean }) {
+function InParkHeroImages({
+  noAnimation,
+  onActiveImageLoad,
+}: {
+  noAnimation?: boolean;
+  /** Fires when the currently shown park image has finished loading (used by the base
+      image to hold its fade-out until there are real pixels to crossfade into). */
+  onActiveImageLoad?: () => void;
+}) {
   const { parkImages, activeIndex } = useHeroRotation();
 
   if (parkImages.length === 0) return null;
 
   // Render every park image as a stacked layer and crossfade by toggling opacity — the handful of
-  // images preload so each transition is instant. Every layer animates continuously and in phase
+  // images preload (loading="eager": the layers are opacity-0, so we must not rely on lazy
+  // heuristics) so each transition is instant. Every layer animates continuously and in phase
   // (the 0% keyframe is the identity transform), so crossfades never "jump" the ken-burns effect.
   return (
     <>
@@ -56,6 +65,8 @@ function InParkHeroImages({ noAnimation }: { noAnimation?: boolean }) {
           alt="Park Background"
           fill
           loader={backgroundImageLoader}
+          loading="eager"
+          onLoad={i === activeIndex ? onActiveImageLoad : undefined}
           className={cn(
             'object-cover transition-opacity duration-1000 ease-in-out',
             i === activeIndex ? 'opacity-90' : 'opacity-0'
@@ -78,6 +89,19 @@ export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps)
   // Is the user inside a park with its own hero images? If so, those take over (rendered below).
   const { parkImages } = useHeroRotation();
   const hasParkImages = parkImages.length > 0;
+
+  // Hold the base image at full opacity until the first park image has actually LOADED.
+  // The in-park images mount only after the nearby lookup resolves (~2s in), so fading the
+  // base out the moment they appear crossfaded into a still-empty layer — the hero flashed
+  // down to the background gradient and back once the photo arrived.
+  const [parkImageLoaded, setParkImageLoaded] = useState(false);
+  // Reset during render (not in an effect) when the in-park images go away, so a later
+  // re-entry starts from "not loaded" again.
+  const [prevHasParkImages, setPrevHasParkImages] = useState(hasParkImages);
+  if (prevHasParkImages !== hasParkImages) {
+    setPrevHasParkImages(hasParkImages);
+    if (!hasParkImages) setParkImageLoaded(false);
+  }
 
   useEffect(() => {
     if (imageSrc) return;
@@ -109,13 +133,16 @@ export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps)
         onLoad={noAnimation ? undefined : () => setAnimate(true)}
         className={cn(
           'object-cover transition-opacity duration-1000',
-          hasParkImages ? 'opacity-0' : 'opacity-90',
+          hasParkImages && parkImageLoaded ? 'opacity-0' : 'opacity-90',
           animating ? 'will-change-transform' : ''
         )}
         style={animating ? { animation: KEN_BURNS } : undefined}
         sizes={HERO_IMAGE_SIZES}
       />
-      <InParkHeroImages noAnimation={noAnimation} />
+      <InParkHeroImages
+        noAnimation={noAnimation}
+        onActiveImageLoad={() => setParkImageLoaded(true)}
+      />
     </>
   );
 }

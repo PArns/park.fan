@@ -395,7 +395,7 @@ otra cosa que esas dos magnitudes: la **demanda** (¿cuánta gente quiere subir
 hoy a esta atracción?) y el **rendimiento** (¿a cuántos despacha?). Little
 probablemente se asombraría de para cuántas cosas se usa hoy su fórmula. Con
 qué frecuencia aciertan nuestras predicciones está en la
-[página how-to](/howto).
+[página de Fancast](/fancast).
 
 ## Por qué Peter Pan's Flight siempre «se desmadra»
 

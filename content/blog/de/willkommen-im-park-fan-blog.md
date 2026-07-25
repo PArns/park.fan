@@ -222,7 +222,7 @@ Minutentakt. Prognosen, die den Andrang bis zu **365 Tage** im Voraus
 einschätzen. Und weil ich Zahlen grundsätzlich nur traue, wenn sie sich
 beweisen müssen, benotet sich das Modell selbst: Jede Vorhersage wird später
 gegen die tatsächlich gemessene Wartezeit gehalten, und was dabei herauskommt,
-steht auf der [How-to-Seite](/howto).
+steht auf der [Fancast-Seite](/fancast).
 
 ## Wann ist der beste Tag? Lohnt sich ein Sonntag?
 
@@ -259,7 +259,7 @@ Deshalb gehen wir ein paar Schritte weiter:
   Historie, verdichtet zu einer einfachen Antwort: hin oder lieber nicht.
 - **Trefferquoten öffentlich.** Jede Prognose wird später gegen die tatsächlich
   gemessene Wartezeit gehalten. Wer wissen will, wie gut das Modell ist, muss
-  mir nicht glauben, sondern kann auf der [How-to-Seite](/howto) nachsehen.
+  mir nicht glauben, sondern kann auf der [Fancast-Seite](/fancast) nachsehen.
 - **Alles an einem Ort.** Wartezeiten, Crowd-Level, Wetter am Parkeingang,
   Öffnungszeiten und Attraktions-Historien, in sechs Sprachen.
 - **Kostenlos und ohne Werbung.** Kein Konzern, keine Paywall. Eine Fanpage im
