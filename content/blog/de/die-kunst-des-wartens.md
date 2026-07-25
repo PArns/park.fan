@@ -23,7 +23,6 @@ coverImage:
   src: /blog/images/kunst-des-wartens-cover.jpg
   alt: 'Der Baum des Lebens in Disneys Animal Kingdom, davor die Besuchermassen des Parks'
   caption: 'Disneys Animal Kingdom: zehntausende Gäste, ein Baum des Lebens — und überall die Frage, wie lange man wofür ansteht.'
-  credit: 'Patrick Arns'
 seo:
   title: 'Wartezeiten-Psychologie im Freizeitpark'
   description: >-
@@ -272,7 +271,7 @@ der Headliner messbar ein — wer die Show schon kennt, fährt in dieser
 Stunde am günstigsten. Genau für solche Momente aktualisieren wir die
 Wartezeiten im Minutentakt.
 
-![Tausende Zuschauer im nächtlichen Amphitheater von Fantasmic! in Disney's Hollywood Studios | Fantasmic! in den Hollywood Studios: knapp 10.000 Menschen pro Vorstellung — eine ganze Besucherwelle, die für diese halbe Stunde garantiert nirgends in der Coaster-Schlange steht. © Patrick Arns | wide](/blog/images/fantasmic-crowd.jpg)
+![Tausende Zuschauer im nächtlichen Amphitheater von Fantasmic! in Disney's Hollywood Studios | Fantasmic! in den Hollywood Studios: knapp 10.000 Menschen pro Vorstellung — eine ganze Besucherwelle, die für diese halbe Stunde garantiert nirgends in der Coaster-Schlange steht. | wide](/blog/images/fantasmic-crowd.jpg)
 
 ## Kapazität und Durchsatz: Das mathematische Geheimnis
 

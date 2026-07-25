@@ -21,7 +21,6 @@ category: news
 coverImage:
   src: /blog/images/welcome-cover.jpg
   alt: 'Velocicoaster loop in front of Hogwarts castle — Islands of Adventure, Orlando'
-  credit: 'Patrick Arns'
 seo:
   title: 'The park.fan Story: from a Fairy-Tale Lake to a Wait-Time AI'
   description: >-

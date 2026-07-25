@@ -23,7 +23,6 @@ coverImage:
   src: /blog/images/kunst-des-wartens-cover.jpg
   alt: "De Tree of Life in Disney's Animal Kingdom, met daarvoor de bezoekersmassa van het park"
   caption: "Disney's Animal Kingdom: tienduizenden gasten, één Tree of Life — en overal de vraag hoelang je waarvoor aanschuift."
-  credit: 'Patrick Arns'
 seo:
   title: 'Wachttijden-psychologie in het pretpark'
   description: >-
@@ -174,9 +173,9 @@ meteen **twee pre-show-ruimtes**, waarin je wordt „gescand" en met je eigen
 avatar wordt „gelinkt".
 
 ```gallery-widget heading="De wachtrij in drie stations"
-- /blog/images/avatar-flight-of-passage/01-hoehlen.jpg | Bioluminescente grot met lichtgevende planten in de wachtrij van Flight of Passage | Station 1 — de bioluminescente grotten van Pandora. Je zit er middenin nog voor je de attractie ziet. | © Patrick Arns
-- /blog/images/avatar-flight-of-passage/02-labor.jpg | Het ronde onderzoekslab van de Pandora Conservation Initiative met monsters en veldnotities | Station 2 — het lab van de Pandora Conservation Initiative: echte veldnotities, gesteentemonsters, overal bedrijvigheid. Hier tikt de klok het traagst. | © Patrick Arns
-- /blog/images/avatar-flight-of-passage/03-avatar-tank.jpg | Een Na'vi-avatar zweeft in een amniotank naast een scherm met genetische markers | Station 3 — de avatar in de amniotank, zichtbaar ademend. Het moment dat iedereen zich achteraf herinnert — peak-end zegt hallo. | © Patrick Arns
+- /blog/images/avatar-flight-of-passage/01-hoehlen.jpg | Bioluminescente grot met lichtgevende planten in de wachtrij van Flight of Passage | Station 1 — de bioluminescente grotten van Pandora. Je zit er middenin nog voor je de attractie ziet.
+- /blog/images/avatar-flight-of-passage/02-labor.jpg | Het ronde onderzoekslab van de Pandora Conservation Initiative met monsters en veldnotities | Station 2 — het lab van de Pandora Conservation Initiative: echte veldnotities, gesteentemonsters, overal bedrijvigheid. Hier tikt de klok het traagst.
+- /blog/images/avatar-flight-of-passage/03-avatar-tank.jpg | Een Na'vi-avatar zweeft in een amniotank naast een scherm met genetische markers | Station 3 — de avatar in de amniotank, zichtbaar ademend. Het moment dat iedereen zich achteraf herinnert — peak-end zegt hallo.
 ```
 
 Dat is psychologisch dubbel slim: de story-ruimtes verdelen de massa in
@@ -202,8 +201,8 @@ story-coaster met vrij roterende voertuigen en een achterwaartse launch —
 is de finale van een enscenering die al twintig minuten eerder is begonnen.
 
 ```gallery-widget heading="Het paviljoen vóór de rit"
-- /blog/images/cosmic-rewind/01-galaxarium.jpg | De Galaxarium-koepel in het Wonders-of-Xandar-paviljoen met geprojecteerde sterrenhemel | Het Galaxarium — de planetariumachtige koepel waar je op weg naar de baan doorheen loopt. Xandar-geschiedenis, lang voordat de eerste wagen aanrolt. | © Patrick Arns
-- /blog/images/cosmic-rewind/02-nova-corps-schiff.jpg | Een Nova-Corps-ruimteschip in de vitrine van de Cosmic-Rewind-wachtrij | Nova-Corps-tentoonstelling in de wachtrij: exponaten en een briefing die het wachten in verhaal veranderen — niet in dood stilstaan. | © Patrick Arns
+- /blog/images/cosmic-rewind/01-galaxarium.jpg | De Galaxarium-koepel in het Wonders-of-Xandar-paviljoen met geprojecteerde sterrenhemel | Het Galaxarium — de planetariumachtige koepel waar je op weg naar de baan doorheen loopt. Xandar-geschiedenis, lang voordat de eerste wagen aanrolt.
+- /blog/images/cosmic-rewind/02-nova-corps-schiff.jpg | Een Nova-Corps-ruimteschip in de vitrine van de Cosmic-Rewind-wachtrij | Nova-Corps-tentoonstelling in de wachtrij: exponaten en een briefing die het wachten in verhaal veranderen — niet in dood stilstaan.
 ```
 
 Opmerkelijk is ook de capaciteitskant: Cosmic Rewind opende in mei 2022
@@ -230,9 +229,9 @@ voelt korter aan — en wie net checkt of de raptor achter het hek echt zijn
 kop heeft gedraaid, kijkt niet om de tien seconden op zijn telefoon.
 
 ```gallery-widget heading="Welkom in het Raptor Paddock"
-- /blog/images/velocicoaster/01-eingang.jpg | Het verlichte ingangsbord van de Jurassic World VelociCoaster bij nacht | De opmaat: al bij het ingangsbord is duidelijk dat hier niet zomaar een coaster wacht, maar een stuk Jurassic World. | © Patrick Arns
-- /blog/images/velocicoaster/02-raptor-paddock.jpg | Een animatronische velociraptorkop in het paddockgedeelte van de VelociCoaster-wachtrij | Midden in het Raptor Paddock: de dieren zijn binnen handbereik — je wacht niet op een baan, je bezichtigt een dierenverblijf. | © Patrick Arns
-- /blog/images/velocicoaster/03-atrium.jpg | Een velociraptorfiguur in het begroeide atrium van het VelociCoaster-station | Het atrium vlak voor de start — jungle, beton en raptoren. Occupied time in optima forma: tot de laatste seconde valt er iets te zien. | © Patrick Arns
+- /blog/images/velocicoaster/01-eingang.jpg | Het verlichte ingangsbord van de Jurassic World VelociCoaster bij nacht | De opmaat: al bij het ingangsbord is duidelijk dat hier niet zomaar een coaster wacht, maar een stuk Jurassic World.
+- /blog/images/velocicoaster/02-raptor-paddock.jpg | Een animatronische velociraptorkop in het paddockgedeelte van de VelociCoaster-wachtrij | Midden in het Raptor Paddock: de dieren zijn binnen handbereik — je wacht niet op een baan, je bezichtigt een dierenverblijf.
+- /blog/images/velocicoaster/03-atrium.jpg | Een velociraptorfiguur in het begroeide atrium van het VelociCoaster-station | Het atrium vlak voor de start — jungle, beton en raptoren. Occupied time in optima forma: tot de laatste seconde valt er iets te zien.
 ```
 
 En dan is er hier ook nog misschien wel de eerlijkste capaciteitstruc die
@@ -266,7 +265,7 @@ knikken de wachttijden van de headliners meetbaar in — wie de show al kent,
 rijdt dat uur het voordeligst. Juist voor zulke momenten actualiseren we de
 wachttijden elke minuut.
 
-![Duizenden toeschouwers in het nachtelijke amfitheater van Fantasmic! in Disney's Hollywood Studios | Fantasmic! in de Hollywood Studios: bijna 10.000 mensen per voorstelling — een hele bezoekersgolf die dit halfuur gegarandeerd in geen enkele coasterrij staat. © Patrick Arns | wide](/blog/images/fantasmic-crowd.jpg)
+![Duizenden toeschouwers in het nachtelijke amfitheater van Fantasmic! in Disney's Hollywood Studios | Fantasmic! in de Hollywood Studios: bijna 10.000 mensen per voorstelling — een hele bezoekersgolf die dit halfuur gegarandeerd in geen enkele coasterrij staat. | wide](/blog/images/fantasmic-crowd.jpg)
 
 ## Capaciteit en doorstroom: het wiskundige geheim
 

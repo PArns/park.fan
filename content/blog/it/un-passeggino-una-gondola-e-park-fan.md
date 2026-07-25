@@ -22,7 +22,6 @@ category: news
 coverImage:
   src: /blog/images/welcome-cover.jpg
   alt: 'Loop del Velocicoaster davanti al castello di Hogwarts — Islands of Adventure, Orlando'
-  credit: 'Patrick Arns'
 seo:
   title: "La storia di park.fan: dal lago delle fiabe all'IA delle code"
   description: >-

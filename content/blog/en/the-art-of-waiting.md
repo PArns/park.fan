@@ -23,7 +23,6 @@ coverImage:
   src: /blog/images/kunst-des-wartens-cover.jpg
   alt: "The Tree of Life at Disney's Animal Kingdom, with the crowds of the park in front of it"
   caption: "Disney's Animal Kingdom: tens of thousands of guests, one Tree of Life — and everywhere the question of how long you'll wait for what."
-  credit: 'Patrick Arns'
 seo:
   title: 'Queue Psychology at Theme Parks'
   description: >-
@@ -172,9 +171,9 @@ that come no fewer than **two pre-show rooms**, in which you're "scanned"
 and "linked" to your own avatar.
 
 ```gallery-widget heading="The queue in three stations"
-- /blog/images/avatar-flight-of-passage/01-hoehlen.jpg | Bioluminescent cave with glowing plants in the Flight of Passage queue | Station 1 — Pandora's bioluminescent caves. You're immersed before you even see the ride. | © Patrick Arns
-- /blog/images/avatar-flight-of-passage/02-labor.jpg | The round Pandora Conservation Initiative research lab with samples and field notes | Station 2 — the Pandora Conservation Initiative lab: real field notes, rock samples, activity all around. This is where the clock ticks slowest. | © Patrick Arns
-- /blog/images/avatar-flight-of-passage/03-avatar-tank.jpg | A Na'vi avatar floating in an amnio tank beside a screen of genetic markers | Station 3 — the avatar in the amnio tank, visibly breathing. The moment everyone remembers afterwards — peak-end says hi. | © Patrick Arns
+- /blog/images/avatar-flight-of-passage/01-hoehlen.jpg | Bioluminescent cave with glowing plants in the Flight of Passage queue | Station 1 — Pandora's bioluminescent caves. You're immersed before you even see the ride.
+- /blog/images/avatar-flight-of-passage/02-labor.jpg | The round Pandora Conservation Initiative research lab with samples and field notes | Station 2 — the Pandora Conservation Initiative lab: real field notes, rock samples, activity all around. This is where the clock ticks slowest.
+- /blog/images/avatar-flight-of-passage/03-avatar-tank.jpg | A Na'vi avatar floating in an amnio tank beside a screen of genetic markers | Station 3 — the avatar in the amnio tank, visibly breathing. The moment everyone remembers afterwards — peak-end says hi.
 ```
 
 This is doubly clever psychologically: the story rooms meter the crowd
@@ -201,8 +200,8 @@ and a backward launch — is the finale of a production that began twenty
 minutes earlier.
 
 ```gallery-widget heading="The pavilion before the ride"
-- /blog/images/cosmic-rewind/01-galaxarium.jpg | The Galaxarium dome in the Wonders of Xandar pavilion with a projected starfield | The Galaxarium — the planetarium-like dome you walk through on the way to the ride. Xandar lore, long before the first car rolls. | © Patrick Arns
-- /blog/images/cosmic-rewind/02-nova-corps-schiff.jpg | A Nova Corps spaceship in a display case in the Cosmic Rewind queue | Nova Corps exhibition in the queue: exhibits and a briefing that turn the wait into story — not dead time on your feet. | © Patrick Arns
+- /blog/images/cosmic-rewind/01-galaxarium.jpg | The Galaxarium dome in the Wonders of Xandar pavilion with a projected starfield | The Galaxarium — the planetarium-like dome you walk through on the way to the ride. Xandar lore, long before the first car rolls.
+- /blog/images/cosmic-rewind/02-nova-corps-schiff.jpg | A Nova Corps spaceship in a display case in the Cosmic Rewind queue | Nova Corps exhibition in the queue: exhibits and a briefing that turn the wait into story — not dead time on your feet.
 ```
 
 The capacity side is remarkable too: Cosmic Rewind opened in May 2022
@@ -230,9 +229,9 @@ really did just turn its head isn't glancing at their phone every ten
 seconds.
 
 ```gallery-widget heading="Welcome to the Raptor Paddock"
-- /blog/images/velocicoaster/01-eingang.jpg | The illuminated entrance sign of the Jurassic World VelociCoaster at night | The opening act: right at the entrance sign it's clear that what's waiting here isn't just a coaster, but a piece of Jurassic World. | © Patrick Arns
-- /blog/images/velocicoaster/02-raptor-paddock.jpg | An animatronic velociraptor head in the paddock area of the VelociCoaster queue | Right in the middle of the Raptor Paddock: the animals are close enough to touch — you're not waiting for a ride, you're touring an enclosure. | © Patrick Arns
-- /blog/images/velocicoaster/03-atrium.jpg | A velociraptor figure in the leafy atrium of the VelociCoaster station | The atrium just before the launch — jungle, concrete and raptors. Occupied time in its purest form: there's something to see right up to the last second. | © Patrick Arns
+- /blog/images/velocicoaster/01-eingang.jpg | The illuminated entrance sign of the Jurassic World VelociCoaster at night | The opening act: right at the entrance sign it's clear that what's waiting here isn't just a coaster, but a piece of Jurassic World.
+- /blog/images/velocicoaster/02-raptor-paddock.jpg | An animatronic velociraptor head in the paddock area of the VelociCoaster queue | Right in the middle of the Raptor Paddock: the animals are close enough to touch — you're not waiting for a ride, you're touring an enclosure.
+- /blog/images/velocicoaster/03-atrium.jpg | A velociraptor figure in the leafy atrium of the VelociCoaster station | The atrium just before the launch — jungle, concrete and raptors. Occupied time in its purest form: there's something to see right up to the last second.
 ```
 
 And then there's perhaps the most honest capacity trick of them all: the
@@ -266,7 +265,7 @@ dip — and if you've already seen the show, that's the cheapest hour of the
 day to ride. It's for exactly these moments that we update wait times
 every minute.
 
-![Thousands of spectators in the nighttime amphitheater of Fantasmic! at Disney's Hollywood Studios | Fantasmic! at Hollywood Studios: just under 10,000 people per show — a whole wave of visitors who, for this half hour, are guaranteed not to be standing in a single coaster line. © Patrick Arns | wide](/blog/images/fantasmic-crowd.jpg)
+![Thousands of spectators in the nighttime amphitheater of Fantasmic! at Disney's Hollywood Studios | Fantasmic! at Hollywood Studios: just under 10,000 people per show — a whole wave of visitors who, for this half hour, are guaranteed not to be standing in a single coaster line. | wide](/blog/images/fantasmic-crowd.jpg)
 
 ## Capacity and throughput: the mathematical secret
 

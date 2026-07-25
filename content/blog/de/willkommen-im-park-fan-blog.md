@@ -21,7 +21,6 @@ category: news
 coverImage:
   src: /blog/images/welcome-cover.jpg
   alt: 'Velocicoaster-Looping vor dem Hogwarts-Schloss — Islands of Adventure, Orlando'
-  credit: 'Patrick Arns'
 seo:
   title: 'Die park.fan-Geschichte: vom Märchensee zur Wartezeiten-KI'
   description: >-

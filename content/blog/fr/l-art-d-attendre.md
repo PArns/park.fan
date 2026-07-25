@@ -24,7 +24,6 @@ coverImage:
   src: /blog/images/kunst-des-wartens-cover.jpg
   alt: "L'Arbre de Vie du Disney's Animal Kingdom, avec devant lui la foule des visiteurs du parc"
   caption: "Disney's Animal Kingdom : des dizaines de milliers de visiteurs, un Arbre de Vie — et partout la même question : combien de temps faire la queue, et pour quoi."
-  credit: 'Patrick Arns'
 seo:
   title: "Psychologie des temps d'attente en parc d'attractions"
   description: >-
@@ -180,9 +179,9 @@ hommage. Suivent ensuite **deux salles de pre-show**, où tu es « scanné »
 puis « relié » à ton propre avatar.
 
 ```gallery-widget heading="La file d'attente en trois stations"
-- /blog/images/avatar-flight-of-passage/01-hoehlen.jpg | Grotte bioluminescente aux plantes lumineuses dans la file de Flight of Passage | Station 1 — les grottes bioluminescentes de Pandora. On est immergé avant même de voir l'attraction. | © Patrick Arns
-- /blog/images/avatar-flight-of-passage/02-labor.jpg | Le laboratoire circulaire de la Pandora Conservation Initiative avec échantillons et notes de terrain | Station 2 — le labo de la Pandora Conservation Initiative : vraies notes de terrain, échantillons de roche, activité tout autour. C'est ici que le temps s'écoule le plus lentement. | © Patrick Arns
-- /blog/images/avatar-flight-of-passage/03-avatar-tank.jpg | Un avatar na'vi flotte dans une cuve amniotique à côté d'un écran de marqueurs génétiques | Station 3 — l'avatar dans la cuve amniotique, respirant visiblement. Le moment dont tout le monde se souvient ensuite — le pic-fin vous salue. | © Patrick Arns
+- /blog/images/avatar-flight-of-passage/01-hoehlen.jpg | Grotte bioluminescente aux plantes lumineuses dans la file de Flight of Passage | Station 1 — les grottes bioluminescentes de Pandora. On est immergé avant même de voir l'attraction.
+- /blog/images/avatar-flight-of-passage/02-labor.jpg | Le laboratoire circulaire de la Pandora Conservation Initiative avec échantillons et notes de terrain | Station 2 — le labo de la Pandora Conservation Initiative : vraies notes de terrain, échantillons de roche, activité tout autour. C'est ici que le temps s'écoule le plus lentement.
+- /blog/images/avatar-flight-of-passage/03-avatar-tank.jpg | Un avatar na'vi flotte dans une cuve amniotique à côté d'un écran de marqueurs génétiques | Station 3 — l'avatar dans la cuve amniotique, respirant visiblement. Le moment dont tout le monde se souvient ensuite — le pic-fin vous salue.
 ```
 
 C'est psychologiquement doublement malin : les salles narratives
@@ -210,8 +209,8 @@ rotation libre et lancement en marche arrière — est le final d'une mise
 en scène qui a commencé vingt minutes plus tôt.
 
 ```gallery-widget heading="Le pavillon avant la descente"
-- /blog/images/cosmic-rewind/01-galaxarium.jpg | La coupole du Galaxarium dans le pavillon Wonders of Xandar, avec un ciel étoilé projeté | Le Galaxarium — la coupole façon planétarium que l'on traverse en chemin vers le train. De l'histoire de Xandar, bien avant que le premier wagon ne s'ébranle. | © Patrick Arns
-- /blog/images/cosmic-rewind/02-nova-corps-schiff.jpg | Un vaisseau du Nova Corps dans la vitrine de la file d'attente de Cosmic Rewind | Exposition Nova Corps dans la file : des objets exposés et un briefing qui transforment l'attente en récit — pas en piétinement inerte. | © Patrick Arns
+- /blog/images/cosmic-rewind/01-galaxarium.jpg | La coupole du Galaxarium dans le pavillon Wonders of Xandar, avec un ciel étoilé projeté | Le Galaxarium — la coupole façon planétarium que l'on traverse en chemin vers le train. De l'histoire de Xandar, bien avant que le premier wagon ne s'ébranle.
+- /blog/images/cosmic-rewind/02-nova-corps-schiff.jpg | Un vaisseau du Nova Corps dans la vitrine de la file d'attente de Cosmic Rewind | Exposition Nova Corps dans la file : des objets exposés et un briefing qui transforment l'attente en récit — pas en piétinement inerte.
 ```
 
 Le volet capacité vaut lui aussi le détour : Cosmic Rewind a ouvert en
@@ -243,9 +242,9 @@ vraiment tourné la tête ne regarde pas son téléphone toutes les dix
 secondes.
 
 ```gallery-widget heading="Bienvenue dans le Raptor Paddock"
-- /blog/images/velocicoaster/01-eingang.jpg | Le panneau d'entrée illuminé du Jurassic World VelociCoaster, de nuit | Le lever de rideau : dès le panneau d'entrée, on comprend qu'ici ce n'est pas seulement un coaster qui attend, mais un morceau de Jurassic World. | © Patrick Arns
-- /blog/images/velocicoaster/02-raptor-paddock.jpg | Une tête de vélociraptor animatronique dans la zone paddock de la file d'attente du VelociCoaster | En plein Raptor Paddock : les animaux sont à portée de main — on n'attend pas une attraction, on visite un enclos. | © Patrick Arns
-- /blog/images/velocicoaster/03-atrium.jpg | Une figure de vélociraptor dans l'atrium végétalisé de la station du VelociCoaster | L'atrium juste avant le départ — jungle, béton et raptors. L'occupied time à l'état pur : il y a quelque chose à voir jusqu'à la dernière seconde. | © Patrick Arns
+- /blog/images/velocicoaster/01-eingang.jpg | Le panneau d'entrée illuminé du Jurassic World VelociCoaster, de nuit | Le lever de rideau : dès le panneau d'entrée, on comprend qu'ici ce n'est pas seulement un coaster qui attend, mais un morceau de Jurassic World.
+- /blog/images/velocicoaster/02-raptor-paddock.jpg | Une tête de vélociraptor animatronique dans la zone paddock de la file d'attente du VelociCoaster | En plein Raptor Paddock : les animaux sont à portée de main — on n'attend pas une attraction, on visite un enclos.
+- /blog/images/velocicoaster/03-atrium.jpg | Une figure de vélociraptor dans l'atrium végétalisé de la station du VelociCoaster | L'atrium juste avant le départ — jungle, béton et raptors. L'occupied time à l'état pur : il y a quelque chose à voir jusqu'à la dernière seconde.
 ```
 
 Et puis il y a encore ici le tour de capacité peut-être le plus honnête
@@ -282,7 +281,7 @@ de façon mesurable — qui a déjà vu le spectacle a tout intérêt à embarqu
 pendant cette heure-là. C'est exactement pour ces moments-là que nous
 actualisons les temps d'attente à la minute.
 
-![Des milliers de spectateurs dans l'amphithéâtre nocturne de Fantasmic! à Disney's Hollywood Studios | Fantasmic! aux Hollywood Studios : près de 10 000 personnes par représentation — toute une vague de visiteurs qui, le temps de cette demi-heure, ne se trouvera dans aucune file de coaster, c'est garanti. © Patrick Arns | wide](/blog/images/fantasmic-crowd.jpg)
+![Des milliers de spectateurs dans l'amphithéâtre nocturne de Fantasmic! à Disney's Hollywood Studios | Fantasmic! aux Hollywood Studios : près de 10 000 personnes par représentation — toute une vague de visiteurs qui, le temps de cette demi-heure, ne se trouvera dans aucune file de coaster, c'est garanti. | wide](/blog/images/fantasmic-crowd.jpg)
 
 ## Capacité et débit : le secret mathématique
 

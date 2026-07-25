@@ -22,7 +22,6 @@ category: news
 coverImage:
   src: /blog/images/welcome-cover.jpg
   alt: 'Looping du Velocicoaster devant le château de Poudlard — Islands of Adventure, Orlando'
-  credit: 'Patrick Arns'
 seo:
   title: "L'histoire de park.fan : du lac aux contes à l'IA des files"
   description: >-

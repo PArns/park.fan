@@ -21,7 +21,6 @@ category: news
 coverImage:
   src: /blog/images/welcome-cover.jpg
   alt: 'Velocicoaster-looping voor het kasteel van Zweinstein — Islands of Adventure, Orlando'
-  credit: 'Patrick Arns'
 seo:
   title: 'Het verhaal achter park.fan: van sprookjesmeer tot wachttijden-AI'
   description: >-
