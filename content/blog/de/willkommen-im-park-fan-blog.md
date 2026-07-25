@@ -89,6 +89,8 @@ gerade deshalb so kostbar geworden. Sie halten meine Kindheit lebendig, und mit
 ihr die Erinnerung an den Menschen, der damals neben mir durch diese Welten
 glitt.
 
+![Nächtliche Achterbahn-Silhouette im Movie Park Germany, violett und blau angestrahlt | Movie Park Germany bei Nacht. Lethal Weapon Pursuit stand hier bis 2006. | left](/images/parks/movie-park-germany/background.jpg)
+
 Und wenn mein Vater als LKW-Fahrer mal wieder auf Tour war, hat meine Mutter
 kurzerhand das Steuer übernommen. Mit ihr habe ich viele andere Parks entdeckt,
 allen voran den [Movie Park](ref:movie-park-germany?bare), damals noch Warner
@@ -138,6 +140,8 @@ Park“ zu sein.
 
 ## Orlando, Mai 2026, einmal im Leben
 
+![Animatronischer Velociraptor-Kopf im rot beleuchteten Raptor-Paddock des VelociCoaster | Islands of Adventure: der Raptor im Paddock, zum Greifen nah. | right](/blog/images/velocicoaster/02-raptor-paddock.jpg)
+
 Und dann war da noch dieser eine große Punkt auf der Lebensliste, hinter dem
 noch immer der Haken fehlte. Im Mai 2026 sind wir endlich nach Orlando
 geflogen: **Walt Disney World, Universal und SeaWorld**, das volle Programm,
@@ -173,6 +177,8 @@ zu begegnen.
 
 ## Der Moment in der Taron-Schlange
 
+![Taron rast durch die Basaltsäulen des Themenbereichs Klugheim | Taron mitten im Kurs durch Klugheim. Vor dieser Bahn stand ich sechzig Minuten. | left](/images/parks/phantasialand/taron-4x3.jpg)
+
 Bis zu diesem einen Nachmittag, den vermutlich jeder Parkfan in der einen oder
 anderen Variante kennt. Sechzig Minuten
 [Taron](ref:phantasialand/taron?bare)-Standby, ein Display, das einem mit
@@ -188,11 +194,10 @@ tauschte.
 > „Lass mich mal eben die Wartezeiten tracken.“ — _sagte ich. Es wurden drei
 > Jahre._
 
-## Drei Jahre Nächte, und wie park.fan wirklich entstand
+## Aus „mal eben“ wurden drei Jahre: wie park.fan wirklich entstand
 
-Was als „mal eben“ begann, wuchs sich zu dem aus, was Entwickler ein
-Herzensprojekt nennen und Freundinnen vermutlich eher „schon wieder dieses
-Park-Ding“. Aus einem Skript wurde ein Datensammler, aus dem Datensammler eine
+Was daraus wurde, nennen Entwickler ein Herzensprojekt und Freundinnen
+vermutlich eher „schon wieder dieses Park-Ding“. Aus einem Skript wurde ein Datensammler, aus dem Datensammler eine
 Pipeline, aus der Pipeline eine Plattform. Dazwischen lagen Nächte, in denen
 ich um zwei Uhr morgens auf Wartezeiten-Kurven starrte, weil irgendein Park
 seine Daten anders meldete als alle anderen. Debugging-Sessions, die länger
@@ -280,6 +285,8 @@ Minuten“, dreimal dieselbe Zahl, dreimal eine völlig andere Geschichte:
   [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare), ein
   Jahr nach Eröffnung? Entweder Sahnetag, oder die Massen haben sich endlich
   verlaufen.
+
+![Voltron Nevera im Überschlag über einer angestrahlten Fassade bei Nacht | Voltron Nevera im Europa-Park. Zwanzig Minuten Wartezeit sind hier eine Ansage. | right](/images/parks/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 Die Zahl steht im Diagramm. Die Geschichte dahinter steht ab jetzt hier, in
 drei Formaten.

@@ -92,6 +92,8 @@ partagés me sont devenus si précieux. Ils maintiennent mon enfance en vie, et
 avec elle le souvenir de l'homme qui glissait alors à côté de moi à travers ces
 mondes.
 
+![Silhouette de montagnes russes au Movie Park Germany la nuit, éclairée de violet et de bleu | Le Movie Park Germany de nuit. Lethal Weapon Pursuit se dressait ici jusqu’en 2006. | left](/images/parks/movie-park-germany/background.jpg)
+
 Et quand mon père repartait sur la route comme chauffeur routier, ma mère
 prenait tout simplement le volant. C'est avec elle que j'ai découvert beaucoup
 d'autres parcs, à commencer par [Movie Park](ref:movie-park-germany?bare),
@@ -142,6 +144,8 @@ Most Immersive Theme Park ».
 
 ## Orlando, mai 2026, une fois dans une vie
 
+![Tête de vélociraptor animatronique dans l’enclos des raptors du VelociCoaster, éclairé de rouge | Islands of Adventure : le raptor dans son enclos, à portée de main. | right](/blog/images/velocicoaster/02-raptor-paddock.jpg)
+
 Et puis il y avait ce grand point sur la liste d'une vie devant lequel la case
 restait obstinément vide. En mai 2026, nous avons enfin pris l'avion pour
 Orlando : **Walt Disney World, Universal et SeaWorld**, le programme complet, le
@@ -178,6 +182,8 @@ rencontrer.
 
 ## Le moment dans la file de Taron
 
+![Taron fonce entre les colonnes de basalte de la zone thématique Klugheim | Taron en plein parcours dans Klugheim. Je suis resté soixante minutes devant cette attraction. | left](/images/parks/phantasialand/taron-4x3.jpg)
+
 Jusqu'à cet après-midi-là, que pratiquement chaque fan de parc connaît sous une
 variante ou une autre. Soixante minutes de file standby à
 [Taron](ref:phantasialand/taron?bare), un écran qui vous ment au visage avec une
@@ -193,10 +199,10 @@ temps de vie contre une rambarde.
 > « Laisse-moi juste tracker les temps d'attente. » — _ai-je dit. Ça a duré
 > trois ans._
 
-## Trois ans de nuits, et comment park.fan est vraiment né
+## De « vite fait » à trois ans : comment park.fan est vraiment né
 
-Ce qui a commencé par « vite fait » a grandi jusqu'à devenir ce que les
-développeurs appellent un projet de cœur et les copines plutôt « encore ce truc
+Ce que c'est devenu, les développeurs appellent ça un projet de cœur, et les
+copines plutôt « encore ce truc
 de parcs ». D'un script est né un collecteur de données, du collecteur une
 pipeline, de la pipeline une plateforme. Entre les deux, des nuits passées à
 fixer des courbes de temps d'attente à deux heures du matin parce qu'un parc
@@ -291,6 +297,8 @@ différentes.
   [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare), un an
   après l'ouverture ? Soit une journée de rêve, soit les foules se sont enfin
   dispersées.
+
+![Voltron Nevera à l’envers au-dessus d’une façade illuminée, de nuit | Voltron Nevera à l’Europa-Park. Vingt minutes d’attente, ici, cela veut dire quelque chose. | right](/images/parks/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 Le chiffre est dans le graphique. L'histoire derrière se trouve désormais ici,
 sous trois formes.

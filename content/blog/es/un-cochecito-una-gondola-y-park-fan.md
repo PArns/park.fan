@@ -88,6 +88,8 @@ Mi padre murió en 2019. Quizá por eso precisamente aquellos viajes compartidos
 se me han vuelto tan valiosos. Mantienen viva mi infancia y, con ella, el
 recuerdo del hombre que entonces se deslizaba a mi lado por aquellos mundos.
 
+![Silueta de una montaña rusa en Movie Park Germany de noche, iluminada en violeta y azul | Movie Park Germany de noche. Lethal Weapon Pursuit estuvo aquí hasta 2006. | left](/images/parks/movie-park-germany/background.jpg)
+
 Y cuando mi padre volvía a estar de ruta como camionero, mi madre cogía el
 volante sin más. Con ella descubrí muchos otros parques, sobre todo el
 [Movie Park](ref:movie-park-germany?bare), entonces todavía Warner Bros. Movie
@@ -137,6 +139,8 @@ Most Immersive Theme Park».
 
 ## Orlando, mayo de 2026, una vez en la vida
 
+![Cabeza animatrónica de velocirraptor en el recinto de raptores del VelociCoaster, con luz roja | Islands of Adventure: el raptor en su recinto, al alcance de la mano. | right](/blog/images/velocicoaster/02-raptor-paddock.jpg)
+
 Y luego estaba ese gran punto de la lista vital al que todavía le faltaba la
 marca de visto. En mayo de 2026 volamos por fin a Orlando: **Walt Disney World,
 Universal y SeaWorld**, el programa completo, el viaje de «una vez en la vida»
@@ -170,6 +174,8 @@ Dos pasiones que corrieron décadas en paralelo sin encontrarse nunca.
 
 ## El momento en la cola de Taron
 
+![Taron atraviesa a toda velocidad las columnas de basalto del área temática Klugheim | Taron en pleno recorrido por Klugheim. Ante esta atracción estuve sesenta minutos. | left](/images/parks/phantasialand/taron-4x3.jpg)
+
 Hasta aquella tarde que prácticamente cualquier fan de parques conoce en una u
 otra variante. Sesenta minutos de standby en
 [Taron](ref:phantasialand/taron?bare), una pantalla que te miente a la cara con
@@ -184,9 +190,9 @@ o si simplemente estaba cambiando tiempo de vida por una barandilla.
 > «Déjame trastear un poco con los tiempos de espera.» — _dije. Fueron tres
 > años._
 
-## Tres años de noches y cómo nació park.fan de verdad
+## De «un momentito» a tres años: cómo nació park.fan de verdad
 
-Lo que empezó como «un momentito» creció hasta convertirse en lo que los
+En lo que se convirtió es en lo que los
 desarrolladores llaman un proyecto del corazón y las novias probablemente «otra
 vez lo de los parques». De un script salió un recolector de datos; del
 recolector, una pipeline; de la pipeline, una plataforma. Por el medio hubo
@@ -275,6 +281,8 @@ minutos»: tres veces la misma cifra, tres historias completamente distintas.
   [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) un año
   después de la inauguración? O es un día de ensueño, o las multitudes se han
   dispersado por fin.
+
+![Voltron Nevera invertida sobre una fachada iluminada, de noche | Voltron Nevera en el Europa-Park. Veinte minutos de cola aquí son toda una señal. | right](/images/parks/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 La cifra está en el gráfico. La historia que hay detrás está a partir de ahora
 aquí, en tres formatos.

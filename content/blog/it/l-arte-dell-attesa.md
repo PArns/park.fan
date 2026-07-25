@@ -471,8 +471,8 @@ attrazioni ma tematizzate in modo estremamente accurato. Il carico si concentra
 su una manciata di attrazioni di punta, e quando in un sabato di vacanza tutti
 vogliono il [Taron](ref:phantasialand/taron?bare) (saluti, per esperienza ne
 faccio parte), la saturazione arriva altrettanto in fretta che per Peter Pan a
-Parigi. Un pubblico piccolo non protegge dalle code lunghe quando la
-concorrenza delle attrazioni è limitata. La matematica è la stessa, cambia solo
+Parigi. Un pubblico piccolo non protegge dalle code lunghe quando le attrazioni su cui
+distribuire la domanda sono poche. La matematica è la stessa, cambia solo
 la scala.
 
 I numeri sono quasi comici. Il Taron smaltisce circa **1.200 ospiti l'ora**,

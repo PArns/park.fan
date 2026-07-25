@@ -88,6 +88,8 @@ Mio padre è morto nel 2019. Forse è proprio per questo che quei giri condivisi
 mi sono diventati così preziosi. Tengono viva la mia infanzia e, con essa, il
 ricordo dell'uomo che allora scivolava accanto a me attraverso quei mondi.
 
+![Sagoma di montagne russe al Movie Park Germany di notte, illuminata di viola e blu | Il Movie Park Germany di notte. Lethal Weapon Pursuit stava qui fino al 2006. | left](/images/parks/movie-park-germany/background.jpg)
+
 E quando mio padre era di nuovo in viaggio come camionista, mia madre prendeva
 semplicemente il volante. Con lei ho scoperto molti altri parchi, primo fra
 tutti il [Movie Park](ref:movie-park-germany?bare), allora ancora Warner Bros.
@@ -137,6 +139,8 @@ Park”.
 
 ## Orlando, maggio 2026, una volta nella vita
 
+![Testa animatronica di velociraptor nel recinto dei raptor del VelociCoaster, illuminato di rosso | Islands of Adventure: il raptor nel recinto, a portata di mano. | right](/blog/images/velocicoaster/02-raptor-paddock.jpg)
+
 E poi c'era quell'unico grande punto sulla lista della vita a cui mancava ancora
 la spunta. Nel maggio 2026 siamo finalmente volati a Orlando: **Walt Disney
 World, Universal e SeaWorld**, il programma completo, il viaggio “una volta
@@ -171,6 +175,8 @@ incontrarsi.
 
 ## Il momento nella coda del Taron
 
+![Taron sfreccia tra le colonne di basalto dell’area tematica Klugheim | Taron in pieno percorso attraverso Klugheim. Davanti a questa attrazione sono stato sessanta minuti. | left](/images/parks/phantasialand/taron-4x3.jpg)
+
 Fino a quel pomeriggio che praticamente ogni fan di parchi conosce in una
 variante o nell'altra. Sessanta minuti di standby al
 [Taron](ref:phantasialand/taron?bare), un display che ti mente in faccia con
@@ -185,9 +191,9 @@ stessi semplicemente barattando tempo di vita con un corrimano.
 > “Fammi tracciare un attimo i tempi di attesa.” — _dissi. Sono diventati tre
 > anni._
 
-## Tre anni di notti, e come è nato davvero park.fan
+## Da “un attimo” a tre anni: come è nato davvero park.fan
 
-Quello che era cominciato come “un attimo” è cresciuto fino a diventare ciò che
+Quello che ne è venuto fuori è ciò che
 gli sviluppatori chiamano progetto del cuore e le ragazze probabilmente “di
 nuovo quella cosa dei parchi”. Da uno script è nato un raccoglitore di dati, dal
 raccoglitore una pipeline, dalla pipeline una piattaforma. In mezzo ci sono
@@ -279,6 +285,8 @@ diverse.
   [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) a un
   anno dall'apertura? O è una giornata da sogno, o la folla si è finalmente
   dispersa.
+
+![Voltron Nevera capovolto sopra una facciata illuminata, di notte | Voltron Nevera all’Europa-Park. Venti minuti di coda qui sono un bel segnale. | right](/images/parks/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 La cifra sta nel grafico. La storia che c'è dietro sta da adesso qui, in tre
 formati.

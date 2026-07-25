@@ -88,6 +88,8 @@ Mijn vader is in 2019 overleden. Misschien zijn juist daarom die gezamenlijke
 ritten zo kostbaar voor me geworden. Ze houden mijn jeugd levend, en daarmee de
 herinnering aan de man die toen naast me door die werelden gleed.
 
+![Achtbaansilhouet in Movie Park Germany bij nacht, paars en blauw aangelicht | Movie Park Germany bij nacht. Lethal Weapon Pursuit stond hier tot 2006. | left](/images/parks/movie-park-germany/background.jpg)
+
 En als mijn vader als vrachtwagenchauffeur weer eens op pad was, nam mijn moeder
 gewoon het stuur over. Met haar heb ik veel andere parken ontdekt, vooral
 [Movie Park](ref:movie-park-germany?bare), toen nog Warner Bros. Movie World.
@@ -135,6 +137,8 @@ heten.
 
 ## Orlando, mei 2026, eenmaal in je leven
 
+![Animatronische velociraptorkop in het roodverlichte raptorverblijf van de VelociCoaster | Islands of Adventure: de raptor in het verblijf, binnen handbereik. | right](/blog/images/velocicoaster/02-raptor-paddock.jpg)
+
 En dan was er nog dat ene grote punt op de levenslijst waar nog altijd geen
 vinkje achter stond. In mei 2026 zijn we eindelijk naar Orlando gevlogen:
 **Walt Disney World, Universal en SeaWorld**, het volle programma, de reis van
@@ -169,6 +173,8 @@ komen.
 
 ## Het moment in de rij bij Taron
 
+![Taron raast door de basaltzuilen van het themagebied Klugheim | Taron midden in zijn rit door Klugheim. Voor deze baan stond ik zestig minuten. | left](/images/parks/phantasialand/taron-4x3.jpg)
+
 Tot die ene middag die vrijwel elke parkfan in de een of andere variant kent.
 Zestig minuten [Taron](ref:phantasialand/taron?bare)-standby, een display dat je
 met stoïcijnse vriendelijkheid “ongeveer 45 minuten” voorliegt, en twee stations
@@ -181,10 +187,10 @@ inruilde voor een reling.
 
 > “Laat mij die wachttijden even trackken.” — _zei ik. Het werden drie jaar._
 
-## Drie jaar nachten, en hoe park.fan echt ontstond
+## Van “even snel” naar drie jaar: hoe park.fan echt ontstond
 
-Wat begon als “even snel” groeide uit tot wat ontwikkelaars een passieproject
-noemen en vriendinnen vermoedelijk eerder “alweer dat parkgedoe”. Uit een script
+Wat het werd, noemen ontwikkelaars een passieproject en vriendinnen
+vermoedelijk eerder “alweer dat parkgedoe”. Uit een script
 kwam een dataverzamelaar, uit de dataverzamelaar een pipeline, uit de pipeline
 een platform. Daartussen lagen nachten waarin ik om twee uur 's nachts naar
 wachttijdcurves staarde omdat een of ander park zijn data anders doorgaf dan
@@ -269,6 +275,8 @@ Een wachttijd zonder context is niet meer dan een gerucht met een decimaal.
 - **20 minuten** voor
   [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare), een
   jaar na de opening? Of een topdag, of de massa is eindelijk uitgewaaierd.
+
+![Voltron Nevera in een overslag boven een aangelichte gevel bij nacht | Voltron Nevera in het Europa-Park. Twintig minuten wachten is hier een statement. | right](/images/parks/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 Het getal staat in de grafiek. Het verhaal erachter staat vanaf nu hier, in drie
 vormen.
