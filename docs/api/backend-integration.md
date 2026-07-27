@@ -47,7 +47,17 @@ The API uses a **P50 (median) baseline** for crowd levels. A typical day or typi
 - **Frontend:** We display `moderate` as **"Normal"** in all locales (green, emerald).
 - **Translation keys:** e.g. `parks.crowdLevels.moderate`, `stats.crowd.moderate`.
 
-Other levels (`very_low`, `low`, `high`, `very_high`, `extreme`, `closed`) are shown with their translated labels and colors. See [Design System – Crowd Level Badges](../design/design-system.md#crowd-level-badges-filled) and [P50 Crowd Levels (Backend)](https://github.com/park-fan/v4.api.park.fan/blob/main/docs/analytics/p50-crowd-levels.md).
+Other levels (`very_low`, `low`, `high`, `very_high`, `extreme`, `closed`) are shown with their translated labels and colors. See [Design System – Crowd Level Badges](../design/design-system.md#crowd-level-badges-filled) and [Crowd Levels (Backend)](https://github.com/park-fan/v4.api.park.fan/blob/main/docs/analytics/crowd-levels.md).
+
+**`unknown` is not a tier.** The API sends it when a park or ride has no usable baseline to rate against (fewer than 30 operating days of headliner data, or a ride with no P50 row). Render it as a neutral "keine Prognose / no forecast" badge — never map it into the colored ladder, and never substitute `moderate`.
+
+Where it can appear: `analytics.statistics.crowdLevel`, `analytics.occupancy.crowdLevel`, an attraction's live `crowdLevel`, the calendar's day and `hourly[].crowdLevel`, and **`/v1/search` results' `load`** — search used to send a placeholder `moderate` for unratable parks and baseline-less rides and now sends `unknown` like every other surface. A park with no live sample at all also reads `unknown` rather than bottoming out at `very_low`.
+
+**A `0`-minute wait is a walk-on, not missing data.** With a real baseline behind it, 0 min rates `very_low` — only an absent wait yields `unknown`. So don't treat `waitTime === 0` as "no data" client-side either.
+
+**Never re-derive a crowd level in the frontend.** The park's live level is a baseline-weighted mean over the headliners reporting right now (`Σ current waits ÷ Σ their P50 baselines`), not something reconstructible from the wait times on screen. `analytics.statistics.crowdLevel` already carries the gated value; use it directly.
+
+**`analytics.occupancy.breakdown` is self-consistent.** `currentAvgWait` and `typicalAvgWait` are the same set of rides, so their quotient matches `occupancy.current`. If a park page ever shows the pair pointing one way and the percentage the other, that is a backend bug, not something to paper over client-side.
 
 ---
 

@@ -15,7 +15,7 @@ The frontend talks to [api.park.fan](https://api.park.fan) via the type-safe cli
 | **Proxies**    | `/api/search`, `/api/parks/[...path]`, `/api/nearby`, `/api/favorites`, `/api/og/*`          |
 | **Data types** | ParkStatus, AttractionStatus, CrowdLevel, Calendar day status (OPERATING / CLOSED / UNKNOWN) |
 
-**Crowd "moderate":** Shown as **"Normal"** (green). Backend: [P50 Crowd Levels](https://github.com/park-fan/v4.api.park.fan/blob/main/docs/analytics/p50-crowd-levels.md).
+**Crowd "moderate":** Shown as **"Normal"** (green). Backend: [Crowd Levels](https://github.com/park-fan/v4.api.park.fan/blob/main/docs/analytics/crowd-levels.md).
 
 ## Related
 
