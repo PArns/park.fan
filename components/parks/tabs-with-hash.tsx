@@ -1,6 +1,6 @@
 'use client';
 
-import { memo, useState } from 'react';
+import { memo, useDeferredValue, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
 import { Search, Zap, Sparkles, UtensilsCrossed, CalendarDays, Map } from 'lucide-react';
@@ -14,6 +14,9 @@ import { RestaurantCard } from '@/components/parks/restaurant-card';
 import { RopeDropHeadliners } from '@/components/parks/rope-drop-headliners';
 import { ParkTabsList } from '@/components/parks/park-tabs-list';
 import { OffSeasonToggle } from '@/components/parks/off-season-toggle';
+import { RestaurantCardSkeleton } from '@/components/parks/restaurant-card-skeleton';
+import { AttractionCardSkeleton } from '@/components/parks/attraction-card-skeleton';
+import { Skeleton } from '@/components/ui/skeleton';
 import { useTabHashRouting } from '@/lib/hooks/use-tab-hash-routing';
 import { useAttractionFilter } from '@/lib/hooks/use-attraction-filter';
 import { stripNewPrefix } from '@/lib/utils';
@@ -97,6 +100,17 @@ export const TabsWithHash = memo(function TabsWithHash({
 
   const [isFocused, setIsFocused] = useState(false);
 
+  // INP: a tab tap used to mount the ENTIRE incoming panel in the same commit that moved the
+  // tab highlight — 50+ glass cards, 55 restaurant cards, or the Leaflet map — so the paint
+  // that ends the interaction had to wait for all of it. Measured on a CPU-throttled Pixel 5
+  // that was ~300-380 ms per switch, with the handler itself costing 1 ms: the cost is purely
+  // the render+paint that follows, which is exactly what INP charges to the tap.
+  //
+  // The panel SWITCH stays urgent, so the highlight and the new (skeleton) panel paint
+  // immediately and the interaction ends there. The heavy body renders off a deferred copy of
+  // the tab value, arriving a beat later at lower priority.
+  const deferredTab = useDeferredValue(activeTab);
+
   // Pre-mount (SSR + first client render): render the server-renderable wait-time OVERVIEW
   // instead of a skeleton. This is the ONLY attractions markup crawlers see without JS —
   // every attraction name, its wait/status from the snapshot and the link to its detail page
@@ -176,65 +190,79 @@ export const TabsWithHash = memo(function TabsWithHash({
               </div>
             </div>
 
-            {/* Renders nothing when there are neither worth nor evening picks. */}
-            {!isSearching && (
-              <RopeDropHeadliners
-                headliners={park.ropeDropHeadliners ?? []}
-                attractions={park.attractions ?? []}
-                parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
-              />
-            )}
-
-            {headliners.length > 0 && !isSearching && (
-              <LandSection
-                landName={t('headlinersSection')}
-                attractions={headliners}
-                parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
-                parkSlug={parkSlug}
-                parkStatus={park.status}
-                timezone={park.timezone}
-              />
-            )}
-
-            {hasSearchResults ? (
-              landNames.map((landName, index) => {
-                const attractions = filteredAttractionsByLand[landName];
-                if (!attractions) return null;
-
-                return (
-                  // Lazy-mount every land below the first so a big park's 100+ glass cards no
-                  // longer all render at once (excessive DOM + mobile paint/compositing cost).
-                  // While searching, render every matching land eagerly so no result is hidden
-                  // behind a placeholder. The reservation follows the grid's column count per
-                  // breakpoint so the scroll length stays stable on desktop too.
-                  <LazyMount
-                    key={landName}
-                    eager={index === 0 || isSearching}
-                    grid={{ count: attractions.length, rowHeight: 340, headerHeight: 64 }}
-                  >
-                    <LandSection
-                      landName={landName}
-                      attractions={attractions}
-                      parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
-                      parkSlug={parkSlug}
-                      parkStatus={park.status}
-                      timezone={park.timezone}
-                    />
-                  </LazyMount>
-                );
-              })
-            ) : (
-              <div className="flex justify-center pt-14">
-                <div className="border-border/50 bg-background/60 inline-flex flex-col items-center rounded-xl border px-10 py-8 shadow-md backdrop-blur-md dark:bg-[oklch(0.12_0.025_241_/_0.55)]">
-                  <p className="text-muted-foreground">{t('noAttractionsFound')}</p>
-                  <button
-                    className="text-primary mt-2 text-sm underline hover:no-underline"
-                    onClick={() => setSearchQuery('')}
-                  >
-                    {t('clearSearch')}
-                  </button>
-                </div>
+            {deferredTab !== 'attractions' ? (
+              // Switching BACK to this tab remounts the whole grid. EVERYTHING below the search
+              // box is deferred — the rope-drop picks and the headliner cards are real cards
+              // too, so leaving them out of this branch kept the urgent commit expensive and the
+              // tap still paid ~370 ms. Only the (cheap) heading and search box stay urgent.
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {Array.from({ length: 6 }, (_, i) => (
+                  <AttractionCardSkeleton key={i} />
+                ))}
               </div>
+            ) : (
+              <>
+                {/* Renders nothing when there are neither worth nor evening picks. */}
+                {!isSearching && (
+                  <RopeDropHeadliners
+                    headliners={park.ropeDropHeadliners ?? []}
+                    attractions={park.attractions ?? []}
+                    parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+                  />
+                )}
+
+                {headliners.length > 0 && !isSearching && (
+                  <LandSection
+                    landName={t('headlinersSection')}
+                    attractions={headliners}
+                    parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+                    parkSlug={parkSlug}
+                    parkStatus={park.status}
+                    timezone={park.timezone}
+                  />
+                )}
+
+                {hasSearchResults ? (
+                  landNames.map((landName, index) => {
+                    const attractions = filteredAttractionsByLand[landName];
+                    if (!attractions) return null;
+
+                    return (
+                      // Lazy-mount every land below the first so a big park's 100+ glass cards no
+                      // longer all render at once (excessive DOM + mobile paint/compositing cost).
+                      // While searching, render every matching land eagerly so no result is hidden
+                      // behind a placeholder. The reservation follows the grid's column count per
+                      // breakpoint so the scroll length stays stable on desktop too.
+                      <LazyMount
+                        key={landName}
+                        eager={index === 0 || isSearching}
+                        grid={{ count: attractions.length, rowHeight: 340, headerHeight: 64 }}
+                      >
+                        <LandSection
+                          landName={landName}
+                          attractions={attractions}
+                          parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+                          parkSlug={parkSlug}
+                          parkStatus={park.status}
+                          timezone={park.timezone}
+                        />
+                      </LazyMount>
+                    );
+                  })
+                ) : (
+                  <div className="flex justify-center pt-14">
+                    <div className="border-border/50 bg-background/60 inline-flex flex-col items-center rounded-xl border px-10 py-8 shadow-md backdrop-blur-md dark:bg-[oklch(0.12_0.025_241_/_0.55)]">
+                      <p className="text-muted-foreground">{t('noAttractionsFound')}</p>
+                      <button
+                        className="text-primary mt-2 text-sm underline hover:no-underline"
+                        onClick={() => setSearchQuery('')}
+                      >
+                        {t('clearSearch')}
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </>
             )}
           </div>
         </TabsContent>
@@ -291,9 +319,11 @@ export const TabsWithHash = memo(function TabsWithHash({
               {t('restaurants')}
             </h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {park.restaurants?.map((restaurant) => (
-                <RestaurantCard key={restaurant.id} restaurant={restaurant} />
-              ))}
+              {deferredTab === 'restaurants'
+                ? park.restaurants?.map((restaurant) => (
+                    <RestaurantCard key={restaurant.id} restaurant={restaurant} />
+                  ))
+                : Array.from({ length: 6 }, (_, i) => <RestaurantCardSkeleton key={i} />)}
             </div>
           </TabsContent>
         )}
@@ -306,14 +336,18 @@ export const TabsWithHash = memo(function TabsWithHash({
             <CalendarDays className="h-5 w-5 shrink-0" aria-hidden="true" />
             {t('calendar')}
           </h2>
-          <ParkCalendarGrid
-            park={park}
-            initialCalendarData={calendarData}
-            continent={continent}
-            country={country}
-            city={city}
-            parkSlug={parkSlug}
-          />
+          {deferredTab === 'calendar' ? (
+            <ParkCalendarGrid
+              park={park}
+              initialCalendarData={calendarData}
+              continent={continent}
+              country={country}
+              city={city}
+              parkSlug={parkSlug}
+            />
+          ) : (
+            <Skeleton className="h-[28rem] w-full rounded-xl" />
+          )}
         </TabsContent>
 
         <TabsContent
@@ -324,7 +358,11 @@ export const TabsWithHash = memo(function TabsWithHash({
             <Map className="h-5 w-5 shrink-0" aria-hidden="true" />
             {t('map')}
           </h2>
-          <ParkMap park={park} />
+          {deferredTab === 'map' ? (
+            <ParkMap park={park} />
+          ) : (
+            <Skeleton className="h-[28rem] w-full rounded-xl" />
+          )}
         </TabsContent>
       </Tabs>
     </div>
