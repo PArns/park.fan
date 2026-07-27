@@ -58,9 +58,15 @@ export function BlogPostingStructuredData({ post, locale, path }: BlogPostingStr
   // Google wants `author.url` to point at a page ABOUT the author. For a registry author that
   // is our own profile page; the personal site then belongs in `sameAs`.
   const authorProfile = author.key ? `${SITE_URL}/${locale}/blog/authors/${author.key}` : undefined;
-  const authorSameAs = [author.url, ...Object.values(author.links ?? {})].filter(
-    (u): u is string => typeof u === 'string' && u.length > 0 && u !== authorProfile
-  );
+  // Deduped: `url` and `links.website` are usually the same address, which otherwise
+  // listed the personal site twice.
+  const authorSameAs = [
+    ...new Set(
+      [author.url, ...Object.values(author.links ?? {})].filter(
+        (u): u is string => typeof u === 'string' && u.length > 0 && u !== authorProfile
+      )
+    ),
+  ];
 
   const canonical = `${SITE_URL}/${locale}${path}`;
   const imageUrl = resolvePostImage(locale, post.slug, frontmatter);
