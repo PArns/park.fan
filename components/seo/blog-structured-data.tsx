@@ -1,6 +1,8 @@
 import { escapeJsonLd } from './structured-data';
 import type { Blog, BlogPosting, WithContext } from 'schema-dts';
 import type { BlogFrontmatter, BlogListItem, BlogPost } from '@/lib/blog/types';
+import { resolveAuthor } from '@/lib/blog/authors';
+import type { Locale } from '@/i18n/config';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 
 const SITE_URL = 'https://park.fan';
@@ -48,10 +50,23 @@ interface BlogPostingStructuredDataProps {
  */
 export function BlogPostingStructuredData({ post, locale, path }: BlogPostingStructuredDataProps) {
   const { frontmatter } = post;
-  const author =
-    typeof frontmatter.author === 'string'
-      ? { name: frontmatter.author }
-      : (frontmatter.author ?? { name: 'park.fan' });
+  // `author: patrick` in frontmatter is a REGISTRY KEY, not a display name. Taking it verbatim
+  // published `"author": {"name": "patrick"}` — the byline Google shows in article results —
+  // and dropped the url/avatar/bio the registry has. The visible page already resolves it
+  // (`resolveAuthor` in the post page); the JSON-LD has to do the same.
+  const author = resolveAuthor(frontmatter.author, locale as Locale);
+  // Google wants `author.url` to point at a page ABOUT the author. For a registry author that
+  // is our own profile page; the personal site then belongs in `sameAs`.
+  const authorProfile = author.key ? `${SITE_URL}/${locale}/blog/authors/${author.key}` : undefined;
+  // Deduped: `url` and `links.website` are usually the same address, which otherwise
+  // listed the personal site twice.
+  const authorSameAs = [
+    ...new Set(
+      [author.url, ...Object.values(author.links ?? {})].filter(
+        (u): u is string => typeof u === 'string' && u.length > 0 && u !== authorProfile
+      )
+    ),
+  ];
 
   const canonical = `${SITE_URL}/${locale}${path}`;
   const imageUrl = resolvePostImage(locale, post.slug, frontmatter);
@@ -75,7 +90,9 @@ export function BlogPostingStructuredData({ post, locale, path }: BlogPostingStr
     author: {
       '@type': 'Person',
       name: author.name,
-      ...(author.url ? { url: author.url } : {}),
+      ...((authorProfile ?? author.url) ? { url: authorProfile ?? author.url } : {}),
+      ...(authorSameAs.length > 0 ? { sameAs: authorSameAs } : {}),
+      ...(author.role ? { jobTitle: author.role } : {}),
       ...(author.bio ? { description: author.bio } : {}),
       ...(author.avatar ? { image: absoluteUrl(author.avatar) } : {}),
     },

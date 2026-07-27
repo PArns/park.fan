@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
-import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
+import { buildOpenGraphMetadata, fitWithin, MAX_TITLE_LENGTH } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound } from 'next/navigation';
 import { MapPin } from 'lucide-react';
@@ -52,13 +52,21 @@ export async function generateMetadata({ params }: CountryPageProps): Promise<Me
 
   const ogImageUrl = getOgImageUrl([locale, continent, country]);
 
+  // See the continent page: long country names push the full template past the SERP cutoff.
+  const title = fitWithin(
+    MAX_TITLE_LENGTH,
+    t('titleTemplate', { location: countryName }),
+    t('titleTemplateShort', { location: countryName })
+  );
+  const description = t('metaDescriptionTemplate', { location: countryName });
+
   return {
-    title: t('titleTemplate', { location: countryName }),
-    description: t('metaDescriptionTemplate', { location: countryName }),
+    title,
+    description,
     ...buildOpenGraphMetadata({
       locale,
-      title: t('titleTemplate', { location: countryName }),
-      description: t('metaDescriptionTemplate', { location: countryName }),
+      title,
+      description,
       url: `${SITE_URL}/${locale}/parks/${continent}/${country}`,
       ogImageUrl,
     }),

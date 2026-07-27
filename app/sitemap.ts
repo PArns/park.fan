@@ -31,6 +31,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const searchAlternates = buildAlternates(() => '/search');
   const howtoAlternates = buildAlternates(() => '/howto');
   const fancastAlternates = buildAlternates(() => '/fancast');
+  const contributeAlternates = buildAlternates(() => '/contribute');
 
   for (const locale of locales) {
     routes.push(
@@ -63,6 +64,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         changeFrequency: 'weekly',
         priority: 0.5,
         alternates: fancastAlternates,
+      },
+      // `index, follow` and canonical-per-locale, but it was missing here — an indexable page
+      // that no sitemap lists is discoverable only via internal links.
+      {
+        url: `${BASE_URL}/${locale}/contribute`,
+        changeFrequency: 'monthly',
+        priority: 0.4,
+        alternates: contributeAlternates,
       }
     );
   }
@@ -280,15 +289,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // Blog tag pages
-  const { listTags } = await import('@/lib/blog/tags');
+  // Blog tag pages. Unlike categories, tag slugs are TRANSLATED per locale
+  // ("wartezeiten" / "wait-times"), so `buildBlogAlternates` — which reuses one path for
+  // every locale — would emit alternates that 404. `buildTagAlternates` resolves each
+  // locale's real slug and drops locales where the tag has no page.
+  const { listTags, buildTagAlternates } = await import('@/lib/blog/tags');
   for (const locale of blogLocales) {
     for (const tag of listTags(locale as import('@/i18n/config').Locale)) {
+      const tagAlternates = buildTagAlternates(locale as import('@/i18n/config').Locale, tag.slug);
+      if (tagAlternates['en']) tagAlternates['x-default'] = tagAlternates['en'];
       routes.push({
         url: `${BASE_URL}/${locale}/blog/tag/${tag.slug}`,
         changeFrequency: 'weekly',
         priority: 0.4,
-        alternates: buildBlogAlternates(() => `/blog/tag/${tag.slug}`),
+        alternates: { languages: tagAlternates },
       });
     }
   }

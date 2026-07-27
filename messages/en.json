@@ -978,7 +978,8 @@
       "metaDescriptionTemplateNoCity": "Live wait times & crowd calendar for {park}. Check today's forecast, best days to visit, and opening hours.",
       "keywordWaitTimes": "wait times",
       "keywordCrowdCalendar": "crowd calendar",
-      "keywordBestTime": "best time to visit"
+      "keywordBestTime": "best time to visit",
+      "titleTemplateShort": "{park} Wait Times LIVE"
     },
     "attraction": {
       "titleTemplate": "{attraction} at {park} – Live Wait Times & Status",
@@ -987,15 +988,18 @@
     },
     "continent": {
       "titleTemplate": "Theme Parks in {location}: Wait Times, Map & Overview",
-      "metaDescriptionTemplate": "Theme parks in {location}: live wait times, crowd predictions & opening hours. Compare parks and plan your visit."
+      "metaDescriptionTemplate": "Theme parks in {location}: live wait times, crowd predictions & opening hours. Compare parks and plan your visit.",
+      "titleTemplateShort": "Theme Parks in {location}: Wait Times"
     },
     "country": {
       "titleTemplate": "Theme Parks in {location}: Wait Times, Map & Overview",
-      "metaDescriptionTemplate": "Theme parks in {location}: live wait times, crowd predictions & best days to visit. Compare parks and plan your perfect visit."
+      "metaDescriptionTemplate": "Theme parks in {location}: live wait times, crowd predictions & best days to visit. Compare parks and plan your perfect visit.",
+      "titleTemplateShort": "Theme Parks in {location}: Wait Times"
     },
     "city": {
       "titleTemplate": "Theme Parks in {city}, {country}: Wait Times & Hours",
-      "metaDescriptionTemplate": "Live wait times & crowd predictions for theme parks in {city}. Check opening hours and plan your visit with real-time forecasts."
+      "metaDescriptionTemplate": "Live wait times & crowd predictions for theme parks in {city}. Check opening hours and plan your visit with real-time forecasts.",
+      "titleTemplateShort": "Theme Parks in {city}: Wait Times"
     },
     "search": {
       "titleTemplate": "Search: {query}",
@@ -1136,7 +1140,8 @@
         "crest": "Airtime crest",
         "dive": "Dive"
       }
-    }
+    },
+    "overviewMetaDescription": "Over {count} theme park terms explained in plain language: wait times, crowd levels, Lightning Lane, virtual queues, single rider and more."
   },
   "fancast": {
     "title": "Fancast – our wait-time forecasting model",
@@ -1190,7 +1195,7 @@
     "categories": "Categories",
     "category": {
       "label": "Category",
-      "description": "Blog posts in {category} on park.fan.",
+      "description": "All park.fan blog posts filed under {category} — trip reports, data deep-dives and theme park news, newest first.",
       "postsCount": "{count, plural, =1 {# post} other {# posts}}"
     },
     "home": {
@@ -1266,7 +1271,7 @@
     },
     "tag": {
       "label": "Tag",
-      "description": "Blog posts tagged #{tag} on park.fan.",
+      "description": "Every park.fan blog post tagged #{tag} — guides, wait-time analyses and park news on the topic, newest first.",
       "postsCount": "{count, plural, =1 {# post} other {# posts}}",
       "cloudTitle": "Topics"
     },

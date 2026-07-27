@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
-import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
+import { buildOpenGraphMetadata, fitWithin, MAX_TITLE_LENGTH } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound } from 'next/navigation';
 import { getCountriesInContinent, getContinents } from '@/lib/api/discovery';
@@ -33,13 +33,22 @@ export async function generateMetadata({ params }: ContinentPageProps): Promise<
 
   const ogImageUrl = getOgImageUrl([locale, continent]);
 
+  // The full template plus a long name ("Vereinigtes Königreich", and in Italian the template
+  // alone is 64 chars) overruns what Google prints; drop the ", Map & Overview" tail then.
+  const title = fitWithin(
+    MAX_TITLE_LENGTH,
+    t('titleTemplate', { location: continentName }),
+    t('titleTemplateShort', { location: continentName })
+  );
+  const description = t('metaDescriptionTemplate', { location: continentName });
+
   return {
-    title: t('titleTemplate', { location: continentName }),
-    description: t('metaDescriptionTemplate', { location: continentName }),
+    title,
+    description,
     ...buildOpenGraphMetadata({
       locale,
-      title: t('titleTemplate', { location: continentName }),
-      description: t('metaDescriptionTemplate', { location: continentName }),
+      title,
+      description,
       url: `${SITE_URL}/${locale}/parks/${continent}`,
       ogImageUrl,
     }),

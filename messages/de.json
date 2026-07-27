@@ -978,7 +978,8 @@
       "metaDescriptionTemplateNoCity": "Live-Wartezeiten & Crowd-Kalender für {park}. Prognose für heute, beste Besuchstage & Öffnungszeiten auf einen Blick.",
       "keywordWaitTimes": "Wartezeiten",
       "keywordCrowdCalendar": "Crowd-Kalender",
-      "keywordBestTime": "beste Besuchszeit"
+      "keywordBestTime": "beste Besuchszeit",
+      "titleTemplateShort": "{park} Wartezeiten LIVE"
     },
     "attraction": {
       "titleTemplate": "{attraction} im {park} – Wartezeiten LIVE & Status",
@@ -987,15 +988,18 @@
     },
     "continent": {
       "titleTemplate": "Freizeitparks in {location}: Wartezeiten, Karte & Übersicht",
-      "metaDescriptionTemplate": "Freizeitparks in {location}: Live-Wartezeiten, Besucherprognosen und Öffnungszeiten. Vergleiche Parks und plane deinen Besuch."
+      "metaDescriptionTemplate": "Freizeitparks in {location}: Live-Wartezeiten, Besucherprognosen und Öffnungszeiten. Vergleiche Parks und plane deinen Besuch.",
+      "titleTemplateShort": "Freizeitparks in {location}: Wartezeiten"
     },
     "country": {
       "titleTemplate": "Freizeitparks in {location}: Wartezeiten, Karte & Übersicht",
-      "metaDescriptionTemplate": "Freizeitparks in {location}: Live-Wartezeiten, Besucherprognosen und Öffnungszeiten. Plane die besten Besuchstage."
+      "metaDescriptionTemplate": "Freizeitparks in {location}: Live-Wartezeiten, Besucherprognosen und Öffnungszeiten. Plane die besten Besuchstage.",
+      "titleTemplateShort": "Freizeitparks in {location}: Wartezeiten"
     },
     "city": {
       "titleTemplate": "Freizeitparks in {city}, {country}: Wartezeiten",
-      "metaDescriptionTemplate": "Live-Wartezeiten und Prognosen für Freizeitparks in {city}. Prüfe Öffnungszeiten und plane deinen Besuch mit dem Echtzeit-Kalender."
+      "metaDescriptionTemplate": "Live-Wartezeiten und Prognosen für Freizeitparks in {city}. Prüfe Öffnungszeiten und plane deinen Besuch mit dem Echtzeit-Kalender.",
+      "titleTemplateShort": "Freizeitparks in {city}: Wartezeiten"
     },
     "search": {
       "titleTemplate": "Suche: {query}",
@@ -1136,7 +1140,8 @@
         "crest": "Kuppe",
         "dive": "Sturz"
       }
-    }
+    },
+    "overviewMetaDescription": "Über {count} Freizeitpark-Begriffe verständlich erklärt: Wartezeiten, Besucherdichte, Lightning Lane, virtuelle Warteschlangen und mehr."
   },
   "fancast": {
     "title": "Fancast – unser Wartezeiten-Prognosemodell",
@@ -1190,7 +1195,7 @@
     "categories": "Kategorien",
     "category": {
       "label": "Kategorie",
-      "description": "Blog-Beiträge in {category} auf park.fan.",
+      "description": "Alle park.fan-Blogbeiträge in der Kategorie {category} — Reiseberichte, Datenanalysen und News aus den Freizeitparks, neueste zuerst.",
       "postsCount": "{count, plural, =1 {# Beitrag} other {# Beiträge}}"
     },
     "home": {
@@ -1266,7 +1271,7 @@
     },
     "tag": {
       "label": "Tag",
-      "description": "Blog-Beiträge mit dem Tag #{tag} auf park.fan.",
+      "description": "Alle park.fan-Blogbeiträge mit dem Tag #{tag} — Guides, Wartezeiten-Analysen und News rund um das Thema, neueste zuerst.",
       "postsCount": "{count, plural, =1 {# Beitrag} other {# Beiträge}}",
       "cloudTitle": "Themen"
     },

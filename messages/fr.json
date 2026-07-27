@@ -978,7 +978,8 @@
       "metaDescriptionTemplateNoCity": "Temps d'attente en direct et calendrier pour {park}. Prévisions du jour, meilleurs jours et horaires d'ouverture.",
       "keywordWaitTimes": "temps d'attente",
       "keywordCrowdCalendar": "calendrier d'affluence",
-      "keywordBestTime": "meilleure période pour visiter"
+      "keywordBestTime": "meilleure période pour visiter",
+      "titleTemplateShort": "{park} Temps d'Attente LIVE"
     },
     "attraction": {
       "titleTemplate": "{attraction} à {park} – Temps d'Attente en Direct",
@@ -987,15 +988,18 @@
     },
     "continent": {
       "titleTemplate": "Parcs d'Attractions en {location} : Attente & Carte",
-      "metaDescriptionTemplate": "Parcs en {location} : temps d'attente en direct, prévisions d'affluence et horaires. Comparez les parcs et planifiez votre visite."
+      "metaDescriptionTemplate": "Parcs en {location} : temps d'attente en direct, prévisions d'affluence et horaires. Comparez les parcs et planifiez votre visite.",
+      "titleTemplateShort": "Parcs d'Attractions en {location} : Attente"
     },
     "country": {
       "titleTemplate": "Parcs d'Attractions en {location} : Attente & Carte",
-      "metaDescriptionTemplate": "Parcs en {location} : temps d'attente en direct, prévisions d'affluence et horaires. Planifiez les meilleurs jours de visite."
+      "metaDescriptionTemplate": "Parcs en {location} : temps d'attente en direct, prévisions d'affluence et horaires. Planifiez les meilleurs jours de visite.",
+      "titleTemplateShort": "Parcs d'Attractions en {location} : Attente"
     },
     "city": {
       "titleTemplate": "Parcs d'Attractions à {city}, {country} : Attente & Horaires",
-      "metaDescriptionTemplate": "Temps d'attente en direct pour les parcs à {city}. Prévisions du jour, horaires et calendrier d'affluence en temps réel."
+      "metaDescriptionTemplate": "Temps d'attente en direct pour les parcs à {city}. Prévisions du jour, horaires et calendrier d'affluence en temps réel.",
+      "titleTemplateShort": "Parcs d'Attractions à {city} : Attente"
     },
     "search": {
       "titleTemplate": "Recherche: {query}",
@@ -1136,7 +1140,8 @@
         "crest": "Sommet",
         "dive": "Plongeon"
       }
-    }
+    },
+    "overviewMetaDescription": "Plus de {count} termes des parcs à thème expliqués simplement : temps d'attente, affluence, Lightning Lane, files virtuelles et plus."
   },
   "fancast": {
     "title": "Fancast – notre modèle de prévision des temps d'attente",
@@ -1190,7 +1195,7 @@
     "categories": "Catégories",
     "category": {
       "label": "Catégorie",
-      "description": "Articles dans {category} sur park.fan.",
+      "description": "Tous les articles du blog park.fan classés dans {category} — carnets de visite, analyses de données et actualité des parcs, les plus récents d’abord.",
       "postsCount": "{count, plural, =1 {# article} other {# articles}}"
     },
     "home": {
@@ -1266,7 +1271,7 @@
     },
     "tag": {
       "label": "Tag",
-      "description": "Articles taggés #{tag} sur park.fan.",
+      "description": "Tous les articles du blog park.fan tagués #{tag} — guides, analyses des temps d’attente et actualité des parcs, les plus récents d’abord.",
       "postsCount": "{count, plural, =1 {# article} other {# articles}}",
       "cloudTitle": "Thèmes"
     },

@@ -1,6 +1,6 @@
 import 'server-only';
 import { cache } from 'react';
-import type { Locale } from '@/i18n/config';
+import { locales, SITE_URL, type Locale } from '@/i18n/config';
 import { listPosts } from './index';
 
 /** Lowercase + replace any whitespace / special chars with hyphens. */
@@ -49,6 +49,88 @@ export const listTags = cache((locale: Locale): TagEntry[] => {
  */
 export function findCanonicalTag(locale: Locale, slug: string): string | null {
   return listTags(locale).find((t) => t.slug === slug)?.label ?? null;
+}
+
+/**
+ * Every locale's slug for the same tag, keyed `"<locale>:<slug>"`.
+ *
+ * Tags are free text in each post's frontmatter and are translated along with the post
+ * ("wartezeiten" / "wait-times" / "tempi-di-attesa" / "temps-d-attente"), so unlike posts
+ * they carry no shared `translationKey` to join on. What they DO carry is position: every
+ * translation of a post lists the same tags in the same order (see content/blog/README.md),
+ * so zipping the arrays of one `translationKey` across locales yields the mapping.
+ *
+ * Without this, the tag pages advertised `/{every-locale}/blog/tag/{this-locale's-slug}` as
+ * their hreflang alternates — five 404s per tag page plus a dead `x-default`, which makes
+ * Google drop the whole language cluster.
+ *
+ * Three guards keep it from inventing links:
+ *   - EN-fallback posts are skipped; they carry the EN tags, not the locale's own.
+ *   - Locales whose tag arrays differ in length are skipped — position means nothing then.
+ *   - A tag that ends up with conflicting candidates in some locale is dropped for that
+ *     locale rather than guessed at.
+ * Callers additionally verify the mapped slug really exists (see {@link buildTagAlternates}).
+ */
+const getTagTranslationIndex = cache((): Map<string, Map<Locale, string>> => {
+  const byKey = new Map<string, Map<Locale, string[]>>();
+  for (const locale of locales) {
+    for (const post of listPosts(locale)) {
+      if (post.isFallback) continue;
+      const slugs = (post.frontmatter.tags ?? []).map(normalizeTagSlug).filter(Boolean);
+      if (slugs.length === 0) continue;
+      const inner = byKey.get(post.translationKey) ?? new Map<Locale, string[]>();
+      inner.set(locale, slugs);
+      byKey.set(post.translationKey, inner);
+    }
+  }
+
+  // Collect candidates first, so a tag reused across posts with different neighbours can be
+  // detected as ambiguous instead of silently taking whichever post was processed last.
+  const candidates = new Map<string, Map<Locale, Set<string>>>();
+  for (const perLocale of byKey.values()) {
+    const lengths = new Set(Array.from(perLocale.values(), (s) => s.length));
+    if (lengths.size !== 1) continue;
+    const [size] = lengths;
+    for (let i = 0; i < size; i++) {
+      for (const [locale, slugs] of perLocale) {
+        const key = `${locale}:${slugs[i]}`;
+        const targets = candidates.get(key) ?? new Map<Locale, Set<string>>();
+        for (const [other, otherSlugs] of perLocale) {
+          const set = targets.get(other) ?? new Set<string>();
+          set.add(otherSlugs[i]);
+          targets.set(other, set);
+        }
+        candidates.set(key, targets);
+      }
+    }
+  }
+
+  const out = new Map<string, Map<Locale, string>>();
+  for (const [key, targets] of candidates) {
+    const resolved = new Map<Locale, string>();
+    for (const [locale, set] of targets) {
+      if (set.size === 1) resolved.set(locale, set.values().next().value!);
+    }
+    if (resolved.size > 0) out.set(key, resolved);
+  }
+  return out;
+});
+
+/**
+ * Absolute hreflang alternates for a tag archive — only locales where the equivalent tag
+ * actually has a page. A locale is included when the positional mapping resolves AND that
+ * slug appears in the target locale's own tag list, so an alternate can never 404.
+ */
+export function buildTagAlternates(locale: Locale, slug: string): Record<string, string> {
+  const mapped = getTagTranslationIndex().get(`${locale}:${slug}`);
+  const out: Record<string, string> = {};
+  for (const target of locales) {
+    const targetSlug = target === locale ? slug : mapped?.get(target);
+    if (!targetSlug) continue;
+    if (!listTags(target).some((t) => t.slug === targetSlug)) continue;
+    out[target] = `${SITE_URL}/${target}/blog/tag/${targetSlug}`;
+  }
+  return out;
 }
 
 /** Twelve consistent tag-pill palettes; the same tag always picks the same one. */

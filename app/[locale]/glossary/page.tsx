@@ -2,7 +2,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { getGlossaryTerms } from '@/lib/glossary/translations';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { locales, generateAlternateLanguages, SITE_URL } from '@/i18n/config';
-import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
+import { buildOpenGraphMetadata, fitWithin, MAX_DESCRIPTION_LENGTH } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { PageContainer } from '@/components/common/page-container';
 import { GlossaryOverviewClient } from '@/components/glossary/glossary-overview-client';
@@ -29,7 +29,13 @@ export async function generateMetadata({ params }: GlossaryPageProps): Promise<M
   const title = `${t('termTitleSuffix')} | park.fan`;
   const terms = await getGlossaryTerms(locale as Locale);
   const termCount = Math.floor(terms.length / 10) * 10;
-  const description = t('overviewDescription', { count: termCount });
+  // The on-page intro (`overviewDescription`) runs ~200 chars and is worth keeping that long for
+  // readers, but Google cuts the snippet at ~160 — so the meta tag gets its own shorter copy.
+  const description = fitWithin(
+    MAX_DESCRIPTION_LENGTH,
+    t('overviewMetaDescription', { count: termCount }),
+    t('overviewDescription', { count: termCount })
+  );
 
   return {
     title,

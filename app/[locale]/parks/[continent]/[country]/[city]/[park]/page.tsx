@@ -1,7 +1,12 @@
 import { Suspense } from 'react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
-import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
+import {
+  buildOpenGraphMetadata,
+  fitWithin,
+  MAX_TITLE_LENGTH,
+  MAX_DESCRIPTION_LENGTH,
+} from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { MapPin } from 'lucide-react';
@@ -129,16 +134,27 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
       .split(/\s+/)
       .some((word) => word.length > 3 && parkNameLower.split(/\s+/).includes(word));
   const titleKey = cityInParkName ? 'titleTemplateNoCity' : 'titleTemplate';
-  const title = cityInParkName
-    ? t(titleKey, { park: parkName })
-    : t(titleKey, { park: parkName, city: cityName });
+  // Long park names ("Fantawild Oriental Heritage Mianyang") push the templated title past the
+  // ~60 chars Google shows, clipping the very keyword the template exists for. Fall back to the
+  // bare "<park> Wait Times LIVE" form, and to the city-less copy for the snippet.
+  const title = fitWithin(
+    MAX_TITLE_LENGTH,
+    cityInParkName
+      ? t(titleKey, { park: parkName })
+      : t(titleKey, { park: parkName, city: cityName }),
+    t('titleTemplateShort', { park: parkName })
+  );
 
   const descriptionKey = cityInParkName
     ? 'metaDescriptionTemplateNoCity'
     : 'metaDescriptionTemplate';
-  const description = cityInParkName
-    ? t(descriptionKey, { park: parkName })
-    : t(descriptionKey, { park: parkName, city: cityName });
+  const description = fitWithin(
+    MAX_DESCRIPTION_LENGTH,
+    cityInParkName
+      ? t(descriptionKey, { park: parkName })
+      : t(descriptionKey, { park: parkName, city: cityName }),
+    t('metaDescriptionTemplateNoCity', { park: parkName })
+  );
 
   const keywords = [
     parkName,
