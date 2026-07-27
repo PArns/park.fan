@@ -123,8 +123,8 @@ appliquée.
 
 L'arme la plus élégante contre le temps mort est le **pre-show**, qui déclare
 simplement l'attente partie intégrante de l'attraction. L'exemple d'école se
-trouve aux [Disney's Hollywood Studios](ref:disneys-hollywood-studios?bare). À
-la [Tour de la Terreur](ref:disneys-hollywood-studios/the-twilight-zone-tower-of-terror),
+trouve aux [Disney's Hollywood Studios](ref:disney-hollywood-studios?bare). À
+la [Tour de la Terreur](ref:disney-hollywood-studios/the-twilight-zone-tower-of-terror),
 on ne se traîne pas dans un couloir : on traverse le hall poussiéreux du
 Hollywood Tower Hotel pour rejoindre une bibliothèque où une vidéo dans le
 style de « La Quatrième Dimension » raconte l'histoire du bâtiment. Vous faites
@@ -430,7 +430,7 @@ La réponse tient entièrement dans les mathématiques ci-dessus :
    large, cinq personnes. C'est la capacité de transport d'un ascenseur moyen,
    répartie sur tout un ciel nocturne. Des comptages officieux arrivent à
    environ **1 200 visiteurs par heure**, et la
-   [version d'origine au Magic Kingdom](ref:magic-kingdom-park/peter-pans-flight?bare)
+   [version d'origine au Magic Kingdom](ref:disney-magic-kingdom/peter-pans-flight?bare)
    n'en fait même que 800 environ. Un seul train du Hulk transporte par départ
    deux fois plus de monde que Peter Pan n'a de bateaux. Et pour comparer dans
    la même maison : Pirates of the Caribbean, juste à côté, en avale presque
@@ -452,7 +452,7 @@ Le phénomène est d'ailleurs mesurable dans le monde entier. Voici les temps
 d'attente en direct de la version d'Orlando, dans le parc le plus fréquenté du
 monde, directement issus de nos données :
 
-[Peter Pan's Flight](ref:magic-kingdom-park/peter-pans-flight?full)
+[Peter Pan's Flight](ref:disney-magic-kingdom/peter-pans-flight?full)
 
 ## L'Europe attend autrement : Phantasialand et Europa-Park face à Orlando
 
@@ -461,7 +461,7 @@ un parc, cela se voit le plus clairement en comparant les poids lourds, les
 grands parcs européens face aux géants d'Orlando.
 
 **Orlando joue dans une catégorie de demande à part.** Le
-[Magic Kingdom](ref:magic-kingdom-park?bare) est le parc d'attractions le plus
+[Magic Kingdom](ref:disney-magic-kingdom?bare) est le parc d'attractions le plus
 fréquenté au monde, et Disney comme Universal attirent des visiteurs de tous
 les continents. S'y ajoute un facteur que l'Europe ne connaît guère avec cette
 dureté : le coupe-file payant. Lightning Lane et Express Pass vendent une part
@@ -514,12 +514,12 @@ concentre sur quelques têtes d'affiche.
 
 ```
 
-**Et maintenant le [Magic Kingdom](ref:magic-kingdom-park?bare) à Orlando**, le
+**Et maintenant le [Magic Kingdom](ref:disney-magic-kingdom?bare) à Orlando**, le
 parc le plus fréquenté du monde : une charge de base plus élevée, mais répartie
 sur des dizaines d'attractions. Observez à quel point les minutes « typiques »
 et la courbe saisonnière diffèrent déjà sur l'année.
 
-```stats-widget slug=magic-kingdom-park
+```stats-widget slug=disney-magic-kingdom
 
 ```
 
@@ -594,7 +594,7 @@ coronavirus en 2020 et l'a conservée, parce qu'elle fonctionne tout simplement�
 via l'application du parc, vous réservez gratuitement un créneau pour des
 attractions comme blue fire, Wodan ou Voltron. Disney a piloté des ouvertures
 majeures comme
-[Rise of the Resistance](ref:disneys-hollywood-studios/star-wars-rise-of-the-resistance?bare)
+[Rise of the Resistance](ref:disney-hollywood-studios/star-wars-rise-of-the-resistance?bare)
 ou justement Cosmic Rewind entièrement par **boarding groups** pendant des
 années. Le principe est toujours le même : vous faites la queue
 numériquement pendant que vous mangez, faites les boutiques ou regardez un

@@ -13,7 +13,7 @@ interface BlogParkWidgetProps {
 
 /**
  * Inline embeddable park card used inside blog posts via:
- *   ```park-widget slug=magic-kingdom-park
+ *   ```park-widget slug=disney-magic-kingdom
  *   ```
  *
  * Falls back gracefully when the park can't be resolved (e.g. typo in slug

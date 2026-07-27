@@ -46,8 +46,8 @@ const AREA_OVERRIDES = {
   'europa-park/water-rollercoaster-poseidon': 'Greece',
   'europa-park/wodan-timburcoaster': 'Germany',
   // Toverland
-  'attractiepark-toverland/fenix': 'Avalon',
-  'attractiepark-toverland/troy': 'Troy',
+  'toverland/fenix': 'Avalon',
+  'toverland/troy': 'Troy',
 };
 
 // --- filesystem helpers ---
@@ -100,25 +100,37 @@ async function fetchJson(url) {
   return res.json();
 }
 
+/**
+ * Park metadata by slug, from the AUTHORITATIVE park list.
+ *
+ * Deliberately NOT `/v1/discovery/geo`: that endpoint is a Redis skeleton with a 24 h TTL, so
+ * right after an upstream rename it still lists the OLD slug. Since the image folder name IS the
+ * park slug, every lookup for a renamed park missed and the park's whole hero metadata (name,
+ * city, the clickable park link on the homepage hero) silently vanished from the generated file —
+ * which is exactly how "Attractiepark Toverland" -> "Toverland" went unnoticed. `/v1/parks` reads
+ * through to the database, so it can't lag behind the slugs the folders are named after.
+ */
 async function buildGeoMap() {
-  const geo = await fetchJson(`${API_BASE}/v1/discovery/geo`);
+  const PAGE_LIMIT = 1000;
+  const response = await fetchJson(`${API_BASE}/v1/parks?limit=${PAGE_LIMIT}`);
+  const parks = response.data ?? [];
+  const total = response.pagination?.total;
+  if (total != null && total > parks.length) {
+    console.warn(
+      `  ⚠️  Only ${parks.length} of ${total} parks fetched — raise PAGE_LIMIT or paginate`
+    );
+  }
+
   const map = {};
-  for (const continent of geo.continents ?? []) {
-    for (const country of continent.countries ?? []) {
-      for (const city of country.cities ?? []) {
-        for (const park of city.parks ?? []) {
-          // URL shape: /v1/parks/{continent}/{countrySlug}/{city}/{parkSlug}
-          const urlParts = park.url.split('/');
-          const countrySlug = urlParts[4];
-          map[park.slug] = {
-            name: park.name,
-            city: city.name,
-            countrySlug,
-            url: park.url,
-          };
-        }
-      }
-    }
+  for (const park of parks) {
+    // URL shape: /v1/parks/{continent}/{countrySlug}/{city}/{parkSlug}
+    const urlParts = park.url.split('/');
+    map[park.slug] = {
+      name: park.name,
+      city: park.city,
+      countrySlug: urlParts[4],
+      url: park.url,
+    };
   }
   return map;
 }
@@ -234,7 +246,7 @@ async function main() {
   const images = getAllImages();
   console.log(`   Found ${images.length} images`);
 
-  console.log('🌐 Fetching geo structure from API...');
+  console.log('🌐 Fetching park list from API...');
   let geoMap = {};
   try {
     geoMap = await buildGeoMap();

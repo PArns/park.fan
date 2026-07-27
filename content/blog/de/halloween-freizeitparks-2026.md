@@ -279,7 +279,7 @@ verwischen, ist das eine der lohnendsten Adressen jenseits der Grenze.
 
 ### Toverland: sieben Hektar Mais, und bloß nicht stehenbleiben
 
-[Toverland](ref:attractiepark-toverland) im niederländischen Sevenum (für viele
+[Toverland](ref:toverland) im niederländischen Sevenum (für viele
 aus NRW der nächste Benelux-Park überhaupt) baut seine **Halloween Nights** Jahr
 für Jahr aus. Termin steht: **3. Oktober bis 7. November 2026** (die harmloseren
 „Halloween Days“ laufen tagsüber parallel), insgesamt sechs Scare Zones und
@@ -312,7 +312,7 @@ eigenen Paraden-Bereich. An vollen Nächten, und Toverlands Halloween läuft
 _voll_, ist das der Unterschied zwischen „drei Häuser geschafft“ und „alle
 sechs, und dazu heil aus dem Mais gekommen“.
 
-[Toverland](ref:attractiepark-toverland?full)
+[Toverland](ref:toverland?full)
 
 Details zu Experiences, Scare Zones und Fear Pass:
 [toverland.com/halloween](https://www.toverland.com/en/activities/halloween/scare-zones-experiences).
@@ -448,7 +448,7 @@ wer Kinder dabei hat, ist hier goldrichtig.
    Häuser und Experiences nicht im Tagesticket. Einrechnen, und früh buchen,
    wenn dir ein bestimmtes Datum wichtig ist.
 3. **Fast-Lanes lohnen sich hier ausnahmsweise wirklich.**
-   [Toverlands](ref:attractiepark-toverland) **Fear Pass** oder
+   [Toverlands](ref:toverland) **Fear Pass** oder
    [Walibi Belgiums](ref:walibi-belgium) **Speedy Pass** sind an vollen
    Halloween-Nächten kein dekadenter Luxus, sondern schlichte Mathematik: Ein
    Halloween-Abend ist kürzer als ein normaler Parktag, und jede Minute, die du
@@ -499,7 +499,7 @@ Die Halloween-Saison 2026 hat für jede Schmerzgrenze etwas: das schiere Volumen
 im [Movie Park](ref:movie-park-germany) mit neun Mazes, die große Inszenierung
 von [Traumatica](ref:europa-park), [Bobbejaanlands](ref:bobbejaanland) Kino zum
 Reinlaufen, das frische Maisfeld in
-[Toverland](ref:attractiepark-toverland), und, für die ganz Tapferen, die
+[Toverland](ref:toverland), und, für die ganz Tapferen, die
 [Walibi-Experiences](ref:walibi-holland), bei denen man freiwillig Geld dafür
 bezahlt, gestempelt, geflutet und aufgeschlitzt zu werden. Als Gegenpol die
 stille, vornehme Herbst-[Efteling](ref:efteling) und ein

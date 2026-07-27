@@ -115,8 +115,8 @@ psychologie.
 
 Het elegantste wapen tegen dode tijd is de **pre-show**, die het wachten
 simpelweg tot onderdeel van de attractie verklaart. Het schoolvoorbeeld staat
-in [Disney's Hollywood Studios](ref:disneys-hollywood-studios?bare). Bij de
-[Tower of Terror](ref:disneys-hollywood-studios/the-twilight-zone-tower-of-terror)
+in [Disney's Hollywood Studios](ref:disney-hollywood-studios?bare). Bij de
+[Tower of Terror](ref:disney-hollywood-studios/the-twilight-zone-tower-of-terror)
 schuif je niet door een gang, maar door de stoffige lobby van het Hollywood
 Tower Hotel een bibliotheek in, waar een video in de stijl van de “Twilight
 Zone” de geschiedenis van het pand vertelt. Je checkt als het ware in bij een
@@ -404,7 +404,7 @@ Het antwoord zit compleet in de wiskunde van hierboven:
    mensen. Dat is de vervoerscapaciteit van een middelgrote lift, uitgesmeerd
    over een hele nachtelijke hemel. Onofficiële tellingen komen op zo'n **1.200
    gasten per uur**, en de
-   [oerversie in het Magic Kingdom](ref:magic-kingdom-park/peter-pans-flight?bare)
+   [oerversie in het Magic Kingdom](ref:disney-magic-kingdom/peter-pans-flight?bare)
    haalt zelfs maar rond de 800. Eén Hulk-trein vervoert per vertrek twee keer
    zoveel mensen als Peter Pan schepen heeft. En ter vergelijking in eigen huis:
    Pirates of the Caribbean pal ernaast slikt met zijn grote boten bijna het
@@ -424,7 +424,7 @@ Het fenomeen is trouwens wereldwijd meetbaar. Hier de live wachttijden van de
 Orlando-versie in het drukstbezochte park ter wereld, rechtstreeks uit onze
 data:
 
-[Peter Pan's Flight](ref:magic-kingdom-park/peter-pans-flight?full)
+[Peter Pan's Flight](ref:disney-magic-kingdom/peter-pans-flight?full)
 
 ## Europa wacht anders: Phantasialand en Europa-Park versus Orlando
 
@@ -433,7 +433,7 @@ je het duidelijkst in een vergelijking van de zwaargewichten, Europa's grote
 parken tegen de Orlando-giganten.
 
 **Orlando speelt in een eigen vraagcompetitie.** Het
-[Magic Kingdom](ref:magic-kingdom-park?bare) is het drukstbezochte pretpark ter
+[Magic Kingdom](ref:disney-magic-kingdom?bare) is het drukstbezochte pretpark ter
 wereld, en zowel Disney als Universal trekt gasten van alle continenten.
 Daarbij komt een factor die Europa in deze hardheid nauwelijks kent: betaald
 voordringen. Lightning Lane en Express Pass verkopen een deel van de capaciteit
@@ -484,12 +484,12 @@ weinig headliners concentreert.
 
 ```
 
-**En nu het [Magic Kingdom](ref:magic-kingdom-park?bare) in Orlando**, het
+**En nu het [Magic Kingdom](ref:disney-magic-kingdom?bare) in Orlando**, het
 drukstbezochte park ter wereld: een hogere basislast, maar breder verdeeld over
 tientallen attracties. Let op hoe verschillend alleen al de “typische” minuten
 en de seizoenscurve over het jaar eruitzien.
 
-```stats-widget slug=magic-kingdom-park
+```stats-widget slug=disney-magic-kingdom
 
 ```
 
@@ -558,7 +558,7 @@ Het Europa-Park voerde zijn **VirtualLine** aan het begin van de
 coronapandemie in 2020 in en hield hem, omdat hij simpelweg werkt: via de
 park-app reserveer je gratis een tijdvak voor attracties als blue fire, Wodan
 of Voltron. Disney stuurde meganieuwkomers als
-[Rise of the Resistance](ref:disneys-hollywood-studios/star-wars-rise-of-the-resistance?bare)
+[Rise of the Resistance](ref:disney-hollywood-studios/star-wars-rise-of-the-resistance?bare)
 of inderdaad Cosmic Rewind jarenlang volledig via **boarding groups**. Het
 principe is altijd hetzelfde: je staat digitaal aan te schuiven terwijl je eet,
 winkelt of een show kijkt. De rij bestaat nog steeds, hij vindt alleen zonder

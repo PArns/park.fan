@@ -37,7 +37,7 @@ export interface BlogImage {
 }
 
 export interface BlogParkRef {
-  /** Park slug (e.g. magic-kingdom-park). */
+  /** Park slug (e.g. disney-magic-kingdom). */
   slug: string;
   /** Optional override label; otherwise the resolved name is used. */
   label?: string;

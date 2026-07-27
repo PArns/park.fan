@@ -190,7 +190,7 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
                   aria-label="Popular theme parks in USA"
                 >
                   <Link
-                    href="/parks/north-america/united-states/orlando/magic-kingdom-park"
+                    href="/parks/north-america/united-states/orlando/disney-magic-kingdom"
                     prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
                     aria-label="Magic Kingdom - Wait Times"

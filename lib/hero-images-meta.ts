@@ -14,35 +14,6 @@ export interface HeroImageMeta {
 }
 
 export const HERO_IMAGE_META: Record<string, HeroImageMeta> = {
-  '/images/parks/attractiepark-toverland/fenix.jpg': {
-    parkName: 'Attractiepark Toverland',
-    city: 'Sevenum',
-    countrySlug: 'netherlands',
-    parkUrl: '/parks/europe/netherlands/sevenum/attractiepark-toverland',
-    attractionName: 'Fēnix',
-    area: 'Avalon',
-  },
-  '/images/parks/attractiepark-toverland/maximus-blitzbahn.jpeg': {
-    parkName: 'Attractiepark Toverland',
-    city: 'Sevenum',
-    countrySlug: 'netherlands',
-    parkUrl: '/parks/europe/netherlands/sevenum/attractiepark-toverland',
-  },
-  '/images/parks/attractiepark-toverland/troy.jpg': {
-    parkName: 'Attractiepark Toverland',
-    city: 'Sevenum',
-    countrySlug: 'netherlands',
-    parkUrl: '/parks/europe/netherlands/sevenum/attractiepark-toverland',
-    attractionName: 'Troy',
-    area: 'Troy',
-  },
-  '/images/parks/attractiepark-toverland/villa-fiasko.jpg': {
-    parkName: 'Attractiepark Toverland',
-    city: 'Sevenum',
-    countrySlug: 'netherlands',
-    parkUrl: '/parks/europe/netherlands/sevenum/attractiepark-toverland',
-    attractionName: 'Villa Fiasko',
-  },
   '/images/parks/bobbejaanland/fury.jpg': {
     parkName: 'Bobbejaanland',
     city: 'Kasterlee',
@@ -337,6 +308,35 @@ export const HERO_IMAGE_META: Record<string, HeroImageMeta> = {
     parkUrl: '/parks/europe/germany/bruehl/phantasialand',
     attractionName: 'Winja‘s Force',
     area: 'Mystery',
+  },
+  '/images/parks/toverland/fenix.jpg': {
+    parkName: 'Toverland',
+    city: 'Sevenum',
+    countrySlug: 'netherlands',
+    parkUrl: '/parks/europe/netherlands/sevenum/toverland',
+    attractionName: 'Fēnix',
+    area: 'Avalon',
+  },
+  '/images/parks/toverland/maximus-blitzbahn.jpeg': {
+    parkName: 'Toverland',
+    city: 'Sevenum',
+    countrySlug: 'netherlands',
+    parkUrl: '/parks/europe/netherlands/sevenum/toverland',
+  },
+  '/images/parks/toverland/troy.jpg': {
+    parkName: 'Toverland',
+    city: 'Sevenum',
+    countrySlug: 'netherlands',
+    parkUrl: '/parks/europe/netherlands/sevenum/toverland',
+    attractionName: 'Troy',
+    area: 'Troy',
+  },
+  '/images/parks/toverland/villa-fiasko.jpg': {
+    parkName: 'Toverland',
+    city: 'Sevenum',
+    countrySlug: 'netherlands',
+    parkUrl: '/parks/europe/netherlands/sevenum/toverland',
+    attractionName: 'Villa Fiasko',
   },
   '/images/parks/walibi-belgium/kondaa.jpg': {
     parkName: 'Walibi Belgium',

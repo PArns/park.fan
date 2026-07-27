@@ -18,7 +18,7 @@ const FEATURED_PARK_SLUGS: Record<string, string[]> = {
     'disneyland-park', // Paris — "Disneyland Paris Wartezeiten" is high-volume DE query
   ],
   en: [
-    'magic-kingdom-park', // 17.8M, #1 worldwide
+    'disney-magic-kingdom', // 17.8M, #1 worldwide
     'universal-studios-florida', // 9.5M, high US search volume
     'disneyland-park', // Paris — 10.2M, massive English search interest globally
     'tokyo-disneyland', // 15.1M, #4 worldwide, aspirational for EN speakers
@@ -35,7 +35,7 @@ const FEATURED_PARK_SLUGS: Record<string, string[]> = {
   ],
   nl: [
     'efteling', // 5.6M, #1 NL by massive margin, deeply culturally embedded
-    'attractiepark-toverland', // #2 NL domestic
+    'toverland', // #2 NL domestic
     'walibi-belgium', // #1 Belgium, relevant for Flemish/Belgian Dutch speakers
     'europa-park', // top cross-border destination for Dutch
     'phantasialand', // popular with Dutch visitors to Germany
@@ -45,12 +45,12 @@ const FEATURED_PARK_SLUGS: Record<string, string[]> = {
     'gardaland', // 3M, #1 Italy by huge margin, dominant domestic search
     'disneyland-park', // Paris — top aspirational European park for Italians
     'europa-park', // 6M, frequently cited as best European park in Italian media
-    'portaventura-world', // Spain is top Italian travel destination, well-searched in IT
+    'portaventura-park', // Spain is top Italian travel destination, well-searched in IT
     'efteling', // growing Italian fanbase, featured in Italian travel content
     'phantasialand', // known to Italian theme park enthusiasts
   ],
   es: [
-    'portaventura-world', // 5.3M, Spain's #1, dominant domestic search
+    'portaventura-park', // 5.3M, Spain's #1, dominant domestic search
     'disneyland-park', // Paris — ~900K Spanish visitors/year, #2 source market
     'europa-park', // growing Spanish awareness, reachable via France
     'phantasialand', // more reachable for Spanish European travelers than Orlando

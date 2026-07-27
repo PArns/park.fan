@@ -147,7 +147,7 @@ noch immer der Haken fehlte. Im Mai 2026 sind wir endlich nach Orlando
 geflogen: **Walt Disney World, Universal und SeaWorld**, das volle Programm,
 die „einmal im Leben“-Reise, von der ich seit Kindertagen geträumt habe. Es ist
 ein eigenartig schönes Gefühl, wenn der Junge vom Märchensee Jahrzehnte später
-vor dem Cinderella Castle im [Magic Kingdom](ref:magic-kingdom-park?bare)
+vor dem Cinderella Castle im [Magic Kingdom](ref:disney-magic-kingdom?bare)
 steht. Alles größer, alles lauter, alles weiter weg von Brühl, und trotzdem
 exakt dasselbe Kribbeln wie damals in der Gondel. Dazwischen
 [Epic Universe](ref:universal-epic-universe?bare) in seinem ersten Sommer,
@@ -293,7 +293,7 @@ drei Formaten.
 
 **Reiseberichte.** Lang, mit Haltung, mit Fotos, und mit echten Daten aus genau
 dem Park, der gerade besucht wurde. Kein „war schön“, sondern:
-„[Magic Kingdom](ref:magic-kingdom-park?bare), 15. Mai, 09:08 Uhr Rope Drop,
+„[Magic Kingdom](ref:disney-magic-kingdom?bare), 15. Mai, 09:08 Uhr Rope Drop,
 das war der Plan, das hat funktioniert, das ging baden.“ Die Orlando-Reise von
 oben macht den Anfang: Disney World, Universal und SeaWorld, Bilder inklusive.
 

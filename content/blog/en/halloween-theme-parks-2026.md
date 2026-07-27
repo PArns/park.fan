@@ -275,7 +275,7 @@ in one”, this is one of the most rewarding addresses across the border.
 
 ### Toverland: seven hectares of maize, and don't stop walking
 
-[Toverland](ref:attractiepark-toverland) in Sevenum in the Netherlands (for
+[Toverland](ref:toverland) in Sevenum in the Netherlands (for
 many people in NRW the nearest Benelux park of all) expands its **Halloween
 Nights** year after year. The date is set: **3 October to 7 November 2026** (the
 more harmless “Halloween Days” run alongside during the day), with six scare
@@ -305,7 +305,7 @@ area. On busy nights, and Toverland's Halloween runs _busy_, that's the
 difference between “managed three houses” and “all six, and got out of the
 maize in one piece.”
 
-[Toverland](ref:attractiepark-toverland?full)
+[Toverland](ref:toverland?full)
 
 Details on experiences, scare zones and the Fear Pass:
 [toverland.com/halloween](https://www.toverland.com/en/activities/halloween/scare-zones-experiences).
@@ -434,7 +434,7 @@ and if you have children along, this is exactly right.
    houses and experiences aren't in the day ticket. Factor it in, and book
    early if a particular date matters to you.
 3. **Fast lanes are genuinely worth it here, for once.**
-   [Toverland's](ref:attractiepark-toverland) **Fear Pass** or
+   [Toverland's](ref:toverland) **Fear Pass** or
    [Walibi Belgium's](ref:walibi-belgium) **Speedy Pass** are no decadent luxury
    on busy Halloween nights but plain arithmetic: a Halloween evening is shorter
    than a normal park day, and every minute you're _not_ standing in a queue is
@@ -485,7 +485,7 @@ The 2026 Halloween season has something for every pain threshold: the sheer
 volume at [Movie Park](ref:movie-park-germany) with nine mazes, the grand
 production of [Traumatica](ref:europa-park),
 [Bobbejaanland's](ref:bobbejaanland) walk-in cinema, the fresh maize field at
-[Toverland](ref:attractiepark-toverland), and, for the truly brave, the
+[Toverland](ref:toverland), and, for the truly brave, the
 [Walibi experiences](ref:walibi-holland) where people voluntarily pay to be
 stamped, flooded and cut open. As a counterpoint, the quiet, refined autumn
 [Efteling](ref:efteling) and a [Phantasialand](ref:phantasialand) that skips

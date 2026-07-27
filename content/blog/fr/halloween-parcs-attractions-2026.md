@@ -285,7 +285,7 @@ côté de la frontière.
 
 ### Toverland : sept hectares de maïs, et surtout ne pas s'arrêter
 
-[Toverland](ref:attractiepark-toverland) à Sevenum, aux Pays-Bas (pour beaucoup
+[Toverland](ref:toverland) à Sevenum, aux Pays-Bas (pour beaucoup
 de gens de Rhénanie-du-Nord-Westphalie, le parc du Benelux le plus proche),
 développe ses **Halloween Nights** année après année. La date est fixée : **du
 3 octobre au 7 novembre 2026** (les « Halloween Days », plus inoffensifs, se
@@ -318,7 +318,7 @@ plus un espace de parade réservé. Les nuits chargées, et l'Halloween de
 Toverland tourne _à plein_, c'est la différence entre « trois maisons faites »
 et « toutes les six, et sorti indemne du maïs ».
 
-[Toverland](ref:attractiepark-toverland?full)
+[Toverland](ref:toverland?full)
 
 Détails sur les experiences, les scare zones et le Fear Pass :
 [toverland.com/halloween](https://www.toverland.com/en/activities/halloween/scare-zones-experiences).
@@ -458,7 +458,7 @@ d'adrénaline, et qui a des enfants avec lui, est ici à la bonne adresse.
    journée. À intégrer au budget, et à réserver tôt si une date précise vous
    tient à cœur.
 3. **Les files rapides valent vraiment le coup, pour une fois.** Le **Fear
-   Pass** de [Toverland](ref:attractiepark-toverland) ou le **Speedy Pass** de
+   Pass** de [Toverland](ref:toverland) ou le **Speedy Pass** de
    [Walibi Belgium](ref:walibi-belgium) ne sont pas un luxe décadent les nuits
    d'Halloween chargées, mais une simple arithmétique : une soirée Halloween est
    plus courte qu'une journée de parc normale, et chaque minute que vous ne
@@ -511,7 +511,7 @@ La saison Halloween 2026 a de quoi satisfaire tous les seuils de douleur : le
 volume pur au [Movie Park](ref:movie-park-germany) avec neuf mazes, la grande
 mise en scène de [Traumatica](ref:europa-park), le cinéma à parcourir de
 [Bobbejaanland](ref:bobbejaanland), le champ de maïs tout neuf de
-[Toverland](ref:attractiepark-toverland), et, pour les plus courageux, les
+[Toverland](ref:toverland), et, pour les plus courageux, les
 [Walibi-Experiences](ref:walibi-holland) où l'on paie volontairement pour se
 faire tamponner, inonder et ouvrir. En contrepoint, l'automne silencieux et
 distingué de l'[Efteling](ref:efteling) et un
