@@ -15,7 +15,7 @@ tags:
   - park-fan
   - phantasialand
   - orlando
-  - temps-attente
+  - temps-d-attente
   - previsions-ia
   - coulisses
 category: news

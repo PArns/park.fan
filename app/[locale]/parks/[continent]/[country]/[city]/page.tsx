@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generateAlternateLanguages, locales, SITE_URL } from '@/i18n/config';
-import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
+import { buildOpenGraphMetadata, fitWithin, MAX_TITLE_LENGTH } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { LiveParkGrid, type StaticPark } from '@/components/parks/live-park-grid';
@@ -35,13 +35,22 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
 
   const ogImageUrl = getOgImageUrl([locale, continent, country, citySlug]);
 
+  // City + country + template overruns the SERP cutoff for long pairs; the short form keeps
+  // the city (the term people search) and drops the country.
+  const title = fitWithin(
+    MAX_TITLE_LENGTH,
+    t('titleTemplate', { city: cityName, country: countryName }),
+    t('titleTemplateShort', { city: cityName })
+  );
+  const description = t('metaDescriptionTemplate', { city: cityName });
+
   return {
-    title: t('titleTemplate', { city: cityName, country: countryName }),
-    description: t('metaDescriptionTemplate', { city: cityName }),
+    title,
+    description,
     ...buildOpenGraphMetadata({
       locale,
-      title: t('titleTemplate', { city: cityName, country: countryName }),
-      description: t('metaDescriptionTemplate', { city: cityName }),
+      title,
+      description,
       url: `${SITE_URL}/${locale}/parks/${continent}/${country}/${citySlug}`,
       ogImageUrl,
     }),

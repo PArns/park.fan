@@ -175,6 +175,15 @@ slash** in the key.
   last segment.
 - **Tags** are a free-form list. They are slugified for `/blog/tag/<tag>` pages
   and feed the sidebar tag cloud. Reuse existing tags where possible.
+- **Translate tags, and keep them in the same order in every language.** Tags
+  carry no `translationKey`, so the tag pages derive their hreflang alternates by
+  matching the arrays of one post **by position** across locales
+  (`buildTagAlternates`, `lib/blog/tags.ts`) — that is what maps `wartezeiten` →
+  `wait-times` → `tempi-di-attesa`. Reordering or adding a tag in only one
+  language silently drops that post's tags from the mapping (the lengths no
+  longer match), and the affected tag pages lose their language alternates.
+  Leave brand names untranslated (`park-fan`, `wintertraum`) — they just map to
+  themselves.
 
 ---
 

@@ -966,7 +966,7 @@
       "keywords": "tempi di attesa parchi a tema, tempi di attesa LIVE, tempi di attesa oggi, calendario affluenza, previsione IA, tempi di coda, previsioni affluenza, orari di apertura, parco divertimenti, montagna russa, tempi di attesa Disney, Universal Studios, Europa-Park, Phantasialand, miglior momento per visitare"
     },
     "home": {
-      "title": "Tempi di attesa e previsioni di affluenza in tempo reale",
+      "title": "Tempi di attesa live e previsioni di affluenza",
       "description": "Massimizza la tua visita con tempi di attesa in tempo reale, previsioni IA e navigazione nel parco. Copre Disney, Universal, Europa-Park e molto altro."
     },
     "parks": {
@@ -978,7 +978,8 @@
       "metaDescriptionTemplateNoCity": "Tempi di attesa in diretta e calendario per {park}. Controlla le previsioni di oggi, giorni migliori e orari di apertura.",
       "keywordWaitTimes": "tempi di attesa",
       "keywordCrowdCalendar": "calendario affluenze",
-      "keywordBestTime": "quando visitare"
+      "keywordBestTime": "quando visitare",
+      "titleTemplateShort": "{park} Tempi di attesa LIVE"
     },
     "attraction": {
       "titleTemplate": "{attraction} a {park} – Tempi di attesa e stato in diretta",
@@ -987,15 +988,18 @@
     },
     "continent": {
       "titleTemplate": "Parchi a tema in {location}: Tempi di attesa, mappa e panoramica",
-      "metaDescriptionTemplate": "Parchi a tema in {location}: tempi di attesa in diretta, previsioni e orari. Confronta i parchi e pianifica la tua visita."
+      "metaDescriptionTemplate": "Parchi a tema in {location}: tempi di attesa in diretta, previsioni e orari. Confronta i parchi e pianifica la tua visita.",
+      "titleTemplateShort": "Parchi a tema in {location}: Tempi di attesa"
     },
     "country": {
       "titleTemplate": "Parchi a tema in {location}: Tempi di attesa, mappa e panoramica",
-      "metaDescriptionTemplate": "Parchi a tema in {location}: tempi di attesa in diretta, previsioni e giorni migliori. Confronta i livelli di affluenza."
+      "metaDescriptionTemplate": "Parchi a tema in {location}: tempi di attesa in diretta, previsioni e giorni migliori. Confronta i livelli di affluenza.",
+      "titleTemplateShort": "Parchi a tema in {location}: Tempi di attesa"
     },
     "city": {
       "titleTemplate": "Parchi a tema a {city}, {country}: Tempi di attesa e orari",
-      "metaDescriptionTemplate": "Tempi di attesa in diretta per i parchi a tema a {city}. Previsioni del giorno, orari di apertura e calendario di affluenza."
+      "metaDescriptionTemplate": "Tempi di attesa in diretta per i parchi a tema a {city}. Previsioni del giorno, orari di apertura e calendario di affluenza.",
+      "titleTemplateShort": "Parchi a tema a {city}: Tempi di attesa"
     },
     "search": {
       "titleTemplate": "Ricerca: {query}",
@@ -1136,7 +1140,8 @@
         "crest": "Cresta",
         "dive": "Tuffo"
       }
-    }
+    },
+    "overviewMetaDescription": "Oltre {count} termini dei parchi a tema spiegati in modo semplice: tempi di attesa, affluenza, Lightning Lane, code virtuali e altro."
   },
   "fancast": {
     "title": "Fancast – il nostro modello di previsione dei tempi di attesa",
@@ -1190,7 +1195,7 @@
     "categories": "Categorie",
     "category": {
       "label": "Categoria",
-      "description": "Articoli in {category} su park.fan.",
+      "description": "Tutti gli articoli del blog park.fan nella categoria {category}: racconti di visita, analisi dei dati e notizie dai parchi, dal più recente.",
       "postsCount": "{count, plural, =1 {# articolo} other {# articoli}}"
     },
     "home": {
@@ -1266,7 +1271,7 @@
     },
     "tag": {
       "label": "Tag",
-      "description": "Articoli taggati #{tag} su park.fan.",
+      "description": "Tutti gli articoli del blog park.fan con il tag #{tag}: guide, analisi dei tempi di attesa e notizie dai parchi, dal più recente.",
       "postsCount": "{count, plural, =1 {# articolo} other {# articoli}}",
       "cloudTitle": "Argomenti"
     },

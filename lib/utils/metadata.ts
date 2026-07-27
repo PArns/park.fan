@@ -2,6 +2,31 @@ import type { Metadata } from 'next';
 import { locales, localeToOpenGraphLocale } from '@/i18n/config';
 
 /**
+ * Google truncates the SERP title around 60 characters and the snippet around 160 — past that
+ * the tail is replaced by an ellipsis, so the keyword sitting there stops being visible.
+ * Our templates are written for typical names; a long one ("Fantawild Oriental Heritage
+ * Mianyang", "Vereinigtes Königreich") pushes them over on its own.
+ */
+export const MAX_TITLE_LENGTH = 60;
+export const MAX_DESCRIPTION_LENGTH = 160;
+
+/**
+ * Picks the first candidate that fits, else the shortest one — never truncates mid-word.
+ *
+ * Pass candidates richest-first: the full template, then progressively shorter fallbacks.
+ * When even the shortest overruns (a park whose name alone is 60+ characters) the shortest
+ * still wins, because a clipped tail on a bare name costs less than a clipped template.
+ */
+export function fitWithin(limit: number, ...candidates: string[]): string {
+  const usable = candidates.filter((c) => c && c.trim().length > 0);
+  if (usable.length === 0) return '';
+  return (
+    usable.find((c) => c.length <= limit) ??
+    usable.reduce((shortest, c) => (c.length < shortest.length ? c : shortest))
+  );
+}
+
+/**
  * Builds the openGraph + twitter metadata objects that are identical across all pages.
  * Eliminates ~12 lines of boilerplate per page.
  */

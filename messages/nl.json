@@ -978,7 +978,8 @@
       "metaDescriptionTemplateNoCity": "Live wachttijden & druktekalender voor {park}. Bekijk de druktevoorspelling, beste bezoekdagen en openingstijden.",
       "keywordWaitTimes": "wachttijden",
       "keywordCrowdCalendar": "druktekalender",
-      "keywordBestTime": "beste tijd om te bezoeken"
+      "keywordBestTime": "beste tijd om te bezoeken",
+      "titleTemplateShort": "{park} Wachttijden LIVE"
     },
     "attraction": {
       "titleTemplate": "{attraction} in {park} – Live Wachttijden & Status",
@@ -987,15 +988,18 @@
     },
     "continent": {
       "titleTemplate": "Pretparken in {location}: Wachttijden & Kaart",
-      "metaDescriptionTemplate": "Pretparken in {location}: live wachttijden, druktevoorspellingen en openingstijden. Vergelijk parken en plan je bezoek."
+      "metaDescriptionTemplate": "Pretparken in {location}: live wachttijden, druktevoorspellingen en openingstijden. Vergelijk parken en plan je bezoek.",
+      "titleTemplateShort": "Pretparken in {location}: Wachttijden"
     },
     "country": {
       "titleTemplate": "Pretparken in {location}: Wachttijden & Kaart",
-      "metaDescriptionTemplate": "Pretparken in {location}: live wachttijden, druktevoorspellingen en openingstijden. Vergelijk drukte en plan de beste bezoekdagen."
+      "metaDescriptionTemplate": "Pretparken in {location}: live wachttijden, druktevoorspellingen en openingstijden. Vergelijk drukte en plan de beste bezoekdagen.",
+      "titleTemplateShort": "Pretparken in {location}: Wachttijden"
     },
     "city": {
       "titleTemplate": "Pretparken in {city}, {country}: Wachttijden",
-      "metaDescriptionTemplate": "Live wachttijden en druktevoorspellingen voor pretparken in {city}. Bekijk openingstijden en plan je bezoek met de realtime druktekalender."
+      "metaDescriptionTemplate": "Live wachttijden en druktevoorspellingen voor pretparken in {city}. Bekijk openingstijden en plan je bezoek met de realtime druktekalender.",
+      "titleTemplateShort": "Pretparken in {city}: Wachttijden"
     },
     "search": {
       "titleTemplate": "Zoeken: {query}",
@@ -1136,7 +1140,8 @@
         "crest": "Top",
         "dive": "Duik"
       }
-    }
+    },
+    "overviewMetaDescription": "Meer dan {count} pretparkbegrippen helder uitgelegd: wachttijden, drukte, Lightning Lane, virtuele wachtrijen, single rider en meer."
   },
   "fancast": {
     "title": "Fancast – ons voorspelmodel voor wachttijden",
@@ -1190,7 +1195,7 @@
     "categories": "Categorieën",
     "category": {
       "label": "Categorie",
-      "description": "Blog-artikelen in {category} op park.fan.",
+      "description": "Alle blogartikelen van park.fan in de categorie {category} — reisverslagen, data-analyses en nieuws uit de pretparken, nieuwste eerst.",
       "postsCount": "{count, plural, =1 {# artikel} other {# artikelen}}"
     },
     "home": {
@@ -1266,7 +1271,7 @@
     },
     "tag": {
       "label": "Tag",
-      "description": "Blog-artikelen met de tag #{tag} op park.fan.",
+      "description": "Alle blogartikelen van park.fan met de tag #{tag} — gidsen, wachttijdanalyses en nieuws over het onderwerp, nieuwste eerst.",
       "postsCount": "{count, plural, =1 {# artikel} other {# artikelen}}",
       "cloudTitle": "Onderwerpen"
     },

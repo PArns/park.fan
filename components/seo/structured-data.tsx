@@ -419,6 +419,18 @@ export function ShowsStructuredData({
   // No schedule date to anchor the Event(s) → skip rather than emit a bogus startDate.
   if (!date) return null;
 
+  /**
+   * `showtimes[].startTime` is a full ISO 8601 timestamp (`2026-07-27T19:00:00+02:00`), NOT a
+   * clock time — concatenating it onto `date` produced `2026-07-27T2026-07-27T19:00:00+02:00`,
+   * which is not a valid date-time, so Google discarded every Event on the page. Pass the
+   * timestamp through, and fall back to composing one only if the API ever sends a bare `HH:mm`.
+   */
+  const toStartDate = (startTime: string): string =>
+    /^\d{4}-\d{2}-\d{2}T/.test(startTime) ? startTime : `${date}T${startTime}`;
+  /** `eventSchedule.byDayTime` isn't a schema.org property; `Schedule` expects `startTime`s. */
+  const toClockTime = (startTime: string): string =>
+    /^\d{4}-\d{2}-\d{2}T/.test(startTime) ? startTime.slice(11, 16) : startTime;
+
   // One Event per show (not per showtime): a popular park can have 100+ daily
   // showtimes, which previously emitted 100+ near-identical Event blocks (~100KB
   // of JSON-LD). A single representative Event per show keeps the rich-result
@@ -430,13 +442,15 @@ export function ShowsStructuredData({
       '@context': 'https://schema.org' as const,
       '@type': 'Event' as const,
       name: stripNewPrefix(show.name),
-      startDate: `${date}T${startTimes[0]}`,
+      startDate: toStartDate(startTimes[0]),
+      // One Schedule per remaining showtime: `Schedule` carries a single `startTime`, so the
+      // list has to be expressed as a list of schedules rather than one multi-valued entry.
       ...(startTimes.length > 1 && {
-        eventSchedule: {
+        eventSchedule: startTimes.slice(1).map((startTime) => ({
           '@type': 'Schedule' as const,
           startDate: date,
-          byDayTime: startTimes,
-        },
+          startTime: toClockTime(startTime),
+        })),
       }),
       image: parkBgImage ? `${SITE_URL}${parkBgImage}` : `${SITE_URL}/logo-big.png`,
       location: {

@@ -351,6 +351,17 @@ const nextConfig: NextConfig = {
       });
     }
 
+    // 11. Blog tag slug unified. French posts carried two spellings of the same tag
+    // (`temps-attente` in two posts, `temps-d-attente` in a third), which split the archive
+    // in two AND made the cross-locale tag mapping ambiguous, so the French tag pages lost
+    // their hreflang alternates entirely (see lib/blog/tags.ts). The content now uses
+    // `temps-d-attente` throughout; this keeps the published URL alive.
+    rules.push({
+      source: '/fr/blog/tag/temps-attente',
+      destination: '/fr/blog/tag/temps-d-attente',
+      permanent: true,
+    });
+
     return rules;
   },
   async rewrites() {

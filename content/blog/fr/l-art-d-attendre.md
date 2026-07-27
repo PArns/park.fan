@@ -10,7 +10,7 @@ excerpt: >-
   des mathématiques de capacité impitoyables. Une plongée en profondeur, du
   pre-show à la loi de Little, et en plein milieu la raison d'être de park.fan.
 tags:
-  - temps-attente
+  - temps-d-attente
   - files-attente
   - psychologie
   - park-fan

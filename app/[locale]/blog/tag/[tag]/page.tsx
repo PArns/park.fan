@@ -3,14 +3,9 @@ import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Tag } from 'lucide-react';
 import { routing, type Locale } from '@/i18n/routing';
-import {
-  generateAlternateLanguages,
-  locales,
-  localeToOpenGraphLocale,
-  SITE_URL,
-} from '@/i18n/config';
+import { locales, localeToOpenGraphLocale, SITE_URL } from '@/i18n/config';
 import { BLOG_POSTS_PER_PAGE, listPosts, hasPublishedPosts } from '@/lib/blog';
-import { findCanonicalTag, listTags, normalizeTagSlug } from '@/lib/blog/tags';
+import { buildTagAlternates, findCanonicalTag, listTags, normalizeTagSlug } from '@/lib/blog/tags';
 import { BlogPostGrid } from '@/components/blog/blog-post-grid';
 import { BlogCategoryTree } from '@/components/blog/blog-category-tree';
 import { BlogTagCloud } from '@/components/blog/blog-tag-cloud';
@@ -49,6 +44,7 @@ export async function generateMetadata({ params }: TagPageProps): Promise<Metada
   const ogImageUrl = getOgImageUrl([locale, 'blog', 'tag', tag]);
   const fullTitle = `#${canonicalTag} | ${t('title')} · park.fan`;
   const description = t('tag.description', { tag: canonicalTag });
+  const tagAlternates = buildTagAlternates(locale as Locale, tag);
 
   return {
     title: { absolute: fullTitle },
@@ -65,9 +61,13 @@ export async function generateMetadata({ params }: TagPageProps): Promise<Metada
     twitter: { card: 'summary_large_image', title: fullTitle, description, images: [ogImageUrl] },
     alternates: {
       canonical: `${SITE_URL}/${locale}/blog/tag/${tag}`,
+      // Tag slugs are translated ("wartezeiten" / "wait-times"), so the alternates cannot
+      // reuse this locale's slug — that pointed every tag page at five 404s plus a dead
+      // x-default. buildTagAlternates resolves the real per-locale slug and omits locales
+      // where the tag has no page.
       languages: {
-        ...generateAlternateLanguages((l) => `/${l}/blog/tag/${tag}`),
-        'x-default': `${SITE_URL}/en/blog/tag/${tag}`,
+        ...tagAlternates,
+        ...(tagAlternates['en'] && { 'x-default': tagAlternates['en'] }),
       },
       types: {
         'application/rss+xml': `${SITE_URL}/${locale}/blog/feed.xml`,

@@ -978,7 +978,8 @@
       "metaDescriptionTemplateNoCity": "Tiempos de espera en vivo y calendario para {park}. Pronóstico de hoy, mejores días y horarios de apertura.",
       "keywordWaitTimes": "tiempos de espera",
       "keywordCrowdCalendar": "calendario de afluencia",
-      "keywordBestTime": "mejor época para visitar"
+      "keywordBestTime": "mejor época para visitar",
+      "titleTemplateShort": "{park} Tiempos de Espera LIVE"
     },
     "attraction": {
       "titleTemplate": "{attraction} en {park} – Tiempos de Espera en Vivo",
@@ -987,15 +988,18 @@
     },
     "continent": {
       "titleTemplate": "Parques Temáticos en {location}: Espera y Mapa",
-      "metaDescriptionTemplate": "Parques temáticos en {location}: tiempos de espera en vivo, predicciones y horarios. Compara parques y planifica tu visita."
+      "metaDescriptionTemplate": "Parques temáticos en {location}: tiempos de espera en vivo, predicciones y horarios. Compara parques y planifica tu visita.",
+      "titleTemplateShort": "Parques Temáticos en {location}: Espera"
     },
     "country": {
       "titleTemplate": "Parques Temáticos en {location}: Espera y Mapa",
-      "metaDescriptionTemplate": "Parques temáticos en {location}: tiempos de espera en vivo, predicciones y horarios. Planifica los mejores días de visita."
+      "metaDescriptionTemplate": "Parques temáticos en {location}: tiempos de espera en vivo, predicciones y horarios. Planifica los mejores días de visita.",
+      "titleTemplateShort": "Parques Temáticos en {location}: Espera"
     },
     "city": {
       "titleTemplate": "Parques Temáticos en {city}, {country}: Tiempos de Espera",
-      "metaDescriptionTemplate": "Tiempos de espera en vivo para parques temáticos en {city}. Pronóstico de hoy, horarios y calendario de afluencia."
+      "metaDescriptionTemplate": "Tiempos de espera en vivo para parques temáticos en {city}. Pronóstico de hoy, horarios y calendario de afluencia.",
+      "titleTemplateShort": "Parques Temáticos en {city}: Tiempos de Espera"
     },
     "search": {
       "titleTemplate": "Búsqueda: {query}",
@@ -1136,7 +1140,8 @@
         "crest": "Cresta",
         "dive": "Caída"
       }
-    }
+    },
+    "overviewMetaDescription": "Más de {count} términos de parques temáticos explicados con claridad: tiempos de espera, afluencia, Lightning Lane, colas virtuales y más."
   },
   "fancast": {
     "title": "Fancast – nuestro modelo de predicción de tiempos de espera",
@@ -1190,7 +1195,7 @@
     "categories": "Categorías",
     "category": {
       "label": "Categoría",
-      "description": "Artículos en {category} en park.fan.",
+      "description": "Todos los artículos del blog de park.fan en la categoría {category}: crónicas de visita, análisis de datos y noticias de los parques, del más reciente.",
       "postsCount": "{count, plural, =1 {# artículo} other {# artículos}}"
     },
     "home": {
@@ -1266,7 +1271,7 @@
     },
     "tag": {
       "label": "Etiqueta",
-      "description": "Artículos etiquetados con #{tag} en park.fan.",
+      "description": "Todos los artículos del blog de park.fan con la etiqueta #{tag}: guías, análisis de tiempos de espera y noticias de los parques, del más reciente.",
       "postsCount": "{count, plural, =1 {# artículo} other {# artículos}}",
       "cloudTitle": "Temas"
     },
