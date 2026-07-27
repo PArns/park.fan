@@ -24,7 +24,11 @@ today/tomorrow seam that read as "next week will be busier").
 
 More surfaces now send **`unknown`** instead of a placeholder `moderate` — parks and rides
 without a usable baseline. `CrowdLevelBadge` already renders it as "keine Prognose"; just don't
-map it into the colored ladder anywhere new.
+map it into the colored ladder anywhere new. This includes **`/v1/search` results' `load`**,
+which used to fall back to `moderate`, and parks with no live sample at all, which used to
+bottom out at `very_low`. Conversely, a ride reporting **0 min against a real baseline is a
+walk-on** and now correctly rates `very_low` instead of `unknown` — so a 0 is a measurement,
+not a gap.
 
 → [Backend Integration – Crowd Levels](api/backend-integration.md#crowd-levels-p50--normal),
 [Crowd Levels (backend)](https://github.com/park-fan/v4.api.park.fan/blob/main/docs/analytics/crowd-levels.md)
