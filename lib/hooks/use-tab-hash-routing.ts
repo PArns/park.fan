@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { startTransition, useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { stripNewPrefix } from '@/lib/utils';
 import { trackTabChanged, type TabChangedProps } from '@/lib/analytics/umami';
@@ -28,11 +28,18 @@ export function useTabHashRouting({ defaultValue, park }: UseTabHashRoutingOptio
   // Initialize with defaultValue to match server rendering (avoids hydration mismatch)
   const [activeTab, setActiveTab] = useState(defaultValue);
 
-  // Avoid hydration mismatch by only rendering after mount
+  // Avoid hydration mismatch by only rendering after mount.
+  //
+  // The flip is a TRANSITION: it swaps the server-rendered wait-time overview for the full
+  // interactive card grid, which on a big park is 50+ glass cards with sparklines. As an urgent
+  // update that landed in the same uninterruptible task as hydration — measured as a single
+  // 1017 ms long task on a 4x-throttled Pixel 5, and a tap arriving inside it waits the whole
+  // time (the first INP sample taken here showed ~1 s of input delay). At transition priority
+  // React can yield to input while building the grid, so an early tap is answered instead of
+  // queued behind it.
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setIsMounted(true);
+    startTransition(() => setIsMounted(true));
   }, []);
 
   const tabsRef = useRef<HTMLDivElement>(null);
