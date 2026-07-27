@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import type { QueueDataItem } from '@/lib/api/types';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
+import { formatTime } from '@/lib/utils/intl-format';
 
 const QUEUE_GLOSSARY_TERMS: Partial<Record<string, string>> = {
   SINGLE_RIDER: 'single-rider',
@@ -90,10 +91,10 @@ export function QueueTypeBadge({ queue, timezone }: QueueTypeBadgeProps) {
           hour12: locale === 'en',
           ...(timezone ? { timeZone: timezone } : {}),
         };
-        const start = new Date(queue.returnStart).toLocaleTimeString(locale, timeFormat);
+        const start = formatTime(new Date(queue.returnStart), locale, timeFormat);
         const end =
           'returnEnd' in queue && queue.returnEnd
-            ? new Date(queue.returnEnd).toLocaleTimeString(locale, timeFormat)
+            ? formatTime(new Date(queue.returnEnd), locale, timeFormat)
             : null;
         label = end
           ? t('queue.details.return', { start, end })

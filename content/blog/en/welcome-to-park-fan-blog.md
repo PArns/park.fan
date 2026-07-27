@@ -140,7 +140,7 @@ next to it. In May 2026 we finally flew to Orlando: **Walt Disney World,
 Universal and SeaWorld**, the full programme, the once-in-a-lifetime trip I'd
 dreamed about since childhood. There's a strange kind of beauty in the boy from
 the Märchensee standing in front of Cinderella Castle at the
-[Magic Kingdom](ref:magic-kingdom-park?bare) decades later. Everything bigger,
+[Magic Kingdom](ref:disney-magic-kingdom?bare) decades later. Everything bigger,
 everything louder, everything further from Brühl, and still exactly the same
 flutter as back in that gondola. In between,
 [Epic Universe](ref:universal-epic-universe?bare) in its first summer, coasters
@@ -278,7 +278,7 @@ formats.
 
 **Trip reports.** Long, opinionated, with photos, and with real data from
 exactly the park being visited. Not “it was lovely”, but:
-“[Magic Kingdom](ref:magic-kingdom-park?bare), 15 May, rope drop at 09:08, that
+“[Magic Kingdom](ref:disney-magic-kingdom?bare), 15 May, rope drop at 09:08, that
 was the plan, this worked, this went badly wrong.” The Orlando trip above kicks
 things off: Disney World, Universal and SeaWorld, pictures included.
 

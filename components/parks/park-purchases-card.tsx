@@ -9,6 +9,7 @@ import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { cn } from '@/lib/utils';
 import type { ScheduleItem, SchedulePurchaseItem } from '@/lib/api/types';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 
 // The API may send placeholder prices (amount 0, formatted "Unknown") when the
 // real fee isn't available — same rule as <QueueTypeBadge>.
@@ -67,7 +68,7 @@ export function ParkPurchasesCard({ schedule, timezone, className }: ParkPurchas
   const isToday = entry.date === todayStr;
   const dateLabel = isToday
     ? null
-    : new Intl.DateTimeFormat(locale, {
+    : getDateTimeFormat(locale, {
         weekday: 'short',
         day: 'numeric',
         month: 'short',

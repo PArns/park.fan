@@ -5,6 +5,7 @@ import { Sunrise } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
 import { ParkTime } from '@/components/common/park-time';
 import type { RopeDropInfo } from '@/lib/api/types';
+import { formatTime } from '@/lib/utils/intl-format';
 
 /**
  * Compact "Rope drop: save ~X min (until ~HH:MM)" row of an attraction card.
@@ -31,7 +32,7 @@ export function AttractionCardRopeDrop({
           showSuffix
         />
       ) : (
-        new Date(ropeDrop.rideByUtc!).toLocaleTimeString(locale, {
+        formatTime(new Date(ropeDrop.rideByUtc!), locale, {
           hour: '2-digit',
           minute: '2-digit',
         })

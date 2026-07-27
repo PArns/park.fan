@@ -186,7 +186,9 @@ export function FavoritesSection() {
             <>
               <div>
                 <h3 className="mb-4 text-lg font-semibold">{t('parks')}</h3>
-                <LazyMount minHeight={64 + sortedFavorites.parks.length * 200}>
+                <LazyMount
+                  grid={{ count: sortedFavorites.parks.length, rowHeight: 200, headerHeight: 64 }}
+                >
                   <div className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {sortedFavorites.parks.map((park) => (
                       <ParkCard
@@ -224,7 +226,13 @@ export function FavoritesSection() {
             <>
               <div>
                 <h3 className="mb-4 text-lg font-semibold">{t('attractions')}</h3>
-                <LazyMount minHeight={64 + sortedFavorites.attractions.length * 340}>
+                <LazyMount
+                  grid={{
+                    count: sortedFavorites.attractions.length,
+                    rowHeight: 340,
+                    headerHeight: 64,
+                  }}
+                >
                   <div className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {sortedFavorites.attractions.map((attraction) => (
                       <AttractionCard

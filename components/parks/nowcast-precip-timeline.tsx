@@ -7,6 +7,7 @@ import { Clock, Droplets, Umbrella } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import type { WeatherNowcastStep } from '@/lib/api/types';
+import { formatTime, getDateTimeFormat } from '@/lib/utils/intl-format';
 
 interface NowcastPrecipTimelineProps {
   steps: WeatherNowcastStep[];
@@ -32,7 +33,7 @@ const HEAVY_LINE_PCT = (HEAVY_MIN_MM / SCALE_TOP_MM) * 100;
 
 /** Format an instant (ms) as a naive park-local ISO ("YYYY-MM-DDTHH:MM"). */
 function toLocalIso(ms: number, timezone: string): string {
-  return new Intl.DateTimeFormat('sv-SE', {
+  return getDateTimeFormat('sv-SE', {
     timeZone: timezone,
     year: 'numeric',
     month: '2-digit',
@@ -79,7 +80,7 @@ export const NowcastPrecipTimeline = memo(function NowcastPrecipTimeline({
   if (peakMm <= 0) return null;
 
   const fmtTime = (localIso: string) =>
-    new Date(`${localIso}Z`).toLocaleTimeString(locale, {
+    formatTime(new Date(`${localIso}Z`), locale, {
       hour: '2-digit',
       minute: '2-digit',
       timeZone: 'UTC',

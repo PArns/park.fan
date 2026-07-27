@@ -264,7 +264,14 @@ function AuthorPicker({
     <div className="border-border/60 hover:border-border bg-background/60 group flex items-center gap-3 rounded-xl border px-3 py-2 transition-colors">
       <div className="bg-primary/15 text-primary relative flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full text-sm font-semibold">
         {selected?.avatar ? (
-          <Image src={selected.avatar} alt={selected.name} fill className="object-cover" />
+          // 36 px avatar — `sizes` keeps next/image from serving a full-width rendition.
+          <Image
+            src={selected.avatar}
+            alt={selected.name}
+            fill
+            sizes="36px"
+            className="object-cover"
+          />
         ) : (
           (selected?.name ?? '?').charAt(0).toUpperCase()
         )}

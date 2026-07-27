@@ -229,8 +229,15 @@ const nextConfig: NextConfig = {
         'disneys-animal-kingdom-theme-park',
         'disney-animal-kingdom',
       ],
-      ['north-america/:country/:city', 'adventure-island', 'adventure-island-tampa'],
-      ['europe/:country/:city', 'toverland', 'attractiepark-toverland'],
+      // Upstream (ThemeParks Wiki) renamed these; the API answers only on the new slug.
+      // NOTE the direction — `toverland -> attractiepark-toverland` used to be listed the other
+      // way round, which sent the WORKING url to a 404 once upstream flipped the names.
+      ['europe/:country/:city', 'attractiepark-toverland', 'toverland'],
+      ['north-america/:country/:city', 'magic-kingdom-park', 'disney-magic-kingdom'],
+      ['north-america/:country/:city', 'disneys-hollywood-studios', 'disney-hollywood-studios'],
+      // 'adventure-island' -> 'adventure-island-tampa' was dropped: the park is gone from the
+      // API entirely (Tampa now lists only Busch Gardens and Islands of Adventure), so the rule
+      // only redirected one dead url to another. A plain 404 is the honest answer.
       ['asia/:country/:city', 'lotte-world', 'lotte-world-adventure'],
     ];
     for (const [scope, oldPark, newPark] of renamedParks) {

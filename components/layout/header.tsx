@@ -64,9 +64,13 @@ export function Header({ showBlog = true }: HeaderProps) {
   const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
+    // Only hero pages have a transparent-at-the-top header, so only they need the scroll
+    // listener — and only they need the initial measurement (on every other page `scrolled`
+    // is unused, and calling `check()` here queued a pointless state update + re-render of
+    // the whole header on each navigation).
+    if (!isHeroPage) return;
     const check = () => setScrolled(window.scrollY > 50);
     check();
-    if (!isHeroPage) return;
     const handleScroll = () => {
       if (rafRef.current !== null) return;
       rafRef.current = requestAnimationFrame(() => {
@@ -88,7 +92,13 @@ export function Header({ showBlog = true }: HeaderProps) {
 
   return (
     <header
-      className={`relative sticky top-0 z-50 h-14 border-b transition-[background-color,border-color,backdrop-filter] duration-500 ${
+      /* `backdrop-filter` is deliberately NOT in the transition list. Animating it made the
+         browser re-rasterize the blur of everything behind the full-width bar on every frame
+         for 500 ms each time the scroll crossed the 50 px threshold — by far the most expensive
+         repaint on the hero pages, and it repeats on every direction change up there. The blur
+         now snaps on/off (barely perceptible: the bar is still transparent when the fade starts)
+         while the colours keep cross-fading. */
+      className={`relative sticky top-0 z-50 h-14 border-b transition-[background-color,border-color] duration-500 ${
         isTransparent
           ? 'border-transparent bg-transparent'
           : 'border-border/50 bg-background/80 backdrop-blur-md'

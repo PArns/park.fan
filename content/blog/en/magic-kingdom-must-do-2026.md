@@ -24,11 +24,11 @@ coverImage:
   caption: 'Cinderella Castle, just before the evening crowd settles in.'
   credit: 'park.fan'
 relatedParks:
-  - magic-kingdom-park
+  - disney-magic-kingdom
 relatedAttractions:
-  - parkSlug: magic-kingdom-park
+  - parkSlug: disney-magic-kingdom
     slug: seven-dwarfs-mine-train
-  - parkSlug: magic-kingdom-park
+  - parkSlug: disney-magic-kingdom
     slug: space-mountain
 seo:
   title: 'Magic Kingdom 2026 — Six Must-Do Attractions Backed by Wait-Time Data'
@@ -41,10 +41,10 @@ The Magic Kingdom is the most-visited theme park on the planet, and that
 means almost every attraction has a queue. The honest question isn't _what's
 good_ — it's _what is good **enough** to wait 60+ minutes for_.
 
-I spent three full days at [Magic Kingdom](park:magic-kingdom-park) over
+I spent three full days at [Magic Kingdom](park:disney-magic-kingdom) over
 spring break. Here is the short list.
 
-```park-widget slug=magic-kingdom-park
+```park-widget slug=disney-magic-kingdom
 
 ```
 
@@ -55,7 +55,7 @@ spring break. Here is the short list.
 A family coaster that punches above its weight. The swinging ride vehicles
 make a moderate layout feel meaningfully wilder. The queue itself is one of
 Disney's best, but our wait-time chart for
-[Seven Dwarfs Mine Train](attraction:magic-kingdom-park/seven-dwarfs-mine-train)
+[Seven Dwarfs Mine Train](attraction:disney-magic-kingdom/seven-dwarfs-mine-train)
 makes it pretty clear that the only time to ride it standby is the **first
 30 minutes of park open**. After that, do it via Genie+ or skip it. The
 image on the left floats and the paragraph wraps around it — `left`
@@ -67,7 +67,7 @@ A 1975 ride that should not still hold up — and yet it does. The recent
 re-track quietly fixed the worst of the roughness. Best wait window is the
 **last 90 minutes before park close**, when the dinner crowd thins.
 
-```attraction-widget parkSlug=magic-kingdom-park slug=space-mountain
+```attraction-widget parkSlug=disney-magic-kingdom slug=space-mountain
 
 ```
 
@@ -86,7 +86,7 @@ mobile it falls back to a full-width block so nothing gets cramped.
 
 Refurb finished in late 2025 and the result is wonderful. Smoother track,
 upgraded mine sequence, new audio. Crowd levels at
-[Magic Kingdom](park:magic-kingdom-park) generally peak between 11:30 and
+[Magic Kingdom](park:disney-magic-kingdom) generally peak between 11:30 and
 14:00 — Big Thunder is your friend in those hours because Frontierland
 absorbs guests well.
 

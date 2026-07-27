@@ -11,6 +11,7 @@
 
 import { cache } from 'react';
 import { getGeoStructure } from '@/lib/api/discovery';
+import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 
 /**
  * O(1) park-slug → geo-path index for redirect lookups. Memoized per request via React `cache()`;
@@ -177,3 +178,37 @@ export const findRelocatedParkRedirect = cache(
 // from discovery endpoints. Attraction redirect lookups are no longer supported.
 // Attraction URLs under a relocated park are healed via findRelocatedParkRedirect
 // (the attraction page re-appends its own slug to the corrected park path).
+
+/**
+ * Canonical park path for a park the API DID return, when it differs from the path that was
+ * requested.
+ *
+ * Upstream renames regenerate a park's slug ("Attractiepark Toverland" → "Toverland",
+ * "Magic Kingdom Park" → "Disney Magic Kingdom"). The API records the old path and answers it
+ * with a 301, but `fetch` follows redirects transparently — so the park comes back happily
+ * under a request for the OLD path and we would render it there. That means two URLs serving
+ * the same park, the stale one staying canonical, and none of the redirect's ranking transfer
+ * actually reaching the browser or Googlebot.
+ *
+ * `findRelocatedParkRedirect` can't cover this: it matches on the park slug, which is exactly
+ * what changed. This compares the park's own `url` (always the current canonical path) against
+ * what was asked for, so it heals slug renames AND geo re-slugs in one check.
+ *
+ * Cheap and synchronous — no extra fetch, the park is already in hand.
+ *
+ * @returns The canonical park path, or null when the requested path is already canonical
+ *          (or the API gave us no usable `url`).
+ */
+export function findRenamedParkRedirect(
+  park: { url?: string | null },
+  requested: { continent: string; country: string; city: string; parkSlug: string }
+): string | null {
+  if (!park.url) return null;
+
+  const canonical = convertApiUrlToFrontendUrl(park.url);
+  // convertApiUrlToFrontendUrl yields '#' when it can't parse the URL — never redirect on that.
+  if (!canonical.startsWith('/parks/')) return null;
+
+  const requestedPath = `/parks/${requested.continent}/${requested.country}/${requested.city}/${requested.parkSlug}`;
+  return canonical === requestedPath ? null : canonical;
+}

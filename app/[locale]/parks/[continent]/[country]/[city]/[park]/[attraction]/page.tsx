@@ -37,7 +37,7 @@ import { isEveningBetter } from '@/lib/utils/rope-drop';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateAttractionBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { stripNewPrefix, cn } from '@/lib/utils';
-import { findRelocatedParkRedirect } from '@/lib/utils/redirect-utils';
+import { findRelocatedParkRedirect, findRenamedParkRedirect } from '@/lib/utils/redirect-utils';
 
 interface AttractionPageProps {
   params: Promise<{
@@ -79,6 +79,22 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
       }
     }
     return { title: tNotFound('attraction') };
+  }
+
+  // The park was renamed upstream: the API 301'd our request for the old path and `fetch`
+  // followed it, so `park` is valid but lives elsewhere now. Canonical points at the real
+  // attraction path; the page body issues the matching 308.
+  // `park` is non-null here (a null park means no attraction, handled above), but the
+  // narrowing doesn't survive the optional chain that produced `attraction`.
+  const renamedUrl = park
+    ? findRenamedParkRedirect(park, { continent, country, city, parkSlug })
+    : null;
+  if (renamedUrl) {
+    const tNotFound = await getTranslations({ locale, namespace: 'seo.notFound' });
+    return {
+      title: tNotFound('attraction'),
+      alternates: { canonical: `${SITE_URL}/${locale}${renamedUrl}/${attractionSlug}` },
+    };
   }
 
   // Numbered-suffix slugs (e.g. playground-2, behind-the-seams-3) are backend
@@ -198,6 +214,16 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
     const relocatedUrl = await findRelocatedParkRedirect(continent, country, city, parkSlug);
     if (relocatedUrl) {
       permanentRedirect(`/${locale}${relocatedUrl}/${attractionSlug}`);
+    }
+  }
+
+  // Renamed park (upstream slug change): the API 301'd the old path and `fetch` followed it,
+  // so the park resolved under a path it no longer owns. Send the visitor — and the attraction's
+  // accumulated ranking — to the current one instead of rendering a duplicate.
+  if (park) {
+    const renamedUrl = findRenamedParkRedirect(park, { continent, country, city, parkSlug });
+    if (renamedUrl) {
+      permanentRedirect(`/${locale}${renamedUrl}/${attractionSlug}`);
     }
   }
 

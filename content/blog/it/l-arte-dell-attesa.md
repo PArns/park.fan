@@ -121,8 +121,8 @@ Quello che sembra decorazione è in realtà psicologia cognitiva applicata.
 
 L'arma più elegante contro il tempo morto è il **pre-show**, che dichiara
 semplicemente l'attesa parte dell'attrazione. L'esempio da manuale sta ai
-[Disney's Hollywood Studios](ref:disneys-hollywood-studios?bare). Alla
-[Tower of Terror](ref:disneys-hollywood-studios/the-twilight-zone-tower-of-terror)
+[Disney's Hollywood Studios](ref:disney-hollywood-studios?bare). Alla
+[Tower of Terror](ref:disney-hollywood-studios/the-twilight-zone-tower-of-terror)
 non ti trascini lungo un corridoio: attraversi la hall impolverata
 dell'Hollywood Tower Hotel fino a una biblioteca dove un video in stile “Ai
 confini della realtà” racconta la storia dell'edificio. Fai in sostanza il
@@ -417,7 +417,7 @@ La risposta sta tutta nella matematica di cui sopra:
    cinque persone. È la capacità di trasporto di un ascensore medio,
    distribuita su un intero cielo notturno. I conteggi ufficiosi arrivano a
    circa **1.200 ospiti l'ora**, e la
-   [versione originale al Magic Kingdom](ref:magic-kingdom-park/peter-pans-flight?bare)
+   [versione originale al Magic Kingdom](ref:disney-magic-kingdom/peter-pans-flight?bare)
    arriva addirittura solo intorno a 800. Un solo treno dell'Hulk trasporta per
    partenza il doppio delle persone di quanti galeoni possieda Peter Pan. E per
    confronto in casa propria: Pirates of the Caribbean lì accanto ne inghiotte
@@ -437,7 +437,7 @@ Il fenomeno, tra l'altro, è misurabile in tutto il mondo. Ecco i tempi di
 attesa live della versione di Orlando nel parco più visitato al mondo,
 direttamente dai nostri dati:
 
-[Peter Pan's Flight](ref:magic-kingdom-park/peter-pans-flight?full)
+[Peter Pan's Flight](ref:disney-magic-kingdom/peter-pans-flight?full)
 
 ## L'Europa aspetta in modo diverso: Phantasialand ed Europa-Park contro Orlando
 
@@ -446,7 +446,7 @@ si vede più chiaramente nel confronto tra i pesi massimi, i grandi parchi
 europei contro i giganti di Orlando.
 
 **Orlando gioca in un campionato di domanda tutto suo.** Il
-[Magic Kingdom](ref:magic-kingdom-park?bare) è il parco divertimenti più
+[Magic Kingdom](ref:disney-magic-kingdom?bare) è il parco divertimenti più
 visitato al mondo, e sia Disney sia Universal attirano ospiti da tutti i
 continenti. A questo si aggiunge un fattore che l'Europa conosce a malapena con
 questa durezza: saltare la fila a pagamento. Lightning Lane ed Express Pass
@@ -500,12 +500,12 @@ poche attrazioni di punta.
 
 ```
 
-**E ora il [Magic Kingdom](ref:magic-kingdom-park?bare) a Orlando**, il parco
+**E ora il [Magic Kingdom](ref:disney-magic-kingdom?bare) a Orlando**, il parco
 più visitato al mondo: carico di base più alto, ma distribuito su decine di
 attrazioni. Nota quanto siano diversi già i minuti “tipici” e la curva
 stagionale nell'arco dell'anno.
 
-```stats-widget slug=magic-kingdom-park
+```stats-widget slug=disney-magic-kingdom
 
 ```
 
@@ -575,7 +575,7 @@ L'Europa-Park ha introdotto la sua **VirtualLine** all'inizio della pandemia di
 coronavirus nel 2020 e l'ha tenuta, perché semplicemente funziona: dall'app del
 parco prenoti gratis una fascia oraria per attrazioni come blue fire, Wodan o
 Voltron. Disney ha gestito mega novità come
-[Rise of the Resistance](ref:disneys-hollywood-studios/star-wars-rise-of-the-resistance?bare)
+[Rise of the Resistance](ref:disney-hollywood-studios/star-wars-rise-of-the-resistance?bare)
 o appunto Cosmic Rewind per anni interamente con i **boarding group**. Il
 principio è sempre lo stesso: stai in coda digitalmente mentre mangi, fai
 shopping o guardi uno spettacolo. La coda continua a esistere, semplicemente si

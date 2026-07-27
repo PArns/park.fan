@@ -116,6 +116,21 @@ built **research-first** and **verified from every camera perspective** before i
 
 ---
 
+## 13. Never build an `Intl` formatter per item
+
+`new Intl.DateTimeFormat(...)` (and `date.toLocaleTimeString(locale, opts)`, which builds one
+internally) is expensive — it resolves locale data and compiles a pattern, far more work than the
+`format()` call that follows. Building one per list item or per render adds up fast: the wait-time
+sparklines alone formatted 4 axis ticks x ~100 cards, all re-rendering together on the shared
+minute clock.
+
+Use the cached factories in **`lib/utils/intl-format.ts`** instead — `getDateTimeFormat`,
+`getNumberFormat`, `formatTime`. Same arguments return the same instance, so repeated formatting
+costs a map lookup. Constructing a formatter directly is only fine when it happens once per module
+or is already hoisted out of the loop.
+
+---
+
 ## Related
 
 - [Setup](setup.md)

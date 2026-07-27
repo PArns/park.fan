@@ -5,6 +5,7 @@ import { Star } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
 import { ParkTime } from '@/components/common/park-time';
 import type { BestVisitSlot } from '@/lib/api/types';
+import { formatTime } from '@/lib/utils/intl-format';
 
 function minutesUntil(isoStr: string): number {
   return Math.round((new Date(isoStr).getTime() - Date.now()) / 60_000);
@@ -37,7 +38,7 @@ export function AttractionCardBestTime({
           showSuffix
         />
       ) : (
-        new Date(bestSlot.time).toLocaleTimeString(locale, {
+        formatTime(new Date(bestSlot.time), locale, {
           hour: '2-digit',
           minute: '2-digit',
         })

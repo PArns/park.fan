@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -59,7 +60,7 @@ function formatSlotTime(hhmm: string, locale: string, timeSuffix: string): strin
     const [h, m] = hhmm.split(':').map(Number);
     const date = new Date();
     date.setHours(h, m, 0, 0);
-    return new Intl.DateTimeFormat('en', {
+    return getDateTimeFormat('en', {
       hour: 'numeric',
       minute: '2-digit',
       hour12: true,
@@ -69,7 +70,7 @@ function formatSlotTime(hhmm: string, locale: string, timeSuffix: string): strin
 }
 
 function getCurrentTimeSlotInTimezone(timezone: string): string {
-  const parts = new Intl.DateTimeFormat('en', {
+  const parts = getDateTimeFormat('en', {
     hour: 'numeric',
     minute: 'numeric',
     hour12: false,

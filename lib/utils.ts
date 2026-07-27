@@ -21,7 +21,7 @@ const GERMAN_NO_ARTICLE_SLUGS = new Set([
 
 /** Explicit article overrides by slug — takes precedence over name-based detection. */
 const GERMAN_ARTICLE_OVERRIDES: Record<string, 'der' | 'das'> = {
-  'magic-kingdom-park': 'das', // "das Magic Kingdom", not "der Magic Kingdom Park"
+  'disney-magic-kingdom': 'das', // "das Magic Kingdom", not "der Disney Magic Kingdom"
 };
 
 /**

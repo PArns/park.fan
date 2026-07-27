@@ -19,6 +19,7 @@ import { cn } from '@/lib/utils';
 import { useParkBestDaysCalendar } from '@/lib/hooks/use-park-best-days-calendar';
 import { useParkHistoricalStats } from '@/lib/hooks/use-park-historical-stats';
 import { ParkBestDaysSectionSkeleton } from '@/components/parks/park-best-days-section-skeleton';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 
 interface ParkBestDaysSectionProps {
   continent: string;
@@ -56,7 +57,7 @@ function getDayShort(dayIndex: number, locale: string): string {
   const refMonday = new Date(2025, 0, 6);
   const date = new Date(refMonday);
   date.setDate(refMonday.getDate() + ((dayIndex - 1 + 7) % 7));
-  return new Intl.DateTimeFormat(locale, { weekday: 'short' }).format(date).replace(/\.$/, '');
+  return getDateTimeFormat(locale, { weekday: 'short' }).format(date).replace(/\.$/, '');
 }
 
 function localizedParkName(parkName: string, parkSlug: string, locale: string): string {
@@ -387,7 +388,7 @@ function BestDaysContent({
                 {analysis.upcomingQuietDays.map((day) => {
                   const [y, m, d] = day.date.split('-').map(Number);
                   const date = new Date(y, m - 1, d);
-                  const label = new Intl.DateTimeFormat(locale, {
+                  const label = getDateTimeFormat(locale, {
                     weekday: 'short',
                     day: 'numeric',
                     month: 'short',

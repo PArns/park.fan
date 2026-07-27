@@ -5,6 +5,7 @@ import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { getAttractionDisplayStatus } from '@/lib/utils/park-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import type { ParkAttraction, ParkWithAttractions } from '@/lib/api/types';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 
 interface AttractionWaitOverviewProps {
   park: ParkWithAttractions;
@@ -61,7 +62,7 @@ export function AttractionWaitOverview({
   const stats = park.analytics?.statistics;
   const dataTimestamp = getDataTimestamp(park);
   const formattedTimestamp = dataTimestamp
-    ? new Intl.DateTimeFormat(locale, {
+    ? getDateTimeFormat(locale, {
         timeZone: park.timezone || 'UTC',
         day: 'numeric',
         month: 'numeric',

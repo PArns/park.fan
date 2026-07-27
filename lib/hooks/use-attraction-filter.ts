@@ -30,18 +30,20 @@ export function useAttractionFilter({
   const [showOffSeasonShows, setShowOffSeasonShows] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Clear search on Escape key
+  // Clear search on Escape key. The updater form reads the current query, so the listener has
+  // no dependencies — it used to depend on `searchQuery`, which tore down and re-attached a
+  // global `keydown` listener on EVERY keystroke, right in the middle of the typing path this
+  // hook otherwise works hard to keep responsive.
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && searchQuery) {
-        setSearchQuery('');
-        // Optional: blur input if desired, but keeping focus is usually better for UX
-      }
+      if (e.key !== 'Escape') return;
+      // Keep focus in the input — clearing without blurring is the better UX here.
+      setSearchQuery((q) => (q ? '' : q));
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [searchQuery]);
+  }, []);
 
   // Auto-focus on typing
   useEffect(() => {

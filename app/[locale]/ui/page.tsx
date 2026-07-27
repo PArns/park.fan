@@ -865,6 +865,9 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
             src="/images/parks/phantasialand/background.jpg"
             alt="Phantasialand background"
             fill
+            // Without `sizes`, a `fill` image defaults to `100vw` and next/image requests the
+            // widest device rendition (3840 px) on every viewport.
+            sizes="100vw"
             className="object-cover object-center"
             priority
           />

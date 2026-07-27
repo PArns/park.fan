@@ -33,8 +33,6 @@ Configured in `i18n/config.ts`.
 - `stats` – Statistics labels
 - `geo` – Geographic labels
 - `homepage` – Homepage
-- `calendar` – Calendar component
-- `admin` – Admin panel
 - `seo` – SEO metadata
 
 ## Usage
@@ -46,6 +44,27 @@ const t = useTranslations('parks');
 t('status.open'); // "Open"
 t('status.closed'); // "Closed"
 ```
+
+### Which namespaces reach the client
+
+The locale layout does **not** hand the full message bundle to `NextIntlClientProvider`. It ships
+only the namespaces listed in **`i18n/client-messages.ts`** (`CLIENT_MESSAGE_NAMESPACES`) — the
+full bundle is ~55 KB of JSON that would be serialized into every page's RSC payload, and most of
+it (`seo`, the server-rendered legal/marketing pages, …) is only ever read by Server Components.
+Trimming it saves ~10 KB per page response in all six locales.
+
+Rules of thumb:
+
+- **`getTranslations(...)` (server)** – works with any namespace, nothing to do.
+- **`useTranslations('x')`** – `x` must be reachable from the allowlist, whether or not the file
+  carries `'use client'`: a shared component without the directive inherits the client boundary
+  from whoever imports it. A missing namespace does **not** throw; next-intl logs
+  `MISSING_MESSAGE` and renders the raw key.
+- `pnpm check:client-messages` (part of `pnpm release:check`) enforces this. When a Server
+  Component becomes a Client Component, add its namespace to the list.
+
+Entries are either a whole top-level namespace (`'parks'`) or a subtree (`'seo.faq'`, kept under
+its original path so lookups are unchanged).
 
 ## Crowd Level "Normal"
 

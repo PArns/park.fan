@@ -35,7 +35,7 @@ const EXAMPLES: Example[] = [
     ride: 'blue fire Megacoaster',
     park: 'Europa-Park',
   },
-  { src: '/images/parks/attractiepark-toverland/troy.jpg', ride: 'Troy', park: 'Toverland' },
+  { src: '/images/parks/toverland/troy.jpg', ride: 'Troy', park: 'Toverland' },
   { src: '/images/parks/walibi-belgium/kondaa.jpg', ride: 'Kondaa', park: 'Walibi Belgium' },
 ];
 

@@ -204,7 +204,7 @@ function prettifyName(slug: string): string {
  * references `[label](park:slug)` / `[label](attraction:parkSlug/slug)` and
  * embedded widget fences such as
  *
- *   ```park-widget slug=magic-kingdom-park
+ *   ```park-widget slug=disney-magic-kingdom
  *   ```
  *   ```attraction-widget parkSlug=europa-park slug=voltron-nevera
  *   ```

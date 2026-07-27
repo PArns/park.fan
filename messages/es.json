@@ -806,16 +806,6 @@
       "rcdbTitle": "Datos técnicos en RCDB (Roller Coaster DataBase)"
     }
   },
-  "calendar": {
-    "legend": "Leyenda",
-    "holiday": "Día Festivo",
-    "bridgeDay": "Puente",
-    "recommended": "Recomendado",
-    "notRecommended": "No Recomendado",
-    "parkClosed": "Parque Cerrado",
-    "prevMonth": "Mes Anterior",
-    "nextMonth": "Mes Siguiente"
-  },
   "nearby": {
     "title": "Parques Cercanos",
     "enableDescription": "Habilita la ubicación para encontrar parques y atracciones cerca de ti.",
@@ -962,27 +952,6 @@
       "navigate": "Navegar",
       "select": "Seleccionar",
       "close": "Cerrar"
-    }
-  },
-  "admin": {
-    "title": "Panel Admin",
-    "ml": {
-      "title": "Panel IA",
-      "modelVersion": "Versión Modelo",
-      "accuracy": "Precisión",
-      "trainedAt": "Entrenado En",
-      "nextTraining": "Próximo Entren.",
-      "triggerTraining": "Iniciar Entren."
-    },
-    "system": {
-      "title": "Salud del Sistema",
-      "database": "Base de Datos",
-      "redis": "Redis",
-      "mlService": "Servicio IA",
-      "healthy": "Saludable",
-      "unhealthy": "No Saludable",
-      "flushCache": "Limpiar Caché",
-      "syncHolidays": "Sync Festivos"
     }
   },
   "languageBanner": {

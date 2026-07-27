@@ -152,7 +152,7 @@ Orlando : **Walt Disney World, Universal et SeaWorld**, le programme complet, l
 voyage d'une vie dont je rêvais depuis l'enfance. C'est un sentiment
 étrangement beau de voir le gamin du lac aux contes se tenir des décennies plus
 tard devant le Cinderella Castle du
-[Magic Kingdom](ref:magic-kingdom-park?bare). Tout plus grand, tout plus fort,
+[Magic Kingdom](ref:disney-magic-kingdom?bare). Tout plus grand, tout plus fort,
 tout plus loin de Brühl, et pourtant exactement le même frisson qu'autrefois
 dans la nacelle. Entre-temps,
 [Epic Universe](ref:universal-epic-universe?bare) dans son premier été, des
@@ -305,7 +305,7 @@ sous trois formes.
 
 **Récits de visite.** Longs, assumés, avec des photos, et avec de vraies données
 du parc précisément visité. Pas « c'était sympa », mais :
-« [Magic Kingdom](ref:magic-kingdom-park?bare), 15 mai, rope drop à 9 h 08,
+« [Magic Kingdom](ref:disney-magic-kingdom?bare), 15 mai, rope drop à 9 h 08,
 voilà le plan, ça a marché, ça s'est planté. » Le voyage à Orlando évoqué plus
 haut ouvre le bal : Disney World, Universal et SeaWorld, photos comprises.
 

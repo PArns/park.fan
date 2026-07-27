@@ -3,6 +3,7 @@
 import { useMemo } from 'react';
 import { useLocale } from 'next-intl';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
+import { formatTime } from '@/lib/utils/intl-format';
 
 interface HistoryPoint {
   timestamp: string;
@@ -77,8 +78,12 @@ export function WaitTimeSparklineCard({
     pathD += ` L ${x.toFixed(2)},${y.toFixed(2)}`;
   }
 
+  // Cached formatter: this ran `new Date(ms).toLocaleTimeString(locale, …)` — which builds a
+  // fresh Intl formatter internally — for each of the 4 ticks. A big park mounts ~100 of these
+  // sparklines and they all re-render together on the shared minute clock, so that was ~400
+  // formatter constructions every minute.
   const fmt = (ms: number) =>
-    new Date(ms).toLocaleTimeString(locale, {
+    formatTime(ms, locale, {
       hour: '2-digit',
       minute: '2-digit',
       hour12: false,

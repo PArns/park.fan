@@ -33,7 +33,11 @@ import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { PageContainer } from '@/components/common/page-container';
 import { GlassCard } from '@/components/common/glass-card';
 import { getOgImageUrl } from '@/lib/utils/og-image';
-import { findParkPageRedirect, findRelocatedParkRedirect } from '@/lib/utils/redirect-utils';
+import {
+  findParkPageRedirect,
+  findRelocatedParkRedirect,
+  findRenamedParkRedirect,
+} from '@/lib/utils/redirect-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import { LiveParkData } from '@/components/parks/live-park-data';
 import { ParkHeaderStats } from '@/components/parks/park-header-stats';
@@ -98,6 +102,17 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
       };
     }
     return { title: tNotFound('park') };
+  }
+
+  // The API 301s a renamed park's old path and `fetch` follows it, so we can be holding a park
+  // whose canonical path differs from the one requested. Point the canonical at the real path —
+  // the page body issues the matching 308.
+  const renamedUrl = findRenamedParkRedirect(park, { continent, country, city, parkSlug });
+  if (renamedUrl) {
+    return {
+      title: tNotFound('park'),
+      alternates: { canonical: `${SITE_URL}/${locale}${renamedUrl}` },
+    };
   }
 
   const ogImageUrl = getOgImageUrl([locale, continent, country, city, parkSlug]);
@@ -210,6 +225,15 @@ export default async function ParkPage({ params }: ParkPageProps) {
       permanentRedirect(`/${locale}${relocatedUrl}`);
     }
     notFound();
+  }
+
+  // The park exists but under a different path than requested: an upstream rename regenerated
+  // its slug and the API answered our request for the OLD path with a 301 that `fetch` followed
+  // silently. Without this the park would render at two URLs with the stale one canonical, and
+  // the redirect's ranking transfer would never reach the browser or Googlebot.
+  const renamedUrl = findRenamedParkRedirect(park, { continent, country, city, parkSlug });
+  if (renamedUrl) {
+    permanentRedirect(`/${locale}${renamedUrl}`);
   }
 
   // NOTE: bestDaysSeedPromise is intentionally NOT awaited here — see the comment where it's
@@ -450,6 +474,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
             parkSlug={parkSlug}
             landNames={landNames}
             attractionsByLand={attractionsByLand}
+            otherAttractionsLabel={otherAttractionsLabel}
             bestDaysSlot={
               // Streamed: the seeded best-days content arrives in the same response a beat after
               // the shell (skeleton shown until it lands), so the cold `/best-days` fetch never

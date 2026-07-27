@@ -144,7 +144,7 @@ vinkje achter stond. In mei 2026 zijn we eindelijk naar Orlando gevlogen:
 **Walt Disney World, Universal en SeaWorld**, het volle programma, de reis van
 eenmaal in je leven waarvan ik sinds mijn kindertijd droomde. Het is een
 eigenaardig mooi gevoel als de jongen van het sprookjesmeer decennia later voor
-Cinderella Castle in het [Magic Kingdom](ref:magic-kingdom-park?bare) staat.
+Cinderella Castle in het [Magic Kingdom](ref:disney-magic-kingdom?bare) staat.
 Alles groter, alles luider, alles verder weg van Brühl, en toch precies dezelfde
 kriebel als destijds in de gondel. Daartussen
 [Epic Universe](ref:universal-epic-universe?bare) in zijn eerste zomer,
@@ -283,7 +283,7 @@ vormen.
 
 **Reisverslagen.** Lang, met een mening, met foto's, en met echte data uit precies
 het park dat bezocht is. Geen “was leuk”, maar:
-“[Magic Kingdom](ref:magic-kingdom-park?bare), 15 mei, 09:08 uur rope drop, dat
+“[Magic Kingdom](ref:disney-magic-kingdom?bare), 15 mei, 09:08 uur rope drop, dat
 was het plan, dit werkte, dit ging fout.” De Orlando-reis van hierboven bijt het
 spits af: Disney World, Universal en SeaWorld, foto's inbegrepen.
 
