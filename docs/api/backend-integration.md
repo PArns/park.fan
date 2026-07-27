@@ -47,7 +47,13 @@ The API uses a **P50 (median) baseline** for crowd levels. A typical day or typi
 - **Frontend:** We display `moderate` as **"Normal"** in all locales (green, emerald).
 - **Translation keys:** e.g. `parks.crowdLevels.moderate`, `stats.crowd.moderate`.
 
-Other levels (`very_low`, `low`, `high`, `very_high`, `extreme`, `closed`) are shown with their translated labels and colors. See [Design System – Crowd Level Badges](../design/design-system.md#crowd-level-badges-filled) and [P50 Crowd Levels (Backend)](https://github.com/park-fan/v4.api.park.fan/blob/main/docs/analytics/p50-crowd-levels.md).
+Other levels (`very_low`, `low`, `high`, `very_high`, `extreme`, `closed`) are shown with their translated labels and colors. See [Design System – Crowd Level Badges](../design/design-system.md#crowd-level-badges-filled) and [Crowd Levels (Backend)](https://github.com/park-fan/v4.api.park.fan/blob/main/docs/analytics/crowd-levels.md).
+
+**`unknown` is not a tier.** The API sends it when a park or ride has no usable baseline to rate against (fewer than 30 operating days of headliner data, or a ride with no P50 row). Render it as a neutral "keine Prognose / no forecast" badge — never map it into the colored ladder, and never substitute `moderate`.
+
+**Never re-derive a crowd level in the frontend.** The park's live level is a baseline-weighted mean over the headliners reporting right now (`Σ current waits ÷ Σ their P50 baselines`), not something reconstructible from the wait times on screen. `analytics.statistics.crowdLevel` already carries the gated value; use it directly.
+
+**`analytics.occupancy.breakdown` is self-consistent.** `currentAvgWait` and `typicalAvgWait` are the same set of rides, so their quotient matches `occupancy.current`. If a park page ever shows the pair pointing one way and the percentage the other, that is a backend bug, not something to paper over client-side.
 
 ---
 

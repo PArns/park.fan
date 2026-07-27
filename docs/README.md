@@ -142,4 +142,4 @@ park.fan/
 - **API documentation:** [https://api.park.fan/api](https://api.park.fan/api)
 - **Live frontend:** [https://park.fan](https://park.fan)
 - **Backend repo:** [v4.api.park.fan](https://github.com/park-fan/v4.api.park.fan) (analog docs structure)
-- **P50 crowd levels (backend):** [docs/analytics/p50-crowd-levels.md](https://github.com/park-fan/v4.api.park.fan/blob/main/docs/analytics/p50-crowd-levels.md)
+- **Crowd levels (backend):** [docs/analytics/crowd-levels.md](https://github.com/park-fan/v4.api.park.fan/blob/main/docs/analytics/crowd-levels.md)

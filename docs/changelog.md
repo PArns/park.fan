@@ -4,6 +4,33 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – backend: park crowd levels now measure the park, not its busiest ride
+
+No frontend code change, but the numbers on the park page move — worth knowing when a
+screenshot from before this date disagrees with the live site.
+
+The API's live park level used to be the P90 *across* the per-headliner ratios, which over a
+ten-ride headliner set is effectively the second-busiest ride. Phantasialand rendered **`high`**
+while Taron and F.L.Y. both sat at 20 min against 45/40-min baselines. It is now a
+baseline-weighted mean (`Σ current waits ÷ Σ their P50 baselines`) — the same afternoon reads
+`low`. Expect quiet days to actually read quiet now; the badge ladder and colors are unchanged.
+
+Three payload inconsistencies the page was rendering verbatim are also gone:
+`analytics.occupancy.breakdown` now divides out to `occupancy.current` (it could show "25 min now
+/ 30 min typical" beside "+23 % busier"), `statistics.avgWaitToday` can no longer exceed
+`peakWaitToday`, and the calendar's per-day headliner figure is the same statistic on both sides
+of today (past days were a daily average, future days a daily peak — a ~25 min step at the
+today/tomorrow seam that read as "next week will be busier").
+
+More surfaces now send **`unknown`** instead of a placeholder `moderate` — parks and rides
+without a usable baseline. `CrowdLevelBadge` already renders it as "keine Prognose"; just don't
+map it into the colored ladder anywhere new.
+
+→ [Backend Integration – Crowd Levels](api/backend-integration.md#crowd-levels-p50--normal),
+[Crowd Levels (backend)](https://github.com/park-fan/v4.api.park.fan/blob/main/docs/analytics/crowd-levels.md)
+
+---
+
 ## Unreleased – fix: late-load flicker sweep (homepage, park-page weather, search)
 
 Fixes the remaining "flickers once or twice a few seconds after load" reports. Root causes were
@@ -856,7 +883,7 @@ cache). Details: [cache-components-migration](architecture/cache-components-migr
 
 - API returns `moderate` for typical day (P50 baseline); frontend displays **"Normal"** (green) in all locales.
 
-→ [Backend Integration – Crowd Levels](api/backend-integration.md#crowd-levels-p50--normal), [Backend P50 doc](https://github.com/park-fan/v4.api.park.fan/blob/main/docs/analytics/p50-crowd-levels.md)
+→ [Backend Integration – Crowd Levels](api/backend-integration.md#crowd-levels-p50--normal), [Backend crowd-levels doc](https://github.com/park-fan/v4.api.park.fan/blob/main/docs/analytics/crowd-levels.md)
 
 ---
 

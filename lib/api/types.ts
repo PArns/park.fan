@@ -11,9 +11,11 @@ export interface BestVisitSlot {
   rating: 'optimal' | 'good';
 }
 // Queue types moved to QueueDataItem definition area
-// 'unknown' = "keine Prognose": the park is not ratable yet (< 30 operating
-// days of headliner data → API sends typicalDayPeak=NULL). Rendered as a neutral
-// "no forecast" badge, never as a real crowd tier.
+// 'unknown' = "keine Prognose": there is no usable baseline to rate against —
+// the park is not ratable yet (< 30 operating days of headliner data → API sends
+// typicalDayPeak=NULL), or the ride has no P50 row of its own. Rendered as a
+// neutral "no forecast" badge, never as a real crowd tier and never swapped for
+// 'moderate'.
 export type CrowdLevel =
   'very_low' | 'low' | 'moderate' | 'high' | 'very_high' | 'extreme' | 'unknown';
 export type AccuracyBadge = 'excellent' | 'good' | 'fair' | 'poor' | 'insufficient_data';
