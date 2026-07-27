@@ -58,6 +58,13 @@ function getStatus(
 ): AttractionStatus | 'UNKNOWN' {
   if (parkStatus === 'UNKNOWN') return 'UNKNOWN';
   if (parkStatus && parkStatus !== 'OPERATING') return 'CLOSED';
+  // Park-aware status from the API — the only source that knows the park has
+  // closed. Queue rows keep their last value when a source stops publishing at
+  // closing time, so they would still read OPERATING hours later. Cards without
+  // a `parkStatus` prop (favorites) depend on this.
+  if ('effectiveStatus' in attraction && attraction.effectiveStatus) {
+    return attraction.effectiveStatus as AttractionStatus;
+  }
   const standby = attraction.queues?.find((q) => q.queueType === 'STANDBY');
   if (standby && 'status' in standby) {
     return (
