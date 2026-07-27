@@ -806,16 +806,6 @@
       "rcdbTitle": "Technical ride facts on RCDB (Roller Coaster DataBase)"
     }
   },
-  "calendar": {
-    "legend": "Legend",
-    "holiday": "Holiday",
-    "bridgeDay": "Bridge Day",
-    "recommended": "Recommended",
-    "notRecommended": "Not Recommended",
-    "parkClosed": "Park Closed",
-    "prevMonth": "Previous Month",
-    "nextMonth": "Next Month"
-  },
   "nearby": {
     "title": "Nearby Parks",
     "enableDescription": "Enable location access to find parks and attractions near you.",
@@ -962,27 +952,6 @@
       "navigate": "Navigate",
       "select": "Select",
       "close": "Close"
-    }
-  },
-  "admin": {
-    "title": "Admin Dashboard",
-    "ml": {
-      "title": "AI Dashboard",
-      "modelVersion": "Model Version",
-      "accuracy": "Accuracy",
-      "trainedAt": "Trained At",
-      "nextTraining": "Next Training",
-      "triggerTraining": "Trigger Training"
-    },
-    "system": {
-      "title": "System Health",
-      "database": "Database",
-      "redis": "Redis",
-      "mlService": "AI Service",
-      "healthy": "Healthy",
-      "unhealthy": "Unhealthy",
-      "flushCache": "Flush Cache",
-      "syncHolidays": "Sync Holidays"
     }
   },
   "languageBanner": {

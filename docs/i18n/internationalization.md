@@ -33,8 +33,6 @@ Configured in `i18n/config.ts`.
 - `stats` – Statistics labels
 - `geo` – Geographic labels
 - `homepage` – Homepage
-- `calendar` – Calendar component
-- `admin` – Admin panel
 - `seo` – SEO metadata
 
 ## Usage

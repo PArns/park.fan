@@ -11,6 +11,7 @@ import {
   showIcon,
   restaurantIcon,
 } from '@/lib/utils/leaflet-icons';
+import { formatTime } from '@/lib/utils/intl-format';
 
 // Returns the next future showtime as a Date, or null if none remain
 export function getNextShowtimeDate(show: ParkShow): Date | null {
@@ -97,7 +98,10 @@ interface ShowMarkersProps {
   timezone: string;
 }
 
-export function ShowMarkers({ shows, timezone }: ShowMarkersProps) {
+// Memoized like its two siblings — it was the only marker layer left unmemoized, so it
+// re-rendered (rebuilding a Leaflet Popup and running getNextShowtimeDate per show) on every
+// ParkMap render. Its props are `useMemo`-stable at the call site.
+export const ShowMarkers = memo(function ShowMarkers({ shows, timezone }: ShowMarkersProps) {
   const t = useTranslations('parks.mapMarkers');
   const locale = useLocale();
 
@@ -114,7 +118,7 @@ export function ShowMarkers({ shows, timezone }: ShowMarkersProps) {
                 return nextShowtime ? (
                   <div className="mt-1 text-xs">
                     {t('nextShowtime')}:{' '}
-                    {nextShowtime.toLocaleTimeString(locale, {
+                    {formatTime(nextShowtime, locale, {
                       hour: '2-digit',
                       minute: '2-digit',
                       timeZone: timezone,
@@ -128,7 +132,7 @@ export function ShowMarkers({ shows, timezone }: ShowMarkersProps) {
       ))}
     </>
   );
-}
+});
 
 interface RestaurantMarkersProps {
   restaurants: ParkRestaurant[];

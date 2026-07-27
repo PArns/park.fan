@@ -1,0 +1,26 @@
+/* Breakpoint-aware placeholder height for <LazyMount grid={…}>.
+ *
+ * The reserved height must follow the card grid's column count
+ * (`grid-cols-1 sm:grid-cols-2 lg:grid-cols-3`), otherwise a desktop visitor gets ~3x the
+ * space the content will actually occupy and the scrollbar jumps when the section mounts.
+ * The three candidate heights are computed in JS and handed over as custom properties;
+ * only the media queries live here, since inline styles can't carry them.
+ *
+ * Breakpoints mirror Tailwind v4's defaults (`sm` = 40rem, `lg` = 64rem) — the project
+ * doesn't override them in `@theme`.
+ */
+.lazy-mount-reserve {
+  min-height: var(--lm-h-1);
+}
+
+@media (min-width: 40rem) {
+  .lazy-mount-reserve {
+    min-height: var(--lm-h-2);
+  }
+}
+
+@media (min-width: 64rem) {
+  .lazy-mount-reserve {
+    min-height: var(--lm-h-3);
+  }
+}

@@ -123,6 +123,15 @@ async function buildGeoMap() {
   return map;
 }
 
+/**
+ * Attraction names by slug for a park, or `null` when the lookup FAILED.
+ *
+ * The null/{} distinction matters: this used to return `{}` on error, which is indistinguishable
+ * from "the park genuinely has no attractions". A single transient API blip therefore silently
+ * stripped `attractionName` from every one of that park's hero images — the caption on the
+ * homepage hero quietly lost the ride name, and the regenerated (committed) file showed it as an
+ * intentional deletion. Callers now keep the previously generated names when this returns null.
+ */
 async function fetchAttractionNames(parkUrl) {
   try {
     const park = await fetchJson(`${API_BASE}${parkUrl}`);
@@ -133,8 +142,29 @@ async function fetchAttractionNames(parkUrl) {
     return bySlug;
   } catch (e) {
     console.warn(`  ⚠️  Could not fetch attractions for ${parkUrl}: ${e.message}`);
-    return {};
+    return null;
   }
+}
+
+/**
+ * Previously generated `attractionName` values, keyed by image path, read back out of the
+ * existing lib/hero-images-meta.ts. Used only as the fallback described above — the format is
+ * emitted by generateMetaFile() in this same file, so parsing it is safe.
+ */
+function readPreviousAttractionNames() {
+  const previous = {};
+  try {
+    const source = fs.readFileSync(META_OUTPUT, 'utf8');
+    const entry = /'([^']+)':\s*\{([\s\S]*?)\n  \},/g;
+    let match;
+    while ((match = entry.exec(source)) !== null) {
+      const name = match[2].match(/attractionName:\s*'((?:[^'\\]|\\.)*)'/);
+      if (name) previous[match[1]] = name[1].replace(/\\'/g, "'");
+    }
+  } catch {
+    // No previous file (fresh checkout / first run) — nothing to preserve.
+  }
+  return previous;
 }
 
 // --- code generation ---
@@ -215,6 +245,7 @@ async function main() {
   }
 
   const byPark = groupByPark(images);
+  const previousAttractionNames = readPreviousAttractionNames();
   const meta = {};
 
   for (const [parkSlug, parkImages] of Object.entries(byPark)) {
@@ -226,6 +257,9 @@ async function main() {
 
     console.log(`   Fetching attractions for ${parkSlug}...`);
     const attractionsBySlug = await fetchAttractionNames(parkInfo.url);
+    if (attractionsBySlug === null) {
+      console.warn(`   ↩︎  ${parkSlug}: keeping previously generated attraction names`);
+    }
 
     for (const imagePath of parkImages) {
       const filename = imagePath.split('/').pop();
@@ -233,7 +267,13 @@ async function main() {
       const attractionSlug = path.basename(filename, ext);
       const isBackground = attractionSlug === 'background';
 
-      const attractionName = isBackground ? undefined : attractionsBySlug[attractionSlug];
+      // On a failed lookup fall back to the last generated name instead of dropping it; a
+      // SUCCESSFUL lookup that lacks the slug is a real removal/rename and is honoured.
+      const attractionName = isBackground
+        ? undefined
+        : attractionsBySlug === null
+          ? previousAttractionNames[imagePath]
+          : attractionsBySlug[attractionSlug];
       const area = isBackground ? undefined : AREA_OVERRIDES[`${parkSlug}/${attractionSlug}`];
 
       meta[imagePath] = {

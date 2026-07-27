@@ -4,6 +4,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Hourglass } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { DayOfWeekWait, TypicalWaitBucket, TypicalWaits } from '@/lib/api/types';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 
 interface AttractionTypicalWaitsProps {
   typicalWaits?: TypicalWaits | null;
@@ -17,14 +18,14 @@ const DISPLAY_ORDER = [1, 2, 3, 4, 5, 6, 0];
 function dayLabel(dayOfWeek: number, locale: string): string {
   // 2024-01-07 is a Sunday; + dayOfWeek lands on the right weekday.
   const d = new Date(Date.UTC(2024, 0, 7 + dayOfWeek));
-  return new Intl.DateTimeFormat(locale, { weekday: 'short', timeZone: 'UTC' }).format(d);
+  return getDateTimeFormat(locale, { weekday: 'short', timeZone: 'UTC' }).format(d);
 }
 
 function formatPeakDate(date: string, locale: string): string {
   // Date-only string — anchor at noon to avoid a timezone day-shift.
   const d = new Date(`${date}T12:00:00`);
   if (Number.isNaN(d.getTime())) return date;
-  return new Intl.DateTimeFormat(locale, {
+  return getDateTimeFormat(locale, {
     day: 'numeric',
     month: 'short',
     year: 'numeric',

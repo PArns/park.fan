@@ -10,6 +10,7 @@ import { Temp, Precip } from '@/components/common/unit-display';
 import { HeatWarningBadge, isHeatWarning } from './heat-warning-badge';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import type { ScheduleItem, WeatherHourlyPoint, WeatherNowcast } from '@/lib/api/types';
+import { formatTime, getDateTimeFormat } from '@/lib/utils/intl-format';
 
 interface WeatherHourlyChartProps {
   /** Today's hourly points (naive park-local times, ascending). */
@@ -91,7 +92,7 @@ function tempColorAt(t: number): string {
 
 /** Format an instant (ms) as a naive park-local ISO ("YYYY-MM-DDTHH:MM"). */
 function toLocalIso(ms: number, timezone: string): string {
-  return new Intl.DateTimeFormat('sv-SE', {
+  return getDateTimeFormat('sv-SE', {
     timeZone: timezone,
     year: 'numeric',
     month: '2-digit',
@@ -305,13 +306,13 @@ export function WeatherHourlyChart({
   }
 
   const fmtTime = (localIso: string) =>
-    new Date(`${localIso}Z`).toLocaleTimeString(locale, {
+    formatTime(new Date(`${localIso}Z`), locale, {
       hour: '2-digit',
       minute: '2-digit',
       timeZone: 'UTC',
     });
   const fmtHour = (localIso: string) =>
-    new Date(`${localIso}Z`).toLocaleTimeString(locale, {
+    formatTime(new Date(`${localIso}Z`), locale, {
       hour: 'numeric',
       timeZone: 'UTC',
     });

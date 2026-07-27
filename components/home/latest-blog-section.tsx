@@ -10,7 +10,9 @@ interface LatestBlogSectionProps {
   limit?: number;
 }
 
-export async function LatestBlogSection({ locale, limit = 3 }: LatestBlogSectionProps) {
+// 6 fills exactly two rows of the 3-column grid below (and three rows of the
+// 2-column `sm` layout), so the section never ends on a ragged half-row.
+export async function LatestBlogSection({ locale, limit = 6 }: LatestBlogSectionProps) {
   const t = await getTranslations('blog');
   const posts = listPosts(locale).slice(0, limit);
   if (posts.length === 0) return null;

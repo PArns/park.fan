@@ -5,6 +5,7 @@ import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { Link } from '@/i18n/navigation';
 import type { CountrySummary } from '@/lib/api/types';
 import { scoreToCrowdLevel } from '@/lib/utils/crowd-analysis';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 
 interface CountrySummarySectionProps {
   summary: CountrySummary;
@@ -13,9 +14,8 @@ interface CountrySummarySectionProps {
 }
 
 function MonthList({ months, locale }: { months: number[]; locale: string }) {
-  const names = months.map((m) =>
-    new Intl.DateTimeFormat(locale, { month: 'long' }).format(new Date(2024, m - 1, 1))
-  );
+  const fmt = getDateTimeFormat(locale, { month: 'long' });
+  const names = months.map((m) => fmt.format(new Date(2024, m - 1, 1)));
   return <span className="capitalize">{names.join(', ')}</span>;
 }
 

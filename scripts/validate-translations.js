@@ -58,7 +58,7 @@ function findTranslationUsageInFile(filePath) {
 
   // Regex to find t('key'), tCommon('key'), etc.
   const regex =
-    /(?:t|tCommon|tParks|tGeo|tExplore|tHome|tSearch|tAttractions|tStatus|tCalendar|tAdmin|tFooter|tNavigation|tTheme|tSeo)\s*\(\s*['"`]([^'"`\)]+)['"`]/g;
+    /(?:t|tCommon|tParks|tGeo|tExplore|tHome|tSearch|tAttractions|tStatus|tFooter|tNavigation|tTheme|tSeo)\s*\(\s*['"`]([^'"`\)]+)['"`]/g;
 
   lines.forEach((line, index) => {
     let match;
@@ -180,12 +180,10 @@ usageByKey.forEach((usages, key) => {
       'theme',
       'parks',
       'attractions',
-      'calendar',
       'geo',
       'stats',
       'homepage',
       'search',
-      'admin',
       'seo',
       'favorites',
       'impressum',

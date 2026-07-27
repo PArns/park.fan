@@ -9,6 +9,7 @@ import { ParkStatsSectionSkeleton } from '@/components/parks/park-stats-section-
 import { useParkHistoricalStats } from '@/lib/hooks/use-park-historical-stats';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import type { ParkHistoricalStats } from '@/lib/api/types';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 
 interface ParkStatsSectionProps {
   continent: string;
@@ -84,7 +85,7 @@ function StatsContent({
   // to the page-wide fetch count), and Intl.DateTimeFormat construction per row is the
   // expensive part.
   const monthRows = useMemo(() => {
-    const fmt = new Intl.DateTimeFormat(locale, { month: 'long' });
+    const fmt = getDateTimeFormat(locale, { month: 'long' });
     return stats.byMonth.map((m) => ({
       key: m.month,
       label: fmt.format(new Date(2024, m.month - 1, 1)),
@@ -96,7 +97,7 @@ function StatsContent({
 
   const dowRows = useMemo(() => {
     const refMonday = new Date(2025, 0, 6);
-    const fmt = new Intl.DateTimeFormat(locale, { weekday: 'long' });
+    const fmt = getDateTimeFormat(locale, { weekday: 'long' });
     return stats.byDayOfWeek
       .map((d) => {
         const offset = (d.dayOfWeek - 1 + 7) % 7;

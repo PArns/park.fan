@@ -2,6 +2,7 @@
 
 import { useMemo } from 'react';
 import { useMounted } from '@/lib/hooks/use-mounted';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import type {
   AttractionHistoryDay,
   ForecastItem,
@@ -22,7 +23,7 @@ interface DailyWaitTimeChartClientProps {
 /** Returns the time string (HH:mm) in the given IANA timezone from an ISO string, rounded to 15m. */
 function getTimeSlotInTimezone(isoStr: string, timezone: string): string {
   const date = new Date(isoStr);
-  const parts = new Intl.DateTimeFormat('en', {
+  const parts = getDateTimeFormat('en', {
     hour: 'numeric',
     minute: 'numeric',
     hour12: false,
@@ -36,7 +37,7 @@ function getTimeSlotInTimezone(isoStr: string, timezone: string): string {
 
 /** Today's date as YYYY-MM-DD in the given IANA timezone. */
 function getTodayInTimezone(timezone: string): string {
-  return new Intl.DateTimeFormat('en-CA', { timeZone: timezone }).format(new Date());
+  return getDateTimeFormat('en-CA', { timeZone: timezone }).format(new Date());
 }
 
 /**
@@ -80,28 +81,24 @@ function buildChartData(
   if (todaySchedule) {
     if (todaySchedule.openingTime) {
       const date = new Date(todaySchedule.openingTime);
-      const h = new Intl.DateTimeFormat('en', {
+      const h = getDateTimeFormat('en', {
         hour: 'numeric',
         hour12: false,
         timeZone: timezone,
       }).format(date);
-      const m = new Intl.DateTimeFormat('en', { minute: 'numeric', timeZone: timezone }).format(
-        date
-      );
+      const m = getDateTimeFormat('en', { minute: 'numeric', timeZone: timezone }).format(date);
       // Round down to nearest 15m
       const roundedM = Math.floor(parseInt(m, 10) / 15) * 15;
       startTime = `${h.padStart(2, '0')}:${roundedM.toString().padStart(2, '0')}`;
     }
     if (todaySchedule.closingTime) {
       const date = new Date(todaySchedule.closingTime);
-      const h = new Intl.DateTimeFormat('en', {
+      const h = getDateTimeFormat('en', {
         hour: 'numeric',
         hour12: false,
         timeZone: timezone,
       }).format(date);
-      const m = new Intl.DateTimeFormat('en', { minute: 'numeric', timeZone: timezone }).format(
-        date
-      );
+      const m = getDateTimeFormat('en', { minute: 'numeric', timeZone: timezone }).format(date);
       // Round up to nearest 15m
       const roundedM = Math.ceil(parseInt(m, 10) / 15) * 15;
       let finalH = parseInt(h, 10);

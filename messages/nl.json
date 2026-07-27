@@ -806,16 +806,6 @@
       "rcdbTitle": "Technische gegevens op RCDB (Roller Coaster DataBase)"
     }
   },
-  "calendar": {
-    "legend": "Legenda",
-    "holiday": "Feestdag",
-    "bridgeDay": "Brugdag",
-    "recommended": "Aanbevolen",
-    "notRecommended": "Niet Aanbevolen",
-    "parkClosed": "Park Gesloten",
-    "prevMonth": "Vorige Maand",
-    "nextMonth": "Volgende Maand"
-  },
   "nearby": {
     "title": "Parken in de Buurt",
     "enableDescription": "Schakel locatietoegang in om parken en attracties bij jou in de buurt te vinden.",
@@ -962,27 +952,6 @@
       "navigate": "Navigeren",
       "select": "Selecteren",
       "close": "Sluiten"
-    }
-  },
-  "admin": {
-    "title": "Admin Dashboard",
-    "ml": {
-      "title": "AI Dashboard",
-      "modelVersion": "Model Versie",
-      "accuracy": "Nauwkeurigheid",
-      "trainedAt": "Getraind Op",
-      "nextTraining": "Volgende Training",
-      "triggerTraining": "Start Training"
-    },
-    "system": {
-      "title": "Systeem Gezondheid",
-      "database": "Database",
-      "redis": "Redis",
-      "mlService": "AI Service",
-      "healthy": "Gezond",
-      "unhealthy": "Ongezond",
-      "flushCache": "Cache Legen",
-      "syncHolidays": "Feestdagen Syncen"
     }
   },
   "languageBanner": {

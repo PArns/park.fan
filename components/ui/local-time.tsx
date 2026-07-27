@@ -1,6 +1,7 @@
 'use client';
 
 import { useLocale } from 'next-intl';
+import { formatTime } from '@/lib/utils/intl-format';
 
 interface LocalTimeProps {
   /** ISO 8601 date string */
@@ -37,7 +38,7 @@ export function LocalTime({
 
   try {
     // Format the string first
-    formattedTime = date.toLocaleTimeString(locale, {
+    formattedTime = formatTime(date, locale, {
       ...format,
       timeZone,
     });

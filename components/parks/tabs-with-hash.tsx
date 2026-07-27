@@ -205,12 +205,12 @@ export const TabsWithHash = memo(function TabsWithHash({
                   // Lazy-mount every land below the first so a big park's 100+ glass cards no
                   // longer all render at once (excessive DOM + mobile paint/compositing cost).
                   // While searching, render every matching land eagerly so no result is hidden
-                  // behind a placeholder. minHeight ≈ the single-column mobile height so the
-                  // scroll length stays stable and sections below mount off-screen.
+                  // behind a placeholder. The reservation follows the grid's column count per
+                  // breakpoint so the scroll length stays stable on desktop too.
                   <LazyMount
                     key={landName}
                     eager={index === 0 || isSearching}
-                    minHeight={64 + attractions.length * 340}
+                    grid={{ count: attractions.length, rowHeight: 340, headerHeight: 64 }}
                   >
                     <LandSection
                       landName={landName}
