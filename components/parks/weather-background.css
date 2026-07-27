@@ -177,6 +177,18 @@
   position: absolute;
   border-radius: 50%;
   background: #ffffff;
+}
+
+/* The twinkle runs on a handful of GROUP wrappers, never on the stars themselves.
+   Chromium will not hand 38 tiny spans their own compositor layers, so 38 individual
+   opacity animations fall back to the main thread and force a style recalc per element
+   per frame — measured at ~1500 ms of style recalc per 30 idle seconds on a 4x-throttled
+   Pixel 5, roughly 95 % of everything the park page did while sitting still. Animating a
+   few wrappers instead cuts that to ~200 ms. (`will-change: opacity` on the spans does
+   not help; it was measured too.) */
+.weather-bg__star-group {
+  position: absolute;
+  inset: 0;
   animation-name: weather-twinkle;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
@@ -375,7 +387,7 @@ html.dark .weather-bg__glass {
   .weather-bg__fog span,
   .weather-bg__flash,
   .weather-bg__bolt,
-  .weather-bg__stars span {
+  .weather-bg__star-group {
     animation: none !important;
   }
 }
@@ -391,6 +403,6 @@ html.dark .weather-bg__glass {
 .weather-bg[data-paused='true'] .weather-bg__fog span,
 .weather-bg[data-paused='true'] .weather-bg__flash,
 .weather-bg[data-paused='true'] .weather-bg__bolt,
-.weather-bg[data-paused='true'] .weather-bg__stars span {
+.weather-bg[data-paused='true'] .weather-bg__star-group {
   animation-play-state: paused;
 }

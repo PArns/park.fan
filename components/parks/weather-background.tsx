@@ -56,6 +56,16 @@ const HAS_CELESTIAL: WeatherScene[] = ['clear', 'partly-cloudy'];
 
 const STAR_COUNT = 38;
 
+/* Phase groups for the twinkle. Each group is ONE animated wrapper holding a share of the
+   stars, so the scene runs 3 opacity animations instead of 38 — see the note in
+   weather-background.css for the measurement. Distinct durations keep them out of sync, so
+   the field still reads as individual stars flickering rather than one pulsing block. */
+const STAR_GROUPS = [
+  { duration: 2.6, delay: 0 },
+  { duration: 3.7, delay: -1.3 },
+  { duration: 5.1, delay: -2.6 },
+] as const;
+
 export const WeatherBackground = memo(function WeatherBackground({
   code,
   isDay = true,
@@ -78,9 +88,7 @@ export const WeatherBackground = memo(function WeatherBackground({
   // window → empty; client: 40 star spans) — a hydration mismatch that forced React
   // to re-create the subtree on night scenes. An effect keeps SSR and the hydration
   // render identical (both empty); the stars appear right after mount.
-  const [stars, setStars] = useState<
-    { top: number; left: number; size: number; duration: number; delay: number }[]
-  >([]);
+  const [stars, setStars] = useState<{ top: number; left: number; size: number }[]>([]);
   useEffect(() => {
     if (!showCelestial) return;
     setStars((prev) =>
@@ -90,8 +98,6 @@ export const WeatherBackground = memo(function WeatherBackground({
             top: Math.random() * 58,
             left: Math.random() * 100,
             size: 1 + Math.random() * 1.8,
-            duration: 2.5 + Math.random() * 3,
-            delay: -Math.random() * 4,
           }))
     );
   }, [showCelestial]);
@@ -245,20 +251,33 @@ export const WeatherBackground = memo(function WeatherBackground({
 
       {showCelestial && !day && (
         <div className="weather-bg__stars">
-          {stars.map((star, index) => (
-            <span
-              key={index}
+          {STAR_GROUPS.map((group, groupIndex) => (
+            <div
+              key={groupIndex}
+              className="weather-bg__star-group"
               style={
                 {
-                  top: `${star.top}%`,
-                  left: `${star.left}%`,
-                  width: `${star.size}px`,
-                  height: `${star.size}px`,
-                  animationDuration: `${star.duration}s`,
-                  animationDelay: `${star.delay}s`,
+                  animationDuration: `${group.duration}s`,
+                  animationDelay: `${group.delay}s`,
                 } as CSSProperties
               }
-            />
+            >
+              {stars
+                .filter((_, index) => index % STAR_GROUPS.length === groupIndex)
+                .map((star, index) => (
+                  <span
+                    key={index}
+                    style={
+                      {
+                        top: `${star.top}%`,
+                        left: `${star.left}%`,
+                        width: `${star.size}px`,
+                        height: `${star.size}px`,
+                      } as CSSProperties
+                    }
+                  />
+                ))}
+            </div>
           ))}
         </div>
       )}
