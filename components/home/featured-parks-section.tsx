@@ -109,6 +109,19 @@ export function extractFeaturedParks(geoData: GeoStructure | null, locale: strin
     }
   }
 
+  // A slug that no longer exists in the geo structure used to vanish here without a trace —
+  // that is how the "Magic Kingdom Park" -> "Disney Magic Kingdom" rename quietly removed the
+  // #1 featured park for English visitors, and the `portaventura-world` typo kept it/es one park
+  // short for far longer. The list above is hand-curated, so an unresolved slug is always a bug
+  // in it (or a rename to follow) — say so instead of silently shipping a shorter row.
+  const missing = slugs.filter((slug) => !slugMap.has(slug));
+  if (missing.length > 0) {
+    console.warn(
+      `[featured-parks] ${locale}: ${missing.length} slug(s) not in the geo structure — ` +
+        `${missing.join(', ')}. Renamed upstream? Update FEATURED_PARK_SLUGS.`
+    );
+  }
+
   // Return in the defined locale order (preserves relevance ranking)
   return slugs.map((slug) => slugMap.get(slug)).filter((p): p is FeaturedPark => !!p);
 }
