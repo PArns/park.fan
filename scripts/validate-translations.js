@@ -222,6 +222,49 @@ if (missingKeys.length > 0) {
   // We don't fail just for code usage missing in keys if they were already missing before
 }
 
+// ── languageBanner mirror check ─────────────────────────────────────────────
+// lib/i18n/language-banner-messages.ts inlines the `languageBanner` strings for EVERY locale
+// (the banner renders in the visitor's browser language, not the page's, so it can't read the
+// page's provider messages — and downloading a whole message bundle for 3 strings was the
+// alternative). messages/<locale>.json stays the source of truth, so fail loudly on drift.
+{
+  const bannerModulePath = path.join(__dirname, '../lib/i18n/language-banner-messages.ts');
+  const bannerFields = ['message', 'switchButton', 'dismiss'];
+  const drift = [];
+  try {
+    const source = fs.readFileSync(bannerModulePath, 'utf-8');
+    for (const locale of locales) {
+      const expected = translations[locale]?.languageBanner;
+      if (!expected) continue;
+      // Match the `<locale>: { … }` entry of LANGUAGE_BANNER_MESSAGES.
+      const block = source.match(new RegExp(`\\b${locale}:\\s*\\{([\\s\\S]*?)\\n {2}\\}`));
+      if (!block) {
+        drift.push(`${locale}: missing from LANGUAGE_BANNER_MESSAGES`);
+        continue;
+      }
+      for (const field of bannerFields) {
+        // Values are single- or double-quoted string literals on one line.
+        const valueMatch = block[1].match(new RegExp(`${field}:\\s*(['"])([\\s\\S]*?)\\1,`));
+        const actual = valueMatch ? valueMatch[2].replace(/\\'/g, "'").replace(/\\"/g, '"') : null;
+        if (actual !== expected[field]) {
+          drift.push(
+            `${locale}.${field}: expected ${JSON.stringify(expected[field])}, got ${JSON.stringify(actual)}`
+          );
+        }
+      }
+    }
+  } catch (e) {
+    drift.push(`could not read language-banner-messages.ts: ${e.message}`);
+  }
+
+  if (drift.length > 0) {
+    hasErrors = true;
+    console.log(`\n❌ lib/i18n/language-banner-messages.ts is out of sync with messages/*.json:\n`);
+    drift.forEach((line) => console.log(`   🔸 ${line}`));
+    console.log('');
+  }
+}
+
 // List potentially unused keys
 const unusedKeys = [];
 

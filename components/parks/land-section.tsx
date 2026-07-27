@@ -6,6 +6,18 @@ import { getAttractionImage } from '@/lib/attraction-images';
 import { getAttractionDisplayStatus } from '@/lib/utils/park-utils';
 import type { ParkAttraction, ParkStatus } from '@/lib/api/types';
 
+// Per-card memo boundary. `LandSection`'s own memo only bails when the whole land is unchanged;
+// once the 5-min live poll touches ONE ride, the land's `attractions` array is rebuilt and every
+// card in it re-rendered — 40+ cards, each with badges, a sparkline and two next/image renditions,
+// for a single changed wait time. React Query's structural sharing keeps the ATTRACTION objects
+// referentially identical when their values didn't change, so a shallow-prop memo lets exactly
+// the changed cards re-render (all other props here are primitives or value-stable strings).
+//
+// The memo is applied HERE rather than on `AttractionCard` itself because that component is
+// dual-use — blog widgets and the home stats section render it from Server Components, where
+// `memo` isn't available.
+const MemoAttractionCard = memo(AttractionCard);
+
 interface LandSectionProps {
   landName: string;
   attractions: ParkAttraction[];
@@ -54,7 +66,7 @@ export const LandSection = memo(function LandSection({
 
           return (
             <li key={attraction.id} className="row-span-3 grid [grid-template-rows:subgrid]">
-              <AttractionCard
+              <MemoAttractionCard
                 attraction={attraction}
                 parkPath={parkPath}
                 parkStatus={parkStatus}

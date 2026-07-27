@@ -1,9 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { X } from 'lucide-react';
 import { locales, localeNames, type Locale } from '@/i18n/config';
+import { LANGUAGE_BANNER_MESSAGES } from '@/lib/i18n/language-banner-messages';
 import { FlagDE, FlagUS, FlagNL, FlagFR, FlagES, FlagIT } from '@/components/common/icons/flags';
 
 interface LanguageBannerProps {
@@ -20,17 +21,27 @@ const FlagComponents: Record<Locale, React.ComponentType<{ className?: string }>
   it: FlagIT,
 };
 
-interface BannerTranslations {
-  message: string;
-  switchButton: string;
-  dismiss: string;
-}
-
 export function LanguageBanner({ currentLocale }: LanguageBannerProps) {
   const [browserLocale, setBrowserLocale] = useState<Locale | null>(null);
   const [isDismissed, setIsDismissed] = useState(true);
-  const [translations, setTranslations] = useState<BannerTranslations | null>(null);
   const router = useRouter();
+
+  // Banner copy in the DETECTED language (not the page's), from the inlined per-locale map.
+  // This used to be `import(\`@/messages/${detected}.json\`)` inside the effect below: an async
+  // ~65 KB message-bundle download (and one emitted chunk per locale in the build output) to
+  // read three strings — paid by exactly the visitors the banner targets. Now that the strings
+  // are synchronous the whole thing is derived state, so the extra render pass is gone too.
+  const translations = useMemo(() => {
+    if (!browserLocale) return null;
+    const messages = LANGUAGE_BANNER_MESSAGES[browserLocale];
+    if (!messages) return null;
+    const language = localeNames[browserLocale];
+    return {
+      message: messages.message.replace('{language}', language),
+      switchButton: messages.switchButton.replace('{language}', language),
+      dismiss: messages.dismiss,
+    };
+  }, [browserLocale]);
 
   useEffect(() => {
     // Detect browser language
@@ -54,32 +65,12 @@ export function LanguageBanner({ currentLocale }: LanguageBannerProps) {
       setBrowserLocale(detected);
     }, 0);
 
-    // Load translations for the browser's language
     if (detected && detected !== currentLocale) {
       const dismissKey = `language-banner-dismissed-${detected}-${currentLocale}`;
       const wasDismissed = localStorage.getItem(dismissKey) === 'true';
       setTimeout(() => {
         setIsDismissed(wasDismissed);
       }, 0);
-
-      // Dynamically import the translation file for the browser's language
-      import(`@/messages/${detected}.json`)
-        .then((messages) => {
-          const bannerMessages = messages.default?.languageBanner || messages.languageBanner;
-          if (bannerMessages) {
-            setTranslations({
-              message: bannerMessages.message.replace('{language}', localeNames[detected]),
-              switchButton: bannerMessages.switchButton.replace(
-                '{language}',
-                localeNames[detected]
-              ),
-              dismiss: bannerMessages.dismiss,
-            });
-          }
-        })
-        .catch((error) => {
-          console.error('Failed to load translations:', error);
-        });
     }
   }, [currentLocale]);
 

@@ -450,6 +450,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
             parkSlug={parkSlug}
             landNames={landNames}
             attractionsByLand={attractionsByLand}
+            otherAttractionsLabel={otherAttractionsLabel}
             bestDaysSlot={
               // Streamed: the seeded best-days content arrives in the same response a beat after
               // the shell (skeleton shown until it lands), so the cold `/best-days` fetch never

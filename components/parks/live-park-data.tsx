@@ -27,6 +27,8 @@ interface LiveParkDataProps {
   calendarData?: IntegratedCalendarResponse;
   landNames: string[];
   attractionsByLand: Record<string, ParkAttraction[]>;
+  /** Translated bucket name for attractions the API reports without a land. */
+  otherAttractionsLabel: string;
   bestDaysSlot?: React.ReactNode;
 }
 
@@ -46,6 +48,7 @@ export function LiveParkData({
   calendarData,
   landNames,
   attractionsByLand,
+  otherAttractionsLabel,
   bestDaysSlot,
 }: LiveParkDataProps) {
   const t = useTranslations('common');
@@ -70,24 +73,28 @@ export function LiveParkData({
   // Use current data if available, otherwise fall back to initial data
   const currentPark = park || initialData;
 
-  // Re-group attractions if data has changed (memoized to avoid recalculating on every render)
+  // Re-group attractions if data has changed (memoized to avoid recalculating on every render).
+  // The land-less bucket name comes from the explicit `otherAttractionsLabel` prop, NOT from
+  // `landNames[landNames.length - 1]`: the server only sorts that label last when the park
+  // actually HAS land-less attractions. On every other park the last entry is a real land, so a
+  // ride that lost its `land` in the live poll was silently filed under (and counted towards)
+  // whichever land sorts last alphabetically.
   const currentAttractionsByLand = useMemo(
     () =>
       park && park.attractions !== initialData.attractions
-        ? groupAttractionsByLand(park.attractions || [], landNames[landNames.length - 1])
+        ? groupAttractionsByLand(park.attractions || [], otherAttractionsLabel)
         : attractionsByLand,
-    [park, initialData.attractions, attractionsByLand, landNames]
+    [park, initialData.attractions, attractionsByLand, otherAttractionsLabel]
   );
 
   const currentLandNames = useMemo(() => {
     if (!(park && park.attractions !== initialData.attractions)) return landNames;
-    const otherLabel = landNames[landNames.length - 1];
     return Object.keys(currentAttractionsByLand).sort((a, b) => {
-      if (a === otherLabel) return 1;
-      if (b === otherLabel) return -1;
+      if (a === otherAttractionsLabel) return 1;
+      if (b === otherAttractionsLabel) return -1;
       return a.localeCompare(b);
     });
-  }, [currentAttractionsByLand, park, initialData.attractions, landNames]);
+  }, [currentAttractionsByLand, park, initialData.attractions, landNames, otherAttractionsLabel]);
 
   const tabsWithHash = (
     <TabsWithHash
