@@ -1377,11 +1377,14 @@
       "title": "Ride profile",
       "typeLabel": "Ride type",
       "elementsLabel": "Track elements",
-      "elementsHint": "In ride order — tap a figure to see what it is.",
+      "elementsHint": "In ride order — tap a figure to see it in 3-D.",
       "has3d": "3-D",
       "manufacturer": "Manufacturer",
       "opened": "Opened",
-      "inversions": "Inversions"
+      "inversions": "Inversions",
+      "openGlossary": "Read up in the glossary",
+      "viewerTitle": "3-D view: {name}",
+      "figureCount": "{count, plural, one {# figure} other {# figures}}"
     }
   }
 }

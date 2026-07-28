@@ -1377,11 +1377,14 @@
       "title": "Bahnprofil",
       "typeLabel": "Bahntyp",
       "elementsLabel": "Fahrfiguren",
-      "elementsHint": "In Fahrreihenfolge – tippe eine Figur an, um zu sehen, was sie ist.",
+      "elementsHint": "In Fahrreihenfolge – tippe eine Figur an, um sie in 3-D zu sehen.",
       "has3d": "3-D",
       "manufacturer": "Hersteller",
       "opened": "Eröffnet",
-      "inversions": "Inversionen"
+      "inversions": "Inversionen",
+      "openGlossary": "Im Glossar nachlesen",
+      "viewerTitle": "3-D-Ansicht: {name}",
+      "figureCount": "{count, plural, one {# Figur} other {# Figuren}}"
     }
   }
 }

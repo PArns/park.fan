@@ -1,25 +1,17 @@
 import { getTranslations } from 'next-intl/server';
-import Link from 'next/link';
 // Glossary URLs carry their own locale segment (`/de/glossar/looping`) and are
 // served by a next.config rewrite, so the i18n <Link> would prefix the locale a
 // second time. Plain next/link it is — but with prefetch off, matching the
 // app-wide default in i18n/no-prefetch-link.
+import Link from 'next/link';
 import { Wrench, CalendarDays, RefreshCcw, Boxes } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { GlassCard } from '@/components/common/glass-card';
 import { SectionHeading } from '@/components/common/section-heading';
-import { getGlossaryTerms } from '@/lib/glossary/translations';
-import { buildGlossaryTermHref } from '@/lib/glossary/segments';
-import { hasCoasterElement } from '@/lib/three/coaster/elements';
+import { RideLayoutRail } from '@/components/parks/ride-layout-rail';
+import { resolveRideProfile } from '@/lib/glossary/ride-profile';
 import type { Locale } from '@/i18n/config';
 import type { RideProfile } from '@/lib/api/types';
-
-interface ResolvedTerm {
-  id: string;
-  name: string;
-  href: string;
-  hasPlayer: boolean;
-}
 
 interface RideProfileSectionProps {
   profile: RideProfile;
@@ -27,100 +19,47 @@ interface RideProfileSectionProps {
 }
 
 /**
- * The ride → glossary half of the link: what this ride is and what it does,
- * with every figure, type and builder linking into the glossary.
+ * The ride → glossary half of the link: what this ride is and what it does.
  *
- * The API stores only glossary term ids. Anything it sends that this app has no
- * term for is dropped rather than rendered raw — the API can legitimately be
- * seeded with a term before the glossary entry lands here.
+ * Reads top-down the way the ride is built — who made it and when, what kind of
+ * thing it is, then the layout itself as a rail you can step through in 3-D.
+ * The facts used to sit at the BOTTOM, which read as a footnote; they are the
+ * frame around the ride, not an afterthought.
+ *
+ * Term resolution is delegated to `resolveRideProfile` so this section and the
+ * header teaser can never disagree about how many figures a ride has.
  */
 export async function RideProfileSection({ profile, locale }: RideProfileSectionProps) {
   const t = await getTranslations('attraction.rideProfile');
-  const terms = await getGlossaryTerms(locale);
-  const byId = new Map(terms.map((term) => [term.id, term]));
-
-  const resolve = (id: string): ResolvedTerm | null => {
-    const term = byId.get(id);
-    if (!term) return null;
-    return {
-      id,
-      name: term.name,
-      href: buildGlossaryTermHref(locale, term.slug),
-      hasPlayer: Boolean(term.player?.element) && hasCoasterElement(term.player!.element),
-    };
-  };
-
-  // Order is the ride order and repeats are meaningful, so this is NOT deduped.
-  const elements = profile.elements.map(resolve).filter((x): x is ResolvedTerm => x !== null);
-  const types = profile.types.map(resolve).filter((x): x is ResolvedTerm => x !== null);
-  const manufacturerTerm = profile.manufacturerTermId ? resolve(profile.manufacturerTermId) : null;
+  const tGlossary = await getTranslations('glossary');
+  const { elements, types, manufacturerHref } = await resolveRideProfile(profile, locale);
 
   const hasFacts =
     Boolean(profile.manufacturer) || profile.openedYear !== null || profile.inversions !== null;
 
   if (elements.length === 0 && types.length === 0 && !hasFacts) return null;
 
+  // The same nine keys the glossary term page builds for its own player.
+  const playerLabels = {
+    play: tGlossary('player.play'),
+    pause: tGlossary('player.pause'),
+    replay: tGlossary('player.replay'),
+    view: tGlossary('player.view'),
+    viewFront: tGlossary('player.viewFront'),
+    viewFollow: tGlossary('player.viewFollow'),
+    viewOnboard: tGlossary('player.viewOnboard'),
+    loading: tGlossary('player.loading'),
+    keys: tGlossary.raw('player.keys') as Record<string, string>,
+  };
+
   return (
     <section className="space-y-4">
       <SectionHeading icon={Boxes} title={t('title')} />
 
-      <GlassCard className="space-y-6 p-5 sm:p-6">
-        {types.length > 0 && (
-          <div className="space-y-2">
-            <h3 className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
-              {t('typeLabel')}
-            </h3>
-            <ul className="flex flex-wrap gap-2">
-              {types.map((term) => (
-                <li key={term.id}>
-                  <Link href={term.href} prefetch={false}>
-                    <Badge
-                      variant="secondary"
-                      className="hover:bg-primary/15 hover:text-primary transition-colors"
-                    >
-                      {term.name}
-                    </Badge>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {elements.length > 0 && (
-          <div className="space-y-2">
-            <h3 className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
-              {t('elementsLabel')}
-            </h3>
-            <p className="text-muted-foreground text-sm">{t('elementsHint')}</p>
-            {/* Numbered because the list is the layout walkthrough in ride order —
-                a repeated figure (two corkscrews in a row) has to read as two steps. */}
-            <ol className="divide-border/60 divide-y">
-              {elements.map((term, index) => (
-                <li key={`${term.id}-${index}`}>
-                  <Link
-                    href={term.href}
-                    prefetch={false}
-                    className="hover:bg-primary/5 group flex items-center gap-3 rounded-md px-1 py-2 transition-colors"
-                  >
-                    <span className="bg-primary/10 text-primary flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-semibold tabular-nums">
-                      {index + 1}
-                    </span>
-                    <span className="group-hover:text-primary text-sm font-medium transition-colors">
-                      {term.name}
-                    </span>
-                    {term.hasPlayer && (
-                      <Badge variant="outline" className="ml-auto text-[10px]">
-                        {t('has3d')}
-                      </Badge>
-                    )}
-                  </Link>
-                </li>
-              ))}
-            </ol>
-          </div>
-        )}
-
+      {/* `strong` rather than the default `medium`: this card sits over the
+          attraction's hero photo, and /60 is not reliably readable over the
+          bright parts of an arbitrary image. */}
+      <GlassCard variant="strong" className="space-y-6 p-5 sm:p-6">
         {hasFacts && (
           <dl className="grid grid-cols-2 gap-4 sm:grid-cols-3">
             {profile.manufacturer && (
@@ -130,9 +69,9 @@ export async function RideProfileSection({ profile, locale }: RideProfileSection
                   {t('manufacturer')}
                 </dt>
                 <dd className="text-sm font-semibold">
-                  {manufacturerTerm ? (
+                  {manufacturerHref ? (
                     <Link
-                      href={manufacturerTerm.href}
+                      href={manufacturerHref}
                       prefetch={false}
                       className="hover:text-primary transition-colors"
                     >
@@ -170,6 +109,51 @@ export async function RideProfileSection({ profile, locale }: RideProfileSection
               </div>
             )}
           </dl>
+        )}
+
+        {types.length > 0 && (
+          <div className="space-y-2">
+            <h3 className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
+              {t('typeLabel')}
+            </h3>
+            <ul className="flex flex-wrap gap-2">
+              {types.map((term) => (
+                <li key={term.id}>
+                  <Link href={term.href} prefetch={false}>
+                    <Badge
+                      variant="secondary"
+                      className="hover:bg-primary/15 hover:text-primary transition-colors"
+                    >
+                      {term.name}
+                    </Badge>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {elements.length > 0 && (
+          <div className="space-y-2">
+            <h3 className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
+              {t('elementsLabel')}
+            </h3>
+            <RideLayoutRail
+              elements={elements}
+              playerLabels={playerLabels}
+              labels={{
+                hint: t('elementsHint'),
+                has3d: t('has3d'),
+                openGlossary: t('openGlossary'),
+                // Formatted here, not passed as a formatter: functions cannot
+                // cross the RSC boundary. Repeated figures collapse to the same
+                // key, which is exactly right — the title only depends on the name.
+                viewerTitles: Object.fromEntries(
+                  elements.map((element) => [element.name, t('viewerTitle', { name: element.name })])
+                ),
+              }}
+            />
+          </div>
         )}
       </GlassCard>
     </section>

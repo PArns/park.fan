@@ -1377,11 +1377,14 @@
       "title": "Profilo della giostra",
       "typeLabel": "Tipo di attrazione",
       "elementsLabel": "Elementi del tracciato",
-      "elementsHint": "Nell'ordine di percorrenza: tocca una figura per scoprire cos'è.",
+      "elementsHint": "Nell'ordine di percorrenza: tocca una figura per vederla in 3-D.",
       "has3d": "3-D",
       "manufacturer": "Costruttore",
       "opened": "Apertura",
-      "inversions": "Inversioni"
+      "inversions": "Inversioni",
+      "openGlossary": "Consulta il glossario",
+      "viewerTitle": "Vista 3-D: {name}",
+      "figureCount": "{count, plural, one {# figura} other {# figure}}"
     }
   }
 }
