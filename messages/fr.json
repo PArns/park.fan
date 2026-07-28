@@ -1149,8 +1149,12 @@
     "overviewMetaDescription": "Plus de {count} termes des parcs à thème expliqués simplement : temps d'attente, affluence, Lightning Lane, files virtuelles et plus.",
     "rides": {
       "title": "Attractions concernées",
-      "more": "… et {count} de plus"
-    }
+      "more": "… et {count} de plus",
+      "topTitle": "Les plus grosses attractions",
+      "typicalWait": "d'ordinaire jusqu'à {minutes} min",
+      "allTitle": "Toutes les attractions"
+    },
+    "rideCount": "{count, plural, one {# attraction} other {# attractions}}"
   },
   "fancast": {
     "title": "Fancast – notre modèle de prévision des temps d'attente",
@@ -1377,11 +1381,14 @@
       "title": "Profil du parcours",
       "typeLabel": "Type d'attraction",
       "elementsLabel": "Éléments du tracé",
-      "elementsHint": "Dans l'ordre du parcours — touchez une figure pour savoir ce que c'est.",
+      "elementsHint": "Dans l'ordre du parcours — touchez une figure pour la voir en 3-D.",
       "has3d": "3-D",
       "manufacturer": "Constructeur",
       "opened": "Ouverture",
-      "inversions": "Inversions"
+      "inversions": "Inversions",
+      "openGlossary": "Consulter le glossaire",
+      "viewerTitle": "Vue 3-D : {name}",
+      "figureCount": "{count, plural, one {# figure} other {# figures}}"
     }
   }
 }

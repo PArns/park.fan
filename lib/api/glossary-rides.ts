@@ -24,11 +24,22 @@ interface TermAttractionsResponse {
  * Returns an empty list rather than throwing — a glossary page must still
  * render if the API is down or the term has no curated rides yet.
  */
-export async function getAttractionsForTerm(termId: string): Promise<TermAttraction[]> {
+export async function getAttractionsForTerm(
+  termId: string,
+  /**
+   * `park` is the API's default (alphabetical). `popularity` ranks by typical
+   * peak wait — the P90 over 548 days — so a term with 151 rides can lead with
+   * the ones people recognise instead of opening on "Adventureland Resort".
+   */
+  sort: 'park' | 'popularity' = 'park'
+): Promise<TermAttraction[]> {
   try {
     const res = await api.get<TermAttractionsResponse>(
-      `/glossary/terms/${encodeURIComponent(termId)}/attractions`,
-      { next: { revalidate: REVALIDATE, tags: ['glossary-rides'] } }
+      `/v1/glossary/terms/${encodeURIComponent(termId)}/attractions`,
+      {
+        params: { sort },
+        next: { revalidate: REVALIDATE, tags: ['glossary-rides'] },
+      }
     );
     return res?.data ?? [];
   } catch {
@@ -43,7 +54,7 @@ export async function getAttractionsForTerm(termId: string): Promise<TermAttract
 export async function getRideCountsByTerm(): Promise<Record<string, number>> {
   try {
     return (
-      (await api.get<Record<string, number>>('/glossary/terms/counts', {
+      (await api.get<Record<string, number>>('/v1/glossary/terms/counts', {
         next: { revalidate: REVALIDATE, tags: ['glossary-rides'] },
       })) ?? {}
     );

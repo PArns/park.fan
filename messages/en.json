@@ -1149,8 +1149,12 @@
     "overviewMetaDescription": "Over {count} theme park terms explained in plain language: wait times, crowd levels, Lightning Lane, virtual queues, single rider and more.",
     "rides": {
       "title": "Rides with this",
-      "more": "… and {count} more"
-    }
+      "more": "… and {count} more",
+      "topTitle": "The biggest rides",
+      "typicalWait": "typically up to {minutes} min",
+      "allTitle": "All rides"
+    },
+    "rideCount": "{count, plural, one {# ride} other {# rides}}"
   },
   "fancast": {
     "title": "Fancast – our wait-time forecasting model",
@@ -1377,11 +1381,14 @@
       "title": "Ride profile",
       "typeLabel": "Ride type",
       "elementsLabel": "Track elements",
-      "elementsHint": "In ride order — tap a figure to see what it is.",
+      "elementsHint": "In ride order — tap a figure to see it in 3-D.",
       "has3d": "3-D",
       "manufacturer": "Manufacturer",
       "opened": "Opened",
-      "inversions": "Inversions"
+      "inversions": "Inversions",
+      "openGlossary": "Read up in the glossary",
+      "viewerTitle": "3-D view: {name}",
+      "figureCount": "{count, plural, one {# figure} other {# figures}}"
     }
   }
 }

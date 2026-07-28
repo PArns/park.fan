@@ -52,6 +52,20 @@ export interface CoasterElementDef {
    * `'follow'`. Omit for the usual `'front'`.
    */
   defaultView?: 'front' | 'follow' | 'onboard';
+  /**
+   * Linear-motor launch hardware: paired stator fins along the track centre,
+   * over `from`..`to` of the run (progress 0..1).
+   *
+   * Modelled as PAIRS flanking the centreline rather than one strip, because
+   * that is what the real thing is: the stators sit either side of a reaction
+   * fin carried under the train's bogies, and the common systems are
+   * deliberately symmetric two-fin designs — Intrasys states the symmetry is
+   * what keeps horizontal forces off the train.
+   *
+   * Only meaningful over straight, level track. Put it on the run-in, not the
+   * climb: past the point where the track lifts, the real hardware has stopped.
+   */
+  lsm?: { from: number; to: number };
 }
 
 // — small easing helpers —
@@ -1143,19 +1157,47 @@ const launch: CoasterElementDef = {
     [11.2, 9.7, 0],
     [13, 10, 0],
   ],
-  // A short crawl out of the station, then a pure ease-IN: the train is still
-  // gaining speed when it crests, which is what a launch actually feels like.
-  // Deliberately NOT ease-out — that would compress the tail of the run and
-  // bunch the cars at the end of the curve.
+  // Three phases, matching where the power actually is.
+  //
+  // The motors only act over the stator run, so that is the only stretch that
+  // accelerates — hard. Past the last fin the train is coasting, and a launch
+  // coaster bleeds most of that speed climbing. An even ease-in across the
+  // whole run (what this was) read as a train that keeps gaining speed uphill
+  // with nothing pushing it.
+  //
+  // The phase boundary at curve progress 0.34 is deliberately the same value as
+  // `lsm.to` below: the train stops accelerating exactly where the hardware
+  // ends. Exit and entry speeds are matched (0.32·1.7/0.30 ≈ 1.81 against
+  // 0.66·1.6/0.58 ≈ 1.82) so the handover does not read as a jerk.
+  //
+  // The peak is deliberately not pushed harder than this. The run-in is only a
+  // third of the curve and the climb is two thirds, so a more violent launch
+  // puts the train over the crest well before the timeline ends and leaves the
+  // onboard camera staring past the end of the track.
   pace: (t) => {
-    if (t < 0.15) return 0.02 * (t / 0.15);
-    return 0.02 + 0.98 * Math.pow((t - 0.15) / 0.85, 1.8);
+    // Crawl out of the station.
+    if (t < 0.12) return 0.02 * (t / 0.12);
+    // On the motors: ease-in over the stators, ~5× the crawl speed by the last fin.
+    if (t < 0.42) {
+      const u = (t - 0.12) / 0.3;
+      return 0.02 + 0.32 * Math.pow(u, 1.7);
+    }
+    // Off the motors: coasting, bleeding speed into the climb.
+    // Clamped: at t = 1 the division lands on 1.0000000000000002, and
+    // Math.pow(-2e-16, 1.6) is NaN — which would strand the train on the very
+    // last frame.
+    const u = Math.min(1, (t - 0.42) / 0.58);
+    return 0.34 + 0.66 * (1 - Math.pow(1 - u, 1.6));
   },
   keyPoints: [
     { t: 0.08, label: 'approach' },
     { t: 0.24, label: 'launch' },
     { t: 0.72, label: 'climb' },
   ],
+  // Stators over the level run-in only. The curve leaves y=1 at the fifth
+  // control point, so the hardware stops before the track starts to lift —
+  // which is where it stops on the real ride too.
+  lsm: { from: 0.02, to: 0.34 },
   duration: 7,
 };
 

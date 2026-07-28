@@ -36,6 +36,7 @@ import { AttractionTypicalWaits } from '@/components/parks/attraction-typical-wa
 import { LiveAttractionData } from '@/components/parks/live-attraction-data';
 import { RopeDropCard } from '@/components/parks/rope-drop-card';
 import { RideProfileSection } from '@/components/parks/ride-profile-section';
+import { RideProfileTeaser } from '@/components/parks/ride-profile-teaser';
 import { isEveningBetter } from '@/lib/utils/rope-drop';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateAttractionBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
@@ -263,6 +264,14 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   // OG card is only a fallback for the JSON-LD image when neither ride nor park has a photo.
   const ogImageUrl = getOgImageUrl([locale, continent, country, city, parkSlug, attractionSlug]);
 
+  // Mirrors the `hasAny` guard inside AttractionMetaBadges (non-compact). Without
+  // it, a ride with neither metadata nor a profile renders a bare divider line.
+  const hasMetaBadges =
+    attraction.minimumHeight != null ||
+    attraction.maximumHeight != null ||
+    Boolean(attraction.mayGetWet) ||
+    attraction.rcdbId != null;
+
   return (
     <>
       <AttractionStructuredData
@@ -330,13 +339,28 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                         isCurrentlyInSeason={attraction.isCurrentlyInSeason}
                       />
                     )}
-                    <AttractionMetaBadges
-                      minimumHeight={attraction.minimumHeight}
-                      maximumHeight={attraction.maximumHeight}
-                      mayGetWet={attraction.mayGetWet}
-                      rcdbId={attraction.rcdbId}
-                    />
                   </div>
+
+                  {/* Second tier: what this ride IS, separated from where it is.
+                      One row mixing a navigation link, a live distance, a category
+                      label and an outbound reference gave all four the same weight.
+                      The divider costs nothing and restores the hierarchy. */}
+                  {(hasMetaBadges || attraction.rideProfile) && (
+                    <div className="border-border/40 mt-3 flex flex-wrap items-center gap-2 border-t pt-3">
+                      <AttractionMetaBadges
+                        minimumHeight={attraction.minimumHeight}
+                        maximumHeight={attraction.maximumHeight}
+                        mayGetWet={attraction.mayGetWet}
+                        rcdbId={attraction.rcdbId}
+                      />
+                      {attraction.rideProfile && (
+                        <RideProfileTeaser
+                          profile={attraction.rideProfile}
+                          locale={locale as Locale}
+                        />
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             </GlassCard>
@@ -426,9 +450,11 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
 
           {/* Chapter: what this ride is and what it does — the curated link into
               the glossary. Static (hand-seeded) data, so it renders straight into
-              the shell; the component returns null when the ride has no profile. */}
+              the shell; the component returns null when the ride has no profile.
+              scroll-mt-24 is the repo's anchor offset (see marketing/editorial-ui.tsx);
+              without it the header teaser's jump lands under the sticky header. */}
           {attraction.rideProfile && (
-            <div className="mt-10">
+            <div id="ride-profile" className="mt-10 scroll-mt-24">
               <RideProfileSection profile={attraction.rideProfile} locale={locale as Locale} />
             </div>
           )}

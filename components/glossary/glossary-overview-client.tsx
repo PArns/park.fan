@@ -20,6 +20,8 @@ interface CategoryGroup {
 
 interface GlossaryOverviewClientProps {
   groupedTerms: CategoryGroup[];
+  /** Term id → number of curated rides featuring it. Missing means none. */
+  rideCounts: Record<string, number>;
   locale: Locale;
   segment: string;
   title: string;
@@ -30,6 +32,7 @@ interface GlossaryOverviewClientProps {
 
 export function GlossaryOverviewClient({
   groupedTerms,
+  rideCounts,
   locale,
   segment,
   title,
@@ -225,6 +228,12 @@ export function GlossaryOverviewClient({
                       locale={locale}
                       segment={segment}
                       playerLabel={t('player.title')}
+                      rideCount={rideCounts[term.id]}
+                      rideCountLabel={
+                        rideCounts[term.id]
+                          ? t('rideCount', { count: rideCounts[term.id] })
+                          : undefined
+                      }
                     />
                   ))}
                 </div>

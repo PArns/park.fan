@@ -1149,8 +1149,12 @@
     "overviewMetaDescription": "Más de {count} términos de parques temáticos explicados con claridad: tiempos de espera, afluencia, Lightning Lane, colas virtuales y más.",
     "rides": {
       "title": "Atracciones con esto",
-      "more": "… y {count} más"
-    }
+      "more": "… y {count} más",
+      "topTitle": "Las atracciones más grandes",
+      "typicalWait": "normalmente hasta {minutes} min",
+      "allTitle": "Todas las atracciones"
+    },
+    "rideCount": "{count, plural, one {# atracción} other {# atracciones}}"
   },
   "fancast": {
     "title": "Fancast – nuestro modelo de predicción de tiempos de espera",
@@ -1377,11 +1381,14 @@
       "title": "Perfil de la atracción",
       "typeLabel": "Tipo de atracción",
       "elementsLabel": "Elementos del trazado",
-      "elementsHint": "En orden de recorrido: toca una figura para ver qué es.",
+      "elementsHint": "En orden de recorrido: toca una figura para verla en 3-D.",
       "has3d": "3-D",
       "manufacturer": "Fabricante",
       "opened": "Inauguración",
-      "inversions": "Inversiones"
+      "inversions": "Inversiones",
+      "openGlossary": "Consultar en el glosario",
+      "viewerTitle": "Vista 3-D: {name}",
+      "figureCount": "{count, plural, one {# figura} other {# figuras}}"
     }
   }
 }

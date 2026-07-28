@@ -6,6 +6,7 @@ import { buildOpenGraphMetadata, fitWithin, MAX_DESCRIPTION_LENGTH } from '@/lib
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { PageContainer } from '@/components/common/page-container';
 import { GlossaryOverviewClient } from '@/components/glossary/glossary-overview-client';
+import { getRideCountsByTerm } from '@/lib/api/glossary-rides';
 import { GlossaryBackground } from '@/components/glossary/glossary-background';
 import { GlossaryStructuredData } from '@/components/seo/glossary-structured-data';
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
@@ -81,6 +82,9 @@ export default async function GlossaryPage({ params }: GlossaryPageProps) {
 
   const terms = await getGlossaryTerms(locale as Locale);
   const termCount = Math.floor(terms.length / 10) * 10;
+  // One request for the whole set rather than one per term. Fails soft to {},
+  // so a slow or unreachable API costs the badges, not the page.
+  const rideCounts = await getRideCountsByTerm();
   const segment = GLOSSARY_SEGMENTS[locale as Locale] ?? 'glossary';
 
   // Load English names for cross-language search (cached — no extra I/O for EN locale)
@@ -137,6 +141,7 @@ export default async function GlossaryPage({ params }: GlossaryPageProps) {
         />
         <GlossaryOverviewClient
           groupedTerms={groupedTerms}
+          rideCounts={rideCounts}
           locale={locale as Locale}
           segment={segment}
           title={t('overviewTitle')}

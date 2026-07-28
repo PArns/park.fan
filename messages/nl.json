@@ -1149,8 +1149,12 @@
     "overviewMetaDescription": "Meer dan {count} pretparkbegrippen helder uitgelegd: wachttijden, drukte, Lightning Lane, virtuele wachtrijen, single rider en meer.",
     "rides": {
       "title": "Attracties hiermee",
-      "more": "… en nog {count}"
-    }
+      "more": "… en nog {count}",
+      "topTitle": "De grootste banen",
+      "typicalWait": "meestal tot {minutes} min.",
+      "allTitle": "Alle banen"
+    },
+    "rideCount": "{count, plural, one {# baan} other {# banen}}"
   },
   "fancast": {
     "title": "Fancast – ons voorspelmodel voor wachttijden",
@@ -1377,11 +1381,14 @@
       "title": "Baanprofiel",
       "typeLabel": "Type attractie",
       "elementsLabel": "Baanelementen",
-      "elementsHint": "In rijvolgorde – tik op een figuur om te zien wat het is.",
+      "elementsHint": "In rijvolgorde – tik op een figuur om hem in 3-D te zien.",
       "has3d": "3-D",
       "manufacturer": "Fabrikant",
       "opened": "Geopend",
-      "inversions": "Inversies"
+      "inversions": "Inversies",
+      "openGlossary": "Naslaan in het glossarium",
+      "viewerTitle": "3D-weergave: {name}",
+      "figureCount": "{count, plural, one {# figuur} other {# figuren}}"
     }
   }
 }

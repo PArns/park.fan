@@ -43,7 +43,13 @@ export function ParkBackground({ imageSrc, alt, fixed = false }: ParkBackgroundP
   }
 
   return (
-    <div className="pointer-events-none fixed top-0 right-0 left-0 -z-10 h-[calc(75vh+4rem)] max-h-[850px] overflow-hidden select-none">
+    /* Same reason as components/layout/header.tsx: the startupbar loader shifts every
+       `top: 0` element down by 36 px before React hydrates, writing an inline `top` and
+       two data attributes onto this element. */
+    <div
+      suppressHydrationWarning
+      className="pointer-events-none fixed top-0 right-0 left-0 -z-10 h-[calc(75vh+4rem)] max-h-[850px] overflow-hidden select-none"
+    >
       <div className="relative h-full w-full">
         <Image
           src={imageSrc}

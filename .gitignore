@@ -87,3 +87,6 @@ package-lock.json
 
 # OG image render harness output (scripts/render-og.mjs)
 .og-preview/
+
+# Coaster render harness output (scripts/render-coaster-elements.mjs)
+.coaster-render/

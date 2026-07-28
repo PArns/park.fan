@@ -726,6 +726,19 @@ export interface TermAttraction {
   /** Where the term matched on this ride. */
   kind: 'element' | 'type' | 'manufacturer';
   openedYear: number | null;
+  /**
+   * Typical peak wait in minutes — the API's P90 over 548 days, not a live
+   * reading.
+   *
+   * OPTIONAL rather than merely nullable, and that distinction matters: the API
+   * runs a global interceptor that deletes null-valued keys from every
+   * response, so a ride without a baseline omits this field entirely. Check for
+   * absence (`!= null`), never render a `0` fallback — that would read as "this
+   * ride never has a queue".
+   */
+  typicalPeakWait?: number | null;
+  /** Whether the API classes this ride as one of its park's headliners. */
+  isHeadliner?: boolean;
 }
 
 export interface AttractionHistoryDay {
