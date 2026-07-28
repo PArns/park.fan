@@ -2,51 +2,71 @@
 
 import { useEffect, useRef } from 'react';
 import { usePathname } from '@/i18n/navigation';
+import { onHistoryNavigation } from '@/lib/navigation/history-navigation';
 
 /**
  * Scrolls to the top on client-side route changes.
  *
- * Next.js already scrolls to the top itself for forward navigations, so this only exists as a
- * safety net for the cases where its heuristic bails out (it skips the scroll when the new page
- * doesn't render a focusable top element, which our streamed Suspense shells can hit).
+ * Next.js is supposed to do this itself, but its handler bails out whenever the new page's top
+ * element is already inside the viewport — which our streamed Suspense shells hit on essentially
+ * every navigation. In practice this component is the *only* thing that scrolls the page up, so
+ * every guard below is load-bearing: a wrong skip leaves the visitor at the old scroll offset on
+ * the new page.
  *
- * It must NOT fight the two cases where scrolling to the top is wrong:
+ * It must NOT scroll in the two cases where scrolling to the top is wrong:
  *
  * 1. **Back / forward navigation.** The App Router restores the previous scroll position on a
- *    history pop; forcing `scrollTo(0, 0)` afterwards threw that away and dumped the visitor at
+ *    history pop; forcing `scrollTo(0, 0)` afterwards throws that away and dumps the visitor at
  *    the top of a page they had scrolled halfway down.
  * 2. **Hash deep links.** `/parks/…/europa-park#calendar` (the park tab links, the blog TOC and
- *    every glossary anchor) must land on the target, not the top. The effect also ran on the very
- *    first mount, so an incoming hash link visibly jumped to the top before the target scroll —
- *    on the park page `useTabHashRouting` then scrolled back down 500 ms later.
+ *    every glossary anchor) must land on the target, not the top. The effect must also stay off
+ *    the very first mount, or an incoming hash link visibly jumps to the top before the target
+ *    scroll — on the park page `useTabHashRouting` then scrolled back down 500 ms later.
  *
- * So: skip the first mount entirely (the browser owns the initial position, including hash and
- * reload restoration) and skip pops and hash targets afterwards.
+ * Detecting the pop is the subtle part. `popstate` cannot classify it: React 19 / the App Router
+ * commit the new route from the `navigate` handling *before* `popstate` is dispatched, so a flag
+ * set in a `popstate` listener arrives one navigation too late — it misses the pop it belongs to
+ * and then suppresses the *next* forward navigation (clicking a blog link after a single Back was
+ * enough to keep the previous page's scroll offset).
+ *
+ * So the classification runs off `history.pushState` instead: a forward navigation always pushes
+ * before React commits, a pop never pushes. We scroll only when the committed pathname is the one
+ * a `pushState` just announced.
  */
 export function ScrollToTop() {
   const pathname = usePathname();
   const isFirstRender = useRef(true);
-  const isPopNavigation = useRef(false);
+  /** Pathname of the most recent `pushState`, i.e. the pending forward navigation. */
+  const pushedPathname = useRef<string | null>(null);
 
-  // `popstate` fires before the router commits the new pathname, so this flag is set by the
-  // time the pathname effect below runs for a back/forward navigation.
   useEffect(() => {
+    const unsubscribe = onHistoryNavigation((destination, type) => {
+      if (type === 'push') pushedPathname.current = destination.pathname;
+    });
+    // Fires after the commit, so it can only clear a value the effect below is done with — it
+    // drops pushes that never produced a route change (a hash-only push, a locale swap) instead
+    // of letting them sit around and match a later navigation by coincidence.
     const onPopState = () => {
-      isPopNavigation.current = true;
+      pushedPathname.current = null;
     };
     window.addEventListener('popstate', onPopState);
-    return () => window.removeEventListener('popstate', onPopState);
+    return () => {
+      unsubscribe();
+      window.removeEventListener('popstate', onPopState);
+    };
   }, []);
 
   useEffect(() => {
+    const pushed = pushedPathname.current;
+    pushedPathname.current = null;
+
+    // The browser owns the initial position, including hash targets and reload restoration.
     if (isFirstRender.current) {
       isFirstRender.current = false;
       return;
     }
-    if (isPopNavigation.current) {
-      isPopNavigation.current = false;
-      return;
-    }
+    // No `pushState` announced this route, so it's a back/forward — leave the restored offset be.
+    if (pushed === null || pushed !== window.location.pathname) return;
     if (window.location.hash) return;
     window.scrollTo(0, 0);
   }, [pathname]);

@@ -4,12 +4,40 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: a single Back left the next page at the previous scroll offset
+
+Clicking a blog card low on the homepage kept the homepage's scroll offset instead of opening the
+post at the top. It needed one back/forward navigation anywhere earlier in the session to trigger,
+which is why it looked specific to the lower blog cards: the links above the fold have the same
+bug, but you are already at the top there, so nothing moves.
+
+`ScrollToTop` classified back/forward navigations from a `popstate` listener, on the assumption
+that `popstate` fires before the router commits the new route. It is the other way round — React
+19 / the App Router commit from the `navigate` handling and `popstate` arrives _after_, so the
+flag missed its own pop and then suppressed the **next** forward navigation. It now keys off
+`history.pushState` (a forward navigation always pushes before the commit, a pop never pushes) and
+scrolls only when the committed pathname is the one a push announced.
+
+Back/forward still restores the previous position, and hash deep links (`…/europa-park#calendar`,
+blog TOC, glossary anchors) still land on their target — those were the two behaviours the
+`popstate` guard existed to protect.
+
+Worth knowing for anything scroll-related: Next's own scroll handler bails out whenever the new
+page's top element is already inside the viewport, which our streamed Suspense shells hit on
+essentially every navigation. `ScrollToTop` is not a safety net, it is the only thing scrolling
+these pages up — a wrong skip there is always visible.
+
+The `history.pushState`/`replaceState` patch `NavigationProgress` carried now lives in
+`lib/navigation/history-navigation.ts` and is shared, so the History API is wrapped once.
+
+---
+
 ## Unreleased – backend: park crowd levels now measure the park, not its busiest ride
 
 No frontend code change, but the numbers on the park page move — worth knowing when a
 screenshot from before this date disagrees with the live site.
 
-The API's live park level used to be the P90 *across* the per-headliner ratios, which over a
+The API's live park level used to be the P90 _across_ the per-headliner ratios, which over a
 ten-ride headliner set is effectively the second-busiest ride. Phantasialand rendered **`high`**
 while Taron and F.L.Y. both sat at 20 min against 45/40-min baselines. It is now a
 baseline-weighted mean (`Σ current waits ÷ Σ their P50 baselines`) — the same afternoon reads
