@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { onHistoryNavigation } from '@/lib/navigation/history-navigation';
 
 /**
  * Thin top-of-viewport progress bar shown during client-side navigations — so a click feels
@@ -49,7 +50,9 @@ export function NavigationProgress() {
       }, 220);
     }, 160);
   }, []);
-  finishRef.current = finish;
+  useEffect(() => {
+    finishRef.current = finish;
+  }, [finish]);
 
   const start = useCallback(() => {
     if (active.current) return;
@@ -105,41 +108,17 @@ export function NavigationProgress() {
       start();
     };
 
-    // Start the bar when the destination differs from the current route.
-    const startIfRouteChanges = (dest: string | URL | null | undefined) => {
-      if (dest == null) return;
-      try {
-        const url = new URL(dest.toString(), window.location.href);
-        if (url.pathname !== window.location.pathname || url.search !== window.location.search) {
-          start();
-        }
-      } catch {
-        /* ignore malformed URLs */
-      }
-    };
-
     // router.push uses pushState, router.replace (e.g. the locale switcher) uses replaceState.
-    const originalPushState = window.history.pushState;
-    window.history.pushState = function patchedPushState(
-      this: History,
-      ...args: Parameters<History['pushState']>
-    ) {
-      startIfRouteChanges(args[2]);
-      return originalPushState.apply(this, args);
-    };
-    const originalReplaceState = window.history.replaceState;
-    window.history.replaceState = function patchedReplaceState(
-      this: History,
-      ...args: Parameters<History['replaceState']>
-    ) {
-      startIfRouteChanges(args[2]);
-      return originalReplaceState.apply(this, args);
-    };
+    // Listeners run before the History call lands, so `window.location` is still the old route.
+    const unsubscribe = onHistoryNavigation((url) => {
+      if (url.pathname !== window.location.pathname || url.search !== window.location.search) {
+        start();
+      }
+    });
 
     document.addEventListener('click', onClick, true);
     return () => {
-      window.history.pushState = originalPushState;
-      window.history.replaceState = originalReplaceState;
+      unsubscribe();
       document.removeEventListener('click', onClick, true);
     };
   }, [start]);

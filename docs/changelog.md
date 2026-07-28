@@ -4,6 +4,34 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: a single Back left the next page at the previous scroll offset
+
+Clicking a blog card low on the homepage kept the homepage's scroll offset instead of opening the
+post at the top. It needed one back/forward navigation anywhere earlier in the session to trigger,
+which is why it looked specific to the lower blog cards: the links above the fold have the same
+bug, but you are already at the top there, so nothing moves.
+
+`ScrollToTop` classified back/forward navigations from a `popstate` listener, on the assumption
+that `popstate` fires before the router commits the new route. It is the other way round — React
+19 / the App Router commit from the `navigate` handling and `popstate` arrives _after_, so the
+flag missed its own pop and then suppressed the **next** forward navigation. It now keys off
+`history.pushState` (a forward navigation always pushes before the commit, a pop never pushes) and
+scrolls only when the committed pathname is the one a push announced.
+
+Back/forward still restores the previous position, and hash deep links (`…/europa-park#calendar`,
+blog TOC, glossary anchors) still land on their target — those were the two behaviours the
+`popstate` guard existed to protect.
+
+Worth knowing for anything scroll-related: Next's own scroll handler bails out whenever the new
+page's top element is already inside the viewport, which our streamed Suspense shells hit on
+essentially every navigation. `ScrollToTop` is not a safety net, it is the only thing scrolling
+these pages up — a wrong skip there is always visible.
+
+The `history.pushState`/`replaceState` patch `NavigationProgress` carried now lives in
+`lib/navigation/history-navigation.ts` and is shared, so the History API is wrapped once.
+
+---
+
 ## Unreleased – perf: hero image loading, and why wide screens look soft
 
 `backgroundImageLoader` used a single cutoff — `≤1080 → q50`, everything above → q75 — which lumped a
@@ -12,13 +40,13 @@ actually be painted**, and the middle band is the win: `≤1080 → q50` (mobile
 q60` (1440–1600px desktops, the most common desktop class), `>1920 → q75` (ultrawide and 2× retina,
 unchanged). AVIF bytes for the 1440-class band, at Next's encoder settings:
 
-| photo                                        | before (q75) | after (q60) |        |
-| -------------------------------------------- | -----------: | ----------: | -----: |
-| `walibi-holland/untamed`                     |       124 KB |       69 KB | −44%   |
-| `europa-park/wodan-timburcoaster`            |       140 KB |       85 KB | −39%   |
-| `phantasialand/taron`                        |        97 KB |       54 KB | −44%   |
-| `europa-park/silver-star`                    |        71 KB |       41 KB | −42%   |
-| `europa-park/madame-freudenreich-curiosites` |        79 KB |       41 KB | −48%   |
+| photo                                        | before (q75) | after (q60) |      |
+| -------------------------------------------- | -----------: | ----------: | ---: |
+| `walibi-holland/untamed`                     |       124 KB |       69 KB | −44% |
+| `europa-park/wodan-timburcoaster`            |       140 KB |       85 KB | −39% |
+| `phantasialand/taron`                        |        97 KB |       54 KB | −44% |
+| `europa-park/silver-star`                    |        71 KB |       41 KB | −42% |
+| `europa-park/madame-freudenreich-curiosites` |        79 KB |       41 KB | −48% |
 
 (Measure these locally or with sharp, not against the deployed optimizer: `minimumCacheTTL` is a
 year, so the Vercel image cache serves entries encoded by whatever the config was when they were
