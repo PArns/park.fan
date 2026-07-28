@@ -92,6 +92,13 @@ export function Header({ showBlog = true }: HeaderProps) {
 
   return (
     <header
+      /* The startupbar loader (see components/common/startup-bar.tsx) runs BEFORE React
+         hydrates and shifts every `top: 0` element down by 36 px, writing an inline
+         `top` plus two data attributes onto this tag. React then compares its server
+         HTML against an already-mutated DOM and reports a mismatch. Suppressing it is
+         correct rather than a papering-over: the shift is meant to survive, and React
+         does not revert mismatched attributes anyway. */
+      suppressHydrationWarning
       /* `backdrop-filter` is deliberately NOT in the transition list. Animating it made the
          browser re-rasterize the blur of everything behind the full-width bar on every frame
          for 500 ms each time the scroll crossed the 50 px threshold — by far the most expensive

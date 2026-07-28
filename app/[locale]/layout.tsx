@@ -164,6 +164,18 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
             (server-rendered in both units, toggled by CSS) show the visitor's unit with
             no flash — and the pages stay statically cacheable. Reads the temp_unit cookie,
             else derives from the browser locale's region (mirrors detectDefaultUnit). */}
+        {/* Deliberately a RAW <script>, not `next/script`.
+            React 19 logs "Encountered a script tag while rendering React component" for
+            this in development, because a script in the tree does not execute on a CLIENT
+            render. That warning does not apply here: this layout is server-rendered, the
+            browser executes the tag while parsing, and on a soft navigation there is
+            nothing to re-run — the attribute is already set.
+            `next/script` with `strategy="beforeInteractive"` was tried and reverted. It
+            does not emit an executable tag at all; it emits
+            `(self.__next_s=self.__next_s||[]).push([0,{children:"…"}])`, deferring the
+            code to whenever Next's runtime drains that queue. For a script whose entire
+            job is to run BEFORE first paint, that reintroduces the °C→°F flash this
+            exists to prevent. Verified against the rendered HTML on 2026-07-28. */}
         <script
           dangerouslySetInnerHTML={{
             __html:
