@@ -2,16 +2,46 @@
 
 import { useTranslations } from 'next-intl';
 import { DistanceBadge } from '@/components/common/distance-badge';
+import { Skeleton } from '@/components/ui/skeleton';
 import { useDistanceTo, useNearestDistance } from '@/lib/hooks/use-distance-to';
 import { formatDistance, type Coordinate } from '@/lib/utils/distance-utils';
+import { cn } from '@/lib/utils';
+
+/**
+ * Placeholder holding the distance line's height while the visitor's position resolves.
+ *
+ * The value is client-only, so without it the line pops in and pushes whatever follows down —
+ * on the geo cards that is the progress bar, on the park/ride header the whole page below once
+ * the meta row wraps. Sized to a typical "12.3 km away", and it collapses (rather than pulsing
+ * forever) as soon as we know no position is coming.
+ */
+function DistancePlaceholder({
+  width,
+  size,
+  className,
+}: {
+  width: string;
+  size: 'sm' | 'md';
+  className?: string;
+}) {
+  return (
+    <Skeleton
+      as="span"
+      aria-hidden="true"
+      // Matches the badge's own line height per size (text-xs vs text-sm), so the swap from
+      // placeholder to value changes nothing about the layout.
+      className={cn('inline-block align-middle', size === 'sm' ? 'h-4' : 'h-5', width, className)}
+    />
+  );
+}
 
 /**
  * "12.3 km away" for a single park, from the visitor's current position.
  *
- * Renders nothing until there is a position (no location permission, no fix yet, or the park has
- * no coordinates) — so it never reserves space it can't fill and never blocks the surrounding
- * server-rendered header. Used on the park detail page and the ride detail page, where the point
- * of reference is the park itself.
+ * Shows a placeholder while the position resolves, then the distance — or nothing at all when no
+ * position is available (denied and no geolocatable IP) or the park has no coordinates.
+ * Used on the park detail page and the ride detail page, where the point of reference is the
+ * park itself.
  */
 export function ParkDistance({
   latitude,
@@ -25,13 +55,14 @@ export function ParkDistance({
   className?: string;
 }) {
   const t = useTranslations('nearby');
-  const distance = useDistanceTo(latitude, longitude);
+  const { meters, pending } = useDistanceTo(latitude, longitude);
 
-  if (distance === null) return null;
+  if (pending) return <DistancePlaceholder width="w-24" size={size} className={className} />;
+  if (meters === null) return null;
 
   return (
     <DistanceBadge
-      distance={`${formatDistance(distance)} ${t('awayFrom')}`}
+      distance={`${formatDistance(meters)} ${t('awayFrom')}`}
       size={size}
       className={className}
     />
@@ -40,8 +71,8 @@ export function ParkDistance({
 
 /**
  * "12.3 km to the nearest park" for a whole region — the continent and country cards on the geo
- * hub pages, where there is no single park to measure against. Renders nothing without a position
- * or when the region has no geocoded park.
+ * hub pages, where there is no single park to measure against. Shows a placeholder while the
+ * position resolves; renders nothing when none is available or the region has no geocoded park.
  */
 export function NearestParkDistance({
   coordinates,
@@ -53,13 +84,14 @@ export function NearestParkDistance({
   className?: string;
 }) {
   const t = useTranslations('nearby');
-  const distance = useNearestDistance(coordinates);
+  const { meters, pending } = useNearestDistance(coordinates);
 
-  if (distance === null) return null;
+  if (pending) return <DistancePlaceholder width="w-36" size={size} className={className} />;
+  if (meters === null) return null;
 
   return (
     <DistanceBadge
-      distance={t('nearestParkAway', { distance: formatDistance(distance) })}
+      distance={t('nearestParkAway', { distance: formatDistance(meters) })}
       size={size}
       className={className}
     />
