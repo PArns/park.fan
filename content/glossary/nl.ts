@@ -2568,6 +2568,272 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['Celestial Roll', 'Celestial Rolls', 'Celestial Spins'],
     alternateNames: ['Celestial Roll'],
   },
+  {
+    id: 'launch',
+    name: 'Lancering',
+    shortDefinition:
+      'Een aandrijfsectie die de trein in seconden op snelheid brengt, in plaats van hem een liftheuvel op te trekken.',
+    definition:
+      'Een launch is het stuk baan waar een achtbaan zijn energie van een motor krijgt in plaats van van de zwaartekracht. Vier technieken domineren. LSM-lanceringen (lineaire synchroonmotor) zetten elektromagneten langs de baan die trekken aan een vin onder de trein — soepel, nauwkeurig regelbaar en midden in het parcours herhaalbaar, waardoor vrijwel elke nieuwe gelanceerde achtbaan ze gebruikt. LIM-lanceringen (lineaire inductiemotor) werken vergelijkbaar maar verliezen meer energie als warmte. Hydraulische lanceringen gebruiken een lier aangedreven door met stikstof bedrukte accumulatoren en leveren de heftigste versnelling ooit gebouwd; persluchtlanceringen, zoals op Maxx Force, zijn over de eerste meters nog sneller.\n\nWat een launch onderscheidt van een liftheuvel is niet alleen de snelheid, maar waar de energie besteed kan worden. Een liftheuvel moet het hoogste punt van de baan zijn, dus alles daarna gaat omlaag. Een launch kan overal zitten, en daarom blijven multi-launchbanen als [Taron](/nl/parks/europe/germany/bruehl/phantasialand/taron) in [Phantasialand](/nl/parks/europe/germany/bruehl/phantasialand) of [Voltron Nevera](/nl/parks/europe/germany/rust/europa-park/voltron-nevera-powered-by-rimac) in [Europa-Park](/nl/parks/europe/germany/rust/europa-park) over hun hele lengte snel, in plaats van hoogte één keer in te ruilen voor snelheid. Haalt een launch het parcours niet, dan volgt een rollback.',
+    relatedTermIds: ['launch-coaster', 'lifthill', 'swing-launch', 'rollback', 'top-hat'],
+    aliases: ['Launch', 'Launches', 'LSM-launch', 'LIM-launch'],
+    alternateNames: ['Launch'],
+  },
+  {
+    id: 'swing-launch',
+    name: 'Schommellancering',
+    shortDefinition:
+      'Een launch die de trein meerdere keren heen en weer schiet en bij elke passage snelheid opbouwt tot het parcours haalbaar is.',
+    definition:
+      'Een swing launch (ook shuttle- of multi-passlancering) versnelt de trein, laat hem uitlopen op een stijgend stuk baan, vangt hem op de terugweg weer op — en herhaalt dat twee of drie keer tot er genoeg energie is voor de hele rit. Elke passage voegt snelheid toe die de motoren in één keer niet zouden halen, dus een swing launch koopt een veel hogere topsnelheid op een veel kortere lanceerbaan.\n\nHet is ook een showelement op zich: bezoekers rijden achteruit door een deel van het parcours, meestal een verticale spike op, voordat ze weer vooruit worden geworpen. [Toutatis](/nl/parks/europe/france/plailly/parc-asterix/toutatis) in Parc Astérix, [The Ride to Happiness](/nl/parks/europe/belgium/de-panne/plopsaland-belgium/the-ride-to-happiness-by-tomorrowland) in Plopsaland en [Oath of Kärnan](/nl/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) in Hansa-Park gebruiken er een. Premier Rides bouwt met het model Sky Rocket II een hele compacte achtbaan rond dit idee.',
+    relatedTermIds: ['launch', 'spike', 'shuttle-coaster', 'launch-coaster'],
+    aliases: ['Swing Launch', 'Shuttlelancering'],
+    alternateNames: ['Swing Launch'],
+  },
+  {
+    id: 'vertical-lift',
+    name: 'Verticale Lift',
+    shortDefinition:
+      'Een liftheuvel van 90 graden — de trein wordt recht omhoog langs de constructie getrokken.',
+    definition:
+      'Een verticale lift vervangt de gebruikelijke helling van 30 tot 45 graden door een stuk baan dat loodrecht omhoog gaat. Omdat een gewone ketting met terugloopbeveiliging een trein op een verticaal vlak niet betrouwbaar kan houden, gebruiken deze liften een kabel, een catch-car of een ketting met formsluitende meenemer. Bezoekers liggen de hele klim op hun rug recht in de lucht te kijken — precies het effect dat gekocht wordt.\n\nDe verticale lift is een handelsmerk van Gerstlauers Euro-Fighter- en Infinity Coaster-modellen, waar hij direct overgaat in een overhellende afdaling: [Takabisha](/nl/parks/asia/japan/fujikawaguchiko/fuji-q-highland/takabisha-steepest-roller-coaster) in Fuji-Q Highland klimt verticaal en duikt dan met 121 graden, de steilste afdaling van alle stalen achtbanen. [Oath of Kärnan](/nl/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) in Hansa-Park gebruikt een verticale lift van 73 meter in een gesloten toren, zodat je in het donker omhoog gaat. Niet te verwarren met een liftkooi, waarbij het baanstuk zelf met de trein omhoog gaat.',
+    relatedTermIds: ['lifthill', 'beyond-vertical-drop', 'euro-fighter', 'anti-rollback'],
+    aliases: ['Vertical Lift', 'Verticale liften'],
+    alternateNames: ['Vertical Lift'],
+  },
+  {
+    id: 'drop-track',
+    name: 'Valspoor',
+    shortDefinition:
+      'Een stuk baan dat wegzakt terwijl de trein erop stilstaat — de vloer die onder je verdwijnt.',
+    definition:
+      'Een drop track is een kort, beweegbaar baanstuk op een hydraulisch of elektrisch platform. De trein rijdt erop, stopt, en het hele segment — rails, trein en al — wordt naar beneden losgelaten, meestal enkele meters, waarna de baan in een nieuwe stand vergrendelt en de rit doorgaat. Anders dan bij een normale afdaling komt het gevoel terwijl de trein stilstaat en waterpas is, en daarom voelt het als grond die het begeeft in plaats van als een duik.\n\nHet is bijna altijd een verhaalmoment en geen thrill-element: het effect werkt alleen als je het niet ziet aankomen, dus valspoor zit in showgebouwen en tunnels. [Hagrid’s Magical Creatures Motorbike Adventure](/nl/parks/north-america/united-states/orlando/universal-islands-of-adventure/hagrids-magical-creatures-motorbike-adventure) laat bezoekers midden in het parcours het donker in vallen, [Verbolten](/nl/parks/north-america/united-states/williamsburg/busch-gardens-williamsburg/verbolten) in Busch Gardens Williamsburg uit het Zwarte Woud, en Harry Potter and the Escape from Gringotts gebruikt er een in de kluisscène.',
+    relatedTermIds: ['switch-track', 'dark-ride', 'first-drop', 'indoor-coaster'],
+    aliases: ['Drop Track', 'Drop Tracks'],
+    alternateNames: ['Drop Track'],
+  },
+  {
+    id: 'scorpion-tail',
+    name: 'Schorpioenstaart',
+    shortDefinition:
+      'Een element van Mack Rides: de baan buigt voorbij verticaal in een overhang, zodat de trein achteruit tegen een muur van 105 graden op klimt.',
+    definition:
+      'De scorpion tail is een lanceerspike die niet stopt bij verticaal. In plaats van tot 90 graden te stijgen en de trein daar te houden, buigt de baan door de verticaal heen en helt terug tot ongeveer 105 graden — een overhang. Een gelanceerde trein klimt ondersteboven en licht achterwaarts omhoog, hangt op het hoogste punt en valt dezelfde weg terug.\n\nMack Rides bouwde de eerste in 2024 voor [Voltron Nevera](/nl/parks/europe/germany/rust/europa-park/voltron-nevera-powered-by-rimac) in [Europa-Park](/nl/parks/europe/germany/rust/europa-park), waar het de steilste lanceersectie van alle achtbanen ter wereld is. Het effect is bijzonder omdat de hangtime zonder enige voorwaartse beweging ontstaat: bovenin word je alleen nog vastgehouden door de vorm van de baan en de resterende vaart van de trein. De naam komt van het silhouet — een staart die omhoog en over zichzelf heen krult.',
+    relatedTermIds: ['spike', 'swing-launch', 'launch', 'hangtime', 'mack-rides'],
+    aliases: ['Scorpion Tail', 'Scorpion Tails'],
+    alternateNames: ['Scorpion Tail'],
+  },
+  {
+    id: 'step-up-under-flip',
+    name: 'Step-Up Under-Flip',
+    shortDefinition:
+      'Een RMC-inversie waarbij de trein een sterk overhellende heuvel op klimt, bovenaan omrolt en er aan de andere kant ondersteboven uit valt.',
+    definition:
+      'Een step-up under-flip is een tweetraps inversie, bedacht door Rocky Mountain Construction. De trein "stapt" eerst omhoog — via een stijgend, zwaar overhellend stuk — en flipt daarna onder zichzelf door op de weg naar beneden, zodat de rol op de dalende helft plaatsvindt in plaats van op de top. Het resultaat is een langere, tragere rotatie dan een barrel roll en een harde klap ejector airtime bij het uitvallen.\n\nHet is een van de figuren die een RMC-hybride zijn eigen karakter geven, en komt voor op [Steel Vengeance](/nl/parks/north-america/united-states/sandusky/cedar-point/steel-vengeance) in Cedar Point, [Zadra](/nl/parks/europe/poland/zator/energylandia/zadra-rc) in Energylandia en [Untamed](/nl/parks/europe/netherlands/biddinghuizen/walibi-holland/untamed) in Walibi Holland — de eerste RMC-conversie in Europa. Omdat de manoeuvre nauwkeurig gewrongen stalen rail op een houten of stalen constructie vraagt, is hij op traditioneel houten spoor praktisch onmogelijk.',
+    relatedTermIds: [
+      'rmc',
+      'hybrid-coaster',
+      'inversion',
+      'ejector-airtime',
+      'twisted-horseshoe-roll',
+    ],
+    aliases: ['Step Up Under Flip'],
+  },
+  {
+    id: 'twisted-horseshoe-roll',
+    name: 'Twisted Horseshoe Roll',
+    shortDefinition:
+      'Een RMC-element: een hoefijzerbocht van 180 graden met in beide benen een rol, dus twee keer ondersteboven bij een volledige richtingsomkeer.',
+    definition:
+      'Een twisted horseshoe roll neemt het hoefijzer — een krappe 180-gradenkeer die de trein terugstuurt — en vlecht in beide benen een inversie. De trein rolt om bij het inrijden, gaat door de hoefijzerbocht en rolt bij het uitrijden opnieuw. Twee inversies en een volledige richtingswisseling gebeuren in één doorlopende, ongewoon uitgerekte manoeuvre.\n\nRocky Mountain Construction introduceerde het op Outlaw Run in Silver Dollar City, de eerste houten achtbaan ooit met een dubbele barrel roll, en bouwde het sindsdien in [Steel Vengeance](/nl/parks/north-america/united-states/sandusky/cedar-point/steel-vengeance), [Zadra](/nl/parks/europe/poland/zator/energylandia/zadra-rc), [Iron Gwazi](/nl/parks/north-america/united-states/tampa/busch-gardens-tampa/iron-gwazi) en [Untamed](/nl/parks/europe/netherlands/biddinghuizen/walibi-holland/untamed). Je brengt het grootste deel van het element zijwaarts of ondersteboven door bij zeer lage G-krachten, vandaar de enorme hangtime.',
+    relatedTermIds: ['horseshoe', 'rmc', 'inversion', 'hangtime', 'step-up-under-flip'],
+    aliases: ['Twisted Horseshoe Rolls', 'Dubbele barrel roll'],
+  },
+  {
+    id: 'double-down',
+    name: 'Double Down',
+    shortDefinition:
+      'Een afdaling die halverwege even afvlakt en daardoor twee losse klappen airtime geeft in plaats van één.',
+    definition:
+      'Een double down is een afdaling in twee etappes: de baan zakt, vlakt kort af of stijgt zelfs een fractie, en zakt dan opnieuw. Elke overgang tilt bezoekers uit hun stoel, zodat één heuvel twee duidelijke schoten airtime oplevert in plaats van één lang zweefmoment. Het spiegelbeeld, een double up, doet hetzelfde op de weg omhoog.\n\nHet is een klassieker uit de houten achtbaanbouw en een van de oudste trucs in het vak — [Jack Rabbit](/nl/parks/north-america/united-states/west-mifflin/kennywood/jack-rabbit) in Kennywood gooit bezoekers sinds 1920 met zijn double dip uit hun stoel. Moderne houten en hybride parcoursen leunen er nog steeds op: [Colossos](/nl/parks/europe/germany/soltau/heide-park/colossos-kampf-der-giganten) in Heide-Park, [Balder](/nl/parks/europe/sweden/gothenburg/liseberg/balder) in Liseberg en [Troy](/nl/parks/europe/netherlands/sevenum/toverland/troy) in Toverland beëindigen afdalingen zo. Rek het idee verder op en je krijgt een quad-down: vier etappes in één afdaling.',
+    relatedTermIds: ['airtime', 'ejector-airtime', 'quad-down', 'camelback', 'wooden-coaster'],
+    aliases: ['Double Downs', 'Double dip'],
+    alternateNames: ['Double Dip'],
+  },
+  {
+    id: 'switch-track',
+    name: 'Wissel',
+    shortDefinition:
+      'Een beweegbaar baanstuk dat de trein naar een ander pad stuurt — voor achteruitpassages, vertakte parcoursen en opstelsporen.',
+    definition:
+      'Een switch track is het achtbaanequivalent van een spoorwissel: een baanstuk dat schuift, kantelt of draait om het hoofdparcours met een tweede route te verbinden. Mechanisch is het eenvoudig; wat het oplevert is vrijheid in het parcours. Een wissel kan een trein achteruit door een al gereden stuk sturen, vanuit hetzelfde station twee routes aanbieden, of aan het eind van de dag treinen simpelweg de onderhoudsloods in leiden.\n\nAls showelement gaat het meestal om verrassing. [Expedition Everest](/nl/parks/north-america/united-states/orlando/disney-animal-kingdom/expedition-everest-legend-of-the-forbidden-mountain) toont opgebroken spoor vooruit en stuurt de trein dan achteruit de berg af. [Big Grizzly Mountain](/nl/parks/asia/hong-kong/hong-kong/hong-kong-disneyland-park/big-grizzly-mountain-runaway-mine-cars) in Hong Kong Disneyland gebruikt er twee. [Fury](/nl/parks/europe/belgium/kasterlee/bobbejaanland/fury) in Bobbejaanland biedt er een voorwaartse en een achterwaartse rit mee uit hetzelfde parcours.',
+    relatedTermIds: ['drop-track', 'turntable', 'block-brake', 'dark-ride'],
+    aliases: ['Switch Track', 'Switch Tracks', 'Baanwissel'],
+    alternateNames: ['Switch Track'],
+  },
+  {
+    id: 'turntable',
+    name: 'Draaischijf',
+    shortDefinition:
+      'Een draaiend platform in het parcours dat de trein ter plekke keert, meestal om hem de andere kant op te sturen.',
+    definition:
+      'Een draaischijf is een baanstuk op een roterende schijf. De trein rijdt erop, de schijf draait — meestal 180 graden — en de trein rijdt de andere kant op verder. Omdat de rotatie stilstaand gebeurt, is het bewust een rustig moment: een baan kan van richting wisselen zonder shuttlespike of wissel, en de show krijgt een maat waarin bezoekers iets getoond kan worden.\n\nOp [Voltron Nevera](/nl/parks/europe/germany/rust/europa-park/voltron-nevera-powered-by-rimac) in Europa-Park zet de draaischijf een achterwaartse lancering op, en in veel dark rides draait hij bezoekers op precies het juiste moment naar een scène. Trackless dark rides bereiken hetzelfde zonder speciale hardware, omdat hun voertuigen overal vrij kunnen draaien.',
+    relatedTermIds: ['switch-track', 'swing-launch', 'trackless-ride', 'dark-ride'],
+    aliases: ['Turntable', 'Draaischijven'],
+    alternateNames: ['Turntable'],
+  },
+  {
+    id: 'treble-clef',
+    name: 'Vioolsleutel',
+    shortDefinition:
+      'Een niet-inverterend element in de vorm van de muzieksleutel: de baan lust over zichzelf heen en rijgt terug door de eigen bocht.',
+    definition:
+      'Een treble clef is een gestapelde, zichzelf kruisende bocht — de trein klimt een lus in, kruist zijn eigen spoor en verlaat de figuur door het midden, waarmee ongeveer de omtrek van de vioolsleutel wordt getekend. Een inversie is het niet: de trein blijft steeds rechtop, gehouden door zware overhelling in plaats van door ondersteboven te gaan. Wat je voelt is een lange, desoriënterende zwaai met spoor vlak boven en onder je.\n\nMaurer Rides bouwde het element voor [Hollywood Rip Ride Rockit](/nl/parks/north-america/united-states/orlando/universal-studios-florida/hollywood-rip-ride-rockit) in Universal Studios Florida, waarvan het parcours muzikaal is uitgewerkt en de figuren dienovereenkomstig benoemt — de vioolsleutel volgt op de niet-inverterende "double take"-lus. Het bleef een eenmalig element, wat mede verklaart waarom de baan zo herkenbaar is.',
+    relatedTermIds: ['non-inverting-loop', 'maurer-rides', 'overbank', 'inversion'],
+    aliases: ['Treble Clef'],
+    alternateNames: ['Treble Clef'],
+  },
+  {
+    id: 'indoor-coaster',
+    name: 'Indoor-achtbaan',
+    shortDefinition:
+      'Een achtbaan die volledig binnen staat, waar licht, geluid en decor het uitzicht vervangen.',
+    definition:
+      'Een indoor-achtbaan rijdt haar hele parcours in een gesloten showgebouw. Het wegvallen van daglicht verandert de rit fundamenteel: zonder visuele aanwijzingen is geen afdaling of bocht meer te voorspellen, waardoor een bescheiden parcours veel heftiger aanvoelt dan hetzelfde spoor in de buitenlucht. Bovendien krijgt de ontwerper volledige controle over licht, projectie, geluid en decor — daarom is dit format de natuurlijke thuisbasis van de achtbaan-darkridehybride.\n\nSpace Mountain is het archetype — [Disneyland](/nl/parks/north-america/united-states/anaheim/disneyland-park/space-mountain) opende zijn versie in 1977 en de ridefamilie is nog altijd de meest gekopieerde donkere achtbaan ter wereld. Europa heeft enkele van de beste voorbeelden: [Eurosat](/nl/parks/europe/germany/rust/europa-park/eurosat-cancan-coaster) en [Euro-Mir](/nl/parks/europe/germany/rust/europa-park/euro-mir) in Europa-Park, Eftelings [Vogel Rok](/nl/parks/europe/netherlands/kaatsheuvel/efteling/vogel-rok) en Phantasialands [Crazy Bats](/nl/parks/europe/germany/bruehl/phantasialand/crazy-bats), nog steeds de langste indoor-achtbaan die er is.',
+    relatedTermIds: ['dark-ride', 'show-building', 'projection-mapping', 'vr-coaster'],
+    aliases: ['Indoor-achtbanen', 'Indoor Coaster'],
+    alternateNames: ['Indoor Coaster'],
+  },
+  {
+    id: 'family-coaster',
+    name: 'Familieachtbaan',
+    shortDefinition:
+      'Een achtbaan die kinderen en volwassenen samen kunnen rijden — gematigde krachten, lage minimumlengte, geen inversies.',
+    definition:
+      'Een familieachtbaan mikt op het breedst mogelijke publiek in plaats van op thrillzoekers. Minimumlengtes beginnen doorgaans rond 100 tot 110 centimeter (daaronder vaak onder begeleiding), snelheden blijven onder ongeveer 60 km/u, en parcoursen vermijden inversies en aanhoudend hoge G-krachten. Dat is een randvoorwaarde, geen gebrek aan ambitie: een goede familieachtbaan moet nog steeds echte airtime en strak ritme leveren, alleen binnen een veel nauwere marge.\n\nCommercieel horen ze tot de waardevolste banen die een park kan kopen, omdat een heel gezelschap samen kan rijden en de wachtrij nooit leegloopt. Vekoma’s Family Boomerang, Macks Youngstar en Zierers Tivoli zijn de werkpaarden; [Pegasus](/nl/parks/europe/germany/rust/europa-park/pegasus) in Europa-Park, [Raik](/nl/parks/europe/germany/bruehl/phantasialand/raik) in Phantasialand en [Slinky Dog Dash](/nl/parks/north-america/united-states/orlando/disney-hollywood-studios/slinky-dog-dash) in Disney’s Hollywood Studios zijn precies zo ontworpen.',
+    relatedTermIds: ['height-requirement', 'mine-train', 'wild-mouse', 'launch-coaster'],
+    aliases: ['Familieachtbanen', 'Family Coaster', 'Juniorachtbaan'],
+    alternateNames: ['Family Coaster', 'Juniorachtbaan'],
+  },
+  {
+    id: 'motorbike-coaster',
+    name: 'Motorachtbaan',
+    shortDefinition:
+      'Een achtbaan waarop je schrijlings zit als op een motor, voorovergebogen over een stuur, in enkele rij.',
+    definition:
+      'Op een motorachtbaan zit je schrijlings op het voertuig in plaats van erin, met je handen aan een stuur, voorovergebogen en je voeten op steunen. De zithouding verandert de hele rit: het zwaartepunt ligt laag en recht boven de rails, waardoor overhellende bochten en zijwaartse krachten aanvoelen als het insturen van een bocht. Het betekent ook dat de treinen lang en smal zijn en de capaciteit per voertuig laag.\n\nVekoma bouwde de eerste met Booster Bike in [Toverland](/nl/parks/europe/netherlands/sevenum/toverland/booster-bike) in 2004; Intamin voerde het idee het verst door op [Hagrid’s Magical Creatures Motorbike Adventure](/nl/parks/north-america/united-states/orlando/universal-islands-of-adventure/hagrids-magical-creatures-motorbike-adventure), dat een zijspan toevoegt zodat ook wie niet schrijlings kan zitten mee kan. Disneys [TRON Lightcycle / Run](/nl/parks/north-america/united-states/orlando/disney-magic-kingdom/tron-lightcycle-run) gebruikt dezelfde houding met een gesloten kap over elke bezoeker.',
+    relatedTermIds: ['launch-coaster', 'vekoma', 'intamin', 'suspended-coaster'],
+    aliases: ['Motorachtbanen', 'Motorbike Coaster'],
+    alternateNames: ['Motorbike Coaster'],
+  },
+  {
+    id: 'infinity-coaster',
+    name: 'Infinity Coaster',
+    shortDefinition:
+      'Gerstlauers opvolger van de Euro-Fighter: dezelfde steile afdalingen en compacte voetafdruk, maar met open treinen in stadionopstelling.',
+    definition:
+      'De Infinity Coaster is Gerstlauers huidige platform voor maatwerkbanen. Hij behoudt wat de Euro-Fighter succesvol maakte — overhellende afdalingen, verticale liften en parcoursen op zeer weinig grond — maar vervangt de hoekige vierpersoonswagens door langere, lagere treinen met open zijkanten en vestbeugels in plaats van schouderbeugels. Het resultaat rijdt merkbaar soepeler en laat meer airtimeheuvels toe, waar het oudere model slecht mee overweg kon.\n\nHet gamma loopt van compacte opvulbanen tot recordhouders: [The Smiler](/nl/parks/europe/united-kingdom/farley/alton-towers/the-smiler) in Alton Towers houdt met veertien inversies het wereldrecord, [Oath of Kärnan](/nl/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) in Hansa-Park combineert een verticale lift van 73 meter met een swing launch, en [Star Trek: Operation Enterprise](/nl/parks/europe/germany/bottrop/movie-park-germany/star-trek-operation-enterprise) in Movie Park Germany rijdt het model als multi-launchshuttle.',
+    relatedTermIds: ['gerstlauer', 'euro-fighter', 'beyond-vertical-drop', 'vertical-lift'],
+    aliases: ['Infinity Coasters'],
+  },
+  {
+    id: 'interactive-dark-ride',
+    name: 'Interactieve Darkride',
+    shortDefinition: 'Een darkride waarin je schiet, mikt of meespeelt, en die je score bijhoudt.',
+    definition:
+      'Een interactieve darkride geeft bezoekers een apparaat in handen — meestal een infraroodblaster, soms een touchscreen of gewoon de eigen handen — en bouwt de show rond wat ze ermee doen. Doelen in elke scène registreren treffers en voeden een persoonlijke score die aan het eind wordt getoond. Omdat die score een reden geeft om steeds opnieuw te rijden, hebben deze attracties de hoogste herhaalcijfers in het hele park — precies waarom exploitanten ze blijven bouwen.\n\nHet genre kent twee scholen. Fysieke ritten schieten op echte, geanimeerde decors: [Maus au Chocolat](/nl/parks/europe/germany/bruehl/phantasialand/maus-au-chocolat) in Phantasialand en [Men in Black: Alien Attack](/nl/parks/north-america/united-states/orlando/universal-studios-florida/men-in-black-alien-attack) in Universal Studios Florida. Schermgebaseerde ritten schieten op geprojecteerde doelen, wat veel uitgebreidere effecten toelaat: [Toy Story Mania](/nl/parks/north-america/united-states/orlando/disney-hollywood-studios/toy-story-mania) en [WEB SLINGERS](/nl/parks/north-america/united-states/anaheim/disney-california-adventure-park/web-slingers-a-spider-man-adventure), dat handbewegingen volgt zonder blaster.',
+    relatedTermIds: ['dark-ride', 'animatronics', 'projection-mapping', 'trackless-ride'],
+    aliases: ['Interactieve darkrides', 'Interactive Dark Ride', 'Schietdarkride'],
+    alternateNames: ['Interactive Dark Ride'],
+  },
+  {
+    id: 'madhouse',
+    name: 'Madhouse',
+    shortDefinition:
+      'Een attractie waarin de kamer om een zacht schommelende bank draait, zodat je overtuigd raakt dat je over de kop gaat.',
+    definition:
+      'Een madhouse is een illusie die op één truc rust: de zitbank schommelt slechts enkele graden, terwijl de hele kamer eromheen een volledige 360 graden roteert. Zonder vast visueel referentiepunt — muren, plafond en rekwisieten bewegen allemaal mee — leest je brein de beweging als het over de kop gaan van de bank. Je weet zeker dat je ondersteboven hing; in werkelijkheid verlaat je nooit een vlakke boog.\n\nVekoma maakte het format tot industriestandaard na de bouw van [Villa Volta](/nl/parks/europe/netherlands/kaatsheuvel/efteling/villa-volta) voor de Efteling in 1996, nog altijd het bepalende voorbeeld en de reden dat het ridesysteem vaak simpelweg "Vekoma Madhouse" heet. Phantasialands [Feng Ju Palace](/nl/parks/europe/germany/bruehl/phantasialand/feng-ju-palace), Europa-Parks [Cassandra’s Curse](/nl/parks/europe/germany/rust/europa-park/cassandras-curse) en Toverlands [Villa Fiasko](/nl/parks/europe/netherlands/sevenum/toverland/villa-fiasko) draaien hetzelfde systeem achter een ander verhaal.',
+    relatedTermIds: ['dark-ride', 'vekoma', 'pre-show', 'animatronics'],
+    aliases: ['Madhouses', 'Vekoma Madhouse', 'Spookschommel'],
+    alternateNames: ['Spookschommel'],
+  },
+  {
+    id: 'boat-ride',
+    name: 'Bootattractie',
+    shortDefinition:
+      'Een darkride waarin bezoekers per boot door een waterkanaal reizen in plaats van over een spoor.',
+    definition:
+      'Een bootattractie voert gasten door de show in een watergoot, meestal geleid door een spoor onder water of door de kanaalwanden zelf. Water levert twee dingen die een spoor niet kan: capaciteit, omdat lange boten snel laden en dicht op elkaar rijden, en stilte, omdat er onder de gast geen aandrijving zit die de show overstemt. Daarom domineert dit format de grootste en langstlopende darkrides ter wereld.\n\nVrijwel elke klassieker valt eronder: [Pirates of the Caribbean](/nl/parks/north-america/united-states/anaheim/disneyland-park/pirates-of-the-caribbean), ["it’s a small world"](/nl/parks/north-america/united-states/anaheim/disneyland-park/its-a-small-world-holiday), Eftelings [Fata Morgana](/nl/parks/europe/netherlands/kaatsheuvel/efteling/fata-morgana) en [Piraten in Batavia](/nl/parks/europe/germany/rust/europa-park/pirates-in-batavia) in Europa-Park. Shanghai Disneylands Pirates of the Caribbean gaat nog verder en zet de boten op een trackless magneetaandrijving, zodat ze kunnen draaien en zijwaarts bewegen.',
+    relatedTermIds: ['dark-ride', 'animatronics', 'trackless-ride', 'log-flume', 'water-ride'],
+    aliases: ['Bootattracties', 'Boat Ride'],
+    alternateNames: ['Boat Ride'],
+  },
+  {
+    id: 'shoot-the-chute',
+    name: 'Shoot-the-Chute',
+    shortDefinition:
+      'Een grootbootwaterbaan rond één grote afdaling in een bak, die een muur van water over de splashbrug gooit.',
+    definition:
+      'Een shoot-the-chute trekt een brede, platbodemde boot met twintig of meer personen één lift op en laat hem via één steile goot in een ondiepe bak vallen. Bij de klap verplaatst de boot een enorme hoeveelheid water — en dat is de bedoeling: de plons is net zozeer op een kijkbrug gericht als op de inzittenden. Anders dan een boomstamattractie, die meerdere kleine afdalingen over een lang kronkelend parcours verdeelt, is een shoot-the-chute gebouwd rond één afdaling en één plons.\n\nMeestal draagt het format een heel themagebied in plaats van een gaatje te vullen: [Jurassic Park River Adventure](/nl/parks/north-america/united-states/orlando/universal-islands-of-adventure/jurassic-park-river-adventure) in Islands of Adventure rijdt een volledige darkride vóór de afdaling van 26 meter, en [Atlantica SuperSplash](/nl/parks/europe/germany/rust/europa-park/atlantica-supersplash) in Europa-Park combineert het met een waterachtbaanparcours.',
+    relatedTermIds: ['log-flume', 'water-ride', 'splashdown', 'water-coaster'],
+    aliases: ['Shoot the Chutes', 'Grootbootbaan'],
+    alternateNames: ['Grootbootbaan'],
+  },
+  {
+    id: 'people-mover',
+    name: 'People Mover',
+    shortDefinition:
+      'Een continu rijdende transportattractie die gasten langzaam door of boven een themagebied voert.',
+    definition:
+      'Een people mover is een langzame transportattractie met hoge capaciteit: een ononderbroken keten voertuigen op wandeltempo, vaak op een verhoogde baan, met een meebewegend perron zodat hij nooit hoeft te stoppen. In een park doet hij dubbel werk — echt vervoer tussen gebieden, en een ontspannen overzichtsrit die het gebied en vaak ook het interieur van andere attracties toont.\n\nDe Tomorrowland Transit Authority PeopleMover in het [Magic Kingdom](/nl/parks/north-america/united-states/orlando/disney-magic-kingdom/tomorrowland-transit-authority-peoplemover) is de bekendste overlevende en glijdt op zijn rondje dwars door het showgebouw van Space Mountain. De daar gebruikte lineaire inductieaandrijving is later gelicentieerd voor echt stadsvervoer. Universals Villain-Con Minion Blast past hetzelfde idee toe op een rolpad.',
+    relatedTermIds: ['dark-ride', 'omnimover', 'observation-tower', 'walkthrough'],
+    aliases: ['People Movers', 'Peoplemover'],
+    alternateNames: ['Transitsysteem'],
+  },
+  {
+    id: 'bumper-cars',
+    name: 'Botsauto’s',
+    shortDefinition:
+      'Een flat ride waarin gasten kleine elektrische auto’s over een metalen vloer sturen en expres op elkaar botsen.',
+    definition:
+      'Botsauto’s rijden op een stalen vloer met een geleidend plafondraster: een stang op elke auto neemt bovenlangs stroom af en voert die via de vloer terug, zodat de voertuigen zonder accu en zonder spoor vrij bestuurd kunnen worden. Zware rubberen bumpers vangen de botsingen op waar de hele attractie om draait. Moderne installaties gebruiken steeds vaker vloerafname of accu’s, wat het plafondraster overbodig maakt en het plafond vrijgeeft voor thematisering.\n\nHet is een van de oudste nog doorlopend geproduceerde attractietypes — de Lusse Auto-Skooter stamt uit de jaren twintig — en een van de weinige waarbij de bezoeker zelf bepaalt wat er gebeurt. Vrijwel elk groot park heeft er een, van Phantasialands [Bumper Klumpen](/nl/parks/europe/germany/bruehl/phantasialand/bumper-klumpen) tot het Lada Autodrom in Europa-Park.',
+    relatedTermIds: ['flat-ride', 'funhouse', 'carousel'],
+    aliases: ['Botsauto', 'Bumper Cars', 'Autoscooter'],
+    alternateNames: ['Bumper Cars', 'Autoscooter'],
+  },
+  {
+    id: 'observation-tower',
+    name: 'Uitkijktoren',
+    shortDefinition:
+      'Een torenattractie die een draaiende cabine langzaam omhoog brengt voor het uitzicht, zonder val.',
+    definition:
+      'Een uitkijktoren voert een beglaasde of open gondel langs een middenzuil omhoog, meestal draaiend zodat elke plek het volledige panorama krijgt, houdt bovenin stil en laat weer zakken. Mechanisch is het een naaste verwant van de valtoren, en de twee worden vaak verward — het verschil zit volledig in de bedoeling: een uitkijktoren is gebouwd om uit te kijken, een valtoren om uit te vallen.\n\nIn een park verdient hij zijn plek eerst als landmark en pas daarna als attractie, omdat hij de skyline een vast punt geeft dat vanaf de parkeerplaats zichtbaar is. De [Euro-Tower](/nl/parks/europe/germany/rust/europa-park/euro-tower) in Europa-Park doet precies dat sinds 1979.',
+    relatedTermIds: ['drop-tower', 'ferris-wheel', 'flat-ride', 'people-mover'],
+    aliases: ['Uitkijktorens', 'Observation Tower', 'Gyro Tower'],
+    alternateNames: ['Gyro Tower'],
+  },
+  {
+    id: 'wdi',
+    name: 'Walt Disney Imagineering',
+    shortDefinition:
+      'Disneys eigen ontwerp- en engineeringafdeling — de groep die elke Disney-attractie bedenkt, ontwerpt en bouwt.',
+    definition:
+      'Walt Disney Imagineering (WDI) is de divisie die Disneys parken ontwerpt en bouwt, van het masterplan van een gebied tot het mechaniek in één enkele figuur. Opgericht in 1952 als WED Enterprises om Disneyland te bouwen, is ze in de branche ongewoon doordat showontwerp, architectuur, ridetechniek en software onder één dak zitten — dezelfde organisatie die het verhaal schrijft, bouwt ook het voertuig dat het vertelt.\n\nHaar uitvindingen bepalen veel van wat andere parken nu vanzelfsprekend vinden: Audio-Animatronics, de Omnimover (een continu rijdende wagen die naar elke scène toe draait), het trackless ridesysteem dat debuteerde in [Pooh’s Hunny Hunt](/nl/parks/asia/japan/tokyo/tokyo-disneyland/poohs-hunny-hunt), en het buisvormige stalen achtbaanspoor dat Arrow in 1959 bouwde voor de [Matterhorn Bobsleds](/nl/parks/north-america/united-states/anaheim/disneyland-park/matterhorn-bobsleds) en waarvan elke stalen achtbaan sindsdien afstamt. Waar een Disney-attractie een externe fabrikant draagt, heeft WDI vrijwel altijd de show eromheen ontworpen.',
+    relatedTermIds: ['omnimover', 'trackless-ride', 'animatronics', 'dark-ride', 'arrow-dynamics'],
+    aliases: ['WDI', 'Imagineering', 'Imagineers', 'WED Enterprises'],
+    alternateNames: ['WDI', 'Imagineering'],
+  },
+  {
+    id: 'brogent',
+    name: 'Brogent Technologies',
+    shortDefinition:
+      'Taiwanese fabrikant van het i-Ride-flyingtheatersysteem dat de meeste flying theaters buiten Disney gebruiken.',
+    definition:
+      'Brogent Technologies, in 2001 opgericht in Kaohsiung, bouwt het flying theater i-Ride — een hangende zitgondel die uitzwenkt voor een groot bolvormig scherm terwijl je voeten vrij bungelen, gesynchroniseerd met wind-, geur- en misteffecten. Waar Disneys Soarin’ het format vestigde, industrialiseerde Brogent het: de i-Ride is het systeem dat parken kopen als ze een flying theater willen, en draait inmiddels op elk continent.\n\nEuropa’s bekendste installatie is [Voletarium](/nl/parks/europe/germany/rust/europa-park/voletarium) in Europa-Park, dat over de landmarks van het continent vliegt en voor de capaciteit twee zalen parallel draait. Daarnaast bouwt het bedrijf kleinere mediagebaseerde ridesystemen en immersieve koepelattracties.',
+    relatedTermIds: ['flying-theater', 'motion-simulator', 'projection-mapping', 'pre-show'],
+    aliases: ['Brogent', 'i-Ride'],
+    alternateNames: ['Brogent'],
+  },
 ];
 
 export default translations;

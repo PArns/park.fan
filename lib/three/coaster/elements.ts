@@ -37,6 +37,16 @@ export interface CoasterElementDef {
   /** Seconds for one pass of the run (default 9). */
   duration?: number;
   /**
+   * Speed profile: remaps linear timeline progress (0..1) to a position along
+   * the curve (0..1). The curve is arc-length parameterised, so leaving this
+   * out means constant speed — right for almost every figure. Supply it only
+   * when the speed change IS the element: a launch accelerating out of the
+   * station, a train hanging at the apex of a scorpion tail, a drop track
+   * standing dead still before the floor lets go. Must be monotonic, start at
+   * 0 and end at 1.
+   */
+  pace?: (t: number) => number;
+  /**
    * Initial camera the player opens with. Turn-based figures (helix, overbanked
    * turn) read poorly head-on — they curve away into depth — so they default to
    * `'follow'`. Omit for the usual `'front'`.
@@ -1112,6 +1122,266 @@ const helixElement: CoasterElementDef = {
   defaultView: 'follow',
 };
 
+// ── Launch — the element is the ACCELERATION, so the geometry is deliberately
+//    plain: a dead-straight LSM stretch out of the station that rises into a
+//    speed hill. `pace` does the work — the train crawls out of the station,
+//    the launch fires, and it coasts over the hill. Reference: Intamin/Vekoma
+//    LSM launch tracks (Taron, TRON), which are level and straight so the fins
+//    can engage before the layout starts. ──────────────────────────────────────
+const launch: CoasterElementDef = {
+  id: 'launch',
+  points: [
+    [-13, 1, 0],
+    [-10.5, 1, 0],
+    [-7, 1, 0],
+    [-3, 1, 0],
+    [0.5, 1.1, 0],
+    [3.5, 1.9, 0],
+    [6, 3.6, 0],
+    [8, 6, 0],
+    [9.6, 8.4, 0],
+    [11.2, 9.7, 0],
+    [13, 10, 0],
+  ],
+  // A short crawl out of the station, then a pure ease-IN: the train is still
+  // gaining speed when it crests, which is what a launch actually feels like.
+  // Deliberately NOT ease-out — that would compress the tail of the run and
+  // bunch the cars at the end of the curve.
+  pace: (t) => {
+    if (t < 0.15) return 0.02 * (t / 0.15);
+    return 0.02 + 0.98 * Math.pow((t - 0.15) / 0.85, 1.8);
+  },
+  keyPoints: [
+    { t: 0.08, label: 'approach' },
+    { t: 0.24, label: 'launch' },
+    { t: 0.72, label: 'climb' },
+  ],
+  duration: 7,
+};
+
+// ── Vertical lift — a 90° climb up the face of the tower, a short crest and a
+//    steep drop away. Reference: Gerstlauer Euro-Fighter / Infinity lifts
+//    (Takabisha, Kärnan), where the car is hauled by a catch-car on a vertical
+//    face. Kept slow on the way up so the climb reads, then released. ──────────
+const verticalLift: CoasterElementDef = {
+  id: 'vertical-lift',
+  points: [
+    [-13, 1, 0],
+    [-9, 1, 0],
+    [-6.2, 1.1, 0],
+    [-4.6, 2.2, 0],
+    [-4.2, 4.5, 0],
+    [-4.2, 7.5, 0],
+    [-4.2, 10, 0], // dead vertical face
+    [-3.9, 11.6, 0],
+    [-2.6, 12.3, 0], // crest
+    [-1.2, 11.9, 0],
+    [-0.2, 10.2, 0],
+    [0.6, 7, 0],
+    [1.8, 3.4, 0],
+    [4, 1.4, 0],
+    [8, 1, 0],
+    [13, 1, 0],
+  ],
+  // slow, steady haul up the face; normal speed once it is over the crest
+  pace: (t) => (t < 0.55 ? (t / 0.55) * 0.42 : 0.42 + ((t - 0.55) / 0.45) * 0.58),
+  keyPoints: [
+    { t: 0.2, label: 'climb' },
+    { t: 0.55, label: 'crest' },
+    { t: 0.78, label: 'dive' },
+  ],
+  duration: 9,
+};
+
+// ── Drop track — the train rolls onto a level segment, stops dead, and the
+//    piece of track it is standing on falls away. Modelled as a level approach,
+//    a step down, and a level run-out: the `pace` hold at the top and the very
+//    fast transit of the step are what sell it. Reference: Verbolten and
+//    Hagrid's, where the drop is a few metres, straight down, in the dark. ─────
+const dropTrack: CoasterElementDef = {
+  id: 'drop-track',
+  points: [
+    [-13, 8, 0],
+    [-9, 8, 0],
+    [-5.5, 8, 0],
+    [-2.6, 8, 0], // the movable segment — level, train stops here
+    [-1.4, 7.9, 0],
+    [-0.6, 6.6, 0],
+    [-0.35, 4.6, 0], // the floor goes
+    [-0.5, 2.6, 0],
+    [-0.1, 1.5, 0],
+    [1.4, 1.05, 0],
+    [5, 1, 0],
+    [9, 1, 0],
+    [13, 1, 0],
+  ],
+  pace: (t) => {
+    if (t < 0.34) return (t / 0.34) * 0.3; // roll on
+    if (t < 0.5) return 0.3; // dead stop on the segment
+    const u = (t - 0.5) / 0.5;
+    return 0.3 + 0.7 * Math.pow(u, 1.6); // released — accelerating away
+  },
+  keyPoints: [
+    { t: 0.3, label: 'approach' },
+    { t: 0.46, label: 'drop' },
+    { t: 0.82, label: 'land' },
+  ],
+  duration: 8,
+};
+
+// ── Scorpion tail — a launch spike that curls PAST vertical into an overhang,
+//    so the train climbs inverted and hangs there before falling back the way
+//    it came. Reference: Mack Rides' 105° spike on Voltron Nevera (2024) — the
+//    steepest launch section built. x moves BACK as y rises past ~10, which is
+//    what makes the overhang read; the pace stalls the train at the apex. The
+//    return leg is the SAME track in reality — it is drawn with a ~1.6 depth
+//    offset here for the same reason the vertical loop drifts in z: so the two
+//    legs cross over/under instead of appearing to drive through each other. ───
+const scorpionTail: CoasterElementDef = {
+  id: 'scorpion-tail',
+  points: [
+    [-13, 1, 0],
+    [-9, 1, 0],
+    [-5.5, 1.1, 0],
+    [-2.6, 1.9, 0],
+    [-0.5, 3.6, 0.1],
+    [0.6, 6, 0.2],
+    [0.9, 8.4, 0.3],
+    [0.5, 10.4, 0.4],
+    [-0.5, 11.8, 0.5], // past vertical: leaning back over the entry
+    [-1.6, 12.4, 0.7], // apex, overhanging
+    [-2.2, 12.1, 1.1],
+    [-2.3, 10.6, 1.4], // falling back the way it came
+    [-1.6, 8.4, 1.5],
+    [-1, 6, 1.6],
+    [-2.2, 3.6, 1.6],
+    [-4.4, 1.9, 1.6],
+    [-7.5, 1.2, 1.6],
+    [-11, 1, 1.6],
+    [-13, 1, 1.6],
+  ],
+  pace: (t) => {
+    // hard up the spike, a long float at the overhang, then back down
+    if (t < 0.38) return 0.42 * (1 - Math.pow(1 - t / 0.38, 2.2));
+    if (t < 0.6) return 0.42 + 0.1 * ((t - 0.6) / 0.22 + 1); // stall across the apex
+    return 0.52 + 0.48 * Math.pow((t - 0.6) / 0.4, 1.4);
+  },
+  keyPoints: [
+    { t: 0.18, label: 'launch' },
+    { t: 0.42, label: 'overhang' },
+    { t: 0.55, label: 'hangtime' },
+    { t: 0.85, label: 'land' },
+  ],
+  duration: 8,
+};
+
+// ── Step-up under-flip — RMC's two-stage inversion: the train "steps up" a
+//    rising, heavily banked hill, then flips UNDER itself on the way down, so
+//    the roll happens in the descending half and the train falls out inverted
+//    into ejector airtime. Reference: Steel Vengeance / Zadra / Untamed. The
+//    roll is applied over the back half only, which is the whole distinction
+//    from an ordinary barrel roll over a crest. ──────────────────────────────
+const stepUpUnderFlip: CoasterElementDef = {
+  id: 'step-up-under-flip',
+  points: [
+    [-13, 1.2, 0],
+    [-9.5, 1.6, 0],
+    [-6.5, 3.4, 0],
+    [-4, 6.4, 0],
+    [-2, 9.2, 0],
+    [-0.2, 10.8, 0], // step up complete
+    [1.8, 11.1, 0.5],
+    [3.8, 10.2, 1.2],
+    [5.4, 8, 1.6], // flipping under on the way down
+    [6.6, 5.2, 1.5],
+    [7.8, 2.6, 1.1],
+    [9.8, 1.3, 0.6],
+    [13, 1, 0],
+  ],
+  // the roll lives entirely in the descending half
+  roll: (t) => TAU * smoothstep(0.46, 0.86, t),
+  keyPoints: [
+    { t: 0.3, label: 'climb' },
+    { t: 0.5, label: 'rollIn' },
+    { t: 0.68, label: 'inverted' },
+    { t: 0.88, label: 'airtime' },
+  ],
+  duration: 9,
+  defaultView: 'follow',
+};
+
+// ── Twisted horseshoe roll — a 180° horseshoe turnaround with a barrel roll
+//    threaded into EACH leg, so the train inverts twice while reversing
+//    direction. Reference: RMC (Outlaw Run, Steel Vengeance, Zadra). The turn
+//    itself is carried in z (the exit leg runs back alongside the entry); the
+//    two rolls are explicit, one per leg, with the horseshoe crest between.
+//    The depth is kept under ~4 so the frontal camera does not have to pull
+//    back far enough to flatten the figure into a diagonal smear. ─────────────
+const twistedHorseshoeRoll: CoasterElementDef = {
+  id: 'twisted-horseshoe-roll',
+  points: [
+    [-13, 1.4, 0],
+    [-9.5, 1.8, 0],
+    [-6.5, 3.8, 0.05],
+    [-3.6, 7, 0.15], // roll 1, climbing
+    [-1.2, 9.6, 0.4],
+    [0.8, 11.2, 0.9],
+    [1.9, 11.7, 1.8], // horseshoe crest — swinging across
+    [1.9, 11.5, 2.7],
+    [0.8, 10.7, 3.4],
+    [-1.4, 8.8, 3.7], // roll 2, descending, heading back
+    [-4.2, 5.8, 3.85],
+    [-7, 3.2, 3.9],
+    [-10, 1.7, 3.9],
+    [-13, 1.3, 3.9],
+  ],
+  // one full rotation per leg, with the horseshoe crest un-rolled between them
+  roll: (t) => {
+    const a = TAU * smoothstep(0.1, 0.36, t);
+    const b = TAU * smoothstep(0.62, 0.88, t);
+    return a + b;
+  },
+  keyPoints: [
+    { t: 0.24, label: 'inverted' },
+    { t: 0.5, label: 'turn' },
+    { t: 0.76, label: 'inverted' },
+    { t: 0.92, label: 'leave' },
+  ],
+  duration: 11,
+  defaultView: 'follow',
+};
+
+// ── Double down — one descent broken into two stages by a short level shelf,
+//    so a single hill delivers two separate hits of airtime instead of one long
+//    float. Reference: the classic wooden double dip (Kennywood's Jack Rabbit,
+//    1920) and its modern descendants on Colossos, Balder and Troy. The shelf
+//    is short and very slightly RISING — that tiny lift is what makes the
+//    second drop pop. ──────────────────────────────────────────────────────────
+const doubleDown: CoasterElementDef = {
+  id: 'double-down',
+  points: [
+    [-13, 11, 0],
+    [-9.5, 11, 0],
+    [-7.2, 10.2, 0],
+    [-5.4, 8, 0],
+    [-3.9, 5.6, 0], // drop 1
+    [-2.6, 5.1, 0],
+    [-1.3, 5.35, 0], // the shelf — a hair of lift
+    [-0.1, 4.6, 0],
+    [1.4, 2.6, 0], // drop 2
+    [3.4, 1.4, 0],
+    [6.6, 1, 0],
+    [13, 1, 0],
+  ],
+  keyPoints: [
+    { t: 0.2, label: 'climb' },
+    { t: 0.42, label: 'airtime' },
+    { t: 0.62, label: 'airtime' },
+    { t: 0.86, label: 'land' },
+  ],
+  duration: 7,
+};
+
 export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {
   'vertical-loop': verticalLoop,
   corkscrew,
@@ -1148,6 +1418,13 @@ export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {
   's-hill': sHill,
   lifthill,
   'interlocking-loops': interlockingLoops,
+  launch,
+  'vertical-lift': verticalLift,
+  'drop-track': dropTrack,
+  'scorpion-tail': scorpionTail,
+  'step-up-under-flip': stepUpUnderFlip,
+  'twisted-horseshoe-roll': twistedHorseshoeRoll,
+  'double-down': doubleDown,
 };
 
 export function getCoasterElement(id: string): CoasterElementDef | undefined {

@@ -2429,6 +2429,269 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['Celestial Roll', 'Celestial Rolls', 'Celestial Spins'],
     alternateNames: ['Celestial Roll'],
   },
+  {
+    id: 'launch',
+    name: 'Launch',
+    shortDefinition:
+      'A propulsion section that accelerates the train to speed in seconds instead of hauling it up a lift hill.',
+    definition:
+      'A launch is the section of track where a coaster gets its energy from a motor rather than from gravity. Four technologies dominate. LSM (linear synchronous motor) launches line the track with electromagnets that pull on a fin under the train — smooth, precisely controllable, and repeatable mid-circuit, which is why almost every new launched coaster uses them. LIM (linear induction motor) launches work similarly but waste more energy as heat. Hydraulic launches use a winch driven by nitrogen-pressurised accumulators and deliver the most violent acceleration ever built; compressed-air launches, used on Maxx Force, are faster still over the first metres.\n\nWhat separates a launch from a lift hill is not just the speed but where the energy can be spent. A lift hill has to be the highest point of the ride, so everything after it is downhill. A launch can sit anywhere, which is why multi-launch layouts like [Taron](/en/parks/europe/germany/bruehl/phantasialand/taron) at [Phantasialand](/en/parks/europe/germany/bruehl/phantasialand) or [Voltron Nevera](/en/parks/europe/germany/rust/europa-park/voltron-nevera-powered-by-rimac) at [Europa-Park](/en/parks/europe/germany/rust/europa-park) can stay fast for their whole length instead of trading height for speed once. A launch that fails to make it through the layout results in a rollback.',
+    relatedTermIds: ['launch-coaster', 'lifthill', 'swing-launch', 'rollback', 'top-hat'],
+    aliases: ['Launches', 'LSM launch', 'LIM launch'],
+    alternateNames: ['Catapult Launch'],
+  },
+  {
+    id: 'swing-launch',
+    name: 'Swing Launch',
+    shortDefinition:
+      'A launch that fires the train back and forth several times, gaining speed on each pass before it finally clears the layout.',
+    definition:
+      'A swing launch (also called a shuttle or multi-pass launch) accelerates the train, lets it run out of speed on a rising section of track, and catches it again on the way back — repeating the cycle two or three times until there is enough energy to complete the circuit. Each pass adds speed the launch motors alone could not deliver in one go, so a swing launch buys a much higher top speed out of a much shorter launch track.\n\nIt is also a show element in its own right: riders travel backwards through part of the layout, usually up a vertical spike, before being thrown forwards again. [Toutatis](/en/parks/europe/france/plailly/parc-asterix/toutatis) at Parc Astérix, [The Ride to Happiness](/en/parks/europe/belgium/de-panne/plopsaland-belgium/the-ride-to-happiness-by-tomorrowland) at Plopsaland and Hansa-Park’s [Oath of Kärnan](/en/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) all use one. Premier Rides’ Sky Rocket II model builds an entire compact coaster around the idea.',
+    relatedTermIds: ['launch', 'spike', 'shuttle-coaster', 'launch-coaster'],
+    aliases: ['Swing Launches', 'Shuttle Launch', 'Multi-pass launch'],
+    alternateNames: ['Shuttle Launch'],
+  },
+  {
+    id: 'vertical-lift',
+    name: 'Vertical Lift',
+    shortDefinition:
+      'A lift hill that climbs at 90 degrees — the train is hauled straight up the face of the structure.',
+    definition:
+      'A vertical lift replaces the usual 30-to-45-degree chain incline with a section of track that rises at a right angle to the ground. Because a conventional chain and anti-rollback dog cannot hold a train reliably on a vertical face, these lifts use a cable, a catch-car, or a chain with a positive-lock carriage instead. Riders end up lying on their backs looking straight at the sky for the length of the climb, which is exactly the effect the ride is buying.\n\nThe vertical lift is a signature of Gerstlauer’s Euro-Fighter and Infinity Coaster models, where it feeds directly into a beyond-vertical drop: [Takabisha](/en/parks/asia/japan/fujikawaguchiko/fuji-q-highland/takabisha-steepest-roller-coaster) at Fuji-Q Highland climbs vertically then drops at 121 degrees, the steepest drop on any steel coaster. Hansa-Park’s [Oath of Kärnan](/en/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) uses a 73-metre vertical lift inside a closed tower, so riders climb in the dark. Not to be confused with an elevator lift, where the whole piece of track rises with the train on it.',
+    relatedTermIds: ['lifthill', 'beyond-vertical-drop', 'euro-fighter', 'anti-rollback'],
+    aliases: ['Vertical Lifts', 'Vertical lift hill'],
+    alternateNames: ['90° Lift Hill'],
+  },
+  {
+    id: 'drop-track',
+    name: 'Drop Track',
+    shortDefinition:
+      'A section of track that falls away with the train standing on it — the floor of the ride disappearing beneath you.',
+    definition:
+      'A drop track is a short, movable piece of track mounted on a hydraulic or electric platform. The train rolls onto it, stops, and the whole segment — rails, train and all — is released downwards, usually a few metres, before the track locks into a new alignment and the ride continues. Unlike a normal drop, the sensation arrives while the train is stationary and level, which is why it reads as the ground giving way rather than as a dive.\n\nIt is almost always a story beat rather than a thrill element: the effect only works if riders do not see it coming, so drop tracks live inside show buildings and tunnels. [Hagrid’s Magical Creatures Motorbike Adventure](/en/parks/north-america/united-states/orlando/universal-islands-of-adventure/hagrids-magical-creatures-motorbike-adventure) drops riders into darkness mid-layout, [Verbolten](/en/parks/north-america/united-states/williamsburg/busch-gardens-williamsburg/verbolten) at Busch Gardens Williamsburg drops them out of the Black Forest, and Harry Potter and the Escape from Gringotts uses one in its vault sequence.',
+    relatedTermIds: ['switch-track', 'dark-ride', 'first-drop', 'indoor-coaster'],
+    aliases: ['Drop Tracks', 'Drop-track'],
+    alternateNames: ['Falling Track'],
+  },
+  {
+    id: 'scorpion-tail',
+    name: 'Scorpion Tail',
+    shortDefinition:
+      'A Mack Rides element: the track curls past vertical into an overhang, so the train climbs backwards up a 105-degree wall.',
+    definition:
+      'The scorpion tail is a launch spike that does not stop at vertical. Instead of rising to 90 degrees and holding the train there, the track curves through the vertical and leans back over itself to roughly 105 degrees — an overhang. A train launched into it climbs upside down and slightly backwards, hangs at the apex, and then falls back the way it came.\n\nMack Rides built the first one for [Voltron Nevera](/en/parks/europe/germany/rust/europa-park/voltron-nevera-powered-by-rimac) at [Europa-Park](/en/parks/europe/germany/rust/europa-park) in 2024, where it is the steepest launch section on any roller coaster in the world. The effect is unusual because the hangtime happens with no forward motion at all: riders are held inverted at the top by nothing but the shape of the track and the train’s remaining momentum. The name comes from the silhouette — a tail curling up and over.',
+    relatedTermIds: ['spike', 'swing-launch', 'launch', 'hangtime', 'mack-rides'],
+    aliases: ['Scorpion Tails'],
+  },
+  {
+    id: 'step-up-under-flip',
+    name: 'Step-Up Under-Flip',
+    shortDefinition:
+      'An RMC inversion where the train climbs a banked hill, rolls over the top and drops out inverted on the far side.',
+    definition:
+      'A step-up under-flip is a two-stage inversion invented by Rocky Mountain Construction. The train first "steps up" — climbing a rising, heavily banked section — and then flips underneath itself on the way down, so the roll happens on the descending half rather than at the crest. The result is a longer, slower rotation than a barrel roll and a hard shot of ejector airtime as the train falls out of it.\n\nIt is one of the figures that gives an RMC hybrid its distinctive feel, and appears on [Steel Vengeance](/en/parks/north-america/united-states/sandusky/cedar-point/steel-vengeance) at Cedar Point, [Zadra](/en/parks/europe/poland/zator/energylandia/zadra-rc) at Energylandia and [Untamed](/en/parks/europe/netherlands/biddinghuizen/walibi-holland/untamed) at Walibi Holland — the first RMC conversion in Europe. Because the manoeuvre needs precisely twisted steel track on a wooden or steel support structure, it is effectively impossible on traditional wooden track.',
+    relatedTermIds: [
+      'rmc',
+      'hybrid-coaster',
+      'inversion',
+      'ejector-airtime',
+      'twisted-horseshoe-roll',
+    ],
+    aliases: ['Step Up Under Flip', 'Step-up under flips'],
+  },
+  {
+    id: 'twisted-horseshoe-roll',
+    name: 'Twisted Horseshoe Roll',
+    shortDefinition:
+      'An RMC element: a 180-degree horseshoe turn with a barrel roll built into each half, so the train inverts twice while reversing direction.',
+    definition:
+      'A twisted horseshoe roll takes the horseshoe — a tight 180-degree turnaround that sends the train back the way it came — and threads an inversion into both legs. The train rolls over on the way into the turn, travels through the horseshoe, and rolls again on the way out. Two inversions and a full change of direction happen in one continuous, unusually drawn-out manoeuvre.\n\nRocky Mountain Construction introduced it on Outlaw Run at Silver Dollar City, the first wooden coaster ever to carry a double barrel roll, and has since built it into [Steel Vengeance](/en/parks/north-america/united-states/sandusky/cedar-point/steel-vengeance), [Zadra](/en/parks/europe/poland/zator/energylandia/zadra-rc), [Iron Gwazi](/en/parks/north-america/united-states/tampa/busch-gardens-tampa/iron-gwazi) and [Untamed](/en/parks/europe/netherlands/biddinghuizen/walibi-holland/untamed). Riders spend most of the element sideways or upside down with very little G-force, which is why it produces so much hangtime.',
+    relatedTermIds: ['horseshoe', 'rmc', 'inversion', 'hangtime', 'step-up-under-flip'],
+    aliases: ['Twisted Horseshoe Rolls', 'Double barrel roll'],
+  },
+  {
+    id: 'double-down',
+    name: 'Double Down',
+    shortDefinition:
+      'A drop interrupted halfway by a short level section, so it delivers two separate hits of airtime instead of one.',
+    definition:
+      'A double down is a descent split into two stages: the track drops, briefly flattens or even rises a fraction, then drops again. Each transition throws riders out of their seats, so a single hill produces two distinct pops of airtime rather than one long float. The mirror-image element, a double up, does the same thing on the way up a hill.\n\nIt is a classic of wooden coaster design and one of the oldest tricks in the trade — [Jack Rabbit](/en/parks/north-america/united-states/west-mifflin/kennywood/jack-rabbit) at Kennywood has been throwing riders out of their seats with its double dip since 1920. Modern wooden and hybrid layouts still lean on it: [Colossos](/en/parks/europe/germany/soltau/heide-park/colossos-kampf-der-giganten) at Heide-Park, [Balder](/en/parks/europe/sweden/gothenburg/liseberg/balder) at Liseberg and [Troy](/en/parks/europe/netherlands/sevenum/toverland/troy) at Toverland all finish drops this way. Stretch the idea further and you get a quad-down: four stages in one descent.',
+    relatedTermIds: ['airtime', 'ejector-airtime', 'quad-down', 'camelback', 'wooden-coaster'],
+    aliases: ['Double Downs', 'Double dip', 'Double-down'],
+    alternateNames: ['Double Dip'],
+  },
+  {
+    id: 'switch-track',
+    name: 'Switch Track',
+    shortDefinition:
+      'A movable section of track that redirects the train onto a different path — used for backwards sections, branching layouts and maintenance sidings.',
+    definition:
+      'A switch track is the coaster equivalent of a railway point: a length of track that slides, pivots or rotates to connect the main circuit to a second path. Mechanically it is straightforward; what it buys is layout freedom. A switch lets a train be sent backwards through a section it has already ridden, lets a ride offer two different routes from the same station, or simply lets trains be pulled off the circuit into a transfer shed at closing time.\n\nAs a show element it is usually about surprise. [Expedition Everest](/en/parks/north-america/united-states/orlando/disney-animal-kingdom/expedition-everest-legend-of-the-forbidden-mountain) reveals torn-up track ahead, then sends the train backwards down the mountain. [Big Grizzly Mountain](/en/parks/asia/hong-kong/hong-kong/hong-kong-disneyland-park/big-grizzly-mountain-runaway-mine-cars) at Hong Kong Disneyland uses two. Bobbejaanland’s [Fury](/en/parks/europe/belgium/kasterlee/bobbejaanland/fury) uses one to give riders a forwards or a backwards ride from the same layout.',
+    relatedTermIds: ['drop-track', 'turntable', 'block-brake', 'dark-ride'],
+    aliases: ['Switch Tracks', 'Track switch'],
+    alternateNames: ['Transfer Track'],
+  },
+  {
+    id: 'turntable',
+    name: 'Turntable',
+    shortDefinition:
+      'A rotating platform in the circuit that spins the train on the spot, usually to send it back out in the other direction.',
+    definition:
+      'A turntable is a piece of track mounted on a rotating disc. The train rolls on, the disc turns — 180 degrees most often — and the train rolls off facing the other way. Because the rotation happens with the train stopped, it is a quiet moment by design: it lets a ride reverse direction without a shuttle spike or a switch track, and gives the show a beat where riders can be shown something.\n\nOn [Voltron Nevera](/en/parks/europe/germany/rust/europa-park/voltron-nevera-powered-by-rimac) at Europa-Park the turntable sets up a backwards launch, and on many dark rides it is used to face riders towards a scene at exactly the right moment. Trackless dark rides achieve the same effect without any special hardware, since their vehicles can rotate freely at any point.',
+    relatedTermIds: ['switch-track', 'swing-launch', 'trackless-ride', 'dark-ride'],
+    aliases: ['Turntables'],
+  },
+  {
+    id: 'treble-clef',
+    name: 'Treble Clef',
+    shortDefinition:
+      'A non-inverting element shaped like the musical symbol: the track loops over itself and threads back through its own curve.',
+    definition:
+      'A treble clef is a stacked, self-crossing curve — the train climbs into a loop, crosses over its own track and exits through the middle of the shape, tracing something close to the outline of the musical symbol. It is not an inversion: the train stays upright throughout, held by heavy banking rather than by going upside down. What riders feel is a long, disorienting sweep with the track passing very close overhead and underneath.\n\nThe element was built by Maurer Rides for [Hollywood Rip Ride Rockit](/en/parks/north-america/united-states/orlando/universal-studios-florida/hollywood-rip-ride-rockit) at Universal Studios Florida, whose layout is themed to music and names its figures accordingly — the treble clef follows the ride’s "double take" non-inverting loop. It remains a one-off, which is part of why the ride is so recognisable.',
+    relatedTermIds: ['non-inverting-loop', 'maurer-rides', 'overbank', 'inversion'],
+    aliases: ['Treble Clefs'],
+  },
+  {
+    id: 'indoor-coaster',
+    name: 'Indoor Coaster',
+    shortDefinition:
+      'A roller coaster built entirely inside a building, where lighting, sound and set dressing replace the view.',
+    definition:
+      'An indoor coaster runs its whole circuit inside an enclosed show building. Removing daylight changes the ride fundamentally: riders lose the visual cues that let them anticipate a drop or a turn, so a modest layout feels far more intense than the same track outdoors. It also hands the designer complete control of lighting, projection, sound and scenery, which is why the format is the natural home of the coaster-dark-ride hybrid.\n\nSpace Mountain is the archetype — [Disneyland](/en/parks/north-america/united-states/anaheim/disneyland-park/space-mountain) opened its version in 1977 and the family of rides is still the most-copied dark coaster in the world. Europe has some of the finest examples: [Eurosat](/en/parks/europe/germany/rust/europa-park/eurosat-cancan-coaster) and [Euro-Mir](/en/parks/europe/germany/rust/europa-park/euro-mir) at Europa-Park, Efteling’s [Vogel Rok](/en/parks/europe/netherlands/kaatsheuvel/efteling/vogel-rok), and Phantasialand’s [Crazy Bats](/en/parks/europe/germany/bruehl/phantasialand/crazy-bats), still the longest indoor coaster anywhere.',
+    relatedTermIds: ['dark-ride', 'show-building', 'projection-mapping', 'vr-coaster'],
+    aliases: ['Indoor Coasters', 'Indoor roller coaster'],
+    alternateNames: ['Enclosed Coaster'],
+  },
+  {
+    id: 'family-coaster',
+    name: 'Family Coaster',
+    shortDefinition:
+      'A coaster designed so children and adults can ride together — moderate forces, low height limit, no inversions.',
+    definition:
+      'A family coaster is aimed at the widest possible audience rather than at thrill seekers. Height requirements typically start around 100–110 cm (often with an accompanying adult below that), speeds stay under about 60 km/h, and layouts avoid inversions and sustained high G-forces. That is a design constraint, not a lack of ambition: a good family coaster still has to deliver real airtime and pacing, just within a much narrower envelope.\n\nCommercially they are among the most valuable rides a park can buy, because a whole group can ride together and the queue never empties. Vekoma’s Family Boomerang, Mack’s Youngstar and Zierer’s Tivoli are the workhorse models; [Pegasus](/en/parks/europe/germany/rust/europa-park/pegasus) at Europa-Park, [Raik](/en/parks/europe/germany/bruehl/phantasialand/raik) at Phantasialand and [Slinky Dog Dash](/en/parks/north-america/united-states/orlando/disney-hollywood-studios/slinky-dog-dash) at Disney’s Hollywood Studios are all built to this brief.',
+    relatedTermIds: ['height-requirement', 'mine-train', 'wild-mouse', 'launch-coaster'],
+    aliases: ['Family Coasters', 'Junior coaster'],
+    alternateNames: ['Junior Coaster'],
+  },
+  {
+    id: 'motorbike-coaster',
+    name: 'Motorbike Coaster',
+    shortDefinition:
+      'A coaster ridden astride, motorcycle-style, with riders leaning forward over handlebars in single file.',
+    definition:
+      'On a motorbike coaster riders straddle the vehicle rather than sitting in it, gripping handlebars and leaning forward with their feet on pegs. The seating changes the whole experience: the centre of gravity sits low and directly over the rails, so banked turns and lateral forces read as leaning into a corner. It also means the trains are long and narrow, and capacity per vehicle is low.\n\nVekoma built the first with Booster Bike at [Toverland](/en/parks/europe/netherlands/sevenum/toverland/booster-bike) in 2004; Intamin took the idea furthest on [Hagrid’s Magical Creatures Motorbike Adventure](/en/parks/north-america/united-states/orlando/universal-islands-of-adventure/hagrids-magical-creatures-motorbike-adventure), which adds a sidecar so non-straddling riders can join. Disney’s [TRON Lightcycle / Run](/en/parks/north-america/united-states/orlando/disney-magic-kingdom/tron-lightcycle-run) uses the same posture with an enclosed canopy over each rider.',
+    relatedTermIds: ['launch-coaster', 'vekoma', 'intamin', 'suspended-coaster'],
+    aliases: ['Motorbike Coasters', 'Motorcycle coaster'],
+    alternateNames: ['Motorcycle Coaster'],
+  },
+  {
+    id: 'infinity-coaster',
+    name: 'Infinity Coaster',
+    shortDefinition:
+      'Gerstlauer’s successor to the Euro-Fighter: the same steep drops and compact footprint, but with open, stadium-style trains.',
+    definition:
+      'The Infinity Coaster is Gerstlauer’s current custom-coaster platform. It keeps what made the Euro-Fighter successful — beyond-vertical drops, vertical lifts and layouts that fit into very little land — while replacing the boxy four-seat cars with longer, lower trains that have open sides and vest restraints instead of over-the-shoulder harnesses. The result rides noticeably smoother and lets the designer use more airtime hills, which the older model handled badly.\n\nThe range covers everything from compact park-filler coasters to record-holders: [The Smiler](/en/parks/europe/united-kingdom/farley/alton-towers/the-smiler) at Alton Towers holds the world record for inversions with fourteen, Hansa-Park’s [Oath of Kärnan](/en/parks/europe/germany/sierksdorf/hansa-park/the-oath-of-kaernan) pairs a 73-metre vertical lift with a swing launch, and [Star Trek: Operation Enterprise](/en/parks/europe/germany/bottrop/movie-park-germany/star-trek-operation-enterprise) at Movie Park Germany runs the model as a multi-launch shuttle.',
+    relatedTermIds: ['gerstlauer', 'euro-fighter', 'beyond-vertical-drop', 'vertical-lift'],
+    aliases: ['Infinity Coasters'],
+  },
+  {
+    id: 'interactive-dark-ride',
+    name: 'Interactive Dark Ride',
+    shortDefinition:
+      'A dark ride where riders shoot, aim or otherwise play along, and the ride keeps score.',
+    definition:
+      'An interactive dark ride hands riders a device — usually an infrared blaster, sometimes a touchscreen or just their hands — and builds the show around what they do with it. Targets in each scene register hits and feed a per-rider score displayed at the end. Because the scoring gives people a reason to ride again and again, these attractions have some of the highest repeat-visit rates in any park, which is exactly why operators keep building them.\n\nThe genre splits into two schools. Physical rides shoot at real, animated set pieces: [Maus au Chocolat](/en/parks/europe/germany/bruehl/phantasialand/maus-au-chocolat) at Phantasialand and [Men in Black: Alien Attack](/en/parks/north-america/united-states/orlando/universal-studios-florida/men-in-black-alien-attack) at Universal Studios Florida. Screen-based rides shoot at projected targets, which allows far more elaborate effects: [Toy Story Mania](/en/parks/north-america/united-states/orlando/disney-hollywood-studios/toy-story-mania) and [WEB SLINGERS](/en/parks/north-america/united-states/anaheim/disney-california-adventure-park/web-slingers-a-spider-man-adventure), which tracks riders’ hand movements with no blaster at all.',
+    relatedTermIds: ['dark-ride', 'animatronics', 'projection-mapping', 'trackless-ride'],
+    aliases: ['Interactive Dark Rides', 'Shooting dark ride'],
+    alternateNames: ['Shooting Dark Ride'],
+  },
+  {
+    id: 'madhouse',
+    name: 'Madhouse',
+    shortDefinition:
+      'An attraction where the room rotates around a gently swinging bench, convincing riders they are being turned upside down.',
+    definition:
+      'A madhouse is an illusion built out of one trick: the seating swings by only a few degrees, while the entire room around it rotates a full 360 degrees. With no fixed visual reference — the walls, ceiling and props are all moving together — the brain reads the motion as the bench turning over. Riders are certain they have been inverted; they never leave a shallow arc.\n\nVekoma made the format an industry standard after building [Villa Volta](/en/parks/europe/netherlands/kaatsheuvel/efteling/villa-volta) for Efteling in 1996, which remains the definitive example and the reason the ride system is often just called a "Vekoma Madhouse". Phantasialand’s [Feng Ju Palace](/en/parks/europe/germany/bruehl/phantasialand/feng-ju-palace), Europa-Park’s [Cassandra’s Curse](/en/parks/europe/germany/rust/europa-park/cassandras-curse) and Toverland’s [Villa Fiasko](/en/parks/europe/netherlands/sevenum/toverland/villa-fiasko) all run the same system behind different stories.',
+    relatedTermIds: ['dark-ride', 'vekoma', 'pre-show', 'animatronics'],
+    aliases: ['Madhouses', 'Haunted swing'],
+    alternateNames: ['Haunted Swing'],
+  },
+  {
+    id: 'boat-ride',
+    name: 'Boat Ride',
+    shortDefinition:
+      'A dark ride where guests travel by boat through a water channel rather than on a track.',
+    definition:
+      'A boat ride carries guests through the show in a flume of water, usually guided by an underwater track or by the channel walls themselves. Water buys two things a track cannot: capacity, because long boats load quickly and run close together, and quiet, because there is no drive mechanism under the guest to be heard over the show. It is why the format dominates the biggest, longest-running dark rides in the world.\n\nAlmost every classic falls into this category: [Pirates of the Caribbean](/en/parks/north-america/united-states/anaheim/disneyland-park/pirates-of-the-caribbean), ["it’s a small world"](/en/parks/north-america/united-states/anaheim/disneyland-park/its-a-small-world-holiday), Efteling’s [Fata Morgana](/en/parks/europe/netherlands/kaatsheuvel/efteling/fata-morgana) and Europa-Park’s [Pirates in Batavia](/en/parks/europe/germany/rust/europa-park/pirates-in-batavia). Shanghai Disneyland’s Pirates of the Caribbean goes further still, putting the boats on a trackless magnetic drive so they can rotate and move sideways.',
+    relatedTermIds: ['dark-ride', 'animatronics', 'trackless-ride', 'log-flume', 'water-ride'],
+    aliases: ['Boat Rides', 'Water dark ride'],
+  },
+  {
+    id: 'shoot-the-chute',
+    name: 'Shoot-the-Chute',
+    shortDefinition:
+      'A large-boat water ride built around one big drop into a trough, throwing a wall of water over the splashdown bridge.',
+    definition:
+      'A shoot-the-chute takes a wide, flat-bottomed boat holding twenty or more people up a single lift and drops it down one steep chute into a shallow trough. The boat displaces an enormous amount of water on impact, which is the point: the splash is aimed at a viewing bridge as much as at the riders. Unlike a log flume, which strings several small drops through a long meandering course, a shoot-the-chute is built around one drop and one splash.\n\nThe format usually anchors a themed area rather than filling one — [Jurassic Park River Adventure](/en/parks/north-america/united-states/orlando/universal-islands-of-adventure/jurassic-park-river-adventure) at Islands of Adventure runs a full dark ride before the 26-metre drop, and Europa-Park’s [Atlantica SuperSplash](/en/parks/europe/germany/rust/europa-park/atlantica-supersplash) combines it with a water-coaster layout.',
+    relatedTermIds: ['log-flume', 'water-ride', 'splashdown', 'water-coaster'],
+    aliases: ['Shoot the Chutes', 'Shoot-the-chutes'],
+    alternateNames: ['Splash Boat'],
+  },
+  {
+    id: 'people-mover',
+    name: 'People Mover',
+    shortDefinition:
+      'A continuously moving transport ride that carries guests slowly through or above a themed area.',
+    definition:
+      'A people mover is a low-speed, high-capacity transport attraction: an unbroken chain of vehicles moving at walking pace, often on an elevated beam, with a moving-platform station so it never has to stop. In a park it does double duty — genuine transport between areas, and a relaxed overview ride that shows off the land and, frequently, the interiors of other attractions.\n\nThe Tomorrowland Transit Authority PeopleMover at [Magic Kingdom](/en/parks/north-america/united-states/orlando/disney-magic-kingdom/tomorrowland-transit-authority-peoplemover) is the best-known survivor, gliding through the Space Mountain show building on its circuit. The linear-induction drive it uses was later licensed for real urban transit systems. Universal’s Villain-Con Minion Blast adapts the same idea to a moving walkway.',
+    relatedTermIds: ['dark-ride', 'omnimover', 'observation-tower', 'walkthrough'],
+    aliases: ['People Movers', 'Peoplemover'],
+    alternateNames: ['Transit System'],
+  },
+  {
+    id: 'bumper-cars',
+    name: 'Bumper Cars',
+    shortDefinition:
+      'A flat ride where guests drive small electric cars around a metal floor and crash into each other on purpose.',
+    definition:
+      'Bumper cars run on a steel floor with a conductive ceiling grid: a pole on each car picks up current from above and returns it through the floor, so the vehicles can be driven freely without batteries or a track. Heavy rubber bumpers absorb the collisions the whole ride is built around. Modern installations increasingly use floor-pickup or battery-powered cars, which removes the overhead grid and frees the designer to theme the ceiling.\n\nIt is one of the oldest ride types still in continuous production — the Lusse Auto-Skooter dates to the 1920s — and one of the few where riders control what happens. Nearly every full-size park runs a set, from Phantasialand’s [Bumper Klumpen](/en/parks/europe/germany/bruehl/phantasialand/bumper-klumpen) to Europa-Park’s Lada Autodrom.',
+    relatedTermIds: ['flat-ride', 'funhouse', 'carousel'],
+    aliases: ['Bumper Car', 'Dodgems', 'Autoscooter'],
+    alternateNames: ['Dodgems', 'Autoscooter'],
+  },
+  {
+    id: 'observation-tower',
+    name: 'Observation Tower',
+    shortDefinition:
+      'A tower ride that lifts a rotating cabin slowly to the top for the view, with no drop involved.',
+    definition:
+      'An observation tower carries a glazed or open gondola up a central column, usually rotating as it climbs so every seat gets the full panorama, holds at the top, and lowers again. Mechanically it is a close cousin of the drop tower and the two are often confused — the difference is entirely one of intent: an observation tower is built to be looked out of, a drop tower to be fallen from.\n\nIn a park it earns its keep as a landmark first and a ride second, giving the skyline a fixed point visible from the car park. The [Euro-Tower](/en/parks/europe/germany/rust/europa-park/euro-tower) at Europa-Park has done exactly that since 1979.',
+    relatedTermIds: ['drop-tower', 'ferris-wheel', 'flat-ride', 'people-mover'],
+    aliases: ['Observation Towers', 'Gyro tower'],
+    alternateNames: ['Gyro Tower'],
+  },
+  {
+    id: 'wdi',
+    name: 'Walt Disney Imagineering',
+    shortDefinition:
+      'Disney’s in-house design and engineering arm — the group that invents, designs and builds every Disney park attraction.',
+    definition:
+      'Walt Disney Imagineering (WDI) is the division that designs and builds Disney’s parks, from the master plan of a land down to the mechanism inside a single figure. Founded in 1952 as WED Enterprises to build Disneyland, it is unusual in the industry for combining show design, architecture, ride engineering and software under one roof — the same organisation that writes the story also builds the vehicle that tells it.\n\nIts inventions define much of what other parks now take for granted: Audio-Animatronics, the Omnimover (a continuously moving car that rotates to point riders at each scene), the trackless ride system first used on [Pooh’s Hunny Hunt](/en/parks/asia/japan/tokyo/tokyo-disneyland/poohs-hunny-hunt), and the tubular steel coaster track that Arrow built for the [Matterhorn Bobsleds](/en/parks/north-america/united-states/anaheim/disneyland-park/matterhorn-bobsleds) in 1959 and that every steel coaster since has descended from. Where a Disney ride carries an outside manufacturer, WDI has usually still designed the show around it.',
+    relatedTermIds: ['omnimover', 'trackless-ride', 'animatronics', 'dark-ride', 'arrow-dynamics'],
+    aliases: ['WDI', 'Imagineering', 'Imagineers', 'WED Enterprises'],
+    alternateNames: ['WDI', 'Imagineering'],
+  },
+  {
+    id: 'brogent',
+    name: 'Brogent Technologies',
+    shortDefinition:
+      'Taiwanese manufacturer of the i-Ride flying theatre system used by most non-Disney flying theatres worldwide.',
+    definition:
+      'Brogent Technologies, founded in Kaohsiung in 2001, builds the i-Ride flying theatre — a suspended seating gondola that swings out over a large spherical screen while riders’ feet dangle, synchronised with wind, scent and mist effects. Where Disney’s Soarin’ established the format, Brogent industrialised it: the i-Ride is the system most parks buy when they want a flying theatre, and it now runs on every continent.\n\nEurope’s best-known installation is [Voletarium](/en/parks/europe/germany/rust/europa-park/voletarium) at Europa-Park, which flies over the continent’s landmarks with two theatres running in parallel for capacity. The company also builds smaller media-based ride systems and immersive dome attractions.',
+    relatedTermIds: ['flying-theater', 'motion-simulator', 'projection-mapping', 'pre-show'],
+    aliases: ['Brogent', 'i-Ride'],
+    alternateNames: ['Brogent'],
+  },
 ];
 
 export default translations;

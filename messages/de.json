@@ -1139,10 +1139,18 @@
         "turn": "Kehre",
         "bank": "Überhöhung",
         "crest": "Kuppe",
-        "dive": "Sturz"
+        "dive": "Sturz",
+        "launch": "Abschuss",
+        "drop": "Schiene fällt",
+        "overhang": "Überhang",
+        "hangtime": "Hangtime"
       }
     },
-    "overviewMetaDescription": "Über {count} Freizeitpark-Begriffe verständlich erklärt: Wartezeiten, Besucherdichte, Lightning Lane, virtuelle Warteschlangen und mehr."
+    "overviewMetaDescription": "Über {count} Freizeitpark-Begriffe verständlich erklärt: Wartezeiten, Besucherdichte, Lightning Lane, virtuelle Warteschlangen und mehr.",
+    "rides": {
+      "title": "Bahnen mit dieser Figur",
+      "more": "… und {count} weitere"
+    }
   },
   "fancast": {
     "title": "Fancast – unser Wartezeiten-Prognosemodell",
@@ -1362,6 +1370,18 @@
       "storage-failed": "Deine Fotos konnten nicht gespeichert werden. Bitte versuche es später erneut.",
       "record-failed": "Deine Übermittlung konnte nicht gespeichert werden. Bitte versuche es später erneut.",
       "invalid-form": "Der Upload war fehlerhaft. Bitte versuche es erneut."
+    }
+  },
+  "attraction": {
+    "rideProfile": {
+      "title": "Bahnprofil",
+      "typeLabel": "Bahntyp",
+      "elementsLabel": "Fahrfiguren",
+      "elementsHint": "In Fahrreihenfolge – tippe eine Figur an, um zu sehen, was sie ist.",
+      "has3d": "3-D",
+      "manufacturer": "Hersteller",
+      "opened": "Eröffnet",
+      "inversions": "Inversionen"
     }
   }
 }

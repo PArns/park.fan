@@ -33,9 +33,11 @@ All except `fetch-hero-textures.mjs` (manual, `pnpm generate:hero-textures`) run
 
 ## Other Scripts
 
-| Script                  | Purpose                    |
-| ----------------------- | -------------------------- |
-| `test-url-building.mjs` | Validates URL construction |
+| Script                         | Purpose                                                                                                                                                                                                                                                  |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `test-url-building.mjs`        | Validates URL construction                                                                                                                                                                                                                               |
+| `render-coaster-elements.mjs`  | Headless contact sheets of every glossary 3-D coaster element (front/follow/onboard × light/dark) — the verification step [conventions §12](conventions.md#12-threejs-animations-research-first-then-verify-from-every-perspective-requirement) requires |
+| `export-glossary-term-ids.mjs` | Prints the glossary term-id allowlist the API repo checks its ride-profile seed against                                                                                                                                                                  |
 
 ## Related
 

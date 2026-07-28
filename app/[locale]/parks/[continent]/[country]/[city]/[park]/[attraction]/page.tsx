@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { formatInTimeZone } from 'date-fns-tz';
 import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
+import type { Locale } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
@@ -34,6 +35,7 @@ import { AttractionHistorySections } from '@/components/parks/attraction-history
 import { AttractionTypicalWaits } from '@/components/parks/attraction-typical-waits';
 import { LiveAttractionData } from '@/components/parks/live-attraction-data';
 import { RopeDropCard } from '@/components/parks/rope-drop-card';
+import { RideProfileSection } from '@/components/parks/ride-profile-section';
 import { isEveningBetter } from '@/lib/utils/rope-drop';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateAttractionBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
@@ -421,6 +423,15 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               suppressTypicalWaits={!!attraction.typicalWaits?.displayable}
             />
           </section>
+
+          {/* Chapter: what this ride is and what it does — the curated link into
+              the glossary. Static (hand-seeded) data, so it renders straight into
+              the shell; the component returns null when the ride has no profile. */}
+          {attraction.rideProfile && (
+            <div className="mt-10">
+              <RideProfileSection profile={attraction.rideProfile} locale={locale as Locale} />
+            </div>
+          )}
 
           {/* Chapter: FAQ (its own icon heading lives inside the section) */}
           <section className="mt-10">
