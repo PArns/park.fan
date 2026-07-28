@@ -4,37 +4,45 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
-## Unreleased – perf: hero image loading (−53% to −76% on the desktop LCP image)
+## Unreleased – perf: hero image loading, and why wide screens look soft
 
-The homepage hero photo is the LCP element, and desktops were downloading 2–4× the bytes for pixels
-they already had. next/image emits the full `deviceSizes` srcset regardless of the source, so
-`sizes="115vw"` made a 1440px viewport pick the **1920w** candidate — but every photo under
-`public/images/parks` is ≤1024px wide and the optimizer resizes with `withoutEnlargement`, so that
-candidate returned the _same 1024×768 rendition_, merely re-encoded at the q75 the old per-width rule
-handed to anything above 1080px. `backgroundImageLoader` now **clamps every requested width to
-1080px** and uses one quality (q50) throughout — identical resolution, measured across the hero set
-on the real optimizer:
+`backgroundImageLoader` used a single cutoff — `≤1080 → q50`, everything above → q75 — which lumped a
+1440px desktop in with a 3440px ultrawide. It now **bands quality by how wide the rendition will
+actually be painted**, and the middle band is the win: `≤1080 → q50` (mobile, unchanged), `≤1920 →
+q60` (1440–1600px desktops, the most common desktop class), `>1920 → q75` (ultrawide and 2× retina,
+unchanged). AVIF bytes for the 1440-class band, at Next's encoder settings:
 
-| photo                             | before | after  |
-| --------------------------------- | ------ | ------ |
-| `walibi-holland/untamed`          | 192 KB | 46 KB  |
-| `europa-park/silver-star`         | 96 KB  | 36 KB  |
-| `phantasialand/taron`             | 148 KB | 58 KB  |
-| `europa-park/wodan-timburcoaster` | 227 KB | 101 KB |
-| `europa-park/madame-freudenreich` | 58 KB  | 27 KB  |
+| photo                                        | before (q75) | after (q60) |        |
+| -------------------------------------------- | -----------: | ----------: | -----: |
+| `walibi-holland/untamed`                     |       124 KB |       69 KB | −44%   |
+| `europa-park/wodan-timburcoaster`            |       140 KB |       85 KB | −39%   |
+| `phantasialand/taron`                        |        97 KB |       54 KB | −44%   |
+| `europa-park/silver-star`                    |        71 KB |       41 KB | −42%   |
+| `europa-park/madame-freudenreich-curiosites` |        79 KB |       41 KB | −48%   |
 
-Verified against the real hero at its ~1.6× display upscale under the two gradient overlays — at
-that scale q50 and q75 are indistinguishable. Mobile is unchanged (it already landed on w=640/828).
+(Measure these locally or with sharp, not against the deployed optimizer: `minimumCacheTTL` is a
+year, so the Vercel image cache serves entries encoded by whatever the config was when they were
+first requested — two "same" URLs can differ by 40%.)
 
-Two side effects worth knowing:
+The banding exists because the optimizer resizes with `withoutEnlargement`, so the delivered
+rendition is capped by the source and the _requested_ width is really "how far will this get
+stretched". Compression artifacts are magnified by that same factor, so a quality that is invisible
+on mobile is not invisible at 3.9×. An earlier revision of this change put everything on q50 and made
+ultrawide hero photos visibly blocky — that is what the bands fix.
 
-- The srcset now resolves to **4 distinct optimizer URLs instead of 8**, halving the cold-transform
-  surface. That matters because the hero re-picks on every shell regeneration, so its LCP variant is
-  regularly the first request for that URL in a region.
-- The clamp applies to every consumer of the loader — glossary, park/attraction backgrounds, the
-  announce section — all of which are equally veiled. `disneyland-park/background.jpg` (the one
-  4032×3024 / 2.6 MB outlier) is downscaled to 2048px: still ≥1200px so its structured-data crops
-  stay in Google's preferred range, 2.2 MB lighter in the bundle, and ~4× cheaper to decode.
+Requested widths are also **clamped to 1920px**: w=2560 and w=3840 can only return the same pixels as
+w=1920 even from the largest source in the tree, so they were three optimizer cache entries for one
+rendition. No pixel and no byte changes at a given quality; it just stops that split, which matters
+for a hero photo that re-picks on every shell regeneration.
+
+**The real limit on wide screens is the source, not the encoder.** `sizes="115vw"` on a 3440px
+ultrawide asks for a ~3956px paint width — a ~3.9× stretch of a 1024px photo, and almost every
+background in the tree is 1024px. Measured on the Disneyland photo at that paint width: 1024px @ q75
+costs 80 KB and still looks soft, while **2048px @ q50 costs 95 KB and is dramatically sharper**. New
+and replaced backgrounds should therefore come in at 2048px; the loader's 1920px ceiling is set so
+they deliver that detail without a code change. `disneyland-park/background.jpg` (the one 4032×3024 /
+2.6 MB outlier) is downscaled to exactly that 2048px: sharper than the 1024px crowd on wide screens,
+still ≥1200px for its structured-data crops, 2.2 MB lighter in the bundle, ~4× cheaper to decode.
 
 The hero also gained the `placeholder="blur"` gradient the park backgrounds already had (now shared
 via `lib/utils/image-placeholder.ts`), so it no longer flashes an empty `bg-background` slab.

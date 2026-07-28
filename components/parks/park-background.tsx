@@ -8,8 +8,8 @@ import { BACKGROUND_BLUR_DATA_URL } from '@/lib/utils/image-placeholder';
 // plain `100vw` made high-DPR phones request the upscaled w=1080 srcset candidate — more bytes,
 // zero extra detail. Under-declaring the mobile width to 60vw pulls the w=828 candidate instead
 // (the largest non-upscaled rendition); under the gradient / bg-background overlays the slight
-// upscale-on-display is imperceptible. Desktop keeps 100vw — the loader clamps the oversized
-// srcset candidates it resolves to. Quality is set in the loader.
+// upscale-on-display is imperceptible. Desktop keeps 100vw; the loader bands the quality by how
+// wide the rendition will actually be painted.
 const PARK_BG_SIZES = '(max-width: 768px) 60vw, 100vw';
 
 interface ParkBackgroundProps {

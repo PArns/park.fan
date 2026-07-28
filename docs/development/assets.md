@@ -9,12 +9,15 @@
 
 Example: `public/images/parks/phantasialand/background.jpg`, `public/images/parks/phantasialand/taron.jpg`.
 
-**Source size:** these are decorative full-bleed photos, never gallery originals. Keep the long edge
-at **1024px** (a handful of park `background.jpg` files go up to 2048px so the structured-data crops
-stay ≥1200px wide — see [`generate:image-crops`](scripts.md)). Nothing is ever _delivered_ above
-1024px: `backgroundImageLoader` clamps every rendition (below), and the optimizer resizes with
-`withoutEnlargement`. A multi-megapixel source therefore buys no visible detail and only makes each
-cold optimizer transform decode a bigger JPEG.
+**Source size: aim for 2048px on the long edge.** Today almost all of these photos are **1024px**
+(the exception is `disneyland-park/background.jpg` at 2048px), and on wide screens that source — not
+the encoder — is the binding limit on sharpness. `sizes="115vw"` on a 3440px ultrawide asks for a
+~3956px paint width, i.e. a ~3.9× stretch of a 1024px image. Measured on the Disneyland photo at that
+paint width: 1024px @ q75 costs 80 KB and still looks soft, while **2048px @ q50 costs 95 KB and is
+dramatically sharper**. So when replacing or adding a background, prefer a 2048px source — it also
+keeps the structured-data crops ≥1200px wide (see [`generate:image-crops`](scripts.md)). Going beyond
+2048px buys nothing: nothing is delivered above it, and it only makes each cold optimizer transform
+decode a bigger JPEG.
 
 ### Delivery (`lib/utils/image-loader.ts`)
 
@@ -22,16 +25,19 @@ Every full-bleed background — homepage hero, glossary, park/attraction pages, 
 renders through the shared **`backgroundImageLoader`** rather than the default optimizer URL builder.
 It does two things:
 
-- **One quality (q50) for all widths.** These images always sit under gradient overlays +
-  `opacity-90` / a `bg-background` scrim, so the loss is imperceptible while the LCP byte savings
-  matter most on slow networks.
-- **Clamps the requested width to 1080px.** next/image always emits the full `deviceSizes` srcset, so
-  a `sizes` of `100vw`/`115vw` made desktops pick the 1920w or 3840w candidate — which a 1024px
-  source can only answer with the _same_ 1024px pixels, just re-encoded at the higher quality the old
-  per-width rule handed out. Clamping keeps the identical resolution for **−53% to −76%** bytes on the
-  desktop LCP image (measured across the hero set on the real optimizer, ~−60% typical), and collapses
-  the srcset from 8 distinct optimizer URLs to 4 — halving the cold-transform surface for a hero photo
-  that rotates with every shell regeneration.
+- **Bands the quality by how wide the rendition will be painted.** The optimizer resizes with
+  `withoutEnlargement`, so the delivered rendition is capped by the source and the _requested_ width
+  is really "how far will this get stretched" — and compression artifacts are magnified by that same
+  factor. Hence `≤1080 → q50` (mobile, painted ~1:1), `≤1920 → q60` (a 1440–1600px desktop, ~1.9×
+  stretch, ~−40% bytes against q75 with no visible difference), `>1920 → q75` (ultrawide and 2×
+  retina, 2.5×+ stretch — q50 visibly smears fine detail there, so this band keeps its quality).
+- **Clamps the requested width to 1920px.** w=2560 and w=3840 can only return the same pixels as
+  w=1920 even from the largest source in the tree, so they were three cache entries for one
+  rendition. The clamp changes no pixel and no byte at a given quality; it just stops that split,
+  which matters for a hero photo that re-picks on every shell regeneration and is therefore regularly
+  the first request for its URL in a region. It is deliberately **not** lowered to 1080 to match
+  today's 1024px photos — that would cap every background at 1024px forever and block the
+  bigger-source fix above.
 
 `BACKGROUND_BLUR_DATA_URL` (`lib/utils/image-placeholder.ts`) is the shared `placeholder="blur"`
 gradient for the same set, so the hero and the park/attraction backgrounds can't drift apart.

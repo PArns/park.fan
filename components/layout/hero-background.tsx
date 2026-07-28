@@ -27,8 +27,8 @@ const KEN_BURNS = 'ken-burns 22s ease-in-out infinite alternate';
 // pulls the w=828 candidate instead (w=640 on DPR2) — the largest non-upscaled rendition — which
 // cuts the mobile LCP image ~28% at the same quality. It's a decorative full-bleed background
 // under two gradient overlays + opacity-90 + ken-burns, so the slightly smaller rendition is
-// imperceptible. Desktop keeps 115vw — `backgroundImageLoader` clamps the oversized srcset
-// candidates it resolves to, so 115vw no longer buys a needlessly heavy rendition.
+// imperceptible. Desktop keeps 115vw; `backgroundImageLoader` bands the quality by how wide the
+// rendition will actually be painted, so wide screens still get the detail they need.
 const HERO_IMAGE_SIZES = '(max-width: 768px) 60vw, 115vw';
 
 /**
