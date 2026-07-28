@@ -4,12 +4,47 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – perf: hero image loading (−74% on the desktop LCP image)
+
+The homepage hero photo is the LCP element, and desktops were downloading ~105 KB of AVIF for
+pixels they already had. next/image emits the full `deviceSizes` srcset regardless of the source,
+so `sizes="115vw"` made a 1440px viewport pick the **1920w** candidate — but every photo under
+`public/images/parks` is ≤1024px wide and the optimizer resizes with `withoutEnlargement`, so that
+candidate returned the _same 1024px rendition_, merely re-encoded at the q75 the old per-width rule
+handed to anything above 1080px. `backgroundImageLoader` now **clamps every requested width to
+1080px** and uses one quality (q50) throughout: identical resolution, **~27 KB instead of ~105 KB**.
+Verified against the real hero at its ~1.6× display upscale under the two gradient overlays — at
+that scale q50 and q75 are indistinguishable. Mobile is unchanged (it already landed on w=640/828).
+
+Two side effects worth knowing:
+
+- The srcset now resolves to **4 distinct optimizer URLs instead of 8**, halving the cold-transform
+  surface. That matters because the hero re-picks on every shell regeneration, so its LCP variant is
+  regularly the first request for that URL in a region.
+- The clamp applies to every consumer of the loader — glossary, park/attraction backgrounds, the
+  announce section — all of which are equally veiled. `disneyland-park/background.jpg` (the one
+  4032×3024 / 2.6 MB outlier) is downscaled to 2048px: still ≥1200px so its structured-data crops
+  stay in Google's preferred range, 2.2 MB lighter in the bundle, and ~4× cheaper to decode.
+
+The hero also gained the `placeholder="blur"` gradient the park backgrounds already had (now shared
+via `lib/utils/image-placeholder.ts`), so it no longer flashes an empty `bg-background` slab.
+
+Separately, the **in-park rotation** no longer fetches a park's whole photo set at once. Those layers
+all sit in the viewport at full size, so `loading="lazy"` deferred nothing and Europa-Park fired 13
+renditions (~250 KB) the moment the nearby lookup resolved. Only the outgoing / active / next layers
+now mount an `<Image>`; the ken-burns animation moved to a permanently-mounted wrapper div so every
+layer's animation clock still starts together and crossfades stay in phase.
+
+→ [Assets – Delivery](development/assets.md#delivery-libutilsimage-loaderts)
+
+---
+
 ## Unreleased – backend: park crowd levels now measure the park, not its busiest ride
 
 No frontend code change, but the numbers on the park page move — worth knowing when a
 screenshot from before this date disagrees with the live site.
 
-The API's live park level used to be the P90 *across* the per-headliner ratios, which over a
+The API's live park level used to be the P90 _across_ the per-headliner ratios, which over a
 ten-ride headliner set is effectively the second-busiest ride. Phantasialand rendered **`high`**
 while Taron and F.L.Y. both sat at 20 min against 45/40-min baselines. It is now a
 baseline-weighted mean (`Σ current waits ÷ Σ their P50 baselines`) — the same afternoon reads

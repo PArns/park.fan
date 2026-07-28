@@ -76,7 +76,7 @@ export async function AnnounceSection({ locale }: AnnounceSectionProps) {
             // Sits below the hero — not the LCP. Keeping it off `priority` stops it
             // competing with the hero image for bandwidth (the hero's LCP load delay
             // was ~1.4 s on slow 4G). Lazy-loads as it scrolls into view. Shares the
-            // hero's loader so mobile/desktop quality is handled the same way (q60/q90).
+            // hero's loader, so it gets the same q50 and the same width clamp.
           />
           <div className="from-background via-background/90 to-muted/50 absolute inset-0 bg-gradient-to-br" />
           <div className="from-park-primary/10 absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] via-transparent to-transparent" />
