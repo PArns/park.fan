@@ -1149,8 +1149,12 @@
     "overviewMetaDescription": "Meer dan {count} pretparkbegrippen helder uitgelegd: wachttijden, drukte, Lightning Lane, virtuele wachtrijen, single rider en meer.",
     "rides": {
       "title": "Attracties hiermee",
-      "more": "… en nog {count}"
-    }
+      "more": "… en nog {count}",
+      "topTitle": "De grootste banen",
+      "typicalWait": "meestal tot {minutes} min.",
+      "allTitle": "Alle banen"
+    },
+    "rideCount": "{count, plural, one {# baan} other {# banen}}"
   },
   "fancast": {
     "title": "Fancast – ons voorspelmodel voor wachttijden",

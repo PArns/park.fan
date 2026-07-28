@@ -1149,8 +1149,12 @@
     "overviewMetaDescription": "Oltre {count} termini dei parchi a tema spiegati in modo semplice: tempi di attesa, affluenza, Lightning Lane, code virtuali e altro.",
     "rides": {
       "title": "Attrazioni con questo",
-      "more": "… e altre {count}"
-    }
+      "more": "… e altre {count}",
+      "topTitle": "Le attrazioni più grandi",
+      "typicalWait": "di solito fino a {minutes} min",
+      "allTitle": "Tutte le attrazioni"
+    },
+    "rideCount": "{count, plural, one {# attrazione} other {# attrazioni}}"
   },
   "fancast": {
     "title": "Fancast – il nostro modello di previsione dei tempi di attesa",

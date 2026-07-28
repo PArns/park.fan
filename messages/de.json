@@ -1149,8 +1149,12 @@
     "overviewMetaDescription": "Über {count} Freizeitpark-Begriffe verständlich erklärt: Wartezeiten, Besucherdichte, Lightning Lane, virtuelle Warteschlangen und mehr.",
     "rides": {
       "title": "Bahnen mit dieser Figur",
-      "more": "… und {count} weitere"
-    }
+      "more": "… und {count} weitere",
+      "topTitle": "Die größten Bahnen",
+      "typicalWait": "typisch bis {minutes} Min.",
+      "allTitle": "Alle Bahnen"
+    },
+    "rideCount": "{count, plural, one {# Bahn} other {# Bahnen}}"
   },
   "fancast": {
     "title": "Fancast – unser Wartezeiten-Prognosemodell",
