@@ -6,6 +6,7 @@ import { locales, SITE_URL } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { PageContainer } from '@/components/common/page-container';
+import { GlossaryTermRides } from '@/components/glossary/glossary-term-rides';
 import { GlossaryTermDetail } from '@/components/glossary/glossary-term-detail';
 import { GlossaryBackground } from '@/components/glossary/glossary-background';
 import { GlossaryStructuredData } from '@/components/seo/glossary-structured-data';
@@ -188,6 +189,15 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
           }}
           playerLabels={playerLabels}
         />
+      </PageContainer>
+
+      {/* The other half of the ride ↔ glossary link: every curated ride that
+          features this term. Renders nothing for the concept terms no ride
+          profile references. */}
+      <PageContainer className="pb-4">
+        <Suspense fallback={null}>
+          <GlossaryTermRides termId={term.id} />
+        </Suspense>
       </PageContainer>
 
       {/* Nearby parks + favorites — same widgets as homepage */}

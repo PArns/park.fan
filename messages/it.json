@@ -1139,10 +1139,18 @@
         "turn": "Inversione a U",
         "bank": "Sopraelevazione",
         "crest": "Cresta",
-        "dive": "Tuffo"
+        "dive": "Tuffo",
+        "launch": "Lancio",
+        "drop": "Il binario cade",
+        "overhang": "Strapiombo",
+        "hangtime": "Hangtime"
       }
     },
-    "overviewMetaDescription": "Oltre {count} termini dei parchi a tema spiegati in modo semplice: tempi di attesa, affluenza, Lightning Lane, code virtuali e altro."
+    "overviewMetaDescription": "Oltre {count} termini dei parchi a tema spiegati in modo semplice: tempi di attesa, affluenza, Lightning Lane, code virtuali e altro.",
+    "rides": {
+      "title": "Attrazioni con questo",
+      "more": "… e altre {count}"
+    }
   },
   "fancast": {
     "title": "Fancast – il nostro modello di previsione dei tempi di attesa",
@@ -1362,6 +1370,18 @@
       "storage-failed": "Non è stato possibile salvare le tue foto. Riprova più tardi.",
       "record-failed": "Non è stato possibile salvare il tuo invio. Riprova più tardi.",
       "invalid-form": "Il caricamento non era valido. Riprova."
+    }
+  },
+  "attraction": {
+    "rideProfile": {
+      "title": "Profilo della giostra",
+      "typeLabel": "Tipo di attrazione",
+      "elementsLabel": "Elementi del tracciato",
+      "elementsHint": "Nell'ordine di percorrenza: tocca una figura per scoprire cos'è.",
+      "has3d": "3-D",
+      "manufacturer": "Costruttore",
+      "opened": "Apertura",
+      "inversions": "Inversioni"
     }
   }
 }

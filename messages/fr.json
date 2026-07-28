@@ -1139,10 +1139,18 @@
         "turn": "Demi-tour",
         "bank": "Inclinaison",
         "crest": "Sommet",
-        "dive": "Plongeon"
+        "dive": "Plongeon",
+        "launch": "Lancement",
+        "drop": "La voie tombe",
+        "overhang": "Surplomb",
+        "hangtime": "Hangtime"
       }
     },
-    "overviewMetaDescription": "Plus de {count} termes des parcs à thème expliqués simplement : temps d'attente, affluence, Lightning Lane, files virtuelles et plus."
+    "overviewMetaDescription": "Plus de {count} termes des parcs à thème expliqués simplement : temps d'attente, affluence, Lightning Lane, files virtuelles et plus.",
+    "rides": {
+      "title": "Attractions concernées",
+      "more": "… et {count} de plus"
+    }
   },
   "fancast": {
     "title": "Fancast – notre modèle de prévision des temps d'attente",
@@ -1362,6 +1370,18 @@
       "storage-failed": "Impossible d’enregistrer vos photos. Réessayez plus tard.",
       "record-failed": "Impossible d’enregistrer votre envoi. Réessayez plus tard.",
       "invalid-form": "L’envoi était mal formé. Veuillez réessayer."
+    }
+  },
+  "attraction": {
+    "rideProfile": {
+      "title": "Profil du parcours",
+      "typeLabel": "Type d'attraction",
+      "elementsLabel": "Éléments du tracé",
+      "elementsHint": "Dans l'ordre du parcours — touchez une figure pour savoir ce que c'est.",
+      "has3d": "3-D",
+      "manufacturer": "Constructeur",
+      "opened": "Ouverture",
+      "inversions": "Inversions"
     }
   }
 }

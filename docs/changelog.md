@@ -4,6 +4,39 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – feat: rides and the glossary now link to each other
+
+A ride page could say "Black Mamba is an inverted coaster with four
+inversions", but that was a dead end. Rides now carry a curated profile from
+the API — track figures **in ride order**, ride type, builder, opening year —
+stored as glossary term ids, so the link works both ways.
+
+- **Ride page** gets a "Ride profile" chapter (`RideProfileSection`): the
+  layout as a numbered walkthrough with every figure linking into the
+  glossary, figures with a 3-D animation badged, plus type chips and the
+  builder. Repeats are kept — Voltron Nevera really does hit two corkscrews
+  back to back. Renders from the park response, so it is in the static shell.
+- **Glossary term pages** get "Rides with this" (`GlossaryTermRides`), grouped
+  by park, for figures, ride types _and_ manufacturers. Silent for the concept
+  terms no ride references.
+- **24 new glossary terms** across all 6 locales, added because the API seed
+  needed them: launch, swing launch, vertical lift, drop track, scorpion tail,
+  step-up under-flip, twisted horseshoe roll, double down, switch track,
+  turntable, treble clef, indoor/family/motorbike/infinity coaster,
+  interactive dark ride, madhouse, boat ride, shoot-the-chute, people mover,
+  bumper cars, observation tower, Walt Disney Imagineering, Brogent. **262
+  terms** total.
+- **7 new 3-D animations** for the new figures, plus a `pace` hook on the
+  coaster player so an element whose _speed_ is the point (a launch
+  accelerating, a train stalling at a scorpion tail's overhang, a drop track
+  standing dead still) can remap progress onto its curve.
+- **`scripts/render-coaster-elements.mjs`** — the headless contact-sheet
+  harness [conventions §12](development/conventions.md#12-threejs-animations-research-first-then-verify-from-every-perspective-requirement)
+  has always required but that never existed as a checked-in tool. All 42
+  elements verified through it.
+
+→ [glossary](features/glossary.md#ride--glossary-link)
+
 ## Unreleased – fix: the bright blue hairline along the weather card's bottom edge
 
 The weather card ended in a 1px, fully saturated sky-blue line across its whole bottom edge —

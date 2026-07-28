@@ -391,10 +391,18 @@ export function createCoasterScene(
   const _wup = new THREE.Vector3(0, 1, 0);
   let camStarted = false;
 
+  // Progress → position along the curve. Most figures ride at a constant speed
+  // (the curve is arc-length parameterised, so linear progress = linear speed).
+  // Elements whose whole point IS the speed change — a launch accelerating, a
+  // train hanging at the top of a scorpion tail, a drop track standing still
+  // before the floor goes — supply a `pace` that remaps it.
+  const pace = def.pace ?? ((t: number) => t);
+
   function placeTrain() {
+    const head = pace(progress);
     for (const tb of tracks) {
       for (let k = 0; k < CARS; k++) {
-        const t = THREE.MathUtils.clamp(progress - k * CAR_GAP_T, 0, 1);
+        const t = THREE.MathUtils.clamp(head - k * CAR_GAP_T, 0, 1);
         frameAt(tb.frames, t, f0);
         tb.cars[k].position.copy(f0.pos);
         carBasis.makeBasis(f0.right, f0.up, f0.tangent.clone().negate());
@@ -405,7 +413,7 @@ export function createCoasterScene(
 
   function updateCamera(snap: boolean) {
     // lead car of the primary track drives follow / onboard
-    frameAt(mainFrames, progress, f0);
+    frameAt(mainFrames, pace(progress), f0);
     if (view === 'front') {
       desiredPos.copy(frontPos);
       desiredUp.set(0, 1, 0);
@@ -431,7 +439,7 @@ export function createCoasterScene(
       // rolls with the frame so the horizon inverts through the figure.
       desiredUp.copy(f0.up);
       desiredPos.copy(f0.pos).addScaledVector(f0.up, 0.95).addScaledVector(f0.tangent, 0.5);
-      frameAt(mainFrames, Math.min(progress + 0.12, 1), fLook);
+      frameAt(mainFrames, Math.min(pace(progress) + 0.12, 1), fLook);
       lookTarget.copy(fLook.pos).addScaledVector(f0.up, 0.35);
     }
     // Matrix4.lookAt uses the CAMERA convention (−z faces the target); building

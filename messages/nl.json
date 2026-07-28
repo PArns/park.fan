@@ -1139,10 +1139,18 @@
         "turn": "Keerbocht",
         "bank": "Overhelling",
         "crest": "Top",
-        "dive": "Duik"
+        "dive": "Duik",
+        "launch": "Lancering",
+        "drop": "Spoor zakt",
+        "overhang": "Overhang",
+        "hangtime": "Hangtime"
       }
     },
-    "overviewMetaDescription": "Meer dan {count} pretparkbegrippen helder uitgelegd: wachttijden, drukte, Lightning Lane, virtuele wachtrijen, single rider en meer."
+    "overviewMetaDescription": "Meer dan {count} pretparkbegrippen helder uitgelegd: wachttijden, drukte, Lightning Lane, virtuele wachtrijen, single rider en meer.",
+    "rides": {
+      "title": "Attracties hiermee",
+      "more": "… en nog {count}"
+    }
   },
   "fancast": {
     "title": "Fancast – ons voorspelmodel voor wachttijden",
@@ -1362,6 +1370,18 @@
       "storage-failed": "We konden je foto’s niet opslaan. Probeer het later opnieuw.",
       "record-failed": "We konden je inzending niet opslaan. Probeer het later opnieuw.",
       "invalid-form": "De upload was ongeldig. Probeer het opnieuw."
+    }
+  },
+  "attraction": {
+    "rideProfile": {
+      "title": "Baanprofiel",
+      "typeLabel": "Type attractie",
+      "elementsLabel": "Baanelementen",
+      "elementsHint": "In rijvolgorde – tik op een figuur om te zien wat het is.",
+      "has3d": "3-D",
+      "manufacturer": "Fabrikant",
+      "opened": "Geopend",
+      "inversions": "Inversies"
     }
   }
 }

@@ -527,6 +527,8 @@ export interface ParkAttraction {
   // Only present on attraction detail page (merged from dedicated endpoint)
   hourlyForecast?: ForecastItem[];
   predictionAccuracy?: PredictionAccuracy | null;
+  /** Curated ride profile (track figures, ride type, builder) — see `RideProfile`. */
+  rideProfile?: RideProfile | null;
 }
 
 export interface ShowtimeEntry {
@@ -679,6 +681,51 @@ export interface AttractionResponse {
   ropeDrop?: RopeDropInfo | null;
   /** Typical (P50) vs busy (P90) peak-wait stats — render when `displayable`. */
   typicalWaits?: TypicalWaits | null;
+  /** Curated ride profile (track figures, ride type, builder) — see `RideProfile`. */
+  rideProfile?: RideProfile | null;
+}
+
+/**
+ * The curated "what kind of ride is this, and what does it do" record.
+ *
+ * Every id in here is a **glossary term id** (`lib/glossary/data.ts`). The API
+ * only stores ids; this app owns the glossary, so it resolves each one to a
+ * localized name and a link and silently drops any id it does not know — which
+ * is what keeps the API free to be seeded ahead of a term landing here.
+ */
+export interface RideProfile {
+  /**
+   * Track figures **in ride order**. Repeats are meaningful: a layout that hits
+   * two corkscrews in a row lists `corkscrew` twice. Empty for rides with no
+   * track figures (dark rides, flat rides).
+   */
+  elements: string[];
+  /** Ride-type terms (`coasters` / `attractions` categories). Unordered. */
+  types: string[];
+  /** Builder's display name. Null when unknown. */
+  manufacturer: string | null;
+  /** Builder's glossary term id — null means render the name without a link. */
+  manufacturerTermId: string | null;
+  /** The builder's own model name, e.g. "Blitz Coaster". */
+  model: string | null;
+  openedYear: number | null;
+  /** As the park publishes it; may legitimately differ from `elements`. */
+  inversions: number | null;
+}
+
+/** One ride in the glossary → rides direction (`/v1/glossary/terms/:id/attractions`). */
+export interface TermAttraction {
+  name: string;
+  slug: string;
+  parkName: string;
+  url: string;
+  continentSlug: string;
+  countrySlug: string;
+  citySlug: string;
+  parkSlug: string;
+  /** Where the term matched on this ride. */
+  kind: 'element' | 'type' | 'manufacturer';
+  openedYear: number | null;
 }
 
 export interface AttractionHistoryDay {

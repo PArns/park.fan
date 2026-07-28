@@ -4,11 +4,15 @@ overrides:
   postcss: ^8.5.10
 onlyBuiltDependencies:
   - '@swc/core'
+  - esbuild
 ignoredBuiltDependencies:
   - sharp
   - unrs-resolver
 allowBuilds:
   '@parcel/watcher': false
   '@swc/core': false
+  # esbuild ships prebuilt platform binaries; its postinstall only picks one.
+  # The render-coaster-elements harness bundles the three.js scene with it.
+  esbuild: true
   sharp: false
   unrs-resolver: false

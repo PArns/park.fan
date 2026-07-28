@@ -1139,10 +1139,18 @@
         "turn": "Turnaround",
         "bank": "Banked over",
         "crest": "Airtime crest",
-        "dive": "Dive"
+        "dive": "Dive",
+        "launch": "Launch",
+        "drop": "Track drops",
+        "overhang": "Overhang",
+        "hangtime": "Hangtime"
       }
     },
-    "overviewMetaDescription": "Over {count} theme park terms explained in plain language: wait times, crowd levels, Lightning Lane, virtual queues, single rider and more."
+    "overviewMetaDescription": "Over {count} theme park terms explained in plain language: wait times, crowd levels, Lightning Lane, virtual queues, single rider and more.",
+    "rides": {
+      "title": "Rides with this",
+      "more": "… and {count} more"
+    }
   },
   "fancast": {
     "title": "Fancast – our wait-time forecasting model",
@@ -1362,6 +1370,18 @@
       "storage-failed": "We could not store your photos. Please try again later.",
       "record-failed": "We could not save your submission. Please try again later.",
       "invalid-form": "The upload was malformed. Please try again."
+    }
+  },
+  "attraction": {
+    "rideProfile": {
+      "title": "Ride profile",
+      "typeLabel": "Ride type",
+      "elementsLabel": "Track elements",
+      "elementsHint": "In ride order — tap a figure to see what it is.",
+      "has3d": "3-D",
+      "manufacturer": "Manufacturer",
+      "opened": "Opened",
+      "inversions": "Inversions"
     }
   }
 }

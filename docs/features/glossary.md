@@ -36,7 +36,7 @@ The segment map lives in `lib/glossary/translations.ts` as `GLOSSARY_SEGMENTS`.
 
 ## Terms & Categories
 
-Currently **237 terms**. Categories are defined in `lib/glossary/types.ts` (`GlossaryCategory`); the ones in active use:
+Currently **262 terms**. Categories are defined in `lib/glossary/types.ts` (`GlossaryCategory`); the ones in active use:
 
 | Category           | Description                                            |
 | ------------------ | ------------------------------------------------------ |
@@ -92,6 +92,70 @@ The locale switcher reads `link[rel="alternate"][hreflang="..."]` tags from `<he
 - **hreflang**: Each detail page lists locale-specific slugs for all 6 languages
 - **Sitemap**: 6 overview pages (priority 0.7, weekly) + all term×locale pages (priority 0.5, monthly)
 - **IndexNow**: Glossary overview pages submitted alongside home/howto/parks/attractions
+
+## Ride ↔ Glossary link
+
+Rides and glossary terms are connected in **both directions** through the API's
+curated `rideProfile` (see the backend's
+[ride-glossary-link doc](https://github.com/park-fan/v4.api.park.fan/blob/main/docs/frontend/ride-glossary-link.md)).
+The API stores only **glossary term ids**; this app owns the glossary and
+resolves them.
+
+| Direction        | Where                                  | Component                                     |
+| ---------------- | -------------------------------------- | --------------------------------------------- |
+| ride → glossary  | ride page, below the history chapter   | `components/parks/ride-profile-section.tsx`   |
+| glossary → rides | term detail page, below the definition | `components/glossary/glossary-term-rides.tsx` |
+
+- **`RideProfileSection`** renders the track figures as a **numbered** list in
+  ride order — repeats are meaningful (Voltron Nevera really does hit two
+  corkscrews back to back), so the list is never deduped. Figures that have a
+  3-D player are badged. Ride-type terms render as `Badge` chips; the
+  manufacturer links only when the glossary covers that builder, otherwise it
+  is plain text. Data arrives on the **park** response
+  (`attractions[].rideProfile`), so it is in the static shell.
+- **`GlossaryTermRides`** fetches `/v1/glossary/terms/:id/attractions` (cached
+  1 day — the seed only changes when a human edits it), groups by park and
+  renders nothing when no ride carries the term. Most of the glossary is
+  concepts no ride profile references, and an empty box would be worse than no
+  box.
+
+An id this app has no term for is **dropped**, not rendered raw — the API can
+legitimately be seeded with a term before the glossary entry lands here.
+
+Term ids are mirrored into the API repo for CI validation. Regenerate after
+adding, renaming or removing a term:
+
+```bash
+node scripts/export-glossary-term-ids.mjs \
+  > ../v4.api.park.fan/src/attractions/data/glossary-term-ids.ts
+```
+
+## Verifying the 3-D player
+
+`scripts/render-coaster-elements.mjs` is the headless harness the
+[three.js convention](../development/conventions.md#12-threejs-animations-research-first-then-verify-from-every-perspective-requirement)
+requires: it drives the real scene module in Chromium and writes a contact
+sheet per element — one row per camera (front / follow / onboard), one column
+per timeline position, in both themes.
+
+```bash
+node scripts/render-coaster-elements.mjs                 # all 42 elements
+node scripts/render-coaster-elements.mjs launch top-hat  # just these
+OUT=/tmp/sheets SAMPLES=0.9,0.95,1 node scripts/render-coaster-elements.mjs
+```
+
+It uses the container's pre-installed Chromium (`/opt/pw-browsers/chromium`,
+override with `CHROMIUM_PATH`) — never run `playwright install`.
+
+### `pace`: elements whose speed IS the point
+
+The player's curve is arc-length parameterised, so linear progress means
+constant speed — correct for almost every figure. An element may supply
+`pace(t)` to remap progress onto the curve when the speed change is the
+element: a launch accelerating out of the station, a train hanging at the apex
+of a scorpion tail, a drop track standing dead still before the floor lets go.
+It must be monotonic and run 0 → 1. Prefer ease-**in**; an ease-out compresses
+the tail of the run and bunches the cars at the end of the curve.
 
 ## Use in blog posts
 

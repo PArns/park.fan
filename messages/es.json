@@ -1139,10 +1139,18 @@
         "turn": "Giro de 180°",
         "bank": "Peralte",
         "crest": "Cresta",
-        "dive": "Caída"
+        "dive": "Caída",
+        "launch": "Lanzamiento",
+        "drop": "La vía cae",
+        "overhang": "Voladizo",
+        "hangtime": "Hangtime"
       }
     },
-    "overviewMetaDescription": "Más de {count} términos de parques temáticos explicados con claridad: tiempos de espera, afluencia, Lightning Lane, colas virtuales y más."
+    "overviewMetaDescription": "Más de {count} términos de parques temáticos explicados con claridad: tiempos de espera, afluencia, Lightning Lane, colas virtuales y más.",
+    "rides": {
+      "title": "Atracciones con esto",
+      "more": "… y {count} más"
+    }
   },
   "fancast": {
     "title": "Fancast – nuestro modelo de predicción de tiempos de espera",
@@ -1362,6 +1370,18 @@
       "storage-failed": "No pudimos guardar tus fotos. Inténtalo más tarde.",
       "record-failed": "No pudimos guardar tu envío. Inténtalo más tarde.",
       "invalid-form": "El envío tenía un formato incorrecto. Inténtalo de nuevo."
+    }
+  },
+  "attraction": {
+    "rideProfile": {
+      "title": "Perfil de la atracción",
+      "typeLabel": "Tipo de atracción",
+      "elementsLabel": "Elementos del trazado",
+      "elementsHint": "En orden de recorrido: toca una figura para ver qué es.",
+      "has3d": "3-D",
+      "manufacturer": "Fabricante",
+      "opened": "Inauguración",
+      "inversions": "Inversiones"
     }
   }
 }
