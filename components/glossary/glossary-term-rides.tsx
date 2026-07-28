@@ -1,16 +1,14 @@
 import { getTranslations } from 'next-intl/server';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { RollerCoaster } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { GlassCard } from '@/components/common/glass-card';
 import { SectionHeading } from '@/components/common/section-heading';
 import { getAttractionsForTerm } from '@/lib/api/glossary-rides';
-import type { Locale } from '@/i18n/config';
 import type { TermAttraction } from '@/lib/api/types';
 
 interface GlossaryTermRidesProps {
   termId: string;
-  locale: Locale;
   /** How many rides to list before the "and N more" line. */
   limit?: number;
 }
@@ -35,7 +33,7 @@ function groupByPark(rides: TermAttraction[]) {
  * concepts (airtime, rope drop, grey zone) that no ride profile references, and
  * an empty "found on these rides" box would be worse than no box.
  */
-export async function GlossaryTermRides({ termId, locale, limit = 24 }: GlossaryTermRidesProps) {
+export async function GlossaryTermRides({ termId, limit = 24 }: GlossaryTermRidesProps) {
   const rides = await getAttractionsForTerm(termId);
   if (rides.length === 0) return null;
 
@@ -62,7 +60,9 @@ export async function GlossaryTermRides({ termId, locale, limit = 24 }: Glossary
                 {group.rides.map((ride) => (
                   <li key={ride.slug}>
                     <Link
-                      href={`/${locale}/parks/${group.path}/${ride.slug}`}
+                      href={
+                        `/parks/${group.path}/${ride.slug}` as '/parks/europe/germany/rust/europa-park'
+                      }
                       className="border-border/60 hover:border-primary/40 hover:bg-primary/5 hover:text-primary inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1 text-sm font-medium transition-colors"
                     >
                       {ride.name}

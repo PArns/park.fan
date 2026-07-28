@@ -1,5 +1,9 @@
 import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
+// Glossary URLs carry their own locale segment (`/de/glossar/looping`) and are
+// served by a next.config rewrite, so the i18n <Link> would prefix the locale a
+// second time. Plain next/link it is — but with prefetch off, matching the
+// app-wide default in i18n/no-prefetch-link.
 import { Wrench, CalendarDays, RefreshCcw, Boxes } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { GlassCard } from '@/components/common/glass-card';
@@ -69,7 +73,7 @@ export async function RideProfileSection({ profile, locale }: RideProfileSection
             <ul className="flex flex-wrap gap-2">
               {types.map((term) => (
                 <li key={term.id}>
-                  <Link href={term.href}>
+                  <Link href={term.href} prefetch={false}>
                     <Badge
                       variant="secondary"
                       className="hover:bg-primary/15 hover:text-primary transition-colors"
@@ -96,6 +100,7 @@ export async function RideProfileSection({ profile, locale }: RideProfileSection
                 <li key={`${term.id}-${index}`}>
                   <Link
                     href={term.href}
+                    prefetch={false}
                     className="hover:bg-primary/5 group flex items-center gap-3 rounded-md px-1 py-2 transition-colors"
                   >
                     <span className="bg-primary/10 text-primary flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-semibold tabular-nums">
@@ -128,6 +133,7 @@ export async function RideProfileSection({ profile, locale }: RideProfileSection
                   {manufacturerTerm ? (
                     <Link
                       href={manufacturerTerm.href}
+                      prefetch={false}
                       className="hover:text-primary transition-colors"
                     >
                       {profile.manufacturer}

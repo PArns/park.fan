@@ -196,7 +196,7 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
           profile references. */}
       <PageContainer className="pb-4">
         <Suspense fallback={null}>
-          <GlossaryTermRides termId={term.id} locale={locale as Locale} />
+          <GlossaryTermRides termId={term.id} />
         </Suspense>
       </PageContainer>
 
