@@ -70,6 +70,9 @@ export function createCoasterScene(
   const def = getCoasterElement(opts.element);
   if (!def) throw new Error(`Unknown coaster element: ${opts.element}`);
   const duration = def.duration ?? 9;
+  // Captured out here: the narrowing from the guard above does not survive into
+  // the nested builders below.
+  const lsm = def.lsm;
 
   const track = new Tracker();
   const ctx = createCtx(track);
@@ -245,6 +248,41 @@ export function createCoasterScene(
         )
       );
       world.add(tie);
+    }
+
+    // LSM stator packs on the launch run-in. Pairs flanking the centreline,
+    // because that is the real geometry: the stators sit either side of a
+    // reaction fin under the train's bogies. Inside the GAUGE so they read as
+    // track hardware rather than trackside scenery, and short enough that the
+    // rails still dominate the silhouette.
+    if (lsm) {
+      const span = (v: number) => Math.round(Math.min(1, Math.max(0, v)) * N);
+      const i0 = span(lsm.from);
+      const i1 = span(lsm.to);
+      const finGeo = ctx.track.geo(new THREE.BoxGeometry(0.06, 0.22, 0.62));
+      // White, with a touch of the accent glow so the run still reads at night
+      // — plain white goes muddy grey once the dark theme dims the lighting.
+      const finMat = ctx.lit({ color: 0xf7fafc, roughness: 0.4 }, 0.12);
+      // Spaced so the packs read as discrete units with a gap between them.
+      // Denser than this and the 0.62-long fins overlap into one continuous
+      // bar, which is not what a stator run looks like.
+      const STEP = Math.max(3, Math.round(N / 33));
+      for (let i = i0; i <= i1; i += STEP) {
+        const basis = new THREE.Matrix4().makeBasis(
+          frames.rights[i],
+          frames.ups[i],
+          frames.tangents[i].clone().negate()
+        );
+        for (const side of [-1, 1]) {
+          const fin = new THREE.Mesh(finGeo, finMat);
+          fin.position
+            .copy(frames.points[i])
+            .addScaledVector(frames.rights[i], side * 0.15)
+            .addScaledVector(frames.ups[i], 0.04);
+          fin.quaternion.setFromRotationMatrix(basis);
+          world.add(fin);
+        }
+      }
     }
   }
 
