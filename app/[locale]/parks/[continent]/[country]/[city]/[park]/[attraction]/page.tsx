@@ -16,6 +16,7 @@ import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import type { Metadata } from 'next';
 import { ParkBackground } from '@/components/parks/park-background';
 import { FavoriteStar } from '@/components/common/favorite-star';
+import { ParkDistance } from '@/components/common/park-distance';
 import { ShareButtons } from '@/components/common/share-buttons';
 import { ContributeBanner } from '@/components/contribute/contribute-banner';
 import { PreferredSourcePrompt } from '@/components/common/preferred-source-prompt';
@@ -317,6 +318,9 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                       <MapPin className="h-4 w-4" />
                       {parkName}
                     </Link>
+                    {/* Distance to the PARK this ride sits in (rides share the park's location
+                        for travel purposes) — client-only, appears once the position is known. */}
+                    <ParkDistance latitude={park.latitude} longitude={park.longitude} size="md" />
                     {attraction.land && <Badge variant="outline">{attraction.land}</Badge>}
                     {attraction.isSeasonal && (
                       <SeasonalBadge

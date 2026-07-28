@@ -173,6 +173,9 @@ export default async function CountryPage({ params }: CountryPageProps) {
                 countryName,
                 href: `/parks/${continent}/${country}/${city.slug}/${park.slug}`,
                 backgroundImage: getParkBackgroundImage(park.slug),
+                // Static too — the distance to the visitor is computed client-side from these.
+                latitude: park.latitude,
+                longitude: park.longitude,
               }))}
               className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3"
             />

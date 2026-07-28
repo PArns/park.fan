@@ -131,6 +131,9 @@ export default async function CityPage({ params }: CityPageProps) {
     countryName,
     href: `/parks/${continent}/${country}/${citySlug}/${park.slug}`,
     backgroundImage: getParkBackgroundImage(park.slug),
+    // Static too — the distance to the visitor is computed client-side from these.
+    latitude: park.latitude,
+    longitude: park.longitude,
   }));
 
   // Generate breadcrumbs with translations

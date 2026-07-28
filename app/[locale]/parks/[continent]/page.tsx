@@ -12,6 +12,7 @@ import { PageHeader } from '@/components/common/page-header';
 import { BreadcrumbStructuredData, ItemListStructuredData } from '@/components/seo/structured-data';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateContinentBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
+import { collectParkCoordinates } from '@/lib/utils/distance-utils';
 import type { Metadata } from 'next';
 
 interface ContinentPageProps {
@@ -90,8 +91,14 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
       // Drop the nested cities→parks→attractions tree – this page only needs
       // country-level aggregate fields, and the full tree can be hundreds of
       // thousands of bytes (e.g. all US attraction data) in the RSC payload.
+      // The park coordinates are kept as bare [lat, lng] tuples first (a few bytes per park)
+      // so the card can show the distance to the country's nearest park.
       const { cities: _, ...countryData } = country;
-      uniqueCountries.set(resolvedName, { ...countryData, displayName: resolvedName });
+      uniqueCountries.set(resolvedName, {
+        ...countryData,
+        displayName: resolvedName,
+        parkCoordinates: collectParkCoordinates(country),
+      });
     }
   });
 
@@ -155,6 +162,7 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
             href: `/parks/${continent}/${country.slug}`,
             totalParkCount: country.parkCount,
             subtitle: `${country.cityCount} ${tExplore('stats.city', { count: country.cityCount })}`,
+            parkCoordinates: country.parkCoordinates,
           }))}
           className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
         />
