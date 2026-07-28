@@ -62,6 +62,11 @@
   --color-crowd-high: var(--crowd-high);
   --color-crowd-very-high: var(--crowd-very-high);
   --color-crowd-extreme: var(--crowd-extreme);
+  --color-element-launch: var(--element-launch);
+  --color-element-airtime: var(--element-airtime);
+  --color-element-inversion: var(--element-inversion);
+  --color-element-turn: var(--element-turn);
+  --color-element-brake: var(--element-brake);
   /* Trend colors — enables opacity modifiers like bg-trend-up/65, border-trend-down/80 */
   --color-trend-up: var(--trend-up);
   --color-trend-down: var(--trend-down);
@@ -278,6 +283,15 @@
   --crowd-very-high: oklch(0.58 0.22 52);
   --crowd-extreme: oklch(0.55 0.24 25);
 
+  /* Track-figure colors — what a figure DOES to you, for the ride profile rail.
+     Deliberately distinct hues from the crowd band above: the two appear on the
+     same page and must not read as the same scale. */
+  --element-launch: oklch(0.62 0.19 42);
+  --element-airtime: oklch(0.6 0.15 245);
+  --element-inversion: oklch(0.55 0.2 315);
+  --element-turn: oklch(0.6 0.13 195);
+  --element-brake: oklch(0.55 0.02 240);
+
   /* Status Colors */
   --status-operating: oklch(0.55 0.21 142.136);
   --status-down: oklch(0.705 0.213 47.604);
@@ -355,6 +369,13 @@
   --crowd-high: oklch(0.86 0.18 78);
   --crowd-very-high: oklch(0.8 0.2 52);
   --crowd-extreme: oklch(0.74 0.22 25);
+
+  /* Track-figure colors — lifted for the navy background */
+  --element-launch: oklch(0.78 0.16 45);
+  --element-airtime: oklch(0.76 0.13 245);
+  --element-inversion: oklch(0.74 0.17 315);
+  --element-turn: oklch(0.78 0.12 195);
+  --element-brake: oklch(0.7 0.02 240);
 
   /* Status Colors - Brighter for dark mode */
   --status-operating: oklch(0.792 0.209 151.711);
