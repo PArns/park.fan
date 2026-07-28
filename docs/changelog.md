@@ -4,15 +4,25 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
-## Unreleased – perf: hero image loading (−74% on the desktop LCP image)
+## Unreleased – perf: hero image loading (−53% to −76% on the desktop LCP image)
 
-The homepage hero photo is the LCP element, and desktops were downloading ~105 KB of AVIF for
-pixels they already had. next/image emits the full `deviceSizes` srcset regardless of the source,
-so `sizes="115vw"` made a 1440px viewport pick the **1920w** candidate — but every photo under
+The homepage hero photo is the LCP element, and desktops were downloading 2–4× the bytes for pixels
+they already had. next/image emits the full `deviceSizes` srcset regardless of the source, so
+`sizes="115vw"` made a 1440px viewport pick the **1920w** candidate — but every photo under
 `public/images/parks` is ≤1024px wide and the optimizer resizes with `withoutEnlargement`, so that
-candidate returned the _same 1024px rendition_, merely re-encoded at the q75 the old per-width rule
+candidate returned the _same 1024×768 rendition_, merely re-encoded at the q75 the old per-width rule
 handed to anything above 1080px. `backgroundImageLoader` now **clamps every requested width to
-1080px** and uses one quality (q50) throughout: identical resolution, **~27 KB instead of ~105 KB**.
+1080px** and uses one quality (q50) throughout — identical resolution, measured across the hero set
+on the real optimizer:
+
+| photo                             | before | after  |
+| --------------------------------- | ------ | ------ |
+| `walibi-holland/untamed`          | 192 KB | 46 KB  |
+| `europa-park/silver-star`         | 96 KB  | 36 KB  |
+| `phantasialand/taron`             | 148 KB | 58 KB  |
+| `europa-park/wodan-timburcoaster` | 227 KB | 101 KB |
+| `europa-park/madame-freudenreich` | 58 KB  | 27 KB  |
+
 Verified against the real hero at its ~1.6× display upscale under the two gradient overlays — at
 that scale q50 and q75 are indistinguishable. Mobile is unchanged (it already landed on w=640/828).
 

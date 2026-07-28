@@ -20,8 +20,9 @@ const MAX_USEFUL_WIDTH = 1080;
  * Every requested width above {@link MAX_USEFUL_WIDTH} is CLAMPED to it. next/image always emits
  * the full `deviceSizes` srcset, so `sizes="100vw"`/`115vw` made desktops pick the 1920w/3840w
  * candidate — which the optimizer could only answer with an upscale-free 1024px rendition anyway,
- * but at q75 (≈105 KB AVIF) instead of q50 (≈27 KB). Clamping keeps the identical resolution for
- * −74% bytes on the desktop LCP image, verified against the real hero at its ~1.6× display
+ * but at q75 instead of q50. Clamping keeps the identical resolution for **−53% to −76%** bytes on
+ * the desktop LCP image (measured across the hero set on the real optimizer; ~−60% typical, e.g.
+ * `wodan-timburcoaster` 227 → 101 KB AVIF). Verified against the real hero at its ~1.6× display
  * upscale under the overlays. It also collapses the srcset from 8 distinct optimizer URLs to 4,
  * halving the cold-transform surface for a hero photo that rotates with every shell regeneration.
  *

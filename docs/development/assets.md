@@ -28,9 +28,10 @@ It does two things:
 - **Clamps the requested width to 1080px.** next/image always emits the full `deviceSizes` srcset, so
   a `sizes` of `100vw`/`115vw` made desktops pick the 1920w or 3840w candidate — which a 1024px
   source can only answer with the _same_ 1024px pixels, just re-encoded at the higher quality the old
-  per-width rule handed out (~105 KB AVIF instead of ~27 KB). Clamping keeps the identical resolution
-  for −74% bytes on the desktop LCP image, and collapses the srcset from 8 distinct optimizer URLs to
-  4 — halving the cold-transform surface for a hero photo that rotates with every shell regeneration.
+  per-width rule handed out. Clamping keeps the identical resolution for **−53% to −76%** bytes on the
+  desktop LCP image (measured across the hero set on the real optimizer, ~−60% typical), and collapses
+  the srcset from 8 distinct optimizer URLs to 4 — halving the cold-transform surface for a hero photo
+  that rotates with every shell regeneration.
 
 `BACKGROUND_BLUR_DATA_URL` (`lib/utils/image-placeholder.ts`) is the shared `placeholder="blur"`
 gradient for the same set, so the hero and the park/attraction backgrounds can't drift apart.
