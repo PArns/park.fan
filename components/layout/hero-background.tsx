@@ -6,6 +6,7 @@ import nextDynamic from 'next/dynamic';
 import { Loader2 } from 'lucide-react';
 import { HERO_IMAGES } from '@/lib/hero-images';
 import { backgroundImageLoader } from '@/lib/utils/image-loader';
+import { BACKGROUND_BLUR_DATA_URL } from '@/lib/utils/image-placeholder';
 import { useHeroRotation } from '@/components/layout/hero-rotation-context';
 import { HERO_3D_ENABLED } from '@/lib/config/features';
 import { cn } from '@/lib/utils';
@@ -26,8 +27,16 @@ const KEN_BURNS = 'ken-burns 22s ease-in-out infinite alternate';
 // pulls the w=828 candidate instead (w=640 on DPR2) — the largest non-upscaled rendition — which
 // cuts the mobile LCP image ~28% at the same quality. It's a decorative full-bleed background
 // under two gradient overlays + opacity-90 + ken-burns, so the slightly smaller rendition is
-// imperceptible. Desktop keeps 115vw. Quality is set per-width in backgroundImageLoader.
+// imperceptible. Desktop keeps 115vw; `backgroundImageLoader` bands the quality by how wide the
+// rendition will actually be painted, so wide screens still get the detail they need.
 const HERO_IMAGE_SIZES = '(max-width: 768px) 60vw, 115vw';
+
+/**
+ * How many in-park layers are kept mounted around the active one: the outgoing image (still fading
+ * out), the active one, and the next one (preloading behind opacity-0). Everything else in a park's
+ * set stays out of the DOM — see {@link InParkHeroImages}.
+ */
+const PARK_LAYER_LOOKAHEAD = 1;
 
 interface RandomHeroImageProps {
   imageSrc?: string;
@@ -52,29 +61,51 @@ function InParkHeroImages({
 
   if (parkImages.length === 0) return null;
 
-  // Render every park image as a stacked layer and crossfade by toggling opacity — the handful of
-  // images preload (loading="eager": the layers are opacity-0, so we must not rely on lazy
-  // heuristics) so each transition is instant. Every layer animates continuously and in phase
-  // (the 0% keyframe is the identity transform), so crossfades never "jump" the ken-burns effect.
+  const total = parkImages.length;
+
+  // One stacked layer per park image, crossfaded by toggling opacity. The LAYER (a plain div) is
+  // always mounted and carries both the opacity transition and the ken-burns animation, so every
+  // layer's animation clock starts at the same moment and stays in phase — crossfades never "jump"
+  // the ken-burns transform.
+  //
+  // The <Image> inside, however, only mounts for a small window around the active layer. Every
+  // layer sits in the viewport at full size, so `loading="lazy"` would not defer anything and the
+  // old render fetched a park's WHOLE set at once — 13 renditions ≈ 250 KB for Europa-Park, all
+  // competing for bandwidth the moment the nearby lookup resolves. With the window it's two
+  // renditions up front, and each following one preloads behind opacity-0 during the 8 s the
+  // current image is on screen (PARK_ROTATE_MS), so transitions stay instant.
   return (
     <>
-      {parkImages.map((src, i) => (
-        <Image
-          key={src}
-          src={src}
-          alt="Park Background"
-          fill
-          loader={backgroundImageLoader}
-          loading="eager"
-          onLoad={i === activeIndex ? onActiveImageLoad : undefined}
-          className={cn(
-            'object-cover transition-opacity duration-1000 ease-in-out',
-            i === activeIndex ? 'opacity-90' : 'opacity-0'
-          )}
-          style={noAnimation ? undefined : { animation: KEN_BURNS }}
-          sizes={HERO_IMAGE_SIZES}
-        />
-      ))}
+      {parkImages.map((src, i) => {
+        // Distance forward from the active layer, wrapped: 0 = on screen, 1 = up next,
+        // total - 1 = the one currently fading out.
+        const ahead = (i - activeIndex + total) % total;
+        const isMounted = ahead <= PARK_LAYER_LOOKAHEAD || ahead === total - 1;
+
+        return (
+          <div
+            key={src}
+            className={cn(
+              'absolute inset-0 transition-opacity duration-1000 ease-in-out',
+              i === activeIndex ? 'opacity-90' : 'opacity-0'
+            )}
+            style={noAnimation ? undefined : { animation: KEN_BURNS }}
+          >
+            {isMounted && (
+              <Image
+                src={src}
+                alt="Park Background"
+                fill
+                loader={backgroundImageLoader}
+                loading="eager"
+                onLoad={i === activeIndex ? onActiveImageLoad : undefined}
+                className="object-cover"
+                sizes={HERO_IMAGE_SIZES}
+              />
+            )}
+          </div>
+        );
+      })}
     </>
   );
 }
@@ -130,6 +161,12 @@ export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps)
         loader={backgroundImageLoader}
         priority={isServerImage}
         fetchPriority={isServerImage ? 'high' : undefined}
+        // Paint the brand gradient in the first frame instead of the bare bg-background, so the
+        // hero never shows an empty slab while the rendition is in flight. Same placeholder the
+        // park/attraction backgrounds use; low-entropy on purpose so it stays out of the LCP
+        // candidate set (LCP is still measured against the photo).
+        placeholder="blur"
+        blurDataURL={BACKGROUND_BLUR_DATA_URL}
         onLoad={noAnimation ? undefined : () => setAnimate(true)}
         className={cn(
           'object-cover transition-opacity duration-1000',
