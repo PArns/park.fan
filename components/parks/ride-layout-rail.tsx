@@ -94,7 +94,12 @@ export function RideLayoutRail({ elements, playerLabels, labels }: RideLayoutRai
           const isActive = index === selected;
           const colour = KIND_CLASS[element.kind];
           return (
-            <li key={`${element.id}-${index}`} className="relative shrink-0 snap-start">
+            /* grow + basis rather than a fixed width: the rail spreads across
+               whatever width the card gives it, so a 9-figure layout fills the
+               row instead of huddling on the left. `shrink-0` with a 6rem basis
+               keeps the labels readable — below that the row overflows and
+               scrolls, which is what happens on a phone. */
+            <li key={`${element.id}-${index}`} className="relative shrink-0 grow basis-24 snap-start">
               {/* The connecting track, behind the dot. Not before the first figure. */}
               {index > 0 && (
                 <span
@@ -106,7 +111,7 @@ export function RideLayoutRail({ elements, playerLabels, labels }: RideLayoutRai
                 type="button"
                 onClick={() => setSelected(isActive ? null : index)}
                 aria-pressed={isActive}
-                className="group flex w-24 flex-col items-center gap-1.5 px-1 py-1 text-center"
+                className="group flex w-full flex-col items-center gap-1.5 px-1 py-1 text-center"
               >
                 <span
                   className={cn(
