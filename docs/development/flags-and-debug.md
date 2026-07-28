@@ -8,13 +8,24 @@ Experimental and debug behavior is controlled via a small set of **build-time fe
 
 ## Build-time feature flags (`lib/config/features.ts`)
 
-A small set of **static, build-time** feature toggles live in **`lib/config/features.ts`** — for shipping a feature behind an off-by-default switch that flips per-deploy (not per-session like the Toolbar flags). Each reads a `NEXT_PUBLIC_*` env var and **defaults OFF**; set the var in Vercel project settings (or `.env.local`) to enable. `NEXT_PUBLIC_*` so the value is readable in both Server and Client Components and the unused branch tree-shakes out.
+A small set of **static, build-time** feature toggles live in **`lib/config/features.ts`** — for shipping a feature behind an off-by-default switch that flips per-deploy (not per-session like the Toolbar flags). Each reads a `NEXT_PUBLIC_*` env var and **defaults OFF**; set the var in Vercel project settings (or `.env.local`) to enable. (One kill switch defaults ON instead — see below.) `NEXT_PUBLIC_*` so the value is readable in both Server and Client Components and the unused branch tree-shakes out.
 
-| Flag              | Env var               | Default | Effect                                                                                                                  |
-| ----------------- | --------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `HERO_3D_ENABLED` | `NEXT_PUBLIC_HERO_3D` | off     | On → animated three.js RCT-style 3-D park hero. Off → classic rotating hero photo. (three.js is only imported when on.) |
+| Flag                 | Env var                  | Default            | Effect                                                                                                                  |
+| -------------------- | ------------------------ | ------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| `HERO_3D_ENABLED`    | `NEXT_PUBLIC_HERO_3D`    | off                | On → animated three.js RCT-style 3-D park hero. Off → classic rotating hero photo. (three.js is only imported when on.) |
+| `STARTUPBAR_ENABLED` | `NEXT_PUBLIC_STARTUPBAR` | **on** (see below) | Off → the startupbar.co loader script isn't rendered and the promo bar disappears.                                      |
 
 Accepts `1` / `true` / `on` / `yes` (case-insensitive). Use these for product feature gating; use the `?sim=` param below for per-session geo/debug overrides.
+
+### Kill switches (default ON)
+
+`STARTUPBAR_ENABLED` is the one exception to "default OFF": the StartupBar promo bar is a listing
+we applied for, and startupbar.co verifies the script is live on park.fan — so it ships on and is
+turned **off** by an explicit `NEXT_PUBLIC_STARTUPBAR=off` (`0` / `false` / `no` also work), via the
+`envKillSwitch` helper. To remove the bar for good instead, delete
+`components/common/startup-bar.tsx` and its one usage in `app/[locale]/layout.tsx` — the vendor's
+loader is the only thing that touches the layout, so nothing else has to be unwound. Details of
+what that loader does to `<body>` and to our sticky header live in the component's doc comment.
 
 ---
 
