@@ -46,7 +46,7 @@ const VIEW_META: { id: CoasterView; icon: typeof Eye; key: keyof CoasterPlayerLa
 ];
 
 export default function CoasterPlayerScene({ element, labels, className }: Props) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const hostRef = useRef<HTMLDivElement>(null);
   const handleRef = useRef<CoasterSceneHandle | null>(null);
   const scrubbingRef = useRef(false);
   // Progress is rendered imperatively (fill width + range value) instead of via React state:
@@ -65,9 +65,24 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
   const { resolvedTheme } = useTheme();
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const host = hostRef.current;
+    if (!host) return;
     let mounted = true;
+
+    // The canvas is created HERE, per initialisation, rather than rendered in
+    // JSX and reused. `scene.ts` deliberately calls `renderer.forceContextLoss()`
+    // on teardown (browsers cap live WebGL contexts, and switching elements
+    // would otherwise leak them until other canvases go black). But a canvas
+    // whose context was force-lost can never get a fresh one: `getContext`
+    // hands back the dead context and THREE reads `precision` off null. So a
+    // reused canvas is dead the second time this effect runs — which is every
+    // element switch, and in development every mount, because React's
+    // StrictMode invokes effects twice.
+    const canvas = document.createElement('canvas');
+    canvas.className = 'absolute inset-0 h-full w-full';
+    canvas.setAttribute('aria-hidden', 'true');
+    // First child so the loading/controls overlays keep painting above it.
+    host.prepend(canvas);
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const initialTheme: SceneTheme = document.documentElement.classList.contains('dark')
@@ -106,6 +121,7 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
       });
       return () => {
         mounted = false;
+        canvas.remove();
       };
     }
     handleRef.current = handle;
@@ -116,7 +132,6 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
     if (fillRef.current) fillRef.current.style.width = '0%';
     if (rangeRef.current) rangeRef.current.value = '0';
 
-    const host = canvas.parentElement ?? canvas;
     const ro = new ResizeObserver(() => {
       const w = host.clientWidth;
       const h = host.clientHeight;
@@ -145,6 +160,9 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
       document.removeEventListener('visibilitychange', onVis);
       handle.dispose();
       handleRef.current = null;
+      // dispose() force-loses this canvas's context, so the node is spent —
+      // drop it and let the next run create a fresh one.
+      canvas.remove();
     };
   }, [element]);
 
@@ -188,8 +206,9 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
       )}
     >
       {/* Canvas stage */}
-      <div className="relative aspect-[16/10] w-full sm:aspect-[16/9]">
-        <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" aria-hidden="true" />
+      {/* The <canvas> is NOT rendered here — the effect creates one per
+          initialisation and prepends it. See the effect for why. */}
+      <div ref={hostRef} className="relative aspect-[16/10] w-full sm:aspect-[16/9]">
 
         {/* Loading / fallback overlay */}
         {!ready && (
