@@ -2,6 +2,7 @@
 
 import { GeoLocationCard } from '@/components/common/geo-location-card';
 import { useGeoLiveStats, findOpenParkCount } from '@/lib/hooks/use-geo-live-stats';
+import type { Coordinate } from '@/lib/utils/distance-utils';
 
 /** Static (cacheable) country-card fields — everything except the live open-park count. */
 export interface StaticCountryCard {
@@ -10,6 +11,9 @@ export interface StaticCountryCard {
   href: string;
   totalParkCount: number;
   subtitle: string;
+  /** Positions of this country's parks — the card derives "X km to the nearest park" from them.
+   *  Tuples (not the park tree) so the RSC payload stays small. */
+  parkCoordinates?: readonly Coordinate[];
 }
 
 /**
@@ -39,6 +43,7 @@ export function LiveCountryCards({
           openParkCount={findOpenParkCount(data, continent, c.slug)}
           totalParkCount={c.totalParkCount}
           subtitle={c.subtitle}
+          parkCoordinates={c.parkCoordinates}
           variant="country"
         />
       ))}

@@ -825,6 +825,7 @@
     "youAreInPark": "Sei a {parkName}",
     "nearParkSubtitle": "Nella tua zona: {parkName} e altro",
     "awayFrom": "di distanza",
+    "nearestParkAway": "{distance} dal parco più vicino",
     "nearestAttractions": "Attrazioni più vicine",
     "headliners": "Attrazioni di punta",
     "headlinerBadge": "Top",

@@ -779,6 +779,10 @@ export interface ParkReference {
   name: string;
   slug: string;
   country: string;
+  /** Park position — null for parks the backend could not geocode. Feeds the "X km away" line
+   *  on the hub-page park cards without a per-park lookup. */
+  latitude?: number | null;
+  longitude?: number | null;
   attractionCount: number;
   status?: ParkStatus;
   currentLoad?: {

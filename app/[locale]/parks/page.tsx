@@ -10,6 +10,7 @@ import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
 import { ItemListStructuredData } from '@/components/seo/structured-data';
 import { getOgImageUrl } from '@/lib/utils/og-image';
+import { collectParkCoordinates } from '@/lib/utils/distance-utils';
 import type { Metadata } from 'next';
 
 interface ParksPageProps {
@@ -62,6 +63,9 @@ export default async function ParksPage({ params }: ParksPageProps) {
     return {
       ...continent,
       openParkCount: continentStats?.openParkCount ?? continent.openParkCount ?? 0,
+      // Bare [lat, lng] tuples for every park on the continent — the card computes the distance
+      // to the nearest one on the client, once the visitor's position is known.
+      parkCoordinates: collectParkCoordinates(continent),
     };
   });
 
@@ -120,6 +124,7 @@ export default async function ParksPage({ params }: ParksPageProps) {
               openParkCount={continent.openParkCount}
               totalParkCount={continent.parkCount}
               subtitle={`${continent.countryCount} ${tExplore('stats.country', { count: continent.countryCount })}`}
+              parkCoordinates={continent.parkCoordinates}
               variant="continent"
             />
           );

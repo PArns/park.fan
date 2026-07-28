@@ -33,6 +33,7 @@ import { ParkFAQSection } from '@/components/faq/park-faq-section';
 import type { Metadata } from 'next';
 import { ParkBackground } from '@/components/parks/park-background';
 import { ParkFavoriteButton } from '@/components/parks/park-favorite-button';
+import { ParkDistance } from '@/components/common/park-distance';
 import { ShareButtons } from '@/components/common/share-buttons';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { PageContainer } from '@/components/common/page-container';
@@ -381,6 +382,9 @@ export default async function ParkPage({ params }: ParkPageProps) {
                       <span>{cityName}</span>,{' '}
                       <span>{translateGeoSlug(tGeo, 'countries', country, countryName)}</span>
                     </address>
+                    {/* How far the visitor is from this park — client-only (needs their
+                        position), so it just appears next to the address once known. */}
+                    <ParkDistance latitude={park.latitude} longitude={park.longitude} size="md" />
                   </div>
                 </div>
                 {park.id && <ParkFavoriteButton parkId={park.id} />}

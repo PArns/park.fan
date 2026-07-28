@@ -825,6 +825,7 @@
     "youAreInPark": "You're at {parkName}",
     "nearParkSubtitle": "In your area: {parkName} and more",
     "awayFrom": "away",
+    "nearestParkAway": "{distance} to the nearest park",
     "nearestAttractions": "Nearest Attractions",
     "headliners": "Top Attractions",
     "headlinerBadge": "Top",
