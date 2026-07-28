@@ -4,6 +4,29 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: the bright blue hairline along the weather card's bottom edge
+
+The weather card ended in a 1px, fully saturated sky-blue line across its whole bottom edge —
+`#448ad1` against the `#1a324b` interior on a clear day, and the same untinted-gradient line in
+every other scene and in light mode.
+
+It was the glass overlay coming up one pixel short. `.weather-bg__glass` is deliberately
+force-composited (`will-change: transform` + `translateZ(0)` + `backdrop-filter`, so the scene keeps
+animating behind the blur on iOS/WebKit), which means its layer bounds get snapped to whole device
+pixels — while `.weather-bg`'s sky gradient paints in the parent layer, all the way to the card's
+fractional edge. The park page's card is 518.25px tall, so the snapped glass layer stopped a pixel
+above the gradient and left that row untinted.
+
+Fixed by giving the overlay `inset: -1px` instead of `inset: 0`; `.weather-bg` clips the overhang
+with its own `overflow: hidden` + inherited `border-radius`, so the rounded corners are unchanged.
+Verified at DPR 1/2/3, light and dark, across all seven scenes — no untinted row on any edge.
+
+Worth knowing for anything layered over the weather scene: an `inset: 0` child of a composited
+layer is not guaranteed to cover a fractionally-sized parent, so overlays that are supposed to tint
+_everything_ need to overhang.
+
+---
+
 ## Unreleased – fix: a single Back left the next page at the previous scroll offset
 
 Clicking a blog card low on the homepage kept the homepage's scroll offset instead of opening the

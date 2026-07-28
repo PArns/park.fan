@@ -296,9 +296,17 @@
 }
 
 /* --- Theme-aware glass overlay --- */
+/* `inset: -1px`, not 0: the glass is force-composited (will-change + translateZ +
+   backdrop-filter), so its layer bounds are snapped to whole device pixels while the
+   parent's sky gradient paints to the card's fractional edge. On a card whose height
+   lands on a sub-pixel (the park page's is 518.25px) that snapping left the bottom
+   1 px of the gradient untinted — a bright, fully saturated sky-blue line across the
+   card's bottom edge (#448ad1 against the tinted #1a324b interior). Overhanging by
+   1 px on every side covers it; `.weather-bg` clips the overhang via its own
+   `overflow: hidden` + inherited border-radius, so nothing escapes the card. */
 .weather-bg__glass {
   position: absolute;
-  inset: 0;
+  inset: -1px;
   z-index: 6;
   pointer-events: none;
   background-color: rgba(248, 250, 255, var(--glass-opacity, 0.6));
