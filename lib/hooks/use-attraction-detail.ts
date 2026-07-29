@@ -7,6 +7,12 @@ interface UseAttractionDetailParams {
   city: string;
   parkSlug: string;
   attractionSlug: string;
+  /**
+   * Defer the fetch until the consumer actually needs it. The blog's ride spotlight cards gate on
+   * "scrolled into view" and its hover previews on "hover opened", so a post that names a dozen
+   * rides doesn't fire a dozen detail requests on load.
+   */
+  enabled?: boolean;
 }
 
 /**
@@ -33,6 +39,7 @@ export function useAttractionDetail({
   city,
   parkSlug,
   attractionSlug,
+  enabled = true,
 }: UseAttractionDetailParams) {
   return useQuery<AttractionResponse | null>({
     queryKey: ['attraction-detail', continent, country, city, parkSlug, attractionSlug],
@@ -52,7 +59,7 @@ export function useAttractionDetail({
 
       return (await response.json()) as AttractionResponse;
     },
-    enabled: typeof window !== 'undefined',
+    enabled: enabled && !!attractionSlug && typeof window !== 'undefined',
     staleTime: 10 * 60_000,
     gcTime: 15 * 60_000,
     refetchOnWindowFocus: false,

@@ -4,6 +4,36 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: blog posts stop reporting a park and its rides as closed
+
+The Phantasialand guide showed the park as open and **all twelve** coasters it
+names as "Geschlossen", in the middle of an operating day.
+
+Blog posts are fully statically generated, and every park/ride reference in
+them was resolved **once, at build time**. Whatever the park's status happened
+to be during that build — the middle of the night, for a post built overnight —
+is what every reader saw afterwards, indefinitely. Nothing refreshed it.
+
+- **The browser now lays live values over the build-time snapshot**, the same
+  shell + client-overlay model the homepage, hub pages and featured cards
+  already use. The prerendered HTML is unchanged, so SEO and no-JS readers
+  still get a fully rendered card.
+- **Batched per park, not per reference.** Park status/crowd/wait/hours come
+  from the existing `useRegionParks` region call; ride status and waits from a
+  new lean whole-park snapshot (`/api/parks/.../wait-times`, ~9 KB against
+  ~95 KB for the full park payload). A post naming a dozen rides in one park
+  costs **one** extra request.
+- **The heavier per-ride payload stays lazy.** Today's average/peak and the
+  card sparkline need the full attraction detail, so it's fetched only once a
+  spotlight card scrolls into view or a hover preview opens — never on load.
+- **One source for "now".** Status and wait always come from the 5-min batch,
+  so a card's badge can no longer disagree with the inline badge beside it in
+  the prose. The "closed park ⇒ closed rides" rule is applied on both sides.
+
+See [caching-strategy](architecture/caching-strategy.md#minimizing-isr-writes-jun-2026).
+
+---
+
 ## Unreleased – feat: a ride's measurements, in the visitor's units
 
 The ride page can now say how fast, how long, how tall and how steep — the

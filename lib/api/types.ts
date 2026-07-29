@@ -608,6 +608,26 @@ export interface ParkWithAttractions extends ParkBase {
   hasOperatingSchedule: boolean;
 }
 
+/**
+ * Lean live snapshot from `GET /v1/parks/{geo}/{park}/wait-times`: the park's own status plus
+ * every attraction's current queues — and nothing else. ~9 KB for a 40-ride park versus ~95 KB
+ * for the full park payload, which is what makes it viable as a *batch* live source for surfaces
+ * that only need "open or closed, and how long" (the blog's inline ride references).
+ */
+export interface ParkWaitTimesResponse {
+  park: {
+    id: string;
+    name: string;
+    slug: string;
+    timezone: string;
+    status?: ParkStatus;
+  };
+  attractions: {
+    attraction: { id: string; name: string; slug: string };
+    queues: QueueDataItem[];
+  }[];
+}
+
 // ============================================================================
 // Attraction Response Types
 // ============================================================================

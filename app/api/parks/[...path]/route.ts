@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getIntegratedCalendar, getBestDaysSnapshotFresh } from '@/lib/api/integrated-calendar';
-import { getParkByGeoPathFresh, getAttractionByGeoPathFresh } from '@/lib/api/parks';
+import {
+  getParkByGeoPathFresh,
+  getAttractionByGeoPathFresh,
+  getParkWaitTimesFresh,
+} from '@/lib/api/parks';
 import { getParkWeatherNowcastFresh } from '@/lib/api/weather-nowcast';
 import { getParkHistoricalStats } from '@/lib/api/stats';
 
@@ -109,6 +113,32 @@ export async function GET(
     }
   }
 
+  // Handle lean live wait times: [continent, country, city, park, 'wait-times'] (5 segments)
+  // The whole-park status + queue snapshot (~9 KB vs ~95 KB for the full park payload), polled by
+  // the blog's inline ride references so a statically generated post doesn't keep showing its
+  // build-time "closed" snapshot. The backend caches this 5 min; a matching CDN window collapses
+  // concurrent readers of the same post onto one origin call.
+  if (path && path.length === 5 && path[4] === 'wait-times') {
+    const [continent, country, city, park] = path;
+
+    try {
+      const data = await getParkWaitTimesFresh(continent, country, city, park);
+
+      if (!data) {
+        return NextResponse.json({ error: 'Park not found' }, { status: 404 });
+      }
+
+      return NextResponse.json(data, {
+        headers: {
+          'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=240',
+        },
+      });
+    } catch (error) {
+      console.error('[Wait-Times API] Error:', error);
+      return NextResponse.json({ error: 'Failed to fetch wait times' }, { status: 500 });
+    }
+  }
+
   // Handle historical stats: [continent, country, city, park, 'stats'] (5 segments)
   // e.g., ['europe', 'germany', 'bruehl', 'phantasialand', 'stats']
   if (path && path.length === 5 && path[4] === 'stats') {
@@ -201,7 +231,7 @@ export async function GET(
   return NextResponse.json(
     {
       error:
-        'Invalid path format. Expected: /api/parks/{continent}/{country}/{city}/{park}, /calendar, /best-days, /stats, or /weather/nowcast',
+        'Invalid path format. Expected: /api/parks/{continent}/{country}/{city}/{park}, /calendar, /best-days, /stats, /wait-times, or /weather/nowcast',
     },
     { status: 400 }
   );

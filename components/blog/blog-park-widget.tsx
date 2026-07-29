@@ -1,8 +1,8 @@
 import { getTranslations } from 'next-intl/server';
-import { ParkCard } from '@/components/parks/park-card';
+import { BlogParkCardLive } from './blog-park-card-live';
 import { GlassCard } from '@/components/common/glass-card';
+import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import type { ResolvedPark } from '@/lib/blog/park-resolver';
-import { translateGeoSlug } from '@/lib/utils/geo-translate';
 
 interface BlogParkWidgetProps {
   park: ResolvedPark | null;
@@ -21,7 +21,6 @@ interface BlogParkWidgetProps {
  */
 export async function BlogParkWidget({ park, slug, inRow = false }: BlogParkWidgetProps) {
   const tBlog = await getTranslations('blog');
-  const tGeo = await getTranslations('geo');
 
   if (!park) {
     return (
@@ -42,23 +41,7 @@ export async function BlogParkWidget({ park, slug, inRow = false }: BlogParkWidg
       <h3 className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
         {tBlog('widget.parkSpotlight')}
       </h3>
-      <ParkCard
-        name={park.name}
-        slug={park.slug}
-        parkId={park.id}
-        city={park.city}
-        country={translateGeoSlug(tGeo, 'countries', park.countrySlug, park.country)}
-        href={park.href as '/'}
-        status={park.status}
-        crowdLevel={park.crowdLevel}
-        averageWaitTime={park.avgWaitTime}
-        operatingAttractions={park.operatingAttractions}
-        totalAttractions={park.totalAttractions}
-        timezone={park.timezone}
-        todaySchedule={park.todaySchedule}
-        nextSchedule={park.nextSchedule}
-        hasOperatingSchedule={park.hasOperatingSchedule}
-      />
+      <BlogParkCardLive park={park} backgroundImage={getParkBackgroundImage(park.slug)} />
     </div>
   );
 }

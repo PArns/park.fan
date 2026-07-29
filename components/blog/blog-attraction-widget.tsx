@@ -1,8 +1,7 @@
 import { getTranslations } from 'next-intl/server';
-import { AttractionCard } from '@/components/parks/attraction-card';
+import { BlogAttractionCardLive } from './blog-attraction-card-live';
 import { GlassCard } from '@/components/common/glass-card';
 import { getAttractionBackgroundImage, getParkBackgroundImage } from '@/lib/utils/park-assets';
-import { buildAttractionPayload } from '@/lib/blog/attraction-payload';
 import type { ResolvedAttraction, ResolvedPark } from '@/lib/blog/park-resolver';
 
 interface BlogAttractionWidgetProps {
@@ -41,8 +40,6 @@ export async function BlogAttractionWidget({
     );
   }
 
-  const payload = buildAttractionPayload(park, attraction);
-
   return (
     <div
       className={
@@ -54,17 +51,14 @@ export async function BlogAttractionWidget({
       <h3 className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
         {tBlog('widget.attractionSpotlight')}
       </h3>
-      <AttractionCard
-        attraction={payload}
-        parkPath={park.href}
-        parkStatus={park.status}
-        backgroundImage={
-          getAttractionBackgroundImage(park.slug, attraction.attractionSlug) ??
-          getParkBackgroundImage(park.slug) ??
-          undefined
-        }
-        showParkName
-        timezone={park.timezone}
+      <BlogAttractionCardLive
+        park={park}
+        attraction={attraction}
+        attractionBackgroundImage={getAttractionBackgroundImage(
+          park.slug,
+          attraction.attractionSlug
+        )}
+        parkBackgroundImage={getParkBackgroundImage(park.slug)}
       />
     </div>
   );

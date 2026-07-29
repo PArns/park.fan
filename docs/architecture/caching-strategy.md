@@ -206,6 +206,36 @@ backend can `revalidateTag` (`geo`, `parks`, `attractions`, `analytics`, `popula
 be raised further once the backend webhook is live. See
 [backend-integration](../api/backend-integration.md#on-demand-revalidation).
 
+**Update (Jul 2026) — blog park/ride references got the same overlay.**
+
+Blog posts are fully statically generated (`generateStaticParams`, no `revalidate`), and every
+park/ride reference in them was resolved **once, at build time** through `lib/blog/park-resolver.ts`
+(geo structure @24h + attraction detail @24h). So a post built while the park was shut kept
+serving that snapshot for as long as the page lived — which is how the Phantasialand guide showed
+all twelve of its coasters as "Geschlossen" in the middle of an operating day.
+
+The shell keeps the build-time resolution (SEO / no-JS still get a fully rendered card), and the
+browser lays live values over it. Both sources are **batch calls shared via React Query**, so the
+cost is per _park_ named in the post, not per reference:
+
+| Surface                                      | Live source                                          | Notes                                                              |
+| -------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------ |
+| Park badge, hover preview, `?full` spotlight | `useRegionParks` → `/api/discovery/{cont}/{country}` | Same hook the hub/featured grids use — often already in cache      |
+| Ride badge, hover preview, `?full` spotlight | `useParkWaitTimes` → `/api/parks/.../wait-times`     | Lean park-wide snapshot: ~9 KB vs ~95 KB for the full park payload |
+| Today's avg/peak + card sparkline            | `useAttractionDetail` → `.../attractions/<slug>`     | Lazy: only once a card is on screen or a hover preview opens       |
+
+Status and wait always come from the 5-min batch even where the detail payload also carries them,
+so a card's badge can't disagree with the inline badge next to it in the prose. The park rule
+("closed park ⇒ closed rides") is applied on both sides — `resolveAttraction` server-side and
+`overlayAttraction` client-side.
+
+Files: `lib/blog/use-blog-live.ts` (hooks), `lib/blog/live-overlay.ts` (pure merges),
+`lib/hooks/use-park-wait-times.ts`, `components/blog/blog-{park,attraction}-card-live.tsx`.
+
+> The same trap applies to **any** statically generated page that embeds a live value: baking it
+> is only safe if the page's revalidate window is shorter than the value's meaningful lifetime.
+> For "open / closed / N min" that window is minutes, so it belongs in a client overlay.
+
 ---
 
 ## API Cache Headers (Backend)
