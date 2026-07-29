@@ -24,6 +24,17 @@ onto the hero photo, where it was unreadable.
   `h3` heading instead of four sizes, so the page outline is chapter › card.
 - **Chapter headings sit on a frosted pill** on the ride page, the same
   treatment the park page's section titles already used over hero imagery.
+- **`PageSection`** is the new unit for a chapter: it owns the `<section>`, the
+  heading **and** the spacing around it. `SectionHeading` alone only unified how
+  a heading looks — every call site still hand-rolled its own `mt-10` and its
+  own gap, which is how the live wait-time chapter ended up sitting a visible
+  step lower than its neighbours (its refetch indicator added a reserved band
+  on top of the heading's margin). All four ride-page chapters now measure the
+  same 16 px from title to content.
+- **The live refetch indicator** moved onto the "updated HH:MM" line inside the
+  card, next to the timestamp it refreshes — it no longer reserves an empty
+  band above the card, and it still cannot shift the layout (rendered always,
+  just invisible when idle).
 - **`SectionHeading`** gained `frosted`, `iconClassName`, ReactNode titles and
   a `badge` that is rendered as passed (it used to wrap its argument in a
   second `<Badge>`).

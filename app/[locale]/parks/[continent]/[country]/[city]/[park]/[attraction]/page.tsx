@@ -10,7 +10,7 @@ import { Clock, MapPin, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { SeasonalBadge } from '@/components/parks/seasonal-badge';
 import { AttractionMetaBadges } from '@/components/parks/attraction-meta-badges';
-import { SectionHeading } from '@/components/common/section-heading';
+import { PageSection } from '@/components/common/page-section';
 import { getParkByGeoPath } from '@/lib/api/parks';
 import { catchNonFatal } from '@/lib/api/client';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
@@ -381,21 +381,21 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
           {/* Chapter: the live wait time — the reason people are here. Was the only
               block on the page without a heading, so it read as a stray card between
               the header and the first chapter. */}
-          <SectionHeading icon={Clock} title={t('sectionLiveNow')} frosted />
-
-          {/* Live: status, wait time, queues — auto-refreshes every 5 min.
+          <PageSection icon={Clock} title={t('sectionLiveNow')} frosted>
+            {/* Live: status, wait time, queues — auto-refreshes every 5 min.
               initialPark is trimmed to THIS attraction (LiveAttractionData finds it by slug and
               uses only park-level fields) — passing the full park serialized all ~95 sibling
               attractions into every per-attraction ISR shell, the bulk of its write size. The live
-              poll (getParkByGeoPathFresh) still returns the full park client-side. */}
-          <LiveAttractionData
-            initialPark={{ ...park, attractions: [attraction] }}
-            attractionSlug={attractionSlug}
-            continent={continent}
-            country={country}
-            city={city}
-            parkSlug={parkSlug}
-          />
+                poll (getParkByGeoPathFresh) still returns the full park client-side. */}
+            <LiveAttractionData
+              initialPark={{ ...park, attractions: [attraction] }}
+              attractionSlug={attractionSlug}
+              continent={continent}
+              country={country}
+              city={city}
+              parkSlug={parkSlug}
+            />
+          </PageSection>
 
           {/* Rope-drop recommendation — precomputed daily on the server, present
               only for tier1/tier2 headliners in parks with a schedule. Today's
@@ -405,9 +405,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
           {/* Chapter: plan your visit — rope-drop, typical waits, today's chart and the
               30-day history grid are grouped under one heading so the page reads as
               chapters instead of a long stack of separator-divided blocks. */}
-          <section className="mt-10">
-            <SectionHeading icon={Sparkles} title={t('sectionPlanVisit')} frosted />
-
+          <PageSection icon={Sparkles} title={t('sectionPlanVisit')} frosted>
             {/* Rope-drop + typical waits — both server-rendered in the shell for
                 headliners, so they paint together; side by side on wide screens,
                 stacked when only one is present. */}
@@ -456,23 +454,19 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               attractionName={attractionName}
               suppressTypicalWaits={!!attraction.typicalWaits?.displayable}
             />
-          </section>
+          </PageSection>
 
           {/* Chapter: what this ride is and what it does — the curated link into
               the glossary. Static (hand-seeded) data, so it renders straight into
               the shell; the component returns null when the ride has no profile.
-              scroll-mt-24 is the repo's anchor offset (see marketing/editorial-ui.tsx);
-              without it the header teaser's jump lands under the sticky header. */}
+              Its own <PageSection> carries the #ride-profile anchor (and the
+              repo's scroll-mt offset) so the header teaser's jump lands right. */}
           {attraction.rideProfile && (
-            <div id="ride-profile" className="mt-10 scroll-mt-24">
-              <RideProfileSection profile={attraction.rideProfile} locale={locale as Locale} />
-            </div>
+            <RideProfileSection profile={attraction.rideProfile} locale={locale as Locale} />
           )}
 
-          {/* Chapter: FAQ (its own icon heading lives inside the section) */}
-          <section className="mt-10">
-            <AttractionFAQSection attraction={attraction} park={park} />
-          </section>
+          {/* Chapter: FAQ (its own PageSection lives inside the component) */}
+          <AttractionFAQSection attraction={attraction} park={park} />
 
           <div className="mt-10">
             <ShareButtons url={attractionUrl} title={attractionName} />
