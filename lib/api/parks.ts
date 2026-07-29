@@ -1,5 +1,10 @@
 import { api, ApiError } from './client';
-import type { ParkWithAttractions, AttractionResponse, PopularPark } from './types';
+import type {
+  ParkWithAttractions,
+  AttractionResponse,
+  ParkWaitTimesResponse,
+  PopularPark,
+} from './types';
 
 // Data-cache (`fetch` `next: { revalidate }`) windows for the park/attraction structure fetch.
 // The park & attraction PAGES are `force-dynamic` (rendered per request → no per-URL ISR shell
@@ -161,6 +166,32 @@ export async function getAttractionByGeoPathFresh(
   try {
     return await api.get<AttractionResponse>(
       `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`,
+      { cache: 'no-store' }
+    );
+  } catch (err) {
+    if (err instanceof ApiError && err.status === 404) return null;
+    throw err;
+  }
+}
+
+/**
+ * Live (no-store) lean wait-times snapshot for a whole park — park status + every attraction's
+ * queues, ~9 KB where the full park payload is ~95 KB.
+ *
+ * Exists for surfaces that reference a handful of rides but must NOT pull a park-page-sized
+ * payload per park to keep them live — today the blog's inline ride references, which are
+ * baked into a statically generated post and would otherwise show the build-time snapshot
+ * forever (every ride reading "closed" long after the park reopened).
+ */
+export async function getParkWaitTimesFresh(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string
+): Promise<ParkWaitTimesResponse | null> {
+  try {
+    return await api.get<ParkWaitTimesResponse>(
+      `/v1/parks/${continent}/${country}/${city}/${parkSlug}/wait-times`,
       { cache: 'no-store' }
     );
   } catch (err) {

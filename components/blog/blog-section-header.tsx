@@ -1,5 +1,5 @@
 import { type LucideIcon, Newspaper } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { buttonLinkProps } from '@/components/ui/button';
 import { GlassCard } from '@/components/common/glass-card';
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
@@ -64,13 +64,16 @@ export function BlogSectionHeader({
         {intro && <p className="text-muted-foreground mt-3 text-base sm:text-lg">{intro}</p>}
         {meta && <p className="text-muted-foreground mt-2 text-xs">{meta}</p>}
       </div>
+      {/* buttonLinkProps, not `<Button asChild>` — server component, see conventions §14. */}
       {action && (
-        <Button asChild variant="outline" className="rounded-full">
-          <Link href={action.href as '/'} prefetch={false}>
-            {action.label}
-            {action.icon && <action.icon className="h-3.5 w-3.5" />}
-          </Link>
-        </Button>
+        <Link
+          href={action.href as '/'}
+          prefetch={false}
+          {...buttonLinkProps({ variant: 'outline', className: 'rounded-full' })}
+        >
+          {action.label}
+          {action.icon && <action.icon className="h-3.5 w-3.5" />}
+        </Link>
       )}
     </div>
   );

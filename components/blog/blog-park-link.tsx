@@ -3,11 +3,12 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
-import { ParkCard } from '@/components/parks/park-card';
+import { BlogParkCardLive } from './blog-park-card-live';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { isNotOperating } from '@/lib/blog/live-display';
+import { useLiveBlogPark } from '@/lib/blog/use-blog-live';
 import type { ResolvedPark } from '@/lib/blog/park-resolver';
 
 /** Compact sizing so the live badges sit nicely inside running prose. */
@@ -35,7 +36,7 @@ interface BlogParkLinkProps {
  * image, status badge, crowd badge, average wait, closing-time strip).
  */
 export function BlogParkLink({
-  park,
+  park: resolvedPark,
   fallbackLabel,
   slug: _slug,
   options,
@@ -43,6 +44,9 @@ export function BlogParkLink({
   children,
 }: BlogParkLinkProps) {
   const tGeo = useTranslations('geo');
+  // The post is statically generated, so `resolvedPark` carries whatever the park's status was at
+  // build time. Refresh it in the browser (see `useLiveBlogPark`).
+  const park = useLiveBlogPark(resolvedPark);
   const label = children ?? park?.name ?? fallbackLabel;
   const bare = options?.has('bare') ?? false;
 
@@ -99,26 +103,11 @@ export function BlogParkLink({
           right height even when there is no background image (i.e. when the
           card's own min-h conditional doesn't fire).
         */}
-        <div className="grid [grid-template-rows:auto_0px_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]">
-          <ParkCard
-            name={park.name}
-            slug={park.slug}
-            parkId={park.id}
-            city={park.city}
-            country={country}
-            href={park.href as '/'}
-            status={park.status}
-            crowdLevel={park.crowdLevel}
-            averageWaitTime={park.avgWaitTime}
-            operatingAttractions={park.operatingAttractions}
-            totalAttractions={park.totalAttractions}
-            timezone={park.timezone}
-            todaySchedule={park.todaySchedule}
-            nextSchedule={park.nextSchedule}
-            hasOperatingSchedule={park.hasOperatingSchedule}
-            backgroundImage={backgroundImage}
-          />
-        </div>
+        <BlogParkCardLive
+          park={park}
+          backgroundImage={backgroundImage}
+          className="grid [grid-template-rows:auto_0px_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]"
+        />
       </HoverCardContent>
     </HoverCard>
   );

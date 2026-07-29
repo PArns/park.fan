@@ -131,6 +131,59 @@ or is already hoisted out of the loop.
 
 ---
 
+## 14. Never `asChild` a client element from a server component
+
+A Radix `asChild` trigger (`TooltipTrigger`, `HoverCardTrigger`, `Button asChild`, …) hands its
+child to `Slot`, which requires a **single React element**. From a **server** component, a client
+component like `next/link` arrives as a **lazy client reference**, not an element. `Slot` unwraps a
+lazy child only while its payload is still _pending_ — once any earlier instance of that component
+on the page has resolved the chunk, the payload is settled and `Slot` throws
+`Primitive.button failed to slot onto its children`, taking the whole client tree into the error
+boundary.
+
+This fails **intermittently and by page length**, which makes it very easy to misdiagnose: a long
+blog post resolves the chunk before the first tooltip renders and crashes every time; the same
+content cut in half looks perfectly fine.
+
+```tsx
+// ✗ server component
+<TooltipTrigger asChild>
+  <Link href={href}>{text}</Link>
+</TooltipTrigger>
+
+// ✓ move the whole wrapper into a client component ('use client')
+//   — see components/glossary/glossary-inject-term.tsx
+```
+
+For the two common shapes — a link that should look like a **button** or a **badge** — use
+**`buttonLinkProps`** (`components/ui/button.tsx`) or **`badgeLinkProps`**
+(`components/ui/badge.tsx`). Each returns exactly the props its component would have applied
+(`data-slot` / `data-variant` / `data-size` + the variant class string), so the markup stays
+byte-identical with no `Slot` in play:
+
+```tsx
+// ✗ server component
+<Button asChild variant="outline" size="sm" className="rounded-full">
+  <Link href="/howto">{label}</Link>
+</Button>
+
+// ✓
+<Link href="/howto" {...buttonLinkProps({ variant: 'outline', size: 'sm', className: 'rounded-full' })}>
+  {label}
+</Link>
+```
+
+Two things stay fine as they are:
+
+- **Client components** can keep `asChild` — inside one client boundary there is no lazy wrapper.
+- Slotting a **host** element (`<a>`, `<button>`, `<span>`) from a server component, e.g.
+  `<Badge asChild><a href=…>` in `rcdb-badge.tsx`. Host elements are never lazy. The same goes for
+  a component that is itself server-executable (no `'use client'`), such as `Button` inside a
+  `TooltipTrigger` on the `/ui` showcase page — it renders to a host `<button>` before the Slot
+  ever sees it.
+
+---
+
 ## Related
 
 - [Setup](setup.md)

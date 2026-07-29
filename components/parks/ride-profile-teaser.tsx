@@ -5,7 +5,7 @@ import { getTranslations } from 'next-intl/server';
 // locale twice. Plain next/link, prefetch off, matching the app-wide default.
 import Link from 'next/link';
 import { Wrench, CalendarDays, RefreshCcw, ArrowDown, RollerCoaster, Gauge } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
+import { Badge, badgeLinkProps } from '@/components/ui/badge';
 import { Speed } from '@/components/common/unit-display';
 import { resolveRideProfile } from '@/lib/glossary/ride-profile';
 import type { Locale } from '@/i18n/config';
@@ -79,13 +79,16 @@ export async function RideProfileTeaser({ profile, locale, children }: RideProfi
           in the profile below. Only the first: the seed lists a ride's types
           from most to least identifying ("Launch Coaster, Terrain Coaster,
           steel coaster"), and the rest are one tap away. */}
+      {/* badgeLinkProps, not `<Badge asChild>` — server component, see conventions §14. */}
       {primaryType && (
-        <Badge asChild variant="outline" className="gap-1">
-          <Link href={primaryType.href} prefetch={false}>
-            <RollerCoaster className="h-3 w-3 shrink-0" aria-hidden="true" />
-            {primaryType.name}
-          </Link>
-        </Badge>
+        <Link
+          href={primaryType.href}
+          prefetch={false}
+          {...badgeLinkProps({ variant: 'outline', className: 'gap-1' })}
+        >
+          <RollerCoaster className="h-3 w-3 shrink-0" aria-hidden="true" />
+          {primaryType.name}
+        </Link>
       )}
       {profile.manufacturer && (
         <Badge variant="outline" className="gap-1">

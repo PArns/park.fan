@@ -6,7 +6,7 @@ import { Link } from '@/i18n/navigation';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import type { Locale } from '@/i18n/config';
 import { Clock, TrendingUp, Map as MapIcon, BookOpen, Tag, Sparkles } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { buttonLinkProps } from '@/components/ui/button';
 
 import nextDynamic from 'next/dynamic';
 import { HeroBackground } from '@/components/layout/hero-background';
@@ -183,18 +183,32 @@ export default async function HomePage({ params }: HomePageProps) {
                     className="mt-5 w-full"
                   />
                   <div className="mt-4 flex flex-wrap justify-center gap-3">
-                    <Button asChild variant="outline" size="sm" className="rounded-full">
-                      <Link href="/howto" prefetch={false}>
-                        <BookOpen className="h-3.5 w-3.5 shrink-0" />
-                        {tHome('hero.howto')}
-                      </Link>
-                    </Button>
-                    <Button asChild variant="outline" size="sm" className="rounded-full">
-                      <Link href={glossaryPath} prefetch={false}>
-                        <Tag className="h-3.5 w-3.5 shrink-0" />
-                        {tHome('hero.glossary')}
-                      </Link>
-                    </Button>
+                    {/* buttonLinkProps, not `<Button asChild>` — server component, see
+                        conventions §14. */}
+                    <Link
+                      href="/howto"
+                      prefetch={false}
+                      {...buttonLinkProps({
+                        variant: 'outline',
+                        size: 'sm',
+                        className: 'rounded-full',
+                      })}
+                    >
+                      <BookOpen className="h-3.5 w-3.5 shrink-0" />
+                      {tHome('hero.howto')}
+                    </Link>
+                    <Link
+                      href={glossaryPath}
+                      prefetch={false}
+                      {...buttonLinkProps({
+                        variant: 'outline',
+                        size: 'sm',
+                        className: 'rounded-full',
+                      })}
+                    >
+                      <Tag className="h-3.5 w-3.5 shrink-0" />
+                      {tHome('hero.glossary')}
+                    </Link>
                   </div>
                 </div>
               </GlassCard>

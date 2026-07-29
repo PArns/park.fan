@@ -69,7 +69,10 @@ export function buildAttractionPayload(
       name: detail.name,
       slug: detail.slug,
       url: attraction.href,
-      status: detail.status,
+      // The resolved status wins: it's the park-aware one (a closed park closes its rides) and
+      // the one the live overlay refreshes, where `detail.status` is the attraction endpoint's
+      // own — which lags the queue rows.
+      status: attraction.status ?? detail.status,
       crowdLevel,
       queues: (detail.queues ?? []).map((q) => ({
         queueType: q.queueType,
@@ -84,11 +87,19 @@ export function buildAttractionPayload(
     };
   }
 
+  // No detail resolved (the API call failed at build time). The live overlay still fills in
+  // status and wait, so carry those rather than rendering a status-less card.
   return {
     id: attraction.attractionSlug,
     name: attraction.attractionName,
     slug: attraction.attractionSlug,
     url: attraction.href,
+    status: attraction.status,
+    crowdLevel:
+      attraction.crowdLevel ??
+      (typeof attraction.currentWaitTime === 'number'
+        ? waitTimeCrowdTier(attraction.currentWaitTime)
+        : undefined),
     latitude: null,
     longitude: null,
     park: parkContext,

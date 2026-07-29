@@ -26,8 +26,11 @@ export interface LiveParkFields {
  * instances on a country page (one per city), so a country page makes a SINGLE live call no
  * matter how many cities it lists. Mirrors the `useLiveParkData` contract: client-only, refetch
  * on mount (the SSR shell is status-free), 5-min poll, refetch on focus/reconnect.
+ *
+ * `enabled` lets a caller keep the hook call unconditional while it has no region yet — the blog's
+ * park references call it for entries the geo lookup failed to resolve.
  */
-export function useRegionParks(continent: string, country: string) {
+export function useRegionParks(continent: string, country: string, enabled = true) {
   // Plain object (not a Map) so React Query's structural sharing keeps the result identity
   // stable across polls when nothing changed — a Map would get a new identity every 5-min
   // poll and re-render every consuming card grid for no reason.
@@ -56,7 +59,7 @@ export function useRegionParks(continent: string, country: string) {
       return map;
     },
     // Run only on the client: the SSR/prerendered shell renders status-free cards.
-    enabled: typeof window !== 'undefined',
+    enabled: enabled && !!continent && !!country && typeof window !== 'undefined',
     staleTime: 5 * 60_000,
     gcTime: 10 * 60_000,
     refetchOnWindowFocus: true,

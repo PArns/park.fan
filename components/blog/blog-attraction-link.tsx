@@ -4,13 +4,13 @@ import { Clock } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
-import { AttractionCard } from '@/components/parks/attraction-card';
+import { BlogAttractionCardLive } from './blog-attraction-card-live';
 import { Badge } from '@/components/ui/badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { isNotOperating, waitTimeBadgeClass } from '@/lib/blog/live-display';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { cn } from '@/lib/utils';
-import { buildAttractionPayload } from '@/lib/blog/attraction-payload';
+import { useLiveBlogRide } from '@/lib/blog/use-blog-live';
 import type { ResolvedAttraction, ResolvedPark } from '@/lib/blog/park-resolver';
 
 /** Compact sizing so the live badges sit nicely inside running prose. */
@@ -39,8 +39,8 @@ interface BlogAttractionLinkProps {
  * crowd level.
  */
 export function BlogAttractionLink({
-  attraction,
-  park,
+  attraction: resolvedAttraction,
+  park: resolvedPark,
   fallbackLabel,
   refKey: _refKey,
   options,
@@ -50,6 +50,11 @@ export function BlogAttractionLink({
 }: BlogAttractionLinkProps) {
   const tCommon = useTranslations('common');
   const tGeo = useTranslations('geo');
+  // The post is statically generated, so the resolved pair is a build-time snapshot — every ride
+  // in it would read "closed" for as long as the park happened to be shut when the post was
+  // built. Refresh both in the browser (see `useLiveBlogRide`); the hover card fetches the fuller
+  // payload itself once it opens.
+  const { park, attraction } = useLiveBlogRide(resolvedPark, resolvedAttraction);
   const label = children ?? attraction?.attractionName ?? fallbackLabel;
   const bare = options?.has('bare') ?? false;
 
@@ -70,10 +75,6 @@ export function BlogAttractionLink({
       {attraction.currentWaitTime} {tCommon('min')}
     </Badge>
   ) : null;
-
-  // Prefer the live data resolved on the server; falls back to a minimal
-  // shape when the API call failed so the hover still renders.
-  const attractionPayload = buildAttractionPayload(park, attraction);
 
   return (
     <HoverCard openDelay={120} closeDelay={80}>
@@ -103,16 +104,13 @@ export function BlogAttractionLink({
            uses the same sm:min-h-[220px] photo spacer trick to open the 1fr
            middle row; the minmax floor keeps the image area open even when
            there is no background image to trigger the spacer's min-h. */}
-        <div className="grid [grid-template-rows:auto_0px_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]">
-          <AttractionCard
-            attraction={attractionPayload}
-            parkPath={park.href}
-            parkStatus={park.status}
-            backgroundImage={attractionBackgroundImage ?? parkBackgroundImage ?? undefined}
-            showParkName
-            timezone={park.timezone}
-          />
-        </div>
+        <BlogAttractionCardLive
+          park={park}
+          attraction={attraction}
+          attractionBackgroundImage={attractionBackgroundImage}
+          parkBackgroundImage={parkBackgroundImage}
+          className="grid [grid-template-rows:auto_0px_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]"
+        />
       </HoverCardContent>
     </HoverCard>
   );

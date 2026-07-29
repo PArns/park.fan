@@ -4,6 +4,73 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: blog posts stop reporting a park and its rides as closed
+
+The Phantasialand guide showed the park as open and **all twelve** coasters it
+names as "Geschlossen", in the middle of an operating day.
+
+Blog posts are fully statically generated, and every park/ride reference in
+them was resolved **once, at build time**. Whatever the park's status happened
+to be during that build — the middle of the night, for a post built overnight —
+is what every reader saw afterwards, indefinitely. Nothing refreshed it.
+
+- **The browser now lays live values over the build-time snapshot**, the same
+  shell + client-overlay model the homepage, hub pages and featured cards
+  already use. The prerendered HTML is unchanged, so SEO and no-JS readers
+  still get a fully rendered card.
+- **Batched per park, not per reference.** Park status/crowd/wait/hours come
+  from the existing `useRegionParks` region call; ride status and waits from a
+  new lean whole-park snapshot (`/api/parks/.../wait-times`, ~9 KB against
+  ~95 KB for the full park payload). A post naming a dozen rides in one park
+  costs **one** extra request.
+- **The heavier per-ride payload stays lazy.** Today's average/peak and the
+  card sparkline need the full attraction detail, so it's fetched only once a
+  spotlight card scrolls into view or a hover preview opens — never on load.
+- **One source for "now".** Status and wait always come from the 5-min batch,
+  so a card's badge can no longer disagree with the inline badge beside it in
+  the prose. The "closed park ⇒ closed rides" rule is applied on both sides.
+
+**And the crash that would have hidden all of it on long posts.**
+`/de/blog/die-kunst-des-wartens` was throwing
+`Primitive.button failed to slot onto its children` and dropping its whole
+client tree into the error boundary — so no hook on that post ran at all, live
+overlay included.
+
+`GlossaryInjectTerm` was a **server** component wrapping `next/link` in
+`<TooltipTrigger asChild>`. Rendered from the server, the link reaches Radix's
+`Slot` as a **lazy client reference**, and `Slot` only unwraps a lazy child
+while its payload is still _pending_. Once any earlier `next/link` on the page
+has resolved that chunk, the payload is settled, `Slot` sees a non-element and
+throws. That's why it looked content-dependent: long posts resolve the chunk
+before the first tooltip renders, short ones don't — halving the post made it
+disappear, which is what sent the first search down the wrong path.
+
+- `GlossaryInjectTerm` is now a client component, like its sibling
+  `GlossaryTermLink` already was. Same markup, no lazy wrapper reaches the Slot,
+  and nothing new ships — the tooltip and the link were already client code.
+- **Every other server component with the same latent shape** — a `Link` slotted
+  into `<Button asChild>` — was converted too: `BlogSectionHeader`,
+  `GlossaryTermDetail`, `AnnounceSection`, the 404 page and the homepage hero.
+  None had been observed to fire, but they were all one chunk-resolution order
+  away from it.
+- New **`buttonLinkProps`** (`components/ui/button.tsx`) is the shared way to
+  render a button-shaped link: it returns exactly the props `<Button>` applies
+  (`data-slot` / `data-variant` / `data-size` + the `buttonVariants` class
+  string), so the rendered markup is byte-identical with no `Slot` in play.
+  Verified by diffing the rendered `data-slot="button"` elements on `/de`,
+  `/de/glossar/…` and `/de/blog/tag/…` before and after — same count, same
+  classes, same attributes.
+
+> **Rule:** never put a client-component element inside an `asChild` trigger
+> from a **server** component. Either move the wrapper into a client component,
+> or use `buttonLinkProps` / apply the variant classes directly. Slotting a
+> _host_ element (`<a>`, `<button>`) from the server stays fine — those are
+> never lazy.
+
+See [caching-strategy](architecture/caching-strategy.md#minimizing-isr-writes-jun-2026).
+
+---
+
 ## Unreleased – feat: a ride's measurements, in the visitor's units
 
 The ride page can now say how fast, how long, how tall and how steep — the

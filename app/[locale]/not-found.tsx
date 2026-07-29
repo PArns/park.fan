@@ -1,7 +1,7 @@
 import { getLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { GlassCard } from '@/components/common/glass-card';
-import { Button } from '@/components/ui/button';
+import { buttonLinkProps } from '@/components/ui/button';
 
 // Locale-scoped 404: renders inside the [locale] layout, so visitors keep the
 // full site chrome (header, search, footer) and crawlers get internal links
@@ -18,12 +18,13 @@ export default async function LocaleNotFound() {
         <h1 className="mt-4 text-2xl font-bold">{t('title')}</h1>
         <p className="text-muted-foreground mt-3">{t('description')}</p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <Button asChild>
-            <Link href="/">{t('goHome')}</Link>
-          </Button>
-          <Button asChild variant="outline">
-            <Link href="/parks">{t('browseParks')}</Link>
-          </Button>
+          {/* buttonLinkProps, not `<Button asChild>` — server component, see conventions §14. */}
+          <Link href="/" {...buttonLinkProps()}>
+            {t('goHome')}
+          </Link>
+          <Link href="/parks" {...buttonLinkProps({ variant: 'outline' })}>
+            {t('browseParks')}
+          </Link>
         </div>
       </GlassCard>
     </div>

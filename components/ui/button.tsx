@@ -57,4 +57,30 @@ function Button({
   );
 }
 
-export { Button, buttonVariants };
+/**
+ * The exact presentation props `<Button>` applies, for a link that should *look* like a button.
+ *
+ * Use this instead of `<Button asChild><Link …/></Button>` in **server** components: `asChild`
+ * hands the child to Radix's `Slot`, and a client component like `next/link` arrives there as a
+ * lazy client reference rather than an element — which throws
+ * `failed to slot onto its children` as soon as that chunk is already resolved. See
+ * `docs/development/conventions.md` §14. Spreading these props needs no `Slot` at all, and keeps
+ * the markup byte-identical to what `<Button>` would have rendered.
+ *
+ * Client components can keep using `<Button asChild>` — there is no lazy wrapper inside a single
+ * client boundary.
+ */
+function buttonLinkProps({
+  variant = 'default',
+  size = 'default',
+  className,
+}: VariantProps<typeof buttonVariants> & { className?: string } = {}) {
+  return {
+    'data-slot': 'button',
+    'data-variant': variant,
+    'data-size': size,
+    className: cn(buttonVariants({ variant, size, className })),
+  };
+}
+
+export { Button, buttonVariants, buttonLinkProps };
