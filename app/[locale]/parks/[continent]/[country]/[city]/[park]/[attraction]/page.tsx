@@ -265,8 +265,9 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   // OG card is only a fallback for the JSON-LD image when neither ride nor park has a photo.
   const ogImageUrl = getOgImageUrl([locale, continent, country, city, parkSlug, attractionSlug]);
 
-  // Mirrors the `hasAny` guard inside AttractionMetaBadges (non-compact). Without
-  // it, a ride with neither metadata nor a profile renders a bare divider line.
+  // Does the facts band have anything to show? Without this a ride with neither
+  // metadata nor a profile renders a bare divider line. It covers the RCDB link
+  // too, which is why it is not simply AttractionMetaBadges' own `hasAny`.
   const hasMetaBadges =
     attraction.minimumHeight != null ||
     attraction.maximumHeight != null ||
@@ -365,8 +366,8 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                   an outbound reference gave all four the same weight.
 
                   The order inside it is the point: what decides whether you may ride
-                  (height), then what the ride does (inversions), then who built it and
-                  when, then the way out to RCDB. */}
+                  (height), then what the ride does (inversions), then what kind of ride
+                  it is, then who built it and when, then the way out to RCDB. */}
               {(hasMetaBadges || attraction.rideProfile) && (
                 <div className="border-border/50 mt-5 flex flex-wrap items-center gap-2 border-t pt-4">
                   <AttractionMetaBadges
