@@ -1382,6 +1382,7 @@
     "rideProfile": {
       "title": "Baanprofiel",
       "typeLabel": "Type attractie",
+      "multiLaunchCoaster": "Multi-Launch Coaster",
       "elementsLabel": "Baanelementen",
       "elementsHint": "In rijvolgorde – tik op een figuur om hem in 3-D te zien.",
       "has3d": "3-D",
@@ -1390,7 +1391,7 @@
       "inversions": "Inversies",
       "openGlossary": "Naslaan in het glossarium",
       "viewerTitle": "3D-weergave: {name}",
-      "figureCount": "{count, plural, one {# figuur} other {# figuren}}"
+      "figureCount": "{count, plural, one {# baanelement} other {# baanelementen}}"
     }
   }
 }

@@ -1382,6 +1382,7 @@
     "rideProfile": {
       "title": "Bahnprofil",
       "typeLabel": "Bahntyp",
+      "multiLaunchCoaster": "Multi-Launch Coaster",
       "elementsLabel": "Fahrfiguren",
       "elementsHint": "In Fahrreihenfolge – tippe eine Figur an, um sie in 3-D zu sehen.",
       "has3d": "3-D",
@@ -1390,7 +1391,7 @@
       "inversions": "Inversionen",
       "openGlossary": "Im Glossar nachlesen",
       "viewerTitle": "3-D-Ansicht: {name}",
-      "figureCount": "{count, plural, one {# Figur} other {# Figuren}}"
+      "figureCount": "{count, plural, one {# Fahrfigur} other {# Fahrfiguren}}"
     }
   }
 }

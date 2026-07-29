@@ -1382,6 +1382,7 @@
     "rideProfile": {
       "title": "Ride profile",
       "typeLabel": "Ride type",
+      "multiLaunchCoaster": "Multi-Launch Coaster",
       "elementsLabel": "Track elements",
       "elementsHint": "In ride order — tap a figure to see it in 3-D.",
       "has3d": "3-D",
@@ -1390,7 +1391,7 @@
       "inversions": "Inversions",
       "openGlossary": "Read up in the glossary",
       "viewerTitle": "3-D view: {name}",
-      "figureCount": "{count, plural, one {# figure} other {# figures}}"
+      "figureCount": "{count, plural, one {# track element} other {# track elements}}"
     }
   }
 }

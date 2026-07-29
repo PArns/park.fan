@@ -1382,6 +1382,7 @@
     "rideProfile": {
       "title": "Profilo della giostra",
       "typeLabel": "Tipo di attrazione",
+      "multiLaunchCoaster": "Multi-Launch Coaster",
       "elementsLabel": "Elementi del tracciato",
       "elementsHint": "Nell'ordine di percorrenza: tocca una figura per vederla in 3-D.",
       "has3d": "3-D",
@@ -1390,7 +1391,7 @@
       "inversions": "Inversioni",
       "openGlossary": "Consulta il glossario",
       "viewerTitle": "Vista 3-D: {name}",
-      "figureCount": "{count, plural, one {# figura} other {# figure}}"
+      "figureCount": "{count, plural, one {# elemento del tracciato} other {# elementi del tracciato}}"
     }
   }
 }

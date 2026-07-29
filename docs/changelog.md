@@ -18,9 +18,20 @@ readable if you already knew what each one meant, a guess otherwise, and the
   out of `AttractionMetaBadges` (the rider-restriction set shared with the
   attraction cards) into its own `RcdbBadge`.
 - **Order follows what you need to know:** the height limit that decides
-  whether you may ride at all, then what the ride does (inversions), then who
-  built it and when, then the outbound reference. The "N figures" jump link
-  stays pinned right.
+  whether you may ride at all, then what the ride does (inversions), then what
+  kind of ride it is, then who built it and when, then the outbound reference.
+  The jump link stays pinned right.
+- **The ride type is in the header now**, linked into the glossary like the
+  type chips in the profile below — and a launch coaster with **more than one
+  launch is called a Multi-Launch Coaster**. Nothing in the seed carries that
+  distinction, but the layout does: `resolveRideProfile` counts the `launch`
+  and `swing-launch` figures. It does that centrally so the header and the
+  profile section can never disagree, and it counts element **ids**, not the
+  `launch` element _kind_ — that kind groups lift hills and first drops too, so
+  counting it would call every coaster with a lift and a drop a multi-launch.
+- **"9 figures" is now "9 track elements"** (`Fahrfiguren`, `baanelementen`,
+  `éléments du tracé` …), matching the label the profile section already used.
+  In English "9 figures" reads as a nine-digit number.
 - **The glossary link moved above the 3-D player**, joining the figure's name
   and definition — stranded under a five-second animation it was a footnote to
   a video nobody had finished.

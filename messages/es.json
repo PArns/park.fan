@@ -1382,6 +1382,7 @@
     "rideProfile": {
       "title": "Perfil de la atracción",
       "typeLabel": "Tipo de atracción",
+      "multiLaunchCoaster": "Multi-Launch Coaster",
       "elementsLabel": "Elementos del trazado",
       "elementsHint": "En orden de recorrido: toca una figura para verla en 3-D.",
       "has3d": "3-D",
@@ -1390,7 +1391,7 @@
       "inversions": "Inversiones",
       "openGlossary": "Consultar en el glosario",
       "viewerTitle": "Vista 3-D: {name}",
-      "figureCount": "{count, plural, one {# figura} other {# figuras}}"
+      "figureCount": "{count, plural, one {# elemento del trazado} other {# elementos del trazado}}"
     }
   }
 }

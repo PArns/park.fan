@@ -1,6 +1,10 @@
 import type { ReactNode } from 'react';
 import { getTranslations } from 'next-intl/server';
-import { Wrench, CalendarDays, RefreshCcw, ArrowDown } from 'lucide-react';
+// Glossary URLs carry their own locale segment (`/de/glossar/launch-coaster`)
+// and are served by a next.config rewrite, so the i18n <Link> would prefix the
+// locale twice. Plain next/link, prefetch off, matching the app-wide default.
+import Link from 'next/link';
+import { Wrench, CalendarDays, RefreshCcw, ArrowDown, RollerCoaster } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { resolveRideProfile } from '@/lib/glossary/ride-profile';
 import type { Locale } from '@/i18n/config';
@@ -40,11 +44,16 @@ export async function RideProfileTeaser({ profile, locale, children }: RideProfi
   const t = await getTranslations('attraction.rideProfile');
   // Resolved, NOT `profile.elements.length`: ids this app has no glossary term
   // for are dropped downstream, so the raw length would promise nine figures
-  // where the rail renders seven.
-  const { elements } = await resolveRideProfile(profile, locale);
+  // where the rail renders seven. `types` comes from the same call so the
+  // header cannot call a ride a multi-launch while the profile below does not.
+  const { elements, types } = await resolveRideProfile(profile, locale);
+  const primaryType = types[0] ?? null;
 
   const hasFacts =
-    Boolean(profile.manufacturer) || profile.openedYear !== null || profile.inversions !== null;
+    Boolean(profile.manufacturer) ||
+    profile.openedYear !== null ||
+    profile.inversions !== null ||
+    primaryType !== null;
   if (!hasFacts && elements.length === 0) return <>{children}</>;
 
   return (
@@ -53,6 +62,18 @@ export async function RideProfileTeaser({ profile, locale, children }: RideProfi
         <Badge variant="outline" className="hidden gap-1 tabular-nums sm:inline-flex">
           <RefreshCcw className="h-3 w-3 shrink-0" aria-hidden="true" />
           {t('inversions')}: {profile.inversions}
+        </Badge>
+      )}
+      {/* What kind of ride this is, linked into the glossary like the type chips
+          in the profile below. Only the first: the seed lists a ride's types
+          from most to least identifying ("Launch Coaster, Terrain Coaster,
+          steel coaster"), and the rest are one tap away. */}
+      {primaryType && (
+        <Badge asChild variant="outline" className="gap-1">
+          <Link href={primaryType.href} prefetch={false}>
+            <RollerCoaster className="h-3 w-3 shrink-0" aria-hidden="true" />
+            {primaryType.name}
+          </Link>
         </Badge>
       )}
       {profile.manufacturer && (

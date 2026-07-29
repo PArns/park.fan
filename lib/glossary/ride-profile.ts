@@ -1,9 +1,24 @@
+import { getTranslations } from 'next-intl/server';
 import { getGlossaryTerms } from '@/lib/glossary/translations';
 import { buildGlossaryTermHref } from '@/lib/glossary/segments';
 import { hasCoasterElement } from '@/lib/three/coaster/elements';
 import { getElementKind, type ElementKind } from './element-kinds';
 import type { Locale } from '@/i18n/config';
 import type { RideProfile } from '@/lib/api/types';
+
+/**
+ * Figures that are a powered acceleration of the train.
+ *
+ * The `launch` element KIND is not the same question: it groups everything that
+ * hands the train its energy, lift hills and first drops included, because that
+ * is what the rail needs to colour. A lift hill is not a launch, so counting
+ * kinds here would call every coaster with a lift and a drop a multi-launch.
+ */
+const LAUNCH_ELEMENT_IDS = new Set(['launch', 'swing-launch']);
+
+/** A launch coaster with more than one launch is a multi-launch coaster. */
+const MULTI_LAUNCH_MIN = 2;
+const LAUNCH_COASTER_TERM_ID = 'launch-coaster';
 
 export interface ResolvedElement {
   id: string;
@@ -65,13 +80,22 @@ export async function resolveRideProfile(
     });
   }
 
+  // "Launch Coaster" undersells a ride that launches you twice, and the seed
+  // does not carry the distinction — but the layout does, so read it off the
+  // figures rather than asking curators to keep a second field in sync. The
+  // term it links to stays `launch-coaster`: the glossary explains launches,
+  // and multi-launch is a count of them, not a different piece of engineering.
+  const launchCount = elements.filter((element) => LAUNCH_ELEMENT_IDS.has(element.id)).length;
+  const isMultiLaunch = launchCount >= MULTI_LAUNCH_MIN;
+  const t = await getTranslations({ locale, namespace: 'attraction.rideProfile' });
+
   const types: ResolvedTypeTerm[] = [];
   for (const id of profile.types) {
     const term = byId.get(id);
     if (!term) continue;
     types.push({
       id,
-      name: term.name,
+      name: isMultiLaunch && id === LAUNCH_COASTER_TERM_ID ? t('multiLaunchCoaster') : term.name,
       href: buildGlossaryTermHref(locale, term.slug),
     });
   }
