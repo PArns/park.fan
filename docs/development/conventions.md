@@ -155,10 +155,11 @@ content cut in half looks perfectly fine.
 //   — see components/glossary/glossary-inject-term.tsx
 ```
 
-For the **button-shaped link** case specifically — `<Button asChild><Link/></Button>`, by far the
-most common instance — use **`buttonLinkProps`** from `components/ui/button.tsx`. It returns
-exactly the props `<Button>` would have applied (`data-slot` / `data-variant` / `data-size` + the
-`buttonVariants` class string), so the markup stays byte-identical with no `Slot` in play:
+For the two common shapes — a link that should look like a **button** or a **badge** — use
+**`buttonLinkProps`** (`components/ui/button.tsx`) or **`badgeLinkProps`**
+(`components/ui/badge.tsx`). Each returns exactly the props its component would have applied
+(`data-slot` / `data-variant` / `data-size` + the variant class string), so the markup stays
+byte-identical with no `Slot` in play:
 
 ```tsx
 // ✗ server component
@@ -176,10 +177,10 @@ Two things stay fine as they are:
 
 - **Client components** can keep `asChild` — inside one client boundary there is no lazy wrapper.
 - Slotting a **host** element (`<a>`, `<button>`, `<span>`) from a server component, e.g.
-  `<Badge asChild><a href=…>` in `attraction-meta-badges.tsx`. Host elements are never lazy. The
-  same goes for a component that is itself server-executable (no `'use client'`), such as `Button`
-  inside a `TooltipTrigger` on the `/ui` showcase page — it renders to a host `<button>` before the
-  Slot ever sees it.
+  `<Badge asChild><a href=…>` in `rcdb-badge.tsx`. Host elements are never lazy. The same goes for
+  a component that is itself server-executable (no `'use client'`), such as `Button` inside a
+  `TooltipTrigger` on the `/ui` showcase page — it renders to a host `<button>` before the Slot
+  ever sees it.
 
 ---
 
