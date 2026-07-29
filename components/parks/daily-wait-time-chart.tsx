@@ -2,8 +2,9 @@
 
 import { useMemo, useRef, useEffect } from 'react';
 import { useLocale } from 'next-intl';
-import { Clock, Sparkles } from 'lucide-react';
+import { ChartColumn, Clock, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { SectionHeading } from '@/components/common/section-heading';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
@@ -177,15 +178,21 @@ export function DailyWaitTimeChart({
     // Bare section (no Card) — rendered inside the unified live card on the attraction page.
     <div>
       {/* Title + KI-Prognose pill (links to the AI-forecast glossary term) */}
-      <div className="mb-1.5 flex flex-wrap items-center gap-x-2 gap-y-1">
-        <h2 className="text-xl font-semibold">{translations.title}</h2>
-        <GlossaryTermLink termId="ai-forecast">
-          <Badge className="border-primary/20 bg-primary/10 text-primary gap-1">
-            <Sparkles className="h-3 w-3" />
-            {translations.aiBadge}
-          </Badge>
-        </GlossaryTermLink>
-      </div>
+      <SectionHeading
+        icon={ChartColumn}
+        title={translations.title}
+        badge={
+          <GlossaryTermLink termId="ai-forecast">
+            <Badge className="border-primary/20 bg-primary/10 text-primary gap-1">
+              <Sparkles className="h-3 w-3" />
+              {translations.aiBadge}
+            </Badge>
+          </GlossaryTermLink>
+        }
+        variant="plain"
+        as="h3"
+        className="mb-1.5"
+      />
 
       {/* Explainer: past bars are real measurements, future bars are AI predictions */}
       <p className="text-muted-foreground mb-3 text-xs sm:text-sm">{translations.aiExplainer}</p>

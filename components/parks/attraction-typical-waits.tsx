@@ -2,6 +2,7 @@
 
 import { useLocale, useTranslations } from 'next-intl';
 import { Hourglass } from 'lucide-react';
+import { SectionHeading } from '@/components/common/section-heading';
 import { cn } from '@/lib/utils';
 import type { DayOfWeekWait, TypicalWaitBucket, TypicalWaits } from '@/lib/api/types';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
@@ -54,13 +55,15 @@ export function AttractionTypicalWaits({ typicalWaits, className }: AttractionTy
       className={cn('bg-card/60 rounded-xl border p-5 backdrop-blur-sm', className)}
       aria-label={t('title')}
     >
-      <div className="mb-4 flex items-center gap-2">
-        <Hourglass className="text-primary h-4 w-4 shrink-0" aria-hidden="true" />
-        <h3 className="text-sm font-semibold">{t('title')}</h3>
-        <span className="text-muted-foreground ml-auto text-xs">
-          {t('basedOn', { days: windowDays })}
-        </span>
-      </div>
+      {/* Same card title as its neighbour <RopeDropCard>: the two sit side by side
+          in the "plan your visit" chapter and used to disagree by a font size. */}
+      <SectionHeading
+        icon={Hourglass}
+        title={t('title')}
+        hint={t('basedOn', { days: windowDays })}
+        variant="plain"
+        as="h3"
+      />
 
       {/* Weekday vs weekend summary */}
       <div className="mb-5 grid grid-cols-2 gap-3">

@@ -273,7 +273,9 @@ export function LiveAttractionData({
       {/* Other Queue Types */}
       {attraction.queues && attraction.queues.length > 1 && (
         <section className="mb-8">
-          <SectionHeading icon={Layers} title={t('otherQueues')} />
+          {/* Sub-section of the live chapter, not a chapter of its own — plain h3
+              so the outline reads live wait time › other queues. */}
+          <SectionHeading icon={Layers} title={t('otherQueues')} variant="plain" as="h3" />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {attraction.queues
               .filter((q) => q.queueType !== 'STANDBY')

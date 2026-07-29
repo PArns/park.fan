@@ -57,17 +57,21 @@ export function AttractionMetaBadges({
           {t('mayGetWet')}
         </Badge>
       )}
+      {/* A Badge like its neighbours, not bare grey text: sitting between outlined
+          badges the plain link read as a disabled label rather than a way out to
+          the ride's technical record. */}
       {!compact && rcdbId != null && (
-        <a
-          href={`https://rcdb.com/${rcdbId}.htm`}
-          target="_blank"
-          rel="noopener noreferrer"
-          title={t('rcdbTitle')}
-          className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-xs font-medium transition-colors"
-        >
-          RCDB
-          <ExternalLink className="h-3 w-3" aria-hidden="true" />
-        </a>
+        <Badge asChild variant="outline" className="gap-1">
+          <a
+            href={`https://rcdb.com/${rcdbId}.htm`}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={t('rcdbTitle')}
+          >
+            RCDB
+            <ExternalLink className="h-3 w-3 shrink-0" aria-hidden="true" />
+          </a>
+        </Badge>
       )}
     </>
   );

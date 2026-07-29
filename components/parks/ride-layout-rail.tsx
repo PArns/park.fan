@@ -99,7 +99,10 @@ export function RideLayoutRail({ elements, playerLabels, labels }: RideLayoutRai
                row instead of huddling on the left. `shrink-0` with a 6rem basis
                keeps the labels readable — below that the row overflows and
                scrolls, which is what happens on a phone. */
-            <li key={`${element.id}-${index}`} className="relative shrink-0 grow basis-24 snap-start">
+            <li
+              key={`${element.id}-${index}`}
+              className="relative shrink-0 grow basis-24 snap-start"
+            >
               {/* The connecting track, behind the dot. Not before the first figure. */}
               {index > 0 && (
                 <span
@@ -149,6 +152,15 @@ export function RideLayoutRail({ elements, playerLabels, labels }: RideLayoutRai
 
       {active && (
         <div className="border-border/60 bg-background/40 space-y-3 rounded-xl border p-4">
+          {/* Name and definition come FIRST: you tap a figure to find out what it is,
+              and reading that after watching the animation is the wrong way round —
+              you spend the animation guessing. Now the caption sets up the scene. */}
+          <div>
+            <h4 className={cn('text-sm font-semibold', KIND_CLASS[active.kind].text)}>
+              {active.name}
+            </h4>
+            <p className="text-muted-foreground mt-1 text-sm">{active.shortDefinition}</p>
+          </div>
           {active.playerElement && (
             // Remounted per figure via `key`: the scene is built from the
             // element id, and a fresh mount is the honest way to swap it.
@@ -160,12 +172,6 @@ export function RideLayoutRail({ elements, playerLabels, labels }: RideLayoutRai
               />
             </div>
           )}
-          <div>
-            <h4 className={cn('text-sm font-semibold', KIND_CLASS[active.kind].text)}>
-              {active.name}
-            </h4>
-            <p className="text-muted-foreground mt-1 text-sm">{active.shortDefinition}</p>
-          </div>
           <Link
             href={active.href}
             prefetch={false}

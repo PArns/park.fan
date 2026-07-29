@@ -54,7 +54,9 @@ export async function RideProfileSection({ profile, locale }: RideProfileSection
 
   return (
     <section className="space-y-4">
-      <SectionHeading icon={Boxes} title={t('title')} />
+      {/* Frosted like every chapter on this page — the heading sits directly on the
+          ride's hero photo, where bare text is not reliably readable. */}
+      <SectionHeading icon={Boxes} title={t('title')} frosted />
 
       {/* `strong` rather than the default `medium`: this card sits over the
           attraction's hero photo, and /60 is not reliably readable over the
@@ -149,7 +151,10 @@ export async function RideProfileSection({ profile, locale }: RideProfileSection
                 // cross the RSC boundary. Repeated figures collapse to the same
                 // key, which is exactly right — the title only depends on the name.
                 viewerTitles: Object.fromEntries(
-                  elements.map((element) => [element.name, t('viewerTitle', { name: element.name })])
+                  elements.map((element) => [
+                    element.name,
+                    t('viewerTitle', { name: element.name }),
+                  ])
                 ),
               }}
             />

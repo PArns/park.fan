@@ -797,6 +797,7 @@
       "min": "min",
       "peak": "Record {value} min · {date}"
     },
+    "sectionLiveNow": "Wait time right now",
     "sectionPlanVisit": "Plan the best time to visit",
     "meta": {
       "minHeight": "From {cm} cm",

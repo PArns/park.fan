@@ -6,6 +6,7 @@ import { de, enUS, es, fr, it, nl, type Locale } from 'date-fns/locale';
 import { Ban, PartyPopper, Backpack, Calendar } from 'lucide-react';
 import type { AttractionHistoryDay, ScheduleItem } from '@/lib/api/types';
 import { Card } from '@/components/ui/card';
+import { SectionHeading } from '@/components/common/section-heading';
 import { AttractionHistoryDay as HistoryDay, DayDataProps } from './attraction-history-day';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
 
@@ -35,7 +36,13 @@ export function AttractionHistoryGrid({ attraction }: AttractionHistoryGridProps
     return (
       <Card className="relative p-6">
         <div className="space-y-4">
-          <h2 className="text-2xl font-bold">{t('historyCalendar')}</h2>
+          <SectionHeading
+            icon={Calendar}
+            title={t('historyCalendar')}
+            variant="plain"
+            as="h3"
+            className="mb-0"
+          />
           <p className="text-muted-foreground">{t('noHistoryData')}</p>
         </div>
       </Card>
@@ -118,7 +125,15 @@ export function AttractionHistoryGrid({ attraction }: AttractionHistoryGridProps
     <Card className="relative p-4 md:p-6">
       <div className="space-y-4">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <h2 className="text-2xl font-bold">{t('historyCalendar')}</h2>
+          {/* Card title inside the "plan your visit" chapter — icon + h3 like every
+              other card title on the page (it was the one bare heading left). */}
+          <SectionHeading
+            icon={Calendar}
+            title={t('historyCalendar')}
+            variant="plain"
+            as="h3"
+            className="mb-0"
+          />
 
           {/* Legend */}
           <div className="flex flex-wrap items-center gap-2 text-sm">

@@ -33,7 +33,12 @@ export async function AttractionFAQSection({ attraction, park }: AttractionFAQSe
 
   return (
     <section>
-      <SectionHeading icon={HelpCircle} title={t('title', { attraction: attractionName })} />
+      {/* Frosted like the page's other chapters — it sits on the ride's hero photo. */}
+      <SectionHeading
+        icon={HelpCircle}
+        title={t('title', { attraction: attractionName })}
+        frosted
+      />
       <div className="space-y-3">
         {faqs.map((faq, index) => {
           const Icon = ICON_MAP[faq.iconName];

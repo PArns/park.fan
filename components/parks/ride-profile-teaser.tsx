@@ -35,14 +35,20 @@ export async function RideProfileTeaser({ profile, locale }: RideProfileTeaserPr
 
   return (
     <>
+      {/* `title` on the icon-only facts: a wrench or a bare year next to a height
+          limit is a guess until you hover it. */}
       {profile.manufacturer && (
-        <Badge variant="outline" className="gap-1">
+        <Badge variant="outline" className="gap-1" title={t('manufacturer')}>
           <Wrench className="h-3 w-3 shrink-0" aria-hidden="true" />
           {profile.manufacturer}
         </Badge>
       )}
       {profile.openedYear !== null && (
-        <Badge variant="outline" className="hidden gap-1 tabular-nums sm:inline-flex">
+        <Badge
+          variant="outline"
+          className="hidden gap-1 tabular-nums sm:inline-flex"
+          title={t('opened')}
+        >
           <CalendarDays className="h-3 w-3 shrink-0" aria-hidden="true" />
           {profile.openedYear}
         </Badge>
