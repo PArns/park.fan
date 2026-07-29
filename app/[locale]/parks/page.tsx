@@ -2,6 +2,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { translateContinent } from '@/lib/i18n/helpers';
 import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
+import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { getContinents } from '@/lib/api/discovery';
 import { getGeoLiveStats } from '@/lib/api/analytics';
 import { catchNonFatal } from '@/lib/api/client';
@@ -19,6 +20,7 @@ interface ParksPageProps {
 
 export async function generateMetadata({ params }: ParksPageProps): Promise<Metadata> {
   const { locale } = await params;
+  if (!isServableRoute(locale)) return {};
   const t = await getTranslations({ locale, namespace: 'seo.parks' });
 
   const ogImageUrl = getOgImageUrl([locale, 'parks']);
@@ -45,6 +47,7 @@ export async function generateMetadata({ params }: ParksPageProps): Promise<Meta
 
 export default async function ParksPage({ params }: ParksPageProps) {
   const { locale } = await params;
+  assertServableRoute(locale);
   setRequestLocale(locale);
 
   const t = await getTranslations('geo');

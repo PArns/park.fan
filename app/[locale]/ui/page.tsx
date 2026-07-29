@@ -113,6 +113,7 @@ import type {
   AttractionHistoryDay as AttractionHistoryDayType,
   ScheduleItem,
 } from '@/lib/api/types';
+import { assertServableRoute } from '@/lib/utils/route-guards';
 
 // ============================================================================
 // Layout helpers
@@ -852,6 +853,7 @@ interface UiPageProps {
 
 export default async function UiStyleGuidePage({ params }: UiPageProps) {
   const { locale } = await params;
+  assertServableRoute(locale);
   setRequestLocale(locale);
 
   // Dev-only component gallery. Its demo client components read the current time, so the whole

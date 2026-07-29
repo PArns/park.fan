@@ -3,6 +3,7 @@ import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
 import { buildOpenGraphMetadata, fitWithin, MAX_TITLE_LENGTH } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound } from 'next/navigation';
+import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { MapPin } from 'lucide-react';
 import { LiveParkGrid } from '@/components/parks/live-park-grid';
 import { getParkBackgroundImage, getParkImageSet } from '@/lib/utils/park-assets';
@@ -46,6 +47,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: CountryPageProps): Promise<Metadata> {
   const { locale, continent, country } = await params;
+  if (!isServableRoute(locale, continent, country)) return {};
   const t = await getTranslations({ locale, namespace: 'seo.country' });
   const tGeo = await getTranslations({ locale, namespace: 'geo' });
 
@@ -83,6 +85,7 @@ export async function generateMetadata({ params }: CountryPageProps): Promise<Me
 
 export default async function CountryPage({ params }: CountryPageProps) {
   const { locale, continent, country } = await params;
+  assertServableRoute(locale, continent, country);
   setRequestLocale(locale);
 
   const t = await getTranslations('geo');

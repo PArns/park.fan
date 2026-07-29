@@ -13,6 +13,7 @@ import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import type { GlossaryCategory, GlossaryTermWithEnName } from '@/lib/glossary/types';
 import type { Metadata } from 'next';
 import type { Locale } from '@/i18n/config';
+import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 
 interface GlossaryPageProps {
   params: Promise<{ locale: string }>;
@@ -24,6 +25,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: GlossaryPageProps): Promise<Metadata> {
   const { locale } = await params;
+  if (!isServableRoute(locale)) return {};
   const t = await getTranslations({ locale, namespace: 'glossary' });
   const segment = GLOSSARY_SEGMENTS[locale as Locale] ?? 'glossary';
   const url = `${SITE_URL}/${locale}/${segment}`;
@@ -75,6 +77,7 @@ const CATEGORY_ORDER: GlossaryCategory[] = [
 
 export default async function GlossaryPage({ params }: GlossaryPageProps) {
   const { locale } = await params;
+  assertServableRoute(locale);
   setRequestLocale(locale);
 
   const t = await getTranslations('glossary');

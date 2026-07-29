@@ -239,6 +239,10 @@ const nextConfig: NextConfig = {
       // API entirely (Tampa now lists only Busch Gardens and Islands of Adventure), so the rule
       // only redirected one dead url to another. A plain 404 is the honest answer.
       ['asia/:country/:city', 'lotte-world', 'lotte-world-adventure'],
+      // Upstream re-labelled the Eureka, MO park to its destination name — the API now
+      // answers only on `mid-america-parks` (same coordinates, 42 attractions), while
+      // `six-flags-st-louis` still 404s the backend on every indexed link.
+      ['north-america/:country/:city', 'six-flags-st-louis', 'mid-america-parks'],
     ];
     for (const [scope, oldPark, newPark] of renamedParks) {
       rules.push(

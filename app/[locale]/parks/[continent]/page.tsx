@@ -3,6 +3,7 @@ import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
 import { buildOpenGraphMetadata, fitWithin, MAX_TITLE_LENGTH } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound } from 'next/navigation';
+import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { getCountriesInContinent, getContinents } from '@/lib/api/discovery';
 import { catchNonFatal } from '@/lib/api/client';
 import { LiveCountryCards, type StaticCountryCard } from '@/components/parks/live-country-cards';
@@ -27,6 +28,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: ContinentPageProps): Promise<Metadata> {
   const { locale, continent } = await params;
+  if (!isServableRoute(locale, continent)) return {};
   const t = await getTranslations({ locale, namespace: 'seo.continent' });
   const tGeo = await getTranslations({ locale, namespace: 'geo' });
 
@@ -65,6 +67,7 @@ export async function generateMetadata({ params }: ContinentPageProps): Promise<
 
 export default async function ContinentPage({ params }: ContinentPageProps) {
   const { locale, continent } = await params;
+  assertServableRoute(locale, continent);
   setRequestLocale(locale);
 
   const t = await getTranslations('geo');

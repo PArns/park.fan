@@ -26,6 +26,7 @@ export async function generateMetadata({
   searchParams,
 }: SearchPageProps): Promise<Metadata> {
   const { locale } = await params;
+  if (!isServableRoute(locale)) return {};
   const { q } = await searchParams;
   const t = await getTranslations({ locale, namespace: 'seo.search' });
 
@@ -74,6 +75,7 @@ import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
+import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 
 function SearchResultCard({ result }: { result: SearchResultItem; locale: string }) {
   const t = useTranslations('common');
@@ -200,6 +202,7 @@ function SearchResultCard({ result }: { result: SearchResultItem; locale: string
 
 export default async function SearchPage({ params, searchParams }: SearchPageProps) {
   const { locale } = await params;
+  assertServableRoute(locale);
   setRequestLocale(locale);
 
   const t = await getTranslations('common');
