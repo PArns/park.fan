@@ -30,6 +30,32 @@ is what every reader saw afterwards, indefinitely. Nothing refreshed it.
   so a card's badge can no longer disagree with the inline badge beside it in
   the prose. The "closed park ⇒ closed rides" rule is applied on both sides.
 
+**And the crash that would have hidden all of it on long posts.**
+`/de/blog/die-kunst-des-wartens` was throwing
+`Primitive.button failed to slot onto its children` and dropping its whole
+client tree into the error boundary — so no hook on that post ran at all, live
+overlay included.
+
+`GlossaryInjectTerm` was a **server** component wrapping `next/link` in
+`<TooltipTrigger asChild>`. Rendered from the server, the link reaches Radix's
+`Slot` as a **lazy client reference**, and `Slot` only unwraps a lazy child
+while its payload is still _pending_. Once any earlier `next/link` on the page
+has resolved that chunk, the payload is settled, `Slot` sees a non-element and
+throws. That's why it looked content-dependent: long posts resolve the chunk
+before the first tooltip renders, short ones don't — halving the post made it
+disappear, which is what sent the first search down the wrong path.
+
+- `GlossaryInjectTerm` is now a client component, like its sibling
+  `GlossaryTermLink` already was. Same markup, no lazy wrapper reaches the Slot,
+  and nothing new ships — the tooltip and the link were already client code.
+- `BlogSectionHeader` had the same latent shape (a server component slotting a
+  `Link` into `<Button asChild>`); it now styles the `Link` with
+  `buttonVariants` instead, which needs no `Slot`.
+
+> **Rule:** never put a client-component element inside an `asChild` trigger
+> from a **server** component. Either move the wrapper into a client component,
+> or drop `asChild` and apply the variant classes directly.
+
 See [caching-strategy](architecture/caching-strategy.md#minimizing-isr-writes-jun-2026).
 
 ---

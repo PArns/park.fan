@@ -131,6 +131,38 @@ or is already hoisted out of the loop.
 
 ---
 
+## 14. Never `asChild` a client element from a server component
+
+A Radix `asChild` trigger (`TooltipTrigger`, `HoverCardTrigger`, `Button asChild`, …) hands its
+child to `Slot`, which requires a **single React element**. From a **server** component, a client
+component like `next/link` arrives as a **lazy client reference**, not an element. `Slot` unwraps a
+lazy child only while its payload is still _pending_ — once any earlier instance of that component
+on the page has resolved the chunk, the payload is settled and `Slot` throws
+`Primitive.button failed to slot onto its children`, taking the whole client tree into the error
+boundary.
+
+This fails **intermittently and by page length**, which makes it very easy to misdiagnose: a long
+blog post resolves the chunk before the first tooltip renders and crashes every time; the same
+content cut in half looks perfectly fine.
+
+```tsx
+// ✗ server component
+<TooltipTrigger asChild>
+  <Link href={href}>{text}</Link>
+</TooltipTrigger>
+
+// ✓ move the wrapper into a client component ('use client'), or drop asChild:
+<Link href={href} className={cn(buttonVariants({ variant: 'outline' }))}>
+  {text}
+</Link>
+```
+
+Slotting a **host** element (`<a>`, `<button>`, `<span>`) from a server component is fine — those
+are never lazy. See `components/glossary/glossary-inject-term.tsx` and
+`components/blog/blog-section-header.tsx`.
+
+---
+
 ## Related
 
 - [Setup](setup.md)

@@ -1,5 +1,5 @@
 import { type LucideIcon, Newspaper } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { GlassCard } from '@/components/common/glass-card';
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
@@ -64,13 +64,22 @@ export function BlogSectionHeader({
         {intro && <p className="text-muted-foreground mt-3 text-base sm:text-lg">{intro}</p>}
         {meta && <p className="text-muted-foreground mt-2 text-xs">{meta}</p>}
       </div>
+      {/* Styled Link rather than `<Button asChild>`: this is a server component, so the Link would
+          reach Radix's Slot as a lazy client reference and throw once that chunk is already
+          resolved — the same crash GlossaryInjectTerm documents. `buttonVariants` gives the
+          identical look with no Slot involved. */}
       {action && (
-        <Button asChild variant="outline" className="rounded-full">
-          <Link href={action.href as '/'} prefetch={false}>
-            {action.label}
-            {action.icon && <action.icon className="h-3.5 w-3.5" />}
-          </Link>
-        </Button>
+        <Link
+          href={action.href as '/'}
+          prefetch={false}
+          data-slot="button"
+          data-variant="outline"
+          data-size="default"
+          className={cn(buttonVariants({ variant: 'outline' }), 'rounded-full')}
+        >
+          {action.label}
+          {action.icon && <action.icon className="h-3.5 w-3.5" />}
+        </Link>
       )}
     </div>
   );
