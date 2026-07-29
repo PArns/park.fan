@@ -4,6 +4,66 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – feat: a ride's measurements, in the visitor's units
+
+The ride page can now say how fast, how long, how tall and how steep — the
+numbers the API imports from RCDB (see the backend changelog). Top speed sits
+in the header's facts band next to the inversions, because both answer "what
+does it do to you"; the rest fill out the ride profile's fact grid: height,
+drop, length, elevation change, steepest angle, ride time, g-force, capacity,
+riders per train, restraints, and who designed, built and supplied the trains.
+Every value renders only when RCDB has it, and the grid links back to the
+record the numbers came from.
+
+- **One unit system, one toggle.** The C/F choice now drives ride
+  measurements too, not just weather: Fahrenheit means mph, feet and inches —
+  **including the rider height** ("Ab 140 cm" becomes "From 55 in"). Rendered
+  through `unit-display`, so both units are in the server HTML and CSS picks
+  one before paint: no hydration flash, page stays cacheable.
+- **Fixed: a badge that read "Inversions:" and nothing else.** The API strips
+  null-valued keys from its responses, so an unknown value arrives as a
+  _missing_ key — and `!== null` waves `undefined` straight through. The types
+  now mark those fields optional as well as nullable, and the guards use
+  `!= null`. The same bug was hiding on the glossary term page's year badge.
+- **"All rides" on a glossary term page did not list all of them** — the three
+  highlighted above are deliberately not repeated, so the heading sent people
+  hunting for the ride they had just seen (Manta, on the flying-coaster page).
+  It says "More rides" now.
+- The glossary term page's ride section goes through `PageSection` like the
+  ride page's chapters, so the two cannot drift apart again.
+
+## Unreleased – fix: the ride header's facts say what they are
+
+Follow-up to the header cleanup below. The facts band was a row of values with
+no nouns on them: a wrench and "Intamin", a calendar and "2016", and "RCDB" —
+readable if you already knew what each one meant, a guess otherwise, and the
+`title` tooltips only helped the half of the audience with a mouse.
+
+- **Every fact names itself:** "Manufacturer: Intamin", "Opened: 2016",
+  "Inversions: 0".
+- **The RCDB link names its destination** — "Taron on RCDB" instead of a bare
+  acronym, so it reads as a way out of the page rather than a label. It moved
+  out of `AttractionMetaBadges` (the rider-restriction set shared with the
+  attraction cards) into its own `RcdbBadge`.
+- **Order follows what you need to know:** the height limit that decides
+  whether you may ride at all, then what the ride does (inversions), then what
+  kind of ride it is, then who built it and when, then the outbound reference.
+  The jump link stays pinned right.
+- **The ride type is in the header now**, linked into the glossary like the
+  type chips in the profile below — and a launch coaster with **more than one
+  launch is called a Multi-Launch Coaster**. Nothing in the seed carries that
+  distinction, but the layout does: `resolveRideProfile` counts the `launch`
+  and `swing-launch` figures. It does that centrally so the header and the
+  profile section can never disagree, and it counts element **ids**, not the
+  `launch` element _kind_ — that kind groups lift hills and first drops too, so
+  counting it would call every coaster with a lift and a drop a multi-launch.
+- **"9 figures" is now "9 track elements"** (`Fahrfiguren`, `baanelementen`,
+  `éléments du tracé` …), matching the label the profile section already used.
+  In English "9 figures" reads as a nine-digit number.
+- **The glossary link moved above the 3-D player**, joining the figure's name
+  and definition — stranded under a five-second animation it was a footnote to
+  a video nobody had finished.
+
 ## Unreleased – fix: the ride page header, and every section on it, reads like the park page
 
 The ride header had grown a row at a time and no longer matched the park

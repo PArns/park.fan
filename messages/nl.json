@@ -800,10 +800,10 @@
     "sectionLiveNow": "Wachttijd op dit moment",
     "sectionPlanVisit": "Plan de beste bezoektijd",
     "meta": {
-      "minHeight": "Vanaf {cm} cm",
-      "minHeightTitle": "Minimale lengte: {cm} cm",
-      "maxHeight": "Tot {cm} cm",
+      "minHeightLabel": "Vanaf",
+      "maxHeightLabel": "Tot",
       "mayGetWet": "Je kunt nat worden",
+      "rcdbLabel": "{attraction} in de RCDB",
       "rcdbTitle": "Technische gegevens op RCDB (Roller Coaster DataBase)"
     }
   },
@@ -1153,7 +1153,7 @@
       "more": "… en nog {count}",
       "topTitle": "De grootste banen",
       "typicalWait": "meestal tot {minutes} min.",
-      "allTitle": "Alle banen"
+      "restTitle": "Meer banen"
     },
     "rideCount": "{count, plural, one {# baan} other {# banen}}"
   },
@@ -1381,15 +1381,32 @@
     "rideProfile": {
       "title": "Baanprofiel",
       "typeLabel": "Type attractie",
+      "multiLaunchCoaster": "Multi-Launch Coaster",
       "elementsLabel": "Baanelementen",
       "elementsHint": "In rijvolgorde – tik op een figuur om hem in 3-D te zien.",
       "has3d": "3-D",
       "manufacturer": "Fabrikant",
       "opened": "Geopend",
       "inversions": "Inversies",
+      "topSpeed": "Topsnelheid",
+      "height": "Hoogte",
+      "drop": "Drop",
+      "length": "Lengte",
+      "elevation": "Hoogteverschil",
+      "verticalAngle": "Steilste hoek",
+      "duration": "Rijtijd",
+      "gForce": "G-kracht",
+      "capacity": "Capaciteit",
+      "perHour": "{count}/u",
+      "ridersPerTrain": "Plaatsen per trein",
+      "restraints": "Beugels",
+      "designer": "Ontwerp",
+      "builder": "Gebouwd door",
+      "trainManufacturer": "Treinen van",
+      "statsSource": "Meetwaarden: RCDB",
       "openGlossary": "Naslaan in het glossarium",
       "viewerTitle": "3D-weergave: {name}",
-      "figureCount": "{count, plural, one {# figuur} other {# figuren}}"
+      "figureCount": "{count, plural, one {# baanelement} other {# baanelementen}}"
     }
   }
 }

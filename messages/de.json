@@ -800,10 +800,10 @@
     "sectionLiveNow": "Wartezeit jetzt",
     "sectionPlanVisit": "Beste Besuchszeit planen",
     "meta": {
-      "minHeight": "Ab {cm} cm",
-      "minHeightTitle": "Mindestgröße: {cm} cm",
-      "maxHeight": "Bis {cm} cm",
+      "minHeightLabel": "Ab",
+      "maxHeightLabel": "Bis",
       "mayGetWet": "Nässegefahr",
+      "rcdbLabel": "{attraction} in der RCDB",
       "rcdbTitle": "Technische Daten auf RCDB (Roller Coaster DataBase)"
     }
   },
@@ -1153,7 +1153,7 @@
       "more": "… und {count} weitere",
       "topTitle": "Die größten Bahnen",
       "typicalWait": "typisch bis {minutes} Min.",
-      "allTitle": "Alle Bahnen"
+      "restTitle": "Weitere Bahnen"
     },
     "rideCount": "{count, plural, one {# Bahn} other {# Bahnen}}"
   },
@@ -1381,15 +1381,32 @@
     "rideProfile": {
       "title": "Bahnprofil",
       "typeLabel": "Bahntyp",
+      "multiLaunchCoaster": "Multi-Launch Coaster",
       "elementsLabel": "Fahrfiguren",
       "elementsHint": "In Fahrreihenfolge – tippe eine Figur an, um sie in 3-D zu sehen.",
       "has3d": "3-D",
       "manufacturer": "Hersteller",
       "opened": "Eröffnet",
       "inversions": "Inversionen",
+      "topSpeed": "Topspeed",
+      "height": "Höhe",
+      "drop": "Drop",
+      "length": "Länge",
+      "elevation": "Höhendifferenz",
+      "verticalAngle": "Steilster Winkel",
+      "duration": "Fahrzeit",
+      "gForce": "G-Kraft",
+      "capacity": "Kapazität",
+      "perHour": "{count}/h",
+      "ridersPerTrain": "Plätze pro Zug",
+      "restraints": "Bügel",
+      "designer": "Planung",
+      "builder": "Erbauer",
+      "trainManufacturer": "Züge von",
+      "statsSource": "Messwerte: RCDB",
       "openGlossary": "Im Glossar nachlesen",
       "viewerTitle": "3-D-Ansicht: {name}",
-      "figureCount": "{count, plural, one {# Figur} other {# Figuren}}"
+      "figureCount": "{count, plural, one {# Fahrfigur} other {# Fahrfiguren}}"
     }
   }
 }

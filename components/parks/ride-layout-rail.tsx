@@ -152,14 +152,24 @@ export function RideLayoutRail({ elements, playerLabels, labels }: RideLayoutRai
 
       {active && (
         <div className="border-border/60 bg-background/40 space-y-3 rounded-xl border p-4">
-          {/* Name and definition come FIRST: you tap a figure to find out what it is,
-              and reading that after watching the animation is the wrong way round —
-              you spend the animation guessing. Now the caption sets up the scene. */}
+          {/* Everything ABOUT the figure comes first — name, definition, and the way
+              out to the full glossary entry — then the animation of it. You tap a
+              figure to find out what it is, so reading the caption afterwards means
+              spending the animation guessing; and the link stranded below a
+              five-second loop was a footnote to a video nobody had finished. */}
           <div>
             <h4 className={cn('text-sm font-semibold', KIND_CLASS[active.kind].text)}>
               {active.name}
             </h4>
             <p className="text-muted-foreground mt-1 text-sm">{active.shortDefinition}</p>
+            <Link
+              href={active.href}
+              prefetch={false}
+              className="text-primary mt-2 inline-flex items-center gap-1 text-sm font-medium hover:underline"
+            >
+              {labels.openGlossary}
+              <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+            </Link>
           </div>
           {active.playerElement && (
             // Remounted per figure via `key`: the scene is built from the
@@ -172,14 +182,6 @@ export function RideLayoutRail({ elements, playerLabels, labels }: RideLayoutRai
               />
             </div>
           )}
-          <Link
-            href={active.href}
-            prefetch={false}
-            className="text-primary inline-flex items-center gap-1 text-sm font-medium hover:underline"
-          >
-            {labels.openGlossary}
-            <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-          </Link>
         </div>
       )}
     </div>

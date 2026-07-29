@@ -3,7 +3,7 @@ import { Link } from '@/i18n/navigation';
 import { RollerCoaster, Timer } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { GlassCard } from '@/components/common/glass-card';
-import { SectionHeading } from '@/components/common/section-heading';
+import { PageSection } from '@/components/common/page-section';
 import { getAttractionsForTerm } from '@/lib/api/glossary-rides';
 import type { TermAttraction } from '@/lib/api/types';
 
@@ -69,15 +69,16 @@ export async function GlossaryTermRides({ termId, limit = 12 }: GlossaryTermRide
   const hidden = rest.length - shown.length;
 
   return (
-    <section id="rides" className="scroll-mt-24 space-y-4">
-      <SectionHeading
-        icon={RollerCoaster}
-        title={t('title')}
-        badge={<Badge variant="secondary">{rides.length}</Badge>}
-        variant="plain"
-        as="h2"
-      />
-
+    /* The same chapter unit the ride page uses — section, heading and the
+       spacing around them in one place, so this page and that one cannot drift
+       apart again. `id` keeps the #rides anchor and its scroll offset. */
+    <PageSection
+      icon={RollerCoaster}
+      title={t('title')}
+      badge={<Badge variant="secondary">{rides.length}</Badge>}
+      id="rides"
+      frosted
+    >
       <GlassCard className="space-y-6 p-5 sm:p-6">
         {top.length > 0 && (
           <div className="space-y-2">
@@ -111,9 +112,12 @@ export async function GlossaryTermRides({ termId, limit = 12 }: GlossaryTermRide
 
         {shown.length > 0 && (
           <div className="space-y-2">
+            {/* "More rides", not "All rides": the three highlighted above are
+                deliberately not repeated here, so a heading claiming to list all
+                of them sends people hunting for the ride they just saw. */}
             {top.length > 0 && (
               <h3 className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
-                {t('allTitle')}
+                {t('restTitle')}
               </h3>
             )}
             <ul className="divide-border/60 divide-y">
@@ -130,7 +134,7 @@ export async function GlossaryTermRides({ termId, limit = 12 }: GlossaryTermRide
                           className="border-border/60 hover:border-primary/40 hover:bg-primary/5 hover:text-primary inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1 text-sm font-medium transition-colors"
                         >
                           {ride.name}
-                          {ride.openedYear !== null && (
+                          {ride.openedYear != null && (
                             <span className="text-muted-foreground text-xs tabular-nums">
                               {ride.openedYear}
                             </span>
@@ -149,6 +153,6 @@ export async function GlossaryTermRides({ termId, limit = 12 }: GlossaryTermRide
           </div>
         )}
       </GlassCard>
-    </section>
+    </PageSection>
   );
 }
