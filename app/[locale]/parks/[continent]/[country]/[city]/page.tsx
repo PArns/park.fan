@@ -3,6 +3,7 @@ import { generateAlternateLanguages, locales, SITE_URL } from '@/i18n/config';
 import { buildOpenGraphMetadata, fitWithin, MAX_TITLE_LENGTH } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
+import { assertServableParkRoute, isServableParkRoute } from '@/lib/utils/route-guards';
 import { LiveParkGrid, type StaticPark } from '@/components/parks/live-park-grid';
 import { getParkBackgroundImage, getParkImageSet } from '@/lib/utils/park-assets';
 import { getCitiesWithParks, getGeoStructure } from '@/lib/api/discovery';
@@ -22,6 +23,7 @@ interface CityPageProps {
 
 export async function generateMetadata({ params }: CityPageProps): Promise<Metadata> {
   const { locale, continent, country, city: citySlug } = await params;
+  if (!isServableParkRoute(locale, continent, country, citySlug)) return {};
   const t = await getTranslations({ locale, namespace: 'seo.city' });
   const tGeo = await getTranslations({ locale, namespace: 'geo' });
 
@@ -83,6 +85,7 @@ export async function generateStaticParams() {
 
 export default async function CityPage({ params }: CityPageProps) {
   const { locale, continent, country, city: citySlug } = await params;
+  assertServableParkRoute(locale, continent, country, citySlug);
   setRequestLocale(locale);
 
   const t = await getTranslations('geo');

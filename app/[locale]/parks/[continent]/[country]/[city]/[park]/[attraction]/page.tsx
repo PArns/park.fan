@@ -5,6 +5,7 @@ import type { Locale } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
+import { assertServableParkRoute, isServableParkRoute } from '@/lib/utils/route-guards';
 import { Link } from '@/i18n/navigation';
 import { Clock, MapPin, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -63,6 +64,7 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
     attraction: attractionSlug,
     locale,
   } = await params;
+  if (!isServableParkRoute(locale, continent, country, city, parkSlug, attractionSlug)) return {};
 
   // catchNonFatal (not a bare .catch(() => null)): maintenance/502 must re-throw so an
   // API outage surfaces the maintenance page instead of a not-found title — same as the body.
@@ -196,6 +198,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
     park: parkSlug,
     attraction: attractionSlug,
   } = await params;
+  assertServableParkRoute(locale, continent, country, city, parkSlug, attractionSlug);
   setRequestLocale(locale);
 
   const t = await getTranslations('attractions');
