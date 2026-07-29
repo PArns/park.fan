@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import { buttonLinkProps } from '@/components/ui/button';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { Card } from '@/components/ui/card';
 import { GlossaryRichText } from '@/components/glossary/glossary-rich-text';
@@ -84,12 +84,11 @@ export function GlossaryTermDetail({
 
   const backButton = (
     <div className="pb-2">
-      <Button asChild variant="default" size="sm">
-        <Link href={`/${locale}/${segment}`}>
-          <ArrowLeft className="h-4 w-4" />
-          {labels.backToGlossary}
-        </Link>
-      </Button>
+      {/* buttonLinkProps, not `<Button asChild>` — server component, see conventions §14. */}
+      <Link href={`/${locale}/${segment}`} {...buttonLinkProps({ size: 'sm' })}>
+        <ArrowLeft className="h-4 w-4" />
+        {labels.backToGlossary}
+      </Link>
     </div>
   );
 

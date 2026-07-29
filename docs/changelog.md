@@ -48,13 +48,24 @@ disappear, which is what sent the first search down the wrong path.
 - `GlossaryInjectTerm` is now a client component, like its sibling
   `GlossaryTermLink` already was. Same markup, no lazy wrapper reaches the Slot,
   and nothing new ships — the tooltip and the link were already client code.
-- `BlogSectionHeader` had the same latent shape (a server component slotting a
-  `Link` into `<Button asChild>`); it now styles the `Link` with
-  `buttonVariants` instead, which needs no `Slot`.
+- **Every other server component with the same latent shape** — a `Link` slotted
+  into `<Button asChild>` — was converted too: `BlogSectionHeader`,
+  `GlossaryTermDetail`, `AnnounceSection`, the 404 page and the homepage hero.
+  None had been observed to fire, but they were all one chunk-resolution order
+  away from it.
+- New **`buttonLinkProps`** (`components/ui/button.tsx`) is the shared way to
+  render a button-shaped link: it returns exactly the props `<Button>` applies
+  (`data-slot` / `data-variant` / `data-size` + the `buttonVariants` class
+  string), so the rendered markup is byte-identical with no `Slot` in play.
+  Verified by diffing the rendered `data-slot="button"` elements on `/de`,
+  `/de/glossar/…` and `/de/blog/tag/…` before and after — same count, same
+  classes, same attributes.
 
 > **Rule:** never put a client-component element inside an `asChild` trigger
 > from a **server** component. Either move the wrapper into a client component,
-> or drop `asChild` and apply the variant classes directly.
+> or use `buttonLinkProps` / apply the variant classes directly. Slotting a
+> _host_ element (`<a>`, `<button>`) from the server stays fine — those are
+> never lazy.
 
 See [caching-strategy](architecture/caching-strategy.md#minimizing-isr-writes-jun-2026).
 

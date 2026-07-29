@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { backgroundImageLoader } from '@/lib/utils/image-loader';
 import { getTranslations } from 'next-intl/server';
 import ReactMarkdown from 'react-markdown';
-import { Button } from '@/components/ui/button';
+import { buttonLinkProps } from '@/components/ui/button';
 import { Link } from '@/i18n/navigation';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { getServerNowMs } from '@/lib/utils/server-time';
@@ -109,15 +109,17 @@ export async function AnnounceSection({ locale }: AnnounceSectionProps) {
               a: ({ href, children }) => {
                 const isInternal = href?.startsWith('/');
                 if (isInternal && href) {
+                  // buttonLinkProps, not `<Button asChild>` — server component, see conventions §14.
                   return (
-                    <Button
-                      asChild
-                      variant="default"
-                      size="lg"
-                      className="mt-4 rounded-full font-semibold"
+                    <Link
+                      href={href as string}
+                      {...buttonLinkProps({
+                        size: 'lg',
+                        className: 'mt-4 rounded-full font-semibold',
+                      })}
                     >
-                      <Link href={href as string}>{children}</Link>
-                    </Button>
+                      {children}
+                    </Link>
                   );
                 }
                 return (
