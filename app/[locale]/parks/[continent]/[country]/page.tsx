@@ -11,6 +11,7 @@ import { catchNonFatal } from '@/lib/api/client';
 import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
 import { SectionHeading } from '@/components/common/section-heading';
+import { Badge } from '@/components/ui/badge';
 import { BreadcrumbStructuredData, ItemListStructuredData } from '@/components/seo/structured-data';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateCountryBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
@@ -157,7 +158,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
               variant="plain"
               icon={MapPin}
               title={city.name}
-              badge={t('parkCount', { count: city.parkCount })}
+              badge={<Badge variant="secondary">{t('parkCount', { count: city.parkCount })}</Badge>}
             />
 
             {/* Status-free shell (cacheable); live status overlaid client-side. All cities on

@@ -1,25 +1,36 @@
 import type { ReactNode } from 'react';
 import type { LucideIcon } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 
 interface SectionHeadingProps {
   /** Leading icon — gives each chapter a recognizable visual anchor. */
   icon: LucideIcon;
-  title: string;
-  /** Optional muted hint shown to the right (e.g. a data-window note). Chapter variant only. */
+  /**
+   * Icon tint override, e.g. rope-drop's emerald/indigo. Defaults to the
+   * primary tint (chapter: applied to the tile, plain: to the icon itself).
+   */
+  iconClassName?: string;
+  /** Node rather than string: some titles wrap a glossary link. */
+  title: ReactNode;
+  /** Optional muted hint pushed to the right (e.g. a data-window note). */
   hint?: string;
-  /** Optional secondary Badge after the title. Plain variant only. */
+  /** Optional secondary node after the title — pass a ready-made <Badge>. */
   badge?: ReactNode;
   /** Heading level for correct document outline. Defaults to h2. */
   as?: 'h2' | 'h3';
   /**
    * `chapter` (default): icon in a tinted rounded square + bold title — the
-   * attraction-page chapter header. `plain`: bare primary icon + semibold
-   * title + optional badge — the lighter list/section header (absorbed the
-   * former separate `SectionHeader` component).
+   * page-level chapter header. `plain`: bare tinted icon + semibold title +
+   * optional badge — the card/sub-section header (absorbed the former
+   * separate `SectionHeader` component).
    */
   variant?: 'chapter' | 'plain';
+  /**
+   * Frosted pill behind the heading — for headings that sit directly on a page
+   * background photo (park/ride pages), where bare text is unreadable over the
+   * bright parts of an arbitrary image. Same treatment as `GlassSectionTitle`.
+   */
+  frosted?: boolean;
   className?: string;
 }
 
@@ -31,32 +42,41 @@ interface SectionHeadingProps {
  */
 export function SectionHeading({
   icon: Icon,
+  iconClassName,
   title,
   hint,
   badge,
   as: As = 'h2',
   variant = 'chapter',
+  frosted = false,
   className,
 }: SectionHeadingProps) {
+  const frost = frosted && 'bg-background/70 w-fit rounded-xl px-4 py-3 backdrop-blur-md';
+
   if (variant === 'plain') {
     return (
-      <div className={cn('mb-4 flex items-center gap-2', className)}>
-        <Icon className="text-primary h-5 w-5" />
+      <div className={cn('mb-4 flex flex-wrap items-center gap-2', frost, className)}>
+        <Icon
+          className={cn('h-5 w-5 shrink-0', iconClassName ?? 'text-primary')}
+          aria-hidden="true"
+        />
         <As className="text-xl font-semibold">{title}</As>
-        {badge && <Badge variant="secondary">{badge}</Badge>}
+        {badge}
+        {hint && <span className="text-muted-foreground ml-auto text-xs sm:text-sm">{hint}</span>}
       </div>
     );
   }
 
   return (
-    <div className={cn('mb-4 flex items-center gap-3', className)}>
+    <div className={cn('mb-4 flex flex-wrap items-center gap-3', frost, className)}>
       <span
         className="bg-primary/10 text-primary flex h-9 w-9 shrink-0 items-center justify-center rounded-lg"
         aria-hidden="true"
       >
-        <Icon className="h-5 w-5" />
+        <Icon className={cn('h-5 w-5', iconClassName)} />
       </span>
       <As className="text-xl font-bold sm:text-2xl">{title}</As>
+      {badge}
       {hint && <span className="text-muted-foreground ml-auto text-xs sm:text-sm">{hint}</span>}
     </div>
   );

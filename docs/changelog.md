@@ -4,6 +4,44 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: the ride page header, and every section on it, reads like the park page
+
+The ride header had grown a row at a time and no longer matched the park
+header it sits under — and the intro paragraph below it was printed straight
+onto the hero photo, where it was unreadable.
+
+- **Header** now has the park header's anatomy: title row with the favourite
+  star **in flow** (a long ride name wraps beside it instead of underneath it),
+  a muted location line, one hairline-separated facts band, and the intro
+  **inside** the glass card — the readability fix.
+- **RCDB** is a Badge like its neighbours instead of grey text that read as a
+  disabled label; builder and year carry a `title` so an icon-only fact is not
+  a guess.
+- **Every section has a heading with an icon.** The live wait time — the
+  reason people open the page — was the only block without one. The 30-day
+  "wait-time history" was the last bare heading. Card titles (rope drop,
+  typical waits, today's chart, other queues) are now the same `plain` +
+  `h3` heading instead of four sizes, so the page outline is chapter › card.
+- **Chapter headings sit on a frosted pill** on the ride page, the same
+  treatment the park page's section titles already used over hero imagery.
+- **`PageSection`** is the new unit for a chapter: it owns the `<section>`, the
+  heading **and** the spacing around it. `SectionHeading` alone only unified how
+  a heading looks — every call site still hand-rolled its own `mt-10` and its
+  own gap, which is how the live wait-time chapter ended up sitting a visible
+  step lower than its neighbours (its refetch indicator added a reserved band
+  on top of the heading's margin). All four ride-page chapters now measure the
+  same 16 px from title to content.
+- **The live refetch indicator** moved onto the "updated HH:MM" line inside the
+  card, next to the timestamp it refreshes — it no longer reserves an empty
+  band above the card, and it still cannot shift the layout (rendered always,
+  just invisible when idle).
+- **`SectionHeading`** gained `frosted`, `iconClassName`, ReactNode titles and
+  a `badge` that is rendered as passed (it used to wrap its argument in a
+  second `<Badge>`).
+- **Ride profile:** a figure's name and definition now come **before** its 3-D
+  animation — you tapped the figure to find out what it is, so reading the
+  caption afterwards meant spending the animation guessing.
+
 ## Unreleased – feat: rides and the glossary now link to each other
 
 A ride page could say "Black Mamba is an inverted coaster with four

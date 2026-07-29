@@ -2,7 +2,7 @@ import { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
 import { getTranslations } from 'next-intl/server';
 import { ChevronDown, MapPin, Clock, Users, Zap, HelpCircle } from 'lucide-react';
 import { Card } from '@/components/ui/card';
-import { SectionHeading } from '@/components/common/section-heading';
+import { PageSection } from '@/components/common/page-section';
 import { stripNewPrefix } from '@/lib/utils';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { buildAttractionFaqItems, type AttractionFaqIconName } from '@/lib/faq/attraction-faq';
@@ -32,8 +32,8 @@ export async function AttractionFAQSection({ attraction, park }: AttractionFAQSe
   if (faqs.length === 0) return null;
 
   return (
-    <section>
-      <SectionHeading icon={HelpCircle} title={t('title', { attraction: attractionName })} />
+    /* One chapter like the others; frosted because it sits on the hero photo. */
+    <PageSection icon={HelpCircle} title={t('title', { attraction: attractionName })} frosted>
       <div className="space-y-3">
         {faqs.map((faq, index) => {
           const Icon = ICON_MAP[faq.iconName];
@@ -55,6 +55,6 @@ export async function AttractionFAQSection({ attraction, park }: AttractionFAQSe
           );
         })}
       </div>
-    </section>
+    </PageSection>
   );
 }

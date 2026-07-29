@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { Sunrise, Clock, ChartColumn, TrendingDown, Moon, Info } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
 import { GlassCard } from '@/components/common/glass-card';
+import { SectionHeading } from '@/components/common/section-heading';
 import { Badge } from '@/components/ui/badge';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { ParkTime } from '@/components/common/park-time';
@@ -106,12 +107,14 @@ export function RopeDropCard({
           className={cn('border-indigo-500/30', className)}
           aria-label={t('eveningTitle')}
         >
-          <div className="mb-3 flex flex-wrap items-center gap-3">
-            <h2 className="flex items-center gap-2 text-xl font-semibold">
-              <Moon className="h-5 w-5 shrink-0 text-indigo-400" aria-hidden="true" />
-              {t('eveningTitle')}
-            </h2>
-          </div>
+          <SectionHeading
+            icon={Moon}
+            iconClassName="text-indigo-400"
+            title={t('eveningTitle')}
+            variant="plain"
+            as="h3"
+            className="mb-3"
+          />
           <p className="text-muted-foreground mb-3 text-sm">
             {t.rich('eveningText', {
               openWait: ropeDrop.openWait,
@@ -224,22 +227,26 @@ export function RopeDropCard({
       className={cn('border-emerald-500/30', className)}
       aria-label={t('title')}
     >
-      <div className="mb-3 flex flex-wrap items-center gap-3">
-        <h2 className="flex items-center gap-2 text-xl font-semibold">
-          <Sunrise className="h-5 w-5 shrink-0 text-emerald-500" aria-hidden="true" />
-          <GlossaryTermLink termId="rope-drop">{t('title')}</GlossaryTermLink>
-        </h2>
-        <Badge
-          className={cn(
-            'font-semibold',
-            ropeDrop.strength === 'high'
-              ? 'border border-emerald-500/30 bg-emerald-500/15 text-emerald-600 dark:text-emerald-300'
-              : 'border border-teal-500/30 bg-teal-500/15 text-teal-600 dark:text-teal-300'
-          )}
-        >
-          {ropeDrop.strength === 'high' ? t('strengthHigh') : t('strengthModerate')}
-        </Badge>
-      </div>
+      <SectionHeading
+        icon={Sunrise}
+        iconClassName="text-emerald-500"
+        title={<GlossaryTermLink termId="rope-drop">{t('title')}</GlossaryTermLink>}
+        badge={
+          <Badge
+            className={cn(
+              'font-semibold',
+              ropeDrop.strength === 'high'
+                ? 'border border-emerald-500/30 bg-emerald-500/15 text-emerald-600 dark:text-emerald-300'
+                : 'border border-teal-500/30 bg-teal-500/15 text-teal-600 dark:text-teal-300'
+            )}
+          >
+            {ropeDrop.strength === 'high' ? t('strengthHigh') : t('strengthModerate')}
+          </Badge>
+        }
+        variant="plain"
+        as="h3"
+        className="mb-3"
+      />
 
       <p className="text-muted-foreground mb-4 text-sm">{t('explainer')}</p>
 

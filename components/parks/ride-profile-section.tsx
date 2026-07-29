@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { Wrench, CalendarDays, RefreshCcw, Boxes } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { GlassCard } from '@/components/common/glass-card';
-import { SectionHeading } from '@/components/common/section-heading';
+import { PageSection } from '@/components/common/page-section';
 import { RideLayoutRail } from '@/components/parks/ride-layout-rail';
 import { resolveRideProfile } from '@/lib/glossary/ride-profile';
 import type { Locale } from '@/i18n/config';
@@ -53,9 +53,10 @@ export async function RideProfileSection({ profile, locale }: RideProfileSection
   };
 
   return (
-    <section className="space-y-4">
-      <SectionHeading icon={Boxes} title={t('title')} />
-
+    /* One chapter like the others (same top rhythm, same gap under the title),
+       frosted because the heading sits directly on the ride's hero photo. The
+       id is the anchor the header teaser's "9 figures" jumps to. */
+    <PageSection icon={Boxes} title={t('title')} frosted id="ride-profile">
       {/* `strong` rather than the default `medium`: this card sits over the
           attraction's hero photo, and /60 is not reliably readable over the
           bright parts of an arbitrary image. */}
@@ -149,13 +150,16 @@ export async function RideProfileSection({ profile, locale }: RideProfileSection
                 // cross the RSC boundary. Repeated figures collapse to the same
                 // key, which is exactly right — the title only depends on the name.
                 viewerTitles: Object.fromEntries(
-                  elements.map((element) => [element.name, t('viewerTitle', { name: element.name })])
+                  elements.map((element) => [
+                    element.name,
+                    t('viewerTitle', { name: element.name }),
+                  ])
                 ),
               }}
             />
           </div>
         )}
       </GlassCard>
-    </section>
+    </PageSection>
   );
 }

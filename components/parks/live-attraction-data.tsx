@@ -4,7 +4,6 @@ import { useLiveAttractionData } from '@/lib/hooks/use-live-attraction-data';
 import { useAttractionDetail } from '@/lib/hooks/use-attraction-detail';
 import {
   AlertCircle,
-  Loader2,
   Clock,
   AlertTriangle,
   Wrench,
@@ -176,17 +175,10 @@ export function LiveAttractionData({
         </Card>
       )}
 
-      {/* Subtle loading indicator during background refetch. Wrapped in a fixed-height slot that
-          is always present, so the indicator appearing/disappearing on every 5-min poll (and on
-          the immediate refetch-on-mount) no longer shifts the live card below it (CLS). */}
-      <div className="mb-4 h-4">
-        {mounted && isFetching && !isError && (
-          <div className="text-muted-foreground flex items-center gap-2 text-xs">
-            <Loader2 className="h-3 w-3 animate-spin" />
-            <span>{tCommon('updating')}</span>
-          </div>
-        )}
-      </div>
+      {/* The background-refetch indicator used to live here, in a reserved h-4 band above the
+          card. It was empty space between the chapter heading and the card almost all the time
+          and pushed this chapter a step lower than every other one — it now sits on the
+          "updated HH:MM" line inside the panel, next to the timestamp it refreshes. */}
 
       {/* Unified "live now" card: current wait + status + KI accuracy as the header, with today's
           "Wartezeiten heute" bar chart in the same box right below — the value and the chart read
@@ -207,6 +199,9 @@ export function LiveAttractionData({
           maxWaitToday={calculatedMaxWaitToday}
           timezone={park.timezone}
           lastUpdated={mainQueue?.lastUpdated}
+          // `mounted &&` keeps SSR and the first client render in agree­ment: the page is
+          // force-dynamic and the refetch-on-mount would otherwise flip this true mid-hydration.
+          isRefreshing={mounted && isFetching && !isError}
           predictionAccuracy={effectivePredictionAccuracy}
           accuracyLabel={
             effectivePredictionAccuracy
@@ -218,6 +213,7 @@ export function LiveAttractionData({
             minutes: tCommon('minutes'),
             status: tCommon('status'),
             updated: tCommon('updated'),
+            updating: tCommon('updating'),
             todayMin: t('todayChart.todayMin'),
             todayMax: t('todayChart.todayMax'),
             min: t('todayChart.min'),
@@ -273,7 +269,9 @@ export function LiveAttractionData({
       {/* Other Queue Types */}
       {attraction.queues && attraction.queues.length > 1 && (
         <section className="mb-8">
-          <SectionHeading icon={Layers} title={t('otherQueues')} />
+          {/* Sub-section of the live chapter, not a chapter of its own — plain h3
+              so the outline reads live wait time › other queues. */}
+          <SectionHeading icon={Layers} title={t('otherQueues')} variant="plain" as="h3" />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {attraction.queues
               .filter((q) => q.queueType !== 'STANDBY')

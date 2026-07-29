@@ -2108,14 +2108,14 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                   variant="plain"
                   icon={MapPin}
                   title="Parks in Germany"
-                  badge={42}
+                  badge={<Badge variant="secondary">42</Badge>}
                 />
                 <SectionHeadingPlain variant="plain" icon={Ticket} title="Attractions" />
                 <SectionHeadingPlain
                   variant="plain"
                   icon={Wrench}
                   title="Under Refurbishment"
-                  badge={3}
+                  badge={<Badge variant="secondary">3</Badge>}
                 />
               </div>
             </Sub>

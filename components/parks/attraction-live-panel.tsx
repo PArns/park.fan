@@ -1,6 +1,6 @@
 'use client';
 
-import { Clock, BarChart3, type LucideIcon } from 'lucide-react';
+import { Clock, BarChart3, Loader2, type LucideIcon } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { TodayWaitRange } from '@/components/parks/today-wait-range';
@@ -24,11 +24,14 @@ interface AttractionLivePanelProps {
   predictionAccuracy?: { badge: AccuracyBadge; message: string } | null;
   /** Translated accuracy badge label (e.g. "Gut") matching `predictionAccuracy.badge`. */
   accuracyLabel?: string;
+  /** A background poll is in flight — spins the marker next to "updated". */
+  isRefreshing?: boolean;
   labels: {
     waitTime: string;
     minutes: string;
     status: string;
     updated: string;
+    updating: string;
     todayMin: string;
     todayMax: string;
     min: string;
@@ -68,6 +71,7 @@ export function AttractionLivePanel({
   maxWaitToday,
   timezone,
   lastUpdated,
+  isRefreshing,
   predictionAccuracy,
   accuracyLabel,
   labels,
@@ -124,8 +128,20 @@ export function AttractionLivePanel({
       <div className="flex flex-col items-start gap-2 sm:items-end">
         <ParkStatusBadge status={status} className="text-sm" />
         {lastUpdated && (
-          <p className="text-muted-foreground text-xs">
-            {labels.updated} <LocalTime time={lastUpdated} timeZone={timezone} />
+          /* The refresh marker lives ON the timestamp it refreshes, instead of in a
+             reserved band above the card: that band was pure empty space between the
+             chapter heading and the card 95% of the time, and it made this chapter sit
+             a visible step lower than every other one. Always rendered (just invisible
+             when idle) so the 5-min poll never nudges the line. */
+          <p className="text-muted-foreground flex items-center gap-1.5 text-xs">
+            <Loader2
+              className={cn('h-3 w-3 animate-spin', !isRefreshing && 'invisible')}
+              aria-hidden={!isRefreshing}
+              aria-label={isRefreshing ? labels.updating : undefined}
+            />
+            <span>
+              {labels.updated} <LocalTime time={lastUpdated} timeZone={timezone} />
+            </span>
           </p>
         )}
         {predictionAccuracy && (
