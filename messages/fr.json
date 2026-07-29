@@ -800,9 +800,8 @@
     "sectionLiveNow": "Temps d'attente en ce moment",
     "sectionPlanVisit": "Planifier le meilleur moment pour visiter",
     "meta": {
-      "minHeight": "Dès {cm} cm",
-      "minHeightTitle": "Taille minimale : {cm} cm",
-      "maxHeight": "Jusqu’à {cm} cm",
+      "minHeightLabel": "Dès",
+      "maxHeightLabel": "Jusqu’à",
       "mayGetWet": "Vous risquez d’être mouillé",
       "rcdbLabel": "{attraction} sur RCDB",
       "rcdbTitle": "Données techniques sur RCDB (Roller Coaster DataBase)"
@@ -1154,7 +1153,7 @@
       "more": "… et {count} de plus",
       "topTitle": "Les plus grosses attractions",
       "typicalWait": "d'ordinaire jusqu'à {minutes} min",
-      "allTitle": "Toutes les attractions"
+      "restTitle": "Autres coasters"
     },
     "rideCount": "{count, plural, one {# attraction} other {# attractions}}"
   },
@@ -1389,6 +1388,22 @@
       "manufacturer": "Constructeur",
       "opened": "Ouverture",
       "inversions": "Inversions",
+      "topSpeed": "Vitesse max",
+      "height": "Hauteur",
+      "drop": "Drop",
+      "length": "Longueur",
+      "elevation": "Dénivelé",
+      "verticalAngle": "Angle max",
+      "duration": "Durée",
+      "gForce": "Force G",
+      "capacity": "Capacité",
+      "perHour": "{count}/h",
+      "ridersPerTrain": "Places par train",
+      "restraints": "Harnais",
+      "designer": "Conception",
+      "builder": "Construit par",
+      "trainManufacturer": "Trains de",
+      "statsSource": "Mesures : RCDB",
       "openGlossary": "Consulter le glossaire",
       "viewerTitle": "Vue 3-D : {name}",
       "figureCount": "{count, plural, one {# élément du tracé} other {# éléments du tracé}}"

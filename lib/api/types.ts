@@ -702,15 +702,64 @@ export interface RideProfile {
   elements: string[];
   /** Ride-type terms (`coasters` / `attractions` categories). Unordered. */
   types: string[];
-  /** Builder's display name. Null when unknown. */
-  manufacturer: string | null;
-  /** Builder's glossary term id — null means render the name without a link. */
-  manufacturerTermId: string | null;
+  /**
+   * Everything below is OPTIONAL as well as nullable, and the `?` is the
+   * important half: the API strips null-valued keys from its responses, so an
+   * unknown value arrives as a MISSING key, not as `null`. Guard with `!= null`
+   * — `!== null` passes `undefined` straight through, which is how a ride with
+   * no inversion count rendered a badge reading "Inversions:" and nothing else.
+   */
+  /** Builder's display name. */
+  manufacturer?: string | null;
+  /** Builder's glossary term id — absent means render the name without a link. */
+  manufacturerTermId?: string | null;
   /** The builder's own model name, e.g. "Blitz Coaster". */
-  model: string | null;
-  openedYear: number | null;
+  model?: string | null;
+  openedYear?: number | null;
   /** As the park publishes it; may legitimately differ from `elements`. */
+  inversions?: number | null;
+  /**
+   * Measured facts imported from RCDB. Null for rides we hold no RCDB id for,
+   * and every field inside is independently nullable — RCDB fills in what it
+   * knows, which for a family coaster is far less than for a headliner.
+   */
+  stats?: RideStats | null;
+}
+
+/**
+ * A ride's measurements, always metric — the display unit is the visitor's
+ * (see `lib/utils/temperature.ts`: the C/F choice drives every secondary unit).
+ */
+export interface RideStats {
+  /** Track length in metres. */
+  lengthM: number | null;
+  /** Highest point in metres. */
+  heightM: number | null;
+  /** Largest single drop in metres. */
+  dropM: number | null;
+  /** Total elevation change in metres. */
+  elevationM: number | null;
+  /** Top speed in km/h. */
+  topSpeedKmh: number | null;
+  /** Ride duration in seconds. */
+  durationSeconds: number | null;
+  /** Maximum sustained g-force. */
+  gForce: number | null;
+  /** Steepest descent angle in degrees. */
+  verticalAngleDeg: number | null;
+  /** Inversions as RCDB counts them (the curated `inversions` wins on the page). */
   inversions: number | null;
+  /** Theoretical throughput in riders per hour. */
+  capacityPerHour: number | null;
+  /** Riders per train, or per car on single-car trains. */
+  ridersPerTrain: number | null;
+  designer: string | null;
+  builder: string | null;
+  trainManufacturer: string | null;
+  restraints: string | null;
+  source: 'rcdb';
+  /** The RCDB id the numbers came from. */
+  sourceId: number;
 }
 
 /** One ride in the glossary → rides direction (`/v1/glossary/terms/:id/attractions`). */
@@ -725,7 +774,8 @@ export interface TermAttraction {
   parkSlug: string;
   /** Where the term matched on this ride. */
   kind: 'element' | 'type' | 'manufacturer';
-  openedYear: number | null;
+  /** Optional as well as nullable — the API strips null-valued keys. */
+  openedYear?: number | null;
   /**
    * Typical peak wait in minutes — the API's P90 over 548 days, not a live
    * reading.

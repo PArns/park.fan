@@ -4,6 +4,34 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – feat: a ride's measurements, in the visitor's units
+
+The ride page can now say how fast, how long, how tall and how steep — the
+numbers the API imports from RCDB (see the backend changelog). Top speed sits
+in the header's facts band next to the inversions, because both answer "what
+does it do to you"; the rest fill out the ride profile's fact grid: height,
+drop, length, elevation change, steepest angle, ride time, g-force, capacity,
+riders per train, restraints, and who designed, built and supplied the trains.
+Every value renders only when RCDB has it, and the grid links back to the
+record the numbers came from.
+
+- **One unit system, one toggle.** The C/F choice now drives ride
+  measurements too, not just weather: Fahrenheit means mph, feet and inches —
+  **including the rider height** ("Ab 140 cm" becomes "From 55 in"). Rendered
+  through `unit-display`, so both units are in the server HTML and CSS picks
+  one before paint: no hydration flash, page stays cacheable.
+- **Fixed: a badge that read "Inversions:" and nothing else.** The API strips
+  null-valued keys from its responses, so an unknown value arrives as a
+  _missing_ key — and `!== null` waves `undefined` straight through. The types
+  now mark those fields optional as well as nullable, and the guards use
+  `!= null`. The same bug was hiding on the glossary term page's year badge.
+- **"All rides" on a glossary term page did not list all of them** — the three
+  highlighted above are deliberately not repeated, so the heading sent people
+  hunting for the ride they had just seen (Manta, on the flying-coaster page).
+  It says "More rides" now.
+- The glossary term page's ride section goes through `PageSection` like the
+  ride page's chapters, so the two cannot drift apart again.
+
 ## Unreleased – fix: the ride header's facts say what they are
 
 Follow-up to the header cleanup below. The facts band was a row of values with

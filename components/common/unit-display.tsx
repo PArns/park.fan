@@ -1,4 +1,11 @@
-import { formatTemp, formatWindSpeed, formatPrecip } from '@/lib/utils/temperature';
+import {
+  formatTemp,
+  formatWindSpeed,
+  formatPrecip,
+  formatSpeed,
+  formatTrackLength,
+  formatRiderHeight,
+} from '@/lib/utils/temperature';
 
 /**
  * Dual-unit display primitives.
@@ -50,6 +57,42 @@ export function Distance({ meters }: { meters: number }) {
     <>
       <span className="u-metric">{metric}</span>
       <span className="u-imperial">{imperial}</span>
+    </>
+  );
+}
+
+/** Ride top speed from a km/h value, e.g. "80 km/h" / "50 mph". */
+export function Speed({ kmh }: { kmh: number }) {
+  return (
+    <>
+      <span className="u-metric">{formatSpeed(kmh, 'C')}</span>
+      <span className="u-imperial">{formatSpeed(kmh, 'F')}</span>
+    </>
+  );
+}
+
+/** Track length, height or drop from a metres value, e.g. "768 m" / "2520 ft". */
+export function TrackLength({ meters }: { meters: number }) {
+  return (
+    <>
+      <span className="u-metric">{formatTrackLength(meters, 'C')}</span>
+      <span className="u-imperial">{formatTrackLength(meters, 'F')}</span>
+    </>
+  );
+}
+
+/**
+ * Rider height from a centimetres value, e.g. "140 cm" / "55 in".
+ *
+ * The one measurement on the page a visitor may need to act on — whether their
+ * child may ride — so it follows the same C/F choice as everything else rather
+ * than making an American parent convert centimetres in the queue.
+ */
+export function RiderHeight({ cm }: { cm: number }) {
+  return (
+    <>
+      <span className="u-metric">{formatRiderHeight(cm, 'C')}</span>
+      <span className="u-imperial">{formatRiderHeight(cm, 'F')}</span>
     </>
   );
 }
