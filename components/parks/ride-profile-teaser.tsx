@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { getTranslations } from 'next-intl/server';
 import { Wrench, CalendarDays, RefreshCcw, ArrowDown } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -8,10 +9,23 @@ import type { RideProfile } from '@/lib/api/types';
 interface RideProfileTeaserProps {
   profile: RideProfile;
   locale: Locale;
+  /**
+   * Extra badges that belong with the ride's facts (the RCDB link). Rendered
+   * after them and — crucially — before the jump link, which is pushed to the
+   * far right and must stay the last thing in the row.
+   */
+  children?: ReactNode;
 }
 
 /**
  * The ride's identifying facts, lifted into the page header.
+ *
+ * Every badge names its own fact ("Manufacturer: Intamin", not a wrench and a
+ * word): in a row that also carries height limits and a land, an unlabelled
+ * value is a guess, and a `title` only helps the half of the audience with a
+ * mouse. Inversions lead because they are the one number people compare rides
+ * by; the height limit before them is the one that decides whether you may
+ * ride at all.
  *
  * Year and inversions are `sm:` and up only. The header already carries the
  * park, the distance, the land and the height limit, and on a 390 px screen
@@ -22,7 +36,7 @@ interface RideProfileTeaserProps {
  * Renders a fragment, not its own wrapper, so the badges share the parent's
  * flex row with `AttractionMetaBadges` and wrap as one group.
  */
-export async function RideProfileTeaser({ profile, locale }: RideProfileTeaserProps) {
+export async function RideProfileTeaser({ profile, locale, children }: RideProfileTeaserProps) {
   const t = await getTranslations('attraction.rideProfile');
   // Resolved, NOT `profile.elements.length`: ids this app has no glossary term
   // for are dropped downstream, so the raw length would promise nine figures
@@ -31,34 +45,29 @@ export async function RideProfileTeaser({ profile, locale }: RideProfileTeaserPr
 
   const hasFacts =
     Boolean(profile.manufacturer) || profile.openedYear !== null || profile.inversions !== null;
-  if (!hasFacts && elements.length === 0) return null;
+  if (!hasFacts && elements.length === 0) return <>{children}</>;
 
   return (
     <>
-      {/* `title` on the icon-only facts: a wrench or a bare year next to a height
-          limit is a guess until you hover it. */}
-      {profile.manufacturer && (
-        <Badge variant="outline" className="gap-1" title={t('manufacturer')}>
-          <Wrench className="h-3 w-3 shrink-0" aria-hidden="true" />
-          {profile.manufacturer}
-        </Badge>
-      )}
-      {profile.openedYear !== null && (
-        <Badge
-          variant="outline"
-          className="hidden gap-1 tabular-nums sm:inline-flex"
-          title={t('opened')}
-        >
-          <CalendarDays className="h-3 w-3 shrink-0" aria-hidden="true" />
-          {profile.openedYear}
-        </Badge>
-      )}
       {profile.inversions !== null && (
         <Badge variant="outline" className="hidden gap-1 tabular-nums sm:inline-flex">
           <RefreshCcw className="h-3 w-3 shrink-0" aria-hidden="true" />
           {t('inversions')}: {profile.inversions}
         </Badge>
       )}
+      {profile.manufacturer && (
+        <Badge variant="outline" className="gap-1">
+          <Wrench className="h-3 w-3 shrink-0" aria-hidden="true" />
+          {t('manufacturer')}: {profile.manufacturer}
+        </Badge>
+      )}
+      {profile.openedYear !== null && (
+        <Badge variant="outline" className="hidden gap-1 tabular-nums sm:inline-flex">
+          <CalendarDays className="h-3 w-3 shrink-0" aria-hidden="true" />
+          {t('opened')}: {profile.openedYear}
+        </Badge>
+      )}
+      {children}
       {elements.length > 0 && (
         <a
           href="#ride-profile"

@@ -10,6 +10,7 @@ import { Clock, MapPin, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { SeasonalBadge } from '@/components/parks/seasonal-badge';
 import { AttractionMetaBadges } from '@/components/parks/attraction-meta-badges';
+import { RcdbBadge } from '@/components/parks/rcdb-badge';
 import { PageSection } from '@/components/common/page-section';
 import { getParkByGeoPath } from '@/lib/api/parks';
 import { catchNonFatal } from '@/lib/api/client';
@@ -272,6 +273,14 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
     Boolean(attraction.mayGetWet) ||
     attraction.rcdbId != null;
 
+  // The outbound reference closes the facts band, after everything the ride IS.
+  // Passed THROUGH the teaser when there is a profile so it lands left of the
+  // "N figures" jump link, which is pushed to the far right and has to stay last.
+  const rcdbBadge =
+    attraction.rcdbId != null ? (
+      <RcdbBadge rcdbId={attraction.rcdbId} attractionName={attractionName} />
+    ) : null;
+
   return (
     <>
       <AttractionStructuredData
@@ -353,17 +362,24 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               {/* Facts band: what this ride IS, separated from where it is — the ride's
                   counterpart to the park header's stats band, same hairline and spacing.
                   One row mixing a navigation link, a live distance, a category label and
-                  an outbound reference gave all four the same weight. */}
+                  an outbound reference gave all four the same weight.
+
+                  The order inside it is the point: what decides whether you may ride
+                  (height), then what the ride does (inversions), then who built it and
+                  when, then the way out to RCDB. */}
               {(hasMetaBadges || attraction.rideProfile) && (
                 <div className="border-border/50 mt-5 flex flex-wrap items-center gap-2 border-t pt-4">
                   <AttractionMetaBadges
                     minimumHeight={attraction.minimumHeight}
                     maximumHeight={attraction.maximumHeight}
                     mayGetWet={attraction.mayGetWet}
-                    rcdbId={attraction.rcdbId}
                   />
-                  {attraction.rideProfile && (
-                    <RideProfileTeaser profile={attraction.rideProfile} locale={locale as Locale} />
+                  {attraction.rideProfile ? (
+                    <RideProfileTeaser profile={attraction.rideProfile} locale={locale as Locale}>
+                      {rcdbBadge}
+                    </RideProfileTeaser>
+                  ) : (
+                    rcdbBadge
                   )}
                 </div>
               )}

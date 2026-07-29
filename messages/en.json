@@ -804,6 +804,7 @@
       "minHeightTitle": "Minimum rider height: {cm} cm",
       "maxHeight": "Up to {cm} cm",
       "mayGetWet": "You may get wet",
+      "rcdbLabel": "{attraction} on RCDB",
       "rcdbTitle": "Technical ride facts on RCDB (Roller Coaster DataBase)"
     }
   },

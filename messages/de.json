@@ -804,6 +804,7 @@
       "minHeightTitle": "Mindestgröße: {cm} cm",
       "maxHeight": "Bis {cm} cm",
       "mayGetWet": "Nässegefahr",
+      "rcdbLabel": "{attraction} in der RCDB",
       "rcdbTitle": "Technische Daten auf RCDB (Roller Coaster DataBase)"
     }
   },

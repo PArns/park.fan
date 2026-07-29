@@ -4,6 +4,27 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: the ride header's facts say what they are
+
+Follow-up to the header cleanup below. The facts band was a row of values with
+no nouns on them: a wrench and "Intamin", a calendar and "2016", and "RCDB" —
+readable if you already knew what each one meant, a guess otherwise, and the
+`title` tooltips only helped the half of the audience with a mouse.
+
+- **Every fact names itself:** "Manufacturer: Intamin", "Opened: 2016",
+  "Inversions: 0".
+- **The RCDB link names its destination** — "Taron on RCDB" instead of a bare
+  acronym, so it reads as a way out of the page rather than a label. It moved
+  out of `AttractionMetaBadges` (the rider-restriction set shared with the
+  attraction cards) into its own `RcdbBadge`.
+- **Order follows what you need to know:** the height limit that decides
+  whether you may ride at all, then what the ride does (inversions), then who
+  built it and when, then the outbound reference. The "N figures" jump link
+  stays pinned right.
+- **The glossary link moved above the 3-D player**, joining the figure's name
+  and definition — stranded under a five-second animation it was a footnote to
+  a video nobody had finished.
+
 ## Unreleased – fix: the ride page header, and every section on it, reads like the park page
 
 The ride header had grown a row at a time and no longer matched the park
