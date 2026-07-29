@@ -62,6 +62,7 @@ import { HERO_IMAGE_META } from '@/lib/hero-images-meta';
 import { HERO_3D_ENABLED } from '@/lib/config/features';
 
 import type { Metadata } from 'next';
+import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 
 // STATIC SHELL (per-locale build-time prerender — the homepage is only 6 pages, NOT the park/
 // attraction catalog). The shell is served straight from the CDN (fast TTFB → fast LCP, bf-cache
@@ -96,6 +97,7 @@ interface HomePageProps {
 
 export async function generateMetadata({ params }: HomePageProps): Promise<Metadata> {
   const { locale } = await params;
+  if (!isServableRoute(locale)) return {};
   const t = await getTranslations({ locale, namespace: 'seo.home' });
   const ogImageUrl = getOgImageUrl([locale]);
 
@@ -123,6 +125,7 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
 
 export default async function HomePage({ params }: HomePageProps) {
   const { locale } = await params;
+  assertServableRoute(locale);
   setRequestLocale(locale);
   const glossaryPath = '/' + GLOSSARY_SEGMENTS[locale as Locale];
 

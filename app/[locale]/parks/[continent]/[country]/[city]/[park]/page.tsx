@@ -9,7 +9,7 @@ import {
 } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
-import { assertServableParkRoute, isServableParkRoute } from '@/lib/utils/route-guards';
+import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { MapPin } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { getParkByGeoPath } from '@/lib/api/parks';
@@ -81,7 +81,7 @@ export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: ParkPageProps): Promise<Metadata> {
   const { continent, country, city, park: parkSlug, locale } = await params;
-  if (!isServableParkRoute(locale, continent, country, city, parkSlug)) return {};
+  if (!isServableRoute(locale, continent, country, city, parkSlug)) return {};
   const t = await getTranslations({ locale, namespace: 'seo.parks' });
   const tGlobal = await getTranslations({ locale, namespace: 'seo.global' });
   const tGeo = await getTranslations({ locale, namespace: 'geo' });
@@ -203,7 +203,7 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
 // behind the SSR content, so their cold/slow fetches never block this page's TTFB.
 export default async function ParkPage({ params }: ParkPageProps) {
   const { locale, continent, country, city, park: parkSlug } = await params;
-  assertServableParkRoute(locale, continent, country, city, parkSlug);
+  assertServableRoute(locale, continent, country, city, parkSlug);
   setRequestLocale(locale);
 
   const t = await getTranslations('parks');
