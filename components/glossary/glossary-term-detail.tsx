@@ -8,6 +8,7 @@ import { CoasterPlayer, type CoasterPlayerLabels } from '@/components/glossary/c
 import type { GlossaryTerm } from '@/lib/glossary/types';
 import type { Breadcrumb } from '@/lib/api/types';
 import type { Locale } from '@/i18n/config';
+import type { ReactNode } from 'react';
 import { ArrowLeft, ArrowRight, Sparkles, Tag } from 'lucide-react';
 
 /** Glossary terms describing the prediction model or its accuracy metrics — each
@@ -38,6 +39,17 @@ interface GlossaryTermDetailProps {
   };
   /** Localised strings for the 3-D player; only needed when `term.player` is set. */
   playerLabels?: CoasterPlayerLabels;
+  /**
+   * The rides that feature this term, as a slot rather than a sibling section.
+   *
+   * It used to render in its own full-width `PageContainer` below this
+   * component, which put two page paddings plus a chapter margin between the
+   * definition and the rides and made it a stripe wider than the card it
+   * belongs to — it read as a different page. Passing it in keeps it in the
+   * SAME grid column, one card-gap under the definition, still streamed
+   * separately by the caller's `<Suspense>`.
+   */
+  rides?: ReactNode;
 }
 
 export function GlossaryTermDetail({
@@ -48,6 +60,7 @@ export function GlossaryTermDetail({
   segment,
   labels,
   playerLabels,
+  rides,
 }: GlossaryTermDetailProps) {
   const hasPlayer = Boolean(term.player && playerLabels);
 
@@ -161,6 +174,7 @@ export function GlossaryTermDetail({
               <div className="border-primary/10 border-t px-6 py-6">{definitionBlock}</div>
             </Card>
             {fancastCta}
+            {rides}
             {backButton}
           </div>
           {sidebar}
@@ -174,6 +188,7 @@ export function GlossaryTermDetail({
               <div className="border-primary/10 border-t px-6 py-6">{definitionBlock}</div>
             </Card>
             {fancastCta}
+            {rides}
             {backButton}
           </div>
           {sidebar}

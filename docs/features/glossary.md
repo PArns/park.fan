@@ -75,7 +75,7 @@ definition: 'First paragraph text.\n\nSecond paragraph with more detail.\n\nThir
 - **Overview glass panel**: Breadcrumb sits above the panel; title + description + search + category pills are inside a single `bg-background/60 backdrop-blur-md` glass card.
 - **Type-to-search**: Any keypress on the overview page focuses the search input automatically. ESC clears and blurs.
 - **Detail page**: 2-column grid (main + 260px sidebar) with glass cards. Related terms in sidebar use `divide-y` rows. Back button uses `variant="default"` (primary color).
-- **Detail page extras**: Below the term content, detail pages include `NearbyParksCard`, `FavoritesSection`, and `FeaturedParksSection` — same widgets as the homepage.
+- **Detail page extras**: Below the term content, detail pages render the shared `PageBottomSections` (`components/common/page-bottom-sections.tsx`) — Nearby → Favorites → Featured Parks, the same tail the blog pages use. It is separated from the page's own content by a rule and a `bg-muted/30` tint (`border-y`), not by stacked padding: the tint continues into `FavoritesSection`'s band, so the whole tail reads as one region without pushing "nearest open park" a screenful down.
 
 ## Language Switcher
 
@@ -101,10 +101,10 @@ curated `rideProfile` (see the backend's
 The API stores only **glossary term ids**; this app owns the glossary and
 resolves them.
 
-| Direction        | Where                                  | Component                                     |
-| ---------------- | -------------------------------------- | --------------------------------------------- |
-| ride → glossary  | ride page, below the history chapter   | `components/parks/ride-profile-section.tsx`   |
-| glossary → rides | term detail page, below the definition | `components/glossary/glossary-term-rides.tsx` |
+| Direction        | Where                                      | Component                                     |
+| ---------------- | ------------------------------------------ | --------------------------------------------- |
+| ride → glossary  | ride page, below the history chapter       | `components/parks/ride-profile-section.tsx`   |
+| glossary → rides | term detail page, in the definition column | `components/glossary/glossary-term-rides.tsx` |
 
 - **`RideProfileSection`** renders the track figures as a **numbered** list in
   ride order — repeats are meaningful (Voltron Nevera really does hit two
@@ -117,7 +117,12 @@ resolves them.
   1 day — the seed only changes when a human edits it), groups by park and
   renders nothing when no ride carries the term. Most of the glossary is
   concepts no ride profile references, and an empty box would be worse than no
-  box.
+  box. It is handed to `GlossaryTermDetail` as its **`rides` slot** (still
+  wrapped in the page's `<Suspense>`, so it streams) rather than rendered as a
+  sibling section: that puts it in the same grid column as the definition card,
+  one card-gap below it and the same width, instead of a full-width stripe two
+  page paddings further down. Its own chrome mirrors the definition card —
+  `Card` + heading strip, not a `PageSection` with a frosted chapter pill.
 
 An id this app has no term for is **dropped**, not rendered raw — the API can
 legitimately be seeded with a term before the glossary entry lands here.

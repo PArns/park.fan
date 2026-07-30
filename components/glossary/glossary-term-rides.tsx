@@ -2,8 +2,8 @@ import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { RollerCoaster, Timer } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { GlassCard } from '@/components/common/glass-card';
-import { PageSection } from '@/components/common/page-section';
+import { Card } from '@/components/ui/card';
+import { SectionHeading } from '@/components/common/section-heading';
 import { getAttractionsForTerm } from '@/lib/api/glossary-rides';
 import type { TermAttraction } from '@/lib/api/types';
 
@@ -69,90 +69,100 @@ export async function GlossaryTermRides({ termId, limit = 12 }: GlossaryTermRide
   const hidden = rest.length - shown.length;
 
   return (
-    /* The same chapter unit the ride page uses — section, heading and the
-       spacing around them in one place, so this page and that one cannot drift
-       apart again. `id` keeps the #rides anchor and its scroll offset. */
-    <PageSection
-      icon={RollerCoaster}
-      title={t('title')}
-      badge={<Badge variant="secondary">{rides.length}</Badge>}
-      id="rides"
-      frosted
-    >
-      <GlassCard className="space-y-6 p-5 sm:p-6">
-        {top.length > 0 && (
-          <div className="space-y-2">
-            <h3 className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
-              {t('topTitle')}
-            </h3>
-            {/* A grid, not a fixed three-column row: a term can have fewer than
-                three rides (celestial-spin has exactly one) and a rigid raster
-                would leave holes. */}
-            <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {top.map((ride) => (
-                <li key={`top-${parkPath(ride)}/${ride.slug}`}>
-                  <Link
-                    href={`/parks/${parkPath(ride)}/${ride.slug}` as ParkPath}
-                    className="border-border/60 hover:border-primary/40 hover:bg-primary/5 group block h-full rounded-lg border p-3 transition-colors"
-                  >
-                    <span className="group-hover:text-primary block text-sm font-semibold transition-colors">
-                      {ride.name}
-                    </span>
-                    <span className="text-muted-foreground block text-xs">{ride.parkName}</span>
-                    <span className="text-muted-foreground mt-1.5 flex items-center gap-1 text-xs tabular-nums">
-                      <Timer className="h-3 w-3 shrink-0" aria-hidden="true" />
-                      {t('typicalWait', { minutes: ride.typicalPeakWait as number })}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {shown.length > 0 && (
-          <div className="space-y-2">
-            {/* "More rides", not "All rides": the three highlighted above are
-                deliberately not repeated here, so a heading claiming to list all
-                of them sends people hunting for the ride they just saw. */}
-            {top.length > 0 && (
+    /* Built like the definition card directly above it — same border, same
+       shadow, heading strip over a divided body — because it is the same
+       chapter of the same page. It used to be a `PageSection` with a frosted
+       heading pill floating over the page background, which read as a separate
+       page bolted underneath. `id` keeps the #rides anchor and its scroll
+       offset (the glossary overview links straight here). */
+    <section id="rides" className="scroll-mt-24">
+      <Card className="border-primary/20 gap-0 py-0 shadow-md">
+        <div className="border-primary/10 border-b px-6 py-4">
+          {/* `plain` + `mb-0`: a card header, not a page chapter — the page's
+              one chapter-sized heading is the term's own h1. */}
+          <SectionHeading
+            icon={RollerCoaster}
+            title={t('title')}
+            badge={<Badge variant="secondary">{rides.length}</Badge>}
+            variant="plain"
+            className="mb-0"
+          />
+        </div>
+        <div className="space-y-6 px-5 py-5 sm:px-6 sm:py-6">
+          {top.length > 0 && (
+            <div className="space-y-2">
               <h3 className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
-                {t('restTitle')}
+                {t('topTitle')}
               </h3>
-            )}
-            <ul className="divide-border/60 divide-y">
-              {groupByPark(shown).map((group) => (
-                <li key={group.path} className="py-3 first:pt-0 last:pb-0">
-                  <p className="text-muted-foreground mb-1.5 text-xs font-medium">
-                    {group.parkName}
-                  </p>
-                  <ul className="flex flex-wrap gap-2">
-                    {group.rides.map((ride) => (
-                      <li key={ride.slug}>
-                        <Link
-                          href={`/parks/${group.path}/${ride.slug}` as ParkPath}
-                          className="border-border/60 hover:border-primary/40 hover:bg-primary/5 hover:text-primary inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1 text-sm font-medium transition-colors"
-                        >
-                          {ride.name}
-                          {ride.openedYear != null && (
-                            <span className="text-muted-foreground text-xs tabular-nums">
-                              {ride.openedYear}
-                            </span>
-                          )}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-              ))}
-            </ul>
+              {/* A grid, not a fixed three-column row: a term can have fewer than
+                  three rides (celestial-spin has exactly one) and a rigid raster
+                  would leave holes. */}
+              <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {top.map((ride) => (
+                  <li key={`top-${parkPath(ride)}/${ride.slug}`}>
+                    <Link
+                      href={`/parks/${parkPath(ride)}/${ride.slug}` as ParkPath}
+                      className="border-border/60 hover:border-primary/40 hover:bg-primary/5 group block h-full rounded-lg border p-3 transition-colors"
+                    >
+                      <span className="group-hover:text-primary block text-sm font-semibold transition-colors">
+                        {ride.name}
+                      </span>
+                      <span className="text-muted-foreground block text-xs">{ride.parkName}</span>
+                      <span className="text-muted-foreground mt-1.5 flex items-center gap-1 text-xs tabular-nums">
+                        <Timer className="h-3 w-3 shrink-0" aria-hidden="true" />
+                        {t('typicalWait', { minutes: ride.typicalPeakWait as number })}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
-            {hidden > 0 && (
-              <p className="text-muted-foreground mt-4 text-sm">{t('more', { count: hidden })}</p>
-            )}
-          </div>
-        )}
-      </GlassCard>
-    </PageSection>
+          {shown.length > 0 && (
+            <div className="space-y-2">
+              {/* "More rides", not "All rides": the three highlighted above are
+                  deliberately not repeated here, so a heading claiming to list all
+                  of them sends people hunting for the ride they just saw. */}
+              {top.length > 0 && (
+                <h3 className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
+                  {t('restTitle')}
+                </h3>
+              )}
+              <ul className="divide-border/60 divide-y">
+                {groupByPark(shown).map((group) => (
+                  <li key={group.path} className="py-3 first:pt-0 last:pb-0">
+                    <p className="text-muted-foreground mb-1.5 text-xs font-medium">
+                      {group.parkName}
+                    </p>
+                    <ul className="flex flex-wrap gap-2">
+                      {group.rides.map((ride) => (
+                        <li key={ride.slug}>
+                          <Link
+                            href={`/parks/${group.path}/${ride.slug}` as ParkPath}
+                            className="border-border/60 hover:border-primary/40 hover:bg-primary/5 hover:text-primary inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1 text-sm font-medium transition-colors"
+                          >
+                            {ride.name}
+                            {ride.openedYear != null && (
+                              <span className="text-muted-foreground text-xs tabular-nums">
+                                {ride.openedYear}
+                              </span>
+                            )}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                ))}
+              </ul>
+
+              {hidden > 0 && (
+                <p className="text-muted-foreground mt-4 text-sm">{t('more', { count: hidden })}</p>
+              )}
+            </div>
+          )}
+        </div>
+      </Card>
+    </section>
   );
 }

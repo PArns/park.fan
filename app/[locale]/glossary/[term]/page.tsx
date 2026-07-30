@@ -11,24 +11,10 @@ import { GlossaryTermDetail } from '@/components/glossary/glossary-term-detail';
 import { GlossaryBackground } from '@/components/glossary/glossary-background';
 import { GlossaryStructuredData } from '@/components/seo/glossary-structured-data';
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { PageBottomSections } from '@/components/common/page-bottom-sections';
 import { Suspense } from 'react';
-import { FeaturedParksSlot } from '@/components/home/featured-parks-slot';
-import { FeaturedParksSkeleton } from '@/components/home/home-skeletons';
-import nextDynamic from 'next/dynamic';
 import type { Metadata } from 'next';
 import type { Locale } from '@/i18n/config';
-
-const FavoritesSection = nextDynamic(
-  () =>
-    import('@/components/parks/favorites-section').then((m) => ({ default: m.FavoritesSection })),
-  { loading: () => null, ssr: true }
-);
-
-const NearbyParksCard = nextDynamic(
-  () =>
-    import('@/components/parks/nearby-parks-card').then((m) => ({ default: m.NearbyParksCard })),
-  { loading: () => null, ssr: true }
-);
 
 interface TermPageProps {
   params: Promise<{ locale: string; term: string }>;
@@ -188,30 +174,23 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
             fancastCta: t('fancastCta'),
           }}
           playerLabels={playerLabels}
+          /* The other half of the ride ↔ glossary link: every curated ride that
+             features this term. Handed in as a slot so it renders inside the
+             detail's own column — aligned with the definition card instead of
+             as a full-width stripe below it — while the Suspense boundary keeps
+             it off the critical path. Renders nothing for the concept terms no
+             ride profile references. */
+          rides={
+            <Suspense fallback={null}>
+              <GlossaryTermRides termId={term.id} />
+            </Suspense>
+          }
         />
       </PageContainer>
 
-      {/* The other half of the ride ↔ glossary link: every curated ride that
-          features this term. Renders nothing for the concept terms no ride
-          profile references. */}
-      <PageContainer className="pb-4">
-        <Suspense fallback={null}>
-          <GlossaryTermRides termId={term.id} />
-        </Suspense>
-      </PageContainer>
-
-      {/* Nearby parks + favorites — same widgets as homepage */}
-      <section className="border-b px-4 py-8">
-        <div className="container mx-auto">
-          <NearbyParksCard />
-        </div>
-      </section>
-
-      <FavoritesSection />
-
-      <Suspense fallback={<FeaturedParksSkeleton />}>
-        <FeaturedParksSlot locale={locale} />
-      </Suspense>
+      {/* Nearby → favorites → featured parks, the same tail the blog pages get.
+          It used to be hand-rolled here, which is how the two drifted apart. */}
+      <PageBottomSections locale={locale} />
     </>
   );
 }
