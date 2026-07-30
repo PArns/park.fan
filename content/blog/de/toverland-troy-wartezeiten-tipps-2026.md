@@ -436,6 +436,8 @@ Meine Reihenfolge für einen Standardtag mit Öffnung um 10 Uhr:
    weiße Holzkonstruktion angestrahlt wird und der Zug hörbar schneller durch
    die Station rauscht als morgens: der beste Moment des Tages.
 
+![Das Kettenkarussell Djinn in der Halle Land van Toos | Djinn dreht seine Runden über dem orientalischen Markt in Land van Toos: 12,8 Meter hoch, und komplett überdacht. | right](/blog/images/toverland-halloween/05-djinn-land-van-toos.jpg)
+
 Ein kompletter Tag reicht im Toverland bequem für alles Wichtige, inklusive
 Mehrfachfahrten. Wer mit kleinen Kindern kommt, plant eher zwei halbe Tage als
 einen langen, denn die Hallen (Land van Toos, Wunderwald) sind ein
@@ -477,6 +479,8 @@ Ausnahme gibt es nur im Oktober.
 
 ## Halloween im Toverland: Halloween Days, Halloween Nights & DesTroy
 
+![Das hölzerne trojanische Pferd in Ithaka, rot angestrahlt und in Nebel gehüllt, davor eine Menschenmenge | Das trojanische Pferd in Ithaka, sobald die Halloween Nights anfangen. Tagsüber stehen vor derselben Kulisse Familien und machen Fotos. | wide](/blog/images/toverland-halloween/01-trojanisches-pferd-rot.jpg)
+
 ![Darsteller mit Tentakel-Maske und Handglocke vor dem Toverland-Halloween-Nights-Banner | Der Nachtwächter der Toverland Halloween Nights. Gesicht: Verhandlungssache. | right](/blog/images/halloween-parks-2026/toverland-cthulhu.jpg)
 
 Halloween ist im Toverland mehr als ein bisschen Deko. Der Park bekommt eine
@@ -496,11 +500,15 @@ sehr unterschiedliche Veranstaltungen im selben Park:
   Experiences**, dazu eine Eröffnungsparade, Bodennebel überall und ein
   Feuerwerk als Schlusspunkt.
 
+![Beleuchtete Kürbisse mit Hexenhüten zwischen trockenen Maisstauden | Kürbisse im Mais: Toverland dekoriert schon im Park mit dem Material, aus dem 2026 das Maze besteht. | left](/blog/images/toverland-halloween/04-kuerbisse-maisfeld.jpg)
+
 Die Neuheit **2026** wächst buchstäblich: **„Entwined: The Maze“**, ein
 **sieben Hektar großes Maisfeld** mit meterhohen Wänden hinter Fēnix, laut Park
 doppelt so groß wie der gesamte Avalon-Bereich, und vermarktet als größte
 Halloween-Experience Europas. Es ersetzt das langjährige Ratten-Labyrinth
 „Trapped“. Die einzige Regel, die dort zählt: Wer stehen bleibt, wird geschnappt.
+
+![Das Eingangsschild von Troy, zu „DesTROY – The Ride“ umdekoriert, darunter zwei Halloween-Nights-Banner | Aus Troy wird DesTROY: Der Park dekoriert das Eingangsschild der Achterbahn selbst um. | right](/blog/images/toverland-halloween/03-destroy-schild.jpg)
 
 Für Troy-Fans kommt der beste Teil aber erst: Eine der Scare Zones heißt
 **„DesTroy“** und liegt in **Ithaka**, also direkt an und unter der Holzachterbahn. Mutierte trojanische
@@ -509,6 +517,8 @@ gibt in Europa nicht viele Gelegenheiten, eine erstklassige Holzachterbahn im
 Dunkeln durch eine bespielte Scare Zone zu fahren, mit Nebel im
 Bremsabschnitt und Darstellern in der Warteschlange. Das hier ist eine davon,
 und sie ist allein die Anreise wert.
+
+![Ein trojanischer Krieger mit Speer steht im Scheinwerferlicht vor dem rot beleuchteten Pferd | Einer der trojanischen Soldaten von DesTroy. Er bewegt sich sehr lange nicht, und dann doch. | left](/blog/images/toverland-halloween/02-trojanisches-pferd-krieger.jpg)
 
 💡 **Der Tipp, den Toverland-Kenner sofort geben: der Fear Pass.** Für 62,50 €
 bekommst du einmaligen, schnelleren Zugang zu allen sechs Haunted Experiences,
