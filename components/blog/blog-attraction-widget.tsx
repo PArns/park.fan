@@ -44,13 +44,14 @@ export async function BlogAttractionWidget({
     <div
       className={
         inRow
-          ? 'not-prose grid h-full w-full [grid-template-rows:auto_auto_1fr_auto] gap-3'
-          : 'not-prose clear-both mx-auto my-8 grid w-full [grid-template-rows:auto_auto_1fr_auto] gap-3 sm:w-1/2 lg:w-1/3'
+          ? 'not-prose grid h-full w-full [grid-template-rows:auto_1fr] gap-3'
+          : 'not-prose clear-both mx-auto my-8 grid w-full [grid-template-rows:auto_1fr] gap-3 sm:w-1/2 lg:w-1/3'
       }
     >
       <h3 className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
         {tBlog('widget.attractionSpotlight')}
       </h3>
+      {/* Row template belongs on the card, not on this wrapper — see BlogParkWidget. */}
       <BlogAttractionCardLive
         park={park}
         attraction={attraction}
@@ -59,6 +60,7 @@ export async function BlogAttractionWidget({
           attraction.attractionSlug
         )}
         parkBackgroundImage={getParkBackgroundImage(park.slug)}
+        className="grid h-full [grid-template-rows:auto_2rem_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]"
       />
     </div>
   );

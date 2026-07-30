@@ -301,7 +301,49 @@ https://www.instagram.com/reel/CxYz123/
 
 ---
 
-## 8. Before you commit
+## 8. Writing style (REQUIREMENT)
+
+Posts must not read like they were generated. That is a hard requirement, not a
+preference — a reader who smells a language model stops trusting the numbers
+too. Write the way a person who actually stood in the queue would write.
+
+**Never use "ehrlich" and its whole family.** No `ehrlich gesagt`, no
+`der ehrlichste Coaster`, no `um ehrlich zu sein`, no "honest" framing at all.
+It is the single clearest tell. The same goes for the neighbouring register that
+performs sincerity instead of just saying the thing:
+
+| Don't write                           | Write instead                         |
+| ------------------------------------- | ------------------------------------- |
+| `der ehrlichste Woodie Europas`       | say what makes it good, with a number |
+| `Fairness-Hinweis in eigener Sache`   | `Eine Einschränkung dazu:`            |
+| `Was sie unbestreitbar ist:`          | `Eines ist sie auf jeden Fall:`       |
+| `bezahlte Vorfahrt`                   | `sich an der Schlange vorbeikaufen`   |
+| `ein weiterer Datenpunkt`             | `noch eine Zahl`                      |
+| `die These dieses Artikels`           | drop it, or name the claim            |
+| `in Wartezeit-Währung`                | `da stehst du am längsten an`         |
+| `ein weltweit erstmalig gebauter Typ` | `den es sonst nirgends gibt`          |
+| `Es ist ein schönes Muster.`          | cut, or say what it produced          |
+
+Further rules that keep German prose sounding human:
+
+- **Vary the sentence openings.** Three paragraphs in a row starting with
+  `Und` or `Das ist` reads like autocomplete.
+- **No coined metaphor-currencies** (`X-Währung`, `Lebenszeit-Konto`). One
+  figure of speech per section is plenty, and it should be a normal one.
+- **Don't announce the structure** (`Und jetzt der Grund, warum dieses Kapitel
+hier steht`, `Kommen wir nun zu`). Just write the next paragraph.
+- **Articles and prepositions matter.** It is **die** Efteling — `bis zur
+Efteling`, `im Vergleich zur Efteling`, never `zu Efteling`.
+- **Superlatives need a source or a number** right next to them, otherwise cut.
+- **Hedge thin data explicitly** rather than rounding it into confidence: if a
+  month has four measured days, say so.
+
+Voice reference: `de/phantasialand-tipps-2026.md` and
+`de/toverland-troy-wartezeiten-tipps-2026.md`.
+
+---
+
+## 9. Before you commit
 
 ```bash
 pnpm generate:blog-manifest   # pick up new/renamed files

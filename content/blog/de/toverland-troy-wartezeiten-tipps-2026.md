@@ -6,11 +6,12 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Alle fahren an Sevenum vorbei zur Efteling, und stehen dort 34 Minuten für
-  eine Holzachterbahn. Im Toverland wartet die bessere, und zwar 16 Minuten:
-  Troy von GCI, für mich der ehrlichste Woodie Europas. Der große Guide 2026
-  mit Wartezeit-Daten, Fēnix, der Weltpremiere Swinging Bobsled, Halloween und
-  allem, was du vor dem ersten Besuch wissen solltest.
+  Alle fahren an Sevenum vorbei bis zur Efteling und stehen dort 34 Minuten für
+  Holzachterbahn an. Vierzig Kilometer vorher steht die bessere, und für die
+  wartet man 16 Minuten: Troy von GCI, der am meisten unterschätzte Woodie
+  Europas. Der große Guide 2026 mit Wartezeit-Daten, Fēnix, der Weltpremiere
+  Swinging Bobsled, Halloween und allem, was du vor dem ersten Besuch wissen
+  solltest.
 tags:
   - toverland
   - troy
@@ -56,26 +57,27 @@ Es gibt eine Autobahnausfahrt in Nordlimburg, an der jedes Jahr hunderttausende
 Achterbahnfans vorbeifahren. Sie kommen aus dem Ruhrgebiet, aus Köln, aus
 Düsseldorf, sie haben den Kofferraum voll Regenjacken und den Kopf voll
 Vorfreude, und sie fahren weiter. Noch neunzig Minuten bis Kaatsheuvel, bis zur
-[Efteling](ref:efteling), zu Recht eine der schönsten Parkadressen der Welt.
-Die Ausfahrt, an der sie vorbeifahren, heißt Sevenum.
+[Efteling](ref:efteling), dem Disney der Niederlande und zu Recht eine der
+schönsten Parkadressen der Welt. Die Ausfahrt, an der sie vorbeifahren, heißt
+Sevenum.
 
 Dort liegt das [Toverland](ref:toverland?long), und dort steht eine
 Holzachterbahn, die besser ist als die, für die sie anderthalb Stunden weiter
-gleich anstehen werden. Das ist keine Provokation, das ist eine Behauptung, für
-die ich in diesem Artikel Zahlen auf den Tisch lege: Zwei Holzachterbahnen,
-derselbe Hersteller, dieselbe Region, vierzig Kilometer Luftlinie
-auseinander, und ein Unterschied in der typischen Wartezeit von **mehr als dem
-Doppelten**, in die falsche Richtung.
+gleich anstehen werden. Das ist keine Provokation, sondern eine Behauptung, für
+die ich gleich Zahlen auf den Tisch lege: zwei Holzachterbahnen, derselbe
+Hersteller, dieselbe Region, vierzig Kilometer Luftlinie auseinander, und ein
+Unterschied in der typischen Wartezeit von **mehr als dem Doppelten** — in die
+falsche Richtung.
 
-Ich schreibe diesen Guide als jemand, dessen Heimatpark das
+Ich schreibe das als jemand, dessen Heimatpark das
 [Phantasialand](ref:phantasialand) ist, sechzig Autominuten südlich, und der
-sich lange Zeit von genau der Arroganz hat leiten lassen, die dieser Park bei
-vielen deutschen Fans erlebt: „Toverland? Da war ich als Kind mal in der Halle.“
-Diese Halle gibt es noch, sie ist der Ursprung. Aber der Park, der um sie herum
+jahrelang selbst den Satz im Kopf hatte, den dieser Park von deutschen Fans immer
+wieder zu hören bekommt: „Toverland? Da war ich als Kind mal in der Halle.“ Die
+Halle gibt es noch, sie ist der Ursprung. Aber der Park, der um sie herum
 gewachsen ist, gehört inzwischen zu den vier oder fünf besten Adressen in einem
-Umkreis, in dem [Europa-Park](ref:europa-park) und Efteling stehen. Und er ist
-der einzige davon, in dem man um halb elf noch spontan zu seinem besten Coaster
-laufen kann.
+Umkreis, in dem der [Europa-Park](ref:europa-park) und die Efteling stehen. Und er ist
+der einzige davon, in dem man um halb elf noch spontan zum besten Coaster des
+Parks laufen kann.
 
 ![Das Toverland in Sevenum von oben | Zehn Hektar Limburg, sechs Themenwelten, fünf Achterbahnen: das Toverland ist kompakter, als es sich anfühlt. | wide](/images/parks/toverland/background-16x9.jpg)
 
@@ -100,13 +102,14 @@ Sprung, sondern in Etappen, die man heute noch abgehen kann wie Jahresringe:
 - **2004 – Wunderwald** (damals „Magic Forest“). Die zweite Halle, und mit ihr
   der erste ernsthafte Coaster: [Booster Bike](ref:toverland/booster-bike), ein
   Vekoma-Motorbike-Coaster und der weltweite Prototyp seiner Bauart. Ein
-  kleiner Park bestellt eine Weltneuheit, das war früh ein Muster.
+  kleiner Park bestellt eine Weltneuheit: Das sollte sich wiederholen.
 - **2007 – Ithaka.** Der erste echte Außenbereich, gebaut um eine einzige
   Bahn: [Troy](ref:toverland/troy). Darum geht es gleich ausführlich.
 - **2013 – De Magische Vallei.** Der Fantasy-Bereich rund um die
   „Dwervels“, mit dem Mack-Spinning-Coaster
-  [Dwervelwind](ref:toverland/dwervelwind) (2012) und der
-  Wildwasser-Attraktion [Expedition Zork](ref:toverland/expedition-zork).
+  [Dwervelwind](ref:toverland/dwervelwind) (der schon im Herbst 2012 ein paar
+  Wochen fuhr, dazu unten mehr) und der Wildwasser-Attraktion
+  [Expedition Zork](ref:toverland/expedition-zork).
 - **2018 – Avalon & Port Laguna.** Die 35-Millionen-Euro-Erweiterung, die aus
   dem Ausflugsziel einen Themenpark machte: ein komplett neuer Eingangsbereich
   im mediterranen Hafenstil, dazu die Artus-Welt Avalon mit dem
@@ -121,7 +124,7 @@ Sprung, sondern in Etappen, die man heute noch abgehen kann wie Jahresringe:
 Die Besucherzahlen erzählen dieselbe Geschichte in Ziffern: 620.000 im Jahr
 2013, 862.000 im letzten Vor-Corona-Jahr 2019, und seit 2022 konstant über einer
 Million; **1.137.000 Gäste waren es 2025**. Das ist ungefähr ein Drittel dessen,
-was Efteling oder Europa-Park durchschleusen, und genau darin liegt, wie wir
+was die Efteling oder der Europa-Park durchschleusen, und genau darin liegt, wie wir
 gleich sehen werden, der ganze Reiz.
 
 Und 2026 ist Jubiläumsjahr. Der Park feiert seine **25 Jahre** mit zwei Dingen,
@@ -184,8 +187,8 @@ eine Schlange. Dazu gleich.
 ```
 
 Ein Wort noch zu dem Vorurteil, das jede Holzachterbahn jenseits ihres zehnten
-Geburtstags mitschleppt: dass sie rappelt. Bei Troy ist das seit **2024** eine
-sehr bewusst bearbeitete Frage. Der Park hat einen mehrjährigen **Retrack**
+Geburtstags mitschleppt: dass sie rappelt. Daran arbeitet der Park seit
+**2024** sehr systematisch. Er hat einen mehrjährigen **Retrack**
 begonnen und ersetzt seither jeden Winter rund **198 Meter Strecke auf beiden
 Schienen**, in Summe knapp 400 laufende Meter Holz pro Saison, unter einem
 temporären Dach, damit das Wetter nicht mitredet, und von zwanzig eigens dafür
@@ -195,7 +198,7 @@ kamen der First Drop und das Horseshoe dran. Wer Troy vor zehn Jahren gefahren
 ist und sie in Erinnerung hat als „geil, aber ruppig“: Fahr sie nochmal.
 
 Dass ich mit meiner Begeisterung nicht alleine bin, zeigt ein Detail aus dem
-Jubel-Jahr 2018: Bei den **European Star Awards** landete Troy in der Kategorie
+Erfolgsjahr 2018: Bei den **European Star Awards** landete Troy in der Kategorie
 _beste Holzachterbahn Europas_ knapp hinter dem Sieger, und das mit einer damals
 elf Jahre alten Bahn in einem Park, der ein Zehntel des Publikums der
 Konkurrenten hatte.
@@ -226,20 +229,20 @@ dieselbe Rechenmethode:
 | **Joris en de Draak** (GCI, 2010) | Efteling  |           34 Min |       40 Min |
 
 Mehr als das Doppelte. Für eine Bahn, die unter Enthusiasten in kaum einem
-Ranking über Troy steht. Und weil das Bild ohne die Nachbarn unvollständig
-wäre, hier dieselben Zahlen für die Headliner, um die alle wirklich anstehen,
-ebenfalls aus unserer Historie:
+Ranking über Troy steht. Damit ist der Holz-Vergleich erledigt. Zum Einordnen
+lohnt aber ein zweiter Blick, diesmal über die Bauart hinweg: Was kosten die
+großen Namen der Region an Wartezeit, egal ob Holz oder Stahl?
 
-| Attraktion        | Park          | Typisch (Median) | Spitze (P90) |
-| ----------------- | ------------- | ---------------: | -----------: |
-| Taron             | Phantasialand |           48 Min |       54 Min |
-| F.L.Y.            | Phantasialand |           40 Min |       47 Min |
-| Joris en de Draak | Efteling      |           34 Min |       40 Min |
-| Baron 1898        | Efteling      |           26 Min |       32 Min |
-| **Troy**          | **Toverland** |       **16 Min** |   **21 Min** |
-| **Fēnix**         | **Toverland** |       **16 Min** |   **20 Min** |
+| Achterbahn        | Bauart              | Park          | Typisch (Median) | Spitze (P90) |
+| ----------------- | ------------------- | ------------- | ---------------: | -----------: |
+| Taron             | Multi-Launch, Stahl | Phantasialand |           48 Min |       54 Min |
+| F.L.Y.            | Flying, Stahl       | Phantasialand |           40 Min |       47 Min |
+| Joris en de Draak | Holz                | Efteling      |           34 Min |       40 Min |
+| Baron 1898        | Dive Coaster, Stahl | Efteling      |           26 Min |       32 Min |
+| **Troy**          | **Holz**            | **Toverland** |       **16 Min** |   **21 Min** |
+| **Fēnix**         | **Wing, Stahl**     | **Toverland** |       **16 Min** |   **20 Min** |
 
-Das ist die ganze Geschichte in einer Tabelle. Für die Zeit, die du im
+Die beiden Toverland-Bahnen stehen unten, und zwar mit Abstand. Für die Zeit, die du im
 Phantasialand **einmal** bei [Taron](ref:phantasialand/taron) anstehst, fährst
 du im Toverland Troy dreimal. Und der Grund dafür ist keine Magie, sondern
 Arithmetik, die ich in der [Kunst des Wartens](/blog/die-kunst-des-wartens)
@@ -248,14 +251,13 @@ Das Toverland hat rund eine Million Gäste im Jahr und verteilt sie auf fünf
 Achterbahnen, fünf Wasserattraktionen und über vierzig Attraktionen insgesamt.
 Ein Park mit dem dreifachen Publikum hat selten die dreifache Kapazität.
 
-Was in diese Rechnung übrigens nicht eingreift: bezahlte Vorfahrt. **Das
-Toverland verkauft keinen Fast Pass, keinen Express-Pass, keinen Single Rider,
-gar nichts.** Es gibt im ganzen Park exakt eine Möglichkeit, Zeit gegen Geld zu
-tauschen, und die existiert nur im Oktober (dazu im Halloween-Kapitel). An
-allen anderen Tagen ist die Schlange, die du siehst, die Schlange, die es gibt,
-und niemand kauft dir vor der Nase die Kapazität weg. Nach einigen Jahren
-Orlando-Erfahrung fühlt sich das an wie eine Rückkehr in eine bessere,
-einfachere Welt.
+In dieser Rechnung fehlt außerdem etwas, das andere Parks längst eingebaut
+haben: **Das Toverland verkauft keinen Fast Pass, keinen Express-Pass, keinen
+Single Rider, gar nichts.** Es gibt im ganzen Park genau eine Möglichkeit, Zeit
+gegen Geld zu tauschen, und die gibt es nur im Oktober (dazu im
+Halloween-Kapitel). An allen anderen Tagen ist die Schlange, die du siehst, die
+Schlange, die es gibt, und niemand kauft sich an dir vorbei. Nach einigen Jahren
+Orlando fühlt sich das an wie eine Rückkehr in eine einfachere Welt.
 
 ## Die anderen vier: Fēnix, Booster Bike, Dwervelwind, Toos-Express
 
@@ -275,10 +277,10 @@ Fahrzeug, fühlt sich jede Drehung größer an, als sie ist. Dass unterwegs ein
 Phönix Nebel über dich sprüht, hat mit der Physik nichts zu tun, macht die Sache
 aber deutlich besser.
 
-Und noch ein Datenpunkt, der die These dieses Artikels stützt: Fēnix hat, wie
-Troy, einen Median von **16 Minuten**. Ein B&M-Wing-Coaster in Europa, den man
-in einer Viertelstunde fährt. Es gibt Parks, in denen du für das gleiche
-Erlebnis eine Stunde einplanst.
+Und noch eine Zahl, die zum Rest dieses Artikels passt: Fēnix hat, wie Troy,
+einen Median von **16 Minuten**. Ein B&M-Wing-Coaster in Europa, den man in einer
+Viertelstunde fährt. Es gibt Parks, in denen du für dasselbe Erlebnis eine Stunde
+einplanst.
 
 **[Booster Bike](ref:toverland/booster-bike)** ist der Sonderling, und mein
 persönlicher Liebling im Park nach Troy. Vekoma baute 2004 hier den weltweiten
@@ -290,12 +292,20 @@ Minuten tatsächlich der Coaster mit der **längsten** typischen Wartezeit im
 Park. Was auch daran liegt, dass der Durchsatz einer Bahn, in die man einzeln
 und liegend einsteigt, überschaubar bleibt.
 
-**[Dwervelwind](ref:toverland/dwervelwind)** (Mack Rides, September 2012) ist
-ein Spinning Coaster im Dunkeln, halb Dark Ride, halb Achterbahn, mit Gondeln,
-die sich frei drehen, sodass kein Durchgang dem letzten gleicht, und mit
-Bordsound, damals eine Premiere für diese Bauart. Und **[Toos-Express](ref:toverland/toos-express)** aus dem
-Eröffnungsjahr 2001 ist der Junior-Coaster, auf dem in diesem Park seit einem
-Vierteljahrhundert Kinder ihre erste Achterbahn fahren.
+**[Dwervelwind](ref:toverland/dwervelwind)** von Mack Rides ist ein Spinning
+Coaster im Dunkeln, halb Dark Ride, halb Achterbahn, mit Gondeln, die sich frei
+drehen, sodass kein Durchgang dem letzten gleicht, und mit Bordsound, damals eine
+Premiere für diese Bauart. Ihr Eröffnungsdatum ist eine kleine Fangfrage: Die
+Bahn war lange vor dem Rest der Magischen Vallei fertig, und statt sie ein Jahr
+lang stehen zu lassen, ließ der Park sie am **29. September 2012** einfach schon
+fahren, fünf Wochen bis zum 4. November. Danach machte sie über den Winter wieder
+zu, damit drumherum weitergebaut werden konnte, und kam im **April 2013** mit dem
+kompletten Themenbereich zurück. Deshalb liest man je nach Quelle 2012 oder 2013.
+Beides stimmt, gemeint ist dieselbe Bahn.
+
+Und **[Toos-Express](ref:toverland/toos-express)** aus dem Eröffnungsjahr 2001
+ist der Junior-Coaster, auf dem in diesem Park seit einem Vierteljahrhundert
+Kinder ihre erste Achterbahn fahren.
 
 ![Villa Fiasko im Toverland | Villa Fiasko, das Madhouse von Vekoma: der Raum dreht sich, du schwörst das Gegenteil. | right](/images/parks/toverland/villa-fiasko-4x3.jpg)
 
@@ -346,7 +356,7 @@ zum Zeitpunkt dieses Artikels noch nicht verraten.
 Ein Park mit einer Million Gästen bestellt keine Bahn von der Stange, sondern
 lässt einen neuen Fahrgeschäftstyp entwickeln, bei einem Hersteller aus der
 Nachbarschaft. Genau das hat er 2004 mit dem Booster-Bike-Prototyp schon einmal
-gemacht. Es ist ein schönes Muster.
+gemacht, und damals hat es funktioniert.
 
 ```map-widget slug=toverland
 
@@ -364,11 +374,11 @@ Minuten im Parkschnitt), gefolgt von Mai und Juli mit 20 bzw. 22 Minuten. Am
 anstrengendsten ist der **April** mit 25 Minuten, wenn Ostern, Königstag und die
 niederländischen Maiferien zusammenfallen, und dann die **Winterwochen im
 Dezember und Januar** mit 31 bzw. 26 Minuten. Das überrascht viele: Der vollste
-Zeitraum im Toverland ist nicht der Sommer, sondern die kurze, hoch nachgefragte
+Zeitraum im Toverland ist nicht der Sommer, sondern die kurze, stark gefragte
 Wintersaison, in der nur ein Teil der Attraktionen läuft und der Park nur
-mittwochs und an Wochenenden öffnet. Fairness-Hinweis in eigener Sache: Weil die
-Winter- und Vorsaison nur wenige Öffnungstage hat, stehen hinter diesen
-Monatswerten deutlich weniger Messtage als hinter den Sommermonaten. Die
+mittwochs und an Wochenenden öffnet. Eine Einschränkung dazu:
+Winter und Vorsaison haben so wenige Öffnungstage, dass hinter diesen
+Monatswerten deutlich weniger Messtage stehen als hinter den Sommermonaten. Die
 Richtung ist eindeutig, die Nachkommastelle nicht.
 
 **Nach Wochentag** ist das Muster mild, aber vorhanden: Samstag (25 Minuten)
@@ -402,7 +412,7 @@ Meine drei Faustregeln, wenn du frei wählen kannst:
    Toverland liegt in Limburg, die Herbst- und Maiferien der südlichen
    Provinzen schlagen hier stärker durch als NRW.
 3. **Wenn Winter, dann bewusst.** Winter Feelings ist wunderschön, aber es ist
-   die teuerste Zeit in Wartezeit-Währung.
+   die Zeit, in der du am längsten anstehst.
 
 ## Rope Drop & Reihenfolge: der perfekte Tag
 
@@ -467,9 +477,9 @@ nach der Pandemie abgeschafft und trotz mehrerer Fan-Petitionen nicht
 zurückgebracht. Wer im Grenzgebiet wohnt und gern mehrmals im Jahr in einen
 guten Park geht, sollte diese beiden Sätze zweimal lesen.
 
-Was der Park **nicht** verkauft, ist, wie oben erwähnt, jede Form von Vorfahrt.
-Kein Fast Pass, kein Single Rider. Der einzige Ausbruch aus dieser Regel ist ein
-Kind des Oktobers.
+Was der Park, wie oben erwähnt, **nicht** verkauft: die Möglichkeit, sich an
+der Schlange vorbeizukaufen. Kein Fast Pass, kein Single Rider. Die eine
+Ausnahme gibt es nur im Oktober.
 
 ## Halloween im Toverland: Halloween Days, Halloween Nights & DesTroy
 
@@ -504,13 +514,13 @@ im Halloween-Guide: Eine der Scare Zones heißt **„DesTroy“** und liegt in
 Soldaten bewachen die Ruinen der Stadtmauer, und Troy fährt mitten hindurch. Es
 gibt in Europa nicht viele Gelegenheiten, eine erstklassige Holzachterbahn im
 Dunkeln durch eine bespielte Scare Zone zu fahren, mit Nebel im
-Bremsabschnitt und Darstellern in der Wartelinie. Diese ist eine, und sie ist
-allein die Anreise wert.
+Bremsabschnitt und Darstellern in der Warteschlange. Das hier ist eine davon,
+und sie ist allein die Anreise wert.
 
 💡 **Der Tipp, den Toverland-Kenner sofort geben: der Fear Pass.** Für 62,50 €
 bekommst du einmaligen, schnelleren Zugang zu allen sechs Haunted Experiences,
-plus einen eigenen Bereich für die Parade. Das ist die einzige Vorfahrt, die
-dieser Park überhaupt verkauft, und an vollen Nächten ist sie der Unterschied
+plus einen eigenen Bereich für die Parade. Mehr als das verkauft dieser Park
+nirgends, und an vollen Nächten ist es der Unterschied
 zwischen „drei Häuser geschafft“ und „alle sechs, und dazu heil aus dem Mais
 gekommen“. Zwei Hinweise dazu: Der Eintritt zu den Halloween Nights ist beim
 **Magic Member** enthalten, der Fear Pass nicht. Und die Halloween Nights sind
@@ -519,17 +529,17 @@ besonders.
 
 [Toverland](ref:toverland?full)
 
-## Winter Feelings: schön, aber die teuerste Zeit
+## Winter Feelings: schön, aber die vollste Zeit
 
-Nach Halloween macht der Park kurz zu und öffnet vom **28. November 2026 bis 17. Januar 2027** als **Winter Feelings**: Lichter, Weihnachtsmarkt-Stimmung,
-eine Schlittschuhbahn und eine Curlingbahn, mittwochs und an Wochenenden plus
+Nach Halloween macht der Park kurz zu und öffnet vom **28. November 2026 bis 17. Januar 2027** als **Winter Feelings**: Lichter, Weihnachtsmarkt-Stimmung, eine
+Schlittschuhbahn und eine Curlingbahn, mittwochs und an Wochenenden plus
 durchgehend über die Weihnachtsferien.
 
 Zwei Dinge solltest du wissen. Erstens: **Nicht alles fährt.** Die
 Wasserattraktionen pausieren, und einige Außenanlagen bleiben zu; im Winter
 2026/27 kommt dafür die Weltpremiere Swinging Bobsled dazu, was diese Saison
 ungewöhnlich interessant macht. Zweitens, und das sagen unsere Daten sehr
-deutlich: **Winter ist im Toverland die Hochsaison in Wartezeit-Währung.**
+deutlich: **Im Winter stehst du im Toverland am längsten an.**
 Dezember und Januar sind mit typisch 31 und 26 Minuten die anstrengendsten
 Monate im Jahr, weil ein kleineres Angebot auf eine kurze, sehr gefragte Saison
 mit wenigen Öffnungstagen trifft. Wunderschön, aber plane es wie einen
@@ -546,9 +556,9 @@ Das Toverland macht seine Sache anständig, und in zwei Fällen richtig gut.
   einzige Ort im Park, an dem sich das Essen wie Teil der Themenwelt anfühlt
   statt wie Verpflegung.
 - **Katara Plaza** (Magische Vallei) ist der Foodcourt mit der besten Aussicht:
-  tropische Gerichte, Tische am Wasser, und dazu die Wassershow Katara.
-  Antizyklisch essen und dabei einer Show zusehen, das ist Effizienz mit
-  Genuss.
+  tropische Gerichte, Tische am Wasser, und dazu die Wassershow Katara. Zur
+  Stoßzeit essen und dabei einer Show zusehen: besser kann man eine Pause nicht
+  legen.
 - **Waldstube** (Wunderwald) ist der überdachte Alltagsretter: Pizza, Burger,
   frische Sandwiches, und bei Regen ein Segen.
 - **Hungry Harry** (Avalon) und **Mañana** (Port Laguna) machen das Schnelle,
@@ -589,8 +599,8 @@ Ferienparks; wer die Region ohnehin bereist, kombiniert das Toverland gut mit
 ### Ist das Toverland einen Besuch wert?
 
 Ja, und zwar besonders für Achterbahnfans, die genug von Schlangen haben. Der
-Park ist mit rund einer Million Gästen pro Jahr klein im Vergleich zu Efteling
-oder Europa-Park, hat aber mit [Troy](ref:toverland/troy) eine der besten
+Park ist mit rund einer Million Gästen pro Jahr klein im Vergleich zur Efteling
+oder zum Europa-Park, hat aber mit [Troy](ref:toverland/troy) eine der besten
 Holzachterbahnen Europas und mit [Fēnix](ref:toverland/fenix) den längsten Wing
 Coaster des Kontinents, bei typischen Wartezeiten von 16 Minuten. Wer
 Weltklasse-Bahnen mag, aber Warteschlangen hasst, findet hier das beste
@@ -614,7 +624,7 @@ die niederländischen Mai- und Herbstferien und die kurze Wintersaison.
 ### Braucht man im Toverland einen Fast Pass?
 
 Es gibt keinen. Das Toverland verkauft weder Fast Pass noch Single Rider; die
-einzige Vorfahrt im Park ist der **Fear Pass** für die Haunted Experiences
+einzige Ausnahme ist der **Fear Pass** für die Haunted Experiences
 während der Halloween Nights (62,50 €). Bei 16-Minuten-Medianen an den
 Headlinern brauchst du an einem normalen Tag auch keinen.
 
@@ -622,18 +632,18 @@ Headlinern brauchst du an einem normalen Tag auch keinen.
 
 „Die beste“ ist Geschmackssache, und Mammut-Konkurrenz gibt es genug (Wodan im
 Europa-Park, Untamed in Walibi Holland, Balder in Liseberg). Unter
-Enthusiasten steht Troy aber verlässlich in der europäischen Spitzengruppe, und
+Enthusiasten steht Troy aber regelmäßig in der europäischen Spitzengruppe, und
 sie ist mit 35 Metern Höhe, 1.077 Metern Länge und 90 km/h die höchste,
-längste und schnellste Holzachterbahn der Beneluxstaaten. Was sie unbestreitbar
-ist: die Weltklasse-Holzachterbahn Europas mit der kürzesten Schlange.
+längste und schnellste Holzachterbahn der Beneluxstaaten. Eines ist sie auf
+jeden Fall: die Weltklasse-Holzachterbahn Europas mit der kürzesten Schlange.
 
 ### Was ist 2026 neu im Toverland?
 
 Drei Dinge: die Illusionsshow **„Magic Memories“** von Hans Klok zum
 25-jährigen Jubiläum (seit 18. April, im Eintritt enthalten), das Ende von
 **Maximus' Blitz Bahn** am 17. Mai, und deren Nachfolger, der **Swinging
-Bobsled** — ein weltweit erstmalig gebauter Attraktionstyp, entwickelt mit ETF
-Ride Systems, Eröffnung in der Wintersaison 2026/27.
+Bobsled** — ein Attraktionstyp, den es bisher nirgends auf der Welt gibt,
+entwickelt mit ETF Ride Systems, Eröffnung in der Wintersaison 2026/27.
 
 ### Wie viel kostet der Eintritt ins Toverland 2026?
 
@@ -645,20 +655,20 @@ vorher) sind es 7 € bzw. 3,50 € weniger. Parken kostet 13,50 €. Die Jahres
 ### Schafft man das Toverland an einem Tag?
 
 Locker. Fünf Achterbahnen, fünf Wasserattraktionen und über vierzig
-Attraktionen insgesamt passen bei den hiesigen Wartezeiten in einen Tag, mit
+Attraktionen insgesamt passen bei diesen Wartezeiten in einen Tag, mit
 Zeit für Mehrfachfahrten bei Troy. Mit kleinen Kindern und den beiden
 Indoor-Hallen kann man aber problemlos zwei Tage füllen.
 
-## Fazit: der beste Gegenwert für ein Achterbahn-Wochenende
+## Fazit: das beste Verhältnis von Bahn zu Wartezeit
 
 Das Toverland ist nicht der schönste Park der Niederlande, das bleibt die
 Efteling, und nicht der immersivste Europas, das bleibt mein Phantasialand. Es
-ist etwas anderes, und für Achterbahnfans möglicherweise Wertvolleres: der Park
-mit dem besten Verhältnis von Bahnqualität zu Lebenszeit im Geländer, den ich in
+ist etwas anderes, und für Achterbahnfans vielleicht das Bessere: der Park mit
+dem besten Verhältnis von Bahnqualität zu Lebenszeit im Geländer, den ich in
 Mitteleuropa kenne. Eine Weltklasse-Holzachterbahn für 16 Minuten Wartezeit, der
 längste Wing Coaster Europas für dieselben 16 Minuten, ein Prototyp aus dem Jahr
-2004, eine Weltpremiere im kommenden Winter, keine bezahlte Vorfahrt, und eine
-Jahreskarte, die es noch gibt.
+2004, eine Weltpremiere im kommenden Winter, niemand, der sich an dir
+vorbeikauft, und eine Jahreskarte, die es noch gibt.
 
 Die Rechnung ist am Ende ganz einfach. Fahr an der Ausfahrt Sevenum einmal raus
 statt vorbei. Wenn du danach findest, du hättest lieber neunzig Minuten
@@ -694,7 +704,7 @@ Coaster haben kann._
 - Troy (Daten, Bauart, GCI, Sturmschaden 2007): [Troy (Toverland) auf Wikipedia](<https://de.wikipedia.org/wiki/Troy_(Toverland)>) · [Troy (roller coaster), englische Wikipedia](<https://en.wikipedia.org/wiki/Troy_(roller_coaster)>) · [Troy (offiziell)](https://www.toverland.com/de/attraktionen/troy)
 - Troy-Retrack: [„Toverland: Retrack der Holzachterbahn Troy“ (FreizeitparkNEWS)](https://www.freizeitparknews.de/toverland/toverland-retrack-troy/)
 - Fēnix (B&M, längster Wing Coaster Europas): [Fēnix auf Wikipedia](https://de.wikipedia.org/wiki/F%C4%93nix)
-- Dwervelwind (Mack, September 2012, Bordsound): [Dwervelwind auf Wikipedia](https://de.wikipedia.org/wiki/Dwervelwind)
+- Dwervelwind (Soft Opening 29. September bis 4. November 2012, komplette Magische Vallei ab April 2013): [Dwervelwind auf Wikipedia](https://de.wikipedia.org/wiki/Dwervelwind) · [Dwervelwind (offiziell)](https://www.toverland.com/de/attraktionen/dwervelwind) · [„Attractiepark Toverland opent nieuwe achtbaan d'Wervelwind" (Rocky de Bever, 25.09.2012)](https://rockydebever.nl/2012/09/25/attractiepark-toverland-opent-nieuwe-achtbaan-dwervelwind/)
 - European Star Awards 2018 (Themenpark bis 1 Mio. Besucher, Avalon/Port Laguna, Troy und Fēnix): [„Toverland hat gleich drei European Star Awards gewonnen“ (Freizeitpark News)](https://freizeitpark-news.com/news/hohe-auszeichnung-fuer-toverland-der-freizeitpark-aus-holland-hat-gleich-drei-european-star-awards-gewonnen/) · [Awards (offiziell)](https://www.toverland.com/en/awards)
 - Parkgeschichte, Themenbereiche & Besucherzahlen: [Toverland auf Wikipedia](https://de.wikipedia.org/wiki/Toverland) · [Besucherzahlen 2025 (offiziell)](https://www.toverland.com/de/presse/neuigkeiten)
 - Swinging Bobsled & Abschied von Maximus' Blitz Bahn: [„Neue Attraktion: der Swinging Bobsled!“ (offiziell)](https://www.toverland.com/en/press/news/press-blitzbahn) · [„Toverland to replace bobsleigh with new swinging bobsled“ (blooloop)](https://blooloop.com/toverland-new-swinging-bobsled-ride/)
