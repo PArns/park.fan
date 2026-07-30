@@ -6,12 +6,11 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Alle fahren an Sevenum vorbei bis zum Efteling und stehen dort 34 Minuten für
-  eine Holzachterbahn an. Vierzig Kilometer vorher steht die bessere, und für die
-  wartet man 16 Minuten: Troy von GCI, der am meisten unterschätzte Woodie
-  Europas. Der große Guide 2026 mit Wartezeit-Daten, Fēnix, der Weltpremiere
-  Swinging Bobsled, Halloween und allem, was du vor dem ersten Besuch wissen
-  solltest.
+  Wer aus dem Rheinland zum Efteling fährt, kommt an Sevenum vorbei. Ein Fehler:
+  Dort steht mit Troy eine Holzachterbahn von GCI, für die man in unseren Daten
+  16 Minuten ansteht, während der Woodie am Ziel 34 kostet. Über einen Park, der
+  Weltklasse-Bahnen ohne Schlangen hinstellt, keinen Fast Pass verkauft und im
+  Winter eine Weltpremiere eröffnet.
 tags:
   - toverland
   - troy
