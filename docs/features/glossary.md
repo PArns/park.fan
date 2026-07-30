@@ -75,7 +75,7 @@ definition: 'First paragraph text.\n\nSecond paragraph with more detail.\n\nThir
 - **Overview glass panel**: Breadcrumb sits above the panel; title + description + search + category pills are inside a single `bg-background/60 backdrop-blur-md` glass card.
 - **Type-to-search**: Any keypress on the overview page focuses the search input automatically. ESC clears and blurs.
 - **Detail page**: 2-column grid (main + 260px sidebar) with glass cards. Related terms in sidebar use `divide-y` rows. Back button uses `variant="default"` (primary color).
-- **Detail page extras**: Below the term content, detail pages include `NearbyParksCard`, `FavoritesSection`, and `FeaturedParksSection` — same widgets as the homepage.
+- **Detail page extras**: Below the term content, detail pages render the shared `PageBottomSections` (`components/common/page-bottom-sections.tsx`) — Nearby → Favorites → Featured Parks, the same tail the blog pages use. It is separated from the page's own content by a rule and a `bg-muted/30` tint (`border-y`), not by stacked padding: the tint continues into `FavoritesSection`'s band, so the whole tail reads as one region without pushing "nearest open park" a screenful down.
 
 ## Language Switcher
 

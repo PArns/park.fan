@@ -217,7 +217,7 @@ export default async function HomePage({ params }: HomePageProps) {
               </GlassCard>
 
               {/* Compact "from the blog" strip — three latest posts directly
-                under the hero main box. Full BlogBottomSections still
+                under the hero main box. The full LatestBlogSection still
                 renders further down the page; this is the at-a-glance
                 version for visitors who land at the top fold. */}
               <BlogHeroPreview locale={locale as Locale} />

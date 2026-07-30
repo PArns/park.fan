@@ -25,7 +25,7 @@ import { resolveGallery } from '@/lib/blog/gallery';
 import { BlogTags } from '@/components/blog/blog-tags';
 import { BlogRelatedPosts } from '@/components/blog/blog-related-posts';
 import { BlogReferences } from '@/components/blog/blog-references';
-import { BlogBottomSections } from '@/components/blog/blog-bottom-sections';
+import { PageBottomSections } from '@/components/common/page-bottom-sections';
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { BlogPostingStructuredData } from '@/components/seo/blog-structured-data';
@@ -325,7 +325,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </article>
       </PageContainer>
 
-      <BlogBottomSections locale={locale} />
+      <PageBottomSections locale={locale} />
     </>
   );
 }

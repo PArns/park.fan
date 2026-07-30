@@ -10,7 +10,7 @@ import { BlogPostGrid } from '@/components/blog/blog-post-grid';
 import { BlogCategoryTree } from '@/components/blog/blog-category-tree';
 import { BlogTagCloud } from '@/components/blog/blog-tag-cloud';
 import { BlogSectionHeader } from '@/components/blog/blog-section-header';
-import { BlogBottomSections } from '@/components/blog/blog-bottom-sections';
+import { PageBottomSections } from '@/components/common/page-bottom-sections';
 import { BlogStructuredData } from '@/components/seo/blog-structured-data';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
@@ -135,7 +135,7 @@ export default async function BlogTagPage({ params }: TagPageProps) {
         </div>
       </div>
 
-      <BlogBottomSections locale={locale} />
+      <PageBottomSections locale={locale} />
     </>
   );
 }

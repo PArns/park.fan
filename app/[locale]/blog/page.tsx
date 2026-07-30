@@ -12,7 +12,7 @@ import { BLOG_POSTS_PER_PAGE, listPosts, hasPublishedPosts } from '@/lib/blog';
 import { BlogPostGrid } from '@/components/blog/blog-post-grid';
 import { BlogCategoryTree } from '@/components/blog/blog-category-tree';
 import { BlogTagCloud } from '@/components/blog/blog-tag-cloud';
-import { BlogBottomSections } from '@/components/blog/blog-bottom-sections';
+import { PageBottomSections } from '@/components/common/page-bottom-sections';
 import { BlogStructuredData } from '@/components/seo/blog-structured-data';
 import { Hero } from '@/components/marketing/editorial-ui';
 import { getOgImageUrl } from '@/lib/utils/og-image';
@@ -148,7 +148,7 @@ export default async function BlogIndexPage({ params }: BlogIndexPageProps) {
         </div>
       </div>
 
-      <BlogBottomSections locale={locale} />
+      <PageBottomSections locale={locale} />
     </>
   );
 }
