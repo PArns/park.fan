@@ -66,8 +66,8 @@ Holzachterbahn, die besser ist als die, für die sie anderthalb Stunden weiter
 gleich anstehen werden. Das ist keine Provokation, sondern eine Behauptung, für
 die ich gleich Zahlen auf den Tisch lege: zwei Holzachterbahnen, derselbe
 Hersteller, dieselbe Region, vierzig Kilometer Luftlinie auseinander, und ein
-Unterschied in der typischen Wartezeit von **mehr als dem Doppelten** — in die
-falsche Richtung.
+Unterschied in der typischen Wartezeit von **mehr als dem Doppelten**, und zwar
+in die falsche Richtung.
 
 Ich schreibe das als jemand, dessen Heimatpark das
 [Phantasialand](ref:phantasialand) ist, sechzig Autominuten südlich, und der
@@ -635,8 +635,8 @@ jeden Fall: die Weltklasse-Holzachterbahn Europas mit der kürzesten Schlange.
 Drei Dinge: die Illusionsshow **„Magic Memories“** von Hans Klok zum
 25-jährigen Jubiläum (seit 18. April, im Eintritt enthalten), das Ende von
 **Maximus' Blitz Bahn** am 17. Mai, und deren Nachfolger, der **Swinging
-Bobsled** — ein Attraktionstyp, den es bisher nirgends auf der Welt gibt,
-entwickelt mit ETF Ride Systems, Eröffnung in der Wintersaison 2026/27.
+Bobsled**. Diesen Attraktionstyp gibt es bisher nirgends auf der Welt; entwickelt
+wurde er mit ETF Ride Systems, eröffnet wird in der Wintersaison 2026/27.
 
 ### Wie viel kostet der Eintritt ins Toverland 2026?
 

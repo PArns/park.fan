@@ -330,6 +330,14 @@ Further rules that keep German prose sounding human:
   `Und` or `Das ist` reads like autocomplete.
 - **No coined metaphor-currencies** (`X-Währung`, `Lebenszeit-Konto`). One
   figure of speech per section is plenty, and it should be a normal one.
+- **No em dash (`—`) in running text.** It is the most-recognised AI tell there
+  is, and in German it is also simply the wrong character: German typography
+  uses the Halbgeviertstrich `–` with spaces around it, not the Geviertstrich
+  `—`. Reach for a comma, a full stop or a colon instead — an em dash almost
+  always marks a sentence that wanted to be two. The **only** `—` in a post is
+  the signature line `— Patrick`. Ranges and compounds keep the en dash without
+  spaces (`90–140 cm`, `Venlo–Eindhoven`, `2007 – Ithaka`).
+  Check with `grep -c "—" <post>`: the answer should be `1`.
 - **Don't announce the structure** (`Und jetzt der Grund, warum dieses Kapitel
 hier steht`, `Kommen wir nun zu`). Just write the next paragraph.
 - **Articles and prepositions matter, and check the gender before "fixing" one
