@@ -1,5 +1,5 @@
 ---
-title: 'Phantasialand Wartezeiten & Tipps 2026: der perfekte Tag im Heimatpark'
+title: 'Phantasialand Wartezeiten & Tipps: der perfekte Tag im Heimatpark'
 translationKey: phantasialand-tips-2026
 date: '2026-07-24'
 updatedAt: '2026-07-25'
@@ -28,7 +28,7 @@ coverImage:
   caption: 'Taron im Basaltdorf Klugheim, für mich der schönste Fleck im Park.'
   credit: 'park.fan'
 seo:
-  title: 'Phantasialand Wartezeiten & Tipps 2026'
+  title: 'Phantasialand Wartezeiten & Tipps'
   description: >-
     Phantasialand-Wartezeiten kleinhalten: der Guide 2026 mit dem besten Tag,
     dem neuen Quick Pass, Essen, Anreise und Wintertraum.

@@ -1,5 +1,5 @@
 ---
-title: 'Phantasialand 2026: tiempos de espera, consejos y el día perfecto'
+title: 'Phantasialand: tiempos de espera, consejos y el día perfecto'
 translationKey: phantasialand-tips-2026
 date: '2026-07-24'
 updatedAt: '2026-07-25'
@@ -28,7 +28,7 @@ coverImage:
   caption: 'Taron en el pueblo de basalto de Klugheim, para mí, el rincón más bonito del parque.'
   credit: 'park.fan'
 seo:
-  title: 'Phantasialand: espera y consejos 2026'
+  title: 'Phantasialand: espera y consejos'
   description: >-
     Reducir los tiempos de espera en Phantasialand: la guía 2026 con el mejor día,
     el nuevo Quick Pass, la comida y el Wintertraum.

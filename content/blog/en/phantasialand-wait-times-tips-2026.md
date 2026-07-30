@@ -1,5 +1,5 @@
 ---
-title: 'Phantasialand Wait Times & Tips 2026: the perfect day at my home park'
+title: 'Phantasialand Wait Times & Tips: the perfect day at my home park'
 translationKey: phantasialand-tips-2026
 date: '2026-07-24'
 updatedAt: '2026-07-25'
@@ -28,7 +28,7 @@ coverImage:
   caption: 'Taron in the basalt village of Klugheim, for me the most beautiful spot in the park.'
   credit: 'park.fan'
 seo:
-  title: 'Phantasialand Wait Times & Tips 2026'
+  title: 'Phantasialand Wait Times & Tips'
   description: >-
     Keep Phantasialand wait times down: the 2026 guide with the best day, the new
     Quick Pass, food, getting there and Wintertraum.

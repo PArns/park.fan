@@ -1,5 +1,5 @@
 ---
-title: 'Phantasialand wachttijden & tips 2026: de perfecte dag in mijn thuispark'
+title: 'Phantasialand wachttijden & tips: de perfecte dag in mijn thuispark'
 translationKey: phantasialand-tips-2026
 date: '2026-07-24'
 updatedAt: '2026-07-25'
@@ -28,7 +28,7 @@ coverImage:
   caption: 'Taron in het basaltdorp Klugheim, voor mij de mooiste plek van het park.'
   credit: 'park.fan'
 seo:
-  title: 'Phantasialand wachttijden & tips 2026'
+  title: 'Phantasialand wachttijden & tips'
   description: >-
     Phantasialand-wachttijden klein houden: de gids 2026 met de beste dag, de
     nieuwe Quick Pass, eten, reizen en Wintertraum.

@@ -332,11 +332,40 @@ Further rules that keep German prose sounding human:
   figure of speech per section is plenty, and it should be a normal one.
 - **Don't announce the structure** (`Und jetzt der Grund, warum dieses Kapitel
 hier steht`, `Kommen wir nun zu`). Just write the next paragraph.
-- **Articles and prepositions matter.** It is **die** Efteling — `bis zur
-Efteling`, `im Vergleich zur Efteling`, never `zu Efteling`.
+- **Articles and prepositions matter, and check the gender before "fixing" one
+  in.** It is **der** Efteling — masculine, the way German Wikipedia uses it
+  ("im Märchenwald **des** Efteling"). So `bis zum Efteling`, `im Vergleich zum
+Efteling`, `im Efteling steht Joris en de Draak`. Never `zur Efteling`.
 - **Superlatives need a source or a number** right next to them, otherwise cut.
 - **Hedge thin data explicitly** rather than rounding it into confidence: if a
   month has four measured days, say so.
+
+### Structural slop — the tells that survive a vocabulary pass
+
+Swapping out banned words is the easy half. What actually makes a text read as
+generated is its _rhythm_, and that survives any find-and-replace. Grep for
+these before publishing:
+
+- **`nicht X, sondern Y`.** The single most recognisable German LLM cadence.
+  Two or three per long post is normal writing; eight is a machine.
+  `grep -c "sondern"` — if it's above ~5 in 5.000 words, thin it out.
+- **The `Claim: elaboration` colon.** Fine as a list introducer, exhausting as a
+  paragraph rhythm. If most paragraphs pivot on a colon, rewrite half of them
+  into plain sentences.
+- **Triads everywhere** (`kompakt, begehrt und anstrengend`). One per section
+  lands; three per section is a tic.
+- **Paragraphs of uniform length.** Real writing has a two-line paragraph next
+  to an eight-line one. Even blocks are a generation artefact.
+- **Symmetrical closers** that restate the section in one tidy sentence
+  (`Das ist die ganze Geschichte in einer Tabelle.`). Let a section just end.
+- **Self-commentary of any kind** — the post referring to itself, its chapters,
+  its own thesis, or how well it is written.
+- **Both-sides hedging with no verdict** (`einerseits … andererseits`, `es kommt
+darauf an`). Have an opinion; the byline is a person.
+
+The check that catches the rest: read the finished post aloud. Anywhere the
+rhythm turns metronomic, break the pattern — a short sentence, a dropped
+connective, an aside.
 
 Voice reference: `de/phantasialand-tipps-2026.md` and
 `de/toverland-troy-wartezeiten-tipps-2026.md`.
