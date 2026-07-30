@@ -101,10 +101,10 @@ curated `rideProfile` (see the backend's
 The API stores only **glossary term ids**; this app owns the glossary and
 resolves them.
 
-| Direction        | Where                                  | Component                                     |
-| ---------------- | -------------------------------------- | --------------------------------------------- |
-| ride → glossary  | ride page, below the history chapter   | `components/parks/ride-profile-section.tsx`   |
-| glossary → rides | term detail page, below the definition | `components/glossary/glossary-term-rides.tsx` |
+| Direction        | Where                                      | Component                                     |
+| ---------------- | ------------------------------------------ | --------------------------------------------- |
+| ride → glossary  | ride page, below the history chapter       | `components/parks/ride-profile-section.tsx`   |
+| glossary → rides | term detail page, in the definition column | `components/glossary/glossary-term-rides.tsx` |
 
 - **`RideProfileSection`** renders the track figures as a **numbered** list in
   ride order — repeats are meaningful (Voltron Nevera really does hit two
@@ -117,7 +117,12 @@ resolves them.
   1 day — the seed only changes when a human edits it), groups by park and
   renders nothing when no ride carries the term. Most of the glossary is
   concepts no ride profile references, and an empty box would be worse than no
-  box.
+  box. It is handed to `GlossaryTermDetail` as its **`rides` slot** (still
+  wrapped in the page's `<Suspense>`, so it streams) rather than rendered as a
+  sibling section: that puts it in the same grid column as the definition card,
+  one card-gap below it and the same width, instead of a full-width stripe two
+  page paddings further down. Its own chrome mirrors the definition card —
+  `Card` + heading strip, not a `PageSection` with a frosted chapter pill.
 
 An id this app has no term for is **dropped**, not rendered raw — the API can
 legitimately be seeded with a term before the glossary entry lands here.

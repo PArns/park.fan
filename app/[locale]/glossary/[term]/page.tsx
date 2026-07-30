@@ -188,16 +188,18 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
             fancastCta: t('fancastCta'),
           }}
           playerLabels={playerLabels}
+          /* The other half of the ride ↔ glossary link: every curated ride that
+             features this term. Handed in as a slot so it renders inside the
+             detail's own column — aligned with the definition card instead of
+             as a full-width stripe below it — while the Suspense boundary keeps
+             it off the critical path. Renders nothing for the concept terms no
+             ride profile references. */
+          rides={
+            <Suspense fallback={null}>
+              <GlossaryTermRides termId={term.id} />
+            </Suspense>
+          }
         />
-      </PageContainer>
-
-      {/* The other half of the ride ↔ glossary link: every curated ride that
-          features this term. Renders nothing for the concept terms no ride
-          profile references. */}
-      <PageContainer className="pb-4">
-        <Suspense fallback={null}>
-          <GlossaryTermRides termId={term.id} />
-        </Suspense>
       </PageContainer>
 
       {/* Nearby parks + favorites — same widgets as homepage */}
