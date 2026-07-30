@@ -6,11 +6,11 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Wer aus dem Rheinland zum Efteling fährt, kommt an Sevenum vorbei. Ein Fehler:
-  Dort steht mit Troy eine Holzachterbahn von GCI, für die man in unseren Daten
-  16 Minuten ansteht, während der Woodie am Ziel 34 kostet. Über einen Park, der
-  Weltklasse-Bahnen ohne Schlangen hinstellt, keinen Fast Pass verkauft und im
-  Winter eine Weltpremiere eröffnet.
+  Wer aus dem Rheinland zum Efteling fährt, kommt an Sevenum vorbei. Dabei steht
+  dort mit Troy eine Holzachterbahn von GCI, für die man 16 Minuten ansteht,
+  während der Woodie am Ziel 34 kostet. Ein Park, der Weltklasse-Bahnen ohne
+  Schlangen hinstellt, keinen Fast Pass verkauft und im Winter eine Weltpremiere
+  eröffnet.
 tags:
   - toverland
   - troy
@@ -52,31 +52,24 @@ seo:
     - Toverland Anreise Sevenum
 ---
 
-Es gibt eine Autobahnausfahrt in Nordlimburg, an der jedes Jahr hunderttausende
-Achterbahnfans vorbeifahren. Sie kommen aus dem Ruhrgebiet, aus Köln, aus
-Düsseldorf, sie haben den Kofferraum voll Regenjacken und den Kopf voll
-Vorfreude, und sie fahren weiter. Noch neunzig Minuten bis Kaatsheuvel, bis zum
-[Efteling](ref:efteling), dem Disney der Niederlande und zu Recht einer der
-schönsten Parkadressen der Welt. Die Ausfahrt, an der sie vorbeifahren, heißt
-Sevenum.
+Auf der A67 zwischen Venlo und Eindhoven liegt eine Ausfahrt, an der jedes Jahr
+hunderttausende Achterbahnfans vorbeifahren. Sie kommen aus Köln, aus Düsseldorf,
+aus dem Ruhrgebiet, und sie haben noch neunzig Minuten vor sich: bis nach
+Kaatsheuvel, zum [Efteling](ref:efteling), dem Disney der Niederlande. Die
+Ausfahrt heißt Sevenum.
 
 Dort liegt das [Toverland](ref:toverland?long), und dort steht eine
 Holzachterbahn, die besser ist als die, für die sie anderthalb Stunden weiter
-gleich anstehen werden. Das ist keine Provokation, sondern eine Behauptung, für
-die ich gleich Zahlen auf den Tisch lege: zwei Holzachterbahnen, derselbe
-Hersteller, dieselbe Region, vierzig Kilometer Luftlinie auseinander, und ein
-Unterschied in der typischen Wartezeit von **mehr als dem Doppelten**, und zwar
-in die falsche Richtung.
+anstehen werden. Zwei Woodies vom selben Hersteller, vierzig Kilometer
+auseinander, und ausgerechnet die schwächere kostet mehr als doppelt so viel
+Wartezeit.
 
-Ich schreibe das als jemand, dessen Heimatpark das
-[Phantasialand](ref:phantasialand) ist, sechzig Autominuten südlich, und der
-jahrelang selbst den Satz im Kopf hatte, den dieser Park von deutschen Fans immer
-wieder zu hören bekommt: „Toverland? Da war ich als Kind mal in der Halle.“ Die
-Halle gibt es noch, sie ist der Ursprung. Aber der Park, der um sie herum
-gewachsen ist, gehört inzwischen zu den vier oder fünf besten Adressen in einem
-Umkreis, in dem der [Europa-Park](ref:europa-park) und der Efteling stehen. Und
-er ist der einzige davon, in dem man um halb elf noch spontan zum besten Coaster des
-Parks laufen kann.
+„Toverland? Da war ich als Kind mal in der Halle.“ Den Satz bekommt dieser Park
+von deutschen Fans bis heute zu hören. Die Halle gibt es noch, sie ist der
+Ursprung. Nur ist um sie herum etwas gewachsen, das zu den besten Parkadressen
+in einem Umkreis gehört, in dem auch der [Europa-Park](ref:europa-park) und der
+Efteling stehen. Und in keinem der beiden kommst du um halb elf noch spontan zum
+besten Coaster.
 
 ![Das Toverland in Sevenum von oben | Zehn Hektar Limburg, sechs Themenwelten, fünf Achterbahnen: das Toverland ist kompakter, als es sich anfühlt. | wide](/images/parks/toverland/background-16x9.jpg)
 
@@ -444,8 +437,7 @@ eigenständiges Programm und nicht nur ein Regenschauer-Plan B.
 
 ## Tickets & Preise 2026: der Park, der Jahreskarten noch ernst nimmt
 
-Die Preisstruktur ist erfreulich altmodisch, und in einem Punkt eine
-Ohrfeige für meinen eigenen Heimatpark.
+Die Preisstruktur ist erfreulich altmodisch.
 
 - **Tageskarte an der Kasse:** 42,50 € (ab 140 cm), 34,50 € für Kinder von 90
   bis 140 cm, Kinder unter 90 cm frei, Senioren ab 60 Jahren 28 €.
@@ -465,10 +457,9 @@ Ohrfeige für meinen eigenen Heimatpark.
   Sonderevents wie Halloween**, 5 % auf Gastronomie und Shops, ein
   Geburtstagsgebäck und Partnerrabatte.
 
-Der letzte Punkt tut mir als Phantasialand-Stammgast weh: Das Toverland
-verkauft eine ganz normale
-Jahreskarte, für 160 €, mit Halloween drin. Mein Heimatpark hat die Jahreskarte
-nach der Pandemie abgeschafft und trotz mehrerer Fan-Petitionen nicht
+Beim letzten Punkt lohnt sich ein Blick über die Grenze: Das Toverland verkauft
+eine ganz normale Jahreskarte, für 160 €, mit Halloween drin. Das Phantasialand
+hat seine nach der Pandemie abgeschafft und trotz mehrerer Fan-Petitionen nicht
 zurückgebracht. Wer im Grenzgebiet wohnt und gern mehrmals im Jahr in einen
 guten Park geht, sollte diese beiden Sätze zweimal lesen.
 
@@ -549,8 +540,9 @@ Ferientag, nicht wie einen ruhigen Novembernachmittag.
 
 ## Essen im Toverland
 
-Ich bin, was Parkgastronomie angeht, durch das Phantasialand verdorben. Trotzdem:
-Das Toverland macht seine Sache anständig, und in zwei Fällen richtig gut.
+Beim Essen im Freizeitpark bin ich verwöhnt, und das Toverland ist nicht der
+Ort, an dem man deswegen herkommt. Seine Sache macht es trotzdem anständig, und
+in zwei Fällen richtig gut.
 
 - **The Flaming Feather** (Avalon) ist die Adresse, wenn du einmal richtig
   sitzen willst: mittelalterliche Wirtshaus-Kulisse, burgundische Küche,
@@ -664,7 +656,7 @@ Indoor-Hallen kann man aber problemlos zwei Tage füllen.
 ## Fazit: das beste Verhältnis von Bahn zu Wartezeit
 
 Das Toverland ist nicht der schönste Park der Niederlande, das bleibt der
-Efteling, und nicht der immersivste Europas, das bleibt mein Phantasialand. Es
+Efteling, und nicht der immersivste Europas, das bleibt das Phantasialand. Es
 ist etwas anderes, und für Achterbahnfans vielleicht das Bessere: der Park mit
 dem besten Verhältnis von Bahnqualität zu Lebenszeit im Geländer, den ich in
 Mitteleuropa kenne. Eine Weltklasse-Holzachterbahn für 16 Minuten Wartezeit, der
