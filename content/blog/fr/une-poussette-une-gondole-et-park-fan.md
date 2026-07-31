@@ -196,7 +196,7 @@ des flux de données en temps réel et qui, en privé, n'avait pas la moindre id
 de savoir si cette file en valait la peine ou si j'échangeais simplement du
 temps de vie contre une rambarde.
 
-> « Laisse-moi juste tracker les temps d'attente. » — _ai-je dit. Ça a duré
+> « Laisse-moi juste tracker les temps d'attente. » _Ai-je dit. Ça a duré
 > trois ans._
 
 ## Du script à la plateforme : comment park.fan est vraiment né

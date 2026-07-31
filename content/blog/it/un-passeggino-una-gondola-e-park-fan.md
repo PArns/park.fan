@@ -188,7 +188,7 @@ lì impalato: uno che per professione elaborava flussi di dati in tempo reale e
 che in privato non aveva la minima idea se quella coda valesse la pena o se
 stessi semplicemente barattando tempo di vita con un corrimano.
 
-> “Fammi tracciare un attimo i tempi di attesa.” — _dissi. Sono diventati tre
+> “Fammi tracciare un attimo i tempi di attesa.” _Dissi. Sono diventati tre
 > anni._
 
 ## Dallo script alla piattaforma: come è nato davvero park.fan

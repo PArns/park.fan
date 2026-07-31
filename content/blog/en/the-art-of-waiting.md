@@ -343,7 +343,7 @@ elegant results in queueing theory. The MIT professor **John D. C. Little**
 proved the relationship in 1961 that is known today as
 [Little's Law](https://en.wikipedia.org/wiki/Little%27s_law):
 
-> **L = λ × W** — the number of people waiting (L) equals the arrival rate (λ)
+> **L = λ × W**: the number of people waiting (L) equals the arrival rate (λ)
 > times the waiting time (W).
 
 For a park visit you simply rearrange it:
@@ -631,7 +631,7 @@ sense of time is exaggerating by 36 percent while I do._
 - On the ~36% overestimation (Hornik 1984): [Consumer Perception and Evaluation of Waiting Time: A Field Experiment](https://www.researchgate.net/publication/40129944_Consumer_Perception_and_Evaluation_of_Waiting_Time_A_Field_Experiment) (Journal of Consumer Research)
 - Alex Stone: [Why Waiting Is Torture](https://www.nytimes.com/2012/08/19/opinion/sunday/why-waiting-in-line-is-torture.html) (New York Times, 2012)
 - Daniel Kahneman et al.: [Peak-end rule](https://en.wikipedia.org/wiki/Peak%E2%80%93end_rule)
-- John D. C. Little: [A Proof for the Queuing Formula L = λW](https://pubsonline.informs.org/doi/10.1287/opre.9.3.383) (Operations Research, 1961) — [Little's Law explained](https://en.wikipedia.org/wiki/Little%27s_law)
+- John D. C. Little: [A Proof for the Queuing Formula L = λW](https://pubsonline.informs.org/doi/10.1287/opre.9.3.383) (Operations Research, 1961) · [Little's Law explained](https://en.wikipedia.org/wiki/Little%27s_law)
 - On phantom traffic jams: Sugiyama et al., [Traffic jams without bottlenecks](https://iopscience.iop.org/article/10.1088/1367-2630/10/3/033001) (New Journal of Physics, 2008) · [MIT “jamitons”](https://www.sciencedaily.com/releases/2009/06/090608151550.htm)
 - On the “faster-is-slower” effect: Helbing, Farkas & Vicsek, [Simulating dynamical features of escape panic](https://www.nature.com/articles/35035023) (Nature, 2000)
 - Technical data: [The Incredible Hulk Coaster](https://rcdb.com/557.htm), [Hollywood Rip Ride Rockit](https://rcdb.com/3866.htm) and [YOY](https://rcdb.com/20669.htm) on RCDB · [Mack Rides factsheet for Voltron Nevera](https://mack.group/en/press-media/press-releases/2024-04-24/fact-sheet-voltron-nevera-powered-by-rimac) · [The tech behind Voltron (Coaster101)](https://www.coaster101.com/2025/05/29/the-tech-behind-voltron/) · [YOY with rolling station (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/walibi_holland/attraktionen/yoy-c681)

@@ -187,7 +187,7 @@ allí plantado: alguien que procesaba flujos de datos en tiempo real por
 profesión y que en privado no tenía la menor idea de si esa cola merecía la pena
 o si simplemente estaba cambiando tiempo de vida por una barandilla.
 
-> «Déjame trastear un poco con los tiempos de espera.» — _dije. Fueron tres
+> «Déjame trastear un poco con los tiempos de espera.» _Dije. Fueron tres
 > años._
 
 ## Del script a la plataforma: cómo nació park.fan de verdad

@@ -366,6 +366,36 @@ const nextConfig: NextConfig = {
       permanent: true,
     });
 
+    // 12. Blog posts that dropped the year from their slug. The Phantasialand
+    // guide is evergreen (it is updated in place, not re-published per season),
+    // so `-2026` in the URL only made it look stale. The old slugs are indexed,
+    // so 301 them. Both the locale-prefixed and the bare form: the bare one is
+    // what people paste into chats, and the intl middleware would otherwise
+    // resolve it to a locale and then 404 on the missing slug.
+    const renamedPosts: Array<[string, string]> = [
+      ['phantasialand-tipps-2026', 'phantasialand-tipps'],
+      ['phantasialand-wait-times-tips-2026', 'phantasialand-wait-times-tips'],
+      ['phantasialand-tiempos-de-espera-consejos-2026', 'phantasialand-tiempos-de-espera-consejos'],
+      ['phantasialand-temps-d-attente-conseils-2026', 'phantasialand-temps-d-attente-conseils'],
+      ['phantasialand-tempi-di-attesa-consigli-2026', 'phantasialand-tempi-di-attesa-consigli'],
+      ['phantasialand-wachttijden-tips-2026', 'phantasialand-wachttijden-tips'],
+      ['toverland-troy-wartezeiten-tipps-2026', 'toverland-troy-wartezeiten-tipps'],
+    ];
+    for (const [oldSlug, newSlug] of renamedPosts) {
+      rules.push(
+        {
+          source: `/:locale(en|de|fr|it|nl|es)/blog/${oldSlug}`,
+          destination: `/:locale/blog/${newSlug}`,
+          permanent: true,
+        },
+        {
+          source: `/blog/${oldSlug}`,
+          destination: `/blog/${newSlug}`,
+          permanent: true,
+        }
+      );
+    }
+
     return rules;
   },
   async rewrites() {

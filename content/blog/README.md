@@ -27,6 +27,12 @@ content/blog/
   alternates and EN fallback.
 - Locales without their own file fall back to the English version with a
   "translation not ready" notice.
+- **No year in the slug** unless the post really is about that one season
+  (`halloween-freizeitparks-2026` is; a park guide that gets updated in place
+  is not). A `-2026` in an evergreen URL just makes it look stale a year later.
+- **Renaming a published post means a 301.** Add the pair to `renamedPosts` in
+  `next.config.ts` (rule 12), locale-prefixed *and* bare, or the indexed URL
+  404s.
 
 ---
 
@@ -393,8 +399,8 @@ The check that catches the rest: read the finished post aloud. Anywhere the
 rhythm turns metronomic, break the pattern — a short sentence, a dropped
 connective, an aside.
 
-Voice reference: `de/phantasialand-tipps-2026.md` and
-`de/toverland-troy-wartezeiten-tipps-2026.md`.
+Voice reference: `de/phantasialand-tipps.md` and
+`de/toverland-troy-wartezeiten-tipps.md`.
 
 ---
 
