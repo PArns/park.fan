@@ -164,6 +164,23 @@ slash** in the key.
 > `park:slug` and `attraction:parkSlug/slug` are kept as **aliases** of `ref:`
 > and accept the same options, but new posts should use `ref:`.
 
+### Linking another post
+
+Write a plain relative link, nothing special:
+
+```md
+… siehe [unser Halloween-Guide](/blog/halloween-freizeitparks-2026).
+```
+
+Any `/blog/<slug>` href (a locale prefix like `/de/blog/…` works too) is picked
+up automatically and rendered as a `BlogPostLink`: the same dotted-underline
+style as park and ride references, plus a hover preview showing the target's
+`BlogPostCard` (cover, category, title, excerpt, date, reading time, author).
+The target is resolved **in the current locale**, so a German post hovering a
+cross-reference shows the German card, falling back to English like the index
+does. An unresolvable slug degrades to a plain link rather than disappearing,
+but that means a typo is silent — check the hover appears.
+
 ---
 
 ## 4. Categories & tags

@@ -143,23 +143,23 @@ Siebzig Kilometer weiter nordwestlich steht im [Efteling](ref:efteling)
 Doppelstrecken-Anlage ein Publikumsmagnet. Gleiche Datenbasis, gleiche
 Rechenmethode:
 
-| Holzachterbahn                    | Park      | Typisch (Median) | Spitze (P90) |
-| --------------------------------- | --------- | ---------------: | -----------: |
-| **Troy** (GCI, 2007)              | Toverland |       **16 Min** |       21 Min |
-| **Joris en de Draak** (GCI, 2010) | Efteling  |           34 Min |       40 Min |
+| Holzachterbahn                                                           | Park                            | Typisch (Median) | Spitze (P90) |
+| ------------------------------------------------------------------------ | ------------------------------- | ---------------: | -----------: |
+| **[Troy](ref:toverland/troy?bare)** (GCI, 2007)                          | [Toverland](ref:toverland?bare) |       **16 Min** |       21 Min |
+| **[Joris en de Draak](ref:efteling/joris-en-de-draak?bare)** (GCI, 2010) | [Efteling](ref:efteling?bare)   |           34 Min |       40 Min |
 
 Mehr als das Doppelte, für eine Bahn, die unter Enthusiasten in kaum einem
 Ranking über Troy steht. Über die Bauart hinweg wird das Bild noch deutlicher.
 Was kosten die großen Namen der Region an Wartezeit, egal ob Holz oder Stahl?
 
-| Achterbahn        | Bauart              | Park          | Typisch (Median) | Spitze (P90) |
-| ----------------- | ------------------- | ------------- | ---------------: | -----------: |
-| Taron             | Multi-Launch, Stahl | Phantasialand |           48 Min |       54 Min |
-| F.L.Y.            | Flying, Stahl       | Phantasialand |           40 Min |       47 Min |
-| Joris en de Draak | Holz                | Efteling      |           34 Min |       40 Min |
-| Baron 1898        | Dive Coaster, Stahl | Efteling      |           26 Min |       32 Min |
-| **Troy**          | **Holz**            | **Toverland** |       **16 Min** |   **21 Min** |
-| **Fēnix**         | **Wing, Stahl**     | **Toverland** |       **16 Min** |   **20 Min** |
+| Achterbahn                                               | Bauart              | Park                                    | Typisch (Median) | Spitze (P90) |
+| -------------------------------------------------------- | ------------------- | --------------------------------------- | ---------------: | -----------: |
+| [Taron](ref:phantasialand/taron?bare)                    | Multi-Launch, Stahl | [Phantasialand](ref:phantasialand?bare) |           48 Min |       54 Min |
+| [F.L.Y.](ref:phantasialand/fly?bare)                     | Flying, Stahl       | [Phantasialand](ref:phantasialand?bare) |           40 Min |       47 Min |
+| [Joris en de Draak](ref:efteling/joris-en-de-draak?bare) | Holz                | [Efteling](ref:efteling?bare)           |           34 Min |       40 Min |
+| [Baron 1898](ref:efteling/baron?bare)                    | Dive Coaster, Stahl | [Efteling](ref:efteling?bare)           |           26 Min |       32 Min |
+| **[Troy](ref:toverland/troy?bare)**                      | **Holz**            | **[Toverland](ref:toverland?bare)**     |       **16 Min** |   **21 Min** |
+| **[Fēnix](ref:toverland/fenix?bare)**                    | **Wing, Stahl**     | **[Toverland](ref:toverland?bare)**     |       **16 Min** |   **20 Min** |
 
 Die beiden Toverland-Bahnen stehen unten, mit Abstand. Für die Zeit, die du im
 Phantasialand **einmal** bei [Taron](ref:phantasialand/taron) anstehst, fährst du
@@ -274,7 +274,9 @@ der aus dem Ausflugsziel einen Themenpark machte: eine Erweiterung für
 35 Millionen Euro, mit einem komplett neuen Eingangsbereich im mediterranen
 Hafenstil (**Port Laguna**) und der Artus-Welt **Avalon**, in der
 [Fēnix](ref:toverland/fenix) und [Merlin's Quest](ref:toverland/merlins-quest)
-stehen. Im selben Jahr räumte Toverland bei den **European Star Awards** ab:
+stehen. Damals bekam der Park auch seinen heutigen Claim, „Discover your own
+magic“, der die alten Sprüche „Magisch mooi“ und „Feel the Magic“ ablöste. Im
+selben Jahr räumte Toverland bei den **European Star Awards** ab:
 bester Themenpark in der Kategorie bis eine Million Besucher, dazu eine
 Auszeichnung für Avalon und Port Laguna als beste Neuheit. Troy landete in der
 Kategorie beste Holzachterbahn Europas knapp hinter dem Sieger, mit einer damals
@@ -445,10 +447,10 @@ Einschränkung dazu: Winter und Vorsaison haben so wenige Öffnungstage, dass
 hinter diesen Monatswerten deutlich weniger Messtage stehen als hinter den
 Sommermonaten. Die Richtung ist eindeutig, die Nachkommastelle nicht.
 
-**Nach Wochentag** ist das Muster mild: Samstag (25 Minuten) und Freitag
-(24 Minuten) liegen oben, Sonntag bis Mittwoch teilen sich gleichmäßig die
-20 Minuten. Anders als im Phantasialand, wo zwischen Dienstag und Samstag Welten
-liegen, ist hier fast jeder Tag ein guter Tag.
+**Nach Wochentag** gehen die Zahlen kaum auseinander. Am vollsten ist es samstags
+(25 Minuten) und freitags (24 Minuten), von Sonntag bis Mittwoch sind es überall
+20 Minuten. Im Phantasialand liegen zwischen einem Dienstag und einem Samstag
+Welten. Hier ist fast jeder Tag ein guter Tag.
 
 Verlassen kann man sich darauf nicht, sobald sich niederländische und deutsche
 Ferienkalender, Wetter und Öffnungszeiten überlagern, und im Grenzgebiet Limburg
@@ -606,13 +608,20 @@ man aber problemlos zwei Tage füllen.
 
 ## Bleib sitzen
 
-Das Toverland ist nicht der schönste Park der Niederlande, das bleibt das
-Efteling, und nicht der immersivste Europas, das bleibt das Phantasialand. Es ist
-etwas anderes: ein Park, der sich eine Weltklasse-Holzachterbahn hingestellt hat,
-zweimal einen Fahrgeschäftstyp entwickeln ließ, den es vorher nirgends gab, und
-im Winter das dritte Mal nachlegt, ohne dabei je so voll zu werden, dass es
-wehtut. Dazu eine Jahreskarte, die es noch gibt, und niemand, der sich an dir
-vorbeikauft.
+„Discover your own magic“ ist der Claim des Parks, und mir ist klar, dass so ein
+Satz aus einer Marketingabteilung kommt. Nur trifft er hier eben zu. Das
+Toverland schreibt dir nichts vor. Es gibt keinen Fast Pass, den du kaufen
+müsstest, um mitzukommen, keine Attraktion, die dir zwei Stunden des Tages
+wegnimmt, und keine Reihenfolge, die du abarbeiten musst. Du gehst rein und
+suchst dir selbst, was dir gefällt. Bei mir ist das seit Jahren Troy. Andere
+fahren wegen der Maison de la Magie hin, wegen des Djengu River an einem warmen
+Nachmittag oder wegen der Halloween Nights.
+
+Dabei ist das hier längst kein kleiner Park mehr, der für die Region ganz nett
+ist. In Sevenum steht eine Holzachterbahn, die es in jede europäische Bestenliste
+schafft. Zwei Fahrgeschäftstypen wurden für diesen Park erfunden und hier zum
+ersten Mal gebaut, im Winter kommt der dritte dazu. Und trotzdem stehst du unter
+der Woche nach einer Viertelstunde wieder im Zug.
 
 Wie es gerade am Park aussieht:
 
@@ -642,6 +651,7 @@ anderen Parks Europas kannst du es vergessen.
 - Dwervelwind (Soft Opening 29. September bis 4. November 2012, komplette Magische Vallei ab April 2013): [Dwervelwind auf Wikipedia](https://de.wikipedia.org/wiki/Dwervelwind) · [Dwervelwind (offiziell)](https://www.toverland.com/de/attraktionen/dwervelwind)
 - European Star Awards 2018: [„Toverland hat gleich drei European Star Awards gewonnen“ (Freizeitpark News)](https://freizeitpark-news.com/news/hohe-auszeichnung-fuer-toverland-der-freizeitpark-aus-holland-hat-gleich-drei-european-star-awards-gewonnen/) · [Awards (offiziell)](https://www.toverland.com/en/awards)
 - Parkgeschichte, Themenbereiche & Besucherzahlen: [Toverland auf Wikipedia](https://de.wikipedia.org/wiki/Toverland) · [Besucherzahlen 2025 (offiziell)](https://www.toverland.com/de/presse/neuigkeiten)
+- Claim „Discover your own magic“ (seit 2018, zuvor „Magisch mooi“ und „Feel the Magic“): [„Toverland kiest voor nieuwe slogan“ (Looopings)](https://www.looopings.nl/weblog/9639/Toverland-kiest-voor-nieuwe-slogan.html)
 - Abschiedsfeier am 17. Mai 2026 (Rahmenprogramm, Souvenirs): [„Wir verabschieden uns von Maximus' Blitz Bahn“ (offiziell)](https://www.toverland.com/de/toverblog/blog-neue-blitzbahn) · [„Toverland ersetzt Maximus' Blitz Bahn“ (FreizeitparkNEWS)](https://www.freizeitparknews.de/toverland/maximus-blitz-abschied/)
 - Swinging Bobsled & Abschied von Maximus' Blitz Bahn: [„Neue Attraktion: der Swinging Bobsled!“ (offiziell)](https://www.toverland.com/en/press/news/press-blitzbahn) · [„Toverland to replace bobsleigh with new swinging bobsled“ (blooloop)](https://blooloop.com/toverland-new-swinging-bobsled-ride/)
 - 25 Jahre Toverland, Hans Klok & ToverFestival: [Hans Klok: Magic Memories (offiziell)](https://www.toverland.com/en/shows/hansklok) · [„Toverland wird 25“ (Themepark Central)](https://www.themepark-central.de/toverland-25-hans-klok/)
