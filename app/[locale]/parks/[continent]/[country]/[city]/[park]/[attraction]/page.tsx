@@ -13,7 +13,7 @@ import { SeasonalBadge } from '@/components/parks/seasonal-badge';
 import { AttractionMetaBadges } from '@/components/parks/attraction-meta-badges';
 import { RcdbBadge } from '@/components/parks/rcdb-badge';
 import { PageSection } from '@/components/common/page-section';
-import { getParkByGeoPath } from '@/lib/api/parks';
+import { getParkByGeoPath, leanParkForAttractionShell } from '@/lib/api/parks';
 import { catchNonFatal } from '@/lib/api/client';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import type { Metadata } from 'next';
@@ -403,12 +403,13 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               the header and the first chapter. */}
           <PageSection icon={Clock} title={t('sectionLiveNow')} frosted>
             {/* Live: status, wait time, queues — auto-refreshes every 5 min.
-              initialPark is trimmed to THIS attraction (LiveAttractionData finds it by slug and
-              uses only park-level fields) — passing the full park serialized all ~95 sibling
-              attractions into every per-attraction ISR shell, the bulk of its write size. The live
-                poll (getParkByGeoPathFresh) still returns the full park client-side. */}
+              initialPark is trimmed to THIS attraction AND to the park-level fields this page
+              actually reads (see leanParkForAttractionShell): passing the full park serialized
+              all ~95 sibling attractions plus 46 restaurants, 17 opening days, the weather block
+              and the show list into the HTML of a single ride — 36.3 KB of which 1.9 KB was read.
+              The live poll (getParkByGeoPathFresh) still returns the full park client-side. */}
             <LiveAttractionData
-              initialPark={{ ...park, attractions: [attraction] }}
+              initialPark={leanParkForAttractionShell(park, attraction)}
               attractionSlug={attractionSlug}
               continent={continent}
               country={country}

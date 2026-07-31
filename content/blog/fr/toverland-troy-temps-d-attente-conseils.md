@@ -28,7 +28,7 @@ coverImage:
   caption: 'Le cheval de Troie à Ithaka. Derrière les arbres se cache Troy.'
   credit: 'park.fan'
 seo:
-  title: 'Toverland : Troy, temps d''attente & guide Halloween'
+  title: "Toverland : Troy, temps d'attente & guide Halloween"
   description: >-
     Pourquoi Troy à Toverland est le coaster en bois de classe mondiale le plus
     tranquille d'Europe : vrais temps d'attente, Fēnix, Swinging Bobsled,
@@ -148,7 +148,7 @@ calcul :
 
 | Coaster en bois                                                          | Parc                            | Typique (médiane) | Pointe (P90) |
 | ------------------------------------------------------------------------ | ------------------------------- | ----------------: | -----------: |
-| **[Troy](ref:toverland/troy?bare)** (GCI, 2007)                          | [Toverland](ref:toverland?bare) |       **16 min** |       21 min |
+| **[Troy](ref:toverland/troy?bare)** (GCI, 2007)                          | [Toverland](ref:toverland?bare) |        **16 min** |       21 min |
 | **[Joris en de Draak](ref:efteling/joris-en-de-draak?bare)** (GCI, 2010) | [Efteling](ref:efteling?bare)   |            34 min |       40 min |
 
 Plus du double, pour une attraction que presque aucun classement d'amateurs ne

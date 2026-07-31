@@ -67,14 +67,14 @@ geschlüsselten Cache. Cloudflare nimmt den Query-String in den Cache-Key auf, e
 
 ## Getroffene Entscheidungen
 
-| Entscheidung                | Gewählt                                              | Begründung                                                                                  |
-| --------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| Darstellung der Fahrfiguren | Strecken-Rail + gemeinsamer 3-D-Viewer                | Liest sich als Fahrt statt als Liste; nutzt den vorhandenen `CoasterPlayer` wieder            |
-| Rail-Farben                 | 5 Wirkungsklassen                                     | Man *sieht*, wo angeschoben wird und wo die Airtime sitzt                                     |
-| Hero-Fakten                 | Gestaffelt (Mobil reduziert)                          | Der Kopf trägt schon Park, Distanz, Land, Höhe, RCDB — ungefiltert wären das vier Zeilen      |
-| Kartenkontrast              | `GlassCard variant="strong"`                          | Vorhandene Variante, kein neuer Code; über unvorhersehbaren Fotos verlässlich                 |
-| Ride-Ranking                | Neuer `sort`-Parameter im Backend, P90 über 548 Tage  | Das einzige stabile Signal; beantwortet die ursprüngliche Frage („die dicksten Bahnen") richtig |
-| `getRideCountsByTerm`       | Als Zähler-Badge auf den Glossar-Karten verwerten     | Daten stimmen nach dem `/v1`-Fix                                                              |
+| Entscheidung                | Gewählt                                              | Begründung                                                                                      |
+| --------------------------- | ---------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| Darstellung der Fahrfiguren | Strecken-Rail + gemeinsamer 3-D-Viewer               | Liest sich als Fahrt statt als Liste; nutzt den vorhandenen `CoasterPlayer` wieder              |
+| Rail-Farben                 | 5 Wirkungsklassen                                    | Man _sieht_, wo angeschoben wird und wo die Airtime sitzt                                       |
+| Hero-Fakten                 | Gestaffelt (Mobil reduziert)                         | Der Kopf trägt schon Park, Distanz, Land, Höhe, RCDB — ungefiltert wären das vier Zeilen        |
+| Kartenkontrast              | `GlassCard variant="strong"`                         | Vorhandene Variante, kein neuer Code; über unvorhersehbaren Fotos verlässlich                   |
+| Ride-Ranking                | Neuer `sort`-Parameter im Backend, P90 über 548 Tage | Das einzige stabile Signal; beantwortet die ursprüngliche Frage („die dicksten Bahnen") richtig |
+| `getRideCountsByTerm`       | Als Zähler-Badge auf den Glossar-Karten verwerten    | Daten stimmen nach dem `/v1`-Fix                                                                |
 
 ## Backend (`v4.api.park.fan`)
 
@@ -127,7 +127,7 @@ Zahl, die stimmt, wenn man sie liest, und morgen noch stimmt.
 - `lib/api/glossary-rides.ts` — `/v1`-Präfix an beiden Pfaden
 - `suppressHydrationWarning` auf die Elemente, die der Loader vor der Hydration anfasst,
   je mit Kommentar auf `startup-bar.tsx`. Reacts dokumentierter Ausweg für „Fremdcode hat
-  das DOM verändert"; die Verschiebung *soll* bestehen bleiben, React patcht sie ohnehin
+  das DOM verändert"; die Verschiebung _soll_ bestehen bleiben, React patcht sie ohnehin
   nicht zurück. Nur dort setzen, wo ein Mismatch nachweislich entstehen kann —
   `language-banner.tsx` ist `'use client'` und rendert je nach Mount-Guard serverseitig
   eventuell gar nicht.

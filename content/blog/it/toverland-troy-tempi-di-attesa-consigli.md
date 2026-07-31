@@ -25,7 +25,7 @@ tags:
 category: guides
 coverImage:
   src: /images/parks/toverland/troy-16x9.jpg
-  alt: 'Il cavallo di Troia in legno nell''area a tema Ithaka di Toverland, su un carro'
+  alt: "Il cavallo di Troia in legno nell'area a tema Ithaka di Toverland, su un carro"
   caption: 'Il cavallo di Troia a Ithaka. Dietro gli alberi si nasconde Troy.'
   credit: 'park.fan'
 seo:
@@ -153,14 +153,14 @@ appassionati mette sopra Troy. Se si guarda oltre il tipo di costruzione,
 l'immagine diventa ancora più netta. Quanto costano in attesa i grandi nomi
 della regione, legno o acciaio che siano?
 
-| Coaster                                                  | Tipo                | Parco                                   | Tipico (mediana) | Picco (P90) |
-| -------------------------------------------------------- | ------------------- | --------------------------------------- | ---------------: | ----------: |
-| [Taron](ref:phantasialand/taron?bare)                    | Multi-launch, acciaio | [Phantasialand](ref:phantasialand?bare) |         48 min |      54 min |
-| [F.L.Y.](ref:phantasialand/fly?bare)                     | Flying, acciaio     | [Phantasialand](ref:phantasialand?bare) |           40 min |      47 min |
-| [Joris en de Draak](ref:efteling/joris-en-de-draak?bare) | Legno               | [Efteling](ref:efteling?bare)           |           34 min |      40 min |
-| [Baron 1898](ref:efteling/baron?bare)                    | Dive coaster, acciaio | [Efteling](ref:efteling?bare)         |           26 min |      32 min |
-| **[Troy](ref:toverland/troy?bare)**                      | **Legno**           | **[Toverland](ref:toverland?bare)**     |       **16 min** |  **21 min** |
-| **[Fēnix](ref:toverland/fenix?bare)**                    | **Wing, acciaio**   | **[Toverland](ref:toverland?bare)**     |       **16 min** |  **20 min** |
+| Coaster                                                  | Tipo                  | Parco                                   | Tipico (mediana) | Picco (P90) |
+| -------------------------------------------------------- | --------------------- | --------------------------------------- | ---------------: | ----------: |
+| [Taron](ref:phantasialand/taron?bare)                    | Multi-launch, acciaio | [Phantasialand](ref:phantasialand?bare) |           48 min |      54 min |
+| [F.L.Y.](ref:phantasialand/fly?bare)                     | Flying, acciaio       | [Phantasialand](ref:phantasialand?bare) |           40 min |      47 min |
+| [Joris en de Draak](ref:efteling/joris-en-de-draak?bare) | Legno                 | [Efteling](ref:efteling?bare)           |           34 min |      40 min |
+| [Baron 1898](ref:efteling/baron?bare)                    | Dive coaster, acciaio | [Efteling](ref:efteling?bare)           |           26 min |      32 min |
+| **[Troy](ref:toverland/troy?bare)**                      | **Legno**             | **[Toverland](ref:toverland?bare)**     |       **16 min** |  **21 min** |
+| **[Fēnix](ref:toverland/fenix?bare)**                    | **Wing, acciaio**     | **[Toverland](ref:toverland?bare)**     |       **16 min** |  **20 min** |
 
 Le due attrazioni di Toverland stanno in fondo, con distacco. Nel tempo in cui a
 Phantasialand fai la fila **una sola volta** per

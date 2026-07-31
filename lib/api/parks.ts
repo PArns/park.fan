@@ -1,6 +1,7 @@
 import { api, ApiError } from './client';
 import type {
   ParkWithAttractions,
+  ParkAttraction,
   AttractionResponse,
   ParkWaitTimesResponse,
   PopularPark,
@@ -59,6 +60,69 @@ function leanParkForShell(park: ParkWithAttractions): ParkWithAttractions {
       return { ...a, statistics: statsLean };
     }),
   };
+}
+
+/**
+ * Trim for the ATTRACTION page's `initialPark` prop — the React Query seed for
+ * `useLiveAttractionData`, serialized into the HTML of every attraction page.
+ *
+ * The page already narrows `attractions` to the one ride being shown, but it still spread the
+ * whole park around it. Measured on `/de/…/phantasialand/taron`, that prop was 36.3 KB, of which
+ * the page reads 1.9 KB:
+ *
+ *     schedule [17]     18.43 KB      attractions [1]    1.91 KB  ← the only part anything reads
+ *     restaurants [46]   9.54 KB      shows [4]          1.21 KB
+ *     weather            3.78 KB      analytics          0.55 KB
+ *
+ * Its only consumer, `LiveAttractionData`, reads exactly `park.status`, `park.timezone` and
+ * `park.attractions`; nothing else on the page subscribes to that query (`ParkTimeInfo`, which
+ * does read `schedule`/`nextSchedule`, is not mounted here). So the park-level blocks below are
+ * dropped — 46 restaurants and 17 opening days have no business in the HTML of a single ride.
+ *
+ * They are NOT lost: the 5-minute live poll (`getParkByGeoPathFresh` via the /api/parks proxy)
+ * returns the full park and fills the shared query cache, exactly as it already does for the
+ * sibling attractions this prop has always omitted.
+ */
+/**
+ * Trim for the PARK page's serialized park snapshot.
+ *
+ * Two per-attraction fields exist only for the ride page and are dead weight when multiplied by
+ * a park's whole attraction list. Measured on Phantasialand (40 attractions, 33.1 KB):
+ *
+ *     typicalWaits  7.73 KB — the park page never renders it. `AttractionTypicalWaits` is mounted
+ *                             by the ride page (from `attraction.typicalWaits`) and by
+ *                             `attraction-history-sections` (from the client-fetched `detail`).
+ *     rideProfile   3.61 KB — the ride ↔ glossary link. Rendered only by `RideProfileTeaser` /
+ *                             `RideProfileSection` on the ride page; `attraction-card.tsx` has
+ *                             no reference to it at all.
+ *
+ * The ride page keeps both: it narrows the list to its one attraction first
+ * ({@link leanParkForAttractionShell}), where the pair costs ~1 KB rather than ~11 KB.
+ */
+export function leanParkForParkShell(park: ParkWithAttractions): ParkWithAttractions {
+  return {
+    ...park,
+    attractions: park.attractions.map((a) => {
+      const lean = { ...a };
+      delete lean.typicalWaits;
+      delete lean.rideProfile;
+      return lean;
+    }),
+  };
+}
+
+export function leanParkForAttractionShell(
+  park: ParkWithAttractions,
+  attraction: ParkAttraction
+): ParkWithAttractions {
+  const lean: ParkWithAttractions = { ...park, attractions: [attraction] };
+  delete lean.schedule;
+  delete lean.restaurants;
+  delete lean.weather;
+  delete lean.shows;
+  delete lean.analytics;
+  delete lean.ropeDropHeadliners;
+  return lean;
 }
 
 /**
