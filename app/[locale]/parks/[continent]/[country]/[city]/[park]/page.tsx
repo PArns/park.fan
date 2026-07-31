@@ -12,7 +12,7 @@ import { notFound, permanentRedirect } from 'next/navigation';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { MapPin } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
-import { getParkByGeoPath } from '@/lib/api/parks';
+import { getParkByGeoPath, leanParkForParkShell } from '@/lib/api/parks';
 import { getBestDaysCalendarSeed } from '@/lib/api/integrated-calendar';
 import type { BestDaysSnapshot } from '@/lib/api/integrated-calendar';
 import { ParkBestDaysSectionSkeleton } from '@/components/parks/park-best-days-section-skeleton';
@@ -233,8 +233,11 @@ export default async function ParkPage({ params }: ParkPageProps) {
   const seedNowMs = seedNow.getTime();
   const bestDaysSeedPromise = getBestDaysCalendarSeed(continent, country, city, parkSlug);
 
-  // Fetch park data and holidays (holidays are optional)
-  const park = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));
+  // Fetch park data and holidays (holidays are optional). `leanParkForParkShell` strips the two
+  // per-attraction fields only the ride page renders (typicalWaits, rideProfile) — ~11 KB of this
+  // park's 33 KB attraction list that nothing here reads. The live poll returns them regardless.
+  const parkFull = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));
+  const park = parkFull ? leanParkForParkShell(parkFull) : parkFull;
 
   if (!park) {
     // The park slug is stable across API geo re-slugs (bruhl → bruehl etc.).
