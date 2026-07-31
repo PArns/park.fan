@@ -27,7 +27,7 @@ export async function BlogWeatherWidget({ park, slug }: BlogWeatherWidgetProps) 
 
   if (!park || !geo) {
     return (
-      <GlassCard variant="light" className="not-prose my-8">
+      <GlassCard variant="light" className="not-prose clear-both my-8">
         <p className="text-muted-foreground text-sm">{tBlog('widget.parkNotFound', { slug })}</p>
       </GlassCard>
     );
@@ -40,7 +40,7 @@ export async function BlogWeatherWidget({ park, slug }: BlogWeatherWidgetProps) 
   if (!full?.weather?.current) return null;
 
   return (
-    <div className="not-prose my-8 grid gap-3">
+    <div className="not-prose clear-both my-8 grid gap-3">
       <h3 className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
         {tBlog('widget.weather')}
       </h3>

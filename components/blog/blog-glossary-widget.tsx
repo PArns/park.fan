@@ -29,7 +29,7 @@ export async function BlogGlossaryWidget({ slug, locale }: BlogGlossaryWidgetPro
 
   if (!term) {
     return (
-      <GlassCard variant="light" className="not-prose my-8">
+      <GlassCard variant="light" className="not-prose clear-both my-8">
         <p className="text-muted-foreground text-sm">{tBlog('widget.termNotFound', { slug })}</p>
       </GlassCard>
     );
@@ -38,7 +38,7 @@ export async function BlogGlossaryWidget({ slug, locale }: BlogGlossaryWidgetPro
   const href = `/${locale}/${GLOSSARY_SEGMENTS[locale]}/${term.slug}`;
 
   return (
-    <GlassCard variant="light" className="not-prose border-primary/20 my-8">
+    <GlassCard variant="light" className="not-prose border-primary/20 clear-both my-8">
       <div className="flex flex-col gap-3" itemScope itemType="https://schema.org/DefinedTerm">
         <span className="text-primary inline-flex items-center gap-1.5 text-xs font-medium tracking-wider uppercase">
           <BookOpen className="h-3.5 w-3.5" aria-hidden="true" />

@@ -25,7 +25,7 @@ export async function BlogStatsWidget({ park, slug }: BlogStatsWidgetProps) {
 
   if (!park || !geo) {
     return (
-      <GlassCard variant="light" className="not-prose my-8">
+      <GlassCard variant="light" className="not-prose clear-both my-8">
         <p className="text-muted-foreground text-sm">{tBlog('widget.parkNotFound', { slug })}</p>
       </GlassCard>
     );
@@ -33,7 +33,7 @@ export async function BlogStatsWidget({ park, slug }: BlogStatsWidgetProps) {
 
   const locale = await getLocale();
   return (
-    <div className="not-prose my-8">
+    <div className="not-prose clear-both my-8">
       <ParkStatsSection
         continent={geo.continent}
         country={geo.country}

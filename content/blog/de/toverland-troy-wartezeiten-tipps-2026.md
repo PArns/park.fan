@@ -6,8 +6,8 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Das Toverland ist ein verwunschener kleiner Park, an dem die halbe
-  Rheinschiene auf dem Weg zum Efteling vorbeifährt. Dabei steht in Sevenum mit
+  Das Toverland ist ein verwunschener kleiner Park, an dem halb Köln und
+  Düsseldorf auf dem Weg zum Efteling vorbeifahren. Dabei steht in Sevenum mit
   Troy eine Holzachterbahn von GCI, für die man 16 Minuten ansteht, während der
   Woodie am Ziel 34 kostet. Über einen Park, in dem ich selbst schon als Hount
   gearbeitet habe, und der bis heute keinen Fast Pass verkauft.
@@ -52,9 +52,9 @@ seo:
     - Toverland Anreise Sevenum
 ---
 
-Der Lifthill zieht dich achtunddreißig Sekunden nach oben. Weil das Gerüst weiß
-gestrichen ist, siehst du dabei die halbe Konstruktion unter dir liegen und
-kannst schon mal raten, wo es gleich langgeht. Du wirst falsch liegen.
+Der Lifthill zieht dich achtunddreißig Sekunden nach oben. Genug Zeit, um von
+oben das Gewirr aus Holzstreben unter dir anzusehen und zu raten, wo es gleich
+langgeht. Du wirst falsch liegen.
 
 Ab der Kuppe hört [Troy](ref:toverland/troy) nicht mehr auf. Kein Element dauert
 lange genug, um sich darauf einzustellen. Die Bahn faltet sich in sich selbst,
@@ -252,6 +252,8 @@ Was danach kam, ist eine ungewöhnliche Wachstumsgeschichte, weil dieser Park ni
 Geld hatte, das er verschwenden konnte, und trotzdem zweimal etwas gebaut hat,
 das es vorher nirgends gab.
 
+![Ein geschnitztes, blau angestrahltes Zierdetail aus Holz mit alten Glühbirnen an Kabeln | Der Wunderwald von nahem: Kein Prospekt zeigt so etwas, aber davon lebt der Bereich. | right](/images/parks/toverland/maximus-blitzbahn-4x3.jpg)
+
 **2004** kam die zweite Halle dazu, damals „Magic Forest“, heute der
 **Wunderwald**. Und mit ihr [Booster Bike](ref:toverland/booster-bike), der
 weltweite Prototyp der Motorrad-Achterbahn von Vekoma. Ein Park, den außerhalb
@@ -287,15 +289,7 @@ Million, zuletzt **1.137.000 im Jahr 2025**. Das ist ungefähr ein Drittel desse
 was das Efteling oder der Europa-Park durchschleusen, und genau darin liegt der
 Reiz.
 
-![Ein geschnitztes, blau angestrahltes Zierdetail aus Holz mit alten Glühbirnen an Kabeln | Der Wunderwald von nahem: Kein Prospekt zeigt so etwas, aber davon lebt der Bereich. | right](/images/parks/toverland/maximus-blitzbahn-4x3.jpg)
-
-**2026 ist Jubiläumsjahr**, und der Park feiert es auf eine Art, auf die ein
-Konzern nicht käme. Seit dem **18. April** läuft „Magic Memories“, eine
-Illusionsshow von eben jenem Hans Klok, der vor 25 Jahren die Tore aufgemacht
-hat, rund 30 Minuten lang, mehrmals täglich, im Eintritt enthalten. Und am
-**Wochenende des 27./28. Juni** hatte das Toverland zum ersten Mal in seiner
-Geschichte 25 Stunden am Stück geöffnet, mit einer Überraschung alle fünf
-Stunden, einer XXL-Parade und Feuerwerk.
+![Das beleuchtete Kettenkarussell Djinn in der Halle Land van Toos, Gäste in den Gondeln in Bewegung | Djinn dreht seine Runden über dem orientalischen Markt in Land van Toos, und zwar komplett unter Dach. | left](/blog/images/toverland-halloween/05-djinn-land-van-toos.jpg)
 
 Die beiden Urhallen gibt es übrigens noch, und sie sind kein
 Regenschauer-Plan-B. Land van Toos und Wunderwald sind ein eigenständiges
@@ -304,7 +298,13 @@ orientalischen Markt, als schönstem Beispiel: 12,8 Meter hoch, komplett
 überdacht, und abends mit einer Lichtstimmung, für die andere Parks einen
 Außenbereich bräuchten.
 
-![Das beleuchtete Kettenkarussell Djinn in der Halle Land van Toos, Gäste in den Gondeln in Bewegung | Djinn dreht seine Runden über dem orientalischen Markt in Land van Toos, und zwar komplett unter Dach. | left](/blog/images/toverland-halloween/05-djinn-land-van-toos.jpg)
+**2026 ist Jubiläumsjahr**, und der Park feiert es auf eine Art, auf die ein
+Konzern nicht käme. Seit dem **18. April** läuft „Magic Memories“, eine
+Illusionsshow von eben jenem Hans Klok, der vor 25 Jahren die Tore aufgemacht
+hat, rund 30 Minuten lang, mehrmals täglich, im Eintritt enthalten. Und am
+**Wochenende des 27./28. Juni** hatte das Toverland zum ersten Mal in seiner
+Geschichte 25 Stunden am Stück geöffnet, mit einer Überraschung alle fünf
+Stunden, einer XXL-Parade und Feuerwerk.
 
 ```map-widget slug=toverland
 
@@ -458,7 +458,7 @@ Daten die längste typische Wartezeit aller Coaster hat. Die **Wasserbahnen**
 hebst du dir für die Mittagshitze auf. Wenn „Magic Memories“ läuft, sitzt ein
 erheblicher Teil der Gäste eine halbe Stunde im Theater, draußen ist dann
 auffällig wenig los. Und die letzte Stunde gehört wieder Ithaka: Troy in der
-Dämmerung, wenn die weiße Holzkonstruktion angestrahlt wird und der Zug hörbar
+Dämmerung, wenn die Konstruktion angestrahlt wird und der Zug hörbar
 schneller durch die Station rauscht als morgens.
 
 ## Praktisches: Tickets, Anreise, Essen

@@ -33,14 +33,14 @@ export async function BlogMapWidget({ park, slug }: BlogMapWidgetProps) {
 
   if (!park || !full) {
     return (
-      <GlassCard variant="light" className="not-prose my-8">
+      <GlassCard variant="light" className="not-prose clear-both my-8">
         <p className="text-muted-foreground text-sm">{tBlog('widget.parkNotFound', { slug })}</p>
       </GlassCard>
     );
   }
 
   return (
-    <div className="not-prose my-8 grid gap-3">
+    <div className="not-prose clear-both my-8 grid gap-3">
       <h3 className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
         {tBlog('widget.parkMap')}
       </h3>
