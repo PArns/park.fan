@@ -351,7 +351,8 @@ mit Nebel im Bremsabschnitt und Darstellern in der Warteschlange.
 ![Ein trojanischer Krieger mit Speer steht im Scheinwerferlicht vor dem rot beleuchteten Pferd | Ob das eine Figur ist oder ein Darsteller, merkst du erst, wenn es zu spät ist. | left](/blog/images/toverland-halloween/02-trojanisches-pferd-krieger.jpg)
 
 Eine der sechs Experiences hat für mich noch einen zweiten Boden. Mit dem
-**Freundeskreis Kirmes und Freizeitparks** war ich in der **Maison de la Magie**
+[**Freundeskreis Kirmes und Freizeitparks**](https://fkfev.de/) war ich in der
+**Maison de la Magie**
 hinter den Kulissen unterwegs, und wir durften dort eine Weile selbst als Hount
 arbeiten, also auf der anderen Seite stehen und Gäste erschrecken.
 
@@ -624,4 +625,5 @@ passiert, wenn hinter dir niemand steht.
 - Preise, Early Bird, Summer Pass & Magic Member: [Preise & Öffnungszeiten (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/toverland/preise/) · [Jahreskarten (offiziell)](https://www.toverland.com/de/jahreskarten) · [Summer Pass 2026 (FreizeitparkNEWS)](https://www.freizeitparknews.de/toverland/summer-pass-2026/)
 - Halloween Days & Nights, Scare Zones und Fear Pass: [Scare Zones & Experiences (offiziell)](https://www.toverland.com/en/activities/halloween/scare-zones-experiences) · [unser Halloween-Guide](/blog/halloween-freizeitparks-2026)
 - Anreise, Bus & Parken: [Adresse und Route (offiziell)](https://www.toverland.com/en/contact/adress-route)
+- Backstage in der Maison de la Magie: [Freundeskreis Kirmes und Freizeitparks e. V. (FKF)](https://fkfev.de/)
 - Wartezeit- und Crowd-Daten: eigene Historie aus zwei Saisons, [Toverland auf park.fan](ref:toverland)
