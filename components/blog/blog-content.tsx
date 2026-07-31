@@ -600,7 +600,7 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
         return (
           <aside
             data-callout={callout}
-            className={`not-prose my-6 rounded-xl border px-4 py-3 ${meta.box}`}
+            className={`not-prose clear-both my-6 rounded-xl border px-4 py-3 ${meta.box}`}
           >
             <div
               className={`mb-1.5 inline-flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase ${meta.title}`}
@@ -616,7 +616,7 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
       }
       return (
         // impeccable-disable-next-line side-tab -- blockquote left rule is standard typography, not a card accent
-        <blockquote className="border-primary/40 text-foreground/80 my-6 border-l-4 pl-4 italic">
+        <blockquote className="border-primary/40 text-foreground/80 clear-both my-6 border-l-4 pl-4 italic">
           {injectGlossary(children)}
         </blockquote>
       );

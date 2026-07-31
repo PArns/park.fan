@@ -1,7 +1,7 @@
 ---
 title: 'Toverland: Troy, der Geheimtipp unter Europas Holzachterbahnen'
 translationKey: toverland-troy-guide-2026
-date: '2026-07-30'
+date: '2026-07-31'
 author: patrick
 mode: published
 featured: false
@@ -9,8 +9,8 @@ excerpt: >-
   Das Toverland ist ein verwunschener kleiner Park, an dem halb Köln und
   Düsseldorf auf dem Weg zum Efteling vorbeifahren. Dabei steht in Sevenum mit
   Troy eine Holzachterbahn von GCI, für die man 16 Minuten ansteht, während der
-  Woodie am Ziel 34 kostet. Über einen Park, in dem ich selbst schon als Hount
-  gearbeitet habe, und der bis heute keinen Fast Pass verkauft.
+  Woodie am Ziel 34 kostet. Über einen Park, in dem ich hinter den Kulissen mal
+  selbst den Hount spielen durfte, und der bis heute keinen Fast Pass verkauft.
 tags:
   - toverland
   - troy
@@ -352,38 +352,65 @@ mit Nebel im Bremsabschnitt und Darstellern in der Warteschlange.
 
 Eine der sechs Experiences hat für mich noch einen zweiten Boden. Mit dem
 [**Freundeskreis Kirmes und Freizeitparks**](https://fkfev.de/) war ich in der
-**Maison de la Magie**
-hinter den Kulissen unterwegs, und wir durften dort eine Weile selbst als Hount
-arbeiten, also auf der anderen Seite stehen und Gäste erschrecken.
+**Maison de la Magie** hinter den Kulissen unterwegs, und wir durften dort selbst
+einmal den Hount ausprobieren. Nicht im laufenden Betrieb, ohne echte Gäste, nur
+wir und ein leeres Haus.
 
-Das ist erstaunlich präzise Arbeit. Du hast pro Gruppe zwei, drei Sekunden. Du
-musst hören statt sehen, wo die Leute im Raum gerade sind, weil du in deiner
-Position oft gar nichts siehst. Und du machst das nicht einmal, sondern ein paar
-Stunden am Stück. Seitdem sehe ich in jeder Scare Zone zuerst die Menschen in
-den Kostümen und erst danach die Kostüme. Dass am selben Abend der Parkleiter
-vorbeikam und sich Zeit nahm, passt zu diesem Park: klein genug, dass so etwas
-geht, und offenbar wichtig genug, dass es gemacht wird.
+Es hat trotzdem gereicht, um den Respekt zu verstehen. Du stehst in einer
+Position, aus der du fast nichts siehst, und sollst trotzdem auf die Sekunde
+genau dran sein. Wer das an einem Abend fünf Stunden lang macht, und zwar so,
+dass die zweihundertste Gruppe denselben Schreck bekommt wie die erste, leistet
+etwas, das man von außen nie mitbekommt. Seitdem sehe ich in jeder Scare Zone
+zuerst die Menschen in den Kostümen und erst danach die Kostüme. Dass am selben
+Abend der Parkleiter vorbeikam und sich Zeit nahm, passt zu diesem Park: klein
+genug, dass so etwas geht, und offenbar wichtig genug, dass es gemacht wird.
 
 ![Eine pink angestrahlte Fassade mit Balkon, Puppenfigur und Leuchtschrift „The Dollhouse“ | „The Dollhouse“, eine der sechs Haunted Experiences. Tagsüber ist das Villa Fiasko. | right](/images/parks/toverland/villa-fiasko-4x3.jpg)
 
-💡 **Der Tipp, den Toverland-Kenner sofort geben: der Fear Pass.** Für 62,50 €
-bekommst du einmaligen, schnelleren Zugang zu allen sechs Haunted Experiences,
-plus einen eigenen Bereich für die Parade. Mehr an Vorrang verkauft dieser Park
-nirgends, und an vollen Nächten ist es der Unterschied zwischen „drei Häuser
-geschafft“ und „alle sechs, und dazu heil aus dem Mais gekommen“. Zwei Hinweise:
-Der Eintritt zu den Halloween Nights ist beim **Magic Member** enthalten, der
-Fear Pass nicht. Und die Halloween Nights sind die vollsten Abende des Jahres.
+> [!TIP]
+> **Der Tipp, den Toverland-Kenner sofort geben: der Fear Pass.** Für 62,50 €
+> bekommst du einmaligen, schnelleren Zugang zu allen sechs Haunted Experiences,
+> und zwar über einen **eigenen Eingang**, dazu einen reservierten Bereich für
+> die Parade. Das ist die einzige Abkürzung, die es hier zu kaufen gibt, und an
+> vollen Nächten der Unterschied zwischen „drei Häuser geschafft“ und „alle
+> sechs, und dazu heil aus dem Mais gekommen“.
+>
+> Der Eintritt zu den Halloween Nights ist beim **Magic Member** enthalten, der
+> Fear Pass nicht, dafür ist mit der Jahreskarte **eines der Mazes kostenlos**.
+> Und die Halloween Nights sind die vollsten Abende des Jahres, hier lohnt der
+> Blick in den Kalender doppelt.
 
 [Toverland](ref:toverland?full)
 
 ## Was sonst noch ansteht
 
-Wer länger nicht da war, wird eine Attraktion vermissen. Am **17. Mai 2026** hat
-**[Maximus' Blitz Bahn](ref:toverland/maximus-blitz-bahn)** im Wunderwald zum
-letzten Mal geöffnet, die Mack-Bobbahn von 2007, auf der man mit einem Bremshebel
-selbst bestimmte, wie schnell es bergab ging. In unserer Historie war sie über
-Jahre die Attraktion mit der längsten Wartezeit des ganzen Parks (Median
-34 Minuten), was ziemlich genau ausdrückt, wie beliebt diese schlichte Idee war.
+Wer länger nicht da war, wird eine Attraktion vermissen. Am **17. Mai 2026**
+hatte **[Maximus' Blitz Bahn](ref:toverland/maximus-blitz-bahn)** im Wunderwald
+zum letzten Mal geöffnet, die Mack-Bobbahn von 2007, auf der man mit einem
+Bremshebel selbst bestimmte, wie schnell es bergab ging. In unserer Historie war
+sie über Jahre die Attraktion mit der längsten Wartezeit des ganzen Parks, im
+Median 34 Minuten, und an vollen Tagen standen dort auch mal 60 oder 90 Minuten
+an.
+
+Das lag an einer Rechnung, die nie aufgehen konnte: In einen Wagen passten eine,
+höchstens zwei Personen. Und weil am Ausgang der aktuelle Rekord mit Foto aushing,
+nahmen Paare regelmäßig zwei Wagen statt einem, damit jeder seine eigene Zeit
+fahren konnte. Der Durchsatz brach genau an der Stelle ein, an der die Bahn am
+meisten Spaß machte. Neunzig Minuten für neunzig Sekunden, und die Leute standen
+sie trotzdem, wieder und wieder, weil vorne ein Name auf einer Tafel stand, den
+man schlagen wollte.
+
+Der letzte Tag war dann kein stiller. Der Park hat sie mit einer richtigen Feier
+verabschiedet, mit Rahmenprogramm und eigens aufgelegten Souvenirs, und die
+Schlange war ein letztes Mal so lang wie in ihren besten Jahren. Die allerletzte
+Fahrt aber gehörte dem, dem die Bahn laut Hausgeschichte immer gehört hat:
+**Maximus Müller**, dem exzentrischen Erfinder, der den Wunderwald bewohnt, stieg
+selbst ein und fuhr seine eigene Konstruktion ein letztes Mal hinunter.
+
+Man kann das albern finden, eine erfundene Figur in einem Bobwagen. Ich fand es
+richtig. Neunzehn Jahre lang hat diese Bahn ihre Geschichte ernst genommen, und
+an ihrem letzten Tag hat der Park sie zu Ende erzählt, statt einfach den Strom
+abzuschalten. Genau dafür mag ich diesen Park.
 
 Ihre Nachfolgerin ist der Grund, warum ich das Toverland für den mutigsten
 kleinen Park Europas halte. Im Winter eröffnet dort ein **Swinging Bobsled**, ein
@@ -478,8 +505,8 @@ schneller durch die Station rauscht als morgens.
   dem zweiten Besuch rechnet sich das.
 - **Magic Member (Jahreskarte):** 160 € für Erwachsene, 120 € für Kinder, 130 €
   ab 60 Jahren, Monatsraten ab 6,75 €, Parken 50 € pro Jahr extra. Enthalten ist
-  unbegrenzter Eintritt **auch zu Sonderevents wie Halloween**, dazu 5 % auf
-  Gastronomie und Shops.
+  unbegrenzter Eintritt **auch zu Sonderevents wie Halloween**, dazu eines der
+  Halloween-Mazes kostenlos und 5 % auf Gastronomie und Shops.
 
 Beim letzten Punkt lohnt sich ein Blick über die Grenze: Das Toverland verkauft
 eine ganz normale Jahreskarte mit Halloween drin. Das Phantasialand hat seine
@@ -619,6 +646,7 @@ passiert, wenn hinter dir niemand steht.
 - Dwervelwind (Soft Opening 29. September bis 4. November 2012, komplette Magische Vallei ab April 2013): [Dwervelwind auf Wikipedia](https://de.wikipedia.org/wiki/Dwervelwind) · [Dwervelwind (offiziell)](https://www.toverland.com/de/attraktionen/dwervelwind)
 - European Star Awards 2018: [„Toverland hat gleich drei European Star Awards gewonnen“ (Freizeitpark News)](https://freizeitpark-news.com/news/hohe-auszeichnung-fuer-toverland-der-freizeitpark-aus-holland-hat-gleich-drei-european-star-awards-gewonnen/) · [Awards (offiziell)](https://www.toverland.com/en/awards)
 - Parkgeschichte, Themenbereiche & Besucherzahlen: [Toverland auf Wikipedia](https://de.wikipedia.org/wiki/Toverland) · [Besucherzahlen 2025 (offiziell)](https://www.toverland.com/de/presse/neuigkeiten)
+- Abschiedsfeier am 17. Mai 2026 (Rahmenprogramm, Souvenirs): [„Wir verabschieden uns von Maximus' Blitz Bahn“ (offiziell)](https://www.toverland.com/de/toverblog/blog-neue-blitzbahn) · [„Toverland ersetzt Maximus' Blitz Bahn“ (FreizeitparkNEWS)](https://www.freizeitparknews.de/toverland/maximus-blitz-abschied/)
 - Swinging Bobsled & Abschied von Maximus' Blitz Bahn: [„Neue Attraktion: der Swinging Bobsled!“ (offiziell)](https://www.toverland.com/en/press/news/press-blitzbahn) · [„Toverland to replace bobsleigh with new swinging bobsled“ (blooloop)](https://blooloop.com/toverland-new-swinging-bobsled-ride/)
 - 25 Jahre Toverland, Hans Klok & ToverFestival: [Hans Klok: Magic Memories (offiziell)](https://www.toverland.com/en/shows/hansklok) · [„Toverland wird 25“ (Themepark Central)](https://www.themepark-central.de/toverland-25-hans-klok/)
 - Öffnungszeiten & Jahreskalender 2026: [Jahreskalender 2026 (offiziell)](https://www.toverland.com/toverblog/blog-jaarkalender2026)
