@@ -2,6 +2,14 @@ packages:
   - .
 overrides:
   postcss: ^8.5.10
+  # Dependabot #71 (high): sharp < 0.35.0 inherits four libvips CVEs
+  # (CVE-2026-33327/33328/35590/35591). Our own devDependency is already ^0.35.3,
+  # but Next pulls a second copy via optionalDependencies — and every stable Next
+  # up to and including 16.2.12 (latest) pins `^0.34.5`, which cannot resolve to a
+  # patched release. Next has already bumped to ^0.35.3 for 16.3.0 (see
+  # 16.3.0-preview/-canary), so this override just brings that forward and can be
+  # dropped once 16.3 is out.
+  sharp: ^0.35.3
 onlyBuiltDependencies:
   - '@swc/core'
   - esbuild
