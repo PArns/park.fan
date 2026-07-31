@@ -20,6 +20,10 @@ const nextConfig: NextConfig = {
     '/[locale]/blog/**': ['./content/blog/**/*', './public/blog/**/*'],
     '/sitemap.xml': ['./content/blog/**/*'],
     '/[locale]': ['./content/blog/**/*'],
+    // The OG renderer inlines the brand PNGs off disk instead of fetching them over
+    // HTTP on every render (see lib/og/brand-mark.tsx). Next can't trace a runtime
+    // readFileSync, so the two assets have to be named explicitly.
+    '/api/og/[...path]': ['./public/logo-dark.png', './public/parkfan-dark.png'],
   },
   compiler: {
     // Remove React properties that are not needed in production
@@ -442,6 +446,30 @@ const nextConfig: NextConfig = {
     return [
       // Content-Language per locale — helps Google associate pages with their language
       ...localeHeaderRules,
+      // Static images served from /public. Vercel serves /public with `max-age=0,
+      // must-revalidate` by default, and the Image Optimization response INHERITS the source
+      // image's Cache-Control — so every `/_next/image` hit came back `max-age=0,
+      // must-revalidate` too and browsers re-validated each image on every page view.
+      // `images.minimumCacheTTL` does NOT fix this: it only sets the floor for Vercel's own
+      // optimizer cache (x-vercel-cache: HIT), not the browser-facing header. Setting a real
+      // max-age on the SOURCE is what makes the optimized output cacheable — and it also cuts
+      // image transformations/cache writes, which is what Vercel bills for.
+      // Trade-off: replacing an image under the same filename won't reach returning browsers
+      // for up to 31 days. That is rare here (3 in-place replacements in the last 200 commits);
+      // when it matters, change the filename.
+      // Kept BEFORE the .svg rule below so SVGs keep their stronger 1-year immutable value
+      // (Next applies header rules last-match-wins per key).
+      {
+        source: '/:dir(images|blog|textures)/:path*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=2678400' }],
+      },
+      // Brand/icon PNGs at the root of /public (logo*, parkfan*, icon-*, apple-touch-icon).
+      // Single-segment `:file` on purpose: park photos under /images keep the shorter,
+      // replaceable 31-day value from the rule above rather than a 1-year immutable one.
+      {
+        source: '/:file.png',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
       // Static SVGs served from /public — cache for 1 year (immutable via content hash)
       {
         source: '/:file*.svg',
@@ -556,6 +584,13 @@ const nextConfig: NextConfig = {
           { key: 'Cache-Control', value: 'public, s-maxage=86400, stale-while-revalidate=604800' },
         ],
       },
+      // NOTE — do not try to CDN-cache the park/attraction pages from here. A `headers()` rule
+      // overrides `Cache-Control` for ROUTE HANDLERS (that is what the /api entries above rely
+      // on) but NOT for a `export const dynamic = 'force-dynamic'` PAGE: the dynamic render's own
+      // `private, no-cache, no-store` wins. Verified against the dev server — the same request
+      // does pick up the `Content-Language` rule, so the rule matches; only Cache-Control loses.
+      // Caching those two routes has to happen either by giving up force-dynamic (which brings
+      // back the per-URL ISR writes it was chosen to avoid) or at the CDN in front.
       {
         source: '/:locale/search',
         headers: [{ key: 'Cache-Control', value: 'no-store, must-revalidate' }],

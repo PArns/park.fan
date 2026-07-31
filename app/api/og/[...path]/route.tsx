@@ -7,7 +7,7 @@ import { getParkBackgroundImage, getAttractionBackgroundImage } from '@/lib/util
 import { stripNewPrefix } from '@/lib/utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { HERO_IMAGES } from '@/lib/hero-images';
-import { ParkAttraction, QueueDataItem } from '@/lib/api/types';
+import { ParkAttraction } from '@/lib/api/types';
 import { isValidLocale, type Locale } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { OgBrandLockup } from '@/lib/og/brand-mark';
@@ -62,68 +62,6 @@ const FLAGS: Record<string, React.ComponentType<React.ComponentProps<'svg'>>> = 
   brazil: FlagBR,
 };
 
-// Helper to generate sparkline path (StepAfter algorithm matching WaitTimeSparkline)
-function generateSparklinePath(
-  history: Array<{ timestamp: string; waitTime: number }>,
-  width: number,
-  height: number
-): string {
-  if (history.length === 0) return '';
-
-  // Process data
-  const points = history.map((point) => ({
-    time: new Date(point.timestamp).getTime(),
-    value: point.waitTime,
-  }));
-
-  const maxWait = Math.max(...points.map((d) => d.value), 10);
-  const minTime = points[0].time;
-  const maxTime = points[points.length - 1].time;
-  const timeRange = maxTime - minTime;
-
-  const getX = (time: number) => (timeRange === 0 ? 0 : ((time - minTime) / timeRange) * width);
-  const getY = (value: number) => height - (value / maxWait) * height;
-
-  let pathD = '';
-  points.forEach((p, i) => {
-    const x = getX(p.time);
-    const y = getY(p.value);
-
-    if (i === 0) {
-      pathD += `M ${x},${y}`;
-    } else {
-      // StepAfter: Horizontal from prev point to current X, then vertical to current Y
-      const prevP = points[i - 1];
-      const prevY = getY(prevP.value);
-      // Horizontal move to current X with PREVIOUS Y
-      pathD += ` L ${x},${prevY}`;
-      // Vertical move to current Y
-      pathD += ` L ${x},${y}`;
-    }
-  });
-
-  // Extend horizontal line to right edge (shows current stable time)
-  pathD += ` L ${width},${getY(points[points.length - 1].value)}`;
-
-  return pathD;
-}
-
-// Helper to get crowd level color (teal → emerald → green → orange → rose → red)
-function getCrowdLevelColor(level: string): string {
-  const colors: Record<string, string> = {
-    very_low: '#0d9488', // teal-600
-    low: '#10b981', // emerald-500
-    moderate: '#22c55e', // green-500
-    high: '#f97316', // orange-500
-    very_high: '#f43f5e', // rose-500
-    extreme: '#dc2626', // red-600
-    full: '#dc2626', // red-600 (legacy fallback)
-    closed: '#94a3b8', // slate-400
-  };
-  return colors[level] || '#6b7280';
-}
-
-// Helper to get status color
 type OgPageType = 'HOME' | 'GENERIC' | 'CONTINENT' | 'COUNTRY' | 'CITY' | 'PARK' | 'ATTRACTION';
 
 function determineOgPageType(path: string[], isGeneric: boolean): OgPageType {
@@ -134,16 +72,6 @@ function determineOgPageType(path: string[], isGeneric: boolean): OgPageType {
   if (path.length === 4) return 'CITY';
   if (path.length >= 6 && path[5]) return 'ATTRACTION';
   return 'PARK';
-}
-
-function getStatusColor(status: string): string {
-  const colors: Record<string, string> = {
-    OPERATING: '#059669', // emerald-600
-    CLOSED: '#dc2626', // red-600
-    DOWN: '#ea580c', // orange-600
-    REFURBISHMENT: '#7c3aed', // violet-600
-  };
-  return colors[status] || '#6b7280';
 }
 
 export async function GET(
@@ -227,11 +155,9 @@ export async function GET(
     const type = determineOgPageType(path, Boolean(isGeneric));
 
     // Fetch translations
-    const [tCommon, tGeo, tParks, tAttractions, tHomepage] = await Promise.all([
+    const [tCommon, tGeo, tHomepage] = await Promise.all([
       getTranslations({ locale, namespace: 'common' }),
       getTranslations({ locale, namespace: 'geo' }),
-      getTranslations({ locale, namespace: 'parks' }),
-      getTranslations({ locale, namespace: 'attractions' }),
       getTranslations({ locale, namespace: 'homepage' }),
     ]);
 
@@ -245,20 +171,11 @@ export async function GET(
 
     let name = '';
     let backgroundImagePath: string | null = null;
-    let status = '';
-    let statusLabel = '';
-    let statusColor = '';
-    let crowdLabel: string | null = null;
-    let crowdColor: string | null = null;
-    let crowdLevel: string | undefined;
-    let waitTime: number | null = null;
-    let sparklineHistory: Array<{ timestamp: string; waitTime: number }> | undefined;
-    let peakWaitToday: number | undefined;
-    let operatingAttractionsCount = 0;
 
-    // Regional aggregates
+    // Regional aggregates. Only the *total* park count survives here: it barely moves,
+    // whereas the former "N open" figure was live data and would have gone stale behind
+    // the 30-day cache these cards now use.
     let totalParks = 0;
-    let openParksCount = 0;
 
     let geoSvg = null;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -274,15 +191,10 @@ export async function GET(
     if (type === 'HOME') {
       name = tHomepage('features.title'); // OG home subtitle, e.g. "Plan Your Perfect Theme Park Visit"
       totalParks = geo.parkCount;
-      // Calculate total open parks by summing up continents
-      openParksCount = geo.continents.reduce((sum, c) => sum + (c.openParkCount || 0), 0);
 
       // Random Background from Hero Images
       const randomIndex = Math.floor(Math.random() * HERO_IMAGES.length);
       backgroundImagePath = HERO_IMAGES[randomIndex];
-
-      statusLabel = `${openParksCount} ${tCommon('open')}`;
-      statusColor = openParksCount > 0 ? getStatusColor('OPERATING') : getStatusColor('CLOSED');
     } else if (type === 'GENERIC') {
       const config = genericPages[secondSegment as keyof typeof genericPages];
       // Legal pages carry an SEO site-name suffix ("… - park.fan"); strip it
@@ -294,9 +206,6 @@ export async function GET(
       // For 'parks' generic page, we can show stats
       if (secondSegment === 'parks') {
         totalParks = geo.parkCount;
-        openParksCount = geo.continents.reduce((sum, c) => sum + (c.openParkCount || 0), 0);
-        statusLabel = `${openParksCount} ${tCommon('open')}`;
-        statusColor = openParksCount > 0 ? getStatusColor('OPERATING') : getStatusColor('CLOSED');
       }
 
       // Use a random hero image for visuals if no specific one
@@ -308,7 +217,6 @@ export async function GET(
       if (type === 'CONTINENT' && continentNode) {
         name = translateGeoSlug(tGeo, 'continents', continent, continentNode.name);
         totalParks = continentNode.parkCount;
-        openParksCount = continentNode.openParkCount;
 
         // Get all country codes and names for the continent
         // EXCLUDE Russia (RU) for Europe visuals because it's too wide and shrinks the rest of Europe
@@ -321,13 +229,11 @@ export async function GET(
         const normalizedCountry = country.toLowerCase().replace(/\s+/g, '-');
         name = translateGeoSlug(tGeo, 'countries', normalizedCountry, countryNode.name);
         totalParks = countryNode.parkCount;
-        openParksCount = countryNode.openParkCount;
 
         geoSvg = getRegionGeoSVG([countryNode.code, countryNode.name]);
       } else if (type === 'CITY' && cityNode) {
         name = cityNode.name;
         totalParks = cityNode.parkCount;
-        openParksCount = cityNode.openParkCount;
 
         // For city, prevent showing the entire country if it's huge?
         // Ideally we'd have city shape or point, but for now showing the Country context is safer via map
@@ -338,9 +244,6 @@ export async function GET(
           geoSvg = getRegionGeoSVG([countryNode.code, countryNode.name]);
         }
       }
-
-      statusLabel = `${openParksCount} ${tCommon('open')}`;
-      statusColor = openParksCount > 0 ? getStatusColor('OPERATING') : getStatusColor('CLOSED');
     } else if (type === 'PARK' || type === 'ATTRACTION') {
       // ... Original Logic for Park/Attraction ...
       park = await getParkByGeoPath(continent, country, city, parkSlug).catch(() => null);
@@ -350,14 +253,6 @@ export async function GET(
       }
 
       let attraction = null;
-
-      // Determine operating attractions count for park view
-      const operatingAttractionsList =
-        park.attractions?.filter((a: ParkAttraction) => {
-          const queue = a.queues?.find((q) => q.queueType === 'STANDBY');
-          return queue && 'waitTime' in queue && queue.waitTime !== null;
-        }) || [];
-      operatingAttractionsCount = operatingAttractionsList.length;
 
       if (type === 'ATTRACTION') {
         // Find attraction logic
@@ -379,46 +274,20 @@ export async function GET(
         backgroundImagePath =
           getAttractionBackgroundImage(parkSlug, attractionSlug) ??
           getParkBackgroundImage(parkSlug);
-
-        const standbyQueue = attraction.queues?.find(
-          (q: QueueDataItem) => q.queueType === 'STANDBY'
-        );
-        if (standbyQueue && 'waitTime' in standbyQueue) waitTime = standbyQueue.waitTime ?? null;
-
-        status =
-          park.status !== 'OPERATING'
-            ? 'CLOSED'
-            : (standbyQueue as { status?: string })?.status || attraction.status || 'CLOSED';
-        crowdLevel =
-          'crowdLevel' in attraction
-            ? (attraction.crowdLevel as string)
-            : attraction.currentLoad?.crowdLevel;
-        sparklineHistory = attraction.statistics?.history;
-        peakWaitToday = attraction.statistics?.peakWaitToday ?? undefined;
       } else {
         // Park logic
         name = stripNewPrefix(park.name);
         backgroundImagePath = getParkBackgroundImage(parkSlug);
-        status = park.status || 'CLOSED';
-        crowdLevel = park.currentLoad?.crowdLevel;
-
-        if (operatingAttractionsCount > 0) {
-          const totalWait = operatingAttractionsList.reduce((sum: number, a: ParkAttraction) => {
-            const queue = a.queues?.find((q: QueueDataItem) => q.queueType === 'STANDBY');
-            return sum + ((queue && 'waitTime' in queue ? queue.waitTime : 0) || 0);
-          }, 0);
-          waitTime = Math.round(totalWait / operatingAttractionsCount);
-        }
       }
-
-      // Set standard badges for Park/Attraction
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      statusLabel = tParks(`status.${status}` as any);
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      crowdLabel = crowdLevel ? tParks(`crowdLevels.${crowdLevel}` as any) : null;
-      statusColor = getStatusColor(status);
-      crowdColor = crowdLevel ? getCrowdLevelColor(crowdLevel) : null;
+      // No status, crowd level or wait time is read here any more — that live data is
+      // what pinned these cards to a 5-minute cache, and a social platform re-shows a
+      // cached OG image for days, so the figures were usually wrong by the time anyone
+      // saw them. The park lookup stays: it supplies the name and the background photo.
     }
+
+    // Park & attraction cards ("place cards") get the centred, large-headline treatment:
+    // they carry no badge row any more, so the name and location own the composition.
+    const isPlaceCard = !['CONTINENT', 'COUNTRY', 'CITY', 'GENERIC', 'HOME'].includes(type);
 
     // Build absolute URL for background image
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://park.fan';
@@ -678,24 +547,6 @@ export async function GET(
                 >
                   🌍 {totalParks} Parks
                 </div>
-
-                {openParksCount > 0 && (
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '12px',
-                      backgroundColor: 'rgba(5, 150, 105, 0.8)', // emerald
-                      color: 'white',
-                      padding: '12px 28px',
-                      borderRadius: '9999px',
-                      fontSize: '28px',
-                      fontWeight: 600,
-                    }}
-                  >
-                    ✅ {openParksCount} {tCommon('open')}
-                  </div>
-                )}
               </div>
             </div>
           ) : (
@@ -729,53 +580,43 @@ export async function GET(
                     }}
                   >
                     {/* Location Iconish text */}
-                    {['CONTINENT', 'COUNTRY', 'CITY'].includes(type) ? (
-                      <>
-                        {type === 'CITY' && (
-                          <>
-                            📍 {localizedCountryName} • {localizedContinentName}
-                          </>
-                        )}
-                        {type === 'COUNTRY' && <>🌍 {localizedContinentName}</>}
-                        {type === 'CONTINENT' && <>🌍 {tGeo('exploreByRegion')}</>}
-                      </>
-                    ) : type ===
-                      'GENERIC' ? null /* no kicker — brand shows once via the top-right lockup */ : (
-                      <>
-                        {FLAGS[country.toLowerCase().replace(/\s+/g, '-')] ? (
-                          (() => {
-                            const Flag = FLAGS[country.toLowerCase().replace(/\s+/g, '-')];
-                            return (
-                              <Flag
-                                width="56"
-                                height="40"
-                                style={{
-                                  marginRight: '12px',
-                                  borderRadius: '4px',
-                                  objectFit: 'cover',
-                                }}
-                              />
-                            );
-                          })()
-                        ) : (
-                          <span style={{ marginRight: '12px' }}>📍</span>
-                        )}
-                        {locationString}
-                      </>
-                    )}
+                    {
+                      ['CONTINENT', 'COUNTRY', 'CITY'].includes(type) ? (
+                        <>
+                          {type === 'CITY' && (
+                            <>
+                              📍 {localizedCountryName} • {localizedContinentName}
+                            </>
+                          )}
+                          {type === 'COUNTRY' && <>🌍 {localizedContinentName}</>}
+                          {type === 'CONTINENT' && <>🌍 {tGeo('exploreByRegion')}</>}
+                        </>
+                      ) : null /* No kicker for GENERIC or place cards — park and
+                        attraction cards show their location centred under the
+                        headline instead of repeating it up here. */
+                    }
                   </p>
                 </div>
 
-                <OgBrandLockup markerHeight={56} />
+                <OgBrandLockup markerHeight={84} />
               </div>
 
-              {/* Main Content Area */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              {/* Main Content Area. Place cards (park/attraction) centre their headline
+                  and carry the location directly beneath it — with the live badges gone
+                  the name gets that room instead. */}
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '20px',
+                  ...(isPlaceCard ? { alignItems: 'center', width: '100%' } : {}),
+                }}
+              >
                 {/* Title */}
                 <h1
                   style={{
                     display: 'flex',
-                    fontSize: '72px',
+                    fontSize: isPlaceCard ? '104px' : '72px',
                     fontWeight: 800,
                     color: 'white',
                     margin: 0,
@@ -783,50 +624,48 @@ export async function GET(
                     letterSpacing: '-0.02em',
                     textShadow: '0 4px 12px rgba(0,0,0,0.5)',
                     maxWidth: '90%',
+                    ...(isPlaceCard ? { textAlign: 'center', justifyContent: 'center' } : {}),
                   }}
                 >
                   {name}
                 </h1>
 
-                {/* Status Badges Row - REGIONAL */}
-                {['CONTINENT', 'COUNTRY', 'CITY'].includes(type) && (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-                    <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '12px',
-                        backgroundColor: '#0f172a', // slate-900
-                        border: '2px solid rgba(255,255,255,0.2)',
-                        color: 'white',
-                        padding: '12px 28px',
-                        borderRadius: '9999px',
-                        fontSize: '32px',
-                        fontWeight: 700,
-                      }}
-                    >
-                      🎢 {totalParks} {tCommon('parks')}
-                    </div>
-
-                    {openParksCount > 0 && (
-                      <div
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '12px',
-                          backgroundColor: '#059669', // emerald-600
-                          color: 'white',
-                          padding: '12px 28px',
-                          borderRadius: '9999px',
-                          fontSize: '32px',
-                          fontWeight: 700,
-                        }}
-                      >
-                        🕒 {openParksCount} {tCommon('open')}
-                      </div>
+                {/* Location, centred under the headline. Place cards only — the regional
+                    layouts keep their kicker in the top bar. */}
+                {isPlaceCard && locationString && (
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '14px',
+                      fontSize: '38px',
+                      fontWeight: 600,
+                      color: 'rgba(255,255,255,0.85)',
+                      textShadow: '0 2px 8px rgba(0,0,0,0.5)',
+                    }}
+                  >
+                    {FLAGS[country.toLowerCase().replace(/\s+/g, '-')] ? (
+                      (() => {
+                        const Flag = FLAGS[country.toLowerCase().replace(/\s+/g, '-')];
+                        return (
+                          <Flag
+                            width="56"
+                            height="40"
+                            style={{ borderRadius: '4px', objectFit: 'cover' }}
+                          />
+                        );
+                      })()
+                    ) : (
+                      <span>📍</span>
                     )}
+                    {locationString}
                   </div>
                 )}
+
+                {/* No badge row for the regional cards any more: it held a live "N open"
+                    count (dropped — it would go stale behind the 30-day cache) next to a
+                    park-count badge that just repeated the footer line below. */}
 
                 {/* Status Badges Row - GENERIC */}
                 {type === 'GENERIC' && (
@@ -849,145 +688,12 @@ export async function GET(
                     </div>
                   </div>
                 )}
-
-                {/* Status Badges Row - PARK/ATTRACTION */}
-                {!['CONTINENT', 'COUNTRY', 'CITY', 'GENERIC'].includes(type) && (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-                    {/* Operating Status Badge */}
-                    <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '12px',
-                        backgroundColor: statusColor,
-                        color: 'white',
-                        padding: '12px 28px',
-                        borderRadius: '9999px',
-                        fontSize: '32px',
-                        fontWeight: 700,
-                        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                      }}
-                    >
-                      {/* Icon based on status */}
-                      {status === 'OPERATING' ? (
-                        <svg
-                          width="32"
-                          height="32"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="3"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <circle cx="12" cy="12" r="10" />
-                          <polyline points="12 6 12 12 16 14" />
-                        </svg>
-                      ) : status === 'CLOSED' ? (
-                        <svg
-                          width="32"
-                          height="32"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="3"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <circle cx="12" cy="12" r="10" />
-                          <line x1="15" y1="9" x2="9" y2="15" />
-                          <line x1="9" y1="9" x2="15" y2="15" />
-                        </svg>
-                      ) : (
-                        <svg
-                          width="32"
-                          height="32"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="3"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
-                          <path d="M12 9v4" />
-                          <path d="M12 17h.01" />
-                        </svg>
-                      )}
-                      {statusLabel}
-                    </div>
-
-                    {/* Crowd Level Badge - Hide if Closed to avoid redundancy */}
-                    {crowdLabel && crowdColor && status !== 'CLOSED' && crowdLevel !== 'closed' && (
-                      <div
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          backgroundColor: crowdColor,
-                          color: 'white',
-                          padding: '12px 28px',
-                          borderRadius: '9999px',
-                          fontSize: '32px',
-                          fontWeight: 700,
-                          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                        }}
-                      >
-                        {crowdLabel}
-                      </div>
-                    )}
-
-                    {/* Operating Attractions (Park only) */}
-                    {type !== 'ATTRACTION' &&
-                      status !== 'CLOSED' &&
-                      operatingAttractionsCount > 0 && (
-                        <div
-                          style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '12px',
-                            backgroundColor: 'rgba(255,255,255,0.1)',
-                            backdropFilter: 'blur(10px)',
-                            border: '2px solid rgba(255,255,255,0.2)',
-                            color: 'white',
-                            padding: '10px 28px',
-                            borderRadius: '9999px',
-                            fontSize: '32px',
-                            fontWeight: 600,
-                          }}
-                        >
-                          <svg
-                            width="32"
-                            height="32"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          >
-                            <path d="M6 19v-3" />
-                            <path d="M10 19v-3" />
-                            <path d="M14 19v-3" />
-                            <path d="M18 19v-3" />
-                            <path d="M8 11V9" />
-                            <path d="M16 11V9" />
-                            <path d="M12 11V6a2 2 0 0 1 2-2 2 2 0 0 1 2 2v2" />
-                            <path d="M4 16c0 1.7 1.3 3 3 3h10c1.7 0 3-1.3 3-3" />
-                          </svg>
-                          {operatingAttractionsCount} {tCommon('operating')}
-                        </div>
-                      )}
-                  </div>
-                )}
               </div>
 
-              {/* Bottom Section: wait time (park/attraction) or regional stats.
-                  Hidden when there's nothing to show: a closed ride has no wait
-                  time and its status already sits on the badge above, so a
-                  "Closed" line here would just duplicate it (and GENERIC pages
-                  have no stats at all). */}
-              {(['CONTINENT', 'COUNTRY', 'CITY'].includes(type) ||
-                (status === 'OPERATING' && waitTime !== null)) && (
+              {/* Bottom Section: regional stats only. Park/attraction cards used to
+                  show the current wait time here; that is exactly the data which forced
+                  a 5-minute cache, so it is gone — see the Cache-Control note below. */}
+              {['CONTINENT', 'COUNTRY', 'CITY'].includes(type) && (
                 <div
                   style={{
                     display: 'flex',
@@ -998,121 +704,34 @@ export async function GET(
                     paddingTop: '24px',
                   }}
                 >
-                  {/* Left: Wait Time Info / Regional Info */}
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                    {!['CONTINENT', 'COUNTRY', 'CITY'].includes(type) ? (
-                      <>
-                        {status === 'OPERATING' && waitTime !== null ? (
-                          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                            <div style={{ display: 'flex', alignItems: 'baseline', gap: '16px' }}>
-                              <span style={{ fontSize: '96px', fontWeight: 800, lineHeight: 1 }}>
-                                {waitTime}
-                              </span>
-                              <span
-                                style={{
-                                  fontSize: '48px',
-                                  fontWeight: 500,
-                                  color: 'rgba(255,255,255,0.8)',
-                                }}
-                              >
-                                {tCommon('minutes')}
-                              </span>
-                            </div>
-                            {peakWaitToday !== undefined && peakWaitToday !== null && (
-                              <div
-                                style={{
-                                  fontSize: '32px',
-                                  color: 'rgba(255,255,255,0.6)',
-                                  fontWeight: 500,
-                                }}
-                              >
-                                {tAttractions('peak', { time: peakWaitToday })}
-                              </div>
-                            )}
-                          </div>
-                        ) : null}
-
-                        {type !== 'ATTRACTION' && status === 'OPERATING' && waitTime !== null && (
-                          <div
-                            style={{
-                              display: 'flex',
-                              fontSize: '32px',
-                              color: 'rgba(255,255,255,0.6)',
-                              fontWeight: 500,
-                            }}
-                          >
-                            {tParks('avgWaitTime')}
-                          </div>
-                        )}
-                      </>
-                    ) : (
-                      // Regional Footer Info
-                      <div
-                        style={{
-                          display: 'flex',
-                          fontSize: '32px',
-                          color: 'rgba(255,255,255,0.6)',
-                          fontWeight: 500,
-                        }}
-                      >
-                        <>
-                          {tGeo('parkCount', { count: totalParks })} • {tCommon('discover')}
-                        </>
-                      </div>
-                    )}
+                  <div
+                    style={{
+                      display: 'flex',
+                      fontSize: '32px',
+                      color: 'rgba(255,255,255,0.6)',
+                      fontWeight: 500,
+                    }}
+                  >
+                    {tGeo('parkCount', { count: totalParks })} • {tCommon('discover')}
                   </div>
                 </div>
               )}
             </div>
           )}
         </div>
-
-        {/* Full Width Sparkline Overlay - Positioned Absolute at Bottom of Root Container */}
-        {sparklineHistory && sparklineHistory.length > 0 && (
-          <div
-            style={{
-              position: 'absolute',
-              left: 0,
-              bottom: 0,
-              width: '100%',
-              height: '150px',
-              display: 'flex',
-              alignItems: 'flex-end',
-              zIndex: 0,
-              opacity: 0.4,
-            }}
-          >
-            <svg
-              width={WIDTH}
-              height="150"
-              viewBox={`0 0 ${WIDTH} 150`}
-              preserveAspectRatio="none"
-              style={{ width: '100%', height: '100%' }}
-            >
-              <path
-                d={generateSparklinePath(
-                  // Add current wait time as the last point if available
-                  waitTime !== null
-                    ? [...sparklineHistory, { timestamp: new Date().toISOString(), waitTime }]
-                    : sparklineHistory,
-                  WIDTH,
-                  150
-                )}
-                fill="none"
-                stroke="rgba(255,255,255,0.5)"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-        )}
       </div>,
       {
         width: WIDTH,
         height: HEIGHT,
         headers: {
-          'Cache-Control': 'public, max-age=300, s-maxage=300, stale-while-revalidate=60',
+          // 30 days. The card carries no live data any more (no status, wait time,
+          // crowd level or sparkline), so there is nothing left to go stale — and at
+          // ~9.2k distinct OG URLs hit roughly once a day each, the previous 5-minute
+          // window expired long before a URL was requested again, giving a ~0% hit
+          // rate and one full Satori render (plus a background-image fetch) per
+          // request. A 30-day window turns ~9.5k renders/day into ~300.
+          'Cache-Control':
+            'public, max-age=2592000, s-maxage=2592000, stale-while-revalidate=86400',
         },
       }
     );
