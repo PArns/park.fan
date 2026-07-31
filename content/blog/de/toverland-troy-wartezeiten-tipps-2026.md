@@ -117,8 +117,7 @@ systematisch. In einem mehrjährigen **Retrack** ersetzt er jeden Winter rund
 198 Meter Strecke auf beiden Schienen, in Summe knapp 400 laufende Meter Holz pro
 Saison. Gearbeitet wird unter einem provisorischen Dach, damit Regen und Frost
 die Arbeiten nicht aufhalten, und von zwanzig eigens dafür geschulten Leuten aus
-dem eigenen Team.
-Zuerst kamen der First Drop und das Horseshoe dran. Wer Troy vor zehn Jahren
+dem eigenen Team. Zuerst kamen der First Drop und das Horseshoe dran. Wer Troy vor zehn Jahren
 gefahren ist und sie als „großartig, aber ruppig“ in Erinnerung hat: Fahr sie
 nochmal.
 
@@ -164,7 +163,7 @@ Was kosten die großen Namen der Region an Wartezeit, egal ob Holz oder Stahl?
 
 Die beiden Toverland-Bahnen stehen unten, mit Abstand. Für die Zeit, die du im
 Phantasialand **einmal** bei [Taron](ref:phantasialand/taron) anstehst, fährst du
-hier Troy dreimal.
+hier [Troy](ref:toverland/troy) dreimal.
 
 Der Grund ist eine Division, die ich in der
 [Kunst des Wartens](/blog/die-kunst-des-wartens) ausführlich vorgerechnet habe:
@@ -355,6 +354,8 @@ Eine der sechs Experiences hat für mich noch einen zweiten Boden. Mit dem
 einmal den Hount ausprobieren. Nicht im laufenden Betrieb, ohne echte Gäste, nur
 wir und ein leeres Haus.
 
+![Eine pink angestrahlte Fassade mit Balkon, Puppenfigur und Leuchtschrift „The Dollhouse“ | „The Dollhouse“, eine der sechs Haunted Experiences. Tagsüber ist das Villa Fiasko. | right](/images/parks/toverland/villa-fiasko-4x3.jpg)
+
 Es hat trotzdem gereicht, um den Respekt zu verstehen. Du stehst in einer
 Position, aus der du fast nichts siehst, und sollst trotzdem auf die Sekunde
 genau dran sein. Wer das an einem Abend fünf Stunden lang macht, und zwar so,
@@ -363,8 +364,6 @@ etwas, das man von außen nie mitbekommt. Seitdem sehe ich in jeder Scare Zone
 zuerst die Menschen in den Kostümen und erst danach die Kostüme. Dass am selben
 Abend der Parkleiter vorbeikam und sich Zeit nahm, passt zu diesem Park: klein
 genug, dass so etwas geht, und offenbar wichtig genug, dass es gemacht wird.
-
-![Eine pink angestrahlte Fassade mit Balkon, Puppenfigur und Leuchtschrift „The Dollhouse“ | „The Dollhouse“, eine der sechs Haunted Experiences. Tagsüber ist das Villa Fiasko. | right](/images/parks/toverland/villa-fiasko-4x3.jpg)
 
 > [!TIP]
 > **Der Tipp, den Toverland-Kenner sofort geben: der Fear Pass.** Für 62,50 €
@@ -466,11 +465,9 @@ letzten beiden Saisons:
 
 ```
 
-Zwei Dinge solltest du dabei mitdenken: Die **niederländischen** Ferien schlagen
-hier stärker durch als die deutschen, vor allem die Herbst- und Maiferien der
-südlichen Provinzen. Und für den September fehlen uns noch belastbare Messtage.
-Er dürfte aus denselben Gründen funktionieren wie der Juni, gemessen haben wir
-das aber nicht.
+Eines solltest du dabei mitdenken: Die **niederländischen** Ferien schlagen hier
+stärker durch als die deutschen, vor allem die Herbst- und Maiferien der
+südlichen Provinzen.
 
 ## Der perfekte Tag, in sechs Sätzen
 
