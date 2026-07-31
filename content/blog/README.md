@@ -341,9 +341,10 @@ Further rules that keep German prose sounding human:
 - **Don't announce the structure** (`Und jetzt der Grund, warum dieses Kapitel
 hier steht`, `Kommen wir nun zu`). Just write the next paragraph.
 - **Articles and prepositions matter, and check the gender before "fixing" one
-  in.** It is **der** Efteling — masculine, the way German Wikipedia uses it
-  ("im Märchenwald **des** Efteling"). So `bis zum Efteling`, `im Vergleich zum
-Efteling`, `im Efteling steht Joris en de Draak`. Never `zur Efteling`.
+  in.** Dutch park names take the same neuter article the German ones do: it is
+  **das** Efteling, exactly like `das Toverland` and `das Phantasialand`. So
+  `zum Efteling`, `im Efteling`, `dem Efteling`, `das Efteling ist …` — never
+  `der Efteling` and never `zur Efteling`.
 - **Superlatives need a source or a number** right next to them, otherwise cut.
 - **Hedge thin data explicitly** rather than rounding it into confidence: if a
   month has four measured days, say so.
