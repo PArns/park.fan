@@ -115,8 +115,9 @@ Bleibt das Vorurteil, das jede Holzachterbahn ab einem gewissen Alter
 mitschleppt: dass sie rappelt. Daran arbeitet der Park seit **2024** sehr
 systematisch. In einem mehrjährigen **Retrack** ersetzt er jeden Winter rund
 198 Meter Strecke auf beiden Schienen, in Summe knapp 400 laufende Meter Holz pro
-Saison. Gearbeitet wird unter einem temporären Dach, damit das Wetter nicht
-mitredet, und von zwanzig eigens dafür geschulten Leuten aus dem eigenen Team.
+Saison. Gearbeitet wird unter einem provisorischen Dach, damit Regen und Frost
+die Arbeiten nicht aufhalten, und von zwanzig eigens dafür geschulten Leuten aus
+dem eigenen Team.
 Zuerst kamen der First Drop und das Horseshoe dran. Wer Troy vor zehn Jahren
 gefahren ist und sie als „großartig, aber ruppig“ in Erinnerung hat: Fahr sie
 nochmal.
@@ -252,8 +253,6 @@ Was danach kam, ist eine ungewöhnliche Wachstumsgeschichte, weil dieser Park ni
 Geld hatte, das er verschwenden konnte, und trotzdem zweimal etwas gebaut hat,
 das es vorher nirgends gab.
 
-![Ein geschnitztes, blau angestrahltes Zierdetail aus Holz mit alten Glühbirnen an Kabeln | Der Wunderwald von nahem: Kein Prospekt zeigt so etwas, aber davon lebt der Bereich. | right](/images/parks/toverland/maximus-blitzbahn-4x3.jpg)
-
 **2004** kam die zweite Halle dazu, damals „Magic Forest“, heute der
 **Wunderwald**. Und mit ihr [Booster Bike](ref:toverland/booster-bike), der
 weltweite Prototyp der Motorrad-Achterbahn von Vekoma. Ein Park, den außerhalb
@@ -383,6 +382,8 @@ genug, dass so etwas geht, und offenbar wichtig genug, dass es gemacht wird.
 [Toverland](ref:toverland?full)
 
 ## Was sonst noch ansteht
+
+![Ein geschnitztes Zierdetail an der Maximus' Blitz Bahn, blau angestrahlt, daneben alte Glühbirnen an Kabeln | Ein Detail der Blitz Bahn, wie sie neunzehn Jahre lang dastand. Fast alles hier war handgemacht. | left](/images/parks/toverland/maximus-blitzbahn-4x3.jpg)
 
 Wer länger nicht da war, wird eine Attraktion vermissen. Am **17. Mai 2026**
 hatte **[Maximus' Blitz Bahn](ref:toverland/maximus-blitz-bahn)** im Wunderwald
@@ -616,8 +617,7 @@ im Winter das dritte Mal nachlegt, ohne dabei je so voll zu werden, dass es
 wehtut. Dazu eine Jahreskarte, die es noch gibt, und niemand, der sich an dir
 vorbeikauft.
 
-Limburger Wettervorhersagen sind eine eigene Literaturgattung, deshalb hier
-lieber der aktuelle Blick auf den Park:
+Wie es gerade am Park aussieht:
 
 ```weather-widget slug=toverland
 
@@ -628,11 +628,10 @@ Und die zwei, um die es hier ging, mit ihren aktuellen Zahlen:
 [Troy](ref:toverland/troy?full)
 [Fēnix](ref:toverland/fenix?full)
 
-Fahr an der Ausfahrt Sevenum einmal raus statt vorbei. Und dann mach mit Troy,
-was in den meisten Parks Europas unmöglich wäre: Bleib sitzen. Zwei, drei Runden
-hintereinander, bis dir die Millennium Flyer die Reihenfolge der Kurven
-beigebracht haben. An einem Dienstag im Juni ist das hier schlicht das, was
-passiert, wenn hinter dir niemand steht.
+Fahr an der Ausfahrt Sevenum einmal raus statt vorbei. Und wenn du dann bei Troy
+sitzt und hinter dir wartet keiner: Bleib einfach sitzen und fahr nochmal. Und
+danach noch einmal. An einem Dienstag im Juni klappt das hier. In den meisten
+anderen Parks Europas kannst du es vergessen.
 
 — Patrick
 
