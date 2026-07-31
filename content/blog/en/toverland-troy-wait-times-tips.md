@@ -1,5 +1,5 @@
 ---
-title: "Toverland: Troy, the wooden coaster nobody queues for"
+title: 'Toverland: Troy, the wooden coaster nobody queues for'
 translationKey: toverland-troy-guide-2026
 date: '2026-07-31'
 author: patrick

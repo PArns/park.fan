@@ -25,10 +25,12 @@
 The bug that started this: `/glossary/terms/…` 404s because every other module in the repo calls `/v1/…`. Both functions swallow it and return empty, so `GlossaryTermRides` renders nothing.
 
 **Files:**
+
 - Modify: `lib/api/glossary-rides.ts`
 - Modify: `lib/api/types.ts` (`TermAttraction`)
 
 **Interfaces:**
+
 - Produces: `getAttractionsForTerm(termId: string, sort?: 'park' | 'popularity'): Promise<TermAttraction[]>`, `getRideCountsByTerm(): Promise<Record<string, number>>`, and `TermAttraction` widened with `typicalPeakWait?: number | null` and `isHeadliner?: boolean`.
 
 - [ ] **Step 1: Widen the type**
@@ -98,6 +100,7 @@ git commit -m "fix(glossary): call the term endpoints under /v1 so rides actuall
 ### Task 2: Silence the two console errors
 
 **Files:**
+
 - Modify: `components/layout/header.tsx:101`
 - Modify: `app/[locale]/layout.tsx:167`
 
@@ -106,6 +109,7 @@ git commit -m "fix(glossary): call the term endpoints under /v1 so rides actuall
 - [ ] **Step 1: Reproduce both**
 
 Run `pnpm dev`, open any ride page, and confirm in the browser console:
+
 1. a hydration mismatch naming `data-startupbar-shifted` on `<header>`
 2. "Encountered a script tag while rendering React component" pointing at `app/[locale]/layout.tsx`
 
@@ -116,11 +120,11 @@ The loader (`components/common/startup-bar.tsx`) is a deliberate `async` tag in 
 In `components/layout/header.tsx`, add the attribute to the `<header>` element opening tag, above the existing `className`:
 
 ```tsx
-      /* The startupbar loader (see components/common/startup-bar.tsx) shifts every
+/* The startupbar loader (see components/common/startup-bar.tsx) shifts every
          `top: 0` element down by 36 px BEFORE React hydrates, writing inline `top`
          and two data attributes onto this tag. React must not treat that as a
          mismatch — the shift is supposed to survive, and React does not revert it. */
-      suppressHydrationWarning
+suppressHydrationWarning;
 ```
 
 - [ ] **Step 3: Check the other two `top: 0` elements**
@@ -129,19 +133,19 @@ The loader sweeps every `fixed`/`sticky` element at `top: 0`, so `components/lay
 
 - [ ] **Step 4: Fix the inline script**
 
-React 19 warns because a raw `<script>` in the component tree never executes on a client render. `next/script` handles this: inline content is supported (an `id` is **required**), and `beforeInteractive` is "injected into the initial HTML from the server" and "always injected inside the `head`". That runs the script *earlier* than today's placement in `<body>`, so the no-flash guarantee gets stronger.
+React 19 warns because a raw `<script>` in the component tree never executes on a client render. `next/script` handles this: inline content is supported (an `id` is **required**), and `beforeInteractive` is "injected into the initial HTML from the server" and "always injected inside the `head`". That runs the script _earlier_ than today's placement in `<body>`, so the no-flash guarantee gets stronger.
 
 In `app/[locale]/layout.tsx`, replace the raw `<script dangerouslySetInnerHTML={{...}} />` at line 167 with:
 
 ```tsx
-        <Script
-          id="temp-unit-init"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html:
-              "(function(){try{var m=document.cookie.match(/(?:^|; )temp_unit=([CF])/);var u=m&&m[1];if(!u){var r;try{r=new Intl.Locale(navigator.language).region}catch(e){r=(navigator.language||'').split('-')[1]}u=['US','MM','LR','BS','KY','PW'].indexOf((r||'').toUpperCase())>-1?'F':'C'}document.documentElement.setAttribute('data-temp-unit',u)}catch(e){document.documentElement.setAttribute('data-temp-unit','C')}})();",
-          }}
-        />
+<Script
+  id="temp-unit-init"
+  strategy="beforeInteractive"
+  dangerouslySetInnerHTML={{
+    __html:
+      "(function(){try{var m=document.cookie.match(/(?:^|; )temp_unit=([CF])/);var u=m&&m[1];if(!u){var r;try{r=new Intl.Locale(navigator.language).region}catch(e){r=(navigator.language||'').split('-')[1]}u=['US','MM','LR','BS','KY','PW'].indexOf((r||'').toUpperCase())>-1?'F':'C'}document.documentElement.setAttribute('data-temp-unit',u)}catch(e){document.documentElement.setAttribute('data-temp-unit','C')}})();",
+  }}
+/>
 ```
 
 `Script` is already imported in this file (it is used for Umami below).
@@ -168,11 +172,13 @@ git commit -m "fix(layout): stop the startupbar and temp-unit scripts tripping R
 Pure data and styling, no UI yet. Splitting this out keeps Tasks 4 and 5 reviewable on their own.
 
 **Files:**
+
 - Create: `lib/glossary/element-kinds.ts`
 - Create: `lib/glossary/ride-profile.ts`
 - Modify: `app/globals.css`
 
 **Interfaces:**
+
 - Produces:
   - `type ElementKind = 'launch' | 'airtime' | 'inversion' | 'turn' | 'brake' | 'other'`
   - `getElementKind(termId: string): ElementKind`
@@ -197,13 +203,7 @@ Create `lib/glossary/element-kinds.ts`:
  * right outcome for concept terms (airtime, hangtime, g-force) that describe a
  * sensation rather than a piece of track.
  */
-export type ElementKind =
-  | 'launch'
-  | 'airtime'
-  | 'inversion'
-  | 'turn'
-  | 'brake'
-  | 'other';
+export type ElementKind = 'launch' | 'airtime' | 'inversion' | 'turn' | 'brake' | 'other';
 
 const KINDS: Record<string, ElementKind> = {
   // — anything that accelerates or drops you —
@@ -380,31 +380,31 @@ export async function resolveRideProfile(
 In `app/globals.css`, add to the `@theme inline` block directly after the `--color-crowd-*` lines (currently ending at line 64), following the exact pattern already used there:
 
 ```css
-  --color-element-launch: var(--element-launch);
-  --color-element-airtime: var(--element-airtime);
-  --color-element-inversion: var(--element-inversion);
-  --color-element-turn: var(--element-turn);
-  --color-element-brake: var(--element-brake);
+--color-element-launch: var(--element-launch);
+--color-element-airtime: var(--element-airtime);
+--color-element-inversion: var(--element-inversion);
+--color-element-turn: var(--element-turn);
+--color-element-brake: var(--element-brake);
 ```
 
 Then define the values themselves alongside the existing `--crowd-*` definitions in `:root` and `.dark`. Match the surrounding OKLch style and keep both themes legible on the glass card:
 
 ```css
-  /* :root */
-  --element-launch: oklch(0.646 0.174 45.2);
-  --element-airtime: oklch(0.628 0.137 241.275);
-  --element-inversion: oklch(0.596 0.184 315.6);
-  --element-turn: oklch(0.646 0.132 195.4);
-  --element-brake: oklch(0.554 0.021 240.1);
+/* :root */
+--element-launch: oklch(0.646 0.174 45.2);
+--element-airtime: oklch(0.628 0.137 241.275);
+--element-inversion: oklch(0.596 0.184 315.6);
+--element-turn: oklch(0.646 0.132 195.4);
+--element-brake: oklch(0.554 0.021 240.1);
 ```
 
 ```css
-  /* .dark — lifted for contrast against the navy background */
-  --element-launch: oklch(0.735 0.161 47.6);
-  --element-airtime: oklch(0.712 0.132 240.8);
-  --element-inversion: oklch(0.702 0.166 316.4);
-  --element-turn: oklch(0.735 0.118 194.9);
-  --element-brake: oklch(0.658 0.019 240.3);
+/* .dark — lifted for contrast against the navy background */
+--element-launch: oklch(0.735 0.161 47.6);
+--element-airtime: oklch(0.712 0.132 240.8);
+--element-inversion: oklch(0.702 0.166 316.4);
+--element-turn: oklch(0.735 0.118 194.9);
+--element-brake: oklch(0.658 0.019 240.3);
 ```
 
 Locate the existing `--crowd-*` blocks first and insert next to them rather than at the top of the file — this repo groups tokens by family.
@@ -428,11 +428,13 @@ git commit -m "feat(glossary): classify track figures by what they do to you"
 The centrepiece. Replaces the nine flat rows with a track the figures sit on, and a viewer that opens in place instead of sending people to the glossary.
 
 **Files:**
+
 - Create: `components/parks/ride-layout-rail.tsx`
 - Modify: `components/parks/ride-profile-section.tsx`
 - Modify: `messages/{de,en,es,fr,it,nl}.json`
 
 **Interfaces:**
+
 - Consumes: `ResolvedRideProfile` and `ResolvedElement` from Task 3, `CoasterPlayer` + `CoasterPlayerLabels` from `components/glossary/coaster-player`.
 - Produces: `<RideLayoutRail elements={ResolvedElement[]} playerLabels={CoasterPlayerLabels} labels={{ hint, has3d, openGlossary, viewerTitle }} />`
 
@@ -583,6 +585,7 @@ Keep the existing early return: `if (elements.length === 0 && types.length === 0
 - [ ] **Step 4: Verify in the browser**
 
 Run `pnpm dev` and open a ride with a rich profile (`/de/parks/europe/germany/bruehl/phantasialand/taron`). Check:
+
 - the rail reads left to right in ride order, with repeats shown twice
 - at 390 px the rail scrolls horizontally and the card does not overflow the viewport
 - the three.js chunk is NOT requested until the first tap (DevTools → Network, filter `three`)
@@ -606,11 +609,13 @@ git commit -m "feat(attraction): turn the ride profile into a layout rail with a
 ### Task 5: Hero facts and the jump link
 
 **Files:**
+
 - Create: `components/parks/ride-profile-teaser.tsx`
 - Modify: `app/[locale]/parks/[continent]/[country]/[city]/[park]/[attraction]/page.tsx`
 - Modify: `messages/{de,en,es,fr,it,nl}.json`
 
 **Interfaces:**
+
 - Consumes: `resolveRideProfile` from Task 3.
 - Produces: `<RideProfileTeaser profile={RideProfile} locale={Locale} />`
 
@@ -702,22 +707,21 @@ It returns a fragment rather than its own wrapper so its badges share the parent
 In the attraction page, the current single `<div className="text-foreground flex flex-wrap items-center gap-3">` mixes a navigation link, a live distance, a category label and an outbound reference at equal weight. Split it: leave park link, `ParkDistance`, land badge and `SeasonalBadge` in the first row, then add a second row below it holding `AttractionMetaBadges` and `<RideProfileTeaser />`:
 
 ```tsx
-                  {(hasMetaBadges || attraction.rideProfile) && (
-                    <div className="border-border/40 mt-3 flex flex-wrap items-center gap-2 border-t pt-3">
-                      <AttractionMetaBadges
-                        minimumHeight={attraction.minimumHeight}
-                        maximumHeight={attraction.maximumHeight}
-                        mayGetWet={attraction.mayGetWet}
-                        rcdbId={attraction.rcdbId}
-                      />
-                      {attraction.rideProfile && (
-                        <RideProfileTeaser
-                          profile={attraction.rideProfile}
-                          locale={locale as Locale}
-                        />
-                      )}
-                    </div>
-                  )}
+{
+  (hasMetaBadges || attraction.rideProfile) && (
+    <div className="border-border/40 mt-3 flex flex-wrap items-center gap-2 border-t pt-3">
+      <AttractionMetaBadges
+        minimumHeight={attraction.minimumHeight}
+        maximumHeight={attraction.maximumHeight}
+        mayGetWet={attraction.mayGetWet}
+        rcdbId={attraction.rcdbId}
+      />
+      {attraction.rideProfile && (
+        <RideProfileTeaser profile={attraction.rideProfile} locale={locale as Locale} />
+      )}
+    </div>
+  );
+}
 ```
 
 `hasMetaBadges` mirrors the `hasAny` condition inside `AttractionMetaBadges` (`minimumHeight != null || maximumHeight != null || mayGetWet || rcdbId`); without it a ride with neither metadata nor profile renders a bare divider line.
@@ -735,6 +739,7 @@ On the `RideProfileSection` wrapper further down the same file, add the id and s
 - [ ] **Step 5: Verify in the browser**
 
 At 390 px and at desktop width on `/de/parks/europe/germany/bruehl/phantasialand/taron`:
+
 - mobile shows manufacturer and min-height plus the button; year and inversions are hidden
 - the button scrolls to the profile with the heading fully visible below the header
 - an attraction with no profile and no metadata renders no divider
@@ -756,11 +761,13 @@ git commit -m "feat(attraction): lift the ride facts into the hero with a jump t
 ### Task 6: Highlight the notable rides on a glossary term
 
 **Files:**
+
 - Modify: `components/glossary/glossary-term-rides.tsx`
 - Modify: `app/[locale]/glossary/[term]/page.tsx`
 - Modify: `messages/{de,en,es,fr,it,nl}.json`
 
 **Interfaces:**
+
 - Consumes: `getAttractionsForTerm(termId, 'popularity')` from Task 1.
 
 - [ ] **Step 1: Add the translation keys**
@@ -818,6 +825,7 @@ git commit -m "feat(glossary): lead a term's ride list with its biggest rides"
 Puts the previously unused `getRideCountsByTerm` to work.
 
 **Files:**
+
 - Modify: `app/[locale]/glossary/page.tsx`
 - Modify: `components/glossary/glossary-overview-client.tsx`
 - Modify: `components/glossary/glossary-term-card.tsx`

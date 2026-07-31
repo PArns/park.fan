@@ -209,7 +209,6 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
       {/* The <canvas> is NOT rendered here — the effect creates one per
           initialisation and prepends it. See the effect for why. */}
       <div ref={hostRef} className="relative aspect-[16/10] w-full sm:aspect-[16/9]">
-
         {/* Loading / fallback overlay */}
         {!ready && (
           <div className="text-muted-foreground absolute inset-0 flex items-center justify-center bg-[linear-gradient(to_bottom,#7fc2f3_0%,#cdeeff_100%)] text-sm dark:bg-[linear-gradient(to_bottom,#142150_0%,#33508c_100%)] dark:text-white/80">

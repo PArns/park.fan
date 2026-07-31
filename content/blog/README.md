@@ -31,7 +31,7 @@ content/blog/
   (`halloween-freizeitparks-2026` is; a park guide that gets updated in place
   is not). A `-2026` in an evergreen URL just makes it look stale a year later.
 - **Renaming a published post means a 301.** Add the pair to `renamedPosts` in
-  `next.config.ts` (rule 12), locale-prefixed *and* bare, or the indexed URL
+  `next.config.ts` (rule 12), locale-prefixed _and_ bare, or the indexed URL
   404s.
 
 ---

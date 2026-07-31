@@ -141,7 +141,7 @@ publiekstrekker. Zelfde databasis, zelfde rekenmethode:
 
 | Houten achtbaan                                                          | Park                            | Typisch (mediaan) | Piek (P90) |
 | ------------------------------------------------------------------------ | ------------------------------- | ----------------: | ---------: |
-| **[Troy](ref:toverland/troy?bare)** (GCI, 2007)                          | [Toverland](ref:toverland?bare) |       **16 min** |     21 min |
+| **[Troy](ref:toverland/troy?bare)** (GCI, 2007)                          | [Toverland](ref:toverland?bare) |        **16 min** |     21 min |
 | **[Joris en de Draak](ref:efteling/joris-en-de-draak?bare)** (GCI, 2010) | [Efteling](ref:efteling?bare)   |            34 min |     40 min |
 
 Meer dan het dubbele, voor een baan die onder liefhebbers in bijna geen enkele
