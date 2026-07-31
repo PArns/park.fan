@@ -1,16 +1,48 @@
 import type { NextRequest } from 'next/server';
 
 /**
- * Pick one IP from a comma-separated chain, preferring IPv4 (GeoIP often works better with IPv4).
+ * Where to look for the visitor's IP, in order of trustworthiness.
+ *
+ * park.fan is served through Cloudflare → Vercel. Vercel sets `x-forwarded-for` and
+ * `x-real-ip` to the peer that opened the connection to IT — which, since Cloudflare was
+ * put in front, is a Cloudflare edge server, not the visitor. Only Cloudflare's own
+ * `cf-connecting-ip` still carries the real client address, so it MUST be consulted first.
+ *
+ * It used to be a last-resort fallback for the case where `x-forwarded-for` was missing —
+ * which never happens on Vercel — so it was never reached, and every GeoIP lookup resolved
+ * the visitor to their Cloudflare colo instead (Frankfurt over IPv4, London over IPv6),
+ * making /api/nearby list the parks around that datacenter.
  */
-export function pickClientIpPreferIpv4(forwarded: string): string {
-  const parts = forwarded
-    .split(',')
-    .map((p) => p.trim())
-    .filter(Boolean);
-  if (parts.length === 0) return '';
-  const firstIpv4 = parts.find((ip) => !ip.includes(':'));
-  return firstIpv4 ?? parts[0] ?? '';
+const CLIENT_IP_HEADERS = [
+  'cf-connecting-ip', // Cloudflare: always the true client, always a single address
+  'true-client-ip', // Cloudflare Enterprise alias for the same value
+  'x-forwarded-for', // no Cloudflare in front: direct *.vercel.app, local dev
+  'x-real-ip',
+] as const;
+
+/**
+ * Drop an optional port and IPv6 brackets: `1.2.3.4:5678` → `1.2.3.4`, `[::1]:443` → `::1`.
+ */
+function stripPort(ip: string): string {
+  const bracketed = /^\[(.+?)\](?::\d+)?$/.exec(ip);
+  if (bracketed) return bracketed[1];
+  // A bare `host:port` is only unambiguous for IPv4 — in IPv6 every colon is a separator.
+  if (ip.includes('.') && ip.split(':').length === 2) return ip.split(':')[0];
+  return ip;
+}
+
+/**
+ * Take the originating client out of a (possibly comma-separated) forwarding chain.
+ * The leftmost entry is the client; everything after it are proxy hops.
+ *
+ * This used to scan the chain for the first IPv4 ("GeoIP works better with IPv4"), which is
+ * exactly backwards behind a proxy: for an IPv6 visitor it skipped the real client and
+ * returned the proxy's IPv4 instead. api.park.fan geolocates IPv6 correctly, so the client
+ * address is forwarded as-is.
+ */
+export function pickClientIp(forwarded: string): string {
+  const first = forwarded.split(',')[0]?.trim() ?? '';
+  return first ? stripPort(first) : '';
 }
 
 /**
@@ -34,14 +66,13 @@ export function isLocalOrUnusableIp(ip: string): boolean {
 }
 
 /**
- * Get client IP when the proxy did not set x-forwarded-for or x-real-ip.
- * Tries cf-connecting-ip (Cloudflare), then request.ip if the runtime provides it.
+ * The visitor's IP address, or '' when no header carries a usable one.
  */
-export function getClientIpFromRequest(request: NextRequest): string {
-  const cf = request.headers.get('cf-connecting-ip');
-  if (cf?.trim()) return pickClientIpPreferIpv4(cf);
-  const req = request as NextRequest & { ip?: string };
-  if (typeof req.ip === 'string' && req.ip.trim()) return pickClientIpPreferIpv4(req.ip);
+export function getClientIp(request: NextRequest): string {
+  for (const header of CLIENT_IP_HEADERS) {
+    const ip = pickClientIp(request.headers.get(header) ?? '');
+    if (ip) return ip;
+  }
   return '';
 }
 
@@ -50,9 +81,6 @@ export function getClientIpFromRequest(request: NextRequest): string {
  * Use when calling api.park.fan from API routes; backend sees our server IP otherwise.
  */
 export function getForwardedForHeaders(request: NextRequest): { 'X-Forwarded-For'?: string } {
-  const forwardedFromProxy =
-    request.headers.get('x-forwarded-for') ?? request.headers.get('x-real-ip') ?? '';
-  const raw = forwardedFromProxy ? forwardedFromProxy.trim() : getClientIpFromRequest(request);
-  const clientIp = raw ? pickClientIpPreferIpv4(raw) : '';
+  const clientIp = getClientIp(request);
   return clientIp ? { 'X-Forwarded-For': clientIp } : {};
 }
