@@ -367,7 +367,7 @@ Et nous voilà à la formule qui tient tout ensemble, l'un des résultats les pl
 Little** a démontré en 1961 la relation que l'on appelle aujourd'hui la
 [loi de Little](https://en.wikipedia.org/wiki/Little%27s_law) :
 
-> **L = λ × W** — le nombre de personnes qui attendent (L) est égal au taux
+> **L = λ × W**: le nombre de personnes qui attendent (L) est égal au taux
 > d'arrivée (λ) multiplié par le temps d'attente (W).
 
 Pour une visite de parc, on la réarrange simplement :
@@ -675,7 +675,7 @@ exagère de 36 pour cent pendant ce temps-là._
 - Sur la surestimation d'environ 36 % (Hornik 1984) : [Consumer Perception and Evaluation of Waiting Time: A Field Experiment](https://www.researchgate.net/publication/40129944_Consumer_Perception_and_Evaluation_of_Waiting_Time_A_Field_Experiment) (Journal of Consumer Research)
 - Alex Stone : [Why Waiting Is Torture](https://www.nytimes.com/2012/08/19/opinion/sunday/why-waiting-in-line-is-torture.html) (New York Times, 2012)
 - Daniel Kahneman et al. : [Règle du pic-fin](https://en.wikipedia.org/wiki/Peak%E2%80%93end_rule)
-- John D. C. Little : [A Proof for the Queuing Formula L = λW](https://pubsonline.informs.org/doi/10.1287/opre.9.3.383) (Operations Research, 1961) — [La loi de Little expliquée](https://en.wikipedia.org/wiki/Little%27s_law)
+- John D. C. Little : [A Proof for the Queuing Formula L = λW](https://pubsonline.informs.org/doi/10.1287/opre.9.3.383) (Operations Research, 1961) · [La loi de Little expliquée](https://en.wikipedia.org/wiki/Little%27s_law)
 - Sur les bouchons fantômes : Sugiyama et al., [Traffic jams without bottlenecks](https://iopscience.iop.org/article/10.1088/1367-2630/10/3/033001) (New Journal of Physics, 2008) · [Les « jamitons » du MIT](https://www.sciencedaily.com/releases/2009/06/090608151550.htm)
 - Sur l'effet « faster-is-slower » : Helbing, Farkas & Vicsek, [Simulating dynamical features of escape panic](https://www.nature.com/articles/35035023) (Nature, 2000)
 - Données techniques : [The Incredible Hulk Coaster](https://rcdb.com/557.htm), [Hollywood Rip Ride Rockit](https://rcdb.com/3866.htm) et [YOY](https://rcdb.com/20669.htm) sur RCDB · [Fiche technique Mack Rides de Voltron Nevera](https://mack.group/en/press-media/press-releases/2024-04-24/fact-sheet-voltron-nevera-powered-by-rimac) · [La technique derrière Voltron (Coaster101)](https://www.coaster101.com/2025/05/29/the-tech-behind-voltron/) · [YOY et sa rolling station (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/walibi_holland/attraktionen/yoy-c681)

@@ -23,6 +23,10 @@ import { getGlossaryTerms } from '@/lib/glossary/translations';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import type { GlossaryTerm } from '@/lib/glossary/types';
 import { BlogParkLink } from './blog-park-link';
+import { BlogPostLink } from './blog-post-link';
+import { BlogPostCard } from './blog-post-card';
+import { getPostByLocaleSlug } from '@/lib/blog';
+import type { BlogListItem } from '@/lib/blog/types';
 import { BlogAttractionLink } from './blog-attraction-link';
 import { BlogInlineImage, type BlogImageAlign } from './blog-inline-image';
 import { getBlogImageDimensions } from '@/lib/blog/image-dimensions';
@@ -155,6 +159,43 @@ function parseEntityRef(href: string | undefined): EntityRef | null {
     return { kind: 'park', key: slug, options };
   }
   return null;
+}
+
+/**
+ * Matches an internal cross-reference to another post, i.e. `/blog/<slug>`.
+ * Locale-prefixed hrefs are accepted too, since the editor writes both forms.
+ * Anchors and query strings are ignored — they belong to the target page.
+ */
+const BLOG_POST_HREF = /^(?:\/[a-z]{2})?\/blog\/([a-z0-9-]+)\/?(?:[?#].*)?$/;
+
+function blogPostSlug(href: string | undefined): string | null {
+  if (!href) return null;
+  return BLOG_POST_HREF.exec(href)?.[1] ?? null;
+}
+
+/**
+ * Resolve every `/blog/<slug>` referenced in the markdown into the same
+ * `BlogListItem` the index renders, so cross-references can show a hover
+ * preview. Missing slugs are simply absent from the map and fall back to a
+ * plain link.
+ */
+function collectPostRefs(markdown: string, locale: Locale): Map<string, BlogListItem> {
+  const map = new Map<string, BlogListItem>();
+  for (const m of markdown.matchAll(/\]\(([^)\s]+)\)/g)) {
+    const slug = blogPostSlug(m[1]);
+    if (!slug || map.has(slug)) continue;
+    const post = getPostByLocaleSlug(slug, locale);
+    if (!post) continue;
+    map.set(slug, {
+      slug: post.slug,
+      translationKey: post.translationKey,
+      loadedLocale: post.loadedLocale,
+      isFallback: post.isFallback,
+      frontmatter: post.frontmatter,
+      readingTimeMinutes: post.readingTimeMinutes,
+    });
+  }
+  return map;
 }
 
 /** True when an href is an entity reference carrying the `full` option. */
@@ -340,6 +381,9 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
     const [parkSlug, attractionSlug] = ref.split('/');
     attractionBackgroundMap.set(ref, getAttractionBackgroundImage(parkSlug, attractionSlug));
   }
+  // Cross-references to other posts, resolved once so the `a` renderer can
+  // hand each link the post it points at.
+  const postRefs = collectPostRefs(markdown, locale);
 
   /**
    * Walk a react-markdown children tree and replace plain-text occurrences of
@@ -431,6 +475,21 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
           >
             {children}
           </BlogParkLink>
+        );
+      }
+      // Cross-reference to another post — same hover treatment as parks/rides.
+      // The card is built here, on the server, because it reads author and
+      // category data from disk.
+      const postSlug = blogPostSlug(href);
+      if (postSlug) {
+        const post = postRefs.get(postSlug);
+        return (
+          <BlogPostLink
+            href={post ? `/blog/${post.slug}` : (href as string)}
+            card={post ? <BlogPostCard post={post} /> : null}
+          >
+            {children}
+          </BlogPostLink>
         );
       }
       const isExternal = href?.startsWith('http://') || href?.startsWith('https://');
@@ -600,7 +659,7 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
         return (
           <aside
             data-callout={callout}
-            className={`not-prose my-6 rounded-xl border px-4 py-3 ${meta.box}`}
+            className={`not-prose clear-both my-6 rounded-xl border px-4 py-3 ${meta.box}`}
           >
             <div
               className={`mb-1.5 inline-flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase ${meta.title}`}
@@ -616,7 +675,7 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
       }
       return (
         // impeccable-disable-next-line side-tab -- blockquote left rule is standard typography, not a card accent
-        <blockquote className="border-primary/40 text-foreground/80 my-6 border-l-4 pl-4 italic">
+        <blockquote className="border-primary/40 text-foreground/80 clear-both my-6 border-l-4 pl-4 italic">
           {injectGlossary(children)}
         </blockquote>
       );

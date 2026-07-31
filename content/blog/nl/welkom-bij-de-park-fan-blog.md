@@ -185,7 +185,7 @@ gewoon: iemand die beroepsmatig datastromen in realtime verwerkte en privé geen
 flauw idee had of deze rij het waard was, of dat ik simpelweg levenstijd
 inruilde voor een reling.
 
-> “Laat mij die wachttijden even trackken.” — _zei ik. Het werden drie jaar._
+> “Laat mij die wachttijden even trackken.” _Zei ik. Het werden drie jaar._
 
 ## Van script naar platform: hoe park.fan echt ontstond
 

@@ -191,7 +191,7 @@ Echtzeit verarbeitete und privat nicht die geringste Ahnung hatte, ob sich
 diese Schlange gerade lohnte oder ob ich schlicht Lebenszeit gegen ein Geländer
 tauschte.
 
-> „Lass mich mal eben die Wartezeiten tracken.“ — _sagte ich. Es wurden drei
+> „Lass mich mal eben die Wartezeiten tracken.“ _Sagte ich. Es wurden drei
 > Jahre._
 
 ## Vom Skript zur Plattform: wie park.fan wirklich entstand

@@ -27,6 +27,12 @@ content/blog/
   alternates and EN fallback.
 - Locales without their own file fall back to the English version with a
   "translation not ready" notice.
+- **No year in the slug** unless the post really is about that one season
+  (`halloween-freizeitparks-2026` is; a park guide that gets updated in place
+  is not). A `-2026` in an evergreen URL just makes it look stale a year later.
+- **Renaming a published post means a 301.** Add the pair to `renamedPosts` in
+  `next.config.ts` (rule 12), locale-prefixed *and* bare, or the indexed URL
+  404s.
 
 ---
 
@@ -163,6 +169,23 @@ slash** in the key.
 
 > `park:slug` and `attraction:parkSlug/slug` are kept as **aliases** of `ref:`
 > and accept the same options, but new posts should use `ref:`.
+
+### Linking another post
+
+Write a plain relative link, nothing special:
+
+```md
+… siehe [unser Halloween-Guide](/blog/halloween-freizeitparks-2026).
+```
+
+Any `/blog/<slug>` href (a locale prefix like `/de/blog/…` works too) is picked
+up automatically and rendered as a `BlogPostLink`: the same dotted-underline
+style as park and ride references, plus a hover preview showing the target's
+`BlogPostCard` (cover, category, title, excerpt, date, reading time, author).
+The target is resolved **in the current locale**, so a German post hovering a
+cross-reference shows the German card, falling back to English like the index
+does. An unresolvable slug degrades to a plain link rather than disappearing,
+but that means a typo is silent — check the hover appears.
 
 ---
 
@@ -301,7 +324,87 @@ https://www.instagram.com/reel/CxYz123/
 
 ---
 
-## 8. Before you commit
+## 8. Writing style (REQUIREMENT)
+
+Posts must not read like they were generated. That is a hard requirement, not a
+preference — a reader who smells a language model stops trusting the numbers
+too. Write the way a person who actually stood in the queue would write.
+
+**Never use "ehrlich" and its whole family.** No `ehrlich gesagt`, no
+`der ehrlichste Coaster`, no `um ehrlich zu sein`, no "honest" framing at all.
+It is the single clearest tell. The same goes for the neighbouring register that
+performs sincerity instead of just saying the thing:
+
+| Don't write                           | Write instead                         |
+| ------------------------------------- | ------------------------------------- |
+| `der ehrlichste Woodie Europas`       | say what makes it good, with a number |
+| `Fairness-Hinweis in eigener Sache`   | `Eine Einschränkung dazu:`            |
+| `Was sie unbestreitbar ist:`          | `Eines ist sie auf jeden Fall:`       |
+| `bezahlte Vorfahrt`                   | `sich an der Schlange vorbeikaufen`   |
+| `ein weiterer Datenpunkt`             | `noch eine Zahl`                      |
+| `die These dieses Artikels`           | drop it, or name the claim            |
+| `in Wartezeit-Währung`                | `da stehst du am längsten an`         |
+| `ein weltweit erstmalig gebauter Typ` | `den es sonst nirgends gibt`          |
+| `Es ist ein schönes Muster.`          | cut, or say what it produced          |
+
+Further rules that keep German prose sounding human:
+
+- **Vary the sentence openings.** Three paragraphs in a row starting with
+  `Und` or `Das ist` reads like autocomplete.
+- **No coined metaphor-currencies** (`X-Währung`, `Lebenszeit-Konto`). One
+  figure of speech per section is plenty, and it should be a normal one.
+- **No em dash (`—`) in running text.** It is the most-recognised AI tell there
+  is, and in German it is also simply the wrong character: German typography
+  uses the Halbgeviertstrich `–` with spaces around it, not the Geviertstrich
+  `—`. Reach for a comma, a full stop or a colon instead — an em dash almost
+  always marks a sentence that wanted to be two. The **only** `—` in a post is
+  the signature line `— Patrick`. Ranges and compounds keep the en dash without
+  spaces (`90–140 cm`, `Venlo–Eindhoven`, `2007 – Ithaka`).
+  Check with `grep -c "—" <post>`: the answer should be `1`.
+- **Don't announce the structure** (`Und jetzt der Grund, warum dieses Kapitel
+hier steht`, `Kommen wir nun zu`). Just write the next paragraph.
+- **Articles and prepositions matter, and check the gender before "fixing" one
+  in.** Dutch park names take the same neuter article the German ones do: it is
+  **das** Efteling, exactly like `das Toverland` and `das Phantasialand`. So
+  `zum Efteling`, `im Efteling`, `dem Efteling`, `das Efteling ist …` — never
+  `der Efteling` and never `zur Efteling`.
+- **Superlatives need a source or a number** right next to them, otherwise cut.
+- **Hedge thin data explicitly** rather than rounding it into confidence: if a
+  month has four measured days, say so.
+
+### Structural slop — the tells that survive a vocabulary pass
+
+Swapping out banned words is the easy half. What actually makes a text read as
+generated is its _rhythm_, and that survives any find-and-replace. Grep for
+these before publishing:
+
+- **`nicht X, sondern Y`.** The single most recognisable German LLM cadence.
+  Two or three per long post is normal writing; eight is a machine.
+  `grep -c "sondern"` — if it's above ~5 in 5.000 words, thin it out.
+- **The `Claim: elaboration` colon.** Fine as a list introducer, exhausting as a
+  paragraph rhythm. If most paragraphs pivot on a colon, rewrite half of them
+  into plain sentences.
+- **Triads everywhere** (`kompakt, begehrt und anstrengend`). One per section
+  lands; three per section is a tic.
+- **Paragraphs of uniform length.** Real writing has a two-line paragraph next
+  to an eight-line one. Even blocks are a generation artefact.
+- **Symmetrical closers** that restate the section in one tidy sentence
+  (`Das ist die ganze Geschichte in einer Tabelle.`). Let a section just end.
+- **Self-commentary of any kind** — the post referring to itself, its chapters,
+  its own thesis, or how well it is written.
+- **Both-sides hedging with no verdict** (`einerseits … andererseits`, `es kommt
+darauf an`). Have an opinion; the byline is a person.
+
+The check that catches the rest: read the finished post aloud. Anywhere the
+rhythm turns metronomic, break the pattern — a short sentence, a dropped
+connective, an aside.
+
+Voice reference: `de/phantasialand-tipps.md` and
+`de/toverland-troy-wartezeiten-tipps.md`.
+
+---
+
+## 9. Before you commit
 
 ```bash
 pnpm generate:blog-manifest   # pick up new/renamed files

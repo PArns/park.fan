@@ -345,7 +345,7 @@ resultaten uit de wachtrijtheorie. MIT-professor **John D. C. Little** bewees in
 1961 het verband dat tegenwoordig
 [Little's Law](https://en.wikipedia.org/wiki/Little%27s_law) heet:
 
-> **L = λ × W** — het aantal wachtenden (L) is gelijk aan de aankomstsnelheid
+> **L = λ × W**: het aantal wachtenden (L) is gelijk aan de aankomstsnelheid
 > (λ) maal de wachttijd (W).
 
 Voor een parkbezoek draai je hem simpelweg om:
@@ -633,7 +633,7 @@ heb het zwart-op-wit dat mijn tijdsgevoel daarbij 36 procent overdrijft._
 - Over de ~36%-overschatting (Hornik 1984): [Consumer Perception and Evaluation of Waiting Time: A Field Experiment](https://www.researchgate.net/publication/40129944_Consumer_Perception_and_Evaluation_of_Waiting_Time_A_Field_Experiment) (Journal of Consumer Research)
 - Alex Stone: [Why Waiting Is Torture](https://www.nytimes.com/2012/08/19/opinion/sunday/why-waiting-in-line-is-torture.html) (New York Times, 2012)
 - Daniel Kahneman e.a.: [Peak-end-regel](https://en.wikipedia.org/wiki/Peak%E2%80%93end_rule)
-- John D. C. Little: [A Proof for the Queuing Formula L = λW](https://pubsonline.informs.org/doi/10.1287/opre.9.3.383) (Operations Research, 1961) — [Little's Law uitgelegd](https://en.wikipedia.org/wiki/Little%27s_law)
+- John D. C. Little: [A Proof for the Queuing Formula L = λW](https://pubsonline.informs.org/doi/10.1287/opre.9.3.383) (Operations Research, 1961) · [Little's Law uitgelegd](https://en.wikipedia.org/wiki/Little%27s_law)
 - Over de spookfile: Sugiyama e.a., [Traffic jams without bottlenecks](https://iopscience.iop.org/article/10.1088/1367-2630/10/3/033001) (New Journal of Physics, 2008) · [MIT “jamitons”](https://www.sciencedaily.com/releases/2009/06/090608151550.htm)
 - Over het “faster-is-slower”-effect: Helbing, Farkas & Vicsek, [Simulating dynamical features of escape panic](https://www.nature.com/articles/35035023) (Nature, 2000)
 - Technische gegevens: [The Incredible Hulk Coaster](https://rcdb.com/557.htm), [Hollywood Rip Ride Rockit](https://rcdb.com/3866.htm) en [YOY](https://rcdb.com/20669.htm) op RCDB · [Mack-Rides-factsheet over Voltron Nevera](https://mack.group/en/press-media/press-releases/2024-04-24/fact-sheet-voltron-nevera-powered-by-rimac) · [De techniek achter Voltron (Coaster101)](https://www.coaster101.com/2025/05/29/the-tech-behind-voltron/) · [YOY met rolling station (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/walibi_holland/attraktionen/yoy-c681)

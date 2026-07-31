@@ -44,7 +44,7 @@ export function BlogGallery({ images, className, heading }: BlogGalleryProps) {
   const active = openIndex !== null ? images[openIndex] : null;
 
   return (
-    <section className={cn('not-prose my-12', className)}>
+    <section className={cn('not-prose clear-both my-12', className)}>
       <h2 className="text-foreground mb-4 text-lg font-semibold">
         {heading ?? t('gallery.title')}
       </h2>

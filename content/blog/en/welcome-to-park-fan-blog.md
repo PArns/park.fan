@@ -179,7 +179,7 @@ just stood there: a person who processed data streams in real time for a living
 and privately had not the faintest idea whether this queue was worth it or
 whether I was simply trading lifetime for a handrail.
 
-> “Let me just track the wait times for a bit.” — _I said. It turned into three
+> “Let me just track the wait times for a bit.” _I said. It turned into three
 > years._
 
 ## From script to platform: how park.fan really came about
