@@ -4,7 +4,6 @@ translationKey: welcome-to-park-fan-blog
 date: '2026-07-06'
 author: patrick
 mode: published
-featured: true
 excerpt: >-
   Een kinderwagen aan het sprookjesmeer, een gondelvaart door “1001 Nacht”, en
   dertig jaar later zestig minuten in de rij bij Taron met de vraag of dat het
@@ -76,7 +75,7 @@ losgelaten.
 
 ## “1001 Nacht”, de ritten die blijven
 
-En dan was er de gondelbaan **“1001 Nacht”**, vanaf 1970 in bedrijf en de eerste
+Dan was er de gondelbaan **“1001 Nacht”**, vanaf 1970 in bedrijf en de eerste
 stationaire dark ride van Duitsland. Eind jaren tachtig hoorde die vast bij elk
 familiebezoek. Mijn ouders en ik in zo'n gondel, acht meter boven de grond,
 samen op een reis die met elke meter dieper een andere wereld in voerde. Door de
@@ -90,7 +89,7 @@ herinnering aan de man die toen naast me door die werelden gleed.
 
 ![Achtbaansilhouet in Movie Park Germany bij nacht, paars en blauw aangelicht | Movie Park Germany bij nacht. Lethal Weapon Pursuit stond hier tot 2006. | left](/images/parks/movie-park-germany/background.jpg)
 
-En als mijn vader als vrachtwagenchauffeur weer eens op pad was, nam mijn moeder
+Was mijn vader als vrachtwagenchauffeur weer eens op pad, dan nam mijn moeder
 gewoon het stuur over. Met haar heb ik veel andere parken ontdekt, vooral
 [Movie Park](ref:movie-park-germany?bare), toen nog Warner Bros. Movie World.
 Daar heb ik in **Lethal Weapon Pursuit** voor het eerst van mijn leven in een
@@ -104,9 +103,9 @@ wat daarna kwam.
 Als deze liefde voor pretparken een erfenis is, komt ze van beide ouders. Papa
 leverde de sprookjes, mama de achtbanen.
 
-En als iemand me vraagt waarom park.fan gratis is en dat ook blijft: deze plek
-heeft me herinneringen gegeven die mijn leven hebben gevormd. Dit is mijn manier
-om er iets van terug te geven.
+Waarom park.fan gratis is en dat ook blijft, vraagt weleens iemand. Deze plek
+heeft me herinneringen gegeven die mijn leven hebben gevormd. Dit is mijn
+manier om er iets van terug te geven.
 
 ## Over muizen van 5000 en een legende van 10.000
 
@@ -139,8 +138,8 @@ heten.
 
 ![Animatronische velociraptorkop in het roodverlichte raptorverblijf van de VelociCoaster | Islands of Adventure: de raptor in het verblijf, binnen handbereik. | right](/blog/images/velocicoaster/02-raptor-paddock.jpg)
 
-En dan was er nog dat ene grote punt op de levenslijst waar nog altijd geen
-vinkje achter stond. In mei 2026 zijn we eindelijk naar Orlando gevlogen:
+Bleef nog dat ene grote punt op de levenslijst waar al jaren geen vinkje achter
+stond. In mei 2026 zijn we eindelijk naar Orlando gevlogen:
 **Walt Disney World, Universal en SeaWorld**, het volle programma, de reis van
 eenmaal in je leven waarvan ik sinds mijn kindertijd droomde. Het is een
 eigenaardig mooi gevoel als de jongen van het sprookjesmeer decennia later voor
@@ -294,14 +293,14 @@ houden onze voorspellingen wat ze beloven?
 **Nieuws.** Kort en zonder omhaal. Gebeurt er iets, dan staat het hier, sneller
 dan jij een cookiebanner wegklikt.
 
-En het mooiste: de berichten leven. Grafieken, kaarten en wachttijden trekken
-rechtstreeks uit park.fan, wat je leest doet het park op dit moment echt. De twee
-hoofdrolspelers van dit verhaal, live:
+De berichten leven daarbij. Grafieken, kaarten en wachttijden trekken
+rechtstreeks uit park.fan, wat je leest doet het park op dit moment echt. De
+twee hoofdrolspelers van dit verhaal, live:
 
 [Taron](ref:phantasialand/taron?full)
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?full)
 
-En omdat het weer de factor is die een parkdag het snelst doet kantelen, hier de
+Omdat het weer de factor is die een parkdag het snelst doet kantelen, hier de
 situatie precies nu bij de ingang van
 [Phantasialand](ref:phantasialand?bare):
 

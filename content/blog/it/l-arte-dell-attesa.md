@@ -58,14 +58,11 @@ perfezione: la psicologia della percezione del tempo e la matematica della
 capacità. La prima decide come l'attesa _si sente_. La seconda quanto è
 _davvero_ lunga la fila.
 
-E se hai letto
-[la nostra storia delle origini](/blog/un-passeggino-una-gondola-e-park-fan),
-intuisci perché il tema non mi molla: park.fan è stato inventato in una coda al
-Taron, per pura frustrazione davanti a un'eternità percepita. Questo articolo è
-in un certo senso l'autopsia di quel pomeriggio, la domanda su cosa mi stesse
-succedendo davvero. È ora di immergersi in entrambe le discipline. Promesso:
-compaiono esattamente due formule, e stanno insieme sul retro di un
-sottobicchiere.
+Il tema non mi molla per un motivo molto concreto. park.fan è nato in una coda
+al Taron, per pura frustrazione davanti a un'eternità percepita ([la storia
+completa è qui](/blog/un-passeggino-una-gondola-e-park-fan)). Cosa mi stesse
+succedendo davvero quel pomeriggio, volevo poi saperlo con precisione. Entrano
+in gioco due formule, e stanno insieme sul retro di un sottobicchiere.
 
 ## La psicologia del tempo: perché i minuti si allungano
 
@@ -164,8 +161,8 @@ serpeggia nel paesaggio di Pandora e in grotte con pitture dei na'vi, poi in un
 laboratorio di ricerca abbandonato, compreso un avatar a grandezza naturale che
 galleggia in una vasca amniotica e respira in modo così convincente che
 regolarmente qualcuno si ferma e blocca la fila. Una coda che si intasa da sola
-perché è troppo bella: non esiste omaggio più grande. Poi seguono subito **due
-sale di pre-show**, in cui vieni “scansionato” e “collegato” al tuo avatar.
+perché è troppo bella. Poi seguono subito **due sale di pre-show**, in cui
+vieni “scansionato” e “collegato” al tuo avatar.
 
 ```gallery-widget folder=/blog/images/avatar-flight-of-passage heading="La coda in tre stazioni"
 
@@ -225,8 +222,8 @@ secondi.
 
 E poi qui c'è forse il trucco di capacità più elegante di tutti: la **fila
 single rider**. Chi va da solo e si lascia sistemare sul posto spaiato che un
-gruppo di quattro lascia libero non solo accorcia drasticamente la propria
-attesa, ma aiuta il parco a riempire ogni vettura fino all'orlo. Ogni sedile
+gruppo di quattro accorcia drasticamente la propria attesa e intanto aiuta il
+parco a riempire ogni vettura fino all'orlo. Ogni sedile
 altrimenti vuoto è capacità buttata via; la fila single rider è il modo elegante
 di tappare quei buchi. Un caso raro in cui interesse personale e portata tirano
 esattamente nella stessa direzione.
@@ -258,8 +255,8 @@ aggiorniamo i tempi di attesa ogni minuto.
 
 ## Capacità e portata: il segreto matematico
 
-Fin qui la percezione. Ora la valuta forte di ogni coda, la **portata**: quante
-persone un'attrazione trasporta davvero all'ora.
+**Portata** vuol dire semplicemente quante persone un'attrazione trasporta
+davvero all'ora. È quel numero a decidere quanto è lunga la coda per davvero.
 
 ```glossary-widget slug=ride-capacity
 
@@ -351,8 +348,8 @@ fermo.
 
 ## La legge di Little: la formula dietro ogni tabellone dell'attesa
 
-E arriviamo così alla formula che tiene tutto insieme, uno dei risultati più
-eleganti della teoria delle code. Il professore del MIT **John D. C. Little**
+La formula che lega le due facce è uno dei risultati più eleganti della teoria
+delle code. Il professore del MIT **John D. C. Little**
 dimostrò nel 1961 la relazione che oggi si chiama
 [legge di Little](https://en.wikipedia.org/wiki/Little%27s_law):
 
@@ -378,9 +375,9 @@ attese completamente diverse in due giorni. Se oggi un'attrazione gira con due
 treni invece di tre, λ scende e W sale immediatamente, senza che nel parco ci
 sia neanche un ospite in più.
 
-Il che ci riporta a quel tabellone bugiardo. Al numero calcolato con precisione
-si aggiunge volentieri un generoso margine di sicurezza. Non è solo sciatteria,
-è pura psicologia. Il tabellone deve infatti fare due cose contraddittorie
+E il tabellone all'ingresso, quello che ti mente? Al numero calcolato con
+precisione lì si aggiunge volentieri un generoso margine di sicurezza. Non è
+sciatteria, è psicologia. Il tabellone deve infatti fare due cose contraddittorie
 insieme. Deve darti una base affidabile per decidere, e non deve deluderti. Un
 tabellone che sottostima produce all'uscita un mucchio di persone che si
 sentono fregate; uno che sovrastima manda via qualche ospite ma rende felici
@@ -390,8 +387,8 @@ picco-fine, ce lo ricordiamo: l'esperienza finisce meglio del previsto, ed è
 esattamente così che viene archiviata. Il tabellone mente davvero, quindi, ma
 mente a tuo favore.
 
-A questo punto lasciatemi parlare un attimo dalla sala macchine, perché è
-esattamente qui che vive park.fan. I nostri tempi di attesa live ti mostrano
+Lasciatemi parlare un attimo dalla sala macchine, perché è esattamente qui che
+vive park.fan. I nostri tempi di attesa live ti mostrano
 ogni minuto cosa stanno facendo davvero L e λ, e quando il nostro modello di IA
 prevede i tempi di attesa fino a 365 giorni in anticipo, in fondo non modella
 altro che quelle due grandezze: la **domanda** (quante persone vogliono salire
@@ -402,14 +399,14 @@ formula. Quanto spesso le nostre previsioni colgano la realtà sta sulla
 
 ## Perché Peter Pan's Flight “esplode” sempre
 
-Il che ci porta a uno degli enigmi più vecchi del mondo dei parchi: perché
-proprio **Peter Pan's Flight**, un tranquillo dark ride di fattura 1955, niente
+Perché proprio **Peter Pan's Flight**, un tranquillo dark ride di fattura 1955,
+niente
 montagne russe, niente brivido, segna quasi permanentemente 45 minuti e passa
 sul tabellone in praticamente ogni parco Disney del mondo, da
 [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park?bare) fino a
 Orlando?
 
-La risposta sta tutta nella matematica di cui sopra:
+I motivi sono tre, e tutti e tre sono conti:
 
 1. **I galeoni non sono trasporto di massa.**
    [Peter Pan's Flight a Parigi](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight?bare)
@@ -427,9 +424,9 @@ La risposta sta tutta nella matematica di cui sopra:
    ospite in più. Può ridursi solo quando arriva meno gente di quanta
    l'attrazione ne smaltisca. Con un tetto di capacità così basso quel punto non
    si raggiunge a mezzogiorno, ma più o meno quando accosta il secondo pullman.
-3. **La coda come marchio di qualità.** Ed ecco che torna in gioco la
-   psicologia: i visitatori leggono una coda lunga come prova che il giro debba
-   valerne la pena. La stessa logica con cui in vacanza scegliamo il ristorante
+3. **La coda come marchio di qualità.** I visitatori leggono una coda lunga
+   come prova che il giro debba valerne la pena. La stessa logica con cui in
+   vacanza scegliamo il ristorante
    con la terrazza più piena. Così tutti si mettono in fila con ancora più
    convinzione, e l'attesa diventa una profezia che si autoavvera.
 
@@ -449,11 +446,11 @@ europei contro i giganti di Orlando.
 [Magic Kingdom](ref:disney-magic-kingdom?bare) è il parco divertimenti più
 visitato al mondo, e sia Disney sia Universal attirano ospiti da tutti i
 continenti. A questo si aggiunge un fattore che l'Europa conosce a malapena con
-questa durezza: saltare la fila a pagamento. Lightning Lane ed Express Pass
-vendono una parte della capacità a ospiti paganti, e ogni giro express manca
-alla coda standby. Il risultato: attrazioni di punta come
+questa durezza: là ci si può comprare il passaggio davanti alla coda. Lightning
+Lane ed Express Pass vendono una parte della capacità a ospiti paganti, e ogni
+giro express manca alla coda standby. Attrazioni di punta come
 [Avatar Flight of Passage](ref:disney-animal-kingdom/avatar-flight-of-passage?bare)
-segnano regolarmente dai 60 ai 120 minuti nonostante una capacità oraria
+segnano perciò regolarmente dai 60 ai 120 minuti nonostante una capacità oraria
 enorme.
 
 **L'[Europa-Park](ref:europa-park?bare) è il controesempio.** Il parco più
@@ -471,9 +468,8 @@ attrazioni ma tematizzate in modo estremamente accurato. Il carico si concentra
 su una manciata di attrazioni di punta, e quando in un sabato di vacanza tutti
 vogliono il [Taron](ref:phantasialand/taron?bare) (saluti, per esperienza ne
 faccio parte), la saturazione arriva altrettanto in fretta che per Peter Pan a
-Parigi. Un pubblico piccolo non protegge dalle code lunghe quando le attrazioni su cui
-distribuire la domanda sono poche. La matematica è la stessa, cambia solo
-la scala.
+Parigi. Un pubblico piccolo non protegge dalle code lunghe quando le attrazioni
+su cui distribuire la domanda sono poche.
 
 I numeri sono quasi comici. Il Taron smaltisce circa **1.200 ospiti l'ora**,
 cioè quasi esattamente quanti ne fa Peter Pan's Flight a Parigi. La differenza
@@ -482,8 +478,9 @@ distribuirsi. A Parigi Peter Pan sta in mezzo a decine di alternative. A Brühl,
 in un sabato di vacanza, una parte considerevole del parco ha in testa la
 stessa singola attrazione nello stesso momento. E Voltron all'Europa-Park, con
 1.600 l'ora, sta solo un terzo più in alto, ma tiene la coda molto più corta
-perché dodici altri coaster lì accanto drenano domanda. La capacità da sola
-dice poco; quello che conta è il suo rapporto con tutto il resto che è aperto.
+perché dodici altri coaster lì accanto drenano domanda. Un numero di capacità
+da solo dice quindi poco. Quello che conta è il suo rapporto con tutto il resto
+che è aperto.
 
 Sono proprio questi profili il motivo per cui ogni pagina di parco su park.fan
 mostra, accanto ai tempi di attesa live, anche le statistiche di lungo periodo.
@@ -509,9 +506,8 @@ stagionale nell'arco dell'anno.
 
 ```
 
-Due parchi, due grafie dell'attesa completamente diverse. Ed è esattamente da
-schemi come questi che il nostro modello impara quando una visita valga la
-pena.
+È esattamente da schemi come questi che il nostro modello impara quando una
+visita valga la pena.
 
 ## Avanzare non serve, e anzi rallenta la coda
 
@@ -543,24 +539,23 @@ sensibilmente più tardi. Ogni volta che la tua coda dà uno strattone in avanti
 evapora lo stesso sfasamento di reazione. Venti cicli di strattone per sessanta
 persone in attesa: si somma una quantità sorprendente di niente.
 
-La conseguenza sbalorditiva: se semplicemente tutti camminassero in modo
-uniforme e lento invece di fermarsi, avanzare e fermarsi di nuovo, la coda
-scorrerebbe più fluida e in media più veloce. Meno calca, più flusso. La
+Se semplicemente tutti camminassero in modo uniforme e lento invece di
+fermarsi, avanzare e fermarsi di nuovo, la coda scorrerebbe più fluida e in
+media più veloce. Meno calca, più flusso. La
 ricerca sul traffico lo conosce come effetto “faster-is-slower”: chi spinge di
 più a una strettoia abbassa la portata, perché tutti si incastrano, un
 risultato che Dirk Helbing mostrò su _Nature_ nel 2000. L'unica condizione:
 bisogna restare sotto la densità critica. Ed è esattamente per questo che tenere
 la distanza aiuta più che avanzare.
 
-E adesso la battuta finale: proprio questo problema i parchi l'hanno risolto da
-un pezzo sul lato dei veicoli. L'omnimover della Haunted Mansion e la rolling
-station di YOY non si fermano mai: nessuna sosta, nessun tempo perso alla
-partenza, flusso massimo. Solo gli ospiti nella coda davanti sono l'ultimo
-sistema stop-and-go che nessuno ha ancora eliminato con il progetto. Fino ad
-allora la leva più efficace resta quella che hai già in mano: non avvicinarti
-di più, ma venire fin da subito in un giorno in cui la coda non finisce in
-ingorgo. Qual è quel giorno te lo dice il calendario dei giorni migliori più
-sotto.
+Sul lato dei veicoli i parchi hanno risolto proprio questo problema da un
+pezzo. L'omnimover della Haunted Mansion e la rolling station di YOY non si
+fermano mai: nessuna sosta, nessun tempo perso alla partenza, flusso massimo.
+Solo gli ospiti nella coda davanti sono l'ultimo sistema stop-and-go che
+nessuno ha ancora eliminato con il progetto. Fino ad allora la leva che aiuta
+di più resta quella che hai già in mano: venire in un giorno in cui la coda non
+finisce in ingorgo. Qual è quel giorno te lo dice il calendario dei giorni
+migliori.
 
 ## Soluzioni moderne: virtual queue e stazioni doppie
 
@@ -610,17 +605,16 @@ gira senza lamentarsi e non chiede mai una pausa.
 
 ## Conclusione: il tabellone racconta solo metà della storia
 
-La prossima coda da 60 minuti non si accorcerà grazie a questo articolo. Ma ora
-la leggi in modo diverso, ed è proprio questa lettura il cuore di park.fan.
-Ogni funzione del sito risponde a una delle domande di sopra:
+La prossima coda da 60 minuti non si accorcerà per questo. Ma si legge in modo
+diverso. Restano tre domande, e park.fan ha una risposta per ognuna:
 
 - **Quanto è lunga _davvero_ la coda, proprio adesso?** Per questo ci sono i
   nostri **tempi di attesa live**: oltre 200 parchi, 7.000 attrazioni, ogni
   minuto. La legge di Little in tempo reale, senza che tu debba contarti da solo
   le 640 persone davanti.
 - **È tanto o è normale?** Lo dicono le **statistiche di lungo periodo** di
-  ogni attrazione, perché 45 minuti sono, come abbiamo visto, a seconda del
-  parco una seccatura o una vincita alla lotteria.
+  ogni attrazione, perché 45 minuti sono, a seconda del parco, una seccatura o
+  una vincita alla lotteria.
 - **E devo proprio mettermi in coda?** Di solito si decide già scegliendo il
   giorno. Per questo c'è il **calendario dei giorni migliori per la visita**,
   con previsioni fino a 365 giorni in anticipo, per esempio per l'Europa-Park:

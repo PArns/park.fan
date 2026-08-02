@@ -33,11 +33,13 @@ All except `fetch-hero-textures.mjs` (manual, `pnpm generate:hero-textures`) run
 
 ## Other Scripts
 
-| Script                         | Purpose                                                                                                                                                                                                                                                  |
-| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `test-url-building.mjs`        | Validates URL construction                                                                                                                                                                                                                               |
-| `render-coaster-elements.mjs`  | Headless contact sheets of every glossary 3-D coaster element (front/follow/onboard × light/dark) — the verification step [conventions §12](conventions.md#12-threejs-animations-research-first-then-verify-from-every-perspective-requirement) requires |
-| `export-glossary-term-ids.mjs` | Prints the glossary term-id allowlist the API repo checks its ride-profile seed against                                                                                                                                                                  |
+| Script                             | Purpose                                                                                                                                                                                                                                                  |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `test-url-building.mjs`            | Validates URL construction                                                                                                                                                                                                                               |
+| `render-coaster-elements.mjs`      | Headless contact sheets of every glossary 3-D coaster element (front/follow/onboard × light/dark) — the verification step [conventions §12](conventions.md#12-threejs-animations-research-first-then-verify-from-every-perspective-requirement) requires |
+| `export-glossary-term-ids.mjs`     | Prints the glossary term-id allowlist the API repo checks its ride-profile seed against                                                                                                                                                                  |
+| `setup-vercel-comment-webhook.mjs` | Registers/lists/deletes the Vercel `comment.*` webhook behind the [preview-comment → PR sync](vercel-comment-sync.md) (must go through the API — the dashboard does not offer these events)                                                              |
+| `ci/sync-vercel-comment.mjs`       | Run by the `vercel comment sync` workflow: posts a Vercel preview comment onto the matching PR                                                                                                                                                           |
 
 ## Related
 

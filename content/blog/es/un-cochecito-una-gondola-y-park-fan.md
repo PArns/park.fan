@@ -4,7 +4,6 @@ translationKey: welcome-to-park-fan-blog
 date: '2026-07-06'
 author: patrick
 mode: published
-featured: true
 excerpt: >-
   Un cochecito junto al lago de los cuentos, un paseo en góndola por «1001
   Noches» y, treinta años después, sesenta minutos de cola en Taron con la duda
@@ -76,7 +75,7 @@ ha soltado nunca más.
 
 ## «1001 Noches», los viajes que se quedan
 
-Y luego estaba el telecabina **«1001 Noches»**, en funcionamiento desde 1970 y
+Estaba también el telecabina **«1001 Noches»**, en funcionamiento desde 1970 y
 primer dark ride fijo de Alemania. A finales de los ochenta formaba parte fija
 de cada visita familiar. Mis padres y yo en una de aquellas cabinas, a ocho
 metros del suelo, juntos en un viaje que con cada metro se adentraba un poco más
@@ -90,7 +89,7 @@ recuerdo del hombre que entonces se deslizaba a mi lado por aquellos mundos.
 
 ![Silueta de una montaña rusa en Movie Park Germany de noche, iluminada en violeta y azul | Movie Park Germany de noche. Lethal Weapon Pursuit estuvo aquí hasta 2006. | left](/images/parks/movie-park-germany/background.jpg)
 
-Y cuando mi padre volvía a estar de ruta como camionero, mi madre cogía el
+Cuando mi padre volvía a estar de ruta como camionero, mi madre cogía el
 volante sin más. Con ella descubrí muchos otros parques, sobre todo el
 [Movie Park](ref:movie-park-germany?bare), entonces todavía Warner Bros. Movie
 World. Allí me subí por primera vez en mi vida a una montaña rusa, en
@@ -104,9 +103,9 @@ culpa de todo lo que vino después.
 Si este amor por los parques de atracciones es una herencia, viene de ambos
 progenitores. Papá aportó los cuentos; mamá, las montañas rusas.
 
-Y cuando alguien me pregunta por qué park.fan es gratis y va a seguir siéndolo:
-este lugar me regaló recuerdos que han marcado mi vida. Esta es mi manera de
-devolver algo.
+De vez en cuando alguien me pregunta por qué park.fan es gratis y va a seguir
+siéndolo. Este lugar me regaló recuerdos que han marcado mi vida. Esta es mi
+manera de devolver algo.
 
 ## De ratones de 5000 y una leyenda de 10.000
 
@@ -141,8 +140,8 @@ Most Immersive Theme Park».
 
 ![Cabeza animatrónica de velocirraptor en el recinto de raptores del VelociCoaster, con luz roja | Islands of Adventure: el raptor en su recinto, al alcance de la mano. | right](/blog/images/velocicoaster/02-raptor-paddock.jpg)
 
-Y luego estaba ese gran punto de la lista vital al que todavía le faltaba la
-marca de visto. En mayo de 2026 volamos por fin a Orlando: **Walt Disney World,
+Quedaba ese gran punto de la lista vital al que todavía le faltaba la marca de
+visto. En mayo de 2026 volamos por fin a Orlando: **Walt Disney World,
 Universal y SeaWorld**, el programa completo, el viaje de «una vez en la vida»
 con el que soñaba desde niño. Es una sensación extrañamente hermosa ver al chaval
 del lago de los cuentos plantado décadas después ante el Cinderella Castle del
@@ -301,14 +300,14 @@ cumplen nuestras previsiones lo que prometen?
 **Noticias.** Breves y sin rodeos. Si pasa algo, está aquí, más rápido de lo que
 tardas en cerrar un aviso de cookies.
 
-Y lo mejor: las entradas están vivas. Gráficos, mapas y tiempos de espera se
+Además, las entradas están vivas. Gráficos, mapas y tiempos de espera se
 sacan directamente de park.fan, así que lo que lees es lo que el parque está
 haciendo en este momento. Los dos protagonistas de esta historia, en directo:
 
 [Taron](ref:phantasialand/taron?full)
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?full)
 
-Y como el tiempo es el factor que más rápido tuerce un día de parque, aquí está
+Como el tiempo es el factor que más rápido tuerce un día de parque, aquí está
 la situación justo ahora en la entrada de
 [Phantasialand](ref:phantasialand?bare):
 

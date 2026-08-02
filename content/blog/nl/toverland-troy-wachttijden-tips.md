@@ -170,10 +170,11 @@ in totaal ruim veertig attracties. Een park met driemaal zoveel publiek heeft
 zelden driemaal de capaciteit.
 
 Daar komt iets bij dat andere parken allang hebben ingebouwd en hier ontbreekt:
-**Toverland verkoopt geen fastpass, geen expresspass, geen single rider.** In
-het hele park is er precies één manier om tijd tegen geld te ruilen, en die
-bestaat alleen in oktober. Op alle andere dagen is de rij die je ziet, de rij
-die er is.
+**Toverland verkoopt geen fastpass en geen expresspass.** In het hele park is
+er precies één manier om tijd tegen geld te ruilen, en die bestaat alleen in
+oktober. Op alle andere dagen is de rij die je ziet, de rij die er is. Een
+single rider-rij is er sinds 2023 overigens wel, maar bij één enkele attractie,
+de valtoren Dragonwatch, en die kost niets extra.
 
 ## De rest van het park
 
@@ -183,8 +184,8 @@ Troy is de reden dat liefhebbers komen. Maar het park leeft niet van één baan.
 
 **[Fēnix](ref:toverland/fenix)** is het prestigeproject van 2018: een wing
 coaster van **Bolliger & Mabillard**, 40 meter hoog, 813 meter lang, tot
-95 km/u, een dive drop plus twee inversies (Immelmann en zero-g roll),
-13 miljoen euro duur. De eerste wing coaster van Nederland en tot vandaag de
+95 km/u, drie keer over de kop (de wing-over drop telt zelf al als inversie,
+daarna Immelmann en zero-g roll), 13 miljoen euro duur. De eerste wing coaster van Nederland en tot vandaag de
 langste van Europa. Wing coaster betekent: je zit links en rechts naast de rail,
 zonder baan boven of onder je, en omdat je stoel de bochten verder naar buiten
 meemaakt dan het voertuig, voelt elke draai groter dan hij is. Onderweg sproeit
@@ -203,12 +204,15 @@ komt doordat je één voor één en liggend instapt, en dat duurt nu eenmaal.
 
 **[Dwervelwind](ref:toverland/dwervelwind)** van Mack Rides is een spinning
 coaster in het donker, half darkride, half achtbaan, met vrij draaiende gondels
-en boordgeluid, destijds een primeur voor dit type. Haar openingsdatum is een
-kleine strikvraag: de baan was lang voor de rest van de Magische Vallei klaar,
-en in plaats van haar een jaar stil te laten staan, liet het park haar op
-**29 september 2012** gewoon alvast rijden, vijf weken lang tot 4 november.
-Daarna ging ze de winter over weer dicht zodat eromheen verder gebouwd kon
-worden, en kwam ze in **april 2013** terug met het complete themagebied. Daarom
+en een boordgeluid dat een achtbaan van dit type daarvoor niet had. Haar
+openingsdatum is een kleine strikvraag. De baan was aangekondigd voor 2013,
+maar ze was lang voor de rest van de Magische Vallei klaar, en in plaats van
+haar een jaar stil te laten staan haalde het park haar naar voren: een paar
+vooropeningsdagen in de week van 24 september 2012, een persrit op de 26e, en
+vanaf zaterdag **29 september 2012** mocht iedereen mee, ruim vijf weken lang
+tot 4 november. Daarna ging ze de winter over weer dicht zodat eromheen verder
+gebouwd kon worden, en kwam ze in **april 2013** terug met het complete
+themagebied, nu als Dwervelwind in plaats van de d'wervelwind van 2012. Daarom
 lees je afhankelijk van de bron 2012 of 2013. Allebei klopt.
 
 **[Toos-Express](ref:toverland/toos-express)** uit het openingsjaar 2001 is de
@@ -421,8 +425,7 @@ december en januari zijn in onze data de zwaarste maanden van het jaar.
 
 ## Wanneer je moet gaan
 
-Dat is het aangenaamste deel van dit artikel, omdat het antwoord zo ontspannen
-uitvalt: bijna altijd.
+Het antwoord valt ontspannen uit: bijna altijd.
 
 **Per maand** is juni het optimum (typisch 18 minuten parkgemiddeld), gevolgd
 door mei en juli met 20 respectievelijk 22 minuten. Het zwaarst is **april** met
@@ -558,10 +561,11 @@ Nederlandse mei- en herfstvakantie en het korte winterseizoen.
 
 ### Heb je in Toverland een fastpass nodig?
 
-Die is er niet. Toverland verkoopt noch een fastpass noch single rider; de enige
+Die is er niet. Toverland verkoopt helemaal geen fastpass; de enige
 uitzondering is de **Fear Pass** voor de haunted experiences tijdens de
-Halloween Nights (62,50 €). Bij medianen van 16 minuten op de headliners heb je
-er op een normale dag ook geen nodig.
+Halloween Nights (62,50 €). Een gratis single rider-rij bestaat alleen bij de
+valtoren Dragonwatch. Bij medianen van 16 minuten op de headliners heb je op
+een normale dag sowieso geen kortere weg nodig.
 
 ### Is Troy de beste houten achtbaan van Europa?
 
@@ -638,7 +642,7 @@ meeste andere parken van Europa kun je het vergeten.
 - Troy (gegevens, bouwwijze, GCI, stormschade 2007): [Troy (Toverland) op Wikipedia](<https://de.wikipedia.org/wiki/Troy_(Toverland)>) · [Troy (roller coaster), Engelse Wikipedia](<https://en.wikipedia.org/wiki/Troy_(roller_coaster)>) · [Troy (officieel)](https://www.toverland.com/attracties/troy)
 - Troy-retrack: ["Toverland: Retrack der Holzachterbahn Troy" (FreizeitparkNEWS)](https://www.freizeitparknews.de/toverland/toverland-retrack-troy/)
 - Fēnix (B&M, langste wing coaster van Europa): [Fēnix op Wikipedia](https://de.wikipedia.org/wiki/F%C4%93nix)
-- Dwervelwind (soft opening 29 september tot 4 november 2012, complete Magische Vallei vanaf april 2013): [Dwervelwind op Wikipedia](https://de.wikipedia.org/wiki/Dwervelwind) · [Dwervelwind (officieel)](https://www.toverland.com/attracties/dwervelwind)
+- Dwervelwind (vervroegde opening 29 september tot 4 november 2012, complete Magische Vallei vanaf april 2013): [Dwervelwind op de.wikipedia](https://de.wikipedia.org/wiki/Dwervelwind) · [Dwervelwind op nl.wikipedia](https://nl.wikipedia.org/wiki/Dwervelwind) · [Dwervelwind (officieel)](https://www.toverland.com/attracties/dwervelwind)
 - European Star Awards 2018: ["Toverland hat gleich drei European Star Awards gewonnen" (Freizeitpark News)](https://freizeitpark-news.com/news/hohe-auszeichnung-fuer-toverland-der-freizeitpark-aus-holland-hat-gleich-drei-european-star-awards-gewonnen/) · [Awards (officieel)](https://www.toverland.com/en/awards)
 - Parkgeschiedenis, themagebieden & bezoekersaantallen: [Toverland op Wikipedia](https://nl.wikipedia.org/wiki/Toverland) · [Bezoekersaantallen 2025 (officieel)](https://www.toverland.com/de/presse/neuigkeiten)
 - Claim "Discover your own magic" (sinds 2018, daarvoor "Magisch mooi" en "Feel the Magic"): ["Toverland kiest voor nieuwe slogan" (Looopings)](https://www.looopings.nl/weblog/9639/Toverland-kiest-voor-nieuwe-slogan.html)

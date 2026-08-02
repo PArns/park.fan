@@ -4,7 +4,6 @@ translationKey: welcome-to-park-fan-blog
 date: '2026-07-06'
 author: patrick
 mode: published
-featured: true
 excerpt: >-
   Ein Kinderwagen am Märchensee, eine Gondelfahrt durch „1001 Nacht“, und
   dreißig Jahre später sechzig Minuten Taron-Schlange mit der Frage, ob sich
@@ -61,8 +60,8 @@ Rotkäppchen, Aschenputtel, Ali Baba.
 
 Dieser Märchenwald ist älter als alles andere im Park. Als das Phantasialand am 30. April 1967 eröffnete, war er die erste Attraktion überhaupt, gebaut aus dem
 Fundus des Puppenspielers Richard Schmidt, der den Park zusammen mit dem
-Schausteller Gottlieb Löffelhardt aufzog. Und weil Puppen allein noch keine
-Geschichte ergeben, gab es an jeder Szene einen Knopf. Einmal drücken, und ein
+Schausteller Gottlieb Löffelhardt aufzog. Puppen allein ergeben aber noch keine
+Geschichte, also gab es an jeder Szene einen Knopf. Einmal drücken, und ein
 Tonband erzählte das Märchen dazu.
 
 Ich habe diese Knöpfe gedrückt, und wenn meine Eltern schon zwei Szenen weiter
@@ -75,8 +74,8 @@ nie wieder losgelassen hat.
 
 ## „1001 Nacht“, die Fahrten, die bleiben
 
-Und dann war da die Gondelbahn **„1001 Nacht“**, ab 1970 in Betrieb und der
-erste stationäre Dark Ride Deutschlands. Ende der Achtzigerjahre gehörte sie zu
+Dann war da die Gondelbahn **„1001 Nacht“**, ab 1970 in Betrieb und der erste
+stationäre Dark Ride Deutschlands. Ende der Achtzigerjahre gehörte sie zu
 jedem unserer Familienbesuche fest dazu. Meine Eltern und ich in einer dieser
 Gondeln, acht Meter über dem Boden, gemeinsam auf einer Reise, die mit jedem
 Meter tiefer in eine andere Welt führte. Durch das wuchtige Drachenmaul hinein
@@ -91,8 +90,8 @@ glitt.
 
 ![Nächtliche Achterbahn-Silhouette im Movie Park Germany, violett und blau angestrahlt | Movie Park Germany bei Nacht. Lethal Weapon Pursuit stand hier bis 2006. | left](/images/parks/movie-park-germany/background.jpg)
 
-Und wenn mein Vater als LKW-Fahrer mal wieder auf Tour war, hat meine Mutter
-kurzerhand das Steuer übernommen. Mit ihr habe ich viele andere Parks entdeckt,
+War mein Vater als LKW-Fahrer mal wieder auf Tour, hat meine Mutter kurzerhand
+das Steuer übernommen. Mit ihr habe ich viele andere Parks entdeckt,
 allen voran den [Movie Park](ref:movie-park-germany?bare), damals noch Warner
 Bros. Movie World. Dort bin ich im **Lethal Weapon Pursuit** zum ersten Mal in
 meinem Leben Achterbahn gefahren: zwei Züge im Design amerikanischer
@@ -105,9 +104,9 @@ meine Mutter also schuld an allem, was danach kam.
 Wenn diese Liebe zu Freizeitparks ein Erbe ist, dann stammt sie von beiden
 Elternteilen. Papa hat die Märchen beigesteuert, Mama die Achterbahnen.
 
-Und wenn mich jemand fragt, warum park.fan kostenlos ist und bleiben wird:
-Dieser Ort hat mir Erinnerungen geschenkt, die mein Leben geprägt haben. Das
-hier ist meine Art, etwas davon zurückzugeben.
+Warum park.fan kostenlos ist und bleiben wird, fragt mich hin und wieder
+jemand. Dieser Ort hat mir Erinnerungen geschenkt, die mein Leben geprägt
+haben. Das hier ist meine Art, etwas davon zurückzugeben.
 
 ## Von 5000er-Mäusen und einer 10.000er-Legende
 
@@ -142,8 +141,8 @@ Park“ zu sein.
 
 ![Animatronischer Velociraptor-Kopf im rot beleuchteten Raptor-Paddock des VelociCoaster | Islands of Adventure: der Raptor im Paddock, zum Greifen nah. | right](/blog/images/velocicoaster/02-raptor-paddock.jpg)
 
-Und dann war da noch dieser eine große Punkt auf der Lebensliste, hinter dem
-noch immer der Haken fehlte. Im Mai 2026 sind wir endlich nach Orlando
+Blieb noch dieser eine große Punkt auf der Lebensliste, hinter dem seit Jahren
+der Haken fehlte. Im Mai 2026 sind wir endlich nach Orlando
 geflogen: **Walt Disney World, Universal und SeaWorld**, das volle Programm,
 die „einmal im Leben“-Reise, von der ich seit Kindertagen geträumt habe. Es ist
 ein eigenartig schönes Gefühl, wenn der Junge vom Märchensee Jahrzehnte später
@@ -197,8 +196,9 @@ tauschte.
 ## Vom Skript zur Plattform: wie park.fan wirklich entstand
 
 Was daraus wurde, nennen Entwickler ein Herzensprojekt und Freundinnen
-vermutlich eher „schon wieder dieses Park-Ding“. Aus einem Skript wurde ein Datensammler, aus dem Datensammler eine
-Pipeline, aus der Pipeline eine Plattform. Dazwischen lagen Nächte, in denen
+vermutlich eher „schon wieder dieses Park-Ding“. Aus einem Skript wurde ein
+Datensammler, aus dem Datensammler eine Pipeline, aus der Pipeline eine
+Plattform. Dazwischen lagen Nächte, in denen
 ich um zwei Uhr morgens auf Wartezeiten-Kurven starrte, weil irgendein Park
 seine Daten anders meldete als alle anderen. Debugging-Sessions, die länger
 dauerten als mancher Parktag. Und dieser ganz eigene Moment von Ehrfurcht, wenn
@@ -264,7 +264,7 @@ Deshalb gehen wir ein paar Schritte weiter:
   Historie, verdichtet zu einer einfachen Antwort: hin oder lieber nicht.
 - **Trefferquoten öffentlich.** Jede Prognose wird später gegen die tatsächlich
   gemessene Wartezeit gehalten. Wer wissen will, wie gut das Modell ist, muss
-  mir nicht glauben, sondern kann auf der [Fancast-Seite](/fancast) nachsehen.
+  mir nicht glauben. Die Zahlen stehen auf der [Fancast-Seite](/fancast).
 - **Alles an einem Ort.** Wartezeiten, Crowd-Level, Wetter am Parkeingang,
   Öffnungszeiten und Attraktions-Historien, in sechs Sprachen.
 - **Kostenlos und ohne Werbung.** Kein Konzern, keine Paywall. Eine Fanpage im
@@ -304,15 +304,15 @@ unsere Prognosen, was sie versprechen?
 **News.** Kurz und ohne Umschweife. Passiert etwas, steht es hier, schneller,
 als du ein Cookie-Banner wegklickst.
 
-Und das Beste daran: Die Beiträge leben. Charts, Karten und Wartezeiten ziehen
-direkt aus park.fan, was du liest, macht der Park in diesem Moment wirklich.
+Die Beiträge leben dabei. Charts, Karten und Wartezeiten ziehen direkt aus
+park.fan, was du liest, macht der Park in diesem Moment wirklich.
 Die beiden Hauptdarsteller dieser Geschichte, live:
 
 [Taron](ref:phantasialand/taron?full)
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?full)
 
-Und weil das Wetter der Faktor ist, der einen Parktag am schnellsten kippen
-lässt, hier die Lage genau jetzt am
+Weil das Wetter der Faktor ist, der einen Parktag am schnellsten kippen lässt,
+hier die Lage genau jetzt am
 [Phantasialand](ref:phantasialand?bare)-Eingang:
 
 ```weather-widget slug=phantasialand

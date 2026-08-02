@@ -59,13 +59,11 @@ parfaitement dans un bon parc : la psychologie de la perception du temps et les
 mathématiques de la capacité. L'une décide de ce que l'attente _donne comme
 sensation_. L'autre, de la longueur _réelle_ de la file.
 
-Et si vous avez lu
-[notre histoire d'origine](/blog/une-poussette-une-gondole-et-park-fan), vous
-devinez pourquoi le sujet ne me lâche pas : park.fan a été inventé dans une
-file de Taron, par pure frustration devant une éternité ressentie. Cet article
-est en quelque sorte l'autopsie de cet après-midi-là, la question de ce qui
-m'arrivait vraiment. Le moment est venu de plonger dans les deux disciplines.
-Promis : il n'y aura que deux formules, et les deux tiennent ensemble au dos
+Le sujet ne me lâche pas, pour une raison très concrète. park.fan a été inventé
+dans une file de Taron, par pure frustration devant une éternité ressentie
+([toute l'histoire est ici](/blog/une-poussette-une-gondole-et-park-fan)). Ce
+qui m'arrivait vraiment cet après-midi-là, j'ai voulu ensuite le savoir
+précisément. Deux formules entrent en jeu, et les deux tiennent ensemble au dos
 d'un sous-bock.
 
 ## La psychologie du temps : pourquoi les minutes s'étirent
@@ -166,9 +164,9 @@ serpente d'abord à travers le paysage de Pandora et des grottes couvertes de
 peintures na'vis, puis dans un laboratoire de recherche abandonné, avec un
 avatar grandeur nature qui flotte dans une cuve amniotique et respire de façon
 si convaincante que des visiteurs s'arrêtent régulièrement et bloquent la file.
-Une file qui se bouche elle-même parce qu'elle est trop belle : difficile de
-lui rendre plus bel hommage. Suivent ensuite **deux salles de pre-show**, où
-vous êtes « scanné » puis « relié » à votre propre avatar.
+Une file qui se bouche elle-même parce qu'elle est trop belle. Suivent ensuite
+**deux salles de pre-show**, où vous êtes « scanné » puis « relié » à votre
+propre avatar.
 
 ```gallery-widget folder=/blog/images/avatar-flight-of-passage heading="La file d'attente en trois stations"
 
@@ -230,9 +228,9 @@ ne regarde pas son téléphone toutes les dix secondes.
 
 Et puis il y a ici ce qui est peut-être l'astuce de capacité la plus élégante
 de toutes : la **file single rider**. Quand on roule seul et qu'on se laisse
-placer sur le siège isolé qu'un groupe de quatre laisse libre, on ne raccourcit
-pas seulement drastiquement sa propre attente : on aide le parc à remplir
-chaque wagon à ras bord. Chaque siège autrement vide est de la capacité
+placer sur le siège isolé qu'un groupe de quatre laisse libre, on raccourcit
+drastiquement sa propre attente et on aide au passage le parc à remplir chaque
+wagon à ras bord. Chaque siège autrement vide est de la capacité
 gaspillée ; la file single rider est la manière élégante de boucher ces trous.
 Un cas rare où l'intérêt personnel et le débit tirent exactement dans le même
 sens.
@@ -265,9 +263,9 @@ la minute.
 
 ## Capacité et débit : le secret mathématique
 
-Voilà pour la perception. Passons maintenant à la monnaie forte de toute file
-d'attente, le **débit** : combien de personnes une attraction transporte
-réellement par heure.
+Le **débit**, c'est tout simplement le nombre de personnes qu'une attraction
+transporte réellement par heure. Ce chiffre décide de la longueur réelle de la
+file.
 
 ```glossary-widget slug=ride-capacity
 
@@ -362,8 +360,8 @@ ne s'arrête pas compte.
 
 ## La loi de Little : la formule derrière chaque affichage d'attente
 
-Et nous voilà à la formule qui tient tout ensemble, l'un des résultats les plus
-élégants de la théorie des files d'attente. Le professeur du MIT **John D. C.
+La formule qui relie les deux faces est l'un des résultats les plus élégants de
+la théorie des files d'attente. Le professeur du MIT **John D. C.
 Little** a démontré en 1961 la relation que l'on appelle aujourd'hui la
 [loi de Little](https://en.wikipedia.org/wiki/Little%27s_law) :
 
@@ -390,9 +388,9 @@ La formule explique aussi pourquoi une même longueur de file peut correspondre
 tourne aujourd'hui avec deux trains au lieu de trois, λ baisse, et W grimpe
 immédiatement sans qu'il y ait un seul visiteur de plus dans le parc.
 
-Ce qui nous ramène à cet affichage menteur. Au nombre calculé avec précision
-vient volontiers s'ajouter une marge de sécurité généreuse. Ce n'est pas
-seulement de la négligence, c'est de la pure psychologie. L'affichage doit en
+Et l'affichage à l'entrée, celui qui vous ment ? Au nombre calculé avec
+précision vient volontiers s'ajouter une marge de sécurité généreuse. Ce n'est
+pas de la négligence, c'est de la psychologie. L'affichage doit en
 effet faire deux choses contradictoires à la fois. Il doit vous donner une base
 de décision fiable, et il ne doit pas vous décevoir. Un affichage qui
 sous-estime produit à la sortie une foule de gens qui se sentent floués ; un
@@ -403,8 +401,7 @@ pic-fin, souvenez-vous : l'expérience se termine mieux que prévu, et c'est
 exactement ainsi qu'elle est archivée. L'affichage ment donc bel et bien, mais
 il ment en votre faveur.
 
-Permettez-moi ici un mot depuis la salle des machines, car c'est exactement là
-que vit park.fan. Nos temps d'attente en direct vous montrent à la minute ce
+Un mot depuis la salle des machines, car c'est exactement là que vit park.fan. Nos temps d'attente en direct vous montrent à la minute ce
 que font réellement L et λ, et quand notre modèle d'IA prévoit les temps
 d'attente jusqu'à 365 jours à l'avance, il ne modélise au fond rien d'autre que
 ces deux grandeurs : la **demande** (combien de personnes veulent monter dans
@@ -415,14 +412,14 @@ figure sur la [page Fancast](/fancast).
 
 ## Pourquoi Peter Pan's Flight « déraille » toujours
 
-Ce qui nous amène à l'une des plus vieilles énigmes du monde des parcs :
-pourquoi **Peter Pan's Flight**, précisément, un dark ride tranquille de facture
-1955, pas de montagnes russes, pas de sensations fortes, affiche-t-il quasi en
-permanence 45 minutes et plus dans pratiquement tous les parcs Disney du monde,
-de [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park?bare)
+Pourquoi **Peter Pan's Flight**, précisément, un dark ride tranquille de
+facture 1955, pas de montagnes russes, pas de sensations fortes, affiche-t-il
+quasi en permanence 45 minutes et plus dans pratiquement tous les parcs Disney
+du monde, de
+[Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park?bare)
 jusqu'à Orlando ?
 
-La réponse tient entièrement dans les mathématiques ci-dessus :
+Il y a trois raisons à cela, et toutes les trois sont du calcul :
 
 1. **Les bateaux pirates ne sont pas des transports en commun.**
    [Peter Pan's Flight à Paris](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight?bare)
@@ -464,11 +461,12 @@ grands parcs européens face aux géants d'Orlando.
 [Magic Kingdom](ref:disney-magic-kingdom?bare) est le parc d'attractions le plus
 fréquenté au monde, et Disney comme Universal attirent des visiteurs de tous
 les continents. S'y ajoute un facteur que l'Europe ne connaît guère avec cette
-dureté : le coupe-file payant. Lightning Lane et Express Pass vendent une part
-de la capacité à des visiteurs payants, et chaque passage express manque à la
-file standby. Résultat : des têtes d'affiche comme
+dureté : là-bas, on peut s'acheter un passage devant la file. Lightning Lane
+et Express Pass vendent une part de la capacité à des visiteurs payants, et
+chaque passage express manque à la file standby. Des têtes d'affiche comme
 [Avatar Flight of Passage](ref:disney-animal-kingdom/avatar-flight-of-passage?bare)
-affichent régulièrement 60 à 120 minutes malgré une capacité horaire massive.
+affichent donc régulièrement 60 à 120 minutes malgré une capacité horaire
+massive.
 
 **L'[Europa-Park](ref:europa-park?bare) est le contre-modèle.** Le plus grand
 parc d'Allemagne, deuxième d'Europe derrière Disneyland Paris en fréquentation,
@@ -486,8 +484,7 @@ concentre sur une poignée de têtes d'affiche, et quand tout le monde veut
 [Taron](ref:phantasialand/taron?bare) un samedi de vacances (salutations, j'en
 fais généralement partie), la saturation arrive aussi vite que pour Peter Pan à
 Paris. Un petit public ne protège pas des longues files quand le nombre
-d'attractions simultanées est limité. Les mathématiques sont les mêmes, seule
-l'échelle est plus petite.
+d'attractions simultanées est limité.
 
 Les chiffres sont presque comiques. Taron traite environ **1 200 visiteurs par
 heure**, soit à peu près autant que Peter Pan's Flight à Paris. La différence
@@ -496,8 +493,9 @@ répartir. À Paris, Peter Pan se trouve au milieu de dizaines d'alternatives. �
 Brühl, un samedi de vacances, une part considérable du parc a la même
 attraction en tête au même moment. Et Voltron à l'Europa-Park, avec 1 600 par
 heure, ne fait qu'un tiers de plus, mais garde une file bien plus courte parce
-que douze autres coasters voisins siphonnent la demande. La capacité seule dit
-peu de chose ; ce qui compte, c'est son rapport à tout ce qui est ouvert à côté.
+que douze autres coasters voisins siphonnent la demande. Un chiffre de capacité
+à lui seul dit donc peu de chose. Ce qui compte, c'est son rapport à tout ce
+qui est ouvert à côté.
 
 Ce sont précisément ces profils qui expliquent pourquoi chaque page de parc sur
 park.fan affiche, à côté des temps d'attente en direct, les statistiques de
@@ -523,9 +521,8 @@ et la courbe saisonnière diffèrent déjà sur l'année.
 
 ```
 
-Deux parcs, deux écritures d'attente totalement différentes. Et ce sont
-exactement ces motifs qui apprennent à notre modèle quand une visite en vaut la
-peine.
+Ce sont exactement ces motifs qui apprennent à notre modèle quand une visite en
+vaut la peine.
 
 ## Se rapprocher ne sert à rien, et ralentit même la file
 
@@ -559,9 +556,9 @@ voiture s'ébranle nettement plus tard. Chaque fois que votre file avance par
 multipliés par soixante personnes qui attendent, cela fait s'accumuler une
 étonnante quantité de rien.
 
-La conséquence stupéfiante : si tout le monde avançait simplement de façon
-régulière et lente, au lieu de s'arrêter, de se rapprocher et de s'arrêter à
-nouveau, la file s'écoulerait plus fluidement et, en moyenne, plus vite. Moins
+Si tout le monde avançait simplement de façon régulière et lente, au lieu de
+s'arrêter, de se rapprocher et de s'arrêter à nouveau, la file s'écoulerait
+plus fluidement et, en moyenne, plus vite. Moins
 de bousculade, plus de flux. La recherche sur le trafic connaît cela sous le
 nom d'effet « faster-is-slower » : celui qui pousse davantage à un goulot
 d'étranglement fait baisser le débit, parce que tout le monde se coince, un
@@ -569,15 +566,13 @@ résultat que Dirk Helbing a montré dans _Nature_ en 2000. Une seule condition�
 il faut rester sous la densité critique. Et c'est exactement pour cela que
 garder ses distances aide plus que de se rapprocher.
 
-Et voici la chute : ce problème précis, les parcs l'ont résolu depuis longtemps
-côté véhicules. L'omnimover de la Haunted Mansion et la rolling station de YOY
-ne s'arrêtent jamais : aucun arrêt, aucun temps perdu au démarrage, flux
-maximal. Seuls les visiteurs dans la file devant constituent le dernier système
-stop-and-go que personne n'a encore su éliminer par le design. En attendant, le
-levier le plus efficace reste celui que vous tenez déjà : ne pas vous
-rapprocher davantage, mais venir d'emblée un jour où la file ne part pas en
-bouchon. Quel jour c'est, le calendrier des meilleurs jours plus bas vous le
-dira.
+Côté véhicules, les parcs ont résolu ce problème précis depuis longtemps.
+L'omnimover de la Haunted Mansion et la rolling station de YOY ne s'arrêtent
+jamais : aucun arrêt, aucun temps perdu au démarrage, flux maximal. Seuls
+les visiteurs dans la file devant constituent le dernier système stop-and-go
+que personne n'a encore su éliminer par le design. En attendant, le levier qui
+aide le plus est celui que vous tenez déjà : venir un jour où la file ne part
+pas en bouchon. Quel jour c'est, le calendrier des meilleurs jours vous le dira.
 
 ## Solutions modernes : files virtuelles et gares doubles
 
@@ -631,16 +626,15 @@ broncher depuis les années soixante et ne demande jamais de pause.
 
 ## Conclusion : l'affichage ne raconte que la moitié de l'histoire
 
-La prochaine file de 60 minutes ne raccourcira pas grâce à cet article. Mais
-vous la lirez autrement désormais, et cette lecture est le cœur de park.fan.
-Chaque fonction du site répond à l'une des questions ci-dessus :
+La prochaine file de 60 minutes n'en sera pas plus courte. Mais elle se lit
+autrement. Trois questions demeurent, et park.fan a une réponse pour chacune :
 
 - **Quelle est la longueur _réelle_ de la file, à cet instant ?** C'est à cela
   que servent nos **temps d'attente en direct** : plus de 200 parcs, 7 000
   attractions, à la minute. La loi de Little en temps réel, sans que vous ayez
   à compter vous-même les 640 personnes devant vous.
 - **Est-ce beaucoup ou normal ?** Ce sont les **statistiques de longue durée**
-  de chaque attraction qui le disent, car 45 minutes, comme on l'a vu, sont
+  de chaque attraction qui le disent, car 45 minutes sont
   selon le parc une contrariété ou un gros lot.
 - **Et dois-je vraiment faire la queue ?** Cela se décide le plus souvent dès
   le choix du jour. C'est pour ça qu'existe le **calendrier des meilleurs jours

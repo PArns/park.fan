@@ -4,7 +4,6 @@ translationKey: welcome-to-park-fan-blog
 date: '2026-07-06'
 author: patrick
 mode: published
-featured: true
 excerpt: >-
   Une poussette au bord du lac aux contes de fées, une balade en gondole à
   travers « 1001 Nuits », et trente ans plus tard soixante minutes de file à
@@ -78,7 +77,7 @@ plus jamais lâché.
 
 ## « 1001 Nuits », les tours qui restent
 
-Et puis il y avait le télécabine **« 1001 Nuits »**, en service à partir de 1970
+Il y avait aussi le télécabine **« 1001 Nuits »**, en service à partir de 1970
 et premier dark ride fixe d'Allemagne. À la fin des années quatre-vingt, il
 faisait partie intégrante de chacune de nos visites en famille. Mes parents et
 moi dans l'une de ces nacelles, à huit mètres au-dessus du sol, ensemble sur un
@@ -94,8 +93,8 @@ mondes.
 
 ![Silhouette de montagnes russes au Movie Park Germany la nuit, éclairée de violet et de bleu | Le Movie Park Germany de nuit. Lethal Weapon Pursuit se dressait ici jusqu’en 2006. | left](/images/parks/movie-park-germany/background.jpg)
 
-Et quand mon père repartait sur la route comme chauffeur routier, ma mère
-prenait tout simplement le volant. C'est avec elle que j'ai découvert beaucoup
+Quand mon père repartait sur la route comme chauffeur routier, ma mère prenait
+tout simplement le volant. C'est avec elle que j'ai découvert beaucoup
 d'autres parcs, à commencer par [Movie Park](ref:movie-park-germany?bare),
 encore Warner Bros. Movie World à l'époque. C'est là que j'ai fait mon tout
 premier tour de montagnes russes, dans **Lethal Weapon Pursuit** : deux trains
@@ -109,9 +108,9 @@ qui a suivi.
 Si cet amour des parcs d'attractions est un héritage, alors il vient des deux
 parents. Papa a fourni les contes, maman les montagnes russes.
 
-Et quand on me demande pourquoi park.fan est gratuit et le restera : cet
-endroit m'a offert des souvenirs qui ont façonné ma vie. Ceci est ma façon d'en
-rendre une part.
+On me demande de temps en temps pourquoi park.fan est gratuit et le restera.
+Cet endroit m'a offert des souvenirs qui ont façonné ma vie. Ceci est ma façon
+d'en rendre une part.
 
 ## Des souris à 5000 et d'une légende à 10 000
 
@@ -146,8 +145,8 @@ Most Immersive Theme Park ».
 
 ![Tête de vélociraptor animatronique dans l’enclos des raptors du VelociCoaster, éclairé de rouge | Islands of Adventure : le raptor dans son enclos, à portée de main. | right](/blog/images/velocicoaster/02-raptor-paddock.jpg)
 
-Et puis il y avait ce grand point sur la liste d'une vie devant lequel la case
-restait obstinément vide. En mai 2026, nous avons enfin pris l'avion pour
+Restait ce grand point sur la liste d'une vie devant lequel la case demeurait
+obstinément vide. En mai 2026, nous avons enfin pris l'avion pour
 Orlando : **Walt Disney World, Universal et SeaWorld**, le programme complet, le
 voyage d'une vie dont je rêvais depuis l'enfance. C'est un sentiment
 étrangement beau de voir le gamin du lac aux contes se tenir des décennies plus
@@ -316,7 +315,7 @@ prévisions tiennent-elles ce qu'elles promettent ?
 **Actus.** Court et sans détour. S'il se passe quelque chose, c'est ici, plus
 vite que vous ne fermez une bannière de cookies.
 
-Et le plus beau : les articles sont vivants. Graphiques, cartes et temps
+Les articles, eux, sont vivants. Graphiques, cartes et temps
 d'attente sont tirés directement de park.fan, ce que vous lisez est ce que le
 parc fait vraiment en cet instant. Les deux acteurs principaux de cette
 histoire, en direct :
@@ -324,7 +323,7 @@ histoire, en direct :
 [Taron](ref:phantasialand/taron?full)
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?full)
 
-Et comme la météo est le facteur qui fait basculer une journée de parc le plus
+Comme la météo est le facteur qui fait basculer une journée de parc le plus
 vite, voici la situation en cet instant précis à l'entrée de
 [Phantasialand](ref:phantasialand?bare) :
 

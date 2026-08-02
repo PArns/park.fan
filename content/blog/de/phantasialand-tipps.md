@@ -198,7 +198,7 @@ siehst, was gerade los ist:
   Mysteryland, mit wechselnden Fahrprogrammen und einer Vorshow, die den halben
   Schrecken ausmacht, lange bevor du überhaupt nach oben fährst.
 
-Und für die Kleinen (oder die Junggebliebenen): [Raik](ref:phantasialand/raik),
+Für die Kleinen (oder die Junggebliebenen): [Raik](ref:phantasialand/raik),
 der Familien-Launch in Klugheim, ist der perfekte erste „richtige“ Coaster, sanft
 genug fürs erste Mal, schnell genug fürs zweite.
 
@@ -230,7 +230,7 @@ denselben Parktag, nur weil man zu spät dran war. Die Regel ist so simpel wie
 unromantisch: **Wer früh bucht, zahlt weniger**, und der günstige Tag ist meistens
 auch der leerere.
 
-Und dann ist da die Sache, die die treuesten Fans bis heute wurmt: **Jahreskarten
+Dann ist da die Sache, die die treuesten Fans bis heute wurmt: **Jahreskarten
 gibt es keine mehr.** Das Phantasialand hat sie nach der Pandemie abgeschafft, und
 ist damit einer der letzten großen Parks Europas ganz ohne Saisonkarte. Für einen
 Ort, der so viele Menschen zu Wiederholungstätern macht, ist das ein Schlag ins
@@ -241,7 +241,7 @@ Park liebt, zahlt für jeden einzelnen Besuch ein datiertes Tagesticket zum
 Tagespreis, und das ist einer der wenigen Punkte, an denen ich mit meinem
 Lieblingspark ernsthaft hadere.
 
-Und ein Gedanke, der mir als Fan wirklich wehtut: **Der Preis bestimmt eben auch das
+Ein Gedanke, der mir als Fan wirklich wehtut: **Der Preis bestimmt eben auch das
 Publikum.** Seit die Jahreskarten weg sind und die Tickets so aggressiv bepreist
 werden, hat sich im Park spürbar etwas verschoben, und das meine ich nicht nur
 romantisch. In den letzten ein, zwei Jahren ist mir deutlich mehr Vandalismus
@@ -252,7 +252,6 @@ und wir Gäste auch.
 
 ## Phantasialand Wartezeiten: wann sie am kürzesten sind
 
-Das ist der wichtigste Absatz dieses ganzen Artikels, also lies ihn ruhig zweimal:
 **Im Phantasialand entscheidet die Tageswahl über deine Wartezeiten, mehr als
 jeder Trick im Park.** Ein grauer Dienstag im November kann leerer sein als jeder
 Samstag im Juli, und ein NRW-Ferientag mit Sonnenprognose ist zuverlässig die Hölle
@@ -273,7 +272,7 @@ Bauchgefühl ist hier ein schlechter Ratgeber, sobald sich Ferienkalender, Wette
 und Öffnungszeiten überlagern. Genau dafür ist park.fan gebaut. Der Kalender der
 besten Besuchstage verdichtet all das plus die komplette Wartezeit-Historie des
 Parks zu einer einzigen, wunderbar einfachen Farbe, grün, gelb, rot. Hier sind die
-ruhigsten kommenden Tage fürs Phantasialand,:
+ruhigsten kommenden Tage fürs Phantasialand:
 
 ```best-days-widget slug=phantasialand
 
@@ -326,7 +325,7 @@ im Wintertraum sind die Quick Pässe am Wochenende oft schon mittags ausverkauft
 Wer wirklich einen braucht, ist früh dort oder geht leer aus.
 
 Meine Meinung nach vielen, vielen Besuchen: **An einem grünen Tag brauchst du ihn
-schlicht nicht.** Wer früh da ist und die Reihenfolge unten beherzigt, fährt die
+schlicht nicht.** Wer früh da ist und eine sinnvolle Reihenfolge fährt, nimmt die
 Headliner mit kurzer Wartezeit, da ist jeder Euro Quick Pass verschenkt. An einem
 tiefroten Ferien-Samstag dagegen kann er den Tag retten. Schau vor dem Kauf einfach
 kurz auf die Live-Wartezeiten: Stehen die Zahlen niedrig, spar dir das Geld und gönn
@@ -368,8 +367,8 @@ komplett selbst in der Hand.
 
 ## Essen: der heimliche Star des Parks
 
-Und jetzt zu etwas, das ich bei keinem anderen Park so hervorheben würde: Das
-Phantasialand ist auch wegen des **Essens** eine Reise wert. Während in vielen
+Bei keinem anderen Park würde ich das so hervorheben: Das Phantasialand ist auch
+wegen des **Essens** eine Reise wert. Während in vielen
 Parks „Essen“ gleichbedeutend ist mit lauwarmen Pommes zum Mondpreis, gehört die
 Gastronomie hier fest zum Erlebnis dazu, mit einer Sorgfalt, die man sonst nur aus
 richtigen Restaurants kennt. Ein paar Adressen sind echte Geheimtipps, für die
@@ -398,8 +397,8 @@ ganze Jahr über zu haben, der perfekte Begleiter für den Weg zur nächsten Bah
 Und der wichtigste Ess-Tipp ist derselbe wie beim Anstehen: **antizyklisch.** Iss
 gegen 11:30 oder nach 14:30 Uhr, dann fährst du zur Stoßzeit die kurzen Schlangen
 und sitzt zur Fahrzeit in Ruhe im Restaurant. Zwei Fliegen, eine Klappe, ein
-zufriedener Bauch. (Und wenn du im Winter kommst, wartet in der Wintertraum-Sektion
-weiter unten noch eine ganz eigene Leckerei auf dich.)
+zufriedener Bauch. (Und wenn du im Winter kommst, wartet im Wintertraum noch
+eine ganz eigene Leckerei auf dich.)
 
 ## Die kleinen Dinge, für die ich immer wiederkomme
 
@@ -426,7 +425,7 @@ weiterspinnt.
 
 ![Die Geister Rikscha in China Town | Auch die Dark Rides wie die Geister Rikscha sind reinste, liebevolle Kulisse. | left](/images/parks/phantasialand/geister-rikscha-4x3.jpg)
 
-Und da sind die vielen Dark Rides, die dieser Park so nebenbei mitbaut, als wären
+Dazu die vielen Dark Rides, die dieser Park so nebenbei mitbaut, als wären
 sie kein großes Ding, obwohl jeder einzelne in einem anderen Park der Headliner
 wäre. Eine Fahrt mit der Geister Rikscha durch China Town, und du verstehst, was
 „immersiv“ wirklich heißt.
@@ -450,7 +449,7 @@ kennen: Ein Phantasialand-Hotel bringt dir **keinen generellen früheren
 Parkeintritt**. Der handfeste Vorteil steckt woanders, Gäste des Charles
 Lindbergh bekommen pro Person **zwei Fast Passes für
 [F.L.Y.](ref:phantasialand/fly)**. Für genau die Bahn mit der zähesten Abfertigung
-ist das goldwert, und, wie oben erwähnt, neben dem Quick Pass Ultimate der einzige
+ist das goldwert, und neben dem Quick Pass Ultimate der einzige
 bequeme Weg auf diesen Flieger.
 
 ## Anreise & Parken
@@ -487,17 +486,17 @@ Hand und [Taron](ref:phantasialand/taron) im Lichtermeer über dir, ist das mein
 liebster Weg, ein Parkjahr ausklingen zu lassen, es gibt kaum etwas
 Stimmungsvolleres.
 
-Und dann ist da das **Essen, das es nur im Winter gibt.** Der Wintertraum fährt jedes
+Dann ist da das **Essen, das es nur im Winter gibt.** Der Wintertraum fährt jedes
 Jahr Spezialitäten auf, meine heimliche Nummer eins sind die Flat Croissants:
 knusprig gepresst, herrlich buttrig und tatsächlich nur in der Wintersaison zu haben.
 Dazu ein Becher Glühwein, und der kälteste Parktag wird zum gemütlichsten.
 
-Und mein liebster Wintertraum-Tipp überhaupt: **Taron im Dunkeln.** Im Winter wird es
+Mein liebster Wintertraum-Tipp überhaupt: **Taron im Dunkeln.** Im Winter wird es
 früh finster, und dann durch das beleuchtete Klugheim zu jagen, wenn die
 Basaltsäulen nur noch Schatten gegen den Nachthimmel sind, ist
 [Taron](ref:phantasialand/taron) von seiner magischsten Seite. Der Haken: Genau dann
 ist die Bahn am gefragtesten. Kauf dir den **Quick Pass gleich früh am Tag** (am
-Wochenende sind sie mittags weg, wie oben erwähnt), und dann fahr Taron im Dunkeln,
+Wochenende sind sie mittags weg), und dann fahr Taron im Dunkeln,
 so oft du kannst. Dafür allein lohnt sich schon der Winterbesuch.
 
 **Die Termine 2026/27:** vom **14. November 2026 bis 24. Januar 2027**, täglich von

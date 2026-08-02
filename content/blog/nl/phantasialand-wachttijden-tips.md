@@ -247,9 +247,8 @@ beter, en wij gasten ook.
 
 ## Phantasialand wachttijden: wanneer ze het kortst zijn
 
-Dit is de belangrijkste alinea van dit hele artikel, dus lees hem gerust twee keer: **in
-het Phantasialand beslist de dagkeuze over je wachttijden, meer dan welke truc in het
-park ook.** Een grauwe dinsdag in november kan leger zijn dan elke zaterdag in juli, en
+**In het Phantasialand beslist de dagkeuze over je wachttijden, meer dan welke
+truc in het park ook.** Een grauwe dinsdag in november kan leger zijn dan elke zaterdag in juli, en
 een NRW-vakantiedag met zonneprognose is gegarandeerd de hel van louter mensen die
 allemaal hetzelfde goede idee hadden als jij.
 
@@ -319,7 +318,7 @@ Quick Passes in het weekend vaak al rond het middaguur uitverkocht.** Wie er ech
 heeft, is er vroeg bij of grijpt mis.
 
 Mijn mening na heel, heel veel bezoeken: **op een groene dag heb je hem gewoon niet nodig.**
-Wie vroeg present is en de volgorde hieronder ter harte neemt, rijdt de headliners met korte
+Wie vroeg present is en een verstandige volgorde ter harte neemt, rijdt de headliners met korte
 wachttijd, dan is elke euro Quick Pass weggegooid. Op een dieprode vakantiezaterdag
 daarentegen kan hij de dag redden. Kijk vóór de aankoop gewoon even naar de live wachttijden:
 staan de cijfers laag, hou dan je geld op zak en gun jezelf in plaats daarvan een tweede stuk
@@ -356,7 +355,7 @@ timing, en die heb je, anders dan het weer, volledig zelf in de hand.
 
 ## Eten: de stiekeme ster van het park
 
-En nu iets wat ik bij geen enkel ander park zo zou uitlichten: het Phantasialand is ook vanwege
+Bij geen enkel ander park zou ik dit zo uitlichten: het Phantasialand is ook vanwege
 het **eten** een reis waard. Terwijl in veel parken “eten” synoniem is met lauwe friet tegen
 woekerprijs, hoort de gastronomie hier vast bij de belevenis, met een zorgvuldigheid die je
 anders alleen van echte restaurants kent. Een paar adressen zijn echte geheimtips, waarvoor het
@@ -382,7 +381,7 @@ krijgen, de perfecte metgezel voor de weg naar de volgende baan.
 En de belangrijkste eettip is dezelfde als bij het aanschuiven: **anticyclisch.** Eet rond 11:30 of
 na 14:30 uur, dan rijd je tijdens het piekuur de korte rijen en zit je op ritdrukte-tijd rustig in
 het restaurant. Twee vliegen, één klap, een tevreden buik. (En als je in de winter komt, wacht in de
-Wintertraum-sectie verderop nog een heel eigen lekkernij op je.)
+Wintertraum nog een heel eigen lekkernij op je.)
 
 ## De kleine dingen waarvoor ik altijd terugkom
 
@@ -425,7 +424,7 @@ Een belangrijke opmerking, omdat velen het van het [Europa-Park](ref:europa-park
 Phantasialand-hotel levert je **geen algemene vroegere parktoegang** op. Het concrete voordeel zit ergens
 anders, gasten van het **Charles Lindbergh** krijgen per persoon **twee Fast Passes voor
 [F.L.Y.](ref:phantasialand/fly)**. Voor juist de baan met de traagste afhandeling is dat goud waard, en,
-zoals hierboven vermeld, naast de Quick Pass Ultimate de enige comfortabele weg naar deze vlieger.
+naast de Quick Pass Ultimate de enige comfortabele weg naar deze vlieger.
 
 ## Route & parkeren
 
@@ -465,7 +464,7 @@ En mijn liefste Wintertraum-tip van allemaal: **Taron in het donker.** In de win
 en dan door het verlichte Klugheim jagen, wanneer de basaltzuilen nog slechts schaduwen tegen de nachthemel
 zijn, is [Taron](ref:phantasialand/taron) van zijn magischste kant. De adder onder het gras: precies dan is de
 baan het meest gewild. Koop de **Quick Pass meteen vroeg op de dag** (in het weekend zijn ze rond het middaguur
-weg, zoals hierboven vermeld), en rijd dan Taron in het donker, zo vaak je kunt. Daarvoor alleen al loont het
+weg), en rijd dan Taron in het donker, zo vaak je kunt. Daarvoor alleen al loont het
 winterbezoek.
 
 **De data 2026/27:** van **14 november 2026 tot 24 januari 2027**, dagelijks van **11 tot 20 uur** (gesloten op

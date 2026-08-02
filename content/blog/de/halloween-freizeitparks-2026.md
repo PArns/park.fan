@@ -62,15 +62,15 @@ Parks längst kein bisschen Deko mehr, sondern eine eigene Saison, mit eigenen
 Tickets, eigenen Altersgrenzen und einem Publikum, das genau für diesen
 kontrollierten Herzinfarkt anreist.
 
-Und weil sich der Grusel herrlich wenig um Landesgrenzen schert, lohnt der
-Blick über den Tellerrand: In rund vier Autostunden erreichst du von NRW aus
+Der Grusel schert sich herrlich wenig um Landesgrenzen, deshalb lohnt der Blick
+über den Tellerrand: In rund vier Autostunden erreichst du von NRW aus
 das größte Halloween-Event des Kontinents und die vielleicht durchtriebenste
 Grusel-Innovation Europas. Nur liegen die zufällig in zwei verschiedenen
-Ländern. Dieser Guide sortiert dir die Saison **2026**: die großen
+Ländern. Hier steht, was die Saison **2026** zu bieten hat: die großen
 Horror-Nächte, die familientauglichen Varianten mit Sicherheitsnetz, die zwei
-Top-Parks, die bei dem ganzen Zirkus demonstrativ _nicht_ mitmachen, und ganz
-am Ende die Frage, die park.fan besser beantwortet als jede Pressemitteilung:
-Wann ist es am vollsten, und wann kommst du am entspanntesten durch?
+Top-Parks, die bei dem ganzen Zirkus demonstrativ _nicht_ mitmachen, und die
+Frage, die park.fan besser beantwortet als jede Pressemitteilung: Wann ist es
+am vollsten, und wann kommst du am entspanntesten durch?
 
 > **Kurz zu den Terminen:** Die Parks schrauben ihre Halloween-Programme über
 > den Sommer noch nach. Wir verlinken bei jedem Park die offizielle Event-Seite
@@ -183,8 +183,8 @@ Programm, Termine und Altersregeln: [traumatica.com](https://traumatica.com/en/)
 
 ### Walibi Holland: freiwillig für das eigene Elend bezahlen
 
-Und da ist es, das versprochene „woanders“: [Walibi Holland](ref:walibi-holland)
-in Biddinghuizen. Der Park betreibt eines der härtesten Halloween-Events der
+Das „woanders“ von eben liegt in Biddinghuizen:
+[Walibi Holland](ref:walibi-holland). Der Park betreibt eines der härtesten Halloween-Events der
 Niederlande und sortiert es so sauber nach Eskalationsstufen, dass sich
 Erstbesucher garantiert einmal in der falschen Schlange wiederfinden.
 
@@ -224,7 +224,7 @@ diesem Abend das Normalste, was dir passiert.
 
 ![Darsteller mit Schweißmaske und Lederschurz vor einer Containertür | Der Metzger wartet schon. Und nein, das ist kein Willkommenskomitee. | left](/blog/images/halloween-parks-2026/beispiel-metzger.jpg)
 
-Und dann der heimliche Star der Sammlung: **Slaughterhouse**, ein
+Der heimliche Star der Sammlung ist **Slaughterhouse**, ein
 Fleischverarbeitungsbetrieb, in dem du die Rolle des Rohmaterials übernimmst.
 Erst wirst du in einem Viehwaggon-artigen Warteraum „begutachtet“, dann in
 einen an der Deckenschiene hängenden Sitz geschnallt. Die Idee ist der
@@ -396,7 +396,7 @@ garantiert auch ein Wildschwein.
 
 ## Die Verweigerer: zwei Top-Parks, die Halloween aussitzen
 
-Und jetzt die charmanteste Kategorie überhaupt: die Parks, die bei dem ganzen
+Die charmanteste Kategorie überhaupt sind die Parks, die bei dem ganzen
 Nebel-und-Kettensägen-Zirkus einfach nicht mitmachen. Nicht aus Versehen,
 sondern aus Prinzip.
 
@@ -454,8 +454,8 @@ wer Kinder dabei hat, ist hier goldrichtig.
    Halloween-Abend ist kürzer als ein normaler Parktag, und jede Minute, die du
    _nicht_ in der Schlange stehst, ist eine Minute mehr Panik fürs Geld.
 
-Und damit zum Faktor, der über einen guten Halloween-Abend mehr entscheidet als
-jedes Line-up: **wann du kommst.** Halloween ist Hochsaison, und die Physik ist
+Über einen guten Halloween-Abend entscheidet am Ende mehr als jedes Line-up:
+**wann du kommst.** Halloween ist Hochsaison, und die Physik ist
 gnadenlos. Die Oktober-Wochenenden, allen voran in den **Herbstferien** und am
 31., sind die vollsten Tage des ganzen Herbstes. Unter der Woche und in den
 Randwochen der Saison ist es spürbar entspannter (und die Darsteller haben mehr
@@ -479,9 +479,9 @@ aus unserem KI-Crowd-Kalender an:
 
 ```
 
-Und wenn du wissen willst, wie sich so ein Park über den Oktober typischerweise
-füllt, nach Wochentag und Monat, aus echten Messdaten der letzten Saisons,
-liefert die Statistik das Muster gleich mit:
+Wie sich so ein Park über den Oktober typischerweise füllt, nach Wochentag und
+Monat, aus echten Messdaten der letzten Saisons, liefert die Statistik gleich
+mit:
 
 **Movie Park Germany, typische Wartezeiten nach Wochentag & Monat**
 

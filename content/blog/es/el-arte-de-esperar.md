@@ -58,13 +58,11 @@ perfección: la psicología de la percepción del tiempo y la matemática de la
 capacidad. Una decide cómo se _siente_ la espera. La otra, cuánto mide
 _realmente_ la cola.
 
-Y si has leído
-[nuestra historia de origen](/blog/un-cochecito-una-gondola-y-park-fan),
-imaginarás por qué el tema no me suelta: park.fan se inventó en una cola de
-Taron, por pura frustración ante una eternidad percibida. Este artículo es, en
-cierto modo, la autopsia de aquella tarde, la pregunta de qué me estaba pasando
-allí en realidad. Toca sumergirse en ambas disciplinas. Prometido: aparecen
-exactamente dos fórmulas, y las dos caben juntas en un posavasos.
+El tema no me suelta por una razón muy concreta. park.fan se inventó en una
+cola de Taron, por pura frustración ante una eternidad percibida ([la historia
+completa está aquí](/blog/un-cochecito-una-gondola-y-park-fan)). Qué me estaba
+pasando allí en realidad, quise saberlo después con exactitud. Entran en juego
+dos fórmulas, y las dos caben juntas en un posavasos.
 
 ## La psicología del tiempo: por qué los minutos se estiran
 
@@ -161,9 +159,8 @@ serpentea por el paisaje de Pandora y por cuevas con pinturas de los na'vi,
 después por un laboratorio de investigación abandonado, con un avatar de tamaño
 natural que flota en un tanque amniótico y respira de forma tan convincente que
 la gente se para con regularidad y bloquea la cola. Una cola que se atasca a sí
-misma porque es demasiado bonita: no cabe mayor reverencia. Después vienen
-directamente **dos salas de pre-show**, en las que te «escanean» y te
-«vinculan» con tu propio avatar.
+misma porque es demasiado bonita. Después vienen directamente **dos salas de
+pre-show**, en las que te «escanean» y te «vinculan» con tu propio avatar.
 
 ```gallery-widget folder=/blog/images/avatar-flight-of-passage heading="La cola en tres estaciones"
 
@@ -224,8 +221,8 @@ verdad la cabeza no mira el móvil cada diez segundos.
 
 Y aquí está además quizá el truco de capacidad más elegante de todos: la **fila
 de single rider**. Quien va solo y deja que lo coloquen en el asiento suelto
-que deja libre un grupo de cuatro no solo acorta drásticamente su propia
-espera, sino que ayuda al parque a llenar cada vagón hasta el borde. Cada
+que deja libre un grupo de cuatro acorta drásticamente su propia espera y de
+paso ayuda al parque a llenar cada vagón hasta el borde. Cada
 asiento que si no iría vacío es capacidad desperdiciada; la fila de single
 rider es la manera elegante de tapar esos huecos. Un caso raro en el que el
 interés propio y el rendimiento tiran exactamente en la misma dirección.
@@ -257,8 +254,8 @@ actualizamos los tiempos de espera cada minuto.
 
 ## Capacidad y rendimiento: el secreto matemático
 
-Hasta aquí la percepción. Ahora, la moneda dura de toda cola, el
-**rendimiento**: cuántas personas transporta realmente una atracción por hora.
+**Rendimiento** significa sencillamente cuántas personas transporta realmente
+una atracción por hora. Esa cifra decide lo larga que es la cola de verdad.
 
 ```glossary-widget slug=ride-capacity
 
@@ -348,8 +345,8 @@ bicicleta muy decidida) cuenta cada segundo en que el tren no está parado.
 
 ## La ley de Little: la fórmula detrás de cada panel de espera
 
-Y con esto llegamos a la fórmula que lo sostiene todo, uno de los resultados
-más elegantes de la teoría de colas. El profesor del MIT **John D. C. Little**
+La fórmula que ata ambas caras es uno de los resultados más elegantes de la
+teoría de colas. El profesor del MIT **John D. C. Little**
 demostró en 1961 la relación que hoy se llama
 [ley de Little](https://en.wikipedia.org/wiki/Little%27s_law):
 
@@ -375,9 +372,9 @@ esperas completamente distintas en dos días. Si hoy una atracción circula con
 dos trenes en lugar de tres, λ baja y W sube de inmediato, sin que haya ni un
 visitante más en el parque.
 
-Con lo que volvemos a aquel panel mentiroso. Sobre la cifra calculada con
-precisión suele añadirse un generoso margen de seguridad. No es solo
-descuido, es pura psicología. El panel tiene que hacer dos cosas contradictorias
+¿Y el panel de la entrada, ese que te miente? Sobre la cifra calculada con
+precisión suele añadirse allí un generoso margen de seguridad. No es descuido,
+es psicología. El panel tiene que hacer dos cosas contradictorias
 a la vez. Debe darte una base fiable para decidir, y no debe decepcionarte. Un
 panel que se queda corto produce a la salida un montón de gente que se siente
 estafada; uno que se pasa manda a unos pocos visitantes a otra parte pero deja
@@ -387,8 +384,8 @@ ganador. Regla del pico-final, recordemos: la experiencia termina mejor de lo
 esperado, y exactamente así queda archivada. O sea que el panel miente de
 verdad, pero miente a tu favor.
 
-Llegados aquí, permíteme hablar un momento desde la sala de máquinas, porque es
-justo aquí donde vive park.fan. Nuestros tiempos de espera en vivo te enseñan
+Permíteme hablar un momento desde la sala de máquinas, porque es justo aquí
+donde vive park.fan. Nuestros tiempos de espera en vivo te enseñan
 cada minuto qué están haciendo realmente L y λ, y cuando nuestro modelo de IA
 predice tiempos de espera hasta 365 días por adelantado, en el fondo no modela
 otra cosa que esas dos magnitudes: la **demanda** (¿cuánta gente quiere subir
@@ -399,15 +396,14 @@ qué frecuencia aciertan nuestras predicciones está en la
 
 ## Por qué Peter Pan's Flight siempre «se desmadra»
 
-Con lo que llegamos a uno de los enigmas más viejos del mundo de los parques:
-¿por qué precisamente **Peter Pan's Flight**, un dark ride tranquilo de factura
+¿Por qué precisamente **Peter Pan's Flight**, un dark ride tranquilo de factura
 de 1955, sin montaña rusa, sin emoción fuerte, marca de forma casi permanente
 45 minutos o más en el panel en prácticamente todos los parques Disney del
 mundo, desde
 [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park?bare) hasta
 Orlando?
 
-La respuesta está entera en la matemática de arriba:
+Hay tres razones, y las tres son aritmética:
 
 1. **Los barcos piratas no son transporte de masas.**
    [Peter Pan's Flight en París](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight?bare)
@@ -425,9 +421,9 @@ La respuesta está entera en la matemática de arriba:
    adicional. Solo puede encoger de nuevo cuando llega menos gente de la que la
    atracción despacha. Con un techo de capacidad tan bajo, ese punto no se
    alcanza a mediodía, sino más o menos cuando aparca el segundo autocar.
-3. **La cola como sello de calidad.** Y aquí vuelve a entrar la psicología: los
-   visitantes leen una cola larga como prueba de que la atracción tiene que
-   merecer la pena. La misma lógica con la que en vacaciones elegimos el
+3. **La cola como sello de calidad.** Los visitantes leen una cola larga como
+   prueba de que la atracción tiene que merecer la pena. La misma lógica con la
+   que en vacaciones elegimos el
    restaurante con la terraza más llena. Así que todos se ponen con más ganas
    todavía, y la espera se convierte en una profecía autocumplida.
 
@@ -447,12 +443,12 @@ parques europeos frente a los gigantes de Orlando.
 [Magic Kingdom](ref:disney-magic-kingdom?bare) es el parque de atracciones más
 visitado del mundo, y tanto Disney como Universal atraen visitantes de todos
 los continentes. A eso se suma un factor que Europa apenas conoce con esta
-dureza: colarse pagando. Lightning Lane y Express Pass venden parte de la
-capacidad a visitantes que pagan, y cada viaje exprés le falta a la cola
-standby. El resultado: cabezas de cartel como
+dureza: allí uno puede comprarse el paso por delante de la cola. Lightning Lane
+y Express Pass venden parte de la capacidad a visitantes que pagan, y cada
+viaje exprés le falta a la cola standby. Cabezas de cartel como
 [Avatar Flight of Passage](ref:disney-animal-kingdom/avatar-flight-of-passage?bare)
-marcan con regularidad entre 60 y 120 minutos pese a una capacidad horaria
-enorme.
+marcan por eso con regularidad entre 60 y 120 minutos pese a una capacidad
+horaria enorme.
 
 **El [Europa-Park](ref:europa-park?bare) es el contramodelo.** El parque más
 grande de Alemania, tras Disneyland Paris el más visitado de Europa, reparte
@@ -470,7 +466,7 @@ puñado de cabezas de cartel, y cuando un sábado de vacaciones todo el mundo
 quiere [Taron](ref:phantasialand/taron?bare) (saludos, por experiencia yo soy
 uno de ellos), la saturación llega igual de rápido que con Peter Pan en París.
 Un público pequeño no protege de las colas largas cuando hay pocas atracciones
-entre las que repartir la demanda. La matemática es la misma, solo cambia la escala.
+entre las que repartir la demanda.
 
 Las cifras casi dan risa. Taron despacha unos **1.200 visitantes por hora**, es
 decir, casi exactamente los mismos que Peter Pan's Flight en París. La
@@ -507,8 +503,8 @@ y la curva de temporada a lo largo del año.
 
 ```
 
-Dos parques, dos caligrafías de espera completamente distintas. Y precisamente
-de esos patrones aprende nuestro modelo cuándo merece la pena una visita.
+Precisamente de esos patrones aprende nuestro modelo cuándo merece la pena una
+visita.
 
 ## Pegarse al de delante no sirve de nada, y encima frena la cola
 
@@ -540,23 +536,22 @@ se pone en marcha perceptiblemente más tarde. Cada vez que tu cola da un tirón
 hacia delante se evapora ese mismo desfase de reacción. Veinte ciclos de tirón
 por sesenta personas esperando: ahí se acumula una cantidad asombrosa de nada.
 
-La consecuencia sorprendente: si sencillamente todos siguieran andando de forma
-uniforme y lenta en lugar de parar, pegarse y volver a parar, la cola avanzaría
-con más fluidez y de media más rápido. Menos empujones, más flujo. La
+Si sencillamente todos siguieran andando de forma uniforme y lenta en lugar de
+parar, pegarse y volver a parar, la cola avanzaría con más fluidez y de media
+más rápido. Menos empujones, más flujo. La
 investigación del tráfico lo conoce como efecto «faster-is-slower»: quien
 aprieta más en un estrechamiento baja el rendimiento, porque todos se
 encajonan, un resultado que Dirk Helbing demostró en _Nature_ en el año 2000.
 La única condición: hay que quedarse por debajo de la densidad crítica. Y justo
 por eso mantener la distancia ayuda más que pegarse.
 
-Y ahora el remate: exactamente este problema lo resolvieron los parques hace
-mucho en el lado de los vehículos. El omnimover de la Haunted Mansion y la
-rolling station de YOY no paran nunca: sin parada, sin tiempo perdido al
-arrancar, flujo máximo. Solo los visitantes en la cola de delante son el último
-sistema de parar y arrancar que todavía nadie ha eliminado por diseño. Hasta
-entonces, la palanca más eficaz sigue siendo la que ya tienes en la mano: no
-pegarte más, sino venir de entrada un día en el que la cola no entre en atasco.
-Cuál es ese día te lo dice el calendario de los mejores días más abajo.
+En el lado de los vehículos, los parques resolvieron este problema hace mucho.
+El omnimover de la Haunted Mansion y la rolling station de YOY no paran nunca:
+sin parada, sin tiempo perdido al arrancar, flujo máximo. Solo los visitantes
+en la cola de delante son el último sistema de parar y arrancar que todavía
+nadie ha eliminado por diseño. Hasta entonces, la palanca que más ayuda es la
+que ya tienes en la mano: venir un día en el que la cola no entre en atasco.
+Cuál es ese día te lo dice el calendario de los mejores días.
 
 ## Soluciones modernas: colas virtuales y estaciones dobles
 
@@ -606,17 +601,16 @@ sus vueltas sin rechistar desde los años sesenta y nunca pide un descanso.
 
 ## Conclusión: el panel cuenta solo la mitad de la historia
 
-La próxima cola de 60 minutos no se acortará por este artículo. Pero ahora la
-lees de otra manera, y precisamente esa lectura es el núcleo de park.fan. Cada
-función de la página responde a una de las preguntas de arriba:
+La próxima cola de 60 minutos no se acortará por ello. Pero se lee de otra
+manera. Quedan tres preguntas, y park.fan tiene respuesta para cada una:
 
 - **¿Cuánto mide _realmente_ la cola, justo ahora?** Para eso están nuestros
   **tiempos de espera en vivo**: más de 200 parques, 7.000 atracciones, cada
   minuto. La ley de Little en tiempo real, sin que tengas que contar tú mismo a
   las 640 personas de delante.
 - **¿Eso es mucho o normal?** Lo revelan las **estadísticas de largo plazo** de
-  cada atracción, porque 45 minutos son, como hemos visto, según el parque una
-  molestia o un premio de lotería.
+  cada atracción, porque 45 minutos son, según el parque, una molestia o un
+  premio de lotería.
 - **¿Y tengo que hacer cola siquiera?** Eso se decide casi siempre ya al elegir
   el día. Para eso está el **calendario de los mejores días de visita**, con
   predicciones hasta 365 días por adelantado, por ejemplo para el Europa-Park:
