@@ -751,9 +751,8 @@ export interface RideProfile {
   /** As the park publishes it; may legitimately differ from `elements`. */
   inversions?: number | null;
   /**
-   * Measured facts imported from RCDB. Null for rides we hold no RCDB id for,
-   * and every field inside is independently nullable — RCDB fills in what it
-   * knows, which for a family coaster is far less than for a headliner.
+   * Measurements. Null for rides we hold no measurement of at all, and every
+   * field inside is independently nullable — read each one defensively.
    */
   stats?: RideStats | null;
 }
@@ -761,37 +760,27 @@ export interface RideProfile {
 /**
  * A ride's measurements, always metric — the display unit is the visitor's
  * (see `lib/utils/temperature.ts`: the C/F choice drives every secondary unit).
+ * Merged field by field from a hand-curated seed and the Wikidata (CC0) import,
+ * curated winning. Every field is independently nullable: a ride is listed the
+ * moment one number is known, not once all four are.
  */
 export interface RideStats {
-  /** Track length in metres. */
-  lengthM: number | null;
-  /** Highest point in metres. */
-  heightM: number | null;
-  /** Largest single drop in metres. */
-  dropM: number | null;
-  /** Total elevation change in metres. */
-  elevationM: number | null;
   /** Top speed in km/h. */
   topSpeedKmh: number | null;
+  /** Highest point in metres. */
+  heightM: number | null;
+  /** Track length in metres. */
+  lengthM: number | null;
   /** Ride duration in seconds. */
   durationSeconds: number | null;
-  /** Maximum sustained g-force. */
-  gForce: number | null;
-  /** Steepest descent angle in degrees. */
-  verticalAngleDeg: number | null;
-  /** Inversions as RCDB counts them (the curated `inversions` wins on the page). */
-  inversions: number | null;
-  /** Theoretical throughput in riders per hour. */
-  capacityPerHour: number | null;
-  /** Riders per train, or per car on single-car trains. */
-  ridersPerTrain: number | null;
-  designer: string | null;
-  builder: string | null;
-  trainManufacturer: string | null;
-  restraints: string | null;
-  source: 'rcdb';
-  /** The RCDB id the numbers came from. */
-  sourceId: number;
+  /** Which side of the merge the surviving values came from. */
+  source: 'curated' | 'wikidata' | 'mixed';
+  /**
+   * Wikidata entity id, e.g. "Q319081" — present **only** when an imported
+   * value survived curation, so a `curated` ride carries none. Optional for
+   * that reason: attribute nothing without one.
+   */
+  sourceId?: string | null;
 }
 
 /** One ride in the glossary → rides direction (`/v1/glossary/terms/:id/attractions`). */

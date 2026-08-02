@@ -4,6 +4,31 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: the ride measurements credit the right source again
+
+The measurement display shipped against an importer that read the roller-coaster
+database directly. That import is gone — their terms permit the link, not the
+data — and the API now merges a hand-curated seed with a **Wikidata (CC0)**
+import, curated values winning.
+
+So `stats.source` is one of `curated`, `wikidata` or `mixed`, and `sourceId`
+carries a Wikidata entity id **only when an imported value survived** the merge.
+The display assumed a single source with an id always present, which in
+production it never was: 26 of the 27 rides that currently state a measurement
+are `curated` with no id at all, so every one of them rendered "Measurements:
+RCDB" over numbers RCDB never supplied, linking to `rcdb.com/undefined.htm`.
+
+- **The attribution follows the data.** A ride whose numbers survived the import
+  says "Measurements: Wikidata" and links to the entity they are stated on;
+  a purely curated ride shows no foreign attribution, because there is none to
+  give.
+- **`RideStats` matches what the API sends** — the three-value `source`, and
+  `sourceId` optional rather than required, so the missing-id case is a type
+  error instead of a broken link.
+- **The grid drops the rows nothing can fill** — drop, elevation, steepest
+  angle, g-force, capacity, riders per train, restraints, designer, builder,
+  train builder — along with their translation keys in all six locales.
+
 ## Unreleased – cut the Umami event bill, and fix what "visitor" counts
 
 The Hobby plan allows 100k events/month; early August was tracking toward

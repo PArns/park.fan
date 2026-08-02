@@ -13,16 +13,7 @@ import {
   Gauge,
   MoveVertical,
   MoveHorizontal,
-  TrendingDown,
-  Mountain,
-  Triangle,
   Timer,
-  Activity,
-  Users,
-  TrainFront,
-  ShieldCheck,
-  DraftingCompass,
-  Hammer,
   ExternalLink,
   type LucideIcon,
 } from 'lucide-react';
@@ -45,8 +36,8 @@ interface RideProfileSectionProps {
 /**
  * One labelled fact in the profile grid.
  *
- * Extracted because the grid went from three entries to seventeen: the same
- * `dt`/`dd` pair repeated that many times is a place for one of them to drift.
+ * Extracted when the grid grew past the three curated facts: the same `dt`/`dd`
+ * pair repeated for every measurement is a place for one of them to drift.
  * `numeric` turns on tabular figures so a column of measurements lines up.
  */
 function Fact({
@@ -153,9 +144,9 @@ export async function RideProfileSection({ profile, locale }: RideProfileSection
               </Fact>
             )}
 
-            {/* Measured facts from RCDB. Every one is independently nullable —
-                RCDB knows far more about a headliner than about a family
-                coaster — so each renders only when it has a number. */}
+            {/* Measurements from Wikidata. Each is independently nullable —
+                Wikidata states what somebody entered, which for most rides is
+                nothing — so each renders only when it has a number. */}
             {stats?.topSpeedKmh != null && (
               <Fact icon={Gauge} label={t('topSpeed')} numeric>
                 <Speed kmh={stats.topSpeedKmh} />
@@ -166,24 +157,9 @@ export async function RideProfileSection({ profile, locale }: RideProfileSection
                 <TrackLength meters={stats.heightM} />
               </Fact>
             )}
-            {stats?.dropM != null && (
-              <Fact icon={TrendingDown} label={t('drop')} numeric>
-                <TrackLength meters={stats.dropM} />
-              </Fact>
-            )}
             {stats?.lengthM != null && (
               <Fact icon={MoveHorizontal} label={t('length')} numeric>
                 <TrackLength meters={stats.lengthM} />
-              </Fact>
-            )}
-            {stats?.elevationM != null && (
-              <Fact icon={Mountain} label={t('elevation')} numeric>
-                <TrackLength meters={stats.elevationM} />
-              </Fact>
-            )}
-            {stats?.verticalAngleDeg != null && (
-              <Fact icon={Triangle} label={t('verticalAngle')} numeric>
-                {stats.verticalAngleDeg}°
               </Fact>
             )}
             {stats?.durationSeconds != null && (
@@ -191,50 +167,18 @@ export async function RideProfileSection({ profile, locale }: RideProfileSection
                 {formatDuration(stats.durationSeconds)}
               </Fact>
             )}
-            {stats?.gForce != null && (
-              <Fact icon={Activity} label={t('gForce')} numeric>
-                {stats.gForce} g
-              </Fact>
-            )}
-            {stats?.capacityPerHour != null && (
-              <Fact icon={Users} label={t('capacity')} numeric>
-                {t('perHour', { count: stats.capacityPerHour })}
-              </Fact>
-            )}
-            {stats?.ridersPerTrain != null && (
-              <Fact icon={TrainFront} label={t('ridersPerTrain')} numeric>
-                {stats.ridersPerTrain}
-              </Fact>
-            )}
-            {stats?.restraints && (
-              <Fact icon={ShieldCheck} label={t('restraints')}>
-                {stats.restraints}
-              </Fact>
-            )}
-            {stats?.designer && (
-              <Fact icon={DraftingCompass} label={t('designer')}>
-                {stats.designer}
-              </Fact>
-            )}
-            {stats?.builder && (
-              <Fact icon={Hammer} label={t('builder')}>
-                {stats.builder}
-              </Fact>
-            )}
-            {stats?.trainManufacturer && (
-              <Fact icon={Wrench} label={t('trainManufacturer')}>
-                {stats.trainManufacturer}
-              </Fact>
-            )}
           </dl>
         )}
 
-        {/* Whose numbers these are. Measurements we did not take ourselves say
-            where they came from, and the link goes to the exact record. */}
-        {stats && (
+        {/* Whose numbers these are. Only the imported ones owe an attribution,
+            and `sourceId` is exactly the flag for that: the API sets it when a
+            Wikidata value survived curation and omits it when none did. Keyed
+            off the id rather than off `source` so there is no way to render the
+            credit without the entity it is supposed to link to. */}
+        {stats?.sourceId && (
           <p className="text-muted-foreground text-xs">
             <a
-              href={`https://rcdb.com/${stats.sourceId}.htm`}
+              href={`https://www.wikidata.org/wiki/${stats.sourceId}`}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-foreground inline-flex items-center gap-1 transition-colors"
