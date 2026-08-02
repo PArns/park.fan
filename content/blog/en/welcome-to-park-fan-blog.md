@@ -4,7 +4,6 @@ translationKey: welcome-to-park-fan-blog
 date: '2026-07-06'
 author: patrick
 mode: published
-featured: true
 excerpt: >-
   A stroller by the Märchensee, a gondola ride through “1001 Nacht”, and thirty
   years later sixty minutes in the Taron queue wondering whether it was worth
@@ -72,7 +71,7 @@ that has never let go since.
 
 ## “1001 Nacht”, the rides that stay with you
 
-And then there was the **“1001 Nacht”** gondola ride, running from 1970 and the
+Then there was the **“1001 Nacht”** gondola ride, running from 1970 and the
 first stationary dark ride in Germany. By the late eighties it was a fixed part
 of every family visit. My parents and me in one of those gondolas, eight metres
 above the ground, on a journey that went a little deeper into another world with
@@ -86,7 +85,7 @@ man who glided through those worlds next to me.
 
 ![Roller coaster silhouette at Movie Park Germany at night, lit in purple and blue | Movie Park Germany after dark. Lethal Weapon Pursuit stood here until 2006. | left](/images/parks/movie-park-germany/background.jpg)
 
-And whenever my father was away on the road as a lorry driver, my mother simply
+Whenever my father was away on the road as a lorry driver, my mother simply
 took the wheel. She was the one I discovered a lot of other parks with, above
 all [Movie Park](ref:movie-park-germany?bare), back then still Warner Bros.
 Movie World. That's where I rode my first ever roller coaster,
@@ -99,9 +98,8 @@ speaking, my mother is to blame for everything that followed.
 If this love of theme parks is an inheritance, then it came from both parents.
 Dad contributed the fairy tales, Mum the roller coasters.
 
-And when somebody asks me why park.fan is free and will stay that way: this
-place gave me memories that shaped my life. This is my way of giving something
-back.
+People do ask me why park.fan is free and will stay that way. This place gave
+me memories that shaped my life. This is my way of giving something back.
 
 ## On 5000-point mice and a 10,000-point legend
 
@@ -135,8 +133,7 @@ Most Immersive Theme Park”.
 
 ![Animatronic velociraptor head in the red-lit raptor paddock of the VelociCoaster | Islands of Adventure: the raptor in the paddock, close enough to touch. | right](/blog/images/velocicoaster/02-raptor-paddock.jpg)
 
-And then there was that one big item on the life list that still had no tick
-next to it. In May 2026 we finally flew to Orlando: **Walt Disney World,
+That left one big item on the life list with no tick next to it. In May 2026 we finally flew to Orlando: **Walt Disney World,
 Universal and SeaWorld**, the full programme, the once-in-a-lifetime trip I'd
 dreamed about since childhood. There's a strange kind of beauty in the boy from
 the Märchensee standing in front of Cinderella Castle at the
@@ -289,14 +286,13 @@ forecasts hold up to what they promise?
 **News.** Short and to the point. If something happens, it goes here, faster
 than you can dismiss a cookie banner.
 
-And the best part: the posts are alive. Charts, maps and wait times pull
-straight from park.fan, so what you read is what the park is actually doing at
-this moment. The two lead actors of this story, live:
+The posts are alive, too. Charts, maps and wait times pull straight from
+park.fan, so what you read is what the park is actually doing at this moment. The two lead actors of this story, live:
 
 [Taron](ref:phantasialand/taron?full)
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?full)
 
-And because weather is the factor that tips a park day fastest, here's the
+Because weather is the factor that tips a park day fastest, here's the
 situation right now at the [Phantasialand](ref:phantasialand?bare) entrance:
 
 ```weather-widget slug=phantasialand

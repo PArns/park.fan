@@ -247,9 +247,8 @@ do we guests.
 
 ## Phantasialand wait times: when they're shortest
 
-This is the most important paragraph in the whole article, so feel free to read
-it twice: **at Phantasialand, your choice of day decides your wait times, more
-than any trick inside the park.** A gray Tuesday in November can be emptier than
+**At Phantasialand, your choice of day decides your wait times, more than any
+trick inside the park.** A gray Tuesday in November can be emptier than
 any Saturday in July, and an NRW school-holiday day with a sunny forecast is
 reliably hell made of people who all had the same good idea you did.
 
@@ -320,7 +319,7 @@ during Wintertraum, the Quick Passes are often sold out by midday on weekends.**
 Anyone who genuinely needs one is there early or goes without.
 
 My opinion after many, many visits: **on a green day you simply don't need it.**
-If you're there early and follow the order below, you'll ride the headliners with
+If you're there early and ride in a sensible order, you'll take the headliners with
 short waits, every euro of Quick Pass is wasted there. On a deep-red holiday
 Saturday, by contrast, it can save the day. Before buying, just take a quick look
 at the live wait times: if the numbers are low, save your money and treat
@@ -362,7 +361,7 @@ entirely in your own hands.
 
 ## Food: the park's secret star
 
-And now to something I wouldn't single out at any other park like this:
+There is no other park where I would single this out:
 Phantasialand is worth the trip for the **food**, too. Where at many parks “food”
 is synonymous with lukewarm fries at outrageous prices, here the dining is a firm
 part of the experience, with a care you otherwise only know from proper
@@ -392,7 +391,7 @@ And the most important food tip is the same as for queuing: **counter-cyclically
 Eat around 11:30 a.m. or after 2:30 p.m., that way you ride the short lines during peak
 hours and sit in peace in the restaurant during ride time. Two birds, one stone,
 one satisfied stomach. (And if you come in winter, a treat all its own is waiting
-for you in the Wintertraum section further down.)
+for you in the Wintertraum.)
 
 ## The small things I keep coming back for
 
@@ -443,7 +442,7 @@ One important note, because many people know it differently from
 **general early park entry**. The concrete perk lies elsewhere, guests of the
 **Charles Lindbergh** get **two Fast Passes for [F.L.Y.](ref:phantasialand/fly)**
 per person. For precisely the ride with the most sluggish dispatch, that's worth
-its weight in gold, and, as mentioned above, alongside the Quick Pass Ultimate
+its weight in gold, and alongside the Quick Pass Ultimate
 it's the only comfortable way onto that flyer.
 
 ## Getting there & parking
@@ -491,7 +490,7 @@ gets dark early, and racing through the illuminated Klugheim then, when the
 basalt columns are nothing but shadows against the night sky, is
 [Taron](ref:phantasialand/taron) at its most magical. The catch: that's exactly
 when the ride is most in demand. Buy the **Quick Pass early in the day** (on
-weekends they're gone by midday, as mentioned above), and then ride Taron in the
+weekends they're gone by midday), and then ride Taron in the
 dark as often as you can. That alone makes the winter visit worth it.
 
 **The 2026/27 dates:** from **14 November 2026 to 24 January 2027**, daily from

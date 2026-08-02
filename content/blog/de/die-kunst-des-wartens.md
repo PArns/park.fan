@@ -59,13 +59,12 @@ Parks perfekt ineinandergreifen: der Psychologie der Zeitwahrnehmung und der
 Mathematik der Kapazität. Die eine entscheidet, wie sich das Warten _anfühlt_.
 Die andere, wie lang die Schlange _wirklich_ ist.
 
-Und wenn du [unsere Gründungsgeschichte](/blog/willkommen-im-park-fan-blog)
-gelesen hast, ahnst du, warum mich das Thema nicht loslässt: park.fan ist in
-einer Taron-Schlange erfunden worden, aus purem Frust über eine gefühlte
-Ewigkeit. Dieser Artikel ist gewissermaßen die Obduktion dieses Nachmittags,
-die Frage, was da eigentlich mit mir passiert ist. Zeit für einen Deep Dive in
-beide Disziplinen. Versprochen: Es kommen genau zwei Formeln vor, und beide
-passen zusammen auf einen Bierdeckel.
+Mich lässt das Thema aus einem sehr konkreten Grund nicht los. park.fan ist in
+einer Taron-Schlange entstanden, aus purem Frust über eine gefühlte Ewigkeit
+([die ganze Geschichte steht hier](/blog/willkommen-im-park-fan-blog)). Was an
+dem Nachmittag eigentlich mit mir passiert war, wollte ich danach genau wissen.
+Es kommen dabei zwei Formeln vor, und beide passen zusammen auf einen
+Bierdeckel.
 
 ## Die Psychologie der Zeit: Warum sich Minuten dehnen
 
@@ -162,9 +161,9 @@ Landschaft Pandoras und Höhlen mit Malereien der Na'vi, dann durch ein
 verlassenes Forschungslabor, inklusive eines lebensgroßen Avatars, der in einem
 Amnio-Tank schwebt und so überzeugend atmet, dass regelmäßig Menschen stehen
 bleiben und die Schlange aufhalten. Eine Warteschlange, die sich selbst
-verstopft, weil sie zu gut aussieht: ein größeres Kompliment gibt es nicht. Danach
-folgen gleich **zwei Pre-Show-Räume**, in denen du „gescannt“ und mit deinem
-eigenen Avatar „verlinkt“ wirst.
+verstopft, weil sie zu gut aussieht. Danach folgen gleich **zwei
+Pre-Show-Räume**, in denen du „gescannt“ und mit deinem eigenen Avatar
+„verlinkt“ wirst.
 
 ```gallery-widget folder=/blog/images/avatar-flight-of-passage heading="Die Warteschlange in drei Stationen"
 
@@ -225,9 +224,9 @@ den Kopf gedreht hat, schaut nicht alle zehn Sekunden aufs Handy.
 
 Und dann gibt es hier noch den vielleicht elegantesten Kapazitäts-Trick
 überhaupt: die **Single-Rider-Spur**. Wer allein fährt und sich auf den freien
-Einzelplatz setzen lässt, den eine Vierergruppe übrig lässt, kürzt nicht nur
-die eigene Wartezeit drastisch ab, sondern hilft dem Park, jeden Wagen randvoll
-zu machen. Jeder sonst leere Sitz ist verschenkte Kapazität; die
+Einzelplatz setzen lässt, den eine Vierergruppe übrig lässt, kürzt die eigene
+Wartezeit drastisch ab und hilft nebenbei dem Park, jeden Wagen randvoll zu
+machen. Jeder sonst leere Sitz ist verschenkte Kapazität; die
 Single-Rider-Spur ist die elegante Art, diese Lücken zu stopfen. Ein seltener
 Fall, in dem Eigennutz und Durchsatz exakt in die gleiche Richtung ziehen.
 
@@ -257,9 +256,9 @@ Wartezeiten im Minutentakt.
 
 ## Kapazität und Durchsatz: Das mathematische Geheimnis
 
-So viel zur Wahrnehmung. Jetzt zur harten Währung jeder Warteschlange, dem
-**Durchsatz**: wie viele Menschen eine Attraktion pro Stunde tatsächlich
-befördert.
+**Durchsatz** heißt schlicht: wie viele Menschen eine Attraktion pro Stunde
+tatsächlich befördert. Diese Zahl entscheidet, wie lang die Schlange am Ende
+wirklich ist.
 
 ```glossary-widget slug=ride-capacity
 
@@ -350,7 +349,7 @@ entschlossenen Fahrrad) zählt eben jede Sekunde, die der Zug nicht steht.
 
 ## Little's Law: Die Formel hinter jeder Wartezeit-Anzeige
 
-Und damit zu der Formel, die alles zusammenhält, einem der elegantesten
+Die Formel, die beide Seiten zusammenbindet, ist eines der elegantesten
 Ergebnisse der Warteschlangentheorie. Der MIT-Professor **John D. C. Little**
 bewies 1961 den Zusammenhang, der heute
 [Little's Law](https://en.wikipedia.org/wiki/Little%27s_law) heißt:
@@ -376,9 +375,9 @@ verschiedene Wartezeiten bedeuten kann. Fährt eine Bahn heute mit zwei statt
 drei Zügen, sinkt λ, und W steigt sofort, ohne dass auch nur ein Gast mehr im
 Park wäre.
 
-Womit wir bei der lügenden Anzeige von vorhin wären: Auf die exakt errechnete
-Zahl kommt gern noch ein großzügiger Sicherheitsaufschlag. Das ist nicht nur
-Schlamperei, sondern pure Psychologie. Die Anzeige muss nämlich zwei Dinge
+Und die Anzeige am Eingang, die einen anlügt? Auf die exakt errechnete Zahl
+kommt dort gern noch ein großzügiger Sicherheitsaufschlag. Das ist keine
+Schlamperei, das ist Psychologie. Die Anzeige muss nämlich zwei Dinge
 gleichzeitig leisten, die sich widersprechen. Sie soll dir eine belastbare
 Entscheidungsgrundlage geben, und sie soll dich nicht enttäuschen. Eine Anzeige,
 die zu niedrig schätzt, produziert am Ausgang lauter Menschen, die sich
@@ -389,8 +388,8 @@ Station als Gewinner. Peak-End-Regel, wir erinnern uns:
 Das Erlebnis endet besser als erwartet, und genau so wird es abgespeichert. Die
 Anzeige lügt also tatsächlich, aber sie lügt für dich.
 
-An dieser Stelle darf ich kurz aus dem Maschinenraum plaudern, denn genau hier
-lebt park.fan. Unsere Live-Wartezeiten zeigen dir im Minutentakt, was L und λ
+Kurz aus dem Maschinenraum, denn genau hier lebt park.fan. Unsere
+Live-Wartezeiten zeigen dir im Minutentakt, was L und λ
 gerade wirklich tun, und wenn unser KI-Modell Wartezeiten bis zu 365 Tage im
 Voraus prognostiziert, modelliert es im Kern nichts anderes als diese beiden
 Größen: **Nachfrage** (wie viele Menschen wollen heute zu dieser Bahn?) und
@@ -400,14 +399,13 @@ Realität treffen, steht auf der [Fancast-Seite](/fancast).
 
 ## Warum Peter Pan's Flight immer „eskaliert“
 
-Womit wir bei einem der ältesten Rätsel der Parkwelt wären: Warum hat
-ausgerechnet **Peter Pan's Flight**, ein gemütlicher Dark Ride von
+Warum hat ausgerechnet **Peter Pan's Flight**, ein gemütlicher Dark Ride von
 1955er-Bauart, keine Achterbahn, kein Thrill, in praktisch jedem Disney-Park
 der Welt, vom
 [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park?bare) bis
 nach Orlando, quasi permanent 45+ Minuten auf der Anzeige?
 
-Die Antwort steckt komplett in der Mathematik von oben:
+Dafür gibt es drei Gründe, und alle drei sind Rechnerei:
 
 1. **Piratenschiffe sind keine Massentransportmittel.**
    [Peter Pan's Flight in Paris](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight?bare)
@@ -426,11 +424,11 @@ Die Antwort steckt komplett in der Mathematik von oben:
    ankommen, als die Bahn wegschafft. Bei einer so niedrigen Kapazitätsgrenze
    ist dieser Punkt nicht mittags erreicht, sondern ungefähr dann, wenn der
    zweite Reisebus vorfährt.
-3. **Die Schlange als Qualitätssiegel.** Und jetzt kommt die Psychologie zurück
-   ins Spiel: Besucher lesen eine lange Schlange als Beweis, dass sich die
-   Fahrt lohnen muss. Dieselbe Logik, mit der wir uns am Urlaubsort ins
-   Restaurant mit der vollsten Terrasse setzen. Also stellen sich alle erst
-   recht an, und die Wartezeit wird zur selbsterfüllenden Prophezeiung.
+3. **Die Schlange als Qualitätssiegel.** Besucher lesen eine lange Schlange als
+   Beweis, dass sich die Fahrt lohnen muss. Dieselbe Logik, mit der wir uns am
+   Urlaubsort ins Restaurant mit der vollsten Terrasse setzen. Also stellen
+   sich alle erst recht an, und die Wartezeit wird zur selbsterfüllenden
+   Prophezeiung.
 
 Das Phänomen ist übrigens weltweit messbar. Hier die Live-Wartezeiten der
 Orlando-Version im meistbesuchten Park der Welt, direkt aus unseren Daten:
@@ -446,12 +444,13 @@ große Parks gegen die Orlando-Giganten.
 **Orlando spielt in einer eigenen Nachfrage-Liga.** Das
 [Magic Kingdom](ref:disney-magic-kingdom?bare) ist der meistbesuchte Freizeitpark
 der Welt, und Disney wie Universal ziehen Gäste von allen Kontinenten an. Dazu
-kommt ein Faktor, den Europa in dieser Härte kaum kennt: bezahltes
-Vordrängeln. Lightning Lane und Express Pass verkaufen einen Teil der Kapazität
-an zahlende Gäste, und jede Express-Fahrt fehlt der Standby-Schlange. Das
-Ergebnis: Headliner wie
+kommt ein Faktor, den Europa in dieser Härte kaum kennt: Man kann sich dort an
+der Schlange vorbeikaufen. Lightning Lane und Express Pass verkaufen einen Teil
+der Kapazität an zahlende Gäste, und jede Express-Fahrt fehlt der
+Standby-Schlange. Headliner wie
 [Avatar Flight of Passage](ref:disney-animal-kingdom/avatar-flight-of-passage?bare)
-stehen trotz massiver stündlicher Kapazität regelmäßig bei 60 bis 120 Minuten.
+stehen deshalb trotz massiver stündlicher Kapazität regelmäßig bei 60 bis 120
+Minuten.
 
 **Der [Europa-Park](ref:europa-park?bare) ist das Gegenmodell.** Deutschlands
 größter Park, nach Disneyland Paris der meistbesuchte Europas, verteilt seine
@@ -469,8 +468,8 @@ auf eine Handvoll Headliner, und wenn an einem Ferien-Samstag alle zu
 [Taron](ref:phantasialand/taron?bare) wollen (Grüße gehen raus, ich bin
 erfahrungsgemäß einer davon), ist die Sättigung genauso schnell erreicht wie
 bei Peter Pan in Paris. Kleines Publikum schützt eben nicht vor langen
-Schlangen, wenn zu wenige Attraktionen den Andrang gleichzeitig auffangen können. Die Mathematik
-ist dieselbe, nur der Maßstab ist kleiner.
+Schlangen, wenn zu wenige Attraktionen den Andrang gleichzeitig auffangen
+können.
 
 Die Zahlen dazu sind fast schon komisch. Taron schafft rund **1.200 Gäste pro
 Stunde**, also ziemlich genau so viele wie Peter Pan's Flight in Paris. Der
@@ -479,9 +478,9 @@ drumherum verteilen kann. In Paris steht Peter Pan zwischen Dutzenden
 Alternativen. In Brühl hat an einem Ferien-Samstag ein erheblicher Teil des
 Parks gleichzeitig dieselbe eine Bahn im Kopf. Und Voltron im Europa-Park liegt
 mit 1.600 pro Stunde nur ein Drittel darüber, hält aber die Schlange deutlich
-kürzer, weil zwölf andere Achterbahnen nebenan Nachfrage abziehen. Kapazität
-allein sagt eben wenig; entscheidend ist das Verhältnis zu allem, was sonst
-noch offen hat.
+kürzer, weil zwölf andere Achterbahnen nebenan Nachfrage abziehen. Eine
+Kapazitätszahl allein sagt also wenig. Entscheidend ist ihr Verhältnis zu
+allem, was sonst noch offen hat.
 
 Genau diese Profile sind der Grund, warum jede Parkseite auf park.fan neben den
 Live-Wartezeiten auch die Langzeit-Statistiken zeigt. Denn „voll“ ist relativ:
@@ -506,8 +505,7 @@ Minuten und die Saison-Kurve über das Jahr aussehen.
 
 ```
 
-Zwei Parks, zwei völlig verschiedene Wartezeit-Handschriften. Und genau solche
-Muster sind es, aus denen unser Modell lernt, wann sich ein Besuch lohnt.
+Aus genau solchen Mustern lernt unser Modell, wann sich ein Besuch lohnt.
 
 ## Aufrücken bringt nichts, und bremst die Schlange sogar aus
 
@@ -539,24 +537,22 @@ erst spürbar später an. Jedes Mal, wenn deine Schlange anruckt, verpufft
 dieselbe gestaffelte Reaktionszeit. Zwanzig Ruck-Zyklen, mal sechzig Wartende,
 da summiert sich erstaunlich viel Nichts.
 
-Die verblüffende Konsequenz: Würden einfach alle gleichmäßig und langsam
-weitergehen, statt zu stehen, aufzurücken und wieder zu stehen, bewegte sich
-die Schlange flüssiger und im Schnitt schneller. Weniger Gedrängel, mehr Fluss.
+Würden einfach alle gleichmäßig und langsam weitergehen, statt zu stehen,
+aufzurücken und wieder zu stehen, bewegte sich die Schlange flüssiger und im
+Schnitt schneller. Weniger Gedrängel, mehr Fluss.
 Der Verkehrsforschung ist das als „Faster-is-slower“-Effekt bekannt: Wer an
 einer Engstelle mehr drückt, senkt den Durchsatz, weil sich alle ineinander
 verkeilen, ein Ergebnis, das Dirk Helbing im Jahr 2000 in _Nature_ zeigte. Die
 eine Bedingung: Man muss unter der kritischen Dichte bleiben. Und genau deshalb
 hilft Abstand halten mehr als Aufrücken.
 
-Und jetzt die Pointe: Genau dieses Problem haben die Parks auf der
-Fahrzeugseite längst gelöst. Der Omnimover der Haunted Mansion und die Rolling
-Station von YOY halten nie an, kein Stopp, keine Anfahr-Verlustzeit, maximaler
-Fluss. Nur die Gäste in der Schlange davor sind das letzte Stop-and-Go-System,
-das noch niemand wegdesignt hat. Bis es so weit ist, bleibt der wirksamste
-Hebel der, den du ohnehin selbst in der Hand hast: nicht dichter aufrücken,
-sondern von vornherein an einem Tag kommen, an dem die Schlange gar nicht erst
-in den Stau läuft. Welcher das ist, verrät dir der Kalender der besten Tage
-weiter unten.
+Auf der Fahrzeugseite haben die Parks genau dieses Problem längst gelöst. Der
+Omnimover der Haunted Mansion und die Rolling Station von YOY halten nie an,
+kein Stopp, keine Anfahr-Verlustzeit, maximaler Fluss. Nur die Gäste in der
+Schlange davor sind das letzte Stop-and-Go-System, das noch niemand wegdesignt
+hat. Bis es so weit ist, hilft dir vor allem der Hebel, den du ohnehin selbst
+in der Hand hast: an einem Tag kommen, an dem die Schlange gar nicht erst in
+den Stau läuft. Welcher das ist, steht im Kalender der besten Tage.
 
 ## Moderne Lösungen: Virtual Queues und doppelte Stationen
 
@@ -606,17 +602,16 @@ Sechzigern klaglos ihre Runden dreht und nie nach einer Pause fragt.
 
 ## Fazit: Die Anzeige erzählt nur die halbe Geschichte
 
-Die nächste 60-Minuten-Schlange wird durch diesen Artikel nicht kürzer. Aber du
-liest sie jetzt anders, und genau diese Lesart ist der Kern von park.fan. Jedes
-Feature der Seite beantwortet eine der Fragen von oben:
+Kürzer wird die nächste 60-Minuten-Schlange dadurch nicht. Aber sie liest sich
+anders. Drei Fragen bleiben, und für jede gibt es auf park.fan eine Antwort:
 
 - **Wie lang ist die Schlange _wirklich_, genau jetzt?** Dafür gibt es unsere
   **Live-Wartezeiten**: über 200 Parks, 7.000 Attraktionen, im Minutentakt.
   Little's Law in Echtzeit, ohne dass du die 640 Leute vor dir selbst zählen
   musst.
 - **Ist das gerade viel oder normal?** Das verraten die **Langzeit-Statistiken**
-  jeder Attraktion, denn 45 Minuten sind, wie wir gesehen haben, je nach Park
-  ein Ärgernis oder ein Lottogewinn.
+  jeder Attraktion, denn 45 Minuten sind je nach Park ein Ärgernis oder ein
+  Lottogewinn.
 - **Und muss ich überhaupt anstehen?** Das entscheidet sich meist schon bei der
   Tageswahl. Dafür gibt es den **Kalender der besten Besuchstage** mit
   Prognosen bis zu 365 Tage im Voraus, zum Beispiel für den Europa-Park:

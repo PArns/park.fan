@@ -257,8 +257,7 @@ Lo merita di più, e lo meritiamo anche noi ospiti.
 
 ## Tempi di attesa Phantasialand: quando sono più brevi
 
-È il paragrafo più importante di tutto l'articolo, quindi leggilo pure due volte:
-**al Phantasialand è la scelta del giorno a decidere i tuoi tempi di attesa, più
+**Al Phantasialand è la scelta del giorno a decidere i tuoi tempi di attesa, più
 di qualsiasi trucco dentro al parco.** Un grigio martedì di novembre può essere
 più vuoto di qualsiasi sabato di luglio, e un giorno di vacanze scolastiche in
 Renania Settentrionale-Vestfalia con previsioni di sole è, affidabilmente,
@@ -337,7 +336,7 @@ esauriti a mezzogiorno.** Chi ne ha davvero bisogno ci va presto, o resta a bocc
 asciutta.
 
 La mia opinione dopo tante, tantissime visite: **in un giorno verde semplicemente
-non ti serve.** Chi arriva presto e segue l'ordine qui sotto fa gli headliner con
+non ti serve.** Chi arriva presto e segue un ordine sensato fa gli headliner con
 poca attesa, lì ogni euro speso in Quick Pass è buttato. In un sabato di vacanze
 rosso fuoco, invece, può salvarti la giornata. Prima di comprarlo dai solo una
 breve occhiata ai tempi di attesa live: se i numeri sono bassi, tieniti i soldi e
@@ -380,7 +379,7 @@ del meteo, ce l'hai completamente in mano tu.
 
 ## Il cibo: la star segreta del parco
 
-E ora una cosa che per nessun altro parco metterei così in risalto: il
+Per nessun altro parco lo metterei così in risalto: il
 Phantasialand vale il viaggio anche per il **cibo**. Mentre in molti parchi
 “mangiare” è sinonimo di patatine tiepide a prezzi da rapina, qui la gastronomia
 fa saldamente parte dell'esperienza, con una cura che di solito si conosce solo
@@ -463,7 +462,7 @@ dall'[Europa-Park](ref:europa-park): un hotel del Phantasialand **non ti dà un
 ingresso anticipato generale al parco**. Il vantaggio concreto sta altrove, gli
 ospiti del **Charles Lindbergh** ricevono, a persona, **due Fast Pass per
 [F.L.Y.](ref:phantasialand/fly)**. Proprio per l'attrazione dall'imbarco più
-lento, è oro colato, e, come detto sopra, oltre al Quick Pass Ultimate è l'unica
+lento, è oro colato, e oltre al Quick Pass Ultimate è l'unica
 via comoda per salire su questo aereo.
 
 ## Come arrivare e parcheggio
@@ -513,7 +512,7 @@ D'inverno fa buio presto, e allora sfrecciare attraverso la Klugheim illuminata,
 quando le colonne di basalto non sono più che ombre contro il cielo notturno, è
 [Taron](ref:phantasialand/taron) nella sua versione più magica. Il rovescio della
 medaglia: è proprio allora che l'attrazione è più richiesta. Comprati il **Quick
-Pass presto al mattino** (nel weekend a mezzogiorno sono finiti, come detto sopra)
+Pass presto al mattino** (nel weekend a mezzogiorno sono finiti)
 e poi fai Taron al buio quante più volte puoi. Solo per questo vale già la pena
 della visita invernale.
 

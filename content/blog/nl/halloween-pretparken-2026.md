@@ -61,15 +61,15 @@ lang geen beetje decoratie meer, maar een eigen seizoen, met eigen tickets,
 eigen leeftijdsgrenzen en een publiek dat precies voor deze gecontroleerde
 hartaanval afreist.
 
-En omdat griezelen zich heerlijk weinig aantrekt van landsgrenzen, loont het om
+Griezelen trekt zich heerlijk weinig aan van landsgrenzen, dus loont het om
 over de grens te kijken: vanuit NRW bereik je in zo'n vier uur rijden het
 grootste Halloween-event van het continent en misschien wel de sluwste
 griezelinnovatie van Europa. Alleen liggen die toevallig in twee verschillende
-landen. Deze gids sorteert het seizoen **2026** voor je: de grote
+landen. Hier staat wat het seizoen **2026** te bieden heeft: de grote
 horrornachten, de gezinsvriendelijke varianten met vangnet, de twee topparken
-die aan de hele poppenkast demonstratief _niet_ meedoen, en helemaal aan het
-eind de vraag die park.fan beter beantwoordt dan welk persbericht ook: wanneer
-is het het drukst, en wanneer kom je er het ontspanst doorheen?
+die aan de hele poppenkast demonstratief _niet_ meedoen, en de vraag die
+park.fan beter beantwoordt dan welk persbericht ook: wanneer is het het drukst,
+en wanneer kom je er het ontspanst doorheen?
 
 > **Kort over de data:** De parken schaven hun Halloween-programma's de hele
 > zomer nog bij. Bij elk park linken we de officiële eventpagina met de
@@ -181,8 +181,8 @@ Programma, data en leeftijdsregels: [traumatica.com](https://traumatica.com/en/)
 
 ### Walibi Holland: vrijwillig betalen voor je eigen ellende
 
-En daar is het, het beloofde “elders”: [Walibi Holland](ref:walibi-holland) in
-Biddinghuizen. Het park runt een van de hardste Halloween-events van Nederland
+Dat “elders” van net ligt in Biddinghuizen:
+[Walibi Holland](ref:walibi-holland). Het park runt een van de hardste Halloween-events van Nederland
 en sorteert het zo netjes op escalatieniveau dat eerste bezoekers gegarandeerd
 een keer in de verkeerde rij belanden.
 
@@ -221,7 +221,7 @@ avond het normaalste wat je overkomt.
 
 ![Acteur met lasmasker en leren schort voor een containerdeur | De slager wacht al. En nee, dat is geen welkomstcomité. | left](/blog/images/halloween-parks-2026/beispiel-metzger.jpg)
 
-En dan de heimelijke ster van de verzameling: **Slaughterhouse**, een
+De heimelijke ster van de verzameling is **Slaughterhouse**, een
 vleesverwerkingsbedrijf waarin jij de rol van grondstof op je neemt. Eerst word
 je in een wachtruimte in veewagenstijl “gekeurd”, daarna in een aan een
 plafondrail hangende stoel gegespt. Het idee is de slagershaak, het effect is
@@ -387,7 +387,7 @@ everzwijn op de loer.
 
 ## De weigeraars: twee topparken die Halloween uitzitten
 
-En dan de charmantste categorie van allemaal: de parken die aan de hele
+De charmantste categorie van allemaal zijn de parken die aan de hele
 mist-en-kettingzaagpoppenkast gewoon niet meedoen. Niet per ongeluk, maar uit
 principe.
 
@@ -445,8 +445,8 @@ en wie kinderen bij zich heeft, zit hier goed.
    Halloween-avond is korter dan een normale parkdag, en elke minuut die je
    _niet_ in de rij staat, is een minuut extra paniek voor je geld.
 
-En daarmee naar de factor die over een goede Halloween-avond meer beslist dan
-welke line-up ook: **wanneer je komt.** Halloween is hoogseizoen, en de fysica
+Over een goede Halloween-avond beslist uiteindelijk meer dan welke line-up ook:
+**wanneer je komt.** Halloween is hoogseizoen, en de fysica
 is genadeloos. De oktoberweekenden, vooral in de **herfstvakantie** en op de
 31e, zijn de drukste dagen van de hele herfst. Doordeweeks en in de randweken
 van het seizoen is het merkbaar ontspannener (en hebben de acteurs meer tijd om
@@ -470,9 +470,8 @@ dagen** uit onze AI-druktekalender bekijken:
 
 ```
 
-En als je wilt weten hoe zo'n park zich over oktober typisch vult, per weekdag
-en maand, uit echte meetdata van de afgelopen seizoenen, levert de statistiek
-het patroon er meteen bij:
+Hoe zo'n park zich over oktober typisch vult, per weekdag en maand, uit echte
+meetdata van de afgelopen seizoenen, levert de statistiek er meteen bij:
 
 **Movie Park Germany, typische wachttijden per weekdag & maand**
 

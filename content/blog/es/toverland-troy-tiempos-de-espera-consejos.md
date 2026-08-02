@@ -173,9 +173,11 @@ cuarenta atracciones en total. Un parque con el triple de público rara vez tien
 el triple de capacidad.
 
 A eso se suma algo que otros parques incorporaron hace tiempo y que aquí falta:
-**Toverland no vende pase rápido, ni pase exprés, ni single rider.** En todo el
-parque existe exactamente una forma de cambiar tiempo por dinero, y solo existe
-en octubre. El resto de los días, la cola que ves es la cola que hay.
+**Toverland no vende pase rápido ni pase exprés.** En todo el parque existe
+exactamente una forma de cambiar tiempo por dinero, y solo existe en octubre.
+El resto de los días, la cola que ves es la cola que hay. Fila de single rider
+sí que hay desde 2023, eso sí, pero solo en una atracción, la torre de caída
+Dragonwatch, y no cuesta nada extra.
 
 ## El resto del parque
 
@@ -186,8 +188,8 @@ una sola atracción.
 
 **[Fēnix](ref:toverland/fenix)** es la obra de prestigio de 2018: un wing
 coaster de **Bolliger & Mabillard**, 40 metros de altura, 813 metros de
-longitud, hasta 95 km/h, un dive drop más dos inversiones (Immelmann y zero-g
-roll), 13 millones de euros. El primer wing coaster de los Países Bajos y, a día
+longitud, hasta 95 km/h, tres veces cabeza abajo (el wing-over drop ya cuenta
+como inversión, más un Immelmann y un zero-g roll), 13 millones de euros. El primer wing coaster de los Países Bajos y, a día
 de hoy, el más largo de Europa. Wing coaster significa que vas sentado a
 izquierda y derecha del raíl, sin vía por encima ni por debajo, y como tu
 asiento toma las curvas más por fuera que el vehículo, cada giro se siente más
@@ -208,14 +210,17 @@ lleva su tiempo.
 
 **[Dwervelwind](ref:toverland/dwervelwind)**, de Mack Rides, es un spinning
 coaster a oscuras, mitad dark ride, mitad montaña rusa, con góndolas que giran
-libremente y sonido a bordo, en su momento una primicia para este tipo. Su fecha
-de apertura es una pequeña pregunta trampa: la atracción estuvo lista mucho
-antes que el resto de la Magische Vallei y, en vez de dejarla parada un año, el
-parque simplemente la puso en marcha el **29 de septiembre de 2012**, cinco
-semanas, hasta el 4 de noviembre. Después volvió a cerrar durante el invierno
-para que se pudiera seguir construyendo alrededor, y regresó en **abril de 2013**
-con la zona temática completa. Por eso, según la fuente, se lee 2012 o 2013.
-Ambas cosas son ciertas.
+libremente y un sonido a bordo que ninguna montaña rusa de este tipo tenía
+antes. Su fecha de apertura es una pequeña pregunta trampa. La atracción estaba
+anunciada para 2013, pero estuvo lista mucho antes que el resto de la Magische
+Vallei y, en vez de dejarla parada un año, el parque la adelantó: unos días de
+preapertura en la semana del 24 de septiembre de 2012, pase de prensa el 26 y,
+desde el sábado **29 de septiembre de 2012**, entrada para todos, cinco semanas
+largas hasta el 4 de noviembre. Después volvió a cerrar durante el invierno
+para que se pudiera seguir construyendo alrededor, y regresó en **abril de
+2013** con la zona temática completa, ya como Dwervelwind en lugar de la
+d'wervelwind de 2012. Por eso, según la fuente, se lee 2012 o 2013. Ambas cosas
+son ciertas.
 
 **[Toos-Express](ref:toverland/toos-express)**, del año de apertura 2001, es la
 montaña rusa infantil en la que aquí los niños montan su primera montaña rusa
@@ -446,8 +451,7 @@ enero son, según nuestros datos, los meses más duros del año.
 
 ## Cuándo ir
 
-Esta es la parte más agradable del artículo, porque la respuesta sale muy
-relajada: casi siempre.
+La respuesta sale muy relajada: casi siempre.
 
 **Por meses**, junio es el óptimo (típicamente 18 minutos de media en el
 parque), seguido de mayo y julio con 20 y 22 minutos. El más duro es **abril**
@@ -589,10 +593,11 @@ las vacaciones neerlandesas de mayo y otoño y la corta temporada de invierno.
 
 ### ¿Hace falta un pase rápido en Toverland?
 
-No existe. Toverland no vende ni pase rápido ni single rider; la única excepción
-es el **Fear Pass** para las haunted experiences durante las Halloween Nights
-(62,50 €). Con medianas de 16 minutos en las atracciones principales tampoco lo
-necesitas en un día normal.
+No existe. Toverland no vende ningún pase rápido; la única excepción es el
+**Fear Pass** para las haunted experiences durante las Halloween Nights
+(62,50 €). Una fila gratuita de single rider solo existe en la torre de caída
+Dragonwatch. Con medianas de 16 minutos en las atracciones principales tampoco
+necesitas ningún atajo en un día normal.
 
 ### ¿Es Troy la mejor montaña rusa de madera de Europa?
 
@@ -669,7 +674,7 @@ los demás parques de Europa, olvídate.
 - Troy (datos, tipo, GCI, daños por tormenta en 2007): [Troy (Toverland) en Wikipedia](<https://de.wikipedia.org/wiki/Troy_(Toverland)>) · [Troy (roller coaster), Wikipedia en inglés](<https://en.wikipedia.org/wiki/Troy_(roller_coaster)>) · [Troy (oficial)](https://www.toverland.com/en/attractions/troy)
 - Retrack de Troy: [«Toverland: Retrack der Holzachterbahn Troy» (FreizeitparkNEWS)](https://www.freizeitparknews.de/toverland/toverland-retrack-troy/)
 - Fēnix (B&M, el wing coaster más largo de Europa): [Fēnix en Wikipedia](https://de.wikipedia.org/wiki/F%C4%93nix)
-- Dwervelwind (soft opening del 29 de septiembre al 4 de noviembre de 2012, Magische Vallei completa desde abril de 2013): [Dwervelwind en Wikipedia](https://de.wikipedia.org/wiki/Dwervelwind) · [Dwervelwind (oficial)](https://www.toverland.com/en/attractions/dwervelwind)
+- Dwervelwind (apertura adelantada del 29 de septiembre al 4 de noviembre de 2012, Magische Vallei completa desde abril de 2013): [Dwervelwind en de.wikipedia](https://de.wikipedia.org/wiki/Dwervelwind) · [Dwervelwind en nl.wikipedia](https://nl.wikipedia.org/wiki/Dwervelwind) · [Dwervelwind (oficial)](https://www.toverland.com/en/attractions/dwervelwind)
 - European Star Awards 2018: [«Toverland hat gleich drei European Star Awards gewonnen» (Freizeitpark News)](https://freizeitpark-news.com/news/hohe-auszeichnung-fuer-toverland-der-freizeitpark-aus-holland-hat-gleich-drei-european-star-awards-gewonnen/) · [Awards (oficial)](https://www.toverland.com/en/awards)
 - Historia del parque, zonas temáticas y cifras de visitantes: [Toverland en Wikipedia](https://es.wikipedia.org/wiki/Toverland) · [Cifras de visitantes 2025 (oficial)](https://www.toverland.com/de/presse/neuigkeiten)
 - Lema «Discover your own magic» (desde 2018, antes «Magisch mooi» y «Feel the Magic»): [«Toverland kiest voor nieuwe slogan» (Looopings)](https://www.looopings.nl/weblog/9639/Toverland-kiest-voor-nieuwe-slogan.html)

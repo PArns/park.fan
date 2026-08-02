@@ -62,16 +62,16 @@ un peu de décoration pour devenir une saison à part entière, avec ses propres
 billets, ses propres limites d'âge et un public qui se déplace précisément pour
 cette crise cardiaque sous contrôle.
 
-Et comme la frousse se moque délicieusement des frontières, il vaut la peine de
+La frousse se moque délicieusement des frontières, il vaut donc la peine de
 regarder au-delà de son jardin : depuis la Rhénanie-du-Nord-Westphalie, environ
 quatre heures de route vous mènent au plus grand événement Halloween du
 continent et à la plus retorse innovation de la peur en Europe. Elles se
-trouvent seulement dans deux pays différents. Ce guide vous trie la saison
+trouvent seulement dans deux pays différents. Voici ce que propose la saison
 **2026** : les grandes nuits d'horreur, les versions familiales avec filet de
 sécurité, les deux parcs de tête qui _ne_ participent ostensiblement _pas_ à
-tout ce cirque, et tout à la fin la question à laquelle park.fan répond mieux
-que n'importe quel communiqué de presse : quand y a-t-il le plus de monde, et
-quand s'en sort-on le plus tranquillement ?
+tout ce cirque, et la question à laquelle park.fan répond mieux que n'importe
+quel communiqué de presse : quand y a-t-il le plus de monde, et quand s'en
+sort-on le plus tranquillement ?
 
 > **Un mot sur les dates :** les parcs peaufinent leurs programmes d'Halloween
 > tout l'été. Pour chaque parc, nous renvoyons vers la page officielle de
@@ -188,8 +188,8 @@ Programme, dates et règles d'âge : [traumatica.com](https://traumatica.com/en
 
 ### Walibi Holland : payer volontairement pour son propre malheur
 
-Et le voilà, l'« ailleurs » promis : [Walibi Holland](ref:walibi-holland) à
-Biddinghuizen. Le parc exploite l'un des événements Halloween les plus durs des
+Cet « ailleurs » de tout à l'heure se trouve à Biddinghuizen :
+[Walibi Holland](ref:walibi-holland). Le parc exploite l'un des événements Halloween les plus durs des
 Pays-Bas et le trie si proprement par niveaux d'escalade que les nouveaux
 venus se retrouvent forcément une fois dans la mauvaise file.
 
@@ -402,8 +402,8 @@ gaulois : quelque part entre deux menhirs, un sanglier guette forcément.
 
 ## Les réfractaires : deux parcs de tête qui zappent Halloween
 
-Et maintenant la catégorie la plus charmante de toutes : les parcs qui ne
-participent tout simplement pas à ce cirque de brume et de tronçonneuses. Pas
+La catégorie la plus charmante de toutes, ce sont les parcs qui ne participent
+tout simplement pas à ce cirque de brume et de tronçonneuses. Pas
 par inadvertance, mais par principe.
 
 ### Phantasialand : rien. Absolument rien. Et c'est assumé.
@@ -465,8 +465,8 @@ d'adrénaline, et qui a des enfants avec lui, est ici à la bonne adresse.
    passez _pas_ dans la file est une minute de panique en plus pour votre
    argent.
 
-Et voici le facteur qui pèse plus qu'aucune programmation sur la réussite d'une
-soirée Halloween : **le moment où vous venez.** Halloween est la haute saison,
+Plus qu'aucune programmation, un facteur pèse sur la réussite d'une soirée
+Halloween : **le moment où vous venez.** Halloween est la haute saison,
 et la physique est impitoyable. Les week-ends d'octobre, surtout pendant les
 **vacances d'automne** et le 31, sont les jours les plus chargés de tout
 l'automne. En semaine et dans les semaines périphériques de la saison, c'est
@@ -491,9 +491,9 @@ les plus calmes** dans notre calendrier d'affluence par IA :
 
 ```
 
-Et si vous voulez savoir comment un tel parc se remplit typiquement au fil
-d'octobre, par jour de la semaine et par mois, à partir de vraies mesures des
-saisons passées, la statistique fournit le motif dans la foulée :
+Comment un tel parc se remplit typiquement au fil d'octobre, par jour de la
+semaine et par mois, à partir de vraies mesures des saisons passées, la
+statistique le fournit dans la foulée :
 
 **Movie Park Germany, temps d'attente typiques par jour de semaine & mois**
 

@@ -62,15 +62,15 @@ decoration and became a season of its own, with its own tickets, its own age
 limits and an audience that turns up for precisely this controlled heart
 attack.
 
-And because horror cares delightfully little about national borders, it pays to
-look beyond your own backyard: from NRW, some four hours' drive gets you to the
+Horror cares delightfully little about national borders, so it pays to look
+beyond your own backyard: from NRW, some four hours' drive gets you to the
 continent's biggest Halloween event and perhaps the most cunning scare
 innovation in Europe. They just happen to sit in two different countries. This
-guide sorts the **2026** season for you: the big horror nights, the
+is what the **2026** season has to offer: the big horror nights, the
 family-friendly versions with a safety net, the two top parks that pointedly
-_don't_ join the whole circus, and, right at the end, the question park.fan
-answers better than any press release: when is it busiest, and when do you get
-through with the least hassle?
+_don't_ join the whole circus, and the question park.fan answers better than
+any press release: when is it busiest, and when do you get through with the
+least hassle?
 
 > **A quick word on dates:** Parks keep fine-tuning their Halloween programmes
 > over the summer. For each park we link the official event page with
@@ -182,8 +182,8 @@ Programme, dates and age rules: [traumatica.com](https://traumatica.com/en/).
 
 ### Walibi Holland: paying voluntarily for your own misery
 
-And there it is, the promised “elsewhere”: [Walibi Holland](ref:walibi-holland)
-in Biddinghuizen. The park runs one of the harshest Halloween events in the
+That “elsewhere” from earlier sits in Biddinghuizen:
+[Walibi Holland](ref:walibi-holland). The park runs one of the harshest Halloween events in the
 Netherlands, and sorts it so neatly by escalation level that first-timers are
 guaranteed to end up in the wrong queue at least once.
 
@@ -222,7 +222,7 @@ to you that evening.
 
 ![Performer in a welding mask and leather apron in front of a container door | The butcher is already waiting. And no, that's not a welcoming committee. | left](/blog/images/halloween-parks-2026/beispiel-metzger.jpg)
 
-And then the secret star of the collection: **Slaughterhouse**, a meat
+The secret star of the collection is **Slaughterhouse**, a meat
 processing plant in which you take the role of the raw material. First you're
 “inspected” in a cattle-wagon-style waiting room, then strapped into a seat
 hanging from a ceiling rail. The idea is the meat hook, the effect is total
@@ -384,8 +384,8 @@ between two menhirs a wild boar is guaranteed to be lying in wait.
 
 ## The refuseniks: two top parks that sit Halloween out
 
-And now the most charming category of all: the parks that simply don't join in
-with the whole fog-and-chainsaw circus. Not by accident, but on principle.
+The most charming category of all is the parks that simply don't join in with
+the whole fog-and-chainsaw circus. Not by accident, but on principle.
 
 ### Phantasialand: nothing. Nothing at all. And deliberately.
 
@@ -440,8 +440,8 @@ and if you have children along, this is exactly right.
    than a normal park day, and every minute you're _not_ standing in a queue is
    another minute of panic for your money.
 
-Which brings us to the factor that decides more about a good Halloween evening
-than any line-up: **when you turn up.** Halloween is peak season, and the
+More than any line-up, one factor decides whether a Halloween evening is any
+good: **when you turn up.** Halloween is peak season, and the
 physics are merciless. The October weekends, above all during the **autumn
 holidays** and on the 31st, are the busiest days of the entire autumn. Midweek
 and in the fringe weeks of the season it's noticeably calmer (and the performers
@@ -465,9 +465,8 @@ choice from our AI crowd calendar:
 
 ```
 
-And if you want to know how a park like this typically fills up over October,
-by weekday and month, from real measured data of recent seasons, the statistics
-supply the pattern as well:
+How a park like this typically fills up over October, by weekday and month,
+from real measured data of recent seasons, the statistics supply as well:
 
 **Movie Park Germany, typical wait times by weekday & month**
 

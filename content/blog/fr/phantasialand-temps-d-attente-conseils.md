@@ -259,9 +259,8 @@ visiteurs, aussi.
 
 ## Temps d'attente Phantasialand : quand ils sont les plus courts
 
-C'est le paragraphe le plus important de tout cet article, alors relis-le
-tranquillement deux fois : **au Phantasialand, c'est le choix du jour qui décide
-de tes temps d'attente, plus que n'importe quelle astuce dans le parc.** Un mardi
+**Au Phantasialand, c'est le choix du jour qui décide de tes temps d'attente,
+plus que n'importe quelle astuce dans le parc.** Un mardi
 gris de novembre peut être plus vide que n'importe quel samedi de juillet, et un
 jour de vacances scolaires en Rhénanie-du-Nord-Westphalie avec du soleil annoncé
 est immanquablement l'enfer, un enfer fait de gens qui ont tous eu la même bonne
@@ -340,7 +339,7 @@ Wintertraum surtout, les Quick Pass sont, le week-end, souvent épuisés dès mi
 Qui en a vraiment besoin y est de bonne heure, ou repart bredouille.
 
 Mon avis, après de très nombreuses visites : **un jour vert, tu n'en as tout
-simplement pas besoin.** Qui arrive tôt et respecte l'ordre indiqué plus bas fait
+simplement pas besoin.** Qui arrive tôt et suit un ordre judicieux fait
 les têtes d'affiche avec de courts temps d'attente, là, chaque euro de Quick Pass
 est de l'argent jeté. Un samedi de vacances rouge écarlate, en revanche, il peut
 sauver la journée. Avant d'acheter, jette simplement un coup d'œil aux temps
@@ -385,12 +384,12 @@ contrairement à la météo, tu le tiens entièrement en main.
 
 ## La restauration : la star secrète du parc
 
-Et maintenant, quelque chose que je ne mettrais en avant pour aucun autre parc :
-le Phantasialand vaut aussi le voyage pour sa **cuisine**. Là où, dans bien des
-parcs, « manger » rime avec frites tièdes à prix d'or, la gastronomie fait ici
-pleinement partie de l'expérience, avec un soin qu'on ne connaît d'ordinaire que
-de vrais restaurants. Quelques adresses sont de véritables bons plans qui, à eux
-seuls, valent déjà la visite :
+Pour aucun autre parc je ne mettrais cela en avant : le Phantasialand vaut
+aussi le voyage pour sa **cuisine**. Là où, dans bien des parcs, « manger »
+rime avec frites tièdes à prix d'or, la gastronomie fait ici pleinement partie
+de l'expérience, avec un soin qu'on ne connaît d'ordinaire que de vrais
+restaurants. Quelques adresses sont de véritables bons plans qui, à eux seuls,
+valent déjà la visite :
 
 - **Rutmor's Taverne** (Klugheim) est mon préféré et, pour beaucoup de fans, le
   meilleur restaurant jamais construit dans un parc d'attractions. À la carte,
@@ -419,7 +418,7 @@ contre-courant.** Mange vers 11 h 30 ou après 14 h 30, ainsi, à l'heure de poi
 des repas tu enchaînes les files courtes des attractions, et à l'heure de pointe
 des attractions tu es tranquillement attablé. D'une pierre deux coups, et un ventre
 content. (Et si tu viens en hiver, une gourmandise bien à elle t'attend encore dans
-la section Wintertraum, plus bas.)
+le Wintertraum.)
 
 ## Les petites choses pour lesquelles je reviens toujours
 
@@ -473,7 +472,7 @@ l'[Europa-Park](ref:europa-park) : un hôtel du Phantasialand ne t'offre **aucu
 entrée anticipée générale dans le parc**. L'avantage concret est ailleurs, les
 clients du **Charles Lindbergh** reçoivent par personne **deux Fast Pass pour
 [F.L.Y.](ref:phantasialand/fly)**. Pour précisément l'attraction à l'embarquement
-le plus laborieux, cela vaut de l'or, et, comme mentionné plus haut, c'est, à côté
+le plus laborieux, cela vaut de l'or, et c'est, à côté
 du Quick Pass Ultimate, le seul moyen commode de monter à bord de cet aéroplane.
 
 ## Accès & stationnement
@@ -523,7 +522,7 @@ la nuit tombe tôt, et foncer alors à travers le Klugheim illuminé, quand les
 colonnes de basalte ne sont plus que des ombres sur le ciel nocturne, c'est
 [Taron](ref:phantasialand/taron) sous son jour le plus magique. Le hic : c'est
 précisément là que l'attraction est la plus demandée. Achète-toi le **Quick Pass
-dès le début de la journée** (le week-end, ils sont partis à midi, comme mentionné
+dès le début de la journée** (le week-end, ils sont partis à midi, on l'a
 plus haut), et fais ensuite Taron dans le noir, aussi souvent que tu peux. Rien
 que pour cela, la visite d'hiver vaut déjà le coup.
 

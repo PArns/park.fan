@@ -259,9 +259,8 @@ mejor, y nosotros los visitantes también.
 
 ## Tiempos de espera en Phantasialand: cuándo son más cortos
 
-Este es el párrafo más importante de todo el artículo, así que léelo tranquilamente
-dos veces: **en el Phantasialand, la elección del día decide tus tiempos de espera
-más que cualquier truco dentro del parque.** Un martes gris de noviembre puede
+**En el Phantasialand, la elección del día decide tus tiempos de espera más que
+cualquier truco dentro del parque.** Un martes gris de noviembre puede
 estar más vacío que cualquier sábado de julio, y un día de vacaciones escolares en
 Renania del Norte-Westfalia con pronóstico de sol es, sin falta, el infierno hecho
 de un montón de gente que tuvo la misma buena idea que tú.
@@ -337,7 +336,7 @@ el Wintertraum, los Quick Pass suelen estar agotados el fin de semana ya a
 mediodía.** Quien de verdad necesite uno, o está allí temprano o se queda sin él.
 
 Mi opinión tras muchísimas visitas: **en un día verde sencillamente no lo
-necesitas.** Quien llega temprano y respeta el orden de más abajo monta en los
+necesitas.** Quien llega temprano y sigue un orden sensato monta en los
 headliners con poca espera, ahí cada euro de Quick Pass es dinero tirado. En un
 sábado de vacaciones rojo intenso, en cambio, puede salvarte el día. Antes de
 comprar, echa un vistazo rápido a los tiempos de espera en vivo: si las cifras
@@ -381,7 +380,7 @@ tienes por completo en tu propia mano.
 
 ## La comida: la estrella secreta del parque
 
-Y ahora algo que no destacaría así en ningún otro parque: el Phantasialand merece
+En ningún otro parque destacaría esto así: el Phantasialand merece
 el viaje también por la **comida**. Mientras que en muchos parques «comer» es
 sinónimo de patatas fritas tibias a precio de oro, aquí la gastronomía forma parte
 firme de la experiencia, con un esmero que por lo demás solo se conoce de
@@ -413,7 +412,7 @@ Y el consejo de comida más importante es el mismo que para las colas: **a
 contracorriente.** Come hacia las 11:30 o después de las 14:30, así montas en las
 colas cortas durante la hora punta y te sientas tranquilo en el restaurante cuando
 toca montar. Dos pájaros de un tiro, y una barriga contenta. (Y si vienes en
-invierno, en la sección del Wintertraum, más abajo, te espera aún una delicia muy
+invierno, en el Wintertraum te espera aún una delicia muy
 propia.)
 
 ## Las pequeñas cosas por las que siempre vuelvo

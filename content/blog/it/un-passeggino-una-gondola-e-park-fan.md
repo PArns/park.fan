@@ -4,7 +4,6 @@ translationKey: welcome-to-park-fan-blog
 date: '2026-07-06'
 author: patrick
 mode: published
-featured: true
 excerpt: >-
   Un passeggino in riva al lago delle fiabe, un giro in gondola attraverso “1001
   Notte” e, trent'anni dopo, sessanta minuti di coda al Taron con il dubbio se
@@ -75,8 +74,8 @@ lasciato.
 
 ## “1001 Notte”, i giri che restano
 
-E poi c'era la cabinovia **“1001 Notte”**, in funzione dal 1970 e primo dark
-ride fisso della Germania. Alla fine degli anni Ottanta faceva parte fissa di
+C'era poi la cabinovia **“1001 Notte”**, in funzione dal 1970 e primo dark ride
+fisso della Germania. Alla fine degli anni Ottanta faceva parte fissa di
 ogni nostra visita in famiglia. I miei genitori e io in una di quelle cabine, a
 otto metri da terra, insieme in un viaggio che a ogni metro sprofondava un po'
 più a fondo in un altro mondo. Dentro le enormi fauci del drago, davanti alle
@@ -90,7 +89,7 @@ ricordo dell'uomo che allora scivolava accanto a me attraverso quei mondi.
 
 ![Sagoma di montagne russe al Movie Park Germany di notte, illuminata di viola e blu | Il Movie Park Germany di notte. Lethal Weapon Pursuit stava qui fino al 2006. | left](/images/parks/movie-park-germany/background.jpg)
 
-E quando mio padre era di nuovo in viaggio come camionista, mia madre prendeva
+Quando mio padre era di nuovo in viaggio come camionista, mia madre prendeva
 semplicemente il volante. Con lei ho scoperto molti altri parchi, primo fra
 tutti il [Movie Park](ref:movie-park-germany?bare), allora ancora Warner Bros.
 Movie World. Lì sono salito per la prima volta in vita mia su montagne russe, su
@@ -104,9 +103,9 @@ quello che è venuto dopo è di mia madre.
 Se questo amore per i parchi divertimento è un'eredità, allora arriva da
 entrambi i genitori. Papà ha messo le fiabe, mamma le montagne russe.
 
-E quando qualcuno mi chiede perché park.fan è gratuito e resterà tale: questo
-posto mi ha regalato ricordi che hanno segnato la mia vita. Questo è il mio modo
-di restituirne una parte.
+Ogni tanto qualcuno mi chiede perché park.fan è gratuito e resterà tale. Questo
+posto mi ha regalato ricordi che hanno segnato la mia vita. Questo è il mio
+modo di restituirne una parte.
 
 ## Di topi da 5000 e di una leggenda da 10.000
 
@@ -141,8 +140,8 @@ Park”.
 
 ![Testa animatronica di velociraptor nel recinto dei raptor del VelociCoaster, illuminato di rosso | Islands of Adventure: il raptor nel recinto, a portata di mano. | right](/blog/images/velocicoaster/02-raptor-paddock.jpg)
 
-E poi c'era quell'unico grande punto sulla lista della vita a cui mancava ancora
-la spunta. Nel maggio 2026 siamo finalmente volati a Orlando: **Walt Disney
+Restava quell'unico grande punto sulla lista della vita a cui mancava ancora la
+spunta. Nel maggio 2026 siamo finalmente volati a Orlando: **Walt Disney
 World, Universal e SeaWorld**, il programma completo, il viaggio “una volta
 nella vita” che sognavo da bambino. È una sensazione stranamente bella vedere il
 ragazzino del lago delle fiabe piantato decenni dopo davanti al Cinderella
@@ -305,14 +304,14 @@ previsioni mantengono quello che promettono?
 **Notizie.** Brevi e senza giri di parole. Se succede qualcosa, sta qui, più
 veloce di quanto tu chiuda un banner dei cookie.
 
-E la parte più bella: i post sono vivi. Grafici, mappe e tempi di attesa
-attingono direttamente da park.fan, quello che leggi è ciò che il parco sta
-facendo davvero in questo momento. I due protagonisti di questa storia, in diretta:
+I post, poi, sono vivi. Grafici, mappe e tempi di attesa attingono direttamente
+da park.fan, quello che leggi è ciò che il parco sta facendo davvero in questo
+momento. I due protagonisti di questa storia, in diretta:
 
 [Taron](ref:phantasialand/taron?full)
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?full)
 
-E siccome il meteo è il fattore che fa ribaltare più in fretta una giornata al
+Siccome il meteo è il fattore che fa ribaltare più in fretta una giornata al
 parco, ecco la situazione proprio adesso all'ingresso del
 [Phantasialand](ref:phantasialand?bare):
 
