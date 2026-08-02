@@ -1,0 +1,56 @@
+name: vercel comment sync
+
+# Mirrors Vercel Preview Comments onto the matching pull request, so that both
+# humans and Claude can read the feedback (text, page, DOM selector, source
+# file, screenshot) without opening the Vercel toolbar.
+#
+# GitHub Actions cannot receive webhooks, so the chain is:
+#
+#   Vercel comment.* webhook
+#     → https://park.fan/api/webhooks/vercel-comments  (verifies + gates)
+#     → repository_dispatch `vercel-comment`
+#     → this workflow
+#
+# Only PREVIEW deployments are synced; the gate lives in the route handler.
+# One PR comment is kept per Vercel thread — replies are appended to it and
+# resolving the thread flips its heading.
+#
+# Setup (secrets, Vercel webhook registration): see
+# docs/development/vercel-comment-sync.md
+#
+# Toggle it off without touching code: set the repository variable
+# VERCEL_COMMENT_SYNC to "off".
+
+on:
+  repository_dispatch:
+    types: [vercel-comment]
+
+permissions:
+  contents: write # commits screenshots to the asset branch
+  pull-requests: write # posts and edits the PR comment
+
+# Serialize per thread so two quick replies cannot clobber each other's append.
+concurrency:
+  group: vercel-comment-${{ github.event.client_payload.threadId }}
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    if: ${{ vars.VERCEL_COMMENT_SYNC != 'off' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Sync comment to pull request
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CLIENT_PAYLOAD: ${{ toJSON(github.event.client_payload) }}
+          # Optional — only needed if Vercel serves comment screenshots from an
+          # authenticated URL. Without it, unreachable images are skipped and
+          # the original link is kept.
+          VERCEL_API_TOKEN: ${{ secrets.VERCEL_API_TOKEN }}
+        run: node scripts/ci/sync-vercel-comment.mjs
