@@ -24,14 +24,30 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export async function generateMetadata({ params }: ContributePageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+  searchParams,
+}: ContributePageProps): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'contribute.meta' });
   const ogImageUrl = getOgImageUrl([locale, 'contribute']);
 
+  // Every park and ride page links here through `buildContributeHref`, which encodes the
+  // pre-selected entity as query params (`?type=…&id=…&name=…&slug=…&url=…`). That mints ONE
+  // crawlable URL per entity — thousands of them, all rendering the same form. It showed: over
+  // 24 h this page took 4 K requests and 154 MB, more than the park pages themselves, on a page
+  // nobody searches for.
+  //
+  // The banner links now carry rel="nofollow" so crawlers stop walking into them at all; this
+  // pairs with that to clean up what is already indexed — the prefilled variants are noindex and
+  // point their canonical at the bare page, so Google consolidates them onto the one URL that is
+  // worth having.
+  const isPrefilled = parseEntityFromParams(await searchParams) !== null;
+
   return {
     title: t('title'),
     description: t('description'),
+    ...(isPrefilled && { robots: { index: false, follow: true } }),
     openGraph: {
       title: t('title'),
       description: t('description'),

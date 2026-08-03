@@ -20,10 +20,20 @@ const nextConfig: NextConfig = {
     '/[locale]/blog/**': ['./content/blog/**/*', './public/blog/**/*'],
     '/sitemap.xml': ['./content/blog/**/*'],
     '/[locale]': ['./content/blog/**/*'],
-    // The OG renderer inlines the brand PNGs off disk instead of fetching them over
-    // HTTP on every render (see lib/og/brand-mark.tsx). Next can't trace a runtime
-    // readFileSync, so the two assets have to be named explicitly.
-    '/api/og/[...path]': ['./public/logo-dark.png', './public/parkfan-dark.png'],
+    // The OG renderer inlines its images off disk instead of fetching them over HTTP on every
+    // render (see lib/og/brand-mark.tsx and lib/og/background-photo.ts). Next can't trace a
+    // runtime readFileSync, so the assets have to be named explicitly.
+    //
+    // Only the `-16x9` crops: they are what the 1200×630 card actually paints (~119 KB each vs
+    // ~376 KB for the uncropped source), so this adds 64 files / 7.4 MB to the function bundle
+    // instead of the 47 MB the whole directory would cost. The crops are gitignored and cut by
+    // `scripts/generate-image-crops.mjs` during `prebuild`, i.e. they exist before tracing runs.
+    // A source image that somehow has no crop falls back to the absolute URL at runtime.
+    '/api/og/[...path]': [
+      './public/logo-dark.png',
+      './public/parkfan-dark.png',
+      './public/images/parks/**/*-16x9.jpg',
+    ],
   },
   compiler: {
     // Remove React properties that are not needed in production
@@ -489,11 +499,19 @@ const nextConfig: NextConfig = {
       // BestDays/Stats/weather sections; CDN-caching keeps the heavy calendar (~450 KB) + the stats
       // off the backend on every park view.
       {
+        // 30 days, matching the value the route handler sets on its own response. It had to be
+        // repeated here and the two had drifted: this rule said 1 day, and a `headers()` rule
+        // OVERRIDES a route handler's Cache-Control (that override is the whole reason this entry
+        // exists — see the blanket /api no-store above), so the cards were silently re-rendering
+        // 30× more often than the route intended. At ~860 ms a render that was most of the OG
+        // function bill. 30 days is safe because these cards carry no live data any more: status,
+        // crowd level and wait time were deliberately removed from them (see the route), since a
+        // social platform re-shows a cached preview for days anyway.
         source: '/api/og/:path*',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=86400, s-maxage=86400, stale-while-revalidate=3600',
+            value: 'public, max-age=2592000, s-maxage=2592000, stale-while-revalidate=86400',
           },
         ],
       },

@@ -7,10 +7,11 @@ import { getParkBackgroundImage, getAttractionBackgroundImage } from '@/lib/util
 import { stripNewPrefix } from '@/lib/utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { HERO_IMAGES } from '@/lib/hero-images';
-import { ParkAttraction } from '@/lib/api/types';
+import { ParkAttraction, GeoStructure } from '@/lib/api/types';
 import { isValidLocale, type Locale } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { OgBrandLockup } from '@/lib/og/brand-mark';
+import { ogBackgroundSrc } from '@/lib/og/background-photo';
 import {
   FlagDE,
   FlagGB,
@@ -181,16 +182,30 @@ export async function GET(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let park: any = null;
 
-    // Fetch GeoStructure for ALL types to get correct names (e.g. City Name "Brühl" vs slug "bruehl")
-    const geo = await getGeoStructure();
+    // GeoStructure is a 159 KB document, and it used to be fetched (and JSON-parsed) on EVERY
+    // render for EVERY card type. The geo cards genuinely need it — they read `parkCount` and the
+    // country list that seeds the map SVG. Place cards (PARK / ATTRACTION) do not: `park.city` is
+    // the preferred city name and wins over `cityNode`, and the country name comes from the `geo`
+    // messages, with `countryNode` only a fallback for a country that has no translation.
+    //
+    // So it is resolved lazily now. Awaiting it stays a single call per render — `getGeoStructure`
+    // is a cached `fetch`, and the promise is memoized here so the two nodes below can't fetch
+    // twice.
+    let geoPromise: Promise<GeoStructure> | null = null;
+    const loadGeo = () => (geoPromise ??= getGeoStructure());
+    // Only the region cards need the node tree up front; HOME/GENERIC take just `parkCount` and
+    // place cards usually take nothing at all, so both reach for `loadGeo()` where they need it.
+    const needsGeoTree = type === 'CONTINENT' || type === 'COUNTRY' || type === 'CITY';
+    const geo = needsGeoTree ? await loadGeo() : null;
 
-    const continentNode = continent ? geo.continents.find((c) => c.slug === continent) : null;
+    const continentNode =
+      continent && geo ? geo.continents.find((c) => c.slug === continent) : null;
     const countryNode = country ? continentNode?.countries.find((c) => c.slug === country) : null;
     const cityNode = city ? countryNode?.cities.find((c) => c.slug === city) : null;
 
     if (type === 'HOME') {
       name = tHomepage('features.title'); // OG home subtitle, e.g. "Plan Your Perfect Theme Park Visit"
-      totalParks = geo.parkCount;
+      totalParks = (await loadGeo()).parkCount;
 
       // Random Background from Hero Images
       const randomIndex = Math.floor(Math.random() * HERO_IMAGES.length);
@@ -205,7 +220,7 @@ export async function GET(
 
       // For 'parks' generic page, we can show stats
       if (secondSegment === 'parks') {
-        totalParks = geo.parkCount;
+        totalParks = (await loadGeo()).parkCount;
       }
 
       // Use a random hero image for visuals if no specific one
@@ -289,9 +304,11 @@ export async function GET(
     // they carry no badge row any more, so the name and location own the composition.
     const isPlaceCard = !['CONTINENT', 'COUNTRY', 'CITY', 'GENERIC', 'HOME'].includes(type);
 
-    // Build absolute URL for background image
+    // Background photo, inlined off the deployment's own disk rather than fetched over the public
+    // internet on every render — see lib/og/background-photo.ts for the measurements. Falls back
+    // to the absolute URL when the file isn't in the bundle, so behaviour never regresses.
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://park.fan';
-    const backgroundUrl = backgroundImagePath ? `${baseUrl}${backgroundImagePath}` : null;
+    const backgroundUrl = ogBackgroundSrc(backgroundImagePath, baseUrl);
 
     // Location string logic
     // For Continent/Country/City we might display "Explore Parks" or similar?
@@ -300,19 +317,33 @@ export async function GET(
     // For Park/Attraction we need city/country names
     let locationString = '';
     if (type === 'PARK' || type === 'ATTRACTION') {
+      // Place cards skipped the geo document above, so the two `…Node` fallbacks below have to
+      // reach for it themselves — and only when they are actually needed. In practice they never
+      // are: `park.city` is set for every park the API resolves, and every country in the catalog
+      // has a `geo.countries.*` message. This keeps the fallback honest without paying 159 KB for
+      // it on the happy path.
+      const geoNodes = async () => {
+        const g = await loadGeo();
+        const cn = g.continents.find((c) => c.slug === continent);
+        const con = cn?.countries.find((c) => c.slug === country);
+        return { countryNode: con, cityNode: con?.cities.find((c) => c.slug === city) };
+      };
+
       // Priority: Park City (Source of Truth) > CityNode Name > Slug Fallback
       // We prioritize park.city because the detailed park record usually has the correct formatted name (e.g. "Brühl"),
       // whereas cityNode might just be derived from the slug ("Bruehl").
       const cityName =
         (park && park.city) ||
-        cityNode?.name ||
+        (await geoNodes()).cityNode?.name ||
         city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
 
       const normalizedCountry = country.toLowerCase().replace(/\s+/g, '-');
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       let countryName = tGeo(`countries.${normalizedCountry}` as any);
       if (countryName === `countries.${normalizedCountry}`)
-        countryName = countryNode?.name || country.charAt(0).toUpperCase() + country.slice(1);
+        countryName =
+          (await geoNodes()).countryNode?.name ||
+          country.charAt(0).toUpperCase() + country.slice(1);
 
       const parkName = park?.name
         ? stripNewPrefix(park.name)
@@ -409,6 +440,13 @@ export async function GET(
             <img
               src={backgroundUrl}
               alt="Background"
+              // Explicit intrinsic size, like the brand lockup already does. Without it Satori has
+              // to derive the dimensions from the image itself before it can lay anything out —
+              // the step that fails with "Image size cannot be determined" when the source can't
+              // be read. The card frame IS 1200×630 and the inlined asset is the 16:9 crop, so
+              // `cover` is an exact fit and nothing is cropped away.
+              width={WIDTH}
+              height={HEIGHT}
               style={{
                 position: 'absolute',
                 top: 0,
