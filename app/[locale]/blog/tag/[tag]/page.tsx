@@ -4,7 +4,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Tag } from 'lucide-react';
 import { routing, type Locale } from '@/i18n/routing';
 import { locales, localeToOpenGraphLocale, SITE_URL } from '@/i18n/config';
-import { BLOG_POSTS_PER_PAGE, listPosts, hasPublishedPosts } from '@/lib/blog';
+import { BLOG_POSTS_PER_PAGE, listPosts, hasPublishedPosts } from '@/lib/blog/listing';
 import { buildTagAlternates, findCanonicalTag, listTags, normalizeTagSlug } from '@/lib/blog/tags';
 import { BlogPostGrid } from '@/components/blog/blog-post-grid';
 import { BlogCategoryTree } from '@/components/blog/blog-category-tree';

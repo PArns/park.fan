@@ -17,6 +17,12 @@ tags:
   - predicciones-ia
   - entre-bastidores
 category: news
+parkLinks:
+  - phantasialand
+  - movie-park-germany
+rideLinks:
+  - phantasialand/taron
+  - phantasialand/maus-au-chocolat
 coverImage:
   src: /blog/images/welcome-cover.jpg
   alt: 'Looping del Velocicoaster frente al castillo de Hogwarts, Islands of Adventure, Orlando'

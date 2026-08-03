@@ -9,7 +9,7 @@ import {
   localeToOpenGraphLocale,
   SITE_URL,
 } from '@/i18n/config';
-import { BLOG_POSTS_PER_PAGE, listPosts, hasPublishedPosts } from '@/lib/blog';
+import { BLOG_POSTS_PER_PAGE, listPosts, hasPublishedPosts } from '@/lib/blog/listing';
 import {
   buildCategoryTree,
   categoryPathBreadcrumbs,

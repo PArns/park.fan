@@ -282,6 +282,11 @@
     "toggle": "Cambiar tema"
   },
   "parks": {
+    "blogPosts": {
+      "title": "{park} en el blog",
+      "intro": "Artículos de nuestro blog en los que aparece {park}.",
+      "viewAll": "Leer todos los artículos"
+    },
     "title": "Más loopings, menos esperas",
     "heroWelcome": "Bienvenido a {parkName}",
     "heroNearPark": "{parkName} está cerca (a menos de 5 km). Abajo verás tiempos de espera en vivo, horarios y nivel de afluencia – o busca otro parque.",
@@ -625,6 +630,10 @@
     }
   },
   "attractions": {
+    "blogPosts": {
+      "title": "{ride} en el blog",
+      "viewAll": "Leer todos los artículos"
+    },
     "title": "Atracciones",
     "waitTime": "Espera",
     "status": {

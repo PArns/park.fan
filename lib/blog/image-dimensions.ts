@@ -1,5 +1,5 @@
 import 'server-only';
-import { BLOG_GALLERY_FOLDERS } from './manifest';
+import { BLOG_GALLERY_FOLDERS } from './manifest-galleries';
 
 let bySrc: Map<string, { width: number; height: number }> | null = null;
 

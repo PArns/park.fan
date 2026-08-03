@@ -1,6 +1,6 @@
 import 'server-only';
 import type { BlogImage } from './types';
-import { BLOG_GALLERY_FOLDERS, BLOG_GALLERY_FOLDERS_L10N } from './manifest';
+import { BLOG_GALLERY_FOLDERS, BLOG_GALLERY_FOLDERS_L10N } from './manifest-galleries';
 
 /**
  * Return the images registered in the build-time manifest for the given

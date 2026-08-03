@@ -22,6 +22,8 @@ tags:
   - park-fan
   - seizoen-2026
 category: guides
+parkLinks:
+  - phantasialand
 coverImage:
   src: /images/parks/phantasialand/taron-16x9.jpg
   alt: 'Taron raast door de basaltzuilen van het themagebied Klugheim in het Phantasialand'

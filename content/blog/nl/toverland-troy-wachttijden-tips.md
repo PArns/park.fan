@@ -22,6 +22,12 @@ tags:
   - halloween
   - seizoen-2026
 category: guides
+parkLinks:
+  - toverland
+  - efteling
+rideLinks:
+  - toverland/*
+  - efteling/joris-en-de-draak
 coverImage:
   src: /images/parks/toverland/troy-16x9.jpg
   alt: 'Het houten Trojaanse paard in het themagebied Ithaka van Toverland, op een kar'

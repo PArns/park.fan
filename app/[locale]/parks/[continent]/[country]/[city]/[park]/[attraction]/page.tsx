@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { formatInTimeZone } from 'date-fns-tz';
 import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
@@ -38,6 +39,7 @@ import { AttractionTypicalWaits } from '@/components/parks/attraction-typical-wa
 import { LiveAttractionData } from '@/components/parks/live-attraction-data';
 import { RopeDropCard } from '@/components/parks/rope-drop-card';
 import { RideProfileSection } from '@/components/parks/ride-profile-section';
+import { AttractionBlogPostsSection } from '@/components/parks/blog-posts-sections';
 import { RideProfileTeaser } from '@/components/parks/ride-profile-teaser';
 import { isEveningBetter } from '@/lib/utils/rope-drop';
 import { getOgImageUrl } from '@/lib/utils/og-image';
@@ -488,6 +490,20 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
 
           {/* Chapter: FAQ (its own PageSection lives inside the component) */}
           <AttractionFAQSection attraction={attraction} park={park} />
+
+          {/* Chapter: what we wrote about this ride — static content out of the generated
+              blog manifest (no API call, no clock), so it neither competes with the live
+              queries nor adds anything to the shell's TTFB. Renders nothing when no post
+              mentions the ride. */}
+          <Suspense fallback={null}>
+            <AttractionBlogPostsSection
+              locale={locale as Locale}
+              parkSlug={parkSlug}
+              attractionSlug={attractionSlug}
+              geoPath={`${continent}/${country}/${city}`}
+              attractionName={attractionName}
+            />
+          </Suspense>
 
           <div className="mt-10">
             <ShareButtons url={attractionUrl} title={attractionName} />

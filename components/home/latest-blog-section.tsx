@@ -2,7 +2,7 @@ import { ArrowRight } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { BlogPostCard } from '@/components/blog/blog-post-card';
 import { BlogSectionHeader } from '@/components/blog/blog-section-header';
-import { listPosts } from '@/lib/blog';
+import { listPosts } from '@/lib/blog/listing';
 import type { Locale } from '@/i18n/config';
 
 interface LatestBlogSectionProps {

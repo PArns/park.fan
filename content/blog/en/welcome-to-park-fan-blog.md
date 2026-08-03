@@ -17,6 +17,12 @@ tags:
   - ai-predictions
   - behind-the-scenes
 category: news
+parkLinks:
+  - phantasialand
+  - movie-park-germany
+rideLinks:
+  - phantasialand/taron
+  - phantasialand/maus-au-chocolat
 coverImage:
   src: /blog/images/welcome-cover.jpg
   alt: 'Velocicoaster loop in front of Hogwarts castle, Islands of Adventure, Orlando'

@@ -55,6 +55,7 @@ import { ParkBestDaysSection } from '@/components/parks/park-best-days-section';
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
 import { ParkPurchasesCard } from '@/components/parks/park-purchases-card';
 import { NearbyParksSection } from '@/components/parks/nearby-parks-section';
+import { ParkBlogPostsSection } from '@/components/parks/blog-posts-sections';
 import { ContributeBanner } from '@/components/contribute/contribute-banner';
 import { PreferredSourcePrompt } from '@/components/common/preferred-source-prompt';
 import { buildContributeHref } from '@/lib/contribute/prefill';
@@ -564,6 +565,19 @@ export default async function ParkPage({ params }: ParkPageProps) {
               />
             </Suspense>
           )}
+
+          {/* Blog posts about this park — static content out of the generated blog manifest
+              (no API call, no clock), so it neither competes with the live queries nor with the
+              load-last best-travel-time data. Renders nothing when no post mentions the park. */}
+          <Suspense fallback={null}>
+            <ParkBlogPostsSection
+              locale={locale as Locale}
+              parkSlug={parkSlug}
+              geoPath={`${continent}/${country}/${city}`}
+              parkName={parkName}
+              className="mt-8"
+            />
+          </Suspense>
 
           {/* Historical statistics — loaded client-side (CDN-cached /stats route); a skeleton
               shows until the cold/slow stats response lands, so it never blocks the static shell. */}

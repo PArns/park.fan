@@ -2,6 +2,9 @@ import 'server-only';
 import { cache } from 'react';
 import { getGeoStructure } from '@/lib/api/discovery';
 import { getAttractionByGeoPath } from '@/lib/api/parks';
+// Body-derived helpers live in one plain-JS module so the build script can bake
+// their results into the manifest with the exact same implementation.
+import { extractInlineRefs, parseRefKey } from './derive.mjs';
 import type {
   AttractionResponse,
   AttractionStatus,
@@ -10,6 +13,10 @@ import type {
   ParkStatus,
   ScheduleSummary,
 } from '@/lib/api/types';
+
+// Kept as re-exports so `@/lib/blog/park-resolver` stays the one import site for
+// callers that resolve a post's references (BlogReferences, the renderers).
+export { extractInlineRefs, parseRefKey };
 
 export interface ResolvedPark {
   id: string;
@@ -245,113 +252,6 @@ function prettifyName(slug: string): string {
     .split('-')
     .map((part) => (part ? part[0].toUpperCase() + part.slice(1) : part))
     .join(' ');
-}
-
-/**
- * Find every park/attraction reference in a markdown body — both inline link
- * references `[label](park:slug)` / `[label](attraction:parkSlug/slug)` and
- * embedded widget fences such as
- *
- *   ```park-widget slug=disney-magic-kingdom
- *   ```
- *   ```attraction-widget parkSlug=europa-park slug=voltron-nevera
- *   ```
- *
- * The link slug part stops at `?` so authors can pass options. Used at
- * render time so we can resolve them on the server in one batch.
- */
-/**
- * Normalise a `ref:` token value into `{ kind, key }`. Accepts both the legacy
- * short form (just the slug, or `parkSlug/rideSlug` for a ride) AND the new
- * full-path form the editor produces — `/parks/<continent>/<country>/<city>/
- * <parkSlug>[/<rideSlug>]`. The renderer + resolver only ever sees the bare
- * slug pair after this normaliser runs, so existing posts keep working.
- *
- * When the full geo-path form is used, `geoPath` (`continent/country/city`) is
- * returned alongside the bare key so resolution can disambiguate park slugs
- * that are shared by more than one park (e.g. `disneyland-park` in Paris and
- * Anaheim). The bare `key` stays unchanged for backward-compatible map/dedup
- * behaviour; `geoPath` is `undefined` for the short form.
- */
-export function parseRefKey(value: string): {
-  kind: 'park' | 'ride';
-  key: string;
-  geoPath?: string;
-} {
-  if (value.startsWith('/parks/')) {
-    const parts = value.slice('/parks/'.length).split('/').filter(Boolean);
-    // [continent, country, city, parkSlug, rideSlug?]
-    const geoPath = parts.length >= 4 ? parts.slice(0, 3).join('/') : undefined;
-    if (parts.length === 4) return { kind: 'park', key: parts[3], geoPath };
-    if (parts.length >= 5) return { kind: 'ride', key: `${parts[3]}/${parts[4]}`, geoPath };
-  }
-  return { kind: value.includes('/') ? 'ride' : 'park', key: value };
-}
-
-export function extractInlineRefs(markdown: string): {
-  parkSlugs: Set<string>;
-  attractions: Set<string>;
-  /** Bare park slug → `continent/country/city` geoPath, when a ref carried one. */
-  parkGeoPaths: Map<string, string>;
-  /** Bare `parkSlug/rideSlug` → geoPath, when a ref carried one. */
-  attractionGeoPaths: Map<string, string>;
-} {
-  const parks = new Set<string>();
-  const attractions = new Set<string>();
-  const parkGeoPaths = new Map<string, string>();
-  const attractionGeoPaths = new Map<string, string>();
-
-  // 1. Inline link references — [label](park:slug) / [label](attraction:p/s)
-  //    plus the unified [label](ref:slug) / [label](ref:p/s) form.
-  const linkRe = /\[[^\]]+]\(((?:park|attraction|ref):[^)\s]+)\)/g;
-  let match: RegExpExecArray | null;
-  while ((match = linkRe.exec(markdown)) !== null) {
-    const href = match[1];
-    const value = href.includes('?') ? href.slice(0, href.indexOf('?')) : href;
-    if (value.startsWith('park:')) parks.add(value.slice('park:'.length));
-    else if (value.startsWith('attraction:')) {
-      attractions.add(value.slice('attraction:'.length));
-    } else if (value.startsWith('ref:')) {
-      const { kind, key, geoPath } = parseRefKey(value.slice('ref:'.length));
-      if (kind === 'ride') {
-        attractions.add(key);
-        const parkSlug = key.split('/')[0];
-        parks.add(parkSlug);
-        if (geoPath) {
-          attractionGeoPaths.set(key, geoPath);
-          if (!parkGeoPaths.has(parkSlug)) parkGeoPaths.set(parkSlug, geoPath);
-        }
-      } else {
-        parks.add(key);
-        if (geoPath) parkGeoPaths.set(key, geoPath);
-      }
-    }
-  }
-
-  // 2. Widget fences — ```park-widget … ``` / ```attraction-widget … ```
-  const widgetRe = /^```([a-z]+-widget)(?:[ \t]+([^\n`]+))?\n([\s\S]*?)\n?```$/gm;
-  while ((match = widgetRe.exec(markdown)) !== null) {
-    const name = match[1];
-    const attrSource = `${match[2] ?? ''}\n${match[3] ?? ''}`;
-    const slug = extractAttr(attrSource, 'slug');
-    const parkSlug = extractAttr(attrSource, 'parkSlug') ?? extractAttr(attrSource, 'park');
-    if ((name === 'park-widget' || name === 'map-widget') && slug) {
-      parks.add(slug);
-    } else if (name === 'attraction-widget' && slug && parkSlug) {
-      parks.add(parkSlug);
-      attractions.add(`${parkSlug}/${slug}`);
-    }
-  }
-
-  return { parkSlugs: parks, attractions, parkGeoPaths, attractionGeoPaths };
-}
-
-function extractAttr(source: string, key: string): string | undefined {
-  // Accepts `key=value`, `key="value"`, `key: value` formats.
-  const re = new RegExp(`\\b${key}\\s*[:=]\\s*(?:"([^"]*)"|'([^']*)'|([^\\s]+))`, 'i');
-  const m = source.match(re);
-  if (!m) return undefined;
-  return m[1] ?? m[2] ?? m[3];
 }
 
 /**
