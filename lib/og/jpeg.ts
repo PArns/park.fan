@@ -1,5 +1,3 @@
-import sharp from 'sharp';
-
 /**
  * Re-encode an `ImageResponse` as JPEG.
  *
@@ -25,8 +23,15 @@ import sharp from 'sharp';
  * `og.png` directly — not via a redirect — so the name already baked into indexed pages and cached
  * social previews still resolves without an extra hop.
  *
- * Falls back to the original PNG if the encode fails, so a sharp problem degrades to "bigger
- * images" rather than breaking every preview on the site.
+ * Degrades to the original PNG whenever sharp is unavailable or the encode fails, so a problem
+ * here means "bigger images", never a broken preview.
+ *
+ * That fallback is why sharp is imported DYNAMICALLY, inside the try. As a top-level
+ * `import sharp from 'sharp'` the module failed to evaluate when the native binary couldn't be
+ * dlopen'd in the serverless runtime — before any try/catch could run — and took every OG image
+ * on the site to a 500 with it. The package was a devDependency at the time, so it existed during
+ * the build (the crop scripts use it) but not in the deployed function. It is a real dependency
+ * now, and this import shape makes the route survive being wrong about that again.
  */
 export async function ogAsJpeg(image: Response): Promise<Response> {
   // Buffered before the try: `arrayBuffer()` consumes the stream, so the PNG fallback below has to
@@ -35,6 +40,7 @@ export async function ogAsJpeg(image: Response): Promise<Response> {
   const headers = new Headers(image.headers);
 
   try {
+    const { default: sharp } = await import('sharp');
     const jpeg = await sharp(png).jpeg({ quality: 82, mozjpeg: true }).toBuffer();
     // Carry the caller's headers (Cache-Control above all) and correct the ones that describe the
     // body — Content-Length would otherwise still claim the PNG's size.
@@ -42,7 +48,8 @@ export async function ogAsJpeg(image: Response): Promise<Response> {
     headers.set('Content-Length', String(jpeg.length));
     return new Response(new Uint8Array(jpeg), { status: image.status, headers });
   } catch (error) {
-    console.error('[OG Image] JPEG re-encode failed, serving PNG:', error);
+    // Covers both a failed dlopen of sharp's native binary and a failed encode.
+    console.error('[OG Image] JPEG re-encode unavailable, serving PNG:', error);
     headers.set('Content-Length', String(png.length));
     return new Response(new Uint8Array(png), { status: image.status, headers });
   }
