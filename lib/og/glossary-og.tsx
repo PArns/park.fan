@@ -1,4 +1,5 @@
 import { ImageResponse } from 'next/og';
+import { ogAsJpeg } from '@/lib/og/jpeg';
 import { getTranslations } from 'next-intl/server';
 import type { Locale } from '@/i18n/config';
 import { OgBrandLockup } from '@/lib/og/brand-mark';
@@ -32,110 +33,123 @@ export async function renderGlossaryTermOg({ locale, term }: GlossaryOgParams): 
   const subtitle = term.shortDefinition || term.definition.split('\n\n')[0] || '';
   const title = term.name;
 
-  return new ImageResponse(
-    <div
-      style={{
-        display: 'flex',
-        width: '100%',
-        height: '100%',
-        flexDirection: 'column',
-        backgroundColor: '#0f172a',
-        color: 'white',
-        fontFamily: '"Inter"',
-        position: 'relative',
-        overflow: 'hidden',
-      }}
-    >
-      {/* Brand glow + vignette */}
+  return ogAsJpeg(
+    new ImageResponse(
       <div
         style={{
-          position: 'absolute',
-          inset: 0,
-          background: `radial-gradient(circle at 80% 20%, ${GLOW}, transparent 60%)`,
-        }}
-      />
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background:
-            'linear-gradient(to bottom, rgba(15,23,42,0.55) 0%, rgba(15,23,42,0.92) 100%)',
-        }}
-      />
-
-      {/* Content */}
-      <div
-        style={{
-          position: 'relative',
           display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          padding: '64px 72px',
-          height: '100%',
           width: '100%',
+          height: '100%',
+          flexDirection: 'column',
+          backgroundColor: '#0f172a',
+          color: 'white',
+          fontFamily: '"Inter"',
+          position: 'relative',
+          overflow: 'hidden',
         }}
       >
-        {/* Kicker */}
+        {/* Brand glow + vignette */}
         <div
           style={{
+            position: 'absolute',
+            inset: 0,
+            background: `radial-gradient(circle at 80% 20%, ${GLOW}, transparent 60%)`,
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background:
+              'linear-gradient(to bottom, rgba(15,23,42,0.55) 0%, rgba(15,23,42,0.92) 100%)',
+          }}
+        />
+
+        {/* Content */}
+        <div
+          style={{
+            position: 'relative',
             display: 'flex',
-            alignItems: 'center',
-            gap: 16,
-            fontSize: 22,
-            fontWeight: 600,
-            letterSpacing: 1.2,
-            textTransform: 'uppercase',
-            color: KICKER,
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            padding: '64px 72px',
+            height: '100%',
+            width: '100%',
           }}
         >
-          <span
-            style={{ display: 'flex', width: 8, height: 8, borderRadius: 999, background: KICKER }}
-          />
-          {clamp(kicker, 60)}
-        </div>
-
-        {/* Title + short definition */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+          {/* Kicker */}
           <div
             style={{
               display: 'flex',
-              fontSize: title.length > 30 ? 72 : 92,
-              fontWeight: 800,
-              lineHeight: 1.05,
-              letterSpacing: -1.5,
-              maxWidth: 1050,
-              color: '#ffffff',
+              alignItems: 'center',
+              gap: 16,
+              fontSize: 22,
+              fontWeight: 600,
+              letterSpacing: 1.2,
+              textTransform: 'uppercase',
+              color: KICKER,
             }}
           >
-            {clamp(title, 80)}
+            <span
+              style={{
+                display: 'flex',
+                width: 8,
+                height: 8,
+                borderRadius: 999,
+                background: KICKER,
+              }}
+            />
+            {clamp(kicker, 60)}
           </div>
-          {subtitle && (
+
+          {/* Title + short definition */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
             <div
               style={{
                 display: 'flex',
-                fontSize: 28,
-                fontWeight: 400,
-                lineHeight: 1.35,
-                maxWidth: 1000,
-                color: 'rgba(255,255,255,0.82)',
+                fontSize: title.length > 30 ? 72 : 92,
+                fontWeight: 800,
+                lineHeight: 1.05,
+                letterSpacing: -1.5,
+                maxWidth: 1050,
+                color: '#ffffff',
               }}
             >
-              {clamp(subtitle, 180)}
+              {clamp(title, 80)}
             </div>
-          )}
-        </div>
+            {subtitle && (
+              <div
+                style={{
+                  display: 'flex',
+                  fontSize: 28,
+                  fontWeight: 400,
+                  lineHeight: 1.35,
+                  maxWidth: 1000,
+                  color: 'rgba(255,255,255,0.82)',
+                }}
+              >
+                {clamp(subtitle, 180)}
+              </div>
+            )}
+          </div>
 
-        {/* Brand bar — one logo lockup (marker + wordmark asset) per card. */}
-        <OgBrandLockup markerHeight={46} />
-      </div>
-    </div>,
-    {
-      width: WIDTH,
-      height: HEIGHT,
-      headers: {
-        'Cache-Control': 'public, max-age=300, s-maxage=300, stale-while-revalidate=60',
-      },
-    }
+          {/* Brand bar — one logo lockup (marker + wordmark asset) per card. */}
+          <OgBrandLockup markerHeight={46} />
+        </div>
+      </div>,
+      {
+        width: WIDTH,
+        height: HEIGHT,
+        headers: {
+          // 30 days, matching the park/geo cards. This one is even safer: a term card is built
+          // entirely from `lib/glossary/data.ts`, so it cannot change until the next deploy — and a
+          // deploy purges the CDN anyway. The 5-minute window it used to carry expired long before
+          // a term URL was requested a second time, so effectively every hit paid a full render.
+          'Cache-Control':
+            'public, max-age=2592000, s-maxage=2592000, stale-while-revalidate=86400',
+        },
+      }
+    )
   );
 }
 

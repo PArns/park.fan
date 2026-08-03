@@ -87,7 +87,7 @@ export async function generateMetadata({ params }: LocaleLayoutProps): Promise<M
       description: t('description'),
       images: [
         {
-          url: `${siteUrl}/api/og/${locale}/og.png`,
+          url: getOgImageUrl([locale]),
           width: 1200,
           height: 630,
           alt: t('title'),
@@ -98,7 +98,7 @@ export async function generateMetadata({ params }: LocaleLayoutProps): Promise<M
       card: 'summary_large_image',
       title: t('title'),
       description: t('description'),
-      images: [`${siteUrl}/api/og/${locale}/og.png`],
+      images: [getOgImageUrl([locale])],
     },
     robots: {
       index: true,

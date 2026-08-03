@@ -7,10 +7,13 @@ import { getParkBackgroundImage, getAttractionBackgroundImage } from '@/lib/util
 import { stripNewPrefix } from '@/lib/utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { HERO_IMAGES } from '@/lib/hero-images';
-import { ParkAttraction } from '@/lib/api/types';
+import { ParkAttraction, GeoStructure } from '@/lib/api/types';
 import { isValidLocale, type Locale } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { OgBrandLockup } from '@/lib/og/brand-mark';
+import { ogBackgroundSrc } from '@/lib/og/background-photo';
+import { ogAsJpeg } from '@/lib/og/jpeg';
+import { OG_IMAGE_FILENAME } from '@/lib/utils/og-image';
 import {
   FlagDE,
   FlagGB,
@@ -37,6 +40,9 @@ import {
 // OG Image dimensions
 const WIDTH = 1200;
 const HEIGHT = 630;
+
+/** Trailing filenames this endpoint answers to — the current one plus the legacy `.png`. */
+const OG_IMAGE_FILENAMES = new Set([OG_IMAGE_FILENAME, 'og.png']);
 
 // Flag mapping
 const FLAGS: Record<string, React.ComponentType<React.ComponentProps<'svg'>>> = {
@@ -81,9 +87,13 @@ export async function GET(
   try {
     const { path: rawPath } = await params;
 
-    // Remove optional .png extension (fake extension for social media crawlers)
+    // Strip the trailing filename (a fake extension social crawlers like to see; it carries no
+    // routing meaning). `og.jpg` is what getOgImageUrl emits now that the cards are re-encoded to
+    // JPEG; `og.png` is still accepted because it is baked into every already-indexed page and
+    // every cached social preview. Served directly rather than redirected — a 301 would just add
+    // a hop to the requests that are the expensive part of this endpoint to begin with.
     let path = rawPath;
-    if (path.length > 0 && path[path.length - 1] === 'og.png') {
+    if (path.length > 0 && OG_IMAGE_FILENAMES.has(path[path.length - 1])) {
       path = path.slice(0, -1);
     }
 
@@ -181,16 +191,30 @@ export async function GET(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let park: any = null;
 
-    // Fetch GeoStructure for ALL types to get correct names (e.g. City Name "Brühl" vs slug "bruehl")
-    const geo = await getGeoStructure();
+    // GeoStructure is a 159 KB document, and it used to be fetched (and JSON-parsed) on EVERY
+    // render for EVERY card type. The geo cards genuinely need it — they read `parkCount` and the
+    // country list that seeds the map SVG. Place cards (PARK / ATTRACTION) do not: `park.city` is
+    // the preferred city name and wins over `cityNode`, and the country name comes from the `geo`
+    // messages, with `countryNode` only a fallback for a country that has no translation.
+    //
+    // So it is resolved lazily now. Awaiting it stays a single call per render — `getGeoStructure`
+    // is a cached `fetch`, and the promise is memoized here so the two nodes below can't fetch
+    // twice.
+    let geoPromise: Promise<GeoStructure> | null = null;
+    const loadGeo = () => (geoPromise ??= getGeoStructure());
+    // Only the region cards need the node tree up front; HOME/GENERIC take just `parkCount` and
+    // place cards usually take nothing at all, so both reach for `loadGeo()` where they need it.
+    const needsGeoTree = type === 'CONTINENT' || type === 'COUNTRY' || type === 'CITY';
+    const geo = needsGeoTree ? await loadGeo() : null;
 
-    const continentNode = continent ? geo.continents.find((c) => c.slug === continent) : null;
+    const continentNode =
+      continent && geo ? geo.continents.find((c) => c.slug === continent) : null;
     const countryNode = country ? continentNode?.countries.find((c) => c.slug === country) : null;
     const cityNode = city ? countryNode?.cities.find((c) => c.slug === city) : null;
 
     if (type === 'HOME') {
       name = tHomepage('features.title'); // OG home subtitle, e.g. "Plan Your Perfect Theme Park Visit"
-      totalParks = geo.parkCount;
+      totalParks = (await loadGeo()).parkCount;
 
       // Random Background from Hero Images
       const randomIndex = Math.floor(Math.random() * HERO_IMAGES.length);
@@ -205,7 +229,7 @@ export async function GET(
 
       // For 'parks' generic page, we can show stats
       if (secondSegment === 'parks') {
-        totalParks = geo.parkCount;
+        totalParks = (await loadGeo()).parkCount;
       }
 
       // Use a random hero image for visuals if no specific one
@@ -289,9 +313,11 @@ export async function GET(
     // they carry no badge row any more, so the name and location own the composition.
     const isPlaceCard = !['CONTINENT', 'COUNTRY', 'CITY', 'GENERIC', 'HOME'].includes(type);
 
-    // Build absolute URL for background image
+    // Background photo, inlined off the deployment's own disk rather than fetched over the public
+    // internet on every render — see lib/og/background-photo.ts for the measurements. Falls back
+    // to the absolute URL when the file isn't in the bundle, so behaviour never regresses.
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://park.fan';
-    const backgroundUrl = backgroundImagePath ? `${baseUrl}${backgroundImagePath}` : null;
+    const backgroundUrl = ogBackgroundSrc(backgroundImagePath, baseUrl);
 
     // Location string logic
     // For Continent/Country/City we might display "Explore Parks" or similar?
@@ -300,19 +326,33 @@ export async function GET(
     // For Park/Attraction we need city/country names
     let locationString = '';
     if (type === 'PARK' || type === 'ATTRACTION') {
+      // Place cards skipped the geo document above, so the two `…Node` fallbacks below have to
+      // reach for it themselves — and only when they are actually needed. In practice they never
+      // are: `park.city` is set for every park the API resolves, and every country in the catalog
+      // has a `geo.countries.*` message. This keeps the fallback honest without paying 159 KB for
+      // it on the happy path.
+      const geoNodes = async () => {
+        const g = await loadGeo();
+        const cn = g.continents.find((c) => c.slug === continent);
+        const con = cn?.countries.find((c) => c.slug === country);
+        return { countryNode: con, cityNode: con?.cities.find((c) => c.slug === city) };
+      };
+
       // Priority: Park City (Source of Truth) > CityNode Name > Slug Fallback
       // We prioritize park.city because the detailed park record usually has the correct formatted name (e.g. "Brühl"),
       // whereas cityNode might just be derived from the slug ("Bruehl").
       const cityName =
         (park && park.city) ||
-        cityNode?.name ||
+        (await geoNodes()).cityNode?.name ||
         city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
 
       const normalizedCountry = country.toLowerCase().replace(/\s+/g, '-');
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       let countryName = tGeo(`countries.${normalizedCountry}` as any);
       if (countryName === `countries.${normalizedCountry}`)
-        countryName = countryNode?.name || country.charAt(0).toUpperCase() + country.slice(1);
+        countryName =
+          (await geoNodes()).countryNode?.name ||
+          country.charAt(0).toUpperCase() + country.slice(1);
 
       const parkName = park?.name
         ? stripNewPrefix(park.name)
@@ -344,396 +384,406 @@ export async function GET(
         ? tGeo(`continents.${continent}` as any) // eslint-disable-line @typescript-eslint/no-explicit-any
         : '';
 
-    return new ImageResponse(
-      <div
-        style={{
-          display: 'flex',
-          height: '100%',
-          width: '100%',
-          flexDirection: 'column',
-          backgroundColor: '#0f172a', // Slate 900 base
-          color: 'white',
-          fontFamily: '"Inter"',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Background Layer */}
-        {geoSvg ? (
+    return ogAsJpeg(
+      new ImageResponse(
+        <div
+          style={{
+            display: 'flex',
+            height: '100%',
+            width: '100%',
+            flexDirection: 'column',
+            backgroundColor: '#0f172a', // Slate 900 base
+            color: 'white',
+            fontFamily: '"Inter"',
+            position: 'relative',
+            overflow: 'hidden',
+          }}
+        >
+          {/* Background Layer */}
+          {geoSvg ? (
+            <div
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                opacity: 0.3, // Increased opacity for better visibility
+              }}
+            >
+              <svg
+                viewBox={geoSvg.viewBox}
+                width="1200" // Scale to fill roughly
+                height="630"
+                preserveAspectRatio="xMaxYMid meet" // Align Right, Fit Height
+                style={{
+                  // We don't strictly set width/height here to allow aspect ratio preservation via viewBox
+                  // But satori needs some hints.
+                  width: '100%',
+                  height: '100%',
+                }}
+              >
+                <defs>
+                  <linearGradient id="mapGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#38bdf8" />
+                    <stop offset="100%" stopColor="#0ea5e9" />
+                  </linearGradient>
+                </defs>
+                {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+                {geoSvg.paths.map((p: any) => (
+                  <path
+                    key={p.id}
+                    d={p.d}
+                    fill="url(#mapGradient)"
+                    stroke="#7dd3fc"
+                    strokeWidth="1.5"
+                  />
+                ))}
+              </svg>
+            </div>
+          ) : (
+            backgroundUrl && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={backgroundUrl}
+                alt="Background"
+                // Explicit intrinsic size, like the brand lockup already does. Without it Satori has
+                // to derive the dimensions from the image itself before it can lay anything out —
+                // the step that fails with "Image size cannot be determined" when the source can't
+                // be read. The card frame IS 1200×630 and the inlined asset is the 16:9 crop, so
+                // `cover` is an exact fit and nothing is cropped away.
+                width={WIDTH}
+                height={HEIGHT}
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  opacity: 0.4,
+                }}
+              />
+            )
+          )}
+
+          {/* Gradient Overlay for Readability */}
           <div
             style={{
               position: 'absolute',
               top: 0,
               left: 0,
-              right: 0,
-              bottom: 0,
+              width: '100%',
+              height: '100%',
+              background:
+                'linear-gradient(to bottom, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.9))',
+            }}
+          />
+
+          {/* Content Container */}
+          <div
+            style={{
+              position: 'relative',
               display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              opacity: 0.3, // Increased opacity for better visibility
+              flexDirection: 'column',
+              width: '100%',
+              height: '100%',
             }}
           >
-            <svg
-              viewBox={geoSvg.viewBox}
-              width="1200" // Scale to fill roughly
-              height="630"
-              preserveAspectRatio="xMaxYMid meet" // Align Right, Fit Height
-              style={{
-                // We don't strictly set width/height here to allow aspect ratio preservation via viewBox
-                // But satori needs some hints.
-                width: '100%',
-                height: '100%',
-              }}
-            >
-              <defs>
-                <linearGradient id="mapGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="#38bdf8" />
-                  <stop offset="100%" stopColor="#0ea5e9" />
-                </linearGradient>
-              </defs>
-              {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-              {geoSvg.paths.map((p: any) => (
-                <path
-                  key={p.id}
-                  d={p.d}
-                  fill="url(#mapGradient)"
-                  stroke="#7dd3fc"
-                  strokeWidth="1.5"
-                />
-              ))}
-            </svg>
-          </div>
-        ) : (
-          backgroundUrl && (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={backgroundUrl}
-              alt="Background"
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                opacity: 0.4,
-              }}
-            />
-          )
-        )}
-
-        {/* Gradient Overlay for Readability */}
-        <div
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            background: 'linear-gradient(to bottom, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.9))',
-          }}
-        />
-
-        {/* Content Container */}
-        <div
-          style={{
-            position: 'relative',
-            display: 'flex',
-            flexDirection: 'column',
-            width: '100%',
-            height: '100%',
-          }}
-        >
-          {type === 'HOME' ? (
-            // HOME LAYOUT: Explicit Wrapper for Centering
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                width: '100%',
-                height: '100%',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '48px', // Gap between Title Group and Badges
-                padding: '56px',
-              }}
-            >
-              {/* Centered Main Content Group */}
+            {type === 'HOME' ? (
+              // HOME LAYOUT: Explicit Wrapper for Centering
               <div
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
+                  width: '100%',
+                  height: '100%',
                   alignItems: 'center',
-                  gap: '24px',
-                }}
-              >
-                {/* Brand lockup: marker icon + park.fan wordmark asset (dark-bg
-                    variant), mirroring the site header's logo. */}
-                <OgBrandLockup markerHeight={150} />
-
-                <h2
-                  style={{
-                    fontSize: '48px',
-                    fontWeight: 600,
-                    color: 'rgba(255,255,255,0.9)',
-                    margin: 0,
-                    maxWidth: '900px',
-                    textAlign: 'center',
-                    textShadow: '0 2px 10px rgba(0,0,0,0.5)',
-                  }}
-                >
-                  {tHomepage('features.title')}
-                </h2>
-              </div>
-
-              {/* Footer Badges Row */}
-              <div
-                style={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
                   justifyContent: 'center',
-                  alignItems: 'center',
-                  gap: '20px',
-                  // marginTop: 'auto' // Not needed if parent is flex column space-between, but explicitly handling it cleanly
+                  gap: '48px', // Gap between Title Group and Badges
+                  padding: '56px',
                 }}
               >
+                {/* Centered Main Content Group */}
                 <div
                   style={{
                     display: 'flex',
+                    flexDirection: 'column',
                     alignItems: 'center',
-                    gap: '12px',
-                    backgroundColor: 'rgba(59, 130, 246, 0.8)', // blue
-                    color: 'white',
-                    padding: '12px 28px',
-                    borderRadius: '9999px',
-                    fontSize: '28px',
-                    fontWeight: 600,
-                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                    gap: '24px',
                   }}
                 >
-                  ⏱️ {tHomepage('features.realtime.title')}
-                </div>
+                  {/* Brand lockup: marker icon + park.fan wordmark asset (dark-bg
+                    variant), mirroring the site header's logo. */}
+                  <OgBrandLockup markerHeight={150} />
 
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '12px',
-                    backgroundColor: 'rgba(168, 85, 247, 0.8)', // purple
-                    color: 'white',
-                    padding: '12px 28px',
-                    borderRadius: '9999px',
-                    fontSize: '28px',
-                    fontWeight: 600,
-                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                  }}
-                >
-                  🧠 {tHomepage('features.predictions.title')}
-                </div>
-
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '12px',
-                    backgroundColor: 'rgba(15, 23, 42, 0.6)',
-                    border: '1px solid rgba(255,255,255,0.2)',
-                    color: 'white',
-                    padding: '12px 28px',
-                    borderRadius: '9999px',
-                    fontSize: '28px',
-                    fontWeight: 600,
-                  }}
-                >
-                  🌍 {totalParks} Parks
-                </div>
-              </div>
-            </div>
-          ) : (
-            // STANDARD LAYOUT (Regional & Parks)
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                width: '100%',
-                height: '100%',
-                justifyContent: 'space-between',
-                textAlign: 'left', // Ensure standard layout overrides root centering
-                position: 'relative', // Context for absolute sparkline
-                padding: '56px',
-              }}
-            >
-              {/* Top Bar: Location & park.fan branding */}
-              <div
-                style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
-              >
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  <p
+                  <h2
                     style={{
-                      fontSize: '32px',
+                      fontSize: '48px',
                       fontWeight: 600,
                       color: 'rgba(255,255,255,0.9)',
                       margin: 0,
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '12px',
+                      maxWidth: '900px',
+                      textAlign: 'center',
+                      textShadow: '0 2px 10px rgba(0,0,0,0.5)',
                     }}
                   >
-                    {/* Location Iconish text */}
-                    {
-                      ['CONTINENT', 'COUNTRY', 'CITY'].includes(type) ? (
-                        <>
-                          {type === 'CITY' && (
-                            <>
-                              📍 {localizedCountryName} • {localizedContinentName}
-                            </>
-                          )}
-                          {type === 'COUNTRY' && <>🌍 {localizedContinentName}</>}
-                          {type === 'CONTINENT' && <>🌍 {tGeo('exploreByRegion')}</>}
-                        </>
-                      ) : null /* No kicker for GENERIC or place cards — park and
-                        attraction cards show their location centred under the
-                        headline instead of repeating it up here. */
-                    }
-                  </p>
+                    {tHomepage('features.title')}
+                  </h2>
                 </div>
 
-                <OgBrandLockup markerHeight={84} />
-              </div>
-
-              {/* Main Content Area. Place cards (park/attraction) centre their headline
-                  and carry the location directly beneath it — with the live badges gone
-                  the name gets that room instead. */}
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '20px',
-                  ...(isPlaceCard ? { alignItems: 'center', width: '100%' } : {}),
-                }}
-              >
-                {/* Title */}
-                <h1
+                {/* Footer Badges Row */}
+                <div
                   style={{
                     display: 'flex',
-                    fontSize: isPlaceCard ? '104px' : '72px',
-                    fontWeight: 800,
-                    color: 'white',
-                    margin: 0,
-                    lineHeight: 1.1,
-                    letterSpacing: '-0.02em',
-                    textShadow: '0 4px 12px rgba(0,0,0,0.5)',
-                    maxWidth: '90%',
-                    ...(isPlaceCard ? { textAlign: 'center', justifyContent: 'center' } : {}),
+                    flexWrap: 'wrap',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    gap: '20px',
+                    // marginTop: 'auto' // Not needed if parent is flex column space-between, but explicitly handling it cleanly
                   }}
                 >
-                  {name}
-                </h1>
-
-                {/* Location, centred under the headline. Place cards only — the regional
-                    layouts keep their kicker in the top bar. */}
-                {isPlaceCard && locationString && (
                   <div
                     style={{
                       display: 'flex',
                       alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '14px',
-                      fontSize: '38px',
+                      gap: '12px',
+                      backgroundColor: 'rgba(59, 130, 246, 0.8)', // blue
+                      color: 'white',
+                      padding: '12px 28px',
+                      borderRadius: '9999px',
+                      fontSize: '28px',
                       fontWeight: 600,
-                      color: 'rgba(255,255,255,0.85)',
-                      textShadow: '0 2px 8px rgba(0,0,0,0.5)',
+                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
                     }}
                   >
-                    {FLAGS[country.toLowerCase().replace(/\s+/g, '-')] ? (
-                      (() => {
-                        const Flag = FLAGS[country.toLowerCase().replace(/\s+/g, '-')];
-                        return (
-                          <Flag
-                            width="56"
-                            height="40"
-                            style={{ borderRadius: '4px', objectFit: 'cover' }}
-                          />
-                        );
-                      })()
-                    ) : (
-                      <span>📍</span>
-                    )}
-                    {locationString}
+                    ⏱️ {tHomepage('features.realtime.title')}
                   </div>
-                )}
 
-                {/* No badge row for the regional cards any more: it held a live "N open"
-                    count (dropped — it would go stale behind the 30-day cache) next to a
-                    park-count badge that just repeated the footer line below. */}
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '12px',
+                      backgroundColor: 'rgba(168, 85, 247, 0.8)', // purple
+                      color: 'white',
+                      padding: '12px 28px',
+                      borderRadius: '9999px',
+                      fontSize: '28px',
+                      fontWeight: 600,
+                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                    }}
+                  >
+                    🧠 {tHomepage('features.predictions.title')}
+                  </div>
 
-                {/* Status Badges Row - GENERIC */}
-                {type === 'GENERIC' && (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '12px',
+                      backgroundColor: 'rgba(15, 23, 42, 0.6)',
+                      border: '1px solid rgba(255,255,255,0.2)',
+                      color: 'white',
+                      padding: '12px 28px',
+                      borderRadius: '9999px',
+                      fontSize: '28px',
+                      fontWeight: 600,
+                    }}
+                  >
+                    🌍 {totalParks} Parks
+                  </div>
+                </div>
+              </div>
+            ) : (
+              // STANDARD LAYOUT (Regional & Parks)
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  width: '100%',
+                  height: '100%',
+                  justifyContent: 'space-between',
+                  textAlign: 'left', // Ensure standard layout overrides root centering
+                  position: 'relative', // Context for absolute sparkline
+                  padding: '56px',
+                }}
+              >
+                {/* Top Bar: Location & park.fan branding */}
+                <div
+                  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                >
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <p
+                      style={{
+                        fontSize: '32px',
+                        fontWeight: 600,
+                        color: 'rgba(255,255,255,0.9)',
+                        margin: 0,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '12px',
+                      }}
+                    >
+                      {/* Location Iconish text */}
+                      {
+                        ['CONTINENT', 'COUNTRY', 'CITY'].includes(type) ? (
+                          <>
+                            {type === 'CITY' && (
+                              <>
+                                📍 {localizedCountryName} • {localizedContinentName}
+                              </>
+                            )}
+                            {type === 'COUNTRY' && <>🌍 {localizedContinentName}</>}
+                            {type === 'CONTINENT' && <>🌍 {tGeo('exploreByRegion')}</>}
+                          </>
+                        ) : null /* No kicker for GENERIC or place cards — park and
+                        attraction cards show their location centred under the
+                        headline instead of repeating it up here. */
+                      }
+                    </p>
+                  </div>
+
+                  <OgBrandLockup markerHeight={84} />
+                </div>
+
+                {/* Main Content Area. Place cards (park/attraction) centre their headline
+                  and carry the location directly beneath it — with the live badges gone
+                  the name gets that room instead. */}
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '20px',
+                    ...(isPlaceCard ? { alignItems: 'center', width: '100%' } : {}),
+                  }}
+                >
+                  {/* Title */}
+                  <h1
+                    style={{
+                      display: 'flex',
+                      fontSize: isPlaceCard ? '104px' : '72px',
+                      fontWeight: 800,
+                      color: 'white',
+                      margin: 0,
+                      lineHeight: 1.1,
+                      letterSpacing: '-0.02em',
+                      textShadow: '0 4px 12px rgba(0,0,0,0.5)',
+                      maxWidth: '90%',
+                      ...(isPlaceCard ? { textAlign: 'center', justifyContent: 'center' } : {}),
+                    }}
+                  >
+                    {name}
+                  </h1>
+
+                  {/* Location, centred under the headline. Place cards only — the regional
+                    layouts keep their kicker in the top bar. */}
+                  {isPlaceCard && locationString && (
                     <div
                       style={{
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '12px',
-                        backgroundColor: '#3b82f6', // blue-500
-                        color: 'white',
-                        padding: '12px 28px',
-                        borderRadius: '9999px',
-                        fontSize: '32px',
-                        fontWeight: 700,
-                        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                        justifyContent: 'center',
+                        gap: '14px',
+                        fontSize: '38px',
+                        fontWeight: 600,
+                        color: 'rgba(255,255,255,0.85)',
+                        textShadow: '0 2px 8px rgba(0,0,0,0.5)',
                       }}
                     >
-                      👉 {tHomepage('hero.searchPlaceholder') || 'Discover more'}
+                      {FLAGS[country.toLowerCase().replace(/\s+/g, '-')] ? (
+                        (() => {
+                          const Flag = FLAGS[country.toLowerCase().replace(/\s+/g, '-')];
+                          return (
+                            <Flag
+                              width="56"
+                              height="40"
+                              style={{ borderRadius: '4px', objectFit: 'cover' }}
+                            />
+                          );
+                        })()
+                      ) : (
+                        <span>📍</span>
+                      )}
+                      {locationString}
+                    </div>
+                  )}
+
+                  {/* No badge row for the regional cards any more: it held a live "N open"
+                    count (dropped — it would go stale behind the 30-day cache) next to a
+                    park-count badge that just repeated the footer line below. */}
+
+                  {/* Status Badges Row - GENERIC */}
+                  {type === 'GENERIC' && (
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+                      <div
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '12px',
+                          backgroundColor: '#3b82f6', // blue-500
+                          color: 'white',
+                          padding: '12px 28px',
+                          borderRadius: '9999px',
+                          fontSize: '32px',
+                          fontWeight: 700,
+                          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                        }}
+                      >
+                        👉 {tHomepage('hero.searchPlaceholder') || 'Discover more'}
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Bottom Section: regional stats only. Park/attraction cards used to
+                  show the current wait time here; that is exactly the data which forced
+                  a 5-minute cache, so it is gone — see the Cache-Control note below. */}
+                {['CONTINENT', 'COUNTRY', 'CITY'].includes(type) && (
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'flex-end',
+                      justifyContent: 'space-between',
+                      marginTop: '24px',
+                      borderTop: '2px solid rgba(255,255,255,0.15)',
+                      paddingTop: '24px',
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: 'flex',
+                        fontSize: '32px',
+                        color: 'rgba(255,255,255,0.6)',
+                        fontWeight: 500,
+                      }}
+                    >
+                      {tGeo('parkCount', { count: totalParks })} • {tCommon('discover')}
                     </div>
                   </div>
                 )}
               </div>
-
-              {/* Bottom Section: regional stats only. Park/attraction cards used to
-                  show the current wait time here; that is exactly the data which forced
-                  a 5-minute cache, so it is gone — see the Cache-Control note below. */}
-              {['CONTINENT', 'COUNTRY', 'CITY'].includes(type) && (
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'flex-end',
-                    justifyContent: 'space-between',
-                    marginTop: '24px',
-                    borderTop: '2px solid rgba(255,255,255,0.15)',
-                    paddingTop: '24px',
-                  }}
-                >
-                  <div
-                    style={{
-                      display: 'flex',
-                      fontSize: '32px',
-                      color: 'rgba(255,255,255,0.6)',
-                      fontWeight: 500,
-                    }}
-                  >
-                    {tGeo('parkCount', { count: totalParks })} • {tCommon('discover')}
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-      </div>,
-      {
-        width: WIDTH,
-        height: HEIGHT,
-        headers: {
-          // 30 days. The card carries no live data any more (no status, wait time,
-          // crowd level or sparkline), so there is nothing left to go stale — and at
-          // ~9.2k distinct OG URLs hit roughly once a day each, the previous 5-minute
-          // window expired long before a URL was requested again, giving a ~0% hit
-          // rate and one full Satori render (plus a background-image fetch) per
-          // request. A 30-day window turns ~9.5k renders/day into ~300.
-          'Cache-Control':
-            'public, max-age=2592000, s-maxage=2592000, stale-while-revalidate=86400',
-        },
-      }
+            )}
+          </div>
+        </div>,
+        {
+          width: WIDTH,
+          height: HEIGHT,
+          headers: {
+            // 30 days. The card carries no live data any more (no status, wait time,
+            // crowd level or sparkline), so there is nothing left to go stale — and at
+            // ~9.2k distinct OG URLs hit roughly once a day each, the previous 5-minute
+            // window expired long before a URL was requested again, giving a ~0% hit
+            // rate and one full Satori render (plus a background-image fetch) per
+            // request. A 30-day window turns ~9.5k renders/day into ~300.
+            'Cache-Control':
+              'public, max-age=2592000, s-maxage=2592000, stale-while-revalidate=86400',
+          },
+        }
+      )
     );
   } catch (error) {
     console.error('[OG Image] Error generating image:', error);

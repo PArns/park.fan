@@ -20,10 +20,25 @@ const nextConfig: NextConfig = {
     '/[locale]/blog/**': ['./content/blog/**/*', './public/blog/**/*'],
     '/sitemap.xml': ['./content/blog/**/*'],
     '/[locale]': ['./content/blog/**/*'],
-    // The OG renderer inlines the brand PNGs off disk instead of fetching them over
-    // HTTP on every render (see lib/og/brand-mark.tsx). Next can't trace a runtime
-    // readFileSync, so the two assets have to be named explicitly.
-    '/api/og/[...path]': ['./public/logo-dark.png', './public/parkfan-dark.png'],
+    // The OG renderer inlines its images off disk instead of fetching them over HTTP on every
+    // render (see lib/og/brand-mark.tsx and lib/og/background-photo.ts). Next can't trace a
+    // runtime readFileSync, so the assets have to be named explicitly.
+    //
+    // Only the `-16x9` crops: they are what the 1200×630 card actually paints (~119 KB each vs
+    // ~376 KB for the uncropped source), so this adds 64 files / 7.4 MB to the function bundle
+    // instead of the 47 MB the whole directory would cost. The crops are gitignored and cut by
+    // `scripts/generate-image-crops.mjs` during `prebuild`, i.e. they exist before tracing runs.
+    // A source image that somehow has no crop falls back to the absolute URL at runtime.
+    '/api/og/[...path]': [
+      './public/logo-dark.png',
+      './public/parkfan-dark.png',
+      './public/images/parks/**/*-16x9.jpg',
+      // Blog cover images, for the post cards. Scoped to the `cover` naming convention the posts
+      // use (3 files, ~1 MB) rather than all of public/blog (18 MB, mostly gallery photos that no
+      // OG card ever paints). A cover that doesn't follow the convention falls back to fetching
+      // over HTTP — the behaviour every cover had before.
+      './public/blog/**/*cover*.jpg',
+    ],
   },
   compiler: {
     // Remove React properties that are not needed in production
@@ -489,11 +504,19 @@ const nextConfig: NextConfig = {
       // BestDays/Stats/weather sections; CDN-caching keeps the heavy calendar (~450 KB) + the stats
       // off the backend on every park view.
       {
+        // 30 days, matching the value the route handler sets on its own response. It had to be
+        // repeated here and the two had drifted: this rule said 1 day, and a `headers()` rule
+        // OVERRIDES a route handler's Cache-Control (that override is the whole reason this entry
+        // exists — see the blanket /api no-store above), so the cards were silently re-rendering
+        // 30× more often than the route intended. At ~860 ms a render that was most of the OG
+        // function bill. 30 days is safe because these cards carry no live data any more: status,
+        // crowd level and wait time were deliberately removed from them (see the route), since a
+        // social platform re-shows a cached preview for days anyway.
         source: '/api/og/:path*',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=86400, s-maxage=86400, stale-while-revalidate=3600',
+            value: 'public, max-age=2592000, s-maxage=2592000, stale-while-revalidate=86400',
           },
         ],
       },
@@ -513,11 +536,17 @@ const nextConfig: NextConfig = {
         // Attraction detail (history + hourlyForecast time-series) backing the attraction page's
         // client-loaded daily chart + history grid. Like calendar/stats, this specific rule AFTER the
         // blanket /api no-store re-enables CDN caching — without it the route handler's Cache-Control
-        // is clobbered to no-store. Today's forecast refines through the day, so a short window
-        // (10 min + 5 min SWR) matches the backend's ~5-min attraction cache.
+        // is clobbered to no-store.
+        //
+        // 5 min, down from 10: this response now also carries the ride page's LIVE panel (status,
+        // queues, wait time) since useLiveAttractionData stopped polling the whole park for them,
+        // and live values must not sit behind a window twice as long as the one the park poll had.
+        // 300 is exactly what the backend caches an attraction for (HttpCacheInterceptor(300)), so
+        // this adds no origin load — it just stops the edge holding a copy past the point where a
+        // fresher one exists.
         source: '/api/parks/:continent/:country/:city/:park/attractions/:attraction',
         headers: [
-          { key: 'Cache-Control', value: 'public, s-maxage=600, stale-while-revalidate=300' },
+          { key: 'Cache-Control', value: 'public, s-maxage=300, stale-while-revalidate=300' },
         ],
       },
       {

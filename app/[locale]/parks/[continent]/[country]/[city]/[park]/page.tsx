@@ -18,6 +18,8 @@ import type { BestDaysSnapshot } from '@/lib/api/integrated-calendar';
 import { ParkBestDaysSectionSkeleton } from '@/components/parks/park-best-days-section-skeleton';
 import { catchNonFatal } from '@/lib/api/client';
 import { getGlossaryTerms } from '@/lib/glossary/translations';
+import { filterMatchableTerms } from '@/lib/glossary/parse-segments';
+import { buildParkFaqItems } from '@/lib/faq/park-faq';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import type { Locale } from '@/i18n/config';
 import { WeatherCard } from '@/components/parks/weather-card';
@@ -270,9 +272,38 @@ export default async function ParkPage({ params }: ParkPageProps) {
   // Glossary terms for the (client) FAQ section. This is a small static-content lookup (no fetch,
   // no clock) so it's safe to load in the static shell; the client FAQ tree highlights terms from
   // these props instead of awaiting them itself.
+  //
+  // Narrowed to the terms the FAQ text can actually link before it crosses the client boundary —
+  // <ParkFAQSection> is a Client Component, so anything handed to it is serialized into the page.
+  // The full dictionary was 61.2 KB (18.0 KB brotli, a quarter of this page's transfer) so that a
+  // few paragraphs could link a handful of terms. Same reasoning as leanParkForShell in
+  // lib/api/parks.ts: pass what is read, not what is available.
   const glossaryTerms = await getGlossaryTerms(locale as Locale);
   const glossarySegment = GLOSSARY_SEGMENTS[locale as Locale];
-  const faqGlossaryTerms = glossaryTerms.map((term) => ({
+  const tFaq = await getTranslations('seo.faq');
+  // Corpus = every string the FAQ can render. Q0–Q6 are built here exactly as the client builds
+  // them; Q7 (least crowded) only appears after the client's calendar fetch, so its RAW ICU
+  // templates stand in — they carry all the literal text, and the values interpolated into them
+  // (weekday names, the park name, hours) are covered by the items above. A superset is required:
+  // a term missing from the corpus would silently stop being linked.
+  const faqCorpus = [
+    ...buildParkFaqItems(
+      park,
+      locale,
+      tFaq as Parameters<typeof buildParkFaqItems>[2],
+      tGeo as Parameters<typeof buildParkFaqItems>[3],
+      seedNowMs
+    ).flatMap((item) => [
+      item.question,
+      typeof item.answer === 'string'
+        ? item.answer
+        : [item.answer.text, ...item.answer.list].filter(Boolean).join(' '),
+    ]),
+    tFaq.raw('leastCrowdedQ'),
+    tFaq.raw('leastCrowdedA'),
+    tFaq.raw('leastCrowdedNoDataA'),
+  ].join('\n');
+  const faqGlossaryTerms = filterMatchableTerms(faqCorpus, glossaryTerms).map((term) => ({
     id: term.id,
     name: term.name,
     shortDefinition: term.shortDefinition,
