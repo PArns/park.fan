@@ -3,7 +3,9 @@ import { ogAsJpeg } from '@/lib/og/jpeg';
 import { ogBackgroundSrc } from '@/lib/og/background-photo';
 import type { Locale } from '@/i18n/config';
 import { OgBrandLockup } from '@/lib/og/brand-mark';
-import { getPostByLocaleSlug } from '@/lib/blog';
+// Frontmatter-only lookup: the OG route must not pull the post bodies
+// (~900 KB) into its bundle — see lib/blog/listing.ts.
+import { getListItemByLocaleSlug } from '@/lib/blog/listing';
 import { findCanonicalTag } from '@/lib/blog/tags';
 import { resolveCategoryLabel } from '@/lib/blog/categories';
 
@@ -62,7 +64,7 @@ export async function renderBlogOg({ locale, segments }: BlogOgParams): Promise<
     palette = paletteFromString(fullPath);
   } else {
     // Post slug
-    const post = getPostByLocaleSlug(first, locale);
+    const post = getListItemByLocaleSlug(first, locale);
     if (post) {
       title = post.frontmatter.title;
       subtitle = post.frontmatter.excerpt;

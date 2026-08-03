@@ -1,9 +1,9 @@
 import 'server-only';
 import { cache } from 'react';
-import { defaultLocale, type Locale } from '@/i18n/config';
+import { type Locale } from '@/i18n/config';
 import type { BlogPost } from './types';
 import { BLOG_POST_BODIES } from './manifest-bodies';
-import { getTranslationIndex, isValidSlug, resolveEntryForLocale } from './listing';
+import { findTranslationKeyBySlug, resolveEntryForLocale } from './listing';
 
 /**
  * Loading a post WITH its markdown body. This module pulls in
@@ -47,26 +47,7 @@ export const getPostByTranslationKey = cache(
  */
 export const getPostByLocaleSlug = cache(
   (slug: string, requestedLocale: Locale): BlogPost | null => {
-    if (!isValidSlug(slug)) return null;
-    const index = getTranslationIndex();
-
-    for (const [key, localeMap] of index) {
-      if (localeMap.get(requestedLocale) === slug) {
-        return getPostByTranslationKey(key, requestedLocale);
-      }
-    }
-    for (const [key, localeMap] of index) {
-      if (localeMap.get(defaultLocale) === slug) {
-        return getPostByTranslationKey(key, requestedLocale);
-      }
-    }
-    for (const [key, localeMap] of index) {
-      for (const [, otherSlug] of localeMap) {
-        if (otherSlug === slug) {
-          return getPostByTranslationKey(key, requestedLocale);
-        }
-      }
-    }
-    return null;
+    const key = findTranslationKeyBySlug(slug, requestedLocale);
+    return key ? getPostByTranslationKey(key, requestedLocale) : null;
   }
 );

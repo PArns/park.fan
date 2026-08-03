@@ -1,7 +1,7 @@
 import 'server-only';
 import { locales, defaultLocale, SITE_URL, type Locale } from '@/i18n/config';
 import type { BlogFrontmatter, BlogListItem } from './types';
-import { BLOG_POSTS_META, type ManifestParkRef } from './manifest';
+import { BLOG_POSTS_META } from './manifest';
 
 /**
  * Everything a blog LISTING needs — cards, feeds, hreflang, the nav gate, the
@@ -36,12 +36,15 @@ function getTranslationKey(slug: string, fm: BlogFrontmatter): string {
   return fm.translationKey?.trim() || slug;
 }
 
-/** One post in one locale, without its body. */
+/**
+ * One post in one locale, without its body. The manifest's `parkRefs`/`rideRefs`
+ * are deliberately NOT carried here — only `./backlinks` reads them, straight
+ * off `BLOG_POSTS_META`.
+ */
 export interface MetaEntry {
   slug: string;
   fm: BlogFrontmatter;
   readingTimeMinutes: number;
-  parkRefs: ManifestParkRef[];
 }
 
 let META_INDEX: Map<string, Map<Locale, MetaEntry>> | null = null;
@@ -60,7 +63,6 @@ export function getMetaIndex(): Map<string, Map<Locale, MetaEntry>> {
       slug: entry.slug,
       fm: entry.frontmatter,
       readingTimeMinutes: entry.readingTimeMinutes,
-      parkRefs: entry.parkRefs,
     });
     index.set(key, inner);
   }
@@ -74,14 +76,14 @@ export interface ResolvedEntry {
   availableLocales: Locale[];
 }
 
+const RESOLVED = new Map<string, ResolvedEntry | null>();
+
 /**
  * Pick the entry to serve for a requested locale: that locale, else EN, else
  * whichever translation exists. Returns null for a post that is invisible
  * (draft) or unknown — the single place those semantics live, shared by the
  * listings here and the body-loading post lookup in `./index`.
  */
-const RESOLVED = new Map<string, ResolvedEntry | null>();
-
 export function resolveEntryForLocale(
   translationKey: string,
   requestedLocale: Locale
@@ -127,6 +129,53 @@ export function resolveEntryForLocale(
 
     return { entry, loadedLocale, availableLocales };
   }
+}
+
+/**
+ * Find a post's translationKey from a URL slug: the requested locale's slug
+ * first, then EN, then any other locale (which the post page turns into a
+ * redirect to the canonical URL). One implementation, shared by the body-free
+ * lookup below and by `getPostByLocaleSlug` in `./index`.
+ */
+export function findTranslationKeyBySlug(slug: string, requestedLocale: Locale): string | null {
+  if (!isValidSlug(slug)) return null;
+  const index = getTranslationIndex();
+
+  for (const [key, localeMap] of index) {
+    if (localeMap.get(requestedLocale) === slug) return key;
+  }
+  for (const [key, localeMap] of index) {
+    if (localeMap.get(defaultLocale) === slug) return key;
+  }
+  for (const [key, localeMap] of index) {
+    for (const [, otherSlug] of localeMap) {
+      if (otherSlug === slug) return key;
+    }
+  }
+  return null;
+}
+
+/**
+ * A post's card data by URL slug, WITHOUT its body — for surfaces that only
+ * need frontmatter (the OG image route). Hidden posts resolve here just like
+ * they do by URL; drafts don't.
+ */
+export function getListItemByLocaleSlug(
+  slug: string,
+  requestedLocale: Locale
+): BlogListItem | null {
+  const key = findTranslationKeyBySlug(slug, requestedLocale);
+  if (!key) return null;
+  const resolved = resolveEntryForLocale(key, requestedLocale);
+  if (!resolved) return null;
+  return {
+    slug: resolved.entry.slug,
+    translationKey: key,
+    loadedLocale: resolved.loadedLocale,
+    isFallback: resolved.loadedLocale !== requestedLocale,
+    frontmatter: resolved.entry.fm,
+    readingTimeMinutes: resolved.entry.readingTimeMinutes,
+  };
 }
 
 /**

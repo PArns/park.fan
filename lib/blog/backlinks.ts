@@ -164,8 +164,14 @@ function collectMentions(
       const raw = String(value).trim();
       // `rideLinks: [toverland/*]` — every ride of that park the article links,
       // so a park guide doesn't have to repeat its own twelve rides by hand.
+      // The full `/parks/…/<park>/*` form resolves to the same park slug (the
+      // generator accepts both, so both have to work here).
       if (kind === 'ride' && raw.endsWith('/*')) {
-        const parkSlug = raw.slice(0, -2);
+        const base = raw.slice(0, -2);
+        const parkSlug = base.startsWith('/parks/')
+          ? (base.split('/').filter(Boolean).pop() ?? '')
+          : base;
+        if (!parkSlug) continue;
         for (const entry of entries) {
           for (const ref of entry.rideRefs) {
             if (ref.slug.startsWith(`${parkSlug}/`)) addMention(mentions, ref, true);
