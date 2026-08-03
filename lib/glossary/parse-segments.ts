@@ -107,5 +107,46 @@ export function parseGlossarySegments(text: string, terms: GlossaryMatchTerm[]):
   return segments;
 }
 
+/**
+ * Narrow a term list to the ones that can possibly match anywhere in `corpus`.
+ *
+ * Same purpose as `leanParkForShell` in `lib/api/parks.ts`: `<GlossaryInjectProvider>` is a CLIENT
+ * boundary, so whatever it is handed is serialized into the page. The park page was passing the
+ * whole dictionary — 61.2 KB (18.0 KB brotli, 25 % of the park page) — so that a FAQ of a few
+ * paragraphs could link the handful of terms it happens to mention.
+ *
+ * Uses the exact matching rules of {@link parseGlossarySegments} (same alternation, same word
+ * boundaries, same ≤4-char exact-case rule), so a term survives this filter if and only if the
+ * client could have linked it. The one thing it does NOT model is first-occurrence-only — that is
+ * per-string state at render time and would only ever drop MORE terms, never keep fewer.
+ *
+ * Pass a corpus that is a superset of what will be rendered. Text the client interpolates later
+ * (park name, weekday names, hours) has to be included by the caller.
+ */
+export function filterMatchableTerms<T extends GlossaryMatchTerm>(corpus: string, terms: T[]): T[] {
+  const entries = buildMatchEntries(terms);
+  if (entries.length === 0 || !corpus) return [];
+
+  const entryByPattern = new Map(entries.map((e) => [e.pattern.toLowerCase(), e]));
+  const regex = new RegExp(
+    `(${entries.map((e) => buildPatternFragment(e.pattern)).join('|')})`,
+    'gi'
+  );
+
+  const keep = new Set<string>();
+  let match: RegExpExecArray | null;
+  while ((match = regex.exec(corpus)) !== null) {
+    const matched = match[0];
+    const entry = entryByPattern.get(matched.toLowerCase());
+    if (!entry) continue;
+    // Mirrors parseGlossarySegments: short acronym aliases must match case-exactly, so a German
+    // article "das" never drags the "DAS" term into the payload.
+    if (entry.pattern.length <= 4 && entry.pattern !== matched) continue;
+    keep.add(entry.term.id);
+  }
+
+  return terms.filter((t) => keep.has(t.id));
+}
+
 /** Type bridge: the server passes the richer GlossaryTerm; matching only needs a subset. */
 export type { GlossaryTerm };

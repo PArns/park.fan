@@ -39,9 +39,13 @@ export interface ResolvedAttraction {
   attractionName: string;
   href: string;
   /**
-   * Full live attraction payload (queues, statistics, sparkline). Populated
-   * lazily on the server when the post page renders, so AttractionCard can be
-   * embedded inside the hover with the same look as on favorites.
+   * Live attraction payload (queues, statistics, sparkline). Populated lazily on the server when
+   * the post page renders, so AttractionCard can be embedded inside the hover with the same look
+   * as on favorites.
+   *
+   * Trimmed to what the card actually reads — see {@link leanDetailForBlogRef}. The browser
+   * replaces this with the full payload once a card is on screen (`useLiveBlogRide`
+   * `withDetail`), so nothing is lost by shipping the small version in the HTML.
    */
   detail?: AttractionResponse | null;
   /** Current STANDBY wait in minutes (null when unknown). Computed server-side. */
@@ -130,6 +134,48 @@ export const resolvePark = cache(
   }
 );
 
+/**
+ * Trim the attraction detail down to what a blog ride reference renders — the same reasoning that
+ * drives `leanParkForShell` / `leanParkForAttractionShell` in `lib/api/parks.ts`, applied to the
+ * one payload that is serialized *per ride mention* instead of once per page.
+ *
+ * Measured on `/de/blog/phantasialand-tipps`, the untrimmed object was 54.4 KB — for EVERY ride
+ * named in the prose. A post naming ~20 rides shipped 1.73 MB of HTML, 60 % of it the RSC flight
+ * payload:
+ *
+ *     schedule [17]     32.20 KB   ← never read
+ *     history  [30]     15.30 KB   ← never read (that's the ride PAGE's 30-day grid)
+ *     rest               6.90 KB
+ *
+ * The only consumers are `buildAttractionPayload` (`lib/blog/attraction-payload.ts`), which hands
+ * `AttractionCard` an explicit field list, and `overlayAttraction` (`lib/blog/live-overlay.ts`),
+ * which reads `queues`, `status` and `currentLoad.crowdLevel`. Everything kept below appears in
+ * one of those two; everything else was pure payload.
+ *
+ * `statistics` stays WHOLE on purpose — `buildFavoriteStats` reads `statistics.history` for the
+ * card's sparkline, and reads several fields off it best-effort through a `Record` cast, so
+ * narrowing it here would silently blank them.
+ *
+ * An allowlist, not the `delete`-based shape used for parks: only 9 of 25 fields survive, and a
+ * new heavy field on the API side should stay out by default rather than have to be remembered.
+ */
+function leanDetailForBlogRef(detail: AttractionResponse): AttractionResponse {
+  return {
+    id: detail.id,
+    name: detail.name,
+    slug: detail.slug,
+    status: detail.status,
+    // `land` is non-optional on the type; the card never renders it for a blog reference.
+    land: null,
+    latitude: detail.latitude,
+    longitude: detail.longitude,
+    queues: detail.queues,
+    currentLoad: detail.currentLoad,
+    statistics: detail.statistics,
+    bestVisitTimes: detail.bestVisitTimes,
+  };
+}
+
 export const resolveAttraction = cache(
   async (
     parkSlug: string,
@@ -177,7 +223,9 @@ export const resolveAttraction = cache(
       attractionSlug,
       attractionName: detail?.name ?? prettifyName(attractionSlug),
       href: `${park.href}/${attractionSlug}`,
-      detail,
+      // Trimmed before it can reach a client component — the browser swaps in the full payload
+      // for the cards that actually need it (see leanDetailForBlogRef).
+      detail: detail ? leanDetailForBlogRef(detail) : null,
       currentWaitTime,
       status,
       crowdLevel: detail?.currentLoad?.crowdLevel,
