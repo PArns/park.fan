@@ -66,6 +66,9 @@ function readAsDataUri(relPath: string): string | null {
  */
 export function ogBackgroundSrc(imagePath: string | null, baseUrl: string): string | null {
   if (!imagePath) return null;
+  // Already absolute (an externally hosted cover): nothing local to read, hand it back untouched
+  // rather than gluing the origin in front of it.
+  if (/^https?:\/\//i.test(imagePath)) return imagePath;
   return (
     readAsDataUri(toCropPath(imagePath)) ?? readAsDataUri(imagePath) ?? `${baseUrl}${imagePath}`
   );

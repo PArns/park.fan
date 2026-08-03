@@ -1,4 +1,6 @@
 import { ImageResponse } from 'next/og';
+import { ogAsJpeg } from '@/lib/og/jpeg';
+import { ogBackgroundSrc } from '@/lib/og/background-photo';
 import type { Locale } from '@/i18n/config';
 import { OgBrandLockup } from '@/lib/og/brand-mark';
 import { getPostByLocaleSlug } from '@/lib/blog';
@@ -70,7 +72,11 @@ export async function renderBlogOg({ locale, segments }: BlogOgParams): Promise<
       // background. SVG covers fall through to the gradient — which still
       // produces a clean, branded OG card.
       if (coverSrc && !/\.svg(\?|$)/i.test(coverSrc)) {
-        coverImage = absoluteUrl(coverSrc);
+        // Read off disk when the cover ships with the deployment, exactly like the park/ride
+        // cards — otherwise Satori fetches it over the public internet on every render (a
+        // ~400 KB JPEG for the covers in `public/blog/images`). Falls back to the absolute URL
+        // for anything not traced into this function's bundle, which is the old behaviour.
+        coverImage = ogBackgroundSrc(coverSrc, SITE_URL) ?? absoluteUrl(coverSrc);
       }
       const categoryPath = post.frontmatter.category ?? '';
       if (categoryPath) {
@@ -85,131 +91,138 @@ export async function renderBlogOg({ locale, segments }: BlogOgParams): Promise<
 
   const colors = PALETTES[palette];
 
-  return new ImageResponse(
-    <div
-      style={{
-        display: 'flex',
-        width: '100%',
-        height: '100%',
-        flexDirection: 'column',
-        backgroundColor: '#0f172a',
-        color: 'white',
-        fontFamily: '"Inter"',
-        position: 'relative',
-        overflow: 'hidden',
-      }}
-    >
-      {/* Cover image (when available) */}
-      {coverImage && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={coverImage}
-          alt=""
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            opacity: 0.45,
-          }}
-        />
-      )}
-
-      {/* Palette-tinted vignette */}
+  return ogAsJpeg(
+    new ImageResponse(
       <div
         style={{
-          position: 'absolute',
-          inset: 0,
-          background: `radial-gradient(circle at 80% 20%, ${colors.glow}, transparent 60%)`,
-        }}
-      />
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background:
-            'linear-gradient(to bottom, rgba(15,23,42,0.55) 0%, rgba(15,23,42,0.92) 100%)',
-        }}
-      />
-
-      {/* Content */}
-      <div
-        style={{
-          position: 'relative',
           display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          padding: '64px 72px',
-          height: '100%',
           width: '100%',
+          height: '100%',
+          flexDirection: 'column',
+          backgroundColor: '#0f172a',
+          color: 'white',
+          fontFamily: '"Inter"',
+          position: 'relative',
+          overflow: 'hidden',
         }}
       >
-        {/* Top kicker row — a section label. Omitted (empty placeholder keeps
-            the 3-row vertical rhythm) when there's none, e.g. the blog index. */}
-        {kicker ? (
-          <div
+        {/* Cover image (when available) */}
+        {coverImage && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={coverImage}
+            alt=""
+            // Explicit intrinsic size: without it Satori has to derive the dimensions from the
+            // image before it can lay out, which is what throws "Image size cannot be determined"
+            // whenever the source can't be read.
+            width={WIDTH}
+            height={HEIGHT}
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 16,
-              fontSize: 22,
-              fontWeight: 600,
-              letterSpacing: 1.2,
-              textTransform: 'uppercase',
-              color: colors.kicker,
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              opacity: 0.45,
             }}
-          >
-            <span
-              style={{
-                display: 'flex',
-                width: 8,
-                height: 8,
-                borderRadius: 999,
-                background: colors.kicker,
-              }}
-            />
-            {kicker}
-          </div>
-        ) : (
-          <div />
+          />
         )}
 
-        {/* Title block */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-          <div
-            style={{
-              fontSize: title.length > 60 ? 56 : title.length > 30 ? 72 : 88,
-              fontWeight: 800,
-              lineHeight: 1.05,
-              letterSpacing: -1.5,
-              maxWidth: 1050,
-              color: '#ffffff',
-            }}
-          >
-            {clamp(title, 140)}
-          </div>
-          {subtitle && (
+        {/* Palette-tinted vignette */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: `radial-gradient(circle at 80% 20%, ${colors.glow}, transparent 60%)`,
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background:
+              'linear-gradient(to bottom, rgba(15,23,42,0.55) 0%, rgba(15,23,42,0.92) 100%)',
+          }}
+        />
+
+        {/* Content */}
+        <div
+          style={{
+            position: 'relative',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            padding: '64px 72px',
+            height: '100%',
+            width: '100%',
+          }}
+        >
+          {/* Top kicker row — a section label. Omitted (empty placeholder keeps
+            the 3-row vertical rhythm) when there's none, e.g. the blog index. */}
+          {kicker ? (
             <div
               style={{
-                fontSize: 26,
-                fontWeight: 400,
-                lineHeight: 1.35,
-                maxWidth: 980,
-                color: 'rgba(255,255,255,0.82)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 16,
+                fontSize: 22,
+                fontWeight: 600,
+                letterSpacing: 1.2,
+                textTransform: 'uppercase',
+                color: colors.kicker,
               }}
             >
-              {clamp(subtitle, 180)}
+              <span
+                style={{
+                  display: 'flex',
+                  width: 8,
+                  height: 8,
+                  borderRadius: 999,
+                  background: colors.kicker,
+                }}
+              />
+              {kicker}
             </div>
+          ) : (
+            <div />
           )}
-        </div>
 
-        {/* Brand bar — one logo lockup (marker + wordmark asset) per card. */}
-        <OgBrandLockup markerHeight={46} />
-      </div>
-    </div>,
-    { width: WIDTH, height: HEIGHT }
+          {/* Title block */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+            <div
+              style={{
+                fontSize: title.length > 60 ? 56 : title.length > 30 ? 72 : 88,
+                fontWeight: 800,
+                lineHeight: 1.05,
+                letterSpacing: -1.5,
+                maxWidth: 1050,
+                color: '#ffffff',
+              }}
+            >
+              {clamp(title, 140)}
+            </div>
+            {subtitle && (
+              <div
+                style={{
+                  fontSize: 26,
+                  fontWeight: 400,
+                  lineHeight: 1.35,
+                  maxWidth: 980,
+                  color: 'rgba(255,255,255,0.82)',
+                }}
+              >
+                {clamp(subtitle, 180)}
+              </div>
+            )}
+          </div>
+
+          {/* Brand bar — one logo lockup (marker + wordmark asset) per card. */}
+          <OgBrandLockup markerHeight={46} />
+        </div>
+      </div>,
+      { width: WIDTH, height: HEIGHT }
+    )
   );
 }
 

@@ -33,6 +33,11 @@ const nextConfig: NextConfig = {
       './public/logo-dark.png',
       './public/parkfan-dark.png',
       './public/images/parks/**/*-16x9.jpg',
+      // Blog cover images, for the post cards. Scoped to the `cover` naming convention the posts
+      // use (3 files, ~1 MB) rather than all of public/blog (18 MB, mostly gallery photos that no
+      // OG card ever paints). A cover that doesn't follow the convention falls back to fetching
+      // over HTTP — the behaviour every cover had before.
+      './public/blog/**/*cover*.jpg',
     ],
   },
   compiler: {
