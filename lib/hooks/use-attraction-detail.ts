@@ -13,6 +13,16 @@ interface UseAttractionDetailParams {
    * rides doesn't fire a dozen detail requests on load.
    */
   enabled?: boolean;
+  /**
+   * Keep the response fresh on a 5-minute cycle (and on window focus), the way the park poll this
+   * replaced did.
+   *
+   * Opt-in rather than always-on: the ride page now renders its LIVE panel from this response, so
+   * it has to refresh; the blog's ride cards read live status from the lean whole-park
+   * `wait-times` batch and only use this for a sparkline, so polling it there would add a request
+   * per on-screen card for values nothing re-reads.
+   */
+  poll?: boolean;
 }
 
 /**
@@ -40,6 +50,7 @@ export function useAttractionDetail({
   parkSlug,
   attractionSlug,
   enabled = true,
+  poll = false,
 }: UseAttractionDetailParams) {
   return useQuery<AttractionResponse | null>({
     queryKey: ['attraction-detail', continent, country, city, parkSlug, attractionSlug],
@@ -60,9 +71,14 @@ export function useAttractionDetail({
       return (await response.json()) as AttractionResponse;
     },
     enabled: enabled && !!attractionSlug && typeof window !== 'undefined',
-    staleTime: 10 * 60_000,
+    // Polling consumers mirror the old park poll's cadence: 5 min, which is also what the backend
+    // caches an attraction for, so a shorter window would only add origin load without adding
+    // freshness. Non-polling consumers keep the longer window — they read this for the sparkline
+    // and the forecast, not for a live badge.
+    staleTime: poll ? 5 * 60_000 : 10 * 60_000,
     gcTime: 15 * 60_000,
-    refetchOnWindowFocus: false,
+    refetchOnWindowFocus: poll,
+    refetchInterval: poll ? 5 * 60_000 : false,
     retry: 1,
   });
 }

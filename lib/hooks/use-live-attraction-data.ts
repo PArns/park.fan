@@ -1,5 +1,5 @@
-import { useLiveParkData } from './use-live-park-data';
-import type { ParkWithAttractions } from '@/lib/api/types';
+import { useAttractionDetail } from './use-attraction-detail';
+import type { ParkAttraction, ParkWithAttractions } from '@/lib/api/types';
 
 interface UseLiveAttractionDataParams {
   continent: string;
@@ -11,9 +11,22 @@ interface UseLiveAttractionDataParams {
 }
 
 /**
- * Fetches live park data and extracts the specific attraction from it.
- * Reuses the same React Query cache key as useLiveParkData so park and
- * attraction pages share one request when both are mounted.
+ * Live data for the ONE ride a ride page is about.
+ *
+ * This used to poll the whole park (`useLiveParkData` → `/api/parks/<geo>/<park>`) — a ~90 KB
+ * payload carrying every ride in the park, every 5 minutes — and read four things out of it:
+ * `park.status`, `park.timezone`, and the one attraction's live queues/stats. Measured on
+ * `/de/…/phantasialand/taron` that was 2 requests and 143 KB per view, on the site's
+ * highest-traffic route (~25k views/day).
+ *
+ * All of it now comes from the attraction detail the page already fetches for its chart and
+ * history grid: `park.timezone` was always on that response and `park.status` was added for this
+ * (v4.api.park.fan#148), so the second request is simply gone. Same React Query key as
+ * `<AttractionHistorySections>`, so the two still share a single fetch.
+ *
+ * The `initialPark` shell snapshot stays the base: it holds the structural fields (timezone, name,
+ * schedule) that don't change within a session, and it is what renders server-side before any
+ * client fetch lands. The detail is overlaid on top of it once available.
  */
 export function useLiveAttractionData({
   continent,
@@ -24,23 +37,44 @@ export function useLiveAttractionData({
   initialPark,
 }: UseLiveAttractionDataParams) {
   const {
-    data: park,
+    data: detail,
     isFetching,
     isError,
     error,
-  } = useLiveParkData({
+  } = useAttractionDetail({
     continent,
     country,
     city,
     parkSlug,
-    initialData: initialPark,
+    attractionSlug,
+    // This hook backs the live panel, so it needs the 5-minute cadence the park poll had.
+    poll: true,
   });
 
-  const currentPark = park ?? initialPark;
-  const attraction =
-    currentPark.attractions?.find((a) => a.slug === attractionSlug) ??
-    initialPark.attractions?.find((a) => a.slug === attractionSlug) ??
-    null;
+  const shellAttraction = initialPark.attractions?.find((a) => a.slug === attractionSlug) ?? null;
 
-  return { park: currentPark, attraction, isFetching, isError, error };
+  // Park-level: only `status` is live. Everything else on the snapshot (timezone, name, schedule)
+  // is structural. `detail.park.status` is optional on the type — an API predating #148 leaves the
+  // shell's value in place rather than forcing a closed park's rides to look open.
+  const park: ParkWithAttractions = detail?.park?.status
+    ? { ...initialPark, status: detail.park.status }
+    : initialPark;
+
+  // Ride-level: overlay exactly the fields the live panel reads. Spreading `detail` wholesale would
+  // drag `schedule` and `history` (47 KB of the response) into an object the panel re-renders from,
+  // and would clobber shell fields the detail endpoint shapes differently.
+  const attraction: ParkAttraction | null =
+    shellAttraction && detail
+      ? {
+          ...shellAttraction,
+          status: detail.status ?? shellAttraction.status,
+          queues: detail.queues ?? shellAttraction.queues,
+          statistics: detail.statistics ?? shellAttraction.statistics,
+          trend: detail.trend ?? shellAttraction.trend,
+          bestVisitTimes: detail.bestVisitTimes ?? shellAttraction.bestVisitTimes,
+          predictionAccuracy: detail.predictionAccuracy ?? shellAttraction.predictionAccuracy,
+        }
+      : shellAttraction;
+
+  return { park, attraction, isFetching, isError, error };
 }

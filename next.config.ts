@@ -536,11 +536,17 @@ const nextConfig: NextConfig = {
         // Attraction detail (history + hourlyForecast time-series) backing the attraction page's
         // client-loaded daily chart + history grid. Like calendar/stats, this specific rule AFTER the
         // blanket /api no-store re-enables CDN caching — without it the route handler's Cache-Control
-        // is clobbered to no-store. Today's forecast refines through the day, so a short window
-        // (10 min + 5 min SWR) matches the backend's ~5-min attraction cache.
+        // is clobbered to no-store.
+        //
+        // 5 min, down from 10: this response now also carries the ride page's LIVE panel (status,
+        // queues, wait time) since useLiveAttractionData stopped polling the whole park for them,
+        // and live values must not sit behind a window twice as long as the one the park poll had.
+        // 300 is exactly what the backend caches an attraction for (HttpCacheInterceptor(300)), so
+        // this adds no origin load — it just stops the edge holding a copy past the point where a
+        // fresher one exists.
         source: '/api/parks/:continent/:country/:city/:park/attractions/:attraction',
         headers: [
-          { key: 'Cache-Control', value: 'public, s-maxage=600, stale-while-revalidate=300' },
+          { key: 'Cache-Control', value: 'public, s-maxage=300, stale-while-revalidate=300' },
         ],
       },
       {

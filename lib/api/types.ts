@@ -676,11 +676,23 @@ export interface AttractionResponse {
   forecasts?: ForecastItem[];
   latitude: number | null;
   longitude: number | null;
+  /**
+   * Parent park block. Carries `timezone` and the park's live `status`, which is what lets a ride
+   * page render from this response alone instead of also polling the full park payload for two
+   * fields (see `useLiveAttractionData`). `status` was added in v4.api.park.fan#148.
+   */
   park?: {
     id: string;
     name: string;
     slug: string;
+    timezone?: string;
+    continent?: string | null;
+    country?: string | null;
+    city?: string | null;
+    status?: ParkStatus;
   } | null;
+  /** Wait-time trend direction. Present on this endpoint as well as on the park payload. */
+  trend?: 'up' | 'down' | 'stable' | null;
   statistics?: AttractionStatistics;
   predictionAccuracy?: PredictionAccuracy | null;
   history?: AttractionHistoryDay[];
