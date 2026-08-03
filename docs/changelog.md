@@ -11,7 +11,7 @@ The Hobby plan allows 100k events/month; early August was tracking toward
 property as another event**, so the properties were ~70 % of the bill while the
 pageviews — the only thing actually wanted here — were ~26 %.
 
-- **`identifyVisitor()` removed.** Three session properties on *every* session,
+- **`identifyVisitor()` removed.** Three session properties on _every_ session,
   which was the entire Session-data band (~25 % of usage). Two of them
   (`browser_language`, `site_locale`) restated what Umami already collects
   natively and what the URL path already says.
@@ -30,7 +30,7 @@ pageviews — the only thing actually wanted here — were ~26 %.
   clicks, `map_opened`, `calendar_date_selected`) — dead code that invited
   someone to re-add a three-property event firing on view.
 - **`data-exclude-hash="true"`** stops a phantom-pageview leak: Umami's tracker
-  patches `pushState` *and* `replaceState` and treats a changed hash as a new
+  patches `pushState` _and_ `replaceState` and treats a changed hash as a new
   URL, so every park-page tab switch and every calendar month step was billed
   as a full extra pageview and inflated Views against Visitors.
 - **`data-domains` now lists `www.park.fan`** as well. The attribute is a hard

@@ -45,7 +45,9 @@ interface WebVitalAttribution {
 }
 
 /** The phase that contributed most to this interaction — the part worth fixing. */
-function dominantPhase(a: WebVitalAttribution | undefined): 'input' | 'processing' | 'presentation' {
+function dominantPhase(
+  a: WebVitalAttribution | undefined
+): 'input' | 'processing' | 'presentation' {
   const input = a?.inputDelay ?? 0;
   const processing = a?.processingDuration ?? 0;
   const presentation = a?.presentationDelay ?? 0;

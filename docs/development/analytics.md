@@ -16,11 +16,11 @@ From the [Cloud FAQ](https://docs.umami.is/docs/cloud/faq):
 
 So the billed unit is a **stored row**, not a user action:
 
-| What | Billed as |
-| --- | --- |
-| One pageview | 1 |
-| One custom event with no properties | 1 |
-| One custom event with 5 properties | **6** |
+| What                                     | Billed as          |
+| ---------------------------------------- | ------------------ |
+| One pageview                             | 1                  |
+| One custom event with no properties      | 1                  |
+| One custom event with 5 properties       | **6**              |
 | One `umami.identify()` with 3 properties | **3, per session** |
 
 The usage chart in the Umami dashboard splits this into **Events** (hits + custom events),
@@ -36,27 +36,27 @@ referrer, the screen size and `navigator.language`. So no `locale` (it is right 
 
 **2. Never send what another property implies.** These were all removed for restating a sibling:
 
-| Removed | Because it was |
-| --- | --- |
-| `in_park` | `type === 'in_park'` |
-| `geo_allowed` | `source === 'gps'` |
-| `hasQuery` | `queryLength > 0` |
-| `rating` (INP) | a threshold on `value` |
-| `parkId` next to `parkName` | the same park, twice |
-| `nearby_in_park_detected` | `nearby_parks_loaded` with `type: 'in_park'` |
+| Removed                     | Because it was                               |
+| --------------------------- | -------------------------------------------- |
+| `in_park`                   | `type === 'in_park'`                         |
+| `geo_allowed`               | `source === 'gps'`                           |
+| `hasQuery`                  | `queryLength > 0`                            |
+| `rating` (INP)              | a threshold on `value`                       |
+| `parkId` next to `parkName` | the same park, twice                         |
+| `nearby_in_park_detected`   | `nearby_parks_loaded` with `type: 'in_park'` |
 
 Before adding a property, price it: an event that fires on **load** rather than on a click costs
-its property count on *every* qualifying pageview.
+its property count on _every_ qualifying pageview.
 
 ### Where the budget went (Aug 2026 cut)
 
-| Change | Why it was expensive |
-| --- | --- |
-| `identifyVisitor()` removed entirely | 3 session properties **per session** — the whole Session-data band. Two of the three (`browser_language`, `site_locale`) duplicated what Umami collects natively; `has_favorites` did not justify a row on every session. |
-| `web-vital-inp`: 9 properties → 4, and only non-`good` samples | Fired on every pageview with an interaction at 10 billed rows a time — the largest single line. |
-| `nearby_parks_loaded` trimmed, `nearby_in_park_detected` dropped | Fires on *load* of the geo card, not on a click. |
-| `data-exclude-hash="true"` | See below — phantom pageviews. |
-| 8 unused `track*` helpers deleted | Dead code that invited someone to re-add a 3-property event that fires on view. |
+| Change                                                           | Why it was expensive                                                                                                                                                                                                      |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `identifyVisitor()` removed entirely                             | 3 session properties **per session** — the whole Session-data band. Two of the three (`browser_language`, `site_locale`) duplicated what Umami collects natively; `has_favorites` did not justify a row on every session. |
+| `web-vital-inp`: 9 properties → 4, and only non-`good` samples   | Fired on every pageview with an interaction at 10 billed rows a time — the largest single line.                                                                                                                           |
+| `nearby_parks_loaded` trimmed, `nearby_in_park_detected` dropped | Fires on _load_ of the geo card, not on a click.                                                                                                                                                                          |
+| `data-exclude-hash="true"`                                       | See below — phantom pageviews.                                                                                                                                                                                            |
+| 8 unused `track*` helpers deleted                                | Dead code that invited someone to re-add a 3-property event that fires on view.                                                                                                                                           |
 
 ---
 
@@ -97,7 +97,7 @@ Three consequences worth remembering when reading the dashboard:
    than a calendar month is not deduplicated across the month boundary — a returning visitor is
    counted again from the 1st.
 3. **`data-domains` is a hard gate.** The tracker only runs when `window.location.hostname` is in
-   the list, so a host missing from it is *silently* absent from the stats. The list is
+   the list, so a host missing from it is _silently_ absent from the stats. The list is
    `park.fan,www.park.fan`. Add any new production hostname here or it will not be counted.
 
 ### Known undercount: `data-do-not-track="true"`
