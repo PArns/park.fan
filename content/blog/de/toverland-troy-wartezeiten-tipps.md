@@ -22,6 +22,9 @@ tags:
   - halloween
   - saison-2026
 category: guides
+parkLinks:
+  - toverland
+  - efteling
 coverImage:
   src: /images/parks/toverland/troy-16x9.jpg
   alt: 'Das hölzerne trojanische Pferd im Themenbereich Ithaka des Toverland, auf einem Wagen stehend'

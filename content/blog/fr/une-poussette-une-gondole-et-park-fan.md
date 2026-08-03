@@ -18,6 +18,9 @@ tags:
   - previsions-ia
   - coulisses
 category: news
+parkLinks:
+  - phantasialand
+  - movie-park-germany
 coverImage:
   src: /blog/images/welcome-cover.jpg
   alt: 'Looping du Velocicoaster devant le château de Poudlard, Islands of Adventure, Orlando'

@@ -55,6 +55,8 @@ lib/glossary/client-data.ts
 lib/glossary/client-data/
 lib/attraction-images.ts
 lib/blog/manifest.ts
+lib/blog/manifest-bodies.ts
+lib/blog/manifest-galleries.ts
 
 # Auto-generated aspect-ratio crops (scripts/generate-image-crops.mjs) — cut from
 # the committed source photos at build time, never hand-authored.

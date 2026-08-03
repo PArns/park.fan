@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
-import { listPosts } from '@/lib/blog';
+import { listPosts } from '@/lib/blog/listing';
 import { cn } from '@/lib/utils';
 import type { Locale } from '@/i18n/config';
 

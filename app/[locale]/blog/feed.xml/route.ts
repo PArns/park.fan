@@ -1,5 +1,5 @@
 import type { NextRequest } from 'next/server';
-import { hasPublishedPosts, listPosts } from '@/lib/blog';
+import { hasPublishedPosts, listPosts } from '@/lib/blog/listing';
 import { resolveAuthor } from '@/lib/blog/authors';
 import { routing, type Locale } from '@/i18n/routing';
 

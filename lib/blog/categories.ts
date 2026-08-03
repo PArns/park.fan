@@ -4,7 +4,7 @@ import path from 'path';
 import { cache } from 'react';
 import type { Locale } from '@/i18n/config';
 import { defaultLocale } from '@/i18n/config';
-import { listPosts } from './index';
+import { listPosts } from './listing';
 import type { BlogListItem, CategoryNode } from './types';
 
 const LABELS_PATH = path.resolve(process.cwd(), 'content', 'blog', 'categories.json');

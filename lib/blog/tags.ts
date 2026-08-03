@@ -1,7 +1,7 @@
 import 'server-only';
 import { cache } from 'react';
 import { locales, SITE_URL, type Locale } from '@/i18n/config';
-import { listPosts } from './index';
+import { listPosts } from './listing';
 
 /** Lowercase + replace any whitespace / special chars with hyphens. */
 export function normalizeTagSlug(tag: string): string {

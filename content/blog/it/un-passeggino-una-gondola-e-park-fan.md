@@ -17,6 +17,9 @@ tags:
   - previsioni-ia
   - dietro-le-quinte
 category: news
+parkLinks:
+  - phantasialand
+  - movie-park-germany
 coverImage:
   src: /blog/images/welcome-cover.jpg
   alt: 'Loop del Velocicoaster davanti al castello di Hogwarts, Islands of Adventure, Orlando'

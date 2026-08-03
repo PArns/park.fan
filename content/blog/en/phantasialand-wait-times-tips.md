@@ -22,6 +22,8 @@ tags:
   - park-fan
   - season-2026
 category: guides
+parkLinks:
+  - phantasialand
 coverImage:
   src: /images/parks/phantasialand/taron-16x9.jpg
   alt: 'Taron races through the basalt columns of the Klugheim themed area at Phantasialand'

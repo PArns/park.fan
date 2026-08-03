@@ -282,6 +282,11 @@
     "toggle": "Design wechseln"
   },
   "parks": {
+    "blogPosts": {
+      "title": "{park} im Blog",
+      "intro": "Beiträge aus unserem Blog, in denen {park} vorkommt.",
+      "viewAll": "Alle Beiträge lesen"
+    },
     "title": "Mehr Loopings, weniger Stehen",
     "heroWelcome": "Herzlich willkommen im {parkName}",
     "heroNearPark": "Der {parkName} ist in deiner Nähe (unter 5 km). Unten siehst du aktuelle Wartezeiten, Öffnungszeiten und Auslastung – oder suche einen anderen Park.",

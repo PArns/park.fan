@@ -17,6 +17,9 @@ tags:
   - ai-voorspellingen
   - achter-de-schermen
 category: news
+parkLinks:
+  - phantasialand
+  - movie-park-germany
 coverImage:
   src: /blog/images/welcome-cover.jpg
   alt: 'Velocicoaster-looping voor het kasteel van Zweinstein, Islands of Adventure, Orlando'

@@ -55,6 +55,7 @@ tags:                                                    # drives tag pages + ta
   - meta
   - launch
 category: news                                           # slash-path, see §4
+parkLinks: [europa-park]                                 # park pages linking back, see §3
 coverImage:
   src: /blog/images/welcome-cover.jpg
   alt: 'Cover alt text'
@@ -186,6 +187,46 @@ The target is resolved **in the current locale**, so a German post hovering a
 cross-reference shows the German card, falling back to English like the index
 does. An unresolvable slug degrades to a plain link rather than disappearing,
 but that means a typo is silent — check the hover appears.
+
+### The other direction: park pages linking back (`parkLinks`)
+
+Every park page carries a **"{park} im Blog"** section listing the posts that
+talk about that park (`ParkBlogPostsSection`, fed by
+[`lib/blog/park-posts.ts`](../../lib/blog/park-posts.ts)). It is built from the
+post, so **normally there is nothing to configure**: a post shows up on the page
+of every park it references — `ref:`/`park:`/`attraction:` links, the
+`park-widget` / `map-widget` / `attraction-widget` fences (a ride reference
+counts for its parent park) and anything in `relatedParks`.
+
+That default is what a round-up wants: the Halloween guide references ten parks
+and appears on all ten pages, no list to maintain.
+
+Use the frontmatter key when the automatic result is wrong:
+
+```yaml
+parkLinks: false # never link this post from a park page
+parkLinks: # …or: exactly these parks, ignoring the body
+  - toverland
+  - efteling
+parkLinks: # full path form pins a slug that exists twice
+  - /parks/europe/france/paris/disneyland-park
+```
+
+- An explicit list **replaces** the automatic detection — a park that isn't
+  listed doesn't get the post, however often the body links it. Use it for a
+  guide that name-drops a dozen parks for comparison (the Toverland guide is
+  about Toverland and the Efteling day next door, not about Liseberg because
+  Balder came up once).
+- `parkLinks` is a property of the **post**, not of one translation: setting it
+  in any locale file governs every language, so a rewritten paragraph in one
+  translation can't silently change which park pages link the article. Still,
+  write it into all locale files — a frontmatter block that only exists in
+  German is invisible to whoever edits the English one.
+- Ordering on the park page: explicit configuration first, then posts whose
+  tags or category name the park, then the rest, newest-first within each group.
+  Only the top three are shown.
+- Drafts, hidden posts and locales without blog surfaces are excluded
+  automatically — the section renders nothing rather than an empty heading.
 
 ---
 

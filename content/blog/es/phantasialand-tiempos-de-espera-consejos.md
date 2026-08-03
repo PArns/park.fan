@@ -22,6 +22,8 @@ tags:
   - park-fan
   - temporada-2026
 category: guides
+parkLinks:
+  - phantasialand
 coverImage:
   src: /images/parks/phantasialand/taron-16x9.jpg
   alt: 'Taron atraviesa a toda velocidad las columnas de basalto de la zona temática Klugheim en el Phantasialand'

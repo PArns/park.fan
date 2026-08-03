@@ -17,6 +17,9 @@ tags:
   - ki-prognosen
   - hinter-den-kulissen
 category: news
+parkLinks:
+  - phantasialand
+  - movie-park-germany
 coverImage:
   src: /blog/images/welcome-cover.jpg
   alt: 'Velocicoaster-Looping vor dem Hogwarts-Schloss, Islands of Adventure, Orlando'

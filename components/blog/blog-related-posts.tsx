@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { BlogPostCard } from './blog-post-card';
-import { listPosts } from '@/lib/blog';
+import { listPosts } from '@/lib/blog/listing';
 import { parseCategoryPath } from '@/lib/blog/categories';
 import type { Locale } from '@/i18n/config';
 import type { BlogListItem } from '@/lib/blog/types';

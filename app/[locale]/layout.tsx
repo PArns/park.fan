@@ -14,7 +14,7 @@ import { pickClientMessages } from '@/i18n/client-messages';
 import { Providers } from '@/lib/providers';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-import { hasPublishedPosts } from '@/lib/blog';
+import { hasPublishedPosts } from '@/lib/blog/listing';
 import { LanguageBanner } from '@/components/layout/language-banner';
 import Script from 'next/script';
 import { AnalyticsIdentify } from '@/components/common/analytics-identify';

@@ -3,7 +3,7 @@ import { ArrowRight, Newspaper } from 'lucide-react';
 import { useFormatter } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
-import { listPosts } from '@/lib/blog';
+import { listPosts } from '@/lib/blog/listing';
 import { resolveCategoryLabel } from '@/lib/blog/categories';
 import type { BlogListItem } from '@/lib/blog/types';
 import type { Locale } from '@/i18n/config';

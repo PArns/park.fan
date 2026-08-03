@@ -8,7 +8,7 @@ import {
   localeToOpenGraphLocale,
   SITE_URL,
 } from '@/i18n/config';
-import { BLOG_POSTS_PER_PAGE, listPosts, hasPublishedPosts } from '@/lib/blog';
+import { BLOG_POSTS_PER_PAGE, listPosts, hasPublishedPosts } from '@/lib/blog/listing';
 import { BlogPostGrid } from '@/components/blog/blog-post-grid';
 import { BlogCategoryTree } from '@/components/blog/blog-category-tree';
 import { BlogTagCloud } from '@/components/blog/blog-tag-cloud';

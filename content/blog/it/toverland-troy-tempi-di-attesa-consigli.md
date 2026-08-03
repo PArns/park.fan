@@ -23,6 +23,9 @@ tags:
   - halloween
   - stagione-2026
 category: guides
+parkLinks:
+  - toverland
+  - efteling
 coverImage:
   src: /images/parks/toverland/troy-16x9.jpg
   alt: "Il cavallo di Troia in legno nell'area a tema Ithaka di Toverland, su un carro"

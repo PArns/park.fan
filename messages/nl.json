@@ -282,6 +282,11 @@
     "toggle": "Thema wisselen"
   },
   "parks": {
+    "blogPosts": {
+      "title": "{park} op het blog",
+      "intro": "Artikelen uit ons blog waarin {park} voorkomt.",
+      "viewAll": "Alle artikelen lezen"
+    },
     "title": "Meer loopings, minder wachten",
     "heroWelcome": "Welkom in {parkName}",
     "heroNearPark": "{parkName} is in de buurt (binnen 5 km). Hieronder vind je actuele wachttijden, openingstijden en drukte – of zoek een ander park.",

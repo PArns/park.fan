@@ -94,6 +94,14 @@ export interface BlogFrontmatter {
   gallery?: BlogImage[] | string | { folder: string };
   relatedParks?: string[];
   relatedAttractions?: BlogAttractionRef[];
+  /**
+   * Where this post is linked FROM on park pages (see `lib/blog/park-posts.ts`):
+   *   - omitted / `true` → automatic: every park the body references plus
+   *     `relatedParks`,
+   *   - `false` → never surfaced on a park page,
+   *   - `[slug, …]` → exactly these parks (bare slug or full `/parks/…` path).
+   */
+  parkLinks?: boolean | string[];
   seo?: BlogSeo;
   /** Auto-calculated if omitted. */
   readingTime?: number;
