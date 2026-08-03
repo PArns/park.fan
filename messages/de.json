@@ -1401,7 +1401,7 @@
       "height": "Höhe",
       "length": "Länge",
       "duration": "Fahrzeit",
-      "statsSource": "Messwerte: Wikidata",
+      "statsSource": "Messwerte: {source}",
       "openGlossary": "Im Glossar nachlesen",
       "viewerTitle": "3-D-Ansicht: {name}",
       "figureCount": "{count, plural, one {# Fahrfigur} other {# Fahrfiguren}}"

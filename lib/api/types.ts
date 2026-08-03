@@ -773,14 +773,30 @@ export interface RideStats {
   lengthM: number | null;
   /** Ride duration in seconds. */
   durationSeconds: number | null;
-  /** Which side of the merge the surviving values came from. */
-  source: 'curated' | 'wikidata' | 'mixed';
   /**
-   * Wikidata entity id, e.g. "Q319081" — present **only** when an imported
-   * value survived curation, so a `curated` ride carries none. Optional for
-   * that reason: attribute nothing without one.
+   * Which side of the merge the surviving values came from. Provenance only —
+   * to render the credit line, read {@link RideStats.attribution}.
    */
+  source: 'curated' | 'wikidata' | 'mixed';
+  /** Wikidata entity id — `attribution.url` already points at it. */
   sourceId?: string | null;
+  /**
+   * Who to credit, resolved by the API: null exactly when every surviving
+   * number is hand-curated and nobody outside is owed one.
+   *
+   * Render it when it is there and nothing when it is not. Do **not** rebuild
+   * the rule from `source`/`sourceId` — doing that is what credited RCDB for
+   * numbers RCDB never supplied.
+   */
+  attribution?: RideStatsAttribution | null;
+}
+
+/** A credit line the API has already resolved: who, and where they say it. */
+export interface RideStatsAttribution {
+  /** Source name to credit, e.g. "Wikidata". Localize the sentence, not this. */
+  label: string;
+  /** The record the numbers are stated on. Absolute, ready to link. */
+  url: string;
 }
 
 /** One ride in the glossary → rides direction (`/v1/glossary/terms/:id/attractions`). */

@@ -1401,7 +1401,7 @@
       "height": "Altura",
       "length": "Longitud",
       "duration": "Duración",
-      "statsSource": "Mediciones: Wikidata",
+      "statsSource": "Mediciones: {source}",
       "openGlossary": "Consultar en el glosario",
       "viewerTitle": "Vista 3-D: {name}",
       "figureCount": "{count, plural, one {# elemento del trazado} other {# elementos del trazado}}"

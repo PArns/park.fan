@@ -1401,7 +1401,7 @@
       "height": "Hoogte",
       "length": "Lengte",
       "duration": "Rijtijd",
-      "statsSource": "Meetwaarden: Wikidata",
+      "statsSource": "Meetwaarden: {source}",
       "openGlossary": "Naslaan in het glossarium",
       "viewerTitle": "3D-weergave: {name}",
       "figureCount": "{count, plural, one {# baanelement} other {# baanelementen}}"

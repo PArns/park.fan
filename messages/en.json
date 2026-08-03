@@ -1401,7 +1401,7 @@
       "height": "Height",
       "length": "Length",
       "duration": "Ride time",
-      "statsSource": "Measurements: Wikidata",
+      "statsSource": "Measurements: {source}",
       "openGlossary": "Read up in the glossary",
       "viewerTitle": "3-D view: {name}",
       "figureCount": "{count, plural, one {# track element} other {# track elements}}"

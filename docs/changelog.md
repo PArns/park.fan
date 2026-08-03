@@ -18,13 +18,17 @@ production it never was: 26 of the 27 rides that currently state a measurement
 are `curated` with no id at all, so every one of them rendered "Measurements:
 RCDB" over numbers RCDB never supplied, linking to `rcdb.com/undefined.htm`.
 
-- **The attribution follows the data.** A ride whose numbers survived the import
-  says "Measurements: Wikidata" and links to the entity they are stated on;
-  a purely curated ride shows no foreign attribution, because there is none to
-  give.
-- **`RideStats` matches what the API sends** — the three-value `source`, and
-  `sourceId` optional rather than required, so the missing-id case is a type
-  error instead of a broken link.
+- **The API resolves the credit now, and the page just renders it.**
+  `stats.attribution` is `{ label, url }` or **null when every surviving number
+  is hand-curated** ([v4.api.park.fan#150](https://github.com/PArns/v4.api.park.fan/pull/150)),
+  so the rule and the URL shape live with the data instead of being rebuilt at
+  the edge. The page shows the line when it is there and nothing when it is not.
+  That is the whole condition — there is no `source` to interpret and no
+  `wikidata.org/wiki/…` to assemble, which is what got this wrong twice.
+- **`statsSource` takes the source name as `{source}`** rather than baking
+  "Wikidata" into six translations, so a second source needs no locale change.
+- **`RideStats` matches what the API sends** — three-value `source`, optional
+  `sourceId`, plus `attribution`.
 - **The grid drops the rows nothing can fill** — drop, elevation, steepest
   angle, g-force, capacity, riders per train, restraints, designer, builder,
   train builder — along with their translation keys in all six locales.

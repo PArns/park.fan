@@ -170,20 +170,19 @@ export async function RideProfileSection({ profile, locale }: RideProfileSection
           </dl>
         )}
 
-        {/* Whose numbers these are. Only the imported ones owe an attribution,
-            and `sourceId` is exactly the flag for that: the API sets it when a
-            Wikidata value survived curation and omits it when none did. Keyed
-            off the id rather than off `source` so there is no way to render the
-            credit without the entity it is supposed to link to. */}
-        {stats?.sourceId && (
+        {/* Whose numbers these are. The API resolves this — `attribution` is
+            null exactly when every surviving number is hand-curated and nobody
+            outside is owed a credit — so there is no rule to reimplement here
+            and no URL to assemble. */}
+        {stats?.attribution && (
           <p className="text-muted-foreground text-xs">
             <a
-              href={`https://www.wikidata.org/wiki/${stats.sourceId}`}
+              href={stats.attribution.url}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-foreground inline-flex items-center gap-1 transition-colors"
             >
-              {t('statsSource')}
+              {t('statsSource', { source: stats.attribution.label })}
               <ExternalLink className="h-3 w-3" aria-hidden="true" />
             </a>
           </p>

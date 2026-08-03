@@ -1401,7 +1401,7 @@
       "height": "Hauteur",
       "length": "Longueur",
       "duration": "Durée",
-      "statsSource": "Mesures : Wikidata",
+      "statsSource": "Mesures : {source}",
       "openGlossary": "Consulter le glossaire",
       "viewerTitle": "Vue 3-D : {name}",
       "figureCount": "{count, plural, one {# élément du tracé} other {# éléments du tracé}}"
