@@ -98,7 +98,10 @@ export function GlossaryTermDetail({
   const backButton = (
     <div className="pb-2">
       {/* buttonLinkProps, not `<Button asChild>` — server component, see conventions §14. */}
-      <Link href={`/${locale}/${segment}`} {...buttonLinkProps({ size: 'sm' })}>
+      {/* prefetch off, matching the app-wide default in i18n/no-prefetch-link. This file reaches
+          for plain next/link (the locale is already in the href), which bypasses that wrapper, so
+          every Link here has to opt out by hand — the sibling glossary components do the same. */}
+      <Link href={`/${locale}/${segment}`} prefetch={false} {...buttonLinkProps({ size: 'sm' })}>
         <ArrowLeft className="h-4 w-4" />
         {labels.backToGlossary}
       </Link>
@@ -110,6 +113,7 @@ export function GlossaryTermDetail({
     <Card className="border-primary/30 from-primary/10 gap-0 bg-gradient-to-br to-transparent py-0 shadow-sm">
       <Link
         href={`/${locale}/fancast`}
+        prefetch={false}
         className="group flex items-center justify-between gap-3 px-4 py-3"
       >
         <span className="flex items-center gap-2.5">
@@ -137,6 +141,7 @@ export function GlossaryTermDetail({
             <Link
               key={related.id}
               href={`/${locale}/${segment}/${related.slug}`}
+              prefetch={false}
               className="hover:bg-primary/5 group block px-4 py-2 transition-colors"
             >
               <p className="text-sm font-medium">{related.name}</p>

@@ -21,10 +21,9 @@ import sharp from 'sharp';
  * further 18 KB. That trade is lopsided in its favour here: the cards are cached 30 days, so the
  * encode happens once while the saving applies to every serve.
  *
- * The URL still ends in `og.png`. That is deliberate — it is a fake extension for social crawlers
- * (see the route's own note), the real signal is Content-Type, and no page declares
- * `og:image:type`. Renaming it would invalidate every cached social preview and force a full
- * re-render of the catalog, which is the opposite of the point.
+ * The URL ends in `og.jpg` to match (see `OG_IMAGE_FILENAME`). The route keeps answering the old
+ * `og.png` directly — not via a redirect — so the name already baked into indexed pages and cached
+ * social previews still resolves without an extra hop.
  *
  * Falls back to the original PNG if the encode fails, so a sharp problem degrades to "bigger
  * images" rather than breaking every preview on the site.

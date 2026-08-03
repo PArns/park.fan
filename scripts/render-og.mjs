@@ -15,7 +15,7 @@
  *   pnpm og:preview en/europe/germany/bruehl/phantasialand   # + extra ad-hoc paths
  *
  * The paths are the segments after `/api/og/`; the harness appends the
- * `/og.png` suffix that social crawlers use, exactly like `getOgImageUrl`.
+ * `/og.jpg` suffix that social crawlers use, exactly like `getOgImageUrl`.
  */
 import { mkdir, writeFile, rm } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -59,7 +59,7 @@ for (const extra of args.filter((a) => !a.startsWith('--'))) {
 const sanitize = (s) => s.replace(/[^a-z0-9-]+/gi, '-');
 
 async function renderOne({ label, path }) {
-  const url = `${BASE}/api/og/${path}/og.png`;
+  const url = `${BASE}/api/og/${path}/og.jpg`;
   const started = Date.now();
   try {
     const res = await fetch(url);
@@ -68,7 +68,7 @@ async function renderOne({ label, path }) {
       return { label, path, url, ok: false, status: res.status, ms };
     }
     const buf = Buffer.from(await res.arrayBuffer());
-    const file = `${sanitize(label)}.png`;
+    const file = `${sanitize(label)}.jpg`;
     await writeFile(join(OUT_DIR, file), buf);
     return { label, path, url, ok: true, status: res.status, ms, file, bytes: buf.length };
   } catch (err) {

@@ -13,6 +13,7 @@ import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { OgBrandLockup } from '@/lib/og/brand-mark';
 import { ogBackgroundSrc } from '@/lib/og/background-photo';
 import { ogAsJpeg } from '@/lib/og/jpeg';
+import { OG_IMAGE_FILENAME } from '@/lib/utils/og-image';
 import {
   FlagDE,
   FlagGB,
@@ -39,6 +40,9 @@ import {
 // OG Image dimensions
 const WIDTH = 1200;
 const HEIGHT = 630;
+
+/** Trailing filenames this endpoint answers to — the current one plus the legacy `.png`. */
+const OG_IMAGE_FILENAMES = new Set([OG_IMAGE_FILENAME, 'og.png']);
 
 // Flag mapping
 const FLAGS: Record<string, React.ComponentType<React.ComponentProps<'svg'>>> = {
@@ -83,9 +87,13 @@ export async function GET(
   try {
     const { path: rawPath } = await params;
 
-    // Remove optional .png extension (fake extension for social media crawlers)
+    // Strip the trailing filename (a fake extension social crawlers like to see; it carries no
+    // routing meaning). `og.jpg` is what getOgImageUrl emits now that the cards are re-encoded to
+    // JPEG; `og.png` is still accepted because it is baked into every already-indexed page and
+    // every cached social preview. Served directly rather than redirected — a 301 would just add
+    // a hop to the requests that are the expensive part of this endpoint to begin with.
     let path = rawPath;
-    if (path.length > 0 && path[path.length - 1] === 'og.png') {
+    if (path.length > 0 && OG_IMAGE_FILENAMES.has(path[path.length - 1])) {
       path = path.slice(0, -1);
     }
 
