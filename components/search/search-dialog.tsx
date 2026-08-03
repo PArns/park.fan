@@ -82,7 +82,6 @@ export default function SearchDialog({
     trackSearchResultClicked({
       resultType: result.type,
       position,
-      hasQuery: query.trim().length > 0,
       queryLength: query.trim().length,
     });
 
@@ -120,7 +119,6 @@ export default function SearchDialog({
     trackSearchResultClicked({
       resultType: 'glossary',
       term_id: item.id,
-      hasQuery: query.trim().length > 0,
       queryLength: query.trim().length,
     });
     const seg = GLOSSARY_SEGMENTS[locale as Locale] ?? 'glossary';

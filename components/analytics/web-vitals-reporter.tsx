@@ -14,6 +14,16 @@ import { trackEvent } from '@/lib/analytics/umami';
  * within Umami's event budget — they fired on every pageview (~5× pageviews) and were diagnostic
  * "context" rather than something we act on. Re-add or sample them if that budget grows.
  *
+ * Budget note: this used to send nine properties on every sample, and Umami bills each property as
+ * a separate event — ten billed rows per pageview with an interaction, which made it the single
+ * largest line in the bill. Two cuts, both aligned with what this is actually for:
+ *   - Only `needs-improvement` and `poor` samples are sent. A `good` INP is not something we act
+ *     on, and the field distribution is already available from CrUX.
+ *   - The three delay numbers collapse into `phase`, the one that dominated. That is the whole
+ *     decision the breakdown drives (input → yield to the main thread, processing → cheaper
+ *     handler, presentation → cheaper re-render); the exact milliseconds never changed it.
+ * `rating` went too — it is a threshold on `value` — as did `type` and `loadState`.
+ *
  * IMPORTANT: this imports the `web-vitals/attribution` build **directly** rather than going
  * through Next's `useReportWebVitals`. In Next 16, `useReportWebVitals` imports the plain
  * (non-attribution) `web-vitals` build and `experimental.webVitalsAttribution` does NOT wire
@@ -34,6 +44,15 @@ interface WebVitalAttribution {
   loadState?: string;
 }
 
+/** The phase that contributed most to this interaction — the part worth fixing. */
+function dominantPhase(a: WebVitalAttribution | undefined): 'input' | 'processing' | 'presentation' {
+  const input = a?.inputDelay ?? 0;
+  const processing = a?.processingDuration ?? 0;
+  const presentation = a?.presentationDelay ?? 0;
+  if (input >= processing && input >= presentation) return 'input';
+  return processing >= presentation ? 'processing' : 'presentation';
+}
+
 function reportWebVital(metric: {
   name: string;
   value: number;
@@ -41,18 +60,14 @@ function reportWebVital(metric: {
   attribution?: WebVitalAttribution;
 }) {
   if (metric.name !== 'INP') return;
-  const path = stripLocale(window.location.pathname);
-  const a = metric.attribution;
+  // A good INP is not actionable, and reporting it cost five billed rows to say "nothing to do".
+  if (metric.rating === 'good') return;
+
   trackEvent('web-vital-inp', {
     value: Math.round(metric.value),
-    rating: metric.rating,
-    target: a?.interactionTarget?.slice(0, 120),
-    type: a?.interactionType,
-    inputDelay: Math.round(a?.inputDelay ?? 0),
-    processing: Math.round(a?.processingDuration ?? 0),
-    presentation: Math.round(a?.presentationDelay ?? 0),
-    loadState: a?.loadState,
-    path,
+    target: metric.attribution?.interactionTarget?.slice(0, 120),
+    phase: dominantPhase(metric.attribution),
+    path: stripLocale(window.location.pathname),
   });
 }
 

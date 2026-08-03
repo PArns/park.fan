@@ -3,7 +3,6 @@ import {
   trackNearbyPermissionGranted,
   trackNearbyPermissionDenied,
   trackNearbyParksLoaded,
-  trackNearbyInParkDetected,
 } from '@/lib/analytics/umami';
 import { stripNewPrefix } from '@/lib/utils';
 import type { GeolocationPosition } from '@/lib/contexts/geolocation-context';
@@ -19,9 +18,14 @@ interface UseNearbyAnalyticsParams {
 
 /**
  * Fires the nearby-card analytics events (parks/in-park loaded, permission granted/denied) and
- * keeps the geolocation context's in-park flag in sync. Extracted verbatim from NearbyParksCard;
- * the effects, their dependency arrays and firing conditions are preserved exactly so events
- * neither double-fire nor go missing.
+ * keeps the geolocation context's in-park flag in sync. Extracted from NearbyParksCard; the
+ * effects and their firing conditions are preserved so events neither double-fire nor go missing.
+ *
+ * These fire on *load*, not on a click, so they are the most expensive events on the site — every
+ * property is billed as another event. `nearby_in_park_detected` was dropped for that reason: it
+ * restated `nearby_parks_loaded` with `type: 'in_park'` and cost four billed rows to do it. So did
+ * `in_park` (it is `type === 'in_park'`), `geo_allowed` (it is `source === 'gps'`) and `parkId`
+ * (the same park as `parkName`). See `lib/analytics/umami.ts` for the property budget.
  */
 export function useNearbyAnalytics({
   nearbyData,
@@ -45,14 +49,10 @@ export function useNearbyAnalytics({
     if (lastTrackedDataKey.current === dataKey) return;
     lastTrackedDataKey.current = dataKey;
 
-    const geoAllowed = !!position;
-
     if (nearbyData.type === 'nearby_parks') {
       trackNearbyParksLoaded({
         count: (nearbyData.data as NearbyParksData).parks.length,
         type: 'nearby_parks',
-        in_park: false,
-        geo_allowed: geoAllowed,
         source: locationSource,
       });
       setIsInPark(false);
@@ -62,20 +62,12 @@ export function useNearbyAnalytics({
       trackNearbyParksLoaded({
         count: 1,
         type: 'in_park',
-        in_park: true,
-        geo_allowed: geoAllowed,
         source: locationSource,
-        parkId: parkData.park.id,
         parkName: stripNewPrefix(parkData.park.name),
-      });
-      trackNearbyInParkDetected({
-        parkId: parkData.park.id,
-        parkName: stripNewPrefix(parkData.park.name),
-        geo_allowed: geoAllowed,
       });
       setIsInPark(true);
     }
-  }, [nearbyData, setIsInPark, locationSource, position]);
+  }, [nearbyData, setIsInPark, locationSource]);
 
   // Track permission granted once when user grants location
   useEffect(() => {

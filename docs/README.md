@@ -39,6 +39,7 @@
 | [Assets, Images & Content](development/assets.md)         | Park/attraction images, hero/attraction manifests, content markdown |
 | [Flags & Debug](development/flags-and-debug.md)           | Build-time feature flags, `?sim=` geo simulation                    |
 | [Conventions](development/conventions.md)                 | Key rules (URLs, i18n, search, favorites, no secrets, etc.)         |
+| [Analytics (Umami)](development/analytics.md)             | Event budget (every property is billed), unique-visitor definition  |
 | [impeccable (Design Tooling)](development/impeccable.md)  | Anti-pattern detector (preview CI) + `/impeccable live` annotation  |
 | [Vercel Comment Sync](development/vercel-comment-sync.md) | Preview comments → PR comment (webhook relay + GitHub Action)       |
 | [Notes for Sessions](development/notes-for-sessions.md)   | Reminders for AI/human sessions                                     |

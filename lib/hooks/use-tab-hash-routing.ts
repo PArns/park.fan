@@ -10,7 +10,7 @@ interface UseTabHashRoutingOptions {
   /** Tab rendered on the server / before hydration (avoids hydration mismatch). */
   defaultValue: string;
   /** Park identity for the tab-changed analytics event. */
-  park: Pick<ParkWithAttractions, 'id' | 'name'>;
+  park: Pick<ParkWithAttractions, 'name'>;
 }
 
 /**
@@ -93,9 +93,10 @@ export function useTabHashRouting({ defaultValue, park }: UseTabHashRoutingOptio
 
     const tab = value as TabChangedProps['tab'];
     if (['attractions', 'calendar', 'map', 'shows', 'restaurants'].includes(tab)) {
+      // `parkId` was dropped: it identified the same park as `parkName`, and Umami bills every
+      // property as another event (see the property budget in `lib/analytics/umami.ts`).
       trackTabChanged({
         tab,
-        ...(park.id && { parkId: String(park.id) }),
         ...(park.name && { parkName: stripNewPrefix(park.name) }),
       });
     }
