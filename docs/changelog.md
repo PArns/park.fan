@@ -4,6 +4,35 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: the ride measurements credit the right source again
+
+The measurement display shipped against an importer that read the roller-coaster
+database directly. That import is gone — their terms permit the link, not the
+data — and the API now merges a hand-curated seed with a **Wikidata (CC0)**
+import, curated values winning.
+
+So `stats.source` is one of `curated`, `wikidata` or `mixed`, and `sourceId`
+carries a Wikidata entity id **only when an imported value survived** the merge.
+The display assumed a single source with an id always present, which in
+production it never was: 26 of the 27 rides that currently state a measurement
+are `curated` with no id at all, so every one of them rendered "Measurements:
+RCDB" over numbers RCDB never supplied, linking to `rcdb.com/undefined.htm`.
+
+- **The API resolves the credit now, and the page just renders it.**
+  `stats.attribution` is `{ label, url }` or **null when every surviving number
+  is hand-curated** ([v4.api.park.fan#150](https://github.com/PArns/v4.api.park.fan/pull/150)),
+  so the rule and the URL shape live with the data instead of being rebuilt at
+  the edge. The page shows the line when it is there and nothing when it is not.
+  That is the whole condition — there is no `source` to interpret and no
+  `wikidata.org/wiki/…` to assemble, which is what got this wrong twice.
+- **`statsSource` takes the source name as `{source}`** rather than baking
+  "Wikidata" into six translations, so a second source needs no locale change.
+- **`RideStats` matches what the API sends** — three-value `source`, optional
+  `sourceId`, plus `attribution`.
+- **The grid drops the rows nothing can fill** — drop, elevation, steepest
+  angle, g-force, capacity, riders per train, restraints, designer, builder,
+  train builder — along with their translation keys in all six locales.
+
 ## Unreleased – cut the Umami event bill, and fix what "visitor" counts
 
 The Hobby plan allows 100k events/month; early August was tracking toward
