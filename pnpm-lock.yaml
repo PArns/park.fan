@@ -171,6 +171,9 @@ importers:
       remark-gfm:
         specifier: ^4.0.1
         version: 4.0.1
+      sharp:
+        specifier: ^0.35.3
+        version: 0.35.3(@types/node@25.9.5)
       tailwind-merge:
         specifier: ^3.6.0
         version: 3.6.0
@@ -238,9 +241,6 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: ^0.8.1
         version: 0.8.1(prettier@3.9.6)
-      sharp:
-        specifier: ^0.35.3
-        version: 0.35.3(@types/node@25.9.5)
       tailwindcss:
         specifier: ^4.3.3
         version: 4.3.3
