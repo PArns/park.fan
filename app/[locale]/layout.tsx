@@ -17,7 +17,6 @@ import { Footer } from '@/components/layout/footer';
 import { hasPublishedPosts } from '@/lib/blog/listing';
 import { LanguageBanner } from '@/components/layout/language-banner';
 import Script from 'next/script';
-import { AnalyticsIdentify } from '@/components/common/analytics-identify';
 import { StartupBar } from '@/components/common/startup-bar';
 import { UserbackFeedback } from '@/components/common/userback-feedback';
 import { WebVitalsReporter } from '@/components/analytics/web-vitals-reporter';
@@ -183,11 +182,27 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
           }}
         />
         {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && process.env.NEXT_PUBLIC_UMAMI_URL && (
+          /* `data-exclude-hash` is what keeps the visit count honest. Umami's tracker patches
+             `history.pushState` AND `history.replaceState` and sends a pageview whenever the
+             resulting URL differs from the last one — the hash included. Three places here write
+             a hash without navigating (`use-tab-hash-routing`, `park-calendar-grid`'s month
+             stepper, the `#calendar` FAQ link), so every tab switch and every month click was
+             billed as another pageview and inflated Views against Visitors.
+
+             `data-domains` gates the tracker on `window.location.hostname`, so a host missing
+             from this list is invisible in the stats — www included, not just the apex.
+
+             `data-do-not-track` is a deliberate choice, not a requirement: Umami is cookieless and
+             anonymous, the privacy policy relies on Art. 6(1)(f) rather than consent, and it never
+             promises to honour DNT. Keeping it means DNT visitors send nothing at all — no
+             pageview, no session — so the visitor count reads structurally low (typically 3–8 %).
+             See docs/development/analytics.md. */
           <Script
             src={process.env.NEXT_PUBLIC_UMAMI_URL}
             data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
-            data-domains="park.fan"
+            data-domains="park.fan,www.park.fan"
             data-do-not-track="true"
+            data-exclude-hash="true"
             strategy="afterInteractive"
           />
         )}
@@ -214,7 +229,6 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
               <Suspense fallback={null}>
                 <NavigationProgress />
                 <ScrollToTop />
-                <AnalyticsIdentify locale={locale} />
                 <UserbackFeedback locale={locale} />
                 <WebVitalsReporter />
                 <LanguageBanner currentLocale={locale as Locale} />

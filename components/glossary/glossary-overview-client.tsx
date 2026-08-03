@@ -46,15 +46,17 @@ export function GlossaryOverviewClient({
   const [playerOnly, setPlayerOnly] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Track search queries (debounced, min 3 chars, privacy-safe — only length)
+  // Track search queries (debounced, min 3 chars, privacy-safe — only length).
+  // No `locale` property: it is already in the event's own URL (/de/glossar/…) and Umami bills
+  // every property as another event.
   useEffect(() => {
     const trimmed = query.trim();
     if (trimmed.length < 3) return;
     const timer = setTimeout(() => {
-      trackGlossarySearched({ queryLength: trimmed.length, locale });
+      trackGlossarySearched({ queryLength: trimmed.length });
     }, 600);
     return () => clearTimeout(timer);
-  }, [query, locale]);
+  }, [query]);
 
   // Type anywhere to focus search; Escape to clear + blur
   useEffect(() => {
@@ -183,10 +185,7 @@ export function GlossaryOverviewClient({
                 onClick={() => {
                   const next = activeCategory === category ? null : category;
                   setActiveCategory(next);
-                  trackGlossaryCategoryFiltered({
-                    category: next ?? 'none',
-                    locale,
-                  });
+                  trackGlossaryCategoryFiltered({ category: next ?? 'none' });
                 }}
                 aria-pressed={activeCategory === category}
                 className={cn(

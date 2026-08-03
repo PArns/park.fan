@@ -4,6 +4,48 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – cut the Umami event bill, and fix what "visitor" counts
+
+The Hobby plan allows 100k events/month; early August was tracking toward
+~112k, the second overrun. The cause was not traffic. Umami bills **every event
+property as another event**, so the properties were ~70 % of the bill while the
+pageviews — the only thing actually wanted here — were ~26 %.
+
+- **`identifyVisitor()` removed.** Three session properties on *every* session,
+  which was the entire Session-data band (~25 % of usage). Two of them
+  (`browser_language`, `site_locale`) restated what Umami already collects
+  natively and what the URL path already says.
+- **`web-vital-inp`: 9 properties → 4, and only non-`good` samples.** It fired
+  on every pageview carrying an interaction at ten billed rows a time, the
+  largest single line in the bill. A good INP is not something we act on, and
+  the three delay numbers collapse to `phase`, the one that dominated — which
+  is the whole decision the breakdown drives.
+- **Derivable properties dropped everywhere**: `in_park` (it is
+  `type === 'in_park'`), `geo_allowed` (`source === 'gps'`), `hasQuery`
+  (`queryLength > 0`), `rating` (a threshold on `value`), `locale` (it is in the
+  event's own URL), and `parkId` wherever a `parkName` already named the same
+  park. `nearby_in_park_detected` is gone entirely — it restated
+  `nearby_parks_loaded` with `type: 'in_park'` and spent four rows doing it.
+- **Eight unused `track*` helpers deleted** (`hero_viewed`, the card/discovery
+  clicks, `map_opened`, `calendar_date_selected`) — dead code that invited
+  someone to re-add a three-property event firing on view.
+- **`data-exclude-hash="true"`** stops a phantom-pageview leak: Umami's tracker
+  patches `pushState` *and* `replaceState` and treats a changed hash as a new
+  URL, so every park-page tab switch and every calendar month step was billed
+  as a full extra pageview and inflated Views against Visitors.
+- **`data-domains` now lists `www.park.fan`** as well. The attribute is a hard
+  gate on `window.location.hostname` — a host missing from it is silently
+  absent from the stats, not merely mislabelled.
+- **The known undercount is written down**, not fixed: `data-do-not-track` means
+  DNT visitors send nothing at all, so the visitor number reads low by roughly
+  3–8 %. It is a voluntary choice (Umami is cookieless, the privacy policy rests
+  on Art. 6(1)(f) and never promises DNT) and was reviewed and kept.
+
+New doc: [analytics](development/analytics.md) — the billing model, the two
+rules for adding a property, and what Umami's "unique visitor" actually means
+(hash of website ID, hostname, User-Agent and IP against a salt that rotates
+**monthly**, so a visitor count spanning a month boundary is not deduplicated).
+
 ## Unreleased – park and ride pages link into the blog
 
 The blog linked into the catalog from day one (`ref:europa-park`, spotlight

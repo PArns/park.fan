@@ -157,7 +157,7 @@ export function GlossaryTermDetail({
 
   return (
     <div>
-      <GlossaryTermTracker termId={term.id} locale={locale} />
+      <GlossaryTermTracker termId={term.id} />
       {/* Breadcrumb — floats above the grid */}
       <div className="mb-5">
         <BreadcrumbNav breadcrumbs={breadcrumbs} currentPage={term.name} variant="pill" />

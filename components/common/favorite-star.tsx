@@ -60,9 +60,9 @@ export function FavoriteStar({
       onToggle?.(newState);
 
       if (newState) {
-        trackFavoriteAdd(type, id, name);
+        trackFavoriteAdd(type, name);
       } else {
-        trackFavoriteRemove(type, id, name);
+        trackFavoriteRemove(type, name);
       }
     },
     [type, id, name, onToggle]
