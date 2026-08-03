@@ -25,6 +25,9 @@ category: guides
 parkLinks:
   - toverland
   - efteling
+rideLinks:
+  - toverland/*
+  - efteling/joris-en-de-draak
 coverImage:
   src: /images/parks/toverland/troy-16x9.jpg
   alt: 'Le cheval de Troie en bois dans la zone thématique Ithaka de Toverland, posé sur un chariot'

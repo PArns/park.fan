@@ -55,7 +55,7 @@ import { ParkBestDaysSection } from '@/components/parks/park-best-days-section';
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
 import { ParkPurchasesCard } from '@/components/parks/park-purchases-card';
 import { NearbyParksSection } from '@/components/parks/nearby-parks-section';
-import { ParkBlogPostsSection } from '@/components/parks/park-blog-posts-section';
+import { ParkBlogPostsSection } from '@/components/parks/blog-posts-sections';
 import { ContributeBanner } from '@/components/contribute/contribute-banner';
 import { PreferredSourcePrompt } from '@/components/common/preferred-source-prompt';
 import { buildContributeHref } from '@/lib/contribute/prefill';

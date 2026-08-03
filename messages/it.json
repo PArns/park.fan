@@ -630,6 +630,10 @@
     }
   },
   "attractions": {
+    "blogPosts": {
+      "title": "{ride} sul blog",
+      "viewAll": "Leggi tutti gli articoli"
+    },
     "title": "Attrazioni",
     "waitTime": "Tempo di attesa",
     "status": {

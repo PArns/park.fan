@@ -4,29 +4,37 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
-## Unreleased – park pages link into the blog
+## Unreleased – park and ride pages link into the blog
 
 The blog linked into the catalog from day one (`ref:europa-park`, spotlight
 cards, widgets); the catalog never linked back. A reader on the Phantasialand
 page had no way of knowing a 4.700-word guide to that park existed.
 
-- **New section on every park page** — "{park} im Blog", the three most
-  relevant posts as the same `BlogPostCard` the blog index uses. Static content
-  out of the generated manifest: no API call, no clock, so it neither competes
-  with the live queries nor with the load-last best-travel-time data. Renders
-  nothing when no post mentions the park, and stays away in locales that have
-  no blog surfaces yet.
-- **Reverse index** (`lib/blog/park-posts.ts`) derived from the posts
-  themselves: every park a body references (`ref:`/`park:`/`attraction:` links
-  and the widget fences, a ride counting for its parent park) plus
-  `relatedParks`. A round-up like the Halloween guide therefore appears on all
-  ten park pages without anyone maintaining a list. References that carry the
-  full `/parks/…` path only count for that park, so the Paris and Anaheim
-  `disneyland-park` don't swap articles.
-- **`parkLinks` frontmatter** for the cases the automatic result gets wrong:
-  `false` keeps a post off park pages entirely, a list replaces the detection.
-  Resolved per post rather than per locale, so a rewritten paragraph in one
-  translation can't change which park pages link the article.
+- **New section on every park page and every ride page** — "{park} im Blog" as
+  a frosted panel next to its neighbours, "{ride} im Blog" as a `PageSection`
+  chapter, both showing the three most relevant posts as the same
+  `BlogPostCard` the blog index uses. Static content out of the generated
+  manifest: no API call, no clock, so it neither competes with the live queries
+  nor with the load-last best-travel-time data. Renders nothing when no post
+  mentions the park/ride, and stays away in locales that have no blog surfaces
+  yet.
+- **Reverse index** (`lib/blog/backlinks.ts`) derived from the posts
+  themselves: every park and ride a body references (`ref:`/`park:`/
+  `attraction:` links and the widget fences, a ride counting for its parent
+  park too) plus `relatedParks`/`relatedAttractions`. A round-up like the
+  Halloween guide therefore appears on all ten park pages without anyone
+  maintaining a list. References that carry the full `/parks/…` path only count
+  for that park, so the Paris and Anaheim `disneyland-park` don't swap
+  articles.
+- **`parkLinks` / `rideLinks` frontmatter** for the cases the automatic result
+  gets wrong: `false` keeps a post off those pages entirely, a list replaces the
+  detection, and `rideLinks` also takes `parkSlug/*` ("every ride of that park
+  this article links") so a park guide keeps its own rides without listing
+  twelve of them. The two keys are independent — a guide is often right on the
+  park page and far too broad on a dozen ride pages. Resolved per post rather
+  than per locale, so a rewritten paragraph in one translation can't change
+  which pages link the article; the manifest generator warns about invalid
+  entries and about translations that disagree.
 - **The blog manifest is three modules now**, because a 3-card section must not
   cost the park route a megabyte: `manifest.ts` keeps frontmatter plus the
   build-time derivations (reading time, `parkRefs`), `manifest-bodies.ts` holds
@@ -37,9 +45,15 @@ page had no way of knowing a 4.700-word guide to that park existed.
   values are computed once at build time by the shared `lib/blog/derive.mjs`.
 - **Curated the existing posts**: the Phantasialand guide now shows only on
   Phantasialand, the Toverland guide on Toverland and the Efteling (not on
-  Liseberg because Balder came up once), the launch story on Phantasialand and
-  Movie Park. The Halloween round-up and the queueing essay keep the automatic
-  behaviour — every park they name gets a real section in the text.
+  Liseberg because Balder came up once) and on `toverland/*` + Joris en de
+  Draak, the launch story on Phantasialand + Movie Park and on Taron + Maus au
+  Chocolat. The Halloween round-up and the queueing essay keep the automatic
+  behaviour — every park and ride they name gets a real section in the text.
+- **Listing lookups are memoised per process, not per request.** Everything in
+  `lib/blog/listing.ts` derives from the manifest and reads no clock, so
+  React's per-request `cache()` just rebuilt the same lists on every render of
+  the root layout, the homepage and (now) every park and ride page. The lists
+  are frozen, since they are shared across requests.
 
 ---
 

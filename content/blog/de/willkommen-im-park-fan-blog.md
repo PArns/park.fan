@@ -20,6 +20,9 @@ category: news
 parkLinks:
   - phantasialand
   - movie-park-germany
+rideLinks:
+  - phantasialand/taron
+  - phantasialand/maus-au-chocolat
 coverImage:
   src: /blog/images/welcome-cover.jpg
   alt: 'Velocicoaster-Looping vor dem Hogwarts-Schloss, Islands of Adventure, Orlando'

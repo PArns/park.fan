@@ -21,6 +21,9 @@ category: news
 parkLinks:
   - phantasialand
   - movie-park-germany
+rideLinks:
+  - phantasialand/taron
+  - phantasialand/maus-au-chocolat
 coverImage:
   src: /blog/images/welcome-cover.jpg
   alt: 'Looping du Velocicoaster devant le château de Poudlard, Islands of Adventure, Orlando'

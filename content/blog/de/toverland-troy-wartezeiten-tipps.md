@@ -25,6 +25,9 @@ category: guides
 parkLinks:
   - toverland
   - efteling
+rideLinks:
+  - toverland/*
+  - efteling/joris-en-de-draak
 coverImage:
   src: /images/parks/toverland/troy-16x9.jpg
   alt: 'Das hölzerne trojanische Pferd im Themenbereich Ithaka des Toverland, auf einem Wagen stehend'

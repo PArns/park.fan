@@ -122,8 +122,13 @@ export const buildCategoryTree = cache(
 );
 
 /** Posts whose category path starts with the given segments (inclusive). */
-export function filterPostsByCategory(posts: BlogListItem[], segments: string[]): BlogListItem[] {
-  if (segments.length === 0) return posts;
+export function filterPostsByCategory(
+  posts: readonly BlogListItem[],
+  segments: string[]
+): BlogListItem[] {
+  // Copy: `listPosts` hands out a shared frozen array, and callers of this
+  // helper own their result (they paginate and slice it).
+  if (segments.length === 0) return [...posts];
   const prefix = segments.join('/');
   return posts.filter((p) => {
     const cat = p.frontmatter.category ?? '';

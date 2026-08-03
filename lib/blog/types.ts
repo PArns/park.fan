@@ -95,13 +95,20 @@ export interface BlogFrontmatter {
   relatedParks?: string[];
   relatedAttractions?: BlogAttractionRef[];
   /**
-   * Where this post is linked FROM on park pages (see `lib/blog/park-posts.ts`):
+   * Where this post is linked FROM on park pages (see `lib/blog/backlinks.ts`):
    *   - omitted / `true` → automatic: every park the body references plus
    *     `relatedParks`,
    *   - `false` → never surfaced on a park page,
    *   - `[slug, …]` → exactly these parks (bare slug or full `/parks/…` path).
    */
   parkLinks?: boolean | string[];
+  /**
+   * The same for ride pages, independent of `parkLinks` — a park guide can be
+   * right on the park page and far too broad on its twelve ride pages. Entries
+   * are `parkSlug/rideSlug` pairs or full `/parks/…` paths; automatic detection
+   * uses the body's ride references plus `relatedAttractions`.
+   */
+  rideLinks?: boolean | string[];
   seo?: BlogSeo;
   /** Auto-calculated if omitted. */
   readingTime?: number;

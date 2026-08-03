@@ -1,5 +1,4 @@
 import 'server-only';
-import { cache } from 'react';
 import { locales, defaultLocale, SITE_URL, type Locale } from '@/i18n/config';
 import type { BlogFrontmatter, BlogListItem } from './types';
 import { BLOG_POSTS_META, type ManifestParkRef } from './manifest';
@@ -12,6 +11,21 @@ import { BLOG_POSTS_META, type ManifestParkRef } from './manifest';
  * every article, and the root layout alone (`hasPublishedPosts`) would drag all
  * of them into every route's server bundle. Only the post page itself imports
  * `./index`, which is where the markdown lives.
+ *
+ * ## Memoised per process, not per request
+ *
+ * Every function here derives from the generated manifest and reads no clock,
+ * no cookie and no request state, so its result is fixed for the lifetime of
+ * the deployment. React's `cache()` would rebuild all of it on every request —
+ * which the root layout, the homepage and (since the blog section) every
+ * `force-dynamic` park page would pay for, on the highest-cardinality routes on
+ * the site. Module-level memos survive across requests in the same instance
+ * instead, so the second render onwards is a Map lookup.
+ *
+ * The returned lists are FROZEN: callers share one array, and an in-place
+ * `sort()`/`push()` would corrupt it for every later request rather than for
+ * one render. Copy first (`[...posts]`, `.filter()`, `.slice()`) — every
+ * current caller already does.
  */
 
 export function isValidSlug(slug: string): boolean {
@@ -30,8 +44,11 @@ export interface MetaEntry {
   parkRefs: ManifestParkRef[];
 }
 
+let META_INDEX: Map<string, Map<Locale, MetaEntry>> | null = null;
+
 /** Map from translationKey → { locale: entry }. */
-export const getMetaIndex = cache((): Map<string, Map<Locale, MetaEntry>> => {
+export function getMetaIndex(): Map<string, Map<Locale, MetaEntry>> {
+  if (META_INDEX) return META_INDEX;
   const index = new Map<string, Map<Locale, MetaEntry>>();
   for (const entry of BLOG_POSTS_META) {
     const locale = entry.locale as Locale;
@@ -47,8 +64,9 @@ export const getMetaIndex = cache((): Map<string, Map<Locale, MetaEntry>> => {
     });
     index.set(key, inner);
   }
+  META_INDEX = index;
   return index;
-});
+}
 
 export interface ResolvedEntry {
   entry: MetaEntry;
@@ -62,8 +80,21 @@ export interface ResolvedEntry {
  * (draft) or unknown — the single place those semantics live, shared by the
  * listings here and the body-loading post lookup in `./index`.
  */
-export const resolveEntryForLocale = cache(
-  (translationKey: string, requestedLocale: Locale): ResolvedEntry | null => {
+const RESOLVED = new Map<string, ResolvedEntry | null>();
+
+export function resolveEntryForLocale(
+  translationKey: string,
+  requestedLocale: Locale
+): ResolvedEntry | null {
+  const cacheKey = `${requestedLocale}|${translationKey}`;
+  const memo = RESOLVED.get(cacheKey);
+  if (memo !== undefined) return memo;
+
+  const resolved = resolve();
+  RESOLVED.set(cacheKey, resolved);
+  return resolved;
+
+  function resolve(): ResolvedEntry | null {
     const localeMap = getMetaIndex().get(translationKey);
     if (!localeMap) return null;
 
@@ -96,7 +127,7 @@ export const resolveEntryForLocale = cache(
 
     return { entry, loadedLocale, availableLocales };
   }
-);
+}
 
 /**
  * Does the blog have at least one PUBLISHED post? Every visible blog surface —
@@ -109,19 +140,35 @@ export const resolveEntryForLocale = cache(
  * semantics.) That lets a German-first rollout publish /de/blog without
  * switching the blog on for locales that would present an empty index.
  */
-export const hasPublishedPosts = cache((locale?: Locale): boolean => {
-  if (locale) return listPosts(locale).length > 0;
+const HAS_POSTS = new Map<string, boolean>();
 
-  for (const localeMap of getMetaIndex().values()) {
-    for (const entry of localeMap.values()) {
-      if ((entry.fm.mode ?? 'published') === 'published') return true;
+export function hasPublishedPosts(locale?: Locale): boolean {
+  const cacheKey = locale ?? '*';
+  const memo = HAS_POSTS.get(cacheKey);
+  if (memo !== undefined) return memo;
+
+  let result = false;
+  if (locale) {
+    result = listPosts(locale).length > 0;
+  } else {
+    outer: for (const localeMap of getMetaIndex().values()) {
+      for (const entry of localeMap.values()) {
+        if ((entry.fm.mode ?? 'published') === 'published') {
+          result = true;
+          break outer;
+        }
+      }
     }
   }
-  return false;
-});
+  HAS_POSTS.set(cacheKey, result);
+  return result;
+}
+
+let TRANSLATION_INDEX: Map<string, Map<Locale, string>> | null = null;
 
 /** Map from translationKey → { locale: slug } — kept for hreflang / canonical lookups. */
-export const getTranslationIndex = cache((): Map<string, Map<Locale, string>> => {
+export function getTranslationIndex(): Map<string, Map<Locale, string>> {
+  if (TRANSLATION_INDEX) return TRANSLATION_INDEX;
   const out = new Map<string, Map<Locale, string>>();
   for (const [key, localeMap] of getMetaIndex()) {
     const slugMap = new Map<Locale, string>();
@@ -130,14 +177,23 @@ export const getTranslationIndex = cache((): Map<string, Map<Locale, string>> =>
     }
     out.set(key, slugMap);
   }
+  TRANSLATION_INDEX = out;
   return out;
-});
+}
+
+const POSTS_BY_LOCALE = new Map<Locale, readonly BlogListItem[]>();
 
 /**
  * List all published posts for the given locale, falling back to EN where needed.
  * Sorted newest-first by `date`.
+ *
+ * The result is a shared, frozen array (see the module doc) — filter, slice or
+ * spread it, never sort it in place.
  */
-export const listPosts = cache((requestedLocale: Locale): BlogListItem[] => {
+export function listPosts(requestedLocale: Locale): readonly BlogListItem[] {
+  const memo = POSTS_BY_LOCALE.get(requestedLocale);
+  if (memo) return memo;
+
   const items: BlogListItem[] = [];
   for (const key of getMetaIndex().keys()) {
     const resolved = resolveEntryForLocale(key, requestedLocale);
@@ -163,8 +219,11 @@ export const listPosts = cache((requestedLocale: Locale): BlogListItem[] => {
     if (aFeatured !== bFeatured) return bFeatured - aFeatured;
     return a.frontmatter.date < b.frontmatter.date ? 1 : -1;
   });
-  return items;
-});
+
+  const frozen = Object.freeze(items);
+  POSTS_BY_LOCALE.set(requestedLocale, frozen);
+  return frozen;
+}
 
 /**
  * Return alternate hreflang URLs for a single post (per translationKey).
@@ -212,7 +271,7 @@ export const BLOG_POSTS_PER_PAGE = 12;
  * Pages are 1-based. Out-of-range pages return an empty array.
  */
 export function paginatePosts<T>(
-  items: T[],
+  items: readonly T[],
   page: number,
   perPage: number = BLOG_POSTS_PER_PAGE
 ): { items: T[]; page: number; totalPages: number; totalItems: number } {

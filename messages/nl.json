@@ -630,6 +630,10 @@
     }
   },
   "attractions": {
+    "blogPosts": {
+      "title": "{ride} op het blog",
+      "viewAll": "Alle artikelen lezen"
+    },
     "title": "Attracties",
     "waitTime": "Wachttijd",
     "status": {

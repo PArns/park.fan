@@ -18,21 +18,26 @@ All except `fetch-hero-textures.mjs` (manual, `pnpm generate:hero-textures`) run
 
 `generate-blog-manifest.mjs` writes (all git-ignored, regenerated on every build):
 
-| File                             | Contents                                                                                  | Imported by                                            |
-| -------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------ |
-| `lib/blog/manifest.ts`           | `BLOG_POSTS_META` – frontmatter + build-time derivations (reading time, `parkRefs`), ~80 KB | `lib/blog/listing.ts` (every listing surface)          |
-| `lib/blog/manifest-bodies.ts`    | `BLOG_POST_BODIES` – the markdown, keyed `<locale>/<slug>`, ~900 KB and growing             | `lib/blog/index.ts` → the blog post page only          |
-| `lib/blog/manifest-galleries.ts` | `BLOG_GALLERY_FOLDERS` (+ `_L10N`) – image listings and captions, ~140 KB                  | `lib/blog/gallery.ts`, `lib/blog/image-dimensions.ts` |
+| File                             | Contents                                                                                                | Imported by                                           |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| `lib/blog/manifest.ts`           | `BLOG_POSTS_META` – frontmatter + build-time derivations (reading time, `parkRefs`/`rideRefs`), ~100 KB | `lib/blog/listing.ts` (every listing surface)         |
+| `lib/blog/manifest-bodies.ts`    | `BLOG_POST_BODIES` – the markdown, keyed `<locale>/<slug>`, ~900 KB and growing                         | `lib/blog/index.ts` → the blog post page only         |
+| `lib/blog/manifest-galleries.ts` | `BLOG_GALLERY_FOLDERS` (+ `_L10N`) – image listings and captions, ~140 KB                               | `lib/blog/gallery.ts`, `lib/blog/image-dimensions.ts` |
 
 The split is the point: the root layout asks `hasPublishedPosts()`, the homepage
-and every park page list posts, and with one combined module all of them bundled
-the full post bodies. Import from **`@/lib/blog/listing`** unless you actually
+and every park and ride page list posts, and with one combined module all of
+them bundled the full post bodies. Import from **`@/lib/blog/listing`** unless you actually
 render markdown — `@/lib/blog` pulls the bodies in.
 
-Anything derived from a body (reading time, the park references behind the park
-pages' blog section) is computed **once, at build time**, by
+Anything derived from a body (reading time, the park and ride references behind
+the catalog's blog sections) is computed **once, at build time**, by
 [`lib/blog/derive.mjs`](../../lib/blog/derive.mjs) — plain JS so the generator
 and the app share one implementation instead of two copies of the same regexes.
+
+The generator also **warns** about `parkLinks`/`rideLinks` frontmatter that
+would fail silently: an entry that isn't a valid slug, an empty list, and a
+config that differs between a post's translations (it governs the post in all
+languages). Warnings never fail the build.
 
 ## Translation Scripts
 
