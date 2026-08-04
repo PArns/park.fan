@@ -66,8 +66,25 @@ catalog to every visitor.
 ### `@/lib/media/focus` — one crop rule for every surface
 
 `objectPositionForSrc(src, fallback)` resolves an image's focal point to a CSS
-`object-position`. Server-side; Client Components take it as a prop
-(`CardPhoto`, `ParkBackground`).
+`object-position`.
+
+**This module is NOT client-safe** — it imports `./index`, which imports the
+manifest, so it is `@/lib/media` with extra steps. The rule above names
+`@/lib/media` and `@/lib/media/text`; `focus` belongs on that list, and its absence
+is how 80 KB of catalog ended up in the homepage bundle once already.
+
+So a **card never resolves its own photo or focal point**. Both are handed in:
+`enrichParksWithImages` / `enrichAttractionsWithImages` attach `backgroundImage` and
+`backgroundPosition` together, `getCardObjectPosition` serves direct server call
+sites, and the two API proxies that feed client-rendered grids (`/api/discovery`,
+`/api/parks/[...path]`) enrich on the way out. `ParkCard`, `AttractionCard`,
+`CardPhoto` and `ParkBackground` import nothing from `lib/media` at all.
+
+The cheap check, after a build:
+
+```sh
+grep -l "avatar-flight-of-passage/01-hoehlen" .next/static/chunks/*.js   # must be empty
+```
 
 A **pre-cut crop** (`…-16x9.jpg`) answers as the image it was cut from — same
 credit, same content version — but gets `50% 50%`, not the focal point: the crop was
@@ -288,7 +305,31 @@ read & write** (open and update the PR) is the whole requirement — `Metadata:
 read-only` is added automatically. A classic PAT works but needs the entire `repo`
 scope. Full setup notes in `.env.example`.
 
-**Uploading** is drag & drop, in two stages:
+**Uploading** is drag & drop, and the batch is walked one photo at a time — see
+`upload-walkthrough.tsx`. Thirty rows of a table read as bookkeeping: park and ride
+get filled in because the form asks, while the fields that need somebody to LOOK at
+the picture (the focal point, the alt text, whether it is a night shot) wait for a
+pass that never comes. So the batch becomes a queue: one photo large enough to
+judge, the EXIF findings beneath it, the ride shortlist as buttons, and the focal
+point set by clicking the picture — the one moment every photo is guaranteed to be
+in front of someone. `← → S` walk it. Nothing is written until the review step.
+
+**Every file goes up in its own request.** Both halves used to send the whole batch
+at once — `analyze` as a single multipart, `commit` as one JSON with every file
+base64-encoded — and Vercel rejects bodies over ~4.5 MB, with base64 adding a third
+on top. A single 4 MB photo already exceeded it: the admin advertised hundred-image
+batches and could not have committed three. It passed every local test because
+`next start` has no such limit. Now the body is one image regardless of batch size,
+commits run sequentially so the first opens the session pull request and the rest
+join it, and an oversized original is shrunk client-side (`_lib/upload-transport.ts`).
+
+Two details that matter there: `analyze` receives only the first megabyte of an
+oversized file, because EXIF sits in an APP1 segment right after the header — that
+is what keeps the GPS tag readable without shipping 26 MB. And shrinking re-encodes
+through a canvas, which **strips EXIF**, so it runs only after `analyze` has read the
+original and the GPS and capture date are written into the sidecar explicitly.
+
+The two stages:
 
 1. `/api/admin/media/analyze` reads each file's EXIF and answers where it was taken.
    Nothing is stored.

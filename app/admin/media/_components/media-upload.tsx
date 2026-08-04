@@ -11,6 +11,7 @@ import {
   type PickerResult,
 } from '../../blog-editor/_components/park-ride-picker';
 import type { AnalyzedFile, Assignment, Vocabulary } from '../_lib/types';
+import { analyzePayload, fitForCommit } from '../_lib/upload-transport';
 import { UploadWalkthrough } from './upload-walkthrough';
 
 /**
@@ -94,15 +95,24 @@ export function MediaUpload({ vocabulary, newSession, onDone, onClose }: Props) 
       setBusy(`Reading ${images.length} file${images.length === 1 ? '' : 's'}…`);
       setError(null);
       try {
-        const form = new FormData();
-        for (const file of images) form.append('files', file);
-        const response = await fetch('/api/admin/media/analyze', {
-          method: 'POST',
-          headers: { [ADMIN_PASS_HEADER]: pass },
-          body: form,
-        });
-        const data = await response.json();
-        if (!response.ok) throw new Error(data.error ?? 'Analysis failed');
+        // One request per file. The batch used to go up as a single multipart, which
+        // meant a handful of photos exceeded the ~4.5 MB body limit and the whole
+        // drop failed — see `_lib/upload-transport.ts`.
+        const analyzed: AnalyzedFile[] = [];
+        for (const [index, file] of images.entries()) {
+          setBusy(`Reading ${index + 1} of ${images.length}…`);
+          const form = new FormData();
+          form.append('files', analyzePayload(file), file.name);
+          const response = await fetch('/api/admin/media/analyze', {
+            method: 'POST',
+            headers: { [ADMIN_PASS_HEADER]: pass },
+            body: form,
+          });
+          const one = await response.json();
+          if (!response.ok) throw new Error(one.error ?? `Analysis failed for ${file.name}`);
+          analyzed.push(...(one.files as AnalyzedFile[]));
+        }
+        const data = { files: analyzed };
 
         setFiles(images);
         setAnalysis(data.files);
@@ -185,42 +195,76 @@ export function MediaUpload({ vocabulary, newSession, onDone, onClose }: Props) 
       return;
     }
 
-    setBusy(`Committing ${queued.length} image${queued.length === 1 ? '' : 's'}…`);
     setError(null);
-    try {
-      const operations = await Promise.all(
-        queued.map(async ({ assignment, index }) => ({
-          op: 'create' as const,
-          collection: assignment.collection,
-          name: assignment.name,
-          ext: assignment.ext,
-          contentBase64: await readAsBase64(files[index]),
-          sidecar: {
-            park: assignment.park,
-            ride: assignment.ride,
-            area: assignment.area,
-            tags: assignment.tags,
-            roles: assignment.roles,
-            alt: assignment.alt ? { de: assignment.alt } : {},
-            caption: assignment.caption ? { de: assignment.caption } : {},
-            shotAt: assignment.shotAt,
-            focus: assignment.focus,
-          },
-        }))
-      );
+    let landed = 0;
+    let pullRequest: string | null = null;
+    let joined = false;
+    const shrunk: string[] = [];
 
-      const response = await fetch('/api/admin/media/commit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', [ADMIN_PASS_HEADER]: pass },
-        body: JSON.stringify({
-          title: `media: add ${operations.length} images`,
-          newSession,
-          operations,
-        }),
-      });
-      const data = await response.json();
-      if (!response.ok && response.status !== 207) throw new Error(data.error ?? 'Commit failed');
-      onDone(data.pullRequest ?? null, data.joinedSession);
+    try {
+      // ONE REQUEST PER IMAGE, in order. A batch in a single body is what exceeded
+      // the ~4.5 MB serverless limit; sequential is what lets the first request open
+      // the session pull request and the rest find and join it instead of racing to
+      // open their own. See `_lib/upload-transport.ts`.
+      for (const { assignment, index } of queued) {
+        setBusy(`Committing ${landed + 1} of ${queued.length}…`);
+
+        // Only now, after `analyze` has already read the original's EXIF: the
+        // re-encode strips it, so `gps` and `shotAt` are written into the sidecar
+        // explicitly rather than left for the build to re-read off the file.
+        const { file, shrunk: wasShrunk } = await fitForCommit(files[index]);
+        if (wasShrunk) shrunk.push(assignment.name);
+        const exif = analysis[index];
+
+        const response = await fetch('/api/admin/media/commit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', [ADMIN_PASS_HEADER]: pass },
+          body: JSON.stringify({
+            title: `media: add ${assignment.name}`,
+            // Only the FIRST image may start a new pull request; the rest join
+            // whatever it opened, or the session that was already running.
+            newSession: landed === 0 ? newSession : false,
+            operations: [
+              {
+                op: 'create' as const,
+                collection: assignment.collection,
+                name: assignment.name,
+                ext: wasShrunk ? 'jpg' : assignment.ext,
+                contentBase64: await readAsBase64(file),
+                sidecar: {
+                  park: assignment.park,
+                  ride: assignment.ride,
+                  area: assignment.area,
+                  tags: assignment.tags,
+                  roles: assignment.roles,
+                  alt: assignment.alt ? { de: assignment.alt } : {},
+                  caption: assignment.caption ? { de: assignment.caption } : {},
+                  shotAt: assignment.shotAt,
+                  focus: assignment.focus,
+                  gps: wasShrunk && exif?.gps ? { lat: exif.gps.lat, lon: exif.gps.lon } : null,
+                },
+              },
+            ],
+          }),
+        });
+        const data = await response.json();
+        if (!response.ok && response.status !== 207) {
+          throw new Error(
+            `${assignment.name}: ${data.error ?? 'commit failed'}` +
+              (landed ? ` — ${landed} image${landed === 1 ? '' : 's'} already landed.` : '')
+          );
+        }
+        pullRequest = data.pullRequest ?? pullRequest;
+        joined = joined || Boolean(data.joinedSession);
+        landed++;
+      }
+
+      if (shrunk.length) {
+        console.info(
+          `[media] resized to fit the upload limit: ${shrunk.join(', ')} — GPS and capture date were carried into the sidecar.`
+        );
+      }
+      onDone(pullRequest, joined);
     } catch (e) {
       setError((e as Error).message);
     } finally {

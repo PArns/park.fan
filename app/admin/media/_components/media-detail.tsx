@@ -14,6 +14,7 @@ import {
 } from '../../blog-editor/_components/park-ride-picker';
 import { FocusEditor } from './focus-editor';
 import { Chip, Field, Notice, Section } from './panel-ui';
+import { fitForCommit } from '../_lib/upload-transport';
 
 /** Shared field styling — the admin has no form primitives of its own. */
 const INPUT =
@@ -258,10 +259,14 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onSaved }: Pr
     void replaceBytes(file);
   }
 
-  async function replaceBytes(file: File) {
+  async function replaceBytes(original: File) {
     setReplacing(true);
     setError(null);
     try {
+      // A replacement is usually a BIGGER file than the one it supersedes — this is
+      // the low-res upgrade path — so it is the most likely thing to run into the
+      // request-body limit. Shrunk only when it has to be.
+      const { file } = await fitForCommit(original);
       const base64 = await new Promise<string>((resolve, reject) => {
         const reader = new FileReader();
         reader.onload = () => resolve(String(reader.result).split(',')[1] ?? '');

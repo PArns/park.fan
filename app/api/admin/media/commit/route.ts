@@ -35,8 +35,16 @@ const MEDIA_ROOT = 'public/media';
 const NAME_RE = /^[a-z0-9][a-z0-9-]*$/;
 const COLLECTION_RE = /^[a-z0-9][a-z0-9-]*(?:\/[a-z0-9][a-z0-9-]*)*$/;
 const EXT_RE = /^(jpg|jpeg|png|webp|avif|svg)$/i;
-/** ~6 MB raw per image; a 2048px JPEG is well under this. */
-const MAX_BYTES = 8 * 1024 * 1024;
+/**
+ * Per-image ceiling, deliberately just under what the platform will actually pass.
+ *
+ * This used to say 8 MB, which was a promise the runtime could not keep: Vercel
+ * rejects request bodies over ~4.5 MB before this handler ever runs, and base64
+ * adds a third on top. A limit advertised above the real one turns a clear "too
+ * large" into an opaque platform error, so it sits below it instead. The client
+ * shrinks anything bigger before sending — see `_lib/upload-transport.ts`.
+ */
+const MAX_BYTES = 3.5 * 1024 * 1024;
 
 interface SidecarPayload {
   park?: string | null;
@@ -180,7 +188,7 @@ export async function POST(req: Request) {
       return bad(`"${op.op}" needs image bytes`);
     }
     if (op.contentBase64 && Buffer.byteLength(op.contentBase64, 'base64') > MAX_BYTES) {
-      return bad(`"${name}.${ext}" is larger than ${Math.round(MAX_BYTES / 1024 / 1024)} MB`);
+      return bad(`"${name}.${ext}" is larger than ${(MAX_BYTES / 1024 / 1024).toFixed(1)} MB`);
     }
 
     const { content, issues } = buildSidecarFile(op.id, op.sidecar);
