@@ -183,7 +183,12 @@ export function MediaUpload({ vocabulary, onDone, onClose }: Props) {
               e.preventDefault();
               setDragging(true);
             }}
-            onDragLeave={() => setDragging(false)}
+            // Moving over the icon or the copy fires dragleave on the zone too;
+            // without the relatedTarget check the highlight flickers off as soon
+            // as the pointer crosses a child.
+            onDragLeave={(e) => {
+              if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setDragging(false);
+            }}
             onDrop={(e) => {
               e.preventDefault();
               setDragging(false);

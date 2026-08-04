@@ -221,6 +221,20 @@ point, no alt text.
 **Editing** covers every sidecar field, plus moving an image to another collection
 (which renames the file and its sidecar).
 
+The editor is a dialog with a pinned header and footer and a scrolling body, because
+the two things you always want reachable were the two furthest apart: the title
+scrolled away upward while Save sat at the bottom of a twelve-field column. From `lg`
+up the two halves scroll **independently** — the framing previews are tall, and one
+shared scroll pushed the metadata a screenful away from the picture it describes,
+which is the pairing the editor exists for. The fields are grouped by the question
+each answers (what it shows · how it is used · tags · words · rights) rather than
+stacked flat, where a park slug carried the same weight as a caption.
+
+Everything is edited in memory until Save opens a pull request, so the header carries
+an **unsaved** badge, Save is disabled while the draft matches the row, and closing a
+dirty draft — X, Escape or a backdrop click — asks first. Escape closes the catalog
+picker before the editor when both are open.
+
 **The focal-point editor** previews the result in the **real** cards the site
 renders — `AttractionCard`, `ParkCard`, `BlogPostCardView`, `ParkBackground` — rather
 than look-alike boxes that could agree today and drift next month. They share one
@@ -230,10 +244,20 @@ and the photo track absorbs the slack, the box comes out taller than wide, and t
 preview lies about the focal point having no effect.
 
 **Replacing the file** (the low-res upgrade path) is the bar above the previews: the
-current resolution, and one button that swaps the bytes while the id, the sidecar and
-every reference to the image stay put. The grid labels the images that need it —
-`1024×768 · replace` — rather than marking them with an icon that says nothing about
-the fix existing.
+current resolution, and a **drop zone** that swaps the bytes while the id, the sidecar
+and every reference to the image stay put. The whole bar takes a drop, not just the
+button — an upgraded photo comes from a file manager, so dragging it here is the
+shortest path from "this one is too small" to a pull request; clicking anywhere on it
+opens the picker instead. A multi-file drop is refused rather than silently using the
+first, which is how the wrong photo ends up on a ride. The grid labels the images that
+need it — `1024×768 · replace` — rather than marking them with an icon that says
+nothing about the fix existing.
+
+Two mechanics worth keeping: the zone is a `div` with an explicit click, **not** a
+`<label>` wrapping the input — a label implicitly activates its control, and a drop
+landing on it forwarded that activation and tore the panel down mid-drop. And
+`dragleave` checks `relatedTarget`, or the highlight flickers off every time the
+pointer crosses the icon or the text inside the zone.
 
 **Uploading** is drag & drop, in two stages:
 

@@ -4,6 +4,7 @@ import { useCallback, useRef } from 'react';
 import Image from 'next/image';
 import type { MediaFocus } from '@/lib/media/types';
 import { FocusPreviews } from './focus-previews';
+import { Section } from './panel-ui';
 
 /**
  * Set an image's focal point, and see what it does everywhere the site paints it.
@@ -43,9 +44,9 @@ export function FocusEditor({ src, alt, focus, onChange }: FocusEditorProps) {
 
   return (
     <div className="space-y-4">
-      <div>
-        <div className="mb-2 flex items-center justify-between">
-          <h3 className="text-sm font-semibold">Focal point</h3>
+      <Section
+        title="Focal point"
+        action={
           <div className="flex items-center gap-2 text-xs">
             {focus ? (
               <>
@@ -55,62 +56,63 @@ export function FocusEditor({ src, alt, focus, onChange }: FocusEditorProps) {
                 <button
                   type="button"
                   onClick={() => onChange(null)}
-                  className="border-border hover:bg-muted rounded border px-2 py-0.5"
+                  className="border-border hover:bg-muted rounded-md border px-2 py-0.5 transition-colors"
                 >
                   Clear
                 </button>
               </>
             ) : (
-              <span className="text-muted-foreground">not set — crops from centre</span>
+              <span className="text-muted-foreground text-[11px]">not set — crops from centre</span>
             )}
           </div>
-        </div>
-
-        {/* Click target: the full photo, undistorted, with the point marked. */}
+        }
+      >
+        {/* Click target: the full photo, undistorted, with the point marked.
+            Height-capped rather than full-bleed — a portrait original filled the
+            column on its own and pushed "How it lands", the part that answers
+            whether the point is right, below the fold. */}
         <div
           ref={frameRef}
           role="application"
           aria-label="Click to set the focal point"
           onClick={(e) => setFromEvent(e.clientX, e.clientY)}
-          className="border-border relative w-full cursor-crosshair overflow-hidden rounded-lg border"
+          className="border-border relative mx-auto w-fit cursor-crosshair overflow-hidden rounded-lg border"
         >
           {/* eslint-disable-next-line @next/next/no-img-element -- intrinsic ratio, no layout box to reserve */}
-          <img src={src} alt={alt} className="block h-auto w-full select-none" draggable={false} />
+          <img
+            src={src}
+            alt={alt}
+            className="block max-h-[42vh] w-auto max-w-full select-none"
+            draggable={false}
+          />
           <span
             className="pointer-events-none absolute h-6 w-6 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white shadow-[0_0_0_2px_rgba(0,0,0,.55)]"
             style={{ left: `${marker.x * 100}%`, top: `${marker.y * 100}%` }}
           />
         </div>
-        <p className="text-muted-foreground mt-1 text-xs">
+        <p className="text-muted-foreground text-[11px]">
           Click the subject that must survive every crop. Drives both the CSS crop on cards and the
           build-time 16:9 / 4:3 / 1:1 renditions.
         </p>
-      </div>
+      </Section>
 
-      <div>
-        <h3 className="mb-2 text-sm font-semibold">How it lands</h3>
+      <Section title="How it lands">
         <FocusPreviews src={src} objectPosition={position} />
-      </div>
+      </Section>
 
-      <div>
-        <h3 className="mb-2 text-sm font-semibold">Inline article image</h3>
-        {/* Inline blog images are never cropped — they keep their own ratio. Shown
-            so it is obvious the focal point does nothing here, rather than leaving
-            somebody wondering why it had no effect. */}
-        <div className="border-border rounded-lg border p-3">
-          <Image
-            src={src}
-            alt={alt}
-            width={640}
-            height={480}
-            className="h-auto w-full rounded"
-            sizes="480px"
-          />
-          <p className="text-muted-foreground mt-1 text-[11px]">
-            Uncropped — the focal point does not apply here.
-          </p>
-        </div>
-      </div>
+      {/* Inline blog images are never cropped — they keep their own ratio. Shown
+          small, and only to make it obvious the focal point does nothing here,
+          rather than leaving somebody wondering why it had no effect. */}
+      <Section title="Inline article image" hint="Uncropped — the focal point does not apply here.">
+        <Image
+          src={src}
+          alt={alt}
+          width={640}
+          height={480}
+          className="h-auto w-40 rounded-lg"
+          sizes="160px"
+        />
+      </Section>
     </div>
   );
 }
