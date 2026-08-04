@@ -7,6 +7,11 @@ import { cn } from '@/lib/utils';
 import { ADMIN_PASS_HEADER, useAdmin } from '../../_lib/admin-context';
 import type { MediaRole } from '@/lib/media/types';
 import type { MediaRow, Vocabulary } from '../_lib/types';
+import {
+  ParkRidePicker,
+  type PickerMode,
+  type PickerResult,
+} from '../../blog-editor/_components/park-ride-picker';
 import { FocusEditor } from './focus-editor';
 
 /** Shared field styling — the admin has no form primitives of its own. */
@@ -42,6 +47,7 @@ export function MediaDetail({ id, vocabulary, onClose, onSaved }: Props) {
   const [geo, setGeo] = useState<GeoVerdict | null>(null);
   const [draft, setDraft] = useState<Partial<MediaRow> | null>(null);
   const [locale, setLocale] = useState<(typeof LOCALES)[number]>('de');
+  const [picker, setPicker] = useState<PickerMode | null>(null);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -95,6 +101,36 @@ export function MediaDetail({ id, vocabulary, onClose, onSaved }: Props) {
   const toggleRole = (role: MediaRole) => {
     const current = draft.roles ?? [];
     set('roles', current.includes(role) ? current.filter((r) => r !== role) : [...current, role]);
+  };
+
+  /**
+   * Apply a pick from the shared park/ride picker.
+   *
+   * The picker hands back the full geo path, which is worth more than the slug:
+   * it disambiguates the two parks whose slug is not unique (`disneyland-park` is
+   * both Anaheim and Paris), so `parkPath` falls out for free instead of having to
+   * be remembered by hand.
+   */
+  const applyPick = (result: PickerResult) => {
+    // `/parks/europe/france/paris/disneyland-park[/attractions/<ride>]`
+    const segments = result.refKey
+      .replace(/^\/parks\//, '')
+      .split('/')
+      .filter(Boolean);
+    const rideIndex = segments.indexOf('attractions');
+    const parkSegments = rideIndex >= 0 ? segments.slice(0, rideIndex) : segments.slice(0, 4);
+
+    if (result.kind === 'park') {
+      set('park', parkSegments[3] ?? null);
+      set('parkPath', parkSegments.length === 4 ? parkSegments.join('/') : null);
+    } else {
+      set('ride', segments[segments.length - 1] ?? null);
+      // A ride implies its park — filling both saves the second lookup, and the
+      // search backend's parent slug is authoritative.
+      set('park', result.parentParkSlug ?? parkSegments[3] ?? null);
+      set('parkPath', parkSegments.length === 4 ? parkSegments.join('/') : null);
+    }
+    setPicker(null);
   };
 
   const currentName = row.id.split('/').pop()!;
@@ -188,22 +224,25 @@ export function MediaDetail({ id, vocabulary, onClose, onSaved }: Props) {
 
           <div className="grid grid-cols-2 gap-2">
             <Field label="Park">
-              <input
-                className={INPUT}
+              <SlugField
+                value={draft.park}
                 placeholder="park slug"
-                value={draft.park ?? ''}
-                onChange={(e) => set('park', e.target.value || null)}
+                onChange={(v) => set('park', v)}
+                onPick={() => setPicker('park')}
               />
             </Field>
             <Field label="Ride">
-              <input
-                className={INPUT}
+              <SlugField
+                value={draft.ride}
                 placeholder="attraction slug"
-                value={draft.ride ?? ''}
-                onChange={(e) => set('ride', e.target.value || null)}
+                onChange={(v) => set('ride', v)}
+                onPick={() => setPicker('ride')}
               />
             </Field>
           </div>
+          {draft.parkPath && (
+            <p className="text-muted-foreground -mt-2 font-mono text-[10px]">{draft.parkPath}</p>
+          )}
 
           <Field label="Area">
             <input
@@ -340,7 +379,43 @@ export function MediaDetail({ id, vocabulary, onClose, onSaved }: Props) {
           </p>
         </div>
       </div>
+
+      {/* The blog editor's picker, reused verbatim — it already searches the live
+          catalog and returns the geo path. Typing raw slugs was how a photo ended
+          up on a ride that does not exist. */}
+      <ParkRidePicker mode={picker} onPick={applyPick} onClose={() => setPicker(null)} />
     </Panel>
+  );
+}
+
+/** Slug input with a "Pick…" button — typed by hand or chosen from the catalog. */
+function SlugField({
+  value,
+  placeholder,
+  onChange,
+  onPick,
+}: {
+  value: string | null | undefined;
+  placeholder: string;
+  onChange: (value: string | null) => void;
+  onPick: () => void;
+}) {
+  return (
+    <div className="flex gap-1">
+      <input
+        className={INPUT}
+        placeholder={placeholder}
+        value={value ?? ''}
+        onChange={(e) => onChange(e.target.value || null)}
+      />
+      <button
+        type="button"
+        onClick={onPick}
+        className="border-border hover:bg-muted shrink-0 rounded-md border px-2 text-xs"
+      >
+        Pick…
+      </button>
+    </div>
   );
 }
 

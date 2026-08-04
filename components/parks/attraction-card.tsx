@@ -36,6 +36,12 @@ interface AttractionCardProps {
   parkPath?: string;
   parkStatus?: ParkStatus;
   backgroundImage?: string | null;
+  /**
+   * Overrides where the photo is cropped from. Normally derived from the image's
+   * focal point via `objectPositionForSrc`; the admin's focal-point editor passes
+   * the UNSAVED value so the preview updates as you click.
+   */
+  objectPosition?: string;
   distance?: number;
   showParkName?: boolean;
   timezone?: string;
@@ -117,6 +123,7 @@ export function AttractionCard({
   parkPath,
   parkStatus,
   backgroundImage: propBackgroundImage,
+  objectPosition: propObjectPosition,
   distance,
   showParkName = false,
   timezone,
@@ -186,7 +193,7 @@ export function AttractionCard({
         <div className="absolute inset-0 z-0 overflow-hidden">
           {backgroundImage ? (
             <CardPhoto
-              objectPosition={objectPositionForSrc(backgroundImage)}
+              objectPosition={propObjectPosition ?? objectPositionForSrc(backgroundImage)}
               src={backgroundImage}
               alt={stripNewPrefix(attraction.name)}
               closed={!isOperatingOrUnknown}

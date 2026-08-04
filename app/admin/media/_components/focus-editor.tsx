@@ -2,19 +2,17 @@
 
 import { useCallback, useRef } from 'react';
 import Image from 'next/image';
-import { CardPhoto } from '@/components/parks/card-photo';
-import { cn } from '@/lib/utils';
 import type { MediaFocus } from '@/lib/media/types';
+import { FocusPreviews } from './focus-previews';
 
 /**
  * Set an image's focal point, and see what it does everywhere the site paints it.
  *
- * The point of the previews is that framing cannot be judged on the source photo:
- * a picture that looks fine at 4:3 loses the top of its subject in a wide ride
- * card and keeps it in a tall spotlight card. So the previews are rendered by the
- * REAL `CardPhoto` the cards use — same `object-position`, same reflection, same
- * fade — rather than by look-alike boxes that could agree with the site today and
- * drift from it next month.
+ * Framing cannot be judged on the source photo: a picture that looks fine at 4:3
+ * loses the top of its subject in a wide ride card and keeps it in a tall one. The
+ * previews therefore render the REAL cards and background (see `FocusPreviews`),
+ * in their open and closed states, because the card chrome — a glass header over
+ * the top, a wait panel over the bottom — decides how much of the photo survives.
  */
 
 interface FocusEditorProps {
@@ -23,30 +21,6 @@ interface FocusEditorProps {
   focus: MediaFocus | null;
   onChange: (focus: MediaFocus | null) => void;
 }
-
-/** The shapes the same photo is actually painted in across the site. */
-const PREVIEWS: { label: string; hint: string; className: string }[] = [
-  {
-    label: 'Ride card',
-    hint: 'park & ride grids, 3 columns',
-    className: 'aspect-[4/3]',
-  },
-  {
-    label: 'Spotlight card',
-    hint: 'blog spotlight, tall',
-    className: 'aspect-[3/4]',
-  },
-  {
-    label: 'Background',
-    hint: 'park page & hero, full bleed',
-    className: 'aspect-[21/9]',
-  },
-  {
-    label: 'OG card',
-    hint: 'social preview, 1200×630',
-    className: 'aspect-[1200/630]',
-  },
-];
 
 export function FocusEditor({ src, alt, focus, onChange }: FocusEditorProps) {
   const frameRef = useRef<HTMLDivElement>(null);
@@ -115,26 +89,7 @@ export function FocusEditor({ src, alt, focus, onChange }: FocusEditorProps) {
 
       <div>
         <h3 className="mb-2 text-sm font-semibold">How it lands</h3>
-        <div className="grid grid-cols-2 gap-3">
-          {PREVIEWS.map((preview) => (
-            <figure key={preview.label} className="min-w-0">
-              <div
-                className={cn(
-                  'bg-muted relative w-full overflow-hidden rounded-lg',
-                  preview.className
-                )}
-              >
-                {/* The real card photo element, so these previews cannot drift
-                    from what the site renders. */}
-                <CardPhoto src={src} alt={alt} objectPosition={position} sizes="320px" />
-              </div>
-              <figcaption className="text-muted-foreground mt-1 truncate text-[11px]">
-                <span className="text-foreground font-medium">{preview.label}</span> ·{' '}
-                {preview.hint}
-              </figcaption>
-            </figure>
-          ))}
-        </div>
+        <FocusPreviews src={src} objectPosition={position} />
       </div>
 
       <div>

@@ -57,6 +57,12 @@ interface ParkCardProps {
   /** Alias for parkId — accepted for callers using the nearby/favorites data shape. */
   id?: string;
   backgroundImage?: string | null;
+  /**
+   * Overrides where the photo is cropped from. Normally derived from the image's
+   * focal point via `objectPositionForSrc`; the admin's focal-point editor passes
+   * the UNSAVED value so the preview updates as you click.
+   */
+  objectPosition?: string;
   timezone?: string;
   todaySchedule?: ScheduleSummary;
   nextSchedule?: ScheduleSummary;
@@ -89,6 +95,7 @@ export function ParkCard({
   parkId,
   id,
   backgroundImage: propBackgroundImage,
+  objectPosition: propObjectPosition,
   timezone,
   todaySchedule,
   nextSchedule,
@@ -141,7 +148,7 @@ export function ParkCard({
         <div className="absolute inset-0 z-0 overflow-hidden">
           {backgroundImage ? (
             <CardPhoto
-              objectPosition={objectPositionForSrc(backgroundImage)}
+              objectPosition={propObjectPosition ?? objectPositionForSrc(backgroundImage)}
               src={backgroundImage}
               alt={name}
               closed={!isOperatingOrUnknown}
