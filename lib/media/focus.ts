@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react';
-import { getMediaImageBySrc } from './index';
+import { getMediaImageBySrc, getMediaImageForPath } from './index';
 import type { MediaFocus, MediaImage } from './types';
 
 /**
@@ -37,8 +37,36 @@ export function objectPositionForSrc(
   fallback: string = '50% 0%'
 ): string {
   if (!src) return fallback;
+  // A pre-cut crop was already cut AROUND the focal point at build time. Offsetting
+  // it again in CSS would apply the same correction twice and push the subject back
+  // out of frame, so these paint centred — the crop is the framing.
+  if (isPreCutCrop(src)) return '50% 50%';
   const image = getMediaImageBySrc(src);
   return image?.focus ? focusToObjectPosition(image.focus) : fallback;
+}
+
+/** `…-16x9.jpg` / `-4x3` / `-1x1` — a build-time rendition, not a source image. */
+const PRE_CUT_CROP = /-(?:16x9|4x3|1x1)\.[a-z0-9]+$/i;
+
+function isPreCutCrop(src: string): boolean {
+  return PRE_CUT_CROP.test(src.split('?')[0]);
+}
+
+/**
+ * Any media path with its content version attached — including a pre-cut crop.
+ *
+ * `versionedSrc` needs the image object and only ever versions the source file.
+ * Content references (blog `coverImage`, markdown bodies) hold a bare path, often
+ * a crop, and those are precisely the files whose bytes get rewritten under an
+ * unchanged URL when a focal point moves. Returns the path untouched when it is
+ * not a database image, so it is safe to run over arbitrary strings.
+ */
+export function versionedPath(src: string | null | undefined): string | null {
+  if (!src) return null;
+  const [path, query] = src.split('?');
+  if (query?.startsWith('v=')) return src;
+  const image = getMediaImageForPath(path);
+  return image ? `${path}?v=${image.version}` : src;
 }
 
 /** CSS `object-position` for a focal point, defaulting to centre. */

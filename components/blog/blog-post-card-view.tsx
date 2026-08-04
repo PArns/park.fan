@@ -3,8 +3,8 @@ import { BookOpen, Calendar, Clock, Star } from 'lucide-react';
 import { useFormatter, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { Badge } from '@/components/ui/badge';
-import { CardPhoto } from '@/components/parks/card-photo';
-import { objectPositionForSrc } from '@/lib/media/focus';
+import { CardPhoto, CardPhotoFrame } from '@/components/parks/card-photo';
+import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
 import { cn } from '@/lib/utils';
 import type { BlogListItem } from '@/lib/blog/types';
 
@@ -48,7 +48,10 @@ export function BlogPostCardView({
 
   const date = new Date(frontmatter.date);
 
-  const cover = frontmatter.coverImage?.src ?? null;
+  // Frontmatter usually points at a pre-cut crop (`…-16x9.jpg`), and that is the
+  // one file whose bytes get rewritten under an unchanged URL when someone moves
+  // the focal point — exactly what `?v=` exists to stop caches from serving stale.
+  const cover = versionedPath(frontmatter.coverImage?.src);
 
   // ---------- compact: list-row variant, kept simple (no glass panels) ----------
   if (variant === 'compact') {
@@ -229,10 +232,23 @@ export function BlogPostCardView({
             as the page's headliner. */}
         <div
           className={cn(
-            'relative z-[2]',
+            'relative z-0',
             cover && (isFeature ? 'sm:min-h-[360px]' : 'sm:min-h-[240px]')
           )}
-        />
+        >
+          {cover && (
+            <CardPhotoFrame
+              src={cover}
+              hideOnMobile
+              objectPosition={objectPositionForSrc(cover, '50% 50%')}
+              sizes={
+                isFeature
+                  ? '(max-width: 1024px) 100vw, 1024px'
+                  : '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
+              }
+            />
+          )}
+        </div>
 
         {/* Bottom glass panel — z-3, mirrors pk-panel-bot */}
         <div

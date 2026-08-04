@@ -232,6 +232,50 @@ export function MediaDetail({ id, vocabulary, onClose, onSaved }: Props) {
 
   return (
     <Panel onClose={onClose} title={row.id}>
+      {/* File bar — the pixels, and the one action that changes them.
+          It sits above the two columns and spans both on purpose: the replace
+          control used to live at the top of the right-hand column, which on a
+          laptop is a full screen below the focal-point previews, and nobody
+          found it. Upgrading a low-res original is a routine job, so it gets a
+          routine place: next to the resolution it is fixing. */}
+      <div
+        className={cn(
+          'mb-6 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-lg border px-3 py-2 text-xs',
+          row.lowRes ? 'border-amber-500/60 bg-amber-500/10' : 'border-border'
+        )}
+      >
+        {row.lowRes && <AlertTriangle className="h-4 w-4 shrink-0 text-amber-500" />}
+        <span className="font-mono">
+          {row.width}×{row.height}
+        </span>
+        <span className="text-muted-foreground">
+          {row.lowRes
+            ? `below the ${vocabulary.lowResLongEdge}px target — swap in a higher-resolution original, everything else about this image stays`
+            : 'swapping the file keeps the id, the sidecar and every reference to it'}
+        </span>
+        <label
+          className={cn(
+            'ml-auto flex shrink-0 cursor-pointer items-center gap-1.5 rounded-md px-3 py-1.5 font-medium',
+            row.lowRes ? 'bg-amber-500 text-black' : 'bg-foreground text-background',
+            replacing && 'pointer-events-none opacity-60'
+          )}
+        >
+          <Upload className="h-3.5 w-3.5" />
+          {replacing ? 'Opening pull request…' : 'Replace file…'}
+          <input
+            type="file"
+            accept="image/*"
+            className="hidden"
+            disabled={replacing}
+            onChange={(e) => {
+              const file = e.target.files?.[0];
+              e.target.value = '';
+              if (file) void replaceBytes(file);
+            }}
+          />
+        </label>
+      </div>
+
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
         <FocusEditor
           src={row.src}
@@ -241,32 +285,6 @@ export function MediaDetail({ id, vocabulary, onClose, onSaved }: Props) {
         />
 
         <div className="space-y-4 text-sm">
-          {row.lowRes && (
-            <Notice tone="warn">
-              <AlertTriangle className="h-4 w-4 shrink-0" />
-              <span>
-                {row.width}×{row.height} — below the {vocabulary.lowResLongEdge}px target. Swap in a
-                higher-resolution original below; everything else about this image stays.
-              </span>
-            </Notice>
-          )}
-
-          <label className="border-border hover:bg-muted flex cursor-pointer items-center justify-center gap-2 rounded-md border border-dashed py-2 text-xs">
-            <Upload className="h-3.5 w-3.5" />
-            {replacing ? 'Opening pull request…' : 'Replace the file, keep the metadata'}
-            <input
-              type="file"
-              accept="image/*"
-              className="hidden"
-              disabled={replacing}
-              onChange={(e) => {
-                const file = e.target.files?.[0];
-                e.target.value = '';
-                if (file) void replaceBytes(file);
-              }}
-            />
-          </label>
-
           {geo && geo.status !== 'no-gps' && (
             <Notice tone={geo.status === 'mismatch' ? 'warn' : 'info'}>
               <MapPin className="h-4 w-4 shrink-0" />

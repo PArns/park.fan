@@ -6,7 +6,7 @@ import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { ParkCardScheduleFooter } from '@/components/parks/park-card-schedule-footer';
-import { CardPhoto } from '@/components/parks/card-photo';
+import { CardPhoto, CardPhotoFrame } from '@/components/parks/card-photo';
 import { objectPositionForSrc } from '@/lib/media/focus';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
@@ -260,8 +260,20 @@ export function ParkCard({
         </div>
 
         {/* Photo spacer — the 1fr row resolves to 0 in an intrinsic-height
-           container; min-h forces it open when there is a background image. */}
-        <div className={cn('relative z-[2]', backgroundImage && 'sm:min-h-[220px]')} />
+           container; min-h forces it open when there is a background image.
+           It is also the strip of photo the panels leave visible, so the framed
+           layer lives in here — see `CardPhotoFrame`. Stays at `z-0` so the scrim
+           (z-1) keeps darkening it. */}
+        <div className={cn('relative z-0', backgroundImage && 'sm:min-h-[220px]')}>
+          {backgroundImage && (
+            <CardPhotoFrame
+              objectPosition={propObjectPosition ?? objectPositionForSrc(backgroundImage)}
+              src={backgroundImage}
+              closed={!isOperatingOrUnknown}
+              hideOnMobile
+            />
+          )}
+        </div>
 
         {/* Footer glass panel — z-3 */}
         <div

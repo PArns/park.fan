@@ -44,6 +44,7 @@ export { MEDIA_REVISION } from './manifest-search';
 // there is nothing to invalidate.
 let byId: Map<string, MediaImage> | null = null;
 let bySrc: Map<string, MediaImage> | null = null;
+let byVariant: Map<string, MediaImage> | null = null;
 let byPark: Map<string, MediaImage[]> | null = null;
 let byCollection: Map<string, MediaImage[]> | null = null;
 
@@ -51,11 +52,18 @@ function indexes() {
   if (!byId) {
     byId = new Map();
     bySrc = new Map();
+    byVariant = new Map();
     byPark = new Map();
     byCollection = new Map();
     for (const image of MEDIA_IMAGES) {
       byId.set(image.id, image);
       bySrc.set(image.src, image);
+      // Crops are indexed separately, NOT folded into `bySrc`. They must not answer
+      // the ordinary path lookup: callers there use the row's own `src` and `width`
+      // (the gallery rewrites an author's path to the canonical one, the blog
+      // reserves an inline image's box from it), and a crop resolving to its source
+      // would swap a 16:9 file for a 4:3 one and reserve the wrong box.
+      for (const variant of image.variants) byVariant.set(variant, image);
       if (image.park) {
         const list = byPark.get(image.park);
         if (list) list.push(image);
@@ -69,6 +77,7 @@ function indexes() {
   return {
     byId: byId!,
     bySrc: bySrc!,
+    byVariant: byVariant!,
     byPark: byPark!,
     byCollection: byCollection!,
   };
@@ -87,10 +96,28 @@ export function getMediaImage(id: string): MediaImage | null {
  * Lets anything still holding a path — blog markdown, frontmatter `coverImage`,
  * legacy props — reach the image's metadata without being rewritten to use ids.
  * An `?align=`-style query is tolerated, matching the blog authoring convention.
+ *
+ * Matches the **source file only**. A pre-cut crop answers `null` here on purpose;
+ * see {@link getMediaImageForPath}.
  */
 export function getMediaImageBySrc(src: string): MediaImage | null {
   const clean = src.split('?')[0];
   return indexes().bySrc.get(clean) ?? null;
+}
+
+/**
+ * The image a public path belongs to, counting the build-time crops.
+ *
+ * `…-16x9.jpg` is the same photo as `….jpg` — same credit, same focal point, same
+ * content version — so anything asking "which row is this file part of" wants this.
+ * Anything asking "which row IS this file" wants {@link getMediaImageBySrc}, because
+ * the row's `src`, `width` and `height` describe the source, and handing those back
+ * for a crop would substitute a 4:3 file for a 16:9 one.
+ */
+export function getMediaImageForPath(src: string): MediaImage | null {
+  const clean = src.split('?')[0];
+  const { bySrc, byVariant } = indexes();
+  return bySrc.get(clean) ?? byVariant.get(clean) ?? null;
 }
 
 /** Every image assigned to a park, in collection + gallery order. */

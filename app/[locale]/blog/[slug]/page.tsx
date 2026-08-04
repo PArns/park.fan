@@ -191,8 +191,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     { name: post.frontmatter.title, url: `/blog/${post.slug}` },
   ];
 
-  const cover = post.frontmatter.coverImage?.src ?? null;
-
   // Eyebrow above the banner title: the deepest category, or the blog badge.
   const kicker =
     navBreadcrumbs.length > 1 ? navBreadcrumbs[navBreadcrumbs.length - 1].name : tBlog('badge');
@@ -234,9 +232,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <>
-      {cover && <link rel="preload" as="image" href={cover} />}
       <BlogReadingProgress />
 
+      {/* No manual `<link rel="preload">` for the cover: the banner renders it
+          through next/image, so the preload pointed at the ORIGINAL file while the
+          browser then fetched the optimized rendition — a second, full-size
+          download of an image nothing displayed. `<Image priority>` in the banner
+          emits the correct preload on its own. */}
       {/* Full-bleed cover banner — the header floats transparent over it. */}
       <BlogPostBanner post={post} currentLocale={locale as Locale} kicker={kicker} />
 

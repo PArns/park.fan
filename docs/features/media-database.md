@@ -69,6 +69,48 @@ catalog to every visitor.
 `object-position`. Server-side; Client Components take it as a prop
 (`CardPhoto`, `ParkBackground`).
 
+A **pre-cut crop** (`…-16x9.jpg`) answers as the image it was cut from — same
+credit, same content version — but gets `50% 50%`, not the focal point: the crop was
+already cut around that point at build time, and offsetting it again in CSS would
+apply the correction twice. `versionedPath(src)` attaches `?v=` to any media path,
+crops included; blog `coverImage` frontmatter points straight at a crop, and that is
+exactly the file whose bytes get rewritten under an unchanged URL when someone
+retargets a focal point.
+
+#### The card photo is two layers, and that is what makes Y work
+
+`object-fit: cover` scales to the **larger** of the two ratios it needs, so it
+overflows on one axis and fits exactly on the other. Paint a photo across a whole
+card — 405 × 404, aspect ≈ 1.0 — and a landscape photo (4:3, aspect 1.33) fills the
+card's _height_ exactly. There is then no vertical overflow, so the Y half of
+`object-position` has nothing to move: the focal point renders byte-identical pixels
+however far you drag it. Nothing errors, and the build is green.
+
+The framing reference is therefore the **strip the two glass panels leave visible**,
+not the card:
+
+- `CardPhotoFrame` lives inside the card's photo-spacer row — 405 × 220, aspect 1.84
+  — so a 4:3 photo overflows it by ~84 px and the focal point moves the subject
+  through that range. This is the layer a visitor sees and the one the admin tunes.
+- `CardPhoto` still covers the whole card underneath, so the frosted panels keep
+  something to blur and no gradient band shows through the glass. Its crop is never
+  the reference; it is only ever seen through 16–18 px of backdrop blur.
+
+Same URL for both, so it is one request and one decode — the second layer costs a
+composite, not a download. Their seam falls under a glass panel, whose own blur
+smears it away; where a card renders **no** bottom panel (a ride with no live wait
+time) the spacer takes `row-span-2` so the framed layer claims that row too, instead
+of leaving its lower edge exposed mid-card.
+
+`pnpm check:card-framing` asserts the invariant against a running site, across ride,
+park, blog and home surfaces. It checks the **box** of every card that has a bottom
+panel, not the photo in it: a picture that is natively 16:9 has no vertical range in a
+1.67 box and never can, which is a property of that picture, and a card with no bottom
+panel is legitimately squarer because the whole card is the visible photo there. What
+must not happen is a panelled card's box going square — a third badge row or a taller
+footer can quietly do that, and then every landscape photo loses its Y axis at once,
+with nothing else to notice.
+
 ---
 
 ## 3. Generated files
@@ -179,9 +221,19 @@ point, no alt text.
 **Editing** covers every sidecar field, plus moving an image to another collection
 (which renames the file and its sidecar).
 
-**The focal-point editor** previews the result in the **real** `CardPhoto` component
-the site uses — the same `object-position`, reflection and fade — rather than
-look-alike boxes that could agree today and drift next month.
+**The focal-point editor** previews the result in the **real** cards the site
+renders — `AttractionCard`, `ParkCard`, `BlogPostCardView`, `ParkBackground` — rather
+than look-alike boxes that could agree today and drift next month. They share one
+grid with a pinned 220 px photo track and `grid-template-rows: subgrid`, because that
+is the only arrangement that reproduces the real box: give each card its own template
+and the photo track absorbs the slack, the box comes out taller than wide, and the
+preview lies about the focal point having no effect.
+
+**Replacing the file** (the low-res upgrade path) is the bar above the previews: the
+current resolution, and one button that swaps the bytes while the id, the sidecar and
+every reference to the image stay put. The grid labels the images that need it —
+`1024×768 · replace` — rather than marking them with an icon that says nothing about
+the fix existing.
 
 **Uploading** is drag & drop, in two stages:
 

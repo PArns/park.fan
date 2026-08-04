@@ -217,20 +217,23 @@ export default function MediaAdminPage() {
                     }}
                   />
                   <div className="absolute top-1 right-1 flex gap-1">
-                    {image.lowRes && (
-                      <span
-                        title={`${image.width}×${image.height} — below target`}
-                        className="rounded bg-amber-500/90 p-0.5 text-black"
-                      >
-                        <AlertTriangle className="h-3 w-3" />
-                      </span>
-                    )}
                     {image.focus && (
                       <span title="Focal point set" className="bg-background/80 rounded p-0.5">
                         <Crosshair className="h-3 w-3" />
                       </span>
                     )}
                   </div>
+                  {/* Low resolution is a to-do, not a footnote — it says what is
+                      wrong and what the click will let you do about it, because an
+                      icon-only warning here left no clue that the fix exists. */}
+                  {image.lowRes && (
+                    <span className="absolute inset-x-1 bottom-1 flex items-center gap-1 rounded bg-amber-500/95 px-1.5 py-0.5 text-[10px] font-medium text-black">
+                      <AlertTriangle className="h-3 w-3 shrink-0" />
+                      <span className="truncate">
+                        {image.width}×{image.height} · replace
+                      </span>
+                    </span>
+                  )}
                 </div>
                 <div className="p-2">
                   <p className="truncate text-xs font-medium">{image.title}</p>

@@ -304,14 +304,20 @@ function blogFixture(cover: string, title: string): BlogListItem {
  * grew to 408px, making the box TALLER than wide — at which point a 4:3 photo
  * overflows horizontally and the vertical focal point does literally nothing.
  * 380 × 220 is the card as the 3-column grid actually renders it.
+ *
+ * The cards share ONE grid rather than getting a template each, because that is
+ * the other half of how the real page behaves: subgrid equalizes the header and
+ * footer rows across a row of cards, so a closed ride — which renders no wait
+ * panel — still has that row's height reserved beneath it. Give each card its own
+ * template and the closed one collapses to a shorter card than any page shows.
  */
 function PreviewGrid({ hint, children }: { hint: string; children: React.ReactNode }) {
   return (
     <div>
       <Hint>{hint}</Hint>
-      <div className="grid grid-cols-2 items-start gap-4">
+      <div className="grid grid-cols-2 [grid-template-rows:auto_220px_auto] items-start gap-4">
         {Children.map(children, (child, i) => (
-          <div key={i} className="grid max-w-[380px] [grid-template-rows:auto_220px_auto]">
+          <div key={i} className="row-span-3 grid max-w-[380px] [grid-template-rows:subgrid]">
             {child}
           </div>
         ))}

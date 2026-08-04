@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { Link } from '@/i18n/navigation';
-import { CardPhoto } from '@/components/parks/card-photo';
+import { CardPhoto, CardPhotoFrame } from '@/components/parks/card-photo';
 import { objectPositionForSrc } from '@/lib/media/focus';
 import { useTranslations } from 'next-intl';
 import { Crown, ChartColumn, Clock, MapPin } from 'lucide-react';
@@ -172,7 +172,11 @@ export function AttractionCard({
   const ropeDrop = ropeDropData?.worth ? ropeDropData : null;
   const eveningBetter = ropeDropData !== null && !ropeDrop && isEveningBetter(ropeDropData);
 
-  const hasSparkline = isOperatingOrUnknown && waitTime !== null;
+  // The bottom glass panel (wait time + sparkline) only exists when there is a
+  // live wait time. Without it row 3 is empty rather than covered, so the photo
+  // the visitor sees runs all the way down — and the framed photo layer has to
+  // claim that row too, or its lower edge sits exposed mid-card as a crop seam.
+  const hasBottomPanel = isOperatingOrUnknown && waitTime !== null;
 
   return (
     <Link
@@ -368,11 +372,30 @@ export function AttractionCard({
         </div>
 
         {/* Photo spacer — the 1fr row resolves to 0 in an intrinsic-height
-           container; min-h forces it open when there is a background image. */}
-        <div className={cn('relative z-[2]', backgroundImage && 'sm:min-h-[220px]')} />
+           container; min-h forces it open when there is a background image.
+           It is also the strip of photo the panels leave visible, so the framed
+           layer lives in here: that is what gives `object-position` a box wider
+           than the picture and therefore a working Y axis. Stays at `z-0` so the
+           scrim (z-1) keeps darkening it. */}
+        <div
+          className={cn(
+            'relative z-0',
+            !hasBottomPanel && 'row-span-2',
+            backgroundImage && 'sm:min-h-[220px]'
+          )}
+        >
+          {backgroundImage && (
+            <CardPhotoFrame
+              objectPosition={propObjectPosition ?? objectPositionForSrc(backgroundImage)}
+              src={backgroundImage}
+              closed={!isOperatingOrUnknown}
+              hideOnMobile
+            />
+          )}
+        </div>
 
         {/* Bottom glass panel — only rendered when we have a live wait time */}
-        {isOperatingOrUnknown && waitTime !== null && (
+        {hasBottomPanel && (
           <div
             className="pk-panel-bot relative z-[3] -mt-4 overflow-hidden"
             style={{
@@ -417,7 +440,7 @@ export function AttractionCard({
                 </div>
 
                 {/* Sparkline */}
-                {hasSparkline ? (
+                {hasBottomPanel ? (
                   <div className="relative min-w-0 flex-1" style={{ color: 'var(--pk-text-1)' }}>
                     <WaitTimeSparklineCard
                       history={history ?? []}

@@ -5,6 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Link } from '@/i18n/navigation';
 import { BLOG_TOP_ID } from '@/lib/blog/toc';
 import { resolveAuthor } from '@/lib/blog/authors';
+import { versionedPath } from '@/lib/media/focus';
 import type { Locale } from '@/i18n/config';
 import type { BlogPost } from '@/lib/blog/types';
 
@@ -30,7 +31,7 @@ export function BlogPostBanner({ post, currentLocale, kicker }: BlogPostBannerPr
   // Match the route's cover rule: skip SVG covers (a PNG is generated for OG).
   const cover =
     frontmatter.coverImage?.src && !/\.svg(\?|$)/i.test(frontmatter.coverImage.src)
-      ? frontmatter.coverImage.src
+      ? versionedPath(frontmatter.coverImage.src)
       : null;
   const coverAlt = frontmatter.coverImage?.alt ?? frontmatter.title;
 
