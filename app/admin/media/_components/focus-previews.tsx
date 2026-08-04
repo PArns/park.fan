@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { Children, useState } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 
 import { BlogPostCardView } from '@/components/blog/blog-post-card-view';
@@ -286,11 +286,36 @@ function blogFixture(cover: string, title: string): BlogListItem {
 
 // ─── chrome ──────────────────────────────────────────────────────────────────
 
+/**
+ * The real card grid, not a lookalike.
+ *
+ * This matters more than it looks. The cards lay out via `row-span-3` +
+ * `grid-template-rows: subgrid` against an `auto_1fr_auto` parent (see
+ * `land-section.tsx`, and the convention note in CLAUDE.md). A plain
+ * `grid-cols-2` — which is what this used to be — leaves the photo track sized by
+ * the row rather than by the card, and the box came out at aspect 1.42 against a
+ * 4:3 photo. `object-fit: cover` then has only ~6 % of overflow to work with, so
+ * dragging the focal point from top to bottom moved the picture almost not at all
+ * and the preview said "the focal point does nothing".
+ *
+ * The photo track is pinned to `220px` rather than left as `1fr`. On the real page
+ * `1fr` resolves against a full grid of cards and lands on the card's
+ * `sm:min-h-[220px]`; in a two-card preview it instead absorbed all the slack and
+ * grew to 408px, making the box TALLER than wide — at which point a 4:3 photo
+ * overflows horizontally and the vertical focal point does literally nothing.
+ * 380 × 220 is the card as the 3-column grid actually renders it.
+ */
 function PreviewGrid({ hint, children }: { hint: string; children: React.ReactNode }) {
   return (
     <div>
       <Hint>{hint}</Hint>
-      <div className="grid grid-cols-2 gap-3">{children}</div>
+      <div className="grid grid-cols-2 items-start gap-4">
+        {Children.map(children, (child, i) => (
+          <div key={i} className="grid max-w-[380px] [grid-template-rows:auto_220px_auto]">
+            {child}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
