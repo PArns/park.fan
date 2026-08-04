@@ -2,6 +2,7 @@ import { useLocale } from 'next-intl';
 
 import { resolveAuthor } from '@/lib/blog/authors';
 import { resolveCategoryLabel } from '@/lib/blog/categories';
+import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
 import type { BlogListItem } from '@/lib/blog/types';
 import type { Locale } from '@/i18n/config';
 import { BlogPostCardView } from './blog-post-card-view';
@@ -37,6 +38,13 @@ export function BlogPostCard({
     ? resolveCategoryLabel(categoryPath, locale, lastSegment)
     : null;
 
+  // Resolved HERE, not in the view: the view renders inside a client tree (the
+  // admin's focal-point previews), and a media-database lookup there ships the
+  // whole catalog to the browser. Frontmatter usually points at a pre-cut crop
+  // (`…-16x9.jpg`) — the one file whose bytes get rewritten under an unchanged URL
+  // when a focal point moves, which is exactly what `?v=` guards against.
+  const cover = versionedPath(post.frontmatter.coverImage?.src);
+
   return (
     <BlogPostCardView
       post={post}
@@ -45,6 +53,8 @@ export function BlogPostCard({
       className={className}
       author={author}
       categoryLabel={categoryLabel}
+      cover={cover}
+      coverPosition={objectPositionForSrc(cover, '50% 50%')}
     />
   );
 }

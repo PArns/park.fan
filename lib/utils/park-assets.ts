@@ -1,5 +1,6 @@
 import { getParkBackground, getRideImage } from '@/lib/media';
-import { versionedImageSet, versionedSrc } from '@/lib/media/focus';
+import { focusToObjectPosition, versionedImageSet, versionedSrc } from '@/lib/media/focus';
+import type { MediaImage } from '@/lib/media/types';
 
 /**
  * Park and ride photo resolution, backed by the media database.
@@ -63,22 +64,66 @@ export function getAttractionImageSet(parkSlug: string, attractionSlug: string):
   return image ? versionedImageSet(image) : getParkImageSet(parkSlug);
 }
 
-/** Adds `backgroundImage` to each park in an array (mutates a shallow copy). */
+/**
+ * Adds `backgroundImage` **and** `backgroundPosition` to each park.
+ *
+ * The position travels with the path on purpose. A card cannot look the focal
+ * point up itself without importing the manifest, and the cards are rendered by
+ * Client Components (the live hub grid, nearby, favorites), so that import ships
+ * the whole 107 KB catalog to every visitor. Resolving both here — once, on the
+ * server, where the manifest already lives — is what keeps the browser out of it.
+ */
 export function enrichParksWithImages<T extends { slug: string }>(
   parks: T[]
-): (T & { backgroundImage: string | null })[] {
-  return parks.map((park) => ({ ...park, backgroundImage: getParkBackgroundImage(park.slug) }));
+): (T & { backgroundImage: string | null; backgroundPosition: string })[] {
+  return parks.map((park) => {
+    const image = getParkBackground(park.slug);
+    return {
+      ...park,
+      backgroundImage: image ? versionedSrc(image) : null,
+      backgroundPosition: positionOf(image),
+    };
+  });
 }
 
-/** Adds `backgroundImage` to each attraction, falling back to the park's background image. */
+/**
+ * Same for attractions, falling back to the park's background photo — and to that
+ * photo's focal point with it, so the two never come from different images.
+ */
 export function enrichAttractionsWithImages<T extends { slug: string; park?: { slug: string } }>(
   attractions: T[]
-): (T & { backgroundImage: string | null })[] {
+): (T & { backgroundImage: string | null; backgroundPosition: string })[] {
   return attractions.map((attraction) => {
     const image = attraction.park?.slug
-      ? (getAttractionBackgroundImage(attraction.park.slug, attraction.slug) ??
-        getParkBackgroundImage(attraction.park.slug))
+      ? (getRideImage(attraction.park.slug, attraction.slug) ??
+        getParkBackground(attraction.park.slug))
       : null;
-    return { ...attraction, backgroundImage: image };
+    return {
+      ...attraction,
+      backgroundImage: image ? versionedSrc(image) : null,
+      backgroundPosition: positionOf(image),
+    };
   });
+}
+
+/**
+ * Where a card crops from when the image has no focal point.
+ *
+ * Not centre: park and ride photos have always framed from the top, and switching
+ * every un-tuned photo to centre-crop would silently re-frame the whole catalog.
+ * Setting a focal point is what opts an image out of it.
+ */
+export const CARD_FALLBACK_POSITION = '50% 0%';
+
+function positionOf(image: MediaImage | null): string {
+  return image?.focus ? focusToObjectPosition(image.focus) : CARD_FALLBACK_POSITION;
+}
+
+/** `object-position` for a park/ride card photo, resolved server-side. */
+export function getCardObjectPosition(parkSlug: string, attractionSlug?: string): string {
+  return positionOf(
+    attractionSlug
+      ? (getRideImage(parkSlug, attractionSlug) ?? getParkBackground(parkSlug))
+      : getParkBackground(parkSlug)
+  );
 }

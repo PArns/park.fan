@@ -6,7 +6,11 @@ import { notFound } from 'next/navigation';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { MapPin } from 'lucide-react';
 import { LiveParkGrid } from '@/components/parks/live-park-grid';
-import { getParkBackgroundImage, getParkImageSet } from '@/lib/utils/park-assets';
+import {
+  getCardObjectPosition,
+  getParkBackgroundImage,
+  getParkImageSet,
+} from '@/lib/utils/park-assets';
 import { getCitiesWithParks, getGeoStructure, getCountrySummary } from '@/lib/api/discovery';
 import { catchNonFatal } from '@/lib/api/client';
 import { PageContainer } from '@/components/common/page-container';
@@ -177,6 +181,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
                 countryName,
                 href: `/parks/${continent}/${country}/${city.slug}/${park.slug}`,
                 backgroundImage: getParkBackgroundImage(park.slug),
+                backgroundPosition: getCardObjectPosition(park.slug),
                 // Static too — the distance to the visitor is computed client-side from these.
                 latitude: park.latitude,
                 longitude: park.longitude,

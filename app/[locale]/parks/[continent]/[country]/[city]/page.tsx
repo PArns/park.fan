@@ -5,7 +5,11 @@ import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { LiveParkGrid, type StaticPark } from '@/components/parks/live-park-grid';
-import { getParkBackgroundImage, getParkImageSet } from '@/lib/utils/park-assets';
+import {
+  getCardObjectPosition,
+  getParkBackgroundImage,
+  getParkImageSet,
+} from '@/lib/utils/park-assets';
 import { getCitiesWithParks, getGeoStructure } from '@/lib/api/discovery';
 import { catchNonFatal } from '@/lib/api/client';
 import { PageContainer } from '@/components/common/page-container';
@@ -134,6 +138,7 @@ export default async function CityPage({ params }: CityPageProps) {
     countryName,
     href: `/parks/${continent}/${country}/${citySlug}/${park.slug}`,
     backgroundImage: getParkBackgroundImage(park.slug),
+    backgroundPosition: getCardObjectPosition(park.slug),
     // Static too — the distance to the visitor is computed client-side from these.
     latitude: park.latitude,
     longitude: park.longitude,

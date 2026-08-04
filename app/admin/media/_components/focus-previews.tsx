@@ -157,6 +157,8 @@ export function FocusPreviews({ src, objectPosition }: Props) {
           <PreviewGrid hint="blog listing — crops from the CENTRE, unlike the park and ride cards">
             <BlogPostCardView
               post={blogFixture(src, 'Ein kurzer Titel')}
+              cover={src}
+              coverPosition={objectPosition}
               author="Patrick Arns"
               categoryLabel="Guides"
             />
@@ -165,6 +167,8 @@ export function FocusPreviews({ src, objectPosition }: Props) {
                 src,
                 'Ein deutlich längerer Titel, der über zwei Zeilen läuft und den Ausschnitt verschiebt'
               )}
+              cover={src}
+              coverPosition={objectPosition}
               author="Patrick Arns"
               categoryLabel="Hinter den Kulissen"
             />

@@ -13,6 +13,7 @@ export interface FeaturedCardStatic {
   country: string;
   href: string;
   backgroundImage: string | null;
+  backgroundPosition?: string;
   continentSlug: string;
   countrySlug: string;
 }
@@ -33,6 +34,7 @@ function FeaturedLiveCard({ park }: { park: FeaturedCardStatic }) {
       country={park.country}
       href={park.href as '/'}
       backgroundImage={park.backgroundImage}
+      objectPosition={park.backgroundPosition}
       variant="detailed"
       // Live overlay — undefined until the client batch call resolves, so the prerendered
       // shell shows the card without a status badge (the footer renders its own skeleton).

@@ -7,7 +7,6 @@ import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { ParkCardScheduleFooter } from '@/components/parks/park-card-schedule-footer';
 import { CardPhoto, CardPhotoFrame } from '@/components/parks/card-photo';
-import { objectPositionForSrc } from '@/lib/media/focus';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import { formatDistance } from '@/lib/utils/distance-utils';
@@ -16,16 +15,6 @@ import { useTranslations } from 'next-intl';
 import type { ScheduleSummary } from '@/lib/api/types';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
-
-// Lazily loaded server-side only — avoids bundling `fs` into the client
-/* eslint-disable @typescript-eslint/no-require-imports */
-const serverAssets =
-  typeof window === 'undefined'
-    ? (require('@/lib/utils/park-assets') as {
-        getParkBackgroundImage: (slug: string) => string | null;
-      })
-    : null;
-/* eslint-enable @typescript-eslint/no-require-imports */
 
 interface ParkCardProps {
   name: string;
@@ -58,9 +47,10 @@ interface ParkCardProps {
   id?: string;
   backgroundImage?: string | null;
   /**
-   * Overrides where the photo is cropped from. Normally derived from the image's
-   * focal point via `objectPositionForSrc`; the admin's focal-point editor passes
-   * the UNSAVED value so the preview updates as you click.
+   * Where the photo is cropped from — the image's focal point, resolved by the
+   * SERVER (`enrichParksWithImages` / `getCardObjectPosition`) and handed in. The
+   * card cannot look it up itself without importing the media manifest, and this
+   * card renders inside Client Components. Defaults to the historical top crop.
    */
   objectPosition?: string;
   timezone?: string;
@@ -77,7 +67,7 @@ interface ParkCardProps {
 
 export function ParkCard({
   name,
-  slug,
+  slug: _slug,
   city,
   country,
   href,
@@ -117,12 +107,12 @@ export function ParkCard({
       })()
     : country;
 
-  let backgroundImage: string | null = null;
-  if (propBackgroundImage !== undefined) {
-    backgroundImage = propBackgroundImage;
-  } else if (showBackground && serverAssets) {
-    backgroundImage = serverAssets.getParkBackgroundImage(slug);
-  }
+  // The photo and where to crop it are handed in, never looked up here. This card
+  // is rendered by Client Components (the live hub grid, nearby, favorites), and a
+  // media-database lookup inside it puts the whole 107 KB catalog in their bundle.
+  // Server callers use `getParkBackgroundImage` / `getCardObjectPosition`; the API
+  // routes attach both via `enrichParksWithImages`.
+  const backgroundImage = showBackground ? (propBackgroundImage ?? null) : null;
 
   const isOpen = status === 'OPERATING';
   const isOperatingOrUnknown = status === 'OPERATING' || status === 'UNKNOWN';
@@ -148,7 +138,7 @@ export function ParkCard({
         <div className="absolute inset-0 z-0 overflow-hidden">
           {backgroundImage ? (
             <CardPhoto
-              objectPosition={propObjectPosition ?? objectPositionForSrc(backgroundImage)}
+              objectPosition={propObjectPosition ?? 'top'}
               src={backgroundImage}
               alt={name}
               closed={!isOperatingOrUnknown}
@@ -267,7 +257,7 @@ export function ParkCard({
         <div className={cn('relative z-0', backgroundImage && 'sm:min-h-[220px]')}>
           {backgroundImage && (
             <CardPhotoFrame
-              objectPosition={propObjectPosition ?? objectPositionForSrc(backgroundImage)}
+              objectPosition={propObjectPosition ?? 'top'}
               src={backgroundImage}
               closed={!isOperatingOrUnknown}
               hideOnMobile

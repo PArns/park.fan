@@ -9,6 +9,8 @@ import type { ResolvedPark } from '@/lib/blog/park-resolver';
 interface BlogParkCardLiveProps {
   park: ResolvedPark;
   backgroundImage?: string | null;
+  /** Focal point, resolved by the server wrapper. */
+  objectPosition?: string;
   /** Wrapper classes — the callers own the card's grid-row template. */
   className?: string;
 }
@@ -20,7 +22,12 @@ interface BlogParkCardLiveProps {
  * open-ride count and today's hours all change during the day, so they're refreshed from the
  * region batch instead of being served as of whenever the post was built.
  */
-export function BlogParkCardLive({ park, backgroundImage, className }: BlogParkCardLiveProps) {
+export function BlogParkCardLive({
+  park,
+  backgroundImage,
+  objectPosition,
+  className,
+}: BlogParkCardLiveProps) {
   const tGeo = useTranslations('geo');
   const live = useLiveBlogPark(park) ?? park;
   const country = translateGeoSlug(tGeo, 'countries', live.countrySlug, live.country);
@@ -44,6 +51,7 @@ export function BlogParkCardLive({ park, backgroundImage, className }: BlogParkC
         nextSchedule={live.nextSchedule}
         hasOperatingSchedule={live.hasOperatingSchedule}
         backgroundImage={backgroundImage}
+        objectPosition={objectPosition}
       />
     </div>
   );

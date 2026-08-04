@@ -1,7 +1,6 @@
 import { Suspense } from 'react';
 import { Link } from '@/i18n/navigation';
 import { CardPhoto, CardPhotoFrame } from '@/components/parks/card-photo';
-import { objectPositionForSrc } from '@/lib/media/focus';
 import { useTranslations } from 'next-intl';
 import { Crown, ChartColumn, Clock, MapPin } from 'lucide-react';
 import { cn, stripNewPrefix } from '@/lib/utils';
@@ -37,9 +36,10 @@ interface AttractionCardProps {
   parkStatus?: ParkStatus;
   backgroundImage?: string | null;
   /**
-   * Overrides where the photo is cropped from. Normally derived from the image's
-   * focal point via `objectPositionForSrc`; the admin's focal-point editor passes
-   * the UNSAVED value so the preview updates as you click.
+   * Where the photo is cropped from — the image's focal point, resolved by the
+   * SERVER (`enrichAttractionsWithImages` / `getCardObjectPosition`) and handed in.
+   * The card cannot look it up itself without importing the media manifest, and it
+   * renders inside Client Components. Defaults to the historical top crop.
    */
   objectPosition?: string;
   distance?: number;
@@ -141,6 +141,13 @@ export function AttractionCard({
   const href = getHref(attraction, parkPath);
   const backgroundImage =
     propBackgroundImage ?? ('backgroundImage' in attraction ? attraction.backgroundImage : null);
+  // Attached alongside the path by `enrichAttractionsWithImages`, so the focal point
+  // survives the trip through an API route without the card importing the manifest.
+  const objectPosition =
+    propObjectPosition ??
+    ('backgroundPosition' in attraction && typeof attraction.backgroundPosition === 'string'
+      ? attraction.backgroundPosition
+      : 'top');
 
   const stats = attraction.statistics;
   const history = stats?.history;
@@ -197,7 +204,7 @@ export function AttractionCard({
         <div className="absolute inset-0 z-0 overflow-hidden">
           {backgroundImage ? (
             <CardPhoto
-              objectPosition={propObjectPosition ?? objectPositionForSrc(backgroundImage)}
+              objectPosition={objectPosition}
               src={backgroundImage}
               alt={stripNewPrefix(attraction.name)}
               closed={!isOperatingOrUnknown}
@@ -386,7 +393,7 @@ export function AttractionCard({
         >
           {backgroundImage && (
             <CardPhotoFrame
-              objectPosition={propObjectPosition ?? objectPositionForSrc(backgroundImage)}
+              objectPosition={objectPosition}
               src={backgroundImage}
               closed={!isOperatingOrUnknown}
               hideOnMobile

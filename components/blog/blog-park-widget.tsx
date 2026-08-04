@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { BlogParkCardLive } from './blog-park-card-live';
 import { GlassCard } from '@/components/common/glass-card';
-import { getParkBackgroundImage } from '@/lib/utils/park-assets';
+import { getCardObjectPosition, getParkBackgroundImage } from '@/lib/utils/park-assets';
 import type { ResolvedPark } from '@/lib/blog/park-resolver';
 
 interface BlogParkWidgetProps {
@@ -56,6 +56,7 @@ export async function BlogParkWidget({ park, slug, inRow = false }: BlogParkWidg
       <BlogParkCardLive
         park={park}
         backgroundImage={getParkBackgroundImage(park.slug)}
+        objectPosition={getCardObjectPosition(park.slug)}
         className="grid h-full [grid-template-rows:auto_2rem_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]"
       />
     </div>

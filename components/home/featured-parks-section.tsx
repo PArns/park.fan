@@ -1,4 +1,4 @@
-import { getParkBackgroundImage } from '@/lib/utils/park-assets';
+import { getCardObjectPosition, getParkBackgroundImage } from '@/lib/utils/park-assets';
 import type { GeoStructure } from '@/lib/api/types';
 
 /**
@@ -75,6 +75,7 @@ interface FeaturedPark {
   countryName: string; // raw name, translated in component
   href: string;
   backgroundImage?: string | null;
+  backgroundPosition?: string;
 }
 
 export { FEATURED_PARK_SLUGS };
@@ -102,6 +103,7 @@ export function extractFeaturedParks(geoData: GeoStructure | null, locale: strin
               countryName: country.name,
               href: `/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}`,
               backgroundImage: getParkBackgroundImage(park.slug),
+              backgroundPosition: getCardObjectPosition(park.slug),
             });
           }
         }

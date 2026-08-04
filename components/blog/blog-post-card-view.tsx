@@ -4,7 +4,6 @@ import { useFormatter, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { Badge } from '@/components/ui/badge';
 import { CardPhoto, CardPhotoFrame } from '@/components/parks/card-photo';
-import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
 import { cn } from '@/lib/utils';
 import type { BlogListItem } from '@/lib/blog/types';
 
@@ -15,6 +14,13 @@ export interface BlogPostCardViewProps {
   /** Localized category label, already resolved; null when the post has none. */
   categoryLabel: string | null;
   variant?: 'default' | 'compact' | 'feature';
+  /**
+   * Cover path and where to crop it, both resolved by the SERVER wrapper. Looking
+   * them up here would import the media manifest, and this view is rendered inside
+   * a client tree (the admin's focal-point previews).
+   */
+  cover: string | null;
+  coverPosition: string;
   /** Mark the cover as LCP priority — set on the first card above the fold. */
   priority?: boolean;
   className?: string;
@@ -41,17 +47,14 @@ export function BlogPostCardView({
   className,
   author,
   categoryLabel,
+  cover,
+  coverPosition,
 }: BlogPostCardViewProps) {
   const f = useFormatter();
   const t = useTranslations('blog');
   const { frontmatter, slug, isFallback, readingTimeMinutes } = post;
 
   const date = new Date(frontmatter.date);
-
-  // Frontmatter usually points at a pre-cut crop (`…-16x9.jpg`), and that is the
-  // one file whose bytes get rewritten under an unchanged URL when someone moves
-  // the focal point — exactly what `?v=` exists to stop caches from serving stale.
-  const cover = versionedPath(frontmatter.coverImage?.src);
 
   // ---------- compact: list-row variant, kept simple (no glass panels) ----------
   if (variant === 'compact') {
@@ -119,7 +122,7 @@ export function BlogPostCardView({
               src={cover}
               alt={frontmatter.coverImage?.alt ?? frontmatter.title}
               hideOnMobile
-              objectPosition={objectPositionForSrc(cover, '50% 50%')}
+              objectPosition={coverPosition}
               sizes={
                 isFeature
                   ? '(max-width: 1024px) 100vw, 1024px'
@@ -240,7 +243,7 @@ export function BlogPostCardView({
               src={cover}
               hideOnMobile
               priority={priority}
-              objectPosition={objectPositionForSrc(cover, '50% 50%')}
+              objectPosition={coverPosition}
               sizes={
                 isFeature
                   ? '(max-width: 1024px) 100vw, 1024px'

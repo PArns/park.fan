@@ -106,6 +106,7 @@ export function NearbyParksListView({
                   todaySchedule={park.todaySchedule}
                   nextSchedule={park.nextSchedule}
                   backgroundImage={park.backgroundImage}
+                  objectPosition={park.backgroundPosition}
                   url={park.url}
                   hasOperatingSchedule={park.hasOperatingSchedule}
                   highlightAsNearestOpen={nearestOpenPark?.id === park.id}

@@ -2,7 +2,6 @@ import { memo } from 'react';
 import { useTranslations } from 'next-intl';
 import { LayoutGrid } from 'lucide-react';
 import { AttractionCard } from './attraction-card';
-import { getAttractionBackgroundImage } from '@/lib/utils/park-assets';
 import { getAttractionDisplayStatus } from '@/lib/utils/park-utils';
 import type { ParkAttraction, ParkStatus } from '@/lib/api/types';
 
@@ -22,7 +21,8 @@ interface LandSectionProps {
   landName: string;
   attractions: ParkAttraction[];
   parkPath: string;
-  parkSlug: string; // Added for background image lookup
+  /** Kept for callers' data shape; the photo now arrives on the attraction itself. */
+  parkSlug?: string;
   parkStatus?: ParkStatus;
   timezone?: string;
 }
@@ -36,7 +36,7 @@ export const LandSection = memo(function LandSection({
   landName,
   attractions,
   parkPath,
-  parkSlug,
+  parkSlug: _parkSlug,
   parkStatus,
   timezone,
 }: LandSectionProps) {
@@ -61,16 +61,17 @@ export const LandSection = memo(function LandSection({
 
       <ul className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {attractions.map((attraction) => {
-          // Get attraction background image with fallback to null
-          const backgroundImage = getAttractionBackgroundImage(parkSlug, attraction.slug);
-
+          // The photo and its focal point ride along on the attraction itself,
+          // attached by `enrichAttractionsWithImages` in the park API proxy. Looking
+          // them up here would import the media manifest, and this section renders
+          // inside `tabs-with-hash`, a Client Component — so the whole catalog would
+          // land in the browser's bundle.
           return (
             <li key={attraction.id} className="row-span-3 grid [grid-template-rows:subgrid]">
               <MemoAttractionCard
                 attraction={attraction}
                 parkPath={parkPath}
                 parkStatus={parkStatus}
-                backgroundImage={backgroundImage}
                 timezone={timezone}
               />
             </li>

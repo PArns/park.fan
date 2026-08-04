@@ -28,6 +28,8 @@ export interface FavoritePark {
   timezone: string;
   hasOperatingSchedule: boolean;
   backgroundImage?: string | null; // Added by proxy route
+  /** Focal point as a CSS `object-position`, attached by the same proxy route. */
+  backgroundPosition?: string;
   todaySchedule?: ScheduleSummary;
   nextSchedule?: ScheduleSummary;
 }
@@ -113,6 +115,8 @@ export interface FavoriteAttraction {
   } | null;
   url: string;
   backgroundImage?: string | null; // Added by proxy route
+  /** Focal point as a CSS `object-position`, attached by the same proxy route. */
+  backgroundPosition?: string;
   bestVisitTimes?: BestVisitSlot[] | null;
   /** Not yet delivered by /v1/favorites — typed so cards light up once the API ships it. */
   ropeDrop?: RopeDropInfo | null;

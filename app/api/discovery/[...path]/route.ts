@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerAuthHeaders } from '@/lib/api/client';
+import { enrichParksWithImages } from '@/lib/utils/park-assets';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://api.park.fan';
 
@@ -40,6 +41,17 @@ export async function GET(
       headers: getServerAuthHeaders(),
     });
     const data = await response.json();
+
+    // Attach each park's photo and focal point here, on the server, where the media
+    // manifest already lives. `live-park-grid` renders these in a Client Component;
+    // letting the card resolve them itself is what dragged the 107 KB catalog into
+    // every visitor's bundle.
+    if (Array.isArray(data?.data)) {
+      for (const city of data.data) {
+        if (Array.isArray(city?.parks)) city.parks = enrichParksWithImages(city.parks);
+      }
+    }
+
     return NextResponse.json(data, {
       status: response.status,
       headers: { 'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=120' },

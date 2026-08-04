@@ -15,6 +15,7 @@ export interface StaticNearbyPark {
   /** API url (converted to a frontend href by ParkCard). */
   url: string;
   backgroundImage: string | null;
+  backgroundPosition?: string;
 }
 
 /**
@@ -50,6 +51,7 @@ export function LiveNearbyParks({
               country={park.country}
               url={park.url}
               backgroundImage={park.backgroundImage}
+              objectPosition={park.backgroundPosition}
               distance={park.distance}
               translateCountry
               variant="detailed"
