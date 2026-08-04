@@ -40,8 +40,14 @@ interface SavePayload {
   newImages?: Array<{ path: string; contentBase64: string }>;
 }
 
-/** /blog/images/… only, no traversal, whitelisted raster/vector extensions. */
-const IMAGE_PATH_RE = /^\/blog\/images\/[a-z0-9][a-z0-9/._-]*\.(png|jpe?g|webp|gif|avif|svg)$/i;
+/**
+ * `/media/…` only, no traversal, whitelisted raster/vector extensions.
+ *
+ * Editor uploads land in the media database now (see `_lib/pending-images.ts`),
+ * so this guards that prefix — it still said `/blog/images/` after the move, which
+ * would have rejected every image dropped into a post.
+ */
+const IMAGE_PATH_RE = /^\/media\/[a-z0-9][a-z0-9/._-]*\.(png|jpe?g|webp|gif|avif|svg)$/i;
 /** ~3MB raw ≈ 4MB base64 — matches the client-side cap. */
 const MAX_IMAGE_BASE64 = 4 * 1024 * 1024;
 
@@ -367,7 +373,7 @@ export async function POST(req: Request) {
     }
   }
 
-  // 3d. Commit uploaded images under public/blog/images/… — one commit per
+  // 3d. Commit uploaded images under public/media/… — one commit per
   //     file so the PR diff stays readable. Hard-validated paths only.
   const imagesCommitted: string[] = [];
   for (const img of payload.newImages ?? []) {

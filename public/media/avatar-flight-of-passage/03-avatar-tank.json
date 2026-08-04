@@ -1,0 +1,25 @@
+{
+  "park": "disney-animal-kingdom",
+  "ride": "avatar-flight-of-passage",
+  "tags": ["photo", "queue", "theming"],
+  "alt": {
+    "de": "Ein Na'vi-Avatar schwebt im Amnio-Tank, daneben ein Bildschirm mit genetischen Markern",
+    "en": "A Na'vi avatar floating in an amnio tank beside a screen of genetic markers",
+    "es": "Un avatar na'vi flota en un tanque amniótico junto a una pantalla de marcadores genéticos",
+    "fr": "Un avatar na'vi flotte dans une cuve amniotique à côté d'un écran de marqueurs génétiques",
+    "it": "Un avatar na'vi galleggia in una vasca amniotica accanto a uno schermo di marcatori genetici",
+    "nl": "Een Na'vi-avatar zweeft in een amniotank naast een scherm met genetische markers"
+  },
+  "caption": {
+    "de": "Station 3: der Avatar im Amnio-Tank, sichtbar atmend. Der Moment, an den sich hinterher jeder erinnert: Peak-End lässt grüßen.",
+    "en": "Station 3: the avatar in the amnio tank, visibly breathing. The moment everyone remembers afterwards, peak-end says hi.",
+    "es": "Estación 3: el avatar en el tanque amniótico, respirando visiblemente. El momento que todos recuerdan después, el pico-final saluda.",
+    "fr": "Station 3: l'avatar dans la cuve amniotique, respirant visiblement. Le moment dont tout le monde se souvient ensuite, le pic-fin vous salue.",
+    "it": "Stazione 3: l'avatar nella vasca amniotica, che respira visibilmente. Il momento che tutti ricordano dopo, il picco-fine saluta.",
+    "nl": "Station 3: de avatar in de amniotank, zichtbaar ademend. Het moment dat iedereen zich achteraf herinnert, peak-end zegt hallo."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

@@ -18,6 +18,7 @@ import { getParkByGeoPath, leanParkForAttractionShell } from '@/lib/api/parks';
 import { catchNonFatal } from '@/lib/api/client';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import type { Metadata } from 'next';
+import { objectPositionForSrc } from '@/lib/media/focus';
 import { ParkBackground } from '@/components/parks/park-background';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { ParkDistance } from '@/components/common/park-distance';
@@ -303,7 +304,11 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
       />
       <AttractionFAQStructuredData attraction={attraction} park={park} locale={locale} />
       <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
-      <ParkBackground imageSrc={backgroundImage} alt={attractionName} />
+      <ParkBackground
+        imageSrc={backgroundImage}
+        alt={attractionName}
+        objectPosition={objectPositionForSrc(backgroundImage)}
+      />
       <PageContainer>
         <BreadcrumbNav
           breadcrumbs={breadcrumbs}

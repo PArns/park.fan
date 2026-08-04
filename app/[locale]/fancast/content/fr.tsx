@@ -200,7 +200,7 @@ export function ContentFR() {
           façon dont les mêmes ingrédients donnent trois prévisions complètement différentes :
         </P>
         <SplitFigure
-          src="/images/parks/europa-park/silver-star.jpg"
+          src="/media/europa-park/silver-star.jpg"
           alt="Silver Star à Europa-Park"
           kicker="Europa-Park · jour de pont en octobre"
           title="Calme, vert, moins de 30 minutes"
@@ -213,7 +213,7 @@ export function ContentFR() {
           répartissent pas tout seuls.
         </SplitFigure>
         <SplitFigure
-          src="/images/parks/phantasialand/taron.jpg"
+          src="/media/phantasialand/taron.jpg"
           alt="Taron fonçant à travers Klugheim à Phantasialand"
           kicker="Phantasialand · samedi de vacances"
           title="Compact, bondé, de l’orange au rouge"
@@ -226,7 +226,7 @@ export function ContentFR() {
           enchaîner Taron au lieu de seulement le convoiter.
         </SplitFigure>
         <SplitFigure
-          src="/images/parks/efteling/baron-1898.jpg"
+          src="/media/efteling/baron-1898.jpg"
           alt="Baron 1898 à Efteling"
           kicker="Efteling · mardi pluvieux en novembre"
           title="Le bon plan que le modèle intègre déjà"

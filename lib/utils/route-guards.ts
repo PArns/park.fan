@@ -5,7 +5,7 @@
  * are served untouched. A MISSING file still falls through to the App Router
  * though, and the `[locale]` segment happily swallows the filename:
  *
- *   /images/parks/<park>/<photo>.jpg → /[locale]/parks/[continent]/[country]
+ *   /media/<park>/<photo>.jpg → /[locale]/parks/[continent]/[country]
  *   /ads.txt                         → /[locale]  (the homepage)
  *
  * `i18n/request.ts` then silently falls back to `en` instead of rejecting the

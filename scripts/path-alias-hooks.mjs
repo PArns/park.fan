@@ -20,14 +20,27 @@ const SUFFIXES = [
   '/index.js',
 ];
 
+/** First existing file for `base` + one of the known suffixes, or null. */
+function probe(base) {
+  for (const candidate of [base, ...SUFFIXES.map((s) => base + s)]) {
+    if (existsSync(candidate) && statSync(candidate).isFile()) return candidate;
+  }
+  return null;
+}
+
 export async function resolve(specifier, context, nextResolve) {
   if (specifier.startsWith('@/')) {
-    const base = join(projectRoot, specifier.slice(2));
-    for (const candidate of [base, ...SUFFIXES.map((s) => base + s)]) {
-      if (existsSync(candidate) && statSync(candidate).isFile()) {
-        return nextResolve(pathToFileURL(candidate).href, context);
-      }
-    }
+    const resolved = probe(join(projectRoot, specifier.slice(2)));
+    if (resolved) return nextResolve(pathToFileURL(resolved).href, context);
   }
+
+  // Extensionless RELATIVE imports (`./manifest`) resolve under TypeScript and
+  // Next but not under bare Node ESM, so a module that uses them is unreachable
+  // from these test scripts unless the same probing is applied to them too.
+  if ((specifier.startsWith('./') || specifier.startsWith('../')) && context.parentURL) {
+    const resolved = probe(join(dirname(fileURLToPath(context.parentURL)), specifier));
+    if (resolved) return nextResolve(pathToFileURL(resolved).href, context);
+  }
+
   return nextResolve(specifier, context);
 }

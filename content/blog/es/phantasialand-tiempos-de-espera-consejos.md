@@ -25,7 +25,7 @@ category: guides
 parkLinks:
   - phantasialand
 coverImage:
-  src: /images/parks/phantasialand/taron-16x9.jpg
+  src: /media/phantasialand/taron-16x9.jpg
   alt: 'Taron atraviesa a toda velocidad las columnas de basalto de la zona temática Klugheim en el Phantasialand'
   caption: 'Taron en el pueblo de basalto de Klugheim, para mí, el rincón más bonito del parque.'
   credit: 'park.fan'
@@ -77,11 +77,11 @@ te enseña las dos caras: los milagros por los que uno viene, y, en lo práctico
 cómo mantienes a raya los **tiempos de espera en Phantasialand** y das con el
 mejor día.
 
-![El Phantasialand de Brühl a vista de pájaro | Mi parque de siempre en Brühl, el parque de atracciones más inmersivo de Europa. | wide](/images/parks/phantasialand/background-16x9.jpg)
+![El Phantasialand de Brühl a vista de pájaro | Mi parque de siempre en Brühl, el parque de atracciones más inmersivo de Europa. | wide](/media/phantasialand/background-16x9.jpg)
 
 ## Un parque como otro mundo, y por qué está tan lleno
 
-![Taron en el pueblo de basalto de Klugheim | Taron atraviesa a toda velocidad el pueblo de basalto de Klugheim, un pueblo entero, no una simple montaña rusa. | right](/images/parks/phantasialand/taron-4x3.jpg)
+![Taron en el pueblo de basalto de Klugheim | Taron atraviesa a toda velocidad el pueblo de basalto de Klugheim, un pueblo entero, no una simple montaña rusa. | right](/media/phantasialand/taron-4x3.jpg)
 
 El Phantasialand se autodenomina «Europe's Most Immersive Theme Park». Quien haya estado allí entiende en qué se
 apoya esa pretensión. En ningún otro lugar
@@ -132,7 +132,7 @@ un **Märchenwald** (un bosque de cuentos), un lugar tranquilo para familias y
 abuelos, con marionetas de la colección de Schmidt, escenas de cuento y mucho
 verde. El 30 de abril de 1967 se abrieron las puertas. ¿Montañas rusas? Ninguna.
 
-![F.L.Y. en Rookburgh | Rookburgh con F.L.Y. (2020), la primera montaña rusa voladora con lanzamiento del mundo y punto culminante provisional de una larga transformación. | left](/images/parks/phantasialand/fly-4x3.jpg)
+![F.L.Y. en Rookburgh | Rookburgh con F.L.Y. (2020), la primera montaña rusa voladora con lanzamiento del mundo y punto culminante provisional de una larga transformación. | left](/media/phantasialand/fly-4x3.jpg)
 
 Que de ahí saliera, a lo largo de las décadas, el parque más salvaje y más
 densamente ambientado del continente es una historia de crecimiento lento, y de
@@ -213,15 +213,15 @@ montaña rusa «de verdad» perfecta, lo bastante suave para la primera vez, lo
 bastante rápida para la segunda.
 
 ```gallery-widget heading="Los headliners en imágenes"
-- /images/parks/phantasialand/chiapas-die-wasserbahn-16x9.jpg | La atracción acuática Chiapas | Chiapas, una de las atracciones acuáticas más empinadas del mundo.
-- /images/parks/phantasialand/colorado-adventure-16x9.jpg | Colorado Adventure | Colorado Adventure, el tren minero con encanto del Lejano Oeste.
-- /images/parks/phantasialand/winjas-force-16x9.jpg | Winja's Force en Wuze Town | Winja's: dos spinning coasters llenos de sorpresas.
-- /images/parks/phantasialand/mystery-castle-16x9.jpg | Mystery Castle en Mysteryland | Mystery Castle, la torre de caída con programas cambiantes.
-- /images/parks/phantasialand/river-quest-16x9.jpg | River Quest | River Quest, aguas bravas con ascensores y mojadura garantizada.
-- /images/parks/phantasialand/raik-16x9.jpg | Raik en Klugheim | Raik, la primera montaña rusa «de verdad» perfecta.
+- /media/phantasialand/chiapas-die-wasserbahn-16x9.jpg | La atracción acuática Chiapas | Chiapas, una de las atracciones acuáticas más empinadas del mundo.
+- /media/phantasialand/colorado-adventure-16x9.jpg | Colorado Adventure | Colorado Adventure, el tren minero con encanto del Lejano Oeste.
+- /media/phantasialand/winjas-force-16x9.jpg | Winja's Force en Wuze Town | Winja's: dos spinning coasters llenos de sorpresas.
+- /media/phantasialand/mystery-castle-16x9.jpg | Mystery Castle en Mysteryland | Mystery Castle, la torre de caída con programas cambiantes.
+- /media/phantasialand/river-quest-16x9.jpg | River Quest | River Quest, aguas bravas con ascensores y mojadura garantizada.
+- /media/phantasialand/raik-16x9.jpg | Raik en Klugheim | Raik, la primera montaña rusa «de verdad» perfecta.
 ```
 
-![Black Mamba en Deep in Africa | Black Mamba serpentea muy abajo entre rocas y chozas. | wide](/images/parks/phantasialand/black-mamba-16x9.jpg)
+![Black Mamba en Deep in Africa | Black Mamba serpentea muy abajo entre rocas y chozas. | wide](/media/phantasialand/black-mamba-16x9.jpg)
 
 ## Entradas: solo online, y la batalla por los abonos anuales
 
@@ -438,7 +438,7 @@ decir ni una palabra. Búscalo tú.) Toda una novedad justo al lado: **[Die 3
 Mausketiere](ref:phantasialand/die-3-mausketiere)**, una atracción 360° 4D que en
 2026 ha sustituido al viejo cine y continúa con gracia el tema del ratón.
 
-![La Geister Rikscha en China Town | También los dark rides como la Geister Rikscha son puro decorado, hecho con cariño. | left](/images/parks/phantasialand/geister-rikscha-4x3.jpg)
+![La Geister Rikscha en China Town | También los dark rides como la Geister Rikscha son puro decorado, hecho con cariño. | left](/media/phantasialand/geister-rikscha-4x3.jpg)
 
 Y están los muchos dark rides que este parque construye como de pasada, como si no
 fueran gran cosa, aunque cada uno de ellos sería el headliner en otro parque. Una

@@ -200,7 +200,7 @@ export function ContentNL() {
           van hoe dezelfde ingrediënten drie compleet verschillende voorspellingen worden:
         </P>
         <SplitFigure
-          src="/images/parks/europa-park/silver-star.jpg"
+          src="/media/europa-park/silver-star.jpg"
           alt="Silver Star in Europa-Park"
           kicker="Europa-Park · brugdag in oktober"
           title="Rustig, groen, onder de 30 minuten"
@@ -213,7 +213,7 @@ export function ContentNL() {
           vanzelf.
         </SplitFigure>
         <SplitFigure
-          src="/images/parks/phantasialand/taron.jpg"
+          src="/media/phantasialand/taron.jpg"
           alt="Taron raast door Klugheim in Phantasialand"
           kicker="Phantasialand · vakantiezaterdag"
           title="Compact, vol, oranje tot rood"
@@ -226,7 +226,7 @@ export function ContentNL() {
           stuk kunt rijden in plaats van er alleen maar naar te smachten.
         </SplitFigure>
         <SplitFigure
-          src="/images/parks/efteling/baron-1898.jpg"
+          src="/media/efteling/baron-1898.jpg"
           alt="Baron 1898 in de Efteling"
           kicker="Efteling · regenachtige dinsdag in november"
           title="De geheime tip die het model al meerekent"

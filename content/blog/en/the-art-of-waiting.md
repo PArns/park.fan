@@ -20,7 +20,7 @@ tags:
   - phantasialand
 category: behind-the-scenes
 coverImage:
-  src: /blog/images/kunst-des-wartens-cover.jpg
+  src: /media/disney-animal-kingdom/kunst-des-wartens-cover.jpg
   alt: "The Tree of Life at Disney's Animal Kingdom, with the crowds of the park in front of it"
   caption: "Disney's Animal Kingdom: tens of thousands of guests, one Tree of Life, and everywhere the question of how long you'll wait for what."
 seo:
@@ -160,7 +160,7 @@ tank, breathing so convincingly that people regularly stop and hold up the
 line. A queue that clogs itself because it looks too good. After that come
 **two pre-show rooms**, where you're “scanned” and “linked” to your own avatar.
 
-```gallery-widget folder=/blog/images/avatar-flight-of-passage heading="The queue in three stations"
+```gallery-widget folder=/media/avatar-flight-of-passage heading="The queue in three stations"
 
 ```
 
@@ -185,7 +185,7 @@ about Xandar and Earth, followed by a briefing from the **Nova Corps**. The
 ride itself, a story coaster with freely rotating vehicles and a backwards
 launch, is the finale of a production that started twenty minutes earlier.
 
-```gallery-widget folder=/blog/images/cosmic-rewind heading="The pavilion before the ride"
+```gallery-widget folder=/media/cosmic-rewind heading="The pavilion before the ride"
 
 ```
 
@@ -211,7 +211,7 @@ occupied time feels shorter, and anyone busy checking whether the raptor behind
 the fence really did turn its head isn't looking at their phone every ten
 seconds.
 
-```gallery-widget folder=/blog/images/velocicoaster heading="Welcome to the raptor paddock"
+```gallery-widget folder=/media/velocicoaster heading="Welcome to the raptor paddock"
 
 ```
 
@@ -244,7 +244,7 @@ big evening show, headliner wait times measurably dip, and anyone who's already
 seen the show rides at the best value of the day in that hour. Moments like
 that are exactly why we update wait times by the minute.
 
-![Thousands of spectators in the nighttime amphitheater of Fantasmic! at Disney's Hollywood Studios | Fantasmic! at Hollywood Studios: just under 10,000 people per show, a whole wave of visitors guaranteed not to be standing in a single coaster line for this half hour. | wide](/blog/images/fantasmic-crowd.jpg)
+![Thousands of spectators in the nighttime amphitheater of Fantasmic! at Disney's Hollywood Studios | Fantasmic! at Hollywood Studios: just under 10,000 people per show, a whole wave of visitors guaranteed not to be standing in a single coaster line for this half hour. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
 ## Capacity and throughput: the mathematical secret
 
@@ -268,7 +268,7 @@ interesting because parks combine the two factors completely differently,
 either on the buffet principle or the tapas principle. Two Orlando rides that
 delivered almost identical numbers on paper show it perfectly:
 
-![Two routes to similar throughput: few large trains on the Hulk, many small cars on Rip Ride Rockit | Same league, completely different strategy: mass per train vs. frequency. | wide](/blog/images/inline/durchsatz-hulk-rockit.svg)
+![Two routes to similar throughput: few large trains on the Hulk, many small cars on Rip Ride Rockit | Same league, completely different strategy: mass per train vs. frequency. | wide](/media/diagrams/durchsatz-hulk-rockit.svg)
 
 **Example A, the buffet.**
 [The Incredible Hulk Coaster](ref:universal-islands-of-adventure/the-incredible-hulk-coaster)

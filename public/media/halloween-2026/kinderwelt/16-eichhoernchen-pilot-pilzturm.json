@@ -1,0 +1,24 @@
+{
+  "park": "walibi-holland",
+  "tags": ["halloween", "night", "photo", "theming"],
+  "alt": {
+    "de": "Von toten Ranken überwucherter Brunnen mit Fliegerfigur obendrauf, nachts blau angestrahlt",
+    "en": "Well overgrown with dead vines, an aviator figure on top, lit blue at night",
+    "es": "Fuente cubierta de enredaderas muertas con una figura de aviador encima, iluminada de azul por la noche",
+    "fr": "Fontaine envahie de lianes mortes avec une figurine d'aviateur au sommet, éclairée en bleu la nuit",
+    "it": "Fontana ricoperta di rampicanti morti con una figura di aviatore in cima, illuminata di blu di notte",
+    "nl": "Door dode ranken overwoekerde fontein met een vliegeniersfiguur bovenop, 's nachts blauw aangelicht"
+  },
+  "caption": {
+    "de": "Ein Brunnen, den die toten Ranken längst verschluckt haben.",
+    "en": "A well the dead vines swallowed long ago.",
+    "es": "Una fuente que las enredaderas muertas se han tragado hace tiempo.",
+    "fr": "Une fontaine que les lianes mortes ont depuis longtemps engloutie.",
+    "it": "Una fontana che i rampicanti morti hanno inghiottito da un pezzo.",
+    "nl": "Een fontein die de dode ranken allang hebben opgeslokt."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

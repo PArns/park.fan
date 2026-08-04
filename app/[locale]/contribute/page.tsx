@@ -86,7 +86,7 @@ export default async function ContributePage({ params, searchParams }: Contribut
       {/* Hero with a themed photo backdrop */}
       <header className="relative mb-10 overflow-hidden rounded-3xl border shadow-sm">
         <Image
-          src="/images/parks/europa-park/background.jpg"
+          src="/media/europa-park/background.jpg"
           alt=""
           fill
           priority

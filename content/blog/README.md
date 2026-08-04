@@ -58,7 +58,7 @@ category: news                                           # slash-path, see §4
 parkLinks: [europa-park]                                 # park pages linking back, see §3
 rideLinks: [europa-park/voltron-nevera-powered-by-rimac] # ride pages linking back, see §3
 coverImage:
-  src: /blog/images/welcome-cover.jpg
+  src: /media/universal-islands-of-adventure/welcome-cover.jpg
   alt: 'Cover alt text'
   credit: 'park.fan'
 seo:
@@ -85,7 +85,7 @@ name: Patrick Arns
 role: Gründer von park.fan # short title, shown under the name
 location: Deutschland
 url: https://arns.dev # primary website / rel=author
-avatar: /blog/images/authors/patrick.jpg
+avatar: /media/authors/patrick.jpg
 bio: 'One-line bio for post headers and cards.'
 links: # rendered as pills on the profile page
   website: https://arns.dev
@@ -104,7 +104,7 @@ Write as much as you like here — paragraphs, links, emphasis.
 - `bio` (frontmatter) is the short one-liner used in post headers/cards; the
   **body** is the rich bio on the profile page.
 - `avatar` is optional — leave it `''` to fall back to the name initials.
-  Put the image under `/public` (e.g. `public/blog/images/authors/patrick.jpg`).
+  Put the image under `/public` (e.g. `public/media/authors/patrick.jpg`).
 - An **inline object** still works (`author: { name: … }`), and an unknown
   string is treated as a literal display name (no profile page).
 
@@ -267,12 +267,12 @@ rideLinks: # the same for ride pages
 Inline images use the alt text to carry a caption and alignment:
 
 ```md
-![Alt text | Optional caption | align](/blog/images/foo.jpg)
+![Alt text | Optional caption | align](/media/<collection>/foo.jpg)
 ```
 
 - `align` is one of `center` (default), `left`, `right`, `wide`.
 - Alignment can also come from a `?align=` query on the src, which wins:
-  `![Alt](/blog/images/foo.jpg?align=wide)`.
+  `![Alt](/media/<collection>/foo.jpg?align=wide)`.
 
 ---
 
@@ -303,41 +303,34 @@ attributes on the info line (`key=value`, `key: value` or `key="value"`).
 
 ### Gallery
 
-Point at a folder under `/public` (recommended) — every image is picked up,
-sorted by filename, and a `captions.json` in that folder can override
-alt/caption/credit:
+Point at a **collection** in the media database — every image in it is picked up,
+in gallery order, with the alt text, caption and credit its sidecar already carries:
 
 ````md
-```gallery-widget folder=/blog/images/orlando-2026 heading="The trip in photos"
+```gallery-widget folder=orlando-2026 heading="The trip in photos"
 
 ```
 ````
 
-**Localized captions.** `captions.json` is the base/fallback (usually the source
-language). To translate a gallery per locale, drop a `captions.<locale>.json`
-next to it (e.g. `captions.fr.json`) using the **same image-filename keys**. It
-overrides the base **entry by entry** — you only localize the strings that
-change, and any image the locale file omits falls back to `captions.json`. The
-gallery then renders the reader's-locale captions automatically (and falls back
-to the base for locales without an override). Works for both the `folder=` form
-above and a frontmatter `gallery:` reference.
+**Localized captions are per image, not per gallery.** Each image's sidecar holds
+`alt` and `caption` as `{ de, en, nl, fr, es, it }`, so there is nothing to keep in
+sync across six files any more — the old `captions.json` + `captions.<locale>.json`
+pair is gone. Missing locales fall back through `de` → `en` → whatever exists, so a
+gallery renders the moment the German text is written.
 
-```jsonc
-// captions.json          → base (here: German)
-{ "01-castle.jpg": { "alt": "Zauberschloss", "caption": "Das Schloss in der Dämmerung." } }
-// captions.fr.json       → French override, same keys
-{ "01-castle.jpg": { "alt": "Château", "caption": "Le château au crépuscule." } }
-```
+Edit them in `/admin/media`, or by hand in `public/media/<collection>/<name>.json`.
+Regenerate with `pnpm generate:media` (also runs in `prebuild`).
 
-Regenerate the manifest (`pnpm generate:blog-manifest`) after adding or editing
-caption files.
+The same photos answer park and ride queries at the same time, so a gallery of a
+Halloween evening also supplies that park's and those rides' pages — see
+[`public/media/README.md`](../../public/media/README.md).
 
 Or list images line by line in the body:
 
 ````md
 ```gallery-widget
-- /blog/images/a.jpg | Alt text | Caption | © Credit
-- /blog/images/b.jpg | Alt text
+- /media/<collection>/a.jpg | Alt text | Caption | © Credit
+- /media/<collection>/b.jpg | Alt text
 ```
 ````
 

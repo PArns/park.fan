@@ -99,7 +99,7 @@ export const WIDGETS: readonly WidgetDef[] = [
       { key: 'folder', label: 'Folder', placeholder: '/blog/images' },
       { key: 'heading', label: 'Heading', placeholder: 'Highlights' },
     ],
-    defaultBody: 'folder: /images/parks/phantasialand\nheading: Highlights',
+    defaultBody: 'folder: /media/phantasialand\nheading: Highlights',
   },
   {
     name: 'glossary-widget',

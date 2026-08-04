@@ -1,0 +1,24 @@
+{
+  "park": "walibi-holland",
+  "tags": ["halloween", "night", "photo", "theming"],
+  "alt": {
+    "de": "Zerborstene Pharaonen-Statue bei Nacht angestrahlt",
+    "en": "Shattered pharaoh statue lit up at night",
+    "es": "Estatua de faraón hecha añicos, iluminada de noche",
+    "fr": "Statue de pharaon fracassée, éclairée la nuit",
+    "it": "Statua di faraone in frantumi illuminata di notte",
+    "nl": "Uiteengebarsten faraostandbeeld 's nachts aangelicht"
+  },
+  "caption": {
+    "de": "Sogar die Pharaonen gucken hier böse.",
+    "en": "Even the pharaohs look mean here.",
+    "es": "Aquí hasta los faraones ponen mala cara.",
+    "fr": "Même les pharaons ont l'air mauvais, par ici.",
+    "it": "Persino i faraoni, qui, hanno lo sguardo cattivo.",
+    "nl": "Zelfs de farao's kijken hier boos."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

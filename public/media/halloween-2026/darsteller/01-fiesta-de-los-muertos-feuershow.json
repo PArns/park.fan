@@ -1,0 +1,24 @@
+{
+  "park": "walibi-holland",
+  "tags": ["halloween", "night", "performer", "photo"],
+  "alt": {
+    "de": "Día-de-los-Muertos-Show mit zwei Feuersäulen und Blumenaltar am Wasser bei Nacht",
+    "en": "Día de los Muertos show with two columns of fire and a flower altar by the water at night",
+    "es": "Show del Día de los Muertos con dos columnas de fuego y un altar de flores junto al agua, de noche",
+    "fr": "Show Día de los Muertos avec deux colonnes de feu et un autel fleuri au bord de l'eau, la nuit",
+    "it": "Show del Día de los Muertos con due colonne di fuoco e un altare di fiori in riva all'acqua di notte",
+    "nl": "Día-de-los-Muertos-show met twee vuurzuilen en een bloemenaltaar aan het water bij nacht"
+  },
+  "caption": {
+    "de": "Feuer, Blumen, Totenköpfe: der fast schöne Moment, bevor’s wieder knallt.",
+    "en": "Fire, flowers, skulls: the almost-pretty moment before it all goes bang again.",
+    "es": "Fuego, flores, calaveras: el momento casi bonito antes de que vuelva a estallar todo.",
+    "fr": "Du feu, des fleurs, des têtes de mort: le moment presque joli, juste avant la prochaine détonation.",
+    "it": "Fuoco, fiori, teschi: il momento quasi bello prima che torni a scoppiare tutto.",
+    "nl": "Vuur, bloemen, doodshoofden: het bijna mooie moment voordat het weer knalt."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

@@ -24,7 +24,7 @@ rideLinks:
   - phantasialand/taron
   - phantasialand/maus-au-chocolat
 coverImage:
-  src: /blog/images/welcome-cover.jpg
+  src: /media/universal-islands-of-adventure/welcome-cover.jpg
   alt: 'Looping del Velocicoaster frente al castillo de Hogwarts, Islands of Adventure, Orlando'
   caption: 'Islands of Adventure en Orlando: el Velocicoaster en pleno looping y, detrás, el castillo de Hogwarts.'
 seo:
@@ -93,7 +93,7 @@ Mi padre murió en 2019. Quizá por eso precisamente aquellos viajes compartidos
 se me han vuelto tan valiosos. Mantienen viva mi infancia y, con ella, el
 recuerdo del hombre que entonces se deslizaba a mi lado por aquellos mundos.
 
-![Silueta de una montaña rusa en Movie Park Germany de noche, iluminada en violeta y azul | Movie Park Germany de noche. Lethal Weapon Pursuit estuvo aquí hasta 2006. | left](/images/parks/movie-park-germany/background.jpg)
+![Silueta de una montaña rusa en Movie Park Germany de noche, iluminada en violeta y azul | Movie Park Germany de noche. Lethal Weapon Pursuit estuvo aquí hasta 2006. | left](/media/movie-park-germany/background.jpg)
 
 Cuando mi padre volvía a estar de ruta como camionero, mi madre cogía el
 volante sin más. Con ella descubrí muchos otros parques, sobre todo el
@@ -144,7 +144,7 @@ Most Immersive Theme Park».
 
 ## Orlando, mayo de 2026, una vez en la vida
 
-![Cabeza animatrónica de velocirraptor en el recinto de raptores del VelociCoaster, con luz roja | Islands of Adventure: el raptor en su recinto, al alcance de la mano. | right](/blog/images/velocicoaster/02-raptor-paddock.jpg)
+![Cabeza animatrónica de velocirraptor en el recinto de raptores del VelociCoaster, con luz roja | Islands of Adventure: el raptor en su recinto, al alcance de la mano. | right](/media/velocicoaster/02-raptor-paddock.jpg)
 
 Quedaba ese gran punto de la lista vital al que todavía le faltaba la marca de
 visto. En mayo de 2026 volamos por fin a Orlando: **Walt Disney World,
@@ -179,7 +179,7 @@ Dos pasiones que corrieron décadas en paralelo sin encontrarse nunca.
 
 ## El momento en la cola de Taron
 
-![Taron atraviesa a toda velocidad las columnas de basalto del área temática Klugheim | Taron en pleno recorrido por Klugheim. Ante esta atracción estuve sesenta minutos. | left](/images/parks/phantasialand/taron-4x3.jpg)
+![Taron atraviesa a toda velocidad las columnas de basalto del área temática Klugheim | Taron en pleno recorrido por Klugheim. Ante esta atracción estuve sesenta minutos. | left](/media/phantasialand/taron-4x3.jpg)
 
 Hasta aquella tarde que prácticamente cualquier fan de parques conoce en una u
 otra variante. Sesenta minutos de standby en
@@ -287,7 +287,7 @@ minutos»: tres veces la misma cifra, tres historias completamente distintas.
   después de la inauguración? O es un día de ensueño, o las multitudes se han
   dispersado por fin.
 
-![Voltron Nevera invertida sobre una fachada iluminada, de noche | Voltron Nevera en el Europa-Park. Lo típico aquí son unos 45 minutos, 70 o más en días punta. | right](/images/parks/europa-park/voltron-nevera-powered-by-rimac.jpg)
+![Voltron Nevera invertida sobre una fachada iluminada, de noche | Voltron Nevera en el Europa-Park. Lo típico aquí son unos 45 minutos, 70 o más en días punta. | right](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 La cifra está en el gráfico. La historia que hay detrás está a partir de ahora
 aquí, en tres formatos.

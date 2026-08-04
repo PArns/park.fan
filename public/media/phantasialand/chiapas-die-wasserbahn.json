@@ -1,0 +1,12 @@
+{
+  "title": "Chiapas - DIE Wasserbahn",
+  "park": "phantasialand",
+  "ride": "chiapas-die-wasserbahn",
+  "area": "Mexico",
+  "roles": ["ride-card", "hero"],
+  "tags": ["photo", "ride"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

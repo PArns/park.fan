@@ -1,0 +1,12 @@
+{
+  "title": "Pirates in Batavia",
+  "park": "europa-park",
+  "ride": "pirates-in-batavia",
+  "area": "Netherlands",
+  "roles": ["ride-card", "hero"],
+  "tags": ["photo", "ride"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

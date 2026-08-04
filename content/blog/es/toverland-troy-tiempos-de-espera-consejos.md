@@ -29,7 +29,7 @@ rideLinks:
   - toverland/*
   - efteling/joris-en-de-draak
 coverImage:
-  src: /images/parks/toverland/troy-16x9.jpg
+  src: /media/toverland/troy-16x9.jpg
   alt: 'El caballo de Troya de madera en la zona temática Ithaka de Toverland, sobre un carro'
   caption: 'El caballo de Troya en Ithaka. Detrás de los árboles se esconde Troy.'
   credit: 'park.fan'
@@ -71,7 +71,7 @@ agachan por puro reflejo.
 A los 110 segundos vuelves a estar donde arrancaste, y te giras. Detrás de ti:
 nadie. Puedes quedarte sentado.
 
-![El caballo de Troya de madera en Ithaka, sobre un carro, con luz de otoño | El caballo de Troya vigila la entrada de Ithaka. La montaña rusa se esconde detrás, entre los árboles. | right](/images/parks/toverland/troy-4x3.jpg)
+![El caballo de Troya de madera en Ithaka, sobre un carro, con luz de otoño | El caballo de Troya vigila la entrada de Ithaka. La montaña rusa se esconde detrás, entre los árboles. | right](/media/toverland/troy-4x3.jpg)
 
 Esa es la parte que me cuesta explicar. Troy está entre las mejores montañas
 rusas de madera de Europa y se encuentra en un parque por delante del cual pasan
@@ -187,7 +187,7 @@ Dragonwatch, y no cuesta nada extra.
 
 ## El resto del parque
 
-![Fēnix con un tren invertido en la vía, raíles azules sobre cielo de verano | Fēnix, el wing coaster más largo de Europa. Los asientos van a izquierda y derecha del raíl. | left](/images/parks/toverland/fenix-4x3.jpg)
+![Fēnix con un tren invertido en la vía, raíles azules sobre cielo de verano | Fēnix, el wing coaster más largo de Europa. Los asientos van a izquierda y derecha del raíl. | left](/media/toverland/fenix-4x3.jpg)
 
 Troy es la razón por la que vienen los aficionados. Pero el parque no vive de
 una sola atracción.
@@ -203,7 +203,7 @@ grande de lo que es. Por el camino un fénix te rocía niebla, lo cual no tiene
 nada que ver con la física y aun así mejora el asunto. Espera: los mismos
 16 minutos que en Troy.
 
-![La estación de Fēnix con raíl azul, tren de wing coaster y pebeteros colgados de cadenas bajo vigas de madera | La estación de Fēnix: pebeteros en cadenas, vigas macizas y el tren con los asientos junto al raíl. | wide](/images/parks/toverland/background-16x9.jpg)
+![La estación de Fēnix con raíl azul, tren de wing coaster y pebeteros colgados de cadenas bajo vigas de madera | La estación de Fēnix: pebeteros en cadenas, vigas macizas y el tren con los asientos junto al raíl. | wide](/media/toverland/background-16x9.jpg)
 
 **[Booster Bike](ref:toverland/booster-bike)** es la rareza de la casa y mi
 segunda favorita aquí. En 2004, Vekoma construyó en Sevenum el prototipo mundial
@@ -305,7 +305,7 @@ constante desde 2022 y, por último, **1.137.000 en 2025**. Eso es
 aproximadamente un tercio de lo que mueven el Efteling o Europa-Park, y ahí está
 justamente el encanto.
 
-![El carrusel de cadenas Djinn iluminado en la nave Land van Toos, con visitantes en movimiento en las góndolas | Djinn da vueltas sobre el mercado oriental de Land van Toos, y lo hace completamente bajo techo. | left](/blog/images/toverland-halloween/05-djinn-land-van-toos.jpg)
+![El carrusel de cadenas Djinn iluminado en la nave Land van Toos, con visitantes en movimiento en las góndolas | Djinn da vueltas sobre el mercado oriental de Land van Toos, y lo hace completamente bajo techo. | left](/media/toverland-halloween/05-djinn-land-van-toos.jpg)
 
 Por cierto, las dos naves originales siguen ahí, y no son un plan B para
 chaparrones. Land van Toos y Wunderwald son un programa propio, con
@@ -328,7 +328,7 @@ un desfile XXL y fuegos artificiales.
 
 ## Halloween, y la noche vista desde el otro lado
 
-![El caballo de Troya de madera de noche, iluminado en rojo y envuelto en niebla, con una multitud delante | El mismo caballo de antes, seis semanas después. De día, las familias se hacen fotos delante. | wide](/blog/images/toverland-halloween/01-trojanisches-pferd-rot.jpg)
+![El caballo de Troya de madera de noche, iluminado en rojo y envuelto en niebla, con una multitud delante | El mismo caballo de antes, seis semanas después. De día, las familias se hacen fotos delante. | wide](/media/toverland-halloween/01-trojanisches-pferd-rot.jpg)
 
 Seis semanas al año este parque adopta una segunda personalidad, y para muchos
 visitantes del oeste de Alemania esa es la verdadera razón para venir. Su lugar
@@ -336,7 +336,7 @@ en la comparación europea está en nuestra
 [guía de Halloween](/blog/halloween-parques-atracciones-2026); aquí va la
 versión de Toverland.
 
-![Actor con máscara de tentáculos y campanilla ante la pancarta de Toverland Halloween Nights | El vigilante nocturno de las Halloween Nights. La cara: negociable. | right](/blog/images/halloween-parks-2026/toverland-cthulhu.jpg)
+![Actor con máscara de tentáculos y campanilla ante la pancarta de Toverland Halloween Nights | El vigilante nocturno de las Halloween Nights. La cara: negociable. | right](/media/halloween-2026/toverland-cthulhu.jpg)
 
 La temporada va **del 3 de octubre al 8 de noviembre de 2026** y se divide en
 dos eventos muy distintos:
@@ -349,7 +349,7 @@ dos eventos muy distintos:
   experiences**, desfile de apertura, niebla a ras de suelo por todas partes y
   fuegos artificiales como punto final.
 
-![Calabazas iluminadas con sombreros de bruja entre tallos secos de maíz | Calabazas en el maíz. Del mismo material está hecho en 2026 el laberinto más grande del parque. | left](/blog/images/toverland-halloween/04-kuerbisse-maisfeld.jpg)
+![Calabazas iluminadas con sombreros de bruja entre tallos secos de maíz | Calabazas en el maíz. Del mismo material está hecho en 2026 el laberinto más grande del parque. | left](/media/toverland-halloween/04-kuerbisse-maisfeld.jpg)
 
 La novedad de **2026** crece literalmente: **«Entwined: The Maze»**, un
 **maizal de siete hectáreas** con paredes de varios metros detrás de Fēnix,
@@ -358,7 +358,7 @@ como la mayor experiencia de Halloween de Europa. Sustituye al veterano
 laberinto de ratas «Trapped». La única regla que cuenta ahí dentro: al que se
 queda quieto, lo pillan.
 
-![El cartel de entrada de Troy convertido en «DesTROY – The Ride», con dos pancartas de Halloween Nights debajo | Troy se convierte en DesTROY. El parque desmonta para ello el cartel de entrada de la montaña rusa. | right](/blog/images/toverland-halloween/03-destroy-schild.jpg)
+![El cartel de entrada de Troy convertido en «DesTROY – The Ride», con dos pancartas de Halloween Nights debajo | Troy se convierte en DesTROY. El parque desmonta para ello el cartel de entrada de la montaña rusa. | right](/media/toverland-halloween/03-destroy-schild.jpg)
 
 Para los fans de Troy, sin embargo, lo mejor está aún por llegar. Una de las
 scare zones se llama **«DesTroy»** y está en **Ithaka**, es decir, justo al lado
@@ -368,7 +368,7 @@ ocasiones de montar en una montaña rusa de madera de primer nivel a oscuras a
 través de una scare zone en funcionamiento, con niebla en el tramo de frenado y
 actores en la cola.
 
-![Un guerrero troyano con lanza bajo el foco, delante del caballo iluminado en rojo | Si eso es una figura o un actor, lo descubres cuando ya es tarde. | left](/blog/images/toverland-halloween/02-trojanisches-pferd-krieger.jpg)
+![Un guerrero troyano con lanza bajo el foco, delante del caballo iluminado en rojo | Si eso es una figura o un actor, lo descubres cuando ya es tarde. | left](/media/toverland-halloween/02-trojanisches-pferd-krieger.jpg)
 
 Una de las seis experiencias tiene para mí un doble fondo. Con el
 [**Freundeskreis Kirmes und Freizeitparks**](https://fkfev.de/), una asociación
@@ -377,7 +377,7 @@ alemana de aficionados a las ferias y los parques, estuve entre bastidores en la
 espanto. No en funcionamiento, sin visitantes reales, solo nosotros y una casa
 vacía.
 
-![Una fachada iluminada en rosa con balcón, figura de muñeca y rótulo luminoso «The Dollhouse» | «The Dollhouse», una de las seis haunted experiences. De día es Villa Fiasko. | right](/images/parks/toverland/villa-fiasko-4x3.jpg)
+![Una fachada iluminada en rosa con balcón, figura de muñeca y rótulo luminoso «The Dollhouse» | «The Dollhouse», una de las seis haunted experiences. De día es Villa Fiasko. | right](/media/toverland/villa-fiasko-4x3.jpg)
 
 Aun así bastó para entender el respeto que merece. Estás en una posición desde
 la que casi no ves nada y aun así tienes que entrar en el segundo exacto. Quien
@@ -406,7 +406,7 @@ bastante importante como para que pase.
 
 ## Qué más está por venir
 
-![Un detalle decorativo tallado en la Maximus' Blitz Bahn, iluminado en azul, con viejas bombillas colgando de cables al lado | Un detalle de la Blitz Bahn, tal y como estuvo diecinueve años. Casi todo aquí era artesanal. | left](/images/parks/toverland/maximus-blitzbahn-4x3.jpg)
+![Un detalle decorativo tallado en la Maximus' Blitz Bahn, iluminado en azul, con viejas bombillas colgando de cables al lado | Un detalle de la Blitz Bahn, tal y como estuvo diecinueve años. Casi todo aquí era artesanal. | left](/media/toverland/maximus-blitzbahn-4x3.jpg)
 
 Quien lleve tiempo sin ir echará en falta una atracción. El **17 de mayo de
 2026**, la **[Maximus' Blitz Bahn](ref:toverland/maximus-blitz-bahn)** del

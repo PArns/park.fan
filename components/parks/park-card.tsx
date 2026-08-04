@@ -7,6 +7,7 @@ import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { ParkCardScheduleFooter } from '@/components/parks/park-card-schedule-footer';
 import { CardPhoto } from '@/components/parks/card-photo';
+import { objectPositionForSrc } from '@/lib/media/focus';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import { formatDistance } from '@/lib/utils/distance-utils';
@@ -140,6 +141,7 @@ export function ParkCard({
         <div className="absolute inset-0 z-0 overflow-hidden">
           {backgroundImage ? (
             <CardPhoto
+              objectPosition={objectPositionForSrc(backgroundImage)}
               src={backgroundImage}
               alt={name}
               closed={!isOperatingOrUnknown}

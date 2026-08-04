@@ -1,0 +1,11 @@
+{
+  "title": "Fata Morgana",
+  "park": "efteling",
+  "ride": "fata-morgana",
+  "roles": ["ride-card", "hero"],
+  "tags": ["photo", "ride"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

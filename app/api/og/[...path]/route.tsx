@@ -6,7 +6,7 @@ import { getGeoStructure } from '@/lib/api/discovery';
 import { getParkBackgroundImage, getAttractionBackgroundImage } from '@/lib/utils/park-assets';
 import { stripNewPrefix } from '@/lib/utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
-import { HERO_IMAGES } from '@/lib/hero-images';
+import { heroImageSrcs } from '@/lib/media/hero';
 import { ParkAttraction, GeoStructure } from '@/lib/api/types';
 import { isValidLocale, type Locale } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
@@ -217,8 +217,8 @@ export async function GET(
       totalParks = (await loadGeo()).parkCount;
 
       // Random Background from Hero Images
-      const randomIndex = Math.floor(Math.random() * HERO_IMAGES.length);
-      backgroundImagePath = HERO_IMAGES[randomIndex];
+      const pool = heroImageSrcs();
+      backgroundImagePath = pool[Math.floor(Math.random() * pool.length)];
     } else if (type === 'GENERIC') {
       const config = genericPages[secondSegment as keyof typeof genericPages];
       // Legal pages carry an SEO site-name suffix ("… - park.fan"); strip it
@@ -233,8 +233,8 @@ export async function GET(
       }
 
       // Use a random hero image for visuals if no specific one
-      const randomIndex = Math.floor(Math.random() * HERO_IMAGES.length);
-      backgroundImagePath = HERO_IMAGES[randomIndex];
+      const pool = heroImageSrcs();
+      backgroundImagePath = pool[Math.floor(Math.random() * pool.length)];
     } else if (['CONTINENT', 'COUNTRY', 'CITY'].includes(type)) {
       const { getRegionGeoSVG } = await import('@/lib/utils/geo-svg');
       // Resolve Name & Stats based on Type

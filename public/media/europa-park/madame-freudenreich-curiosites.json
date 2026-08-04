@@ -1,0 +1,12 @@
+{
+  "title": "Madame Freudenreich Curiosités",
+  "park": "europa-park",
+  "ride": "madame-freudenreich-curiosites",
+  "area": "France",
+  "roles": ["ride-card", "hero"],
+  "tags": ["photo", "ride"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

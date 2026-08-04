@@ -18,7 +18,7 @@ import { Hero } from '@/components/marketing/editorial-ui';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 
 /** Scenic establishing shot for the blog hero (distinct from Fancast/the hub). */
-const BLOG_HERO_IMAGE = '/images/parks/europa-park/background.jpg';
+const BLOG_HERO_IMAGE = '/media/europa-park/background.jpg';
 
 const SCROLL_LABELS: Record<Locale, string> = {
   de: 'Scrollen',

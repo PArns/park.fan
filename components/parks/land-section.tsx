@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { useTranslations } from 'next-intl';
 import { LayoutGrid } from 'lucide-react';
 import { AttractionCard } from './attraction-card';
-import { getAttractionImage } from '@/lib/attraction-images';
+import { getAttractionBackgroundImage } from '@/lib/utils/park-assets';
 import { getAttractionDisplayStatus } from '@/lib/utils/park-utils';
 import type { ParkAttraction, ParkStatus } from '@/lib/api/types';
 
@@ -62,7 +62,7 @@ export const LandSection = memo(function LandSection({
       <ul className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {attractions.map((attraction) => {
           // Get attraction background image with fallback to null
-          const backgroundImage = getAttractionImage(parkSlug, attraction.slug);
+          const backgroundImage = getAttractionBackgroundImage(parkSlug, attraction.slug);
 
           return (
             <li key={attraction.id} className="row-span-3 grid [grid-template-rows:subgrid]">

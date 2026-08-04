@@ -1,0 +1,12 @@
+{
+  "title": "Matterhorn-Blitz",
+  "park": "europa-park",
+  "ride": "matterhorn-blitz",
+  "area": "Switzerland",
+  "roles": ["ride-card", "hero"],
+  "tags": ["photo", "ride"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

@@ -4,6 +4,7 @@ import { useFormatter, useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { Badge } from '@/components/ui/badge';
 import { CardPhoto } from '@/components/parks/card-photo';
+import { objectPositionForSrc } from '@/lib/media/focus';
 import { cn } from '@/lib/utils';
 import { resolveCategoryLabel } from '@/lib/blog/categories';
 import { resolveAuthor } from '@/lib/blog/authors';
@@ -113,7 +114,7 @@ export function BlogPostCard({
               src={cover}
               alt={frontmatter.coverImage?.alt ?? frontmatter.title}
               hideOnMobile
-              objectPosition="center"
+              objectPosition={objectPositionForSrc(cover, '50% 50%')}
               priority={priority}
               sizes={
                 isFeature

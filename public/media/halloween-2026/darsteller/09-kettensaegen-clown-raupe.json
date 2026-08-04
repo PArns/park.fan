@@ -1,0 +1,24 @@
+{
+  "park": "walibi-holland",
+  "tags": ["halloween", "performer", "photo"],
+  "alt": {
+    "de": "Clown mit Kettensäge vor einem Raupenfahrgeschäft, grün-violett beleuchtet",
+    "en": "Clown with a chainsaw in front of a caterpillar ride, lit green and purple",
+    "es": "Payaso con motosierra ante una atracción tipo oruga, iluminado de verde y violeta",
+    "fr": "Clown à la tronçonneuse devant une attraction chenille, éclairé en vert et violet",
+    "it": "Clown con motosega davanti a una giostra a bruco, illuminato di verde e viola",
+    "nl": "Clown met kettingzaag voor een rupsattractie, groen-violet verlicht"
+  },
+  "caption": {
+    "de": "Clown plus Kettensäge: was soll da schon schiefgehen?",
+    "en": "Clown plus chainsaw: what could possibly go wrong?",
+    "es": "Payaso más motosierra: ¿qué podría salir mal?",
+    "fr": "Clown plus tronçonneuse : qu'est-ce qui pourrait bien mal tourner ?",
+    "it": "Clown più motosega: cosa mai potrebbe andare storto?",
+    "nl": "Clown plus kettingzaag: wat kan daar nou misgaan?"
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

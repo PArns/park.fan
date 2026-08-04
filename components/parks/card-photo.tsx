@@ -17,9 +17,17 @@ interface CardPhotoProps {
   hideOnMobile?: boolean;
   /** Responsive `sizes` for the underlying next/image. Defaults to the 1/2/3-col grid. */
   sizes?: string;
-  /** Vertical focal point. Park/ride hero photos frame from the `top`; portrait editorial
-   *  covers (blog) crop better from `center` so the subject isn't sliced down to sky. */
-  objectPosition?: 'top' | 'center';
+  /**
+   * Where the photo is anchored when `object-fit: cover` has to throw pixels away.
+   *
+   * `top` and `center` are the historical defaults — park/ride photos frame from the
+   * top, portrait editorial covers from the centre. Anything else is passed through
+   * as a raw CSS `object-position`, which is how a per-image focal point from the
+   * media database reaches every card: one value, applied identically to the main
+   * photo and its reflection, so the subject survives the crop instead of being
+   * sliced off. See `lib/media/focus.ts`.
+   */
+  objectPosition?: 'top' | 'center' | (string & {});
   /** Mark the main image as LCP priority (e.g. the blog feature card). */
   priority?: boolean;
 }
@@ -44,7 +52,10 @@ export function CardPhoto({
   priority = false,
 }: CardPhotoProps) {
   const [loaded, setLoaded] = useState(false);
-  const objectClass = objectPosition === 'center' ? 'object-center' : 'object-top';
+  // Resolved to a CSS value so the keyword and focal-point cases take the same path
+  // — two mechanisms for "where is this cropped from" is how they drift apart.
+  const position =
+    objectPosition === 'top' ? '50% 0%' : objectPosition === 'center' ? '50% 50%' : objectPosition;
 
   // A cached image can finish before React attaches `onLoad`; the ref catches that case.
   const captureImg = useCallback((node: HTMLImageElement | null) => {
@@ -77,7 +88,8 @@ export function CardPhoto({
               src={src}
               alt={alt}
               fill
-              className={cn('object-cover', objectClass)}
+              className="object-cover"
+              style={{ objectPosition: position }}
               sizes={sizes}
               priority={priority}
               onLoad={() => setLoaded(true)}
@@ -98,7 +110,8 @@ export function CardPhoto({
                 alt=""
                 aria-hidden="true"
                 fill
-                className={cn('object-cover', objectClass)}
+                className="object-cover"
+                style={{ objectPosition: position }}
                 sizes={sizes}
               />
             </div>

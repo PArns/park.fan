@@ -37,7 +37,7 @@ interface PageHeader {
   };
 }
 
-const HERO_IMAGE = '/images/parks/europa-park/voltron-nevera-powered-by-rimac.jpg';
+const HERO_IMAGE = '/media/europa-park/voltron-nevera-powered-by-rimac.jpg';
 
 const PAGE_HEADERS: Record<Locale, PageHeader> = {
   de: {

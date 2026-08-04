@@ -1,0 +1,12 @@
+{
+  "title": "Castello dei Medici",
+  "park": "europa-park",
+  "ride": "castello-dei-medici",
+  "area": "Italy",
+  "roles": ["ride-card", "hero"],
+  "tags": ["photo", "ride"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "title": "Atlantis Adventure",
+  "park": "europa-park",
+  "ride": "atlantis-adventure",
+  "area": "Scandinavia",
+  "roles": ["ride-card", "hero"],
+  "tags": ["photo", "ride"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

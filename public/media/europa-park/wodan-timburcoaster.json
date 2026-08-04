@@ -1,0 +1,12 @@
+{
+  "title": "WODAN - Timburcoaster",
+  "park": "europa-park",
+  "ride": "wodan-timburcoaster",
+  "area": "Germany",
+  "roles": ["ride-card", "hero"],
+  "tags": ["photo", "ride"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

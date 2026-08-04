@@ -25,7 +25,7 @@ category: guides
 parkLinks:
   - phantasialand
 coverImage:
-  src: /images/parks/phantasialand/taron-16x9.jpg
+  src: /media/phantasialand/taron-16x9.jpg
   alt: 'Taron raast door de basaltzuilen van het themagebied Klugheim in het Phantasialand'
   caption: 'Taron in het basaltdorp Klugheim, voor mij de mooiste plek van het park.'
   credit: 'park.fan'
@@ -75,11 +75,11 @@ doen. Deze gids laat je allebei zien: de wonderen waarvoor je komt, en heel
 praktisch, hoe je de **Phantasialand wachttijden** klein houdt en de beste dag
 treft.
 
-![Het Phantasialand in Brühl vanuit vogelperspectief | Mijn thuispark in Brühl, Europa's immersiefste pretpark. | wide](/images/parks/phantasialand/background-16x9.jpg)
+![Het Phantasialand in Brühl vanuit vogelperspectief | Mijn thuispark in Brühl, Europa's immersiefste pretpark. | wide](/media/phantasialand/background-16x9.jpg)
 
 ## Een park als een andere wereld, en waarom het zo vol is
 
-![Taron in het basaltdorp Klugheim | Taron raast door het basaltdorp Klugheim, een compleet dorp, niet zomaar een coaster. | right](/images/parks/phantasialand/taron-4x3.jpg)
+![Taron in het basaltdorp Klugheim | Taron raast door het basaltdorp Klugheim, een compleet dorp, niet zomaar een coaster. | right](/media/phantasialand/taron-4x3.jpg)
 
 Het Phantasialand noemt zichzelf “Europe's Most Immersive Theme Park”. Wie er ooit is geweest, begrijpt waar die
 aanspraak op rust: nergens anders
@@ -126,7 +126,7 @@ genaamd “Berggeist” wilden de twee geen kermisterrein maken, maar een
 met poppen uit Schmidts collectie, sprookjesscènes en veel groen. Op 30 april 1967
 gingen de poorten open. Achtbanen? Ho maar.
 
-![F.L.Y. in Rookburgh | Rookburgh met F.L.Y. (2020), de eerste flying-launch-coaster ter wereld en voorlopige hoogtepunt van een lange transformatie. | left](/images/parks/phantasialand/fly-4x3.jpg)
+![F.L.Y. in Rookburgh | Rookburgh met F.L.Y. (2020), de eerste flying-launch-coaster ter wereld en voorlopige hoogtepunt van een lange transformatie. | left](/media/phantasialand/fly-4x3.jpg)
 
 Dat daaruit in de loop van de decennia het wildste, dichtst gethematiseerde park van
 het continent groeide, is een verhaal van langzame groei, en een bijna-einde. Het
@@ -202,15 +202,15 @@ familie-launch in Klugheim, is de perfecte eerste “echte” coaster, zacht gen
 de eerste keer, snel genoeg voor de tweede.
 
 ```gallery-widget heading="De headliners in beeld"
-- /images/parks/phantasialand/chiapas-die-wasserbahn-16x9.jpg | De waterbaan Chiapas | Chiapas, een van de steilste wildwaterbanen ter wereld.
-- /images/parks/phantasialand/colorado-adventure-16x9.jpg | Colorado Adventure | Colorado Adventure, de mijntrein met wildwestcharme.
-- /images/parks/phantasialand/winjas-force-16x9.jpg | Winja's Force in Wuze Town | Winja's: twee spinning coasters vol verrassingen.
-- /images/parks/phantasialand/mystery-castle-16x9.jpg | Mystery Castle in Mysteryland | Mystery Castle, de freefall met wisselende programma's.
-- /images/parks/phantasialand/river-quest-16x9.jpg | River Quest | River Quest, wildwater met liften en natgarantie.
-- /images/parks/phantasialand/raik-16x9.jpg | Raik in Klugheim | Raik, de perfecte eerste “echte” coaster.
+- /media/phantasialand/chiapas-die-wasserbahn-16x9.jpg | De waterbaan Chiapas | Chiapas, een van de steilste wildwaterbanen ter wereld.
+- /media/phantasialand/colorado-adventure-16x9.jpg | Colorado Adventure | Colorado Adventure, de mijntrein met wildwestcharme.
+- /media/phantasialand/winjas-force-16x9.jpg | Winja's Force in Wuze Town | Winja's: twee spinning coasters vol verrassingen.
+- /media/phantasialand/mystery-castle-16x9.jpg | Mystery Castle in Mysteryland | Mystery Castle, de freefall met wisselende programma's.
+- /media/phantasialand/river-quest-16x9.jpg | River Quest | River Quest, wildwater met liften en natgarantie.
+- /media/phantasialand/raik-16x9.jpg | Raik in Klugheim | Raik, de perfecte eerste “echte” coaster.
 ```
 
-![Black Mamba in Deep in Africa | Black Mamba kronkelt zich diep tussen rotsen en hutten door. | wide](/images/parks/phantasialand/black-mamba-16x9.jpg)
+![Black Mamba in Deep in Africa | Black Mamba kronkelt zich diep tussen rotsen en hutten door. | wide](/media/phantasialand/black-mamba-16x9.jpg)
 
 ## Tickets: alleen online, en de strijd om de jaarkaarten
 
@@ -404,7 +404,7 @@ heb gevonden, zeg ik nog altijd geen woord. Zoek zelf maar.) Splinternieuw vlak 
 Mausketiere](ref:phantasialand/die-3-mausketiere)**, een 360°-4D-attractie die in 2026 de oude
 bioscoop heeft vervangen en het muizenthema charmant doorspint.
 
-![De Geister Rikscha in China Town | Ook de dark rides zoals de Geister Rikscha zijn puur, liefdevol decor. | left](/images/parks/phantasialand/geister-rikscha-4x3.jpg)
+![De Geister Rikscha in China Town | Ook de dark rides zoals de Geister Rikscha zijn puur, liefdevol decor. | left](/media/phantasialand/geister-rikscha-4x3.jpg)
 
 En daar zijn de vele dark rides die dit park zo terloops meebouwt, alsof ze niets bijzonders zijn.
 terwijl elk ervan in een ander park de headliner zou zijn. Eén ritje met de Geister Rikscha door China

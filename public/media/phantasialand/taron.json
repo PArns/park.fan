@@ -1,0 +1,12 @@
+{
+  "title": "Taron",
+  "park": "phantasialand",
+  "ride": "taron",
+  "area": "Klugheim",
+  "roles": ["ride-card", "hero"],
+  "tags": ["photo", "ride"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

@@ -29,7 +29,7 @@ tags:
   - efteling
 category: guides
 coverImage:
-  src: /blog/images/halloween-parks-2026/cover.jpg
+  src: /media/halloween-2026/cover.jpg
   alt: 'Gigantesca fenice formata da migliaia di zucche luminose con le ali spiegate, di notte, e davanti un attore con una mazza'
   caption: 'Una fenice fatta di migliaia di zucche luminose: ecco come un parco sfodera il suo allestimento di Halloween.'
 seo:
@@ -97,7 +97,7 @@ horror per la prima volta**. Chi si è già fatto braccare in un sabato di ottob
 tra banchi di nebbia e una motosega stridente lungo le “Streets of New York”
 capisce il culto.
 
-![Roulotte abbandonata con casse di legno nella nebbia mattutina | Una roulotte solitaria nella nebbia del mattino. Raramente un buon segno. | wide](/blog/images/halloween-parks-2026/beispiel-wohnwagen.jpg)
+![Roulotte abbandonata con casse di legno nella nebbia mattutina | Una roulotte solitaria nella nebbia del mattino. Raramente un buon segno. | wide](/media/halloween-2026/beispiel-wohnwagen.jpg)
 
 Due dei nove sono nuovi. **Blood Moon Trailer Park** si colloca a cinque ore di
 macchina a nord di Los Angeles, ai margini dello Yosemite: un campeggio di
@@ -131,7 +131,7 @@ in conto nel budget.
 Date, line-up dei maze e livelli di biglietto sulla
 [pagina ufficiale dell'Halloween Horror Festival](https://www.movieparkgermany.de/en/halloween).
 
-```gallery-widget folder=/blog/images/halloween-parks-2026/impressionen-kinderwelt heading="Mondo dei bambini rotto"
+```gallery-widget folder=/media/halloween-2026/impressionen-kinderwelt heading="Mondo dei bambini rotto"
 
 ```
 
@@ -224,7 +224,7 @@ schizzo”. Perdi completamente l'orientamento, ed è esattamente il punto.
 Togliersi i pantaloni in un parco divertimenti è, quella sera, la cosa più
 normale che ti capita.
 
-![Attore con maschera da saldatore e grembiule di cuoio davanti alla porta di un container | Il macellaio aspetta già. E no, non è un comitato di benvenuto. | left](/blog/images/halloween-parks-2026/beispiel-metzger.jpg)
+![Attore con maschera da saldatore e grembiule di cuoio davanti alla porta di un container | Il macellaio aspetta già. E no, non è un comitato di benvenuto. | left](/media/halloween-2026/beispiel-metzger.jpg)
 
 La star segreta della collezione è **Slaughterhouse**, uno stabilimento di
 lavorazione delle carni in cui assumi il ruolo della materia prima. Prima vieni
@@ -252,7 +252,7 @@ Line-up attuale e date: [walibi.nl/halloween](https://www.walibi.nl/halloween/en
 
 ### Bobbejaanland: cinema in cui si entra a piedi
 
-![Attrice come bambola di porcellana rotta davanti alla recinzione colorata del mondo dei bambini | Sono sempre le bambole. | right](/blog/images/halloween-parks-2026/beispiel-porzellanpuppe.jpg)
+![Attrice come bambola di porcellana rotta davanti alla recinzione colorata del mondo dei bambini | Sono sempre le bambole. | right](/media/halloween-2026/beispiel-porzellanpuppe.jpg)
 
 Il belga [Bobbejaanland](ref:bobbejaanland) ha inaugurato nel 2025 la sua casa
 degli orrori più grande di sempre, e prosegue anche nel 2026: **“Paranormal
@@ -275,7 +275,7 @@ confine.
 
 [Bobbejaanland](ref:bobbejaanland?full)
 
-```gallery-widget folder=/blog/images/halloween-parks-2026/impressionen-darsteller heading="Gli attori"
+```gallery-widget folder=/media/halloween-2026/impressionen-darsteller heading="Gli attori"
 
 ```
 
@@ -289,7 +289,7 @@ si svolgono in parallelo di giorno), in tutto sei scare zone e sei haunted
 experience, tra cui **“Unmasked”**, introdotta nel 2025, una experience con
 scare zone propria.
 
-![Attore con maschera a tentacoli e campanella davanti allo striscione delle Toverland Halloween Nights | Il guardiano notturno delle Toverland Halloween Nights. Faccia: trattabile. | left](/blog/images/halloween-parks-2026/toverland-cthulhu.jpg)
+![Attore con maschera a tentacoli e campanella davanti allo striscione delle Toverland Halloween Nights | Il guardiano notturno delle Toverland Halloween Nights. Faccia: trattabile. | left](/media/halloween-2026/toverland-cthulhu.jpg)
 
 La vera novità per il **2026** sta letteralmente crescendo verso il cielo in
 questo momento, e non si trova nemmeno dentro il parco: **“Entwined: The
@@ -321,7 +321,7 @@ Dettagli su experience, scare zone e Fear Pass:
 
 ### Walibi Belgium: “Ibilaw”
 
-![Clown con fez al banco del lancio dei coltelli, di giorno | Un clown. Al banco del lancio dei coltelli. Due paure al prezzo di una. | right](/blog/images/halloween-parks-2026/beispiel-fez-clown.jpg)
+![Clown con fez al banco del lancio dei coltelli, di giorno | Un clown. Al banco del lancio dei coltelli. Due paure al prezzo di una. | right](/media/halloween-2026/beispiel-fez-clown.jpg)
 
 Ci si mette anche il secondo Walibi: [Walibi Belgium](ref:walibi-belgium) a
 Wavre trasforma il suo autunno in **“Ibilaw”**, e il nome è già il primo
@@ -375,7 +375,7 @@ di solito c'è. Ideale per la pace familiare: di giorno tutti insieme sulle
 montagne russe, e chi è abbastanza grande e coraggioso sparisce la sera in un
 maze mentre gli altri si aggrappano a una salsiccia.
 
-![Camion militare arrugginito davanti a tralicci e transenne, di giorno | Benvenuto nella zona zombie. L'accoglienza è … rustica. | wide](/blog/images/halloween-parks-2026/beispiel-endzeit-truck.jpg)
+![Camion militare arrugginito davanti a tralicci e transenne, di giorno | Benvenuto nella zona zombie. L'accoglienza è … rustica. | wide](/media/halloween-2026/beispiel-endzeit-truck.jpg)
 
 [Heide-Park](ref:heide-park?full)
 
@@ -466,7 +466,7 @@ e nelle settimane di margine della stagione si sta percettibilmente più
 tranquilli (e gli attori hanno più tempo per occuparsi esclusivamente di _te_,
 a seconda dei punti di vista un vantaggio o uno svantaggio).
 
-![Arco illuminato Psycho Circus con la folla di notte | Notte piena: da qui in poi stai in coda più di quanto vorresti. | wide](/blog/images/halloween-parks-2026/beispiel-psycho-circus.jpg)
+![Arco illuminato Psycho Circus con la folla di notte | Notte piena: da qui in poi stai in coda più di quanto vorresti. | wide](/media/halloween-2026/beispiel-psycho-circus.jpg)
 
 Invece di tirare a indovinare, guarda per il parco che ti interessa i **giorni
 più tranquilli in arrivo** dal nostro calendario dell'affluenza con IA:
@@ -493,7 +493,7 @@ ultime stagioni, lo fornisce la statistica all'istante:
 
 ```
 
-```gallery-widget folder=/blog/images/halloween-parks-2026/impressionen-kulissen heading="Scenografie e zone"
+```gallery-widget folder=/media/halloween-2026/impressionen-kulissen heading="Scenografie e zone"
 
 ```
 

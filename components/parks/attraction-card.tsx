@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import { Link } from '@/i18n/navigation';
 import { CardPhoto } from '@/components/parks/card-photo';
+import { objectPositionForSrc } from '@/lib/media/focus';
 import { useTranslations } from 'next-intl';
 import { Crown, ChartColumn, Clock, MapPin } from 'lucide-react';
 import { cn, stripNewPrefix } from '@/lib/utils';
@@ -185,6 +186,7 @@ export function AttractionCard({
         <div className="absolute inset-0 z-0 overflow-hidden">
           {backgroundImage ? (
             <CardPhoto
+              objectPosition={objectPositionForSrc(backgroundImage)}
               src={backgroundImage}
               alt={stripNewPrefix(attraction.name)}
               closed={!isOperatingOrUnknown}

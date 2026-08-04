@@ -17,9 +17,10 @@ import {
 import {
   getParkBackgroundImage,
   getParkImageSet,
+  getAttractionBackgroundImage,
   getAttractionImageSet,
 } from '@/lib/utils/park-assets';
-import { getAttractionImage } from '@/lib/attraction-images';
+
 import { stripNewPrefix } from '@/lib/utils';
 import { SITE_URL } from '@/i18n/config';
 
@@ -253,7 +254,7 @@ export function ParkStructuredData({
     containsPlace: [
       ...('attractions' in park && park.attractions
         ? park.attractions.map((attraction) => {
-            const attrImg = getAttractionImage(park.slug, attraction.slug);
+            const attrImg = getAttractionBackgroundImage(park.slug, attraction.slug);
             return {
               '@type': 'TouristAttraction' as const,
               name: stripNewPrefix(attraction.name),

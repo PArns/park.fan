@@ -1,0 +1,11 @@
+{
+  "title": "Symbolica",
+  "park": "efteling",
+  "ride": "symbolica",
+  "roles": ["ride-card", "hero"],
+  "tags": ["photo", "ride"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

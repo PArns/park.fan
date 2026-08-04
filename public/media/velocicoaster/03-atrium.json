@@ -1,0 +1,26 @@
+{
+  "park": "universal-islands-of-adventure",
+  "parkPath": "north-america/united-states/orlando/universal-islands-of-adventure",
+  "ride": "jurassic-world-velocicoaster",
+  "tags": ["photo", "queue", "theming"],
+  "alt": {
+    "de": "Eine Velociraptor-Figur im begrünten Atrium der VelociCoaster-Station",
+    "en": "A velociraptor figure in the leafy atrium of the VelociCoaster station",
+    "es": "Una figura de velocirraptor en el atrio ajardinado de la estación del VelociCoaster",
+    "fr": "Une figure de vélociraptor dans l'atrium végétalisé de la station du VelociCoaster",
+    "it": "La figura di un velociraptor nell'atrio ricoperto di verde della stazione del VelociCoaster",
+    "nl": "Een velociraptorfiguur in het begroeide atrium van het VelociCoaster-station"
+  },
+  "caption": {
+    "de": "Das Atrium kurz vor dem Start: Dschungel, Beton und Raptoren. Occupied time in Reinkultur: Es gibt bis zur letzten Sekunde etwas zu sehen.",
+    "en": "The atrium just before the launch: jungle, concrete and raptors. Occupied time in its purest form: there's something to see right up to the last second.",
+    "es": "El atrio justo antes de la salida: jungla, hormigón y raptores. Occupied time en estado puro: hay algo que ver hasta el último segundo.",
+    "fr": "L'atrium juste avant le départ : jungle, béton et raptors. L'occupied time à l'état pur : il y a quelque chose à voir jusqu'à la dernière seconde.",
+    "it": "L'atrio poco prima della partenza: giungla, cemento e raptor. Occupied time allo stato puro: c'è qualcosa da vedere fino all'ultimo secondo.",
+    "nl": "Het atrium vlak voor de start: jungle, beton en raptoren. Occupied time in optima forma: tot de laatste seconde valt er iets te zien."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

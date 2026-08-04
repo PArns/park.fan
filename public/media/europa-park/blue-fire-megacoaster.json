@@ -1,0 +1,12 @@
+{
+  "title": "blue fire Megacoaster",
+  "park": "europa-park",
+  "ride": "blue-fire-megacoaster",
+  "area": "Iceland",
+  "roles": ["ride-card", "hero"],
+  "tags": ["photo", "ride"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

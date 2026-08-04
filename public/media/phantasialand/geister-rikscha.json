@@ -1,0 +1,11 @@
+{
+  "title": "Geister Rikscha",
+  "park": "phantasialand",
+  "ride": "geister-rikscha",
+  "roles": ["ride-card", "hero"],
+  "tags": ["photo", "ride"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

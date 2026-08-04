@@ -1,0 +1,11 @@
+{
+  "title": "Crazy River",
+  "park": "walibi-holland",
+  "ride": "crazy-river",
+  "roles": ["ride-card", "hero"],
+  "tags": ["photo", "ride"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

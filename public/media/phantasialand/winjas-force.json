@@ -1,0 +1,12 @@
+{
+  "title": "Winja‘s Force",
+  "park": "phantasialand",
+  "ride": "winjas-force",
+  "area": "Mystery",
+  "roles": ["ride-card", "hero"],
+  "tags": ["photo", "ride"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

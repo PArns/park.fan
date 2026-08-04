@@ -1,0 +1,12 @@
+{
+  "title": "Water rollercoaster Poseidon",
+  "park": "europa-park",
+  "ride": "water-rollercoaster-poseidon",
+  "area": "Greece",
+  "roles": ["ride-card", "hero"],
+  "tags": ["photo", "ride"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

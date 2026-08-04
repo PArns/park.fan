@@ -234,7 +234,7 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
     return src?.slug || slugify(src?.fm.title ?? '');
   }, [drafts, sourceLocale]);
 
-  // New uploads land in /blog/images/<post-slug>/ — keep the staging store's
+  // New uploads land in /media/<post-slug>/ — keep the staging store's
   // folder in sync with whatever the post is currently called.
   useEffect(() => {
     setUploadFolder(baseSlug || editing?.key || 'uploads');

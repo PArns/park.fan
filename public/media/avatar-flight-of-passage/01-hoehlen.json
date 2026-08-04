@@ -1,0 +1,25 @@
+{
+  "park": "disney-animal-kingdom",
+  "ride": "avatar-flight-of-passage",
+  "tags": ["photo", "queue", "theming"],
+  "alt": {
+    "de": "Biolumineszente Höhle mit leuchtenden Pflanzen in der Flight-of-Passage-Warteschlange",
+    "en": "Bioluminescent cave with glowing plants in the Flight of Passage queue",
+    "es": "Cueva bioluminiscente con plantas luminosas en la cola de Flight of Passage",
+    "fr": "Grotte bioluminescente aux plantes lumineuses dans la file de Flight of Passage",
+    "it": "Grotta bioluminescente con piante luminose nella coda di Flight of Passage",
+    "nl": "Bioluminescente grot met lichtgevende planten in de wachtrij van Flight of Passage"
+  },
+  "caption": {
+    "de": "Station 1: die biolumineszenten Höhlen Pandoras. Noch bevor man die Bahn sieht, ist man schon mittendrin.",
+    "en": "Station 1: Pandora's bioluminescent caves. You're immersed before you even see the ride.",
+    "es": "Estación 1: las cuevas bioluminiscentes de Pandora. Estás inmerso antes incluso de ver la atracción.",
+    "fr": "Station 1: les grottes bioluminescentes de Pandora. On est immergé avant même de voir l'attraction.",
+    "it": "Stazione 1: le grotte bioluminescenti di Pandora. Sei immerso ancora prima di vedere l'attrazione.",
+    "nl": "Station 1: de bioluminescente grotten van Pandora. Je zit er middenin nog voor je de attractie ziet."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

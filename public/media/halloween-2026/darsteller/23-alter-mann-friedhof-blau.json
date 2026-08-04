@@ -1,0 +1,24 @@
+{
+  "park": "walibi-holland",
+  "tags": ["halloween", "performer", "photo"],
+  "alt": {
+    "de": "Älterer Darsteller mit Zylinder auf einem blau beleuchteten Friedhof",
+    "en": "Older performer in a top hat in a blue-lit cemetery",
+    "es": "Actor de edad avanzada con chistera en un cementerio iluminado de azul",
+    "fr": "Acteur âgé avec haut-de-forme dans un cimetière éclairé en bleu",
+    "it": "Attore anziano con cilindro in un cimitero illuminato di blu",
+    "nl": "Oudere acteur met hoge hoed op een blauw verlichte begraafplaats"
+  },
+  "caption": {
+    "de": "Der steht da schon eine Weile. Und ja: er wartet auf dich.",
+    "en": "He's been standing there a while. And yes: he's waiting for you.",
+    "es": "Lleva ahí un buen rato. Y sí: te espera a ti.",
+    "fr": "Il est planté là depuis un moment. Et oui : c'est toi qu'il attend.",
+    "it": "È lì in piedi da un po'. E sì: aspetta te.",
+    "nl": "Die staat daar al een tijdje. En ja: hij wacht op jou."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

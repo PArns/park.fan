@@ -1,0 +1,11 @@
+{
+  "title": "Star Trek™: Operation Enterprise",
+  "park": "movie-park-germany",
+  "ride": "star-trek-operation-enterprise",
+  "roles": ["ride-card", "hero"],
+  "tags": ["photo", "ride"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

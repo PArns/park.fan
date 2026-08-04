@@ -20,7 +20,7 @@ tags:
   - phantasialand
 category: behind-the-scenes
 coverImage:
-  src: /blog/images/kunst-des-wartens-cover.jpg
+  src: /media/disney-animal-kingdom/kunst-des-wartens-cover.jpg
   alt: "De Tree of Life in Disney's Animal Kingdom, met daarvoor de bezoekersmassa van het park"
   caption: "Disney's Animal Kingdom: tienduizenden gasten, één Tree of Life, en overal de vraag hoelang je waarvoor aanschuift."
 seo:
@@ -159,7 +159,7 @@ en de rij ophouden. Een wachtrij die zichzelf verstopt omdat ze te mooi is.
 Daarna volgen meteen **twee pre-showruimtes**, waarin je wordt “gescand” en aan
 je eigen avatar wordt “gekoppeld”.
 
-```gallery-widget folder=/blog/images/avatar-flight-of-passage heading="De wachtrij in drie stations"
+```gallery-widget folder=/media/avatar-flight-of-passage heading="De wachtrij in drie stations"
 
 ```
 
@@ -185,7 +185,7 @@ briefing van het **Nova Corps**. De eigenlijke rit, een verhalencoaster met
 vrij roterende voertuigen en achterwaartse launch, is de finale van een
 enscenering die twintig minuten eerder begon.
 
-```gallery-widget folder=/blog/images/cosmic-rewind heading="Het paviljoen voor de rit"
+```gallery-widget folder=/media/cosmic-rewind heading="Het paviljoen voor de rit"
 
 ```
 
@@ -211,7 +211,7 @@ bedoelt Maister met **“occupied time”**: bezette tijd voelt korter, en wie n
 nagaat of de raptor achter het hek echt zijn kop heeft gedraaid, kijkt niet om
 de tien seconden op zijn telefoon.
 
-```gallery-widget folder=/blog/images/velocicoaster heading="Welkom in het raptorverblijf"
+```gallery-widget folder=/media/velocicoaster heading="Welkom in het raptorverblijf"
 
 ```
 
@@ -244,7 +244,7 @@ grote avondshow zakken de wachttijden van de headliners meetbaar in, en wie de
 show al kent rijdt dat uur het voordeligst. Voor precies zulke momenten
 verversen we de wachttijden elke minuut.
 
-![Duizenden toeschouwers in het nachtelijke amfitheater van Fantasmic! in Disney's Hollywood Studios | Fantasmic! in de Hollywood Studios: bijna 10.000 mensen per voorstelling, een hele bezoekersgolf die dit halfuur gegarandeerd in geen enkele coasterrij staat. | wide](/blog/images/fantasmic-crowd.jpg)
+![Duizenden toeschouwers in het nachtelijke amfitheater van Fantasmic! in Disney's Hollywood Studios | Fantasmic! in de Hollywood Studios: bijna 10.000 mensen per voorstelling, een hele bezoekersgolf die dit halfuur gegarandeerd in geen enkele coasterrij staat. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
 ## Capaciteit en doorstroom: het wiskundige geheim
 
@@ -268,7 +268,7 @@ formule wordt interessant omdat parken de twee factoren totaal verschillend
 combineren, volgens het buffetprincipe of het tapasprincipe. Twee banen uit
 Orlando die op papier bijna identiek presteerden, laten dat perfect zien:
 
-![Twee wegen naar vergelijkbare doorstroom: weinig grote treinen bij de Hulk, veel kleine wagens bij Rip Ride Rockit | Zelfde klasse, totaal andere strategie: massa per trein versus frequentie. | wide](/blog/images/inline/durchsatz-hulk-rockit.svg)
+![Twee wegen naar vergelijkbare doorstroom: weinig grote treinen bij de Hulk, veel kleine wagens bij Rip Ride Rockit | Zelfde klasse, totaal andere strategie: massa per trein versus frequentie. | wide](/media/diagrams/durchsatz-hulk-rockit.svg)
 
 **Voorbeeld A, het buffet.**
 [The Incredible Hulk Coaster](ref:universal-islands-of-adventure/the-incredible-hulk-coaster)

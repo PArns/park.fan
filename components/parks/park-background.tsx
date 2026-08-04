@@ -17,10 +17,28 @@ interface ParkBackgroundProps {
   alt: string;
   /** Fix the background so it stays in place while content scrolls over it. */
   fixed?: boolean;
+  /**
+   * CSS `object-position` for the crop, from the image's focal point.
+   *
+   * Resolved by the caller (a Server Component) rather than looked up here: this
+   * is a Client Component, and reaching into the media manifest from it would
+   * ship the whole catalog to the browser. See `objectPositionForSrc`.
+   */
+  objectPosition?: string;
 }
 
-export function ParkBackground({ imageSrc, alt, fixed = false }: ParkBackgroundProps) {
+export function ParkBackground({
+  imageSrc,
+  alt,
+  fixed = false,
+  objectPosition,
+}: ParkBackgroundProps) {
   if (!imageSrc) return null;
+
+  // The two layouts crop differently, so they keep different defaults: the fixed
+  // full-screen backdrop centres, the scrolling strip anchors to the top. A focal
+  // point overrides whichever applies.
+  const position = objectPosition ?? (fixed ? '50% 50%' : '50% 0%');
 
   if (fixed) {
     return (
@@ -33,7 +51,8 @@ export function ParkBackground({ imageSrc, alt, fixed = false }: ParkBackgroundP
           priority
           placeholder="blur"
           blurDataURL={BACKGROUND_BLUR_DATA_URL}
-          className="object-cover object-center"
+          className="object-cover"
+          style={{ objectPosition: position }}
           sizes={PARK_BG_SIZES}
           fetchPriority="high"
         />
@@ -59,11 +78,12 @@ export function ParkBackground({ imageSrc, alt, fixed = false }: ParkBackgroundP
           priority
           placeholder="blur"
           blurDataURL={BACKGROUND_BLUR_DATA_URL}
-          // Anchor the image to its top edge instead of centering it: the strip is shorter than the
-          // scaled image, so `object-cover` has to crop somewhere. Centered cropping ate into the top
-          // of the picture (sky / the ride itself); anchoring to the top keeps that visible and lets
-          // the excess fall off the bottom — which the gradient below already fades into the page.
-          className="object-cover object-top"
+          // Anchored to the top by default: the strip is shorter than the scaled image, so
+          // `object-cover` has to crop somewhere, and centred cropping ate into the top of the
+          // picture (sky / the ride itself). An image with a focal point overrides that — see
+          // lib/media/focus.ts.
+          className="object-cover"
+          style={{ objectPosition: position }}
           sizes={PARK_BG_SIZES}
           fetchPriority="high"
         />

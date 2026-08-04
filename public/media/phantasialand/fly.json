@@ -1,0 +1,12 @@
+{
+  "title": "F.L.Y.",
+  "park": "phantasialand",
+  "ride": "fly",
+  "area": "Rookburgh",
+  "roles": ["ride-card", "hero"],
+  "tags": ["photo", "ride"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

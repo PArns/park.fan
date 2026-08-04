@@ -1,0 +1,11 @@
+{
+  "title": "Condor",
+  "park": "walibi-holland",
+  "ride": "condor",
+  "roles": ["ride-card", "hero"],
+  "tags": ["photo", "ride"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "title": "Winja‘s Fear",
+  "park": "phantasialand",
+  "ride": "winjas-fear",
+  "area": "Mystery",
+  "roles": ["ride-card", "hero"],
+  "tags": ["photo", "ride"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

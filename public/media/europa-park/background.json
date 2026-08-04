@@ -1,0 +1,10 @@
+{
+  "title": "Europa-Park",
+  "park": "europa-park",
+  "roles": ["park-background"],
+  "tags": ["background", "park", "photo"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "park": "toverland",
+  "ride": "troy",
+  "tags": ["halloween", "photo"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

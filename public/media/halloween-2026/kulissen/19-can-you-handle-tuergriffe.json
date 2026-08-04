@@ -1,0 +1,24 @@
+{
+  "park": "walibi-holland",
+  "tags": ["halloween", "photo", "theming"],
+  "alt": {
+    "de": "Schriftzug Can you handle me aus alten Türgriffen und Schlössern an einer blauen Wand",
+    "en": "“Can you handle me” lettering made of old door handles and locks on a blue wall",
+    "es": "El rótulo Can you handle me formado con viejos pomos de puerta y cerraduras sobre una pared azul",
+    "fr": "Inscription Can you handle me formée de vieilles poignées de porte et de serrures sur un mur bleu",
+    "it": "Scritta Can you handle me composta con vecchie maniglie e serrature su una parete blu",
+    "nl": "Opschrift Can you handle me van oude deurklinken en sloten op een blauwe muur"
+  },
+  "caption": {
+    "de": "„Can you handle me“, gelegt aus lauter Türgriffen. Die Antwort lautet: eher nein.",
+    "en": "“Can you handle me”, spelled out in door handles. The answer: probably not.",
+    "es": "«Can you handle me», compuesto entero con pomos de puerta. Respuesta sincera: más bien no.",
+    "fr": "« Can you handle me », tracé avec des poignées de porte à foison. La réponse : plutôt non.",
+    "it": "“Can you handle me”, composta tutta con maniglie di porte. La risposta: piuttosto no.",
+    "nl": "“Can you handle me”, opgebouwd uit allemaal deurklinken. Het antwoord: eerder niet."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

@@ -29,7 +29,7 @@ tags:
   - efteling
 category: guides
 coverImage:
-  src: /blog/images/halloween-parks-2026/cover.jpg
+  src: /media/halloween-2026/cover.jpg
   alt: 'Riesiger, aus tausenden leuchtenden Kürbissen geformter Phönix mit ausgebreiteten Flügeln bei Nacht, davor ein Darsteller mit Vorschlaghammer'
   caption: 'Ein Phönix aus tausenden leuchtenden Kürbissen: so fährt ein Park sein Halloween-Dekor auf.'
 seo:
@@ -98,7 +98,7 @@ Neuigkeit, **erstmals neun Horror-Mazes**. Wer schon mal an einem
 Oktober-Samstag zwischen Nebelschwaden und quietschender Kettensäge durch die
 „Streets of New York“ getrieben wurde, versteht den Kult.
 
-![Verlassener Wohnwagen mit Holzkisten im Morgennebel | Ein einsamer Wohnwagen im Morgennebel. Selten ein gutes Zeichen. | wide](/blog/images/halloween-parks-2026/beispiel-wohnwagen.jpg)
+![Verlassener Wohnwagen mit Holzkisten im Morgennebel | Ein einsamer Wohnwagen im Morgennebel. Selten ein gutes Zeichen. | wide](/media/halloween-2026/beispiel-wohnwagen.jpg)
 
 Zwei der neun sind neu. **Blood Moon Trailer Park** siedelt fünf Autostunden
 nördlich von Los Angeles am Rand des Yosemite: ein verlassener, verfallender
@@ -130,7 +130,7 @@ separat zu buchen**. Plane das Budget ein.
 Termine, Maze-Line-up und Ticketstufen stehen auf der
 [offiziellen Halloween-Horror-Festival-Seite](https://www.movieparkgermany.de/en/halloween).
 
-```gallery-widget folder=/blog/images/halloween-parks-2026/impressionen-kinderwelt heading="Kaputte Kinderwelt"
+```gallery-widget folder=/media/halloween-2026/impressionen-kinderwelt heading="Kaputte Kinderwelt"
 
 ```
 
@@ -222,7 +222,7 @@ beachtlichem „Spritzschaden“. Man verliert komplett die Orientierung, und da
 ist genau der Punkt. Sich in einem Freizeitpark die Hose auszuziehen ist an
 diesem Abend das Normalste, was dir passiert.
 
-![Darsteller mit Schweißmaske und Lederschurz vor einer Containertür | Der Metzger wartet schon. Und nein, das ist kein Willkommenskomitee. | left](/blog/images/halloween-parks-2026/beispiel-metzger.jpg)
+![Darsteller mit Schweißmaske und Lederschurz vor einer Containertür | Der Metzger wartet schon. Und nein, das ist kein Willkommenskomitee. | left](/media/halloween-2026/beispiel-metzger.jpg)
 
 Der heimliche Star der Sammlung ist **Slaughterhouse**, ein
 Fleischverarbeitungsbetrieb, in dem du die Rolle des Rohmaterials übernimmst.
@@ -250,7 +250,7 @@ Aktuelles Line-up und Termine: [walibi.nl/halloween](https://www.walibi.nl/hallo
 
 ### Bobbejaanland: Kino zum Reinlaufen
 
-![Darstellerin als zerbrochene Porzellanpuppe vor buntem Kinderweltzaun | Es sind immer die Puppen. | right](/blog/images/halloween-parks-2026/beispiel-porzellanpuppe.jpg)
+![Darstellerin als zerbrochene Porzellanpuppe vor buntem Kinderweltzaun | Es sind immer die Puppen. | right](/media/halloween-2026/beispiel-porzellanpuppe.jpg)
 
 Der belgische [Bobbejaanland](ref:bobbejaanland) hat 2025 sein bis dahin
 größtes Spukhaus überhaupt eröffnet, und das läuft auch 2026 weiter:
@@ -273,7 +273,7 @@ verwischen, ist das eine der lohnendsten Adressen jenseits der Grenze.
 
 [Bobbejaanland](ref:bobbejaanland?full)
 
-```gallery-widget folder=/blog/images/halloween-parks-2026/impressionen-darsteller heading="Die Darsteller"
+```gallery-widget folder=/media/halloween-2026/impressionen-darsteller heading="Die Darsteller"
 
 ```
 
@@ -286,7 +286,7 @@ für Jahr aus. Termin steht: **3. Oktober bis 7. November 2026** (die harmlosere
 sechs Haunted Experiences, darunter die 2025 eingeführte **„Unmasked“**, eine
 Experience mit eigener Scare Zone.
 
-![Darsteller mit Tentakel-Maske und Handglocke vor dem Toverland-Halloween-Nights-Banner | Der Nachtwächter der Toverland Halloween Nights. Gesicht: Verhandlungssache. | left](/blog/images/halloween-parks-2026/toverland-cthulhu.jpg)
+![Darsteller mit Tentakel-Maske und Handglocke vor dem Toverland-Halloween-Nights-Banner | Der Nachtwächter der Toverland Halloween Nights. Gesicht: Verhandlungssache. | left](/media/halloween-2026/toverland-cthulhu.jpg)
 
 Die eigentliche Neuheit für **2026** wächst gerade buchstäblich in den Himmel,
 und liegt gar nicht im Park: **„Entwined: The Maze“** (der Name heißt so viel
@@ -319,7 +319,7 @@ Details zu Experiences, Scare Zones und Fear Pass:
 
 ### Walibi Belgium: „Ibilaw“
 
-![Clown mit Fez am Messerwurfstand bei Tag | Ein Clown. Am Messerwurfstand. Zwei Ängste zum Preis von einer. | right](/blog/images/halloween-parks-2026/beispiel-fez-clown.jpg)
+![Clown mit Fez am Messerwurfstand bei Tag | Ein Clown. Am Messerwurfstand. Zwei Ängste zum Preis von einer. | right](/media/halloween-2026/beispiel-fez-clown.jpg)
 
 Auch der zweite Walibi mischt mit: [Walibi Belgium](ref:walibi-belgium) in
 Wavre verwandelt seinen Herbst in **„Ibilaw“**, und der Name ist schon der
@@ -374,7 +374,7 @@ Familienfrieden: Alle fahren tagsüber zusammen Achterbahn, und wer alt und
 mutig genug ist, verschwindet abends im Maze, während der Rest sich an der
 Bratwurst festhält.
 
-![Rostiger Militärtruck vor Sendetürmen und Absperrungen bei Tag | Willkommen in der Zombie-Zone. Der Empfang fällt … rustikal aus. | wide](/blog/images/halloween-parks-2026/beispiel-endzeit-truck.jpg)
+![Rostiger Militärtruck vor Sendetürmen und Absperrungen bei Tag | Willkommen in der Zombie-Zone. Der Empfang fällt … rustikal aus. | wide](/media/halloween-2026/beispiel-endzeit-truck.jpg)
 
 [Heide-Park](ref:heide-park?full)
 
@@ -462,7 +462,7 @@ Randwochen der Saison ist es spürbar entspannter (und die Darsteller haben mehr
 Zeit, sich exklusiv um _dich_ zu kümmern, je nach Sichtweise ein Vor- oder
 Nachteil).
 
-![Beleuchteter Torbogen Psycho Circus mit Menschenmenge bei Nacht | Volle Nacht: ab hier stehst du mehr an, als dir lieb ist. | wide](/blog/images/halloween-parks-2026/beispiel-psycho-circus.jpg)
+![Beleuchteter Torbogen Psycho Circus mit Menschenmenge bei Nacht | Volle Nacht: ab hier stehst du mehr an, als dir lieb ist. | wide](/media/halloween-2026/beispiel-psycho-circus.jpg)
 
 Statt zu raten, schau dir für deinen Wunschpark die **ruhigsten kommenden Tage**
 aus unserem KI-Crowd-Kalender an:
@@ -489,7 +489,7 @@ mit:
 
 ```
 
-```gallery-widget folder=/blog/images/halloween-parks-2026/impressionen-kulissen heading="Kulissen und Zonen"
+```gallery-widget folder=/media/halloween-2026/impressionen-kulissen heading="Kulissen und Zonen"
 
 ```
 

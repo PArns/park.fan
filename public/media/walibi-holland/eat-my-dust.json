@@ -1,0 +1,11 @@
+{
+  "title": "Eat my Dust",
+  "park": "walibi-holland",
+  "ride": "eat-my-dust",
+  "roles": ["ride-card", "hero"],
+  "tags": ["photo", "ride"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

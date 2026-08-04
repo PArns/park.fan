@@ -1,0 +1,11 @@
+{
+  "title": "Xpress: Platform 13",
+  "park": "walibi-holland",
+  "ride": "xpress-platform-13",
+  "roles": ["ride-card", "hero"],
+  "tags": ["photo", "ride"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

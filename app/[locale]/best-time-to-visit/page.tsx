@@ -18,7 +18,7 @@ const CONTENT_LOADERS: Record<Locale, () => Promise<ComponentType>> = {
 };
 
 /** Scenic, calm establishing shot — sets the "plan the perfect day" tone. */
-const HERO_IMAGE = '/images/parks/efteling/background.jpg';
+const HERO_IMAGE = '/media/efteling/background.jpg';
 
 interface PageHeader {
   title: string;

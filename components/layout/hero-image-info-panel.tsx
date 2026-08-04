@@ -1,5 +1,5 @@
 import { Link } from '@/i18n/navigation';
-import type { HeroImageMeta } from '@/lib/hero-images-meta';
+import type { HeroImageMeta } from '@/lib/media/hero';
 
 /**
  * Presentational hero image attribution panel (bottom-left, desktop only). Pure markup with no data

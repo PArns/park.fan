@@ -1,0 +1,9 @@
+{
+  "park": "disney-animal-kingdom",
+  "ride": "tree-of-life",
+  "tags": ["crowd", "photo"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

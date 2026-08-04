@@ -1,0 +1,11 @@
+{
+  "title": "YOY THRILL",
+  "park": "walibi-holland",
+  "ride": "yoy-thrill",
+  "roles": ["ride-card", "hero"],
+  "tags": ["photo", "ride"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

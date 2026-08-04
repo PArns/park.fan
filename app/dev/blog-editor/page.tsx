@@ -36,7 +36,7 @@ country pair.
 
 ## Inline image
 
-![Welcome cover | A park.fan blog banner | center](/blog/images/welcome-cover.svg)
+![Welcome cover | A park.fan blog banner | center](/media/universal-islands-of-adventure/welcome-cover.jpg)
 
 ## Embeds (bare URL on its own line)
 

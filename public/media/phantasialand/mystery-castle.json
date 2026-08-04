@@ -1,0 +1,12 @@
+{
+  "title": "Mystery Castle",
+  "park": "phantasialand",
+  "ride": "mystery-castle",
+  "area": "Mystery",
+  "roles": ["ride-card", "hero"],
+  "tags": ["photo", "ride"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

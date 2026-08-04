@@ -153,7 +153,7 @@ export function ContentDE() {
           ]}
         />
         <SplitFigure
-          src="/images/parks/phantasialand/black-mamba.jpg"
+          src="/media/phantasialand/black-mamba.jpg"
           alt="Black Mamba rast durch den Dschungel im Phantasialand"
           kicker="Zur Öffnung"
           title="Früh da sein schlägt fast jeden Trick"
@@ -178,7 +178,7 @@ export function ContentDE() {
           gleich drumherum:
         </PG>
         <SplitFigure
-          src="/images/parks/walibi-holland/goliath.jpg"
+          src="/media/walibi-holland/goliath.jpg"
           alt="Achterbahn Goliath im Walibi Holland an einem vollen Tag"
           kicker="Spitzentag"
           title="Schön, frei, alle da"
@@ -267,7 +267,7 @@ export function ContentDE() {
           Jahr im Voraus und passend zu den Ferien und Feiertagen der jeweiligen Region.
         </P>
         <SplitFigure
-          src="/images/parks/efteling/symbolica.jpg"
+          src="/media/efteling/symbolica.jpg"
           alt="Die Palastfahrt Symbolica in der Efteling"
           kicker="Grün, gelb, rot"
           title="Eine Farbe pro Tag, ein Jahr im Voraus"

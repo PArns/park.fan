@@ -1,0 +1,9 @@
+{
+  "park": "toverland",
+  "ride": "djinn",
+  "tags": ["flat-ride", "indoor", "photo"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

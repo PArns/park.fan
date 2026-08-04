@@ -1,0 +1,11 @@
+{
+  "title": "MECALODON",
+  "park": "walibi-belgium",
+  "ride": "mecalodon",
+  "roles": ["ride-card", "hero"],
+  "tags": ["photo", "ride"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

@@ -20,7 +20,7 @@ tags:
   - phantasialand
 category: behind-the-scenes
 coverImage:
-  src: /blog/images/kunst-des-wartens-cover.jpg
+  src: /media/disney-animal-kingdom/kunst-des-wartens-cover.jpg
   alt: "L'Arbre de Vie du Disney's Animal Kingdom, avec devant lui la foule des visiteurs du parc"
   caption: "Disney's Animal Kingdom : des dizaines de milliers de visiteurs, un Arbre de Vie, et partout la même question : combien de temps faire la queue, et pour quoi."
 seo:
@@ -168,7 +168,7 @@ Une file qui se bouche elle-même parce qu'elle est trop belle. Suivent ensuite
 **deux salles de pre-show**, où vous êtes « scanné » puis « relié » à votre
 propre avatar.
 
-```gallery-widget folder=/blog/images/avatar-flight-of-passage heading="La file d'attente en trois stations"
+```gallery-widget folder=/media/avatar-flight-of-passage heading="La file d'attente en trois stations"
 
 ```
 
@@ -195,7 +195,7 @@ Corps**. Le parcours lui-même, un coaster narratif à véhicules libres en
 rotation et lancement en marche arrière, est le final d'une mise en scène
 commencée vingt minutes plus tôt.
 
-```gallery-widget folder=/blog/images/cosmic-rewind heading="Le pavillon avant le parcours"
+```gallery-widget folder=/media/cosmic-rewind heading="Le pavillon avant le parcours"
 
 ```
 
@@ -222,7 +222,7 @@ le **« occupied time »** : le temps occupé paraît plus court, et celui 
 en train de vérifier si le raptor derrière la clôture a vraiment tourné la tête
 ne regarde pas son téléphone toutes les dix secondes.
 
-```gallery-widget folder=/blog/images/velocicoaster heading="Bienvenue dans l'enclos des raptors"
+```gallery-widget folder=/media/velocicoaster heading="Bienvenue dans l'enclos des raptors"
 
 ```
 
@@ -259,7 +259,7 @@ déjà le spectacle roule au meilleur rapport de la journée pendant cette heure
 C'est exactement pour ces moments-là que nous actualisons les temps d'attente à
 la minute.
 
-![Des milliers de spectateurs dans l'amphithéâtre nocturne de Fantasmic! à Disney's Hollywood Studios | Fantasmic! aux Hollywood Studios : près de 10 000 personnes par représentation, toute une vague de visiteurs qui, le temps de cette demi-heure, ne se trouvera dans aucune file de coaster. | wide](/blog/images/fantasmic-crowd.jpg)
+![Des milliers de spectateurs dans l'amphithéâtre nocturne de Fantasmic! à Disney's Hollywood Studios | Fantasmic! aux Hollywood Studios : près de 10 000 personnes par représentation, toute une vague de visiteurs qui, le temps de cette demi-heure, ne se trouvera dans aucune file de coaster. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
 ## Capacité et débit : le secret mathématique
 
@@ -285,7 +285,7 @@ deux facteurs de façons totalement différentes, selon le principe du buffet ou
 celui des tapas. Deux attractions d'Orlando aux chiffres presque identiques sur
 le papier l'illustrent parfaitement :
 
-![Deux chemins vers un débit comparable : peu de grands trains sur le Hulk, beaucoup de petits wagons sur Rip Ride Rockit | Même catégorie, stratégie complètement différente : la masse par train contre la fréquence. | wide](/blog/images/inline/durchsatz-hulk-rockit.svg)
+![Deux chemins vers un débit comparable : peu de grands trains sur le Hulk, beaucoup de petits wagons sur Rip Ride Rockit | Même catégorie, stratégie complètement différente : la masse par train contre la fréquence. | wide](/media/diagrams/durchsatz-hulk-rockit.svg)
 
 **Exemple A, le buffet.**
 [The Incredible Hulk Coaster](ref:universal-islands-of-adventure/the-incredible-hulk-coaster)

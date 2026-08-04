@@ -1,0 +1,10 @@
+{
+  "park": "universal-islands-of-adventure",
+  "parkPath": "north-america/united-states/orlando/universal-islands-of-adventure",
+  "ride": "jurassic-world-velocicoaster",
+  "tags": ["coaster", "photo"],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

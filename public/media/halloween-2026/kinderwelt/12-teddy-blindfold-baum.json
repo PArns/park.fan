@@ -1,0 +1,24 @@
+{
+  "park": "walibi-holland",
+  "tags": ["halloween", "photo", "theming"],
+  "alt": {
+    "de": "Großer Teddybär mit verbundenen Augen an einen Baum gefesselt, rotes Licht",
+    "en": "Large teddy bear blindfolded and tied to a tree, red light",
+    "es": "Gran osito de peluche con los ojos vendados atado a un árbol, luz roja",
+    "fr": "Grand ours en peluche aux yeux bandés, ligoté à un arbre, lumière rouge",
+    "it": "Grande orsacchiotto con gli occhi bendati legato a un albero, luce rossa",
+    "nl": "Grote teddybeer met geblinddoekte ogen aan een boom gebonden, rood licht"
+  },
+  "caption": {
+    "de": "Augen verbunden, an den Baum gebunden: Der Teddy wusste zu viel.",
+    "en": "Blindfolded, tied to the tree: the teddy knew too much.",
+    "es": "Ojos vendados, atado al árbol: el osito sabía demasiado.",
+    "fr": "Yeux bandés, ligoté à l'arbre : le nounours en savait trop.",
+    "it": "Occhi bendati, legato all'albero: l'orsacchiotto sapeva troppo.",
+    "nl": "Ogen geblinddoekt, aan de boom gebonden: de teddy wist te veel."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

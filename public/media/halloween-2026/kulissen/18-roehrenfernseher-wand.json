@@ -1,0 +1,24 @@
+{
+  "park": "walibi-holland",
+  "tags": ["halloween", "photo", "theming"],
+  "alt": {
+    "de": "Wand aus vielen alten Röhrenfernsehern unter einem Wellblechdach",
+    "en": "Wall of many old CRT televisions under a corrugated-iron roof",
+    "es": "Pared hecha de muchos viejos televisores de tubo bajo un techo de chapa ondulada",
+    "fr": "Mur composé de nombreux vieux téléviseurs à tube sous un toit de tôle ondulée",
+    "it": "Parete fatta di tanti vecchi televisori a tubo catodico sotto un tetto di lamiera ondulata",
+    "nl": "Muur van veel oude beeldbuistelevisies onder een golfplaten dak"
+  },
+  "caption": {
+    "de": "Hundert Fernseher, ein Programm: nichts Gutes.",
+    "en": "A hundred TVs, one channel: nothing good.",
+    "es": "Cien televisores, un solo programa: nada bueno.",
+    "fr": "Cent téléviseurs, un seul programme : rien de bon.",
+    "it": "Cento televisori, un solo programma: niente di buono.",
+    "nl": "Honderd televisies, één programma: niets goeds."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}
