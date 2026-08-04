@@ -1,11 +1,17 @@
 'use client';
 
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AlertTriangle, MapPin, Upload, X } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import { ADMIN_PASS_HEADER, useAdmin } from '../../_lib/admin-context';
+import {
+  ParkRidePicker,
+  type PickerMode,
+  type PickerResult,
+} from '../../blog-editor/_components/park-ride-picker';
 import type { AnalyzedFile, Assignment, Vocabulary } from '../_lib/types';
+import { UploadWalkthrough } from './upload-walkthrough';
 
 /**
  * Drop a hundred photos in, correct what the GPS got wrong, open one pull request.
@@ -70,6 +76,17 @@ export function MediaUpload({ vocabulary, newSession, onDone, onClose }: Props) 
   const [dragging, setDragging] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  /** Which photo of the queue is on screen, and whether the queue is done. */
+  const [cursor, setCursor] = useState(0);
+  const [stage, setStage] = useState<'walk' | 'review'>('walk');
+  const [picker, setPicker] = useState<PickerMode | null>(null);
+
+  // Created once per batch and revoked on unmount. Calling createObjectURL in
+  // render, as this used to, mints a new URL — and leaks the old one — on every
+  // keystroke in every field.
+  const blobUrls = useMemo(() => files.map((f) => URL.createObjectURL(f)), [files]);
+  useEffect(() => () => blobUrls.forEach((url) => URL.revokeObjectURL(url)), [blobUrls]);
+
   const analyze = useCallback(
     async (incoming: File[]) => {
       const images = incoming.filter((f) => f.type.startsWith('image/'));
@@ -89,6 +106,8 @@ export function MediaUpload({ vocabulary, newSession, onDone, onClose }: Props) 
 
         setFiles(images);
         setAnalysis(data.files);
+        setCursor(0);
+        setStage('walk');
         setAssignments(
           (data.files as AnalyzedFile[]).map((f) => ({
             // The park is proposed as an answer; the ride deliberately is not.
@@ -103,7 +122,9 @@ export function MediaUpload({ vocabulary, newSession, onDone, onClose }: Props) 
             alt: '',
             caption: '',
             shotAt: f.shotAt,
+            focus: null,
             skip: false,
+            done: false,
           }))
         );
       } catch (e) {
@@ -117,6 +138,41 @@ export function MediaUpload({ vocabulary, newSession, onDone, onClose }: Props) 
 
   const update = (index: number, patch: Partial<Assignment>) =>
     setAssignments((all) => all.map((a, i) => (i === index ? { ...a, ...patch } : a)));
+
+  const goNext = useCallback(() => {
+    setAssignments((all) => all.map((a, i) => (i === cursor ? { ...a, done: true } : a)));
+    setCursor((c) => {
+      if (c + 1 < assignments.length) return c + 1;
+      setStage('review');
+      return c;
+    });
+  }, [cursor, assignments.length]);
+
+  const goBack = useCallback(() => setCursor((c) => Math.max(0, c - 1)), []);
+
+  /** Skip marks the decision and moves on — it is not a way out of the queue. */
+  const skipCurrent = useCallback(() => {
+    setAssignments((all) => all.map((a, i) => (i === cursor ? { ...a, skip: !a.skip } : a)));
+  }, [cursor]);
+
+  /** A pick from the shared catalog picker, applied to the photo on screen. */
+  const applyPick = (result: PickerResult) => {
+    const segments = result.refKey
+      .replace(/^\/parks\//, '')
+      .split('/')
+      .filter(Boolean);
+    const rideIndex = segments.indexOf('attractions');
+    const parkSegments = rideIndex >= 0 ? segments.slice(0, rideIndex) : segments.slice(0, 4);
+    if (result.kind === 'park') {
+      update(cursor, { park: parkSegments[3] ?? null });
+    } else {
+      update(cursor, {
+        ride: segments[segments.length - 1] ?? null,
+        park: result.parentParkSlug ?? parkSegments[3] ?? null,
+      });
+    }
+    setPicker(null);
+  };
 
   async function commit() {
     const queued = assignments
@@ -148,6 +204,7 @@ export function MediaUpload({ vocabulary, newSession, onDone, onClose }: Props) 
             alt: assignment.alt ? { de: assignment.alt } : {},
             caption: assignment.caption ? { de: assignment.caption } : {},
             shotAt: assignment.shotAt,
+            focus: assignment.focus,
           },
         }))
       );
@@ -174,214 +231,284 @@ export function MediaUpload({ vocabulary, newSession, onDone, onClose }: Props) 
   const pending = assignments.filter((a) => !a.skip).length;
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 p-4 backdrop-blur-sm">
-      <div className="bg-background border-border mx-auto max-w-5xl rounded-xl border p-5 shadow-xl">
-        <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-sm font-semibold">Add images</h2>
-          <button type="button" onClick={onClose} className="hover:bg-muted rounded p-1">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-3 backdrop-blur-sm sm:p-6">
+      <div className="bg-background ring-border flex max-h-full w-full max-w-6xl flex-col overflow-hidden rounded-2xl shadow-2xl ring-1">
+        <header className="border-border/70 flex shrink-0 items-center justify-between border-b px-4 py-3">
+          <h2 className="text-sm font-semibold">
+            {analysis.length === 0
+              ? 'Add images'
+              : stage === 'walk'
+                ? 'Going through the batch'
+                : `Ready to commit — ${pending} of ${analysis.length}`}
+          </h2>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close"
+            className="hover:bg-muted text-muted-foreground hover:text-foreground rounded-lg p-1.5 transition-colors"
+          >
             <X className="h-4 w-4" />
           </button>
+        </header>
+        <div className="flex min-h-0 flex-1 flex-col overflow-y-auto p-4 lg:overflow-hidden">
+          {analysis.length === 0 ? (
+            <div
+              onDragOver={(e) => {
+                e.preventDefault();
+                setDragging(true);
+              }}
+              // Moving over the icon or the copy fires dragleave on the zone too;
+              // without the relatedTarget check the highlight flickers off as soon
+              // as the pointer crosses a child.
+              onDragLeave={(e) => {
+                if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setDragging(false);
+              }}
+              onDrop={(e) => {
+                e.preventDefault();
+                setDragging(false);
+                void analyze(Array.from(e.dataTransfer.files));
+              }}
+              onClick={() => inputRef.current?.click()}
+              className={cn(
+                'flex cursor-pointer flex-col items-center gap-2 rounded-xl border-2 border-dashed p-12 text-center transition-colors',
+                dragging ? 'border-foreground bg-muted/50' : 'border-border hover:border-foreground'
+              )}
+            >
+              <Upload className="text-muted-foreground h-8 w-8" />
+              <p className="text-sm font-medium">Drop photos here, or click to choose</p>
+              <p className="text-muted-foreground max-w-md text-xs">
+                Each file is read for its GPS tag and capture date. The park is filled in
+                automatically where the coordinates are unambiguous; the ride is offered as a
+                shortlist because the nearest attraction is only right about half the time.
+              </p>
+              <input
+                ref={inputRef}
+                type="file"
+                multiple
+                accept="image/*"
+                className="hidden"
+                onChange={(e) => {
+                  void analyze(Array.from(e.target.files ?? []));
+                  e.target.value = '';
+                }}
+              />
+            </div>
+          ) : stage === 'walk' ? (
+            <UploadWalkthrough
+              key={cursor}
+              index={cursor}
+              file={analysis[cursor]}
+              blobUrl={blobUrls[cursor]}
+              assignment={assignments[cursor]}
+              vocabulary={vocabulary}
+              total={analysis.length}
+              doneCount={assignments.filter((a) => a.done).length}
+              onChange={(patch) => update(cursor, patch)}
+              onBack={goBack}
+              onNext={goNext}
+              onSkip={skipCurrent}
+              onPickPark={() => setPicker('park')}
+              onPickRide={() => setPicker('ride')}
+            />
+          ) : (
+            <div className="min-h-0 space-y-3 lg:overflow-y-auto">
+              {analysis.map((file, index) => {
+                const assignment = assignments[index];
+                if (!assignment) return null;
+                return (
+                  <div
+                    key={`${file.name}-${index}`}
+                    className={cn(
+                      'border-border grid grid-cols-[80px_minmax(0,1fr)] gap-3 rounded-lg border p-3',
+                      assignment.skip && 'opacity-40'
+                    )}
+                  >
+                    <div>
+                      {/* eslint-disable-next-line @next/next/no-img-element -- local blob, never optimized */}
+                      <img
+                        src={blobUrls[index]}
+                        alt=""
+                        className="aspect-square w-full rounded object-cover"
+                        style={{
+                          objectPosition: assignment.focus
+                            ? `${assignment.focus.x * 100}% ${assignment.focus.y * 100}%`
+                            : '50% 50%',
+                        }}
+                      />
+                      <p className="text-muted-foreground mt-1 text-[10px]">
+                        {file.width}×{file.height}
+                      </p>
+                    </div>
+
+                    <div className="min-w-0 space-y-2">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="truncate font-mono text-xs">{file.name}</span>
+                        <div className="flex shrink-0 gap-1">
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setCursor(index);
+                              setStage('walk');
+                            }}
+                            className="border-border hover:bg-muted rounded border px-2 py-0.5 text-[11px]"
+                          >
+                            Revisit
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => update(index, { skip: !assignment.skip })}
+                            className="border-border hover:bg-muted rounded border px-2 py-0.5 text-[11px]"
+                          >
+                            {assignment.skip ? 'Include' : 'Skip'}
+                          </button>
+                        </div>
+                      </div>
+
+                      <div className="flex flex-wrap gap-2 text-[11px]">
+                        {file.lowRes && (
+                          <span className="flex items-center gap-1 rounded bg-amber-500/15 px-1.5 py-0.5 text-amber-300">
+                            <AlertTriangle className="h-3 w-3" />
+                            below {vocabulary.lowResLongEdge}px
+                          </span>
+                        )}
+                        {file.gps ? (
+                          <span className="text-muted-foreground flex items-center gap-1">
+                            <MapPin className="h-3 w-3" />
+                            {file.suggestion.park
+                              ? `${file.suggestion.park.name} · ${file.suggestion.park.distanceLabel}`
+                              : 'no park nearby'}
+                          </span>
+                        ) : (
+                          <span className="text-muted-foreground">no GPS — assign manually</span>
+                        )}
+                        {file.shotAt && (
+                          <span className="text-muted-foreground">{file.shotAt}</span>
+                        )}
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+                        <input
+                          className={INPUT}
+                          placeholder="collection"
+                          list="upload-collections"
+                          value={assignment.collection}
+                          onChange={(e) => update(index, { collection: e.target.value })}
+                        />
+                        <input
+                          className={INPUT}
+                          placeholder="file name"
+                          value={assignment.name}
+                          onChange={(e) => update(index, { name: e.target.value })}
+                        />
+                        <input
+                          className={INPUT}
+                          placeholder="park"
+                          value={assignment.park ?? ''}
+                          onChange={(e) => update(index, { park: e.target.value || null })}
+                        />
+                        <input
+                          className={INPUT}
+                          placeholder="ride"
+                          value={assignment.ride ?? ''}
+                          onChange={(e) => update(index, { ride: e.target.value || null })}
+                        />
+                      </div>
+
+                      {file.suggestion.rides.length > 0 && (
+                        <div className="flex flex-wrap items-center gap-1">
+                          <span className="text-muted-foreground text-[11px]">Nearest rides:</span>
+                          {file.suggestion.rides.map((ride) => (
+                            <button
+                              key={ride.slug}
+                              type="button"
+                              onClick={() =>
+                                update(index, {
+                                  ride: ride.slug,
+                                  area: ride.area,
+                                  park: assignment.park ?? file.suggestion.park?.slug ?? null,
+                                })
+                              }
+                              className={cn(
+                                'rounded-full border px-2 py-0.5 text-[11px]',
+                                assignment.ride === ride.slug
+                                  ? 'border-foreground bg-foreground text-background'
+                                  : 'border-border text-muted-foreground hover:border-foreground'
+                              )}
+                            >
+                              {ride.name}
+                              <span className="opacity-60"> · {ride.distanceLabel}</span>
+                            </button>
+                          ))}
+                        </div>
+                      )}
+
+                      <input
+                        className={INPUT}
+                        placeholder="Alt text (German)"
+                        value={assignment.alt}
+                        onChange={(e) => update(index, { alt: e.target.value })}
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+
+              <datalist id="upload-collections">
+                {vocabulary.collections.map((c) => (
+                  <option key={c} value={c} />
+                ))}
+              </datalist>
+            </div>
+          )}
+
+          {error && (
+            <p className="mt-3 rounded-md border border-amber-500/40 bg-amber-500/10 px-3 py-2 text-xs text-amber-200">
+              {error}
+            </p>
+          )}
+
+          {busy && analysis.length === 0 && (
+            <p className="text-muted-foreground mt-3 text-center text-xs">{busy}</p>
+          )}
         </div>
 
-        {analysis.length === 0 ? (
-          <div
-            onDragOver={(e) => {
-              e.preventDefault();
-              setDragging(true);
-            }}
-            // Moving over the icon or the copy fires dragleave on the zone too;
-            // without the relatedTarget check the highlight flickers off as soon
-            // as the pointer crosses a child.
-            onDragLeave={(e) => {
-              if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setDragging(false);
-            }}
-            onDrop={(e) => {
-              e.preventDefault();
-              setDragging(false);
-              void analyze(Array.from(e.dataTransfer.files));
-            }}
-            onClick={() => inputRef.current?.click()}
-            className={cn(
-              'flex cursor-pointer flex-col items-center gap-2 rounded-xl border-2 border-dashed p-12 text-center transition-colors',
-              dragging ? 'border-foreground bg-muted/50' : 'border-border hover:border-foreground'
-            )}
-          >
-            <Upload className="text-muted-foreground h-8 w-8" />
-            <p className="text-sm font-medium">Drop photos here, or click to choose</p>
-            <p className="text-muted-foreground max-w-md text-xs">
-              Each file is read for its GPS tag and capture date. The park is filled in
-              automatically where the coordinates are unambiguous; the ride is offered as a
-              shortlist because the nearest attraction is only right about half the time.
-            </p>
-            <input
-              ref={inputRef}
-              type="file"
-              multiple
-              accept="image/*"
-              className="hidden"
-              onChange={(e) => {
-                void analyze(Array.from(e.target.files ?? []));
-                e.target.value = '';
-              }}
-            />
-          </div>
-        ) : (
-          <div className="space-y-3">
-            {analysis.map((file, index) => {
-              const assignment = assignments[index];
-              if (!assignment) return null;
-              return (
-                <div
-                  key={`${file.name}-${index}`}
-                  className={cn(
-                    'border-border grid grid-cols-[80px_minmax(0,1fr)] gap-3 rounded-lg border p-3',
-                    assignment.skip && 'opacity-40'
-                  )}
-                >
-                  <div>
-                    {/* eslint-disable-next-line @next/next/no-img-element -- local blob, never optimized */}
-                    <img
-                      src={URL.createObjectURL(files[index])}
-                      alt=""
-                      className="aspect-square w-full rounded object-cover"
-                    />
-                    <p className="text-muted-foreground mt-1 text-[10px]">
-                      {file.width}×{file.height}
-                    </p>
-                  </div>
-
-                  <div className="min-w-0 space-y-2">
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="truncate font-mono text-xs">{file.name}</span>
-                      <button
-                        type="button"
-                        onClick={() => update(index, { skip: !assignment.skip })}
-                        className="border-border hover:bg-muted shrink-0 rounded border px-2 py-0.5 text-[11px]"
-                      >
-                        {assignment.skip ? 'Include' : 'Skip'}
-                      </button>
-                    </div>
-
-                    <div className="flex flex-wrap gap-2 text-[11px]">
-                      {file.lowRes && (
-                        <span className="flex items-center gap-1 rounded bg-amber-500/15 px-1.5 py-0.5 text-amber-300">
-                          <AlertTriangle className="h-3 w-3" />
-                          below {vocabulary.lowResLongEdge}px
-                        </span>
-                      )}
-                      {file.gps ? (
-                        <span className="text-muted-foreground flex items-center gap-1">
-                          <MapPin className="h-3 w-3" />
-                          {file.suggestion.park
-                            ? `${file.suggestion.park.name} · ${file.suggestion.park.distanceLabel}`
-                            : 'no park nearby'}
-                        </span>
-                      ) : (
-                        <span className="text-muted-foreground">no GPS — assign manually</span>
-                      )}
-                      {file.shotAt && <span className="text-muted-foreground">{file.shotAt}</span>}
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-                      <input
-                        className={INPUT}
-                        placeholder="collection"
-                        list="upload-collections"
-                        value={assignment.collection}
-                        onChange={(e) => update(index, { collection: e.target.value })}
-                      />
-                      <input
-                        className={INPUT}
-                        placeholder="file name"
-                        value={assignment.name}
-                        onChange={(e) => update(index, { name: e.target.value })}
-                      />
-                      <input
-                        className={INPUT}
-                        placeholder="park"
-                        value={assignment.park ?? ''}
-                        onChange={(e) => update(index, { park: e.target.value || null })}
-                      />
-                      <input
-                        className={INPUT}
-                        placeholder="ride"
-                        value={assignment.ride ?? ''}
-                        onChange={(e) => update(index, { ride: e.target.value || null })}
-                      />
-                    </div>
-
-                    {file.suggestion.rides.length > 0 && (
-                      <div className="flex flex-wrap items-center gap-1">
-                        <span className="text-muted-foreground text-[11px]">Nearest rides:</span>
-                        {file.suggestion.rides.map((ride) => (
-                          <button
-                            key={ride.slug}
-                            type="button"
-                            onClick={() =>
-                              update(index, {
-                                ride: ride.slug,
-                                area: ride.area,
-                                park: assignment.park ?? file.suggestion.park?.slug ?? null,
-                              })
-                            }
-                            className={cn(
-                              'rounded-full border px-2 py-0.5 text-[11px]',
-                              assignment.ride === ride.slug
-                                ? 'border-foreground bg-foreground text-background'
-                                : 'border-border text-muted-foreground hover:border-foreground'
-                            )}
-                          >
-                            {ride.name}
-                            <span className="opacity-60"> · {ride.distanceLabel}</span>
-                          </button>
-                        ))}
-                      </div>
-                    )}
-
-                    <input
-                      className={INPUT}
-                      placeholder="Alt text (German)"
-                      value={assignment.alt}
-                      onChange={(e) => update(index, { alt: e.target.value })}
-                    />
-                  </div>
-                </div>
-              );
-            })}
-
-            <datalist id="upload-collections">
-              {vocabulary.collections.map((c) => (
-                <option key={c} value={c} />
-              ))}
-            </datalist>
-          </div>
+        {analysis.length > 0 && stage === 'review' && (
+          <footer className="border-border/70 bg-muted/30 flex shrink-0 items-center justify-between gap-3 border-t px-4 py-3">
+            <div className="text-muted-foreground text-xs">
+              <p>
+                {pending} of {analysis.length} land in one draft pull request.
+              </p>
+              {assignments.some((a) => !a.focus && !a.skip) && (
+                <p className="text-amber-500">
+                  {assignments.filter((a) => !a.focus && !a.skip).length} without a focal point —
+                  they crop from the centre.
+                </p>
+              )}
+            </div>
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={() => {
+                  setCursor(0);
+                  setStage('walk');
+                }}
+                className="border-border hover:bg-muted rounded-lg border px-3 py-2 text-sm"
+              >
+                Go through them again
+              </button>
+              <button
+                type="button"
+                onClick={commit}
+                disabled={Boolean(busy) || pending === 0}
+                className="bg-foreground text-background rounded-lg px-4 py-2 text-sm font-medium disabled:opacity-50"
+              >
+                {busy ?? `Commit ${pending} image${pending === 1 ? '' : 's'}`}
+              </button>
+            </div>
+          </footer>
         )}
 
-        {error && (
-          <p className="mt-3 rounded-md border border-amber-500/40 bg-amber-500/10 px-3 py-2 text-xs text-amber-200">
-            {error}
-          </p>
-        )}
-
-        {analysis.length > 0 && (
-          <div className="mt-4 flex items-center justify-between gap-3">
-            <p className="text-muted-foreground text-xs">
-              {pending} of {analysis.length} will be committed as one draft pull request.
-            </p>
-            <button
-              type="button"
-              onClick={commit}
-              disabled={Boolean(busy) || pending === 0}
-              className="bg-foreground text-background rounded-md px-4 py-2 text-sm font-medium disabled:opacity-50"
-            >
-              {busy ?? `Commit ${pending} image${pending === 1 ? '' : 's'}`}
-            </button>
-          </div>
-        )}
-
-        {busy && analysis.length === 0 && (
-          <p className="text-muted-foreground mt-3 text-center text-xs">{busy}</p>
-        )}
+        <ParkRidePicker mode={picker} onPick={applyPick} onClose={() => setPicker(null)} />
       </div>
     </div>
   );

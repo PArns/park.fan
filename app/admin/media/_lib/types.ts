@@ -84,6 +84,16 @@ export interface Assignment {
   alt: string;
   caption: string;
   shotAt: string | null;
+  /**
+   * Focal point, set by clicking the photo during the walkthrough.
+   *
+   * Worth capturing here rather than leaving for later: it is the one field that
+   * needs the picture in front of you, and the walkthrough is the only moment
+   * every photo is guaranteed to be looked at.
+   */
+  focus: { x: number; y: number } | null;
   /** Excluded from the commit without being removed from the batch. */
   skip: boolean;
+  /** Stepped past in the walkthrough — what the progress bar counts. */
+  done: boolean;
 }
