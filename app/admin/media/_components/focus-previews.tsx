@@ -10,6 +10,7 @@ import { ParkCard } from '@/components/parks/park-card';
 import { cn } from '@/lib/utils';
 import messages from '@/messages/de.json';
 import type { ParkAttraction } from '@/lib/api/types';
+import type { BlogListItem } from '@/lib/blog/types';
 
 /**
  * The focal-point previews: the photo inside the **real** components the site
@@ -174,7 +175,7 @@ export function FocusPreviews({ src, objectPosition }: Props) {
           <div>
             <Hint>park page &amp; hero — the most aggressive crop, with page content over it</Hint>
             <div className="border-border relative aspect-[16/10] w-full overflow-hidden rounded-lg border">
-              <ParkBackground imageSrc={src} alt="" objectPosition={objectPosition} />
+              <ParkBackground imageSrc={src} alt="" objectPosition={objectPosition} contained />
               {/* Representative page content, so it is visible which part of the photo
                   ends up behind text and which part actually reaches the reader. */}
               <div className="relative z-10 p-4">
@@ -207,9 +208,18 @@ export function FocusPreviews({ src, objectPosition }: Props) {
 /**
  * A ride shaped like the API's, dialled to the chrome that changes the crop.
  *
- * `twoBadgeRows` adds the badges that wrap the row (crowd level, rope drop, height,
- * wetness); `tallFooter` adds the trend, statistics and best-time lines under the
- * wait panel.
+ * Typed as `ParkAttraction` with **no cast**, deliberately. The first version of
+ * this fixture was cast through `unknown` and invented two fields — `ropeDrop` and
+ * `bestVisitTimes` — with the wrong shapes. The compiler could not see it, and the
+ * card crashed at runtime on `attraction.bestVisitTimes.find(...)` because the real
+ * type is an array and the fixture handed it an object. A fixture that has to lie
+ * to the type checker is a fixture that will lie to you.
+ *
+ * So it only sets fields it can shape correctly: `twoBadgeRows` adds the badges
+ * that wrap the row (crowd level, height limit, wetness) and `tallFooter` adds the
+ * trend and the summary statistics. It deliberately omits `history` — inventing a
+ * wait curve drew an empty chart with nonsense axis labels, and the card skips the
+ * sparkline entirely when there is none, which is the honest preview.
  */
 function rideFixture({
   twoBadgeRows,
@@ -225,8 +235,10 @@ function rideFixture({
     name: closed ? 'Geschlossener Zustand' : 'Chiapas - DIE Wasserbahn',
     slug: 'preview-ride',
     url: `${PARK_PATH}/preview-ride`,
+    latitude: null,
+    longitude: null,
+    land: null,
     status: closed ? 'CLOSED' : 'OPERATING',
-    effectiveStatus: closed ? 'CLOSED' : 'OPERATING',
     queues: [
       {
         queueType: 'STANDBY',
@@ -236,28 +248,29 @@ function rideFixture({
       },
     ],
     ...(twoBadgeRows
-      ? {
-          crowdLevel: 'very_high',
-          minimumHeight: 130,
-          minimumHeightUnit: 'cm',
-          mayGetWet: true,
-          ropeDrop: { recommended: true },
-        }
+      ? { crowdLevel: 'very_high' as const, minimumHeight: 130, mayGetWet: true }
       : {}),
     ...(tallFooter && !closed
       ? {
-          trend: 'falling',
-          statistics: { avgWaitToday: 75, peakWaitToday: 120, timestamp: STAMP },
-          bestVisitTimes: { bestTime: '18:45' },
+          trend: 'falling' as const,
+          statistics: {
+            avgWaitToday: 75,
+            minWaitToday: 30,
+            maxWaitToday: 120,
+            peakWaitToday: 120,
+            peakWaitTimestamp: STAMP,
+          },
         }
       : {}),
-  } as unknown as ParkAttraction;
+  };
 }
 
-/** The minimum a blog card reads — frontmatter, slug and reading time. */
-function blogFixture(cover: string, title: string) {
+/** The minimum a blog card reads. Typed, for the same reason `rideFixture` is. */
+function blogFixture(cover: string, title: string): BlogListItem {
   return {
     slug: 'preview-post',
+    translationKey: 'preview-post',
+    loadedLocale: 'de',
     isFallback: false,
     readingTimeMinutes: 20,
     frontmatter: {
@@ -268,7 +281,7 @@ function blogFixture(cover: string, title: string) {
       category: 'guides',
       coverImage: { src: cover, alt: '' },
     },
-  } as unknown as Parameters<typeof BlogPostCardView>[0]['post'];
+  };
 }
 
 // ─── chrome ──────────────────────────────────────────────────────────────────
