@@ -259,6 +259,35 @@ landing on it forwarded that activation and tore the panel down mid-drop. And
 `dragleave` checks `relatedTarget`, or the highlight flickers off every time the
 pointer crosses the icon or the text inside the zone.
 
+### One session, one pull request
+
+A **session** is the open pull request whose branch starts with `media/session-`.
+Every save joins it — retagging a shoot is twelve commits in one reviewable PR, not
+twelve pull requests. The state lives in git, not in the browser, so a reload, a
+second tab and a different machine all land in the same place; `GET
+/api/admin/media/session` is what the banner at the top of the browser reads.
+
+It ends the way it began: merge or close the PR, and the next save opens a new one.
+**Start a new pull request** in that banner is the early exit, and sends
+`newSession: true` with the next commit.
+
+One subtlety in the commit endpoint: an operation with no sidecar payload (a
+`replace`) has its sidecar rebuilt from the **build-time manifest**, which describes
+the base branch — writing that back would undo a sidecar edit made earlier in the
+same session. So a rebuilt sidecar is only written when the path is not already on
+the branch. Operations that carry a payload send the complete sidecar, so writing
+those is always correct.
+
+### The token
+
+Saving commits to this repository, so it needs a GitHub token in
+`BLOG_EDITOR_GITHUB_TOKEN` (or `GITHUB_TOKEN`). Without it the admin still renders
+and edits; only saving fails, and says so. A **fine-grained PAT** scoped to this one
+repository with **Contents: read & write** (branches and files) and **Pull requests:
+read & write** (open and update the PR) is the whole requirement — `Metadata:
+read-only` is added automatically. A classic PAT works but needs the entire `repo`
+scope. Full setup notes in `.env.example`.
+
 **Uploading** is drag & drop, in two stages:
 
 1. `/api/admin/media/analyze` reads each file's EXIF and answers where it was taken.

@@ -54,11 +54,13 @@ function readAsBase64(file: File): Promise<string> {
 
 interface Props {
   vocabulary: Vocabulary;
-  onDone: (pullRequestUrl: string | null) => void;
+  /** Open a fresh pull request instead of joining the running session. */
+  newSession?: boolean;
+  onDone: (pullRequestUrl: string | null, joinedSession?: boolean) => void;
   onClose: () => void;
 }
 
-export function MediaUpload({ vocabulary, onDone, onClose }: Props) {
+export function MediaUpload({ vocabulary, newSession, onDone, onClose }: Props) {
   const { pass } = useAdmin();
   const [files, setFiles] = useState<File[]>([]);
   const [analysis, setAnalysis] = useState<AnalyzedFile[]>([]);
@@ -153,11 +155,15 @@ export function MediaUpload({ vocabulary, onDone, onClose }: Props) {
       const response = await fetch('/api/admin/media/commit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', [ADMIN_PASS_HEADER]: pass },
-        body: JSON.stringify({ title: `media: add ${operations.length} images`, operations }),
+        body: JSON.stringify({
+          title: `media: add ${operations.length} images`,
+          newSession,
+          operations,
+        }),
       });
       const data = await response.json();
       if (!response.ok && response.status !== 207) throw new Error(data.error ?? 'Commit failed');
-      onDone(data.pullRequest ?? null);
+      onDone(data.pullRequest ?? null, data.joinedSession);
     } catch (e) {
       setError((e as Error).message);
     } finally {

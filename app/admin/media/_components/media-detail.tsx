@@ -38,11 +38,13 @@ interface GeoVerdict {
 interface Props {
   id: string;
   vocabulary: Vocabulary;
+  /** Open a fresh pull request instead of joining the running session. */
+  newSession?: boolean;
   onClose: () => void;
-  onSaved: (pullRequestUrl: string | null) => void;
+  onSaved: (pullRequestUrl: string | null, joinedSession?: boolean) => void;
 }
 
-export function MediaDetail({ id, vocabulary, onClose, onSaved }: Props) {
+export function MediaDetail({ id, vocabulary, newSession, onClose, onSaved }: Props) {
   const { pass } = useAdmin();
   const [row, setRow] = useState<MediaRow | null>(null);
   const [geo, setGeo] = useState<GeoVerdict | null>(null);
@@ -187,6 +189,7 @@ export function MediaDetail({ id, vocabulary, onClose, onSaved }: Props) {
         headers: { 'Content-Type': 'application/json', [ADMIN_PASS_HEADER]: pass },
         body: JSON.stringify({
           title: `media: update ${row!.id}`,
+          newSession,
           operations: [
             {
               op: movedTo ? 'move' : 'update',
@@ -214,7 +217,7 @@ export function MediaDetail({ id, vocabulary, onClose, onSaved }: Props) {
       });
       const data = await response.json();
       if (!response.ok && response.status !== 207) throw new Error(data.error ?? 'Save failed');
-      onSaved(data.pullRequest ?? null);
+      onSaved(data.pullRequest ?? null, data.joinedSession);
     } catch (e) {
       setError((e as Error).message);
     } finally {
@@ -271,6 +274,7 @@ export function MediaDetail({ id, vocabulary, onClose, onSaved }: Props) {
         headers: { 'Content-Type': 'application/json', [ADMIN_PASS_HEADER]: pass },
         body: JSON.stringify({
           title: `media: replace ${row!.id}`,
+          newSession,
           operations: [
             {
               op: 'replace',
@@ -285,7 +289,7 @@ export function MediaDetail({ id, vocabulary, onClose, onSaved }: Props) {
       });
       const data = await response.json();
       if (!response.ok && response.status !== 207) throw new Error(data.error ?? 'Replace failed');
-      onSaved(data.pullRequest ?? null);
+      onSaved(data.pullRequest ?? null, data.joinedSession);
     } catch (e) {
       setError((e as Error).message);
     } finally {

@@ -17,6 +17,10 @@ import { normalizeSidecar, serializeSidecar } from '@/lib/media/sidecar.mjs';
  * catalog is reviewable and revertible, which for copyright and attribution data
  * is worth more than the convenience of writing in place.
  *
+ * Every save joins the **open session** — the pull request whose branch carries the
+ * `media/session-` prefix — so a working session is one reviewable PR rather than
+ * one per image. See `SESSION_PREFIX` below.
+ *
  * Four operations, all in one PR:
  *   - `create`   a new image + its sidecar
  *   - `update`   sidecar fields only (tags, park/ride, focal point, credit, text)
@@ -68,7 +72,25 @@ interface CommitPayload {
   operations: Operation[];
   /** Optional PR title override — the UI names a batch after what it was. */
   title?: string;
+  /**
+   * Force a fresh branch and pull request instead of joining the open session.
+   * The admin's "Start a new pull request" button.
+   */
+  newSession?: boolean;
 }
+
+/**
+ * Branch prefix that marks a session's pull request.
+ *
+ * A session is not a client-side token: it is **the open pull request carrying
+ * this prefix**. Saving looks for one and commits onto its branch, so retagging
+ * twelve images is twelve commits in one reviewable PR rather than twelve PRs —
+ * and it survives a page reload, another tab, or a different machine, which a
+ * `sessionStorage` id would not. It ends the way it began, in git: merge or close
+ * the PR and the next save opens a new one. "Start a new pull request" in the
+ * admin forces that early.
+ */
+const SESSION_PREFIX = 'media/session-';
 
 function bad(error: string, status = 400) {
   return NextResponse.json({ error }, { status });
@@ -176,7 +198,14 @@ export async function POST(req: Request) {
   // ─── open a branch and commit ─────────────────────────────────────────────
 
   const token = process.env.BLOG_EDITOR_GITHUB_TOKEN ?? process.env.GITHUB_TOKEN;
-  if (!token) return bad('No GitHub token configured', 500);
+  if (!token) {
+    return bad(
+      'No GitHub token configured. Set BLOG_EDITOR_GITHUB_TOKEN on the deployment — ' +
+        'a fine-grained PAT for this repository with "Contents: read & write" and ' +
+        '"Pull requests: read & write". See docs/features/media-database.md.',
+      500
+    );
+  }
 
   const repoEnv = process.env.GITHUB_REPOSITORY ?? 'PArns/park.fan';
   const [owner = 'PArns', repo = 'park.fan'] = repoEnv.split('/');
@@ -191,12 +220,40 @@ export async function POST(req: Request) {
     return bad(`Could not read ${baseBranch}: ${(e as Error).message}`, 502);
   }
 
+  // ─── join the open session, or start one ──────────────────────────────────
+  // Looked up on the server rather than tracked in the browser, so a reload, a
+  // second tab and a different machine all land in the same pull request.
+  let session: { number: number; url: string; body: string } | null = null;
+  if (!payload.newSession) {
+    try {
+      const { data: open } = await octokit.pulls.list({
+        owner,
+        repo,
+        state: 'open',
+        base: baseBranch,
+        per_page: 100,
+      });
+      const found = open.find((pr) => pr.head.ref.startsWith(SESSION_PREFIX));
+      if (found) {
+        session = { number: found.number, url: found.html_url, body: found.body ?? '' };
+      }
+    } catch (e) {
+      // Not fatal: worst case this save opens its own PR instead of joining one.
+      console.warn(`[media] could not list open pull requests: ${(e as Error).message}`);
+    }
+  }
+
   const stamp = new Date().toISOString().replace(/[-:T]/g, '').slice(0, 14);
-  const branch = `media/${stamp}`;
-  try {
-    await octokit.git.createRef({ owner, repo, ref: `refs/heads/${branch}`, sha: baseSha });
-  } catch (e) {
-    return bad(`Could not create ${branch}: ${(e as Error).message}`, 502);
+  const branch = session
+    ? (await octokit.pulls.get({ owner, repo, pull_number: session.number })).data.head.ref
+    : `${SESSION_PREFIX}${stamp}`;
+
+  if (!session) {
+    try {
+      await octokit.git.createRef({ owner, repo, ref: `refs/heads/${branch}`, sha: baseSha });
+    } catch (e) {
+      return bad(`Could not create ${branch}: ${(e as Error).message}`, 502);
+    }
   }
 
   /** Current blob SHA on the branch, or undefined when the path is new. */
@@ -249,7 +306,19 @@ export async function POST(req: Request) {
         await put(to.image, blob.content.replace(/\n/g, ''), `media: move ${from.image}`);
       }
 
-      await put(to.sidecar, Buffer.from(sidecarContent).toString('base64'), `media: ${to.sidecar}`);
+      // A `replace` carries no sidecar payload, so its content is rebuilt from the
+      // BUILD-TIME manifest — which describes the base branch. Rewriting it would
+      // undo any sidecar edit made earlier in the same session. Ops that do carry a
+      // payload send the complete sidecar, so writing those is always correct.
+      const rebuiltFromManifest = !op.sidecar;
+      const alreadyOnBranch = rebuiltFromManifest ? await shaOf(to.sidecar) : undefined;
+      if (!rebuiltFromManifest || !alreadyOnBranch) {
+        await put(
+          to.sidecar,
+          Buffer.from(sidecarContent).toString('base64'),
+          `media: ${to.sidecar}`
+        );
+      }
 
       if (from && from.image !== to.image) {
         await remove(from.image, `media: move away ${from.image}`);
@@ -271,10 +340,45 @@ export async function POST(req: Request) {
   }
 
   const issues = planned.flatMap((p) => p.issues);
-  const title =
-    payload.title ?? `media: ${summary.length} change${summary.length === 1 ? '' : 's'}`;
+
+  const lines = [
+    ...summary.map((s) => `- ${s}`),
+    ...(issues.length
+      ? [
+          '',
+          '**Sidecar warnings** (the values were dropped, not written):',
+          ...issues.map((i) => `- ${i}`),
+        ]
+      : []),
+  ];
+  const FOOTER = ['', '---', '_Generated by [Claude Code](https://claude.ai/code)_'].join('\n');
 
   try {
+    // Joining a session: append this batch to the running PR's body and count the
+    // whole session in its title, so the PR reads as one log rather than being
+    // overwritten by whichever save happened last.
+    if (session) {
+      const kept = session.body.split('\n---\n')[0].trimEnd();
+      const body = `${kept}\n${lines.join('\n')}${FOOTER}`;
+      const changes = body.split('\n').filter((l) => l.startsWith('- ')).length;
+      await octokit.pulls.update({
+        owner,
+        repo,
+        pull_number: session.number,
+        title: `media: ${changes} change${changes === 1 ? '' : 's'} (session)`,
+        body,
+      });
+      return NextResponse.json({
+        branch,
+        pullRequest: session.url,
+        joinedSession: true,
+        summary,
+        issues,
+      });
+    }
+
+    const title =
+      payload.title ?? `media: ${summary.length} change${summary.length === 1 ? '' : 's'}`;
     const { data: pr } = await octokit.pulls.create({
       owner,
       repo,
@@ -285,20 +389,19 @@ export async function POST(req: Request) {
       body: [
         'Media database changes from the admin browser.',
         '',
-        ...summary.map((s) => `- ${s}`),
-        ...(issues.length
-          ? [
-              '',
-              '**Sidecar warnings** (the values were dropped, not written):',
-              ...issues.map((i) => `- ${i}`),
-            ]
-          : []),
+        'Further saves join this pull request until it is merged or closed.',
         '',
-        '---',
-        '_Generated by [Claude Code](https://claude.ai/code)_',
+        ...lines,
+        FOOTER,
       ].join('\n'),
     });
-    return NextResponse.json({ branch, pullRequest: pr.html_url, summary, issues });
+    return NextResponse.json({
+      branch,
+      pullRequest: pr.html_url,
+      joinedSession: false,
+      summary,
+      issues,
+    });
   } catch (e) {
     // The commits landed; only the PR did not. Report the branch so the work is
     // not lost and a PR can be opened by hand.

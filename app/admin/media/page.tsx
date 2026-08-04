@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { AlertTriangle, Crosshair, ImageIcon, Plus, Search } from 'lucide-react';
+import { AlertTriangle, Crosshair, GitPullRequest, ImageIcon, Plus, Search } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import { ADMIN_PASS_HEADER, useAdmin } from '../_lib/admin-context';
@@ -31,6 +31,16 @@ interface Payload {
   vocabulary: Vocabulary;
 }
 
+/** The open pull request every save joins — see /api/admin/media/session. */
+interface SessionInfo {
+  number: number;
+  url: string;
+  branch: string;
+  title: string;
+  draft: boolean;
+  changes: number;
+}
+
 type QuickFilter = 'unlicensed' | 'unassigned' | 'lowres' | 'nofocus' | 'noalt';
 
 const QUICK_FILTERS: { id: QuickFilter; label: string }[] = [
@@ -55,6 +65,15 @@ export default function MediaAdminPage() {
   const [detailId, setDetailId] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
+  const [tokenMissing, setTokenMissing] = useState(false);
+
+  // The running session's pull request, resolved on the server from the open PR
+  // carrying the `media/session-` branch prefix — never from browser state, so a
+  // reload or a second tab sees the same one.
+  const [session, setSession] = useState<SessionInfo | null>(null);
+  /** Next save starts a fresh pull request instead of joining the open one. */
+  const [newSession, setNewSession] = useState(false);
+  const [sessionTick, setSessionTick] = useState(0);
 
   const query = useMemo(() => {
     const params = new URLSearchParams();
@@ -87,12 +106,34 @@ export default function MediaAdminPage() {
     return () => clearTimeout(timer);
   }, [load]);
 
-  const onSaved = (pullRequestUrl: string | null) => {
+  // Re-read after every save; `sessionTick` is what a save bumps to ask for it.
+  useEffect(() => {
+    let cancelled = false;
+    fetch('/api/admin/media/session', { headers: { [ADMIN_PASS_HEADER]: pass } })
+      .then((r) => r.json())
+      .then((data: { session?: SessionInfo | null; tokenMissing?: boolean }) => {
+        if (cancelled) return;
+        setSession(data.session ?? null);
+        setTokenMissing(Boolean(data.tokenMissing));
+      })
+      // A banner that cannot be drawn is not worth an error — saving reports the
+      // real problem, with the reason.
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, [pass, sessionTick]);
+
+  const onSaved = (pullRequestUrl: string | null, joined?: boolean) => {
     setDetailId(null);
     setUploading(false);
+    setNewSession(false);
+    setSessionTick((t) => t + 1);
     setNotice(
       pullRequestUrl
-        ? `Pull request opened: ${pullRequestUrl}`
+        ? joined
+          ? `Added to the open pull request: ${pullRequestUrl}`
+          : `Pull request opened: ${pullRequestUrl}`
         : 'Committed to a branch — open the pull request manually.'
     );
   };
@@ -112,6 +153,58 @@ export default function MediaAdminPage() {
           </button>
         </div>
       )}
+
+      {/* Session bar — which pull request the next save lands in.
+          Everything edited here goes into ONE pull request until it is merged or
+          closed, so this says which one, how much is already in it, and offers the
+          way out. Without it, "save" is a coin toss between joining and opening. */}
+      {tokenMissing ? (
+        <div className="flex items-start gap-2 rounded-lg border border-amber-500/50 bg-amber-500/10 px-3 py-2 text-sm text-amber-500">
+          <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
+          <span>
+            No GitHub token configured — editing works, saving does not. Set{' '}
+            <code className="font-mono text-xs">BLOG_EDITOR_GITHUB_TOKEN</code> on the deployment: a
+            fine-grained PAT for this repository with <strong>Contents: read &amp; write</strong>{' '}
+            and <strong>Pull requests: read &amp; write</strong>.
+          </span>
+        </div>
+      ) : session && !newSession ? (
+        <div className="border-border bg-muted/40 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-lg border px-3 py-2 text-sm">
+          <GitPullRequest className="h-4 w-4 shrink-0 text-emerald-500" />
+          <span>
+            Session running —{' '}
+            <a href={session.url} target="_blank" rel="noreferrer" className="underline">
+              #{session.number}
+            </a>{' '}
+            <span className="text-muted-foreground">
+              ({session.changes} change{session.changes === 1 ? '' : 's'} so far). The next save
+              joins it.
+            </span>
+          </span>
+          <button
+            type="button"
+            onClick={() => setNewSession(true)}
+            className="border-border hover:bg-muted ml-auto rounded-md border px-2 py-1 text-xs"
+          >
+            Start a new pull request
+          </button>
+        </div>
+      ) : newSession ? (
+        <div className="border-border bg-muted/40 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-lg border px-3 py-2 text-sm">
+          <GitPullRequest className="h-4 w-4 shrink-0" />
+          <span className="text-muted-foreground">
+            The next save opens a NEW pull request instead of joining
+            {session ? ` #${session.number}` : ' the open one'}.
+          </span>
+          <button
+            type="button"
+            onClick={() => setNewSession(false)}
+            className="border-border hover:bg-muted ml-auto rounded-md border px-2 py-1 text-xs"
+          >
+            Cancel
+          </button>
+        </div>
+      ) : null}
 
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4 lg:grid-cols-6">
         <StatCard label="Images" value={String(stats.total)} />
@@ -255,11 +348,17 @@ export default function MediaAdminPage() {
           id={detailId}
           vocabulary={vocabulary}
           onClose={() => setDetailId(null)}
+          newSession={newSession}
           onSaved={onSaved}
         />
       )}
       {uploading && (
-        <MediaUpload vocabulary={vocabulary} onClose={() => setUploading(false)} onDone={onSaved} />
+        <MediaUpload
+          vocabulary={vocabulary}
+          newSession={newSession}
+          onClose={() => setUploading(false)}
+          onDone={onSaved}
+        />
       )}
     </div>
   );
