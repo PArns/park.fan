@@ -120,7 +120,6 @@ export function BlogPostCardView({
               alt={frontmatter.coverImage?.alt ?? frontmatter.title}
               hideOnMobile
               objectPosition={objectPositionForSrc(cover, '50% 50%')}
-              priority={priority}
               sizes={
                 isFeature
                   ? '(max-width: 1024px) 100vw, 1024px'
@@ -240,6 +239,7 @@ export function BlogPostCardView({
             <CardPhotoFrame
               src={cover}
               hideOnMobile
+              priority={priority}
               objectPosition={objectPositionForSrc(cover, '50% 50%')}
               sizes={
                 isFeature

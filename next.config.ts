@@ -481,8 +481,13 @@ const nextConfig: NextConfig = {
       // when it matters, change the filename.
       // Kept BEFORE the .svg rule below so SVGs keep their stronger 1-year immutable value
       // (Next applies header rules last-match-wins per key).
+      // `media` is where every photo now lives; `images` and `blog` are the pre-media-database
+      // trees and are empty today. Dropping them would be tidier, but a rule that silently
+      // matches nothing is exactly how this regressed once — the migration moved all 444 files
+      // to /media and left the rule naming the old two, so every photo on the site went back to
+      // `max-age=0` and re-validating on every page view. They stay listed as a tripwire.
       {
-        source: '/:dir(images|blog|textures)/:path*',
+        source: '/:dir(media|images|blog|textures)/:path*',
         headers: [{ key: 'Cache-Control', value: 'public, max-age=2678400' }],
       },
       // Brand/icon PNGs at the root of /public (logo*, parkfan*, icon-*, apple-touch-icon).

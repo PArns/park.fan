@@ -167,6 +167,12 @@ export function CardPhoto({
  *
  * Decorative: the bleed layer already carries the alt text for the same picture, and
  * announcing it twice would be a duplicate to a screen reader.
+ *
+ * `priority` belongs HERE rather than on the bleed layer when a card is the page's
+ * LCP: this is the layer somebody sees. Both render the same URL with the same
+ * `sizes`, so it is one request either way — but the preload should be attached to
+ * the element whose paint the user is waiting for, and this one fades in on its own
+ * `onLoad`. Prioritizing the blurred layer instead left the visible photo lazy.
  */
 export function CardPhotoFrame({
   src,
@@ -174,7 +180,8 @@ export function CardPhotoFrame({
   hideOnMobile,
   sizes = SIZES,
   objectPosition = 'top',
-}: Omit<CardPhotoProps, 'alt' | 'priority'>) {
+  priority = false,
+}: Omit<CardPhotoProps, 'alt'>) {
   const [loaded, setLoaded] = useState(false);
   const position = toObjectPosition(objectPosition);
 
@@ -209,6 +216,7 @@ export function CardPhotoFrame({
           className="object-cover"
           style={{ objectPosition: position }}
           sizes={sizes}
+          priority={priority}
           onLoad={() => setLoaded(true)}
         />
       </div>
