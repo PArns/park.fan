@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 
+import { BlogPostCardView } from '@/components/blog/blog-post-card-view';
 import { AttractionCard } from '@/components/parks/attraction-card';
 import { ParkBackground } from '@/components/parks/park-background';
 import { ParkCard } from '@/components/parks/park-card';
@@ -35,21 +36,22 @@ const STAMP = '2026-01-01T12:00:00.000Z';
 const LOREM =
   'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.';
 
-type Tab = 'ride' | 'park' | 'background';
+type Tab = 'ride' | 'park' | 'blog' | 'background';
 
 const TABS: { id: Tab; label: string }[] = [
   { id: 'ride', label: 'Ride card' },
   { id: 'park', label: 'Park card' },
+  { id: 'blog', label: 'Blog card' },
   { id: 'background', label: 'Background' },
 ];
 
 /**
- * No blog-card tab, and not for lack of trying: `BlogPostCard` resolves its author
- * and category through `lib/blog/authors.ts` / `categories.ts`, which read the
- * filesystem and so cannot be pulled into the admin's client tree. Previewing it
- * would need a presentational split of that card taking already-resolved strings.
- * Blog covers crop from the CENTRE by default (park and ride cards crop from the
- * top), so the Park card tab with a tall photo is the closest honest stand-in.
+ * The blog tab renders `BlogPostCardView` rather than `BlogPostCard`: the wrapper
+ * resolves its author and category through modules that read the filesystem, which
+ * cannot be part of a client bundle. The view is the same markup with those two
+ * strings passed in — worth the split, because blog covers are the one surface that
+ * crops from the CENTRE while park and ride cards crop from the top, so their
+ * framing genuinely cannot be judged from the others.
  */
 
 interface Props {
@@ -150,6 +152,24 @@ export function FocusPreviews({ src, objectPosition }: Props) {
           </PreviewGrid>
         )}
 
+        {tab === 'blog' && (
+          <PreviewGrid hint="blog listing — crops from the CENTRE, unlike the park and ride cards">
+            <BlogPostCardView
+              post={blogFixture(src, 'Ein kurzer Titel')}
+              author="Patrick Arns"
+              categoryLabel="Guides"
+            />
+            <BlogPostCardView
+              post={blogFixture(
+                src,
+                'Ein deutlich längerer Titel, der über zwei Zeilen läuft und den Ausschnitt verschiebt'
+              )}
+              author="Patrick Arns"
+              categoryLabel="Hinter den Kulissen"
+            />
+          </PreviewGrid>
+        )}
+
         {tab === 'background' && (
           <div>
             <Hint>park page &amp; hero — the most aggressive crop, with page content over it</Hint>
@@ -232,6 +252,23 @@ function rideFixture({
         }
       : {}),
   } as unknown as ParkAttraction;
+}
+
+/** The minimum a blog card reads — frontmatter, slug and reading time. */
+function blogFixture(cover: string, title: string) {
+  return {
+    slug: 'preview-post',
+    isFallback: false,
+    readingTimeMinutes: 20,
+    frontmatter: {
+      title,
+      excerpt: LOREM,
+      date: '2026-07-24',
+      author: 'patrick',
+      category: 'guides',
+      coverImage: { src: cover, alt: '' },
+    },
+  } as unknown as Parameters<typeof BlogPostCardView>[0]['post'];
 }
 
 // ─── chrome ──────────────────────────────────────────────────────────────────

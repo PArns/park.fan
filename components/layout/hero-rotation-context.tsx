@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
-import { heroImageSrcs } from '@/lib/media/hero';
+import { parkHeroImageSrcs } from '@/lib/media/hero';
 import type { NearbyAttractionsData } from '@/types/nearby';
 
 /** How long each park image stays before crossfading to the next (only when >1 image). */
@@ -34,7 +34,7 @@ export function HeroRotationProvider({ children }: { children: ReactNode }) {
     nearbyData?.type === 'in_park'
       ? (nearbyData.data as NearbyAttractionsData).park?.slug
       : undefined;
-  const parkImages = useMemo(() => heroImageSrcs(parkSlug), [parkSlug]);
+  const parkImages = useMemo(() => parkHeroImageSrcs(parkSlug), [parkSlug]);
 
   // Monotonic counter; active = step % length, so it stays in range across park changes without
   // resetting state inside the effect. The tick is skipped while the tab is hidden — the

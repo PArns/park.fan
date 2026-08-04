@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { AlertTriangle, MapPin, Save, X } from 'lucide-react';
+import { AlertTriangle, MapPin, Save, Upload, X } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import { ADMIN_PASS_HEADER, useAdmin } from '../../_lib/admin-context';
@@ -48,6 +48,7 @@ export function MediaDetail({ id, vocabulary, onClose, onSaved }: Props) {
   const [draft, setDraft] = useState<Partial<MediaRow> | null>(null);
   const [locale, setLocale] = useState<(typeof LOCALES)[number]>('de');
   const [picker, setPicker] = useState<PickerMode | null>(null);
+  const [replacing, setReplacing] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -180,6 +181,55 @@ export function MediaDetail({ id, vocabulary, onClose, onSaved }: Props) {
     }
   }
 
+  /**
+   * Swap the bytes of an existing image, keeping its sidecar.
+   *
+   * This is the upgrade path for the sources below the resolution target: the id,
+   * the park/ride assignment, the tags, the credit and the focal point all stay
+   * put, only the pixels change. The content hash moves with them, so every cached
+   * rendition of the old file is superseded rather than lingering for a year.
+   *
+   * The extension may change (a JPEG replacing a PNG); the commit endpoint files it
+   * under the new one and deletes the old path.
+   */
+  async function replaceBytes(file: File) {
+    setReplacing(true);
+    setError(null);
+    try {
+      const base64 = await new Promise<string>((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(String(reader.result).split(',')[1] ?? '');
+        reader.onerror = () => reject(new Error(`Could not read ${file.name}`));
+        reader.readAsDataURL(file);
+      });
+      const ext = (file.name.split('.').pop() ?? 'jpg').toLowerCase();
+      const response = await fetch('/api/admin/media/commit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', [ADMIN_PASS_HEADER]: pass },
+        body: JSON.stringify({
+          title: `media: replace ${row!.id}`,
+          operations: [
+            {
+              op: 'replace',
+              id: row!.id,
+              collection: row!.collection,
+              name: currentName,
+              ext: ext === 'jpeg' ? 'jpg' : ext,
+              contentBase64: base64,
+            },
+          ],
+        }),
+      });
+      const data = await response.json();
+      if (!response.ok && response.status !== 207) throw new Error(data.error ?? 'Replace failed');
+      onSaved(data.pullRequest ?? null);
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setReplacing(false);
+    }
+  }
+
   return (
     <Panel onClose={onClose} title={row.id}>
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
@@ -195,11 +245,27 @@ export function MediaDetail({ id, vocabulary, onClose, onSaved }: Props) {
             <Notice tone="warn">
               <AlertTriangle className="h-4 w-4 shrink-0" />
               <span>
-                {row.width}×{row.height} — below the {vocabulary.lowResLongEdge}px target. Replace
-                this source with a higher-resolution original.
+                {row.width}×{row.height} — below the {vocabulary.lowResLongEdge}px target. Swap in a
+                higher-resolution original below; everything else about this image stays.
               </span>
             </Notice>
           )}
+
+          <label className="border-border hover:bg-muted flex cursor-pointer items-center justify-center gap-2 rounded-md border border-dashed py-2 text-xs">
+            <Upload className="h-3.5 w-3.5" />
+            {replacing ? 'Opening pull request…' : 'Replace the file, keep the metadata'}
+            <input
+              type="file"
+              accept="image/*"
+              className="hidden"
+              disabled={replacing}
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                e.target.value = '';
+                if (file) void replaceBytes(file);
+              }}
+            />
+          </label>
 
           {geo && geo.status !== 'no-gps' && (
             <Notice tone={geo.status === 'mismatch' ? 'warn' : 'info'}>

@@ -37,15 +37,24 @@ export function getHeroMetaBySrc(src: string): HeroImageMeta | null {
   return HERO_META[src] ?? null;
 }
 
-/**
- * Public paths of every image eligible for the hero rotation.
- *
- * Passing a park slug narrows it to that park — used when the visitor is detected
- * inside a park, so the hero shows where they actually are.
- */
-export function heroImageSrcs(parkSlug?: string | null): string[] {
-  if (parkSlug) return HERO_BY_PARK[parkSlug] ?? [];
+/** Public paths of every image eligible for the hero rotation. */
+export function heroImageSrcs(): string[] {
   return [...HERO_SRCS];
+}
+
+/**
+ * Hero images for ONE park — empty when no park is given.
+ *
+ * Deliberately a separate function from {@link heroImageSrcs} rather than an
+ * optional argument on it. The in-park rotation asks this with the slug of the
+ * park the visitor was detected in, which is `undefined` for everyone who is not
+ * at a park; an optional-argument version answered that with the FULL pool, so the
+ * hero crossfaded through every park's photos for every visitor instead of staying
+ * on the one server-rendered image. Returning `[]` is what keeps the rotation off.
+ */
+export function parkHeroImageSrcs(parkSlug: string | null | undefined): string[] {
+  if (!parkSlug) return [];
+  return HERO_BY_PARK[parkSlug] ?? [];
 }
 
 /**
