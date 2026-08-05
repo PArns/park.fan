@@ -16,20 +16,20 @@
     "signage"
   ],
   "alt": {
-    "de": "Das schwarze Gebäude von Eurosat Coastiality mit dem Schriftzug „The Phantom of the Opera“ und der weißen Maske, links die Eurosat-Kugel.",
-    "en": "The black Eurosat Coastiality building with \"The Phantom of the Opera\" lettering and the white mask, Eurosat's sphere at the left.",
-    "es": "El edificio negro de Eurosat Coastiality con el rótulo \"The Phantom of the Opera\" y la máscara blanca, la esfera de Eurosat a la izquierda.",
-    "fr": "Le bâtiment noir d'Eurosat Coastiality portant « The Phantom of the Opera » et le masque blanc, la sphère d'Eurosat à gauche.",
-    "it": "L'edificio nero di Eurosat Coastiality con la scritta \"The Phantom of the Opera\" e la maschera bianca, la sfera di Eurosat a sinistra.",
-    "nl": "Het zwarte gebouw van Eurosat Coastiality met het opschrift \"The Phantom of the Opera\" en het witte masker, links de Eurosat-bol."
+    "de": "Das schwarze Gebäude von Eurosat Coastiality mit weißer Maske und Schriftzug.",
+    "en": "The black Eurosat Coastiality building with its white mask and lettering.",
+    "es": "El edificio negro de Eurosat Coastiality, con máscara blanca y rótulo.",
+    "fr": "Le bâtiment noir d'Eurosat Coastiality, masque blanc et enseigne.",
+    "it": "L'edificio nero di Eurosat Coastiality, con maschera bianca e insegna.",
+    "nl": "Het zwarte gebouw van Eurosat Coastiality met wit masker en opschrift."
   },
   "caption": {
-    "de": "Eurosat Coastiality: die VR-Variante neben der Eurosat-Kugel.",
-    "en": "Eurosat Coastiality: the VR ride next to the Eurosat sphere.",
-    "es": "Eurosat Coastiality: la versión de realidad virtual junto a la esfera de Eurosat.",
-    "fr": "Eurosat Coastiality : la version VR à côté de la sphère d'Eurosat.",
-    "it": "Eurosat Coastiality: la versione in realtà virtuale accanto alla sfera di Eurosat.",
-    "nl": "Eurosat Coastiality: de VR-variant naast de Eurosat-bol."
+    "de": "Die VR-Variante gleich neben der Eurosat-Kugel.",
+    "en": "The VR version, right next to the Eurosat sphere.",
+    "es": "La versión en realidad virtual, junto a la esfera de Eurosat.",
+    "fr": "La version VR, juste à côté de la sphère d'Eurosat.",
+    "it": "La versione in VR, proprio accanto alla sfera di Eurosat.",
+    "nl": "De VR-variant, pal naast de Eurosat-bol."
   },
   "credit": {
     "author": "Patrick Arns",

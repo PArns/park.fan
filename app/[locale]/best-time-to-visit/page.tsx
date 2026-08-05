@@ -4,6 +4,7 @@ import { routing, type Locale } from '@/i18n/routing';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import type { Metadata } from 'next';
 import { getOgImageUrl } from '@/lib/utils/og-image';
+import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { ArticleStructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { Hero } from '@/components/marketing/editorial-ui';
 import type { ComponentType } from 'react';
@@ -17,8 +18,16 @@ const CONTENT_LOADERS: Record<Locale, () => Promise<ComponentType>> = {
   nl: () => import('./content/nl').then((m) => m.ContentNL),
 };
 
-/** Scenic, calm establishing shot — sets the "plan the perfect day" tone. */
-const HERO_IMAGE = '/media/efteling/background.jpg';
+/**
+ * Scenic, calm establishing shot — sets the "plan the perfect day" tone.
+ *
+ * Asked of the database rather than hard-coded. The path it used to name was a
+ * byte-for-byte copy of `efteling/symbolica.jpg` kept only so the park had a file
+ * called `background`; deduplicating those left this the one reference that broke.
+ * Going through the role means the park can change which photo that is without
+ * anything here knowing.
+ */
+const HERO_IMAGE = getParkBackgroundImage('efteling') ?? '/media/efteling/symbolica.jpg';
 
 interface PageHeader {
   title: string;

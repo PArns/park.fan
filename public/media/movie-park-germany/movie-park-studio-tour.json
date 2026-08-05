@@ -12,20 +12,20 @@
     "photo"
   ],
   "alt": {
-    "de": "Ein Architekturmodell eines Parkgeländes mit Parkplatz, Hallen und Kunstfelsen steht auf einem Werkstatttisch, daneben aufgerollte Pläne und ein Kaffeebecher.",
-    "en": "An architectural model of a park site with car park, halls and artificial rock on a workshop table, rolled-up plans and a coffee cup beside it.",
-    "es": "Una maqueta de un recinto de parque con aparcamiento, naves y roca artificial sobre una mesa de taller, con planos enrollados y un vaso de café.",
-    "fr": "Une maquette d'un site de parc avec parking, halles et rocher artificiel sur un établi, à côté des plans roulés et un gobelet de café.",
-    "it": "Un plastico di un'area del parco con parcheggio, capannoni e roccia artificiale su un banco da lavoro, accanto piani arrotolati e un bicchiere di caffè.",
-    "nl": "Een maquette van een parkterrein met parkeerplaats, hallen en kunstrots op een werkbank, met opgerolde plannen en een koffiebeker ernaast."
+    "de": "Ein Modell eines Parkgeländes auf einem Werkstatttisch, daneben aufgerollte Pläne.",
+    "en": "A model of a park site on a workshop table, rolled-up plans beside it.",
+    "es": "Una maqueta de un recinto de parque sobre una mesa de taller, con planos enrollados al lado.",
+    "fr": "Une maquette d'un site de parc sur un établi, des plans roulés à côté.",
+    "it": "Un plastico di un'area del parco su un banco da lavoro, accanto piani arrotolati.",
+    "nl": "Een maquette van een parkterrein op een werkbank, met opgerolde plannen ernaast."
   },
   "caption": {
-    "de": "Modell und Pläne in der Werkstatt.",
-    "en": "A model and plans in the workshop.",
-    "es": "Maqueta y planos en el taller.",
-    "fr": "Maquette et plans dans l'atelier.",
-    "it": "Plastico e piani in officina.",
-    "nl": "Maquette en plannen in de werkplaats."
+    "de": "Vor dem Bau steht das Modell.",
+    "en": "Before anything gets built, there is the model.",
+    "es": "Antes de construir, está la maqueta.",
+    "fr": "Avant de construire, il y a la maquette.",
+    "it": "Prima di costruire c'è il plastico.",
+    "nl": "Voor er gebouwd wordt, is er de maquette."
   },
   "credit": {
     "author": "Patrick Arns",

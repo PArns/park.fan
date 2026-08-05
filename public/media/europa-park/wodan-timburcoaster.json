@@ -17,20 +17,20 @@
     "sunny"
   ],
   "alt": {
-    "de": "Blick von unten in das Holzgerüst von Wodan, wo sich zwei Streckenteile vor blauem Himmel kreuzen.",
-    "en": "Looking up into Wodan's timber structure where two sections of track cross against a blue sky.",
-    "es": "Vista desde abajo de la estructura de madera de Wodan, donde dos tramos de vía se cruzan bajo un cielo azul.",
-    "fr": "Vue depuis le sol dans la charpente de Wodan, là où deux portions de voie se croisent sous un ciel bleu.",
-    "it": "Vista dal basso della struttura in legno di Wodan, dove due tratti di binario si incrociano sotto un cielo azzurro.",
-    "nl": "Van onderaf in de houtconstructie van Wodan, waar twee baandelen elkaar kruisen tegen een blauwe lucht."
+    "de": "Blick von unten in das Holzgerüst von Wodan, wo sich zwei Streckenteile kreuzen.",
+    "en": "Looking up into Wodan's timber structure where two stretches of track cross.",
+    "es": "Vista desde abajo de la estructura de Wodan, donde se cruzan dos tramos de vía.",
+    "fr": "Vue d'en bas dans la charpente de Wodan, là où deux voies se croisent.",
+    "it": "Vista dal basso nella struttura di Wodan, dove due tratti di binario si incrociano.",
+    "nl": "Van onderaf in de houtconstructie van Wodan, waar twee baandelen kruisen."
   },
   "caption": {
-    "de": "Das Holzgerüst von Wodan – Timburcoaster.",
-    "en": "The timber structure of Wodan – Timburcoaster.",
-    "es": "La estructura de madera de Wodan – Timburcoaster.",
-    "fr": "La charpente de Wodan – Timburcoaster.",
-    "it": "La struttura in legno di Wodan – Timburcoaster.",
-    "nl": "De houtconstructie van Wodan – Timburcoaster."
+    "de": "Das Holzgerüst von Wodan.",
+    "en": "Wodan's timber structure.",
+    "es": "La estructura de madera de Wodan.",
+    "fr": "La charpente de Wodan.",
+    "it": "La struttura in legno di Wodan.",
+    "nl": "De houtconstructie van Wodan."
   },
   "credit": {
     "author": "Patrick Arns",

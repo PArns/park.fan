@@ -16,20 +16,20 @@
     "theming"
   ],
   "alt": {
-    "de": "Ein beleuchtetes Bahnhofsschild mit Uhr, der Aufschrift „Next Departure 06:66“ und „Platform 13“ in der Warteschlange.",
-    "en": "An illuminated station sign with a clock reading \"Next Departure 06:66\" and \"Platform 13\" in the queue.",
-    "es": "Un cartel de estación iluminado con reloj, \"Next Departure 06:66\" y \"Platform 13\" en la cola.",
-    "fr": "Un panneau de gare éclairé avec horloge, « Next Departure 06:66 » et « Platform 13 » dans la file d'attente.",
-    "it": "Un cartello di stazione illuminato con orologio, \"Next Departure 06:66\" e \"Platform 13\" nella fila.",
-    "nl": "Een verlicht stationsbord met klok, \"Next Departure 06:66\" en \"Platform 13\" in de wachtrij."
+    "de": "Ein Bahnhofsschild in der Warteschlange: „Next Departure 06:66“, Platform 13.",
+    "en": "A station sign in the queue: \"Next Departure 06:66\", Platform 13.",
+    "es": "Un cartel de estación en la cola: \"Next Departure 06:66\", Platform 13.",
+    "fr": "Un panneau de gare dans la file : « Next Departure 06:66 », Platform 13.",
+    "it": "Un cartello di stazione nella fila: \"Next Departure 06:66\", Platform 13.",
+    "nl": "Een stationsbord in de wachtrij: \"Next Departure 06:66\", Platform 13."
   },
   "caption": {
-    "de": "Die Warteschlange von Xpress: Platform 13.",
-    "en": "The queue for Xpress: Platform 13.",
-    "es": "La cola de Xpress: Platform 13.",
-    "fr": "La file d'attente d'Xpress : Platform 13.",
-    "it": "La fila di Xpress: Platform 13.",
-    "nl": "De wachtrij van Xpress: Platform 13."
+    "de": "Die Uhr steht auf 06:66. Der Zug kommt also nie.",
+    "en": "The clock says 06:66, so the train is never coming.",
+    "es": "El reloj marca las 06:66, así que ese tren no llega nunca.",
+    "fr": "L'horloge indique 06:66 : ce train n'arrivera jamais.",
+    "it": "L'orologio segna le 06:66, quindi quel treno non arriva mai.",
+    "nl": "De klok staat op 06:66, dus die trein komt nooit."
   },
   "credit": {
     "author": "Patrick Arns",

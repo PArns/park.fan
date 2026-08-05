@@ -15,20 +15,20 @@
     "winter"
   ],
   "alt": {
-    "de": "Ein beleuchtetes Kettenkarussell dreht sich beim Wintertraum, links ein weiß leuchtender Lichterbaum über der Menge.",
-    "en": "An illuminated swing carousel turning during Wintertraum, a white-lit tree glowing over the crowd at the left.",
-    "es": "Un carrusel volador iluminado gira durante el Wintertraum, con un árbol de luz blanca sobre la multitud a la izquierda.",
-    "fr": "Un carrousel volant illuminé tourne pendant le Wintertraum, à gauche un arbre de lumière blanche au-dessus de la foule.",
-    "it": "Una giostra a catenelle illuminata gira durante il Wintertraum, a sinistra un albero di luci bianche sopra la folla.",
-    "nl": "Een verlichte zweefmolen draait tijdens Wintertraum, links een wit verlichte lichtboom boven het publiek."
+    "de": "Ein beleuchtetes Kettenkarussell dreht sich, links ein Lichterbaum.",
+    "en": "A lit swing carousel turning, a light tree at the left.",
+    "es": "Un carrusel volador iluminado gira, con un árbol de luz a la izquierda.",
+    "fr": "Un carrousel volant illuminé tourne, un arbre de lumière à gauche.",
+    "it": "Una giostra a catenelle illuminata gira, a sinistra un albero di luci.",
+    "nl": "Een verlichte zweefmolen draait, links een lichtboom."
   },
   "caption": {
-    "de": "Wintertraum im Phantasialand.",
-    "en": "Wintertraum at Phantasialand.",
-    "es": "El Wintertraum en Phantasialand.",
-    "fr": "Le Wintertraum à Phantasialand.",
-    "it": "Il Wintertraum a Phantasialand.",
-    "nl": "Wintertraum in Phantasialand."
+    "de": "Wintertraum, der Winterbetrieb im Phantasialand.",
+    "en": "Wintertraum, Phantasialand's winter season.",
+    "es": "Wintertraum, la temporada de invierno de Phantasialand.",
+    "fr": "Wintertraum, la saison d'hiver de Phantasialand.",
+    "it": "Wintertraum, la stagione invernale di Phantasialand.",
+    "nl": "Wintertraum, het winterseizoen van Phantasialand."
   },
   "credit": {
     "author": "Patrick Arns",

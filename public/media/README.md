@@ -112,6 +112,45 @@ Two parks in the catalog share a slug: `disneyland-park` is both Anaheim and Par
 and `universal-islands-of-adventure` is listed twice. For images of those, add the
 full `continent/country/city/slug` path. The generator warns when you forget.
 
+### `alt` and `caption` — and they must not read as AI-written
+
+Two different jobs, and the second is not a longer version of the first.
+
+**`alt`** is for somebody who cannot see the picture. One short, factual sentence:
+what is in the frame, in the order it matters. No mood, no atmosphere, no colour
+adjectives that carry no information.
+
+**`caption`** is printed under the photo for somebody who _can_ see it, so
+repeating the alt text wastes the line. Say the thing the picture does not: where
+it is, when, what happened, or a fact worth knowing. It is allowed to be dry, and
+it is allowed to be short.
+
+```jsonc
+// no
+"alt":     "The wooden Trojan horse in Toverland's Ithaka area, guests queuing in
+            front of it against an autumn sky."
+"caption": "Troy: the wooden coaster by GCI in the Ithaka area."
+
+// yes
+"alt":     "Das hölzerne trojanische Pferd, davor die Warteschlange."
+"caption": "Troy im Themenbereich Ithaka, eine Holzachterbahn von GCI."
+```
+
+The tells are **structural**, and they only become visible across a set:
+
+- the same skeleton in every entry — subject, participle clause, "behind it" /
+  "in front of it"
+- a full inventory of everything in frame, when two things would do
+- decorative adjectives: `bathed in`, `against a summer sky`, `sweeping the night
+  sky`, `nestled`
+- the caption restating the alt
+- six captions in a row opening with the ride's name
+
+Write the six locales as six sentences, not as one sentence translated five times:
+where a language wants a different word order, let it have one. Rules for prose in
+general are in the [blog authoring guide](../../content/blog/README.md#8-writing-style-requirement)
+and apply here too, including **no em dash in German running text**.
+
 ### `credit` — never invent one
 
 `"license": "unknown"` means nobody has established the rights yet. That is a

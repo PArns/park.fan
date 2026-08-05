@@ -17,19 +17,19 @@
     "water-ride"
   ],
   "alt": {
-    "de": "Das hölzerne Mühlengebäude von River Quest von unten gesehen, dahinter der steinerne Turm des Mystery Castle.",
-    "en": "River Quest's wooden mill building seen from below, the stone Mystery Castle tower rising behind it.",
-    "es": "El edificio de madera del molino de River Quest visto desde abajo, con la torre de piedra del Mystery Castle detrás.",
-    "fr": "Le moulin en bois de River Quest vu d'en bas, la tour de pierre du Mystery Castle derrière.",
-    "it": "L'edificio in legno del mulino di River Quest visto dal basso, dietro la torre in pietra del Mystery Castle.",
-    "nl": "Het houten molengebouw van River Quest van onderaf, met daarachter de stenen toren van Mystery Castle."
+    "de": "Das Mühlengebäude von River Quest von unten, dahinter der Turm des Mystery Castle.",
+    "en": "River Quest's mill building from below, the Mystery Castle tower behind it.",
+    "es": "El molino de River Quest visto desde abajo, con la torre del Mystery Castle detrás.",
+    "fr": "Le moulin de River Quest vu d'en bas, la tour du Mystery Castle derrière.",
+    "it": "Il mulino di River Quest dal basso, dietro la torre del Mystery Castle.",
+    "nl": "Het molengebouw van River Quest van onderaf, met de toren van Mystery Castle erachter."
   },
   "caption": {
-    "de": "River Quest in Mystery.",
+    "de": "River Quest im Themenbereich Mystery.",
     "en": "River Quest in the Mystery area.",
-    "es": "River Quest en la zona Mystery.",
-    "fr": "River Quest dans la zone Mystery.",
-    "it": "River Quest nell'area Mystery.",
+    "es": "River Quest, zona Mystery.",
+    "fr": "River Quest, zone Mystery.",
+    "it": "River Quest, area Mystery.",
     "nl": "River Quest in het themagebied Mystery."
   },
   "credit": {

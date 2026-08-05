@@ -17,19 +17,19 @@
     "water-ride"
   ],
   "alt": {
-    "de": "Ein zerborstenes Holzschiff liegt im Wasserbecken von Poseidon, dahinter eine Festungsmauer mit Zinnen.",
-    "en": "A wrecked wooden ship lying in Poseidon's water basin, a battlemented fortress wall behind it.",
-    "es": "Un barco de madera destrozado yace en la balsa de Poseidon, con una muralla almenada detrás.",
-    "fr": "Un navire de bois éventré repose dans le bassin de Poseidon, devant un rempart crénelé.",
-    "it": "Una nave di legno sfasciata giace nella vasca di Poseidon, dietro una muraglia merlata.",
-    "nl": "Een gebroken houten schip ligt in het waterbassin van Poseidon, met een kantelenmuur erachter."
+    "de": "Ein zerborstenes Holzschiff im Wasserbecken von Poseidon, dahinter eine Festungsmauer.",
+    "en": "A wrecked wooden ship in Poseidon's basin, a fortress wall behind it.",
+    "es": "Un barco de madera destrozado en la balsa de Poseidon, con una muralla detrás.",
+    "fr": "Un navire de bois éventré dans le bassin de Poseidon, un rempart derrière.",
+    "it": "Una nave di legno sfasciata nella vasca di Poseidon, dietro una muraglia.",
+    "nl": "Een gebroken houten schip in het bassin van Poseidon, met een vestingmuur erachter."
   },
   "caption": {
     "de": "Poseidon im griechischen Themenbereich.",
     "en": "Poseidon in the Greek area.",
-    "es": "Poseidon en la zona griega.",
-    "fr": "Poseidon dans la zone grecque.",
-    "it": "Poseidon nell'area greca.",
+    "es": "Poseidon, zona griega.",
+    "fr": "Poseidon, zone grecque.",
+    "it": "Poseidon, area greca.",
     "nl": "Poseidon in het Griekse themagebied."
   },
   "credit": {

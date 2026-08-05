@@ -15,20 +15,20 @@
     "theming"
   ],
   "alt": {
-    "de": "Geschnitzter Widderkopf als Stationsdekor der Maximus' Blitz Bahn, blau angestrahlt zwischen Kabeln und Holzbalken.",
-    "en": "A carved ram's head decorating the Maximus' Blitz Bahn station, lit blue among cables and timber beams.",
-    "es": "Una cabeza de carnero tallada decora la estación de Maximus' Blitz Bahn, iluminada en azul entre cables y vigas.",
-    "fr": "Une tête de bélier sculptée décore la station de Maximus' Blitz Bahn, éclairée en bleu parmi câbles et poutres.",
-    "it": "Una testa d'ariete intagliata decora la stazione di Maximus' Blitz Bahn, illuminata di blu tra cavi e travi.",
-    "nl": "Een gesneden ramskop als stationsdecor van Maximus' Blitz Bahn, blauw uitgelicht tussen kabels en houten balken."
+    "de": "Ein geschnitzter Widderkopf an der Station der Maximus' Blitz Bahn.",
+    "en": "A carved ram's head at the Maximus' Blitz Bahn station.",
+    "es": "Una cabeza de carnero tallada en la estación de Maximus' Blitz Bahn.",
+    "fr": "Une tête de bélier sculptée à la station de Maximus' Blitz Bahn.",
+    "it": "Una testa d'ariete intagliata alla stazione di Maximus' Blitz Bahn.",
+    "nl": "Een gesneden ramskop bij het station van Maximus' Blitz Bahn."
   },
   "caption": {
-    "de": "Stationsdetail der Maximus' Blitz Bahn.",
-    "en": "Station detail on Maximus' Blitz Bahn.",
-    "es": "Detalle de la estación de Maximus' Blitz Bahn.",
-    "fr": "Détail de la station de Maximus' Blitz Bahn.",
-    "it": "Dettaglio della stazione di Maximus' Blitz Bahn.",
-    "nl": "Stationsdetail van Maximus' Blitz Bahn."
+    "de": "Ein Detail an der Station.",
+    "en": "A detail at the station.",
+    "es": "Un detalle de la estación.",
+    "fr": "Un détail de la station.",
+    "it": "Un dettaglio della stazione.",
+    "nl": "Een detail bij het station."
   },
   "credit": {
     "author": "Patrick Arns",

@@ -15,20 +15,20 @@
     "theming"
   ],
   "alt": {
-    "de": "Ein Pilzhaus mit leuchtenden Kugeln in der Halle von Arthur, dahinter überdimensionale Blumen und die Bahnschiene unter der Decke.",
-    "en": "A mushroom house with glowing orbs inside the Arthur ride hall, oversized flowers and the track running overhead.",
-    "es": "Una casa-seta con globos luminosos en la nave de Arthur, con flores gigantes y la vía bajo el techo.",
-    "fr": "Une maison-champignon aux globes lumineux dans le hall d'Arthur, avec des fleurs géantes et le rail au plafond.",
-    "it": "Una casa-fungo con globi luminosi nella sala di Arthur, tra fiori giganti e il binario sotto il soffitto.",
-    "nl": "Een paddenstoelenhuis met lichtbollen in de hal van Arthur, met reuzenbloemen en de baan onder het plafond."
+    "de": "Ein Pilzhaus in der Halle von Arthur, über allem die Schiene der Bahn.",
+    "en": "A mushroom house inside the Arthur hall, the ride's track running above.",
+    "es": "Una casa-seta en la nave de Arthur, con la vía pasando por encima.",
+    "fr": "Une maison-champignon dans le hall d'Arthur, le rail passant au-dessus.",
+    "it": "Una casa-fungo nella sala di Arthur, con il binario che passa sopra.",
+    "nl": "Een paddenstoelenhuis in de hal van Arthur, met de baan erboven."
   },
   "caption": {
-    "de": "Arthur im Königreich der Minimoys: die Welt aus Sicht der Minimoys.",
-    "en": "Arthur: the Minimoys' world seen at their scale.",
-    "es": "Arthur: el mundo a escala de los Minimoys.",
-    "fr": "Arthur : le monde à l'échelle des Minimoys.",
-    "it": "Arthur: il mondo alla scala dei Minimoys.",
-    "nl": "Arthur: de wereld op de schaal van de Minimoys."
+    "de": "Alles ist zu groß, weil die Minimoys zu klein sind.",
+    "en": "Everything is oversized, because the Minimoys are not.",
+    "es": "Todo es demasiado grande, porque los Minimoys son diminutos.",
+    "fr": "Tout est trop grand, parce que les Minimoys sont minuscules.",
+    "it": "Tutto è troppo grande, perché i Minimei sono minuscoli.",
+    "nl": "Alles is te groot, omdat de Minimoys te klein zijn."
   },
   "credit": {
     "author": "Patrick Arns",

@@ -15,18 +15,18 @@
     "winter"
   ],
   "alt": {
-    "de": "Die bunt beleuchtete Pagode schwebt bei Nacht über den Baumwipfeln, Lichtstrahlen fallen nach unten.",
-    "en": "The brightly lit Pagode hovering above the treetops at night, beams of light falling below it.",
-    "es": "La Pagode iluminada flota de noche sobre las copas de los árboles, con haces de luz descendiendo.",
-    "fr": "La Pagode illuminée flotte au-dessus de la cime des arbres la nuit, des faisceaux de lumière descendant vers le sol.",
-    "it": "La Pagode illuminata fluttua di notte sopra le chiome degli alberi, con fasci di luce verso il basso.",
-    "nl": "De kleurrijk verlichte Pagode zweeft 's nachts boven de boomtoppen, met lichtbundels naar beneden."
+    "de": "Die beleuchtete Pagode schwebt über den Baumwipfeln.",
+    "en": "The lit Pagode hovering above the treetops.",
+    "es": "La Pagode iluminada flota sobre las copas de los árboles.",
+    "fr": "La Pagode illuminée flotte au-dessus des arbres.",
+    "it": "La Pagode illuminata fluttua sopra le chiome degli alberi.",
+    "nl": "De verlichte Pagode zweeft boven de boomtoppen."
   },
   "caption": {
     "de": "Die Pagode über dem nächtlichen Park.",
     "en": "The Pagode above the park at night.",
     "es": "La Pagode sobre el parque de noche.",
-    "fr": "La Pagode au-dessus du parc, de nuit.",
+    "fr": "La Pagode au-dessus du parc, la nuit.",
     "it": "La Pagode sopra il parco di notte.",
     "nl": "De Pagode boven het nachtelijke park."
   },
