@@ -62,7 +62,8 @@ export async function GET(req: NextRequest) {
     status: attraction.status ?? null,
     waitTime: attraction.currentWaitTime ?? null,
     crowdLevel: attraction.crowdLevel ?? null,
-    backgroundImage:
-      getAttractionBackgroundImage(parkSlug, attractionSlug) ?? getParkBackgroundImage(parkSlug),
+    // Ride photo only — the editor preview has to show what the published card
+    // will show, and that no longer borrows the park's picture.
+    backgroundImage: getAttractionBackgroundImage(parkSlug, attractionSlug),
   });
 }
