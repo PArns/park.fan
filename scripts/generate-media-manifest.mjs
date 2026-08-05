@@ -688,6 +688,62 @@ export const HERO_META: Record<string, HeroImageMeta> = ${JSON.stringify(heroMet
   'utf8'
 );
 
+// ─── dangling references ─────────────────────────────────────────────────────
+
+/**
+ * Every `/media/…` path the blog content points at, checked against what exists.
+ *
+ * Retagging an image is safe: `park`, `ride`, `roles` and text are not part of
+ * its URL, and the content version is `sha1(bytes + focus)`, so a park assignment
+ * does not even change the query. **Moving** one is the dangerous edit — the admin
+ * offers it prominently, it renames the file, and a post still naming the old path
+ * renders a 404 with a green build and no warning anywhere.
+ *
+ * Which is exactly what happened when the four duplicates were merged: a gallery
+ * kept pointing at `phantasialand/winjas-force-16x9.jpg` and nothing objected
+ * until `check:media-urls` crawled a running site. That check needs a deployment;
+ * this one runs in prebuild, which is where it belongs.
+ */
+function checkBlogReferences(known) {
+  const blogDir = path.join(ROOT, 'content/blog');
+  if (!fs.existsSync(blogDir)) return;
+
+  const posts = [];
+  const walk = (dir) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const abs = path.join(dir, entry.name);
+      if (entry.isDirectory()) walk(abs);
+      // Posts and author files, never a README: the authoring guides show example
+      // frontmatter (`avatar: /media/authors/patrick.jpg`) that is illustrative and
+      // deliberately not a file. Reporting those trains people to ignore the check.
+      else if (entry.name.endsWith('.md') && entry.name !== 'README.md') posts.push(abs);
+    }
+  };
+  walk(blogDir);
+
+  // Paths as they appear in markdown and frontmatter, query and all.
+  const REFERENCE = /["'(\s](\/media\/[a-z0-9][a-z0-9/._-]*\.(?:jpe?g|png|webp|avif|svg))/gi;
+  const dangling = new Map();
+
+  for (const file of posts) {
+    const body = fs.readFileSync(file, 'utf8');
+    for (const [, reference] of body.matchAll(REFERENCE)) {
+      if (known.has(reference)) continue;
+      const where = dangling.get(reference) ?? [];
+      where.push(path.relative(ROOT, file));
+      dangling.set(reference, where);
+    }
+  }
+
+  for (const [reference, where] of dangling) {
+    warn(`${reference} is referenced by ${where.join(', ')} but is not in the database`);
+  }
+}
+
+// Sources and their generated crops both count — a post may legitimately point at
+// `…-16x9.jpg`, and several do.
+checkBlogReferences(new Set(images.flatMap((i) => [i.src, ...i.variants])));
+
 // ─── report ──────────────────────────────────────────────────────────────────
 
 const unlicensed = images.filter((i) => i.credit.license === 'unknown').length;

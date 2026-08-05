@@ -11,6 +11,7 @@ import {
   sessionChanges,
   type MediaSession,
 } from '@/lib/admin/media-session';
+import { postFilePath, postsReferencing, rewriteReferences } from '@/lib/admin/media-references';
 import { getMediaImage } from '@/lib/media';
 import { getMediaText } from '@/lib/media/text';
 import { normalizeSidecar, serializeSidecar } from '@/lib/media/sidecar.mjs';
@@ -163,6 +164,9 @@ export async function POST(req: Request) {
     op: Operation;
     from?: { image: string; sidecar: string };
     to: { image: string; sidecar: string };
+    /** Collection + name on both sides — what repointing blog references needs. */
+    fromRef?: { collection: string; name: string };
+    toRef: { collection: string; name: string; ext: string };
     sidecarContent: string;
     issues: string[];
   }[] = [];
@@ -193,7 +197,11 @@ export async function POST(req: Request) {
       from: existing
         ? pathsFor(existing.collection, existing.id.split('/').pop()!, existing.format)
         : undefined,
+      fromRef: existing
+        ? { collection: existing.collection, name: existing.id.split('/').pop()! }
+        : undefined,
       to: pathsFor(collection, name, ext),
+      toRef: { collection, name, ext },
       sidecarContent: content,
       issues,
     });
@@ -285,7 +293,7 @@ export async function POST(req: Request) {
   const summary: string[] = [];
   try {
     for (const step of planned) {
-      const { op, from, to, sidecarContent } = step;
+      const { op, from, fromRef, to, toRef, sidecarContent } = step;
 
       if (op.contentBase64) {
         await put(to.image, op.contentBase64, `media: ${op.op} ${to.image}`);
@@ -333,6 +341,38 @@ export async function POST(req: Request) {
             ? `replaced \`${from.image}\` with \`${to.image}\``
             : `moved \`${from.image}\` → \`${to.image}\``
         );
+
+        // Repoint every article that named the old path, in this same pull request.
+        //
+        // Without it, moving is the one edit that silently breaks published pages,
+        // and the tree therefore has to be left however it was first filed. With it
+        // the folder can be tidied — by park, by shoot, whatever — and the articles
+        // follow. `postsReferencing` reads the build-time bodies manifest, so
+        // finding them costs no API calls; only the matches are fetched.
+        for (const key of postsReferencing(fromRef!.collection, fromRef!.name)) {
+          const postPath = postFilePath(key);
+          const { data } = await octokit.repos.getContent({
+            owner,
+            repo,
+            path: postPath,
+            ref: branch,
+          });
+          const file = data as { content?: string; sha?: string };
+          if (!file.content || !file.sha) continue;
+          const body = Buffer.from(file.content, 'base64').toString('utf8');
+          const { body: next, changed } = rewriteReferences(body, fromRef!, toRef);
+          if (!changed) continue;
+          await octokit.repos.createOrUpdateFileContents({
+            owner,
+            repo,
+            path: postPath,
+            branch,
+            message: `content(blog): repoint ${key} at ${to.image}`,
+            content: Buffer.from(next).toString('base64'),
+            sha: file.sha,
+          });
+          summary.push(`repointed ${changed} reference(s) in \`${postPath}\``);
+        }
       } else if (op.op === 'create') {
         summary.push(`added \`${to.image}\``);
       } else if (op.op === 'replace') {

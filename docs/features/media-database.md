@@ -425,6 +425,42 @@ byte-identical and the PR diff stays readable.
 
 ---
 
+### Retagging is safe; moving is the edit to be careful with
+
+The two are often confused, so concretely:
+
+| edit in the admin             | URL         | `?v=`     | blog references                                                                                                                  |
+| ----------------------------- | ----------- | --------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| park, ride, roles, tags, text | unchanged   | unchanged | unaffected                                                                                                                       |
+| focal point                   | unchanged   | **new**   | fine — every reference is rendered through `versionedPath`, so the new token reaches the page and the re-cut crops are picked up |
+| **move / rename**             | **changes** | —         | **break**                                                                                                                        |
+
+The content version is `sha1(file bytes + focus)`, which is why assigning a park
+does not even change the query: the picture did not change, only what is known
+about it. What _does_ change is where it shows up — a screenshot tagged with a
+park starts appearing in that park's gallery and in `getParkImages`. That is the
+point of tagging, and it is worth a second's thought before tagging an article
+screenshot with a park.
+
+Moving is the one that renames the file, and it is covered twice:
+
+1. **The move rewrites the articles.** A move through the admin repoints every
+   blog reference to the old path in the same pull request — sources and crops,
+   body and frontmatter (`lib/admin/media-references.ts`). Finding the affected
+   posts reads the build-time bodies manifest, so it costs no API calls; only the
+   matches are fetched. Without this the tree had to stay however it was first
+   filed, because tidying it broke published pages.
+2. **Prebuild warns about anything left dangling.** `pnpm generate:media` checks
+   every `/media/…` path in `content/blog` against the database — which catches a
+   move made by hand, outside the admin, where no rewrite ran. `check:media-urls`
+   catches the same class but needs a running site. (READMEs are skipped: the
+   authoring guides show example frontmatter that is deliberately not a real file.)
+
+`pnpm test:media-references` pins the rewrite. Its two failure modes are both
+silent: rewriting too little leaves a broken image, and rewriting too much
+repoints a _different_ picture — `taron-queue.jpg` starts with `taron`, and a
+pattern without a boundary would take it along.
+
 ### The blog editor is the second write path
 
 An image pasted or dropped into a post is committed by
