@@ -18,9 +18,20 @@ import { ADMIN_PASS_HEADER, useAdmin } from '../../_lib/admin-context';
 
 interface BlogImage {
   src: string;
+  /** Collection id — doubles as the section label in the picker. */
   folder: string;
   name: string;
-  mtime?: number;
+  /** Alt text already written for this image in the current locale, if any. */
+  alt?: string;
+  /** The database's default caption — the author may still overwrite it. */
+  caption?: string;
+  /** Formatted attribution, shown so the author can see the photo is credited. */
+  credit?: string;
+  width?: number;
+  height?: number;
+  park?: string | null;
+  ride?: string | null;
+  shotAt?: string | null;
 }
 
 export interface ImagePickResult {
@@ -125,15 +136,12 @@ function ImagePickerBody({
     }
     if (view === 'list' || withCaption) {
       setStagedSrc(src);
-      setAlt(
-        (prev) =>
-          prev ||
-          src
-            .split('/')
-            .pop()
-            ?.replace(/\.[a-z]+$/i, '') ||
-          ''
-      );
+      // Prefill from the database rather than from the filename: the image already
+      // carries a written alt and caption in this locale, and re-typing them per
+      // post was how the same photo ended up described three different ways.
+      const picked = images.find((i) => i.src === src);
+      setAlt((prev) => prev || picked?.alt || '');
+      setCaption((prev) => prev || picked?.caption || '');
       return;
     }
     onPick({ src, alt: '', caption: '' });
@@ -197,7 +205,7 @@ function ImagePickerBody({
             onKeyDown={(e) => {
               if (e.key === 'Escape') onClose();
             }}
-            placeholder="Search images under /blog/images…"
+            placeholder="Search the media database — park, ride, tag, caption…"
             className="text-foreground placeholder:text-muted-foreground/50 flex-1 bg-transparent text-base outline-none"
           />
           {loading && <span className="text-muted-foreground text-xs">loading…</span>}
@@ -273,7 +281,7 @@ function ImagePickerBody({
           {!loading && allFiltered.length === 0 && (
             <div className="text-muted-foreground p-8 text-center text-sm">
               <ImageIcon className="mx-auto mb-2 h-6 w-6 opacity-40" />
-              {images.length === 0 ? 'No images under /public/blog/images yet.' : 'No matches.'}
+              {images.length === 0 ? 'The media database is empty.' : 'No matches.'}
             </div>
           )}
           {Array.from(groups.entries()).map(([folder, imgs]) => (

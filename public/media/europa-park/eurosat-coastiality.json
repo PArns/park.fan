@@ -1,0 +1,32 @@
+{
+  "title": "Eurosat Coastiality",
+  "park": "europa-park",
+  "ride": "eurosat-coastiality",
+  "area": "France",
+  "roles": ["ride-card", "hero"],
+  "tags": ["day", "entrance", "outdoor", "photo", "ride", "signage"],
+  "alt": {
+    "de": "Das schwarze Gebäude von Eurosat Coastiality mit weißer Maske und Schriftzug.",
+    "en": "The black Eurosat Coastiality building with its white mask and lettering.",
+    "es": "El edificio negro de Eurosat Coastiality, con máscara blanca y rótulo.",
+    "fr": "Le bâtiment noir d'Eurosat Coastiality, masque blanc et enseigne.",
+    "it": "L'edificio nero di Eurosat Coastiality, con maschera bianca e insegna.",
+    "nl": "Het zwarte gebouw van Eurosat Coastiality met wit masker en opschrift."
+  },
+  "caption": {
+    "de": "Die VR-Variante gleich neben der Eurosat-Kugel.",
+    "en": "The VR version, right next to the Eurosat sphere.",
+    "es": "La versión en realidad virtual, junto a la esfera de Eurosat.",
+    "fr": "La version VR, juste à côté de la sphère d'Eurosat.",
+    "it": "La versione in VR, proprio accanto alla sfera di Eurosat.",
+    "nl": "De VR-variant, pal naast de Eurosat-bol."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.47,
+    "y": 0.32
+  }
+}

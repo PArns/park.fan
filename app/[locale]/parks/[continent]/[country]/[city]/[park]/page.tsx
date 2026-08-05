@@ -34,6 +34,7 @@ import {
 import { FAQStructuredData } from '@/components/seo/faq-structured-data';
 import { ParkFAQSection } from '@/components/faq/park-faq-section';
 import type { Metadata } from 'next';
+import { objectPositionForSrc } from '@/lib/media/focus';
 import { ParkBackground } from '@/components/parks/park-background';
 import { ParkFavoriteButton } from '@/components/parks/park-favorite-button';
 import { ParkDistance } from '@/components/common/park-distance';
@@ -363,12 +364,16 @@ export default async function ParkPage({ params }: ParkPageProps) {
 
   return (
     <>
-      {/* No manual <link rel="preload"> here: it pointed at the RAW /images/parks/.../background.jpg,
+      {/* No manual <link rel="preload"> here: it pointed at the RAW /media/.../background.jpg,
           but <ParkBackground> renders it through next/image (/_next/image?…&q=90). The raw preload
           was never the LCP resource — it just downloaded the full-size original in parallel,
           competing for bandwidth with the optimized image. next/image's `priority` already preloads
           the correct optimized rendition. */}
-      <ParkBackground imageSrc={parkBgImage} alt={parkName} />
+      <ParkBackground
+        imageSrc={parkBgImage}
+        alt={parkName}
+        objectPosition={objectPositionForSrc(parkBgImage)}
+      />
 
       <PageContainer>
         <ParkStructuredData

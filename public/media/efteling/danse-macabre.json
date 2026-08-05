@@ -1,0 +1,31 @@
+{
+  "title": "Danse Macabre",
+  "park": "efteling",
+  "ride": "danse-macabre",
+  "roles": ["ride-card", "hero"],
+  "tags": ["dark-ride", "night", "outdoor", "photo", "ride", "theming", "winter"],
+  "alt": {
+    "de": "Die Ruinenkirche von Danse Macabre bei Nacht, blau und violett angeleuchtet.",
+    "en": "The ruined church of Danse Macabre at night, lit blue and violet.",
+    "es": "La iglesia en ruinas de Danse Macabre de noche, iluminada de azul y violeta.",
+    "fr": "L'église en ruine de Danse Macabre la nuit, éclairée de bleu et de violet.",
+    "it": "La chiesa in rovina di Danse Macabre di notte, illuminata di blu e viola.",
+    "nl": "De ruïnekerk van Danse Macabre bij nacht, blauw en paars aangelicht."
+  },
+  "caption": {
+    "de": "Danse Macabre bei Nacht.",
+    "en": "Danse Macabre at night.",
+    "es": "Danse Macabre de noche.",
+    "fr": "Danse Macabre de nuit.",
+    "it": "Danse Macabre di notte.",
+    "nl": "Danse Macabre bij nacht."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.48,
+    "y": 0.35
+  }
+}

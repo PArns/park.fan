@@ -20,7 +20,7 @@ tags:
   - phantasialand
 category: behind-the-scenes
 coverImage:
-  src: /blog/images/kunst-des-wartens-cover.jpg
+  src: /media/disney-animal-kingdom/kunst-des-wartens-cover.jpg
   alt: "L'Albero della Vita nell'Animal Kingdom di Disney, davanti le folle di visitatori del parco"
   caption: 'Animal Kingdom di Disney: decine di migliaia di ospiti, un Albero della Vita, e ovunque la domanda di quanto si stia in coda, e per cosa.'
 seo:
@@ -164,7 +164,7 @@ regolarmente qualcuno si ferma e blocca la fila. Una coda che si intasa da sola
 perché è troppo bella. Poi seguono subito **due sale di pre-show**, in cui
 vieni “scansionato” e “collegato” al tuo avatar.
 
-```gallery-widget folder=/blog/images/avatar-flight-of-passage heading="La coda in tre stazioni"
+```gallery-widget folder=/media/avatar-flight-of-passage heading="La coda in tre stazioni"
 
 ```
 
@@ -190,7 +190,7 @@ giro vero e proprio, un coaster narrativo con veicoli che ruotano liberamente e
 lancio all'indietro, è il finale di una messa in scena cominciata venti minuti
 prima.
 
-```gallery-widget folder=/blog/images/cosmic-rewind heading="Il padiglione prima del giro"
+```gallery-widget folder=/media/cosmic-rewind heading="Il padiglione prima del giro"
 
 ```
 
@@ -216,7 +216,7 @@ il tempo occupato sembra più breve, e chi sta verificando se il raptor dietro
 la recinzione abbia davvero girato la testa non guarda il telefono ogni dieci
 secondi.
 
-```gallery-widget folder=/blog/images/velocicoaster heading="Benvenuto nel recinto dei raptor"
+```gallery-widget folder=/media/velocicoaster heading="Benvenuto nel recinto dei raptor"
 
 ```
 
@@ -251,7 +251,7 @@ modo misurabile, e chi lo spettacolo lo conosce già in quell'ora gira al
 rapporto migliore della giornata. È esattamente per momenti così che
 aggiorniamo i tempi di attesa ogni minuto.
 
-![Migliaia di spettatori nell'anfiteatro notturno di Fantasmic! ai Disney's Hollywood Studios | Fantasmic! agli Hollywood Studios: quasi 10.000 persone a rappresentazione, un'intera ondata di visitatori che per questa mezz'ora di sicuro non sta in nessuna coda di un coaster. | wide](/blog/images/fantasmic-crowd.jpg)
+![Migliaia di spettatori nell'anfiteatro notturno di Fantasmic! ai Disney's Hollywood Studios | Fantasmic! agli Hollywood Studios: quasi 10.000 persone a rappresentazione, un'intera ondata di visitatori che per questa mezz'ora di sicuro non sta in nessuna coda di un coaster. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
 ## Capacità e portata: il segreto matematico
 
@@ -276,7 +276,7 @@ in modi completamente diversi, secondo il principio del buffet o quello delle
 tapas. Due attrazioni di Orlando con numeri quasi identici sulla carta lo
 mostrano alla perfezione:
 
-![Due strade verso una portata simile: pochi treni grandi sull'Hulk, molti vagoncini su Rip Ride Rockit | Stessa categoria, strategia completamente diversa: massa per treno contro frequenza. | wide](/blog/images/inline/durchsatz-hulk-rockit.svg)
+![Due strade verso una portata simile: pochi treni grandi sull'Hulk, molti vagoncini su Rip Ride Rockit | Stessa categoria, strategia completamente diversa: massa per treno contro frequenza. | wide](/media/diagrams/durchsatz-hulk-rockit.svg)
 
 **Esempio A, il buffet.**
 [The Incredible Hulk Coaster](ref:universal-islands-of-adventure/the-incredible-hulk-coaster)

@@ -25,7 +25,7 @@ category: guides
 parkLinks:
   - phantasialand
 coverImage:
-  src: /images/parks/phantasialand/taron-16x9.jpg
+  src: /media/phantasialand/taron-16x9.jpg
   alt: 'Taron races through the basalt columns of the Klugheim themed area at Phantasialand'
   caption: 'Taron in the basalt village of Klugheim, for me the most beautiful spot in the park.'
   credit: 'park.fan'
@@ -74,11 +74,11 @@ you. This guide shows you both: the wonders you come for, and, very
 practically, how to keep the **Phantasialand wait times** short and catch the
 best day.
 
-![Phantasialand in Brühl from a bird's-eye view | My home park in Brühl, Europe's most immersive theme park. | wide](/images/parks/phantasialand/background-16x9.jpg)
+![Phantasialand in Brühl from a bird's-eye view | My home park in Brühl, Europe's most immersive theme park. | wide](/media/phantasialand/background-16x9.jpg)
 
 ## A park like another world, and why it's so busy
 
-![Taron in the basalt village of Klugheim | Taron races through the basalt village of Klugheim, a complete village, not a mere coaster. | right](/images/parks/phantasialand/taron-4x3.jpg)
+![Taron in the basalt village of Klugheim | Taron races through the basalt village of Klugheim, a complete village, not a mere coaster. | right](/media/phantasialand/taron-4x3.jpg)
 
 Phantasialand calls itself “Europe's Most Immersive Theme Park.” Anyone who has been there understands
 what the claim rests on: nowhere else in Europe do the
@@ -125,7 +125,7 @@ forest), a quiet place for families and grandparents, with puppets from
 Schmidt's collection, fairy-tale scenes and plenty of greenery. On 30 April 1967
 the gates opened. Roller coasters? Not a one.
 
-![F.L.Y. in Rookburgh | Rookburgh with F.L.Y. (2020), the world's first flying launch coaster and, for now, the peak of a long transformation. | left](/images/parks/phantasialand/fly-4x3.jpg)
+![F.L.Y. in Rookburgh | Rookburgh with F.L.Y. (2020), the world's first flying launch coaster and, for now, the peak of a long transformation. | left](/media/phantasialand/fly-4x3.jpg)
 
 That it became, over the decades, the wildest, most densely themed park on the
 continent is a story of slow growth, and a near-ending. The park grew bigger,
@@ -201,15 +201,15 @@ the family launch in Klugheim, is the perfect first “real” coaster, gentle
 enough for the first time, fast enough for the second.
 
 ```gallery-widget heading="The headliners in pictures"
-- /images/parks/phantasialand/chiapas-die-wasserbahn-16x9.jpg | The Chiapas water ride | Chiapas, one of the steepest log flumes in the world.
-- /images/parks/phantasialand/colorado-adventure-16x9.jpg | Colorado Adventure | Colorado Adventure, the mine train with Wild West charm.
-- /images/parks/phantasialand/winjas-force-16x9.jpg | Winja's Force in Wuze Town | Winja's: two spinning coasters full of surprises.
-- /images/parks/phantasialand/mystery-castle-16x9.jpg | Mystery Castle in Mysteryland | Mystery Castle, the freefall with changing programs.
-- /images/parks/phantasialand/river-quest-16x9.jpg | River Quest | River Quest, white water with lifts and a guaranteed soaking.
-- /images/parks/phantasialand/raik-16x9.jpg | Raik in Klugheim | Raik, the perfect first “real” coaster.
+- /media/phantasialand/chiapas-die-wasserbahn-16x9.jpg | The Chiapas water ride | Chiapas, one of the steepest log flumes in the world.
+- /media/phantasialand/colorado-adventure-16x9.jpg | Colorado Adventure | Colorado Adventure, the mine train with Wild West charm.
+- /media/phantasialand/winjas-fear-16x9.jpg | Winja's Force in Wuze Town | Winja's: two spinning coasters full of surprises.
+- /media/phantasialand/mystery-castle-16x9.jpg | Mystery Castle in Mysteryland | Mystery Castle, the freefall with changing programs.
+- /media/phantasialand/river-quest-16x9.jpg | River Quest | River Quest, white water with lifts and a guaranteed soaking.
+- /media/phantasialand/raik-16x9.jpg | Raik in Klugheim | Raik, the perfect first “real” coaster.
 ```
 
-![Black Mamba in Deep in Africa | Black Mamba snakes its way low between rocks and huts. | wide](/images/parks/phantasialand/black-mamba-16x9.jpg)
+![Black Mamba in Deep in Africa | Black Mamba snakes its way low between rocks and huts. | wide](/media/phantasialand/black-mamba-16x9.jpg)
 
 ## Tickets: online only, and the fight over annual passes
 
@@ -417,7 +417,7 @@ next door: **[Die 3 Mausketiere](ref:phantasialand/die-3-mausketiere)**, a 360°
 4D attraction that replaced the old cinema in 2026 and charmingly spins the mouse
 theme onward.
 
-![The Geister Rikscha in China Town | Even the dark rides, like the Geister Rikscha, are pure, loving stagecraft. | left](/images/parks/phantasialand/geister-rikscha-4x3.jpg)
+![The Geister Rikscha in China Town | Even the dark rides, like the Geister Rikscha, are pure, loving stagecraft. | left](/media/phantasialand/geister-rikscha-4x3.jpg)
 
 And there are the many dark rides this park builds almost in passing, as if they
 were no big deal, though each one would be the headliner at another park. One

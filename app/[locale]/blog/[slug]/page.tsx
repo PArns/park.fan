@@ -28,6 +28,7 @@ import { BlogReferences } from '@/components/blog/blog-references';
 import { PageBottomSections } from '@/components/common/page-bottom-sections';
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { getOgImageUrl } from '@/lib/utils/og-image';
+import { versionedPath } from '@/lib/media/focus';
 import { BlogPostingStructuredData } from '@/components/seo/blog-structured-data';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { PageContainer } from '@/components/common/page-container';
@@ -73,9 +74,13 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   //   3. dynamic OG image generated from the title (/api/og)
   // Hardened to absolutise paths and never produce a dangling
   // `https://park.fan` URL when nothing is set.
+  // Content-versioned, like the structured data and the feed. A social scraper
+  // caches an og:image by its URL and re-fetches on its own schedule, so an
+  // unversioned crop keeps showing the old framing in every shared link after a
+  // focal point moves.
   const rasterCover =
     frontmatter.coverImage?.src && !/\.svg(\?|$)/i.test(frontmatter.coverImage.src)
-      ? frontmatter.coverImage.src
+      ? (versionedPath(frontmatter.coverImage.src) ?? frontmatter.coverImage.src)
       : undefined;
   const ogImageSource =
     frontmatter.seo?.ogImage ?? rasterCover ?? getOgImageUrl([locale, 'blog', post.slug]);
@@ -191,8 +196,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     { name: post.frontmatter.title, url: `/blog/${post.slug}` },
   ];
 
-  const cover = post.frontmatter.coverImage?.src ?? null;
-
   // Eyebrow above the banner title: the deepest category, or the blog badge.
   const kicker =
     navBreadcrumbs.length > 1 ? navBreadcrumbs[navBreadcrumbs.length - 1].name : tBlog('badge');
@@ -234,9 +237,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <>
-      {cover && <link rel="preload" as="image" href={cover} />}
       <BlogReadingProgress />
 
+      {/* No manual `<link rel="preload">` for the cover: the banner renders it
+          through next/image, so the preload pointed at the ORIGINAL file while the
+          browser then fetched the optimized rendition — a second, full-size
+          download of an image nothing displayed. `<Image priority>` in the banner
+          emits the correct preload on its own. */}
       {/* Full-bleed cover banner — the header floats transparent over it. */}
       <BlogPostBanner post={post} currentLocale={locale as Locale} kicker={kicker} />
 

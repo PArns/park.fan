@@ -18,6 +18,7 @@ export interface StaticPark {
   href: string;
   /** Resolved server-side (fs lookup can't run on the client). */
   backgroundImage: string | null;
+  backgroundPosition?: string;
   /** Park position — feeds the card's "X km away" line. Null for parks that never geocoded. */
   latitude?: number | null;
   longitude?: number | null;
@@ -67,6 +68,7 @@ export function LiveParkGrid({ continent, country, parks, className }: LiveParkG
             country={park.countryName}
             href={park.href}
             backgroundImage={park.backgroundImage}
+            objectPosition={park.backgroundPosition}
             distance={distance}
             variant="detailed"
             // Live overlay — undefined until the client batch call resolves, so the prerendered

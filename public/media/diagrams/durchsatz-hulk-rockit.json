@@ -1,0 +1,24 @@
+{
+  "title": "Durchsatz als Fläche",
+  "tags": ["diagram"],
+  "alt": {
+    "de": "Zwei Rechtecke mit fast gleicher Fläche: der Hulk hoch und schmal (32 Plätze, 60 Abfahrten pro Stunde), Rip Ride Rockit flach und breit (12 Plätze, 154 Abfahrten pro Stunde).",
+    "en": "Two rectangles of nearly equal area: Hulk tall and narrow (32 seats, 60 dispatches an hour), Rip Ride Rockit flat and wide (12 seats, 154 dispatches an hour).",
+    "es": "Dos rectángulos de área casi igual: Hulk alto y estrecho (32 plazas, 60 salidas por hora), Rip Ride Rockit bajo y ancho (12 plazas, 154 salidas por hora).",
+    "fr": "Deux rectangles de surface presque égale : Hulk haut et étroit (32 places, 60 départs par heure), Rip Ride Rockit plat et large (12 places, 154 départs par heure).",
+    "it": "Due rettangoli di area quasi uguale: Hulk alto e stretto (32 posti, 60 partenze all'ora), Rip Ride Rockit basso e largo (12 posti, 154 partenze all'ora).",
+    "nl": "Twee rechthoeken met bijna gelijke oppervlakte: Hulk hoog en smal (32 plaatsen, 60 vertrekken per uur), Rip Ride Rockit laag en breed (12 plaatsen, 154 vertrekken per uur)."
+  },
+  "caption": {
+    "de": "Beide schaffen rund 1.900 Personen pro Stunde, auf entgegengesetzten Wegen.",
+    "en": "Both move about 1,900 people an hour, by opposite routes.",
+    "es": "Ambas mueven unas 1.900 personas por hora, por caminos opuestos.",
+    "fr": "Les deux font environ 1 900 personnes par heure, par des chemins opposés.",
+    "it": "Entrambe muovono circa 1.900 persone all'ora, per vie opposte.",
+    "nl": "Beide doen zo'n 1.900 personen per uur, langs tegengestelde wegen."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

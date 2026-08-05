@@ -1,0 +1,32 @@
+{
+  "title": "WODAN - Timburcoaster",
+  "park": "europa-park",
+  "ride": "wodan-timburcoaster",
+  "area": "Germany",
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "day", "detail", "outdoor", "photo", "ride", "sunny"],
+  "alt": {
+    "de": "Blick von unten in das Holzgerüst von Wodan, wo sich zwei Streckenteile kreuzen.",
+    "en": "Looking up into Wodan's timber structure where two stretches of track cross.",
+    "es": "Vista desde abajo de la estructura de Wodan, donde se cruzan dos tramos de vía.",
+    "fr": "Vue d'en bas dans la charpente de Wodan, là où deux voies se croisent.",
+    "it": "Vista dal basso nella struttura di Wodan, dove due tratti di binario si incrociano.",
+    "nl": "Van onderaf in de houtconstructie van Wodan, waar twee baandelen kruisen."
+  },
+  "caption": {
+    "de": "Das Holzgerüst von Wodan.",
+    "en": "Wodan's timber structure.",
+    "es": "La estructura de madera de Wodan.",
+    "fr": "La charpente de Wodan.",
+    "it": "La struttura in legno di Wodan.",
+    "nl": "De houtconstructie van Wodan."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.45,
+    "y": 0.3
+  }
+}

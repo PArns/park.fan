@@ -10,7 +10,11 @@ import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { getGlobalStats } from '@/lib/api/analytics';
 import { catchNonFatal } from '@/lib/api/client';
-import { getParkBackgroundImage, getAttractionBackgroundImage } from '@/lib/utils/park-assets';
+import {
+  getCardObjectPosition,
+  getParkBackgroundImage,
+  getAttractionBackgroundImage,
+} from '@/lib/utils/park-assets';
 
 /**
  * Global real-time stats + platform statistics — server-rendered into the homepage shell.
@@ -77,6 +81,7 @@ export async function GlobalStatsSection() {
                   )}
                   href={convertApiUrlToFrontendUrl(stats.mostCrowdedPark.url) as '/'}
                   backgroundImage={getParkBackgroundImage(stats.mostCrowdedPark.slug)}
+                  objectPosition={getCardObjectPosition(stats.mostCrowdedPark.slug)}
                   status="OPERATING"
                   timezone={stats.mostCrowdedPark.timezone}
                   crowdLevel={stats.mostCrowdedPark.crowdLevel ?? undefined}
@@ -102,6 +107,7 @@ export async function GlobalStatsSection() {
                   )}
                   href={convertApiUrlToFrontendUrl(stats.leastCrowdedPark.url) as '/'}
                   backgroundImage={getParkBackgroundImage(stats.leastCrowdedPark.slug)}
+                  objectPosition={getCardObjectPosition(stats.leastCrowdedPark.slug)}
                   status="OPERATING"
                   timezone={stats.leastCrowdedPark.timezone}
                   crowdLevel={stats.leastCrowdedPark.crowdLevel ?? undefined}
@@ -127,6 +133,10 @@ export async function GlobalStatsSection() {
                       stats.longestWaitRide.slug
                     ) ?? getParkBackgroundImage(stats.longestWaitRide.parkSlug)
                   }
+                  objectPosition={getCardObjectPosition(
+                    stats.longestWaitRide.parkSlug,
+                    stats.longestWaitRide.slug
+                  )}
                   attraction={{
                     id: stats.longestWaitRide.id,
                     name: stats.longestWaitRide.name,
@@ -181,6 +191,10 @@ export async function GlobalStatsSection() {
                       stats.shortestWaitRide.slug
                     ) ?? getParkBackgroundImage(stats.shortestWaitRide.parkSlug)
                   }
+                  objectPosition={getCardObjectPosition(
+                    stats.shortestWaitRide.parkSlug,
+                    stats.shortestWaitRide.slug
+                  )}
                   attraction={{
                     id: stats.shortestWaitRide.id,
                     name: stats.shortestWaitRide.name,

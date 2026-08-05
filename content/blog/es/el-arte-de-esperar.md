@@ -20,7 +20,7 @@ tags:
   - phantasialand
 category: behind-the-scenes
 coverImage:
-  src: /blog/images/kunst-des-wartens-cover.jpg
+  src: /media/disney-animal-kingdom/kunst-des-wartens-cover.jpg
   alt: 'El Árbol de la Vida en el Animal Kingdom de Disney, con las multitudes de visitantes del parque delante'
   caption: 'El Animal Kingdom de Disney: decenas de miles de visitantes, un Árbol de la Vida, y por todas partes la pregunta de cuánto se hace cola y para qué.'
 seo:
@@ -162,7 +162,7 @@ la gente se para con regularidad y bloquea la cola. Una cola que se atasca a sí
 misma porque es demasiado bonita. Después vienen directamente **dos salas de
 pre-show**, en las que te «escanean» y te «vinculan» con tu propio avatar.
 
-```gallery-widget folder=/blog/images/avatar-flight-of-passage heading="La cola en tres estaciones"
+```gallery-widget folder=/media/avatar-flight-of-passage heading="La cola en tres estaciones"
 
 ```
 
@@ -188,7 +188,7 @@ recorrido en sí, una montaña rusa narrativa con vehículos que giran librement
 y lanzamiento hacia atrás, es el final de una puesta en escena que empezó
 veinte minutos antes.
 
-```gallery-widget folder=/blog/images/cosmic-rewind heading="El pabellón antes del recorrido"
+```gallery-widget folder=/media/cosmic-rewind heading="El pabellón antes del recorrido"
 
 ```
 
@@ -215,7 +215,7 @@ lo que Maister llama **«occupied time»**: el tiempo ocupado se siente más
 corto, y quien está comprobando si el raptor detrás de la valla ha girado de
 verdad la cabeza no mira el móvil cada diez segundos.
 
-```gallery-widget folder=/blog/images/velocicoaster heading="Bienvenido al recinto de los raptores"
+```gallery-widget folder=/media/velocicoaster heading="Bienvenido al recinto de los raptores"
 
 ```
 
@@ -250,7 +250,7 @@ los cabezas de cartel se hunden de forma medible, y quien ya conoce el
 espectáculo monta en la mejor relación del día en esa hora. Para momentos así
 actualizamos los tiempos de espera cada minuto.
 
-![Miles de espectadores en el anfiteatro nocturno de Fantasmic! en los Disney's Hollywood Studios | Fantasmic! en los Hollywood Studios: casi 10.000 personas por función, toda una ola de visitantes que durante esa media hora seguro que no está en ninguna cola de montaña rusa. | wide](/blog/images/fantasmic-crowd.jpg)
+![Miles de espectadores en el anfiteatro nocturno de Fantasmic! en los Disney's Hollywood Studios | Fantasmic! en los Hollywood Studios: casi 10.000 personas por función, toda una ola de visitantes que durante esa media hora seguro que no está en ninguna cola de montaña rusa. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
 ## Capacidad y rendimiento: el secreto matemático
 
@@ -275,7 +275,7 @@ factores de formas totalmente distintas, según el principio del bufé o el de
 las tapas. Dos atracciones de Orlando con cifras casi idénticas sobre el papel
 lo enseñan a la perfección:
 
-![Dos caminos hacia un rendimiento similar: pocos trenes grandes en el Hulk, muchos vagones pequeños en Rip Ride Rockit | Misma liga, estrategia completamente distinta: masa por tren frente a frecuencia. | wide](/blog/images/inline/durchsatz-hulk-rockit.svg)
+![Dos caminos hacia un rendimiento similar: pocos trenes grandes en el Hulk, muchos vagones pequeños en Rip Ride Rockit | Misma liga, estrategia completamente distinta: masa por tren frente a frecuencia. | wide](/media/diagrams/durchsatz-hulk-rockit.svg)
 
 **Ejemplo A, el bufé.**
 [The Incredible Hulk Coaster](ref:universal-islands-of-adventure/the-incredible-hulk-coaster)

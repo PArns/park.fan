@@ -1,0 +1,24 @@
+{
+  "park": "walibi-holland",
+  "tags": ["halloween", "photo", "theming"],
+  "alt": {
+    "de": "Verrußter Teddybär auf einer alten Kinderbahn",
+    "en": "Sooty teddy bear on an old children's train",
+    "es": "Osito de peluche tiznado de hollín sobre una vieja atracción infantil",
+    "fr": "Ours en peluche couvert de suie sur un vieux petit train pour enfants",
+    "it": "Orsacchiotto annerito di fuliggine su un vecchio trenino per bambini",
+    "nl": "Beroete teddybeer op een oude kindertrein"
+  },
+  "caption": {
+    "de": "Einsteigen? …eher nicht.",
+    "en": "Hop on? …think we'll pass.",
+    "es": "¿Subir? …mejor no.",
+    "fr": "Monter à bord ? …plutôt pas.",
+    "it": "Salire a bordo? …meglio di no.",
+    "nl": "Instappen? …liever niet."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

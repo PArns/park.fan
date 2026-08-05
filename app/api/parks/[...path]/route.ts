@@ -7,6 +7,7 @@ import {
 } from '@/lib/api/parks';
 import { getParkWeatherNowcastFresh } from '@/lib/api/weather-nowcast';
 import { getParkHistoricalStats } from '@/lib/api/stats';
+import { enrichAttractionsWithImages } from '@/lib/utils/park-assets';
 
 export async function GET(
   request: NextRequest,
@@ -27,6 +28,15 @@ export async function GET(
 
       if (!parkData) {
         return NextResponse.json({ error: 'Park not found' }, { status: 404 });
+      }
+
+      // Attach each ride's photo and focal point here, on the server. The park page's
+      // attraction grid is a Client Component fed by this poll, so resolving them in
+      // the card instead would put the whole media catalog in the browser's bundle.
+      if (Array.isArray(parkData.attractions)) {
+        parkData.attractions = enrichAttractionsWithImages(
+          parkData.attractions.map((a) => ({ ...a, park: { slug: park } }))
+        ) as unknown as typeof parkData.attractions;
       }
 
       // No caching - we want fresh live data

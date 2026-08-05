@@ -4,6 +4,7 @@ import type { BlogFrontmatter, BlogListItem, BlogPost } from '@/lib/blog/types';
 import { resolveAuthor } from '@/lib/blog/authors';
 import type { Locale } from '@/i18n/config';
 import { getOgImageUrl } from '@/lib/utils/og-image';
+import { versionedPath } from '@/lib/media/focus';
 
 const SITE_URL = 'https://park.fan';
 const ORG = {
@@ -27,11 +28,17 @@ function absoluteUrl(url: string | undefined | null): string | undefined {
  * explicit `seo.ogImage` override, then the cover photo) and falls back to the
  * post's generated OG card, so every linked post still carries an image. Mirrors
  * the OG-metadata chain in the blog post page.
+ *
+ * Content-versioned, like the park and ride structured data already is. A cover
+ * is usually a build-time crop, `/media` is served with a month of `max-age`, and
+ * a crawler re-fetches on its own schedule on top of that — so an unversioned URL
+ * means a retargeted focal point shows up in search results as the old framing for
+ * as long as everyone's caches feel like it.
  */
 function resolvePostImage(locale: string, slug: string, frontmatter: BlogFrontmatter): string {
   return (
     absoluteUrl(frontmatter.seo?.ogImage) ??
-    absoluteUrl(frontmatter.coverImage?.src) ??
+    absoluteUrl(versionedPath(frontmatter.coverImage?.src)) ??
     getOgImageUrl([locale, 'blog', slug])
   );
 }
@@ -70,7 +77,9 @@ export function BlogPostingStructuredData({ post, locale, path }: BlogPostingStr
 
   const canonical = `${SITE_URL}/${locale}${path}`;
   const imageUrl = resolvePostImage(locale, post.slug, frontmatter);
-  const coverUrl = absoluteUrl(frontmatter.coverImage?.src);
+  // Versioned the same way `resolvePostImage` is, or the identity check below stops
+  // matching and the cover's caption silently disappears from the structured data.
+  const coverUrl = absoluteUrl(versionedPath(frontmatter.coverImage?.src));
 
   const data: WithContext<BlogPosting> = {
     '@context': 'https://schema.org',

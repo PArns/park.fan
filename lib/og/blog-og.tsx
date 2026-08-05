@@ -76,7 +76,7 @@ export async function renderBlogOg({ locale, segments }: BlogOgParams): Promise<
       if (coverSrc && !/\.svg(\?|$)/i.test(coverSrc)) {
         // Read off disk when the cover ships with the deployment, exactly like the park/ride
         // cards — otherwise Satori fetches it over the public internet on every render (a
-        // ~400 KB JPEG for the covers in `public/blog/images`). Falls back to the absolute URL
+        // ~400 KB JPEG for the covers, now in the media database). Falls back to the absolute URL
         // for anything not traced into this function's bundle, which is the old behaviour.
         coverImage = ogBackgroundSrc(coverSrc, SITE_URL) ?? absoluteUrl(coverSrc);
       }

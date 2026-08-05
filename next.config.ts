@@ -17,7 +17,9 @@ const nextConfig: NextConfig = {
   // lib/blog/categories and lib/blog/gallery read these via process.cwd() at
   // runtime, which Next.js can't statically trace through imports.
   outputFileTracingIncludes: {
-    '/[locale]/blog/**': ['./content/blog/**/*', './public/blog/**/*'],
+    // Blog images no longer need tracing: galleries resolve through the media
+    // manifest (a normal import Next follows) instead of reading /public at runtime.
+    '/[locale]/blog/**': ['./content/blog/**/*'],
     '/sitemap.xml': ['./content/blog/**/*'],
     '/[locale]': ['./content/blog/**/*'],
     // The OG renderer inlines its images off disk instead of fetching them over HTTP on every
@@ -32,12 +34,10 @@ const nextConfig: NextConfig = {
     '/api/og/[...path]': [
       './public/logo-dark.png',
       './public/parkfan-dark.png',
-      './public/images/parks/**/*-16x9.jpg',
-      // Blog cover images, for the post cards. Scoped to the `cover` naming convention the posts
-      // use (3 files, ~1 MB) rather than all of public/blog (18 MB, mostly gallery photos that no
-      // OG card ever paints). A cover that doesn't follow the convention falls back to fetching
-      // over HTTP — the behaviour every cover had before.
-      './public/blog/**/*cover*.jpg',
+      // Every image in the media database now lives under public/media, so one
+      // pattern covers the park backgrounds, the ride photos AND the blog covers
+      // that used to need a second `*cover*` rule of their own.
+      './public/media/**/*-16x9.jpg',
     ],
   },
   compiler: {
@@ -67,6 +67,13 @@ const nextConfig: NextConfig = {
     // components/analytics/web-vitals-reporter.tsx.
   },
   images: {
+    // Media-database paths carry a `?v=<content hash>` so the optimizer's cache key
+    // moves when an image's pixels or focal point change — without it a retargeted
+    // crop would be served from the 1-year rendition cache for a year. Next only
+    // allows a query on a local image when a pattern permits it, and an omitted
+    // `search` means "any query"; the second entry keeps every other local image
+    // (logos, icons, textures) on the default no-query rule.
+    localPatterns: [{ pathname: '/media/**' }, { pathname: '/**', search: '' }],
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 828, 1080, 1200, 1920, 2560, 3840],
     imageSizes: [32, 48, 64, 96, 128, 256, 384],
@@ -474,8 +481,13 @@ const nextConfig: NextConfig = {
       // when it matters, change the filename.
       // Kept BEFORE the .svg rule below so SVGs keep their stronger 1-year immutable value
       // (Next applies header rules last-match-wins per key).
+      // `media` is where every photo now lives; `images` and `blog` are the pre-media-database
+      // trees and are empty today. Dropping them would be tidier, but a rule that silently
+      // matches nothing is exactly how this regressed once — the migration moved all 444 files
+      // to /media and left the rule naming the old two, so every photo on the site went back to
+      // `max-age=0` and re-validating on every page view. They stay listed as a tripwire.
       {
-        source: '/:dir(images|blog|textures)/:path*',
+        source: '/:dir(media|images|blog|textures)/:path*',
         headers: [{ key: 'Cache-Control', value: 'public, max-age=2678400' }],
       },
       // Brand/icon PNGs at the root of /public (logo*, parkfan*, icon-*, apple-touch-icon).
@@ -518,6 +530,27 @@ const nextConfig: NextConfig = {
             key: 'Cache-Control',
             value: 'public, max-age=2592000, s-maxage=2592000, stale-while-revalidate=86400',
           },
+        ],
+      },
+      {
+        // The media database catalog. Safe to cache harder than anything else under
+        // /api because it carries no live data at all: it changes only when a
+        // deployment ships new images or sidecars, and the route hands out a strong
+        // ETag derived from the content revision, so a client past the fresh window
+        // revalidates into a 304 rather than re-downloading. A day fresh, a week
+        // stale-while-revalidate. Repeated here because this rule OVERRIDES the
+        // route handler's own Cache-Control (see the blanket /api no-store above) —
+        // keep the two in step.
+        source: '/api/media/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, s-maxage=86400, stale-while-revalidate=604800' },
+        ],
+      },
+      {
+        // Same for the collection route itself, which `/api/media/:path*` does not match.
+        source: '/api/media',
+        headers: [
+          { key: 'Cache-Control', value: 'public, s-maxage=86400, stale-while-revalidate=604800' },
         ],
       },
       {

@@ -1,0 +1,31 @@
+{
+  "title": "Eat my Dust",
+  "park": "walibi-holland",
+  "ride": "eat-my-dust",
+  "roles": ["ride-card", "hero"],
+  "tags": ["day", "detail", "outdoor", "overcast", "photo", "ride", "theming"],
+  "alt": {
+    "de": "Ein gelb-roter Buggy hängt an Ketten unter einem Kranträger.",
+    "en": "A yellow and red buggy hanging on chains under a crane beam.",
+    "es": "Un buggy amarillo y rojo colgado de cadenas bajo una viga de grúa.",
+    "fr": "Un buggy jaune et rouge suspendu à des chaînes sous une poutre de grue.",
+    "it": "Un buggy giallo e rosso appeso a catene sotto una trave da gru.",
+    "nl": "Een geel-rode buggy hangt aan kettingen onder een kraanbalk."
+  },
+  "caption": {
+    "de": "Eat My Dust in der Speed Zone.",
+    "en": "Eat My Dust in the Speed Zone.",
+    "es": "Eat My Dust en la Speed Zone.",
+    "fr": "Eat My Dust dans la Speed Zone.",
+    "it": "Eat My Dust nella Speed Zone.",
+    "nl": "Eat My Dust in de Speed Zone."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.42,
+    "y": 0.5
+  }
+}

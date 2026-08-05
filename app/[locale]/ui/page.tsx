@@ -864,7 +864,7 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
         {/* Fixed non-scrolling background — needed for glass effects */}
         <div className="fixed inset-0 -z-10">
           <Image
-            src="/images/parks/phantasialand/background.jpg"
+            src="/media/phantasialand/background.jpg"
             alt="Phantasialand background"
             fill
             // Without `sizes`, a `fill` image defaults to `100vw` and next/image requests the
@@ -1332,7 +1332,7 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                 {(['light', 'medium', 'heavy'] as const).map((intensity) => (
                   <div key={intensity} className="relative h-36 overflow-hidden rounded-xl border">
                     <BackgroundOverlay
-                      imageSrc="/images/parks/phantasialand/background.jpg"
+                      imageSrc="/media/phantasialand/background.jpg"
                       alt="Phantasialand"
                       intensity={intensity}
                       hoverEffect
@@ -1442,7 +1442,7 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                   totalAttractions={42}
                   variant="compact"
                   showBackground
-                  backgroundImage="/images/parks/phantasialand/background.jpg"
+                  backgroundImage="/media/phantasialand/background.jpg"
                   timezone="Europe/Berlin"
                   parkId="phantasialand-id"
                 />
@@ -1502,7 +1502,7 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                   totalAttractions={42}
                   variant="detailed"
                   showBackground
-                  backgroundImage="/images/parks/phantasialand/background.jpg"
+                  backgroundImage="/media/phantasialand/background.jpg"
                   timezone="Europe/Berlin"
                   todaySchedule={{
                     openingTime: '2026-03-07T09:00:00+01:00',
@@ -1543,7 +1543,7 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                 totalAttractions={42}
                 variant="hero"
                 showBackground
-                backgroundImage="/images/parks/phantasialand/background.jpg"
+                backgroundImage="/media/phantasialand/background.jpg"
                 timezone="Europe/Berlin"
                 distance="3.2 km"
               />
@@ -1568,7 +1568,7 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                   operatingAttractions={38}
                   analytics={{ avgWaitTime: 35, crowdLevel: 'high', occupancy: 67 }}
                   url="/europe/germany/bruhl/phantasialand"
-                  backgroundImage="/images/parks/phantasialand/background.jpg"
+                  backgroundImage="/media/phantasialand/background.jpg"
                   highlightAsNearestOpen
                   translateCountry
                   todaySchedule={{
@@ -1703,7 +1703,7 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 <AttractionCard
                   attraction={MOCK_ATTRACTION_FAVORITES}
-                  backgroundImage="/images/parks/phantasialand/background.jpg"
+                  backgroundImage="/media/phantasialand/background.jpg"
                   showParkName
                   distance={3200}
                 />

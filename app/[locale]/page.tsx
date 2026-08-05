@@ -57,8 +57,7 @@ import { BlogHeroPreview } from '@/components/home/blog-hero-preview';
 
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
-import { HERO_IMAGES } from '@/lib/hero-images';
-import { HERO_IMAGE_META } from '@/lib/hero-images-meta';
+import { pickHeroImage } from '@/lib/media/hero';
 import { HERO_3D_ENABLED } from '@/lib/config/features';
 
 import type { Metadata } from 'next';
@@ -86,10 +85,6 @@ export const revalidate = 3600;
 // with the ISR window, ~hourly). Server-rendered for LCP. Only used when HERO_3D_ENABLED is off;
 // the 3D hero ignores it.
 const HERO_TTL_MS = 5 * 60_000;
-function pickHeroImage(): string {
-  const windowIndex = Math.floor(Date.now() / HERO_TTL_MS);
-  return HERO_IMAGES[windowIndex % HERO_IMAGES.length];
-}
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -133,7 +128,9 @@ export default async function HomePage({ params }: HomePageProps) {
   // data-dependent section fetches its own data (and translations) inside a
   // Suspense boundary below, so the hero renders/streams without waiting on the API.
   const [tHome, tParks] = await Promise.all([getTranslations('home'), getTranslations('parks')]);
-  const randomHeroImage = pickHeroImage();
+  const heroImage = pickHeroImage(HERO_TTL_MS);
+  const randomHeroImage = heroImage?.src;
+  const heroMeta = heroImage?.meta ?? null;
   // Hero panel: when the 3-D park is on, fade the WHOLE card (text/logo/buttons via
   // `opacity`) so the scene shows through, restoring full opacity on hover. Over the
   // classic photo hero, keep it solid/legible.
@@ -230,9 +227,9 @@ export default async function HomePage({ params }: HomePageProps) {
           {HERO_3D_ENABLED ? (
             <HeroImageInfoSwitch>{null}</HeroImageInfoSwitch>
           ) : (
-            HERO_IMAGE_META[randomHeroImage] && (
+            heroMeta && (
               <HeroImageInfoSwitch>
-                <HeroImageInfo meta={HERO_IMAGE_META[randomHeroImage]} />
+                <HeroImageInfo meta={heroMeta} />
               </HeroImageInfoSwitch>
             )
           )}

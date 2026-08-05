@@ -1,0 +1,25 @@
+{
+  "park": "epcot",
+  "ride": "guardians-of-the-galaxy-cosmic-rewind",
+  "tags": ["photo", "queue", "theming"],
+  "alt": {
+    "de": "Die Galaxarium-Kuppel im Wonders-of-Xandar-Pavillon mit projiziertem Sternenhimmel",
+    "en": "The Galaxarium dome in the Wonders of Xandar pavilion with a projected starfield",
+    "es": "La cúpula del Galaxarium en el pabellón Wonders of Xandar, con un cielo estrellado proyectado",
+    "fr": "La coupole du Galaxarium dans le pavillon Wonders of Xandar, avec un ciel étoilé projeté",
+    "it": "La cupola del Galaxarium nel padiglione Wonders of Xandar con cielo stellato proiettato",
+    "nl": "De Galaxarium-koepel in het Wonders-of-Xandar-paviljoen met geprojecteerde sterrenhemel"
+  },
+  "caption": {
+    "de": "Das Galaxarium: die planetariumsartige Kuppel, durch die man auf dem Weg zur Bahn läuft. Xandar-Geschichte, lange bevor der erste Wagen anrollt.",
+    "en": "The Galaxarium, the planetarium-like dome you walk through on the way to the ride. Xandar lore, long before the first car rolls.",
+    "es": "El Galaxarium, la cúpula tipo planetario que se atraviesa de camino a la montaña rusa. Historia de Xandar mucho antes de que arranque el primer vehículo.",
+    "fr": "Le Galaxarium, la coupole façon planétarium que l'on traverse en chemin vers le train. De l'histoire de Xandar, bien avant que le premier wagon ne s'ébranle.",
+    "it": "Il Galaxarium, la cupola in stile planetario che si attraversa sulla strada verso la giostra. Storia di Xandar, molto prima che il primo veicolo si metta in moto.",
+    "nl": "Het Galaxarium, de planetariumachtige koepel waar je op weg naar de baan doorheen loopt. Xandar-geschiedenis, lang voordat de eerste wagen aanrolt."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

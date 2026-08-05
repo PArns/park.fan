@@ -1,0 +1,24 @@
+{
+  "park": "walibi-holland",
+  "tags": ["day", "halloween", "photo", "theming"],
+  "alt": {
+    "de": "Alter Tankwagen, komplett von Ranken überwuchert, bei Tag",
+    "en": "Old tanker truck completely overgrown with vines, daytime",
+    "es": "Viejo camión cisterna, completamente cubierto de enredaderas, de día",
+    "fr": "Vieux camion-citerne entièrement envahi par les lianes, en journée",
+    "it": "Vecchio camion cisterna, completamente ricoperto di rampicanti, di giorno",
+    "nl": "Oude tankwagen, volledig overwoekerd door ranken, overdag"
+  },
+  "caption": {
+    "de": "Den Tanklaster hat die Natur längst zurückerobert.",
+    "en": "Nature reclaimed the tanker truck a long time ago.",
+    "es": "El camión cisterna hace tiempo que la naturaleza lo ha reconquistado.",
+    "fr": "Le camion-citerne, la nature l'a repris depuis belle lurette.",
+    "it": "L'autocisterna la natura se l'è ripresa da un pezzo.",
+    "nl": "De tankwagen is allang door de natuur heroverd."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

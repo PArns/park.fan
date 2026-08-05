@@ -1,0 +1,32 @@
+{
+  "title": "Madame Freudenreich Curiosités",
+  "park": "europa-park",
+  "ride": "madame-freudenreich-curiosites",
+  "area": "France",
+  "roles": ["ride-card", "hero"],
+  "tags": ["dark-ride", "detail", "indoor", "photo", "ride", "theming"],
+  "alt": {
+    "de": "Ein Dinosaurier mit gestricktem Schal, davor ein Schild „Brontosaurus EVA“.",
+    "en": "A dinosaur in a knitted scarf, a \"Brontosaurus EVA\" sign in front of it.",
+    "es": "Un dinosaurio con bufanda de punto y un cartel de \"Brontosaurus EVA\" delante.",
+    "fr": "Un dinosaure à écharpe tricotée, devant lui un panneau « Brontosaurus EVA ».",
+    "it": "Un dinosauro con sciarpa di lana e davanti un cartello \"Brontosaurus EVA\".",
+    "nl": "Een dinosaurus met gebreide sjaal, ervoor een bord \"Brontosaurus EVA\"."
+  },
+  "caption": {
+    "de": "Madame Freudenreich Curiosités im französischen Themenbereich.",
+    "en": "Madame Freudenreich Curiosités in the French area.",
+    "es": "Madame Freudenreich Curiosités, zona francesa.",
+    "fr": "Madame Freudenreich Curiosités, zone française.",
+    "it": "Madame Freudenreich Curiosités, area francese.",
+    "nl": "Madame Freudenreich Curiosités in het Franse themagebied."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.72,
+    "y": 0.28
+  }
+}

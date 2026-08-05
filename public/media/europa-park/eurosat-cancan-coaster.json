@@ -1,0 +1,32 @@
+{
+  "title": "Eurosat - CanCan Coaster",
+  "park": "europa-park",
+  "ride": "eurosat-cancan-coaster",
+  "area": "France",
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "day", "outdoor", "photo", "ride", "sunny", "winter"],
+  "alt": {
+    "de": "Die silberne Kugel von Eurosat über der Moulin-Rouge-Fassade.",
+    "en": "Eurosat's silver sphere above the Moulin Rouge facade.",
+    "es": "La esfera plateada de Eurosat sobre la fachada del Moulin Rouge.",
+    "fr": "La sphère argentée d'Eurosat au-dessus de la façade du Moulin Rouge.",
+    "it": "La sfera argentata di Eurosat sopra la facciata del Moulin Rouge.",
+    "nl": "De zilveren bol van Eurosat boven de Moulin-Rouge-gevel."
+  },
+  "caption": {
+    "de": "Die Bahn läuft komplett im Inneren der Kugel.",
+    "en": "The whole ride runs inside that sphere.",
+    "es": "Todo el recorrido va dentro de esa esfera.",
+    "fr": "Tout le parcours se déroule à l'intérieur de la sphère.",
+    "it": "L'intero percorso si svolge dentro quella sfera.",
+    "nl": "De hele baan loopt binnen in die bol."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.45,
+    "y": 0.28
+  }
+}

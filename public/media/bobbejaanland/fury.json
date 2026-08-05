@@ -1,0 +1,31 @@
+{
+  "title": "Fury",
+  "park": "bobbejaanland",
+  "ride": "fury",
+  "roles": ["ride-card", "hero"],
+  "tags": ["autumn", "coaster", "day", "outdoor", "photo", "ride", "theming"],
+  "alt": {
+    "de": "Eine Zaubererfigur mit Stab und Leuchtkugel, dahinter der orange Track von Fury.",
+    "en": "A wizard figure with a staff and glowing orb, Fury's orange track behind him.",
+    "es": "Una figura de mago con báculo y esfera luminosa, con la vía naranja de Fury detrás.",
+    "fr": "Une figure de magicien tenant un bâton et une sphère lumineuse, la voie orange de Fury derrière.",
+    "it": "Una figura di mago con bastone e sfera luminosa, dietro il tracciato arancione di Fury.",
+    "nl": "Een tovenaarsfiguur met staf en lichtbol, met de oranje baan van Fury erachter."
+  },
+  "caption": {
+    "de": "Fury in Bobbejaanland.",
+    "en": "Fury at Bobbejaanland.",
+    "es": "Fury en Bobbejaanland.",
+    "fr": "Fury à Bobbejaanland.",
+    "it": "Fury a Bobbejaanland.",
+    "nl": "Fury in Bobbejaanland."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.3,
+    "y": 0.42
+  }
+}

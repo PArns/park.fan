@@ -25,7 +25,8 @@ import { join } from 'node:path';
  *     `objectFit: cover` has nothing to throw away.
  *
  * Requires the crops to be traced into the OG function bundle — see `outputFileTracingIncludes`
- * for `/api/og/[...path]` in next.config.ts (64 files, 7.4 MB).
+ * for `/api/og/[...path]` in next.config.ts — now a single glob over the 16:9 crops
+ * under public/media, which covers the park, ride and blog-cover photos alike.
  *
  * Falls back to the absolute URL when a crop isn't on disk, so a source image that never got a
  * crop keeps rendering exactly as it does today rather than losing its photo.
@@ -34,9 +35,20 @@ import { join } from 'node:path';
 /** Read once per warm function instance. Keyed by the site-relative source path. */
 const dataUriCache = new Map<string, string | null>();
 
-/** `/images/parks/x/background.jpg` → `/images/parks/x/background-16x9.jpg` */
+/** `/media/x/background.jpg` → `/media/x/background-16x9.jpg` */
 function toCropPath(imagePath: string): string {
   return imagePath.replace(/(\.[a-z0-9]+)$/i, '-16x9$1');
+}
+
+/**
+ * Drop the `?v=` content version before touching the filesystem.
+ *
+ * Media paths carry a version token so browser and CDN caches can treat them as
+ * immutable, but there is no such file on disk — and the token also sits between
+ * the extension and the end of the string, so `toCropPath` would not match either.
+ */
+function withoutVersion(imagePath: string): string {
+  return imagePath.split('?')[0];
 }
 
 function readAsDataUri(relPath: string): string | null {
@@ -59,7 +71,7 @@ function readAsDataUri(relPath: string): string | null {
 }
 
 /**
- * @param imagePath  Site-relative source image (`/images/parks/…`), or null when the card has no
+ * @param imagePath  Site-relative source image (`/media/…`), or null when the card has no
  *                   photo — e.g. what `getParkBackgroundImage` returns.
  * @param baseUrl    Absolute site origin, used only for the fallback URL.
  * @returns          A `data:` URI, an absolute URL, or null when there is no photo at all.
@@ -69,7 +81,11 @@ export function ogBackgroundSrc(imagePath: string | null, baseUrl: string): stri
   // Already absolute (an externally hosted cover): nothing local to read, hand it back untouched
   // rather than gluing the origin in front of it.
   if (/^https?:\/\//i.test(imagePath)) return imagePath;
+  const onDisk = withoutVersion(imagePath);
   return (
-    readAsDataUri(toCropPath(imagePath)) ?? readAsDataUri(imagePath) ?? `${baseUrl}${imagePath}`
+    readAsDataUri(toCropPath(onDisk)) ??
+    readAsDataUri(onDisk) ??
+    // The fallback keeps the version token: that one IS fetched over HTTP.
+    `${baseUrl}${imagePath}`
   );
 }

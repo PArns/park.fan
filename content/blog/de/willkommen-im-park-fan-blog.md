@@ -24,7 +24,7 @@ rideLinks:
   - phantasialand/taron
   - phantasialand/maus-au-chocolat
 coverImage:
-  src: /blog/images/welcome-cover.jpg
+  src: /media/universal-islands-of-adventure/welcome-cover.jpg
   alt: 'Velocicoaster-Looping vor dem Hogwarts-Schloss, Islands of Adventure, Orlando'
   caption: 'Islands of Adventure in Orlando: der Velocicoaster im Looping, dahinter das Hogwarts-Schloss.'
 seo:
@@ -94,7 +94,7 @@ gerade deshalb so kostbar geworden. Sie halten meine Kindheit lebendig, und mit
 ihr die Erinnerung an den Menschen, der damals neben mir durch diese Welten
 glitt.
 
-![Nächtliche Achterbahn-Silhouette im Movie Park Germany, violett und blau angestrahlt | Movie Park Germany bei Nacht. Lethal Weapon Pursuit stand hier bis 2006. | left](/images/parks/movie-park-germany/background.jpg)
+![Nächtliche Achterbahn-Silhouette im Movie Park Germany, violett und blau angestrahlt | Movie Park Germany bei Nacht. Lethal Weapon Pursuit stand hier bis 2006. | left](/media/movie-park-germany/iron-claw.jpg)
 
 War mein Vater als LKW-Fahrer mal wieder auf Tour, hat meine Mutter kurzerhand
 das Steuer übernommen. Mit ihr habe ich viele andere Parks entdeckt,
@@ -145,7 +145,7 @@ Park“ zu sein.
 
 ## Orlando, Mai 2026, einmal im Leben
 
-![Animatronischer Velociraptor-Kopf im rot beleuchteten Raptor-Paddock des VelociCoaster | Islands of Adventure: der Raptor im Paddock, zum Greifen nah. | right](/blog/images/velocicoaster/02-raptor-paddock.jpg)
+![Animatronischer Velociraptor-Kopf im rot beleuchteten Raptor-Paddock des VelociCoaster | Islands of Adventure: der Raptor im Paddock, zum Greifen nah. | right](/media/velocicoaster/02-raptor-paddock.jpg)
 
 Blieb noch dieser eine große Punkt auf der Lebensliste, hinter dem seit Jahren
 der Haken fehlte. Im Mai 2026 sind wir endlich nach Orlando
@@ -182,7 +182,7 @@ zu begegnen.
 
 ## Der Moment in der Taron-Schlange
 
-![Taron rast durch die Basaltsäulen des Themenbereichs Klugheim | Taron mitten im Kurs durch Klugheim. Vor dieser Bahn stand ich sechzig Minuten. | left](/images/parks/phantasialand/taron-4x3.jpg)
+![Taron rast durch die Basaltsäulen des Themenbereichs Klugheim | Taron mitten im Kurs durch Klugheim. Vor dieser Bahn stand ich sechzig Minuten. | left](/media/phantasialand/taron-4x3.jpg)
 
 Bis zu diesem einen Nachmittag, den vermutlich jeder Parkfan in der einen oder
 anderen Variante kennt. Sechzig Minuten
@@ -292,7 +292,7 @@ Minuten“, dreimal dieselbe Zahl, dreimal eine völlig andere Geschichte:
   Jahr nach Eröffnung? Entweder Sahnetag, oder die Massen haben sich endlich
   verlaufen.
 
-![Voltron Nevera im Überschlag über einer angestrahlten Fassade bei Nacht | Voltron Nevera im Europa-Park. Typisch sind hier rund 45 Minuten, an Spitzentagen 70 und mehr. | right](/images/parks/europa-park/voltron-nevera-powered-by-rimac.jpg)
+![Voltron Nevera im Überschlag über einer angestrahlten Fassade bei Nacht | Voltron Nevera im Europa-Park. Typisch sind hier rund 45 Minuten, an Spitzentagen 70 und mehr. | right](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 Die Zahl steht im Diagramm. Die Geschichte dahinter steht ab jetzt hier, in
 drei Formaten.

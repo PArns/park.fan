@@ -1,0 +1,32 @@
+{
+  "title": "Troy",
+  "park": "toverland",
+  "ride": "troy",
+  "area": "Troy",
+  "roles": ["ride-card", "hero"],
+  "tags": ["autumn", "coaster", "day", "outdoor", "photo", "ride"],
+  "alt": {
+    "de": "Das hölzerne trojanische Pferd, davor die Warteschlange.",
+    "en": "The wooden Trojan horse with the queue in front of it.",
+    "es": "El caballo de Troya de madera, con la cola delante.",
+    "fr": "Le cheval de Troie en bois, la file d'attente devant.",
+    "it": "Il cavallo di Troia in legno, con la fila davanti.",
+    "nl": "Het houten paard van Troje, met de wachtrij ervoor."
+  },
+  "caption": {
+    "de": "Troy im Themenbereich Ithaka, eine Holzachterbahn von GCI.",
+    "en": "Troy in the Ithaka area, a GCI wooden coaster.",
+    "es": "Troy en la zona Ithaka, una montaña rusa de madera de GCI.",
+    "fr": "Troy dans la zone Ithaka, montagnes russes en bois de GCI.",
+    "it": "Troy nell'area Ithaka, montagne russe in legno di GCI.",
+    "nl": "Troy in het themagebied Ithaka, een houten achtbaan van GCI."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.62,
+    "y": 0.38
+  }
+}

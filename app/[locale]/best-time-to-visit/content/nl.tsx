@@ -151,7 +151,7 @@ export function ContentNL() {
           ]}
         />
         <SplitFigure
-          src="/images/parks/phantasialand/black-mamba.jpg"
+          src="/media/phantasialand/black-mamba.jpg"
           alt="Black Mamba raast door de jungle in Phantasialand"
           kicker="Rope drop"
           title="Het eerste uur is goud waard"
@@ -175,7 +175,7 @@ export function ContentNL() {
           verwachten — plan ervoor, of plan er juist omheen:
         </PG>
         <SplitFigure
-          src="/images/parks/walibi-holland/goliath.jpg"
+          src="/media/walibi-holland/goliath.jpg"
           alt="Achtbaan Goliath in Walibi Holland op een drukke dag"
           kicker="Piekdag"
           title="Zonnig, iedereen vrij, iedereen er"
@@ -264,7 +264,7 @@ export function ContentNL() {
           feestdagen van de betreffende regio erin verwerkt.
         </P>
         <SplitFigure
-          src="/images/parks/efteling/symbolica.jpg"
+          src="/media/efteling/symbolica.jpg"
           alt="De paleisrit Symbolica in de Efteling"
           kicker="Groen, geel, rood"
           title="Eén kleur per dag, een jaar vooruit"

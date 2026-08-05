@@ -1,0 +1,24 @@
+{
+  "park": "walibi-holland",
+  "tags": ["day", "halloween", "photo", "theming"],
+  "alt": {
+    "de": "Blaue Art-Deco-Fassade mit Halloween-Schriftzug und Breathless bei Tag",
+    "en": "Blue art-deco facade with Halloween lettering and “Breathless” by day",
+    "es": "Fachada azul art déco con el rótulo Halloween y Breathless, de día",
+    "fr": "Façade Art déco bleue avec l'inscription Halloween et Breathless, en journée",
+    "it": "Facciata art déco blu con scritta Halloween e Breathless di giorno",
+    "nl": "Blauwe art-decogevel met Halloween-opschrift en Breathless overdag"
+  },
+  "caption": {
+    "de": "Tagsüber hübsche Fassade. Sobald’s dunkel wird: viel Spaß.",
+    "en": "A pretty facade by day. Once it gets dark: have fun.",
+    "es": "De día, una fachada bonita. En cuanto oscurece: que te diviertas.",
+    "fr": "Jolie façade en journée. Dès que la nuit tombe : bon courage.",
+    "it": "Di giorno una bella facciata. Appena fa buio: buon divertimento.",
+    "nl": "Overdag een fraaie gevel. Zodra het donker wordt: veel plezier."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

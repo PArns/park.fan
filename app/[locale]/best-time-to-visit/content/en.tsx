@@ -151,7 +151,7 @@ export function ContentEN() {
           ]}
         />
         <SplitFigure
-          src="/images/parks/phantasialand/black-mamba.jpg"
+          src="/media/phantasialand/black-mamba.jpg"
           alt="Black Mamba racing through the jungle at Phantasialand"
           kicker="Rope drop"
           title="The first hour is golden"
@@ -169,7 +169,7 @@ export function ContentEN() {
           them, or plan around them:
         </PG>
         <SplitFigure
-          src="/images/parks/walibi-holland/goliath.jpg"
+          src="/media/walibi-holland/goliath.jpg"
           alt="Goliath roller coaster at Walibi Holland on a busy day"
           kicker="Peak day"
           title="Sunny, everyone off, everyone here"
@@ -257,7 +257,7 @@ export function ContentEN() {
           holidays built in.
         </P>
         <SplitFigure
-          src="/images/parks/efteling/symbolica.jpg"
+          src="/media/efteling/symbolica.jpg"
           alt="Symbolica palace ride at Efteling"
           kicker="Green, yellow, red"
           title="One colour per day, a year ahead"

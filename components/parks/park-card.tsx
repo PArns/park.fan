@@ -6,7 +6,7 @@ import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { ParkCardScheduleFooter } from '@/components/parks/park-card-schedule-footer';
-import { CardPhoto } from '@/components/parks/card-photo';
+import { CardPhoto, CardPhotoFrame } from '@/components/parks/card-photo';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import { formatDistance } from '@/lib/utils/distance-utils';
@@ -15,16 +15,6 @@ import { useTranslations } from 'next-intl';
 import type { ScheduleSummary } from '@/lib/api/types';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
-
-// Lazily loaded server-side only — avoids bundling `fs` into the client
-/* eslint-disable @typescript-eslint/no-require-imports */
-const serverAssets =
-  typeof window === 'undefined'
-    ? (require('@/lib/utils/park-assets') as {
-        getParkBackgroundImage: (slug: string) => string | null;
-      })
-    : null;
-/* eslint-enable @typescript-eslint/no-require-imports */
 
 interface ParkCardProps {
   name: string;
@@ -56,6 +46,13 @@ interface ParkCardProps {
   /** Alias for parkId — accepted for callers using the nearby/favorites data shape. */
   id?: string;
   backgroundImage?: string | null;
+  /**
+   * Where the photo is cropped from — the image's focal point, resolved by the
+   * SERVER (`enrichParksWithImages` / `getCardObjectPosition`) and handed in. The
+   * card cannot look it up itself without importing the media manifest, and this
+   * card renders inside Client Components. Defaults to the historical top crop.
+   */
+  objectPosition?: string;
   timezone?: string;
   todaySchedule?: ScheduleSummary;
   nextSchedule?: ScheduleSummary;
@@ -70,7 +67,7 @@ interface ParkCardProps {
 
 export function ParkCard({
   name,
-  slug,
+  slug: _slug,
   city,
   country,
   href,
@@ -88,6 +85,7 @@ export function ParkCard({
   parkId,
   id,
   backgroundImage: propBackgroundImage,
+  objectPosition: propObjectPosition,
   timezone,
   todaySchedule,
   nextSchedule,
@@ -109,12 +107,12 @@ export function ParkCard({
       })()
     : country;
 
-  let backgroundImage: string | null = null;
-  if (propBackgroundImage !== undefined) {
-    backgroundImage = propBackgroundImage;
-  } else if (showBackground && serverAssets) {
-    backgroundImage = serverAssets.getParkBackgroundImage(slug);
-  }
+  // The photo and where to crop it are handed in, never looked up here. This card
+  // is rendered by Client Components (the live hub grid, nearby, favorites), and a
+  // media-database lookup inside it puts the whole 107 KB catalog in their bundle.
+  // Server callers use `getParkBackgroundImage` / `getCardObjectPosition`; the API
+  // routes attach both via `enrichParksWithImages`.
+  const backgroundImage = showBackground ? (propBackgroundImage ?? null) : null;
 
   const isOpen = status === 'OPERATING';
   const isOperatingOrUnknown = status === 'OPERATING' || status === 'UNKNOWN';
@@ -140,6 +138,7 @@ export function ParkCard({
         <div className="absolute inset-0 z-0 overflow-hidden">
           {backgroundImage ? (
             <CardPhoto
+              objectPosition={propObjectPosition ?? 'top'}
               src={backgroundImage}
               alt={name}
               closed={!isOperatingOrUnknown}
@@ -251,8 +250,20 @@ export function ParkCard({
         </div>
 
         {/* Photo spacer — the 1fr row resolves to 0 in an intrinsic-height
-           container; min-h forces it open when there is a background image. */}
-        <div className={cn('relative z-[2]', backgroundImage && 'sm:min-h-[220px]')} />
+           container; min-h forces it open when there is a background image.
+           It is also the strip of photo the panels leave visible, so the framed
+           layer lives in here — see `CardPhotoFrame`. Stays at `z-0` so the scrim
+           (z-1) keeps darkening it. */}
+        <div className={cn('relative z-0', backgroundImage && 'sm:min-h-[220px]')}>
+          {backgroundImage && (
+            <CardPhotoFrame
+              objectPosition={propObjectPosition ?? 'top'}
+              src={backgroundImage}
+              closed={!isOperatingOrUnknown}
+              hideOnMobile
+            />
+          )}
+        </div>
 
         {/* Footer glass panel — z-3 */}
         <div

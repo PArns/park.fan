@@ -1,0 +1,29 @@
+{
+  "park": "toverland",
+  "ride": "troy",
+  "tags": ["day", "halloween", "outdoor", "overcast", "photo", "ride", "signage"],
+  "alt": {
+    "de": "Über dem Schriftzug „Troy“ hängt ein Holzschild mit den Buchstaben „DES“, darunter Halloween-Nights-Banner.",
+    "en": "A wooden board reading \"DES\" hung in front of the \"Troy\" sign, Halloween Nights banners below.",
+    "es": "Una tabla con \"DES\" colgada delante del rótulo \"Troy\", con banderolas de Halloween Nights debajo.",
+    "fr": "Une planche portant « DES » accrochée devant l'enseigne « Troy », des bannières Halloween Nights en dessous.",
+    "it": "Una tavola con \"DES\" appesa davanti all'insegna \"Troy\", sotto gli stendardi delle Halloween Nights.",
+    "nl": "Voor het opschrift \"Troy\" hangt een houten bord met \"DES\", eronder Halloween-Nights-banieren."
+  },
+  "caption": {
+    "de": "Ein Brett vor das Schild, fertig ist DesTroy.",
+    "en": "One plank over the sign and Troy becomes DesTroy.",
+    "es": "Una tabla delante del rótulo y Troy pasa a ser DesTroy.",
+    "fr": "Une planche devant l'enseigne, et Troy devient DesTroy.",
+    "it": "Un'asse davanti all'insegna e Troy diventa DesTroy.",
+    "nl": "Eén plank voor het bord, en Troy wordt DesTroy."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.5,
+    "y": 0.35
+  }
+}

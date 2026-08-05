@@ -24,7 +24,7 @@ rideLinks:
   - phantasialand/taron
   - phantasialand/maus-au-chocolat
 coverImage:
-  src: /blog/images/welcome-cover.jpg
+  src: /media/universal-islands-of-adventure/welcome-cover.jpg
   alt: 'Velocicoaster-looping voor het kasteel van Zweinstein, Islands of Adventure, Orlando'
   caption: 'Islands of Adventure in Orlando: de Velocicoaster in de looping, daarachter het kasteel van Zweinstein.'
 seo:
@@ -93,7 +93,7 @@ Mijn vader is in 2019 overleden. Misschien zijn juist daarom die gezamenlijke
 ritten zo kostbaar voor me geworden. Ze houden mijn jeugd levend, en daarmee de
 herinnering aan de man die toen naast me door die werelden gleed.
 
-![Achtbaansilhouet in Movie Park Germany bij nacht, paars en blauw aangelicht | Movie Park Germany bij nacht. Lethal Weapon Pursuit stond hier tot 2006. | left](/images/parks/movie-park-germany/background.jpg)
+![Achtbaansilhouet in Movie Park Germany bij nacht, paars en blauw aangelicht | Movie Park Germany bij nacht. Lethal Weapon Pursuit stond hier tot 2006. | left](/media/movie-park-germany/iron-claw.jpg)
 
 Was mijn vader als vrachtwagenchauffeur weer eens op pad, dan nam mijn moeder
 gewoon het stuur over. Met haar heb ik veel andere parken ontdekt, vooral
@@ -142,7 +142,7 @@ heten.
 
 ## Orlando, mei 2026, eenmaal in je leven
 
-![Animatronische velociraptorkop in het roodverlichte raptorverblijf van de VelociCoaster | Islands of Adventure: de raptor in het verblijf, binnen handbereik. | right](/blog/images/velocicoaster/02-raptor-paddock.jpg)
+![Animatronische velociraptorkop in het roodverlichte raptorverblijf van de VelociCoaster | Islands of Adventure: de raptor in het verblijf, binnen handbereik. | right](/media/velocicoaster/02-raptor-paddock.jpg)
 
 Bleef nog dat ene grote punt op de levenslijst waar al jaren geen vinkje achter
 stond. In mei 2026 zijn we eindelijk naar Orlando gevlogen:
@@ -178,7 +178,7 @@ komen.
 
 ## Het moment in de rij bij Taron
 
-![Taron raast door de basaltzuilen van het themagebied Klugheim | Taron midden in zijn rit door Klugheim. Voor deze baan stond ik zestig minuten. | left](/images/parks/phantasialand/taron-4x3.jpg)
+![Taron raast door de basaltzuilen van het themagebied Klugheim | Taron midden in zijn rit door Klugheim. Voor deze baan stond ik zestig minuten. | left](/media/phantasialand/taron-4x3.jpg)
 
 Tot die ene middag die vrijwel elke parkfan in de een of andere variant kent.
 Zestig minuten [Taron](ref:phantasialand/taron?bare)-standby, een display dat je
@@ -281,7 +281,7 @@ Een wachttijd zonder context is niet meer dan een gerucht met een decimaal.
   [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare), een
   jaar na de opening? Of een topdag, of de massa is eindelijk uitgewaaierd.
 
-![Voltron Nevera in een overslag boven een aangelichte gevel bij nacht | Voltron Nevera in het Europa-Park. Typisch is hier zo'n 45 minuten, op piekdagen 70 en meer. | right](/images/parks/europa-park/voltron-nevera-powered-by-rimac.jpg)
+![Voltron Nevera in een overslag boven een aangelichte gevel bij nacht | Voltron Nevera in het Europa-Park. Typisch is hier zo'n 45 minuten, op piekdagen 70 en meer. | right](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 Het getal staat in de grafiek. Het verhaal erachter staat vanaf nu hier, in drie
 vormen.

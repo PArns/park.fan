@@ -29,7 +29,7 @@ rideLinks:
   - toverland/*
   - efteling/joris-en-de-draak
 coverImage:
-  src: /images/parks/toverland/troy-16x9.jpg
+  src: /media/toverland/troy-16x9.jpg
   alt: 'Het houten Trojaanse paard in het themagebied Ithaka van Toverland, op een kar'
   caption: 'Het Trojaanse paard in Ithaka. Achter de bomen erachter ligt Troy.'
   credit: 'park.fan'
@@ -71,7 +71,7 @@ onwillekeurig bukken.
 Na 110 seconden sta je weer waar je vertrok, en je draait je om. Achter je:
 niemand. Je kunt blijven zitten.
 
-![Het houten Trojaanse paard in Ithaka, op een kar, in herfstlicht | Het Trojaanse paard bewaakt de ingang van Ithaka. De baan zelf verstopt zich erachter tussen de bomen. | right](/images/parks/toverland/troy-4x3.jpg)
+![Het houten Trojaanse paard in Ithaka, op een kar, in herfstlicht | Het Trojaanse paard bewaakt de ingang van Ithaka. De baan zelf verstopt zich erachter tussen de bomen. | right](/media/toverland/troy-4x3.jpg)
 
 Dat is het stuk dat ik moeilijk uitgelegd krijg. Troy hoort bij de beste houten
 achtbanen van Europa en staat in een park waar elk jaar honderdduizenden
@@ -184,7 +184,7 @@ de valtoren Dragonwatch, en die kost niets extra.
 
 ## De rest van het park
 
-![Fēnix met een trein ondersteboven in de baan, blauwe rails tegen een zomerhemel | Fēnix, de langste wing coaster van Europa. De stoelen hangen links en rechts naast de rail. | left](/images/parks/toverland/fenix-4x3.jpg)
+![Fēnix met een trein ondersteboven in de baan, blauwe rails tegen een zomerhemel | Fēnix, de langste wing coaster van Europa. De stoelen hangen links en rechts naast de rail. | left](/media/toverland/fenix-4x3.jpg)
 
 Troy is de reden dat liefhebbers komen. Maar het park leeft niet van één baan.
 
@@ -198,7 +198,7 @@ meemaakt dan het voertuig, voelt elke draai groter dan hij is. Onderweg sproeit
 een feniks nevel over je heen, wat niets met natuurkunde te maken heeft en de
 zaak toch beter maakt. Wachttijd: dezelfde 16 minuten als bij Troy.
 
-![Het station van Fēnix met blauwe rail, wingcoastertrein en vuurschalen aan kettingen onder houten balken | Het station van Fēnix: vuurschalen aan kettingen, zware balken, en de trein met de stoelen naast de rail. | wide](/images/parks/toverland/background-16x9.jpg)
+![Het station van Fēnix met blauwe rail, wingcoastertrein en vuurschalen aan kettingen onder houten balken | Het station van Fēnix: vuurschalen aan kettingen, zware balken, en de trein met de stoelen naast de rail. | wide](/media/toverland/background-16x9.jpg)
 
 **[Booster Bike](ref:toverland/booster-bike)** is de vreemde eend en mijn
 tweede favoriet hier. Vekoma bouwde in 2004 in Sevenum het wereldwijde prototype
@@ -291,7 +291,7 @@ De bezoekersaantallen vertellen hetzelfde verhaal in cijfers: 620.000 in 2013,
 miljoen, laatstelijk **1.137.000 in 2025**. Dat is ongeveer een derde van wat de
 Efteling of Europa-Park doorsluizen, en precies daarin zit de charme.
 
-![De verlichte zweefmolen Djinn in de hal Land van Toos, gasten in de gondels in beweging | Djinn draait zijn rondjes boven de oosterse markt in Land van Toos, en dat volledig onder dak. | left](/blog/images/toverland-halloween/05-djinn-land-van-toos.jpg)
+![De verlichte zweefmolen Djinn in de hal Land van Toos, gasten in de gondels in beweging | Djinn draait zijn rondjes boven de oosterse markt in Land van Toos, en dat volledig onder dak. | left](/media/toverland-halloween/05-djinn-land-van-toos.jpg)
 
 De twee oerhallen bestaan trouwens nog, en ze zijn geen regenbui-plan-B. Land
 van Toos en Wunderwald zijn een eigenstandig programma, met
@@ -312,14 +312,14 @@ stuk open, met elke vijf uur een verrassing, een XXL-parade en vuurwerk.
 
 ## Halloween, en de nacht aan de andere kant
 
-![Het houten Trojaanse paard bij nacht, rood aangelicht en in nevel gehuld, ervoor een mensenmenigte | Hetzelfde paard als hierboven, zes weken later. Overdag maken families er foto's voor. | wide](/blog/images/toverland-halloween/01-trojanisches-pferd-rot.jpg)
+![Het houten Trojaanse paard bij nacht, rood aangelicht en in nevel gehuld, ervoor een mensenmenigte | Hetzelfde paard als hierboven, zes weken later. Overdag maken families er foto's voor. | wide](/media/toverland-halloween/01-trojanisches-pferd-rot.jpg)
 
 Zes weken per jaar krijgt dit park een tweede persoonlijkheid, en voor veel
 gasten uit West-Duitsland is dat de eigenlijke aanleiding om te komen. Hoe het
 zich in Europa verhoudt staat in onze
 [halloweengids](/blog/halloween-pretparken-2026); hier de Toverland-versie.
 
-![Acteur met tentakelmasker en handbel voor het Toverland Halloween Nights-banner | De nachtwaker van de Halloween Nights. Gezicht: bespreekbaar. | right](/blog/images/halloween-parks-2026/toverland-cthulhu.jpg)
+![Acteur met tentakelmasker en handbel voor het Toverland Halloween Nights-banner | De nachtwaker van de Halloween Nights. Gezicht: bespreekbaar. | right](/media/halloween-2026/toverland-cthulhu.jpg)
 
 Het seizoen loopt **van 3 oktober tot 8 november 2026** en valt uiteen in twee
 heel verschillende evenementen:
@@ -331,7 +331,7 @@ heel verschillende evenementen:
   vanaf 12 jaar: **zes scare zones**, **zes haunted experiences**, openingsparade,
   grondnevel overal, vuurwerk als slot.
 
-![Verlichte pompoenen met heksenhoeden tussen droge maisstengels | Pompoenen in de mais. Van hetzelfde materiaal bestaat in 2026 het grootste doolhof van het park. | left](/blog/images/toverland-halloween/04-kuerbisse-maisfeld.jpg)
+![Verlichte pompoenen met heksenhoeden tussen droge maisstengels | Pompoenen in de mais. Van hetzelfde materiaal bestaat in 2026 het grootste doolhof van het park. | left](/media/toverland-halloween/04-kuerbisse-maisfeld.jpg)
 
 De nieuwigheid van **2026** groeit letterlijk: **"Entwined: The Maze"**, een
 **maisveld van zeven hectare** met metershoge wanden achter Fēnix, volgens het
@@ -339,7 +339,7 @@ park twee keer zo groot als het hele Avalon-gebied en vermarkt als grootste
 halloween-experience van Europa. Het vervangt het jarenlange rattenlabyrint
 "Trapped". De enige regel die er telt: wie stil blijft staan, wordt gepakt.
 
-![Het entreebord van Troy, omgebouwd tot "DesTROY – The Ride", eronder twee Halloween Nights-banners | Van Troy wordt DesTROY. Het park schroeft daarvoor het entreebord van de achtbaan om. | right](/blog/images/toverland-halloween/03-destroy-schild.jpg)
+![Het entreebord van Troy, omgebouwd tot "DesTROY – The Ride", eronder twee Halloween Nights-banners | Van Troy wordt DesTROY. Het park schroeft daarvoor het entreebord van de achtbaan om. | right](/media/toverland-halloween/03-destroy-schild.jpg)
 
 Voor Troy-fans komt het beste deel echter nog. Een van de scare zones heet
 **"DesTroy"** en ligt in **Ithaka**, dus pal naast en onder de houten achtbaan.
@@ -348,7 +348,7 @@ er middendoor. Er zijn in Europa niet veel gelegenheden om een eersteklas houten
 achtbaan in het donker door een bespeelde scare zone te rijden, met nevel in het
 remstuk en acteurs in de wachtrij.
 
-![Een Trojaanse krijger met speer staat in het schijnwerperlicht voor het rood verlichte paard | Of dat een pop is of een acteur, merk je pas als het te laat is. | left](/blog/images/toverland-halloween/02-trojanisches-pferd-krieger.jpg)
+![Een Trojaanse krijger met speer staat in het schijnwerperlicht voor het rood verlichte paard | Of dat een pop is of een acteur, merk je pas als het te laat is. | left](/media/toverland-halloween/02-trojanisches-pferd-krieger.jpg)
 
 Een van de zes experiences heeft voor mij nog een dubbele bodem. Met de
 [**Freundeskreis Kirmes und Freizeitparks**](https://fkfev.de/), een Duitse
@@ -356,7 +356,7 @@ vereniging van kermis- en pretparkliefhebbers, liep ik backstage door de
 **Maison de la Magie**, en we mochten daar zelf een keer de haunt uitproberen.
 Niet tijdens de openingsuren, zonder echte gasten, alleen wij en een leeg huis.
 
-![Een roze aangelichte gevel met balkon, popfiguur en lichtreclame "The Dollhouse" | "The Dollhouse", een van de zes haunted experiences. Overdag is dat Villa Fiasko. | right](/images/parks/toverland/villa-fiasko-4x3.jpg)
+![Een roze aangelichte gevel met balkon, popfiguur en lichtreclame "The Dollhouse" | "The Dollhouse", een van de zes haunted experiences. Overdag is dat Villa Fiasko. | right](/media/toverland/villa-fiasko-4x3.jpg)
 
 Het was toch genoeg om het respect te begrijpen. Je staat op een plek waar je
 bijna niets ziet, en moet toch op de seconde nauwkeurig op tijd zijn. Wie dat
@@ -383,7 +383,7 @@ belangrijk genoeg dat het gebeurt.
 
 ## Wat er verder aankomt
 
-![Een gesneden siermotief aan de Maximus' Blitz Bahn, blauw aangelicht, ernaast oude gloeilampen aan kabels | Een detail van de Blitz Bahn, zoals ze er negentien jaar bij stond. Bijna alles hier was handwerk. | left](/images/parks/toverland/maximus-blitzbahn-4x3.jpg)
+![Een gesneden siermotief aan de Maximus' Blitz Bahn, blauw aangelicht, ernaast oude gloeilampen aan kabels | Een detail van de Blitz Bahn, zoals ze er negentien jaar bij stond. Bijna alles hier was handwerk. | left](/media/toverland/maximus-blitzbahn-4x3.jpg)
 
 Wie er langer niet geweest is, zal een attractie missen. Op **17 mei 2026** was
 **[Maximus' Blitz Bahn](ref:toverland/maximus-blitz-bahn)** in het Wunderwald

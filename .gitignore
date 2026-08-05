@@ -58,11 +58,20 @@ lib/blog/manifest.ts
 lib/blog/manifest-bodies.ts
 lib/blog/manifest-galleries.ts
 
+# Media database manifests — regenerated from the committed sidecars by
+# `pnpm generate:media` in prebuild, exactly like the blog manifests.
+# `manifest-parks.ts` is deliberately NOT here: it is the one file that cannot be
+# rebuilt without the API, so it is committed and reused when a build is offline.
+lib/media/manifest.ts
+lib/media/manifest-text.ts
+lib/media/manifest-search.ts
+lib/media/manifest-hero.ts
+
 # Auto-generated aspect-ratio crops (scripts/generate-image-crops.mjs) — cut from
 # the committed source photos at build time, never hand-authored.
-public/images/parks/**/*-16x9.jpg
-public/images/parks/**/*-4x3.jpg
-public/images/parks/**/*-1x1.jpg
+public/media/**/*-16x9.jpg
+public/media/**/*-4x3.jpg
+public/media/**/*-1x1.jpg
 
 *.md
 *.txt
@@ -76,6 +85,8 @@ public/images/parks/**/*-1x1.jpg
 !/docs/*.md
 !/docs/**/*.md
 !CLAUDE.md
+# The media database's authoring contract lives next to the files it describes.
+!/public/media/README.md
 package-lock.json
 
 # impeccable design tooling — keep shared config (.impeccable/config.json,

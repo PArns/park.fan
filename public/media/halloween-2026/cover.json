@@ -1,0 +1,29 @@
+{
+  "title": "Kürbisphönix",
+  "park": "walibi-holland",
+  "tags": ["fog", "halloween", "night", "outdoor", "photo", "theming"],
+  "alt": {
+    "de": "Ein Phönix aus hunderten leuchtenden Kürbissen mit ausgebreiteten Flügeln, davor eine Person am Geländer.",
+    "en": "A phoenix built from hundreds of glowing pumpkins, wings spread, a person at the railing in front.",
+    "es": "Un fénix hecho de cientos de calabazas iluminadas, con las alas abiertas y una persona en la barandilla.",
+    "fr": "Un phénix fait de centaines de citrouilles lumineuses, ailes déployées, une personne à la balustrade devant.",
+    "it": "Una fenice fatta di centinaia di zucche illuminate, ali spiegate, davanti una persona alla ringhiera.",
+    "nl": "Een feniks van honderden oplichtende pompoenen met gespreide vleugels, ervoor iemand bij het hek."
+  },
+  "caption": {
+    "de": "Der Kürbisphönix, die größte Einzelfigur der Halloween-Dekoration.",
+    "en": "The pumpkin phoenix, the biggest single piece of the Halloween decoration.",
+    "es": "El fénix de calabazas, la pieza más grande de la decoración de Halloween.",
+    "fr": "Le phénix de citrouilles, la plus grande pièce du décor d'Halloween.",
+    "it": "La fenice di zucche, il pezzo più grande della decorazione di Halloween.",
+    "nl": "De pompoenfeniks, het grootste losse object van de halloweendecoratie."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.5,
+    "y": 0.42
+  }
+}

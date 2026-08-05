@@ -29,7 +29,7 @@ tags:
   - efteling
 category: guides
 coverImage:
-  src: /blog/images/halloween-parks-2026/cover.jpg
+  src: /media/halloween-2026/cover.jpg
   alt: 'A giant phoenix formed from thousands of glowing pumpkins with wings spread wide at night, a performer with a sledgehammer in front of it'
   caption: 'A phoenix made of thousands of glowing pumpkins: this is how a park rolls out its Halloween décor.'
 seo:
@@ -98,7 +98,7 @@ for the first time**. Anyone who's ever been driven through the “Streets of Ne
 York” on an October Saturday, between drifting fog and a screeching chainsaw,
 gets the cult appeal.
 
-![Abandoned trailer with wooden crates in the morning fog | A lone trailer in the morning fog. Rarely a good sign. | wide](/blog/images/halloween-parks-2026/beispiel-wohnwagen.jpg)
+![Abandoned trailer with wooden crates in the morning fog | A lone trailer in the morning fog. Rarely a good sign. | wide](/media/halloween-2026/beispiel-wohnwagen.jpg)
 
 Two of the nine are new. **Blood Moon Trailer Park** sets up five hours' drive
 north of Los Angeles on the edge of Yosemite: an abandoned, decaying trailer
@@ -131,7 +131,7 @@ separately**. Budget for it.
 Dates, maze line-up and ticket tiers are on the
 [official Halloween Horror Festival page](https://www.movieparkgermany.de/en/halloween).
 
-```gallery-widget folder=/blog/images/halloween-parks-2026/impressionen-kinderwelt heading="Broken Kids' World"
+```gallery-widget folder=/media/halloween-2026/impressionen-kinderwelt heading="Broken Kids' World"
 
 ```
 
@@ -220,7 +220,7 @@ damage.” You lose your bearings completely, and that's exactly the point.
 Taking your trousers off in a theme park is the most normal thing that happens
 to you that evening.
 
-![Performer in a welding mask and leather apron in front of a container door | The butcher is already waiting. And no, that's not a welcoming committee. | left](/blog/images/halloween-parks-2026/beispiel-metzger.jpg)
+![Performer in a welding mask and leather apron in front of a container door | The butcher is already waiting. And no, that's not a welcoming committee. | left](/media/halloween-2026/beispiel-metzger.jpg)
 
 The secret star of the collection is **Slaughterhouse**, a meat
 processing plant in which you take the role of the raw material. First you're
@@ -248,7 +248,7 @@ Current line-up and dates: [walibi.nl/halloween](https://www.walibi.nl/halloween
 
 ### Bobbejaanland: cinema you can walk into
 
-![Performer as a broken porcelain doll in front of a colourful kids' world fence | It's always the dolls. | right](/blog/images/halloween-parks-2026/beispiel-porzellanpuppe.jpg)
+![Performer as a broken porcelain doll in front of a colourful kids' world fence | It's always the dolls. | right](/media/halloween-2026/beispiel-porzellanpuppe.jpg)
 
 Belgium's [Bobbejaanland](ref:bobbejaanland) opened its largest spook house
 ever in 2025, and it carries on into 2026: **“Paranormal Activity: Next of
@@ -269,7 +269,7 @@ in one”, this is one of the most rewarding addresses across the border.
 
 [Bobbejaanland](ref:bobbejaanland?full)
 
-```gallery-widget folder=/blog/images/halloween-parks-2026/impressionen-darsteller heading="The performers"
+```gallery-widget folder=/media/halloween-2026/impressionen-darsteller heading="The performers"
 
 ```
 
@@ -282,7 +282,7 @@ more harmless “Halloween Days” run alongside during the day), with six scare
 zones and six haunted experiences in total, including **“Unmasked”**,
 introduced in 2025, an experience with its own scare zone.
 
-![Performer with a tentacle mask and hand bell in front of the Toverland Halloween Nights banner | The night watchman of the Toverland Halloween Nights. Face: negotiable. | left](/blog/images/halloween-parks-2026/toverland-cthulhu.jpg)
+![Performer with a tentacle mask and hand bell in front of the Toverland Halloween Nights banner | The night watchman of the Toverland Halloween Nights. Face: negotiable. | left](/media/halloween-2026/toverland-cthulhu.jpg)
 
 The real novelty for **2026** is literally growing skywards right now, and it
 isn't even inside the park: **“Entwined: The Maze”**, a **seven-hectare maize
@@ -312,7 +312,7 @@ Details on experiences, scare zones and the Fear Pass:
 
 ### Walibi Belgium: “Ibilaw”
 
-![Clown in a fez at the knife-throwing stall by day | A clown. At the knife-throwing stall. Two fears for the price of one. | right](/blog/images/halloween-parks-2026/beispiel-fez-clown.jpg)
+![Clown in a fez at the knife-throwing stall by day | A clown. At the knife-throwing stall. Two fears for the price of one. | right](/media/halloween-2026/beispiel-fez-clown.jpg)
 
 The second Walibi joins in too: [Walibi Belgium](ref:walibi-belgium) in Wavre
 turns its autumn into **“Ibilaw”**, and the name is already the first little
@@ -363,7 +363,7 @@ end-times mood is usually part of it. Ideal for family harmony: everyone rides
 coasters together during the day, and whoever is old and brave enough
 disappears into a maze in the evening while the rest hold on to a bratwurst.
 
-![Rusty military truck in front of transmission towers and barriers by day | Welcome to the zombie zone. The reception is … rustic. | wide](/blog/images/halloween-parks-2026/beispiel-endzeit-truck.jpg)
+![Rusty military truck in front of transmission towers and barriers by day | Welcome to the zombie zone. The reception is … rustic. | wide](/media/halloween-2026/beispiel-endzeit-truck.jpg)
 
 [Heide-Park](ref:heide-park?full)
 
@@ -448,7 +448,7 @@ and in the fringe weeks of the season it's noticeably calmer (and the performers
 have more time to attend to _you_ exclusively, which is either an advantage or
 a drawback depending on your point of view).
 
-![Illuminated Psycho Circus archway with a crowd at night | A busy night: from here on you queue more than you'd like. | wide](/blog/images/halloween-parks-2026/beispiel-psycho-circus.jpg)
+![Illuminated Psycho Circus archway with a crowd at night | A busy night: from here on you queue more than you'd like. | wide](/media/halloween-2026/beispiel-psycho-circus.jpg)
 
 Rather than guessing, check the **quietest upcoming days** for your park of
 choice from our AI crowd calendar:
@@ -474,7 +474,7 @@ from real measured data of recent seasons, the statistics supply as well:
 
 ```
 
-```gallery-widget folder=/blog/images/halloween-parks-2026/impressionen-kulissen heading="Sets and zones"
+```gallery-widget folder=/media/halloween-2026/impressionen-kulissen heading="Sets and zones"
 
 ```
 

@@ -1,0 +1,32 @@
+{
+  "title": "blue fire Megacoaster",
+  "park": "europa-park",
+  "ride": "blue-fire-megacoaster",
+  "area": "Iceland",
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "night", "outdoor", "photo", "ride"],
+  "alt": {
+    "de": "Der Looping von blue fire bei Nacht, blau angeleuchtet.",
+    "en": "blue fire's loop at night, lit blue.",
+    "es": "El looping de blue fire de noche, iluminado de azul.",
+    "fr": "La boucle de blue fire la nuit, éclairée en bleu.",
+    "it": "Il looping di blue fire di notte, illuminato di blu.",
+    "nl": "De looping van blue fire bij nacht, blauw aangelicht."
+  },
+  "caption": {
+    "de": "blue fire bei Nacht, dahinter Wodan.",
+    "en": "blue fire at night, Wodan behind it.",
+    "es": "blue fire de noche, con Wodan detrás.",
+    "fr": "blue fire de nuit, Wodan à l'arrière.",
+    "it": "blue fire di notte, con Wodan dietro.",
+    "nl": "blue fire bij nacht, met Wodan erachter."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.47,
+    "y": 0.33
+  }
+}

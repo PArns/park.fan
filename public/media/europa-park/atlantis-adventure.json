@@ -1,0 +1,32 @@
+{
+  "title": "Atlantis Adventure",
+  "park": "europa-park",
+  "ride": "atlantis-adventure",
+  "area": "Scandinavia",
+  "roles": ["ride-card", "hero"],
+  "tags": ["day", "entrance", "outdoor", "photo", "ride", "signage"],
+  "alt": {
+    "de": "Das Schild „Abenteuer Atlantis“ mit zwei geschnitzten Köpfen über dem Eingang.",
+    "en": "The \"Abenteuer Atlantis\" sign with two carved heads above the entrance.",
+    "es": "El cartel \"Abenteuer Atlantis\" con dos cabezas talladas sobre la entrada.",
+    "fr": "L'enseigne « Abenteuer Atlantis » et deux têtes sculptées au-dessus de l'entrée.",
+    "it": "L'insegna \"Abenteuer Atlantis\" con due teste intagliate sopra l'ingresso.",
+    "nl": "Het bord \"Abenteuer Atlantis\" met twee gesneden koppen boven de ingang."
+  },
+  "caption": {
+    "de": "Abenteuer Atlantis in Skandinavien.",
+    "en": "Abenteuer Atlantis in the Scandinavian area.",
+    "es": "Abenteuer Atlantis, zona escandinava.",
+    "fr": "Abenteuer Atlantis, zone scandinave.",
+    "it": "Abenteuer Atlantis, area scandinava.",
+    "nl": "Abenteuer Atlantis in Scandinavië."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.5,
+    "y": 0.4
+  }
+}

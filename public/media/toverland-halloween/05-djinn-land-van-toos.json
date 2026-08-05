@@ -1,0 +1,29 @@
+{
+  "park": "toverland",
+  "ride": "djinn",
+  "tags": ["flat-ride", "indoor", "night", "photo", "ride", "theming"],
+  "alt": {
+    "de": "Ein beleuchtetes Kettenkarussell in einer Halle dreht sich, die Gondeln sind verwischt.",
+    "en": "A lit swing carousel turning inside a hall, the seats blurred by the motion.",
+    "es": "Un carrusel volador iluminado gira dentro de una nave, con las sillas movidas.",
+    "fr": "Un carrousel volant illuminé tourne dans un hall, les nacelles floues.",
+    "it": "Una giostra a catenelle illuminata gira in una sala, i seggiolini mossi.",
+    "nl": "Een verlichte zweefmolen draait in een hal, de bakjes zijn bewogen."
+  },
+  "caption": {
+    "de": "Djinn im Land van Toos.",
+    "en": "Djinn in the Land van Toos.",
+    "es": "Djinn, en el Land van Toos.",
+    "fr": "Djinn, dans le Land van Toos.",
+    "it": "Djinn, nel Land van Toos.",
+    "nl": "Djinn in het Land van Toos."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.48,
+    "y": 0.4
+  }
+}

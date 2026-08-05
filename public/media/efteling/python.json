@@ -1,0 +1,31 @@
+{
+  "title": "Python",
+  "park": "efteling",
+  "ride": "python",
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "night", "outdoor", "photo", "ride"],
+  "alt": {
+    "de": "Die Loopings von Python bei Nacht, violett angeleuchtet.",
+    "en": "Python's loops at night, lit violet.",
+    "es": "Los loopings de Python de noche, iluminados de violeta.",
+    "fr": "Les loopings de Python la nuit, éclairés en violet.",
+    "it": "I looping di Python di notte, illuminati di viola.",
+    "nl": "De loopings van Python bij nacht, paars aangelicht."
+  },
+  "caption": {
+    "de": "Python bei Nacht.",
+    "en": "Python at night.",
+    "es": "Python de noche.",
+    "fr": "Python de nuit.",
+    "it": "Python di notte.",
+    "nl": "Python bij nacht."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.45,
+    "y": 0.3
+  }
+}

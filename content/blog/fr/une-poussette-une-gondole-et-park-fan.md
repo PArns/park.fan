@@ -25,7 +25,7 @@ rideLinks:
   - phantasialand/taron
   - phantasialand/maus-au-chocolat
 coverImage:
-  src: /blog/images/welcome-cover.jpg
+  src: /media/universal-islands-of-adventure/welcome-cover.jpg
   alt: 'Looping du Velocicoaster devant le château de Poudlard, Islands of Adventure, Orlando'
   caption: 'Islands of Adventure à Orlando : le Velocicoaster en plein looping, le château de Poudlard derrière.'
 seo:
@@ -97,7 +97,7 @@ partagés me sont devenus si précieux. Ils maintiennent mon enfance en vie, et
 avec elle le souvenir de l'homme qui glissait alors à côté de moi à travers ces
 mondes.
 
-![Silhouette de montagnes russes au Movie Park Germany la nuit, éclairée de violet et de bleu | Le Movie Park Germany de nuit. Lethal Weapon Pursuit se dressait ici jusqu’en 2006. | left](/images/parks/movie-park-germany/background.jpg)
+![Silhouette de montagnes russes au Movie Park Germany la nuit, éclairée de violet et de bleu | Le Movie Park Germany de nuit. Lethal Weapon Pursuit se dressait ici jusqu’en 2006. | left](/media/movie-park-germany/iron-claw.jpg)
 
 Quand mon père repartait sur la route comme chauffeur routier, ma mère prenait
 tout simplement le volant. C'est avec elle que j'ai découvert beaucoup
@@ -149,7 +149,7 @@ Most Immersive Theme Park ».
 
 ## Orlando, mai 2026, une fois dans une vie
 
-![Tête de vélociraptor animatronique dans l’enclos des raptors du VelociCoaster, éclairé de rouge | Islands of Adventure : le raptor dans son enclos, à portée de main. | right](/blog/images/velocicoaster/02-raptor-paddock.jpg)
+![Tête de vélociraptor animatronique dans l’enclos des raptors du VelociCoaster, éclairé de rouge | Islands of Adventure : le raptor dans son enclos, à portée de main. | right](/media/velocicoaster/02-raptor-paddock.jpg)
 
 Restait ce grand point sur la liste d'une vie devant lequel la case demeurait
 obstinément vide. En mai 2026, nous avons enfin pris l'avion pour
@@ -187,7 +187,7 @@ rencontrer.
 
 ## Le moment dans la file de Taron
 
-![Taron fonce entre les colonnes de basalte de la zone thématique Klugheim | Taron en plein parcours dans Klugheim. Je suis resté soixante minutes devant cette attraction. | left](/images/parks/phantasialand/taron-4x3.jpg)
+![Taron fonce entre les colonnes de basalte de la zone thématique Klugheim | Taron en plein parcours dans Klugheim. Je suis resté soixante minutes devant cette attraction. | left](/media/phantasialand/taron-4x3.jpg)
 
 Jusqu'à cet après-midi-là, que pratiquement chaque fan de parc connaît sous une
 variante ou une autre. Soixante minutes de file standby à
@@ -303,7 +303,7 @@ différentes.
   après l'ouverture ? Soit une journée de rêve, soit les foules se sont enfin
   dispersées.
 
-![Voltron Nevera à l’envers au-dessus d’une façade illuminée, de nuit | Voltron Nevera à l'Europa-Park. La norme tourne ici autour de 45 minutes, 70 et plus les jours de pointe. | right](/images/parks/europa-park/voltron-nevera-powered-by-rimac.jpg)
+![Voltron Nevera à l’envers au-dessus d’une façade illuminée, de nuit | Voltron Nevera à l'Europa-Park. La norme tourne ici autour de 45 minutes, 70 et plus les jours de pointe. | right](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 Le chiffre est dans le graphique. L'histoire derrière se trouve désormais ici,
 sous trois formes.

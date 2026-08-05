@@ -1,0 +1,24 @@
+{
+  "park": "walibi-holland",
+  "tags": ["halloween", "photo", "theming"],
+  "alt": {
+    "de": "Pink beleuchtetes Spukhaus „The Dollhouse“ mit einer Puppenfigur auf dem Balkon",
+    "en": "Pink-lit haunted house “The Dollhouse” with a doll figure on the balcony",
+    "es": "Casa del terror «The Dollhouse» iluminada de rosa, con una figura de muñeca en el balcón",
+    "fr": "Maison hantée « The Dollhouse » éclairée en rose, avec une poupée sur le balcon",
+    "it": "Casa infestata “The Dollhouse” illuminata di rosa con una bambola sul balcone",
+    "nl": "Roze verlicht spookhuis “The Dollhouse” met een popfiguur op het balkon"
+  },
+  "caption": {
+    "de": "The Dollhouse. Und ja, die Puppe auf dem Balkon guckt zurück.",
+    "en": "The Dollhouse. And yes, the doll on the balcony is looking back.",
+    "es": "The Dollhouse: y sí, la muñeca del balcón te devuelve la mirada.",
+    "fr": "The Dollhouse. Et oui, la poupée sur le balcon te regarde en retour.",
+    "it": "The Dollhouse. E sì, la bambola sul balcone ti guarda a sua volta.",
+    "nl": "The Dollhouse. En ja, de pop op het balkon kijkt terug."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

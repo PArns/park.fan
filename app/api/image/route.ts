@@ -1,20 +1,28 @@
-import { access } from 'node:fs/promises';
-import path from 'node:path';
-
 import { NextRequest, NextResponse } from 'next/server';
+
+import { getParkBackground, getRideImage } from '@/lib/media';
+import { versionedSrc } from '@/lib/media/focus';
 
 /**
  * Park / attraction image delivery for external clients (e.g. the native app).
  *
- * Resolves a park/attraction slug to its on-disk source under
- * `public/images/parks/<park>/<base>.<ext>` and redirects to Next.js' built-in
- * image optimizer, which serves AVIF/WebP at the requested width & quality with
- * an immutable 1-year cache. No image processing (or `sharp`) is done here — we
- * lean on the optimizer the rest of the app already uses.
+ * Resolves a park/attraction slug through the media database and redirects to
+ * Next.js' built-in image optimizer, which serves AVIF/WebP at the requested
+ * width & quality with an immutable 1-year cache. No image processing (or
+ * `sharp`) is done here — we lean on the optimizer the rest of the app uses.
  *
- *   GET /api/image?park=europa-park            → park hero (background.jpg)
+ *   GET /api/image?park=europa-park            → park background
  *   GET /api/image?park=europa-park&attraction=blue-fire-megacoaster
  *   GET /api/image?park=europa-park&w=400&q=75
+ *
+ * The lookup used to probe `public/images/parks/<park>/<slug>.<ext>` on disk,
+ * which tied a ride's photo to its filename; the database resolves by role
+ * instead, so a ride whose photo is filed under any name still answers, and a
+ * ride with only a Halloween shot gets that rather than a 404.
+ *
+ * Prefer `/api/media` for anything richer — it returns the metadata, the focal
+ * point and the pre-cut aspect variants. This route stays for clients that just
+ * want bytes at a size.
  */
 
 // Keep in sync with next.config.ts `images.{deviceSizes ∪ imageSizes, qualities}`.
@@ -23,8 +31,6 @@ const ALLOWED_WIDTHS = [32, 48, 64, 96, 128, 256, 384, 640, 828, 1080, 1200, 192
 const ALLOWED_QUALITIES = [50, 60, 75, 85, 90];
 
 const SLUG_RE = /^[a-z0-9-]+$/; // blocks path traversal (no '/', '.', '..')
-const SOURCE_EXTS = ['jpg', 'jpeg', 'png', 'webp'];
-const PUBLIC_DIR = path.join(process.cwd(), 'public');
 
 function toInt(value: string | null, fallback: number): number {
   const n = value ? Number.parseInt(value, 10) : NaN;
@@ -42,20 +48,6 @@ function snapQuality(quality: number): number {
   );
 }
 
-/** Find the real source path (extension may vary), or null if none exists. */
-async function resolveSource(park: string, base: string): Promise<string | null> {
-  for (const ext of SOURCE_EXTS) {
-    const rel = `/images/parks/${park}/${base}.${ext}`;
-    try {
-      await access(path.join(PUBLIC_DIR, rel));
-      return rel;
-    } catch {
-      // try next extension
-    }
-  }
-  return null;
-}
-
 export async function GET(request: NextRequest) {
   const params = new URL(request.url).searchParams;
   const park = (params.get('park') ?? '').toLowerCase();
@@ -65,16 +57,18 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'Invalid slug' }, { status: 400 });
   }
 
-  const base = attraction ?? 'background';
-  const source = await resolveSource(park, base);
-  if (!source) {
+  const image = attraction ? getRideImage(park, attraction) : getParkBackground(park);
+  if (!image) {
     return NextResponse.json({ error: 'Image not found' }, { status: 404 });
   }
 
   const width = snapWidth(Math.min(Math.max(toInt(params.get('w'), 828), 16), 3840));
   const quality = snapQuality(Math.min(Math.max(toInt(params.get('q'), 75), 1), 100));
 
+  // The versioned source keeps the optimizer's cache key tied to the actual
+  // pixels, so a replaced photo or a retargeted crop is picked up immediately
+  // instead of being pinned by the 1-year rendition cache.
+  const target = `/_next/image?url=${encodeURIComponent(versionedSrc(image))}&w=${width}&q=${quality}`;
   // The optimizer response carries the immutable long-lived cache headers.
-  const target = `/_next/image?url=${encodeURIComponent(source)}&w=${width}&q=${quality}`;
   return NextResponse.redirect(new URL(target, request.url), 307);
 }

@@ -324,7 +324,7 @@ export async function MockParkHeader({ locale }: { locale: MockLocale }) {
           their square corners bleed over the image. */}
       <div className="absolute inset-0 z-0 overflow-hidden rounded-xl border">
         <BackgroundOverlay
-          imageSrc="/images/parks/phantasialand/background.jpg"
+          imageSrc="/media/phantasialand/background.jpg"
           alt="Phantasialand"
           intensity="medium"
         />
@@ -494,9 +494,9 @@ export async function MockAttractionCards(_props: { locale: MockLocale }) {
   ];
 
   const backgrounds: Record<string, string> = {
-    taron: '/images/parks/phantasialand/taron.jpg',
-    'black-mamba': '/images/parks/phantasialand/black-mamba.jpg',
-    raik: '/images/parks/phantasialand/raik.jpg',
+    taron: '/media/phantasialand/taron.jpg',
+    'black-mamba': '/media/phantasialand/black-mamba.jpg',
+    raik: '/media/phantasialand/raik.jpg',
   };
 
   return (
@@ -591,7 +591,7 @@ export async function MockNearbyCards(_props: { locale: MockLocale }) {
         country="Germany"
         translateCountry
         href={'/europe/germany/bruehl/phantasialand' as '/'}
-        backgroundImage="/images/parks/phantasialand/background.jpg"
+        backgroundImage="/media/phantasialand/background.jpg"
         status="OPERATING"
         crowdLevel="high"
         averageWaitTime={45}
@@ -614,7 +614,7 @@ export async function MockNearbyCards(_props: { locale: MockLocale }) {
         country="Germany"
         translateCountry
         href={'/europe/germany/rust/europa-park' as '/'}
-        backgroundImage="/images/parks/europa-park/background.jpg"
+        backgroundImage="/media/europa-park/background.jpg"
         status="CLOSED"
         distance={124000}
         timezone="Europe/Berlin"

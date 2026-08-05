@@ -1,0 +1,24 @@
+{
+  "park": "walibi-holland",
+  "tags": ["halloween", "night", "performer", "photo"],
+  "alt": {
+    "de": "Clown-Darsteller mit fahrbarer Kanone vor einem Dracula-4D-Kino bei Nacht",
+    "en": "Clown performer with a wheeled cannon in front of a Dracula 4D cinema at night",
+    "es": "Actor payaso con un cañón con ruedas ante un cine Dracula 4D, de noche",
+    "fr": "Acteur clown avec un canon sur roues devant un cinéma Dracula 4D, la nuit",
+    "it": "Attore clown con un cannone su ruote davanti a un cinema Dracula 4D di notte",
+    "nl": "Clown-acteur met een verrijdbaar kanon voor een Dracula-4D-bioscoop bij nacht"
+  },
+  "caption": {
+    "de": "Ein Clown mit Kanone vor dem Dracula-Kino. Alles völlig normal hier.",
+    "en": "A clown with a cannon outside the Dracula cinema. All perfectly normal here.",
+    "es": "Un payaso con cañón ante el cine de Drácula. Aquí todo completamente normal.",
+    "fr": "Un clown avec un canon devant le cinéma Dracula. Tout est parfaitement normal ici.",
+    "it": "Un clown con un cannone davanti al cinema di Dracula. Tutto perfettamente normale qui.",
+    "nl": "Een clown met een kanon voor de Dracula-bioscoop. Allemaal volkomen normaal hier."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

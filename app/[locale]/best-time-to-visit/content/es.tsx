@@ -152,7 +152,7 @@ export function ContentES() {
           ]}
         />
         <SplitFigure
-          src="/images/parks/phantasialand/black-mamba.jpg"
+          src="/media/phantasialand/black-mamba.jpg"
           alt="Black Mamba surcando la jungla en Phantasialand"
           kicker="Rope drop"
           title="La primera hora es de oro"
@@ -176,7 +176,7 @@ export function ContentES() {
           aglomeraciones — prevélas, o planifica esquivándolas:
         </PG>
         <SplitFigure
-          src="/images/parks/walibi-holland/goliath.jpg"
+          src="/media/walibi-holland/goliath.jpg"
           alt="La montaña rusa Goliath en Walibi Holland en un día concurrido"
           kicker="Día punta"
           title="Sol, todos libres, todos aquí"
@@ -265,7 +265,7 @@ export function ContentES() {
           delante, con las vacaciones y festivos de la región correspondiente.
         </P>
         <SplitFigure
-          src="/images/parks/efteling/symbolica.jpg"
+          src="/media/efteling/symbolica.jpg"
           alt="La atracción del palacio Symbolica en Efteling"
           kicker="Verde, amarillo, rojo"
           title="Un color por día, un año por delante"

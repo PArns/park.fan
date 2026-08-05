@@ -61,6 +61,8 @@ export interface NearbyParkInfo {
   todaySchedule?: ScheduleSummary;
   nextSchedule?: ScheduleSummary;
   backgroundImage?: string | null;
+  /** Focal point as a CSS `object-position`, resolved server-side. */
+  backgroundPosition?: string;
 }
 
 export interface NearbyAttractionsData {
@@ -90,6 +92,8 @@ export interface ParkWithDistance {
   todaySchedule?: ScheduleSummary;
   nextSchedule?: ScheduleSummary;
   backgroundImage?: string | null;
+  /** Focal point as a CSS `object-position`, resolved server-side. */
+  backgroundPosition?: string;
 }
 
 export interface NearbyParksData {

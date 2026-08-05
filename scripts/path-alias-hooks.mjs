@@ -20,14 +20,36 @@ const SUFFIXES = [
   '/index.js',
 ];
 
-export async function resolve(specifier, context, nextResolve) {
-  if (specifier.startsWith('@/')) {
-    const base = join(projectRoot, specifier.slice(2));
-    for (const candidate of [base, ...SUFFIXES.map((s) => base + s)]) {
-      if (existsSync(candidate) && statSync(candidate).isFile()) {
-        return nextResolve(pathToFileURL(candidate).href, context);
-      }
-    }
+/** First existing file for `base` + one of the known suffixes, or null. */
+function probe(base) {
+  for (const candidate of [base, ...SUFFIXES.map((s) => base + s)]) {
+    if (existsSync(candidate) && statSync(candidate).isFile()) return candidate;
   }
+  return null;
+}
+
+export async function resolve(specifier, context, nextResolve) {
+  // `server-only` is a Next.js build-time marker, not an installed package: it
+  // exists to make a client bundle fail loudly, and there is no client bundle
+  // here. Stubbing it is what lets a server module be tested at all — the
+  // alternative is dropping the marker from modules that genuinely must not ship
+  // to the browser, which trades a real safeguard for a test convenience.
+  if (specifier === 'server-only') {
+    return { url: 'data:text/javascript,export {}', shortCircuit: true };
+  }
+
+  if (specifier.startsWith('@/')) {
+    const resolved = probe(join(projectRoot, specifier.slice(2)));
+    if (resolved) return nextResolve(pathToFileURL(resolved).href, context);
+  }
+
+  // Extensionless RELATIVE imports (`./manifest`) resolve under TypeScript and
+  // Next but not under bare Node ESM, so a module that uses them is unreachable
+  // from these test scripts unless the same probing is applied to them too.
+  if ((specifier.startsWith('./') || specifier.startsWith('../')) && context.parentURL) {
+    const resolved = probe(join(dirname(fileURLToPath(context.parentURL)), specifier));
+    if (resolved) return nextResolve(pathToFileURL(resolved).href, context);
+  }
+
   return nextResolve(specifier, context);
 }

@@ -1,0 +1,31 @@
+{
+  "title": "Villa Fiasko",
+  "park": "toverland",
+  "ride": "villa-fiasko",
+  "roles": ["ride-card", "hero"],
+  "tags": ["halloween", "indoor", "night", "photo", "ride", "theming"],
+  "alt": {
+    "de": "Eine Darstellerin auf dem Balkon über dem Schild „The Dollhouse“.",
+    "en": "A performer on the balcony above a \"The Dollhouse\" sign.",
+    "es": "Una actriz en el balcón sobre el cartel \"The Dollhouse\".",
+    "fr": "Une comédienne sur le balcon au-dessus de l'enseigne « The Dollhouse ».",
+    "it": "Un'attrice sul balcone sopra l'insegna \"The Dollhouse\".",
+    "nl": "Een acteur op het balkon boven het bord \"The Dollhouse\"."
+  },
+  "caption": {
+    "de": "Villa Fiasko heißt in den Halloween Nights „The Dollhouse“.",
+    "en": "During Halloween Nights, Villa Fiasko becomes \"The Dollhouse\".",
+    "es": "En las Halloween Nights, Villa Fiasko pasa a ser \"The Dollhouse\".",
+    "fr": "Pendant les Halloween Nights, Villa Fiasko devient « The Dollhouse ».",
+    "it": "Durante le Halloween Nights, Villa Fiasko diventa \"The Dollhouse\".",
+    "nl": "Tijdens de Halloween Nights heet Villa Fiasko \"The Dollhouse\"."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.49,
+    "y": 0.5
+  }
+}

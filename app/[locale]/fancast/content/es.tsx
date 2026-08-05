@@ -200,7 +200,7 @@ export function ContentES() {
           de cómo los mismos ingredientes se convierten en tres previsiones completamente distintas:
         </P>
         <SplitFigure
-          src="/images/parks/europa-park/silver-star.jpg"
+          src="/media/europa-park/silver-star.jpg"
           alt="Silver Star en Europa-Park"
           kicker="Europa-Park · día puente de octubre"
           title="Tranquilo, verde, menos de 30 minutos"
@@ -213,7 +213,7 @@ export function ContentES() {
           solos.
         </SplitFigure>
         <SplitFigure
-          src="/images/parks/phantasialand/taron.jpg"
+          src="/media/phantasialand/taron.jpg"
           alt="Taron surcando Klugheim en Phantasialand"
           kicker="Phantasialand · sábado de vacaciones"
           title="Compacto, lleno, de naranja a rojo"
@@ -226,7 +226,7 @@ export function ContentES() {
           montar en Taron una y otra vez en lugar de solo suspirar por él.
         </SplitFigure>
         <SplitFigure
-          src="/images/parks/efteling/baron-1898.jpg"
+          src="/media/efteling/baron-1898.jpg"
           alt="Baron 1898 en Efteling"
           kicker="Efteling · martes lluvioso de noviembre"
           title="El consejo secreto que el modelo ya tiene en cuenta"

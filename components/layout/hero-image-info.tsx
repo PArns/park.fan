@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-import type { HeroImageMeta } from '@/lib/hero-images-meta';
+import type { HeroImageMeta } from '@/lib/media/hero';
 import { HeroImageInfoPanel } from '@/components/layout/hero-image-info-panel';
 
 interface HeroImageInfoProps {

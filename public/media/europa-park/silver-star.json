@@ -1,0 +1,32 @@
+{
+  "title": "Silver Star",
+  "park": "europa-park",
+  "ride": "silver-star",
+  "area": "France",
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "dusk", "outdoor", "photo", "ride", "summer"],
+  "alt": {
+    "de": "Lifthill und erste Abfahrt von Silver Star über den Baumkronen, Abendhimmel.",
+    "en": "Silver Star's lift hill and first drop above the treetops at dusk.",
+    "es": "La rampa y la primera caída de Silver Star sobre los árboles, cielo de atardecer.",
+    "fr": "Le lift et la première descente de Silver Star au-dessus des arbres, ciel du soir.",
+    "it": "Lift e prima discesa di Silver Star sopra gli alberi, cielo della sera.",
+    "nl": "Lifthill en eerste afdaling van Silver Star boven de boomtoppen, avondlucht."
+  },
+  "caption": {
+    "de": "Silver Star am Abend.",
+    "en": "Silver Star in the evening.",
+    "es": "Silver Star al atardecer.",
+    "fr": "Silver Star en soirée.",
+    "it": "Silver Star di sera.",
+    "nl": "Silver Star in de avond."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.55,
+    "y": 0.24
+  }
+}

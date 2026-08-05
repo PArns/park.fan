@@ -1,0 +1,29 @@
+{
+  "title": "Clown im Fez",
+  "park": "walibi-holland",
+  "tags": ["day", "halloween", "outdoor", "overcast", "performer", "photo"],
+  "alt": {
+    "de": "Ein Darsteller im Clownskostüm mit Fez und grün glitzerndem Bart sitzt am Rand einer Bühne, links eine blutverschmierte Zielscheibe.",
+    "en": "A performer in a clown costume with a fez and glittering green beard sitting on the edge of a stage, a blood-smeared target to the left.",
+    "es": "Un actor con disfraz de payaso, fez y barba verde con purpurina, sentado al borde de un escenario, con una diana ensangrentada a la izquierda.",
+    "fr": "Un comédien en clown, fez sur la tête et barbe verte pailletée, assis au bord d'une scène, une cible ensanglantée à gauche.",
+    "it": "Un attore in costume da clown, con fez e barba verde glitterata, seduto sul bordo di un palco, a sinistra un bersaglio insanguinato.",
+    "nl": "Een acteur in clownskostuum met fez en glitterende groene baard zit op de rand van een podium, links een bebloed schietschijf."
+  },
+  "caption": {
+    "de": "Pause zwischen zwei Shows.",
+    "en": "A break between two shows.",
+    "es": "Un descanso entre dos pases.",
+    "fr": "Une pause entre deux spectacles.",
+    "it": "Una pausa tra due spettacoli.",
+    "nl": "Pauze tussen twee shows."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.65,
+    "y": 0.42
+  }
+}

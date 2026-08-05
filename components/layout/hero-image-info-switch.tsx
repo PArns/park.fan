@@ -4,7 +4,7 @@ import type { ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 import { useHeroRotation } from '@/components/layout/hero-rotation-context';
 import { HeroImageInfoPanel } from '@/components/layout/hero-image-info-panel';
-import { HERO_IMAGE_META } from '@/lib/hero-images-meta';
+import { getHeroMetaBySrc } from '@/lib/media/hero';
 
 /**
  * Hero image attribution that follows the rotation: when the user is in a park, it captions the
@@ -15,7 +15,7 @@ export function HeroImageInfoSwitch({ children }: { children: ReactNode }) {
   const { activeSrc } = useHeroRotation();
   const tGeo = useTranslations('geo');
 
-  const meta = activeSrc ? HERO_IMAGE_META[activeSrc] : undefined;
+  const meta = activeSrc ? getHeroMetaBySrc(activeSrc) : null;
   if (meta) {
     const country = tGeo.has(`countries.${meta.countrySlug}`)
       ? tGeo(`countries.${meta.countrySlug}` as never)

@@ -1,0 +1,31 @@
+{
+  "title": "Symbolica",
+  "park": "efteling",
+  "ride": "symbolica",
+  "roles": ["park-background", "ride-card", "hero"],
+  "tags": ["dark-ride", "night", "outdoor", "photo", "ride", "theming", "winter"],
+  "alt": {
+    "de": "Das Schloss von Symbolica bei Nacht, blau angeleuchtet, davor ein Springbrunnen.",
+    "en": "The Symbolica palace at night, lit blue, with a fountain in front.",
+    "es": "El palacio de Symbolica de noche, iluminado de azul, con una fuente delante.",
+    "fr": "Le palais de Symbolica la nuit, éclairé en bleu, une fontaine devant.",
+    "it": "Il palazzo di Symbolica di notte, illuminato di blu, con una fontana davanti.",
+    "nl": "Het paleis van Symbolica bij nacht, blauw aangelicht, met een fontein ervoor."
+  },
+  "caption": {
+    "de": "Symbolica, und links im Bild die Pagode.",
+    "en": "Symbolica, with the Pagode at the left of the frame.",
+    "es": "Symbolica, y a la izquierda la Pagode.",
+    "fr": "Symbolica, et à gauche la Pagode.",
+    "it": "Symbolica, e a sinistra la Pagode.",
+    "nl": "Symbolica, en links in beeld de Pagode."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.5,
+    "y": 0.3
+  }
+}

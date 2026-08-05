@@ -1,0 +1,31 @@
+{
+  "title": "Star Trek™: Operation Enterprise",
+  "park": "movie-park-germany",
+  "ride": "star-trek-operation-enterprise",
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "halloween", "night", "outdoor", "photo", "ride"],
+  "alt": {
+    "de": "Die Strecke von Operation Enterprise bei Nacht, rot angeleuchtet, darunter das Schild „Horrorwood Studios“.",
+    "en": "Operation Enterprise's track at night, lit red, a \"Horrorwood Studios\" sign below it.",
+    "es": "La vía de Operation Enterprise de noche, iluminada de rojo, con el rótulo \"Horrorwood Studios\" debajo.",
+    "fr": "La voie d'Operation Enterprise la nuit, éclairée en rouge, l'enseigne « Horrorwood Studios » en dessous.",
+    "it": "Il tracciato di Operation Enterprise di notte, illuminato di rosso, sotto l'insegna \"Horrorwood Studios\".",
+    "nl": "De baan van Operation Enterprise bij nacht, rood aangelicht, eronder het bord \"Horrorwood Studios\"."
+  },
+  "caption": {
+    "de": "Während des Halloween Horror Festivals heißt der Park Horrorwood Studios.",
+    "en": "During the Halloween Horror Festival the park goes by Horrorwood Studios.",
+    "es": "Durante el Halloween Horror Festival el parque se llama Horrorwood Studios.",
+    "fr": "Pendant le Halloween Horror Festival, le parc s'appelle Horrorwood Studios.",
+    "it": "Durante l'Halloween Horror Festival il parco si chiama Horrorwood Studios.",
+    "nl": "Tijdens het Halloween Horror Festival heet het park Horrorwood Studios."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.5,
+    "y": 0.35
+  }
+}

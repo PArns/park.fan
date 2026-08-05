@@ -29,7 +29,7 @@ tags:
   - efteling
 category: guides
 coverImage:
-  src: /blog/images/halloween-parks-2026/cover.jpg
+  src: /media/halloween-2026/cover.jpg
   alt: 'Reusachtige feniks, gevormd uit duizenden lichtgevende pompoenen met uitgespreide vleugels bij nacht, ervoor een acteur met een voorhamer'
   caption: 'Een feniks uit duizenden lichtgevende pompoenen: zo pakt een park zijn Halloween-decor uit.'
 seo:
@@ -96,7 +96,7 @@ eerst negen horrormazes**. Wie ooit op een oktoberzaterdag tussen mistflarden
 en een gierende kettingzaag door de “Streets of New York” is gejaagd, begrijpt
 de cultstatus.
 
-![Verlaten caravan met houten kisten in de ochtendmist | Een eenzame caravan in de ochtendmist. Zelden een goed teken. | wide](/blog/images/halloween-parks-2026/beispiel-wohnwagen.jpg)
+![Verlaten caravan met houten kisten in de ochtendmist | Een eenzame caravan in de ochtendmist. Zelden een goed teken. | wide](/media/halloween-2026/beispiel-wohnwagen.jpg)
 
 Twee van de negen zijn nieuw. **Blood Moon Trailer Park** speelt zich vijf
 autouren ten noorden van Los Angeles af, aan de rand van Yosemite: een
@@ -128,7 +128,7 @@ apart geboekt worden**. Reken erop in je budget.
 Data, maze-line-up en ticketniveaus staan op de
 [officiële Halloween-Horror-Festival-pagina](https://www.movieparkgermany.de/en/halloween).
 
-```gallery-widget folder=/blog/images/halloween-parks-2026/impressionen-kinderwelt heading="Kapotte kinderwereld"
+```gallery-widget folder=/media/halloween-2026/impressionen-kinderwelt heading="Kapotte kinderwereld"
 
 ```
 
@@ -219,7 +219,7 @@ van een bezoeker, aanzienlijke “spatschade”. Je verliest volledig je oriënt
 en dat is precies de bedoeling. Je broek uittrekken in een pretpark is die
 avond het normaalste wat je overkomt.
 
-![Acteur met lasmasker en leren schort voor een containerdeur | De slager wacht al. En nee, dat is geen welkomstcomité. | left](/blog/images/halloween-parks-2026/beispiel-metzger.jpg)
+![Acteur met lasmasker en leren schort voor een containerdeur | De slager wacht al. En nee, dat is geen welkomstcomité. | left](/media/halloween-2026/beispiel-metzger.jpg)
 
 De heimelijke ster van de verzameling is **Slaughterhouse**, een
 vleesverwerkingsbedrijf waarin jij de rol van grondstof op je neemt. Eerst word
@@ -246,7 +246,7 @@ Actuele line-up en data: [walibi.nl/halloween](https://www.walibi.nl/halloween/e
 
 ### Bobbejaanland: bioscoop om in te lopen
 
-![Actrice als gebroken porseleinen pop voor een kleurrijk kinderwereldhek | Het zijn altijd de poppen. | right](/blog/images/halloween-parks-2026/beispiel-porzellanpuppe.jpg)
+![Actrice als gebroken porseleinen pop voor een kleurrijk kinderwereldhek | Het zijn altijd de poppen. | right](/media/halloween-2026/beispiel-porzellanpuppe.jpg)
 
 Het Belgische [Bobbejaanland](ref:bobbejaanland) opende in 2025 zijn tot dan
 toe grootste spookhuis ooit, en dat draait ook in 2026 door: **“Paranormal
@@ -267,7 +267,7 @@ vervaagt, is dit een van de meest lonende adressen over de grens.
 
 [Bobbejaanland](ref:bobbejaanland?full)
 
-```gallery-widget folder=/blog/images/halloween-parks-2026/impressionen-darsteller heading="De acteurs"
+```gallery-widget folder=/media/halloween-2026/impressionen-darsteller heading="De acteurs"
 
 ```
 
@@ -280,7 +280,7 @@ onschuldigere “Halloween Days” lopen overdag parallel), in totaal zes scare
 zones en zes haunted experiences, waaronder de in 2025 geïntroduceerde
 **“Unmasked”**, een experience met eigen scare zone.
 
-![Acteur met tentakelmasker en handbel voor het Toverland-Halloween-Nights-banner | De nachtwaker van de Toverland Halloween Nights. Gezicht: bespreekbaar. | left](/blog/images/halloween-parks-2026/toverland-cthulhu.jpg)
+![Acteur met tentakelmasker en handbel voor het Toverland-Halloween-Nights-banner | De nachtwaker van de Toverland Halloween Nights. Gezicht: bespreekbaar. | left](/media/halloween-2026/toverland-cthulhu.jpg)
 
 De echte nieuwigheid voor **2026** groeit op dit moment letterlijk de lucht in,
 en ligt niet eens in het park: **“Entwined: The Maze”**, een **zeven hectare
@@ -312,7 +312,7 @@ Details over experiences, scare zones en de Fear Pass:
 
 ### Walibi Belgium: “Ibilaw”
 
-![Clown met fez bij de messenwerpkraam overdag | Een clown. Bij de messenwerpkraam. Twee angsten voor de prijs van één. | right](/blog/images/halloween-parks-2026/beispiel-fez-clown.jpg)
+![Clown met fez bij de messenwerpkraam overdag | Een clown. Bij de messenwerpkraam. Twee angsten voor de prijs van één. | right](/media/halloween-2026/beispiel-fez-clown.jpg)
 
 Ook de tweede Walibi doet mee: [Walibi Belgium](ref:walibi-belgium) in Waver
 verandert zijn herfst in **“Ibilaw”**, en de naam is al de eerste kleine groet:
@@ -365,7 +365,7 @@ gezinsvrede: iedereen rijdt overdag samen achtbaan, en wie oud en dapper genoeg
 is, verdwijnt 's avonds in een maze terwijl de rest zich aan de braadworst
 vasthoudt.
 
-![Roestige legertruck voor zendmasten en afzettingen overdag | Welkom in de zombiezone. De ontvangst is … rustiek. | wide](/blog/images/halloween-parks-2026/beispiel-endzeit-truck.jpg)
+![Roestige legertruck voor zendmasten en afzettingen overdag | Welkom in de zombiezone. De ontvangst is … rustiek. | wide](/media/halloween-2026/beispiel-endzeit-truck.jpg)
 
 [Heide-Park](ref:heide-park?full)
 
@@ -453,7 +453,7 @@ van het seizoen is het merkbaar ontspannener (en hebben de acteurs meer tijd om
 zich exclusief met _jou_ bezig te houden, afhankelijk van je perspectief een
 voor- of nadeel).
 
-![Verlichte poort Psycho Circus met mensenmenigte bij nacht | Volle nacht: vanaf hier sta je meer in de rij dan je lief is. | wide](/blog/images/halloween-parks-2026/beispiel-psycho-circus.jpg)
+![Verlichte poort Psycho Circus met mensenmenigte bij nacht | Volle nacht: vanaf hier sta je meer in de rij dan je lief is. | wide](/media/halloween-2026/beispiel-psycho-circus.jpg)
 
 In plaats van te gokken kun je voor je gewenste park de **rustigste komende
 dagen** uit onze AI-druktekalender bekijken:
@@ -479,7 +479,7 @@ meetdata van de afgelopen seizoenen, levert de statistiek er meteen bij:
 
 ```
 
-```gallery-widget folder=/blog/images/halloween-parks-2026/impressionen-kulissen heading="Decors en zones"
+```gallery-widget folder=/media/halloween-2026/impressionen-kulissen heading="Decors en zones"
 
 ```
 

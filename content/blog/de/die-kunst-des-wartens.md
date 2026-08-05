@@ -20,7 +20,7 @@ tags:
   - phantasialand
 category: behind-the-scenes
 coverImage:
-  src: /blog/images/kunst-des-wartens-cover.jpg
+  src: /media/disney-animal-kingdom/kunst-des-wartens-cover.jpg
   alt: 'Der Baum des Lebens in Disneys Animal Kingdom, davor die Besuchermassen des Parks'
   caption: 'Disneys Animal Kingdom: zehntausende Gäste, ein Baum des Lebens, und überall die Frage, wie lange man wofür ansteht.'
 seo:
@@ -165,7 +165,7 @@ verstopft, weil sie zu gut aussieht. Danach folgen gleich **zwei
 Pre-Show-Räume**, in denen du „gescannt“ und mit deinem eigenen Avatar
 „verlinkt“ wirst.
 
-```gallery-widget folder=/blog/images/avatar-flight-of-passage heading="Die Warteschlange in drei Stationen"
+```gallery-widget folder=/media/avatar-flight-of-passage heading="Die Warteschlange in drei Stationen"
 
 ```
 
@@ -191,7 +191,7 @@ Briefing des **Nova Corps**. Die eigentliche Fahrt, ein Story-Coaster mit frei
 rotierenden Fahrzeugen und Rückwärts-Launch, ist das Finale einer Inszenierung,
 die schon zwanzig Minuten vorher begonnen hat.
 
-```gallery-widget folder=/blog/images/cosmic-rewind heading="Der Pavillon vor der Fahrt"
+```gallery-widget folder=/media/cosmic-rewind heading="Der Pavillon vor der Fahrt"
 
 ```
 
@@ -218,7 +218,7 @@ endet. Genau das meint Maister mit **„occupied time“**: Beschäftigte Zeit f
 sich kürzer an, und wer gerade prüft, ob der Raptor hinter dem Zaun wirklich
 den Kopf gedreht hat, schaut nicht alle zehn Sekunden aufs Handy.
 
-```gallery-widget folder=/blog/images/velocicoaster heading="Willkommen im Raptor-Paddock"
+```gallery-widget folder=/media/velocicoaster heading="Willkommen im Raptor-Paddock"
 
 ```
 
@@ -252,7 +252,7 @@ Wartezeiten der Headliner messbar ein, und wer die Show schon kennt, fährt in
 dieser Stunde am günstigsten. Genau für solche Momente aktualisieren wir die
 Wartezeiten im Minutentakt.
 
-![Tausende Zuschauer im nächtlichen Amphitheater von Fantasmic! in Disney's Hollywood Studios | Fantasmic! in den Hollywood Studios: knapp 10.000 Menschen pro Vorstellung, eine ganze Besucherwelle, die für diese halbe Stunde garantiert nirgends in der Coaster-Schlange steht. | wide](/blog/images/fantasmic-crowd.jpg)
+![Tausende Zuschauer im nächtlichen Amphitheater von Fantasmic! in Disney's Hollywood Studios | Fantasmic! in den Hollywood Studios: knapp 10.000 Menschen pro Vorstellung, eine ganze Besucherwelle, die für diese halbe Stunde garantiert nirgends in der Coaster-Schlange steht. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
 ## Kapazität und Durchsatz: Das mathematische Geheimnis
 
@@ -278,7 +278,7 @@ unterschiedlich kombinieren, nach dem Buffet-Prinzip oder dem Tapas-Prinzip.
 Zwei Bahnen aus Orlando, die auf dem Papier fast identisch ablieferten, zeigen
 das perfekt:
 
-![Zwei Wege zu ähnlichem Durchsatz: wenige große Züge beim Hulk, viele kleine Wagen bei Rip Ride Rockit | Gleiche Liga, völlig unterschiedliche Strategie: Masse pro Zug vs. Frequenz. | wide](/blog/images/inline/durchsatz-hulk-rockit.svg)
+![Zwei Wege zu ähnlichem Durchsatz: wenige große Züge beim Hulk, viele kleine Wagen bei Rip Ride Rockit | Gleiche Liga, völlig unterschiedliche Strategie: Masse pro Zug vs. Frequenz. | wide](/media/diagrams/durchsatz-hulk-rockit.svg)
 
 **Beispiel A, das Buffet.**
 [The Incredible Hulk Coaster](ref:universal-islands-of-adventure/the-incredible-hulk-coaster)

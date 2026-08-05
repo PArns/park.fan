@@ -1,0 +1,31 @@
+{
+  "title": "UNTAMED",
+  "park": "walibi-holland",
+  "ride": "untamed",
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "day", "outdoor", "photo", "ride", "signage", "sunny"],
+  "alt": {
+    "de": "Der rostige Schriftzug „Untamed“ vor der Holzkonstruktion der Bahn.",
+    "en": "The rusted \"Untamed\" lettering in front of the ride's timber structure.",
+    "es": "El rótulo oxidado \"Untamed\" ante la estructura de madera de la atracción.",
+    "fr": "L'enseigne rouillée « Untamed » devant la charpente du parcours.",
+    "it": "La scritta arrugginita \"Untamed\" davanti alla struttura in legno.",
+    "nl": "Het roestige opschrift \"Untamed\" voor de houtconstructie van de baan."
+  },
+  "caption": {
+    "de": "Untamed in Walibi Holland.",
+    "en": "Untamed at Walibi Holland.",
+    "es": "Untamed en Walibi Holland.",
+    "fr": "Untamed à Walibi Holland.",
+    "it": "Untamed a Walibi Holland.",
+    "nl": "Untamed in Walibi Holland."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.4,
+    "y": 0.32
+  }
+}

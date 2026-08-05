@@ -80,9 +80,10 @@
 
 ### Features
 
-| Doc                                     | Description                                              |
-| --------------------------------------- | -------------------------------------------------------- |
-| [Glossary System](features/glossary.md) | Term data, translations, localized URLs, search, sitemap |
+| Doc                                          | Description                                                                                                   |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| [Media Database](features/media-database.md) | One FS-backed image database: sidecars, roles, tags, focal points, search, the HTTP API and the admin browser |
+| [Glossary System](features/glossary.md)      | Term data, translations, localized URLs, search, sitemap                                                      |
 
 ### Product
 

@@ -2,3 +2,7 @@ node_modules
 .next
 .git
 pnpm-lock.yaml
+
+# Generated and committed: written by scripts/generate-media-manifest.mjs on every
+# build, so formatting it here would just fail the next check:format run.
+lib/media/manifest-parks.ts

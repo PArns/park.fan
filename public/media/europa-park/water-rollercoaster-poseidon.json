@@ -1,0 +1,32 @@
+{
+  "title": "Water rollercoaster Poseidon",
+  "park": "europa-park",
+  "ride": "water-rollercoaster-poseidon",
+  "area": "Greece",
+  "roles": ["ride-card", "hero"],
+  "tags": ["autumn", "day", "outdoor", "photo", "ride", "theming", "water-ride"],
+  "alt": {
+    "de": "Ein zerborstenes Holzschiff im Wasserbecken von Poseidon, dahinter eine Festungsmauer.",
+    "en": "A wrecked wooden ship in Poseidon's basin, a fortress wall behind it.",
+    "es": "Un barco de madera destrozado en la balsa de Poseidon, con una muralla detrás.",
+    "fr": "Un navire de bois éventré dans le bassin de Poseidon, un rempart derrière.",
+    "it": "Una nave di legno sfasciata nella vasca di Poseidon, dietro una muraglia.",
+    "nl": "Een gebroken houten schip in het bassin van Poseidon, met een vestingmuur erachter."
+  },
+  "caption": {
+    "de": "Poseidon im griechischen Themenbereich.",
+    "en": "Poseidon in the Greek area.",
+    "es": "Poseidon, zona griega.",
+    "fr": "Poseidon, zone grecque.",
+    "it": "Poseidon, area greca.",
+    "nl": "Poseidon in het Griekse themagebied."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.55,
+    "y": 0.55
+  }
+}

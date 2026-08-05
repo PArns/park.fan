@@ -1,0 +1,32 @@
+{
+  "title": "Fēnix",
+  "park": "toverland",
+  "ride": "fenix",
+  "area": "Avalon",
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "day", "outdoor", "photo", "ride", "sunny"],
+  "alt": {
+    "de": "Ein Zug von Fēnix am höchsten Punkt der blauen Strecke.",
+    "en": "A Fēnix train at the highest point of the blue track.",
+    "es": "Un tren de Fēnix en el punto más alto de la vía azul.",
+    "fr": "Un train de Fēnix au point le plus haut de la voie bleue.",
+    "it": "Un treno di Fēnix nel punto più alto del tracciato blu.",
+    "nl": "Een trein van Fēnix op het hoogste punt van de blauwe baan."
+  },
+  "caption": {
+    "de": "Fēnix in Avalon, gebaut von Vekoma.",
+    "en": "Fēnix in Avalon, built by Vekoma.",
+    "es": "Fēnix en Avalon, construida por Vekoma.",
+    "fr": "Fēnix dans Avalon, construit par Vekoma.",
+    "it": "Fēnix ad Avalon, costruito da Vekoma.",
+    "nl": "Fēnix in Avalon, gebouwd door Vekoma."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.4,
+    "y": 0.33
+  }
+}

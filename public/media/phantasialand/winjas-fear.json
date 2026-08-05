@@ -1,0 +1,32 @@
+{
+  "title": "Winja‘s Fear",
+  "park": "phantasialand",
+  "ride": "winjas-fear",
+  "area": "Mystery",
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "indoor", "photo", "ride", "theming"],
+  "alt": {
+    "de": "Ein riesiger Tontopf mit offenem Deckel, daran lehnt eine Leiter.",
+    "en": "A giant clay pot with its lid open, a ladder leaning against it.",
+    "es": "Una vasija de barro gigante con la tapa abierta y una escalera apoyada.",
+    "fr": "Un pot en terre géant au couvercle ouvert, une échelle appuyée contre lui.",
+    "it": "Un enorme vaso di terracotta col coperchio aperto e una scala appoggiata.",
+    "nl": "Een reusachtige aardewerken pot met open deksel, er staat een ladder tegenaan."
+  },
+  "caption": {
+    "de": "In der Halle von Winja's Fear & Force in Wuze Town.",
+    "en": "Inside the Winja's Fear & Force building in Wuze Town.",
+    "es": "Dentro de la nave de Winja's Fear & Force, Wuze Town.",
+    "fr": "Dans le bâtiment de Winja's Fear & Force, Wuze Town.",
+    "it": "Nella sala di Winja's Fear & Force, Wuze Town.",
+    "nl": "In de hal van Winja's Fear & Force in Wuze Town."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.33,
+    "y": 0.48
+  }
+}

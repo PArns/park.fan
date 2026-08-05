@@ -1,0 +1,32 @@
+{
+  "title": "Pirates in Batavia",
+  "park": "europa-park",
+  "ride": "pirates-in-batavia",
+  "area": "Netherlands",
+  "roles": ["ride-card", "hero"],
+  "tags": ["dark-ride", "indoor", "photo", "ride", "theming"],
+  "alt": {
+    "de": "Eine Figur im roten Mantel zeigt auf eine alte Seekarte.",
+    "en": "A figure in a red coat pointing at an old sea chart.",
+    "es": "Una figura con abrigo rojo señala una carta náutica antigua.",
+    "fr": "Un personnage en manteau rouge désigne une vieille carte marine.",
+    "it": "Una figura con mantello rosso indica una vecchia carta nautica.",
+    "nl": "Een figuur in rode mantel wijst naar een oude zeekaart."
+  },
+  "caption": {
+    "de": "Piraten in Batavia im niederländischen Themenbereich.",
+    "en": "Piraten in Batavia in the Dutch area.",
+    "es": "Piraten in Batavia, zona neerlandesa.",
+    "fr": "Piraten in Batavia, zone néerlandaise.",
+    "it": "Piraten in Batavia, area olandese.",
+    "nl": "Piraten in Batavia in het Nederlandse themagebied."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.78,
+    "y": 0.36
+  }
+}

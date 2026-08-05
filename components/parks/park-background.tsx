@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { backgroundImageLoader } from '@/lib/utils/image-loader';
 import { BACKGROUND_BLUR_DATA_URL } from '@/lib/utils/image-placeholder';
+import { cn } from '@/lib/utils';
 
 // Park/attraction hero sources are ≤1024px (the on-disk background.jpg / attraction images), so a
 // plain `100vw` made high-DPR phones request the upscaled w=1080 srcset candidate — more bytes,
@@ -17,14 +18,45 @@ interface ParkBackgroundProps {
   alt: string;
   /** Fix the background so it stays in place while content scrolls over it. */
   fixed?: boolean;
+  /**
+   * CSS `object-position` for the crop, from the image's focal point.
+   *
+   * Resolved by the caller (a Server Component) rather than looked up here: this
+   * is a Client Component, and reaching into the media manifest from it would
+   * ship the whole catalog to the browser. See `objectPositionForSrc`.
+   */
+  objectPosition?: string;
+  /**
+   * Render inside the nearest positioned ancestor instead of the viewport.
+   *
+   * Both normal modes are `fixed` + `-z-10`, i.e. they deliberately escape every
+   * container and sit behind the page — which means the component cannot be shown
+   * in a bounded box without this. Used by the admin's focal-point preview so it
+   * can show the real background component rather than a look-alike.
+   */
+  contained?: boolean;
 }
 
-export function ParkBackground({ imageSrc, alt, fixed = false }: ParkBackgroundProps) {
+export function ParkBackground({
+  imageSrc,
+  alt,
+  fixed = false,
+  objectPosition,
+  contained = false,
+}: ParkBackgroundProps) {
   if (!imageSrc) return null;
+
+  // The two layouts crop differently, so they keep different defaults: the fixed
+  // full-screen backdrop centres, the scrolling strip anchors to the top. A focal
+  // point overrides whichever applies.
+  const position = objectPosition ?? (fixed ? '50% 50%' : '50% 0%');
+  // `fixed inset-0 -z-10` is what makes this a page backdrop; contained mode swaps
+  // it for a plain absolute fill so a preview box can hold it.
+  const shell = contained ? 'absolute inset-0' : 'fixed inset-0 -z-10';
 
   if (fixed) {
     return (
-      <div className="pointer-events-none fixed inset-0 -z-10 select-none">
+      <div className={cn('pointer-events-none select-none', shell)}>
         <Image
           src={imageSrc}
           alt={alt}
@@ -33,7 +65,8 @@ export function ParkBackground({ imageSrc, alt, fixed = false }: ParkBackgroundP
           priority
           placeholder="blur"
           blurDataURL={BACKGROUND_BLUR_DATA_URL}
-          className="object-cover object-center"
+          className="object-cover"
+          style={{ objectPosition: position }}
           sizes={PARK_BG_SIZES}
           fetchPriority="high"
         />
@@ -48,7 +81,12 @@ export function ParkBackground({ imageSrc, alt, fixed = false }: ParkBackgroundP
        two data attributes onto this element. */
     <div
       suppressHydrationWarning
-      className="pointer-events-none fixed top-0 right-0 left-0 -z-10 h-[calc(75vh+4rem)] max-h-[850px] overflow-hidden select-none"
+      className={cn(
+        'pointer-events-none overflow-hidden select-none',
+        contained
+          ? 'absolute inset-0'
+          : 'fixed top-0 right-0 left-0 -z-10 h-[calc(75vh+4rem)] max-h-[850px]'
+      )}
     >
       <div className="relative h-full w-full">
         <Image
@@ -59,11 +97,12 @@ export function ParkBackground({ imageSrc, alt, fixed = false }: ParkBackgroundP
           priority
           placeholder="blur"
           blurDataURL={BACKGROUND_BLUR_DATA_URL}
-          // Anchor the image to its top edge instead of centering it: the strip is shorter than the
-          // scaled image, so `object-cover` has to crop somewhere. Centered cropping ate into the top
-          // of the picture (sky / the ride itself); anchoring to the top keeps that visible and lets
-          // the excess fall off the bottom — which the gradient below already fades into the page.
-          className="object-cover object-top"
+          // Anchored to the top by default: the strip is shorter than the scaled image, so
+          // `object-cover` has to crop somewhere, and centred cropping ate into the top of the
+          // picture (sky / the ride itself). An image with a focal point overrides that — see
+          // lib/media/focus.ts.
+          className="object-cover"
+          style={{ objectPosition: position }}
           sizes={PARK_BG_SIZES}
           fetchPriority="high"
         />

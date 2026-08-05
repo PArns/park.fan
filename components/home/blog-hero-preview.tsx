@@ -4,6 +4,7 @@ import { useFormatter } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { listPosts } from '@/lib/blog/listing';
+import { versionedPath } from '@/lib/media/focus';
 import { resolveCategoryLabel } from '@/lib/blog/categories';
 import type { BlogListItem } from '@/lib/blog/types';
 import type { Locale } from '@/i18n/config';
@@ -73,7 +74,7 @@ function HeroPreviewCard({ post, locale }: HeroPreviewCardProps) {
   const categoryLabel = categoryPath
     ? resolveCategoryLabel(categoryPath, locale, lastSegment)
     : null;
-  const cover = frontmatter.coverImage?.src ?? null;
+  const cover = versionedPath(frontmatter.coverImage?.src);
 
   return (
     <Link

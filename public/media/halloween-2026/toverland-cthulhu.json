@@ -1,0 +1,29 @@
+{
+  "title": "Cthulhu",
+  "park": "toverland",
+  "tags": ["halloween", "night", "outdoor", "performer", "photo"],
+  "alt": {
+    "de": "Ein Darsteller mit Tentakelmaske und Krakenarm steht mit einer Handglocke vor einer Toverland-Fotowand.",
+    "en": "A performer in a tentacled mask with an octopus arm holding a hand bell in front of a Toverland photo wall.",
+    "es": "Un actor con máscara de tentáculos y brazo de pulpo sostiene una campana ante un photocall de Toverland.",
+    "fr": "Un comédien masqué de tentacules, bras de pieuvre et cloche à main, devant un mur photo Toverland.",
+    "it": "Un attore con maschera di tentacoli e braccio da piovra tiene una campanella davanti a un photocall di Toverland.",
+    "nl": "Een acteur met tentakelmasker en octopusarm staat met een handbel voor een Toverland-fotowand."
+  },
+  "caption": {
+    "de": "Die Glocke kündigt an, dass gleich jemand erschreckt wird.",
+    "en": "The bell announces that somebody is about to be scared.",
+    "es": "La campana anuncia que alguien está a punto de llevarse un susto.",
+    "fr": "La cloche annonce que quelqu'un va se faire surprendre.",
+    "it": "La campanella annuncia che qualcuno sta per prendersi uno spavento.",
+    "nl": "De bel kondigt aan dat er zo iemand geschrokken wordt."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.47,
+    "y": 0.28
+  }
+}

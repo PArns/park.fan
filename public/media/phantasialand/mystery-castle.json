@@ -1,0 +1,32 @@
+{
+  "title": "Mystery Castle",
+  "park": "phantasialand",
+  "ride": "mystery-castle",
+  "area": "Mystery",
+  "roles": ["ride-card", "hero"],
+  "tags": ["fog", "night", "outdoor", "photo", "ride", "theming", "winter"],
+  "alt": {
+    "de": "Der Turm des Mystery Castle im Nebel, angeleuchtet.",
+    "en": "The Mystery Castle tower in fog, lit up.",
+    "es": "La torre del Mystery Castle entre la niebla, iluminada.",
+    "fr": "La tour du Mystery Castle dans la brume, éclairée.",
+    "it": "La torre del Mystery Castle nella nebbia, illuminata.",
+    "nl": "De toren van Mystery Castle in de mist, uitgelicht."
+  },
+  "caption": {
+    "de": "Mystery Castle an einem Nebelabend im Wintertraum.",
+    "en": "Mystery Castle on a foggy Wintertraum evening.",
+    "es": "Mystery Castle en una tarde de niebla durante el Wintertraum.",
+    "fr": "Mystery Castle par un soir de brume, pendant le Wintertraum.",
+    "it": "Mystery Castle in una sera di nebbia durante il Wintertraum.",
+    "nl": "Mystery Castle op een mistige Wintertraum-avond."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.58,
+    "y": 0.22
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "title": "Porzellanpuppe",
+  "park": "walibi-holland",
+  "tags": ["autumn", "day", "halloween", "outdoor", "performer", "photo"],
+  "alt": {
+    "de": "Eine Darstellerin als zerbrochene Porzellanpuppe mit Bruchlinien im Gesicht, hinter ihr ein bunter Kinderbereich mit aufgehängten Teddys.",
+    "en": "A performer as a cracked porcelain doll, break lines painted on her face, a colourful children's area with hanging teddies behind her.",
+    "es": "Una actriz como muñeca de porcelana rota, con grietas pintadas en la cara y, detrás, una zona infantil de colores con peluches colgados.",
+    "fr": "Une comédienne en poupée de porcelaine brisée, lignes de fracture peintes sur le visage, derrière elle une aire enfants colorée aux nounours suspendus.",
+    "it": "Un'attrice come bambola di porcellana rotta, con crepe dipinte sul viso, dietro un'area bimbi colorata con orsetti appesi.",
+    "nl": "Een actrice als gebroken porseleinen pop, met breuklijnen op haar gezicht, achter haar een kleurrijk kinderdeel met opgehangen teddyberen."
+  },
+  "caption": {
+    "de": "Kinderbereich am Tag, Scare Zone am Abend.",
+    "en": "A children's area by day, a scare zone in the evening.",
+    "es": "Zona infantil de día, scare zone por la tarde.",
+    "fr": "Aire enfants le jour, scare zone le soir.",
+    "it": "Area bimbi di giorno, scare zone la sera.",
+    "nl": "Overdag kinderdeel, 's avonds scare zone."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.5,
+    "y": 0.28
+  }
+}

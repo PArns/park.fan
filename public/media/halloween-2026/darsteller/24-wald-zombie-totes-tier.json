@@ -1,0 +1,24 @@
+{
+  "park": "walibi-holland",
+  "tags": ["halloween", "performer", "photo"],
+  "alt": {
+    "de": "Zombie-Darstellerin im Wald mit einem toten Tier auf dem Arm, Nebel",
+    "en": "Zombie performer in the woods holding a dead animal, fog",
+    "es": "Actriz zombi en el bosque con un animal muerto en brazos, entre niebla",
+    "fr": "Actrice zombie dans la forêt avec un animal mort dans les bras, brouillard",
+    "it": "Attrice zombie nel bosco con un animale morto in braccio, nebbia",
+    "nl": "Zombie-actrice in het bos met een dood dier op haar arm, mist"
+  },
+  "caption": {
+    "de": "Sie bringt was mit. Was das mal war, haben wir nicht gefragt.",
+    "en": "She's brought something along. What it used to be, we didn't ask.",
+    "es": "Trae algo consigo. Qué fue eso en su día, no lo preguntamos.",
+    "fr": "Elle apporte quelque chose. Ce que c'était autrefois, on n'a pas demandé.",
+    "it": "Ha portato qualcosa. Cosa fosse un tempo, non l'abbiamo chiesto.",
+    "nl": "Ze neemt iets mee. Wat dat ooit was, hebben we niet gevraagd."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

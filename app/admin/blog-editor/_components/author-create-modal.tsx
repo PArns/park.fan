@@ -230,7 +230,7 @@ function AuthorForm({
                 <input
                   value={avatar}
                   onChange={(e) => setAvatar(e.target.value)}
-                  placeholder="/blog/images/authors/patrick.jpg"
+                  placeholder="/media/authors/patrick.jpg"
                   className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground min-w-0 flex-1 rounded-lg border px-3 py-1.5 text-sm transition-colors outline-none"
                 />
                 <button

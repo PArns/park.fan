@@ -1,0 +1,30 @@
+{
+  "title": "Bobbejaanland",
+  "park": "bobbejaanland",
+  "roles": ["park-background"],
+  "tags": ["background", "day", "outdoor", "overcast", "park", "photo", "ride", "theming"],
+  "alt": {
+    "de": "Ein riesiger Gorilla mit roten Augen greift nach einem Bahnwagen voller Fahrgäste.",
+    "en": "A huge gorilla with red eyes reaching for a ride car full of passengers.",
+    "es": "Un gorila gigante de ojos rojos agarra un vagón lleno de pasajeros.",
+    "fr": "Un gorille géant aux yeux rouges attrape un wagon rempli de passagers.",
+    "it": "Un gorilla gigante con gli occhi rossi afferra un vagone pieno di passeggeri.",
+    "nl": "Een reusachtige gorilla met rode ogen grijpt naar een wagen vol passagiers."
+  },
+  "caption": {
+    "de": "King Kong hat den Zug. Der Zug fährt trotzdem weiter.",
+    "en": "King Kong has the train. The train keeps going anyway.",
+    "es": "King Kong tiene el tren. El tren sigue igual.",
+    "fr": "King Kong tient le train. Le train continue quand même.",
+    "it": "King Kong ha il treno. Il treno prosegue lo stesso.",
+    "nl": "King Kong heeft de trein te pakken. De trein rijdt gewoon door."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.38,
+    "y": 0.28
+  }
+}

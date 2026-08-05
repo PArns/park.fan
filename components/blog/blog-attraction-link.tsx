@@ -27,6 +27,8 @@ interface BlogAttractionLinkProps {
   attractionBackgroundImage?: string | null;
   /** Pre-computed park background image, used as a fallback for the attraction card. */
   parkBackgroundImage?: string | null;
+  /** Focal point for whichever of the two photos is used, resolved server-side. */
+  objectPosition?: string;
   children?: React.ReactNode;
 }
 
@@ -46,6 +48,7 @@ export function BlogAttractionLink({
   options,
   attractionBackgroundImage,
   parkBackgroundImage,
+  objectPosition,
   children,
 }: BlogAttractionLinkProps) {
   const tCommon = useTranslations('common');
@@ -109,6 +112,7 @@ export function BlogAttractionLink({
           attraction={attraction}
           attractionBackgroundImage={attractionBackgroundImage}
           parkBackgroundImage={parkBackgroundImage}
+          objectPosition={objectPosition}
           className="grid [grid-template-rows:auto_0px_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]"
         />
       </HoverCardContent>

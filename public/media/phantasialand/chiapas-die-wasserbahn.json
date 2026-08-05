@@ -1,0 +1,32 @@
+{
+  "title": "Chiapas - DIE Wasserbahn",
+  "park": "phantasialand",
+  "ride": "chiapas-die-wasserbahn",
+  "area": "Mexico",
+  "roles": ["ride-card", "hero"],
+  "tags": ["day", "outdoor", "photo", "ride", "sunny", "theming", "water-ride"],
+  "alt": {
+    "de": "Die Abfahrt von Chiapas führt in die grüne Lagune, links ein Glockenturm.",
+    "en": "The Chiapas drop running into the green lagoon, a bell tower at the left.",
+    "es": "La caída de Chiapas entra en la laguna verde, con un campanario a la izquierda.",
+    "fr": "La descente de Chiapas plonge dans la lagune verte, un clocher à gauche.",
+    "it": "La discesa di Chiapas entra nella laguna verde, a sinistra un campanile.",
+    "nl": "De afdaling van Chiapas loopt de groene lagune in, links een klokkentoren."
+  },
+  "caption": {
+    "de": "Chiapas im Themenbereich Mexico.",
+    "en": "Chiapas in the Mexico area.",
+    "es": "Chiapas, zona Mexico.",
+    "fr": "Chiapas, zone Mexico.",
+    "it": "Chiapas, area Mexico.",
+    "nl": "Chiapas in het themagebied Mexico."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.6,
+    "y": 0.52
+  }
+}

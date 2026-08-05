@@ -1,0 +1,31 @@
+{
+  "title": "Geister Rikscha",
+  "park": "phantasialand",
+  "ride": "geister-rikscha",
+  "roles": ["ride-card", "hero"],
+  "tags": ["day", "detail", "outdoor", "photo", "ride", "sunny", "theming"],
+  "alt": {
+    "de": "Eine große Buddha-Figur im Fels, zu ihren Füßen Blumen und Opfergaben.",
+    "en": "A large Buddha figure in the rock, flowers and offerings at its feet.",
+    "es": "Una gran figura de Buda en la roca, con flores y ofrendas a sus pies.",
+    "fr": "Un grand bouddha dans la roche, des fleurs et des offrandes à ses pieds.",
+    "it": "Una grande figura di Buddha nella roccia, con fiori e offerte ai piedi.",
+    "nl": "Een groot Boeddhabeeld in de rots, met bloemen en offergaven aan zijn voeten."
+  },
+  "caption": {
+    "de": "An der Geister Rikscha in China Town.",
+    "en": "At Geister Rikscha in China Town.",
+    "es": "En Geister Rikscha, China Town.",
+    "fr": "À Geister Rikscha, China Town.",
+    "it": "Alla Geister Rikscha, China Town.",
+    "nl": "Bij Geister Rikscha in China Town."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.5,
+    "y": 0.3
+  }
+}

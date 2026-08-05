@@ -1,0 +1,31 @@
+{
+  "title": "Vogel Rok",
+  "park": "efteling",
+  "ride": "vogel-rok",
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "entrance", "night", "outdoor", "photo", "ride", "theming"],
+  "alt": {
+    "de": "Eine riesige goldene Vogelfigur über dem Eingang von Vogel Rok.",
+    "en": "A giant golden bird above the entrance to Vogel Rok.",
+    "es": "Un enorme pájaro dorado sobre la entrada de Vogel Rok.",
+    "fr": "Un immense oiseau doré au-dessus de l'entrée de Vogel Rok.",
+    "it": "Un enorme uccello dorato sopra l'ingresso di Vogel Rok.",
+    "nl": "Een reusachtige gouden vogel boven de ingang van Vogel Rok."
+  },
+  "caption": {
+    "de": "Der Eingang zu Vogel Rok.",
+    "en": "The entrance to Vogel Rok.",
+    "es": "La entrada a Vogel Rok.",
+    "fr": "L'entrée de Vogel Rok.",
+    "it": "L'ingresso di Vogel Rok.",
+    "nl": "De ingang van Vogel Rok."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.5,
+    "y": 0.38
+  }
+}

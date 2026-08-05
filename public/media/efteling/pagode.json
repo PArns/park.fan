@@ -1,0 +1,31 @@
+{
+  "title": "Pagode",
+  "park": "efteling",
+  "ride": "pagode",
+  "roles": ["ride-card", "hero"],
+  "tags": ["flat-ride", "night", "outdoor", "photo", "ride", "winter"],
+  "alt": {
+    "de": "Die beleuchtete Pagode schwebt über den Baumwipfeln.",
+    "en": "The lit Pagode hovering above the treetops.",
+    "es": "La Pagode iluminada flota sobre las copas de los árboles.",
+    "fr": "La Pagode illuminée flotte au-dessus des arbres.",
+    "it": "La Pagode illuminata fluttua sopra le chiome degli alberi.",
+    "nl": "De verlichte Pagode zweeft boven de boomtoppen."
+  },
+  "caption": {
+    "de": "Die Pagode über dem nächtlichen Park.",
+    "en": "The Pagode above the park at night.",
+    "es": "La Pagode sobre el parque de noche.",
+    "fr": "La Pagode au-dessus du parc, la nuit.",
+    "it": "La Pagode sopra il parco di notte.",
+    "nl": "De Pagode boven het nachtelijke park."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.48,
+    "y": 0.24
+  }
+}

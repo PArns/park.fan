@@ -201,7 +201,7 @@ export function ContentDE() {
           aus denselben Zutaten drei völlig verschiedene Prognosen werden:
         </P>
         <SplitFigure
-          src="/images/parks/europa-park/silver-star.jpg"
+          src="/media/europa-park/silver-star.jpg"
           alt="Silver Star im Europa-Park"
           kicker="Europa-Park · Brückentag im Oktober"
           title="Ruhig, grün, unter 30 Minuten"
@@ -213,7 +213,7 @@ export function ContentDE() {
           Tiefrot. Sechs Millionen Jahresgäste verteilen sich eben nicht von allein.
         </SplitFigure>
         <SplitFigure
-          src="/images/parks/phantasialand/taron.jpg"
+          src="/media/phantasialand/taron.jpg"
           alt="Taron im Phantasialand rast durch Klugheim"
           kicker="Phantasialand · Ferien-Samstag"
           title="Kompakt, voll, orange bis rot"
@@ -226,7 +226,7 @@ export function ContentDE() {
           Stück fahren kannst, statt ihn nur anzuschmachten.
         </SplitFigure>
         <SplitFigure
-          src="/images/parks/efteling/baron-1898.jpg"
+          src="/media/efteling/baron-1898.jpg"
           alt="Baron 1898 in der Efteling"
           kicker="Efteling · verregneter Dienstag im November"
           title="Der Geheimtipp, den das Modell mitrechnet"

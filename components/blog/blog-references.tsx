@@ -9,7 +9,11 @@ import {
   type ResolvedAttraction,
   type ResolvedPark,
 } from '@/lib/blog/park-resolver';
-import { getAttractionBackgroundImage, getParkBackgroundImage } from '@/lib/utils/park-assets';
+import {
+  getAttractionBackgroundImage,
+  getCardObjectPosition,
+  getParkBackgroundImage,
+} from '@/lib/utils/park-assets';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { buildAttractionPayload } from '@/lib/blog/attraction-payload';
 import type { BlogAttractionRef, BlogPost } from '@/lib/blog/types';
@@ -122,6 +126,7 @@ export async function BlogReferences({ post }: BlogReferencesProps) {
                   nextSchedule={park.nextSchedule}
                   hasOperatingSchedule={park.hasOperatingSchedule}
                   backgroundImage={getParkBackgroundImage(park.slug)}
+                  objectPosition={getCardObjectPosition(park.slug)}
                 />
               </div>
             ))}
@@ -152,6 +157,10 @@ export async function BlogReferences({ post }: BlogReferencesProps) {
                     getParkBackgroundImage(park.slug) ??
                     undefined
                   }
+                  // Falls back to the park's own photo AND its focal point together —
+                  // `getCardObjectPosition` resolves the same ride-then-park chain, so
+                  // the point can never come from a different picture than the pixels.
+                  objectPosition={getCardObjectPosition(park.slug, attraction.attractionSlug)}
                   showParkName
                   timezone={park.timezone}
                 />

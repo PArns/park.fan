@@ -1,0 +1,26 @@
+{
+  "park": "universal-islands-of-adventure",
+  "parkPath": "north-america/united-states/orlando/universal-islands-of-adventure",
+  "ride": "jurassic-world-velocicoaster",
+  "tags": ["photo", "queue", "theming"],
+  "alt": {
+    "de": "Ein animatronischer Velociraptor-Kopf im Paddock-Bereich der VelociCoaster-Warteschlange",
+    "en": "An animatronic velociraptor head in the paddock area of the VelociCoaster queue",
+    "es": "Una cabeza de velocirraptor animatrónica en la zona del paddock de la cola del VelociCoaster",
+    "fr": "Une tête de vélociraptor animatronique dans la zone paddock de la file d'attente du VelociCoaster",
+    "it": "La testa animatronica di un velociraptor nella zona paddock della coda del VelociCoaster",
+    "nl": "Een animatronische velociraptorkop in het paddockgedeelte van de VelociCoaster-wachtrij"
+  },
+  "caption": {
+    "de": "Mitten im Raptor-Paddock: Die Tiere sind zum Greifen nah, man wartet nicht auf eine Bahn, man besichtigt ein Gehege.",
+    "en": "Right in the middle of the Raptor Paddock: the animals are close enough to touch, you're not waiting for a ride, you're touring an enclosure.",
+    "es": "En pleno Raptor Paddock: los animales están al alcance de la mano, no esperas para subir a una atracción, visitas un recinto.",
+    "fr": "En plein Raptor Paddock : les animaux sont à portée de main, on n'attend pas une attraction, on visite un enclos.",
+    "it": "In pieno Raptor Paddock: gli animali sono quasi da toccare, non si aspetta una giostra, si visita un recinto.",
+    "nl": "Midden in het Raptor Paddock: de dieren zijn binnen handbereik, je wacht niet op een baan, je bezichtigt een dierenverblijf."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

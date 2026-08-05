@@ -1,0 +1,24 @@
+{
+  "park": "walibi-holland",
+  "tags": ["halloween", "performer", "photo"],
+  "alt": {
+    "de": "Día-de-los-Muertos-Darsteller mit Sombrero und Zuckerschädel-Schminke, grün angestrahlt",
+    "en": "Día de los Muertos performer in a sombrero and sugar-skull make-up, lit green",
+    "es": "Actor del Día de los Muertos con sombrero y maquillaje de calavera de azúcar, iluminado de verde",
+    "fr": "Acteur Día de los Muertos avec sombrero et maquillage de crâne en sucre, éclairé en vert",
+    "it": "Attore del Día de los Muertos con sombrero e trucco da teschio di zucchero, illuminato di verde",
+    "nl": "Día-de-los-Muertos-acteur met sombrero en suikerschedel-schmink, groen aangelicht"
+  },
+  "caption": {
+    "de": "Der Einzige mit Rhythmusgefühl an dem Abend. Und der ist tot.",
+    "en": "The only one with any rhythm that night. And he's dead.",
+    "es": "El único con sentido del ritmo esa noche. Y está muerto.",
+    "fr": "Le seul à avoir le sens du rythme ce soir-là. Et encore, il est mort.",
+    "it": "L'unico con il senso del ritmo quella sera. Ed è morto.",
+    "nl": "De enige met ritmegevoel die avond. En die is dood."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

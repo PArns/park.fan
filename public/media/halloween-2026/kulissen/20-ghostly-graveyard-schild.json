@@ -1,0 +1,24 @@
+{
+  "park": "walibi-holland",
+  "tags": ["halloween", "photo", "theming"],
+  "alt": {
+    "de": "Verwittertes Schild Ghostly Graveyard auf Steinpfeilern zwischen Bäumen",
+    "en": "Weathered “Ghostly Graveyard” sign on stone pillars among the trees",
+    "es": "Cartel desgastado de Ghostly Graveyard sobre pilares de piedra entre los árboles",
+    "fr": "Panneau patiné Ghostly Graveyard sur des piliers de pierre entre les arbres",
+    "it": "Insegna consumata dal tempo Ghostly Graveyard su pilastri di pietra tra gli alberi",
+    "nl": "Verweerd bord Ghostly Graveyard op stenen pilaren tussen de bomen"
+  },
+  "caption": {
+    "de": "Ein Friedhof mit Manieren: begrüßt dich immerhin, bevor’s losgeht.",
+    "en": "A graveyard with manners: at least it greets you before it starts.",
+    "es": "Un cementerio con modales: al menos te saluda antes de que empiece la cosa.",
+    "fr": "Un cimetière qui a des manières : il te salue au moins avant que ça commence.",
+    "it": "Un cimitero con le buone maniere: almeno ti saluta prima di cominciare.",
+    "nl": "Een begraafplaats met manieren: begroet je tenminste voordat het losgaat."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

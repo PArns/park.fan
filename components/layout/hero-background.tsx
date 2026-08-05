@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import nextDynamic from 'next/dynamic';
 import { Loader2 } from 'lucide-react';
-import { HERO_IMAGES } from '@/lib/hero-images';
+import { heroImageSrcs, heroObjectPosition } from '@/lib/media/hero';
 import { backgroundImageLoader } from '@/lib/utils/image-loader';
 import { BACKGROUND_BLUR_DATA_URL } from '@/lib/utils/image-placeholder';
 import { useHeroRotation } from '@/components/layout/hero-rotation-context';
@@ -100,6 +100,10 @@ function InParkHeroImages({
                 loading="eager"
                 onLoad={i === activeIndex ? onActiveImageLoad : undefined}
                 className="object-cover"
+                // The hero is the site's most aggressive crop — a 3:2 photo across a
+                // 21:9 viewport loses most of its height — so a subject near an edge
+                // disappears here first. Honour the image's focal point.
+                style={{ objectPosition: heroObjectPosition(src) }}
                 sizes={HERO_IMAGE_SIZES}
               />
             )}
@@ -137,7 +141,8 @@ export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps)
   useEffect(() => {
     if (imageSrc) return;
     const timer = setTimeout(() => {
-      setRandomImage(HERO_IMAGES[Math.floor(Math.random() * HERO_IMAGES.length)]);
+      const pool = heroImageSrcs();
+      if (pool.length) setRandomImage(pool[Math.floor(Math.random() * pool.length)]);
     }, 0);
     return () => clearTimeout(timer);
   }, [imageSrc]);
@@ -173,7 +178,10 @@ export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps)
           hasParkImages && parkImageLoaded ? 'opacity-0' : 'opacity-90',
           animating ? 'will-change-transform' : ''
         )}
-        style={animating ? { animation: KEN_BURNS } : undefined}
+        style={{
+          objectPosition: heroObjectPosition(finalImage),
+          ...(animating ? { animation: KEN_BURNS } : {}),
+        }}
         sizes={HERO_IMAGE_SIZES}
       />
       <InParkHeroImages

@@ -1,0 +1,31 @@
+{
+  "title": "Stoomcarrousel",
+  "park": "efteling",
+  "ride": "stoomcarrousel",
+  "roles": ["ride-card", "hero"],
+  "tags": ["flat-ride", "indoor", "photo", "ride", "theming"],
+  "alt": {
+    "de": "Das Stoomcarrousel mit vergoldeten Pferden unter einem orangefarbenen Zeltdach.",
+    "en": "The Stoomcarrousel and its gilded horses under an orange canvas roof.",
+    "es": "El Stoomcarrousel y sus caballos dorados bajo una lona naranja.",
+    "fr": "Le Stoomcarrousel et ses chevaux dorés sous une toile orange.",
+    "it": "Lo Stoomcarrousel e i suoi cavalli dorati sotto un telo arancione.",
+    "nl": "Het Stoomcarrousel met vergulde paarden onder een oranje tentdak."
+  },
+  "caption": {
+    "de": "Das Stoomcarrousel steht seit 1954 im Park.",
+    "en": "The Stoomcarrousel has stood in the park since 1954.",
+    "es": "El Stoomcarrousel está en el parque desde 1954.",
+    "fr": "Le Stoomcarrousel est dans le parc depuis 1954.",
+    "it": "Lo Stoomcarrousel è nel parco dal 1954.",
+    "nl": "Het Stoomcarrousel staat er sinds 1954."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.48,
+    "y": 0.42
+  }
+}

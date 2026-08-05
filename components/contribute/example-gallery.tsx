@@ -15,28 +15,28 @@ interface Example {
   park: string;
 }
 
-// Curated, iconic rides — files exist under public/images/parks/*.
+// Curated, iconic rides — files exist under public/media/*.
 const EXAMPLES: Example[] = [
   {
-    src: '/images/parks/phantasialand/black-mamba.jpg',
+    src: '/media/phantasialand/black-mamba.jpg',
     ride: 'Black Mamba',
     park: 'Phantasialand',
   },
   {
-    src: '/images/parks/europa-park/voltron-nevera-powered-by-rimac.jpg',
+    src: '/media/europa-park/voltron-nevera-powered-by-rimac.jpg',
     ride: 'Voltron Nevera',
     park: 'Europa-Park',
   },
-  { src: '/images/parks/efteling/baron-1898.jpg', ride: 'Baron 1898', park: 'Efteling' },
-  { src: '/images/parks/walibi-holland/goliath.jpg', ride: 'Goliath', park: 'Walibi Holland' },
-  { src: '/images/parks/phantasialand/fly.jpg', ride: 'F.L.Y.', park: 'Phantasialand' },
+  { src: '/media/efteling/baron-1898.jpg', ride: 'Baron 1898', park: 'Efteling' },
+  { src: '/media/walibi-holland/goliath.jpg', ride: 'Goliath', park: 'Walibi Holland' },
+  { src: '/media/phantasialand/fly.jpg', ride: 'F.L.Y.', park: 'Phantasialand' },
   {
-    src: '/images/parks/europa-park/blue-fire-megacoaster.jpg',
+    src: '/media/europa-park/blue-fire-megacoaster.jpg',
     ride: 'blue fire Megacoaster',
     park: 'Europa-Park',
   },
-  { src: '/images/parks/toverland/troy.jpg', ride: 'Troy', park: 'Toverland' },
-  { src: '/images/parks/walibi-belgium/kondaa.jpg', ride: 'Kondaa', park: 'Walibi Belgium' },
+  { src: '/media/toverland/troy.jpg', ride: 'Troy', park: 'Toverland' },
+  { src: '/media/walibi-belgium/kondaa.jpg', ride: 'Kondaa', park: 'Walibi Belgium' },
 ];
 
 export async function ExampleGallery() {

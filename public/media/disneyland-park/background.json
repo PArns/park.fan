@@ -1,0 +1,31 @@
+{
+  "title": "Disneyland Park",
+  "park": "disneyland-park",
+  "parkPath": "europe/france/marne-la-vallee/disneyland-park",
+  "roles": ["park-background"],
+  "tags": ["background", "day", "outdoor", "park", "photo", "theming"],
+  "alt": {
+    "de": "Das rosa-blaue Dornröschenschloss auf einem Felssockel, davor Wiese und beschnittene Bäume.",
+    "en": "The pink and blue Sleeping Beauty castle on its rock base, lawn and clipped trees in front.",
+    "es": "El castillo de la Bella Durmiente, rosa y azul, sobre su base de roca, con césped y árboles podados delante.",
+    "fr": "Le château de la Belle au bois dormant, rose et bleu, sur son socle rocheux, pelouse et arbres taillés devant.",
+    "it": "Il castello della Bella Addormentata, rosa e blu, sul basamento roccioso, con prato e alberi potati davanti.",
+    "nl": "Het roze-blauwe Doornroosjekasteel op een rotssokkel, met gras en gesnoeide bomen ervoor."
+  },
+  "caption": {
+    "de": "Le Château de la Belle au Bois Dormant im Disneyland Paris.",
+    "en": "Le Château de la Belle au Bois Dormant at Disneyland Paris.",
+    "es": "Le Château de la Belle au Bois Dormant, en Disneyland Paris.",
+    "fr": "Le Château de la Belle au Bois Dormant, à Disneyland Paris.",
+    "it": "Le Château de la Belle au Bois Dormant, a Disneyland Paris.",
+    "nl": "Le Château de la Belle au Bois Dormant in Disneyland Paris."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.66,
+    "y": 0.42
+  }
+}

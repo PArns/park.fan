@@ -1,7 +1,7 @@
 /**
  * Client-side staging area for pasted / dropped images.
  *
- * The markdown gets the FINAL public path (`/blog/images/uploads/…`)
+ * The markdown gets the FINAL public path (`/media/uploads/…`)
  * immediately — that's what round-trips and what the published post will
  * use. The actual bytes wait here until "Save & open PR" ships them as
  * additional commits (the admin runs on a read-only filesystem in prod, so
@@ -14,7 +14,7 @@
  */
 
 export interface PendingImage {
-  /** Public path as referenced from markdown, e.g. /blog/images/uploads/xy-cover.png */
+  /** Public path as referenced from markdown, e.g. /media/uploads/xy-cover.png */
   path: string;
   name: string;
   mime: string;
@@ -74,13 +74,13 @@ export async function addPendingImage(file: File): Promise<PendingImage> {
     );
   }
   const ext = EXT_BY_MIME[file.type];
-  // Uploads live in a per-post folder (/blog/images/<post-slug>/<name>) so
+  // Uploads live in a per-post folder (/media/<post-slug>/<name>) so
   // the repo stays organised — same convention the existing posts use. A
   // numeric suffix dedupes same-named files within the session.
   const base = sanitizeName(file.name);
-  let path = `/blog/images/${uploadFolder}/${base}.${ext}`;
+  let path = `/media/${uploadFolder}/${base}.${ext}`;
   for (let n = 2; pending.has(path); n++) {
-    path = `/blog/images/${uploadFolder}/${base}-${n}.${ext}`;
+    path = `/media/${uploadFolder}/${base}-${n}.${ext}`;
   }
   const base64 = await new Promise<string>((resolve, reject) => {
     const reader = new FileReader();

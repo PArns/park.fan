@@ -1,0 +1,24 @@
+{
+  "park": "walibi-holland",
+  "tags": ["halloween", "night", "photo", "theming"],
+  "alt": {
+    "de": "Verfallenes Holzgebäude mit Schriftzug Aquarium, blau-grün beleuchtet bei Nacht",
+    "en": "Derelict wooden building with “Aquarium” lettering, lit blue-green at night",
+    "es": "Edificio de madera en ruinas con el rótulo Aquarium, iluminado de azul y verde de noche",
+    "fr": "Bâtiment en bois délabré avec l'inscription Aquarium, éclairé en bleu-vert la nuit",
+    "it": "Edificio di legno fatiscente con la scritta Aquarium, illuminato di blu-verde di notte",
+    "nl": "Vervallen houten gebouw met opschrift Aquarium, blauw-groen verlicht bij nacht"
+  },
+  "caption": {
+    "de": "Aquarium. Aus dem Becken schwimmt garantiert nichts Nettes.",
+    "en": "Aquarium. Whatever swims out of that tank, it isn't friendly.",
+    "es": "Aquarium. Del tanque no sale nadando nada agradable, seguro.",
+    "fr": "Aquarium. Du bassin ne sortira à coup sûr rien de sympathique.",
+    "it": "Aquarium. Da quella vasca, garantito, non esce a nuoto niente di simpatico.",
+    "nl": "Aquarium. Uit het bassin zwemt gegarandeerd niets aardigs."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  }
+}

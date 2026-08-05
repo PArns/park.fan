@@ -25,7 +25,7 @@ category: guides
 parkLinks:
   - phantasialand
 coverImage:
-  src: /images/parks/phantasialand/taron-16x9.jpg
+  src: /media/phantasialand/taron-16x9.jpg
   alt: "Taron sfreccia tra le colonne di basalto dell'area tematica Klugheim del Phantasialand"
   caption: "Taron nel villaggio di basalto Klugheim, per me l'angolo più bello del parco."
   credit: 'park.fan'
@@ -75,11 +75,11 @@ bella che un parco divertimenti in Europa possa regalare. Questa guida ti mostra
 entrambe le cose: i prodigi per cui si viene, e, in concreto, come tenere bassi
 i **tempi di attesa Phantasialand** e beccare il giorno migliore.
 
-![Il Phantasialand di Brühl a volo d'uccello | Il mio parco di casa a Brühl, il parco divertimenti più immersivo d'Europa. | wide](/images/parks/phantasialand/background-16x9.jpg)
+![Il Phantasialand di Brühl a volo d'uccello | Il mio parco di casa a Brühl, il parco divertimenti più immersivo d'Europa. | wide](/media/phantasialand/background-16x9.jpg)
 
 ## Un parco come un altro mondo, e perché è così affollato
 
-![Taron nel villaggio di basalto Klugheim | Taron sfreccia attraverso il villaggio di basalto Klugheim, un intero villaggio, non un semplice coaster. | right](/images/parks/phantasialand/taron-4x3.jpg)
+![Taron nel villaggio di basalto Klugheim | Taron sfreccia attraverso il villaggio di basalto Klugheim, un intero villaggio, non un semplice coaster. | right](/media/phantasialand/taron-4x3.jpg)
 
 Il Phantasialand si definisce “Europe's Most Immersive Theme Park”. Chi c'è stato una volta capisce su cosa si
 regge quella pretesa. In nessun altro
@@ -128,7 +128,7 @@ un bosco delle fiabe, un luogo tranquillo per famiglie e nonni, con marionette
 del repertorio di Schmidt, scene fiabesche e tanto verde. Il 30 aprile 1967 si
 aprirono i cancelli. Ottovolanti? Nemmeno l'ombra.
 
-![F.L.Y. a Rookburgh | Rookburgh con F.L.Y. (2020), il primo flying launch coaster al mondo e culmine provvisorio di una lunga trasformazione. | left](/images/parks/phantasialand/fly-4x3.jpg)
+![F.L.Y. a Rookburgh | Rookburgh con F.L.Y. (2020), il primo flying launch coaster al mondo e culmine provvisorio di una lunga trasformazione. | left](/media/phantasialand/fly-4x3.jpg)
 
 Che da lì, nel corso dei decenni, sia nato il parco più selvaggio e più
 densamente tematizzato del continente è una storia di crescita lenta, e di una
@@ -210,15 +210,15 @@ coaster “vero” perfetto, abbastanza dolce per la prima volta, abbastanza vel
 per la seconda.
 
 ```gallery-widget heading="Gli headliner in immagini"
-- /images/parks/phantasialand/chiapas-die-wasserbahn-16x9.jpg | L'attrazione acquatica Chiapas | Chiapas, una delle attrazioni acquatiche più ripide del mondo.
-- /images/parks/phantasialand/colorado-adventure-16x9.jpg | Colorado Adventure | Colorado Adventure, il trenino minerario dal fascino Far West.
-- /images/parks/phantasialand/winjas-force-16x9.jpg | Winja's Force a Wuze Town | Winja's: due spinning coaster pieni di sorprese.
-- /images/parks/phantasialand/mystery-castle-16x9.jpg | Mystery Castle a Mysteryland | Mystery Castle, il freefall dai programmi che cambiano.
-- /images/parks/phantasialand/river-quest-16x9.jpg | River Quest | River Quest, acqua selvaggia con ascensori e bagno garantito.
-- /images/parks/phantasialand/raik-16x9.jpg | Raik a Klugheim | Raik, il primo coaster “vero” perfetto.
+- /media/phantasialand/chiapas-die-wasserbahn-16x9.jpg | L'attrazione acquatica Chiapas | Chiapas, una delle attrazioni acquatiche più ripide del mondo.
+- /media/phantasialand/colorado-adventure-16x9.jpg | Colorado Adventure | Colorado Adventure, il trenino minerario dal fascino Far West.
+- /media/phantasialand/winjas-fear-16x9.jpg | Winja's Force a Wuze Town | Winja's: due spinning coaster pieni di sorprese.
+- /media/phantasialand/mystery-castle-16x9.jpg | Mystery Castle a Mysteryland | Mystery Castle, il freefall dai programmi che cambiano.
+- /media/phantasialand/river-quest-16x9.jpg | River Quest | River Quest, acqua selvaggia con ascensori e bagno garantito.
+- /media/phantasialand/raik-16x9.jpg | Raik a Klugheim | Raik, il primo coaster “vero” perfetto.
 ```
 
-![Black Mamba a Deep in Africa | Black Mamba si insinua in basso tra rocce e capanne. | wide](/images/parks/phantasialand/black-mamba-16x9.jpg)
+![Black Mamba a Deep in Africa | Black Mamba si insinua in basso tra rocce e capanne. | wide](/media/phantasialand/black-mamba-16x9.jpg)
 
 ## Biglietti: solo online, e la battaglia per gli abbonamenti annuali
 
@@ -438,7 +438,7 @@ proprio lì accanto: **[Die 3 Mausketiere](ref:phantasialand/die-3-mausketiere)*
 un'attrazione 360°-4D che nel 2026 ha sostituito il vecchio cinema e riprende con
 garbo il tema dei topi.
 
-![La Geister Rikscha a China Town | Anche i dark ride come la Geister Rikscha sono pura, amorevole scenografia. | left](/images/parks/phantasialand/geister-rikscha-4x3.jpg)
+![La Geister Rikscha a China Town | Anche i dark ride come la Geister Rikscha sono pura, amorevole scenografia. | left](/media/phantasialand/geister-rikscha-4x3.jpg)
 
 E ci sono i tanti dark ride che questo parco costruisce quasi en passant, come se
 non fossero un granché, anche se ognuno di loro, in un altro parco, sarebbe

@@ -1,0 +1,31 @@
+{
+  "title": "Xpress: Platform 13",
+  "park": "walibi-holland",
+  "ride": "xpress-platform-13",
+  "roles": ["ride-card", "hero"],
+  "tags": ["detail", "indoor", "photo", "queue", "ride", "signage", "theming"],
+  "alt": {
+    "de": "Ein Bahnhofsschild in der Warteschlange: „Next Departure 06:66“, Platform 13.",
+    "en": "A station sign in the queue: \"Next Departure 06:66\", Platform 13.",
+    "es": "Un cartel de estación en la cola: \"Next Departure 06:66\", Platform 13.",
+    "fr": "Un panneau de gare dans la file : « Next Departure 06:66 », Platform 13.",
+    "it": "Un cartello di stazione nella fila: \"Next Departure 06:66\", Platform 13.",
+    "nl": "Een stationsbord in de wachtrij: \"Next Departure 06:66\", Platform 13."
+  },
+  "caption": {
+    "de": "Die Uhr steht auf 06:66. Der Zug kommt also nie.",
+    "en": "The clock says 06:66, so the train is never coming.",
+    "es": "El reloj marca las 06:66, así que ese tren no llega nunca.",
+    "fr": "L'horloge indique 06:66 : ce train n'arrivera jamais.",
+    "it": "L'orologio segna le 06:66, quindi quel treno non arriva mai.",
+    "nl": "De klok staat op 06:66, dus die trein komt nooit."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.52,
+    "y": 0.5
+  }
+}

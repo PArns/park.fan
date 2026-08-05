@@ -1,5 +1,5 @@
 import { RandomHeroImage } from '@/components/layout/hero-background';
-import { HERO_IMAGES } from '@/lib/hero-images';
+import { heroImageSrcs } from '@/lib/media/hero';
 
 /**
  * Pick the glossary background server-side. Server-rendering is what makes the image an LCP-friendly
@@ -12,9 +12,11 @@ import { HERO_IMAGES } from '@/lib/hero-images';
  * build-time day index is baked in, so every glossary page in a deploy resolves to the same image
  * (navigating between terms no longer swaps the hero) and there is zero per-request/ISR write churn.
  */
-function pickGlossaryHero(): string {
+function pickGlossaryHero(): string | null {
+  const pool = heroImageSrcs();
+  if (!pool.length) return null;
   const dayIndex = Math.floor(Date.now() / 86_400_000);
-  return HERO_IMAGES[dayIndex % HERO_IMAGES.length];
+  return pool[dayIndex % pool.length];
 }
 
 /**
@@ -23,6 +25,7 @@ function pickGlossaryHero(): string {
  */
 export async function GlossaryBackground() {
   const imageSrc = pickGlossaryHero();
+  if (!imageSrc) return null;
 
   return (
     <div className="pointer-events-none absolute top-0 right-0 left-0 -z-10 h-[calc(90vh+4rem)] max-h-[1100px] overflow-hidden select-none">

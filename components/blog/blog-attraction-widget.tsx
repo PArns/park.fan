@@ -1,7 +1,11 @@
 import { getTranslations } from 'next-intl/server';
 import { BlogAttractionCardLive } from './blog-attraction-card-live';
 import { GlassCard } from '@/components/common/glass-card';
-import { getAttractionBackgroundImage, getParkBackgroundImage } from '@/lib/utils/park-assets';
+import {
+  getAttractionBackgroundImage,
+  getCardObjectPosition,
+  getParkBackgroundImage,
+} from '@/lib/utils/park-assets';
 import type { ResolvedAttraction, ResolvedPark } from '@/lib/blog/park-resolver';
 
 interface BlogAttractionWidgetProps {
@@ -60,6 +64,7 @@ export async function BlogAttractionWidget({
           attraction.attractionSlug
         )}
         parkBackgroundImage={getParkBackgroundImage(park.slug)}
+        objectPosition={getCardObjectPosition(park.slug, attraction.attractionSlug)}
         className="grid h-full [grid-template-rows:auto_2rem_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]"
       />
     </div>

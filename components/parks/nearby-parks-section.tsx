@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { MapPin } from 'lucide-react';
 import { getParksNearLocation } from '@/lib/api/discovery';
-import { getParkBackgroundImage } from '@/lib/utils/park-assets';
+import { getCardObjectPosition, getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { stripNewPrefix } from '@/lib/utils';
 import { LiveNearbyParks, type StaticNearbyPark } from '@/components/parks/live-nearby-parks';
 
@@ -30,6 +30,7 @@ export async function NearbyParksSection({ parkId, lat, lng, className }: Nearby
     distance: park.distance,
     url: park.url ?? '',
     backgroundImage: getParkBackgroundImage(park.slug),
+    backgroundPosition: getCardObjectPosition(park.slug),
   }));
 
   return (

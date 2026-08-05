@@ -153,7 +153,7 @@ export function ContentIT() {
           ]}
         />
         <SplitFigure
-          src="/images/parks/phantasialand/black-mamba.jpg"
+          src="/media/phantasialand/black-mamba.jpg"
           alt="Black Mamba che sfreccia nella giungla a Phantasialand"
           kicker="Rope drop"
           title="La prima ora è d’oro"
@@ -171,7 +171,7 @@ export function ContentIT() {
           aspettati la ressa — mettile in conto, oppure pianifica per aggirarle:
         </PG>
         <SplitFigure
-          src="/images/parks/walibi-holland/goliath.jpg"
+          src="/media/walibi-holland/goliath.jpg"
           alt="Le montagne russe Goliath a Walibi Holland in un giorno affollato"
           kicker="Giorno di punta"
           title="Bel tempo, tutti liberi, tutti qui"
@@ -260,7 +260,7 @@ export function ContentIT() {
           in anticipo, con le vacanze e i giorni festivi della regione interessata.
         </P>
         <SplitFigure
-          src="/images/parks/efteling/symbolica.jpg"
+          src="/media/efteling/symbolica.jpg"
           alt="L’attrazione del palazzo Symbolica a Efteling"
           kicker="Verde, giallo, rosso"
           title="Un colore al giorno, un anno in anticipo"

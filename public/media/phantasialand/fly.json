@@ -1,0 +1,32 @@
+{
+  "title": "F.L.Y.",
+  "park": "phantasialand",
+  "ride": "fly",
+  "area": "Rookburgh",
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "indoor", "photo", "queue", "ride", "theming"],
+  "alt": {
+    "de": "Rohre, Seilzüge und Loren über einem rot glühenden Kohlenbett.",
+    "en": "Pipes, cables and buckets above a bed of coal glowing red.",
+    "es": "Tuberías, cables y vagonetas sobre un lecho de carbón al rojo.",
+    "fr": "Tuyaux, câbles et bennes au-dessus d'un lit de charbon rougeoyant.",
+    "it": "Tubi, cavi e benne sopra un letto di carbone incandescente.",
+    "nl": "Buizen, kabels en kipbakken boven een roodgloeiend kolenbed."
+  },
+  "caption": {
+    "de": "Rookburgh, der Themenbereich um F.L.Y.",
+    "en": "Rookburgh, the area built around F.L.Y.",
+    "es": "Rookburgh, la zona construida alrededor de F.L.Y.",
+    "fr": "Rookburgh, la zone construite autour de F.L.Y.",
+    "it": "Rookburgh, l'area costruita attorno a F.L.Y.",
+    "nl": "Rookburgh, het themagebied rond F.L.Y."
+  },
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.45,
+    "y": 0.52
+  }
+}

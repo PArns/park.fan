@@ -38,7 +38,10 @@ pnpm build
 pnpm start
 ```
 
-Prebuild runs `generate-build-info.mjs`, `generate-hero-images`, and `generate-attraction-images` automatically.
+Prebuild runs `generate-build-info.mjs`, `generate-client-glossary.mjs`,
+`generate-blog-manifest.mjs`, `generate:image-crops` and `generate:media`
+automatically. (`generate-hero-images` and `generate-attraction-images` are gone —
+the media database replaced both; see [media database](../features/media-database.md).)
 
 ## Commands
 
