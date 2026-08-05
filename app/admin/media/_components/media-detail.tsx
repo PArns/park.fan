@@ -89,6 +89,8 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
   const [saving, setSaving] = useState(false);
   const [result, setResult] = useState<SaveResult | null>(null);
   const [error, setError] = useState<string | null>(null);
+  /** "Discard the unsaved changes?" — asked in the page, never via `window.confirm`. */
+  const [confirmingClose, setConfirmingClose] = useState(false);
 
   // One object URL per staged file, revoked when it is replaced or the editor
   // closes. Minting it in render would leak one per keystroke.
@@ -239,14 +241,20 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
   })();
 
   /**
-   * Closing throws the draft away, so say so first when there is one.
+   * Closing throws the draft away, so ask first when there is one.
    *
-   * Everything here is edited in memory until "Save" opens a pull request; a
-   * mis-aimed backdrop click after retagging an image would otherwise silently
-   * cost all of it.
+   * Asked **in the page**, not with `window.confirm`. A native confirm is not a
+   * question the browser has to ask: an embedded view, a preview pane, or a user
+   * who ticked "prevent this page from creating additional dialogs" all make it
+   * return `false` without showing anything — and `false` means "keep editing", so
+   * the editor simply refused to close and there was no way out of it. A dialog
+   * whose close button silently does nothing is worse than losing a draft.
    */
   const requestClose = () => {
-    if (dirty && !window.confirm('Discard the unsaved changes to this image?')) return;
+    if (dirty) {
+      setConfirmingClose(true);
+      return;
+    }
     onClose();
   };
 
@@ -373,9 +381,11 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
   return (
     <Panel
       onClose={requestClose}
-      // Escape belongs to the topmost thing on screen: with the catalog picker
-      // open it dismisses that, not the editor underneath it.
-      onEscape={() => (picker ? setPicker(null) : requestClose())}
+      // Escape belongs to the topmost thing on screen, innermost first: the
+      // catalog picker, then the discard prompt, then the editor itself.
+      onEscape={() =>
+        picker ? setPicker(null) : confirmingClose ? setConfirmingClose(false) : requestClose()
+      }
       title={draft.title || currentName}
       id={row.id}
       thumb={pending?.url ?? row.src}
@@ -789,6 +799,47 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
           </Section>
         </div>
       </div>
+
+      {/* Discard prompt. Sits above the whole dialog rather than inside the body,
+          because it is about the dialog, and it lists what is at stake — "discard
+          the changes" is a much easier decision once it says which ones. */}
+      {confirmingClose && (
+        <div
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 p-4"
+          onMouseDown={(e) => {
+            if (e.target === e.currentTarget) setConfirmingClose(false);
+          }}
+        >
+          <div
+            role="alertdialog"
+            aria-modal="true"
+            aria-label="Discard the unsaved changes?"
+            className="bg-background ring-border w-full max-w-sm rounded-2xl p-4 shadow-2xl ring-1"
+          >
+            <p className="text-sm font-semibold">Discard the unsaved changes?</p>
+            <p className="text-muted-foreground mt-1 text-xs">
+              {plannedChanges.length ? plannedChanges.join(', ') : 'Nothing has been written yet.'}
+            </p>
+            <div className="mt-4 flex justify-end gap-2">
+              <button
+                type="button"
+                autoFocus
+                onClick={() => setConfirmingClose(false)}
+                className="border-border hover:bg-muted rounded-lg border px-3 py-2 text-sm"
+              >
+                Keep editing
+              </button>
+              <button
+                type="button"
+                onClick={onClose}
+                className="rounded-lg bg-red-500/90 px-3 py-2 text-sm font-medium text-white hover:bg-red-500"
+              >
+                Discard
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* The blog editor's picker, reused verbatim — it already searches the live
           catalog and returns the geo path. Typing raw slugs was how a photo ended
