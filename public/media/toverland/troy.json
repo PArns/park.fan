@@ -1,0 +1,23 @@
+{
+  "title": "Troy",
+  "park": "toverland",
+  "ride": "troy",
+  "area": "Troy",
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "photo",
+    "ride"
+  ],
+  "credit": {
+    "author": "Patrick Arns",
+    "license": "all-rights-reserved"
+  },
+  "shotAt": "2024-10-26",
+  "focus": {
+    "x": 0.62,
+    "y": 0.38
+  }
+}
