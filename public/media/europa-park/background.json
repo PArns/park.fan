@@ -1,10 +1,41 @@
 {
   "title": "Europa-Park",
   "park": "europa-park",
-  "roles": ["park-background"],
-  "tags": ["background", "park", "photo"],
+  "roles": [
+    "park-background"
+  ],
+  "tags": [
+    "background",
+    "day",
+    "entrance",
+    "outdoor",
+    "overcast",
+    "park",
+    "photo",
+    "signage"
+  ],
+  "alt": {
+    "de": "Der Haupteingang des Europa-Parks mit dem Schriftzug über dem Bogen und den Länderflaggen an der Fassade.",
+    "en": "Europa-Park's main entrance, the park's name above the arch and national flags along the facade.",
+    "es": "La entrada principal de Europa-Park, con el nombre sobre el arco y banderas de países en la fachada.",
+    "fr": "L'entrée principale d'Europa-Park, le nom du parc au-dessus de l'arche et les drapeaux le long de la façade.",
+    "it": "L'ingresso principale di Europa-Park, il nome sopra l'arco e le bandiere dei paesi lungo la facciata.",
+    "nl": "De hoofdingang van Europa-Park, met de naam boven de boog en landenvlaggen langs de gevel."
+  },
+  "caption": {
+    "de": "Der Haupteingang des Europa-Parks in Rust.",
+    "en": "The main entrance to Europa-Park in Rust.",
+    "es": "La entrada principal de Europa-Park en Rust.",
+    "fr": "L'entrée principale d'Europa-Park à Rust.",
+    "it": "L'ingresso principale di Europa-Park a Rust.",
+    "nl": "De hoofdingang van Europa-Park in Rust."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.52,
+    "y": 0.3
   }
 }

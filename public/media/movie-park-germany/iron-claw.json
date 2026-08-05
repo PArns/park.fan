@@ -2,10 +2,39 @@
   "title": "Iron Claw",
   "park": "movie-park-germany",
   "ride": "iron-claw",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "coaster",
+    "night",
+    "outdoor",
+    "photo",
+    "ride"
+  ],
+  "alt": {
+    "de": "Eine violett angestrahlte Achterbahn ragt bei Nacht über die Hecke am Parkplatz, darüber der Mond hinter dünnen Wolken.",
+    "en": "A coaster lit violet at night rising above the hedge at the car park, the moon behind thin cloud above it.",
+    "es": "Una montaña rusa iluminada de violeta se alza de noche sobre el seto del aparcamiento, con la luna tras nubes finas.",
+    "fr": "Des montagnes russes éclairées de violet dominent la haie du parking la nuit, la lune derrière de fins nuages.",
+    "it": "Un ottovolante illuminato di viola svetta di notte sopra la siepe del parcheggio, con la luna dietro nubi sottili.",
+    "nl": "Een paars uitgelichte achtbaan steekt 's nachts boven de heg bij de parkeerplaats uit, met de maan achter dunne wolken."
+  },
+  "caption": {
+    "de": "Die Bahn bei Nacht, vom Parkplatz aus gesehen.",
+    "en": "The coaster at night, seen from the car park.",
+    "es": "La atracción de noche, vista desde el aparcamiento.",
+    "fr": "Le parcours de nuit, vu depuis le parking.",
+    "it": "Il tracciato di notte, visto dal parcheggio.",
+    "nl": "De achtbaan bij nacht, gezien vanaf de parkeerplaats."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.42,
+    "y": 0.3
   }
 }

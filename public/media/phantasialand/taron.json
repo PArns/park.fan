@@ -3,10 +3,40 @@
   "park": "phantasialand",
   "ride": "taron",
   "area": "Klugheim",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "coaster",
+    "day",
+    "outdoor",
+    "photo",
+    "ride",
+    "sunny"
+  ],
+  "alt": {
+    "de": "Ein Zug von Taron rauscht durch die Basaltfelsen von Klugheim, darüber kreuzen sich mehrere Streckenteile.",
+    "en": "A Taron train racing through the basalt rocks of Klugheim, several sections of track crossing above it.",
+    "es": "Un tren de Taron cruza las rocas de basalto de Klugheim, con varios tramos de vía cruzándose encima.",
+    "fr": "Un train de Taron file entre les roches de basalte de Klugheim, plusieurs portions de voie se croisant au-dessus.",
+    "it": "Un treno di Taron sfreccia tra le rocce di basalto di Klugheim, con più tratti di binario che si incrociano sopra.",
+    "nl": "Een trein van Taron raast door de basaltrotsen van Klugheim, met meerdere baandelen die elkaar erboven kruisen."
+  },
+  "caption": {
+    "de": "Taron in Klugheim.",
+    "en": "Taron in Klugheim.",
+    "es": "Taron en Klugheim.",
+    "fr": "Taron à Klugheim.",
+    "it": "Taron a Klugheim.",
+    "nl": "Taron in Klugheim."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.55,
+    "y": 0.58
   }
 }

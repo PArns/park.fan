@@ -1,10 +1,41 @@
 {
   "title": "Walibi Holland",
   "park": "walibi-holland",
-  "roles": ["park-background"],
-  "tags": ["background", "park", "photo"],
+  "roles": [
+    "park-background"
+  ],
+  "tags": [
+    "background",
+    "day",
+    "outdoor",
+    "overcast",
+    "park",
+    "photo",
+    "signage",
+    "theming"
+  ],
+  "alt": {
+    "de": "Ein alter Käfer thront auf einem rostigen Stahlgerüst über dem Schriftzug „Speed Zone“, ringsum dichtes Grün.",
+    "en": "An old beetle car perched on a rusted steel frame above a \"Speed Zone\" sign, dense greenery all around.",
+    "es": "Un viejo escarabajo encaramado en una estructura de acero oxidado sobre el rótulo \"Speed Zone\", rodeado de vegetación.",
+    "fr": "Une vieille coccinelle perchée sur une armature d'acier rouillée au-dessus de l'enseigne « Speed Zone », entourée de verdure.",
+    "it": "Una vecchia maggiolino su un'intelaiatura d'acciaio arrugginita sopra l'insegna \"Speed Zone\", circondata dal verde.",
+    "nl": "Een oude kever staat op een roestig stalen frame boven het opschrift \"Speed Zone\", omringd door dicht groen."
+  },
+  "caption": {
+    "de": "Der Eingang zur Speed Zone in Walibi Holland.",
+    "en": "The entrance to the Speed Zone at Walibi Holland.",
+    "es": "La entrada a la Speed Zone de Walibi Holland.",
+    "fr": "L'entrée de la Speed Zone à Walibi Holland.",
+    "it": "L'ingresso della Speed Zone a Walibi Holland.",
+    "nl": "De ingang van de Speed Zone in Walibi Holland."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.5,
+    "y": 0.4
   }
 }

@@ -3,10 +3,40 @@
   "park": "europa-park",
   "ride": "eurosat-coastiality",
   "area": "France",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "day",
+    "entrance",
+    "outdoor",
+    "photo",
+    "ride",
+    "signage"
+  ],
+  "alt": {
+    "de": "Das schwarze Gebäude von Eurosat Coastiality mit dem Schriftzug „The Phantom of the Opera“ und der weißen Maske, links die Eurosat-Kugel.",
+    "en": "The black Eurosat Coastiality building with \"The Phantom of the Opera\" lettering and the white mask, Eurosat's sphere at the left.",
+    "es": "El edificio negro de Eurosat Coastiality con el rótulo \"The Phantom of the Opera\" y la máscara blanca, la esfera de Eurosat a la izquierda.",
+    "fr": "Le bâtiment noir d'Eurosat Coastiality portant « The Phantom of the Opera » et le masque blanc, la sphère d'Eurosat à gauche.",
+    "it": "L'edificio nero di Eurosat Coastiality con la scritta \"The Phantom of the Opera\" e la maschera bianca, la sfera di Eurosat a sinistra.",
+    "nl": "Het zwarte gebouw van Eurosat Coastiality met het opschrift \"The Phantom of the Opera\" en het witte masker, links de Eurosat-bol."
+  },
+  "caption": {
+    "de": "Eurosat Coastiality: die VR-Variante neben der Eurosat-Kugel.",
+    "en": "Eurosat Coastiality: the VR ride next to the Eurosat sphere.",
+    "es": "Eurosat Coastiality: la versión de realidad virtual junto a la esfera de Eurosat.",
+    "fr": "Eurosat Coastiality : la version VR à côté de la sphère d'Eurosat.",
+    "it": "Eurosat Coastiality: la versione in realtà virtuale accanto alla sfera di Eurosat.",
+    "nl": "Eurosat Coastiality: de VR-variant naast de Eurosat-bol."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.47,
+    "y": 0.32
   }
 }

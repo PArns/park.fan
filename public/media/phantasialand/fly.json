@@ -3,10 +3,40 @@
   "park": "phantasialand",
   "ride": "fly",
   "area": "Rookburgh",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "coaster",
+    "indoor",
+    "photo",
+    "queue",
+    "ride",
+    "theming"
+  ],
+  "alt": {
+    "de": "Industriekulisse in Rookburgh: Rohre, Seilzüge und Loren über einem rot glühenden Kohlenbett, darüber die Schiene von F.L.Y.",
+    "en": "The industrial scenery of Rookburgh: pipes, cables and buckets above a red-glowing bed of coal, with F.L.Y.'s track overhead.",
+    "es": "Escenografía industrial de Rookburgh: tuberías, cables y vagonetas sobre un lecho de carbón al rojo, con la vía de F.L.Y. arriba.",
+    "fr": "Décor industriel de Rookburgh : tuyaux, câbles et bennes au-dessus d'un lit de charbon rougeoyant, la voie de F.L.Y. au-dessus.",
+    "it": "Scenografia industriale di Rookburgh: tubi, cavi e benne sopra un letto di carbone incandescente, con il binario di F.L.Y. sopra.",
+    "nl": "Industrieel decor in Rookburgh: buizen, kabels en kipbakken boven een roodgloeiend kolenbed, met de baan van F.L.Y. erboven."
+  },
+  "caption": {
+    "de": "Die Kulisse von F.L.Y. in Rookburgh.",
+    "en": "The scenery of F.L.Y. in Rookburgh.",
+    "es": "La escenografía de F.L.Y. en Rookburgh.",
+    "fr": "Le décor de F.L.Y. à Rookburgh.",
+    "it": "La scenografia di F.L.Y. a Rookburgh.",
+    "nl": "Het decor van F.L.Y. in Rookburgh."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.45,
+    "y": 0.52
   }
 }

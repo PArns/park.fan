@@ -2,10 +2,37 @@
   "title": "Movie Park Studio Tour",
   "park": "movie-park-germany",
   "ride": "movie-park-studio-tour",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "detail",
+    "indoor",
+    "photo"
+  ],
+  "alt": {
+    "de": "Ein Architekturmodell eines Parkgeländes mit Parkplatz, Hallen und Kunstfelsen steht auf einem Werkstatttisch, daneben aufgerollte Pläne und ein Kaffeebecher.",
+    "en": "An architectural model of a park site with car park, halls and artificial rock on a workshop table, rolled-up plans and a coffee cup beside it.",
+    "es": "Una maqueta de un recinto de parque con aparcamiento, naves y roca artificial sobre una mesa de taller, con planos enrollados y un vaso de café.",
+    "fr": "Une maquette d'un site de parc avec parking, halles et rocher artificiel sur un établi, à côté des plans roulés et un gobelet de café.",
+    "it": "Un plastico di un'area del parco con parcheggio, capannoni e roccia artificiale su un banco da lavoro, accanto piani arrotolati e un bicchiere di caffè.",
+    "nl": "Een maquette van een parkterrein met parkeerplaats, hallen en kunstrots op een werkbank, met opgerolde plannen en een koffiebeker ernaast."
+  },
+  "caption": {
+    "de": "Modell und Pläne in der Werkstatt.",
+    "en": "A model and plans in the workshop.",
+    "es": "Maqueta y planos en el taller.",
+    "fr": "Maquette et plans dans l'atelier.",
+    "it": "Plastico e piani in officina.",
+    "nl": "Maquette en plannen in de werkplaats."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.62,
+    "y": 0.5
   }
 }

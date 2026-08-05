@@ -2,10 +2,40 @@
   "title": "Baron 1898",
   "park": "efteling",
   "ride": "baron-1898",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "coaster",
+    "night",
+    "outdoor",
+    "photo",
+    "ride",
+    "theming"
+  ],
+  "alt": {
+    "de": "Das Fördergerüst von Baron 1898 blau angestrahlt bei Nacht, links das Backsteingebäude der Mine, davor die Schiene der Bahn.",
+    "en": "Baron 1898's headframe lit blue at night, the brick mine building at the left and the ride's track in front.",
+    "es": "El castillete de Baron 1898 iluminado de azul por la noche, con el edificio de ladrillo de la mina a la izquierda y la vía delante.",
+    "fr": "Le chevalement de Baron 1898 éclairé en bleu la nuit, à gauche le bâtiment de brique de la mine et devant la voie.",
+    "it": "Il castelletto di Baron 1898 illuminato di blu di notte, a sinistra l'edificio in mattoni della miniera e davanti il binario.",
+    "nl": "De schachtbok van Baron 1898 blauw uitgelicht bij nacht, links het bakstenen mijngebouw en ervoor de baan."
+  },
+  "caption": {
+    "de": "Baron 1898 bei Nacht.",
+    "en": "Baron 1898 at night.",
+    "es": "Baron 1898 de noche.",
+    "fr": "Baron 1898 de nuit.",
+    "it": "Baron 1898 di notte.",
+    "nl": "Baron 1898 bij nacht."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.45,
+    "y": 0.35
   }
 }

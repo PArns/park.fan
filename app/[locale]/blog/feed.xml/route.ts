@@ -2,6 +2,7 @@ import type { NextRequest } from 'next/server';
 import { hasPublishedPosts, listPosts } from '@/lib/blog/listing';
 import { resolveAuthor } from '@/lib/blog/authors';
 import { routing, type Locale } from '@/i18n/routing';
+import { versionedPath } from '@/lib/media/focus';
 
 const SITE_URL = 'https://park.fan';
 
@@ -64,7 +65,10 @@ export async function GET(
       const url = `${SITE_URL}/${locale}/blog/${slug}`;
       const author = resolveAuthor(frontmatter.author, locale).name;
       const pubDate = rfc822(new Date(frontmatter.date));
-      const cover = frontmatter.coverImage?.src;
+      // Content-versioned like every other media URL. A feed reader caches an
+      // enclosure by its address, so an unversioned crop keeps the old framing in
+      // every subscriber's client after a focal point moves.
+      const cover = versionedPath(frontmatter.coverImage?.src);
       const coverAbs = cover ? (cover.startsWith('http') ? cover : `${SITE_URL}${cover}`) : null;
       const categories = (frontmatter.tags ?? [])
         .map((tag) => `    <category>${escapeXml(tag)}</category>`)

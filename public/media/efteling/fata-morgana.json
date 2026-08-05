@@ -2,10 +2,41 @@
   "title": "Fata Morgana",
   "park": "efteling",
   "ride": "fata-morgana",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "dark-ride",
+    "dusk",
+    "outdoor",
+    "photo",
+    "ride",
+    "theming",
+    "winter"
+  ],
+  "alt": {
+    "de": "Das Minarett von Fata Morgana leuchtet in der blauen Stunde über den Kuppeln des orientalischen Themenbereichs.",
+    "en": "Fata Morgana's minaret glowing at blue hour above the domes of the oriental area.",
+    "es": "El minarete de Fata Morgana brilla en la hora azul sobre las cúpulas de la zona oriental.",
+    "fr": "Le minaret de Fata Morgana s'illumine à l'heure bleue au-dessus des coupoles de la zone orientale.",
+    "it": "Il minareto di Fata Morgana risplende nell'ora blu sopra le cupole dell'area orientale.",
+    "nl": "De minaret van Fata Morgana licht op in het blauwe uur boven de koepels van het oosterse gebied."
+  },
+  "caption": {
+    "de": "Fata Morgana in der blauen Stunde.",
+    "en": "Fata Morgana at blue hour.",
+    "es": "Fata Morgana en la hora azul.",
+    "fr": "Fata Morgana à l'heure bleue.",
+    "it": "Fata Morgana nell'ora blu.",
+    "nl": "Fata Morgana in het blauwe uur."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.2,
+    "y": 0.3
   }
 }

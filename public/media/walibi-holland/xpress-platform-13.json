@@ -2,10 +2,41 @@
   "title": "Xpress: Platform 13",
   "park": "walibi-holland",
   "ride": "xpress-platform-13",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "detail",
+    "indoor",
+    "photo",
+    "queue",
+    "ride",
+    "signage",
+    "theming"
+  ],
+  "alt": {
+    "de": "Ein beleuchtetes Bahnhofsschild mit Uhr, der Aufschrift „Next Departure 06:66“ und „Platform 13“ in der Warteschlange.",
+    "en": "An illuminated station sign with a clock reading \"Next Departure 06:66\" and \"Platform 13\" in the queue.",
+    "es": "Un cartel de estación iluminado con reloj, \"Next Departure 06:66\" y \"Platform 13\" en la cola.",
+    "fr": "Un panneau de gare éclairé avec horloge, « Next Departure 06:66 » et « Platform 13 » dans la file d'attente.",
+    "it": "Un cartello di stazione illuminato con orologio, \"Next Departure 06:66\" e \"Platform 13\" nella fila.",
+    "nl": "Een verlicht stationsbord met klok, \"Next Departure 06:66\" en \"Platform 13\" in de wachtrij."
+  },
+  "caption": {
+    "de": "Die Warteschlange von Xpress: Platform 13.",
+    "en": "The queue for Xpress: Platform 13.",
+    "es": "La cola de Xpress: Platform 13.",
+    "fr": "La file d'attente d'Xpress : Platform 13.",
+    "it": "La fila di Xpress: Platform 13.",
+    "nl": "De wachtrij van Xpress: Platform 13."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.52,
+    "y": 0.5
   }
 }

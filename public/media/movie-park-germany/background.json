@@ -1,10 +1,39 @@
 {
   "title": "Movie Park Germany",
   "park": "movie-park-germany",
-  "roles": ["park-background"],
-  "tags": ["background", "park", "photo"],
+  "roles": [
+    "park-background"
+  ],
+  "tags": [
+    "background",
+    "coaster",
+    "night",
+    "outdoor",
+    "park",
+    "photo"
+  ],
+  "alt": {
+    "de": "Eine violett angestrahlte Achterbahn ragt bei Nacht über die Hecke am Parkplatz, darüber der Mond hinter dünnen Wolken.",
+    "en": "A coaster lit violet at night rising above the hedge at the car park, the moon behind thin cloud above it.",
+    "es": "Una montaña rusa iluminada de violeta se alza de noche sobre el seto del aparcamiento, con la luna tras nubes finas.",
+    "fr": "Des montagnes russes éclairées de violet dominent la haie du parking la nuit, la lune derrière de fins nuages.",
+    "it": "Un ottovolante illuminato di viola svetta di notte sopra la siepe del parcheggio, con la luna dietro nubi sottili.",
+    "nl": "Een paars uitgelichte achtbaan steekt 's nachts boven de heg bij de parkeerplaats uit, met de maan achter dunne wolken."
+  },
+  "caption": {
+    "de": "Movie Park Germany bei Nacht, vom Parkplatz aus gesehen.",
+    "en": "Movie Park Germany at night, seen from the car park.",
+    "es": "Movie Park Germany de noche, visto desde el aparcamiento.",
+    "fr": "Movie Park Germany de nuit, vu depuis le parking.",
+    "it": "Movie Park Germany di notte, visto dal parcheggio.",
+    "nl": "Movie Park Germany bij nacht, gezien vanaf de parkeerplaats."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.42,
+    "y": 0.3
   }
 }

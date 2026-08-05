@@ -2,10 +2,40 @@
   "title": "Pagode",
   "park": "efteling",
   "ride": "pagode",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "flat-ride",
+    "night",
+    "outdoor",
+    "photo",
+    "ride",
+    "winter"
+  ],
+  "alt": {
+    "de": "Die bunt beleuchtete Pagode schwebt bei Nacht über den Baumwipfeln, Lichtstrahlen fallen nach unten.",
+    "en": "The brightly lit Pagode hovering above the treetops at night, beams of light falling below it.",
+    "es": "La Pagode iluminada flota de noche sobre las copas de los árboles, con haces de luz descendiendo.",
+    "fr": "La Pagode illuminée flotte au-dessus de la cime des arbres la nuit, des faisceaux de lumière descendant vers le sol.",
+    "it": "La Pagode illuminata fluttua di notte sopra le chiome degli alberi, con fasci di luce verso il basso.",
+    "nl": "De kleurrijk verlichte Pagode zweeft 's nachts boven de boomtoppen, met lichtbundels naar beneden."
+  },
+  "caption": {
+    "de": "Die Pagode über dem nächtlichen Park.",
+    "en": "The Pagode above the park at night.",
+    "es": "La Pagode sobre el parque de noche.",
+    "fr": "La Pagode au-dessus du parc, de nuit.",
+    "it": "La Pagode sopra il parco di notte.",
+    "nl": "De Pagode boven het nachtelijke park."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.48,
+    "y": 0.24
   }
 }

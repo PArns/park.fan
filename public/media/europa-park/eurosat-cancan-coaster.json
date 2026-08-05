@@ -3,10 +3,41 @@
   "park": "europa-park",
   "ride": "eurosat-cancan-coaster",
   "area": "France",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "coaster",
+    "day",
+    "outdoor",
+    "photo",
+    "ride",
+    "sunny",
+    "winter"
+  ],
+  "alt": {
+    "de": "Die silberne Kugel von Eurosat über der Moulin-Rouge-Fassade im französischen Themenbereich, davor kahle Bäume.",
+    "en": "Eurosat's silver sphere rising above the Moulin Rouge facade in the French area, bare trees in front.",
+    "es": "La esfera plateada de Eurosat sobre la fachada del Moulin Rouge en la zona francesa, con árboles desnudos delante.",
+    "fr": "La sphère argentée d'Eurosat au-dessus de la façade du Moulin Rouge, dans la zone française, arbres nus au premier plan.",
+    "it": "La sfera argentata di Eurosat sopra la facciata del Moulin Rouge nell'area francese, con alberi spogli in primo piano.",
+    "nl": "De zilveren bol van Eurosat boven de Moulin-Rouge-gevel in het Franse gebied, met kale bomen ervoor."
+  },
+  "caption": {
+    "de": "Eurosat CanCan Coaster in der Kugel über dem französischen Themenbereich.",
+    "en": "Eurosat CanCan Coaster inside the sphere above the French area.",
+    "es": "Eurosat CanCan Coaster dentro de la esfera sobre la zona francesa.",
+    "fr": "Eurosat CanCan Coaster dans la sphère au-dessus de la zone française.",
+    "it": "Eurosat CanCan Coaster dentro la sfera sopra l'area francese.",
+    "nl": "Eurosat CanCan Coaster in de bol boven het Franse themagebied."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.45,
+    "y": 0.28
   }
 }

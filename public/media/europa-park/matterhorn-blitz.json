@@ -3,10 +3,40 @@
   "park": "europa-park",
   "ride": "matterhorn-blitz",
   "area": "Switzerland",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "day",
+    "outdoor",
+    "photo",
+    "ride",
+    "signage",
+    "theming"
+  ],
+  "alt": {
+    "de": "Das hölzerne Schild „Matterhorn Blitz“ an einer Steinwand, davor altes Ackergerät und Kiefernzweige.",
+    "en": "The wooden \"Matterhorn Blitz\" sign on a stone wall, old farm machinery and pine branches in front of it.",
+    "es": "El cartel de madera \"Matterhorn Blitz\" sobre un muro de piedra, con maquinaria agrícola antigua y ramas de pino delante.",
+    "fr": "L'enseigne en bois « Matterhorn Blitz » sur un mur de pierre, devant de vieilles machines agricoles et des branches de pin.",
+    "it": "L'insegna in legno \"Matterhorn Blitz\" su un muro di pietra, con vecchi attrezzi agricoli e rami di pino davanti.",
+    "nl": "Het houten bord \"Matterhorn Blitz\" tegen een stenen muur, met oud landbouwgereedschap en dennentakken ervoor."
+  },
+  "caption": {
+    "de": "Matterhorn Blitz im Schweizer Themenbereich.",
+    "en": "Matterhorn Blitz in the Swiss area.",
+    "es": "Matterhorn Blitz en la zona suiza.",
+    "fr": "Matterhorn Blitz dans la zone suisse.",
+    "it": "Matterhorn Blitz nell'area svizzera.",
+    "nl": "Matterhorn Blitz in het Zwitserse themagebied."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.52,
+    "y": 0.35
   }
 }

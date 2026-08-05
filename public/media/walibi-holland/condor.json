@@ -2,10 +2,41 @@
   "title": "Condor",
   "park": "walibi-holland",
   "ride": "condor",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "coaster",
+    "day",
+    "outdoor",
+    "photo",
+    "ride",
+    "sunny",
+    "theming"
+  ],
+  "alt": {
+    "de": "Eine orange Vogelskulptur auf einem gemauerten Sockel vor der grün-orangen Streckenführung von Condor.",
+    "en": "An orange bird sculpture on a masonry plinth in front of Condor's green and orange track.",
+    "es": "Una escultura de ave naranja sobre un pedestal de mampostería ante la vía verde y naranja de Condor.",
+    "fr": "Une sculpture d'oiseau orange sur un socle maçonné devant la voie verte et orange de Condor.",
+    "it": "Una scultura d'uccello arancione su un basamento in muratura davanti al tracciato verde e arancione di Condor.",
+    "nl": "Een oranje vogelsculptuur op een gemetselde sokkel voor de groen-oranje baan van Condor."
+  },
+  "caption": {
+    "de": "Condor in Walibi Holland.",
+    "en": "Condor at Walibi Holland.",
+    "es": "Condor en Walibi Holland.",
+    "fr": "Condor à Walibi Holland.",
+    "it": "Condor a Walibi Holland.",
+    "nl": "Condor in Walibi Holland."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.25,
+    "y": 0.32
   }
 }

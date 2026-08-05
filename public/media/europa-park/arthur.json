@@ -3,10 +3,39 @@
   "park": "europa-park",
   "ride": "arthur",
   "area": "France",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "dark-ride",
+    "indoor",
+    "photo",
+    "ride",
+    "theming"
+  ],
+  "alt": {
+    "de": "Ein Pilzhaus mit leuchtenden Kugeln in der Halle von Arthur, dahinter überdimensionale Blumen und die Bahnschiene unter der Decke.",
+    "en": "A mushroom house with glowing orbs inside the Arthur ride hall, oversized flowers and the track running overhead.",
+    "es": "Una casa-seta con globos luminosos en la nave de Arthur, con flores gigantes y la vía bajo el techo.",
+    "fr": "Une maison-champignon aux globes lumineux dans le hall d'Arthur, avec des fleurs géantes et le rail au plafond.",
+    "it": "Una casa-fungo con globi luminosi nella sala di Arthur, tra fiori giganti e il binario sotto il soffitto.",
+    "nl": "Een paddenstoelenhuis met lichtbollen in de hal van Arthur, met reuzenbloemen en de baan onder het plafond."
+  },
+  "caption": {
+    "de": "Arthur im Königreich der Minimoys: die Welt aus Sicht der Minimoys.",
+    "en": "Arthur: the Minimoys' world seen at their scale.",
+    "es": "Arthur: el mundo a escala de los Minimoys.",
+    "fr": "Arthur : le monde à l'échelle des Minimoys.",
+    "it": "Arthur: il mondo alla scala dei Minimoys.",
+    "nl": "Arthur: de wereld op de schaal van de Minimoys."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.22,
+    "y": 0.45
   }
 }

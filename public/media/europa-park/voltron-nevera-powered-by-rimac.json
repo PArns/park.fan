@@ -3,10 +3,39 @@
   "park": "europa-park",
   "ride": "voltron-nevera-powered-by-rimac",
   "area": "Croatia",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "coaster",
+    "night",
+    "outdoor",
+    "photo",
+    "ride"
+  ],
+  "alt": {
+    "de": "Ein Zug von Voltron Nevera fährt kopfüber durch ein pink und blau beleuchtetes Inversionselement, rechts der Turm der Bahn.",
+    "en": "A Voltron Nevera train runs upside down through an inversion lit pink and blue, the ride's tower to the right.",
+    "es": "Un tren de Voltron Nevera pasa boca abajo por una inversión iluminada de rosa y azul, con la torre de la atracción a la derecha.",
+    "fr": "Un train de Voltron Nevera passe à l'envers dans une inversion éclairée de rose et de bleu, la tour du parcours à droite.",
+    "it": "Un treno di Voltron Nevera passa capovolto in un'inversione illuminata di rosa e blu, con la torre a destra.",
+    "nl": "Een trein van Voltron Nevera gaat ondersteboven door een roze en blauw uitgelichte inversie, rechts de toren van de baan."
+  },
+  "caption": {
+    "de": "Voltron Nevera powered by Rimac bei Nacht im kroatischen Themenbereich.",
+    "en": "Voltron Nevera powered by Rimac at night in the Croatian area.",
+    "es": "Voltron Nevera powered by Rimac de noche en la zona croata.",
+    "fr": "Voltron Nevera powered by Rimac de nuit dans la zone croate.",
+    "it": "Voltron Nevera powered by Rimac di notte nell'area croata.",
+    "nl": "Voltron Nevera powered by Rimac bij nacht in het Kroatische themagebied."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.36,
+    "y": 0.3
   }
 }

@@ -2,10 +2,41 @@
   "title": "Lost Gravity",
   "park": "walibi-holland",
   "ride": "lost-gravity",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "coaster",
+    "day",
+    "outdoor",
+    "overcast",
+    "photo",
+    "ride",
+    "theming"
+  ],
+  "alt": {
+    "de": "Ein Wagen von Lost Gravity fährt an einem gestapelten Frachtcontainer vorbei, im Vordergrund alte Eisenbahnsignale.",
+    "en": "A Lost Gravity car passing a stacked shipping container, old railway signals in the foreground.",
+    "es": "Un vehículo de Lost Gravity pasa junto a un contenedor apilado, con viejas señales ferroviarias en primer plano.",
+    "fr": "Un véhicule de Lost Gravity passe devant un conteneur empilé, au premier plan de vieux signaux ferroviaires.",
+    "it": "Un veicolo di Lost Gravity passa accanto a un container impilato, in primo piano vecchi segnali ferroviari.",
+    "nl": "Een wagen van Lost Gravity passeert een gestapelde zeecontainer, op de voorgrond oude spoorwegseinen."
+  },
+  "caption": {
+    "de": "Lost Gravity in Walibi Holland.",
+    "en": "Lost Gravity at Walibi Holland.",
+    "es": "Lost Gravity en Walibi Holland.",
+    "fr": "Lost Gravity à Walibi Holland.",
+    "it": "Lost Gravity a Walibi Holland.",
+    "nl": "Lost Gravity in Walibi Holland."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.28,
+    "y": 0.32
   }
 }

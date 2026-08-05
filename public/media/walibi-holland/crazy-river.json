@@ -2,10 +2,41 @@
   "title": "Crazy River",
   "park": "walibi-holland",
   "ride": "crazy-river",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "day",
+    "outdoor",
+    "photo",
+    "ride",
+    "sunny",
+    "theming",
+    "water-ride"
+  ],
+  "alt": {
+    "de": "Boote treiben durch die Wasserrinne von Crazy River, dahinter ein Holzgebäude mit Wellblechdach und Warnschildern.",
+    "en": "Boats drifting along Crazy River's trough, a timber building with a corrugated roof and warning signs behind.",
+    "es": "Barcas descienden por el canal de Crazy River, con un edificio de madera de techo ondulado y carteles de aviso al fondo.",
+    "fr": "Des bateaux dérivent dans la gouttière de Crazy River, derrière un bâtiment en bois au toit de tôle et des panneaux d'avertissement.",
+    "it": "Barche scorrono lungo il canale di Crazy River, dietro un edificio in legno col tetto in lamiera e cartelli di avviso.",
+    "nl": "Boten drijven door de goot van Crazy River, met daarachter een houten gebouw met golfplaten dak en waarschuwingsborden."
+  },
+  "caption": {
+    "de": "Crazy River in Walibi Holland.",
+    "en": "Crazy River at Walibi Holland.",
+    "es": "Crazy River en Walibi Holland.",
+    "fr": "Crazy River à Walibi Holland.",
+    "it": "Crazy River a Walibi Holland.",
+    "nl": "Crazy River in Walibi Holland."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.55,
+    "y": 0.48
   }
 }

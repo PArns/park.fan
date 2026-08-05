@@ -3,10 +3,40 @@
   "park": "europa-park",
   "ride": "castello-dei-medici",
   "area": "Italy",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "day",
+    "entrance",
+    "outdoor",
+    "photo",
+    "ride",
+    "theming"
+  ],
+  "alt": {
+    "de": "Die Renaissance-Fassade des Geisterschlosses mit Drachenfigur, astronomischer Uhr und dem Schriftzug über dem Eingang.",
+    "en": "The Renaissance facade of the Geisterschloss with its dragon figure, astronomical clock and lettering above the entrance.",
+    "es": "La fachada renacentista del Geisterschloss con su dragón, su reloj astronómico y el rótulo sobre la entrada.",
+    "fr": "La façade Renaissance du Geisterschloss avec son dragon, son horloge astronomique et l'enseigne au-dessus de l'entrée.",
+    "it": "La facciata rinascimentale del Geisterschloss con drago, orologio astronomico e l'insegna sopra l'ingresso.",
+    "nl": "De renaissancegevel van het Geisterschloss met drakenfiguur, astronomische klok en het opschrift boven de ingang."
+  },
+  "caption": {
+    "de": "Das Geisterschloss im Castello dei Medici, italienischer Themenbereich.",
+    "en": "The Geisterschloss inside the Castello dei Medici, Italian area.",
+    "es": "El Geisterschloss en el Castello dei Medici, zona italiana.",
+    "fr": "Le Geisterschloss dans le Castello dei Medici, zone italienne.",
+    "it": "Il Geisterschloss nel Castello dei Medici, area italiana.",
+    "nl": "Het Geisterschloss in het Castello dei Medici, Italiaans themagebied."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.5,
+    "y": 0.48
   }
 }

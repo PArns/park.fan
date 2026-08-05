@@ -3,10 +3,39 @@
   "park": "phantasialand",
   "ride": "winjas-force",
   "area": "Mystery",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "coaster",
+    "indoor",
+    "photo",
+    "ride",
+    "theming"
+  ],
+  "alt": {
+    "de": "Ein riesiger Tontopf mit aufgeklapptem Deckel und angelehnter Leiter in der Halle von Winja's, daneben ein Besen und Maiskolben.",
+    "en": "A giant clay pot with its lid open and a ladder leaning against it inside the Winja's show building, a broom and corn cobs beside it.",
+    "es": "Una vasija de barro gigante con la tapa abierta y una escalera apoyada, en la nave de Winja's, con una escoba y mazorcas al lado.",
+    "fr": "Un pot en terre géant au couvercle ouvert, une échelle appuyée contre lui dans le hall de Winja's, avec un balai et des épis de maïs.",
+    "it": "Un enorme vaso di terracotta col coperchio aperto e una scala appoggiata, nella sala di Winja's, con una scopa e pannocchie accanto.",
+    "nl": "Een reusachtige aardewerken pot met open deksel en een ladder ertegenaan in de hal van Winja's, met een bezem en maiskolven ernaast."
+  },
+  "caption": {
+    "de": "Kulisse in der Halle von Winja's Fear & Force in Wuze Town.",
+    "en": "Scenery inside the Winja's Fear & Force building in Wuze Town.",
+    "es": "Escenografía en la nave de Winja's Fear & Force en Wuze Town.",
+    "fr": "Décor dans le bâtiment de Winja's Fear & Force à Wuze Town.",
+    "it": "Scenografia nella sala di Winja's Fear & Force a Wuze Town.",
+    "nl": "Decor in de hal van Winja's Fear & Force in Wuze Town."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.33,
+    "y": 0.48
   }
 }

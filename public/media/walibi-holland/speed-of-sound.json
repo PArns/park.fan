@@ -2,10 +2,41 @@
   "title": "Speed Of Sound",
   "park": "walibi-holland",
   "ride": "speed-of-sound",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "autumn",
+    "coaster",
+    "dusk",
+    "outdoor",
+    "photo",
+    "ride",
+    "signage"
+  ],
+  "alt": {
+    "de": "Das Schild von Speed of Sound zwischen überdimensionalen Lautsprechern und einer Gitarre, dahinter die orange Streckenführung.",
+    "en": "The Speed of Sound sign between oversized loudspeakers and a guitar, the orange track looping behind it.",
+    "es": "El cartel de Speed of Sound entre altavoces gigantes y una guitarra, con la vía naranja al fondo.",
+    "fr": "L'enseigne de Speed of Sound entre des enceintes géantes et une guitare, la voie orange derrière.",
+    "it": "L'insegna di Speed of Sound tra altoparlanti giganti e una chitarra, dietro il tracciato arancione.",
+    "nl": "Het bord van Speed of Sound tussen reuzenluidsprekers en een gitaar, met de oranje baan erachter."
+  },
+  "caption": {
+    "de": "Speed of Sound in Walibi Holland.",
+    "en": "Speed of Sound at Walibi Holland.",
+    "es": "Speed of Sound en Walibi Holland.",
+    "fr": "Speed of Sound à Walibi Holland.",
+    "it": "Speed of Sound a Walibi Holland.",
+    "nl": "Speed of Sound in Walibi Holland."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.55,
+    "y": 0.42
   }
 }

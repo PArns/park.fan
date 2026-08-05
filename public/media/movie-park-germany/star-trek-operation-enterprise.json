@@ -2,10 +2,40 @@
   "title": "Star Trek™: Operation Enterprise",
   "park": "movie-park-germany",
   "ride": "star-trek-operation-enterprise",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "coaster",
+    "halloween",
+    "night",
+    "outdoor",
+    "photo",
+    "ride"
+  ],
+  "alt": {
+    "de": "Die rot angestrahlte Streckenführung von Operation Enterprise über dem Schriftzug „Horrorwood Studios“, Suchscheinwerfer am Nachthimmel.",
+    "en": "Operation Enterprise's track lit red above a \"Horrorwood Studios\" sign, searchlights sweeping the night sky.",
+    "es": "La vía de Operation Enterprise iluminada de rojo sobre el rótulo \"Horrorwood Studios\", con reflectores barriendo el cielo nocturno.",
+    "fr": "La voie d'Operation Enterprise éclairée en rouge au-dessus de l'enseigne « Horrorwood Studios », projecteurs balayant le ciel nocturne.",
+    "it": "Il tracciato di Operation Enterprise illuminato di rosso sopra l'insegna \"Horrorwood Studios\", con fari che tagliano il cielo notturno.",
+    "nl": "De rood uitgelichte baan van Operation Enterprise boven het opschrift \"Horrorwood Studios\", met zoeklichten in de nachtelijke hemel."
+  },
+  "caption": {
+    "de": "Star Trek: Operation Enterprise während des Halloween Horror Festivals.",
+    "en": "Star Trek: Operation Enterprise during the Halloween Horror Festival.",
+    "es": "Star Trek: Operation Enterprise durante el Halloween Horror Festival.",
+    "fr": "Star Trek: Operation Enterprise pendant le Halloween Horror Festival.",
+    "it": "Star Trek: Operation Enterprise durante l'Halloween Horror Festival.",
+    "nl": "Star Trek: Operation Enterprise tijdens het Halloween Horror Festival."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.5,
+    "y": 0.35
   }
 }

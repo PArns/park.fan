@@ -3,10 +3,39 @@
   "park": "europa-park",
   "ride": "blue-fire-megacoaster",
   "area": "Iceland",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "coaster",
+    "night",
+    "outdoor",
+    "photo",
+    "ride"
+  ],
+  "alt": {
+    "de": "Der blau angestrahlte Looping von blue fire vor dem Nachthimmel, im Hintergrund die beleuchtete Holzkonstruktion von Wodan.",
+    "en": "blue fire's loop lit blue against the night sky, Wodan's illuminated wooden structure behind it.",
+    "es": "El looping de blue fire iluminado en azul contra el cielo nocturno, con la estructura de madera de Wodan al fondo.",
+    "fr": "La boucle de blue fire éclairée en bleu sous le ciel nocturne, la structure en bois illuminée de Wodan derrière.",
+    "it": "Il looping di blue fire illuminato di blu contro il cielo notturno, con la struttura in legno di Wodan sullo sfondo.",
+    "nl": "De blauw uitgelichte looping van blue fire tegen de nachtelijke hemel, met de verlichte houtconstructie van Wodan erachter."
+  },
+  "caption": {
+    "de": "blue fire Megacoaster bei Nacht, dahinter Wodan.",
+    "en": "blue fire Megacoaster at night, with Wodan behind it.",
+    "es": "blue fire Megacoaster de noche, con Wodan detrás.",
+    "fr": "blue fire Megacoaster de nuit, avec Wodan à l'arrière.",
+    "it": "blue fire Megacoaster di notte, con Wodan alle spalle.",
+    "nl": "blue fire Megacoaster bij nacht, met Wodan erachter."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.47,
+    "y": 0.33
   }
 }

@@ -1,10 +1,41 @@
 {
   "title": "Phantasialand",
   "park": "phantasialand",
-  "roles": ["park-background"],
-  "tags": ["background", "park", "photo"],
+  "roles": [
+    "park-background"
+  ],
+  "tags": [
+    "background",
+    "christmas",
+    "flat-ride",
+    "night",
+    "outdoor",
+    "park",
+    "photo",
+    "winter"
+  ],
+  "alt": {
+    "de": "Ein beleuchtetes Kettenkarussell dreht sich beim Wintertraum, links ein weiß leuchtender Lichterbaum über der Menge.",
+    "en": "An illuminated swing carousel turning during Wintertraum, a white-lit tree glowing over the crowd at the left.",
+    "es": "Un carrusel volador iluminado gira durante el Wintertraum, con un árbol de luz blanca sobre la multitud a la izquierda.",
+    "fr": "Un carrousel volant illuminé tourne pendant le Wintertraum, à gauche un arbre de lumière blanche au-dessus de la foule.",
+    "it": "Una giostra a catenelle illuminata gira durante il Wintertraum, a sinistra un albero di luci bianche sopra la folla.",
+    "nl": "Een verlichte zweefmolen draait tijdens Wintertraum, links een wit verlichte lichtboom boven het publiek."
+  },
+  "caption": {
+    "de": "Wintertraum im Phantasialand.",
+    "en": "Wintertraum at Phantasialand.",
+    "es": "El Wintertraum en Phantasialand.",
+    "fr": "Le Wintertraum à Phantasialand.",
+    "it": "Il Wintertraum a Phantasialand.",
+    "nl": "Wintertraum in Phantasialand."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.62,
+    "y": 0.28
   }
 }

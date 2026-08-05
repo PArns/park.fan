@@ -3,10 +3,41 @@
   "park": "phantasialand",
   "ride": "chiapas-die-wasserbahn",
   "area": "Mexico",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "day",
+    "outdoor",
+    "photo",
+    "ride",
+    "sunny",
+    "theming",
+    "water-ride"
+  ],
+  "alt": {
+    "de": "Die Abfahrtsrinne von Chiapas führt in die grüne Lagune, links der Glockenturm, oben rechts der Lehmbau von Deep in Africa.",
+    "en": "The Chiapas drop track running into the green lagoon, the bell tower at the left and Deep in Africa's mud-brick building above right.",
+    "es": "La caída de Chiapas se hunde en la laguna verde, con el campanario a la izquierda y el edificio de adobe de Deep in Africa arriba a la derecha.",
+    "fr": "La descente de Chiapas plonge dans la lagune verte, le clocher à gauche et le bâtiment en terre de Deep in Africa en haut à droite.",
+    "it": "La discesa di Chiapas si tuffa nella laguna verde, a sinistra il campanile e in alto a destra l'edificio in terra di Deep in Africa.",
+    "nl": "De afdaling van Chiapas loopt in de groene lagune, links de klokkentoren, rechtsboven het leemgebouw van Deep in Africa."
+  },
+  "caption": {
+    "de": "Chiapas – Die Wasserbahn im Themenbereich Mexico.",
+    "en": "Chiapas – Die Wasserbahn in the Mexico area.",
+    "es": "Chiapas – Die Wasserbahn en la zona Mexico.",
+    "fr": "Chiapas – Die Wasserbahn dans la zone Mexico.",
+    "it": "Chiapas – Die Wasserbahn nell'area Mexico.",
+    "nl": "Chiapas – Die Wasserbahn in het themagebied Mexico."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.6,
+    "y": 0.52
   }
 }

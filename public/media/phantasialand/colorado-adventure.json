@@ -2,10 +2,41 @@
   "title": "Colorado Adventure",
   "park": "phantasialand",
   "ride": "colorado-adventure",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "coaster",
+    "day",
+    "outdoor",
+    "photo",
+    "ride",
+    "sunny",
+    "theming"
+  ],
+  "alt": {
+    "de": "Ein Zug von Colorado Adventure fährt eine Abfahrt herunter, darüber bunte Papierwimpel im mexikanischen Themenbereich.",
+    "en": "A Colorado Adventure train running down a drop, colourful papel picado bunting strung above it in the Mexico area.",
+    "es": "Un tren de Colorado Adventure baja una pendiente bajo el papel picado de colores de la zona mexicana.",
+    "fr": "Un train de Colorado Adventure descend une pente, sous des guirlandes de papier coloré dans la zone mexicaine.",
+    "it": "Un treno di Colorado Adventure scende un tratto, sotto le bandierine di carta colorata dell'area messicana.",
+    "nl": "Een trein van Colorado Adventure daalt af, met bonte papieren vlaggetjes erboven in het Mexicaanse themagebied."
+  },
+  "caption": {
+    "de": "Colorado Adventure, die Minenbahn im Themenbereich Mexico.",
+    "en": "Colorado Adventure, the mine train in the Mexico area.",
+    "es": "Colorado Adventure, el tren minero de la zona Mexico.",
+    "fr": "Colorado Adventure, le train de la mine dans la zone Mexico.",
+    "it": "Colorado Adventure, il treno della miniera nell'area Mexico.",
+    "nl": "Colorado Adventure, de mijntrein in het themagebied Mexico."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.33,
+    "y": 0.48
   }
 }

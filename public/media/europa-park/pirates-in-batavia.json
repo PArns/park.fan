@@ -3,10 +3,39 @@
   "park": "europa-park",
   "ride": "pirates-in-batavia",
   "area": "Netherlands",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "dark-ride",
+    "indoor",
+    "photo",
+    "ride",
+    "theming"
+  ],
+  "alt": {
+    "de": "Szene aus Piraten in Batavia: eine Figur im roten Mantel zeigt auf eine alte Seekarte, dahinter blaue Sprossenfenster.",
+    "en": "A scene from Piraten in Batavia: a figure in a red coat pointing at an old sea chart, blue leaded windows behind.",
+    "es": "Escena de Piraten in Batavia: una figura con abrigo rojo señala una carta náutica antigua, con ventanas azules al fondo.",
+    "fr": "Scène de Piraten in Batavia : un personnage en manteau rouge désigne une vieille carte marine, fenêtres bleues à l'arrière.",
+    "it": "Scena di Piraten in Batavia: una figura con mantello rosso indica una vecchia carta nautica, dietro finestre azzurre.",
+    "nl": "Scène uit Piraten in Batavia: een figuur in rode mantel wijst naar een oude zeekaart, met blauwe roedenramen erachter."
+  },
+  "caption": {
+    "de": "Piraten in Batavia im niederländischen Themenbereich.",
+    "en": "Piraten in Batavia in the Dutch area.",
+    "es": "Piraten in Batavia en la zona neerlandesa.",
+    "fr": "Piraten in Batavia dans la zone néerlandaise.",
+    "it": "Piraten in Batavia nell'area olandese.",
+    "nl": "Piraten in Batavia in het Nederlandse themagebied."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.78,
+    "y": 0.36
   }
 }

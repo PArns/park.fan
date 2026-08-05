@@ -2,10 +2,40 @@
   "title": "Villa Fiasko",
   "park": "toverland",
   "ride": "villa-fiasko",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "halloween",
+    "indoor",
+    "night",
+    "photo",
+    "ride",
+    "theming"
+  ],
+  "alt": {
+    "de": "Eine Darstellerin steht auf dem Balkon über dem Schriftzug „The Dollhouse“, die Fassade pink ausgeleuchtet.",
+    "en": "A performer stands on the balcony above a \"The Dollhouse\" sign, the facade washed in pink light.",
+    "es": "Una actriz está en el balcón sobre el rótulo \"The Dollhouse\", con la fachada bañada en luz rosa.",
+    "fr": "Une comédienne se tient sur le balcon au-dessus de l'enseigne « The Dollhouse », la façade baignée de rose.",
+    "it": "Un'attrice sul balcone sopra l'insegna \"The Dollhouse\", la facciata immersa in una luce rosa.",
+    "nl": "Een acteur staat op het balkon boven het opschrift \"The Dollhouse\", de gevel in roze licht."
+  },
+  "caption": {
+    "de": "Villa Fiasko als „The Dollhouse“ während der Halloween Nights.",
+    "en": "Villa Fiasko dressed as \"The Dollhouse\" during Halloween Nights.",
+    "es": "Villa Fiasko convertida en \"The Dollhouse\" durante las Halloween Nights.",
+    "fr": "Villa Fiasko transformée en « The Dollhouse » pendant les Halloween Nights.",
+    "it": "Villa Fiasko trasformata in \"The Dollhouse\" durante le Halloween Nights.",
+    "nl": "Villa Fiasko als \"The Dollhouse\" tijdens de Halloween Nights."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.49,
+    "y": 0.5
   }
 }

@@ -2,10 +2,40 @@
   "title": "Maximus' Blitz Bahn",
   "park": "toverland",
   "ride": "maximus-blitz-bahn",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "detail",
+    "indoor",
+    "photo",
+    "ride",
+    "station",
+    "theming"
+  ],
+  "alt": {
+    "de": "Geschnitzter Widderkopf als Stationsdekor der Maximus' Blitz Bahn, blau angestrahlt zwischen Kabeln und Holzbalken.",
+    "en": "A carved ram's head decorating the Maximus' Blitz Bahn station, lit blue among cables and timber beams.",
+    "es": "Una cabeza de carnero tallada decora la estación de Maximus' Blitz Bahn, iluminada en azul entre cables y vigas.",
+    "fr": "Une tête de bélier sculptée décore la station de Maximus' Blitz Bahn, éclairée en bleu parmi câbles et poutres.",
+    "it": "Una testa d'ariete intagliata decora la stazione di Maximus' Blitz Bahn, illuminata di blu tra cavi e travi.",
+    "nl": "Een gesneden ramskop als stationsdecor van Maximus' Blitz Bahn, blauw uitgelicht tussen kabels en houten balken."
+  },
+  "caption": {
+    "de": "Stationsdetail der Maximus' Blitz Bahn.",
+    "en": "Station detail on Maximus' Blitz Bahn.",
+    "es": "Detalle de la estación de Maximus' Blitz Bahn.",
+    "fr": "Détail de la station de Maximus' Blitz Bahn.",
+    "it": "Dettaglio della stazione di Maximus' Blitz Bahn.",
+    "nl": "Stationsdetail van Maximus' Blitz Bahn."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.55,
+    "y": 0.45
   }
 }

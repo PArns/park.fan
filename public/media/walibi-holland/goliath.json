@@ -2,10 +2,42 @@
   "title": "Goliath",
   "park": "walibi-holland",
   "ride": "goliath",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "coaster",
+    "day",
+    "entrance",
+    "outdoor",
+    "photo",
+    "ride",
+    "signage",
+    "sunny"
+  ],
+  "alt": {
+    "de": "Der blau-weiße Schriftzug „Goliath“ am Eingang, dahinter der Lifthill der Achterbahn und das verglaste Stationsgebäude.",
+    "en": "The blue and white \"Goliath\" lettering at the entrance, the coaster's lift hill and glazed station building behind it.",
+    "es": "El rótulo azul y blanco \"Goliath\" en la entrada, con la rampa y el edificio acristalado de la estación detrás.",
+    "fr": "L'enseigne bleu et blanc « Goliath » à l'entrée, derrière elle le lift et le bâtiment vitré de la station.",
+    "it": "La scritta blu e bianca \"Goliath\" all'ingresso, dietro il lift e l'edificio vetrato della stazione.",
+    "nl": "Het blauw-witte opschrift \"Goliath\" bij de ingang, met daarachter de lifthill en het glazen stationsgebouw."
+  },
+  "caption": {
+    "de": "Der Eingang zu Goliath.",
+    "en": "The entrance to Goliath.",
+    "es": "La entrada a Goliath.",
+    "fr": "L'entrée de Goliath.",
+    "it": "L'ingresso di Goliath.",
+    "nl": "De ingang van Goliath."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.32,
+    "y": 0.48
   }
 }

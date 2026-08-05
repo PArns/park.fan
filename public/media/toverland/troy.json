@@ -3,8 +3,34 @@
   "park": "toverland",
   "ride": "troy",
   "area": "Troy",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "autumn",
+    "coaster",
+    "day",
+    "outdoor",
+    "photo",
+    "ride"
+  ],
+  "alt": {
+    "de": "Das hölzerne trojanische Pferd im Themenbereich Ithaka des Toverlands, davor Gäste an der Warteschlange.",
+    "en": "The wooden Trojan horse in Toverland's Ithaka area, with guests queuing in front of it.",
+    "es": "El caballo de Troya de madera en la zona Ithaka de Toverland, con visitantes esperando delante.",
+    "fr": "Le cheval de Troie en bois dans la zone Ithaka de Toverland, avec des visiteurs qui patientent devant.",
+    "it": "Il cavallo di Troia in legno nell'area Ithaka di Toverland, con visitatori in fila davanti.",
+    "nl": "Het houten paard van Troje in het themagebied Ithaka van Toverland, met wachtende gasten ervoor."
+  },
+  "caption": {
+    "de": "Troy: die Holzachterbahn von GCI im Themenbereich Ithaka.",
+    "en": "Troy: the GCI wooden coaster in the Ithaka area.",
+    "es": "Troy: la montaña rusa de madera de GCI en la zona Ithaka.",
+    "fr": "Troy : les montagnes russes en bois de GCI dans la zone Ithaka.",
+    "it": "Troy: le montagne russe in legno di GCI nell'area Ithaka.",
+    "nl": "Troy: de houten achtbaan van GCI in het themagebied Ithaka."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"

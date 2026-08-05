@@ -3,10 +3,41 @@
   "park": "phantasialand",
   "ride": "river-quest",
   "area": "Africa",
-  "roles": ["ride-card", "hero"],
-  "tags": ["photo", "ride"],
+  "roles": [
+    "ride-card",
+    "hero"
+  ],
+  "tags": [
+    "day",
+    "outdoor",
+    "photo",
+    "ride",
+    "sunny",
+    "theming",
+    "water-ride"
+  ],
+  "alt": {
+    "de": "Das hölzerne Mühlengebäude von River Quest von unten gesehen, dahinter der steinerne Turm des Mystery Castle.",
+    "en": "River Quest's wooden mill building seen from below, the stone Mystery Castle tower rising behind it.",
+    "es": "El edificio de madera del molino de River Quest visto desde abajo, con la torre de piedra del Mystery Castle detrás.",
+    "fr": "Le moulin en bois de River Quest vu d'en bas, la tour de pierre du Mystery Castle derrière.",
+    "it": "L'edificio in legno del mulino di River Quest visto dal basso, dietro la torre in pietra del Mystery Castle.",
+    "nl": "Het houten molengebouw van River Quest van onderaf, met daarachter de stenen toren van Mystery Castle."
+  },
+  "caption": {
+    "de": "River Quest in Mystery.",
+    "en": "River Quest in the Mystery area.",
+    "es": "River Quest en la zona Mystery.",
+    "fr": "River Quest dans la zone Mystery.",
+    "it": "River Quest nell'area Mystery.",
+    "nl": "River Quest in het themagebied Mystery."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.45,
+    "y": 0.35
   }
 }
