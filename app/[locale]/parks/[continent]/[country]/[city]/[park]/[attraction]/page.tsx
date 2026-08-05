@@ -26,7 +26,7 @@ import { ShareButtons } from '@/components/common/share-buttons';
 import { ContributeBanner } from '@/components/contribute/contribute-banner';
 import { PreferredSourcePrompt } from '@/components/common/preferred-source-prompt';
 import { buildContributeHref } from '@/lib/contribute/prefill';
-import { getAttractionBackgroundImage, getParkBackgroundImage } from '@/lib/utils/park-assets';
+import { getAttractionBackgroundImage } from '@/lib/utils/park-assets';
 import {
   AttractionStructuredData,
   BreadcrumbStructuredData,
@@ -266,9 +266,11 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
 
   const attractionUrl = `${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`;
 
-  const backgroundImage =
-    getAttractionBackgroundImage(parkSlug, attractionSlug) ?? getParkBackgroundImage(parkSlug);
-  // OG card is only a fallback for the JSON-LD image when neither ride nor park has a photo.
+  // The ride's own photo or nothing — `ParkBackground` renders null and the page
+  // keeps its plain backdrop. Showing the park's picture here made a photo-less
+  // ride look like it had a photo, and it was the wrong one.
+  const backgroundImage = getAttractionBackgroundImage(parkSlug, attractionSlug);
+  // OG card is only a fallback for the JSON-LD image when the ride has no photo.
   const ogImageUrl = getOgImageUrl([locale, continent, country, city, parkSlug, attractionSlug]);
 
   // Does the facts band have anything to show? Without this a ride with neither

@@ -510,9 +510,27 @@ Worth knowing, because each was invisible before:
   [`public/media/README.md`](../../public/media/README.md).
 
   The last two are different: one photo of two duelling coasters, and `ride` holds
-  one slug. Winja's Force and YOY Thrill therefore fall back to their park's photo
-  until somebody shoots them their own. That is a real, visible cost of the merge and
-  the reason it is written down here rather than quietly absorbed.
+  one slug. Winja's Force and YOY Thrill therefore show **no** photo until somebody
+  shoots them their own. That is a real, visible cost of the merge and the reason it
+  is written down here rather than quietly absorbed.
+
+### A ride shows its own photo or none
+
+There is no ride → park fallback anywhere a picture stands for a ride: not on the
+cards (`enrichAttractionsWithImages`, `getCardObjectPosition`), not on the ride page
+backdrop, not in the ride's JSON-LD `image`, not in the blog widgets or the editor's
+preview of them.
+
+It used to look like a graceful degradation. On a park page it looks like a bug —
+three neighbouring cards showing the identical carousel, one of them a hotel dark
+ride. An empty card says "no photo of this ride yet", which is true; the park's photo
+says "this is what the ride looks like", which is not. `AttractionCard` renders its
+gradient placeholder and `ParkBackground` renders nothing, so the empty state was
+already built.
+
+The one exception is the **OG card**: it keeps the park photo behind the ride's name,
+because there the photo is chrome behind text that names the ride, not the thing
+being shown, and a blank social preview is a worse trade.
 
 ---
 

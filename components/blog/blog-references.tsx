@@ -153,13 +153,10 @@ export async function BlogReferences({ post }: BlogReferencesProps) {
                   parkPath={park.href}
                   parkStatus={park.status}
                   backgroundImage={
-                    getAttractionBackgroundImage(park.slug, attraction.attractionSlug) ??
-                    getParkBackgroundImage(park.slug) ??
-                    undefined
+                    getAttractionBackgroundImage(park.slug, attraction.attractionSlug) ?? undefined
                   }
-                  // Falls back to the park's own photo AND its focal point together —
-                  // `getCardObjectPosition` resolves the same ride-then-park chain, so
-                  // the point can never come from a different picture than the pixels.
+                  // No park fallback: a ride without its own photo shows none, rather
+                  // than the park's picture captioned with the ride's name.
                   objectPosition={getCardObjectPosition(park.slug, attraction.attractionSlug)}
                   showParkName
                   timezone={park.timezone}

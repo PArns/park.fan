@@ -55,13 +55,16 @@ export function getParkImageSet(parkSlug: string): string[] {
 }
 
 /**
- * Full aspect-ratio image set for a ride's photo, falling back to the park's own
- * set so a photo-less ride page still carries an image. `[]` only when the park
- * has nothing either — the caller then uses its OG fallback.
+ * Full aspect-ratio image set for a ride's photo, `[]` when the ride has none.
+ *
+ * No park fallback: this feeds the ride's JSON-LD `image`, and handing a search
+ * engine the park's carousel as a picture of a hotel dark ride is worse than
+ * handing it nothing. The caller falls back to the OG card, which at least
+ * carries the ride's own name.
  */
 export function getAttractionImageSet(parkSlug: string, attractionSlug: string): string[] {
   const image = getRideImage(parkSlug, attractionSlug);
-  return image ? versionedImageSet(image) : getParkImageSet(parkSlug);
+  return image ? versionedImageSet(image) : [];
 }
 
 /**
@@ -87,16 +90,20 @@ export function enrichParksWithImages<T extends { slug: string }>(
 }
 
 /**
- * Same for attractions, falling back to the park's background photo — and to that
- * photo's focal point with it, so the two never come from different images.
+ * Same for attractions — and **only** the ride's own photo.
+ *
+ * Standing in the park's background photo when a ride has none used to look like
+ * a graceful fallback. On a park page it looks like a bug: three neighbouring
+ * cards showing the identical carousel, one of them a hotel dark ride. A card
+ * with no photo says "no photo of this ride yet", which is true; a card with the
+ * park's photo says "this is what the ride looks like", which is not.
  */
 export function enrichAttractionsWithImages<T extends { slug: string; park?: { slug: string } }>(
   attractions: T[]
 ): (T & { backgroundImage: string | null; backgroundPosition: string })[] {
   return attractions.map((attraction) => {
     const image = attraction.park?.slug
-      ? (getRideImage(attraction.park.slug, attraction.slug) ??
-        getParkBackground(attraction.park.slug))
+      ? getRideImage(attraction.park.slug, attraction.slug)
       : null;
     return {
       ...attraction,
@@ -119,11 +126,15 @@ function positionOf(image: MediaImage | null): string {
   return image?.focus ? focusToObjectPosition(image.focus) : CARD_FALLBACK_POSITION;
 }
 
-/** `object-position` for a park/ride card photo, resolved server-side. */
+/**
+ * `object-position` for a park/ride card photo, resolved server-side.
+ *
+ * Resolves the same image the card paints, so the point can never come from a
+ * different picture than the pixels — which is why the ride branch stops at the
+ * ride, exactly like the photo does.
+ */
 export function getCardObjectPosition(parkSlug: string, attractionSlug?: string): string {
   return positionOf(
-    attractionSlug
-      ? (getRideImage(parkSlug, attractionSlug) ?? getParkBackground(parkSlug))
-      : getParkBackground(parkSlug)
+    attractionSlug ? getRideImage(parkSlug, attractionSlug) : getParkBackground(parkSlug)
   );
 }
