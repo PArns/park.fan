@@ -133,6 +133,10 @@ export async function GlobalStatsSection() {
                       stats.longestWaitRide.slug
                     ) ?? getParkBackgroundImage(stats.longestWaitRide.parkSlug)
                   }
+                  objectPosition={getCardObjectPosition(
+                    stats.longestWaitRide.parkSlug,
+                    stats.longestWaitRide.slug
+                  )}
                   attraction={{
                     id: stats.longestWaitRide.id,
                     name: stats.longestWaitRide.name,
@@ -187,6 +191,10 @@ export async function GlobalStatsSection() {
                       stats.shortestWaitRide.slug
                     ) ?? getParkBackgroundImage(stats.shortestWaitRide.parkSlug)
                   }
+                  objectPosition={getCardObjectPosition(
+                    stats.shortestWaitRide.parkSlug,
+                    stats.shortestWaitRide.slug
+                  )}
                   attraction={{
                     id: stats.shortestWaitRide.id,
                     name: stats.shortestWaitRide.name,

@@ -270,6 +270,21 @@ first, which is how the wrong photo ends up on a ride. The grid labels the image
 need it — `1024×768 · replace` — rather than marking them with an icon that says
 nothing about the fix existing.
 
+**A dropped file is staged, not sent.** It appears in the bar as pending — thumbnail,
+name, `1200×900 → 4000×3000`, size — and goes out with the next **Save**, in the
+_same_ operation as everything else that was edited. Committing on drop, which this
+used to do, made swapping a photo and fixing its caption two commits, and the first
+one closed the editor so the caption had to be found again. Staging is also what lets
+the alt text and the focal point be set **for the new picture**: while a file is
+staged, the focal-point editor and the header thumbnail show it rather than the one it
+is about to replace.
+
+Saving then reports back **in the dialog** — "Uploaded and saved", a link to the pull
+request and the summary line the PR itself records — instead of closing and leaving a
+toast behind. After dropping a 6 MB original, whether the file actually went up is the
+one thing worth confirming. The footer says what Save is about to write before you
+press it, too (`Will be saved: replace the file with …, alt text`).
+
 Two mechanics worth keeping: the zone is a `div` with an explicit click, **not** a
 `<label>` wrapping the input — a label implicitly activates its control, and a drop
 landing on it forwarded that activation and tore the panel down mid-drop. And
@@ -278,22 +293,48 @@ pointer crosses the icon or the text inside the zone.
 
 ### One session, one pull request
 
-A **session** is the open pull request whose branch starts with `media/session-`.
-Every save joins it — retagging a shoot is twelve commits in one reviewable PR, not
-twelve pull requests. The state lives in git, not in the browser, so a reload, a
-second tab and a different machine all land in the same place; `GET
+A **session** is the branch starting with `media/session-` and the pull request opened
+for it. Every save joins it — retagging a shoot is twelve commits in one reviewable
+PR, not twelve pull requests. The state lives in git, not in the browser, so a reload,
+a second tab and a different machine all land in the same place; `GET
 /api/admin/media/session` is what the banner at the top of the browser reads.
 
 It ends the way it began: merge or close the PR, and the next save opens a new one.
 **Start a new pull request** in that banner is the early exit, and sends
 `newSession: true` with the next commit.
 
-One subtlety in the commit endpoint: an operation with no sidecar payload (a
-`replace`) has its sidecar rebuilt from the **build-time manifest**, which describes
-the base branch — writing that back would undo a sidecar edit made earlier in the
-same session. So a rebuilt sidecar is only written when the path is not already on
-the branch. Operations that carry a payload send the complete sidecar, so writing
-those is always correct.
+Resolution lives in `lib/admin/media-session.ts`, shared by the commit endpoint and
+the banner, and it looks in **two** places for a reason:
+
+1. The open pull request with the prefix. The normal case.
+2. **A session branch with no open PR.** This is the hole that produced a pull
+   request per image. If opening the PR failed after the commits landed (the endpoint
+   answers `207` for exactly that), or somebody closed the PR and left the branch,
+   then looking only at pull requests says "no session" and the next save forks a
+   second branch — and every save after it does the same. A branch found this way is
+   **adopted**: the commits go onto it and a PR is opened for it.
+
+And a failed lookup is an **error, not "no session"**. It used to be swallowed with a
+console warning, which meant a token or API hiccup silently promoted every save to
+"I am the first one". The endpoint now refuses the save and says why, because
+committing blind is what opens the duplicate.
+
+The banner also answers **what is already in there**: the PR's own log lines and the
+files the branch actually touches (`pulls.listFiles`). Adding to a shared pull request
+without being able to see its contents is how the wrong thing gets merged, and only
+the file list can't be wrong about it.
+
+One subtlety in the commit endpoint: an operation with no sidecar payload has its
+sidecar rebuilt from the **build-time manifest**, which describes the base branch —
+writing that back would undo a sidecar edit made earlier in the same session. So a
+rebuilt sidecar is only written when the path is not already on the branch. Operations
+that carry a payload send the complete sidecar, so writing those is always correct.
+
+And one that bit: a sidecar path carries **no extension**, so replacing a `.png` with
+a `.jpg` in place leaves the old and new sidecar at the _same_ path. The move cleanup
+deleted `from.sidecar` unconditionally, which threw away the sidecar written two lines
+earlier and dropped the image out of the database. It is only removed when the two
+paths actually differ.
 
 ### The token
 

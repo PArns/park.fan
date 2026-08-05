@@ -11,6 +11,12 @@ interface BlogAttractionCardLiveProps {
   attraction: ResolvedAttraction;
   attractionBackgroundImage?: string | null;
   parkBackgroundImage?: string | null;
+  /**
+   * Focal point for whichever of the two photos is used, resolved by the server
+   * wrapper. `getCardObjectPosition` walks the same ride-then-park fallback, so
+   * the point always belongs to the picture that ends up on the card.
+   */
+  objectPosition?: string;
   /** Wrapper classes — the callers own the card's grid-row template. */
   className?: string;
 }
@@ -29,6 +35,7 @@ export function BlogAttractionCardLive({
   attraction,
   attractionBackgroundImage,
   parkBackgroundImage,
+  objectPosition,
   className,
 }: BlogAttractionCardLiveProps) {
   const { ref, active } = useActiveOnScreen();
@@ -46,6 +53,7 @@ export function BlogAttractionCardLive({
         parkPath={currentPark.href}
         parkStatus={currentPark.status}
         backgroundImage={attractionBackgroundImage ?? parkBackgroundImage ?? undefined}
+        objectPosition={objectPosition}
         showParkName
         timezone={currentPark.timezone}
       />

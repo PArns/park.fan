@@ -13,6 +13,69 @@ export const MEDIA_PARKS: Record<string, MediaParkRef> = {
     "countrySlug": "belgium",
     "path": "europe/belgium/kasterlee/bobbejaanland"
   },
+  "europe/belgium/wavre/walibi-belgium": {
+    "slug": "walibi-belgium",
+    "name": "Walibi Belgium",
+    "city": "Wavre",
+    "countrySlug": "belgium",
+    "path": "europe/belgium/wavre/walibi-belgium"
+  },
+  "europe/france/paris/disneyland-park": {
+    "slug": "disneyland-park",
+    "name": "Disneyland Park",
+    "city": "Paris",
+    "countrySlug": "france",
+    "path": "europe/france/paris/disneyland-park"
+  },
+  "europe/germany/bottrop/movie-park-germany": {
+    "slug": "movie-park-germany",
+    "name": "Movie Park Germany",
+    "city": "Bottrop",
+    "countrySlug": "germany",
+    "path": "europe/germany/bottrop/movie-park-germany"
+  },
+  "europe/germany/bruehl/phantasialand": {
+    "slug": "phantasialand",
+    "name": "Phantasialand",
+    "city": "Brühl",
+    "countrySlug": "germany",
+    "path": "europe/germany/bruehl/phantasialand"
+  },
+  "europe/germany/rust/europa-park": {
+    "slug": "europa-park",
+    "name": "Europa-Park",
+    "city": "Rust",
+    "countrySlug": "germany",
+    "path": "europe/germany/rust/europa-park"
+  },
+  "europe/netherlands/biddinghuizen/walibi-holland": {
+    "slug": "walibi-holland",
+    "name": "Walibi Holland",
+    "city": "Biddinghuizen",
+    "countrySlug": "netherlands",
+    "path": "europe/netherlands/biddinghuizen/walibi-holland"
+  },
+  "europe/netherlands/kaatsheuvel/efteling": {
+    "slug": "efteling",
+    "name": "Efteling",
+    "city": "Kaatsheuvel",
+    "countrySlug": "netherlands",
+    "path": "europe/netherlands/kaatsheuvel/efteling"
+  },
+  "europe/netherlands/sevenum/toverland": {
+    "slug": "toverland",
+    "name": "Toverland",
+    "city": "Sevenum",
+    "countrySlug": "netherlands",
+    "path": "europe/netherlands/sevenum/toverland"
+  },
+  "north-america/united-states/anaheim/disneyland-park": {
+    "slug": "disneyland-park",
+    "name": "Disneyland Park",
+    "city": "Anaheim",
+    "countrySlug": "united-states",
+    "path": "north-america/united-states/anaheim/disneyland-park"
+  },
   "north-america/united-states/orlando/disney-animal-kingdom": {
     "slug": "disney-animal-kingdom",
     "name": "Disney Animal Kingdom",
@@ -34,61 +97,12 @@ export const MEDIA_PARKS: Record<string, MediaParkRef> = {
     "countrySlug": "united-states",
     "path": "north-america/united-states/orlando/disney-magic-kingdom"
   },
-  "north-america/united-states/anaheim/disneyland-park": {
-    "slug": "disneyland-park",
-    "name": "Disneyland Park",
-    "city": "Anaheim",
-    "countrySlug": "united-states",
-    "path": "north-america/united-states/anaheim/disneyland-park"
-  },
-  "europe/france/paris/disneyland-park": {
-    "slug": "disneyland-park",
-    "name": "Disneyland Park",
-    "city": "Paris",
-    "countrySlug": "france",
-    "path": "europe/france/paris/disneyland-park"
-  },
-  "europe/netherlands/kaatsheuvel/efteling": {
-    "slug": "efteling",
-    "name": "Efteling",
-    "city": "Kaatsheuvel",
-    "countrySlug": "netherlands",
-    "path": "europe/netherlands/kaatsheuvel/efteling"
-  },
   "north-america/united-states/orlando/epcot": {
     "slug": "epcot",
     "name": "Epcot",
     "city": "Orlando",
     "countrySlug": "united-states",
     "path": "north-america/united-states/orlando/epcot"
-  },
-  "europe/germany/rust/europa-park": {
-    "slug": "europa-park",
-    "name": "Europa-Park",
-    "city": "Rust",
-    "countrySlug": "germany",
-    "path": "europe/germany/rust/europa-park"
-  },
-  "europe/germany/bottrop/movie-park-germany": {
-    "slug": "movie-park-germany",
-    "name": "Movie Park Germany",
-    "city": "Bottrop",
-    "countrySlug": "germany",
-    "path": "europe/germany/bottrop/movie-park-germany"
-  },
-  "europe/germany/bruehl/phantasialand": {
-    "slug": "phantasialand",
-    "name": "Phantasialand",
-    "city": "Brühl",
-    "countrySlug": "germany",
-    "path": "europe/germany/bruehl/phantasialand"
-  },
-  "europe/netherlands/sevenum/toverland": {
-    "slug": "toverland",
-    "name": "Toverland",
-    "city": "Sevenum",
-    "countrySlug": "netherlands",
-    "path": "europe/netherlands/sevenum/toverland"
   },
   "north-america/united-states/orlando/universal-islands-of-adventure": {
     "slug": "universal-islands-of-adventure",
@@ -103,20 +117,6 @@ export const MEDIA_PARKS: Record<string, MediaParkRef> = {
     "city": "Tampa",
     "countrySlug": "united-states",
     "path": "north-america/united-states/tampa/universal-islands-of-adventure"
-  },
-  "europe/belgium/wavre/walibi-belgium": {
-    "slug": "walibi-belgium",
-    "name": "Walibi Belgium",
-    "city": "Wavre",
-    "countrySlug": "belgium",
-    "path": "europe/belgium/wavre/walibi-belgium"
-  },
-  "europe/netherlands/biddinghuizen/walibi-holland": {
-    "slug": "walibi-holland",
-    "name": "Walibi Holland",
-    "city": "Biddinghuizen",
-    "countrySlug": "netherlands",
-    "path": "europe/netherlands/biddinghuizen/walibi-holland"
   }
 };
 
@@ -127,17 +127,17 @@ export const MEDIA_PARKS: Record<string, MediaParkRef> = {
  */
 export const MEDIA_PARK_PATH_BY_SLUG: Record<string, string> = {
   "bobbejaanland": "europe/belgium/kasterlee/bobbejaanland",
+  "walibi-belgium": "europe/belgium/wavre/walibi-belgium",
+  "disneyland-park": "europe/france/paris/disneyland-park",
+  "movie-park-germany": "europe/germany/bottrop/movie-park-germany",
+  "phantasialand": "europe/germany/bruehl/phantasialand",
+  "europa-park": "europe/germany/rust/europa-park",
+  "walibi-holland": "europe/netherlands/biddinghuizen/walibi-holland",
+  "efteling": "europe/netherlands/kaatsheuvel/efteling",
+  "toverland": "europe/netherlands/sevenum/toverland",
   "disney-animal-kingdom": "north-america/united-states/orlando/disney-animal-kingdom",
   "disney-hollywood-studios": "north-america/united-states/orlando/disney-hollywood-studios",
   "disney-magic-kingdom": "north-america/united-states/orlando/disney-magic-kingdom",
-  "disneyland-park": "north-america/united-states/anaheim/disneyland-park",
-  "efteling": "europe/netherlands/kaatsheuvel/efteling",
   "epcot": "north-america/united-states/orlando/epcot",
-  "europa-park": "europe/germany/rust/europa-park",
-  "movie-park-germany": "europe/germany/bottrop/movie-park-germany",
-  "phantasialand": "europe/germany/bruehl/phantasialand",
-  "toverland": "europe/netherlands/sevenum/toverland",
-  "universal-islands-of-adventure": "north-america/united-states/orlando/universal-islands-of-adventure",
-  "walibi-belgium": "europe/belgium/wavre/walibi-belgium",
-  "walibi-holland": "europe/netherlands/biddinghuizen/walibi-holland"
+  "universal-islands-of-adventure": "north-america/united-states/orlando/universal-islands-of-adventure"
 };

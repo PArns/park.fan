@@ -33,12 +33,17 @@ interface Payload {
 
 /** The open pull request every save joins — see /api/admin/media/session. */
 interface SessionInfo {
-  number: number;
-  url: string;
+  /** Null while the branch exists but no pull request has been opened for it. */
+  number: number | null;
+  url: string | null;
   branch: string;
-  title: string;
+  title: string | null;
   draft: boolean;
   changes: number;
+  /** The session's log — one line per change, oldest first. */
+  log: string[];
+  /** The files the branch actually touches. Empty until a PR exists. */
+  files: { path: string; status: string; additions: number; deletions: number }[];
 }
 
 type QuickFilter = 'unlicensed' | 'unassigned' | 'lowres' | 'nofocus' | 'noalt';
@@ -74,6 +79,8 @@ export default function MediaAdminPage() {
   /** Next save starts a fresh pull request instead of joining the open one. */
   const [newSession, setNewSession] = useState(false);
   const [sessionTick, setSessionTick] = useState(0);
+  /** Whether the session bar is expanded to list what is already in the PR. */
+  const [showSession, setShowSession] = useState(false);
 
   const query = useMemo(() => {
     const params = new URLSearchParams();
@@ -124,9 +131,8 @@ export default function MediaAdminPage() {
     };
   }, [pass, sessionTick]);
 
-  const onSaved = (pullRequestUrl: string | null, joined?: boolean) => {
-    setDetailId(null);
-    setUploading(false);
+  /** A save landed. The editor keeps its own confirmation; this refreshes around it. */
+  const onCommitted = (pullRequestUrl: string | null, joined?: boolean) => {
     setNewSession(false);
     setSessionTick((t) => t + 1);
     setNotice(
@@ -136,6 +142,12 @@ export default function MediaAdminPage() {
           : `Pull request opened: ${pullRequestUrl}`
         : 'Committed to a branch — open the pull request manually.'
     );
+  };
+
+  /** The upload dialog reports once for the whole batch and closes itself. */
+  const onUploadDone = (pullRequestUrl: string | null, joined?: boolean) => {
+    setUploading(false);
+    onCommitted(pullRequestUrl, joined);
   };
 
   if (error && !data) return <ErrorPanel message={error} />;
@@ -169,25 +181,89 @@ export default function MediaAdminPage() {
           </span>
         </div>
       ) : session && !newSession ? (
-        <div className="border-border bg-muted/40 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-lg border px-3 py-2 text-sm">
-          <GitPullRequest className="h-4 w-4 shrink-0 text-emerald-500" />
-          <span>
-            Session running —{' '}
-            <a href={session.url} target="_blank" rel="noreferrer" className="underline">
-              #{session.number}
-            </a>{' '}
-            <span className="text-muted-foreground">
-              ({session.changes} change{session.changes === 1 ? '' : 's'} so far). The next save
-              joins it.
+        <div className="border-border bg-muted/40 rounded-lg border px-3 py-2 text-sm">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+            <GitPullRequest className="h-4 w-4 shrink-0 text-emerald-500" />
+            <span>
+              Session running —{' '}
+              {session.url ? (
+                <a href={session.url} target="_blank" rel="noreferrer" className="underline">
+                  #{session.number}
+                </a>
+              ) : (
+                <code className="font-mono text-xs">{session.branch}</code>
+              )}{' '}
+              <span className="text-muted-foreground">
+                ({session.changes} change{session.changes === 1 ? '' : 's'} so far). The next save
+                joins it.
+              </span>
             </span>
-          </span>
-          <button
-            type="button"
-            onClick={() => setNewSession(true)}
-            className="border-border hover:bg-muted ml-auto rounded-md border px-2 py-1 text-xs"
-          >
-            Start a new pull request
-          </button>
+            {(session.log.length > 0 || session.files.length > 0) && (
+              <button
+                type="button"
+                onClick={() => setShowSession((v) => !v)}
+                className="border-border hover:bg-muted rounded-md border px-2 py-1 text-xs"
+              >
+                {showSession ? 'Hide' : 'Show'} what changed
+              </button>
+            )}
+            <button
+              type="button"
+              onClick={() => setNewSession(true)}
+              className="border-border hover:bg-muted ml-auto rounded-md border px-2 py-1 text-xs"
+            >
+              Start a new pull request
+            </button>
+          </div>
+
+          {/* What is already in the pull request you are about to add to. The log
+              is what each save said it did; the file list is what git actually
+              recorded — they are shown together because only the second one can
+              be wrong in a way that matters. */}
+          {showSession && (
+            <div className="border-border/70 mt-2 grid gap-3 border-t pt-2 text-xs sm:grid-cols-2">
+              {session.log.length > 0 && (
+                <div>
+                  <p className="text-muted-foreground mb-1 font-medium">Saves in this session</p>
+                  <ul className="space-y-0.5">
+                    {session.log.map((line, i) => (
+                      <li key={i} className="text-muted-foreground break-words">
+                        {line.replace(/`/g, '')}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {session.files.length > 0 && (
+                <div>
+                  <p className="text-muted-foreground mb-1 font-medium">
+                    Files touched ({session.files.length})
+                  </p>
+                  <ul className="max-h-48 space-y-0.5 overflow-y-auto">
+                    {session.files.map((file) => (
+                      <li key={file.path} className="flex items-baseline gap-1.5">
+                        <span
+                          className={cn(
+                            'w-12 shrink-0 text-[10px] uppercase',
+                            file.status === 'added'
+                              ? 'text-emerald-500'
+                              : file.status === 'removed'
+                                ? 'text-red-500'
+                                : 'text-muted-foreground'
+                          )}
+                        >
+                          {file.status}
+                        </span>
+                        <span className="text-muted-foreground truncate font-mono">
+                          {file.path.replace(/^public\/media\//, '')}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       ) : newSession ? (
         <div className="border-border bg-muted/40 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-lg border px-3 py-2 text-sm">
@@ -349,7 +425,7 @@ export default function MediaAdminPage() {
           vocabulary={vocabulary}
           onClose={() => setDetailId(null)}
           newSession={newSession}
-          onSaved={onSaved}
+          onCommitted={onCommitted}
         />
       )}
       {uploading && (
@@ -357,7 +433,7 @@ export default function MediaAdminPage() {
           vocabulary={vocabulary}
           newSession={newSession}
           onClose={() => setUploading(false)}
-          onDone={onSaved}
+          onDone={onUploadDone}
         />
       )}
     </div>

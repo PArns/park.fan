@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { AlertTriangle, MapPin, Save, Upload, X } from 'lucide-react';
+import { AlertTriangle, Check, ExternalLink, MapPin, Save, Upload, X } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import { ADMIN_PASS_HEADER, useAdmin } from '../../_lib/admin-context';
@@ -21,14 +21,39 @@ const INPUT =
   'border-border bg-background focus:border-foreground focus:ring-foreground/20 w-full rounded-lg border px-2.5 py-1.5 text-sm transition-colors outline-none focus:ring-2';
 
 /**
- * Edit one image: what it shows, how it is credited, how it is framed, and where
- * it is filed.
+ * Edit one image: what it shows, how it is credited, how it is framed, where it
+ * is filed — and which file it actually is.
  *
  * Everything here writes to the image's sidecar, and saving opens a pull request
  * rather than mutating anything in place — the database is the repository.
+ *
+ * **One save, one commit.** A dropped replacement file is *staged*, not sent: it
+ * shows up in the file bar as pending and goes out with the next Save, in the
+ * same operation as whatever else was edited. It used to commit the moment the
+ * file landed, which meant swapping a photo and fixing its caption were two
+ * commits — and the first one closed the editor, so the caption had to be found
+ * again. Staging is also what lets the alt text be rewritten *for the new
+ * picture* before either is written.
  */
 
 const LOCALES = ['de', 'en', 'nl', 'fr', 'es', 'it'] as const;
+
+/** What a completed save reports back — the confirmation the footer then shows. */
+interface SaveResult {
+  pullRequest: string | null;
+  joined: boolean;
+  summary: string[];
+  changes: string[];
+  replaced: boolean;
+}
+
+/** A replacement file waiting for Save, with its own dimensions once decoded. */
+interface PendingFile {
+  file: File;
+  url: string;
+  width: number | null;
+  height: number | null;
+}
 
 interface GeoVerdict {
   status: 'no-gps' | 'match' | 'mismatch' | 'suggestion' | 'no-park-nearby';
@@ -42,22 +67,40 @@ interface Props {
   /** Open a fresh pull request instead of joining the running session. */
   newSession?: boolean;
   onClose: () => void;
-  onSaved: (pullRequestUrl: string | null, joinedSession?: boolean) => void;
+  /**
+   * A save landed. The dialog stays open showing what happened — this is only so
+   * the page can refresh the session bar behind it.
+   */
+  onCommitted: (pullRequestUrl: string | null, joinedSession?: boolean) => void;
 }
 
-export function MediaDetail({ id, vocabulary, newSession, onClose, onSaved }: Props) {
+export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }: Props) {
   const { pass } = useAdmin();
   const [row, setRow] = useState<MediaRow | null>(null);
   const [geo, setGeo] = useState<GeoVerdict | null>(null);
   const [draft, setDraft] = useState<Partial<MediaRow> | null>(null);
   const [locale, setLocale] = useState<(typeof LOCALES)[number]>('de');
   const [picker, setPicker] = useState<PickerMode | null>(null);
-  const [replacing, setReplacing] = useState(false);
+  /** A replacement file chosen but not yet committed — it goes out with Save. */
+  const [pending, setPending] = useState<PendingFile | null>(null);
   /** A file is being dragged over the replace bar. */
   const [dropping, setDropping] = useState(false);
   const replaceInputRef = useRef<HTMLInputElement>(null);
   const [saving, setSaving] = useState(false);
+  const [result, setResult] = useState<SaveResult | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  // One object URL per staged file, revoked when it is replaced or the editor
+  // closes. Minting it in render would leak one per keystroke.
+  //
+  // Keyed on the URL, not on `pending`: the dimension probe writes back into the
+  // same staged file, and an effect watching the object would tear the URL down
+  // on that update — revoking the very URL the preview is about to show.
+  const pendingUrl = pending?.url;
+  useEffect(() => {
+    if (!pendingUrl) return;
+    return () => URL.revokeObjectURL(pendingUrl);
+  }, [pendingUrl]);
 
   // No state reset here: the page mounts this with `key={id}`, so opening another
   // image gets a fresh state slice. Resetting inside the effect instead would be a
@@ -167,7 +210,33 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onSaved }: Pr
       v.shotAt ?? null,
       v.focus ?? null,
     ]);
-  const dirty = editable(draft) !== editable(row);
+  // A staged file counts: it is an unsaved change like any other, and it is the
+  // one whose loss on an accidental close would hurt most.
+  const dirty = editable(draft) !== editable(row) || pending !== null;
+
+  /** What Save is about to write, in the words the pull request will use. */
+  const plannedChanges = (() => {
+    const out: string[] = [];
+    if (pending) out.push(`replace the file with ${pending.file.name}`);
+    if (movedTo) out.push(`move it to “${movedTo}”`);
+    const fields: [string, unknown, unknown][] = [
+      ['title', draft.title ?? null, row.title ?? null],
+      ['park', draft.park ?? null, row.park ?? null],
+      ['ride', draft.ride ?? null, row.ride ?? null],
+      ['area', draft.area ?? null, row.area ?? null],
+      ['focal point', draft.focus ?? null, row.focus ?? null],
+      ['roles', [...(draft.roles ?? [])].sort(), [...(row.roles ?? [])].sort()],
+      ['tags', [...(draft.tags ?? [])].sort(), [...(row.tags ?? [])].sort()],
+      ['alt text', draft.alt ?? {}, row.alt ?? {}],
+      ['caption', draft.caption ?? {}, row.caption ?? {}],
+      ['credit', draft.credit ?? null, row.credit ?? null],
+      ['capture date', draft.shotAt ?? null, row.shotAt ?? null],
+    ];
+    for (const [label, next, before] of fields) {
+      if (JSON.stringify(next) !== JSON.stringify(before)) out.push(label);
+    }
+    return out;
+  })();
 
   /**
    * Closing throws the draft away, so say so first when there is one.
@@ -181,23 +250,49 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onSaved }: Pr
     onClose();
   };
 
+  /**
+   * Everything on screen, in ONE operation.
+   *
+   * A staged replacement makes it a `replace` and carries the sidecar with it, so
+   * swapping a low-res original and rewriting its alt text for the new picture is
+   * a single commit in the session's pull request rather than two.
+   */
   async function save() {
     setSaving(true);
     setError(null);
     try {
+      let contentBase64: string | undefined;
+      let ext = row!.format;
+
+      if (pending) {
+        // A replacement is usually a BIGGER file than the one it supersedes — this
+        // is the low-res upgrade path — so it is the most likely thing to run into
+        // the request-body limit. Shrunk only when it has to be.
+        const { file } = await fitForCommit(pending.file);
+        contentBase64 = await new Promise<string>((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(String(reader.result).split(',')[1] ?? '');
+          reader.onerror = () => reject(new Error(`Could not read ${file.name}`));
+          reader.readAsDataURL(file);
+        });
+        const raw = (file.name.split('.').pop() ?? 'jpg').toLowerCase();
+        ext = raw === 'jpeg' ? 'jpg' : raw;
+      }
+
       const response = await fetch('/api/admin/media/commit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', [ADMIN_PASS_HEADER]: pass },
         body: JSON.stringify({
-          title: `media: update ${row!.id}`,
+          title: `media: ${pending ? 'replace' : 'update'} ${row!.id}`,
           newSession,
           operations: [
             {
-              op: movedTo ? 'move' : 'update',
+              op: pending ? 'replace' : movedTo ? 'move' : 'update',
               id: row!.id,
               collection: draft!.collection,
               name: currentName,
-              ext: row!.format,
+              ext,
+              contentBase64,
               sidecar: {
                 park: draft!.park ?? null,
                 parkPath: draft!.parkPath ?? null,
@@ -218,7 +313,19 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onSaved }: Pr
       });
       const data = await response.json();
       if (!response.ok && response.status !== 207) throw new Error(data.error ?? 'Save failed');
-      onSaved(data.pullRequest ?? null, data.joinedSession);
+
+      setResult({
+        pullRequest: data.pullRequest ?? null,
+        joined: Boolean(data.joinedSession),
+        summary: (data.summary as string[]) ?? [],
+        changes: (data.changes as string[]) ?? [],
+        replaced: Boolean(pending),
+      });
+      // The draft is now what the branch says, so the editor stops reporting it as
+      // unsaved and a second Save is not offered until something changes again.
+      setRow((current) => (current ? { ...current, ...draft } : current));
+      setPending(null);
+      onCommitted(data.pullRequest ?? null, data.joinedSession);
     } catch (e) {
       setError((e as Error).message);
     } finally {
@@ -227,18 +334,8 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onSaved }: Pr
   }
 
   /**
-   * Swap the bytes of an existing image, keeping its sidecar.
-   *
-   * This is the upgrade path for the sources below the resolution target: the id,
-   * the park/ride assignment, the tags, the credit and the focal point all stay
-   * put, only the pixels change. The content hash moves with them, so every cached
-   * rendition of the old file is superseded rather than lingering for a year.
-   *
-   * The extension may change (a JPEG replacing a PNG); the commit endpoint files it
-   * under the new one and deletes the old path.
-   */
-  /**
-   * Take one image out of a drop or a file picker, and say why when it is not one.
+   * Take one image out of a drop or a file picker and STAGE it, saying why when it
+   * is not one.
    *
    * Replacing swaps a single file, so a multi-file drop is rejected rather than
    * silently using the first — picking one for somebody who meant to drop a batch
@@ -256,50 +353,21 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onSaved }: Pr
       setError(`${file.name} is not an image.`);
       return;
     }
-    void replaceBytes(file);
-  }
-
-  async function replaceBytes(original: File) {
-    setReplacing(true);
     setError(null);
-    try {
-      // A replacement is usually a BIGGER file than the one it supersedes — this is
-      // the low-res upgrade path — so it is the most likely thing to run into the
-      // request-body limit. Shrunk only when it has to be.
-      const { file } = await fitForCommit(original);
-      const base64 = await new Promise<string>((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(String(reader.result).split(',')[1] ?? '');
-        reader.onerror = () => reject(new Error(`Could not read ${file.name}`));
-        reader.readAsDataURL(file);
-      });
-      const ext = (file.name.split('.').pop() ?? 'jpg').toLowerCase();
-      const response = await fetch('/api/admin/media/commit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', [ADMIN_PASS_HEADER]: pass },
-        body: JSON.stringify({
-          title: `media: replace ${row!.id}`,
-          newSession,
-          operations: [
-            {
-              op: 'replace',
-              id: row!.id,
-              collection: row!.collection,
-              name: currentName,
-              ext: ext === 'jpeg' ? 'jpg' : ext,
-              contentBase64: base64,
-            },
-          ],
-        }),
-      });
-      const data = await response.json();
-      if (!response.ok && response.status !== 207) throw new Error(data.error ?? 'Replace failed');
-      onSaved(data.pullRequest ?? null, data.joinedSession);
-    } catch (e) {
-      setError((e as Error).message);
-    } finally {
-      setReplacing(false);
-    }
+    setResult(null);
+    const url = URL.createObjectURL(file);
+    setPending({ file, url, width: null, height: null });
+
+    // Decoded only to report the new resolution next to the old one — the whole
+    // reason most replacements happen. Failure here is not worth an error.
+    const probe = new Image();
+    probe.onload = () =>
+      setPending((current) =>
+        current && current.url === url
+          ? { ...current, width: probe.naturalWidth, height: probe.naturalHeight }
+          : current
+      );
+    probe.src = url;
   }
 
   return (
@@ -310,7 +378,7 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onSaved }: Pr
       onEscape={() => (picker ? setPicker(null) : requestClose())}
       title={draft.title || currentName}
       id={row.id}
-      thumb={row.src}
+      thumb={pending?.url ?? row.src}
       thumbFocus={draft.focus ?? null}
       dirty={dirty}
       footer={
@@ -321,23 +389,74 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onSaved }: Pr
                 <AlertTriangle className="mt-px h-3.5 w-3.5 shrink-0" />
                 <span>{error}</span>
               </p>
+            ) : result ? (
+              // The confirmation. A save that closed the dialog and left a toast
+              // behind never said whether the FILE went up — which is the one thing
+              // you want to know after dropping a 6 MB replacement.
+              <div className="min-w-0 text-xs text-emerald-400">
+                <p className="flex items-center gap-1.5 font-medium">
+                  <Check className="h-3.5 w-3.5 shrink-0" />
+                  {result.replaced ? 'Uploaded and saved' : 'Saved'}
+                  {result.pullRequest && (
+                    <a
+                      href={result.pullRequest}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1 underline"
+                    >
+                      {result.joined ? 'in the open pull request' : 'as a new pull request'}
+                      <ExternalLink className="h-3 w-3" />
+                    </a>
+                  )}
+                </p>
+                <p className="text-muted-foreground mt-0.5 truncate">
+                  {result.summary.join(' · ') || 'nothing to commit'}
+                  {result.changes.length > 0 &&
+                    ` — ${result.changes.length} change${result.changes.length === 1 ? '' : 's'} in this pull request`}
+                </p>
+              </div>
+            ) : dirty ? (
+              // What Save is about to do, spelled out. The pull request records it
+              // afterwards; this is the same list before it is written.
+              <p className="text-muted-foreground min-w-0 text-[11px]">
+                <span className="text-foreground font-medium">Will be saved:</span>{' '}
+                <span className="break-words">{plannedChanges.join(', ')}</span>
+              </p>
             ) : (
               <p className="text-muted-foreground text-[11px]">
-                {movedTo
-                  ? `Moving to “${movedTo}” — the file and its sidecar are renamed.`
-                  : 'Committed to a branch and opened as a draft PR — nothing changes on the live site until it merges.'}
+                Committed to a branch and opened as a draft PR — nothing changes on the live site
+                until it merges.
               </p>
             )}
           </div>
-          <button
-            type="button"
-            onClick={save}
-            disabled={saving || !dirty}
-            className="bg-foreground text-background focus-visible:ring-foreground/40 flex shrink-0 items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-opacity focus-visible:ring-2 focus-visible:outline-none disabled:opacity-40"
-          >
-            <Save className="h-4 w-4" />
-            {saving ? 'Opening pull request…' : dirty ? 'Save as pull request' : 'No changes'}
-          </button>
+          {result && !dirty ? (
+            <button
+              type="button"
+              onClick={onClose}
+              className="bg-foreground text-background focus-visible:ring-foreground/40 flex shrink-0 items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium focus-visible:ring-2 focus-visible:outline-none"
+            >
+              <Check className="h-4 w-4" />
+              Done
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={save}
+              disabled={saving || !dirty}
+              className="bg-foreground text-background focus-visible:ring-foreground/40 flex shrink-0 items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-opacity focus-visible:ring-2 focus-visible:outline-none disabled:opacity-40"
+            >
+              <Save className="h-4 w-4" />
+              {saving
+                ? pending
+                  ? 'Uploading the file…'
+                  : 'Saving…'
+                : dirty
+                  ? pending
+                    ? 'Upload & save'
+                    : 'Save'
+                  : 'No changes'}
+            </button>
+          )}
         </>
       }
     >
@@ -382,46 +501,82 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onSaved }: Pr
           replaceFrom(e.dataTransfer.files);
         }}
         className={cn(
-          'focus-visible:ring-foreground/40 mb-4 flex shrink-0 flex-wrap items-center gap-x-4 gap-y-2 rounded-xl border-2 border-dashed px-3 py-2.5 text-xs transition-colors focus-visible:ring-2 focus-visible:outline-none',
-          replacing ? 'cursor-progress opacity-60' : 'cursor-pointer',
+          'focus-visible:ring-foreground/40 mb-4 flex shrink-0 cursor-pointer flex-wrap items-center gap-x-4 gap-y-2 rounded-xl border-2 border-dashed px-3 py-2.5 text-xs transition-colors focus-visible:ring-2 focus-visible:outline-none',
           dropping
             ? 'border-foreground bg-muted/60'
-            : row.lowRes
-              ? 'border-amber-500/60 bg-amber-500/10 hover:border-amber-500'
-              : 'border-border hover:border-foreground'
+            : pending
+              ? 'border-emerald-500/60 bg-emerald-500/10 hover:border-emerald-500'
+              : row.lowRes
+                ? 'border-amber-500/60 bg-amber-500/10 hover:border-amber-500'
+                : 'border-border hover:border-foreground'
         )}
       >
-        {row.lowRes ? (
-          <AlertTriangle className="h-4 w-4 shrink-0 text-amber-500" />
+        {pending ? (
+          <>
+            {/* Old and new side by side. "Is this the right file, and is it
+                actually bigger" is the whole question a replacement asks, and it
+                is answerable in one look here. */}
+            {/* eslint-disable-next-line @next/next/no-img-element -- admin chrome, fixed 40px box */}
+            <img
+              src={pending.url}
+              alt=""
+              className="border-border h-10 w-10 shrink-0 rounded-md border object-cover"
+            />
+            <span className="min-w-0">
+              <span className="block truncate font-medium text-emerald-400">
+                {pending.file.name}
+              </span>
+              <span className="text-muted-foreground block font-mono">
+                {row.width}×{row.height}
+                {pending.width && pending.height
+                  ? ` → ${pending.width}×${pending.height}`
+                  : ''} · {(pending.file.size / 1024 / 1024).toFixed(1)} MB · staged, not uploaded
+                yet
+              </span>
+            </span>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setPending(null);
+              }}
+              className="border-border hover:bg-muted ml-auto shrink-0 rounded-md border px-2.5 py-1.5"
+            >
+              Keep the current file
+            </button>
+          </>
         ) : (
-          <Upload className="text-muted-foreground h-4 w-4 shrink-0" />
+          <>
+            {row.lowRes ? (
+              <AlertTriangle className="h-4 w-4 shrink-0 text-amber-500" />
+            ) : (
+              <Upload className="text-muted-foreground h-4 w-4 shrink-0" />
+            )}
+            <span className="font-mono">
+              {row.width}×{row.height}
+            </span>
+            <span className="text-muted-foreground">
+              {dropping
+                ? 'Drop it to replace this image'
+                : row.lowRes
+                  ? `below the ${vocabulary.lowResLongEdge}px target — drop a higher-resolution original here, or click to choose. Everything else about this image stays, and you can edit it before saving.`
+                  : 'drop a new file here, or click to choose — the id, the sidecar and every reference to it stay put'}
+            </span>
+            <span
+              className={cn(
+                'ml-auto shrink-0 rounded-md px-3 py-1.5 font-medium',
+                row.lowRes ? 'bg-amber-500 text-black' : 'bg-foreground text-background'
+              )}
+            >
+              Replace file…
+            </span>
+          </>
         )}
-        <span className="font-mono">
-          {row.width}×{row.height}
-        </span>
-        <span className="text-muted-foreground">
-          {replacing
-            ? 'Opening pull request…'
-            : dropping
-              ? 'Drop it to replace this image'
-              : row.lowRes
-                ? `below the ${vocabulary.lowResLongEdge}px target — drop a higher-resolution original here, or click to choose. Everything else about this image stays.`
-                : 'drop a new file here, or click to choose — the id, the sidecar and every reference to it stay put'}
-        </span>
-        <span
-          className={cn(
-            'ml-auto shrink-0 rounded-md px-3 py-1.5 font-medium',
-            row.lowRes ? 'bg-amber-500 text-black' : 'bg-foreground text-background'
-          )}
-        >
-          Replace file…
-        </span>
         <input
           ref={replaceInputRef}
           type="file"
           accept="image/*"
           className="hidden"
-          disabled={replacing}
           onChange={(e) => {
             const { files } = e.target;
             replaceFrom(files);
@@ -436,7 +591,10 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onSaved }: Pr
       <div className="grid min-h-0 gap-5 lg:min-h-0 lg:flex-1 lg:grid-cols-[minmax(0,1fr)_400px] lg:overflow-hidden">
         <div className="min-h-0 lg:overflow-y-auto lg:pr-1">
           <FocusEditor
-            src={row.src}
+            // The staged file, once there is one: a focal point is a point on a
+            // PICTURE, so framing the outgoing one would tune it against pixels
+            // that are about to be replaced.
+            src={pending?.url ?? row.src}
             alt={row.title}
             focus={draft.focus ?? null}
             onChange={(focus) => set('focus', focus)}

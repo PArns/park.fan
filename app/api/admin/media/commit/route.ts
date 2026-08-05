@@ -3,6 +3,14 @@ import { NextResponse } from 'next/server';
 import { Octokit } from '@octokit/rest';
 
 import { requireAdminPass } from '@/lib/admin/verify-pass';
+import {
+  SESSION_PREFIX,
+  mediaRepo,
+  mediaToken,
+  resolveSession,
+  sessionChanges,
+  type MediaSession,
+} from '@/lib/admin/media-session';
 import { getMediaImage } from '@/lib/media';
 import { getMediaText } from '@/lib/media/text';
 import { normalizeSidecar, serializeSidecar } from '@/lib/media/sidecar.mjs';
@@ -17,15 +25,16 @@ import { normalizeSidecar, serializeSidecar } from '@/lib/media/sidecar.mjs';
  * catalog is reviewable and revertible, which for copyright and attribution data
  * is worth more than the convenience of writing in place.
  *
- * Every save joins the **open session** — the pull request whose branch carries the
- * `media/session-` prefix — so a working session is one reviewable PR rather than
- * one per image. See `SESSION_PREFIX` below.
+ * Every save joins the **open session** — the branch carrying the `media/session-`
+ * prefix and the pull request opened for it — so a working session is one
+ * reviewable PR rather than one per image. Resolution lives in
+ * `@/lib/admin/media-session`, shared with the endpoint that reports it.
  *
  * Four operations, all in one PR:
  *   - `create`   a new image + its sidecar
  *   - `update`   sidecar fields only (tags, park/ride, focal point, credit, text)
  *   - `move`     re-file an image into another collection or rename it
- *   - `replace`  swap the bytes, keep the sidecar (the low-res upgrade path)
+ *   - `replace`  swap the bytes — with or without sidecar edits in the same pass
  */
 
 export const runtime = 'nodejs';
@@ -86,19 +95,6 @@ interface CommitPayload {
    */
   newSession?: boolean;
 }
-
-/**
- * Branch prefix that marks a session's pull request.
- *
- * A session is not a client-side token: it is **the open pull request carrying
- * this prefix**. Saving looks for one and commits onto its branch, so retagging
- * twelve images is twelve commits in one reviewable PR rather than twelve PRs —
- * and it survives a page reload, another tab, or a different machine, which a
- * `sessionStorage` id would not. It ends the way it began, in git: merge or close
- * the PR and the next save opens a new one. "Start a new pull request" in the
- * admin forces that early.
- */
-const SESSION_PREFIX = 'media/session-';
 
 function bad(error: string, status = 400) {
   return NextResponse.json({ error }, { status });
@@ -205,7 +201,7 @@ export async function POST(req: Request) {
 
   // ─── open a branch and commit ─────────────────────────────────────────────
 
-  const token = process.env.BLOG_EDITOR_GITHUB_TOKEN ?? process.env.GITHUB_TOKEN;
+  const token = mediaToken();
   if (!token) {
     return bad(
       'No GitHub token configured. Set BLOG_EDITOR_GITHUB_TOKEN on the deployment — ' +
@@ -215,9 +211,7 @@ export async function POST(req: Request) {
     );
   }
 
-  const repoEnv = process.env.GITHUB_REPOSITORY ?? 'PArns/park.fan';
-  const [owner = 'PArns', repo = 'park.fan'] = repoEnv.split('/');
-  const baseBranch = process.env.BLOG_EDITOR_BASE_BRANCH ?? 'main';
+  const { owner, repo, baseBranch } = mediaRepo();
   const octokit = new Octokit({ auth: token });
 
   let baseSha: string;
@@ -231,30 +225,26 @@ export async function POST(req: Request) {
   // ─── join the open session, or start one ──────────────────────────────────
   // Looked up on the server rather than tracked in the browser, so a reload, a
   // second tab and a different machine all land in the same pull request.
-  let session: { number: number; url: string; body: string } | null = null;
+  //
+  // A FAILED lookup is an error, not "no session". Swallowing it — which this
+  // used to do, with a console warning — is precisely how a batch turns into one
+  // pull request per image: every save silently decides it is the first one.
+  let session: MediaSession | null = null;
   if (!payload.newSession) {
     try {
-      const { data: open } = await octokit.pulls.list({
-        owner,
-        repo,
-        state: 'open',
-        base: baseBranch,
-        per_page: 100,
-      });
-      const found = open.find((pr) => pr.head.ref.startsWith(SESSION_PREFIX));
-      if (found) {
-        session = { number: found.number, url: found.html_url, body: found.body ?? '' };
-      }
+      session = await resolveSession(octokit, { owner, repo, baseBranch });
     } catch (e) {
-      // Not fatal: worst case this save opens its own PR instead of joining one.
-      console.warn(`[media] could not list open pull requests: ${(e as Error).message}`);
+      return bad(
+        `Could not tell whether a media session is running, so this save was not made — ` +
+          `committing now could open a second pull request beside the open one. ` +
+          `GitHub said: ${(e as Error).message}`,
+        502
+      );
     }
   }
 
   const stamp = new Date().toISOString().replace(/[-:T]/g, '').slice(0, 14);
-  const branch = session
-    ? (await octokit.pulls.get({ owner, repo, pull_number: session.number })).data.head.ref
-    : `${SESSION_PREFIX}${stamp}`;
+  const branch = session ? session.branch : `${SESSION_PREFIX}${stamp}`;
 
   if (!session) {
     try {
@@ -330,12 +320,29 @@ export async function POST(req: Request) {
 
       if (from && from.image !== to.image) {
         await remove(from.image, `media: move away ${from.image}`);
-        await remove(from.sidecar, `media: move away ${from.sidecar}`);
-        summary.push(`moved \`${from.image}\` → \`${to.image}\``);
+        // ONLY when it is a different file. A sidecar's path carries no extension,
+        // so replacing a `.png` with a `.jpg` in place leaves `from.sidecar` and
+        // `to.sidecar` as the same path — deleting it unconditionally, as this used
+        // to, threw away the sidecar that had just been written two lines above and
+        // dropped the image out of the database entirely.
+        if (from.sidecar !== to.sidecar) {
+          await remove(from.sidecar, `media: move away ${from.sidecar}`);
+        }
+        summary.push(
+          op.contentBase64
+            ? `replaced \`${from.image}\` with \`${to.image}\``
+            : `moved \`${from.image}\` → \`${to.image}\``
+        );
       } else if (op.op === 'create') {
         summary.push(`added \`${to.image}\``);
       } else if (op.op === 'replace') {
-        summary.push(`replaced the bytes of \`${to.image}\``);
+        // A replace may now carry sidecar edits made in the same pass — say so,
+        // or the PR log reads as if only the pixels moved.
+        summary.push(
+          op.sidecar
+            ? `replaced the file \`${to.image}\` and updated its sidecar`
+            : `replaced the file \`${to.image}\``
+        );
       } else {
         summary.push(`updated \`${to.sidecar}\``);
       }
@@ -360,20 +367,28 @@ export async function POST(req: Request) {
       : []),
   ];
   const FOOTER = ['', '---', '_Generated by [Claude Code](https://claude.ai/code)_'].join('\n');
+  const PREAMBLE = [
+    'Media database changes from the admin browser.',
+    '',
+    'Further saves join this pull request until it is merged or closed.',
+    '',
+  ];
+
+  /** The session log so far, with the footer and anything after it stripped. */
+  const kept = session?.body ? session.body.split('\n---\n')[0].trimEnd() : PREAMBLE.join('\n');
+  const body = `${kept}\n${lines.join('\n')}${FOOTER}`;
+  const changes = sessionChanges(body);
 
   try {
-    // Joining a session: append this batch to the running PR's body and count the
-    // whole session in its title, so the PR reads as one log rather than being
-    // overwritten by whichever save happened last.
-    if (session) {
-      const kept = session.body.split('\n---\n')[0].trimEnd();
-      const body = `${kept}\n${lines.join('\n')}${FOOTER}`;
-      const changes = body.split('\n').filter((l) => l.startsWith('- ')).length;
+    // Joining a session that already has its pull request: append this batch to the
+    // running body and count the whole session in the title, so the PR reads as one
+    // log rather than being overwritten by whichever save happened last.
+    if (session?.number) {
       await octokit.pulls.update({
         owner,
         repo,
         pull_number: session.number,
-        title: `media: ${changes} change${changes === 1 ? '' : 's'} (session)`,
+        title: `media: ${changes.length} change${changes.length === 1 ? '' : 's'} (session)`,
         body,
       });
       return NextResponse.json({
@@ -382,11 +397,17 @@ export async function POST(req: Request) {
         joinedSession: true,
         summary,
         issues,
+        changes,
       });
     }
 
-    const title =
-      payload.title ?? `media: ${summary.length} change${summary.length === 1 ? '' : 's'}`;
+    // Either a brand-new branch, or a session branch that never got a pull request
+    // (an earlier save answered 207, or somebody closed the PR and left the branch).
+    // Adopting it is what keeps the whole session in ONE pull request.
+    const adopted = Boolean(session);
+    const title = adopted
+      ? `media: ${changes.length} change${changes.length === 1 ? '' : 's'} (session)`
+      : (payload.title ?? `media: ${summary.length} change${summary.length === 1 ? '' : 's'}`);
     const { data: pr } = await octokit.pulls.create({
       owner,
       repo,
@@ -394,21 +415,15 @@ export async function POST(req: Request) {
       base: baseBranch,
       title,
       draft: true,
-      body: [
-        'Media database changes from the admin browser.',
-        '',
-        'Further saves join this pull request until it is merged or closed.',
-        '',
-        ...lines,
-        FOOTER,
-      ].join('\n'),
+      body,
     });
     return NextResponse.json({
       branch,
       pullRequest: pr.html_url,
-      joinedSession: false,
+      joinedSession: adopted,
       summary,
       issues,
+      changes,
     });
   } catch (e) {
     // The commits landed; only the PR did not. Report the branch so the work is

@@ -64,9 +64,15 @@ function isPreCutCrop(src: string): boolean {
 export function versionedPath(src: string | null | undefined): string | null {
   if (!src) return null;
   const [path, query] = src.split('?');
-  if (query?.startsWith('v=')) return src;
+  const params = new URLSearchParams(query ?? '');
+  if (params.has('v')) return src;
   const image = getMediaImageForPath(path);
-  return image ? `${path}?v=${image.version}` : src;
+  if (!image) return src;
+  // Appended, not substituted: a markdown image carries its layout in the query
+  // (`?align=wide`), and replacing that with the version token would silently
+  // re-flow the article while fixing its cache.
+  params.set('v', image.version);
+  return `${path}?${params.toString()}`;
 }
 
 /** CSS `object-position` for a focal point, defaulting to centre. */

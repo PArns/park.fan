@@ -24,6 +24,8 @@ interface BlogParkLinkProps {
   options?: Set<string>;
   /** Pre-computed background image path, looked up server-side. */
   backgroundImage?: string | null;
+  /** That photo's focal point, resolved server-side alongside it. */
+  objectPosition?: string;
   children?: React.ReactNode;
 }
 
@@ -41,6 +43,7 @@ export function BlogParkLink({
   slug: _slug,
   options,
   backgroundImage,
+  objectPosition,
   children,
 }: BlogParkLinkProps) {
   const tGeo = useTranslations('geo');
@@ -106,6 +109,7 @@ export function BlogParkLink({
         <BlogParkCardLive
           park={park}
           backgroundImage={backgroundImage}
+          objectPosition={objectPosition}
           className="grid [grid-template-rows:auto_0px_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]"
         />
       </HoverCardContent>

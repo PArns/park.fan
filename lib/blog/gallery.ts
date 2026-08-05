@@ -1,5 +1,5 @@
-import { getCollection, getMediaImageBySrc } from '@/lib/media';
-import { versionedSrc } from '@/lib/media/focus';
+import { getCollection, getMediaImageBySrc, getMediaImageForPath } from '@/lib/media';
+import { versionedPath, versionedSrc } from '@/lib/media/focus';
 import { getCreditLine, getMediaAlt, getMediaCaption } from '@/lib/media/text';
 import type { MediaImage } from '@/lib/media/types';
 import type { BlogImage } from './types';
@@ -63,17 +63,29 @@ export function listFolderImages(folder: string, locale?: string): BlogImage[] {
  * differently from the database default, and two posts here already do.
  */
 function enrich(image: BlogImage, locale?: string): BlogImage {
-  const found = getMediaImageBySrc(image.src);
-  if (!found) return image;
-  const fromDb = toBlogImage(found, locale);
+  // Two questions, deliberately asked separately. `exact` is "is this row THIS
+  // file"; `owner` is "which row is this file part of", which also answers for a
+  // build-time crop. A hand-listed gallery routinely points at `…-16x9.jpg`, and
+  // asking only the first question left those with no caption, no credit — and no
+  // version token, which is the one that matters: a crop's bytes are rewritten
+  // under an unchanged URL the moment its focal point moves.
+  const exact = getMediaImageBySrc(image.src);
+  const owner = exact ?? getMediaImageForPath(image.src);
+  if (!owner) return image;
+  const fromDb = toBlogImage(owner, locale);
   return {
-    ...fromDb,
     ...image,
-    // The author's src may lack the version token — always use the canonical one.
-    src: fromDb.src,
+    // For the source file, the canonical path. For a crop, the author's OWN path
+    // with the owning image's version appended — substituting `fromDb.src` there
+    // would quietly swap a 16:9 file for a 4:3 one.
+    src: exact ? fromDb.src : (versionedPath(image.src) ?? image.src),
     alt: image.alt ?? fromDb.alt,
     caption: image.caption ?? fromDb.caption,
     credit: image.credit ?? fromDb.credit,
+    // Dimensions describe the SOURCE. A crop's are different by definition, so
+    // they are only borrowed when the author pointed at the source itself.
+    width: image.width ?? (exact ? fromDb.width : undefined),
+    height: image.height ?? (exact ? fromDb.height : undefined),
   };
 }
 

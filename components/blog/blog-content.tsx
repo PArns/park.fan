@@ -16,7 +16,11 @@ import {
   type ResolvedAttraction,
   type ResolvedPark,
 } from '@/lib/blog/park-resolver';
-import { getAttractionBackgroundImage, getParkBackgroundImage } from '@/lib/utils/park-assets';
+import {
+  getAttractionBackgroundImage,
+  getCardObjectPosition,
+  getParkBackgroundImage,
+} from '@/lib/utils/park-assets';
 import { parseGlossarySegments } from '@/lib/glossary/parse-segments';
 import { GlossaryInjectTerm } from '@/components/glossary/glossary-inject-term';
 import { getGlossaryTerms } from '@/lib/glossary/translations';
@@ -30,6 +34,7 @@ import type { BlogListItem } from '@/lib/blog/types';
 import { BlogAttractionLink } from './blog-attraction-link';
 import { BlogInlineImage, type BlogImageAlign } from './blog-inline-image';
 import { getBlogImageDimensions } from '@/lib/blog/image-dimensions';
+import { versionedPath } from '@/lib/media/focus';
 import { BlogParkWidget } from './blog-park-widget';
 import { BlogAttractionWidget } from './blog-attraction-widget';
 import { BlogYouTubeEmbed } from './blog-youtube-embed';
@@ -42,7 +47,7 @@ import { BlogBestDaysWidget } from './blog-best-days-widget';
 import { BlogStatsWidget } from './blog-stats-widget';
 import { BlogGlossaryWidget } from './blog-glossary-widget';
 import { BlogGallery } from './blog-gallery';
-import { listFolderImages } from '@/lib/blog/gallery';
+import { listFolderImages, resolveGallery } from '@/lib/blog/gallery';
 import type { BlogImage } from '@/lib/blog/types';
 
 /** Box / title classes + icon per GitHub-alert callout type. Kept as static
@@ -371,15 +376,21 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
   }
 
   // Look up background images for every referenced park / attraction so the
-  // hover-card preview matches the favorites cards visually.
+  // hover-card preview matches the favorites cards visually — and the focal point
+  // with them, or a referenced ride would be top-cropped in a post while the same
+  // card is correctly framed on the park page.
   const parkBackgroundMap = new Map<string, string | null>();
+  const parkFocusMap = new Map<string, string>();
   for (const slug of parkMap.keys()) {
     parkBackgroundMap.set(slug, getParkBackgroundImage(slug));
+    parkFocusMap.set(slug, getCardObjectPosition(slug));
   }
   const attractionBackgroundMap = new Map<string, string | null>();
+  const attractionFocusMap = new Map<string, string>();
   for (const [ref] of attractionMap) {
     const [parkSlug, attractionSlug] = ref.split('/');
     attractionBackgroundMap.set(ref, getAttractionBackgroundImage(parkSlug, attractionSlug));
+    attractionFocusMap.set(ref, getCardObjectPosition(parkSlug, attractionSlug));
   }
   // Cross-references to other posts, resolved once so the `a` renderer can
   // hand each link the post it points at.
@@ -458,6 +469,7 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
               options={entity.options}
               attractionBackgroundImage={attractionBackgroundMap.get(entity.key) ?? null}
               parkBackgroundImage={parkBackgroundMap.get(parkSlugForBg) ?? null}
+              objectPosition={attractionFocusMap.get(entity.key)}
             >
               {children}
             </BlogAttractionLink>
@@ -472,6 +484,7 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
             slug={entity.key}
             options={entity.options}
             backgroundImage={parkBackgroundMap.get(entity.key) ?? null}
+            objectPosition={parkFocusMap.get(entity.key)}
           >
             {children}
           </BlogParkLink>
@@ -521,7 +534,11 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
       const dims = getBlogImageDimensions(src);
       return (
         <BlogInlineImage
-          src={src}
+          // Content-versioned like every other media URL. An author writes a bare
+          // path — often a build-time crop — and those are exactly the files whose
+          // bytes are rewritten under an unchanged URL when a focal point moves, so
+          // without the token a retargeted crop stays wrong in the CDN for a year.
+          src={versionedPath(src) ?? src}
           alt={imgAlt}
           width={dims?.width}
           height={dims?.height}
@@ -830,7 +847,14 @@ function renderWidget(
     // the line-based body. The folder form is the recommended shape since it
     // requires no manual file listing and picks up captions.json overrides.
     const folder = attrs.folder ?? attrs.dir ?? attrs.path;
-    const images = folder ? listFolderImages(folder, ctx.locale) : parseGalleryBody(body);
+    // A hand-listed body goes through `resolveGallery` rather than straight to the
+    // component: it is the same enrichment a frontmatter gallery gets, and it is
+    // what attaches the content version to each path. Without it a fence listing
+    // `…-16x9.jpg` shipped unversioned crops — the exact files whose bytes get
+    // rewritten under an unchanged URL when a focal point is retargeted.
+    const images = folder
+      ? listFolderImages(folder, ctx.locale)
+      : resolveGallery(parseGalleryBody(body), ctx.locale);
     if (images.length === 0) return null;
     return <BlogGallery images={images} heading={attrs.heading} />;
   }

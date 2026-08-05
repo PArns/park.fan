@@ -415,11 +415,19 @@ function writeParksManifest(images, catalog) {
   const byPath = {};
   const bySlug = {};
 
-  for (const park of catalog.parks) {
-    if (!wanted.has(park.slug)) continue;
+  // Sorted by path, because the API does not promise an order and "first writer
+  // wins" below turns that into a coin toss. It flipped once already: the same
+  // sources regenerated `universal-islands-of-adventure` from Orlando to Tampa,
+  // which is both a spurious diff and a silent change to what a slug-only lookup
+  // resolves to. Sorting makes the generator a function of its inputs again.
+  const relevant = catalog.parks
+    .filter((park) => wanted.has(park.slug))
+    .map((park) => ({ park, segments: (park.url ?? '').split('/').filter(Boolean).slice(2) }))
     // API url shape: /v1/parks/{continent}/{country}/{city}/{slug}
-    const segments = (park.url ?? '').split('/').filter(Boolean).slice(2);
-    if (segments.length !== 4) continue;
+    .filter(({ segments }) => segments.length === 4)
+    .sort((a, b) => a.segments.join('/').localeCompare(b.segments.join('/')));
+
+  for (const { park, segments } of relevant) {
     const parkPath = segments.join('/');
     byPath[parkPath] = {
       slug: park.slug,
