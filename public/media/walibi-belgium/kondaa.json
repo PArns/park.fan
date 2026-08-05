@@ -2,19 +2,8 @@
   "title": "KONDAA",
   "park": "walibi-belgium",
   "ride": "kondaa",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "coaster",
-    "dusk",
-    "halloween",
-    "outdoor",
-    "photo",
-    "ride",
-    "theming"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "dusk", "halloween", "outdoor", "photo", "ride", "theming"],
   "alt": {
     "de": "Ein blau angeleuchtetes Skelettboot im Wasser, dahinter der Lifthill von Kondaa.",
     "en": "A skeleton boat lit blue in the water, Kondaa's lift hill behind it.",

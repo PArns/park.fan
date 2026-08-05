@@ -2,19 +2,8 @@
   "title": "UNTAMED",
   "park": "walibi-holland",
   "ride": "untamed",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "coaster",
-    "day",
-    "outdoor",
-    "photo",
-    "ride",
-    "signage",
-    "sunny"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "day", "outdoor", "photo", "ride", "signage", "sunny"],
   "alt": {
     "de": "Der rostige Schriftzug „Untamed“ vor der Holzkonstruktion der Bahn.",
     "en": "The rusted \"Untamed\" lettering in front of the ride's timber structure.",

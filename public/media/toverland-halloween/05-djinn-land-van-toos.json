@@ -1,14 +1,7 @@
 {
   "park": "toverland",
   "ride": "djinn",
-  "tags": [
-    "flat-ride",
-    "indoor",
-    "night",
-    "photo",
-    "ride",
-    "theming"
-  ],
+  "tags": ["flat-ride", "indoor", "night", "photo", "ride", "theming"],
   "alt": {
     "de": "Ein beleuchtetes Kettenkarussell in einer Halle dreht sich, die Gondeln sind verwischt.",
     "en": "A lit swing carousel turning inside a hall, the seats blurred by the motion.",

@@ -10,6 +10,7 @@
  */
 
 import {
+  MEDIA_IMAGES,
   getCollection,
   getHeroImages,
   getParkBackground,
@@ -137,9 +138,17 @@ checkThat('ride images span collections', troyAll.length >= 1);
 checkThat('ride card is among the ride images', ids(troyAll).includes(troy.id));
 
 checkThat('hero pool is non-empty', getHeroImages().length > 0);
+// The pool is exactly what DECLARES `hero`, and nothing else. This used to assert
+// that a park background is never in it, which stopped being true the moment the
+// byte-identical duplicates were merged: `efteling/symbolica.jpg` and
+// `efteling/background.jpg` were the same file, so the survivor carries
+// `park-background` AND `ride-card` AND `hero`. Roles are a list precisely so one
+// image can do several jobs; excluding it from the rotation would be re-deriving a
+// role from another role, which is the thing this database does not do.
 checkThat(
-  'hero pool excludes park backgrounds',
-  getHeroImages().every((i) => !i.roles.includes('park-background'))
+  'hero pool is exactly the images declaring `hero`',
+  getHeroImages().every((i) => i.roles.includes('hero')) &&
+    getHeroImages().length === MEDIA_IMAGES.filter((i) => i.roles.includes('hero')).length
 );
 checkThat(
   'hero pool narrows to a park',

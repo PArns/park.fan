@@ -3,19 +3,8 @@
   "park": "phantasialand",
   "ride": "river-quest",
   "area": "Africa",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "day",
-    "outdoor",
-    "photo",
-    "ride",
-    "sunny",
-    "theming",
-    "water-ride"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["day", "outdoor", "photo", "ride", "sunny", "theming", "water-ride"],
   "alt": {
     "de": "Das Mühlengebäude von River Quest von unten, dahinter der Turm des Mystery Castle.",
     "en": "River Quest's mill building from below, the Mystery Castle tower behind it.",

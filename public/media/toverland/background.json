@@ -1,17 +1,8 @@
 {
   "title": "Toverland",
   "park": "toverland",
-  "roles": [
-    "park-background"
-  ],
-  "tags": [
-    "background",
-    "day",
-    "indoor",
-    "park",
-    "photo",
-    "station"
-  ],
+  "roles": ["park-background"],
+  "tags": ["background", "day", "indoor", "park", "photo", "station"],
   "alt": {
     "de": "Die Station von Fēnix, darüber hängende Feuerschalen.",
     "en": "The Fēnix station with fire bowls hanging above it.",

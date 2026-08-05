@@ -1,8 +1,29 @@
 {
+  "title": "Psycho Circus",
   "park": "walibi-holland",
-  "tags": ["halloween", "photo"],
+  "tags": ["entrance", "halloween", "night", "outdoor", "photo", "signage", "theming"],
+  "alt": {
+    "de": "Ein beleuchtetes Torschild „Psycho Circus“ mit Clownsgesicht in der Mitte, darunter Besucher zwischen Imbissbuden.",
+    "en": "An illuminated \"Psycho Circus\" arch with a clown face in the middle, visitors passing food stalls below.",
+    "es": "Un arco iluminado de \"Psycho Circus\" con una cara de payaso en el centro y visitantes entre puestos de comida debajo.",
+    "fr": "Un portique lumineux « Psycho Circus » avec une tête de clown au centre, des visiteurs entre les stands en dessous.",
+    "it": "Un arco illuminato \"Psycho Circus\" con una faccia da clown al centro, sotto i visitatori tra i chioschi.",
+    "nl": "Een verlicht toegangsbord \"Psycho Circus\" met een clownsgezicht in het midden, eronder bezoekers tussen eetkraampjes."
+  },
+  "caption": {
+    "de": "Auf der Tafel links steht: The freaks come out at night.",
+    "en": "The board on the left reads: The freaks come out at night.",
+    "es": "En la pizarra de la izquierda: The freaks come out at night.",
+    "fr": "Sur l'ardoise à gauche : The freaks come out at night.",
+    "it": "Sulla lavagna a sinistra: The freaks come out at night.",
+    "nl": "Op het bord links staat: The freaks come out at night."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.45,
+    "y": 0.18
   }
 }

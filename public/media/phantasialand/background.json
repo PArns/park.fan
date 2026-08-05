@@ -1,19 +1,8 @@
 {
   "title": "Phantasialand",
   "park": "phantasialand",
-  "roles": [
-    "park-background"
-  ],
-  "tags": [
-    "background",
-    "christmas",
-    "flat-ride",
-    "night",
-    "outdoor",
-    "park",
-    "photo",
-    "winter"
-  ],
+  "roles": ["park-background"],
+  "tags": ["background", "christmas", "flat-ride", "night", "outdoor", "park", "photo", "winter"],
   "alt": {
     "de": "Ein beleuchtetes Kettenkarussell dreht sich, links ein Lichterbaum.",
     "en": "A lit swing carousel turning, a light tree at the left.",

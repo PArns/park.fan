@@ -1,19 +1,8 @@
 {
   "title": "Walibi Holland",
   "park": "walibi-holland",
-  "roles": [
-    "park-background"
-  ],
-  "tags": [
-    "background",
-    "day",
-    "outdoor",
-    "overcast",
-    "park",
-    "photo",
-    "signage",
-    "theming"
-  ],
+  "roles": ["park-background"],
+  "tags": ["background", "day", "outdoor", "overcast", "park", "photo", "signage", "theming"],
   "alt": {
     "de": "Ein alter Käfer steht auf einem Stahlgerüst über dem Schild „Speed Zone“.",
     "en": "An old beetle car sitting on a steel frame above a \"Speed Zone\" sign.",

@@ -3,19 +3,8 @@
   "park": "europa-park",
   "ride": "wodan-timburcoaster",
   "area": "Germany",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "coaster",
-    "day",
-    "detail",
-    "outdoor",
-    "photo",
-    "ride",
-    "sunny"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "day", "detail", "outdoor", "photo", "ride", "sunny"],
   "alt": {
     "de": "Blick von unten in das Holzgerüst von Wodan, wo sich zwei Streckenteile kreuzen.",
     "en": "Looking up into Wodan's timber structure where two stretches of track cross.",

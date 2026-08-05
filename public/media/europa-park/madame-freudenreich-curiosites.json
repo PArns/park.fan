@@ -3,18 +3,8 @@
   "park": "europa-park",
   "ride": "madame-freudenreich-curiosites",
   "area": "France",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "dark-ride",
-    "detail",
-    "indoor",
-    "photo",
-    "ride",
-    "theming"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["dark-ride", "detail", "indoor", "photo", "ride", "theming"],
   "alt": {
     "de": "Ein Dinosaurier mit gestricktem Schal, davor ein Schild „Brontosaurus EVA“.",
     "en": "A dinosaur in a knitted scarf, a \"Brontosaurus EVA\" sign in front of it.",

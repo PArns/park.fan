@@ -2,19 +2,8 @@
   "title": "Crazy River",
   "park": "walibi-holland",
   "ride": "crazy-river",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "day",
-    "outdoor",
-    "photo",
-    "ride",
-    "sunny",
-    "theming",
-    "water-ride"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["day", "outdoor", "photo", "ride", "sunny", "theming", "water-ride"],
   "alt": {
     "de": "Boote in der Wasserrinne von Crazy River, dahinter ein Holzgebäude.",
     "en": "Boats in Crazy River's trough, a timber building behind them.",

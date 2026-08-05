@@ -2,19 +2,8 @@
   "title": "Danse Macabre",
   "park": "efteling",
   "ride": "danse-macabre",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "dark-ride",
-    "night",
-    "outdoor",
-    "photo",
-    "ride",
-    "theming",
-    "winter"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["dark-ride", "night", "outdoor", "photo", "ride", "theming", "winter"],
   "alt": {
     "de": "Die Ruinenkirche von Danse Macabre bei Nacht, blau und violett angeleuchtet.",
     "en": "The ruined church of Danse Macabre at night, lit blue and violet.",

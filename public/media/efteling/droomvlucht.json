@@ -2,20 +2,8 @@
   "title": "Droomvlucht",
   "park": "efteling",
   "ride": "droomvlucht",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "dark-ride",
-    "entrance",
-    "night",
-    "outdoor",
-    "photo",
-    "ride",
-    "theming",
-    "winter"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["dark-ride", "entrance", "night", "outdoor", "photo", "ride", "theming", "winter"],
   "alt": {
     "de": "Der Eingang von Droomvlucht bei Nacht, rosa und grün angeleuchtet.",
     "en": "The Droomvlucht entrance at night, lit pink and green.",

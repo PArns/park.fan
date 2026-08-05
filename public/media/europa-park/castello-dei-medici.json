@@ -3,18 +3,8 @@
   "park": "europa-park",
   "ride": "castello-dei-medici",
   "area": "Italy",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "day",
-    "entrance",
-    "outdoor",
-    "photo",
-    "ride",
-    "theming"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["day", "entrance", "outdoor", "photo", "ride", "theming"],
   "alt": {
     "de": "Die Fassade des Geisterschlosses mit Drachenfigur und astronomischer Uhr.",
     "en": "The Geisterschloss facade with its dragon and astronomical clock.",

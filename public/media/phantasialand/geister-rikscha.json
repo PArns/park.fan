@@ -2,19 +2,8 @@
   "title": "Geister Rikscha",
   "park": "phantasialand",
   "ride": "geister-rikscha",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "day",
-    "detail",
-    "outdoor",
-    "photo",
-    "ride",
-    "sunny",
-    "theming"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["day", "detail", "outdoor", "photo", "ride", "sunny", "theming"],
   "alt": {
     "de": "Eine große Buddha-Figur im Fels, zu ihren Füßen Blumen und Opfergaben.",
     "en": "A large Buddha figure in the rock, flowers and offerings at its feet.",

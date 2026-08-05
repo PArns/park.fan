@@ -3,18 +3,8 @@
   "park": "toverland",
   "ride": "troy",
   "area": "Troy",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "autumn",
-    "coaster",
-    "day",
-    "outdoor",
-    "photo",
-    "ride"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["autumn", "coaster", "day", "outdoor", "photo", "ride"],
   "alt": {
     "de": "Das hölzerne trojanische Pferd, davor die Warteschlange.",
     "en": "The wooden Trojan horse with the queue in front of it.",

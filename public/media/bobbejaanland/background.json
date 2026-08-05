@@ -1,19 +1,8 @@
 {
   "title": "Bobbejaanland",
   "park": "bobbejaanland",
-  "roles": [
-    "park-background"
-  ],
-  "tags": [
-    "background",
-    "day",
-    "outdoor",
-    "overcast",
-    "park",
-    "photo",
-    "ride",
-    "theming"
-  ],
+  "roles": ["park-background"],
+  "tags": ["background", "day", "outdoor", "overcast", "park", "photo", "ride", "theming"],
   "alt": {
     "de": "Ein riesiger Gorilla mit roten Augen greift nach einem Bahnwagen voller Fahrgäste.",
     "en": "A huge gorilla with red eyes reaching for a ride car full of passengers.",

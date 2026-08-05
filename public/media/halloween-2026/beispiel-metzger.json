@@ -1,8 +1,29 @@
 {
+  "title": "Schlachter",
   "park": "walibi-holland",
-  "tags": ["halloween", "photo"],
+  "tags": ["day", "halloween", "outdoor", "overcast", "performer", "photo"],
+  "alt": {
+    "de": "Ein Darsteller mit Schweißerhelm, blutiger Lederschürze und Gummihandschuhen steht vor einem Containertor.",
+    "en": "A performer in a welding helmet, bloodied leather apron and rubber gloves standing in a container doorway.",
+    "es": "Un actor con casco de soldador, delantal de cuero ensangrentado y guantes de goma, ante la puerta de un contenedor.",
+    "fr": "Un comédien avec casque de soudeur, tablier de cuir sanglant et gants de caoutchouc, devant la porte d'un conteneur.",
+    "it": "Un attore con maschera da saldatore, grembiule di cuoio insanguinato e guanti di gomma, davanti alla porta di un container.",
+    "nl": "Een acteur met lashelm, bebloede leren schort en rubberen handschoenen staat voor een containerdeur."
+  },
+  "caption": {
+    "de": "Die Ohrmarken an der Schürze sind das Detail, das es macht.",
+    "en": "The livestock ear tags on the apron are the detail that does it.",
+    "es": "Los crotales de ganado en el delantal son el detalle que lo consigue.",
+    "fr": "Ce sont les boucles d'oreille de bétail sur le tablier qui font tout.",
+    "it": "Sono le marche auricolari sul grembiule a fare la differenza.",
+    "nl": "De oormerken op het schort zijn het detail dat het doet."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.48,
+    "y": 0.4
   }
 }

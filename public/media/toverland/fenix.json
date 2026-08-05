@@ -3,18 +3,8 @@
   "park": "toverland",
   "ride": "fenix",
   "area": "Avalon",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "coaster",
-    "day",
-    "outdoor",
-    "photo",
-    "ride",
-    "sunny"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "day", "outdoor", "photo", "ride", "sunny"],
   "alt": {
     "de": "Ein Zug von Fēnix am höchsten Punkt der blauen Strecke.",
     "en": "A Fēnix train at the highest point of the blue track.",

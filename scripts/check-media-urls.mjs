@@ -39,7 +39,8 @@ const PAGES = [
 function realPath(raw) {
   try {
     const url = new URL(raw, BASE);
-    if (url.pathname === '/_next/image') return decodeURIComponent(url.searchParams.get('url') ?? '');
+    if (url.pathname === '/_next/image')
+      return decodeURIComponent(url.searchParams.get('url') ?? '');
     return url.pathname + url.search;
   } catch {
     return raw;
@@ -108,7 +109,8 @@ function report(title, map) {
     return false;
   }
   console.log(`❌ ${title}: ${map.size}`);
-  for (const [path, pages] of map) console.log(`   ${path}\n     on ${[...new Set(pages)].join(', ')}`);
+  for (const [path, pages] of map)
+    console.log(`   ${path}\n     on ${[...new Set(pages)].join(', ')}`);
   return true;
 }
 

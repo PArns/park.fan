@@ -2,19 +2,8 @@
   "title": "Condor",
   "park": "walibi-holland",
   "ride": "condor",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "coaster",
-    "day",
-    "outdoor",
-    "photo",
-    "ride",
-    "sunny",
-    "theming"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "day", "outdoor", "photo", "ride", "sunny", "theming"],
   "alt": {
     "de": "Eine orange Vogelskulptur auf einem Sockel, dahinter die Strecke von Condor.",
     "en": "An orange bird sculpture on a plinth, Condor's track behind it.",

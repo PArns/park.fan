@@ -2,17 +2,8 @@
   "title": "Stoomcarrousel",
   "park": "efteling",
   "ride": "stoomcarrousel",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "flat-ride",
-    "indoor",
-    "photo",
-    "ride",
-    "theming"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["flat-ride", "indoor", "photo", "ride", "theming"],
   "alt": {
     "de": "Das Stoomcarrousel mit vergoldeten Pferden unter einem orangefarbenen Zeltdach.",
     "en": "The Stoomcarrousel and its gilded horses under an orange canvas roof.",

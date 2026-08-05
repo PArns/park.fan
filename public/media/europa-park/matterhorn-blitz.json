@@ -3,18 +3,8 @@
   "park": "europa-park",
   "ride": "matterhorn-blitz",
   "area": "Switzerland",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "day",
-    "outdoor",
-    "photo",
-    "ride",
-    "signage",
-    "theming"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["day", "outdoor", "photo", "ride", "signage", "theming"],
   "alt": {
     "de": "Ein Holzschild „Matterhorn Blitz“ an einer Steinwand, davor altes Ackergerät.",
     "en": "A wooden \"Matterhorn Blitz\" sign on a stone wall, old farm machinery in front.",

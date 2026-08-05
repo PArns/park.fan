@@ -1,15 +1,7 @@
 {
   "park": "toverland",
   "ride": "troy",
-  "tags": [
-    "fog",
-    "halloween",
-    "night",
-    "outdoor",
-    "photo",
-    "ride",
-    "theming"
-  ],
+  "tags": ["fog", "halloween", "night", "outdoor", "photo", "ride", "theming"],
   "alt": {
     "de": "Das trojanische Pferd in rotem Licht und Nebel, davor eine Menschenmenge.",
     "en": "The Trojan horse in red light and fog, a crowd standing in front of it.",

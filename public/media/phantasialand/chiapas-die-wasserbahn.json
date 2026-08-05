@@ -3,19 +3,8 @@
   "park": "phantasialand",
   "ride": "chiapas-die-wasserbahn",
   "area": "Mexico",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "day",
-    "outdoor",
-    "photo",
-    "ride",
-    "sunny",
-    "theming",
-    "water-ride"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["day", "outdoor", "photo", "ride", "sunny", "theming", "water-ride"],
   "alt": {
     "de": "Die Abfahrt von Chiapas führt in die grüne Lagune, links ein Glockenturm.",
     "en": "The Chiapas drop running into the green lagoon, a bell tower at the left.",

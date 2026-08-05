@@ -2,14 +2,7 @@
   "title": "Tree of Life",
   "park": "disney-animal-kingdom",
   "ride": "tree-of-life",
-  "tags": [
-    "crowd",
-    "day",
-    "outdoor",
-    "photo",
-    "sunny",
-    "theming"
-  ],
+  "tags": ["crowd", "day", "outdoor", "photo", "sunny", "theming"],
   "alt": {
     "de": "Der Tree of Life mit in den Stamm geschnitzten Tieren, davor die Menge auf dem Weg.",
     "en": "The Tree of Life with animals carved into its trunk, the crowd on the path in front.",

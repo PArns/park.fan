@@ -2,17 +2,8 @@
   "title": "Disneyland Park",
   "park": "disneyland-park",
   "parkPath": "europe/france/marne-la-vallee/disneyland-park",
-  "roles": [
-    "park-background"
-  ],
-  "tags": [
-    "background",
-    "day",
-    "outdoor",
-    "park",
-    "photo",
-    "theming"
-  ],
+  "roles": ["park-background"],
+  "tags": ["background", "day", "outdoor", "park", "photo", "theming"],
   "alt": {
     "de": "Das rosa-blaue Dornröschenschloss auf einem Felssockel, davor Wiese und beschnittene Bäume.",
     "en": "The pink and blue Sleeping Beauty castle on its rock base, lawn and clipped trees in front.",

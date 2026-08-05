@@ -3,17 +3,8 @@
   "park": "europa-park",
   "ride": "arthur",
   "area": "France",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "dark-ride",
-    "indoor",
-    "photo",
-    "ride",
-    "theming"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["dark-ride", "indoor", "photo", "ride", "theming"],
   "alt": {
     "de": "Ein Pilzhaus in der Halle von Arthur, über allem die Schiene der Bahn.",
     "en": "A mushroom house inside the Arthur hall, the ride's track running above.",

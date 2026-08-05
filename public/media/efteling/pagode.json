@@ -2,18 +2,8 @@
   "title": "Pagode",
   "park": "efteling",
   "ride": "pagode",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "flat-ride",
-    "night",
-    "outdoor",
-    "photo",
-    "ride",
-    "winter"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["flat-ride", "night", "outdoor", "photo", "ride", "winter"],
   "alt": {
     "de": "Die beleuchtete Pagode schwebt über den Baumwipfeln.",
     "en": "The lit Pagode hovering above the treetops.",

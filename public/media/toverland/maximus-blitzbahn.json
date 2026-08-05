@@ -2,18 +2,8 @@
   "title": "Maximus' Blitz Bahn",
   "park": "toverland",
   "ride": "maximus-blitz-bahn",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "detail",
-    "indoor",
-    "photo",
-    "ride",
-    "station",
-    "theming"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["detail", "indoor", "photo", "ride", "station", "theming"],
   "alt": {
     "de": "Ein geschnitzter Widderkopf an der Station der Maximus' Blitz Bahn.",
     "en": "A carved ram's head at the Maximus' Blitz Bahn station.",

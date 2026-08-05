@@ -207,7 +207,7 @@ genug fürs erste Mal, schnell genug fürs zweite.
 ```gallery-widget heading="Die Headliner in Bildern"
 - /media/phantasialand/chiapas-die-wasserbahn-16x9.jpg | Die Wasserbahn Chiapas | Chiapas, eine der steilsten Wildwasserbahnen der Welt.
 - /media/phantasialand/colorado-adventure-16x9.jpg | Colorado Adventure | Colorado Adventure, die Minenbahn mit Wildwest-Charme.
-- /media/phantasialand/winjas-force-16x9.jpg | Winja's Force in Wuze Town | Winja's: zwei Spinning Coaster voller Überraschungen.
+- /media/phantasialand/winjas-fear-16x9.jpg | Winja's Force in Wuze Town | Winja's: zwei Spinning Coaster voller Überraschungen.
 - /media/phantasialand/mystery-castle-16x9.jpg | Mystery Castle im Mysteryland | Mystery Castle, der Freefall mit wechselnden Programmen.
 - /media/phantasialand/river-quest-16x9.jpg | River Quest | River Quest, Wildwasser mit Aufzügen und Nass-Garantie.
 - /media/phantasialand/raik-16x9.jpg | Raik in Klugheim | Raik, der perfekte erste „richtige“ Coaster.

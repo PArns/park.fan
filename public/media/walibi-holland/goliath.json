@@ -2,20 +2,8 @@
   "title": "Goliath",
   "park": "walibi-holland",
   "ride": "goliath",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "coaster",
-    "day",
-    "entrance",
-    "outdoor",
-    "photo",
-    "ride",
-    "signage",
-    "sunny"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "day", "entrance", "outdoor", "photo", "ride", "signage", "sunny"],
   "alt": {
     "de": "Der Schriftzug „Goliath“ am Eingang, dahinter der Lifthill der Bahn.",
     "en": "The \"Goliath\" lettering at the entrance, the coaster's lift hill behind it.",

@@ -3,17 +3,8 @@
   "park": "phantasialand",
   "ride": "winjas-fear",
   "area": "Mystery",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "coaster",
-    "indoor",
-    "photo",
-    "ride",
-    "theming"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "indoor", "photo", "ride", "theming"],
   "alt": {
     "de": "Ein riesiger Tontopf mit offenem Deckel, daran lehnt eine Leiter.",
     "en": "A giant clay pot with its lid open, a ladder leaning against it.",

@@ -142,7 +142,7 @@ The tells are **structural**, and they only become visible across a set:
   "in front of it"
 - a full inventory of everything in frame, when two things would do
 - decorative adjectives: `bathed in`, `against a summer sky`, `sweeping the night
-  sky`, `nestled`
+sky`, `nestled`
 - the caption restating the alt
 - six captions in a row opening with the ride's name
 

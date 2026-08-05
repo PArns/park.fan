@@ -3,18 +3,8 @@
   "park": "europa-park",
   "ride": "silver-star",
   "area": "France",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "coaster",
-    "dusk",
-    "outdoor",
-    "photo",
-    "ride",
-    "summer"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "dusk", "outdoor", "photo", "ride", "summer"],
   "alt": {
     "de": "Lifthill und erste Abfahrt von Silver Star über den Baumkronen, Abendhimmel.",
     "en": "Silver Star's lift hill and first drop above the treetops at dusk.",

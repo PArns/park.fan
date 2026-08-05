@@ -3,19 +3,8 @@
   "park": "phantasialand",
   "ride": "black-mamba",
   "area": "Africa",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "coaster",
-    "day",
-    "outdoor",
-    "overcast",
-    "photo",
-    "ride",
-    "theming"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "day", "outdoor", "overcast", "photo", "ride", "theming"],
   "alt": {
     "de": "Felsbogen und Wasserfall in Deep in Africa, dahinter der Lifthill von Black Mamba.",
     "en": "A rock arch and waterfall in Deep in Africa, Black Mamba's lift hill behind.",

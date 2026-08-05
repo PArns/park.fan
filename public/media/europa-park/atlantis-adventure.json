@@ -3,18 +3,8 @@
   "park": "europa-park",
   "ride": "atlantis-adventure",
   "area": "Scandinavia",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "day",
-    "entrance",
-    "outdoor",
-    "photo",
-    "ride",
-    "signage"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["day", "entrance", "outdoor", "photo", "ride", "signage"],
   "alt": {
     "de": "Das Schild „Abenteuer Atlantis“ mit zwei geschnitzten Köpfen über dem Eingang.",
     "en": "The \"Abenteuer Atlantis\" sign with two carved heads above the entrance.",

@@ -2,17 +2,8 @@
   "title": "Python",
   "park": "efteling",
   "ride": "python",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "coaster",
-    "night",
-    "outdoor",
-    "photo",
-    "ride"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "night", "outdoor", "photo", "ride"],
   "alt": {
     "de": "Die Loopings von Python bei Nacht, violett angeleuchtet.",
     "en": "Python's loops at night, lit violet.",

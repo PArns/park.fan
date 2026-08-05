@@ -203,7 +203,7 @@ enough for the first time, fast enough for the second.
 ```gallery-widget heading="The headliners in pictures"
 - /media/phantasialand/chiapas-die-wasserbahn-16x9.jpg | The Chiapas water ride | Chiapas, one of the steepest log flumes in the world.
 - /media/phantasialand/colorado-adventure-16x9.jpg | Colorado Adventure | Colorado Adventure, the mine train with Wild West charm.
-- /media/phantasialand/winjas-force-16x9.jpg | Winja's Force in Wuze Town | Winja's: two spinning coasters full of surprises.
+- /media/phantasialand/winjas-fear-16x9.jpg | Winja's Force in Wuze Town | Winja's: two spinning coasters full of surprises.
 - /media/phantasialand/mystery-castle-16x9.jpg | Mystery Castle in Mysteryland | Mystery Castle, the freefall with changing programs.
 - /media/phantasialand/river-quest-16x9.jpg | River Quest | River Quest, white water with lifts and a guaranteed soaking.
 - /media/phantasialand/raik-16x9.jpg | Raik in Klugheim | Raik, the perfect first “real” coaster.

@@ -3,19 +3,8 @@
   "park": "europa-park",
   "ride": "water-rollercoaster-poseidon",
   "area": "Greece",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "autumn",
-    "day",
-    "outdoor",
-    "photo",
-    "ride",
-    "theming",
-    "water-ride"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["autumn", "day", "outdoor", "photo", "ride", "theming", "water-ride"],
   "alt": {
     "de": "Ein zerborstenes Holzschiff im Wasserbecken von Poseidon, dahinter eine Festungsmauer.",
     "en": "A wrecked wooden ship in Poseidon's basin, a fortress wall behind it.",

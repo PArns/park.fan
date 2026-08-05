@@ -2,19 +2,8 @@
   "title": "Movie Park Germany",
   "park": "movie-park-germany",
   "ride": "iron-claw",
-  "roles": [
-    "park-background",
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "background",
-    "coaster",
-    "night",
-    "outdoor",
-    "park",
-    "photo"
-  ],
+  "roles": ["park-background", "ride-card", "hero"],
+  "tags": ["background", "coaster", "night", "outdoor", "park", "photo"],
   "alt": {
     "de": "Eine violett angeleuchtete Achterbahn bei Nacht, darüber der Mond.",
     "en": "A coaster lit violet at night, the moon above it.",

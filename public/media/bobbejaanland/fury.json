@@ -2,19 +2,8 @@
   "title": "Fury",
   "park": "bobbejaanland",
   "ride": "fury",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "autumn",
-    "coaster",
-    "day",
-    "outdoor",
-    "photo",
-    "ride",
-    "theming"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["autumn", "coaster", "day", "outdoor", "photo", "ride", "theming"],
   "alt": {
     "de": "Eine Zaubererfigur mit Stab und Leuchtkugel, dahinter der orange Track von Fury.",
     "en": "A wizard figure with a staff and glowing orb, Fury's orange track behind him.",

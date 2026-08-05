@@ -3,17 +3,8 @@
   "park": "europa-park",
   "ride": "blue-fire-megacoaster",
   "area": "Iceland",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "coaster",
-    "night",
-    "outdoor",
-    "photo",
-    "ride"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "night", "outdoor", "photo", "ride"],
   "alt": {
     "de": "Der Looping von blue fire bei Nacht, blau angeleuchtet.",
     "en": "blue fire's loop at night, lit blue.",

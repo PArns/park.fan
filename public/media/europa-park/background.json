@@ -1,19 +1,8 @@
 {
   "title": "Europa-Park",
   "park": "europa-park",
-  "roles": [
-    "park-background"
-  ],
-  "tags": [
-    "background",
-    "day",
-    "entrance",
-    "outdoor",
-    "overcast",
-    "park",
-    "photo",
-    "signage"
-  ],
+  "roles": ["park-background"],
+  "tags": ["background", "day", "entrance", "outdoor", "overcast", "park", "photo", "signage"],
   "alt": {
     "de": "Der Haupteingang des Europa-Parks, an der Fassade hängen Länderflaggen.",
     "en": "The main entrance to Europa-Park, national flags along the facade.",

@@ -14,6 +14,7 @@ import { ContributeForm } from '@/components/contribute/contribute-form';
 import { RightsNotice } from '@/components/contribute/rights-notice';
 import { ExampleGallery } from '@/components/contribute/example-gallery';
 import { parseEntityFromParams } from '@/lib/contribute/prefill';
+import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 
 interface ContributePageProps {
   params: Promise<{ locale: string }>;
@@ -86,7 +87,7 @@ export default async function ContributePage({ params, searchParams }: Contribut
       {/* Hero with a themed photo backdrop */}
       <header className="relative mb-10 overflow-hidden rounded-3xl border shadow-sm">
         <Image
-          src="/media/europa-park/background.jpg"
+          src={getParkBackgroundImage('europa-park') ?? '/media/europa-park/background.jpg'}
           alt=""
           fill
           priority

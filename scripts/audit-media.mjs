@@ -25,9 +25,9 @@ const LOCALES = ['de', 'en', 'nl', 'fr', 'es', 'it'];
 export function listSourceImages(root = ROOT) {
   const out = [];
   const walk = (dir) => {
-    for (const entry of fs.readdirSync(dir, { withFileTypes: true }).sort((a, b) =>
-      a.name.localeCompare(b.name)
-    )) {
+    for (const entry of fs
+      .readdirSync(dir, { withFileTypes: true })
+      .sort((a, b) => a.name.localeCompare(b.name))) {
       const full = path.join(dir, entry.name);
       if (entry.isDirectory()) {
         walk(full);

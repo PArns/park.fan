@@ -2,19 +2,8 @@
   "title": "Vogel Rok",
   "park": "efteling",
   "ride": "vogel-rok",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "coaster",
-    "entrance",
-    "night",
-    "outdoor",
-    "photo",
-    "ride",
-    "theming"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "entrance", "night", "outdoor", "photo", "ride", "theming"],
   "alt": {
     "de": "Eine riesige goldene Vogelfigur über dem Eingang von Vogel Rok.",
     "en": "A giant golden bird above the entrance to Vogel Rok.",

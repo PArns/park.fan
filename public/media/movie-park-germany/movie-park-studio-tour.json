@@ -2,15 +2,8 @@
   "title": "Movie Park Studio Tour",
   "park": "movie-park-germany",
   "ride": "movie-park-studio-tour",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "detail",
-    "indoor",
-    "photo"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["detail", "indoor", "photo"],
   "alt": {
     "de": "Ein Modell eines Parkgeländes auf einem Werkstatttisch, daneben aufgerollte Pläne.",
     "en": "A model of a park site on a workshop table, rolled-up plans beside it.",

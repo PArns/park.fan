@@ -2,18 +2,8 @@
   "title": "YOY CHILL",
   "park": "walibi-holland",
   "ride": "yoy-chill",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "coaster",
-    "day",
-    "outdoor",
-    "photo",
-    "ride",
-    "sunny"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "day", "outdoor", "photo", "ride", "sunny"],
   "alt": {
     "de": "Zwei Züge fahren auf der grünen und der blauen Strecke von YoY nebeneinander durch eine Kurve.",
     "en": "Two trains taking a turn side by side on YoY's green and blue tracks.",

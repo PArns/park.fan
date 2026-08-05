@@ -3,14 +3,7 @@
   "park": "universal-islands-of-adventure",
   "parkPath": "north-america/united-states/orlando/universal-islands-of-adventure",
   "ride": "jurassic-world-velocicoaster",
-  "tags": [
-    "coaster",
-    "day",
-    "outdoor",
-    "overcast",
-    "photo",
-    "ride"
-  ],
+  "tags": ["coaster", "day", "outdoor", "overcast", "photo", "ride"],
   "alt": {
     "de": "Ein Zug des VelociCoaster fährt durch eine Kurve, dahinter die Türme von Hogwarts.",
     "en": "A VelociCoaster train in a turn, the towers of Hogwarts behind it.",

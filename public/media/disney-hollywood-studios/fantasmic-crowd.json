@@ -1,13 +1,7 @@
 {
   "title": "Fantasmic!",
   "park": "disney-hollywood-studios",
-  "tags": [
-    "crowd",
-    "night",
-    "outdoor",
-    "photo",
-    "show"
-  ],
+  "tags": ["crowd", "night", "outdoor", "photo", "show"],
   "alt": {
     "de": "Ein voll besetztes Freilufttheater von hinten, vor der Bühne wartet das Publikum im Dunkeln.",
     "en": "A packed open-air theatre seen from the back, the audience waiting in the dark.",

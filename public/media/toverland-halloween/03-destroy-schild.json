@@ -1,15 +1,7 @@
 {
   "park": "toverland",
   "ride": "troy",
-  "tags": [
-    "day",
-    "halloween",
-    "outdoor",
-    "overcast",
-    "photo",
-    "ride",
-    "signage"
-  ],
+  "tags": ["day", "halloween", "outdoor", "overcast", "photo", "ride", "signage"],
   "alt": {
     "de": "Über dem Schriftzug „Troy“ hängt ein Holzschild mit den Buchstaben „DES“, darunter Halloween-Nights-Banner.",
     "en": "A wooden board reading \"DES\" hung in front of the \"Troy\" sign, Halloween Nights banners below.",

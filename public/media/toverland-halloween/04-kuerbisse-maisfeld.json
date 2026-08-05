@@ -1,13 +1,6 @@
 {
   "park": "toverland",
-  "tags": [
-    "detail",
-    "halloween",
-    "night",
-    "outdoor",
-    "photo",
-    "theming"
-  ],
+  "tags": ["detail", "halloween", "night", "outdoor", "photo", "theming"],
   "alt": {
     "de": "Vier leuchtende Kürbisköpfe, zwei davon mit Hexenhut, hängen in einem Maisfeld.",
     "en": "Four glowing pumpkin heads, two of them in witches' hats, hanging in a corn field.",

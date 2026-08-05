@@ -1,8 +1,29 @@
 {
+  "title": "Wohnwagen",
   "park": "walibi-holland",
-  "tags": ["halloween", "photo"],
+  "tags": ["autumn", "day", "halloween", "outdoor", "overcast", "photo", "theming"],
+  "alt": {
+    "de": "Ein alter, veralgter Wohnwagen zwischen Strohballen, davor ein Kugelgrill und umgekippte Holzkisten.",
+    "en": "An old caravan with algae on its panels between straw bales, a kettle barbecue and tipped wooden crates in front.",
+    "es": "Una caravana vieja con algas en la chapa entre balas de paja, con una barbacoa y cajas de madera volcadas delante.",
+    "fr": "Une vieille caravane couverte d'algues entre des ballots de paille, un barbecue boule et des caisses renversées devant.",
+    "it": "Una vecchia roulotte con alghe sulla lamiera tra balle di paglia, davanti un barbecue a sfera e casse rovesciate.",
+    "nl": "Een oude, met algen bedekte caravan tussen strobalen, ervoor een bolbarbecue en omgevallen houten kisten."
+  },
+  "caption": {
+    "de": "Hier wohnt niemand mehr, und genau das ist die Aussage.",
+    "en": "Nobody lives here any more, and that is exactly the point.",
+    "es": "Aquí ya no vive nadie, y ese es justo el mensaje.",
+    "fr": "Plus personne n'habite ici, et c'est bien le propos.",
+    "it": "Qui non abita più nessuno, ed è esattamente il punto.",
+    "nl": "Hier woont niemand meer, en dat is precies de bedoeling."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.45,
+    "y": 0.45
   }
 }

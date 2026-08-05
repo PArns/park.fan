@@ -3,18 +3,8 @@
   "park": "phantasialand",
   "ride": "taron",
   "area": "Klugheim",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "coaster",
-    "day",
-    "outdoor",
-    "photo",
-    "ride",
-    "sunny"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "day", "outdoor", "photo", "ride", "sunny"],
   "alt": {
     "de": "Ein Zug von Taron zwischen den Basaltfelsen von Klugheim.",
     "en": "A Taron train between the basalt rocks of Klugheim.",

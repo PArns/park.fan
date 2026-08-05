@@ -2,19 +2,8 @@
   "title": "Speed Of Sound",
   "park": "walibi-holland",
   "ride": "speed-of-sound",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "autumn",
-    "coaster",
-    "dusk",
-    "outdoor",
-    "photo",
-    "ride",
-    "signage"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["autumn", "coaster", "dusk", "outdoor", "photo", "ride", "signage"],
   "alt": {
     "de": "Das Schild von Speed of Sound zwischen übergroßen Lautsprechern und einer Gitarre.",
     "en": "The Speed of Sound sign between oversized speakers and a guitar.",

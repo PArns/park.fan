@@ -2,19 +2,8 @@
   "title": "Lost Gravity",
   "park": "walibi-holland",
   "ride": "lost-gravity",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "coaster",
-    "day",
-    "outdoor",
-    "overcast",
-    "photo",
-    "ride",
-    "theming"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "day", "outdoor", "overcast", "photo", "ride", "theming"],
   "alt": {
     "de": "Ein Wagen von Lost Gravity neben einem Frachtcontainer, im Vordergrund alte Bahnsignale.",
     "en": "A Lost Gravity car beside a shipping container, old railway signals in front.",

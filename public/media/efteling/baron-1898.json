@@ -2,18 +2,8 @@
   "title": "Baron 1898",
   "park": "efteling",
   "ride": "baron-1898",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "coaster",
-    "night",
-    "outdoor",
-    "photo",
-    "ride",
-    "theming"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "night", "outdoor", "photo", "ride", "theming"],
   "alt": {
     "de": "Das Fördergerüst von Baron 1898 bei Nacht, blau angeleuchtet.",
     "en": "Baron 1898's headframe at night, lit blue.",

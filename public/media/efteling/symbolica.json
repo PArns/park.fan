@@ -2,20 +2,8 @@
   "title": "Symbolica",
   "park": "efteling",
   "ride": "symbolica",
-  "roles": [
-    "park-background",
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "dark-ride",
-    "night",
-    "outdoor",
-    "photo",
-    "ride",
-    "theming",
-    "winter"
-  ],
+  "roles": ["park-background", "ride-card", "hero"],
+  "tags": ["dark-ride", "night", "outdoor", "photo", "ride", "theming", "winter"],
   "alt": {
     "de": "Das Schloss von Symbolica bei Nacht, blau angeleuchtet, davor ein Springbrunnen.",
     "en": "The Symbolica palace at night, lit blue, with a fountain in front.",

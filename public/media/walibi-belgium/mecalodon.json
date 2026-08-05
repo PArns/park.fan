@@ -2,18 +2,8 @@
   "title": "MECALODON",
   "park": "walibi-belgium",
   "ride": "mecalodon",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "day",
-    "outdoor",
-    "photo",
-    "ride",
-    "sunny",
-    "theming"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["day", "outdoor", "photo", "ride", "sunny", "theming"],
   "alt": {
     "de": "Ein Leuchtturm mit der Aufschrift „Port Wavre“ an einem Hafenbecken, davor Boote und Stelzenhäuser.",
     "en": "A lighthouse lettered \"Port Wavre\" beside a harbour basin, boats and stilt houses in front.",

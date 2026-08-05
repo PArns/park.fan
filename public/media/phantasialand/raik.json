@@ -3,20 +3,8 @@
   "park": "phantasialand",
   "ride": "raik",
   "area": "Klugheim",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "coaster",
-    "day",
-    "outdoor",
-    "photo",
-    "ride",
-    "station",
-    "sunny",
-    "theming"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "day", "outdoor", "photo", "ride", "station", "sunny", "theming"],
   "alt": {
     "de": "Die Holzgebäude der Station von Raik über einer Basaltmauer.",
     "en": "Raik's timber station buildings above a basalt wall.",

@@ -2,19 +2,8 @@
   "title": "Colorado Adventure",
   "park": "phantasialand",
   "ride": "colorado-adventure",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "coaster",
-    "day",
-    "outdoor",
-    "photo",
-    "ride",
-    "sunny",
-    "theming"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "day", "outdoor", "photo", "ride", "sunny", "theming"],
   "alt": {
     "de": "Ein Zug von Colorado Adventure auf einer Abfahrt, darüber bunte Papierwimpel.",
     "en": "A Colorado Adventure train on a drop, papel picado bunting strung above.",

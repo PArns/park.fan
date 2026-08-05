@@ -16,9 +16,13 @@ import { PageBottomSections } from '@/components/common/page-bottom-sections';
 import { BlogStructuredData } from '@/components/seo/blog-structured-data';
 import { Hero } from '@/components/marketing/editorial-ui';
 import { getOgImageUrl } from '@/lib/utils/og-image';
+import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 
 /** Scenic establishing shot for the blog hero (distinct from Fancast/the hub). */
-const BLOG_HERO_IMAGE = '/media/europa-park/background.jpg';
+// Asked of the database, so the path carries its content version and the park can
+// change which photo this is without the blog index knowing.
+const BLOG_HERO_IMAGE =
+  getParkBackgroundImage('europa-park') ?? '/media/europa-park/background.jpg';
 
 const SCROLL_LABELS: Record<Locale, string> = {
   de: 'Scrollen',

@@ -2,19 +2,8 @@
   "title": "Xpress: Platform 13",
   "park": "walibi-holland",
   "ride": "xpress-platform-13",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "detail",
-    "indoor",
-    "photo",
-    "queue",
-    "ride",
-    "signage",
-    "theming"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["detail", "indoor", "photo", "queue", "ride", "signage", "theming"],
   "alt": {
     "de": "Ein Bahnhofsschild in der Warteschlange: „Next Departure 06:66“, Platform 13.",
     "en": "A station sign in the queue: \"Next Departure 06:66\", Platform 13.",

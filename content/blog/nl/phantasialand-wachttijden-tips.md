@@ -204,7 +204,7 @@ de eerste keer, snel genoeg voor de tweede.
 ```gallery-widget heading="De headliners in beeld"
 - /media/phantasialand/chiapas-die-wasserbahn-16x9.jpg | De waterbaan Chiapas | Chiapas, een van de steilste wildwaterbanen ter wereld.
 - /media/phantasialand/colorado-adventure-16x9.jpg | Colorado Adventure | Colorado Adventure, de mijntrein met wildwestcharme.
-- /media/phantasialand/winjas-force-16x9.jpg | Winja's Force in Wuze Town | Winja's: twee spinning coasters vol verrassingen.
+- /media/phantasialand/winjas-fear-16x9.jpg | Winja's Force in Wuze Town | Winja's: twee spinning coasters vol verrassingen.
 - /media/phantasialand/mystery-castle-16x9.jpg | Mystery Castle in Mysteryland | Mystery Castle, de freefall met wisselende programma's.
 - /media/phantasialand/river-quest-16x9.jpg | River Quest | River Quest, wildwater met liften en natgarantie.
 - /media/phantasialand/raik-16x9.jpg | Raik in Klugheim | Raik, de perfecte eerste “echte” coaster.

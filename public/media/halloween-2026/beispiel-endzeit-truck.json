@@ -1,8 +1,29 @@
 {
+  "title": "Endzeit-Truck",
   "park": "walibi-holland",
-  "tags": ["halloween", "photo"],
+  "tags": ["autumn", "day", "halloween", "outdoor", "overcast", "photo", "theming"],
+  "alt": {
+    "de": "Ein verrosteter alter Lastwagen mit Moos auf dem Blech steht auf dem Weg, dahinter ein Bühnengerüst.",
+    "en": "A rusted old truck with moss on its bodywork parked on the path, stage rigging behind it.",
+    "es": "Un camión viejo y oxidado, con musgo en la chapa, aparcado en el camino y estructuras de escenario detrás.",
+    "fr": "Un vieux camion rouillé, mousse sur la carrosserie, garé sur l'allée, une structure de scène derrière.",
+    "it": "Un vecchio camion arrugginito, con muschio sulla lamiera, fermo sul viale e dietro un traliccio da palco.",
+    "nl": "Een verroeste oude vrachtwagen met mos op het plaatwerk staat op het pad, met steigerwerk erachter."
+  },
+  "caption": {
+    "de": "Ein echter Austin, kein Kulissenbau.",
+    "en": "A real Austin, not a prop build.",
+    "es": "Un Austin de verdad, no un decorado.",
+    "fr": "Un vrai Austin, pas un décor.",
+    "it": "Un vero Austin, non una scenografia.",
+    "nl": "Een echte Austin, geen decorbouw."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.42,
+    "y": 0.5
   }
 }

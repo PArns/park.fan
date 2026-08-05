@@ -2,19 +2,8 @@
   "title": "Typhoon",
   "park": "bobbejaanland",
   "ride": "typhoon",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "autumn",
-    "coaster",
-    "day",
-    "outdoor",
-    "photo",
-    "ride",
-    "theming"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["autumn", "coaster", "day", "outdoor", "photo", "ride", "theming"],
   "alt": {
     "de": "Eine Greifenfigur mit gesatteltem Rücken, daneben ein ausgestellter Wagen mit dem Schriftzug „Typhoon“.",
     "en": "A griffin figure wearing a saddle, next to it a display car lettered \"Typhoon\".",

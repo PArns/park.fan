@@ -1,19 +1,8 @@
 {
   "title": "Walibi Belgium",
   "park": "walibi-belgium",
-  "roles": [
-    "park-background"
-  ],
-  "tags": [
-    "background",
-    "christmas",
-    "day",
-    "entrance",
-    "outdoor",
-    "park",
-    "photo",
-    "winter"
-  ],
+  "roles": ["park-background"],
+  "tags": ["background", "christmas", "day", "entrance", "outdoor", "park", "photo", "winter"],
   "alt": {
     "de": "Der Eingang von Walibi Belgium, mit Christbaumkugeln geschmückt, darüber das Schild „Walibi Winter“.",
     "en": "The Walibi Belgium entrance decorated with baubles, a \"Walibi Winter\" sign above it.",

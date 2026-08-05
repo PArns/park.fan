@@ -1,16 +1,7 @@
 {
   "park": "toverland",
   "ride": "troy",
-  "tags": [
-    "fog",
-    "halloween",
-    "night",
-    "outdoor",
-    "performer",
-    "photo",
-    "ride",
-    "theming"
-  ],
+  "tags": ["fog", "halloween", "night", "outdoor", "performer", "photo", "ride", "theming"],
   "alt": {
     "de": "Ein Darsteller in Rüstung mit Speer steht im Nebel vor dem trojanischen Pferd.",
     "en": "A performer in armour with a spear standing in the fog in front of the Trojan horse.",

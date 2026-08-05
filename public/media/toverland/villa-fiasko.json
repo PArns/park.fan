@@ -2,18 +2,8 @@
   "title": "Villa Fiasko",
   "park": "toverland",
   "ride": "villa-fiasko",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "halloween",
-    "indoor",
-    "night",
-    "photo",
-    "ride",
-    "theming"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["halloween", "indoor", "night", "photo", "ride", "theming"],
   "alt": {
     "de": "Eine Darstellerin auf dem Balkon über dem Schild „The Dollhouse“.",
     "en": "A performer on the balcony above a \"The Dollhouse\" sign.",

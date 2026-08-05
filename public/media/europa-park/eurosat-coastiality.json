@@ -3,18 +3,8 @@
   "park": "europa-park",
   "ride": "eurosat-coastiality",
   "area": "France",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "day",
-    "entrance",
-    "outdoor",
-    "photo",
-    "ride",
-    "signage"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["day", "entrance", "outdoor", "photo", "ride", "signage"],
   "alt": {
     "de": "Das schwarze Gebäude von Eurosat Coastiality mit weißer Maske und Schriftzug.",
     "en": "The black Eurosat Coastiality building with its white mask and lettering.",

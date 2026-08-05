@@ -212,7 +212,7 @@ per la seconda.
 ```gallery-widget heading="Gli headliner in immagini"
 - /media/phantasialand/chiapas-die-wasserbahn-16x9.jpg | L'attrazione acquatica Chiapas | Chiapas, una delle attrazioni acquatiche più ripide del mondo.
 - /media/phantasialand/colorado-adventure-16x9.jpg | Colorado Adventure | Colorado Adventure, il trenino minerario dal fascino Far West.
-- /media/phantasialand/winjas-force-16x9.jpg | Winja's Force a Wuze Town | Winja's: due spinning coaster pieni di sorprese.
+- /media/phantasialand/winjas-fear-16x9.jpg | Winja's Force a Wuze Town | Winja's: due spinning coaster pieni di sorprese.
 - /media/phantasialand/mystery-castle-16x9.jpg | Mystery Castle a Mysteryland | Mystery Castle, il freefall dai programmi che cambiano.
 - /media/phantasialand/river-quest-16x9.jpg | River Quest | River Quest, acqua selvaggia con ascensori e bagno garantito.
 - /media/phantasialand/raik-16x9.jpg | Raik a Klugheim | Raik, il primo coaster “vero” perfetto.

@@ -2,18 +2,8 @@
   "title": "Star Trek™: Operation Enterprise",
   "park": "movie-park-germany",
   "ride": "star-trek-operation-enterprise",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "coaster",
-    "halloween",
-    "night",
-    "outdoor",
-    "photo",
-    "ride"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "halloween", "night", "outdoor", "photo", "ride"],
   "alt": {
     "de": "Die Strecke von Operation Enterprise bei Nacht, rot angeleuchtet, darunter das Schild „Horrorwood Studios“.",
     "en": "Operation Enterprise's track at night, lit red, a \"Horrorwood Studios\" sign below it.",

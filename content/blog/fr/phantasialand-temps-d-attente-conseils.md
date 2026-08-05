@@ -214,7 +214,7 @@ doux pour la première fois, assez rapide pour la deuxième.
 ```gallery-widget heading="Les têtes d'affiche en images"
 - /media/phantasialand/chiapas-die-wasserbahn-16x9.jpg | La rivière à bûches Chiapas | Chiapas, l'une des rivières à bûches les plus pentues au monde.
 - /media/phantasialand/colorado-adventure-16x9.jpg | Colorado Adventure | Colorado Adventure, le train minier au charme Far West.
-- /media/phantasialand/winjas-force-16x9.jpg | Winja's Force à Wuze Town | Winja's : deux spinning coasters pleins de surprises.
+- /media/phantasialand/winjas-fear-16x9.jpg | Winja's Force à Wuze Town | Winja's : deux spinning coasters pleins de surprises.
 - /media/phantasialand/mystery-castle-16x9.jpg | Mystery Castle au Mysteryland | Mystery Castle, la tour de chute aux programmes changeants.
 - /media/phantasialand/river-quest-16x9.jpg | River Quest | River Quest, eaux vives avec ascenseurs et garantie d'être trempé.
 - /media/phantasialand/raik-16x9.jpg | Raik à Klugheim | Raik, le parfait premier « vrai » coaster.

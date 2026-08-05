@@ -3,19 +3,8 @@
   "park": "europa-park",
   "ride": "eurosat-cancan-coaster",
   "area": "France",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "coaster",
-    "day",
-    "outdoor",
-    "photo",
-    "ride",
-    "sunny",
-    "winter"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["coaster", "day", "outdoor", "photo", "ride", "sunny", "winter"],
   "alt": {
     "de": "Die silberne Kugel von Eurosat über der Moulin-Rouge-Fassade.",
     "en": "Eurosat's silver sphere above the Moulin Rouge facade.",

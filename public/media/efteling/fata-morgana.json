@@ -2,19 +2,8 @@
   "title": "Fata Morgana",
   "park": "efteling",
   "ride": "fata-morgana",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "dark-ride",
-    "dusk",
-    "outdoor",
-    "photo",
-    "ride",
-    "theming",
-    "winter"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["dark-ride", "dusk", "outdoor", "photo", "ride", "theming", "winter"],
   "alt": {
     "de": "Das Minarett von Fata Morgana in der blauen Stunde, dahinter die Kuppeln des Basars.",
     "en": "Fata Morgana's minaret at blue hour, the bazaar's domes behind it.",

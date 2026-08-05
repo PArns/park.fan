@@ -215,7 +215,7 @@ bastante rápida para la segunda.
 ```gallery-widget heading="Los headliners en imágenes"
 - /media/phantasialand/chiapas-die-wasserbahn-16x9.jpg | La atracción acuática Chiapas | Chiapas, una de las atracciones acuáticas más empinadas del mundo.
 - /media/phantasialand/colorado-adventure-16x9.jpg | Colorado Adventure | Colorado Adventure, el tren minero con encanto del Lejano Oeste.
-- /media/phantasialand/winjas-force-16x9.jpg | Winja's Force en Wuze Town | Winja's: dos spinning coasters llenos de sorpresas.
+- /media/phantasialand/winjas-fear-16x9.jpg | Winja's Force en Wuze Town | Winja's: dos spinning coasters llenos de sorpresas.
 - /media/phantasialand/mystery-castle-16x9.jpg | Mystery Castle en Mysteryland | Mystery Castle, la torre de caída con programas cambiantes.
 - /media/phantasialand/river-quest-16x9.jpg | River Quest | River Quest, aguas bravas con ascensores y mojadura garantizada.
 - /media/phantasialand/raik-16x9.jpg | Raik en Klugheim | Raik, la primera montaña rusa «de verdad» perfecta.

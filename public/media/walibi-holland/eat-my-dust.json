@@ -2,19 +2,8 @@
   "title": "Eat my Dust",
   "park": "walibi-holland",
   "ride": "eat-my-dust",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "day",
-    "detail",
-    "outdoor",
-    "overcast",
-    "photo",
-    "ride",
-    "theming"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["day", "detail", "outdoor", "overcast", "photo", "ride", "theming"],
   "alt": {
     "de": "Ein gelb-roter Buggy hängt an Ketten unter einem Kranträger.",
     "en": "A yellow and red buggy hanging on chains under a crane beam.",

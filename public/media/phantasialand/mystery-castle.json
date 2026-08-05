@@ -3,19 +3,8 @@
   "park": "phantasialand",
   "ride": "mystery-castle",
   "area": "Mystery",
-  "roles": [
-    "ride-card",
-    "hero"
-  ],
-  "tags": [
-    "fog",
-    "night",
-    "outdoor",
-    "photo",
-    "ride",
-    "theming",
-    "winter"
-  ],
+  "roles": ["ride-card", "hero"],
+  "tags": ["fog", "night", "outdoor", "photo", "ride", "theming", "winter"],
   "alt": {
     "de": "Der Turm des Mystery Castle im Nebel, angeleuchtet.",
     "en": "The Mystery Castle tower in fog, lit up.",
