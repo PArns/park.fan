@@ -29,9 +29,24 @@ image folders that drift apart.
 So: put a file wherever it belongs as a _shoot_ (usually the park slug; a themed
 outing gets its own name), and say what it _shows_ in the sidecar.
 
+## Naming a file
+
+Lower-case with dashes, and named after **what the picture shows** — not after the
+job it happens to do. `iron-claw.jpg`, not `background.jpg`.
+
+The name is only storage; the sidecar's `roles` decide what an image is used for,
+and one image can hold several roles at once. But a file called `background` invites
+a second copy of the same photo under its real name, which is exactly what happened:
+four images sat in the tree twice, byte for byte, because one park wanted a
+`background.jpg` and one ride wanted its own portrait.
+
+`background.jpg` stays correct where the photo genuinely is park-level and shows no
+single ride — most parks here are that case. It is wrong the moment the same picture
+is also somebody's ride card.
+
 ## Adding an image
 
-1. Drop the file into a collection folder. Name it in lower-case with dashes.
+1. Drop the file into a collection folder.
 2. Write `<name>.json` next to it.
 3. Run `pnpm generate:media`. It validates everything and tells you what is wrong.
 

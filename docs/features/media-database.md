@@ -436,6 +436,26 @@ Worth knowing, because each was invisible before:
   The Disneyland background turned out to be Paris, not Anaheim.
 - **63 of 113 photos still carry GPS and a capture date**, which is where the park
   verification and the upload suggestions come from.
+- **Four photos were in the tree twice, byte for byte.** Three separate folder
+  layouts had been merged into one, and each had wanted its own copy:
+
+  | kept                               | was also stored as                  |
+  | ---------------------------------- | ----------------------------------- |
+  | `efteling/symbolica.jpg`           | `efteling/background.jpg`           |
+  | `movie-park-germany/iron-claw.jpg` | `movie-park-germany/background.jpg` |
+  | `phantasialand/winjas-fear.jpg`    | `phantasialand/winjas-force.jpg`    |
+  | `walibi-holland/yoy-chill.jpg`     | `walibi-holland/yoy-thrill.jpg`     |
+
+  The first two are the same picture doing two jobs, which `roles` already models —
+  the survivor carries `park-background` **and** `ride-card` **and** `hero`, and
+  `getParkBackground` finds it because it matches the ROLE, never the filename. The
+  survivor is the one named after what it shows; see the naming rule in
+  [`public/media/README.md`](../../public/media/README.md).
+
+  The last two are different: one photo of two duelling coasters, and `ride` holds
+  one slug. Winja's Force and YOY Thrill therefore fall back to their park's photo
+  until somebody shoots them their own. That is a real, visible cost of the merge and
+  the reason it is written down here rather than quietly absorbed.
 
 ---
 

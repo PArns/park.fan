@@ -94,7 +94,7 @@ gerade deshalb so kostbar geworden. Sie halten meine Kindheit lebendig, und mit
 ihr die Erinnerung an den Menschen, der damals neben mir durch diese Welten
 glitt.
 
-![Nächtliche Achterbahn-Silhouette im Movie Park Germany, violett und blau angestrahlt | Movie Park Germany bei Nacht. Lethal Weapon Pursuit stand hier bis 2006. | left](/media/movie-park-germany/background.jpg)
+![Nächtliche Achterbahn-Silhouette im Movie Park Germany, violett und blau angestrahlt | Movie Park Germany bei Nacht. Lethal Weapon Pursuit stand hier bis 2006. | left](/media/movie-park-germany/iron-claw.jpg)
 
 War mein Vater als LKW-Fahrer mal wieder auf Tour, hat meine Mutter kurzerhand
 das Steuer übernommen. Mit ihr habe ich viele andere Parks entdeckt,

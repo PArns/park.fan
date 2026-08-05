@@ -93,7 +93,7 @@ Mijn vader is in 2019 overleden. Misschien zijn juist daarom die gezamenlijke
 ritten zo kostbaar voor me geworden. Ze houden mijn jeugd levend, en daarmee de
 herinnering aan de man die toen naast me door die werelden gleed.
 
-![Achtbaansilhouet in Movie Park Germany bij nacht, paars en blauw aangelicht | Movie Park Germany bij nacht. Lethal Weapon Pursuit stond hier tot 2006. | left](/media/movie-park-germany/background.jpg)
+![Achtbaansilhouet in Movie Park Germany bij nacht, paars en blauw aangelicht | Movie Park Germany bij nacht. Lethal Weapon Pursuit stond hier tot 2006. | left](/media/movie-park-germany/iron-claw.jpg)
 
 Was mijn vader als vrachtwagenchauffeur weer eens op pad, dan nam mijn moeder
 gewoon het stuur over. Met haar heb ik veel andere parken ontdekt, vooral

@@ -97,7 +97,7 @@ partagés me sont devenus si précieux. Ils maintiennent mon enfance en vie, et
 avec elle le souvenir de l'homme qui glissait alors à côté de moi à travers ces
 mondes.
 
-![Silhouette de montagnes russes au Movie Park Germany la nuit, éclairée de violet et de bleu | Le Movie Park Germany de nuit. Lethal Weapon Pursuit se dressait ici jusqu’en 2006. | left](/media/movie-park-germany/background.jpg)
+![Silhouette de montagnes russes au Movie Park Germany la nuit, éclairée de violet et de bleu | Le Movie Park Germany de nuit. Lethal Weapon Pursuit se dressait ici jusqu’en 2006. | left](/media/movie-park-germany/iron-claw.jpg)
 
 Quand mon père repartait sur la route comme chauffeur routier, ma mère prenait
 tout simplement le volant. C'est avec elle que j'ai découvert beaucoup

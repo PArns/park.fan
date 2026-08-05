@@ -1,5 +1,5 @@
 {
-  "title": "Movie Park Germany",
+  "title": "Iron Claw",
   "park": "movie-park-germany",
   "ride": "iron-claw",
   "roles": ["park-background", "ride-card", "hero"],
@@ -13,12 +13,12 @@
     "nl": "Een paars aangelichte achtbaan bij nacht, met de maan erboven."
   },
   "caption": {
-    "de": "Vom Parkplatz aus, nach Feierabend.",
-    "en": "From the car park, after closing.",
-    "es": "Desde el aparcamiento, después del cierre.",
-    "fr": "Depuis le parking, après la fermeture.",
-    "it": "Dal parcheggio, dopo la chiusura.",
-    "nl": "Vanaf de parkeerplaats, na sluitingstijd."
+    "de": "Vom Parkplatz aus, nach Feierabend. Dieselbe Aufnahme dient dem Park als Hintergrund.",
+    "en": "From the car park, after closing. The same shot doubles as the park's background.",
+    "es": "Desde el aparcamiento, después del cierre. La misma toma sirve de fondo del parque.",
+    "fr": "Depuis le parking, après la fermeture. Le même cliché sert aussi de fond au parc.",
+    "it": "Dal parcheggio, dopo la chiusura. Lo stesso scatto fa anche da sfondo del parco.",
+    "nl": "Vanaf de parkeerplaats, na sluitingstijd. Dezelfde foto is ook de achtergrond van het park."
   },
   "credit": {
     "author": "Patrick Arns",

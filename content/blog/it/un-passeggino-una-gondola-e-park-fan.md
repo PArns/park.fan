@@ -93,7 +93,7 @@ Mio padre è morto nel 2019. Forse è proprio per questo che quei giri condivisi
 mi sono diventati così preziosi. Tengono viva la mia infanzia e, con essa, il
 ricordo dell'uomo che allora scivolava accanto a me attraverso quei mondi.
 
-![Sagoma di montagne russe al Movie Park Germany di notte, illuminata di viola e blu | Il Movie Park Germany di notte. Lethal Weapon Pursuit stava qui fino al 2006. | left](/media/movie-park-germany/background.jpg)
+![Sagoma di montagne russe al Movie Park Germany di notte, illuminata di viola e blu | Il Movie Park Germany di notte. Lethal Weapon Pursuit stava qui fino al 2006. | left](/media/movie-park-germany/iron-claw.jpg)
 
 Quando mio padre era di nuovo in viaggio come camionista, mia madre prendeva
 semplicemente il volante. Con lei ho scoperto molti altri parchi, primo fra

@@ -89,7 +89,7 @@ My father died in 2019. Maybe that's exactly why those shared rides have become
 so precious to me. They keep my childhood alive, and with it the memory of the
 man who glided through those worlds next to me.
 
-![Roller coaster silhouette at Movie Park Germany at night, lit in purple and blue | Movie Park Germany after dark. Lethal Weapon Pursuit stood here until 2006. | left](/media/movie-park-germany/background.jpg)
+![Roller coaster silhouette at Movie Park Germany at night, lit in purple and blue | Movie Park Germany after dark. Lethal Weapon Pursuit stood here until 2006. | left](/media/movie-park-germany/iron-claw.jpg)
 
 Whenever my father was away on the road as a lorry driver, my mother simply
 took the wheel. She was the one I discovered a lot of other parks with, above
