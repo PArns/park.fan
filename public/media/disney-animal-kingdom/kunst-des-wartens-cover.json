@@ -1,9 +1,37 @@
 {
+  "title": "Tree of Life",
   "park": "disney-animal-kingdom",
   "ride": "tree-of-life",
-  "tags": ["crowd", "photo"],
+  "tags": [
+    "crowd",
+    "day",
+    "outdoor",
+    "photo",
+    "sunny",
+    "theming"
+  ],
+  "alt": {
+    "de": "Der Tree of Life mit in den Stamm geschnitzten Tieren, davor die Menge auf dem Weg.",
+    "en": "The Tree of Life with animals carved into its trunk, the crowd on the path in front.",
+    "es": "El Tree of Life con animales tallados en el tronco y la multitud en el paseo.",
+    "fr": "Le Tree of Life et ses animaux sculptés dans le tronc, la foule sur l'allée devant.",
+    "it": "Il Tree of Life con animali intagliati nel tronco e la folla sul viale davanti.",
+    "nl": "De Tree of Life met in de stam gesneden dieren, met de menigte op het pad ervoor."
+  },
+  "caption": {
+    "de": "Im Stamm stecken 325 geschnitzte Tiere.",
+    "en": "There are 325 carved animals in that trunk.",
+    "es": "En ese tronco hay 325 animales tallados.",
+    "fr": "Ce tronc compte 325 animaux sculptés.",
+    "it": "In quel tronco ci sono 325 animali intagliati.",
+    "nl": "In die stam zitten 325 gesneden dieren."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.45,
+    "y": 0.35
   }
 }

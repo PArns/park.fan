@@ -1,8 +1,35 @@
 {
+  "title": "Fantasmic!",
   "park": "disney-hollywood-studios",
-  "tags": ["crowd", "night", "photo", "show"],
+  "tags": [
+    "crowd",
+    "night",
+    "outdoor",
+    "photo",
+    "show"
+  ],
+  "alt": {
+    "de": "Ein voll besetztes Freilufttheater von hinten, vor der Bühne wartet das Publikum im Dunkeln.",
+    "en": "A packed open-air theatre seen from the back, the audience waiting in the dark.",
+    "es": "Un teatro al aire libre abarrotado visto desde atrás, con el público esperando a oscuras.",
+    "fr": "Un théâtre en plein air bondé vu de l'arrière, le public attend dans le noir.",
+    "it": "Un teatro all'aperto gremito visto da dietro, il pubblico aspetta al buio.",
+    "nl": "Een volgepakt openluchttheater van achteren gezien, het publiek wacht in het donker."
+  },
+  "caption": {
+    "de": "Rund 6.900 Plätze, und sie füllen sich weit vor der Show.",
+    "en": "About 6,900 seats, and they fill up long before the show.",
+    "es": "Unas 6.900 plazas, y se llenan mucho antes del espectáculo.",
+    "fr": "Environ 6 900 places, remplies bien avant le début du spectacle.",
+    "it": "Circa 6.900 posti, e si riempiono molto prima dello spettacolo.",
+    "nl": "Zo'n 6.900 plaatsen, en ze zitten ruim voor de show al vol."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.45,
+    "y": 0.6
   }
 }

@@ -1,8 +1,35 @@
 {
   "park": "toverland",
-  "tags": ["halloween", "photo"],
+  "tags": [
+    "detail",
+    "halloween",
+    "night",
+    "outdoor",
+    "photo",
+    "theming"
+  ],
+  "alt": {
+    "de": "Vier leuchtende Kürbisköpfe, zwei davon mit Hexenhut, hängen in einem Maisfeld.",
+    "en": "Four glowing pumpkin heads, two of them in witches' hats, hanging in a corn field.",
+    "es": "Cuatro calabazas iluminadas, dos con sombrero de bruja, en un maizal.",
+    "fr": "Quatre citrouilles lumineuses, dont deux coiffées d'un chapeau de sorcière, dans un champ de maïs.",
+    "it": "Quattro zucche illuminate, due col cappello da strega, in un campo di mais.",
+    "nl": "Vier oplichtende pompoenkoppen, twee met heksenhoed, in een maisveld."
+  },
+  "caption": {
+    "de": "Kürbisfeld an der Strecke der Halloween Nights.",
+    "en": "A pumpkin patch along the Halloween Nights route.",
+    "es": "Un campo de calabazas en el recorrido de las Halloween Nights.",
+    "fr": "Un champ de citrouilles sur le parcours des Halloween Nights.",
+    "it": "Un campo di zucche lungo il percorso delle Halloween Nights.",
+    "nl": "Een pompoenveld langs de route van de Halloween Nights."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.45,
+    "y": 0.45
   }
 }

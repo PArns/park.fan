@@ -1,10 +1,38 @@
 {
+  "title": "VelociCoaster",
   "park": "universal-islands-of-adventure",
   "parkPath": "north-america/united-states/orlando/universal-islands-of-adventure",
   "ride": "jurassic-world-velocicoaster",
-  "tags": ["coaster", "photo"],
+  "tags": [
+    "coaster",
+    "day",
+    "outdoor",
+    "overcast",
+    "photo",
+    "ride"
+  ],
+  "alt": {
+    "de": "Ein Zug des VelociCoaster fährt durch eine Kurve, dahinter die Türme von Hogwarts.",
+    "en": "A VelociCoaster train in a turn, the towers of Hogwarts behind it.",
+    "es": "Un tren del VelociCoaster en una curva, con las torres de Hogwarts detrás.",
+    "fr": "Un train du VelociCoaster dans un virage, les tours de Poudlard derrière.",
+    "it": "Un treno del VelociCoaster in curva, dietro le torri di Hogwarts.",
+    "nl": "Een trein van de VelociCoaster in een bocht, met de torens van Zweinstein erachter."
+  },
+  "caption": {
+    "de": "Zwei Themenwelten in einem Bild: Jurassic World und Hogwarts.",
+    "en": "Two lands in one frame: Jurassic World and Hogwarts.",
+    "es": "Dos áreas temáticas en una imagen: Jurassic World y Hogwarts.",
+    "fr": "Deux univers dans un seul cadre : Jurassic World et Poudlard.",
+    "it": "Due aree tematiche in un'inquadratura: Jurassic World e Hogwarts.",
+    "nl": "Twee themagebieden in één beeld: Jurassic World en Zweinstein."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.45,
+    "y": 0.55
   }
 }

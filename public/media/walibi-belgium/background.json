@@ -1,10 +1,41 @@
 {
   "title": "Walibi Belgium",
   "park": "walibi-belgium",
-  "roles": ["park-background"],
-  "tags": ["background", "park", "photo"],
+  "roles": [
+    "park-background"
+  ],
+  "tags": [
+    "background",
+    "christmas",
+    "day",
+    "entrance",
+    "outdoor",
+    "park",
+    "photo",
+    "winter"
+  ],
+  "alt": {
+    "de": "Der Eingang von Walibi Belgium, mit Christbaumkugeln geschmückt, darüber das Schild „Walibi Winter“.",
+    "en": "The Walibi Belgium entrance decorated with baubles, a \"Walibi Winter\" sign above it.",
+    "es": "La entrada de Walibi Belgium decorada con bolas de Navidad y el rótulo \"Walibi Winter\" encima.",
+    "fr": "L'entrée de Walibi Belgium décorée de boules de Noël, surmontée de l'enseigne « Walibi Winter ».",
+    "it": "L'ingresso di Walibi Belgium addobbato con palline di Natale e l'insegna \"Walibi Winter\" sopra.",
+    "nl": "De ingang van Walibi Belgium versierd met kerstballen, met daarboven het bord \"Walibi Winter\"."
+  },
+  "caption": {
+    "de": "Walibi Winter, der Winterbetrieb in Wavre.",
+    "en": "Walibi Winter, the winter season in Wavre.",
+    "es": "Walibi Winter, la temporada de invierno en Wavre.",
+    "fr": "Walibi Winter, la saison d'hiver à Wavre.",
+    "it": "Walibi Winter, la stagione invernale a Wavre.",
+    "nl": "Walibi Winter, het winterseizoen in Waver."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.48,
+    "y": 0.28
   }
 }

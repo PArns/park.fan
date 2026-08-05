@@ -1,9 +1,37 @@
 {
   "park": "toverland",
   "ride": "troy",
-  "tags": ["halloween", "photo"],
+  "tags": [
+    "fog",
+    "halloween",
+    "night",
+    "outdoor",
+    "photo",
+    "ride",
+    "theming"
+  ],
+  "alt": {
+    "de": "Das trojanische Pferd in rotem Licht und Nebel, davor eine Menschenmenge.",
+    "en": "The Trojan horse in red light and fog, a crowd standing in front of it.",
+    "es": "El caballo de Troya con luz roja y niebla, con una multitud delante.",
+    "fr": "Le cheval de Troie dans une lumière rouge et de la fumée, une foule devant lui.",
+    "it": "Il cavallo di Troia in luce rossa e nebbia, con una folla davanti.",
+    "nl": "Het paard van Troje in rood licht en mist, met een menigte ervoor."
+  },
+  "caption": {
+    "de": "Dasselbe Pferd wie am Tag, nur mit Nebelmaschine.",
+    "en": "The same horse as by day, only with a fog machine.",
+    "es": "El mismo caballo que de día, solo que con máquina de humo.",
+    "fr": "Le même cheval que le jour, avec une machine à fumée en plus.",
+    "it": "Lo stesso cavallo del giorno, ma con la macchina del fumo.",
+    "nl": "Hetzelfde paard als overdag, alleen met rookmachine."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.5,
+    "y": 0.45
   }
 }

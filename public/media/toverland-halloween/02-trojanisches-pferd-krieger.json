@@ -1,9 +1,38 @@
 {
   "park": "toverland",
   "ride": "troy",
-  "tags": ["halloween", "photo"],
+  "tags": [
+    "fog",
+    "halloween",
+    "night",
+    "outdoor",
+    "performer",
+    "photo",
+    "ride",
+    "theming"
+  ],
+  "alt": {
+    "de": "Ein Darsteller in Rüstung mit Speer steht im Nebel vor dem trojanischen Pferd.",
+    "en": "A performer in armour with a spear standing in the fog in front of the Trojan horse.",
+    "es": "Un actor con armadura y lanza, entre la niebla, delante del caballo de Troya.",
+    "fr": "Un comédien en armure, lance à la main, dans la fumée devant le cheval de Troie.",
+    "it": "Un attore in armatura con una lancia, nella nebbia davanti al cavallo di Troia.",
+    "nl": "Een acteur in harnas met speer staat in de mist voor het paard van Troje."
+  },
+  "caption": {
+    "de": "Der Wächter gehört zur Scare Zone rund um Troy.",
+    "en": "The guard belongs to the scare zone around Troy.",
+    "es": "El guardián forma parte de la scare zone alrededor de Troy.",
+    "fr": "Le garde fait partie de la scare zone autour de Troy.",
+    "it": "La guardia fa parte della scare zone attorno a Troy.",
+    "nl": "De wachter hoort bij de scare zone rond Troy."
+  },
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.4,
+    "y": 0.4
   }
 }
