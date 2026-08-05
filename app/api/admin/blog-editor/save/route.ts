@@ -3,6 +3,7 @@ import { Octokit } from '@octokit/rest';
 import type { BlogFrontmatter } from '@/lib/blog/types';
 import { buildPostFile } from '@/app/admin/blog-editor/_lib/serialize';
 import { requireAdminPass } from '@/lib/admin/verify-pass';
+import { sidecarForUpload } from '@/lib/admin/blog-image-sidecar';
 
 interface SavePayload {
   baseSlug: string;
@@ -412,6 +413,38 @@ export async function POST(req: Request) {
         { error: `Could not commit image ${img.path}: ${(e as Error).message}` },
         { status: 500 }
       );
+    }
+
+    // Its sidecar, so the file is a row in the media database rather than bytes
+    // sitting in the tree. This used to be skipped, which left every editor upload
+    // undescribed: no alt, no rights, and nothing for the admin to list.
+    //
+    // Never overwritten. A sidecar already on the branch was either hand-authored
+    // or written by the media admin, and both know more than this does.
+    const sidecarPath = `${filePath.replace(/\.[^.]+$/, '')}.json`;
+    let sidecarExists = false;
+    try {
+      await octokit.repos.getContent({ owner, repo, path: sidecarPath, ref: branch });
+      sidecarExists = true;
+    } catch {
+      /* new file */
+    }
+    if (!sidecarExists) {
+      try {
+        await octokit.repos.createOrUpdateFileContents({
+          owner,
+          repo,
+          path: sidecarPath,
+          branch,
+          message: `feat(blog/images): describe ${img.path.split('/').pop()}`,
+          content: Buffer.from(sidecarForUpload(img.path, payload.perLocale)).toString('base64'),
+        });
+      } catch (e) {
+        return NextResponse.json(
+          { error: `Could not commit sidecar for ${img.path}: ${(e as Error).message}` },
+          { status: 500 }
+        );
+      }
     }
   }
 

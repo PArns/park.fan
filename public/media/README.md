@@ -56,6 +56,20 @@ request — including reading the file's GPS tag to propose the park.
 An image with **no** sidecar is still valid; it just carries no metadata, and the
 generator says so. Dropping a file in never breaks the build.
 
+### Images dropped into the blog editor
+
+They get a starter sidecar automatically, written by the same normalizer as
+everything else. It carries the **alt text and caption the post already wrote** —
+`![alt | caption](src)`, read out of every filled locale, so a picture used in six
+translations arrives with six languages — plus `photo` or `diagram`, and
+`license: unknown`.
+
+Park, ride, focal point and author stay **unset on purpose**. A screenshot in an
+article usually shows no ride, nothing has looked at the picture yet, and the
+post's author wrote the post, not necessarily the photo. Those images therefore
+show up in the admin under _No park_, _No focal point_ and _Rights unknown_, which
+is where somebody finishes them. An existing sidecar is never overwritten.
+
 ## The sidecar
 
 Every field is optional. Nothing is inferred from the file name or the folder.

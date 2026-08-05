@@ -425,6 +425,27 @@ byte-identical and the PR diff stays readable.
 
 ---
 
+### The blog editor is the second write path
+
+An image pasted or dropped into a post is committed by
+`/api/admin/blog-editor/save` in the post's own pull request, **with a sidecar
+next to it** (`lib/admin/blog-image-sidecar.ts`). It used to commit the bytes and
+nothing else, which left every editor upload undescribed.
+
+It fills in only what the editor actually knows: the alt text and caption from the
+markdown (`![alt | caption](src)`), read out of **every filled locale**, so a
+picture used in six translations arrives with six languages — more than the media
+uploader collects. Park, ride, focal point and author stay unset, because a
+screenshot in an article usually shows no ride and nobody has looked at the
+picture yet; they surface in the admin's backlog filters instead. An existing
+sidecar is never overwritten.
+
+`pnpm test:blog-image-sidecar` pins the markdown parsing, whose failure mode is
+silence: no match means an empty sidecar, the image committed anyway, and the alt
+text the author already typed quietly lost.
+
+---
+
 ## 7. What the migration surfaced
 
 Worth knowing, because each was invisible before:
