@@ -64,13 +64,16 @@ export function mediaToken(): string | null {
  */
 export async function resolveSession(
   octokit: Octokit,
-  { owner, repo, baseBranch }: RepoRef
+  { owner, repo }: RepoRef
 ): Promise<MediaSession | null> {
+  // NOT filtered by base. A session pull request retargeted to another branch is
+  // still the session — filtering it out would report "none running" and the next
+  // save would open a second one, which is the failure this function exists to
+  // prevent.
   const { data: open } = await octokit.pulls.list({
     owner,
     repo,
     state: 'open',
-    base: baseBranch,
     per_page: 100,
   });
   const found = open.find((pr) => pr.head.ref.startsWith(SESSION_PREFIX));
@@ -85,9 +88,20 @@ export async function resolveSession(
     };
   }
 
-  // No open PR — but the branch may still be there, holding commits nobody has
-  // opened a pull request for. Joining it is strictly better than starting a
-  // thirteenth branch beside it.
+  // No open pull request. A session branch may still exist, and whether it can be
+  // joined depends entirely on WHY it has no PR:
+  //
+  //   - never had one   → an earlier save committed but could not open it (207).
+  //                       Adopt it: the commits are real and belong in the session.
+  //   - had one, merged → the work shipped. The branch is behind `main` now, and
+  //                       committing onto it would open a pull request whose diff
+  //                       is "everything that changed on main since", inverted.
+  //   - had one, closed → somebody said no. Reviving it silently is worse than
+  //                       starting clean.
+  //
+  // Only the first is a session. The other two are spent branches that happen to
+  // still be there, which is the default on this repository — GitHub only deletes
+  // the head branch on merge when the setting is on.
   const { data: refs } = await octokit.git.listMatchingRefs({
     owner,
     repo,
@@ -95,11 +109,25 @@ export async function resolveSession(
   });
   if (!refs.length) return null;
 
-  // Newest first: branch names carry a sortable `YYYYMMDDHHMMSS` stamp.
+  // Only the newest is a candidate — branch names carry a sortable
+  // `YYYYMMDDHHMMSS` stamp. An older branch behind a spent one is not a session
+  // somebody lost track of; it is history.
   const branch = refs
     .map((r) => r.ref.replace(/^refs\/heads\//, ''))
     .sort()
     .at(-1)!;
+
+  // Exact lookup by head ref rather than a scan: this answers "does THIS branch
+  // have a pull request", including the merged and closed ones the open list
+  // above cannot see by definition.
+  const { data: prs } = await octokit.pulls.list({
+    owner,
+    repo,
+    state: 'all',
+    head: `${owner}:${branch}`,
+    per_page: 10,
+  });
+  if (prs.length) return null; // spent — merged or closed. Start fresh from base.
 
   return { number: null, url: null, branch, title: null, draft: true, body: '' };
 }

@@ -303,21 +303,39 @@ It ends the way it began: merge or close the PR, and the next save opens a new o
 **Start a new pull request** in that banner is the early exit, and sends
 `newSession: true` with the next commit.
 
-Resolution lives in `lib/admin/media-session.ts`, shared by the commit endpoint and
-the banner, and it looks in **two** places for a reason:
+**Finding the right pull request is the whole mechanism** — pushing straight away is
+fine, as long as the next save lands as another commit on the one that is already
+open. Resolution lives in `lib/admin/media-session.ts`, shared by the commit endpoint
+and the banner, and it has to tell four states apart:
 
-1. The open pull request with the prefix. The normal case.
-2. **A session branch with no open PR.** This is the hole that produced a pull
-   request per image. If opening the PR failed after the commits landed (the endpoint
-   answers `207` for exactly that), or somebody closed the PR and left the branch,
-   then looking only at pull requests says "no session" and the next save forks a
-   second branch — and every save after it does the same. A branch found this way is
-   **adopted**: the commits go onto it and a PR is opened for it.
+| state                                | how it got there                                  | verdict             |
+| ------------------------------------ | ------------------------------------------------- | ------------------- |
+| open PR with the prefix              | the normal case                                   | **that is it**      |
+| branch exists, never had a PR        | commits landed, opening the PR failed (the `207`) | **adopt it**        |
+| branch exists, its PR was **merged** | shipped; GitHub kept the head branch              | spent — start fresh |
+| branch exists, its PR was **closed** | somebody said no                                  | spent — start fresh |
+
+The second row is the hole that produced a pull request per image: looking only at
+_open pull requests_ answers "no session", so the next save forks a second branch —
+and every save after it does the same. The last two are why adopting cannot be
+unconditional: committing onto a merged branch opens a PR whose diff is everything
+`main` gained since, inverted.
+
+Two details in the lookup:
+
+- **The open scan does not filter by base.** A session PR retargeted at another
+  branch is still the session, and filtering it out opens a second one.
+- **The branch is checked by head ref with `state: 'all'`** (`head: owner:branch`),
+  because merged and closed pull requests are exactly what the open list cannot see.
 
 And a failed lookup is an **error, not "no session"**. It used to be swallowed with a
 console warning, which meant a token or API hiccup silently promoted every save to
 "I am the first one". The endpoint now refuses the save and says why, because
 committing blind is what opens the duplicate.
+
+`pnpm test:media-session` exercises all of it against a stubbed GitHub. Every way
+this function can be wrong shows the same symptom — a pull request per image,
+noticed only once a batch has already scattered across a dozen of them.
 
 The banner also answers **what is already in there**: the PR's own log lines and the
 files the branch actually touches (`pulls.listFiles`). Adding to a shared pull request

@@ -29,6 +29,15 @@ function probe(base) {
 }
 
 export async function resolve(specifier, context, nextResolve) {
+  // `server-only` is a Next.js build-time marker, not an installed package: it
+  // exists to make a client bundle fail loudly, and there is no client bundle
+  // here. Stubbing it is what lets a server module be tested at all — the
+  // alternative is dropping the marker from modules that genuinely must not ship
+  // to the browser, which trades a real safeguard for a test convenience.
+  if (specifier === 'server-only') {
+    return { url: 'data:text/javascript,export {}', shortCircuit: true };
+  }
+
   if (specifier.startsWith('@/')) {
     const resolved = probe(join(projectRoot, specifier.slice(2)));
     if (resolved) return nextResolve(pathToFileURL(resolved).href, context);
