@@ -2,33 +2,56 @@
 
 import { useEffect, useRef } from 'react';
 
+interface HeaderRevealOptions {
+  /** Hero pages only — everywhere else the bar is solid from the first frame. */
+  enabled: boolean;
+  /** True once the bar has solidified (scrolled past the threshold). */
+  solid: boolean;
+}
+
+type Timeline = {
+  play: () => void;
+  reverse: () => void;
+  kill: () => void;
+};
+
 /**
- * Staggers the header's contents in the first time the bar solidifies.
+ * The bar's contents settling in as the header solidifies, and lifting back out as it goes
+ * transparent again.
  *
- * The header already cross-fades from transparent to solid in CSS, and that crossfade is
- * deliberately tuned (`backdrop-filter` is kept out of the transition list — animating it
- * re-rasterized the blur of the whole page behind the bar on every frame). None of that is
- * replaced here. This only adds a one-off flourish on top:
+ * The CSS crossfade underneath is deliberately tuned and is NOT replaced here: `backdrop-filter`
+ * is kept out of its transition list, because animating it re-rasterized the blur of the whole
+ * page behind the bar on every frame — by far the most expensive repaint on a hero page, repeated
+ * on every direction change. This only layers a stagger on top of it.
  *
- * - **CSS stays the source of truth.** GSAP animates `y` and sets `opacity` inline for the
- *   duration of the tween, then `clearProps` hands both back to the class-driven fade. If the
- *   chunk never loads, or the visitor asked for reduced motion, the header behaves exactly as
- *   it did before.
- * - **Once per page, not once per scroll.** The 50 px threshold is crossed every time the
- *   visitor scrolls back up and down again; re-running the stagger there would turn the header
- *   into a fidget. The ref latches after the first run.
- * - **Nothing is hidden up front.** The tween starts from the state the elements are already
- *   in, so there is no frame where JS has hidden something it might fail to reveal.
+ * Rules this follows, all of them learned the hard way:
  *
- * Cost: the GSAP chunk is fetched the first time a hero page is scrolled past 50 px. Non-hero
- * pages never call this with `active`, so they never pay for it.
+ * - **CSS owns visibility, GSAP owns motion.** The timeline animates `y` and never `opacity`.
+ *   The class-driven fade stays the source of truth, so a failed chunk or a blocked import means
+ *   a plain fade with everything visible — never a header that JavaScript forgot to reveal.
+ * - **Nothing animates the `<header>` itself.** It carries `backdrop-blur-md`, and a transform or
+ *   an opacity on it would make it a backdrop root for as long as the animation ran — the bar
+ *   would lose its blur exactly while it is fading in. Only its contents move.
+ * - **One timeline, played and reversed.** It is not re-run per scroll. Crossing the 50 px
+ *   threshold plays it; crossing back reverses it. Repeated crossings therefore continue the
+ *   same motion from wherever it currently is instead of restarting a flourish, which is what
+ *   made the earlier version fidget.
+ *
+ * Cost: the GSAP chunk is fetched the first time a hero page is scrolled past the threshold.
+ * Non-hero pages pass `enabled: false` and never pay for it.
  */
-export function useHeaderReveal(active: boolean) {
+export function useHeaderReveal({ enabled, solid }: HeaderRevealOptions) {
   const navRef = useRef<HTMLDivElement | null>(null);
-  const played = useRef(false);
+  const tlRef = useRef<Timeline | null>(null);
+  /** The live scroll state, readable from the import's `then` — the visitor can cross the
+      threshold again while the chunk is still in flight. */
+  const solidRef = useRef(solid);
+  useEffect(() => {
+    solidRef.current = solid;
+  }, [solid]);
 
   useEffect(() => {
-    if (!active || played.current) return;
+    if (!enabled || !solid || tlRef.current) return;
     const root = navRef.current;
     if (!root) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -36,23 +59,27 @@ export function useHeaderReveal(active: boolean) {
     const targets = Array.from(root.querySelectorAll<HTMLElement>('[data-header-stagger]'));
     if (targets.length === 0) return;
 
-    played.current = true;
-    let ctx: { revert: () => void } | undefined;
     let cancelled = false;
-
     import('gsap')
       .then(({ gsap }) => {
         if (cancelled) return;
-        ctx = gsap.context(() => {
-          gsap.from(targets, {
-            opacity: 0,
-            y: -6,
-            duration: 0.4,
-            ease: 'power2.out',
-            stagger: 0.05,
-            clearProps: 'all',
-          });
-        }, root);
+        const tl = gsap.timeline({ paused: true }).fromTo(
+          targets,
+          { y: -10 },
+          {
+            y: 0,
+            duration: 0.45,
+            ease: 'power3.out',
+            stagger: 0.045,
+            // The from-state is written the moment the timeline is built, which is safe because
+            // it is only ever built at the instant the bar solidifies on a hero page — the
+            // contents are still at opacity 0 there, so the offset is never seen as a jump.
+            immediateRender: true,
+          }
+        );
+        tlRef.current = tl;
+        if (solidRef.current) tl.play();
+        else tl.reverse();
       })
       .catch(() => {
         // The CSS fade already showed them; there is nothing to recover.
@@ -60,9 +87,22 @@ export function useHeaderReveal(active: boolean) {
 
     return () => {
       cancelled = true;
-      ctx?.revert();
     };
-  }, [active]);
+  }, [enabled, solid]);
+
+  useEffect(() => {
+    const tl = tlRef.current;
+    if (!tl) return;
+    if (solid) tl.play();
+    else tl.reverse();
+  }, [solid]);
+
+  useEffect(() => {
+    return () => {
+      tlRef.current?.kill();
+      tlRef.current = null;
+    };
+  }, []);
 
   return navRef;
 }

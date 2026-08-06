@@ -210,6 +210,26 @@
  */
 :root {
   --hero-search-rest-h: 282px;
+
+  /*
+   * Resting height of the whole left plate, reserved on the plate itself from `md` up.
+   *
+   * This is a STREAMING fix, not a layout one. The plate's later children — the search block and
+   * the pill row — arrive in a later chunk of the HTML response than its opening tag does, and on
+   * a slow link the browser paints the half-parsed plate in between. It came up 328 px tall and
+   * then grew 456 px when the rest of the markup landed: measured at up to 0.10 CLS on a
+   * 1.6 Mbps / 4× CPU profile, in two runs out of five. Nothing that happens after hydration can
+   * prevent that — only markup that is already there can, so the reservation has to sit on an
+   * element the browser sees early.
+   *
+   * 784px is what the plate settles at in ALL SIX locales at every width from 768 px up (only
+   * fr at 1440 goes to 803, where the headline takes a third line). It is deliberately the
+   * measured height and not a padded one: a min-height at or below the real height changes no
+   * finished layout anywhere, it only stops the box from starting out short.
+   *
+   * It follows --hero-search-rest-h — that dropdown is 282 px of it. Re-measure both together.
+   */
+  --hero-plate-min-h: 784px;
 }
 
 /*
@@ -281,6 +301,58 @@
   }
 }
 
+/*
+ * A single band of light travelling across each panel once, after its contents have landed.
+ *
+ * It is a `background-position` on the panel's own `::after`, which is what keeps it compatible
+ * with the rule above it: a pseudo-element is a child box, so it never makes the panel a backdrop
+ * root, and nth-child (which drives the content stagger) does not count it. No clipping wrapper
+ * is needed either — a background is painted inside the element's border box, and `border-radius:
+ * inherit` rounds it with the panel.
+ */
+@keyframes hero-sheen {
+  from {
+    background-position: -120% 0;
+  }
+  to {
+    background-position: 220% 0;
+  }
+}
+
+/*
+ * The map locking on to the selected continent once the sweep has passed it: the highlight
+ * blooms in and settles back, so the eye is told where it is rather than finding a shape that
+ * was already coloured in.
+ *
+ * `fill-opacity` multiplies the alpha that is already in `fill-primary/35`, so this stays a
+ * pure animation of the existing colour — no second fill value to keep in sync with the class.
+ */
+@keyframes hero-map-lock {
+  0% {
+    fill-opacity: 0.2;
+  }
+  55% {
+    fill-opacity: 1;
+  }
+  72% {
+    fill-opacity: 0.7;
+  }
+  100% {
+    fill-opacity: 1;
+  }
+}
+
+/* One ring going out from the selected bubble as it lands. `box-shadow` only: a `scale` here
+   would fight the standalone `translate` that centres the bubble on its anchor. */
+@keyframes hero-bubble-ring {
+  from {
+    box-shadow: 0 0 0 0 var(--color-primary);
+  }
+  to {
+    box-shadow: 0 0 0 14px transparent;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   /*
    * NOTHING animates the panels themselves — not transform, not opacity, not filter. Each of
@@ -333,8 +405,49 @@
     transform-box: fill-box;
     transform-origin: center;
   }
+  /* Two animations on one path, so they have to be declared together — a second `animation`
+     rule would replace the sweep rather than join it. */
+  .hero-map-in.hero-map-lock {
+    animation:
+      hero-map-in 0.55s cubic-bezier(0.16, 1, 0.3, 1) backwards,
+      hero-map-lock 0.6s ease-out 0.95s backwards;
+  }
   .hero-bubble-in {
     animation: hero-pop-in 0.42s cubic-bezier(0.34, 1.4, 0.64, 1) backwards;
+  }
+  .hero-bubble-in[aria-current] {
+    animation:
+      hero-pop-in 0.42s cubic-bezier(0.34, 1.4, 0.64, 1) backwards,
+      hero-bubble-ring 0.85s ease-out 1.1s backwards;
+  }
+
+  /* The light band. `relative` so the pseudo-element measures against the panel — both panels
+     already contain their own positioned children, so this changes no containing block that
+     anything else relies on. */
+  .hero-sheen {
+    position: relative;
+  }
+  .hero-sheen::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(
+      105deg,
+      transparent 38%,
+      color-mix(in oklab, var(--color-primary) 22%, white) 50%,
+      transparent 62%
+    );
+    background-size: 60% 100%;
+    background-repeat: no-repeat;
+    background-position: 220% 0;
+    opacity: 0.55;
+    animation: hero-sheen 1.5s cubic-bezier(0.33, 0, 0.2, 1) 0.5s backwards;
+  }
+  .hero-in-late .hero-sheen::after {
+    animation-delay: 0.75s;
   }
 }
 

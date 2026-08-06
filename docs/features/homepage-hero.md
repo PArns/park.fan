@@ -62,9 +62,22 @@ reads immediately as one of them being wrong, and a hand-rolled blur had already
 40 px against the panel's 64 px.
 
 The radius is **not** the lever: 64 px, 24 px and 12 px all measure the same. It is the presence
-of a filter over a _moving_ backdrop that costs, which is also why matching the left plate up to
-the panel's 64 px cost nothing extra. **Area** is the lever: the left plate is the largest
-blurred surface on the page and accounts for ~17 ms per frame on its own.
+of a filter over a _moving_ backdrop that costs. **Area** is the lever: the left plate is the
+largest blurred surface on the page and accounts for ~17 ms per frame on its own.
+
+Which is why the radius is chosen by eye, not by budget. It shipped at 64 px over a 75 % fill and
+the photo behind the panels stopped being a photo — an even field of colour with nothing of the
+park left in it. It is **24 px over 62 %** now. Text is not what pays for that: the copy clears
+12:1 over the raw photo with no panel at all, and the measured floor across the extremes is
+
+| backdrop under the glass | light mode | dark mode |
+| ------------------------ | ---------- | --------- |
+| a real hero photo        | 11.2–15.1  | 17.4–19.2 |
+| forced pure white        | 19.8       | **5.15**  |
+| forced pure black        | 7.39       | 19.6      |
+
+The worst case in the table is a photo brighter than any in the library, in dark mode, and it
+still passes AA.
 
 **The real lever is the ken-burns animation.** With it stopped, the blurs cost nothing at all
 (16.7 ms with every filter still in place) — a static backdrop is filtered once and cached.
@@ -218,8 +231,24 @@ scrollable row is wider than a phone — without it the whole hero overflowed th
 Every live surface in the hero resolves at its own pace after load, and rendering nothing until
 each one lands made the hero assemble itself piece by piece in front of the visitor. Each one
 now holds a placeholder in **exactly its final box** (`components/home/hero-skeletons.tsx`), so
-the layout is settled from first paint and the measured CLS is **0** on desktop and on a
-throttled phone.
+the layout is settled from first paint. Measured CLS is **0.0095** on desktop and **0** on a
+throttled phone, over five runs each at 4× CPU / 1.6 Mbps.
+
+### A skeleton in the flow does not help if the flow has not arrived
+
+The plate's later children — the search block, the pill row — sit in a later chunk of the HTML
+response than its opening tag. On a slow link the browser paints the half-parsed plate in
+between: it came up 328 px tall and grew 456 px when the rest of the markup landed. That is
+**0.10 CLS in two runs out of five**, and nothing that runs after hydration can prevent it —
+only markup the browser has already seen can.
+
+So the plate reserves its own height, `md:min-h-[var(--hero-plate-min-h)]`, from the breakpoint
+where the dropdown's resting list starts occupying the flow. 784 px is the measured settled
+height in **all six locales at every width from 768 px up** (only fr at 1440 goes to 803, where
+the headline takes a third line), and it is stable because every piece above it is fixed-size —
+including `HeroBubbleRow`, whose height deliberately does not depend on its pills. A min-height
+at or below the real height changes no finished layout; it only stops the box starting short.
+With it, all five runs measure 0.0095.
 
 | Surface         | Placeholder                                                                 |
 | --------------- | --------------------------------------------------------------------------- |
@@ -318,7 +347,18 @@ the delay and hands the element back to its own styles at the end.
 - **The continent bubbles** — `hero-pop-in`, landing on a map that is already there. On arrival
   only: switching continents remounts two bubbles, and a pop there would fire on exactly the two
   the visitor is looking at. `ENTRANCE_MS` in `hero-world-panel-client.tsx` has to outlast the
-  last bubble's delay plus its duration, or the class comes off mid-flight and they jump.
+  **last** thing on the map, currently the selected bubble's ring — get it wrong and the class
+  comes off mid-flight and things jump.
+- **The selected continent** — `hero-map-lock` blooms its highlight once the sweep has reached
+  it, and `hero-bubble-ring` sends one ring out from its bubble. Both animate properties that
+  are not transform/opacity/filter (`fill-opacity`, `box-shadow`), which is also why the ring is
+  not a `scale`: the bubbles are centred on their anchor by the standalone `translate` property
+  and a scale there would fight it.
+- **A band of light across each panel** — `hero-sheen`, once, after the contents have landed. It
+  rides the panel's own `::after`, which is deliberate on two counts: a pseudo-element is a child
+  box, so it never makes the panel a backdrop root, and `nth-child` does not count it, so it does
+  not shift the content stagger by one. It needs no clipping wrapper either — a background is
+  painted inside the border box, and `border-radius: inherit` rounds it with the panel.
 
 An entrance animation has to own the very first painted frame. A lazily-loaded library cannot:
 either the hero paints and is then hidden again when the library arrives — a flash — or it stays
@@ -334,10 +374,34 @@ failed chunk leaves the hero invisible.
 - **The header solidifying** on a hero page (`lib/hooks/use-header-reveal.ts`). The existing CSS
   crossfade is untouched and stays the source of truth — `backdrop-filter` is deliberately kept
   out of its transition list, because animating it re-rasterized the blur of the whole page
-  behind the bar on every frame. GSAP only layers a stagger over it, then `clearProps` hands
-  opacity back to the class-driven fade. It plays **once per page, not once per scroll**: the
-  50 px threshold is crossed every time the visitor scrolls up and back down, and re-running it
-  there would turn the header into a fidget.
+  behind the bar on every frame. GSAP layers a stagger over it and animates **`y` only, never
+  `opacity`**: a failed chunk then means a plain fade with everything visible, never a header
+  that JavaScript forgot to reveal. Nothing touches the `<header>` element itself — it carries
+  `backdrop-blur-md`, so a transform or opacity on it would cost the bar its blur for exactly as
+  long as it was fading in.
+
+  It is **one timeline, played and reversed**, not a flourish re-run per scroll. The 50 px
+  threshold is crossed every time the visitor scrolls up and back down; restarting there turned
+  the header into a fidget, whereas reversing simply continues the same motion from wherever it
+  currently is.
+
+### The logo does not cross-fade, it moves
+
+There are two logo lockups in the markup: one parked at `left-6` while the header floats over the
+hero, one in the bar's flex flow once it solidifies. They sit at different x positions and
+different sizes, so fading one out while the other faded in looked like exactly that — one thing
+vanishing, a second, bigger thing appearing somewhere else.
+
+They now travel the same path in the same 500 ms: the outgoing lockup slides to where the
+incoming one lives and grows to its size, the incoming one starts small at the corner. At the
+midpoint both are the same size in the same place, so the eye reads one logo moving. Measured
+mid-transition: `dx = 0.0 px, dh = 0.0 px`.
+
+Both numbers come from `offsetLeft`/`offsetHeight`, never `getBoundingClientRect()` — those are
+layout values and ignore the transforms, so the measurement cannot feed back into itself. The
+container is centred, so the distance depends on the viewport and is re-measured on resize.
+`motion-reduce:transform-none!` drops the movement for reduced motion; the `!` is required
+because an inline style otherwise wins.
 
 In both cases the chunk loads while the visitor is already looking at the thing being animated,
 and if the import fails the content is in the DOM regardless — nothing is hidden up front waiting

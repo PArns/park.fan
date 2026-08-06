@@ -45,8 +45,8 @@ const MAP_DELAY_S = 0.42;
 const MAP_STEP_S = 0.045;
 const BUBBLE_DELAY_S = 0.72;
 const BUBBLE_STEP_S = 0.055;
-/** Long enough for the last bubble (0.72 + 5 × 0.055 + 0.42s of animation) to finish. */
-const ENTRANCE_MS = 1600;
+/** Long enough for the last thing to finish — currently the selected bubble's ring (1.1s + 0.85s). */
+const ENTRANCE_MS = 2100;
 
 /**
  * The hero's right-hand panel: a clickable world map with live open-park counts. Tapping
@@ -132,7 +132,7 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
     // once the entrance finished. Its sections carry the entrance instead.
     <GlassCard
       variant="heavy"
-      className="hero-in-stagger border-border/50 overflow-hidden rounded-2xl p-0 shadow-2xl"
+      className="hero-in-stagger hero-sheen border-border/50 overflow-hidden rounded-2xl p-0 shadow-2xl"
     >
       {/* Header: "Parks in Europe" + live open / total.
           aria-live: switching continents replaces this heading, the open/total figure and the
@@ -184,7 +184,10 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
                 }
                 className={cn(
                   'transition-colors duration-300',
+                  // The selected landmass also blooms once the sweep has reached it, so the
+                  // panel points at where it is instead of arriving pre-coloured.
                   entering && 'hero-map-in',
+                  entering && continent.slug === selected.slug && 'hero-map-lock',
                   isInteractive ? 'cursor-pointer' : 'pointer-events-none',
                   continent.slug === selected.slug ? 'fill-primary/35' : 'fill-foreground/12',
                   isInteractive && continent.slug !== selected.slug && 'hover:fill-foreground/20'

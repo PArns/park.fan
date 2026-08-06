@@ -87,9 +87,57 @@ export function Header({ showBlog = true }: HeaderProps) {
   }, [isHeroPage]);
 
   const isTransparent = isHeroPage && !scrolled;
-  // One-off stagger the first time the bar solidifies — layered on top of the CSS crossfade
-  // below, never replacing it. See the hook for why it only plays once.
-  const barRef = useHeaderReveal(!isTransparent);
+
+  /*
+   * The logo handoff. There are two logo lockups in the markup — one parked in the corner while
+   * the header floats over the hero, one in the bar's flex flow once it solidifies — and they
+   * sit at different x positions and different sizes. Cross-fading them looked like what it was:
+   * one thing disappearing while a second, bigger thing appeared somewhere else.
+   *
+   * They now travel the same path in the same 500 ms. The outgoing one slides to where the
+   * incoming one lives and grows to its size; the incoming one starts small at the corner. At
+   * the midpoint the two are the same size in the same place, so the eye reads a single logo
+   * moving rather than a swap.
+   *
+   * Both numbers are measured, not guessed: `offsetLeft`/`offsetHeight` are layout values and
+   * ignore the transforms, so the measurement can never feed back into itself the way a
+   * `getBoundingClientRect()` would. The container is centred, so the distance depends on the
+   * viewport and has to be re-measured on resize.
+   */
+  const cornerLogoRef = useRef<HTMLAnchorElement>(null);
+  const barLogoRef = useRef<HTMLAnchorElement>(null);
+  const [logoHandoff, setLogoHandoff] = useState({ shift: 0, scale: 1 });
+
+  useEffect(() => {
+    if (!isHeroPage) return;
+    const measure = () => {
+      const corner = cornerLogoRef.current;
+      const bar = barLogoRef.current;
+      if (!corner || !bar || bar.offsetHeight === 0) return;
+      setLogoHandoff({
+        shift: bar.offsetLeft - corner.offsetLeft,
+        scale: corner.offsetHeight / bar.offsetHeight,
+      });
+    };
+    measure();
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
+  }, [isHeroPage]);
+
+  const { shift, scale } = logoHandoff;
+  // transform-origin sits at the left edge so the lockup grows to the right, away from the
+  // screen edge, and its left edge stays on the path between the two positions.
+  const logoMotion = 'origin-left transition-[opacity,transform] duration-500 ease-out';
+  const cornerLogoStyle = isTransparent
+    ? undefined
+    : { transform: `translateX(${shift}px) scale(${(1 / scale).toFixed(3)})` };
+  const barLogoStyle = isTransparent
+    ? { transform: `translateX(${-shift}px) scale(${scale.toFixed(3)})` }
+    : undefined;
+  // The bar's contents settle in as it solidifies and lift back out as it goes transparent —
+  // one timeline played and reversed, layered on top of the CSS crossfade below, never
+  // replacing it. See the hook for why it touches `y` and never `opacity`.
+  const barRef = useHeaderReveal({ enabled: isHeroPage, solid: !isTransparent });
 
   // Shared fade class for elements that hide on the transparent homepage header
   const fadeClass = `transition-opacity duration-500 ${isTransparent ? 'opacity-0 pointer-events-none' : 'opacity-100'}`;
@@ -113,11 +161,16 @@ export function Header({ showBlog = true }: HeaderProps) {
         className="container mx-auto flex h-14 items-center justify-between px-4 md:px-0"
       >
         {/* Corner logo – absolute, visible only when transparent (hero top).
-            Same left-6 offset as the hero image info text below. Fades out on scroll. */}
+            Same left-6 offset as the hero image info text below. On scroll it hands over to the
+            bar logo below: see the handoff note above. `-translate-y-1/2` is Tailwind's
+            standalone `translate` property, so the inline `transform` composes with it rather
+            than dropping the centring. */}
         <Link
+          ref={cornerLogoRef}
           href="/"
           prefetch={false}
-          className={`absolute top-1/2 left-6 flex -translate-y-1/2 items-center gap-1 transition-opacity duration-500 ${
+          style={cornerLogoStyle}
+          className={`absolute top-1/2 left-6 flex -translate-y-1/2 items-center gap-1 motion-reduce:transform-none! ${logoMotion} ${
             isTransparent ? 'opacity-100' : 'pointer-events-none opacity-0'
           }`}
           aria-label="park.fan - Home"
@@ -185,11 +238,15 @@ export function Header({ showBlog = true }: HeaderProps) {
           )}
         </Link>
 
-        {/* Header logo – in flex flow, fades in on scroll. Keeps justify-between anchor when invisible. */}
+        {/* Header logo – in flex flow, arrives from the corner on scroll. Keeps the
+            justify-between anchor when invisible; the transform is layout-free, so the anchor
+            holds throughout the handoff too. */}
         <Link
+          ref={barLogoRef}
           href="/"
           prefetch={false}
-          className={`flex shrink-0 items-center gap-0.5 transition-opacity duration-500 ${
+          style={barLogoStyle}
+          className={`flex shrink-0 items-center gap-0.5 motion-reduce:transform-none! ${logoMotion} ${
             isTransparent ? 'pointer-events-none opacity-0' : 'opacity-100'
           }`}
           aria-label="park.fan - Home"
