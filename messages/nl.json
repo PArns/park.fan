@@ -117,9 +117,10 @@
       "badge": "AI-gestuurde voorspellingen",
       "cta": "Ontdek Parken",
       "searchPlaceholder": "Zoek parken, attracties, shows & restaurants...",
-      "howto": "Hoe gebruik ik park.fan?",
-      "glossary": "Begrippen voor pretparken",
-      "liveWaitTimes": "Live Wachttijden"
+      "title": "Waar is de rij vandaag de moeite waard?",
+      "intro": "park.fan volgt <strong>{parks, number} pretparken</strong> en <strong>{attractions, number} attracties</strong> live, van de Efteling en Phantasialand tot Magic Kingdom. Zoek je park, of klik via de kaart de wereld rond.",
+      "openNow": "{count, plural, =1 {1 park nu open} other {# parken nu open}}",
+      "searchExamples": "Efteling, Taron, Europa-Park …"
     },
     "sections": {
       "explore": "Verkennen per Regio",
@@ -198,6 +199,14 @@
       "p5": "park.fan is een levend project dat voortdurend wordt uitgebreid met nieuwe functies en parken. Sla je favoriete parken op voor snelle toegang, gebruik de navigatie in het park voor de meest efficiënte route, en check altijd de druktekalender vóór het boeken om je bezoek op de best mogelijke dag te plannen.",
       "fancastLink": "Ontdek Fancast",
       "howtoLink": "Lees de volledige gids"
+    },
+    "worldPanel": {
+      "title": "Parken in {continent}",
+      "subtitle": "{count, plural, =1 {1 land} other {# landen}} · wissel van continent",
+      "openWord": "open",
+      "countryOpen": "{count} open",
+      "viewAll": "Alle parken in {continent} bekijken",
+      "countryClosed": "{count} gesloten"
     }
   },
   "footer": {
@@ -957,13 +966,17 @@
       "location": "Locaties ({count})",
       "nearby": "Parken in de buurt",
       "inPark": "Je bent bij {park}",
-      "glossary": "Woordenboek ({count})"
+      "glossary": "Woordenboek ({count})",
+      "popular": "Populaire parken"
     },
     "keyboard": {
       "navigate": "Navigeren",
       "select": "Selecteren",
       "close": "Sluiten"
-    }
+    },
+    "avgWait": "gem. {minutes} min",
+    "attractionsOpen": "{open}/{total} attracties open",
+    "heroHint": "Begin te typen, we zoeken parken, attracties, shows en restaurants"
   },
   "languageBanner": {
     "message": "Deze site is ook beschikbaar in {language}",

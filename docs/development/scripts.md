@@ -37,6 +37,14 @@ would fail silently: an entry that isn't a valid slug, an empty list, and a
 config that differs between a post's translations (it governs the post in all
 languages). Warnings never fail the build.
 
+### `generate-hero-world-map.mjs` (manual)
+
+Writes `lib/geo/world-map-data.ts` — one simplified silhouette per continent for the homepage
+hero's world map — from `public/world.svg`. **Not** part of `prebuild`: the source map never
+changes, so the output is committed. Re-run it only after touching the grouping or the
+simplification thresholds, and **look at the rendered map afterwards** — a collapsed ring still
+compiles. Details: [homepage hero](../features/homepage-hero.md#the-map-data-is-generated).
+
 ## Translation Scripts
 
 | Script                     | Purpose                                       |

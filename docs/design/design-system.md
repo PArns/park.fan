@@ -47,7 +47,7 @@ Registered in `@theme inline` as `--color-status-*` → Tailwind generates `bg-s
 
 | Variable                 | Light                           | Dark                            |
 | ------------------------ | ------------------------------- | ------------------------------- |
-| `--status-operating`     | `oklch(0.723 0.219 142.136)` 🟢 | `oklch(0.792 0.209 151.711)` 🟢 |
+| `--status-operating`     | `oklch(0.53 0.21 142.136)` 🟢   | `oklch(0.792 0.209 151.711)` 🟢 |
 | `--status-down`          | `oklch(0.705 0.213 47.604)` 🟠  | `oklch(0.78 0.188 56.113)` 🟠   |
 | `--status-closed`        | `oklch(0.556 0 0)` ⚫           | `oklch(0.708 0 0)` ⚫           |
 | `--status-refurbishment` | `oklch(0.623 0.214 259.815)` 🔵 | `oklch(0.707 0.165 254.624)` 🔵 |
@@ -76,6 +76,31 @@ Manual `@layer utilities` (not in `@theme inline`, no opacity modifier):
 
 ---
 
+## Theme: dark by default, light on request
+
+park.fan is a **dark site**. `ThemeProvider` runs `defaultTheme="dark"` with `enableSystem={false}`,
+so every visitor gets dark on every device and light is something they opt into. Following the OS
+would make the site dark for some people and light for others by accident, which is the opposite
+of having a default — and it is why the old three-way light/dark/system menu is gone. A browser
+still holding `system` from that menu is moved to dark on its next visit (`ThemeToggle`), stray
+class included: next-themes writes `system` onto `<html>` as if it were a theme name, and adding
+`dark` does not take it back off.
+
+`viewport.themeColor` is a single value for the same reason. It used to be a `prefers-color-scheme`
+pair, which would now tint the browser chrome by something that has nothing to do with what the
+page looks like.
+
+The switch itself splits motion the way the rest of the codebase does: **CSS owns the state** (the
+knob's position is a class, so a failed GSAP chunk still visibly switches), **GSAP owns the
+flourish** — the icon spins through the change and the incoming theme opens out of the switch as a
+disc that covers the viewport before the colours flip, then lifts off the newly themed page
+(`lib/theme/theme-wipe.ts`). The disc is a scaled element, not an animated `clip-path`: a transform
+composites on the GPU and interpolates as a plain number, a `circle()` radius inside a `clip-path`
+string does neither. Under `prefers-reduced-motion`, or if the import fails, the theme still
+changes — `apply` is called exactly once on every path through that module.
+
+---
+
 ## Badge Pattern
 
 **All badges use the soft pattern** — semi-transparent background + colored text, works in light and dark mode without separate overrides:
@@ -94,6 +119,11 @@ Manual `@layer utilities` (not in `@theme inline`, no opacity modifier):
 ```
 
 Components: `CrowdLevelBadge` (`components/parks/crowd-level-badge.tsx`), `ParkStatusBadge` (`components/parks/park-status-badge.tsx`).
+
+> **`--status-operating` is pinned at lightness 0.53 for contrast, not for looks.** It is
+> routinely used as small text ("N offen", live wait labels), and at 0.55 it measured 4.39:1 on
+> white — every one of those strings missed AA by a hair. 0.53 is 4.74:1 and reads as the same
+> green. Do not lighten it back without re-measuring the small-text cases.
 
 ---
 

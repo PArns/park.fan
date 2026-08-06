@@ -117,9 +117,10 @@
       "badge": "Predicciones por IA",
       "cta": "Explorar Parques",
       "searchPlaceholder": "Buscar parques, atracciones, espectáculos y restaurantes...",
-      "howto": "¿Cómo uso park.fan?",
-      "glossary": "Diccionario de parques temáticos",
-      "liveWaitTimes": "Esperas en Directo"
+      "title": "¿Dónde merece la pena hacer cola hoy?",
+      "intro": "park.fan sigue en directo <strong>{parks, number} parques</strong> y <strong>{attractions, number} atracciones</strong>, desde PortAventura y Europa-Park hasta Magic Kingdom. Busca tu parque o recorre el mundo desde el mapa.",
+      "openNow": "{count, plural, =1 {1 parque abierto ahora} other {# parques abiertos ahora}}",
+      "searchExamples": "PortAventura, Taron, Efteling …"
     },
     "sections": {
       "explore": "Explorar por Región",
@@ -198,6 +199,14 @@
       "p5": "park.fan es un proyecto vivo, en constante evolución con nuevas funciones y parques. Guarda tus parques favoritos para acceder rápido, usa la navegación en el parque para planificar la ruta más eficiente, y consulta siempre el calendario de afluencia antes de reservar para elegir el mejor día posible.",
       "fancastLink": "Descubre Fancast",
       "howtoLink": "Leer la guía completa"
+    },
+    "worldPanel": {
+      "title": "Parques en {continent}",
+      "subtitle": "{count, plural, =1 {1 país} other {# países}} · cambiar de continente",
+      "openWord": "abiertos",
+      "countryOpen": "{count, plural, one {# abierto} other {# abiertos}}",
+      "viewAll": "Ver todos los parques en {continent}",
+      "countryClosed": "{count, plural, one {# cerrado} other {# cerrados}}"
     }
   },
   "footer": {
@@ -957,13 +966,17 @@
       "location": "Ubicaciones ({count})",
       "nearby": "Parques cercanos",
       "inPark": "Estás en {park}",
-      "glossary": "Diccionario ({count})"
+      "glossary": "Diccionario ({count})",
+      "popular": "Parques populares"
     },
     "keyboard": {
       "navigate": "Navegar",
       "select": "Seleccionar",
       "close": "Cerrar"
-    }
+    },
+    "avgWait": "{minutes} min de media",
+    "attractionsOpen": "{open}/{total} atracciones abiertas",
+    "heroHint": "Empieza a escribir: parques, atracciones, espectáculos y restaurantes"
   },
   "languageBanner": {
     "message": "Este sitio también está disponible en {language}",

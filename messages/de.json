@@ -117,9 +117,10 @@
       "badge": "KI-gestützte Vorhersagen",
       "cta": "Parks entdecken",
       "searchPlaceholder": "Parks, Attraktionen, Shows & Restaurants suchen...",
-      "howto": "Wie nutze ich park.fan?",
-      "glossary": "Wichtige Freizeitparkbegriffe",
-      "liveWaitTimes": "Live Wartezeiten"
+      "title": "Wo lohnt sich heute das Anstehen?",
+      "intro": "park.fan hat <strong>{parks, number} Freizeitparks</strong> und <strong>{attractions, number} Attraktionen</strong> live im Blick, von Europa-Park und Phantasialand bis zum Magic Kingdom. Such deinen Park, oder klick dich über die Karte durch die Welt.",
+      "openNow": "{count, plural, =1 {1 Park gerade offen} other {# Parks gerade offen}}",
+      "searchExamples": "Europa-Park, Taron, Efteling …"
     },
     "sections": {
       "explore": "Nach Region entdecken",
@@ -198,6 +199,14 @@
       "p5": "park.fan ist ein lebendes Projekt, das laufend um neue Features und Parks erweitert wird. Speichere deine Lieblingsparks für schnellen Zugriff, nutze die In-Park-Navigation für die effizienteste Route durch den Park – und wirf vor der Buchung unbedingt einen Blick in den Crowd-Kalender, um deinen Besuch auf den bestmöglichen Tag zu legen.",
       "fancastLink": "Fancast entdecken",
       "howtoLink": "Vollständige Anleitung lesen"
+    },
+    "worldPanel": {
+      "title": "Parks in {continent}",
+      "subtitle": "{count, plural, =1 {1 Land} other {# Länder}} · Kontinent wechseln",
+      "openWord": "offen",
+      "countryOpen": "{count} offen",
+      "viewAll": "Alle Parks in {continent} ansehen",
+      "countryClosed": "{count} geschlossen"
     }
   },
   "footer": {
@@ -957,13 +966,17 @@
       "location": "Orte ({count})",
       "nearby": "Parks in der Nähe",
       "inPark": "Du bist in {park}",
-      "glossary": "Wörterbuch ({count})"
+      "glossary": "Wörterbuch ({count})",
+      "popular": "Beliebte Parks"
     },
     "keyboard": {
       "navigate": "Navigieren",
       "select": "Auswählen",
       "close": "Schließen"
-    }
+    },
+    "avgWait": "Ø {minutes} Min.",
+    "attractionsOpen": "{open}/{total} Attraktionen offen",
+    "heroHint": "Tippe los, wir suchen Parks, Attraktionen, Shows und Restaurants"
   },
   "languageBanner": {
     "message": "Diese Seite gibt's auch auf {language}",

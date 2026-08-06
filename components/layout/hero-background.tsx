@@ -20,13 +20,14 @@ const HeroThreePark = nextDynamic(
   { ssr: false, loading: () => null }
 );
 
-const KEN_BURNS = 'ken-burns 22s ease-in-out infinite alternate';
+/** Class, not an inline animation — see `.hero-ken-burns` in globals.css for why. */
+const KEN_BURNS_CLASS = 'hero-ken-burns';
 
 // All hero source images are ≤1024px wide, so the old 80vw made high-DPR phones request the
 // w=1080 srcset candidate — an *upscale* of a 1024px source: more bytes, zero extra detail. 60vw
 // pulls the w=828 candidate instead (w=640 on DPR2) — the largest non-upscaled rendition — which
 // cuts the mobile LCP image ~28% at the same quality. It's a decorative full-bleed background
-// under two gradient overlays + opacity-90 + ken-burns, so the slightly smaller rendition is
+// under a gradient overlay + ken-burns, so the slightly smaller rendition is
 // imperceptible. Desktop keeps 115vw; `backgroundImageLoader` bands the quality by how wide the
 // rendition will actually be painted, so wide screens still get the detail they need.
 const HERO_IMAGE_SIZES = '(max-width: 768px) 60vw, 115vw';
@@ -87,9 +88,9 @@ function InParkHeroImages({
             key={src}
             className={cn(
               'absolute inset-0 transition-opacity duration-1000 ease-in-out',
-              i === activeIndex ? 'opacity-90' : 'opacity-0'
+              i === activeIndex ? 'opacity-100' : 'opacity-0',
+              !noAnimation && KEN_BURNS_CLASS
             )}
-            style={noAnimation ? undefined : { animation: KEN_BURNS }}
           >
             {isMounted && (
               <Image
@@ -175,13 +176,10 @@ export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps)
         onLoad={noAnimation ? undefined : () => setAnimate(true)}
         className={cn(
           'object-cover transition-opacity duration-1000',
-          hasParkImages && parkImageLoaded ? 'opacity-0' : 'opacity-90',
-          animating ? 'will-change-transform' : ''
+          hasParkImages && parkImageLoaded ? 'opacity-0' : 'opacity-100',
+          animating ? `will-change-transform ${KEN_BURNS_CLASS}` : ''
         )}
-        style={{
-          objectPosition: heroObjectPosition(finalImage),
-          ...(animating ? { animation: KEN_BURNS } : {}),
-        }}
+        style={{ objectPosition: heroObjectPosition(finalImage) }}
         sizes={HERO_IMAGE_SIZES}
       />
       <InParkHeroImages
@@ -212,7 +210,12 @@ function HeroBackgroundClassic({ imageSrc }: HeroBackgroundProps) {
     <div className="bg-background absolute inset-0 -z-10 overflow-hidden">
       <RandomHeroImage imageSrc={imageSrc} />
       {/* Branded overlay — from-background is navy in dark mode, near-white in light mode */}
-      <div className="from-background/60 via-background/10 to-muted/40 dark:from-background dark:via-background/20 dark:to-muted/70 absolute inset-0 bg-gradient-to-br" />
+      {/* Light mode used to wash the photo out with 60% white at the top-left, back when the
+          text sat on the photo and needed it. The panels carry their own glass now (the hero
+          text measures 16:1 over the real photo with no wash at all), so the tint is only there
+          to keep the very top readable under the header. Dark mode keeps its heavier gradient —
+          it is what makes the night photos read as night rather than grey. */}
+      <div className="from-background/25 to-muted/20 dark:from-background dark:via-background/20 dark:to-muted/70 absolute inset-0 bg-gradient-to-br via-transparent" />
       <div className="from-park-primary/10 absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] via-transparent to-transparent" />
     </div>
   );

@@ -3,15 +3,12 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { Link } from '@/i18n/navigation';
-import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import type { Locale } from '@/i18n/config';
-import { Clock, TrendingUp, Map as MapIcon, BookOpen, Tag, Sparkles } from 'lucide-react';
-import { buttonLinkProps } from '@/components/ui/button';
+import { Clock, TrendingUp, Map as MapIcon, BookOpen, Sparkles } from 'lucide-react';
 
 import nextDynamic from 'next/dynamic';
 import { HeroBackground } from '@/components/layout/hero-background';
 import { HomepageFAQStructuredData } from '@/components/seo/homepage-faq-structured-data';
-import { GlassCard } from '@/components/common/glass-card';
 import { PreferredSourcePrompt } from '@/components/common/preferred-source-prompt';
 import { NearbyParksCardSkeleton } from '@/components/parks/nearby-parks-card-skeleton';
 
@@ -41,8 +38,13 @@ import { HeroImageInfoSwitch } from '@/components/layout/hero-image-info-switch'
 import { HeroImageInfo } from '@/components/layout/hero-image-info';
 import { HeroRotationProvider } from '@/components/layout/hero-rotation-context';
 import { HeroWithNearby } from '@/components/home/hero-with-nearby';
-import { HeroSearchInput } from '@/components/search/hero-search-input';
-import { HeroTicker } from '@/components/home/hero-ticker';
+import { HeroStats } from '@/components/home/hero-stats';
+import { HeroInlineSearch } from '@/components/search/hero-inline-search';
+import { HeroNearbyBubbles } from '@/components/home/hero-nearby-bubbles';
+import { HeroWorldPanel } from '@/components/home/hero-world-panel';
+import { HeroWorldPanelSkeleton } from '@/components/home/hero-skeletons';
+import { HeroTextPanel } from '@/components/home/hero-text-panel';
+import { HeroEntranceGate } from '@/components/home/hero-entrance-gate';
 import { FeaturedParksSlot } from '@/components/home/featured-parks-slot';
 import { GlobalStatsSection } from '@/components/home/global-stats-section';
 import { LiveActivitySection } from '@/components/home/live-activity-section';
@@ -122,102 +124,72 @@ export default async function HomePage({ params }: HomePageProps) {
   const { locale } = await params;
   assertServableRoute(locale);
   setRequestLocale(locale);
-  const glossaryPath = '/' + GLOSSARY_SEGMENTS[locale as Locale];
 
   // Only the static, above-the-fold shell needs translations up front. Every
   // data-dependent section fetches its own data (and translations) inside a
   // Suspense boundary below, so the hero renders/streams without waiting on the API.
-  const [tHome, tParks] = await Promise.all([getTranslations('home'), getTranslations('parks')]);
+  const tHome = await getTranslations('home');
   const heroImage = pickHeroImage(HERO_TTL_MS);
   const randomHeroImage = heroImage?.src;
   const heroMeta = heroImage?.meta ?? null;
-  // Hero panel: when the 3-D park is on, fade the WHOLE card (text/logo/buttons via
-  // `opacity`) so the scene shows through, restoring full opacity on hover. Over the
-  // classic photo hero, keep it solid/legible.
-  const heroPanelClass = HERO_3D_ENABLED
-    ? 'mx-auto flex w-full max-w-5xl flex-col items-center border-white/15 bg-white/12 px-4 py-4 opacity-55 shadow-2xl transition duration-500 ease-out hover:bg-white/25 hover:opacity-100 sm:py-6 lg:flex-row lg:items-center lg:gap-8 lg:py-8 lg:pr-8 lg:pl-4 dark:bg-black/25 dark:hover:bg-black/50'
-    : 'mx-auto flex w-full max-w-5xl flex-col items-center border-white/25 bg-white/10 px-4 py-4 shadow-xl transition-colors duration-500 ease-out hover:border-white/35 hover:bg-white/25 sm:py-6 lg:flex-row lg:items-center lg:gap-8 lg:py-8 lg:pr-8 lg:pl-4 dark:border-white/15 dark:bg-black/20 dark:hover:border-white/25 dark:hover:bg-black/45';
 
   return (
     <div className="flex flex-col">
-      {/* No manual logo preload: the big logo is only a branding mark (a tiny SVG), not the LCP
-          element — that's the hero background, which next/image already preloads via `priority`.
-          The old preload also only covered the light variant, wasting a request on dark theme.
-          Letting the logo load eagerly (it's a small SVG) keeps the preload budget for the hero. */}
       <HomepageFAQStructuredData />
-      {/* Hero Section – static default; when user is in a park (nearby), shows "Willkommen im [Park]" + park info */}
-      <section className="relative isolate -mt-14 overflow-hidden px-6 pt-14 pb-6 sm:pb-8 md:pt-28 md:pb-10 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-16 lg:pb-12">
+      {/* Hero Section – live-numbers headline + in-place search on the left, world-map panel on
+          the right (xl+ only), nearby-park bubbles below. When the user is in a park (nearby),
+          the headline switches to "Willkommen im [Park]" + park info. */}
+      {/* z-10 (not isolate — that clipped nothing but stacked the section BELOW later siblings):
+          the hero search dropdown floats out of this section over the content beneath it, and
+          `overflow-hidden` keeps the background photo in. The sticky header is z-50, so it still
+          wins. */}
+      <section className="hero-entering relative z-10 -mt-14 overflow-visible px-6 pt-24 pb-8 md:pb-10 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-20 lg:pb-12">
         <HeroRotationProvider>
           <HeroBackground imageSrc={randomHeroImage} />
+          {/* Closes the entrance window, so content that streams in later does not replay it —
+              see HeroEntranceGate for what that cost in LCP. Outside the plate on purpose: a
+              child there would shift the content stagger's nth-child by one. */}
+          <HeroEntranceGate />
+          {/* No legibility scrim any more. It existed because the left plate carried no
+              backdrop-blur, and it was anchored left so the photo still read on the right —
+              which meant the two panels ended up blurring different backdrops: the left a
+              dimmed one, the right the raw photo. Same 64 px filter, visibly different glass.
+              The plate's own blur now does the legibility work for both. */}
           <div className="relative container mx-auto">
-            <div className="flex flex-col">
-              {/* Row 1: Logo left + Title/Description right (style depends on the hero flag) */}
-              <GlassCard className={heroPanelClass}>
-                {/* Logo – light/dark variant based on theme */}
-                <div className="relative hidden h-20 w-20 shrink-0 sm:block sm:h-36 sm:w-36 lg:h-64 lg:w-64">
-                  {/* SVGs don't benefit from next/image optimization — use a plain img element */}
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/logo-big.svg"
-                    alt="park.fan"
-                    fetchPriority="high"
-                    className="h-full w-full object-contain dark:hidden"
-                  />
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/logo-big-dark.svg"
-                    alt="park.fan"
-                    className="hidden h-full w-full object-contain dark:block"
-                  />
-                </div>
-                {/* Title + Description + Search + Links */}
-                <div className="w-full min-w-0 text-center lg:max-w-none lg:flex-1">
-                  <HeroWithNearby
-                    searchPlaceholder={tHome('hero.searchPlaceholder')}
-                    hideSearch
-                    titleSlot={<GlossaryInject noUnderline>{tParks('title')}</GlossaryInject>}
-                    introSlot={<GlossaryInject>{tHome('intro')}</GlossaryInject>}
-                  />
-                  <HeroSearchInput
-                    placeholder={tHome('hero.searchPlaceholder')}
-                    className="mt-5 w-full"
-                  />
-                  <div className="mt-4 flex flex-wrap justify-center gap-3">
-                    {/* buttonLinkProps, not `<Button asChild>` — server component, see
-                        conventions §14. */}
-                    <Link
-                      href="/howto"
-                      prefetch={false}
-                      {...buttonLinkProps({
-                        variant: 'outline',
-                        size: 'sm',
-                        className: 'rounded-full',
-                      })}
-                    >
-                      <BookOpen className="h-3.5 w-3.5 shrink-0" />
-                      {tHome('hero.howto')}
-                    </Link>
-                    <Link
-                      href={glossaryPath}
-                      prefetch={false}
-                      {...buttonLinkProps({
-                        variant: 'outline',
-                        size: 'sm',
-                        className: 'rounded-full',
-                      })}
-                    >
-                      <Tag className="h-3.5 w-3.5 shrink-0" />
-                      {tHome('hero.glossary')}
-                    </Link>
-                  </div>
-                </div>
-              </GlassCard>
+            {/* grid-cols-1, not a bare `grid`: an implicit column is sized to its content's
+                max-content width, and the horizontally scrollable pill row inside is wider than
+                a phone. Tailwind's grid-cols-1 is `minmax(0, 1fr)`, which caps it at the
+                container instead — without it the whole hero overflowed the viewport. */}
+            <div className="grid grid-cols-1 items-start gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(0,34rem)] 2xl:grid-cols-[minmax(0,1fr)_minmax(0,40rem)] 2xl:gap-14">
+              {/* Left: live badge + headline + intro with live counts + in-place search +
+                  the nearby-park bubbles */}
+              <HeroTextPanel className="hero-in-stagger">
+                <Suspense fallback={<HeroWithNearby initialCounts={null} />}>
+                  <HeroStats />
+                </Suspense>
+                <HeroInlineSearch
+                  placeholder={tHome('hero.searchExamples')}
+                  label={tHome('hero.searchPlaceholder')}
+                  className="mt-5"
+                />
+                {/* Nearby parks as pill bubbles (GeoIP fallback without location permission).
+                    mt-8 matches the plate's own padding, so the pills sit the same distance from
+                    the open dropdown above them as from the plate's bottom edge below — at mt-4
+                    they read as glued to the card's footer. */}
+                <HeroNearbyBubbles className="mt-8" />
+              </HeroTextPanel>
 
-              {/* Compact "from the blog" strip — three latest posts directly
-                under the hero main box. The full LatestBlogSection still
-                renders further down the page; this is the at-a-glance
-                version for visitors who land at the top fold. */}
-              <BlogHeroPreview locale={locale as Locale} />
+              {/* Right: world-map panel — only rendered when there is room (xl+).
+
+                  Pushed DOWN while the text column is pulled up (`items-start` + these offsets):
+                  the search field sits in the left column and its dropdown is open at rest, so
+                  the two columns are staggered to give that list room instead of centring both
+                  against each other. */}
+              <div className="hero-in-late hidden xl:mt-24 xl:block 2xl:mt-28">
+                <Suspense fallback={<HeroWorldPanelSkeleton />}>
+                  <HeroWorldPanel />
+                </Suspense>
+              </div>
             </div>
           </div>
 
@@ -233,12 +205,15 @@ export default async function HomePage({ params }: HomePageProps) {
               </HeroImageInfoSwitch>
             )
           )}
-
-          {/* Live wait times ticker — streamed in; never blocks the hero (decorative, absolute) */}
-          <Suspense fallback={null}>
-            <HeroTicker />
-          </Suspense>
         </HeroRotationProvider>
+      </section>
+
+      {/* "From the blog" strip — the first thing under the hero, across the full container
+          width. The full LatestBlogSection still renders further down the page. */}
+      <section className="px-6 pt-8">
+        <div className="container mx-auto">
+          <BlogHeroPreview locale={locale as Locale} />
+        </div>
       </section>
 
       {/* Announcement Section */}

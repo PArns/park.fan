@@ -10,6 +10,7 @@ import { Menu, MapPin } from 'lucide-react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { useHeaderReveal } from '@/lib/hooks/use-header-reveal';
 import { ThemeToggle } from '@/components/common/theme-toggle';
 import { LocaleSwitcher } from '@/components/common/locale-switcher';
 import { SearchCommand } from '@/components/search/search-bar';
@@ -87,6 +88,78 @@ export function Header({ showBlog = true }: HeaderProps) {
 
   const isTransparent = isHeroPage && !scrolled;
 
+  /*
+   * The corner-to-bar handoffs, on both ends of the header.
+   *
+   * The bar carries two copies of each of its anchors: one parked in the corner while the header
+   * floats over the hero, one in the flex flow once it solidifies. Cross-fading a pair looked
+   * like exactly what it was — one thing disappearing while a second one appeared somewhere else,
+   * at a different size on the left.
+   *
+   * Each pair now travels the same path in the same 500 ms. The outgoing copy slides to where the
+   * incoming one lives (and, for the logo, grows to its size); the incoming one starts at the
+   * corner. At the midpoint the two coincide, so the eye reads one object moving.
+   *
+   * Two anchors, two conventions:
+   *
+   * - **The logo** is left-aligned, so the path is measured from the left edges and grows from
+   *   `origin-left` — away from the screen edge, with its left edge on the path.
+   * - **The locale + theme cluster** is right-aligned, so it is measured from the RIGHT edges
+   *   (`offsetLeft + offsetWidth`) and moves from `origin-right`. It needs no scale at all: both
+   *   copies hold the same two controls at the same size, and only the corner one wraps them in
+   *   a frosted pill. That pill dissolving while the pair glides is the whole effect.
+   *
+   * Every number is measured, never guessed, and always from `offsetLeft`/`offsetWidth`/
+   * `offsetHeight` — layout values, which ignore the transforms, so a measurement can never feed
+   * back into itself the way `getBoundingClientRect()` would. The container is centred, so the
+   * distances depend on the viewport and are re-measured on resize.
+   */
+  const cornerLogoRef = useRef<HTMLAnchorElement>(null);
+  const barLogoRef = useRef<HTMLAnchorElement>(null);
+  const cornerActionsRef = useRef<HTMLDivElement>(null);
+  const barActionsRef = useRef<HTMLDivElement>(null);
+  const [handoff, setHandoff] = useState({ logoShift: 0, logoScale: 1, actionsShift: 0 });
+
+  useEffect(() => {
+    if (!isHeroPage) return;
+    const rightEdge = (el: HTMLElement) => el.offsetLeft + el.offsetWidth;
+    const measure = () => {
+      const cornerLogo = cornerLogoRef.current;
+      const barLogo = barLogoRef.current;
+      const cornerActions = cornerActionsRef.current;
+      const barActions = barActionsRef.current;
+      if (!cornerLogo || !barLogo || barLogo.offsetHeight === 0) return;
+      setHandoff({
+        logoShift: barLogo.offsetLeft - cornerLogo.offsetLeft,
+        logoScale: cornerLogo.offsetHeight / barLogo.offsetHeight,
+        actionsShift:
+          cornerActions && barActions ? rightEdge(barActions) - rightEdge(cornerActions) : 0,
+      });
+    };
+    measure();
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
+  }, [isHeroPage]);
+
+  const { logoShift, logoScale, actionsShift } = handoff;
+  const handoffMotion = 'transition-[opacity,transform] duration-500 ease-out';
+  const cornerLogoStyle = isTransparent
+    ? undefined
+    : { transform: `translateX(${logoShift}px) scale(${(1 / logoScale).toFixed(3)})` };
+  const barLogoStyle = isTransparent
+    ? { transform: `translateX(${-logoShift}px) scale(${logoScale.toFixed(3)})` }
+    : undefined;
+  const cornerActionsStyle = isTransparent
+    ? undefined
+    : { transform: `translateX(${actionsShift}px)` };
+  const barActionsStyle = isTransparent
+    ? { transform: `translateX(${-actionsShift}px)` }
+    : undefined;
+  // The bar's contents settle in as it solidifies and lift back out as it goes transparent —
+  // one timeline played and reversed, layered on top of the CSS crossfade below, never
+  // replacing it. See the hook for why it touches `y` and never `opacity`.
+  const barRef = useHeaderReveal({ enabled: isHeroPage, solid: !isTransparent });
+
   // Shared fade class for elements that hide on the transparent homepage header
   const fadeClass = `transition-opacity duration-500 ${isTransparent ? 'opacity-0 pointer-events-none' : 'opacity-100'}`;
 
@@ -104,13 +177,21 @@ export function Header({ showBlog = true }: HeaderProps) {
           : 'border-border/50 bg-background/80 backdrop-blur-md'
       }`}
     >
-      <div className="container mx-auto flex h-14 items-center justify-between px-4 md:px-0">
+      <div
+        ref={barRef}
+        className="container mx-auto flex h-14 items-center justify-between px-4 md:px-0"
+      >
         {/* Corner logo – absolute, visible only when transparent (hero top).
-            Same left-6 offset as the hero image info text below. Fades out on scroll. */}
+            Same left-6 offset as the hero image info text below. On scroll it hands over to the
+            bar logo below: see the handoff note above. `-translate-y-1/2` is Tailwind's
+            standalone `translate` property, so the inline `transform` composes with it rather
+            than dropping the centring. */}
         <Link
+          ref={cornerLogoRef}
           href="/"
           prefetch={false}
-          className={`absolute top-1/2 left-6 flex -translate-y-1/2 items-center gap-1 transition-opacity duration-500 ${
+          style={cornerLogoStyle}
+          className={`absolute top-1/2 left-6 flex origin-left -translate-y-1/2 items-center gap-1 motion-reduce:transform-none! ${handoffMotion} ${
             isTransparent ? 'opacity-100' : 'pointer-events-none opacity-0'
           }`}
           aria-label="park.fan - Home"
@@ -178,11 +259,15 @@ export function Header({ showBlog = true }: HeaderProps) {
           )}
         </Link>
 
-        {/* Header logo – in flex flow, fades in on scroll. Keeps justify-between anchor when invisible. */}
+        {/* Header logo – in flex flow, arrives from the corner on scroll. Keeps the
+            justify-between anchor when invisible; the transform is layout-free, so the anchor
+            holds throughout the handoff too. */}
         <Link
+          ref={barLogoRef}
           href="/"
           prefetch={false}
-          className={`flex shrink-0 items-center gap-0.5 transition-opacity duration-500 ${
+          style={barLogoStyle}
+          className={`flex shrink-0 origin-left items-center gap-0.5 motion-reduce:transform-none! ${handoffMotion} ${
             isTransparent ? 'pointer-events-none opacity-0' : 'opacity-100'
           }`}
           aria-label="park.fan - Home"
@@ -238,6 +323,7 @@ export function Header({ showBlog = true }: HeaderProps) {
               className="bg-muted/80 hover:bg-muted text-foreground flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors"
               aria-label={t('nearbyPark', { parkName: nearestPark.name })}
               tabIndex={isTransparent ? -1 : 0}
+              data-header-stagger
             >
               <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
               <span className="max-w-[140px] truncate">{nearestPark.name}</span>
@@ -249,6 +335,7 @@ export function Header({ showBlog = true }: HeaderProps) {
               prefetch={false}
               className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
               tabIndex={isTransparent ? -1 : 0}
+              data-header-stagger
             >
               {t('blog')}
             </Link>
@@ -258,6 +345,7 @@ export function Header({ showBlog = true }: HeaderProps) {
             prefetch={false}
             className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
             tabIndex={isTransparent ? -1 : 0}
+            data-header-stagger
           >
             {t('explore')}
           </Link>
@@ -266,6 +354,7 @@ export function Header({ showBlog = true }: HeaderProps) {
             prefetch={false}
             className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
             tabIndex={isTransparent ? -1 : 0}
+            data-header-stagger
           >
             {t('glossary')}
           </Link>
@@ -274,13 +363,14 @@ export function Header({ showBlog = true }: HeaderProps) {
             prefetch={false}
             className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
             tabIndex={isTransparent ? -1 : 0}
+            data-header-stagger
           >
             {t('howto')}
           </Link>
         </nav>
 
         {/* Search Desktop – fades in on scroll */}
-        <div className={`hidden lg:block lg:w-64 ${fadeClass}`}>
+        <div data-header-stagger className={`hidden lg:block lg:w-64 ${fadeClass}`}>
           <SearchCommand
             trigger="input"
             size="sm"
@@ -297,7 +387,9 @@ export function Header({ showBlog = true }: HeaderProps) {
             Rendered on the hero pages (homepage + Fancast) where the header floats transparent. */}
         {isHeroPage && (
           <div
-            className={`absolute top-1/2 right-6 flex -translate-y-1/2 items-center gap-1 rounded-lg bg-white/60 px-1 py-0.5 backdrop-blur-md transition-opacity duration-500 dark:bg-black/40 ${
+            ref={cornerActionsRef}
+            style={cornerActionsStyle}
+            className={`absolute top-1/2 right-6 flex origin-right -translate-y-1/2 items-center gap-1 rounded-lg bg-white/60 px-1 py-0.5 backdrop-blur-md motion-reduce:transform-none! dark:bg-black/40 ${handoffMotion} ${
               isTransparent ? 'opacity-100' : 'pointer-events-none opacity-0'
             }`}
           >
@@ -315,7 +407,9 @@ export function Header({ showBlog = true }: HeaderProps) {
 
           {/* In-flow locale + theme – fades in on scroll, keeps flex anchor when invisible */}
           <div
-            className={`flex items-center gap-1 transition-opacity duration-500 ${
+            ref={barActionsRef}
+            style={barActionsStyle}
+            className={`flex origin-right items-center gap-1 motion-reduce:transform-none! ${handoffMotion} ${
               isTransparent ? 'pointer-events-none opacity-0' : 'opacity-100'
             }`}
           >
@@ -333,6 +427,7 @@ export function Header({ showBlog = true }: HeaderProps) {
                   className="md:hidden"
                   suppressHydrationWarning
                   tabIndex={isTransparent ? -1 : 0}
+                  data-header-stagger
                 >
                   <Menu className="h-5 w-5" />
                   <span className="sr-only">Menu</span>

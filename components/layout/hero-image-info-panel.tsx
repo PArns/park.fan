@@ -2,9 +2,12 @@ import { Link } from '@/i18n/navigation';
 import type { HeroImageMeta } from '@/lib/media/hero';
 
 /**
- * Presentational hero image attribution panel (bottom-left, desktop only). Pure markup with no data
- * fetching, so both the server caption ({@link HeroImageInfo}) and the client in-park caption can
- * reuse the exact same styling — only the resolved `country` string differs by caller.
+ * Presentational hero image attribution panel (bottom-right, desktop only). Pure markup with no
+ * data fetching, so both the server caption ({@link HeroImageInfo}) and the client in-park caption
+ * can reuse the exact same styling — only the resolved `country` string differs by caller.
+ *
+ * Bottom-RIGHT because the hero's left column now runs the full height of the section (headline,
+ * search panel, nearby bubbles); on the left the caption would sit under them.
  */
 export function HeroImageInfoPanel({ meta, country }: { meta: HeroImageMeta; country: string }) {
   const titleParts = [meta.attractionName, meta.area].filter(Boolean);
@@ -27,7 +30,7 @@ export function HeroImageInfoPanel({ meta, country }: { meta: HeroImageMeta; cou
 
   if (meta.parkUrl) {
     return (
-      <div className="absolute bottom-14 left-4 hidden lg:block">
+      <div className="absolute right-4 bottom-6 hidden lg:block">
         <Link
           href={meta.parkUrl}
           prefetch={false}
@@ -40,7 +43,7 @@ export function HeroImageInfoPanel({ meta, country }: { meta: HeroImageMeta; cou
   }
 
   return (
-    <div className="pointer-events-none absolute bottom-14 left-4 hidden select-none lg:block">
+    <div className="pointer-events-none absolute right-4 bottom-6 hidden select-none lg:block">
       {panel}
     </div>
   );

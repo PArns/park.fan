@@ -52,6 +52,16 @@ export const CROWD_OUTLINE_CLASS: Record<ColoredCrowdLevel, string> = {
   extreme: 'border-crowd-extreme/60 text-crowd-extreme',
 };
 
+/** Solid `bg-crowd-*` fill per level (status dots in the hero bubbles, …). */
+export const CROWD_DOT_CLASS: Record<ColoredCrowdLevel, string> = {
+  very_low: 'bg-crowd-very-low',
+  low: 'bg-crowd-low',
+  moderate: 'bg-crowd-moderate',
+  high: 'bg-crowd-high',
+  very_high: 'bg-crowd-very-high',
+  extreme: 'bg-crowd-extreme',
+};
+
 /** Soft tinted chip (translucent bg + border + text) per level (best-days chips, …). */
 export const CROWD_CHIP_CLASS: Record<ColoredCrowdLevel, string> = {
   very_low: 'bg-crowd-very-low/20 text-crowd-very-low border border-crowd-very-low/30',

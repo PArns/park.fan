@@ -117,9 +117,10 @@
       "badge": "AI-Powered Predictions",
       "cta": "Explore Parks",
       "searchPlaceholder": "Search parks, attractions, shows & restaurants...",
-      "howto": "How do I use park.fan?",
-      "glossary": "Theme Park Dictionary",
-      "liveWaitTimes": "Live Wait Times"
+      "title": "Where is the wait worth it today?",
+      "intro": "park.fan tracks <strong>{parks, number} theme parks</strong> and <strong>{attractions, number} attractions</strong> live, from Europa-Park and Phantasialand to Magic Kingdom. Find your park, or click your way around the map.",
+      "openNow": "{count, plural, =1 {1 park open right now} other {# parks open right now}}",
+      "searchExamples": "Europa-Park, Taron, Efteling …"
     },
     "sections": {
       "explore": "Explore by Region",
@@ -198,6 +199,14 @@
       "p5": "park.fan is a living project, constantly evolving with new features and parks. Save your favourite parks for quick access, use in-park navigation to plan the most efficient route through the park, and always check the crowd calendar before booking to make sure your visit lands on the best possible day.",
       "fancastLink": "Discover Fancast",
       "howtoLink": "Read the full guide"
+    },
+    "worldPanel": {
+      "title": "Parks in {continent}",
+      "subtitle": "{count, plural, =1 {1 country} other {# countries}} · switch continent",
+      "openWord": "open",
+      "countryOpen": "{count} open",
+      "viewAll": "See all parks in {continent}",
+      "countryClosed": "{count} closed"
     }
   },
   "footer": {
@@ -957,13 +966,17 @@
       "location": "Locations ({count})",
       "nearby": "Nearby Parks",
       "inPark": "You're at {park}",
-      "glossary": "Dictionary ({count})"
+      "glossary": "Dictionary ({count})",
+      "popular": "Popular Parks"
     },
     "keyboard": {
       "navigate": "Navigate",
       "select": "Select",
       "close": "Close"
-    }
+    },
+    "avgWait": "{minutes} min avg",
+    "attractionsOpen": "{open}/{total} attractions open",
+    "heroHint": "Start typing to search parks, attractions, shows and restaurants"
   },
   "languageBanner": {
     "message": "This site is also available in {language}",

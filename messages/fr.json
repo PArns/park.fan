@@ -117,9 +117,10 @@
       "badge": "Prédictions par IA",
       "cta": "Explorer les Parcs",
       "searchPlaceholder": "Rechercher parcs, attractions, spectacles & restaurants...",
-      "howto": "Comment utiliser park.fan ?",
-      "glossary": "Dictionnaire des parcs d'attractions",
-      "liveWaitTimes": "Temps d'attente en direct"
+      "title": "Où l'attente en vaut-elle la peine aujourd'hui ?",
+      "intro": "park.fan suit en direct <strong>{parks, number} parcs d'attractions</strong> et <strong>{attractions, number} attractions</strong>, de Disneyland Paris et Europa-Park au Magic Kingdom. Cherchez votre parc, ou explorez le monde depuis la carte.",
+      "openNow": "{count, plural, one {# parc ouvert en ce moment} other {# parcs ouverts en ce moment}}",
+      "searchExamples": "Disneyland Paris, Taron, Efteling …"
     },
     "sections": {
       "explore": "Explorer par Région",
@@ -198,6 +199,14 @@
       "p5": "park.fan est un projet vivant, constamment enrichi de nouvelles fonctionnalités et de nouveaux parcs. Enregistrez vos parcs favoris pour un accès rapide, utilisez la navigation en parc pour planifier le parcours le plus efficace, et consultez toujours le calendrier d'affluence avant de réserver pour choisir le meilleur jour possible.",
       "fancastLink": "Découvrir Fancast",
       "howtoLink": "Lire le guide complet"
+    },
+    "worldPanel": {
+      "title": "Parcs en {continent}",
+      "subtitle": "{count, plural, one {# pays} other {# pays}} · changer de continent",
+      "openWord": "ouverts",
+      "countryOpen": "{count, plural, one {# ouvert} other {# ouverts}}",
+      "viewAll": "Voir tous les parcs en {continent}",
+      "countryClosed": "{count, plural, one {# fermé} other {# fermés}}"
     }
   },
   "footer": {
@@ -957,13 +966,17 @@
       "location": "Lieux ({count})",
       "nearby": "Parcs à proximité",
       "inPark": "Vous êtes à {park}",
-      "glossary": "Dictionnaire ({count})"
+      "glossary": "Dictionnaire ({count})",
+      "popular": "Parcs populaires"
     },
     "keyboard": {
       "navigate": "Naviguer",
       "select": "Sélectionner",
       "close": "Fermer"
-    }
+    },
+    "avgWait": "{minutes} min en moyenne",
+    "attractionsOpen": "{open}/{total} attractions ouvertes",
+    "heroHint": "Tapez pour chercher des parcs, des attractions, des spectacles et des restaurants"
   },
   "languageBanner": {
     "message": "Ce site est également disponible en {language}",
