@@ -76,11 +76,7 @@ export function ParkBackground({
   }
 
   return (
-    /* Same reason as components/layout/header.tsx: the startupbar loader shifts every
-       `top: 0` element down by 36 px before React hydrates, writing an inline `top` and
-       two data attributes onto this element. */
     <div
-      suppressHydrationWarning
       className={cn(
         'pointer-events-none overflow-hidden select-none',
         contained

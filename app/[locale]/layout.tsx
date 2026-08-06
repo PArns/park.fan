@@ -17,7 +17,6 @@ import { Footer } from '@/components/layout/footer';
 import { hasPublishedPosts } from '@/lib/blog/listing';
 import { LanguageBanner } from '@/components/layout/language-banner';
 import Script from 'next/script';
-import { StartupBar } from '@/components/common/startup-bar';
 import { UserbackFeedback } from '@/components/common/userback-feedback';
 import { WebVitalsReporter } from '@/components/analytics/web-vitals-reporter';
 import { ScrollToTop } from '@/components/common/scroll-to-top';
@@ -158,7 +157,6 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     <html lang={locale} suppressHydrationWarning>
       <body className={`${geistSans.variable} font-sans antialiased`} suppressHydrationWarning>
         {umamiOrigin && <link rel="dns-prefetch" href={umamiOrigin} />}
-        <StartupBar />
         {/* Set the temperature unit on <html> before paint so weather/calendar values
             (server-rendered in both units, toggled by CSS) show the visitor's unit with
             no flash — and the pages stay statically cacheable. Reads the temp_unit cookie,
