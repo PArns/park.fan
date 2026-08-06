@@ -1,14 +1,13 @@
 'use client';
 
-import type React from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { ChevronRight } from 'lucide-react';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
+import { useGlobalStats } from '@/lib/hooks/use-global-stats';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
-import { HeroSearchInput } from '@/components/search/hero-search-input';
 import type {
   NearbyAttractionsData,
   NearbyParksData,
@@ -20,7 +19,17 @@ import { IN_PARK_FALLBACK_DISTANCE_M } from '@/types/nearby';
 /** Only show "Park is nearby" hero subline when nearest park is within this (m). */
 const NEAR_PARK_HERO_RADIUS_M = 5000; // 5 km
 
-const BADGE_BASE = 'px-3 py-1 text-xs md:px-4 md:py-1.5 md:text-sm';
+/** Sentence fallbacks when neither the SSR seed nor the live overlay has counts yet. */
+const FALLBACK_COUNTS = { openParks: null, parks: 200, attractions: 7000 };
+
+const BADGE_BASE = 'px-3 py-1 text-xs backdrop-blur-md md:px-4 md:py-1.5 md:text-sm';
+
+/** Seed for the live counts, baked into the static shell by <HeroStats>. */
+export interface HeroInitialCounts {
+  openParks: number;
+  parks: number;
+  attractions: number;
+}
 
 function formatTimeRange(
   openingTime: string | undefined,
@@ -58,7 +67,7 @@ function ParkBadges({
   tCommon,
 }: ParkBadgesProps) {
   return (
-    <div className="mx-auto mt-3 mb-3 flex max-w-2xl flex-wrap items-center justify-center gap-2 px-4 py-2 md:mt-6 md:mb-8 md:gap-3 md:px-6 md:py-5">
+    <div className="mt-4 mb-2 flex flex-wrap items-center gap-2 md:gap-3">
       <Badge
         variant="outline"
         className={
@@ -91,7 +100,7 @@ function ParkBadges({
         <Link
           href={parkUrl}
           prefetch={false}
-          className="text-primary hover:text-primary/90 focus-visible:ring-ring mt-1 inline-flex items-center gap-1 rounded-full border border-transparent px-3 py-1.5 text-xs font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none md:mt-0 md:px-4 md:py-2 md:text-sm"
+          className="text-primary hover:text-primary/90 focus-visible:ring-ring inline-flex items-center gap-1 rounded-full border border-transparent px-3 py-1.5 text-xs font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none md:px-4 md:py-2 md:text-sm"
         >
           {t('heroParkLink')}
           <ChevronRight className="h-4 w-4 shrink-0" aria-hidden="true" />
@@ -101,24 +110,43 @@ function ParkBadges({
   );
 }
 
-export function HeroWithNearby({
-  searchPlaceholder,
-  hideSearch = false,
-  titleSlot,
-  introSlot,
-}: {
-  searchPlaceholder: string;
-  hideSearch?: boolean;
-  /** Pre-rendered server slot replacing the default h1 title in the default/in-park variants. */
-  titleSlot?: React.ReactNode;
-  /** Pre-rendered server slot replacing the intro paragraph in all variants. */
-  introSlot?: React.ReactNode;
-}) {
+/** Glass pill above the headline: "N parks open right now", live via useGlobalStats. */
+function OpenParksBadge({ openParks }: { openParks: number | null }) {
+  const tHome = useTranslations('home');
+  if (openParks == null) return <div className="h-[30px]" aria-hidden="true" />;
+  return (
+    <span className="border-status-operating/40 bg-status-operating/10 text-status-operating inline-flex h-[30px] items-center gap-2 rounded-full border px-3.5 text-[11px] font-bold tracking-[0.14em] uppercase shadow-sm backdrop-blur-md">
+      <span className="relative flex h-2 w-2" aria-hidden="true">
+        <span className="bg-status-operating absolute inline-flex h-full w-full animate-ping rounded-full opacity-60 motion-reduce:animate-none" />
+        <span className="bg-status-operating relative inline-flex h-2 w-2 rounded-full" />
+      </span>
+      {tHome('hero.openNow', { count: openParks })}
+    </span>
+  );
+}
+
+/**
+ * The hero's left column: live open-count badge, headline and the intro with live park/
+ * attraction counts (SSR seed + 5-min client overlay). When the visitor is inside or right
+ * next to a park it switches to the "Willkommen im …" variant with that park's live badges.
+ */
+export function HeroWithNearby({ initialCounts }: { initialCounts: HeroInitialCounts | null }) {
   const t = useTranslations('parks');
   const tHome = useTranslations('home');
   const tCommon = useTranslations('common');
   const locale = useLocale();
   const { data: nearbyData } = useHomeNearbyParks();
+  const { data: liveStats } = useGlobalStats();
+
+  const counts = liveStats?.counts ?? initialCounts;
+  const openParks = counts?.openParks ?? FALLBACK_COUNTS.openParks;
+  const introValues = {
+    parks: counts?.parks ?? FALLBACK_COUNTS.parks,
+    attractions: counts?.attractions ?? FALLBACK_COUNTS.attractions,
+    strong: (chunks: React.ReactNode) => (
+      <strong className="text-foreground font-semibold">{chunks}</strong>
+    ),
+  };
 
   const inPark = nearbyData?.type === 'in_park' ? (nearbyData.data as NearbyAttractionsData) : null;
   let park = inPark?.park;
@@ -164,11 +192,12 @@ export function HeroWithNearby({
 
     return (
       <>
-        <h1 className="mb-3 text-3xl font-bold tracking-tight sm:mb-8 sm:text-3xl md:text-4xl lg:text-5xl">
+        <OpenParksBadge openParks={openParks} />
+        <h1 className="mt-4 mb-3 text-4xl font-extrabold tracking-tight text-balance sm:text-5xl">
           {t('heroWelcome', { parkName: stripNewPrefix(park.name) })}
         </h1>
-        <p className="text-foreground/85 mx-auto max-w-2xl text-center text-base leading-relaxed md:text-lg">
-          {introSlot ?? tHome('intro')}
+        <p className="text-foreground/80 max-w-xl text-base leading-relaxed md:text-lg">
+          {tHome.rich('hero.intro', introValues)}
         </p>
         <ParkBadges
           isOpen={isOpen}
@@ -179,7 +208,6 @@ export function HeroWithNearby({
           t={t}
           tCommon={tCommon}
         />
-        {!hideSearch && <HeroSearchInput placeholder={searchPlaceholder} />}
       </>
     );
   }
@@ -209,12 +237,13 @@ export function HeroWithNearby({
 
   return (
     <>
-      <h1 className="mb-3 text-2xl font-bold tracking-tight sm:mb-8 sm:text-3xl md:text-4xl lg:text-5xl">
-        {titleSlot ?? t('title')}
+      <OpenParksBadge openParks={openParks} />
+      <h1 className="mt-4 mb-3 text-4xl font-extrabold tracking-tight text-balance sm:text-5xl">
+        {tHome('hero.title')}
       </h1>
       {showNearParkHero ? (
         <>
-          <p className="text-foreground/75 mx-auto max-w-2xl text-center text-base leading-relaxed md:text-lg">
+          <p className="text-foreground/80 max-w-xl text-base leading-relaxed md:text-lg">
             {t('heroNearPark', { parkName: nearestParkForVariant!.name })}
           </p>
           <ParkBadges
@@ -228,11 +257,10 @@ export function HeroWithNearby({
           />
         </>
       ) : (
-        <p className="text-foreground/80 mx-auto mb-3 max-w-2xl text-center text-base leading-relaxed md:mb-0 md:text-lg">
-          {introSlot ?? tHome('intro')}
+        <p className="text-foreground/80 max-w-xl text-base leading-relaxed md:text-lg">
+          {tHome.rich('hero.intro', introValues)}
         </p>
       )}
-      {!hideSearch && <HeroSearchInput placeholder={searchPlaceholder} />}
     </>
   );
 }

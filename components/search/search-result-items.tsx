@@ -1,14 +1,17 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import { TreePalm, Cog, Utensils, Music, MapPin, Clock, BookOpen, Leaf } from 'lucide-react';
 import { CommandItem } from '@/components/ui/command';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { stripNewPrefix } from '@/lib/utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
+import { backgroundImageLoader } from '@/lib/utils/image-loader';
+import { CROWD_OUTLINE_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 import type { SearchResultItem } from '@/lib/api/types';
-import type { GlossarySearchItem } from '@/lib/hooks/use-search-results';
+import type { GlossarySearchItem, NearbySearchExtras } from '@/lib/hooks/use-search-results';
 
 const typeIcons = {
   park: TreePalm,
@@ -39,7 +42,7 @@ export function SkeletonItem({ width }: { width: string }) {
 }
 
 interface SearchResultRowProps {
-  result: SearchResultItem & { distanceM?: number };
+  result: SearchResultItem & NearbySearchExtras;
   position?: number;
   onSelect: (result: SearchResultItem, position?: number) => void;
 }
@@ -62,9 +65,20 @@ export function SearchResultRow({ result, position, onSelect }: SearchResultRowP
       onSelect={() => onSelect(result, position)}
       className="flex cursor-pointer items-center gap-2.5 sm:gap-4"
     >
-      {/* Icon */}
-      <div className="bg-foreground/10 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg sm:h-11 sm:w-11 sm:rounded-xl">
-        <Icon className="text-foreground/65 h-4 w-4 sm:h-5 sm:w-5" />
+      {/* Photo (nearby feed) or type icon */}
+      <div className="bg-foreground/10 relative flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-lg sm:h-11 sm:w-11 sm:rounded-xl">
+        {result.imageUrl ? (
+          <Image
+            src={result.imageUrl}
+            alt=""
+            fill
+            loader={backgroundImageLoader}
+            sizes="44px"
+            className="object-cover"
+          />
+        ) : (
+          <Icon className="text-foreground/65 h-4 w-4 sm:h-5 sm:w-5" />
+        )}
       </div>
 
       {/* Content */}
@@ -97,6 +111,17 @@ export function SearchResultRow({ result, position, onSelect }: SearchResultRowP
               </span>
             )}
 
+            {/* Live "open of total" attraction count (nearby feed) */}
+            {result.attractionCounts && !isClosed && (
+              <span className="hidden shrink-0 truncate sm:inline">
+                ·{' '}
+                {tSearch('attractionsOpen', {
+                  open: result.attractionCounts.open,
+                  total: result.attractionCounts.total,
+                })}
+              </span>
+            )}
+
             {/* Parent Park for attractions */}
             {result.parentPark && (
               <span className="truncate">
@@ -118,8 +143,17 @@ export function SearchResultRow({ result, position, onSelect }: SearchResultRowP
               </span>
             )}
 
-            {result.type === 'park' && result.load && !isClosed && (
-              <CrowdLevelBadge level={result.load} className="text-[11px]" />
+            {/* Park-wide average wait (nearby feed) — colored like every other wait time */}
+            {result.type === 'park' && result.avgWaitTime != null && !isClosed ? (
+              <span
+                className={`rounded-full border px-2 py-0.5 text-[11px] font-semibold tabular-nums ${CROWD_OUTLINE_CLASS[waitTimeCrowdTier(result.avgWaitTime)]}`}
+              >
+                {tSearch('avgWait', { minutes: result.avgWaitTime })}
+              </span>
+            ) : (
+              result.type === 'park' &&
+              result.load &&
+              !isClosed && <CrowdLevelBadge level={result.load} className="text-[11px]" />
             )}
 
             {result.distanceM != null && (

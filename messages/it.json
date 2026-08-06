@@ -119,7 +119,11 @@
       "searchPlaceholder": "Cerca parchi, attrazioni, spettacoli e ristoranti...",
       "howto": "Come uso park.fan?",
       "glossary": "Dizionario dei parchi divertimento",
-      "liveWaitTimes": "Attese in Diretta"
+      "liveWaitTimes": "Attese in Diretta",
+      "title": "Dove conviene mettersi in fila oggi?",
+      "intro": "park.fan segue in diretta <strong>{parks, number} parchi divertimento</strong> e <strong>{attractions, number} attrazioni</strong>, da Gardaland ed Europa-Park fino al Magic Kingdom. Cerca il tuo parco, oppure gira il mondo dalla mappa.",
+      "openNow": "{count, plural, =1 {1 parco aperto ora} other {# parchi aperti ora}}",
+      "searchExamples": "Gardaland, Taron, Efteling …"
     },
     "sections": {
       "explore": "Esplora per regione",
@@ -198,6 +202,14 @@
       "p5": "park.fan è un progetto in continua evoluzione, arricchito regolarmente con nuove funzionalità e parchi. Salva i tuoi parchi preferiti per un accesso rapido, usa la navigazione in loco per pianificare il percorso più efficiente, e consulta sempre il calendario delle affluenze prima di prenotare per scegliere il giorno migliore.",
       "fancastLink": "Scopri Fancast",
       "howtoLink": "Leggi la guida completa"
+    },
+    "worldPanel": {
+      "title": "Parchi in {continent}",
+      "subtitle": "{count, plural, =1 {1 paese} other {# paesi}} · clicca un altro continente",
+      "openWord": "aperti",
+      "countryOpen": "{count} aperti",
+      "closedShort": "chiuso",
+      "viewAll": "Vedi tutti i parchi in {continent}"
     }
   },
   "footer": {
@@ -957,13 +969,17 @@
       "location": "Posizioni ({count})",
       "nearby": "Parchi vicini",
       "inPark": "Sei a {park}",
-      "glossary": "Dizionario ({count})"
+      "glossary": "Dizionario ({count})",
+      "popular": "Parchi popolari"
     },
     "keyboard": {
       "navigate": "Navigare",
       "select": "Selezionare",
       "close": "Chiudi"
-    }
+    },
+    "avgWait": "Ø {minutes} min",
+    "attractionsOpen": "{open}/{total} attrazioni aperte",
+    "heroHint": "Inizia a digitare: parchi, attrazioni, spettacoli e ristoranti"
   },
   "languageBanner": {
     "message": "Questo sito è disponibile anche in {language}",

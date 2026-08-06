@@ -18,6 +18,19 @@ export interface GlossarySearchItem {
   category: string;
 }
 
+/** Extra fields the nearby feed carries beyond a plain search result (photo, live counts). */
+export interface NearbySearchExtras {
+  distanceM?: number;
+  /** Park card photo (already enriched server-side by /api/nearby). */
+  imageUrl?: string;
+  /** Live park-wide average wait in minutes. */
+  avgWaitTime?: number;
+  /** Live "open of total" attraction counts. */
+  attractionCounts?: { open: number; total: number };
+}
+
+export type NearbySearchItem = SearchResultItem & NearbySearchExtras;
+
 export interface UseSearchResultsReturn {
   /** Debounced (300 ms) version of the live query — drives all fetches. */
   debouncedQuery: string;
@@ -29,7 +42,7 @@ export interface UseSearchResultsReturn {
   /** Raw nearby response — needed for the "in park" heading. */
   nearbyData: NearbyResponse | undefined;
   /** Nearby parks/rides mapped to search-result items (pre-populates the empty dialog). */
-  nearbyItems: (SearchResultItem & { distanceM?: number })[];
+  nearbyItems: NearbySearchItem[];
   /** Sort results within a category by match score (exact matches first), then OPERATING first. */
   sortResultsByMatch: (items: SearchResultItem[]) => { item: SearchResultItem; score: number }[];
 }
@@ -98,7 +111,7 @@ export function useSearchResults(query: string): UseSearchResultsReturn {
   // dedupe into a single backend request instead of firing a separate limit-5 query.
   const { data: nearbyData } = useHomeNearbyParks();
 
-  const nearbyItems = useMemo((): (SearchResultItem & { distanceM?: number })[] => {
+  const nearbyItems = useMemo((): NearbySearchItem[] => {
     if (!nearbyData) return [];
 
     if (nearbyData.type === 'in_park') {
@@ -113,6 +126,8 @@ export function useSearchResults(query: string): UseSearchResultsReturn {
           status: d.park.status as ParkStatus,
           load: d.park.analytics?.crowdLevel as CrowdLevel | undefined,
           distanceM: d.park.distance,
+          imageUrl: d.park.backgroundImage ?? undefined,
+          avgWaitTime: d.park.analytics?.avgWaitTime,
         },
         ...d.rides.slice(0, 3).map((ride) => ({
           type: 'attraction' as const,
@@ -147,6 +162,12 @@ export function useSearchResults(query: string): UseSearchResultsReturn {
         status: park.status as ParkStatus,
         load: park.analytics?.crowdLevel as CrowdLevel | undefined,
         distanceM: park.distance,
+        imageUrl: park.backgroundImage ?? undefined,
+        avgWaitTime: park.analytics?.avgWaitTime,
+        attractionCounts:
+          park.totalAttractions > 0
+            ? { open: park.operatingAttractions, total: park.totalAttractions }
+            : undefined,
       }));
     }
 

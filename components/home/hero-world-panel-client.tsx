@@ -1,0 +1,185 @@
+'use client';
+
+import { useState } from 'react';
+import { useTranslations } from 'next-intl';
+import { ArrowRight } from 'lucide-react';
+import { Link, useRouter } from '@/i18n/navigation';
+import { useGeoLiveStats, findOpenParkCount } from '@/lib/hooks/use-geo-live-stats';
+import { translateGeoSlug } from '@/lib/utils/geo-translate';
+import { cn } from '@/lib/utils';
+import {
+  WORLD_MAP_CONTINENTS,
+  WORLD_MAP_VIEWBOX,
+  type WorldMapContinentSlug,
+} from '@/lib/geo/world-map-data';
+import type { WorldPanelContinent } from './hero-world-panel';
+
+/**
+ * Bubble anchor per continent in world-map viewBox units (0 0 2000 857) — placed over the
+ * visual center of each landmass, not the mathematical centroid (Canada/Greenland would pull
+ * North America's far north, Siberia would pull Asia's).
+ */
+const BUBBLE_ANCHORS: Record<WorldMapContinentSlug, { x: number; y: number }> = {
+  europe: { x: 1010, y: 178 },
+  'north-america': { x: 470, y: 262 },
+  'south-america': { x: 640, y: 600 },
+  asia: { x: 1430, y: 262 },
+  oceania: { x: 1780, y: 640 },
+  africa: { x: 1090, y: 470 },
+};
+
+/**
+ * The hero's right-hand panel: a clickable world map with live open-park counts. Tapping
+ * another continent switches the panel in place; tapping the selected one (its bubble or
+ * its landmass) navigates to its geo route, and the country chips link to theirs.
+ */
+export function HeroWorldPanelClient({ continents }: { continents: WorldPanelContinent[] }) {
+  const tGeo = useTranslations('geo');
+  const tHome = useTranslations('home');
+  const router = useRouter();
+  const { data: liveGeo } = useGeoLiveStats();
+
+  const [selectedSlug, setSelectedSlug] = useState('europe');
+  const selected = continents.find((c) => c.slug === selectedSlug) ?? continents[0];
+
+  const continentBySlug = new Map(continents.map((c) => [c.slug, c]));
+  const openCount = (continent: WorldPanelContinent) =>
+    findOpenParkCount(liveGeo, continent.slug) ?? continent.initialOpenCount;
+
+  const selectedName = translateGeoSlug(tGeo, 'continents', selected.slug, selected.name);
+  const selectedOpen = openCount(selected);
+
+  const handleContinentClick = (slug: string) => {
+    if (slug === selected.slug) {
+      router.push(`/parks/${slug}` as '/parks/europe');
+    } else if (continentBySlug.has(slug)) {
+      setSelectedSlug(slug);
+    }
+  };
+
+  return (
+    <div className="border-border/50 bg-background/80 overflow-hidden rounded-2xl border shadow-xl backdrop-blur-xl">
+      {/* Header: "Parks in Europe" + live open / total */}
+      <div className="border-border/40 flex items-start justify-between gap-4 border-b px-5 py-4">
+        <div className="min-w-0">
+          <h2 className="truncate text-lg font-bold">
+            {tHome('worldPanel.title', { continent: selectedName })}
+          </h2>
+          <p className="text-muted-foreground mt-0.5 text-xs">
+            {tHome('worldPanel.subtitle', { count: selected.countryCount })}
+          </p>
+        </div>
+        <p className="shrink-0 text-right leading-none">
+          <span className="text-status-operating text-3xl font-extrabold tabular-nums">
+            {selectedOpen ?? '–'}
+          </span>
+          <span className="text-muted-foreground ml-1.5 text-sm">
+            / {selected.parkCount} {tHome('worldPanel.openWord')}
+          </span>
+        </p>
+      </div>
+
+      {/* World map with one bubble per continent */}
+      <div className="bg-muted/20 relative">
+        <svg
+          viewBox={WORLD_MAP_VIEWBOX}
+          className="block h-auto w-full"
+          role="presentation"
+          aria-hidden="true"
+        >
+          {WORLD_MAP_CONTINENTS.map((continent) => (
+            <path
+              key={continent.slug}
+              d={continent.d}
+              onClick={() => handleContinentClick(continent.slug)}
+              className={cn(
+                'cursor-pointer transition-colors duration-300',
+                continent.slug === selected.slug
+                  ? 'fill-primary/35'
+                  : 'fill-foreground/12 hover:fill-foreground/20'
+              )}
+            />
+          ))}
+        </svg>
+
+        {continents.map((continent) => {
+          const anchor = BUBBLE_ANCHORS[continent.slug as WorldMapContinentSlug];
+          if (!anchor) return null;
+          const isSelected = continent.slug === selected.slug;
+          const open = openCount(continent);
+          return (
+            <button
+              key={continent.slug}
+              type="button"
+              onClick={() => handleContinentClick(continent.slug)}
+              style={{ left: `${(anchor.x / 2000) * 100}%`, top: `${(anchor.y / 857) * 100}%` }}
+              className={cn(
+                'absolute inline-flex -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-semibold whitespace-nowrap shadow-sm backdrop-blur-md transition-colors',
+                isSelected
+                  ? 'border-primary bg-primary text-primary-foreground'
+                  : 'border-border/60 bg-background/85 hover:border-primary/50'
+              )}
+              aria-pressed={isSelected}
+            >
+              <span
+                className={cn(
+                  'h-1.5 w-1.5 shrink-0 rounded-full',
+                  isSelected
+                    ? 'bg-primary-foreground'
+                    : open
+                      ? 'bg-status-operating'
+                      : 'bg-status-closed/60'
+                )}
+                aria-hidden="true"
+              />
+              {translateGeoSlug(tGeo, 'continents', continent.slug, continent.name)}
+              {open != null && <span className="tabular-nums opacity-90">{open}</span>}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Country chips of the selected continent */}
+      <div className="flex flex-wrap gap-2 px-5 pt-4 pb-2">
+        {selected.countries.map((country) => {
+          const open =
+            findOpenParkCount(liveGeo, selected.slug, country.slug) ?? country.initialOpenCount;
+          return (
+            <Link
+              key={country.slug}
+              href={`/parks/${selected.slug}/${country.slug}` as '/parks/europe'}
+              prefetch={false}
+              className="border-border/60 bg-background/70 hover:border-primary/50 hover:bg-background inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm shadow-sm backdrop-blur-md transition-colors"
+            >
+              <span className="font-medium">
+                {translateGeoSlug(tGeo, 'countries', country.slug, country.name)}
+              </span>
+              {open != null &&
+                (open > 0 ? (
+                  <span className="text-status-operating text-xs font-semibold tabular-nums">
+                    {tHome('worldPanel.countryOpen', { count: open })}
+                  </span>
+                ) : (
+                  <span className="text-muted-foreground text-xs">
+                    {tHome('worldPanel.closedShort')}
+                  </span>
+                ))}
+            </Link>
+          );
+        })}
+      </div>
+
+      {/* All parks of the continent */}
+      <div className="px-5 pt-1 pb-4">
+        <Link
+          href={`/parks/${selected.slug}` as '/parks/europe'}
+          prefetch={false}
+          className="text-primary hover:text-primary/80 inline-flex items-center gap-1.5 text-sm font-semibold transition-colors"
+        >
+          {tHome('worldPanel.viewAll', { continent: selectedName })}
+          <ArrowRight className="h-4 w-4" aria-hidden="true" />
+        </Link>
+      </div>
+    </div>
+  );
+}
