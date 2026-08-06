@@ -255,15 +255,25 @@
   }
 }
 
-/* The map's continent bubbles: they belong to the map, so they arrive by growing out of it. */
+/*
+ * The map's continent bubbles: they belong to the map, so they arrive by growing out of it.
+ *
+ * Animates the standalone `scale` property, NOT `transform`. Tailwind v4 centres these bubbles
+ * on their anchor with `-translate-x-1/2 -translate-y-1/2`, which it compiles to the standalone
+ * `translate` property — so a keyframe touching `transform` composes ON TOP of that instead of
+ * replacing it. Restating the translate inside the keyframe therefore moved every bubble a
+ * second time: they faded in half a bubble to the upper left and snapped into place when the
+ * animation class came off. `scale` and `translate` are independent properties and stack
+ * correctly.
+ */
 @keyframes hero-pop-in {
   from {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.6);
+    scale: 0.6;
   }
   to {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+    scale: 1;
   }
 }
 
