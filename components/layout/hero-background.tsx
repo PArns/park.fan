@@ -20,7 +20,8 @@ const HeroThreePark = nextDynamic(
   { ssr: false, loading: () => null }
 );
 
-const KEN_BURNS = 'ken-burns 22s ease-in-out infinite alternate';
+/** Class, not an inline animation — see `.hero-ken-burns` in globals.css for why. */
+const KEN_BURNS_CLASS = 'hero-ken-burns';
 
 // All hero source images are ≤1024px wide, so the old 80vw made high-DPR phones request the
 // w=1080 srcset candidate — an *upscale* of a 1024px source: more bytes, zero extra detail. 60vw
@@ -87,9 +88,9 @@ function InParkHeroImages({
             key={src}
             className={cn(
               'absolute inset-0 transition-opacity duration-1000 ease-in-out',
-              i === activeIndex ? 'opacity-90' : 'opacity-0'
+              i === activeIndex ? 'opacity-90' : 'opacity-0',
+              !noAnimation && KEN_BURNS_CLASS
             )}
-            style={noAnimation ? undefined : { animation: KEN_BURNS }}
           >
             {isMounted && (
               <Image
@@ -176,12 +177,9 @@ export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps)
         className={cn(
           'object-cover transition-opacity duration-1000',
           hasParkImages && parkImageLoaded ? 'opacity-0' : 'opacity-90',
-          animating ? 'will-change-transform' : ''
+          animating ? `will-change-transform ${KEN_BURNS_CLASS}` : ''
         )}
-        style={{
-          objectPosition: heroObjectPosition(finalImage),
-          ...(animating ? { animation: KEN_BURNS } : {}),
-        }}
+        style={{ objectPosition: heroObjectPosition(finalImage) }}
         sizes={HERO_IMAGE_SIZES}
       />
       <InParkHeroImages

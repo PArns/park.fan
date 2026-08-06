@@ -49,7 +49,7 @@ export function HeroWorldPanelSkeleton() {
       </div>
       <Skeleton className="mx-5 mt-6 h-[232px] rounded-xl" />
       <div className="flex flex-wrap gap-2 px-5 pt-5">
-        {['w-32', 'w-36', 'w-44', 'w-28', 'w-32'].map((w) => (
+        {['w-32', 'w-36', 'w-44', 'w-28', 'w-24'].map((w) => (
           <Skeleton key={w} className={cn('h-8 rounded-full', w)} />
         ))}
       </div>

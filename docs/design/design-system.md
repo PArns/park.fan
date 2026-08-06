@@ -47,7 +47,7 @@ Registered in `@theme inline` as `--color-status-*` → Tailwind generates `bg-s
 
 | Variable                 | Light                           | Dark                            |
 | ------------------------ | ------------------------------- | ------------------------------- |
-| `--status-operating`     | `oklch(0.723 0.219 142.136)` 🟢 | `oklch(0.792 0.209 151.711)` 🟢 |
+| `--status-operating`     | `oklch(0.53 0.21 142.136)` 🟢   | `oklch(0.792 0.209 151.711)` 🟢 |
 | `--status-down`          | `oklch(0.705 0.213 47.604)` 🟠  | `oklch(0.78 0.188 56.113)` 🟠   |
 | `--status-closed`        | `oklch(0.556 0 0)` ⚫           | `oklch(0.708 0 0)` ⚫           |
 | `--status-refurbishment` | `oklch(0.623 0.214 259.815)` 🔵 | `oklch(0.707 0.165 254.624)` 🔵 |
@@ -94,6 +94,11 @@ Manual `@layer utilities` (not in `@theme inline`, no opacity modifier):
 ```
 
 Components: `CrowdLevelBadge` (`components/parks/crowd-level-badge.tsx`), `ParkStatusBadge` (`components/parks/park-status-badge.tsx`).
+
+> **`--status-operating` is pinned at lightness 0.53 for contrast, not for looks.** It is
+> routinely used as small text ("N offen", live wait labels), and at 0.55 it measured 4.39:1 on
+> white — every one of those strings missed AA by a hair. 0.53 is 4.74:1 and reads as the same
+> green. Do not lighten it back without re-measuring the small-text cases.
 
 ---
 

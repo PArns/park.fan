@@ -23,7 +23,7 @@ const NEAR_PARK_HERO_RADIUS_M = 5000; // 5 km
 /** Sentence fallbacks when neither the SSR seed nor the live overlay has counts yet. */
 const FALLBACK_COUNTS = { openParks: null, parks: 200, attractions: 7000 };
 
-const BADGE_BASE = 'px-3 py-1 text-xs backdrop-blur-md md:px-4 md:py-1.5 md:text-sm';
+const BADGE_BASE = 'px-3 py-1 text-xs md:px-4 md:py-1.5 md:text-sm';
 
 /** Seed for the live counts, baked into the static shell by <HeroStats>. */
 export interface HeroInitialCounts {
@@ -127,7 +127,7 @@ function OpenParksBadge({ openParks }: { openParks: number | null }) {
   return (
     <span
       className={cn(
-        'inline-flex h-[30px] w-fit items-center gap-2 self-start rounded-full border px-3.5 text-[11px] font-bold tracking-[0.14em] uppercase shadow-sm backdrop-blur-md',
+        'inline-flex h-[30px] w-fit items-center gap-2 self-start rounded-full border px-3.5 text-[11px] font-bold tracking-[0.14em] uppercase shadow-sm',
         pending
           ? 'border-border/50 bg-background/50'
           : 'border-status-operating/40 bg-status-operating/10 text-status-operating'

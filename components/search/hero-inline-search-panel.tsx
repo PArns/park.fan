@@ -67,6 +67,17 @@ export default function HeroInlineSearchPanel({
     input.setSelectionRange(input.value.length, input.value.length);
   }, [autoFocus, onFocusHandled]);
 
+  // cmdk hard-codes `aria-expanded="true"` AFTER spreading our props (`{...u}, role:"combobox",
+  // "aria-expanded":!0, …` in its source), so passing it as a prop cannot win. Set it on the
+  // element after every render instead.
+  //
+  // Its `aria-controls`/`aria-activedescendant` need no such treatment because the list stays
+  // MOUNTED and is hidden instead (see below) — removing the attributes worked once and then
+  // never came back, since React only re-patches props whose values changed.
+  useEffect(() => {
+    inputRef.current?.setAttribute('aria-expanded', String(open));
+  });
+
   // Type-anywhere: a printable key outside an input focuses the hero search seeded with it
   // (same behavior the palette trigger had via autoFocusOnType).
   //
@@ -75,16 +86,14 @@ export default function HeroInlineSearchPanel({
   // for every visitor, whether or not they ever use the search.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      const active = document.activeElement as HTMLElement | null;
-      if (
-        active?.isContentEditable ||
-        (active && ['INPUT', 'TEXTAREA', 'SELECT'].includes(active.tagName)) ||
-        e.target instanceof HTMLInputElement ||
-        e.target instanceof HTMLTextAreaElement
-      ) {
-        return;
-      }
+      // Only when nothing is focused. Anything else — a link, a button, a menu — is a control
+      // the visitor deliberately moved to, and letters there mean first-letter navigation to a
+      // screen reader, not "start searching". Hijacking those was an unrequested focus change
+      // for people who may never touch this field.
+      const active = document.activeElement;
+      if (active && active !== document.body && active !== document.documentElement) return;
       if (e.metaKey || e.ctrlKey || e.altKey) return;
+      // Space stays with the page: it scrolls, and it activates a focused control.
       if (e.key.length !== 1 || e.key === ' ') return;
       e.preventDefault();
       setQuery((prev) => prev + e.key);
@@ -100,12 +109,11 @@ export default function HeroInlineSearchPanel({
       className="[&_[cmdk-group-heading]]:text-muted-foreground/60 relative w-full bg-transparent [&_[cmdk-group-heading]]:px-4 [&_[cmdk-group-heading]]:pt-3.5 [&_[cmdk-group-heading]]:pb-1 [&_[cmdk-group-heading]]:text-[10px] [&_[cmdk-group-heading]]:font-semibold [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group]]:px-1.5 [&_[cmdk-item]]:px-3 [&_[cmdk-item]]:py-2.5 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5"
       onKeyDown={(e) => {
         if (e.key === 'Escape') {
-          if (query) {
-            setQuery('');
-          } else {
-            setOpen(false);
-            inputRef.current?.blur();
-          }
+          // Escape closes the popup and KEEPS focus on the combobox (the ARIA pattern).
+          // Blurring to <body> dropped a keyboard user out of the hero with nothing announced
+          // and no defined place to tab on from.
+          if (query) setQuery('');
+          else setOpen(false);
         }
       }}
     >
@@ -131,26 +139,30 @@ export default function HeroInlineSearchPanel({
       </div>
 
       {/* Floating dropdown. The `onMouseDown` preventDefault keeps focus in the input, so
-          clicking a result cannot blur-close the list out from under the click. */}
-      {open && (
-        <div onMouseDown={(e) => e.preventDefault()} className="absolute inset-x-0 top-full z-40">
-          {/* Real glass, not a near-opaque sheet: what it lands on is the hero photo, the
-              scrim and the panel plate — all smooth, all beautiful under blur. The nearby
-              pills would have ruined that (their text ghosts through the blur), so the panel
-              fades them out while the field has focus instead of the dropdown going opaque. */}
-          <GlassCard
-            variant="heavy"
-            className="border-border/60 mt-3 overflow-hidden p-0 shadow-2xl"
-          >
-            <SearchResultsPanel
-              query={query}
-              search={search}
-              onSelect={handleSelect}
-              onGlossarySelect={handleGlossarySelect}
-            />
-          </GlassCard>
-        </div>
-      )}
+          clicking a result cannot blur-close the list out from under the click.
+
+          `hidden` rather than unmounted: cmdk's `aria-controls` and `aria-activedescendant`
+          point into this subtree, and unmounting left them dangling. `display: none` also
+          takes it out of the accessibility tree, so `aria-expanded="false"` + a hidden popup
+          is exactly the combobox pattern — and it costs no paint and no backdrop filter. */}
+      <div
+        onMouseDown={(e) => e.preventDefault()}
+        hidden={!open}
+        className="absolute inset-x-0 top-full z-40"
+      >
+        {/* Real glass, not a near-opaque sheet: what it lands on is the hero photo, the scrim
+            and the panel plate — all smooth, all beautiful under blur. The nearby pills would
+            have ruined that (their text ghosts through the blur), so the panel fades them out
+            while the field has focus instead of the dropdown going opaque. */}
+        <GlassCard variant="heavy" className="border-border/60 mt-3 overflow-hidden p-0 shadow-2xl">
+          <SearchResultsPanel
+            query={query}
+            search={search}
+            onSelect={handleSelect}
+            onGlossarySelect={handleGlossarySelect}
+          />
+        </GlassCard>
+      </div>
     </CommandPrimitive>
   );
 }

@@ -63,8 +63,14 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
       variant="heavy"
       className="border-border/50 overflow-hidden rounded-2xl p-0 shadow-2xl"
     >
-      {/* Header: "Parks in Europe" + live open / total */}
-      <div className="border-border/40 flex items-start justify-between gap-4 border-b px-5 py-4">
+      {/* Header: "Parks in Europe" + live open / total.
+          aria-live: switching continents replaces this heading, the open/total figure and the
+          whole chip row below. Without it a screen-reader user presses a bubble and hears
+          nothing about the panel they just changed. */}
+      <div
+        className="border-border/40 flex items-start justify-between gap-4 border-b px-5 py-4"
+        aria-live="polite"
+      >
         <div className="min-w-0">
           <h2 className="truncate text-lg font-bold">
             {tHome('worldPanel.title', { continent: selectedName })}
@@ -91,40 +97,52 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
           role="presentation"
           aria-hidden="true"
         >
-          {WORLD_MAP_CONTINENTS.map((continent) => (
-            <path
-              key={continent.slug}
-              d={continent.d}
-              onClick={() => handleContinentClick(continent.slug)}
-              className={cn(
-                'cursor-pointer transition-colors duration-300',
-                continent.slug === selected.slug
-                  ? 'fill-primary/35'
-                  : 'fill-foreground/12 hover:fill-foreground/20'
-              )}
-            />
-          ))}
+          {WORLD_MAP_CONTINENTS.map((continent) => {
+            // The map draws six continents; the API returns only those that have parks. A
+            // landmass with no data was still styled as clickable and did nothing at all —
+            // it is inert now, and looks it.
+            const isInteractive = continentBySlug.has(continent.slug);
+            return (
+              <path
+                key={continent.slug}
+                d={continent.d}
+                onClick={isInteractive ? () => handleContinentClick(continent.slug) : undefined}
+                className={cn(
+                  'transition-colors duration-300',
+                  isInteractive ? 'cursor-pointer' : 'pointer-events-none',
+                  continent.slug === selected.slug ? 'fill-primary/35' : 'fill-foreground/12',
+                  isInteractive && continent.slug !== selected.slug && 'hover:fill-foreground/20'
+                )}
+              />
+            );
+          })}
         </svg>
 
+        {/* One control per continent — the keyboard and screen-reader path to everything the
+            landmasses offer, which is why the <svg> itself stays aria-hidden.
+
+            The SELECTED one is a link, the others are buttons, because that is what they
+            actually do: pressing the selected bubble navigates to its parks, pressing another
+            switches the panel. It was one `aria-pressed` button for both, which announced a
+            toggle that never un-toggles and then navigated away instead. */}
         {continents.map((continent) => {
           const anchor = BUBBLE_ANCHORS[continent.slug as WorldMapContinentSlug];
           if (!anchor) return null;
           const isSelected = continent.slug === selected.slug;
           const open = openCount(continent);
-          return (
-            <button
-              key={continent.slug}
-              type="button"
-              onClick={() => handleContinentClick(continent.slug)}
-              style={{ left: `${(anchor.x / 2000) * 100}%`, top: `${(anchor.y / 857) * 100}%` }}
-              className={cn(
-                'absolute inline-flex -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-semibold whitespace-nowrap shadow-sm backdrop-blur-md transition-colors',
-                isSelected
-                  ? 'border-primary bg-primary text-primary-foreground'
-                  : 'border-border/60 bg-background/85 hover:border-primary/50'
-              )}
-              aria-pressed={isSelected}
-            >
+          const name = translateGeoSlug(tGeo, 'continents', continent.slug, continent.name);
+          const position = {
+            left: `${(anchor.x / 2000) * 100}%`,
+            top: `${(anchor.y / 857) * 100}%`,
+          };
+          const bubbleClass = cn(
+            'absolute inline-flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-semibold whitespace-nowrap shadow-sm transition-colors',
+            isSelected
+              ? 'border-primary bg-primary text-primary-foreground'
+              : 'border-border/60 bg-background/85 hover:border-primary/50'
+          );
+          const inner = (
+            <>
               <span
                 className={cn(
                   'h-1.5 w-1.5 shrink-0 rounded-full',
@@ -136,8 +154,31 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
                 )}
                 aria-hidden="true"
               />
-              {translateGeoSlug(tGeo, 'continents', continent.slug, continent.name)}
+              {name}
               {open != null && <span className="tabular-nums opacity-90">{open}</span>}
+            </>
+          );
+
+          return isSelected ? (
+            <Link
+              key={continent.slug}
+              href={`/parks/${continent.slug}` as '/parks/europe'}
+              prefetch={false}
+              style={position}
+              className={bubbleClass}
+              aria-current="true"
+            >
+              {inner}
+            </Link>
+          ) : (
+            <button
+              key={continent.slug}
+              type="button"
+              onClick={() => handleContinentClick(continent.slug)}
+              style={position}
+              className={bubbleClass}
+            >
+              {inner}
             </button>
           );
         })}
@@ -153,7 +194,7 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
               key={country.slug}
               href={`/parks/${selected.slug}/${country.slug}` as '/parks/europe'}
               prefetch={false}
-              className="border-border/60 bg-background/70 hover:border-primary/50 hover:bg-background inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm shadow-sm backdrop-blur-md transition-colors"
+              className="border-border/60 bg-background/70 hover:border-primary/50 hover:bg-background inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm shadow-sm transition-colors"
             >
               <span className="font-medium">
                 {translateGeoSlug(tGeo, 'countries', country.slug, country.name)}

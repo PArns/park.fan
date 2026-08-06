@@ -206,6 +206,22 @@
   }
 }
 
+/*
+ * Applied as a CLASS, not an inline `style={{animation}}` — an inline animation cannot be
+ * overridden by `motion-reduce:` utilities or by a media query, which is how this ran for
+ * visitors who had asked for no motion.
+ *
+ * It is also the hero's single biggest rendering cost: every frame of a transform on the
+ * backdrop invalidates every `backdrop-filter` layered over it (the search field, the world
+ * panel), and those get re-blurred at animation rate. Reduced motion therefore buys those
+ * visitors a still photo AND a hero that costs nothing to composite.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-ken-burns {
+    animation: ken-burns 22s ease-in-out infinite alternate;
+  }
+}
+
 /* Scroll indicator: ball travels down inside mouse shape */
 @keyframes scroll-ball {
   0%,
@@ -281,7 +297,10 @@
   --element-brake: oklch(0.55 0.02 240);
 
   /* Status Colors */
-  --status-operating: oklch(0.55 0.21 142.136);
+  /* 0.53, not 0.55: at 0.55 this green is 4.39:1 on white, so every small "N offen" set in it
+     missed AA by a hair (measured 4.33:1 on the hero pill, 4.37:1 on a country chip). 0.53 is
+     4.74:1 and visually the same green. */
+  --status-operating: oklch(0.53 0.21 142.136);
   --status-down: oklch(0.705 0.213 47.604);
   --status-closed: oklch(0.577 0.245 27.325); /* red – same as destructive */
   --status-refurbishment: oklch(0.623 0.214 259.815);

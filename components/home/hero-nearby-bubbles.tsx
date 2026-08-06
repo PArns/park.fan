@@ -47,7 +47,7 @@ export function HeroNearbyBubbles({ className }: { className?: string }) {
           </>
         );
         const pillClass =
-          'border-border/50 bg-background/60 inline-flex h-9 shrink-0 items-center gap-2 rounded-full border px-3.5 text-sm shadow-sm backdrop-blur-md transition-colors';
+          'border-border/50 bg-background/60 inline-flex h-9 shrink-0 items-center gap-2 rounded-full border px-3.5 text-sm shadow-sm transition-colors';
         const href = entry.url ? convertApiUrlToFrontendUrl(entry.url) : null;
         return href ? (
           <Link

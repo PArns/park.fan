@@ -21,9 +21,33 @@ search on the left, a clickable world map on the right. Every number in it is li
 
 Entry point: `app/[locale]/page.tsx`. Both columns are panels (`HeroTextPanel` /
 `GlassCard variant="heavy"`) so the hero reads as one composition rather than text loose on a
-photo next to a card. The left plate deliberately has **no** `backdrop-blur`: it covers most of
-the hero, and a backdrop filter that large over the ken-burns photo means re-filtering the
-backdrop every animation frame. The legibility scrim behind it does that work instead.
+photo next to a card.
+
+### The one rule about `backdrop-filter` in here
+
+The hero photo runs a ken-burns transform. **Every animation frame invalidates every
+`backdrop-filter` layered over it**, and each one is re-blurred at animation rate. Measured at
+6× CPU throttle with the hero on screen:
+
+|                                               | median frame | frames > 20 ms |
+| --------------------------------------------- | ------------ | -------------- |
+| 22 blurred pills, chips and badges + 2 panels | 50.0 ms      | 125 / 140      |
+| panels only (shipped)                         | 33.3 ms      | 122 / 129      |
+| no backdrop filter at all                     | 16.7 ms      | 1 / 129        |
+| mobile 390 px, shipped                        | **16.7 ms**  | **0 / 129**    |
+
+So: **panels may blur, small things on them may not.** A pill sitting on an already-opaque
+panel gains nothing from its own filter and costs a full re-blur per frame; the pills, country
+chips, continent bubbles and the open-now badge are all plain translucent fills for that reason.
+`HeroTextPanel` has no filter either — it covers most of the hero, and the legibility scrim
+behind it does the same job for free.
+
+The radius is **not** the lever: 64 px, 24 px and 12 px all measure 33.3 ms. It is the presence
+of a filter over a moving backdrop that costs, so the world panel keeps its `backdrop-blur-3xl`
+— dropping to a smaller radius would give up the look and buy nothing. What remains is
+desktop-only (the panel renders from `xl`), mobile is at a clean 16.7 ms, and
+`prefers-reduced-motion` stops ken-burns outright, which takes the cost to zero for the visitors
+most likely to need that.
 
 ---
 
@@ -80,11 +104,18 @@ Two consequences worth knowing:
 
 - The hero section carries **`z-10`** (and no `overflow-hidden`) so the dropdown paints over the
   sections below it. The sticky header is `z-50` and still wins.
-- The dropdown is opaquer than the map panel. It lands on the nearby-park pills, not on the
-  photo, and pill text ghosts through anything below ~97% even under `backdrop-blur-3xl`.
+- It is real glass, which works only because the panel fades the nearby pills out via
+  `:has(input:focus)` while the field is focused. Their high-contrast text ghosts straight
+  through the blur otherwise, and the alternative was a near-opaque sheet.
 
 It opens on focus and closes on blur; `onMouseDown` preventDefault on the dropdown keeps focus
-in the input, or clicking a result would blur-close the list out from under the click.
+in the input, or clicking a result would blur-close the list out from under the click. Escape
+closes it and **keeps focus on the field** — the ARIA combobox pattern.
+
+The list is `hidden` when closed, not unmounted: cmdk's `aria-controls` and
+`aria-activedescendant` point into that subtree and were left dangling by unmounting. cmdk also
+hard-codes `aria-expanded="true"` _after_ spreading our props, so that one is corrected on the
+element in an effect — a prop cannot win against it.
 
 Before anything is typed the list shows `useHeroBrowseParks()`: the visitor's nearby parks
 (with photo, live open-attraction counts and Ø wait), the current park's rides when they are
