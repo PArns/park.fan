@@ -117,9 +117,6 @@
       "badge": "AI-Powered Predictions",
       "cta": "Explore Parks",
       "searchPlaceholder": "Search parks, attractions, shows & restaurants...",
-      "howto": "How do I use park.fan?",
-      "glossary": "Theme Park Dictionary",
-      "liveWaitTimes": "Live Wait Times",
       "title": "Where is the wait worth it today?",
       "intro": "park.fan tracks <strong>{parks, number} theme parks</strong> and <strong>{attractions, number} attractions</strong> live, from Europa-Park and Phantasialand to Magic Kingdom. Find your park, or click your way around the map.",
       "openNow": "{count, plural, =1 {1 park open right now} other {# parks open right now}}",
@@ -208,8 +205,8 @@
       "subtitle": "{count, plural, =1 {1 country} other {# countries}} · click another continent",
       "openWord": "open",
       "countryOpen": "{count} open",
-      "closedShort": "closed",
-      "viewAll": "See all parks in {continent}"
+      "viewAll": "See all parks in {continent}",
+      "countryClosed": "{count} closed"
     }
   },
   "footer": {
@@ -970,14 +967,14 @@
       "nearby": "Nearby Parks",
       "inPark": "You're at {park}",
       "glossary": "Dictionary ({count})",
-      "popular": "Popular parks"
+      "popular": "Popular Parks"
     },
     "keyboard": {
       "navigate": "Navigate",
       "select": "Select",
       "close": "Close"
     },
-    "avgWait": "Ø {minutes} min",
+    "avgWait": "{minutes} min avg",
     "attractionsOpen": "{open}/{total} attractions open",
     "heroHint": "Start typing to search parks, attractions, shows and restaurants"
   },

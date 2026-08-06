@@ -1,52 +1,62 @@
 'use client';
 
-import { useEffect, useState, type ComponentType } from 'react';
-import { Search } from 'lucide-react';
+import { useCallback, useEffect, useState, type ComponentType } from 'react';
 import { SearchCommand } from '@/components/search/search-bar';
+import { HeroSearchShell } from '@/components/search/hero-search-field';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
+import { useAfterLoad } from '@/lib/hooks/use-after-load';
 import { trackHeroSearchClicked } from '@/lib/analytics/umami';
 import { cn } from '@/lib/utils';
 
-/** Shared look of the hero search input — the lazy panel's real input mirrors these classes. */
-export const HERO_SEARCH_INPUT_CLASS =
-  'border-primary/20 bg-background/77 placeholder:text-foreground/40 dark:placeholder:text-muted-foreground/50 h-14 w-full rounded-xl border pr-4 pl-12 text-base shadow-md backdrop-blur-lg transition-all outline-none dark:bg-[oklch(0.12_0.025_241_/_0.55)]';
-
-/** Non-interactive lookalike shown while the inline panel chunk loads. */
-export function HeroSearchShell({ placeholder }: { placeholder: string }) {
-  return (
-    <div className="relative w-full">
-      <Search className="text-muted-foreground absolute top-1/2 left-4 z-10 h-5 w-5 -translate-y-1/2" />
-      <div className={cn(HERO_SEARCH_INPUT_CLASS, 'flex items-center')}>
-        <span className="text-foreground/40 dark:text-muted-foreground/50 truncate">
-          {placeholder}
-        </span>
-      </div>
-    </div>
-  );
-}
-
 interface HeroInlineSearchProps {
+  /** Example park/ride names shown in the empty field. */
   placeholder: string;
+  /** What the field is for — the accessible name, since the placeholder is only examples. */
+  label: string;
   className?: string;
 }
 
-type PanelComponent = ComponentType<{ placeholder: string }>;
+type PanelComponent = ComponentType<{
+  placeholder: string;
+  label: string;
+  initialQuery?: string;
+  autoFocus?: boolean;
+  onFocusHandled?: () => void;
+}>;
 
 /**
- * The hero search with in-place results on desktop, palette popup on mobile.
+ * The hero search: in-place floating results on desktop, palette popup on mobile.
  *
- * Mobile (< md) keeps the proven `SearchCommand` flow — tap opens the full-screen palette,
- * no inline list. From `md` up, the lazy in-place panel takes over: the input stays in the
- * hero and the result list renders directly beneath it (see hero-inline-search-panel.tsx).
- * The panel chunk (cmdk + result rendering) loads only on desktop viewports, and SSR always
- * renders the mobile trigger — visually identical to the shell — so nothing jumps.
+ * Mobile (< md) keeps the proven `SearchCommand` flow — tap opens the full-screen palette, no
+ * inline list. From `md` up the in-place panel takes over: the input stays in the hero and the
+ * results float below it.
+ *
+ * **Nothing here is on the critical path.** The panel chunk (cmdk + the result tree) is fetched
+ * only after the page has loaded and gone idle, and only on viewports that will render it; the
+ * live queries behind it (`useHomeNearbyParks`, popular parks) are gated the same way. Until it
+ * arrives, {@link HeroSearchShell} is a working input that hands its focus and typed text over
+ * on mount — so a visitor who is faster than the chunk loses nothing, and one who never touches
+ * the field never pays for it.
  */
-export function HeroInlineSearch({ placeholder, className }: HeroInlineSearchProps) {
+export function HeroInlineSearch({ placeholder, label, className }: HeroInlineSearchProps) {
   const isDesktop = useMediaQuery('(min-width: 768px)');
+  const afterLoad = useAfterLoad();
   const [Panel, setPanel] = useState<PanelComponent | null>(null);
+  /** What the visitor typed into the shell before the chunk arrived. */
+  const [typed, setTyped] = useState<string | null>(null);
+  /** Whether the panel still owes them the focus the shell had. Cleared once it has acted. */
+  const [pendingFocus, setPendingFocus] = useState(false);
+
+  // Every keystroke updates the text (last write wins) — an "only the first call counts" latch
+  // would freeze it at the empty string, because `focus` always fires before the first `input`.
+  const activate = useCallback((value: string) => {
+    setTyped(value);
+    setPendingFocus(true);
+  }, []);
 
   useEffect(() => {
-    if (!isDesktop || Panel) return;
+    // Load once the page is idle, or immediately when the visitor has already reached for it.
+    if (!isDesktop || Panel || (!afterLoad && typed === null)) return;
     let cancelled = false;
     import('./hero-inline-search-panel').then((m) => {
       if (!cancelled) setPanel(() => m.default);
@@ -54,15 +64,21 @@ export function HeroInlineSearch({ placeholder, className }: HeroInlineSearchPro
     return () => {
       cancelled = true;
     };
-  }, [isDesktop, Panel]);
+  }, [isDesktop, Panel, afterLoad, typed]);
 
   return (
     <div className={cn('w-full', className)}>
       {isDesktop ? (
         Panel ? (
-          <Panel placeholder={placeholder} />
+          <Panel
+            placeholder={placeholder}
+            label={label}
+            initialQuery={typed ?? undefined}
+            autoFocus={pendingFocus}
+            onFocusHandled={() => setPendingFocus(false)}
+          />
         ) : (
-          <HeroSearchShell placeholder={placeholder} />
+          <HeroSearchShell placeholder={placeholder} label={label} onActivate={activate} />
         )
       ) : (
         <div onClick={() => trackHeroSearchClicked()}>

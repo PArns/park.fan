@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { ArrowRight } from 'lucide-react';
 import { Link, useRouter } from '@/i18n/navigation';
+import { GlassCard } from '@/components/common/glass-card';
 import { useGeoLiveStats, findOpenParkCount } from '@/lib/hooks/use-geo-live-stats';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { cn } from '@/lib/utils';
@@ -58,7 +59,10 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
   };
 
   return (
-    <div className="border-border/50 bg-background/80 overflow-hidden rounded-2xl border shadow-xl backdrop-blur-xl">
+    <GlassCard
+      variant="heavy"
+      className="border-border/50 overflow-hidden rounded-2xl p-0 shadow-2xl"
+    >
       {/* Header: "Parks in Europe" + live open / total */}
       <div className="border-border/40 flex items-start justify-between gap-4 border-b px-5 py-4">
         <div className="min-w-0">
@@ -160,8 +164,11 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
                     {tHome('worldPanel.countryOpen', { count: open })}
                   </span>
                 ) : (
-                  <span className="text-muted-foreground text-xs">
-                    {tHome('worldPanel.closedShort')}
+                  // "7 geschlossen", not a bare "zu": the chip's job is to say how much is
+                  // behind it, and a country with 7 shut parks is a different prospect from one
+                  // with a single shut park.
+                  <span className="text-muted-foreground text-xs tabular-nums">
+                    {tHome('worldPanel.countryClosed', { count: country.parkCount })}
                   </span>
                 ))}
             </Link>
@@ -180,6 +187,6 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </Link>
       </div>
-    </div>
+    </GlassCard>
   );
 }

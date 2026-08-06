@@ -117,12 +117,9 @@
       "badge": "Prédictions par IA",
       "cta": "Explorer les Parcs",
       "searchPlaceholder": "Rechercher parcs, attractions, spectacles & restaurants...",
-      "howto": "Comment utiliser park.fan ?",
-      "glossary": "Dictionnaire des parcs d'attractions",
-      "liveWaitTimes": "Temps d'attente en direct",
       "title": "Où l'attente en vaut-elle la peine aujourd'hui ?",
       "intro": "park.fan suit en direct <strong>{parks, number} parcs d'attractions</strong> et <strong>{attractions, number} attractions</strong>, de Disneyland Paris et Europa-Park au Magic Kingdom. Cherchez votre parc, ou explorez le monde depuis la carte.",
-      "openNow": "{count, plural, =1 {1 parc ouvert en ce moment} other {# parcs ouverts en ce moment}}",
+      "openNow": "{count, plural, one {# parc ouvert en ce moment} other {# parcs ouverts en ce moment}}",
       "searchExamples": "Disneyland Paris, Taron, Efteling …"
     },
     "sections": {
@@ -205,11 +202,11 @@
     },
     "worldPanel": {
       "title": "Parcs en {continent}",
-      "subtitle": "{count, plural, =1 {1 pays} other {# pays}} · cliquez sur un autre continent",
+      "subtitle": "{count, plural, one {# pays} other {# pays}} · cliquez sur un autre continent",
       "openWord": "ouverts",
-      "countryOpen": "{count} ouverts",
-      "closedShort": "fermé",
-      "viewAll": "Voir tous les parcs en {continent}"
+      "countryOpen": "{count, plural, one {# ouvert} other {# ouverts}}",
+      "viewAll": "Voir tous les parcs en {continent}",
+      "countryClosed": "{count, plural, one {# fermé} other {# fermés}}"
     }
   },
   "footer": {
@@ -977,9 +974,9 @@
       "select": "Sélectionner",
       "close": "Fermer"
     },
-    "avgWait": "Ø {minutes} min",
+    "avgWait": "{minutes} min en moyenne",
     "attractionsOpen": "{open}/{total} attractions ouvertes",
-    "heroHint": "Tapez pour chercher parcs, attractions, spectacles et restaurants"
+    "heroHint": "Tapez pour chercher des parcs, des attractions, des spectacles et des restaurants"
   },
   "languageBanner": {
     "message": "Ce site est également disponible en {language}",

@@ -1,12 +1,11 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocale } from 'next-intl';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
-import type { SearchResult, SearchResultItem, ParkStatus, CrowdLevel } from '@/lib/api/types';
+import type { SearchResult, SearchResultItem } from '@/lib/api/types';
 import { trackSearchNoResults } from '@/lib/analytics/umami';
-import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
-import type { NearbyResponse, NearbyParksData, NearbyAttractionsData } from '@/types/nearby';
+import { useHeroBrowseParks, type HeroBrowseParks } from '@/lib/hooks/use-hero-browse-parks';
 
 /** Shape of a single glossary hit returned by /api/glossary-search. */
 export interface GlossarySearchItem {
@@ -18,19 +17,6 @@ export interface GlossarySearchItem {
   category: string;
 }
 
-/** Extra fields the nearby feed carries beyond a plain search result (photo, live counts). */
-export interface NearbySearchExtras {
-  distanceM?: number;
-  /** Park card photo (already enriched server-side by /api/nearby). */
-  imageUrl?: string;
-  /** Live park-wide average wait in minutes. */
-  avgWaitTime?: number;
-  /** Live "open of total" attraction counts. */
-  attractionCounts?: { open: number; total: number };
-}
-
-export type NearbySearchItem = SearchResultItem & NearbySearchExtras;
-
 export interface UseSearchResultsReturn {
   /** Debounced (300 ms) version of the live query — drives all fetches. */
   debouncedQuery: string;
@@ -39,10 +25,8 @@ export interface UseSearchResultsReturn {
   loading: boolean;
   /** Glossary term hits for the same debounced query. */
   glossaryData: { results: GlossarySearchItem[] } | undefined;
-  /** Raw nearby response — needed for the "in park" heading. */
-  nearbyData: NearbyResponse | undefined;
-  /** Nearby parks/rides mapped to search-result items (pre-populates the empty dialog). */
-  nearbyItems: NearbySearchItem[];
+  /** What to list before anything is typed (nearby parks, this park's rides, or popular parks). */
+  browse: HeroBrowseParks;
   /** Sort results within a category by match score (exact matches first), then OPERATING first. */
   sortResultsByMatch: (items: SearchResultItem[]) => { item: SearchResultItem; score: number }[];
 }
@@ -106,73 +90,10 @@ export function useSearchResults(query: string): UseSearchResultsReturn {
     staleTime: 300_000,
   });
 
-  // Nearby parks for pre-populating the dialog when no query is entered. Shares the
-  // canonical homepage query (radius 200, limit 6) so header/hero/card/search-bar all
-  // dedupe into a single backend request instead of firing a separate limit-5 query.
-  const { data: nearbyData } = useHomeNearbyParks();
-
-  const nearbyItems = useMemo((): NearbySearchItem[] => {
-    if (!nearbyData) return [];
-
-    if (nearbyData.type === 'in_park') {
-      const d = nearbyData.data as NearbyAttractionsData;
-      return [
-        {
-          type: 'park',
-          id: d.park.id,
-          name: d.park.name,
-          slug: d.park.slug,
-          url: d.park.url,
-          status: d.park.status as ParkStatus,
-          load: d.park.analytics?.crowdLevel as CrowdLevel | undefined,
-          distanceM: d.park.distance,
-          imageUrl: d.park.backgroundImage ?? undefined,
-          avgWaitTime: d.park.analytics?.avgWaitTime,
-        },
-        ...d.rides.slice(0, 3).map((ride) => ({
-          type: 'attraction' as const,
-          id: ride.id,
-          name: ride.name,
-          slug: ride.slug,
-          url: ride.url,
-          status: ride.status,
-          waitTime: ride.waitTime ?? undefined,
-          parentPark: {
-            id: d.park.id,
-            name: d.park.name,
-            slug: d.park.slug,
-            url: d.park.url ?? '',
-          },
-          distanceM: ride.distance,
-        })),
-      ];
-    }
-
-    if (nearbyData.type === 'nearby_parks') {
-      const d = nearbyData.data as NearbyParksData;
-      return d.parks.slice(0, 5).map((park) => ({
-        type: 'park' as const,
-        id: park.id,
-        name: park.name,
-        slug: park.slug,
-        url: park.url,
-        city: park.city,
-        country: park.country,
-        continent: park.continent,
-        status: park.status as ParkStatus,
-        load: park.analytics?.crowdLevel as CrowdLevel | undefined,
-        distanceM: park.distance,
-        imageUrl: park.backgroundImage ?? undefined,
-        avgWaitTime: park.analytics?.avgWaitTime,
-        attractionCounts:
-          park.totalAttractions > 0
-            ? { open: park.operatingAttractions, total: park.totalAttractions }
-            : undefined,
-      }));
-    }
-
-    return [];
-  }, [nearbyData]);
+  // Pre-query list (nearby parks / this park's rides / popular parks). Shared with the hero's
+  // in-place search and its bubbles, so every surface lists the same thing — and React Query
+  // dedupes them all into one backend request.
+  const browse = useHeroBrowseParks();
 
   // Calculate match score for exact matches: name should be compared with query
   const calculateMatchScore = (item: SearchResultItem): number => {
@@ -218,8 +139,7 @@ export function useSearchResults(query: string): UseSearchResultsReturn {
     results,
     loading,
     glossaryData,
-    nearbyData,
-    nearbyItems,
+    browse,
     sortResultsByMatch,
   };
 }

@@ -3,6 +3,8 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { useHeroBrowseParks } from '@/lib/hooks/use-hero-browse-parks';
+import { HeroBubblesSkeleton } from '@/components/home/hero-skeletons';
+import { HeroBubbleRow } from '@/components/home/hero-bubble-row';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { cn } from '@/lib/utils';
 import { CROWD_DOT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
@@ -14,17 +16,25 @@ import { CROWD_DOT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styl
  */
 export function HeroNearbyBubbles({ className }: { className?: string }) {
   const tSearch = useTranslations('search');
-  const { entries } = useHeroBrowseParks();
+  const { entries, isPending } = useHeroBrowseParks();
 
-  // Fixed min-height so the row popping in doesn't shift the hero layout.
+  // Skeleton pills while the lookup runs — same box, so the hero is settled from the first
+  // paint instead of growing a row of pills into place a second later.
+  if (isPending) return <HeroBubblesSkeleton className={className} />;
+
   return (
-    <div className={cn('flex min-h-9 flex-wrap items-center gap-2.5', className)}>
+    <HeroBubbleRow className={className}>
       {entries.map((entry) => {
-        const dotClass = entry.open
-          ? entry.wait != null
-            ? CROWD_DOT_CLASS[waitTimeCrowdTier(entry.wait)]
-            : 'bg-status-operating'
-          : 'bg-status-closed';
+        // Three states, not two: open (coloured by its wait), closed, and — for the
+        // popular-parks fallback, which carries no live data — status unknown.
+        const dotClass =
+          entry.open == null
+            ? 'bg-muted-foreground/40'
+            : entry.open
+              ? entry.wait != null
+                ? CROWD_DOT_CLASS[waitTimeCrowdTier(entry.wait)]
+                : 'bg-status-operating'
+              : 'bg-status-closed';
         const content = (
           <>
             <span className={cn('h-2 w-2 shrink-0 rounded-full', dotClass)} aria-hidden="true" />
@@ -37,7 +47,7 @@ export function HeroNearbyBubbles({ className }: { className?: string }) {
           </>
         );
         const pillClass =
-          'border-border/50 bg-background/60 inline-flex h-9 items-center gap-2 rounded-full border px-3.5 text-sm shadow-sm backdrop-blur-md transition-colors';
+          'border-border/50 bg-background/60 inline-flex h-9 shrink-0 items-center gap-2 rounded-full border px-3.5 text-sm shadow-sm backdrop-blur-md transition-colors';
         const href = entry.url ? convertApiUrlToFrontendUrl(entry.url) : null;
         return href ? (
           <Link
@@ -54,6 +64,6 @@ export function HeroNearbyBubbles({ className }: { className?: string }) {
           </span>
         );
       })}
-    </div>
+    </HeroBubbleRow>
   );
 }

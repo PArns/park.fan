@@ -909,6 +909,13 @@ export interface SearchResultItem {
   parentPark?: { id: string; name: string; slug: string; url: string };
   isSeasonal?: boolean;
   isCurrentlyInSeason?: boolean | null;
+  /**
+   * Thumbnail path. NOT from the backend — the `/api/search` proxy resolves it from the media
+   * database, which lives in this repo (see `lib/utils/search-assets.ts`).
+   */
+  imageUrl?: string;
+  /** The thumbnail's focal point as a CSS `object-position`, from the same sidecar. */
+  imagePosition?: string;
 }
 
 export interface SearchResult {

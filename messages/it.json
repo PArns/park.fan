@@ -117,9 +117,6 @@
       "badge": "Previsioni basate sull'IA",
       "cta": "Esplora i parchi",
       "searchPlaceholder": "Cerca parchi, attrazioni, spettacoli e ristoranti...",
-      "howto": "Come uso park.fan?",
-      "glossary": "Dizionario dei parchi divertimento",
-      "liveWaitTimes": "Attese in Diretta",
       "title": "Dove conviene mettersi in fila oggi?",
       "intro": "park.fan segue in diretta <strong>{parks, number} parchi divertimento</strong> e <strong>{attractions, number} attrazioni</strong>, da Gardaland ed Europa-Park fino al Magic Kingdom. Cerca il tuo parco, oppure gira il mondo dalla mappa.",
       "openNow": "{count, plural, =1 {1 parco aperto ora} other {# parchi aperti ora}}",
@@ -207,9 +204,9 @@
       "title": "Parchi in {continent}",
       "subtitle": "{count, plural, =1 {1 paese} other {# paesi}} · clicca un altro continente",
       "openWord": "aperti",
-      "countryOpen": "{count} aperti",
-      "closedShort": "chiuso",
-      "viewAll": "Vedi tutti i parchi in {continent}"
+      "countryOpen": "{count, plural, one {# aperto} other {# aperti}}",
+      "viewAll": "Vedi tutti i parchi in {continent}",
+      "countryClosed": "{count, plural, one {# chiuso} other {# chiusi}}"
     }
   },
   "footer": {
@@ -977,7 +974,7 @@
       "select": "Selezionare",
       "close": "Chiudi"
     },
-    "avgWait": "Ø {minutes} min",
+    "avgWait": "{minutes} min in media",
     "attractionsOpen": "{open}/{total} attrazioni aperte",
     "heroHint": "Inizia a digitare: parchi, attrazioni, spettacoli e ristoranti"
   },

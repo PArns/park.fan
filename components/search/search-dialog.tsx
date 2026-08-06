@@ -11,17 +11,12 @@ import {
   CommandList,
 } from '@/components/ui/command';
 import { Button } from '@/components/ui/button';
-import { stripNewPrefix } from '@/lib/utils';
 import { trackSearchViewAll } from '@/lib/analytics/umami';
 import { useSearchResults } from '@/lib/hooks/use-search-results';
 import { useSearchNavigation } from '@/lib/hooks/use-search-navigation';
-import {
-  SkeletonItem,
-  SearchResultRow,
-  GlossaryResultItem,
-} from '@/components/search/search-result-items';
+import { SkeletonItem, GlossaryResultItem } from '@/components/search/search-result-items';
 import { SearchResultGroups } from '@/components/search/search-result-groups';
-import type { NearbyAttractionsData } from '@/types/nearby';
+import { SearchBrowseGroup } from '@/components/search/search-browse-group';
 
 interface SearchDialogProps {
   /** Controlled open state — owned by the lightweight <SearchCommand> trigger. */
@@ -48,23 +43,9 @@ export default function SearchDialog({
   const tSearch = useTranslations('search');
   const router = useRouter();
 
-  // Three live queries (search / glossary / nearby) + debounce + match scoring.
-  const {
-    debouncedQuery,
-    results,
-    loading,
-    glossaryData,
-    nearbyData,
-    nearbyItems,
-    sortResultsByMatch,
-  } = useSearchResults(query);
-
-  const nearbyHeading =
-    nearbyData?.type === 'in_park'
-      ? tSearch('headings.inPark', {
-          park: stripNewPrefix((nearbyData.data as NearbyAttractionsData).park.name),
-        })
-      : tSearch('headings.nearby');
+  // Three live queries (search / glossary / browse) + debounce + match scoring.
+  const { debouncedQuery, results, loading, glossaryData, browse, sortResultsByMatch } =
+    useSearchResults(query);
 
   // Open state lives in the lightweight <SearchCommand> trigger; closing just notifies it
   // (the query reset is handled by the open/close effect above).
@@ -190,26 +171,15 @@ export default function SearchDialog({
           </>
         )}
 
-        {!isPending && query.length < 3 && (
-          <>
-            {nearbyItems.length > 0 ? (
-              <CommandGroup heading={nearbyHeading}>
-                {nearbyItems.map((item, index) => (
-                  <SearchResultRow
-                    key={item.id}
-                    result={item}
-                    position={index}
-                    onSelect={handleSelect}
-                  />
-                ))}
-              </CommandGroup>
-            ) : (
-              <div className="text-muted-foreground py-10 text-center text-sm">
-                {tSearch('typeToSearch')}
-              </div>
-            )}
-          </>
-        )}
+        {!isPending &&
+          query.length < 3 &&
+          (browse.items.length > 0 ? (
+            <SearchBrowseGroup browse={browse} onSelect={handleSelect} />
+          ) : (
+            <div className="text-muted-foreground py-10 text-center text-sm">
+              {tSearch('typeToSearch')}
+            </div>
+          ))}
       </CommandList>
 
       {/* Keyboard shortcuts footer – hidden on mobile */}

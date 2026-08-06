@@ -42,6 +42,8 @@ import { HeroStats } from '@/components/home/hero-stats';
 import { HeroInlineSearch } from '@/components/search/hero-inline-search';
 import { HeroNearbyBubbles } from '@/components/home/hero-nearby-bubbles';
 import { HeroWorldPanel } from '@/components/home/hero-world-panel';
+import { HeroWorldPanelSkeleton } from '@/components/home/hero-skeletons';
+import { HeroTextPanel } from '@/components/home/hero-text-panel';
 import { FeaturedParksSlot } from '@/components/home/featured-parks-slot';
 import { GlobalStatsSection } from '@/components/home/global-stats-section';
 import { LiveActivitySection } from '@/components/home/live-activity-section';
@@ -52,6 +54,7 @@ import {
   LiveActivitySkeleton,
 } from '@/components/home/home-skeletons';
 import { LatestBlogSection } from '@/components/home/latest-blog-section';
+import { BlogHeroPreview } from '@/components/home/blog-hero-preview';
 
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
@@ -135,33 +138,47 @@ export default async function HomePage({ params }: HomePageProps) {
       {/* Hero Section – live-numbers headline + in-place search on the left, world-map panel on
           the right (xl+ only), nearby-park bubbles below. When the user is in a park (nearby),
           the headline switches to "Willkommen im [Park]" + park info. */}
-      <section className="relative isolate -mt-14 overflow-hidden px-6 pt-24 pb-8 md:pb-10 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-20 lg:pb-12">
+      {/* z-10 (not isolate — that clipped nothing but stacked the section BELOW later siblings):
+          the hero search dropdown floats out of this section over the content beneath it, and
+          `overflow-hidden` keeps the background photo in. The sticky header is z-50, so it still
+          wins. */}
+      <section className="relative z-10 -mt-14 overflow-visible px-6 pt-24 pb-8 md:pb-10 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-20 lg:pb-12">
         <HeroRotationProvider>
           <HeroBackground imageSrc={randomHeroImage} />
-          {/* Legibility scrim. The headline and intro now sit directly on the photo (no glass
-              card behind them), and the hero photo rotates — a bright ride shot would otherwise
-              swallow the text. Anchored left so the photo still reads on the right. */}
+          {/* Legibility scrim, behind the left panel and doing the work a backdrop-blur would:
+              the panel covers most of the hero, and a backdrop filter that large over the
+              ken-burns photo re-filters its backdrop every animation frame. Anchored left so
+              the photo still reads on the right. */}
           <div
             aria-hidden="true"
             className="from-background/85 via-background/45 pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r to-transparent"
           />
           <div className="relative container mx-auto">
-            <div className="grid items-center gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(0,34rem)] 2xl:grid-cols-[minmax(0,1fr)_minmax(0,40rem)] 2xl:gap-14">
+            {/* grid-cols-1, not a bare `grid`: an implicit column is sized to its content's
+                max-content width, and the horizontally scrollable pill row inside is wider than
+                a phone. Tailwind's grid-cols-1 is `minmax(0, 1fr)`, which caps it at the
+                container instead — without it the whole hero overflowed the viewport. */}
+            <div className="grid grid-cols-1 items-center gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(0,34rem)] 2xl:grid-cols-[minmax(0,1fr)_minmax(0,40rem)] 2xl:gap-14">
               {/* Left: live badge + headline + intro with live counts + in-place search +
                   the nearby-park bubbles */}
-              <div className="w-full max-w-2xl">
+              <HeroTextPanel>
                 <Suspense fallback={<HeroWithNearby initialCounts={null} />}>
                   <HeroStats />
                 </Suspense>
-                <HeroInlineSearch placeholder={tHome('hero.searchExamples')} className="mt-5" />
+                <HeroInlineSearch
+                  placeholder={tHome('hero.searchExamples')}
+                  label={tHome('hero.searchPlaceholder')}
+                  className="mt-5"
+                />
                 {/* Nearby parks as pill bubbles (GeoIP fallback without location permission) */}
                 <HeroNearbyBubbles className="mt-4" />
-              </div>
+              </HeroTextPanel>
 
-              {/* Right: world-map panel — only rendered when there is room (xl+); the fixed
-                  min-height keeps the vertical centering stable while the panel lazy-mounts. */}
+              {/* Right: world-map panel — only rendered when there is room (xl+). The column
+                  reserves the panel's height in CSS and the panel shows a skeleton until its
+                  chunk lands, so the box never grows into place. */}
               <div className="hidden xl:block xl:min-h-[540px]">
-                <Suspense fallback={null}>
+                <Suspense fallback={<HeroWorldPanelSkeleton />}>
                   <HeroWorldPanel />
                 </Suspense>
               </div>
@@ -181,6 +198,12 @@ export default async function HomePage({ params }: HomePageProps) {
             )
           )}
         </HeroRotationProvider>
+      </section>
+
+      {/* Compact "from the blog" strip — the first thing under the hero. The full
+          LatestBlogSection still renders further down; this is the at-a-glance version. */}
+      <section className="px-6 pt-6">
+        <BlogHeroPreview locale={locale as Locale} />
       </section>
 
       {/* Announcement Section */}

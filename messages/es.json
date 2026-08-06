@@ -117,9 +117,6 @@
       "badge": "Predicciones por IA",
       "cta": "Explorar Parques",
       "searchPlaceholder": "Buscar parques, atracciones, espectáculos y restaurantes...",
-      "howto": "¿Cómo uso park.fan?",
-      "glossary": "Diccionario de parques temáticos",
-      "liveWaitTimes": "Esperas en Directo",
       "title": "¿Dónde merece la pena hacer cola hoy?",
       "intro": "park.fan sigue en directo <strong>{parks, number} parques</strong> y <strong>{attractions, number} atracciones</strong>, desde PortAventura y Europa-Park hasta Magic Kingdom. Busca tu parque o recorre el mundo desde el mapa.",
       "openNow": "{count, plural, =1 {1 parque abierto ahora} other {# parques abiertos ahora}}",
@@ -207,9 +204,9 @@
       "title": "Parques en {continent}",
       "subtitle": "{count, plural, =1 {1 país} other {# países}} · haz clic en otro continente",
       "openWord": "abiertos",
-      "countryOpen": "{count} abiertos",
-      "closedShort": "cerrado",
-      "viewAll": "Ver todos los parques en {continent}"
+      "countryOpen": "{count, plural, one {# abierto} other {# abiertos}}",
+      "viewAll": "Ver todos los parques en {continent}",
+      "countryClosed": "{count, plural, one {# cerrado} other {# cerrados}}"
     }
   },
   "footer": {
@@ -977,7 +974,7 @@
       "select": "Seleccionar",
       "close": "Cerrar"
     },
-    "avgWait": "Ø {minutes} min",
+    "avgWait": "{minutes} min de media",
     "attractionsOpen": "{open}/{total} atracciones abiertas",
     "heroHint": "Empieza a escribir: parques, atracciones, espectáculos y restaurantes"
   },

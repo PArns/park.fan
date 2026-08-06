@@ -117,9 +117,6 @@
       "badge": "AI-gestuurde voorspellingen",
       "cta": "Ontdek Parken",
       "searchPlaceholder": "Zoek parken, attracties, shows & restaurants...",
-      "howto": "Hoe gebruik ik park.fan?",
-      "glossary": "Begrippen voor pretparken",
-      "liveWaitTimes": "Live Wachttijden",
       "title": "Waar is de rij vandaag de moeite waard?",
       "intro": "park.fan volgt <strong>{parks, number} pretparken</strong> en <strong>{attractions, number} attracties</strong> live, van de Efteling en Phantasialand tot Magic Kingdom. Zoek je park, of klik via de kaart de wereld rond.",
       "openNow": "{count, plural, =1 {1 park nu open} other {# parken nu open}}",
@@ -208,8 +205,8 @@
       "subtitle": "{count, plural, =1 {1 land} other {# landen}} · klik op een ander continent",
       "openWord": "open",
       "countryOpen": "{count} open",
-      "closedShort": "dicht",
-      "viewAll": "Alle parken in {continent} bekijken"
+      "viewAll": "Alle parken in {continent} bekijken",
+      "countryClosed": "{count} gesloten"
     }
   },
   "footer": {
@@ -977,7 +974,7 @@
       "select": "Selecteren",
       "close": "Sluiten"
     },
-    "avgWait": "Ø {minutes} min",
+    "avgWait": "gem. {minutes} min",
     "attractionsOpen": "{open}/{total} attracties open",
     "heroHint": "Begin te typen, we zoeken parken, attracties, shows en restaurants"
   },

@@ -4,22 +4,26 @@ The homepage hero is a two-column layout over the rotating park photo: live head
 search on the left, a clickable world map on the right. Every number in it is live.
 
 ```
-┌─────────────────────────────────────────────┬───────────────────────────┐
-│ ● 72 PARKS GERADE OFFEN        (glass pill) │  Parks in Europa   4 / 98 │
-│ Wo lohnt sich heute das Anstehen?           │  ┌─────────────────────┐  │
-│ park.fan zählt live an 218 Freizeitparks …  │  │  world map + one    │  │
-│ ┌─────────────────────────────────────────┐ │  │  bubble per         │  │
-│ │ 🔍 Europa-Park, Taron, Efteling …       │ │  │  continent          │  │
-│ ├─────────────────────────────────────────┤ │  └─────────────────────┘  │
-│ │ PARKS IN DER NÄHE                       │ │  [Deutschland 2 offen] …  │
-│ │ Europa-Park   Rust · 98/104   Ø 41 min  │ │  Alle Parks in Europa →   │
-│ └─────────────────────────────────────────┘ │                           │
-│ ● Europa-Park 41 min  ● Phantasialand 24 …  │                           │
-└─────────────────────────────────────────────┴───────────────────────────┘
-                                                  xl (≥1280px) only
+┌─────────────────────────────────────────────┐┌──────────────────────────┐
+│ ● 72 PARKS GERADE OFFEN        (glass pill) ││ Parks in Europa   40/49  │
+│                                             ││ ┌──────────────────────┐ │
+│ Wo lohnt sich heute das Anstehen?           ││ │  world map, one      │ │
+│ park.fan zählt live an 218 Freizeitparks …  ││ │  bubble per          │ │
+│                                             ││ │  continent           │ │
+│ ┌─────────────────────────────────────────┐ ││ └──────────────────────┘ │
+│ │ 🔍 Europa-Park, Taron, Efteling …       │ ││ [Deutschland 7 offen] …  │
+│ └─────────────────────────────────────────┘ ││ Alle Parks in Europa →   │
+│ ● Europa-Park Ø41 min  ● Phantasialand …    │└──────────────────────────┘
+└─────────────────────────────────────────────┘   xl (≥1280px) only
+   │
+   └── on focus, a FLOATING dropdown expands over the page below
 ```
 
-Entry point: `app/[locale]/page.tsx`.
+Entry point: `app/[locale]/page.tsx`. Both columns are panels (`HeroTextPanel` /
+`GlassCard variant="heavy"`) so the hero reads as one composition rather than text loose on a
+photo next to a card. The left plate deliberately has **no** `backdrop-blur`: it covers most of
+the hero, and a backdrop filter that large over the ken-burns photo means re-filtering the
+backdrop every animation frame. The legibility scrim behind it does that work instead.
 
 ---
 
@@ -54,26 +58,44 @@ the sentence into fragments.
 - **< md** — the existing `SearchCommand` trigger + full-screen `SearchDialog` palette. No
   inline list: on a phone the result list would push the whole page down.
 - **≥ md** — `HeroInlineSearchPanel` (lazy chunk, desktop-only): the input stays in the hero
-  and results render **in place** in the card below it.
+  and the results **float** below it.
 
 Both surfaces share their behavior, so a result can never look or route differently depending
-on where it was clicked:
+on where it was clicked — including the list they show before anything is typed:
 
 | Shared piece            | Module                                       |
 | ----------------------- | -------------------------------------------- |
 | Queries + debounce      | `lib/hooks/use-search-results.ts`            |
+| Pre-query list          | `lib/hooks/use-hero-browse-parks.ts`         |
 | Analytics + routing     | `lib/hooks/use-search-navigation.ts`         |
 | Row rendering           | `components/search/search-result-items.tsx`  |
 | Category grouping/order | `components/search/search-result-groups.tsx` |
+| Panel body              | `components/search/search-results-panel.tsx` |
 
-**The result list has a fixed height** (`h-60`) whenever it has anything to show. The hero is
-vertically centred, so a list that grew and shrank with the result count would move the
-headline on every keystroke.
+**The dropdown floats** (`absolute top-full z-40`) rather than sitting in the hero's flow. The
+hero is vertically centred, so an in-flow list moved the headline on every keystroke as the
+result count changed. Floating also lets it size to its content instead of a fixed height.
+
+Two consequences worth knowing:
+
+- The hero section carries **`z-10`** (and no `overflow-hidden`) so the dropdown paints over the
+  sections below it. The sticky header is `z-50` and still wins.
+- The dropdown is opaquer than the map panel. It lands on the nearby-park pills, not on the
+  photo, and pill text ghosts through anything below ~97% even under `backdrop-blur-3xl`.
+
+It opens on focus and closes on blur; `onMouseDown` preventDefault on the dropdown keeps focus
+in the input, or clicking a result would blur-close the list out from under the click.
 
 Before anything is typed the list shows `useHeroBrowseParks()`: the visitor's nearby parks
 (with photo, live open-attraction counts and Ø wait), the current park's rides when they are
 inside one, or — only when the nearby lookup including its GeoIP fallback comes back empty —
 the most popular parks, so the list is never blank.
+
+**Result thumbnails come from the media database.** The backend's `/v1/search` knows nothing
+about our photos, so the `/api/search` proxy resolves them (`lib/utils/search-assets.ts`), the
+same way `/api/nearby` does for its park list. Rows use the default image optimizer, **not**
+`backgroundImageLoader` — that one is tuned for full-bleed photos under gradient overlays (q50)
+and turns a 44 px thumbnail to mush.
 
 ---
 
@@ -87,6 +109,43 @@ search list never disagree, and React Query dedupes them into a single request.
 This replaced the marquee wait-times ticker that used to sit at the bottom of the hero
 (`live-wait-ticker.tsx`); `/api/analytics/ticker` still exists for the admin dashboard.
 
+They render into `HeroBubbleRow`, whose height does not depend on its contents — one scrollable
+row below `sm`, exactly two rows above it. The skeleton cannot know how long "Chimelong Ocean
+Kingdom" is, so a freely-wrapping row changed height when the real pills replaced it and pushed
+the page down (0.0147 CLS on a throttled phone). Note also the `grid-cols-1` on the hero grid:
+an implicit grid column is sized to its content's max-content width, and a horizontally
+scrollable row is wider than a phone — without it the whole hero overflowed the viewport.
+
+---
+
+## Nothing appears out of nowhere
+
+Every live surface in the hero resolves at its own pace after load, and rendering nothing until
+each one lands made the hero assemble itself piece by piece in front of the visitor. Each one
+now holds a placeholder in **exactly its final box** (`components/home/hero-skeletons.tsx`), so
+the layout is settled from first paint and the measured CLS is **0** on desktop and on a
+throttled phone.
+
+| Surface         | Placeholder                                                                 |
+| --------------- | --------------------------------------------------------------------------- |
+| Open-parks pill | The pill itself renders either way; only its content swaps (see below)      |
+| Nearby pills    | `HeroBubblesSkeleton` in the same `HeroBubbleRow`                           |
+| World-map panel | `HeroWorldPanelSkeleton`, rendered by the Suspense fallback AND by the gate |
+| Search field    | `HeroSearchShell` — a real input, see below                                 |
+
+The open-parks pill is one element whose **content** swaps, not a skeleton replaced by a badge:
+two separate elements measured a small but real shift even at identical heights.
+
+`HeroWorldPanelGate` renders its skeleton even below `xl`, where the panel will never appear —
+both its hooks are false during SSR, so that branch is the server output, and the parent column
+is `hidden xl:block` so a narrow viewport pays only for the markup.
+
+**The search field is a working input before its chunk exists.** `HeroSearchShell` captures
+focus and keystrokes and hands them — with the text already typed — to the real panel the
+instant it mounts. That is what lets the panel load after load+idle instead of during
+hydration: a visitor faster than the chunk loses nothing, and one who never touches the field
+never pays for it.
+
 ---
 
 ## World-map panel
@@ -94,8 +153,9 @@ This replaced the marquee wait-times ticker that used to sit at the bottom of th
 `HeroWorldPanel` (server seed) → `HeroWorldPanelGate` (client gate) → `HeroWorldPanelClient`.
 
 - **Only mounts on `xl` (≥1280px) and only after load + idle.** The map is a decorative
-  navigation aid; it must never compete with the hero photo for LCP. Below `xl` the right grid
-  column simply does not exist.
+  navigation aid; it must never compete with the hero photo for LCP. Below `xl` the column is
+  hidden in CSS (`hidden xl:block`) and only the skeleton's markup ships — see below for why the
+  gate renders it on every viewport.
 - **Clicks go to the geo routes.** Clicking another continent switches the panel in place;
   clicking the selected continent (bubble or landmass) navigates to `/parks/<continent>`, and
   each country chip links to `/parks/<continent>/<country>`.
@@ -108,8 +168,9 @@ This replaced the marquee wait-times ticker that used to sit at the bottom of th
 `lib/geo/world-map-data.ts` is written by `node scripts/generate-hero-world-map.mjs` from
 `public/world.svg` (Simplemaps.com, MIT). The source is 152 KB with one path per country and
 `lib/utils/geo-svg.ts` is server-only (`fs`), so neither can reach a client component. The
-generator groups the country paths into **one simplified silhouette per continent** (~28 KB
-total): speck islands dropped, rings simplified with Douglas-Peucker, coordinates rounded.
+generator groups the country paths into **one simplified silhouette per continent** (~38 KB
+total, committed, not part of `prebuild`): speck islands dropped, rings simplified with
+Douglas-Peucker, coordinates rounded.
 
 Russia is grouped with Asia and Greenland with North America — both by landmass, and both to
 stop one country stretching its continent's highlight across the map.

@@ -4,14 +4,15 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { TreePalm, Cog, Utensils, Music, MapPin, Clock, BookOpen, Leaf } from 'lucide-react';
 import { CommandItem } from '@/components/ui/command';
+import { Badge } from '@/components/ui/badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
-import { stripNewPrefix } from '@/lib/utils';
+import { stripNewPrefix, cn } from '@/lib/utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
-import { backgroundImageLoader } from '@/lib/utils/image-loader';
 import { CROWD_OUTLINE_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 import type { SearchResultItem } from '@/lib/api/types';
-import type { GlossarySearchItem, NearbySearchExtras } from '@/lib/hooks/use-search-results';
+import type { GlossarySearchItem } from '@/lib/hooks/use-search-results';
+import type { NearbySearchExtras } from '@/lib/hooks/use-hero-browse-parks';
 
 const typeIcons = {
   park: TreePalm,
@@ -65,16 +66,23 @@ export function SearchResultRow({ result, position, onSelect }: SearchResultRowP
       onSelect={() => onSelect(result, position)}
       className="flex cursor-pointer items-center gap-2.5 sm:gap-4"
     >
-      {/* Photo (nearby feed) or type icon */}
+      {/* Photo (resolved from the media database) or type icon */}
       <div className="bg-foreground/10 relative flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-lg sm:h-11 sm:w-11 sm:rounded-xl">
         {result.imageUrl ? (
           <Image
             src={result.imageUrl}
             alt=""
             fill
-            loader={backgroundImageLoader}
-            sizes="44px"
+            // Default optimizer, NOT backgroundImageLoader: that one is tuned for full-bleed
+            // photos under gradient overlays (q50) and turns a 44px thumbnail to mush. `sizes`
+            // asks for 96px so a 2× screen gets real pixels instead of an upscaled 48.
+            sizes="96px"
+            quality={75}
             className="object-cover"
+            // The media database's focal point, same as every card/background on the site — a
+            // 1:1 crop of a 4:3 photo drops most of its width, so a subject near an edge is
+            // exactly what gets cut without it.
+            style={result.imagePosition ? { objectPosition: result.imagePosition } : undefined}
           />
         ) : (
           <Icon className="text-foreground/65 h-4 w-4 sm:h-5 sm:w-5" />
@@ -145,11 +153,15 @@ export function SearchResultRow({ result, position, onSelect }: SearchResultRowP
 
             {/* Park-wide average wait (nearby feed) — colored like every other wait time */}
             {result.type === 'park' && result.avgWaitTime != null && !isClosed ? (
-              <span
-                className={`rounded-full border px-2 py-0.5 text-[11px] font-semibold tabular-nums ${CROWD_OUTLINE_CLASS[waitTimeCrowdTier(result.avgWaitTime)]}`}
+              <Badge
+                variant="outline"
+                className={cn(
+                  'text-[11px] font-semibold tabular-nums',
+                  CROWD_OUTLINE_CLASS[waitTimeCrowdTier(result.avgWaitTime)]
+                )}
               >
                 {tSearch('avgWait', { minutes: result.avgWaitTime })}
-              </span>
+              </Badge>
             ) : (
               result.type === 'park' &&
               result.load &&

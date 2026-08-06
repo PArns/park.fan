@@ -19,6 +19,17 @@ export function useSearchNavigation(queryLength: number, onNavigate?: () => void
   const locale = useLocale();
 
   const handleSelect = (result: SearchResultItem, position?: number) => {
+    // A result with no `url` and no continent/country resolves to no route at all. Bailing
+    // BEFORE `onNavigate` matters for the hero's dropdown, which closes on that callback: it
+    // would otherwise shut on a click that goes nowhere, and since focus stays in the input
+    // (the dropdown swallows mousedown) nothing would reopen it.
+    const canResolve =
+      Boolean(result.url) ||
+      (result.type === 'park' && Boolean(result.continent) && Boolean(result.country)) ||
+      result.type === 'glossary' ||
+      Boolean(result.parentPark?.url);
+    if (!canResolve) return;
+
     onNavigate?.();
 
     // Track the result click (NOT the search query content)

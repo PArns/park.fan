@@ -6,8 +6,9 @@ import { ChevronRight } from 'lucide-react';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useGlobalStats } from '@/lib/hooks/use-global-stats';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
-import { stripNewPrefix } from '@/lib/utils';
+import { stripNewPrefix, cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
+import { Skeleton } from '@/components/ui/skeleton';
 import type {
   NearbyAttractionsData,
   NearbyParksData,
@@ -110,17 +111,40 @@ function ParkBadges({
   );
 }
 
-/** Glass pill above the headline: "N parks open right now", live via useGlobalStats. */
+/**
+ * Glass pill above the headline: "N parks open right now", live via useGlobalStats.
+ *
+ * The pill's shell is rendered either way and only its CONTENT swaps — a pulsing bar until the
+ * count arrives. Two separate elements (a skeleton and then the badge) measured a small but
+ * real layout shift even at identical heights; one element cannot shift.
+ *
+ * `self-start` + `w-fit`: the hero's left panel is a flex column on xl and would stretch this
+ * pill across the whole column otherwise.
+ */
 function OpenParksBadge({ openParks }: { openParks: number | null }) {
   const tHome = useTranslations('home');
-  if (openParks == null) return <div className="h-[30px]" aria-hidden="true" />;
+  const pending = openParks == null;
   return (
-    <span className="border-status-operating/40 bg-status-operating/10 text-status-operating inline-flex h-[30px] items-center gap-2 rounded-full border px-3.5 text-[11px] font-bold tracking-[0.14em] uppercase shadow-sm backdrop-blur-md">
-      <span className="relative flex h-2 w-2" aria-hidden="true">
-        <span className="bg-status-operating absolute inline-flex h-full w-full animate-ping rounded-full opacity-60 motion-reduce:animate-none" />
-        <span className="bg-status-operating relative inline-flex h-2 w-2 rounded-full" />
-      </span>
-      {tHome('hero.openNow', { count: openParks })}
+    <span
+      className={cn(
+        'inline-flex h-[30px] w-fit items-center gap-2 self-start rounded-full border px-3.5 text-[11px] font-bold tracking-[0.14em] uppercase shadow-sm backdrop-blur-md',
+        pending
+          ? 'border-border/50 bg-background/50'
+          : 'border-status-operating/40 bg-status-operating/10 text-status-operating'
+      )}
+      aria-busy={pending || undefined}
+    >
+      {pending ? (
+        <Skeleton className="h-2.5 w-36" />
+      ) : (
+        <>
+          <span className="relative flex h-2 w-2" aria-hidden="true">
+            <span className="bg-status-operating absolute inline-flex h-full w-full animate-ping rounded-full opacity-60 motion-reduce:animate-none" />
+            <span className="bg-status-operating relative inline-flex h-2 w-2 rounded-full" />
+          </span>
+          {tHome('hero.openNow', { count: openParks })}
+        </>
+      )}
     </span>
   );
 }

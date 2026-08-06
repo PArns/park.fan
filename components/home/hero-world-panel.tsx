@@ -21,8 +21,11 @@ export interface WorldPanelContinent {
   initialOpenCount: number | null;
 }
 
-/** How many country chips the panel shows per continent. */
-const PANEL_COUNTRY_LIMIT = 8;
+/**
+ * How many country chips the panel shows per continent. High enough that every continent with
+ * parks fits entirely today, so the "11 Länder" in the subtitle matches what is on screen.
+ */
+const PANEL_COUNTRY_LIMIT = 12;
 
 /**
  * Server seed for the hero's world-map panel: static geo structure (24h cache) + the

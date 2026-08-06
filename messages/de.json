@@ -117,11 +117,8 @@
       "badge": "KI-gestützte Vorhersagen",
       "cta": "Parks entdecken",
       "searchPlaceholder": "Parks, Attraktionen, Shows & Restaurants suchen...",
-      "howto": "Wie nutze ich park.fan?",
-      "glossary": "Wichtige Freizeitparkbegriffe",
-      "liveWaitTimes": "Live Wartezeiten",
       "title": "Wo lohnt sich heute das Anstehen?",
-      "intro": "park.fan zählt live an <strong>{parks, number} Freizeitparks</strong> und <strong>{attractions, number} Attraktionen</strong> mit, von Europa-Park und Phantasialand bis Magic Kingdom. Such deinen Park, oder klick dich über die Karte durch die Welt.",
+      "intro": "park.fan hat <strong>{parks, number} Freizeitparks</strong> und <strong>{attractions, number} Attraktionen</strong> live im Blick, von Europa-Park und Phantasialand bis zum Magic Kingdom. Such deinen Park, oder klick dich über die Karte durch die Welt.",
       "openNow": "{count, plural, =1 {1 Park gerade offen} other {# Parks gerade offen}}",
       "searchExamples": "Europa-Park, Taron, Efteling …"
     },
@@ -208,8 +205,8 @@
       "subtitle": "{count, plural, =1 {1 Land} other {# Länder}} · anderen Kontinent anklicken",
       "openWord": "offen",
       "countryOpen": "{count} offen",
-      "closedShort": "zu",
-      "viewAll": "Alle Parks in {continent} ansehen"
+      "viewAll": "Alle Parks in {continent} ansehen",
+      "countryClosed": "{count} geschlossen"
     }
   },
   "footer": {
@@ -977,7 +974,7 @@
       "select": "Auswählen",
       "close": "Schließen"
     },
-    "avgWait": "Ø {minutes} min",
+    "avgWait": "Ø {minutes} Min.",
     "attractionsOpen": "{open}/{total} Attraktionen offen",
     "heroHint": "Tippe los, wir suchen Parks, Attraktionen, Shows und Restaurants"
   },

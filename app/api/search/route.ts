@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { search } from '@/lib/api/search';
+import { enrichSearchResultsWithImages } from '@/lib/utils/search-assets';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -17,7 +18,8 @@ export async function GET(request: Request) {
 
   try {
     const data = await search(query);
-    return NextResponse.json(data);
+    // Photos live in this repo, not in the backend — resolve them here, like /api/nearby does.
+    return NextResponse.json(enrichSearchResultsWithImages(data));
   } catch (error) {
     console.error('Search API error:', error);
     return NextResponse.json(
