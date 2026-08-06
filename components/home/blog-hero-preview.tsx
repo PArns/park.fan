@@ -1,12 +1,8 @@
-import Image from 'next/image';
 import { ArrowRight, Newspaper } from 'lucide-react';
-import { useFormatter, useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { listPosts } from '@/lib/blog/listing';
-import { versionedPath } from '@/lib/media/focus';
-import { resolveCategoryLabel } from '@/lib/blog/categories';
-import type { BlogListItem } from '@/lib/blog/types';
+import { BlogPostCard } from '@/components/blog/blog-post-card';
 import type { Locale } from '@/i18n/config';
 
 interface BlogHeroPreviewProps {
@@ -47,75 +43,15 @@ export async function BlogHeroPreview({ locale }: BlogHeroPreviewProps) {
         </Link>
       </div>
 
-      <div className="grid items-stretch gap-4 md:grid-cols-3">
+      {/* The same BlogPostCard the rest of the site uses — photo behind two glass panels, the
+          ParkCard/AttractionCard visual language. This strip used to draw its own look-alike
+          (photo on top, text below), which made the first blog cards a visitor sees the only
+          ones on the site that do not match the cards around them. */}
+      <div className="grid gap-4 md:grid-cols-3">
         {posts.map((post) => (
-          <HeroPreviewCard key={post.translationKey} post={post} locale={locale} />
+          <BlogPostCard key={post.translationKey} post={post} />
         ))}
       </div>
     </div>
-  );
-}
-
-interface HeroPreviewCardProps {
-  post: BlogListItem;
-  locale: Locale;
-}
-
-function HeroPreviewCard({ post, locale }: HeroPreviewCardProps) {
-  const f = useFormatter();
-  const t = useTranslations('blog');
-  const { frontmatter, slug, readingTimeMinutes } = post;
-  const date = new Date(frontmatter.date);
-  const categoryPath = frontmatter.category ?? '';
-  const lastSegment = categoryPath.split('/').filter(Boolean).pop() ?? '';
-  const categoryLabel = categoryPath
-    ? resolveCategoryLabel(categoryPath, locale, lastSegment)
-    : null;
-  const cover = versionedPath(frontmatter.coverImage?.src);
-
-  return (
-    <Link
-      href={`/blog/${slug}` as '/'}
-      className="group border-border/50 bg-background/60 hover:border-primary/40 hover:bg-background flex flex-col overflow-hidden rounded-2xl border transition-colors"
-      prefetch={false}
-    >
-      {cover && (
-        // 16:9 gives all three photos the same shape whatever their source crop is; the
-        // sidecar's focal point decides what survives it.
-        <div className="bg-muted relative aspect-16/9 w-full overflow-hidden">
-          <Image
-            src={cover}
-            alt={frontmatter.coverImage?.alt ?? frontmatter.title}
-            fill
-            sizes="(max-width: 767px) 100vw, 33vw"
-            className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-          />
-        </div>
-      )}
-      <div className="flex flex-1 flex-col p-4">
-        <div className="text-muted-foreground mb-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] font-semibold tracking-wider uppercase">
-          {categoryLabel && <span className="text-primary">{categoryLabel}</span>}
-          {categoryLabel && <span aria-hidden>·</span>}
-          <span className="normal-case">
-            {f.dateTime(date, { day: 'numeric', month: 'short', year: 'numeric' })}
-          </span>
-        </div>
-        <h3 className="text-foreground group-hover:text-primary line-clamp-2 text-base leading-snug font-bold transition-colors">
-          {frontmatter.title}
-        </h3>
-        {frontmatter.excerpt && (
-          <p className="text-muted-foreground mt-2 line-clamp-3 text-sm leading-relaxed">
-            {frontmatter.excerpt}
-          </p>
-        )}
-        {/* mt-auto pins the footer to the bottom, so all three line up even when one title
-            wraps to two lines and its neighbours do not. */}
-        {readingTimeMinutes > 0 && (
-          <div className="text-muted-foreground/80 mt-auto pt-3 text-xs">
-            {t('readingTime', { minutes: readingTimeMinutes })}
-          </div>
-        )}
-      </div>
-    </Link>
   );
 }

@@ -28,9 +28,6 @@ export function HeroTextPanel({ children, className, ...rest }: React.ComponentP
       className={cn(
         // min-w-0: the scrollable pill row inside must not widen this box past its grid column.
         'w-full min-w-0 rounded-3xl border p-6 shadow-xl sm:p-8',
-        // The band of light that crosses both panels once on arrival. It rides the plate's own
-        // ::after, so it adds no child that the content stagger's nth-child would count.
-        'hero-sheen',
         // Below xl there is no map panel beside it, so the plate would otherwise sit narrow and
         // left-aligned against a wide empty half. It gets more width AND centres itself there;
         // from xl it goes back to hugging the left column next to the map.

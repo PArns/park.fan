@@ -89,34 +89,51 @@ export function Header({ showBlog = true }: HeaderProps) {
   const isTransparent = isHeroPage && !scrolled;
 
   /*
-   * The logo handoff. There are two logo lockups in the markup — one parked in the corner while
-   * the header floats over the hero, one in the bar's flex flow once it solidifies — and they
-   * sit at different x positions and different sizes. Cross-fading them looked like what it was:
-   * one thing disappearing while a second, bigger thing appeared somewhere else.
+   * The corner-to-bar handoffs, on both ends of the header.
    *
-   * They now travel the same path in the same 500 ms. The outgoing one slides to where the
-   * incoming one lives and grows to its size; the incoming one starts small at the corner. At
-   * the midpoint the two are the same size in the same place, so the eye reads a single logo
-   * moving rather than a swap.
+   * The bar carries two copies of each of its anchors: one parked in the corner while the header
+   * floats over the hero, one in the flex flow once it solidifies. Cross-fading a pair looked
+   * like exactly what it was — one thing disappearing while a second one appeared somewhere else,
+   * at a different size on the left.
    *
-   * Both numbers are measured, not guessed: `offsetLeft`/`offsetHeight` are layout values and
-   * ignore the transforms, so the measurement can never feed back into itself the way a
-   * `getBoundingClientRect()` would. The container is centred, so the distance depends on the
-   * viewport and has to be re-measured on resize.
+   * Each pair now travels the same path in the same 500 ms. The outgoing copy slides to where the
+   * incoming one lives (and, for the logo, grows to its size); the incoming one starts at the
+   * corner. At the midpoint the two coincide, so the eye reads one object moving.
+   *
+   * Two anchors, two conventions:
+   *
+   * - **The logo** is left-aligned, so the path is measured from the left edges and grows from
+   *   `origin-left` — away from the screen edge, with its left edge on the path.
+   * - **The locale + theme cluster** is right-aligned, so it is measured from the RIGHT edges
+   *   (`offsetLeft + offsetWidth`) and moves from `origin-right`. It needs no scale at all: both
+   *   copies hold the same two controls at the same size, and only the corner one wraps them in
+   *   a frosted pill. That pill dissolving while the pair glides is the whole effect.
+   *
+   * Every number is measured, never guessed, and always from `offsetLeft`/`offsetWidth`/
+   * `offsetHeight` — layout values, which ignore the transforms, so a measurement can never feed
+   * back into itself the way `getBoundingClientRect()` would. The container is centred, so the
+   * distances depend on the viewport and are re-measured on resize.
    */
   const cornerLogoRef = useRef<HTMLAnchorElement>(null);
   const barLogoRef = useRef<HTMLAnchorElement>(null);
-  const [logoHandoff, setLogoHandoff] = useState({ shift: 0, scale: 1 });
+  const cornerActionsRef = useRef<HTMLDivElement>(null);
+  const barActionsRef = useRef<HTMLDivElement>(null);
+  const [handoff, setHandoff] = useState({ logoShift: 0, logoScale: 1, actionsShift: 0 });
 
   useEffect(() => {
     if (!isHeroPage) return;
+    const rightEdge = (el: HTMLElement) => el.offsetLeft + el.offsetWidth;
     const measure = () => {
-      const corner = cornerLogoRef.current;
-      const bar = barLogoRef.current;
-      if (!corner || !bar || bar.offsetHeight === 0) return;
-      setLogoHandoff({
-        shift: bar.offsetLeft - corner.offsetLeft,
-        scale: corner.offsetHeight / bar.offsetHeight,
+      const cornerLogo = cornerLogoRef.current;
+      const barLogo = barLogoRef.current;
+      const cornerActions = cornerActionsRef.current;
+      const barActions = barActionsRef.current;
+      if (!cornerLogo || !barLogo || barLogo.offsetHeight === 0) return;
+      setHandoff({
+        logoShift: barLogo.offsetLeft - cornerLogo.offsetLeft,
+        logoScale: cornerLogo.offsetHeight / barLogo.offsetHeight,
+        actionsShift:
+          cornerActions && barActions ? rightEdge(barActions) - rightEdge(cornerActions) : 0,
       });
     };
     measure();
@@ -124,15 +141,19 @@ export function Header({ showBlog = true }: HeaderProps) {
     return () => window.removeEventListener('resize', measure);
   }, [isHeroPage]);
 
-  const { shift, scale } = logoHandoff;
-  // transform-origin sits at the left edge so the lockup grows to the right, away from the
-  // screen edge, and its left edge stays on the path between the two positions.
-  const logoMotion = 'origin-left transition-[opacity,transform] duration-500 ease-out';
+  const { logoShift, logoScale, actionsShift } = handoff;
+  const handoffMotion = 'transition-[opacity,transform] duration-500 ease-out';
   const cornerLogoStyle = isTransparent
     ? undefined
-    : { transform: `translateX(${shift}px) scale(${(1 / scale).toFixed(3)})` };
+    : { transform: `translateX(${logoShift}px) scale(${(1 / logoScale).toFixed(3)})` };
   const barLogoStyle = isTransparent
-    ? { transform: `translateX(${-shift}px) scale(${scale.toFixed(3)})` }
+    ? { transform: `translateX(${-logoShift}px) scale(${logoScale.toFixed(3)})` }
+    : undefined;
+  const cornerActionsStyle = isTransparent
+    ? undefined
+    : { transform: `translateX(${actionsShift}px)` };
+  const barActionsStyle = isTransparent
+    ? { transform: `translateX(${-actionsShift}px)` }
     : undefined;
   // The bar's contents settle in as it solidifies and lift back out as it goes transparent —
   // one timeline played and reversed, layered on top of the CSS crossfade below, never
@@ -170,7 +191,7 @@ export function Header({ showBlog = true }: HeaderProps) {
           href="/"
           prefetch={false}
           style={cornerLogoStyle}
-          className={`absolute top-1/2 left-6 flex -translate-y-1/2 items-center gap-1 motion-reduce:transform-none! ${logoMotion} ${
+          className={`absolute top-1/2 left-6 flex origin-left -translate-y-1/2 items-center gap-1 motion-reduce:transform-none! ${handoffMotion} ${
             isTransparent ? 'opacity-100' : 'pointer-events-none opacity-0'
           }`}
           aria-label="park.fan - Home"
@@ -246,7 +267,7 @@ export function Header({ showBlog = true }: HeaderProps) {
           href="/"
           prefetch={false}
           style={barLogoStyle}
-          className={`flex shrink-0 items-center gap-0.5 motion-reduce:transform-none! ${logoMotion} ${
+          className={`flex shrink-0 origin-left items-center gap-0.5 motion-reduce:transform-none! ${handoffMotion} ${
             isTransparent ? 'pointer-events-none opacity-0' : 'opacity-100'
           }`}
           aria-label="park.fan - Home"
@@ -366,7 +387,9 @@ export function Header({ showBlog = true }: HeaderProps) {
             Rendered on the hero pages (homepage + Fancast) where the header floats transparent. */}
         {isHeroPage && (
           <div
-            className={`absolute top-1/2 right-6 flex -translate-y-1/2 items-center gap-1 rounded-lg bg-white/60 px-1 py-0.5 backdrop-blur-md transition-opacity duration-500 dark:bg-black/40 ${
+            ref={cornerActionsRef}
+            style={cornerActionsStyle}
+            className={`absolute top-1/2 right-6 flex origin-right -translate-y-1/2 items-center gap-1 rounded-lg bg-white/60 px-1 py-0.5 backdrop-blur-md motion-reduce:transform-none! dark:bg-black/40 ${handoffMotion} ${
               isTransparent ? 'opacity-100' : 'pointer-events-none opacity-0'
             }`}
           >
@@ -384,7 +407,9 @@ export function Header({ showBlog = true }: HeaderProps) {
 
           {/* In-flow locale + theme – fades in on scroll, keeps flex anchor when invisible */}
           <div
-            className={`flex items-center gap-1 transition-opacity duration-500 ${
+            ref={barActionsRef}
+            style={barActionsStyle}
+            className={`flex origin-right items-center gap-1 motion-reduce:transform-none! ${handoffMotion} ${
               isTransparent ? 'pointer-events-none opacity-0' : 'opacity-100'
             }`}
           >

@@ -76,6 +76,31 @@ Manual `@layer utilities` (not in `@theme inline`, no opacity modifier):
 
 ---
 
+## Theme: dark by default, light on request
+
+park.fan is a **dark site**. `ThemeProvider` runs `defaultTheme="dark"` with `enableSystem={false}`,
+so every visitor gets dark on every device and light is something they opt into. Following the OS
+would make the site dark for some people and light for others by accident, which is the opposite
+of having a default — and it is why the old three-way light/dark/system menu is gone. A browser
+still holding `system` from that menu is moved to dark on its next visit (`ThemeToggle`), stray
+class included: next-themes writes `system` onto `<html>` as if it were a theme name, and adding
+`dark` does not take it back off.
+
+`viewport.themeColor` is a single value for the same reason. It used to be a `prefers-color-scheme`
+pair, which would now tint the browser chrome by something that has nothing to do with what the
+page looks like.
+
+The switch itself splits motion the way the rest of the codebase does: **CSS owns the state** (the
+knob's position is a class, so a failed GSAP chunk still visibly switches), **GSAP owns the
+flourish** — the icon spins through the change and the incoming theme opens out of the switch as a
+disc that covers the viewport before the colours flip, then lifts off the newly themed page
+(`lib/theme/theme-wipe.ts`). The disc is a scaled element, not an animated `clip-path`: a transform
+composites on the GPU and interpolates as a plain number, a `circle()` radius inside a `clip-path`
+string does neither. Under `prefers-reduced-motion`, or if the import fails, the theme still
+changes — `apply` is called exactly once on every path through that module.
+
+---
+
 ## Badge Pattern
 
 **All badges use the soft pattern** — semi-transparent background + colored text, works in light and dark mode without separate overrides:

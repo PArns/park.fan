@@ -44,6 +44,7 @@ import { HeroNearbyBubbles } from '@/components/home/hero-nearby-bubbles';
 import { HeroWorldPanel } from '@/components/home/hero-world-panel';
 import { HeroWorldPanelSkeleton } from '@/components/home/hero-skeletons';
 import { HeroTextPanel } from '@/components/home/hero-text-panel';
+import { HeroEntranceGate } from '@/components/home/hero-entrance-gate';
 import { FeaturedParksSlot } from '@/components/home/featured-parks-slot';
 import { GlobalStatsSection } from '@/components/home/global-stats-section';
 import { LiveActivitySection } from '@/components/home/live-activity-section';
@@ -142,9 +143,13 @@ export default async function HomePage({ params }: HomePageProps) {
           the hero search dropdown floats out of this section over the content beneath it, and
           `overflow-hidden` keeps the background photo in. The sticky header is z-50, so it still
           wins. */}
-      <section className="relative z-10 -mt-14 overflow-visible px-6 pt-24 pb-8 md:pb-10 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-20 lg:pb-12">
+      <section className="hero-entering relative z-10 -mt-14 overflow-visible px-6 pt-24 pb-8 md:pb-10 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-20 lg:pb-12">
         <HeroRotationProvider>
           <HeroBackground imageSrc={randomHeroImage} />
+          {/* Closes the entrance window, so content that streams in later does not replay it —
+              see HeroEntranceGate for what that cost in LCP. Outside the plate on purpose: a
+              child there would shift the content stagger's nth-child by one. */}
+          <HeroEntranceGate />
           {/* No legibility scrim any more. It existed because the left plate carried no
               backdrop-blur, and it was anchored left so the photo still read on the right —
               which meant the two panels ended up blurring different backdrops: the left a

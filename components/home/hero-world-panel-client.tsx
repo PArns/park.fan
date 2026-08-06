@@ -132,7 +132,7 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
     // once the entrance finished. Its sections carry the entrance instead.
     <GlassCard
       variant="heavy"
-      className="hero-in-stagger hero-sheen border-border/50 overflow-hidden rounded-2xl p-0 shadow-2xl"
+      className="hero-in-stagger border-border/50 overflow-hidden rounded-2xl p-0 shadow-2xl"
     >
       {/* Header: "Parks in Europe" + live open / total.
           aria-live: switching continents replaces this heading, the open/total figure and the

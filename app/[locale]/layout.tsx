@@ -213,10 +213,15 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
           description={tSeo('description')}
           image={getOgImageUrl([locale])}
         />
+        {/* park.fan is a dark site: dark for everyone by default, on every device, and light
+            only for visitors who ask for it. `enableSystem` is off on purpose — following the OS
+            would make the site dark for some people and light for others by accident, which is
+            the opposite of having a default. See ThemeToggle for how browsers still holding the
+            retired `system` value are moved over. */}
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="dark"
+          enableSystem={false}
           disableTransitionOnChange
         >
           <Providers>

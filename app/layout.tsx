@@ -15,10 +15,11 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#0a0a0a' },
-  ],
+  // One value, not a pair keyed off the OS preference: the site's theme no longer follows the
+  // OS at all (dark by default, light on request), so a `prefers-color-scheme` split would tint
+  // the browser chrome by something that has nothing to do with what the page looks like.
+  // This is `--background` in the dark theme, oklch(0.145 0 0).
+  themeColor: '#0a0a0a',
 };
 
 interface RootLayoutProps {

@@ -334,12 +334,18 @@ the delay and hands the element back to its own styles at the end.
 
 ### What does animate
 
-- **Plate contents, one at a time** — `hero-item-in`: rise, fade, and resolve out of a 6 px blur.
-  The blur is on content, which has no `backdrop-filter` of its own. Delays come from
-  `.hero-in-stagger > *:nth-child()` setting `--hero-in-i`, so no component needs to know its
-  place in the sequence, and `.hero-in-late` on the right column shifts the whole stagger's
-  starting point (`--hero-in-from`) without touching the step between siblings — the hero reads
-  left to right instead of both halves landing at once.
+- **Plate contents, one at a time** — `hero-item-in`: they drift in from the outside edge, rise,
+  grow the last 3.5 % into place and resolve out of a 12 px blur, over 0.85 s on a near-flat expo
+  curve. Most of the distance is covered in the first third and the rest is a settle, which is
+  the difference between cinematic and slow. The blur is on content, which has no
+  `backdrop-filter` of its own.
+
+  Three custom properties carry the choreography, so no component needs to know its place in it:
+  `--hero-in-i` per position (`nth-child`), `--hero-in-from` for where a column's sequence starts,
+  and `--hero-in-x` for which side it drifts in from. `.hero-in-late` on the right column sets the
+  last two to mirrored values, so the hero reads left to right and closes toward its own centre
+  instead of everything sliding the same way.
+
 - **The map's landmasses** — `hero-map-in`: a west-to-east sweep, so the map draws itself instead
   of switching on. The order is derived from `BUBBLE_ANCHORS`' x coordinates, not hard-coded, so
   retuning an anchor keeps its continent in the right place in the sweep. `transform-box: fill-box`
@@ -354,17 +360,35 @@ the delay and hands the element back to its own styles at the end.
   are not transform/opacity/filter (`fill-opacity`, `box-shadow`), which is also why the ring is
   not a `scale`: the bubbles are centred on their anchor by the standalone `translate` property
   and a scale there would fight it.
-- **A band of light across each panel** — `hero-sheen`, once, after the contents have landed. It
-  rides the panel's own `::after`, which is deliberate on two counts: a pseudo-element is a child
-  box, so it never makes the panel a backdrop root, and `nth-child` does not count it, so it does
-  not shift the content stagger by one. It needs no clipping wrapper either — a background is
-  painted inside the border box, and `border-radius: inherit` rounds it with the panel.
+  An entrance animation has to own the very first painted frame. A lazily-loaded library cannot:
+  either the hero paints and is then hidden again when the library arrives — a flash — or it stays
+  blank until the chunk lands. Both are worse than the pop they would be fixing. A CSS keyframe with
+  `backwards` gives it a hidden start state without any JavaScript, so there is no code path where a
+  failed chunk leaves the hero invisible.
 
-An entrance animation has to own the very first painted frame. A lazily-loaded library cannot:
-either the hero paints and is then hidden again when the library arrives — a flash — or it stays
-blank until the chunk lands. Both are worse than the pop they would be fixing. A CSS keyframe with
-`backwards` gives it a hidden start state without any JavaScript, so there is no code path where a
-failed chunk leaves the hero invisible.
+### The entrance is a window, and it has to close
+
+The hero's badge, headline and intro live in a dynamic hole: the static shell paints a fallback
+with the same markup minus the live counts, and the real content is streamed in behind it. That
+replacement is a **DOM swap, not a React re-render**, so the arriving elements are new elements —
+and a new element starts its CSS entrance from the top.
+
+On a fast link that lands inside the entrance and nobody notices. On a throttled one the hole
+resolved around 2.5 s in and the headline visibly faded a **second** time, which also handed the
+page its LCP to that second fade:
+
+|                               | LCP, 4 runs at 4× CPU / 1.6 Mbps |
+| ----------------------------- | -------------------------------- |
+| entrance replayed on the swap | 3.31 / 3.49 / 3.84 / 3.99 s      |
+| entrance closed before it     | 3.36 / 3.34 / 3.38 / 3.34 s      |
+
+So the entrance is scoped to `.hero-entering` on the hero section and `HeroEntranceGate` drops
+that class once the choreography is over. It is an **inline script, not an effect**: the window
+has to close before the swap, the swap has no fixed time, and on a throttled phone hydration
+itself lands after it — a `useEffect` timer starts counting too late to ever win. Parsed inline,
+the timer starts at roughly the moment the hero paints, the same clock the CSS animation runs on.
+If the script is blocked the class stays and late content animates in, which is the behaviour it
+replaces; nothing is hidden that only JavaScript can reveal.
 
 **GSAP earns its place on interaction**, in two places:
 
@@ -385,7 +409,7 @@ failed chunk leaves the hero invisible.
   the header into a fidget, whereas reversing simply continues the same motion from wherever it
   currently is.
 
-### The logo does not cross-fade, it moves
+### The corner anchors do not cross-fade, they move
 
 There are two logo lockups in the markup: one parked at `left-6` while the header floats over the
 hero, one in the bar's flex flow once it solidifies. They sit at different x positions and
@@ -402,6 +426,12 @@ layout values and ignore the transforms, so the measurement cannot feed back int
 container is centred, so the distance depends on the viewport and is re-measured on resize.
 `motion-reduce:transform-none!` drops the movement for reduced motion; the `!` is required
 because an inline style otherwise wins.
+
+The locale + theme cluster on the right does the same thing with two differences: it is measured
+from the **right** edges (`offsetLeft + offsetWidth`) and moves from `origin-right`, and it needs
+no scale at all — both copies hold the same two controls at the same size, and only the corner one
+wraps them in a frosted pill. That pill dissolving while the pair glides is the whole effect.
+Measured in the solid state, both right edges land on the same pixel.
 
 In both cases the chunk loads while the visitor is already looking at the thing being animated,
 and if the import fails the content is in the DOM regardless — nothing is hidden up front waiting
