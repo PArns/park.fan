@@ -202,7 +202,7 @@
     },
     "worldPanel": {
       "title": "Parcs en {continent}",
-      "subtitle": "{count, plural, one {# pays} other {# pays}} · cliquez sur un autre continent",
+      "subtitle": "{count, plural, one {# pays} other {# pays}} · changer de continent",
       "openWord": "ouverts",
       "countryOpen": "{count, plural, one {# ouvert} other {# ouverts}}",
       "viewAll": "Voir tous les parcs en {continent}",

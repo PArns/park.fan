@@ -42,6 +42,17 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
 
   const [selectedSlug, setSelectedSlug] = useState('europe');
   const chipsRef = useRef<HTMLDivElement>(null);
+  /**
+   * True only for the panel's own arrival. The bubbles pop in when the map first appears, but
+   * NOT when a continent is switched: the selected bubble is a link and the others are buttons,
+   * so switching remounts two of them, and a pop there would fire on exactly the two elements
+   * the visitor is looking at while the chip row below is already animating.
+   */
+  const [entering, setEntering] = useState(true);
+  useEffect(() => {
+    const done = setTimeout(() => setEntering(false), 900);
+    return () => clearTimeout(done);
+  }, []);
   const selected = continents.find((c) => c.slug === selectedSlug) ?? continents[0];
 
   const continentBySlug = new Map(continents.map((c) => [c.slug, c]));
@@ -163,7 +174,7 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
             actually do: pressing the selected bubble navigates to its parks, pressing another
             switches the panel. It was one `aria-pressed` button for both, which announced a
             toggle that never un-toggles and then navigated away instead. */}
-        {continents.map((continent) => {
+        {continents.map((continent, index) => {
           const anchor = BUBBLE_ANCHORS[continent.slug as WorldMapContinentSlug];
           if (!anchor) return null;
           const isSelected = continent.slug === selected.slug;
@@ -172,9 +183,11 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
           const position = {
             left: `${(anchor.x / 2000) * 100}%`,
             top: `${(anchor.y / 857) * 100}%`,
+            ...(entering ? { animationDelay: `${index * 0.06}s` } : {}),
           };
           const bubbleClass = cn(
             'absolute inline-flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-semibold whitespace-nowrap shadow-sm transition-colors',
+            entering && 'hero-bubble-in',
             isSelected
               ? 'border-primary bg-primary text-primary-foreground'
               : 'border-border/60 bg-background/85 hover:border-primary/50'

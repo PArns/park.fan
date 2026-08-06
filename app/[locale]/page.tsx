@@ -145,14 +145,11 @@ export default async function HomePage({ params }: HomePageProps) {
       <section className="relative z-10 -mt-14 overflow-visible px-6 pt-24 pb-8 md:pb-10 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-20 lg:pb-12">
         <HeroRotationProvider>
           <HeroBackground imageSrc={randomHeroImage} />
-          {/* Legibility scrim, behind the left panel and doing the work a backdrop-blur would:
-              the panel covers most of the hero, and a backdrop filter that large over the
-              ken-burns photo re-filters its backdrop every animation frame. Anchored left so
-              the photo still reads on the right. */}
-          <div
-            aria-hidden="true"
-            className="from-background/85 via-background/45 pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r to-transparent"
-          />
+          {/* No legibility scrim any more. It existed because the left plate carried no
+              backdrop-blur, and it was anchored left so the photo still read on the right —
+              which meant the two panels ended up blurring different backdrops: the left a
+              dimmed one, the right the raw photo. Same 64 px filter, visibly different glass.
+              The plate's own blur now does the legibility work for both. */}
           <div className="relative container mx-auto">
             {/* grid-cols-1, not a bare `grid`: an implicit column is sized to its content's
                 max-content width, and the horizontally scrollable pill row inside is wider than
@@ -161,7 +158,7 @@ export default async function HomePage({ params }: HomePageProps) {
             <div className="grid grid-cols-1 items-start gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(0,34rem)] 2xl:grid-cols-[minmax(0,1fr)_minmax(0,40rem)] 2xl:gap-14">
               {/* Left: live badge + headline + intro with live counts + in-place search +
                   the nearby-park bubbles */}
-              <HeroTextPanel className="hero-in">
+              <HeroTextPanel className="hero-in hero-in-stagger">
                 <Suspense fallback={<HeroWithNearby initialCounts={null} />}>
                   <HeroStats />
                 </Suspense>

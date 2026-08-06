@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Command as CommandPrimitive } from 'cmdk';
 import { Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -58,6 +58,14 @@ export default function HeroInlineSearchPanel({
   const cardRef = useRef<HTMLDivElement>(null);
   /** Measured height of the RESTING card — what the spacer below reserves. */
   const [restHeight, setRestHeight] = useState<number | null>(null);
+  /**
+   * Focused: the list grows from the three resting rows to everything the browse hook has.
+   * At rest three rows are an answer at a glance; once the visitor is actually in the field,
+   * showing more of what is nearby beats making them type.
+   */
+  const [expanded, setExpanded] = useState(false);
+  /** The card's height just before a row count change — the tween's starting point. */
+  const heightBeforeChange = useRef<number | null>(null);
   const trackedFocus = useRef(false);
 
   const search = useSearchResults(query);
@@ -81,6 +89,41 @@ export default function HeroInlineSearchPanel({
     input.setSelectionRange(input.value.length, input.value.length);
   }, [autoFocus, onFocusHandled]);
 
+  // Animate the row-count change. The card is absolutely positioned and its content swaps in
+  // one render, so there is nothing for CSS to interpolate — capture the height before React
+  // commits, then tween from it to the new natural height. GSAP handles `height: auto` for the
+  // target, which a CSS transition cannot.
+  useLayoutEffect(() => {
+    const card = cardRef.current;
+    const from = heightBeforeChange.current;
+    heightBeforeChange.current = null;
+    if (!card || from == null || from === card.offsetHeight) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let ctx: { revert: () => void } | undefined;
+    let cancelled = false;
+    import('gsap')
+      .then(({ gsap }) => {
+        if (cancelled || !cardRef.current) return;
+        ctx = gsap.context(() => {
+          gsap.from(cardRef.current, {
+            height: from,
+            duration: 0.34,
+            ease: 'power2.out',
+            clearProps: 'height',
+          });
+        }, cardRef);
+      })
+      .catch(() => {
+        // Without the tween the list simply snaps to its new size, which is what it did before.
+      });
+
+    return () => {
+      cancelled = true;
+      ctx?.revert();
+    };
+  }, [expanded]);
+
   // Reserve exactly the resting card's height in the flow, measured rather than assumed.
   //
   // It was a hardcoded constant that happened to match one locale's three rows. Any content
@@ -90,7 +133,7 @@ export default function HeroInlineSearchPanel({
   //
   // Only measured while at REST. Once a query grows the list the card is meant to expand over
   // the pills, so the last resting height is what stays reserved.
-  const atRest = query.trim().length < 3;
+  const atRest = query.trim().length < 3 && !expanded;
   useEffect(() => {
     const card = cardRef.current;
     if (!card || !atRest) return;
@@ -163,10 +206,17 @@ export default function HeroInlineSearchPanel({
       shouldFilter={false}
       className="[&_[cmdk-group-heading]]:text-muted-foreground/60 relative w-full bg-transparent [&_[cmdk-group-heading]]:px-4 [&_[cmdk-group-heading]]:pt-3.5 [&_[cmdk-group-heading]]:pb-1 [&_[cmdk-group-heading]]:text-[10px] [&_[cmdk-group-heading]]:font-semibold [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group]]:px-1.5 [&_[cmdk-item]]:px-3 [&_[cmdk-item]]:py-2.5 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5"
       onKeyDown={(e) => {
-        // Escape clears the query back to the browse list and KEEPS focus on the field. There
-        // is no closed state to fall back to, and blurring to <body> dropped a keyboard user
-        // out of the hero with nothing announced and no defined place to tab on from.
-        if (e.key === 'Escape' && query) setQuery('');
+        // Escape steps back one level and KEEPS focus on the field: a query is cleared first,
+        // and only an already-empty field collapses to the three resting rows. There is no
+        // closed state to fall back to — blurring to <body> dropped a keyboard user out of the
+        // hero with nothing announced and no defined place to tab on from.
+        if (e.key !== 'Escape') return;
+        if (query) {
+          setQuery('');
+        } else if (expanded) {
+          heightBeforeChange.current = cardRef.current?.offsetHeight ?? null;
+          setExpanded(false);
+        }
       }}
     >
       {/* Input — same look as the static shell it replaces */}
@@ -179,10 +229,16 @@ export default function HeroInlineSearchPanel({
           placeholder={placeholder}
           aria-label={label}
           onFocus={() => {
+            heightBeforeChange.current = cardRef.current?.offsetHeight ?? null;
+            setExpanded(true);
             if (!trackedFocus.current) {
               trackedFocus.current = true;
               trackHeroSearchClicked();
             }
+          }}
+          onBlur={() => {
+            heightBeforeChange.current = cardRef.current?.offsetHeight ?? null;
+            setExpanded(false);
           }}
           className={cn(HERO_SEARCH_INPUT_CLASS, 'focus:border-primary/50 focus:shadow-lg')}
         />
@@ -224,7 +280,7 @@ export default function HeroInlineSearchPanel({
             search={search}
             onSelect={handleSelect}
             onGlossarySelect={handleGlossarySelect}
-            browseLimit={HERO_BROWSE_LIMIT}
+            browseLimit={expanded ? undefined : HERO_BROWSE_LIMIT}
             listClassName="min-h-0 flex-1"
           />
         </GlassCard>

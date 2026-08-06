@@ -76,11 +76,18 @@ export function useHeroBrowseParks(): HeroBrowseParks {
   const afterLoad = useAfterLoad();
   const { data: nearbyData, isPending: nearbyPending } = useHomeNearbyParks();
 
+  // Open parks first, then by distance — the same order the nearby card's list uses. The API
+  // returns pure distance order, which buries an open park behind three shut ones at three in
+  // the afternoon; the pills and the pre-query list are both about where you could go NOW.
   // Memoized so the `[]` fallback isn't a fresh array on every render (it feeds the useMemo below).
-  const nearbyParks: ParkWithDistance[] = useMemo(
-    () => (nearbyData?.type === 'nearby_parks' ? (nearbyData.data as NearbyParksData).parks : []),
-    [nearbyData]
-  );
+  const nearbyParks: ParkWithDistance[] = useMemo(() => {
+    if (nearbyData?.type !== 'nearby_parks') return [];
+    return [...(nearbyData.data as NearbyParksData).parks].sort((a, b) => {
+      const aOpen = a.status === 'OPERATING' ? 0 : 1;
+      const bOpen = b.status === 'OPERATING' ? 0 : 1;
+      return aOpen !== bOpen ? aOpen - bOpen : a.distance - b.distance;
+    });
+  }, [nearbyData]);
   const inParkData =
     nearbyData?.type === 'in_park' ? (nearbyData.data as NearbyAttractionsData) : null;
   const hasNearby = nearbyParks.length > 0 || inParkData != null;

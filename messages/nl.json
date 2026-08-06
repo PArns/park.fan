@@ -202,7 +202,7 @@
     },
     "worldPanel": {
       "title": "Parken in {continent}",
-      "subtitle": "{count, plural, =1 {1 land} other {# landen}} · klik op een ander continent",
+      "subtitle": "{count, plural, =1 {1 land} other {# landen}} · wissel van continent",
       "openWord": "open",
       "countryOpen": "{count} open",
       "viewAll": "Alle parken in {continent} bekijken",

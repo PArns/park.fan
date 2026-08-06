@@ -231,12 +231,86 @@
   }
 }
 
+/* The plates themselves: rise, fade, and settle out of a barely-there scale. */
+@keyframes hero-plate-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Their contents, one line at a time, over a shorter distance. */
+@keyframes hero-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* The map's continent bubbles: they belong to the map, so they arrive by growing out of it. */
+@keyframes hero-pop-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .hero-in {
-    animation: hero-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation: hero-plate-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
   .hero-in-delay-1 {
-    animation-delay: 0.09s;
+    animation-delay: 0.12s;
+  }
+
+  /*
+   * The plate's own children, staggered by position rather than by a class per element: the
+   * left plate's direct children are exactly the badge, the headline, the intro, the search
+   * and the pill row (HeroWithNearby returns a fragment, so its three land here too). Keying
+   * off nth-child means no component has to know its place in the sequence.
+   *
+   * The delays start after the plate itself is on its way (0.12s) so the contents do not race
+   * the box they sit in.
+   */
+  .hero-in-stagger > * {
+    animation: hero-item-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .hero-in-stagger > *:nth-child(1) {
+    animation-delay: 0.16s;
+  }
+  .hero-in-stagger > *:nth-child(2) {
+    animation-delay: 0.23s;
+  }
+  .hero-in-stagger > *:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  .hero-in-stagger > *:nth-child(4) {
+    animation-delay: 0.37s;
+  }
+  .hero-in-stagger > *:nth-child(5) {
+    animation-delay: 0.44s;
+  }
+
+  /*
+   * The world panel's bubbles. This one runs on MOUNT, not on first paint — the panel is a
+   * lazy chunk that replaces a skeleton — so it is the one entrance here that is allowed to
+   * arrive late. `translate(-50%, -50%)` is part of the keyframe because the bubbles are
+   * positioned by that transform; animating `scale` alone would drop it and fling them.
+   */
+  .hero-bubble-in {
+    animation: hero-pop-in 0.42s cubic-bezier(0.34, 1.4, 0.64, 1) both;
   }
 }
 

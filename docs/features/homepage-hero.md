@@ -122,8 +122,21 @@ on where it was clicked — including the list they show before anything is type
 | Panel body              | `components/search/search-results-panel.tsx` |
 
 **The dropdown is open at rest** and lists the three nearest parks — the hero's default state is
-an answer, not an empty field. It has no closed state on desktop at all; Escape clears the query
-back to that list.
+an answer, not an empty field. **Focusing the field expands it** to the full browse list, tweened
+from the height it had (GSAP: the content swaps in one render, so there is nothing for CSS to
+interpolate towards `height: auto`). It has no closed state on desktop at all: Escape steps back
+one level — a query is cleared first, an already-empty field collapses to the three resting rows
+— and focus stays on the field either way.
+
+> The spacer keeps reserving the **resting** height while expanded, so a growing list moves the
+> card over the pills rather than pushing them down. Measured: the pills sit at the same viewport
+> offset at rest, focused, and with 27 result rows on screen.
+
+> **Results and the browse list must never render at once.** `query` empties immediately while
+> `debouncedQuery` holds the old term for another 300 ms, and the two branches keyed off
+> different ones — so for that window the card rendered the full result list _and_ the browse
+> list, ballooned to its cap and snapped back. Escape hit it every time. Both branches now
+> require the two to agree.
 
 **It floats** (`absolute z-40`) rather than sitting in the hero's flow, so a growing result list
 never moves the headline. Two consequences that have to be held together:
@@ -266,8 +279,12 @@ stop one country stretching its continent's highlight across the map.
 
 ## Motion: CSS for the entrance, GSAP for interaction
 
-The hero's entrance (both panels rising and fading in, staggered) is a **CSS keyframe**
-(`.hero-in` / `.hero-in-delay-1` in `globals.css`), not GSAP, and that split is deliberate.
+The hero's entrance is a **CSS keyframe**, not GSAP, and that split is deliberate. The plates
+rise and fade out of a barely-there scale (`hero-plate-in`), the left plate's contents follow one
+at a time (`hero-item-in` via `.hero-in-stagger > *:nth-child()`, keyed off position so no
+component needs to know its place in the sequence), and the map's continent bubbles grow out of
+the map (`hero-pop-in`) — the last of those on arrival only, since switching continents remounts
+two bubbles and a pop there would fire on exactly the two the visitor is looking at.
 
 An entrance animation has to own the very first painted frame. A lazily-loaded library cannot:
 either the hero paints and is then hidden again when the library arrives — a flash — or it stays

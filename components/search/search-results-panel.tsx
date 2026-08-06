@@ -64,7 +64,13 @@ export function SearchResultsPanel({
     loading ||
     (query.trim().length >= 3 && debouncedQuery.trim().length < 3) ||
     (query.length < 3 && browse.isPending);
-  const hasResults = !isPending && debouncedQuery.length >= 3 && results;
+  // Both `query` and `debouncedQuery` have to agree before results render. They disagree for
+  // the 300 ms debounce window after the field is cleared — `query` is already empty while
+  // `debouncedQuery` still holds the old term — and the browse branch below keys off `query`,
+  // so for that window the card rendered the full result list AND the browse list at once,
+  // ballooned to its cap and snapped back. Pressing Escape hit this every time.
+  const queryIsLive = query.trim().length >= 3;
+  const hasResults = !isPending && queryIsLive && debouncedQuery.length >= 3 && results;
   const showViewAll = hasResults && results.results.length > 0;
 
   return (
