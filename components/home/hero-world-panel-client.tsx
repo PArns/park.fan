@@ -30,6 +30,25 @@ const BUBBLE_ANCHORS: Record<WorldMapContinentSlug, { x: number; y: number }> = 
 };
 
 /**
+ * Entrance order of the landmasses: west to east, by anchor, so the map draws itself across
+ * instead of switching on. Deriving it from the anchors rather than hard-coding a list means
+ * a continent whose anchor is retuned keeps its place in the sweep.
+ */
+const SWEEP_ORDER = new Map(
+  (Object.keys(BUBBLE_ANCHORS) as WorldMapContinentSlug[])
+    .sort((a, b) => BUBBLE_ANCHORS[a].x - BUBBLE_ANCHORS[b].x)
+    .map((slug, index) => [slug as string, index])
+);
+
+/** Landmasses first, then the bubbles land on a map that is already there. */
+const MAP_DELAY_S = 0.42;
+const MAP_STEP_S = 0.045;
+const BUBBLE_DELAY_S = 0.72;
+const BUBBLE_STEP_S = 0.055;
+/** Long enough for the last bubble (0.72 + 5 × 0.055 + 0.42s of animation) to finish. */
+const ENTRANCE_MS = 1600;
+
+/**
  * The hero's right-hand panel: a clickable world map with live open-park counts. Tapping
  * another continent switches the panel in place; tapping the selected one (its bubble or
  * its landmass) navigates to its geo route, and the country chips link to theirs.
@@ -50,7 +69,7 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
    */
   const [entering, setEntering] = useState(true);
   useEffect(() => {
-    const done = setTimeout(() => setEntering(false), 900);
+    const done = setTimeout(() => setEntering(false), ENTRANCE_MS);
     return () => clearTimeout(done);
   }, []);
   const selected = continents.find((c) => c.slug === selectedSlug) ?? continents[0];
@@ -108,9 +127,12 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
   };
 
   return (
+    // hero-in-stagger, not an animation on the card: a transform or opacity on the CARD would
+    // establish a backdrop root for as long as it ran, and the glass would only start blurring
+    // once the entrance finished. Its sections carry the entrance instead.
     <GlassCard
       variant="heavy"
-      className="border-border/50 overflow-hidden rounded-2xl p-0 shadow-2xl"
+      className="hero-in-stagger border-border/50 overflow-hidden rounded-2xl p-0 shadow-2xl"
     >
       {/* Header: "Parks in Europe" + live open / total.
           aria-live: switching continents replaces this heading, the open/total figure and the
@@ -151,13 +173,18 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
             // landmass with no data was still styled as clickable and did nothing at all —
             // it is inert now, and looks it.
             const isInteractive = continentBySlug.has(continent.slug);
+            const sweep = SWEEP_ORDER.get(continent.slug) ?? 0;
             return (
               <path
                 key={continent.slug}
                 d={continent.d}
                 onClick={isInteractive ? () => handleContinentClick(continent.slug) : undefined}
+                style={
+                  entering ? { animationDelay: `${MAP_DELAY_S + sweep * MAP_STEP_S}s` } : undefined
+                }
                 className={cn(
                   'transition-colors duration-300',
+                  entering && 'hero-map-in',
                   isInteractive ? 'cursor-pointer' : 'pointer-events-none',
                   continent.slug === selected.slug ? 'fill-primary/35' : 'fill-foreground/12',
                   isInteractive && continent.slug !== selected.slug && 'hover:fill-foreground/20'
@@ -174,16 +201,19 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
             actually do: pressing the selected bubble navigates to its parks, pressing another
             switches the panel. It was one `aria-pressed` button for both, which announced a
             toggle that never un-toggles and then navigated away instead. */}
-        {continents.map((continent, index) => {
+        {continents.map((continent) => {
           const anchor = BUBBLE_ANCHORS[continent.slug as WorldMapContinentSlug];
           if (!anchor) return null;
           const isSelected = continent.slug === selected.slug;
           const open = openCount(continent);
           const name = translateGeoSlug(tGeo, 'continents', continent.slug, continent.name);
+          const sweep = SWEEP_ORDER.get(continent.slug) ?? 0;
           const position = {
             left: `${(anchor.x / 2000) * 100}%`,
             top: `${(anchor.y / 857) * 100}%`,
-            ...(entering ? { animationDelay: `${index * 0.06}s` } : {}),
+            // Same west-to-east order as the landmasses below them, so each bubble follows its
+            // own continent rather than the array's order.
+            ...(entering ? { animationDelay: `${BUBBLE_DELAY_S + sweep * BUBBLE_STEP_S}s` } : {}),
           };
           const bubbleClass = cn(
             'absolute inline-flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-semibold whitespace-nowrap shadow-sm transition-colors',

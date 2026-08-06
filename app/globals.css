@@ -213,50 +213,49 @@
 }
 
 /*
- * Hero entrance: the panels rise a little and fade in on load.
+ * Hero entrance.
+ *
+ * The panels themselves never animate — see the note on the stagger rules below for why. What
+ * arrives is their content: one line at a time, rising a little, fading, and resolving out of a
+ * slight blur. That blur sits on CONTENT, which has no backdrop-filter of its own, so the
+ * panels' glass is untouched by it.
  *
  * `backwards`, NOT `both`. Both fill modes hide the element correctly before its turn — that is
  * the whole reason this is CSS rather than a lazily-loaded library — but `both` also RETAINS the
- * final keyframe forever, which leaves `transform: translateY(0) scale(1)` on the element. An
- * identity transform is still a transform: it isolates the element's backdrop, and every
- * `backdrop-filter` inside it (both hero panels, the search dropdown) then had nothing left to
- * blur. They computed as blur(64px) and did visibly nothing.
- *
- * `backwards` applies the 0% frame during the delay and hands the element back to its own styles
- * once the animation is over, so nothing lingers.
+ * final keyframe forever, which would leave `transform: translateY(0)` and `filter: blur(0)` on
+ * the element. An identity transform is still a transform, and a `filter` is a containing block
+ * too: either would isolate that subtree's backdrop for good.
  */
-@keyframes hero-in {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* The plates themselves: rise, fade, and settle out of a barely-there scale. */
-@keyframes hero-plate-in {
-  from {
-    opacity: 0;
-    transform: translateY(18px) scale(0.985);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* Their contents, one line at a time, over a shorter distance. */
 @keyframes hero-item-in {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(14px);
+    filter: blur(6px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/*
+ * The world map's landmasses. They come up in a west-to-east sweep (the delay is derived from
+ * each continent's anchor, not from the array order), so the map draws itself rather than
+ * switching on, and the bubbles then land on continents that are already there.
+ *
+ * `scale`, plus `transform-box: fill-box` on the path so each landmass grows about its own
+ * bounding box instead of the SVG's origin — without it they slide in from the top left corner
+ * of the viewBox.
+ */
+@keyframes hero-map-in {
+  from {
+    opacity: 0;
+    scale: 0.92;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
   }
 }
 
@@ -283,47 +282,57 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .hero-in {
-    animation: hero-plate-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) backwards;
-  }
-  .hero-in-delay-1 {
-    animation-delay: 0.12s;
-  }
-
   /*
+   * NOTHING animates the panels themselves — not transform, not opacity, not filter. Each of
+   * those establishes a backdrop root for as long as it is applied, so an animated panel has
+   * no working glass WHILE it animates: the blur visibly switched on at the moment the
+   * entrance finished, a beat after the panel had already arrived. The panels are therefore in
+   * place and blurring from the first frame, and the entrance is carried by their contents.
+   *
    * The plate's own children, staggered by position rather than by a class per element: the
    * left plate's direct children are exactly the badge, the headline, the intro, the search
    * and the pill row (HeroWithNearby returns a fragment, so its three land here too). Keying
    * off nth-child means no component has to know its place in the sequence.
-   *
-   * The delays start after the plate itself is on its way (0.12s) so the contents do not race
-   * the box they sit in.
    */
   .hero-in-stagger > * {
-    animation: hero-item-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) backwards;
-  }
-  .hero-in-stagger > *:nth-child(1) {
-    animation-delay: 0.16s;
+    animation: hero-item-in 0.62s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    animation-delay: calc(var(--hero-in-from, 0.16s) + 0.07s * var(--hero-in-i, 0));
   }
   .hero-in-stagger > *:nth-child(2) {
-    animation-delay: 0.23s;
+    --hero-in-i: 1;
   }
   .hero-in-stagger > *:nth-child(3) {
-    animation-delay: 0.3s;
+    --hero-in-i: 2;
   }
   .hero-in-stagger > *:nth-child(4) {
-    animation-delay: 0.37s;
+    --hero-in-i: 3;
   }
   .hero-in-stagger > *:nth-child(5) {
-    animation-delay: 0.44s;
+    --hero-in-i: 4;
+  }
+  .hero-in-stagger > *:nth-child(6) {
+    --hero-in-i: 5;
   }
 
   /*
-   * The world panel's bubbles. This one runs on MOUNT, not on first paint — the panel is a
-   * lazy chunk that replaces a skeleton — so it is the one entrance here that is allowed to
-   * arrive late. `translate(-50%, -50%)` is part of the keyframe because the bubbles are
-   * positioned by that transform; animating `scale` alone would drop it and fling them.
+   * The right column starts once the left is under way, so the hero reads left to right
+   * instead of both halves arriving at once. It shifts the whole stagger rather than each
+   * element's delay — the step between siblings stays the same.
    */
+  .hero-in-late {
+    --hero-in-from: 0.34s;
+  }
+
+  /*
+   * The map's landmasses and its bubbles. These run on MOUNT, not on first paint — the panel
+   * is a lazy chunk that replaces a skeleton — so they are the one entrance here that is
+   * allowed to arrive late. Both carry their own delay inline (per continent, west to east).
+   */
+  .hero-map-in {
+    animation: hero-map-in 0.55s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
   .hero-bubble-in {
     animation: hero-pop-in 0.42s cubic-bezier(0.34, 1.4, 0.64, 1) backwards;
   }

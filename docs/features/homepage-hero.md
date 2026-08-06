@@ -287,17 +287,43 @@ stop one country stretching its continent's highlight across the map.
 
 ## Motion: CSS for the entrance, GSAP for interaction
 
-The hero's entrance is a **CSS keyframe**, not GSAP, and that split is deliberate. The plates
-rise and fade out of a barely-there scale (`hero-plate-in`), the left plate's contents follow one
-at a time (`hero-item-in` via `.hero-in-stagger > *:nth-child()`, keyed off position so no
-component needs to know its place in the sequence), and the map's continent bubbles grow out of
-the map (`hero-pop-in`) — the last of those on arrival only, since switching continents remounts
-two bubbles and a pop there would fire on exactly the two the visitor is looking at.
+The hero's entrance is a **CSS keyframe**, not GSAP, and that split is deliberate.
+
+### The panels themselves never animate
+
+Not transform, not opacity, not filter. Each of the three establishes a **backdrop root** for as
+long as it is applied, and an element that is a backdrop root has nothing left for its own
+`backdrop-filter` to blur. A panel that animates therefore has no working glass _while it
+animates_: the blur visibly switched on the moment the entrance finished, a beat after the panel
+had already arrived. It looks like a bug because it is one, and no amount of tuning the keyframe
+fixes it — the fix is that the box stays put and its **contents** carry the entrance.
+
+The same trap with a longer fuse: `animation-fill-mode: both` retains the final keyframe forever,
+so `transform: translateY(0)` or `filter: blur(0)` stays on the element after the animation is
+over and the backdrop root never goes away. Use **`backwards`** — it applies the 0% frame during
+the delay and hands the element back to its own styles at the end.
+
+### What does animate
+
+- **Plate contents, one at a time** — `hero-item-in`: rise, fade, and resolve out of a 6 px blur.
+  The blur is on content, which has no `backdrop-filter` of its own. Delays come from
+  `.hero-in-stagger > *:nth-child()` setting `--hero-in-i`, so no component needs to know its
+  place in the sequence, and `.hero-in-late` on the right column shifts the whole stagger's
+  starting point (`--hero-in-from`) without touching the step between siblings — the hero reads
+  left to right instead of both halves landing at once.
+- **The map's landmasses** — `hero-map-in`: a west-to-east sweep, so the map draws itself instead
+  of switching on. The order is derived from `BUBBLE_ANCHORS`' x coordinates, not hard-coded, so
+  retuning an anchor keeps its continent in the right place in the sweep. `transform-box: fill-box`
+  is what makes each landmass grow about its own bounding box rather than the viewBox origin.
+- **The continent bubbles** — `hero-pop-in`, landing on a map that is already there. On arrival
+  only: switching continents remounts two bubbles, and a pop there would fire on exactly the two
+  the visitor is looking at. `ENTRANCE_MS` in `hero-world-panel-client.tsx` has to outlast the
+  last bubble's delay plus its duration, or the class comes off mid-flight and they jump.
 
 An entrance animation has to own the very first painted frame. A lazily-loaded library cannot:
 either the hero paints and is then hidden again when the library arrives — a flash — or it stays
-blank until the chunk lands. Both are worse than the pop they would be fixing. `animation-fill-mode: both`
-gives the keyframe a hidden start state without any JavaScript, so there is no code path where a
+blank until the chunk lands. Both are worse than the pop they would be fixing. A CSS keyframe with
+`backwards` gives it a hidden start state without any JavaScript, so there is no code path where a
 failed chunk leaves the hero invisible.
 
 **GSAP earns its place on interaction**, in two places:

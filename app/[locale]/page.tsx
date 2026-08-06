@@ -158,7 +158,7 @@ export default async function HomePage({ params }: HomePageProps) {
             <div className="grid grid-cols-1 items-start gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(0,34rem)] 2xl:grid-cols-[minmax(0,1fr)_minmax(0,40rem)] 2xl:gap-14">
               {/* Left: live badge + headline + intro with live counts + in-place search +
                   the nearby-park bubbles */}
-              <HeroTextPanel className="hero-in hero-in-stagger">
+              <HeroTextPanel className="hero-in-stagger">
                 <Suspense fallback={<HeroWithNearby initialCounts={null} />}>
                   <HeroStats />
                 </Suspense>
@@ -180,7 +180,7 @@ export default async function HomePage({ params }: HomePageProps) {
                   the search field sits in the left column and its dropdown is open at rest, so
                   the two columns are staggered to give that list room instead of centring both
                   against each other. */}
-              <div className="hero-in hero-in-delay-1 hidden xl:mt-24 xl:block 2xl:mt-28">
+              <div className="hero-in-late hidden xl:mt-24 xl:block 2xl:mt-28">
                 <Suspense fallback={<HeroWorldPanelSkeleton />}>
                   <HeroWorldPanel />
                 </Suspense>
