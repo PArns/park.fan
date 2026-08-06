@@ -275,11 +275,22 @@ blank until the chunk lands. Both are worse than the pop they would be fixing. `
 gives the keyframe a hidden start state without any JavaScript, so there is no code path where a
 failed chunk leaves the hero invisible.
 
-**GSAP earns its place on interaction.** Switching continents replaces the whole country-chip row,
-and letting the new set flick in staggered reads as the panel answering the click rather than the
-content teleporting (`hero-world-panel-client.tsx`). That is an interaction, so its chunk loads
-while the visitor is already looking at the map, and if the import fails the chips are in the DOM
-regardless.
+**GSAP earns its place on interaction**, in two places:
+
+- **Switching continents** replaces the whole country-chip row, and letting the new set flick in
+  staggered reads as the panel answering the click rather than the content teleporting
+  (`hero-world-panel-client.tsx`).
+- **The header solidifying** on a hero page (`lib/hooks/use-header-reveal.ts`). The existing CSS
+  crossfade is untouched and stays the source of truth — `backdrop-filter` is deliberately kept
+  out of its transition list, because animating it re-rasterized the blur of the whole page
+  behind the bar on every frame. GSAP only layers a stagger over it, then `clearProps` hands
+  opacity back to the class-driven fade. It plays **once per page, not once per scroll**: the
+  50 px threshold is crossed every time the visitor scrolls up and back down, and re-running it
+  there would turn the header into a fidget.
+
+In both cases the chunk loads while the visitor is already looking at the thing being animated,
+and if the import fails the content is in the DOM regardless — nothing is hidden up front waiting
+for a library to reveal it.
 
 Both paths bail out completely under `prefers-reduced-motion: reduce` — no animation, not a
 shortened one. Same for the ken-burns photo (see the `backdrop-filter` section above: for those

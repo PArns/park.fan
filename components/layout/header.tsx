@@ -10,6 +10,7 @@ import { Menu, MapPin } from 'lucide-react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { useHeaderReveal } from '@/lib/hooks/use-header-reveal';
 import { ThemeToggle } from '@/components/common/theme-toggle';
 import { LocaleSwitcher } from '@/components/common/locale-switcher';
 import { SearchCommand } from '@/components/search/search-bar';
@@ -86,6 +87,9 @@ export function Header({ showBlog = true }: HeaderProps) {
   }, [isHeroPage]);
 
   const isTransparent = isHeroPage && !scrolled;
+  // One-off stagger the first time the bar solidifies — layered on top of the CSS crossfade
+  // below, never replacing it. See the hook for why it only plays once.
+  const barRef = useHeaderReveal(!isTransparent);
 
   // Shared fade class for elements that hide on the transparent homepage header
   const fadeClass = `transition-opacity duration-500 ${isTransparent ? 'opacity-0 pointer-events-none' : 'opacity-100'}`;
@@ -104,7 +108,10 @@ export function Header({ showBlog = true }: HeaderProps) {
           : 'border-border/50 bg-background/80 backdrop-blur-md'
       }`}
     >
-      <div className="container mx-auto flex h-14 items-center justify-between px-4 md:px-0">
+      <div
+        ref={barRef}
+        className="container mx-auto flex h-14 items-center justify-between px-4 md:px-0"
+      >
         {/* Corner logo – absolute, visible only when transparent (hero top).
             Same left-6 offset as the hero image info text below. Fades out on scroll. */}
         <Link
@@ -238,6 +245,7 @@ export function Header({ showBlog = true }: HeaderProps) {
               className="bg-muted/80 hover:bg-muted text-foreground flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors"
               aria-label={t('nearbyPark', { parkName: nearestPark.name })}
               tabIndex={isTransparent ? -1 : 0}
+              data-header-stagger
             >
               <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
               <span className="max-w-[140px] truncate">{nearestPark.name}</span>
@@ -249,6 +257,7 @@ export function Header({ showBlog = true }: HeaderProps) {
               prefetch={false}
               className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
               tabIndex={isTransparent ? -1 : 0}
+              data-header-stagger
             >
               {t('blog')}
             </Link>
@@ -258,6 +267,7 @@ export function Header({ showBlog = true }: HeaderProps) {
             prefetch={false}
             className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
             tabIndex={isTransparent ? -1 : 0}
+            data-header-stagger
           >
             {t('explore')}
           </Link>
@@ -266,6 +276,7 @@ export function Header({ showBlog = true }: HeaderProps) {
             prefetch={false}
             className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
             tabIndex={isTransparent ? -1 : 0}
+            data-header-stagger
           >
             {t('glossary')}
           </Link>
@@ -274,13 +285,14 @@ export function Header({ showBlog = true }: HeaderProps) {
             prefetch={false}
             className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
             tabIndex={isTransparent ? -1 : 0}
+            data-header-stagger
           >
             {t('howto')}
           </Link>
         </nav>
 
         {/* Search Desktop – fades in on scroll */}
-        <div className={`hidden lg:block lg:w-64 ${fadeClass}`}>
+        <div data-header-stagger className={`hidden lg:block lg:w-64 ${fadeClass}`}>
           <SearchCommand
             trigger="input"
             size="sm"
@@ -333,6 +345,7 @@ export function Header({ showBlog = true }: HeaderProps) {
                   className="md:hidden"
                   suppressHydrationWarning
                   tabIndex={isTransparent ? -1 : 0}
+                  data-header-stagger
                 >
                   <Menu className="h-5 w-5" />
                   <span className="sr-only">Menu</span>
