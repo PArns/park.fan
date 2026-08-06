@@ -215,10 +215,15 @@
 /*
  * Hero entrance: the panels rise a little and fade in on load.
  *
- * `both` fill mode is load-bearing — it applies the 0% frame during the delay, so a staggered
- * element is correctly hidden before its turn and correctly visible after, with no JavaScript
- * involved at any point. That is the whole reason this is CSS: an entrance owns the first
- * painted frame, and a lazily-loaded animation library cannot.
+ * `backwards`, NOT `both`. Both fill modes hide the element correctly before its turn — that is
+ * the whole reason this is CSS rather than a lazily-loaded library — but `both` also RETAINS the
+ * final keyframe forever, which leaves `transform: translateY(0) scale(1)` on the element. An
+ * identity transform is still a transform: it isolates the element's backdrop, and every
+ * `backdrop-filter` inside it (both hero panels, the search dropdown) then had nothing left to
+ * blur. They computed as blur(64px) and did visibly nothing.
+ *
+ * `backwards` applies the 0% frame during the delay and hands the element back to its own styles
+ * once the animation is over, so nothing lingers.
  */
 @keyframes hero-in {
   from {
@@ -279,7 +284,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .hero-in {
-    animation: hero-plate-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation: hero-plate-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) backwards;
   }
   .hero-in-delay-1 {
     animation-delay: 0.12s;
@@ -295,7 +300,7 @@
    * the box they sit in.
    */
   .hero-in-stagger > * {
-    animation: hero-item-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation: hero-item-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) backwards;
   }
   .hero-in-stagger > *:nth-child(1) {
     animation-delay: 0.16s;
@@ -320,7 +325,7 @@
    * positioned by that transform; animating `scale` alone would drop it and fling them.
    */
   .hero-bubble-in {
-    animation: hero-pop-in 0.42s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+    animation: hero-pop-in 0.42s cubic-bezier(0.34, 1.4, 0.64, 1) backwards;
   }
 }
 

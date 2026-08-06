@@ -43,6 +43,14 @@ The hero photo runs a ken-burns transform. **Every animation frame invalidates e
 | no backdrop filter at all                     | 16.7 ms      | 1 / 129        |
 | **shipped, mobile 390 px**                    | **16.7 ms**  | **0 / 129**    |
 
+> **An entrance animation can switch the glass off.** `animation-fill-mode: both` retains the
+> final keyframe forever, so a keyframe ending in `transform: translateY(0) scale(1)` leaves an
+> identity transform on the element — and an element with a transform isolates its backdrop.
+> Both hero panels and the search dropdown then computed as `blur(64px)` and did visibly
+> nothing. Use `backwards`: it still hides the element before its turn (the reason the entrance
+> is CSS at all) without leaving anything behind. Check by measuring local contrast inside vs
+> outside a panel — 0.98 against 7.73 is a real blur; equal numbers mean it is off.
+
 So: **panels may blur, small things on them may not.** A pill sitting on an already-opaque
 panel gains nothing from its own filter and costs a full re-blur per frame; the pills, country
 chips, continent bubbles and the open-now badge are all plain translucent fills for that reason.

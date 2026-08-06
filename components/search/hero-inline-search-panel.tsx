@@ -66,6 +66,8 @@ export default function HeroInlineSearchPanel({
   const [expanded, setExpanded] = useState(false);
   /** The card's height just before a row count change — the tween's starting point. */
   const heightBeforeChange = useRef<number | null>(null);
+  /** True while GSAP is tweening the card's height. See the ResizeObserver below. */
+  const tweening = useRef(false);
   const trackedFocus = useRef(false);
 
   const search = useSearchResults(query);
@@ -106,11 +108,15 @@ export default function HeroInlineSearchPanel({
       .then(({ gsap }) => {
         if (cancelled || !cardRef.current) return;
         ctx = gsap.context(() => {
+          tweening.current = true;
           gsap.from(cardRef.current, {
             height: from,
             duration: 0.34,
             ease: 'power2.out',
             clearProps: 'height',
+            onComplete: () => {
+              tweening.current = false;
+            },
           });
         }, cardRef);
       })
@@ -120,6 +126,7 @@ export default function HeroInlineSearchPanel({
 
     return () => {
       cancelled = true;
+      tweening.current = false;
       ctx?.revert();
     };
   }, [expanded]);
@@ -137,7 +144,13 @@ export default function HeroInlineSearchPanel({
   useEffect(() => {
     const card = cardRef.current;
     if (!card || !atRest) return;
-    const measure = () => setRestHeight(card.getBoundingClientRect().height);
+    // Never while GSAP is mid-tween. The tween writes an inline height frame by frame, and the
+    // observer fired on every one of them — so the spacer, and the pills sitting on it, animated
+    // along with the card and lurched the moment the field lost focus.
+    const measure = () => {
+      if (tweening.current) return;
+      setRestHeight(card.getBoundingClientRect().height);
+    };
     measure();
     const observer = new ResizeObserver(measure);
     observer.observe(card);
