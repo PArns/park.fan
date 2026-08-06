@@ -30,7 +30,7 @@
  * - nearby_permission_granted / nearby_permission_denied: (no properties)
  * - nearby_parks_loaded: count, type, source, parkName (parkName only when type is in_park)
  * - search_opened: source
- * - hero_search_clicked: placeholderShown
+ * - hero_search_clicked: (no properties)
  * - search_result_clicked: resultType, position, queryLength, term_id
  * - search_view_all: (no properties)
  * - search_no_results: queryLength
@@ -113,12 +113,6 @@ export interface NearbyParksLoadedProps {
    */
   parkName?: string;
   [key: string]: string | number | boolean | undefined;
-}
-
-export interface HeroSearchClickedProps {
-  /** Placeholder text shown when user clicked (typewriter or default). */
-  placeholderShown: string;
-  [key: string]: string | number | boolean;
 }
 
 export interface SearchResultClickedProps {
@@ -239,8 +233,8 @@ export function trackSearchOpened(source: 'header' | 'hero' | 'keyboard'): void 
   trackEvent(UMAMI_EVENTS.SEARCH_OPENED, { source });
 }
 
-export function trackHeroSearchClicked(props: HeroSearchClickedProps): void {
-  trackEvent(UMAMI_EVENTS.HERO_SEARCH_CLICKED, props);
+export function trackHeroSearchClicked(): void {
+  trackEvent(UMAMI_EVENTS.HERO_SEARCH_CLICKED);
 }
 
 export function trackSearchResultClicked(props: SearchResultClickedProps): void {

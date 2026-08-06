@@ -4,6 +4,20 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – the hero search placeholder no longer types
+
+The homepage search field used to type park and ride names into its placeholder,
+letter by letter, on a loop. That typewriter is gone: the field shows the
+translated static placeholder from the first paint, on the homepage and the
+howto pages alike (they share `HeroSearchInput`).
+
+Gone with it: the `useTypewriter` state machine and `TypewriterPlaceholder` leaf
+in `hero-search-input.tsx`, the `typewriter-blink` keyframes in `globals.css`,
+and the `placeholderShown` property on `hero_search_clicked` — it only ever
+reported which phrase was on screen, and without the typewriter every click
+would have billed an extra Umami event to say "default". `useActiveOnScreen`
+stays, the countdowns and charts still pause through it.
+
 ## Unreleased – fix: the ride measurements credit the right source again
 
 The measurement display shipped against an importer that read the roller-coaster

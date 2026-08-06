@@ -4,10 +4,9 @@ import { useEffect, useState } from 'react';
 
 /**
  * True while the attached element is in (or near) the viewport AND the tab is
- * visible. Drives pausable per-second work — countdown intervals, the hero
- * typewriter, chart "now"-marker ticks — so timers stop burning CPU (and
- * re-rendering) while their element is scrolled away or the tab is in the
- * background.
+ * visible. Drives pausable per-second work — countdown intervals, chart
+ * "now"-marker ticks — so timers stop burning CPU (and re-rendering) while
+ * their element is scrolled away or the tab is in the background.
  *
  * Attach via the returned callback ref (`<div ref={ref}>`): it is state-backed,
  * so the observer correctly re-attaches when the target element is swapped or
