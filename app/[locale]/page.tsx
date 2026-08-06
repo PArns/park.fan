@@ -170,8 +170,11 @@ export default async function HomePage({ params }: HomePageProps) {
                   label={tHome('hero.searchPlaceholder')}
                   className="mt-5"
                 />
-                {/* Nearby parks as pill bubbles (GeoIP fallback without location permission) */}
-                <HeroNearbyBubbles className="mt-4" />
+                {/* Nearby parks as pill bubbles (GeoIP fallback without location permission).
+                    mt-8 matches the plate's own padding, so the pills sit the same distance from
+                    the open dropdown above them as from the plate's bottom edge below — at mt-4
+                    they read as glued to the card's footer. */}
+                <HeroNearbyBubbles className="mt-8" />
               </HeroTextPanel>
 
               {/* Right: world-map panel — only rendered when there is room (xl+).

@@ -16,7 +16,13 @@ interface GlassCardProps extends React.HTMLAttributes<HTMLDivElement> {
  * reads as one solid pane of glass instead of a washed-out rectangle with the photo bleeding
  * through its text.
  */
-export function GlassCard({ children, className, variant = 'medium', ...rest }: GlassCardProps) {
+export function GlassCard({
+  children,
+  className,
+  variant = 'medium',
+  ref,
+  ...rest
+}: GlassCardProps & { ref?: React.Ref<HTMLDivElement> }) {
   const variantClasses = {
     light: 'bg-background/40 backdrop-blur-sm',
     medium: 'bg-background/60 backdrop-blur-md',
@@ -26,6 +32,7 @@ export function GlassCard({ children, className, variant = 'medium', ...rest }: 
 
   return (
     <div
+      ref={ref}
       className={cn('rounded-xl border p-6 shadow-sm', variantClasses[variant], className)}
       {...rest}
     >

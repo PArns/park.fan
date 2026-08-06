@@ -47,13 +47,16 @@ So: **panels may blur, small things on them may not.** A pill sitting on an alre
 panel gains nothing from its own filter and costs a full re-blur per frame; the pills, country
 chips, continent bubbles and the open-now badge are all plain translucent fills for that reason.
 `HeroTextPanel` carries one (it was asked for, and the two plates read as one material), which
-is the single most expensive filter on the page — it is the largest surface.
+is the single most expensive filter on the page — it is the largest surface. It uses
+`GlassCard variant="heavy"`, the **same** component and variant as the map panel and the search
+dropdown, rather than its own `backdrop-blur-*`: side by side, any difference in radius or tint
+reads immediately as one of them being wrong, and a hand-rolled blur had already drifted to
+40 px against the panel's 64 px.
 
 The radius is **not** the lever: 64 px, 24 px and 12 px all measure the same. It is the presence
-of a filter over a _moving_ backdrop that costs, so the world panel keeps its `backdrop-blur-3xl`
-— a smaller radius would give up the look and buy nothing. Area is a lever: the left plate is
-the largest blurred surface on the page and its `backdrop-blur-2xl` alone accounts for ~17 ms
-per frame.
+of a filter over a _moving_ backdrop that costs, which is also why matching the left plate up to
+the panel's 64 px cost nothing extra. **Area** is the lever: the left plate is the largest
+blurred surface on the page and accounts for ~17 ms per frame on its own.
 
 **The real lever is the ken-burns animation.** With it stopped, the blurs cost nothing at all
 (16.7 ms with every filter still in place) — a static backdrop is filtered once and cached.
@@ -125,10 +128,14 @@ back to that list.
 **It floats** (`absolute z-40`) rather than sitting in the hero's flow, so a growing result list
 never moves the headline. Two consequences that have to be held together:
 
-- The **resting** height is reserved in the flow (`--hero-search-rest-h`, a spacer div), so the
-  nearby pills sit _below_ the open list instead of underneath it. Only the resting height —
-  typing past three rows grows the card over the pills, which fade out on focus anyway. The
-  constant is tied to `HERO_BROWSE_LIMIT = 3`; change one and re-measure the other.
+- The **resting** height is reserved in the flow by a spacer div, **measured** from the card by
+  a ResizeObserver rather than hardcoded, so the nearby pills sit _below_ the open list instead
+  of underneath it. It started as a constant that happened to match one locale's three rows;
+  anything changing the card's height — a park name wrapping, a longer heading in another
+  language, a fourth row — then moved the card without moving the pills and the gap drifted or
+  closed. `--hero-search-rest-h` survives only as the pre-measurement estimate the shell's
+  skeleton paints with. Measured **at rest only**: once a query grows the list the card is meant
+  to expand over the pills, so the last resting height stays reserved.
 - The card is capped to the room left below the field (`--hero-search-max-h`, written onto the
   node from a rAF-throttled scroll/resize listener), so a long list ends at the bottom of the
   screen and scrolls inside itself rather than running off the page.

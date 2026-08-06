@@ -17,6 +17,8 @@ import { HERO_SEARCH_INPUT_CLASS } from '@/components/search/hero-search-field';
  */
 const HERO_BROWSE_LIMIT = 3;
 
+/** The card's own `mt-3` — part of the box the spacer has to reserve. */
+const DROPDOWN_TOP_GAP_PX = 12;
 /** Space kept between the dropdown's lower edge and the bottom of the viewport. */
 const DROPDOWN_GAP_PX = 28;
 /** Never squeeze it below this, even on a short viewport — it scrolls instead. */
@@ -53,6 +55,9 @@ export default function HeroInlineSearchPanel({
   const [query, setQuery] = useState(initialQuery);
   const inputRef = useRef<HTMLInputElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+  /** Measured height of the RESTING card — what the spacer below reserves. */
+  const [restHeight, setRestHeight] = useState<number | null>(null);
   const trackedFocus = useRef(false);
 
   const search = useSearchResults(query);
@@ -75,6 +80,26 @@ export default function HeroInlineSearchPanel({
     input.focus({ preventScroll: true });
     input.setSelectionRange(input.value.length, input.value.length);
   }, [autoFocus, onFocusHandled]);
+
+  // Reserve exactly the resting card's height in the flow, measured rather than assumed.
+  //
+  // It was a hardcoded constant that happened to match one locale's three rows. Any content
+  // that changes the card's height — a longer park name wrapping, a different language's
+  // heading, four rows instead of three — moved the card without moving the pills, so the gap
+  // between them drifted or closed entirely.
+  //
+  // Only measured while at REST. Once a query grows the list the card is meant to expand over
+  // the pills, so the last resting height is what stays reserved.
+  const atRest = query.trim().length < 3;
+  useEffect(() => {
+    const card = cardRef.current;
+    if (!card || !atRest) return;
+    const measure = () => setRestHeight(card.getBoundingClientRect().height);
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(card);
+    return () => observer.disconnect();
+  }, [atRest]);
 
   // Cap the dropdown at whatever room is left below the field, so a long result list ends at
   // the bottom of the screen and scrolls inside itself instead of running off the page. The
@@ -166,8 +191,16 @@ export default function HeroInlineSearchPanel({
       {/* Reserves the RESTING height of the dropdown in the hero's flow, so the nearby pills
           sit below the open list instead of underneath it. Only the resting height — once a
           query grows the list past three rows it grows over the pills rather than pushing
-          them, which is the whole reason the dropdown floats. */}
-      <div aria-hidden="true" className="h-[var(--hero-search-rest-h)]" />
+          them, which is the whole reason the dropdown floats.
+
+          The CSS variable is only the pre-measurement estimate (it matches the shell's skeleton
+          card, which is what paints before this chunk exists); from mount on, the real card's
+          measured height takes over. */}
+      <div
+        aria-hidden="true"
+        className="h-[var(--hero-search-rest-h)]"
+        style={restHeight != null ? { height: restHeight + DROPDOWN_TOP_GAP_PX } : undefined}
+      />
 
       {/* The dropdown itself: always open (the hero's default state is an open list of the
           nearest parks), floating over the page. `onMouseDown` preventDefault keeps focus in
@@ -182,6 +215,7 @@ export default function HeroInlineSearchPanel({
             have ruined that (their text ghosts through the blur), so the panel fades them out
             while the field has focus instead of the dropdown going opaque. */}
         <GlassCard
+          ref={cardRef}
           variant="heavy"
           className="border-border/60 mt-3 flex max-h-[var(--hero-search-max-h,32rem)] flex-col overflow-hidden p-0 shadow-2xl"
         >
