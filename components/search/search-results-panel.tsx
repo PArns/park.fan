@@ -5,6 +5,7 @@ import { useRouter } from '@/i18n/navigation';
 import { CommandEmpty, CommandGroup, CommandList } from '@/components/ui/command';
 import { Button } from '@/components/ui/button';
 import { trackSearchViewAll } from '@/lib/analytics/umami';
+import { cn } from '@/lib/utils';
 import { Skeleton } from '@/components/ui/skeleton';
 import { SkeletonItem, GlossaryResultItem } from '@/components/search/search-result-items';
 import { SearchResultGroups } from '@/components/search/search-result-groups';
@@ -18,6 +19,16 @@ interface SearchResultsPanelProps {
   search: UseSearchResultsReturn;
   onSelect: (result: SearchResultItem, position?: number) => void;
   onGlossarySelect: (item: GlossarySearchItem) => void;
+  /**
+   * Cap for the pre-query browse list. The hero passes 3 because its dropdown is open at rest
+   * and the layout reserves exactly that height; the palette leaves it open.
+   */
+  browseLimit?: number;
+  /**
+   * Height behaviour of the scrolling list. The palette keeps the default cap; the hero passes
+   * `min-h-0 flex-1` because its card is already capped to the room left below the field.
+   */
+  listClassName?: string;
 }
 
 /**
@@ -37,6 +48,8 @@ export function SearchResultsPanel({
   search,
   onSelect,
   onGlossarySelect,
+  browseLimit,
+  listClassName = 'max-h-[min(22rem,42vh)]',
 }: SearchResultsPanelProps) {
   const t = useTranslations('common');
   const tSearch = useTranslations('search');
@@ -56,13 +69,18 @@ export function SearchResultsPanel({
 
   return (
     <>
-      <CommandList className="max-h-[min(22rem,42vh)] scroll-py-1 overflow-x-hidden overflow-y-auto overscroll-y-contain">
+      <CommandList
+        className={cn(
+          'scroll-py-1 overflow-x-hidden overflow-y-auto overscroll-y-contain',
+          listClassName
+        )}
+      >
         {isPending && (
           <div className="p-1">
             <div className="px-3 pt-3.5 pb-1">
               <Skeleton className="h-2 w-16 rounded-full" />
             </div>
-            {['55%', '72%', '48%', '65%'].map((width, i) => (
+            {['55%', '72%', '48%', '65%'].slice(0, browseLimit ?? 4).map((width, i) => (
               <SkeletonItem key={i} width={width} />
             ))}
           </div>
@@ -100,13 +118,13 @@ export function SearchResultsPanel({
         )}
 
         {!isPending && query.length < 3 && (
-          <SearchBrowseGroup browse={browse} onSelect={onSelect} />
+          <SearchBrowseGroup browse={browse} onSelect={onSelect} limit={browseLimit} />
         )}
       </CommandList>
 
       {/* Footer: hint while browsing, "all results" once a query ran */}
       {showViewAll ? (
-        <div className="border-border/40 border-t p-2">
+        <div className="border-border/40 shrink-0 border-t p-2">
           <Button
             variant="ghost"
             className="hover:bg-foreground/10 w-full justify-center text-sm"
@@ -119,7 +137,7 @@ export function SearchResultsPanel({
           </Button>
         </div>
       ) : (
-        <div className="border-border/40 bg-muted/30 text-muted-foreground border-t px-4 py-2.5 text-xs">
+        <div className="border-border/40 bg-muted/30 text-muted-foreground shrink-0 border-t px-4 py-2.5 text-xs">
           {tSearch('heroHint')}
         </div>
       )}

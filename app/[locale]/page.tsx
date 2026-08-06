@@ -158,10 +158,10 @@ export default async function HomePage({ params }: HomePageProps) {
                 max-content width, and the horizontally scrollable pill row inside is wider than
                 a phone. Tailwind's grid-cols-1 is `minmax(0, 1fr)`, which caps it at the
                 container instead — without it the whole hero overflowed the viewport. */}
-            <div className="grid grid-cols-1 items-center gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(0,34rem)] 2xl:grid-cols-[minmax(0,1fr)_minmax(0,40rem)] 2xl:gap-14">
+            <div className="grid grid-cols-1 items-start gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(0,34rem)] 2xl:grid-cols-[minmax(0,1fr)_minmax(0,40rem)] 2xl:gap-14">
               {/* Left: live badge + headline + intro with live counts + in-place search +
                   the nearby-park bubbles */}
-              <HeroTextPanel>
+              <HeroTextPanel className="hero-in">
                 <Suspense fallback={<HeroWithNearby initialCounts={null} />}>
                   <HeroStats />
                 </Suspense>
@@ -174,10 +174,13 @@ export default async function HomePage({ params }: HomePageProps) {
                 <HeroNearbyBubbles className="mt-4" />
               </HeroTextPanel>
 
-              {/* Right: world-map panel — only rendered when there is room (xl+). The column
-                  reserves the panel's height in CSS and the panel shows a skeleton until its
-                  chunk lands, so the box never grows into place. */}
-              <div className="hidden xl:block xl:min-h-[540px]">
+              {/* Right: world-map panel — only rendered when there is room (xl+).
+
+                  Pushed DOWN while the text column is pulled up (`items-start` + these offsets):
+                  the search field sits in the left column and its dropdown is open at rest, so
+                  the two columns are staggered to give that list room instead of centring both
+                  against each other. */}
+              <div className="hero-in hero-in-delay-1 hidden xl:mt-24 xl:block 2xl:mt-28">
                 <Suspense fallback={<HeroWorldPanelSkeleton />}>
                   <HeroWorldPanel />
                 </Suspense>
@@ -200,10 +203,12 @@ export default async function HomePage({ params }: HomePageProps) {
         </HeroRotationProvider>
       </section>
 
-      {/* Compact "from the blog" strip — the first thing under the hero. The full
-          LatestBlogSection still renders further down; this is the at-a-glance version. */}
-      <section className="px-6 pt-6">
-        <BlogHeroPreview locale={locale as Locale} />
+      {/* "From the blog" strip — the first thing under the hero, across the full container
+          width. The full LatestBlogSection still renders further down the page. */}
+      <section className="px-6 pt-8">
+        <div className="container mx-auto">
+          <BlogHeroPreview locale={locale as Locale} />
+        </div>
       </section>
 
       {/* Announcement Section */}

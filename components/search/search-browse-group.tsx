@@ -13,17 +13,21 @@ import type { SearchResultItem } from '@/lib/api/types';
 export function SearchBrowseGroup({
   browse,
   onSelect,
+  limit,
 }: {
   browse: HeroBrowseParks;
   onSelect: (result: SearchResultItem, position?: number) => void;
+  /** Cap the list (the hero shows three, so its resting height is a known constant). */
+  limit?: number;
 }) {
   const heading = useBrowseHeading(browse);
 
   if (browse.items.length === 0) return null;
+  const items = limit == null ? browse.items : browse.items.slice(0, limit);
 
   return (
     <CommandGroup heading={heading}>
-      {browse.items.map((item, index) => (
+      {items.map((item, index) => (
         <SearchResultRow key={item.id} result={item} position={index} onSelect={onSelect} />
       ))}
     </CommandGroup>

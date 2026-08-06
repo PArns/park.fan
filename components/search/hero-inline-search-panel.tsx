@@ -11,6 +11,17 @@ import { useSearchNavigation } from '@/lib/hooks/use-search-navigation';
 import { SearchResultsPanel } from '@/components/search/search-results-panel';
 import { HERO_SEARCH_INPUT_CLASS } from '@/components/search/hero-search-field';
 
+/**
+ * How many parks the resting dropdown lists. The hero reserves the height of exactly this many
+ * rows (`--hero-search-rest-h`), so the two must be changed together.
+ */
+const HERO_BROWSE_LIMIT = 3;
+
+/** Space kept between the dropdown's lower edge and the bottom of the viewport. */
+const DROPDOWN_GAP_PX = 28;
+/** Never squeeze it below this, even on a short viewport — it scrolls instead. */
+const DROPDOWN_MIN_PX = 200;
+
 interface HeroInlineSearchPanelProps {
   placeholder: string;
   /** Accessible name — the placeholder is a list of example parks, not a description. */
@@ -40,14 +51,12 @@ export default function HeroInlineSearchPanel({
   onFocusHandled,
 }: HeroInlineSearchPanelProps) {
   const [query, setQuery] = useState(initialQuery);
-  const [open, setOpen] = useState(autoFocus);
   const inputRef = useRef<HTMLInputElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const trackedFocus = useRef(false);
 
   const search = useSearchResults(query);
-  const { handleSelect, handleGlossarySelect } = useSearchNavigation(query.trim().length, () =>
-    setOpen(false)
-  );
+  const { handleSelect, handleGlossarySelect } = useSearchNavigation(query.trim().length);
 
   // Hand-off from the static shell: the visitor clicked or typed before this chunk arrived, so
   // take over the focus and put the caret after what they already typed.
@@ -67,16 +76,37 @@ export default function HeroInlineSearchPanel({
     input.setSelectionRange(input.value.length, input.value.length);
   }, [autoFocus, onFocusHandled]);
 
-  // cmdk hard-codes `aria-expanded="true"` AFTER spreading our props (`{...u}, role:"combobox",
-  // "aria-expanded":!0, …` in its source), so passing it as a prop cannot win. Set it on the
-  // element after every render instead.
-  //
-  // Its `aria-controls`/`aria-activedescendant` need no such treatment because the list stays
-  // MOUNTED and is hidden instead (see below) — removing the attributes worked once and then
-  // never came back, since React only re-patches props whose values changed.
+  // Cap the dropdown at whatever room is left below the field, so a long result list ends at
+  // the bottom of the screen and scrolls inside itself instead of running off the page. The
+  // field's viewport position only moves on scroll and resize, so those are the only triggers;
+  // the value is written straight onto the node as a custom property, which keeps a scroll
+  // listener from re-rendering the whole result tree.
   useEffect(() => {
-    inputRef.current?.setAttribute('aria-expanded', String(open));
-  });
+    const update = () => {
+      const input = inputRef.current;
+      const dropdown = dropdownRef.current;
+      if (!input || !dropdown) return;
+      const room = window.innerHeight - input.getBoundingClientRect().bottom - DROPDOWN_GAP_PX;
+      dropdown.style.setProperty('--hero-search-max-h', `${Math.max(DROPDOWN_MIN_PX, room)}px`);
+    };
+    update();
+
+    let frame = 0;
+    const schedule = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        update();
+      });
+    };
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    return () => {
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
 
   // Type-anywhere: a printable key outside an input focuses the hero search seeded with it
   // (same behavior the palette trigger had via autoFocusOnType).
@@ -108,13 +138,10 @@ export default function HeroInlineSearchPanel({
       shouldFilter={false}
       className="[&_[cmdk-group-heading]]:text-muted-foreground/60 relative w-full bg-transparent [&_[cmdk-group-heading]]:px-4 [&_[cmdk-group-heading]]:pt-3.5 [&_[cmdk-group-heading]]:pb-1 [&_[cmdk-group-heading]]:text-[10px] [&_[cmdk-group-heading]]:font-semibold [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group]]:px-1.5 [&_[cmdk-item]]:px-3 [&_[cmdk-item]]:py-2.5 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5"
       onKeyDown={(e) => {
-        if (e.key === 'Escape') {
-          // Escape closes the popup and KEEPS focus on the combobox (the ARIA pattern).
-          // Blurring to <body> dropped a keyboard user out of the hero with nothing announced
-          // and no defined place to tab on from.
-          if (query) setQuery('');
-          else setOpen(false);
-        }
+        // Escape clears the query back to the browse list and KEEPS focus on the field. There
+        // is no closed state to fall back to, and blurring to <body> dropped a keyboard user
+        // out of the hero with nothing announced and no defined place to tab on from.
+        if (e.key === 'Escape' && query) setQuery('');
       }}
     >
       {/* Input — same look as the static shell it replaces */}
@@ -127,39 +154,44 @@ export default function HeroInlineSearchPanel({
           placeholder={placeholder}
           aria-label={label}
           onFocus={() => {
-            setOpen(true);
             if (!trackedFocus.current) {
               trackedFocus.current = true;
               trackHeroSearchClicked();
             }
           }}
-          onBlur={() => setOpen(false)}
           className={cn(HERO_SEARCH_INPUT_CLASS, 'focus:border-primary/50 focus:shadow-lg')}
         />
       </div>
 
-      {/* Floating dropdown. The `onMouseDown` preventDefault keeps focus in the input, so
-          clicking a result cannot blur-close the list out from under the click.
+      {/* Reserves the RESTING height of the dropdown in the hero's flow, so the nearby pills
+          sit below the open list instead of underneath it. Only the resting height — once a
+          query grows the list past three rows it grows over the pills rather than pushing
+          them, which is the whole reason the dropdown floats. */}
+      <div aria-hidden="true" className="h-[var(--hero-search-rest-h)]" />
 
-          `hidden` rather than unmounted: cmdk's `aria-controls` and `aria-activedescendant`
-          point into this subtree, and unmounting left them dangling. `display: none` also
-          takes it out of the accessibility tree, so `aria-expanded="false"` + a hidden popup
-          is exactly the combobox pattern — and it costs no paint and no backdrop filter. */}
+      {/* The dropdown itself: always open (the hero's default state is an open list of the
+          nearest parks), floating over the page. `onMouseDown` preventDefault keeps focus in
+          the input so clicking a result cannot blur the field out from under the click. */}
       <div
+        ref={dropdownRef}
         onMouseDown={(e) => e.preventDefault()}
-        hidden={!open}
-        className="absolute inset-x-0 top-full z-40"
+        className="absolute inset-x-0 top-14 z-40"
       >
         {/* Real glass, not a near-opaque sheet: what it lands on is the hero photo, the scrim
             and the panel plate — all smooth, all beautiful under blur. The nearby pills would
             have ruined that (their text ghosts through the blur), so the panel fades them out
             while the field has focus instead of the dropdown going opaque. */}
-        <GlassCard variant="heavy" className="border-border/60 mt-3 overflow-hidden p-0 shadow-2xl">
+        <GlassCard
+          variant="heavy"
+          className="border-border/60 mt-3 flex max-h-[var(--hero-search-max-h,32rem)] flex-col overflow-hidden p-0 shadow-2xl"
+        >
           <SearchResultsPanel
             query={query}
             search={search}
             onSelect={handleSelect}
             onGlossarySelect={handleGlossarySelect}
+            browseLimit={HERO_BROWSE_LIMIT}
+            listClassName="min-h-0 flex-1"
           />
         </GlassCard>
       </div>

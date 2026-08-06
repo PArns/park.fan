@@ -13,10 +13,15 @@ search on the left, a clickable world map on the right. Every number in it is li
 │ ┌─────────────────────────────────────────┐ ││ └──────────────────────┘ │
 │ │ 🔍 Europa-Park, Taron, Efteling …       │ ││ [Deutschland 7 offen] …  │
 │ └─────────────────────────────────────────┘ ││ Alle Parks in Europa →   │
-│ ● Europa-Park Ø41 min  ● Phantasialand …    │└──────────────────────────┘
+│ ┌─────────────────────────────────────────┐ │└──────────────────────────┘
+│ │ 🖼 Toverland          Ø 45 Min.         │ │
+│ │ 🖼 Phantasialand      Ø 75 Min.         │ │
+│ │ 🖼 Bobbejaanland      Ø 35 Min.         │ │
+│ └─────────────────────────────────────────┘ │
+│ ● Europa-Park Ø41 min  ● Phantasialand …    │
 └─────────────────────────────────────────────┘   xl (≥1280px) only
    │
-   └── on focus, a FLOATING dropdown expands over the page below
+   └── the FLOATING dropdown is already open here, listing the 3 nearest parks
 ```
 
 Entry point: `app/[locale]/page.tsx`. Both columns are panels (`HeroTextPanel` /
@@ -32,22 +37,30 @@ The hero photo runs a ken-burns transform. **Every animation frame invalidates e
 |                                               | median frame | frames > 20 ms |
 | --------------------------------------------- | ------------ | -------------- |
 | 22 blurred pills, chips and badges + 2 panels | 50.0 ms      | 125 / 140      |
-| panels only (shipped)                         | 33.3 ms      | 122 / 129      |
+| panels only, left plate unblurred             | 33.3 ms      | 122 / 129      |
+| **shipped** (both panels blurred, 1600 px)    | **66.7 ms**  | 115 / 119      |
+| shipped minus the left plate's blur           | 50.0 ms      | 113 / 119      |
 | no backdrop filter at all                     | 16.7 ms      | 1 / 129        |
-| mobile 390 px, shipped                        | **16.7 ms**  | **0 / 129**    |
+| **shipped, mobile 390 px**                    | **16.7 ms**  | **0 / 129**    |
 
 So: **panels may blur, small things on them may not.** A pill sitting on an already-opaque
 panel gains nothing from its own filter and costs a full re-blur per frame; the pills, country
 chips, continent bubbles and the open-now badge are all plain translucent fills for that reason.
-`HeroTextPanel` has no filter either — it covers most of the hero, and the legibility scrim
-behind it does the same job for free.
+`HeroTextPanel` carries one (it was asked for, and the two plates read as one material), which
+is the single most expensive filter on the page — it is the largest surface.
 
-The radius is **not** the lever: 64 px, 24 px and 12 px all measure 33.3 ms. It is the presence
-of a filter over a moving backdrop that costs, so the world panel keeps its `backdrop-blur-3xl`
-— dropping to a smaller radius would give up the look and buy nothing. What remains is
-desktop-only (the panel renders from `xl`), mobile is at a clean 16.7 ms, and
-`prefers-reduced-motion` stops ken-burns outright, which takes the cost to zero for the visitors
-most likely to need that.
+The radius is **not** the lever: 64 px, 24 px and 12 px all measure the same. It is the presence
+of a filter over a _moving_ backdrop that costs, so the world panel keeps its `backdrop-blur-3xl`
+— a smaller radius would give up the look and buy nothing. Area is a lever: the left plate is
+the largest blurred surface on the page and its `backdrop-blur-2xl` alone accounts for ~17 ms
+per frame.
+
+**The real lever is the ken-burns animation.** With it stopped, the blurs cost nothing at all
+(16.7 ms with every filter still in place) — a static backdrop is filtered once and cached.
+So the whole trade-off is: slow zoom on the photo, or unlimited glass. Today we ship both and
+pay for it on desktop; mobile is unaffected (16.7 ms, zero slow frames) and
+`prefers-reduced-motion` already stops the animation, which takes the cost to zero for the
+visitors most likely to need that.
 
 ---
 
@@ -84,6 +97,15 @@ the sentence into fragments.
 - **≥ md** — `HeroInlineSearchPanel` (lazy chunk, desktop-only): the input stays in the hero
   and the results **float** below it.
 
+**Neither is what the first frame paints.** `useMediaQuery` is false on the server and on the
+first client render, so picking the surface straight from it made the desktop hero paint the
+_mobile_ trigger first — a field carrying a ⌘K badge and a pulsing ring that vanished a moment
+later. Both viewports now start on `HeroSearchShell`, which looks like neither trigger in
+particular and like the final field exactly; the surface is chosen once `useMounted()` is true.
+The resting dropdown is drawn as a skeleton in the same breath (`HeroSearchRestingCard`,
+`hidden md:block` so CSS decides, not a hook), so the card fades in where a box already is
+instead of dropping into an empty gap.
+
 Both surfaces share their behavior, so a result can never look or route differently depending
 on where it was clicked — including the list they show before anything is typed:
 
@@ -96,11 +118,25 @@ on where it was clicked — including the list they show before anything is type
 | Category grouping/order | `components/search/search-result-groups.tsx` |
 | Panel body              | `components/search/search-results-panel.tsx` |
 
-**The dropdown floats** (`absolute top-full z-40`) rather than sitting in the hero's flow. The
-hero is vertically centred, so an in-flow list moved the headline on every keystroke as the
-result count changed. Floating also lets it size to its content instead of a fixed height.
+**The dropdown is open at rest** and lists the three nearest parks — the hero's default state is
+an answer, not an empty field. It has no closed state on desktop at all; Escape clears the query
+back to that list.
 
-Two consequences worth knowing:
+**It floats** (`absolute z-40`) rather than sitting in the hero's flow, so a growing result list
+never moves the headline. Two consequences that have to be held together:
+
+- The **resting** height is reserved in the flow (`--hero-search-rest-h`, a spacer div), so the
+  nearby pills sit _below_ the open list instead of underneath it. Only the resting height —
+  typing past three rows grows the card over the pills, which fade out on focus anyway. The
+  constant is tied to `HERO_BROWSE_LIMIT = 3`; change one and re-measure the other.
+- The card is capped to the room left below the field (`--hero-search-max-h`, written onto the
+  node from a rAF-throttled scroll/resize listener), so a long list ends at the bottom of the
+  screen and scrolls inside itself rather than running off the page.
+
+The two hero columns are **staggered** (`items-start`, left column up, right column `xl:mt-24`)
+precisely to give that open list room, and neither column forces the other's height.
+
+Also worth knowing:
 
 - The hero section carries **`z-10`** (and no `overflow-hidden`) so the dropdown paints over the
   sections below it. The sticky header is `z-50` and still wins.
@@ -218,3 +254,26 @@ stop one country stretching its continent's highlight across the map.
 - [Caching Strategy](../architecture/caching-strategy.md)
 - [Routing & URLs](../architecture/routing-and-urls.md)
 - [Design System](../design/design-system.md)
+
+---
+
+## Motion: CSS for the entrance, GSAP for interaction
+
+The hero's entrance (both panels rising and fading in, staggered) is a **CSS keyframe**
+(`.hero-in` / `.hero-in-delay-1` in `globals.css`), not GSAP, and that split is deliberate.
+
+An entrance animation has to own the very first painted frame. A lazily-loaded library cannot:
+either the hero paints and is then hidden again when the library arrives — a flash — or it stays
+blank until the chunk lands. Both are worse than the pop they would be fixing. `animation-fill-mode: both`
+gives the keyframe a hidden start state without any JavaScript, so there is no code path where a
+failed chunk leaves the hero invisible.
+
+**GSAP earns its place on interaction.** Switching continents replaces the whole country-chip row,
+and letting the new set flick in staggered reads as the panel answering the click rather than the
+content teleporting (`hero-world-panel-client.tsx`). That is an interaction, so its chunk loads
+while the visitor is already looking at the map, and if the import fails the chips are in the DOM
+regardless.
+
+Both paths bail out completely under `prefers-reduced-motion: reduce` — no animation, not a
+shortened one. Same for the ken-burns photo (see the `backdrop-filter` section above: for those
+visitors it also takes the hero's rendering cost to zero).

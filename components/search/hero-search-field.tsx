@@ -2,6 +2,8 @@
 
 import { Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { GlassCard } from '@/components/common/glass-card';
+import { Skeleton } from '@/components/ui/skeleton';
 
 /** Shared look of the hero search input — the lazy panel's real input mirrors these classes. */
 export const HERO_SEARCH_INPUT_CLASS =
@@ -13,6 +15,44 @@ interface HeroSearchShellProps {
   label: string;
   /** Fires on focus and on every keystroke — the cue to pull in the real search panel. */
   onActivate: (typed: string) => void;
+}
+
+/**
+ * The resting dropdown, drawn as a skeleton, in exactly the box the real one will occupy.
+ *
+ * Without it the desktop hero painted an empty gap under the field and then a whole card
+ * dropped into it once the search chunk arrived — the pop that read as flicker. Both the
+ * spacer and the card are `hidden md:block`, i.e. decided in CSS rather than by a media-query
+ * hook, so the server already renders the right thing for either viewport and there is nothing
+ * to correct after hydration.
+ */
+export function HeroSearchRestingCard() {
+  return (
+    <>
+      <div aria-hidden="true" className="hidden h-[var(--hero-search-rest-h)] md:block" />
+      <div aria-hidden="true" className="absolute inset-x-0 top-14 z-30 hidden md:block">
+        <GlassCard variant="heavy" className="border-border/60 mt-3 overflow-hidden p-0 shadow-2xl">
+          <div className="p-1">
+            <div className="px-3 pt-3.5 pb-1">
+              <Skeleton className="h-2 w-16 rounded-full" />
+            </div>
+            {['55%', '72%', '48%'].map((width) => (
+              <div key={width} className="flex items-center gap-4 px-3 py-2.5">
+                <Skeleton className="h-11 w-11 shrink-0 rounded-xl" />
+                <div className="flex min-w-0 flex-1 flex-col gap-2">
+                  <Skeleton className="h-3.5 rounded-full" style={{ width }} />
+                  <Skeleton className="h-2.5 w-28 rounded-full" />
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="border-border/40 bg-muted/30 border-t px-4 py-2.5">
+            <Skeleton className="h-3 w-64 rounded-full" />
+          </div>
+        </GlassCard>
+      </div>
+    </>
+  );
 }
 
 /**
@@ -37,6 +77,7 @@ export function HeroSearchShell({ placeholder, label, onActivate }: HeroSearchSh
         onInput={(e) => onActivate(e.currentTarget.value)}
         className={cn(HERO_SEARCH_INPUT_CLASS, 'focus:border-primary/50 focus:shadow-lg')}
       />
+      <HeroSearchRestingCard />
     </div>
   );
 }

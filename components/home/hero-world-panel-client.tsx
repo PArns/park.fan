@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { ArrowRight } from 'lucide-react';
 import { Link, useRouter } from '@/i18n/navigation';
@@ -41,6 +41,7 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
   const { data: liveGeo } = useGeoLiveStats();
 
   const [selectedSlug, setSelectedSlug] = useState('europe');
+  const chipsRef = useRef<HTMLDivElement>(null);
   const selected = continents.find((c) => c.slug === selectedSlug) ?? continents[0];
 
   const continentBySlug = new Map(continents.map((c) => [c.slug, c]));
@@ -49,6 +50,43 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
 
   const selectedName = translateGeoSlug(tGeo, 'continents', selected.slug, selected.name);
   const selectedOpen = openCount(selected);
+
+  // GSAP choreographs the continent switch: the chip row is replaced wholesale, and letting
+  // the new set flick in staggered reads as the panel answering the click rather than the
+  // content teleporting. This is an INTERACTION, so its chunk can load while the visitor is
+  // already looking at the map — unlike the hero entrance, which has to own the first frame
+  // and is therefore plain CSS.
+  useEffect(() => {
+    const row = chipsRef.current;
+    if (!row) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let ctx: { revert: () => void } | undefined;
+    let cancelled = false;
+    import('gsap')
+      .then(({ gsap }) => {
+        if (cancelled || !chipsRef.current) return;
+        ctx = gsap.context(() => {
+          gsap.from(gsap.utils.toArray<HTMLElement>('[data-country-chip]'), {
+            opacity: 0,
+            y: 6,
+            scale: 0.96,
+            duration: 0.32,
+            ease: 'power2.out',
+            stagger: 0.025,
+            clearProps: 'all',
+          });
+        }, chipsRef);
+      })
+      .catch(() => {
+        // No animation is a fine outcome — the chips are already in the DOM either way.
+      });
+
+    return () => {
+      cancelled = true;
+      ctx?.revert();
+    };
+  }, [selectedSlug]);
 
   const handleContinentClick = (slug: string) => {
     if (slug === selected.slug) {
@@ -185,13 +223,14 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
       </div>
 
       {/* Country chips of the selected continent */}
-      <div className="flex flex-wrap gap-2 px-5 pt-4 pb-2">
+      <div ref={chipsRef} className="flex flex-wrap gap-2 px-5 pt-4 pb-2">
         {selected.countries.map((country) => {
           const open =
             findOpenParkCount(liveGeo, selected.slug, country.slug) ?? country.initialOpenCount;
           return (
             <Link
               key={country.slug}
+              data-country-chip
               href={`/parks/${selected.slug}/${country.slug}` as '/parks/europe'}
               prefetch={false}
               className="border-border/60 bg-background/70 hover:border-primary/50 hover:bg-background inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm shadow-sm transition-colors"

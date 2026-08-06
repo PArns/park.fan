@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState, type ComponentType } from 'react';
 import { SearchCommand } from '@/components/search/search-bar';
 import { HeroSearchShell } from '@/components/search/hero-search-field';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
+import { useMounted } from '@/lib/hooks/use-mounted';
 import { useAfterLoad } from '@/lib/hooks/use-after-load';
 import { trackHeroSearchClicked } from '@/lib/analytics/umami';
 import { cn } from '@/lib/utils';
@@ -40,6 +41,7 @@ type PanelComponent = ComponentType<{
  */
 export function HeroInlineSearch({ placeholder, label, className }: HeroInlineSearchProps) {
   const isDesktop = useMediaQuery('(min-width: 768px)');
+  const mounted = useMounted();
   const afterLoad = useAfterLoad();
   const [Panel, setPanel] = useState<PanelComponent | null>(null);
   /** What the visitor typed into the shell before the chunk arrived. */
@@ -66,20 +68,24 @@ export function HeroInlineSearch({ placeholder, label, className }: HeroInlineSe
     };
   }, [isDesktop, Panel, afterLoad, typed]);
 
+  // Until the media query has an answer, render the SHELL — never the palette trigger.
+  // `useMediaQuery` is false on the server and on the first client render, so the desktop hero
+  // used to paint the mobile trigger first: a field carrying a ⌘K badge and a pulsing ring that
+  // vanished a moment later. That swap was the flicker.
+  const showShell = !mounted || (isDesktop && !Panel);
+
   return (
     <div className={cn('w-full', className)}>
-      {isDesktop ? (
-        Panel ? (
-          <Panel
-            placeholder={placeholder}
-            label={label}
-            initialQuery={typed ?? undefined}
-            autoFocus={pendingFocus}
-            onFocusHandled={() => setPendingFocus(false)}
-          />
-        ) : (
-          <HeroSearchShell placeholder={placeholder} label={label} onActivate={activate} />
-        )
+      {showShell ? (
+        <HeroSearchShell placeholder={placeholder} label={label} onActivate={activate} />
+      ) : isDesktop && Panel ? (
+        <Panel
+          placeholder={placeholder}
+          label={label}
+          initialQuery={typed ?? undefined}
+          autoFocus={pendingFocus}
+          onFocusHandled={() => setPendingFocus(false)}
+        />
       ) : (
         <div onClick={() => trackHeroSearchClicked()}>
           <SearchCommand

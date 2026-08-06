@@ -127,12 +127,10 @@ export async function GlobalStatsSection() {
                 <AttractionCard
                   parkStatus="OPERATING"
                   showParkName
-                  backgroundImage={
-                    getAttractionBackgroundImage(
-                      stats.longestWaitRide.parkSlug,
-                      stats.longestWaitRide.slug
-                    )
-                  }
+                  backgroundImage={getAttractionBackgroundImage(
+                    stats.longestWaitRide.parkSlug,
+                    stats.longestWaitRide.slug
+                  )}
                   objectPosition={getCardObjectPosition(
                     stats.longestWaitRide.parkSlug,
                     stats.longestWaitRide.slug
@@ -185,12 +183,10 @@ export async function GlobalStatsSection() {
                 <AttractionCard
                   parkStatus="OPERATING"
                   showParkName
-                  backgroundImage={
-                    getAttractionBackgroundImage(
-                      stats.shortestWaitRide.parkSlug,
-                      stats.shortestWaitRide.slug
-                    )
-                  }
+                  backgroundImage={getAttractionBackgroundImage(
+                    stats.shortestWaitRide.parkSlug,
+                    stats.shortestWaitRide.slug
+                  )}
                   objectPosition={getCardObjectPosition(
                     stats.shortestWaitRide.parkSlug,
                     stats.shortestWaitRide.slug
