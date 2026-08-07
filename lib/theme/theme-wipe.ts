@@ -75,7 +75,12 @@ function lockup(next: 'light' | 'dark') {
     'display:flex',
     'align-items:center',
     'justify-content:center',
-    'gap:clamp(10px,1.6vw,20px)',
+    // No gap. `logo-small.svg` is a 150×150 square with a narrow pin drawn inside it, so at any
+    // rendered height it brings roughly a third of that width along as empty space on either
+    // side — the optical gap is already in the file. Adding a flex gap on top pushed the two
+    // halves apart into two separate objects. Same reason the header's own lockup sits at
+    // `gap-0.5`.
+    'gap:0',
     'pointer-events:none',
     'z-index:2147483647',
     'opacity:0',
