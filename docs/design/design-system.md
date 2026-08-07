@@ -94,7 +94,15 @@ The switch itself splits motion the way the rest of the codebase does: **CSS own
 knob's position is a class, so a failed GSAP chunk still visibly switches), **GSAP owns the
 flourish** — the icon spins through the change and the incoming theme opens out of the switch as a
 disc that covers the viewport before the colours flip, then lifts off the newly themed page
-(`lib/theme/theme-wipe.ts`). The disc is a scaled element, not an animated `clip-path`: a transform
+(`lib/theme/theme-wipe.ts`). While it covers, the park.fan lockup sits in the middle of it — the
+one moment the whole viewport belongs to us. It is centred on the VIEWPORT, not on the disc, whose
+centre is the switch up in the corner, and it is capped with `clamp()` so it stays the same size
+on a 2560 screen as on a 1680 one. The artwork is the variant for the INCOMING theme (`-dark` is
+the light-ink file), and all four files are already in the header on every page, so it comes out
+of the cache rather than fetching mid-animation.
+
+Measured end to end: overlay up at 4 ms, theme flips at 569 ms, overlay gone at 1160 ms — the
+lockup is fully legible for roughly 400 ms of that. The disc is a scaled element, not an animated `clip-path`: a transform
 composites on the GPU and interpolates as a plain number, a `circle()` radius inside a `clip-path`
 string does neither. Under `prefers-reduced-motion`, or if the import fails, the theme still
 changes — `apply` is called exactly once on every path through that module.
