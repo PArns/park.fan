@@ -45,6 +45,7 @@ import { HeroWorldPanel } from '@/components/home/hero-world-panel';
 import { HeroWorldPanelSkeleton } from '@/components/home/hero-skeletons';
 import { HeroTextPanel } from '@/components/home/hero-text-panel';
 import { HeroEntranceGate } from '@/components/home/hero-entrance-gate';
+import { CardPointerFx } from '@/components/parks/card-pointer-fx';
 import { FeaturedParksSlot } from '@/components/home/featured-parks-slot';
 import { GlobalStatsSection } from '@/components/home/global-stats-section';
 import { LiveActivitySection } from '@/components/home/live-activity-section';
@@ -136,6 +137,8 @@ export default async function HomePage({ params }: HomePageProps) {
   return (
     <div className="flex flex-col">
       <HomepageFAQStructuredData />
+      {/* Pointer depth on every card below — one delegated listener for the whole page. */}
+      <CardPointerFx />
       {/* Hero Section – live-numbers headline + in-place search on the left, world-map panel on
           the right (xl+ only), nearby-park bubbles below. When the user is in a park (nearby),
           the headline switches to "Willkommen im [Park]" + park info. */}
@@ -217,7 +220,9 @@ export default async function HomePage({ params }: HomePageProps) {
       </section>
 
       {/* Announcement Section */}
-      <AnnounceSection locale={locale} />
+      <div className="pk-reveal">
+        <AnnounceSection locale={locale} />
+      </div>
 
       {/* Hottest parks heat banner — only renders during a real heat wave (≥ 35 °C in DE/FR/IT/NL/BE);
           fallback is null because the section is absent most of the year (no skeleton flash). */}
@@ -252,18 +257,19 @@ export default async function HomePage({ params }: HomePageProps) {
         <GlobalStatsSection />
       </Suspense>
 
-      {/* ML / AI Stats */}
+      {/* ML / AI Stats — no pk-reveal: its cards are GlassCards, and the reveal's transform
+          would flatten their backdrop for the length of the entry range. */}
       <Suspense fallback={<MLStatsSkeleton />}>
         <MLStatsSection linkToFancast />
       </Suspense>
 
-      {/* Live Activity - Parks Open Now */}
+      {/* Live Activity - Parks Open Now — no pk-reveal, same reason as ML stats above. */}
       <Suspense fallback={<LiveActivitySkeleton />}>
         <LiveActivitySection />
       </Suspense>
 
       {/* Features Section */}
-      <section className="bg-muted/30 px-4 py-16">
+      <section className="pk-reveal bg-muted/30 px-4 py-16">
         <div className="container mx-auto">
           <div className="mb-2 flex items-center gap-2">
             <Sparkles className="text-primary h-5 w-5" />

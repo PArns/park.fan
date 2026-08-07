@@ -109,6 +109,53 @@ changes — `apply` is called exactly once on every path through that module.
 
 ---
 
+## Pointer depth on the cards
+
+`CardPointerFx` (mounted once per page) gives every `[data-card-fx]` card two things on hover: the
+photo drifts a few pixels **against** the pointer, and a soft highlight follows it across the card.
+The drift is the whole idea — moving the picture while the frosted panels hold still is what makes
+them read as floating above it rather than printed on it, and it is the one part CSS cannot do,
+because it needs the pointer's position.
+
+Three constraints it works under:
+
+- **Never a transform on the card.** The card carries the two `backdrop-filter` panels; a transform
+  on it would make it a backdrop root for as long as the pointer was inside, and the glass would go
+  flat exactly while somebody is looking at it. The drift goes on the `<img>` inside
+  `CardPhotoFrame`, which filters nothing. Tailwind's own `hover:-translate-y-1` on the card is
+  safe — v4 compiles it to the standalone `translate` property, which Chromium does not treat as a
+  backdrop root (measured: the panel's backdrop detail holds at 26.96 → 26.84).
+- **One delegated listener**, not one per card, and the per-frame work is bound only while a card
+  is actually hovered.
+- **No blend mode on the highlight.** `mix-blend-mode: overlay` looked richer and _was the entire
+  cost of the feature_.
+
+| sweeping one card, median frame | 1× CPU  | 4× CPU  |
+| ------------------------------- | ------- | ------- |
+| drift + highlight, blended      | 43.6 ms | 44.3 ms |
+| drift + highlight, no blend     | 38.3 ms | 35.4 ms |
+| drift only                      | 38.9 ms | 34.0 ms |
+| neither (baseline)              | 39.4 ms | 36.2 ms |
+
+Without the blend mode the whole effect sits inside the baseline's noise. **Measure this from
+inside the page** if you touch it: driving the pointer with Playwright's `mouse.move` puts a CDP
+round trip between frames and invented a 20 ms regression that was not there.
+
+## Section reveals
+
+`.pk-reveal` is a scroll-driven CSS animation (`animation-timeline: view()`), not the older
+`<Reveal>` component. `<Reveal>` renders `opacity-0` and needs an IntersectionObserver to bring it
+back, so with JavaScript blocked its content stays invisible; a `view()` timeline degrades the
+other way — a browser without support just shows the section. It fills `backwards`, so nothing
+lingers afterwards.
+
+It only goes on sections that contain **no glass**. During the entry range the transform is real,
+and any `backdrop-filter` underneath would flatten for the length of the reveal — which is why the
+ML-stats and live-activity sections are deliberately left out (both nest `GlassCard`s), and card
+grids get their pointer effects instead.
+
+---
+
 ## Badge Pattern
 
 **All badges use the soft pattern** — semi-transparent background + colored text, works in light and dark mode without separate overrides:

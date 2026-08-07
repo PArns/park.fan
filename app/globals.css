@@ -717,6 +717,80 @@
     @apply hover:border-primary/50 transition-all duration-200 hover:scale-[1.02] hover:shadow-lg;
   }
 
+  /*
+   * Section reveal on scroll — CSS only, no observer, no JavaScript.
+   *
+   * Deliberately NOT the existing `<Reveal>`: that one renders `opacity-0` and relies on an
+   * IntersectionObserver in an effect to bring it back, so with JavaScript blocked the section
+   * stays invisible. Hiding content that only JS can reveal is the one thing this codebase does
+   * not do. A `view()` timeline degrades the other way round — a browser without it just shows
+   * the section, unanimated, with nothing hidden.
+   *
+   * `backwards`, never `both`. After the range the element returns to its own styles and leaves
+   * no transform behind; a retained one would make the section a backdrop root and flatten every
+   * frosted panel inside it. That is also why this only goes on sections with NO glass in them:
+   * during the range the transform is real, and a card grid underneath would lose its panels for
+   * the length of the reveal. Card grids get their pointer effects instead.
+   */
+  @keyframes pk-reveal-in {
+    from {
+      opacity: 0;
+      transform: translateY(26px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .pk-reveal {
+        animation: pk-reveal-in linear backwards;
+        animation-timeline: view();
+        animation-range: entry 0% entry 42%;
+      }
+    }
+  }
+
+  /*
+   * Pointer highlight on a card, driven by CardPointerFx.
+   *
+   * A pseudo-element and two custom properties: nothing is added to the DOM, nothing relayouts,
+   * and a card that never gets hovered pays nothing (--fx-o defaults to 0). It sits above the
+   * glass panels on purpose — the light has to cross the frosted strips too, or it looks like it
+   * is trapped under them.
+   *
+   * And NO blend mode. `mix-blend-mode: overlay` looked richer and was the effect's entire cost:
+   * with it, sweeping a card measured 43.6 ms a frame against a 40.5 ms baseline at 1× CPU and
+   * 44.3 against 36.6 at 4×. Without it, all three configurations sit inside each other's noise
+   * (38.3 / 38.9 / 39.4 at 1×), because a plain translucent gradient composites while a blended
+   * one has to re-read what it sits on — here, two frosted panels — every frame.
+   *
+   * Measure this from INSIDE the page if you touch it. Driving the pointer with Playwright's
+   * `mouse.move` puts a CDP round trip between every frame and inflated every number in the
+   * first run, to the point of inventing a 20 ms regression that was not there.
+   */
+  .pk-card-fx::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+    border-radius: inherit;
+    opacity: var(--fx-o, 0);
+    transition: opacity 260ms ease;
+    background: radial-gradient(
+      240px circle at var(--fx-x, 50%) var(--fx-y, 50%),
+      rgba(255, 255, 255, 0.1),
+      transparent 62%
+    );
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pk-card-fx::after {
+      display: none;
+    }
+  }
+
   /* Park card v2 — photo zoom on card hover */
   .pk-photo-zoom {
     transition:
