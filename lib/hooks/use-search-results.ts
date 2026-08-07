@@ -7,6 +7,26 @@ import type { SearchResult, SearchResultItem } from '@/lib/api/types';
 import { trackSearchNoResults } from '@/lib/analytics/umami';
 import { useHeroBrowseParks, type HeroBrowseParks } from '@/lib/hooks/use-hero-browse-parks';
 
+/**
+ * Strip accents and punctuation the way the API's matcher does, so scoring here
+ * agrees with the order the API already sorted the results into.
+ *
+ * Comparing raw strings meant a name whose letters are broken up by punctuation
+ * never matched: "F.L.Y." does not contain "fly", so searching `fly` scored the
+ * ride 0 and "Sky Fly" 30 — the API returned F.L.Y. first and this pushed it
+ * back down. Accents hit the same wall ("Fårup Sommerland" vs `farup`), and "ß"
+ * has no Unicode decomposition, hence the explicit replace.
+ */
+const fold = (value: string): string =>
+  value
+    .replace(/\u00df/g, 'ss')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
+
+/** `fold` plus punctuation removal — "F.L.Y." becomes "fly". */
+const foldAlphanumeric = (value: string): string => fold(value).replace(/[^a-z0-9]/g, '');
+
 /** Shape of a single glossary hit returned by /api/glossary-search. */
 export interface GlossarySearchItem {
   type: 'glossary';
@@ -97,21 +117,25 @@ export function useSearchResults(query: string): UseSearchResultsReturn {
 
   // Calculate match score for exact matches: name should be compared with query
   const calculateMatchScore = (item: SearchResultItem): number => {
-    const lowerName = item.name.toLowerCase();
-    const lowerQuery = debouncedQuery.toLowerCase();
+    const name = fold(item.name);
+    const query = fold(debouncedQuery);
+    const plainName = foldAlphanumeric(item.name);
+    const plainQuery = foldAlphanumeric(debouncedQuery);
+    const hasPlainQuery = plainQuery.length > 0;
 
-    // Exact name match = 100 points
-    if (lowerName === lowerQuery) {
+    // Exact name match = 100 points — including one the user typed without the
+    // punctuation the name carries ("fly" for "F.L.Y.").
+    if (name === query || (hasPlainQuery && plainName === plainQuery)) {
       return 100;
     }
 
     // Name starts with query = 50 points
-    if (lowerName.startsWith(lowerQuery)) {
+    if (name.startsWith(query) || (hasPlainQuery && plainName.startsWith(plainQuery))) {
       return 50;
     }
 
     // Substring match = 30 points
-    if (lowerName.includes(lowerQuery)) {
+    if (name.includes(query) || (hasPlainQuery && plainName.includes(plainQuery))) {
       return 30;
     }
 
