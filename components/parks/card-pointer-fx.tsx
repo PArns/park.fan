@@ -2,8 +2,16 @@
 
 import { useEffect } from 'react';
 
-/** How far the photo drifts against the pointer, at the card's edge. */
-const DRIFT_PX = 7;
+/**
+ * How much of the photo's own headroom the drift is allowed to use, at the card's edge.
+ *
+ * NOT a pixel constant. The headroom is `(PHOTO_SCALE - 1) / 2` of each dimension, and on the
+ * real card that is 12.1 px across but only 6.0 px down — a flat 7 px drift slid the picture 1 px
+ * past its own top edge and exposed the bleed layer underneath it, reflection and all. Deriving
+ * the limit per axis from the measured box makes it correct at any card size, and keeps it
+ * correct if somebody retunes the scale.
+ */
+const DRIFT_FRACTION = 0.85;
 /**
  * The photo's own zoom while a card is hovered. It exists to give the drift somewhere to go:
  * without headroom, sliding the picture inside its clipped box would expose the edge. Separate
@@ -21,6 +29,9 @@ interface Active {
   setX: Setter | null;
   setY: Setter | null;
   frame: number | null;
+  /** Per-axis drift limit, derived from the photo's headroom at this card's size. */
+  driftX: number;
+  driftY: number;
   /**
    * The card's box, measured ONCE when the pointer arrives.
    *
@@ -69,14 +80,25 @@ export function CardPointerFx() {
 
     const release = () => {
       if (!active) return;
-      const { card, img, frame } = active;
+      const { card, img, frame, setX, setY } = active;
       if (frame !== null) cancelAnimationFrame(frame);
       // Both listeners come off here. `pointerleave` is `once`, but `pointermove` is not, and
       // leaving it bound would stack another one on every entry.
       card.removeEventListener('pointermove', onMove);
       card.removeEventListener('pointerleave', release);
       card.style.removeProperty('--fx-o');
-      if (img && gsap) gsap.to(img, { x: 0, y: 0, scale: 1, duration: 0.4, ease: 'power2.out' });
+      // The way home goes through the SAME setters, never a fresh gsap.to on x/y.
+      //
+      // `quickTo` keeps one persistent tween per property and holds its last target. A second
+      // tween aiming at 0 does not replace it — they both write every frame, the return looks
+      // right, and then the moment it finishes the quickTo re-asserts the old hover offset. That
+      // is the photo snapping back a beat after the pointer has gone: traced frame by frame, a
+      // clean glide to 0,0 and then a 5.95 px step back to 4.48,3.92 on the twelfth frame.
+      //
+      // `scale` is not driven by quickTo, so it has no second owner and a plain tween is fine.
+      setX?.(0);
+      setY?.(0);
+      if (img && gsap) gsap.to(img, { scale: 1, duration: 0.4, ease: 'power2.out' });
       active = null;
     };
 
@@ -92,8 +114,8 @@ export function CardPointerFx() {
         // −1 … 1 from the card's centre
         const nx = (px / box.width) * 2 - 1;
         const ny = (py / box.height) * 2 - 1;
-        active.setX?.(-nx * DRIFT_PX);
-        active.setY?.(-ny * DRIFT_PX);
+        active.setX?.(-nx * active.driftX);
+        active.setY?.(-ny * active.driftY);
         active.card.style.setProperty('--fx-x', `${px}px`);
         active.card.style.setProperty('--fx-y', `${py}px`);
       });
@@ -106,12 +128,16 @@ export function CardPointerFx() {
 
       release();
       const img = card.querySelector<HTMLElement>('[data-card-photo="frame"] img');
+      const photo = img?.getBoundingClientRect();
+      const headroom = (PHOTO_SCALE - 1) / 2;
       active = {
         card,
         img,
         setX: null,
         setY: null,
         frame: null,
+        driftX: photo ? photo.width * headroom * DRIFT_FRACTION : 0,
+        driftY: photo ? photo.height * headroom * DRIFT_FRACTION : 0,
         box: card.getBoundingClientRect(),
       };
       card.style.setProperty('--fx-o', '1');

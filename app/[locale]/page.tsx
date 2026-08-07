@@ -45,7 +45,6 @@ import { HeroWorldPanel } from '@/components/home/hero-world-panel';
 import { HeroWorldPanelSkeleton } from '@/components/home/hero-skeletons';
 import { HeroTextPanel } from '@/components/home/hero-text-panel';
 import { HeroEntranceGate } from '@/components/home/hero-entrance-gate';
-import { CardPointerFx } from '@/components/parks/card-pointer-fx';
 import { FeaturedParksSlot } from '@/components/home/featured-parks-slot';
 import { GlobalStatsSection } from '@/components/home/global-stats-section';
 import { LiveActivitySection } from '@/components/home/live-activity-section';
@@ -137,8 +136,6 @@ export default async function HomePage({ params }: HomePageProps) {
   return (
     <div className="flex flex-col">
       <HomepageFAQStructuredData />
-      {/* Pointer depth on every card below — one delegated listener for the whole page. */}
-      <CardPointerFx />
       {/* Hero Section – live-numbers headline + in-place search on the left, world-map panel on
           the right (xl+ only), nearby-park bubbles below. When the user is in a park (nearby),
           the headline switches to "Willkommen im [Park]" + park info. */}

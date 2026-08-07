@@ -20,6 +20,7 @@ import Script from 'next/script';
 import { UserbackFeedback } from '@/components/common/userback-feedback';
 import { WebVitalsReporter } from '@/components/analytics/web-vitals-reporter';
 import { ScrollToTop } from '@/components/common/scroll-to-top';
+import { CardPointerFx } from '@/components/parks/card-pointer-fx';
 import { NavigationProgress } from '@/components/layout/navigation-progress';
 import {
   OrganizationStructuredData,
@@ -232,6 +233,9 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
               <Suspense fallback={null}>
                 <NavigationProgress />
                 <ScrollToTop />
+                {/* Pointer depth on every card, on every page — one delegated listener, and it
+                    costs nothing on pages that have no cards. */}
+                <CardPointerFx />
                 <UserbackFeedback locale={locale} />
                 <WebVitalsReporter />
                 <LanguageBanner currentLocale={locale as Locale} />

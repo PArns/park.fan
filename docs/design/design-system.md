@@ -126,7 +126,18 @@ Three constraints it works under:
   safe — v4 compiles it to the standalone `translate` property, which Chromium does not treat as a
   backdrop root (measured: the panel's backdrop detail holds at 26.96 → 26.84).
 - **One delegated listener**, not one per card, and the per-frame work is bound only while a card
-  is actually hovered.
+  is actually hovered. It is mounted in the locale layout, so cards behave the same on the
+  homepage, the geo pages, a park's attraction grid and the blog index.
+- **The way home goes through the same `quickTo` setters.** `quickTo` keeps one persistent tween
+  per property and holds its last target; a separate `gsap.to(img, {x: 0, y: 0})` does not replace
+  it, so both write every frame, the return looks right, and the instant it finishes the quickTo
+  re-asserts the old offset. That was the photo snapping back a beat after the pointer left —
+  and snapping differently depending on which edge you left by, because the held value is wherever
+  the pointer last was.
+- **The drift is derived from the photo's headroom, per axis.** `(PHOTO_SCALE - 1) / 2` of each
+  dimension is 12.1 px across but only 6.0 px down on the real card, so a flat 7 px drift pushed
+  the picture past its own top edge and exposed the bleed layer underneath — reflection and all.
+  It uses 85 % of the measured room now, which stays correct at any card size.
 - **No blend mode on the highlight.** `mix-blend-mode: overlay` looked richer and _was the entire
   cost of the feature_.
 
