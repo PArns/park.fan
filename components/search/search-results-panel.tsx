@@ -6,8 +6,8 @@ import { CommandEmpty, CommandGroup, CommandList } from '@/components/ui/command
 import { Button } from '@/components/ui/button';
 import { trackSearchViewAll } from '@/lib/analytics/umami';
 import { cn } from '@/lib/utils';
-import { Skeleton } from '@/components/ui/skeleton';
-import { SkeletonItem, GlossaryResultItem } from '@/components/search/search-result-items';
+import { GlossaryResultItem } from '@/components/search/search-result-items';
+import { SearchSkeletonList } from '@/components/search/search-skeleton-list';
 import { SearchResultGroups } from '@/components/search/search-result-groups';
 import { SearchBrowseGroup } from '@/components/search/search-browse-group';
 import type { UseSearchResultsReturn } from '@/lib/hooks/use-search-results';
@@ -29,6 +29,12 @@ interface SearchResultsPanelProps {
    * `min-h-0 flex-1` because its card is already capped to the room left below the field.
    */
   listClassName?: string;
+  /**
+   * Row padding for the pending skeleton, matching this surface's real rows. The hero has to
+   * pass its own: its resting height is reserved in the layout, so a skeleton row of the wrong
+   * height moves the pills under the dropdown. See `search-skeleton-list.tsx`.
+   */
+  skeletonRowClassName?: string;
 }
 
 /**
@@ -50,6 +56,7 @@ export function SearchResultsPanel({
   onGlossarySelect,
   browseLimit,
   listClassName = 'max-h-[min(22rem,42vh)]',
+  skeletonRowClassName,
 }: SearchResultsPanelProps) {
   const t = useTranslations('common');
   const tSearch = useTranslations('search');
@@ -82,14 +89,7 @@ export function SearchResultsPanel({
         )}
       >
         {isPending && (
-          <div className="p-1">
-            <div className="px-3 pt-3.5 pb-1">
-              <Skeleton className="h-2 w-16 rounded-full" />
-            </div>
-            {['55%', '72%', '48%', '65%'].slice(0, browseLimit ?? 4).map((width, i) => (
-              <SkeletonItem key={i} width={width} />
-            ))}
-          </div>
+          <SearchSkeletonList rows={browseLimit ?? 4} rowClassName={skeletonRowClassName} />
         )}
 
         {!isPending &&

@@ -14,7 +14,8 @@ import { Button } from '@/components/ui/button';
 import { trackSearchViewAll } from '@/lib/analytics/umami';
 import { useSearchResults } from '@/lib/hooks/use-search-results';
 import { useSearchNavigation } from '@/lib/hooks/use-search-navigation';
-import { SkeletonItem, GlossaryResultItem } from '@/components/search/search-result-items';
+import { GlossaryResultItem } from '@/components/search/search-result-items';
+import { SkeletonItem } from '@/components/search/search-skeleton-list';
 import { SearchResultGroups } from '@/components/search/search-result-groups';
 import { SearchBrowseGroup } from '@/components/search/search-browse-group';
 

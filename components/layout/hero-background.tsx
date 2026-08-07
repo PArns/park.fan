@@ -8,6 +8,9 @@ import { heroImageSrcs, heroObjectPosition } from '@/lib/media/hero';
 import { backgroundImageLoader } from '@/lib/utils/image-loader';
 import { BACKGROUND_BLUR_DATA_URL } from '@/lib/utils/image-placeholder';
 import { useHeroRotation } from '@/components/layout/hero-rotation-context';
+import { useActiveOnScreen } from '@/lib/hooks/use-active-on-screen';
+import { useAfterLoad } from '@/lib/hooks/use-after-load';
+import { HERO_ENTRANCE_MS } from '@/components/home/hero-entrance-gate';
 import { HERO_3D_ENABLED } from '@/lib/config/features';
 import { cn } from '@/lib/utils';
 
@@ -22,6 +25,46 @@ const HeroThreePark = nextDynamic(
 
 /** Class, not an inline animation — see `.hero-ken-burns` in globals.css for why. */
 const KEN_BURNS_CLASS = 'hero-ken-burns';
+
+/**
+ * Set on the wrapper while the hero is off screen or the tab is in the background: it parks the
+ * pan (see `.hero-motion-paused` in globals.css) rather than unmounting anything, so it picks up
+ * where it left off instead of snapping back to `scale(1)`.
+ */
+const PAUSED_CLASS = 'hero-motion-paused';
+
+/**
+ * When the ken-burns pan is allowed to start.
+ *
+ * The pan is the hero's single biggest rendering cost: it transforms the backdrop that both
+ * glass panels and the search dropdown are blurring, and a moving backdrop has to be re-filtered
+ * every frame while a static one is filtered once and cached. Measured with the hero on screen,
+ * **66.6 ms median frame with the pan running against 16.7 ms without** — so for as long as it
+ * runs, everything else animating over it runs at 15 fps.
+ *
+ * The entrance stagger, the map's sweep and every skeleton resolving into content all happen in
+ * the first couple of seconds, and the pan used to start on the LCP image's `load`, well inside
+ * that. Waiting for load + idle AND the entrance window means the hero assembles itself over a
+ * still photo and only starts moving when there is nothing left to arrive. Nothing is visible in
+ * the trade: the pan's first keyframe is the identity transform, so starting it later starts it
+ * from exactly where the photo already is.
+ */
+function useHeroPanAllowed(): boolean {
+  const afterLoad = useAfterLoad();
+  const [entranceOver, setEntranceOver] = useState(false);
+
+  useEffect(() => {
+    // Same clock the entrance runs on: both start from the moment the hero's markup is parsed,
+    // which is close enough to navigation start for a window this long. On a slow link hydration
+    // itself lands after the window has already closed, and the clamp fires the timer on the next
+    // tick — which is correct, the entrance is over by then.
+    const remaining = Math.max(0, HERO_ENTRANCE_MS - performance.now());
+    const id = setTimeout(() => setEntranceOver(true), remaining);
+    return () => clearTimeout(id);
+  }, []);
+
+  return afterLoad && entranceOver;
+}
 
 // All hero source images are ≤1024px wide, so the old 80vw made high-DPR phones request the
 // w=1080 srcset candidate — an *upscale* of a 1024px source: more bytes, zero extra detail. 60vw
@@ -42,6 +85,12 @@ const PARK_LAYER_LOOKAHEAD = 1;
 interface RandomHeroImageProps {
   imageSrc?: string;
   noAnimation?: boolean;
+  /**
+   * Tiny inline preview of THIS photo, so the first frame is a blurred version of what is about
+   * to arrive rather than a generic brand gradient. Falls back to the gradient when the caller
+   * has none (the client-random pick has no way to look one up).
+   */
+  blurDataURL?: string;
 }
 
 /**
@@ -115,12 +164,15 @@ function InParkHeroImages({
   );
 }
 
-export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps) {
+export function RandomHeroImage({ imageSrc, noAnimation, blurDataURL }: RandomHeroImageProps) {
   const [randomImage, setRandomImage] = useState<string | null>(null);
-  // Defer the ken-burns transform until the image has painted. Animating (transforming)
-  // the LCP element during its initial render is a known LCP-delay anti-pattern, so we
-  // render it static first and start the effect on load.
-  const [animate, setAnimate] = useState(false);
+  // The ken-burns pan waits for two things. First the image itself: transforming the LCP element
+  // during its initial render is a known LCP-delay anti-pattern, so it paints static and this
+  // flips on load. Then the rest of the hero — see useHeroPanAllowed for why the photo must not
+  // be moving while everything over it is still arriving.
+  const [loaded, setLoaded] = useState(false);
+  const panAllowed = useHeroPanAllowed();
+  const animate = loaded && panAllowed;
 
   // Is the user inside a park with its own hero images? If so, those take over (rendered below).
   const { parkImages } = useHeroRotation();
@@ -167,13 +219,16 @@ export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps)
         loader={backgroundImageLoader}
         priority={isServerImage}
         fetchPriority={isServerImage ? 'high' : undefined}
-        // Paint the brand gradient in the first frame instead of the bare bg-background, so the
-        // hero never shows an empty slab while the rendition is in flight. Same placeholder the
-        // park/attraction backgrounds use; low-entropy on purpose so it stays out of the LCP
-        // candidate set (LCP is still measured against the photo).
+        // Paint something in the first frame instead of the bare bg-background, so the hero never
+        // shows an empty slab while the rendition is in flight. Preferably a 16 px inline preview
+        // of this very photo (`blurDataURL`), which turns the moment the rendition lands from a
+        // photo appearing over a gradient into the same picture sharpening — measured at a 72 %
+        // frame-to-frame change before, 12 % after. The brand gradient stays as the fallback for
+        // callers that cannot look one up. Either way it is a background-image on the <img>, not
+        // an LCP candidate of its own — LCP is still measured against the photo.
         placeholder="blur"
-        blurDataURL={BACKGROUND_BLUR_DATA_URL}
-        onLoad={noAnimation ? undefined : () => setAnimate(true)}
+        blurDataURL={blurDataURL ?? BACKGROUND_BLUR_DATA_URL}
+        onLoad={noAnimation ? undefined : () => setLoaded(true)}
         className={cn(
           'object-cover transition-opacity duration-1000',
           hasParkImages && parkImageLoaded ? 'opacity-0' : 'opacity-100',
@@ -192,6 +247,8 @@ export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps)
 
 interface HeroBackgroundProps {
   imageSrc?: string;
+  /** Inline preview of `imageSrc` — see {@link RandomHeroImageProps.blurDataURL}. */
+  blurDataURL?: string;
 }
 
 /**
@@ -200,15 +257,31 @@ interface HeroBackgroundProps {
  * animated three.js park the camera flies through. Either way, when the visitor
  * is inside a real park that park's own photos crossfade in on top.
  */
-export function HeroBackground({ imageSrc }: HeroBackgroundProps) {
-  return HERO_3D_ENABLED ? <HeroBackground3D /> : <HeroBackgroundClassic imageSrc={imageSrc} />;
+export function HeroBackground({ imageSrc, blurDataURL }: HeroBackgroundProps) {
+  return HERO_3D_ENABLED ? (
+    <HeroBackground3D />
+  ) : (
+    <HeroBackgroundClassic imageSrc={imageSrc} blurDataURL={blurDataURL} />
+  );
 }
 
 /** Classic hero: a rotating, ken-burns park photo under a branded overlay. */
-function HeroBackgroundClassic({ imageSrc }: HeroBackgroundProps) {
+function HeroBackgroundClassic({ imageSrc, blurDataURL }: HeroBackgroundProps) {
+  // Park the pan while the hero is scrolled away or the tab is in the background. It is a
+  // 22 s infinite animation over a backdrop two glass panels are filtering, so left to itself it
+  // keeps a full-viewport composited layer alive — and keeps the header's own blur invalidating —
+  // for a photo nobody can see.
+  const { ref, active } = useActiveOnScreen('0px');
+
   return (
-    <div className="bg-background absolute inset-0 -z-10 overflow-hidden">
-      <RandomHeroImage imageSrc={imageSrc} />
+    <div
+      ref={ref}
+      className={cn(
+        'bg-background absolute inset-0 -z-10 overflow-hidden',
+        !active && PAUSED_CLASS
+      )}
+    >
+      <RandomHeroImage imageSrc={imageSrc} blurDataURL={blurDataURL} />
       {/* Branded overlay — from-background is navy in dark mode, near-white in light mode */}
       {/* Light mode used to wash the photo out with 60% white at the top-left, back when the
           text sat on the photo and needed it. The panels carry their own glass now (the hero

@@ -66,6 +66,7 @@ lib/media/manifest.ts
 lib/media/manifest-text.ts
 lib/media/manifest-search.ts
 lib/media/manifest-hero.ts
+lib/media/manifest-hero-lqip.ts
 
 # Auto-generated aspect-ratio crops (scripts/generate-image-crops.mjs) — cut from
 # the committed source photos at build time, never hand-authored.

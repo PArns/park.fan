@@ -37,6 +37,7 @@
     "check:media-urls": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/check-media-urls.mjs",
     "test:media-session": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-media-session.mjs",
     "check:card-framing": "node scripts/check-card-framing.mjs",
+    "check:hero-search-rest": "node scripts/check-hero-search-rest.mjs",
     "probe:isr": "node scripts/isr-cache-probe.mjs",
     "crawl:translations": "node scripts/crawl-translations.js",
     "crawl:translations:live": "node scripts/crawl-translations.js --live",
