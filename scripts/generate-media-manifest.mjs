@@ -57,6 +57,7 @@ const TEXT_OUT = path.join(ROOT, 'lib/media/manifest-text.ts');
 const SEARCH_OUT = path.join(ROOT, 'lib/media/manifest-search.ts');
 const PARKS_OUT = path.join(ROOT, 'lib/media/manifest-parks.ts');
 const HERO_OUT = path.join(ROOT, 'lib/media/manifest-hero.ts');
+const HERO_LQIP_OUT = path.join(ROOT, 'lib/media/manifest-hero-lqip.ts');
 
 // sharp is a hard dependency, but a missing optional image step must never break
 // the build — without it images simply carry no intrinsic dimensions, and the
@@ -160,6 +161,33 @@ async function probeFile(abs) {
   }
 
   return { ...size, gps, exifShotAt };
+}
+
+/**
+ * A 16 px-wide inline preview of an image, as a `data:` URL.
+ *
+ * What it is for: the hero paints `placeholder="blur"` while the full rendition is in flight,
+ * and that placeholder used to be one shared brand gradient for every photo. The moment the
+ * rendition landed, a photo therefore appeared *over* an unrelated gradient — the single largest
+ * frame-to-frame change on the homepage (measured at 72 %). A preview of the photo itself turns
+ * the same moment into the same picture sharpening (12 %).
+ *
+ * WebP at 16 px is ~110 bytes, ~150 as base64 — small enough that the preview costs less than
+ * the request it saves, and far below the entropy floor Chrome uses to decide what can be an LCP
+ * candidate, so LCP is still measured against the real photo.
+ */
+async function inlinePreview(abs) {
+  if (!sharp) return null;
+  try {
+    const buf = await sharp(abs)
+      .resize(16, null, { fit: 'inside' })
+      .webp({ quality: 35, effort: 6 })
+      .toBuffer();
+    return `data:image/webp;base64,${buf.toString('base64')}`;
+  } catch (err) {
+    warn(`could not build an inline preview for ${path.relative(ROOT, abs)}: ${err.message}`);
+    return null;
+  }
 }
 
 /** Widest-first — 16:9 is the best generic thumbnail for a SERP surface. */
@@ -684,6 +712,32 @@ export const HERO_BY_PARK: Record<string, string[]> = ${JSON.stringify(heroByPar
 
 /** Caption data per hero image path. */
 export const HERO_META: Record<string, HeroImageMeta> = ${JSON.stringify(heroMeta, null, 2)};
+`,
+  'utf8'
+);
+
+// ─── hero inline previews (server-side) ──────────────────────────────────────
+
+// Deliberately NOT part of the client-safe slice above. A page needs exactly one
+// of these — the photo it server-picked — and the whole table is ~7 KB of base64
+// that would otherwise ship to every visitor of every page with a hero.
+const heroLqip = {};
+for (const image of heroImages) {
+  const preview = await inlinePreview(path.join(ROOT, 'public', image.src));
+  if (preview) heroLqip[`${image.src}?v=${image.version}`] = preview;
+}
+
+fs.writeFileSync(
+  HERO_LQIP_OUT,
+  `${header('generate-media-manifest.mjs')}
+/**
+ * A 16 px inline preview per hero image, for \`next/image\`'s \`placeholder="blur"\`.
+ *
+ * SERVER-SIDE ONLY — read it through \`heroBlurDataUrl()\` in './hero-lqip', never from a Client
+ * Component. The hero picks its photo on the server and passes the one preview it needs down as
+ * a prop; importing the table into the client would ship every other park's preview with it.
+ */
+export const HERO_LQIP: Record<string, string> = ${JSON.stringify(heroLqip, null, 2)};
 `,
   'utf8'
 );

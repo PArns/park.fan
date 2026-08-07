@@ -23,25 +23,6 @@ const typeIcons = {
   glossary: BookOpen,
 };
 
-/** Loading placeholder row shown while the search queries are in flight. */
-export function SkeletonItem({ width }: { width: string }) {
-  return (
-    <div className="flex items-center gap-2.5 rounded-lg px-3 py-2 sm:gap-4 sm:py-3.5">
-      <div className="bg-foreground/10 h-9 w-9 shrink-0 animate-pulse rounded-lg sm:h-11 sm:w-11 sm:rounded-xl" />
-      <div className="flex min-w-0 flex-1 flex-col gap-2">
-        <div className="flex items-center justify-between gap-3">
-          <div className="bg-foreground/10 h-3.5 animate-pulse rounded-full" style={{ width }} />
-          <div className="bg-foreground/[8%] h-4 w-14 animate-pulse rounded-full" />
-        </div>
-        <div className="flex items-center justify-between gap-3">
-          <div className="bg-foreground/[8%] h-2.5 w-28 animate-pulse rounded-full" />
-          <div className="bg-foreground/[8%] h-2.5 w-10 animate-pulse rounded-full" />
-        </div>
-      </div>
-    </div>
-  );
-}
-
 interface SearchResultRowProps {
   result: SearchResultItem & NearbySearchExtras;
   position?: number;

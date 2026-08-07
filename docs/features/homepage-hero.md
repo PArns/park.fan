@@ -86,6 +86,32 @@ pay for it on desktop; mobile is unaffected (16.7 ms, zero slow frames) and
 `prefers-reduced-motion` already stops the animation, which takes the cost to zero for the
 visitors most likely to need that.
 
+### …so the pan does not run while the hero is still arriving
+
+Read the table above as a statement about **whatever else is on screen**, not about the pan. A
+slow zoom at 15 fps is still a smooth drift — it covers 0.12 of scale in 22 s. What is not fine
+is that the entrance stagger, the map's west-to-east sweep, the GSAP height tween and every
+skeleton resolving into content all happen in the first two seconds, and every one of them was
+paying the pan's frame budget. The pan used to start in the LCP image's `onLoad`, typically
+~700 ms in, i.e. squarely inside an entrance that runs to 1.7 s.
+
+It now waits for **load + idle _and_ the entrance window** (`useHeroPanAllowed`, sharing
+`HERO_ENTRANCE_MS` with `HeroEntranceGate`), so the hero assembles itself over a static backdrop —
+the 16.7 ms row — and only starts moving once there is nothing left to arrive. Nothing is visible
+in the trade: the pan's first keyframe is the identity transform, so starting it later starts it
+from exactly where the photo already is.
+
+It is also **parked while the hero is off screen or the tab is in the background**
+(`useActiveOnScreen` → `.hero-motion-paused`, which sets `animation-play-state: paused`). Not by
+dropping the class — that would snap the photo back to `scale(1)` for anyone scrolling back up.
+A 22 s infinite animation otherwise keeps a full-viewport composited layer alive, and keeps
+invalidating the sticky header's own blur, for a photo nobody can see.
+
+> Both are worth re-measuring on real hardware rather than in a headless container: without a GPU
+> the compositor is the bottleneck for everything at once, and the pan's share of it cannot be
+> isolated. The mechanism is not in doubt — a moving backdrop is re-filtered per frame and a
+> static one is not — but the numbers in the table above are the ones to trust.
+
 ---
 
 ## Live numbers: SSR seed + client overlay
@@ -126,6 +152,13 @@ first client render, so picking the surface straight from it made the desktop he
 _mobile_ trigger first — a field carrying a ⌘K badge and a pulsing ring that vanished a moment
 later. Both viewports now start on `HeroSearchShell`, which looks like neither trigger in
 particular and like the final field exactly; the surface is chosen once `useMounted()` is true.
+
+That "exactly" has to hold for the mobile hand-over too, which is the one the shell does not win:
+below `md` it gives way to the palette trigger the moment the media query resolves. The trigger
+carries a pulsing ring the shell had no equivalent for, and keeps the width of its (invisible on
+mobile) ⌘K badge free with `pr-14` — so the swap lit a ring around the field out of nowhere and
+re-truncated the placeholder mid-word. The shell paints both from the first frame, `md:hidden` on
+the ring and `md:pr-4` on the padding, so on desktop the real panel still gets neither.
 The resting dropdown is drawn as a skeleton in the same breath (`HeroSearchRestingCard`,
 `hidden md:block` so CSS decides, not a hook), so the card fades in where a box already is
 instead of dropping into an empty gap.
@@ -256,6 +289,54 @@ With it, all five runs measure 0.0095.
 | Nearby pills    | `HeroBubblesSkeleton` in the same `HeroBubbleRow`                           |
 | World-map panel | `HeroWorldPanelSkeleton`, rendered by the Suspense fallback AND by the gate |
 | Search field    | `HeroSearchShell` — a real input, see below                                 |
+| Hero photo      | A 16 px inline preview of that same photo, see below                        |
+
+### A placeholder in the right box is not enough — it has to be the right height
+
+The dropdown is the case where that bites, because the hero reserves its **resting height in the
+flow** (the card itself floats). Three separate pieces of markup have to agree on that number,
+and they had drifted apart:
+
+| the "same" resting card                        | height |
+| ---------------------------------------------- | ------ |
+| `HeroSearchRestingCard` (the shell's skeleton) | 252 px |
+| the panel's own pending state                  | 288 px |
+| the settled list of three parks                | 270 px |
+
+Nothing errors when that happens. The build is green, each state looks right on its own, and the
+only symptom is the pill row hopping **19 px down when the panel mounts and back up two seconds
+later** when its browse data lands — twice, at 2.8 s and 4.8 s, long after the layout is supposed
+to be settled.
+
+Both skeletons are now the same component (`SearchSkeletonList`), in its own module so the shell
+can render it without dragging `next/image` and the result tree into its chunk. A row's height
+comes from its photo box plus the surface's own `[&_[cmdk-item]]:py-*`, which the palette and the
+hero set differently, so that padding is passed in rather than guessed. The footer is not a
+skeleton at all: the hint is a static string, so the shell simply says it and the box matches by
+construction. And the panel no longer **measures** a resting height while its list is still
+pending — a height taken off a placeholder would be reserved for the length of the lookup and
+then corrected, which is the second hop.
+
+`pnpm check:hero-search-rest` asserts all three against each other in all six locales (needs a
+running site).
+
+### The photo resolves out of itself, not out of a brand gradient
+
+`placeholder="blur"` used to paint one shared four-stop gradient for every hero photo, so the
+moment the rendition landed a picture appeared _over_ something unrelated to it — a teal-and-green
+field giving way to a purple night shot. It is the single largest frame-to-frame change on the
+page. Holding the rendition back and releasing it on command, so both runs are the same photo on
+the same page, the gradient version changes **59 %** of the hero box against the preview's
+**31 %** — and on a second photo, 72 % against 41 %. The absolute figure is a property of the
+photo; the ratio is the point, and it is the difference between a picture appearing and a
+picture sharpening.
+
+The previews are generated per hero image by `generate:media` into `manifest-hero-lqip.ts`
+(~110 bytes each). That file is **server-side only** and read through `heroBlurDataUrl()` — a
+page needs exactly the one photo it picked, and the whole table is ~7 KB of base64 that would
+otherwise ship to every visitor through the client-safe `manifest-hero.ts`. At that size it is
+also far below the entropy floor Chrome uses for LCP candidates, so LCP is still measured against
+the real photo.
 
 The open-parks pill is one element whose **content** swaps, not a skeleton replaced by a badge:
 two separate elements measured a small but real shift even at identical heights.

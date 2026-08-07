@@ -63,6 +63,15 @@ slice (`manifest-hero.ts`) holding only the hero images and only the caption fie
 **Never import `@/lib/media` from a Client Component** — that ships the ~107 KB
 catalog to every visitor.
 
+### `@/lib/media/hero-lqip` — deliberately NOT client-safe
+
+`heroBlurDataUrl(src)` answers with a 16 px WebP of that photo, as a `data:` URL, for
+`next/image`'s `placeholder="blur"`. Its table is a separate file from the slice above
+for the same reason the slice exists at all: a page needs exactly the one preview it
+server-picked, and the whole table is ~13 KB of base64 that `manifest-hero.ts` would
+otherwise ship to every visitor. The server looks the one up and passes it down as a
+prop — see [homepage hero](homepage-hero.md).
+
 ### `@/lib/media/focus` — one crop rule for every surface
 
 `objectPositionForSrc(src, fallback)` resolves an image's focal point to a CSS
@@ -134,13 +143,14 @@ with nothing else to notice.
 
 `pnpm generate:media` walks `public/media` and writes:
 
-| file                 | size    | holds                                                                |
-| -------------------- | ------- | -------------------------------------------------------------------- |
-| `manifest.ts`        | ~107 KB | structural rows: paths, size, park/ride, roles, credit, focus, crops |
-| `manifest-text.ts`   | ~37 KB  | localized alt/caption per id                                         |
-| `manifest-search.ts` | ~81 KB  | the search index (below) + `MEDIA_REVISION`                          |
-| `manifest-parks.ts`  | small   | park name/city/country per park, from the API catalog                |
-| `manifest-hero.ts`   | ~21 KB  | the client-safe hero slice                                           |
+| file                    | size    | holds                                                                |
+| ----------------------- | ------- | -------------------------------------------------------------------- |
+| `manifest.ts`           | ~107 KB | structural rows: paths, size, park/ride, roles, credit, focus, crops |
+| `manifest-text.ts`      | ~37 KB  | localized alt/caption per id                                         |
+| `manifest-search.ts`    | ~81 KB  | the search index (below) + `MEDIA_REVISION`                          |
+| `manifest-parks.ts`     | small   | park name/city/country per park, from the API catalog                |
+| `manifest-hero.ts`      | ~21 KB  | the client-safe hero slice                                           |
+| `manifest-hero-lqip.ts` | ~13 KB  | a 16 px inline preview per hero image — **server-side only**         |
 
 It runs in `prebuild`, **after** `generate:image-crops` — the manifest records which
 crops exist, so the structured-data image set never advertises a file that was not

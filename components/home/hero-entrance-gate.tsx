@@ -1,4 +1,14 @@
 /**
+ * How long the entrance window stays open, measured from the moment the hero's markup is
+ * parsed — which is roughly when the CSS animation clock for it starts.
+ *
+ * Exported because a second thing depends on it: the ken-burns pan on the hero photo, which is
+ * held back until this is over (see `hero-background.tsx`). Every frame of that pan re-blurs
+ * both glass panels, so running it *during* the entrance is what made the entrance choppy.
+ */
+export const HERO_ENTRANCE_MS = 1700;
+
+/**
  * Closes the hero's entrance window once it has played.
  *
  * The hero's badge, headline and intro sit in a dynamic hole: the static shell paints a fallback
@@ -20,7 +30,7 @@
  * If the script is blocked the class stays and late content animates in, which is the behaviour
  * this replaces. Nothing is hidden that only JavaScript can reveal.
  */
-export function HeroEntranceGate({ windowMs = 1700 }: { windowMs?: number }) {
+export function HeroEntranceGate({ windowMs = HERO_ENTRANCE_MS }: { windowMs?: number }) {
   return (
     <script
       dangerouslySetInnerHTML={{

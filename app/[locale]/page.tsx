@@ -60,6 +60,7 @@ import { BlogHeroPreview } from '@/components/home/blog-hero-preview';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { pickHeroImage } from '@/lib/media/hero';
+import { heroBlurDataUrl } from '@/lib/media/hero-lqip';
 import { HERO_3D_ENABLED } from '@/lib/config/features';
 
 import type { Metadata } from 'next';
@@ -145,7 +146,10 @@ export default async function HomePage({ params }: HomePageProps) {
           wins. */}
       <section className="hero-entering relative z-10 -mt-14 overflow-visible px-6 pt-24 pb-8 md:pb-10 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-20 lg:pb-12">
         <HeroRotationProvider>
-          <HeroBackground imageSrc={randomHeroImage} />
+          <HeroBackground
+            imageSrc={randomHeroImage}
+            blurDataURL={heroBlurDataUrl(randomHeroImage)}
+          />
           {/* Closes the entrance window, so content that streams in later does not replay it —
               see HeroEntranceGate for what that cost in LCP. Outside the plate on purpose: a
               child there would shift the content stagger's nth-child by one. */}

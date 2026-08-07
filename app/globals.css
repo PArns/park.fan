@@ -442,6 +442,20 @@
   .hero-ken-burns {
     animation: ken-burns 22s ease-in-out infinite alternate;
   }
+
+  /*
+   * Parked while the hero is scrolled away or the tab is in the background.
+   *
+   * `animation-play-state`, not removing the class: the pan holds wherever it is and resumes
+   * from there, whereas dropping the animation would snap the photo back to `scale(1)` — a
+   * visible jump for anyone scrolling back up to it.
+   *
+   * The class is set on the background WRAPPER, so it covers the base photo and every in-park
+   * layer at once (they carry the animation on different elements).
+   */
+  .hero-motion-paused .hero-ken-burns {
+    animation-play-state: paused;
+  }
 }
 
 /* Scroll indicator: ball travels down inside mouse shape */

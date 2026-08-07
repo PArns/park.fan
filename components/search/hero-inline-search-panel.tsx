@@ -10,6 +10,7 @@ import { useSearchResults } from '@/lib/hooks/use-search-results';
 import { useSearchNavigation } from '@/lib/hooks/use-search-navigation';
 import { SearchResultsPanel } from '@/components/search/search-results-panel';
 import { HERO_SEARCH_INPUT_CLASS } from '@/components/search/hero-search-field';
+import { HERO_SKELETON_ROW_CLASS } from '@/components/search/search-skeleton-list';
 
 /**
  * How many parks the resting dropdown lists. The hero reserves the height of exactly this many
@@ -138,9 +139,12 @@ export default function HeroInlineSearchPanel({
   // heading, four rows instead of three — moved the card without moving the pills, so the gap
   // between them drifted or closed entirely.
   //
-  // Only measured while at REST. Once a query grows the list the card is meant to expand over
-  // the pills, so the last resting height is what stays reserved.
-  const atRest = query.trim().length < 3 && !expanded;
+  // Only measured while at REST, and only once the list it is measuring is the REAL one. Once a
+  // query grows the list the card is meant to expand over the pills, so the last resting height
+  // is what stays reserved; and a height taken off the pending skeleton would be reserved for as
+  // long as the browse lookup takes and then corrected, which is a second move of the pills for
+  // something the CSS variable already estimates.
+  const atRest = query.trim().length < 3 && !expanded && !search.browse.isPending;
   useEffect(() => {
     const card = cardRef.current;
     if (!card || !atRest) return;
@@ -286,6 +290,9 @@ export default function HeroInlineSearchPanel({
         <GlassCard
           ref={cardRef}
           variant="heavy"
+          // Same marker the shell's skeleton carries, so `pnpm check:hero-search-rest` measures
+          // the two against each other.
+          data-hero-search-card=""
           className="border-border/60 mt-3 flex max-h-[var(--hero-search-max-h,32rem)] flex-col overflow-hidden p-0 shadow-2xl"
         >
           <SearchResultsPanel
@@ -295,6 +302,7 @@ export default function HeroInlineSearchPanel({
             onGlossarySelect={handleGlossarySelect}
             browseLimit={expanded ? undefined : HERO_BROWSE_LIMIT}
             listClassName="min-h-0 flex-1"
+            skeletonRowClassName={HERO_SKELETON_ROW_CLASS}
           />
         </GlassCard>
       </div>
