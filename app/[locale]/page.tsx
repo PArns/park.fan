@@ -217,7 +217,9 @@ export default async function HomePage({ params }: HomePageProps) {
       </section>
 
       {/* Announcement Section */}
-      <AnnounceSection locale={locale} />
+      <div className="pk-reveal">
+        <AnnounceSection locale={locale} />
+      </div>
 
       {/* Hottest parks heat banner — only renders during a real heat wave (≥ 35 °C in DE/FR/IT/NL/BE);
           fallback is null because the section is absent most of the year (no skeleton flash). */}
@@ -252,18 +254,19 @@ export default async function HomePage({ params }: HomePageProps) {
         <GlobalStatsSection />
       </Suspense>
 
-      {/* ML / AI Stats */}
+      {/* ML / AI Stats — no pk-reveal: its cards are GlassCards, and the reveal's transform
+          would flatten their backdrop for the length of the entry range. */}
       <Suspense fallback={<MLStatsSkeleton />}>
         <MLStatsSection linkToFancast />
       </Suspense>
 
-      {/* Live Activity - Parks Open Now */}
+      {/* Live Activity - Parks Open Now — no pk-reveal, same reason as ML stats above. */}
       <Suspense fallback={<LiveActivitySkeleton />}>
         <LiveActivitySection />
       </Suspense>
 
       {/* Features Section */}
-      <section className="bg-muted/30 px-4 py-16">
+      <section className="pk-reveal bg-muted/30 px-4 py-16">
         <div className="container mx-auto">
           <div className="mb-2 flex items-center gap-2">
             <Sparkles className="text-primary h-5 w-5" />
