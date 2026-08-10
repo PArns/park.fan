@@ -169,7 +169,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
             />
 
             {/* Status-free shell (cacheable); live status overlaid client-side. All cities on
-                the page share one underlying /api/discovery call (React Query dedupe). */}
+                the page share one underlying /api/parks/live call (React Query dedupe). */}
             <LiveParkGrid
               continent={continent}
               country={country}

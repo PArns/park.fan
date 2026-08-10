@@ -1,7 +1,7 @@
 'use client';
 
 import { ParkCard } from '@/components/parks/park-card';
-import { useRegionParks } from '@/lib/hooks/use-region-parks';
+import { useRegionParks } from '@/lib/hooks/use-live-parks-by-region';
 import { useViewerPosition } from '@/lib/hooks/use-distance-to';
 import { calculateDistance } from '@/lib/utils/distance-utils';
 

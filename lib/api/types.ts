@@ -1195,6 +1195,27 @@ export interface DiscoveryCityResponse {
   breadcrumbs: Breadcrumb[];
 }
 
+/**
+ * Everything a ParkCard overlays on top of its prerendered shell — i.e. every field that can
+ * change during the day. This is the whole response shape of `/api/parks/live`, keyed by park id.
+ *
+ * The card grids (hub pages, featured strip, blog references) render structure server-side and
+ * leave these nine fields blank until the batch call lands, which is what lets those shells cache
+ * for a day. Keep it a projection: a field added here is a field re-downloaded for every park in
+ * the region on every 5-minute poll.
+ */
+export interface LiveParkFields {
+  status?: ParkStatus;
+  crowdLevel?: CrowdLevel;
+  averageWaitTime?: number;
+  operatingAttractions?: number;
+  totalAttractions?: number;
+  timezone?: string;
+  hasOperatingSchedule?: boolean;
+  todaySchedule?: ScheduleSummary;
+  nextSchedule?: ScheduleSummary;
+}
+
 // ============================================================================
 // ML Dashboard Types
 // ============================================================================

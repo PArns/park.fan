@@ -5,6 +5,7 @@ import type {
   AttractionResponse,
   ParkWaitTimesResponse,
   PopularPark,
+  ScheduleItem,
 } from './types';
 
 // Data-cache (`fetch` `next: { revalidate }`) windows for the park/attraction structure fetch.
@@ -19,17 +20,54 @@ const PARK_REVALIDATE = 86400; // 1d — structure snapshot; live data is client
 const ATTRACTION_REVALIDATE = 86400; // 1d
 
 /**
+ * Number of leading schedule days that keep their `influencingHolidays`.
+ *
+ * Only ONE day's neighbouring-region list is ever rendered — `useTodaySchedule` picks today's
+ * entry (browser clock, park timezone) and `HeaderHolidayPanel` / `ParkTimeInfo` read it from
+ * there. The API sends the list for all 17 days, which on a summer weekend is 8.4 KB of the
+ * park payload's 13.5 KB schedule, repeated in every 5-minute poll.
+ *
+ * Three, not one: `useTodaySchedule` seeds with `schedule[0]` before mount (no clock yet), and a
+ * park east of the fetch's date line is already on tomorrow's entry. Three leading days cover the
+ * seed, today and tomorrow whatever the timezone, and still drop ~80% of the block.
+ *
+ * Counted by index rather than by date on purpose — deriving "today" here would read the server
+ * clock in the shell path, which this page deliberately never does (the whole schedule is handed
+ * to the client and "today" is picked from the browser clock in the park's timezone). That makes
+ * this depend on the API's contract that the window STARTS at today; verified across parks in
+ * Europe, North America and Asia. If that ever changes, the visible effect is the header's
+ * neighbouring-holidays panel going blank — not a wrong date on screen.
+ */
+const SCHEDULE_HOLIDAY_CONTEXT_DAYS = 3;
+
+function leanScheduleHolidayContext(park: ParkWithAttractions): ParkWithAttractions {
+  if (!Array.isArray(park.schedule)) return park;
+  return {
+    ...park,
+    schedule: park.schedule.map((day, i) => {
+      if (i < SCHEDULE_HOLIDAY_CONTEXT_DAYS || !day.influencingHolidays) return day;
+      const lean = { ...day };
+      delete lean.influencingHolidays;
+      return lean;
+    }),
+  };
+}
+
+/**
  * Trim for the LIVE (no-store) client poll: drop only attraction-detail-only fields the park/
  * attraction cards never use — the raw `url` (the card's `getHref` falls back to `${parkPath}/${slug}`,
  * the identical frontend URL) and the detail-only `history`/`hourlyForecast`/`predictionAccuracy`.
  * KEEPS `statistics` (incl. the card sparkline `history`), `bestVisitTimes` and `queues` — the cards
  * render those live. This response is served `no-store` (see the /api/parks proxy), so its size
  * carries NO ISR-write cost.
+ *
+ * Also drops the far-future days' `influencingHolidays` — see {@link SCHEDULE_HOLIDAY_CONTEXT_DAYS}.
  */
 function leanParkForLive(park: ParkWithAttractions): ParkWithAttractions {
+  const trimmed = leanScheduleHolidayContext(park);
   return {
-    ...park,
-    attractions: park.attractions.map((a) => {
+    ...trimmed,
+    attractions: trimmed.attractions.map((a) => {
       const lean = { ...a };
       delete lean.url; // href falls back to `${parkPath}/${slug}` — identical frontend URL
       delete lean.history; // attraction-detail-only if ever present
@@ -59,6 +97,124 @@ function leanParkForShell(park: ParkWithAttractions): ParkWithAttractions {
       delete statsLean.history; // sparkline series — re-supplied by the live poll, not needed in HTML
       return { ...a, statistics: statsLean };
     }),
+  };
+}
+
+/**
+ * The park poll's response: only what can change between two polls.
+ *
+ * `useLiveParkData` re-downloads the park every 5 minutes for as long as a tab is open, and it
+ * used to fetch the whole thing — 90 KB on Phantasialand, of which ~50 KB cannot move within five
+ * minutes and is already sitting in the page the visitor is looking at:
+ *
+ *     attractions[] static  27.6 KB   restaurants[46]   9.7 KB
+ *     schedule[17]           5.6 KB   shows[4]          1.3 KB
+ *
+ * So the poll answers with this projection instead and `mergeLiveParkSnapshot` lays it back over
+ * the server-rendered park, which gives every consumer the same complete `ParkWithAttractions`
+ * they had before. Identity fields (id/name/slug/land) ride along deliberately: they cost 4 KB and
+ * they are what lets the poll still surface a ride that opened since the page was rendered,
+ * instead of the merge silently dropping it.
+ *
+ * A field belongs here only if a five-minute-old value would be WRONG on screen. Ride photos are
+ * the odd one out — `backgroundImage`/`backgroundPosition` are attached by the /api/parks proxy
+ * (the media catalog can't cross into a Client Component), and the park page's cards genuinely
+ * have no photo until this response lands.
+ */
+export interface LiveAttractionSnapshot {
+  id: string;
+  name: string;
+  slug: string;
+  land: string | null;
+  status?: ParkAttraction['status'];
+  /** Not on `ParkAttraction`; `attraction-card` reads it via an `in` check. */
+  effectiveStatus?: ParkAttraction['status'];
+  crowdLevel?: ParkAttraction['crowdLevel'];
+  trend?: ParkAttraction['trend'];
+  queues?: ParkAttraction['queues'];
+  statistics?: ParkAttraction['statistics'];
+  bestVisitTimes?: ParkAttraction['bestVisitTimes'];
+  backgroundImage?: string | null;
+  backgroundPosition?: string;
+}
+
+export interface LiveParkSnapshot {
+  status?: ParkWithAttractions['status'];
+  timezone?: string;
+  hasOperatingSchedule?: boolean;
+  currentLoad?: ParkWithAttractions['currentLoad'];
+  analytics?: ParkWithAttractions['analytics'];
+  weather?: ParkWithAttractions['weather'];
+  nextSchedule?: ParkWithAttractions['nextSchedule'];
+  attractions: LiveAttractionSnapshot[];
+}
+
+/**
+ * Project a park down to {@link LiveParkSnapshot}.
+ *
+ * Note what is NOT here. `schedule` looks live but every consumer already receives it as a prop
+ * from the (per-request, force-dynamic) server render and falls back to that prop — the poll
+ * copy was never the one on screen. `ropeDrop`/`typicalWaits`/`rideProfile` are derived from
+ * months of history and move once a day at most. `comparison` and `baseline` come down from the
+ * API on every attraction and nothing in the app has ever rendered them.
+ */
+export function leanParkForLivePoll(park: ParkWithAttractions): LiveParkSnapshot {
+  return {
+    status: park.status,
+    timezone: park.timezone,
+    hasOperatingSchedule: park.hasOperatingSchedule,
+    currentLoad: park.currentLoad,
+    analytics: park.analytics,
+    weather: park.weather,
+    nextSchedule: park.nextSchedule,
+    attractions: (park.attractions ?? []).map((a) => ({
+      id: a.id,
+      name: a.name,
+      slug: a.slug,
+      land: a.land,
+      status: a.status,
+      effectiveStatus: (a as { effectiveStatus?: ParkAttraction['status'] }).effectiveStatus,
+      crowdLevel: a.crowdLevel,
+      trend: a.trend,
+      queues: a.queues,
+      statistics: a.statistics,
+      bestVisitTimes: a.bestVisitTimes,
+    })),
+  };
+}
+
+/**
+ * Lay a {@link LiveParkSnapshot} back over the server-rendered park.
+ *
+ * Attraction order and membership come from the SNAPSHOT (so a ride that opened, closed or was
+ * renamed upstream still appears/disappears within one poll, exactly as when the poll returned
+ * the whole park); the static fields for each one come from `base`. A ride the snapshot has and
+ * `base` doesn't renders from the snapshot alone — it has name, slug, land and a photo, which is
+ * everything the card needs.
+ *
+ * Tolerant on purpose: with no `base` it returns the snapshot as-is (consumers that subscribe
+ * without an `initialData` seed read only park-level live fields and carry their own props for
+ * the rest), and passing a full park as the snapshot is a no-op, which is what makes it safe to
+ * run over React Query's `initialData` before the first poll lands.
+ */
+export function mergeLiveParkSnapshot(
+  base: ParkWithAttractions | undefined,
+  live: LiveParkSnapshot
+): ParkWithAttractions {
+  if (!base) return live as unknown as ParkWithAttractions;
+  // React Query seeds the cache with the full park, so the first `select` runs base over itself.
+  // Returning it untouched keeps the attraction array's identity, which is what `LiveParkData`
+  // compares to decide whether to re-group the grid by land.
+  if ((live as unknown) === base) return base;
+  if (!Array.isArray(live.attractions)) return { ...base, ...live, attractions: base.attractions };
+
+  const staticById = new Map(base.attractions.map((a) => [a.id, a]));
+  return {
+    ...base,
+    ...live,
+    attractions: live.attractions.map(
+      (a) => ({ ...staticById.get(a.id), ...a }) as unknown as ParkAttraction
+    ),
   };
 }
 
@@ -184,6 +340,41 @@ async function fetchParkByGeoPath(
 }
 
 /**
+ * Trim for the ATTRACTION DETAIL response — the payload the ride page fetches client-side.
+ *
+ * The response carries the park's 31-day schedule so the chart can find today's opening hours,
+ * and each of those days carries `influencingHolidays`: the list of neighbouring regions whose
+ * school break falls on that date. On Phantasialand in August that is 8 regions per day, and
+ * 25.7 KB of a 58.2 KB response — the single largest block in it, larger than the wait-time
+ * history the page exists to draw.
+ *
+ * Nothing on the ride page reads it. Two components touch this schedule and between them they
+ * read four fields: `AttractionHistoryGrid` looks up `date` → `scheduleType` to tell "ride was
+ * closed" apart from "park was closed", and `DailyWaitTimeChartClient` reads today's
+ * `openingTime`/`closingTime` to set the chart's x-axis. The holiday context that IS rendered
+ * (the header panel's neighbouring-regions chips) is a PARK-page feature and comes from the park
+ * payload, not from here.
+ *
+ * So the schedule is projected down to those four fields. Everything else in the response —
+ * history, hourlyForecast, typicalWaits, rideProfile, predictionAccuracy — is untouched.
+ */
+function leanAttractionForDetail(attraction: AttractionResponse): AttractionResponse {
+  if (!Array.isArray(attraction.schedule)) return attraction;
+  return {
+    ...attraction,
+    schedule: attraction.schedule.map(
+      (day) =>
+        ({
+          date: day.date,
+          scheduleType: day.scheduleType,
+          openingTime: day.openingTime,
+          closingTime: day.closingTime,
+        }) as ScheduleItem
+    ),
+  };
+}
+
+/**
  * Get a specific attraction by geographic path with full data including history.
  * Cached in the Vercel Data Cache via `fetch` `next: { revalidate }`; live wait times are refreshed
  * client-side.
@@ -198,10 +389,11 @@ export async function getAttractionByGeoPath(
   attractionSlug: string
 ): Promise<AttractionResponse | null> {
   try {
-    return await api.get<AttractionResponse>(
+    const attraction = await api.get<AttractionResponse>(
       `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`,
       { next: { revalidate: ATTRACTION_REVALIDATE, tags: ['attractions'] } }
     );
+    return leanAttractionForDetail(attraction);
   } catch (err) {
     if (err instanceof ApiError && err.status === 404) return null;
     throw err;
@@ -228,10 +420,11 @@ export async function getAttractionByGeoPathFresh(
   attractionSlug: string
 ): Promise<AttractionResponse | null> {
   try {
-    return await api.get<AttractionResponse>(
+    const attraction = await api.get<AttractionResponse>(
       `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`,
       { cache: 'no-store' }
     );
+    return leanAttractionForDetail(attraction);
   } catch (err) {
     if (err instanceof ApiError && err.status === 404) return null;
     throw err;

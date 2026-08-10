@@ -4,6 +4,7 @@ import {
   getParkByGeoPathFresh,
   getAttractionByGeoPathFresh,
   getParkWaitTimesFresh,
+  leanParkForLivePoll,
 } from '@/lib/api/parks';
 import { getParkWeatherNowcastFresh } from '@/lib/api/weather-nowcast';
 import { getParkHistoricalStats } from '@/lib/api/stats';
@@ -30,17 +31,19 @@ export async function GET(
         return NextResponse.json({ error: 'Park not found' }, { status: 404 });
       }
 
+      // Only the fields that can change between two polls — the client lays them back over the
+      // park it was server-rendered with (see leanParkForLivePoll / mergeLiveParkSnapshot).
+      const snapshot = leanParkForLivePoll(parkData);
+
       // Attach each ride's photo and focal point here, on the server. The park page's
       // attraction grid is a Client Component fed by this poll, so resolving them in
       // the card instead would put the whole media catalog in the browser's bundle.
-      if (Array.isArray(parkData.attractions)) {
-        parkData.attractions = enrichAttractionsWithImages(
-          parkData.attractions.map((a) => ({ ...a, park: { slug: park } }))
-        ) as unknown as typeof parkData.attractions;
-      }
+      snapshot.attractions = enrichAttractionsWithImages(
+        snapshot.attractions.map((a) => ({ ...a, park: { slug: park } }))
+      );
 
       // No caching - we want fresh live data
-      return NextResponse.json(parkData, {
+      return NextResponse.json(snapshot, {
         headers: {
           'Cache-Control': 'no-store',
         },

@@ -8,7 +8,7 @@ import type { SearchResult, SearchResultItem } from '@/lib/api/types';
  * Attach each hit's photo from the media database.
  *
  * The backend's `/v1/search` knows nothing about our images — they live in this repo — so the
- * proxy route resolves them, exactly like `/api/nearby` and `/api/discovery` do for their park
+ * proxy route resolves them, exactly like `/api/nearby` and `/api/parks/live` do for their park
  * lists. Without this the result rows fall back to their type icon and the palette looks empty
  * next to the nearby list, which does have photos.
  *
