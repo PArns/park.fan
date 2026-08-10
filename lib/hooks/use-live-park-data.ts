@@ -1,4 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
+import { useCallback } from 'react';
+import { mergeLiveParkSnapshot, type LiveParkSnapshot } from '@/lib/api/parks';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
 interface UseLiveParkDataParams {
@@ -20,6 +22,13 @@ interface UseLiveParkDataParams {
  *   mount time and would skip the refetch for the full staleTime.)
  * - Auto-polls every 5 min regardless of park status (catches opening/closing)
  * - staleTime 5 min prevents redundant focus-triggered refetches within the poll window
+ *
+ * What comes back over the wire is the LIVE PROJECTION, not the whole park ({@link
+ * LiveParkSnapshot} — ~40 KB instead of ~90 KB, every five minutes, for as long as the tab is
+ * open). The merge back onto `initialData` happens in `select`, i.e. per observer against that
+ * observer's own seed, so consumers still read a complete `ParkWithAttractions`. Subscribers
+ * that pass no seed (WeatherCard, useTodaySchedule) read only park-level live fields and carry
+ * props for the rest, so they see the projection unchanged.
  */
 export function useLiveParkData({
   continent,
@@ -29,7 +38,14 @@ export function useLiveParkData({
   initialData,
   enabled = true,
 }: UseLiveParkDataParams) {
-  return useQuery<ParkWithAttractions>({
+  // Memoized on the seed: React Query re-runs `select` whenever its identity changes, and this
+  // hook re-renders on every minute tick in `useTodaySchedule`.
+  const select = useCallback(
+    (snapshot: LiveParkSnapshot) => mergeLiveParkSnapshot(initialData, snapshot),
+    [initialData]
+  );
+
+  return useQuery<LiveParkSnapshot, Error, ParkWithAttractions>({
     queryKey: ['park-live', continent, country, city, parkSlug],
     queryFn: async () => {
       const response = await fetch(`/api/parks/${continent}/${country}/${city}/${parkSlug}`, {
@@ -42,6 +58,9 @@ export function useLiveParkData({
 
       return response.json();
     },
+    select,
+    // The seed is a full park, which is a valid snapshot too — merging it over itself is a no-op,
+    // so the pre-fetch render is byte-identical to what the server sent.
     initialData,
     // initialData comes from the statically cached page HTML and may be stale; anchor it to
     // epoch so React Query treats it as stale and refetches live data on mount (see docblock).

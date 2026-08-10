@@ -589,9 +589,11 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        // Hub "X parks open now" live-counts batch, polled by every continent/country/city card grid.
-        // A 60s shared CDN window collapses concurrent polls off the backend (it was no-store).
-        source: '/api/discovery/:path*',
+        // Card-overlay live status batch (use-live-parks-by-region), polled by every hub card grid,
+        // the featured-parks strip and the blog's park references. Same 60s collapse rationale as
+        // the park poll below; the response is byte-identical for every visitor of a region set,
+        // so the window is nearly a pure hit.
+        source: '/api/parks/live',
         headers: [
           { key: 'Cache-Control', value: 'public, s-maxage=60, stale-while-revalidate=120' },
         ],

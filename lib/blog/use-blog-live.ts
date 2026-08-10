@@ -2,7 +2,7 @@
 
 import { useAttractionDetail } from '@/lib/hooks/use-attraction-detail';
 import { useParkWaitTimes } from '@/lib/hooks/use-park-wait-times';
-import { useRegionParks } from '@/lib/hooks/use-region-parks';
+import { useRegionParks } from '@/lib/hooks/use-live-parks-by-region';
 import { overlayAttraction, overlayPark, parkGeoParts } from '@/lib/blog/live-overlay';
 import type { ResolvedAttraction, ResolvedPark } from '@/lib/blog/park-resolver';
 
@@ -13,7 +13,7 @@ import type { ResolvedAttraction, ResolvedPark } from '@/lib/blog/park-resolver'
  * lay them over that snapshot.
  *
  * Both are batch calls shared through React Query, so the cost is per *park* in the post, not per
- * reference: one `/api/discovery/<continent>/<country>` for park status, one lean
+ * reference: one `/api/parks/live?regions=<continent>/<country>` for park status, one lean
  * `/api/parks/.../wait-times` for every ride in that park.
  */
 

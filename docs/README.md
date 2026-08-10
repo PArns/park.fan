@@ -28,6 +28,7 @@
 | [Routing & URLs](architecture/routing-and-urls.md)   | Geo routes, API→frontend URL conversion, redirects, prefetch |
 | [Caching Strategy](architecture/caching-strategy.md) | ISR revalidate times, API cache, headers                     |
 | [API Integration](architecture/api-integration.md)   | High-level API usage and rules                               |
+| [API budget per page](architecture/api-budget.md)    | Requests each route makes, what every payload is read for    |
 
 ### Development
 

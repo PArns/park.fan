@@ -19,6 +19,7 @@ The frontend talks to [api.park.fan](https://api.park.fan) via the type-safe cli
 
 ## Related
 
+- [API budget per page](api-budget.md) – What each route costs in requests, and what every payload is read for
 - [Backend Integration](../api/backend-integration.md) – Endpoints, modules, URL conversion
 - [Calendar Status](../api/calendar-status-closed.md) – UNKNOWN vs CLOSED
 - [API Docs](https://api.park.fan/api)

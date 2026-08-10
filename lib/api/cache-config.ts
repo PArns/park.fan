@@ -21,7 +21,7 @@ export const CACHE_TTL = {
 
   // Discovery & Park data. Raised to 24h once the hub pages (continent/country/city) render their
   // ParkCards STATUS-FREE: live status/crowd/wait now come from the client (<LiveParkGrid> →
-  // /api/discovery), so the per-locale ISR shells carry only structure (park names/slugs), which
+  // /api/parks/live), so the per-locale ISR shells carry only structure (park names/slugs), which
   // changes ~weekly. A new/removed park appears within 24h (or via on-demand revalidate); this
   // collapses the hourly hub-page write churn ~24×.
   geo: 86400, // geo structure changes rarely (was 3600 — hub shells no longer carry live status)

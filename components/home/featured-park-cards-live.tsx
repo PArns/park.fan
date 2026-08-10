@@ -1,7 +1,8 @@
 'use client';
 
+import { useMemo } from 'react';
 import { ParkCard } from '@/components/parks/park-card';
-import { useRegionParks } from '@/lib/hooks/use-region-parks';
+import { useLiveParksByRegion, type LiveParkFields } from '@/lib/hooks/use-live-parks-by-region';
 
 /** Static, day-stable card fields resolved on the server (translation + fs background lookup). */
 export interface FeaturedCardStatic {
@@ -18,13 +19,7 @@ export interface FeaturedCardStatic {
   countrySlug: string;
 }
 
-function FeaturedLiveCard({ park }: { park: FeaturedCardStatic }) {
-  // One /api/discovery/<continent>/<country> batch per distinct region — React Query dedupes
-  // the call across cards (and with any hub-page grid already in the cache), so the featured
-  // set costs a handful of small no-store requests, not one per card.
-  const { liveByParkId } = useRegionParks(park.continentSlug, park.countrySlug);
-  const live = liveByParkId?.[park.parkId];
-
+function FeaturedLiveCard({ park, live }: { park: FeaturedCardStatic; live?: LiveParkFields }) {
   return (
     <ParkCard
       parkId={park.parkId}
@@ -55,14 +50,22 @@ function FeaturedLiveCard({ park }: { park: FeaturedCardStatic }) {
  * Featured-parks card grid with hub-page-style live overlay: the shell bakes only day-stable
  * structure (name, link, city, photo), so the pages embedding it (homepage, blog, glossary,
  * howto) can keep long ISR windows; status/crowd/wait/schedule land client-side and stay on a
- * 5-min poll. Mirrors {@link LiveParkGrid} — kept separate because the featured set spans
- * multiple regions instead of one (continent, country) pair.
+ * 5-min poll.
+ *
+ * The featured set deliberately spans several countries (the German strip reaches Efteling and
+ * Disneyland Paris), which used to mean one request per country: three requests and 16.7 KB to
+ * fill in nine fields on six cards. `useLiveParksByRegion` takes the whole region list at once,
+ * so the strip is one request now. The hook sits here rather than in the card so the list is
+ * passed down instead of re-derived six times.
  */
 export function FeaturedParkCardsLive({ parks }: { parks: FeaturedCardStatic[] }) {
+  const regions = useMemo(() => parks.map((p) => `${p.continentSlug}/${p.countrySlug}`), [parks]);
+  const { liveByParkId } = useLiveParksByRegion(regions);
+
   return (
     <div className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {parks.map((park) => (
-        <FeaturedLiveCard key={park.slug} park={park} />
+        <FeaturedLiveCard key={park.slug} park={park} live={liveByParkId?.[park.parkId]} />
       ))}
     </div>
   );

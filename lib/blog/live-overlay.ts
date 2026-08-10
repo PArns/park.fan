@@ -1,6 +1,6 @@
 import type { AttractionResponse, AttractionStatus, ParkStatus } from '@/lib/api/types';
 import type { ResolvedAttraction, ResolvedPark } from '@/lib/blog/park-resolver';
-import type { LiveParkFields } from '@/lib/hooks/use-region-parks';
+import type { LiveParkFields } from '@/lib/hooks/use-live-parks-by-region';
 import type { LiveRideFields } from '@/lib/hooks/use-park-wait-times';
 
 /**
