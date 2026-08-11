@@ -32,7 +32,7 @@ coverImage:
   caption: 'Symbolica on a winter evening. That is the Pagode floating in at the top left.'
   credit: 'park.fan'
 seo:
-  title: 'Efteling: wait times, tips & the 2026 guide'
+  title: 'Efteling: wait times, tips & best time to visit'
   description: >-
     Efteling in Kaatsheuvel with real wait-time data from two seasons: best time
     to go, tickets, getting there, Winter Efteling, and why the park is only

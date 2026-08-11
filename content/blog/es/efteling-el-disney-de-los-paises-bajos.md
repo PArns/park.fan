@@ -32,7 +32,7 @@ coverImage:
   caption: 'Symbolica una tarde de invierno. Arriba a la izquierda cruza la Pagode.'
   credit: 'park.fan'
 seo:
-  title: 'Efteling: tiempos de espera, consejos y la guía 2026'
+  title: 'Efteling: tiempos de espera, consejos y mejor época'
   description: >-
     Efteling en Kaatsheuvel con datos reales de espera de dos temporadas: mejor
     época, entradas, cómo llegar, Winter Efteling y por qué el parque solo puede
