@@ -401,11 +401,15 @@ export default async function ParkPage({ params }: ParkPageProps) {
             />
           </Suspense>
 
-          {/* Breadcrumb — visible nav streams (next-intl links are dynamic under Cache
-            Components); the BreadcrumbList JSON-LD above stays in the static shell for SEO. */}
-          <Suspense fallback={<div className="h-6" />}>
-            <BreadcrumbNav breadcrumbs={breadcrumbs} currentPage={parkCurrentPage} />
-          </Suspense>
+          {/* Breadcrumb — rendered inline, NOT inside <Suspense>. It has nothing to await (a
+              Client Component handed plain props, server-rendered into the first HTML like the
+              attraction page's), and the boundary it used to sit in was the park page's single
+              largest layout shift: the `h-6` fallback occupied 24px, the real nav 46px (30px pill
+              + `mb-4`), so the whole article jumped 22px down the moment the boundary resolved —
+              worth ~0.22 CLS on desktop and the reason this URL group failed Core Web Vitals. The
+              Cache Components note this comment used to carry no longer applies (the page is
+              `force-dynamic`). The BreadcrumbList JSON-LD above stays in the static shell for SEO. */}
+          <BreadcrumbNav breadcrumbs={breadcrumbs} currentPage={parkCurrentPage} />
 
           <article itemScope itemType="https://schema.org/ThemePark">
             {/* Park Header */}
@@ -503,26 +507,29 @@ export default async function ParkPage({ params }: ParkPageProps) {
               />
             </Suspense>
 
-            {/* Weather — client live nowcast query, streamed as a dynamic hole. Today's schedule,
-              status and opening hours now live in the <ParkHeaderStats> board up in the header,
-              so there's no separate schedule card here (no duplication). */}
+            {/* Weather — rendered in the shell, NOT behind <Suspense>. Everything it needs to
+              draw its ~360px box is already in `park.weather` (the live nowcast only refines the
+              values inside it), so the boundary bought no TTFB and cost a 360px hole:
+              `fallback={null}` meant the first paint reserved nothing here and the card dropped in
+              from the stream a beat later, pushing the ride list — the thing a visitor came for
+              and is looking at — off the bottom of the screen. That was ~0.095 CLS on its own, on
+              every park with weather data. Today's schedule, status and opening hours live in the
+              <ParkHeaderStats> board up in the header, so there's no separate schedule card. */}
             {park.weather?.current && (
               <div className="mb-8">
-                <Suspense fallback={null}>
-                  <WeatherCard
-                    weather={park.weather}
-                    nowcast={null}
-                    continent={continent}
-                    country={country}
-                    city={city}
-                    parkSlug={parkSlug}
-                    latitude={park.latitude}
-                    longitude={park.longitude}
-                    timezone={park.timezone}
-                    schedule={park.schedule}
-                    className="border-primary/10"
-                  />
-                </Suspense>
+                <WeatherCard
+                  weather={park.weather}
+                  nowcast={null}
+                  continent={continent}
+                  country={country}
+                  city={city}
+                  parkSlug={parkSlug}
+                  latitude={park.latitude}
+                  longitude={park.longitude}
+                  timezone={park.timezone}
+                  schedule={park.schedule}
+                  className="border-primary/10"
+                />
               </div>
             )}
 
