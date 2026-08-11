@@ -320,10 +320,9 @@ daraus ein Happy End gemacht oder sie stillschweigend abgeräumt.
 **Der Sprookjesboom** ist den umgekehrten Weg gegangen. Erst lief ab Oktober 2006
 die Zeichentrickserie im niederländischen Fernsehen, in der ein sprechender Baum
 den Figuren des Märchenwalds beim Streiten zusieht. Vier Jahre später, am
-
-1. April 2010, stand die neun Meter hohe Eiche dann tatsächlich im Sprookjesbos,
-   gegenüber dem Mädchen mit den Schwefelhölzern. Ein Park, der sich eine Attraktion
-   aus der eigenen Fernsehserie nachbaut.
+1\. April 2010, stand die neun Meter hohe Eiche dann tatsächlich im Sprookjesbos,
+gegenüber dem Mädchen mit den Schwefelhölzern. Ein Park, der sich eine Attraktion
+aus der eigenen Fernsehserie nachbaut.
 
 Verkauft wird hier natürlich trotzdem, ein Eintrittsticket kostet der Wald
 schließlich auch. Nur ist selbst das in die Kulisse eingebaut. **Kogeloog**, der
