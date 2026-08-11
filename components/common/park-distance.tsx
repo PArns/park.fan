@@ -58,13 +58,35 @@ export function ParkDistance({
   const { meters, pending } = useDistanceTo(latitude, longitude);
 
   if (pending) return <DistancePlaceholder width="w-24" size={size} className={className} />;
-  if (meters === null) return null;
+  // No position is coming. Both headers put this inside a `flex-wrap` meta row that is exactly
+  // wide enough to wrap around it on a phone, so dropping the element there does not free up a
+  // gap — it un-wraps the row, and the page below moves up a whole line (34px, ~0.106 CLS).
+  // Keep the box, empty and unannounced, for as long as the row is narrow enough to care;
+  // from `sm` up the row has the width to absorb the change without reflowing, so it goes.
+  if (meters === null) return <DistanceGap size={size} className={className} />;
 
   return (
     <DistanceBadge
       distance={`${formatDistance(meters)} ${t('awayFrom')}`}
       size={size}
       className={className}
+    />
+  );
+}
+
+/**
+ * The placeholder's box without the pulse, held below `sm` only — this is the terminal state, so
+ * a shimmer would promise a value that is never going to arrive.
+ */
+function DistanceGap({ size, className }: { size: 'sm' | 'md'; className?: string }) {
+  return (
+    <span
+      aria-hidden="true"
+      className={cn(
+        'inline-block w-24 align-middle sm:hidden',
+        size === 'sm' ? 'h-4' : 'h-5',
+        className
+      )}
     />
   );
 }
