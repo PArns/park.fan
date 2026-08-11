@@ -64,7 +64,7 @@ trick: a nested next-intl provider _replaces_ messages rather than merging them
 union would serialize the chrome set a second time on every page. Reading the parent's messages
 via `useMessages()` and merging in the browser means only the delta travels.
 
-What that is worth per page load, measured against `messages/de.json`:
+What the message payload itself costs, against `messages/de.json`:
 
 |                                       | JSON    | in HTML (escaped) | brotli  |
 | ------------------------------------- | ------- | ----------------- | ------- |
@@ -72,8 +72,25 @@ What that is worth per page load, measured against `messages/de.json`:
 | chrome only — `/impressum`, `/search` | 6.6 KB  | 7.4 KB            | 2.5 KB  |
 | park detail page (heaviest)           | 29.7 KB | 32.7 KB           | 9.4 KB  |
 
+And what that does to whole prerendered pages — two production builds of the same commit range,
+`.next/server/app/**.html` measured directly:
+
+| Page                       | HTML before | after   | brotli before | after  |      Δ |
+| -------------------------- | ----------- | ------- | ------------- | ------ | -----: |
+| `/de/impressum`            | 139,513     | 94,851  | 26,557        | 14,155 | −46.7% |
+| `/de/parks`                | 150,873     | 110,176 | 28,054        | 16,497 | −41.2% |
+| `/de/parks/europe/germany` | 225,861     | 184,801 | 29,945        | 18,384 | −38.6% |
+| `/de/blog`                 | 344,966     | 304,000 | 35,462        | 24,068 | −32.1% |
+| `/de` (homepage)           | 631,229     | 618,910 | 48,704        | 45,164 |  −7.3% |
+
+The homepage moves least on purpose: `featured-park-cards-live` and `global-stats-section` need
+the card namespaces regardless, so there is little to take away.
+
 Note how much of the apparent win compression eats: the previous allowlist trimmed ~10 KB of JSON
 but only ~2.3 KB after brotli. Judge changes here on the compressed number.
+
+A missing namespace renders as its raw key rather than throwing, so the end-to-end check is to
+scan the built HTML for dotted message paths in text nodes — 2,882 prerendered pages, zero hits.
 
 Rules of thumb:
 
