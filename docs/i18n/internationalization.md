@@ -120,6 +120,22 @@ Rules of thumb:
   drifted, when a route that needs a delta doesn't render `<RouteMessages>`, when it renders one
   with the wrong route key, and when a route that needs nothing renders one anyway.
 
+Three invariants are easy to break and impossible to see, so they are checked rather than trusted:
+
+- **Shell files belong to the layout set, never to a route delta.** `<RouteMessages>` sits inside
+  `page.tsx`, but `error.tsx` replaces the page, `loading.tsx` renders before it exists and
+  `not-found.tsx` renders instead of it — the page's provider never mounted. A nested `layout.tsx`
+  has the same problem from above. They also guard every descendant segment, so there is no route
+  to scope them to: the analysis folds them all into the layout set.
+- **`setRequestLocale()` has to run before `<RouteMessages>`.** The wrapper resolves messages
+  through `getMessages()`; the other way round it resolves against the _default_ locale, so a
+  German page hands English messages to its client components. Every key still resolves, so no
+  amount of raw-key scanning finds it.
+- **A lazy boundary's whole subtree has to be covered.** `LAZY_CHUNK_NAMESPACES` is the one list
+  still written by hand, so the analysis walks each route a second time _through_ the boundary and
+  fails on anything that is neither shipped nor fetchable. Adding a component under
+  `FavoritesSection` is otherwise a silent break for visitors who have favorites.
+
 Entries are either a whole top-level namespace (`'parks'`) or a subtree (`'seo.faq'`, kept under
 its original path so lookups are unchanged).
 

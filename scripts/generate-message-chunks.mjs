@@ -64,8 +64,33 @@ function pick(messages, namespaces) {
   return picked;
 }
 
+/**
+ * The loader resolves locales through an explicit `switch` (one static import
+ * per locale, so every bundler emits a discrete chunk). That switch ends in
+ * `default: en`, which means a locale added to `i18n/config.ts` but not to the
+ * loader would quietly serve English card text instead of failing. `config.ts`
+ * promises that adding a language is three steps and everything else follows —
+ * so this asserts the loader kept up.
+ *
+ * @param {string[]} locales
+ */
+function assertLoaderCoversLocales(locales) {
+  const loaderPath = path.join(rootDir, 'lib/i18n/message-chunk-loader.ts');
+  const loader = fs.readFileSync(loaderPath, 'utf-8');
+  const missing = locales.filter((locale) => !loader.includes(`'./message-chunks/${locale}'`));
+
+  if (missing.length > 0) {
+    throw new Error(
+      `lib/i18n/message-chunk-loader.ts has no import for: ${missing.join(', ')}.\n` +
+        `Add a case per locale to importLocale() — the default branch would serve ` +
+        `English silently.`
+    );
+  }
+}
+
 async function main() {
   const locales = readLocales();
+  assertLoaderCoversLocales(locales);
   fs.mkdirSync(outputDir, { recursive: true });
 
   const prettierConfig = await prettier.resolveConfig(path.join(outputDir, 'en.ts'));
