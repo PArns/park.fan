@@ -6,12 +6,12 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Das Efteling wird gern das Disney der Niederlande genannt. Nur öffnete der
-  Märchenwald in Kaatsheuvel 1952, drei Jahre vor Disneyland, und der Park
-  gehört bis heute keinem Konzern, sondern einer Stiftung. Die darf nichts
-  ausschütten, hat südlich des Parkplatzes ein Feriendorf für schwer kranke
-  Kinder hingestellt, und stoppt den Ticketverkauf, sobald sie an die
-  genehmigten fünf Millionen Gäste stößt.
+  Das Efteling heißt das Disney der Niederlande, machte aber drei Jahre vor
+  Disneyland auf. Es gehört keinem Konzern, sondern einer Stiftung, die nichts
+  ausschütten darf und nebenan ein Feriendorf für schwer kranke Kinder gebaut
+  hat. Und weil eine Naturgenehmigung bei fünf Millionen Gästen die Grenze
+  zieht, wartest du hier trotz 5,78 Millionen Besuchen typischerweise
+  25 Minuten.
 tags:
   - efteling
   - wartezeiten
