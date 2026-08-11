@@ -49,24 +49,58 @@ async function gh(path, options = {}) {
   });
   if (!response.ok) {
     const detail = await response.text();
-    throw new Error(`GitHub ${options.method || 'GET'} ${path} → ${response.status}: ${detail}`);
+    const error = new Error(
+      `GitHub ${options.method || 'GET'} ${path} → ${response.status}: ${detail}`
+    );
+    // Carry the status separately: callers must never have to regex it out of
+    // the message, where a "422" inside a response body would match too.
+    error.status = response.status;
+    throw error;
   }
   return response.status === 204 ? null : response.json();
 }
 
-/** Resolve the PR: explicit number wins, otherwise look it up by head branch. */
+/** GitHub rejects a comment body over this many characters. */
+const COMMENT_BODY_LIMIT = 65_536;
+
+/**
+ * A Vercel comment is feedback on the deployment of ONE commit. By the time
+ * the webhook arrives the branch may have moved on, and Vercel itself warns
+ * that people comment on outdated previews. Say so in the comment rather than
+ * letting the feedback read as if it were about the current head.
+ */
+function stalenessNote(payload, headSha) {
+  const commented = payload.commitSha;
+  if (!commented || !headSha) return '';
+  if (headSha.startsWith(commented) || commented.startsWith(headSha)) return '';
+  return (
+    `> [!WARNING]\n` +
+    `> Left on \`${commented.slice(0, 7)}\`, but the PR head is now ` +
+    `\`${headSha.slice(0, 7)}\` — check this still applies before acting on it.`
+  );
+}
+
+/**
+ * Resolve the PR: explicit number wins, otherwise look it up by head branch.
+ * Returns the head SHA too, so the comment can be checked against the commit
+ * it was actually left on.
+ */
 async function resolvePullRequest(payload) {
-  if (payload.prNumber) return payload.prNumber;
+  if (payload.prNumber) {
+    const pull = await gh(`/repos/${OWNER}/${REPO}/pulls/${payload.prNumber}`);
+    return { number: pull.number, headSha: pull.head?.sha ?? null };
+  }
   if (!payload.branch) return null;
 
   const pulls = await gh(
     `/repos/${OWNER}/${REPO}/pulls?state=open&head=${encodeURIComponent(`${OWNER}:${payload.branch}`)}&per_page=1`
   );
-  if (pulls.length > 0) return pulls[0].number;
+  if (pulls.length > 0) return { number: pulls[0].number, headSha: pulls[0].head?.sha ?? null };
 
   // Forks push from a different owner, so fall back to scanning open PRs.
   const open = await gh(`/repos/${OWNER}/${REPO}/pulls?state=open&per_page=100`);
-  return open.find((pull) => pull.head.ref === payload.branch)?.number ?? null;
+  const match = open.find((pull) => pull.head.ref === payload.branch);
+  return match ? { number: match.number, headSha: match.head?.sha ?? null } : null;
 }
 
 /** Ensure the asset branch exists, branching off the default branch once. */
@@ -136,7 +170,7 @@ async function rehostImages(images, threadId) {
         }),
       }).catch((error) => {
         // A duplicate screenshot hashes to a path that already exists — fine.
-        if (!/422/.test(error.message)) throw error;
+        if (error.status !== 422) throw error;
       });
 
       mapping.set(
@@ -156,6 +190,22 @@ function applyMapping(markdown, mapping) {
   let result = markdown;
   for (const [from, to] of mapping) result = result.split(from).join(to);
   return result;
+}
+
+/**
+ * Appends without ever exceeding GitHub's comment limit. A long-running thread
+ * would otherwise grow past it and every further reply would fail the PATCH.
+ * The head is kept (it holds the marker this comment is found by) and the
+ * newest addition always lands; the middle is what gives way.
+ */
+function fitComment(existingBody, addition) {
+  const combined = `${existingBody.trimEnd()}\n${addition}`;
+  if (combined.length <= COMMENT_BODY_LIMIT) return combined;
+
+  const notice = "\n\n---\n\n_Earlier replies trimmed to stay within GitHub's comment limit._\n";
+  const keepHead = COMMENT_BODY_LIMIT - addition.length - notice.length;
+  if (keepHead <= 0) return addition.slice(0, COMMENT_BODY_LIMIT);
+  return `${existingBody.slice(0, keepHead).trimEnd()}${notice}${addition}`;
 }
 
 /** The PR comment that already represents this Vercel thread, if any. */
@@ -183,11 +233,14 @@ async function main() {
   }
   if (!payload.marker) fail('payload has no marker');
 
-  const prNumber = await resolvePullRequest(payload);
-  if (!prNumber) {
+  const pull = await resolvePullRequest(payload);
+  if (!pull) {
     console.log(`· No open PR for branch "${payload.branch}" — nothing to sync.`);
     return;
   }
+  const prNumber = pull.number;
+  const staleness = stalenessNote(payload, pull.headSha);
+  if (staleness) console.log(`! Comment is about ${payload.commitSha?.slice(0, 7)}, not the head`);
 
   // Look the existing comment up first: it decides which markdown we are about
   // to post, and therefore whether any screenshots need re-hosting at all. A
@@ -200,22 +253,22 @@ async function main() {
     : new Map();
 
   if (!existing) {
-    const body = applyMapping(payload.body, mapping);
+    const body = [staleness, applyMapping(payload.body, mapping)].filter(Boolean).join('\n\n');
     const created = await gh(`/repos/${OWNER}/${REPO}/issues/${prNumber}/comments`, {
       method: 'POST',
-      body: JSON.stringify({ body }),
+      body: JSON.stringify({ body: body.slice(0, COMMENT_BODY_LIMIT) }),
     });
     console.log(`✓ Created comment on PR #${prNumber}: ${created.html_url}`);
     return;
   }
 
-  const addition = applyMapping(payload.update, mapping);
+  const addition = [staleness, applyMapping(payload.update, mapping)].filter(Boolean).join('\n\n');
   if (existing.body.includes(addition.trim()) && payload.mode === 'status') {
     console.log('· Status already reflected — nothing to do.');
     return;
   }
 
-  let body = `${existing.body.trimEnd()}\n${addition}`;
+  let body = fitComment(existing.body, addition);
   if (payload.mode === 'status') {
     body = payload.resolved
       ? body.replace('### 💬 Vercel Preview Comment', '### ✅ Vercel Preview Comment (resolved)')
