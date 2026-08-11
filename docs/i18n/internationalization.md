@@ -83,6 +83,20 @@ And what that does to whole prerendered pages — two production builds of the s
 | `/de/blog`                 | 344,966     | 304,000 | 35,462        | 24,068 | −32.1% |
 | `/de` (homepage)           | 631,229     | 618,910 | 48,704        | 45,164 |  −7.3% |
 
+Park and ride pages are `force-dynamic`, so they have no prerendered HTML to diff — these come
+from `next start` on both builds:
+
+| Page                        | HTML before | after   | brotli before | after  |      Δ |
+| --------------------------- | ----------- | ------- | ------------- | ------ | -----: |
+| Ride `…/troublion`          | 177,706     | 155,846 | 30,636        | 24,382 | −20.4% |
+| Park `…/phantasialand`      | 477,455     | 455,683 | 51,275        | 45,860 | −10.6% |
+| Park `…/europa-park`        | 634,414     | 616,464 | 61,950        | 56,424 |  −8.9% |
+| Park `…/europa-park` (`en`) | 630,082     | 613,709 | 59,786        | 55,056 |  −7.9% |
+
+Those two routes drop `home` (7.5 KB), `blog`, `glossary`, `explore` and `stats` — namespaces they
+never rendered but paid for on every request. The percentage looks modest because the pages are
+large to begin with; the absolute saving is ~5.5–6.3 KB brotli per request.
+
 The homepage moves least on purpose: `featured-park-cards-live` and `global-stats-section` need
 the card namespaces regardless, so there is little to take away.
 
@@ -90,7 +104,8 @@ Note how much of the apparent win compression eats: the previous allowlist trimm
 but only ~2.3 KB after brotli. Judge changes here on the compressed number.
 
 A missing namespace renders as its raw key rather than throwing, so the end-to-end check is to
-scan the built HTML for dotted message paths in text nodes — 2,882 prerendered pages, zero hits.
+scan rendered HTML for dotted message paths in text nodes — 2,882 prerendered pages plus the
+dynamic park and ride routes off a running server, zero hits.
 
 Rules of thumb:
 
