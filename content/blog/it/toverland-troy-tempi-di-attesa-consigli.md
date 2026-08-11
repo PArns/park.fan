@@ -164,7 +164,7 @@ della regione, legno o acciaio che siano?
 | [Taron](ref:phantasialand/taron?bare)                    | Multi-launch, acciaio | [Phantasialand](ref:phantasialand?bare) |           48 min |      54 min |
 | [F.L.Y.](ref:phantasialand/fly?bare)                     | Flying, acciaio       | [Phantasialand](ref:phantasialand?bare) |           40 min |      47 min |
 | [Joris en de Draak](ref:efteling/joris-en-de-draak?bare) | Legno                 | [Efteling](ref:efteling?bare)           |           34 min |      40 min |
-| [Baron 1898](ref:efteling/baron?bare)                    | Dive coaster, acciaio | [Efteling](ref:efteling?bare)           |           26 min |      32 min |
+| [Baron 1898](ref:efteling/baron-1898?bare)               | Dive coaster, acciaio | [Efteling](ref:efteling?bare)           |           26 min |      32 min |
 | **[Troy](ref:toverland/troy?bare)**                      | **Legno**             | **[Toverland](ref:toverland?bare)**     |       **16 min** |  **21 min** |
 | **[Fēnix](ref:toverland/fenix?bare)**                    | **Wing, acciaio**     | **[Toverland](ref:toverland?bare)**     |       **16 min** |  **20 min** |
 

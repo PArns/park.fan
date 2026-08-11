@@ -163,7 +163,7 @@ Was kosten die großen Namen der Region an Wartezeit, egal ob Holz oder Stahl?
 | [Taron](ref:phantasialand/taron?bare)                    | Multi-Launch, Stahl | [Phantasialand](ref:phantasialand?bare) |           48 Min |       54 Min |
 | [F.L.Y.](ref:phantasialand/fly?bare)                     | Flying, Stahl       | [Phantasialand](ref:phantasialand?bare) |           40 Min |       47 Min |
 | [Joris en de Draak](ref:efteling/joris-en-de-draak?bare) | Holz                | [Efteling](ref:efteling?bare)           |           34 Min |       40 Min |
-| [Baron 1898](ref:efteling/baron?bare)                    | Dive Coaster, Stahl | [Efteling](ref:efteling?bare)           |           26 Min |       32 Min |
+| [Baron 1898](ref:efteling/baron-1898?bare)               | Dive Coaster, Stahl | [Efteling](ref:efteling?bare)           |           26 Min |       32 Min |
 | **[Troy](ref:toverland/troy?bare)**                      | **Holz**            | **[Toverland](ref:toverland?bare)**     |       **16 Min** |   **21 Min** |
 | **[Fēnix](ref:toverland/fenix?bare)**                    | **Wing, Stahl**     | **[Toverland](ref:toverland?bare)**     |       **16 Min** |   **20 Min** |
 
