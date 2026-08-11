@@ -15,7 +15,10 @@
  *      component crossed the client boundary and nobody re-ran the generator, or
  *   2. a route that needs a delta does not render `<RouteMessages>`, or renders
  *      it with the wrong route key, or
- *   3. a route whose delta is empty renders one anyway (pure overhead).
+ *   3. a route whose delta is empty renders one anyway (pure overhead), or
+ *   4. a lazy boundary's subtree reads a namespace that is neither shipped by
+ *      the route nor listed in `LAZY_CHUNK_NAMESPACES` — the one part of the
+ *      setup that is declared by hand rather than derived.
  *
  * Run via `pnpm release:check`.
  */
@@ -86,6 +89,33 @@ for (const [routeKey, namespaces] of Object.entries(analysis.routes)) {
       `${relative} renders <RouteMessages route="${wrong[0]}"> but sits at "${routeKey}".`
     );
   }
+
+  // `RouteMessages` reads the request locale through `getMessages()`. Called
+  // before `setRequestLocale`, that resolves to the DEFAULT locale — so a German
+  // page would ship English messages to its client components. Nothing throws
+  // and every key still resolves, which makes it invisible to the raw-key scan.
+  const setLocaleAt = source.indexOf('setRequestLocale(');
+  const wrapperAt = source.indexOf('<RouteMessages');
+  if (setLocaleAt === -1) {
+    problems.push(
+      `${relative} renders <RouteMessages> without calling setRequestLocale() — its messages\n` +
+        '     would resolve against the default locale instead of the requested one.'
+    );
+  } else if (setLocaleAt > wrapperAt) {
+    problems.push(
+      `${relative} calls setRequestLocale() after <RouteMessages> — the messages resolve\n` +
+        '     against the default locale. Move the call above the return.'
+    );
+  }
+}
+
+// ── 4. Can every lazy boundary actually get what its subtree reads? ─────────
+for (const [routeKey, namespaces] of Object.entries(analysis.lazyGaps)) {
+  problems.push(
+    `route "${routeKey}" can render ${namespaces.join(', ')} but neither ships nor fetches it.\n` +
+      '     Add it to LAZY_CHUNK_NAMESPACES via LAZY_MESSAGE_BOUNDARIES in\n' +
+      '     lib/i18n/route-namespaces.mjs, or move the consumer out of the lazy boundary.'
+  );
 }
 
 if (problems.length > 0) {
