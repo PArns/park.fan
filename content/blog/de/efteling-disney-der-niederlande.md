@@ -32,7 +32,7 @@ coverImage:
   caption: 'Symbolica an einem Winterabend. Links oben schwebt die Pagode durchs Bild.'
   credit: 'park.fan'
 seo:
-  title: 'Efteling: Wartezeiten, Tipps & der Guide 2026'
+  title: 'Efteling: Wartezeiten, Tipps & beste Reisezeit'
   description: >-
     Das Efteling in Kaatsheuvel mit echten Wartezeit-Daten aus zwei Saisons:
     beste Reisezeit, Tickets, Anreise, Winter Efteling und warum der Park nur

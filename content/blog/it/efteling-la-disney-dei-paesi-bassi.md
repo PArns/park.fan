@@ -32,7 +32,7 @@ coverImage:
   caption: "Symbolica in una sera d'inverno. In alto a sinistra passa la Pagode."
   credit: 'park.fan'
 seo:
-  title: 'Efteling: tempi di attesa, consigli e la guida 2026'
+  title: 'Efteling: tempi di attesa, consigli e periodo migliore'
   description: >-
     Efteling a Kaatsheuvel con dati di attesa reali di due stagioni: periodo
     migliore, biglietti, come arrivare, Winter Efteling e perché il parco può

@@ -32,7 +32,7 @@ coverImage:
   caption: 'Symbolica op een winteravond. Linksboven zweeft de Pagode door het beeld.'
   credit: 'park.fan'
 seo:
-  title: 'Efteling: wachttijden, tips & de gids voor 2026'
+  title: 'Efteling: wachttijden, tips & beste reistijd'
   description: >-
     De Efteling in Kaatsheuvel met echte wachttijddata uit twee seizoenen: beste
     reistijd, tickets, bereikbaarheid, Winter Efteling en waarom het park maar
