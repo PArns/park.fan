@@ -96,6 +96,16 @@ verteilt auf 4,98 Millionen einzelne Gäste, 347 Millionen Euro Betriebsertrag,
 Damit ist das Efteling der meistbesuchte Freizeitpark der Niederlande und einer
 der drei größten Europas.
 
+Bei den 3.000 Beschäftigten lohnt sich ein zweiter Blick. 2023 wählten die
+Niederländer das Efteling im **Randstad Employer Brand Research** zum
+**attraktivsten Arbeitgeber des Landes** in der Privatwirtschaft. Kantar befragt
+dafür jedes Jahr über zehntausend Menschen zu den 150 größten Arbeitgebern der
+Niederlande, und genannt wurden bei Efteling Ruf, Arbeitsatmosphäre und
+finanzielle Gesundheit. Den Titel hält inzwischen ASML, dreimal in Folge, aber
+2023 lag ein Freizeitpark vor sämtlichen Konzernen des Landes. Das ist für eine
+Branche, die anderswo für Saisonverträge und Mindestlohn steht, keine
+Selbstverständlichkeit.
+
 Angefangen hat es mit zwei Männern und einem Sportpark. **Anton Pieck**,
 Illustrator, zeichnete die Märchen und in den folgenden Jahrzehnten weit über
 tausend Entwürfe für Attraktionen, Plätze und Gaststätten. **Peter Reijnders**,
@@ -146,16 +156,28 @@ erzählen das, bevor du überhaupt sitzt.
 
 ![Das Fördergerüst von Baron 1898 bei Nacht, blau angeleuchtet, davor Backsteingebäude und ein Stück Schiene | Baron 1898 vom Wasser aus. Der ganze Bereich ist als Bergwerk gebaut, bis hin zum Waschhaus in der Warteschlange. | wide](/media/efteling/baron-1898-16x9.jpg)
 
-**[Danse Macabre](ref:efteling/danse-macabre)** ist die Neuheit, über die
-Europas Parkszene 2024 am meisten geredet hat. Sie ersetzt das legendäre
-Spookslot, das nach 44 Jahren schloss, und benutzt ein Fahrsystem, das es vorher
-nirgends gab: eine Drehscheibe von 18 Metern Durchmesser, auf der sechs kleinere
-Scheiben mit Kirchengestühl stehen. 108 Plätze. Die große Scheibe hebt sich,
-kippt, fällt und trudelt aus wie eine Münze, die sich flach legt. Musikalisch
-liegt Camille Saint-Saëns darunter, dessen „Danse macabre“ von 1874 dem Ding den
-Namen gibt. 2025 gab es dafür den **Thea Award** der Themed Entertainment
-Association. Im Mai 2025 hat der Park nachgeschärft: mehr Blick in die Krypta,
-ein zusätzlicher Fallmoment vor der Pause, wildere Bewegungen.
+**[Danse Macabre](ref:efteling/danse-macabre)** ist eine **Weltneuheit**, und das
+ausnahmsweise im wörtlichen Sinn. Der Schweizer Hersteller **Intamin** hat das
+Fahrsystem gemeinsam mit dem Park entwickelt, es heißt **Dynamic Motion Stage**,
+und die Anlage in Kaatsheuvel ist die erste ihrer Bauart überhaupt. Am 31. Oktober 2024 ging sie in Betrieb, auf dem Grundstück des legendären
+Spookslot, das nach 44 Jahren geschlossen hatte. Zusammen mit dem neuen
+Themenbereich Huyverwoud hat der Park rund **35 Millionen Euro** hineingesteckt.
+
+Das Prinzip: eine Drehscheibe von 18 Metern Durchmesser, auf der sechs kleinere
+Scheiben mit je einem Kirchengestühl stehen. 108 Plätze. Die große Scheibe hebt
+sich, kippt, fällt, dreht sich und trudelt am Ende aus wie eine Münze, die sich
+flach legt, während die sechs kleinen sich unabhängig davon weiterdrehen. Darunter
+liegt Camille Saint-Saëns, dessen „Danse macabre“ von 1874 dem Ding den Namen
+gibt. 2025 gab es dafür den **Thea Award** der Themed Entertainment Association.
+Im Mai 2025 hat der Park nachgeschärft: mehr Blick in die Krypta, ein
+zusätzlicher Fallmoment vor der Pause, wildere Bewegungen.
+
+Wer wissen will, wie man so etwas baut, wenn es das vorher nirgends gab: Der Park
+hat den Bau über zwei Jahre selbst mitgefilmt und als
+[mehrteilige Making-of-Serie](https://www.youtube.com/playlist?list=PLax_Jl-_6xzAc3BCLis1qbRrLs4Urwjdr)
+veröffentlicht, vom leeren Grundstück bis zum ersten Testlauf. Folge eins:
+
+https://www.youtube.com/watch?v=qYmcIgmW8Hk
 
 ```glossary-widget slug=turntable
 
@@ -327,28 +349,51 @@ Europa-Park, 2024 eröffnet, teuerste Neuheit der Parkgeschichte, hat exakt
 dieselbe typische Wartezeit wie **Joris en de Draak**, eine Holzachterbahn von
 2010, die im Efteling nicht einmal als Hauptattraktion vermarktet wird.
 
-## Der Park, der ausverkauft sein darf
+## Das Besucherlimit: fünf Millionen, und keiner mehr
 
-Für die kurzen Schlangen gibt es noch einen zweiten Grund, und der steht in
-einer Behördenakte.
+Für die kurzen Schlangen gibt es noch einen zweiten Grund. Der steht in einer
+Behördenakte statt im Prospekt.
 
-Das Efteling liegt zwischen Naturschutzgebieten, und seine **Naturgenehmigung
-begrenzt den Park auf fünf Millionen Tagesgäste pro Jahr**. Nicht als Zielwert,
-sondern als Auflage. 2025 zählte der Park 5,78 Millionen Besuche von
-4,98 Millionen Gästen, blieb also knapp darunter, weil Übernachtungsgäste
-unabhängig von der Aufenthaltsdauer nur einmal zählen.
+Das Efteling liegt zwischen Natura-2000-Gebieten. Als der Park **2016** die
+Naturgenehmigung für seine Erweiterung bekam, wurde die Stickstoffbelastung auf
+Grundlage von **fünf Millionen Besuchern im Jahr** berechnet. Diese Zahl steht
+seitdem als Auflage in der Genehmigung. Kein Zielwert, keine Empfehlung, eine
+Obergrenze.
 
-Wie man unter so einer Grenze bleibt, ist unromantisch: Der Park nimmt weniger
-Schulausflüge und Firmenveranstaltungen an, schiebt Nachfrage in die Hotels und
-**stoppt in den Weihnachtsferien schlicht den Ticketverkauf**, wenn ein Tag voll
-ist. Eine Erhöhung auf sechs Millionen hat der Park beantragt, genehmigt ist sie
-bisher nicht.
+Der Park wuchs trotzdem weiter darüber hinaus. 2017 waren es 5,18 Millionen, 2018
+dann 5.351.572 und 2019 rund 5,26 Millionen. Anwohner forderten die Provinz
+Noord-Brabant auf, die Grenze durchzusetzen. Die Provinz lehnte zunächst ab, mit
+Verweis auf die wirtschaftliche Bedeutung des Parks. Das Gericht in Den Bosch gab
+den Anwohnern recht und setzte der Provinz eine Frist von zehn Wochen für eine
+neue Entscheidung.
 
-Für dich als Gast hat das zwei Seiten. Die guten Tage sind besser als in einem
-Park, der jeden reinlässt, der zahlt. An Spitzentagen kann es dir dafür
-passieren, dass es für deinen Wunschtermin gar kein Ticket mehr gibt, obwohl
-physisch noch Platz wäre. Wer in den Ferien fährt, bucht also früh, und zwar
-nicht wegen des Preises.
+Die Entscheidung der Provinz vom **Mai 2022** fiel dann zweigeteilt aus. Sie verhängte
+ein **Zwangsgeld von 20 Euro pro Besucher über der Grenze**, bei einer halben
+Million zu viel also bis zu zehn Millionen Euro. Gleichzeitig änderte sie die
+Zählweise: Gezählt werden seither Verkehrsbewegungen statt Köpfe, und wer im
+Hotel oder Ferienpark übernachtet, zählt einmal, egal wie oft er in dieser Woche
+durchs Drehkreuz geht. Genau deshalb passen die Zahlen von 2025 zusammen:
+**5,78 Millionen Besuche von 4,98 Millionen Gästen**, und damit knapp unter der
+Grenze.
+
+Die Anwohner zogen weiter vor den **Raad van State**, das höchste
+Verwaltungsgericht der Niederlande. Am **15. Mai 2024** verloren sie, allerdings
+aus einem Grund, der die Sache offenlässt: Das Gericht befand sie nicht für
+klagebefugt, weil ihre Häuser 1,5 bis 1,8 Kilometer vom Schutzgebiet entfernt
+liegen und die Provinzstraße N261 dazwischen verläuft. Ob das Efteling die
+Auflage tatsächlich gerissen hat, hat der Raad van State nicht entschieden.
+Beantwortet ist die Frage also nicht. Sie wird nur nicht mehr gestellt.
+
+Seit September 2021 liegt außerdem ein Antrag auf eine neue Genehmigung über
+**sechs Millionen** bei der Provinz. Erteilt ist sie bis heute nicht.
+
+Praktisch heißt das: Der Park nimmt weniger Schulausflüge und
+Firmenveranstaltungen an, schiebt Nachfrage in die eigenen Hotels und **stoppt in
+den Weihnachtsferien den Ticketverkauf**, wenn ein Tag voll ist. Für dich hat das
+zwei Seiten. Die guten Tage sind besser als in einem Park, der jeden reinlässt,
+der zahlt. An Spitzentagen kann es dir dafür passieren, dass es für deinen
+Wunschtermin gar kein Ticket mehr gibt, obwohl physisch noch Platz wäre. Wer in
+den Ferien fährt, bucht also früh, und zwar nicht wegen des Preises.
 
 ## Villa Pardoes
 
@@ -679,10 +724,11 @@ anderen in den Park, das ist der einzige kaufbare Vorteil.
 
 ### Warum begrenzt das Efteling seine Besucherzahl?
 
-Der Park liegt zwischen Naturschutzgebieten, und seine Naturgenehmigung erlaubt
-maximal **fünf Millionen Tagesgäste pro Jahr**. Deshalb nimmt der Park weniger
-Gruppenbuchungen an und stoppt an Spitzentagen den Ticketverkauf. Eine Erhöhung
-auf sechs Millionen ist beantragt, aber nicht genehmigt.
+Der Park liegt zwischen Natura-2000-Gebieten, und die Naturgenehmigung von 2016
+erlaubt maximal **fünf Millionen Besucher pro Jahr**. Bei Überschreitung wird ein
+Zwangsgeld von 20 Euro pro Kopf fällig. Deshalb nimmt der Park weniger
+Gruppenbuchungen an und stoppt an Spitzentagen den Ticketverkauf. Ein Antrag auf
+sechs Millionen liegt seit 2021 bei der Provinz und ist bis heute nicht bewilligt.
 
 ### Was kostet der Eintritt ins Efteling?
 
@@ -745,8 +791,10 @@ mit dem offenen Mund. Er bedankt sich, seit 1959, bei jedem Einzelnen.
 - Holle Bolle Gijs (erste Figur am 29. März 1959, Peter Reijnders und Henk Knuivers): [Holle Bolle Gijs auf Eftepedia](https://www.eftepedia.nl/lemma/Holle_Bolle_Gijs) · [Peter Reijnders auf Eftepedia](https://www.eftepedia.nl/lemma/Peter_Reijnders)
 - Stiftungsstruktur und Gewinnverwendung: [Stichting Natuurpark de Efteling auf Eftepedia](https://www.eftepedia.nl/lemma/Stichting_Natuurpark_de_Efteling) · [„Van wie is de Efteling?“ (Parkplanet)](https://parkplanet.nl/2022/04/efteling-kaatsheuvel-eigenaar-stichting/)
 - Jahresergebnis 2025 (5,78 Mio Besuche, 347 Mio Umsatz, Grand Hotel): [„Strong results for Efteling in 2025“ (offiziell)](https://www.efteling.com/en/press/strong-results-for-efteling-in-2025/) · [Jahreszahlen 2025 (Themepark Central)](https://www.themepark-central.de/efteling-besucherzahlen-2025/)
-- Besucherobergrenze aus der Naturgenehmigung: [„Efteling meldet Besucherrekord 2025 – trotz strenger Obergrenze“ (FreizeitparkNEWS)](https://www.freizeitparknews.de/efteling/besucherrekord2025/)
+- Besucherobergrenze aus der Naturgenehmigung von 2016, überschrittene Jahre und heutige Zählweise: [„Efteling meldet Besucherrekord 2025 – trotz strenger Obergrenze“ (FreizeitparkNEWS)](https://www.freizeitparknews.de/efteling/besucherrekord2025/) · [Urteil der Rechtbank Oost-Brabant (Pretwerk)](https://pretwerk.nl/recreatie-actueel/efteling-onaangenaam-verrast-door-rechter-maximaal-5-miljoen-bezoekers-per-jaar/73822/) · [Zwangsgeld von 20 € pro Besucher und geänderte Zählmethode, Mai 2022 (Looopings)](https://www.looopings.nl/weblog/20714/Efteling-moet-voortaan-dwangsom-betalen-bij-meer-dan-vijf-miljoen-bezoekers--maar-telmethode-is-veranderd.html) · [Verhandlung vor dem Raad van State (Looopings)](https://www.looopings.nl/weblog/25415/Miljoenenboete-dreigt-voor-de-Efteling-Raad-van-State-buigt-zich-over-overschrijding-bezoekersaantal.html) · [Entscheidung vom 15. Mai 2024, Klagebefugnis (Looopings)](https://www.looopings.nl/weblog/25633/Klagende-buurtbewoners-Efteling-krijgen-ongelijk-van-Raad-van-State.html) · [Gespräche über sechs Millionen (Omroep Brabant)](https://www.omroepbrabant.nl/nieuws/6007528/efteling-in-gesprek-met-de-provincie-om-meer-bezoekers-te-mogen-ontvangen)
+- Attraktivster Arbeitgeber der Niederlande 2023: [Gewinner des Randstad Award nach Jahr (Randstad)](https://www.randstad.nl/werkgevers/kenniscentrum/employer-branding/winnaars-randstad-award) · [Randstad Employer Brand Research 2026, Methodik](https://www.randstad.nl/werkgevers/kenniscentrum/employer-branding/employer-brand-research-2026)
 - Danse Macabre und das Huyverwoud: [Pressemitteilung zur Eröffnung (offiziell)](https://www.efteling.com/en/press/danse-macabre-efteling-reveals-opening-date-and-inside-of-new-haunted-attraction/) · [Danse Macabre auf en.wikipedia](<https://en.wikipedia.org/wiki/Danse_Macabre_(Efteling)>) · [Überarbeitung im Mai 2025 (Looopings)](https://www.looopings.nl/weblog/28970/Nieuwe-effecten-en-wildere-bewegingen-Efteling-vernieuwt-Danse-Macabre.html)
+- Dynamic Motion Stage als erste Anlage ihrer Bauart: [„Danse Macabre – The Dynamic Motion Stage“ (Intamin)](https://www.intamin.com/2024/11/08/danse-macabre-the-dynamic-motion-stage/) · [Projektseite (Intamin)](https://www.intamin.com/project/danse-macabre/) · Bau-Dokumentation des Parks: [Making-of-Playlist (Efteling auf YouTube)](https://www.youtube.com/playlist?list=PLax_Jl-_6xzAc3BCLis1qbRrLs4Urwjdr)
 - Baron 1898 (Daten, drei Züge zu je 18 Plätzen), Symbolica, Villa Volta: [Baron 1898 auf de.wikipedia](https://de.wikipedia.org/wiki/Baron_1898) · [Baron 1898 auf nl.wikipedia](https://nl.wikipedia.org/wiki/Baron_1898) · [Symbolica auf nl.wikipedia](https://nl.wikipedia.org/wiki/Symbolica) · [Villa Volta auf de.wikipedia](https://de.wikipedia.org/wiki/Villa_Volta)
 - Fata Morgana (acht Minuten, 1.800 Gäste/Stunde, Ton van de Ven), Gondoletta (seit 13. April 1981, 20 Minuten, 1.081 Meter) und das Stoomcarrousel (gebaut 1895, seit 1956 im Park, seit 1944 elektrisch): [Fata Morgana auf nl.wikipedia](<https://nl.wikipedia.org/wiki/Fata_Morgana_(Efteling)>) · [Gondoletta auf nl.wikipedia](https://nl.wikipedia.org/wiki/Gondoletta) · [Stoomcarrousel auf nl.wikipedia](<https://nl.wikipedia.org/wiki/Stoomcarrousel_(Efteling)>)
 - Sprookjesboom (Fernsehserie ab Oktober 2006, Baum im Sprookjesbos seit 1. April 2010): [Sprookjesboom (Fernsehserie) auf nl.wikipedia](<https://nl.wikipedia.org/wiki/Sprookjesboom_(televisieserie)>) · [„10 jaar Sprookjesboom“ (offiziell)](https://www.efteling.com/nl/blog/historie/20200317-10-jaar-sprookjesboom)
