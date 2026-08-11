@@ -1,96 +1,150 @@
 #!/usr/bin/env node
 /**
- * Guards the client message allowlist in `i18n/client-messages.ts`.
+ * Guards the two-level message split.
  *
- * The locale layout ships only those namespaces to `<NextIntlClientProvider>` (see the module's
- * own doc comment for why). If a client component reads a namespace that isn't reachable from
- * the allowlist, next-intl doesn't throw — it logs a MISSING_MESSAGE error and renders the raw
- * key, which is exactly the kind of regression that reaches production unnoticed.
+ * The locale layout ships only the chrome namespaces; each route adds its own
+ * delta through `<RouteMessages>` (see `i18n/client-messages.ts` for why). Both
+ * lists are derived from the import graph and baked into
+ * `i18n/route-namespaces.generated.ts`.
  *
- * So: scan for `useTranslations('<namespace>')` and fail when the namespace is neither listed nor
- * nested under a listed one.
+ * Getting this wrong does not throw at runtime: next-intl logs a MISSING_MESSAGE
+ * error and renders the raw key, which is exactly the kind of regression that
+ * reaches production unnoticed. So this check fails when
  *
- * The scan deliberately covers EVERY file, not only the ones carrying a `'use client'` directive.
- * A shared component without the directive inherits the client boundary from whichever component
- * imports it, and `useTranslations` then reads the provider's messages — `geo-location-card.tsx`
- * (`explore`) is exactly that case, and an earlier directive-only version of this check waved it
- * through. The hook form is the signal; `getTranslations` (server-only) is correctly ignored.
+ *   1. the generated file has drifted from the current import graph — a
+ *      component crossed the client boundary and nobody re-ran the generator, or
+ *   2. a route that needs a delta does not render `<RouteMessages>`, or renders
+ *      it with the wrong route key, or
+ *   3. a route whose delta is empty renders one anyway (pure overhead), or
+ *   4. a lazy boundary's subtree reads a namespace that is neither shipped by
+ *      the route nor listed in `LAZY_CHUNK_NAMESPACES` — the one part of the
+ *      setup that is declared by hand rather than derived.
  *
  * Run via `pnpm release:check`.
  */
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { analyzeRouteNamespaces } from '../lib/i18n/route-namespaces.mjs';
+import { renderModule, formatModule } from './generate-route-namespaces.mjs';
 
 const rootDir = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
-const SCAN_DIRS = ['app', 'components', 'lib', 'i18n'];
-// `admin`/`dev` render inside their own NextIntlClientProvider with hand-built messages.
-const SKIP_DIRS = new Set(['node_modules', '.next', '.git', 'admin', 'dev']);
-// The allowlist module quotes namespaces in its own doc comment.
-const SKIP_FILES = new Set(['i18n/client-messages.ts']);
+const generatedFile = path.join(rootDir, 'i18n/route-namespaces.generated.ts');
 
-/** Namespaces from `CLIENT_MESSAGE_NAMESPACES`, read straight out of the TS source. */
-function readAllowlist() {
-  const source = fs.readFileSync(path.join(rootDir, 'i18n/client-messages.ts'), 'utf-8');
-  const block = source.match(/CLIENT_MESSAGE_NAMESPACES[^=]*=\s*\[([\s\S]*?)\n\];/);
-  if (!block) {
-    throw new Error('Could not parse CLIENT_MESSAGE_NAMESPACES from i18n/client-messages.ts');
-  }
-  // Strip `//` comments first — prose apostrophes ("the contribute page's hero") would
-  // otherwise pair up with the real quotes and shred the list.
-  const entries = block[1].replace(/\/\/.*$/gm, '');
-  return [...entries.matchAll(/'([^']+)'/g)].map((m) => m[1]);
-}
+const problems = [];
 
-function walk(dir, files = []) {
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (entry.isDirectory()) {
-      if (SKIP_DIRS.has(entry.name)) continue;
-      walk(path.join(dir, entry.name), files);
-    } else if (/\.tsx?$/.test(entry.name)) {
-      files.push(path.join(dir, entry.name));
-    }
-  }
-  return files;
-}
+const analysis = analyzeRouteNamespaces({ root: rootDir });
 
-const allowlist = readAllowlist();
-const isAllowed = (namespace) =>
-  allowlist.some((allowed) => namespace === allowed || namespace.startsWith(allowed + '.'));
+// ── 1. Is the committed map current? ────────────────────────────────────────
+const expected = await formatModule(renderModule(analysis));
+const actual = fs.existsSync(generatedFile) ? fs.readFileSync(generatedFile, 'utf-8') : '';
 
-const violations = [];
-
-for (const dir of SCAN_DIRS) {
-  const abs = path.join(rootDir, dir);
-  if (!fs.existsSync(abs)) continue;
-
-  for (const file of walk(abs)) {
-    if (SKIP_FILES.has(path.relative(rootDir, file))) continue;
-    const source = fs.readFileSync(file, 'utf-8');
-
-    for (const match of source.matchAll(/useTranslations\(\s*['"]([^'"]+)['"]\s*\)/g)) {
-      const namespace = match[1];
-      if (isAllowed(namespace)) continue;
-      const line = source.slice(0, match.index).split('\n').length;
-      violations.push({ file: path.relative(rootDir, file), line, namespace });
-    }
-  }
-}
-
-if (violations.length > 0) {
-  console.error(
-    '\n❌ Client components read message namespaces that are not shipped to the client:\n'
+if (actual !== expected) {
+  problems.push(
+    'i18n/route-namespaces.generated.ts is out of date with the import graph.\n' +
+      '     Run `pnpm generate:route-namespaces` and commit the result.'
   );
-  for (const { file, line, namespace } of violations) {
-    console.error(`   🔸 "${namespace}"  —  ${file}:${line}`);
+}
+
+// ── 2/3. Is every route wired to its delta? ─────────────────────────────────
+/** @param {string} routeKey */
+function pageFileFor(routeKey) {
+  const rel = routeKey === '/' ? '' : routeKey.slice(1);
+  return path.join(rootDir, 'app/[locale]', rel, 'page.tsx');
+}
+
+for (const [routeKey, namespaces] of Object.entries(analysis.routes)) {
+  const file = pageFileFor(routeKey);
+  const relative = path.relative(rootDir, file).split(path.sep).join('/');
+
+  if (!fs.existsSync(file)) {
+    problems.push(`${relative} is missing for route "${routeKey}".`);
+    continue;
   }
-  console.error(
-    '\n   Add the namespace to CLIENT_MESSAGE_NAMESPACES in i18n/client-messages.ts,\n' +
-      '   or move the translation lookup to a Server Component (getTranslations).\n'
+
+  const source = fs.readFileSync(file, 'utf-8');
+  const rendered = [...source.matchAll(/<RouteMessages\s+route="([^"]+)"/g)].map((m) => m[1]);
+
+  if (namespaces.length === 0) {
+    if (rendered.length > 0) {
+      problems.push(
+        `${relative} renders <RouteMessages> but route "${routeKey}" needs no extra namespaces —\n` +
+          '     the layout set already covers it. Remove the wrapper.'
+      );
+    }
+    continue;
+  }
+
+  if (rendered.length === 0) {
+    problems.push(
+      `${relative} does not render <RouteMessages route="${routeKey}">, but the route needs\n` +
+        `     ${namespaces.join(', ')} on the client. Those messages will render as raw keys.`
+    );
+    continue;
+  }
+
+  const wrong = rendered.filter((key) => key !== routeKey);
+  if (wrong.length > 0) {
+    problems.push(
+      `${relative} renders <RouteMessages route="${wrong[0]}"> but sits at "${routeKey}".`
+    );
+  }
+
+  // `RouteMessages` reads the request locale through `getMessages()`. Called
+  // before `setRequestLocale`, that resolves to the DEFAULT locale — so a German
+  // page would ship English messages to its client components. Nothing throws
+  // and every key still resolves, which makes it invisible to the raw-key scan.
+  const setLocaleAt = source.indexOf('setRequestLocale(');
+  const wrapperAt = source.indexOf('<RouteMessages');
+  if (setLocaleAt === -1) {
+    problems.push(
+      `${relative} renders <RouteMessages> without calling setRequestLocale() — its messages\n` +
+        '     would resolve against the default locale instead of the requested one.'
+    );
+  } else if (setLocaleAt > wrapperAt) {
+    problems.push(
+      `${relative} calls setRequestLocale() after <RouteMessages> — the messages resolve\n` +
+        '     against the default locale. Move the call above the return.'
+    );
+  }
+}
+
+// ── 4. Can every lazy boundary actually get what its subtree reads? ─────────
+for (const [routeKey, namespaces] of Object.entries(analysis.lazyGaps)) {
+  problems.push(
+    `route "${routeKey}" can render ${namespaces.join(', ')} but neither ships nor fetches it.\n` +
+      '     Add it to LAZY_CHUNK_NAMESPACES via LAZY_MESSAGE_BOUNDARIES in\n' +
+      '     lib/i18n/route-namespaces.mjs, or move the consumer out of the lazy boundary.'
   );
+}
+
+if (problems.length > 0) {
+  console.error('\n❌ Client message routing is out of sync:\n');
+  for (const problem of problems) console.error(`   🔸 ${problem}`);
+  console.error('');
   process.exit(1);
 }
 
+// ── Report what the split is worth, per locale-independent JSON bytes. ───────
+const messages = JSON.parse(fs.readFileSync(path.join(rootDir, 'messages/en.json'), 'utf-8'));
+/** @param {string} namespace */
+function bytesOf(namespace) {
+  let node = messages;
+  for (const segment of namespace.split('.')) node = node?.[segment];
+  return node === undefined ? 0 : Buffer.byteLength(JSON.stringify(node));
+}
+
+const layoutBytes = analysis.layout.reduce((sum, ns) => sum + bytesOf(ns), 0);
+const routeTotals = Object.entries(analysis.routes).map(([key, namespaces]) => ({
+  key,
+  bytes: layoutBytes + namespaces.reduce((sum, ns) => sum + bytesOf(ns), 0),
+}));
+const heaviest = routeTotals.reduce((a, b) => (b.bytes > a.bytes ? b : a));
+const lightest = routeTotals.reduce((a, b) => (b.bytes < a.bytes ? b : a));
+
 console.log(
-  `✅ All client-side translation namespaces are shipped (${allowlist.length} allowlisted).`
+  `✅ Client messages are routed correctly — ` +
+    `${analysis.layout.length} namespaces in the layout (${layoutBytes} B), ` +
+    `${routeTotals.length} routes from ${lightest.bytes} B (${lightest.key}) ` +
+    `to ${heaviest.bytes} B (${heaviest.key}).`
 );

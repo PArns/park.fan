@@ -15,6 +15,7 @@ import { PageBottomSections } from '@/components/common/page-bottom-sections';
 import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import type { Locale } from '@/i18n/config';
+import { RouteMessages } from '@/i18n/route-messages';
 
 interface TermPageProps {
   params: Promise<{ locale: string; term: string }>;
@@ -143,54 +144,56 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
     : undefined;
 
   return (
-    <>
-      <GlossaryBackground />
-      <PageContainer>
-        <GlossaryStructuredData
-          term={term}
-          locale={locale as Locale}
-          segment={segment}
-          variant="detail"
-        />
-        <BreadcrumbStructuredData
-          breadcrumbs={[
-            { name: tCommon('home'), url: `/${locale}` },
-            { name: t('overviewTitle'), url: `/${locale}/${segment}` },
-            { name: term.name, url: `/${locale}/${segment}/${termSlug}` },
-          ]}
-        />
-        <GlossaryTermDetail
-          term={term}
-          relatedTerms={relatedTerms}
-          breadcrumbs={breadcrumbs}
-          locale={locale as Locale}
-          segment={segment}
-          labels={{
-            backToGlossary: t('backToGlossary'),
-            relatedTerms: t('relatedTerms'),
-            alsoKnownAs: t('alsoKnownAs'),
-            category: t(`category.${term.category}`),
-            termH1Suffix: t('termH1Suffix'),
-            fancastCta: t('fancastCta'),
-          }}
-          playerLabels={playerLabels}
-          /* The other half of the ride ↔ glossary link: every curated ride that
+    <RouteMessages route="/glossary/[term]">
+      <>
+        <GlossaryBackground />
+        <PageContainer>
+          <GlossaryStructuredData
+            term={term}
+            locale={locale as Locale}
+            segment={segment}
+            variant="detail"
+          />
+          <BreadcrumbStructuredData
+            breadcrumbs={[
+              { name: tCommon('home'), url: `/${locale}` },
+              { name: t('overviewTitle'), url: `/${locale}/${segment}` },
+              { name: term.name, url: `/${locale}/${segment}/${termSlug}` },
+            ]}
+          />
+          <GlossaryTermDetail
+            term={term}
+            relatedTerms={relatedTerms}
+            breadcrumbs={breadcrumbs}
+            locale={locale as Locale}
+            segment={segment}
+            labels={{
+              backToGlossary: t('backToGlossary'),
+              relatedTerms: t('relatedTerms'),
+              alsoKnownAs: t('alsoKnownAs'),
+              category: t(`category.${term.category}`),
+              termH1Suffix: t('termH1Suffix'),
+              fancastCta: t('fancastCta'),
+            }}
+            playerLabels={playerLabels}
+            /* The other half of the ride ↔ glossary link: every curated ride that
              features this term. Handed in as a slot so it renders inside the
              detail's own column — aligned with the definition card instead of
              as a full-width stripe below it — while the Suspense boundary keeps
              it off the critical path. Renders nothing for the concept terms no
              ride profile references. */
-          rides={
-            <Suspense fallback={null}>
-              <GlossaryTermRides termId={term.id} />
-            </Suspense>
-          }
-        />
-      </PageContainer>
+            rides={
+              <Suspense fallback={null}>
+                <GlossaryTermRides termId={term.id} />
+              </Suspense>
+            }
+          />
+        </PageContainer>
 
-      {/* Nearby → favorites → featured parks, the same tail the blog pages get.
+        {/* Nearby → favorites → featured parks, the same tail the blog pages get.
           It used to be hand-rolled here, which is how the two drifted apart. */}
-      <PageBottomSections locale={locale} />
-    </>
+        <PageBottomSections locale={locale} />
+      </>
+    </RouteMessages>
   );
 }

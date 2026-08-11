@@ -10,7 +10,8 @@ import {
   localeToOpenGraphLocale,
   SITE_URL,
 } from '@/i18n/config';
-import { pickClientMessages } from '@/i18n/client-messages';
+import { pickMessages } from '@/i18n/client-messages';
+import { LAYOUT_MESSAGE_NAMESPACES } from '@/i18n/route-namespaces.generated';
 import { Providers } from '@/lib/providers';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
@@ -124,11 +125,12 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   // Enable static rendering
   setRequestLocale(locale);
 
-  // Messages for the current locale, narrowed to the namespaces client components actually
-  // read (see i18n/client-messages.ts). The full bundle is ~55 KB of JSON that would otherwise
-  // be serialized into every page's RSC payload — most of it (`seo`, the server-rendered
-  // legal/marketing pages, …) is only ever read by Server Components via `getTranslations`.
-  const messages = pickClientMessages(await getMessages());
+  // Only what the CHROME reads — header, footer, search, language banner. Everything handed to
+  // the provider is serialized into every page's RSC payload, so a route's own namespaces are
+  // added further down the tree by `<RouteMessages>`, which merges them on the client (see
+  // i18n/client-messages.ts). Shipping the union here instead costs ~38 KB of JSON on routes
+  // that render none of it.
+  const messages = pickMessages(await getMessages(), LAYOUT_MESSAGE_NAMESPACES);
   // Blog surfaces show only in locales that actually list posts (German-first
   // rollout: /de/blog can be live while other locales stay blog-free).
   const showBlog = hasPublishedPosts(locale as Locale);

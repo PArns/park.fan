@@ -10,6 +10,7 @@ import type { Metadata } from 'next';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { ArticleStructuredData } from '@/components/seo/structured-data';
 import type { ComponentType } from 'react';
+import { RouteMessages } from '@/i18n/route-messages';
 
 // Lazy per-locale loaders so only the requested language's ~1000-line content
 // module is evaluated per render instead of all six.
@@ -204,19 +205,21 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
   const { title, intro } = PAGE_HEADERS[locale as Locale];
 
   return (
-    <div className="container mx-auto px-4 py-12">
-      <ArticleStructuredData
-        title={title}
-        description={intro}
-        url={`${SITE_URL}/${locale}/howto`}
-        locale={locale}
-        image={getOgImageUrl([locale, 'howto'])}
-      />
-      <div>
-        <h1 className="mb-2 text-2xl font-bold sm:text-4xl">{title}</h1>
-        <p className="text-muted-foreground mb-10 text-lg">{intro}</p>
-        <Content />
+    <RouteMessages route="/howto">
+      <div className="container mx-auto px-4 py-12">
+        <ArticleStructuredData
+          title={title}
+          description={intro}
+          url={`${SITE_URL}/${locale}/howto`}
+          locale={locale}
+          image={getOgImageUrl([locale, 'howto'])}
+        />
+        <div>
+          <h1 className="mb-2 text-2xl font-bold sm:text-4xl">{title}</h1>
+          <p className="text-muted-foreground mb-10 text-lg">{intro}</p>
+          <Content />
+        </div>
       </div>
-    </div>
+    </RouteMessages>
   );
 }

@@ -16,6 +16,7 @@ import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import type { Breadcrumb } from '@/lib/api/types';
 import { getOgImageUrl } from '@/lib/utils/og-image';
+import { RouteMessages } from '@/i18n/route-messages';
 
 interface TagPageProps {
   params: Promise<{ locale: string; tag: string }>;
@@ -100,42 +101,44 @@ export default async function BlogTagPage({ params }: TagPageProps) {
   ];
 
   return (
-    <>
-      <BlogStructuredData
-        locale={locale}
-        name={`#${canonicalTag} · ${t('title')}`}
-        description={t('tag.description', { tag: canonicalTag })}
-        posts={visiblePosts}
-        path={`/blog/tag/${tag}`}
-      />
-      <BreadcrumbStructuredData breadcrumbs={seoBreadcrumbs} locale={locale} />
-
-      <div className="container mx-auto px-4 py-10 sm:py-14">
-        <BreadcrumbNav
-          breadcrumbs={breadcrumbs}
-          currentPage={`#${canonicalTag}`}
-          variant="plain"
-          className="mb-6"
+    <RouteMessages route="/blog/tag/[tag]">
+      <>
+        <BlogStructuredData
+          locale={locale}
+          name={`#${canonicalTag} · ${t('title')}`}
+          description={t('tag.description', { tag: canonicalTag })}
+          posts={visiblePosts}
+          path={`/blog/tag/${tag}`}
         />
+        <BreadcrumbStructuredData breadcrumbs={seoBreadcrumbs} locale={locale} />
 
-        <BlogSectionHeader
-          as="h1"
-          badge={t('tag.label')}
-          badgeIcon={Tag}
-          title={`#${canonicalTag}`}
-          meta={t('tag.postsCount', { count: allPosts.length })}
-        />
+        <div className="container mx-auto px-4 py-10 sm:py-14">
+          <BreadcrumbNav
+            breadcrumbs={breadcrumbs}
+            currentPage={`#${canonicalTag}`}
+            variant="plain"
+            className="mb-6"
+          />
 
-        <div className="grid gap-8 lg:grid-cols-[1fr_280px]">
-          <BlogPostGrid posts={visiblePosts} />
-          <aside className="space-y-6 lg:sticky lg:top-20 lg:self-start">
-            <BlogCategoryTree locale={locale as Locale} />
-            <BlogTagCloud locale={locale as Locale} activeSlug={tag} />
-          </aside>
+          <BlogSectionHeader
+            as="h1"
+            badge={t('tag.label')}
+            badgeIcon={Tag}
+            title={`#${canonicalTag}`}
+            meta={t('tag.postsCount', { count: allPosts.length })}
+          />
+
+          <div className="grid gap-8 lg:grid-cols-[1fr_280px]">
+            <BlogPostGrid posts={visiblePosts} />
+            <aside className="space-y-6 lg:sticky lg:top-20 lg:self-start">
+              <BlogCategoryTree locale={locale as Locale} />
+              <BlogTagCloud locale={locale as Locale} activeSlug={tag} />
+            </aside>
+          </div>
         </div>
-      </div>
 
-      <PageBottomSections locale={locale} />
-    </>
+        <PageBottomSections locale={locale} />
+      </>
+    </RouteMessages>
   );
 }

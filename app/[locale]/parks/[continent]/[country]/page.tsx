@@ -23,6 +23,7 @@ import { generateCountryBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import { CountrySummarySection } from '@/components/parks/country-summary-section';
 import type { Metadata } from 'next';
+import { RouteMessages } from '@/i18n/route-messages';
 
 interface CountryPageProps {
   params: Promise<{ locale: string; continent: string; country: string }>;
@@ -133,64 +134,68 @@ export default async function CountryPage({ params }: CountryPageProps) {
   );
 
   return (
-    <PageContainer>
-      <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
-      <ItemListStructuredData
-        items={itemListItems}
-        listName={t('parksIn', { location: countryName })}
-        pageUrl={`/${locale}/parks/${continent}/${country}`}
-      />
-      <PageHeader
-        breadcrumbs={breadcrumbs}
-        currentPage={countryCurrentPage}
-        title={t('parksIn', { location: countryName })}
-        description={
-          <>
-            {t('parkCount', { count: totalParks })} • {cities.length}{' '}
-            {tExplore('stats.city', { count: cities.length })}
-          </>
-        }
-      />
+    <RouteMessages route="/parks/[continent]/[country]">
+      <PageContainer>
+        <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
+        <ItemListStructuredData
+          items={itemListItems}
+          listName={t('parksIn', { location: countryName })}
+          pageUrl={`/${locale}/parks/${continent}/${country}`}
+        />
+        <PageHeader
+          breadcrumbs={breadcrumbs}
+          currentPage={countryCurrentPage}
+          title={t('parksIn', { location: countryName })}
+          description={
+            <>
+              {t('parkCount', { count: totalParks })} • {cities.length}{' '}
+              {tExplore('stats.city', { count: cities.length })}
+            </>
+          }
+        />
 
-      {/* Country summary — top parks + best months */}
-      {summary && (
-        <CountrySummarySection summary={summary} countryName={countryName} locale={locale} />
-      )}
+        {/* Country summary — top parks + best months */}
+        {summary && (
+          <CountrySummarySection summary={summary} countryName={countryName} locale={locale} />
+        )}
 
-      {/* Cities with Parks */}
-      <div className="space-y-8">
-        {cities.map((city) => (
-          <div key={city.slug}>
-            <SectionHeading
-              variant="plain"
-              icon={MapPin}
-              title={city.name}
-              badge={<Badge variant="secondary">{t('parkCount', { count: city.parkCount })}</Badge>}
-            />
+        {/* Cities with Parks */}
+        <div className="space-y-8">
+          {cities.map((city) => (
+            <div key={city.slug}>
+              <SectionHeading
+                variant="plain"
+                icon={MapPin}
+                title={city.name}
+                badge={
+                  <Badge variant="secondary">{t('parkCount', { count: city.parkCount })}</Badge>
+                }
+              />
 
-            {/* Status-free shell (cacheable); live status overlaid client-side. All cities on
+              {/* Status-free shell (cacheable); live status overlaid client-side. All cities on
                 the page share one underlying /api/parks/live call (React Query dedupe). */}
-            <LiveParkGrid
-              continent={continent}
-              country={country}
-              parks={city.parks.map((park) => ({
-                id: park.id,
-                name: stripNewPrefix(park.name),
-                slug: park.slug,
-                city: city.name,
-                countryName,
-                href: `/parks/${continent}/${country}/${city.slug}/${park.slug}`,
-                backgroundImage: getParkBackgroundImage(park.slug),
-                backgroundPosition: getCardObjectPosition(park.slug),
-                // Static too — the distance to the visitor is computed client-side from these.
-                latitude: park.latitude,
-                longitude: park.longitude,
-              }))}
-              className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3"
-            />
-          </div>
-        ))}
-      </div>
-    </PageContainer>
+              <LiveParkGrid
+                continent={continent}
+                country={country}
+                parks={city.parks.map((park) => ({
+                  id: park.id,
+                  name: stripNewPrefix(park.name),
+                  slug: park.slug,
+                  city: city.name,
+                  countryName,
+                  href: `/parks/${continent}/${country}/${city.slug}/${park.slug}`,
+                  backgroundImage: getParkBackgroundImage(park.slug),
+                  backgroundPosition: getCardObjectPosition(park.slug),
+                  // Static too — the distance to the visitor is computed client-side from these.
+                  latitude: park.latitude,
+                  longitude: park.longitude,
+                }))}
+                className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3"
+              />
+            </div>
+          ))}
+        </div>
+      </PageContainer>
+    </RouteMessages>
   );
 }

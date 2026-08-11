@@ -63,6 +63,7 @@ import { buildContributeHref } from '@/lib/contribute/prefill';
 import { groupAttractionsByLand } from '@/lib/utils/park-utils';
 import { generateParkBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
+import { RouteMessages } from '@/i18n/route-messages';
 
 interface ParkPageProps {
   params: Promise<{
@@ -363,284 +364,286 @@ export default async function ParkPage({ params }: ParkPageProps) {
   const ogImageUrl = getOgImageUrl([locale, continent, country, city, parkSlug]);
 
   return (
-    <>
-      {/* No manual <link rel="preload"> here: it pointed at the RAW /media/.../background.jpg,
+    <RouteMessages route="/parks/[continent]/[country]/[city]/[park]">
+      <>
+        {/* No manual <link rel="preload"> here: it pointed at the RAW /media/.../background.jpg,
           but <ParkBackground> renders it through next/image (/_next/image?…&q=90). The raw preload
           was never the LCP resource — it just downloaded the full-size original in parallel,
           competing for bandwidth with the optimized image. next/image's `priority` already preloads
           the correct optimized rendition. */}
-      <ParkBackground
-        imageSrc={parkBgImage}
-        alt={parkName}
-        objectPosition={objectPositionForSrc(parkBgImage)}
-      />
-
-      <PageContainer>
-        <ParkStructuredData
-          park={park}
-          url={`${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`}
-          description={tSeo('metaDescriptionTemplate', { park: parkName, city: cityName })}
-          locale={locale}
-          ogImageUrl={ogImageUrl}
+        <ParkBackground
+          imageSrc={parkBgImage}
+          alt={parkName}
+          objectPosition={objectPositionForSrc(parkBgImage)}
         />
-        <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
-        {park.shows && park.shows.length > 0 && (
-          <ShowsStructuredData shows={park.shows} park={park} />
-        )}
-        {/* FAQ JSON-LD streams: the base FAQPage questions don't need the seed, and the
+
+        <PageContainer>
+          <ParkStructuredData
+            park={park}
+            url={`${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`}
+            description={tSeo('metaDescriptionTemplate', { park: parkName, city: cityName })}
+            locale={locale}
+            ogImageUrl={ogImageUrl}
+          />
+          <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
+          {park.shows && park.shows.length > 0 && (
+            <ShowsStructuredData shows={park.shows} park={park} />
+          )}
+          {/* FAQ JSON-LD streams: the base FAQPage questions don't need the seed, and the
             least-crowded question is appended when the seed resolves — awaiting it here would
             block TTFB, so it's rendered inside its own Suspense boundary. */}
-        <Suspense fallback={null}>
-          <FAQStructuredData
-            park={park}
-            locale={locale}
-            nowMs={seedNowMs}
-            seedPromise={bestDaysSeedPromise}
-          />
-        </Suspense>
+          <Suspense fallback={null}>
+            <FAQStructuredData
+              park={park}
+              locale={locale}
+              nowMs={seedNowMs}
+              seedPromise={bestDaysSeedPromise}
+            />
+          </Suspense>
 
-        {/* Breadcrumb — visible nav streams (next-intl links are dynamic under Cache
+          {/* Breadcrumb — visible nav streams (next-intl links are dynamic under Cache
             Components); the BreadcrumbList JSON-LD above stays in the static shell for SEO. */}
-        <Suspense fallback={<div className="h-6" />}>
-          <BreadcrumbNav breadcrumbs={breadcrumbs} currentPage={parkCurrentPage} />
-        </Suspense>
+          <Suspense fallback={<div className="h-6" />}>
+            <BreadcrumbNav breadcrumbs={breadcrumbs} currentPage={parkCurrentPage} />
+          </Suspense>
 
-        <article itemScope itemType="https://schema.org/ThemePark">
-          {/* Park Header */}
-          <div className="mb-8">
-            <GlassCard variant="medium">
-              {/* Title row: park name + location on the left, favourite button pinned top-right. */}
-              <div className="flex items-start justify-between gap-4">
-                <div className="min-w-0 flex-1">
-                  {/* The wait-times keyword lives INSIDE the h1 (same size + color as the
+          <article itemScope itemType="https://schema.org/ThemePark">
+            {/* Park Header */}
+            <div className="mb-8">
+              <GlassCard variant="medium">
+                {/* Title row: park name + location on the left, favourite button pinned top-right. */}
+                <div className="flex items-start justify-between gap-4">
+                  <div className="min-w-0 flex-1">
+                    {/* The wait-times keyword lives INSIDE the h1 (same size + color as the
                       park name, only lighter weight) so the target term "{park} Wartezeiten"
                       reads as one unified heading — the single strongest on-page signal for
                       the "<park> wartezeiten" query. */}
-                  <h1 className="mb-2 text-3xl font-bold md:text-4xl">
-                    {parkName} <span className="font-normal">– {t('h1Suffix')}</span>
-                  </h1>
-                  <div className="text-muted-foreground flex flex-wrap items-center gap-3">
-                    <address className="flex items-center gap-1 not-italic">
-                      <MapPin className="h-4 w-4" aria-hidden="true" />
-                      <span>{cityName}</span>,{' '}
-                      <span>{translateGeoSlug(tGeo, 'countries', country, countryName)}</span>
-                    </address>
-                    {/* How far the visitor is from this park — client-only (needs their
+                    <h1 className="mb-2 text-3xl font-bold md:text-4xl">
+                      {parkName} <span className="font-normal">– {t('h1Suffix')}</span>
+                    </h1>
+                    <div className="text-muted-foreground flex flex-wrap items-center gap-3">
+                      <address className="flex items-center gap-1 not-italic">
+                        <MapPin className="h-4 w-4" aria-hidden="true" />
+                        <span>{cityName}</span>,{' '}
+                        <span>{translateGeoSlug(tGeo, 'countries', country, countryName)}</span>
+                      </address>
+                      {/* How far the visitor is from this park — client-only (needs their
                         position), so it just appears next to the address once known. */}
-                    <ParkDistance latitude={park.latitude} longitude={park.longitude} size="md" />
+                      <ParkDistance latitude={park.latitude} longitude={park.longitude} size="md" />
+                    </div>
                   </div>
+                  {park.id && <ParkFavoriteButton parkId={park.id} />}
                 </div>
-                {park.id && <ParkFavoriteButton parkId={park.id} />}
-              </div>
 
-              {/* Board row: today's stats board + the neighbouring-holidays column side by side, top-
+                {/* Board row: today's stats board + the neighbouring-holidays column side by side, top-
                   aligned so the holiday caption lines up with STATUS (not the header top). On < lg the
                   holiday context has no right column and stacks under the intro instead. */}
-              <div className="flex flex-wrap items-stretch gap-4">
-                <div className="min-w-0 flex-1">
-                  {/* At-a-glance "now vs. AI forecast" strip — live status/crowd next to
+                <div className="flex flex-wrap items-stretch gap-4">
+                  <div className="min-w-0 flex-1">
+                    {/* At-a-glance "now vs. AI forecast" strip — live status/crowd next to
                       today's predicted crowd (the forecast column loads last per the
                       loading-priority rule; it shares the calendar query with the best-days
                       section below). */}
-                  <ParkHeaderStats
-                    initialData={park}
-                    continent={continent}
-                    country={country}
-                    city={city}
-                    parkSlug={parkSlug}
-                  />
-                  {/* Keyword-rich, server-rendered intro — gives Google crawlable topical
+                    <ParkHeaderStats
+                      initialData={park}
+                      continent={continent}
+                      country={country}
+                      city={city}
+                      parkSlug={parkSlug}
+                    />
+                    {/* Keyword-rich, server-rendered intro — gives Google crawlable topical
                       text with the exact "Wartezeiten im {park}" phrase + "heute" that the
                       live (client-streamed) grid doesn't provide as static text. */}
-                  <p className="text-muted-foreground mt-3 max-w-2xl text-sm leading-relaxed">
-                    {t('intro', { park: parkName, city: cityName })}
-                  </p>
-                </div>
-                {/* Neighbouring-holidays context — ONE instance for all breakpoints (it used to be
+                    <p className="text-muted-foreground mt-3 max-w-2xl text-sm leading-relaxed">
+                      {t('intro', { park: parkName, city: cityName })}
+                    </p>
+                  </div>
+                  {/* Neighbouring-holidays context — ONE instance for all breakpoints (it used to be
                     rendered twice, `lg:hidden` + `hidden lg:block`, duplicating its text in the HTML
                     and its hydration cost). Below lg it wraps to a full-width band row under the
                     intro (top hairline); on lg+ it becomes the right-hand column beside the board —
                     full-height left divider + `mt-5 pt-4` matching the stats band's top rule, so its
                     caption sits at the SAME height as STATUS. Not a floating card. Collapses to
                     nothing when no influencing holidays apply. */}
-                <HeaderHolidayPanel
-                  initialData={park}
-                  continent={continent}
-                  country={country}
-                  city={city}
-                  parkSlug={parkSlug}
-                  className="border-border/50 w-full border-t pt-4 lg:mt-5 lg:w-64 lg:shrink-0 lg:self-stretch lg:border-t-0 lg:border-l lg:pl-5 xl:w-72"
-                />
-              </div>
-            </GlassCard>
-          </div>
+                  <HeaderHolidayPanel
+                    initialData={park}
+                    continent={continent}
+                    country={country}
+                    city={city}
+                    parkSlug={parkSlug}
+                    className="border-border/50 w-full border-t pt-4 lg:mt-5 lg:w-64 lg:shrink-0 lg:self-stretch lg:border-t-0 lg:border-l lg:pl-5 xl:w-72"
+                  />
+                </div>
+              </GlassCard>
+            </div>
 
-          {/* Official severe-weather warnings (DWD / MeteoAlarm) — shown above the
+            {/* Official severe-weather warnings (DWD / MeteoAlarm) — shown above the
               self-derived nowcast banner since they carry authoritative severity. */}
-          <Suspense fallback={null}>
-            <WeatherWarningBanner
-              continent={continent}
-              country={country}
-              city={city}
-              parkSlug={parkSlug}
-              initialData={null}
-              className="mb-6"
-            />
-          </Suspense>
+            <Suspense fallback={null}>
+              <WeatherWarningBanner
+                continent={continent}
+                country={country}
+                city={city}
+                parkSlug={parkSlug}
+                initialData={null}
+                className="mb-6"
+              />
+            </Suspense>
 
-          {/* Weather nowcast banner (rain / storm / hail / thunderstorm) — client live query,
+            {/* Weather nowcast banner (rain / storm / hail / thunderstorm) — client live query,
               streamed as a dynamic hole under Cache Components. */}
-          <Suspense fallback={null}>
-            <WeatherNowcastBanner
-              continent={continent}
-              country={country}
-              city={city}
-              parkSlug={parkSlug}
-              initialData={null}
-              className="mb-6"
-            />
-          </Suspense>
+            <Suspense fallback={null}>
+              <WeatherNowcastBanner
+                continent={continent}
+                country={country}
+                city={city}
+                parkSlug={parkSlug}
+                initialData={null}
+                className="mb-6"
+              />
+            </Suspense>
 
-          {/* Weather — client live nowcast query, streamed as a dynamic hole. Today's schedule,
+            {/* Weather — client live nowcast query, streamed as a dynamic hole. Today's schedule,
               status and opening hours now live in the <ParkHeaderStats> board up in the header,
               so there's no separate schedule card here (no duplication). */}
-          {park.weather?.current && (
-            <div className="mb-8">
-              <Suspense fallback={null}>
-                <WeatherCard
-                  weather={park.weather}
-                  nowcast={null}
-                  continent={continent}
-                  country={country}
-                  city={city}
-                  parkSlug={parkSlug}
-                  latitude={park.latitude}
-                  longitude={park.longitude}
-                  timezone={park.timezone}
-                  schedule={park.schedule}
-                  className="border-primary/10"
-                />
-              </Suspense>
-            </div>
-          )}
+            {park.weather?.current && (
+              <div className="mb-8">
+                <Suspense fallback={null}>
+                  <WeatherCard
+                    weather={park.weather}
+                    nowcast={null}
+                    continent={continent}
+                    country={country}
+                    city={city}
+                    parkSlug={parkSlug}
+                    latitude={park.latitude}
+                    longitude={park.longitude}
+                    timezone={park.timezone}
+                    schedule={park.schedule}
+                    className="border-primary/10"
+                  />
+                </Suspense>
+              </div>
+            )}
 
-          {/* Paid skip-the-line day prices (schedule purchases) — renders nothing for parks
+            {/* Paid skip-the-line day prices (schedule purchases) — renders nothing for parks
               without purchase data (currently everything non-Disney). */}
-          <ParkPurchasesCard schedule={park.schedule} timezone={park.timezone} className="mb-8" />
+            <ParkPurchasesCard schedule={park.schedule} timezone={park.timezone} className="mb-8" />
 
-          {/* Live Park Data (Status + Tabs with auto-refresh) */}
-          <LiveParkData
-            initialData={park}
-            continent={continent}
-            country={country}
-            city={city}
-            parkSlug={parkSlug}
-            landNames={landNames}
-            attractionsByLand={attractionsByLand}
-            otherAttractionsLabel={otherAttractionsLabel}
-            bestDaysSlot={
-              // Streamed: the seeded best-days content arrives in the same response a beat after
-              // the shell (skeleton shown until it lands), so the cold `/best-days` fetch never
-              // gates TTFB. The client query still takes over on hydration.
-              <Suspense fallback={<ParkBestDaysSectionSkeleton />}>
-                <SeededBestDays
-                  seedPromise={bestDaysSeedPromise}
-                  continent={continent}
-                  country={country}
-                  city={city}
-                  parkSlug={parkSlug}
-                  timezone={park.timezone}
-                  hasOperatingSchedule={park.hasOperatingSchedule}
-                  parkName={parkName}
-                  locale={locale}
-                  seedNowMs={seedNowMs}
+            {/* Live Park Data (Status + Tabs with auto-refresh) */}
+            <LiveParkData
+              initialData={park}
+              continent={continent}
+              country={country}
+              city={city}
+              parkSlug={parkSlug}
+              landNames={landNames}
+              attractionsByLand={attractionsByLand}
+              otherAttractionsLabel={otherAttractionsLabel}
+              bestDaysSlot={
+                // Streamed: the seeded best-days content arrives in the same response a beat after
+                // the shell (skeleton shown until it lands), so the cold `/best-days` fetch never
+                // gates TTFB. The client query still takes over on hydration.
+                <Suspense fallback={<ParkBestDaysSectionSkeleton />}>
+                  <SeededBestDays
+                    seedPromise={bestDaysSeedPromise}
+                    continent={continent}
+                    country={country}
+                    city={city}
+                    parkSlug={parkSlug}
+                    timezone={park.timezone}
+                    hasOperatingSchedule={park.hasOperatingSchedule}
+                    parkName={parkName}
+                    locale={locale}
+                    seedNowMs={seedNowMs}
+                  />
+                </Suspense>
+              }
+            />
+
+            {/* Nearby Parks — streamed (geo proximity lookup + live park cards) */}
+            {park.latitude != null && park.longitude != null && (
+              <Suspense fallback={null}>
+                <NearbyParksSection
+                  parkId={park.id}
+                  lat={park.latitude}
+                  lng={park.longitude}
+                  className="mt-8"
                 />
               </Suspense>
-            }
-          />
+            )}
 
-          {/* Nearby Parks — streamed (geo proximity lookup + live park cards) */}
-          {park.latitude != null && park.longitude != null && (
+            {/* Blog posts about this park — static content out of the generated blog manifest
+              (no API call, no clock), so it neither competes with the live queries nor with the
+              load-last best-travel-time data. Renders nothing when no post mentions the park. */}
             <Suspense fallback={null}>
-              <NearbyParksSection
-                parkId={park.id}
-                lat={park.latitude}
-                lng={park.longitude}
+              <ParkBlogPostsSection
+                locale={locale as Locale}
+                parkSlug={parkSlug}
+                geoPath={`${continent}/${country}/${city}`}
+                parkName={parkName}
                 className="mt-8"
               />
             </Suspense>
-          )}
 
-          {/* Blog posts about this park — static content out of the generated blog manifest
-              (no API call, no clock), so it neither competes with the live queries nor with the
-              load-last best-travel-time data. Renders nothing when no post mentions the park. */}
-          <Suspense fallback={null}>
-            <ParkBlogPostsSection
-              locale={locale as Locale}
-              parkSlug={parkSlug}
-              geoPath={`${continent}/${country}/${city}`}
-              parkName={parkName}
-              className="mt-8"
-            />
-          </Suspense>
-
-          {/* Historical statistics — loaded client-side (CDN-cached /stats route); a skeleton
+            {/* Historical statistics — loaded client-side (CDN-cached /stats route); a skeleton
               shows until the cold/slow stats response lands, so it never blocks the static shell. */}
-          <ParkStatsSection
-            continent={continent}
-            country={country}
-            city={city}
-            parkSlug={parkSlug}
-            locale={locale}
-          />
+            <ParkStatsSection
+              continent={continent}
+              country={country}
+              city={city}
+              parkSlug={parkSlug}
+              locale={locale}
+            />
 
-          {/* FAQ Section — Q0–Q6 + Q1 (today's hours) render immediately from the park snapshot +
+            {/* FAQ Section — Q0–Q6 + Q1 (today's hours) render immediately from the park snapshot +
               server clock. Q7 (least crowded) is NOT server-seeded here (that would require
               awaiting the best-days seed on the critical path); it streams in from the client
               calendar fetch after mount. The Q7 signal for SEO lives in the streamed FAQPage
               JSON-LD above (which is seeded off the critical path). */}
-          <Separator className="my-8" />
-          <ParkFAQSection
-            park={park}
-            locale={locale}
-            continent={continent}
-            country={country}
-            city={city}
-            parkSlug={parkSlug}
-            glossaryTerms={faqGlossaryTerms}
-            glossarySegment={glossarySegment}
-            initialCalendar={null}
-            seedNowMs={seedNowMs}
-          />
+            <Separator className="my-8" />
+            <ParkFAQSection
+              park={park}
+              locale={locale}
+              continent={continent}
+              country={country}
+              city={city}
+              parkSlug={parkSlug}
+              glossaryTerms={faqGlossaryTerms}
+              glossarySegment={glossarySegment}
+              initialCalendar={null}
+              seedNowMs={seedNowMs}
+            />
 
-          <Separator className="my-8" />
-          <ShareButtons
-            url={`${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`}
-            title={park.name}
-          />
+            <Separator className="my-8" />
+            <ShareButtons
+              url={`${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`}
+              title={park.name}
+            />
 
-          {/* Invite visitors to contribute their own photos of this park */}
-          <ContributeBanner
-            className="mt-8"
-            href={
-              park.id
-                ? buildContributeHref({
-                    type: 'park',
-                    id: park.id,
-                    name: parkName,
-                    slug: parkSlug,
-                    url: `/parks/${continent}/${country}/${city}/${parkSlug}`,
-                    country: park.country ?? undefined,
-                  })
-                : undefined
-            }
-          />
+            {/* Invite visitors to contribute their own photos of this park */}
+            <ContributeBanner
+              className="mt-8"
+              href={
+                park.id
+                  ? buildContributeHref({
+                      type: 'park',
+                      id: park.id,
+                      name: parkName,
+                      slug: parkSlug,
+                      url: `/parks/${continent}/${country}/${city}/${parkSlug}`,
+                      country: park.country ?? undefined,
+                    })
+                  : undefined
+              }
+            />
 
-          {/* Secondary, lighter "make park.fan a preferred Google source" prompt */}
-          <PreferredSourcePrompt compact className="mt-8" />
-        </article>
-      </PageContainer>
-    </>
+            {/* Secondary, lighter "make park.fan a preferred Google source" prompt */}
+            <PreferredSourcePrompt compact className="mt-8" />
+          </article>
+        </PageContainer>
+      </>
+    </RouteMessages>
   );
 }
 

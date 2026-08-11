@@ -20,6 +20,7 @@ import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import type { Breadcrumb } from '@/lib/api/types';
 import { getOgImageUrl } from '@/lib/utils/og-image';
+import { RouteMessages } from '@/i18n/route-messages';
 
 interface AuthorPageProps {
   params: Promise<{ locale: string; author: string }>;
@@ -94,47 +95,49 @@ export default async function BlogAuthorPage({ params }: AuthorPageProps) {
   ];
 
   return (
-    <>
-      <BlogStructuredData
-        locale={locale}
-        name={`${entry.name} · ${t('title')}`}
-        description={entry.bio ?? t('author.description', { name: entry.name })}
-        posts={visiblePosts}
-        path={`/blog/authors/${author}`}
-      />
-      <BreadcrumbStructuredData breadcrumbs={seoBreadcrumbs} locale={locale} />
-
-      <div className="container mx-auto px-4 py-10 sm:py-14">
-        <BreadcrumbNav
-          breadcrumbs={breadcrumbs}
-          currentPage={entry.name}
-          variant="plain"
-          className="mb-6"
+    <RouteMessages route="/blog/authors/[author]">
+      <>
+        <BlogStructuredData
+          locale={locale}
+          name={`${entry.name} · ${t('title')}`}
+          description={entry.bio ?? t('author.description', { name: entry.name })}
+          posts={visiblePosts}
+          path={`/blog/authors/${author}`}
         />
+        <BreadcrumbStructuredData breadcrumbs={seoBreadcrumbs} locale={locale} />
 
-        <BlogAuthorProfile author={entry} />
+        <div className="container mx-auto px-4 py-10 sm:py-14">
+          <BreadcrumbNav
+            breadcrumbs={breadcrumbs}
+            currentPage={entry.name}
+            variant="plain"
+            className="mb-6"
+          />
 
-        <h2 className="text-foreground mt-10 mb-6 text-xl font-bold sm:text-2xl">
-          {t('author.postsBy', { name: entry.name })}
-          <span className="text-muted-foreground ml-2 text-sm font-normal">
-            {t('author.postsCount', { count: allPosts.length })}
-          </span>
-        </h2>
+          <BlogAuthorProfile author={entry} />
 
-        <div className="grid gap-8 lg:grid-cols-[1fr_280px]">
-          {visiblePosts.length > 0 ? (
-            <BlogPostGrid posts={visiblePosts} />
-          ) : (
-            <p className="text-muted-foreground">{t('author.noPosts')}</p>
-          )}
-          <aside className="space-y-6 lg:sticky lg:top-20 lg:self-start">
-            <BlogCategoryTree locale={locale as Locale} />
-            <BlogTagCloud locale={locale as Locale} />
-          </aside>
+          <h2 className="text-foreground mt-10 mb-6 text-xl font-bold sm:text-2xl">
+            {t('author.postsBy', { name: entry.name })}
+            <span className="text-muted-foreground ml-2 text-sm font-normal">
+              {t('author.postsCount', { count: allPosts.length })}
+            </span>
+          </h2>
+
+          <div className="grid gap-8 lg:grid-cols-[1fr_280px]">
+            {visiblePosts.length > 0 ? (
+              <BlogPostGrid posts={visiblePosts} />
+            ) : (
+              <p className="text-muted-foreground">{t('author.noPosts')}</p>
+            )}
+            <aside className="space-y-6 lg:sticky lg:top-20 lg:self-start">
+              <BlogCategoryTree locale={locale as Locale} />
+              <BlogTagCloud locale={locale as Locale} />
+            </aside>
+          </div>
         </div>
-      </div>
 
-      <PageBottomSections locale={locale} />
-    </>
+        <PageBottomSections locale={locale} />
+      </>
+    </RouteMessages>
   );
 }

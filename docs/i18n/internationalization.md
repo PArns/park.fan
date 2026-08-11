@@ -47,24 +47,118 @@ t('status.closed'); // "Closed"
 
 ### Which namespaces reach the client
 
-The locale layout does **not** hand the full message bundle to `NextIntlClientProvider`. It ships
-only the namespaces listed in **`i18n/client-messages.ts`** (`CLIENT_MESSAGE_NAMESPACES`) — the
-full bundle is ~55 KB of JSON that would be serialized into every page's RSC payload, and most of
-it (`seo`, the server-rendered legal/marketing pages, …) is only ever read by Server Components.
-Trimming it saves ~10 KB per page response in all six locales.
+Everything handed to `NextIntlClientProvider` is serialized into the RSC payload — and therefore
+into the HTML — of every page that renders it, in all six locales. The split is two-level:
+
+1. the locale layout ships **`LAYOUT_MESSAGE_NAMESPACES`**: the chrome only (header, footer,
+   search, language banner), ~6 KB of JSON,
+2. each route adds its own delta through **`<RouteMessages route="…">`** in its `page.tsx`.
+
+Both lists are **derived from the import graph**, not hand-maintained:
+`pnpm generate:route-namespaces` walks every route entry, propagates the real client boundary and
+writes `i18n/route-namespaces.generated.ts` (committed, so `next dev` works on a fresh clone).
+
+`RouteMessages` merges on the **client** (`i18n/route-messages-provider.tsx`), which is the whole
+trick: a nested next-intl provider _replaces_ messages rather than merging them
+(`messages === undefined ? prevContext?.messages : messages` in `use-intl`), so handing it the
+union would serialize the chrome set a second time on every page. Reading the parent's messages
+via `useMessages()` and merging in the browser means only the delta travels.
+
+What the message payload itself costs, against `messages/de.json`:
+
+|                                       | JSON    | in HTML (escaped) | brotli  |
+| ------------------------------------- | ------- | ----------------- | ------- |
+| one flat allowlist (before)           | 47.4 KB | 51.7 KB           | 14.9 KB |
+| chrome only — `/impressum`, `/search` | 6.6 KB  | 7.4 KB            | 2.5 KB  |
+| park detail page (heaviest)           | 29.7 KB | 32.7 KB           | 9.4 KB  |
+
+And what that does to whole prerendered pages — two production builds of the same commit range,
+`.next/server/app/**.html` measured directly:
+
+| Page                       | HTML before | after   | brotli before | after  |      Δ |
+| -------------------------- | ----------- | ------- | ------------- | ------ | -----: |
+| `/de/impressum`            | 139,513     | 94,851  | 26,557        | 14,155 | −46.7% |
+| `/de/parks`                | 150,873     | 110,176 | 28,054        | 16,497 | −41.2% |
+| `/de/parks/europe/germany` | 225,861     | 184,801 | 29,945        | 18,384 | −38.6% |
+| `/de/blog`                 | 344,966     | 304,000 | 35,462        | 24,068 | −32.1% |
+| `/de` (homepage)           | 631,229     | 618,910 | 48,704        | 45,164 |  −7.3% |
+
+Park and ride pages are `force-dynamic`, so they have no prerendered HTML to diff — these come
+from `next start` on both builds:
+
+| Page                        | HTML before | after   | brotli before | after  |      Δ |
+| --------------------------- | ----------- | ------- | ------------- | ------ | -----: |
+| Ride `…/troublion`          | 177,706     | 155,846 | 30,636        | 24,382 | −20.4% |
+| Park `…/phantasialand`      | 477,455     | 455,683 | 51,275        | 45,860 | −10.6% |
+| Park `…/europa-park`        | 634,414     | 616,464 | 61,950        | 56,424 |  −8.9% |
+| Park `…/europa-park` (`en`) | 630,082     | 613,709 | 59,786        | 55,056 |  −7.9% |
+
+Those two routes drop `home` (7.5 KB), `blog`, `glossary`, `explore` and `stats` — namespaces they
+never rendered but paid for on every request. The percentage looks modest because the pages are
+large to begin with; the absolute saving is ~5.5–6.3 KB brotli per request.
+
+The homepage moves least on purpose: `featured-park-cards-live` and `global-stats-section` need
+the card namespaces regardless, so there is little to take away.
+
+Note how much of the apparent win compression eats: the previous allowlist trimmed ~10 KB of JSON
+but only ~2.3 KB after brotli. Judge changes here on the compressed number.
+
+A missing namespace renders as its raw key rather than throwing, so the end-to-end check is to
+scan rendered HTML for dotted message paths in text nodes — 2,882 prerendered pages plus the
+dynamic park and ride routes off a running server, zero hits.
 
 Rules of thumb:
 
 - **`getTranslations(...)` (server)** – works with any namespace, nothing to do.
-- **`useTranslations('x')`** – `x` must be reachable from the allowlist, whether or not the file
-  carries `'use client'`: a shared component without the directive inherits the client boundary
-  from whoever imports it. A missing namespace does **not** throw; next-intl logs
-  `MISSING_MESSAGE` and renders the raw key.
-- `pnpm check:client-messages` (part of `pnpm release:check`) enforces this. When a Server
-  Component becomes a Client Component, add its namespace to the list.
+- **`useTranslations('x')`** – `x` has to reach the browser, whether or not the file carries
+  `'use client'`: a shared component without the directive inherits the client boundary from
+  whoever imports it. A missing namespace does **not** throw; next-intl logs `MISSING_MESSAGE`
+  and renders the raw key.
+- After moving a component across the client boundary, re-run
+  `pnpm generate:route-namespaces` and commit the result.
+- `pnpm check:client-messages` (part of `pnpm release:check`) fails when the generated file has
+  drifted, when a route that needs a delta doesn't render `<RouteMessages>`, when it renders one
+  with the wrong route key, and when a route that needs nothing renders one anyway.
+
+Three invariants are easy to break and impossible to see, so they are checked rather than trusted:
+
+- **Shell files belong to the layout set, never to a route delta.** `<RouteMessages>` sits inside
+  `page.tsx`, but `error.tsx` replaces the page, `loading.tsx` renders before it exists and
+  `not-found.tsx` renders instead of it — the page's provider never mounted. A nested `layout.tsx`
+  has the same problem from above. They also guard every descendant segment, so there is no route
+  to scope them to: the analysis folds them all into the layout set.
+- **`setRequestLocale()` has to run before `<RouteMessages>`.** The wrapper resolves messages
+  through `getMessages()`; the other way round it resolves against the _default_ locale, so a
+  German page hands English messages to its client components. Every key still resolves, so no
+  amount of raw-key scanning finds it.
+- **A lazy boundary's whole subtree has to be covered.** `LAZY_CHUNK_NAMESPACES` is the one list
+  still written by hand, so the analysis walks each route a second time _through_ the boundary and
+  fails on anything that is neither shipped nor fetchable. Adding a component under
+  `FavoritesSection` is otherwise a silent break for visitors who have favorites.
 
 Entries are either a whole top-level namespace (`'parks'`) or a subtree (`'seo.faq'`, kept under
 its original path so lookups are unchanged).
+
+### Namespaces that are fetched instead of shipped
+
+`FavoritesSection` renders `ParkCard`/`AttractionCard`, so it needs `parks` (10.6 KB) +
+`attractions` (6.2 KB) — but it renders nothing at all until the visitor has favorites, which is
+cookie-gated and client-only. On `/blog`, `/blog/tag/…`, `/blog/authors/…`,
+`/blog/category/…` and `/glossary/[term]` nothing else needs those two namespaces, so they are
+**not** in the payload there: the section fetches them as a per-locale chunk
+(`lib/i18n/message-chunks/<locale>.ts`, generated in prebuild) via `useLazyMessages`. That is
+16.5 KB of JSON off each of those five routes.
+
+Declared in `LAZY_MESSAGE_BOUNDARIES` (`lib/i18n/route-namespaces.mjs`); the graph walk stops at
+the boundary file, so whatever is still reachable another way stays eager. On the homepage and the
+park pages the cards are needed regardless, the route already ships both namespaces, and
+`useLazyMessages` resolves without a request.
+
+**The wait must not shift the page.** `favorites` (the title, skeleton and empty state) stays
+eager, the chunk starts downloading in the same render that enables the favorites query — so it
+rides alongside that request rather than after it — and the cards replace the skeleton only once
+data **and** messages are both there. While the messages are outstanding the skeleton is held at
+the real favorite counts, so what lands is the same box.
 
 ## Crowd Level "Normal"
 

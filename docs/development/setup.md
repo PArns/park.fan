@@ -38,9 +38,15 @@ pnpm build
 pnpm start
 ```
 
-Prebuild runs `generate-build-info.mjs`, `generate-client-glossary.mjs`,
-`generate-blog-manifest.mjs`, `generate:image-crops` and `generate:media`
-automatically. (`generate-hero-images` and `generate-attraction-images` are gone —
+Prebuild runs `generate-build-info.mjs`, `generate-message-chunks.mjs`,
+`check-client-messages.mjs`, `generate-client-glossary.mjs`, `generate-blog-manifest.mjs`,
+`generate:image-crops` and `generate:media` automatically.
+
+`check-client-messages.mjs` is the one that can **fail** the build. It guards the per-route
+translation payload, whose failure mode is silent — raw message keys, or a page in the wrong
+language — so a mis-wired route stops the build instead of reaching production. If it fires,
+the message says which route and usually the fix is `pnpm generate:route-namespaces`. See
+[internationalization](../i18n/internationalization.md#which-namespaces-reach-the-client). (`generate-hero-images` and `generate-attraction-images` are gone —
 the media database replaced both; see [media database](../features/media-database.md).)
 
 ## Commands

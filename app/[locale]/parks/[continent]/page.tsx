@@ -15,6 +15,7 @@ import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateContinentBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { collectParkCoordinates } from '@/lib/utils/distance-utils';
 import type { Metadata } from 'next';
+import { RouteMessages } from '@/i18n/route-messages';
 
 interface ContinentPageProps {
   params: Promise<{ locale: string; continent: string }>;
@@ -131,45 +132,47 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
   });
 
   return (
-    <PageContainer>
-      <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
-      <ItemListStructuredData
-        items={itemListItems}
-        listName={tExplore('title', { location: continentName })}
-        pageUrl={`/${locale}/parks/${continent}`}
-      />
-      <PageHeader
-        breadcrumbs={breadcrumbs}
-        currentPage={continentCurrentPage}
-        title={tExplore('title', { location: continentName })}
-        description={
-          <>
-            <span className="text-park-primary font-medium">
-              <LiveOpenCount continent={continent} /> {t('open')}
-            </span>{' '}
-            / {totalParks} {tExplore('stats.park', { count: totalParks })} • {countries.length}{' '}
-            {tExplore('stats.country', { count: countries.length })} • {totalCities}{' '}
-            {tExplore('stats.city', { count: totalCities })}
-          </>
-        }
-      />
-
-      <section aria-label={tExplore('countries')}>
-        <h2 className="sr-only">{tExplore('countries')}</h2>
-        {/* Status-free shell; live open-park counts overlaid client-side (shared geo-live call). */}
-        <LiveCountryCards
-          continent={continent}
-          countries={countries.map((country): StaticCountryCard => ({
-            slug: country.slug,
-            name: translateCountry(t, country.slug, locale, country.name),
-            href: `/parks/${continent}/${country.slug}`,
-            totalParkCount: country.parkCount,
-            subtitle: `${country.cityCount} ${tExplore('stats.city', { count: country.cityCount })}`,
-            parkCoordinates: country.parkCoordinates,
-          }))}
-          className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+    <RouteMessages route="/parks/[continent]">
+      <PageContainer>
+        <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
+        <ItemListStructuredData
+          items={itemListItems}
+          listName={tExplore('title', { location: continentName })}
+          pageUrl={`/${locale}/parks/${continent}`}
         />
-      </section>
-    </PageContainer>
+        <PageHeader
+          breadcrumbs={breadcrumbs}
+          currentPage={continentCurrentPage}
+          title={tExplore('title', { location: continentName })}
+          description={
+            <>
+              <span className="text-park-primary font-medium">
+                <LiveOpenCount continent={continent} /> {t('open')}
+              </span>{' '}
+              / {totalParks} {tExplore('stats.park', { count: totalParks })} • {countries.length}{' '}
+              {tExplore('stats.country', { count: countries.length })} • {totalCities}{' '}
+              {tExplore('stats.city', { count: totalCities })}
+            </>
+          }
+        />
+
+        <section aria-label={tExplore('countries')}>
+          <h2 className="sr-only">{tExplore('countries')}</h2>
+          {/* Status-free shell; live open-park counts overlaid client-side (shared geo-live call). */}
+          <LiveCountryCards
+            continent={continent}
+            countries={countries.map((country): StaticCountryCard => ({
+              slug: country.slug,
+              name: translateCountry(t, country.slug, locale, country.name),
+              href: `/parks/${continent}/${country.slug}`,
+              totalParkCount: country.parkCount,
+              subtitle: `${country.cityCount} ${tExplore('stats.city', { count: country.cityCount })}`,
+              parkCoordinates: country.parkCoordinates,
+            }))}
+            className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          />
+        </section>
+      </PageContainer>
+    </RouteMessages>
   );
 }

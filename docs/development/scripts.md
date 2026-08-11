@@ -47,10 +47,30 @@ compiles. Details: [homepage hero](../features/homepage-hero.md#the-map-data-is-
 
 ## Translation Scripts
 
-| Script                     | Purpose                                       |
-| -------------------------- | --------------------------------------------- |
-| `validate-translations.js` | Checks message keys against `messages/*.json` |
-| `crawl-translations.js`    | Translation crawler                           |
+| Script                          | Purpose                                                                         |
+| ------------------------------- | ------------------------------------------------------------------------------- |
+| `validate-translations.js`      | Checks message keys against `messages/*.json`                                   |
+| `crawl-translations.js`         | Translation crawler                                                             |
+| `generate-route-namespaces.mjs` | Derives which namespaces each route ships (committed output)                    |
+| `generate-message-chunks.mjs`   | Per-locale chunks for namespaces a lazy boundary fetches (prebuild, gitignored) |
+| `check-client-messages.mjs`     | Fails on a stale map or a mis-wired route                                       |
+
+### The route namespace map is generated, not written
+
+`generate-route-namespaces.mjs` walks the import graph from every route entry, propagates the real
+client boundary (`'use client'` plus everything it transitively imports — a shared component
+without the directive inherits the boundary from whoever imports it) and records which namespaces
+each route has to ship. Output goes to `i18n/route-namespaces.generated.ts`, which — unlike the
+blog and media manifests — is **committed**: it is a few hundred bytes, it is what a reviewer needs
+to see when a component crosses the boundary, and committing it keeps `next dev` working on a
+fresh clone. `check-client-messages.mjs` re-derives it and diffs, so it cannot go stale silently.
+
+The graph walk shares one module with the checker (`lib/i18n/route-namespaces.mjs`) for the same
+reason `lib/blog/derive.mjs` exists: a second copy of the boundary logic would drift.
+
+One trap worth knowing: the scan strips comments first. A doc comment quoting
+`useTranslations('seo.faq')` as an example otherwise registers as a real call and puts that
+namespace on every route.
 
 **Crawler modes:**
 

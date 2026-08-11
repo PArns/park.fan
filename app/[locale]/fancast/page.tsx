@@ -12,6 +12,7 @@ import { ArticleStructuredData, BreadcrumbStructuredData } from '@/components/se
 import { getMLDashboard } from '@/lib/api/ml';
 import type { ComponentType } from 'react';
 import { Hero } from './_fancast-ui';
+import { RouteMessages } from '@/i18n/route-messages';
 
 // Lazy per-locale loaders so only the requested language's content module is
 // evaluated per render instead of all six.
@@ -273,35 +274,37 @@ export default async function FancastPage({ params }: FancastPageProps) {
   stats.push({ value: header.statLabels.dailyValue, label: header.statLabels.dailyLabel });
 
   return (
-    <>
-      <ArticleStructuredData
-        title={`Fancast — park.fan`}
-        description={header.tagline}
-        url={`${SITE_URL}/${locale}/fancast`}
-        locale={locale}
-        image={getOgImageUrl([locale, 'fancast'])}
-      />
-      <BreadcrumbStructuredData
-        breadcrumbs={[
-          { name: 'park.fan', url: '/' },
-          { name: tFancast('title'), url: '/fancast' },
-        ]}
-        locale={locale}
-      />
+    <RouteMessages route="/fancast">
+      <>
+        <ArticleStructuredData
+          title={`Fancast — park.fan`}
+          description={header.tagline}
+          url={`${SITE_URL}/${locale}/fancast`}
+          locale={locale}
+          image={getOgImageUrl([locale, 'fancast'])}
+        />
+        <BreadcrumbStructuredData
+          breadcrumbs={[
+            { name: 'park.fan', url: '/' },
+            { name: tFancast('title'), url: '/fancast' },
+          ]}
+          locale={locale}
+        />
 
-      <Hero
-        kicker={header.kicker}
-        title="Fancast"
-        tagline={header.tagline}
-        imageSrc={HERO_IMAGE}
-        imageAlt="Voltron Nevera powered by Rimac im Europa-Park"
-        stats={stats}
-        scrollLabel={header.scrollLabel}
-      />
+        <Hero
+          kicker={header.kicker}
+          title="Fancast"
+          tagline={header.tagline}
+          imageSrc={HERO_IMAGE}
+          imageAlt="Voltron Nevera powered by Rimac im Europa-Park"
+          stats={stats}
+          scrollLabel={header.scrollLabel}
+        />
 
-      <div id="start" className="space-y-20 py-16 sm:space-y-28 sm:py-24">
-        <Content />
-      </div>
-    </>
+        <div id="start" className="space-y-20 py-16 sm:space-y-28 sm:py-24">
+          <Content />
+        </div>
+      </>
+    </RouteMessages>
   );
 }

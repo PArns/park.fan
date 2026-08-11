@@ -20,6 +20,7 @@ import { generateCityBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { findCityPageRedirect } from '@/lib/utils/redirect-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import type { Metadata } from 'next';
+import { RouteMessages } from '@/i18n/route-messages';
 
 interface CityPageProps {
   params: Promise<{ locale: string; continent: string; country: string; city: string }>;
@@ -163,30 +164,32 @@ export default async function CityPage({ params }: CityPageProps) {
   }));
 
   return (
-    <PageContainer>
-      <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
-      <ItemListStructuredData
-        items={itemListItems}
-        listName={t('parksIn', { location: city.name })}
-        pageUrl={`/${locale}/parks/${continent}/${country}/${citySlug}`}
-      />
-      <PageHeader
-        breadcrumbs={breadcrumbs}
-        currentPage={cityCurrentPage}
-        title={t('parksIn', { location: city.name })}
-        description={t('parkCount', { count: parks.length })}
-      />
-
-      {/* Parks Grid — status-free shell (cacheable); live status overlaid client-side. */}
-      <section aria-label={tExplore('parks')}>
-        <h2 className="sr-only">{tExplore('parks')}</h2>
-        <LiveParkGrid
-          continent={continent}
-          country={country}
-          parks={staticParks}
-          className="grid [grid-auto-rows:auto_1fr_auto] gap-4 md:grid-cols-2"
+    <RouteMessages route="/parks/[continent]/[country]/[city]">
+      <PageContainer>
+        <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
+        <ItemListStructuredData
+          items={itemListItems}
+          listName={t('parksIn', { location: city.name })}
+          pageUrl={`/${locale}/parks/${continent}/${country}/${citySlug}`}
         />
-      </section>
-    </PageContainer>
+        <PageHeader
+          breadcrumbs={breadcrumbs}
+          currentPage={cityCurrentPage}
+          title={t('parksIn', { location: city.name })}
+          description={t('parkCount', { count: parks.length })}
+        />
+
+        {/* Parks Grid — status-free shell (cacheable); live status overlaid client-side. */}
+        <section aria-label={tExplore('parks')}>
+          <h2 className="sr-only">{tExplore('parks')}</h2>
+          <LiveParkGrid
+            continent={continent}
+            country={country}
+            parks={staticParks}
+            className="grid [grid-auto-rows:auto_1fr_auto] gap-4 md:grid-cols-2"
+          />
+        </section>
+      </PageContainer>
+    </RouteMessages>
   );
 }

@@ -8,6 +8,7 @@ import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { ArticleStructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { Hero } from '@/components/marketing/editorial-ui';
 import type { ComponentType } from 'react';
+import { RouteMessages } from '@/i18n/route-messages';
 
 const CONTENT_LOADERS: Record<Locale, () => Promise<ComponentType>> = {
   de: () => import('./content/de').then((m) => m.ContentDE),
@@ -242,36 +243,38 @@ export default async function BestTimeToVisitPage({ params }: PageProps) {
   const t = await getTranslations({ locale, namespace: 'common' });
 
   return (
-    <>
-      <ArticleStructuredData
-        title={header.title}
-        description={header.intro}
-        url={url}
-        locale={locale}
-        image={getOgImageUrl([locale, BEST_TIME_SEGMENTS.en])}
-      />
-      <BreadcrumbStructuredData
-        breadcrumbs={[
-          { name: t('home'), url: '/' },
-          { name: header.title, url: `/${BEST_TIME_SEGMENTS[locale as Locale]}` },
-        ]}
-        locale={locale}
-      />
+    <RouteMessages route="/best-time-to-visit">
+      <>
+        <ArticleStructuredData
+          title={header.title}
+          description={header.intro}
+          url={url}
+          locale={locale}
+          image={getOgImageUrl([locale, BEST_TIME_SEGMENTS.en])}
+        />
+        <BreadcrumbStructuredData
+          breadcrumbs={[
+            { name: t('home'), url: '/' },
+            { name: header.title, url: `/${BEST_TIME_SEGMENTS[locale as Locale]}` },
+          ]}
+          locale={locale}
+        />
 
-      <Hero
-        kicker={header.kicker}
-        title={header.title}
-        tagline={header.tagline}
-        imageSrc={HERO_IMAGE}
-        imageAlt={header.heroAlt}
-        stats={header.stats}
-        scrollLabel={header.scrollLabel}
-        titleClassName="max-w-4xl text-4xl font-black tracking-tight sm:text-6xl"
-      />
+        <Hero
+          kicker={header.kicker}
+          title={header.title}
+          tagline={header.tagline}
+          imageSrc={HERO_IMAGE}
+          imageAlt={header.heroAlt}
+          stats={header.stats}
+          scrollLabel={header.scrollLabel}
+          titleClassName="max-w-4xl text-4xl font-black tracking-tight sm:text-6xl"
+        />
 
-      <div id="start" className="space-y-16 py-14 sm:space-y-24 sm:py-20">
-        <Content />
-      </div>
-    </>
+        <div id="start" className="space-y-16 py-14 sm:space-y-24 sm:py-20">
+          <Content />
+        </div>
+      </>
+    </RouteMessages>
   );
 }
