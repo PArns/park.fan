@@ -163,7 +163,7 @@ región, sean de madera o de acero?
 | [Taron](ref:phantasialand/taron?bare)                    | Multi-launch, acero | [Phantasialand](ref:phantasialand?bare) |           48 min |     54 min |
 | [F.L.Y.](ref:phantasialand/fly?bare)                     | Flying, acero       | [Phantasialand](ref:phantasialand?bare) |           40 min |     47 min |
 | [Joris en de Draak](ref:efteling/joris-en-de-draak?bare) | Madera              | [Efteling](ref:efteling?bare)           |           34 min |     40 min |
-| [Baron 1898](ref:efteling/baron?bare)                    | Dive coaster, acero | [Efteling](ref:efteling?bare)           |           26 min |     32 min |
+| [Baron 1898](ref:efteling/baron-1898?bare)               | Dive coaster, acero | [Efteling](ref:efteling?bare)           |           26 min |     32 min |
 | **[Troy](ref:toverland/troy?bare)**                      | **Madera**          | **[Toverland](ref:toverland?bare)**     |       **16 min** | **21 min** |
 | **[Fēnix](ref:toverland/fenix?bare)**                    | **Wing, acero**     | **[Toverland](ref:toverland?bare)**     |       **16 min** | **20 min** |
 

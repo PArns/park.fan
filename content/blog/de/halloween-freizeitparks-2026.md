@@ -421,14 +421,14 @@ Schrecken, oder ein paar Wochen Geduld bis zum Zuckerguss.
 
 ### Efteling: zu vornehm für Kettensägen
 
-Die [Efteling](ref:efteling) im niederländischen Kaatsheuvel stellt sogar
+Das [Efteling](ref:efteling) im niederländischen Kaatsheuvel stellt sogar
 offiziell klar: **„Wees gerust, de Efteling viert geen Halloween“**, keine
 Sorge, wir feiern kein Halloween. Kein Schockmoment, keine Motorsäge, nirgends.
-Und trotzdem ist im Herbst kaum ein Park stimmungsvoller. Die Efteling gruselt
+Und trotzdem ist im Herbst kaum ein Park stimmungsvoller. Das Efteling gruselt
 eben märchenhaft statt blutig, wie die elegante Großtante, die keine
 Gespensterlaken braucht, um dir eine Gänsehaut zu verpassen.
 
-Ihr **Herfst** (Herbst) bringt lange Abende bis 20 Uhr, Laternen in den Bäumen
+Sein **Herfst** (Herbst) bringt lange Abende bis 20 Uhr, Laternen in den Bäumen
 und einen dunklen, gotischen Kern rund um die preisgekrönte Attraktion **Danse
 Macabre**, den totentanzenden Nachfolger des legendären _Spookslot_, das nach
 44 Jahren 2022 schloss. Danse Macabre wurde 2025 mit dem **Thea Award** der
@@ -501,7 +501,7 @@ von [Traumatica](ref:europa-park), [Bobbejaanlands](ref:bobbejaanland) Kino zum
 Reinlaufen, das frische Maisfeld in
 [Toverland](ref:toverland), und, für die ganz Tapferen, die
 [Walibi-Experiences](ref:walibi-holland), bei denen man freiwillig Geld dafür
-bezahlt, gestempelt, geflutet und aufgeschlitzt zu werden. Als Gegenpol die
+bezahlt, gestempelt, geflutet und aufgeschlitzt zu werden. Als Gegenpol das
 stille, vornehme Herbst-[Efteling](ref:efteling) und ein
 [Phantasialand](ref:phantasialand), das Halloween mit einem Schulterzucken
 überspringt und lieber gleich den Schnee anwirft.
