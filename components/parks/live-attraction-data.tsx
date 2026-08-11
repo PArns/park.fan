@@ -224,14 +224,28 @@ export function LiveAttractionData({
           }}
         />
 
-        {/* Today's wait-time bar chart — same card, divided from the header. */}
+        {/* Today's wait-time bar chart — same card, divided from the header. Loading state and
+            chart share ONE box with a reserved height, because the placeholder used to stand in
+            for the chart at less than half its size: 213px held for the 401–421px the chart
+            actually occupies, so the moment the detail fetch landed the rest of the ride page
+            dropped ~208px. The height is the chart's own anatomy measured at each breakpoint
+            (title 28 + explainer 20 + legend 17 + plot 145/160/189 + best-slot lines + the
+            Fancast link, plus p-4/sm:p-6) — the plot grows at `sm` with the taller bars and again
+            at `md`, where the hour-label row appears. Reserved at the one-line best-slot variant,
+            so a ride that renders two of them still settles within ~20px instead of 208. */}
         {!mounted || isDetailLoading ? (
-          <div className="border-border/60 space-y-3 border-t p-4 sm:p-6">
-            <Skeleton className="h-6 w-44 max-w-full" />
-            <Skeleton className="h-28 w-full rounded-lg sm:h-32" />
+          <div className="border-border/60 min-h-[352px] border-t p-4 sm:min-h-[372px] sm:p-6 md:min-h-[401px]">
+            <div className="space-y-3" aria-hidden="true">
+              <Skeleton className="h-7 w-44 max-w-full" />
+              <Skeleton className="h-5 w-full max-w-md" />
+              <Skeleton className="h-4 w-48 max-w-full" />
+              <Skeleton className="h-[145px] w-full rounded-lg sm:h-[160px] md:h-[189px]" />
+              <Skeleton className="h-4 w-40 max-w-full" />
+              <Skeleton className="h-5 w-32 max-w-full" />
+            </div>
           </div>
         ) : hasTodayChart ? (
-          <div className="border-border/60 border-t p-4 sm:p-6">
+          <div className="border-border/60 min-h-[352px] border-t p-4 sm:min-h-[372px] sm:p-6 md:min-h-[401px]">
             <DailyWaitTimeChartClient
               history={detail!.history}
               hourlyForecast={detail!.hourlyForecast}
