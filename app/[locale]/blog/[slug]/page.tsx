@@ -35,6 +35,7 @@ import { PageContainer } from '@/components/common/page-container';
 import { PreferredSourcePrompt } from '@/components/common/preferred-source-prompt';
 import { categoryPathBreadcrumbs, resolveCategoryLabel } from '@/lib/blog/categories';
 import type { Breadcrumb } from '@/lib/api/types';
+import { RouteMessages } from '@/i18n/route-messages';
 
 interface BlogPostPageProps {
   params: Promise<{ locale: string; slug: string }>;
@@ -236,103 +237,108 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const hasToc = extractToc(post.content).length >= 3;
 
   return (
-    <>
-      <BlogReadingProgress />
+    <RouteMessages route="/blog/[slug]">
+      <>
+        <BlogReadingProgress />
 
-      {/* No manual `<link rel="preload">` for the cover: the banner renders it
+        {/* No manual `<link rel="preload">` for the cover: the banner renders it
           through next/image, so the preload pointed at the ORIGINAL file while the
           browser then fetched the optimized rendition — a second, full-size
           download of an image nothing displayed. `<Image priority>` in the banner
           emits the correct preload on its own. */}
-      {/* Full-bleed cover banner — the header floats transparent over it. */}
-      <BlogPostBanner post={post} currentLocale={locale as Locale} kicker={kicker} />
+        {/* Full-bleed cover banner — the header floats transparent over it. */}
+        <BlogPostBanner post={post} currentLocale={locale as Locale} kicker={kicker} />
 
-      <PageContainer>
-        <BlogPostingStructuredData post={post} locale={locale} path={`/blog/${post.slug}`} />
-        <BreadcrumbStructuredData breadcrumbs={seoBreadcrumbs} locale={locale} />
+        <PageContainer>
+          <BlogPostingStructuredData post={post} locale={locale} path={`/blog/${post.slug}`} />
+          <BreadcrumbStructuredData breadcrumbs={seoBreadcrumbs} locale={locale} />
 
-        <BreadcrumbNav breadcrumbs={navBreadcrumbs} currentPage={post.frontmatter.title} />
+          <BreadcrumbNav breadcrumbs={navBreadcrumbs} currentPage={post.frontmatter.title} />
 
-        <BlogLanguageNotice
-          currentLocale={locale as Locale}
-          loadedLocale={post.loadedLocale}
-          languageOffers={languageOffers}
-          fallbackLabel={fallbackLabel}
-        />
+          <BlogLanguageNotice
+            currentLocale={locale as Locale}
+            loadedLocale={post.loadedLocale}
+            languageOffers={languageOffers}
+            fallbackLabel={fallbackLabel}
+          />
 
-        <article className="mt-6">
-          <div
-            className={
-              hasToc
-                ? 'lg:grid lg:grid-cols-[minmax(0,1fr)_16rem] lg:items-start lg:gap-8'
-                : undefined
-            }
-          >
-            {hasToc && (
-              <aside
-                data-toc-scroll
-                className="blog-sidebar-scroll mb-8 space-y-6 lg:sticky lg:top-24 lg:col-start-2 lg:row-start-1 lg:mb-0 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
-              >
-                <BlogToc markdown={post.content} title={post.frontmatter.title} />
-                {/* Desktop-only extras under the ToC; mobile keeps just the ToC up top */}
-                <div className="hidden space-y-6 lg:block">
-                  <BlogCategoryTree locale={locale as Locale} />
-                  <BlogTagCloud locale={locale as Locale} />
-                </div>
-              </aside>
-            )}
-
-            <div className="min-w-0 lg:col-start-1 lg:row-start-1">
-              <BlogContent markdown={post.content} locale={locale as Locale} />
-
-              {(() => {
-                const images = resolveGallery(post.frontmatter.gallery, locale);
-                return images.length > 0 ? <BlogGallery images={images} /> : null;
-              })()}
-
-              {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (
-                <div className="border-border/60 mt-12 border-t pt-6">
-                  <BlogTags tags={post.frontmatter.tags} />
-                </div>
+          <article className="mt-6">
+            <div
+              className={
+                hasToc
+                  ? 'lg:grid lg:grid-cols-[minmax(0,1fr)_16rem] lg:items-start lg:gap-8'
+                  : undefined
+              }
+            >
+              {hasToc && (
+                <aside
+                  data-toc-scroll
+                  className="blog-sidebar-scroll mb-8 space-y-6 lg:sticky lg:top-24 lg:col-start-2 lg:row-start-1 lg:mb-0 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
+                >
+                  <BlogToc markdown={post.content} title={post.frontmatter.title} />
+                  {/* Desktop-only extras under the ToC; mobile keeps just the ToC up top */}
+                  <div className="hidden space-y-6 lg:block">
+                    <BlogCategoryTree locale={locale as Locale} />
+                    <BlogTagCloud locale={locale as Locale} />
+                  </div>
+                </aside>
               )}
 
-              <div className="border-border/60 mt-8 border-t pt-6">
-                <ShareButtons url={shareUrl} title={post.frontmatter.title} />
-              </div>
+              <div className="min-w-0 lg:col-start-1 lg:row-start-1">
+                <BlogContent markdown={post.content} locale={locale as Locale} />
 
-              {/* Marks the end of the readable article body — the reading-progress
+                {(() => {
+                  const images = resolveGallery(post.frontmatter.gallery, locale);
+                  return images.length > 0 ? <BlogGallery images={images} /> : null;
+                })()}
+
+                {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (
+                  <div className="border-border/60 mt-12 border-t pt-6">
+                    <BlogTags tags={post.frontmatter.tags} />
+                  </div>
+                )}
+
+                <div className="border-border/60 mt-8 border-t pt-6">
+                  <ShareButtons url={shareUrl} title={post.frontmatter.title} />
+                </div>
+
+                {/* Marks the end of the readable article body — the reading-progress
                  bar fills to 100% here, before the references/related sections. */}
-              <div id="blog-progress-end" aria-hidden="true" />
+                <div id="blog-progress-end" aria-hidden="true" />
 
-              {/* Reader just finished the article — the most receptive moment for a
+                {/* Reader just finished the article — the most receptive moment for a
                  soft "make park.fan your preferred Google source" ask. */}
-              <PreferredSourcePrompt className="mt-8" />
+                <PreferredSourcePrompt className="mt-8" />
 
-              {/* Prev/next as a standalone, full-width bar right under the article
+                {/* Prev/next as a standalone, full-width bar right under the article
                  so it doesn't get buried under the footer sections. */}
-              <BlogPostNav locale={locale as Locale} currentTranslationKey={post.translationKey} />
-
-              {/* Post footer: keep-reading first (more posts), then the parks &
-                 rides referenced here. */}
-              <div className="bg-card mt-8 rounded-xl border px-6 shadow-sm">
-                <BlogRelatedPosts
+                <BlogPostNav
                   locale={locale as Locale}
                   currentTranslationKey={post.translationKey}
-                  category={post.frontmatter.category}
-                  tags={post.frontmatter.tags ?? []}
                 />
 
-                {/* Auto-collected, deduplicated parks & rides mentioned anywhere in
+                {/* Post footer: keep-reading first (more posts), then the parks &
+                 rides referenced here. */}
+                <div className="bg-card mt-8 rounded-xl border px-6 shadow-sm">
+                  <BlogRelatedPosts
+                    locale={locale as Locale}
+                    currentTranslationKey={post.translationKey}
+                    category={post.frontmatter.category}
+                    tags={post.frontmatter.tags ?? []}
+                  />
+
+                  {/* Auto-collected, deduplicated parks & rides mentioned anywhere in
                    the post — inline link references, embedded widgets, plus the
                    explicit relatedParks / relatedAttractions frontmatter. */}
-                <BlogReferences post={post} />
+                  <BlogReferences post={post} />
+                </div>
               </div>
             </div>
-          </div>
-        </article>
-      </PageContainer>
+          </article>
+        </PageContainer>
 
-      <PageBottomSections locale={locale} />
-    </>
+        <PageBottomSections locale={locale} />
+      </>
+    </RouteMessages>
   );
 }

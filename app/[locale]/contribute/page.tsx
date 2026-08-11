@@ -15,6 +15,7 @@ import { RightsNotice } from '@/components/contribute/rights-notice';
 import { ExampleGallery } from '@/components/contribute/example-gallery';
 import { parseEntityFromParams } from '@/lib/contribute/prefill';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
+import { RouteMessages } from '@/i18n/route-messages';
 
 interface ContributePageProps {
   params: Promise<{ locale: string }>;
@@ -83,44 +84,48 @@ export default async function ContributePage({ params, searchParams }: Contribut
   const tBanner = await getTranslations('contribute.banner');
 
   return (
-    <div className="mx-auto w-full max-w-5xl px-4 py-8 sm:py-12">
-      {/* Hero with a themed photo backdrop */}
-      <header className="relative mb-10 overflow-hidden rounded-3xl border shadow-sm">
-        <Image
-          src={getParkBackgroundImage('europa-park') ?? '/media/europa-park/background.jpg'}
-          alt=""
-          fill
-          priority
-          sizes="(max-width: 1024px) 100vw, 1024px"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/55 to-black/35" />
-        <div className="relative flex flex-col items-center px-6 py-14 text-center text-white sm:py-20">
-          <div className="mb-5 flex size-16 items-center justify-center rounded-2xl bg-white/15 ring-1 ring-white/25 backdrop-blur-md">
-            <Camera className="size-8" />
+    <RouteMessages route="/contribute">
+      <div className="mx-auto w-full max-w-5xl px-4 py-8 sm:py-12">
+        {/* Hero with a themed photo backdrop */}
+        <header className="relative mb-10 overflow-hidden rounded-3xl border shadow-sm">
+          <Image
+            src={getParkBackgroundImage('europa-park') ?? '/media/europa-park/background.jpg'}
+            alt=""
+            fill
+            priority
+            sizes="(max-width: 1024px) 100vw, 1024px"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/55 to-black/35" />
+          <div className="relative flex flex-col items-center px-6 py-14 text-center text-white sm:py-20">
+            <div className="mb-5 flex size-16 items-center justify-center rounded-2xl bg-white/15 ring-1 ring-white/25 backdrop-blur-md">
+              <Camera className="size-8" />
+            </div>
+            <h1 className="max-w-2xl text-3xl font-bold drop-shadow-md sm:text-5xl">
+              {t('title')}
+            </h1>
+            <p className="mt-4 max-w-xl text-base text-white/85 drop-shadow sm:text-lg">
+              {t('subtitle')}
+            </p>
+            <a
+              href="#upload"
+              className="text-primary-foreground bg-primary mt-7 inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-medium shadow-lg transition-transform hover:-translate-y-0.5"
+            >
+              <ImageUp className="size-4" />
+              {tBanner('cta')}
+            </a>
           </div>
-          <h1 className="max-w-2xl text-3xl font-bold drop-shadow-md sm:text-5xl">{t('title')}</h1>
-          <p className="mt-4 max-w-xl text-base text-white/85 drop-shadow sm:text-lg">
-            {t('subtitle')}
-          </p>
-          <a
-            href="#upload"
-            className="text-primary-foreground bg-primary mt-7 inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-medium shadow-lg transition-transform hover:-translate-y-0.5"
-          >
-            <ImageUp className="size-4" />
-            {tBanner('cta')}
-          </a>
+        </header>
+
+        {/* Inspiration gallery */}
+        <ExampleGallery />
+
+        {/* Rights + form, in a narrower reading column */}
+        <div id="upload" className="mx-auto max-w-3xl scroll-mt-8">
+          <RightsNotice />
+          <ContributeForm initialEntity={initialEntity} />
         </div>
-      </header>
-
-      {/* Inspiration gallery */}
-      <ExampleGallery />
-
-      {/* Rights + form, in a narrower reading column */}
-      <div id="upload" className="mx-auto max-w-3xl scroll-mt-8">
-        <RightsNotice />
-        <ContributeForm initialEntity={initialEntity} />
       </div>
-    </div>
+    </RouteMessages>
   );
 }

@@ -17,6 +17,7 @@ import { BlogStructuredData } from '@/components/seo/blog-structured-data';
 import { Hero } from '@/components/marketing/editorial-ui';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
+import { RouteMessages } from '@/i18n/route-messages';
 
 /** Scenic establishing shot for the blog hero (distinct from Fancast/the hub). */
 // Asked of the database, so the path carries its content version and the park can
@@ -123,36 +124,38 @@ export default async function BlogIndexPage({ params }: BlogIndexPageProps) {
   const visiblePosts = allPosts.slice(0, BLOG_POSTS_PER_PAGE);
 
   return (
-    <>
-      <BlogStructuredData
-        locale={locale}
-        name={t('badge')}
-        description={t('description')}
-        posts={visiblePosts}
-        path="/blog"
-      />
-      <Hero
-        kicker={t('badge')}
-        title={t('heroTitle')}
-        tagline={t('intro')}
-        imageSrc={BLOG_HERO_IMAGE}
-        imageAlt={t('heroTitle')}
-        stats={[]}
-        scrollLabel={SCROLL_LABELS[locale as Locale]}
-        titleClassName="max-w-4xl text-4xl font-black tracking-tight sm:text-6xl"
-      />
+    <RouteMessages route="/blog">
+      <>
+        <BlogStructuredData
+          locale={locale}
+          name={t('badge')}
+          description={t('description')}
+          posts={visiblePosts}
+          path="/blog"
+        />
+        <Hero
+          kicker={t('badge')}
+          title={t('heroTitle')}
+          tagline={t('intro')}
+          imageSrc={BLOG_HERO_IMAGE}
+          imageAlt={t('heroTitle')}
+          stats={[]}
+          scrollLabel={SCROLL_LABELS[locale as Locale]}
+          titleClassName="max-w-4xl text-4xl font-black tracking-tight sm:text-6xl"
+        />
 
-      <div id="start" className="container mx-auto px-4 py-10 sm:py-14">
-        <div className="grid gap-8 lg:grid-cols-[1fr_280px]">
-          <BlogPostGrid posts={visiblePosts} />
-          <aside className="space-y-6 lg:sticky lg:top-20 lg:self-start">
-            <BlogCategoryTree locale={locale as Locale} />
-            <BlogTagCloud locale={locale as Locale} />
-          </aside>
+        <div id="start" className="container mx-auto px-4 py-10 sm:py-14">
+          <div className="grid gap-8 lg:grid-cols-[1fr_280px]">
+            <BlogPostGrid posts={visiblePosts} />
+            <aside className="space-y-6 lg:sticky lg:top-20 lg:self-start">
+              <BlogCategoryTree locale={locale as Locale} />
+              <BlogTagCloud locale={locale as Locale} />
+            </aside>
+          </div>
         </div>
-      </div>
 
-      <PageBottomSections locale={locale} />
-    </>
+        <PageBottomSections locale={locale} />
+      </>
+    </RouteMessages>
   );
 }

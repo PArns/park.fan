@@ -65,6 +65,7 @@ import { HERO_3D_ENABLED } from '@/lib/config/features';
 
 import type { Metadata } from 'next';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
+import { RouteMessages } from '@/i18n/route-messages';
 
 // STATIC SHELL (per-locale build-time prerender — the homepage is only 6 pages, NOT the park/
 // attraction catalog). The shell is served straight from the CDN (fast TTFB → fast LCP, bf-cache
@@ -135,246 +136,248 @@ export default async function HomePage({ params }: HomePageProps) {
   const heroMeta = heroImage?.meta ?? null;
 
   return (
-    <div className="flex flex-col">
-      <HomepageFAQStructuredData />
-      {/* Hero Section – live-numbers headline + in-place search on the left, world-map panel on
+    <RouteMessages route="/">
+      <div className="flex flex-col">
+        <HomepageFAQStructuredData />
+        {/* Hero Section – live-numbers headline + in-place search on the left, world-map panel on
           the right (xl+ only), nearby-park bubbles below. When the user is in a park (nearby),
           the headline switches to "Willkommen im [Park]" + park info. */}
-      {/* z-10 (not isolate — that clipped nothing but stacked the section BELOW later siblings):
+        {/* z-10 (not isolate — that clipped nothing but stacked the section BELOW later siblings):
           the hero search dropdown floats out of this section over the content beneath it, and
           `overflow-hidden` keeps the background photo in. The sticky header is z-50, so it still
           wins. */}
-      <section className="hero-entering relative z-10 -mt-14 overflow-visible px-6 pt-24 pb-8 md:pb-10 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-20 lg:pb-12">
-        <HeroRotationProvider>
-          <HeroBackground
-            imageSrc={randomHeroImage}
-            blurDataURL={heroBlurDataUrl(randomHeroImage)}
-          />
-          {/* Closes the entrance window, so content that streams in later does not replay it —
+        <section className="hero-entering relative z-10 -mt-14 overflow-visible px-6 pt-24 pb-8 md:pb-10 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-20 lg:pb-12">
+          <HeroRotationProvider>
+            <HeroBackground
+              imageSrc={randomHeroImage}
+              blurDataURL={heroBlurDataUrl(randomHeroImage)}
+            />
+            {/* Closes the entrance window, so content that streams in later does not replay it —
               see HeroEntranceGate for what that cost in LCP. Outside the plate on purpose: a
               child there would shift the content stagger's nth-child by one. */}
-          <HeroEntranceGate />
-          {/* No legibility scrim any more. It existed because the left plate carried no
+            <HeroEntranceGate />
+            {/* No legibility scrim any more. It existed because the left plate carried no
               backdrop-blur, and it was anchored left so the photo still read on the right —
               which meant the two panels ended up blurring different backdrops: the left a
               dimmed one, the right the raw photo. Same 64 px filter, visibly different glass.
               The plate's own blur now does the legibility work for both. */}
-          <div className="relative container mx-auto">
-            {/* grid-cols-1, not a bare `grid`: an implicit column is sized to its content's
+            <div className="relative container mx-auto">
+              {/* grid-cols-1, not a bare `grid`: an implicit column is sized to its content's
                 max-content width, and the horizontally scrollable pill row inside is wider than
                 a phone. Tailwind's grid-cols-1 is `minmax(0, 1fr)`, which caps it at the
                 container instead — without it the whole hero overflowed the viewport. */}
-            <div className="grid grid-cols-1 items-start gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(0,34rem)] 2xl:grid-cols-[minmax(0,1fr)_minmax(0,40rem)] 2xl:gap-14">
-              {/* Left: live badge + headline + intro with live counts + in-place search +
+              <div className="grid grid-cols-1 items-start gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(0,34rem)] 2xl:grid-cols-[minmax(0,1fr)_minmax(0,40rem)] 2xl:gap-14">
+                {/* Left: live badge + headline + intro with live counts + in-place search +
                   the nearby-park bubbles */}
-              <HeroTextPanel className="hero-in-stagger">
-                <Suspense fallback={<HeroWithNearby initialCounts={null} />}>
-                  <HeroStats />
-                </Suspense>
-                <HeroInlineSearch
-                  placeholder={tHome('hero.searchExamples')}
-                  label={tHome('hero.searchPlaceholder')}
-                  className="mt-5"
-                />
-                {/* Nearby parks as pill bubbles (GeoIP fallback without location permission).
+                <HeroTextPanel className="hero-in-stagger">
+                  <Suspense fallback={<HeroWithNearby initialCounts={null} />}>
+                    <HeroStats />
+                  </Suspense>
+                  <HeroInlineSearch
+                    placeholder={tHome('hero.searchExamples')}
+                    label={tHome('hero.searchPlaceholder')}
+                    className="mt-5"
+                  />
+                  {/* Nearby parks as pill bubbles (GeoIP fallback without location permission).
                     mt-8 matches the plate's own padding, so the pills sit the same distance from
                     the open dropdown above them as from the plate's bottom edge below — at mt-4
                     they read as glued to the card's footer. */}
-                <HeroNearbyBubbles className="mt-8" />
-              </HeroTextPanel>
+                  <HeroNearbyBubbles className="mt-8" />
+                </HeroTextPanel>
 
-              {/* Right: world-map panel — only rendered when there is room (xl+).
+                {/* Right: world-map panel — only rendered when there is room (xl+).
 
                   Pushed DOWN while the text column is pulled up (`items-start` + these offsets):
                   the search field sits in the left column and its dropdown is open at rest, so
                   the two columns are staggered to give that list room instead of centring both
                   against each other. */}
-              <div className="hero-in-late hidden xl:mt-24 xl:block 2xl:mt-28">
-                <Suspense fallback={<HeroWorldPanelSkeleton />}>
-                  <HeroWorldPanel />
-                </Suspense>
+                <div className="hero-in-late hidden xl:mt-24 xl:block 2xl:mt-28">
+                  <Suspense fallback={<HeroWorldPanelSkeleton />}>
+                    <HeroWorldPanel />
+                  </Suspense>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Hero image attribution. The 3-D hero shows no caption (only the in-park photos that
+            {/* Hero image attribution. The 3-D hero shows no caption (only the in-park photos that
               replace it do, via the switch); the classic photo hero captions the current image's
               park / city / country. */}
-          {HERO_3D_ENABLED ? (
-            <HeroImageInfoSwitch>{null}</HeroImageInfoSwitch>
-          ) : (
-            heroMeta && (
-              <HeroImageInfoSwitch>
-                <HeroImageInfo meta={heroMeta} />
-              </HeroImageInfoSwitch>
-            )
-          )}
-        </HeroRotationProvider>
-      </section>
+            {HERO_3D_ENABLED ? (
+              <HeroImageInfoSwitch>{null}</HeroImageInfoSwitch>
+            ) : (
+              heroMeta && (
+                <HeroImageInfoSwitch>
+                  <HeroImageInfo meta={heroMeta} />
+                </HeroImageInfoSwitch>
+              )
+            )}
+          </HeroRotationProvider>
+        </section>
 
-      {/* "From the blog" strip — the first thing under the hero, across the full container
+        {/* "From the blog" strip — the first thing under the hero, across the full container
           width. The full LatestBlogSection still renders further down the page. */}
-      <section className="px-6 pt-8">
-        <div className="container mx-auto">
-          <BlogHeroPreview locale={locale as Locale} />
+        <section className="px-6 pt-8">
+          <div className="container mx-auto">
+            <BlogHeroPreview locale={locale as Locale} />
+          </div>
+        </section>
+
+        {/* Announcement Section */}
+        <div className="pk-reveal">
+          <AnnounceSection locale={locale} />
         </div>
-      </section>
 
-      {/* Announcement Section */}
-      <div className="pk-reveal">
-        <AnnounceSection locale={locale} />
-      </div>
-
-      {/* Hottest parks heat banner — only renders during a real heat wave (≥ 35 °C in DE/FR/IT/NL/BE);
+        {/* Hottest parks heat banner — only renders during a real heat wave (≥ 35 °C in DE/FR/IT/NL/BE);
           fallback is null because the section is absent most of the year (no skeleton flash). */}
-      <Suspense fallback={null}>
-        <HottestParksSection locale={locale} />
-      </Suspense>
+        <Suspense fallback={null}>
+          <HottestParksSection locale={locale} />
+        </Suspense>
 
-      {/* Location banner: not for snippet/indexing (data-nosnippet); show when user has not granted location */}
-      <LocationBanner />
+        {/* Location banner: not for snippet/indexing (data-nosnippet); show when user has not granted location */}
+        <LocationBanner />
 
-      {/* Nearby / In-Park – primary focus: nearest open park or quick park navigation when in park.
+        {/* Nearby / In-Park – primary focus: nearest open park or quick park navigation when in park.
           No top padding so the (full-bleed) in-park banner sits flush under the hero. */}
-      <section className="px-4 pb-8">
-        <div className="container mx-auto">
-          <NearbyParksCard />
-        </div>
-      </section>
+        <section className="px-4 pb-8">
+          <div className="container mx-auto">
+            <NearbyParksCard />
+          </div>
+        </section>
 
-      {/* Favorites Section */}
-      <FavoritesSection />
+        {/* Favorites Section */}
+        <FavoritesSection />
 
-      {/* Latest Blog Posts */}
-      <LatestBlogSection locale={locale as Locale} />
+        {/* Latest Blog Posts */}
+        <LatestBlogSection locale={locale as Locale} />
 
-      {/* Featured Parks – locale-aware, direct park links for SEO (SSR seed + client live data) */}
-      <Suspense fallback={<FeaturedParksSkeleton />}>
-        <FeaturedParksSlot locale={locale} />
-      </Suspense>
+        {/* Featured Parks – locale-aware, direct park links for SEO (SSR seed + client live data) */}
+        <Suspense fallback={<FeaturedParksSkeleton />}>
+          <FeaturedParksSlot locale={locale} />
+        </Suspense>
 
-      {/* Global Stats + Platform Statistics (single getGlobalStats fetch) */}
-      <Suspense fallback={<GlobalStatsSkeleton />}>
-        <GlobalStatsSection />
-      </Suspense>
+        {/* Global Stats + Platform Statistics (single getGlobalStats fetch) */}
+        <Suspense fallback={<GlobalStatsSkeleton />}>
+          <GlobalStatsSection />
+        </Suspense>
 
-      {/* ML / AI Stats — no pk-reveal: its cards are GlassCards, and the reveal's transform
+        {/* ML / AI Stats — no pk-reveal: its cards are GlassCards, and the reveal's transform
           would flatten their backdrop for the length of the entry range. */}
-      <Suspense fallback={<MLStatsSkeleton />}>
-        <MLStatsSection linkToFancast />
-      </Suspense>
+        <Suspense fallback={<MLStatsSkeleton />}>
+          <MLStatsSection linkToFancast />
+        </Suspense>
 
-      {/* Live Activity - Parks Open Now — no pk-reveal, same reason as ML stats above. */}
-      <Suspense fallback={<LiveActivitySkeleton />}>
-        <LiveActivitySection />
-      </Suspense>
+        {/* Live Activity - Parks Open Now — no pk-reveal, same reason as ML stats above. */}
+        <Suspense fallback={<LiveActivitySkeleton />}>
+          <LiveActivitySection />
+        </Suspense>
 
-      {/* Features Section */}
-      <section className="pk-reveal bg-muted/30 px-4 py-16">
-        <div className="container mx-auto">
-          <div className="mb-2 flex items-center gap-2">
-            <Sparkles className="text-primary h-5 w-5" />
-            <h2 className="text-xl font-bold">
-              <GlossaryInject>{tHome('sections.plan')}</GlossaryInject>
-            </h2>
-          </div>
-          <p className="text-muted-foreground mb-12 text-sm leading-relaxed">
-            <GlossaryInject>{tHome('sections.featuresIntro')}</GlossaryInject>
-          </p>
-          <div className="grid gap-8 md:grid-cols-3">
-            <div className="text-center">
-              <div className="bg-crowd-very-low/20 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
-                <Clock className="text-crowd-very-low h-8 w-8" />
-              </div>
-              <h3 className="mb-2 text-lg font-semibold">
-                <GlossaryInject>{tHome('features.realtime.title')}</GlossaryInject>
-              </h3>
-              <p className="text-muted-foreground text-sm">
-                <GlossaryInject>{tHome('features.realtime.description')}</GlossaryInject>
-              </p>
+        {/* Features Section */}
+        <section className="pk-reveal bg-muted/30 px-4 py-16">
+          <div className="container mx-auto">
+            <div className="mb-2 flex items-center gap-2">
+              <Sparkles className="text-primary h-5 w-5" />
+              <h2 className="text-xl font-bold">
+                <GlossaryInject>{tHome('sections.plan')}</GlossaryInject>
+              </h2>
             </div>
-            <div className="text-center">
-              <div className="bg-park-primary/20 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
-                <TrendingUp className="text-park-primary h-8 w-8" />
+            <p className="text-muted-foreground mb-12 text-sm leading-relaxed">
+              <GlossaryInject>{tHome('sections.featuresIntro')}</GlossaryInject>
+            </p>
+            <div className="grid gap-8 md:grid-cols-3">
+              <div className="text-center">
+                <div className="bg-crowd-very-low/20 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
+                  <Clock className="text-crowd-very-low h-8 w-8" />
+                </div>
+                <h3 className="mb-2 text-lg font-semibold">
+                  <GlossaryInject>{tHome('features.realtime.title')}</GlossaryInject>
+                </h3>
+                <p className="text-muted-foreground text-sm">
+                  <GlossaryInject>{tHome('features.realtime.description')}</GlossaryInject>
+                </p>
               </div>
-              <h3 className="mb-2 text-lg font-semibold">
-                <GlossaryInject>{tHome('features.ml.title')}</GlossaryInject>
-              </h3>
-              <p className="text-muted-foreground text-sm">
-                <GlossaryInject>{tHome('features.ml.description')}</GlossaryInject>
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="bg-crowd-moderate/20 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
-                <MapIcon className="text-crowd-moderate h-8 w-8" />
+              <div className="text-center">
+                <div className="bg-park-primary/20 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
+                  <TrendingUp className="text-park-primary h-8 w-8" />
+                </div>
+                <h3 className="mb-2 text-lg font-semibold">
+                  <GlossaryInject>{tHome('features.ml.title')}</GlossaryInject>
+                </h3>
+                <p className="text-muted-foreground text-sm">
+                  <GlossaryInject>{tHome('features.ml.description')}</GlossaryInject>
+                </p>
               </div>
-              <h3 className="mb-2 text-lg font-semibold">
-                <GlossaryInject>{tHome('features.calendar.title')}</GlossaryInject>
-              </h3>
-              <p className="text-muted-foreground text-sm">
-                <GlossaryInject>{tHome('features.calendar.description')}</GlossaryInject>
-              </p>
+              <div className="text-center">
+                <div className="bg-crowd-moderate/20 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
+                  <MapIcon className="text-crowd-moderate h-8 w-8" />
+                </div>
+                <h3 className="mb-2 text-lg font-semibold">
+                  <GlossaryInject>{tHome('features.calendar.title')}</GlossaryInject>
+                </h3>
+                <p className="text-muted-foreground text-sm">
+                  <GlossaryInject>{tHome('features.calendar.description')}</GlossaryInject>
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* About Section – editorial content for SEO word count */}
-      <section className="px-4 py-16">
-        <div className="container mx-auto">
-          <div className="mb-6 flex items-center gap-2">
-            <BookOpen className="text-primary h-5 w-5" />
-            <h2 className="text-xl font-bold">{tHome('about.title')}</h2>
+        {/* About Section – editorial content for SEO word count */}
+        <section className="px-4 py-16">
+          <div className="container mx-auto">
+            <div className="mb-6 flex items-center gap-2">
+              <BookOpen className="text-primary h-5 w-5" />
+              <h2 className="text-xl font-bold">{tHome('about.title')}</h2>
+            </div>
+            <p className="text-muted-foreground mb-4 leading-relaxed">
+              <GlossaryInject>{tHome('about.p1')}</GlossaryInject>
+            </p>
+            <p className="text-muted-foreground mb-10 leading-relaxed">
+              <GlossaryInject>{tHome('about.p2')}</GlossaryInject>
+            </p>
+
+            <h3 className="mb-4 text-xl font-semibold">{tHome('about.coverageTitle')}</h3>
+            <p className="text-muted-foreground mb-10 leading-relaxed">
+              <GlossaryInject>{tHome('about.p3')}</GlossaryInject>
+            </p>
+
+            <h3 className="mb-4 text-xl font-semibold">{tHome('about.howTitle')}</h3>
+            <p className="text-muted-foreground mb-4 leading-relaxed">
+              <GlossaryInject>{tHome('about.p4')}</GlossaryInject>
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              <GlossaryInject>{tHome('about.p5')}</GlossaryInject>
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href="/howto"
+                prefetch={false}
+                className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold shadow-sm transition-colors"
+              >
+                <BookOpen className="h-4 w-4" />
+                {tHome('about.howtoLink')}
+              </Link>
+              <Link
+                href="/fancast"
+                prefetch={false}
+                className="border-primary/40 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-semibold transition-colors"
+              >
+                <Sparkles className="h-4 w-4" />
+                {tHome('about.fancastLink')}
+              </Link>
+            </div>
           </div>
-          <p className="text-muted-foreground mb-4 leading-relaxed">
-            <GlossaryInject>{tHome('about.p1')}</GlossaryInject>
-          </p>
-          <p className="text-muted-foreground mb-10 leading-relaxed">
-            <GlossaryInject>{tHome('about.p2')}</GlossaryInject>
-          </p>
+        </section>
 
-          <h3 className="mb-4 text-xl font-semibold">{tHome('about.coverageTitle')}</h3>
-          <p className="text-muted-foreground mb-10 leading-relaxed">
-            <GlossaryInject>{tHome('about.p3')}</GlossaryInject>
-          </p>
-
-          <h3 className="mb-4 text-xl font-semibold">{tHome('about.howTitle')}</h3>
-          <p className="text-muted-foreground mb-4 leading-relaxed">
-            <GlossaryInject>{tHome('about.p4')}</GlossaryInject>
-          </p>
-          <p className="text-muted-foreground leading-relaxed">
-            <GlossaryInject>{tHome('about.p5')}</GlossaryInject>
-          </p>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              href="/howto"
-              prefetch={false}
-              className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold shadow-sm transition-colors"
-            >
-              <BookOpen className="h-4 w-4" />
-              {tHome('about.howtoLink')}
-            </Link>
-            <Link
-              href="/fancast"
-              prefetch={false}
-              className="border-primary/40 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-semibold transition-colors"
-            >
-              <Sparkles className="h-4 w-4" />
-              {tHome('about.fancastLink')}
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Soft "make park.fan your preferred Google source" prompt — end of the page,
+        {/* Soft "make park.fan your preferred Google source" prompt — end of the page,
           once the visitor has seen what the site offers. The footer keeps the
           persistent link; this is the higher-visibility spot. */}
-      <section className="px-4 pb-16">
-        <div className="container mx-auto">
-          <PreferredSourcePrompt />
-        </div>
-      </section>
-    </div>
+        <section className="px-4 pb-16">
+          <div className="container mx-auto">
+            <PreferredSourcePrompt />
+          </div>
+        </section>
+      </div>
+    </RouteMessages>
   );
 }

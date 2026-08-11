@@ -10,6 +10,7 @@ import type { Metadata } from 'next';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { DatenschutzDE } from './content/de';
 import { DatenschutzEN } from './content/en';
+import { RouteMessages } from '@/i18n/route-messages';
 
 interface DatenschutzPageProps {
   params: Promise<{ locale: string }>;
@@ -75,10 +76,12 @@ export default async function DatenschutzPage({ params }: DatenschutzPageProps) 
   setRequestLocale(locale);
 
   return (
-    <div className="container mx-auto px-4 py-12">
-      <div className="mx-auto max-w-4xl">
-        {locale === 'de' ? <DatenschutzDE /> : <DatenschutzEN />}
+    <RouteMessages route="/datenschutz">
+      <div className="container mx-auto px-4 py-12">
+        <div className="mx-auto max-w-4xl">
+          {locale === 'de' ? <DatenschutzDE /> : <DatenschutzEN />}
+        </div>
       </div>
-    </div>
+    </RouteMessages>
   );
 }

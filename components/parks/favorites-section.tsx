@@ -26,6 +26,9 @@ import {
 import { Link } from '@/i18n/navigation';
 import { ChevronRight, Navigation, Star } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { useLazyMessages } from '@/i18n/use-lazy-messages';
+import { RouteMessagesProvider } from '@/i18n/route-messages-provider';
+import { LAZY_CHUNK_NAMESPACES } from '@/i18n/route-namespaces.generated';
 
 const emptySubscribe = () => () => {};
 const getClientSnapshot = () => true;
@@ -53,6 +56,17 @@ export function FavoritesSection() {
       total: f.parks.length + f.attractions.length + f.shows.length + f.restaurants.length,
     };
   }, [mounted]);
+
+  // `ParkCard`/`AttractionCard` read the `parks` + `attractions` namespaces, which the editorial
+  // routes deliberately keep out of their payload — this section is empty for almost everyone who
+  // lands there (see `LAZY_MESSAGE_BOUNDARIES` in lib/i18n/route-namespaces.mjs). Kick the fetch
+  // off from the same render that enables the favorites query below, so the chunk downloads
+  // ALONGSIDE that request instead of after it; on routes that already ship both namespaces
+  // (homepage, park pages) this resolves without a request at all.
+  const cardMessages = useLazyMessages(
+    LAZY_CHUNK_NAMESPACES,
+    cookieCounts !== null && cookieCounts.total > 0
+  );
 
   // Sort by distance (nearest first) or alphabetically if no distance available
   const sortByDistanceOrName = useCallback(
@@ -102,44 +116,48 @@ export function FavoritesSection() {
   // Cookies say no favorites → skip the skeleton and go straight to the empty state.
   if (cookieCounts !== null && cookieCounts.total === 0 && !favoritesData) return null;
 
+  // One skeleton shape for both waits below, so whatever replaces it lands in the same box.
+  const renderSkeleton = (parkCount: number, attractionCount: number) => (
+    <section className="bg-muted/30 px-4 py-8">
+      <div className="container mx-auto">
+        <GlassSectionTitle icon={Star} iconClassName="text-primary" className="mb-4">
+          {t('title')}
+        </GlassSectionTitle>
+        <div className="space-y-6">
+          {parkCount > 0 && (
+            <div>
+              <div className="bg-muted mb-4 h-6 w-24 rounded" />
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {Array.from({ length: parkCount }).map((_, i) => (
+                  <ParkCardNearbySkeleton key={i} />
+                ))}
+              </div>
+            </div>
+          )}
+          {attractionCount > 0 && (
+            <div>
+              <div className="bg-muted mb-4 h-6 w-24 rounded" />
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {Array.from({ length: attractionCount }).map((_, i) => (
+                  <AttractionCardSkeleton key={i} />
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+
   // Favorites exist in cookies (or count unknown) and API is still loading → show skeleton.
   // isPending covers the case where the query is disabled (geoLoading=true) but hasn't started yet —
   // isLoading alone misses this and would fall through to the empty state.
   if (loading || isPending) {
     const showParkSkeletons = !cookieCounts || cookieCounts.parks > 0;
     const showAttractionSkeletons = !cookieCounts || cookieCounts.attractions > 0;
-    return (
-      <section className="bg-muted/30 px-4 py-8">
-        <div className="container mx-auto">
-          <GlassSectionTitle icon={Star} iconClassName="text-primary" className="mb-4">
-            {t('title')}
-          </GlassSectionTitle>
-          <div className="space-y-6">
-            {showParkSkeletons && (
-              <div>
-                <div className="bg-muted mb-4 h-6 w-24 rounded" />
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {Array.from({ length: Math.min(cookieCounts?.parks ?? 3, 3) }).map((_, i) => (
-                    <ParkCardNearbySkeleton key={i} />
-                  ))}
-                </div>
-              </div>
-            )}
-            {showAttractionSkeletons && (
-              <div>
-                <div className="bg-muted mb-4 h-6 w-24 rounded" />
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {Array.from({ length: Math.min(cookieCounts?.attractions ?? 3, 3) }).map(
-                    (_, i) => (
-                      <AttractionCardSkeleton key={i} />
-                    )
-                  )}
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
+    return renderSkeleton(
+      showParkSkeletons ? Math.min(cookieCounts?.parks ?? 3, 3) : 0,
+      showAttractionSkeletons ? Math.min(cookieCounts?.attractions ?? 3, 3) : 0
     );
   }
 
@@ -170,7 +188,20 @@ export function FavoritesSection() {
     );
   }
 
-  return (
+  // Favorites are here, their translations are not (yet). Hold the skeleton at the REAL counts so
+  // the cards drop into an identically sized box. In practice this branch is never painted: the
+  // chunk is a same-origin JS module that started downloading alongside the favorites request and
+  // resolves long before it — but rendering raw message keys is not an acceptable fallback.
+  if (!cardMessages.ready) {
+    return renderSkeleton(
+      sortedFavorites.parks.length,
+      sortedFavorites.attractions.length +
+        sortedFavorites.shows.length +
+        sortedFavorites.restaurants.length
+    );
+  }
+
+  const content = (
     <section className="bg-muted/30 px-4 py-8">
       <div className="container mx-auto">
         <h2 className="mb-2 flex items-center gap-2 text-xl font-bold">
@@ -392,5 +423,15 @@ export function FavoritesSection() {
         </div>
       </div>
     </section>
+  );
+
+  // Namespaces that were fetched rather than shipped have to be put into context for the cards
+  // below; `messages` is null on routes whose payload already carries them.
+  return cardMessages.messages ? (
+    <RouteMessagesProvider messages={cardMessages.messages} namespaces={LAZY_CHUNK_NAMESPACES}>
+      {content}
+    </RouteMessagesProvider>
+  ) : (
+    content
   );
 }

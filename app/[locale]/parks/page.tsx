@@ -13,6 +13,7 @@ import { ItemListStructuredData } from '@/components/seo/structured-data';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { collectParkCoordinates } from '@/lib/utils/distance-utils';
 import type { Metadata } from 'next';
+import { RouteMessages } from '@/i18n/route-messages';
 
 interface ParksPageProps {
   params: Promise<{ locale: string }>;
@@ -93,46 +94,48 @@ export default async function ParksPage({ params }: ParksPageProps) {
   });
 
   return (
-    <PageContainer>
-      <ItemListStructuredData
-        items={itemListItems}
-        listName={tExplore('parksTitle')}
-        pageUrl={`/${locale}/parks`}
-      />
-      <PageHeader
-        breadcrumbs={breadcrumbs}
-        currentPage={tNav('continents')}
-        title={tExplore('parksTitle')}
-        description={
-          <>
-            <span className="text-park-primary font-medium">
-              {totalOpenParks} {t('open')}
-            </span>{' '}
-            / {totalParks} {tExplore('stats.park', { count: totalParks })} • {totalCountries}{' '}
-            {tExplore('stats.country', { count: totalCountries })}
-          </>
-        }
-      />
+    <RouteMessages route="/parks">
+      <PageContainer>
+        <ItemListStructuredData
+          items={itemListItems}
+          listName={tExplore('parksTitle')}
+          pageUrl={`/${locale}/parks`}
+        />
+        <PageHeader
+          breadcrumbs={breadcrumbs}
+          currentPage={tNav('continents')}
+          title={tExplore('parksTitle')}
+          description={
+            <>
+              <span className="text-park-primary font-medium">
+                {totalOpenParks} {t('open')}
+              </span>{' '}
+              / {totalParks} {tExplore('stats.park', { count: totalParks })} • {totalCountries}{' '}
+              {tExplore('stats.country', { count: totalCountries })}
+            </>
+          }
+        />
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {continentItems.map((continent) => {
-          const continentName = translateContinent(t, continent.slug, locale, continent.name);
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {continentItems.map((continent) => {
+            const continentName = translateContinent(t, continent.slug, locale, continent.name);
 
-          return (
-            <GeoLocationCard
-              key={continent.slug}
-              name={continentName}
-              slug={continent.slug}
-              href={`/parks/${continent.slug}`}
-              openParkCount={continent.openParkCount}
-              totalParkCount={continent.parkCount}
-              subtitle={`${continent.countryCount} ${tExplore('stats.country', { count: continent.countryCount })}`}
-              parkCoordinates={continent.parkCoordinates}
-              variant="continent"
-            />
-          );
-        })}
-      </div>
-    </PageContainer>
+            return (
+              <GeoLocationCard
+                key={continent.slug}
+                name={continentName}
+                slug={continent.slug}
+                href={`/parks/${continent.slug}`}
+                openParkCount={continent.openParkCount}
+                totalParkCount={continent.parkCount}
+                subtitle={`${continent.countryCount} ${tExplore('stats.country', { count: continent.countryCount })}`}
+                parkCoordinates={continent.parkCoordinates}
+                variant="continent"
+              />
+            );
+          })}
+        </div>
+      </PageContainer>
+    </RouteMessages>
   );
 }

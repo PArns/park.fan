@@ -14,6 +14,7 @@ import type { GlossaryCategory, GlossaryTermWithEnName } from '@/lib/glossary/ty
 import type { Metadata } from 'next';
 import type { Locale } from '@/i18n/config';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
+import { RouteMessages } from '@/i18n/route-messages';
 
 interface GlossaryPageProps {
   params: Promise<{ locale: string }>;
@@ -127,32 +128,34 @@ export default async function GlossaryPage({ params }: GlossaryPageProps) {
   const breadcrumbs = [{ name: tCommon('home'), url: '/' }];
 
   return (
-    <>
-      <GlossaryBackground />
-      <PageContainer>
-        <GlossaryStructuredData
-          terms={terms}
-          locale={locale as Locale}
-          segment={segment}
-          variant="overview"
-        />
-        <BreadcrumbStructuredData
-          breadcrumbs={[
-            { name: tCommon('home'), url: `/${locale}` },
-            { name: t('overviewTitle'), url: `/${locale}/${segment}` },
-          ]}
-        />
-        <GlossaryOverviewClient
-          groupedTerms={groupedTerms}
-          rideCounts={rideCounts}
-          locale={locale as Locale}
-          segment={segment}
-          title={t('overviewTitle')}
-          h1={t('overviewH1')}
-          description={t('overviewDescription', { count: termCount })}
-          breadcrumbs={breadcrumbs}
-        />
-      </PageContainer>
-    </>
+    <RouteMessages route="/glossary">
+      <>
+        <GlossaryBackground />
+        <PageContainer>
+          <GlossaryStructuredData
+            terms={terms}
+            locale={locale as Locale}
+            segment={segment}
+            variant="overview"
+          />
+          <BreadcrumbStructuredData
+            breadcrumbs={[
+              { name: tCommon('home'), url: `/${locale}` },
+              { name: t('overviewTitle'), url: `/${locale}/${segment}` },
+            ]}
+          />
+          <GlossaryOverviewClient
+            groupedTerms={groupedTerms}
+            rideCounts={rideCounts}
+            locale={locale as Locale}
+            segment={segment}
+            title={t('overviewTitle')}
+            h1={t('overviewH1')}
+            description={t('overviewDescription', { count: termCount })}
+            breadcrumbs={breadcrumbs}
+          />
+        </PageContainer>
+      </>
+    </RouteMessages>
   );
 }

@@ -47,6 +47,7 @@ import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateAttractionBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { stripNewPrefix, cn } from '@/lib/utils';
 import { findRelocatedParkRedirect, findRenamedParkRedirect } from '@/lib/utils/redirect-utils';
+import { RouteMessages } from '@/i18n/route-messages';
 
 interface AttractionPageProps {
   params: Promise<{
@@ -291,88 +292,89 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
     ) : null;
 
   return (
-    <>
-      <AttractionStructuredData
-        attraction={attraction}
-        park={park}
-        url={attractionUrl}
-        locale={locale}
-        description={tSeo('metaDescriptionTemplate', {
-          attraction: attractionName,
-          park: parkName,
-          city: cityName,
-        })}
-        ogImageUrl={ogImageUrl}
-      />
-      <AttractionFAQStructuredData attraction={attraction} park={park} locale={locale} />
-      <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
-      <ParkBackground
-        imageSrc={backgroundImage}
-        alt={attractionName}
-        objectPosition={objectPositionForSrc(backgroundImage)}
-      />
-      <PageContainer>
-        <BreadcrumbNav
-          breadcrumbs={breadcrumbs}
-          currentPage={attractionCurrentPage}
-          pinLastBreadcrumb
+    <RouteMessages route="/parks/[continent]/[country]/[city]/[park]/[attraction]">
+      <>
+        <AttractionStructuredData
+          attraction={attraction}
+          park={park}
+          url={attractionUrl}
+          locale={locale}
+          description={tSeo('metaDescriptionTemplate', {
+            attraction: attractionName,
+            park: parkName,
+            city: cityName,
+          })}
+          ogImageUrl={ogImageUrl}
         />
+        <AttractionFAQStructuredData attraction={attraction} park={park} locale={locale} />
+        <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
+        <ParkBackground
+          imageSrc={backgroundImage}
+          alt={attractionName}
+          objectPosition={objectPositionForSrc(backgroundImage)}
+        />
+        <PageContainer>
+          <BreadcrumbNav
+            breadcrumbs={breadcrumbs}
+            currentPage={attractionCurrentPage}
+            pinLastBreadcrumb
+          />
 
-        <article itemScope itemType="https://schema.org/TouristAttraction">
-          {/* Header — same anatomy as the park header (title row with the favourite
+          <article itemScope itemType="https://schema.org/TouristAttraction">
+            {/* Header — same anatomy as the park header (title row with the favourite
               pinned right, a hairline-separated facts band, the intro inside the
               card), so a ride reads like the park it belongs to. */}
-          <div className="mb-8">
-            <GlassCard variant="medium">
-              {/* Title row: ride name + where it is on the left, favourite top-right.
+            <div className="mb-8">
+              <GlassCard variant="medium">
+                {/* Title row: ride name + where it is on the left, favourite top-right.
                   In flow, not absolutely positioned — a long name now wraps beside the
                   star instead of underneath it. */}
-              <div className="flex items-start justify-between gap-4">
-                <div className="min-w-0 flex-1">
-                  {/* The wait-time keyword lives INSIDE the h1 (a styled span, not a
+                <div className="flex items-start justify-between gap-4">
+                  <div className="min-w-0 flex-1">
+                    {/* The wait-time keyword lives INSIDE the h1 (a styled span, not a
                       sibling) so the primary heading actually carries "Wartezeit" — the
                       strongest on-page signal for "{attraction} wartezeit" queries. */}
-                  {/* The literal space before the span matters: without it the extracted text
+                    {/* The literal space before the span matters: without it the extracted text
                       (SERP snippets, screen readers) reads "Taron– Aktuelle Wartezeit". */}
-                  <h1 className="mb-2 text-3xl font-bold md:text-4xl">
-                    {attractionName}{' '}
-                    <span className="text-muted-foreground text-xl font-normal md:text-2xl">
-                      – {t('h1Suffix')}
-                    </span>
-                  </h1>
-                  {/* Muted like the park header's address line: this is where the ride
+                    <h1 className="mb-2 text-3xl font-bold md:text-4xl">
+                      {attractionName}{' '}
+                      <span className="text-muted-foreground text-xl font-normal md:text-2xl">
+                        – {t('h1Suffix')}
+                      </span>
+                    </h1>
+                    {/* Muted like the park header's address line: this is where the ride
                       is, not what it is — the facts band below carries that. */}
-                  <div className="text-muted-foreground flex flex-wrap items-center gap-3">
-                    <Link
-                      href={
-                        `/parks/${continent}/${country}/${city}/${parkSlug}` as '/parks/europe/germany/rust/europa-park'
-                      }
-                      prefetch={false}
-                      className="hover:text-foreground flex items-center gap-1 transition-colors"
-                    >
-                      <MapPin className="h-4 w-4" aria-hidden="true" />
-                      {parkName}
-                    </Link>
-                    {/* Distance to the PARK this ride sits in (rides share the park's location
+                    <div className="text-muted-foreground flex flex-wrap items-center gap-3">
+                      <Link
+                        href={
+                          `/parks/${continent}/${country}/${city}/${parkSlug}` as '/parks/europe/germany/rust/europa-park'
+                        }
+                        prefetch={false}
+                        className="hover:text-foreground flex items-center gap-1 transition-colors"
+                      >
+                        <MapPin className="h-4 w-4" aria-hidden="true" />
+                        {parkName}
+                      </Link>
+                      {/* Distance to the PARK this ride sits in (rides share the park's location
                         for travel purposes) — client-only, appears once the position is known. */}
-                    <ParkDistance latitude={park.latitude} longitude={park.longitude} size="md" />
-                    {attraction.land && <Badge variant="outline">{attraction.land}</Badge>}
-                    {attraction.isSeasonal && (
-                      <SeasonalBadge
-                        seasonMonths={attraction.seasonMonths}
-                        isCurrentlyInSeason={attraction.isCurrentlyInSeason}
-                      />
-                    )}
+                      <ParkDistance latitude={park.latitude} longitude={park.longitude} size="md" />
+                      {attraction.land && <Badge variant="outline">{attraction.land}</Badge>}
+                      {attraction.isSeasonal && (
+                        <SeasonalBadge
+                          seasonMonths={attraction.seasonMonths}
+                          isCurrentlyInSeason={attraction.isCurrentlyInSeason}
+                        />
+                      )}
+                    </div>
                   </div>
+                  {attraction.id && (
+                    <div className="flex items-center">
+                      <FavoriteStar type="attraction" id={attraction.id} size="lg" />
+                    </div>
+                  )}
                 </div>
-                {attraction.id && (
-                  <div className="flex items-center">
-                    <FavoriteStar type="attraction" id={attraction.id} size="lg" />
-                  </div>
-                )}
-              </div>
 
-              {/* Facts band: what this ride IS, separated from where it is — the ride's
+                {/* Facts band: what this ride IS, separated from where it is — the ride's
                   counterpart to the park header's stats band, same hairline and spacing.
                   One row mixing a navigation link, a live distance, a category label and
                   an outbound reference gave all four the same weight.
@@ -380,164 +382,165 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                   The order inside it is the point: what decides whether you may ride
                   (height), then what the ride does (inversions), then what kind of ride
                   it is, then who built it and when, then the way out to RCDB. */}
-              {(hasMetaBadges || attraction.rideProfile) && (
-                <div className="border-border/50 mt-5 flex flex-wrap items-center gap-2 border-t pt-4">
-                  <AttractionMetaBadges
-                    minimumHeight={attraction.minimumHeight}
-                    maximumHeight={attraction.maximumHeight}
-                    mayGetWet={attraction.mayGetWet}
-                  />
-                  {attraction.rideProfile ? (
-                    <RideProfileTeaser profile={attraction.rideProfile} locale={locale as Locale}>
-                      {rcdbBadge}
-                    </RideProfileTeaser>
-                  ) : (
-                    rcdbBadge
-                  )}
-                </div>
-              )}
+                {(hasMetaBadges || attraction.rideProfile) && (
+                  <div className="border-border/50 mt-5 flex flex-wrap items-center gap-2 border-t pt-4">
+                    <AttractionMetaBadges
+                      minimumHeight={attraction.minimumHeight}
+                      maximumHeight={attraction.maximumHeight}
+                      mayGetWet={attraction.mayGetWet}
+                    />
+                    {attraction.rideProfile ? (
+                      <RideProfileTeaser profile={attraction.rideProfile} locale={locale as Locale}>
+                        {rcdbBadge}
+                      </RideProfileTeaser>
+                    ) : (
+                      rcdbBadge
+                    )}
+                  </div>
+                )}
 
-              {/* Keyword-rich, server-rendered intro — crawlable topical text for
+                {/* Keyword-rich, server-rendered intro — crawlable topical text for
                   "{attraction} Wartezeit(en)" that the client-streamed live panel doesn't
                   provide as static HTML. Inside the card, exactly like the park page: on
                   the bare background it sat on top of the hero photo and was unreadable. */}
-              <p className="text-muted-foreground mt-4 max-w-2xl text-sm leading-relaxed">
-                {t('intro', { attraction: attractionName, park: parkName })}
-              </p>
-            </GlassCard>
-          </div>
+                <p className="text-muted-foreground mt-4 max-w-2xl text-sm leading-relaxed">
+                  {t('intro', { attraction: attractionName, park: parkName })}
+                </p>
+              </GlassCard>
+            </div>
 
-          {/* Chapter: the live wait time — the reason people are here. Was the only
+            {/* Chapter: the live wait time — the reason people are here. Was the only
               block on the page without a heading, so it read as a stray card between
               the header and the first chapter. */}
-          <PageSection icon={Clock} title={t('sectionLiveNow')} frosted>
-            {/* Live: status, wait time, queues — auto-refreshes every 5 min.
+            <PageSection icon={Clock} title={t('sectionLiveNow')} frosted>
+              {/* Live: status, wait time, queues — auto-refreshes every 5 min.
               initialPark is trimmed to THIS attraction AND to the park-level fields this page
               actually reads (see leanParkForAttractionShell): passing the full park serialized
               all ~95 sibling attractions plus 46 restaurants, 17 opening days, the weather block
               and the show list into the HTML of a single ride — 36.3 KB of which 1.9 KB was read.
               The live poll (getParkByGeoPathFresh) still returns the full park client-side. */}
-            <LiveAttractionData
-              initialPark={leanParkForAttractionShell(park, attraction)}
-              attractionSlug={attractionSlug}
-              continent={continent}
-              country={country}
-              city={city}
-              parkSlug={parkSlug}
-            />
-          </PageSection>
+              <LiveAttractionData
+                initialPark={leanParkForAttractionShell(park, attraction)}
+                attractionSlug={attractionSlug}
+                continent={continent}
+                country={country}
+                city={city}
+                parkSlug={parkSlug}
+              />
+            </PageSection>
 
-          {/* Rope-drop recommendation — precomputed daily on the server, present
+            {/* Rope-drop recommendation — precomputed daily on the server, present
               only for tier1/tier2 headliners in parks with a schedule. Today's
               closing caps displayed times to the operating day. The "no need to
               rush" note renders only when some ride in the park IS recommended,
               so it never sits on every headliner of an unrecommended park. */}
-          {/* Chapter: plan your visit — rope-drop, typical waits, today's chart and the
+            {/* Chapter: plan your visit — rope-drop, typical waits, today's chart and the
               30-day history grid are grouped under one heading so the page reads as
               chapters instead of a long stack of separator-divided blocks. */}
-          <PageSection icon={Sparkles} title={t('sectionPlanVisit')} frosted>
-            {/* Rope-drop + typical waits — both server-rendered in the shell for
+            <PageSection icon={Sparkles} title={t('sectionPlanVisit')} frosted>
+              {/* Rope-drop + typical waits — both server-rendered in the shell for
                 headliners, so they paint together; side by side on wide screens,
                 stacked when only one is present. */}
-            {(attraction.ropeDrop || attraction.typicalWaits?.displayable) && (
-              <div
-                className={cn(
-                  'mb-6 grid items-start gap-6',
-                  attraction.ropeDrop && attraction.typicalWaits?.displayable && 'lg:grid-cols-2'
-                )}
-              >
-                {attraction.ropeDrop && (
-                  <RopeDropCard
-                    ropeDrop={attraction.ropeDrop}
-                    timezone={park.timezone}
-                    todayClosingUtc={
-                      park.schedule?.find(
-                        (s) =>
-                          s.date === formatInTimeZone(new Date(), park.timezone, 'yyyy-MM-dd') &&
-                          s.scheduleType === 'OPERATING'
-                      )?.closingTime ?? null
-                    }
-                    parkHasRecommendations={(park.attractions ?? []).some(
-                      (a) => a.ropeDrop && (a.ropeDrop.worth || isEveningBetter(a.ropeDrop))
-                    )}
-                  />
-                )}
-                {/* Typical (P50) vs busy (P90) peak waits — precomputed per headliner,
+              {(attraction.ropeDrop || attraction.typicalWaits?.displayable) && (
+                <div
+                  className={cn(
+                    'mb-6 grid items-start gap-6',
+                    attraction.ropeDrop && attraction.typicalWaits?.displayable && 'lg:grid-cols-2'
+                  )}
+                >
+                  {attraction.ropeDrop && (
+                    <RopeDropCard
+                      ropeDrop={attraction.ropeDrop}
+                      timezone={park.timezone}
+                      todayClosingUtc={
+                        park.schedule?.find(
+                          (s) =>
+                            s.date === formatInTimeZone(new Date(), park.timezone, 'yyyy-MM-dd') &&
+                            s.scheduleType === 'OPERATING'
+                        )?.closingTime ?? null
+                      }
+                      parkHasRecommendations={(park.attractions ?? []).some(
+                        (a) => a.ropeDrop && (a.ropeDrop.worth || isEveningBetter(a.ropeDrop))
+                      )}
+                    />
+                  )}
+                  {/* Typical (P50) vs busy (P90) peak waits — precomputed per headliner,
                     rendered in the static shell for SEO + instant paint. Non-headliner
                     displayable rides fall back to the client render below. */}
-                {attraction.typicalWaits?.displayable && (
-                  <AttractionTypicalWaits typicalWaits={attraction.typicalWaits} />
-                )}
-              </div>
-            )}
+                  {attraction.typicalWaits?.displayable && (
+                    <AttractionTypicalWaits typicalWaits={attraction.typicalWaits} />
+                  )}
+                </div>
+              )}
 
-            {/* 30-day history grid — client-loaded from the CDN-cached attraction
+              {/* 30-day history grid — client-loaded from the CDN-cached attraction
                 detail route so the heavy history time-series stays out of the ISR
                 shell (a skeleton holds the layout until it lands). The "Wartezeiten
                 heute" daily chart now lives in the unified live card above. */}
-            <AttractionHistorySections
-              continent={continent}
-              country={country}
-              city={city}
-              parkSlug={parkSlug}
-              attractionSlug={attractionSlug}
-              attractionName={attractionName}
-              suppressTypicalWaits={!!attraction.typicalWaits?.displayable}
-            />
-          </PageSection>
+              <AttractionHistorySections
+                continent={continent}
+                country={country}
+                city={city}
+                parkSlug={parkSlug}
+                attractionSlug={attractionSlug}
+                attractionName={attractionName}
+                suppressTypicalWaits={!!attraction.typicalWaits?.displayable}
+              />
+            </PageSection>
 
-          {/* Chapter: what this ride is and what it does — the curated link into
+            {/* Chapter: what this ride is and what it does — the curated link into
               the glossary. Static (hand-seeded) data, so it renders straight into
               the shell; the component returns null when the ride has no profile.
               Its own <PageSection> carries the #ride-profile anchor (and the
               repo's scroll-mt offset) so the header teaser's jump lands right. */}
-          {attraction.rideProfile && (
-            <RideProfileSection profile={attraction.rideProfile} locale={locale as Locale} />
-          )}
+            {attraction.rideProfile && (
+              <RideProfileSection profile={attraction.rideProfile} locale={locale as Locale} />
+            )}
 
-          {/* Chapter: FAQ (its own PageSection lives inside the component) */}
-          <AttractionFAQSection attraction={attraction} park={park} />
+            {/* Chapter: FAQ (its own PageSection lives inside the component) */}
+            <AttractionFAQSection attraction={attraction} park={park} />
 
-          {/* Chapter: what we wrote about this ride — static content out of the generated
+            {/* Chapter: what we wrote about this ride — static content out of the generated
               blog manifest (no API call, no clock), so it neither competes with the live
               queries nor adds anything to the shell's TTFB. Renders nothing when no post
               mentions the ride. */}
-          <Suspense fallback={null}>
-            <AttractionBlogPostsSection
-              locale={locale as Locale}
-              parkSlug={parkSlug}
-              attractionSlug={attractionSlug}
-              geoPath={`${continent}/${country}/${city}`}
-              attractionName={attractionName}
+            <Suspense fallback={null}>
+              <AttractionBlogPostsSection
+                locale={locale as Locale}
+                parkSlug={parkSlug}
+                attractionSlug={attractionSlug}
+                geoPath={`${continent}/${country}/${city}`}
+                attractionName={attractionName}
+              />
+            </Suspense>
+
+            <div className="mt-10">
+              <ShareButtons url={attractionUrl} title={attractionName} />
+            </div>
+
+            {/* Invite visitors to contribute their own photos of this ride */}
+            <ContributeBanner
+              className="mt-8"
+              href={
+                attraction.id
+                  ? buildContributeHref({
+                      type: 'attraction',
+                      id: attraction.id,
+                      name: attractionName,
+                      slug: attractionSlug,
+                      url: `/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
+                      country: park.country ?? undefined,
+                      parentParkName: parkName,
+                    })
+                  : undefined
+              }
             />
-          </Suspense>
 
-          <div className="mt-10">
-            <ShareButtons url={attractionUrl} title={attractionName} />
-          </div>
-
-          {/* Invite visitors to contribute their own photos of this ride */}
-          <ContributeBanner
-            className="mt-8"
-            href={
-              attraction.id
-                ? buildContributeHref({
-                    type: 'attraction',
-                    id: attraction.id,
-                    name: attractionName,
-                    slug: attractionSlug,
-                    url: `/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
-                    country: park.country ?? undefined,
-                    parentParkName: parkName,
-                  })
-                : undefined
-            }
-          />
-
-          {/* Secondary, lighter "make park.fan a preferred Google source" prompt */}
-          <PreferredSourcePrompt compact className="mt-8" />
-        </article>
-      </PageContainer>
-    </>
+            {/* Secondary, lighter "make park.fan a preferred Google source" prompt */}
+            <PreferredSourcePrompt compact className="mt-8" />
+          </article>
+        </PageContainer>
+      </>
+    </RouteMessages>
   );
 }

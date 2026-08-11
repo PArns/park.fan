@@ -27,6 +27,7 @@ import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import type { Breadcrumb } from '@/lib/api/types';
 import { getOgImageUrl } from '@/lib/utils/og-image';
+import { RouteMessages } from '@/i18n/route-messages';
 
 interface CategoryPageProps {
   params: Promise<{ locale: string; path: string[] }>;
@@ -121,41 +122,43 @@ export default async function BlogCategoryPage({ params }: CategoryPageProps) {
   ];
 
   return (
-    <>
-      <BlogStructuredData
-        locale={locale}
-        name={`${label} · ${t('title')}`}
-        description={t('category.description', { category: label })}
-        posts={visiblePosts}
-        path={`/blog/category/${fullPath}`}
-      />
-      <BreadcrumbStructuredData breadcrumbs={seoBreadcrumbs} locale={locale} />
-      <div className="container mx-auto px-4 py-10 sm:py-14">
-        <BreadcrumbNav
-          breadcrumbs={breadcrumbs}
-          currentPage={label}
-          variant="plain"
-          className="mb-6"
+    <RouteMessages route="/blog/category/[...path]">
+      <>
+        <BlogStructuredData
+          locale={locale}
+          name={`${label} · ${t('title')}`}
+          description={t('category.description', { category: label })}
+          posts={visiblePosts}
+          path={`/blog/category/${fullPath}`}
         />
+        <BreadcrumbStructuredData breadcrumbs={seoBreadcrumbs} locale={locale} />
+        <div className="container mx-auto px-4 py-10 sm:py-14">
+          <BreadcrumbNav
+            breadcrumbs={breadcrumbs}
+            currentPage={label}
+            variant="plain"
+            className="mb-6"
+          />
 
-        <BlogSectionHeader
-          as="h1"
-          badge={t('category.label')}
-          badgeIcon={FolderTree}
-          title={label}
-          meta={t('category.postsCount', { count: totalItems })}
-        />
+          <BlogSectionHeader
+            as="h1"
+            badge={t('category.label')}
+            badgeIcon={FolderTree}
+            title={label}
+            meta={t('category.postsCount', { count: totalItems })}
+          />
 
-        <div className="grid gap-8 lg:grid-cols-[1fr_280px]">
-          <BlogPostGrid posts={visiblePosts} />
-          <aside className="space-y-6 lg:sticky lg:top-20 lg:self-start">
-            <BlogCategoryTree locale={locale as Locale} activePath={fullPath} />
-            <BlogTagCloud locale={locale as Locale} />
-          </aside>
+          <div className="grid gap-8 lg:grid-cols-[1fr_280px]">
+            <BlogPostGrid posts={visiblePosts} />
+            <aside className="space-y-6 lg:sticky lg:top-20 lg:self-start">
+              <BlogCategoryTree locale={locale as Locale} activePath={fullPath} />
+              <BlogTagCloud locale={locale as Locale} />
+            </aside>
+          </div>
         </div>
-      </div>
 
-      <PageBottomSections locale={locale} />
-    </>
+        <PageBottomSections locale={locale} />
+      </>
+    </RouteMessages>
   );
 }

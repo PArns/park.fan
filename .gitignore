@@ -104,3 +104,7 @@ package-lock.json
 
 # Coaster render harness output (scripts/render-coaster-elements.mjs)
 .coaster-render/
+
+# Lazily fetched message namespaces — regenerated from messages/*.json by
+# `pnpm generate:message-chunks` in prebuild (see lib/i18n/route-namespaces.mjs).
+lib/i18n/message-chunks/
