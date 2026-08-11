@@ -47,8 +47,14 @@ function Cell({
       </span>
       {/* justify-start (not -center) so the primary value (badge/time) sits at the SAME top
           line across all cells — cells with a second line (Ø wait, countdown) grow downward
-          instead of pushing their badge up and out of alignment with single-line cells. */}
-      <div className="flex min-h-[1.75rem] flex-col items-start justify-start gap-1">
+          instead of pushing their badge up and out of alignment with single-line cells.
+          The min-height reserves BOTH lines (badge 1.375rem + gap-1 + text-xs 1rem), because the
+          second line is client-derived: the STATUS cell gains the park-local time as soon as the
+          browser clock mounts, and the hours cell its countdown. Reserving only one line let the
+          whole band — and with it everything below the header — jump 14px on every park page a
+          beat after paint. The row can never need a third line, so this is the resting height,
+          not extra whitespace. */}
+      <div className="flex min-h-[2.625rem] flex-col items-start justify-start gap-1">
         {children}
       </div>
     </div>

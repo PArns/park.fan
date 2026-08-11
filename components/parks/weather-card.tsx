@@ -75,7 +75,7 @@ export function WeatherCard({
   const tParks = useTranslations('parks');
 
   const hasParams = !!(continent && country && city && parkSlug);
-  const { data: liveNowcast } = useWeatherNowcast({
+  const { data: liveNowcast, isLoading: nowcastLoading } = useWeatherNowcast({
     continent: continent ?? '',
     country: country ?? '',
     city: city ?? '',
@@ -99,6 +99,16 @@ export function WeatherCard({
     enabled: hourly === undefined,
   });
   const activeHourly = hourly !== undefined ? hourly : fetchedHourly;
+
+  // The chart needs BOTH queries, so its box has to be held for as long as EITHER is still out.
+  // The old gate (`activeNowcast && hourlyLoading`) held nothing until the nowcast had landed, so
+  // on the common ordering no placeholder was ever rendered and the ~143px chart dropped straight
+  // onto a settled card, pushing the forecast strip and the rest of the page down. Reserving on
+  // either query moves that to hydration, before the content below has painted. Both flags are
+  // false while a query is disabled, so a park without coordinates still reserves nothing (they
+  // are also false during SSR — these are client-only queries — which is why the shell itself
+  // carries no placeholder; by the time one appears the swap is no longer visible).
+  const chartPending = hourlyLoading || nowcastLoading;
 
   // The base forecast (current + 7-day strip) is baked into the 1-day ISR shell, so it would be up
   // to a day stale. Subscribe to the same live park query LiveParkData polls (shared key → no extra
@@ -266,7 +276,10 @@ export function WeatherCard({
                 />
               </div>
             ) : (
-              <div className="text-muted-foreground space-y-0.5 text-right text-xs">
+              /* Pre-nowcast fallback. `min-h-16` is the height of the block that replaces it (the
+                 wind compass sets it), so the values re-centre in place instead of sliding 15px up
+                 the moment the nowcast lands. */
+              <div className="text-muted-foreground flex min-h-16 flex-col justify-center space-y-0.5 text-right text-xs">
                 <div
                   className="flex items-center justify-end gap-1 whitespace-nowrap"
                   title={t('precipLabel')}
@@ -294,13 +307,16 @@ export function WeatherCard({
               schedule={schedule ?? undefined}
               nowcast={activeNowcast}
             />
-          ) : activeNowcast && timezone && hourlyLoading ? (
-            /* The nowcast and the hourly fetch land ~1s apart, and the chart is ~143px tall —
-               without a same-size placeholder everything below the card jumped twice
-               (nowcast row, then chart). Mirrors the chart's layout: h-28 plot + mt-1 axis. */
+          ) : timezone && chartPending ? (
+            /* Same box as the chart (h-28 plot + mt-1 axis), held from the first paint until both
+               queries have answered. On the parks the nowcast doesn't cover it is released again
+               once that 404 comes back — a park that never had the chart trades the drop-in for a
+               collapse of the same size, which is the price of not shifting the ones that do. */
             <div className="min-w-0" aria-hidden="true">
               <div className="bg-muted/30 h-28 animate-pulse rounded-lg" />
-              <div className="mt-1 h-[31px]" />
+              {/* Matches the chart's axis row exactly (h-28 plot + mt-1 + 27px axis = 143px);
+                  the 31px this used to be left the strip below to hop 4px on the swap. */}
+              <div className="mt-1 h-[27px]" />
             </div>
           ) : null}
 
