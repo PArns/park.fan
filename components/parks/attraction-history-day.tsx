@@ -1,13 +1,13 @@
 'use client';
 
-import { PartyPopper, Calendar, Backpack, Ban, Luggage } from 'lucide-react';
+import { PartyPopper, Calendar, Backpack, Ban } from 'lucide-react';
 import type { AttractionHistoryDay, ScheduleItem, CrowdLevel } from '@/lib/api/types';
 import { Card } from '@/components/ui/card';
 import { CrowdLevelBadge } from './crowd-level-badge';
 import { HourlyP90Sparkline } from './hourly-p90-sparkline';
+import { NeighborHolidaysMarker } from './neighbor-holidays-marker';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
-import { useLocale, useTranslations } from 'next-intl';
-import { getRegionLabel, countryFlagEmoji } from '@/lib/utils/region-names';
+import { useTranslations } from 'next-intl';
 
 export interface DayDataProps {
   dateStr: string;
@@ -28,24 +28,14 @@ export function AttractionHistoryDay({ day }: AttractionHistoryDayProps) {
   const t = useTranslations('attractions');
   const tCommon = useTranslations('common');
   const tParks = useTranslations('parks');
-  const locale = useLocale();
   const { historyData } = day;
 
   // Neighbouring regions on school break that day — the same signal the park calendar carries,
   // and the reason a plain Tuesday can run park-holiday queues. Suppressed when the park was
-  // closed (nobody travelled in), matching ParkCalendarDay.
-  const neighborRegions = (() => {
-    if (day.attractionStatus === 'PARK_CLOSED') return [];
-    const seen = new Set<string>();
-    const out: { label: string; flag: string }[] = [];
-    for (const h of day.scheduleData?.influencingHolidays ?? []) {
-      const label = getRegionLabel(h.source.countryCode, h.source.regionCode, locale);
-      if (seen.has(label)) continue;
-      seen.add(label);
-      out.push({ label, flag: countryFlagEmoji(h.source.countryCode) });
-    }
-    return out;
-  })();
+  // closed (nobody travelled in), matching ParkCalendarDay. Note that a day reading "ride closed"
+  // keeps the marker: the park was open, the day-trippers still came, only this ride stood.
+  const neighborHolidays =
+    day.attractionStatus === 'PARK_CLOSED' ? [] : (day.scheduleData?.influencingHolidays ?? []);
 
   // Calculate min and max from hourlyP90 data
   const minMax =
@@ -137,41 +127,29 @@ export function AttractionHistoryDay({ day }: AttractionHistoryDayProps) {
           <span className={`text-sm ${day.isToday ? 'font-bold' : 'font-semibold'}`}>
             {day.dayOfMonth}. {day.month}
           </span>
-          {/* Amber, so it never blends with the local orange/yellow/blue holiday icons —
-              same colour split as the park calendar. */}
-          {neighborRegions.length > 0 && (
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Luggage
-                  className="h-3 w-3 cursor-help text-amber-500 dark:text-amber-400"
-                  aria-label={tParks('influencingHolidays')}
-                />
-              </TooltipTrigger>
-              <TooltipContent className="max-w-64">
-                <p className="font-semibold">{tParks('influencingHolidays')}</p>
-                <p className="mt-1 leading-snug opacity-90">
-                  {neighborRegions.map((r) => `${r.flag} ${r.label}`.trim()).join(' · ')}
-                </p>
-              </TooltipContent>
-            </Tooltip>
-          )}
-          {(() => {
-            const scheduleIcon = getScheduleIcon();
-            if (scheduleIcon) {
-              const { Icon, color, tooltip } = scheduleIcon;
-              return (
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Icon className={`h-3 w-3 ${color} cursor-help`} />
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>{tooltip}</p>
-                  </TooltipContent>
-                </Tooltip>
-              );
-            }
-            return null;
-          })()}
+          {/* Same markers, same sizes, same `gap-1` between them as the park calendar cell. Both
+              sit next to a `text-sm` date, so the smaller icons this tile used to carry only
+              read as a different component. */}
+          <div className="flex items-center gap-1">
+            {neighborHolidays.length > 0 && <NeighborHolidaysMarker holidays={neighborHolidays} />}
+            {(() => {
+              const scheduleIcon = getScheduleIcon();
+              if (scheduleIcon) {
+                const { Icon, color, tooltip } = scheduleIcon;
+                return (
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Icon className={`h-4 w-4 ${color} cursor-help`} aria-label={tooltip} />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{tooltip}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                );
+              }
+              return null;
+            })()}
+          </div>
         </div>
       </div>
 
