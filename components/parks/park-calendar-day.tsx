@@ -10,7 +10,6 @@ import {
   Clock,
   HelpCircle,
   Info,
-  Luggage,
   Star,
 } from 'lucide-react';
 import type { CalendarDay } from '@/lib/api/types';
@@ -21,6 +20,8 @@ import { format, parseISO } from 'date-fns';
 import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
 import { getWeatherIconFromCode, getEventIcon } from '@/lib/utils/calendar-utils';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
+import { NeighborHolidaysMarker } from '@/components/parks/neighbor-holidays-marker';
+import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import { ParkTimeRange } from '@/components/common/park-time';
 
 export interface ParkCalendarDayProps {
@@ -64,8 +65,8 @@ function ParkCalendarDayComponent({
   const dayOfMonth = format(dayDate, 'd', { locale: dateLocale });
   const month = format(dayDate, 'MMM', { locale: dateLocale });
 
-  // Get schedule icon + label. Native `title` gives a lightweight desktop hover
-  // hint; the full explanation lives in the click-to-open detail panel (mobile).
+  // Get schedule icon + label. The label hovers in a tooltip on desktop; the full explanation
+  // lives in the click-to-open detail panel, which is the only route to it on touch.
   // Priority: CLOSED / UNKNOWN (by status) > Public Holiday > School Vacation > Bridge Day
   const getScheduleIcon = () => {
     if (day.status === 'CLOSED') {
@@ -179,23 +180,25 @@ function ParkCalendarDayComponent({
           </span>
         </div>
         <div className="flex items-center gap-1">
-          {/* Neighbouring-region holidays: amber Luggage marker (distinct from the
-              local orange/yellow/blue holiday icons). Full list in the detail panel. */}
-          {hasNeighbor && (
-            <span title={t('influencingHolidays')} className="inline-flex">
-              <Luggage
-                className="h-4 w-4 text-amber-500 dark:text-amber-400"
-                aria-label={t('influencingHolidays')}
-              />
-            </span>
-          )}
+          {/* Neighbouring-region holidays: amber Luggage marker (distinct from the local
+              orange/yellow/blue holiday icons), hovering into the region list. Shared with the
+              ride page's history tile so the same marker never explains itself two ways. */}
+          {hasNeighbor && <NeighborHolidaysMarker holidays={day.neighborHolidays} />}
           {scheduleIcon && (
-            <span title={scheduleIcon.label} className="inline-flex">
-              <scheduleIcon.Icon
-                className={`h-4 w-4 ${scheduleIcon.color}`}
-                aria-label={scheduleIcon.label}
-              />
-            </span>
+            /* A styled tooltip rather than the browser's `title`: sitting next to the marker
+               above, a native tip reads as a different kind of thing — different box, different
+               delay, and on the cell it competes with the click that opens the day dialog. */
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <scheduleIcon.Icon
+                  className={`h-4 w-4 cursor-help ${scheduleIcon.color}`}
+                  aria-label={scheduleIcon.label}
+                />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{scheduleIcon.label}</p>
+              </TooltipContent>
+            </Tooltip>
           )}
         </div>
       </div>
