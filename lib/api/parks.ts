@@ -348,15 +348,18 @@ async function fetchParkByGeoPath(
  * 25.7 KB of a 58.2 KB response — the single largest block in it, larger than the wait-time
  * history the page exists to draw.
  *
- * Nothing on the ride page reads it. Two components touch this schedule and between them they
- * read four fields: `AttractionHistoryGrid` looks up `date` → `scheduleType` to tell "ride was
- * closed" apart from "park was closed", and `DailyWaitTimeChartClient` reads today's
- * `openingTime`/`closingTime` to set the chart's x-axis. The holiday context that IS rendered
- * (the header panel's neighbouring-regions chips) is a PARK-page feature and comes from the park
- * payload, not from here.
+ * Nothing on the ride page reads that per-day region list — the neighbouring-regions chips it
+ * feeds are a PARK-page feature and come from the park payload. But the day flags next to it are
+ * read here: `AttractionHistoryGrid` colours each day's border and puts an icon in its corner for
+ * a public holiday, a school vacation or a bridge day (that is what its legend promises), and
+ * looks up `scheduleType` to tell "ride was closed" apart from "park was closed".
+ * `DailyWaitTimeChartClient` reads today's `openingTime`/`closingTime` for the chart's x-axis.
  *
- * So the schedule is projected down to those four fields. Everything else in the response —
- * history, hourlyForecast, typicalWaits, rideProfile, predictionAccuracy — is untouched.
+ * So the projection keeps those flags — 2.8 KB across the 31 days, against the 26.2 KB the region
+ * lists cost on the same response — and drops `influencingHolidays` alone. Listing the kept fields
+ * rather than deleting the one is deliberate: a new per-day array on the API cannot silently land
+ * in this payload. Everything else in the response — history, hourlyForecast, typicalWaits,
+ * rideProfile, predictionAccuracy — is untouched.
  */
 function leanAttractionForDetail(attraction: AttractionResponse): AttractionResponse {
   if (!Array.isArray(attraction.schedule)) return attraction;
@@ -369,6 +372,14 @@ function leanAttractionForDetail(attraction: AttractionResponse): AttractionResp
           scheduleType: day.scheduleType,
           openingTime: day.openingTime,
           closingTime: day.closingTime,
+          // Marker flags for the history grid's day borders/icons. `isSchoolHoliday` and
+          // `isSchoolVacation` are the same marker under two names — the API has sent either
+          // depending on the park, and the grid checks both.
+          isPublicHoliday: day.isPublicHoliday,
+          isSchoolHoliday: day.isSchoolHoliday,
+          isSchoolVacation: day.isSchoolVacation,
+          isBridgeDay: day.isBridgeDay,
+          holidayName: day.holidayName,
         }) as ScheduleItem
     ),
   };
