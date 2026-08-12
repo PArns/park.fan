@@ -6,6 +6,7 @@ import type {
   ParkWaitTimesResponse,
   PopularPark,
   ScheduleItem,
+  InfluencingHoliday,
 } from './types';
 
 // Data-cache (`fetch` `next: { revalidate }`) windows for the park/attraction structure fetch.
@@ -342,46 +343,60 @@ async function fetchParkByGeoPath(
 /**
  * Trim for the ATTRACTION DETAIL response — the payload the ride page fetches client-side.
  *
- * The response carries the park's 31-day schedule so the chart can find today's opening hours,
- * and each of those days carries `influencingHolidays`: the list of neighbouring regions whose
- * school break falls on that date. On Phantasialand in August that is 8 regions per day, and
- * 25.7 KB of a 58.2 KB response — the single largest block in it, larger than the wait-time
- * history the page exists to draw.
+ * Everything this touches is the park's 31-day schedule, which rides on the response so the chart
+ * can find today's opening hours. `AttractionHistoryGrid` draws the rest of it: each day's border
+ * and corner icons come from the holiday flags, `scheduleType` tells "ride was closed" apart from
+ * "park was closed", and the amber marker from `influencingHolidays` — the neighbouring regions on
+ * school break that day, the same signal the park calendar carries.
  *
- * Nothing on the ride page reads that per-day region list — the neighbouring-regions chips it
- * feeds are a PARK-page feature and come from the park payload. But the day flags next to it are
- * read here: `AttractionHistoryGrid` colours each day's border and puts an icon in its corner for
- * a public holiday, a school vacation or a bridge day (that is what its legend promises), and
- * looks up `scheduleType` to tell "ride was closed" apart from "park was closed".
- * `DailyWaitTimeChartClient` reads today's `openingTime`/`closingTime` for the chart's x-axis.
+ * That region list is the reason this projection exists. Raw it is 25.6 KB of a 57.3 KB response,
+ * which reads like the one block worth cutting. It is not: the entries repeat heavily (267 across
+ * the window, only 147 distinct), so gzip takes the whole thing to 0.4 KB. Judge this block on the
+ * compressed number or the trim optimizes something the visitor never pays for.
  *
- * So the projection keeps those flags — 2.8 KB across the 31 days, against the 26.2 KB the region
- * lists cost on the same response — and drops `influencingHolidays` alone. Listing the kept fields
- * rather than deleting the one is deliberate: a new per-day array on the API cannot silently land
- * in this payload. Everything else in the response — history, hourlyForecast, typicalWaits,
- * rideProfile, predictionAccuracy — is untouched.
+ * What is worth removing is the repetition itself, because `JSON.parse` runs on the main thread
+ * and pays the RAW size. So each day's list is deduplicated by country+region and stripped to the
+ * `source` pair the labels are derived from — `name` and `holidayType` are never rendered here,
+ * the grid resolves its own localized names through `getRegionLabel`. 25.6 KB becomes 14.6 KB raw
+ * and 0.2 KB gzip over dropping it outright.
+ *
+ * Listing the kept fields rather than deleting the unwanted ones is deliberate: a new per-day
+ * array on the API cannot silently land in this payload. Everything else in the response —
+ * history, hourlyForecast, typicalWaits, rideProfile, predictionAccuracy — is untouched.
  */
 function leanAttractionForDetail(attraction: AttractionResponse): AttractionResponse {
   if (!Array.isArray(attraction.schedule)) return attraction;
   return {
     ...attraction,
-    schedule: attraction.schedule.map(
-      (day) =>
-        ({
-          date: day.date,
-          scheduleType: day.scheduleType,
-          openingTime: day.openingTime,
-          closingTime: day.closingTime,
-          // Marker flags for the history grid's day borders/icons. `isSchoolHoliday` and
-          // `isSchoolVacation` are the same marker under two names — the API has sent either
-          // depending on the park, and the grid checks both.
-          isPublicHoliday: day.isPublicHoliday,
-          isSchoolHoliday: day.isSchoolHoliday,
-          isSchoolVacation: day.isSchoolVacation,
-          isBridgeDay: day.isBridgeDay,
-          holidayName: day.holidayName,
-        }) as ScheduleItem
-    ),
+    schedule: attraction.schedule.map((day) => {
+      // The API sends one entry per holiday per region, so a region whose break spans several
+      // named holidays arrives two or three times over. The grid renders each region once.
+      const seen = new Set<string>();
+      const influencing: InfluencingHoliday[] = [];
+      for (const h of day.influencingHolidays ?? []) {
+        const key = `${h.source.countryCode}-${h.source.regionCode ?? ''}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        influencing.push({
+          source: { countryCode: h.source.countryCode, regionCode: h.source.regionCode },
+        } as InfluencingHoliday);
+      }
+      return {
+        date: day.date,
+        scheduleType: day.scheduleType,
+        openingTime: day.openingTime,
+        closingTime: day.closingTime,
+        // Marker flags for the history grid's day borders/icons. `isSchoolHoliday` and
+        // `isSchoolVacation` are the same marker under two names — the API has sent either
+        // depending on the park, and the grid checks both.
+        isPublicHoliday: day.isPublicHoliday,
+        isSchoolHoliday: day.isSchoolHoliday,
+        isSchoolVacation: day.isSchoolVacation,
+        isBridgeDay: day.isBridgeDay,
+        holidayName: day.holidayName,
+        ...(influencing.length > 0 && { influencingHolidays: influencing }),
+      } as ScheduleItem;
+    }),
   };
 }
 

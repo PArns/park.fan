@@ -3,7 +3,7 @@
 import { useLocale, useTranslations } from 'next-intl';
 import { format, eachDayOfInterval } from 'date-fns';
 import { de, enUS, es, fr, it, nl, type Locale } from 'date-fns/locale';
-import { Ban, PartyPopper, Backpack, Calendar } from 'lucide-react';
+import { Ban, PartyPopper, Backpack, Calendar, Luggage } from 'lucide-react';
 import type { AttractionHistoryDay, ScheduleItem } from '@/lib/api/types';
 import { Card } from '@/components/ui/card';
 import { SectionHeading } from '@/components/common/section-heading';
@@ -25,6 +25,7 @@ interface GridDayData extends DayDataProps {
 export function AttractionHistoryGrid({ attraction }: AttractionHistoryGridProps) {
   const locale = useLocale();
   const t = useTranslations('attractions');
+  const tParks = useTranslations('parks');
   // "today" is derived from the browser clock (null until mount) so the static shell never reads
   // the server clock — previously getServerNowMs() here pinned the attraction shell's revalidate.
   const browserNow = useBrowserNow(null);
@@ -156,6 +157,13 @@ export function AttractionHistoryGrid({ attraction }: AttractionHistoryGridProps
             <div className="flex items-center gap-1.5 rounded-md border border-blue-500 bg-white px-2 py-1 dark:bg-gray-900/50">
               <Calendar className="h-3.5 w-3.5 text-blue-500 dark:text-blue-400" />
               <span className="text-xs">{t('historyLegend.bridgeDay')}</span>
+            </div>
+            {/* Neighbouring-region school breaks. No border colour of its own — the day's
+                border is already spoken for by the local markers, so this one lives only as
+                the amber corner icon, exactly as on the park calendar. */}
+            <div className="border-border/60 flex items-center gap-1.5 rounded-md border bg-white px-2 py-1 dark:bg-gray-900/50">
+              <Luggage className="h-3.5 w-3.5 text-amber-500 dark:text-amber-400" />
+              <span className="text-xs">{tParks('influencingHolidays')}</span>
             </div>
           </div>
         </div>
