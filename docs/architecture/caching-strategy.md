@@ -301,10 +301,17 @@ is a full render (`x-vercel-cache: MISS`, always), yet the structure comes from 
 old — rendering it per request buys no freshness at all, and an edge TTL costs none.
 
 - **Edge TTL: override origin.** The page sends `private, no-cache, no-store` (what Next emits for
-  `force-dynamic`), and no `headers()` entry can change that for a page — see the note in
-  `next.config.ts`. The rule has to ignore the origin here, which is safe only because the response
-  carries nothing visitor-specific: no `cookies()`, no `headers()`, no request IP anywhere in the
-  park page tree, and the temperature unit is server-rendered in both units and switched by CSS.
+  `force-dynamic`), and nothing at the origin can change that — see below. The rule has to ignore
+  the origin here, which is safe only because the response carries nothing visitor-specific: no
+  `cookies()`, no `headers()`, no request IP anywhere in the park page tree, and the temperature
+  unit is server-rendered in both units and switched by CSS.
+- **Exclude `/api/` from the matcher.** This one is not optional, and it is easy to miss because
+  Cloudflare's `wildcard` operator matches across `/`: `/*/parks/*/*/*/*` also catches
+  `/api/parks/europe/germany/rust/europa-park`, where the first `*` absorbs `api`. Paired with the
+  Edge TTL override that puts the 60-second live wait-time poll into a two-hour edge cache —
+  measured as `no-store` from the origin answered with `HIT` and a climbing `age`, i.e. every
+  visitor of a park seeing the same wait times for two hours. Add `URI Path does not start with
+/api/` as a second condition.
 - **Keep the query string in the cache key.** Next distinguishes RSC payloads from HTML with the
   `_rsc` search parameter precisely because CDNs ignore `Vary` (the response carries
   `Vary: rsc, next-router-state-tree, …`, which Cloudflare does not honour). Strip query params
@@ -314,6 +321,29 @@ old — rendering it per request buys no freshness at all, and an edge TTL costs
 - **This does not bring ISR writes back.** Nothing is persisted at the origin — the render still
   happens per request on a miss, the copy lives in Cloudflare. That matters given the Jun 2026
   bill above, and it is the reason to do this at the CDN rather than by giving up `force-dynamic`.
+
+### Why the TTL lives in the dashboard and not in this repo
+
+The override is the unpleasant part of that rule: it is what forces the `/api/` exclusion, and it
+puts a number that governs production into a form field nobody reviews. The alternative would be
+"use cache-control header if present" — every route carrying its own window, `no-store` protecting
+itself. That needs an `s-maxage` on the page response, and there is no way to put one there.
+
+Measured Aug 2026, both routes in, both lost against the page's own `Cache-Control`:
+
+| Attempt                           | Marker header | `Cache-Control` |
+| --------------------------------- | ------------- | --------------- |
+| `headers()` in `next.config.ts`   | arrives       | page's value    |
+| Response header set in `proxy.ts` | arrives       | page's value    |
+
+The `headers()` attempt was deployed to production, not just tried locally: the rule matched (a
+marker header on the same `source` arrived on the park URL and correctly not on the `/de/parks/
+europe` hub) and the deployment had rolled out (the `data-dpl-id` in the HTML changed first), yet
+the response still carried `private, no-cache, no-store, max-age=0, must-revalidate`. The older
+"verified against the dev server" note turned out to hold on Vercel too.
+
+So the remaining origin-side lever is giving up `force-dynamic`, which is the ISR-write trade this
+whole page exists to avoid. Don't re-run these two experiments.
 
 Worth watching after enabling: Vercel's own usage should stay flat except for a drop in function
 invocations. If ISR Write Units move at all, the rule is not what caused it.

@@ -661,51 +661,35 @@ const nextConfig: NextConfig = {
           { key: 'Cache-Control', value: 'public, s-maxage=86400, stale-while-revalidate=604800' },
         ],
       },
-      // The park and attraction pages, which are `export const dynamic = 'force-dynamic'` and
-      // therefore answer `private, no-cache, no-store` on their own.
+      // NOTE — the park and attraction pages cannot be given a Cache-Control from here, and this
+      // is now settled on the platform they actually run on, not just locally.
       //
-      // The note that stood here said not to bother: a `headers()` rule overrides Cache-Control
-      // for ROUTE HANDLERS (what the /api entries above rely on) but not for a dynamic PAGE, the
-      // page's own value wins. That was **verified against the dev server**, and the dev server is
-      // not where this runs. On Vercel these rules are compiled into the routing layer and applied
-      // to the response after the function returns, which is a different mechanism — so the
-      // conclusion did not necessarily transfer. Re-tested Aug 2026: setting the header from
-      // `proxy.ts` definitely does NOT work (a custom marker header survives, Cache-Control
-      // specifically gets overwritten), which leaves this entry as the one path worth trying.
+      // They are `export const dynamic = 'force-dynamic'` and answer `private, no-cache, no-store,
+      // max-age=0, must-revalidate`. A `headers()` rule overrides Cache-Control for ROUTE HANDLERS
+      // (which is what every /api entry above relies on) but not for a dynamic PAGE. Both ways in
+      // were measured in Aug 2026 and both lose:
       //
-      // Why it is worth trying at all, given Cloudflare needs a Cache Rule for HTML either way:
-      // with an `s-maxage` on the response the rule can run on "use cache-control header if
-      // present" instead of "ignore cache-control and use this TTL". The override is what made
-      // the rule dangerous — its matcher also caught `/api/parks/…` and served the 60-second live
-      // wait-time poll from a two-hour edge cache. Respecting the origin makes every route carry
-      // its own window and puts the TTL in review, not in a dashboard field.
+      //   1. `headers()` here, deployed to production. The rule MATCHES — a marker header added
+      //      to the same `source` arrived on the park URL and, correctly, not on the `/de/parks/
+      //      europe` hub — but `Cache-Control` came back as the page's own value. Confirmed
+      //      against a deployment that had definitely rolled out (the `data-dpl-id` in the HTML
+      //      changed first). So the older "verified against the dev server" note held on Vercel
+      //      too; the routing layer applying rules after the function does not help here.
+      //   2. `proxy.ts`. Same picture, one step earlier: a custom marker header set on the
+      //      middleware response survives to the client, `Cache-Control` specifically gets
+      //      overwritten by the page.
       //
-      // 2 h is deliberately below what freshness would allow: the structure behind these pages
-      // comes from a data cache with PARK_REVALIDATE = 86400 and every live value is client-side,
-      // so the HTML is already up to a day old. The limit is deploys, not data — until a purge
-      // hook exists, a long TTL means visitors sit on the previous deployment.
+      // What this costs: the Cloudflare Cache Rule in front cannot run on "use cache-control
+      // header if present" — with no `s-maxage` to read it would simply bypass. It has to use
+      // "ignore cache-control and use this TTL", and that override is why its matcher must
+      // exclude `/api/` by hand: without the exclusion it also catches `/api/parks/…` and serves
+      // the 60-second live wait-time poll from the page cache. The TTL therefore lives in the
+      // dashboard, not in this file. See "The HTML never reaches Cloudflare's cache" in
+      // docs/architecture/caching-strategy.md.
       //
-      // If this does not land in production either, delete the entry and write "on Vercel too"
-      // into the note instead of leaving the next person to re-run the same experiment.
-      // Verify: curl -sI https://park.fan/de/parks/europe/germany/rust/europa-park | grep -i cache-control
-      {
-        source: '/:locale(de|en|nl|fr|es|it)/parks/:continent/:country/:city/:park',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=0, s-maxage=7200, stale-while-revalidate=86400',
-          },
-        ],
-      },
-      {
-        source: '/:locale(de|en|nl|fr|es|it)/parks/:continent/:country/:city/:park/:attraction',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=0, s-maxage=7200, stale-while-revalidate=86400',
-          },
-        ],
-      },
+      // Do not try this again from here. The only remaining lever at the origin would be giving
+      // up force-dynamic, and that brings back the per-URL ISR writes it was chosen to avoid
+      // (~250k write units/day in Jun 2026).
       {
         source: '/:locale/search',
         headers: [{ key: 'Cache-Control', value: 'no-store, must-revalidate' }],
