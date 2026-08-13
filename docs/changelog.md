@@ -4,6 +4,21 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – the API is discoverable without a human in the loop
+
+park.fan now answers `/.well-known/api-catalog` with the RFC 9727 catalog: a linkset naming
+api.park.fan's OpenAPI description, its docs and its health endpoint. The homepage advertises it
+in a `Link` header, so an agent that only has the hostname can get from a page to a machine-
+readable API description in one hop. Only park.fan serves one: a well-known URI is asked of the
+host a client already holds, so api.park.fan would need a catalog of its own — that is a change
+in the backend repo, and it has not been made.
+
+Both come from `lib/api-catalog.ts` — the header is never rendered anywhere, so a URL corrected
+in only one of the two would rot unnoticed. [API discovery](seo/api-discovery.md) has the
+document, the header rules and the traps (locale-root matching, ASCII-only header values).
+
+---
+
 ## Unreleased – feat: das Menü wird ein Band, mit Flaggen und Fotos
 
 Das Panel war eine schmale Box mit einer Kontinent-Schiene, die eine
