@@ -250,17 +250,30 @@ const nextConfig: NextConfig = {
       ],
       ['north-america/:country/:city', 'universals-epic-universe', 'universal-epic-universe'],
       ['north-america/:country/:city', 'universals-volcano-bay', 'universal-volcano-bay'],
-      [
-        'north-america/:country/:city',
-        'disneys-animal-kingdom-theme-park',
-        'disney-animal-kingdom',
-      ],
-      // Upstream (ThemeParks Wiki) renamed these; the API answers only on the new slug.
-      // NOTE the direction — `toverland -> attractiepark-toverland` used to be listed the other
-      // way round, which sent the WORKING url to a 404 once upstream flipped the names.
-      ['europe/:country/:city', 'attractiepark-toverland', 'toverland'],
-      ['north-america/:country/:city', 'magic-kingdom-park', 'disney-magic-kingdom'],
-      ['north-america/:country/:city', 'disneys-hollywood-studios', 'disney-hollywood-studios'],
+      // Four entries used to live here — Toverland, Magic Kingdom, Hollywood Studios and Animal
+      // Kingdom — and they are deliberately gone rather than flipped again.
+      //
+      // Upstream (ThemeParks Wiki) does not rename these once, it oscillates. The comment that
+      // stood here recorded one flip already ("`toverland -> attractiepark-toverland` used to be
+      // listed the other way round"), and upstream has since flipped all four BACK: the API now
+      // answers 200 on `attractiepark-toverland`, `magic-kingdom-park`,
+      // `disneys-hollywood-studios` and `disneys-animal-kingdom-theme-park`, and 301s the short
+      // names to them. A static rule pointing at the short name therefore sent the working URL to
+      // one that redirects straight back — four park pages were answering with a redirect LOOP,
+      // which a browser reports as a failed navigation (Aug 2026).
+      //
+      // No rule replaces them because none is needed: the park page already canonicalises on what
+      // the API actually returns. It follows the API's 301, notices the slug it is holding differs
+      // from the one in the URL and 308s to the real path — verified as the source of the correct
+      // `/toverland -> /attractiepark-toverland` redirect. That path follows upstream on its own,
+      // through this flip and the next one; a hard-coded pair only ever races it.
+      //
+      // The entries that remain below are a different case: there the API 404s the old slug
+      // instead of redirecting, so nothing dynamic can rescue the URL and a static rule is the
+      // only thing standing between an indexed link and a dead end. Before adding one here, check
+      // which of the two it is — `curl -sI https://api.park.fan/v1/parks/<geo>/<slug>`. A 301
+      // means leave it alone.
+      //
       // 'adventure-island' -> 'adventure-island-tampa' was dropped: the park is gone from the
       // API entirely (Tampa now lists only Busch Gardens and Islands of Adventure), so the rule
       // only redirected one dead url to another. A plain 404 is the honest answer.
