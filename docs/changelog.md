@@ -4,6 +4,18 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – the API is discoverable without a human in the loop
+
+park.fan now answers `/.well-known/api-catalog` with the RFC 9727 catalog: a linkset naming
+api.park.fan's OpenAPI description, its docs and its health endpoint. The homepage advertises it
+in a `Link` header, so an agent that only has the hostname can get from a page to a machine-
+readable API description in one hop. The backend serves the same catalog at its own root, since
+a well-known URI is asked of the host the client already has.
+
+Both come from `lib/api-catalog.ts` — the header is never rendered anywhere, so a URL corrected
+in only one of the two would rot unnoticed. [API discovery](seo/api-discovery.md) has the
+document, the header rules and the traps (locale-root matching, ASCII-only header values).
+
 ## Unreleased – the hero search placeholder no longer types
 
 The homepage search field used to type park and ride names into its placeholder,
