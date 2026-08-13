@@ -1,4 +1,4 @@
-import { getServerAuthHeaders } from '@/lib/api/client';
+import { getServerApiHeaders } from '@/lib/api/client';
 import type { ParkHistoricalStats } from '@/lib/api/types';
 
 const getApiBaseUrl = () =>
@@ -46,9 +46,9 @@ export async function getParkHistoricalStats(
       // re-polled within this cache-fill instead of replaying the first failed response.
       const res =
         attempt === 0
-          ? await fetch(url, { headers: getServerAuthHeaders() })
+          ? await fetch(url, { headers: getServerApiHeaders() })
           : await fetch(`${url}&_r=${attempt}`, {
-              headers: getServerAuthHeaders(),
+              headers: getServerApiHeaders(),
             });
 
       if (res.ok) {

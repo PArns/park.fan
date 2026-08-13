@@ -61,10 +61,10 @@ function haversineKm(lat1: number, lng1: number, lat2: number, lng2: number): nu
  *
  * Pass null for both coords to skip the distance check (used at init time before GPS resolves).
  */
-function readCache(
+function readCacheEntry(
   currentLat: number | null,
   currentLng: number | null
-): NearbyResponse | undefined {
+): CachedNearby | undefined {
   if (typeof window === 'undefined') return undefined;
   try {
     const raw = localStorage.getItem(CACHE_KEY);
@@ -81,10 +81,17 @@ function readCache(
     ) {
       return undefined;
     }
-    return cached.data;
+    return cached;
   } catch {
     return undefined;
   }
+}
+
+function readCache(
+  currentLat: number | null,
+  currentLng: number | null
+): NearbyResponse | undefined {
+  return readCacheEntry(currentLat, currentLng)?.data;
 }
 
 function writeCache(data: NearbyResponse, lat: number | null, lng: number | null): void {
@@ -188,10 +195,36 @@ export function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
     // or > 5 min old) is silently dropped. Disabled while simulating.
     placeholderData: (prev) =>
       simMode ? undefined : (prev ?? readCache(position?.lat ?? null, position?.lng ?? null)),
+    // …but `placeholderData` only PAINTS the cached result, it does not count as data, so
+    // React Query fetched again on every single page load — the persisted entry saved the
+    // spinner and nothing else. Seeding it as `initialData` makes `staleTime` apply to it, so
+    // a load within the 5-minute window renders from localStorage and sends no request at all.
+    //
+    // `initialDataUpdatedAt` is what makes that honest: without it React Query would treat a
+    // 4-minute-old entry as written just now and hold off the refresh for another five. With
+    // it the entry expires when it actually expires. Both stay off while simulating, same as
+    // the placeholder — a simulated location must never seed or read the real cache.
+    //
+    // The distance guard inside readCacheEntry still applies, so when GPS coords arrive and
+    // the query key changes, an entry from more than 10 km away seeds nothing.
+    initialData: simMode
+      ? undefined
+      : () => readCacheEntry(position?.lat ?? null, position?.lng ?? null)?.data,
+    initialDataUpdatedAt: simMode
+      ? undefined
+      : () => readCacheEntry(position?.lat ?? null, position?.lng ?? null)?.cachedAt,
     staleTime: CACHE_MAX_AGE_MS,
     gcTime: 10 * 60 * 1000,
     refetchOnWindowFocus: true,
-    refetchInterval: 5 * 60 * 1000,
+    // Poll only when the answer can actually change. With real coordinates it can — the point
+    // of the poll is noticing that somebody walked into a park, which is what flips the hero
+    // and the header pill. Without them the backend geolocates the request IP, and that is
+    // city-level at best: it can never resolve the 1 km in-park radius, and it does not move
+    // while a tab sits open. So the IP case was re-asking the same question every five minutes
+    // for the whole life of the tab and getting the same answer back. `refetchOnWindowFocus`
+    // still covers the case where someone leaves the tab for an hour and comes back on a
+    // different network.
+    refetchInterval: hasCoords ? 5 * 60 * 1000 : false,
   });
 }
 

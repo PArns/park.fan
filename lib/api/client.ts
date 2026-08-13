@@ -9,18 +9,43 @@ const getApiBaseUrl = () => {
 };
 
 /**
- * Auth header for backend (api.park.fan) requests.
+ * How this frontend names itself to api.park.fan.
+ *
+ * Without it every server-side request arrives as undici's default `node`, which makes the
+ * backend's access log useless for telling our traffic apart from anything else pointed at the
+ * same host. The deployment SHA is in there because the interesting question in that log is
+ * usually "which deploy is hammering this", and the environment because build, preview and
+ * production hit the same rate limit (300 req/60s) from the same origin.
+ *
+ * Server-side only, deliberately: `User-Agent` is a forbidden header name in the browser's
+ * fetch, so setting it there is silently dropped — and the browser never talks to the backend
+ * directly anyway, it goes through this app's own /api proxy routes.
+ */
+function serverUserAgent(): string {
+  const sha = process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) ?? 'dev';
+  const env = process.env.VERCEL_ENV ?? 'local';
+  return `park.fan/${sha} (+https://park.fan; ${env})`;
+}
+
+/**
+ * Headers every request that targets the backend (api.park.fan) DIRECTLY should carry:
+ * the auth key and the identifying User-Agent above.
  *
  * The key lives in the server-only `API_AUTH_KEY` env var (NOT `NEXT_PUBLIC_`), so it
- * is only available server-side. Returns the `x-auth-key` header when the key is
- * configured, otherwise an empty object — on the client (where requests go through the
- * Next.js proxy routes) and in unconfigured environments nothing extra is sent.
+ * is only available server-side. It is omitted when unconfigured — on the client (where
+ * requests go through the Next.js proxy routes) and in unconfigured environments.
  *
- * Spread this into the `headers` of any fetch that targets the backend directly.
+ * Spread this into the `headers` of any fetch that targets the backend directly. It was called
+ * `getServerAuthHeaders` while the key was the only thing in it; the User-Agent went in here
+ * rather than into a second helper that call sites could forget to add.
  */
-export function getServerAuthHeaders(): Record<string, string> {
+export function getServerApiHeaders(): Record<string, string> {
+  if (typeof window !== 'undefined') return {};
   const key = process.env.API_AUTH_KEY;
-  return key ? { 'x-auth-key': key } : {};
+  return {
+    'User-Agent': serverUserAgent(),
+    ...(key ? { 'x-auth-key': key } : {}),
+  };
 }
 
 export interface FetchOptions extends RequestInit {
@@ -110,7 +135,7 @@ export async function apiFetch<T>(endpoint: string, options: FetchOptions = {}):
         headers: {
           'Content-Type': 'application/json',
           ...fetchOptions.headers,
-          ...getServerAuthHeaders(),
+          ...getServerApiHeaders(),
         },
       });
 

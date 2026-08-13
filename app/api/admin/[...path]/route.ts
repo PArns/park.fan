@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerAuthHeaders } from '@/lib/api/client';
+import { getServerApiHeaders } from '@/lib/api/client';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://api.park.fan';
 
@@ -21,7 +21,7 @@ async function proxyRequest(request: NextRequest, path: string[]) {
 
   const response = await fetch(apiUrl.toString(), {
     method: request.method,
-    headers: { 'Content-Type': 'application/json', ...getServerAuthHeaders() },
+    headers: { 'Content-Type': 'application/json', ...getServerApiHeaders() },
     body: request.method !== 'GET' ? await request.text() : undefined,
     cache: 'no-store',
   });

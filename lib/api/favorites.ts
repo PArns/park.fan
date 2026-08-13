@@ -1,4 +1,4 @@
-import { getServerAuthHeaders } from '@/lib/api/client';
+import { getServerApiHeaders } from '@/lib/api/client';
 import type {
   ScheduleSummary,
   CrowdLevel,
@@ -232,7 +232,7 @@ export async function getFavorites(
     const response = await fetch(apiUrl.toString(), {
       headers: {
         'Content-Type': 'application/json',
-        ...getServerAuthHeaders(),
+        ...getServerApiHeaders(),
       },
       cache: 'no-store', // User-specific (cookies/context), do not cache
     });

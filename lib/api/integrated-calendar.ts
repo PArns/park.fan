@@ -1,5 +1,5 @@
 import { after } from 'next/server';
-import { getServerAuthHeaders } from './client';
+import { getServerApiHeaders } from './client';
 import type { IntegratedCalendarResponse } from '@/lib/api/types';
 
 // Use proxy for client-side, direct live URL for server-side
@@ -57,7 +57,7 @@ export async function getIntegratedCalendar(
     cache: 'no-store',
     headers: {
       'Content-Type': 'application/json',
-      ...getServerAuthHeaders(),
+      ...getServerApiHeaders(),
     },
   });
 
@@ -131,7 +131,7 @@ async function fetchBestDays(
       : { next: { revalidate: BEST_DAYS_REVALIDATE, tags: [`best-days:${parkSlug}`] } }),
     headers: {
       'Content-Type': 'application/json',
-      ...getServerAuthHeaders(),
+      ...getServerApiHeaders(),
     },
   });
 
