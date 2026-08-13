@@ -348,6 +348,36 @@ whole page exists to avoid. Don't re-run these two experiments.
 Worth watching after enabling: Vercel's own usage should stay flat except for a drop in function
 invocations. If ISR Write Units move at all, the rule is not what caused it.
 
+### The second rule: `/api/`, and why this one needs no override
+
+The `/api` routes were the opposite case, and the contrast is the useful part. Their windows have
+been tuned per route in `next.config.ts` for a long time (300 s for the attraction detail and the
+calendar, an hour for stats, a day for the media catalog) and Vercel's edge honoured them —
+`x-vercel-cache: HIT` — but Cloudflare answered `DYNAMIC` for all of them, because it caches
+nothing under `/api/` without a rule either. So the ride detail every ride-page visitor loads was
+being served from `iad1` while its own header said it could sit in a PoP for five minutes.
+
+The rule matches `starts_with "/api/"` + `method eq "GET"`, marks it eligible, and sets Edge TTL to
+**"use cache-control header if present, bypass cache if not"** — deliberately not the override the
+page rule needs. Every route then carries its own window, and everything that must not be shared
+protects itself by already answering `no-store`. Verified against production after enabling:
+
+| Route                                 | Sends            | Cloudflare |
+| ------------------------------------- | ---------------- | ---------- |
+| `…/attractions/:slug`                 | `s-maxage=300`   | MISS → HIT |
+| `…/calendar`                          | `s-maxage=300`   | MISS → HIT |
+| `…/stats`                             | `s-maxage=3600`  | MISS → HIT |
+| `/api/media`                          | `s-maxage=86400` | MISS → HIT |
+| `/api/nearby`                         | `no-store`       | BYPASS     |
+| `/api/favorites`                      | `no-store`       | BYPASS     |
+| `/api/search`, `/api/analytics/*`     | `no-store`       | BYPASS     |
+| `/api/parks/<geo>/<park>` (live poll) | `no-store`       | BYPASS     |
+
+`/api/nearby` is the one to keep an eye on when editing these: it falls back to geolocating the
+request IP when the client sends no coordinates, so its response is per-visitor. It is safe here
+only because it answers `no-store` and the rule respects that. Give it an `s-maxage` and a shared
+cache will hand one visitor's location result to the next.
+
 ---
 
 ## Discovery / Geo-Structure Cache
