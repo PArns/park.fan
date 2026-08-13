@@ -22,7 +22,7 @@ tags:
   - walibi-holland
   - walibi-belgium
   - bobbejaanland
-  - toverland
+  - attractiepark-toverland
   - heide-park
   - parc-asterix
   - phantasialand
@@ -273,7 +273,7 @@ vervaagt, is dit een van de meest lonende adressen over de grens.
 
 ### Toverland: zeven hectare mais, en vooral niet stilstaan
 
-[Toverland](ref:toverland) in het Nederlandse Sevenum (voor
+[Toverland](ref:attractiepark-toverland) in het Nederlandse Sevenum (voor
 velen uit NRW het dichtstbijzijnde Beneluxpark) bouwt zijn **Halloween Nights**
 jaar na jaar uit. De datum staat: **3 oktober tot 7 november 2026** (de
 onschuldigere “Halloween Days” lopen overdag parallel), in totaal zes scare
@@ -305,7 +305,7 @@ paradegebied. Op volle nachten, en Toverlands Halloween loopt _vol_, is dat het
 verschil tussen “drie huizen gehaald” en “alle zes, en ook nog heelhuids uit de
 mais gekomen”.
 
-[Toverland](ref:toverland?full)
+[Toverland](ref:attractiepark-toverland?full)
 
 Details over experiences, scare zones en de Fear Pass:
 [toverland.com/halloween](https://www.toverland.com/en/activities/halloween/scare-zones-experiences).
@@ -439,7 +439,7 @@ en wie kinderen bij zich heeft, zit hier goed.
    huizen en experiences niet bij het dagticket. Inrekenen, en vroeg boeken als
    een bepaalde datum je belangrijk is.
 3. **Fast lanes lonen hier bij uitzondering echt.**
-   [Toverlands](ref:toverland) **Fear Pass** of
+   [Toverlands](ref:attractiepark-toverland) **Fear Pass** of
    [Walibi Belgiums](ref:walibi-belgium) **Speedy Pass** zijn op volle
    Halloween-nachten geen decadente luxe, maar simpele rekenkunde: een
    Halloween-avond is korter dan een normale parkdag, en elke minuut die je
@@ -488,7 +488,7 @@ meetdata van de afgelopen seizoenen, levert de statistiek er meteen bij:
 Het Halloween-seizoen 2026 heeft voor elke pijngrens iets: het pure volume in
 [Movie Park](ref:movie-park-germany) met negen mazes, de grote enscenering van
 [Traumatica](ref:europa-park), [Bobbejaanlands](ref:bobbejaanland) bioscoop om
-in te lopen, het verse maisveld in [Toverland](ref:toverland),
+in te lopen, het verse maisveld in [Toverland](ref:attractiepark-toverland),
 en, voor de heel dapperen, de [Walibi-experiences](ref:walibi-holland) waarbij
 je vrijwillig geld betaalt om gestempeld, ondergelopen en opengesneden te
 worden. Als tegenpool de stille, voorname herfst-[Efteling](ref:efteling) en

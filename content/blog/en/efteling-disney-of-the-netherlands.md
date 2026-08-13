@@ -373,12 +373,12 @@ that, but the order of magnitude holds.
 Second: 34 minutes for the longest queue in the park is, measured against almost
 six million visits, very little. For comparison, same data base, same method:
 
-| Park                                    | Attendance 2025    | Typical park-wide | Longest queue                                                            |
-| --------------------------------------- | ------------------ | ----------------: | ------------------------------------------------------------------------ |
-| [Phantasialand](ref:phantasialand?bare) | no official figure |            31 min | 48 min ([Taron](ref:phantasialand/taron?bare))                           |
-| **[Efteling](ref:efteling?bare)**       | **5.78 m**         |        **25 min** | 34 min (Joris en de Draak)                                               |
-| [Europa-Park](ref:europa-park?bare)     | 7 m (resort)       |            23 min | 34 min ([Voltron](ref:europa-park/voltron-nevera-powered-by-rimac?bare)) |
-| [Toverland](ref:toverland?bare)         | 1.14 m             |            15 min | 21 min ([Booster Bike](ref:toverland/booster-bike?bare))                 |
+| Park                                          | Attendance 2025    | Typical park-wide | Longest queue                                                            |
+| --------------------------------------------- | ------------------ | ----------------: | ------------------------------------------------------------------------ |
+| [Phantasialand](ref:phantasialand?bare)       | no official figure |            31 min | 48 min ([Taron](ref:phantasialand/taron?bare))                           |
+| **[Efteling](ref:efteling?bare)**             | **5.78 m**         |        **25 min** | 34 min (Joris en de Draak)                                               |
+| [Europa-Park](ref:europa-park?bare)           | 7 m (resort)       |            23 min | 34 min ([Voltron](ref:europa-park/voltron-nevera-powered-by-rimac?bare)) |
+| [Toverland](ref:attractiepark-toverland?bare) | 1.14 m             |            15 min | 21 min ([Booster Bike](ref:attractiepark-toverland/booster-bike?bare))   |
 
 Phantasialand does not publish its attendance; industry estimates put it around
 two million. So it has a fraction of Efteling's crowd and still the longest queues
@@ -453,7 +453,7 @@ Pardoes, the jester who is the park's mascot.
 Families with a seriously ill child between four and twelve are taken in. They get
 a week's holiday, completely free: accommodation, meals, a programme, plus free
 entry to Efteling, the Beekse Bergen safari park and
-[Toverland](ref:toverland). Parents apply together with the treating
+[Toverland](ref:attractiepark-toverland). Parents apply together with the treating
 paediatrician, and a medical committee decides.
 
 Architect Anoul Bouwman first built eight holiday apartments around a shared
@@ -472,7 +472,7 @@ so that for seven days the illness is not what writes the daily schedule.
 The park supplies the props. The white elephant from the old children's pool has
 stood in the villa's garden since 2015, and in 2023 the keyhole gate from the
 demolished Avonturen Doolhof joined it. The ambassadors include **Hans Klok**, the
-same illusionist who opened [Toverland](ref:toverland) 25 years ago and who is
+same illusionist who opened [Toverland](ref:attractiepark-toverland) 25 years ago and who is
 back on stage there this year. The Dutch park scene is smaller than it looks.
 
 > [!TIP]
@@ -663,7 +663,7 @@ blockout days anyway.
 **Getting there.** Kaatsheuvel is in Noord-Brabant, a good hour and a half to two
 hours from Düsseldorf and a good two from Cologne and the Ruhr, in both cases via
 the A67 and A2. If you are in the border region anyway, the visit combines well
-with [Toverland](ref:toverland), which is right on the way. By train it is more of
+with [Toverland](ref:attractiepark-toverland), which is right on the way. By train it is more of
 a slog: to 's-Hertogenbosch or Tilburg, then a bus. Count on changes and plan the
 journey back before you set off.
 

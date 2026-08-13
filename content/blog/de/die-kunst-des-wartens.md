@@ -119,8 +119,8 @@ Wahrheit angewandte Kognitionspsychologie.
 
 Die eleganteste Waffe gegen tote Zeit ist die **Pre-Show**, die das Warten
 einfach zum Teil der Attraktion umdeklariert. Das Paradebeispiel steht in den
-[Disney's Hollywood Studios](ref:disney-hollywood-studios?bare): Beim
-[Tower of Terror](ref:disney-hollywood-studios/the-twilight-zone-tower-of-terror)
+[Disney's Hollywood Studios](ref:disneys-hollywood-studios?bare): Beim
+[Tower of Terror](ref:disneys-hollywood-studios/the-twilight-zone-tower-of-terror)
 schiebst du dich nicht durch einen Korridor, sondern durch die verstaubte Lobby
 des Hollywood Tower Hotels in eine Bibliothek, in der ein Video im Stil der
 „Twilight Zone“ die Geschichte des Hauses erzählt. Du checkst gewissermaßen in
@@ -154,8 +154,8 @@ kommen.
 ### Avatar Flight of Passage: Ein Museum als Warteschlange
 
 Die Queue von
-[Avatar Flight of Passage](ref:disney-animal-kingdom/avatar-flight-of-passage)
-in [Disney's Animal Kingdom](ref:disney-animal-kingdom?bare) ist im Grunde ein
+[Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage)
+in [Disney's Animal Kingdom](ref:disneys-animal-kingdom-theme-park?bare) ist im Grunde ein
 begehbares Museum mit Flugsimulator-Ausgang. Erst windet sich der Weg durch die
 Landschaft Pandoras und Höhlen mit Malereien der Na'vi, dann durch ein
 verlassenes Forschungslabor, inklusive eines lebensgroßen Avatars, der in einem
@@ -178,7 +178,7 @@ Theater parallel. Knapp 200 Gäste gleichzeitig, rund 1.400 pro Stunde. Selbst
 bei 120 Minuten Wartezeit erzählen die meisten hinterher nicht von der
 Schlange, sondern vom atmenden Avatar im Tank.
 
-[Avatar Flight of Passage](ref:disney-animal-kingdom/avatar-flight-of-passage?full)
+[Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?full)
 
 ### Cosmic Rewind: Erst das Museum, dann der Coaster
 
@@ -413,7 +413,7 @@ Dafür gibt es drei Gründe, und alle drei sind Rechnerei:
    fünf Menschen. Das ist die Beförderungskapazität eines mittleren Fahrstuhls,
    verteilt auf einen ganzen Nachthimmel. Inoffizielle Zählungen kommen auf
    etwa **1.200 Gäste pro Stunde**, die
-   [Ur-Version im Magic Kingdom](ref:disney-magic-kingdom/peter-pans-flight?bare)
+   [Ur-Version im Magic Kingdom](ref:magic-kingdom-park/peter-pans-flight?bare)
    schafft sogar nur um die 800. Ein einziger Hulk-Zug befördert pro Abfahrt
    doppelt so viele Menschen, wie Peter Pan Schiffe besitzt. Und zum Vergleich
    im eigenen Haus: Pirates of the Caribbean gleich nebenan schluckt mit seinen
@@ -433,7 +433,7 @@ Dafür gibt es drei Gründe, und alle drei sind Rechnerei:
 Das Phänomen ist übrigens weltweit messbar. Hier die Live-Wartezeiten der
 Orlando-Version im meistbesuchten Park der Welt, direkt aus unseren Daten:
 
-[Peter Pan's Flight](ref:disney-magic-kingdom/peter-pans-flight?full)
+[Peter Pan's Flight](ref:magic-kingdom-park/peter-pans-flight?full)
 
 ## Europa wartet anders: Phantasialand & Europa-Park vs. Orlando
 
@@ -442,13 +442,13 @@ bestimmen, sieht man am deutlichsten im Vergleich der Schwergewichte, Europas
 große Parks gegen die Orlando-Giganten.
 
 **Orlando spielt in einer eigenen Nachfrage-Liga.** Das
-[Magic Kingdom](ref:disney-magic-kingdom?bare) ist der meistbesuchte Freizeitpark
+[Magic Kingdom](ref:magic-kingdom-park?bare) ist der meistbesuchte Freizeitpark
 der Welt, und Disney wie Universal ziehen Gäste von allen Kontinenten an. Dazu
 kommt ein Faktor, den Europa in dieser Härte kaum kennt: Man kann sich dort an
 der Schlange vorbeikaufen. Lightning Lane und Express Pass verkaufen einen Teil
 der Kapazität an zahlende Gäste, und jede Express-Fahrt fehlt der
 Standby-Schlange. Headliner wie
-[Avatar Flight of Passage](ref:disney-animal-kingdom/avatar-flight-of-passage?bare)
+[Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?bare)
 stehen deshalb trotz massiver stündlicher Kapazität regelmäßig bei 60 bis 120
 Minuten.
 
@@ -496,7 +496,7 @@ wenige Headliner konzentriert.
 
 ```
 
-**Und jetzt das [Magic Kingdom](ref:disney-magic-kingdom?bare) in Orlando**, der
+**Und jetzt das [Magic Kingdom](ref:magic-kingdom-park?bare) in Orlando**, der
 meistbesuchte Park der Welt: höhere Grundlast, aber breiter verteilt über
 Dutzende Attraktionen. Achte darauf, wie unterschiedlich schon die „typischen“
 Minuten und die Saison-Kurve über das Jahr aussehen.
@@ -567,7 +567,7 @@ Der Europa-Park hat seine **VirtualLine** zu Beginn der Corona-Pandemie 2020
 eingeführt und behalten, weil sie schlicht funktioniert: Über die Park-App
 reservierst du kostenlos ein Zeitfenster für Attraktionen wie blue fire, Wodan
 oder Voltron. Disney steuerte Mega-Neuheiten wie
-[Rise of the Resistance](ref:disney-hollywood-studios/star-wars-rise-of-the-resistance?bare)
+[Rise of the Resistance](ref:disneys-hollywood-studios/star-wars-rise-of-the-resistance?bare)
 oder eben Cosmic Rewind jahrelang komplett über **Boarding Groups**. Das
 Prinzip ist immer dasselbe: Du „stehst“ digital an, während du isst, shoppst
 oder eine Show schaust. Die Schlange existiert weiter, sie findet nur ohne

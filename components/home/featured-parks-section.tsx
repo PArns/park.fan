@@ -18,7 +18,7 @@ const FEATURED_PARK_SLUGS: Record<string, string[]> = {
     'disneyland-park', // Paris — "Disneyland Paris Wartezeiten" is high-volume DE query
   ],
   en: [
-    'disney-magic-kingdom', // 17.8M, #1 worldwide
+    'magic-kingdom-park', // 17.8M, #1 worldwide
     'universal-studios-florida', // 9.5M, high US search volume
     'disneyland-park', // Paris — 10.2M, massive English search interest globally
     'tokyo-disneyland', // 15.1M, #4 worldwide, aspirational for EN speakers
@@ -35,7 +35,7 @@ const FEATURED_PARK_SLUGS: Record<string, string[]> = {
   ],
   nl: [
     'efteling', // 5.6M, #1 NL by massive margin, deeply culturally embedded
-    'toverland', // #2 NL domestic
+    'attractiepark-toverland', // #2 NL domestic
     'walibi-belgium', // #1 Belgium, relevant for Flemish/Belgian Dutch speakers
     'europa-park', // top cross-border destination for Dutch
     'phantasialand', // popular with Dutch visitors to Germany

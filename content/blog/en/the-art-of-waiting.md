@@ -117,8 +117,8 @@ looks like decoration is in fact applied cognitive psychology.
 
 The most elegant weapon against dead time is the **pre-show**, which simply
 redefines the wait as part of the attraction. The textbook example sits in
-[Disney's Hollywood Studios](ref:disney-hollywood-studios?bare). At the
-[Tower of Terror](ref:disney-hollywood-studios/the-twilight-zone-tower-of-terror)
+[Disney's Hollywood Studios](ref:disneys-hollywood-studios?bare). At the
+[Tower of Terror](ref:disneys-hollywood-studios/the-twilight-zone-tower-of-terror)
 you don't shuffle down a corridor; you move through the dusty lobby of the
 Hollywood Tower Hotel into a library where a video in the style of the
 “Twilight Zone” tells the building's story. You're checking into a hotel you'll
@@ -151,8 +151,8 @@ with queues people voluntarily turn up early for.
 ### Avatar Flight of Passage: a museum as a queue
 
 The queue for
-[Avatar Flight of Passage](ref:disney-animal-kingdom/avatar-flight-of-passage)
-at [Disney's Animal Kingdom](ref:disney-animal-kingdom?bare) is essentially a
+[Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage)
+at [Disney's Animal Kingdom](ref:disneys-animal-kingdom-theme-park?bare) is essentially a
 walk-through museum with a flight simulator at the exit. First the path winds
 through Pandora's landscape and caves painted by the Na'vi, then through an
 abandoned research lab, complete with a life-sized avatar floating in an amnio
@@ -173,7 +173,7 @@ under 200 guests at a time, around 1,400 an hour. Even after a 120-minute wait,
 most people afterwards don't talk about the queue but about the breathing
 avatar in the tank.
 
-[Avatar Flight of Passage](ref:disney-animal-kingdom/avatar-flight-of-passage?full)
+[Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?full)
 
 ### Cosmic Rewind: first the museum, then the coaster
 
@@ -399,7 +399,7 @@ There are three reasons for that, and all three of them are arithmetic:
    counted, five people. That's the carrying capacity of a mid-sized lift,
    spread across an entire night sky. Unofficial counts arrive at roughly
    **1,200 guests per hour**, and the
-   [original version at the Magic Kingdom](ref:disney-magic-kingdom/peter-pans-flight?bare)
+   [original version at the Magic Kingdom](ref:magic-kingdom-park/peter-pans-flight?bare)
    manages only around 800. A single Hulk train carries twice as many people
    per dispatch as Peter Pan has ships. And for comparison in its own house:
    Pirates of the Caribbean right next door swallows nearly four times as many
@@ -419,7 +419,7 @@ The phenomenon is measurable worldwide, incidentally. Here are the live wait
 times for the Orlando version in the world's busiest park, straight from our
 data:
 
-[Peter Pan's Flight](ref:disney-magic-kingdom/peter-pans-flight?full)
+[Peter Pan's Flight](ref:magic-kingdom-park/peter-pans-flight?full)
 
 ## Europe waits differently: Phantasialand and Europa-Park vs. Orlando
 
@@ -428,13 +428,13 @@ clearest in a comparison of heavyweights, Europe's big parks against the
 Orlando giants.
 
 **Orlando plays in a demand league of its own.** The
-[Magic Kingdom](ref:disney-magic-kingdom?bare) is the busiest theme park in the
+[Magic Kingdom](ref:magic-kingdom-park?bare) is the busiest theme park in the
 world, and both Disney and Universal pull guests from every continent. On top
 of that comes a factor Europe barely knows in this severity: over there you can
 buy your way past the queue. Lightning Lane and Express Pass sell part of the
 capacity to paying guests, and every express ride is one the standby queue
 doesn't get. Headliners like
-[Avatar Flight of Passage](ref:disney-animal-kingdom/avatar-flight-of-passage?bare)
+[Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?bare)
 therefore regularly sit at 60 to 120 minutes despite massive hourly capacity.
 
 **[Europa-Park](ref:europa-park?bare) is the counter-model.** Germany's largest
@@ -478,7 +478,7 @@ concentrates on a few headliners.
 
 ```
 
-**And now the [Magic Kingdom](ref:disney-magic-kingdom?bare) in Orlando**, the
+**And now the [Magic Kingdom](ref:magic-kingdom-park?bare) in Orlando**, the
 busiest park in the world: a higher base load, but spread across dozens of
 attractions. Note how different the “typical” minutes and the seasonal curve
 across the year already look.
@@ -550,7 +550,7 @@ Europa-Park introduced its **VirtualLine** at the start of the coronavirus
 pandemic in 2020 and kept it, because it simply works: through the park app you
 reserve a free time slot for attractions like blue fire, Wodan or Voltron.
 Disney ran mega-openings like
-[Rise of the Resistance](ref:disney-hollywood-studios/star-wars-rise-of-the-resistance?bare)
+[Rise of the Resistance](ref:disneys-hollywood-studios/star-wars-rise-of-the-resistance?bare)
 or indeed Cosmic Rewind entirely on **boarding groups** for years. The principle
 is always the same: you queue digitally while you eat, shop or watch a show.
 The queue still exists, it just happens without your legs. The wait doesn't

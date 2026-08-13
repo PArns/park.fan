@@ -62,12 +62,12 @@ export const MEDIA_PARKS: Record<string, MediaParkRef> = {
     "countrySlug": "netherlands",
     "path": "europe/netherlands/kaatsheuvel/efteling"
   },
-  "europe/netherlands/sevenum/toverland": {
-    "slug": "toverland",
-    "name": "Toverland",
+  "europe/netherlands/sevenum/attractiepark-toverland": {
+    "slug": "attractiepark-toverland",
+    "name": "Attractiepark Toverland",
     "city": "Sevenum",
     "countrySlug": "netherlands",
-    "path": "europe/netherlands/sevenum/toverland"
+    "path": "europe/netherlands/sevenum/attractiepark-toverland"
   },
   "north-america/united-states/anaheim/disneyland-park": {
     "slug": "disneyland-park",
@@ -76,33 +76,33 @@ export const MEDIA_PARKS: Record<string, MediaParkRef> = {
     "countrySlug": "united-states",
     "path": "north-america/united-states/anaheim/disneyland-park"
   },
-  "north-america/united-states/orlando/disney-animal-kingdom": {
-    "slug": "disney-animal-kingdom",
-    "name": "Disney Animal Kingdom",
+  "north-america/united-states/orlando/disneys-animal-kingdom-theme-park": {
+    "slug": "disneys-animal-kingdom-theme-park",
+    "name": "Disney's Animal Kingdom Theme Park",
     "city": "Orlando",
     "countrySlug": "united-states",
-    "path": "north-america/united-states/orlando/disney-animal-kingdom"
+    "path": "north-america/united-states/orlando/disneys-animal-kingdom-theme-park"
   },
-  "north-america/united-states/orlando/disney-hollywood-studios": {
-    "slug": "disney-hollywood-studios",
-    "name": "Disney Hollywood Studios",
+  "north-america/united-states/orlando/disneys-hollywood-studios": {
+    "slug": "disneys-hollywood-studios",
+    "name": "Disney's Hollywood Studios",
     "city": "Orlando",
     "countrySlug": "united-states",
-    "path": "north-america/united-states/orlando/disney-hollywood-studios"
-  },
-  "north-america/united-states/orlando/disney-magic-kingdom": {
-    "slug": "disney-magic-kingdom",
-    "name": "Disney Magic Kingdom",
-    "city": "Orlando",
-    "countrySlug": "united-states",
-    "path": "north-america/united-states/orlando/disney-magic-kingdom"
+    "path": "north-america/united-states/orlando/disneys-hollywood-studios"
   },
   "north-america/united-states/orlando/epcot": {
     "slug": "epcot",
-    "name": "Epcot",
+    "name": "EPCOT",
     "city": "Orlando",
     "countrySlug": "united-states",
     "path": "north-america/united-states/orlando/epcot"
+  },
+  "north-america/united-states/orlando/magic-kingdom-park": {
+    "slug": "magic-kingdom-park",
+    "name": "Magic Kingdom Park",
+    "city": "Orlando",
+    "countrySlug": "united-states",
+    "path": "north-america/united-states/orlando/magic-kingdom-park"
   },
   "north-america/united-states/orlando/universal-islands-of-adventure": {
     "slug": "universal-islands-of-adventure",
@@ -110,13 +110,6 @@ export const MEDIA_PARKS: Record<string, MediaParkRef> = {
     "city": "Orlando",
     "countrySlug": "united-states",
     "path": "north-america/united-states/orlando/universal-islands-of-adventure"
-  },
-  "north-america/united-states/tampa/universal-islands-of-adventure": {
-    "slug": "universal-islands-of-adventure",
-    "name": "Universal Islands of Adventure",
-    "city": "Tampa",
-    "countrySlug": "united-states",
-    "path": "north-america/united-states/tampa/universal-islands-of-adventure"
   }
 };
 
@@ -134,10 +127,10 @@ export const MEDIA_PARK_PATH_BY_SLUG: Record<string, string> = {
   "europa-park": "europe/germany/rust/europa-park",
   "walibi-holland": "europe/netherlands/biddinghuizen/walibi-holland",
   "efteling": "europe/netherlands/kaatsheuvel/efteling",
-  "toverland": "europe/netherlands/sevenum/toverland",
-  "disney-animal-kingdom": "north-america/united-states/orlando/disney-animal-kingdom",
-  "disney-hollywood-studios": "north-america/united-states/orlando/disney-hollywood-studios",
-  "disney-magic-kingdom": "north-america/united-states/orlando/disney-magic-kingdom",
+  "attractiepark-toverland": "europe/netherlands/sevenum/attractiepark-toverland",
+  "disneys-animal-kingdom-theme-park": "north-america/united-states/orlando/disneys-animal-kingdom-theme-park",
+  "disneys-hollywood-studios": "north-america/united-states/orlando/disneys-hollywood-studios",
   "epcot": "north-america/united-states/orlando/epcot",
+  "magic-kingdom-park": "north-america/united-states/orlando/magic-kingdom-park",
   "universal-islands-of-adventure": "north-america/united-states/orlando/universal-islands-of-adventure"
 };

@@ -30,7 +30,7 @@ import type { BlogListItem } from '@/lib/blog/types';
  * these are whole cards rather than a single badge.
  */
 
-const PARK_PATH = '/parks/europe/netherlands/sevenum/toverland';
+const PARK_PATH = '/parks/europe/netherlands/sevenum/attractiepark-toverland';
 /** Fixed so the preview cards don't re-render with a new timestamp on every click. */
 const STAMP = '2026-01-01T12:00:00.000Z';
 

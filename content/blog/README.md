@@ -210,13 +210,13 @@ a dozen ride pages:
 ```yaml
 parkLinks: false # never link this post from a park page
 parkLinks: # …or: exactly these parks, ignoring the body
-  - toverland
+  - attractiepark-toverland
   - efteling
 parkLinks: # full path form pins a slug that exists twice
   - /parks/europe/france/paris/disneyland-park
 
 rideLinks: # the same for ride pages
-  - toverland/* # every Toverland ride the article links
+  - attractiepark-toverland/* # every Toverland ride the article links
   - efteling/joris-en-de-draak # plus this one by name
 ```
 

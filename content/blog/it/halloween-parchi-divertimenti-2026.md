@@ -22,7 +22,7 @@ tags:
   - walibi-holland
   - walibi-belgium
   - bobbejaanland
-  - toverland
+  - attractiepark-toverland
   - heide-park
   - parc-asterix
   - phantasialand
@@ -281,7 +281,7 @@ confine.
 
 ### Toverland: sette ettari di mais, e non fermarsi
 
-[Toverland](ref:toverland) nella cittadina olandese di Sevenum
+[Toverland](ref:attractiepark-toverland) nella cittadina olandese di Sevenum
 (per molti dalla Renania Settentrionale-Vestfalia il parco del Benelux più
 vicino in assoluto) amplia le sue **Halloween Nights** anno dopo anno. La data
 è fissata: **dal 3 ottobre al 7 novembre 2026** (i più innocui “Halloween Days”
@@ -314,7 +314,7 @@ experience, più un'area riservata per la parata. Nelle notti piene, e
 l'Halloween di Toverland gira _pieno_, è la differenza tra “tre case fatte” e
 “tutte e sei, e per giunta usciti interi dal mais”.
 
-[Toverland](ref:toverland?full)
+[Toverland](ref:attractiepark-toverland?full)
 
 Dettagli su experience, scare zone e Fear Pass:
 [toverland.com/halloween](https://www.toverland.com/en/activities/halloween/scare-zones-experiences).
@@ -452,7 +452,7 @@ di adrenalina, e chi ha bambini con sé, qui va sul sicuro.
    case e le experience non sono nel biglietto giornaliero. Calcolarlo, e
    prenotare per tempo se ci tieni a una data precisa.
 3. **Le corsie veloci qui, per una volta, valgono davvero.** Il **Fear Pass** di
-   [Toverland](ref:toverland) o lo **Speedy Pass** di
+   [Toverland](ref:attractiepark-toverland) o lo **Speedy Pass** di
    [Walibi Belgium](ref:walibi-belgium) non sono un lusso decadente nelle notti
    piene di Halloween, ma semplice aritmetica: una serata di Halloween è più
    corta di una normale giornata al parco, e ogni minuto che _non_ passi in coda
@@ -503,7 +503,7 @@ La stagione di Halloween 2026 ha qualcosa per ogni soglia del dolore: il puro
 volume del [Movie Park](ref:movie-park-germany) con nove maze, la grande messa
 in scena di [Traumatica](ref:europa-park), il cinema percorribile di
 [Bobbejaanland](ref:bobbejaanland), il campo di mais appena nato di
-[Toverland](ref:toverland) e, per i più coraggiosi, le
+[Toverland](ref:attractiepark-toverland) e, per i più coraggiosi, le
 [Walibi-Experiences](ref:walibi-holland), in cui si paga volontariamente per
 essere timbrati, allagati e squarciati. Come contraltare, l'autunno silenzioso
 e signorile dell'[Efteling](ref:efteling) e un

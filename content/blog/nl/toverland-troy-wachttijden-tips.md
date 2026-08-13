@@ -12,7 +12,7 @@ excerpt: >-
   kost. Over een park waar ik ooit backstage zelf de haunt mocht spelen, en dat
   tot vandaag geen fastpass verkoopt.
 tags:
-  - toverland
+  - attractiepark-toverland
   - troy
   - houten-achtbaan
   - wachttijden
@@ -23,10 +23,10 @@ tags:
   - seizoen-2026
 category: guides
 parkLinks:
-  - toverland
+  - attractiepark-toverland
   - efteling
 rideLinks:
-  - toverland/*
+  - attractiepark-toverland/*
   - efteling/joris-en-de-draak
 coverImage:
   src: /media/toverland/troy-16x9.jpg
@@ -62,7 +62,7 @@ De optakeling duurt achtendertig seconden. Genoeg tijd om van bovenaf naar de
 wirwar van houten balken onder je te kijken en te raden waar het straks
 heengaat. Je zit ernaast.
 
-Vanaf de top houdt [Troy](ref:toverland/troy) niet meer op. Geen enkel element
+Vanaf de top houdt [Troy](ref:attractiepark-toverland/troy) niet meer op. Geen enkel element
 duurt lang genoeg om je erop in te stellen. De baan vouwt zich in zichzelf,
 kruist haar eigen traject, en ergens midden in de rit schiet ze op volle
 snelheid **dwars door het stationsgebouw**, langs de wachtenden, die zich
@@ -83,7 +83,7 @@ Zeventig kilometer scheidt de twee parken. In allebei staat een houten achtbaan
 van dezelfde Amerikaanse fabrikant. Voor de ene wacht je doorgaans 16 minuten,
 voor de andere 34. De kortste rij hoort bij de betere baan.
 
-Hier wil ik het hebben over het park eromheen: [Toverland](ref:toverland?long)
+Hier wil ik het hebben over het park eromheen: [Toverland](ref:attractiepark-toverland?long)
 in Sevenum, dat dit jaar 25 wordt, dat ik een van de mooiste kleine parken van
 Europa vind, en waar ik ooit zelf in kostuum aan de andere kant heb gestaan.
 Daarover later meer.
@@ -129,7 +129,7 @@ geleden reed en haar herinnert als "geweldig, maar ruw": rijd haar nog eens.
 
 ```
 
-[Troy](ref:toverland/troy?full)
+[Troy](ref:attractiepark-toverland/troy?full)
 
 ## 16 minuten, gemeten over twee seizoenen
 
@@ -145,28 +145,28 @@ Zeventig kilometer noordwestelijker staat in de [Efteling](ref:efteling)
 **Joris en de Draak**, ook van GCI, drie jaar jonger, als racende dubbelbaan een
 publiekstrekker. Zelfde databasis, zelfde rekenmethode:
 
-| Houten achtbaan                                                          | Park                            | Typisch (mediaan) | Piek (P90) |
-| ------------------------------------------------------------------------ | ------------------------------- | ----------------: | ---------: |
-| **[Troy](ref:toverland/troy?bare)** (GCI, 2007)                          | [Toverland](ref:toverland?bare) |        **16 min** |     21 min |
-| **[Joris en de Draak](ref:efteling/joris-en-de-draak?bare)** (GCI, 2010) | [Efteling](ref:efteling?bare)   |            34 min |     40 min |
+| Houten achtbaan                                                          | Park                                          | Typisch (mediaan) | Piek (P90) |
+| ------------------------------------------------------------------------ | --------------------------------------------- | ----------------: | ---------: |
+| **[Troy](ref:attractiepark-toverland/troy?bare)** (GCI, 2007)            | [Toverland](ref:attractiepark-toverland?bare) |        **16 min** |     21 min |
+| **[Joris en de Draak](ref:efteling/joris-en-de-draak?bare)** (GCI, 2010) | [Efteling](ref:efteling?bare)                 |            34 min |     40 min |
 
 Meer dan het dubbele, voor een baan die onder liefhebbers in bijna geen enkele
 ranglijst boven Troy staat. Over de bouwwijzen heen wordt het beeld nog
 duidelijker. Wat kosten de grote namen van de regio aan wachttijd, hout of
 staal?
 
-| Achtbaan                                                 | Type                | Park                                    | Typisch (mediaan) | Piek (P90) |
-| -------------------------------------------------------- | ------------------- | --------------------------------------- | ----------------: | ---------: |
-| [Taron](ref:phantasialand/taron?bare)                    | Multi-launch, staal | [Phantasialand](ref:phantasialand?bare) |            48 min |     54 min |
-| [F.L.Y.](ref:phantasialand/fly?bare)                     | Flying, staal       | [Phantasialand](ref:phantasialand?bare) |            40 min |     47 min |
-| [Joris en de Draak](ref:efteling/joris-en-de-draak?bare) | Hout                | [Efteling](ref:efteling?bare)           |            34 min |     40 min |
-| [Baron 1898](ref:efteling/baron-1898?bare)               | Dive coaster, staal | [Efteling](ref:efteling?bare)           |            26 min |     32 min |
-| **[Troy](ref:toverland/troy?bare)**                      | **Hout**            | **[Toverland](ref:toverland?bare)**     |        **16 min** | **21 min** |
-| **[Fēnix](ref:toverland/fenix?bare)**                    | **Wing, staal**     | **[Toverland](ref:toverland?bare)**     |        **16 min** | **20 min** |
+| Achtbaan                                                 | Type                | Park                                              | Typisch (mediaan) | Piek (P90) |
+| -------------------------------------------------------- | ------------------- | ------------------------------------------------- | ----------------: | ---------: |
+| [Taron](ref:phantasialand/taron?bare)                    | Multi-launch, staal | [Phantasialand](ref:phantasialand?bare)           |            48 min |     54 min |
+| [F.L.Y.](ref:phantasialand/fly?bare)                     | Flying, staal       | [Phantasialand](ref:phantasialand?bare)           |            40 min |     47 min |
+| [Joris en de Draak](ref:efteling/joris-en-de-draak?bare) | Hout                | [Efteling](ref:efteling?bare)                     |            34 min |     40 min |
+| [Baron 1898](ref:efteling/baron-1898?bare)               | Dive coaster, staal | [Efteling](ref:efteling?bare)                     |            26 min |     32 min |
+| **[Troy](ref:attractiepark-toverland/troy?bare)**        | **Hout**            | **[Toverland](ref:attractiepark-toverland?bare)** |        **16 min** | **21 min** |
+| **[Fēnix](ref:attractiepark-toverland/fenix?bare)**      | **Wing, staal**     | **[Toverland](ref:attractiepark-toverland?bare)** |        **16 min** | **20 min** |
 
 De twee Toverland-banen staan onderaan, met afstand. Voor de tijd die je in
 Phantasialand **één keer** bij [Taron](ref:phantasialand/taron) staat, rijd je
-hier [Troy](ref:toverland/troy) drie keer.
+hier [Troy](ref:attractiepark-toverland/troy) drie keer.
 
 De reden is een deling die ik in
 [De kunst van het wachten](/blog/de-kunst-van-het-wachten) uitgebreid heb
@@ -188,7 +188,7 @@ de valtoren Dragonwatch, en die kost niets extra.
 
 Troy is de reden dat liefhebbers komen. Maar het park leeft niet van één baan.
 
-**[Fēnix](ref:toverland/fenix)** is het prestigeproject van 2018: een wing
+**[Fēnix](ref:attractiepark-toverland/fenix)** is het prestigeproject van 2018: een wing
 coaster van **Bolliger & Mabillard**, 40 meter hoog, 813 meter lang, tot
 95 km/u, drie keer over de kop (de wing-over drop telt zelf al als inversie,
 daarna Immelmann en zero-g roll), 13 miljoen euro duur. De eerste wing coaster van Nederland en tot vandaag de
@@ -200,7 +200,7 @@ zaak toch beter maakt. Wachttijd: dezelfde 16 minuten als bij Troy.
 
 ![Het station van Fēnix met blauwe rail, wingcoastertrein en vuurschalen aan kettingen onder houten balken | Het station van Fēnix: vuurschalen aan kettingen, zware balken, en de trein met de stoelen naast de rail. | wide](/media/toverland/background-16x9.jpg)
 
-**[Booster Bike](ref:toverland/booster-bike)** is de vreemde eend en mijn
+**[Booster Bike](ref:attractiepark-toverland/booster-bike)** is de vreemde eend en mijn
 tweede favoriet hier. Vekoma bouwde in 2004 in Sevenum het wereldwijde prototype
 van de motorachtbaan: je zit niet, je ligt op een motor, handen aan het stuur,
 knieën opgetrokken, en wordt dan als launch coaster weggeschoten. Een
@@ -208,7 +208,7 @@ ongemakkelijke, absurde, prachtige baan. Met een mediaan van 21 minuten heeft
 uitgerekend zij de langste typische wachttijd van alle coasters in het park, wat
 komt doordat je één voor één en liggend instapt, en dat duurt nu eenmaal.
 
-**[Dwervelwind](ref:toverland/dwervelwind)** van Mack Rides is een spinning
+**[Dwervelwind](ref:attractiepark-toverland/dwervelwind)** van Mack Rides is een spinning
 coaster in het donker, half darkride, half achtbaan, met vrij draaiende gondels
 en een boordgeluid dat een achtbaan van dit type daarvoor niet had. Haar
 openingsdatum is een kleine strikvraag. De baan was aangekondigd voor 2013,
@@ -221,21 +221,21 @@ gebouwd kon worden, en kwam ze in **april 2013** terug met het complete
 themagebied, nu als Dwervelwind in plaats van de d'wervelwind van 2012. Daarom
 lees je afhankelijk van de bron 2012 of 2013. Allebei klopt.
 
-**[Toos-Express](ref:toverland/toos-express)** uit het openingsjaar 2001 is de
+**[Toos-Express](ref:attractiepark-toverland/toos-express)** uit het openingsjaar 2001 is de
 juniorcoaster waarop hier al een kwart eeuw kinderen hun eerste achtbaan rijden.
 
 De natte en donkere afdeling is beter dan haar reputatie:
 
-- **[Merlin's Quest](ref:toverland/merlins-quest)** (2018), de boottocht door
+- **[Merlin's Quest](ref:attractiepark-toverland/merlins-quest)** (2018), de boottocht door
   Merlijns toren, met animatronics en een reeks scènes waar andere parken extra
   entree voor zouden vragen. De stille ster van Avalon.
-- **[Djengu River](ref:toverland/djengu-river)**, de wildwaterbaan van Hafema.
+- **[Djengu River](ref:attractiepark-toverland/djengu-river)**, de wildwaterbaan van Hafema.
   De vraag is niet _of_ je nat wordt.
-- **[Expedition Zork](ref:toverland/expedition-zork)**, een "Twist & Splash" van
+- **[Expedition Zork](ref:attractiepark-toverland/expedition-zork)**, een "Twist & Splash" van
   Mack: waterbaan en carrousel in één, en flink gemener dan ze eruitziet.
-- **[Villa Fiasko](ref:toverland/villa-fiasko)**, een madhouse van Vekoma, dus
+- **[Villa Fiasko](ref:attractiepark-toverland/villa-fiasko)**, een madhouse van Vekoma, dus
   de kamer die om je heen draait terwijl jij zweert dat het andersom is.
-- **[Dragonwatch](ref:toverland/dragonwatch)** (2023), 40 meter uitkijktoren,
+- **[Dragonwatch](ref:attractiepark-toverland/dragonwatch)** (2023), 40 meter uitkijktoren,
   van waaraf je ziet hoe klein dit park eigenlijk is, en hoe compleet.
 
 ## Van regenhal tot themapark
@@ -256,7 +256,7 @@ dat het kon verspillen, en toch twee keer iets heeft gebouwd dat er daarvoor
 nergens was.
 
 **2004** kwam de tweede hal erbij, toen "Magic Forest", vandaag het
-**Wunderwald**. En daarmee [Booster Bike](ref:toverland/booster-bike), het
+**Wunderwald**. En daarmee [Booster Bike](ref:attractiepark-toverland/booster-bike), het
 wereldwijde prototype van de motorachtbaan van Vekoma. Een park dat buiten
 Limburg nauwelijks iemand kende, liet een bouwwijze ontwikkelen die nog niet
 bestond.
@@ -271,12 +271,12 @@ liftgestel om tijdens een storm. Het park bouwde het weer op en opende toch op
 tijd voor het seizoen.
 
 **2013** ontstond de **Magische Vallei** rond de "Dwervels", met
-[Dwervelwind](ref:toverland/dwervelwind) en
-[Expedition Zork](ref:toverland/expedition-zork). En **2018** kwam de sprong die
+[Dwervelwind](ref:attractiepark-toverland/dwervelwind) en
+[Expedition Zork](ref:attractiepark-toverland/expedition-zork). En **2018** kwam de sprong die
 van het uitje een themapark maakte: een uitbreiding van 35 miljoen euro, met een
 compleet nieuw entreegebied in mediterrane havenstijl (**Port Laguna**) en de
-Arthurwereld **Avalon**, waar [Fēnix](ref:toverland/fenix) en
-[Merlin's Quest](ref:toverland/merlins-quest) staan. Toen kreeg het park ook
+Arthurwereld **Avalon**, waar [Fēnix](ref:attractiepark-toverland/fenix) en
+[Merlin's Quest](ref:attractiepark-toverland/merlins-quest) staan. Toen kreeg het park ook
 zijn huidige claim, "Discover your own magic", die de oude leuzen "Magisch mooi"
 en "Feel the Magic" verving. In datzelfde jaar veegde Toverland de
 **European Star Awards** aan: beste themapark in de categorie tot een miljoen
@@ -284,7 +284,7 @@ bezoekers, plus een onderscheiding voor Avalon en Port Laguna als beste
 nieuwigheid. Troy eindigde in de categorie beste houten achtbaan van Europa net
 achter de winnaar, met een toen elf jaar oude baan. **2023** groeide Avalon
 verder, onder meer met de 40 meter hoge uitkijktoren
-[Dragonwatch](ref:toverland/dragonwatch).
+[Dragonwatch](ref:attractiepark-toverland/dragonwatch).
 
 De bezoekersaantallen vertellen hetzelfde verhaal in cijfers: 620.000 in 2013,
 862.000 in het laatste jaar voor corona, 2019, sinds 2022 constant boven een
@@ -295,7 +295,7 @@ Efteling of Europa-Park doorsluizen, en precies daarin zit de charme.
 
 De twee oerhallen bestaan trouwens nog, en ze zijn geen regenbui-plan-B. Land
 van Toos en Wunderwald zijn een eigenstandig programma, met
-[Djinn](ref:toverland/djinn), de zweefmolen boven de oosterse markt, als mooiste
+[Djinn](ref:attractiepark-toverland/djinn), de zweefmolen boven de oosterse markt, als mooiste
 voorbeeld: 12,8 meter hoog, volledig overdekt, en 's avonds met een lichtsfeer
 waarvoor andere parken een buitengebied nodig zouden hebben.
 
@@ -379,14 +379,14 @@ belangrijk genoeg dat het gebeurt.
 > de Halloween Nights zijn de drukste avonden van het jaar, hier loont de blik
 > op de kalender dubbel.
 
-[Toverland](ref:toverland?full)
+[Toverland](ref:attractiepark-toverland?full)
 
 ## Wat er verder aankomt
 
 ![Een gesneden siermotief aan de Maximus' Blitz Bahn, blauw aangelicht, ernaast oude gloeilampen aan kabels | Een detail van de Blitz Bahn, zoals ze er negentien jaar bij stond. Bijna alles hier was handwerk. | left](/media/toverland/maximus-blitzbahn-4x3.jpg)
 
 Wie er langer niet geweest is, zal een attractie missen. Op **17 mei 2026** was
-**[Maximus' Blitz Bahn](ref:toverland/maximus-blitz-bahn)** in het Wunderwald
+**[Maximus' Blitz Bahn](ref:attractiepark-toverland/maximus-blitz-bahn)** in het Wunderwald
 voor het laatst open, de Mack-bobbaan uit 2007, waarop je met een remhendel zelf
 bepaalde hoe snel het bergaf ging. In onze historie was ze jarenlang de
 attractie met de langste wachttijd van het hele park, mediaan 34 minuten, en op
@@ -547,8 +547,8 @@ half drie.
 
 Ja, vooral voor achtbaanfans die genoeg hebben van rijen. Het park is met zo'n
 een miljoen gasten per jaar klein vergeleken met de Efteling of Europa-Park,
-maar heeft met [Troy](ref:toverland/troy) een van de beste houten achtbanen van
-Europa en met [Fēnix](ref:toverland/fenix) de langste wing coaster van het
+maar heeft met [Troy](ref:attractiepark-toverland/troy) een van de beste houten achtbanen van
+Europa en met [Fēnix](ref:attractiepark-toverland/fenix) de langste wing coaster van het
 continent, bij typische wachttijden van 16 minuten.
 
 ### Hoe lang zijn de wachttijden in Toverland?
@@ -556,7 +556,7 @@ continent, bij typische wachttijden van 16 minuten.
 Over de laatste twee seizoenen ligt de typische wachttijd parkbreed op
 **20 minuten**, Troy en Fēnix elk op **16 minuten** mediaan. Het hoogst zijn de
 waarden in december en januari en in april. Actuele cijfers vind je op de
-[Toverland-parkpagina](ref:toverland).
+[Toverland-parkpagina](ref:attractiepark-toverland).
 
 ### Wanneer is het in Toverland het rustigst?
 
@@ -631,8 +631,8 @@ Hoe het er nu bij het park uitziet:
 
 En de twee waar het hier om ging, met hun actuele cijfers:
 
-[Troy](ref:toverland/troy?full)
-[Fēnix](ref:toverland/fenix?full)
+[Troy](ref:attractiepark-toverland/troy?full)
+[Fēnix](ref:attractiepark-toverland/fenix?full)
 
 Neem bij afrit Sevenum een keer de afslag in plaats van erlangs te rijden. En
 als je dan in Troy zit en achter je wacht niemand: blijf gewoon zitten en rijd
@@ -660,4 +660,4 @@ meeste andere parken van Europa kun je het vergeten.
 - Halloween Days & Nights, scare zones en Fear Pass: [Scare zones & experiences (officieel)](https://www.toverland.com/en/activities/halloween/scare-zones-experiences) · [onze halloweengids](/blog/halloween-pretparken-2026)
 - Route, bus & parkeren: [Adres en route (officieel)](https://www.toverland.com/en/contact/adress-route)
 - Backstage in de Maison de la Magie: [Freundeskreis Kirmes und Freizeitparks e. V. (FKF)](https://fkfev.de/)
-- Wachttijd- en drukte-data: eigen historie uit twee seizoenen, [Toverland op park.fan](ref:toverland)
+- Wachttijd- en drukte-data: eigen historie uit twee seizoenen, [Toverland op park.fan](ref:attractiepark-toverland)

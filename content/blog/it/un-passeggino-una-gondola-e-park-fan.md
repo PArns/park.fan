@@ -151,7 +151,7 @@ spunta. Nel maggio 2026 siamo finalmente volati a Orlando: **Walt Disney
 World, Universal e SeaWorld**, il programma completo, il viaggio “una volta
 nella vita” che sognavo da bambino. È una sensazione stranamente bella vedere il
 ragazzino del lago delle fiabe piantato decenni dopo davanti al Cinderella
-Castle del [Magic Kingdom](ref:disney-magic-kingdom?bare). Tutto più grande, tutto
+Castle del [Magic Kingdom](ref:magic-kingdom-park?bare). Tutto più grande, tutto
 più rumoroso, tutto più lontano da Brühl e, nonostante questo, esattamente lo
 stesso formicolio di allora nella gondola. Nel mezzo
 [Epic Universe](ref:universal-epic-universe?bare) nella sua prima estate,
@@ -298,7 +298,7 @@ formati.
 
 **Resoconti di viaggio.** Lunghi, con una posizione, con foto e con dati veri
 proprio dal parco appena visitato. Non “è stato bello”, ma:
-“[Magic Kingdom](ref:disney-magic-kingdom?bare), 15 maggio, rope drop alle 09:08,
+“[Magic Kingdom](ref:magic-kingdom-park?bare), 15 maggio, rope drop alle 09:08,
 questo era il piano, questo ha funzionato, questo è andato a rotoli.” Il viaggio
 a Orlando di cui sopra apre le danze: Disney World, Universal e SeaWorld, foto
 comprese.

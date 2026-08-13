@@ -46,7 +46,7 @@ const FRAME = 'div[data-card-photo="frame"] img';
 
 /** Surfaces that render the three card kinds, in the states they ship in. */
 const PAGES = [
-  ['ride cards', '/de/parks/europe/netherlands/sevenum/toverland'],
+  ['ride cards', '/de/parks/europe/netherlands/sevenum/attractiepark-toverland'],
   ['park cards', '/de/parks/europe/netherlands'],
   ['blog cards', '/de/blog'],
   ['home', '/de'],

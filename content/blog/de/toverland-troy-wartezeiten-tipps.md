@@ -12,7 +12,7 @@ excerpt: >-
   Woodie am Ziel 34 kostet. Über einen Park, in dem ich hinter den Kulissen mal
   selbst den Hount spielen durfte, und der bis heute keinen Fast Pass verkauft.
 tags:
-  - toverland
+  - attractiepark-toverland
   - troy
   - holzachterbahn
   - wartezeiten
@@ -23,10 +23,10 @@ tags:
   - saison-2026
 category: guides
 parkLinks:
-  - toverland
+  - attractiepark-toverland
   - efteling
 rideLinks:
-  - toverland/*
+  - attractiepark-toverland/*
   - efteling/joris-en-de-draak
 coverImage:
   src: /media/toverland/troy-16x9.jpg
@@ -62,7 +62,7 @@ Der Lifthill zieht dich achtunddreißig Sekunden nach oben. Genug Zeit, um von
 oben das Gewirr aus Holzstreben unter dir anzusehen und zu raten, wo es gleich
 langgeht. Du wirst falsch liegen.
 
-Ab der Kuppe hört [Troy](ref:toverland/troy) nicht mehr auf. Kein Element dauert
+Ab der Kuppe hört [Troy](ref:attractiepark-toverland/troy) nicht mehr auf. Kein Element dauert
 lange genug, um sich darauf einzustellen. Die Bahn faltet sich in sich selbst,
 kreuzt ihre eigene Strecke, und irgendwann mitten in der Fahrt schießt sie mit
 voller Geschwindigkeit **durch das Stationsgebäude**, an den Wartenden vorbei,
@@ -84,7 +84,7 @@ Siebzig Kilometer trennen die beiden Parks. In beiden steht eine Holzachterbahn
 vom selben amerikanischen Hersteller. Für die eine wartest du typischerweise
 16 Minuten, für die andere 34. Die kürzere Schlange gehört der besseren Bahn.
 
-Hier soll es um den Park drumherum gehen: das [Toverland](ref:toverland?long) in
+Hier soll es um den Park drumherum gehen: das [Toverland](ref:attractiepark-toverland?long) in
 Sevenum, das dieses Jahr 25 wird, das ich für einen der schönsten kleinen Parks
 Europas halte, und in dem ich einmal selbst im Kostüm auf der anderen Seite
 gestanden habe. Dazu später.
@@ -131,7 +131,7 @@ nochmal.
 
 ```
 
-[Troy](ref:toverland/troy?full)
+[Troy](ref:attractiepark-toverland/troy?full)
 
 ## 16 Minuten, über zwei Saisons gemessen
 
@@ -149,27 +149,27 @@ Siebzig Kilometer weiter nordwestlich steht im [Efteling](ref:efteling)
 Doppelstrecken-Anlage ein Publikumsmagnet. Gleiche Datenbasis, gleiche
 Rechenmethode:
 
-| Holzachterbahn                                                           | Park                            | Typisch (Median) | Spitze (P90) |
-| ------------------------------------------------------------------------ | ------------------------------- | ---------------: | -----------: |
-| **[Troy](ref:toverland/troy?bare)** (GCI, 2007)                          | [Toverland](ref:toverland?bare) |       **16 Min** |       21 Min |
-| **[Joris en de Draak](ref:efteling/joris-en-de-draak?bare)** (GCI, 2010) | [Efteling](ref:efteling?bare)   |           34 Min |       40 Min |
+| Holzachterbahn                                                           | Park                                          | Typisch (Median) | Spitze (P90) |
+| ------------------------------------------------------------------------ | --------------------------------------------- | ---------------: | -----------: |
+| **[Troy](ref:attractiepark-toverland/troy?bare)** (GCI, 2007)            | [Toverland](ref:attractiepark-toverland?bare) |       **16 Min** |       21 Min |
+| **[Joris en de Draak](ref:efteling/joris-en-de-draak?bare)** (GCI, 2010) | [Efteling](ref:efteling?bare)                 |           34 Min |       40 Min |
 
 Mehr als das Doppelte, für eine Bahn, die unter Enthusiasten in kaum einem
 Ranking über Troy steht. Über die Bauart hinweg wird das Bild noch deutlicher.
 Was kosten die großen Namen der Region an Wartezeit, egal ob Holz oder Stahl?
 
-| Achterbahn                                               | Bauart              | Park                                    | Typisch (Median) | Spitze (P90) |
-| -------------------------------------------------------- | ------------------- | --------------------------------------- | ---------------: | -----------: |
-| [Taron](ref:phantasialand/taron?bare)                    | Multi-Launch, Stahl | [Phantasialand](ref:phantasialand?bare) |           48 Min |       54 Min |
-| [F.L.Y.](ref:phantasialand/fly?bare)                     | Flying, Stahl       | [Phantasialand](ref:phantasialand?bare) |           40 Min |       47 Min |
-| [Joris en de Draak](ref:efteling/joris-en-de-draak?bare) | Holz                | [Efteling](ref:efteling?bare)           |           34 Min |       40 Min |
-| [Baron 1898](ref:efteling/baron-1898?bare)               | Dive Coaster, Stahl | [Efteling](ref:efteling?bare)           |           26 Min |       32 Min |
-| **[Troy](ref:toverland/troy?bare)**                      | **Holz**            | **[Toverland](ref:toverland?bare)**     |       **16 Min** |   **21 Min** |
-| **[Fēnix](ref:toverland/fenix?bare)**                    | **Wing, Stahl**     | **[Toverland](ref:toverland?bare)**     |       **16 Min** |   **20 Min** |
+| Achterbahn                                               | Bauart              | Park                                              | Typisch (Median) | Spitze (P90) |
+| -------------------------------------------------------- | ------------------- | ------------------------------------------------- | ---------------: | -----------: |
+| [Taron](ref:phantasialand/taron?bare)                    | Multi-Launch, Stahl | [Phantasialand](ref:phantasialand?bare)           |           48 Min |       54 Min |
+| [F.L.Y.](ref:phantasialand/fly?bare)                     | Flying, Stahl       | [Phantasialand](ref:phantasialand?bare)           |           40 Min |       47 Min |
+| [Joris en de Draak](ref:efteling/joris-en-de-draak?bare) | Holz                | [Efteling](ref:efteling?bare)                     |           34 Min |       40 Min |
+| [Baron 1898](ref:efteling/baron-1898?bare)               | Dive Coaster, Stahl | [Efteling](ref:efteling?bare)                     |           26 Min |       32 Min |
+| **[Troy](ref:attractiepark-toverland/troy?bare)**        | **Holz**            | **[Toverland](ref:attractiepark-toverland?bare)** |       **16 Min** |   **21 Min** |
+| **[Fēnix](ref:attractiepark-toverland/fenix?bare)**      | **Wing, Stahl**     | **[Toverland](ref:attractiepark-toverland?bare)** |       **16 Min** |   **20 Min** |
 
 Die beiden Toverland-Bahnen stehen unten, mit Abstand. Für die Zeit, die du im
 Phantasialand **einmal** bei [Taron](ref:phantasialand/taron) anstehst, fährst du
-hier [Troy](ref:toverland/troy) dreimal.
+hier [Troy](ref:attractiepark-toverland/troy) dreimal.
 
 Der Grund ist eine Division, die ich in der
 [Kunst des Wartens](/blog/die-kunst-des-wartens) ausführlich vorgerechnet habe:
@@ -193,7 +193,7 @@ und die kostet nichts extra.
 Troy ist der Grund, warum Enthusiasten kommen. Der Park lebt aber nicht von einer
 Bahn.
 
-**[Fēnix](ref:toverland/fenix)** ist der Prestigebau von 2018: ein Wing Coaster
+**[Fēnix](ref:attractiepark-toverland/fenix)** ist der Prestigebau von 2018: ein Wing Coaster
 von **Bolliger & Mabillard**, 40 Meter hoch, 813 Meter lang, bis zu 95 km/h,
 dreimal über Kopf (der Wing-Over-Drop zählt selbst schon als Überschlag, dazu
 Immelmann und Zero-G-Roll), 13 Millionen Euro teuer. Der erste Wing Coaster der Niederlande und bis heute der längste Europas.
@@ -205,7 +205,7 @@ besser macht. Wartezeit: dieselben 16 Minuten wie bei Troy.
 
 ![Die Station von Fēnix mit blauer Schiene, Wing-Coaster-Zug und Feuerschalen an Ketten unter Holzbalken | Die Station von Fēnix: Feuerschalen an Ketten, schwere Balken, und der Zug mit den Sitzen neben der Schiene. | wide](/media/toverland/background-16x9.jpg)
 
-**[Booster Bike](ref:toverland/booster-bike)** ist der Sonderling und mein
+**[Booster Bike](ref:attractiepark-toverland/booster-bike)** ist der Sonderling und mein
 zweiter Liebling hier. Vekoma baute 2004 in Sevenum den weltweiten Prototyp der
 Motorrad-Achterbahn: Du sitzt nicht, du liegst auf einem Motorrad, Hände am
 Lenker, Knie angezogen, und wirst dann als Launch Coaster losgeschossen. Eine
@@ -213,7 +213,7 @@ unbequeme, absurde, wunderbare Bahn. Mit einem Median von 21 Minuten hat
 ausgerechnet sie die längste typische Wartezeit aller Coaster im Park, was daran
 liegt, dass man einzeln und liegend einsteigt und das eben dauert.
 
-**[Dwervelwind](ref:toverland/dwervelwind)** von Mack Rides ist ein Spinning
+**[Dwervelwind](ref:attractiepark-toverland/dwervelwind)** von Mack Rides ist ein Spinning
 Coaster im Dunkeln, halb Dark Ride, halb Achterbahn, mit frei drehenden Gondeln
 und einem Bordsound, den es bei dieser Bauart vorher nicht gab. Ihr
 Eröffnungsdatum ist eine kleine Fangfrage. Angekündigt war die Bahn für 2013,
@@ -225,22 +225,22 @@ werden konnte, und kam im **April 2013** mit dem kompletten Themenbereich
 zurück, jetzt als Dwervelwind statt wie 2012 als d'wervelwind. Deshalb liest man
 je nach Quelle 2012 oder 2013. Beides stimmt.
 
-**[Toos-Express](ref:toverland/toos-express)** aus dem Eröffnungsjahr 2001 ist
+**[Toos-Express](ref:attractiepark-toverland/toos-express)** aus dem Eröffnungsjahr 2001 ist
 der Junior-Coaster, auf dem hier seit einem Vierteljahrhundert Kinder ihre erste
 Achterbahn fahren.
 
 Die Nass- und Dunkel-Abteilung ist besser als ihr Ruf:
 
-- **[Merlin's Quest](ref:toverland/merlins-quest)** (2018), die Bootsfahrt durch
+- **[Merlin's Quest](ref:attractiepark-toverland/merlins-quest)** (2018), die Bootsfahrt durch
   Merlins Turm, mit Animatronics und einer Szenenfolge, für die andere Parks
   Eintritt extra nehmen würden. Der stille Star von Avalon.
-- **[Djengu River](ref:toverland/djengu-river)**, die Wildwasser-Rafting-Anlage
+- **[Djengu River](ref:attractiepark-toverland/djengu-river)**, die Wildwasser-Rafting-Anlage
   von Hafema. Die Frage ist nicht, _ob_ du nass wirst.
-- **[Expedition Zork](ref:toverland/expedition-zork)**, eine „Twist & Splash“ von
+- **[Expedition Zork](ref:attractiepark-toverland/expedition-zork)**, eine „Twist & Splash“ von
   Mack: Wasserbahn und Karussell in einem, und deutlich fieser, als sie aussieht.
-- **[Villa Fiasko](ref:toverland/villa-fiasko)**, ein Madhouse von Vekoma, also
+- **[Villa Fiasko](ref:attractiepark-toverland/villa-fiasko)**, ein Madhouse von Vekoma, also
   der Raum, der sich um dich dreht, während du schwörst, dass es umgekehrt ist.
-- **[Dragonwatch](ref:toverland/dragonwatch)** (2023), 40 Meter Aussichtsturm,
+- **[Dragonwatch](ref:attractiepark-toverland/dragonwatch)** (2023), 40 Meter Aussichtsturm,
   von dem aus man sieht, wie klein dieser Park eigentlich ist, und wie
   vollständig.
 
@@ -263,7 +263,7 @@ Geld hatte, das er verschwenden konnte, und trotzdem zweimal etwas gebaut hat,
 das es vorher nirgends gab.
 
 **2004** kam die zweite Halle dazu, damals „Magic Forest“, heute der
-**Wunderwald**. Und mit ihr [Booster Bike](ref:toverland/booster-bike), der
+**Wunderwald**. Und mit ihr [Booster Bike](ref:attractiepark-toverland/booster-bike), der
 weltweite Prototyp der Motorrad-Achterbahn von Vekoma. Ein Park, den außerhalb
 Limburgs kaum jemand kannte, ließ sich eine Bauart entwickeln, die es noch nicht
 gab.
@@ -278,12 +278,12 @@ Lifthill-Gerüsts bei einem Sturm um. Der Park baute es wieder auf und öffnete
 trotzdem pünktlich zur Saison.
 
 **2013** entstand die **Magische Vallei** rund um die „Dwervels“, mit
-[Dwervelwind](ref:toverland/dwervelwind) und
-[Expedition Zork](ref:toverland/expedition-zork). Und **2018** kam der Sprung,
+[Dwervelwind](ref:attractiepark-toverland/dwervelwind) und
+[Expedition Zork](ref:attractiepark-toverland/expedition-zork). Und **2018** kam der Sprung,
 der aus dem Ausflugsziel einen Themenpark machte: eine Erweiterung für
 35 Millionen Euro, mit einem komplett neuen Eingangsbereich im mediterranen
 Hafenstil (**Port Laguna**) und der Artus-Welt **Avalon**, in der
-[Fēnix](ref:toverland/fenix) und [Merlin's Quest](ref:toverland/merlins-quest)
+[Fēnix](ref:attractiepark-toverland/fenix) und [Merlin's Quest](ref:attractiepark-toverland/merlins-quest)
 stehen. Damals bekam der Park auch seinen heutigen Claim, „Discover your own
 magic“, der die alten Sprüche „Magisch mooi“ und „Feel the Magic“ ablöste. Im
 selben Jahr räumte Toverland bei den **European Star Awards** ab:
@@ -291,7 +291,7 @@ bester Themenpark in der Kategorie bis eine Million Besucher, dazu eine
 Auszeichnung für Avalon und Port Laguna als beste Neuheit. Troy landete in der
 Kategorie beste Holzachterbahn Europas knapp hinter dem Sieger, mit einer damals
 elf Jahre alten Bahn. **2023** wuchs Avalon weiter, unter anderem um den
-40 Meter hohen Aussichtsturm [Dragonwatch](ref:toverland/dragonwatch).
+40 Meter hohen Aussichtsturm [Dragonwatch](ref:attractiepark-toverland/dragonwatch).
 
 Die Besucherzahlen erzählen dieselbe Geschichte in Ziffern: 620.000 im Jahr
 2013, 862.000 im letzten Vor-Corona-Jahr 2019, seit 2022 konstant über einer
@@ -303,7 +303,7 @@ Reiz.
 
 Die beiden Urhallen gibt es übrigens noch, und sie sind kein
 Regenschauer-Plan-B. Land van Toos und Wunderwald sind ein eigenständiges
-Programm, mit [Djinn](ref:toverland/djinn), dem Kettenkarussell über dem
+Programm, mit [Djinn](ref:attractiepark-toverland/djinn), dem Kettenkarussell über dem
 orientalischen Markt, als schönstem Beispiel: 12,8 Meter hoch, komplett
 überdacht, und abends mit einer Lichtstimmung, für die andere Parks einen
 Außenbereich bräuchten.
@@ -390,14 +390,14 @@ genug, dass so etwas geht, und offenbar wichtig genug, dass es gemacht wird.
 > Und die Halloween Nights sind die vollsten Abende des Jahres, hier lohnt der
 > Blick in den Kalender doppelt.
 
-[Toverland](ref:toverland?full)
+[Toverland](ref:attractiepark-toverland?full)
 
 ## Was sonst noch ansteht
 
 ![Ein geschnitztes Zierdetail an der Maximus' Blitz Bahn, blau angestrahlt, daneben alte Glühbirnen an Kabeln | Ein Detail der Blitz Bahn, wie sie neunzehn Jahre lang dastand. Fast alles hier war handgemacht. | left](/media/toverland/maximus-blitzbahn-4x3.jpg)
 
 Wer länger nicht da war, wird eine Attraktion vermissen. Am **17. Mai 2026**
-hatte **[Maximus' Blitz Bahn](ref:toverland/maximus-blitz-bahn)** im Wunderwald
+hatte **[Maximus' Blitz Bahn](ref:attractiepark-toverland/maximus-blitz-bahn)** im Wunderwald
 zum letzten Mal geöffnet, die Mack-Bobbahn von 2007, auf der man mit einem
 Bremshebel selbst bestimmte, wie schnell es bergab ging. In unserer Historie war
 sie über Jahre die Attraktion mit der längsten Wartezeit des ganzen Parks, im
@@ -557,8 +557,8 @@ zwölf oder ab halb drei.
 
 Ja, besonders für Achterbahnfans, die genug von Schlangen haben. Der Park ist mit
 rund einer Million Gästen pro Jahr klein im Vergleich zum Efteling oder zum
-Europa-Park, hat aber mit [Troy](ref:toverland/troy) eine der besten
-Holzachterbahnen Europas und mit [Fēnix](ref:toverland/fenix) den längsten Wing
+Europa-Park, hat aber mit [Troy](ref:attractiepark-toverland/troy) eine der besten
+Holzachterbahnen Europas und mit [Fēnix](ref:attractiepark-toverland/fenix) den längsten Wing
 Coaster des Kontinents, bei typischen Wartezeiten von 16 Minuten.
 
 ### Wie lang sind die Wartezeiten im Toverland?
@@ -566,7 +566,7 @@ Coaster des Kontinents, bei typischen Wartezeiten von 16 Minuten.
 Über die letzten beiden Saisons liegt die typische Wartezeit im Parkschnitt bei
 **20 Minuten**, Troy und Fēnix bei je **16 Minuten** im Median. Am höchsten sind
 die Werte im Dezember und Januar sowie im April. Aktuelle Zahlen findest du auf
-der [Toverland-Parkseite](ref:toverland).
+der [Toverland-Parkseite](ref:attractiepark-toverland).
 
 ### Wann ist im Toverland am wenigsten los?
 
@@ -641,8 +641,8 @@ Wie es gerade am Park aussieht:
 
 Und die zwei, um die es hier ging, mit ihren aktuellen Zahlen:
 
-[Troy](ref:toverland/troy?full)
-[Fēnix](ref:toverland/fenix?full)
+[Troy](ref:attractiepark-toverland/troy?full)
+[Fēnix](ref:attractiepark-toverland/fenix?full)
 
 Fahr an der Ausfahrt Sevenum einmal raus statt vorbei. Und wenn du dann bei Troy
 sitzt und hinter dir wartet keiner: Bleib einfach sitzen und fahr nochmal. Und
@@ -670,4 +670,4 @@ anderen Parks Europas kannst du es vergessen.
 - Halloween Days & Nights, Scare Zones und Fear Pass: [Scare Zones & Experiences (offiziell)](https://www.toverland.com/en/activities/halloween/scare-zones-experiences) · [unser Halloween-Guide](/blog/halloween-freizeitparks-2026)
 - Anreise, Bus & Parken: [Adresse und Route (offiziell)](https://www.toverland.com/en/contact/adress-route)
 - Backstage in der Maison de la Magie: [Freundeskreis Kirmes und Freizeitparks e. V. (FKF)](https://fkfev.de/)
-- Wartezeit- und Crowd-Daten: eigene Historie aus zwei Saisons, [Toverland auf park.fan](ref:toverland)
+- Wartezeit- und Crowd-Daten: eigene Historie aus zwei Saisons, [Toverland auf park.fan](ref:attractiepark-toverland)

@@ -77,7 +77,7 @@ Every field is optional. Nothing is inferred from the file name or the folder.
 ```jsonc
 {
   "title": "Troy", // short label, mainly for the admin
-  "park": "toverland", // park slug — what the photo SHOWS
+  "park": "attractiepark-toverland", // park slug — what the photo SHOWS
   "parkPath": "europe/…/toverland", // only for the two ambiguous slugs, see below
   "ride": "troy", // attraction slug (API slug, not the filename)
   "area": "Troy", // themed area
