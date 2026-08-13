@@ -22,7 +22,7 @@ tags:
   - walibi-holland
   - walibi-belgium
   - bobbejaanland
-  - toverland
+  - attractiepark-toverland
   - heide-park
   - parc-asterix
   - phantasialand
@@ -279,7 +279,7 @@ lado de la frontera.
 
 ### Toverland: siete hectáreas de maíz, y no te pares
 
-[Toverland](ref:toverland) en la localidad neerlandesa de Sevenum
+[Toverland](ref:attractiepark-toverland) en la localidad neerlandesa de Sevenum
 (para mucha gente de Renania del Norte-Westfalia, el parque del Benelux más
 cercano) amplía sus **Halloween Nights** año tras año. La fecha está fijada:
 **del 3 de octubre al 7 de noviembre de 2026** (los más inofensivos «Halloween
@@ -312,7 +312,7 @@ experiences, más una zona propia para el desfile. En las noches llenas, y el
 Halloween de Toverland va _lleno_, esa es la diferencia entre «tres casas
 hechas» y «las seis, y encima salir entero del maíz».
 
-[Toverland](ref:toverland?full)
+[Toverland](ref:attractiepark-toverland?full)
 
 Detalles sobre experiences, scare zones y Fear Pass:
 [toverland.com/halloween](https://www.toverland.com/en/activities/halloween/scare-zones-experiences).
@@ -448,7 +448,7 @@ quien lleve niños, acierta aquí de pleno.
    eventos, las casas y las experiences no están en la entrada del día.
    Calcularlo, y reservar pronto si te importa una fecha concreta.
 3. **Los carriles rápidos aquí sí merecen la pena, por una vez.** El **Fear
-   Pass** de [Toverland](ref:toverland) o el **Speedy Pass** de
+   Pass** de [Toverland](ref:attractiepark-toverland) o el **Speedy Pass** de
    [Walibi Belgium](ref:walibi-belgium) no son un lujo decadente en las noches
    llenas de Halloween, sino aritmética simple: una noche de Halloween es más
    corta que un día de parque normal, y cada minuto que _no_ pasas en la cola es
@@ -500,7 +500,7 @@ La temporada de Halloween 2026 tiene algo para cada umbral del dolor: el
 volumen puro del [Movie Park](ref:movie-park-germany) con nueve mazes, la gran
 puesta en escena de [Traumatica](ref:europa-park), el cine transitable de
 [Bobbejaanland](ref:bobbejaanland), el maizal recién estrenado de
-[Toverland](ref:toverland) y, para los muy valientes, las
+[Toverland](ref:attractiepark-toverland) y, para los muy valientes, las
 [Walibi-Experiences](ref:walibi-holland) en las que uno paga voluntariamente
 por acabar sellado, inundado y abierto en canal. Como contrapunto, el otoño
 silencioso y distinguido del [Efteling](ref:efteling) y un

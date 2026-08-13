@@ -117,8 +117,8 @@ decoración es en realidad psicología cognitiva aplicada.
 
 El arma más elegante contra el tiempo muerto es el **pre-show**, que
 sencillamente declara la espera parte de la atracción. El ejemplo de manual
-está en [Disney's Hollywood Studios](ref:disney-hollywood-studios?bare). En la
-[Torre del Terror](ref:disney-hollywood-studios/the-twilight-zone-tower-of-terror)
+está en [Disney's Hollywood Studios](ref:disneys-hollywood-studios?bare). En la
+[Torre del Terror](ref:disneys-hollywood-studios/the-twilight-zone-tower-of-terror)
 no te arrastras por un pasillo: atraviesas el polvoriento vestíbulo del
 Hollywood Tower Hotel hasta una biblioteca donde un vídeo al estilo de «The
 Twilight Zone» cuenta la historia del edificio. Haces, por así decirlo, el
@@ -152,8 +152,8 @@ por voluntad propia.
 ### Avatar Flight of Passage: un museo como cola
 
 La cola de
-[Avatar Flight of Passage](ref:disney-animal-kingdom/avatar-flight-of-passage)
-en [Disney's Animal Kingdom](ref:disney-animal-kingdom?bare) es en el fondo un
+[Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage)
+en [Disney's Animal Kingdom](ref:disneys-animal-kingdom-theme-park?bare) es en el fondo un
 museo transitable con un simulador de vuelo como salida. Primero el camino
 serpentea por el paisaje de Pandora y por cuevas con pinturas de los na'vi,
 después por un laboratorio de investigación abandonado, con un avatar de tamaño
@@ -175,7 +175,7 @@ tres niveles superpuestos, cuatro salas en paralelo. Casi 200 visitantes a la
 vez, unos 1.400 por hora. Incluso tras 120 minutos de espera, la mayoría no
 cuenta después la cola, sino el avatar que respira en el tanque.
 
-[Avatar Flight of Passage](ref:disney-animal-kingdom/avatar-flight-of-passage?full)
+[Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?full)
 
 ### Cosmic Rewind: primero el museo, luego la montaña rusa
 
@@ -411,7 +411,7 @@ Hay tres razones, y las tres son aritmética:
    generosidad, cinco personas. Es la capacidad de transporte de un ascensor
    mediano, repartida por todo un cielo nocturno. Los recuentos no oficiales
    llegan a unos **1.200 visitantes por hora**, y la
-   [versión original en el Magic Kingdom](ref:disney-magic-kingdom/peter-pans-flight?bare)
+   [versión original en el Magic Kingdom](ref:magic-kingdom-park/peter-pans-flight?bare)
    ni siquiera pasa de unos 800. Un solo tren del Hulk transporta por salida el
    doble de gente de la que Peter Pan tiene barcos. Y para comparar en la misma
    casa: Pirates of the Caribbean, justo al lado, se traga con sus barcas
@@ -431,7 +431,7 @@ El fenómeno, por cierto, es medible en todo el mundo. Aquí los tiempos de
 espera en vivo de la versión de Orlando en el parque más visitado del mundo,
 directamente de nuestros datos:
 
-[Peter Pan's Flight](ref:disney-magic-kingdom/peter-pans-flight?full)
+[Peter Pan's Flight](ref:magic-kingdom-park/peter-pans-flight?full)
 
 ## Europa espera de otra manera: Phantasialand y Europa-Park frente a Orlando
 
@@ -440,13 +440,13 @@ parque entero se ve con más claridad comparando pesos pesados, los grandes
 parques europeos frente a los gigantes de Orlando.
 
 **Orlando juega en una liga de demanda propia.** El
-[Magic Kingdom](ref:disney-magic-kingdom?bare) es el parque de atracciones más
+[Magic Kingdom](ref:magic-kingdom-park?bare) es el parque de atracciones más
 visitado del mundo, y tanto Disney como Universal atraen visitantes de todos
 los continentes. A eso se suma un factor que Europa apenas conoce con esta
 dureza: allí uno puede comprarse el paso por delante de la cola. Lightning Lane
 y Express Pass venden parte de la capacidad a visitantes que pagan, y cada
 viaje exprés le falta a la cola standby. Cabezas de cartel como
-[Avatar Flight of Passage](ref:disney-animal-kingdom/avatar-flight-of-passage?bare)
+[Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?bare)
 marcan por eso con regularidad entre 60 y 120 minutos pese a una capacidad
 horaria enorme.
 
@@ -494,7 +494,7 @@ concentra en pocos cabezas de cartel.
 
 ```
 
-**Y ahora el [Magic Kingdom](ref:disney-magic-kingdom?bare) en Orlando**, el
+**Y ahora el [Magic Kingdom](ref:magic-kingdom-park?bare) en Orlando**, el
 parque más visitado del mundo: carga de base más alta, pero repartida entre
 docenas de atracciones. Fíjate en lo distintos que son ya los minutos «típicos»
 y la curva de temporada a lo largo del año.
@@ -566,7 +566,7 @@ El Europa-Park introdujo su **VirtualLine** al principio de la pandemia de
 coronavirus en 2020 y la mantuvo, porque sencillamente funciona: por la
 aplicación del parque reservas gratis una franja horaria para atracciones como
 blue fire, Wodan o Voltron. Disney gestionó meganovedades como
-[Rise of the Resistance](ref:disney-hollywood-studios/star-wars-rise-of-the-resistance?bare)
+[Rise of the Resistance](ref:disneys-hollywood-studios/star-wars-rise-of-the-resistance?bare)
 o precisamente Cosmic Rewind durante años enteramente con **boarding groups**.
 El principio es siempre el mismo: haces cola digitalmente mientras comes, vas
 de compras o ves un espectáculo. La cola sigue existiendo, solo que transcurre

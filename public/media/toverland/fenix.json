@@ -1,6 +1,6 @@
 {
   "title": "Fēnix",
-  "park": "toverland",
+  "park": "attractiepark-toverland",
   "ride": "fenix",
   "area": "Avalon",
   "roles": ["ride-card", "hero"],

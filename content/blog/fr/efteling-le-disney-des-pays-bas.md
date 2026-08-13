@@ -391,12 +391,12 @@ Ensuite : 34 minutes pour la plus longue file du parc, rapporté à presque six
 millions de visites, c'est peu. À titre de comparaison, mêmes données, même
 méthode :
 
-| Parc                                    | Fréquentation 2025      | Typique dans le parc | Plus longue file                                                         |
-| --------------------------------------- | ----------------------- | -------------------: | ------------------------------------------------------------------------ |
-| [Phantasialand](ref:phantasialand?bare) | pas de chiffre officiel |               31 min | 48 min ([Taron](ref:phantasialand/taron?bare))                           |
-| **[Efteling](ref:efteling?bare)**       | **5,78 M**              |           **25 min** | 34 min (Joris en de Draak)                                               |
-| [Europa-Park](ref:europa-park?bare)     | 7 M (resort)            |               23 min | 34 min ([Voltron](ref:europa-park/voltron-nevera-powered-by-rimac?bare)) |
-| [Toverland](ref:toverland?bare)         | 1,14 M                  |               15 min | 21 min ([Booster Bike](ref:toverland/booster-bike?bare))                 |
+| Parc                                          | Fréquentation 2025      | Typique dans le parc | Plus longue file                                                         |
+| --------------------------------------------- | ----------------------- | -------------------: | ------------------------------------------------------------------------ |
+| [Phantasialand](ref:phantasialand?bare)       | pas de chiffre officiel |               31 min | 48 min ([Taron](ref:phantasialand/taron?bare))                           |
+| **[Efteling](ref:efteling?bare)**             | **5,78 M**              |           **25 min** | 34 min (Joris en de Draak)                                               |
+| [Europa-Park](ref:europa-park?bare)           | 7 M (resort)            |               23 min | 34 min ([Voltron](ref:europa-park/voltron-nevera-powered-by-rimac?bare)) |
+| [Toverland](ref:attractiepark-toverland?bare) | 1,14 M                  |               15 min | 21 min ([Booster Bike](ref:attractiepark-toverland/booster-bike?bare))   |
 
 Phantasialand ne publie pas sa fréquentation ; les estimations du secteur tournent
 autour de deux millions. Il a donc une fraction du public d'Efteling et pourtant
@@ -477,7 +477,7 @@ ouvert, du nom de Pardoes, le bouffon qui est la mascotte du parc.
 Sont accueillies les familles avec un enfant gravement malade entre quatre et
 douze ans. Elles reçoivent une semaine de vacances entièrement gratuite :
 logement, repas, programme, plus l'entrée libre à Efteling, au parc safari Beekse
-Bergen et à [Toverland](ref:toverland). Les parents déposent le dossier avec le
+Bergen et à [Toverland](ref:attractiepark-toverland). Les parents déposent le dossier avec le
 pédiatre traitant, et une commission médicale décide.
 
 L'architecte Anoul Bouwman a d'abord construit huit logements autour d'une cour
@@ -498,7 +498,7 @@ temps.
 Le parc fournit les accessoires. L'éléphant blanc de l'ancienne pataugeoire est
 dans le jardin de la villa depuis 2015, et en 2023 s'y est ajouté le portail en
 trou de serrure de l'Avonturen Doolhof démoli. Parmi les ambassadeurs figure
-**Hans Klok**, le même illusionniste qui a inauguré [Toverland](ref:toverland) il
+**Hans Klok**, le même illusionniste qui a inauguré [Toverland](ref:attractiepark-toverland) il
 y a 25 ans et qui y remonte sur scène cette année. Le milieu des parcs
 néerlandais est plus petit qu'il n'en a l'air.
 
@@ -700,7 +700,7 @@ en tant que client de l'hôtel contourne de toute façon les jours d'exclusion.
 **Accès.** Kaatsheuvel est en Brabant-Septentrional, à une bonne heure et demie à
 deux heures de Düsseldorf et à un peu plus de deux heures de Cologne et de la Ruhr,
 dans les deux cas par l'A67 et l'A2. Qui passe de toute façon par la région
-frontalière combine bien la visite avec [Toverland](ref:toverland), qui est
+frontalière combine bien la visite avec [Toverland](ref:attractiepark-toverland), qui est
 exactement sur la route. En train, c'est plus pénible : jusqu'à Bois-le-Duc ou
 Tilburg, puis le bus. Comptez des correspondances et préparez le retour avant de
 partir.

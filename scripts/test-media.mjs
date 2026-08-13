@@ -104,7 +104,7 @@ checkThat(
   searchMedia({ tags: ['night', 'halloween'] }).length <= searchMedia({ tags: ['night'] }).length
 );
 checkThat('role filter works', searchMedia({ role: 'park-background' }).length > 0);
-checkThat('park filter works', searchMedia({ park: 'toverland' }).length > 0);
+checkThat('park filter works', searchMedia({ park: 'attractiepark-toverland' }).length > 0);
 check('filters compose with search', searchMedia({ q: 'troy', park: 'efteling' }).length, 0);
 checkThat(
   'every tag is in the vocabulary report',
@@ -120,7 +120,7 @@ checkThat(
 check('unknown park has no background', getParkBackground('does-not-exist'), null);
 check('null park slug is safe', getParkBackground(null), null);
 
-const troy = getRideImage('toverland', 'troy');
+const troy = getRideImage('attractiepark-toverland', 'troy');
 checkThat('ride card resolves', troy?.id === 'toverland/troy', `got ${troy?.id}`);
 checkThat('ride card is the one marked ride-card', troy?.roles.includes('ride-card'));
 
@@ -128,12 +128,13 @@ checkThat('ride card is the one marked ride-card', troy?.roles.includes('ride-ca
 // the API slug is maximus-blitz-bahn. Before the sidecar, this lookup found nothing.
 checkThat(
   'ride slug is decoupled from the filename',
-  getRideImage('toverland', 'maximus-blitz-bahn')?.id === 'toverland/maximus-blitzbahn',
-  `got ${getRideImage('toverland', 'maximus-blitz-bahn')?.id}`
+  getRideImage('attractiepark-toverland', 'maximus-blitz-bahn')?.id ===
+    'toverland/maximus-blitzbahn',
+  `got ${getRideImage('attractiepark-toverland', 'maximus-blitz-bahn')?.id}`
 );
 
 // A ride may have several photos across collections; the card is one of them.
-const troyAll = getRideImages('toverland', 'troy');
+const troyAll = getRideImages('attractiepark-toverland', 'troy');
 checkThat('ride images span collections', troyAll.length >= 1);
 checkThat('ride card is among the ride images', ids(troyAll).includes(troy.id));
 
@@ -152,7 +153,7 @@ checkThat(
 );
 checkThat(
   'hero pool narrows to a park',
-  getHeroImages('toverland').every((i) => i.park === 'toverland')
+  getHeroImages('attractiepark-toverland').every((i) => i.park === 'attractiepark-toverland')
 );
 
 console.log('\n── collections ──────────────────────────────────────────────\n');
@@ -169,12 +170,12 @@ checkThat('unknown collection is empty', getCollection('nope').length === 0);
 const cthulhu = searchMedia({ q: 'cthulhu' })[0];
 checkThat(
   'collection and park are independent',
-  cthulhu?.collection === 'halloween-2026' && cthulhu?.park === 'toverland',
+  cthulhu?.collection === 'halloween-2026' && cthulhu?.park === 'attractiepark-toverland',
   `${cthulhu?.collection} / ${cthulhu?.park}`
 );
 checkThat(
   'that image is reachable from its park',
-  ids(getParkImages('toverland')).includes(cthulhu.id)
+  ids(getParkImages('attractiepark-toverland')).includes(cthulhu.id)
 );
 
 console.log('\n── text & credit ────────────────────────────────────────────\n');
@@ -204,7 +205,7 @@ check(
 console.log('\n── geo ──────────────────────────────────────────────────────\n');
 
 const PARKS = [
-  { slug: 'toverland', name: 'Toverland', latitude: 51.3966, longitude: 5.9834 },
+  { slug: 'attractiepark-toverland', name: 'Toverland', latitude: 51.3966, longitude: 5.9834 },
   { slug: 'efteling', name: 'Efteling', latitude: 51.6499, longitude: 5.0493 },
   { slug: 'europa-park', name: 'Europa-Park', latitude: 48.2669, longitude: 7.7222 },
 ];

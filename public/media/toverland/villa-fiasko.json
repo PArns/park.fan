@@ -1,6 +1,6 @@
 {
   "title": "Villa Fiasko",
-  "park": "toverland",
+  "park": "attractiepark-toverland",
   "ride": "villa-fiasko",
   "roles": ["ride-card", "hero"],
   "tags": ["halloween", "indoor", "night", "photo", "ride", "theming"],

@@ -1,6 +1,6 @@
 {
   "title": "Troy",
-  "park": "toverland",
+  "park": "attractiepark-toverland",
   "ride": "troy",
   "area": "Troy",
   "roles": ["ride-card", "hero"],

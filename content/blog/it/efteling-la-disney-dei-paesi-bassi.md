@@ -382,12 +382,12 @@ grandezza tiene.
 Secondo: 34 minuti per la fila più lunga del parco sono, rapportati a quasi sei
 milioni di visite, pochi. Per confronto, stessa base dati, stesso metodo:
 
-| Parco                                   | Pubblico 2025         | Tipico nel parco | Fila più lunga                                                           |
-| --------------------------------------- | --------------------- | ---------------: | ------------------------------------------------------------------------ |
-| [Phantasialand](ref:phantasialand?bare) | nessun dato ufficiale |           31 min | 48 min ([Taron](ref:phantasialand/taron?bare))                           |
-| **[Efteling](ref:efteling?bare)**       | **5,78 mln**          |       **25 min** | 34 min (Joris en de Draak)                                               |
-| [Europa-Park](ref:europa-park?bare)     | 7 mln (resort)        |           23 min | 34 min ([Voltron](ref:europa-park/voltron-nevera-powered-by-rimac?bare)) |
-| [Toverland](ref:toverland?bare)         | 1,14 mln              |           15 min | 21 min ([Booster Bike](ref:toverland/booster-bike?bare))                 |
+| Parco                                         | Pubblico 2025         | Tipico nel parco | Fila più lunga                                                           |
+| --------------------------------------------- | --------------------- | ---------------: | ------------------------------------------------------------------------ |
+| [Phantasialand](ref:phantasialand?bare)       | nessun dato ufficiale |           31 min | 48 min ([Taron](ref:phantasialand/taron?bare))                           |
+| **[Efteling](ref:efteling?bare)**             | **5,78 mln**          |       **25 min** | 34 min (Joris en de Draak)                                               |
+| [Europa-Park](ref:europa-park?bare)           | 7 mln (resort)        |           23 min | 34 min ([Voltron](ref:europa-park/voltron-nevera-powered-by-rimac?bare)) |
+| [Toverland](ref:attractiepark-toverland?bare) | 1,14 mln              |           15 min | 21 min ([Booster Bike](ref:attractiepark-toverland/booster-bike?bare))   |
 
 Phantasialand non pubblica il proprio numero di visitatori; le stime del settore lo
 collocano intorno ai due milioni. Ha quindi una frazione del pubblico di Efteling e
@@ -465,7 +465,7 @@ il giullare che è la mascotte del parco.
 Vengono accolte famiglie con un figlio gravemente malato tra i quattro e i dodici
 anni. Ricevono una settimana di vacanza completamente gratuita: alloggio, pasti,
 programma, più l'ingresso libero a Efteling, al parco safari Beekse Bergen e a
-[Toverland](ref:toverland). La domanda la presentano i genitori insieme al pediatra
+[Toverland](ref:attractiepark-toverland). La domanda la presentano i genitori insieme al pediatra
 curante, e decide una commissione medica.
 
 L'architetto Anoul Bouwman ha costruito prima otto alloggi intorno a una corte
@@ -486,7 +486,7 @@ Il parco fornisce la scenografia. L'elefante bianco della vecchia piscina per
 bambini sta nel giardino della villa dal 2015, e nel 2023 si è aggiunto il portale a
 buco della serratura dell'Avonturen Doolhof demolito. Tra gli ambasciatori c'è
 **Hans Klok**, lo stesso illusionista che 25 anni fa ha inaugurato
-[Toverland](ref:toverland) e che quest'anno vi torna sul palco. Il mondo dei parchi
+[Toverland](ref:attractiepark-toverland) e che quest'anno vi torna sul palco. Il mondo dei parchi
 olandesi è più piccolo di quanto sembri.
 
 > [!TIP]
@@ -682,7 +682,7 @@ aggira comunque i giorni esclusi.
 **Come arrivare.** Kaatsheuvel è nel Brabante Settentrionale, a un'ora e mezza
 abbondante o due da Düsseldorf e a poco più di due da Colonia e dalla Ruhr, in
 entrambi i casi via A67 e A2. Chi è comunque in zona di confine abbina bene la
-visita con [Toverland](ref:toverland), che sta esattamente sulla strada. In treno è
+visita con [Toverland](ref:attractiepark-toverland), che sta esattamente sulla strada. In treno è
 più faticoso: fino a 's-Hertogenbosch o Tilburg, poi l'autobus. Metti in conto i
 cambi e pianifica il ritorno prima di partire.
 

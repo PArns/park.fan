@@ -374,12 +374,12 @@ Ten tweede: 34 minuten voor de langste rij van het park is, afgezet tegen bijna 
 miljoen bezoeken, weinig. Ter vergelijking, dezelfde databasis, dezelfde
 rekenmethode:
 
-| Park                                    | Publiek 2025         | Typisch parkbreed | Langste rij                                                              |
-| --------------------------------------- | -------------------- | ----------------: | ------------------------------------------------------------------------ |
-| [Phantasialand](ref:phantasialand?bare) | geen officieel getal |            31 min | 48 min ([Taron](ref:phantasialand/taron?bare))                           |
-| **[Efteling](ref:efteling?bare)**       | **5,78 mln**         |        **25 min** | 34 min (Joris en de Draak)                                               |
-| [Europa-Park](ref:europa-park?bare)     | 7 mln (resort)       |            23 min | 34 min ([Voltron](ref:europa-park/voltron-nevera-powered-by-rimac?bare)) |
-| [Toverland](ref:toverland?bare)         | 1,14 mln             |            15 min | 21 min ([Booster Bike](ref:toverland/booster-bike?bare))                 |
+| Park                                          | Publiek 2025         | Typisch parkbreed | Langste rij                                                              |
+| --------------------------------------------- | -------------------- | ----------------: | ------------------------------------------------------------------------ |
+| [Phantasialand](ref:phantasialand?bare)       | geen officieel getal |            31 min | 48 min ([Taron](ref:phantasialand/taron?bare))                           |
+| **[Efteling](ref:efteling?bare)**             | **5,78 mln**         |        **25 min** | 34 min (Joris en de Draak)                                               |
+| [Europa-Park](ref:europa-park?bare)           | 7 mln (resort)       |            23 min | 34 min ([Voltron](ref:europa-park/voltron-nevera-powered-by-rimac?bare)) |
+| [Toverland](ref:attractiepark-toverland?bare) | 1,14 mln             |            15 min | 21 min ([Booster Bike](ref:attractiepark-toverland/booster-bike?bare))   |
 
 Phantasialand publiceert zijn bezoekcijfer niet, brancheschattingen liggen rond de
 twee miljoen. Het heeft daarmee een fractie van het Efteling-publiek en toch de
@@ -453,7 +453,7 @@ mascotte van het park is.
 Opgenomen worden gezinnen met een ernstig ziek kind tussen vier en twaalf. Ze
 krijgen een week vakantie, volledig kosteloos: onderdak, eten, programma, plus
 gratis toegang tot de Efteling, safaripark Beekse Bergen en
-[Toverland](ref:toverland). De aanvraag doen ouders samen met de behandelend
+[Toverland](ref:attractiepark-toverland). De aanvraag doen ouders samen met de behandelend
 kinderarts, een medische commissie beslist.
 
 Architect Anoul Bouwman bouwde eerst acht vakantiewoningen rond een gezamenlijke
@@ -472,7 +472,7 @@ zeven dagen lang een keer niet de ziekte het dagprogramma schrijft.
 Het park levert de rekwisieten. De witte olifant uit het oude kinderbad staat sinds
 2015 in de tuin van de villa, in 2023 kwam de sleutelgatpoort uit het gesloopte
 Avonturen Doolhof erbij. Tot de ambassadeurs hoort **Hans Klok**, dezelfde
-illusionist die 25 jaar geleden [Toverland](ref:toverland) opende en daar dit jaar
+illusionist die 25 jaar geleden [Toverland](ref:attractiepark-toverland) opende en daar dit jaar
 weer op het podium staat. De Nederlandse parkwereld is kleiner dan hij lijkt.
 
 > [!TIP]
@@ -662,7 +662,7 @@ blokkeerdagen sowieso.
 **Bereikbaarheid.** Kaatsheuvel ligt in Noord-Brabant, vanaf Düsseldorf ruim
 anderhalf tot twee uur rijden en vanaf Keulen en het Ruhrgebied ruim twee uur, in
 beide gevallen via de A67 en A2. Wie toch in de grensstreek is, combineert het
-bezoek goed met [Toverland](ref:toverland), dat precies op de route ligt. Met de
+bezoek goed met [Toverland](ref:attractiepark-toverland), dat precies op de route ligt. Met de
 trein is het lastiger: tot 's-Hertogenbosch of Tilburg, dan de bus. Reken op
 overstappen en plan de terugreis vooraf.
 

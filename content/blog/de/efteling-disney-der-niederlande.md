@@ -385,12 +385,12 @@ Zweitens: 34 Minuten für die längste Schlange des Parks sind, gemessen an fast
 sechs Millionen Besuchen, wenig. Zum Vergleich, gleiche Datenbasis, gleiche
 Rechenmethode:
 
-| Park                                    | Publikum 2025         | Typisch im Parkschnitt | Längste Schlange                                                         |
-| --------------------------------------- | --------------------- | ---------------------: | ------------------------------------------------------------------------ |
-| [Phantasialand](ref:phantasialand?bare) | keine offizielle Zahl |                 31 Min | 48 Min ([Taron](ref:phantasialand/taron?bare))                           |
-| **[Efteling](ref:efteling?bare)**       | **5,78 Mio**          |             **25 Min** | 34 Min (Joris en de Draak)                                               |
-| [Europa-Park](ref:europa-park?bare)     | 7 Mio (Resort)        |                 23 Min | 34 Min ([Voltron](ref:europa-park/voltron-nevera-powered-by-rimac?bare)) |
-| [Toverland](ref:toverland?bare)         | 1,14 Mio              |                 15 Min | 21 Min ([Booster Bike](ref:toverland/booster-bike?bare))                 |
+| Park                                          | Publikum 2025         | Typisch im Parkschnitt | Längste Schlange                                                         |
+| --------------------------------------------- | --------------------- | ---------------------: | ------------------------------------------------------------------------ |
+| [Phantasialand](ref:phantasialand?bare)       | keine offizielle Zahl |                 31 Min | 48 Min ([Taron](ref:phantasialand/taron?bare))                           |
+| **[Efteling](ref:efteling?bare)**             | **5,78 Mio**          |             **25 Min** | 34 Min (Joris en de Draak)                                               |
+| [Europa-Park](ref:europa-park?bare)           | 7 Mio (Resort)        |                 23 Min | 34 Min ([Voltron](ref:europa-park/voltron-nevera-powered-by-rimac?bare)) |
+| [Toverland](ref:attractiepark-toverland?bare) | 1,14 Mio              |                 15 Min | 21 Min ([Booster Bike](ref:attractiepark-toverland/booster-bike?bare))   |
 
 Das Phantasialand veröffentlicht seine Besucherzahl nicht, Branchenschätzungen
 liegen bei rund zwei Millionen. Es hat damit einen Bruchteil des
@@ -470,7 +470,7 @@ Hofnarren, der das Maskottchen des Parks ist.
 Aufgenommen werden Familien mit einem schwer kranken Kind zwischen vier und zwölf
 Jahren. Sie bekommen eine Woche Urlaub, komplett kostenlos: Wohnung, Verpflegung,
 Programm, dazu freien Eintritt ins Efteling, in den Safaripark Beekse Bergen und
-ins [Toverland](ref:toverland). Die Anträge stellen die Eltern gemeinsam mit dem
+ins [Toverland](ref:attractiepark-toverland). Die Anträge stellen die Eltern gemeinsam mit dem
 behandelnden Kinderarzt, eine medizinische Kommission entscheidet.
 
 Der Architekt Anoul Bouwman baute zuerst acht Ferienwohnungen um einen
@@ -492,7 +492,7 @@ Der Park liefert die Requisiten dazu. Der weiße Elefant aus dem alten Kinderbad
 steht seit 2015 im Garten der Villa, 2023 kam das Schlüsselloch-Tor aus dem
 abgerissenen Avonturen Doolhof dazu. Zu den Botschaftern gehört
 **Hans Klok**, derselbe Illusionist, der vor 25 Jahren das
-[Toverland](ref:toverland) eröffnet hat und dort dieses Jahr wieder auf der Bühne
+[Toverland](ref:attractiepark-toverland) eröffnet hat und dort dieses Jahr wieder auf der Bühne
 steht. Die niederländische Parkszene ist kleiner, als sie aussieht.
 
 > [!TIP]
@@ -695,7 +695,7 @@ umgeht die Sperrtage ohnehin.
 **Anreise.** Kaatsheuvel liegt in Noord-Brabant, gut anderthalb bis zwei Stunden
 von Düsseldorf, gut zwei aus Köln und dem Ruhrgebiet, jeweils über die A67 und
 A2. Wer sowieso im Grenzgebiet unterwegs ist, kombiniert den Besuch gut mit dem
-[Toverland](ref:toverland), das genau auf dem Weg liegt. Mit der Bahn ist es
+[Toverland](ref:attractiepark-toverland), das genau auf dem Weg liegt. Mit der Bahn ist es
 mühsamer: bis 's-Hertogenbosch oder Tilburg, dann Bus. Rechne mit Umsteigen und
 plane die Rückfahrt vorher.
 

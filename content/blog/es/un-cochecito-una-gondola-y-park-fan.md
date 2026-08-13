@@ -151,7 +151,7 @@ visto. En mayo de 2026 volamos por fin a Orlando: **Walt Disney World,
 Universal y SeaWorld**, el programa completo, el viaje de «una vez en la vida»
 con el que soñaba desde niño. Es una sensación extrañamente hermosa ver al chaval
 del lago de los cuentos plantado décadas después ante el Cinderella Castle del
-[Magic Kingdom](ref:disney-magic-kingdom?bare). Todo más grande, todo más ruidoso,
+[Magic Kingdom](ref:magic-kingdom-park?bare). Todo más grande, todo más ruidoso,
 todo más lejos de Brühl y, aun así, exactamente el mismo cosquilleo que entonces
 en la góndola. Por el medio,
 [Epic Universe](ref:universal-epic-universe?bare) en su primer verano, montañas
@@ -294,7 +294,7 @@ aquí, en tres formatos.
 
 **Crónicas de viaje.** Largas, con criterio, con fotos y con datos reales
 justamente del parque visitado. Nada de «estuvo bien», sino:
-«[Magic Kingdom](ref:disney-magic-kingdom?bare), 15 de mayo, rope drop a las
+«[Magic Kingdom](ref:magic-kingdom-park?bare), 15 de mayo, rope drop a las
 09:08; ese era el plan, esto funcionó, esto se fue al traste.» El viaje a
 Orlando de más arriba abre la veda: Disney World, Universal y SeaWorld, con
 fotos incluidas.

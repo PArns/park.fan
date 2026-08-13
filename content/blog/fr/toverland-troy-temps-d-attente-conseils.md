@@ -12,7 +12,7 @@ excerpt: >-
   en coûte 34. Sur un parc où j'ai un jour joué moi-même le hanteur en
   coulisses, et qui ne vend toujours aucun coupe-file.
 tags:
-  - toverland
+  - attractiepark-toverland
   - troy
   - montagnes-russes-en-bois
   - temps-d-attente
@@ -23,10 +23,10 @@ tags:
   - saison-2026
 category: guides
 parkLinks:
-  - toverland
+  - attractiepark-toverland
   - efteling
 rideLinks:
-  - toverland/*
+  - attractiepark-toverland/*
   - efteling/joris-en-de-draak
 coverImage:
   src: /media/toverland/troy-16x9.jpg
@@ -62,7 +62,7 @@ Le lift met trente-huit secondes à te hisser. De quoi regarder d'en haut
 l'enchevêtrement de poutres sous toi et deviner par où ça part ensuite. Tu vas
 te tromper.
 
-Passé le sommet, [Troy](ref:toverland/troy) ne s'arrête plus. Aucun élément ne
+Passé le sommet, [Troy](ref:attractiepark-toverland/troy) ne s'arrête plus. Aucun élément ne
 dure assez longtemps pour que tu t'y prépares. Le tracé se replie sur lui-même,
 croise sa propre voie, et quelque part au milieu du parcours il traverse
 **la gare à pleine vitesse**, devant ceux qui attendent et qui baissent la tête
@@ -85,7 +85,7 @@ coaster en bois du même constructeur américain. Pour l'un tu attends
 typiquement 16 minutes, pour l'autre 34. La file la plus courte appartient à la
 meilleure attraction.
 
-Ici, je veux parler du parc autour : le [Toverland](ref:toverland?long) de
+Ici, je veux parler du parc autour : le [Toverland](ref:attractiepark-toverland?long) de
 Sevenum, qui fête ses 25 ans cette année, que je considère comme l'un des plus
 beaux petits parcs d'Europe, et où je me suis retrouvé une fois en costume, de
 l'autre côté. J'y reviens plus loin.
@@ -134,7 +134,7 @@ mais rude » : refais-la.
 
 ```
 
-[Troy](ref:toverland/troy?full)
+[Troy](ref:attractiepark-toverland/troy?full)
 
 ## 16 minutes, mesurées sur deux saisons
 
@@ -152,29 +152,29 @@ Soixante-dix kilomètres plus au nord-ouest, l'[Efteling](ref:efteling) a
 aimant à foule avec son double parcours. Même base de données, même méthode de
 calcul :
 
-| Coaster en bois                                                          | Parc                            | Typique (médiane) | Pointe (P90) |
-| ------------------------------------------------------------------------ | ------------------------------- | ----------------: | -----------: |
-| **[Troy](ref:toverland/troy?bare)** (GCI, 2007)                          | [Toverland](ref:toverland?bare) |        **16 min** |       21 min |
-| **[Joris en de Draak](ref:efteling/joris-en-de-draak?bare)** (GCI, 2010) | [Efteling](ref:efteling?bare)   |            34 min |       40 min |
+| Coaster en bois                                                          | Parc                                          | Typique (médiane) | Pointe (P90) |
+| ------------------------------------------------------------------------ | --------------------------------------------- | ----------------: | -----------: |
+| **[Troy](ref:attractiepark-toverland/troy?bare)** (GCI, 2007)            | [Toverland](ref:attractiepark-toverland?bare) |        **16 min** |       21 min |
+| **[Joris en de Draak](ref:efteling/joris-en-de-draak?bare)** (GCI, 2010) | [Efteling](ref:efteling?bare)                 |            34 min |       40 min |
 
 Plus du double, pour une attraction que presque aucun classement d'amateurs ne
 place au-dessus de Troy. Tous types confondus, l'image devient encore plus
 nette. Que coûtent les grands noms de la région en temps d'attente, bois ou
 acier ?
 
-| Coaster                                                  | Type                | Parc                                    | Typique (médiane) | Pointe (P90) |
-| -------------------------------------------------------- | ------------------- | --------------------------------------- | ----------------: | -----------: |
-| [Taron](ref:phantasialand/taron?bare)                    | Multi-launch, acier | [Phantasialand](ref:phantasialand?bare) |            48 min |       54 min |
-| [F.L.Y.](ref:phantasialand/fly?bare)                     | Flying, acier       | [Phantasialand](ref:phantasialand?bare) |            40 min |       47 min |
-| [Joris en de Draak](ref:efteling/joris-en-de-draak?bare) | Bois                | [Efteling](ref:efteling?bare)           |            34 min |       40 min |
-| [Baron 1898](ref:efteling/baron-1898?bare)               | Dive coaster, acier | [Efteling](ref:efteling?bare)           |            26 min |       32 min |
-| **[Troy](ref:toverland/troy?bare)**                      | **Bois**            | **[Toverland](ref:toverland?bare)**     |        **16 min** |   **21 min** |
-| **[Fēnix](ref:toverland/fenix?bare)**                    | **Wing, acier**     | **[Toverland](ref:toverland?bare)**     |        **16 min** |   **20 min** |
+| Coaster                                                  | Type                | Parc                                              | Typique (médiane) | Pointe (P90) |
+| -------------------------------------------------------- | ------------------- | ------------------------------------------------- | ----------------: | -----------: |
+| [Taron](ref:phantasialand/taron?bare)                    | Multi-launch, acier | [Phantasialand](ref:phantasialand?bare)           |            48 min |       54 min |
+| [F.L.Y.](ref:phantasialand/fly?bare)                     | Flying, acier       | [Phantasialand](ref:phantasialand?bare)           |            40 min |       47 min |
+| [Joris en de Draak](ref:efteling/joris-en-de-draak?bare) | Bois                | [Efteling](ref:efteling?bare)                     |            34 min |       40 min |
+| [Baron 1898](ref:efteling/baron-1898?bare)               | Dive coaster, acier | [Efteling](ref:efteling?bare)                     |            26 min |       32 min |
+| **[Troy](ref:attractiepark-toverland/troy?bare)**        | **Bois**            | **[Toverland](ref:attractiepark-toverland?bare)** |        **16 min** |   **21 min** |
+| **[Fēnix](ref:attractiepark-toverland/fenix?bare)**      | **Wing, acier**     | **[Toverland](ref:attractiepark-toverland?bare)** |        **16 min** |   **20 min** |
 
 Les deux attractions de Toverland sont tout en bas, avec de la marge. Dans le
 temps que tu passes à faire **une seule** fois la queue pour
 [Taron](ref:phantasialand/taron) à Phantasialand, tu fais
-[Troy](ref:toverland/troy) trois fois ici.
+[Troy](ref:attractiepark-toverland/troy) trois fois ici.
 
 La raison tient à une division que j'ai détaillée dans
 [L'art d'attendre](/blog/l-art-d-attendre) : le temps d'attente, c'est la
@@ -198,7 +198,7 @@ rien de plus.
 Troy est la raison pour laquelle les passionnés viennent. Mais le parc ne vit
 pas d'une seule attraction.
 
-**[Fēnix](ref:toverland/fenix)** est le grand œuvre de 2018 : un wing coaster de
+**[Fēnix](ref:attractiepark-toverland/fenix)** est le grand œuvre de 2018 : un wing coaster de
 **Bolliger & Mabillard**, 40 mètres de haut, 813 mètres de long, jusqu'à
 95 km/h, trois passages tête en bas (le wing-over drop compte déjà pour une
 inversion, puis un Immelmann et un zero-g roll), 13 millions d'euros. Le premier wing coaster des Pays-Bas et, à ce jour, le plus
@@ -211,7 +211,7 @@ qu'elle ne l'est. En chemin, un phénix te vaporise de la brume, ce qui n'a rien
 
 ![La gare de Fēnix avec rail bleu, train de wing coaster et vasques de feu suspendues à des chaînes sous des poutres en bois | La gare de Fēnix : vasques de feu sur chaînes, poutres massives, et le train avec ses sièges à côté du rail. | wide](/media/toverland/background-16x9.jpg)
 
-**[Booster Bike](ref:toverland/booster-bike)** est l'original de la maison et
+**[Booster Bike](ref:attractiepark-toverland/booster-bike)** est l'original de la maison et
 mon deuxième coup de cœur ici. En 2004, Vekoma a construit à Sevenum le
 prototype mondial du coaster à moto : tu n'es pas assis, tu es allongé sur une
 moto, mains au guidon, genoux repliés, et on te catapulte. Une attraction
@@ -220,7 +220,7 @@ qui affiche le temps d'attente typique le plus long de tous les coasters du
 parc, tout simplement parce qu'on embarque un par un et allongé, et que ça prend
 du temps.
 
-**[Dwervelwind](ref:toverland/dwervelwind)** de Mack Rides est un spinning
+**[Dwervelwind](ref:attractiepark-toverland/dwervelwind)** de Mack Rides est un spinning
 coaster dans le noir, mi-dark ride, mi-coaster, avec des nacelles qui tournent
 librement et un son embarqué qu'aucun coaster de ce type n'avait auparavant. Sa
 date d'ouverture est une petite question piège. L'attraction était annoncée
@@ -234,24 +234,24 @@ la zone complète, désormais sous le nom de Dwervelwind et non plus celui de
 d'wervelwind porté en 2012. D'où le 2012 ou le 2013 selon les sources. Les deux
 sont exacts.
 
-**[Toos-Express](ref:toverland/toos-express)**, de l'année d'ouverture 2001, est
+**[Toos-Express](ref:attractiepark-toverland/toos-express)**, de l'année d'ouverture 2001, est
 le coaster junior sur lequel les enfants font ici leur premier coaster depuis un
 quart de siècle.
 
 Le département humide et sombre vaut mieux que sa réputation :
 
-- **[Merlin's Quest](ref:toverland/merlins-quest)** (2018), la promenade en
+- **[Merlin's Quest](ref:attractiepark-toverland/merlins-quest)** (2018), la promenade en
   bateau dans la tour de Merlin, avec des animatroniques et une succession de
   scènes que d'autres parcs feraient payer en supplément. La star discrète
   d'Avalon.
-- **[Djengu River](ref:toverland/djengu-river)**, les rapides signés Hafema. La
+- **[Djengu River](ref:attractiepark-toverland/djengu-river)**, les rapides signés Hafema. La
   question n'est pas de savoir _si_ tu vas être mouillé.
-- **[Expedition Zork](ref:toverland/expedition-zork)**, un « Twist & Splash » de
+- **[Expedition Zork](ref:attractiepark-toverland/expedition-zork)**, un « Twist & Splash » de
   Mack : attraction aquatique et manège en un, et nettement plus vicieux qu'il
   n'y paraît.
-- **[Villa Fiasko](ref:toverland/villa-fiasko)**, un madhouse de Vekoma, donc la
+- **[Villa Fiasko](ref:attractiepark-toverland/villa-fiasko)**, un madhouse de Vekoma, donc la
   pièce qui tourne autour de toi pendant que tu jures que c'est l'inverse.
-- **[Dragonwatch](ref:toverland/dragonwatch)** (2023), tour panoramique de
+- **[Dragonwatch](ref:attractiepark-toverland/dragonwatch)** (2023), tour panoramique de
   40 mètres depuis laquelle on voit à quel point ce parc est petit, et à quel
   point il est complet.
 
@@ -274,7 +274,7 @@ jamais eu d'argent à gaspiller, et qu'il a tout de même construit deux fois
 quelque chose qui n'existait nulle part.
 
 **2004** apporte la deuxième halle, alors « Magic Forest », aujourd'hui le
-**Wunderwald**. Et avec elle [Booster Bike](ref:toverland/booster-bike), le
+**Wunderwald**. Et avec elle [Booster Bike](ref:attractiepark-toverland/booster-bike), le
 prototype mondial du coaster à moto de Vekoma. Un parc que presque personne ne
 connaissait hors du Limbourg a fait développer un type d'attraction qui
 n'existait pas encore.
@@ -289,13 +289,13 @@ partie de la structure du lift à moitié terminée s'effondre lors d'une tempê
 Le parc la reconstruit et ouvre malgré tout à temps pour la saison.
 
 **2013** voit naître la **Magische Vallei** autour des « Dwervels », avec
-[Dwervelwind](ref:toverland/dwervelwind) et
-[Expedition Zork](ref:toverland/expedition-zork). Et **2018** apporte le saut
+[Dwervelwind](ref:attractiepark-toverland/dwervelwind) et
+[Expedition Zork](ref:attractiepark-toverland/expedition-zork). Et **2018** apporte le saut
 qui transforme la destination d'excursion en parc à thème : une extension à
 35 millions d'euros, avec une entrée entièrement nouvelle en style portuaire
 méditerranéen (**Port Laguna**) et le monde arthurien d'**Avalon**, où se
-trouvent [Fēnix](ref:toverland/fenix) et
-[Merlin's Quest](ref:toverland/merlins-quest). C'est aussi à ce moment-là que le
+trouvent [Fēnix](ref:attractiepark-toverland/fenix) et
+[Merlin's Quest](ref:attractiepark-toverland/merlins-quest). C'est aussi à ce moment-là que le
 parc adopte sa signature actuelle, « Discover your own magic », qui remplace les
 anciennes formules « Magisch mooi » et « Feel the Magic ». La même année,
 Toverland rafle les **European Star Awards** : meilleur parc à thème dans la
@@ -303,7 +303,7 @@ catégorie jusqu'à un million de visiteurs, plus une distinction pour Avalon et
 Port Laguna comme meilleure nouveauté. Troy termine juste derrière le vainqueur
 dans la catégorie meilleur coaster en bois d'Europe, avec une attraction alors
 âgée de onze ans. **2023** agrandit encore Avalon, notamment avec la tour
-panoramique de 40 mètres [Dragonwatch](ref:toverland/dragonwatch).
+panoramique de 40 mètres [Dragonwatch](ref:attractiepark-toverland/dragonwatch).
 
 La fréquentation raconte la même histoire en chiffres : 620 000 en 2013, 862 000
 lors de la dernière année avant le covid, 2019, plus d'un million en continu
@@ -315,7 +315,7 @@ niche l'attrait.
 
 Les deux halles d'origine existent d'ailleurs toujours, et elles ne sont pas un
 plan B en cas d'averse. Land van Toos et Wunderwald forment un programme à part
-entière, avec [Djinn](ref:toverland/djinn), le manège à chaînes au-dessus du
+entière, avec [Djinn](ref:attractiepark-toverland/djinn), le manège à chaînes au-dessus du
 marché oriental, comme plus bel exemple : 12,8 mètres de haut, entièrement
 couvert, et le soir une ambiance lumineuse pour laquelle d'autres parcs
 auraient besoin d'un espace extérieur.
@@ -407,14 +407,14 @@ ce soit fait.
 > Et les Halloween Nights sont les soirées les plus chargées de l'année : ici,
 > un coup d'œil au calendrier rapporte double.
 
-[Toverland](ref:toverland?full)
+[Toverland](ref:attractiepark-toverland?full)
 
 ## Ce qui arrive ensuite
 
 ![Un détail sculpté sur la Maximus' Blitz Bahn, éclairé en bleu, avec de vieilles ampoules sur câbles à côté | Un détail de la Blitz Bahn, telle qu'elle est restée dix-neuf ans. Presque tout ici était fait main. | left](/media/toverland/maximus-blitzbahn-4x3.jpg)
 
 Ceux qui n'y sont pas allés depuis longtemps chercheront une attraction. Le
-**17 mai 2026**, la **[Maximus' Blitz Bahn](ref:toverland/maximus-blitz-bahn)**
+**17 mai 2026**, la **[Maximus' Blitz Bahn](ref:attractiepark-toverland/maximus-blitz-bahn)**
 du Wunderwald a ouvert pour la dernière fois, la piste de bobsleigh Mack de
 2007, sur laquelle un levier de frein te laissait décider de ta vitesse en
 descente. Dans notre historique, elle a longtemps été l'attraction au temps
@@ -582,8 +582,8 @@ trente.
 
 Oui, surtout pour les amateurs de coasters qui en ont assez des files. Avec
 environ un million de visiteurs par an, le parc est petit face à l'Efteling ou à
-Europa-Park, mais il a avec [Troy](ref:toverland/troy) l'un des meilleurs
-coasters en bois d'Europe et avec [Fēnix](ref:toverland/fenix) le plus long wing
+Europa-Park, mais il a avec [Troy](ref:attractiepark-toverland/troy) l'un des meilleurs
+coasters en bois d'Europe et avec [Fēnix](ref:attractiepark-toverland/fenix) le plus long wing
 coaster du continent, pour des temps d'attente typiques de 16 minutes.
 
 ### Quels sont les temps d'attente à Toverland ?
@@ -592,7 +592,7 @@ Sur les deux dernières saisons, le temps d'attente typique à l'échelle du par
 est de **20 minutes**, Troy et Fēnix à **16 minutes** chacun en médiane. Les
 valeurs sont les plus élevées en décembre et janvier ainsi qu'en avril. Les
 chiffres du jour sont sur la
-[page du parc Toverland](ref:toverland).
+[page du parc Toverland](ref:attractiepark-toverland).
 
 ### Quand y a-t-il le moins de monde à Toverland ?
 
@@ -668,8 +668,8 @@ de retour dans le train au bout d'un quart d'heure.
 
 Et les deux dont il était question ici, avec leurs chiffres actuels :
 
-[Troy](ref:toverland/troy?full)
-[Fēnix](ref:toverland/fenix?full)
+[Troy](ref:attractiepark-toverland/troy?full)
+[Fēnix](ref:attractiepark-toverland/fenix?full)
 
 Prends la sortie Sevenum une fois, au lieu de passer devant. Et quand tu seras
 assis dans Troy et que personne n'attendra derrière toi : reste simplement assis
@@ -697,4 +697,4 @@ plupart des autres parcs d'Europe, tu peux oublier.
 - Halloween Days & Nights, scare zones et Fear Pass : [Scare zones & experiences (officiel)](https://www.toverland.com/en/activities/halloween/scare-zones-experiences) · [notre guide Halloween](/blog/halloween-parcs-attractions-2026)
 - Accès, bus & parking : [Adresse et itinéraire (officiel)](https://www.toverland.com/en/contact/adress-route)
 - Coulisses de la Maison de la Magie : [Freundeskreis Kirmes und Freizeitparks e. V. (FKF)](https://fkfev.de/)
-- Données d'attente et d'affluence : notre propre historique sur deux saisons, [Toverland sur park.fan](ref:toverland)
+- Données d'attente et d'affluence : notre propre historique sur deux saisons, [Toverland sur park.fan](ref:attractiepark-toverland)

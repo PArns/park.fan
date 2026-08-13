@@ -385,12 +385,12 @@ La segunda: 34 minutos para la cola más larga del parque son, medidos contra ca
 seis millones de visitas, poco. A modo de comparación, misma base de datos, mismo
 método:
 
-| Parque                                  | Público 2025      | Típico en el parque | Cola más larga                                                           |
-| --------------------------------------- | ----------------- | ------------------: | ------------------------------------------------------------------------ |
-| [Phantasialand](ref:phantasialand?bare) | sin cifra oficial |              31 min | 48 min ([Taron](ref:phantasialand/taron?bare))                           |
-| **[Efteling](ref:efteling?bare)**       | **5,78 M**        |          **25 min** | 34 min (Joris en de Draak)                                               |
-| [Europa-Park](ref:europa-park?bare)     | 7 M (resort)      |              23 min | 34 min ([Voltron](ref:europa-park/voltron-nevera-powered-by-rimac?bare)) |
-| [Toverland](ref:toverland?bare)         | 1,14 M            |              15 min | 21 min ([Booster Bike](ref:toverland/booster-bike?bare))                 |
+| Parque                                        | Público 2025      | Típico en el parque | Cola más larga                                                           |
+| --------------------------------------------- | ----------------- | ------------------: | ------------------------------------------------------------------------ |
+| [Phantasialand](ref:phantasialand?bare)       | sin cifra oficial |              31 min | 48 min ([Taron](ref:phantasialand/taron?bare))                           |
+| **[Efteling](ref:efteling?bare)**             | **5,78 M**        |          **25 min** | 34 min (Joris en de Draak)                                               |
+| [Europa-Park](ref:europa-park?bare)           | 7 M (resort)      |              23 min | 34 min ([Voltron](ref:europa-park/voltron-nevera-powered-by-rimac?bare)) |
+| [Toverland](ref:attractiepark-toverland?bare) | 1,14 M            |              15 min | 21 min ([Booster Bike](ref:attractiepark-toverland/booster-bike?bare))   |
 
 Phantasialand no publica su cifra de visitantes; las estimaciones del sector la
 sitúan en torno a dos millones. Tiene por tanto una fracción del público de
@@ -468,7 +468,7 @@ Pardoes, el bufón que es la mascota del parque.
 Se acoge a familias con un hijo gravemente enfermo de entre cuatro y doce años.
 Reciben una semana de vacaciones completamente gratis: alojamiento, comidas,
 programa, más entrada libre a Efteling, al parque safari Beekse Bergen y a
-[Toverland](ref:toverland). La solicitud la presentan los padres junto con el
+[Toverland](ref:attractiepark-toverland). La solicitud la presentan los padres junto con el
 pediatra que trata al niño, y decide una comisión médica.
 
 El arquitecto Anoul Bouwman construyó primero ocho apartamentos alrededor de un
@@ -488,7 +488,7 @@ escriba el plan del día.
 El parque pone el atrezo. El elefante blanco de la antigua piscina infantil está
 en el jardín de la villa desde 2015, y en 2023 se sumó la puerta en forma de ojo
 de cerradura del demolido Avonturen Doolhof. Entre los embajadores está **Hans
-Klok**, el mismo ilusionista que inauguró [Toverland](ref:toverland) hace 25 años
+Klok**, el mismo ilusionista que inauguró [Toverland](ref:attractiepark-toverland) hace 25 años
 y que este año vuelve a estar allí sobre el escenario. El mundo de los parques
 neerlandeses es más pequeño de lo que parece.
 
@@ -686,7 +686,7 @@ huésped del hotel se salta los días bloqueados de todos modos.
 **Cómo llegar.** Kaatsheuvel está en Brabante Septentrional, a hora y media o dos
 horas largas de Düsseldorf y a algo más de dos de Colonia y del Ruhr, en ambos
 casos por la A67 y la A2. Quien ande de todos modos por la región fronteriza
-combina bien la visita con [Toverland](ref:toverland), que queda justo de camino.
+combina bien la visita con [Toverland](ref:attractiepark-toverland), que queda justo de camino.
 En tren es más pesado: hasta Bolduque o Tilburg, y luego autobús. Cuenta con
 transbordos y planifica la vuelta antes de salir.
 

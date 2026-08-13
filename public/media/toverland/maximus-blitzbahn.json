@@ -1,6 +1,6 @@
 {
   "title": "Maximus' Blitz Bahn",
-  "park": "toverland",
+  "park": "attractiepark-toverland",
   "ride": "maximus-blitz-bahn",
   "roles": ["ride-card", "hero"],
   "tags": ["detail", "indoor", "photo", "ride", "station", "theming"],
