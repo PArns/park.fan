@@ -263,6 +263,63 @@ In `next.config.ts`:
 
 ---
 
+## The HTML never reaches Cloudflare's cache (Aug 2026)
+
+Measured against production, every HTML response — prerendered or dynamic — comes back
+`cf-cache-status: DYNAMIC`, while `/_next/static/*` and `/_next/image` are `HIT`. So the asset
+layer works and the document layer does not: every page view travels to Vercel `iad1` (US East),
+including the European traffic this site mostly serves.
+
+| Response                          | Vercel                 | Cloudflare |
+| --------------------------------- | ---------------------- | ---------- |
+| `/de`, `/nl/woordenboek/…` (ISR)  | `x-vercel-cache: HIT`  | `DYNAMIC`  |
+| Park / attraction page            | `x-vercel-cache: MISS` | `DYNAMIC`  |
+| `/_next/static/*`, `/_next/image` | `HIT`                  | `HIT`      |
+
+Two things cause it, and only one of them is ours:
+
+**1. Cloudflare does not cache HTML by default.** Its standard cache level only stores static file
+extensions, whatever the origin's `Cache-Control` says — and Vercel hands prerendered pages to the
+client as `public, max-age=0, must-revalidate`, keeping the `s-maxage` for its own edge. So no
+header we can emit turns this on; it takes a **Cache Rule** in the dashboard.
+
+**2. We made the responses uncacheable anyway.** next-intl's middleware wrote
+`Set-Cookie: NEXT_LOCALE=…` on every document response whose resolved locale differed from what
+`Accept-Language` would pick — most international traffic. A `Set-Cookie` disqualifies a response
+from every shared cache in front of the origin, so the rule above would have skipped exactly those
+pages. `proxy.ts` now drops the header on non-redirect responses; an explicit language switch
+still persists the cookie from the client (`lib/i18n/remember-locale.ts`), which is the only case
+where remembering a choice means anything. Nothing in this codebase reads the cookie — next-intl
+uses it to resolve the unprefixed `/`, and without it that falls back to `Accept-Language`, the
+same header the cookie was derived from.
+
+### What a Cache Rule has to get right
+
+Park and attraction pages are the case worth caching: they are `force-dynamic`, so **every** view
+is a full render (`x-vercel-cache: MISS`, always), yet the structure comes from a data cache with
+`PARK_REVALIDATE = 86400` and every live value is client-loaded. The HTML is already up to a day
+old — rendering it per request buys no freshness at all, and an edge TTL costs none.
+
+- **Edge TTL: override origin.** The page sends `private, no-cache, no-store` (what Next emits for
+  `force-dynamic`), and no `headers()` entry can change that for a page — see the note in
+  `next.config.ts`. The rule has to ignore the origin here, which is safe only because the response
+  carries nothing visitor-specific: no `cookies()`, no `headers()`, no request IP anywhere in the
+  park page tree, and the temperature unit is server-rendered in both units and switched by CSS.
+- **Keep the query string in the cache key.** Next distinguishes RSC payloads from HTML with the
+  `_rsc` search parameter precisely because CDNs ignore `Vary` (the response carries
+  `Vary: rsc, next-router-state-tree, …`, which Cloudflare does not honour). Strip query params
+  from the key and a prefetch payload will be served to a browser asking for a document.
+- **Leave the unprefixed `/` alone.** It answers with a redirect whose `Location` depends on
+  `Accept-Language`; `proxy.ts` tags those `Vary: Accept-Language` and they must not be cached.
+- **This does not bring ISR writes back.** Nothing is persisted at the origin — the render still
+  happens per request on a miss, the copy lives in Cloudflare. That matters given the Jun 2026
+  bill above, and it is the reason to do this at the CDN rather than by giving up `force-dynamic`.
+
+Worth watching after enabling: Vercel's own usage should stay flat except for a drop in function
+invocations. If ISR Write Units move at all, the rule is not what caused it.
+
+---
+
 ## Discovery / Geo-Structure Cache
 
 `lib/utils/redirect-utils.ts` caches the geo structure for redirect lookups:

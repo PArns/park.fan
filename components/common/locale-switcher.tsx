@@ -12,6 +12,7 @@ import { routing, type Locale } from '@/i18n/routing';
 import { localeNames } from '@/i18n/config';
 import { FlagDE, FlagUS, FlagNL, FlagFR, FlagES, FlagIT } from '@/components/common/icons/flags';
 import { trackLanguageSwitched } from '@/lib/analytics/umami';
+import { rememberLocale } from '@/lib/i18n/remember-locale';
 
 const LOCALE_CODES: Record<Locale, string> = {
   de: 'DE',
@@ -55,6 +56,11 @@ export function LocaleSwitcher() {
 
   const handleLocaleChange = (newLocale: Locale) => {
     trackLanguageSwitched(locale, newLocale);
+    // Picking a language here is the one choice worth remembering for the unprefixed `/`.
+    // The middleware no longer writes the cookie (it would make every page uncacheable at the
+    // edge — see proxy.ts), and the hreflang branch below leaves the app entirely, so
+    // next-intl's own client-side sync never runs for it.
+    rememberLocale(newLocale);
 
     const hreflangEl = document.querySelector<HTMLLinkElement>(
       `link[rel="alternate"][hreflang="${newLocale}"]`
