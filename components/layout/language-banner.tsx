@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { X } from 'lucide-react';
 import { locales, localeNames, type Locale } from '@/i18n/config';
 import { LANGUAGE_BANNER_MESSAGES } from '@/lib/i18n/language-banner-messages';
+import { rememberLocale } from '@/lib/i18n/remember-locale';
 import { FlagDE, FlagUS, FlagNL, FlagFR, FlagES, FlagIT } from '@/components/common/icons/flags';
 
 interface LanguageBannerProps {
@@ -84,6 +85,9 @@ export function LanguageBanner({ currentLocale }: LanguageBannerProps) {
 
   const handleSwitch = () => {
     if (browserLocale) {
+      // Same reason as the locale switcher: this is an explicit choice, and it is the only
+      // thing that still writes NEXT_LOCALE now that the middleware doesn't (see proxy.ts).
+      rememberLocale(browserLocale);
       // Prefer hreflang links — these carry the correct localized path (e.g. /de/glossar vs /en/glossary)
       const hreflangEl = document.querySelector<HTMLLinkElement>(
         `link[rel="alternate"][hreflang="${browserLocale}"]`

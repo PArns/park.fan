@@ -654,7 +654,9 @@ const nextConfig: NextConfig = {
       // `private, no-cache, no-store` wins. Verified against the dev server — the same request
       // does pick up the `Content-Language` rule, so the rule matches; only Cache-Control loses.
       // Caching those two routes has to happen either by giving up force-dynamic (which brings
-      // back the per-URL ISR writes it was chosen to avoid) or at the CDN in front.
+      // back the per-URL ISR writes it was chosen to avoid) or at the CDN in front. It is the CDN:
+      // see "The HTML never reaches Cloudflare's cache" in docs/architecture/caching-strategy.md
+      // for the rule that does it and the `Set-Cookie` that had to go first.
       {
         source: '/:locale/search',
         headers: [{ key: 'Cache-Control', value: 'no-store, must-revalidate' }],
