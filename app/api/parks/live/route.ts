@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerAuthHeaders } from '@/lib/api/client';
+import { getServerApiHeaders } from '@/lib/api/client';
 import type { DiscoveryCityResponse, LiveParkFields } from '@/lib/api/types';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://api.park.fan';
@@ -65,7 +65,7 @@ export async function GET(request: NextRequest) {
           // Always the backend's latest: this IS the live path. The CDN window below is what
           // keeps concurrent visitors off the origin.
           cache: 'no-store',
-          headers: getServerAuthHeaders(),
+          headers: getServerApiHeaders(),
         });
         if (!res.ok) return null;
         return (await res.json()) as DiscoveryCityResponse;

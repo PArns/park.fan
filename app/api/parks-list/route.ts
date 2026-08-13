@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerAuthHeaders } from '@/lib/api/client';
+import { getServerApiHeaders } from '@/lib/api/client';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://api.park.fan';
 
@@ -26,7 +26,7 @@ export async function GET(request: NextRequest) {
   try {
     const response = await fetch(apiUrl.toString(), {
       cache: 'no-store',
-      headers: getServerAuthHeaders(),
+      headers: getServerApiHeaders(),
     });
     const data = await response.json();
     return NextResponse.json(data, {
