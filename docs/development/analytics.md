@@ -58,6 +58,29 @@ its property count on _every_ qualifying pageview.
 | `data-exclude-hash="true"`                                       | See below — phantom pageviews.                                                                                                                                                                                            |
 | 8 unused `track*` helpers deleted                                | Dead code that invited someone to re-add a 3-property event that fires on view.                                                                                                                                           |
 
+### The one event that was added back, and how it was priced (Aug 2026)
+
+`web-vital-cls` — 4 properties (`value`, `target`, `loadState`, `path`), **sampled at 10 %**, and
+only for non-`good` samples.
+
+It exists because the lab and the field disagree and only the field is right: Lighthouse scores
+this site CLS **0** while CrUX reports **0.22**. Lighthouse neither scrolls nor interacts nor
+carries a real visitor's state, so every shift that needs one of those is invisible to it.
+Reproducing them by guessing the condition cost a day and turned up exactly one — the homepage
+hero growing 54–148 px when the nearby lookup lands on a phone. `largestShiftTarget` is what turns
+"CLS is 0.22" into a file to open.
+
+The sampling is the whole reason it is affordable, and it is worth doing the arithmetic before
+touching it. CLS reports once per pageview; at a p75 of 0.22 roughly half of ~1.6 k daily
+pageviews qualify. Unsampled that is ~800 × 5 billed rows ≈ **120 k rows a month — more than the
+entire plan**. At a tenth it is ~12 k. This is the same shape of mistake that got LCP, TTFB and
+FCP removed above; the rate is what keeps it from repeating.
+
+`loadState` is the fourth property where the INP event makes do with three. It says whether the
+shift happened during load or long after — the difference between a late-arriving skeleton and
+something that only moves once somebody scrolls, which is exactly the open question. Drop it, and
+the event, once the sources are known.
+
 ---
 
 ## 2. The phantom-pageview trap (`data-exclude-hash`)
