@@ -330,14 +330,14 @@ der Bügel für jeweils eine Sekunde ziemlich allein lässt. Nach vierundzwanzig
 Jahren rappelt sie an manchen Stellen, aber die Airtime auf dem Rückweg ist
 unverändert erstklassig. Setz dich hinten hin.
 
+![Ein Wagen von Lost Gravity neben einem Frachtcontainer, im Vordergrund alte Bahnsignale | Die Zero Zone sammelt Dinge, die aus der Schwerkraft gefallen sind. | right](/media/walibi-holland/lost-gravity-4x3.jpg)
+
 **[Lost Gravity](ref:walibi-holland/lost-gravity)** von **Mack Rides** kam
 **2016**: 32 Meter, 87 km/h, 680 Meter, zwei Überschläge, dazu Sitze ohne Boden
 in den Außenreihen. Der Themenbereich drumherum ist eine Ansammlung von Dingen,
 die dort nicht hingehören, ein Frachtcontainer, ein umgekipptes Auto, alte
 Bahnsignale, und die Bahn selbst kippt dich in einem Beyond-Vertical-Drop über
 die Kante. Kurz, kompakt, überraschend heftig.
-
-![Ein Wagen von Lost Gravity neben einem Frachtcontainer, im Vordergrund alte Bahnsignale | Die Zero Zone sammelt Dinge, die aus der Schwerkraft gefallen sind. | right](/media/walibi-holland/lost-gravity-4x3.jpg)
 
 Und dann gibt es die drei Alten, die in jedem Reisebericht als Beiwerk
 durchlaufen. Dabei sind sie diejenigen, die das Parkmotto am wörtlichsten
@@ -350,6 +350,8 @@ Station**, ist seit dem Umbau von 2013 komplett überdacht und so dunkel
 gehalten, dass Besucher die Warteschlange regelmäßig mit einem Walkthrough
 verwechseln. Auf der Anzeigetafel steht als nächste Abfahrt **06:66**. Der Zug,
 auf den du da wartest, kommt nicht.
+
+![Ein Bahnhofsschild in der Warteschlange: „Next Departure 06:66“, Platform 13 | Die Anzeigetafel in der Warteschlange. Auf diesen Zug wartest du vergeblich. | left](/media/walibi-holland/xpress-platform-13-4x3.jpg)
 
 Was kommt, ist ein LSM-Launch: **0 auf 90 km/h in 2,8 Sekunden**, danach ein Sea
 Serpent und ein Korkenzieher, drei Überschläge, bis zu **5 g**, 1.040 Meter,
@@ -365,8 +367,6 @@ kommen. Dieselbe Bahn wie bei Disney, ohne Schlange, ohne Aufpreis.
 
 Eröffnet wurde sie im April 2000 als **Superman The Ride**, hieß ab 2005
 schlicht **Express** und trägt seit 2014 den Bahnhofsnamen.
-
-![Ein Bahnhofsschild in der Warteschlange: „Next Departure 06:66“, Platform 13 | Die Anzeigetafel in der Warteschlange. Auf diesen Zug wartest du vergeblich. | left](/media/walibi-holland/xpress-platform-13-4x3.jpg)
 
 ### Condor, der Prototyp, der austeilt
 
@@ -402,9 +402,11 @@ Eröffnet wurde sie im April 2000 als **La Via Volta**, 2007 stillgelegt und 201
 unter neuem Namen und mit Musikthema zurückgeholt. Nebenbei ist sie eine der
 wenigen Attraktionen, in denen du bei Regen trocken bleibst.
 
-![Das Schild von Speed of Sound zwischen übergroßen Lautsprechern und einer Gitarre | Die Fassade verspricht ein Konzert. Drinnen wartet ein Boomerang von 2000. | right](/media/walibi-holland/speed-of-sound-4x3.jpg)
+![Das Schild von Speed of Sound zwischen übergroßen Lautsprechern und einer Gitarre | Die Fassade verspricht ein Konzert. Drinnen wartet ein Boomerang von 2000. | wide](/media/walibi-holland/speed-of-sound.jpg)
 
 ### Der Rest
+
+![Ein gelb-roter Buggy hängt an Ketten unter einem Kranträger | Eat my Dust in der Speed Zone. Der Themenbereich heißt „Off Road“ und meint das wörtlich. | right](/media/walibi-holland/eat-my-dust-4x3.jpg)
 
 - **[Eat my Dust](ref:walibi-holland/eat-my-dust)** von Zamperla und
   **[Drako](ref:walibi-holland/drako)**, ein Tivoli-Coaster von Zierer, sind die
@@ -417,8 +419,6 @@ wenigen Attraktionen, in denen du bei Regen trocken bleibst.
   **[Skydiver](ref:walibi-holland/skydiver)** die Falltürme,
   **[Merlin's Magic Castle](ref:walibi-holland/merlins-magic-castle)** der
   einzige nennenswerte Dark Ride im Park.
-
-![Ein gelb-roter Buggy hängt an Ketten unter einem Kranträger | Eat my Dust in der Speed Zone. Der Themenbereich heißt „Off Road“ und meint das wörtlich. | right](/media/walibi-holland/eat-my-dust-4x3.jpg)
 
 ![Boote in der Wasserrinne von Crazy River, dahinter ein Holzgebäude | Crazy River ist die Wildwasserbahn der Zero Zone. Wie immer bei der Bauart gilt: vorne sitzt man nasser. | left](/media/walibi-holland/crazy-river-4x3.jpg)
 
