@@ -311,6 +311,15 @@
       "DOWN": "Störung",
       "UNKNOWN": "Unbekannt"
     },
+    "noLiveWaitTimes": {
+      "title": "Keine Wartezeiten verfügbar",
+      "reason": {
+        "in_park_app_only": "Dieser Park zeigt seine Wartezeiten nur in seiner eigenen App und nur im WLAN vor Ort. Von außen kommt man nicht daran.",
+        "not_published": "Dieser Park veröffentlicht seine Wartezeiten nirgendwo."
+      },
+      "park": "Bei den Fahrgeschäften steht deshalb weder eine Zeit noch ein Andrang. Öffnungszeiten, Fahrgeschäfte, Wetter und Kalender stimmen weiterhin.",
+      "ride": "Für dieses Fahrgeschäft gibt es deshalb weder eine Wartezeit noch eine Prognose. Öffnungszeiten und Wetter stimmen weiterhin."
+    },
     "weather": {
       "clear": "Klarer Himmel",
       "mainlyClear": "Meist klar",
@@ -530,6 +539,7 @@
       "eveningWait": "abends ca. {minutes} Min."
     },
     "operatingCount": "{count}/{total} in Betrieb",
+    "attractionCount": "{count, plural, =1 {# Attraktion} other {# Attraktionen}}",
     "overview": {
       "title": "Wartezeiten im Überblick",
       "minutesUnit": "Min.",
@@ -649,7 +659,8 @@
       "operating": "In Betrieb",
       "down": "Vorübergehend geschlossen",
       "closed": "Geschlossen",
-      "refurbishment": "In Wartung"
+      "refurbishment": "In Wartung",
+      "unknown": "Unbekannt"
     },
     "label": {
       "OPERATING": "Geöffnet",

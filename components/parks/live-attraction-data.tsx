@@ -6,6 +6,7 @@ import {
   AlertCircle,
   Clock,
   AlertTriangle,
+  HelpCircle,
   Wrench,
   XCircle,
   Layers,
@@ -144,6 +145,10 @@ export function LiveAttractionData({
       color: 'text-status-refurbishment',
       label: t('status.refurbishment'),
     },
+    // Reached when the park is open but its wait times are unreadable — the API stops
+    // guessing rather than reporting every ride as running. Deliberately not styled as
+    // closed: the ride may well be going round, we just cannot see it.
+    UNKNOWN: { icon: HelpCircle, color: 'text-muted-foreground', label: t('status.unknown') },
   };
   const config = statusConfig[status];
   const StatusIcon = config.icon;

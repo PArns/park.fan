@@ -1,5 +1,6 @@
 import { api } from './client';
 import { CACHE_TTL } from './cache-config';
+import { stripUnreadableWaitStats } from '@/lib/utils/live-wait-times';
 import type {
   GeoStructure,
   Continent,
@@ -137,7 +138,8 @@ async function fetchParksNearLocation(
     return response.data.parks
       .filter((p) => p.id !== excludeParkId)
       .filter((p) => p.distance <= maxDistanceM)
-      .slice(0, limit);
+      .slice(0, limit)
+      .map(stripUnreadableWaitStats);
   } catch {
     return [];
   }

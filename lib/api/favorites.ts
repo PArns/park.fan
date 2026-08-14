@@ -7,6 +7,7 @@ import type {
   AccuracyBadge,
   BestVisitSlot,
   RopeDropInfo,
+  LiveWaitTimes,
 } from '@/lib/api/types';
 
 export interface FavoritePark {
@@ -18,7 +19,8 @@ export interface FavoritePark {
   country: string;
   status: string;
   totalAttractions: number;
-  operatingAttractions: number;
+  /** Absent for a park whose wait times are unreadable — see `LiveWaitTimes`. */
+  operatingAttractions?: number;
   analytics?: {
     avgWaitTime?: number;
     crowdLevel?: CrowdLevel;
@@ -27,6 +29,7 @@ export interface FavoritePark {
   url: string;
   timezone: string;
   hasOperatingSchedule: boolean;
+  liveWaitTimes?: LiveWaitTimes;
   backgroundImage?: string | null; // Added by proxy route
   /** Focal point as a CSS `object-position`, attached by the same proxy route. */
   backgroundPosition?: string;

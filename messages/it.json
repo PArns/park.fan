@@ -342,6 +342,7 @@
       "eveningWait": "di sera ~{minutes} min"
     },
     "operatingCount": "{count}/{total} operative",
+    "attractionCount": "{count, plural, =1 {# attrazione} other {# attrazioni}}",
     "overview": {
       "title": "Tempi di attesa a colpo d'occhio",
       "minutesUnit": "min",
@@ -476,6 +477,15 @@
       "REFURBISHMENT": "In manutenzione",
       "DOWN": "Fermo",
       "UNKNOWN": "Sconosciuto"
+    },
+    "noLiveWaitTimes": {
+      "title": "Nessun tempo di attesa disponibile",
+      "reason": {
+        "in_park_app_only": "Questo parco mostra i tempi di attesa solo nella propria app, e solo sul wifi all'interno del parco. Dall'esterno non è possibile leggerli.",
+        "not_published": "Questo parco non pubblica i tempi di attesa da nessuna parte."
+      },
+      "park": "Per questo nessuna attrazione mostra un tempo o un livello di affluenza. Orari, attrazioni, meteo e calendario restano affidabili.",
+      "ride": "Per questo l'attrazione non ha né tempo di attesa né previsione. Orari e meteo restano affidabili."
     },
     "weather": {
       "clear": "Cielo sereno",
@@ -649,7 +659,8 @@
       "operating": "Operativa",
       "down": "Temporaneamente ferma",
       "closed": "Chiusa",
-      "refurbishment": "In manutenzione"
+      "refurbishment": "In manutenzione",
+      "unknown": "Sconosciuto"
     },
     "label": {
       "OPERATING": "Aperta",

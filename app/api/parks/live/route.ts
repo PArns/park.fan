@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerApiHeaders } from '@/lib/api/client';
+import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import type { DiscoveryCityResponse, LiveParkFields } from '@/lib/api/types';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://api.park.fan';
@@ -80,12 +81,23 @@ export async function GET(request: NextRequest) {
   for (const data of responses) {
     for (const city of data?.data ?? []) {
       for (const park of city.parks ?? []) {
+        // Parks that publish wait times only inside their own app produce an analytics block
+        // that is an aggregate over an empty set — Ø 0 min, `0 / 82 operating`, a crowd level
+        // with nothing behind it. Dropped here rather than shipped and hidden card-side: these
+        // are exactly the "absent" values the card already renders around while a poll is in
+        // flight, so it needs no new branch, and the projection stays at its nine volatile
+        // fields instead of gaining a tenth that never changes (see the API budget rule).
+        const waitDerived = hasReadableWaitTimes(park)
+          ? {
+              crowdLevel: park.analytics?.statistics?.crowdLevel ?? park.currentLoad?.crowdLevel,
+              averageWaitTime: park.analytics?.statistics?.avgWaitTime,
+              operatingAttractions: park.analytics?.statistics?.operatingAttractions,
+              totalAttractions: park.analytics?.statistics?.totalAttractions,
+            }
+          : {};
         live[park.id] = {
           status: park.status,
-          crowdLevel: park.analytics?.statistics?.crowdLevel ?? park.currentLoad?.crowdLevel,
-          averageWaitTime: park.analytics?.statistics?.avgWaitTime,
-          operatingAttractions: park.analytics?.statistics?.operatingAttractions,
-          totalAttractions: park.analytics?.statistics?.totalAttractions,
+          ...waitDerived,
           timezone: park.timezone,
           hasOperatingSchedule: park.hasOperatingSchedule,
           todaySchedule: park.todaySchedule ?? undefined,
