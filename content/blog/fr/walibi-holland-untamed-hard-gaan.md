@@ -847,8 +847,8 @@ Pour les fans de coasters, oui. Le parc a avec
 [Untamed](ref:walibi-holland/untamed) le premier coaster hybride d'Europe, avec
 [YOY](ref:walibi-holland/yoy-thrill) la première installation en duel sur rail
 unique au monde et avec [Goliath](ref:walibi-holland/goliath) un Mega Coaster
-Intamin de 2002, le tout pour une attente typique de 20 minutes. Qui cherche le
-theming, les dark rides et l'indépendance météo sera mieux servi à
+Intamin de 2002, le tout pour une attente typique de 20 minutes. Qui cherche les
+dark rides, un décor sans faille et l'indépendance météo sera mieux servi à
 l'[Efteling](ref:efteling) ou à [Phantasialand](ref:phantasialand).
 
 ### Que signifie « hard gaan » ?
@@ -888,9 +888,9 @@ En quatre niveaux : **Spooky Days** en journée pour les enfants, **Fright
 Nights** le soir à partir de 16 ans, plus les **maisons hantées** et les
 **experiences**, toutes deux payantes en supplément. En 2025 les maisons allaient
 de 9,50 à 17,50 € et les experiences de 19,50 à 25,50 € ; l'ensemble coûtait au
-moins 116,50 € en plus de l'entrée. Le parc n'a pas encore publié les tarifs
-2026. La nouveauté : à partir de 2026, Spooky Days et Fright Nights ont lieu des
-**jours différents**, et non plus le même.
+moins 116,50 € en plus de l'entrée. Le parc n'a pas encore publié les
+tarifs 2026. La nouveauté : à partir de 2026, Spooky Days et Fright Nights ont
+lieu des **jours différents**, et non plus le même.
 
 ### Les Bright Nights existent-ils encore ?
 
@@ -917,17 +917,18 @@ Ce parc ne fait pas tout bien. La nourriture est moyenne, quelques parcours sont
 avant tout leur propre passé, et en hiver tout le concept s'effondre, comme
 avril 2026 l'a montré.
 
-Là où le parc se donne du mal, en revanche, il soutient n'importe quelle
-comparaison. L'entrée de la Wilderness, la Zero Zone autour de Lost Gravity,
-toute la mise en scène autour d'Untamed : c'est là que tu t'arrêtes et que tu
-sors l'appareil photo, et rien de tout cela n'a à rougir devant Disney ni devant
-Phantasialand.
+Ce qu'il sait faire, en revanche, il le fait bien. Dans la Wilderness, il y a un
+coaster qui passe deux fois de suite la tête en bas après la première descente
+et qui, ensuite, ne s'arrête plus pendant quatre-vingt-dix secondes. Deux
+bâtiments plus loin, deux trains se poursuivent sur deux rails uniques. Et en
+octobre, des gens paient volontairement vingt euros de plus pour avoir le droit
+d'enfiler des cuissardes.
 
-En revanche, il y a dans la Wilderness un coaster qui passe deux fois de suite
-la tête en bas après la première descente et qui, ensuite, ne s'arrête plus
-pendant quatre-vingt-dix secondes. Deux bâtiments plus loin, deux trains se
-poursuivent sur deux rails uniques. Et en octobre, des gens paient volontairement
-vingt euros de plus pour avoir le droit d'enfiler des cuissardes.
+Et là où le parc se donne du mal, il soutient aussi la comparaison sur le plan
+visuel. L'entrée de la Wilderness, la Zero Zone autour de Lost Gravity, la gare
+d'Untamed avec sa cascade et les lettres au-dessus du lift : c'est là que tu
+t'arrêtes et que tu sors l'appareil photo, et rien de tout cela n'a à rougir
+devant Disney ni devant Phantasialand.
 
 Vingt minutes. C'est le prix d'Untamed un jour normal.
 

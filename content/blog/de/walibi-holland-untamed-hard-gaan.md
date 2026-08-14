@@ -840,8 +840,8 @@ Für Achterbahnfans ja. Der Park hat mit [Untamed](ref:walibi-holland/untamed)
 die erste Hybrid-Achterbahn Europas, mit [YOY](ref:walibi-holland/yoy-thrill)
 die weltweit erste Duell-Anlage auf Einzelschiene und mit
 [Goliath](ref:walibi-holland/goliath) einen Intamin-Mega-Coaster von 2002, und
-das alles bei einer typischen Wartezeit von 20 Minuten. Wer Theming, Dark Rides
-und Wetterunabhängigkeit sucht, ist im [Efteling](ref:efteling) oder
+das alles bei einer typischen Wartezeit von 20 Minuten. Wer Dark Rides, eine
+lückenlose Kulisse und Wetterunabhängigkeit sucht, ist im [Efteling](ref:efteling) oder
 [Phantasialand](ref:phantasialand) besser aufgehoben.
 
 ### Was bedeutet „hard gaan“?
@@ -910,16 +910,17 @@ Dieser Park macht nicht alles gut. Das Essen ist Mittelmaß, ein paar Bahnen sin
 vor allem ihre eigene Vergangenheit, und im Winter fällt das ganze Konzept in
 sich zusammen, wie der April 2026 gezeigt hat.
 
-Wo der Park sich dagegen Mühe gibt, hält er jeden Vergleich aus. Der Eingang
-zum Wilderness, die Zero Zone rund um Lost Gravity, die ganze Inszenierung um
-Untamed: Da bleibst du stehen und holst die Kamera raus, und das muss sich
-weder vor Disney noch vor dem Phantasialand verstecken.
+Was er kann, kann er dafür richtig. Im Wilderness steht eine Achterbahn, die
+nach dem First Drop zweimal hintereinander kopfüber geht und danach neunzig
+Sekunden lang nicht mehr aufhört. Zwei Häuser weiter jagen sich zwei Züge auf
+zwei Einzelschienen. Und im Oktober bezahlen Menschen freiwillig zwanzig Euro
+extra dafür, in eine Wathose steigen zu dürfen.
 
-Dafür steht im Wilderness eine Achterbahn, die nach dem First Drop
-zweimal hintereinander kopfüber geht und danach neunzig Sekunden lang nicht mehr
-aufhört. Zwei Häuser weiter jagen sich zwei Züge auf zwei Einzelschienen. Und im
-Oktober bezahlen Menschen freiwillig zwanzig Euro extra dafür, in eine Wathose
-steigen zu dürfen.
+Und wo er sich Mühe gibt, hält er auch optisch jeden Vergleich aus. Der Eingang
+zum Wilderness, die Zero Zone rund um Lost Gravity, die Station von Untamed mit
+dem Wasserfall und den Buchstaben über dem Lifthill: Da bleibst du stehen und
+holst die Kamera raus, und das muss sich weder vor Disney noch vor dem
+Phantasialand verstecken.
 
 Zwanzig Minuten. Das ist der Preis für Untamed an einem normalen Tag.
 

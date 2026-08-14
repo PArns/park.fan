@@ -822,8 +822,8 @@ Voor achtbaanfans wel. Het park heeft met [Untamed](ref:walibi-holland/untamed)
 de eerste hybride achtbaan van Europa, met [YOY](ref:walibi-holland/yoy-thrill)
 de eerste duelinstallatie op enkele rail ter wereld en met
 [Goliath](ref:walibi-holland/goliath) een Intamin Mega Coaster uit 2002, en dat
-alles bij een typische wachttijd van 20 minuten. Wie theming, darkrides en
-weerbestendigheid zoekt, zit in de [Efteling](ref:efteling) of
+alles bij een typische wachttijd van 20 minuten. Wie darkrides, een sluitend
+decor en weerbestendigheid zoekt, zit in de [Efteling](ref:efteling) of
 [Phantasialand](ref:phantasialand) beter.
 
 ### Wat betekent "hard gaan"?
@@ -891,16 +891,17 @@ Dit park doet niet alles goed. Het eten is middelmatig, een paar banen zijn
 vooral hun eigen verleden, en in de winter stort het hele concept in, zoals april
 2026 liet zien.
 
-Waar het park zich wél inspant, doorstaat het elke vergelijking. De ingang van
-de Wilderness, de Zero Zone rond Lost Gravity, de hele enscenering rond Untamed:
-daar blijf je staan en haal je de camera tevoorschijn, en dat hoeft zich noch
-voor Disney noch voor Phantasialand te verstoppen.
+Wat het park wél kan, kan het goed. In de Wilderness staat een achtbaan die na
+de first drop twee keer achter elkaar over de kop gaat en daarna negentig
+seconden lang niet meer ophoudt. Twee gebouwen verder jagen twee treinen elkaar
+over twee enkele rails. En in oktober betalen mensen vrijwillig twintig euro
+extra om in een waadpak te mogen stappen.
 
-Daarvoor staat in de Wilderness een achtbaan die na de first drop twee keer
-achter elkaar over de kop gaat en daarna negentig seconden lang niet meer
-ophoudt. Twee gebouwen verder jagen twee treinen elkaar over twee enkele rails.
-En in oktober betalen mensen vrijwillig twintig euro extra om in een waadpak te
-mogen stappen.
+En waar het park zich inspant, doorstaat het ook qua aankleding elke
+vergelijking. De ingang van de Wilderness, de Zero Zone rond Lost Gravity, het
+station van Untamed met de waterval en de letters boven de lifthill: daar blijf
+je staan en haal je de camera tevoorschijn, en dat hoeft zich noch voor Disney
+noch voor Phantasialand te verstoppen.
 
 Twintig minuten. Dat is de prijs voor Untamed op een normale dag.
 
