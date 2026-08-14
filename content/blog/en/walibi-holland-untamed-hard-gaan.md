@@ -332,7 +332,7 @@ train at **06:66**. The train you are waiting for is not coming.
 ![A station sign in the queue reading "Next Departure 06:66", Platform 13 | The departure board in the queue. You will wait for that train in vain. | left](/media/walibi-holland/xpress-platform-13-4x3.jpg)
 
 What does come is an LSM launch: **0 to 90 km/h in 2.8 seconds**, then a sea
-serpent and a corkscrew, three inversions, up to **5 g**, 1,040 metres, and
+serpent and a corkscrew, three inversions, up to **5 g**, 996 metres, and
 after 75 seconds it is all over.
 
 The real trick is written nowhere at the entrance. **You probably already know

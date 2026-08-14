@@ -343,7 +343,7 @@ arriverà.
 ![Un cartello di stazione nella coda: «Next Departure 06:66», Platform 13 | Il tabellone delle partenze nella coda. Quel treno lo aspetti invano. | left](/media/walibi-holland/xpress-platform-13-4x3.jpg)
 
 Quello che arriva è un lancio LSM: **da 0 a 90 km/h in 2,8 secondi**, poi un sea
-serpent e un cavatappi, tre inversioni, fino a **5 g**, 1.040 metri, e dopo 75
+serpent e un cavatappi, tre inversioni, fino a **5 g**, 996 metri, e dopo 75
 secondi è tutto finito.
 
 Il vero colpo però non è scritto da nessuna parte all'ingresso. **Questo

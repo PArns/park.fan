@@ -343,7 +343,7 @@ anuncia la próxima salida a las **06:66**. El tren que esperas no va a llegar.
 ![Un cartel de estación en la cola: «Next Departure 06:66», Platform 13 | El panel de salidas en la cola. Ese tren lo esperarás en vano. | left](/media/walibi-holland/xpress-platform-13-4x3.jpg)
 
 Lo que sí llega es un lanzamiento LSM: **de 0 a 90 km/h en 2,8 segundos**,
-después un sea serpent y un sacacorchos, tres inversiones, hasta **5 g**, 1.040
+después un sea serpent y un sacacorchos, tres inversiones, hasta **5 g**, 996
 metros, y a los 75 segundos se ha acabado todo.
 
 La verdadera clave, en cambio, no está escrita en ninguna parte de la entrada.
