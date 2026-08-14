@@ -27,14 +27,25 @@ export function useGeoLiveStats() {
   });
 }
 
-/** Look up the live open-park count for a continent (or a country within it). `undefined` until loaded. */
+/**
+ * Look up the live open-park count for a continent (or a country within it).
+ *
+ * `undefined` means **not loaded yet** and nothing else — consumers render a skeleton on it.
+ * A region that is missing from a loaded response has **zero** parks open: `/v1/analytics/geo-live`
+ * only carries regions with at least one, so at 08:00 CEST all of Europe is the single entry
+ * `germany: 2` and the other ten countries are simply absent. Reading that absence as "unknown"
+ * left every country card on the continent page pulsing its skeleton forever — the loading state
+ * ended only for whichever region happened to be open — and made the homepage panels hold their
+ * server-rendered `initialOpenCount` after the live number had fallen to 0.
+ */
 export function findOpenParkCount(
   stats: GeoLiveStatsDto | undefined,
   continentSlug: string,
   countrySlug?: string
 ): number | undefined {
-  const continent = stats?.continents.find((c) => c.slug === continentSlug);
-  if (!continent) return undefined;
+  if (!stats) return undefined;
+  const continent = stats.continents.find((c) => c.slug === continentSlug);
+  if (!continent) return 0;
   if (!countrySlug) return continent.openParkCount;
-  return continent.countries.find((c) => c.slug === countrySlug)?.openParkCount;
+  return continent.countries.find((c) => c.slug === countrySlug)?.openParkCount ?? 0;
 }

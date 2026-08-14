@@ -40,6 +40,8 @@ import { AttractionTypicalWaits } from '@/components/parks/attraction-typical-wa
 import { LiveAttractionData } from '@/components/parks/live-attraction-data';
 import { RopeDropCard } from '@/components/parks/rope-drop-card';
 import { RideProfileSection } from '@/components/parks/ride-profile-section';
+import { NoLiveWaitTimesNotice } from '@/components/parks/no-live-wait-times-notice';
+import { noLiveWaitTimesReason } from '@/lib/utils/live-wait-times';
 import { AttractionBlogPostsSection } from '@/components/parks/blog-posts-sections';
 import { RideProfileTeaser } from '@/components/parks/ride-profile-teaser';
 import { isEveningBetter } from '@/lib/utils/rope-drop';
@@ -413,6 +415,14 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               block on the page without a heading, so it read as a stray card between
               the header and the first chapter. */}
             <PageSection icon={Clock} title={t('sectionLiveNow')} frosted>
+              {/* Why this chapter is empty, for the parks that publish wait times only inside
+                their own app. Above the live panel rather than below it: it is the answer to the
+                question the blank panel raises. Renders nothing everywhere else. */}
+              <NoLiveWaitTimesNotice
+                reason={noLiveWaitTimesReason(park)}
+                scope="ride"
+                className="mb-4"
+              />
               {/* Live: status, wait time, queues — auto-refreshes every 5 min.
               initialPark is trimmed to THIS attraction AND to the park-level fields this page
               actually reads (see leanParkForAttractionShell): passing the full park serialized

@@ -3,6 +3,7 @@ import { Link } from '@/i18n/navigation';
 import { Clock } from 'lucide-react';
 import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { getAttractionDisplayStatus } from '@/lib/utils/park-utils';
+import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { stripNewPrefix } from '@/lib/utils';
 import type { ParkAttraction, ParkWithAttractions } from '@/lib/api/types';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
@@ -60,6 +61,7 @@ export function AttractionWaitOverview({
   const locale = useLocale();
 
   const stats = park.analytics?.statistics;
+  const waitTimesUnreadable = !hasReadableWaitTimes(park);
   const dataTimestamp = getDataTimestamp(park);
   const formattedTimestamp = dataTimestamp
     ? getDateTimeFormat(locale, {
@@ -79,15 +81,23 @@ export function AttractionWaitOverview({
           <Clock className="h-5 w-5 shrink-0" aria-hidden="true" />
           {t('overview.title')}
         </h2>
-        {stats && (
-          <p className="text-muted-foreground text-sm">
-            {t('avgWaitTime')}: {stats.avgWaitTime} {tCommon('minutes')} · {t('parkPeak')}:{' '}
-            {stats.peakWaitToday} {tCommon('minutes')} ·{' '}
-            {t('operatingCount', {
-              count: stats.operatingAttractions,
-              total: stats.totalAttractions,
-            })}
-          </p>
+        {/* For a park whose wait times are unreadable this line would read
+          "Ø 0 min · Peak 0 min · 0 of 82 open" — three aggregates over an empty set,
+          and the one piece of text about the park that Googlebot's first wave indexes.
+          Say what is actually true instead; the notice above carries the why. */}
+        {waitTimesUnreadable ? (
+          <p className="text-muted-foreground text-sm">{t('noLiveWaitTimes.title')}</p>
+        ) : (
+          stats && (
+            <p className="text-muted-foreground text-sm">
+              {t('avgWaitTime')}: {stats.avgWaitTime} {tCommon('minutes')} · {t('parkPeak')}:{' '}
+              {stats.peakWaitToday} {tCommon('minutes')} ·{' '}
+              {t('operatingCount', {
+                count: stats.operatingAttractions,
+                total: stats.totalAttractions,
+              })}
+            </p>
+          )
         )}
       </div>
 

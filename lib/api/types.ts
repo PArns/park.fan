@@ -3,7 +3,34 @@
 // ============================================================================
 
 export type ParkStatus = 'OPERATING' | 'CLOSED' | 'UNKNOWN';
-export type AttractionStatus = 'OPERATING' | 'DOWN' | 'CLOSED' | 'REFURBISHMENT';
+// 'UNKNOWN' reaches `effectiveStatus` when the park is open but its wait times are
+// unreadable (see `LiveWaitTimes`) — the API stops guessing rather than reporting
+// every ride as running. Raw `status` stays on the four upstream values.
+export type AttractionStatus = 'OPERATING' | 'DOWN' | 'CLOSED' | 'REFURBISHMENT' | 'UNKNOWN';
+
+/**
+ * Why a park's wait times cannot be read. Contract with the API — see
+ * `docs/frontend/live-wait-times-availability.md` in v4.api.park.fan.
+ *
+ * - `in_park_app_only`: the park serves them to its own app, only inside the park
+ *   (typically its WLAN). Someone standing there can see them; we cannot.
+ * - `not_published`: the park publishes them nowhere at all.
+ */
+export type NoLiveWaitTimesReason = 'in_park_app_only' | 'not_published';
+
+/**
+ * Whether a park's wait times are readable at all.
+ *
+ * **Permanent, not a freshness signal** — a park whose feed went quiet this morning
+ * stays `available: true`. `false` means no number will ever arrive, so an empty
+ * ride list is an absence and not a quiet park. Read it via
+ * `noLiveWaitTimesReason()` (`@/lib/utils/live-wait-times`), which treats an absent
+ * field as available so pages keep working against an older API.
+ */
+export interface LiveWaitTimes {
+  available: boolean;
+  reason: NoLiveWaitTimesReason | null;
+}
 
 export interface BestVisitSlot {
   time: string; // ISO 8601
@@ -591,6 +618,7 @@ export interface ParkResponse extends ParkBase {
   schedule?: ScheduleItem[];
   nextSchedule?: NextScheduleItem | null;
   hasOperatingSchedule: boolean;
+  liveWaitTimes?: LiveWaitTimes;
 }
 
 export interface ParkWithAttractions extends ParkBase {
@@ -606,6 +634,8 @@ export interface ParkWithAttractions extends ParkBase {
   schedule?: ScheduleItem[];
   nextSchedule?: NextScheduleItem | null;
   hasOperatingSchedule: boolean;
+  /** Day-stable, so it rides on the server render and the live merge carries it. */
+  liveWaitTimes?: LiveWaitTimes;
 }
 
 /**
@@ -690,6 +720,8 @@ export interface AttractionResponse {
     country?: string | null;
     city?: string | null;
     status?: ParkStatus;
+    /** Whether this park's wait times are readable — see {@link LiveWaitTimes}. */
+    liveWaitTimes?: LiveWaitTimes;
   } | null;
   /** Wait-time trend direction. Present on this endpoint as well as on the park payload. */
   trend?: 'up' | 'down' | 'stable' | null;
@@ -954,6 +986,12 @@ export interface ParkReference {
   };
   timezone?: string;
   hasOperatingSchedule: boolean;
+  /**
+   * Whether this park's wait times are readable — see {@link LiveWaitTimes}. The `/api/parks/live`
+   * projection reads it to decide whether the `analytics` block above means anything, and drops
+   * the wait-derived fields when it does not, so the flag itself never reaches the client.
+   */
+  liveWaitTimes?: LiveWaitTimes;
   todaySchedule?: {
     openingTime: string;
     closingTime: string;
@@ -1554,7 +1592,8 @@ export interface NearbyParkItem {
   country: string | null;
   status: string;
   totalAttractions: number;
-  operatingAttractions: number;
+  /** Absent for a park whose wait times are unreadable — see {@link LiveWaitTimes}. */
+  operatingAttractions?: number;
   analytics?: {
     avgWaitTime?: number;
     crowdLevel?: string;
@@ -1563,6 +1602,7 @@ export interface NearbyParkItem {
   url: string | null;
   timezone: string;
   hasOperatingSchedule: boolean;
+  liveWaitTimes?: LiveWaitTimes;
   todaySchedule?: ScheduleSummary | null;
   nextSchedule?: ScheduleSummary | null;
 }

@@ -44,6 +44,11 @@ export const LandSection = memo(function LandSection({
   const operatingCount = attractions.filter(
     (a) => getAttractionDisplayStatus(a, parkStatus) === 'OPERATING'
   ).length;
+  // "0/82 operating" is true but unreadable when no ride's status is knowable — it says the
+  // land is shut. Every ride reads UNKNOWN in that case, so count them instead of rating them.
+  const noneKnown =
+    attractions.length > 0 &&
+    attractions.every((a) => getAttractionDisplayStatus(a, parkStatus) === 'UNKNOWN');
 
   return (
     <section>
@@ -54,7 +59,9 @@ export const LandSection = memo(function LandSection({
         <div>
           <h2 className="text-xl font-semibold">{landName}</h2>
           <p className="text-muted-foreground text-sm">
-            {t('operatingCount', { count: operatingCount, total: attractions.length })}
+            {noneKnown
+              ? t('attractionCount', { count: attractions.length })
+              : t('operatingCount', { count: operatingCount, total: attractions.length })}
           </p>
         </div>
       </div>

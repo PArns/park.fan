@@ -55,6 +55,8 @@ import { HeaderHolidayPanel } from '@/components/parks/header-holiday-panel';
 import { ParkBestDaysSection } from '@/components/parks/park-best-days-section';
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
 import { ParkPurchasesCard } from '@/components/parks/park-purchases-card';
+import { NoLiveWaitTimesNotice } from '@/components/parks/no-live-wait-times-notice';
+import { noLiveWaitTimesReason } from '@/lib/utils/live-wait-times';
 import { NearbyParksSection } from '@/components/parks/nearby-parks-section';
 import { ParkBlogPostsSection } from '@/components/parks/blog-posts-sections';
 import { ContributeBanner } from '@/components/contribute/contribute-banner';
@@ -536,6 +538,17 @@ export default async function ParkPage({ params }: ParkPageProps) {
             {/* Paid skip-the-line day prices (schedule purchases) — renders nothing for parks
               without purchase data (currently everything non-Disney). */}
             <ParkPurchasesCard schedule={park.schedule} timezone={park.timezone} className="mb-8" />
+
+            {/* Parks that publish wait times only inside their own app (Hansa-Park). Server-rendered,
+              not streamed: `liveWaitTimes` is day-stable, so it arrives with the structure fetch and
+              the live merge carries it — and it has to be in the first paint, because it explains
+              the empty ride list the visitor is already looking at. Renders nothing for the other
+              212 parks. */}
+            <NoLiveWaitTimesNotice
+              reason={noLiveWaitTimesReason(park)}
+              scope="park"
+              className="mb-8"
+            />
 
             {/* Live Park Data (Status + Tabs with auto-refresh) */}
             <LiveParkData

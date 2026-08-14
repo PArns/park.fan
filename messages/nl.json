@@ -342,6 +342,7 @@
       "eveningWait": "'s avonds ca. {minutes} min."
     },
     "operatingCount": "{count}/{total} open",
+    "attractionCount": "{count, plural, =1 {# attractie} other {# attracties}}",
     "overview": {
       "title": "Wachttijden in één oogopslag",
       "minutesUnit": "min.",
@@ -476,6 +477,15 @@
       "REFURBISHMENT": "Onderhoud",
       "DOWN": "Storing",
       "UNKNOWN": "Onbekend"
+    },
+    "noLiveWaitTimes": {
+      "title": "Geen wachttijden beschikbaar",
+      "reason": {
+        "in_park_app_only": "Dit park laat zijn wachttijden alleen zien in zijn eigen app, en alleen op de wifi in het park zelf. Van buitenaf zijn ze niet op te halen.",
+        "not_published": "Dit park publiceert zijn wachttijden nergens."
+      },
+      "park": "Daarom staat er bij geen enkele attractie een wachttijd of drukte. Openingstijden, attracties, weer en kalender kloppen gewoon.",
+      "ride": "Daarom is er voor deze attractie geen wachttijd en geen voorspelling. Openingstijden en weer kloppen gewoon."
     },
     "weather": {
       "clear": "Helder",
@@ -649,7 +659,8 @@
       "operating": "In Bedrijf",
       "down": "Tijdelijke Storing",
       "closed": "Gesloten",
-      "refurbishment": "In Onderhoud"
+      "refurbishment": "In Onderhoud",
+      "unknown": "Onbekend"
     },
     "label": {
       "OPERATING": "Open",
