@@ -155,14 +155,14 @@ het vocabulaire overgenomen van de mensen die toch al op zijn terrein staan.
 
 Als je dat eenmaal doorhebt, valt de rest opeens op zijn plek. De gebieden heten
 **Speed Zone** en **Zero Zone**. De banen heten Untamed, Lost Gravity, Speed of
-Sound, Xpress, Goliath. Er is een achtbaan die in een hal staat en waarvan het
-hele thema muziek is. Er zijn zomeravonden waarop dj's draaien en het park tot
+Sound, Xpress, Goliath. Er is een achtbaan waarvan het station als
+opnamestudio is ingericht. Er zijn zomeravonden waarop dj's draaien en het park tot
 22 uur doorgaat. En er is een Halloween-evenement dat verder gaat dan elk ander
 in de Benelux.
 
-Betoveren wil hier niemand je. De Efteling vertelt je een sprookje,
-Phantasialand bouwt je een perfect decor, en beide zijn daar geweldig in. Walibi
-Holland wil dat je schreeuwt. Zes achtbanen met inversies, nauwelijks een gebouw
+De Efteling vertelt je een sprookje, Phantasialand bouwt je een naadloos decor.
+Walibi Holland kan decor ook, op zijn beste plekken heel goed, alleen mikt hier
+alles op iets anders: het wil dat je schreeuwt. Zes achtbanen met inversies, nauwelijks een gebouw
 waar je bij regen kunt schuilen, wel muziek op elk pad en een volume dat niemand
 per ongeluk heeft ingesteld.
 
@@ -370,10 +370,10 @@ zich aan vast te houden. 31 meter, 80 km/u. Je rijdt hem één keer, en dan weet
 je waarom Vekoma twintig jaar later de reputatie kwijt moest die het zich met
 precies deze bouwwijze had verworven.
 
-### Speed of Sound, 5,2 g onder een hallendak
+### Speed of Sound, 5,2 g uit het jaar 2000
 
 **[Speed of Sound](ref:walibi-holland/speed-of-sound)** is een
-**Vekoma-Boomerang**, en die staat hier volledig in een hal. Eerst word je
+**Vekoma-Boomerang**. Eerst word je
 achteruit een toren op getrokken, dan losgelaten: vooruit door de cobra roll en
 de looping, de tweede toren op, en dan dezelfde baan achteruit weer terug. Het
 park telt daarom **zes inversies**, terwijl er maar drie zijn gebouwd.
@@ -385,10 +385,19 @@ die 35,5 meter hoog en 285 meter kort is. Dat er een boordgeluid bij loopt, maak
 niet zachter.
 
 Hij opende in april 2000 als **La Via Volta**, werd in 2007 stilgelegd en in
-2011 onder een nieuwe naam en met muziekthema teruggehaald. Overigens is het een
-van de weinige attracties waar je bij regen droog blijft.
+2011 onder een nieuwe naam en met muziekthema teruggehaald. Uit die verbouwing
+stamt ook het station: dat zit sindsdien in een gebouw en is als opnamestudio
+ingericht, de linker lifthill kreeg een tunnel. De baan zelf ligt in de open
+lucht, droog blijf je hier dus alleen tot de start.
 
-![Het bord van Speed of Sound tussen enorme luidsprekers en een gitaar | De gevel belooft een concert. Binnen wacht een Boomerang uit 2000. | wide](/media/walibi-holland/speed-of-sound.jpg)
+Dezelfde baan staat overigens ook in Waver. **[Cobra](ref:walibi-belgium/cobra)**
+in [Walibi Belgium](ref:walibi-belgium) is dezelfde Boomerang, een jaar jonger,
+met identieke cijfers. Alleen rijdt Speed of Sound merkbaar beter, omdat hij bij
+de verbouwing van 2011 nieuwe treinen kreeg: schouderbanden in plaats van de
+oude beugels. Rijd ze achter elkaar en je weet binnen een seconde hoeveel een
+beveiliging uitmaakt.
+
+![Het bord van Speed of Sound tussen enorme luidsprekers en een gitaar | De gevel belooft een concert. Erachter wacht een Boomerang uit 2000. | wide](/media/walibi-holland/speed-of-sound.jpg)
 
 ### De rest
 
@@ -737,8 +746,8 @@ van de dag, als de nieuwigheidsrij is afgebouwd, en rijd beide banen, anders heb
 je de helft van het concept gemist.
 **[El Rio Grande](ref:walibi-holland/el-rio-grande?bare)** en
 **[Crazy River](ref:walibi-holland/crazy-river?bare)** passen in de middagshitte,
-**[Speed of Sound](ref:walibi-holland/speed-of-sound?bare)** in de enige
-regenbui. En het laatste uur is weer voor Untamed: de baan loopt 's avonds
+**[Speed of Sound](ref:walibi-holland/speed-of-sound?bare)** pak je mee
+wanneer je tussendoor 5,2 g nodig hebt. En het laatste uur is weer voor Untamed: de baan loopt 's avonds
 merkbaar sneller dan 's ochtends, en in het tegenlicht zie je vanaf de lifthill
 hoe vlak dit land werkelijk is.
 
@@ -880,8 +889,12 @@ hardstylefestival en een polder die jonger is dan de meeste van zijn bezoekers.
 
 Dit park doet niet alles goed. Het eten is middelmatig, een paar banen zijn
 vooral hun eigen verleden, en in de winter stort het hele concept in, zoals april
-2026 liet zien. Naar een decor waar je voor stil blijft staan en de camera
-tevoorschijn haalt, zoek je hier lang.
+2026 liet zien.
+
+Waar het park zich wél inspant, doorstaat het elke vergelijking. De ingang van
+de Wilderness, de Zero Zone rond Lost Gravity, de hele enscenering rond Untamed:
+daar blijf je staan en haal je de camera tevoorschijn, en dat hoeft zich noch
+voor Disney noch voor Phantasialand te verstoppen.
 
 Daarvoor staat in de Wilderness een achtbaan die na de first drop twee keer
 achter elkaar over de kop gaat en daarna negentig seconden lang niet meer

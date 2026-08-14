@@ -154,14 +154,14 @@ hardstyle language, and hardstyle here is the neighbours.
 
 Once you have grasped that, the rest suddenly makes sense. The zones are called
 **Speed Zone** and **Zero Zone**. The coasters are called Untamed, Lost Gravity,
-Speed of Sound, Xpress, Goliath. There is a coaster that sits inside a hall and
-whose entire theme is music. There are summer evenings with DJs and the park
+Speed of Sound, Xpress, Goliath. There is a coaster whose station is fitted out
+as a recording studio. There are summer evenings with DJs and the park
 running until 22:00. And there is a Halloween event that goes further than any
 other in the Benelux.
 
-Nobody here is trying to enchant you. The Efteling tells you a fairy tale,
-Phantasialand builds you a flawless set, and both are magnificent at it. Walibi
-Holland wants you to scream. Six coasters with inversions, hardly a building to
+The Efteling tells you a fairy tale, Phantasialand builds you a seamless set.
+Walibi Holland can do sets too, and at its best it does them very well, only
+here everything aims at something else: it wants you to scream. Six coasters with inversions, hardly a building to
 shelter in when it rains, music on every path and a volume level nobody set by
 accident.
 
@@ -362,10 +362,10 @@ shoulder restraints. 31 metres, 80 km/h. You ride it once, and then you
 understand why Vekoma spent twenty years trying to shake off the reputation this
 exact design earned them.
 
-### Speed of Sound, 5.2 g under a roof
+### Speed of Sound, 5.2 g from the year 2000
 
 **[Speed of Sound](ref:walibi-holland/speed-of-sound)** is a **Vekoma
-Boomerang**, and this one sits entirely inside a hall. First you are hauled
+Boomerang**. First you are hauled
 backwards up a tower, then released: forwards through the cobra roll and the
 loop, up the second tower, and then the same track backwards all the way home.
 The park therefore counts **six inversions** even though only three were built.
@@ -376,10 +376,19 @@ highest forces in the park sit on a design classic from 2000 that is 35.5 metres
 tall and 285 metres short. The on-board soundtrack does not make it any gentler.
 
 It opened in April 2000 as **La Via Volta**, was mothballed in 2007 and brought
-back in 2011 under a new name and with a music theme. Incidentally, it is one of
-the few attractions where you stay dry in the rain.
+back in 2011 under a new name and with a music theme. The station dates from
+that rebuild: it has sat inside a building ever since, fitted out as a recording
+studio, and the left lift hill got a tunnel. The track itself is out in the
+open, so you only stay dry here until dispatch.
 
-![The Speed of Sound sign between oversized speakers and a guitar | The facade promises a concert. Inside waits a Boomerang from 2000. | wide](/media/walibi-holland/speed-of-sound.jpg)
+The same ride stands in Wavre, incidentally. **[Cobra](ref:walibi-belgium/cobra)**
+at [Walibi Belgium](ref:walibi-belgium) is the same Boomerang, a year younger,
+with identical numbers. Speed of Sound simply rides noticeably better, because
+the 2011 rebuild brought new trains: shoulder harnesses instead of the old
+horse-collar restraints. Ride the two back to back and you will know within a
+second how much a restraint matters.
+
+![The Speed of Sound sign between oversized speakers and a guitar | The facade promises a concert. Behind it waits a Boomerang from 2000. | wide](/media/walibi-holland/speed-of-sound.jpg)
 
 ### The rest
 
@@ -724,8 +733,8 @@ day once the new-ride queue has come down, and ride both tracks, otherwise you
 have missed half the concept.
 **[El Rio Grande](ref:walibi-holland/el-rio-grande?bare)** and
 **[Crazy River](ref:walibi-holland/crazy-river?bare)** fit into the midday heat,
-**[Speed of Sound](ref:walibi-holland/speed-of-sound?bare)** into the one rain
-shower. And the last hour belongs to Untamed again: the ride runs noticeably
+Take **[Speed of Sound](ref:walibi-holland/speed-of-sound?bare)** whenever you
+need 5.2 g in between. And the last hour belongs to Untamed again: the ride runs noticeably
 faster in the evening than in the morning, and against the light from the lift
 hill you can see just how flat this land really is.
 
@@ -864,8 +873,12 @@ hardstyle festival and a polder younger than most of its visitors.
 
 This park does not get everything right. The food is mediocre, a few rides are
 mostly their own past, and in winter the whole concept collapses, as April 2026
-showed. You will look a long time for a scene here that makes you stop and take
-out the camera.
+showed.
+
+Where the park does put in the work, though, it holds up against anyone. The
+entrance to the Wilderness, the Zero Zone around Lost Gravity, the whole staging
+around Untamed: that is where you stop and take out the camera, and none of it
+has to hide behind Disney or Phantasialand.
 
 What you get instead is a coaster in the Wilderness that goes upside down twice
 in a row after the first drop and then does not let up for ninety seconds. Two
