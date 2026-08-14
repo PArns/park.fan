@@ -350,7 +350,7 @@ viendra pas.
 ![Un panneau de gare dans la file : « Next Departure 06:66 », Platform 13 | Le tableau d'affichage dans la file. Ce train-là, tu l'attendras en vain. | left](/media/walibi-holland/xpress-platform-13-4x3.jpg)
 
 Ce qui vient, c'est un lancement LSM : **0 à 90 km/h en 2,8 secondes**, puis un
-sea serpent et un tire-bouchon, trois inversions, jusqu'à **5 g**, 1 040 mètres,
+sea serpent et un tire-bouchon, trois inversions, jusqu'à **5 g**, 996 mètres,
 et après 75 secondes tout est fini.
 
 Le vrai coup, en revanche, n'est écrit nulle part à l'entrée. **Ce tracé, tu le

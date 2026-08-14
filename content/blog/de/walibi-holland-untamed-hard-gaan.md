@@ -354,7 +354,7 @@ auf den du da wartest, kommt nicht.
 ![Ein Bahnhofsschild in der Warteschlange: „Next Departure 06:66“, Platform 13 | Die Anzeigetafel in der Warteschlange. Auf diesen Zug wartest du vergeblich. | left](/media/walibi-holland/xpress-platform-13-4x3.jpg)
 
 Was kommt, ist ein LSM-Launch: **0 auf 90 km/h in 2,8 Sekunden**, danach ein Sea
-Serpent und ein Korkenzieher, drei Überschläge, bis zu **5 g**, 1.040 Meter,
+Serpent und ein Korkenzieher, drei Überschläge, bis zu **5 g**, 996 Meter,
 nach 75 Sekunden ist alles vorbei.
 
 Der eigentliche Clou steht aber nirgends am Eingang. **Dieses Layout kennst du

@@ -340,7 +340,7 @@ komt niet.
 ![Een stationsbord in de wachtrij: "Next Departure 06:66", Platform 13 | Het vertrekbord in de wachtrij. Op die trein wacht je tevergeefs. | left](/media/walibi-holland/xpress-platform-13-4x3.jpg)
 
 Wat wel komt, is een LSM-launch: **0 naar 90 km/u in 2,8 seconden**, daarna een
-sea serpent en een kurkentrekker, drie inversies, tot **5 g**, 1.040 meter, en
+sea serpent en een kurkentrekker, drie inversies, tot **5 g**, 996 meter, en
 na 75 seconden is alles voorbij.
 
 De echte clou staat echter nergens bij de ingang. **Deze layout ken je
