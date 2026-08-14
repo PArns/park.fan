@@ -162,14 +162,14 @@ hier Nachbarschaft.
 
 Wenn man das einmal begriffen hat, ergibt der Rest plötzlich Sinn. Die Zonen
 heißen **Speed Zone** und **Zero Zone**. Die Bahnen heißen Untamed, Lost
-Gravity, Speed of Sound, Xpress, Goliath. Es gibt eine Achterbahn, die in einer
-Halle steht und deren ganzes Thema Musik ist. Es gibt Sommerabende, an denen
+Gravity, Speed of Sound, Xpress, Goliath. Es gibt eine Achterbahn, deren Bahnhof
+als Tonstudio eingerichtet ist. Es gibt Sommerabende, an denen
 DJs auflegen und der Park bis 22 Uhr fährt. Und es gibt ein Halloween-Event,
 das weiter geht als jedes andere in den Benelux-Ländern.
 
-Verzaubern will dich hier niemand. Das Efteling erzählt dir ein Märchen, das
-Phantasialand baut dir eine perfekte Kulisse, und beide sind darin großartig.
-Walibi Holland will, dass du schreist. Sechs Achterbahnen mit
+Das Efteling erzählt dir ein Märchen, das Phantasialand baut dir eine lückenlose
+Kulisse. Walibi Holland kann Kulisse auch, an seinen besten Stellen sehr gut,
+nur zielt hier alles auf etwas anderes: Es will, dass du schreist. Sechs Achterbahnen mit
 Überschlägen, kaum ein Gebäude, in das du dich vor dem Regen retten kannst,
 dafür Musik auf jedem Weg und eine Lautstärke, die niemand versehentlich
 eingestellt hat.
@@ -384,10 +384,10 @@ nichts hat, woran er sich festhalten könnte. 31 Meter, 80 km/h. Man fährt sie
 einmal, und dann weiß man, warum Vekoma zwanzig Jahre später den Ruf loswerden
 musste, den es sich mit genau dieser Bauart erarbeitet hat.
 
-### Speed of Sound, 5,2 g unter einem Hallendach
+### Speed of Sound, 5,2 g aus dem Jahr 2000
 
 **[Speed of Sound](ref:walibi-holland/speed-of-sound)** ist ein
-**Vekoma-Boomerang**, und der steht hier komplett in einer Halle. Erst wirst du
+**Vekoma-Boomerang**. Erst wirst du
 rückwärts einen Turm hinaufgezogen, dann losgelassen: vorwärts durch Cobra Roll
 und Looping, den zweiten Turm hinauf, und dann dieselbe Strecke rückwärts wieder
 zurück. Der Park zählt deshalb **sechs Überschläge**, obwohl nur drei gebaut
@@ -400,10 +400,19 @@ Die höchsten Kräfte im Park stehen also an einem Bauartklassiker von 2000, der
 nicht sanfter.
 
 Eröffnet wurde sie im April 2000 als **La Via Volta**, 2007 stillgelegt und 2011
-unter neuem Namen und mit Musikthema zurückgeholt. Nebenbei ist sie eine der
-wenigen Attraktionen, in denen du bei Regen trocken bleibst.
+unter neuem Namen und mit Musikthema zurückgeholt. Aus dem Umbau stammt auch
+der Bahnhof: Der steckt seitdem in einem Gebäude und ist als Tonstudio
+eingerichtet, der linke Lifthill bekam einen Tunnel. Die Strecke selbst steht
+im Freien, trocken bleibst du hier also nur bis zur Abfahrt.
 
-![Das Schild von Speed of Sound zwischen übergroßen Lautsprechern und einer Gitarre | Die Fassade verspricht ein Konzert. Drinnen wartet ein Boomerang von 2000. | wide](/media/walibi-holland/speed-of-sound.jpg)
+Dieselbe Bahn steht übrigens auch in Wavre. **[Cobra](ref:walibi-belgium/cobra)**
+im [Walibi Belgium](ref:walibi-belgium) ist derselbe Boomerang, ein Jahr jünger,
+bei identischen Daten. Nur fährt sich Speed of Sound spürbar besser, weil sie
+beim Umbau 2011 neue Züge bekommen hat: Schultergurte statt der alten Bügel.
+Fahr die beiden hintereinander, und du weißt binnen einer Sekunde, wie viel eine
+Rückhaltevorrichtung ausmacht.
+
+![Das Schild von Speed of Sound zwischen übergroßen Lautsprechern und einer Gitarre | Die Fassade verspricht ein Konzert. Dahinter wartet ein Boomerang von 2000. | wide](/media/walibi-holland/speed-of-sound.jpg)
 
 ### Der Rest
 
@@ -755,8 +764,8 @@ Tages, wenn sich die Neuheiten-Schlange abgebaut hat, und fahr beide Strecken,
 sonst hast du die Hälfte des Konzepts verpasst.
 **[El Rio Grande](ref:walibi-holland/el-rio-grande?bare)** und
 **[Crazy River](ref:walibi-holland/crazy-river?bare)** passen in die
-Mittagshitze, **[Speed of Sound](ref:walibi-holland/speed-of-sound?bare)** in
-den einzigen Regenschauer. Und die letzte
+Mittagshitze, **[Speed of Sound](ref:walibi-holland/speed-of-sound?bare)** nimmst du mit,
+wenn du zwischendurch 5,2 g brauchst. Und die letzte
 Stunde gehört wieder Untamed: Die Bahn läuft abends spürbar schneller als
 morgens, und im Gegenlicht siehst du auf dem Lifthill, wie flach dieses Land
 wirklich ist.
@@ -899,8 +908,12 @@ meisten seiner Besucher.
 
 Dieser Park macht nicht alles gut. Das Essen ist Mittelmaß, ein paar Bahnen sind
 vor allem ihre eigene Vergangenheit, und im Winter fällt das ganze Konzept in
-sich zusammen, wie der April 2026 gezeigt hat. Eine Kulisse, vor der man
-stehenbleibt und die Kamera rausholt, wirst du hier lange suchen.
+sich zusammen, wie der April 2026 gezeigt hat.
+
+Wo der Park sich dagegen Mühe gibt, hält er jeden Vergleich aus. Der Eingang
+zum Wilderness, die Zero Zone rund um Lost Gravity, die ganze Inszenierung um
+Untamed: Da bleibst du stehen und holst die Kamera raus, und das muss sich
+weder vor Disney noch vor dem Phantasialand verstecken.
 
 Dafür steht im Wilderness eine Achterbahn, die nach dem First Drop
 zweimal hintereinander kopfüber geht und danach neunzig Sekunden lang nicht mehr

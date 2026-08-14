@@ -162,14 +162,14 @@ voisinage.
 
 Une fois qu'on a saisi ça, le reste prend soudain du sens. Les zones s'appellent
 **Speed Zone** et **Zero Zone**. Les coasters s'appellent Untamed, Lost Gravity,
-Speed of Sound, Xpress, Goliath. Il y a un coaster installé dans un hall et dont
-le thème entier est la musique. Il y a des soirées d'été où des DJ mixent et où
+Speed of Sound, Xpress, Goliath. Il y a un coaster dont la gare est aménagée
+en studio d'enregistrement. Il y a des soirées d'été où des DJ mixent et où
 le parc tourne jusqu'à 22 h. Et il y a un événement d'Halloween qui va plus loin
 que tous les autres du Benelux.
 
-Personne ici ne cherche à t'enchanter. L'Efteling te raconte un conte,
-Phantasialand te construit un décor parfait, et les deux y excellent. Walibi
-Holland veut que tu cries. Six coasters avec inversions, presque aucun bâtiment
+L'Efteling te raconte un conte, Phantasialand te construit un décor sans faille.
+Walibi Holland sait faire du décor aussi, et très bien à ses meilleurs endroits,
+sauf qu'ici tout vise autre chose : il veut que tu cries. Six coasters avec inversions, presque aucun bâtiment
 où t'abriter de la pluie, en revanche de la musique sur chaque allée et un
 volume que personne n'a réglé par mégarde.
 
@@ -382,10 +382,10 @@ entre les harnais rigides. 31 mètres, 80 km/h. On le fait une fois, et on
 comprend alors pourquoi Vekoma a dû, vingt ans plus tard, se débarrasser de la
 réputation que ce type précis lui avait value.
 
-### Speed of Sound, 5,2 g sous un toit
+### Speed of Sound, 5,2 g venus de l'an 2000
 
 **[Speed of Sound](ref:walibi-holland/speed-of-sound)** est un **Boomerang
-Vekoma**, et celui-ci se trouve entièrement dans un hall. On te hisse d'abord en
+Vekoma**. On te hisse d'abord en
 marche arrière au sommet d'une tour, puis on te lâche : en avant à travers le
 cobra roll et le looping, en haut de la seconde tour, et ensuite tout le même
 parcours en marche arrière. Le parc compte donc **six inversions** alors que
@@ -398,10 +398,19 @@ classique de l'an 2000, haut de 35,5 mètres et court de 285. La bande-son
 embarquée ne rend pas la chose plus douce.
 
 Il a ouvert en avril 2000 sous le nom de **La Via Volta**, a été mis à l'arrêt
-en 2007 et ramené en 2011 sous un nouveau nom et avec un thème musical. C'est au
-passage l'une des rares attractions où tu restes au sec sous la pluie.
+en 2007 et ramené en 2011 sous un nouveau nom et avec un thème musical. La gare
+date de cette refonte : elle est depuis logée dans un bâtiment et aménagée en
+studio d'enregistrement, et le lift de gauche a reçu un tunnel. Le parcours
+lui-même est à ciel ouvert, tu ne restes donc au sec que jusqu'au départ.
 
-![L'enseigne de Speed of Sound entre des haut-parleurs géants et une guitare | La façade promet un concert. À l'intérieur attend un Boomerang de 2000. | wide](/media/walibi-holland/speed-of-sound.jpg)
+Le même coaster se trouve d'ailleurs à Wavre. **[Cobra](ref:walibi-belgium/cobra)**
+à [Walibi Belgium](ref:walibi-belgium) est le même Boomerang, d'un an plus
+jeune, aux chiffres identiques. Sauf que Speed of Sound se laisse nettement
+mieux faire, parce que la refonte de 2011 lui a apporté de nouveaux trains :
+des harnais d'épaules au lieu des anciennes barres. Fais les deux à la suite et
+tu sauras en une seconde ce que pèse un système de retenue.
+
+![L'enseigne de Speed of Sound entre des haut-parleurs géants et une guitare | La façade promet un concert. Derrière elle attend un Boomerang de 2000. | wide](/media/walibi-holland/speed-of-sound.jpg)
 
 ### Le reste
 
@@ -760,8 +769,8 @@ journée, quand la file de la nouveauté est retombée, et fais les deux voies,
 sinon tu as raté la moitié du concept.
 **[El Rio Grande](ref:walibi-holland/el-rio-grande?bare)** et
 **[Crazy River](ref:walibi-holland/crazy-river?bare)** s'intègrent dans la
-chaleur de midi, **[Speed of Sound](ref:walibi-holland/speed-of-sound?bare)**
-dans l'unique averse. Et la dernière heure appartient de nouveau à Untamed : le
+chaleur de midi, **[Speed of Sound](ref:walibi-holland/speed-of-sound?bare)**, prends-le quand
+il te faut 5,2 g entre deux. Et la dernière heure appartient de nouveau à Untamed : le
 parcours tourne sensiblement plus vite le soir que le matin, et à contre-jour,
 depuis le lift, tu vois à quel point ce pays est vraiment plat.
 
@@ -906,8 +915,13 @@ festival hardstyle et un polder plus jeune que la plupart de ses visiteurs.
 
 Ce parc ne fait pas tout bien. La nourriture est moyenne, quelques parcours sont
 avant tout leur propre passé, et en hiver tout le concept s'effondre, comme
-avril 2026 l'a montré. Un décor devant lequel on s'arrête pour sortir l'appareil
-photo, tu le chercheras longtemps ici.
+avril 2026 l'a montré.
+
+Là où le parc se donne du mal, en revanche, il soutient n'importe quelle
+comparaison. L'entrée de la Wilderness, la Zero Zone autour de Lost Gravity,
+toute la mise en scène autour d'Untamed : c'est là que tu t'arrêtes et que tu
+sors l'appareil photo, et rien de tout cela n'a à rougir devant Disney ni devant
+Phantasialand.
 
 En revanche, il y a dans la Wilderness un coaster qui passe deux fois de suite
 la tête en bas après la première descente et qui, ensuite, ne s'arrête plus
