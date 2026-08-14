@@ -489,8 +489,6 @@ dort auch keine Zahl. Die Richtung ist eindeutig, die Nachkommastelle nicht.
 
 Sechs Wochen im Jahr hört dieser Park auf, ein Freizeitpark zu sein.
 
-![Ein Phönix aus hunderten leuchtenden Kürbissen mit ausgebreiteten Flügeln, davor eine Person am Geländer | Der Kürbisphönix ist die größte Einzelfigur der Dekoration. Aufgebaut wird er jedes Jahr neu. | wide](/media/halloween-2026/cover.jpg)
-
 Die **Halloween Fright Nights** gibt es seit der Six-Flags-Zeit,
 **2025 lief die 25. Ausgabe**. Am 31. Oktober feierte der Park das mit einem eigenen
 Jubiläumsabend von 17 bis 23 Uhr, limitierter Ticketzahl, einer Show mit Eddie
@@ -502,8 +500,6 @@ Wie die Kampagne dazu aussieht, zeigt der Park selbst am besten. Das hier ist
 einer der Spots zum Jahresthema „Souls for Sale“:
 
 https://www.youtube.com/watch?v=5uXmHjiLbG4
-
-![Ein verrosteter alter Lastwagen mit Moos auf dem Blech steht auf dem Weg, dahinter ein Bühnengerüst | Ein echter Austin, kein Kulissenbau. Das Moos hat der Park nicht angeklebt. | left](/media/halloween-2026/beispiel-endzeit-truck.jpg)
 
 Wie sich das gegen Movie Park, Traumatica und Toverland schlägt, steht in
 unserem [Halloween-Guide](/blog/halloween-freizeitparks-2026). Woran
@@ -523,7 +519,7 @@ vierten liegen Welten:
    ausdrückliche Versprechen, dass dir hier etwas *passiert*. Kosten deutlich
    extra.
 
-![Eine Darstellerin als zerbrochene Porzellanpuppe mit Bruchlinien im Gesicht, hinter ihr ein bunter Kinderbereich mit aufgehängten Teddys | Dieselbe Ecke des Parks, in der mittags Sechsjährige Kürbisse bemalen. | right](/media/halloween-2026/beispiel-porzellanpuppe.jpg)
+![Eine Darstellerin als zerbrochene Porzellanpuppe mit Bruchlinien im Gesicht, hinter ihr ein bunter Kinderbereich mit aufgehängten Teddys | Dieselbe Ecke des Parks, in der mittags Sechsjährige Kürbisse bemalen. Ab 2026 passiert beides nicht mehr am selben Tag. | right](/media/halloween-2026/beispiel-porzellanpuppe.jpg)
 
 Stufe vier ist der Grund, warum über Walibi geredet wird.
 
@@ -546,8 +542,6 @@ Kühlfach-Schublade.
 steigst. Danach geht es als angebliche Schädlingsbekämpfung in ein
 Kanalsystem, durch kniehohes Wasser, während Darsteller durch echte
 Wasserfälle auf dich zukommen. Orientierung: keine.
-
-![Ein alter, veralgter Wohnwagen zwischen Strohballen, davor ein Kugelgrill und umgekippte Holzkisten | Das Camp of Curiosities bei Tageslicht. Abends sitzt du hier drin und bekommst etwas zu trinken. | right](/media/halloween-2026/beispiel-wohnwagen.jpg)
 
 Dazu kommen zwei Formate, die nicht auf Schrecken zielen. **The Unhappy Hour**
 setzt dich zwischen verrostete Wohnwagen an einen Tisch, mit zwei Getränken,
@@ -578,8 +572,6 @@ Saison 2025, die die Größenordnung zuverlässig wiedergibt (Vorverkauf/Abendka
 Vier kostenlose Scare Zones liefen 2025 mit: Tangled Twigs, Pirates Cove,
 Ghostly Graveyard und Nightmares.
 
-![Ein beleuchtetes Torschild „Psycho Circus“ mit Clownsgesicht in der Mitte, darunter Besucher zwischen Imbissbuden | Auf der Tafel links steht „The freaks come out at night“. Ab hier ist Schluss mit Kürbisbemalen. | wide](/media/halloween-2026/beispiel-psycho-circus.jpg)
-
 Wer wirklich alles mitnehmen will, zahlt **mindestens 116,50 € pro Person**,
 und zwar zusätzlich zum Eintritt. Das ist die günstigste Kombination überhaupt,
 mit dem Before-Dark-Paket für die vier einfachen Häuser und allem im Vorverkauf.
@@ -594,8 +586,6 @@ Experience zu beschränken. Ein vernünftiger Plan.
 > Experiences laufen mit winzigen Gruppen und entsprechend wenigen Slots pro
 > Abend. Wenn dir Slaughterhouse oder The Clinic wichtig sind, sind sie an
 > starken Abenden weg, bevor du am Parkplatz stehst.
-
-![Ein Darsteller im Clownskostüm mit Fez und grün glitzerndem Bart sitzt am Rand einer Bühne, links eine blutverschmierte Zielscheibe | Pause zwischen zwei Shows. Fünf Stunden lang dieselbe Rolle, und die zweihundertste Gruppe soll denselben Schreck bekommen wie die erste. | left](/media/halloween-2026/beispiel-fez-clown.jpg)
 
 **Für 2026 ändert sich die wichtigste Regel.** Bisher liefen Spooky Days und
 Fright Nights am selben Tag, tagsüber Kürbis, abends Kettensäge. Ab dieser
