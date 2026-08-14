@@ -481,11 +481,11 @@
     "noLiveWaitTimes": {
       "title": "No wait times available",
       "reason": {
-        "in_park_app_only": "This park only shows its wait times in its own app, and only on the WiFi inside the park. There is no way to reach them from outside.",
-        "not_published": "This park does not publish its wait times anywhere."
+        "in_park_app_only": "The park only publishes its wait times in its own app, on the WiFi inside the park.",
+        "not_published": "The park does not publish its wait times anywhere."
       },
-      "park": "That is why no ride shows a wait or a crowd level. Opening hours, rides, weather and the calendar are unaffected.",
-      "ride": "That is why there is no wait time and no forecast for this ride. Opening hours and weather are unaffected."
+      "park": "Opening hours, weather and the calendar are all still here.",
+      "ride": "So there is no forecast for this ride either. Opening hours and weather are unaffected."
     },
     "weather": {
       "clear": "Clear sky",
