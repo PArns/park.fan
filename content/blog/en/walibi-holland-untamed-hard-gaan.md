@@ -806,7 +806,7 @@ For coaster fans, yes. The park has the first hybrid coaster in Europe in
 [Untamed](ref:walibi-holland/untamed), the world's first duelling single-rail
 installation in [YOY](ref:walibi-holland/yoy-thrill) and an Intamin Mega Coaster
 from 2002 in [Goliath](ref:walibi-holland/goliath), all at a typical wait of 20
-minutes. If you are after theming, dark rides and weather-proofing, the
+minutes. If you are after dark rides, a seamless world and weather-proofing, the
 [Efteling](ref:efteling) or [Phantasialand](ref:phantasialand) will serve you
 better.
 
@@ -875,16 +875,16 @@ This park does not get everything right. The food is mediocre, a few rides are
 mostly their own past, and in winter the whole concept collapses, as April 2026
 showed.
 
-Where the park does put in the work, though, it holds up against anyone. The
-entrance to the Wilderness, the Zero Zone around Lost Gravity, the whole staging
-around Untamed: that is where you stop and take out the camera, and none of it
-has to hide behind Disney or Phantasialand.
+What it does well, though, it does properly. In the Wilderness there is a
+coaster that goes upside down twice in a row after the first drop and then does
+not let up for ninety seconds. Two buildings further on, two trains chase each
+other along two single rails. And in October, people voluntarily pay twenty
+euros extra for the privilege of climbing into a pair of waders.
 
-What you get instead is a coaster in the Wilderness that goes upside down twice
-in a row after the first drop and then does not let up for ninety seconds. Two
-buildings further on, two trains chase each other along two single rails. And in
-October, people voluntarily pay twenty euros extra for the privilege of climbing
-into a pair of waders.
+And where the park puts in the work, it holds up on looks too. The entrance to
+the Wilderness, the Zero Zone around Lost Gravity, Untamed's station with the
+waterfall and the letters above the lift hill: that is where you stop and take
+out the camera, and none of it has to hide behind Disney or Phantasialand.
 
 Twenty minutes. That is the price of Untamed on a normal day.
 

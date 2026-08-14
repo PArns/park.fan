@@ -834,7 +834,7 @@ Para los aficionados a las montañas rusas, sí. El parque tiene en
 en [YOY](ref:walibi-holland/yoy-thrill) la primera instalación en duelo sobre
 raíl único del mundo y en [Goliath](ref:walibi-holland/goliath) un Mega Coaster
 de Intamin de 2002, y todo ello con una espera típica de 20 minutos. Quien busque
-theming, dark rides e independencia del tiempo estará mejor en el
+dark rides, una ambientación sin costuras e independencia del tiempo estará mejor en el
 [Efteling](ref:efteling) o en [Phantasialand](ref:phantasialand).
 
 ### ¿Qué significa «hard gaan»?
@@ -903,16 +903,16 @@ Este parque no lo hace todo bien. La comida es mediocre, unas cuantas
 atracciones son sobre todo su propio pasado, y en invierno todo el concepto se
 viene abajo, como demostró abril de 2026.
 
-Donde el parque sí se esfuerza, en cambio, aguanta cualquier comparación. La
-entrada a la Wilderness, la Zero Zone alrededor de Lost Gravity, toda la puesta
-en escena de Untamed: ahí es donde te paras y sacas la cámara, y nada de eso
-tiene que esconderse ante Disney ni ante Phantasialand.
+Lo que sí sabe hacer, en cambio, lo hace bien. En la Wilderness hay una montaña
+rusa que después de la primera caída va dos veces seguidas cabeza abajo y luego
+no para durante noventa segundos. Dos edificios más allá, dos trenes se
+persiguen sobre dos raíles únicos. Y en octubre hay gente que paga
+voluntariamente veinte euros de más por el privilegio de meterse en un vadeador.
 
-A cambio, en la Wilderness hay una montaña rusa que después de la primera caída
-va dos veces seguidas cabeza abajo y luego no para durante noventa segundos. Dos
-edificios más allá, dos trenes se persiguen sobre dos raíles únicos. Y en
-octubre hay gente que paga voluntariamente veinte euros de más por el privilegio
-de meterse en un vadeador.
+Y donde el parque se esfuerza, también aguanta la comparación en lo visual. La
+entrada a la Wilderness, la Zero Zone alrededor de Lost Gravity, la estación de
+Untamed con la cascada y las letras sobre el lift: ahí es donde te paras y sacas
+la cámara, y nada de eso tiene que esconderse ante Disney ni ante Phantasialand.
 
 Veinte minutos. Ese es el precio de Untamed un día normal.
 
