@@ -383,6 +383,7 @@ und dann noch mal links, weil dein Kopf zwischen den harten Schulterbügeln
 nichts hat, woran er sich festhalten könnte. 31 Meter, 80 km/h. Man fährt sie
 einmal, und dann weiß man, warum Vekoma zwanzig Jahre später den Ruf loswerden
 musste, den es sich mit genau dieser Bauart erarbeitet hat.
+
 ### Speed of Sound, 5,2 g unter einem Hallendach
 
 **[Speed of Sound](ref:walibi-holland/speed-of-sound)** ist ein
