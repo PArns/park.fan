@@ -501,6 +501,8 @@ einer der Spots zum Jahresthema „Souls for Sale“:
 
 https://www.youtube.com/watch?v=5uXmHjiLbG4
 
+![Eine Darstellerin als zerbrochene Porzellanpuppe mit Bruchlinien im Gesicht, hinter ihr ein bunter Kinderbereich mit aufgehängten Teddys | Der Kinderbereich, in dem mittags Sechsjährige Kürbisse bemalen. Ab 2026 passiert beides nicht mehr am selben Tag. | right](/media/halloween-2026/beispiel-porzellanpuppe.jpg)
+
 Wie sich das gegen Movie Park, Traumatica und Toverland schlägt, steht in
 unserem [Halloween-Guide](/blog/halloween-freizeitparks-2026). Woran
 Erstbesucher dagegen zuverlässig scheitern, ist der Aufbau.
@@ -518,8 +520,6 @@ vierten liegen Welten:
 4. **Experiences.** Kleinste Gruppen oder allein, körperliche Nähe, und das
    ausdrückliche Versprechen, dass dir hier etwas *passiert*. Kosten deutlich
    extra.
-
-![Eine Darstellerin als zerbrochene Porzellanpuppe mit Bruchlinien im Gesicht, hinter ihr ein bunter Kinderbereich mit aufgehängten Teddys | Dieselbe Ecke des Parks, in der mittags Sechsjährige Kürbisse bemalen. Ab 2026 passiert beides nicht mehr am selben Tag. | right](/media/halloween-2026/beispiel-porzellanpuppe.jpg)
 
 Stufe vier ist der Grund, warum über Walibi geredet wird.
 
