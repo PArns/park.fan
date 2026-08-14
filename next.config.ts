@@ -1,6 +1,7 @@
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 import withBundleAnalyzer from '@next/bundle-analyzer';
+import { HOMEPAGE_LINK_HEADER } from './lib/api-catalog';
 
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
@@ -473,7 +474,8 @@ const nextConfig: NextConfig = {
     return rules;
   },
   async headers() {
-    const localeHeaderRules = ['de', 'fr', 'it', 'nl', 'es', 'en'].map((locale) => ({
+    const locales = ['de', 'fr', 'it', 'nl', 'es', 'en'];
+    const localeHeaderRules = locales.map((locale) => ({
       source: `/${locale}/:path*`,
       headers: [{ key: 'Content-Language', value: locale }],
     }));
@@ -481,6 +483,26 @@ const nextConfig: NextConfig = {
     return [
       // Content-Language per locale — helps Google associate pages with their language
       ...localeHeaderRules,
+      // Machine-readable entry points, advertised where an agent arrives first (RFC 8288 +
+      // RFC 9727 §3): the API catalog, and the OpenAPI/docs URLs it would otherwise take a
+      // second round trip through the catalog to reach.
+      //
+      // Homepage only, in both forms it exists in — `/`, which the proxy redirects to a
+      // locale, and the six locale roots (a client that follows the redirect reads the
+      // headers off `/en`, not off the 307). Not site-wide: the header says something about
+      // the site, not about a ride page, and ~250 bytes on all ~35k of those buys nothing.
+      //
+      // These have to be two rules. `/:locale(en|de|…)` matches the locale root ONLY, while
+      // the Content-Language rules above end in `:path*` and therefore match every page
+      // under a locale — reusing that shape here is how this would silently go site-wide.
+      {
+        source: '/',
+        headers: [{ key: 'Link', value: HOMEPAGE_LINK_HEADER }],
+      },
+      {
+        source: `/:locale(${locales.join('|')})`,
+        headers: [{ key: 'Link', value: HOMEPAGE_LINK_HEADER }],
+      },
       // Static images served from /public. Vercel serves /public with `max-age=0,
       // must-revalidate` by default, and the Image Optimization response INHERITS the source
       // image's Cache-Control — so every `/_next/image` hit came back `max-age=0,

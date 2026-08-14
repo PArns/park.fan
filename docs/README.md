@@ -69,9 +69,10 @@
 
 ### SEO
 
-| Doc                             | Description                              |
-| ------------------------------- | ---------------------------------------- |
-| [SEO Analysis](seo/analysis.md) | Current status, optimizations, checklist |
+| Doc                                   | Description                                                      |
+| ------------------------------------- | ---------------------------------------------------------------- |
+| [SEO Analysis](seo/analysis.md)       | Current status, optimizations, checklist                         |
+| [API Discovery](seo/api-discovery.md) | RFC 9727 catalog at `/.well-known/api-catalog` + homepage `Link` |
 
 ### Troubleshooting
 
