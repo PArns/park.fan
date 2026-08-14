@@ -240,6 +240,33 @@ hast keine Ahnung mehr, in welche Himmelsrichtung du gerade geschaut hast.
 
 ```
 
+Auf keinem Datenblatt steht der Teil, der Untamed über eine gute Achterbahn
+hinaushebt: Die Bahn ist als Fest inszeniert, und zwar von der Warteschlange an.
+
+Der Lifthill ragt weithin sichtbar aus dem Grün des **Wilderness**-Bereichs, und
+oben auf ihm stehen mannshohe, mit Glühbirnen besetzte Buchstaben. **LOVE**
+leuchtet dort in den Himmel, in der Warteschlange steht **BE BRAVE**. Die
+Station hat einen Wasserfall und einen Startsound, der so gebaut ist, dass der
+komplette Zug die Hände hebt und dem Start entgegenklatscht. Fremde Leute, die
+sich zwei Minuten vorher noch nicht kannten. Nach Einbruch der Dunkelheit liegt
+die ganze Konstruktion in Pink und Lila.
+
+Es gibt nicht viele Bahnen, bei denen die Party vor dem Lifthill anfängt.
+
+Bei meiner ersten Fahrt habe ich irgendwo in der Mitte angefangen zu lachen und
+bis zur Bremse nicht mehr aufgehört. Nicht gekichert, richtig gelacht, mit
+Tränen in den Augen. In der Station drehte sich der halbe Zug nach mir um, und
+in jeder anderen Situation wäre mir das unangenehm gewesen. Da nicht. Was diese
+Bahn an Endorphinen freisetzt, hatte in den 106 Sekunden jemanden aus mir
+gemacht, der das gar nicht mehr zurückhalten wollte. Dafür fährt man das ganze
+Zeug.
+
+Passiert ist mir das seitdem genau einmal wieder, im Mai dieses Jahres bei der
+ersten Fahrt mit dem
+[Jurassic World VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)
+in Orlando. Zwei Bahnen in vielen Jahren. Eine davon steht in einem Polder in
+Flevoland.
+
 Bei den Golden Ticket Awards landete Untamed 2019 auf Platz fünf der besten
 Achterbahn-Neuheiten des Jahres, in den weltweiten Stahl-Rankings taucht sie
 seither stabil in den Top 50 auf (2024: Platz 42, 2025: Platz 48). Unter
@@ -248,11 +275,6 @@ vermuten lassen, und das liegt an einer Eigenschaft, die sich schlecht messen
 lässt: Sie ist nach sieben Jahren immer noch glatt.
 
 [Untamed](ref:walibi-holland/untamed?full)
-
-Noch ein praktischer Hinweis: Der Themenbereich **Wilderness**, in dem Untamed
-steht, ist absichtlich zugewachsen. Von außen siehst du fast nichts von der
-Bahn. Erstbesucher laufen deshalb beim ersten Rundgang an ihr vorbei, ohne sie
-zu bemerken. Sie liegt hinten links.
 
 ## YOY, Goliath und der Rest
 
@@ -274,9 +296,10 @@ dir.
 
 Das eigentlich Besondere ist die Verdopplung. Walibi hat nicht eine dieser
 Bahnen gebaut, sondern **zwei ineinander verschlungene**, und das gab es vorher
-nirgends auf der Welt. **YOY THRILL** (grün) ist 655 Meter lang, fährt 80 km/h,
-hat **sechs Überschläge** und zieht bis zu 4 g. **YOY CHILL** (blau) fährt
-dieselbe Höhe von 29 Metern, verzichtet aber komplett auf Überschläge. Beide
+nirgends auf der Welt. **[YOY THRILL](ref:walibi-holland/yoy-thrill)** (grün)
+ist 655 Meter lang, fährt 80 km/h, hat **sechs Überschläge** und zieht bis zu
+4 g. **[YOY CHILL](ref:walibi-holland/yoy-chill)** (blau) fährt dieselbe Höhe
+von 29 Metern, verzichtet aber komplett auf Überschläge. Beide
 starten am selben Lifthill und laufen die ganze Fahrt über nebeneinander,
 umeinander und aneinander vorbei. Eröffnet wurde am **5. April 2025**.
 
@@ -304,33 +327,84 @@ die Kante. Kurz, kompakt, überraschend heftig.
 
 ![Ein Wagen von Lost Gravity neben einem Frachtcontainer, im Vordergrund alte Bahnsignale | Die Zero Zone sammelt Dinge, die aus der Schwerkraft gefallen sind. | right](/media/walibi-holland/lost-gravity-4x3.jpg)
 
-Der Rest ist gemischt.
+Und dann gibt es die drei Alten, die in jedem Reisebericht als Beiwerk
+durchlaufen. Dabei sind sie diejenigen, die das Parkmotto am wörtlichsten
+nehmen.
 
-- **[Xpress: Platform 13](ref:walibi-holland/xpress-platform-13)** (Vekoma,
-  2000) ist ein LSM-Launch-Coaster mit Top Hat und Loop, 90 km/h, 996 Meter. Die
-  Warteschlange spielt einen verfallenen Bahnhof, an dem die Uhr auf 06:66
-  steht. Die Bahn ist besser als ihr Ruf, die Beschleunigung immer noch
-  ordentlich.
-- **[Condor](ref:walibi-holland/condor)** (Vekoma, 1994) hat historisch mehr
-  Gewicht, als ihre Schlange vermuten lässt: Sie eröffnete als **El Condor** und
-  war der **weltweit erste Suspended Looping Coaster**, jene Bauart, von der
-  Vekoma anschließend Dutzende in alle Welt verkaufte. Vom Prototyp-Modell
-  wurden nur zwei Stück gebaut, und dieses hier fährt nach über dreißig Jahren
-  immer noch. Zu spüren ist das Alter trotzdem. 31 Meter, 80 km/h, und die
-  Frage, ob du rechtzeitig die Ohren anlegst.
-- **[Speed of Sound](ref:walibi-holland/speed-of-sound)** ist ein
-  **Vekoma-Boomerang in einer Halle**. Erst rückwärts den Turm hinauf, dann
-  vorwärts durch Cobra Roll und Looping, dann alles rückwärts zurück: drei
-  Überschläge, die du sechsmal durchfährst, auf 285 Metern Strecke und 35,5
-  Metern Höhe. Eröffnet wurde sie 2000 als **La Via Volta**, 2007 stillgelegt
-  und 2011 unter neuem Namen und mit Musikthema wiederbelebt. Eine der wenigen
-  Attraktionen, in denen du bei Regen trocken bleibst.
+### Xpress: Platform 13, die Bahn, die du schon kennst
+
+Du wartest in einer stillgelegten U-Bahn-Station. Sie heißt **Glenbrook
+Station**, ist seit dem Umbau von 2013 komplett überdacht und so dunkel
+gehalten, dass Besucher die Warteschlange regelmäßig mit einem Walkthrough
+verwechseln. Auf der Anzeigetafel steht als nächste Abfahrt **06:66**. Der Zug,
+auf den du da wartest, kommt nicht.
+
+Was kommt, ist ein LSM-Launch: **0 auf 90 km/h in 2,8 Sekunden**, danach ein Sea
+Serpent und ein Korkenzieher, drei Überschläge, bis zu **5 g**, 1.040 Meter,
+nach 75 Sekunden ist alles vorbei.
+
+Der eigentliche Clou steht aber nirgends am Eingang. **Dieses Layout kennst du
+wahrscheinlich schon.** Vekoma hat dieselbe Streckenführung für Disney gebaut:
+Sie steckt nahezu baugleich im **Rock 'n' Roller Coaster Starring Aerosmith** in
+Orlando und in **Avengers Assemble: Flight Force** im Disneyland Paris. In
+Biddinghuizen fällt sie sogar etwas großzügiger aus, weil die Züge hier ohne die
+Bordlautsprecher-Technik leichter sind und entsprechend schneller aus dem Launch
+kommen. Dieselbe Bahn wie bei Disney, ohne Schlange, ohne Aufpreis.
+
+Eröffnet wurde sie im April 2000 als **Superman The Ride**, hieß ab 2005
+schlicht **Express** und trägt seit 2014 den Bahnhofsnamen.
+
+![Ein Bahnhofsschild in der Warteschlange: „Next Departure 06:66“, Platform 13 | Die Anzeigetafel in der Warteschlange. Auf diesen Zug wartest du vergeblich. | left](/media/walibi-holland/xpress-platform-13-4x3.jpg)
+
+### Condor, der Prototyp, der austeilt
+
+**[Condor](ref:walibi-holland/condor)** hat historisch mehr Gewicht, als ihre
+Schlange vermuten lässt. Sie eröffnete 1994 als **El Condor** und war der
+**weltweit erste Suspended Looping Coaster**, jene Bauart, von der Vekoma
+anschließend Dutzende in alle Welt verkaufte. Vom Prototyp-Modell wurden nur
+zwei Stück gebaut, und dieses hier fährt nach über dreißig Jahren immer noch.
+
+Es fährt sich auch wie 1994. Diese Bahn teilt **Ohrfeigen** aus, links, rechts,
+und dann noch mal links, weil dein Kopf zwischen den harten Schulterbügeln
+nichts hat, woran er sich festhalten könnte. 31 Meter, 80 km/h. Man fährt sie
+einmal, und dann weiß man, warum Vekoma zwanzig Jahre später den Ruf loswerden
+musste, den es sich mit genau dieser Bauart erarbeitet hat.
+### Speed of Sound, 5,2 g unter einem Hallendach
+
+**[Speed of Sound](ref:walibi-holland/speed-of-sound)** ist ein
+**Vekoma-Boomerang**, und der steht hier komplett in einer Halle. Erst wirst du
+rückwärts einen Turm hinaufgezogen, dann losgelassen: vorwärts durch Cobra Roll
+und Looping, den zweiten Turm hinauf, und dann dieselbe Strecke rückwärts wieder
+zurück. Der Park zählt deshalb **sechs Überschläge**, obwohl nur drei gebaut
+sind.
+
+Interessanter als ihr Baujahr ist aber eine andere Zahl: Sie zieht **5,2 g**.
+Zum Einordnen, beides Angaben des Parks: YOY THRILL kommt auf 4 g, Xpress auf 5.
+Die höchsten Kräfte im Park stehen also an einem Bauartklassiker von 2000, der
+35,5 Meter hoch und 285 Meter kurz ist. Dass dazu ein Bordsound läuft, macht es
+nicht sanfter.
+
+Eröffnet wurde sie im April 2000 als **La Via Volta**, 2007 stillgelegt und 2011
+unter neuem Namen und mit Musikthema zurückgeholt. Nebenbei ist sie eine der
+wenigen Attraktionen, in denen du bei Regen trocken bleibst.
+
+![Das Schild von Speed of Sound zwischen übergroßen Lautsprechern und einer Gitarre | Die Fassade verspricht ein Konzert. Drinnen wartet ein Boomerang von 2000. | right](/media/walibi-holland/speed-of-sound-4x3.jpg)
+
+### Der Rest
+
+- **[Eat my Dust](ref:walibi-holland/eat-my-dust)** von Zamperla und
+  **[Drako](ref:walibi-holland/drako)**, ein Tivoli-Coaster von Zierer, sind die
+  Bahnen neun und zehn. Beide sind für Kinder gebaut, und auf Drako mit seinen
+  sechs Metern Höhe und 32 km/h haben in Biddinghuizen schon ein paar Jahrgänge
+  ihre erste Achterbahn gefahren.
 - **[El Rio Grande](ref:walibi-holland/el-rio-grande)** und
   **[Crazy River](ref:walibi-holland/crazy-river)** sind die Wasserabteilung,
   **[Space Shot](ref:walibi-holland/space-shot)** und
   **[Skydiver](ref:walibi-holland/skydiver)** die Falltürme,
   **[Merlin's Magic Castle](ref:walibi-holland/merlins-magic-castle)** der
   einzige nennenswerte Dark Ride im Park.
+
+![Ein gelb-roter Buggy hängt an Ketten unter einem Kranträger | Eat my Dust in der Speed Zone. Der Themenbereich heißt „Off Road“ und meint das wörtlich. | right](/media/walibi-holland/eat-my-dust-4x3.jpg)
 
 Drei dieser Bahnen sind übrigens Premieren gewesen, und das fällt kaum jemandem
 auf. 1994 der erste SLC der Welt, 2019 die erste Hybrid-Achterbahn Europas, 2025
@@ -370,7 +444,7 @@ Für die Bahnen einzeln sieht es so aus:
 Die beste Bahn im Park steht in der unteren Hälfte dieser Tabelle. Länger
 angestanden wird für die Neuheit, für einen SLC von 1994 und für eine Mack-Bahn
 mit 680 Metern Länge. Das ist keine Kritik an YOY, eine Neuheit zieht immer.
-Aber es heißt eben: Wenn du morgens direkt nach hinten links läufst, hast du
+Aber es heißt eben: Wenn du morgens direkt ins Wilderness läufst, hast du
 Untamed drei Mal, bevor die YOY-Schlange ihre erste Runde durch hat.
 
 Interessanter wird es im Vergleich mit der Nachbarschaft. Gleiche Datenbasis,
@@ -409,12 +483,19 @@ dort auch keine Zahl. Die Richtung ist eindeutig, die Nachkommastelle nicht.
 
 Sechs Wochen im Jahr hört dieser Park auf, ein Freizeitpark zu sein.
 
-Die **Halloween Fright Nights** gibt es seit der Six-Flags-Zeit, **2025 lief die
-25. Ausgabe**. Am 31. Oktober feierte der Park das mit einem eigenen
+![Ein Phönix aus hunderten leuchtenden Kürbissen mit ausgebreiteten Flügeln, davor eine Person am Geländer | Der Kürbisphönix ist die größte Einzelfigur der Dekoration. Aufgebaut wird er jedes Jahr neu. | wide](/media/halloween-2026/cover.jpg)
+
+Die **Halloween Fright Nights** gibt es seit der Six-Flags-Zeit,
+**2025 lief die 25. Ausgabe**. Am 31. Oktober feierte der Park das mit einem eigenen
 Jubiläumsabend von 17 bis 23 Uhr, limitierter Ticketzahl, einer Show mit Eddie
 de Clown und einer Anstecknadel für jeden Gast. Angefangen hatte das Ganze um
 das Jahr 2000 herum mit einem einzigen Spukhaus voller animierter Puppen. Heute
 ist es das Event, an dem sich der gesamte europäische Grusel misst.
+
+Wie die Kampagne dazu aussieht, zeigt der Park selbst am besten. Das hier ist
+einer der Spots zum Jahresthema „Souls for Sale“:
+
+https://www.youtube.com/watch?v=5uXmHjiLbG4
 
 Wie sich das gegen Movie Park, Traumatica und Toverland schlägt, steht in
 unserem [Halloween-Guide](/blog/halloween-freizeitparks-2026). Woran
@@ -434,9 +515,11 @@ vierten liegen Welten:
    ausdrückliche Versprechen, dass dir hier etwas *passiert*. Kosten deutlich
    extra.
 
-![Ein Darsteller mit Schweißerhelm, blutiger Lederschürze und Gummihandschuhen steht vor einem Containertor | So sieht das Personal aus, das dich in einer Experience begrüßt. Aufgenommen in einem anderen Park, das Prinzip ist dasselbe. | left](/media/halloween-2026/beispiel-metzger.jpg)
+![Eine Darstellerin als zerbrochene Porzellanpuppe mit Bruchlinien im Gesicht, hinter ihr ein bunter Kinderbereich mit aufgehängten Teddys | Dieselbe Ecke des Parks, in der mittags Sechsjährige Kürbisse bemalen. | right](/media/halloween-2026/beispiel-porzellanpuppe.jpg)
 
 Stufe vier ist der Grund, warum über Walibi geredet wird.
+
+![Ein Darsteller mit Schweißerhelm, blutiger Lederschürze und Gummihandschuhen steht vor einem Containertor | Achte auf die Ohrmarken an der Schürze. Das ist die Sorte Detail, für die dieses Event bekannt ist. | left](/media/halloween-2026/beispiel-metzger.jpg)
 
 **Slaughterhouse** wirbt mit einer gefälschten Stellenanzeige und macht dich
 dann zum Rohmaterial: erst Begutachtung im Warteraum, dann festgeschnallt in
@@ -455,6 +538,8 @@ Kühlfach-Schublade.
 steigst. Danach geht es als angebliche Schädlingsbekämpfung in ein
 Kanalsystem, durch kniehohes Wasser, während Darsteller durch echte
 Wasserfälle auf dich zukommen. Orientierung: keine.
+
+![Ein alter, veralgter Wohnwagen zwischen Strohballen, davor ein Kugelgrill und umgekippte Holzkisten | Das Camp of Curiosities bei Tageslicht. Abends sitzt du hier drin und bekommst etwas zu trinken. | right](/media/halloween-2026/beispiel-wohnwagen.jpg)
 
 Dazu kommen zwei Formate, die nicht auf Schrecken zielen. **The Unhappy Hour**
 setzt dich zwischen verrostete Wohnwagen an einen Tisch, mit zwei Getränken,
@@ -485,6 +570,8 @@ Saison 2025, die die Größenordnung zuverlässig wiedergibt (Vorverkauf/Abendka
 Vier kostenlose Scare Zones liefen 2025 mit: Tangled Twigs, Pirates Cove,
 Ghostly Graveyard und Nightmares.
 
+![Ein beleuchtetes Torschild „Psycho Circus“ mit Clownsgesicht in der Mitte, darunter Besucher zwischen Imbissbuden | Auf der Tafel links steht „The freaks come out at night“. Ab hier ist Schluss mit Kürbisbemalen. | wide](/media/halloween-2026/beispiel-psycho-circus.jpg)
+
 Wer wirklich alles mitnehmen will, zahlt **mindestens 116,50 € pro Person**,
 und zwar zusätzlich zum Eintritt. Das ist die günstigste Kombination überhaupt,
 mit dem Before-Dark-Paket für die vier einfachen Häuser und allem im Vorverkauf.
@@ -500,6 +587,8 @@ Experience zu beschränken. Ein vernünftiger Plan.
 > Abend. Wenn dir Slaughterhouse oder The Clinic wichtig sind, sind sie an
 > starken Abenden weg, bevor du am Parkplatz stehst.
 
+![Ein Darsteller im Clownskostüm mit Fez und grün glitzerndem Bart sitzt am Rand einer Bühne, links eine blutverschmierte Zielscheibe | Pause zwischen zwei Shows. Fünf Stunden lang dieselbe Rolle, und die zweihundertste Gruppe soll denselben Schreck bekommen wie die erste. | left](/media/halloween-2026/beispiel-fez-clown.jpg)
+
 **Für 2026 ändert sich die wichtigste Regel.** Bisher liefen Spooky Days und
 Fright Nights am selben Tag, tagsüber Kürbis, abends Kettensäge. Ab dieser
 Saison **trennt der Park beide Events auf verschiedene Tage**. Die Begründung
@@ -509,9 +598,10 @@ mussten binnen Stunden von kindgerecht auf kompromisslos umschalten. Für die
 Fright-Nights-Besucher soll es stattdessen ein eigenes Nachmittagsprogramm
 geben, Details standen zu Redaktionsschluss noch aus.
 
-Als Termin für die Fright Nights 2026 kursiert der Zeitraum **10. Oktober bis
-1. November**, offiziell bestätigt ist der Kalender noch nicht. Vor dem Buchen
-also einmal auf die [Event-Seite](https://www.walibi.nl/halloween/en/halloween-fright-nights)
+Als Termin für die Fright Nights 2026 kursiert der Zeitraum
+**10. Oktober bis 1. November**, offiziell bestätigt ist der Kalender noch
+nicht. Vor dem Buchen also einmal auf die
+[Event-Seite](https://www.walibi.nl/halloween/en/halloween-fright-nights)
 schauen.
 
 [Walibi Holland](ref:walibi-holland?full)
@@ -634,13 +724,18 @@ Saisons:
 
 ## Der perfekte Tag, in fünf Sätzen
 
-Lauf bei Öffnung an allem vorbei nach hinten links zu **Untamed** und fahr sie
-zwei- oder dreimal am Stück, solange die Masse noch bei YOY steht. Danach quer
-rüber zu **Goliath**, die den Vormittag über auffällig leer bleibt, weil sie seit
-2002 dasteht und niemanden mehr aufregt. **YOY** nimmst du im letzten Drittel des
+Lauf bei Öffnung an allem vorbei ins Wilderness zu
+**[Untamed](ref:walibi-holland/untamed?bare)** und fahr sie zwei- oder dreimal
+am Stück, solange die Masse noch bei YOY steht. Danach quer rüber zu
+**[Goliath](ref:walibi-holland/goliath?bare)**, die den Vormittag über auffällig
+leer bleibt, weil sie seit 2002 dasteht und niemanden mehr aufregt.
+**[YOY](ref:walibi-holland/yoy-thrill?bare)** nimmst du im letzten Drittel des
 Tages, wenn sich die Neuheiten-Schlange abgebaut hat, und fahr beide Strecken,
-sonst hast du die Hälfte des Konzepts verpasst. Die Wasserbahnen passen in die
-Mittagshitze, **Speed of Sound** in den einzigen Regenschauer. Und die letzte
+sonst hast du die Hälfte des Konzepts verpasst.
+**[El Rio Grande](ref:walibi-holland/el-rio-grande?bare)** und
+**[Crazy River](ref:walibi-holland/crazy-river?bare)** passen in die
+Mittagshitze, **[Speed of Sound](ref:walibi-holland/speed-of-sound?bare)** in
+den einzigen Regenschauer. Und die letzte
 Stunde gehört wieder Untamed: Die Bahn läuft abends spürbar schneller als
 morgens, und im Gegenlicht siehst du auf dem Lifthill, wie flach dieses Land
 wirklich ist.
@@ -786,7 +881,7 @@ vor allem ihre eigene Vergangenheit, und im Winter fällt das ganze Konzept in
 sich zusammen, wie der April 2026 gezeigt hat. Eine Kulisse, vor der man
 stehenbleibt und die Kamera rausholt, wirst du hier lange suchen.
 
-Dafür steht hinten links im Wilderness eine Achterbahn, die nach dem First Drop
+Dafür steht im Wilderness eine Achterbahn, die nach dem First Drop
 zweimal hintereinander kopfüber geht und danach neunzig Sekunden lang nicht mehr
 aufhört. Zwei Häuser weiter jagen sich zwei Züge auf zwei Einzelschienen. Und im
 Oktober bezahlen Menschen freiwillig zwanzig Euro extra dafür, in eine Wathose
@@ -806,7 +901,10 @@ denkst an gar nichts mehr.
 ### Quellen & Weiterlesen
 
 - Untamed (Daten, Umbau von Robin Hood, Rekordelement, Rankings): [Untamed (Walibi Holland) auf Wikipedia](<https://en.wikipedia.org/wiki/Untamed_(Walibi_Holland)>) · [Untamed (offiziell)](https://www.walibi.nl/en/park/attractions/untamed) · [Untamed bei Rocky Mountain Construction](https://rockymtnconstruction.com/roller-coaster/untamed/)
-- YOY (RMC Raptor, Duell-Anlage, Investition, Eröffnung 5. April 2025): [YOY auf Coasterpedia](https://coasterpedia.net/wiki/YOY) · [„Double the joy on YOY at Walibi Holland“ (Theme Parks EU)](https://www.themeparks-eu.com/reviews/double-the-joy-on-yoy-at-walibi-holland) · [YOY (offiziell)](https://www.walibi.nl/nl/park/attracties/yoy/yoy-ara)
+- YOY (RMC Raptor, Duell-Anlage, Investition, Eröffnung 5. April 2025, 4 g): [YOY auf Coasterpedia](https://coasterpedia.net/wiki/YOY) · [„Double the joy on YOY at Walibi Holland“ (Theme Parks EU)](https://www.themeparks-eu.com/reviews/double-the-joy-on-yoy-at-walibi-holland) · [YOY (offiziell)](https://www.walibi.nl/nl/park/attracties/yoy/yoy-ara)
+- Xpress: Platform 13 (Layout nahezu baugleich mit Disneys Rock 'n' Roller Coaster und Avengers Assemble: Flight Force, Launch in 2,8 s, 5 g, Glenbrook Station, Namensgeschichte Superman The Ride → Express → Xpress): [Xpress: Platform 13 auf Wikipedia](https://en.wikipedia.org/wiki/Xpress:_Platform_13) · [Xpress: Platform 13 (offiziell)](https://www.walibi.nl/en/park/attractions/xpress-platform-13) · [Xpress: Platform 13 auf Coasterpedia](https://coasterpedia.net/wiki/Xpress:_Platform_13)
+- Condor als weltweit erster Vekoma-SLC (Prototyp, nur zwei gebaut): [Suspended Looping Coaster auf Wikipedia](https://en.wikipedia.org/wiki/Suspended_Looping_Coaster) · [Condor auf Coasterpedia](<https://coasterpedia.net/wiki/Condor_(Walibi_Holland)>)
+- Speed of Sound (Boomerang, 5,2 g, sechs Überschläge, eröffnet 2000 als La Via Volta): [Speed of Sound (offiziell)](https://www.walibi.nl/en/park/attractions/speed-sound) · [Speed of Sound auf Wikipedia](<https://en.wikipedia.org/wiki/Speed_of_Sound_(roller_coaster)>)
 - Parkgeschichte, Namenswechsel, Themenbereiche, Fläche: [Walibi Holland auf nl.wikipedia](https://nl.wikipedia.org/wiki/Walibi_Holland) · [Walibi Holland auf en.wikipedia](https://en.wikipedia.org/wiki/Walibi_Holland) · [Geschichte des Parks (Walibi24)](https://walibi24.nl/geschiedenis/)
 - Flevohof (Eröffnung 1971 durch Prinzessin Beatrix, 150 Hektar, Pleite): [Flevohof auf nl.wikipedia](https://nl.wikipedia.org/wiki/Flevohof) · [1971–1991: De Flevohof (Walibi24)](https://walibi24.nl/geschiedenis/flevohof/)
 - Polder (Oostelijk Flevoland trocken am 29. Juni 1957, Biddinghuizen 1963, −3 m NAP): [Oostelijk Flevoland auf nl.wikipedia](https://nl.wikipedia.org/wiki/Oostelijk_Flevoland) · [Biddinghuizen auf en.wikipedia](https://en.wikipedia.org/wiki/Biddinghuizen)
