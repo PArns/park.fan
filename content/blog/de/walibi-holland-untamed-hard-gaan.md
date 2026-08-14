@@ -213,6 +213,8 @@ die sich in Formen biegen lässt, die mit Holz unmöglich wären. Am **1. Juli
 
 ```
 
+![Der rostige Schriftzug „Untamed“ vor der Holzkonstruktion der Bahn | Der Rost am Schild ist gewollt. Das Holz dahinter ist echt und stand hier schon, als die Bahn noch Robin Hood hieß. | left](/media/walibi-holland/untamed-4x3.jpg)
+
 Die Daten: **36,5 Meter hoch**, First Drop **35,4 Meter**, **92 km/h**,
 **1.085 Meter** lang, **fünf Überschläge**, laut Hersteller **14
 Airtime-Momente**, Fahrzeit 1:46 Minuten, Kapazität 900 Personen pro Stunde,
@@ -364,6 +366,8 @@ Schlange vermuten lässt. Sie eröffnete 1994 als **El Condor** und war der
 anschließend Dutzende in alle Welt verkaufte. Vom Prototyp-Modell wurden nur
 zwei Stück gebaut, und dieses hier fährt nach über dreißig Jahren immer noch.
 
+![Eine orange Vogelskulptur auf einem Sockel, dahinter die Strecke von Condor | Der Namensgeber steht am Eingang. Dahinter die Strecke, deren Bauart Vekoma ab hier in alle Welt verkauft hat. | wide](/media/walibi-holland/condor.jpg)
+
 Es fährt sich auch wie 1994. Diese Bahn teilt **Ohrfeigen** aus, links, rechts,
 und dann noch mal links, weil dein Kopf zwischen den harten Schulterbügeln
 nichts hat, woran er sich festhalten könnte. 31 Meter, 80 km/h. Man fährt sie
@@ -405,6 +409,8 @@ wenigen Attraktionen, in denen du bei Regen trocken bleibst.
   einzige nennenswerte Dark Ride im Park.
 
 ![Ein gelb-roter Buggy hängt an Ketten unter einem Kranträger | Eat my Dust in der Speed Zone. Der Themenbereich heißt „Off Road“ und meint das wörtlich. | right](/media/walibi-holland/eat-my-dust-4x3.jpg)
+
+![Boote in der Wasserrinne von Crazy River, dahinter ein Holzgebäude | Crazy River ist die Wildwasserbahn der Zero Zone. Wie immer bei der Bauart gilt: vorne sitzt man nasser. | left](/media/walibi-holland/crazy-river-4x3.jpg)
 
 Drei dieser Bahnen sind übrigens Premieren gewesen, und das fällt kaum jemandem
 auf. 1994 der erste SLC der Welt, 2019 die erste Hybrid-Achterbahn Europas, 2025
@@ -496,6 +502,8 @@ Wie die Kampagne dazu aussieht, zeigt der Park selbst am besten. Das hier ist
 einer der Spots zum Jahresthema „Souls for Sale“:
 
 https://www.youtube.com/watch?v=5uXmHjiLbG4
+
+![Ein verrosteter alter Lastwagen mit Moos auf dem Blech steht auf dem Weg, dahinter ein Bühnengerüst | Ein echter Austin, kein Kulissenbau. Das Moos hat der Park nicht angeklebt. | left](/media/halloween-2026/beispiel-endzeit-truck.jpg)
 
 Wie sich das gegen Movie Park, Traumatica und Toverland schlägt, steht in
 unserem [Halloween-Guide](/blog/halloween-freizeitparks-2026). Woran
