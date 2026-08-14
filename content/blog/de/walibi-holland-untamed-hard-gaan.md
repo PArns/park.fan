@@ -65,8 +65,8 @@ Danach kippt der Zug über eine Kante, die steiler ist als senkrecht.
 
 Ich fahre gerne weit für Achterbahnen, aber Walibi Holland ist selbst für meine
 Verhältnisse eine Ansage: gut zweieinhalb Stunden ab Köln, und in der zweiten
-Hälfte fährst du an nichts mehr vorbei außer Windrädern und Rapsfeldern. Genau
-deshalb übersehen ihn so viele. Das [Efteling](ref:efteling) und das
+Hälfte fährst du an nichts mehr vorbei außer Windrädern und Rapsfeldern. Der
+Park wird deshalb übersehen. Das [Efteling](ref:efteling) und das
 [Toverland](ref:attractiepark-toverland) liegen näher, das
 [Phantasialand](ref:phantasialand) liegt vor der Haustür, und wer aus NRW einen
 Tag in den Niederlanden plant, fährt selten die zusätzliche Stunde nach
@@ -127,10 +127,10 @@ Fünffache.
 ## „Hard gaan“: das Konzept
 
 **2014** fing Walibi Holland an, mit einem einzigen Wort zu werben:
-`#Hardgaan`. Wörtlich „hart gehen“, sinngemäß Vollgas, alles raus, keine
-Zurückhaltung. Es ist Jugendsprache, es ist Festivalsprache, und es hat im
-Niederländischen einen Beiklang, der sich nicht wegdiskutieren lässt: Wer
-„hard gaat“, der feiert nicht nur laut.
+`#Hardgaan`. Wörtlich heißt das „hart gehen“, gemeint ist Vollgas ohne
+Zurückhaltung. Jugendsprache, Festivalsprache, und im Niederländischen hat sie
+einen Beiklang, der sich nicht wegdiskutieren lässt. Wer „hard gaat“, der feiert
+nicht nur laut.
 
 Der Park hat diesen Beiklang nie besonders vorsichtig behandelt. Ab **2015**
 lagen im Souvenirshop `#Hardgaan`-Kondome, dazu T-Shirts mit dem Aufdruck
@@ -146,7 +146,7 @@ zurückgeblieben“, die Botschaft „zu kompliziert und zu tiefsinnig“, und m
 „vermutlich eine zu kleine Zielgruppe angesprochen“. **2018** war `#Hardgaan`
 zurück, und es ist bis heute die Tonlage des Hauses.
 
-Und jetzt kommt der Teil, der aus einem Marketingspruch ein Konzept macht.
+Aus einem Werbespruch wird das alles aber erst durch die Nachbarschaft.
 
 Auf dem Veranstaltungsgelände nebenan, dem Gelände, das Walibi gehört, findet
 seit **2011** jedes Jahr **Defqon.1** statt: das größte Hardstyle-Festival der
@@ -193,18 +193,17 @@ Reclame Code Commissie urteilte, eine Frau dürfe auch im Rahmen einer
 Horror-Geschichte nicht als Ware gezeigt werden, die Gewalt erfährt. Der Park
 nahm den Clip am 21. August offline.
 
-Man kann das für Zensur halten oder für eine überfällige Grenze. Interessant ist
-es aus einem anderen Grund: Ein Park, dessen gesamtes Versprechen „wir gehen
-weiter als die anderen“ lautet, hat kein eingebautes Bremspedal. Das ist der
-Preis des Konzepts, und Walibi zahlt ihn ungefähr alle paar Jahre einmal.
+Die Kommission hat da meiner Meinung nach richtig entschieden. Über den Park
+sagt der Vorfall trotzdem etwas, das über eine misslungene Kampagne hinausgeht.
+Wer sein ganzes Versprechen darauf baut, weiter zu gehen als alle anderen, hat
+kein eingebautes Bremspedal. Diesen Preis zahlt Walibi etwa alle paar Jahre
+einmal.
 
 ## Untamed
 
-Genug Theorie. Reden wir über die Bahn, wegen der ich hinfahre.
-
-An derselben Stelle stand von 2000 bis 2018 **Robin Hood**, eine Holzachterbahn
-von Vekoma, die einen zweifelhaften Ruf hatte: laut, hart, mit den Jahren
-zunehmend unangenehm. Am **28. Oktober 2018** fuhr sie zum letzten Mal. Danach
+An der Stelle, an der Untamed heute steht, stand von 2000 bis 2018 **Robin
+Hood**, eine Holzachterbahn von Vekoma mit zweifelhaftem Ruf: laut und mit den
+Jahren zunehmend unangenehm. Am **28. Oktober 2018** fuhr sie zum letzten Mal. Danach
 kam **Rocky Mountain Construction** aus Idaho, riss die Holzschienen herunter,
 ließ einen Großteil des Holzgerüsts stehen und legte darauf eine Stahlschiene,
 die sich in Formen biegen lässt, die mit Holz unmöglich wären. Am **1. Juli
@@ -250,10 +249,10 @@ lässt: Sie ist nach sieben Jahren immer noch glatt.
 
 [Untamed](ref:walibi-holland/untamed?full)
 
-Ein praktischer Hinweis zum Schluss: Der Themenbereich **Wilderness**, in dem
-Untamed steht, ist absichtlich zugewachsen. Von außen siehst du fast nichts von
-der Bahn, und das ist der Grund, warum viele Erstbesucher sie beim ersten
-Rundgang schlicht übersehen. Sie liegt hinten links.
+Noch ein praktischer Hinweis: Der Themenbereich **Wilderness**, in dem Untamed
+steht, ist absichtlich zugewachsen. Von außen siehst du fast nichts von der
+Bahn. Erstbesucher laufen deshalb beim ersten Rundgang an ihr vorbei, ohne sie
+zu bemerken. Sie liegt hinten links.
 
 ## YOY, Goliath und der Rest
 
@@ -341,15 +340,15 @@ vorher nirgends gab. Das ist ungefähr das Gegenteil des Rufs, den er hat.
 
 Und dann gibt es noch das **Walibi Play Land** mit dem Känguru-Maskottchen, das
 der Park irgendwann Anfang der Zwanziger bewusst kindgerecht neu zeichnen ließ.
-Zwei Zielgruppen, ein Gelände. Merk dir das, es kommt gleich noch zweimal vor.
+Auf demselben Gelände, an denselben Tagen, für ein Publikum, das mit `#Hardgaan`
+nichts anfangen kann. Diese Spannung zieht sich durch alles, was der Park in den
+letzten zwei Jahren entschieden hat.
 
 ```map-widget slug=walibi-holland
 
 ```
 
 ## Zwanzig Minuten für die beste Bahn im Park
-
-Jetzt der Teil, für den es diese Seite gibt.
 
 Über die letzten beiden Saisons, gerechnet aus **125 Öffnungstagen mit
 auswertbaren Wartezeitdaten**, liegt die **typische Wartezeit im Parkschnitt bei
@@ -417,9 +416,9 @@ de Clown und einer Anstecknadel für jeden Gast. Angefangen hatte das Ganze um
 das Jahr 2000 herum mit einem einzigen Spukhaus voller animierter Puppen. Heute
 ist es das Event, an dem sich der gesamte europäische Grusel misst.
 
-Die europäische Einordnung samt Movie Park, Traumatica und Toverland steht in
-unserem [Halloween-Guide](/blog/halloween-freizeitparks-2026). Hier geht es um
-die Struktur, denn genau daran scheitern Erstbesucher zuverlässig.
+Wie sich das gegen Movie Park, Traumatica und Toverland schlägt, steht in
+unserem [Halloween-Guide](/blog/halloween-freizeitparks-2026). Woran
+Erstbesucher dagegen zuverlässig scheitern, ist der Aufbau.
 
 Walibi sortiert Halloween in **vier Stufen**, und zwischen der ersten und der
 vierten liegen Welten:
@@ -491,7 +490,7 @@ und zwar zusätzlich zum Eintritt. Das ist die günstigste Kombination überhaup
 mit dem Before-Dark-Paket für die vier einfachen Häuser und allem im Vorverkauf.
 Mit dem R.I.P. Pass statt Einzeltickets sind es rund 149 €, wer erst abends an
 der Kasse bucht, landet bei über 156 €. Der Eintritt kommt jeweils obendrauf.
-Genau an dieser Stelle beschließen die meisten, sich auf zwei Häuser und eine
+An dieser Stelle beschließen die meisten, sich auf zwei Häuser und eine
 Experience zu beschränken. Ein vernünftiger Plan.
 
 > [!TIP]
@@ -536,15 +535,15 @@ liefern. Geschäftsführerin **Mascha Taminiau** formulierte es so: Walibi sei i
 Kern ein Saisonbetrieb, in den Sommermonaten könne man die vollständigste
 Erfahrung bieten.
 
-Übersetzt: Es hat sich nicht gerechnet, und der Grund steht weiter oben in
-diesem Artikel.
+Gerechnet hat es sich nicht, und der Grund ist derselbe, der den Park im Sommer
+stark macht.
 
-Ein Park, der ganz auf Achterbahnen setzt, hat im Winter ein physikalisches
-Problem. Achterbahnen fahren bei Frost, Sturm und Eisregen nicht, und
-**Walibi Holland hat fast keine überdachten Attraktionen**. Fällt die Technik
-aus, bleibt den Gästen die Lichtshow, und eine Lichtshow trägt kein Ticket.
-Genau das, was den Park im Sommer stark macht, seine Konzentration auf große
-Bahnen unter freiem Himmel, macht ihn im Dezember wehrlos. Das Efteling füllt
+Wer ganz auf Achterbahnen setzt, hat im Winter ein physikalisches Problem.
+Achterbahnen fahren bei Frost, Sturm und Eisregen nicht, und **Walibi Holland
+hat fast keine überdachten Attraktionen**. Fällt die Technik aus, bleibt den
+Gästen die Lichtshow, und eine Lichtshow trägt kein Ticket. Die Konzentration
+auf große Bahnen unter freiem Himmel macht den Park im Juli unschlagbar und im
+Dezember wehrlos. Das Efteling füllt
 denselben Zeitraum mit Dark Rides und einem Park, der bei Regen sogar besser
 aussieht. Walibi kann das nicht, und offenbar hat es vier Jahre gedauert, das
 auszusprechen.
@@ -583,12 +582,10 @@ Familienshow Walibi & Friends, abends die Show **Summer Beats** mit Feuerwerk
 über der Main Stage. Es gibt an diesen Tagen ein **Half Day Half Price**-Ticket,
 mit dem du ab 16 Uhr rein kannst.
 
-Zwei Abendevents, zwei Zielgruppen, verschiedene Wochentage. Dieselbe Logik wie
-bei der Halloween-Trennung, dieselbe Logik wie beim Ende von Bright Nights: Der
+Mittwochs die Bässe, samstags das Feuerwerk. Dahinter steckt dieselbe
+Entscheidung wie bei der Halloween-Trennung und beim Ende von Bright Nights: Der
 Park hört auf, an einem Tag zwei Dinge gleichzeitig sein zu wollen. Nach zwölf
-Jahren `#Hardgaan` und einem Maskottchen für Sechsjährige auf demselben Gelände
-ist das vermutlich die vernünftigste Entscheidung, die hier seit Langem
-getroffen wurde.
+Jahren `#Hardgaan` neben einem Maskottchen für Sechsjährige war das überfällig.
 
 ## Wann du hinfahren solltest
 
@@ -786,14 +783,14 @@ meisten seiner Besucher.
 
 Dieser Park macht nicht alles gut. Das Essen ist Mittelmaß, ein paar Bahnen sind
 vor allem ihre eigene Vergangenheit, und im Winter fällt das ganze Konzept in
-sich zusammen, wie der April 2026 gezeigt hat. Es gibt hier keine Szene, vor der
-man stehenbleibt und die Kamera rausholt.
+sich zusammen, wie der April 2026 gezeigt hat. Eine Kulisse, vor der man
+stehenbleibt und die Kamera rausholt, wirst du hier lange suchen.
 
-Dafür gibt es hinten links im Wilderness eine Achterbahn, die nach dem First
-Drop zweimal hintereinander kopfüber geht und danach neunzig Sekunden lang nicht
-mehr aufhört. Es gibt zwei Züge auf zwei Einzelschienen, die sich die ganze
-Fahrt über jagen. Und es gibt im Oktober ein Programm, für das Menschen
-freiwillig zwanzig Euro extra bezahlen, um in eine Wathose zu steigen.
+Dafür steht hinten links im Wilderness eine Achterbahn, die nach dem First Drop
+zweimal hintereinander kopfüber geht und danach neunzig Sekunden lang nicht mehr
+aufhört. Zwei Häuser weiter jagen sich zwei Züge auf zwei Einzelschienen. Und im
+Oktober bezahlen Menschen freiwillig zwanzig Euro extra dafür, in eine Wathose
+steigen zu dürfen.
 
 Zwanzig Minuten. Das ist der Preis für Untamed an einem normalen Tag.
 
