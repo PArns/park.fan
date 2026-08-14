@@ -481,11 +481,11 @@
     "noLiveWaitTimes": {
       "title": "Nessun tempo di attesa disponibile",
       "reason": {
-        "in_park_app_only": "Questo parco mostra i tempi di attesa solo nella propria app, e solo sul wifi all'interno del parco. Dall'esterno non è possibile leggerli.",
-        "not_published": "Questo parco non pubblica i tempi di attesa da nessuna parte."
+        "in_park_app_only": "Il parco pubblica i tempi di attesa solo nella propria app, sul wifi all'interno del parco.",
+        "not_published": "Il parco non pubblica i tempi di attesa da nessuna parte."
       },
-      "park": "Per questo nessuna attrazione mostra un tempo o un livello di affluenza. Orari, attrazioni, meteo e calendario restano affidabili.",
-      "ride": "Per questo l'attrazione non ha né tempo di attesa né previsione. Orari e meteo restano affidabili."
+      "park": "Orari, meteo e calendario restano disponibili qui.",
+      "ride": "Per questa attrazione manca quindi anche la previsione. Orari e meteo non sono interessati."
     },
     "weather": {
       "clear": "Cielo sereno",

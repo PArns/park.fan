@@ -481,11 +481,11 @@
     "noLiveWaitTimes": {
       "title": "Geen wachttijden beschikbaar",
       "reason": {
-        "in_park_app_only": "Dit park laat zijn wachttijden alleen zien in zijn eigen app, en alleen op de wifi in het park zelf. Van buitenaf zijn ze niet op te halen.",
-        "not_published": "Dit park publiceert zijn wachttijden nergens."
+        "in_park_app_only": "Het park laat zijn wachttijden alleen zien in zijn eigen app, op de wifi in het park.",
+        "not_published": "Het park publiceert zijn wachttijden nergens."
       },
-      "park": "Daarom staat er bij geen enkele attractie een wachttijd of drukte. Openingstijden, attracties, weer en kalender kloppen gewoon.",
-      "ride": "Daarom is er voor deze attractie geen wachttijd en geen voorspelling. Openingstijden en weer kloppen gewoon."
+      "park": "Openingstijden, weer en de kalender vind je hier gewoon.",
+      "ride": "Daarmee ontbreekt ook de voorspelling voor deze attractie. Openingstijden en weer vind je gewoon."
     },
     "weather": {
       "clear": "Helder",

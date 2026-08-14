@@ -314,11 +314,11 @@
     "noLiveWaitTimes": {
       "title": "Keine Wartezeiten verfügbar",
       "reason": {
-        "in_park_app_only": "Dieser Park zeigt seine Wartezeiten nur in seiner eigenen App und nur im WLAN vor Ort. Von außen kommt man nicht daran.",
-        "not_published": "Dieser Park veröffentlicht seine Wartezeiten nirgendwo."
+        "in_park_app_only": "Der Park gibt seine Wartezeiten nur über seine eigene App im Park-WLAN aus.",
+        "not_published": "Der Park veröffentlicht seine Wartezeiten nirgendwo."
       },
-      "park": "Bei den Fahrgeschäften steht deshalb weder eine Zeit noch ein Andrang. Öffnungszeiten, Fahrgeschäfte, Wetter und Kalender stimmen weiterhin.",
-      "ride": "Für dieses Fahrgeschäft gibt es deshalb weder eine Wartezeit noch eine Prognose. Öffnungszeiten und Wetter stimmen weiterhin."
+      "park": "Öffnungszeiten, Wetter und Kalender findest du hier wie gewohnt.",
+      "ride": "Damit fehlt auch die Prognose für dieses Fahrgeschäft. Öffnungszeiten und Wetter findest du wie gewohnt."
     },
     "weather": {
       "clear": "Klarer Himmel",
