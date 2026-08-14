@@ -199,6 +199,16 @@ Wer sein ganzes Versprechen darauf baut, weiter zu gehen als alle anderen, hat
 kein eingebautes Bremspedal. Diesen Preis zahlt Walibi etwa alle paar Jahre
 einmal.
 
+Ansehen kann man sich den Auktionsspot heute nur noch über Umwege. Auf dem
+Kanal des Parks steht weiterhin ein zweiter Clip derselben Kampagne, und der
+zeigt gut, wie das Ganze ohne den Teil aussieht, der die Beschwerden ausgelöst
+hat:
+
+https://www.youtube.com/watch?v=5uXmHjiLbG4
+
+Das ist die entschärfte Version. Dieselbe Tonlage, dieselbe Ästhetik, nur ohne
+die Auktion.
+
 ## Untamed
 
 An der Stelle, an der Untamed heute steht, stand von 2000 bis 2018 **Robin
@@ -496,11 +506,6 @@ de Clown und einer Anstecknadel für jeden Gast. Angefangen hatte das Ganze um
 das Jahr 2000 herum mit einem einzigen Spukhaus voller animierter Puppen. Heute
 ist es das Event, an dem sich der gesamte europäische Grusel misst.
 
-Wie die Kampagne dazu aussieht, zeigt der Park selbst am besten. Das hier ist
-einer der Spots zum Jahresthema „Souls for Sale“:
-
-https://www.youtube.com/watch?v=5uXmHjiLbG4
-
 ![Eine Darstellerin als zerbrochene Porzellanpuppe mit Bruchlinien im Gesicht, hinter ihr ein bunter Kinderbereich mit aufgehängten Teddys | Der Kinderbereich, in dem mittags Sechsjährige Kürbisse bemalen. Ab 2026 passiert beides nicht mehr am selben Tag. | right](/media/halloween-2026/beispiel-porzellanpuppe.jpg)
 
 Wie sich das gegen Movie Park, Traumatica und Toverland schlägt, steht in
@@ -532,6 +537,10 @@ Ende bekommst du deinen Stempel, „Qualitätskontrolle bestanden“. Deshalb si
 du an guten Abenden Leute mit einem Stempel auf der Stirn aus dem Ausgang
 taumeln, halb fertig, halb seltsam stolz.
 
+Beworben wird das vom Park selbst, mit wenig Zurückhaltung:
+
+https://www.youtube.com/watch?v=A5AZcy7PIkc
+
 **The Clinic** empfängt dich wie eine normale Praxis und schnallt dich dann auf
 eine Trage. Den Rest erlebst du liegend, Blickrichtung Decke: Leuchtstoffröhren,
 OP-Licht, eine Spritze, eine Knochensäge, ein Herzmonitor, der aus dem Ruder
@@ -543,6 +552,11 @@ steigst. Danach geht es als angebliche Schädlingsbekämpfung in ein
 Kanalsystem, durch kniehohes Wasser, während Darsteller durch echte
 Wasserfälle auf dich zukommen. Orientierung: keine.
 
+Der Park hat Below 2017 mit einem eigenen Clip eingeführt, und der läuft bis
+heute auf seinem Kanal:
+
+https://www.youtube.com/watch?v=YHXW1odvwvE
+
 Dazu kommen zwei Formate, die nicht auf Schrecken zielen. **The Unhappy Hour**
 setzt dich zwischen verrostete Wohnwagen an einen Tisch, mit zwei Getränken,
 einem Shot und einer Platte, während die Figuren des Camp of Curiosities dich in
@@ -550,6 +564,14 @@ Gespräche verwickeln, die du nicht führen wolltest. Und die **Backstage Tour**
 zeigt dir die Technik hinter den Spukhäusern, die Geschichte des Events und die
 Kostümbereiche. Sie läuft ausschließlich auf Niederländisch und ist regelmäßig
 als Erstes ausverkauft.
+
+Und weil die Frage an dieser Stelle immer kommt: Das „größte Halloween-Event
+Europas“ steht laut eigener Aussage im [Movie Park](ref:movie-park-germany) in
+Bottrop, mit neun Mazes und über 280 Monstern. Groß und hart sind allerdings
+zwei verschiedene Disziplinen. Der wirklich kranke Scheiß geht zwei Autostunden
+weiter nördlich ab, in einem Polder, in dem sie dich an eine Deckenschiene
+hängen und abstempeln. Bottrop hat die größere Zahl. Biddinghuizen hat die
+Geschichten, die man am Abendbrottisch besser für sich behält.
 
 Die Preise für 2026 stehen noch nicht fest, der Park verkauft die Häuser
 erfahrungsgemäß erst im Spätsommer. Als Orientierung deshalb die Tabelle der
@@ -912,6 +934,7 @@ denkst an gar nichts mehr.
 - Defqon.1 und Lowlands auf dem Veranstaltungsgelände: [Event Site Walibi Holland (offiziell)](https://www.walibi.nl/en/business/possibilities/locations/evenemententerrein-walibi-holland)
 - Halloween Fright Nights (Struktur, Experiences, 25. Ausgabe 2025): [Halloween Fright Nights (offiziell)](https://www.walibi.nl/halloween/en/halloween-fright-nights) · [Experiences (offiziell)](https://www.walibi.nl/halloween/en/halloween-fright-nights/experiences) · [„Walibi viert 25 jaar Halloween Fright Nights“ (Pressemitteilung)](https://pers.walibi.nl/walibi-viert-25-jaar-halloween-fright-nights-met-exclusieve-jubileumavond) · [Geschichte der Fright Nights (ScareZone)](https://scarezone.nl/2021/02/11/de-halloween-fright-nights-van-six-flags-holland-naar-walibi-holland/)
 - Halloween-Preise 2025 und Line-up: [„Halloween Fright Nights 2025: een overzicht van alle spookhuizen en prijzen“ (Backseaters)](https://backseaters.nl/halloween-fright-nights-2025-een-overzicht-van-alle-spookhuizen-en-prijzen/) · [unser Halloween-Guide](/blog/halloween-freizeitparks-2026)
+- Die eingebetteten Clips stammen alle vom offiziellen Kanal des Parks: [„Souls for Sale: De geest“](https://www.youtube.com/watch?v=5uXmHjiLbG4) · [„Slaughterhouse, Halloween Fright Nights 2024“](https://www.youtube.com/watch?v=A5AZcy7PIkc) · [„Below (NIEUW)“, 2017](https://www.youtube.com/watch?v=YHXW1odvwvE)
 - Trennung von Spooky Days und Fright Nights ab 2026: [„Nieuw concept voor Halloween in Walibi“ (Looopings)](https://www.looopings.nl/weblog/32505/Nieuw-concept-voor-Halloween-in-Walibi-Fright-Nights-en-Spooky-Days-worden-van-elkaar-gescheiden.html)
 - Ende von Bright Nights und Fokus auf den Sommer: [„Walibi Holland concentreert zich volledig op zomerseizoen“ (Pressemitteilung)](https://pers.walibi.nl/walibi-holland-concentreert-zich-volledig-op-zomerseizoen-en-introduceert-zomerse-zaterdagen) · [„Walibi Holland stopt na vier jaar met Bright Nights“ (Looopings)](https://www.looopings.nl/weblog/32503/Walibi-Holland-stopt-na-vier-jaar-met-Bright-Nights-pretpark-blijft-voortaan-weer-dicht-in-de-winter.html) · [„Waarom stopt Walibi plots met Bright Nights?“ (Looopings)](https://www.looopings.nl/weblog/32516/Donderslag-bij-heldere-hemel-waarom-stopt-Walibi-plots-met-Bright-Nights.html)
 - #Lekkergaan und Zomerse Zaterdagen 2026: [„Walibi Holland viert de zomer met langere openingstijden en twee zomerevents“ (Pressemitteilung)](https://pers.walibi.nl/walibi-holland-viert-de-zomer-met-langere-openingstijden-en-twee-zomerevents) · [„Nieuw zomerfestival in Walibi Holland heet #Lekkergaan“ (Looopings)](https://www.looopings.nl/weblog/7755/Nieuw-zomerfestival-in-Walibi-Holland-heet-Lekkergaan.html)
