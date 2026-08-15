@@ -176,6 +176,26 @@ The question is not "is this field useful" but "which of these is it":
 Run `node scripts/measure-api-calls.mjs` before and after. A new request on the park page needs a
 reason that is not "it was easier".
 
+### Reading live data without adding a request
+
+A section that wants the current wait times does not need a fetch of its own. `useLiveParkData`
+keyed on `['park-live', <geo>, <park>]` is already polling for the whole page, so a second observer
+on that key with **`enabled: false`** reads the cache and re-renders on every poll without ever
+issuing a request — React Query only disables the fetch, not the subscription. This is how the
+"now" column in the historical top-ten table (`ParkStatsSection`) gets its numbers.
+
+Two consequences worth knowing before reaching for it:
+
+- **No seed, no static fields.** The observer passes no `initialData`, so `mergeLiveParkSnapshot`
+  hands it the projection as-is: identity, `queues`, `statistics`, `bestVisitTimes` — and nothing
+  the server render carried. Park-level flags like `liveWaitTimes` are **not** in the snapshot, so
+  `hasReadableWaitTimes()` would read an absent flag as "available": anything that depends on one
+  takes it as a prop from the server render instead (`ParkStatsSection`'s `hasLiveWaitTimes`).
+- **It is opportunistic.** Where nothing else on the page subscribes to that key the cache stays
+  empty and the consumer has to render without the data — which is why the column is built to
+  disappear rather than to show placeholders. On a park page it is always populated (`LiveParkData`
+  mounts the primary observer); on a blog post it depends on which widgets the post uses.
+
 ## Related
 
 - [API integration](api-integration.md) — the client and its proxy routes
