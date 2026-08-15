@@ -189,7 +189,8 @@ Two consequences worth knowing before reaching for it:
 - **No seed, no static fields.** The observer passes no `initialData`, so `mergeLiveParkSnapshot`
   hands it the projection as-is: identity, `queues`, `statistics`, `bestVisitTimes` — and nothing
   the server render carried. Park-level flags like `liveWaitTimes` are **not** in the snapshot, so
-  `hasReadableWaitTimes()` would read an absent flag as "available" and must not be used there.
+  `hasReadableWaitTimes()` would read an absent flag as "available": anything that depends on one
+  takes it as a prop from the server render instead (`ParkStatsSection`'s `hasLiveWaitTimes`).
 - **It is opportunistic.** Where nothing else on the page subscribes to that key the cache stays
   empty and the consumer has to render without the data — which is why the column is built to
   disappear rather than to show placeholders. On a park page it is always populated (`LiveParkData`

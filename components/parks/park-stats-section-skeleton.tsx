@@ -1,12 +1,17 @@
 import { GlassCard } from '@/components/common/glass-card';
 import { Skeleton } from '@/components/ui/skeleton';
 
-/** A single right-aligned "typical / peak" wait-time pair placeholder. */
-function WaitTimesSkeleton() {
+/**
+ * Right-aligned wait-time column placeholders. Two by default ("typical / peak", the narrow
+ * layout drops the first); `withCurrent` adds the ranking table's live "now" column, which is
+ * there whenever the park is open — the columns are `w-[4.5rem]` with `gap-3` in the real table.
+ */
+function WaitTimesSkeleton({ withCurrent = false }: { withCurrent?: boolean }) {
   return (
     <div className="ml-auto flex shrink-0 items-center gap-3">
-      <Skeleton className="hidden h-3 w-16 sm:block" />
-      <Skeleton className="h-3 w-16" />
+      {withCurrent && <Skeleton className="hidden h-3 w-14 sm:block" />}
+      <Skeleton className="hidden h-3 w-14 sm:block" />
+      <Skeleton className="h-3 w-14" />
     </div>
   );
 }
@@ -17,7 +22,7 @@ function AttractionRowSkeleton({ nameWidth }: { nameWidth: string }) {
     <div className="flex items-center gap-3 px-2 py-1.5">
       <Skeleton className="h-5 w-5 shrink-0 rounded-full" />
       <Skeleton className={`h-4 ${nameWidth} max-w-[55%] min-w-0`} />
-      <WaitTimesSkeleton />
+      <WaitTimesSkeleton withCurrent />
     </div>
   );
 }
@@ -88,8 +93,9 @@ export function ParkStatsSectionSkeleton() {
           <div className="flex items-center gap-3 px-2 pb-1">
             <Skeleton className="h-3 w-20" />
             <div className="ml-auto flex shrink-0 items-center gap-3">
-              <Skeleton className="hidden h-3 w-10 sm:block" />
-              <Skeleton className="h-3 w-10" />
+              <Skeleton className="hidden h-3 w-12 sm:block" />
+              <Skeleton className="hidden h-3 w-12 sm:block" />
+              <Skeleton className="h-3 w-12" />
             </div>
           </div>
           {nameWidths.map((w, i) => (

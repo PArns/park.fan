@@ -9,7 +9,7 @@ import { ParkStatsSectionSkeleton } from '@/components/parks/park-stats-section-
 import { useParkHistoricalStats } from '@/lib/hooks/use-park-historical-stats';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import { useMounted } from '@/lib/hooks/use-mounted';
-import type { ParkHistoricalStats } from '@/lib/api/types';
+import type { AttractionStatus, ParkHistoricalStats } from '@/lib/api/types';
 import { getAttractionDisplayStatus } from '@/lib/utils/park-utils';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 
@@ -19,6 +19,15 @@ interface ParkStatsSectionProps {
   city: string;
   parkSlug: string;
   locale: string;
+  /**
+   * The API's curated `liveWaitTimes.available` for this park, read through
+   * `hasReadableWaitTimes()`. `false` suppresses the live "now" column: for a park that publishes
+   * wait times only in its own app there is no number to compare against, and nothing in the live
+   * payload says so — at 03:00 a sleeping park looks identical. Defaults to `true`, matching the
+   * helper's rule that an absent flag means available, so a caller without the park object
+   * (the blog widget) behaves as before.
+   */
+  hasLiveWaitTimes?: boolean;
 }
 
 /**
@@ -34,6 +43,7 @@ export function ParkStatsSection({
   city,
   parkSlug,
   locale,
+  hasLiveWaitTimes = true,
 }: ParkStatsSectionProps) {
   // Browser-only query (disabled during SSR). Show the skeleton until mounted + loaded so the
   // static prerender renders the placeholder rather than an empty section.
@@ -62,6 +72,7 @@ export function ParkStatsSection({
       city={city}
       parkSlug={parkSlug}
       locale={locale}
+      hasLiveWaitTimes={hasLiveWaitTimes}
     />
   );
 }
@@ -73,6 +84,7 @@ function StatsContent({
   city,
   parkSlug,
   locale,
+  hasLiveWaitTimes,
 }: {
   stats: ParkHistoricalStats;
   continent: string;
@@ -80,6 +92,7 @@ function StatsContent({
   city: string;
   parkSlug: string;
   locale: string;
+  hasLiveWaitTimes: boolean;
 }) {
   const t = useTranslations('parks.stats');
   const tParks = useTranslations('parks');
@@ -98,24 +111,33 @@ function StatsContent({
   });
 
   // Standby wait per attraction slug, for OPERATING rides only: a closed ride keeps publishing
-  // `waitTime: 0` (River Quest and Black Mamba both did while the rest of Phantasialand ran), and
-  // a walk-on 0 and a shut ride would otherwise render as the same green zero. Same gate the
-  // attraction cards use, through the same helper, so the two views cannot disagree.
+  // `waitTime: 0` (River Quest and Black Mamba both did while the rest of Phantasialand ran), so
+  // a walk-on and a shut ride would otherwise render as the same green zero.
   //
-  // Everything else falls out of the data: a park whose wait times are unreadable reports every
-  // ride as UNKNOWN with empty `queues`, so it lands here with nothing numeric and the column
-  // never appears — which is the only rule available, since `LiveParkSnapshot` does not carry
-  // `liveWaitTimes` and `hasReadableWaitTimes()` would read an absent flag as "available".
+  // `effectiveStatus` first, exactly as `AttractionCard` decides it, and only then the shared
+  // helper: a queue row keeps its last value when a source stops publishing, so a ride whose feed
+  // went quiet mid-day still reads OPERATING with a stale wait while the API has already set
+  // `effectiveStatus: CLOSED`. Reading the queue alone would print a wait here for a ride whose own
+  // card on the same page says "closed".
+  //
+  // Read out here rather than as `livePark?.x` inside the memo: the React Compiler infers
+  // `livePark` as the dependency then and refuses to preserve the memoization.
+  const liveAttractions = livePark?.attractions;
+  const liveParkStatus = livePark?.status;
   const currentWaits = useMemo(() => {
     const bySlug = new Map<string, number>();
-    for (const attraction of livePark?.attractions ?? []) {
-      if (getAttractionDisplayStatus(attraction, livePark?.status) !== 'OPERATING') continue;
+    if (!hasLiveWaitTimes || (liveParkStatus && liveParkStatus !== 'OPERATING')) return bySlug;
+    for (const attraction of liveAttractions ?? []) {
+      const status =
+        (attraction as { effectiveStatus?: AttractionStatus }).effectiveStatus ??
+        getAttractionDisplayStatus(attraction, liveParkStatus);
+      if (status !== 'OPERATING') continue;
       const standby = attraction.queues?.find((q) => q.queueType === 'STANDBY');
       const waitTime = standby && 'waitTime' in standby ? standby.waitTime : null;
       if (typeof waitTime === 'number') bySlug.set(attraction.slug, waitTime);
     }
     return bySlug;
-  }, [livePark?.attractions, livePark?.status]);
+  }, [liveAttractions, liveParkStatus, hasLiveWaitTimes]);
 
   // Memoized: this section re-renders on every background poll tick (useLoadLast subscribes
   // to the page-wide fetch count), and Intl.DateTimeFormat construction per row is the
