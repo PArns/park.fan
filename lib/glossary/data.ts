@@ -2296,6 +2296,18 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
     },
   },
   {
+    id: 'kuka',
+    category: 'manufacturers',
+    slugs: {
+      en: 'kuka',
+      de: 'kuka',
+      fr: 'kuka',
+      it: 'kuka',
+      nl: 'kuka',
+      es: 'kuka',
+    },
+  },
+  {
     id: 'mondial',
     category: 'manufacturers',
     slugs: {
@@ -2739,6 +2751,18 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       it: 'clearance-envelope',
       nl: 'vrije-ruimte-profiel',
       es: 'clearance-envelope',
+    },
+  },
+  {
+    id: 'testing',
+    category: 'park-operations',
+    slugs: {
+      en: 'testing',
+      de: 'testfahrten',
+      fr: 'essais',
+      it: 'collaudo',
+      nl: 'testritten',
+      es: 'pruebas',
     },
   },
   {

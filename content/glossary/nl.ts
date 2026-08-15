@@ -2234,8 +2234,28 @@ const translations: GlossaryTermTranslation[] = [
       'De onzichtbare veiligheidsruimte rond de baan die vrij moet blijven van obstakels.',
     definition:
       'De Clearance Envelope (of lichtruimprofiel) is de door ingenieurs berekende ruimte rond de trein en de passagiers die tijdens de rit volledig vrij moet blijven. Het houdt rekening met de maximale reikwijdte van armen en benen van de langste bezoekers. Geen enkel vast object mag zich binnen deze zone bevinden. Tijdens het testen wordt vaak een houten mal (envelope) gebruikt om te garanderen dat niets geraakt kan worden.',
-    relatedTermIds: ['foot-chopper', 'head-choppers', 'near-miss'],
+    relatedTermIds: ['foot-chopper', 'head-choppers', 'near-miss', 'testing'],
     aliases: ['clearance envelope', 'veiligheidsprofiel', 'vrije ruimte'],
+  },
+  {
+    id: 'testing',
+    name: "Testritten",
+    shortDefinition:
+      "De rondjes die een attractie leeg draait — voor de opening, elke ochtend en na elke reparatie.",
+    definition:
+      "Testen is alles wat tussen een afgebouwde attractie en een volle trein zit. Bij de inbedrijfstelling nemen waterdummies of zandzakken de plaats van de inzittenden in, het systeem wordt over duizenden cycli beproefd, en met profielcontroles wordt vastgesteld dat er langs de baan niets zo dichtbij staat dat een uitgestoken arm het kan raken.\n\nHet houdt eigenlijk nooit op. Parken draaien elke ochtend lege rondjes voor de eerste gasten, en opnieuw na elke storing of onderhoudsbeurt — daarom kan een attractie als geopend te zien zijn en toch niemand laten instappen. Nieuwe banen testen in het volle zicht: de treinen rijden weken voor de opening over de hoofden van de bezoekers. Een soft opening is zelf een test, alleen met echte inzittenden.",
+    relatedTermIds: ['clearance-envelope', 'soft-opening', 'downtime', 'refurbishment'],
+    aliases: ['Test runs', 'Test cycles'],
+  },
+  {
+    id: 'kuka',
+    name: "KUKA",
+    shortDefinition:
+      "Een Duitse fabrikant van industriele robots wiens fabrieksarmen zijn omgebouwd om mensen te vervoeren.",
+    definition:
+      "KUKA — de afkorting staat voor Keller und Knappich Augsburg, waar het bedrijf nog altijd zetelt — bouwt de oranje robotarmen van de autolopende banden. De zware KR 500 werd voor attractiegebruik aangepast als RoboCoaster: een vierpersoonsbank aan het uiteinde van de arm, vrij om te stampen, te rollen en de inzittenden door bewegingen te sturen die geen vaste rail kan maken.\n\nDe bekendste installatie is Harry Potter and the Forbidden Journey, geopend in 2010, waar RoboCoaster G2-banken op rijdende onderstellen staan: de armen reizen dus door de decors in plaats van op een plek te spelen. Sum of All Thrills in Epcot (2009-2016) draaide het om: gasten ontwierpen aan een terminal hun eigen baanprofiel, waarna een op maat gebouwde KUKA-arm precies dat uitvoerde.",
+    relatedTermIds: ['dynamic-attractions', 'dark-ride', 'motion-simulator', 'flying-theater'],
+    alternateNames: ['Keller und Knappich Augsburg'],
   },
   {
     id: 'foot-chopper',
@@ -2289,7 +2309,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Canadese fabrikant bekend om complexe ritsystemen, waaronder de Robocoaster.',
     definition:
       'Dynamic Attractions is een vooraanstaande attractiebouwer die bekend staat om zijn innovatieve en technisch complexe ritsystemen. Hun meest iconische technologie is het "Robocoaster" robotarmsysteem dat wordt gebruikt in attracties zoals Harry Potter and the Forbidden Journey. Ze ontwikkelen ook hightech spoorsystemen, bewegingstheaters en structurele componenten voor grote themaparken wereldwijd.',
-    relatedTermIds: ['dark-ride', 'flying-theater', 'motion-simulator'],
+    relatedTermIds: ['dark-ride', 'flying-theater', 'kuka', 'motion-simulator'],
   },
   {
     id: 'flying-theater',

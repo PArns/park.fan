@@ -2097,8 +2097,28 @@ const translations: GlossaryTermTranslation[] = [
       'The safe space around a ride vehicle that must remain free of any obstructions.',
     definition:
       'The clearance envelope is the calculated three-dimensional space around a ride vehicle that must be kept entirely clear of any structures, supports, or vegetation. This ensures that even the tallest riders with their arms or legs extended cannot make contact with anything outside the vehicle. During testing, parks often use "reach envelopes" (physical frames attached to the train) to verify that no part of the environment encroaches on this safety zone.',
-    relatedTermIds: ['foot-chopper', 'head-choppers', 'near-miss'],
+    relatedTermIds: ['foot-chopper', 'head-choppers', 'near-miss', 'testing'],
     aliases: ['Clearance Envelopes'],
+  },
+  {
+    id: 'testing',
+    name: "Testing",
+    shortDefinition:
+      "The cycles a ride runs empty — before it opens, every morning, and after every repair.",
+    definition:
+      "Testing is everything between a finished ride and a loaded train. Commissioning runs use water dummies or sandbags in place of riders, the ride system is put through thousands of cycles to prove it, and reach-envelope checks confirm that nothing along the track is close enough for an outstretched arm to touch.\n\nIt never really stops. Parks run empty cycles each morning before the first guests and again after any downtime or maintenance, which is why a ride can show as open and still not be dispatching. New rides test in plain sight — trains run over guests' heads for weeks before opening day — and a soft opening is itself a test, just with real riders in the seats. In Germany the TUV has to sign a ride off before it may carry anybody.",
+    relatedTermIds: ['clearance-envelope', 'soft-opening', 'downtime', 'refurbishment'],
+    aliases: ['Test runs', 'Test cycles'],
+  },
+  {
+    id: 'kuka',
+    name: "KUKA",
+    shortDefinition:
+      "A German industrial robot maker whose factory arms were adapted to carry riders.",
+    definition:
+      "KUKA — short for Keller und Knappich Augsburg, and still headquartered there — builds the orange robot arms found on car assembly lines. The heavy-duty KR 500 was adapted for ride use as the RoboCoaster: a four-seat bench bolted to the end of the arm, free to pitch, roll and sweep riders through motions no fixed track could produce.\n\nThe best-known installation is Harry Potter and the Forbidden Journey, which opened in 2010 with RoboCoaster G2 benches mounted on moving bases so the arms travel through the show scenes rather than performing in one spot. Epcot's Sum of All Thrills (2009-2016) used a custom KUKA arm the other way round: guests designed a coaster profile at a terminal and the arm then flew what they had drawn.",
+    relatedTermIds: ['dynamic-attractions', 'dark-ride', 'motion-simulator', 'flying-theater'],
+    alternateNames: ['Keller und Knappich Augsburg'],
   },
   {
     id: 'foot-chopper',
@@ -2152,7 +2172,7 @@ const translations: GlossaryTermTranslation[] = [
       'A Canadian manufacturer known for complex ride systems, including the Robocoaster.',
     definition:
       'Dynamic Attractions is a prominent ride manufacturer famous for its innovative and technically complex ride systems. Their most iconic technology is the "Robocoaster" robotic arm system used in attractions like Harry Potter and the Forbidden Journey. They also develop high-tech track systems, motion theaters, and structural components for major theme parks worldwide.',
-    relatedTermIds: ['dark-ride', 'flying-theater', 'motion-simulator'],
+    relatedTermIds: ['dark-ride', 'flying-theater', 'kuka', 'motion-simulator'],
   },
   {
     id: 'flying-theater',

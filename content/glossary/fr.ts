@@ -2156,8 +2156,28 @@ const translations: GlossaryTermTranslation[] = [
       "L'espace de sécurité autour d'un véhicule de manège qui doit rester libre de toute obstruction.",
     definition:
       "La clearance envelope (enveloppe de sécurité ou de dégagement) est l'espace tridimensionnel calculé autour d'un véhicule de manège qui doit être maintenu entièrement libre de toute structure, support ou végétation. Cela garantit que même les passagers les plus grands avec les bras ou les jambes tendus ne peuvent pas entrer en contact avec quoi que ce soit à l'extérieur du véhicule. Pendant les tests, les parcs utilisent souvent des \"reach envelopes\" (cadres physiques attachés au train) pour vérifier qu'aucune partie de l'environnement n'empiète sur cette zone de sécurité.",
-    relatedTermIds: ['foot-chopper', 'head-choppers', 'near-miss'],
+    relatedTermIds: ['foot-chopper', 'head-choppers', 'near-miss', 'testing'],
     aliases: ['Clearance Envelopes', 'Enveloppe de sécurité'],
+  },
+  {
+    id: 'testing',
+    name: "Essais",
+    shortDefinition:
+      "Les tours qu'une attraction effectue a vide — avant l'ouverture, chaque matin et apres chaque reparation.",
+    definition:
+      "Les essais couvrent tout ce qui separe une attraction terminee d'un train charge. Lors de la mise en service, des mannequins remplis d'eau ou des sacs de sable remplacent les passagers, le systeme est eprouve sur des milliers de cycles, et les controles du gabarit verifient que rien le long du parcours n'est assez proche pour qu'un bras tendu le touche.\n\nCela ne s'arrete jamais vraiment. Les parcs font tourner l'attraction a vide chaque matin avant les premiers visiteurs, et de nouveau apres toute panne ou maintenance — c'est pourquoi une attraction peut etre affichee ouverte sans embarquer personne. Les nouveautes s'essaient au grand jour : les trains passent au-dessus des visiteurs des semaines avant l'ouverture. Une ouverture en douceur est elle-meme un essai, avec de vrais passagers cette fois.",
+    relatedTermIds: ['clearance-envelope', 'soft-opening', 'downtime', 'refurbishment'],
+    aliases: ['Test runs', 'Test cycles'],
+  },
+  {
+    id: 'kuka',
+    name: "KUKA",
+    shortDefinition:
+      "Un fabricant allemand de robots industriels dont les bras d'usine ont ete adaptes au transport de passagers.",
+    definition:
+      "KUKA — acronyme de Keller und Knappich Augsburg, ou l'entreprise a toujours son siege — fabrique les bras robotises oranges que l'on trouve sur les chaines de montage automobile. Le KR 500, un modele lourd, a ete adapte aux attractions sous le nom de RoboCoaster : une banquette de quatre places boulonnee au bout du bras, libre de tanguer, rouler et emmener les passagers dans des mouvements qu'aucune voie fixe ne pourrait produire.\n\nL'installation la plus connue est Harry Potter and the Forbidden Journey, ouverte en 2010, ou les banquettes RoboCoaster G2 sont montees sur des bases mobiles : les bras traversent donc les decors au lieu de jouer sur place. Sum of All Thrills a Epcot (2009-2016) inversait le principe : les visiteurs dessinaient leur propre profil de montagnes russes sur une borne, et un bras KUKA sur mesure le reproduisait ensuite.",
+    relatedTermIds: ['dynamic-attractions', 'dark-ride', 'motion-simulator', 'flying-theater'],
+    alternateNames: ['Keller und Knappich Augsburg'],
   },
   {
     id: 'foot-chopper',
@@ -2212,7 +2232,7 @@ const translations: GlossaryTermTranslation[] = [
       'Fabricant canadien de systèmes de transport complexes, connu pour le "Robocoaster".',
     definition:
       'Dynamic Attractions est un constructeur d\'attractions de premier plan, célèbre pour ses systèmes de transport innovants et techniquement complexes. Leur technologie la plus emblématique est le système de bras robotisé "Robocoaster" utilisé dans des attractions comme Harry Potter and the Forbidden Journey. Ils développent également des systèmes de rails de haute technologie, des théâtres de mouvement et des composants structurels pour les grands parcs à thème du monde entier.',
-    relatedTermIds: ['dark-ride', 'flying-theater', 'motion-simulator'],
+    relatedTermIds: ['dark-ride', 'flying-theater', 'kuka', 'motion-simulator'],
   },
   {
     id: 'flying-theater',

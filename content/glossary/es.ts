@@ -2258,8 +2258,28 @@ const translations: GlossaryTermTranslation[] = [
       'El espacio de seguridad alrededor de un vehículo que debe permanecer libre de cualquier obstrucción.',
     definition:
       'La clearance envelope (envolvente de seguridad o de despeje) es el espacio tridimensional calculado alrededor de un vehículo de atracción que debe mantenerse completamente libre de estructuras, soportes o vegetación. Esto asegura que incluso los pasajeros más altos con los brazos o las piernas extendidos no puedan hacer contacto con nada fuera del vehículo. Durante las pruebas, los parques a menudo usan "reach envelopes" (marcos físicos unidos al tren) para verificar que ninguna parte del entorno invade esta zona de seguridad.',
-    relatedTermIds: ['foot-chopper', 'head-choppers', 'near-miss'],
+    relatedTermIds: ['foot-chopper', 'head-choppers', 'near-miss', 'testing'],
     aliases: ['Clearance Envelopes', 'Envolvente de seguridad'],
+  },
+  {
+    id: 'testing',
+    name: "Pruebas",
+    shortDefinition:
+      "Las vueltas que una atraccion da vacia — antes de abrir, cada manana y tras cada reparacion.",
+    definition:
+      "Las pruebas son todo lo que separa una atraccion terminada de un tren cargado. En la puesta en marcha, muniecos llenos de agua o sacos de arena ocupan el lugar de los pasajeros, el sistema se somete a miles de ciclos y las comprobaciones del gabarito confirman que nada a lo largo del recorrido esta lo bastante cerca como para que un brazo estirado lo toque.\n\nNunca termina del todo. Los parques dan vueltas en vacio cada manana antes de los primeros visitantes, y de nuevo tras cualquier averia o mantenimiento — por eso una atraccion puede figurar como abierta y no embarcar a nadie. Las novedades se prueban a la vista de todos: los trenes pasan por encima de los visitantes durante semanas antes de la apertura. Una apertura suave es en si misma una prueba, esta vez con pasajeros reales.",
+    relatedTermIds: ['clearance-envelope', 'soft-opening', 'downtime', 'refurbishment'],
+    aliases: ['Test runs', 'Test cycles'],
+  },
+  {
+    id: 'kuka',
+    name: "KUKA",
+    shortDefinition:
+      "Un fabricante aleman de robots industriales cuyos brazos de fabrica se adaptaron para llevar pasajeros.",
+    definition:
+      "KUKA — siglas de Keller und Knappich Augsburg, donde sigue teniendo su sede — fabrica los brazos roboticos naranjas de las cadenas de montaje de automoviles. El KR 500, un modelo pesado, se adapto al uso en atracciones con el nombre de RoboCoaster: un banco de cuatro plazas atornillado al extremo del brazo, libre de cabecear, balancearse y llevar a los pasajeros por movimientos que ninguna via fija podria producir.\n\nLa instalacion mas conocida es Harry Potter and the Forbidden Journey, inaugurada en 2010, donde los bancos RoboCoaster G2 van montados sobre bases moviles: los brazos recorren asi los decorados en lugar de actuar en un solo punto. Sum of All Thrills en Epcot (2009-2016) invertia el principio: los visitantes disenaban el perfil de su propia montana rusa en un terminal y un brazo KUKA a medida lo recorria despues.",
+    relatedTermIds: ['dynamic-attractions', 'dark-ride', 'motion-simulator', 'flying-theater'],
+    alternateNames: ['Keller und Knappich Augsburg'],
   },
   {
     id: 'foot-chopper',
@@ -2314,7 +2334,7 @@ const translations: GlossaryTermTranslation[] = [
       'Fabricante canadiense de atracciones complejas, famoso por sus sistemas de brazo robótico.',
     definition:
       "Dynamic Attractions es una empresa canadiense especializada en el diseño y construcción de atracciones tecnológicamente avanzadas. Son conocidos por su sistema de 'Brazo Robótico' (utilizado en Harry Potter and the Forbidden Journey), que emplea un brazo KUKA sobre raíles para crear movimientos dinámicos. Su catálogo incluye teatros voladores, vehículos de dark ride de última generación y montañas rusas complejas como el SFX Coaster.",
-    relatedTermIds: ['dark-ride', 'flying-theater', 'motion-simulator'],
+    relatedTermIds: ['dark-ride', 'flying-theater', 'kuka', 'motion-simulator'],
     aliases: ['Dynamic Structures'],
   },
   {

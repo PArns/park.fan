@@ -36,7 +36,7 @@ The segment map lives in `lib/glossary/translations.ts` as `GLOSSARY_SEGMENTS`.
 
 ## Terms & Categories
 
-Currently **265 terms**. Categories are defined in `lib/glossary/types.ts` (`GlossaryCategory`); the ones in active use:
+Currently **267 terms**. Categories are defined in `lib/glossary/types.ts` (`GlossaryCategory`); the ones in active use:
 
 | Category           | Description                                            |
 | ------------------ | ------------------------------------------------------ |

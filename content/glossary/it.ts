@@ -2237,8 +2237,28 @@ const translations: GlossaryTermTranslation[] = [
       'Lo spazio di sicurezza invisibile attorno al binario che deve rimanere libero da ostacoli.',
     definition:
       "Il Clearance Envelope (o busta di spazio libero) è l'area calcolata dagli ingegneri che circonda il treno e i passeggeri durante tutto il percorso. Considera l'estensione massima delle braccia e delle gambe dei visitatori più alti. Nessun oggetto fisso (supporti, rocce, rami) può trovarsi all'interno di questo spazio. Durante i test, viene spesso usato un prototipo di legno con la sagoma della busta per assicurarsi che nulla venga colpito.",
-    relatedTermIds: ['foot-chopper', 'head-choppers', 'near-miss'],
+    relatedTermIds: ['foot-chopper', 'head-choppers', 'near-miss', 'testing'],
     aliases: ['clearance envelope', 'spazio di sicurezza', 'sagoma limite'],
+  },
+  {
+    id: 'testing',
+    name: "Collaudo",
+    shortDefinition:
+      "I giri che un'attrazione compie a vuoto — prima dell'apertura, ogni mattina e dopo ogni riparazione.",
+    definition:
+      "Il collaudo e tutto cio che separa un'attrazione finita da un treno carico. Nella messa in servizio manichini pieni d'acqua o sacchi di sabbia prendono il posto dei passeggeri, il sistema viene provato per migliaia di cicli e le verifiche della sagoma limite confermano che lungo il tracciato non ci sia nulla di abbastanza vicino da poter essere sfiorato con un braccio teso.\n\nNon finisce mai davvero. I parchi fanno girare l'attrazione a vuoto ogni mattina prima dei primi ospiti, e di nuovo dopo ogni fermo o manutenzione — ecco perche un'attrazione puo risultare aperta e non far salire nessuno. Le novita si collaudano in piena vista: i treni passano sopra la testa dei visitatori per settimane prima dell'apertura. Una soft opening e essa stessa un collaudo, stavolta con passeggeri veri.",
+    relatedTermIds: ['clearance-envelope', 'soft-opening', 'downtime', 'refurbishment'],
+    aliases: ['Test runs', 'Test cycles'],
+  },
+  {
+    id: 'kuka',
+    name: "KUKA",
+    shortDefinition:
+      "Un costruttore tedesco di robot industriali i cui bracci da fabbrica sono stati adattati per portare passeggeri.",
+    definition:
+      "KUKA — sigla di Keller und Knappich Augsburg, dove ha tuttora sede — produce i bracci robotici arancioni delle linee di montaggio automobilistiche. Il modello pesante KR 500 e stato adattato alle attrazioni con il nome di RoboCoaster: una panca a quattro posti imbullonata all'estremita del braccio, libera di beccheggiare, rollare e portare i passeggeri attraverso movimenti che nessun binario fisso potrebbe produrre.\n\nL'installazione piu nota e Harry Potter and the Forbidden Journey, aperta nel 2010, dove le panche RoboCoaster G2 sono montate su basi mobili: i bracci attraversano quindi le scenografie invece di esibirsi fermi in un punto. Sum of All Thrills a Epcot (2009-2016) rovesciava il principio: gli ospiti disegnavano il profilo del proprio ottovolante a un terminale e un braccio KUKA su misura lo percorreva.",
+    relatedTermIds: ['dynamic-attractions', 'dark-ride', 'motion-simulator', 'flying-theater'],
+    alternateNames: ['Keller und Knappich Augsburg'],
   },
   {
     id: 'foot-chopper',
@@ -2293,7 +2313,7 @@ const translations: GlossaryTermTranslation[] = [
       'Produttore canadese noto per sistemi di trasporto complessi, tra cui il Robocoaster.',
     definition:
       'Dynamic Attractions è un importante produttore di attrazioni famoso per i suoi sistemi di trasporto innovativi e tecnicamente complessi. La loro tecnologia più iconica è il sistema a braccio robotico "Robocoaster" utilizzato in attrazioni come Harry Potter and the Forbidden Journey. Sviluppano anche sistemi di binari ad alta tecnologia, cinema dinamici e componenti strutturali per i principali parchi a tema di tutto il mondo.',
-    relatedTermIds: ['dark-ride', 'flying-theater', 'motion-simulator'],
+    relatedTermIds: ['dark-ride', 'flying-theater', 'kuka', 'motion-simulator'],
   },
   {
     id: 'flying-theater',

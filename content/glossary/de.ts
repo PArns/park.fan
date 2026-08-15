@@ -2242,8 +2242,28 @@ const translations: GlossaryTermTranslation[] = [
       'Der Sicherheitsbereich um ein Fahrgeschäft, der frei von Hindernissen bleiben muss.',
     definition:
       'Das Lichtraumprofil (englisch: Clearance Envelope) ist der berechnete dreidimensionale Raum um ein Fahrgerät, der vollständig frei von Strukturen, Stützen oder Vegetation gehalten werden muss. Dies stellt sicher, dass selbst die größten Fahrgäste mit ausgestreckten Armen oder Beinen nichts außerhalb des Fahrzeugs berühren können. Während der Tests verwenden Parks oft physische Rahmen (Reach Envelopes), die am Zug befestigt sind, um sicherzustellen, dass kein Teil der Umgebung in diese Sicherheitszone hineinragt.',
-    relatedTermIds: ['foot-chopper', 'head-choppers', 'near-miss'],
+    relatedTermIds: ['foot-chopper', 'head-choppers', 'near-miss', 'testing'],
     aliases: ['Clearance Envelope', 'Clearance-Envelope'],
+  },
+  {
+    id: 'testing',
+    name: "Testfahrten",
+    shortDefinition:
+      "Die Runden, die eine Bahn leer dreht — vor der Eroeffnung, jeden Morgen und nach jeder Reparatur.",
+    definition:
+      "Testfahrten sind alles, was zwischen einer fertigen Bahn und einem besetzten Zug liegt. Bei der Inbetriebnahme sitzen Wasserdummies oder Sandsaecke an Stelle der Fahrgaeste, das Fahrsystem wird ueber Tausende Zyklen nachgewiesen, und mit dem Lichtraumprofil wird geprueft, dass entlang der Strecke nichts so nah steht, dass ein ausgestreckter Arm es beruehren koennte.\n\nAufhoeren tut das nie. Parks fahren jeden Morgen vor den ersten Gaesten leere Runden, und nach jeder Stoerung oder Wartung noch einmal — deshalb kann eine Bahn als geoeffnet angezeigt werden und trotzdem nicht abfertigen. Neue Bahnen testen vor aller Augen: Wochen vor der Eroeffnung fahren die Zuege ueber die Koepfe der Gaeste hinweg. Ein Soft Opening ist selbst ein Test, nur mit echten Fahrgaesten. In Deutschland muss der TUV eine Bahn abnehmen, bevor sie jemanden befoerdern darf.",
+    relatedTermIds: ['clearance-envelope', 'soft-opening', 'downtime', 'refurbishment'],
+    aliases: ['Test runs', 'Test cycles'],
+  },
+  {
+    id: 'kuka',
+    name: "KUKA",
+    shortDefinition:
+      "Ein deutscher Industrieroboter-Hersteller, dessen Fabrikarme zu Fahrgeschaeften umgebaut wurden.",
+    definition:
+      "KUKA — die Abkuerzung steht fuer Keller und Knappich Augsburg, wo das Unternehmen bis heute sitzt — baut die orangen Roboterarme, die an Automontagelinien stehen. Der schwere KR 500 wurde als RoboCoaster fuer den Fahrgeschaeftsbetrieb angepasst: eine Viererbank am Ende des Arms, frei genug zu nicken, zu rollen und Bewegungen zu fahren, die keine feste Schiene hergibt.\n\nDie bekannteste Anlage ist Harry Potter and the Forbidden Journey, 2010 eroeffnet, wo RoboCoaster-G2-Baenke auf fahrenden Untersaetzen sitzen — die Arme bewegen sich also durch die Szenen, statt an einer Stelle zu spielen. Epcots Sum of All Thrills (2009-2016) drehte das Prinzip um: Die Gaeste entwarfen an einem Terminal ihr eigenes Streckenprofil, und ein eigens gebauter KUKA-Arm fuhr anschliessend genau das nach.",
+    relatedTermIds: ['dynamic-attractions', 'dark-ride', 'motion-simulator', 'flying-theater'],
+    alternateNames: ['Keller und Knappich Augsburg'],
   },
   {
     id: 'foot-chopper',
@@ -2298,7 +2318,7 @@ const translations: GlossaryTermTranslation[] = [
       'Kanadischer Hersteller hochkomplexer Fahrgeschäfte, bekannt für den Roboterarm-Dark-Ride.',
     definition:
       "Dynamic Attractions ist ein kanadisches Unternehmen, das sich auf die Entwicklung und den Bau von innovativen und technologisch fortschrittlichen Fahrgeschäften spezialisiert hat. Sie sind besonders bekannt für ihr 'Robotic Arm'-System (eingesetzt bei Harry Potter and the Forbidden Journey), das eine KUKA-Roboterarm-Einheit auf einer Schiene nutzt, um dynamische Bewegungen zu erzeugen. Das Portfolio umfasst auch Flying Theater, moderne Dark-Ride-Fahrzeuge und komplexe Achterbahnsysteme wie den SFX Coaster.",
-    relatedTermIds: ['dark-ride', 'flying-theater', 'motion-simulator'],
+    relatedTermIds: ['dark-ride', 'flying-theater', 'kuka', 'motion-simulator'],
     aliases: ['Dynamic Structures'],
   },
   {
