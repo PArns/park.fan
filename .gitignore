@@ -74,6 +74,13 @@ public/media/**/*-16x9.jpg
 public/media/**/*-4x3.jpg
 public/media/**/*-1x1.jpg
 
+# The pre-media-database photo tree. Everything the site paints now lives under
+# public/media; what was left here were 351 orphaned crops with no source images,
+# and a `git add -A` swept 282 MB of them into a commit — which then pushed the OG
+# function past Vercel's 250 MB limit, because the tracer answers the route's
+# runtime read of /public by bundling the whole directory.
+/public/images/
+
 *.md
 *.txt
 *.log

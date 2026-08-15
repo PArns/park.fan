@@ -24,13 +24,18 @@ const nextConfig: NextConfig = {
     '/[locale]': ['./content/blog/**/*'],
     // The OG renderer inlines its images off disk instead of fetching them over HTTP on every
     // render (see lib/og/brand-mark.tsx and lib/og/background-photo.ts). Next can't trace a
-    // runtime readFileSync, so the assets have to be named explicitly.
+    // runtime readFileSync, so the assets are named explicitly: the `-16x9` crops are what the
+    // 1200×630 card paints (~119 KB each vs ~376 KB for the uncropped source), cut into
+    // public/media by `scripts/generate-image-crops.mjs` during `prebuild`.
     //
-    // Only the `-16x9` crops: they are what the 1200×630 card actually paints (~119 KB each vs
-    // ~376 KB for the uncropped source), so this adds 64 files / 7.4 MB to the function bundle
-    // instead of the 47 MB the whole directory would cost. The crops are gitignored and cut by
-    // `scripts/generate-image-crops.mjs` during `prebuild`, i.e. they exist before tracing runs.
-    // A source image that somehow has no crop falls back to the absolute URL at runtime.
+    // Do not budget against this entry. `next build --turbo` never calls `collectBuildTraces`
+    // (`bundler !== Bundler.Turbopack` guards the call in next/dist/build/index.js), and that is
+    // the only place includes and excludes are applied — so under the build this project ships,
+    // every key here is inert; `build:webpack` and `analyze` are the only paths that read them.
+    // What actually puts the photos in the OG function is the tracer's own answer to that
+    // unresolvable `join(process.cwd(), 'public', …)`: it bundles the whole directory it is
+    // rooted at, i.e. all of /public. Which is also why that function has no size headroom to
+    // spare — see docs/changelog.md 2.11.0.
     '/api/og/[...path]': [
       './public/logo-dark.png',
       './public/parkfan-dark.png',

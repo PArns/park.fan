@@ -11,6 +11,31 @@ directions with the park and ride pages; ride pages got a header, measurements a
 glossary; every image moved into one media database with its own sidecar; and the park page had
 passes on load order, ISR writes, re-renders and the Umami bill. Newest first.
 
+### fix: the OG function was shipping 400 MB of photos
+
+Deploys started failing on `The Vercel Function "api/og/[...path]" is 410.24mb uncompressed`, over
+Vercel's 250 MB limit. Two things stacked up to get there.
+
+`public/images/` was the photo tree from before the media database. Nothing has read it since; the
+351 files left in it were all generated crops with no source images beside them, and a `git add -A`
+swept 282 MB of them into a36bfd8e. They are deleted and the path is in `.gitignore` now —
+`git checkout a36bfd8e -- public/images` brings them back if a photo in there turns out to be
+wanted.
+
+That alone would not have mattered if the function only carried what it paints. It does not:
+`lib/og/background-photo.ts` reads its photo with `readFileSync(join(process.cwd(), 'public', …))`,
+and the tracer's answer to a path it cannot resolve statically is to bundle the entire directory
+that path is rooted at. So the OG function holds all of `/public` — every source image, every
+sidecar, all three crop ratios — while no other route traces a single file from it. 130 MB now,
+down from 425 MB, of which about 17 MB is the 16:9 crops the card actually reads.
+
+The `outputFileTracingIncludes` entry naming those crops was not what put them there, and cannot be
+used to trim the rest either: `next build --turbo` never calls `collectBuildTraces`, which is the
+only place includes and excludes are applied, so under the build this project ships every key in
+that map is inert. Reaching for `outputFileTracingExcludes` here does nothing — it was tried, the
+crops it named stayed in the trace. Making the OG route lighter means changing how it reads its
+photo, not configuring the tracer.
+
 ### the top-ten wait times now show what the ride is doing right now
 
 "Typical 29 min / peak 34 min" is a comparison with nothing to compare against, so the ranking of
@@ -26,11 +51,16 @@ exactly one live call. Details and the two catches in
 [api-budget](architecture/api-budget.md#reading-live-data-without-adding-a-request).
 
 A closed ride keeps publishing `waitTime: 0` — River Quest and Black Mamba both did while the rest
-of Phantasialand ran — so the value is only taken when `getAttractionDisplayStatus()` says
-OPERATING, the same gate the attraction cards use. A park with no readable wait times reports every
-ride as UNKNOWN with empty `queues` and therefore contributes no number at all, which is what makes
-the column vanish for it instead of rendering ten dashes: the projection carries no
-`liveWaitTimes`, so the flag itself is not available at that point.
+of Phantasialand ran — so a wait is only taken from a ride that reads OPERATING. The status is
+decided the way `AttractionCard` decides it, `effectiveStatus` before the queue row: a feed that
+goes quiet mid-day leaves its STANDBY row on the last value it published, and reading that alone
+would print a wait here for a ride whose own card on the same page says closed.
+
+Whether the park has readable wait times at all is **not** derived from any of this. The park page
+passes `hasReadableWaitTimes(park)` down, so a park that publishes wait times only inside its own
+app has no "now" column whether it is midday or 03:00 — the live projection carries no
+`liveWaitTimes` field, and inferring the answer from an empty payload is what
+[parks without wait times](api/parks-without-wait-times.md) exists to forbid.
 
 ### the hero search placeholder no longer types
 
