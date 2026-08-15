@@ -2082,7 +2082,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Ein führender Hersteller von Dark Rides und Animatronics.',
     definition:
       'Sally Dark Rides (ehemals Sally Corporation) ist ein führender Entwickler von immersiven Dark Rides und fortschrittlichen Animatronics. Das in Florida ansässige Unternehmen ist auf "schlüsselfertige" Attraktionen spezialisiert und deckt alles ab – vom Storytelling und Set-Design bis hin zu den Fahrsystemen und der Charakteranimation. Sie sind besonders berühmt für ihre interaktiven Dark Rides, bei denen Gäste Blaster benutzen, um Punkte zu sammeln, wie z. B. die verschiedenen Justice League: Battle for Metropolis-Attraktionen und viele Scooby-Doo-Themenfahrten weltweit.',
-    relatedTermIds: ['animatronics', 'dark-ride', 'interactivity'],
+    relatedTermIds: ['animatronics', 'dark-ride', 'interactive-dark-ride'],
     aliases: ['Sally Corporation'],
   },
   {
@@ -2242,7 +2242,7 @@ const translations: GlossaryTermTranslation[] = [
       'Der Sicherheitsbereich um ein Fahrgeschäft, der frei von Hindernissen bleiben muss.',
     definition:
       'Das Lichtraumprofil (englisch: Clearance Envelope) ist der berechnete dreidimensionale Raum um ein Fahrgerät, der vollständig frei von Strukturen, Stützen oder Vegetation gehalten werden muss. Dies stellt sicher, dass selbst die größten Fahrgäste mit ausgestreckten Armen oder Beinen nichts außerhalb des Fahrzeugs berühren können. Während der Tests verwenden Parks oft physische Rahmen (Reach Envelopes), die am Zug befestigt sind, um sicherzustellen, dass kein Teil der Umgebung in diese Sicherheitszone hineinragt.',
-    relatedTermIds: ['foot-chopper', 'head-choppers', 'near-miss', 'testing'],
+    relatedTermIds: ['foot-chopper', 'head-choppers', 'near-miss'],
     aliases: ['Clearance Envelope', 'Clearance-Envelope'],
   },
   {
@@ -2268,7 +2268,7 @@ const translations: GlossaryTermTranslation[] = [
       'Eine Technologie, um Videos auf unebene Oberflächen wie Gebäude oder Kulissen zu projizieren.',
     definition:
       'Projection Mapping (oder Videomapping) ist eine Hightech-Display-Technik, die Objekte – oft unregelmäßig geformte wie Schlossmauern oder Dark-Ride-Kulissen – in eine Oberfläche für Videoprojektionen verwandelt. Durch den Einsatz spezieller Software zur "Kartierung" der 3D-Geometrie des Objekts können die Projektoren verblüffende Illusionen von Bewegung, Transformation und Tiefe erzeugen. Es wird häufig in Abendshows (wie Schloss-Shows) und modernen Dark Rides eingesetzt, um dynamische Umgebungen ohne physische Kulissen zu schaffen.',
-    relatedTermIds: ['animatronics', 'dark-ride', 'interactivity', 'pre-show'],
+    relatedTermIds: ['animatronics', 'dark-ride', 'interactive-dark-ride', 'pre-show'],
     aliases: ['Video mapping', 'Videomapping', 'Digitales Mapping'],
   },
   {
@@ -2298,7 +2298,7 @@ const translations: GlossaryTermTranslation[] = [
       'Kanadischer Hersteller hochkomplexer Fahrgeschäfte, bekannt für den Roboterarm-Dark-Ride.',
     definition:
       "Dynamic Attractions ist ein kanadisches Unternehmen, das sich auf die Entwicklung und den Bau von innovativen und technologisch fortschrittlichen Fahrgeschäften spezialisiert hat. Sie sind besonders bekannt für ihr 'Robotic Arm'-System (eingesetzt bei Harry Potter and the Forbidden Journey), das eine KUKA-Roboterarm-Einheit auf einer Schiene nutzt, um dynamische Bewegungen zu erzeugen. Das Portfolio umfasst auch Flying Theater, moderne Dark-Ride-Fahrzeuge und komplexe Achterbahnsysteme wie den SFX Coaster.",
-    relatedTermIds: ['dark-ride', 'flying-theater', 'kuka', 'motion-simulator'],
+    relatedTermIds: ['dark-ride', 'flying-theater', 'motion-simulator'],
     aliases: ['Dynamic Structures'],
   },
   {

@@ -1995,7 +1995,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: "Un constructeur leader de dark rides et d'animatroniques.",
     definition:
       "Sally Dark Rides (anciennement Sally Corporation) est un développeur de premier plan de dark rides immersifs et d'animatroniques avancés. Basée en Floride, l'entreprise se spécialise dans les attractions \"clés en main\", gérant tout, de la narration et de la conception des décors aux systèmes de transport et à l'animation des personnages. Ils sont particulièrement célèbres pour leurs dark rides interactifs où les visiteurs utilisent des blasters pour marquer des points, comme les diverses attractions Justice League: Battle for Metropolis et de nombreux manèges sur le thème de Scooby-Doo dans le monde entier.",
-    relatedTermIds: ['animatronics', 'dark-ride', 'interactivity'],
+    relatedTermIds: ['animatronics', 'dark-ride', 'interactive-dark-ride'],
     aliases: ['Sally Corporation'],
   },
   {
@@ -2156,7 +2156,7 @@ const translations: GlossaryTermTranslation[] = [
       "L'espace de sécurité autour d'un véhicule de manège qui doit rester libre de toute obstruction.",
     definition:
       "La clearance envelope (enveloppe de sécurité ou de dégagement) est l'espace tridimensionnel calculé autour d'un véhicule de manège qui doit être maintenu entièrement libre de toute structure, support ou végétation. Cela garantit que même les passagers les plus grands avec les bras ou les jambes tendus ne peuvent pas entrer en contact avec quoi que ce soit à l'extérieur du véhicule. Pendant les tests, les parcs utilisent souvent des \"reach envelopes\" (cadres physiques attachés au train) pour vérifier qu'aucune partie de l'environnement n'empiète sur cette zone de sécurité.",
-    relatedTermIds: ['foot-chopper', 'head-choppers', 'near-miss', 'testing'],
+    relatedTermIds: ['foot-chopper', 'head-choppers', 'near-miss'],
     aliases: ['Clearance Envelopes', 'Enveloppe de sécurité'],
   },
   {
@@ -2182,7 +2182,7 @@ const translations: GlossaryTermTranslation[] = [
       'Une technologie utilisée pour projeter des vidéos sur des surfaces non plates comme des bâtiments ou des décors de manèges.',
     definition:
       "Le projection mapping (ou vidéomapping) est une technique d'affichage de haute technologie qui transforme des objets — souvent de forme irrégulière comme des murs de château ou des décors de dark ride — en une surface pour la projection vidéo. En utilisant un logiciel spécialisé pour \"cartographier\" la géométrie 3D de l'objet, les projecteurs peuvent créer d'étonnantes illusions de mouvement, de transformation et de profondeur. Il est largement utilisé dans les spectacles nocturnes et les dark rides modernes pour créer des environnements dynamiques sans décors physiques.",
-    relatedTermIds: ['animatronics', 'dark-ride', 'interactivity', 'pre-show'],
+    relatedTermIds: ['animatronics', 'dark-ride', 'interactive-dark-ride', 'pre-show'],
     aliases: ['Video mapping', 'Vidéomapping', 'Cartographie numérique'],
   },
   {
@@ -2212,7 +2212,7 @@ const translations: GlossaryTermTranslation[] = [
       'Fabricant canadien de systèmes de transport complexes, connu pour le "Robocoaster".',
     definition:
       'Dynamic Attractions est un constructeur d\'attractions de premier plan, célèbre pour ses systèmes de transport innovants et techniquement complexes. Leur technologie la plus emblématique est le système de bras robotisé "Robocoaster" utilisé dans des attractions comme Harry Potter and the Forbidden Journey. Ils développent également des systèmes de rails de haute technologie, des théâtres de mouvement et des composants structurels pour les grands parcs à thème du monde entier.',
-    relatedTermIds: ['dark-ride', 'flying-theater', 'kuka', 'motion-simulator'],
+    relatedTermIds: ['dark-ride', 'flying-theater', 'motion-simulator'],
   },
   {
     id: 'flying-theater',

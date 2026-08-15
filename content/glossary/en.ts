@@ -1943,7 +1943,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'A leading manufacturer of dark rides and animatronics.',
     definition:
       'Sally Dark Rides (formerly Sally Corporation) is a premier developer of immersive dark rides and advanced animatronics. Based in Florida, the company specializes in "turnkey" attractions, handling everything from storytelling and set design to ride systems and character animation. They are particularly famous for their interactive dark rides where guests use blasters to score points, such as the various Justice League: Battle for Metropolis attractions and many Scooby-Doo themed rides around the world.',
-    relatedTermIds: ['animatronics', 'dark-ride', 'interactivity'],
+    relatedTermIds: ['animatronics', 'dark-ride', 'interactive-dark-ride'],
     aliases: ['Sally Corporation'],
   },
   {
@@ -2097,7 +2097,7 @@ const translations: GlossaryTermTranslation[] = [
       'The safe space around a ride vehicle that must remain free of any obstructions.',
     definition:
       'The clearance envelope is the calculated three-dimensional space around a ride vehicle that must be kept entirely clear of any structures, supports, or vegetation. This ensures that even the tallest riders with their arms or legs extended cannot make contact with anything outside the vehicle. During testing, parks often use "reach envelopes" (physical frames attached to the train) to verify that no part of the environment encroaches on this safety zone.',
-    relatedTermIds: ['foot-chopper', 'head-choppers', 'near-miss', 'testing'],
+    relatedTermIds: ['foot-chopper', 'head-choppers', 'near-miss'],
     aliases: ['Clearance Envelopes'],
   },
   {
@@ -2123,7 +2123,7 @@ const translations: GlossaryTermTranslation[] = [
       'A technology used to project video onto non-flat surfaces like buildings or ride sets.',
     definition:
       'Projection mapping is a high-tech display technique that turns objects—often irregularly shaped ones like castle walls or dark ride sets—into a surface for video projection. By using specialized software to "map" the 3D geometry of the object, the projectors can create stunning illusions of movement, transformation, and depth. It is widely used in nighttime spectaculars (like castle shows) and modern dark rides to create dynamic environments without physical sets.',
-    relatedTermIds: ['animatronics', 'dark-ride', 'interactivity', 'pre-show'],
+    relatedTermIds: ['animatronics', 'dark-ride', 'interactive-dark-ride', 'pre-show'],
     aliases: ['Video mapping', 'Digital mapping'],
   },
   {
@@ -2152,7 +2152,7 @@ const translations: GlossaryTermTranslation[] = [
       'A Canadian manufacturer known for complex ride systems, including the Robocoaster.',
     definition:
       'Dynamic Attractions is a prominent ride manufacturer famous for its innovative and technically complex ride systems. Their most iconic technology is the "Robocoaster" robotic arm system used in attractions like Harry Potter and the Forbidden Journey. They also develop high-tech track systems, motion theaters, and structural components for major theme parks worldwide.',
-    relatedTermIds: ['dark-ride', 'flying-theater', 'kuka', 'motion-simulator'],
+    relatedTermIds: ['dark-ride', 'flying-theater', 'motion-simulator'],
   },
   {
     id: 'flying-theater',

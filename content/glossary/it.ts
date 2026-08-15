@@ -2069,7 +2069,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Produttore leader di dark ride interattive e animatronici.',
     definition:
       "Sally Dark Rides (precedentemente Sally Corporation) è un'azienda con sede in Florida specializzata nella creazione di dark ride interattive, animatronici e attrazioni a tema per parchi di divertimento in tutto il mondo. Sono celebri per aver sviluppato la serie 'Justice League: Battle for Metropolis' nei parchi Six Flags e numerose attrazioni basate su Scooby-Doo. Le loro attrazioni combinano spesso scenografie fisiche, animatronici avanzati e sistemi di puntamento laser per un'esperienza di gioco competitiva.",
-    relatedTermIds: ['animatronics', 'dark-ride', 'interactivity'],
+    relatedTermIds: ['animatronics', 'dark-ride', 'interactive-dark-ride'],
     aliases: ['Sally Corporation', 'Sally Corp'],
   },
   {
@@ -2237,7 +2237,7 @@ const translations: GlossaryTermTranslation[] = [
       'Lo spazio di sicurezza invisibile attorno al binario che deve rimanere libero da ostacoli.',
     definition:
       "Il Clearance Envelope (o busta di spazio libero) è l'area calcolata dagli ingegneri che circonda il treno e i passeggeri durante tutto il percorso. Considera l'estensione massima delle braccia e delle gambe dei visitatori più alti. Nessun oggetto fisso (supporti, rocce, rami) può trovarsi all'interno di questo spazio. Durante i test, viene spesso usato un prototipo di legno con la sagoma della busta per assicurarsi che nulla venga colpito.",
-    relatedTermIds: ['foot-chopper', 'head-choppers', 'near-miss', 'testing'],
+    relatedTermIds: ['foot-chopper', 'head-choppers', 'near-miss'],
     aliases: ['clearance envelope', 'spazio di sicurezza', 'sagoma limite'],
   },
   {
@@ -2263,7 +2263,7 @@ const translations: GlossaryTermTranslation[] = [
       'Tecnologia che proietta immagini video su superfici irregolari o scenografie 3D.',
     definition:
       "Il Projection Mapping (o video mapping) è una tecnica utilizzata nelle dark ride moderne per trasformare superfici fisiche in schermi dinamici. A differenza della proiezione standard, il software adatta l'immagine alla forma dell'oggetto (rocce, edifici, animatronici), permettendo di simulare trasformazioni, movimenti o effetti magici che sembrano far parte della realtà fisica. Esempi famosi si trovano negli show serali e in attrazioni come 'Harry Potter and the Forbidden Journey'.",
-    relatedTermIds: ['animatronics', 'dark-ride', 'interactivity', 'pre-show'],
+    relatedTermIds: ['animatronics', 'dark-ride', 'interactive-dark-ride', 'pre-show'],
     aliases: ['video mapping', 'mappatura video'],
   },
   {
@@ -2293,7 +2293,7 @@ const translations: GlossaryTermTranslation[] = [
       'Produttore canadese noto per sistemi di trasporto complessi, tra cui il Robocoaster.',
     definition:
       'Dynamic Attractions è un importante produttore di attrazioni famoso per i suoi sistemi di trasporto innovativi e tecnicamente complessi. La loro tecnologia più iconica è il sistema a braccio robotico "Robocoaster" utilizzato in attrazioni come Harry Potter and the Forbidden Journey. Sviluppano anche sistemi di binari ad alta tecnologia, cinema dinamici e componenti strutturali per i principali parchi a tema di tutto il mondo.',
-    relatedTermIds: ['dark-ride', 'flying-theater', 'kuka', 'motion-simulator'],
+    relatedTermIds: ['dark-ride', 'flying-theater', 'motion-simulator'],
   },
   {
     id: 'flying-theater',

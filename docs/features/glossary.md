@@ -36,7 +36,7 @@ The segment map lives in `lib/glossary/translations.ts` as `GLOSSARY_SEGMENTS`.
 
 ## Terms & Categories
 
-Currently **262 terms**. Categories are defined in `lib/glossary/types.ts` (`GlossaryCategory`); the ones in active use:
+Currently **265 terms**. Categories are defined in `lib/glossary/types.ts` (`GlossaryCategory`); the ones in active use:
 
 | Category           | Description                                            |
 | ------------------ | ------------------------------------------------------ |
@@ -114,7 +114,7 @@ resolves them.
   is plain text. Data arrives on the **park** response
   (`attractions[].rideProfile`), so it is in the static shell.
 - **`GlossaryTermRides`** fetches `/v1/glossary/terms/:id/attractions` (cached
-  1 day — the seed only changes when a human edits it), groups by park and
+  1 day — the curation only changes when a human edits it), groups by park and
   renders nothing when no ride carries the term. Most of the glossary is
   concepts no ride profile references, and an empty box would be worse than no
   box. It is handed to `GlossaryTermDetail` as its **`rides` slot** (still
@@ -125,15 +125,34 @@ resolves them.
   `Card` + heading strip, not a `PageSection` with a frosted chapter pill.
 
 An id this app has no term for is **dropped**, not rendered raw — the API can
-legitimately be seeded with a term before the glossary entry lands here.
+legitimately carry a term id before the glossary entry lands here.
 
-Term ids are mirrored into the API repo for CI validation. Regenerate after
-adding, renaming or removing a term:
+### Nothing validates the ids any more
 
-```bash
-node scripts/export-glossary-term-ids.mjs \
-  > ../v4.api.park.fan/src/attractions/data/glossary-term-ids.ts
+The API used to mirror this app's id list into `glossary-term-ids.ts` and fail
+its CI on an unknown id. That allowlist is gone: the API's ride profiles are no
+longer a checked-in seed but rows edited directly in
+`attraction_ride_profiles`, so there is nothing there to check at build time.
+
+**This app is now the only place a term id is defined, and no build in either
+repo will tell you when one stops resolving.** A term renamed or removed here
+silently shortens the layout on every ride page that referenced it.
+
+So after renaming or removing a term, find the rows that still point at it:
+
+```sql
+SELECT p.slug, a.slug, rp.elements
+  FROM attraction_ride_profiles rp
+  JOIN attractions a ON a.id = rp."attractionId"
+  JOIN parks p ON p.id = rp."parkId"
+ WHERE rp.elements @> '["the-removed-id"]'
+    OR rp.types    @> '["the-removed-id"]'
+    OR rp.manufacturer_term_id = 'the-removed-id';
 ```
+
+`scripts/export-glossary-term-ids.mjs` still dumps the id list and is still
+useful for diffing, but it no longer has a consumer — do not expect writing its
+output into the API repo to accomplish anything.
 
 ## Verifying the 3-D player
 

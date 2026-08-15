@@ -2068,7 +2068,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Toonaangevende producent van interactieve dark rides en animatronics.',
     definition:
       "Sally Dark Rides (voorheen Sally Corporation) is een bedrijf uit Florida dat gespecialiseerd is in het creëren van interactieve dark rides, animatronics en gethematiseerde attracties voor pretparken wereldwijd. Ze zijn beroemd om de 'Justice League: Battle for Metropolis'-serie in Six Flags-parken en diverse Scooby-Doo-attracties. Hun attracties combineren vaak fysieke decors met geavanceerde animatronics en laserschietsystemen voor een competitieve spelervaring.",
-    relatedTermIds: ['animatronics', 'dark-ride', 'interactivity'],
+    relatedTermIds: ['animatronics', 'dark-ride', 'interactive-dark-ride'],
     aliases: ['Sally Corporation', 'Sally Corp'],
   },
   {
@@ -2234,7 +2234,7 @@ const translations: GlossaryTermTranslation[] = [
       'De onzichtbare veiligheidsruimte rond de baan die vrij moet blijven van obstakels.',
     definition:
       'De Clearance Envelope (of lichtruimprofiel) is de door ingenieurs berekende ruimte rond de trein en de passagiers die tijdens de rit volledig vrij moet blijven. Het houdt rekening met de maximale reikwijdte van armen en benen van de langste bezoekers. Geen enkel vast object mag zich binnen deze zone bevinden. Tijdens het testen wordt vaak een houten mal (envelope) gebruikt om te garanderen dat niets geraakt kan worden.',
-    relatedTermIds: ['foot-chopper', 'head-choppers', 'near-miss', 'testing'],
+    relatedTermIds: ['foot-chopper', 'head-choppers', 'near-miss'],
     aliases: ['clearance envelope', 'veiligheidsprofiel', 'vrije ruimte'],
   },
   {
@@ -2260,7 +2260,7 @@ const translations: GlossaryTermTranslation[] = [
       'Technologie waarbij video wordt geprojecteerd op onregelmatige oppervlakken of 3D-decors.',
     definition:
       "Projection Mapping is een techniek die in moderne dark rides wordt gebruikt om fysieke decors te transformeren in dynamische schermen. In tegenstelling tot standaard projectie, past de software het beeld aan de vorm van het object aan (bijv. rotsen of gebouwen). Dit maakt magische transformaties en effecten mogelijk die deel lijken uit te maken van de fysieke werkelijkheid, zoals te zien in 'Harry Potter and the Forbidden Journey'.",
-    relatedTermIds: ['animatronics', 'dark-ride', 'interactivity', 'pre-show'],
+    relatedTermIds: ['animatronics', 'dark-ride', 'interactive-dark-ride', 'pre-show'],
     aliases: ['videomapping', 'projectie mapping'],
   },
   {
@@ -2289,7 +2289,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Canadese fabrikant bekend om complexe ritsystemen, waaronder de Robocoaster.',
     definition:
       'Dynamic Attractions is een vooraanstaande attractiebouwer die bekend staat om zijn innovatieve en technisch complexe ritsystemen. Hun meest iconische technologie is het "Robocoaster" robotarmsysteem dat wordt gebruikt in attracties zoals Harry Potter and the Forbidden Journey. Ze ontwikkelen ook hightech spoorsystemen, bewegingstheaters en structurele componenten voor grote themaparken wereldwijd.',
-    relatedTermIds: ['dark-ride', 'flying-theater', 'kuka', 'motion-simulator'],
+    relatedTermIds: ['dark-ride', 'flying-theater', 'motion-simulator'],
   },
   {
     id: 'flying-theater',
