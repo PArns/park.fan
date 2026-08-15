@@ -1737,7 +1737,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       "A heartline roll that runs straight into a twisting dive, inverting riders twice and throwing the train off to the side.",
     definition:
-      "In a flying snake dive the train rolls through a heartline roll and, without ever levelling out, drops into a twisting dive that sends it away in the opposite direction. It counts as two inversions, and the two run together closely enough that riders rarely register where one ends and the next begins.\n\nIntamin designed the element in 2005 for Maverick at Cedar Point, which remains the version it is named for. Storm Runner at Hersheypark carries a close relative built a year earlier, where the roll is followed by a half Immelmann that plunges back down toward the creek.",
+      "In a flying snake dive the train rolls through a heartline roll and, without ever levelling out, drops into a twisting dive that sends it away in the opposite direction. It counts as two inversions, and the two run together closely enough that riders rarely register where one ends and the next begins.\n\nIntamin designed the element in 2005 for Maverick at Cedar Point — and Maverick never got one. Testing showed it would pull excessive force on riders, so it was cut and replaced with an S-curve before the ride opened in 2007. The name outlived the installation it was drawn for. Storm Runner at Hersheypark, built three years earlier, is where you actually ride one: a heartline roll followed by a half Immelmann that plunges back down toward the creek.",
     relatedTermIds: ['heartline-roll', 'dive-drop', 'immelmann', 'inversion', 'intamin'],
   },
   {

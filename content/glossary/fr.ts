@@ -1793,7 +1793,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       "Un tonneau heartline qui enchaîne directement sur un plongeon vrillé : deux inversions qui projettent le train sur le côté.",
     definition:
-      "Dans un flying snake dive, le train traverse un tonneau heartline puis, sans jamais se remettre à plat, bascule dans un plongeon vrillé qui l'envoie dans la direction opposée. Cela compte pour deux inversions, si étroitement enchaînées que l'on distingue rarement où la première s'achève et où la seconde commence.\n\nIntamin a conçu l'élément en 2005 pour Maverick à Cedar Point, l'attraction à laquelle il doit son nom. Storm Runner à Hersheypark en possède un proche parent, construit un an plus tôt, où le tonneau est suivi d'un demi-Immelmann qui replonge vers le ruisseau.",
+      "Dans un flying snake dive, le train traverse un tonneau heartline puis, sans jamais se remettre à plat, bascule dans un plongeon vrillé qui l'envoie dans la direction opposée. Cela compte pour deux inversions, si étroitement enchaînées que l'on distingue rarement où la première s'achève et où la seconde commence.\n\nIntamin a conçu l'élément en 2005 pour Maverick à Cedar Point — et Maverick n'en a jamais eu. Les essais ont montré qu'il soumettrait les passagers à des forces excessives : il a été supprimé et remplacé par une courbe en S avant l'ouverture en 2007. Le nom a survécu à l'installation pour laquelle il avait été dessiné. C'est sur Storm Runner à Hersheypark, construit trois ans plus tôt, que l'on en parcourt réellement un : un tonneau heartline suivi d'un demi-Immelmann qui replonge vers le ruisseau.",
     relatedTermIds: ['heartline-roll', 'dive-drop', 'immelmann', 'inversion', 'intamin'],
   },
   {

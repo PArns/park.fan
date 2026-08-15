@@ -1893,7 +1893,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       "Un heartline roll que desemboca directamente en un picado retorcido: dos inversiones que lanzan el tren hacia un lado.",
     definition:
-      "En un flying snake dive el tren atraviesa un heartline roll y, sin llegar a nivelarse, cae en un picado retorcido que lo envía en la dirección contraria. Cuenta como dos inversiones, tan encadenadas que rara vez se distingue dónde termina una y empieza la otra.\n\nIntamin diseñó el elemento en 2005 para Maverick, en Cedar Point, la atracción que le da nombre. Storm Runner, en Hersheypark, tiene un pariente cercano construido un año antes, en el que al roll le sigue un medio Immelmann que se lanza de nuevo hacia el arroyo.",
+      "En un flying snake dive el tren atraviesa un heartline roll y, sin llegar a nivelarse, cae en un picado retorcido que lo envía en la dirección contraria. Cuenta como dos inversiones, tan encadenadas que rara vez se distingue dónde termina una y empieza la otra.\n\nIntamin diseñó el elemento en 2005 para Maverick, en Cedar Point — y Maverick nunca llegó a tenerlo. Las pruebas mostraron que someteria a los pasajeros a fuerzas excesivas, así que se eliminó y se sustituyó por una curva en S antes de la apertura de 2007. El nombre sobrevivió a la instalación para la que fue dibujado. Donde sí se recorre uno es en Storm Runner, en Hersheypark, construido tres años antes: un heartline roll seguido de un medio Immelmann que se lanza hacia el arroyo.",
     relatedTermIds: ['heartline-roll', 'dive-drop', 'immelmann', 'inversion', 'intamin'],
   },
   {

@@ -1871,7 +1871,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       "Een heartline roll die direct overgaat in een gedraaide duik: twee inversies die de trein zijwaarts wegslingeren.",
     definition:
-      "Bij een flying snake dive draait de trein door een heartline roll en valt, zonder ooit weer horizontaal te komen, in een gedraaide duik die hem de andere kant op stuurt. Het telt als twee inversies, die zo dicht op elkaar volgen dat je zelden merkt waar de een eindigt en de ander begint.\n\nIntamin ontwierp het element in 2005 voor Maverick in Cedar Point, de baan waaraan het zijn naam dankt. Storm Runner in Hersheypark heeft een naaste verwant uit het jaar daarvoor, waarbij op de roll een halve Immelmann volgt die terug naar de beek duikt.",
+      "Bij een flying snake dive draait de trein door een heartline roll en valt, zonder ooit weer horizontaal te komen, in een gedraaide duik die hem de andere kant op stuurt. Het telt als twee inversies, die zo dicht op elkaar volgen dat je zelden merkt waar de een eindigt en de ander begint.\n\nIntamin ontwierp het element in 2005 voor Maverick in Cedar Point — en Maverick kreeg er nooit een. Uit testritten bleek dat het te grote krachten op de inzittenden zou uitoefenen, dus werd het geschrapt en vervangen door een S-bocht vóór de opening in 2007. De naam overleefde de baan waarvoor hij was getekend. Rijden doe je er een op het drie jaar oudere Storm Runner in Hersheypark: een heartline roll gevolgd door een halve Immelmann die terug naar de beek duikt.",
     relatedTermIds: ['heartline-roll', 'dive-drop', 'immelmann', 'inversion', 'intamin'],
   },
   {

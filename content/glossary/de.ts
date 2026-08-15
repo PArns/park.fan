@@ -1873,7 +1873,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       "Eine Heartline-Roll, die direkt in einen gedrehten Sturzflug übergeht — zwei Überschläge, die den Zug seitlich wegwerfen.",
     definition:
-      "Beim Flying Snake Dive dreht sich der Zug durch eine Heartline-Roll und fällt, ohne sich je wieder zu stabilisieren, in einen gedrehten Sturzflug, der ihn in die Gegenrichtung schickt. Das zählt als zwei Überschläge, die so dicht ineinander übergehen, dass kaum jemand merkt, wo der eine endet und der andere beginnt.\n\nIntamin entwarf das Element 2005 für Maverick in Cedar Point — die Anlage, nach der es benannt ist. Der Storm Runner im Hersheypark trägt einen ein Jahr älteren nahen Verwandten, bei dem auf die Roll ein halber Immelmann folgt, der zurück zum Bach hinunterstürzt.",
+      "Beim Flying Snake Dive dreht sich der Zug durch eine Heartline-Roll und fällt, ohne sich je wieder zu stabilisieren, in einen gedrehten Sturzflug, der ihn in die Gegenrichtung schickt. Das zählt als zwei Überschläge, die so dicht ineinander übergehen, dass kaum jemand merkt, wo der eine endet und der andere beginnt.\n\nIntamin entwarf das Element 2005 für Maverick in Cedar Point — und Maverick bekam nie eines. Bei den Testfahrten zeigte sich, dass es zu hohe Kräfte auf die Fahrgäste ausgeübt hätte, also wurde es noch vor der Eröffnung 2007 gestrichen und durch eine S-Kurve ersetzt. Der Name hat die Anlage überlebt, für die er gezeichnet wurde. Fahren kann man eines auf dem drei Jahre älteren Storm Runner im Hersheypark: eine Heartline-Roll, gefolgt von einem halben Immelmann, der zurück zum Bach hinunterstürzt.",
     relatedTermIds: ['heartline-roll', 'dive-drop', 'immelmann', 'inversion', 'intamin'],
   },
   {
