@@ -84,6 +84,14 @@ export function ParkStatsSectionSkeleton() {
           <Skeleton className="h-4 w-64 max-w-full" />
         </div>
         <div className="space-y-0.5">
+          {/* Column headers of the ranking table (rank · attraction · now / typical / peak). */}
+          <div className="flex items-center gap-3 px-2 pb-1">
+            <Skeleton className="h-3 w-20" />
+            <div className="ml-auto flex shrink-0 items-center gap-3">
+              <Skeleton className="hidden h-3 w-10 sm:block" />
+              <Skeleton className="h-3 w-10" />
+            </div>
+          </div>
           {nameWidths.map((w, i) => (
             <AttractionRowSkeleton key={i} nameWidth={w} />
           ))}

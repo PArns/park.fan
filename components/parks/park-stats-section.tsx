@@ -7,8 +7,10 @@ import { ParkStatsCrowdCard } from '@/components/parks/park-stats-crowd-card';
 import { ParkStatsAttractionsCard } from '@/components/parks/park-stats-attractions-card';
 import { ParkStatsSectionSkeleton } from '@/components/parks/park-stats-section-skeleton';
 import { useParkHistoricalStats } from '@/lib/hooks/use-park-historical-stats';
+import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import type { ParkHistoricalStats } from '@/lib/api/types';
+import { getAttractionDisplayStatus } from '@/lib/utils/park-utils';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 
 interface ParkStatsSectionProps {
@@ -80,6 +82,40 @@ function StatsContent({
   locale: string;
 }) {
   const t = useTranslations('parks.stats');
+  const tParks = useTranslations('parks');
+
+  // Live wait times for the "now" column — read from the SHARED cache, never fetched here:
+  // `enabled: false` keeps this observer subscribed to `['park-live', …]` without ever issuing a
+  // request of its own. On the park page `LiveParkData` already polls that key every 5 minutes,
+  // so the column costs nothing on top of the page's API budget; where nothing else subscribes
+  // (the blog stats widget) the cache stays empty and the column simply does not appear.
+  const { data: livePark } = useLiveParkData({
+    continent,
+    country,
+    city,
+    parkSlug,
+    enabled: false,
+  });
+
+  // Standby wait per attraction slug, for OPERATING rides only: a closed ride keeps publishing
+  // `waitTime: 0` (River Quest and Black Mamba both did while the rest of Phantasialand ran), and
+  // a walk-on 0 and a shut ride would otherwise render as the same green zero. Same gate the
+  // attraction cards use, through the same helper, so the two views cannot disagree.
+  //
+  // Everything else falls out of the data: a park whose wait times are unreadable reports every
+  // ride as UNKNOWN with empty `queues`, so it lands here with nothing numeric and the column
+  // never appears — which is the only rule available, since `LiveParkSnapshot` does not carry
+  // `liveWaitTimes` and `hasReadableWaitTimes()` would read an absent flag as "available".
+  const currentWaits = useMemo(() => {
+    const bySlug = new Map<string, number>();
+    for (const attraction of livePark?.attractions ?? []) {
+      if (getAttractionDisplayStatus(attraction, livePark?.status) !== 'OPERATING') continue;
+      const standby = attraction.queues?.find((q) => q.queueType === 'STANDBY');
+      const waitTime = standby && 'waitTime' in standby ? standby.waitTime : null;
+      if (typeof waitTime === 'number') bySlug.set(attraction.slug, waitTime);
+    }
+    return bySlug;
+  }, [livePark?.attractions, livePark?.status]);
 
   // Memoized: this section re-renders on every background poll tick (useLoadLast subscribes
   // to the page-wide fetch count), and Intl.DateTimeFormat construction per row is the
@@ -135,7 +171,10 @@ function StatsContent({
       {stats.topAttractions.length > 0 && (
         <ParkStatsAttractionsCard
           attractions={stats.topAttractions}
+          currentWaits={currentWaits}
           title={t('topAttractionsTitle')}
+          labelAttraction={tParks('attractions')}
+          labelNow={tParks('now')}
           labelP50={t('p50')}
           labelP90={t('p90')}
           continent={continent}

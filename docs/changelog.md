@@ -4,7 +4,35 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
-## Unreleased – the hero search placeholder no longer types
+## 2.11.0 (2026-08-15) – Blog, ride pages, and the load-order work behind them
+
+Two months of work since 2.10.1, released together. The blog went live and grew a link in both
+directions with the park and ride pages; ride pages got a header, measurements and a way into the
+glossary; every image moved into one media database with its own sidecar; and the park page had
+passes on load order, ISR writes, re-renders and the Umami bill. Newest first.
+
+### the top-ten wait times now show what the ride is doing right now
+
+"Typical 29 min / peak 34 min" is a comparison with nothing to compare against, so the ranking of
+the longest waits is a table from `sm` up: rank, ride, **now**, typical, peak. The live number is
+coloured on the shared wait-time scale (`WaitTimeValue`), so a 60 at a ride that typically runs 31
+reads as the outlier it is. Below `sm` the table keeps the two columns it had — rank, ride and
+peak, with the label moved from the row into a header.
+
+The current values cost no request. `useLiveParkData` is already polling `['park-live', …]` for the
+page, and the section subscribes to that key with `enabled: false`: React Query disables the fetch,
+not the subscription, so the column updates with every 5-minute poll and the park page still makes
+exactly one live call. Details and the two catches in
+[api-budget](architecture/api-budget.md#reading-live-data-without-adding-a-request).
+
+A closed ride keeps publishing `waitTime: 0` — River Quest and Black Mamba both did while the rest
+of Phantasialand ran — so the value is only taken when `getAttractionDisplayStatus()` says
+OPERATING, the same gate the attraction cards use. A park with no readable wait times reports every
+ride as UNKNOWN with empty `queues` and therefore contributes no number at all, which is what makes
+the column vanish for it instead of rendering ten dashes: the projection carries no
+`liveWaitTimes`, so the flag itself is not available at that point.
+
+### the hero search placeholder no longer types
 
 The homepage search field used to type park and ride names into its placeholder,
 letter by letter, on a loop. That typewriter is gone: the field shows the
@@ -18,7 +46,7 @@ reported which phrase was on screen, and without the typewriter every click
 would have billed an extra Umami event to say "default". `useActiveOnScreen`
 stays, the countdowns and charts still pause through it.
 
-## Unreleased – fix: the ride measurements credit the right source again
+### fix: the ride measurements credit the right source again
 
 The measurement display shipped against an importer that read the roller-coaster
 database directly. That import is gone — their terms permit the link, not the
@@ -47,7 +75,7 @@ RCDB" over numbers RCDB never supplied, linking to `rcdb.com/undefined.htm`.
   angle, g-force, capacity, riders per train, restraints, designer, builder,
   train builder — along with their translation keys in all six locales.
 
-## Unreleased – cut the Umami event bill, and fix what "visitor" counts
+### cut the Umami event bill, and fix what "visitor" counts
 
 The Hobby plan allows 100k events/month; early August was tracking toward
 ~112k, the second overrun. The cause was not traffic. Umami bills **every event
@@ -89,7 +117,7 @@ rules for adding a property, and what Umami's "unique visitor" actually means
 (hash of website ID, hostname, User-Agent and IP against a salt that rotates
 **monthly**, so a visitor count spanning a month boundary is not deduplicated).
 
-## Unreleased – park and ride pages link into the blog
+### park and ride pages link into the blog
 
 The blog linked into the catalog from day one (`ref:europa-park`, spotlight
 cards, widgets); the catalog never linked back. A reader on the Phantasialand
@@ -142,7 +170,7 @@ page had no way of knowing a 4.700-word guide to that park existed.
 
 ---
 
-## Unreleased – fix: blog posts stop reporting a park and its rides as closed
+### fix: blog posts stop reporting a park and its rides as closed
 
 The Phantasialand guide showed the park as open and **all twelve** coasters it
 names as "Geschlossen", in the middle of an operating day.
@@ -209,7 +237,7 @@ See [caching-strategy](architecture/caching-strategy.md#minimizing-isr-writes-ju
 
 ---
 
-## Unreleased – feat: a ride's measurements, in the visitor's units
+### feat: a ride's measurements, in the visitor's units
 
 The ride page can now say how fast, how long, how tall and how steep — the
 numbers the API imports from RCDB (see the backend changelog). Top speed sits
@@ -237,7 +265,7 @@ record the numbers came from.
 - The glossary term page's ride section goes through `PageSection` like the
   ride page's chapters, so the two cannot drift apart again.
 
-## Unreleased – fix: the ride header's facts say what they are
+### fix: the ride header's facts say what they are
 
 Follow-up to the header cleanup below. The facts band was a row of values with
 no nouns on them: a wrench and "Intamin", a calendar and "2016", and "RCDB" —
@@ -269,7 +297,7 @@ readable if you already knew what each one meant, a guess otherwise, and the
   and definition — stranded under a five-second animation it was a footnote to
   a video nobody had finished.
 
-## Unreleased – fix: the ride page header, and every section on it, reads like the park page
+### fix: the ride page header, and every section on it, reads like the park page
 
 The ride header had grown a row at a time and no longer matched the park
 header it sits under — and the intro paragraph below it was printed straight
@@ -307,7 +335,7 @@ onto the hero photo, where it was unreadable.
   animation — you tapped the figure to find out what it is, so reading the
   caption afterwards meant spending the animation guessing.
 
-## Unreleased – feat: rides and the glossary now link to each other
+### feat: rides and the glossary now link to each other
 
 A ride page could say "Black Mamba is an inverted coaster with four
 inversions", but that was a dead end. Rides now carry a curated profile from
@@ -340,7 +368,7 @@ stored as glossary term ids, so the link works both ways.
 
 → [glossary](features/glossary.md#ride--glossary-link)
 
-## Unreleased – fix: the bright blue hairline along the weather card's bottom edge
+### fix: the bright blue hairline along the weather card's bottom edge
 
 The weather card ended in a 1px, fully saturated sky-blue line across its whole bottom edge —
 `#448ad1` against the `#1a324b` interior on a clear day, and the same untinted-gradient line in
@@ -363,7 +391,7 @@ _everything_ need to overhang.
 
 ---
 
-## Unreleased – fix: a single Back left the next page at the previous scroll offset
+### fix: a single Back left the next page at the previous scroll offset
 
 Clicking a blog card low on the homepage kept the homepage's scroll offset instead of opening the
 post at the top. It needed one back/forward navigation anywhere earlier in the session to trigger,
@@ -391,7 +419,7 @@ The `history.pushState`/`replaceState` patch `NavigationProgress` carried now li
 
 ---
 
-## Unreleased – perf: hero image loading, and why wide screens look soft
+### perf: hero image loading, and why wide screens look soft
 
 `backgroundImageLoader` used a single cutoff — `≤1080 → q50`, everything above → q75 — which lumped a
 1440px desktop in with a 3440px ultrawide. It now **bands quality by how wide the rendition will
@@ -444,7 +472,7 @@ layer's animation clock still starts together and crossfades stay in phase.
 
 ---
 
-## Unreleased – backend: park crowd levels now measure the park, not its busiest ride
+### backend: park crowd levels now measure the park, not its busiest ride
 
 No frontend code change, but the numbers on the park page move — worth knowing when a
 screenshot from before this date disagrees with the live site.
@@ -475,7 +503,7 @@ not a gap.
 
 ---
 
-## Unreleased – fix: late-load flicker sweep (homepage, park-page weather, search)
+### fix: late-load flicker sweep (homepage, park-page weather, search)
 
 Fixes the remaining "flickers once or twice a few seconds after load" reports. Root causes were
 found empirically (headless Chromium + MutationObserver/layout-shift tracing on the built app).
@@ -503,7 +531,7 @@ found empirically (headless Chromium + MutationObserver/layout-shift tracing on 
 
 ---
 
-## Unreleased – perf: re-render sweep (map re-pan fix, memoized grids/markers)
+### perf: re-render sweep (map re-pan fix, memoized grids/markers)
 
 Follow-up render-churn pass on top of the code-quality sweep; no user-facing behaviour changes
 except the map fix, which removes an unwanted motion.
@@ -525,7 +553,7 @@ except the map fix, which removes an unwanted motion.
 
 ---
 
-## Unreleased – refactor: code-quality sweep (dedup, component splits, client→server, repaint gates, stale docs)
+### refactor: code-quality sweep (dedup, component splits, client→server, repaint gates, stale docs)
 
 Cross-cutting cleanup driven by a full-codebase audit; no user-facing behavior changes intended.
 
@@ -573,7 +601,7 @@ Cross-cutting cleanup driven by a full-codebase audit; no user-facing behavior c
 
 ---
 
-## Unreleased – feat: header "Prognose heute" opens the day-detail dialog (+ day navigation, park-tz times)
+### feat: header "Prognose heute" opens the day-detail dialog (+ day navigation, park-tz times)
 
 The forecast cell in the park-header stats band is now clickable and opens the SAME
 day-detail dialog the crowd calendar shows when clicking today (status & hours, live vs.
@@ -609,7 +637,7 @@ forecast split, headliner waits, hourly prediction chart, weather, holiday conte
   The panel's region chips now also carry their country's flag emoji (🇩🇪 Hessen · 🇳🇱
   Niederlande · 🇧🇪 Belgien), matching the dialog's visual language.
 
-## Unreleased – perf: page-wide re-render/flicker sweep (memory & repaint fixes)
+### perf: page-wide re-render/flicker sweep (memory & repaint fixes)
 
 Audit of all pages for state/effect patterns that forced unnecessary re-renders, repaints or
 leaked resources — the source of intermittent visible flicker.
@@ -660,7 +688,7 @@ leaked resources — the source of intermittent visible flicker.
   ticker, `holiday` object in `useTodaySchedule` memoized, blob-URL cleanup in the contribute
   photo dropzone no longer closes over the first render's empty list.
 
-## Unreleased – perf: best-days seed streams instead of blocking park-page TTFB
+### perf: best-days seed streams instead of blocking park-page TTFB
 
 Cold-start latency fix. The best-days SEO seed (`getBestDaysCalendarSeed`) was `await`ed on the
 park page's render critical path, so a cold `/best-days` fetch (~0.4–1 s, occasionally slower than
@@ -683,7 +711,7 @@ noticeable cold-start regression on `force-dynamic` park pages (no edge-cached H
   (e.g. 0.42 s) instead of park + seed serialized; a park whose snapshot fetch is itself slow cold
   (~0.9 s) is unchanged (that's the park fetch, not the seed). No hydration errors; forecast intact.
 
-## Unreleased – SEO: park best-days now read the precomputed /best-days endpoint
+### SEO: park best-days now read the precomputed /best-days endpoint
 
 Follow-up to the "core content in first HTML" work, now that the backend ships the precomputed
 best-days endpoint (PArns/v4.api.park.fan#94). The best-days section, crowd FAQ and header
@@ -708,7 +736,7 @@ best-days endpoint (PArns/v4.api.park.fan#94). The best-days section, crowd FAQ 
   day); with the backend payload diet its default body is now ~50 KB instead of ~2.25 MB.
 - Loading-priority REQUIREMENT untouched: the client best-days query stays `useLoadLast`-deferred.
 
-## Unreleased – SEO: park pages ship their core content in the first HTML again
+### SEO: park pages ship their core content in the first HTML again
 
 Competitor SERP analysis (July 2026, "phantasialand wartezeiten" & co.) found the park page's
 initial HTML contained **no attraction names, no attraction links and no best-days text** — the
@@ -737,7 +765,7 @@ was client-only. wartezeiten.app/queue-times serve exactly this content statical
   [caching-strategy](architecture/caching-strategy.md); freshness is signalled honestly via the
   rendered "Datenstand" instead.
 
-## Unreleased – Hottest-parks banner: centered layout for a partial heat wave
+### Hottest-parks banner: centered layout for a partial heat wave
 
 The homepage heat banner ([`HottestParksSection`](../components/home/hottest-parks-section.tsx))
 switched from a fixed 3-column grid to a **centered flex-wrap** row of fixed-width (`w-72`)
@@ -745,7 +773,7 @@ cards. When only 1–2 parks in DE/FR/IT/NL/BE cross the 35 °C threshold, the c
 centered instead of left-aligning and leaving an empty trailing column. Three cards still fill
 `max-w-4xl` exactly; the ≥ 35 °C visibility trigger is unchanged.
 
-## Unreleased – Blog: German-first launch (welcome post live in DE only)
+### Blog: German-first launch (welcome post live in DE only)
 
 The rewritten founder-story welcome post goes **published for DE**; EN stays draft until the
 translations are polished. To make a single-locale launch clean, blog visibility is now
@@ -760,7 +788,7 @@ translations are polished. To make a single-locale launch clean, blog visibility
 - `app/sitemap.ts` blog section iterates only blog-live locales (incl. blog-scoped hreflang
   alternates for index/category/tag/author entries).
 
-## Unreleased – SEO: hub + attraction pages join the sitemaps
+### SEO: hub + attraction pages join the sitemaps
 
 SERP checks (July 2026) showed the missing long-tail surface: queue-times/wartezeiten.app rank
 their per-ride pages for "taron wartezeit"-style queries and country overviews rank for
@@ -780,7 +808,7 @@ crawl-budget decision, explicitly marked "revisit"). Changes — see
 
 ---
 
-## Unreleased – SEO: heal re-slugged geo URLs (google.de showed English/no German pages)
+### SEO: heal re-slugged geo URLs (google.de showed English/no German pages)
 
 The API's umlaut transliteration change re-slugged German cities (`bruhl` → `bruehl`,
 `gunzburg` → `guenzburg`), so every previously indexed Phantasialand + Legoland-Deutschland
@@ -820,7 +848,7 @@ redirects for the old URLs:
 
 ---
 
-## Unreleased – ISR writes: hourly homepage shell, client-live overlays, on-demand revalidation
+### ISR writes: hourly homepage shell, client-live overlays, on-demand revalidation
 
 Vercel ISR Write Units had climbed back to ~45–100k/day (614k for Jun 19 – Jul 2). Root cause:
 the Jun 22 homepage change (static 5-min shell) — 6 locales × up to 288 regenerations/day ×
@@ -849,7 +877,7 @@ every 5 min **and pinned every route embedding the slot** (blog, glossary terms,
 
 ---
 
-## Unreleased – "Hottest parks" heat banner on the homepage
+### "Hottest parks" heat banner on the homepage
 
 A Saisonstart-style homepage section that surfaces the **3 hottest parks** in
 **Germany, France, Italy, the Netherlands and Belgium** during a heat wave, each with a
@@ -872,7 +900,7 @@ venues are excluded. See [hottest-parks-heat-banner](features/hottest-parks-heat
 
 ---
 
-## Unreleased – Heat warning threshold raised to 35 °C
+### Heat warning threshold raised to 35 °C
 
 The heat warning now triggers at **≥ 35 °C (95 °F)** (was > 30 °C). Single constant
 `HEAT_WARNING_THRESHOLD_C` in `components/parks/heat-warning-badge.tsx` plus the tooltip
@@ -880,7 +908,7 @@ copy in `messages/*.json`. Severe-weather day warnings are unchanged.
 
 ---
 
-## Unreleased – Heat warning badge on the weather card
+### Heat warning badge on the weather card
 
 Temperatures above **30 °C (86 °F)** now show a real road-sign style warning triangle — red
 border, white background and a black "!" (SVG) — next to the affected temperature. It appears
@@ -904,7 +932,7 @@ tooltip that lists every reason.
 
 ---
 
-## Unreleased – Homepage sections server-rendered into the 5-min shell
+### Homepage sections server-rendered into the 5-min shell
 
 The homepage's data sections — **Featured Parks** ("beliebte Parks"), **Global/Platform Stats** and
 **"Parks open now"** — now render **server-side into the 5-min static shell** instead of fetching
@@ -933,7 +961,7 @@ paint, and the content now lands in the prerendered HTML (better LCP, SEO, no-JS
 
 ---
 
-## Unreleased – No more scrollbar flicker when opening popups
+### No more scrollbar flicker when opening popups
 
 Opening any Radix popup (language switcher dropdown, dialog, popover, command palette,
 mobile sheet) made the whole page flicker horizontally: `react-remove-scroll` locks the
@@ -959,7 +987,7 @@ full-bleed sections — widened by the scrollbar's width and snapped back on clo
 
 ---
 
-## Unreleased – Glassier popups (dropdowns & popovers)
+### Glassier popups (dropdowns & popovers)
 
 Dropdown menus (e.g. the language switcher) and popovers were flat opaque boxes. They now
 match the site's glass aesthetic: a translucent, `backdrop-blur-xl` surface
@@ -970,7 +998,7 @@ transition on hover. Shared via `components/ui/dropdown-menu.tsx` +
 
 ---
 
-## Unreleased – Park page load order: weather first, best travel time last
+### Park page load order: weather first, best travel time last
 
 Two loading fixes on the park page, plus a stale-cache fix that made the hourly weather
 day view randomly disappear.
@@ -1003,7 +1031,7 @@ day view randomly disappear.
 
 ---
 
-## Unreleased – Hourly day view in the weather card
+### Hourly day view in the weather card
 
 Weather-app style detail view for today inside the park weather card: smoothed temperature
 curve with min/max labels, rain bars per hour, a "now" marker (past hours dimmed) and
@@ -1027,7 +1055,7 @@ weather icons every 3 h. Shown only when the park has a live nowcast.
 
 ---
 
-## Unreleased – Rope-drop recommendations
+### Rope-drop recommendations
 
 Surfaces the API's precomputed rope-drop data (backend PR #67): is it worth arriving at park
 opening for a headliner, and until when does the advantage last.
