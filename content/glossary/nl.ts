@@ -1846,6 +1846,35 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['sea serpent', 'roll over'],
   },
   {
+    id: 'cobra-loop',
+    name: "Cobra Loop",
+    shortDefinition:
+      "De naam die Hersheypark gaf aan de eerste inversie van Storm Runner: een looping waar de trein zijwaarts uit draait in plaats van hem af te maken.",
+    definition:
+      "Een cobra loop klimt als een verticale looping en draait bovenin zijwaarts weg in plaats van er aan de andere kant weer uit te komen — de trein verlaat het element dus in een andere richting dan hij erin reed. Hij keert de inzittenden één keer om.\n\nDe naam hoort bij één baan. Intamin bouwde het element in 2004 voor Storm Runner in Hersheypark, en het park bracht het op de markt als 's werelds eerste cobra loop; qua geometrie is het wat andere fabrikanten een sidewinder noemen. Waar een cobra roll twee van deze vormen aan elkaar zet en de trein omkeert, is de cobra loop daar maar de helft van.",
+    relatedTermIds: ['sidewinder', 'cobra-roll', 'vertical-loop', 'inversion', 'intamin'],
+    alternateNames: ['Sidewinder'],
+  },
+  {
+    id: 'jojo-roll',
+    name: "Jojo Roll",
+    shortDefinition:
+      "Een langzame heartline roll direct na het station, voordat de trein iets beklommen heeft.",
+    definition:
+      "Een jojo roll is een heartline roll van 360 graden vlak na het station, waarbij de trein nauwelijks sneller dan stapvoets over de kop gaat. Doordat er bijna geen snelheid achter zit, hangen de inzittenden in hun beugels in plaats van in de stoel gedrukt te worden — precies het omgekeerde van dezelfde figuur op volle snelheid verderop in de baan.\n\nHydra: The Revenge in Dorney Park introduceerde hem in 2005. Het element werd voorgesteld door het hoofd onderhoud en bouw van het park, Joe Greene, naar wie het vernoemd is. Copperhead Strike in Carowinds heeft er inmiddels ook een.",
+    relatedTermIds: ['heartline-roll', 'inversion', 'hangtime', 'lifthill'],
+    aliases: ['Jojo Rolls', 'JoJo Roll'],
+  },
+  {
+    id: 'flying-snake-dive',
+    name: "Flying Snake Dive",
+    shortDefinition:
+      "Een heartline roll die direct overgaat in een gedraaide duik: twee inversies die de trein zijwaarts wegslingeren.",
+    definition:
+      "Bij een flying snake dive draait de trein door een heartline roll en valt, zonder ooit weer horizontaal te komen, in een gedraaide duik die hem de andere kant op stuurt. Het telt als twee inversies, die zo dicht op elkaar volgen dat je zelden merkt waar de een eindigt en de ander begint.\n\nIntamin ontwierp het element in 2005 voor Maverick in Cedar Point, de baan waaraan het zijn naam dankt. Storm Runner in Hersheypark heeft een naaste verwant uit het jaar daarvoor, waarbij op de roll een halve Immelmann volgt die terug naar de beek duikt.",
+    relatedTermIds: ['heartline-roll', 'dive-drop', 'immelmann', 'inversion', 'intamin'],
+  },
+  {
     id: 'barrel-roll-drop',
     name: 'Barrel Roll Drop',
     shortDefinition:

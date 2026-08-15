@@ -1712,6 +1712,35 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['roll over'],
   },
   {
+    id: 'cobra-loop',
+    name: "Cobra Loop",
+    shortDefinition:
+      "The name Hersheypark gave the first inversion on Storm Runner: a loop the train twists out of, sideways, instead of completing.",
+    definition:
+      "A cobra loop climbs like a vertical loop and then, at the top, twists out to one side rather than coming back down the way a loop would — so the train leaves the element travelling in a different direction from the one it entered. It inverts riders once.\n\nThe name belongs to one ride. Intamin built the element for Storm Runner at Hersheypark in 2004 and the park marketed it as the world's first cobra loop; in geometry it is what other manufacturers call a sidewinder. Where a cobra roll pairs two of these back to back and reverses the train, the cobra loop is a single half of that shape.",
+    relatedTermIds: ['sidewinder', 'cobra-roll', 'vertical-loop', 'inversion', 'intamin'],
+    alternateNames: ['Sidewinder'],
+  },
+  {
+    id: 'jojo-roll',
+    name: "Jojo Roll",
+    shortDefinition:
+      "A slow heartline roll taken straight out of the station, before the train has climbed anything.",
+    definition:
+      "A jojo roll is a 360-degree heartline roll placed immediately after the station, so the train rolls upside down at little more than walking pace. Because there is almost no speed behind it, riders hang in their restraints rather than being pressed into the seat — the opposite sensation to the same figure taken at full speed later in a layout.\n\nHydra: The Revenge at Dorney Park introduced it in 2005. The element was suggested by the park's vice president of maintenance and construction, Joe Greene, and named after him. Copperhead Strike at Carowinds has since been built with one.",
+    relatedTermIds: ['heartline-roll', 'inversion', 'hangtime', 'lifthill'],
+    aliases: ['Jojo Rolls', 'JoJo Roll'],
+  },
+  {
+    id: 'flying-snake-dive',
+    name: "Flying Snake Dive",
+    shortDefinition:
+      "A heartline roll that runs straight into a twisting dive, inverting riders twice and throwing the train off to the side.",
+    definition:
+      "In a flying snake dive the train rolls through a heartline roll and, without ever levelling out, drops into a twisting dive that sends it away in the opposite direction. It counts as two inversions, and the two run together closely enough that riders rarely register where one ends and the next begins.\n\nIntamin designed the element in 2005 for Maverick at Cedar Point, which remains the version it is named for. Storm Runner at Hersheypark carries a close relative built a year earlier, where the roll is followed by a half Immelmann that plunges back down toward the creek.",
+    relatedTermIds: ['heartline-roll', 'dive-drop', 'immelmann', 'inversion', 'intamin'],
+  },
+  {
     id: 'barrel-roll-drop',
     name: 'Barrel Roll Drop',
     shortDefinition:

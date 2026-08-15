@@ -2089,6 +2089,42 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
     player: { element: 'sea-serpent' },
   },
   {
+    id: 'cobra-loop',
+    category: 'coaster-elements',
+    slugs: {
+      en: 'cobra-loop',
+      de: 'cobra-loop',
+      fr: 'cobra-loop',
+      it: 'cobra-loop',
+      nl: 'cobra-loop',
+      es: 'cobra-loop',
+    },
+  },
+  {
+    id: 'jojo-roll',
+    category: 'coaster-elements',
+    slugs: {
+      en: 'jojo-roll',
+      de: 'jojo-roll',
+      fr: 'jojo-roll',
+      it: 'jojo-roll',
+      nl: 'jojo-roll',
+      es: 'jojo-roll',
+    },
+  },
+  {
+    id: 'flying-snake-dive',
+    category: 'coaster-elements',
+    slugs: {
+      en: 'flying-snake-dive',
+      de: 'flying-snake-dive',
+      fr: 'flying-snake-dive',
+      it: 'flying-snake-dive',
+      nl: 'flying-snake-dive',
+      es: 'flying-snake-dive',
+    },
+  },
+  {
     id: 'barrel-roll-drop',
     category: 'coaster-elements',
     slugs: {

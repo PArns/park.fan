@@ -71,6 +71,9 @@ const KINDS: Record<string, ElementKind> = {
   'twisted-horseshoe-roll': 'inversion',
   'celestial-spin': 'inversion',
   stall: 'inversion',
+  'cobra-loop': 'inversion',
+  'jojo-roll': 'inversion',
+  'flying-snake-dive': 'inversion',
 
   // — direction changes —
   helix: 'turn',

@@ -1868,6 +1868,35 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['sea serpent', 'roll over'],
   },
   {
+    id: 'cobra-loop',
+    name: "Cobra Loop",
+    shortDefinition:
+      "El nombre que Hersheypark dio a la primera inversión de Storm Runner: un looping del que el tren sale de lado en vez de completarlo.",
+    definition:
+      "Un cobra loop asciende como un looping vertical y, en lo alto, se retuerce hacia un lado en lugar de bajar por el otro — el tren abandona el elemento en una dirección distinta a la de entrada. Invierte a los pasajeros una vez.\n\nEl nombre pertenece a una sola atracción. Intamin construyó el elemento para Storm Runner en Hersheypark en 2004 y el parque lo promocionó como el primer cobra loop del mundo; geométricamente es lo que otros fabricantes llaman sidewinder. Donde un cobra roll encadena dos de estas formas e invierte la marcha del tren, el cobra loop es solo la mitad.",
+    relatedTermIds: ['sidewinder', 'cobra-roll', 'vertical-loop', 'inversion', 'intamin'],
+    alternateNames: ['Sidewinder'],
+  },
+  {
+    id: 'jojo-roll',
+    name: "Jojo Roll",
+    shortDefinition:
+      "Un heartline roll lento, tomado nada más salir de la estación, antes de que el tren haya subido nada.",
+    definition:
+      "Un jojo roll es un heartline roll de 360 grados situado justo después de la estación: el tren se pone boca abajo a poco más que velocidad de paseo. Como apenas hay impulso, los pasajeros quedan colgando de los arneses en lugar de ser presionados contra el asiento — la sensación opuesta a la de la misma figura tomada a toda velocidad más adelante en el trazado.\n\nHydra: The Revenge, en Dorney Park, lo estrenó en 2005. El elemento fue propuesto por el responsable de mantenimiento y construcción del parque, Joe Greene, de quien toma el nombre. Copperhead Strike, en Carowinds, también cuenta con uno.",
+    relatedTermIds: ['heartline-roll', 'inversion', 'hangtime', 'lifthill'],
+    aliases: ['Jojo Rolls', 'JoJo Roll'],
+  },
+  {
+    id: 'flying-snake-dive',
+    name: "Flying Snake Dive",
+    shortDefinition:
+      "Un heartline roll que desemboca directamente en un picado retorcido: dos inversiones que lanzan el tren hacia un lado.",
+    definition:
+      "En un flying snake dive el tren atraviesa un heartline roll y, sin llegar a nivelarse, cae en un picado retorcido que lo envía en la dirección contraria. Cuenta como dos inversiones, tan encadenadas que rara vez se distingue dónde termina una y empieza la otra.\n\nIntamin diseñó el elemento en 2005 para Maverick, en Cedar Point, la atracción que le da nombre. Storm Runner, en Hersheypark, tiene un pariente cercano construido un año antes, en el que al roll le sigue un medio Immelmann que se lanza de nuevo hacia el arroyo.",
+    relatedTermIds: ['heartline-roll', 'dive-drop', 'immelmann', 'inversion', 'intamin'],
+  },
+  {
     id: 'barrel-roll-drop',
     name: 'Barrel Roll Drop',
     shortDefinition:
