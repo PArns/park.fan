@@ -14,6 +14,12 @@ import { getGlossaryTerms } from '@/lib/glossary/translations';
  * the API fetches this and diffs it against the ids actually stored in
  * `attraction_ride_profiles`.
  *
+ * Deliberately a SINGLE path segment, like its `glossary-search` neighbour.
+ * `/api/glossary/term-ids` looks tidier and is a trap: three segments make it
+ * match `app/[locale]/glossary/[term]` — the term page then renders with
+ * `locale = "api"` and dies on `Cannot find module '@/content/glossary/api'`.
+ * The proxy matcher excludes `/api`, so nothing upstream saves you from it.
+ *
  * The ids come from `getGlossaryTerms`, NOT straight from `data.ts`, and the
  * difference matters: a term with no translation for a locale is dropped when
  * the term list is built, so it would not render even though `data.ts` lists
