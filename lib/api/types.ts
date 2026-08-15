@@ -3,9 +3,15 @@
 // ============================================================================
 
 export type ParkStatus = 'OPERATING' | 'CLOSED' | 'UNKNOWN';
-// 'UNKNOWN' reaches `effectiveStatus` when the park is open but its wait times are
-// unreadable (see `LiveWaitTimes`) — the API stops guessing rather than reporting
-// every ride as running. Raw `status` stays on the four upstream values.
+// 'UNKNOWN' means "no information", never "closed". Two ways it arrives:
+//   - whole park: its wait times are unreadable (see `LiveWaitTimes`), so every
+//     ride's `effectiveStatus` is UNKNOWN rather than a guess;
+//   - single ride: no upstream source has reported it for 24h+ while the park
+//     runs normally. ThemeParks.wiki dropped ~140 rides across ten parks from
+//     its live feed this way, and they read as closed for weeks until the API
+//     stopped serving its own bookkeeping as the operator's word.
+// So raw `status` can be UNKNOWN too — it is no longer only the four upstream
+// values. `queues` is emptied in both cases; there is no wait time to read.
 export type AttractionStatus = 'OPERATING' | 'DOWN' | 'CLOSED' | 'REFURBISHMENT' | 'UNKNOWN';
 
 /**
