@@ -4,6 +4,19 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: the live column no longer disappears at opening time
+
+The "now" column decided whether to exist by asking whether any of the ten rides in the table had a
+wait time. That looked equivalent to "is there live data" and is not. Phantasialand at 09:37 has 14
+rides open and every one of them is a carousel or a walk-through — no headliner in the top ten was
+running yet, so the column was gone from a park that was very much operating, and would have popped
+back in mid-session the moment Taron opened.
+
+It is a question about the park, so the park answers it: the column is there when the park is
+OPERATING, its wait times are readable, and a live snapshot has reached the section. A ride that is
+closed while the park is open shows a dash, which is a fact about that ride rather than a reason to
+drop the column for the other nine.
+
 ## 2.11.0 (2026-08-15) – Blog, ride pages, and the load-order work behind them
 
 Two months of work since 2.10.1, released together. The blog went live and grew a link in both

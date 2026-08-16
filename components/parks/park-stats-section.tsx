@@ -139,6 +139,18 @@ function StatsContent({
     return bySlug;
   }, [liveAttractions, liveParkStatus, hasLiveWaitTimes]);
 
+  // Whether the column is there at all is a question about the PARK, not about the ten rides in
+  // this table. Deriving it from "does any of them have a number" looked equivalent and is not:
+  // Phantasialand at 09:37 has 14 rides open and every one of them is a carousel, so the whole
+  // column vanished from a park that was running — and would have popped back in mid-session, one
+  // layout jump, the moment Taron opened. A ride that is closed while the park is open gets a dash;
+  // that is a fact about the ride and reads as one.
+  //
+  // The park being shut is the case with nothing to say, and so is a park whose wait times cannot
+  // be read (`hasLiveWaitTimes`, from the API's curated flag) or one whose live snapshot has not
+  // reached this observer's cache at all (the blog widget, where nothing else subscribes).
+  const showCurrentWaits = hasLiveWaitTimes && !!livePark && liveParkStatus === 'OPERATING';
+
   // Memoized: this section re-renders on every background poll tick (useLoadLast subscribes
   // to the page-wide fetch count), and Intl.DateTimeFormat construction per row is the
   // expensive part.
@@ -194,6 +206,7 @@ function StatsContent({
         <ParkStatsAttractionsCard
           attractions={stats.topAttractions}
           currentWaits={currentWaits}
+          showCurrentWaits={showCurrentWaits}
           title={t('topAttractionsTitle')}
           labelAttraction={tParks('attractions')}
           labelNow={tParks('now')}
