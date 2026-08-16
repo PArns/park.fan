@@ -517,7 +517,7 @@ parc le plus fréquenté du monde : une charge de base plus élevée, mais rép
 sur des dizaines d'attractions. Observez à quel point les minutes « typiques »
 et la courbe saisonnière diffèrent déjà sur l'année.
 
-```stats-widget slug=disney-magic-kingdom
+```stats-widget slug=magic-kingdom-park
 
 ```
 

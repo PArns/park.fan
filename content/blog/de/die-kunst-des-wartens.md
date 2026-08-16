@@ -501,7 +501,7 @@ meistbesuchte Park der Welt: höhere Grundlast, aber breiter verteilt über
 Dutzende Attraktionen. Achte darauf, wie unterschiedlich schon die „typischen“
 Minuten und die Saison-Kurve über das Jahr aussehen.
 
-```stats-widget slug=disney-magic-kingdom
+```stats-widget slug=magic-kingdom-park
 
 ```
 

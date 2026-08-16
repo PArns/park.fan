@@ -487,7 +487,7 @@ drukstbezochte park ter wereld: een hogere basislast, maar breder verdeeld over
 tientallen attracties. Let op hoe verschillend alleen al de “typische” minuten
 en de seizoenscurve over het jaar eruitzien.
 
-```stats-widget slug=disney-magic-kingdom
+```stats-widget slug=magic-kingdom-park
 
 ```
 

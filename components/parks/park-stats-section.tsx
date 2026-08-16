@@ -8,6 +8,7 @@ import { ParkStatsAttractionsCard } from '@/components/parks/park-stats-attracti
 import { ParkStatsSectionSkeleton } from '@/components/parks/park-stats-section-skeleton';
 import { useParkHistoricalStats } from '@/lib/hooks/use-park-historical-stats';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
+import { useParkWaitTimes } from '@/lib/hooks/use-park-wait-times';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import type { AttractionStatus, ParkHistoricalStats } from '@/lib/api/types';
 import { getAttractionDisplayStatus } from '@/lib/utils/park-utils';
@@ -101,7 +102,7 @@ function StatsContent({
   // `enabled: false` keeps this observer subscribed to `['park-live', …]` without ever issuing a
   // request of its own. On the park page `LiveParkData` already polls that key every 5 minutes,
   // so the column costs nothing on top of the page's API budget; where nothing else subscribes
-  // (the blog stats widget) the cache stays empty and the column simply does not appear.
+  // (a blog post without a weather widget) this one stays empty and the fallback below answers.
   const { data: livePark } = useLiveParkData({
     continent,
     country,
@@ -109,6 +110,14 @@ function StatsContent({
     parkSlug,
     enabled: false,
   });
+
+  // Second source, same deal: cache-only, `enabled: false`, no request of its own. A blog post
+  // does not mount `LiveParkData`, so `['park-live', …]` is usually empty there — but a post that
+  // names rides of this park has already filled `['park-wait-times', …]` through its `ref:`
+  // references, and that 9 KB payload carries exactly what this column needs (park status, plus
+  // status and standby wait per slug). Measured on `die-kunst-des-wartens`: eleven wait-time
+  // fetches on the page, one of them for the very park its stats widget shows.
+  const { live: waitTimes } = useParkWaitTimes(continent, country, city, parkSlug, false);
 
   // Standby wait per attraction slug, for OPERATING rides only: a closed ride keeps publishing
   // `waitTime: 0` (River Quest and Black Mamba both did while the rest of Phantasialand ran), so
@@ -123,21 +132,32 @@ function StatsContent({
   // Read out here rather than as `livePark?.x` inside the memo: the React Compiler infers
   // `livePark` as the dependency then and refuses to preserve the memoization.
   const liveAttractions = livePark?.attractions;
-  const liveParkStatus = livePark?.status;
+  const ridesBySlug = waitTimes?.ridesBySlug;
+  const parkStatus = livePark?.status ?? waitTimes?.parkStatus;
   const currentWaits = useMemo(() => {
     const bySlug = new Map<string, number>();
-    if (!hasLiveWaitTimes || (liveParkStatus && liveParkStatus !== 'OPERATING')) return bySlug;
-    for (const attraction of liveAttractions ?? []) {
-      const status =
-        (attraction as { effectiveStatus?: AttractionStatus }).effectiveStatus ??
-        getAttractionDisplayStatus(attraction, liveParkStatus);
-      if (status !== 'OPERATING') continue;
-      const standby = attraction.queues?.find((q) => q.queueType === 'STANDBY');
-      const waitTime = standby && 'waitTime' in standby ? standby.waitTime : null;
-      if (typeof waitTime === 'number') bySlug.set(attraction.slug, waitTime);
+    if (!hasLiveWaitTimes || (parkStatus && parkStatus !== 'OPERATING')) return bySlug;
+    if (liveAttractions) {
+      for (const attraction of liveAttractions) {
+        const status =
+          (attraction as { effectiveStatus?: AttractionStatus }).effectiveStatus ??
+          getAttractionDisplayStatus(attraction, parkStatus);
+        if (status !== 'OPERATING') continue;
+        const standby = attraction.queues?.find((q) => q.queueType === 'STANDBY');
+        const waitTime = standby && 'waitTime' in standby ? standby.waitTime : null;
+        if (typeof waitTime === 'number') bySlug.set(attraction.slug, waitTime);
+      }
+      return bySlug;
+    }
+    // The wait-times payload has no `effectiveStatus` — it is queue rows and nothing else. So a
+    // ride whose feed went quiet keeps the wait it last published here, where the park page would
+    // have caught it. Worth the trade: the alternative on a blog post is no live column at all.
+    for (const [slug, ride] of Object.entries(ridesBySlug ?? {})) {
+      if (ride.status !== 'OPERATING') continue;
+      if (typeof ride.waitTime === 'number') bySlug.set(slug, ride.waitTime);
     }
     return bySlug;
-  }, [liveAttractions, liveParkStatus, hasLiveWaitTimes]);
+  }, [liveAttractions, ridesBySlug, parkStatus, hasLiveWaitTimes]);
 
   // Whether the column is there at all is a question about the PARK, not about the ten rides in
   // this table. Deriving it from "does any of them have a number" looked equivalent and is not:
@@ -149,7 +169,8 @@ function StatsContent({
   // The park being shut is the case with nothing to say, and so is a park whose wait times cannot
   // be read (`hasLiveWaitTimes`, from the API's curated flag) or one whose live snapshot has not
   // reached this observer's cache at all (the blog widget, where nothing else subscribes).
-  const showCurrentWaits = hasLiveWaitTimes && !!livePark && liveParkStatus === 'OPERATING';
+  const showCurrentWaits =
+    hasLiveWaitTimes && (!!livePark || !!waitTimes) && parkStatus === 'OPERATING';
 
   // Memoized: this section re-renders on every background poll tick (useLoadLast subscribes
   // to the page-wide fetch count), and Intl.DateTimeFormat construction per row is the

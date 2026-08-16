@@ -4,6 +4,28 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: the blog's copy of the top-ten table gets its live column too
+
+The stats widget renders the same `ParkStatsSection` as the park page, and on a blog post its live
+column was effectively never there: nothing on such a page subscribes to `['park-live', …]` unless
+the post happens to include a weather widget as well.
+
+The data was already on the page. A post that names rides of a park fetches
+`/api/parks/<geo>/<park>/wait-times` for its `ref:` references — 9 KB carrying park status plus
+status and standby wait per slug, which is exactly what the column needs. `die-kunst-des-wartens`
+makes eleven of those calls, one of them for the very park its stats widget shows, and the table
+ignored all of it. `ParkStatsSection` now reads that cache as a second source, `enabled: false`
+like the first one, so it still issues no request of its own.
+
+The wait-times payload is queue rows and nothing else, so the `effectiveStatus` check the park page
+does is not available on this path — a ride whose feed went quiet keeps the wait it last published.
+The alternative on a blog post is no live column at all.
+
+While testing it: `die-kunst-des-wartens` rendered "Park „disney-magic-kingdom" wurde nicht
+gefunden" in all six locales. The API renamed that park to `magic-kingdom-park`; the widget was
+never pulled along. Fixed, and it is what made the fallback testable — Magic Kingdom is open while
+every European park in those posts is shut for the night.
+
 ## Unreleased – fix: the live column no longer disappears at opening time
 
 The "now" column decided whether to exist by asking whether any of the ten rides in the table had a

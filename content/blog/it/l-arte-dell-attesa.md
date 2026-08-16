@@ -502,7 +502,7 @@ più visitato al mondo: carico di base più alto, ma distribuito su decine di
 attrazioni. Nota quanto siano diversi già i minuti “tipici” e la curva
 stagionale nell'arco dell'anno.
 
-```stats-widget slug=disney-magic-kingdom
+```stats-widget slug=magic-kingdom-park
 
 ```
 
