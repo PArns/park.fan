@@ -21,6 +21,8 @@ interface ParkStatsAttractionsCardProps {
   showCurrentWaits?: boolean;
   title: string;
   labelAttraction: string;
+  /** Localized minutes unit ("Min." / "min."), shared with the wait-time overview. */
+  labelMinutes: string;
   labelNow: string;
   labelP50: string;
   labelP90: string;
@@ -52,6 +54,7 @@ export function ParkStatsAttractionsCard({
   showCurrentWaits = false,
   title,
   labelAttraction,
+  labelMinutes,
   labelNow,
   labelP50,
   labelP90,
@@ -127,15 +130,17 @@ export function ParkStatsAttractionsCard({
                     ) : (
                       <>
                         <WaitTimeValue minutes={current} className="font-semibold" />
-                        <span className="text-muted-foreground/60"> min</span>
+                        <span className="text-muted-foreground/60"> {labelMinutes}</span>
                       </>
                     )}
                   </td>
                 )}
                 <td className={cn(VALUE_CELL, 'text-foreground/70 hidden sm:table-cell')}>
-                  {a.avgWaitP50} min
+                  {a.avgWaitP50} {labelMinutes}
                 </td>
-                <td className={cn(VALUE_CELL, 'text-foreground/70 pr-2')}>{a.avgWaitP90} min</td>
+                <td className={cn(VALUE_CELL, 'text-foreground/70 pr-2')}>
+                  {a.avgWaitP90} {labelMinutes}
+                </td>
               </tr>
             );
           })}
