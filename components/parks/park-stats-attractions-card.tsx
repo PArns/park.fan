@@ -8,11 +8,17 @@ import type { TopAttractionStat } from '@/lib/api/types';
 interface ParkStatsAttractionsCardProps {
   attractions: TopAttractionStat[];
   /**
-   * Current standby wait per attraction slug, numeric entries only. Empty (or missing every
-   * listed ride) hides the "now" column entirely — see `ParkStatsSection` for where it comes
-   * from and why an absent value is not the same as a zero.
+   * Current standby wait per attraction slug, numeric entries only. A ride missing from it is
+   * closed (or absent from the live payload) and renders a dash — see `ParkStatsSection` for
+   * where it comes from and why an absent value is not the same as a zero.
    */
   currentWaits?: Map<string, number>;
+  /**
+   * Whether to render the live column at all. A park-level answer, decided by the section: an
+   * open park keeps the column even when every ride in this table is still closed, so it does not
+   * appear and disappear around opening time.
+   */
+  showCurrentWaits?: boolean;
   title: string;
   labelAttraction: string;
   labelNow: string;
@@ -43,6 +49,7 @@ const VALUE_CELL = 'w-[4.5rem] py-1.5 pr-1 text-right tabular-nums';
 export function ParkStatsAttractionsCard({
   attractions,
   currentWaits,
+  showCurrentWaits = false,
   title,
   labelAttraction,
   labelNow,
@@ -53,8 +60,6 @@ export function ParkStatsAttractionsCard({
   city,
   parkSlug,
 }: ParkStatsAttractionsCardProps) {
-  const showCurrent = attractions.some((a) => currentWaits?.has(a.attractionSlug));
-
   return (
     <GlassCard variant="medium" className="space-y-2 p-4">
       <h3 className="flex items-center gap-2 text-sm font-semibold">
@@ -71,7 +76,7 @@ export function ParkStatsAttractionsCard({
             <th scope="col" className="pb-1 text-left font-medium">
               {labelAttraction}
             </th>
-            {showCurrent && (
+            {showCurrentWaits && (
               <th scope="col" className={cn(VALUE_CELL, 'hidden pb-1 font-medium sm:table-cell')}>
                 {labelNow}
               </th>
@@ -115,7 +120,7 @@ export function ParkStatsAttractionsCard({
                     {a.attractionName}
                   </Link>
                 </td>
-                {showCurrent && (
+                {showCurrentWaits && (
                   <td className={cn(VALUE_CELL, 'hidden sm:table-cell')}>
                     {current == null ? (
                       <span className="text-muted-foreground/40">–</span>
