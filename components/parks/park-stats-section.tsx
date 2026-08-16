@@ -209,6 +209,7 @@ function StatsContent({
           showCurrentWaits={showCurrentWaits}
           title={t('topAttractionsTitle')}
           labelAttraction={tParks('attractions')}
+          labelMinutes={tParks('overview.minutesUnit')}
           labelNow={tParks('now')}
           labelP50={t('p50')}
           labelP90={t('p90')}

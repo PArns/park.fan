@@ -17,6 +17,11 @@ OPERATING, its wait times are readable, and a live snapshot has reached the sect
 closed while the park is open shows a dash, which is a fact about that ride rather than a reason to
 drop the column for the other nine.
 
+The minutes unit in that table was the string `min`, hardcoded, in all six locales — German reads
+`Min.` and Dutch `min.`. It comes from `parks.overview.minutesUnit` now, the same key the
+server-rendered wait overview has always used. The typical and peak columns carried the hardcoded
+version long before the live column copied it; all three are localized now.
+
 ## 2.11.0 (2026-08-15) – Blog, ride pages, and the load-order work behind them
 
 Two months of work since 2.10.1, released together. The blog went live and grew a link in both
