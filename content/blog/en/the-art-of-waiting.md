@@ -483,7 +483,7 @@ busiest park in the world: a higher base load, but spread across dozens of
 attractions. Note how different the “typical” minutes and the seasonal curve
 across the year already look.
 
-```stats-widget slug=disney-magic-kingdom
+```stats-widget slug=magic-kingdom-park
 
 ```
 
