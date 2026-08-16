@@ -316,7 +316,7 @@ hat, rund 30 Minuten lang, mehrmals täglich, im Eintritt enthalten. Und am
 Geschichte 25 Stunden am Stück geöffnet, mit einer Überraschung alle fünf
 Stunden, einer XXL-Parade und Feuerwerk.
 
-```map-widget slug=toverland
+```map-widget slug=attractiepark-toverland
 
 ```
 
@@ -465,14 +465,14 @@ Verlassen kann man sich darauf nicht, sobald sich niederländische und deutsche
 Ferienkalender, Wetter und Öffnungszeiten überlagern, und im Grenzgebiet Limburg
 überlagern sie sich dauernd. Hier sind die ruhigsten kommenden Tage:
 
-```best-days-widget slug=toverland
+```best-days-widget slug=attractiepark-toverland
 
 ```
 
 Und so sieht der Andrang über Monate und Wochentage aus, gerechnet aus den
 letzten beiden Saisons:
 
-```stats-widget slug=toverland
+```stats-widget slug=attractiepark-toverland
 
 ```
 
@@ -635,7 +635,7 @@ der Woche nach einer Viertelstunde wieder im Zug.
 
 Wie es gerade am Park aussieht:
 
-```weather-widget slug=toverland
+```weather-widget slug=attractiepark-toverland
 
 ```
 

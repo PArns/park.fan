@@ -328,7 +328,7 @@ l'entrée. Et le **week-end des 27 et 28 juin**, Toverland est resté ouvert
 25 heures d'affilée pour la première fois de son histoire, avec une surprise
 toutes les cinq heures, une parade XXL et un feu d'artifice.
 
-```map-widget slug=toverland
+```map-widget slug=attractiepark-toverland
 
 ```
 
@@ -486,14 +486,14 @@ météo et horaires d'ouverture se superposent, et dans la région frontalière 
 Limbourg ils se superposent en permanence. Voici les jours les plus calmes à
 venir :
 
-```best-days-widget slug=toverland
+```best-days-widget slug=attractiepark-toverland
 
 ```
 
 Et voici à quoi ressemble l'affluence par mois et par jour de la semaine,
 calculée sur les deux dernières saisons :
 
-```stats-widget slug=toverland
+```stats-widget slug=attractiepark-toverland
 
 ```
 
@@ -662,7 +662,7 @@ de retour dans le train au bout d'un quart d'heure.
 
 À quoi ressemble le parc en ce moment :
 
-```weather-widget slug=toverland
+```weather-widget slug=attractiepark-toverland
 
 ```
 

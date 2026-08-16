@@ -305,7 +305,7 @@ on the **weekend of 27/28 June**, Toverland stayed open for 25 hours straight
 for the first time in its history, with a surprise every five hours, an XXL
 parade and fireworks.
 
-```map-widget slug=toverland
+```map-widget slug=attractiepark-toverland
 
 ```
 
@@ -451,14 +451,14 @@ You can't rely on that the moment Dutch and German holiday calendars, weather
 and opening hours all overlap, and in the Limburg border region they overlap
 constantly. Here are the quietest days coming up:
 
-```best-days-widget slug=toverland
+```best-days-widget slug=attractiepark-toverland
 
 ```
 
 And this is how the crowds break down by month and weekday, calculated from the
 last two seasons:
 
-```stats-widget slug=toverland
+```stats-widget slug=attractiepark-toverland
 
 ```
 
@@ -618,7 +618,7 @@ weekday.
 
 How things look at the park right now:
 
-```weather-widget slug=toverland
+```weather-widget slug=attractiepark-toverland
 
 ```
 

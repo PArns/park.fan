@@ -4,6 +4,28 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: four more blog widgets pointed at a park that had been renamed
+
+`disney-magic-kingdom` was not the only one. The Toverland post carried `slug=toverland` on its
+map, best-days, stats and weather widget, in all six locales — 24 widgets rendering
+"Park „toverland" wurde nicht gefunden" since the API renamed the park to
+`attractiepark-toverland`. The prose references in the same posts had been pulled along
+(`ref:attractiepark-toverland/booster-bike` is already correct); the `slug=` attrs had not.
+
+Nothing catches this. The build stays green, `generate:blog-manifest` only validates
+`parkLinks`/`rideLinks`, and the API answers the old slug with a 301 — so the URL still works in a
+browser while `resolvePark`, which looks the slug up exactly in the geo index, returns null.
+
+So there is a checker now: `pnpm check:blog-slugs` resolves every widget `slug=`, every
+`glossary-widget` term id and every `ref:`/`park:`/`attraction:` link target against the live geo
+structure. Across the 42 posts that is 2160 references — 132 widget parks, 84 glossary terms, 1944
+links — and after this fix all of them resolve. It was verified by putting the old slug back and
+watching it fail.
+
+`scripts/check-media-urls.mjs` pointed its sample pages at the old park URL too. Those still
+answered, because the API's 308 is followed transparently, which is exactly what makes this class
+of rename so quiet.
+
 ## Unreleased – fix: the blog's copy of the top-ten table gets its live column too
 
 The stats widget renders the same `ParkStatsSection` as the park page, and on a blog post its live
