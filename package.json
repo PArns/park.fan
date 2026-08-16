@@ -39,6 +39,7 @@
     "audit:media": "node scripts/audit-media.mjs",
     "check:media-urls": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/check-media-urls.mjs",
     "test:media-session": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-media-session.mjs",
+    "check:blog-slugs": "node scripts/check-blog-slugs.mjs",
     "check:card-framing": "node scripts/check-card-framing.mjs",
     "check:hero-search-rest": "node scripts/check-hero-search-rest.mjs",
     "probe:isr": "node scripts/isr-cache-probe.mjs",

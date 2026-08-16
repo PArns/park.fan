@@ -23,8 +23,8 @@ const BASE = process.env.CHECK_BASE ?? 'http://localhost:3000';
 /** A spread of surfaces: hero, cards, backgrounds, galleries, article bodies, OG. */
 const PAGES = [
   '/de',
-  '/de/parks/europe/netherlands/sevenum/toverland',
-  '/de/parks/europe/netherlands/sevenum/toverland/troy',
+  '/de/parks/europe/netherlands/sevenum/attractiepark-toverland',
+  '/de/parks/europe/netherlands/sevenum/attractiepark-toverland/troy',
   '/de/parks/europe/germany/bruehl/phantasialand',
   '/de/parks/europe',
   '/de/parks/europe/germany',
@@ -32,7 +32,7 @@ const PAGES = [
   '/de/blog/phantasialand-tipps',
   '/de/blog/toverland-troy-wartezeiten-tipps',
   '/de/blog/halloween-freizeitparks-2026',
-  '/en/parks/europe/netherlands/sevenum/toverland',
+  '/en/parks/europe/netherlands/sevenum/attractiepark-toverland',
 ];
 
 /** `/_next/image?url=…` wraps the real path; unwrap so both forms are checked once. */

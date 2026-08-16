@@ -321,7 +321,7 @@ E nel **fine settimana del 27 e 28 giugno** Toverland è rimasto aperto per la
 prima volta nella sua storia 25 ore di fila, con una sorpresa ogni cinque ore,
 una parata XXL e fuochi d'artificio.
 
-```map-widget slug=toverland
+```map-widget slug=attractiepark-toverland
 
 ```
 
@@ -473,14 +473,14 @@ Su questo non ci si può fidare non appena calendari scolastici olandesi e
 tedeschi, meteo e orari di apertura si sovrappongono, e nella zona di confine del
 Limburgo si sovrappongono di continuo. Ecco i prossimi giorni più tranquilli:
 
-```best-days-widget slug=toverland
+```best-days-widget slug=attractiepark-toverland
 
 ```
 
 E così si distribuisce l'affluenza per mesi e giorni della settimana, calcolata
 sulle ultime due stagioni:
 
-```stats-widget slug=toverland
+```stats-widget slug=attractiepark-toverland
 
 ```
 
@@ -644,7 +644,7 @@ comunque di nuovo sul treno.
 
 Com'è la situazione al parco in questo momento:
 
-```weather-widget slug=toverland
+```weather-widget slug=attractiepark-toverland
 
 ```
 

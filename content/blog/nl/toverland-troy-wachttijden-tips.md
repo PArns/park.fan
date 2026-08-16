@@ -306,7 +306,7 @@ lang, meermaals per dag, bij de entree inbegrepen. En in het **weekend van
 27/28 juni** was Toverland voor het eerst in zijn geschiedenis 25 uur aan één
 stuk open, met elke vijf uur een verrassing, een XXL-parade en vuurwerk.
 
-```map-widget slug=toverland
+```map-widget slug=attractiepark-toverland
 
 ```
 
@@ -453,14 +453,14 @@ Daarop kun je niet blindvaren zodra Nederlandse en Duitse vakantiekalenders,
 weer en openingstijden over elkaar heen schuiven, en in het grensgebied Limburg
 schuiven ze voortdurend. Dit zijn de rustigste komende dagen:
 
-```best-days-widget slug=toverland
+```best-days-widget slug=attractiepark-toverland
 
 ```
 
 En zo ziet de drukte er over maanden en weekdagen uit, gerekend uit de laatste
 twee seizoenen:
 
-```stats-widget slug=toverland
+```stats-widget slug=attractiepark-toverland
 
 ```
 
@@ -625,7 +625,7 @@ de trein.
 
 Hoe het er nu bij het park uitziet:
 
-```weather-widget slug=toverland
+```weather-widget slug=attractiepark-toverland
 
 ```
 
