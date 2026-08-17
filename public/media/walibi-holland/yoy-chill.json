@@ -2,6 +2,7 @@
   "title": "YOY CHILL",
   "park": "walibi-holland",
   "ride": "yoy-chill",
+  "alsoRides": ["yoy-thrill"],
   "roles": ["ride-card", "hero"],
   "tags": ["coaster", "day", "outdoor", "photo", "ride", "sunny"],
   "alt": {

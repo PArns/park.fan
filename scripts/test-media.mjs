@@ -138,6 +138,40 @@ const troyAll = getRideImages('attractiepark-toverland', 'troy');
 checkThat('ride images span collections', troyAll.length >= 1);
 checkThat('ride card is among the ride images', ids(troyAll).includes(troy.id));
 
+// `alsoRides`: the duelling pairs the park built as one structure. Both halves are
+// separate attractions upstream, one photo shows both, and it used to be stored twice
+// byte for byte — so when the duplicate was cleaned up, the second ride lost its only
+// picture without a word. These assert the index answers for both slugs.
+for (const [park, primary, twin] of [
+  ['phantasialand', 'winjas-fear', 'winjas-force'],
+  ['walibi-holland', 'yoy-chill', 'yoy-thrill'],
+]) {
+  const card = getRideImage(park, primary);
+  checkThat(`${primary} has a card`, !!card, 'no image resolved');
+  checkThat(
+    `${twin} resolves to the same photo as ${primary}`,
+    getRideImage(park, twin)?.id === card?.id,
+    `got ${getRideImage(park, twin)?.id}`
+  );
+  checkThat(
+    `${twin} is listed among its ride images`,
+    ids(getRideImages(park, twin)).includes(card?.id),
+    `got ${JSON.stringify(ids(getRideImages(park, twin)))}`
+  );
+  // searchMedia shares the matcher, so a ride filter must agree with the lookups.
+  checkThat(
+    `search by ride finds ${twin}`,
+    ids(searchMedia({ ride: twin })).includes(card?.id),
+    `got ${JSON.stringify(ids(searchMedia({ ride: twin })))}`
+  );
+}
+
+// The photo stays somebody's primary ride, so it is NOT part of the park-only tier.
+checkThat(
+  'a photo indexed for two rides is still not park-only',
+  !ids(searchMedia({ park: 'phantasialand', ride: null })).includes('phantasialand/winjas-fear')
+);
+
 checkThat('hero pool is non-empty', getHeroImages().length > 0);
 // The pool is exactly what DECLARES `hero`, and nothing else. This used to assert
 // that a park background is never in it, which stopped being true the moment the

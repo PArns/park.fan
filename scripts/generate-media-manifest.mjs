@@ -279,6 +279,7 @@ async function build() {
       park: sidecar.park,
       parkPath: sidecar.parkPath,
       ride: sidecar.ride,
+      alsoRides: sidecar.alsoRides ?? [],
       area: sidecar.area,
       title: sidecar.title ?? base,
       tags: sidecar.tags,
@@ -329,6 +330,7 @@ async function build() {
       image.title,
       image.park ?? '',
       image.ride ?? '',
+      ...image.alsoRides,
       image.area ?? '',
       image.credit.author ?? '',
       ...image.tags,
@@ -535,6 +537,14 @@ async function verifySlugs(images, catalog) {
   }
 
   for (const image of images) {
+    // `alsoRides` without a `ride` has no primary to be "also" to, and would make the
+    // image park-only for getParkOnlyImages while still claiming rides. Say so.
+    if (image.alsoRides.length && !image.ride) {
+      warn(`${image.id}: alsoRides is set but ride is not`);
+    }
+    if (image.alsoRides.includes(image.ride)) {
+      warn(`${image.id}: ride "${image.ride}" is repeated in alsoRides`);
+    }
     if (!image.ride || !image.park) continue;
     const matches = catalog.bySlug.get(image.park);
     if (!matches) continue;
@@ -543,8 +553,14 @@ async function verifySlugs(images, catalog) {
       matches.find((p) => image.parkPath && (p.url ?? '').endsWith(`/${image.parkPath}`)) ??
       matches[0];
     const slugs = await loadAttractions(park);
-    if (slugs && !slugs.has(image.ride)) {
-      warn(`${image.id}: ride "${image.ride}" is not an attraction of ${image.park}`);
+    if (!slugs) continue;
+    // Every slug the image answers for is checked, not just the primary: nothing else
+    // validates these, and a typo in alsoRides fails exactly as quietly as the deleted
+    // duplicate did — the ride page just shows no photo.
+    for (const slug of [image.ride, ...image.alsoRides]) {
+      if (!slugs.has(slug)) {
+        warn(`${image.id}: ride "${slug}" is not an attraction of ${image.park}`);
+      }
     }
   }
 }
@@ -570,10 +586,15 @@ function auditRoles(images) {
     if (img.roles.includes('ride-card')) {
       if (!img.park || !img.ride) warn(`${img.id}: role ride-card needs both park and ride`);
       else {
-        const key = `${img.park}/${img.ride}`;
-        if (rideCards.has(key))
-          warn(`ride ${key}: two ride-card images (${rideCards.get(key)}, ${img.id})`);
-        else rideCards.set(key, img.id);
+        // One claim per ride the card answers for — `getRideImage` resolves alsoRides
+        // through the same `ride-card` preference, so a second claimant there is the
+        // same data error as a second claimant on the primary ride.
+        for (const slug of [img.ride, ...img.alsoRides]) {
+          const key = `${img.park}/${slug}`;
+          if (rideCards.has(key))
+            warn(`ride ${key}: two ride-card images (${rideCards.get(key)}, ${img.id})`);
+          else rideCards.set(key, img.id);
+        }
       }
     }
   }

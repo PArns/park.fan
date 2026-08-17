@@ -80,6 +80,7 @@ Every field is optional. Nothing is inferred from the file name or the folder.
   "park": "attractiepark-toverland", // park slug — what the photo SHOWS
   "parkPath": "europe/…/toverland", // only for the two ambiguous slugs, see below
   "ride": "troy", // attraction slug (API slug, not the filename)
+  "alsoRides": ["winjas-force"], // further rides the SAME photo shows, see below
   "area": "Troy", // themed area
   "roles": ["ride-card", "hero"], // what it is USED for — see below
   "tags": ["photo", "night"], // controlled vocabulary, lib/media/tags.mjs
@@ -112,6 +113,33 @@ them apart. The generator errors loudly if two images claim the same unique role
 
 A ride can have any number of photos; `ride-card` picks which one represents it.
 Everything else still shows up under that ride.
+
+### One photo, two rides: `alsoRides`
+
+Some pairs the API lists as two attractions were built as one structure, and one
+photograph is honestly of both. Winja's Fear and Winja's Force share a hall; YOY
+Chill and YOY Thrill share a layout, and the picture shows a train on each track.
+List the second slug in `alsoRides` and the image answers for it everywhere —
+ride page, ride card, gallery, search:
+
+```jsonc
+{
+  "ride": "winjas-fear",
+  "alsoRides": ["winjas-force"],
+}
+```
+
+This is the `ride` counterpart to `roles` carrying two entries: one file, two jobs.
+The alternative used to be two byte-identical files, and it is worth knowing how that
+ended. Both pairs really were stored twice, the media migration removed the duplicate
+as housekeeping, and each second ride silently lost its only picture — no error, no
+warning, just a ride page without a photo, because `ride` holds one slug and nothing
+re-checked it. Every slug listed here is validated against the park's attractions, so
+a typo is a build warning rather than another blank page.
+
+Only for photos that are a fair card for **every** slug listed, since `ride-card`
+resolution treats them alike. A ride that merely happens to be in the background of
+the frame does not belong here — that is what `park` without `ride` is for.
 
 ### `park` without `ride` is a real category
 

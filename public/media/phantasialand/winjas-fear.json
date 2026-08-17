@@ -2,6 +2,7 @@
   "title": "Winja‘s Fear",
   "park": "phantasialand",
   "ride": "winjas-fear",
+  "alsoRides": ["winjas-force"],
   "area": "Mystery",
   "roles": ["ride-card", "hero"],
   "tags": ["coaster", "indoor", "photo", "ride", "theming"],

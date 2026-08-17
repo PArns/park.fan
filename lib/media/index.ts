@@ -201,13 +201,24 @@ export function getParkOnlyImages(parkSlug: string | null | undefined): MediaIma
   return getParkImages(parkSlug).filter((i) => !i.ride);
 }
 
-/** Every image showing a given ride, wherever in the tree it is stored. */
+/**
+ * Every image showing a given ride, wherever in the tree it is stored.
+ *
+ * Matches `alsoRides` as well as `ride`, so the one photo of Winja's Fear & Force
+ * answers for both halves instead of the second one needing a byte-identical copy
+ * of the file (see `MediaSidecar.alsoRides`).
+ */
 export function getRideImages(
   parkSlug: string | null | undefined,
   rideSlug: string | null | undefined
 ): MediaImage[] {
   if (!parkSlug || !rideSlug) return [];
-  return getParkImages(parkSlug).filter((i) => i.ride === rideSlug);
+  return getParkImages(parkSlug).filter((i) => showsRide(i, rideSlug));
+}
+
+/** Whether an image is indexed for a ride, as its primary ride or via `alsoRides`. */
+export function showsRide(image: MediaImage, rideSlug: string): boolean {
+  return image.ride === rideSlug || image.alsoRides.includes(rideSlug);
 }
 
 /**
@@ -315,7 +326,9 @@ export function searchMedia(query: MediaQuery = {}): MediaImage[] {
   return MEDIA_IMAGES.filter((image, index) => {
     if (matches && !matches.has(index)) return false;
     if (park !== undefined && image.park !== park) return false;
-    if (ride !== undefined && image.ride !== ride) return false;
+    // `ride: null` asks for the park-only tier; a slug matches alsoRides too.
+    if (ride !== undefined && (ride === null ? image.ride !== null : !showsRide(image, ride)))
+      return false;
     if (
       collection &&
       image.collection !== collection &&

@@ -1,24 +1,20 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { CalendarDays, TrendingDown, AlertTriangle, Sunset, ArrowRight } from 'lucide-react';
+import { CalendarDays, TrendingDown, AlertTriangle, Sunset } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { GlassCard } from '@/components/common/glass-card';
-import { CrowdCalendarFaqLink } from '@/components/faq/crowd-calendar-faq-link';
-import { Link } from '@/i18n/navigation';
-import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
-import type { Locale } from '@/i18n/config';
 import type { IntegratedCalendarResponse } from '@/lib/api/types';
 import type { BestDaysByDayOfWeek, BestDaysSnapshot } from '@/lib/api/integrated-calendar';
 import { analyzeBestDays, scoreToCrowdLevel } from '@/lib/utils/crowd-analysis';
 import { CROWD_CHIP_CLASS } from '@/lib/utils/crowd-level-styles';
-import { getGermanArticle } from '@/lib/utils';
 import { cn } from '@/lib/utils';
 import { useParkBestDaysCalendar } from '@/lib/hooks/use-park-best-days-calendar';
 import { useParkHistoricalStats } from '@/lib/hooks/use-park-historical-stats';
 import { ParkBestDaysSectionSkeleton } from '@/components/parks/park-best-days-section-skeleton';
+import { ParkBestDaysHeader, localizedParkName } from '@/components/parks/park-best-days-header';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 
 interface ParkBestDaysSectionProps {
@@ -58,13 +54,6 @@ function getDayShort(dayIndex: number, locale: string): string {
   const date = new Date(refMonday);
   date.setDate(refMonday.getDate() + ((dayIndex - 1 + 7) % 7));
   return getDateTimeFormat(locale, { weekday: 'short' }).format(date).replace(/\.$/, '');
-}
-
-function localizedParkName(parkName: string, parkSlug: string, locale: string): string {
-  if (locale !== 'de') return parkName;
-  const nominative = getGermanArticle(parkName, parkSlug);
-  const accusative = nominative === 'der' ? 'den' : nominative;
-  return accusative ? `${accusative} ${parkName}` : parkName;
 }
 
 function DayChip({ dayIndex, score, locale }: { dayIndex: number; score: number; locale: string }) {
@@ -148,7 +137,14 @@ export function ParkBestDaysSection({
         />
       );
     }
-    return compact ? null : <ParkBestDaysSectionSkeleton />;
+    return compact ? null : (
+      <ParkBestDaysSectionSkeleton
+        parkName={parkName}
+        parkSlug={parkSlug}
+        locale={locale}
+        showCalendarLink={showCalendarLink}
+      />
+    );
   }
 
   // Graceful empty fallback when the calendar fetch failed (mirrors loadBestDaysCalendar).
@@ -294,42 +290,12 @@ function BestDaysContent({
 
   return (
     <section aria-labelledby="best-days-heading" className="mt-8 space-y-4">
-      <div className="bg-background/70 rounded-xl px-4 py-3 backdrop-blur-md">
-        <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-3">
-          <div className="min-w-0">
-            <div className="flex items-center gap-2">
-              <CalendarDays className="text-primary h-5 w-5" aria-hidden="true" />
-              <h2 id="best-days-heading" className="text-xl font-semibold">
-                {t('title', { park: displayName })}
-              </h2>
-            </div>
-            <p className="text-muted-foreground mt-1 text-sm">{t('subtitle')}</p>
-            <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1">
-              <Link
-                href="/fancast"
-                className="text-primary hover:text-primary/80 inline-flex items-center gap-1 text-xs font-medium transition-colors"
-              >
-                {t('fancastLink')}
-                <ArrowRight className="h-3 w-3" aria-hidden="true" />
-              </Link>
-              <Link
-                href={`/${BEST_TIME_SEGMENTS[locale as Locale]}`}
-                className="text-primary hover:text-primary/80 inline-flex items-center gap-1 text-xs font-medium transition-colors"
-              >
-                {t('bestTimeLink')}
-                <ArrowRight className="h-3 w-3" aria-hidden="true" />
-              </Link>
-            </div>
-          </div>
-          {showCalendarLink && (
-            <CrowdCalendarFaqLink className="border-primary/30 bg-primary/10 text-primary hover:bg-primary/20 hover:border-primary/50 inline-flex shrink-0 items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm font-medium no-underline transition-colors">
-              <CalendarDays className="h-4 w-4" aria-hidden="true" />
-              {t('viewCalendarLink')}
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </CrowdCalendarFaqLink>
-          )}
-        </div>
-      </div>
+      <ParkBestDaysHeader
+        parkName={parkName}
+        parkSlug={parkSlug}
+        locale={locale}
+        showCalendarLink={showCalendarLink}
+      />
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {hasBestDays && (

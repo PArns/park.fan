@@ -52,6 +52,40 @@ calendar + historical stats) must ALWAYS load LAST — everything else loads fir
 - Conversely: weather must load EARLY. The hourly day-view fetch runs in parallel
   with the nowcast (no waterfall); only its _rendering_ is gated on the nowcast.
 
+### 5. A streamed section owes the page its height (REQUIREMENT)
+
+Everything above buys TTFB by letting slow content stream in behind the shell. The
+bill for that arrives as CLS, and it is charged to whatever the visitor is looking at
+when the boundary resolves — so **a `<Suspense>` boundary on the park page needs a
+fallback that reserves the height its content will take**. Two rules follow, both
+learned from Cloudflare RUM reporting 8 % of park-page views in the red with a worst
+sample of 0.998:
+
+- **`fallback={null}` is only honest when nothing renders below.** The blog section
+  had one and did no async work at all — `hasPublishedPosts` and `getPostsForPark`
+  read the generated manifest synchronously, so the boundary deferred nothing and
+  inserted 467 px (phone) out of thin air. A section whose data is synchronous should
+  not be behind a boundary; render it inline and it is in the first HTML at full
+  height.
+- **The fallback should render whatever needs no data, not a grey box shaped like it.**
+  The best-days header (park name, subtitle, three links) is data-free, and its height
+  depends on how the title wraps — one line on a desktop, two on a phone. Sized
+  `Skeleton` blocks were 66–120 px short until the fallback started rendering the real
+  `ParkBestDaysHeader`. Only the three data cards stay placeholders.
+
+Measure with the three states a visitor can actually observe — fallback, server seed,
+settled client queries — and compare block geometry between them; the delta IS the
+shift. The client queries were never the problem: seed → settled measures 0.
+
+What is left is deliberate. The school-holiday warning under the best-days grid
+(46 px desktop / 86 px phone) depends on the data the boundary is waiting for and only
+appears on 6 of 27 sampled parks, so reserving it would leave an empty band on the
+other 21. "Parks in der Nähe" keeps its `fallback={null}` for the same kind of reason:
+**48 % of the 212 parks show no nearby section at all** (the API answers `in_park` for
+a big park, or has no neighbour inside 100 km), so a fixed three-card reservation would
+collapse ~500 px on half the catalog — a new shift to fix an old one. Its own fetch
+cannot start before `park.latitude` exists, so it cannot be overlapped either.
+
 ---
 
 ## Routing Structure
