@@ -3,12 +3,13 @@
 import { useMemo, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { addDays, format, parseISO } from 'date-fns';
-import { ChevronRight, Clock, DoorOpen, Sparkles, Users } from 'lucide-react';
+import { CalendarClock, ChevronRight, Clock, DoorOpen, Sparkles, Users } from 'lucide-react';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { useCalendarData } from '@/lib/hooks/use-calendar-data';
 import { useLoadLast } from '@/lib/hooks/use-load-last';
 import { useParkBestDaysCalendar } from '@/lib/hooks/use-park-best-days-calendar';
 import { useTodaySchedule } from '@/lib/hooks/use-today-schedule';
+import { useTodayCrowdLevel } from '@/lib/hooks/use-today-crowd-level';
 import { ParkStatusBadge } from './park-status-badge';
 import { ParkCalendarDayDetail } from './park-calendar-day-detail';
 import { CrowdLevelBadge } from './crowd-level-badge';
@@ -26,11 +27,23 @@ interface ParkHeaderStatsProps {
 }
 
 /**
- * One column of the stats band: a small uppercase caption + its value stack. No background or box
- * of its own — on desktop the columns are separated by a thin left rule; on mobile they sit in a
- * 2-col grid with whitespace. The band is part of the header card, not a card inside it.
+ * One column of the stats band. No background or box of its own — on desktop the columns are
+ * separated by a thin left rule; on mobile they sit in a 2-col grid with whitespace. The band is
+ * part of the header card, not a card inside it. Holds one <Metric>, or two stacked ones (the
+ * crowd column carries today's rating above the live reading).
  */
-function Cell({
+function Cell({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="border-border/50 flex flex-col gap-4 md:border-l md:pl-4 md:first:border-l-0 md:first:pl-0">
+      {children}
+    </div>
+  );
+}
+
+/**
+ * A captioned value inside a column: small uppercase caption + its value stack.
+ */
+function Metric({
   caption,
   icon: Icon,
   children,
@@ -40,19 +53,20 @@ function Cell({
   children: React.ReactNode;
 }) {
   return (
-    <div className="border-border/50 flex flex-col gap-1.5 md:border-l md:pl-4 md:first:border-l-0 md:first:pl-0">
+    <div className="flex flex-col gap-1.5">
       <span className="text-muted-foreground flex items-center gap-1 text-[10px] font-semibold tracking-[0.08em] uppercase">
         {Icon && <Icon className="h-3 w-3" aria-hidden="true" />}
         {caption}
       </span>
       {/* justify-start (not -center) so the primary value (badge/time) sits at the SAME top
-          line across all cells — cells with a second line (Ø wait, countdown) grow downward
-          instead of pushing their badge up and out of alignment with single-line cells.
+          line across all metrics — ones with a second line (Ø wait, countdown) grow downward
+          instead of pushing their badge up and out of alignment with single-line ones.
           The min-height reserves BOTH lines (badge 1.375rem + gap-1 + text-xs 1rem), because the
           second line is client-derived: the STATUS cell gains the park-local time as soon as the
-          browser clock mounts, and the hours cell its countdown. Reserving only one line let the
+          browser clock mounts, the hours cell its countdown, and the crowd-today metric its
+          "so far today" note once the deferred calendar lands. Reserving only one line let the
           whole band — and with it everything below the header — jump 14px on every park page a
-          beat after paint. The row can never need a third line, so this is the resting height,
+          beat after paint. No metric can ever need a third line, so this is the resting height,
           not extra whitespace. */}
       <div className="flex min-h-[2.625rem] flex-col items-start justify-start gap-1">
         {children}
@@ -68,15 +82,24 @@ function Pending() {
 
 /**
  * "Heute" stats band in the park header — the single at-a-glance summary of today: live status +
- * park-local time, today's opening hours + "closes in X" countdown, the current crowd + average
- * wait, and — the differentiator — the **AI crowd forecast for today**. Rendered as an integrated
- * band (a top hairline + column rules), NOT a nested card, so it reads as part of the header.
- * Replaces the separate "Heutige Öffnungszeiten" card that used to sit below (no duplication).
+ * park-local time, today's opening hours + "closes in X" countdown, the crowd column (today's
+ * daily rating above the live reading), and — the differentiator — the **AI crowd forecast for
+ * today**. Rendered as an integrated band (a top hairline + column rules), NOT a nested card, so
+ * it reads as part of the header. Replaces the separate "Heutige Öffnungszeiten" card that used to
+ * sit below (no duplication).
+ *
+ * The crowd column stacks two metrics because they are different statistics and only one of them
+ * may be read against the forecast: "Auslastung heute" is a DAY aggregate ÷ typical-day-peak (same
+ * regime as the forecast beside it), "Andrang jetzt" a point-in-time ratio-vs-P50 spot reading.
+ * Comparing the live badge with the forecast is what made a park read "normal" next to "very high"
+ * without either being wrong. See `useTodayCrowdLevel`.
  *
  * Caching: schedule/status come from `useTodaySchedule`, which shares the live park query key with
  * <LiveParkData> (one 5-min poll, no extra fetch); the forecast reuses <ParkBestDaysSection>'s
  * calendar query key (same {from,to}) so both read ONE cached request, still `useLoadLast`-gated so
- * the forecast loads last. The 90-day "today" scan is memoised against the calendar.
+ * the forecast loads last, and `useTodayCrowdLevel` rides on the one-day /calendar query this
+ * component already runs for the day-detail dialog. The 90-day "today" scan is memoised against
+ * the calendar.
  */
 export function ParkHeaderStats({
   initialData,
@@ -109,6 +132,16 @@ export function ParkHeaderStats({
   const avgWait = park.analytics?.statistics?.avgWaitTime ?? park.currentLoad?.currentWaitTime ?? 0;
   // Show live crowd only when the park is (or might be) open; hide it when clearly closed/offseason.
   const isOpenish = sched.badgeStatus === 'OPERATING' || sched.isUnknown;
+
+  // Today's DAILY rating — the only crowd value comparable with the forecast badge next to it
+  // (same statistic, same baseline). Shares the one-day /calendar query below, so no request of
+  // its own. Reserve the slot as soon as the park is openish: the value arrives late (loads-last)
+  // and letting the metric appear from nothing would push "Andrang jetzt" down after paint.
+  const crowdToday = useTodayCrowdLevel({ continent, country, city, parkSlug, timezone });
+  // Hide the whole metric once the query settled without a value — a closed park, one we cannot
+  // rate, or a morning too thin to read. An empty caption over a dash would claim we measured
+  // something and got "nothing".
+  const showCrowdToday = isOpenish && !(crowdToday.settled && !crowdToday.level);
 
   const browserNow = useBrowserNow(null);
   const { data: calendar } = useParkBestDaysCalendar({
@@ -210,100 +243,129 @@ export function ParkHeaderStats({
     <div className="border-border/50 mt-5 max-w-3xl border-t pt-4">
       <div className="grid grid-cols-2 gap-x-5 gap-y-4 md:grid-cols-4 md:gap-x-0">
         {/* Status + park-local time */}
-        <Cell caption={t('statusLabel')}>
-          {sched.showStatusBadge && sched.badgeStatus ? (
-            <ParkStatusBadge status={sched.badgeStatus} />
-          ) : (
-            <Pending />
-          )}
-          {sched.currentTime && (
-            <span className="text-muted-foreground text-xs tabular-nums">
-              {sched.currentTimeFormatted}
-              {tCommon('timeSuffix')} · {t('localTime')}
-            </span>
-          )}
+        <Cell>
+          <Metric caption={t('statusLabel')}>
+            {sched.showStatusBadge && sched.badgeStatus ? (
+              <ParkStatusBadge status={sched.badgeStatus} />
+            ) : (
+              <Pending />
+            )}
+            {sched.currentTime && (
+              <span className="text-muted-foreground text-xs tabular-nums">
+                {sched.currentTimeFormatted}
+                {tCommon('timeSuffix')} · {t('localTime')}
+              </span>
+            )}
+          </Metric>
         </Cell>
 
         {/* Today's opening hours + countdown */}
-        <Cell caption={t('openingHours')} icon={DoorOpen}>
-          {sched.isOperatingToday && sched.openingTime && sched.closingTime ? (
-            <>
-              <span className="text-foreground text-sm font-semibold">
-                <ParkTimeRange
-                  openingTime={sched.openingTime}
-                  closingTime={sched.closingTime}
-                  parkTimezone={timezone}
-                  locale={locale}
-                  showSuffix
-                />
-              </span>
-              {sched.timeUntil && (
-                <span
-                  className={cn(
-                    'text-xs font-medium',
-                    sched.timeUntil.variant === 'opening'
-                      ? 'text-primary'
-                      : 'text-amber-600 dark:text-amber-400'
-                  )}
-                >
-                  {sched.timeUntil.message}
+        <Cell>
+          <Metric caption={t('openingHours')} icon={DoorOpen}>
+            {sched.isOperatingToday && sched.openingTime && sched.closingTime ? (
+              <>
+                <span className="text-foreground text-sm font-semibold">
+                  <ParkTimeRange
+                    openingTime={sched.openingTime}
+                    closingTime={sched.closingTime}
+                    parkTimezone={timezone}
+                    locale={locale}
+                    showSuffix
+                  />
                 </span>
-              )}
-            </>
-          ) : sched.offseason ? (
-            <span className="text-foreground text-sm font-medium">{sched.offseason.message}</span>
-          ) : (
-            <span className="text-muted-foreground text-sm">{t('status.CLOSED')}</span>
-          )}
+                {sched.timeUntil && (
+                  <span
+                    className={cn(
+                      'text-xs font-medium',
+                      sched.timeUntil.variant === 'opening'
+                        ? 'text-primary'
+                        : 'text-amber-600 dark:text-amber-400'
+                    )}
+                  >
+                    {sched.timeUntil.message}
+                  </span>
+                )}
+              </>
+            ) : sched.offseason ? (
+              <span className="text-foreground text-sm font-medium">{sched.offseason.message}</span>
+            ) : (
+              <span className="text-muted-foreground text-sm">{t('status.CLOSED')}</span>
+            )}
+          </Metric>
         </Cell>
 
-        {/* Current crowd + average wait */}
-        <Cell caption={t('crowdNow')} icon={Users}>
-          {isOpenish && currentCrowd ? (
-            <CrowdLevelBadge level={currentCrowd} />
-          ) : (
-            <span className="text-muted-foreground text-sm">—</span>
+        {/* Today's crowd — the DAILY rating stacked above the live one. The two answer
+            different questions on purpose: "Auslastung heute" is the day so far measured the
+            same way the forecast beside it is (day aggregate ÷ typical-day-peak), so those two
+            badges are comparable; "Andrang jetzt" is the live spot reading, which is what a
+            visitor standing at the gate wants. Only the daily one may be read against the
+            forecast — see useTodayCrowdLevel. */}
+        <Cell>
+          {showCrowdToday && (
+            <Metric caption={t('crowdToday')} icon={CalendarClock}>
+              {/* "bisher" sits BESIDE the badge, not under it and not appended to the caption:
+                  under it, it reads as a dangling fragment; in the caption it wraps to a second
+                  line and pushes this metric's badge out of line with the other three columns. */}
+              {crowdToday.level ? (
+                <span className="flex items-center gap-1.5">
+                  <CrowdLevelBadge level={crowdToday.level} />
+                  <span className="text-muted-foreground text-xs">{t('crowdTodaySoFar')}</span>
+                </span>
+              ) : (
+                <Pending />
+              )}
+            </Metric>
           )}
-          {isOpenish && avgWait > 0 && (
-            <span className="text-muted-foreground inline-flex items-center gap-1 text-xs font-medium">
-              <Clock className="h-3 w-3" aria-hidden="true" />
-              Ø&nbsp;{avgWait}&nbsp;min
-            </span>
-          )}
+
+          <Metric caption={t('crowdNow')} icon={Users}>
+            {isOpenish && currentCrowd ? (
+              <CrowdLevelBadge level={currentCrowd} />
+            ) : (
+              <span className="text-muted-foreground text-sm">—</span>
+            )}
+            {isOpenish && avgWait > 0 && (
+              <span className="text-muted-foreground inline-flex items-center gap-1 text-xs font-medium">
+                <Clock className="h-3 w-3" aria-hidden="true" />
+                Ø&nbsp;{avgWait}&nbsp;min
+              </span>
+            )}
+          </Metric>
         </Cell>
 
         {/* AI crowd forecast for today — the differentiator. Once today's full CalendarDay is
             loaded the value becomes a button (chevron = affordance) opening the same day-detail
             dialog a click on today in the crowd calendar opens; until then it renders static. */}
-        <Cell caption={t('forecastToday')} icon={Sparkles}>
-          {calendar ? (
-            todayReady ? (
-              <button
-                type="button"
-                onClick={() => setDetailDate(todayStr)}
-                title={t('dayDetail.openToday')}
-                aria-label={t('dayDetail.openToday')}
-                aria-haspopup="dialog"
-                className="group hover:bg-muted/60 focus-visible:ring-primary -m-1 flex cursor-pointer items-center gap-0.5 rounded-lg p-1 transition-colors focus-visible:ring-2 focus-visible:outline-none"
-              >
-                {predictedToday ? (
-                  <CrowdLevelBadge level={predictedToday} />
-                ) : (
-                  <span className="text-muted-foreground text-sm">—</span>
-                )}
-                <ChevronRight
-                  className="text-muted-foreground h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-                  aria-hidden="true"
-                />
-              </button>
-            ) : predictedToday ? (
-              <CrowdLevelBadge level={predictedToday} />
+        <Cell>
+          <Metric caption={t('forecastToday')} icon={Sparkles}>
+            {calendar ? (
+              todayReady ? (
+                <button
+                  type="button"
+                  onClick={() => setDetailDate(todayStr)}
+                  title={t('dayDetail.openToday')}
+                  aria-label={t('dayDetail.openToday')}
+                  aria-haspopup="dialog"
+                  className="group hover:bg-muted/60 focus-visible:ring-primary -m-1 flex cursor-pointer items-center gap-0.5 rounded-lg p-1 transition-colors focus-visible:ring-2 focus-visible:outline-none"
+                >
+                  {predictedToday ? (
+                    <CrowdLevelBadge level={predictedToday} />
+                  ) : (
+                    <span className="text-muted-foreground text-sm">—</span>
+                  )}
+                  <ChevronRight
+                    className="text-muted-foreground h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
+                    aria-hidden="true"
+                  />
+                </button>
+              ) : predictedToday ? (
+                <CrowdLevelBadge level={predictedToday} />
+              ) : (
+                <span className="text-muted-foreground text-sm">—</span>
+              )
             ) : (
-              <span className="text-muted-foreground text-sm">—</span>
-            )
-          ) : (
-            <Pending />
-          )}
+              <Pending />
+            )}
+          </Metric>
         </Cell>
       </div>
 

@@ -9,6 +9,7 @@ import { AlertCircle, Loader2 } from 'lucide-react';
 import { useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { useMounted } from '@/lib/hooks/use-mounted';
+import { useTodayCrowdLevel } from '@/lib/hooks/use-today-crowd-level';
 import { groupAttractionsByLand } from '@/lib/utils/park-utils';
 import type {
   ParkWithAttractions,
@@ -72,6 +73,17 @@ export function LiveParkData({
 
   // Use current data if available, otherwise fall back to initial data
   const currentPark = park || initialData;
+
+  // Today's crowd as a DAILY rating, for the occupancy card's second badge. Same hook (and so the
+  // same one-day /calendar query) the header band reads, so the two surfaces can never disagree
+  // and this costs no request of its own.
+  const todayCrowd = useTodayCrowdLevel({
+    continent,
+    country,
+    city,
+    parkSlug,
+    timezone: currentPark.timezone ?? 'UTC',
+  });
 
   // Re-group attractions if data has changed (memoized to avoid recalculating on every render).
   // The land-less bucket name comes from the explicit `otherAttractionsLabel` prop, NOT from
@@ -153,7 +165,12 @@ export function LiveParkData({
             mobile : status → tabs → best-days
             desktop: status → best-days → separator → tabs */}
       <div className="flex flex-col gap-8">
-        <ParkStatus park={currentPark} variant="detailed" className="order-1" />
+        <ParkStatus
+          park={currentPark}
+          variant="detailed"
+          className="order-1"
+          todayCrowdLevel={todayCrowd.level}
+        />
         <div className="order-2 sm:order-4">{tabsWithHash}</div>
         {bestDaysSlot && <div className="order-3 sm:order-2">{bestDaysSlot}</div>}
         <Separator className="order-3 hidden sm:block" />

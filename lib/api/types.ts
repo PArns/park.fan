@@ -1514,6 +1514,16 @@ export interface CalendarDay {
    *  live occupancy, while this stays the true "forecast today". Optional: absent on
    *  API builds predating the field, and on days with no ratable prediction. */
   predictedCrowdLevel?: CrowdLevel;
+  /** TODAY ONLY: today's own DAILY rating — the value `crowdLevel` would carry if it were
+   *  not overridden with the live spot reading. The only field directly comparable to
+   *  `predictedCrowdLevel`: both are a day aggregate ÷ typical-day-peak, whereas live
+   *  `crowdLevel` is a point-in-time ratio-vs-P50. Absent before the day has enough
+   *  samples to rate, on unratable parks, on closed days and on every non-today day
+   *  (there `crowdLevel` already IS this statistic). */
+  todayCrowdLevel?: CrowdLevel;
+  /** How many observations {@link todayCrowdLevel} was rated from — lets a surface hide a
+   *  thin morning reading instead of showing "very low" next to a "very high" forecast. */
+  todayCrowdLevelSamples?: number;
   avgWaitTime?: number;
   crowdScore?: number;
   weather?: WeatherSummary;

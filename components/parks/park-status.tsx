@@ -10,7 +10,7 @@ import { ParkStatusBadge } from './park-status-badge';
 import { TrendIndicator } from './trend-indicator';
 import { cn } from '@/lib/utils';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
-import type { ParkWithAttractions, ParkResponse } from '@/lib/api/types';
+import type { ParkWithAttractions, ParkResponse, CrowdLevel } from '@/lib/api/types';
 
 type ParkData = ParkWithAttractions | ParkResponse;
 
@@ -18,9 +18,17 @@ interface ParkStatusProps {
   park: ParkData;
   variant: 'compact' | 'detailed' | 'card' | 'hero';
   className?: string;
+  /**
+   * Today's crowd level as a DAILY statistic (day aggregate ÷ typical-day-peak) — the same
+   * measure the header's forecast badge uses, and the only one comparable with it. Shown in the
+   * occupancy card beside the live badge, which is a point-in-time ratio-vs-P50 reading. Passed
+   * in rather than fetched here: the caller (<LiveParkData>) shares the header's one-day
+   * /calendar query, so the pair can never disagree and costs no second request.
+   */
+  todayCrowdLevel?: CrowdLevel | null;
 }
 
-export function ParkStatus({ park, variant, className }: ParkStatusProps) {
+export function ParkStatus({ park, variant, className, todayCrowdLevel }: ParkStatusProps) {
   const analytics = 'analytics' in park ? park.analytics : null;
   const currentLoad = 'currentLoad' in park ? park.currentLoad : null;
   const status = 'status' in park ? park.status : undefined;
@@ -130,9 +138,27 @@ export function ParkStatus({ park, variant, className }: ParkStatusProps) {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                <div className="flex items-center justify-center py-2">
-                  <CrowdLevelBadge level={crowdLevel} className="scale-110" />
-                </div>
+                {/* Two ratings side by side when today's daily one is known — they measure
+                    different things and the labels are what keep that readable: "heute" is the
+                    day aggregate (comparable with the header's forecast), "jetzt" the live spot
+                    reading. Without today's value the live badge keeps its original centred,
+                    unlabelled position, so nothing changes for a park we cannot rate. */}
+                {todayCrowdLevel ? (
+                  <div className="flex items-start justify-center gap-6 py-2">
+                    <div className="flex flex-col items-center gap-1.5">
+                      <span className="text-muted-foreground text-xs">{t('crowdTodayShort')}</span>
+                      <CrowdLevelBadge level={todayCrowdLevel} />
+                    </div>
+                    <div className="flex flex-col items-center gap-1.5">
+                      <span className="text-muted-foreground text-xs">{t('now')}</span>
+                      <CrowdLevelBadge level={crowdLevel} />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex items-center justify-center py-2">
+                    <CrowdLevelBadge level={crowdLevel} className="scale-110" />
+                  </div>
+                )}
                 {occupancy && (
                   <div className="space-y-2">
                     <div className="flex items-baseline justify-between">
