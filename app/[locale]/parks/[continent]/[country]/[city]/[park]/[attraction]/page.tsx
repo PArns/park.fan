@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { formatInTimeZone } from 'date-fns-tz';
 import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
@@ -513,16 +512,17 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
             {/* Chapter: what we wrote about this ride — static content out of the generated
               blog manifest (no API call, no clock), so it neither competes with the live
               queries nor adds anything to the shell's TTFB. Renders nothing when no post
-              mentions the ride. */}
-            <Suspense fallback={null}>
-              <AttractionBlogPostsSection
-                locale={locale as Locale}
-                parkSlug={parkSlug}
-                attractionSlug={attractionSlug}
-                geoPath={`${continent}/${country}/${city}`}
-                attractionName={attractionName}
-              />
-            </Suspense>
+              mentions the ride. Not behind <Suspense> for the same reason as the park page's
+              counterpart: the lookups are synchronous, so the boundary deferred nothing while
+              its `fallback={null}` reserved nothing — the chapter dropped in at full height and
+              pushed the share row and everything under it down. */}
+            <AttractionBlogPostsSection
+              locale={locale as Locale}
+              parkSlug={parkSlug}
+              attractionSlug={attractionSlug}
+              geoPath={`${continent}/${country}/${city}`}
+              attractionName={attractionName}
+            />
 
             <div className="mt-10">
               <ShareButtons url={attractionUrl} title={attractionName} />

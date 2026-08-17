@@ -564,7 +564,19 @@ export default async function ParkPage({ params }: ParkPageProps) {
                 // Streamed: the seeded best-days content arrives in the same response a beat after
                 // the shell (skeleton shown until it lands), so the cold `/best-days` fetch never
                 // gates TTFB. The client query still takes over on hydration.
-                <Suspense fallback={<ParkBestDaysSectionSkeleton />}>
+                // The fallback gets the same header props as <SeededBestDays> below, so it holds
+                // the real (data-free) header and reserves the section's true height instead of
+                // letting the attraction grid jump when the seed lands.
+                <Suspense
+                  fallback={
+                    <ParkBestDaysSectionSkeleton
+                      parkName={parkName}
+                      parkSlug={parkSlug}
+                      locale={locale}
+                      showCalendarLink
+                    />
+                  }
+                >
                   <SeededBestDays
                     seedPromise={bestDaysSeedPromise}
                     continent={continent}
@@ -595,16 +607,22 @@ export default async function ParkPage({ params }: ParkPageProps) {
 
             {/* Blog posts about this park — static content out of the generated blog manifest
               (no API call, no clock), so it neither competes with the live queries nor with the
-              load-last best-travel-time data. Renders nothing when no post mentions the park. */}
-            <Suspense fallback={null}>
-              <ParkBlogPostsSection
-                locale={locale as Locale}
-                parkSlug={parkSlug}
-                geoPath={`${continent}/${country}/${city}`}
-                parkName={parkName}
-                className="mt-8"
-              />
-            </Suspense>
+              load-last best-travel-time data. Renders nothing when no post mentions the park.
+              NOT behind <Suspense>: `hasPublishedPosts`/`getPostsForPark` are synchronous manifest
+              lookups and the only await is `getTranslations`, whose messages this render already
+              holds — so the boundary deferred nothing and bought no TTFB. What it did cost was a
+              `fallback={null}` hole: on mobile this section is ~470px that appeared out of nowhere
+              when the boundary resolved, shoving the FAQ, share row and contribute banner down the
+              page. Together with the nearby-parks hole below that was the park page's worst
+              measured layout shift. Rendered inline it is part of the first HTML, at its final
+              height, and crawlers see the links without waiting for the stream. */}
+            <ParkBlogPostsSection
+              locale={locale as Locale}
+              parkSlug={parkSlug}
+              geoPath={`${continent}/${country}/${city}`}
+              parkName={parkName}
+              className="mt-8"
+            />
 
             {/* Historical statistics — loaded client-side (CDN-cached /stats route); a skeleton
               shows until the cold/slow stats response lands, so it never blocks the static shell. */}
