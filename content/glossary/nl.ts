@@ -1847,9 +1847,9 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'cobra-loop',
-    name: "Cobra Loop",
+    name: 'Cobra Loop',
     shortDefinition:
-      "De naam die Hersheypark gaf aan de eerste inversie van Storm Runner: een looping waar de trein zijwaarts uit draait in plaats van hem af te maken.",
+      'De naam die Hersheypark gaf aan de eerste inversie van Storm Runner: een looping waar de trein zijwaarts uit draait in plaats van hem af te maken.',
     definition:
       "Een cobra loop klimt als een verticale looping en draait bovenin zijwaarts weg in plaats van er aan de andere kant weer uit te komen — de trein verlaat het element dus in een andere richting dan hij erin reed. Hij keert de inzittenden één keer om.\n\nDe naam hoort bij één baan. Intamin bouwde het element in 2004 voor Storm Runner in Hersheypark, en het park bracht het op de markt als 's werelds eerste cobra loop; qua geometrie is het wat andere fabrikanten een sidewinder noemen. Waar een cobra roll twee van deze vormen aan elkaar zet en de trein omkeert, is de cobra loop daar maar de helft van.",
     relatedTermIds: ['sidewinder', 'cobra-roll', 'vertical-loop', 'inversion', 'intamin'],
@@ -1857,21 +1857,21 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'jojo-roll',
-    name: "Jojo Roll",
+    name: 'Jojo Roll',
     shortDefinition:
-      "Een langzame heartline roll direct na het station, voordat de trein iets beklommen heeft.",
+      'Een langzame heartline roll direct na het station, voordat de trein iets beklommen heeft.',
     definition:
-      "Een jojo roll is een heartline roll van 360 graden vlak na het station, waarbij de trein nauwelijks sneller dan stapvoets over de kop gaat. Doordat er bijna geen snelheid achter zit, hangen de inzittenden in hun beugels in plaats van in de stoel gedrukt te worden — precies het omgekeerde van dezelfde figuur op volle snelheid verderop in de baan.\n\nHydra: The Revenge in Dorney Park introduceerde hem in 2005. Het element werd voorgesteld door het hoofd onderhoud en bouw van het park, Joe Greene, naar wie het vernoemd is. Copperhead Strike in Carowinds heeft er inmiddels ook een.",
+      'Een jojo roll is een heartline roll van 360 graden vlak na het station, waarbij de trein nauwelijks sneller dan stapvoets over de kop gaat. Doordat er bijna geen snelheid achter zit, hangen de inzittenden in hun beugels in plaats van in de stoel gedrukt te worden — precies het omgekeerde van dezelfde figuur op volle snelheid verderop in de baan.\n\nHydra: The Revenge in Dorney Park introduceerde hem in 2005. Het element werd voorgesteld door het hoofd onderhoud en bouw van het park, Joe Greene, naar wie het vernoemd is. Copperhead Strike in Carowinds heeft er inmiddels ook een.',
     relatedTermIds: ['heartline-roll', 'inversion', 'hangtime', 'lifthill'],
     aliases: ['Jojo Rolls', 'JoJo Roll'],
   },
   {
     id: 'flying-snake-dive',
-    name: "Flying Snake Dive",
+    name: 'Flying Snake Dive',
     shortDefinition:
-      "Een heartline roll die direct overgaat in een gedraaide duik: twee inversies die de trein zijwaarts wegslingeren.",
+      'Een heartline roll die direct overgaat in een gedraaide duik: twee inversies die de trein zijwaarts wegslingeren.',
     definition:
-      "Bij een flying snake dive draait de trein door een heartline roll en valt, zonder ooit weer horizontaal te komen, in een gedraaide duik die hem de andere kant op stuurt. Het telt als twee inversies, die zo dicht op elkaar volgen dat je zelden merkt waar de een eindigt en de ander begint.\n\nIntamin ontwierp het element in 2005 voor Maverick in Cedar Point — en Maverick kreeg er nooit een. Uit testritten bleek dat het te grote krachten op de inzittenden zou uitoefenen, dus werd het geschrapt en vervangen door een S-bocht vóór de opening in 2007. De naam overleefde de baan waarvoor hij was getekend. Rijden doe je er een op het drie jaar oudere Storm Runner in Hersheypark: een heartline roll gevolgd door een halve Immelmann die terug naar de beek duikt.",
+      'Bij een flying snake dive draait de trein door een heartline roll en valt, zonder ooit weer horizontaal te komen, in een gedraaide duik die hem de andere kant op stuurt. Het telt als twee inversies, die zo dicht op elkaar volgen dat je zelden merkt waar de een eindigt en de ander begint.\n\nIntamin ontwierp het element in 2005 voor Maverick in Cedar Point — en Maverick kreeg er nooit een. Uit testritten bleek dat het te grote krachten op de inzittenden zou uitoefenen, dus werd het geschrapt en vervangen door een S-bocht vóór de opening in 2007. De naam overleefde de baan waarvoor hij was getekend. Rijden doe je er een op het drie jaar oudere Storm Runner in Hersheypark: een heartline roll gevolgd door een halve Immelmann die terug naar de beek duikt.',
     relatedTermIds: ['heartline-roll', 'dive-drop', 'immelmann', 'inversion', 'intamin'],
   },
   {
@@ -2239,21 +2239,21 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'testing',
-    name: "Testritten",
+    name: 'Testritten',
     shortDefinition:
-      "De rondjes die een attractie leeg draait — voor de opening, elke ochtend en na elke reparatie.",
+      'De rondjes die een attractie leeg draait — voor de opening, elke ochtend en na elke reparatie.',
     definition:
-      "Testen is alles wat tussen een afgebouwde attractie en een volle trein zit. Bij de inbedrijfstelling nemen waterdummies of zandzakken de plaats van de inzittenden in, het systeem wordt over duizenden cycli beproefd, en met profielcontroles wordt vastgesteld dat er langs de baan niets zo dichtbij staat dat een uitgestoken arm het kan raken.\n\nHet houdt eigenlijk nooit op. Parken draaien elke ochtend lege rondjes voor de eerste gasten, en opnieuw na elke storing of onderhoudsbeurt — daarom kan een attractie als geopend te zien zijn en toch niemand laten instappen. Nieuwe banen testen in het volle zicht: de treinen rijden weken voor de opening over de hoofden van de bezoekers. Een soft opening is zelf een test, alleen met echte inzittenden.",
+      'Testen is alles wat tussen een afgebouwde attractie en een volle trein zit. Bij de inbedrijfstelling nemen waterdummies of zandzakken de plaats van de inzittenden in, het systeem wordt over duizenden cycli beproefd, en met profielcontroles wordt vastgesteld dat er langs de baan niets zo dichtbij staat dat een uitgestoken arm het kan raken.\n\nHet houdt eigenlijk nooit op. Parken draaien elke ochtend lege rondjes voor de eerste gasten, en opnieuw na elke storing of onderhoudsbeurt — daarom kan een attractie als geopend te zien zijn en toch niemand laten instappen. Nieuwe banen testen in het volle zicht: de treinen rijden weken voor de opening over de hoofden van de bezoekers. Een soft opening is zelf een test, alleen met echte inzittenden.',
     relatedTermIds: ['clearance-envelope', 'soft-opening', 'downtime', 'refurbishment'],
     aliases: ['Test runs', 'Test cycles'],
   },
   {
     id: 'kuka',
-    name: "KUKA",
+    name: 'KUKA',
     shortDefinition:
-      "Een Duitse fabrikant van industriele robots wiens fabrieksarmen zijn omgebouwd om mensen te vervoeren.",
+      'Een Duitse fabrikant van industriele robots wiens fabrieksarmen zijn omgebouwd om mensen te vervoeren.',
     definition:
-      "KUKA — de afkorting staat voor Keller und Knappich Augsburg, waar het bedrijf nog altijd zetelt — bouwt de oranje robotarmen van de autolopende banden. De zware KR 500 werd voor attractiegebruik aangepast als RoboCoaster: een vierpersoonsbank aan het uiteinde van de arm, vrij om te stampen, te rollen en de inzittenden door bewegingen te sturen die geen vaste rail kan maken.\n\nDe bekendste installatie is Harry Potter and the Forbidden Journey, geopend in 2010, waar RoboCoaster G2-banken op rijdende onderstellen staan: de armen reizen dus door de decors in plaats van op een plek te spelen. Sum of All Thrills in Epcot (2009-2016) draaide het om: gasten ontwierpen aan een terminal hun eigen baanprofiel, waarna een op maat gebouwde KUKA-arm precies dat uitvoerde.",
+      'KUKA — de afkorting staat voor Keller und Knappich Augsburg, waar het bedrijf nog altijd zetelt — bouwt de oranje robotarmen van de autolopende banden. De zware KR 500 werd voor attractiegebruik aangepast als RoboCoaster: een vierpersoonsbank aan het uiteinde van de arm, vrij om te stampen, te rollen en de inzittenden door bewegingen te sturen die geen vaste rail kan maken.\n\nDe bekendste installatie is Harry Potter and the Forbidden Journey, geopend in 2010, waar RoboCoaster G2-banken op rijdende onderstellen staan: de armen reizen dus door de decors in plaats van op een plek te spelen. Sum of All Thrills in Epcot (2009-2016) draaide het om: gasten ontwierpen aan een terminal hun eigen baanprofiel, waarna een op maat gebouwde KUKA-arm precies dat uitvoerde.',
     relatedTermIds: ['dynamic-attractions', 'dark-ride', 'motion-simulator', 'flying-theater'],
     alternateNames: ['Keller und Knappich Augsburg'],
   },

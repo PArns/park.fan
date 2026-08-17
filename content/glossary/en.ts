@@ -1713,9 +1713,9 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'cobra-loop',
-    name: "Cobra Loop",
+    name: 'Cobra Loop',
     shortDefinition:
-      "The name Hersheypark gave the first inversion on Storm Runner: a loop the train twists out of, sideways, instead of completing.",
+      'The name Hersheypark gave the first inversion on Storm Runner: a loop the train twists out of, sideways, instead of completing.',
     definition:
       "A cobra loop climbs like a vertical loop and then, at the top, twists out to one side rather than coming back down the way a loop would — so the train leaves the element travelling in a different direction from the one it entered. It inverts riders once.\n\nThe name belongs to one ride. Intamin built the element for Storm Runner at Hersheypark in 2004 and the park marketed it as the world's first cobra loop; in geometry it is what other manufacturers call a sidewinder. Where a cobra roll pairs two of these back to back and reverses the train, the cobra loop is a single half of that shape.",
     relatedTermIds: ['sidewinder', 'cobra-roll', 'vertical-loop', 'inversion', 'intamin'],
@@ -1723,9 +1723,9 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'jojo-roll',
-    name: "Jojo Roll",
+    name: 'Jojo Roll',
     shortDefinition:
-      "A slow heartline roll taken straight out of the station, before the train has climbed anything.",
+      'A slow heartline roll taken straight out of the station, before the train has climbed anything.',
     definition:
       "A jojo roll is a 360-degree heartline roll placed immediately after the station, so the train rolls upside down at little more than walking pace. Because there is almost no speed behind it, riders hang in their restraints rather than being pressed into the seat — the opposite sensation to the same figure taken at full speed later in a layout.\n\nHydra: The Revenge at Dorney Park introduced it in 2005. The element was suggested by the park's vice president of maintenance and construction, Joe Greene, and named after him. Copperhead Strike at Carowinds has since been built with one.",
     relatedTermIds: ['heartline-roll', 'inversion', 'hangtime', 'lifthill'],
@@ -1733,11 +1733,11 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'flying-snake-dive',
-    name: "Flying Snake Dive",
+    name: 'Flying Snake Dive',
     shortDefinition:
-      "A heartline roll that runs straight into a twisting dive, inverting riders twice and throwing the train off to the side.",
+      'A heartline roll that runs straight into a twisting dive, inverting riders twice and throwing the train off to the side.',
     definition:
-      "In a flying snake dive the train rolls through a heartline roll and, without ever levelling out, drops into a twisting dive that sends it away in the opposite direction. It counts as two inversions, and the two run together closely enough that riders rarely register where one ends and the next begins.\n\nIntamin designed the element in 2005 for Maverick at Cedar Point — and Maverick never got one. Testing showed it would pull excessive force on riders, so it was cut and replaced with an S-curve before the ride opened in 2007. The name outlived the installation it was drawn for. Storm Runner at Hersheypark, built three years earlier, is where you actually ride one: a heartline roll followed by a half Immelmann that plunges back down toward the creek.",
+      'In a flying snake dive the train rolls through a heartline roll and, without ever levelling out, drops into a twisting dive that sends it away in the opposite direction. It counts as two inversions, and the two run together closely enough that riders rarely register where one ends and the next begins.\n\nIntamin designed the element in 2005 for Maverick at Cedar Point — and Maverick never got one. Testing showed it would pull excessive force on riders, so it was cut and replaced with an S-curve before the ride opened in 2007. The name outlived the installation it was drawn for. Storm Runner at Hersheypark, built three years earlier, is where you actually ride one: a heartline roll followed by a half Immelmann that plunges back down toward the creek.',
     relatedTermIds: ['heartline-roll', 'dive-drop', 'immelmann', 'inversion', 'intamin'],
   },
   {
@@ -2102,9 +2102,9 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'testing',
-    name: "Testing",
+    name: 'Testing',
     shortDefinition:
-      "The cycles a ride runs empty — before it opens, every morning, and after every repair.",
+      'The cycles a ride runs empty — before it opens, every morning, and after every repair.',
     definition:
       "Testing is everything between a finished ride and a loaded train. Commissioning runs use water dummies or sandbags in place of riders, the ride system is put through thousands of cycles to prove it, and reach-envelope checks confirm that nothing along the track is close enough for an outstretched arm to touch.\n\nIt never really stops. Parks run empty cycles each morning before the first guests and again after any downtime or maintenance, which is why a ride can show as open and still not be dispatching. New rides test in plain sight — trains run over guests' heads for weeks before opening day — and a soft opening is itself a test, just with real riders in the seats. In Germany the TUV has to sign a ride off before it may carry anybody.",
     relatedTermIds: ['clearance-envelope', 'soft-opening', 'downtime', 'refurbishment'],
@@ -2112,9 +2112,9 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'kuka',
-    name: "KUKA",
+    name: 'KUKA',
     shortDefinition:
-      "A German industrial robot maker whose factory arms were adapted to carry riders.",
+      'A German industrial robot maker whose factory arms were adapted to carry riders.',
     definition:
       "KUKA — short for Keller und Knappich Augsburg, and still headquartered there — builds the orange robot arms found on car assembly lines. The heavy-duty KR 500 was adapted for ride use as the RoboCoaster: a four-seat bench bolted to the end of the arm, free to pitch, roll and sweep riders through motions no fixed track could produce.\n\nThe best-known installation is Harry Potter and the Forbidden Journey, which opened in 2010 with RoboCoaster G2 benches mounted on moving bases so the arms travel through the show scenes rather than performing in one spot. Epcot's Sum of All Thrills (2009-2016) used a custom KUKA arm the other way round: guests designed a coaster profile at a terminal and the arm then flew what they had drawn.",
     relatedTermIds: ['dynamic-attractions', 'dark-ride', 'motion-simulator', 'flying-theater'],

@@ -442,15 +442,15 @@ metingen onder blijven, komt op 31 minuten.
 
 Per baan ziet het er zo uit:
 
-| Attractie                                                    | Type                  | Typisch (mediaan) | Piek (P90) | Meetdagen |
-| ------------------------------------------------------------ | --------------------- | ----------------: | ---------: | --------: |
-| [YOY THRILL](ref:walibi-holland/yoy-thrill?bare)             | Enkele rail, staal    |            27 min |     34 min |       122 |
-| [Condor](ref:walibi-holland/condor?bare)                     | Suspended, staal      |            22 min |     30 min |       107 |
-| [YOY CHILL](ref:walibi-holland/yoy-chill?bare)               | Enkele rail, staal    |            22 min |     28 min |       115 |
-| [Lost Gravity](ref:walibi-holland/lost-gravity?bare)         | Big Dipper, staal     |            22 min |     27 min |       108 |
-| **[UNTAMED](ref:walibi-holland/untamed?bare)**               | **Hybride**           |        **20 min** | **25 min** |   **114** |
-| [Xpress: Platform 13](ref:walibi-holland/xpress-platform-13?bare) | Launch, staal    |            18 min |     25 min |       115 |
-| [Goliath](ref:walibi-holland/goliath?bare)                   | Mega Coaster, staal   |            18 min |     24 min |       114 |
+| Attractie                                                         | Type                | Typisch (mediaan) | Piek (P90) | Meetdagen |
+| ----------------------------------------------------------------- | ------------------- | ----------------: | ---------: | --------: |
+| [YOY THRILL](ref:walibi-holland/yoy-thrill?bare)                  | Enkele rail, staal  |            27 min |     34 min |       122 |
+| [Condor](ref:walibi-holland/condor?bare)                          | Suspended, staal    |            22 min |     30 min |       107 |
+| [YOY CHILL](ref:walibi-holland/yoy-chill?bare)                    | Enkele rail, staal  |            22 min |     28 min |       115 |
+| [Lost Gravity](ref:walibi-holland/lost-gravity?bare)              | Big Dipper, staal   |            22 min |     27 min |       108 |
+| **[UNTAMED](ref:walibi-holland/untamed?bare)**                    | **Hybride**         |        **20 min** | **25 min** |   **114** |
+| [Xpress: Platform 13](ref:walibi-holland/xpress-platform-13?bare) | Launch, staal       |            18 min |     25 min |       115 |
+| [Goliath](ref:walibi-holland/goliath?bare)                        | Mega Coaster, staal |            18 min |     24 min |       114 |
 
 De beste baan van het park staat in de onderste helft van die tabel. Er wordt
 langer gewacht voor de nieuwigheid, voor een SLC uit 1994 en voor een
@@ -461,16 +461,16 @@ heb je Untamed drie keer gereden voordat de YOY-rij één keer rond is.
 Interessanter wordt het in vergelijking met de buurt. Zelfde databasis, zelfde
 rekenmethode, laatste twee seizoenen:
 
-| Achtbaan                                                          | Park                                              | Typisch (mediaan) | Piek (P90) |
-| ----------------------------------------------------------------- | ------------------------------------------------- | ----------------: | ---------: |
-| [Taron](ref:phantasialand/taron?bare)                             | [Phantasialand](ref:phantasialand?bare)           |            49 min |     56 min |
-| [F.L.Y.](ref:phantasialand/fly?bare)                              | [Phantasialand](ref:phantasialand?bare)           |            41 min |     49 min |
-| [Joris en de Draak](ref:efteling/joris-en-de-draak?bare)          | [Efteling](ref:efteling?bare)                     |            35 min |     41 min |
-| [Black Mamba](ref:phantasialand/black-mamba?bare)                 | [Phantasialand](ref:phantasialand?bare)           |            31 min |     40 min |
-| [Baron 1898](ref:efteling/baron-1898?bare)                        | [Efteling](ref:efteling?bare)                     |            26 min |     32 min |
-| **[UNTAMED](ref:walibi-holland/untamed?bare)**                    | **[Walibi Holland](ref:walibi-holland?bare)**     |        **20 min** | **25 min** |
-| [Kondaa](ref:walibi-belgium/kondaa?bare)                          | [Walibi Belgium](ref:walibi-belgium?bare)         |            20 min |     25 min |
-| [Troy](ref:attractiepark-toverland/troy?bare)                     | [Toverland](ref:attractiepark-toverland?bare)     |            16 min |     21 min |
+| Achtbaan                                                 | Park                                          | Typisch (mediaan) | Piek (P90) |
+| -------------------------------------------------------- | --------------------------------------------- | ----------------: | ---------: |
+| [Taron](ref:phantasialand/taron?bare)                    | [Phantasialand](ref:phantasialand?bare)       |            49 min |     56 min |
+| [F.L.Y.](ref:phantasialand/fly?bare)                     | [Phantasialand](ref:phantasialand?bare)       |            41 min |     49 min |
+| [Joris en de Draak](ref:efteling/joris-en-de-draak?bare) | [Efteling](ref:efteling?bare)                 |            35 min |     41 min |
+| [Black Mamba](ref:phantasialand/black-mamba?bare)        | [Phantasialand](ref:phantasialand?bare)       |            31 min |     40 min |
+| [Baron 1898](ref:efteling/baron-1898?bare)               | [Efteling](ref:efteling?bare)                 |            26 min |     32 min |
+| **[UNTAMED](ref:walibi-holland/untamed?bare)**           | **[Walibi Holland](ref:walibi-holland?bare)** |        **20 min** | **25 min** |
+| [Kondaa](ref:walibi-belgium/kondaa?bare)                 | [Walibi Belgium](ref:walibi-belgium?bare)     |            20 min |     25 min |
+| [Troy](ref:attractiepark-toverland/troy?bare)            | [Toverland](ref:attractiepark-toverland?bare) |            16 min |     21 min |
 
 In de tijd dat je in Phantasialand **één keer** voor
 [Taron](ref:phantasialand/taron) staat, rijd je Untamed tweeënhalf keer. Op
@@ -519,7 +519,7 @@ vierde liggen werelden:
 3. **Spookhuizen en walkthroughs.** Doorloopbare huizen waar je in een groep
    doorheen gaat. Kosten extra.
 4. **Experiences.** Kleinste groepjes of alleen, lichamelijke nabijheid, en de
-   uitdrukkelijke belofte dat je hier iets *overkomt*. Kosten fors extra.
+   uitdrukkelijke belofte dat je hier iets _overkomt_. Kosten fors extra.
 
 Niveau vier is de reden dat er over Walibi wordt gepraat.
 
@@ -571,19 +571,19 @@ De prijzen voor 2026 staan nog niet vast, het park verkoopt de huizen doorgaans
 pas in de nazomer. Ter oriëntatie daarom de tabel van seizoen 2025, die de orde
 van grootte betrouwbaar weergeeft (voorverkoop / aan de kassa):
 
-| Categorie                                     | Prijs                |
-| --------------------------------------------- | -------------------- |
-| Entree Fright Nights                          | € 37,50 tot € 39,50  |
-| Spookhuis (Psychoshock, The Villa, Jefferson Manor) | € 9,50 / € 12,50 |
-| Spookhuis (US vs YOU)                         | € 12,50 / € 15,50    |
-| Walkthrough Camp of Curiosities               | € 9,50 / € 12,50     |
-| Walkthrough Wicked Woods                      | € 14,50 / € 17,50    |
-| Experience Below                              | € 19,50 / € 22,50    |
-| Experience Slaughterhouse                     | € 22,50 / € 25,50    |
-| Experience The Clinic                         | € 22,50 / € 25,50    |
-| The Unhappy Hour                              | € 25 (alleen online) |
-| Backstage Tour                                | € 75                 |
-| R.I.P. Pass (3 huizen + 1 walkthrough, fast lane) | € 57,50          |
+| Categorie                                           | Prijs                |
+| --------------------------------------------------- | -------------------- |
+| Entree Fright Nights                                | € 37,50 tot € 39,50  |
+| Spookhuis (Psychoshock, The Villa, Jefferson Manor) | € 9,50 / € 12,50     |
+| Spookhuis (US vs YOU)                               | € 12,50 / € 15,50    |
+| Walkthrough Camp of Curiosities                     | € 9,50 / € 12,50     |
+| Walkthrough Wicked Woods                            | € 14,50 / € 17,50    |
+| Experience Below                                    | € 19,50 / € 22,50    |
+| Experience Slaughterhouse                           | € 22,50 / € 25,50    |
+| Experience The Clinic                               | € 22,50 / € 25,50    |
+| The Unhappy Hour                                    | € 25 (alleen online) |
+| Backstage Tour                                      | € 75                 |
+| R.I.P. Pass (3 huizen + 1 walkthrough, fast lane)   | € 57,50              |
 
 Vier gratis scare zones liepen in 2025 mee: Tangled Twigs, Pirates Cove, Ghostly
 Graveyard en Nightmares.

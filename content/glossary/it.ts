@@ -1848,9 +1848,9 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'cobra-loop',
-    name: "Cobra Loop",
+    name: 'Cobra Loop',
     shortDefinition:
-      "Il nome dato da Hersheypark alla prima inversione di Storm Runner: un looping da cui il treno esce di lato invece di completarlo.",
+      'Il nome dato da Hersheypark alla prima inversione di Storm Runner: un looping da cui il treno esce di lato invece di completarlo.',
     definition:
       "Un cobra loop sale come un looping verticale e poi, in cima, si avvita di lato invece di ridiscendere come farebbe un looping — il treno lascia quindi l'elemento in una direzione diversa da quella di ingresso. Capovolge i passeggeri una volta.\n\nIl nome appartiene a una sola attrazione. Intamin costruì l'elemento per Storm Runner a Hersheypark nel 2004 e il parco lo presentò come il primo cobra loop al mondo; dal punto di vista geometrico è ciò che altri costruttori chiamano sidewinder. Dove un cobra roll unisce due di queste forme e inverte la marcia del treno, il cobra loop ne è solo la metà.",
     relatedTermIds: ['sidewinder', 'cobra-roll', 'vertical-loop', 'inversion', 'intamin'],
@@ -1858,9 +1858,9 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'jojo-roll',
-    name: "Jojo Roll",
+    name: 'Jojo Roll',
     shortDefinition:
-      "Un heartline roll lento, preso appena fuori dalla stazione, prima che il treno abbia salito qualcosa.",
+      'Un heartline roll lento, preso appena fuori dalla stazione, prima che il treno abbia salito qualcosa.',
     definition:
       "Un jojo roll è un heartline roll di 360 gradi collocato subito dopo la stazione: il treno si capovolge a poco più della velocità di un passo. Poiché non c'è quasi slancio, i passeggeri restano appesi alle protezioni invece di essere premuti sul sedile — la sensazione opposta a quella della stessa figura presa a piena velocità più avanti nel tracciato.\n\nHydra: The Revenge a Dorney Park lo introdusse nel 2005. L'elemento fu proposto dal responsabile della manutenzione e delle costruzioni del parco, Joe Greene, da cui prende il nome. Anche Copperhead Strike a Carowinds ne ha uno.",
     relatedTermIds: ['heartline-roll', 'inversion', 'hangtime', 'lifthill'],
@@ -1868,9 +1868,9 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'flying-snake-dive',
-    name: "Flying Snake Dive",
+    name: 'Flying Snake Dive',
     shortDefinition:
-      "Un heartline roll che sfocia direttamente in una picchiata avvitata: due inversioni che scagliano il treno di lato.",
+      'Un heartline roll che sfocia direttamente in una picchiata avvitata: due inversioni che scagliano il treno di lato.',
     definition:
       "In un flying snake dive il treno attraversa un heartline roll e, senza mai tornare in piano, precipita in una picchiata avvitata che lo spedisce nella direzione opposta. Conta come due inversioni, così ravvicinate che raramente si distingue dove finisce la prima e comincia la seconda.\n\nIntamin progettò l'elemento nel 2005 per Maverick a Cedar Point — e Maverick non lo ebbe mai. Le prove mostrarono che avrebbe sottoposto i passeggeri a forze eccessive, così fu eliminato e sostituito da una curva a S prima dell'apertura del 2007. Il nome è sopravvissuto all'attrazione per cui era stato disegnato. Lo si percorre davvero su Storm Runner a Hersheypark, costruito tre anni prima: un heartline roll seguito da un mezzo Immelmann che si tuffa verso il torrente.",
     relatedTermIds: ['heartline-roll', 'dive-drop', 'immelmann', 'inversion', 'intamin'],
@@ -2242,7 +2242,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'testing',
-    name: "Collaudo",
+    name: 'Collaudo',
     shortDefinition:
       "I giri che un'attrazione compie a vuoto — prima dell'apertura, ogni mattina e dopo ogni riparazione.",
     definition:
@@ -2252,9 +2252,9 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'kuka',
-    name: "KUKA",
+    name: 'KUKA',
     shortDefinition:
-      "Un costruttore tedesco di robot industriali i cui bracci da fabbrica sono stati adattati per portare passeggeri.",
+      'Un costruttore tedesco di robot industriali i cui bracci da fabbrica sono stati adattati per portare passeggeri.',
     definition:
       "KUKA — sigla di Keller und Knappich Augsburg, dove ha tuttora sede — produce i bracci robotici arancioni delle linee di montaggio automobilistiche. Il modello pesante KR 500 e stato adattato alle attrazioni con il nome di RoboCoaster: una panca a quattro posti imbullonata all'estremita del braccio, libera di beccheggiare, rollare e portare i passeggeri attraverso movimenti che nessun binario fisso potrebbe produrre.\n\nL'installazione piu nota e Harry Potter and the Forbidden Journey, aperta nel 2010, dove le panche RoboCoaster G2 sono montate su basi mobili: i bracci attraversano quindi le scenografie invece di esibirsi fermi in un punto. Sum of All Thrills a Epcot (2009-2016) rovesciava il principio: gli ospiti disegnavano il profilo del proprio ottovolante a un terminale e un braccio KUKA su misura lo percorreva.",
     relatedTermIds: ['dynamic-attractions', 'dark-ride', 'motion-simulator', 'flying-theater'],
