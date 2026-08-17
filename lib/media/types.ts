@@ -76,6 +76,21 @@ export interface MediaSidecar {
   parkPath?: string | null;
   /** Attraction slug, when the image shows one specific ride. */
   ride?: string | null;
+  /**
+   * Further attraction slugs the same photo shows, and should answer for.
+   *
+   * For the pairs the API lists as two rides but the park built as one structure:
+   * Winja's Fear and Winja's Force share a hall, YOY Chill and YOY Thrill share a
+   * layout, and one photograph is genuinely of both. Storing that as two identical
+   * files is what the media database exists to avoid — and when the duplicates were
+   * cleaned up, the second ride silently lost its only picture, because `ride` holds
+   * one slug. `roles` already solved the same problem in the other direction (one
+   * file is `park-background` AND `ride-card`); this is that, for rides.
+   *
+   * Not a place for "this ride is also in frame somewhere": the photo has to be a
+   * fair card for every slug listed, since `ride-card` resolution treats them alike.
+   */
+  alsoRides?: string[];
   /** Themed area within the park (not tracked by the API — authored here). */
   area?: string | null;
   /** Short human label, mainly for the admin browser. */
@@ -145,6 +160,8 @@ export interface MediaImage {
   /** Full hierarchy path, present when the sidecar disambiguates a colliding slug. */
   parkPath: string | null;
   ride: string | null;
+  /** Additional rides this photo shows — see `MediaSidecar.alsoRides`. Empty when none. */
+  alsoRides: string[];
   area: string | null;
   title: string;
   tags: string[];

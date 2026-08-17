@@ -519,10 +519,21 @@ Worth knowing, because each was invisible before:
   survivor is the one named after what it shows; see the naming rule in
   [`public/media/README.md`](../../public/media/README.md).
 
-  The last two are different: one photo of two duelling coasters, and `ride` holds
-  one slug. Winja's Force and YOY Thrill therefore show **no** photo until somebody
-  shoots them their own. That is a real, visible cost of the merge and the reason it
-  is written down here rather than quietly absorbed.
+  The last two are different: one photo of two duelling coasters, and `ride` held one
+  slug. Winja's Force and YOY Thrill therefore showed **no** photo at all — the merge
+  dropped the duplicate as housekeeping and took the second ride's only picture with
+  it, silently, because nothing re-checks whether a ride still has one.
+
+  That is now fixed the way `roles` fixed the first two rows: **`alsoRides`** lets a
+  sidecar name further rides the same photo shows, so `winjas-fear.jpg` answers for
+  `winjas-force` and `yoy-chill.jpg` for `yoy-thrill` — one file, two rides, through
+  `getRideImages` / `getRideImage` / `searchMedia` alike. Every slug listed is checked
+  against the park's attractions, so the next typo is a build warning instead of
+  another blank ride page. Authoring rules in
+  [`public/media/README.md`](../../public/media/README.md).
+
+  It stays an index entry, not a licence to reuse: the photo has to be a fair card for
+  every slug named, because `ride-card` resolution treats them as equals.
 
 ### A ride shows its own photo or none
 

@@ -39,6 +39,8 @@ export interface MediaApiImage {
     path: string;
   } | null;
   ride: string | null;
+  /** Further rides the same photo shows and answers for — see `MediaSidecar.alsoRides`. */
+  alsoRides: string[];
   area: string | null;
   tags: string[];
   roles: string[];
@@ -87,6 +89,7 @@ export function serializeMediaImage(image: MediaImage, locale: string): MediaApi
         }
       : null,
     ride: image.ride,
+    alsoRides: image.alsoRides,
     area: image.area,
     tags: image.tags,
     roles: image.roles,
