@@ -60,6 +60,7 @@ interface SidecarPayload {
   park?: string | null;
   parkPath?: string | null;
   ride?: string | null;
+  alsoRides?: string[];
   area?: string | null;
   title?: string | null;
   tags?: string[];
@@ -124,6 +125,10 @@ function buildSidecarFile(existingId: string | undefined, payload: SidecarPayloa
     park: payload.park !== undefined ? payload.park : current?.park,
     parkPath: payload.parkPath !== undefined ? payload.parkPath : current?.parkPath,
     ride: payload.ride !== undefined ? payload.ride : current?.ride,
+    // Carried through like every other field: a save that omitted it would drop the
+    // second ride's only photo again, which is the exact regression alsoRides exists
+    // to undo (see MediaSidecar.alsoRides).
+    alsoRides: payload.alsoRides ?? current?.alsoRides,
     area: payload.area !== undefined ? payload.area : current?.area,
     title: payload.title !== undefined ? payload.title : current?.title,
     tags: payload.tags ?? current?.tags,
