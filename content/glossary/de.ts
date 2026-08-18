@@ -1849,31 +1849,31 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'cobra-loop',
-    name: "Cobra Loop",
+    name: 'Cobra Loop',
     shortDefinition:
-      "Der Name, den Hersheypark der ersten Inversion des Storm Runner gab: ein Looping, aus dem der Zug seitlich herausdreht, statt ihn zu vollenden.",
+      'Der Name, den Hersheypark der ersten Inversion des Storm Runner gab: ein Looping, aus dem der Zug seitlich herausdreht, statt ihn zu vollenden.',
     definition:
-      "Ein Cobra Loop steigt an wie ein Looping und dreht oben zur Seite heraus, statt auf der anderen Seite wieder herunterzukommen — der Zug verlässt das Element also in einer anderen Richtung, als er hineingefahren ist. Er überschlägt die Fahrgäste einmal.\n\nDer Name gehört zu einer einzigen Bahn. Intamin baute das Element 2004 für den Storm Runner im Hersheypark, und der Park vermarktete es als weltweit ersten Cobra Loop; geometrisch ist es das, was andere Hersteller Sidewinder nennen. Wo ein Cobra Roll zwei dieser Formen aneinanderhängt und den Zug umkehrt, ist der Cobra Loop nur die eine Hälfte davon.",
+      'Ein Cobra Loop steigt an wie ein Looping und dreht oben zur Seite heraus, statt auf der anderen Seite wieder herunterzukommen — der Zug verlässt das Element also in einer anderen Richtung, als er hineingefahren ist. Er überschlägt die Fahrgäste einmal.\n\nDer Name gehört zu einer einzigen Bahn. Intamin baute das Element 2004 für den Storm Runner im Hersheypark, und der Park vermarktete es als weltweit ersten Cobra Loop; geometrisch ist es das, was andere Hersteller Sidewinder nennen. Wo ein Cobra Roll zwei dieser Formen aneinanderhängt und den Zug umkehrt, ist der Cobra Loop nur die eine Hälfte davon.',
     relatedTermIds: ['sidewinder', 'cobra-roll', 'vertical-loop', 'inversion', 'intamin'],
     alternateNames: ['Sidewinder'],
   },
   {
     id: 'jojo-roll',
-    name: "Jojo Roll",
+    name: 'Jojo Roll',
     shortDefinition:
-      "Eine langsame Heartline-Roll direkt hinter der Station, bevor der Zug überhaupt etwas erklommen hat.",
+      'Eine langsame Heartline-Roll direkt hinter der Station, bevor der Zug überhaupt etwas erklommen hat.',
     definition:
-      "Eine Jojo Roll ist eine 360-Grad-Heartline-Roll unmittelbar nach der Station, bei der sich der Zug kaum schneller als im Schritttempo überschlägt. Weil fast kein Tempo dahintersteckt, hängen die Fahrgäste in den Bügeln, statt in den Sitz gedrückt zu werden — das Gegenteil dessen, was dieselbe Figur bei voller Fahrt später im Layout auslöst.\n\nHydra: The Revenge im Dorney Park führte sie 2005 ein. Vorgeschlagen hat das Element der Wartungs- und Bauleiter des Parks, Joe Greene, nach dem sie auch benannt ist. Copperhead Strike in Carowinds hat inzwischen ebenfalls eine.",
+      'Eine Jojo Roll ist eine 360-Grad-Heartline-Roll unmittelbar nach der Station, bei der sich der Zug kaum schneller als im Schritttempo überschlägt. Weil fast kein Tempo dahintersteckt, hängen die Fahrgäste in den Bügeln, statt in den Sitz gedrückt zu werden — das Gegenteil dessen, was dieselbe Figur bei voller Fahrt später im Layout auslöst.\n\nHydra: The Revenge im Dorney Park führte sie 2005 ein. Vorgeschlagen hat das Element der Wartungs- und Bauleiter des Parks, Joe Greene, nach dem sie auch benannt ist. Copperhead Strike in Carowinds hat inzwischen ebenfalls eine.',
     relatedTermIds: ['heartline-roll', 'inversion', 'hangtime', 'lifthill'],
     aliases: ['Jojo Rolls', 'JoJo Roll'],
   },
   {
     id: 'flying-snake-dive',
-    name: "Flying Snake Dive",
+    name: 'Flying Snake Dive',
     shortDefinition:
-      "Eine Heartline-Roll, die direkt in einen gedrehten Sturzflug übergeht — zwei Überschläge, die den Zug seitlich wegwerfen.",
+      'Eine Heartline-Roll, die direkt in einen gedrehten Sturzflug übergeht — zwei Überschläge, die den Zug seitlich wegwerfen.',
     definition:
-      "Beim Flying Snake Dive dreht sich der Zug durch eine Heartline-Roll und fällt, ohne sich je wieder zu stabilisieren, in einen gedrehten Sturzflug, der ihn in die Gegenrichtung schickt. Das zählt als zwei Überschläge, die so dicht ineinander übergehen, dass kaum jemand merkt, wo der eine endet und der andere beginnt.\n\nIntamin entwarf das Element 2005 für Maverick in Cedar Point — und Maverick bekam nie eines. Bei den Testfahrten zeigte sich, dass es zu hohe Kräfte auf die Fahrgäste ausgeübt hätte, also wurde es noch vor der Eröffnung 2007 gestrichen und durch eine S-Kurve ersetzt. Der Name hat die Anlage überlebt, für die er gezeichnet wurde. Fahren kann man eines auf dem drei Jahre älteren Storm Runner im Hersheypark: eine Heartline-Roll, gefolgt von einem halben Immelmann, der zurück zum Bach hinunterstürzt.",
+      'Beim Flying Snake Dive dreht sich der Zug durch eine Heartline-Roll und fällt, ohne sich je wieder zu stabilisieren, in einen gedrehten Sturzflug, der ihn in die Gegenrichtung schickt. Das zählt als zwei Überschläge, die so dicht ineinander übergehen, dass kaum jemand merkt, wo der eine endet und der andere beginnt.\n\nIntamin entwarf das Element 2005 für Maverick in Cedar Point — und Maverick bekam nie eines. Bei den Testfahrten zeigte sich, dass es zu hohe Kräfte auf die Fahrgäste ausgeübt hätte, also wurde es noch vor der Eröffnung 2007 gestrichen und durch eine S-Kurve ersetzt. Der Name hat die Anlage überlebt, für die er gezeichnet wurde. Fahren kann man eines auf dem drei Jahre älteren Storm Runner im Hersheypark: eine Heartline-Roll, gefolgt von einem halben Immelmann, der zurück zum Bach hinunterstürzt.',
     relatedTermIds: ['heartline-roll', 'dive-drop', 'immelmann', 'inversion', 'intamin'],
   },
   {
@@ -2247,21 +2247,21 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'testing',
-    name: "Testfahrten",
+    name: 'Testfahrten',
     shortDefinition:
-      "Die Runden, die eine Bahn leer dreht — vor der Eroeffnung, jeden Morgen und nach jeder Reparatur.",
+      'Die Runden, die eine Bahn leer dreht — vor der Eroeffnung, jeden Morgen und nach jeder Reparatur.',
     definition:
-      "Testfahrten sind alles, was zwischen einer fertigen Bahn und einem besetzten Zug liegt. Bei der Inbetriebnahme sitzen Wasserdummies oder Sandsaecke an Stelle der Fahrgaeste, das Fahrsystem wird ueber Tausende Zyklen nachgewiesen, und mit dem Lichtraumprofil wird geprueft, dass entlang der Strecke nichts so nah steht, dass ein ausgestreckter Arm es beruehren koennte.\n\nAufhoeren tut das nie. Parks fahren jeden Morgen vor den ersten Gaesten leere Runden, und nach jeder Stoerung oder Wartung noch einmal — deshalb kann eine Bahn als geoeffnet angezeigt werden und trotzdem nicht abfertigen. Neue Bahnen testen vor aller Augen: Wochen vor der Eroeffnung fahren die Zuege ueber die Koepfe der Gaeste hinweg. Ein Soft Opening ist selbst ein Test, nur mit echten Fahrgaesten. In Deutschland muss der TUV eine Bahn abnehmen, bevor sie jemanden befoerdern darf.",
+      'Testfahrten sind alles, was zwischen einer fertigen Bahn und einem besetzten Zug liegt. Bei der Inbetriebnahme sitzen Wasserdummies oder Sandsaecke an Stelle der Fahrgaeste, das Fahrsystem wird ueber Tausende Zyklen nachgewiesen, und mit dem Lichtraumprofil wird geprueft, dass entlang der Strecke nichts so nah steht, dass ein ausgestreckter Arm es beruehren koennte.\n\nAufhoeren tut das nie. Parks fahren jeden Morgen vor den ersten Gaesten leere Runden, und nach jeder Stoerung oder Wartung noch einmal — deshalb kann eine Bahn als geoeffnet angezeigt werden und trotzdem nicht abfertigen. Neue Bahnen testen vor aller Augen: Wochen vor der Eroeffnung fahren die Zuege ueber die Koepfe der Gaeste hinweg. Ein Soft Opening ist selbst ein Test, nur mit echten Fahrgaesten. In Deutschland muss der TUV eine Bahn abnehmen, bevor sie jemanden befoerdern darf.',
     relatedTermIds: ['clearance-envelope', 'soft-opening', 'downtime', 'refurbishment'],
     aliases: ['Test runs', 'Test cycles'],
   },
   {
     id: 'kuka',
-    name: "KUKA",
+    name: 'KUKA',
     shortDefinition:
-      "Ein deutscher Industrieroboter-Hersteller, dessen Fabrikarme zu Fahrgeschaeften umgebaut wurden.",
+      'Ein deutscher Industrieroboter-Hersteller, dessen Fabrikarme zu Fahrgeschaeften umgebaut wurden.',
     definition:
-      "KUKA — die Abkuerzung steht fuer Keller und Knappich Augsburg, wo das Unternehmen bis heute sitzt — baut die orangen Roboterarme, die an Automontagelinien stehen. Der schwere KR 500 wurde als RoboCoaster fuer den Fahrgeschaeftsbetrieb angepasst: eine Viererbank am Ende des Arms, frei genug zu nicken, zu rollen und Bewegungen zu fahren, die keine feste Schiene hergibt.\n\nDie bekannteste Anlage ist Harry Potter and the Forbidden Journey, 2010 eroeffnet, wo RoboCoaster-G2-Baenke auf fahrenden Untersaetzen sitzen — die Arme bewegen sich also durch die Szenen, statt an einer Stelle zu spielen. Epcots Sum of All Thrills (2009-2016) drehte das Prinzip um: Die Gaeste entwarfen an einem Terminal ihr eigenes Streckenprofil, und ein eigens gebauter KUKA-Arm fuhr anschliessend genau das nach.",
+      'KUKA — die Abkuerzung steht fuer Keller und Knappich Augsburg, wo das Unternehmen bis heute sitzt — baut die orangen Roboterarme, die an Automontagelinien stehen. Der schwere KR 500 wurde als RoboCoaster fuer den Fahrgeschaeftsbetrieb angepasst: eine Viererbank am Ende des Arms, frei genug zu nicken, zu rollen und Bewegungen zu fahren, die keine feste Schiene hergibt.\n\nDie bekannteste Anlage ist Harry Potter and the Forbidden Journey, 2010 eroeffnet, wo RoboCoaster-G2-Baenke auf fahrenden Untersaetzen sitzen — die Arme bewegen sich also durch die Szenen, statt an einer Stelle zu spielen. Epcots Sum of All Thrills (2009-2016) drehte das Prinzip um: Die Gaeste entwarfen an einem Terminal ihr eigenes Streckenprofil, und ein eigens gebauter KUKA-Arm fuhr anschliessend genau das nach.',
     relatedTermIds: ['dynamic-attractions', 'dark-ride', 'motion-simulator', 'flying-theater'],
     alternateNames: ['Keller und Knappich Augsburg'],
   },

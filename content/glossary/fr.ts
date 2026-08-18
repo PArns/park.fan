@@ -1769,9 +1769,9 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'cobra-loop',
-    name: "Cobra Loop",
+    name: 'Cobra Loop',
     shortDefinition:
-      "Le nom donné par Hersheypark à la première inversion de Storm Runner : une boucle dont le train ressort sur le côté au lieu de la terminer.",
+      'Le nom donné par Hersheypark à la première inversion de Storm Runner : une boucle dont le train ressort sur le côté au lieu de la terminer.',
     definition:
       "Un cobra loop s'élève comme une boucle verticale puis, au sommet, se vrille sur le côté au lieu de redescendre comme le ferait une boucle — le train quitte donc l'élément dans une direction différente de celle par laquelle il est entré. Il retourne les passagers une fois.\n\nLe nom appartient à une seule attraction. Intamin a construit l'élément pour Storm Runner à Hersheypark en 2004, et le parc l'a présenté comme le premier cobra loop au monde ; géométriquement, c'est ce que d'autres constructeurs appellent un sidewinder. Là où un cobra roll enchaîne deux de ces formes et fait faire demi-tour au train, le cobra loop n'en est que la moitié.",
     relatedTermIds: ['sidewinder', 'cobra-roll', 'vertical-loop', 'inversion', 'intamin'],
@@ -1779,7 +1779,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'jojo-roll',
-    name: "Jojo Roll",
+    name: 'Jojo Roll',
     shortDefinition:
       "Un tonneau heartline lent, pris dès la sortie de la gare, avant que le train n'ait rien gravi.",
     definition:
@@ -1789,9 +1789,9 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'flying-snake-dive',
-    name: "Flying Snake Dive",
+    name: 'Flying Snake Dive',
     shortDefinition:
-      "Un tonneau heartline qui enchaîne directement sur un plongeon vrillé : deux inversions qui projettent le train sur le côté.",
+      'Un tonneau heartline qui enchaîne directement sur un plongeon vrillé : deux inversions qui projettent le train sur le côté.',
     definition:
       "Dans un flying snake dive, le train traverse un tonneau heartline puis, sans jamais se remettre à plat, bascule dans un plongeon vrillé qui l'envoie dans la direction opposée. Cela compte pour deux inversions, si étroitement enchaînées que l'on distingue rarement où la première s'achève et où la seconde commence.\n\nIntamin a conçu l'élément en 2005 pour Maverick à Cedar Point — et Maverick n'en a jamais eu. Les essais ont montré qu'il soumettrait les passagers à des forces excessives : il a été supprimé et remplacé par une courbe en S avant l'ouverture en 2007. Le nom a survécu à l'installation pour laquelle il avait été dessiné. C'est sur Storm Runner à Hersheypark, construit trois ans plus tôt, que l'on en parcourt réellement un : un tonneau heartline suivi d'un demi-Immelmann qui replonge vers le ruisseau.",
     relatedTermIds: ['heartline-roll', 'dive-drop', 'immelmann', 'inversion', 'intamin'],
@@ -2161,7 +2161,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'testing',
-    name: "Essais",
+    name: 'Essais',
     shortDefinition:
       "Les tours qu'une attraction effectue a vide — avant l'ouverture, chaque matin et apres chaque reparation.",
     definition:
@@ -2171,7 +2171,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'kuka',
-    name: "KUKA",
+    name: 'KUKA',
     shortDefinition:
       "Un fabricant allemand de robots industriels dont les bras d'usine ont ete adaptes au transport de passagers.",
     definition:

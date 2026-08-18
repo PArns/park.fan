@@ -90,13 +90,13 @@ The Belgian **Walibi group** took over, rebuilt for a year behind closed gates
 and opened in **1994** as **Walibi Flevo**. What followed is one of the most
 restless naming histories in the industry:
 
-| Years     | Name              |
-| --------- | ----------------- |
-| 1971–1992 | Flevohof          |
-| 1994–1999 | Walibi Flevo      |
-| 2000–2004 | Six Flags Holland |
-| 2005–2010 | Walibi World      |
-| since 2011 | Walibi Holland   |
+| Years      | Name              |
+| ---------- | ----------------- |
+| 1971–1992  | Flevohof          |
+| 1994–1999  | Walibi Flevo      |
+| 2000–2004  | Six Flags Holland |
+| 2005–2010  | Walibi World      |
+| since 2011 | Walibi Holland    |
 
 Four new names in seventeen years, and each brought a different idea of what
 this park was supposed to be. The Americans at **Six Flags** bought in during
@@ -433,15 +433,15 @@ below, comes to 31 minutes.
 
 Ride by ride it looks like this:
 
-| Attraction                                                   | Type                  | Typical (median) | Peak (P90) | Days measured |
-| ------------------------------------------------------------ | --------------------- | ---------------: | ---------: | ------------: |
-| [YOY THRILL](ref:walibi-holland/yoy-thrill?bare)             | Single rail, steel    |           27 min |     34 min |           122 |
-| [Condor](ref:walibi-holland/condor?bare)                     | Suspended, steel      |           22 min |     30 min |           107 |
-| [YOY CHILL](ref:walibi-holland/yoy-chill?bare)               | Single rail, steel    |           22 min |     28 min |           115 |
-| [Lost Gravity](ref:walibi-holland/lost-gravity?bare)         | Big Dipper, steel     |           22 min |     27 min |           108 |
-| **[UNTAMED](ref:walibi-holland/untamed?bare)**               | **Hybrid**            |       **20 min** | **25 min** |       **114** |
-| [Xpress: Platform 13](ref:walibi-holland/xpress-platform-13?bare) | Launch, steel    |           18 min |     25 min |           115 |
-| [Goliath](ref:walibi-holland/goliath?bare)                   | Mega Coaster, steel   |           18 min |     24 min |           114 |
+| Attraction                                                        | Type                | Typical (median) | Peak (P90) | Days measured |
+| ----------------------------------------------------------------- | ------------------- | ---------------: | ---------: | ------------: |
+| [YOY THRILL](ref:walibi-holland/yoy-thrill?bare)                  | Single rail, steel  |           27 min |     34 min |           122 |
+| [Condor](ref:walibi-holland/condor?bare)                          | Suspended, steel    |           22 min |     30 min |           107 |
+| [YOY CHILL](ref:walibi-holland/yoy-chill?bare)                    | Single rail, steel  |           22 min |     28 min |           115 |
+| [Lost Gravity](ref:walibi-holland/lost-gravity?bare)              | Big Dipper, steel   |           22 min |     27 min |           108 |
+| **[UNTAMED](ref:walibi-holland/untamed?bare)**                    | **Hybrid**          |       **20 min** | **25 min** |       **114** |
+| [Xpress: Platform 13](ref:walibi-holland/xpress-platform-13?bare) | Launch, steel       |           18 min |     25 min |           115 |
+| [Goliath](ref:walibi-holland/goliath?bare)                        | Mega Coaster, steel |           18 min |     24 min |           114 |
 
 The best ride in the park sits in the lower half of that table. People queue
 longer for the new one, for an SLC from 1994 and for a Mack ride 680 metres
@@ -452,16 +452,16 @@ Untamed three times before the YOY queue has cycled through once.
 It gets more interesting compared with the neighbourhood. Same data basis, same
 method, last two seasons:
 
-| Coaster                                                           | Park                                              | Typical (median) | Peak (P90) |
-| ----------------------------------------------------------------- | ------------------------------------------------- | ---------------: | ---------: |
-| [Taron](ref:phantasialand/taron?bare)                             | [Phantasialand](ref:phantasialand?bare)           |           49 min |     56 min |
-| [F.L.Y.](ref:phantasialand/fly?bare)                              | [Phantasialand](ref:phantasialand?bare)           |           41 min |     49 min |
-| [Joris en de Draak](ref:efteling/joris-en-de-draak?bare)          | [Efteling](ref:efteling?bare)                     |           35 min |     41 min |
-| [Black Mamba](ref:phantasialand/black-mamba?bare)                 | [Phantasialand](ref:phantasialand?bare)           |           31 min |     40 min |
-| [Baron 1898](ref:efteling/baron-1898?bare)                        | [Efteling](ref:efteling?bare)                     |           26 min |     32 min |
-| **[UNTAMED](ref:walibi-holland/untamed?bare)**                    | **[Walibi Holland](ref:walibi-holland?bare)**     |       **20 min** | **25 min** |
-| [Kondaa](ref:walibi-belgium/kondaa?bare)                          | [Walibi Belgium](ref:walibi-belgium?bare)         |           20 min |     25 min |
-| [Troy](ref:attractiepark-toverland/troy?bare)                     | [Toverland](ref:attractiepark-toverland?bare)     |           16 min |     21 min |
+| Coaster                                                  | Park                                          | Typical (median) | Peak (P90) |
+| -------------------------------------------------------- | --------------------------------------------- | ---------------: | ---------: |
+| [Taron](ref:phantasialand/taron?bare)                    | [Phantasialand](ref:phantasialand?bare)       |           49 min |     56 min |
+| [F.L.Y.](ref:phantasialand/fly?bare)                     | [Phantasialand](ref:phantasialand?bare)       |           41 min |     49 min |
+| [Joris en de Draak](ref:efteling/joris-en-de-draak?bare) | [Efteling](ref:efteling?bare)                 |           35 min |     41 min |
+| [Black Mamba](ref:phantasialand/black-mamba?bare)        | [Phantasialand](ref:phantasialand?bare)       |           31 min |     40 min |
+| [Baron 1898](ref:efteling/baron-1898?bare)               | [Efteling](ref:efteling?bare)                 |           26 min |     32 min |
+| **[UNTAMED](ref:walibi-holland/untamed?bare)**           | **[Walibi Holland](ref:walibi-holland?bare)** |       **20 min** | **25 min** |
+| [Kondaa](ref:walibi-belgium/kondaa?bare)                 | [Walibi Belgium](ref:walibi-belgium?bare)     |           20 min |     25 min |
+| [Troy](ref:attractiepark-toverland/troy?bare)            | [Toverland](ref:attractiepark-toverland?bare) |           16 min |     21 min |
 
 In the time you queue **once** for [Taron](ref:phantasialand/taron) at
 Phantasialand, you ride Untamed two and a half times. At park level the picture
@@ -509,7 +509,7 @@ first and the fourth:
 3. **Haunted houses and walkthroughs.** Walk-through attractions you go through
    as a group. Cost extra.
 4. **Experiences.** Tiny groups or alone, physical proximity, and the explicit
-   promise that something *happens* to you here. Cost considerably extra.
+   promise that something _happens_ to you here. Cost considerably extra.
 
 Level four is the reason people talk about Walibi.
 
@@ -560,19 +560,19 @@ The 2026 prices are not fixed yet, the park tends to put the houses on sale in
 late summer. As a guide, then, the table for the 2025 season, which reflects the
 order of magnitude reliably (advance / on the night):
 
-| Category                                      | Price                |
-| --------------------------------------------- | -------------------- |
-| Fright Nights admission                       | €37.50 to €39.50     |
-| Haunted house (Psychoshock, The Villa, Jefferson Manor) | €9.50 / €12.50 |
-| Haunted house (US vs YOU)                     | €12.50 / €15.50      |
-| Walkthrough Camp of Curiosities               | €9.50 / €12.50       |
-| Walkthrough Wicked Woods                      | €14.50 / €17.50      |
-| Experience Below                              | €19.50 / €22.50      |
-| Experience Slaughterhouse                     | €22.50 / €25.50      |
-| Experience The Clinic                         | €22.50 / €25.50      |
-| The Unhappy Hour                              | €25 (online only)    |
-| Backstage Tour                                | €75                  |
-| R.I.P. Pass (3 houses + 1 walkthrough, fast lane) | €57.50           |
+| Category                                                | Price             |
+| ------------------------------------------------------- | ----------------- |
+| Fright Nights admission                                 | €37.50 to €39.50  |
+| Haunted house (Psychoshock, The Villa, Jefferson Manor) | €9.50 / €12.50    |
+| Haunted house (US vs YOU)                               | €12.50 / €15.50   |
+| Walkthrough Camp of Curiosities                         | €9.50 / €12.50    |
+| Walkthrough Wicked Woods                                | €14.50 / €17.50   |
+| Experience Below                                        | €19.50 / €22.50   |
+| Experience Slaughterhouse                               | €22.50 / €25.50   |
+| Experience The Clinic                                   | €22.50 / €25.50   |
+| The Unhappy Hour                                        | €25 (online only) |
+| Backstage Tour                                          | €75               |
+| R.I.P. Pass (3 houses + 1 walkthrough, fast lane)       | €57.50            |
 
 Four free scare zones ran alongside in 2025: Tangled Twigs, Pirates Cove,
 Ghostly Graveyard and Nightmares.
