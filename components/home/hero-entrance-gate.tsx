@@ -8,6 +8,9 @@
  */
 export const HERO_ENTRANCE_MS = 1700;
 
+/** Duration of `hero-item-in` in globals.css. Kept here so the two cannot drift apart. */
+export const HERO_ITEM_IN_MS = 850;
+
 /**
  * Closes the hero's entrance window once it has played.
  *

@@ -8,6 +8,7 @@ import { GlassCard } from '@/components/common/glass-card';
 import { useGeoLiveStats, findOpenParkCount } from '@/lib/hooks/use-geo-live-stats';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { cn } from '@/lib/utils';
+import { HERO_ENTRANCE_MS, HERO_ITEM_IN_MS } from '@/components/home/hero-entrance-gate';
 import {
   WORLD_MAP_CONTINENTS,
   WORLD_MAP_VIEWBOX,
@@ -54,6 +55,20 @@ const ENTRANCE_MS = 2100;
  * its landmass) navigates to its geo route, and the country chips link to theirs.
  */
 export function HeroWorldPanelClient({ continents }: { continents: WorldPanelContinent[] }) {
+  // Does this panel's entrance still belong to the hero's choreography?
+  //
+  // `.hero-entering` is dropped after HERO_ENTRANCE_MS so late content does not animate in, but
+  // this panel is deliberately held back until load + idle, which lands on either side of that
+  // line depending on the connection. Mount while the class is still there and the contents
+  // snap to `scale(0.965)` 30px down and ease back over 0.85s — a solo entrance a second after
+  // the page looked finished, which reads as a jump. It is a race, so it shows up only
+  // sometimes, and never in a two-snapshot diff: a transform is not a layout shift, so the
+  // browser scores it 0 and only a frame-by-frame recording catches it.
+  //
+  // Worth keeping when it lands inside the choreography, so the test is whether it can still
+  // FINISH inside the window — and it is taken HERE, in the component that is created at the
+  // moment the panel appears, not in the gate, which renders from hydration onwards.
+  const [animateIn] = useState(() => performance.now() < HERO_ENTRANCE_MS - HERO_ITEM_IN_MS);
   const tGeo = useTranslations('geo');
   const tHome = useTranslations('home');
   const router = useRouter();
@@ -132,7 +147,10 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
     // once the entrance finished. Its sections carry the entrance instead.
     <GlassCard
       variant="heavy"
-      className="hero-in-stagger border-border/50 overflow-hidden rounded-2xl p-0 shadow-2xl"
+      className={cn(
+        'border-border/50 overflow-hidden rounded-2xl p-0 shadow-2xl',
+        animateIn && 'hero-in-stagger'
+      )}
     >
       {/* Header: "Parks in Europe" + live open / total.
           aria-live: switching continents replaces this heading, the open/total figure and the
