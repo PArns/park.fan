@@ -47,7 +47,14 @@ export function HeroWorldPanelSkeleton() {
         </div>
         <Skeleton className="h-8 w-24" />
       </div>
-      <Skeleton className="mx-5 mt-6 h-[232px] rounded-xl" />
+      {/* The real map is a full-width <svg> with viewBox "0 0 2000 857", so its height is
+          the panel width over that ratio — not a fixed number. A `h-[232px]` box happened to
+          match one viewport width and was wrong at every other, which moved the country chips
+          under it when the map mounted. `aspect-[2000/857]` tracks the svg at any width; the
+          margins go too, because the real map sits flush in its own tinted band. */}
+      <div className="bg-muted/20 mt-6">
+        <Skeleton className="aspect-[2000/857] w-full rounded-none" />
+      </div>
       <div className="flex flex-wrap gap-2 px-5 pt-5">
         {['w-32', 'w-36', 'w-44', 'w-28', 'w-24'].map((w) => (
           <Skeleton key={w} className={cn('h-8 rounded-full', w)} />
