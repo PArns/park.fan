@@ -139,8 +139,8 @@ export function ParkStatus({ park, variant, className, todayCrowdLevel }: ParkSt
               </CardHeader>
               <CardContent className="space-y-3">
                 {/* Two ratings side by side when today's daily one is known — they measure
-                    different things and the labels are what keep that readable: "heute" is the
-                    day aggregate (comparable with the header's forecast), "jetzt" the live spot
+                    different things and the labels are what keep that readable: "Heute" is the
+                    day aggregate (comparable with the header's forecast), "Jetzt" the live spot
                     reading. Without today's value the live badge keeps its original centred,
                     unlabelled position, so nothing changes for a park we cannot rate. */}
                 {todayCrowdLevel ? (
