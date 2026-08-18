@@ -4,9 +4,9 @@
  *
  * Run: pnpm measure:cls                     (needs a running site, see --base)
  *      pnpm measure:cls --json
- *      pnpm measure:cls --url /de/parks/europe/germany/rust/europa-park
+ *      pnpm measure:cls --url=/de/parks/europe/germany/rust/europa-park
  *
- * WHY THIS EXISTS, AND WHY IT DOES NOT JUST READ `layout-shift` ENTRIES
+ * WHY THIS EXISTS, AND WHY IT DOES NOT READ `layout-shift` ENTRIES
  *
  * The obvious harness — open the page, listen to PerformanceObserver('layout-shift'),
  * print the score — reports ~0 against a local server and is worthless. Locally the
@@ -15,33 +15,49 @@
  * otherwise (docs/development/analytics.md). Throttling does not fix it: it delays the
  * whole document evenly, so the boundaries still land before paint.
  *
- * What a visitor on a slow connection actually sees is TWO layouts: the one the first
- * HTML paints (Suspense fallbacks in place, no client data yet) and the one that is
- * there once everything has landed. Every block whose geometry differs between those
- * two is a shift waiting for a slow enough device — and the distance the page below it
- * travels is what CLS charges. So this script diffs the two layouts directly:
+ * What a visitor on a slow connection sees is TWO layouts: the one the first HTML
+ * paints (Suspense fallbacks in place, no client data yet) and the one that is there
+ * once everything has landed. Every block whose geometry differs between them is a
+ * shift waiting for a slow enough device, and the distance the page below it travels is
+ * what CLS charges. So this diffs the two layouts directly, over EVERY element rather
+ * than a list of blocks somebody already suspected — which is the point, since the
+ * sources this turned up on its first run were the ones nobody had thought to measure.
  *
- *   A  javaScriptEnabled: false  → the first-paint layout. Streamed boundaries that
- *      resolved late are absent, their fallbacks are what the HTML carries, and no
- *      client query has run.
- *   B  javaScriptEnabled: true, settled → the final layout.
+ * THREE STATES ARE COLLECTED
  *
- * It walks EVERY element (matched across the two runs by a structural path) instead of
- * a hand-written list of selectors. That is the point: the three sources this found on
- * its first run — the weather card, the stats section and the FAQ — were all missed by
- * measuring the blocks somebody already suspected.
+ *   first     JS off            → the first-paint layout
+ *   settled   JS on, waited     → the final layout
+ *   noImages  JS on, images off → the layout while the pictures are still in flight
+ *
+ * `first → settled` finds unreserved boundaries and client-mounted blocks.
+ * `noImages → settled` finds pictures whose box is not reserved — a difference the
+ * first diff cannot see, because images behave identically in both of its runs.
+ *
+ * MATCHING ELEMENTS BETWEEN TWO RUNS IS THE HARD PART
+ *
+ * Two obvious keys both produce confident nonsense:
+ *   - tag + sibling index: the homepage mounts whole sections on the client, and one
+ *     insertion renumbers every section after it — the diff then compares favourites
+ *     against blog and reports a 2000px collapse that never happens.
+ *   - tag + class signature: a block whose conditional classes change reads as removed
+ *     and a different one inserted, so the hero shows up as new on every run.
+ *
+ * So children are aligned per parent with a longest common subsequence over their
+ * signatures. Insertions and removals fall out of the alignment instead of renumbering
+ * everything after them, and a block only counts as new when nothing matched it.
  *
  * READING THE OUTPUT
  *
- * `Δh` is what a block grows by; that is the distance everything below it travels.
- * `est. CLS` is that distance over the viewport height — the score a visitor pays if
- * they are looking at the content below when it moves, which is the worst case and the
- * one the field reports. Blocks are listed worst first.
+ * `Δh` is what a block grows by, which is the distance everything below it travels.
+ * `est.` is that over the viewport height: the score a visitor pays who is looking at
+ * the content below when it moves. Rows are split by depth, because a block two
+ * viewports down is what the field reports, while a 30,000px growth further down is the
+ * attraction grid mounting under a reader who has not scrolled there yet.
  *
  * Not every finding is a bug. A reservation can be deliberately absent because the
  * content is optional and reserving it would collapse the box on the pages that never
  * get it — see the nearby-parks note in docs/architecture/system-overview.md. Judge a
- * row by whether the content is predictable, not by its size alone.
+ * row by whether the content is predictable, not by its size.
  */
 
 import { chromium } from 'playwright';
@@ -58,7 +74,7 @@ const AS_JSON = has('json');
 const SETTLE_MS = Number(flag('settle', '9000'));
 /** Ignore sub-pixel noise and rounding; below this nothing is worth reporting. */
 const MIN_DELTA_PX = Number(flag('min', '8'));
-/** Fail the run when a single block is worse than this. Off unless asked for. */
+/** Fail the run when a single in-view block is worse than this. Off unless asked for. */
 const THRESHOLD = flag('threshold', null);
 
 const EXECUTABLE = process.env.CLS_CHROMIUM || '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
@@ -75,7 +91,7 @@ const VIEWPORTS = [
  */
 const DEFAULT_URLS = [
   '/de',
-  '/de/parks/europe/germany/rust/europa-park', // big park, has nearby + blog + holiday warning
+  '/de/parks/europe/germany/rust/europa-park', // big park: nearby + blog + holiday warning
   '/de/parks/europe/germany/soltau/heide-park', // no nearby section (48% of the catalog)
   '/de/parks/europe/germany/bruehl/phantasialand/taron', // ride page
   '/de/blog',
@@ -84,74 +100,101 @@ const DEFAULT_URLS = [
 const urlArg = args.filter((a) => a.startsWith('--url=')).map((a) => a.slice(6));
 const URLS = urlArg.length ? urlArg : DEFAULT_URLS;
 
-/**
- * Structural path for an element, stable across the two runs: tag plus its index among
- * same-tag siblings, up to the body. Class names are deliberately NOT part of the key —
- * a block that changes a conditional class would otherwise read as "removed and a
- * different one inserted" and hide the very growth we are measuring.
- */
-function collect() {
-  const out = [];
-  const walk = (el, path, depth) => {
-    if (depth > 12) return;
+/** Collects the render tree with the geometry of every element, in flow or not. */
+function collectTree() {
+  const build = (el, ancestorInFlow) => {
     const r = el.getBoundingClientRect();
-    const h = Math.round(r.height);
-    // Zero-height wrappers carry no layout of their own.
-    if (h > 0) {
-      out.push({
-        path,
-        y: Math.round(r.top + window.scrollY),
-        h,
-        label:
-          el.tagName.toLowerCase() +
-          (el.getAttribute('class')
-            ? '.' + el.getAttribute('class').trim().split(/\s+/).slice(0, 3).join('.')
-            : ''),
-        text: (el.textContent || '').trim().slice(0, 40).replace(/\s+/g, ' '),
-      });
-    }
-    const seen = {};
-    for (const child of el.children) {
-      const tag = child.tagName.toLowerCase();
-      seen[tag] = (seen[tag] ?? 0) + 1;
-      walk(child, `${path}>${tag}:${seen[tag]}`, depth + 1);
-    }
+    // Out of flow is inherited: a fixed banner and everything inside it moves with the
+    // viewport, not with the page, so none of it can displace page content.
+    const pos = getComputedStyle(el).position;
+    const inFlow = ancestorInFlow && pos !== 'fixed' && pos !== 'absolute';
+    const classes = (el.getAttribute('class') || '').trim().split(/\s+/).filter(Boolean);
+    const sig =
+      el.tagName.toLowerCase() + (classes.length ? '.' + classes.slice(0, 3).join('.') : '');
+    return {
+      sig,
+      y: Math.round(r.top + window.scrollY),
+      h: Math.round(r.height),
+      inFlow,
+      text: (el.textContent || '').trim().slice(0, 40).replace(/\s+/g, ' '),
+      children: [...el.children].map((c) => build(c, inFlow)),
+    };
   };
   const root = document.querySelector('main') || document.body;
-  walk(root, 'main', 0);
-  return { blocks: out, doc: Math.round(document.documentElement.scrollHeight) };
+  return { tree: build(root, true), doc: Math.round(document.documentElement.scrollHeight) };
 }
 
-async function layoutFor(browser, url, viewport, js, blockImages = false) {
-  const ctx = await browser.newContext({
-    viewport: { width: viewport.width, height: viewport.height },
-    isMobile: viewport.isMobile,
-    hasTouch: viewport.isMobile,
-    javaScriptEnabled: js,
-  });
-  const page = await ctx.newPage();
-  try {
-    if (blockImages) {
-      // Not a network-speed simulation: the point is the layout an element occupies
-      // while its picture has not arrived. A photo with a reserved box looks identical
-      // either way; one without collapses, and that difference is the shift.
-      await page.route('**/*', (route) =>
-        route.request().resourceType() === 'image' ? route.abort() : route.continue()
-      );
+/** Longest common subsequence over child signatures, so an insertion renumbers nothing. */
+function alignChildren(a, b) {
+  const n = a.length;
+  const m = b.length;
+  const dp = Array.from({ length: n + 1 }, () => new Uint32Array(m + 1));
+  for (let i = n - 1; i >= 0; i--) {
+    for (let j = m - 1; j >= 0; j--) {
+      dp[i][j] =
+        a[i].sig === b[j].sig ? dp[i + 1][j + 1] + 1 : Math.max(dp[i + 1][j], dp[i][j + 1]);
     }
-    await page.goto(url, { waitUntil: js ? 'domcontentloaded' : 'load', timeout: 90000 });
-    await page.waitForTimeout(js ? SETTLE_MS : 800);
-    return await page.evaluate(collect);
-  } finally {
-    await ctx.close();
   }
+  const pairs = [];
+  let i = 0;
+  let j = 0;
+  while (i < n && j < m) {
+    if (a[i].sig === b[j].sig) {
+      pairs.push([a[i], b[j]]);
+      i++;
+      j++;
+    } else if (dp[i + 1][j] >= dp[i][j + 1]) {
+      i++; // only in the "before" tree: removed, nothing to report on the settled side
+    } else {
+      pairs.push([null, b[j]]);
+      j++;
+    }
+  }
+  for (; j < m; j++) pairs.push([null, b[j]]);
+
+  // Second pass, tag only. A block whose conditional classes differ between the two runs
+  // survives the first pass unmatched and would be reported as freshly inserted at its
+  // full height — the hero did exactly that, showing up as a 656px insertion on a page
+  // where it had simply gained a class. Pairing the leftovers by tag, in order, keeps
+  // those matched; a genuinely new block has no leftover partner and stays new.
+  const leftoverBefore = a.filter((x) => !pairs.some(([pa]) => pa === x));
+  for (const pair of pairs) {
+    if (pair[0]) continue;
+    const idx = leftoverBefore.findIndex(
+      (x) => x && x.sig.split('.')[0] === pair[1].sig.split('.')[0]
+    );
+    if (idx !== -1) {
+      pair[0] = leftoverBefore[idx];
+      leftoverBefore[idx] = null;
+    }
+  }
+  return pairs;
+}
+
+/** Walks both trees in step, emitting every in-flow block whose height changed. */
+function diffTrees(before, after, minDelta) {
+  const rows = [];
+  const visit = (a, b, path, depth) => {
+    if (depth > 14) return;
+    if (b.inFlow) {
+      if (!a) rows.push({ path, ...b, dh: b.h, inserted: true });
+      else if (Math.abs(b.h - a.h) >= minDelta)
+        rows.push({ path, ...b, dh: b.h - a.h, inserted: false });
+    }
+    const seen = {};
+    for (const [ca, cb] of alignChildren(a ? a.children : [], b.children)) {
+      seen[cb.sig] = (seen[cb.sig] ?? 0) + 1;
+      visit(ca, cb, `${path}>${cb.sig}:${seen[cb.sig]}`, depth + 1);
+    }
+  };
+  visit(before, after, 'main', 0);
+  return rows;
 }
 
 /**
  * A block that grows also moves every block below it, and those all report the same
- * displacement. Reporting each of them would bury the one that caused it, so only the
- * outermost block of a growth is kept: a child whose Δh equals its parent's is the same
- * finding seen one level down.
+ * displacement. Only the outermost block of a growth is kept: a descendant with the
+ * same Δh is the same finding one level down.
  */
 function dedupeToCauses(rows) {
   const byPath = new Map(rows.map((r) => [r.path, r]));
@@ -164,6 +207,31 @@ function dedupeToCauses(rows) {
     }
     return true;
   });
+}
+
+async function layoutFor(browser, url, viewport, js, blockImages = false) {
+  const ctx = await browser.newContext({
+    viewport: { width: viewport.width, height: viewport.height },
+    isMobile: viewport.isMobile,
+    hasTouch: viewport.isMobile,
+    javaScriptEnabled: js,
+  });
+  const page = await ctx.newPage();
+  try {
+    if (blockImages) {
+      // Not a network-speed simulation: the point is the space an element occupies while
+      // its picture has not arrived. A photo with a reserved box looks the same either
+      // way; one without collapses, and that difference is the shift.
+      await page.route('**/*', (route) =>
+        route.request().resourceType() === 'image' ? route.abort() : route.continue()
+      );
+    }
+    await page.goto(url, { waitUntil: js ? 'domcontentloaded' : 'load', timeout: 90000 });
+    await page.waitForTimeout(js ? SETTLE_MS : 800);
+    return await page.evaluate(collectTree);
+  } finally {
+    await ctx.close();
+  }
 }
 
 const browser = await chromium.launch({ executablePath: EXECUTABLE });
@@ -182,37 +250,15 @@ for (const path of URLS) {
       continue;
     }
 
-    const firstBy = new Map(first.blocks.map((b) => [b.path, b]));
-    const rows = [];
-    for (const b of settled.blocks) {
-      const a = firstBy.get(b.path);
-      if (!a) {
-        // Present only once settled: inserted content, and it reserved nothing.
-        rows.push({ ...b, dh: b.h, inserted: true });
-        continue;
-      }
-      const dh = b.h - a.h;
-      if (Math.abs(dh) >= MIN_DELTA_PX) rows.push({ ...b, dh, inserted: false });
-    }
-
-    // Where a block sits decides whether anybody is looking when it moves. Boundaries
-    // resolve within a second or two of load, and by then a visitor is still near the
-    // top — so a block two viewports down is what the field actually reports, while a
-    // 30,000px growth further down is the attraction grid mounting under a reader who
-    // has not scrolled there yet. Split rather than mix: the same number means two very
-    // different things at the two depths. Note the fold depends on the PARK — a small
-    // park puts its nearby section where a big one puts its ride list.
     const fold = viewport.height * 2;
-    const scored = dedupeToCauses(rows)
+    const scored = dedupeToCauses(diffTrees(first.tree, settled.tree, MIN_DELTA_PX))
       .map((r) => ({ ...r, est: Math.min(1, Math.abs(r.dh) / viewport.height) }))
       .sort((x, y) => Math.abs(y.dh) - Math.abs(x.dh));
 
-    // An ancestor that starts above the fold grows by whatever its children grew, so the
-    // <main> of a park page "grows" by the 30,000px the attraction grid adds two
-    // viewports down. Reporting that as an in-view shift is how a list like this becomes
-    // noise: it puts the biggest number on the element that did nothing. A block counts
-    // as in-view only if the growth is its OWN — not inherited from a descendant that
-    // sits below the fold.
+    // An ancestor that starts above the fold grows by whatever its children grew, so a
+    // park page's <main> "grows" by the 30,000px the attraction grid adds two viewports
+    // down. Reporting that as an in-view shift puts the biggest number on the element
+    // that did nothing, which is how a list like this becomes noise.
     const inheritedFromBelow = (row) =>
       scored.some(
         (d) =>
@@ -221,34 +267,19 @@ for (const path of URLS) {
           d.y > fold &&
           Math.abs(d.dh) >= Math.abs(row.dh) * 0.8
       );
-    const causes = scored.filter((r) => r.y <= fold && !inheritedFromBelow(r)).slice(0, 10);
-    const below = scored.filter((r) => r.y > fold || inheritedFromBelow(r)).slice(0, 5);
-
-    // Third state: everything settled EXCEPT the pictures. A block that is a different
-    // height here than with the photos in place is a picture whose box is not reserved,
-    // and it shifts the moment the bytes land — a state the JS-on/JS-off diff above
-    // cannot see at all, because images behave the same in both of its runs.
-    const noImgBy = new Map(noImages.blocks.map((b) => [b.path, b]));
-    const imageRows = [];
-    for (const b of settled.blocks) {
-      const n = noImgBy.get(b.path);
-      if (!n) continue;
-      const dh = b.h - n.h;
-      if (Math.abs(dh) >= MIN_DELTA_PX) imageRows.push({ ...b, dh, inserted: false });
-    }
-    const imageCauses = dedupeToCauses(imageRows)
-      .map((r) => ({ ...r, est: Math.min(1, Math.abs(r.dh) / viewport.height) }))
-      .sort((x, y) => Math.abs(y.dh) - Math.abs(x.dh))
-      .slice(0, 8);
 
     report.push({
       url,
       viewport: viewport.name,
       docFirst: first.doc,
       docSettled: settled.doc,
-      causes,
-      below,
-      imageCauses,
+      causes: scored.filter((r) => r.y <= fold && !inheritedFromBelow(r)).slice(0, 10),
+      below: scored.filter((r) => r.y > fold || inheritedFromBelow(r)).slice(0, 5),
+      imageCauses: dedupeToCauses(diffTrees(noImages.tree, settled.tree, MIN_DELTA_PX))
+        .filter((r) => !r.inserted)
+        .map((r) => ({ ...r, est: Math.min(1, Math.abs(r.dh) / viewport.height) }))
+        .sort((x, y) => Math.abs(y.dh) - Math.abs(x.dh))
+        .slice(0, 8),
     });
   }
 }
@@ -267,6 +298,7 @@ if (AS_JSON) {
       continue;
     }
     console.log(`document ${entry.docFirst} → ${entry.docSettled} px`);
+
     const table = (rows, heading) => {
       if (!rows.length) return;
       console.log(`\n  ${heading}`);
@@ -282,7 +314,6 @@ if (AS_JSON) {
           'content'
       );
       for (const c of rows) {
-        const mark = c.inserted ? ' (neu)' : '';
         console.log(
           '  ' +
             String(c.y).padStart(7) +
@@ -291,25 +322,25 @@ if (AS_JSON) {
             '  ' +
             c.est.toFixed(3).padStart(6) +
             '  ' +
-            (c.label.slice(0, 38) + mark).padEnd(40) +
+            (c.sig.slice(0, 38) + (c.inserted ? ' (neu)' : '')).padEnd(40) +
             c.text
         );
       }
     };
+
     if (!entry.causes.length && !entry.below.length && !entry.imageCauses.length) {
       console.log('  ✅ nothing moves between first paint and settled');
       continue;
     }
     for (const c of entry.causes) worst = Math.max(worst, c.est);
+    for (const c of entry.imageCauses) worst = Math.max(worst, c.est);
     table(entry.causes, 'IN VIEW at first paint — this is what the field reports:');
     table(entry.below, 'further down — only a visitor who already scrolled there sees it:');
-    for (const c of entry.imageCauses) worst = Math.max(worst, c.est);
     table(entry.imageCauses, 'PICTURES — box not reserved, shifts when the bytes land:');
   }
   console.log(
     `\nworst in-view block: est. CLS ${worst.toFixed(3)} — the score a visitor pays who is\n` +
-      'looking at the content below it when it moves. Only the in-view tables count\n' +
-      'towards this and towards --threshold.\n'
+      'looking at the content below it when it moves.\n'
   );
   if (THRESHOLD !== null && worst > Number(THRESHOLD)) {
     console.error(`❌ over the --threshold=${THRESHOLD}`);
