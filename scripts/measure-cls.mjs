@@ -171,20 +171,44 @@ function alignChildren(a, b) {
   return pairs;
 }
 
-/** Walks both trees in step, emitting every in-flow block whose height changed. */
+/**
+ * Walks both trees in step, emitting every in-flow block whose height changed.
+ *
+ * An inserted node is only a shift if it actually pushed something. A placeholder that is
+ * swapped for real content of the same height displaces nothing — but the two are often
+ * different elements (a `div` skeleton replaced by an `<svg>` map), so no alignment can pair
+ * them and the newcomer looks like it appeared from nowhere. The test that settles it is not
+ * identity but consequence: did any following sibling move? If every one of them sits at the
+ * same offset inside the parent, the insertion was a swap and is reported as contained.
+ */
 function diffTrees(before, after, minDelta) {
   const rows = [];
   const visit = (a, b, path, depth) => {
     if (depth > 14) return;
+
+    const pairs = alignChildren(a ? a.children : [], b.children);
+    // Offsets are taken relative to the parent, so a parent that itself moved does not make
+    // every child look displaced.
+    const movedSiblings = pairs.some(
+      ([ca, cb]) => ca && cb && Math.abs(cb.y - b.y - (ca.y - a.y)) >= minDelta
+    );
+
     if (b.inFlow) {
-      if (!a) rows.push({ path, ...b, dh: b.h, inserted: true });
+      if (!a) rows.push({ path, ...b, dh: b.h, inserted: true, contained: false });
       else if (Math.abs(b.h - a.h) >= minDelta)
-        rows.push({ path, ...b, dh: b.h - a.h, inserted: false });
+        rows.push({ path, ...b, dh: b.h - a.h, inserted: false, contained: false });
     }
+
     const seen = {};
-    for (const [ca, cb] of alignChildren(a ? a.children : [], b.children)) {
+    for (const [ca, cb] of pairs) {
       seen[cb.sig] = (seen[cb.sig] ?? 0) + 1;
-      visit(ca, cb, `${path}>${cb.sig}:${seen[cb.sig]}`, depth + 1);
+      const childPath = `${path}>${cb.sig}:${seen[cb.sig]}`;
+      if (!ca && cb.inFlow && !movedSiblings && a) {
+        // Appeared, and nothing around it moved: a swap, not a shift.
+        rows.push({ path: childPath, ...cb, dh: cb.h, inserted: true, contained: true });
+        continue;
+      }
+      visit(ca, cb, childPath, depth + 1);
     }
   };
   visit(before, after, 'main', 0);
@@ -273,8 +297,10 @@ for (const path of URLS) {
       viewport: viewport.name,
       docFirst: first.doc,
       docSettled: settled.doc,
-      causes: scored.filter((r) => r.y <= fold && !inheritedFromBelow(r)).slice(0, 10),
-      below: scored.filter((r) => r.y > fold || inheritedFromBelow(r)).slice(0, 5),
+      causes: scored
+        .filter((r) => r.y <= fold && !inheritedFromBelow(r) && !r.contained)
+        .slice(0, 10),
+      below: scored.filter((r) => r.y > fold || inheritedFromBelow(r) || r.contained).slice(0, 5),
       imageCauses: dedupeToCauses(diffTrees(noImages.tree, settled.tree, MIN_DELTA_PX))
         .filter((r) => !r.inserted)
         .map((r) => ({ ...r, est: Math.min(1, Math.abs(r.dh) / viewport.height) }))
