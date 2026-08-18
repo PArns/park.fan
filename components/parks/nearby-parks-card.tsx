@@ -65,9 +65,19 @@ export function NearbyParksCard({ className }: { className?: string }) {
       (dataError as Error).message.toLowerCase().includes('geoip') ||
       (dataError as Error).message.includes('400'));
 
-  // Same structure on server and initial client to avoid hydration mismatch. Mirrors the live
-  // "nearby parks" layout exactly (shared skeleton) so the swap to real parks doesn't shift layout.
-  if (!mounted || isLoading) {
+  // Before mount nothing is known yet — not the permission, not the coordinates — and the
+  // six-card skeleton is a bet that the visitor will grant location. For a first-time
+  // visitor that bet loses: the skeleton is replaced by the (much shorter) prompt below and
+  // the homepage collapses by ~576px, which `pnpm measure:cls` reported as its largest
+  // in-view shift. So the pre-mount box is the SHORT outcome, the one most visitors get.
+  // Once mounted we know enough to be optimistic: a visitor who is actually loading data
+  // has granted location, and for them the skeleton reserves the right thing.
+  if (!mounted) {
+    return <div className={cn('min-h-[200px]', TOP_SPACING, className)} aria-hidden="true" />;
+  }
+  // Mirrors the live "nearby parks" layout exactly (shared skeleton) so the swap to real
+  // parks doesn't shift layout.
+  if (isLoading) {
     return <NearbyParksCardSkeleton className={className} />;
   }
 

@@ -25,6 +25,7 @@ import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { LiveDot } from '@/components/common/live-dot';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { useWeatherHourly } from '@/lib/hooks/use-weather-hourly';
+import { useMounted } from '@/lib/hooks/use-mounted';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import type {
   ScheduleItem,
@@ -74,6 +75,10 @@ export function WeatherCard({
   const t = useTranslations('parks.weather');
   const tParks = useTranslations('parks');
 
+  // The shell and the first client render must agree, so the chart reservation below is
+  // driven by this rather than by the (browser-only) query flags.
+  const mounted = useMounted();
+
   const hasParams = !!(continent && country && city && parkSlug);
   const { data: liveNowcast, isLoading: nowcastLoading } = useWeatherNowcast({
     continent: continent ?? '',
@@ -109,6 +114,15 @@ export function WeatherCard({
   // are also false during SSR — these are client-only queries — which is why the shell itself
   // carries no placeholder; by the time one appears the swap is no longer visible).
   const chartPending = hourlyLoading || nowcastLoading;
+
+  // ...but `chartPending` is false during SSR too, because both queries are browser-only
+  // and a disabled query is not loading. So the shell reserved nothing after all, and the
+  // 143px chart dropped onto a settled card at hydration — measured as the park page's
+  // largest remaining in-view shift (+171px mobile, +159px desktop, `pnpm measure:cls`).
+  // Gate the reservation on mount instead: hold the box from the FIRST paint whenever a
+  // chart is possible at all, and release it only once both queries have answered.
+  const chartPossible = Boolean(timezone && latitude != null && longitude != null);
+  const holdChartBox = chartPossible && (!mounted || chartPending);
 
   // The base forecast (current + 7-day strip) is baked into the 1-day ISR shell, so it would be up
   // to a day stale. Subscribe to the same live park query LiveParkData polls (shared key → no extra
@@ -307,7 +321,7 @@ export function WeatherCard({
               schedule={schedule ?? undefined}
               nowcast={activeNowcast}
             />
-          ) : timezone && chartPending ? (
+          ) : holdChartBox ? (
             /* Same box as the chart (h-28 plot + mt-1 axis), held from the first paint until both
                queries have answered. On the parks the nowcast doesn't cover it is released again
                once that 404 comes back — a park that never had the chart trades the drop-in for a

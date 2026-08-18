@@ -35,23 +35,54 @@ export function HeroBubblesSkeleton({ className }: { className?: string }) {
  */
 export function HeroWorldPanelSkeleton() {
   return (
+    // No `h-[540px]`: the real panel has no fixed height, it is as tall as its header, map
+    // and country chips make it. A hard number here was 1.2px off and would drift further
+    // with any change to the card — so the placeholder mirrors the same rows instead and
+    // computes the same height.
     <GlassCard
       variant="heavy"
-      className="border-border/50 h-[540px] overflow-hidden rounded-2xl p-0 shadow-2xl"
+      className="border-border/50 overflow-hidden rounded-2xl p-0 shadow-2xl"
       aria-hidden="true"
     >
       <div className="border-border/40 flex items-start justify-between gap-4 border-b px-5 py-4">
-        <div className="space-y-2">
-          <Skeleton className="h-5 w-40" />
-          <Skeleton className="h-3 w-52" />
+        {/* Real: `text-lg font-bold` over `text-xs` with `mt-0.5` — 28 + 2 + 16, not 20 + 8 + 12. */}
+        <div className="space-y-0.5">
+          <Skeleton className="h-7 w-40" />
+          <Skeleton className="h-4 w-52" />
         </div>
         <Skeleton className="h-8 w-24" />
       </div>
-      <Skeleton className="mx-5 mt-6 h-[232px] rounded-xl" />
-      <div className="flex flex-wrap gap-2 px-5 pt-5">
-        {['w-32', 'w-36', 'w-44', 'w-28', 'w-24'].map((w) => (
-          <Skeleton key={w} className={cn('h-8 rounded-full', w)} />
+      {/* The real map is a full-width <svg> with viewBox "0 0 2000 857", so its height is
+          the panel width over that ratio — not a fixed number. A `h-[232px]` box happened to
+          match one viewport width and was wrong at every other, which moved the country chips
+          under it when the map mounted. `aspect-[2000/857]` tracks the svg at any width; the
+          margins go too, because the real map sits flush in its own tinted band. */}
+      <div className="bg-muted/20 relative">
+        <Skeleton className="aspect-[2000/857] w-full rounded-none" />
+      </div>
+      {/* Country chips: same padding, same pill height (`px-3 py-1.5 text-sm` + border = 34px)
+          and enough of them to wrap to the same number of rows the default continent fills. */}
+      <div className="flex flex-wrap gap-2 px-5 pt-4 pb-2">
+        {[
+          'w-32',
+          'w-36',
+          'w-44',
+          'w-28',
+          'w-32',
+          'w-40',
+          'w-28',
+          'w-24',
+          'w-32',
+          'w-28',
+          'w-24',
+        ].map((w, i) => (
+          <Skeleton key={i} className={cn('h-[34px] rounded-full', w)} />
         ))}
+      </div>
+
+      {/* "See all parks in <continent>" — its row is part of the panel's height too. */}
+      <div className="px-5 pt-1 pb-4">
+        <Skeleton className="h-6 w-48" />
       </div>
     </GlassCard>
   );

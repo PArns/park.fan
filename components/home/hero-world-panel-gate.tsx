@@ -31,5 +31,8 @@ export function HeroWorldPanelGate({ continents }: { continents: WorldPanelConti
   const hasRoom = useMediaQuery('(min-width: 1280px)');
 
   if (!ready || !hasRoom) return <HeroWorldPanelSkeleton />;
+  // Whether the entrance still belongs to the hero's choreography is decided inside the panel,
+  // not here: this component renders from hydration onwards (showing the skeleton), so a check
+  // at THIS point reads the clock long before the panel actually appears.
   return <HeroWorldPanelClient continents={continents} />;
 }

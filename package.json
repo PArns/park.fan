@@ -50,7 +50,8 @@
     "impeccable:detect": "npx -y impeccable@3 detect app components lib",
     "impeccable:detect:ci": "npx -y impeccable@3 detect --json app components lib",
     "impeccable:install": "npx -y impeccable@3 install",
-    "impeccable:update": "npx -y impeccable@3 update"
+    "impeccable:update": "npx -y impeccable@3 update",
+    "measure:cls": "node scripts/measure-cls.mjs"
   },
   "dependencies": {
     "@octokit/rest": "^22.0.1",
