@@ -522,6 +522,7 @@
       "visibilityLabel": "Zicht",
       "snowLabel": "Sneeuw",
       "nowLabel": "Nu",
+      "compressedAxisHint": "Buiten de openingstijden is de tijdas samengedrukt.",
       "heatWarning": "Hittewaarschuwing – vanaf 35 °C (95 °F)",
       "weatherWarning": {
         "thunderstorm": "Weeralarm: onweer",

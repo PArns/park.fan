@@ -522,6 +522,7 @@
       "visibilityLabel": "Visibilità",
       "snowLabel": "Neve",
       "nowLabel": "Ora",
+      "compressedAxisHint": "Al di fuori dell'orario di apertura l'asse del tempo è compresso.",
       "heatWarning": "Allerta caldo – da 35 °C (95 °F)",
       "weatherWarning": {
         "thunderstorm": "Allerta meteo: temporale",
