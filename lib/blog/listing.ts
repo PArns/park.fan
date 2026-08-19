@@ -347,3 +347,63 @@ export function parsePageParam(value: unknown, totalPages: number = Infinity): n
   if (Number.isFinite(totalPages) && n > totalPages) return totalPages;
   return n;
 }
+
+const POSTS_BY_RECENCY = new Map<Locale, readonly BlogListItem[]>();
+
+/**
+ * When a post was last touched, for the recency sort below.
+ *
+ * `updatedAt` is optional — a post that was never revised (most of them) sorts
+ * by its publication `date`, exactly as it always did. The `max` is what makes
+ * that rule total: `updatedAt` may only ever pull a post FORWARD. An entry that
+ * predates its own `date` (a typo, or a `date` corrected forward after the fact)
+ * would otherwise push the post further back than a pure date sort would, which
+ * is the opposite of what marking it updated is for. Both fields are ISO
+ * `YYYY-MM-DD`, so string comparison is date comparison.
+ */
+function lastTouched(fm: BlogFrontmatter): string {
+  const updated = fm.updatedAt?.trim();
+  return updated && updated > fm.date ? updated : fm.date;
+}
+
+/**
+ * The same list as {@link listPosts}, but ordered by when a post last CHANGED
+ * ({@link lastTouched}: `updatedAt` where it exists, else the publication
+ * `date`) instead of by when it was first published.
+ *
+ * The homepage strips are a "what's new here" surface, not an archive: a guide
+ * that got this season's confirmed dates written into it is news again, and
+ * under a pure `date` sort it stays buried behind every post published since.
+ * Every other surface keeps publication order on purpose — the blog index and
+ * the category/tag pages read as an archive, `feed.xml` would re-notify
+ * subscribers about an article they already have, and `blog-post-nav` walks
+ * neighbours in chronological order, which is the only order a "previous post"
+ * link means anything in.
+ *
+ * `featured` still wins, exactly as in `listPosts`, so pinning a post is not
+ * quietly undone by someone fixing a typo in a newer one.
+ *
+ * Frozen and memoised like every list here — copy before sorting.
+ */
+export function listPostsByRecency(requestedLocale: Locale): readonly BlogListItem[] {
+  const memo = POSTS_BY_RECENCY.get(requestedLocale);
+  if (memo) return memo;
+
+  const items = [...listPosts(requestedLocale)];
+  items.sort((a, b) => {
+    const aFeatured = a.frontmatter.featured ? 1 : 0;
+    const bFeatured = b.frontmatter.featured ? 1 : 0;
+    if (aFeatured !== bFeatured) return bFeatured - aFeatured;
+    const aDate = lastTouched(a.frontmatter);
+    const bDate = lastTouched(b.frontmatter);
+    if (aDate !== bDate) return aDate < bDate ? 1 : -1;
+    // Same touch date (a batch edit, or two posts published the same day):
+    // fall back to publication date so the order stays deterministic across
+    // renders rather than depending on the manifest's file order.
+    return a.frontmatter.date < b.frontmatter.date ? 1 : -1;
+  });
+
+  const frozen = Object.freeze(items);
+  POSTS_BY_RECENCY.set(requestedLocale, frozen);
+  return frozen;
+}

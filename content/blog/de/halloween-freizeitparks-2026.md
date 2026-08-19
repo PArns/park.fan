@@ -2,7 +2,7 @@
 title: 'Halloween 2026 in Europas Freizeitparks: Horror-Nächte und Mazes'
 translationKey: halloween-parks-2026
 date: '2026-07-17'
-updatedAt: '2026-07-25'
+updatedAt: '2026-08-19'
 author: patrick
 mode: published
 excerpt: >-
@@ -78,6 +78,14 @@ am vollsten, und wann kommst du am entspanntesten durch?
 > war es zum Redaktionsschluss bestätigt; beim Rest gilt: kurz gegenchecken,
 > bevor du buchst.
 
+> [!NOTE]
+> **Stand 19. August 2026:** Walibi Holland hat heute den ersten Trailer
+> veröffentlicht und trennt Fright Nights und Spooky Days in diesem Jahr auf
+> verschiedene Tage. Termine stehen inzwischen auch bei Toverland, Movie Park,
+> Heide-Park, Parc Astérix und im Europa-Park. Von Walibi Belgium und
+> Bobbejaanland hat man bis jetzt nichts gehört; welche Mazes in Soltau und
+> welche Experiences in Biddinghuizen antreten, ist ebenfalls noch offen.
+
 ## Die großen Horror-Events (abends, oft ab 16)
 
 Das ist der harte Kern: Abend-Events mit aufwendig begehbaren Spukhäusern (im
@@ -127,6 +135,12 @@ separat zu buchen**. Plane das Budget ein.
 
 [Movie Park Germany](ref:movie-park-germany?full)
 
+Wer nicht bis Ende September warten will: Bottrop hat diesen Sommer eines
+seiner Halloween-Häuser einfach früher aufgesperrt. **Slaughterhouse** läuft
+unter dem Label „Summerween" an allen Samstagen und Sonntagen bis zum 30.
+August, 5 € pro Person. Ein Spukhaus bei dreißig Grad und Tageslicht ist eine
+eigene Erfahrung, und zwar keine schlechtere.
+
 Termine, Maze-Line-up und Ticketstufen stehen auf der
 [offiziellen Halloween-Horror-Festival-Seite](https://www.movieparkgermany.de/en/halloween).
 
@@ -170,6 +184,12 @@ Eintritt läuft über gestaffelte Pässe, vom **Event Pass** (ab 33 €) über d
 Hartgesottene (ab 18, All-inclusive, 349 €). Manche Extra-Kitzel kosten
 obendrauf: die Vollkontakt-Experience THE HOTEL (29 €), der Club THE FORBIDDEN
 (10 €) und eine kurze Horror-VR (6 €).
+
+Zum Jubiläum kommt der **Vampire's Club** zurück, und zwar für genau vier
+Nächte: 25. und 26. September, 2. und 3. Oktober. An diesen Abenden tritt er an
+die Stelle von THE FORBIDDEN, und Marc Terenzi steht dort selbst auf der Bühne.
+Nach über einem Jahrzehnt Abstand zwischen ihm und dem Event ist das die Art
+Randnotiz, über die sich vor allem die freuen, die 2007 dabei waren.
 
 Wer einmal drin war, beschreibt Traumatica weniger als Spukhaus-Rundgang denn
 als komplette Parallelwelt: nebelverhangene Gassen, in denen ganze Rudel von
@@ -239,10 +259,41 @@ Speck riechend. Freiwillig. Für Geld. Man muss die Niederländer einfach mögen
 Kurz: Wenn du „Halloween in Walibi“ sagst, entscheide zuerst, welches Level du
 meinst. Der Weg von Spooky Days zu einer Experience ist der von „Kürbis
 schnitzen“ zu „an einen Fleischerhaken gehängt und abgestempelt“. Welche
-Experiences 2026 dabei sind, verkündet der Park über den Sommer; die drei oben
-sind die Klassiker, für die Walibi berüchtigt ist. Und genau _das_ ist gerade
-die interessanteste Ecke des europäischen Halloween, an der kein noch so großes
+Experiences 2026 dabei sind, verkündet der Park noch; die drei oben sind die
+Klassiker, für die Walibi berüchtigt ist. Und genau _das_ ist gerade die
+interessanteste Ecke des europäischen Halloween, an der kein noch so großes
 Fließband-Event vorbeikommt.
+
+Einen Teil der Entscheidung nimmt dir der Park 2026 allerdings ab, denn die
+beiden Level liegen erstmals auf **verschiedenen Tagen**. Bis 2025 teilten sie
+sich dasselbe Datum, tagsüber Kürbis, abends Kettensäge, und das hat weder den
+Familien noch den Darstellern gutgetan, die zwischen zwei völlig verschiedenen
+Publikumsgruppen hin- und herschalten mussten. Die **Spooky Days** für Sechs-
+bis Zwölfjährige liegen jetzt auf dem **14., 15., 19., 20. und 21. Oktober**,
+mitten in der niederländischen Herbstferienwoche. Die **Fright Nights**
+bekommen dafür alle Wochenenden zwischen dem **3. Oktober und dem 1.
+November**, dazu Freitag, den 16., Donnerstag, den 22., und Freitag, den 23.
+Oktober. Halloween selbst fällt 2026 auf einen Samstag und ist damit natürlich
+dabei. Early-Bird-Tickets kosten 32,50 bis 38,50 €, empfohlen ab 16.
+
+Den Trailer dazu gibt es seit heute, und er ist auf eine bemerkenswerte Art
+zurückhaltend. „Back to Reality“ zeigt eine Minute lang einen ausgesprochen
+netten Eddie: Der Horrorclown drückt einem Jungen an der Speed of Sound ein
+rosa Plüschtier in die Hand, verteilt Eis und Zuckerwatte, posiert lachend für
+Fotos und tanzt durch den Park, bis er in einem Meer aus rosa Kuscheltieren
+steht. Dann wacht er schweißgebadet in seiner Höhle auf, Axt in der Hand.
+„Relax, het is bijna Halloween.“
+
+https://www.youtube.com/watch?v=fFPGRQAs-Xk
+
+Den Ton versteht man besser, wenn man den Spot vom Vorjahr kennt. „Souls for
+Sale“ zeigte 2025 eine verängstigte Frau, die als „Objekt 666“ versteigert und
+danach in einen Schredder fallen gelassen wurde. Mit **889 Beschwerden** wurde
+daraus die meistbeanstandete niederländische Werbung des Jahres; die Reclame
+Code Commissie sah die Menschenwürde verletzt, Walibi nahm den Spot am 21.
+August 2025 offline. Ein Jahr später verteilt derselbe Clown Zuckerwatte und
+schläft schlecht. Man kann das vorsichtig nennen oder clever. Vermutlich stimmt
+beides.
 
 [Walibi Holland](ref:walibi-holland?full)
 
@@ -271,6 +322,12 @@ passiert.
 Für alle, die die Grenze zwischen „Film gucken“ und „im Film stehen“ gern
 verwischen, ist das eine der lohnendsten Adressen jenseits der Grenze.
 
+Einen Kalender für 2026 hat Kasterlee noch nicht veröffentlicht. Das einzige
+Halloween-Lebenszeichen des Sommers war ein Rückzieher: Das Spukhaus **Bazaar
+Bizarre** sollte im Juli und August ausnahmsweise mitlaufen, der Vorverkauf lief
+so schlecht, dass der Park es Ende Juli wieder absagte. Bottrop, zum selben
+Konzern gehörend, hat sein Sommer-Spukhaus im gleichen Zeitraum durchgezogen.
+
 [Bobbejaanland](ref:bobbejaanland?full)
 
 ```gallery-widget folder=/media/halloween-2026/impressionen-darsteller heading="Die Darsteller"
@@ -281,10 +338,10 @@ verwischen, ist das eine der lohnendsten Adressen jenseits der Grenze.
 
 [Toverland](ref:attractiepark-toverland) im niederländischen Sevenum (für viele
 aus NRW der nächste Benelux-Park überhaupt) baut seine **Halloween Nights** Jahr
-für Jahr aus. Termin steht: **3. Oktober bis 7. November 2026** (die harmloseren
-„Halloween Days“ laufen tagsüber parallel), insgesamt sechs Scare Zones und
-sechs Haunted Experiences, darunter die 2025 eingeführte **„Unmasked“**, eine
-Experience mit eigener Scare Zone.
+für Jahr aus. Termin steht: **13 Abende vom 3. Oktober bis 7. November 2026**
+(die harmloseren „Halloween Days“ laufen tagsüber parallel), insgesamt sechs
+Scare Zones und sechs Haunted Experiences, darunter die 2025 eingeführte
+**„Unmasked“**, eine Experience mit eigener Scare Zone.
 
 ![Darsteller mit Tentakel-Maske und Handglocke vor dem Toverland-Halloween-Nights-Banner | Der Nachtwächter der Toverland Halloween Nights. Gesicht: Verhandlungssache. | left](/media/halloween-2026/toverland-cthulhu.jpg)
 
@@ -346,13 +403,17 @@ harte Altersgrenze gibt es nicht, für die Kleinen liegen sogar
 Ibilaw-Abenden ist der reguläre Parkeintritt schon dein Ticket, extra kommen
 nur die Spukhäuser.
 
-Die genauen 2026-Termine verkündet Wavre wie die meisten Parks über den Sommer;
-zur Orientierung: 2025 waren es **18 Ibilaw-Abende** (11. Oktober bis 2.
-November), an rund zehn davon lief der Park bis 22 Uhr. Kompaktes Gelände,
-kurze Wege zwischen den Schrecken, Darsteller, die die Nähe suchen. Und
-praktisch obendrein: [Bobbejaanland](ref:bobbejaanland) liegt gut eine
-Autostunde entfernt, ein Grusel-Doppelwochenende schreibt sich damit fast von
-selbst.
+Auf der Ibilaw-Seite steht Mitte August immer noch nicht mehr als „stay tuned“,
+Wavre lässt sich also Zeit. Zur Orientierung: 2025 waren es **18 Ibilaw-Abende**
+(11. Oktober bis 2. November), an rund zehn davon lief der Park bis 22 Uhr. Neu
+war damals das Spukhaus **Aquarium** im Hafenareal Dock World, dazu die Scare
+Zones Innocence, Basement und Arachnophobia. Dass davon 2026 etwas wieder
+verschwindet, wäre eine Überraschung.
+
+Kompaktes Gelände, kurze Wege zwischen den Schrecken, Darsteller, die die Nähe
+suchen. Und praktisch obendrein: [Bobbejaanland](ref:bobbejaanland) liegt gut
+eine Autostunde entfernt, ein Grusel-Doppelwochenende schreibt sich damit fast
+von selbst.
 
 [Walibi Belgium](ref:walibi-belgium?full)
 
@@ -364,15 +425,14 @@ gibt es die entschärfte Version: Grusel als Stimmung, nicht als Schocktherapie.
 ### Heide-Park: Halloween mit Wahlmöglichkeit
 
 Der [Heide-Park](ref:heide-park) in Soltau macht beides und überlässt dir die
-Dosis. Halloween läuft **vom 10. bis 31. Oktober 2026**, an **fünf Tagen mit
-verlängerter Öffnung bis 21 Uhr** (Sa 10., Sa 17., Sa 24., Fr 30. und Sa 31.
-Oktober): tagsüber familientaugliche Deko, abends Scare Zone und **drei
-Horror-Mazes ab 16**, für die je ein eigenes Zeitfenster-Ticket nötig ist
-(3er-Bundle 22 €). Welches Maze-Trio 2026 antritt, bestätigt Soltau über den
-Sommer; Endzeit-Stimmung ist erfahrungsgemäß dabei. Ideal für den
-Familienfrieden: Alle fahren tagsüber zusammen Achterbahn, und wer alt und
-mutig genug ist, verschwindet abends im Maze, während der Rest sich an der
-Bratwurst festhält.
+Dosis. Halloween läuft **vom 10. bis 31. Oktober 2026**, an **fünf Tagen von 12
+bis 21 Uhr** (Sa 10., Sa 17., Sa 24., Fr 30. und Sa 31. Oktober): tagsüber
+familientaugliche Deko, abends Scare Zone und **drei Horror-Mazes ab 16**, für
+die je ein eigenes Zeitfenster-Ticket nötig ist (3er-Bundle 22 €). Welches
+Maze-Trio 2026 antritt, bestätigt Soltau über den Sommer; Endzeit-Stimmung ist
+erfahrungsgemäß dabei. Ideal für den Familienfrieden: Alle fahren tagsüber
+zusammen Achterbahn, und wer alt und mutig genug ist, verschwindet abends im
+Maze, während der Rest sich an der Bratwurst festhält.
 
 ![Rostiger Militärtruck vor Sendetürmen und Absperrungen bei Tag | Willkommen in der Zombie-Zone. Der Empfang fällt … rustikal aus. | wide](/media/halloween-2026/beispiel-endzeit-truck.jpg)
 
@@ -386,8 +446,10 @@ Aktuelle Termine und Altersfreigaben:
 Wer den Ausflug größer denkt, fährt nach Frankreich: [Parc Astérix](ref:parc-asterix)
 nördlich von Paris zieht sein **Peur sur le Parc** vom **3. Oktober bis 8.
 November 2026** durch, tagsüber familienfreundlich, an zwölf ausgewählten
-Abenden als **Nocturnes** mit ordentlich mehr Nervenkitzel (eigenes
-Nocturne-Ticket ab 53 €). Zu den Neuheiten 2026 zählen die Angst-Zone **„Le
+Abenden als **Nocturnes** mit ordentlich mehr Nervenkitzel. Die stehen
+inzwischen: 10., 16., 17., 21., 22., 23., 24., 28., 29., 30. und 31. Oktober
+sowie 7. November, jeweils von 19 bis 1 Uhr und mit eigenem Ticket (53 € online,
+58 € an der Kasse). Zu den Neuheiten 2026 zählen die Angst-Zone **„Le
 Souk“** und der nächtliche Rundgang **„La Forêt Sans Retour“**. Der Grusel
 kommt hier mit gallischem Augenzwinkern: Irgendwo zwischen zwei Menhiren lauert
 garantiert auch ein Wildschwein.
@@ -435,6 +497,11 @@ Macabre**, den totentanzenden Nachfolger des legendären _Spookslot_, das nach
 Themed Entertainment Association ausgezeichnet, quasi dem Oscar der Branche.
 Wer das gemütlich-schaurige Herbstgefühl sucht statt des Adrenalinschocks, und
 wer Kinder dabei hat, ist hier goldrichtig.
+
+Zwei Dinge für die Planung: **Danse Macabre steht vom 21. September bis 2.
+Oktober 2026 wegen Wartung still**, ist zu den Herbstferien also wieder da. In
+den Ferien selbst sind dafür Max & Moritz und die Gondoletta vom 26. bis 30.
+Oktober zu, und Baron 1898 vom 5. bis 9. Oktober.
 
 [Efteling](ref:efteling?full)
 

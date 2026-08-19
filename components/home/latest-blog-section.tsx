@@ -2,7 +2,7 @@ import { ArrowRight } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { BlogPostCard } from '@/components/blog/blog-post-card';
 import { BlogSectionHeader } from '@/components/blog/blog-section-header';
-import { listPosts } from '@/lib/blog/listing';
+import { listPostsByRecency } from '@/lib/blog/listing';
 import type { Locale } from '@/i18n/config';
 
 interface LatestBlogSectionProps {
@@ -14,7 +14,7 @@ interface LatestBlogSectionProps {
 // 2-column `sm` layout), so the section never ends on a ragged half-row.
 export async function LatestBlogSection({ locale, limit = 6 }: LatestBlogSectionProps) {
   const t = await getTranslations('blog');
-  const posts = listPosts(locale).slice(0, limit);
+  const posts = listPostsByRecency(locale).slice(0, limit);
   if (posts.length === 0) return null;
 
   return (

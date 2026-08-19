@@ -2,6 +2,7 @@
 title: 'Walibi Holland: "hard gaan", Untamed en 20 minuten wachten'
 translationKey: walibi-holland-guide
 date: '2026-08-14'
+updatedAt: '2026-08-19'
 author: patrick
 mode: published
 featured: false
@@ -197,6 +198,20 @@ https://www.youtube.com/watch?v=5uXmHjiLbG4
 
 Dat is de afgezwakte versie. Dezelfde toon, dezelfde esthetiek, alleen zonder de
 veiling.
+
+Een jaar later probeert Eddie het met pluche.
+
+De spot van 19 augustus 2026 heet "Back to Reality" en laat een minuut lang een
+uitgesproken aardige horrorclown zien: hij drukt een jongetje bij Speed of Sound
+een roze knuffel in handen, deelt ijs en suikerspin uit, poseert lachend voor
+foto's en danst door het park tot hij in een zee van roze pluche staat. De schrik
+komt pas in de laatste vijf seconden, als hij badend in het zweet wakker wordt in
+zijn hol met een bijl in zijn hand en er niets van waar blijkt te zijn. "Relax,
+het is bijna Halloween."
+
+https://www.youtube.com/watch?v=fFPGRQAs-Xk
+
+Een rempedaal is dat nog niet. Maar iemand is gaan kijken waar het zit.
 
 ## Untamed
 
@@ -493,6 +508,13 @@ komma niet.
 
 ## Halloween: het hardste programma van de Benelux
 
+> [!NOTE]
+> **Stand 19 augustus 2026:** de kalender is er. De Fright Nights draaien op alle
+> weekenden tussen 3 oktober en 1 november, plus vrijdag de 16e, donderdag de 22e
+> en vrijdag de 23e oktober. De Spooky Days hebben eigen dagen gekregen: 14, 15,
+> 19, 20 en 21 oktober. Early-birdtickets voor de avond kosten € 32,50 tot
+> € 38,50. Welke huizen en experiences meedoen, zegt het park nog steeds niet.
+
 Zes weken per jaar houdt dit park op een pretpark te zijn.
 
 De **Halloween Fright Nights** bestaan sinds de Six Flags-tijd,
@@ -612,10 +634,16 @@ moesten binnen enkele uren van kindvriendelijk naar compromisloos omschakelen.
 Fright Nights-bezoekers krijgen in plaats daarvan een eigen middagprogramma,
 waarvan de details bij het sluiten van de redactie nog ontbraken.
 
-Als datum voor de Fright Nights 2026 circuleert de periode **10 oktober tot
-1 november**, officieel bevestigd is de kalender nog niet. Kijk vóór het boeken
-dus even op de
-[eventpagina](https://www.walibi.nl/halloween/en/halloween-fright-nights).
+Inmiddels is de kalender er, en die laat de splitsing zwart op wit zien. De
+**Fright Nights** krijgen alle weekenden tussen **3 oktober en 1 november**, plus
+vrijdag de 16e, donderdag de 22e en vrijdag de 23e oktober. Halloween valt op een
+zaterdag en zit erbij. De **Spooky Days** liggen op **14, 15, 19, 20 en 21
+oktober**, doordeweekse dagen midden in de Nederlandse herfstvakantie: precies de
+dagen waarop gezinnen komen en avondgasten niet. Early-birdtickets voor de avond
+kosten € 32,50 tot € 38,50, onder de € 37,50 tot € 39,50 van seizoen 2025. Welke
+huizen en experiences meedoen, zegt het park nog steeds niet; de
+[eventpagina](https://www.walibi.nl/halloween/en/halloween-fright-nights)
+verkoopt tot nu toe alleen entree.
 
 [Walibi Holland](ref:walibi-holland?full)
 
@@ -862,9 +890,11 @@ In vier niveaus: **Spooky Days** overdag voor kinderen, **Fright Nights** 's
 avonds vanaf 16, plus **spookhuizen** en **experiences**, die allebei extra
 kosten. In 2025 lagen de huizen tussen € 9,50 en € 17,50 en de experiences
 tussen € 19,50 en € 25,50; alles bij elkaar kostte minimaal € 116,50 bovenop de
-entree. De prijzen voor 2026 heeft het park nog niet gepubliceerd. Nieuw is dat
-Spooky Days en Fright Nights vanaf 2026 op **verschillende dagen** plaatsvinden,
-niet meer op dezelfde.
+entree. De prijzen van de huizen voor 2026 heeft het park nog niet gepubliceerd,
+de avondentree kost in de early bird € 32,50 tot € 38,50. Nieuw is dat Spooky
+Days en Fright Nights vanaf 2026 op **verschillende dagen** plaatsvinden, niet
+meer op dezelfde: de Fright Nights op alle weekenden van 3 oktober tot 1 november
+plus 16, 22 en 23 oktober, de Spooky Days op 14, 15, 19, 20 en 21 oktober.
 
 ### Bestaan Bright Nights nog?
 
@@ -930,7 +960,7 @@ helemaal nergens meer aan.
 - Defqon.1 en Lowlands op het evenemententerrein: [Event Site Walibi Holland (officieel)](https://www.walibi.nl/en/business/possibilities/locations/evenemententerrein-walibi-holland)
 - Halloween Fright Nights (opbouw, experiences, 25e editie in 2025): [Halloween Fright Nights (officieel)](https://www.walibi.nl/halloween/en/halloween-fright-nights) · [Experiences (officieel)](https://www.walibi.nl/halloween/en/halloween-fright-nights/experiences) · ["Walibi viert 25 jaar Halloween Fright Nights" (persbericht)](https://pers.walibi.nl/walibi-viert-25-jaar-halloween-fright-nights-met-exclusieve-jubileumavond) · [Geschiedenis van de Fright Nights (ScareZone)](https://scarezone.nl/2021/02/11/de-halloween-fright-nights-van-six-flags-holland-naar-walibi-holland/)
 - Halloween-prijzen 2025 en line-up: ["Halloween Fright Nights 2025: een overzicht van alle spookhuizen en prijzen" (Backseaters)](https://backseaters.nl/halloween-fright-nights-2025-een-overzicht-van-alle-spookhuizen-en-prijzen/) · [onze Halloween-gids](/blog/halloween-pretparken-2026)
-- De ingesloten clips komen allemaal van het officiële kanaal van het park: ["Souls for Sale: De geest"](https://www.youtube.com/watch?v=5uXmHjiLbG4) · ["Slaughterhouse, Halloween Fright Nights 2024"](https://www.youtube.com/watch?v=A5AZcy7PIkc) · ["Below (NIEUW)", 2017](https://www.youtube.com/watch?v=YHXW1odvwvE)
+- De ingesloten clips komen allemaal van het officiële kanaal van het park: ["Souls for Sale: De geest"](https://www.youtube.com/watch?v=5uXmHjiLbG4) · ["Slaughterhouse, Halloween Fright Nights 2024"](https://www.youtube.com/watch?v=A5AZcy7PIkc) · ["Below (NIEUW)", 2017](https://www.youtube.com/watch?v=YHXW1odvwvE) · ["Back to Reality", 2026](https://www.youtube.com/watch?v=fFPGRQAs-Xk)
 - Splitsing van Spooky Days en Fright Nights vanaf 2026: ["Nieuw concept voor Halloween in Walibi" (Looopings)](https://www.looopings.nl/weblog/32505/Nieuw-concept-voor-Halloween-in-Walibi-Fright-Nights-en-Spooky-Days-worden-van-elkaar-gescheiden.html)
 - Einde van Bright Nights en focus op de zomer: ["Walibi Holland concentreert zich volledig op zomerseizoen" (persbericht)](https://pers.walibi.nl/walibi-holland-concentreert-zich-volledig-op-zomerseizoen-en-introduceert-zomerse-zaterdagen) · ["Walibi Holland stopt na vier jaar met Bright Nights" (Looopings)](https://www.looopings.nl/weblog/32503/Walibi-Holland-stopt-na-vier-jaar-met-Bright-Nights-pretpark-blijft-voortaan-weer-dicht-in-de-winter.html) · ["Waarom stopt Walibi plots met Bright Nights?" (Looopings)](https://www.looopings.nl/weblog/32516/Donderslag-bij-heldere-hemel-waarom-stopt-Walibi-plots-met-Bright-Nights.html)
 - #Lekkergaan en Zomerse Zaterdagen 2026: ["Walibi Holland viert de zomer met langere openingstijden en twee zomerevents" (persbericht)](https://pers.walibi.nl/walibi-holland-viert-de-zomer-met-langere-openingstijden-en-twee-zomerevents) · ["Nieuw zomerfestival in Walibi Holland heet #Lekkergaan" (Looopings)](https://www.looopings.nl/weblog/7755/Nieuw-zomerfestival-in-Walibi-Holland-heet-Lekkergaan.html)
