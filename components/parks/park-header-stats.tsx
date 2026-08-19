@@ -135,13 +135,8 @@ export function ParkHeaderStats({
 
   // Today's DAILY rating — the only crowd value comparable with the forecast badge next to it
   // (same statistic, same baseline). Shares the one-day /calendar query below, so no request of
-  // its own. Reserve the slot as soon as the park is openish: the value arrives late (loads-last)
-  // and letting the metric appear from nothing would push "Andrang jetzt" down after paint.
+  // its own.
   const crowdToday = useTodayCrowdLevel({ continent, country, city, parkSlug, timezone });
-  // Hide the whole metric once the query settled without a value — a closed park, one we cannot
-  // rate, or a morning too thin to read. An empty caption over a dash would claim we measured
-  // something and got "nothing".
-  const showCrowdToday = isOpenish && !(crowdToday.settled && !crowdToday.level);
 
   const browserNow = useBrowserNow(null);
   const { data: calendar } = useParkBestDaysCalendar({
@@ -301,21 +296,37 @@ export function ParkHeaderStats({
             visitor standing at the gate wants. Only the daily one may be read against the
             forecast — see useTodayCrowdLevel. */}
         <Cell>
-          {showCrowdToday && (
-            <Metric caption={t('crowdToday')} icon={CalendarClock}>
-              {/* "bisher" sits BESIDE the badge, not under it and not appended to the caption:
-                  under it, it reads as a dangling fragment; in the caption it wraps to a second
-                  line and pushes this metric's badge out of line with the other three columns. */}
-              {crowdToday.level ? (
-                <span className="flex items-center gap-1.5">
-                  <CrowdLevelBadge level={crowdToday.level} />
-                  <span className="text-muted-foreground text-xs">{t('crowdTodaySoFar')}</span>
-                </span>
-              ) : (
-                <Pending />
-              )}
-            </Metric>
-          )}
+          {/* Rendered unconditionally, exactly like "Andrang jetzt" below it, and for the same
+              reason: THE GEOMETRY MUST NOT DEPEND ON DATA. What goes inside may — an em dash, a
+              loading pill or a badge all sit on one line inside the metric's reserved box — but
+              whether the box exists may not, because every input that could decide it arrives
+              after the first paint. `crowdToday.level` comes from the deliberately last query on
+              the page (`useLoadLast`), and `isOpenish` reads `badgeStatus`, which is
+              `liveStatus ?? scheduledStatus ?? status` and only settles once the live poll or the
+              browser clock lands. Gating on either of those moved the whole band, and with it
+              everything below the header: 340 → 419 px at 2059 ms on a park that gets a rating,
+              63 → 142 → 63 px at 277 / 709 / 2474 ms on one that does not. */}
+          <Metric caption={t('crowdToday')} icon={CalendarClock}>
+            {/* "bisher" sits BESIDE the badge, not under it and not appended to the caption:
+                under it, it reads as a dangling fragment; in the caption it wraps to a second
+                line and pushes this metric's badge out of line with the other three columns. */}
+            {crowdToday.level ? (
+              <span className="flex items-center gap-1.5">
+                <CrowdLevelBadge level={crowdToday.level} />
+                <span className="text-muted-foreground text-xs">{t('crowdTodaySoFar')}</span>
+              </span>
+            ) : isOpenish && !crowdToday.settled ? (
+              /* Only pulse while an answer can still arrive. A closed park is not waiting for
+                 anything, so it goes straight to the dash instead of pretending to load. */
+              <Pending />
+            ) : (
+              /* Not the `unknown` badge: that one reads "keine Prognose", and this metric is a
+                 measurement of the day so far, not a forecast. The dash is what the sibling
+                 metric below already shows when it has nothing, and it says the same thing
+                 without claiming to be a prediction. */
+              <span className="text-muted-foreground text-sm">—</span>
+            )}
+          </Metric>
 
           <Metric caption={t('crowdNow')} icon={Users}>
             {isOpenish && currentCrowd ? (

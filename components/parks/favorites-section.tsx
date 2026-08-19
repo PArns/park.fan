@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Separator } from '@/components/ui/separator';
 import { Card, CardContent } from '@/components/ui/card';
 import { GlassSectionTitle } from '@/components/parks/glass-section-title';
+import { FavoritesEmptyState } from '@/components/parks/favorites-empty-state';
 import { ParkCard } from '@/components/parks/park-card';
 import { ParkCardNearbySkeleton } from '@/components/parks/park-card-nearby-skeleton';
 import { AttractionCard } from '@/components/parks/attraction-card';
@@ -109,12 +110,20 @@ export function FavoritesSection() {
     };
   }, [queryClient]);
 
-  // Server / first hydration: cookies aren't readable → render nothing and let the client take over.
-  // The nextDynamic loading prop covers the visual placeholder during this phase.
-  if (!mounted) return null;
+  // Server / first hydration: cookies aren't readable, so we don't know yet which of the
+  // three outcomes below this is. Hold the empty state's box anyway — it is the outcome
+  // for the overwhelming majority, and the same box is this component's dynamic-import
+  // fallback, so it stands from the first paint through hydration without moving.
+  if (!mounted) return <FavoritesEmptyState textHidden />;
 
-  // Cookies say no favorites → skip the skeleton and go straight to the empty state.
-  if (cookieCounts !== null && cookieCounts.total === 0 && !favoritesData) return null;
+  // Cookies say no favorites, so the answer is already settled: render the empty state now
+  // instead of waiting for a query whose result we can predict. It used to return null here
+  // and let the resolved query paint the same box a moment later — but `useFavorites` is
+  // gated on geolocation and answers `{parks: [], …}`, a TRUTHY empty result, so the guard
+  // never held for long and the box arrived late instead of never.
+  if (cookieCounts !== null && cookieCounts.total === 0 && !favoritesData) {
+    return <FavoritesEmptyState />;
+  }
 
   // One skeleton shape for both waits below, so whatever replaces it lands in the same box.
   const renderSkeleton = (parkCount: number, attractionCount: number) => (
@@ -175,17 +184,7 @@ export function FavoritesSection() {
     (sortedFavorites?.restaurants.length || 0);
 
   if (!hasAnyFavorites) {
-    return (
-      <section className="bg-muted/30 px-4 py-12">
-        <div className="container mx-auto">
-          <GlassSectionTitle icon={Star} iconClassName="text-primary" className="mb-4">
-            {t('title')}
-          </GlassSectionTitle>
-          <p className="text-foreground mt-4 text-center text-base font-semibold">{t('empty')}</p>
-          <p className="text-muted-foreground mt-2 text-center text-sm">{t('emptyHint')}</p>
-        </div>
-      </section>
-    );
+    return <FavoritesEmptyState />;
   }
 
   // Favorites are here, their translations are not (yet). Hold the skeleton at the REAL counts so

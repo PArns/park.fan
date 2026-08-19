@@ -5,6 +5,7 @@
  * Run: pnpm measure:cls                     (needs a running site, see --base)
  *      pnpm measure:cls --json
  *      pnpm measure:cls --url=/de/parks/europe/germany/rust/europa-park
+ *      pnpm measure:cls --late               (replay the stream slowly, read real CLS)
  *
  * WHY THIS EXISTS, AND WHY IT DOES NOT READ `layout-shift` ENTRIES
  *
@@ -58,9 +59,28 @@
  * content is optional and reserving it would collapse the box on the pages that never
  * get it — see the nearby-parks note in docs/architecture/system-overview.md. Judge a
  * row by whether the content is predictable, not by its size.
+ *
+ * `--late` IS THE OTHER HALF: PROVING A FIX
+ *
+ * The diff above finds candidates. It cannot tell you what the browser would score,
+ * and CPU throttling is no substitute — the same page under the same 4× throttle
+ * measured 0.000 and 0.088 in two consecutive runs, so a before/after comparison built
+ * on it is a coin toss.
+ *
+ * So `--late` stages the race deterministically. It fetches the page once, finds where
+ * React parked the resolved Suspense content (`<div hidden id="S:1">` near the end of
+ * the body) and re-serves the document through a local proxy that flushes everything
+ * before it immediately and the rest N ms later. No throttling of any kind: the shell
+ * paints, then the tail lands, which is the shape of a cold start whose sub-request
+ * missed cache. Under that, Chromium reports the same score every time, and the run
+ * prints its own `layout-shift` entries with the element each one blames.
+ *
+ * A page that prints "does not stream" has no deferred boundary left — which, for a
+ * page that used to have one, is the fix landing.
  */
 
 import { chromium } from 'playwright';
+import http from 'node:http';
 
 const args = process.argv.slice(2);
 const flag = (name, fallback) => {
@@ -76,6 +96,21 @@ const SETTLE_MS = Number(flag('settle', '9000'));
 const MIN_DELTA_PX = Number(flag('min', '8'));
 /** Fail the run when a single in-view block is worse than this. Off unless asked for. */
 const THRESHOLD = flag('threshold', null);
+/**
+ * The client IP the run pretends to come from, as `x-forwarded-for`.
+ *
+ * Without it every request arrives from 127.0.0.1, `/api/nearby` answers
+ * `userLocation: {0, 0}` with an empty park list, and the nearby card settles on its short
+ * "no parks near you" state — which is NOT what a visitor gets. A real IP geolocates (this
+ * one to Berlin) and the card settles on the six-card list instead, roughly 576 px taller.
+ * Measuring the wrong one of those two is how a placeholder gets tuned backwards.
+ */
+const CLIENT_IP = flag('ip', '91.64.1.1');
+
+/** `--late` / `--late=2500`: replay mode, and how long the streamed tail is held back. */
+const LATE_MS = has('late') ? 1500 : Number(flag('late', '0'));
+/** Where the reader is parked in `--late` mode. A shift only scores what is in view. */
+const SCROLL_TO = Number(flag('scroll', '0'));
 
 const EXECUTABLE = process.env.CLS_CHROMIUM || '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
 
@@ -95,6 +130,8 @@ const DEFAULT_URLS = [
   '/de/parks/europe/germany/soltau/heide-park', // no nearby section (48% of the catalog)
   '/de/parks/europe/germany/bruehl/phantasialand/taron', // ride page
   '/de/blog',
+  '/de/glossar/giga-coaster', // glossary term: the field's second-worst page, and the
+  // one this list was missing when the field first reported it
 ];
 
 const urlArg = args.filter((a) => a.startsWith('--url=')).map((a) => a.slice(6));
@@ -239,6 +276,7 @@ async function layoutFor(browser, url, viewport, js, blockImages = false) {
     isMobile: viewport.isMobile,
     hasTouch: viewport.isMobile,
     javaScriptEnabled: js,
+    extraHTTPHeaders: { 'x-forwarded-for': CLIENT_IP },
   });
   const page = await ctx.newPage();
   try {
@@ -256,6 +294,167 @@ async function layoutFor(browser, url, viewport, js, blockImages = false) {
   } finally {
     await ctx.close();
   }
+}
+
+/**
+ * Serves one captured document split in two, and proxies everything else (JS chunks,
+ * images, API routes) straight through to the real server so the page still works.
+ *
+ * `cut` sits right before React's `<div hidden id="S:…">` block — everything before it
+ * is the shell the browser paints, everything after is the deferred boundary content
+ * plus the `$RC()` call that grafts it into place.
+ */
+function serveSplit(html, cut, delayMs, splitPath) {
+  const server = http.createServer(async (req, res) => {
+    if (req.url === splitPath) {
+      res.writeHead(200, {
+        'content-type': 'text/html; charset=utf-8',
+        'cache-control': 'no-store',
+      });
+      res.write(html.slice(0, cut));
+      setTimeout(() => res.end(html.slice(cut)), delayMs);
+      return;
+    }
+    try {
+      const upstream = await fetch(BASE + req.url, {
+        headers: { accept: req.headers.accept || '*/*', 'x-forwarded-for': CLIENT_IP },
+      });
+      const body = Buffer.from(await upstream.arrayBuffer());
+      res.writeHead(upstream.status, {
+        'content-type': upstream.headers.get('content-type') || 'application/octet-stream',
+        'cache-control': 'no-store',
+      });
+      res.end(body);
+    } catch {
+      res.writeHead(502).end();
+    }
+  });
+  return new Promise((resolve) => server.listen(0, '127.0.0.1', () => resolve(server)));
+}
+
+/** Chromium's own layout-shift entries, scored the way CLS scores them. */
+function readShifts() {
+  window.__cls = [];
+  const label = (node) => {
+    if (!node || node.nodeType !== 1) return '?';
+    const parts = [];
+    for (let el = node, i = 0; el && el.nodeType === 1 && i < 3; el = el.parentElement, i++) {
+      const cls = (el.getAttribute('class') || '').split(/\s+/).filter(Boolean).slice(0, 2);
+      parts.unshift(
+        el.tagName.toLowerCase() + (el.id ? `#${el.id}` : '') + cls.map((c) => `.${c}`).join('')
+      );
+    }
+    return parts.join('>');
+  };
+  new PerformanceObserver((list) => {
+    for (const e of list.getEntries()) {
+      if (e.hadRecentInput) continue;
+      window.__cls.push({
+        t: Math.round(e.startTime),
+        v: Number(e.value.toFixed(4)),
+        sources: (e.sources || []).slice(0, 2).map((src) => ({
+          el: label(src.node),
+          move: `${Math.round(src.previousRect.top)}→${Math.round(src.currentRect.top)}`,
+        })),
+      });
+    }
+  }).observe({ type: 'layout-shift', buffered: true });
+}
+
+/** The CLS session window: entries within 1s of each other and 5s of the first. */
+function sessionWindowMax(entries) {
+  let best = 0;
+  let current = 0;
+  let start = 0;
+  let last = 0;
+  for (const e of entries) {
+    if (current && (e.t - last > 1000 || e.t - start > 5000)) {
+      best = Math.max(best, current);
+      current = 0;
+    }
+    if (!current) start = e.t;
+    current += e.v;
+    last = e.t;
+  }
+  return Math.max(best, current);
+}
+
+if (LATE_MS > 0) {
+  const browser = await chromium.launch({ executablePath: EXECUTABLE });
+  console.log(
+    `Streamed tail held back ${LATE_MS} ms, no throttling.` +
+      (SCROLL_TO ? ` Reader parked at y=${SCROLL_TO}.` : ' Reader at the top of the page.')
+  );
+  for (const path of URLS) {
+    const url = path.startsWith('http') ? path : BASE + path;
+    const html = await fetch(url, {
+      headers: { accept: 'text/html', 'x-forwarded-for': CLIENT_IP },
+    }).then((r) => r.text());
+    const cut = html.indexOf('<div hidden id="S:');
+    console.log('\n' + '='.repeat(94));
+    console.log(url);
+    if (cut < 0) {
+      console.log('  does not stream — no deferred boundary to hold back, nothing to measure here');
+      continue;
+    }
+    // Served under the page's OWN pathname, not a made-up one. Next ships the route in the
+    // RSC payload and the client router re-resolves it on hydration: from `/__cls_split` it
+    // found a different route than the HTML had been rendered for, threw React #418 and
+    // re-rendered the page on the client — so the run measured a partly client-rendered page
+    // and called it the server's. Same bytes under the real path: no error.
+    const splitPath = new URL(url).pathname + new URL(url).search;
+    const server = await serveSplit(html, cut, LATE_MS, splitPath);
+    const origin = `http://127.0.0.1:${server.address().port}`;
+    try {
+      for (const viewport of VIEWPORTS) {
+        const ctx = await browser.newContext({
+          viewport: { width: viewport.width, height: viewport.height },
+          isMobile: viewport.isMobile,
+          hasTouch: viewport.isMobile,
+          extraHTTPHeaders: { 'x-forwarded-for': CLIENT_IP },
+        });
+        const page = await ctx.newPage();
+        await page.addInitScript(readShifts);
+        if (SCROLL_TO) {
+          // Re-asserted every frame, not set once: right after `commit` the document is
+          // still the shell and often too short to scroll that far, so a single call
+          // silently lands at the bottom and the reader ends up somewhere else.
+          await page.addInitScript((y) => {
+            const hold = () => {
+              if (window.scrollY !== y) window.scrollTo(0, y);
+              if (performance.now() < 20000) requestAnimationFrame(hold);
+            };
+            requestAnimationFrame(hold);
+          }, SCROLL_TO);
+        }
+        // Surfaces the hydration errors the split used to cause itself — a run that prints
+        // these is not measuring the page the server sent.
+        const pageErrors = [];
+        page.on('console', (m) => {
+          if (m.type() === 'error') pageErrors.push(m.text().split('\n')[0].slice(0, 120));
+        });
+        await page.goto(origin + splitPath, { waitUntil: 'commit', timeout: 90000 });
+        await page.waitForTimeout(LATE_MS + 6000);
+        const entries = await page.evaluate(() => window.__cls);
+        const cls = sessionWindowMax(entries);
+        console.log(`  ${viewport.name.padEnd(8)} CLS ${cls.toFixed(4)}`);
+        for (const err of [...new Set(pageErrors)].slice(0, 3)) {
+          console.log(`      ⚠️  console error: ${err}`);
+        }
+        for (const e of entries.filter((x) => x.v > 0)) {
+          console.log(
+            `      ${String(e.t).padStart(6)} ms  ${e.v.toFixed(4).padStart(7)}  ` +
+              e.sources.map((src) => `${src.el} ${src.move}`).join(' | ')
+          );
+        }
+        await ctx.close();
+      }
+    } finally {
+      server.close();
+    }
+  }
+  await browser.close();
+  process.exit(0);
 }
 
 const browser = await chromium.launch({ executablePath: EXECUTABLE });
