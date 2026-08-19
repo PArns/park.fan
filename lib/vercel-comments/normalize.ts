@@ -106,18 +106,51 @@ function pickScoped(
   return null;
 }
 
+/** {@link pickNumber}, restricted to entries whose path matches too. */
+function pickScopedNumber(
+  entries: ScanEntry[],
+  pathPattern: RegExp,
+  keyPattern: RegExp
+): number | null {
+  const value = pickScoped(
+    entries,
+    pathPattern,
+    keyPattern,
+    (candidate) =>
+      typeof candidate === 'number' || (typeof candidate === 'string' && /^\d+$/.test(candidate))
+  );
+  if (value === null) return null;
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
 /**
- * Coerces a value into an absolute URL. Vercel sends deployment hosts without
- * a scheme (`park-fan-abc.vercel.app`), which would render as a broken
- * markdown link. Returns null for anything that is not a URL at all — a bare
- * path like `/de/park/x` stays a path.
+ * Coerces a value into an absolute URL.
+ *
+ * Vercel sends deployment hosts without a scheme
+ * (`park-fan-abc.vercel.app`), which would render as a broken markdown link.
+ * But a naive "has dots → it's a host" rule is worse than no rule: the session
+ * data alone contains `106.0.0.0` (browser version) and payloads carry file
+ * names like `next.config.ts`, and turning those into `https://…` links
+ * fabricates information. So a scheme-less value is only accepted when its
+ * last label is a plausible TLD — letters only, 2+ characters — which rejects
+ * version numbers and `.ts`-style extensions alike.
  */
+const FILE_EXTENSION = /\.(tsx?|jsx?|mjs|cjs|json|md|css|scss|ya?ml|lock|txt|map|d)$/i;
+
 function absolute(value: string | null | undefined): string | null {
   if (!isNonEmptyString(value)) return null;
   const trimmed = value.trim();
   if (/^https?:\/\//i.test(trimmed)) return trimmed;
-  if (/^[a-z0-9-]+(\.[a-z0-9-]+)+(\/|$|\?)/i.test(trimmed)) return `https://${trimmed}`;
-  return null;
+
+  const host = trimmed.split(/[/?#]/)[0];
+  if (!host.includes('.')) return null;
+  if (FILE_EXTENSION.test(host)) return null;
+
+  const tld = host.split('.').at(-1) ?? '';
+  if (!/^[a-z]{2,}$/i.test(tld)) return null;
+
+  return `https://${trimmed}`;
 }
 
 function pickNumber(entries: ScanEntry[], keyPattern: RegExp): number | null {
@@ -199,6 +232,50 @@ function toPath(url: string | null): string | null {
   }
 }
 
+/**
+ * Team members @-mentioned in the comment. Vercel may deliver them as a
+ * structured list; if it does not, the `@name` tokens in the text are the
+ * next best thing.
+ */
+function readMentions(entries: ScanEntry[], text: string | null): string[] {
+  const found = new Set<string>();
+
+  for (const entry of entries) {
+    if (!/^(mentions|mentioned|mentionedUsers)$/i.test(entry.key)) continue;
+    for (const item of Array.isArray(entry.value) ? entry.value : [entry.value]) {
+      const name = readAuthor(item);
+      if (name) found.add(name.replace(/^@/, ''));
+    }
+  }
+
+  if (found.size === 0 && text) {
+    for (const match of text.matchAll(/(?:^|\s)@([\w.-]{2,})/g)) found.add(match[1]);
+  }
+
+  return [...found];
+}
+
+/** ISO timestamp from an ISO string or a JS/Unix epoch number. */
+function readCreatedAt(entries: ScanEntry[], fallback?: number): string | null {
+  const raw =
+    pick(
+      entries,
+      /^(createdAt|created_at|created|timestamp|date)$/i,
+      (value) =>
+        (typeof value === 'number' && value > 0) ||
+        (typeof value === 'string' && !Number.isNaN(Date.parse(value)))
+    ) ?? fallback;
+
+  if (typeof raw === 'string') return new Date(raw).toISOString();
+  if (typeof raw === 'number') {
+    // Vercel sends JavaScript milliseconds; tolerate seconds just in case.
+    const ms = raw < 1e12 ? raw * 1000 : raw;
+    const date = new Date(ms);
+    return Number.isNaN(date.getTime()) ? null : date.toISOString();
+  }
+  return null;
+}
+
 function readViewport(entries: ScanEntry[]): string | null {
   const width = pickNumber(entries, /^(screenWidth|viewportWidth|windowWidth|width)$/i);
   const height = pickNumber(entries, /^(screenHeight|viewportHeight|windowHeight|height)$/i);
@@ -277,6 +354,8 @@ export function normalizeComment(envelope: VercelWebhookEnvelope): NormalizedCom
       pickScoped(entries, /comment/i, /^id$/i),
     text,
     author: readAuthor(pick(entries, /^(author|user|createdBy|owner|member)$/i, () => true)),
+    mentions: readMentions(entries, text),
+    createdAt: readCreatedAt(entries, envelope.createdAt),
     resolved: readResolved(entries, event),
 
     pageUrl,
@@ -284,6 +363,14 @@ export function normalizeComment(envelope: VercelWebhookEnvelope): NormalizedCom
 
     deploymentUrl,
     deploymentId: pickString(entries, /^(deploymentId|deployment_id|dpl)$/i),
+    // Restricted to a full 40-char SHA: a short `sha` key elsewhere in the
+    // payload would otherwise be mistaken for the commit.
+    commitSha: pickScoped(
+      entries,
+      /.*/,
+      /^(githubCommitSha|commitSha|sha|gitCommitSha|revision)$/i,
+      (value) => isNonEmptyString(value) && /^[0-9a-f]{7,40}$/i.test(value.trim())
+    ),
     branch,
     prNumber: pickNumber(entries, /^(prNumber|pullRequestNumber|githubPrId|prId)$/i),
     environment,
@@ -295,7 +382,14 @@ export function normalizeComment(envelope: VercelWebhookEnvelope): NormalizedCom
     position: (() => {
       const x = pickNumber(entries, /^(x|left|offsetX|clientX)$/i);
       const y = pickNumber(entries, /^(y|top|offsetY|clientY)$/i);
-      return x !== null && y !== null ? `x: ${x}, y: ${y}` : null;
+      if (x === null || y === null) return null;
+      // A click-and-drag region screenshot has an extent, a placed pin does
+      // not. Scoped to the anchor/region path so the viewport's own
+      // width/height cannot be mistaken for it.
+      const region = /(anchor|region|selection|rect|bounds|screenshot)/i;
+      const w = pickScopedNumber(entries, region, /^(w|width|regionWidth)$/i);
+      const h = pickScopedNumber(entries, region, /^(h|height|regionHeight)$/i);
+      return w !== null && h !== null ? `x: ${x}, y: ${y}, ${w}×${h} region` : `x: ${x}, y: ${y}`;
     })(),
 
     viewport: readViewport(entries),

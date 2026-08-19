@@ -11,12 +11,41 @@
 
 import type { NormalizedComment } from './types';
 
-/** Cap on the raw payload we inline — `repository_dispatch` allows ~64 KB total. */
-const RAW_PAYLOAD_LIMIT = 24_000;
+/**
+ * Size budget. Two hard 65,536-character ceilings sit downstream — one on a
+ * `repository_dispatch` payload, one on a GitHub comment body — and a single
+ * long comment lands in the output three times over (quote, context JSON, raw
+ * payload), so per-block caps alone do not bound the total. These are chosen
+ * so that even a maximal `body` + `update` stays well inside both.
+ */
+const QUOTE_LIMIT = 4_000;
+const CONTEXT_LIMIT = 6_000;
+const RAW_PAYLOAD_LIMIT = 12_000;
+/** Belt and braces: the final rendered markdown is never longer than this. */
+export const BODY_LIMIT = 60_000;
+
+const MARKER_PREFIX = 'vercel-comment-sync:thread:';
 
 /** Hidden anchor that lets the Action find the PR comment belonging to a thread. */
 export function markerFor(threadId: string): string {
-  return `<!-- vercel-comment-sync:thread:${threadId} -->`;
+  return `<!-- ${MARKER_PREFIX}${threadId} -->`;
+}
+
+/**
+ * Neutralizes our own anchor inside attacker-controlled text.
+ *
+ * Comment text is written by anyone who can reach the preview. Left as-is, a
+ * comment containing `<!-- vercel-comment-sync:thread:OTHER -->` would make
+ * the Action treat that PR comment as the home of a *different* thread, so
+ * later replies would be appended to the wrong place.
+ */
+function sanitize(text: string): string {
+  return text.split(MARKER_PREFIX).join('vercel-comment-sync(redacted):');
+}
+
+function truncate(text: string, limit: number): string {
+  if (text.length <= limit) return text;
+  return `${text.slice(0, limit)}\n… truncated (${text.length - limit} more characters)`;
 }
 
 /** Escapes the pipe characters that would otherwise break a markdown table. */
@@ -29,8 +58,9 @@ function code(value: string): string {
   return `\`${value.replace(/`/g, '').replace(/\n+/g, ' ')}\``;
 }
 
+/** Blockquote of untrusted comment text — sanitized and length-capped. */
 function quote(text: string): string {
-  return text
+  return truncate(sanitize(text), QUOTE_LIMIT)
     .split('\n')
     .map((line) => `> ${line}`)
     .join('\n');
@@ -43,8 +73,7 @@ function stringifyCapped(value: unknown, limit: number): string {
   } catch {
     return '// payload could not be serialized';
   }
-  if (json.length <= limit) return json;
-  return `${json.slice(0, limit)}\n… truncated (${json.length - limit} more characters)`;
+  return truncate(sanitize(json), limit);
 }
 
 function contextTable(comment: NormalizedComment): string {
@@ -59,7 +88,14 @@ function contextTable(comment: NormalizedComment): string {
   if (comment.selector) rows.push(['Element', code(comment.selector)]);
   if (comment.position) rows.push(['Position', cell(comment.position)]);
   if (comment.viewport) rows.push(['Viewport', cell(comment.viewport)]);
+  if (comment.mentions.length > 0) {
+    // Rendered as plain text — a live @mention would ping an unrelated
+    // GitHub user who happens to share the name.
+    rows.push(['Mentions', comment.mentions.map((name) => code(`@${name}`)).join(' ')]);
+  }
+  if (comment.createdAt) rows.push(['Written', cell(comment.createdAt)]);
   if (comment.branch) rows.push(['Branch', code(comment.branch)]);
+  if (comment.commitSha) rows.push(['Commit', code(comment.commitSha.slice(0, 7))]);
   if (comment.deploymentUrl) {
     rows.push(['Deployment', `[${cell(comment.deploymentUrl)}](${comment.deploymentUrl})`]);
   }
@@ -85,8 +121,11 @@ function screenshots(comment: NormalizedComment): string {
 function automationContext(comment: NormalizedComment): string {
   const context = {
     threadId: comment.threadId,
+    commentId: comment.commentId,
     event: comment.event,
     author: comment.author,
+    mentions: comment.mentions,
+    createdAt: comment.createdAt,
     text: comment.text,
     page: comment.pagePath ?? comment.pageUrl,
     pageUrl: comment.pageUrl,
@@ -96,6 +135,8 @@ function automationContext(comment: NormalizedComment): string {
     position: comment.position,
     viewport: comment.viewport,
     branch: comment.branch,
+    // The commit this feedback is actually about — not necessarily the PR head.
+    commitSha: comment.commitSha,
     deploymentUrl: comment.deploymentUrl,
     images: comment.images,
     resolved: comment.resolved,
@@ -106,7 +147,7 @@ function automationContext(comment: NormalizedComment): string {
     '<summary>Context for automation (JSON)</summary>',
     '',
     '```json vercel-comment-context',
-    stringifyCapped(context, RAW_PAYLOAD_LIMIT),
+    stringifyCapped(context, CONTEXT_LIMIT),
     '```',
     '',
     '</details>',
@@ -138,7 +179,8 @@ function byline(comment: NormalizedComment): string {
  * the context table as literal pipes.
  */
 function joinSections(sections: Array<string>): string {
-  return `${sections.filter((section) => section.trim() !== '').join('\n\n')}\n`;
+  const markdown = sections.filter((section) => section.trim() !== '').join('\n\n');
+  return `${truncate(markdown, BODY_LIMIT)}\n`;
 }
 
 /** Full body for a freshly created PR comment (one per Vercel thread). */
