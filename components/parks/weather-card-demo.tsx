@@ -32,15 +32,34 @@ function buildWeather(today: Date, variant: Variant): WeatherData {
   };
 }
 
-function buildTodaySchedule(today: Date): ScheduleItem {
-  const opening = new Date(today);
-  opening.setHours(9, 0, 0, 0);
-  const closing = new Date(today);
-  closing.setHours(20, 0, 0, 0);
+/**
+ * ISO instant for a wall-clock hour in a park's own timezone.
+ *
+ * The offset has to be looked up rather than written down: `Europe/Berlin` is
+ * +01:00 in January and +02:00 in July, and the showcase renders in both. Doing
+ * it with `setHours` reads the RUNNER's timezone instead, which is how the demo
+ * card ended up drawing its opening-hours band two hours off on a UTC machine —
+ * and that band is now the thing the whole time axis is built around.
+ */
+function parkInstant(dateStr: string, hour: number, timeZone: string): string {
+  const naive = `${dateStr}T${String(hour).padStart(2, '0')}:00:00`;
+  const offset =
+    new Intl.DateTimeFormat('en-US', { timeZone, timeZoneName: 'longOffset' })
+      .format(new Date(`${naive}Z`))
+      .split('GMT')[1] ?? '+00:00';
+  return `${naive}${offset}`;
+}
+
+function buildScheduleFor(
+  dateStr: string,
+  openHour: number,
+  closeHour: number,
+  timeZone: string
+): ScheduleItem {
   return {
-    date: format(today, 'yyyy-MM-dd'),
-    openingTime: opening.toISOString(),
-    closingTime: closing.toISOString(),
+    date: dateStr,
+    openingTime: parkInstant(dateStr, openHour, timeZone),
+    closingTime: parkInstant(dateStr, closeHour, timeZone),
     scheduleType: 'OPERATING',
     description: null,
     purchases: null,
@@ -237,19 +256,14 @@ function buildScheduleForOffset(
   dayOffset: number,
   openHour: number,
   closeHour: number,
-  tzOffsetSuffix: string
+  timeZone: string
 ): ScheduleItem {
-  const dateStr = format(addDays(today, dayOffset), 'yyyy-MM-dd');
-  const pad = (n: number) => String(n).padStart(2, '0');
-  return {
-    date: dateStr,
-    openingTime: `${dateStr}T${pad(openHour)}:00:00${tzOffsetSuffix}`,
-    closingTime: `${dateStr}T${pad(closeHour)}:00:00${tzOffsetSuffix}`,
-    scheduleType: 'OPERATING',
-    description: null,
-    purchases: null,
-    holidayName: null,
-  };
+  return buildScheduleFor(
+    format(addDays(today, dayOffset), 'yyyy-MM-dd'),
+    openHour,
+    closeHour,
+    timeZone
+  );
 }
 
 /**
@@ -263,12 +277,12 @@ export function ParkTimeInfoShowcase() {
     <div className="grid max-w-2xl grid-cols-1 gap-4 sm:grid-cols-2">
       <ParkTimeInfo
         timezone="Europe/Berlin"
-        schedule={[buildScheduleForOffset(today, 0, 9, 22, '+01:00')]}
+        schedule={[buildScheduleForOffset(today, 0, 9, 22, 'Europe/Berlin')]}
       />
       <ParkTimeInfo
         timezone="America/New_York"
-        schedule={[buildScheduleForOffset(today, 0, 9, 20, '-05:00')]}
-        nextSchedule={buildScheduleForOffset(today, 1, 9, 20, '-05:00')}
+        schedule={[buildScheduleForOffset(today, 0, 9, 20, 'America/New_York')]}
+        nextSchedule={buildScheduleForOffset(today, 1, 9, 20, 'America/New_York')}
       />
     </div>
   );
@@ -281,6 +295,9 @@ interface WeatherCardShowcaseProps {
 
 export function WeatherCardShowcase({ variant }: WeatherCardShowcaseProps) {
   const [{ today, mountedAt }] = useState(() => ({ today: new Date(), mountedAt: Date.now() }));
+  // Same park-local day the hourly fixture is built for, so the band and the
+  // curve are talking about the same day.
+  const berlinToday = berlinDateStr(mountedAt);
 
   if (variant === 'glass-pair') {
     return (
@@ -296,7 +313,7 @@ export function WeatherCardShowcase({ variant }: WeatherCardShowcaseProps) {
           <ParkTimeInfo
             timezone="Europe/Berlin"
             status="OPERATING"
-            schedule={[buildTodaySchedule(today)]}
+            schedule={[buildScheduleFor(berlinToday, 9, 20, 'Europe/Berlin')]}
           />
           {/* Same schedule object as the ParkTimeInfo next to it, so the chart's
               opening-hours band matches the displayed times. */}
@@ -305,7 +322,7 @@ export function WeatherCardShowcase({ variant }: WeatherCardShowcaseProps) {
             nowcast={buildNowcastFor('sunny', mountedAt)}
             timezone="Europe/Berlin"
             hourly={buildHourlyFor('sunny', mountedAt)}
-            schedule={[buildTodaySchedule(today)]}
+            schedule={[buildScheduleFor(berlinToday, 9, 20, 'Europe/Berlin')]}
           />
         </div>
       </div>

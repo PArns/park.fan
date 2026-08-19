@@ -81,11 +81,12 @@
 
 ### Features
 
-| Doc                                          | Description                                                                                                   |
-| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| [Media Database](features/media-database.md) | One FS-backed image database: sidecars, roles, tags, focal points, search, the HTTP API and the admin browser |
-| [Glossary System](features/glossary.md)      | Term data, translations, localized URLs, search, sitemap                                                      |
-| [Homepage Hero](features/homepage-hero.md)   | Live counts, in-place vs palette search, nearby bubbles, the world-map panel and its generated path data      |
+| Doc                                                | Description                                                                                                   |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| [Media Database](features/media-database.md)       | One FS-backed image database: sidecars, roles, tags, focal points, search, the HTTP API and the admin browser |
+| [Glossary System](features/glossary.md)            | Term data, translations, localized URLs, search, sitemap                                                      |
+| [Homepage Hero](features/homepage-hero.md)         | Live counts, in-place vs palette search, nearby bubbles, the world-map panel and its generated path data      |
+| [Weather Day Chart](features/weather-day-chart.md) | The hourly chart's park-hours time axis, its tick tiers, the in-visit annotations and the 143 px box          |
 
 ### Product
 
