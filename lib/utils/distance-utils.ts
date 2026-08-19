@@ -66,8 +66,9 @@ export function collectParkCoordinates(
 
   const coordinates: Coordinate[] = [];
   for (const park of parks) {
-    // The API types coordinates as numbers but decimal columns have historically leaked through
-    // as strings — coerce, and drop anything that isn't a real pair.
+    // `/v1/discovery/*` sends these as real JSON numbers; the park-detail endpoints are
+    // the ones that send decimal strings, and those are parsed at the fetch boundary
+    // (lib/api/coordinates). Coerce anyway, and drop anything that isn't a real pair.
     const lat = Number(park.latitude);
     const lng = Number(park.longitude);
     if (

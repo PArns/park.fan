@@ -149,7 +149,7 @@ export function ParkMap({ park }: ParkMapProps) {
     () =>
       isInPark && userLocation
         ? [userLocation.lat, userLocation.lng]
-        : park.latitude && park.longitude
+        : park.latitude != null && park.longitude != null
           ? [park.latitude, park.longitude]
           : [51.505, -0.09], // London as fallback
     // Depend on the primitive coords, not the `userLocation` object identity: a new object with
@@ -159,7 +159,9 @@ export function ParkMap({ park }: ParkMapProps) {
     [isInPark, userLocation?.lat, userLocation?.lng, park.latitude, park.longitude]
   );
 
-  if (!park.latitude || !park.longitude) {
+  // `!= null`, not truthiness: coordinates are real numbers since the fetch boundary
+  // parses them, and 0 is a legal one (Greenwich runs through England).
+  if (park.latitude == null || park.longitude == null) {
     return (
       <div className="bg-muted text-muted-foreground flex h-[500px] items-center justify-center rounded-lg">
         <p>{t('noMapData')}</p>
@@ -204,7 +206,7 @@ export function ParkMap({ park }: ParkMapProps) {
         )}
 
         {/* Park center marker */}
-        {park.latitude && park.longitude && (
+        {park.latitude != null && park.longitude != null && (
           <Marker position={[park.latitude, park.longitude]} icon={parkIcon}>
             <Popup>
               <div className="font-semibold">{stripNewPrefix(park.name)}</div>

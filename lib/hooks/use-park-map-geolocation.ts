@@ -69,7 +69,9 @@ export function useParkMapGeolocation(
   }, []);
 
   const { nearbyEntities, distanceToPark, isInPark } = useMemo(() => {
-    if (!userLocation || !park.latitude || !park.longitude) {
+    // `!= null` rather than truthiness: 0 is a legal coordinate, and these values
+    // are parsed to real numbers at the fetch boundary (lib/api/coordinates).
+    if (!userLocation || park.latitude == null || park.longitude == null) {
       return { nearbyEntities: [] as EntityWithDistance[], distanceToPark: null, isInPark: false };
     }
 
@@ -88,7 +90,7 @@ export function useParkMapGeolocation(
     const entities: EntityWithDistance[] = [];
 
     validAttractions.forEach((attraction) => {
-      if (attraction.latitude && attraction.longitude) {
+      if (attraction.latitude != null && attraction.longitude != null) {
         entities.push({
           id: attraction.id,
           name: stripNewPrefix(attraction.name),
@@ -107,7 +109,7 @@ export function useParkMapGeolocation(
     });
 
     validShows.forEach((show) => {
-      if (show.latitude && show.longitude) {
+      if (show.latitude != null && show.longitude != null) {
         entities.push({
           id: show.id,
           name: stripNewPrefix(show.name),
@@ -126,7 +128,7 @@ export function useParkMapGeolocation(
     });
 
     validRestaurants.forEach((restaurant) => {
-      if (restaurant.latitude && restaurant.longitude) {
+      if (restaurant.latitude != null && restaurant.longitude != null) {
         entities.push({
           id: restaurant.id,
           name: stripNewPrefix(restaurant.name),
