@@ -210,19 +210,19 @@ https://www.youtube.com/watch?v=5uXmHjiLbG4
 Das ist die entschärfte Version. Dieselbe Tonlage, dieselbe Ästhetik, nur ohne
 die Auktion.
 
-Wie ein Park nach so einem Jahr wirbt, kann man seit dem 19. August 2026
-nachsehen. Der neue Spot heißt „Back to Reality“ und zeigt eine Minute lang
-einen ausgesprochen netten Eddie: Er drückt einem Jungen an der Speed of Sound
-ein rosa Plüschtier in die Hand, verteilt Eis und Zuckerwatte, posiert lachend
-für Fotos und tanzt durch den Park, bis er in einem Meer aus rosa Kuscheltieren
-steht. Erst danach wacht er schweißgebadet in seiner Höhle auf, Axt in der Hand,
-und eine Stimme sagt: „Relax, het is bijna Halloween.“
+Ein Jahr später versucht Eddie es mit Plüsch.
+
+Der Spot vom 19. August 2026 heißt „Back to Reality“ und zeigt eine Minute lang
+einen ausgesprochen netten Horrorclown: Er drückt einem Jungen an der Speed of
+Sound ein rosa Kuscheltier in die Hand, verteilt Eis und Zuckerwatte, posiert
+lachend für Fotos und tanzt durch den Park, bis er in einem Meer aus rosa Plüsch
+steht. Der Schrecken kommt erst in den letzten fünf Sekunden: Eddie wacht
+schweißgebadet in seiner Höhle auf, Axt in der Hand, alles nur ein Albtraum.
+„Relax, het is bijna Halloween.“
 
 https://www.youtube.com/watch?v=fFPGRQAs-Xk
 
-Der Schrecken sitzt diesmal also in den letzten fünf Sekunden statt in der
-ganzen Minute. Das Bremspedal von oben ist damit nicht eingebaut, aber jemand
-hat gelernt, wo es sitzt.
+Ein Bremspedal ist das noch nicht. Aber jemand hat nachgesehen, wo es sitzt.
 
 ## Untamed
 

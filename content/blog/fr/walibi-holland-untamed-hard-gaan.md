@@ -207,20 +207,21 @@ https://www.youtube.com/watch?v=5uXmHjiLbG4
 C'est la version édulcorée. Même ton, même esthétique, simplement sans les
 enchères.
 
-Comment un parc fait sa publicité après une année pareille, on le voit depuis le
-19 août 2026. Le nouveau spot s'appelle « Back to Reality » et montre pendant une
-minute un Eddie franchement gentil : il glisse une peluche rose dans les mains
-d'un garçon près de Speed of Sound, distribue des glaces et de la barbe à papa,
-pose en riant pour des photos et danse à travers le parc jusqu'à se retrouver au
-milieu d'une mer de peluches roses. C'est seulement ensuite qu'il se réveille en
-sueur dans son antre, la hache à la main, pendant qu'une voix dit : « Relax, het
-is bijna Halloween. »
+Un an plus tard, Eddie tente sa chance avec de la peluche.
+
+Le spot du 19 août 2026 s'appelle « Back to Reality » et montre pendant une
+minute un clown d'horreur franchement gentil : il glisse une peluche rose dans
+les mains d'un garçon près de Speed of Sound, distribue des glaces et de la barbe
+à papa, pose en riant pour des photos et danse à travers le parc jusqu'à se
+retrouver au milieu d'une mer de peluches roses. La frayeur n'arrive que dans les
+cinq dernières secondes, quand il se réveille en sueur dans son antre, la hache à
+la main, et que rien de tout cela n'a eu lieu. « Relax, het is bijna
+Halloween. »
 
 https://www.youtube.com/watch?v=fFPGRQAs-Xk
 
-La frayeur tient donc cette fois dans les cinq dernières secondes au lieu de la
-minute entière. Ce n'est pas la pédale de frein évoquée plus haut, mais quelqu'un
-a repéré où elle se trouve.
+Ce n'est pas encore une pédale de frein. Mais quelqu'un est allé voir où elle se
+trouve.
 
 ## Untamed
 

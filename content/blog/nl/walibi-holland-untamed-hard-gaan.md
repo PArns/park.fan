@@ -199,18 +199,19 @@ https://www.youtube.com/watch?v=5uXmHjiLbG4
 Dat is de afgezwakte versie. Dezelfde toon, dezelfde esthetiek, alleen zonder de
 veiling.
 
-Hoe een park na zo'n jaar adverteert, is sinds 19 augustus 2026 te zien. De
-nieuwe spot heet "Back to Reality" en laat een minuut lang een uitgesproken
-aardige Eddie zien: hij drukt een jongetje bij Speed of Sound een roze knuffel in
-handen, deelt ijs en suikerspin uit, poseert lachend voor foto's en danst door
-het park tot hij in een zee van roze knuffels staat. Pas daarna wordt hij badend
-in het zweet wakker in zijn hol, bijl in de hand, terwijl een stem zegt: "Relax,
+Een jaar later probeert Eddie het met pluche.
+
+De spot van 19 augustus 2026 heet "Back to Reality" en laat een minuut lang een
+uitgesproken aardige horrorclown zien: hij drukt een jongetje bij Speed of Sound
+een roze knuffel in handen, deelt ijs en suikerspin uit, poseert lachend voor
+foto's en danst door het park tot hij in een zee van roze pluche staat. De schrik
+komt pas in de laatste vijf seconden, als hij badend in het zweet wakker wordt in
+zijn hol met een bijl in zijn hand en er niets van waar blijkt te zijn. "Relax,
 het is bijna Halloween."
 
 https://www.youtube.com/watch?v=fFPGRQAs-Xk
 
-De schrik zit deze keer dus in de laatste vijf seconden in plaats van in de hele
-minuut. Dat is nog geen rempedaal, maar iemand heeft uitgezocht waar het zit.
+Een rempedaal is dat nog niet. Maar iemand is gaan kijken waar het zit.
 
 ## Untamed
 

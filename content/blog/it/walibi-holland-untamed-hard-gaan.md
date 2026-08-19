@@ -204,19 +204,19 @@ https://www.youtube.com/watch?v=5uXmHjiLbG4
 Questa è la versione addolcita. Stesso tono, stessa estetica, soltanto senza
 l'asta.
 
-Come fa pubblicità un parco dopo un anno del genere si vede dal 19 agosto 2026.
-Il nuovo spot si chiama “Back to Reality” e mostra per un minuto un Eddie
-decisamente gentile: mette un peluche rosa in mano a un bambino vicino a Speed of
-Sound, distribuisce gelati e zucchero filato, posa ridendo per le foto e balla
-per il parco finché non si ritrova in mezzo a un mare di peluche rosa. Solo dopo
-si sveglia madido di sudore nella sua tana, l'ascia in mano, mentre una voce
-dice: “Relax, het is bijna Halloween.”
+Un anno dopo Eddie ci prova con il peluche.
+
+Lo spot del 19 agosto 2026 si chiama «Back to Reality» e mostra per un minuto un
+clown horror decisamente gentile: mette un peluche rosa in mano a un bambino
+vicino a Speed of Sound, distribuisce gelati e zucchero filato, posa ridendo per
+le foto e balla per il parco finché non si ritrova in mezzo a un mare di peluche
+rosa. Lo spavento arriva negli ultimi cinque secondi, quando si sveglia madido di
+sudore nella sua tana con l'ascia in mano e niente di tutto questo è successo.
+«Relax, het is bijna Halloween.»
 
 https://www.youtube.com/watch?v=fFPGRQAs-Xk
 
-Lo spavento sta stavolta negli ultimi cinque secondi invece che nell'intero
-minuto. Non è il pedale del freno di cui sopra, ma qualcuno ha capito dove si
-trova.
+Un pedale del freno non è ancora. Ma qualcuno è andato a vedere dov'è.
 
 ## Untamed
 

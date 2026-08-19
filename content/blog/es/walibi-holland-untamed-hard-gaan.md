@@ -203,19 +203,19 @@ https://www.youtube.com/watch?v=5uXmHjiLbG4
 Esa es la versión suavizada. El mismo tono, la misma estética, solo que sin la
 subasta.
 
-Cómo hace publicidad un parque después de un año así se puede ver desde el 19 de
-agosto de 2026. El nuevo spot se llama «Back to Reality» y muestra durante un
-minuto a un Eddie francamente amable: le pone un peluche rosa en las manos a un
-niño junto a Speed of Sound, reparte helados y algodón de azúcar, posa riéndose
-para las fotos y baila por el parque hasta quedarse en medio de un mar de
-peluches rosas. Solo después despierta empapado en sudor en su guarida, con el
-hacha en la mano, mientras una voz dice: «Relax, het is bijna Halloween.»
+Un año después, Eddie lo intenta con peluche.
+
+El spot del 19 de agosto de 2026 se llama «Back to Reality» y muestra durante un
+minuto a un payaso del terror francamente amable: le pone un peluche rosa en las
+manos a un niño junto a Speed of Sound, reparte helados y algodón de azúcar, posa
+riéndose para las fotos y baila por el parque hasta quedarse en medio de un mar
+de peluches rosas. El susto llega en los últimos cinco segundos, cuando despierta
+empapado en sudor en su guarida con el hacha en la mano y resulta que nada de eso
+ha pasado. «Relax, het is bijna Halloween.»
 
 https://www.youtube.com/watch?v=fFPGRQAs-Xk
 
-El susto está esta vez en los últimos cinco segundos en lugar de en el minuto
-entero. No es el pedal de freno de más arriba, pero alguien ha averiguado dónde
-está.
+Un pedal de freno todavía no es. Pero alguien ha ido a mirar dónde está.
 
 ## Untamed
 

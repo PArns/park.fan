@@ -197,18 +197,20 @@ https://www.youtube.com/watch?v=5uXmHjiLbG4
 That is the defused version. Same register, same aesthetic, just without the
 auction.
 
-How a park advertises after a year like that has been visible since 19 August 2026. The new spot is called "Back to Reality" and spends a minute on a
-thoroughly pleasant Eddie: he presses a pink cuddly toy into a boy's hands by
-Speed of Sound, hands out ice cream and candy floss, poses laughing for photos
-and dances through the park until he is standing in a sea of pink plush. Only
-then does he wake up drenched in sweat in his lair, axe in hand, while a voice
-says: "Relax, het is bijna Halloween."
+A year later, Eddie is trying his luck with plush.
+
+The spot from 19 August 2026 is called "Back to Reality" and spends a minute on
+a thoroughly pleasant horror clown: he presses a pink cuddly toy into a boy's
+hands by Speed of Sound, hands out ice cream and candy floss, poses laughing for
+photos and dances through the park until he is standing in a sea of pink plush.
+The fright arrives in the last five seconds, when he wakes up drenched in sweat
+in his lair with an axe in his hand and none of it happened. "Relax, het is bijna
+Halloween."
 
 https://www.youtube.com/watch?v=fFPGRQAs-Xk
 
-So the fright sits in the last five seconds this time instead of the whole
-minute. That is not the brake pedal from earlier, but somebody has worked out
-where it is.
+That is not a brake pedal yet. But somebody has gone and looked for where it
+sits.
 
 ## Untamed
 

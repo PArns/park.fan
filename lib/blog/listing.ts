@@ -351,8 +351,25 @@ export function parsePageParam(value: unknown, totalPages: number = Infinity): n
 const POSTS_BY_RECENCY = new Map<Locale, readonly BlogListItem[]>();
 
 /**
+ * When a post was last touched, for the recency sort below.
+ *
+ * `updatedAt` is optional — a post that was never revised (most of them) sorts
+ * by its publication `date`, exactly as it always did. The `max` is what makes
+ * that rule total: `updatedAt` may only ever pull a post FORWARD. An entry that
+ * predates its own `date` (a typo, or a `date` corrected forward after the fact)
+ * would otherwise push the post further back than a pure date sort would, which
+ * is the opposite of what marking it updated is for. Both fields are ISO
+ * `YYYY-MM-DD`, so string comparison is date comparison.
+ */
+function lastTouched(fm: BlogFrontmatter): string {
+  const updated = fm.updatedAt?.trim();
+  return updated && updated > fm.date ? updated : fm.date;
+}
+
+/**
  * The same list as {@link listPosts}, but ordered by when a post last CHANGED
- * (`updatedAt`, falling back to `date`) instead of when it was first published.
+ * ({@link lastTouched}: `updatedAt` where it exists, else the publication
+ * `date`) instead of by when it was first published.
  *
  * The homepage strips are a "what's new here" surface, not an archive: a guide
  * that got this season's confirmed dates written into it is news again, and
@@ -377,8 +394,8 @@ export function listPostsByRecency(requestedLocale: Locale): readonly BlogListIt
     const aFeatured = a.frontmatter.featured ? 1 : 0;
     const bFeatured = b.frontmatter.featured ? 1 : 0;
     if (aFeatured !== bFeatured) return bFeatured - aFeatured;
-    const aDate = a.frontmatter.updatedAt || a.frontmatter.date;
-    const bDate = b.frontmatter.updatedAt || b.frontmatter.date;
+    const aDate = lastTouched(a.frontmatter);
+    const bDate = lastTouched(b.frontmatter);
     if (aDate !== bDate) return aDate < bDate ? 1 : -1;
     // Same touch date (a batch edit, or two posts published the same day):
     // fall back to publication date so the order stays deterministic across
