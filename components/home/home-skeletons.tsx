@@ -75,11 +75,15 @@ export function GlobalStatsSkeleton() {
           </div>
           {/* Row 2: most/least crowded parks */}
           <div className="mb-3 grid gap-4 sm:grid-cols-2">
+            {/* No photo row: these two are the ends of a wait-time ranking, and the nine
+                parks that have a picture never reach either end (Phantasialand, the best
+                placed of them, sits 10th). Reserving it cost 221 px per card against a
+                measured 145.64 px. */}
             <StatCardRow>
-              <ParkCardNearbySkeleton />
+              <ParkCardNearbySkeleton withPhoto={false} />
             </StatCardRow>
             <StatCardRow>
-              <ParkCardNearbySkeleton />
+              <ParkCardNearbySkeleton withPhoto={false} />
             </StatCardRow>
           </div>
           {/* Row 3: longest/shortest wait rides */}

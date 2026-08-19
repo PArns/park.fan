@@ -70,12 +70,21 @@ that quietly measures the wrong thing is worse than no harness. And reserving th
 player's transport row introduced a shift on devices without WebGL, where there had been none:
 the placeholder drew the row, then `failed` took it away again. The row is unconditional now.
 
-One thing was tried and put back. `ParkCard` reserves its 220 px picture band only when it has a
-`backgroundImage`, and 9 of 212 parks have one — so on desktop the nearby list is 405–443 px too
-tall for a visitor outside DE/NL/BE/FR. Dropping the band halves the total error across regions
-and turns every miss into growth rather than a collapse, but it costs 465–502 px for a visitor
-inside them, and the homepage went 0.062 → 0.558 for it. The band stays; the numbers per client
-IP are written into the component so the other side can be picked deliberately.
+One thing was tried and put back, and one piece of it kept. `ParkCard` reserves its 220 px
+picture band only when it has a `backgroundImage`, and 9 of 212 parks have one — so on desktop
+the nearby list is 405–443 px too tall for a visitor outside DE/NL/BE/FR. Dropping the band
+halves the total error across regions and turns every miss into growth rather than a collapse,
+but it costs 465–502 px for a visitor inside them, and the homepage went 0.062 → 0.558 for it.
+The band stays where the answer is unknown, with the numbers per client IP written into the
+component so the other side can be picked deliberately. It is dropped where the data settles it:
+the "busiest / quietest park" cards in the global statistics are the two ends of a wait-time
+ranking, and none of the nine photo parks reach either end (Phantasialand, the best placed, is
+10th), so those reserved 221 px per card for a picture that never comes.
+
+Still open in the same section, and left alone because a constant cannot be right for it:
+`AttractionCardSkeleton` reserves a flat `min-h-[420px]` at every width, against a measured
+median of 146–238 px on a phone and 234–456 px on a desktop depending on whether the grid row
+happens to contain a ride with a photo.
 
 Left alone on purpose: the attraction grid that swaps in when `TabsWithHash` hydrates (+9187 px
 mobile on Universal Studios Singapore) and `LazyMount`'s `rowHeight: 340`. Both are real — a
