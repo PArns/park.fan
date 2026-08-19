@@ -111,6 +111,16 @@ shift. The client queries were never the problem: seed → settled measures 0.
   photo row 0 below `sm` and 220 px above, bottom panel 45 px. Same rule for the section
   headings around them: a `text-xl` title is a 28 px line, and the featured-parks section
   heads itself with a 76 px frosted pill where the others use a 40 px row.
+- **The geometry may not depend on data; the content may.** The park header's "Auslastung
+  heute" metric was rendered only once it had a value. Every input that could decide that
+  arrives after the first paint — `crowdToday.level` comes from the deliberately last query on
+  the page, and `isOpenish` reads `badgeStatus = liveStatus ?? scheduledStatus ?? status`,
+  which only settles once the live poll or the browser clock lands. So the band moved: 340 →
+  419 px at 2059 ms on a park that gets a rating, 63 → 142 → 63 px at 277 / 709 / 2474 ms on
+  one that does not, at the very top of the page both times. The metric is unconditional now,
+  exactly like "Andrang jetzt" beside it, and carries a badge, a loading pill or an em dash
+  inside the same reserved box. Not the `unknown` badge for the empty case: that one reads
+  "keine Prognose", and this metric measures the day so far rather than predicting it.
 - **Match the tag, not just the height.** The diff pairs children by tag when their classes
   differ, so a `<div>` standing in for a `<p>` makes the two lists line up one place out — the
   featured-parks skeleton had one child too many and its grid was reported as a 731 px

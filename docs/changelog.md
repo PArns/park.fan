@@ -4,7 +4,7 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
-## Unreleased – fix: six layout shifts, two of which the harness had been unable to see
+## Unreleased – fix: seven layout shifts, two of which the harness had been unable to see
 
 `pnpm measure:cls` diffs a page's first-paint layout against its settled one. That is good at
 finding candidates and bad at two things, and both showed up here.
@@ -30,10 +30,18 @@ business being different heights.
 
 What else moved, and no longer does:
 
-- **The park header shrank twice before settling.** `showCrowdToday` was true while the daily
-  crowd query was unsettled and false once it settled without a value, so on a park nobody can
-  rate — Phantasialand most mornings — the header went 63 → 142 → 63 px at 277 / 709 / 2474 ms.
-  Two 79 px jumps at the very top of the page. It now shows the slot only once there is a value.
+- **The park header changed height while loading, whichever way it went.** `showCrowdToday`
+  was true while the daily crowd query was unsettled and false once it settled without a value,
+  so on a park nobody can rate — Phantasialand most mornings — the header went 63 → 142 → 63 px
+  at 277 / 709 / 2474 ms. Gating it on the value instead just moved the jump to the other kind
+  of park: 340 → 419 px at 2059 ms wherever a rating does arrive. Both inputs land after the
+  first paint (`crowdToday.level` comes from the page's deliberately last query, `isOpenish`
+  from `liveStatus ?? scheduledStatus ?? status`), so neither can decide whether a box exists.
+  "Auslastung heute" is unconditional now, exactly like "Andrang jetzt" beside it, and holds a
+  badge, a loading pill or an em dash in the same reserved box. Not the `unknown` badge for the
+  empty case — that one reads "keine Prognose", and this metric measures the day rather than
+  predicting it. Measured constant at 419.25 px (desktop) / 820.75 px (phone) across the whole
+  18 s recording, on a park with a rating, one without, and one whose wait times cannot be read.
 - **The glossary rides section.** `<Suspense fallback={null}>` on a prerendered route defers
   nothing: the project runs no PPR, so the prerender waits anyway and the resolved markup was
   already in the shipped `.html`, sorted to the end of the byte stream. All the boundary did was
@@ -52,6 +60,22 @@ What else moved, and no longer does:
   the featured-parks grid therefore collapsed by 1284 px when the real cards landed. The
   placeholder is one shared component now, built from the card's measured rows: 100 px top panel,
   photo row 0 below `sm` and 220 px above, 45 px bottom panel.
+
+Three of these were found by re-measuring this round's own diff, and two of them were damage it
+had done itself. `--late` was serving the captured document under `/__cls_split`: the client
+router re-resolved a different route than the HTML had been rendered for, threw React #418 and
+re-rendered on the client, so every `--late` number was taken from a partly client-rendered page.
+It serves the page's own pathname now and prints any console error it sees, because a harness
+that quietly measures the wrong thing is worse than no harness. And reserving the coaster
+player's transport row introduced a shift on devices without WebGL, where there had been none:
+the placeholder drew the row, then `failed` took it away again. The row is unconditional now.
+
+One thing was tried and put back. `ParkCard` reserves its 220 px picture band only when it has a
+`backgroundImage`, and 9 of 212 parks have one — so on desktop the nearby list is 405–443 px too
+tall for a visitor outside DE/NL/BE/FR. Dropping the band halves the total error across regions
+and turns every miss into growth rather than a collapse, but it costs 465–502 px for a visitor
+inside them, and the homepage went 0.062 → 0.558 for it. The band stays; the numbers per client
+IP are written into the component so the other side can be picked deliberately.
 
 Left alone on purpose: the attraction grid that swaps in when `TabsWithHash` hydrates (+9187 px
 mobile on Universal Studios Singapore) and `LazyMount`'s `rowHeight: 340`. Both are real — a

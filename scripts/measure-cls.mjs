@@ -114,9 +114,6 @@ const SCROLL_TO = Number(flag('scroll', '0'));
 
 const EXECUTABLE = process.env.CLS_CHROMIUM || '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
 
-/** Path the split document is served under; anything else on the proxy is passed through. */
-const SPLIT_PATH = '/__cls_split';
-
 const VIEWPORTS = [
   { name: 'mobile', width: 390, height: 844, isMobile: true },
   { name: 'desktop', width: 1440, height: 900, isMobile: false },
@@ -307,9 +304,9 @@ async function layoutFor(browser, url, viewport, js, blockImages = false) {
  * is the shell the browser paints, everything after is the deferred boundary content
  * plus the `$RC()` call that grafts it into place.
  */
-function serveSplit(html, cut, delayMs) {
+function serveSplit(html, cut, delayMs, splitPath) {
   const server = http.createServer(async (req, res) => {
-    if (req.url === SPLIT_PATH) {
+    if (req.url === splitPath) {
       res.writeHead(200, {
         'content-type': 'text/html; charset=utf-8',
         'cache-control': 'no-store',
@@ -400,7 +397,13 @@ if (LATE_MS > 0) {
       console.log('  does not stream — no deferred boundary to hold back, nothing to measure here');
       continue;
     }
-    const server = await serveSplit(html, cut, LATE_MS);
+    // Served under the page's OWN pathname, not a made-up one. Next ships the route in the
+    // RSC payload and the client router re-resolves it on hydration: from `/__cls_split` it
+    // found a different route than the HTML had been rendered for, threw React #418 and
+    // re-rendered the page on the client — so the run measured a partly client-rendered page
+    // and called it the server's. Same bytes under the real path: no error.
+    const splitPath = new URL(url).pathname + new URL(url).search;
+    const server = await serveSplit(html, cut, LATE_MS, splitPath);
     const origin = `http://127.0.0.1:${server.address().port}`;
     try {
       for (const viewport of VIEWPORTS) {
@@ -424,11 +427,20 @@ if (LATE_MS > 0) {
             requestAnimationFrame(hold);
           }, SCROLL_TO);
         }
-        await page.goto(origin + SPLIT_PATH, { waitUntil: 'commit', timeout: 90000 });
+        // Surfaces the hydration errors the split used to cause itself — a run that prints
+        // these is not measuring the page the server sent.
+        const pageErrors = [];
+        page.on('console', (m) => {
+          if (m.type() === 'error') pageErrors.push(m.text().split('\n')[0].slice(0, 120));
+        });
+        await page.goto(origin + splitPath, { waitUntil: 'commit', timeout: 90000 });
         await page.waitForTimeout(LATE_MS + 6000);
         const entries = await page.evaluate(() => window.__cls);
         const cls = sessionWindowMax(entries);
         console.log(`  ${viewport.name.padEnd(8)} CLS ${cls.toFixed(4)}`);
+        for (const err of [...new Set(pageErrors)].slice(0, 3)) {
+          console.log(`      ⚠️  console error: ${err}`);
+        }
         for (const e of entries.filter((x) => x.v > 0)) {
           console.log(
             `      ${String(e.t).padStart(6)} ms  ${e.v.toFixed(4).padStart(7)}  ` +

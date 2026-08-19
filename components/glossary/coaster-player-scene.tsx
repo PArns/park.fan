@@ -278,89 +278,90 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
 
       {/* Transport bar — 57 px (border + 2×10 px padding + 36 px buttons).
 
-          Mounted from the first render, not from `ready`: gated on `ready` it
+          Rendered in every state, disabled until `ready`. Gated on `ready` it
           appeared once the scene had booted and pushed everything below the
-          player down by those 57 px, on all 42 term pages that carry one. The
+          player down by those 57 px, on all 42 term pages that carry one; the
           dynamic-import placeholder in `coaster-player.tsx` reserves the same
-          row, so the height holds from the first paint through the chunk
+          row, so the height now holds from the first paint through the chunk
           arriving to the scene going live.
 
-          `failed` is still a real hole: a device without WebGL loses the bar
-          again. That is the rarer case, and unlike this one it has controls
-          that would do nothing. */}
-      {!failed && (
-        <div className="bg-background/80 flex items-center gap-3 border-t px-3 py-2.5 backdrop-blur">
-          <button
-            type="button"
-            onClick={onToggle}
-            disabled={!ready}
-            aria-label={playing ? labels.pause : labels.play}
-            className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors disabled:opacity-50"
-          >
-            {playing ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4 translate-x-px" />}
-          </button>
-          <button
-            type="button"
-            onClick={onReplay}
-            disabled={!ready}
-            aria-label={labels.replay}
-            title={labels.replay}
-            className="text-muted-foreground hover:text-foreground inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors disabled:opacity-50"
-          >
-            <RotateCcw className="h-4 w-4" />
-          </button>
+          `failed` is deliberately NOT a condition here. Gating on it looks
+          right — a device without WebGL has nothing to transport — but it
+          trades one shift for another: the placeholder has already drawn the
+          row, so hiding it on failure takes 57 px back out mid-page, a jump
+          that did not exist before this row was reserved at all. A dead strip
+          under a player that could not start is the cheaper of the two. */}
+      <div className="bg-background/80 flex items-center gap-3 border-t px-3 py-2.5 backdrop-blur">
+        <button
+          type="button"
+          onClick={onToggle}
+          disabled={!ready}
+          aria-label={playing ? labels.pause : labels.play}
+          className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors disabled:opacity-50"
+        >
+          {playing ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4 translate-x-px" />}
+        </button>
+        <button
+          type="button"
+          onClick={onReplay}
+          disabled={!ready}
+          aria-label={labels.replay}
+          title={labels.replay}
+          className="text-muted-foreground hover:text-foreground inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors disabled:opacity-50"
+        >
+          <RotateCcw className="h-4 w-4" />
+        </button>
 
-          {/* Timeline with key-point markers — fixed-height row so the range
-              thumb centres exactly on the groove regardless of intrinsic size. */}
-          <div className="relative flex-1 self-stretch">
-            <div className="absolute inset-x-0 top-1/2 h-5 -translate-y-1/2">
-              {/* groove */}
-              <div className="bg-muted-foreground/20 pointer-events-none absolute inset-x-0 top-1/2 h-1.5 -translate-y-1/2 rounded-full" />
-              {/* progress fill — width driven imperatively from onTick/onScrub */}
-              <div
-                ref={fillRef}
-                className="bg-primary pointer-events-none absolute top-1/2 left-0 h-1.5 -translate-y-1/2 rounded-full"
-                style={{ width: '0%' }}
-              />
-              {/* interactive scrubber — fills the row, thumb sits on the groove */}
-              <input
-                ref={rangeRef}
-                type="range"
-                min={0}
-                max={1}
-                step={0.001}
-                defaultValue={0}
-                disabled={!ready}
-                onChange={(e) => onScrub(parseFloat(e.target.value))}
-                onPointerDown={() => {
-                  scrubbingRef.current = true;
+        {/* Timeline with key-point markers — fixed-height row so the range
+            thumb centres exactly on the groove regardless of intrinsic size. */}
+        <div className="relative flex-1 self-stretch">
+          <div className="absolute inset-x-0 top-1/2 h-5 -translate-y-1/2">
+            {/* groove */}
+            <div className="bg-muted-foreground/20 pointer-events-none absolute inset-x-0 top-1/2 h-1.5 -translate-y-1/2 rounded-full" />
+            {/* progress fill — width driven imperatively from onTick/onScrub */}
+            <div
+              ref={fillRef}
+              className="bg-primary pointer-events-none absolute top-1/2 left-0 h-1.5 -translate-y-1/2 rounded-full"
+              style={{ width: '0%' }}
+            />
+            {/* interactive scrubber — fills the row, thumb sits on the groove */}
+            <input
+              ref={rangeRef}
+              type="range"
+              min={0}
+              max={1}
+              step={0.001}
+              defaultValue={0}
+              disabled={!ready}
+              onChange={(e) => onScrub(parseFloat(e.target.value))}
+              onPointerDown={() => {
+                scrubbingRef.current = true;
+              }}
+              onPointerUp={endScrub}
+              onBlur={endScrub}
+              aria-label={labels.view}
+              className="coaster-scrubber absolute inset-0 z-10 h-full w-full cursor-pointer appearance-none bg-transparent"
+            />
+            {/* key-point markers — above the scrubber so they stay clickable */}
+            {keyPoints.map((k, i) => (
+              <button
+                key={i}
+                type="button"
+                title={labels.keys[k.label] ?? k.label}
+                onClick={() => {
+                  onScrub(k.t);
+                  endScrub();
                 }}
-                onPointerUp={endScrub}
-                onBlur={endScrub}
-                aria-label={labels.view}
-                className="coaster-scrubber absolute inset-0 z-10 h-full w-full cursor-pointer appearance-none bg-transparent"
-              />
-              {/* key-point markers — above the scrubber so they stay clickable */}
-              {keyPoints.map((k, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  title={labels.keys[k.label] ?? k.label}
-                  onClick={() => {
-                    onScrub(k.t);
-                    endScrub();
-                  }}
-                  className="group absolute top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 p-1.5"
-                  style={{ left: `${k.t * 100}%` }}
-                  aria-label={labels.keys[k.label] ?? k.label}
-                >
-                  <span className="border-background bg-primary/70 group-hover:bg-primary block h-2.5 w-2.5 rounded-full border" />
-                </button>
-              ))}
-            </div>
+                className="group absolute top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 p-1.5"
+                style={{ left: `${k.t * 100}%` }}
+                aria-label={labels.keys[k.label] ?? k.label}
+              >
+                <span className="border-background bg-primary/70 group-hover:bg-primary block h-2.5 w-2.5 rounded-full border" />
+              </button>
+            ))}
           </div>
         </div>
-      )}
+      </div>
 
       <style jsx>{`
         .coaster-scrubber::-webkit-slider-thumb {
