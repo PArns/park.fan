@@ -1,4 +1,5 @@
 import { api, ApiError } from './client';
+import { withAttractionCoordinates, withParkCoordinates } from './coordinates';
 import type {
   ParkWithAttractions,
   ParkAttraction,
@@ -327,9 +328,13 @@ async function fetchParkByGeoPath(
   fresh: boolean
 ): Promise<ParkWithAttractions | null> {
   try {
-    const park = await api.get<ParkWithAttractions>(
-      `/v1/parks/${continent}/${country}/${city}/${parkSlug}`,
-      fresh ? { cache: 'no-store' } : { next: { revalidate: PARK_REVALIDATE, tags: ['parks'] } }
+    // This endpoint sends its coordinates as decimal STRINGS while the type says
+    // `number | null`; `withParkCoordinates` is where that stops (see ./coordinates).
+    const park = withParkCoordinates(
+      await api.get<ParkWithAttractions>(
+        `/v1/parks/${continent}/${country}/${city}/${parkSlug}`,
+        fresh ? { cache: 'no-store' } : { next: { revalidate: PARK_REVALIDATE, tags: ['parks'] } }
+      )
     );
     // The ISR shell gets the aggressive trim (drops statistics.history — the biggest size-weighted
     // ISR-write chunk); the live no-store poll keeps the full per-attraction data for the cards.
@@ -415,9 +420,11 @@ export async function getAttractionByGeoPath(
   attractionSlug: string
 ): Promise<AttractionResponse | null> {
   try {
-    const attraction = await api.get<AttractionResponse>(
-      `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`,
-      { next: { revalidate: ATTRACTION_REVALIDATE, tags: ['attractions'] } }
+    const attraction = withAttractionCoordinates(
+      await api.get<AttractionResponse>(
+        `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`,
+        { next: { revalidate: ATTRACTION_REVALIDATE, tags: ['attractions'] } }
+      )
     );
     return leanAttractionForDetail(attraction);
   } catch (err) {
@@ -446,9 +453,11 @@ export async function getAttractionByGeoPathFresh(
   attractionSlug: string
 ): Promise<AttractionResponse | null> {
   try {
-    const attraction = await api.get<AttractionResponse>(
-      `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`,
-      { cache: 'no-store' }
+    const attraction = withAttractionCoordinates(
+      await api.get<AttractionResponse>(
+        `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`,
+        { cache: 'no-store' }
+      )
     );
     return leanAttractionForDetail(attraction);
   } catch (err) {

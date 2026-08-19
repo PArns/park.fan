@@ -50,8 +50,10 @@ export function LiveParkGrid({ continent, country, parks, className }: LiveParkG
     <div className={className}>
       {parks.map((park) => {
         const live = liveByParkId?.[park.id];
-        // Coordinates are typed as numbers but decimal columns have leaked through as strings
-        // before — coerce, and drop the distance rather than render "NaN km".
+        // These come from `/v1/discovery/*`, which sends real JSON numbers; it is the
+        // park-detail endpoints that send decimal strings, and those are parsed at the
+        // fetch boundary (lib/api/coordinates). Coerce anyway, and drop the distance
+        // rather than render "NaN km" if a payload ever arrives in the other shape.
         const lat = park.latitude == null ? NaN : Number(park.latitude);
         const lng = park.longitude == null ? NaN : Number(park.longitude);
         const distance =
