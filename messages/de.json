@@ -355,6 +355,7 @@
       "visibilityLabel": "Sicht",
       "snowLabel": "Schnee",
       "nowLabel": "Jetzt",
+      "compressedAxisHint": "Außerhalb der Öffnungszeiten ist die Zeitachse gestaucht.",
       "heatWarning": "Hitzewarnung – ab 35 °C (95 °F)",
       "weatherWarning": {
         "thunderstorm": "Unwetterwarnung: Gewitter",

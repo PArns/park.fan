@@ -59,6 +59,45 @@ reader standing in the wrong band pays up to 1.0 for them — but the card heigh
 to reserve runs from 94 to 508 px inside a single park, and the swap exists to keep hydration off
 a 1017 ms long task. Trading CLS for INP there needs its own round.
 
+## Unreleased – feat: the weather day chart is built around the park's opening hours
+
+The hourly chart gave the hours a visitor came for whatever share of the width they happened to
+occupy. For the median park in the catalogue — 10 h of opening hours — that was 42 %, and the night
+took the rest, which left room for three hour labels and two temperatures across the whole visit.
+
+The time axis is piecewise linear now: an open hour is drawn four times as wide as a closed one, so
+the median park's opening hours take 74 % of the box and an open hour is 7.4 % of the width instead
+of 4.17 %. Both kinks sit exactly on the dashed borders of the opening-hours band, and those borders
+now carry a door icon and the opening and closing time — a change of slope the eye cannot account
+for reads as weather, so it has to land on a line that is already there and says what it is.
+
+What the room buys: hour-by-hour ticks through the visit instead of every third hour, the
+temperature on arrival and on leaving, and up to three more readings where the curve actually does
+something (Douglas-Peucker with a tolerance that scales with the day's own range, so a day that just
+warms up steadily gets nothing extra). Rain got a second reading too — the two wettest runs of
+consecutive wet hours draw a rule along the baseline and tint their hour labels, because five 5 px
+drizzle bars in a compressed night read as noise, and unlike a tooltip a drawn rule works on a
+phone.
+
+The 53 parks with no OPERATING row for today keep the chart they had, down to the every-third-hour
+ticks: `buildDayScale` returns `null` and every formula reduces to the old one. The geometry moved
+out of the component into `lib/utils/weather-chart-axis.ts` with 48 unit tests
+(`pnpm test:weather-chart-axis`), the first of which is that identity.
+
+Two defects fell out on the way. The axis was a flex row of 24 equal cells, ~13 px wide on a phone,
+and German renders `"14 Uhr"` rather than `"14"` — so the labels wrapped and the chart came out
+154.5 px against the 143 px the weather card reserves for it, in four of six locales, on every park
+with weather. Every tick is out of flow and `whitespace-nowrap` now and it measures 143 px at every
+width. And the `/ui` fixture built its opening hours with `setHours` in the runner's timezone while
+telling the card `Europe/Berlin`, so the showcase's band sat two hours off — which nobody could have
+noticed before the band was the thing the axis is built around.
+
+Tick density is a container query on the chart itself rather than a viewport breakpoint: the
+showcase renders this card three to a row, so a 355 px chart at a 1280 px viewport would otherwise
+have been handed a desktop's worth of labels.
+
+Details, numbers and the two accepted costs: [weather day chart](features/weather-day-chart.md).
+
 ## Unreleased – fix: four more blog widgets pointed at a park that had been renamed
 
 `disney-magic-kingdom` was not the only one. The Toverland post carried `slug=toverland` on its

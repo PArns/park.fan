@@ -522,6 +522,7 @@
       "visibilityLabel": "Visibilidad",
       "snowLabel": "Nieve",
       "nowLabel": "Ahora",
+      "compressedAxisHint": "Fuera del horario de apertura, el eje de tiempo está comprimido.",
       "heatWarning": "Aviso de calor – desde 35 °C (95 °F)",
       "weatherWarning": {
         "thunderstorm": "Alerta meteorológica: tormenta eléctrica",
