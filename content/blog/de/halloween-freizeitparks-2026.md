@@ -77,7 +77,8 @@ am vollsten, und wann kommst du am entspanntesten durch?
 > mit den tagesaktuellen Daten und Preisen. Wo unten ein exaktes Datum steht,
 > war es zum Redaktionsschluss bestätigt; beim Rest gilt: kurz gegenchecken,
 > bevor du buchst.
->
+
+> [!NOTE]
 > **Stand 19. August 2026:** Walibi Holland hat heute den ersten Trailer
 > veröffentlicht und trennt Fright Nights und Spooky Days in diesem Jahr auf
 > verschiedene Tage. Termine stehen inzwischen auch bei Toverland, Movie Park,

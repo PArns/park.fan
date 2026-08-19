@@ -1,7 +1,7 @@
 import { ArrowRight, Newspaper } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
-import { listPosts } from '@/lib/blog/listing';
+import { listPostsByRecency } from '@/lib/blog/listing';
 import { BlogPostCard } from '@/components/blog/blog-post-card';
 import type { Locale } from '@/i18n/config';
 
@@ -20,7 +20,7 @@ interface BlogHeroPreviewProps {
  */
 export async function BlogHeroPreview({ locale }: BlogHeroPreviewProps) {
   const t = await getTranslations('blog');
-  const posts = listPosts(locale).slice(0, 3);
+  const posts = listPostsByRecency(locale).slice(0, 3);
   if (posts.length === 0) return null;
 
   return (

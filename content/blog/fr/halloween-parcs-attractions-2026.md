@@ -78,7 +78,8 @@ sort-on le plus tranquillement ?
 > l'événement, avec les dates et tarifs du jour. Là où une date précise figure
 > ci-dessous, elle était confirmée au moment du bouclage ; pour le reste :
 > vérifiez rapidement avant de réserver.
->
+
+> [!NOTE]
 > **Au 19 août 2026 :** Walibi Holland a sorti sa première bande-annonce
 > aujourd'hui et sépare cette année les Fright Nights et les Spooky Days sur des
 > jours différents. Toverland, Movie Park, Heide-Park, Parc Astérix et

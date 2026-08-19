@@ -77,7 +77,8 @@ least hassle?
 > up-to-the-day dates and prices. Where an exact date appears below, it was
 > confirmed as of press time; for the rest: double-check quickly before you
 > book.
->
+
+> [!NOTE]
 > **As of 19 August 2026:** Walibi Holland released its first trailer today and
 > is splitting Fright Nights and Spooky Days across different days this year.
 > Toverland, Movie Park, Heide-Park, Parc Astérix and Europa-Park have their

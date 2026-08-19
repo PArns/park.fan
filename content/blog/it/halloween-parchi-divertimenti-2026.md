@@ -76,7 +76,8 @@ comunicato stampa: quando c'è più gente, e quando te la cavi meglio?
 > con date e prezzi aggiornati. Dove qui sotto compare una data esatta, era
 > confermata al momento della chiusura; per il resto vale: controlla al volo
 > prima di prenotare.
->
+
+> [!NOTE]
 > **Al 19 agosto 2026:** Walibi Holland ha pubblicato oggi il primo trailer e
 > quest'anno separa Fright Nights e Spooky Days su giorni diversi. Toverland,
 > Movie Park, Heide-Park, Parc Astérix ed Europa-Park hanno le loro date. Da

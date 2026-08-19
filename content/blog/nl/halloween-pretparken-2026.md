@@ -76,7 +76,8 @@ en wanneer kom je er het ontspanst doorheen?
 > actuele data en prijzen. Waar hieronder een exacte datum staat, was die bij
 > het ter perse gaan bevestigd; voor de rest geldt: even nachecken voordat je
 > boekt.
->
+
+> [!NOTE]
 > **Stand 19 augustus 2026:** Walibi Holland heeft vandaag de eerste trailer
 > uitgebracht en haalt Fright Nights en Spooky Days dit jaar uit elkaar.
 > Toverland, Movie Park, Heide-Park, Parc Astérix en Europa-Park hebben hun data

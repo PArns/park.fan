@@ -347,3 +347,46 @@ export function parsePageParam(value: unknown, totalPages: number = Infinity): n
   if (Number.isFinite(totalPages) && n > totalPages) return totalPages;
   return n;
 }
+
+const POSTS_BY_RECENCY = new Map<Locale, readonly BlogListItem[]>();
+
+/**
+ * The same list as {@link listPosts}, but ordered by when a post last CHANGED
+ * (`updatedAt`, falling back to `date`) instead of when it was first published.
+ *
+ * The homepage strips are a "what's new here" surface, not an archive: a guide
+ * that got this season's confirmed dates written into it is news again, and
+ * under a pure `date` sort it stays buried behind every post published since.
+ * Every other surface keeps publication order on purpose — the blog index and
+ * the category/tag pages read as an archive, `feed.xml` would re-notify
+ * subscribers about an article they already have, and `blog-post-nav` walks
+ * neighbours in chronological order, which is the only order a "previous post"
+ * link means anything in.
+ *
+ * `featured` still wins, exactly as in `listPosts`, so pinning a post is not
+ * quietly undone by someone fixing a typo in a newer one.
+ *
+ * Frozen and memoised like every list here — copy before sorting.
+ */
+export function listPostsByRecency(requestedLocale: Locale): readonly BlogListItem[] {
+  const memo = POSTS_BY_RECENCY.get(requestedLocale);
+  if (memo) return memo;
+
+  const items = [...listPosts(requestedLocale)];
+  items.sort((a, b) => {
+    const aFeatured = a.frontmatter.featured ? 1 : 0;
+    const bFeatured = b.frontmatter.featured ? 1 : 0;
+    if (aFeatured !== bFeatured) return bFeatured - aFeatured;
+    const aDate = a.frontmatter.updatedAt || a.frontmatter.date;
+    const bDate = b.frontmatter.updatedAt || b.frontmatter.date;
+    if (aDate !== bDate) return aDate < bDate ? 1 : -1;
+    // Same touch date (a batch edit, or two posts published the same day):
+    // fall back to publication date so the order stays deterministic across
+    // renders rather than depending on the manifest's file order.
+    return a.frontmatter.date < b.frontmatter.date ? 1 : -1;
+  });
+
+  const frozen = Object.freeze(items);
+  POSTS_BY_RECENCY.set(requestedLocale, frozen);
+  return frozen;
+}

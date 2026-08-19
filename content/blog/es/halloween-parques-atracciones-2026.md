@@ -76,7 +76,8 @@ sale uno mejor parado?
 > evento con las fechas y precios del día. Donde abajo aparece una fecha exacta,
 > estaba confirmada al cierre de esta edición; para el resto: comprueba
 > rápidamente antes de reservar.
->
+
+> [!NOTE]
 > **A 19 de agosto de 2026:** Walibi Holland ha publicado hoy su primer tráiler
 > y este año separa las Fright Nights y los Spooky Days en días distintos.
 > Toverland, Movie Park, Heide-Park, Parc Astérix y Europa-Park ya tienen sus
