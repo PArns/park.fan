@@ -63,10 +63,15 @@ What else moved, and no longer does:
 
 Three of these were found by re-measuring this round's own diff, and two of them were damage it
 had done itself. `--late` was serving the captured document under `/__cls_split`: the client
-router re-resolved a different route than the HTML had been rendered for, threw React #418 and
-re-rendered on the client, so every `--late` number was taken from a partly client-rendered page.
-It serves the page's own pathname now and prints any console error it sees, because a harness
-that quietly measures the wrong thing is worse than no harness. And reserving the coaster
+router re-resolved a different route than the HTML had been rendered for and threw React #418,
+which re-renders the mismatched subtree on the client. Serving the page's own pathname fixes it,
+and the run prints any console error it sees now — but the honest size of this one is smaller
+than it first looked. Feeding the same bytes down both paths and diffing the results: the error
+fires only on the five routes with a hero header, never on a glossary term, park or ride page,
+the subtree React throws away is the header itself (a fixed 56 px in every case), and the scores
+match to four decimal places either way. So the two numbers this change was supposed to rescue —
+0.5425 / 0.4872 against Cloudflare's 0.538 — were never affected: they come from the glossary
+term page, which threw nothing. A latent hazard removed, not a wrong result corrected. And reserving the coaster
 player's transport row introduced a shift on devices without WebGL, where there had been none:
 the placeholder drew the row, then `failed` took it away again. The row is unconditional now.
 
