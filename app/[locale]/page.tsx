@@ -11,16 +11,19 @@ import { HeroBackground } from '@/components/layout/hero-background';
 import { HomepageFAQStructuredData } from '@/components/seo/homepage-faq-structured-data';
 import { PreferredSourcePrompt } from '@/components/common/preferred-source-prompt';
 import { NearbyParksCardSkeleton } from '@/components/parks/nearby-parks-card-skeleton';
+import { FavoritesEmptyState } from '@/components/parks/favorites-empty-state';
 
 const LocationBanner = nextDynamic(
   () => import('@/components/common/location-banner').then((m) => ({ default: m.LocationBanner })),
   { loading: () => null, ssr: true }
 );
 
+// `loading` is a real Suspense fallback — see the note in page-bottom-sections.tsx. With
+// `() => null` the band arrived after the first paint and pushed the page tail down.
 const FavoritesSection = nextDynamic(
   () =>
     import('@/components/parks/favorites-section').then((m) => ({ default: m.FavoritesSection })),
-  { loading: () => null, ssr: true }
+  { loading: () => <FavoritesEmptyState textHidden />, ssr: true }
 );
 
 const NearbyParksCard = nextDynamic(

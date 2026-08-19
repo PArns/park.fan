@@ -1,4 +1,5 @@
 import { Skeleton } from '@/components/ui/skeleton';
+import { ParkCardNearbySkeleton } from '@/components/parks/park-card-nearby-skeleton';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { AttractionCardSkeleton } from '@/components/parks/attraction-card-skeleton';
 
@@ -11,15 +12,26 @@ import { AttractionCardSkeleton } from '@/components/parks/attraction-card-skele
  * (minimal CLS). Pure, data-free Server Components rendered into the shell.
  */
 
-/** Icon + title line + intro line — matches every section's `mb-2 / mb-8` header. */
+/**
+ * Icon + title line + intro line — matches the `mb-2 / mb-8` header that the global-stats,
+ * platform-stats and ML sections share.
+ *
+ * The heights are the real ones: a `text-xl` title is a 28 px line, not 24, and the intro is a
+ * 20 px `<p>`, not a 16 px block. The tag matters as much as the height — a diff of first paint
+ * against settled pairs children by tag, and a `<div>` standing in for a `<p>` makes the two
+ * lists line up one place out, which reports the section's grid as a several-hundred-pixel
+ * insertion.
+ */
 function SectionHeaderSkeleton() {
   return (
     <>
       <div className="mb-2 flex items-center gap-2">
         <Skeleton className="h-5 w-5 rounded" />
-        <Skeleton className="h-6 w-48 max-w-[60%]" />
+        <Skeleton className="h-7 w-48 max-w-[60%]" />
       </div>
-      <Skeleton className="mb-8 h-4 w-72 max-w-full" />
+      <p className="mb-8">
+        <Skeleton as="span" className="block h-5 w-72 max-w-full" />
+      </p>
     </>
   );
 }
@@ -36,47 +48,6 @@ function StatsCardSkeleton() {
         <Skeleton className="mt-1.5 h-3 w-32" />
       </CardContent>
     </Card>
-  );
-}
-
-/**
- * Park-card placeholder matching the default <ParkCard> footprint
- * (full-bleed photo + top/bottom glass panels, min-h ≈ 360px).
- */
-function ParkCardSkeleton() {
-  return (
-    <article
-      className="relative flex min-h-[360px] flex-col overflow-hidden rounded-[20px]"
-      style={{ boxShadow: 'var(--pk-card-shadow)' }}
-    >
-      <div className="absolute inset-0 z-0">
-        <Skeleton className="h-full w-full rounded-none" />
-      </div>
-      <div className="absolute top-3 right-3 z-[4]">
-        <Skeleton className="h-[34px] w-[34px] rounded-full" />
-      </div>
-      {/* Top panel */}
-      <div className="relative z-[3] shrink-0 bg-black/30 px-4 py-3.5">
-        <Skeleton className="h-5 w-36 max-w-[80%] opacity-60" />
-        <Skeleton className="mt-2 h-3 w-24 opacity-40" />
-        <div className="mt-2.5 flex gap-1.5">
-          <Skeleton className="h-5 w-20 rounded-full opacity-60" />
-          <Skeleton className="h-5 w-16 rounded-full opacity-40" />
-        </div>
-      </div>
-      <div className="relative z-[2] flex-1" />
-      {/* Bottom panel */}
-      <div className="relative z-[3] shrink-0 bg-black/30 px-4 py-3">
-        <div className="flex items-end justify-between gap-3">
-          <Skeleton className="h-3 w-20 opacity-40" />
-          <Skeleton className="h-9 w-12 opacity-60" />
-        </div>
-        <div className="mt-2.5 flex items-center gap-2 border-t border-white/10 pt-2.5">
-          <Skeleton className="h-3 w-24 opacity-40" />
-          <Skeleton className="h-3 w-16 opacity-40" />
-        </div>
-      </div>
-    </article>
   );
 }
 
@@ -105,10 +76,10 @@ export function GlobalStatsSkeleton() {
           {/* Row 2: most/least crowded parks */}
           <div className="mb-3 grid gap-4 sm:grid-cols-2">
             <StatCardRow>
-              <ParkCardSkeleton />
+              <ParkCardNearbySkeleton />
             </StatCardRow>
             <StatCardRow>
-              <ParkCardSkeleton />
+              <ParkCardNearbySkeleton />
             </StatCardRow>
           </div>
           {/* Row 3: longest/shortest wait rides */}
@@ -142,14 +113,24 @@ export function FeaturedParksSkeleton() {
   return (
     <section className="px-4 py-12">
       <div className="container mx-auto">
-        <SectionHeaderSkeleton />
+        {/* This one section heads itself with a frosted pill instead of the bare row the
+            others use (see FeaturedParksSlot), and the pill is 76 px against the row's 40.
+            One child, same nesting, same height. */}
+        <div className="bg-background/70 mb-8 w-fit rounded-xl px-4 py-3 backdrop-blur-md">
+          <div className="flex items-center gap-2">
+            <Skeleton className="h-5 w-5 rounded" />
+            <Skeleton className="h-7 w-44 max-w-[60%]" />
+          </div>
+          <Skeleton className="mt-1 h-5 w-64 max-w-full" />
+        </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {Array.from({ length: 6 }).map((_, i) => (
-            <ParkCardSkeleton key={i} />
+            <ParkCardNearbySkeleton key={i} />
           ))}
         </div>
         <div className="mt-6 flex justify-center">
-          <Skeleton className="h-4 w-32" />
+          {/* The live CTA is a `text-sm` link: a 20 px line, not 16. */}
+          <Skeleton className="h-5 w-32" />
         </div>
       </div>
     </section>

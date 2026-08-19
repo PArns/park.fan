@@ -135,13 +135,24 @@ export function ParkHeaderStats({
 
   // Today's DAILY rating — the only crowd value comparable with the forecast badge next to it
   // (same statistic, same baseline). Shares the one-day /calendar query below, so no request of
-  // its own. Reserve the slot as soon as the park is openish: the value arrives late (loads-last)
-  // and letting the metric appear from nothing would push "Andrang jetzt" down after paint.
+  // its own.
   const crowdToday = useTodayCrowdLevel({ continent, country, city, parkSlug, timezone });
-  // Hide the whole metric once the query settled without a value — a closed park, one we cannot
-  // rate, or a morning too thin to read. An empty caption over a dash would claim we measured
-  // something and got "nothing".
-  const showCrowdToday = isOpenish && !(crowdToday.settled && !crowdToday.level);
+  // Shown only once there IS a value. The reservation this replaces was meant to keep "Andrang
+  // jetzt" from being pushed down when the (loads-last) value arrives, but it was gated on two
+  // things that themselves arrive late: `isOpenish` flips with the live data, and the slot was
+  // taken away again by `settled && !level`. On a park we cannot rate — Phantasialand this
+  // morning, and it is the common case — the header therefore went
+  //
+  //     hidden (63px) -> shown with a Pending pill (142px) -> hidden again (63px)
+  //
+  // measured at 277ms / 709ms / 2474ms: two 79px jumps at the very top of the page, where every
+  // visitor is looking, and everything below the header moved with them both times.
+  //
+  // Now: no value, no slot, no movement. A park that does get a value still grows once when it
+  // lands, which is the honest price — reserving the band up front would leave 79px of blank
+  // header on every park that never fills it. `isOpenish` stays as a guard so a closed park does
+  // not display a daily rating, but it no longer decides whether the box exists.
+  const showCrowdToday = isOpenish && crowdToday.level != null;
 
   const browserNow = useBrowserNow(null);
   const { data: calendar } = useParkBestDaysCalendar({

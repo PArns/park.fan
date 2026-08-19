@@ -12,7 +12,6 @@ import { GlossaryBackground } from '@/components/glossary/glossary-background';
 import { GlossaryStructuredData } from '@/components/seo/glossary-structured-data';
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { PageBottomSections } from '@/components/common/page-bottom-sections';
-import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import type { Locale } from '@/i18n/config';
 import { RouteMessages } from '@/i18n/route-messages';
@@ -179,14 +178,24 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
             /* The other half of the ride ↔ glossary link: every curated ride that
              features this term. Handed in as a slot so it renders inside the
              detail's own column — aligned with the definition card instead of
-             as a full-width stripe below it — while the Suspense boundary keeps
-             it off the critical path. Renders nothing for the concept terms no
-             ride profile references. */
-            rides={
-              <Suspense fallback={null}>
-                <GlossaryTermRides termId={term.id} />
-              </Suspense>
-            }
+             as a full-width stripe below it. Renders nothing for the concept
+             terms no ride profile references (43 % of the 267 terms).
+
+             Awaited inline, with no Suspense boundary: this route is prerendered
+             via `generateStaticParams` and the project runs no PPR, so the
+             prerender waits for every boundary anyway — the resolved rides markup
+             was already in the shipped .html, just sorted to the end of the byte
+             stream and grafted in afterwards by `$RC()`. The boundary deferred
+             nothing and bought nothing; what it did was drop 396–1233 px into the
+             column ~2 s after first paint, pushing the "back to dictionary" button
+             (`div.pb-2`) and the whole page tail down. Cloudflare RUM reports that
+             button by name, and a splice test that moves the block back to its
+             placeholder measures CLS 0.0000 instead of 0.1176.
+
+             Nothing to pad it with either: `getAttractionsForTerm` returns []
+             on error, and 115 of 267 terms have no rides at all, so a fixed
+             fallback height would tear a permanent hole in 43 % of the glossary. */
+            rides={<GlossaryTermRides termId={term.id} />}
           />
         </PageContainer>
 

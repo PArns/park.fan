@@ -2,6 +2,8 @@ import { Suspense } from 'react';
 import nextDynamic from 'next/dynamic';
 import { FeaturedParksSlot } from '@/components/home/featured-parks-slot';
 import { FeaturedParksSkeleton } from '@/components/home/home-skeletons';
+import { FavoritesEmptyState } from '@/components/parks/favorites-empty-state';
+import { NearbyParksCardSkeleton } from '@/components/parks/nearby-parks-card-skeleton';
 
 const NearbyParksCard = nextDynamic(
   () =>
@@ -9,21 +11,25 @@ const NearbyParksCard = nextDynamic(
       default: m.NearbyParksCard,
     })),
   {
-    loading: () => (
-      <section className="bg-card min-h-[200px] rounded-xl border py-4">
-        <div className="bg-muted mx-4 h-40 animate-pulse rounded-lg" />
-      </section>
-    ),
+    // The card's own skeleton, at the same `mt-0` the card is rendered with below. A
+    // hand-rolled 200 px box here was a third height for the same slot, on top of the two
+    // the card itself goes through.
+    loading: () => <NearbyParksCardSkeleton className="mt-0" />,
     ssr: true,
   }
 );
 
+// `loading` is a real Suspense fallback: `next/dynamic` is `React.lazy` + `<Suspense>`, so
+// `() => null` shipped the whole band inside a `<div hidden id="S:…">` at the end of the
+// document and grafted it in afterwards — 232 px landing under the reader on every page
+// this module is on. The placeholder is the section's own empty state, which is what
+// almost every visitor here ends up with anyway.
 const FavoritesSection = nextDynamic(
   () =>
     import('@/components/parks/favorites-section').then((m) => ({
       default: m.FavoritesSection,
     })),
-  { loading: () => null, ssr: true }
+  { loading: () => <FavoritesEmptyState textHidden />, ssr: true }
 );
 
 interface PageBottomSectionsProps {

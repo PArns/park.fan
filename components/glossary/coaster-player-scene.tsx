@@ -276,23 +276,36 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
         )}
       </div>
 
-      {/* Transport bar */}
-      {ready && !failed && (
+      {/* Transport bar — 57 px (border + 2×10 px padding + 36 px buttons).
+
+          Mounted from the first render, not from `ready`: gated on `ready` it
+          appeared once the scene had booted and pushed everything below the
+          player down by those 57 px, on all 42 term pages that carry one. The
+          dynamic-import placeholder in `coaster-player.tsx` reserves the same
+          row, so the height holds from the first paint through the chunk
+          arriving to the scene going live.
+
+          `failed` is still a real hole: a device without WebGL loses the bar
+          again. That is the rarer case, and unlike this one it has controls
+          that would do nothing. */}
+      {!failed && (
         <div className="bg-background/80 flex items-center gap-3 border-t px-3 py-2.5 backdrop-blur">
           <button
             type="button"
             onClick={onToggle}
+            disabled={!ready}
             aria-label={playing ? labels.pause : labels.play}
-            className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors disabled:opacity-50"
           >
             {playing ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4 translate-x-px" />}
           </button>
           <button
             type="button"
             onClick={onReplay}
+            disabled={!ready}
             aria-label={labels.replay}
             title={labels.replay}
-            className="text-muted-foreground hover:text-foreground inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors"
+            className="text-muted-foreground hover:text-foreground inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors disabled:opacity-50"
           >
             <RotateCcw className="h-4 w-4" />
           </button>
@@ -317,6 +330,7 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
                 max={1}
                 step={0.001}
                 defaultValue={0}
+                disabled={!ready}
                 onChange={(e) => onScrub(parseFloat(e.target.value))}
                 onPointerDown={() => {
                   scrubbingRef.current = true;

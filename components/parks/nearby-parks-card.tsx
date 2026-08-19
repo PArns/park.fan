@@ -65,19 +65,20 @@ export function NearbyParksCard({ className }: { className?: string }) {
       (dataError as Error).message.toLowerCase().includes('geoip') ||
       (dataError as Error).message.includes('400'));
 
-  // Before mount nothing is known yet — not the permission, not the coordinates — and the
-  // six-card skeleton is a bet that the visitor will grant location. For a first-time
-  // visitor that bet loses: the skeleton is replaced by the (much shorter) prompt below and
-  // the homepage collapses by ~576px, which `pnpm measure:cls` reported as its largest
-  // in-view shift. So the pre-mount box is the SHORT outcome, the one most visitors get.
-  // Once mounted we know enough to be optimistic: a visitor who is actually loading data
-  // has granted location, and for them the skeleton reserves the right thing.
-  if (!mounted) {
-    return <div className={cn('min-h-[200px]', TOP_SPACING, className)} aria-hidden="true" />;
-  }
-  // Mirrors the live "nearby parks" layout exactly (shared skeleton) so the swap to real
-  // parks doesn't shift layout.
-  if (isLoading) {
+  // Mounting reveals nothing about where the visitor is, so the pre-mount box and the
+  // loading skeleton have to be the SAME height — anything else is a shift that buys no
+  // information. They briefly weren't: a short `min-h-[200px]` box was introduced here
+  // against a measurement taken from 127.0.0.1, where `/api/nearby` has no public IP to
+  // geolocate, answers `userLocation: {0, 0}` with an empty list, and every run therefore
+  // settled on the short "no parks near you" state. Give the harness a real client IP
+  // (`pnpm measure:cls` sends one now) and the same page settles on the six-card list
+  // instead: the short box then cost +683 px desktop / +291 px mobile on the homepage,
+  // the largest in-view shift on it.
+  //
+  // So the placeholder is the six-card skeleton again, in both phases. It is still a bet —
+  // the list is 883 px from a German IP, 503 px from a US one and 250 px when geolocation
+  // fails — but it is the bet on the outcome an actual visitor gets.
+  if (!mounted || isLoading) {
     return <NearbyParksCardSkeleton className={className} />;
   }
 

@@ -4,6 +4,61 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: six layout shifts, two of which the harness had been unable to see
+
+`pnpm measure:cls` diffs a page's first-paint layout against its settled one. That is good at
+finding candidates and bad at two things, and both showed up here.
+
+**It could not say what a browser would score.** CPU throttling was the stand-in, and it is a
+coin toss: the same page under the same 4× throttle measured 0.000 and 0.088 in two consecutive
+runs. `--late` replaces it. It fetches the document once, finds where React parked the resolved
+Suspense content (`<div hidden id="S:1">` near the end of the body), and re-serves it through a
+local proxy that flushes the shell immediately and the rest 1.5 s later — no throttling at all,
+which is the shape of a cold start whose sub-request missed cache. Under that the glossary term
+page scored 0.5425 desktop and 0.4872 mobile against Cloudflare's field value of 0.538, run after
+run. `--scroll=<y>` parks the reader, because a shift only counts what is in view: the same page
+reads 0.0000 from the top on a phone.
+
+**It was browsing from 127.0.0.1.** `/api/nearby` had no public IP to geolocate, answered
+`userLocation: {0, 0}` with an empty park list, and every run therefore settled on the card's
+short "no parks near you" state. A placeholder had been tuned against that. `pnpm measure:cls`
+sends a real `x-forwarded-for` now (`--ip=` to change it), the card settles on the six-card list
+like it does for a visitor, and the short box turns out to cost +683 px desktop / +291 px mobile
+on the homepage — its largest in-view shift. The six-card skeleton is back, in both the pre-mount
+and the loading phase: mounting reveals nothing about where the visitor is, so those two have no
+business being different heights.
+
+What else moved, and no longer does:
+
+- **The park header shrank twice before settling.** `showCrowdToday` was true while the daily
+  crowd query was unsettled and false once it settled without a value, so on a park nobody can
+  rate — Phantasialand most mornings — the header went 63 → 142 → 63 px at 277 / 709 / 2474 ms.
+  Two 79 px jumps at the very top of the page. It now shows the slot only once there is a value.
+- **The glossary rides section.** `<Suspense fallback={null}>` on a prerendered route defers
+  nothing: the project runs no PPR, so the prerender waits anyway and the resolved markup was
+  already in the shipped `.html`, sorted to the end of the byte stream. All the boundary did was
+  drop 396–1463 px into the column two seconds after paint and push the "back to dictionary"
+  button — the element Cloudflare names — down with the rest of the page. Awaited inline now.
+  Padding it was not an option: 115 of the 267 terms have no rides at all.
+- **The favorites band, on the homepage, all five blog routes and every glossary term.**
+  `next/dynamic` is `React.lazy` plus `<Suspense>`, so `loading: () => null` was a
+  `fallback={null}` in disguise and the whole 232 px band arrived after the first paint. It
+  reserves its empty state now, with the two lines held `invisible` until the cookie has been
+  read, so a visitor who does have favorites is not told for a beat that they have none.
+- **The coaster player's transport bar** appeared when the three.js scene booted, on the 42 term
+  pages that carry one. 57 px, now mounted from the first render and disabled until ready.
+- **Park-card placeholders were one height at every breakpoint.** `ParkCard` hides its photo row
+  below `sm` and is less than half as tall there; the placeholder stayed at 360 px. On a phone
+  the featured-parks grid therefore collapsed by 1284 px when the real cards landed. The
+  placeholder is one shared component now, built from the card's measured rows: 100 px top panel,
+  photo row 0 below `sm` and 220 px above, 45 px bottom panel.
+
+Left alone on purpose: the attraction grid that swaps in when `TabsWithHash` hydrates (+9187 px
+mobile on Universal Studios Singapore) and `LazyMount`'s `rowHeight: 340`. Both are real — a
+reader standing in the wrong band pays up to 1.0 for them — but the card height they would have
+to reserve runs from 94 to 508 px inside a single park, and the swap exists to keep hydration off
+a 1017 ms long task. Trading CLS for INP there needs its own round.
+
 ## Unreleased – fix: four more blog widgets pointed at a park that had been renamed
 
 `disney-magic-kingdom` was not the only one. The Toverland post carried `slug=toverland` on its
