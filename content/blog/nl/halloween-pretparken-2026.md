@@ -2,7 +2,7 @@
 title: "Halloween 2026 in Europa's pretparken: horrornachten en mazes"
 translationKey: halloween-parks-2026
 date: '2026-07-17'
-updatedAt: '2026-07-25'
+updatedAt: '2026-08-19'
 author: patrick
 mode: published
 excerpt: >-
@@ -76,6 +76,12 @@ en wanneer kom je er het ontspanst doorheen?
 > actuele data en prijzen. Waar hieronder een exacte datum staat, was die bij
 > het ter perse gaan bevestigd; voor de rest geldt: even nachecken voordat je
 > boekt.
+>
+> **Stand 19 augustus 2026:** Walibi Holland heeft vandaag de eerste trailer
+> uitgebracht en haalt Fright Nights en Spooky Days dit jaar uit elkaar.
+> Toverland, Movie Park, Heide-Park, Parc Astérix en Europa-Park hebben hun data
+> rond. Van Walibi Belgium en Bobbejaanland is nog niets gehoord, en welke mazes
+> er in Soltau en welke experiences er in Biddinghuizen komen, is ook nog open.
 
 ## De grote horror-events ('s avonds, vaak vanaf 16)
 
@@ -125,6 +131,12 @@ apart geboekt worden**. Reken erop in je budget.
 
 [Movie Park Germany](ref:movie-park-germany?full)
 
+Wie niet tot eind september wil wachten: Bottrop heeft een van zijn
+Halloween-huizen deze zomer gewoon eerder opengegooid. **Slaughterhouse** draait
+onder het label “Summerween” op alle zaterdagen en zondagen tot en met 30
+augustus, € 5 per persoon. Een spookhuis bij dertig graden en daglicht is een
+ervaring op zich, en geen slechtere.
+
 Data, maze-line-up en ticketniveaus staan op de
 [officiële Halloween-Horror-Festival-pagina](https://www.movieparkgermany.de/en/halloween).
 
@@ -168,6 +180,12 @@ de **Shoxter Pass** met priority-toegang (vanaf € 96) tot de **Psycho Pass**
 voor doorgewinterden (vanaf 18, all-inclusive, € 349). Sommige extra prikkels
 kosten bovenop: de vollecontact-experience THE HOTEL (€ 29), de club THE
 FORBIDDEN (€ 10) en een korte horror-VR (€ 6).
+
+Voor het jubileum keert de **Vampire's Club** terug, en wel voor precies vier
+nachten: 25 en 26 september, 2 en 3 oktober. Op die avonden komt hij in de
+plaats van THE FORBIDDEN, en staat Marc Terenzi er zelf op het podium. Na ruim
+een decennium afstand tussen hem en het event is dat het soort voetnoot waar
+vooral de mensen blij van worden die er in 2007 bij waren.
 
 Wie er eenmaal binnen is geweest, beschrijft Traumatica minder als
 spookhuisrondgang dan als complete parallelwereld: mistige steegjes waarin hele
@@ -236,9 +254,38 @@ gewoon mogen.
 Kortom: als je “Halloween in Walibi” zegt, bepaal dan eerst welk niveau je
 bedoelt. De weg van Spooky Days naar een experience is die van “pompoen
 snijden” naar “aan een slagershaak gehangen en afgestempeld”. Welke experiences
-er in 2026 bij zijn, maakt het park deze zomer bekend; de drie hierboven zijn de
+er in 2026 bij zijn, moet het park nog zeggen; de drie hierboven zijn de
 klassiekers waarom Walibi berucht is. En dat is momenteel de interessantste hoek
 van het Europese Halloween, waar geen nog zo groot lopendebandevent langs komt.
+
+Een deel van die keuze neemt het park je in 2026 trouwens uit handen, want de
+twee niveaus vallen voor het eerst op **verschillende dagen**. Tot en met 2025
+deelden ze dezelfde datum, overdag pompoen en 's avonds kettingzaag, en dat was
+niet goed voor de gezinnen en niet voor de acteurs, die tussen twee totaal
+verschillende publieksgroepen moesten schakelen. De **Spooky Days** voor zes-
+tot twaalfjarigen liggen nu op **14, 15, 19, 20 en 21 oktober**, midden in de
+Nederlandse herfstvakantieweek. De **Fright Nights** krijgen daarvoor alle
+weekenden tussen **3 oktober en 1 november**, plus vrijdag de 16e, donderdag de
+22e en vrijdag de 23e. Halloween zelf valt in 2026 op een zaterdag en zit er dus
+gewoon bij. Early-birdtickets kosten € 32,50 tot € 38,50, advies nog steeds
+vanaf 16 jaar.
+
+De trailer staat sinds vandaag online, en is op een opmerkelijke manier
+ingetogen. “Back to Reality” laat een minuut lang een uitgesproken aardige Eddie
+zien: de horrorclown drukt een jongetje bij Speed of Sound een roze knuffel in
+handen, deelt ijs en suikerspin uit, poseert lachend voor foto's en danst door
+het park tot hij in een zee van roze knuffels staat. Dan wordt hij badend in het
+zweet wakker in zijn hol, bijl nog in de hand. “Relax, het is bijna Halloween.”
+
+https://www.youtube.com/watch?v=fFPGRQAs-Xk
+
+De toon snap je beter als je de spot van vorig jaar kent. “Souls for Sale” liet
+in 2025 een doodsbange vrouw zien die als “object 666” werd geveild en daarna in
+een versnipperaar viel. Met **889 klachten** werd dat de meest beklaagde
+Nederlandse reclame van het jaar; de Reclame Code Commissie zag de menselijke
+waardigheid geschonden, Walibi haalde de spot op 21 augustus 2025 offline. Een
+jaar later deelt dezelfde clown suikerspinnen uit en slaapt slecht. Je kunt dat
+voorzichtig noemen of slim. Waarschijnlijk klopt allebei.
 
 [Walibi Holland](ref:walibi-holland?full)
 
@@ -265,6 +312,12 @@ weinig licht en voortdurend het onbehaaglijke gevoel dat er zo iets gebeurt.
 Voor iedereen die de grens tussen “film kijken” en “in de film staan” graag
 vervaagt, is dit een van de meest lonende adressen over de grens.
 
+Een kalender voor 2026 heeft Kasterlee nog niet gepubliceerd. Het enige
+Halloween-teken van leven deze zomer was een terugtrekkende beweging: het
+spookhuis **Bazaar Bizarre** zou bij wijze van uitzondering in juli en augustus
+meedraaien, de voorverkoop liep zo slecht dat het park het eind juli weer
+afblies. Bottrop, uit dezelfde parkengroep, zette zijn zomerspookhuis wel door.
+
 [Bobbejaanland](ref:bobbejaanland?full)
 
 ```gallery-widget folder=/media/halloween-2026/impressionen-darsteller heading="De acteurs"
@@ -273,10 +326,10 @@ vervaagt, is dit een van de meest lonende adressen over de grens.
 
 ### Toverland: zeven hectare mais, en vooral niet stilstaan
 
-[Toverland](ref:attractiepark-toverland) in het Nederlandse Sevenum (voor
-velen uit NRW het dichtstbijzijnde Beneluxpark) bouwt zijn **Halloween Nights**
-jaar na jaar uit. De datum staat: **3 oktober tot 7 november 2026** (de
-onschuldigere “Halloween Days” lopen overdag parallel), in totaal zes scare
+[Toverland](ref:attractiepark-toverland) in het Nederlandse Sevenum (voor velen
+uit NRW het dichtstbijzijnde Beneluxpark) bouwt zijn **Halloween Nights** jaar
+na jaar uit. De datum staat: **13 avonden van 3 oktober tot 7 november 2026**
+(de onschuldigere “Halloween Days” lopen overdag parallel), in totaal zes scare
 zones en zes haunted experiences, waaronder de in 2025 geïntroduceerde
 **“Unmasked”**, een experience met eigen scare zone.
 
@@ -338,12 +391,16 @@ een harde leeftijdsgrens is er niet, voor de kleintjes liggen er zelfs
 Ibilaw-avonden is de reguliere parktoegang al je ticket, alleen de spookhuizen
 komen erbij.
 
-De precieze data voor 2026 maakt Waver zoals de meeste parken deze zomer
-bekend; ter oriëntatie: in 2025 waren het **18 Ibilaw-avonden** (11 oktober tot
-2 november), op zo'n tien daarvan liep het park tot 22 uur. Compact terrein,
-korte loopafstanden tussen de schrik, acteurs die de nabijheid zoeken. En
-praktisch bovendien: [Bobbejaanland](ref:bobbejaanland) ligt ruim een uur
-rijden verderop, een dubbel griezelweekend schrijft zichzelf daarmee bijna.
+Op de Ibilaw-pagina staat half augustus nog altijd niet meer dan “stay tuned”,
+Waver neemt dus de tijd. Ter oriëntatie: in 2025 waren het **18 Ibilaw-avonden**
+(11 oktober tot 2 november), op zo'n tien daarvan liep het park tot 22 uur.
+Nieuw was toen het spookhuis **Aquarium** in het havengebied Dock World, plus de
+scare zones Innocence, Basement en Arachnophobia. Het zou een verrassing zijn
+als daarvan in 2026 iets verdwijnt.
+
+Compact terrein, korte loopafstanden tussen de schrik, acteurs die de nabijheid
+zoeken. En praktisch bovendien: [Bobbejaanland](ref:bobbejaanland) ligt ruim een
+uur rijden verderop, een dubbel griezelweekend schrijft zichzelf daarmee bijna.
 
 [Walibi Belgium](ref:walibi-belgium?full)
 
@@ -355,8 +412,8 @@ de ontscherpte versie: griezelen als sfeer, niet als shocktherapie.
 ### Heide-Park: Halloween met keuzemogelijkheid
 
 Het [Heide-Park](ref:heide-park) in Soltau doet allebei en laat de dosis aan
-jou. Halloween loopt **van 10 tot 31 oktober 2026**, op **vijf dagen met
-verlengde opening tot 21 uur** (za 10, za 17, za 24, vr 30 en za 31 oktober):
+jou. Halloween loopt **van 10 tot 31 oktober 2026**, op **vijf dagen van 12 tot
+21 uur** (za 10, za 17, za 24, vr 30 en za 31 oktober):
 overdag gezinsvriendelijke decoratie, 's avonds een scare zone en **drie
 horrormazes vanaf 16**, waarvoor telkens een eigen tijdslotticket nodig is
 (bundel van drie € 22). Welk mazetrio er in 2026 aantreedt, bevestigt Soltau
@@ -377,8 +434,10 @@ Actuele data en leeftijdsindicaties:
 Wie het uitje groter opzet, rijdt naar Frankrijk: [Parc Astérix](ref:parc-asterix)
 ten noorden van Parijs trekt zijn **Peur sur le Parc** van **3 oktober tot 8
 november 2026** door, overdag gezinsvriendelijk, op twaalf geselecteerde
-avonden als **Nocturnes** met flink meer spanning (eigen Nocturne-ticket vanaf
-€ 53). Tot de nieuwigheden van 2026 horen de angstzone **“Le Souk”** en de
+avonden als **Nocturnes** met flink meer spanning. Die staan inmiddels vast: 10,
+16, 17, 21, 22, 23, 24, 28, 29, 30 en 31 oktober plus 7 november, telkens van 19
+tot 1 uur en met een eigen ticket (€ 53 online, € 58 aan de kassa). Tot de
+nieuwigheden van 2026 horen de angstzone **“Le Souk”** en de
 nachtelijke wandeling **“La Forêt Sans Retour”**. Het griezelen komt hier met
 een Gallische knipoog: ergens tussen twee menhirs ligt gegarandeerd ook een
 everzwijn op de loer.
@@ -426,6 +485,11 @@ dodendansende opvolger van het legendarische _Spookslot_, dat na 44 jaar in
 de Themed Entertainment Association, zeg maar de Oscar van de branche. Wie het
 gezellig-huiveringwekkende herfstgevoel zoekt in plaats van de adrenalineschok,
 en wie kinderen bij zich heeft, zit hier goed.
+
+Twee dingen voor de planning: **Danse Macabre staat van 21 september tot en met
+2 oktober 2026 stil voor onderhoud**, en is dus op tijd terug voor de
+herfstvakantie. In die vakantie zelf zijn Max & Moritz en de Gondoletta dicht
+van 26 tot en met 30 oktober, en Baron 1898 van 5 tot en met 9 oktober.
 
 [Efteling](ref:efteling?full)
 
