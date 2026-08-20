@@ -13,6 +13,7 @@ import {
 } from '../../blog-editor/_components/park-ride-picker';
 import { FocusEditor } from './focus-editor';
 import { Chip, Field, Notice, Section } from './panel-ui';
+import { OpenInEditor } from '../../_ui/open-in-editor';
 import { fitForCommit } from '../_lib/upload-transport';
 
 /** Shared field styling — the admin has no form primitives of its own. */
@@ -657,6 +658,16 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
                 {draft.parkPath}
               </p>
             )}
+
+            {/* The way back. Without it the admin is one-directional: a ride's
+                editor lists its photos, and a photo could not name the ride it
+                is of. `parkPath` is `continent/country/city`, and the city is
+                what disambiguates a slug two parks share. */}
+            <OpenInEditor
+              parkSlug={draft.park}
+              rideSlug={draft.ride}
+              citySlug={draft.parkPath?.split('/')[2] ?? null}
+            />
 
             <Field label="Area">
               <input

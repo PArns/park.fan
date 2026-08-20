@@ -9,6 +9,7 @@ import {
   LogOut,
   MapPin,
   RefreshCw,
+  RollerCoaster,
   Rows3,
   type LucideIcon,
 } from 'lucide-react';
@@ -24,6 +25,14 @@ import {
 import { Kbd } from '../_ui/primitives';
 import { adminFetch } from '../_lib/api';
 import type { AdminParkListItem } from '../_lib/types';
+
+interface RideHit {
+  id: string;
+  name: string;
+  upstreamName: string;
+  slug: string;
+  park: { id: string; name: string } | null;
+}
 import { visibleGroups } from './nav';
 import { useSession } from './session';
 
@@ -62,6 +71,7 @@ export function CommandPalette({
   const { identity, signOut } = useSession();
   const [query, setQuery] = useState('');
   const [parks, setParks] = useState<AdminParkListItem[]>([]);
+  const [rides, setRides] = useState<RideHit[]>([]);
   const [searching, setSearching] = useState(false);
 
   const groups = useMemo(() => visibleGroups(identity.role), [identity.role]);
@@ -85,16 +95,31 @@ export function CommandPalette({
     const timer = setTimeout(() => {
       if (term.length < 2) {
         setParks([]);
+        setRides([]);
         setSearching(false);
         return;
       }
       setSearching(true);
-      adminFetch<{ parks: AdminParkListItem[] }>(
-        `/api/admin/content/parks?q=${encodeURIComponent(term)}&limit=8`,
-        { signal: controller.signal }
-      )
-        .then((result) => setParks(result.parks ?? []))
-        .catch(() => setParks([]))
+      const encoded = encodeURIComponent(term);
+      // Both in parallel: an editor typing "taron" is looking for the ride and
+      // an editor typing "toverland" for the park, and asking them which one
+      // they meant before searching is the interaction this replaces.
+      Promise.allSettled([
+        adminFetch<{ parks: AdminParkListItem[] }>(
+          `/api/admin/content/parks?q=${encoded}&limit=6`,
+          { signal: controller.signal }
+        ),
+        adminFetch<{ attractions: RideHit[] }>(
+          `/api/admin/content/attractions?q=${encoded}&limit=8`,
+          { signal: controller.signal }
+        ),
+      ])
+        .then(([parkResult, rideResult]) => {
+          setParks(parkResult.status === 'fulfilled' ? (parkResult.value.parks ?? []) : []);
+          setRides(
+            rideResult.status === 'fulfilled' ? (rideResult.value.attractions ?? []) : []
+          );
+        })
         .finally(() => setSearching(false));
     }, 180);
 
@@ -149,7 +174,11 @@ export function CommandPalette({
       onOpenChange={(next) => {
         // Cleared here rather than in an effect on `open`: the reset belongs to
         // the act of closing, and an effect would run it during a render.
-        if (!next) setQuery('');
+        if (!next) {
+          setQuery('');
+          setParks([]);
+          setRides([]);
+        }
         onOpenChange(next);
       }}
       title="Befehle"
@@ -189,6 +218,31 @@ export function CommandPalette({
                 </span>
                 <span className="text-muted-foreground shrink-0 text-xs">
                   {[park.city, park.countryCode].filter(Boolean).join(', ')}
+                </span>
+              </CommandItem>
+            ))}
+          </CommandGroup>
+        )}
+
+        {rides.length > 0 && (
+          <CommandGroup heading="Fahrgeschäfte">
+            {rides.map((ride) => (
+              <CommandItem
+                key={ride.id}
+                value={`ride-${ride.id}`}
+                onSelect={() => go(`/admin/attractions/${ride.id}`)}
+              >
+                <RollerCoaster className="h-4 w-4" />
+                <span className="flex-1 truncate">
+                  {ride.name}
+                  {ride.name !== ride.upstreamName && (
+                    <span className="text-muted-foreground ml-1.5 text-xs">
+                      (Upstream: {ride.upstreamName})
+                    </span>
+                  )}
+                </span>
+                <span className="text-muted-foreground shrink-0 text-xs">
+                  {ride.park?.name ?? ''}
                 </span>
               </CommandItem>
             ))}
@@ -238,8 +292,8 @@ export function CommandPalette({
             <CommandItem value="tip" disabled>
               <Rows3 className="h-4 w-4" />
               <span className="text-muted-foreground flex-1 text-xs">
-                Tippe zwei Buchstaben, um Parks zu finden — auch unter ihrem
-                kuratierten Namen.
+                Tippe zwei Buchstaben: Parks und Fahrgeschäfte werden zugleich
+                gesucht, auch unter ihrem kuratierten Namen.
               </span>
             </CommandItem>
             <CommandItem value="tip-seasons" disabled>

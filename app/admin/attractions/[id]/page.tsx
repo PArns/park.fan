@@ -34,6 +34,7 @@ import { useToast } from '../../_ui/toast';
 import { useCan } from '../../_app/session';
 import { RideProfileEditor } from '../_components/ride-profile-editor';
 import { EntityMediaPanel } from '../../_ui/entity-media';
+import { EntityPostsPanel } from '../../_ui/entity-posts';
 
 /**
  * One ride.
@@ -177,11 +178,19 @@ export default function AttractionDetailPage({
         />
       )}
       {tab === 'media' && (
-        <EntityMediaPanel
-          parkSlug={data.park?.slug ?? null}
-          rideSlug={data.slug}
-          title={data.name}
-        />
+        <div className="space-y-4">
+          <EntityMediaPanel
+            parkSlug={data.park?.slug ?? null}
+            rideSlug={data.slug}
+            title={data.name}
+          />
+          <EntityPostsPanel
+            parkSlug={data.park?.slug ?? null}
+            rideSlug={data.slug}
+            geoPath={data.park?.path.split('/').slice(0, 3).join('/')}
+            title={data.name}
+          />
+        </div>
       )}
       {tab === 'history' && (
         <HistoryList

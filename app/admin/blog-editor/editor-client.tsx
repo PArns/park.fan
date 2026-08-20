@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { FolderOpen, Loader2, PenLine, Plus, Trash2 } from 'lucide-react';
 import type { Locale } from '@/i18n/config';
 import { FrontmatterForm } from './_components/frontmatter-form';
@@ -346,8 +346,7 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
   const onLoadPost = async (key: string) => {
     setLoadingPost(true);
     try {
-      const res = await fetch(`/api/admin/blog-editor/posts/${encodeURIComponent(key)}`, {
-              });
+      const res = await fetch(`/api/admin/blog-editor/posts/${encodeURIComponent(key)}`);
       if (!res.ok) {
         alert(`Could not load post: ${res.status}`);
         return;
@@ -384,6 +383,32 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
       setLoadingPost(false);
     }
   };
+
+  /**
+   * Open the post named in `?post=<translationKey>`.
+   *
+   * This is what makes the park and ride editors able to link into the blog:
+   * their "Beiträge" panel lists what the blog says about the thing being
+   * curated, and a list you cannot click through from is a list you read once.
+   *
+   * Runs after mount and only once — the parameter is a starting point, not
+   * state. Re-reading it would fight the picker every time somebody loaded a
+   * different post without changing the URL.
+   */
+  const deepLinkHandled = useRef(false);
+  useEffect(() => {
+    if (deepLinkHandled.current) return;
+    const key = new URLSearchParams(window.location.search).get('post');
+    if (!key) return;
+    deepLinkHandled.current = true;
+    // Deferred a tick, like the draft-restore effect above: `onLoadPost` sets
+    // state, and React 19 flags a synchronous setState inside an effect as a
+    // cascading-render hazard.
+    const timer = setTimeout(() => void onLoadPost(key), 0);
+    return () => clearTimeout(timer);
+    // `onLoadPost` closes over setters only, so a one-shot is safe here.
+     
+  }, []);
 
   const onTranslate = async (target: Locale) => {
     const src = drafts[sourceLocale];

@@ -40,6 +40,7 @@ import {
 import { HistoryList } from '../../_ui/history-list';
 import { useToast } from '../../_ui/toast';
 import { EntityMediaPanel } from '../../_ui/entity-media';
+import { EntityPostsPanel } from '../../_ui/entity-posts';
 import { useCan } from '../../_app/session';
 import { SeasonList } from '../_components/season-editor';
 
@@ -121,7 +122,19 @@ export default function ParkDetailPage({
           <SeasonList parkId={id} seasons={data.seasons} canEdit={canEdit} />
         </div>
       )}
-      {tab === 'media' && <EntityMediaPanel parkSlug={data.slug} title={data.name} />}
+      {tab === 'media' && (
+        <div className="space-y-4">
+          <EntityMediaPanel parkSlug={data.slug} title={data.name} />
+          <EntityPostsPanel
+            parkSlug={data.slug}
+            // The geo path disambiguates shared slugs — `disneyland-park`
+            // exists in Anaheim and in Paris, and a reference that pinned a
+            // full path only counts for the one it named.
+            geoPath={data.path.split('/').slice(0, 3).join('/')}
+            title={data.name}
+          />
+        </div>
+      )}
       {tab === 'history' && (
         <HistoryList
           entries={data.history}
