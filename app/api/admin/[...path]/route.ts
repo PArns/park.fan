@@ -6,6 +6,7 @@ import {
   ADMIN_SESSION_COOKIE,
   forgetAllSessions,
   readSessionToken,
+  resolveAdminIdentity,
   SESSION_ABSOLUTE_TTL_SECONDS,
   sessionCookieOptions,
 } from '@/lib/admin/session';
@@ -87,15 +88,30 @@ async function proxyRequest(request: NextRequest, path: string[]) {
   // No session, no proxy. Everything behind here is an admin endpoint that
   // would answer 401 anyway, but reaching the upstream at all is the problem:
   // `getServerApiHeaders()` attaches this deployment's `x-auth-key`, which the
-  // API treats as a throttle bypass, and `forwardedFor` attaches an address the
-  // caller chose. An anonymous request must not get either.
-  if (!token && !ANONYMOUS_PATHS.has(route)) {
+  // API treats as a throttle bypass and as the reason to believe the address in
+  // `forwardedFor` — an address the caller chose. An anonymous request must not
+  // get either.
+  //
+  // Which means the cookie has to be *validated*, not counted. Reading it back
+  // only proves the caller can send a header, so `Cookie:
+  // parkfan_admin_session=x` walked straight through the check that was written
+  // to stop exactly that. `resolveAdminIdentity` asks the backend and caches the
+  // answer for a minute; it is deliberately not `requireAdmin`, because the two
+  // endpoints a session with an open obligation is allowed to reach — the
+  // password change and the TOTP enrolment — are behind this proxy, and a role
+  // floor here would be a second, drifting copy of the one the API enforces.
+  if (!ANONYMOUS_PATHS.has(route) && !(await resolveAdminIdentity(request))) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
   const incoming = new URL(request.url);
   const target = new URL(`${API_BASE}/v1/admin/${upstreamPath}`);
   incoming.searchParams.forEach((value, key) => {
+    // The deprecated shared pass is a full-privilege credential that the admin
+    // UI has never sent. Relaying it would make this proxy the one place on the
+    // internet where guessing it costs nothing, since `x-auth-key` skips the
+    // throttler the API would otherwise put in front.
+    if (key.toLowerCase() === 'pass') return;
     target.searchParams.set(key, value);
   });
 

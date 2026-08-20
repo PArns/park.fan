@@ -66,6 +66,17 @@ knowing:
 - The proxy moves a re-issued token from a password change into the cookie and
   strips it from the response. Without that, changing your password would log
   you out by succeeding.
+- Before it forwards anything, the proxy **validates** the cookie against
+  `auth/me` rather than checking that one is present. Reading a cookie back only
+  proves the caller can set a header, so `Cookie: parkfan_admin_session=x` used
+  to walk past the check that exists to keep strangers away from the deployment's
+  `x-auth-key` — the header api.park.fan reads as "this is our own frontend", and
+  therefore as permission to skip the throttler and to believe the forwarded
+  address. It is deliberately not the role guard the app's own routes use: the
+  two endpoints a session with an open obligation may still reach (the password
+  change, the TOTP enrolment) are behind this proxy, and a role floor here would
+  be a second, drifting copy of the one the API enforces. The deprecated `pass`
+  query parameter is dropped instead of relayed; the admin UI has never sent one.
 
 Roles are `owner > editor > author > viewer`, ranked rather than enumerated.
 Hiding a link a role cannot use is a courtesy; the API is the control.

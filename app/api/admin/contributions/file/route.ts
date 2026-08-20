@@ -1,7 +1,7 @@
 import 'server-only';
 import { NextResponse } from 'next/server';
 import { get } from '@vercel/blob';
-import { resolveAdminIdentity } from '@/lib/admin/session';
+import { denyUnlessAdmin } from '@/lib/admin/session';
 import { readImageLocal } from '@/lib/contribute/storage';
 import { resolveDriver } from '@/lib/contribute/driver';
 
@@ -38,10 +38,12 @@ const EXT_TYPES: Record<string, string> = {
  */
 export async function GET(request: Request) {
   const url = new URL(request.url);
-  const identity = await resolveAdminIdentity(request);
-  if (!identity) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
+  // The same guard as the routes that list these submissions, and for the same
+  // reason: `resolveAdminIdentity` answers "this token is a session", which is
+  // one question short of "this account may look at this". It skipped the role
+  // floor and the must-change-password refusal that every sibling applies.
+  const denied = await denyUnlessAdmin(request);
+  if (denied) return denied;
 
   const key = url.searchParams.get('key');
   if (!key) return NextResponse.json({ error: 'missing-key' }, { status: 400 });

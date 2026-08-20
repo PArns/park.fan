@@ -1,7 +1,7 @@
 import 'server-only';
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerApiHeaders } from '@/lib/api/client';
-import { readSessionToken } from '@/lib/admin/session';
+import { denyUnlessAdmin } from '@/lib/admin/session';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://api.park.fan';
 
@@ -26,6 +26,12 @@ export const dynamic = 'force-dynamic';
  *  - a session is required, so it is not an anonymous relay,
  *  - and the upstream path comes from this list, not from the request, so
  *    there is nothing to smuggle through it.
+ *
+ * The first lock has to *validate* the cookie, not notice it. Reading the
+ * cookie only proves the caller can set a header, so `Cookie:
+ * parkfan_admin_session=x` passed the check that was written to keep strangers
+ * away from `x-auth-key`. `denyUnlessAdmin` asks the backend, at the floor
+ * these four reads actually need.
  */
 const ML_PATHS = new Set([
   'dashboard',
@@ -40,10 +46,8 @@ export async function GET(
 ) {
   const { path } = await params;
 
-  const token = await readSessionToken(request);
-  if (!token) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
+  const denied = await denyUnlessAdmin(request, 'viewer');
+  if (denied) return denied;
 
   const requested = path.join('/');
   if (!ML_PATHS.has(requested)) {
