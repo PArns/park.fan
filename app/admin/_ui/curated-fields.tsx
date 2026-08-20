@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { ArrowLeftRight, Loader2, RotateCcw, Save, Sparkles } from 'lucide-react';
+import { ArrowLeftRight, ExternalLink, Loader2, RotateCcw, Save, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import type { CuratedField } from '../_lib/types';
@@ -63,6 +63,7 @@ export function formatFieldValue(field: CuratedField, value: unknown): string {
         ? (value as number[]).map((month) => MONTH_NAMES[month - 1] ?? month).join(', ')
         : '—';
     case 'number':
+    case 'decimal':
       return field.unit ? `${String(value)} ${field.unit}` : String(value);
     default:
       return String(value);
@@ -183,6 +184,7 @@ function FieldControl({
       );
 
     case 'number':
+    case 'decimal':
       return (
         <div className="flex items-center gap-2">
           <NumberInput
@@ -190,6 +192,11 @@ function FieldControl({
             disabled={disabled}
             min={field.min}
             max={field.max}
+            // A park of 28.3 ha must be enterable as 28.3; a height in cm must
+            // not accept 172.5, because the column is an int and the backend
+            // would reject it after the typing.
+            step={field.type === 'decimal' ? 0.1 : 1}
+            inputMode={field.type === 'decimal' ? 'decimal' : 'numeric'}
             value={typeof value === 'number' ? value : null}
             onValueChange={onChange}
             placeholder={placeholderFor(field)}
@@ -198,6 +205,39 @@ function FieldControl({
           {field.unit && <span className="text-muted-foreground text-xs">{field.unit}</span>}
         </div>
       );
+
+    case 'url': {
+      const href = typeof value === 'string' && /^https?:\/\//i.test(value) ? value : null;
+      return (
+        <div className="flex items-center gap-2">
+          <TextInput
+            id={id}
+            type="url"
+            disabled={disabled}
+            maxLength={field.maxLength}
+            value={typeof value === 'string' ? value : ''}
+            placeholder={placeholderFor(field)}
+            onChange={(event) => onChange(event.target.value || null)}
+          />
+          {/* The one check a form cannot do: whether the address is the right
+              one. Opening it is one click, and a curated link nobody opened is
+              how a park page ends up pointing at a parked domain. */}
+          <a
+            href={href ?? undefined}
+            target="_blank"
+            rel="noreferrer noopener"
+            aria-disabled={href ? undefined : true}
+            className={cn(
+              'text-muted-foreground hover:text-foreground shrink-0 rounded-md border p-1.5 transition-colors',
+              !href && 'pointer-events-none opacity-30'
+            )}
+            title="Adresse öffnen"
+          >
+            <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+          </a>
+        </div>
+      );
+    }
 
     case 'boolean':
       return (

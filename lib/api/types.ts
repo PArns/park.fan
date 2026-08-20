@@ -627,8 +627,31 @@ export interface ParkResponse extends ParkBase {
   liveWaitTimes?: LiveWaitTimes;
 }
 
+/**
+ * The park facts a human wrote, from the API's `info` block.
+ *
+ * Every field is optional twice over: the API omits a null (the response
+ * interceptor strips them) and the whole object is absent until somebody has
+ * curated at least one. Detail payload only — the listings do not carry it.
+ */
+export interface ParkInfo {
+  website?: string | null;
+  ticketsUrl?: string | null;
+  wikipediaUrl?: string | null;
+  instagramUrl?: string | null;
+  facebookUrl?: string | null;
+  youtubeUrl?: string | null;
+  streetAddress?: string | null;
+  postalCode?: string | null;
+  phone?: string | null;
+  openedYear?: number | null;
+  areaHectares?: number | null;
+}
+
 export interface ParkWithAttractions extends ParkBase {
   status?: ParkStatus;
+  /** Curated facts no feed carries. Day-stable, so the live merge keeps it. */
+  info?: ParkInfo | null;
   currentLoad?: ParkLoad | null;
   weather?: WeatherData;
   attractions: ParkAttraction[];

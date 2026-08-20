@@ -487,6 +487,15 @@
       "park": "Opening hours, weather and the calendar are all still here.",
       "ride": "So there is no forecast for this ride either. Opening hours and weather are unaffected."
     },
+    "info": {
+      "title": "Park information",
+      "address": "Address",
+      "phone": "Phone",
+      "website": "Website",
+      "tickets": "Tickets",
+      "opened": "Opened",
+      "area": "Area"
+    },
     "weather": {
       "clear": "Clear sky",
       "mainlyClear": "Mainly clear",

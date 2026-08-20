@@ -487,6 +487,15 @@
       "park": "Orari, meteo e calendario restano disponibili qui.",
       "ride": "Per questa attrazione manca quindi anche la previsione. Orari e meteo non sono interessati."
     },
+    "info": {
+      "title": "Informazioni sul parco",
+      "address": "Indirizzo",
+      "phone": "Telefono",
+      "website": "Sito ufficiale",
+      "tickets": "Biglietti",
+      "opened": "Apertura",
+      "area": "Superficie"
+    },
     "weather": {
       "clear": "Cielo sereno",
       "mainlyClear": "Prevalentemente sereno",

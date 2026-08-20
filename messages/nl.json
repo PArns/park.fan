@@ -487,6 +487,15 @@
       "park": "Openingstijden, weer en de kalender vind je hier gewoon.",
       "ride": "Daarmee ontbreekt ook de voorspelling voor deze attractie. Openingstijden en weer vind je gewoon."
     },
+    "info": {
+      "title": "Parkinformatie",
+      "address": "Adres",
+      "phone": "Telefoon",
+      "website": "Website",
+      "tickets": "Tickets",
+      "opened": "Geopend",
+      "area": "Oppervlakte"
+    },
     "weather": {
       "clear": "Helder",
       "mainlyClear": "Overwegend helder",

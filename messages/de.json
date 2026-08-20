@@ -320,6 +320,15 @@
       "park": "Öffnungszeiten, Wetter und Kalender findest du hier wie gewohnt.",
       "ride": "Damit fehlt auch die Prognose für dieses Fahrgeschäft. Öffnungszeiten und Wetter findest du wie gewohnt."
     },
+    "info": {
+      "title": "Infos zum Park",
+      "address": "Adresse",
+      "phone": "Telefon",
+      "website": "Website",
+      "tickets": "Tickets",
+      "opened": "Eröffnet",
+      "area": "Fläche"
+    },
     "weather": {
       "clear": "Klarer Himmel",
       "mainlyClear": "Meist klar",

@@ -22,7 +22,8 @@ export interface AdminIdentity {
   createdAt?: string;
 }
 
-export type CuratedFieldType = 'text' | 'longtext' | 'number' | 'boolean' | 'enum' | 'months';
+export type CuratedFieldType =
+  'text' | 'longtext' | 'number' | 'decimal' | 'boolean' | 'enum' | 'months' | 'url';
 
 /**
  * One curated field, as the backend describes it.
@@ -49,6 +50,8 @@ export interface CuratedField {
   unit?: string;
   min?: number;
   max?: number;
+  /** Text and url fields only. */
+  maxLength?: number;
   hint?: string;
 }
 

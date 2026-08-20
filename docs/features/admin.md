@@ -93,6 +93,23 @@ Two rules the controls exist to protect:
 - **A boolean has three states.** `true`, `false`, and "nothing said". A curated
   `false` on `may get wet` is a real correction; clearing it is not the same
   thing.
+- **A URL is opened, not just typed.** Every `url` field has a button next to it
+  that opens the address in a new tab, because the one thing no validation can
+  check is whether the link goes where it should. A curated link nobody ever
+  clicked is how a park page ends up pointing at a parked domain.
+
+The claim that a new column needs no frontend change was tested by the park info
+block: eleven columns (website, tickets, Wikipedia, three social profiles,
+street, postcode, phone, opening year, area) appeared in the editor under
+Links / Contact / Facts with nothing changed here but two new control types —
+`url`, and `decimal` so an area can keep its digit after the point.
+
+On the public side they arrive as one `info` object on the park detail payload
+and render in `ParkInfoCard` — a Server Component, inline in the first HTML, and
+absent entirely for a park nobody has curated rather than an empty frame. The
+same values fill in what the park page's `ThemePark` structured data could not
+state before: a street, a postcode, a telephone, and `sameAs` pointing at the
+park's own site and profiles.
 
 ## Seasons
 

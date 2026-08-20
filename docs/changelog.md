@@ -4,6 +4,44 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – feat: the facts a park page could not state
+
+A park page had a map, a forecast, a weather chart and no way to say where the
+park is. None of the three upstream feeds carries an address, a website, a
+ticket link or an opening year, so there was no column to correct and nothing
+to show.
+
+Eleven curated columns now cover it — website, tickets, Wikipedia, Instagram,
+Facebook, YouTube, street, postcode, phone, opening year, area — and they
+arrive as one `info` object on the park detail payload, absent entirely until
+somebody has written at least one. Not on the listings: the card overlay
+re-downloads its fields every five minutes and a postcode has no business in
+that budget.
+
+`ParkInfoCard` renders them as a Server Component, inline in the first HTML, so
+it costs no layout shift and no client bytes. A park with nothing curated
+renders nothing rather than an empty frame. The same values fill the gaps in
+the page's `ThemePark` structured data, which until now claimed a locality and
+a country and left the street, the phone number and every `sameAs` blank.
+
+The admin editor needed nothing for the eleven fields themselves — it is
+generated from the backend's descriptors — only two new control types: `url`,
+with a button that opens the address because the one thing validation cannot
+check is whether the link goes where it should, and `decimal`, so a park of
+28.3 hectares does not become 28.
+
+A URL is parsed rather than pattern-matched (`new URL()`, `http:` and `https:`
+only). These values become `href`s on a public page, so a stored `javascript:`
+URL would be cross-site scripting with an audit row naming the curator who
+typed it.
+
+The brand marks for the social links came out of `share-buttons.tsx`, where
+they had been sitting privately, into `components/common/brand-icons.tsx`.
+lucide-react dropped its brand set in v1; a second hand-copied path is how two
+Facebook logos end up different sizes on one page.
+
+---
+
 ## Unreleased – feat: the admin is a different application
 
 The old admin was a password box, a text field and a POST. It shared the site's

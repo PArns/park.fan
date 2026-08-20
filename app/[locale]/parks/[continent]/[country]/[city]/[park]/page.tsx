@@ -54,6 +54,7 @@ import { ParkHeaderStats } from '@/components/parks/park-header-stats';
 import { HeaderHolidayPanel } from '@/components/parks/header-holiday-panel';
 import { ParkBestDaysSection } from '@/components/parks/park-best-days-section';
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
+import { ParkInfoCard } from '@/components/parks/park-info-card';
 import { ParkPurchasesCard } from '@/components/parks/park-purchases-card';
 import { NoLiveWaitTimesNotice } from '@/components/parks/no-live-wait-times-notice';
 import { hasReadableWaitTimes, noLiveWaitTimesReason } from '@/lib/utils/live-wait-times';
@@ -633,6 +634,17 @@ export default async function ParkPage({ params }: ParkPageProps) {
               parkSlug={parkSlug}
               locale={locale}
               hasLiveWaitTimes={hasReadableWaitTimes(park)}
+            />
+
+            {/* The park's own address, site and ticket shop — hand-curated in the admin, because
+              none of the three upstream feeds carries any of it. Server-rendered inline (no
+              client JS, no boundary), and absent entirely for a park nobody has curated yet
+              rather than an empty frame on 200 pages. */}
+            <ParkInfoCard
+              info={park.info}
+              city={cityName}
+              country={translateGeoSlug(tGeo, 'countries', country, countryName)}
+              className="mt-8"
             />
 
             {/* FAQ Section — Q0–Q6 + Q1 (today's hours) render immediately from the park snapshot +

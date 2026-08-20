@@ -487,6 +487,15 @@
       "park": "Les horaires, la météo et le calendrier restent disponibles ici.",
       "ride": "Cette attraction n'a donc pas non plus de prévision. Les horaires et la météo restent disponibles."
     },
+    "info": {
+      "title": "Informations pratiques",
+      "address": "Adresse",
+      "phone": "Téléphone",
+      "website": "Site officiel",
+      "tickets": "Billets",
+      "opened": "Ouverture",
+      "area": "Superficie"
+    },
     "weather": {
       "clear": "Dégagé",
       "mainlyClear": "Peu nuageux",
