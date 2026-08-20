@@ -71,6 +71,11 @@ function revokesSessions(method: string, route: string): boolean {
   if (route === 'auth/change-password' || route === 'auth/logout') return true;
   if (method === 'DELETE' && route.startsWith('auth/sessions')) return true;
   if (method === 'PATCH' && route.startsWith('auth/users/')) return true;
+  // Enrolling or clearing a second factor does not end the session, but it
+  // does change what `auth/me` answers — and a cached "totpEnabled: false"
+  // makes the account page show the enrolment form again to somebody who has
+  // just finished enrolling. Which reads as: two-factor cannot be switched on.
+  if (route === 'auth/totp/confirm' || route === 'auth/totp/disable') return true;
   return false;
 }
 

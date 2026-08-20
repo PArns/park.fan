@@ -410,12 +410,21 @@ function AccountMenu({
   onSignOut: () => void;
 }) {
   const [open, setOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!open) return;
-    const close = () => setOpen(false);
-    // Capture phase: a click on a link inside the menu should navigate AND
-    // close, and a bubbling listener would close it before the link handled it.
+    // Outside clicks only. Closing on *every* click, in the capture phase, took
+    // the menu out of the DOM before the event reached the button inside it:
+    // React flushes a discrete click's state update synchronously, so by the
+    // time its delegated listener looked the target up, that fiber was gone and
+    // `onClick` never ran. "Abmelden" did nothing, every time. "Mein Konto"
+    // still worked and hid the pattern — following a link is the browser's
+    // default action and needs no React handler at all.
+    const close = (event: MouseEvent) => {
+      if (menuRef.current?.contains(event.target as Node)) return;
+      setOpen(false);
+    };
     window.addEventListener('click', close, { capture: true });
     return () => window.removeEventListener('click', close, { capture: true });
   }, [open]);
@@ -427,7 +436,7 @@ function AccountMenu({
     .join('');
 
   return (
-    <div className="relative">
+    <div className="relative" ref={menuRef}>
       <button
         type="button"
         onClick={(event) => {
@@ -457,7 +466,11 @@ function AccountMenu({
           </Link>
           <button
             type="button"
-            onClick={onSignOut}
+            onClick={() => {
+              // The menu closes itself now that an inside click no longer does.
+              setOpen(false);
+              onSignOut();
+            }}
             className="hover:bg-accent text-destructive flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm"
           >
             <LogOut className="h-3.5 w-3.5" />
