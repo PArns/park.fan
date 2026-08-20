@@ -61,10 +61,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
   const { refreshing, lastUpdated, triggerRefresh } = useAdmin();
   const inspector = useInspector();
 
-  const [sidebarState, setSidebarState] = useLocalPreference(
-    SIDEBAR_STORAGE_KEY,
-    'expanded'
-  );
+  const [sidebarState, setSidebarState] = useLocalPreference(SIDEBAR_STORAGE_KEY, 'expanded');
   const collapsed = sidebarState === 'collapsed';
   const [mobileOpen, setMobileOpen] = useState(false);
   const [paletteOpen, setPaletteOpen] = useState(false);
@@ -78,9 +75,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
       const target = event.target as HTMLElement | null;
       const typing =
         target &&
-        (target.tagName === 'INPUT' ||
-          target.tagName === 'TEXTAREA' ||
-          target.isContentEditable);
+        (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable);
 
       if (event.key.toLowerCase() === 'k' && (event.metaKey || event.ctrlKey)) {
         event.preventDefault();
@@ -90,8 +85,11 @@ export function AdminShell({ children }: { children: ReactNode }) {
 
       // The `g`-then-letter chord is deliberately dead while typing: an editor
       // writing "Gondoletta" into a name field must not be teleported to the
-      // dashboard by their own second keystroke.
+      // dashboard by their own second keystroke. It is equally dead under any
+      // open dialog — the season editor and the account dialogs hold unsaved
+      // work, and navigating out from under one throws it away silently.
       if (typing || event.metaKey || event.ctrlKey || event.altKey) return;
+      if (document.querySelector('[role="dialog"], [role="alertdialog"]')) return;
 
       if (jumpArmed.current) {
         jumpArmed.current = false;
@@ -186,10 +184,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
               type="button"
               onClick={inspector.toggle}
               aria-label="Inspektor umschalten"
-              className={cn(
-                'hover:bg-accent rounded-lg p-2',
-                inspector.open && 'text-primary'
-              )}
+              className={cn('hover:bg-accent rounded-lg p-2', inspector.open && 'text-primary')}
             >
               <PanelRight className="h-4 w-4" />
             </button>

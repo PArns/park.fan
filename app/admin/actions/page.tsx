@@ -157,7 +157,7 @@ export default function ActionsPage() {
     try {
       const res = await fetch(`/api/admin/${action.path}`, {
         method: 'POST',
-              });
+      });
       setResult((p) => ({ ...p, [action.key]: res.ok ? 'ok' : 'err' }));
     } catch {
       setResult((p) => ({ ...p, [action.key]: 'err' }));

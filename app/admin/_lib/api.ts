@@ -47,10 +47,7 @@ interface RequestOptions {
   signal?: AbortSignal;
 }
 
-export async function adminFetch<T>(
-  path: string,
-  options: RequestOptions = {}
-): Promise<T> {
+export async function adminFetch<T>(path: string, options: RequestOptions = {}): Promise<T> {
   const response = await fetch(path, {
     method: options.method ?? 'GET',
     cache: 'no-store',
@@ -110,10 +107,8 @@ export const adminKeys = {
   parkAttractions: (id: string, params?: Record<string, unknown>) =>
     ['admin', 'park', id, 'attractions', params ?? {}] as const,
   attraction: (id: string) => ['admin', 'attraction', id] as const,
-  seasons: (params?: Record<string, unknown>) =>
-    ['admin', 'seasons', params ?? {}] as const,
-  history: (params?: Record<string, unknown>) =>
-    ['admin', 'history', params ?? {}] as const,
+  seasons: (params?: Record<string, unknown>) => ['admin', 'seasons', params ?? {}] as const,
+  history: (params?: Record<string, unknown>) => ['admin', 'history', params ?? {}] as const,
   users: ['admin', 'users'] as const,
   sessions: ['admin', 'sessions'] as const,
   raw: (path: string) => ['admin', 'raw', path] as const,

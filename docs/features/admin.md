@@ -113,7 +113,7 @@ effect immediately, and it is undoable from the history.
 
 Media and blog posts live in **this repository**: images and their sidecars are
 committed files, so a save is a branch, a commit and a pull request. That is not
-an inconsistency to paper over — it is why the entity media panel is a *view*
+an inconsistency to paper over — it is why the entity media panel is a _view_
 with links into the media editor rather than an editor of its own. A save button
 that behaved differently from every other save button would be worse than the
 extra click.
@@ -129,7 +129,7 @@ extra click.
   before; PATCH and DELETE 405'd at Next without ever reaching the API.
 - The API's global `ExcludeNullInterceptor` is exempted for `/admin` paths. It
   strips null object keys everywhere else, and on a curated-field payload the
-  nulls *are* the information.
+  nulls _are_ the information.
 - `pnpm build` is the typecheck. There is no `typecheck` script and CI runs
   neither lint nor tests.
 

@@ -38,7 +38,20 @@ import {
 
 export type FieldValues = Record<string, unknown>;
 
-const MONTH_NAMES = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'];
+const MONTH_NAMES = [
+  'Jan',
+  'Feb',
+  'Mär',
+  'Apr',
+  'Mai',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Okt',
+  'Nov',
+  'Dez',
+];
 
 export function formatFieldValue(field: CuratedField, value: unknown): string {
   if (value === null || value === undefined || value === '') return '—';
@@ -76,7 +89,8 @@ function CuratedFieldRow({
   const id = useFieldId(field.key);
   const dirty = !sameValue(value, field.curatedValue);
   const hasCorrection = value !== null && value !== undefined && value !== '';
-  const agreesWithUpstream = hasCorrection && !field.humanOnly && sameValue(value, field.syncedValue);
+  const agreesWithUpstream =
+    hasCorrection && !field.humanOnly && sameValue(value, field.syncedValue);
 
   return (
     <Field
@@ -123,13 +137,7 @@ function CuratedFieldRow({
   );
 }
 
-function UpstreamChip({
-  field,
-  onAdopt,
-}: {
-  field: CuratedField;
-  onAdopt: () => void;
-}) {
+function UpstreamChip({ field, onAdopt }: { field: CuratedField; onAdopt: () => void }) {
   const upstream = formatFieldValue(field, field.syncedValue);
   if (upstream === '—') {
     return (
@@ -258,6 +266,20 @@ export interface CuratedFormState {
   dirtyKeys: string[];
   setValue: (key: string, value: unknown) => void;
   reset: () => void;
+  /**
+   * Adopt what the server actually stored, from a save response.
+   *
+   * Not `reset()`. Clearing the overrides makes the form fall back to `initial`,
+   * which is still derived from the *pre-save* props until the refetch lands —
+   * so every input visibly snaps back to its old value for a moment and then
+   * jumps forward again, which reads as "the save was undone". Adopting the
+   * response instead shows the stored values immediately, and once the refetch
+   * arrives `initial` matches them and nothing is dirty.
+   *
+   * It also surfaces the server's own coercions — a trimmed string, sorted
+   * months — rather than leaving the form showing what was typed.
+   */
+  applyServerFields: (fields: CuratedField[]) => void;
 }
 
 export function useCuratedForm(fields: CuratedField[]): CuratedFormState {
@@ -281,6 +303,11 @@ export function useCuratedForm(fields: CuratedField[]): CuratedFormState {
     dirtyKeys,
     setValue: (key, value) => setOverrides((current) => ({ ...current, [key]: value })),
     reset: () => setOverrides({}),
+    applyServerFields: (next) => {
+      const adopted: FieldValues = {};
+      for (const field of next) adopted[field.key] = field.curatedValue ?? null;
+      setOverrides(adopted);
+    },
   };
 }
 

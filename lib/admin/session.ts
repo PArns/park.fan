@@ -1,6 +1,7 @@
 import 'server-only';
 import { cookies } from 'next/headers';
 import { getServerApiHeaders } from '@/lib/api/client';
+import { readCookie } from './cookie';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://api.park.fan';
 
@@ -64,14 +65,11 @@ function cacheKeyFor(token: string): string {
   return token;
 }
 
-/** The raw token from the request's cookie, or null. */
+/** The raw token from the request's cookie, or null. See `readCookie`. */
 export async function readSessionToken(request?: Request): Promise<string | null> {
   if (request) {
-    const header = request.headers.get('cookie') ?? '';
-    const match = header.match(
-      new RegExp(`(?:^|;\\s*)${ADMIN_SESSION_COOKIE}=([^;]+)`)
-    );
-    if (match) return decodeURIComponent(match[1]);
+    const fromHeader = readCookie(request.headers.get('cookie'), ADMIN_SESSION_COOKIE);
+    if (fromHeader) return fromHeader;
   }
   try {
     const store = await cookies();
@@ -88,9 +86,7 @@ export async function readSessionToken(request?: Request): Promise<string | null
  * Returns null for absent, expired and revoked alike — the caller must not be
  * able to tell those apart, and does not need to.
  */
-export async function resolveAdminIdentity(
-  request?: Request
-): Promise<AdminIdentity | null> {
+export async function resolveAdminIdentity(request?: Request): Promise<AdminIdentity | null> {
   const token = await readSessionToken(request);
   if (!token) return null;
 
@@ -196,9 +192,7 @@ export async function adminApiFetch(
 ): Promise<Response> {
   const { token: explicitToken, ...rest } = init;
   const token = explicitToken ?? (await readSessionToken());
-  const url = path.startsWith('http')
-    ? path
-    : `${API_BASE}/v1/admin/${path.replace(/^\/+/, '')}`;
+  const url = path.startsWith('http') ? path : `${API_BASE}/v1/admin/${path.replace(/^\/+/, '')}`;
 
   return fetch(url, {
     ...rest,

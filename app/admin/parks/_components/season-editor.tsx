@@ -63,7 +63,10 @@ const KIND_META: Record<ParkSeasonKind, { label: string; icon: LucideIcon; tone:
   maintenance: { label: 'Wartung', icon: Wrench, tone: 'text-amber-400' },
 };
 
-const STATUS_META: Record<ParkSeasonStatus, { label: string; tone: 'success' | 'primary' | 'muted' | 'danger' }> = {
+const STATUS_META: Record<
+  ParkSeasonStatus,
+  { label: string; tone: 'success' | 'primary' | 'muted' | 'danger' }
+> = {
   confirmed: { label: 'bestätigt', tone: 'success' },
   announced: { label: 'angekündigt', tone: 'primary' },
   expected: { label: 'erwartet', tone: 'muted' },
@@ -139,7 +142,12 @@ function SeasonRow({
 
   return (
     <li className="border-border/60 bg-card/40 flex items-start gap-3 rounded-lg border p-3">
-      <span className={cn('bg-muted/50 mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg', meta.tone)}>
+      <span
+        className={cn(
+          'bg-muted/50 mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg',
+          meta.tone
+        )}
+      >
         <Icon className="h-4 w-4" />
       </span>
 
@@ -343,8 +351,8 @@ function SeasonDialog({
         <DialogHeader>
           <DialogTitle>{season ? 'Saison bearbeiten' : 'Saison anlegen'}</DialogTitle>
           <DialogDescription>
-            Der Zeitraum sind die äußeren Grenzen. Die Termine darunter sind
-            optional — ohne sie läuft die Saison an jedem Tag dazwischen.
+            Der Zeitraum sind die äußeren Grenzen. Die Termine darunter sind optional — ohne sie
+            läuft die Saison an jedem Tag dazwischen.
           </DialogDescription>
         </DialogHeader>
 
@@ -392,9 +400,7 @@ function SeasonDialog({
               <Select
                 value={draft.status}
                 allowEmpty={false}
-                onValueChange={(value) =>
-                  set('status', (value as ParkSeasonStatus) ?? 'announced')
-                }
+                onValueChange={(value) => set('status', (value as ParkSeasonStatus) ?? 'announced')}
                 options={Object.entries(STATUS_META).map(([value, meta]) => ({
                   value,
                   label: meta.label,

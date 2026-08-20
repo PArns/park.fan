@@ -97,7 +97,7 @@ function ImagePickerBody({
     const ctrl = new AbortController();
     fetch('/api/admin/blog-editor/images', {
       signal: ctrl.signal,
-          })
+    })
       .then((r) => r.json())
       .then((data: { images?: BlogImage[] }) => setImages(data.images ?? []))
       .catch(() => setImages([]))

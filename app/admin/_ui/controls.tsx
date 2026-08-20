@@ -44,10 +44,7 @@ export function Field({
   return (
     <div className={cn('space-y-1.5', className)}>
       <div className="flex items-center gap-2">
-        <label
-          htmlFor={htmlFor}
-          className="text-foreground/80 text-xs font-medium tracking-wide"
-        >
+        <label htmlFor={htmlFor} className="text-foreground/80 text-xs font-medium tracking-wide">
           {label}
         </label>
         {aside && <div className="ml-auto flex items-center gap-1">{aside}</div>}
@@ -297,7 +294,11 @@ export function Select({
           type="button"
           id={id}
           disabled={disabled}
-          className={cn(CONTROL_BASE, 'flex h-9 items-center justify-between gap-2 text-left', className)}
+          className={cn(
+            CONTROL_BASE,
+            'flex h-9 items-center justify-between gap-2 text-left',
+            className
+          )}
         >
           <span className={cn('truncate', !selected && 'text-muted-foreground')}>
             {selected ? selected.label : placeholder}
@@ -437,7 +438,7 @@ export function MonthPicker({
               active
                 ? 'border-primary bg-primary text-primary-foreground'
                 : inReference
-                  ? 'border-primary/40 border-dashed text-muted-foreground hover:bg-accent'
+                  ? 'border-primary/40 text-muted-foreground hover:bg-accent border-dashed'
                   : 'border-border/60 text-muted-foreground hover:bg-accent'
             )}
           >

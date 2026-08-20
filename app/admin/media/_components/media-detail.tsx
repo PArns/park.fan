@@ -108,8 +108,7 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
   // cascading render (and React 19 rejects it).
   useEffect(() => {
     let cancelled = false;
-    fetch(`/api/admin/media?id=${encodeURIComponent(id)}`, {
-          })
+    fetch(`/api/admin/media?id=${encodeURIComponent(id)}`, {})
       .then((r) => r.json())
       .then((data: { image?: MediaRow; geo?: GeoVerdict; error?: string }) => {
         if (cancelled) return;

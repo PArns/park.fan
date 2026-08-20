@@ -5,7 +5,15 @@ import { format, parseISO } from 'date-fns';
 import { de } from 'date-fns/locale';
 import { ExternalLink, PenLine } from 'lucide-react';
 import { useAdminQuery } from '../_lib/api';
-import { Chip, EmptyState, ErrorState, Panel, PanelBody, PanelHeader, SkeletonRows } from './primitives';
+import {
+  Chip,
+  EmptyState,
+  ErrorState,
+  Panel,
+  PanelBody,
+  PanelHeader,
+  SkeletonRows,
+} from './primitives';
 
 /**
  * The posts about this park or ride.

@@ -36,7 +36,11 @@ import { useSession } from '../_app/session';
  */
 
 const ROLES: Array<{ value: AdminRole; label: string; hint: string }> = [
-  { value: 'owner', label: 'Inhaber', hint: 'Verwaltet Konten und darf alles, auch Merges und Cache-Resets.' },
+  {
+    value: 'owner',
+    label: 'Inhaber',
+    hint: 'Verwaltet Konten und darf alles, auch Merges und Cache-Resets.',
+  },
   { value: 'editor', label: 'Redaktion', hint: 'Kuratiert Parks, Fahrgeschäfte und Saisons.' },
   { value: 'author', label: 'Autor', hint: 'Blog und Medien, keine Parkdaten.' },
   { value: 'viewer', label: 'Lesend', hint: 'Sieht die Dashboards, ändert nichts.' },
@@ -48,10 +52,7 @@ export default function UsersPage() {
   const { identity } = useSession();
   const [creating, setCreating] = useState(false);
 
-  const users = useAdminQuery<{ users: AdminIdentity[] }>(
-    adminKeys.users,
-    '/api/admin/auth/users'
-  );
+  const users = useAdminQuery<{ users: AdminIdentity[] }>(adminKeys.users, '/api/admin/auth/users');
 
   if (identity.role !== 'owner') {
     return (
@@ -259,8 +260,8 @@ function CreateUserDialog({ onClose }: { onClose: () => void }) {
         <DialogHeader>
           <DialogTitle>Konto anlegen</DialogTitle>
           <DialogDescription>
-            Das Passwort ist ein Einmal-Passwort: das Konto kommt damit nur bis zum
-            Formular für ein eigenes.
+            Das Passwort ist ein Einmal-Passwort: das Konto kommt damit nur bis zum Formular für ein
+            eigenes.
           </DialogDescription>
         </DialogHeader>
 
@@ -302,7 +303,11 @@ function CreateUserDialog({ onClose }: { onClose: () => void }) {
               onClick={create}
               disabled={busy || password.length < 12 || email.trim().length === 0}
             >
-              {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <UserPlus className="h-4 w-4" />}
+              {busy ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : (
+                <UserPlus className="h-4 w-4" />
+              )}
               Anlegen ({ROLE_LABEL[role]})
             </Button>
             <Button size="sm" variant="ghost" onClick={onClose} disabled={busy}>

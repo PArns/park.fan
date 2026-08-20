@@ -4,7 +4,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Images, Plus, Target } from 'lucide-react';
 import { useAdminQuery } from '../_lib/api';
-import { Chip, EmptyState, ErrorState, Panel, PanelBody, PanelHeader, SkeletonRows } from './primitives';
+import {
+  Chip,
+  EmptyState,
+  ErrorState,
+  Panel,
+  PanelBody,
+  PanelHeader,
+  SkeletonRows,
+} from './primitives';
 
 /**
  * The pictures attached to the thing you are editing.

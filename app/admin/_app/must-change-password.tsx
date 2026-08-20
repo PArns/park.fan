@@ -63,8 +63,8 @@ export function MustChangePassword() {
           <div>
             <h1 className="text-xl font-bold">Neues Passwort wählen</h1>
             <p className="text-muted-foreground mt-1 text-sm">
-              Das Passwort für {identity.email} war ein Einmal-Passwort. Solange es
-              gilt, ist sonst nichts erreichbar.
+              Das Passwort für {identity.email} war ein Einmal-Passwort. Solange es gilt, ist sonst
+              nichts erreichbar.
             </p>
           </div>
         </div>

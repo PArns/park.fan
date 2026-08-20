@@ -4,6 +4,42 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – feat: the admin is a different application
+
+The old admin was a password box, a text field and a POST. It shared the site's
+layout, its i18n and its theme, and it could do exactly one thing per page. This
+replaces it.
+
+**It holds no secret.** The browser never sees a token: the session cookie is
+httpOnly and `SameSite=Strict`, and `app/api/admin/[...path]` swaps it for a
+bearer header server-side. Before this, the admin password lived in
+`localStorage` and travelled in a header any script on the page could read.
+The proxy also grew the verbs it was missing — it exported GET and POST and
+called `response.json()` unconditionally, so every PATCH, DELETE and 204 the new
+editors make would have failed.
+
+**Everything is one surface.** ⌘K opens a command palette that searches parks,
+rides, media and posts in the same list and goes straight to the editor. An
+inspector panel slides in beside whatever is open, so a ride's field editor,
+its photos, its ride profile and the blog posts that mention it are one screen
+rather than four. Media assignment and blog editing write files, park and ride
+data writes DB rows — two different write models, deliberately not disguised as
+one: a curated field saves instantly and is undoable from the history list, a
+media or post change opens a branch and a PR.
+
+**The editors are generated from the API's field descriptors**, not hand-built.
+Each field shows what the sync says, what a human said, which one wins and
+whether it is an override — the same four facts for a park name, a ride's
+maximum height and a season's month list. Adding a curated column upstream adds
+its editor here with no frontend change.
+
+The route is outside i18n (`proxy.ts` skips `/admin`), carries its own `<html>`,
+its own QueryClientProvider and `robots: noindex`, and is dark whatever the site
+theme is. Sign-in supports TOTP, forced password changes and a session list you
+can revoke devices from.
+
+Details: `docs/features/admin.md`.
+
 ## Unreleased – fix: seven layout shifts, two of which the harness had been unable to see
 
 `pnpm measure:cls` diffs a page's first-paint layout against its settled one. That is good at

@@ -34,6 +34,7 @@
     "test:weather-chart-axis": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-weather-chart-axis.mjs",
     "test:coordinates": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-coordinates.mjs",
     "test:request-ip": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-request-ip.mjs",
+    "test:admin-cookie": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-cookie.mjs",
     "test:live-park-counts": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-live-park-counts.mjs",
     "test:media": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-media.mjs",
     "test:media-references": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-media-references.mjs",

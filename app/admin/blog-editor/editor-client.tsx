@@ -407,7 +407,6 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
     const timer = setTimeout(() => void onLoadPost(key), 0);
     return () => clearTimeout(timer);
     // `onLoadPost` closes over setters only, so a one-shot is safe here.
-     
   }, []);
 
   const onTranslate = async (target: Locale) => {

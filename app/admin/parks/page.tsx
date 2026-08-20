@@ -179,13 +179,7 @@ const VIEWS: Array<{ mode: ViewMode; label: string; icon: typeof Rows3 }> = [
   { mode: 'map', label: 'Karte', icon: MapIcon },
 ];
 
-function ViewSwitch({
-  mode,
-  onChange,
-}: {
-  mode: ViewMode;
-  onChange: (mode: ViewMode) => void;
-}) {
+function ViewSwitch({ mode, onChange }: { mode: ViewMode; onChange: (mode: ViewMode) => void }) {
   return (
     <div className="border-border/60 bg-background/60 inline-flex rounded-lg border p-0.5">
       {VIEWS.map((view) => (
@@ -302,9 +296,7 @@ function ParkGrid({ parks }: { parks: AdminParkListItem[] }) {
               <MapPin className="h-3.5 w-3.5" />
             </span>
             <div className="min-w-0 flex-1">
-              <p className="group-hover:text-primary truncate text-sm font-semibold">
-                {park.name}
-              </p>
+              <p className="group-hover:text-primary truncate text-sm font-semibold">{park.name}</p>
               <p className="text-muted-foreground truncate text-xs">
                 {[park.city, park.country].filter(Boolean).join(', ') || park.slug}
               </p>

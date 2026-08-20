@@ -102,11 +102,7 @@ function PasswordPanel() {
           />
         </Field>
         <div className="grid gap-3 sm:grid-cols-2">
-          <Field
-            label="Neu"
-            hint="Mindestens 12 Zeichen."
-            error={tooShort ? 'Zu kurz.' : null}
-          >
+          <Field label="Neu" hint="Mindestens 12 Zeichen." error={tooShort ? 'Zu kurz.' : null}>
             <TextInput
               type="password"
               autoComplete="new-password"
@@ -222,9 +218,9 @@ function TotpPanel({ enabled }: { enabled: boolean }) {
         {enrolment && (
           <div className="space-y-3">
             <p className="text-muted-foreground text-xs">
-              Scanne den Code, oder trage das Geheimnis von Hand ein. Zwei-Faktor
-              wird erst aktiv, wenn ein Code aus der App hier ankommt — so kann
-              ein misslungener Scan niemanden aussperren.
+              Scanne den Code, oder trage das Geheimnis von Hand ein. Zwei-Faktor wird erst aktiv,
+              wenn ein Code aus der App hier ankommt — so kann ein misslungener Scan niemanden
+              aussperren.
             </p>
             {/* No QR code, and that is deliberate rather than lazy. Every
                 hosted QR generator works by taking the payload in the URL —
@@ -240,7 +236,7 @@ function TotpPanel({ enabled }: { enabled: boolean }) {
                   label="Geheimnis"
                   hint="In der Authenticator-App als „manuell eingeben“ / „Setup-Schlüssel“."
                 >
-                  <code className="border-border/60 bg-muted/40 block rounded-lg border px-3 py-2 font-mono text-sm break-all tracking-wider">
+                  <code className="border-border/60 bg-muted/40 block rounded-lg border px-3 py-2 font-mono text-sm tracking-wider break-all">
                     {enrolment.secret}
                   </code>
                 </Field>

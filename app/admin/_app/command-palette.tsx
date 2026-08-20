@@ -116,9 +116,7 @@ export function CommandPalette({
       ])
         .then(([parkResult, rideResult]) => {
           setParks(parkResult.status === 'fulfilled' ? (parkResult.value.parks ?? []) : []);
-          setRides(
-            rideResult.status === 'fulfilled' ? (rideResult.value.attractions ?? []) : []
-          );
+          setRides(rideResult.status === 'fulfilled' ? (rideResult.value.attractions ?? []) : []);
         })
         .finally(() => setSearching(false));
     }, 180);
@@ -195,9 +193,7 @@ export function CommandPalette({
         hint={<Kbd>esc</Kbd>}
       />
       <CommandList>
-        <CommandEmpty>
-          {searching ? 'Suche…' : 'Nichts gefunden.'}
-        </CommandEmpty>
+        <CommandEmpty>{searching ? 'Suche…' : 'Nichts gefunden.'}</CommandEmpty>
 
         {parks.length > 0 && (
           <CommandGroup heading="Parks">
@@ -252,18 +248,12 @@ export function CommandPalette({
         {matchingNav(groups, query).map((group) => (
           <CommandGroup key={group.label} heading={group.label}>
             {group.items.map((item) => (
-              <CommandItem
-                key={item.href}
-                value={item.href}
-                onSelect={() => go(item.href)}
-              >
+              <CommandItem key={item.href} value={item.href} onSelect={() => go(item.href)}>
                 <item.icon className="h-4 w-4" />
                 <span className="flex-1 truncate">
                   {item.label}
                   {item.description && (
-                    <span className="text-muted-foreground ml-1.5 text-xs">
-                      {item.description}
-                    </span>
+                    <span className="text-muted-foreground ml-1.5 text-xs">{item.description}</span>
                   )}
                 </span>
                 <ArrowRight className="text-muted-foreground h-3.5 w-3.5" />
@@ -292,15 +282,15 @@ export function CommandPalette({
             <CommandItem value="tip" disabled>
               <Rows3 className="h-4 w-4" />
               <span className="text-muted-foreground flex-1 text-xs">
-                Tippe zwei Buchstaben: Parks und Fahrgeschäfte werden zugleich
-                gesucht, auch unter ihrem kuratierten Namen.
+                Tippe zwei Buchstaben: Parks und Fahrgeschäfte werden zugleich gesucht, auch unter
+                ihrem kuratierten Namen.
               </span>
             </CommandItem>
             <CommandItem value="tip-seasons" disabled>
               <CalendarRange className="h-4 w-4" />
               <span className="text-muted-foreground flex-1 text-xs">
-                <Kbd>g</Kbd> <Kbd>p</Kbd> springt zu den Parks, <Kbd>g</Kbd>{' '}
-                <Kbd>s</Kbd> zu den Saisons.
+                <Kbd>g</Kbd> <Kbd>p</Kbd> springt zu den Parks, <Kbd>g</Kbd> <Kbd>s</Kbd> zu den
+                Saisons.
               </span>
             </CommandItem>
           </CommandGroup>

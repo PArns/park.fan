@@ -45,7 +45,7 @@ function PostPickerBody({ onClose, onPick }: Omit<PostPickerProps, 'open'>) {
     const ctrl = new AbortController();
     fetch('/api/admin/blog-editor/posts', {
       signal: ctrl.signal,
-          })
+    })
       .then((r) => r.json())
       .then((data: { posts?: PostSummary[] }) => setPosts(data.posts ?? []))
       .catch(() => setPosts([]))

@@ -14,14 +14,7 @@ import {
 } from 'lucide-react';
 import { adminKeys, useAdminQuery } from './_lib/api';
 import type { AdminParkListItem, AuditEntry, ParkSeason } from './_lib/types';
-import {
-  ErrorState,
-  Kbd,
-  Panel,
-  PanelBody,
-  PanelHeader,
-  SkeletonRows,
-} from './_ui/primitives';
+import { ErrorState, Kbd, Panel, PanelBody, PanelHeader, SkeletonRows } from './_ui/primitives';
 import { HistoryList } from './_ui/history-list';
 import { useSession } from './_app/session';
 
@@ -140,8 +133,8 @@ export default function AdminDashboard() {
             ) : (seasons.data?.seasons.length ?? 0) === 0 ? (
               <PanelBody>
                 <p className="text-muted-foreground text-xs">
-                  Heute läuft nichts Eingetragenes. Wenn das falsch ist, fehlt der
-                  Eintrag — es gibt keine Quelle, aus der er von selbst käme.
+                  Heute läuft nichts Eingetragenes. Wenn das falsch ist, fehlt der Eintrag — es gibt
+                  keine Quelle, aus der er von selbst käme.
                 </p>
               </PanelBody>
             ) : (
@@ -177,8 +170,8 @@ export default function AdminDashboard() {
           {identity.legacy && (
             <p className="flex items-start gap-2 rounded-lg border border-amber-500/25 bg-amber-500/10 px-3 py-2 text-xs text-amber-300">
               <TriangleAlert className="mt-0.5 h-3.5 w-3.5 shrink-0" />
-              Du bist über das geteilte Alt-Passwort angemeldet. Änderungen lassen
-              sich damit niemandem zuordnen — leg dir ein Konto an.
+              Du bist über das geteilte Alt-Passwort angemeldet. Änderungen lassen sich damit
+              niemandem zuordnen — leg dir ein Konto an.
             </p>
           )}
         </div>

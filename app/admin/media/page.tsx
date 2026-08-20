@@ -92,8 +92,7 @@ export default function MediaAdminPage() {
   const load = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/admin/media?${query}`, {
-              });
+      const response = await fetch(`/api/admin/media?${query}`, {});
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       setData(await response.json());
       setError(null);
@@ -113,7 +112,7 @@ export default function MediaAdminPage() {
   // Re-read after every save; `sessionTick` is what a save bumps to ask for it.
   useEffect(() => {
     let cancelled = false;
-    fetch('/api/admin/media/session', { })
+    fetch('/api/admin/media/session', {})
       .then((r) => r.json())
       .then((data: { session?: SessionInfo | null; tokenMissing?: boolean }) => {
         if (cancelled) return;

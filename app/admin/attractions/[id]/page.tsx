@@ -24,11 +24,7 @@ import {
   PanelHeader,
   SkeletonRows,
 } from '../../_ui/primitives';
-import {
-  CuratedFieldsEditor,
-  useCuratedForm,
-  type FieldValues,
-} from '../../_ui/curated-fields';
+import { CuratedFieldsEditor, useCuratedForm, type FieldValues } from '../../_ui/curated-fields';
 import { HistoryList } from '../../_ui/history-list';
 import { useToast } from '../../_ui/toast';
 import { useCan } from '../../_app/session';
@@ -54,11 +50,7 @@ const TABS: Array<{ id: Tab; label: string; icon: typeof Sliders }> = [
   { id: 'history', label: 'Verlauf', icon: History },
 ];
 
-export default function AttractionDetailPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
+export default function AttractionDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const [tab, setTab] = useState<Tab>('fields');
   const canEdit = useCan('editor');
@@ -70,10 +62,7 @@ export default function AttractionDetailPage({
 
   if (attraction.isError) {
     return (
-      <ErrorState
-        message={attraction.error.message}
-        onRetry={() => void attraction.refetch()}
-      />
+      <ErrorState message={attraction.error.message} onRetry={() => void attraction.refetch()} />
     );
   }
   if (attraction.isLoading || !attraction.data) return <SkeletonRows rows={8} />;
@@ -127,13 +116,7 @@ export default function AttractionDetailPage({
           />
           <Meta
             label="Status"
-            value={
-              data.retiredAt ? (
-                <span className="text-amber-400">stillgelegt</span>
-              ) : (
-                'aktiv'
-              )
-            }
+            value={data.retiredAt ? <span className="text-amber-400">stillgelegt</span> : 'aktiv'}
           />
         </div>
 
@@ -142,8 +125,8 @@ export default function AttractionDetailPage({
             <TriangleAlert className="mt-0.5 h-3.5 w-3.5 shrink-0" />
             <span>
               Stillgelegt am {new Date(data.retiredAt).toLocaleDateString('de-DE')}
-              {data.retiredReason ? ` — ${data.retiredReason}` : ''}. Die Seite
-              antwortet weiter, die Bahn taucht aber in keiner Liste mehr auf.
+              {data.retiredReason ? ` — ${data.retiredReason}` : ''}. Die Seite antwortet weiter,
+              die Bahn taucht aber in keiner Liste mehr auf.
             </span>
           </p>
         )}
@@ -239,7 +222,7 @@ function AttractionFieldsTab({
         attraction.park ? adminKeys.park(attraction.park.id) : ['admin'],
         ['admin', 'history']
       );
-      form.reset();
+      form.applyServerFields(result.fields);
 
       toast.push({
         title: `${result.changed.length} Feld${result.changed.length === 1 ? '' : 'er'} gespeichert`,

@@ -16,11 +16,7 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../../_lib/api';
-import type {
-  AdminAttractionListItem,
-  AdminParkDetail,
-  CurationResponse,
-} from '../../_lib/types';
+import type { AdminAttractionListItem, AdminParkDetail, CurationResponse } from '../../_lib/types';
 import {
   Chip,
   EmptyState,
@@ -32,11 +28,7 @@ import {
   SkeletonRows,
 } from '../../_ui/primitives';
 import { TextInput } from '../../_ui/controls';
-import {
-  CuratedFieldsEditor,
-  useCuratedForm,
-  type FieldValues,
-} from '../../_ui/curated-fields';
+import { CuratedFieldsEditor, useCuratedForm, type FieldValues } from '../../_ui/curated-fields';
 import { HistoryList } from '../../_ui/history-list';
 import { useToast } from '../../_ui/toast';
 import { EntityMediaPanel } from '../../_ui/entity-media';
@@ -64,21 +56,14 @@ const TABS: Array<{ id: Tab; label: string; icon: typeof Sliders }> = [
   { id: 'history', label: 'Verlauf', icon: History },
 ];
 
-export default function ParkDetailPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
+export default function ParkDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const [tab, setTab] = useState<Tab>('fields');
   // Read once, at the top: hooks may not be called from inside the conditional
   // branches below, and calling `useCan` per tab would do exactly that.
   const canEdit = useCan('editor');
 
-  const park = useAdminQuery<AdminParkDetail>(
-    adminKeys.park(id),
-    `/api/admin/content/parks/${id}`
-  );
+  const park = useAdminQuery<AdminParkDetail>(adminKeys.park(id), `/api/admin/content/parks/${id}`);
 
   if (park.isError) {
     return <ErrorState message={park.error.message} onRetry={() => void park.refetch()} />;
@@ -200,9 +185,9 @@ function ParkHeader({ park }: { park: AdminParkDetail }) {
       {missingCoordinates && (
         <p className="flex items-start gap-2 rounded-lg border border-amber-500/25 bg-amber-500/10 px-3 py-2 text-xs text-amber-300">
           <TriangleAlert className="mt-0.5 h-3.5 w-3.5 shrink-0" />
-          Ohne Koordinaten bekommt der Park kein Wetter und taucht in der
-          Umkreissuche nicht auf. Das lässt sich hier nicht kuratieren — es ist
-          eine Korrektur am Geocoding (Wartung → Parks reparieren).
+          Ohne Koordinaten bekommt der Park kein Wetter und taucht in der Umkreissuche nicht auf.
+          Das lässt sich hier nicht kuratieren — es ist eine Korrektur am Geocoding (Wartung → Parks
+          reparieren).
         </p>
       )}
 
@@ -231,20 +216,17 @@ function ParkFieldsTab({ park }: { park: AdminParkDetail }) {
     setSaving(true);
     setError(null);
     try {
-      const result = await adminFetch<CurationResponse>(
-        `/api/admin/content/parks/${park.id}`,
-        {
-          method: 'PATCH',
-          body: {
-            fields: input.fields,
-            ...(input.reason ? { reason: input.reason } : {}),
-            ...(input.sourceUrl ? { sourceUrl: input.sourceUrl } : {}),
-          },
-        }
-      );
+      const result = await adminFetch<CurationResponse>(`/api/admin/content/parks/${park.id}`, {
+        method: 'PATCH',
+        body: {
+          fields: input.fields,
+          ...(input.reason ? { reason: input.reason } : {}),
+          ...(input.sourceUrl ? { sourceUrl: input.sourceUrl } : {}),
+        },
+      });
 
       invalidate(adminKeys.park(park.id), ['admin', 'parks'], ['admin', 'history']);
-      form.reset();
+      form.applyServerFields(result.fields);
 
       toast.push({
         title: `${result.changed.length} Feld${result.changed.length === 1 ? '' : 'er'} gespeichert`,
@@ -281,7 +263,14 @@ function ParkFieldsTab({ park }: { park: AdminParkDetail }) {
             ? 'Nichts korrigiert — der Park zeigt überall, was der Sync liefert.'
             : `${overridden} Feld${overridden === 1 ? '' : 'er'} weicht vom Upstream ab.`
         }
-        action={overridden > 0 ? <Chip tone="primary"><Sparkles className="h-3 w-3" />{overridden}</Chip> : null}
+        action={
+          overridden > 0 ? (
+            <Chip tone="primary">
+              <Sparkles className="h-3 w-3" />
+              {overridden}
+            </Chip>
+          ) : null
+        }
       />
       <PanelBody>
         {!canEdit && (
@@ -396,9 +385,7 @@ function ParkAttractionsTab({ parkId }: { parkId: string }) {
 
                 <div className="flex shrink-0 items-center gap-1.5">
                   {attraction.isSeasonal && (
-                    <Chip tone={attraction.seasonalityCurated ? 'primary' : 'muted'}>
-                      saisonal
-                    </Chip>
+                    <Chip tone={attraction.seasonalityCurated ? 'primary' : 'muted'}>saisonal</Chip>
                   )}
                   {attraction.hasRideProfile && <Chip>Profil</Chip>}
                   {attraction.curatedFieldCount > 0 && (

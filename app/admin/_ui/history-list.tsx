@@ -184,7 +184,10 @@ function HistoryRow({
           </a>
         )}
         {showEntity && entry.entityId && entry.entityType === 'park' && (
-          <Link href={`/admin/parks/${entry.entityId}`} className="text-primary text-xs hover:underline">
+          <Link
+            href={`/admin/parks/${entry.entityId}`}
+            className="text-primary text-xs hover:underline"
+          >
             zum Park
           </Link>
         )}

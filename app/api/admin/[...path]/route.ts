@@ -2,11 +2,7 @@ import 'server-only';
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { getServerApiHeaders } from '@/lib/api/client';
-import {
-  ADMIN_SESSION_COOKIE,
-  readSessionToken,
-  sessionCookieOptions,
-} from '@/lib/admin/session';
+import { ADMIN_SESSION_COOKIE, readSessionToken, sessionCookieOptions } from '@/lib/admin/session';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://api.park.fan';
 
@@ -44,6 +40,15 @@ export const dynamic = 'force-dynamic';
 const FORWARDED_RESPONSE_HEADERS = ['content-type'];
 
 async function proxyRequest(request: NextRequest, path: string[]) {
+  // Next decodes route params, so a `%2e%2e` segment arrives here as `..` and
+  // `new URL()` would normalise `/v1/admin/../parks` into `/v1/parks` — turning
+  // the admin proxy into a general-purpose one and, worse, into a way to reach
+  // endpoints whose responses are supposed to be edge-cached under different
+  // rules. Nothing legitimate sends an empty or dotted segment.
+  if (path.some((segment) => segment.length === 0 || segment === '.' || segment === '..')) {
+    return NextResponse.json({ error: 'Bad request' }, { status: 400 });
+  }
+
   const incoming = new URL(request.url);
   const target = new URL(`${API_BASE}/v1/admin/${path.join('/')}`);
   incoming.searchParams.forEach((value, key) => {
@@ -96,7 +101,7 @@ async function proxyRequest(request: NextRequest, path: string[]) {
     );
   }
 
-  const response = NextResponse.json(await rotateSessionToken(payload), {
+  const response = NextResponse.json(await rotateSessionToken(payload, path), {
     status: upstream.status,
     headers: { 'Cache-Control': 'no-store, must-revalidate' },
   });
@@ -116,14 +121,28 @@ function forwardedFor(request: NextRequest): Record<string, string> {
 }
 
 /**
+ * Endpoints whose response carries a session token meant for the cookie.
+ *
+ * A list rather than "any response with a `token` key": the rotation writes an
+ * authentication cookie, and deciding to do that from the shape of an arbitrary
+ * upstream payload is how a field named `token` on some future endpoint quietly
+ * becomes somebody's session.
+ */
+const TOKEN_ISSUING_PATHS = new Set(['auth/change-password', 'auth/login']);
+
+/**
  * Move a re-issued session token from the body into the cookie.
  *
- * `POST auth/change-password` is the only endpoint that answers with one, and
- * it answers with one because it has just revoked every session of the account
- * — including this request's. Left in the body, the browser would be holding a
- * dead cookie and a token it cannot store (httpOnly is set here, not there).
+ * `POST auth/change-password` answers with one because it has just revoked
+ * every session of the account — including this request's. Left in the body,
+ * the browser would be holding a dead cookie and a token it cannot store
+ * (httpOnly is set here, not there). `auth/login` is on the list because the
+ * proxy is a valid way to reach it, even though the admin UI uses
+ * `/api/admin/session` instead.
  */
-async function rotateSessionToken(payload: unknown): Promise<unknown> {
+async function rotateSessionToken(payload: unknown, path: string[]): Promise<unknown> {
+  if (!TOKEN_ISSUING_PATHS.has(path.join('/'))) return payload;
+
   if (
     !payload ||
     typeof payload !== 'object' ||

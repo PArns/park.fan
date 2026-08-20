@@ -60,7 +60,7 @@ export default function ContributionsPage() {
     try {
       const res = await fetch('/api/admin/contributions/orphans', {
         method: 'DELETE',
-              });
+      });
       if (res.ok) triggerRefresh();
     } finally {
       setPurging(false);

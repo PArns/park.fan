@@ -86,62 +86,59 @@ export function MediaUpload({ vocabulary, newSession, onDone, onClose }: Props) 
   const blobUrls = useMemo(() => files.map((f) => URL.createObjectURL(f)), [files]);
   useEffect(() => () => blobUrls.forEach((url) => URL.revokeObjectURL(url)), [blobUrls]);
 
-  const analyze = useCallback(
-    async (incoming: File[]) => {
-      const images = incoming.filter((f) => f.type.startsWith('image/'));
-      if (!images.length) return;
-      setBusy(`Reading ${images.length} file${images.length === 1 ? '' : 's'}…`);
-      setError(null);
-      try {
-        // One request per file. The batch used to go up as a single multipart, which
-        // meant a handful of photos exceeded the ~4.5 MB body limit and the whole
-        // drop failed — see `_lib/upload-transport.ts`.
-        const analyzed: AnalyzedFile[] = [];
-        for (const [index, file] of images.entries()) {
-          setBusy(`Reading ${index + 1} of ${images.length}…`);
-          const form = new FormData();
-          form.append('files', analyzePayload(file), file.name);
-          const response = await fetch('/api/admin/media/analyze', {
-            method: 'POST',
-                        body: form,
-          });
-          const one = await response.json();
-          if (!response.ok) throw new Error(one.error ?? `Analysis failed for ${file.name}`);
-          analyzed.push(...(one.files as AnalyzedFile[]));
-        }
-        const data = { files: analyzed };
-
-        setFiles(images);
-        setAnalysis(data.files);
-        setCursor(0);
-        setStage('walk');
-        setAssignments(
-          (data.files as AnalyzedFile[]).map((f) => ({
-            // The park is proposed as an answer; the ride deliberately is not.
-            collection: f.suggestion.park?.slug ?? '',
-            name: toSlug(f.name),
-            ext: extOf(f.name),
-            park: f.suggestion.park?.confidence === 'confident' ? f.suggestion.park.slug : null,
-            ride: null,
-            area: null,
-            tags: ['photo'],
-            roles: [],
-            alt: '',
-            caption: '',
-            shotAt: f.shotAt,
-            focus: null,
-            skip: false,
-            done: false,
-          }))
-        );
-      } catch (e) {
-        setError((e as Error).message);
-      } finally {
-        setBusy(null);
+  const analyze = useCallback(async (incoming: File[]) => {
+    const images = incoming.filter((f) => f.type.startsWith('image/'));
+    if (!images.length) return;
+    setBusy(`Reading ${images.length} file${images.length === 1 ? '' : 's'}…`);
+    setError(null);
+    try {
+      // One request per file. The batch used to go up as a single multipart, which
+      // meant a handful of photos exceeded the ~4.5 MB body limit and the whole
+      // drop failed — see `_lib/upload-transport.ts`.
+      const analyzed: AnalyzedFile[] = [];
+      for (const [index, file] of images.entries()) {
+        setBusy(`Reading ${index + 1} of ${images.length}…`);
+        const form = new FormData();
+        form.append('files', analyzePayload(file), file.name);
+        const response = await fetch('/api/admin/media/analyze', {
+          method: 'POST',
+          body: form,
+        });
+        const one = await response.json();
+        if (!response.ok) throw new Error(one.error ?? `Analysis failed for ${file.name}`);
+        analyzed.push(...(one.files as AnalyzedFile[]));
       }
-    },
-    []
-  );
+      const data = { files: analyzed };
+
+      setFiles(images);
+      setAnalysis(data.files);
+      setCursor(0);
+      setStage('walk');
+      setAssignments(
+        (data.files as AnalyzedFile[]).map((f) => ({
+          // The park is proposed as an answer; the ride deliberately is not.
+          collection: f.suggestion.park?.slug ?? '',
+          name: toSlug(f.name),
+          ext: extOf(f.name),
+          park: f.suggestion.park?.confidence === 'confident' ? f.suggestion.park.slug : null,
+          ride: null,
+          area: null,
+          tags: ['photo'],
+          roles: [],
+          alt: '',
+          caption: '',
+          shotAt: f.shotAt,
+          focus: null,
+          skip: false,
+          done: false,
+        }))
+      );
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setBusy(null);
+    }
+  }, []);
 
   const update = (index: number, patch: Partial<Assignment>) =>
     setAssignments((all) => all.map((a, i) => (i === index ? { ...a, ...patch } : a)));

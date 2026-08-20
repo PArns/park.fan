@@ -74,9 +74,7 @@ export function RideProfileEditor({
   const [elements, setElements] = useState<string[]>(profile?.elements ?? []);
   const [types, setTypes] = useState<string[]>(profile?.types ?? []);
   const [manufacturerName, setManufacturerName] = useState(profile?.manufacturerName ?? '');
-  const [manufacturerTermId, setManufacturerTermId] = useState(
-    profile?.manufacturerTermId ?? ''
-  );
+  const [manufacturerTermId, setManufacturerTermId] = useState(profile?.manufacturerTermId ?? '');
   const [model, setModel] = useState(profile?.model ?? '');
   const [openedYear, setOpenedYear] = useState<number | null>(profile?.openedYear ?? null);
   const [inversions, setInversions] = useState<number | null>(profile?.inversions ?? null);
@@ -181,7 +179,10 @@ export function RideProfileEditor({
         />
 
         <div className="grid gap-3 sm:grid-cols-2">
-          <Field label="Hersteller" hint="Anzeigename, auch wenn es dafür keinen Glossar-Eintrag gibt.">
+          <Field
+            label="Hersteller"
+            hint="Anzeigename, auch wenn es dafür keinen Glossar-Eintrag gibt."
+          >
             <TextInput
               value={manufacturerName}
               onChange={(event) => setManufacturerName(event.target.value)}
@@ -189,10 +190,7 @@ export function RideProfileEditor({
               disabled={!canEdit}
             />
           </Field>
-          <Field
-            label="Hersteller im Glossar"
-            hint="Leer = Name als Text ohne Link."
-          >
+          <Field label="Hersteller im Glossar" hint="Leer = Name als Text ohne Link.">
             <TermPicker
               terms={terms.filter((term) => term.category === 'manufacturers')}
               value={manufacturerTermId || null}
@@ -240,8 +238,8 @@ export function RideProfileEditor({
             <Gauge className="h-3 w-3" /> Maße
           </p>
           <p className="text-muted-foreground mb-2 text-xs">
-            Handgeschrieben. Jeder Wert schlägt den aus Wikidata importierten —
-            leer lassen heißt „nimm den Import“.
+            Handgeschrieben. Jeder Wert schlägt den aus Wikidata importierten — leer lassen heißt
+            „nimm den Import“.
           </p>
           <div className="grid gap-3 sm:grid-cols-4">
             {MEASUREMENTS.map((measurement) => {
@@ -358,9 +356,7 @@ function TermList({
                 <span className="min-w-0 flex-1 truncate text-sm">
                   {term ? term.name : id}
                   {!term && (
-                    <span className="ml-1.5 text-xs text-amber-400">
-                      — kein Glossar-Eintrag
-                    </span>
+                    <span className="ml-1.5 text-xs text-amber-400">— kein Glossar-Eintrag</span>
                   )}
                 </span>
                 {ordered && !disabled && (
@@ -442,13 +438,14 @@ function TermPicker({
 
   const filtered = useMemo(() => {
     const term = query.trim().toLowerCase();
-    const list = term.length === 0
-      ? terms
-      : terms.filter(
-          (candidate) =>
-            candidate.name.toLowerCase().includes(term) ||
-            candidate.id.toLowerCase().includes(term)
-        );
+    const list =
+      term.length === 0
+        ? terms
+        : terms.filter(
+            (candidate) =>
+              candidate.name.toLowerCase().includes(term) ||
+              candidate.id.toLowerCase().includes(term)
+          );
     return list.slice(0, 60);
   }, [terms, query]);
 

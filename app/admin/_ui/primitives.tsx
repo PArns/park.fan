@@ -16,16 +16,10 @@ import { cn } from '@/lib/utils';
 
 // ─── layout ───────────────────────────────────────────────────────────────────
 
-export function Panel({
-  className,
-  ...props
-}: ComponentProps<'section'>) {
+export function Panel({ className, ...props }: ComponentProps<'section'>) {
   return (
     <section
-      className={cn(
-        'border-border/60 bg-card/60 rounded-xl border backdrop-blur-sm',
-        className
-      )}
+      className={cn('border-border/60 bg-card/60 rounded-xl border backdrop-blur-sm', className)}
       {...props}
     />
   );
@@ -45,12 +39,7 @@ export function PanelHeader({
   className?: string;
 }) {
   return (
-    <header
-      className={cn(
-        'border-border/50 flex items-start gap-3 border-b px-4 py-3',
-        className
-      )}
-    >
+    <header className={cn('border-border/50 flex items-start gap-3 border-b px-4 py-3', className)}>
       {Icon && (
         <span className="bg-primary/10 text-primary mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg">
           <Icon className="h-4 w-4" />
@@ -151,13 +140,7 @@ export function LoadingState({ label = 'Lädt…' }: { label?: string }) {
   );
 }
 
-export function ErrorState({
-  message,
-  onRetry,
-}: {
-  message: string;
-  onRetry?: () => void;
-}) {
+export function ErrorState({ message, onRetry }: { message: string; onRetry?: () => void }) {
   return (
     <div className="border-destructive/30 bg-destructive/10 text-destructive m-4 flex items-start gap-2 rounded-lg border px-3 py-2.5 text-sm">
       <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
