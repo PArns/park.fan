@@ -56,10 +56,24 @@ export function AdminPage({
   );
 }
 
+/**
+ * A surface, and the reason it looks like one.
+ *
+ * A `bg-card` panel on a `bg-background` page is a two-percent difference in
+ * lightness, and at that distance a border is the only thing saying "card" —
+ * which is why the admin read as one flat sheet with hairlines drawn on it.
+ * Three cheap things fix that and cost no layout: a soft drop shadow so the
+ * panel sits *above* the page, an inset ring so the edge has thickness, and a
+ * one-pixel highlight along the top where the layout's light comes from.
+ */
 export function Panel({ className, ...props }: ComponentProps<'section'>) {
   return (
     <section
-      className={cn('border-border/60 bg-card/60 rounded-xl border backdrop-blur-sm', className)}
+      className={cn(
+        'border-border/60 bg-card/80 relative rounded-xl border shadow-lg shadow-black/20 ring-1 ring-white/[0.03] backdrop-blur-sm',
+        'before:pointer-events-none before:absolute before:inset-x-6 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent',
+        className
+      )}
       {...props}
     />
   );
@@ -81,7 +95,7 @@ export function PanelHeader({
   return (
     <header className={cn('border-border/50 flex items-start gap-3 border-b px-4 py-3', className)}>
       {Icon && (
-        <span className="bg-primary/10 text-primary mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg">
+        <span className="from-primary/20 to-primary/5 ring-primary/20 text-primary mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br ring-1">
           <Icon className="h-4 w-4" />
         </span>
       )}

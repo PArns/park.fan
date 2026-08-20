@@ -32,9 +32,22 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   return (
     <html lang="de" className="dark" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} bg-background text-foreground min-h-screen font-sans antialiased`}
+        className={`${geistSans.variable} bg-background text-foreground relative min-h-screen font-sans antialiased`}
       >
-        <AdminProviders>{children}</AdminProviders>
+        {/* Something for the panels to sit on.
+            Every surface in here is a near-black card on a near-black page, and
+            at that distance the cards stop reading as cards — the dashboard was
+            a flat sheet with hairlines drawn on it. One wide, very faint wash
+            of the brand colour from the top gives the column a light source, so
+            a `bg-card/60` panel has something to be lighter *than*. Fixed, so
+            it does not travel with a scrolling table. */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none fixed inset-0 bg-[radial-gradient(90rem_40rem_at_50%_-12rem,var(--color-primary)_0%,transparent_60%)] opacity-[0.11]"
+        />
+        <div className="relative">
+          <AdminProviders>{children}</AdminProviders>
+        </div>
       </body>
     </html>
   );

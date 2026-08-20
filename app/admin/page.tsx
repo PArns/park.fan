@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Activity,
   CalendarRange,
@@ -12,6 +13,9 @@ import {
   Sparkles,
   TriangleAlert,
 } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { heroObjectPosition } from '@/lib/media/hero';
+import { useHeroPhoto } from './_lib/use-hero-photo';
 import { adminKeys, useAdminQuery } from './_lib/api';
 import type { AdminParkListItem, AuditEntry, ParkSeason } from './_lib/types';
 import { ErrorState, Kbd, Panel, PanelBody, PanelHeader, SkeletonRows } from './_ui/primitives';
@@ -31,6 +35,7 @@ import { AdminPage } from './_ui/primitives';
  */
 export default function AdminDashboard() {
   const { identity } = useSession();
+  const hero = useHeroPhoto();
 
   const history = useAdminQuery<{ entries: AuditEntry[]; total: number }>(
     adminKeys.history({ limit: 12 }),
@@ -49,11 +54,80 @@ export default function AdminDashboard() {
 
   return (
     <AdminPage width="wide">
-      <div className="flex flex-wrap items-baseline gap-2">
-        <h1 className="text-xl font-bold">Hallo {identity.displayName.split(' ')[0]}</h1>
-        <p className="text-muted-foreground text-sm">
-          <Kbd>⌘K</Kbd> für alles, <Kbd>g</Kbd> <Kbd>p</Kbd> zu den Parks.
-        </p>
+      {/* The same photograph the login screen was showing a second ago.
+          Both ask `useHeroPhoto` for the same half-hour window, so signing in
+          does not throw away the picture somebody was just looking at — and a
+          tool for editing theme parks gets to look like one. The band has a
+          fixed height, so nothing moves when the image lands. */}
+      <div className="border-border/60 relative h-32 overflow-hidden rounded-2xl border shadow-lg shadow-black/20 ring-1 ring-white/[0.03] sm:h-40">
+        <div aria-hidden="true" className="from-primary/25 absolute inset-0 bg-gradient-to-br to-transparent" />
+        {hero && (
+          <Image
+            src={hero.src}
+            alt=""
+            fill
+            priority
+            sizes="(min-width: 1024px) 72rem, 100vw"
+            style={{ objectPosition: heroObjectPosition(hero.src) }}
+            className="animate-in fade-in object-cover duration-1000 motion-reduce:animate-none"
+          />
+        )}
+        <div
+          aria-hidden="true"
+          className="from-background via-background/75 absolute inset-0 bg-gradient-to-r to-transparent"
+        />
+        {/* The greeting sits on this one. Without it the line of muted text
+            beside the name lands on whatever the photo happens to be doing at
+            that x, which on a bright picture is nothing legible. */}
+        <div
+          aria-hidden="true"
+          className="from-background via-background/50 absolute inset-0 bg-gradient-to-t to-transparent"
+        />
+
+        <div className="absolute inset-x-0 bottom-0 flex flex-wrap items-baseline gap-x-2 gap-y-1 p-4 sm:p-5">
+          <h1 className="text-xl font-bold drop-shadow-[0_1px_10px_rgba(0,0,0,0.9)] sm:text-2xl">
+            Hallo {identity.displayName.split(' ')[0]}
+          </h1>
+          <p className="text-muted-foreground text-sm">
+            <Kbd>⌘K</Kbd> für alles, <Kbd>g</Kbd> <Kbd>p</Kbd> zu den Parks.
+          </p>
+        </div>
+
+        {hero?.meta && (
+          <p className="animate-in fade-in absolute right-3 bottom-3 hidden max-w-[45%] truncate rounded-full border border-white/10 bg-black/40 px-2.5 py-1 text-[11px] text-white/70 backdrop-blur-md duration-1000 sm:block motion-reduce:animate-none">
+            {[hero.meta.attractionName, hero.meta.parkName].filter(Boolean).join(' · ')}
+          </p>
+        )}
+      </div>
+
+      {/* Three numbers the page already has.
+          Every one of these is the `total` of a query that runs below anyway,
+          so this costs no request — and it answers at a glance what the lists
+          under it answer after reading. They are counts, not a metrics wall:
+          each one is a link to the list it counts. */}
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+        <Stat
+          href="/admin/parks"
+          icon={MapPin}
+          label="Parks ohne Kuratierung"
+          value={uncurated.data?.total}
+          loading={uncurated.isLoading}
+        />
+        <Stat
+          href="/admin/seasons"
+          icon={CalendarRange}
+          label="Saisons laufen heute"
+          value={seasons.data?.total}
+          loading={seasons.isLoading}
+        />
+        <Stat
+          href="/admin/history"
+          icon={History}
+          label="Änderungen insgesamt"
+          value={history.data?.total}
+          loading={history.isLoading}
+          className="col-span-2 sm:col-span-1"
+        />
       </div>
 
       <div className="grid gap-4 lg:grid-cols-3">
@@ -193,10 +267,55 @@ function QuickLink({
   return (
     <Link
       href={href}
-      className="border-border/60 hover:border-primary/40 flex items-center gap-2 rounded-lg border px-2.5 py-2 text-xs"
+      className="border-border/60 hover:border-primary/40 hover:bg-primary/5 flex items-center gap-2 rounded-lg border px-2.5 py-2 text-xs transition-colors"
     >
       <Icon className="text-primary h-3.5 w-3.5 shrink-0" />
       <span className="truncate">{label}</span>
+    </Link>
+  );
+}
+
+/**
+ * One count, and where to go with it.
+ *
+ * The box keeps its height while the query is in flight — a tile that grows
+ * from nothing when the number lands pushes the two lists under it down, and
+ * these three resolve at three different moments.
+ */
+function Stat({
+  href,
+  icon: Icon,
+  label,
+  value,
+  loading,
+  className,
+}: {
+  href: string;
+  icon: typeof MapPin;
+  label: string;
+  value: number | undefined;
+  loading: boolean;
+  className?: string;
+}) {
+  return (
+    <Link
+      href={href}
+      className={cn(
+        'border-border/60 bg-card/80 hover:border-primary/40 group relative overflow-hidden rounded-xl border p-3 shadow-lg shadow-black/20 ring-1 ring-white/[0.03] backdrop-blur-sm transition-colors',
+        className
+      )}
+    >
+      <span
+        aria-hidden="true"
+        className="from-primary/10 pointer-events-none absolute -top-8 -right-8 h-24 w-24 rounded-full bg-gradient-to-br to-transparent blur-2xl transition-opacity group-hover:opacity-150"
+      />
+      <div className="relative flex items-start justify-between gap-2">
+        <p className="text-2xl leading-none font-semibold tabular-nums">
+          {loading ? <span className="text-muted-foreground/40">—</span> : (value ?? '—')}
+        </p>
+        <Icon className="text-primary/70 h-4 w-4 shrink-0" />
+      </div>
+      <p className="text-muted-foreground relative mt-2 text-[11px] leading-tight">{label}</p>
     </Link>
   );
 }

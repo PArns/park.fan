@@ -157,7 +157,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
       />
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="border-border/50 bg-background/80 sticky top-0 z-30 flex h-14 items-center gap-2 border-b px-3 backdrop-blur-md sm:px-4">
+        <header className="border-border/50 bg-background/70 supports-[backdrop-filter]:bg-background/60 relative sticky top-0 z-30 flex h-14 items-center gap-2 border-b px-3 backdrop-blur-xl sm:px-4 after:pointer-events-none after:absolute after:inset-x-0 after:-bottom-px after:h-px after:bg-gradient-to-r after:from-transparent after:via-primary/30 after:to-transparent">
           <button
             type="button"
             onClick={() => setMobileOpen(true)}
@@ -275,7 +275,7 @@ function Sidebar({
         )}
       >
         <div className="flex h-14 items-center gap-2 px-3">
-          <span className="bg-primary/15 border-primary/20 text-primary flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border">
+          <span className="from-primary/30 to-primary/5 border-primary/25 text-primary shadow-primary/10 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border bg-gradient-to-br shadow-sm">
             <ShieldCheck className="h-4 w-4" />
           </span>
           {(!collapsed || mobileOpen) && (
@@ -379,7 +379,7 @@ function SidebarLink({
         'relative flex items-center gap-2.5 rounded-lg py-1.5 pr-2.5 pl-3 text-sm transition-colors',
         'before:absolute before:top-1.5 before:bottom-1.5 before:left-0 before:w-0.5 before:rounded-full before:transition-colors',
         active
-          ? 'bg-sidebar-accent text-sidebar-accent-foreground before:bg-primary font-medium'
+          ? 'bg-sidebar-accent text-sidebar-accent-foreground before:bg-primary before:shadow-[0_0_10px_var(--color-primary)] font-medium'
           : 'text-muted-foreground hover:bg-accent hover:text-foreground before:bg-transparent'
       )}
     >
@@ -434,7 +434,7 @@ function AccountMenu({
           event.stopPropagation();
           setOpen((current) => !current);
         }}
-        className="bg-primary/15 text-primary hover:bg-primary/25 flex h-8 w-8 items-center justify-center rounded-full text-xs font-semibold"
+        className="from-primary/35 to-primary/10 ring-primary/25 text-primary hover:brightness-125 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br text-xs font-semibold ring-1 transition-[filter]"
         aria-label="Konto"
       >
         {initials || '?'}

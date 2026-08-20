@@ -81,6 +81,42 @@ knowing:
 Roles are `owner > editor > author > viewer`, ranked rather than enumerated.
 Hiding a link a role cannot use is a courtesy; the API is the control.
 
+## How it looks, and why
+
+The login screen is the photograph, not a card on a wallpaper. Centring a form
+over a picture means scrimming the picture hardest exactly where its subject is,
+which is how the first version ended up as a grey rectangle floating on a smear.
+The form sits in a column on the left, the scrim runs sideways, and the right two
+thirds of the photo are left alone. On a phone there is no room for that, so the
+scrim runs downwards instead.
+
+The picture comes from `useHeroPhoto` (`_lib/use-hero-photo.ts`), which is the
+rotation pool the public homepage uses, read through `@/lib/media/hero` — the
+only client-safe slice of the media database, 21 KB against the 107 KB catalog.
+It is picked after mount because the choice depends on the clock and the server
+would otherwise pick a different one. The dashboard asks for the **same**
+half-hour window, so the park somebody signs in on is the park that greets them
+once they are in.
+
+The second-factor step is six boxes rather than one field with wide letter
+spacing. The digits live in an array of six, not in a string: clearing the third
+digit of a full code has to leave a hole rather than slide the last two along one
+box each. Paste anywhere in the row fills the row, and `one-time-code` sits on
+the first box only, which is what phone autofill looks for.
+
+Inside, three things carry the surfaces. The layout paints one very faint wash of
+the brand colour from the top, so a panel has something to be lighter _than_ — a
+`bg-card` panel on a `bg-background` page is a six-percent difference in
+lightness and reads as a hairline drawn on a flat sheet. `Panel` adds a drop
+shadow, an inset ring and a one-pixel highlight along its top edge. And the
+dashboard opens on a band of that same photograph, with the three counts its own
+queries already return sitting under it.
+
+The two drifting aurora blobs behind the login form are the ones the maintenance
+page uses. They are masked to the side the form is on: a blurred blob at that
+size covers the viewport whatever its opacity, and unmasked it laid a teal film
+across the photograph and undid the reason it is there.
+
 ## Curated fields
 
 The editor is **generated from the backend's field descriptors**
