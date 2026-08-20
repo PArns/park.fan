@@ -16,6 +16,7 @@ import { cn } from '@/lib/utils';
 import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../../_lib/api';
 import type { AdminAttractionDetail, CurationResponse } from '../../_lib/types';
 import {
+  AdminPage,
   Chip,
   ErrorState,
   Meta,
@@ -70,7 +71,7 @@ export default function AttractionDetailPage({ params }: { params: Promise<{ id:
   const data = attraction.data;
 
   return (
-    <div className="mx-auto max-w-5xl space-y-4 p-4">
+    <AdminPage>
       <header className="space-y-3">
         <div className="flex flex-wrap items-start gap-3">
           <span className="bg-primary/10 text-primary mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl">
@@ -182,7 +183,7 @@ export default function AttractionDetailPage({ params }: { params: Promise<{ id:
           canUndo={canEdit}
         />
       )}
-    </div>
+    </AdminPage>
   );
 }
 
@@ -253,7 +254,7 @@ function AttractionFieldsTab({
         title="Kuratierte Felder"
         hint={
           overridden === 0
-            ? 'Nichts korrigiert — alles kommt so vom Sync.'
+            ? 'Nichts korrigiert. Alles kommt so vom Sync.'
             : `${overridden} Feld${overridden === 1 ? '' : 'er'} weicht vom Upstream ab.`
         }
         action={

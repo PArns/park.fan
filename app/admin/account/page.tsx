@@ -16,7 +16,7 @@ import { de } from 'date-fns/locale';
 import { Button } from '@/components/ui/button';
 import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
 import type { AdminSessionInfo } from '../_lib/types';
-import { Chip, Panel, PanelBody, PanelHeader, SkeletonRows } from '../_ui/primitives';
+import { AdminPage, Chip, Panel, PanelBody, PanelHeader, SkeletonRows } from '../_ui/primitives';
 import { Field, TextInput } from '../_ui/controls';
 import { useToast } from '../_ui/toast';
 import { useSession } from '../_app/session';
@@ -34,7 +34,7 @@ export default function AccountPage() {
   const { identity } = useSession();
 
   return (
-    <div className="mx-auto max-w-3xl space-y-4 p-4">
+    <AdminPage width="narrow">
       <header>
         <h1 className="text-xl font-bold">{identity.displayName}</h1>
         <p className="text-muted-foreground text-sm">{identity.email}</p>
@@ -43,7 +43,7 @@ export default function AccountPage() {
       <PasswordPanel />
       <TotpPanel enabled={identity.totpEnabled} />
       <SessionsPanel />
-    </div>
+    </AdminPage>
   );
 }
 
@@ -90,7 +90,7 @@ function PasswordPanel() {
       <PanelHeader
         icon={KeyRound}
         title="Passwort"
-        hint="Eine Änderung beendet jede andere Sitzung dieses Kontos — diese hier bleibt."
+        hint="Eine Änderung beendet jede andere Sitzung dieses Kontos. Diese hier bleibt."
       />
       <PanelBody className="space-y-3">
         <Field label="Aktuell">
@@ -243,7 +243,7 @@ function TotpPanel({ enabled }: { enabled: boolean }) {
           <div className="space-y-3">
             <p className="text-muted-foreground text-xs">
               Scanne den Code, oder trage das Geheimnis von Hand ein. Zwei-Faktor wird erst aktiv,
-              wenn ein Code aus der App hier ankommt — so kann ein misslungener Scan niemanden
+              wenn ein Code aus der App hier ankommt. So kann ein misslungener Scan niemanden
               aussperren.
             </p>
             {/* No QR code, and that is deliberate rather than lazy. Every
@@ -346,7 +346,7 @@ function SessionsPanel() {
       <PanelHeader
         icon={Monitor}
         title="Aktive Sitzungen"
-        hint="Jede angemeldete Stelle. Beenden wirkt sofort — die Token liegen serverseitig."
+        hint="Jede angemeldete Stelle. Beenden wirkt sofort, die Token liegen serverseitig."
       />
       {sessions.isLoading ? (
         <SkeletonRows rows={2} />

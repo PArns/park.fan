@@ -108,7 +108,7 @@ export default function HistoryPage() {
           <ErrorState message={history.error.message} onRetry={() => void history.refetch()} />
         ) : history.isLoading ? (
           <SkeletonRows rows={10} />
-        ) : (history.data?.entries.length ?? 0) === 0 ? (
+        ) : (history.data?.entries?.length ?? 0) === 0 ? (
           <EmptyState
             icon={History}
             title="Nichts gefunden"

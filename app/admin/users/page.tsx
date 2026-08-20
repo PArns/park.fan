@@ -15,6 +15,7 @@ import {
 import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
 import type { AdminIdentity, AdminRole } from '../_lib/types';
 import {
+  AdminPage,
   Chip,
   EmptyState,
   ErrorState,
@@ -65,7 +66,7 @@ export default function UsersPage() {
   }
 
   return (
-    <div className="mx-auto max-w-3xl space-y-4 p-4">
+    <AdminPage width="narrow">
       <Panel>
         <PanelHeader
           icon={UserCog}
@@ -92,7 +93,7 @@ export default function UsersPage() {
       </Panel>
 
       {creating && <CreateUserDialog onClose={() => setCreating(false)} />}
-    </div>
+    </AdminPage>
   );
 }
 

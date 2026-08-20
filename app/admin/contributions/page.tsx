@@ -19,6 +19,7 @@ import { useAdmin, useAdminFetch } from '../_lib/admin-context';
 import { EmptyPanel, ErrorPanel, LoadingPanel, Section } from '../_lib/ui';
 import type { SubmissionRecord, SubmissionStatus } from '@/lib/contribute/types';
 import { AdoptIntoMedia } from './_components/adopt-into-media';
+import { AdminPage } from '../_ui/primitives';
 
 interface ListResponse {
   submissions: SubmissionRecord[];
@@ -69,63 +70,65 @@ export default function ContributionsPage() {
   };
 
   return (
-    <Section
-      icon={ImageIcon}
-      title="User photo contributions"
-      action={
-        <div className="flex gap-1">
-          {FILTERS.map((f) => {
-            const count = f.key === 'all' ? data.total : (data.counts[f.key] ?? 0);
-            return (
-              <button
-                key={f.key}
-                onClick={() => setFilter(f.key)}
-                className={cn(
-                  'rounded-lg border px-2.5 py-1 text-xs font-medium transition-colors',
-                  filter === f.key
-                    ? 'border-primary/40 bg-primary/10 text-primary'
-                    : 'border-border/60 text-muted-foreground hover:text-foreground'
-                )}
-              >
-                {f.label} <span className="tabular-nums">{count}</span>
-              </button>
-            );
-          })}
-        </div>
-      }
-    >
-      {orphans > 0 && (
-        <div className="flex flex-wrap items-center gap-3 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-300">
-          <AlertTriangle className="size-4 shrink-0" />
-          <span className="flex-1">
-            {orphans} orphaned image file(s) in the store with no submission record — left over from
-            uploads that failed before metadata was saved.
-          </span>
-          <button
-            onClick={purgeOrphans}
-            disabled={purging}
-            className="inline-flex items-center gap-1.5 rounded-md border border-amber-500/40 px-2.5 py-1 text-xs font-medium hover:bg-amber-500/15 disabled:opacity-50"
-          >
-            {purging ? (
-              <Loader2 className="size-3.5 animate-spin" />
-            ) : (
-              <Trash2 className="size-3.5" />
-            )}
-            Purge orphans
-          </button>
-        </div>
-      )}
+    <AdminPage width="wide">
+      <Section
+        icon={ImageIcon}
+        title="User photo contributions"
+        action={
+          <div className="flex gap-1">
+            {FILTERS.map((f) => {
+              const count = f.key === 'all' ? data.total : (data.counts[f.key] ?? 0);
+              return (
+                <button
+                  key={f.key}
+                  onClick={() => setFilter(f.key)}
+                  className={cn(
+                    'rounded-lg border px-2.5 py-1 text-xs font-medium transition-colors',
+                    filter === f.key
+                      ? 'border-primary/40 bg-primary/10 text-primary'
+                      : 'border-border/60 text-muted-foreground hover:text-foreground'
+                  )}
+                >
+                  {f.label} <span className="tabular-nums">{count}</span>
+                </button>
+              );
+            })}
+          </div>
+        }
+      >
+        {orphans > 0 && (
+          <div className="flex flex-wrap items-center gap-3 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-300">
+            <AlertTriangle className="size-4 shrink-0" />
+            <span className="flex-1">
+              {orphans} orphaned image file(s) in the store with no submission record — left over
+              from uploads that failed before metadata was saved.
+            </span>
+            <button
+              onClick={purgeOrphans}
+              disabled={purging}
+              className="inline-flex items-center gap-1.5 rounded-md border border-amber-500/40 px-2.5 py-1 text-xs font-medium hover:bg-amber-500/15 disabled:opacity-50"
+            >
+              {purging ? (
+                <Loader2 className="size-3.5 animate-spin" />
+              ) : (
+                <Trash2 className="size-3.5" />
+              )}
+              Purge orphans
+            </button>
+          </div>
+        )}
 
-      {visible.length === 0 ? (
-        <EmptyPanel label="No contributions in this view." />
-      ) : (
-        <div className="space-y-4">
-          {visible.map((s) => (
-            <SubmissionCard key={s.id} submission={s} />
-          ))}
-        </div>
-      )}
-    </Section>
+        {visible.length === 0 ? (
+          <EmptyPanel label="No contributions in this view." />
+        ) : (
+          <div className="space-y-4">
+            {visible.map((s) => (
+              <SubmissionCard key={s.id} submission={s} />
+            ))}
+          </div>
+        )}
+      </Section>
+    </AdminPage>
   );
 }
 

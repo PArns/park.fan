@@ -153,7 +153,7 @@ export function RideProfileEditor({
         hint={
           profile
             ? `Zuletzt kuratiert ${new Date(profile.seededAt).toLocaleDateString('de-DE')}`
-            : 'Noch kein Profil — die Bahn taucht im Glossar nicht auf.'
+            : 'Noch kein Profil. Die Bahn taucht im Glossar nicht auf.'
         }
       />
       <PanelBody className="space-y-5">
@@ -223,7 +223,7 @@ export function RideProfileEditor({
           </Field>
           <Field
             label="Inversionen"
-            hint="Wie der Park sie zählt — das kann vom Layout oben abweichen."
+            hint="Wie der Park sie zählt. Das kann vom Layout oben abweichen."
           >
             <NumberInput
               value={inversions}
@@ -399,7 +399,7 @@ function TermList({
                 <span className="min-w-0 flex-1 truncate text-sm">
                   {term ? term.name : id}
                   {!term && (
-                    <span className="ml-1.5 text-xs text-amber-400">— kein Glossar-Eintrag</span>
+                    <span className="ml-1.5 text-xs text-amber-400">kein Glossar-Eintrag</span>
                   )}
                 </span>
                 {ordered && !disabled && (

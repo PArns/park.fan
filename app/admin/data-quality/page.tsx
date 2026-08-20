@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { AlertTriangle, HeartPulse, Link2Off, ListX, ShieldCheck } from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
 import { Section } from '../_lib/ui';
-import { Chip, EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
+import { AdminPage, Chip, EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
 import { Select } from '../_ui/controls';
 
 /**
@@ -78,7 +78,7 @@ export default function DataQualityPage() {
   const broken = audit.data?.broken ?? [];
 
   return (
-    <>
+    <AdminPage width="wide">
       <Section icon={HeartPulse} title="Verstummte Fahrgeschäfte">
         <div className="flex flex-wrap items-center gap-3">
           <p className="text-muted-foreground min-w-0 flex-1 text-sm">
@@ -183,7 +183,7 @@ export default function DataQualityPage() {
       <Section icon={Link2Off} title="Kaputte Glossar-Verweise">
         <p className="text-muted-foreground text-sm">
           Ride-Profile speichern Glossar-Term-Ids. Wird ein Term umbenannt oder entfernt, fällt der
-          Verweis zur Laufzeit stillschweigend weg — die Bahn zeigt dann ein Element weniger, ohne
+          Verweis zur Laufzeit stillschweigend weg, die Bahn zeigt dann ein Element weniger, ohne
           dass irgendwo ein Fehler steht.
         </p>
         {audit.error ? (
@@ -233,6 +233,6 @@ export default function DataQualityPage() {
           </div>
         )}
       </Section>
-    </>
+    </AdminPage>
   );
 }

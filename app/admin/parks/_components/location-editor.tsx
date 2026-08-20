@@ -79,7 +79,7 @@ export function LocationEditor({
       toast.push({
         title: 'Standort korrigiert',
         description: result.pathChanged
-          ? 'Die Adresse hat sich geändert — der alte Pfad leitet weiter.'
+          ? 'Die Adresse hat sich geändert, der alte Pfad leitet weiter.'
           : undefined,
         tone: 'success',
       });

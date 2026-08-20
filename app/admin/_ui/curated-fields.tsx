@@ -122,7 +122,7 @@ function CuratedFieldRow({
               title={
                 field.humanOnly
                   ? 'Wert löschen'
-                  : 'Korrektur entfernen — es gilt wieder, was der Sync sagt'
+                  : 'Korrektur entfernen, es gilt wieder, was der Sync sagt'
               }
               className="text-muted-foreground hover:text-foreground rounded p-1 disabled:opacity-40"
             >
@@ -137,7 +137,7 @@ function CuratedFieldRow({
       {agreesWithUpstream && (
         <p className="flex items-center gap-1.5 text-xs text-amber-400">
           <Sparkles className="h-3 w-3 shrink-0" />
-          Deckt sich mit dem Upstream-Wert — die Korrektur wird nicht mehr gebraucht.
+          Deckt sich mit dem Upstream-Wert, die Korrektur wird nicht mehr gebraucht.
         </p>
       )}
     </Field>
@@ -545,7 +545,7 @@ export function CuratedFieldsEditor({
             <TextInput
               value={sourceUrl}
               onChange={(event) => setSourceUrl(event.target.value)}
-              placeholder="Quelle — die Seite, auf der es steht"
+              placeholder="Quelle: die Seite, auf der es steht"
               disabled={saving}
             />
           </div>

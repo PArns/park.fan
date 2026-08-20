@@ -17,6 +17,7 @@ import type { AdminParkListItem, AuditEntry, ParkSeason } from './_lib/types';
 import { ErrorState, Kbd, Panel, PanelBody, PanelHeader, SkeletonRows } from './_ui/primitives';
 import { HistoryList } from './_ui/history-list';
 import { useSession } from './_app/session';
+import { AdminPage } from './_ui/primitives';
 
 /**
  * The first screen: what is going on, and what is worth doing next.
@@ -47,7 +48,7 @@ export default function AdminDashboard() {
   );
 
   return (
-    <div className="mx-auto max-w-6xl space-y-4 p-4">
+    <AdminPage width="wide">
       <div className="flex flex-wrap items-baseline gap-2">
         <h1 className="text-xl font-bold">Hallo {identity.displayName.split(' ')[0]}</h1>
         <p className="text-muted-foreground text-sm">
@@ -83,7 +84,7 @@ export default function AdminDashboard() {
             <PanelHeader
               icon={MapPin}
               title="Noch nie kuratiert"
-              hint="Parks, an denen niemand etwas korrigiert hat — nicht zwingend ein Problem, aber ein guter Startpunkt"
+              hint="Parks, an denen niemand etwas korrigiert hat. Nicht zwingend ein Problem, aber ein guter Startpunkt"
             />
             {uncurated.isError ? (
               <ErrorState message={uncurated.error.message} />
@@ -130,11 +131,11 @@ export default function AdminDashboard() {
             />
             {seasons.isLoading ? (
               <SkeletonRows rows={3} />
-            ) : (seasons.data?.seasons.length ?? 0) === 0 ? (
+            ) : (seasons.data?.seasons?.length ?? 0) === 0 ? (
               <PanelBody>
                 <p className="text-muted-foreground text-xs">
-                  Heute läuft nichts Eingetragenes. Wenn das falsch ist, fehlt der Eintrag — es gibt
-                  keine Quelle, aus der er von selbst käme.
+                  Heute läuft nichts Eingetragenes. Wenn das falsch ist, fehlt der Eintrag, denn es
+                  gibt keine Quelle, aus der er von selbst käme.
                 </p>
               </PanelBody>
             ) : (
@@ -176,7 +177,7 @@ export default function AdminDashboard() {
           )}
         </div>
       </div>
-    </div>
+    </AdminPage>
   );
 }
 

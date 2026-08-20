@@ -40,7 +40,7 @@ export function PhotoCoverage({
   if (rideSlugs.length === 0) return null;
 
   const without = coverage.data?.without ?? [];
-  const covered = coverage.data?.withImage.length ?? 0;
+  const covered = coverage.data?.withImage?.length ?? 0;
   const nameBySlug = new Map(attractions.map((a) => [a.slug, a.name]));
 
   return (

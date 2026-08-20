@@ -91,7 +91,7 @@ export function MustChangePassword() {
           <Field
             label="Neues Passwort"
             htmlFor="new-password"
-            hint="Mindestens 12 Zeichen. Länge ist die einzige Regel — eine Passphrase ist besser als ein kurzes Wort mit Sonderzeichen."
+            hint="Mindestens 12 Zeichen. Länge ist die einzige Regel, eine Passphrase ist besser als ein kurzes Wort mit Sonderzeichen."
             error={tooShort ? 'Mindestens 12 Zeichen.' : null}
           >
             <TextInput

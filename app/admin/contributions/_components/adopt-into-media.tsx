@@ -66,7 +66,7 @@ export function AdoptIntoMedia({
     if (!parkSlug) {
       toast.push({
         title: 'Kein Park erkennbar',
-        description: 'Der Einsendung fehlt der Pfad des Parks — im Medienbereich manuell anlegen.',
+        description: 'Der Einsendung fehlt der Pfad des Parks. Im Medienbereich manuell anlegen.',
         tone: 'error',
       });
       return;

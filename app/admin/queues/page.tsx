@@ -6,6 +6,7 @@ import { useAdminFetch } from '../_lib/admin-context';
 import { adminFetch } from '../_lib/api';
 import { EmptyPanel, ErrorPanel, LoadingPanel, Section } from '../_lib/ui';
 import type { QueueEntry, QueueStatusResponse } from '@/lib/api/admin';
+import { AdminPage } from '../_ui/primitives';
 
 /**
  * A failure count is not a reason.
@@ -152,16 +153,18 @@ export default function QueuesPage() {
   if (!data) return <LoadingPanel label="Loading queues…" />;
 
   return (
-    <Section icon={ListChecks} title="Queues">
-      {data.queues.length === 0 ? (
-        <EmptyPanel label="No queues reported." />
-      ) : (
-        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {data.queues.map((q) => (
-            <QueueRow key={q.name} q={q} />
-          ))}
-        </div>
-      )}
-    </Section>
+    <AdminPage width="wide">
+      <Section icon={ListChecks} title="Queues">
+        {data.queues.length === 0 ? (
+          <EmptyPanel label="No queues reported." />
+        ) : (
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+            {data.queues.map((q) => (
+              <QueueRow key={q.name} q={q} />
+            ))}
+          </div>
+        )}
+      </Section>
+    </AdminPage>
   );
 }

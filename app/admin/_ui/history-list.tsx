@@ -69,7 +69,7 @@ export function HistoryList({
       <EmptyState
         icon={User}
         title="Noch nichts geändert"
-        description="Sobald hier jemand etwas kuratiert, steht es hier — mit Begründung und Quelle."
+        description="Sobald hier jemand etwas kuratiert, steht es hier, mit Begründung und Quelle."
       />
     );
   }

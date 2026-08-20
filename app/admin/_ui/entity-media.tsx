@@ -114,7 +114,7 @@ export function EntityMediaPanel({
             title={rideSlug ? 'Dieses Fahrgeschäft hat kein Bild' : 'Kein Bild für diesen Park'}
             description={
               rideSlug
-                ? 'Die Karte auf der Parkseite bleibt dadurch leer — es gibt keinen Fallback und keine Warnung.'
+                ? 'Die Karte auf der Parkseite bleibt dadurch leer. Es gibt keinen Fallback und keine Warnung.'
                 : 'Ohne Bild fehlt der Parkseite ihr Hintergrund.'
             }
             action={

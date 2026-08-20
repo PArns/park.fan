@@ -7,7 +7,7 @@ import { Compass, MapPin } from 'lucide-react';
 import { adminFetch } from '../_lib/api';
 import { slugsFromPublicPath } from '../_lib/public-path';
 import { Section } from '../_lib/ui';
-import { EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
+import { AdminPage, EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
 
 /**
  * From a public address to the editor that owns it.
@@ -109,7 +109,7 @@ function GoResolver() {
       <EmptyState
         icon={MapPin}
         title="Mehrere Parks tragen diesen Slug"
-        description="Ohne Stadt lässt sich das nicht entscheiden — welcher ist gemeint?"
+        description="Ohne Stadt lässt sich das nicht entscheiden. Welcher ist gemeint?"
         action={
           <div className="flex flex-wrap justify-center gap-2">
             {candidates.map((candidate) => (
@@ -135,10 +135,12 @@ function GoResolver() {
 
 export default function GoPage() {
   return (
-    <Section icon={Compass} title="Zur Bearbeitung springen">
-      <Suspense fallback={<LoadingState />}>
-        <GoResolver />
-      </Suspense>
-    </Section>
+    <AdminPage width="narrow">
+      <Section icon={Compass} title="Zur Bearbeitung springen">
+        <Suspense fallback={<LoadingState />}>
+          <GoResolver />
+        </Suspense>
+      </Section>
+    </AdminPage>
   );
 }

@@ -6,6 +6,7 @@ import { useAdminFetch } from '../_lib/admin-context';
 import { CrowdBadge, ErrorPanel, LoadingPanel, Section, StatCard } from '../_lib/ui';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import type { AnalyticsGeoLive, AnalyticsRealtime, AnalyticsTicker } from '@/lib/api/admin-stats';
+import { AdminPage } from '../_ui/primitives';
 
 const TREND_ICON: Record<string, string> = { rising: '▲', falling: '▼', stable: '·' };
 const TREND_COLOR: Record<string, string> = {
@@ -25,7 +26,7 @@ export default function AnalyticsPage() {
   const c = realtime.data.counts;
 
   return (
-    <>
+    <AdminPage width="wide">
       <Section icon={Activity} title="Realtime counts">
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
           <StatCard label="Open parks" value={c.openParks} sub={`of ${c.parks}`} />
@@ -98,6 +99,6 @@ export default function AnalyticsPage() {
           </p>
         )}
       </Section>
-    </>
+    </AdminPage>
   );
 }

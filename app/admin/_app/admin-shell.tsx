@@ -71,6 +71,12 @@ export function AdminShell({ children }: { children: ReactNode }) {
 
   const groups = visibleGroups(identity.role);
   const active = activeNavItem(pathname);
+  // Which section of the admin this page lives in. Seventeen entries in four
+  // groups, and the title alone ("Duplikate") does not say whether you are in
+  // curation or in operations.
+  const activeGroup = active
+    ? groups.find((group) => group.items.some((item) => item.href === active.href))?.label
+    : undefined;
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -162,7 +168,15 @@ export function AdminShell({ children }: { children: ReactNode }) {
           </button>
 
           <div className="min-w-0 flex-1">
-            <h1 className="truncate text-sm font-semibold">{active?.label ?? 'Admin'}</h1>
+            <div className="flex items-baseline gap-2">
+              {activeGroup && (
+                <span className="text-muted-foreground hidden text-[11px] tracking-wide uppercase sm:inline">
+                  {activeGroup}
+                  <span className="mx-1.5 opacity-40">/</span>
+                </span>
+              )}
+              <h1 className="truncate text-sm font-semibold">{active?.label ?? 'Admin'}</h1>
+            </div>
             {active?.description && (
               <p className="text-muted-foreground hidden truncate text-xs sm:block">
                 {active.description}
@@ -173,7 +187,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
           <button
             type="button"
             onClick={() => setPaletteOpen(true)}
-            className="border-border/60 bg-background/60 text-muted-foreground hover:text-foreground hidden items-center gap-2 rounded-lg border px-2.5 py-1.5 text-xs sm:flex"
+            className="border-border/60 bg-background/60 text-muted-foreground hover:border-primary/40 hover:text-foreground hidden items-center gap-2 rounded-lg border px-2.5 py-1.5 text-xs transition-colors sm:flex"
           >
             <CommandIcon className="h-3.5 w-3.5" />
             <span>Suchen</span>
@@ -254,19 +268,24 @@ function Sidebar({
           // The sidebar tokens have existed in globals.css since the theme was
           // set up and nothing has ever used them. This is what they are for.
           'bg-sidebar border-sidebar-border fixed inset-y-0 left-0 z-50 flex flex-col border-r transition-[width,transform] duration-200',
+          'bg-gradient-to-b from-[oklch(1_0_0_/_0.02)] to-transparent',
           'md:sticky md:top-0 md:z-auto md:h-[100dvh] md:translate-x-0',
           mobileOpen ? 'translate-x-0' : '-translate-x-full',
           collapsed ? 'w-60 md:w-16' : 'w-60'
         )}
       >
         <div className="flex h-14 items-center gap-2 px-3">
-          <span className="bg-primary/15 text-primary flex h-8 w-8 shrink-0 items-center justify-center rounded-lg">
+          <span className="bg-primary/15 border-primary/20 text-primary flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border">
             <ShieldCheck className="h-4 w-4" />
           </span>
           {(!collapsed || mobileOpen) && (
             <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-semibold">park.fan</p>
-              <p className="text-muted-foreground truncate text-[11px]">Admin</p>
+              <p className="truncate text-sm font-semibold">
+                park<span className="text-primary">.fan</span>
+              </p>
+              <p className="text-muted-foreground truncate text-[10px] font-medium tracking-[0.2em] uppercase">
+                Verwaltung
+              </p>
             </div>
           )}
           <button
@@ -279,7 +298,10 @@ function Sidebar({
           </button>
         </div>
 
-        <div className="min-h-0 flex-1 space-y-4 overflow-y-auto px-2 py-2">
+        {/* Dense enough that four groups and seventeen entries clear the footer
+            on a 900 px laptop: at the old rhythm the account group slid under
+            "Zur Website" and read as a rendering fault rather than a scroll. */}
+        <div className="min-h-0 flex-1 space-y-3 overflow-y-auto px-2 py-2">
           {groups.map((group) => (
             <div key={group.label}>
               {(!collapsed || mobileOpen) && (
@@ -311,7 +333,7 @@ function Sidebar({
             href="https://park.fan"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground hover:bg-accent hover:text-foreground flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm"
+            className="text-muted-foreground hover:bg-accent hover:text-foreground flex items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-sm"
           >
             <ExternalLink className="h-4 w-4 shrink-0" />
             {(!collapsed || mobileOpen) && <span className="truncate">Zur Website</span>}
@@ -319,7 +341,7 @@ function Sidebar({
           <button
             type="button"
             onClick={onToggleCollapsed}
-            className="text-muted-foreground hover:bg-accent hover:text-foreground hidden w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm md:flex"
+            className="text-muted-foreground hover:bg-accent hover:text-foreground hidden w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-sm md:flex"
           >
             {collapsed ? (
               <ChevronsRight className="h-4 w-4 shrink-0" />
@@ -351,10 +373,14 @@ function SidebarLink({
       onClick={onNavigate}
       title={collapsed ? item.label : undefined}
       className={cn(
-        'flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm transition-colors',
+        // The rail is what makes "where am I" readable at a glance in a list of
+        // seventeen entries: a tinted row alone reads as a hover state, and in
+        // the collapsed sidebar there is no label to disambiguate it.
+        'relative flex items-center gap-2.5 rounded-lg py-1.5 pr-2.5 pl-3 text-sm transition-colors',
+        'before:absolute before:top-1.5 before:bottom-1.5 before:left-0 before:w-0.5 before:rounded-full before:transition-colors',
         active
-          ? 'bg-sidebar-accent text-sidebar-accent-foreground font-medium'
-          : 'text-muted-foreground hover:bg-accent hover:text-foreground'
+          ? 'bg-sidebar-accent text-sidebar-accent-foreground before:bg-primary font-medium'
+          : 'text-muted-foreground hover:bg-accent hover:text-foreground before:bg-transparent'
       )}
     >
       <item.icon className={cn('h-4 w-4 shrink-0', active && 'text-primary')} />

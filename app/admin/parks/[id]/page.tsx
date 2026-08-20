@@ -18,6 +18,7 @@ import { cn } from '@/lib/utils';
 import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../../_lib/api';
 import type { AdminAttractionListItem, AdminParkDetail, CurationResponse } from '../../_lib/types';
 import {
+  AdminPage,
   Chip,
   EmptyState,
   ErrorState,
@@ -75,7 +76,7 @@ export default function ParkDetailPage({ params }: { params: Promise<{ id: strin
   const data = park.data;
 
   return (
-    <div className="mx-auto max-w-5xl space-y-4 p-4">
+    <AdminPage>
       <ParkHeader park={data} />
 
       <div className="border-border/50 flex gap-1 border-b">
@@ -130,7 +131,7 @@ export default function ParkDetailPage({ params }: { params: Promise<{ id: strin
           canUndo={canEdit}
         />
       )}
-    </div>
+    </AdminPage>
   );
 }
 
@@ -272,7 +273,7 @@ function ParkFieldsTab({ park }: { park: AdminParkDetail }) {
         title="Kuratierte Felder"
         hint={
           overridden === 0
-            ? 'Nichts korrigiert — der Park zeigt überall, was der Sync liefert.'
+            ? 'Nichts korrigiert. Der Park zeigt überall, was der Sync liefert.'
             : `${overridden} Feld${overridden === 1 ? '' : 'er'} weicht vom Upstream ab.`
         }
         action={

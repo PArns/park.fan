@@ -16,6 +16,46 @@ import { cn } from '@/lib/utils';
 
 // ─── layout ───────────────────────────────────────────────────────────────────
 
+/**
+ * One page's rhythm, in one place.
+ *
+ * Six pages carried their own `mx-auto max-w-Nxl space-y-4 p-4` with three
+ * different widths, and the operations pages carried nothing at all — so
+ * /admin/system and /admin/queues ran flush to the window edge while the
+ * dashboard sat in a centred column. That is most of what made the admin feel
+ * like two products stitched together.
+ *
+ * Three widths, named for what they hold rather than picked per page:
+ * `wide` for boards and tables, the default for entity editors, `narrow` for
+ * a single column of form. The two full-height list pages (parks, history)
+ * own their own layout and stay out of this deliberately — they size
+ * themselves against the viewport so the table scrolls inside the page rather
+ * than the page scrolling.
+ */
+export function AdminPage({
+  width = 'default',
+  className,
+  children,
+}: {
+  width?: 'narrow' | 'default' | 'wide';
+  className?: string;
+  children: ReactNode;
+}) {
+  return (
+    <div
+      className={cn(
+        'mx-auto w-full space-y-5 p-4 sm:p-6',
+        width === 'narrow' && 'max-w-3xl',
+        width === 'default' && 'max-w-5xl',
+        width === 'wide' && 'max-w-6xl',
+        className
+      )}
+    >
+      {children}
+    </div>
+  );
+}
+
 export function Panel({ className, ...props }: ComponentProps<'section'>) {
   return (
     <section

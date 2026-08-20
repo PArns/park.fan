@@ -25,7 +25,7 @@ import {
 } from 'lucide-react';
 import { Section } from '../_lib/ui';
 import { useCan } from '../_app/session';
-import { Chip } from '../_ui/primitives';
+import { AdminPage, Chip } from '../_ui/primitives';
 
 /**
  * The job triggers, with what came back.
@@ -380,7 +380,7 @@ export default function ActionsPage() {
   }
 
   return (
-    <>
+    <AdminPage width="wide">
       <Section icon={Wrench} title="Jobs anstoßen">
         <p className="text-muted-foreground text-sm">
           Alles hier läuft asynchron: der Klick stellt den Job in die Queue und die Antwort sagt,
@@ -404,6 +404,6 @@ export default function ActionsPage() {
         </p>
         {renderGrid(SHADOW_ACTIONS)}
       </Section>
-    </>
+    </AdminPage>
   );
 }

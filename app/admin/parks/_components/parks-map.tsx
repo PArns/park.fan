@@ -60,7 +60,7 @@ export default function ParksMap({ parks }: { parks: AdminParkListItem[] }) {
   if (located.length === 0) {
     return (
       <div className="text-muted-foreground flex h-full items-center justify-center p-8 text-center text-sm">
-        Keiner der gefilterten Parks hat Koordinaten — auf der Karte wäre nichts zu sehen. Das ist
+        Keiner der gefilterten Parks hat Koordinaten, auf der Karte wäre nichts zu sehen. Das ist
         selbst ein Befund: ohne Koordinaten fehlt dem Park auch das Wetter und die Umkreissuche.
       </div>
     );

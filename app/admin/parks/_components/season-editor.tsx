@@ -101,7 +101,7 @@ export function SeasonList({
         <EmptyState
           icon={CalendarRange}
           title="Noch keine Saison hinterlegt"
-          description="Halloween, Winterschließung, ein Wartungsfenster — alles, was der Park an bestimmten Tagen anders macht."
+          description="Halloween, Winterschließung, ein Wartungsfenster: alles, was der Park an bestimmten Tagen anders macht."
         />
       ) : (
         <ul className="space-y-2">
