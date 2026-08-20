@@ -282,16 +282,63 @@ export interface CuratedFormState {
   applyServerFields: (fields: CuratedField[]) => void;
 }
 
+function curatedValues(fields: CuratedField[]): FieldValues {
+  const values: FieldValues = {};
+  for (const field of fields) values[field.key] = field.curatedValue ?? null;
+  return values;
+}
+
+/** Overrides the server has since confirmed are no longer edits. */
+function dropConfirmed(overrides: FieldValues, server: FieldValues): FieldValues {
+  const remaining: FieldValues = {};
+  let dropped = false;
+  for (const [key, value] of Object.entries(overrides)) {
+    if (sameValue(value, server[key] ?? null)) dropped = true;
+    else remaining[key] = value;
+  }
+  return dropped ? remaining : overrides;
+}
+
+/**
+ * Three layers, and which one wins is the whole point.
+ *
+ * `initial` is what the query says, `saved` is what a save response said before
+ * the query caught up, `overrides` is what the person typed. They are merged in
+ * that order, and the moment a fresh `fields` array arrives — a refetch, a
+ * window-focus refresh, another admin's edit — the middle layer is dropped and
+ * every override the server now agrees with goes with it.
+ *
+ * The version this replaced seeded `overrides` with the *whole* save response
+ * (the backend returns every descriptor, not just the changed ones), which
+ * detached the form from the query for good: no later `initial` could win
+ * against a full-coverage override. The visible cost was on the undo in the
+ * save toast. Undo reverted the column server-side, the refetch brought the
+ * reverted value back, and the form still showed the undone edit and counted it
+ * as an unsaved change — pressing save again silently re-applied what had just
+ * been taken back.
+ */
 export function useCuratedForm(fields: CuratedField[]): CuratedFormState {
-  const initial = useMemo(() => {
-    const values: FieldValues = {};
-    for (const field of fields) values[field.key] = field.curatedValue ?? null;
-    return values;
-  }, [fields]);
+  const initial = useMemo(() => curatedValues(fields), [fields]);
 
   const [overrides, setOverrides] = useState<FieldValues>({});
+  const [saved, setSaved] = useState<FieldValues | null>(null);
+  const [seenFields, setSeenFields] = useState(fields);
 
-  const values = useMemo(() => ({ ...initial, ...overrides }), [initial, overrides]);
+  // Adjusting state during render rather than in an effect: this is the
+  // documented pattern for "reset some state when a prop changes", it re-renders
+  // before anything is painted, and React 19 forbids the effect form outright.
+  // React Query keeps the reference stable while the data is deep-equal, so
+  // this fires when the data actually changed, not on every render.
+  if (fields !== seenFields) {
+    setSeenFields(fields);
+    setSaved(null);
+    setOverrides((current) => dropConfirmed(current, initial));
+  }
+
+  const values = useMemo(
+    () => ({ ...initial, ...(saved ?? {}), ...overrides }),
+    [initial, saved, overrides]
+  );
 
   const dirtyKeys = useMemo(
     () => Object.keys(values).filter((key) => !sameValue(values[key], initial[key])),
@@ -302,11 +349,17 @@ export function useCuratedForm(fields: CuratedField[]): CuratedFormState {
     values,
     dirtyKeys,
     setValue: (key, value) => setOverrides((current) => ({ ...current, [key]: value })),
-    reset: () => setOverrides({}),
+    reset: () => {
+      setOverrides({});
+      setSaved(null);
+    },
     applyServerFields: (next) => {
-      const adopted: FieldValues = {};
-      for (const field of next) adopted[field.key] = field.curatedValue ?? null;
-      setOverrides(adopted);
+      const stored = curatedValues(next);
+      setSaved(stored);
+      // Anything typed while the save was in flight and still different from
+      // what came back stays an edit; everything the server confirmed stops
+      // being one.
+      setOverrides((current) => dropConfirmed(current, stored));
     },
   };
 }
@@ -350,7 +403,10 @@ export function CuratedFieldsEditor({
   }
 
   return (
-    <div className="space-y-6">
+    // The marker the shell's `g`-chord looks for: unsaved corrections are not
+    // in a dialog and not in a focused input, so nothing else in the DOM says
+    // "there is work here to lose".
+    <div className="space-y-6" data-admin-dirty={dirty ? 'true' : undefined}>
       {groups.map(([group, groupFields]) => (
         <section key={group}>
           <h3 className="text-muted-foreground mb-1 px-3 text-[11px] font-semibold tracking-widest uppercase">

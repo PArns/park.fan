@@ -239,6 +239,33 @@ interface SeasonDraft {
   note: string;
 }
 
+/** A date-fns parse result that is safe to hand to a formatter. */
+function isRealDate(date: Date): boolean {
+  return !Number.isNaN(date.getTime());
+}
+
+function toDayOrNull(value: string): Date | null {
+  if (!value) return null;
+  const parsed = parseISO(value);
+  return isRealDate(parsed) ? parsed : null;
+}
+
+/**
+ * A price as typed, in either notation.
+ *
+ * The field is `inputMode="decimal"` and the people using this admin type
+ * German, so `53,50` is the expected input, not a mistake. Returns `'invalid'`
+ * rather than null for something that is neither empty nor a number, because
+ * the two must not save the same way.
+ */
+function parsePrice(raw: string): number | null | 'invalid' {
+  const trimmed = raw.trim();
+  if (trimmed === '') return null;
+  const parsed = Number(trimmed.replace(',', '.'));
+  if (!Number.isFinite(parsed) || parsed < 0) return 'invalid';
+  return parsed;
+}
+
 function draftFrom(season: ParkSeason | null): SeasonDraft {
   const today = new Date().toISOString().slice(0, 10);
   return {
@@ -279,11 +306,28 @@ function SeasonDialog({
     setDraft((current) => ({ ...current, [key]: value }));
 
   const selectedDays = useMemo(
-    () => (draft.dates ?? []).map((date) => parseISO(date)),
+    () => (draft.dates ?? []).map((date) => parseISO(date)).filter(isRealDate),
     [draft.dates]
   );
 
+  // `<input type="date">` yields '' while it is being typed into or cleared,
+  // and `parseISO('')` is an Invalid Date — which is truthy, so react-day-picker
+  // took it as `defaultMonth`, handed it to date-fns `format`, and threw
+  // `RangeError: Invalid time value`. There is no error boundary under /admin,
+  // so the whole route unmounted and the half-typed season went with it.
+  const rangeStart = useMemo(() => toDayOrNull(draft.startDate), [draft.startDate]);
+  const rangeEnd = useMemo(() => toDayOrNull(draft.endDate), [draft.endDate]);
+
   async function save() {
+    // `Number('53,50')` is NaN and `JSON.stringify` turns that into null, so a
+    // price typed with a decimal comma used to be saved as "no price" — with a
+    // 200, a green toast and a currency left standing next to nothing.
+    const priceFrom = parsePrice(draft.priceFrom);
+    if (priceFrom === 'invalid') {
+      setError('Preis muss eine Zahl sein, z. B. 53,50');
+      return;
+    }
+
     setBusy(true);
     setError(null);
     try {
@@ -297,8 +341,8 @@ function SeasonDialog({
         dates: pickDays && draft.dates && draft.dates.length > 0 ? draft.dates : null,
         status: draft.status,
         separateTicket: draft.separateTicket,
-        priceFrom: draft.priceFrom.trim() === '' ? null : Number(draft.priceFrom),
-        priceCurrency: draft.priceFrom.trim() === '' ? null : draft.priceCurrency.trim() || null,
+        priceFrom,
+        priceCurrency: priceFrom === null ? null : draft.priceCurrency.trim() || null,
         opensAt: draft.opensAt.trim() || null,
         closesAt: draft.closesAt.trim() || null,
         url: draft.url.trim() || null,
@@ -432,7 +476,7 @@ function SeasonDialog({
                     weekStartsOn={1}
                     showOutsideDays
                     numberOfMonths={2}
-                    defaultMonth={parseISO(draft.startDate)}
+                    defaultMonth={rangeStart ?? new Date()}
                     selected={selectedDays}
                     onSelect={(days) =>
                       set(
@@ -443,8 +487,8 @@ function SeasonDialog({
                       )
                     }
                     disabled={[
-                      { before: parseISO(draft.startDate) },
-                      { after: parseISO(draft.endDate) },
+                      ...(rangeStart ? [{ before: rangeStart }] : []),
+                      ...(rangeEnd ? [{ after: rangeEnd }] : []),
                     ]}
                   />
                 </div>

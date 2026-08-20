@@ -2,7 +2,14 @@ import 'server-only';
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { getServerApiHeaders } from '@/lib/api/client';
-import { ADMIN_SESSION_COOKIE, readSessionToken, sessionCookieOptions } from '@/lib/admin/session';
+import {
+  ADMIN_SESSION_COOKIE,
+  forgetAllSessions,
+  readSessionToken,
+  SESSION_ABSOLUTE_TTL_SECONDS,
+  sessionCookieOptions,
+} from '@/lib/admin/session';
+import { adminProxyPath } from '@/lib/admin/proxy-path';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://api.park.fan';
 
@@ -39,23 +46,58 @@ export const dynamic = 'force-dynamic';
 
 const FORWARDED_RESPONSE_HEADERS = ['content-type'];
 
+/**
+ * The one route that legitimately has no session behind it.
+ *
+ * The admin UI signs in through `/api/admin/session`, but the proxy is a valid
+ * way to reach the same endpoint and turning it into a 401 would be a silent
+ * behaviour change for anything that does.
+ */
+const ANONYMOUS_PATHS = new Set(['auth/login']);
+
+/**
+ * Endpoints that kill sessions somewhere else.
+ *
+ * `resolveAdminIdentity` caches "who is this token" for a minute, which is what
+ * would otherwise keep a session alive on this app's own write routes — the
+ * media commit, the blog save — for up to a minute after an owner revoked it.
+ * Clearing here only helps the instance that served the revoking request, so it
+ * is the second line: the first is that `requireAdmin` never answers a write
+ * from cache (see `lib/admin/session.ts`).
+ */
+function revokesSessions(method: string, route: string): boolean {
+  if (route === 'auth/change-password' || route === 'auth/logout') return true;
+  if (method === 'DELETE' && route.startsWith('auth/sessions')) return true;
+  if (method === 'PATCH' && route.startsWith('auth/users/')) return true;
+  return false;
+}
+
 async function proxyRequest(request: NextRequest, path: string[]) {
-  // Next decodes route params, so a `%2e%2e` segment arrives here as `..` and
-  // `new URL()` would normalise `/v1/admin/../parks` into `/v1/parks` — turning
-  // the admin proxy into a general-purpose one and, worse, into a way to reach
-  // endpoints whose responses are supposed to be edge-cached under different
-  // rules. Nothing legitimate sends an empty or dotted segment.
-  if (path.some((segment) => segment.length === 0 || segment === '.' || segment === '..')) {
+  // See `lib/admin/proxy-path.ts` — a percent-encoded separator survives Next's
+  // route matching and only becomes one inside `new URL()`.
+  const upstreamPath = adminProxyPath(path);
+  if (!upstreamPath) {
     return NextResponse.json({ error: 'Bad request' }, { status: 400 });
   }
 
+  const route = path.join('/');
+  const token = await readSessionToken(request);
+
+  // No session, no proxy. Everything behind here is an admin endpoint that
+  // would answer 401 anyway, but reaching the upstream at all is the problem:
+  // `getServerApiHeaders()` attaches this deployment's `x-auth-key`, which the
+  // API treats as a throttle bypass, and `forwardedFor` attaches an address the
+  // caller chose. An anonymous request must not get either.
+  if (!token && !ANONYMOUS_PATHS.has(route)) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   const incoming = new URL(request.url);
-  const target = new URL(`${API_BASE}/v1/admin/${path.join('/')}`);
+  const target = new URL(`${API_BASE}/v1/admin/${upstreamPath}`);
   incoming.searchParams.forEach((value, key) => {
     target.searchParams.set(key, value);
   });
 
-  const token = await readSessionToken(request);
   const hasBody = !['GET', 'HEAD'].includes(request.method);
   const body = hasBody ? await request.text() : undefined;
 
@@ -73,6 +115,10 @@ async function proxyRequest(request: NextRequest, path: string[]) {
     },
     body: body && body.length > 0 ? body : undefined,
   });
+
+  if (upstream.ok && revokesSessions(request.method, route)) {
+    forgetAllSessions();
+  }
 
   if (upstream.status === 204 || upstream.headers.get('content-length') === '0') {
     return new NextResponse(null, {
@@ -152,12 +198,23 @@ async function rotateSessionToken(payload: unknown, path: string[]): Promise<unk
     return payload;
   }
 
-  const { token, ...rest } = payload as { token: string } & Record<string, unknown>;
+  const { token, expiresAt, ...rest } = payload as {
+    token: string;
+    expiresAt?: unknown;
+  } & Record<string, unknown>;
+
+  // The session's own ceiling, the same number `/api/admin/session` uses after
+  // a login. The 12 hours this used to write were the backend's *idle* window,
+  // which slides on every request — the cookie's Max-Age does not, so an admin
+  // who changed their password was signed out twelve hours later mid-session
+  // while the session behind it had six days left.
+  const ceiling = typeof expiresAt === 'number' ? expiresAt : Date.parse(String(expiresAt));
+  const maxAge = Number.isFinite(ceiling)
+    ? Math.max(60, Math.floor((ceiling - Date.now()) / 1000))
+    : SESSION_ABSOLUTE_TTL_SECONDS;
+
   const store = await cookies();
-  // Twelve hours: the backend's idle window. The absolute expiry is shorter
-  // than the cookie only in the sense that the server decides — a cookie that
-  // outlives its session simply produces one 401 and a redirect to the login.
-  store.set(ADMIN_SESSION_COOKIE, token, sessionCookieOptions(12 * 60 * 60));
+  store.set(ADMIN_SESSION_COOKIE, token, sessionCookieOptions(maxAge));
   return rest;
 }
 

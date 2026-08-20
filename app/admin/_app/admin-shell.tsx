@@ -19,6 +19,7 @@ import { cn } from '@/lib/utils';
 import { Kbd } from '../_ui/primitives';
 import { Chip } from '../_ui/primitives';
 import { useAdmin } from '../_lib/admin-context';
+import { useToast } from '../_ui/toast';
 import { useLocalPreference } from '../_lib/use-local-preference';
 import { activeNavItem, visibleGroups, type NavItem } from './nav';
 import { useSession } from './session';
@@ -60,6 +61,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
   const { identity, signOut } = useSession();
   const { refreshing, lastUpdated, triggerRefresh } = useAdmin();
   const inspector = useInspector();
+  const toast = useToast();
 
   const [sidebarState, setSidebarState] = useLocalPreference(SIDEBAR_STORAGE_KEY, 'expanded');
   const collapsed = sidebarState === 'collapsed';
@@ -96,6 +98,19 @@ export function AdminShell({ children }: { children: ReactNode }) {
         const href = JUMP_KEYS[event.key.toLowerCase()];
         if (href) {
           event.preventDefault();
+          // The curated-fields editor is neither a dialog nor an input, and
+          // several of its controls are buttons that leave themselves focused
+          // after a click — a tri-state switch, a month, "Korrektur entfernen".
+          // With focus on one of those the chord used to fire straight through
+          // and take the unsaved corrections with it.
+          if (document.querySelector('[data-admin-dirty="true"]')) {
+            toast.push({
+              title: 'Ungespeicherte Änderungen',
+              description: 'Erst speichern oder verwerfen, dann wechseln.',
+              tone: 'info',
+            });
+            return;
+          }
           router.push(href);
         }
         return;
@@ -112,7 +127,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
 
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [router]);
+  }, [router, toast]);
 
   const toggleCollapsed = useCallback(
     () => setSidebarState(collapsed ? 'expanded' : 'collapsed'),

@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useIsFetching, useQueryClient } from '@tanstack/react-query';
 import { adminKeys, useAdminQuery } from './api';
 import { useSession } from '../_app/session';
@@ -157,23 +157,27 @@ export function useAdminFetch<T>(endpoint: string | null, _needsPass = false): F
     error: null,
     loading: endpoint != null,
   });
-  const cancelled = useRef(false);
-
   useEffect(() => {
     if (!endpoint) return;
-    cancelled.current = false;
+    // Per run, not a ref shared by every run. A ref was set back to false by the
+    // next effect the moment React started it, so the superseded request found
+    // itself un-cancelled when it resolved and wrote its older payload over the
+    // newer one — routine on the dashboards, where a refresh tick arrives every
+    // 60 s and several of the endpoints are slow aggregates.
+    let cancelled = false;
+    const controller = new AbortController();
     let ok = false;
 
     beginFetch();
-    fetch(endpoint, { cache: 'no-store' })
+    fetch(endpoint, { cache: 'no-store', signal: controller.signal })
       .then(async (response) => {
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const json = (await response.json()) as T;
         ok = true;
-        if (!cancelled.current) setState({ data: json, error: null, loading: false });
+        if (!cancelled) setState({ data: json, error: null, loading: false });
       })
       .catch((error: unknown) => {
-        if (cancelled.current) return;
+        if (cancelled) return;
         setState((previous) => ({
           ...previous,
           error: error instanceof Error ? error.message : 'Anfrage fehlgeschlagen',
@@ -183,7 +187,10 @@ export function useAdminFetch<T>(endpoint: string | null, _needsPass = false): F
       .finally(() => endFetch(ok));
 
     return () => {
-      cancelled.current = true;
+      cancelled = true;
+      // An abandoned request is also an abandoned socket: without this the
+      // superseded one runs to completion and its cost is paid twice over.
+      controller.abort();
     };
   }, [endpoint, refreshTick]);
 

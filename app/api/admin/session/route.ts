@@ -64,12 +64,22 @@ export async function POST(request: Request) {
   }
 
   const ip = clientIp(request);
+
+  // `getServerApiHeaders()` sets `User-Agent`; the browser's goes in the same
+  // slot. Left as two differently-cased keys they both survive into the Headers
+  // object, which appends rather than replaces — the backend then stored
+  // "park.fan/<sha> (+https://park.fan; production), Mozilla/5.0 (…)" as the
+  // device name, and the part that tells two laptops apart was pushed past the
+  // truncation in the session list.
+  const serverHeaders = { ...getServerApiHeaders() };
+  delete serverHeaders['User-Agent'];
+
   const upstream = await fetch(`${API_BASE}/v1/admin/auth/login`, {
     method: 'POST',
     cache: 'no-store',
     headers: {
       'Content-Type': 'application/json',
-      ...getServerApiHeaders(),
+      ...serverHeaders,
       ...(ip ? { 'x-forwarded-for': ip } : {}),
       // The backend records this on the session so "where am I signed in"
       // can name the device. Truncated there, not here.

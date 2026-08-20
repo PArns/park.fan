@@ -60,6 +60,14 @@ export interface AdminIdentity {
 const VALIDATION_TTL_MS = 60_000;
 const validated = new Map<string, { identity: AdminIdentity; until: number }>();
 
+/**
+ * The backend's absolute session ceiling (`ABSOLUTE_TTL_SECONDS`), for the one
+ * case where a cookie has to be written without an `expiresAt` to derive it
+ * from. Seven days, and deliberately not the 12 h idle window: that one slides
+ * on every request, a cookie's Max-Age does not.
+ */
+export const SESSION_ABSOLUTE_TTL_SECONDS = 7 * 24 * 60 * 60;
+
 function cacheKeyFor(token: string): string {
   // Only ever used as a Map key inside this process, never logged or persisted.
   return token;
@@ -86,12 +94,15 @@ export async function readSessionToken(request?: Request): Promise<string | null
  * Returns null for absent, expired and revoked alike — the caller must not be
  * able to tell those apart, and does not need to.
  */
-export async function resolveAdminIdentity(request?: Request): Promise<AdminIdentity | null> {
+export async function resolveAdminIdentity(
+  request?: Request,
+  options: { revalidate?: boolean } = {}
+): Promise<AdminIdentity | null> {
   const token = await readSessionToken(request);
   if (!token) return null;
 
   const cached = validated.get(cacheKeyFor(token));
-  if (cached && cached.until > Date.now()) return cached.identity;
+  if (!options.revalidate && cached && cached.until > Date.now()) return cached.identity;
 
   let response: Response;
   try {
@@ -124,6 +135,19 @@ export function forgetSession(token: string | null): void {
   if (token) validated.delete(cacheKeyFor(token));
 }
 
+/**
+ * Drop every cached identity.
+ *
+ * For the revocations that do not name a token this process can see: a password
+ * change ends every session of the account, "sign out everywhere" ends a list
+ * of them, deactivating an account ends all of its. The map is a handful of
+ * entries and refilling costs one `auth/me` per token, so clearing all of it is
+ * cheaper than tracking which ones died.
+ */
+export function forgetAllSessions(): void {
+  validated.clear();
+}
+
 export interface AdminGuardFailure {
   response: Response;
   identity: null;
@@ -149,7 +173,15 @@ export async function requireAdmin(
   request: Request,
   minRole: AdminRole = 'author'
 ): Promise<AdminGuardFailure | AdminGuardSuccess> {
-  const identity = await resolveAdminIdentity(request);
+  // A write never answers from cache. The cache exists so a page that makes
+  // six read calls does not make six `auth/me` calls behind them; a media
+  // commit or a blog save is rare, already costs several round trips, and is
+  // exactly what somebody revoking a session is trying to stop. Clearing the
+  // map on the revoking request is not enough on its own — each serverless
+  // instance holds its own — so the guard asks the backend instead.
+  const method = (request.method ?? 'GET').toUpperCase();
+  const writes = method !== 'GET' && method !== 'HEAD';
+  const identity = await resolveAdminIdentity(request, { revalidate: writes });
 
   if (!identity) {
     return {

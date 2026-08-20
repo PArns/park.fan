@@ -146,7 +146,21 @@ export function ToastHost({ children }: { children: ReactNode }) {
         className="pointer-events-none fixed right-4 bottom-4 z-[80] flex w-[min(24rem,calc(100vw-2rem))] flex-col gap-2"
       >
         {toasts.map((toast) => (
-          <ToastCard key={toast.id} toast={toast} onDismiss={() => dismiss(toast.id)} />
+          <ToastCard
+            key={toast.id}
+            toast={toast}
+            onDismiss={() => dismiss(toast.id)}
+            // A failed action turns its own toast into the error report, in
+            // place: same position, the message where the button was, and no
+            // auto-dismiss because `error` has no default duration.
+            onActionError={(message) =>
+              update(toast.id, {
+                tone: 'error',
+                description: message,
+                action: undefined,
+              })
+            }
+          />
         ))}
       </div>
     </ToastContext.Provider>
@@ -172,7 +186,15 @@ const TONE_STYLES: Record<ToastTone, { ring: string; icon: ReactNode }> = {
   },
 };
 
-function ToastCard({ toast, onDismiss }: { toast: Toast; onDismiss: () => void }) {
+function ToastCard({
+  toast,
+  onDismiss,
+  onActionError,
+}: {
+  toast: Toast;
+  onDismiss: () => void;
+  onActionError: (message: string) => void;
+}) {
   const [busy, setBusy] = useState(false);
   const tone = TONE_STYLES[toast.tone ?? 'info'];
 
@@ -182,6 +204,13 @@ function ToastCard({ toast, onDismiss }: { toast: Toast; onDismiss: () => void }
     try {
       await toast.action.onClick();
       onDismiss();
+    } catch (error) {
+      // The undo in a save toast fails for reasons the person needs to hear:
+      // the change was already undone, something else has changed the field
+      // since, the session expired. Without this the promise rejected into
+      // nothing, the spinner blinked, and the toast then auto-dismissed as
+      // though the undo had worked.
+      onActionError(error instanceof Error ? error.message : 'Aktion fehlgeschlagen');
     } finally {
       setBusy(false);
     }
