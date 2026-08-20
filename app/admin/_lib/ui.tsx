@@ -1,7 +1,20 @@
-import { AlertTriangle, Loader2, type LucideIcon } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { type LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { HostDisk } from '@/lib/api/admin';
+import { EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
+
+/**
+ * What the monitoring dashboards render with.
+ *
+ * Everything here is specific to those pages — an MAE colour ramp, a disk
+ * type guard, the crowd-level palette — and belongs beside them. What used to
+ * ALSO live here, and no longer does, is the generic half: `Section`,
+ * `LoadingPanel`, `ErrorPanel` and `EmptyPanel` were one of three competing
+ * definitions of the same four things in this admin (the media panel kit and
+ * the blog editor's form fields had the others), which is exactly the drift the
+ * reuse rule exists to prevent. They are re-exported from `_ui/primitives` so
+ * the dashboards did not need editing, and there is now one implementation.
+ */
 
 // ─── formatting ───────────────────────────────────────────────────────────────
 
@@ -81,17 +94,13 @@ export function StatCard({
   valueClass?: string;
 }) {
   return (
-    <Card className="border-border/60">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-muted-foreground flex items-center gap-2 text-xs font-medium tracking-wide uppercase">
-          {Icon && <Icon className="h-3.5 w-3.5" />} {label}
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-1">
-        <span className={cn('text-3xl font-bold tabular-nums', valueClass)}>{value}</span>
-        {sub && <p className="text-muted-foreground text-xs">{sub}</p>}
-      </CardContent>
-    </Card>
+    <div className="border-border/60 bg-card/60 space-y-1 rounded-xl border p-4 backdrop-blur-sm">
+      <p className="text-muted-foreground flex items-center gap-2 text-xs font-medium tracking-wide uppercase">
+        {Icon && <Icon className="h-3.5 w-3.5" />} {label}
+      </p>
+      <span className={cn('block text-3xl font-bold tabular-nums', valueClass)}>{value}</span>
+      {sub && <p className="text-muted-foreground text-xs">{sub}</p>}
+    </div>
   );
 }
 
@@ -174,29 +183,23 @@ export function StatusBadge({ status }: { status: string }) {
   );
 }
 
-// ─── states ─────────────────────────────────────────────────────────────────
+// ─── states ───────────────────────────────────────────────────────────────
 
-export function LoadingPanel({ label = 'Loading…' }: { label?: string }) {
-  return (
-    <div className="text-muted-foreground border-border/40 bg-card/40 flex items-center justify-center gap-2 rounded-lg border py-12 text-sm">
-      <Loader2 className="h-4 w-4 animate-spin" /> {label}
-    </div>
-  );
+/**
+ * The dashboards' names for the shared state panels.
+ *
+ * Kept as aliases rather than renamed at ~40 call sites: the rename would be a
+ * large diff that changes nothing a person sees, buried in the same commit as
+ * the changes that do.
+ */
+export function LoadingPanel({ label = 'Lädt…' }: { label?: string }) {
+  return <LoadingState label={label} />;
 }
 
 export function ErrorPanel({ message }: { message: string }) {
-  return (
-    <div className="bg-destructive/10 border-destructive/20 text-destructive flex items-center gap-2 rounded-lg border px-3 py-2 text-sm">
-      <AlertTriangle className="h-4 w-4 shrink-0" />
-      {message}
-    </div>
-  );
+  return <ErrorState message={message} />;
 }
 
 export function EmptyPanel({ label }: { label: string }) {
-  return (
-    <div className="text-muted-foreground border-border/40 bg-card/40 rounded-lg border py-8 text-center text-sm">
-      {label}
-    </div>
-  );
+  return <EmptyState title={label} />;
 }

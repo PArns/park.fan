@@ -1,6 +1,5 @@
 import type { EditorView } from '@tiptap/pm/view';
 import type { Node as PMNode } from '@tiptap/pm/model';
-import { ADMIN_PASS_HEADER, SESSION_KEY } from '../../_lib/admin-context';
 
 /**
  * Helpers shared across the four chip preview extensions
@@ -118,12 +117,10 @@ export function createResolveCache<T>(
     ensure(refValue, onResolve) {
       if (cache.has(refValue)) return;
       cache.set(refValue, { state: 'loading' });
-      // Plain module (no hook access) — read the admin pass straight from the
-      // session, same store the AdminShell login writes to.
-      const pass = typeof window !== 'undefined' ? (sessionStorage.getItem(SESSION_KEY) ?? '') : '';
-      fetch(`/api/admin/blog-editor/resolve-ref?ref=${encodeURIComponent(refValue)}`, {
-        headers: { [ADMIN_PASS_HEADER]: pass },
-      })
+      // Plain module, no hook access — and none needed: the session is an
+      // httpOnly cookie the browser attaches to a same-origin fetch by itself.
+      // This used to read a shared password out of sessionStorage.
+      fetch(`/api/admin/blog-editor/resolve-ref?ref=${encodeURIComponent(refValue)}`)
         .then((r) => (r.ok ? r.json() : Promise.reject()))
         .then((raw) => {
           cache.set(refValue, { state: 'ready', data: parseResponse(raw) });

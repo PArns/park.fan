@@ -1,6 +1,6 @@
 import 'server-only';
 import { NextResponse } from 'next/server';
-import { requireAdminPass } from '@/lib/admin/verify-pass';
+import { denyUnlessAdmin } from '@/lib/admin/session';
 import { inventory, listSubmissions } from '@/lib/contribute/submissions';
 
 export const dynamic = 'force-dynamic';
@@ -8,7 +8,7 @@ export const runtime = 'nodejs';
 
 /** GET /api/admin/contributions — moderation queue, newest first. Admin-only. */
 export async function GET(request: Request) {
-  const unauthorized = await requireAdminPass(request);
+  const unauthorized = await denyUnlessAdmin(request);
   if (unauthorized) return unauthorized;
 
   try {

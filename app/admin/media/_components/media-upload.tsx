@@ -4,7 +4,6 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AlertTriangle, MapPin, Upload, X } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
-import { ADMIN_PASS_HEADER, useAdmin } from '../../_lib/admin-context';
 import {
   ParkRidePicker,
   type PickerMode,
@@ -68,7 +67,6 @@ interface Props {
 }
 
 export function MediaUpload({ vocabulary, newSession, onDone, onClose }: Props) {
-  const { pass } = useAdmin();
   const [files, setFiles] = useState<File[]>([]);
   const [analysis, setAnalysis] = useState<AnalyzedFile[]>([]);
   const [assignments, setAssignments] = useState<Assignment[]>([]);
@@ -105,8 +103,7 @@ export function MediaUpload({ vocabulary, newSession, onDone, onClose }: Props) 
           form.append('files', analyzePayload(file), file.name);
           const response = await fetch('/api/admin/media/analyze', {
             method: 'POST',
-            headers: { [ADMIN_PASS_HEADER]: pass },
-            body: form,
+                        body: form,
           });
           const one = await response.json();
           if (!response.ok) throw new Error(one.error ?? `Analysis failed for ${file.name}`);
@@ -143,7 +140,7 @@ export function MediaUpload({ vocabulary, newSession, onDone, onClose }: Props) 
         setBusy(null);
       }
     },
-    [pass]
+    []
   );
 
   const update = (index: number, patch: Partial<Assignment>) =>
@@ -218,7 +215,7 @@ export function MediaUpload({ vocabulary, newSession, onDone, onClose }: Props) 
 
         const response = await fetch('/api/admin/media/commit', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json', [ADMIN_PASS_HEADER]: pass },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             title: `media: add ${assignment.name}`,
             // Only the FIRST image may start a new pull request; the rest join

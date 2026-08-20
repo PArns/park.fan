@@ -1,126 +1,138 @@
 'use client';
 
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-  type ReactNode,
-} from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useIsFetching, useQueryClient } from '@tanstack/react-query';
+import { adminKeys, useAdminQuery } from './api';
+import { useSession } from '../_app/session';
 
-export const SESSION_KEY = 'parkfan_admin_pass';
+/**
+ * The auto-refresh loop the monitoring pages run on.
+ *
+ * The dashboards (system, queues, analytics, ML, maintenance) are live views of
+ * a moving system, and they were written against a hand-rolled context that
+ * also carried the shared admin password. The password is gone — the session is
+ * an httpOnly cookie the browser attaches by itself — so what is left is only
+ * the refresh behaviour, which is worth keeping exactly as it was: a 60 s tick,
+ * paused while the tab is hidden, with an exponential backoff so a downed
+ * backend is not hammered by every open admin tab.
+ *
+ * `useAdminFetch` stays as the dashboards' data hook rather than being
+ * rewritten into `useAdminQuery` at every call site, because what those pages
+ * need is precisely "re-read this endpoint on every tick" and React Query's
+ * caching would be working against that. It is a thin wrapper now, sharing the
+ * query client's fetch counter so the topbar's "refreshing" indicator covers
+ * both worlds.
+ */
+
 const REFRESH_INTERVAL_MS = 60_000;
-/** Cap for the exponential backoff: at most 2^3 - 1 = 7 skipped ticks (8 min). */
+/** Cap for the backoff: at most 2^3 - 1 = 7 skipped ticks (8 min). */
 const MAX_FAILURE_STREAK = 3;
 
-/** Header used to send the admin pass to /api/admin/* (kept out of URLs/server logs). */
-export const ADMIN_PASS_HEADER = 'x-admin-pass';
-
-interface AdminContextValue {
-  pass: string;
+interface AdminRuntime {
   refreshTick: number;
   refreshing: boolean;
   lastUpdated: Date | null;
   triggerRefresh: () => void;
   logout: () => void;
-  beginFetch: () => void;
-  endFetch: (ok: boolean) => void;
 }
 
-const AdminContext = createContext<AdminContextValue | null>(null);
+let tickListeners: Array<(tick: number) => void> = [];
+let currentTick = 0;
+let roundFailed = false;
+let failureStreak = 0;
+let skipTicks = 0;
+let inFlight = 0;
+let lastUpdatedAt: Date | null = null;
+let refreshingListeners: Array<(refreshing: boolean, lastUpdated: Date | null) => void> = [];
+let intervalHandle: ReturnType<typeof setInterval> | null = null;
 
-export function useAdmin(): AdminContextValue {
-  const ctx = useContext(AdminContext);
-  if (!ctx) throw new Error('useAdmin must be used within AdminProvider');
-  return ctx;
+function emitTick() {
+  currentTick += 1;
+  tickListeners.forEach((listener) => listener(currentTick));
 }
 
-export function AdminProvider({
-  pass,
-  onLogout,
-  children,
-}: {
-  pass: string;
-  onLogout: () => void;
-  children: ReactNode;
-}) {
-  const [refreshTick, setRefreshTick] = useState(0);
-  const [refreshing, setRefreshing] = useState(false);
-  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
-  const inFlight = useRef(0);
-  const roundFailed = useRef(false);
-  const failureStreak = useRef(0);
-  const skipTicks = useRef(0);
+function emitRefreshing(refreshing: boolean) {
+  refreshingListeners.forEach((listener) => listener(refreshing, lastUpdatedAt));
+}
 
-  const triggerRefresh = useCallback(() => {
-    failureStreak.current = 0;
-    skipTicks.current = 0;
-    setRefreshTick((t) => t + 1);
-  }, []);
+function beginFetch() {
+  inFlight += 1;
+  emitRefreshing(true);
+}
 
-  const beginFetch = useCallback(() => {
-    inFlight.current += 1;
-    setRefreshing(true);
-  }, []);
+function endFetch(ok: boolean) {
+  if (!ok) roundFailed = true;
+  inFlight = Math.max(0, inFlight - 1);
+  if (inFlight > 0) return;
 
-  const endFetch = useCallback((ok: boolean) => {
-    if (!ok) roundFailed.current = true;
-    inFlight.current = Math.max(0, inFlight.current - 1);
-    if (inFlight.current === 0) {
-      // Exponential backoff: after a failed round, skip 1/3/7 auto-refresh ticks
-      // so a downed backend isn't hammered by every open admin tab.
-      failureStreak.current = roundFailed.current
-        ? Math.min(failureStreak.current + 1, MAX_FAILURE_STREAK)
-        : 0;
-      skipTicks.current = failureStreak.current === 0 ? 0 : 2 ** failureStreak.current - 1;
-      roundFailed.current = false;
-      setRefreshing(false);
-      setLastUpdated(new Date());
+  failureStreak = roundFailed ? Math.min(failureStreak + 1, MAX_FAILURE_STREAK) : 0;
+  skipTicks = failureStreak === 0 ? 0 : 2 ** failureStreak - 1;
+  roundFailed = false;
+  lastUpdatedAt = new Date();
+  emitRefreshing(false);
+}
+
+function ensureInterval() {
+  if (intervalHandle) return;
+  intervalHandle = setInterval(() => {
+    if (typeof document !== 'undefined' && document.hidden) return;
+    if (skipTicks > 0) {
+      skipTicks -= 1;
+      return;
     }
-  }, []);
+    emitTick();
+  }, REFRESH_INTERVAL_MS);
+}
+
+export function useAdmin(): AdminRuntime {
+  const { signOut } = useSession();
+  const client = useQueryClient();
+  const queryFetching = useIsFetching({ queryKey: ['admin'] });
+  const [tick, setTick] = useState(currentTick);
+  const [legacyRefreshing, setLegacyRefreshing] = useState(false);
+  const [lastUpdated, setLastUpdated] = useState<Date | null>(lastUpdatedAt);
 
   useEffect(() => {
-    const id = setInterval(() => {
-      if (document.hidden) return;
-      if (skipTicks.current > 0) {
-        skipTicks.current -= 1;
-        return;
-      }
-      setRefreshTick((t) => t + 1);
-    }, REFRESH_INTERVAL_MS);
-
-    // Refresh immediately when the tab becomes visible again (ticks are paused while hidden).
-    const onVisibilityChange = () => {
-      if (!document.hidden) setRefreshTick((t) => t + 1);
+    ensureInterval();
+    const onTick = (value: number) => setTick(value);
+    const onRefreshing = (value: boolean, updated: Date | null) => {
+      setLegacyRefreshing(value);
+      setLastUpdated(updated);
     };
-    document.addEventListener('visibilitychange', onVisibilityChange);
+    tickListeners.push(onTick);
+    refreshingListeners.push(onRefreshing);
+
+    const onVisibility = () => {
+      if (!document.hidden) emitTick();
+    };
+    document.addEventListener('visibilitychange', onVisibility);
 
     return () => {
-      clearInterval(id);
-      document.removeEventListener('visibilitychange', onVisibilityChange);
+      tickListeners = tickListeners.filter((listener) => listener !== onTick);
+      refreshingListeners = refreshingListeners.filter((l) => l !== onRefreshing);
+      document.removeEventListener('visibilitychange', onVisibility);
     };
   }, []);
 
-  // Memoized so a provider re-render without a state change (e.g. parent shell state)
-  // doesn't hand every consumer a new context reference.
-  const value = useMemo<AdminContextValue>(
+  const triggerRefresh = useCallback(() => {
+    failureStreak = 0;
+    skipTicks = 0;
+    emitTick();
+    void client.invalidateQueries({ queryKey: ['admin'] });
+  }, [client]);
+
+  return useMemo(
     () => ({
-      pass,
-      refreshTick,
-      refreshing,
+      refreshTick: tick,
+      refreshing: legacyRefreshing || queryFetching > 0,
       lastUpdated,
       triggerRefresh,
-      logout: onLogout,
-      beginFetch,
-      endFetch,
+      logout: () => {
+        void signOut();
+      },
     }),
-    [pass, refreshTick, refreshing, lastUpdated, triggerRefresh, onLogout, beginFetch, endFetch]
+    [tick, legacyRefreshing, queryFetching, lastUpdated, triggerRefresh, signOut]
   );
-
-  return <AdminContext.Provider value={value}>{children}</AdminContext.Provider>;
 }
 
 interface FetchState<T> {
@@ -130,52 +142,53 @@ interface FetchState<T> {
 }
 
 /**
- * Fetches an admin endpoint on mount and on every refresh tick (auto-refresh
- * + manual). Pass-protected endpoints send the pass via header (not the URL,
- * to keep it out of logs/history).
- * Refetches whenever `endpoint` changes (e.g. pagination/search state).
+ * Fetch an admin endpoint on mount and on every refresh tick.
+ *
+ * The `needsPass` parameter is gone: there is no pass any more, and every
+ * request carries the session cookie without being asked. Call sites that
+ * passed `true` keep working — the argument is simply ignored — so the
+ * dashboards did not have to be edited to stop sending a credential they no
+ * longer hold.
  */
-export function useAdminFetch<T>(endpoint: string | null, needsPass = false): FetchState<T> {
-  const { pass, refreshTick, beginFetch, endFetch } = useAdmin();
+export function useAdminFetch<T>(endpoint: string | null, _needsPass = false): FetchState<T> {
+  const { refreshTick } = useAdmin();
   const [state, setState] = useState<FetchState<T>>({
     data: null,
     error: null,
     loading: endpoint != null,
   });
+  const cancelled = useRef(false);
 
   useEffect(() => {
     if (!endpoint) return;
-    let cancelled = false;
+    cancelled.current = false;
     let ok = false;
 
     beginFetch();
-    fetch(endpoint, {
-      cache: 'no-store',
-      headers: needsPass ? { [ADMIN_PASS_HEADER]: pass } : undefined,
-    })
-      .then(async (res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const json = (await res.json()) as T;
+    fetch(endpoint, { cache: 'no-store' })
+      .then(async (response) => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const json = (await response.json()) as T;
         ok = true;
-        if (!cancelled) setState({ data: json, error: null, loading: false });
+        if (!cancelled.current) setState({ data: json, error: null, loading: false });
       })
-      .catch((err: unknown) => {
-        if (!cancelled) {
-          setState((prev) => ({
-            ...prev,
-            error: err instanceof Error ? err.message : 'Request failed',
-            loading: false,
-          }));
-        }
+      .catch((error: unknown) => {
+        if (cancelled.current) return;
+        setState((previous) => ({
+          ...previous,
+          error: error instanceof Error ? error.message : 'Anfrage fehlgeschlagen',
+          loading: false,
+        }));
       })
-      .finally(() => {
-        endFetch(ok);
-      });
+      .finally(() => endFetch(ok));
 
     return () => {
-      cancelled = true;
+      cancelled.current = true;
     };
-  }, [endpoint, needsPass, pass, refreshTick, beginFetch, endFetch]);
+  }, [endpoint, refreshTick]);
 
   return state;
 }
+
+/** Re-exported so the dashboards can reach the query layer without a new import path. */
+export { adminKeys, useAdminQuery };

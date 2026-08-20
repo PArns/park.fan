@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react';
 import { AlertTriangle, Check, ExternalLink, MapPin, Save, Upload, X } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
-import { ADMIN_PASS_HEADER, useAdmin } from '../../_lib/admin-context';
 import type { MediaRole } from '@/lib/media/types';
 import type { MediaRow, Vocabulary } from '../_lib/types';
 import {
@@ -75,7 +74,6 @@ interface Props {
 }
 
 export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }: Props) {
-  const { pass } = useAdmin();
   const [row, setRow] = useState<MediaRow | null>(null);
   const [geo, setGeo] = useState<GeoVerdict | null>(null);
   const [draft, setDraft] = useState<Partial<MediaRow> | null>(null);
@@ -110,8 +108,7 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
   useEffect(() => {
     let cancelled = false;
     fetch(`/api/admin/media?id=${encodeURIComponent(id)}`, {
-      headers: { [ADMIN_PASS_HEADER]: pass },
-    })
+          })
       .then((r) => r.json())
       .then((data: { image?: MediaRow; geo?: GeoVerdict; error?: string }) => {
         if (cancelled) return;
@@ -127,7 +124,7 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
     return () => {
       cancelled = true;
     };
-  }, [id, pass]);
+  }, [id]);
 
   // Only a FAILED LOAD replaces the editor — there is nothing to edit then. Once the
   // row is here, every later error (a rejected drop, a save that did not go through)
@@ -289,7 +286,7 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
 
       const response = await fetch('/api/admin/media/commit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', [ADMIN_PASS_HEADER]: pass },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           title: `media: ${pending ? 'replace' : 'update'} ${row!.id}`,
           newSession,

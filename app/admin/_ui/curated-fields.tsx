@@ -1,0 +1,402 @@
+'use client';
+
+import { useMemo, useState } from 'react';
+import { ArrowLeftRight, Loader2, RotateCcw, Save, Sparkles } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import type { CuratedField } from '../_lib/types';
+import { Chip } from './primitives';
+import {
+  Field,
+  MonthPicker,
+  NumberInput,
+  Select,
+  TextArea,
+  TextInput,
+  TriSwitch,
+  useFieldId,
+} from './controls';
+
+/**
+ * One editor for every curated field there is or ever will be.
+ *
+ * The backend describes its curatable columns — key, type, the value upstream
+ * publishes, the value a human wrote, the value the API actually serves — and
+ * this renders whatever it is handed. Adding a curated column to the API makes
+ * it appear here with no frontend change at all, which is the point: a form
+ * written field by field is a second, drifting copy of which columns are
+ * curatable, and the drift shows up as a field somebody cannot edit and cannot
+ * see why.
+ *
+ * The three-value display is the actual work. A curated field is a
+ * **disagreement with a machine**, and the only way to judge one is to see both
+ * sides at once: upstream's value beside yours, with the effective value
+ * implied. Without it the editor is just a form, and a form cannot tell you
+ * that the correction you wrote in March is now identical to what the sync
+ * publishes and can be removed.
+ */
+
+export type FieldValues = Record<string, unknown>;
+
+const MONTH_NAMES = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'];
+
+export function formatFieldValue(field: CuratedField, value: unknown): string {
+  if (value === null || value === undefined || value === '') return '—';
+  switch (field.type) {
+    case 'boolean':
+      return value === true ? 'Ja' : value === false ? 'Nein' : '—';
+    case 'months':
+      return Array.isArray(value)
+        ? (value as number[]).map((month) => MONTH_NAMES[month - 1] ?? month).join(', ')
+        : '—';
+    case 'number':
+      return field.unit ? `${String(value)} ${field.unit}` : String(value);
+    default:
+      return String(value);
+  }
+}
+
+function sameValue(a: unknown, b: unknown): boolean {
+  return JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
+}
+
+// ─── one field ────────────────────────────────────────────────────────────────
+
+function CuratedFieldRow({
+  field,
+  value,
+  onChange,
+  disabled,
+}: {
+  field: CuratedField;
+  value: unknown;
+  onChange: (value: unknown) => void;
+  disabled: boolean;
+}) {
+  const id = useFieldId(field.key);
+  const dirty = !sameValue(value, field.curatedValue);
+  const hasCorrection = value !== null && value !== undefined && value !== '';
+  const agreesWithUpstream = hasCorrection && !field.humanOnly && sameValue(value, field.syncedValue);
+
+  return (
+    <Field
+      label={field.label}
+      htmlFor={id}
+      hint={field.hint}
+      className={cn(
+        'rounded-lg px-3 py-3 transition-colors',
+        dirty ? 'bg-primary/[0.06] ring-primary/25 ring-1' : 'hover:bg-muted/20'
+      )}
+      aside={
+        <div className="flex items-center gap-1.5">
+          {dirty && <Chip tone="primary">geändert</Chip>}
+          {!field.humanOnly && (
+            <UpstreamChip field={field} onAdopt={() => onChange(field.syncedValue ?? null)} />
+          )}
+          {hasCorrection && (
+            <button
+              type="button"
+              disabled={disabled}
+              onClick={() => onChange(null)}
+              title={
+                field.humanOnly
+                  ? 'Wert löschen'
+                  : 'Korrektur entfernen — es gilt wieder, was der Sync sagt'
+              }
+              className="text-muted-foreground hover:text-foreground rounded p-1 disabled:opacity-40"
+            >
+              <RotateCcw className="h-3 w-3" />
+            </button>
+          )}
+        </div>
+      }
+    >
+      <FieldControl field={field} id={id} value={value} onChange={onChange} disabled={disabled} />
+
+      {agreesWithUpstream && (
+        <p className="flex items-center gap-1.5 text-xs text-amber-400">
+          <Sparkles className="h-3 w-3 shrink-0" />
+          Deckt sich mit dem Upstream-Wert — die Korrektur wird nicht mehr gebraucht.
+        </p>
+      )}
+    </Field>
+  );
+}
+
+function UpstreamChip({
+  field,
+  onAdopt,
+}: {
+  field: CuratedField;
+  onAdopt: () => void;
+}) {
+  const upstream = formatFieldValue(field, field.syncedValue);
+  if (upstream === '—') {
+    return (
+      <Chip>
+        <ArrowLeftRight className="h-3 w-3" />
+        Upstream: nichts
+      </Chip>
+    );
+  }
+  return (
+    <button type="button" onClick={onAdopt} title="Upstream-Wert übernehmen">
+      <Chip className="hover:border-primary/40 hover:text-foreground cursor-pointer">
+        <ArrowLeftRight className="h-3 w-3" />
+        Upstream: {upstream}
+      </Chip>
+    </button>
+  );
+}
+
+function FieldControl({
+  field,
+  id,
+  value,
+  onChange,
+  disabled,
+}: {
+  field: CuratedField;
+  id: string;
+  value: unknown;
+  onChange: (value: unknown) => void;
+  disabled: boolean;
+}) {
+  switch (field.type) {
+    case 'longtext':
+      return (
+        <TextArea
+          id={id}
+          disabled={disabled}
+          value={typeof value === 'string' ? value : ''}
+          placeholder={placeholderFor(field)}
+          onChange={(event) => onChange(event.target.value || null)}
+        />
+      );
+
+    case 'number':
+      return (
+        <div className="flex items-center gap-2">
+          <NumberInput
+            id={id}
+            disabled={disabled}
+            min={field.min}
+            max={field.max}
+            value={typeof value === 'number' ? value : null}
+            onValueChange={onChange}
+            placeholder={placeholderFor(field)}
+            className="max-w-32"
+          />
+          {field.unit && <span className="text-muted-foreground text-xs">{field.unit}</span>}
+        </div>
+      );
+
+    case 'boolean':
+      return (
+        <TriSwitch
+          disabled={disabled}
+          value={typeof value === 'boolean' ? value : null}
+          onValueChange={onChange}
+        />
+      );
+
+    case 'enum':
+      return (
+        <Select
+          id={id}
+          disabled={disabled}
+          value={typeof value === 'string' ? value : null}
+          onValueChange={onChange}
+          placeholder={placeholderFor(field)}
+          options={(field.options ?? []).map((option) => ({
+            value: option,
+            label: option,
+          }))}
+        />
+      );
+
+    case 'months':
+      return (
+        <MonthPicker
+          disabled={disabled}
+          value={Array.isArray(value) ? (value as number[]) : null}
+          reference={Array.isArray(field.syncedValue) ? (field.syncedValue as number[]) : null}
+          onValueChange={onChange}
+        />
+      );
+
+    default:
+      return (
+        <TextInput
+          id={id}
+          disabled={disabled}
+          value={typeof value === 'string' ? value : ''}
+          placeholder={placeholderFor(field)}
+          onChange={(event) => onChange(event.target.value || null)}
+        />
+      );
+  }
+}
+
+/**
+ * The placeholder says what happens if you leave it empty.
+ *
+ * "Leer = Upstream" is more useful than repeating the label, because empty is a
+ * meaningful state here and not an unfilled one — it is how a correction is
+ * withdrawn.
+ */
+function placeholderFor(field: CuratedField): string {
+  if (field.humanOnly) return 'Nicht gesetzt';
+  const upstream = formatFieldValue(field, field.syncedValue);
+  return upstream === '—' ? 'Upstream sagt nichts' : `Upstream: ${upstream}`;
+}
+
+// ─── the form ─────────────────────────────────────────────────────────────────
+
+export interface CuratedFormState {
+  values: FieldValues;
+  dirtyKeys: string[];
+  setValue: (key: string, value: unknown) => void;
+  reset: () => void;
+}
+
+export function useCuratedForm(fields: CuratedField[]): CuratedFormState {
+  const initial = useMemo(() => {
+    const values: FieldValues = {};
+    for (const field of fields) values[field.key] = field.curatedValue ?? null;
+    return values;
+  }, [fields]);
+
+  const [overrides, setOverrides] = useState<FieldValues>({});
+
+  const values = useMemo(() => ({ ...initial, ...overrides }), [initial, overrides]);
+
+  const dirtyKeys = useMemo(
+    () => Object.keys(values).filter((key) => !sameValue(values[key], initial[key])),
+    [values, initial]
+  );
+
+  return {
+    values,
+    dirtyKeys,
+    setValue: (key, value) => setOverrides((current) => ({ ...current, [key]: value })),
+    reset: () => setOverrides({}),
+  };
+}
+
+export function CuratedFieldsEditor({
+  fields,
+  form,
+  disabled = false,
+  onSave,
+  saving = false,
+  saveError,
+}: {
+  fields: CuratedField[];
+  form: CuratedFormState;
+  disabled?: boolean;
+  onSave: (input: { fields: FieldValues; reason: string; sourceUrl: string }) => void;
+  saving?: boolean;
+  saveError?: string | null;
+}) {
+  const [reason, setReason] = useState('');
+  const [sourceUrl, setSourceUrl] = useState('');
+
+  const groups = useMemo(() => {
+    const byGroup = new Map<string, CuratedField[]>();
+    for (const field of fields) {
+      const list = byGroup.get(field.group) ?? [];
+      list.push(field);
+      byGroup.set(field.group, list);
+    }
+    return [...byGroup.entries()];
+  }, [fields]);
+
+  const dirty = form.dirtyKeys.length > 0;
+
+  function handleSave() {
+    const changed: FieldValues = {};
+    for (const key of form.dirtyKeys) changed[key] = form.values[key];
+    onSave({ fields: changed, reason: reason.trim(), sourceUrl: sourceUrl.trim() });
+    setReason('');
+    setSourceUrl('');
+  }
+
+  return (
+    <div className="space-y-6">
+      {groups.map(([group, groupFields]) => (
+        <section key={group}>
+          <h3 className="text-muted-foreground mb-1 px-3 text-[11px] font-semibold tracking-widest uppercase">
+            {group}
+          </h3>
+          <div className="space-y-1">
+            {groupFields.map((field) => (
+              <CuratedFieldRow
+                key={field.key}
+                field={field}
+                value={form.values[field.key]}
+                onChange={(value) => form.setValue(field.key, value)}
+                disabled={disabled || saving}
+              />
+            ))}
+          </div>
+        </section>
+      ))}
+
+      {/* A sticky bar rather than a button at the bottom of a long form: the
+          field somebody just changed is usually not the last one, and hunting
+          for the save button is how an edit gets abandoned. */}
+      <div
+        className={cn(
+          'bg-background/90 border-border/60 sticky bottom-0 -mx-4 mt-2 border-t px-4 py-3 backdrop-blur-md transition-opacity',
+          dirty ? 'opacity-100' : 'pointer-events-none opacity-0'
+        )}
+      >
+        <div className="space-y-2">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-sm font-medium">
+              {form.dirtyKeys.length} {form.dirtyKeys.length === 1 ? 'Änderung' : 'Änderungen'}
+            </span>
+            <div className="flex flex-wrap gap-1">
+              {form.dirtyKeys.map((key) => (
+                <Chip key={key} tone="primary">
+                  {fields.find((field) => field.key === key)?.label ?? key}
+                </Chip>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid gap-2 sm:grid-cols-2">
+            <TextInput
+              value={reason}
+              onChange={(event) => setReason(event.target.value)}
+              placeholder="Warum? (steht später im Änderungsprotokoll)"
+              disabled={saving}
+            />
+            <TextInput
+              value={sourceUrl}
+              onChange={(event) => setSourceUrl(event.target.value)}
+              placeholder="Quelle — die Seite, auf der es steht"
+              disabled={saving}
+            />
+          </div>
+
+          {saveError && <p className="text-destructive text-xs">{saveError}</p>}
+
+          <div className="flex items-center gap-2">
+            <Button onClick={handleSave} disabled={saving || disabled} size="sm">
+              {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
+              Speichern
+            </Button>
+            <Button variant="ghost" size="sm" onClick={form.reset} disabled={saving}>
+              Verwerfen
+            </Button>
+            <p className="text-muted-foreground ml-auto hidden text-xs sm:block">
+              Ohne Quelle ist eine Korrektur ein Gerücht.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

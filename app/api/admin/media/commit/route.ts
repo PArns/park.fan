@@ -2,7 +2,7 @@ import 'server-only';
 import { NextResponse } from 'next/server';
 import { Octokit } from '@octokit/rest';
 
-import { requireAdminPass } from '@/lib/admin/verify-pass';
+import { denyUnlessAdmin } from '@/lib/admin/session';
 import {
   SESSION_PREFIX,
   mediaRepo,
@@ -149,7 +149,7 @@ function buildSidecarFile(existingId: string | undefined, payload: SidecarPayloa
 }
 
 export async function POST(req: Request) {
-  const unauthorized = await requireAdminPass(req);
+  const unauthorized = await denyUnlessAdmin(req);
   if (unauthorized) return unauthorized;
 
   let payload: CommitPayload;

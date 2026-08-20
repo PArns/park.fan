@@ -2,7 +2,7 @@ import 'server-only';
 import { NextResponse, type NextRequest } from 'next/server';
 import { parseRefKey, resolveAttraction, resolvePark } from '@/lib/blog/park-resolver';
 import { getAttractionBackgroundImage, getParkBackgroundImage } from '@/lib/utils/park-assets';
-import { requireAdminPass } from '@/lib/admin/verify-pass';
+import { denyUnlessAdmin } from '@/lib/admin/session';
 
 /**
  * Resolve a ref: token into the same handful of fields the published renderer
@@ -15,7 +15,7 @@ import { requireAdminPass } from '@/lib/admin/verify-pass';
  * (`/parks/europe/germany/bruehl/phantasialand[/<rideSlug>]`).
  */
 export async function GET(req: NextRequest) {
-  const unauthorized = await requireAdminPass(req);
+  const unauthorized = await denyUnlessAdmin(req);
   if (unauthorized) return unauthorized;
   const ref = req.nextUrl.searchParams.get('ref');
   if (!ref) {

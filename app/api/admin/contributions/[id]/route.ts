@@ -1,7 +1,7 @@
 import 'server-only';
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
-import { requireAdminPass } from '@/lib/admin/verify-pass';
+import { denyUnlessAdmin } from '@/lib/admin/session';
 import { deleteSubmission, updateSubmission } from '@/lib/contribute/submissions';
 
 export const dynamic = 'force-dynamic';
@@ -15,7 +15,7 @@ const patchSchema = z.object({
 
 /** PATCH — moderate a submission: change status and/or edit caption/credit. */
 export async function PATCH(request: Request, { params }: { params: Promise<{ id: string }> }) {
-  const unauthorized = await requireAdminPass(request);
+  const unauthorized = await denyUnlessAdmin(request);
   if (unauthorized) return unauthorized;
 
   const { id } = await params;
@@ -38,7 +38,7 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
 
 /** DELETE — remove a submission and its stored photos. */
 export async function DELETE(request: Request, { params }: { params: Promise<{ id: string }> }) {
-  const unauthorized = await requireAdminPass(request);
+  const unauthorized = await denyUnlessAdmin(request);
   if (unauthorized) return unauthorized;
 
   const { id } = await params;

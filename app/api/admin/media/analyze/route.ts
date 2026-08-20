@@ -1,7 +1,7 @@
 import 'server-only';
 import { NextResponse } from 'next/server';
 
-import { requireAdminPass } from '@/lib/admin/verify-pass';
+import { denyUnlessAdmin } from '@/lib/admin/session';
 import { suggestPark, suggestRides, type GeoAttraction } from '@/lib/media/suggest';
 import type { GeoPark } from '@/lib/media/geo';
 import type { MediaGps } from '@/lib/media/types';
@@ -121,7 +121,7 @@ async function loadAttractions(parkUrl: string): Promise<GeoAttraction[]> {
 }
 
 export async function POST(req: Request) {
-  const unauthorized = await requireAdminPass(req);
+  const unauthorized = await denyUnlessAdmin(req);
   if (unauthorized) return unauthorized;
 
   const form = await req.formData();

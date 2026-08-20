@@ -20,7 +20,6 @@ import {
   Wrench,
   type LucideIcon,
 } from 'lucide-react';
-import { ADMIN_PASS_HEADER, useAdmin } from '../_lib/admin-context';
 import { Section } from '../_lib/ui';
 
 interface ActionDef {
@@ -145,7 +144,6 @@ const SHADOW_ACTIONS: ActionDef[] = [
 ];
 
 export default function ActionsPage() {
-  const { pass } = useAdmin();
   const [loading, setLoading] = useState<Record<string, boolean>>({});
   const [result, setResult] = useState<Record<string, 'ok' | 'err'>>({});
 
@@ -159,8 +157,7 @@ export default function ActionsPage() {
     try {
       const res = await fetch(`/api/admin/${action.path}`, {
         method: 'POST',
-        headers: { [ADMIN_PASS_HEADER]: pass },
-      });
+              });
       setResult((p) => ({ ...p, [action.key]: res.ok ? 'ok' : 'err' }));
     } catch {
       setResult((p) => ({ ...p, [action.key]: 'err' }));

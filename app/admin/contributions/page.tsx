@@ -15,7 +15,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
-import { ADMIN_PASS_HEADER, useAdmin, useAdminFetch } from '../_lib/admin-context';
+import { useAdmin, useAdminFetch } from '../_lib/admin-context';
 import { EmptyPanel, ErrorPanel, LoadingPanel, Section } from '../_lib/ui';
 import type { SubmissionRecord, SubmissionStatus } from '@/lib/contribute/types';
 
@@ -40,7 +40,7 @@ const FILTERS: { key: 'all' | SubmissionStatus; label: string }[] = [
 ];
 
 export default function ContributionsPage() {
-  const { pass, triggerRefresh } = useAdmin();
+  const { triggerRefresh } = useAdmin();
   const { data, error } = useAdminFetch<ListResponse>('/api/admin/contributions', true);
   const [filter, setFilter] = useState<'all' | SubmissionStatus>('all');
   const [purging, setPurging] = useState(false);
@@ -60,8 +60,7 @@ export default function ContributionsPage() {
     try {
       const res = await fetch('/api/admin/contributions/orphans', {
         method: 'DELETE',
-        headers: { [ADMIN_PASS_HEADER]: pass },
-      });
+              });
       if (res.ok) triggerRefresh();
     } finally {
       setPurging(false);
@@ -130,24 +129,24 @@ export default function ContributionsPage() {
 }
 
 function SubmissionCard({ submission }: { submission: SubmissionRecord }) {
-  const { pass, triggerRefresh } = useAdmin();
+  const { triggerRefresh } = useAdmin();
   const [caption, setCaption] = useState(submission.caption);
   const [credit, setCredit] = useState(submission.credit);
   const [busy, setBusy] = useState<null | string>(null);
   const dirty = caption !== submission.caption || credit !== submission.credit;
 
-  const imgSrc = (url: string) =>
-    /^https?:/.test(url) ? url : `${url}&pass=${encodeURIComponent(pass)}`;
+  // No credential in the URL any more: the session is an httpOnly cookie and
+  // the browser sends it with the image request by itself. It used to carry
+  // `&pass=`, which put the one admin secret into browser history, into the
+  // referrer of anything the page linked to, and into this app's access log.
+  const imgSrc = (url: string) => url;
   const downloadSrc = (url: string, name: string) =>
     `${imgSrc(url)}&download=1&name=${encodeURIComponent(name)}`;
 
   async function mutate(action: string, init: RequestInit) {
     setBusy(action);
     try {
-      const res = await fetch(`/api/admin/contributions/${submission.id}`, {
-        ...init,
-        headers: { [ADMIN_PASS_HEADER]: pass, ...(init.headers ?? {}) },
-      });
+      const res = await fetch(`/api/admin/contributions/${submission.id}`, init);
       if (res.ok) triggerRefresh();
     } finally {
       setBusy(null);

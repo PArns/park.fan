@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { NextResponse } from 'next/server';
-import { requireAdminPass } from '@/lib/admin/verify-pass';
+import { denyUnlessAdmin } from '@/lib/admin/session';
 
 const BLOG_ROOT = path.resolve(process.cwd(), 'content', 'blog');
 const LOCALE_RE = /^[a-z]{2}(-[a-z]{2})?$/i;
@@ -36,7 +36,7 @@ interface PostSummary {
  * summary list for the editor's "Open existing post" picker.
  */
 export async function GET(req: Request) {
-  const unauthorized = await requireAdminPass(req);
+  const unauthorized = await denyUnlessAdmin(req);
   if (unauthorized) return unauthorized;
   if (!fs.existsSync(BLOG_ROOT)) return NextResponse.json({ posts: [] });
 

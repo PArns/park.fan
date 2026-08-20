@@ -4,7 +4,6 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { AlertTriangle, Crosshair, GitPullRequest, ImageIcon, Plus, Search } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
-import { ADMIN_PASS_HEADER, useAdmin } from '../_lib/admin-context';
 import { EmptyPanel, ErrorPanel, LoadingPanel, Section, StatCard } from '../_lib/ui';
 import { MediaDetail } from './_components/media-detail';
 import { MediaUpload } from './_components/media-upload';
@@ -57,7 +56,6 @@ const QUICK_FILTERS: { id: QuickFilter; label: string }[] = [
 ];
 
 export default function MediaAdminPage() {
-  const { pass } = useAdmin();
   const [data, setData] = useState<Payload | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -95,8 +93,7 @@ export default function MediaAdminPage() {
     setLoading(true);
     try {
       const response = await fetch(`/api/admin/media?${query}`, {
-        headers: { [ADMIN_PASS_HEADER]: pass },
-      });
+              });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       setData(await response.json());
       setError(null);
@@ -105,7 +102,7 @@ export default function MediaAdminPage() {
     } finally {
       setLoading(false);
     }
-  }, [query, pass]);
+  }, [query]);
 
   // Debounced so typing in the search box doesn't fire a request per keystroke.
   useEffect(() => {
@@ -116,7 +113,7 @@ export default function MediaAdminPage() {
   // Re-read after every save; `sessionTick` is what a save bumps to ask for it.
   useEffect(() => {
     let cancelled = false;
-    fetch('/api/admin/media/session', { headers: { [ADMIN_PASS_HEADER]: pass } })
+    fetch('/api/admin/media/session', { })
       .then((r) => r.json())
       .then((data: { session?: SessionInfo | null; tokenMissing?: boolean }) => {
         if (cancelled) return;
@@ -129,7 +126,7 @@ export default function MediaAdminPage() {
     return () => {
       cancelled = true;
     };
-  }, [pass, sessionTick]);
+  }, [sessionTick]);
 
   /** A save landed. The editor keeps its own confirmation; this refreshes around it. */
   const onCommitted = (pullRequestUrl: string | null, joined?: boolean) => {

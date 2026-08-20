@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { FileText, Folder, Search, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { ADMIN_PASS_HEADER, useAdmin } from '../../_lib/admin-context';
 
 interface PostLocaleSummary {
   slug: string;
@@ -38,7 +37,6 @@ export function PostPicker(props: PostPickerProps) {
 }
 
 function PostPickerBody({ onClose, onPick }: Omit<PostPickerProps, 'open'>) {
-  const { pass } = useAdmin();
   const [posts, setPosts] = useState<PostSummary[]>([]);
   const [q, setQ] = useState('');
   const [loading, setLoading] = useState(true);
@@ -47,14 +45,13 @@ function PostPickerBody({ onClose, onPick }: Omit<PostPickerProps, 'open'>) {
     const ctrl = new AbortController();
     fetch('/api/admin/blog-editor/posts', {
       signal: ctrl.signal,
-      headers: { [ADMIN_PASS_HEADER]: pass },
-    })
+          })
       .then((r) => r.json())
       .then((data: { posts?: PostSummary[] }) => setPosts(data.posts ?? []))
       .catch(() => setPosts([]))
       .finally(() => setLoading(false));
     return () => ctrl.abort();
-  }, [pass]);
+  }, []);
 
   const ql = q.trim().toLowerCase();
   const filtered = ql

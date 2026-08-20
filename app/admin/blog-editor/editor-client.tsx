@@ -24,12 +24,10 @@ import {
   type DraftSnapshot,
 } from './_lib/draft-autosave';
 import { clearPendingImages, listPendingImages, setUploadFolder } from './_lib/pending-images';
-import { ADMIN_PASS_HEADER, useAdmin } from '../_lib/admin-context';
 
 const DEFAULT_SOURCE: Locale = 'en';
 
 export function BlogEditorClient({ initialData }: { initialData: EditorInitialData }) {
-  const { pass } = useAdmin();
   const [sourceLocale, setSourceLocale] = useState<Locale>(DEFAULT_SOURCE);
   const [activeLocale, setActiveLocale] = useState<Locale>(DEFAULT_SOURCE);
   // One slice per locale. Created lazily when the user first edits that tab.
@@ -312,7 +310,7 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
       .map((img) => ({ path: img.path, contentBase64: img.base64 }));
     const res = await fetch('/api/admin/blog-editor/save', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', [ADMIN_PASS_HEADER]: pass },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         baseSlug,
         sourceLocale,
@@ -349,8 +347,7 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
     setLoadingPost(true);
     try {
       const res = await fetch(`/api/admin/blog-editor/posts/${encodeURIComponent(key)}`, {
-        headers: { [ADMIN_PASS_HEADER]: pass },
-      });
+              });
       if (!res.ok) {
         alert(`Could not load post: ${res.status}`);
         return;
@@ -395,7 +392,7 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
     try {
       const res = await fetch('/api/admin/blog-editor/translate', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', [ADMIN_PASS_HEADER]: pass },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           sourceLocale,
           targetLocale: target,
@@ -453,7 +450,7 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
     try {
       const res = await fetch('/api/admin/blog-editor/delete', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', [ADMIN_PASS_HEADER]: pass },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           key: editing.key,
           slugs: editing.originalSlugs,
