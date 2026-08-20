@@ -627,6 +627,47 @@ export interface ParkResponse extends ParkBase {
   liveWaitTimes?: LiveWaitTimes;
 }
 
+/** What a season is. Mirrors the API's `PARK_SEASON_KINDS`. */
+export type ParkSeasonKind =
+  | 'halloween'
+  | 'christmas'
+  | 'summer_nights'
+  | 'special_event'
+  | 'opening'
+  | 'closure'
+  | 'maintenance';
+
+/**
+ * How settled a season is.
+ *
+ * Not decoration: a visitor planning October needs the difference between "the
+ * park has published these dates" and "the park did this last year and has
+ * announced nothing".
+ */
+export type ParkSeasonStatus = 'confirmed' | 'announced' | 'expected' | 'cancelled';
+
+/** One named season or event, as the public endpoint serves it. */
+export interface ParkSeason {
+  id: string;
+  kind: ParkSeasonKind;
+  name: string | null;
+  startDate: string;
+  endDate: string;
+  /** Null when it runs every day in the range; a list when it does not. */
+  dates: string[] | null;
+  status: ParkSeasonStatus;
+  separateTicket: boolean;
+  priceFrom: string | null;
+  priceCurrency: string | null;
+  opensAt: string | null;
+  closesAt: string | null;
+  attractionIds: string[] | null;
+  url: string | null;
+  sourceUrl: string | null;
+  /** When it was last checked against the park's own page. */
+  confirmedAt: string | null;
+}
+
 /**
  * The park facts a human wrote, from the API's `info` block.
  *

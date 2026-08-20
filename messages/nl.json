@@ -496,6 +496,28 @@
       "opened": "Geopend",
       "area": "Oppervlakte"
     },
+    "seasons": {
+      "title": "Seizoenen en evenementen",
+      "separateTicket": "Apart ticket",
+      "fromPrice": "vanaf {price}",
+      "selectedDays": "{count} data",
+      "details": "Naar het park",
+      "kind": {
+        "halloween": "Halloween",
+        "christmas": "Kerstperiode",
+        "summer_nights": "Zomeravonden",
+        "special_event": "Speciaal evenement",
+        "opening": "Seizoensopening",
+        "closure": "Winterstop",
+        "maintenance": "Onderhoud"
+      },
+      "status": {
+        "confirmed": "bevestigd",
+        "announced": "aangekondigd",
+        "expected": "verwacht",
+        "cancelled": "geannuleerd"
+      }
+    },
     "weather": {
       "clear": "Helder",
       "mainlyClear": "Overwegend helder",

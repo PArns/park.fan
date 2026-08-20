@@ -1,6 +1,7 @@
 import { api, ApiError } from './client';
 import { withAttractionCoordinates, withParkCoordinates } from './coordinates';
 import type {
+  ParkSeason,
   ParkWithAttractions,
   ParkAttraction,
   AttractionResponse,
@@ -281,6 +282,36 @@ export function leanParkForAttractionShell(
   delete lean.analytics;
   delete lean.ropeDropHeadliners;
   return lean;
+}
+
+/**
+ * A park's named seasons and events, for the public page.
+ *
+ * Its own request rather than a field on the park, and the backend says why:
+ * the park payload is re-polled every five minutes for as long as a tab is
+ * open, while a season changes a handful of times a year. Day-stable, so it
+ * gets the same one-day cache window the park shell has and is never part of
+ * the live poll's budget.
+ *
+ * Returns an empty list for a park with none on file, which today is most of
+ * them — the caller renders nothing rather than an empty heading.
+ */
+export async function getParkSeasons(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string
+): Promise<ParkSeason[]> {
+  try {
+    const result = await api.get<{ seasons: ParkSeason[] }>(
+      `/v1/parks/${continent}/${country}/${city}/${parkSlug}/seasons`,
+      { next: { revalidate: PARK_REVALIDATE, tags: ['parks'] } }
+    );
+    return result.seasons ?? [];
+  } catch {
+    // A park page must not fail over a section that most parks do not have.
+    return [];
+  }
 }
 
 /**

@@ -12,7 +12,7 @@ import { notFound, permanentRedirect } from 'next/navigation';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { MapPin } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
-import { getParkByGeoPath, leanParkForParkShell } from '@/lib/api/parks';
+import { getParkByGeoPath, getParkSeasons, leanParkForParkShell } from '@/lib/api/parks';
 import { getBestDaysCalendarSeed } from '@/lib/api/integrated-calendar';
 import type { BestDaysSnapshot } from '@/lib/api/integrated-calendar';
 import { ParkBestDaysSectionSkeleton } from '@/components/parks/park-best-days-section-skeleton';
@@ -55,6 +55,7 @@ import { HeaderHolidayPanel } from '@/components/parks/header-holiday-panel';
 import { ParkBestDaysSection } from '@/components/parks/park-best-days-section';
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
 import { ParkInfoCard } from '@/components/parks/park-info-card';
+import { ParkSeasonsCard } from '@/components/parks/park-seasons-card';
 import { ParkPurchasesCard } from '@/components/parks/park-purchases-card';
 import { NoLiveWaitTimesNotice } from '@/components/parks/no-live-wait-times-notice';
 import { hasReadableWaitTimes, noLiveWaitTimesReason } from '@/lib/utils/live-wait-times';
@@ -241,11 +242,16 @@ export default async function ParkPage({ params }: ParkPageProps) {
   const seedNowMs = seedNow.getTime();
   const bestDaysSeedPromise = getBestDaysCalendarSeed(continent, country, city, parkSlug);
 
+  // Started here, awaited at the bottom of the fetch block: it is a small,
+  // day-cached list and the page has no reason to serialise it behind the park.
+  const seasonsPromise = getParkSeasons(continent, country, city, parkSlug);
+
   // Fetch park data and holidays (holidays are optional). `leanParkForParkShell` strips the two
   // per-attraction fields only the ride page renders (typicalWaits, rideProfile) — ~11 KB of this
   // park's 33 KB attraction list that nothing here reads. The live poll returns them regardless.
   const parkFull = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));
   const park = parkFull ? leanParkForParkShell(parkFull) : parkFull;
+  const seasons = await seasonsPromise;
 
   if (!park) {
     // The park slug is stable across API geo re-slugs (bruhl → bruehl etc.).
@@ -635,6 +641,12 @@ export default async function ParkPage({ params }: ParkPageProps) {
               locale={locale}
               hasLiveWaitTimes={hasReadableWaitTimes(park)}
             />
+
+            {/* What is on at this park. Hand-researched, day-stable, and its own
+              request rather than a field on the park: the park payload is
+              re-polled every five minutes and a season changes a few times a
+              year. Renders nothing for the majority of parks that have none. */}
+            <ParkSeasonsCard seasons={seasons} locale={locale} className="mt-8" />
 
             {/* The park's own address, site and ticket shop — hand-curated in the admin, because
               none of the three upstream feeds carries any of it. Server-rendered inline (no

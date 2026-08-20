@@ -496,6 +496,28 @@
       "opened": "Ouverture",
       "area": "Superficie"
     },
+    "seasons": {
+      "title": "Saisons et événements",
+      "separateTicket": "Billet séparé",
+      "fromPrice": "à partir de {price}",
+      "selectedDays": "{count} dates",
+      "details": "Site du parc",
+      "kind": {
+        "halloween": "Halloween",
+        "christmas": "Période de Noël",
+        "summer_nights": "Nuits d'été",
+        "special_event": "Événement spécial",
+        "opening": "Ouverture de saison",
+        "closure": "Fermeture hivernale",
+        "maintenance": "Maintenance"
+      },
+      "status": {
+        "confirmed": "confirmé",
+        "announced": "annoncé",
+        "expected": "attendu",
+        "cancelled": "annulé"
+      }
+    },
     "weather": {
       "clear": "Dégagé",
       "mainlyClear": "Peu nuageux",

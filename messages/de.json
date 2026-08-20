@@ -329,6 +329,28 @@
       "opened": "Eröffnet",
       "area": "Fläche"
     },
+    "seasons": {
+      "title": "Saisons und Events",
+      "separateTicket": "Extraticket",
+      "fromPrice": "ab {price}",
+      "selectedDays": "{count} Termine",
+      "details": "Zum Park",
+      "kind": {
+        "halloween": "Halloween",
+        "christmas": "Weihnachtszeit",
+        "summer_nights": "Sommernächte",
+        "special_event": "Sonderveranstaltung",
+        "opening": "Saisonstart",
+        "closure": "Winterpause",
+        "maintenance": "Wartung"
+      },
+      "status": {
+        "confirmed": "bestätigt",
+        "announced": "angekündigt",
+        "expected": "erwartet",
+        "cancelled": "abgesagt"
+      }
+    },
     "weather": {
       "clear": "Klarer Himmel",
       "mainlyClear": "Meist klar",

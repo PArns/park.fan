@@ -18,6 +18,7 @@ import { cn } from '@/lib/utils';
 import { useAdmin, useAdminFetch } from '../_lib/admin-context';
 import { EmptyPanel, ErrorPanel, LoadingPanel, Section } from '../_lib/ui';
 import type { SubmissionRecord, SubmissionStatus } from '@/lib/contribute/types';
+import { AdoptIntoMedia } from './_components/adopt-into-media';
 
 interface ListResponse {
   submissions: SubmissionRecord[];
@@ -177,11 +178,16 @@ function SubmissionCard({ submission }: { submission: SubmissionRecord }) {
       <div className="flex flex-col gap-4 md:flex-row">
         {/* Photos */}
         <div className="grid grid-cols-3 gap-2 md:w-72 md:shrink-0">
-          {submission.images.map((img) => (
+          {submission.images.map((img, index) => (
             <figure
               key={img.key}
               className="bg-muted/40 group/thumb relative aspect-square overflow-hidden rounded-lg border"
             >
+              {/* Approved and nowhere yet: the handover into the media
+                  database, which was the step that did not exist. */}
+              {submission.status === 'approved' && (
+                <AdoptIntoMedia submission={submission} image={img} index={index} />
+              )}
               <a
                 href={imgSrc(img.url)}
                 target="_blank"

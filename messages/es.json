@@ -496,6 +496,28 @@
       "opened": "Inauguración",
       "area": "Superficie"
     },
+    "seasons": {
+      "title": "Temporadas y eventos",
+      "separateTicket": "Entrada aparte",
+      "fromPrice": "desde {price}",
+      "selectedDays": "{count} fechas",
+      "details": "Web del parque",
+      "kind": {
+        "halloween": "Halloween",
+        "christmas": "Navidad",
+        "summer_nights": "Noches de verano",
+        "special_event": "Evento especial",
+        "opening": "Apertura de temporada",
+        "closure": "Cierre invernal",
+        "maintenance": "Mantenimiento"
+      },
+      "status": {
+        "confirmed": "confirmado",
+        "announced": "anunciado",
+        "expected": "previsto",
+        "cancelled": "cancelado"
+      }
+    },
     "weather": {
       "clear": "Despejado",
       "mainlyClear": "Mayormente despejado",

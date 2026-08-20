@@ -496,6 +496,28 @@
       "opened": "Opened",
       "area": "Area"
     },
+    "seasons": {
+      "title": "Seasons and events",
+      "separateTicket": "Separate ticket",
+      "fromPrice": "from {price}",
+      "selectedDays": "{count} dates",
+      "details": "Park's page",
+      "kind": {
+        "halloween": "Halloween",
+        "christmas": "Christmas season",
+        "summer_nights": "Summer nights",
+        "special_event": "Special event",
+        "opening": "Season opening",
+        "closure": "Winter closure",
+        "maintenance": "Maintenance"
+      },
+      "status": {
+        "confirmed": "confirmed",
+        "announced": "announced",
+        "expected": "expected",
+        "cancelled": "cancelled"
+      }
+    },
     "weather": {
       "clear": "Clear sky",
       "mainlyClear": "Mainly clear",

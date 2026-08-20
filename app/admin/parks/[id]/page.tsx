@@ -35,6 +35,8 @@ import { EntityMediaPanel } from '../../_ui/entity-media';
 import { EntityPostsPanel } from '../../_ui/entity-posts';
 import { useCan } from '../../_app/session';
 import { SeasonList } from '../_components/season-editor';
+import { LocationEditor } from '../_components/location-editor';
+import { PhotoCoverage } from '../_components/photo-coverage';
 
 /**
  * One park, and everything about it that a person decides rather than a feed.
@@ -109,6 +111,7 @@ export default function ParkDetailPage({ params }: { params: Promise<{ id: strin
       )}
       {tab === 'media' && (
         <div className="space-y-4">
+          <ParkPhotoCoverage parkId={id} parkSlug={data.slug} />
           <EntityMediaPanel parkSlug={data.slug} title={data.name} />
           <EntityPostsPanel
             parkSlug={data.slug}
@@ -135,6 +138,8 @@ export default function ParkDetailPage({ params }: { params: Promise<{ id: strin
 
 function ParkHeader({ park }: { park: AdminParkDetail }) {
   const missingCoordinates = park.latitude === null || park.longitude === null;
+  // Owner only, because a changed city rewrites the park's public address.
+  const canCorrectLocation = useCan('owner');
 
   return (
     <header className="space-y-3">
@@ -186,9 +191,16 @@ function ParkHeader({ park }: { park: AdminParkDetail }) {
         <p className="flex items-start gap-2 rounded-lg border border-amber-500/25 bg-amber-500/10 px-3 py-2 text-xs text-amber-300">
           <TriangleAlert className="mt-0.5 h-3.5 w-3.5 shrink-0" />
           Ohne Koordinaten bekommt der Park kein Wetter und taucht in der Umkreissuche nicht auf.
-          Das lässt sich hier nicht kuratieren — es ist eine Korrektur am Geocoding (Wartung → Parks
-          reparieren).
         </p>
+      )}
+
+      {canCorrectLocation && (
+        <LocationEditor
+          parkId={park.id}
+          city={park.city}
+          latitude={park.latitude}
+          longitude={park.longitude}
+        />
       )}
 
       {park.curationNote && (
@@ -289,6 +301,22 @@ function ParkFieldsTab({ park }: { park: AdminParkDetail }) {
       </PanelBody>
     </Panel>
   );
+}
+
+/**
+ * The park's ride list, borrowed for the coverage lookup.
+ *
+ * Same query key as the Fahrgeschäfte tab with no filters, so opening both
+ * costs one request rather than two.
+ */
+function ParkPhotoCoverage({ parkId, parkSlug }: { parkId: string; parkSlug: string }) {
+  const attractions = useAdminQuery<{ total: number; attractions: AdminAttractionListItem[] }>(
+    adminKeys.parkAttractions(parkId, { params: '' }),
+    `/api/admin/content/parks/${parkId}/attractions?`
+  );
+
+  if (!attractions.data) return null;
+  return <PhotoCoverage parkSlug={parkSlug} attractions={attractions.data.attractions} />;
 }
 
 // ─── attractions ──────────────────────────────────────────────────────────────
