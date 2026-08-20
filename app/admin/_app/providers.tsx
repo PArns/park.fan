@@ -63,7 +63,24 @@ function SessionGate({ children }: { children: ReactNode }) {
     );
   }
 
-  if (session.isError || !session.data) return <LoginScreen />;
+  // A refetch failure is not a logout. React Query keeps `data` and still flips
+  // the status to error, so this used to send an editor with unsaved work to
+  // the login screen over a five-second API hiccup. Only a real 401 does that;
+  // an outage keeps the shell standing on the identity it already has, and the
+  // next successful poll clears it.
+  const failedForGood =
+    session.isError &&
+    !session.data &&
+    (!(session.error instanceof AdminApiError) || session.error.isUnauthorized);
+  if (failedForGood) return <LoginScreen />;
+
+  if (!session.data) {
+    return (
+      <div className="flex min-h-[100dvh] items-center justify-center">
+        <LoadingState label="Sitzung wird geprüft…" />
+      </div>
+    );
+  }
 
   // An account with a temporary password can reach exactly one screen. The
   // backend enforces the same rule, so this is the polite half of it: without

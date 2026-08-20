@@ -148,11 +148,17 @@ function TotpPanel({ enabled }: { enabled: boolean }) {
     setBusy(true);
     setError(null);
     try {
+      // The password is required, and not as ceremony: without it a stolen
+      // session could enrol the attacker's own authenticator, and since only
+      // an owner can clear that, it would be a lockout rather than a nuisance.
+      // Sending nothing produced a 400 from the validation pipe, so enrolment
+      // could not be completed by anyone at all.
       const result = await adminFetch<{ secret: string; uri: string }>(
         '/api/admin/auth/totp/begin',
-        { method: 'POST' }
+        { method: 'POST', body: { password } }
       );
       setEnrolment(result);
+      setPassword('');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Fehlgeschlagen');
     } finally {
@@ -209,10 +215,28 @@ function TotpPanel({ enabled }: { enabled: boolean }) {
       />
       <PanelBody className="space-y-3">
         {!enabled && !enrolment && (
-          <Button size="sm" variant="outline" onClick={begin} disabled={busy}>
-            {busy && <Loader2 className="h-4 w-4 animate-spin" />}
-            Einrichten
-          </Button>
+          <div className="space-y-3">
+            <Field
+              label="Passwort"
+              hint="Damit eine gestohlene Sitzung keinen fremden Authenticator einträgt."
+            >
+              <TextInput
+                type="password"
+                autoComplete="current-password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+              />
+            </Field>
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={begin}
+              disabled={busy || password.length === 0}
+            >
+              {busy && <Loader2 className="h-4 w-4 animate-spin" />}
+              Einrichten
+            </Button>
+          </div>
         )}
 
         {enrolment && (

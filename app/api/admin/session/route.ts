@@ -2,6 +2,7 @@ import 'server-only';
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { getServerApiHeaders } from '@/lib/api/client';
+import { getClientIp } from '@/lib/utils/request-ip';
 import {
   ADMIN_SESSION_COOKIE,
   forgetSession,
@@ -38,15 +39,38 @@ interface LoginBody {
   totpCode?: string;
 }
 
+/**
+ * The administrator's own address.
+ *
+ * Through `getClientIp`, not by reading `x-forwarded-for` here: park.fan is
+ * served Cloudflare → Vercel, and Vercel sets `x-forwarded-for` to the peer
+ * that opened the connection to it, which is a Cloudflare edge server. Reading
+ * it directly forwarded a datacenter address as the admin's, so the backend's
+ * per-address login limiter had one bucket for everybody and the "where am I
+ * signed in" list named a colo instead of a place.
+ */
 function clientIp(request: Request): string | null {
-  const forwarded = request.headers.get('x-forwarded-for');
-  if (forwarded) return forwarded.split(',')[0].trim();
-  return request.headers.get('x-real-ip');
+  return getClientIp(request) || null;
 }
 
-/** Who is signed in, or 401. Called on every admin page load. */
+/**
+ * Who is signed in. 401 when nobody is, 503 when we cannot find out.
+ *
+ * The admin polls this on every load and on every window focus, and the shell
+ * used to drop straight to the login screen on any error — so a five-second
+ * API hiccup unmounted the whole editor, with whatever was typed in it. A 503
+ * is not a logout and the client treats it as one.
+ */
 export async function GET(request: Request) {
-  const identity = await resolveAdminIdentity(request);
+  let identity: Awaited<ReturnType<typeof resolveAdminIdentity>>;
+  try {
+    identity = await resolveAdminIdentity(request, { strict: true });
+  } catch {
+    return NextResponse.json(
+      { error: 'Admin backend unreachable' },
+      { status: 503, headers: { 'Cache-Control': 'no-store, must-revalidate' } }
+    );
+  }
   if (!identity) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }

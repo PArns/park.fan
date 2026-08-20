@@ -1,11 +1,17 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { ArrowLeftRight, ExternalLink, Loader2, RotateCcw, Save, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import type { CuratedField } from '../_lib/types';
 import { Chip } from './primitives';
+import {
+  clearCuratedDraft,
+  loadCuratedDraft,
+  saveCuratedDraft,
+  type DraftScope,
+} from './curated-draft';
 import {
   Field,
   MonthPicker,
@@ -320,6 +326,8 @@ export interface CuratedFormState {
    * months — rather than leaving the form showing what was typed.
    */
   applyServerFields: (fields: CuratedField[]) => void;
+  /** When this form opened holding edits from an earlier visit. */
+  restoredAt: number | null;
 }
 
 function curatedValues(fields: CuratedField[]): FieldValues {
@@ -357,10 +365,15 @@ function dropConfirmed(overrides: FieldValues, server: FieldValues): FieldValues
  * as an unsaved change — pressing save again silently re-applied what had just
  * been taken back.
  */
-export function useCuratedForm(fields: CuratedField[]): CuratedFormState {
+export function useCuratedForm(fields: CuratedField[], scope?: DraftScope): CuratedFormState {
   const initial = useMemo(() => curatedValues(fields), [fields]);
 
-  const [overrides, setOverrides] = useState<FieldValues>({});
+  // Seeded from the draft, lazily so it runs once and never on the server.
+  // Everything the person typed and did not save is in there — see
+  // `curated-draft.ts` for the five ways out of this form that used to throw
+  // it away.
+  const [restored] = useState(() => (scope ? loadCuratedDraft(scope) : null));
+  const [overrides, setOverrides] = useState<FieldValues>(() => restored?.values ?? {});
   const [saved, setSaved] = useState<FieldValues | null>(null);
   const [seenFields, setSeenFields] = useState(fields);
 
@@ -385,17 +398,36 @@ export function useCuratedForm(fields: CuratedField[]): CuratedFormState {
     [values, initial]
   );
 
+  // Debounced, and only while something is actually unsaved: a clean form must
+  // clear its draft, or a restored one would keep coming back after a save
+  // somebody made in another tab.
+  useEffect(() => {
+    if (!scope) return;
+    if (dirtyKeys.length === 0) {
+      clearCuratedDraft(scope);
+      return;
+    }
+    const pending: FieldValues = {};
+    for (const key of dirtyKeys) pending[key] = values[key];
+    const timer = setTimeout(() => saveCuratedDraft(scope, pending), 500);
+    return () => clearTimeout(timer);
+  }, [scope, dirtyKeys, values]);
+
   return {
     values,
     dirtyKeys,
+    restoredAt: restored?.savedAt ?? null,
     setValue: (key, value) => setOverrides((current) => ({ ...current, [key]: value })),
     reset: () => {
       setOverrides({});
       setSaved(null);
+      if (scope) clearCuratedDraft(scope);
     },
     applyServerFields: (next) => {
       const stored = curatedValues(next);
       setSaved(stored);
+      // Saved is saved: the row in the database is the durable copy now.
+      if (scope) clearCuratedDraft(scope);
       // Anything typed while the save was in flight and still different from
       // what came back stays an edit; everything the server confirmed stops
       // being one.
@@ -447,6 +479,20 @@ export function CuratedFieldsEditor({
     // in a dialog and not in a focused input, so nothing else in the DOM says
     // "there is work here to lose".
     <div className="space-y-6" data-admin-dirty={dirty ? 'true' : undefined}>
+      {form.restoredAt !== null && dirty && (
+        /* Say it out loud. Silently reinstating yesterday's half-finished
+           edits would be the same surprise as losing them, in the other
+           direction — and the person who reads this is the one who would
+           otherwise save them without noticing. */
+        <p className="border-border/60 bg-muted/40 text-muted-foreground rounded-lg border px-3 py-2 text-xs">
+          Nicht gespeicherte Änderungen von{' '}
+          {new Date(form.restoredAt).toLocaleString('de-DE', {
+            dateStyle: 'short',
+            timeStyle: 'short',
+          })}{' '}
+          wiederhergestellt. Speichern oder verwerfen.
+        </p>
+      )}
       {groups.map(([group, groupFields]) => (
         <section key={group}>
           <h3 className="text-muted-foreground mb-1 px-3 text-[11px] font-semibold tracking-widest uppercase">

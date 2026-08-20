@@ -195,7 +195,7 @@ function AttractionFieldsTab({
 }) {
   const toast = useToast();
   const invalidate = useInvalidateAdmin();
-  const form = useCuratedForm(attraction.fields);
+  const form = useCuratedForm(attraction.fields, `attraction:${attraction.id}`);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 

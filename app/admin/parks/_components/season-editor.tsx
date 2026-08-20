@@ -301,6 +301,7 @@ function SeasonDialog({
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [pickDays, setPickDays] = useState(() => (season?.dates?.length ?? 0) > 0);
+  const [confirmingDelete, setConfirmingDelete] = useState(false);
 
   const set = <K extends keyof SeasonDraft>(key: K, value: SeasonDraft[K]) =>
     setDraft((current) => ({ ...current, [key]: value }));
@@ -385,6 +386,7 @@ function SeasonDialog({
       onClose();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Löschen fehlgeschlagen');
+      setConfirmingDelete(false);
       setBusy(false);
     }
   }
@@ -576,26 +578,69 @@ function SeasonDialog({
             </p>
           )}
 
-          <div className="flex items-center gap-2">
-            <Button onClick={save} disabled={busy} size="sm">
-              {busy && <Loader2 className="h-4 w-4 animate-spin" />}
-              {season ? 'Speichern' : 'Anlegen'}
-            </Button>
-            <Button variant="ghost" size="sm" onClick={onClose} disabled={busy}>
-              Abbrechen
-            </Button>
-            {season && (
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={remove}
-                disabled={busy}
-                className="text-destructive hover:text-destructive ml-auto"
-              >
-                <Trash2 className="h-4 w-4" /> Löschen
+          {confirmingDelete ? (
+            /* A season is hand-researched — an outer range, often twenty-odd
+               individually picked dates, and the source they were read from.
+               The delete is a hard one and no undo covers it, so the second
+               step names what is about to go rather than asking "sicher?".
+               In-page rather than window.confirm, which returns false unseen
+               in an embedded context. */
+            <div className="border-destructive/40 bg-destructive/[0.06] space-y-3 rounded-lg border p-3">
+              <p className="text-sm font-medium">Saison endgültig löschen?</p>
+              <p className="text-muted-foreground text-xs leading-relaxed">
+                {[
+                  draft.name?.trim() || KIND_META[draft.kind].label,
+                  formatRange(draft.startDate, draft.endDate),
+                  draft.dates?.length ? `${draft.dates.length} Termine` : null,
+                  draft.sourceUrl.trim() ? 'mit Quelle' : null,
+                ]
+                  .filter(Boolean)
+                  .join(' · ')}
+                . Das lässt sich nicht rückgängig machen.
+              </p>
+              <div className="flex items-center gap-2">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  autoFocus
+                  onClick={() => setConfirmingDelete(false)}
+                  disabled={busy}
+                >
+                  Abbrechen
+                </Button>
+                <Button
+                  size="sm"
+                  onClick={remove}
+                  disabled={busy}
+                  className="bg-destructive hover:bg-destructive/90 text-white"
+                >
+                  {busy && <Loader2 className="h-4 w-4 animate-spin" />}
+                  Endgültig löschen
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <div className="flex items-center gap-2">
+              <Button onClick={save} disabled={busy} size="sm">
+                {busy && <Loader2 className="h-4 w-4 animate-spin" />}
+                {season ? 'Speichern' : 'Anlegen'}
               </Button>
-            )}
-          </div>
+              <Button variant="ghost" size="sm" onClick={onClose} disabled={busy}>
+                Abbrechen
+              </Button>
+              {season && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setConfirmingDelete(true)}
+                  disabled={busy}
+                  className="text-destructive hover:text-destructive ml-auto"
+                >
+                  <Trash2 className="h-4 w-4" /> Löschen
+                </Button>
+              )}
+            </div>
+          )}
         </div>
       </DialogContent>
     </Dialog>

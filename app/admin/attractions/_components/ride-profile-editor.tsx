@@ -87,6 +87,7 @@ export function RideProfileEditor({
 
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [confirmingDelete, setConfirmingDelete] = useState(false);
 
   const glossary = useAdminQuery<{ terms: GlossaryTerm[] }>(
     ['admin', 'glossary-terms'],
@@ -139,6 +140,7 @@ export function RideProfileEditor({
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Löschen fehlgeschlagen');
     } finally {
+      setConfirmingDelete(false);
       setSaving(false);
     }
   }
@@ -276,17 +278,58 @@ export function RideProfileEditor({
               {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
               Profil speichern
             </Button>
-            {profile && (
+            {profile && !confirmingDelete && (
               <Button
                 size="sm"
                 variant="ghost"
-                onClick={remove}
+                onClick={() => setConfirmingDelete(true)}
                 disabled={saving}
                 className="text-destructive hover:text-destructive ml-auto"
               >
                 <Trash2 className="h-4 w-4" /> Profil löschen
               </Button>
             )}
+          </div>
+        )}
+
+        {confirmingDelete && (
+          /* The profile is assembled by hand from the park's own page, the
+             manufacturer and a cross-check — layout in ride order, ride types,
+             builder, measurements. Nothing regenerates it and the delete is
+             not undoable, so it takes a second, informed click. */
+          <div className="border-destructive/40 bg-destructive/[0.06] mt-3 space-y-3 rounded-lg border p-3">
+            <p className="text-sm font-medium">Ride-Profil endgültig löschen?</p>
+            <p className="text-muted-foreground text-xs leading-relaxed">
+              {[
+                elements.length ? `${elements.length} Elemente` : null,
+                types.length ? `${types.length} Typen` : null,
+                manufacturerName.trim() || null,
+                openedYear ? String(openedYear) : null,
+              ]
+                .filter(Boolean)
+                .join(' · ') || 'Der ganze Datensatz'}
+              . Kein Sync legt es neu an.
+            </p>
+            <div className="flex items-center gap-2">
+              <Button
+                size="sm"
+                variant="ghost"
+                autoFocus
+                onClick={() => setConfirmingDelete(false)}
+                disabled={saving}
+              >
+                Abbrechen
+              </Button>
+              <Button
+                size="sm"
+                onClick={remove}
+                disabled={saving}
+                className="bg-destructive hover:bg-destructive/90 text-white"
+              >
+                {saving && <Loader2 className="h-4 w-4 animate-spin" />}
+                Endgültig löschen
+              </Button>
+            </div>
           </div>
         )}
       </PanelBody>

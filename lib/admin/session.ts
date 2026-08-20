@@ -94,9 +94,11 @@ export async function readSessionToken(request?: Request): Promise<string | null
  * Returns null for absent, expired and revoked alike — the caller must not be
  * able to tell those apart, and does not need to.
  */
+export class AdminBackendUnreachable extends Error {}
+
 export async function resolveAdminIdentity(
   request?: Request,
-  options: { revalidate?: boolean } = {}
+  options: { revalidate?: boolean; strict?: boolean } = {}
 ): Promise<AdminIdentity | null> {
   const token = await readSessionToken(request);
   if (!token) return null;
@@ -111,10 +113,21 @@ export async function resolveAdminIdentity(
       headers: { Authorization: `Bearer ${token}`, ...getServerApiHeaders() },
     });
   } catch {
+    // A backend that cannot be reached says nothing about this token. Callers
+    // that must fail closed (`requireAdmin`) still get null; the session probe
+    // asks for `strict` so it can report an outage instead of a logout.
+    if (options.strict) throw new AdminBackendUnreachable('admin backend unreachable');
     return null;
   }
 
   if (!response.ok) {
+    // Same distinction for a 5xx. Only a real 401/403 means this token is
+    // finished — evicting the cache on a gateway error would also throw away a
+    // perfectly good identity.
+    if (response.status >= 500) {
+      if (options.strict) throw new AdminBackendUnreachable(`admin backend ${response.status}`);
+      return null;
+    }
     validated.delete(cacheKeyFor(token));
     return null;
   }

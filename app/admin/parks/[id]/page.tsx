@@ -206,7 +206,7 @@ function ParkFieldsTab({ park }: { park: AdminParkDetail }) {
   const canEdit = useCan('editor');
   const toast = useToast();
   const invalidate = useInvalidateAdmin();
-  const form = useCuratedForm(park.fields);
+  const form = useCuratedForm(park.fields, `park:${park.id}`);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 

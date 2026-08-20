@@ -67,8 +67,11 @@ export function isLocalOrUnusableIp(ip: string): boolean {
 
 /**
  * The visitor's IP address, or '' when no header carries a usable one.
+ *
+ * Takes a plain `Request` as well as a `NextRequest` — only `headers.get` is
+ * used, and the admin route handlers are typed on the former.
  */
-export function getClientIp(request: NextRequest): string {
+export function getClientIp(request: Request | NextRequest): string {
   for (const header of CLIENT_IP_HEADERS) {
     const ip = pickClientIp(request.headers.get(header) ?? '');
     if (ip) return ip;
@@ -80,7 +83,9 @@ export function getClientIp(request: NextRequest): string {
  * Headers to forward the real client IP to a backend (for GeoIP etc.).
  * Use when calling api.park.fan from API routes; backend sees our server IP otherwise.
  */
-export function getForwardedForHeaders(request: NextRequest): { 'X-Forwarded-For'?: string } {
+export function getForwardedForHeaders(request: Request | NextRequest): {
+  'X-Forwarded-For'?: string;
+} {
   const clientIp = getClientIp(request);
   return clientIp ? { 'X-Forwarded-For': clientIp } : {};
 }

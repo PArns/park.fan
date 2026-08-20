@@ -10,6 +10,7 @@ import {
   sessionCookieOptions,
 } from '@/lib/admin/session';
 import { adminProxyPath } from '@/lib/admin/proxy-path';
+import { getForwardedForHeaders } from '@/lib/utils/request-ip';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://api.park.fan';
 
@@ -159,11 +160,16 @@ async function proxyRequest(request: NextRequest, path: string[]) {
   return response;
 }
 
+/**
+ * The administrator's own address, for the backend's audit rows and limiter.
+ *
+ * `getClientIp` rather than a direct read: behind Cloudflare → Vercel the
+ * `x-forwarded-for` this function used to copy is a Cloudflare edge server, not
+ * the person at the keyboard, so every administrator shared one rate-limit
+ * bucket. The same helper already backs `/api/nearby` and `/api/favorites`.
+ */
 function forwardedFor(request: NextRequest): Record<string, string> {
-  const forwarded = request.headers.get('x-forwarded-for');
-  if (forwarded) return { 'x-forwarded-for': forwarded.split(',')[0].trim() };
-  const real = request.headers.get('x-real-ip');
-  return real ? { 'x-forwarded-for': real } : {};
+  return getForwardedForHeaders(request) as Record<string, string>;
 }
 
 /**
