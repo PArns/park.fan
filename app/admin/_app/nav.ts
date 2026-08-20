@@ -42,6 +42,14 @@ export interface NavItem {
   minRole?: AdminRole;
   /** Extra words the palette should match on. */
   keywords?: string[];
+  /**
+   * Routes that belong to this entry without sitting under its href.
+   *
+   * A ride is edited at `/admin/attractions/<id>`, which no entry owns by
+   * prefix — so the breadcrumb read "Admin", the sidebar highlighted nothing,
+   * and the page presented itself as somewhere outside the admin's own map.
+   */
+  covers?: string[];
 }
 
 export interface NavGroup {
@@ -66,6 +74,8 @@ export const NAV_GROUPS: NavGroup[] = [
         icon: MapPin,
         description: 'Stammdaten, kuratierte Felder, Fahrgeschäfte',
         keywords: ['park', 'attraktionen', 'rides', 'bahnen'],
+        // A ride is edited on its own route; it belongs here.
+        covers: ['/admin/attractions'],
       },
       {
         href: '/admin/seasons',
@@ -207,9 +217,10 @@ export function activeNavItem(pathname: string): NavItem | null {
   return (
     [...NAV_ITEMS]
       .sort((a, b) => b.href.length - a.href.length)
-      .find((item) =>
-        item.href === '/admin' ? pathname === '/admin' : pathname.startsWith(item.href)
-      ) ?? null
+      .find((item) => {
+        if (item.covers?.some((prefix) => pathname.startsWith(prefix))) return true;
+        return item.href === '/admin' ? pathname === '/admin' : pathname.startsWith(item.href);
+      }) ?? null
   );
 }
 
