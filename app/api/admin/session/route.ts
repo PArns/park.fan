@@ -64,7 +64,17 @@ function clientIp(request: Request): string | null {
 export async function GET(request: Request) {
   let identity: Awaited<ReturnType<typeof resolveAdminIdentity>>;
   try {
-    identity = await resolveAdminIdentity(request, { strict: true });
+    // Always from the backend, never from the minute-long identity cache. This
+    // route is what the shell believes about the signed-in account — its role,
+    // its password debt, whether two-factor is on — and it is re-read exactly
+    // when something has just changed one of them. Clearing the cache on the
+    // writing request only helps the instance that served it; asking again here
+    // is what makes the answer true on all of them. The cache still does its
+    // job in front of the proxy, where it saves an `auth/me` per admin call.
+    identity = await resolveAdminIdentity(request, {
+      strict: true,
+      revalidate: true,
+    });
   } catch {
     return NextResponse.json(
       { error: 'Admin backend unreachable' },
