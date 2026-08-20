@@ -320,6 +320,37 @@
       "park": "Öffnungszeiten, Wetter und Kalender findest du hier wie gewohnt.",
       "ride": "Damit fehlt auch die Prognose für dieses Fahrgeschäft. Öffnungszeiten und Wetter findest du wie gewohnt."
     },
+    "info": {
+      "title": "Infos zum Park",
+      "address": "Adresse",
+      "phone": "Telefon",
+      "website": "Website",
+      "tickets": "Tickets",
+      "opened": "Eröffnet",
+      "area": "Fläche"
+    },
+    "seasons": {
+      "title": "Saisons und Events",
+      "separateTicket": "Extraticket",
+      "fromPrice": "ab {price}",
+      "selectedDays": "{count, plural, =1 {1 Termin} other {# Termine}}",
+      "details": "Zum Park",
+      "kind": {
+        "halloween": "Halloween",
+        "christmas": "Weihnachtszeit",
+        "summer_nights": "Sommernächte",
+        "special_event": "Sonderveranstaltung",
+        "opening": "Saisonstart",
+        "closure": "Winterpause",
+        "maintenance": "Wartung"
+      },
+      "status": {
+        "confirmed": "bestätigt",
+        "announced": "angekündigt",
+        "expected": "erwartet",
+        "cancelled": "abgesagt"
+      }
+    },
     "weather": {
       "clear": "Klarer Himmel",
       "mainlyClear": "Meist klar",

@@ -1,7 +1,7 @@
 import 'server-only';
 import { NextResponse } from 'next/server';
 import { get } from '@vercel/blob';
-import { isValidAdminPass } from '@/lib/admin/verify-pass';
+import { denyUnlessAdmin } from '@/lib/admin/session';
 import { readImageLocal } from '@/lib/contribute/storage';
 import { resolveDriver } from '@/lib/contribute/driver';
 
@@ -22,20 +22,28 @@ const EXT_TYPES: Record<string, string> = {
 };
 
 /**
- * GET /api/admin/contributions/file?key=contributions/<id>/<file>&pass=<admin-pass>
+ * GET /api/admin/contributions/file?key=contributions/<id>/<file>
  *
  * Streams a contribution image to the admin moderation UI. This is the ONLY way the
  * bytes are exposed: the Blob store is private, so we fetch the blob server-side with
- * `get(..., { access: 'private' })` and stream it back behind the admin pass (which
- * may arrive via the `x-admin-pass` header or a `pass` query param — an img tag
- * can't set headers). The local driver reads from `.uploads/` instead.
+ * `get(..., { access: 'private' })` and stream it back behind the admin session.
+ * The local driver reads from `.uploads/` instead.
+ *
+ * An `<img>` tag cannot set an Authorization header, which used to mean the
+ * credential had to travel in the query string — and therefore into the
+ * browser's history, the referrer of anything the page linked to, and this
+ * app's own access log. The httpOnly session cookie removes that problem
+ * rather than working around it: the browser attaches it to the image request
+ * by itself, and nothing readable ends up in the URL.
  */
 export async function GET(request: Request) {
   const url = new URL(request.url);
-  const pass = request.headers.get('x-admin-pass') ?? url.searchParams.get('pass');
-  if (!(await isValidAdminPass(pass))) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
+  // The same guard as the routes that list these submissions, and for the same
+  // reason: `resolveAdminIdentity` answers "this token is a session", which is
+  // one question short of "this account may look at this". It skipped the role
+  // floor and the must-change-password refusal that every sibling applies.
+  const denied = await denyUnlessAdmin(request);
+  if (denied) return denied;
 
   const key = url.searchParams.get('key');
   if (!key) return NextResponse.json({ error: 'missing-key' }, { status: 400 });

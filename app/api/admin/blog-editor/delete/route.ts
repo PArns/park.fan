@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { Octokit } from '@octokit/rest';
-import { requireAdminPass } from '@/lib/admin/verify-pass';
+import { denyUnlessAdmin } from '@/lib/admin/session';
 
 interface DeletePayload {
   /** translationKey of the post being deleted (drives the branch name). */
@@ -24,7 +24,7 @@ const LOCALE_RE = /^[a-z]{2}(-[a-z]{2})?$/i;
  * human merges it.
  */
 export async function POST(req: Request) {
-  const unauthorized = await requireAdminPass(req);
+  const unauthorized = await denyUnlessAdmin(req);
   if (unauthorized) return unauthorized;
   const token = process.env.BLOG_EDITOR_GITHUB_TOKEN ?? process.env.GITHUB_TOKEN;
   if (!token) return NextResponse.json({ error: REQUIRED_TOKEN_HINT }, { status: 500 });

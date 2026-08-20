@@ -1,7 +1,7 @@
 import 'server-only';
 import { NextResponse } from 'next/server';
 
-import { requireAdminPass } from '@/lib/admin/verify-pass';
+import { denyUnlessAdmin } from '@/lib/admin/session';
 import {
   MEDIA_REVISION,
   getMediaImage,
@@ -71,7 +71,7 @@ async function loadParkGeo(): Promise<GeoPark[]> {
 }
 
 export async function GET(req: Request) {
-  const unauthorized = await requireAdminPass(req);
+  const unauthorized = await denyUnlessAdmin(req);
   if (unauthorized) return unauthorized;
 
   const params = new URL(req.url).searchParams;

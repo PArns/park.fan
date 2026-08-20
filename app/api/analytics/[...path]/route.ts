@@ -4,7 +4,17 @@ import { getTickerData } from '@/lib/api/analytics';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://api.park.fan';
 
-// Read-only passthrough for the public /v1/analytics/* endpoints.
+/**
+ * The three public analytics reads, and only those three.
+ *
+ * This one stays anonymous — every homepage visitor polls the ticker and the
+ * live stats — so the lock is the path list rather than a session. It is the
+ * same hole the admin proxy had: a catch-all that joins the caller's segments
+ * into a URL forwards `x-auth-key` (a rate-limit bypass at the API) to
+ * wherever a percent-encoded separator takes it, and `new URL()` normalises
+ * `..` after Next has already finished matching the route.
+ */
+const ANALYTICS_PATHS = new Set(['ticker', 'realtime', 'geo-live']);
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ path: string[] }> }
@@ -28,8 +38,14 @@ export async function GET(
     }
   }
 
+  const requested = path.join('/');
+  if (!ANALYTICS_PATHS.has(requested)) {
+    return NextResponse.json({ error: 'Bad request' }, { status: 400 });
+  }
+  const upstream = [...ANALYTICS_PATHS].find((candidate) => candidate === requested)!;
+
   const incoming = new URL(request.url);
-  const apiUrl = new URL(`${API_BASE}/v1/analytics/${path.join('/')}`);
+  const apiUrl = new URL(`${API_BASE}/v1/analytics/${upstream}`);
   incoming.searchParams.forEach((value, key) => apiUrl.searchParams.set(key, value));
 
   try {

@@ -487,6 +487,37 @@
       "park": "Les horaires, la météo et le calendrier restent disponibles ici.",
       "ride": "Cette attraction n'a donc pas non plus de prévision. Les horaires et la météo restent disponibles."
     },
+    "info": {
+      "title": "Informations pratiques",
+      "address": "Adresse",
+      "phone": "Téléphone",
+      "website": "Site officiel",
+      "tickets": "Billets",
+      "opened": "Ouverture",
+      "area": "Superficie"
+    },
+    "seasons": {
+      "title": "Saisons et événements",
+      "separateTicket": "Billet séparé",
+      "fromPrice": "à partir de {price}",
+      "selectedDays": "{count, plural, =1 {1 date} other {# dates}}",
+      "details": "Site du parc",
+      "kind": {
+        "halloween": "Halloween",
+        "christmas": "Période de Noël",
+        "summer_nights": "Nuits d'été",
+        "special_event": "Événement spécial",
+        "opening": "Ouverture de saison",
+        "closure": "Fermeture hivernale",
+        "maintenance": "Maintenance"
+      },
+      "status": {
+        "confirmed": "confirmé",
+        "announced": "annoncé",
+        "expected": "attendu",
+        "cancelled": "annulé"
+      }
+    },
     "weather": {
       "clear": "Dégagé",
       "mainlyClear": "Peu nuageux",

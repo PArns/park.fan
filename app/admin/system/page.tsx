@@ -27,6 +27,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { MetricBar } from '@/components/common/metric-bar';
 import type { SystemHealthResponse } from '@/lib/api/admin';
+import { AdminPage } from '../_ui/primitives';
 
 const CHIP_LABELS: Record<string, string> = {
   coretemp: 'CPU · coretemp',
@@ -114,7 +115,7 @@ export default function SystemPage() {
   }
 
   return (
-    <>
+    <AdminPage width="wide">
       <Section icon={Server} title="Host">
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
           <Card className="border-border/60">
@@ -583,6 +584,6 @@ export default function SystemPage() {
           </div>
         </Section>
       ) : null}
-    </>
+    </AdminPage>
   );
 }

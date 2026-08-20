@@ -14,7 +14,6 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { addPendingImage } from '../_lib/pending-images';
-import { ADMIN_PASS_HEADER, useAdmin } from '../../_lib/admin-context';
 
 interface BlogImage {
   src: string;
@@ -73,7 +72,6 @@ function ImagePickerBody({
   replaceMode,
   anchorRect,
 }: Omit<ImagePickerProps, 'open'>) {
-  const { pass } = useAdmin();
   const [images, setImages] = useState<BlogImage[]>([]);
   const [q, setQ] = useState('');
   const [loading, setLoading] = useState(true);
@@ -99,14 +97,13 @@ function ImagePickerBody({
     const ctrl = new AbortController();
     fetch('/api/admin/blog-editor/images', {
       signal: ctrl.signal,
-      headers: { [ADMIN_PASS_HEADER]: pass },
     })
       .then((r) => r.json())
       .then((data: { images?: BlogImage[] }) => setImages(data.images ?? []))
       .catch(() => setImages([]))
       .finally(() => setLoading(false));
     return () => ctrl.abort();
-  }, [pass]);
+  }, []);
 
   const ql = q.trim().toLowerCase();
   const allFiltered = ql ? images.filter((i) => i.src.toLowerCase().includes(ql)) : images;

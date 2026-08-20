@@ -4,6 +4,80 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – feat: the facts a park page could not state
+
+A park page had a map, a forecast, a weather chart and no way to say where the
+park is. None of the three upstream feeds carries an address, a website, a
+ticket link or an opening year, so there was no column to correct and nothing
+to show.
+
+Eleven curated columns now cover it — website, tickets, Wikipedia, Instagram,
+Facebook, YouTube, street, postcode, phone, opening year, area — and they
+arrive as one `info` object on the park detail payload, absent entirely until
+somebody has written at least one. Not on the listings: the card overlay
+re-downloads its fields every five minutes and a postcode has no business in
+that budget.
+
+`ParkInfoCard` renders them as a Server Component, inline in the first HTML, so
+it costs no layout shift and no client bytes. A park with nothing curated
+renders nothing rather than an empty frame. The same values fill the gaps in
+the page's `ThemePark` structured data, which until now claimed a locality and
+a country and left the street, the phone number and every `sameAs` blank.
+
+The admin editor needed nothing for the eleven fields themselves — it is
+generated from the backend's descriptors — only two new control types: `url`,
+with a button that opens the address because the one thing validation cannot
+check is whether the link goes where it should, and `decimal`, so a park of
+28.3 hectares does not become 28.
+
+A URL is parsed rather than pattern-matched (`new URL()`, `http:` and `https:`
+only). These values become `href`s on a public page, so a stored `javascript:`
+URL would be cross-site scripting with an audit row naming the curator who
+typed it.
+
+The brand marks for the social links came out of `share-buttons.tsx`, where
+they had been sitting privately, into `components/common/brand-icons.tsx`.
+lucide-react dropped its brand set in v1; a second hand-copied path is how two
+Facebook logos end up different sizes on one page.
+
+---
+
+## Unreleased – feat: the admin is a different application
+
+The old admin was a password box, a text field and a POST. It shared the site's
+layout, its i18n and its theme, and it could do exactly one thing per page. This
+replaces it.
+
+**It holds no secret.** The browser never sees a token: the session cookie is
+httpOnly and `SameSite=Strict`, and `app/api/admin/[...path]` swaps it for a
+bearer header server-side. Before this, the admin password lived in
+`localStorage` and travelled in a header any script on the page could read.
+The proxy also grew the verbs it was missing — it exported GET and POST and
+called `response.json()` unconditionally, so every PATCH, DELETE and 204 the new
+editors make would have failed.
+
+**Everything is one surface.** ⌘K opens a command palette that searches parks,
+rides, media and posts in the same list and goes straight to the editor. An
+inspector panel slides in beside whatever is open, so a ride's field editor,
+its photos, its ride profile and the blog posts that mention it are one screen
+rather than four. Media assignment and blog editing write files, park and ride
+data writes DB rows — two different write models, deliberately not disguised as
+one: a curated field saves instantly and is undoable from the history list, a
+media or post change opens a branch and a PR.
+
+**The editors are generated from the API's field descriptors**, not hand-built.
+Each field shows what the sync says, what a human said, which one wins and
+whether it is an override — the same four facts for a park name, a ride's
+maximum height and a season's month list. Adding a curated column upstream adds
+its editor here with no frontend change.
+
+The route is outside i18n (`proxy.ts` skips `/admin`), carries its own `<html>`,
+its own QueryClientProvider and `robots: noindex`, and is dark whatever the site
+theme is. Sign-in supports TOTP, forced password changes and a session list you
+can revoke devices from.
+
+Details: `docs/features/admin.md`.
+
 ## Unreleased – fix: seven layout shifts, two of which the harness had been unable to see
 
 `pnpm measure:cls` diffs a page's first-paint layout against its settled one. That is good at

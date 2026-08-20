@@ -1,15 +1,17 @@
 'use client';
 
 import { cn } from '@/lib/utils';
+import { Field as AdminField } from '../../_ui/controls';
 
 /**
- * The editor dialog's shared furniture.
+ * The media editor's furniture.
  *
- * Both halves of the image editor — the framing previews on the left, the sidecar
- * fields on the right — are looking at the same photo, so they should not look
- * like two different tools bolted together. These live in one module rather than
- * being redefined per file, which is how the two columns drifted into a bordered
- * card language on one side and bare headings on the other.
+ * `Section` and `Chip` stay here because they are genuinely this editor's:
+ * a denser section than the rest of the admin uses (both halves of the image
+ * dialog have to fit beside a preview) and a chip that is a toggle rather than
+ * a label. `Field` and the notice do NOT stay — they were duplicates of the
+ * shared ones, differing only in label size, and three definitions of a
+ * labelled input is what the reuse rule exists to prevent.
  */
 
 /** A titled group of related controls — the editor's unit of "one question". */
@@ -38,15 +40,19 @@ export function Section({
   );
 }
 
+/** The admin's labelled field. Kept re-exported under this name so the media
+ *  editor's ~30 call sites did not need touching in the same commit. */
 export function Field({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <label className="block">
-      <span className="text-muted-foreground mb-1 block text-[11px] font-medium">{label}</span>
-      {children}
-    </label>
-  );
+  return <AdminField label={label}>{children}</AdminField>;
 }
 
+/**
+ * A toggle that looks like a chip.
+ *
+ * Distinct from `_ui/primitives`' `Chip`, which is a read-only label. Both
+ * names are right for what they are; merging them would give one component two
+ * behaviours selected by whether `onClick` is set.
+ */
 export function Chip({
   active,
   onClick,

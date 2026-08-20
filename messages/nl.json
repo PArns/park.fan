@@ -487,6 +487,37 @@
       "park": "Openingstijden, weer en de kalender vind je hier gewoon.",
       "ride": "Daarmee ontbreekt ook de voorspelling voor deze attractie. Openingstijden en weer vind je gewoon."
     },
+    "info": {
+      "title": "Parkinformatie",
+      "address": "Adres",
+      "phone": "Telefoon",
+      "website": "Website",
+      "tickets": "Tickets",
+      "opened": "Geopend",
+      "area": "Oppervlakte"
+    },
+    "seasons": {
+      "title": "Seizoenen en evenementen",
+      "separateTicket": "Apart ticket",
+      "fromPrice": "vanaf {price}",
+      "selectedDays": "{count, plural, =1 {1 datum} other {# data}}",
+      "details": "Naar het park",
+      "kind": {
+        "halloween": "Halloween",
+        "christmas": "Kerstperiode",
+        "summer_nights": "Zomeravonden",
+        "special_event": "Speciaal evenement",
+        "opening": "Seizoensopening",
+        "closure": "Winterstop",
+        "maintenance": "Onderhoud"
+      },
+      "status": {
+        "confirmed": "bevestigd",
+        "announced": "aangekondigd",
+        "expected": "verwacht",
+        "cancelled": "geannuleerd"
+      }
+    },
     "weather": {
       "clear": "Helder",
       "mainlyClear": "Overwegend helder",

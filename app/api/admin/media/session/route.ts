@@ -2,7 +2,7 @@ import 'server-only';
 import { NextResponse } from 'next/server';
 import { Octokit } from '@octokit/rest';
 
-import { requireAdminPass } from '@/lib/admin/verify-pass';
+import { denyUnlessAdmin } from '@/lib/admin/session';
 import { mediaRepo, mediaToken, resolveSession, sessionChanges } from '@/lib/admin/media-session';
 
 /**
@@ -31,7 +31,7 @@ export const dynamic = 'force-dynamic';
 const MAX_FILES = 100;
 
 export async function GET(req: Request) {
-  const unauthorized = await requireAdminPass(req);
+  const unauthorized = await denyUnlessAdmin(req);
   if (unauthorized) return unauthorized;
 
   const token = mediaToken();

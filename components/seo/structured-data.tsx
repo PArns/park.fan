@@ -222,6 +222,7 @@ export function ParkStructuredData({
   ogImageUrl?: string;
 }) {
   const parkName = stripNewPrefix(park.name);
+  const info = 'info' in park ? park.info : null;
   const data: WithContext<ThemePark> = {
     '@context': 'https://schema.org',
     '@type': 'ThemePark',
@@ -232,10 +233,25 @@ export function ParkStructuredData({
     image: buildStructuredImage(getParkImageSet(park.slug), ogImageUrl),
     address: {
       '@type': 'PostalAddress',
+      // Street and postcode are curated — nothing upstream carries them, so
+      // before they existed this claimed a locality and a country and left
+      // Google to guess the rest.
+      streetAddress: info?.streetAddress || undefined,
+      postalCode: info?.postalCode || undefined,
       addressLocality: park.city || undefined,
       addressCountry: park.country || undefined,
       addressRegion: park.region || undefined,
     },
+    telephone: info?.phone || undefined,
+    // The park's own presence, so a search engine can tie this page to the
+    // entity rather than treating it as an unrelated site about the same name.
+    sameAs: [
+      info?.website,
+      info?.wikipediaUrl,
+      info?.instagramUrl,
+      info?.facebookUrl,
+      info?.youtubeUrl,
+    ].filter((entry): entry is string => Boolean(entry)),
     geo:
       park.latitude && park.longitude
         ? {

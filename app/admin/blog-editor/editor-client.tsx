@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { FolderOpen, Loader2, PenLine, Plus, Trash2 } from 'lucide-react';
 import type { Locale } from '@/i18n/config';
 import { FrontmatterForm } from './_components/frontmatter-form';
@@ -24,12 +24,10 @@ import {
   type DraftSnapshot,
 } from './_lib/draft-autosave';
 import { clearPendingImages, listPendingImages, setUploadFolder } from './_lib/pending-images';
-import { ADMIN_PASS_HEADER, useAdmin } from '../_lib/admin-context';
 
 const DEFAULT_SOURCE: Locale = 'en';
 
 export function BlogEditorClient({ initialData }: { initialData: EditorInitialData }) {
-  const { pass } = useAdmin();
   const [sourceLocale, setSourceLocale] = useState<Locale>(DEFAULT_SOURCE);
   const [activeLocale, setActiveLocale] = useState<Locale>(DEFAULT_SOURCE);
   // One slice per locale. Created lazily when the user first edits that tab.
@@ -312,7 +310,7 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
       .map((img) => ({ path: img.path, contentBase64: img.base64 }));
     const res = await fetch('/api/admin/blog-editor/save', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', [ADMIN_PASS_HEADER]: pass },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         baseSlug,
         sourceLocale,
@@ -348,9 +346,7 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
   const onLoadPost = async (key: string) => {
     setLoadingPost(true);
     try {
-      const res = await fetch(`/api/admin/blog-editor/posts/${encodeURIComponent(key)}`, {
-        headers: { [ADMIN_PASS_HEADER]: pass },
-      });
+      const res = await fetch(`/api/admin/blog-editor/posts/${encodeURIComponent(key)}`);
       if (!res.ok) {
         alert(`Could not load post: ${res.status}`);
         return;
@@ -388,6 +384,31 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
     }
   };
 
+  /**
+   * Open the post named in `?post=<translationKey>`.
+   *
+   * This is what makes the park and ride editors able to link into the blog:
+   * their "Beiträge" panel lists what the blog says about the thing being
+   * curated, and a list you cannot click through from is a list you read once.
+   *
+   * Runs after mount and only once — the parameter is a starting point, not
+   * state. Re-reading it would fight the picker every time somebody loaded a
+   * different post without changing the URL.
+   */
+  const deepLinkHandled = useRef(false);
+  useEffect(() => {
+    if (deepLinkHandled.current) return;
+    const key = new URLSearchParams(window.location.search).get('post');
+    if (!key) return;
+    deepLinkHandled.current = true;
+    // Deferred a tick, like the draft-restore effect above: `onLoadPost` sets
+    // state, and React 19 flags a synchronous setState inside an effect as a
+    // cascading-render hazard.
+    const timer = setTimeout(() => void onLoadPost(key), 0);
+    return () => clearTimeout(timer);
+    // `onLoadPost` closes over setters only, so a one-shot is safe here.
+  }, []);
+
   const onTranslate = async (target: Locale) => {
     const src = drafts[sourceLocale];
     if (!src || !isDraftFilled(src)) return;
@@ -395,7 +416,7 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
     try {
       const res = await fetch('/api/admin/blog-editor/translate', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', [ADMIN_PASS_HEADER]: pass },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           sourceLocale,
           targetLocale: target,
@@ -453,7 +474,7 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
     try {
       const res = await fetch('/api/admin/blog-editor/delete', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', [ADMIN_PASS_HEADER]: pass },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           key: editing.key,
           slugs: editing.originalSlugs,

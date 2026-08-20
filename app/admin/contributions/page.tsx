@@ -15,9 +15,11 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
-import { ADMIN_PASS_HEADER, useAdmin, useAdminFetch } from '../_lib/admin-context';
+import { useAdmin, useAdminFetch } from '../_lib/admin-context';
 import { EmptyPanel, ErrorPanel, LoadingPanel, Section } from '../_lib/ui';
 import type { SubmissionRecord, SubmissionStatus } from '@/lib/contribute/types';
+import { AdoptIntoMedia } from './_components/adopt-into-media';
+import { AdminPage } from '../_ui/primitives';
 
 interface ListResponse {
   submissions: SubmissionRecord[];
@@ -40,7 +42,7 @@ const FILTERS: { key: 'all' | SubmissionStatus; label: string }[] = [
 ];
 
 export default function ContributionsPage() {
-  const { pass, triggerRefresh } = useAdmin();
+  const { triggerRefresh } = useAdmin();
   const { data, error } = useAdminFetch<ListResponse>('/api/admin/contributions', true);
   const [filter, setFilter] = useState<'all' | SubmissionStatus>('all');
   const [purging, setPurging] = useState(false);
@@ -60,7 +62,6 @@ export default function ContributionsPage() {
     try {
       const res = await fetch('/api/admin/contributions/orphans', {
         method: 'DELETE',
-        headers: { [ADMIN_PASS_HEADER]: pass },
       });
       if (res.ok) triggerRefresh();
     } finally {
@@ -69,85 +70,87 @@ export default function ContributionsPage() {
   };
 
   return (
-    <Section
-      icon={ImageIcon}
-      title="User photo contributions"
-      action={
-        <div className="flex gap-1">
-          {FILTERS.map((f) => {
-            const count = f.key === 'all' ? data.total : (data.counts[f.key] ?? 0);
-            return (
-              <button
-                key={f.key}
-                onClick={() => setFilter(f.key)}
-                className={cn(
-                  'rounded-lg border px-2.5 py-1 text-xs font-medium transition-colors',
-                  filter === f.key
-                    ? 'border-primary/40 bg-primary/10 text-primary'
-                    : 'border-border/60 text-muted-foreground hover:text-foreground'
-                )}
-              >
-                {f.label} <span className="tabular-nums">{count}</span>
-              </button>
-            );
-          })}
-        </div>
-      }
-    >
-      {orphans > 0 && (
-        <div className="flex flex-wrap items-center gap-3 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-300">
-          <AlertTriangle className="size-4 shrink-0" />
-          <span className="flex-1">
-            {orphans} orphaned image file(s) in the store with no submission record — left over from
-            uploads that failed before metadata was saved.
-          </span>
-          <button
-            onClick={purgeOrphans}
-            disabled={purging}
-            className="inline-flex items-center gap-1.5 rounded-md border border-amber-500/40 px-2.5 py-1 text-xs font-medium hover:bg-amber-500/15 disabled:opacity-50"
-          >
-            {purging ? (
-              <Loader2 className="size-3.5 animate-spin" />
-            ) : (
-              <Trash2 className="size-3.5" />
-            )}
-            Purge orphans
-          </button>
-        </div>
-      )}
+    <AdminPage width="wide">
+      <Section
+        icon={ImageIcon}
+        title="User photo contributions"
+        action={
+          <div className="flex gap-1">
+            {FILTERS.map((f) => {
+              const count = f.key === 'all' ? data.total : (data.counts[f.key] ?? 0);
+              return (
+                <button
+                  key={f.key}
+                  onClick={() => setFilter(f.key)}
+                  className={cn(
+                    'rounded-lg border px-2.5 py-1 text-xs font-medium transition-colors',
+                    filter === f.key
+                      ? 'border-primary/40 bg-primary/10 text-primary'
+                      : 'border-border/60 text-muted-foreground hover:text-foreground'
+                  )}
+                >
+                  {f.label} <span className="tabular-nums">{count}</span>
+                </button>
+              );
+            })}
+          </div>
+        }
+      >
+        {orphans > 0 && (
+          <div className="flex flex-wrap items-center gap-3 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-300">
+            <AlertTriangle className="size-4 shrink-0" />
+            <span className="flex-1">
+              {orphans} orphaned image file(s) in the store with no submission record — left over
+              from uploads that failed before metadata was saved.
+            </span>
+            <button
+              onClick={purgeOrphans}
+              disabled={purging}
+              className="inline-flex items-center gap-1.5 rounded-md border border-amber-500/40 px-2.5 py-1 text-xs font-medium hover:bg-amber-500/15 disabled:opacity-50"
+            >
+              {purging ? (
+                <Loader2 className="size-3.5 animate-spin" />
+              ) : (
+                <Trash2 className="size-3.5" />
+              )}
+              Purge orphans
+            </button>
+          </div>
+        )}
 
-      {visible.length === 0 ? (
-        <EmptyPanel label="No contributions in this view." />
-      ) : (
-        <div className="space-y-4">
-          {visible.map((s) => (
-            <SubmissionCard key={s.id} submission={s} />
-          ))}
-        </div>
-      )}
-    </Section>
+        {visible.length === 0 ? (
+          <EmptyPanel label="No contributions in this view." />
+        ) : (
+          <div className="space-y-4">
+            {visible.map((s) => (
+              <SubmissionCard key={s.id} submission={s} />
+            ))}
+          </div>
+        )}
+      </Section>
+    </AdminPage>
   );
 }
 
 function SubmissionCard({ submission }: { submission: SubmissionRecord }) {
-  const { pass, triggerRefresh } = useAdmin();
+  const { triggerRefresh } = useAdmin();
   const [caption, setCaption] = useState(submission.caption);
   const [credit, setCredit] = useState(submission.credit);
   const [busy, setBusy] = useState<null | string>(null);
   const dirty = caption !== submission.caption || credit !== submission.credit;
 
-  const imgSrc = (url: string) =>
-    /^https?:/.test(url) ? url : `${url}&pass=${encodeURIComponent(pass)}`;
+  // No credential in the URL any more: the session is an httpOnly cookie and
+  // the browser sends it with the image request by itself. It used to carry
+  // `&pass=`, which put the one admin secret into browser history, into the
+  // referrer of anything the page linked to, and into this app's access log.
+  const imgSrc = (url: string) => url;
   const downloadSrc = (url: string, name: string) =>
     `${imgSrc(url)}&download=1&name=${encodeURIComponent(name)}`;
 
   async function mutate(action: string, init: RequestInit) {
     setBusy(action);
     try {
-      const res = await fetch(`/api/admin/contributions/${submission.id}`, {
-        ...init,
-        headers: { [ADMIN_PASS_HEADER]: pass, ...(init.headers ?? {}) },
-      });
+      const res = await fetch(`/api/admin/contributions/${submission.id}`, init);
       if (res.ok) triggerRefresh();
     } finally {
       setBusy(null);
@@ -178,11 +181,16 @@ function SubmissionCard({ submission }: { submission: SubmissionRecord }) {
       <div className="flex flex-col gap-4 md:flex-row">
         {/* Photos */}
         <div className="grid grid-cols-3 gap-2 md:w-72 md:shrink-0">
-          {submission.images.map((img) => (
+          {submission.images.map((img, index) => (
             <figure
               key={img.key}
               className="bg-muted/40 group/thumb relative aspect-square overflow-hidden rounded-lg border"
             >
+              {/* Approved and nowhere yet: the handover into the media
+                  database, which was the step that did not exist. */}
+              {submission.status === 'approved' && (
+                <AdoptIntoMedia submission={submission} image={img} index={index} />
+              )}
               <a
                 href={imgSrc(img.url)}
                 target="_blank"

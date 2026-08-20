@@ -487,6 +487,37 @@
       "park": "Los horarios, el tiempo y el calendario siguen estando aquí.",
       "ride": "Por eso esta atracción tampoco tiene previsión. Los horarios y el tiempo no se ven afectados."
     },
+    "info": {
+      "title": "Información del parque",
+      "address": "Dirección",
+      "phone": "Teléfono",
+      "website": "Sitio oficial",
+      "tickets": "Entradas",
+      "opened": "Inauguración",
+      "area": "Superficie"
+    },
+    "seasons": {
+      "title": "Temporadas y eventos",
+      "separateTicket": "Entrada aparte",
+      "fromPrice": "desde {price}",
+      "selectedDays": "{count, plural, =1 {1 fecha} other {# fechas}}",
+      "details": "Web del parque",
+      "kind": {
+        "halloween": "Halloween",
+        "christmas": "Navidad",
+        "summer_nights": "Noches de verano",
+        "special_event": "Evento especial",
+        "opening": "Apertura de temporada",
+        "closure": "Cierre invernal",
+        "maintenance": "Mantenimiento"
+      },
+      "status": {
+        "confirmed": "confirmado",
+        "announced": "anunciado",
+        "expected": "previsto",
+        "cancelled": "cancelado"
+      }
+    },
     "weather": {
       "clear": "Despejado",
       "mainlyClear": "Mayormente despejado",

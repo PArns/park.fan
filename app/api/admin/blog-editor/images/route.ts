@@ -1,7 +1,7 @@
 import 'server-only';
 import { NextResponse } from 'next/server';
 
-import { requireAdminPass } from '@/lib/admin/verify-pass';
+import { denyUnlessAdmin } from '@/lib/admin/session';
 import { MEDIA_REVISION, searchMedia } from '@/lib/media';
 import { versionedSrc } from '@/lib/media/focus';
 import { getMediaAlt, getMediaCaption, getCreditLine } from '@/lib/media/text';
@@ -21,7 +21,7 @@ import type { MediaLicense, MediaRole } from '@/lib/media/types';
  * scroll once the database grows past a few hundred images.
  */
 export async function GET(req: Request) {
-  const unauthorized = await requireAdminPass(req);
+  const unauthorized = await denyUnlessAdmin(req);
   if (unauthorized) return unauthorized;
 
   const params = new URL(req.url).searchParams;

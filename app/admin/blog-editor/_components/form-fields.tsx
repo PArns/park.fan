@@ -1,13 +1,18 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import { cn } from '@/lib/utils';
+import { Field as AdminField } from '../../_ui/controls';
 
 /**
- * Labeled form field shared by the create-author and create-category modals
- * (and anything else that wants a Notion-style "tiny uppercase label above
- * input with optional hint below"). Lives outside any single modal so the
- * exact label/hint typography stays in lock-step.
+ * The blog editor's labelled field, now the admin's labelled field.
+ *
+ * This used to be its own implementation, and it was one of three: the media
+ * panel kit and `_lib/ui.tsx` each had a `Field` too, with different label
+ * sizes and different ideas about where a hint goes. Three definitions of the
+ * same thing is exactly the drift the reuse rule exists to prevent, so this is
+ * now an adapter over the shared one — kept as a module rather than deleted
+ * because a dozen call sites pass `error` as a boolean, and changing those in
+ * the same pass would have mixed two unrelated diffs.
  */
 export function Field({
   label,
@@ -17,22 +22,14 @@ export function Field({
 }: {
   label: string;
   hint?: string;
+  /** Boolean here, a message in the shared component — the hint doubles as the
+   *  error text when it is set, which is how the call sites already use it. */
   error?: boolean;
   children: ReactNode;
 }) {
   return (
-    <label className="grid gap-1">
-      <span className="text-muted-foreground text-[10px] font-semibold tracking-wider uppercase">
-        {label}
-      </span>
+    <AdminField label={label} hint={error ? undefined : hint} error={error ? (hint ?? ' ') : null}>
       {children}
-      {hint && (
-        <span
-          className={cn('text-[10px]', error ? 'text-destructive' : 'text-muted-foreground/70')}
-        >
-          {hint}
-        </span>
-      )}
-    </label>
+    </AdminField>
   );
 }
