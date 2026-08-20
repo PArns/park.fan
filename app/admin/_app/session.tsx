@@ -55,11 +55,30 @@ export function SessionProvider({
 
   const signOut = useCallback(async () => {
     await adminFetch('/api/admin/session', { method: 'DELETE' }).catch(() => undefined);
-    // Everything cached was fetched as this account. Clearing rather than
-    // invalidating so nothing from the old session can flash into the next
-    // one's first render.
-    client.clear();
-    await client.invalidateQueries({ queryKey: adminKeys.session });
+
+    // Everything cached was fetched as this account, so it goes. But NOT via
+    // `client.clear()` followed by an invalidate: clearing removes the session
+    // query itself, and its mounted observer then holds the identity it
+    // already had with no query left to refetch — `invalidateQueries` finds
+    // nothing to invalidate and nothing refetches. The cookie was gone, the
+    // DELETE answered 204, and the admin carried on as though somebody were
+    // still signed in.
+    //
+    // So: drop the other queries, and *reset* the session one, which is the
+    // operation that puts a query back to its initial state and refetches it
+    // for the observer that is watching.
+    client.removeQueries({
+      predicate: (query) => query.queryKey[1] !== 'session',
+    });
+    await client.resetQueries({ queryKey: adminKeys.session });
+
+    // And then leave the page for real. The reset alone lands on the login
+    // screen, but this tab still holds a rendered shell built from the old
+    // account — its lists, its drafts, whatever was typed into a form. A fresh
+    // document is the only way to be sure none of it outlives the session it
+    // belonged to, and signing out is a deliberate, once-a-day action that can
+    // afford one navigation.
+    window.location.assign('/admin');
   }, [client]);
 
   const value = useMemo<SessionContextValue>(
