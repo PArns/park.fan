@@ -12,6 +12,7 @@ import {
   searchMedia,
 } from '@/lib/media';
 import { checkParkAssignment, type GeoPark } from '@/lib/media/geo';
+import { versionedSrc } from '@/lib/media/focus';
 import { getMediaText } from '@/lib/media/text';
 import { MEDIA_LICENSES, MEDIA_ROLES } from '@/lib/media/types';
 import { TAG_FACETS } from '@/lib/media/tags.mjs';
@@ -41,6 +42,12 @@ function toRow(image: MediaImage) {
   const text = getMediaText(image.id);
   return {
     ...image,
+    // The content-versioned address, which a spread of `MediaImage` does not
+    // carry: the row has `src`, and `?v=<hash>` is added by `versionedSrc`
+    // because retargeting a focal point rewrites a crop's bytes at an
+    // unchanged URL. The park and ride media panels read `url` — without it
+    // every thumbnail in them rendered as a broken image.
+    url: versionedSrc(image),
     alt: text.alt ?? {},
     caption: text.caption ?? {},
     lowRes: isLowRes(image),

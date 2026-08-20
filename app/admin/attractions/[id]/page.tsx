@@ -3,6 +3,7 @@
 import { use, useState } from 'react';
 import Link from 'next/link';
 import {
+  ArrowLeft,
   Blocks,
   ExternalLink,
   History,
@@ -73,6 +74,19 @@ export default function AttractionDetailPage({ params }: { params: Promise<{ id:
   return (
     <AdminPage>
       <header className="space-y-3">
+        {/* The way back, spelled out. The park's name under the title has been
+            a link all along, but it reads as a subtitle — and this page is
+            reached from a park, from the palette and from a photo, so leaving
+            "where did I come from" to the browser's back button was the one
+            thing every route into it had in common. */}
+        <Link
+          href={data.park ? `/admin/parks/${data.park.id}` : '/admin/parks'}
+          className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-xs"
+        >
+          <ArrowLeft className="h-3.5 w-3.5" />
+          {data.park ? `Zurück zu ${data.park.name}` : 'Zurück zu den Parks'}
+        </Link>
+
         <div className="flex flex-wrap items-start gap-3">
           <span className="bg-primary/10 text-primary mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl">
             <RollerCoaster className="h-5 w-5" />
