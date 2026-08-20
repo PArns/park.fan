@@ -55,15 +55,41 @@ function PairRow({ pair, canMerge }: { pair: DuplicatePair; canMerge: boolean })
   async function merge(dryRun: boolean) {
     setBusy(dryRun ? 'dry' : 'live');
     try {
-      const result = await adminFetch<{ merged?: number; message?: string }>(
+      const result = await adminFetch<{
+        merged?: number;
+        message?: string;
+        survivingSlug?: string;
+        removedSlug?: string;
+        inheritedColumns?: string[];
+      }>(
         '/api/admin/merge-duplicate-attractions',
         {
           method: 'POST',
+          // `dryRun: false` is what merges. Sent explicitly on both paths
+          // because the endpoint treats an absent flag as a rehearsal, and a
+          // request that means to delete a row should say so in its body.
           body: { winnerId: pair.winnerId, loserId: pair.loserId, dryRun },
         }
       );
       if (dryRun) {
-        setPreview(result.message ?? 'Probelauf ohne Beanstandung.');
+        // The backend answers a rehearsal with what it would do — the slug
+        // that survives, the one that stops resolving, and the columns the
+        // survivor would take from the row about to disappear.
+        setPreview(
+          result.survivingSlug
+            ? [
+                `Bleibt: ${result.survivingSlug}`,
+                result.removedSlug && result.removedSlug !== result.survivingSlug
+                  ? `Verschwindet: ${result.removedSlug}`
+                  : null,
+                result.inheritedColumns?.length
+                  ? `Übernimmt: ${result.inheritedColumns.join(', ')}`
+                  : null,
+              ]
+                .filter(Boolean)
+                .join(' · ')
+            : (result.message ?? 'Probelauf ohne Beanstandung.')
+        );
       } else {
         toast.push({ title: `${pair.baseSlug} zusammengeführt`, tone: 'success' });
         setConfirming(false);
@@ -167,26 +193,43 @@ function PairRow({ pair, canMerge }: { pair: DuplicatePair; canMerge: boolean })
   );
 }
 
+/** One pair from `GET /v1/admin/duplicate-parks`, winner already resolved. */
+interface DuplicateParkPair {
+  park1: { id: string; name: string; city: string | null };
+  park2: { id: string; name: string; city: string | null };
+  score: number;
+  reason: string;
+  winnerId: string | null;
+  loserId: string | null;
+}
+
 function ParkMergePanel() {
   const toast = useToast();
   const [park1Id, setPark1Id] = useState('');
   const [park2Id, setPark2Id] = useState('');
   const [busy, setBusy] = useState(false);
   const [report, setReport] = useState<string | null>(null);
+  const [pairs, setPairs] = useState<DuplicateParkPair[] | null>(null);
   const [confirming, setConfirming] = useState(false);
 
   async function detect() {
     setBusy(true);
     setReport(null);
+    setPairs(null);
     try {
-      // autoDetect false and no ids: the endpoint answers with what it found
-      // without touching anything, which is the closest thing it has to a dry
-      // run for parks.
-      const result = await adminFetch<{ message: string; merged: number }>(
-        '/api/admin/merge-duplicate-parks',
-        { method: 'POST', body: { autoDetect: false } }
+      // A read. The POST this used to send (`autoDetect: false`, no ids) hits
+      // the endpoint's own usage message and finds nothing, ever — and the one
+      // flag that does detect (`autoDetect: true`) merges every pair it finds
+      // in the same call, which is the opposite of a search.
+      const result = await adminFetch<{ total: number; pairs: DuplicateParkPair[] }>(
+        '/api/admin/duplicate-parks'
       );
-      setReport(`${result.message} (${result.merged} zusammengeführt)`);
+      setPairs(result.pairs);
+      setReport(
+        result.total === 0
+          ? 'Keine Parkduplikate gefunden.'
+          : `${result.total} Paar(e) gefunden.`
+      );
     } catch (err) {
       setReport(err instanceof Error ? err.message : 'Suche fehlgeschlagen');
     } finally {
@@ -226,10 +269,16 @@ function ParkMergePanel() {
       </p>
 
       <div className="grid gap-3 sm:grid-cols-2">
-        <Field label="Park-Id (bleibt)" hint="Aus der Adresszeile des Park-Editors.">
+        {/* Not "bleibt" and "wird gelöscht": the backend runs
+            `determineMergeWinner` on the pair and the order they are typed in
+            here changes nothing. Labelling them as a choice promised an
+            operator that the row they put second is the one that disappears —
+            and for a pair where the junk row happens to carry the Wiki-Id, it
+            is the curated one that goes. */}
+        <Field label="Park-Id A" hint="Aus der Adresszeile des Park-Editors.">
           <TextInput value={park1Id} onChange={(event) => setPark1Id(event.target.value)} />
         </Field>
-        <Field label="Park-Id (wird gelöscht)">
+        <Field label="Park-Id B">
           <TextInput value={park2Id} onChange={(event) => setPark2Id(event.target.value)} />
         </Field>
       </div>
@@ -238,8 +287,10 @@ function ParkMergePanel() {
         <div className="border-destructive/40 bg-destructive/[0.06] space-y-3 rounded-lg border p-3">
           <p className="text-sm font-medium">Parks endgültig zusammenführen?</p>
           <p className="text-muted-foreground text-xs">
-            Die zweite Zeile verschwindet. Ihre Bahnen, Saisons und kuratierten Felder gehen auf die
-            erste über, ihr bisheriger Pfad bleibt als Weiterleitung bestehen.
+            Welche der beiden Zeilen bleibt, entscheidet das Backend nach Wiki-Id, Zahl der Quellen,
+            Zahl der Kinder und Alter — nicht die Reihenfolge hier. Die andere verschwindet; ihre
+            Bahnen, Saisons und kuratierten Felder gehen auf die bleibende über, ihr bisheriger Pfad
+            bleibt als Weiterleitung bestehen. Das lässt sich nicht rückgängig machen.
           </p>
           <div className="flex items-center gap-2">
             <Button size="sm" variant="ghost" autoFocus onClick={() => setConfirming(false)}>
@@ -274,6 +325,42 @@ function ParkMergePanel() {
       )}
 
       {report && <p className="text-muted-foreground font-mono text-xs break-words">{report}</p>}
+
+      {pairs && pairs.length > 0 && (
+        <ul className="space-y-2">
+          {pairs.map((pair) => {
+            const winner =
+              pair.winnerId === pair.park2.id ? pair.park2 : pair.park1;
+            const loser = winner.id === pair.park1.id ? pair.park2 : pair.park1;
+            return (
+              <li
+                key={`${pair.park1.id}-${pair.park2.id}`}
+                className="border-border/60 flex flex-wrap items-center justify-between gap-2 rounded-md border p-2 text-xs"
+              >
+                <span className="min-w-0">
+                  <span className="font-medium">{winner.name}</span>
+                  {winner.city ? ` (${winner.city})` : ''} bleibt ·{' '}
+                  <span className="text-muted-foreground">
+                    {loser.name}
+                    {loser.city ? ` (${loser.city})` : ''} verschwindet
+                  </span>
+                  <span className="text-muted-foreground block">{pair.reason}</span>
+                </span>
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  onClick={() => {
+                    setPark1Id(winner.id);
+                    setPark2Id(loser.id);
+                  }}
+                >
+                  Ids übernehmen
+                </Button>
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </div>
   );
 }

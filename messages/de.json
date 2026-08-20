@@ -333,7 +333,7 @@
       "title": "Saisons und Events",
       "separateTicket": "Extraticket",
       "fromPrice": "ab {price}",
-      "selectedDays": "{count} Termine",
+      "selectedDays": "{count, plural, =1 {1 Termin} other {# Termine}}",
       "details": "Zum Park",
       "kind": {
         "halloween": "Halloween",

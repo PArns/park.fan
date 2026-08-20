@@ -500,7 +500,7 @@
       "title": "Seizoenen en evenementen",
       "separateTicket": "Apart ticket",
       "fromPrice": "vanaf {price}",
-      "selectedDays": "{count} data",
+      "selectedDays": "{count, plural, =1 {1 datum} other {# data}}",
       "details": "Naar het park",
       "kind": {
         "halloween": "Halloween",

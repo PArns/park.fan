@@ -23,11 +23,17 @@ export function PhotoCoverage({
   attractions: AdminAttractionListItem[];
 }) {
   const rideSlugs = attractions.map((attraction) => attraction.slug);
+  // The key has to identify the request body, and the body is the slug list.
+  // Keyed on its *length*, a different set of the same size — a retired ride
+  // toggled in, a rename, a refetch — read the previous answer for the whole
+  // five-minute window, so the panel named rides as missing a photo that had
+  // one, and the other way round.
+  const rideKey = rideSlugs.join(',');
 
   // `useQuery` rather than `useAdminQuery`: the lookup is a POST because the
   // ride list is the request body, and the shared helper only does GETs.
   const coverage = useQuery({
-    queryKey: ['admin', 'photo-coverage', parkSlug, rideSlugs.length],
+    queryKey: ['admin', 'photo-coverage', parkSlug, rideKey],
     enabled: rideSlugs.length > 0,
     staleTime: 5 * 60_000,
     queryFn: () =>

@@ -57,7 +57,11 @@ export function EntityPostsPanel({
   if (geoPath) query.set('geoPath', geoPath);
 
   const backlinks = useAdminQuery<{ total: number; posts: BacklinkPost[] }>(
-    ['admin', 'backlinks', parkSlug, rideSlug],
+    // `geoPath` belongs in the key because it is in the URL, and it is in the
+    // URL because a park slug is not unique: `disneyland-park` is Anaheim and
+    // Paris. Left out, the second park opened reads the first one's cached
+    // answer for ten minutes and lists Anaheim's posts under Paris.
+    ['admin', 'backlinks', parkSlug, rideSlug, geoPath],
     parkSlug ? `/api/admin/backlinks?${query.toString()}` : null,
     { staleTime: 10 * 60_000 }
   );

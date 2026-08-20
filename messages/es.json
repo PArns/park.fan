@@ -500,7 +500,7 @@
       "title": "Temporadas y eventos",
       "separateTicket": "Entrada aparte",
       "fromPrice": "desde {price}",
-      "selectedDays": "{count} fechas",
+      "selectedDays": "{count, plural, =1 {1 fecha} other {# fechas}}",
       "details": "Web del parque",
       "kind": {
         "halloween": "Halloween",

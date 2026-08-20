@@ -500,7 +500,7 @@
       "title": "Saisons et événements",
       "separateTicket": "Billet séparé",
       "fromPrice": "à partir de {price}",
-      "selectedDays": "{count} dates",
+      "selectedDays": "{count, plural, =1 {1 date} other {# dates}}",
       "details": "Site du parc",
       "kind": {
         "halloween": "Halloween",
