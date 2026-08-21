@@ -3,6 +3,7 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
+import { useMenuReveal } from '@/lib/hooks/use-menu-reveal';
 
 /**
  * A header entry that is BOTH a link and the trigger of a panel.
@@ -47,6 +48,8 @@ export function NavMenu({ href, label, children, disabled }: NavMenuProps) {
   // with the panel still up for a frame — `disabled` simply wins here.
   const open = requested && !disabled;
   const panelId = useId();
+  // Motion for the band's contents. The glass surface below is never a target — see the hook.
+  const panelContentRef = useMenuReveal(open);
   const rootRef = useRef<HTMLDivElement>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -171,7 +174,12 @@ export function NavMenu({ href, label, children, disabled }: NavMenuProps) {
               highlight reaches into the column gaps, and at exactly 1024 px — where the container
               is as wide as the viewport — the last column's 8 px of bleed gave the document a
               horizontal scrollbar. Nothing should be able to leave a full-bleed band anyway. */}
-          <div className="container mx-auto overflow-hidden px-4 py-5 md:px-0">{children}</div>
+          <div
+            ref={panelContentRef}
+            className="container mx-auto overflow-hidden px-4 py-5 md:px-0"
+          >
+            {children}
+          </div>
         </div>
       </div>
     </div>

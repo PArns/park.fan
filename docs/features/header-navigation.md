@@ -166,6 +166,38 @@ read straight through the menu and fought with it, in both themes.
 
 ---
 
+## Motion
+
+The band's columns lift into place when it opens, and the detail row settles again each time it
+fills with a different country. `lib/hooks/use-menu-reveal.ts`, following the rules
+`use-header-reveal.ts` arrived at:
+
+- **CSS owns visibility, GSAP owns motion.** The timeline animates `y` and never `opacity`. The
+  panel is shown and hidden by a `hidden` class, so a failed chunk, a blocked import or a
+  `prefers-reduced-motion` visitor gets a menu that simply appears — never one that JavaScript
+  forgot to reveal. It is also why there is no fade: a fade needs its from-state written before the
+  first frame, and a from-state that lands without its tween is a menu that opens empty.
+- **Nothing touches the glass.** The surface carries `backdrop-blur-xl`, and a transform or an
+  opacity on it — or on any ancestor — makes it a backdrop root for as long as the animation runs,
+  so the blur would go flat exactly while somebody watches it appear. Every target is a
+  **descendant** of that surface. Verified mid-tween: `transform: none`, `opacity: 1`,
+  `backdrop-filter: blur(24px)` throughout.
+- **The open restarts, it does not reverse.** Opening a menu is a discrete event, not a state being
+  crossed back and forth the way the header's scroll threshold is, and closing snaps — a menu that
+  lingers on the way out is a menu in the way.
+- **The detail row's re-settle is shorter and flatter** (6 px over 0.25 s against 10 px over 0.4 s).
+  It fires on every country somebody rests on, and a full flourish repeated down a column of 23
+  countries is the fidget the header's reveal had to be rewritten to stop doing. It earns its place
+  because the content genuinely changes; its key includes whether the fetch has landed, so the
+  skeleton → cities swap animates rather than snapping.
+
+Measured: **zero GSAP requests on a plain page view, one on the first menu opened** — the chunk is
+shared with the header's own reveal, so nobody who never opens a menu pays for it. Under
+`prefers-reduced-motion: reduce` the import never happens at all and no transform is written. The
+tween clears its inline `transform` when it finishes, so nothing is left on the elements.
+
+---
+
 ## Structured data
 
 `SiteNavigationStructuredData` emits an `ItemList` of `SiteNavigationElement` beside the existing

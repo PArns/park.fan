@@ -8,6 +8,7 @@ import { CountryFlag } from '@/components/common/icons/flags';
 import { translateContinent, translateCountry } from '@/lib/i18n/helpers';
 import type { GeoMenuContinent } from '@/lib/navigation/geo-menu';
 import type { FeaturedParkCard } from '@/lib/navigation/featured-parks-menu';
+import { useRowReveal } from '@/lib/hooks/use-menu-reveal';
 
 /**
  * The parks menu, as a full-width band: continent columns and a photo rail over one detail row.
@@ -145,6 +146,7 @@ export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
   useEffect(() => disarm, []);
 
   const detail = countryKey ? cities[countryKey] : undefined;
+  const rowRef = useRowReveal(countryKey && `${countryKey}:${detail ? 'ready' : 'pending'}`);
   const shown = detail?.slice(0, CITY_COLUMNS) ?? [];
   const hidden = detail ? detail.length - shown.length : 0;
 
@@ -154,7 +156,7 @@ export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
         {/* Level 1 + 2 — every continent and every country, all of it in the first HTML. */}
         <div className="grid min-w-0 flex-1 grid-cols-3 gap-x-6 gap-y-5 lg:grid-cols-5">
           {continents.map((continent) => (
-            <div key={continent.slug}>
+            <div key={continent.slug} data-menu-stagger>
               <SectionHeading
                 label={translateContinent(t, continent.slug, locale, continent.name)}
                 count={continent.parkCount}
@@ -198,7 +200,10 @@ export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
         {/* The photo rail. Hidden below `xl`: the five country columns need the room first, and a
             2×2 photo grid stacked under them would push the detail row off the screen. */}
         {featured.length > 0 && (
-          <div className="border-border/60 hidden w-80 shrink-0 border-l pl-6 xl:block">
+          <div
+            data-menu-stagger
+            className="border-border/60 hidden w-80 shrink-0 border-l pl-6 xl:block"
+          >
             <SectionHeading label={tNav('popularParks')} href="/parks" />
             <div className="grid grid-cols-2 gap-2.5">
               {featured.map((park) => (
@@ -235,8 +240,14 @@ export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
         )}
       </div>
 
-      {/* Level 3 — the open country's cities and parks. */}
-      <div className="border-border/60 mt-5 min-h-[7.5rem] border-t pt-4">
+      {/* Level 3 — the open country's cities and parks. `rowRef` re-settles it whenever it fills
+          with a different country; the key includes whether the data has landed, so the skeleton →
+          cities swap animates too rather than snapping. */}
+      <div
+        ref={rowRef}
+        data-menu-stagger
+        className="border-border/60 mt-5 min-h-[7.5rem] border-t pt-4"
+      >
         {activeCountry == null ? (
           <p className="text-muted-foreground/70 text-xs">{t('exploreByRegion')}</p>
         ) : (
@@ -264,7 +275,7 @@ export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
             {detail === undefined ? (
               <div className="grid grid-cols-3 gap-x-6 lg:grid-cols-5" aria-hidden="true">
                 {Array.from({ length: CITY_COLUMNS }, (_, i) => (
-                  <div key={i} className="space-y-1.5">
+                  <div key={i} data-row-stagger className="space-y-1.5">
                     <div className="bg-muted/60 h-2.5 w-16 animate-pulse rounded" />
                     <div className="bg-muted/60 h-3.5 w-full animate-pulse rounded" />
                   </div>
@@ -273,7 +284,7 @@ export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
             ) : (
               <ul className="grid grid-cols-3 items-start gap-x-6 gap-y-3 lg:grid-cols-5">
                 {shown.map((city) => (
-                  <li key={city.slug}>
+                  <li key={city.slug} data-row-stagger>
                     <Link
                       href={`/parks/${activeCountry.continent}/${activeCountry.country}/${city.slug}`}
                       prefetch={false}

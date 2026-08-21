@@ -33,7 +33,9 @@ export function BlogMenuPanel({ categories, recent }: BlogMenu) {
 
   return (
     <div className="grid gap-x-6 gap-y-5 md:grid-cols-[minmax(0,13rem)_1fr]">
-      <div>
+      {/* Two stagger steps, same as the parks band: the shared `NavMenu` lifts anything marked
+          `data-menu-stagger` when the panel opens, so both menus settle in the same way. */}
+      <div data-menu-stagger>
         <div className="text-foreground border-border/60 mb-2 border-b pb-1.5 text-xs font-semibold tracking-wide uppercase">
           {t('categories')}
         </div>
@@ -62,7 +64,7 @@ export function BlogMenuPanel({ categories, recent }: BlogMenu) {
         </Link>
       </div>
 
-      <div>
+      <div data-menu-stagger>
         <div className="text-foreground border-border/60 mb-2 border-b pb-1.5 text-xs font-semibold tracking-wide uppercase">
           {t('latestPosts')}
         </div>

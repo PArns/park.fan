@@ -66,6 +66,41 @@ See [header navigation](features/header-navigation.md).
 
 ---
 
+## Unreleased – feat: the menu band settles in instead of appearing
+
+Its columns lift into place on open, and the detail row settles again each time
+it fills with a different country. Same split the header's own reveal uses: CSS
+owns visibility, GSAP owns motion. The timeline animates `y` and never
+`opacity`, because the panel is shown and hidden by a `hidden` class and a fade
+needs its from-state written before the first frame — a from-state that lands
+without its tween is a menu that opens empty.
+
+The band is glass, and that decided the whole shape of this. A transform or an
+opacity on the surface, or on any ancestor of it, makes it a backdrop root for
+as long as the animation runs, so the blur would go flat exactly while somebody
+watches it appear. Every target is a descendant of that surface instead.
+Sampled mid-tween: `transform: none`, `opacity: 1`,
+`backdrop-filter: blur(24px)` the whole way through.
+
+The open restarts rather than reversing — opening a menu is a discrete event,
+not a state being crossed back and forth the way the header's scroll threshold
+is, and closing snaps, because a menu that lingers on the way out is a menu in
+the way. The detail row's re-settle is deliberately shorter and flatter, 6 px
+over 0.25 s against 10 px over 0.4 s: it fires on every country somebody rests
+on, and a full flourish repeated down a column of 23 countries is the fidget
+that got the header's reveal rewritten once already.
+
+Zero GSAP requests on a plain page view, one on the first menu opened, and the
+chunk is the one the header's reveal already uses. Under
+`prefers-reduced-motion: reduce` the import never happens and no transform is
+written. The tween clears its inline `transform` when it lands. CLS unchanged at
+0.0000 on mobile — the band is out of flow, which is why it was positioned that
+way in the first place.
+
+See [header navigation](features/header-navigation.md#motion).
+
+---
+
 ## Unreleased – fix: the menu's countries loaded once, if at all
 
 Four things, and the first two turned out to be one.
