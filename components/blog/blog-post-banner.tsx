@@ -55,7 +55,7 @@ export function BlogPostBanner({ post, currentLocale, kicker }: BlogPostBannerPr
   );
 
   return (
-    <header className="relative isolate -mt-14 flex min-h-[58vh] items-end overflow-hidden sm:min-h-[66vh]">
+    <header className="relative isolate -mt-12 flex min-h-[58vh] items-end overflow-hidden sm:min-h-[66vh]">
       {cover ? (
         <Image src={cover} alt={coverAlt} fill priority sizes="100vw" className="object-cover" />
       ) : (

@@ -4,6 +4,247 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – feat: das Menü wird ein Band, mit Flaggen und Fotos
+
+Das Panel war eine schmale Box mit einer Kontinent-Schiene, die eine
+Länderliste gegen die nächste tauschte. Vier von fünf lagen dabei auf
+`display:none` und das Ganze brauchte einen `activeContinent`. Über die
+volle Containerbreite passen alle 28 Links nebeneinander: nichts zu
+schalten, nichts versteckt, die ganze Geografie auf einen Blick. Die
+Änderung hat also Zustand entfernt statt welchen hinzuzufügen.
+
+Dazu Flaggen an jeder Länderzeile. Die Datei mit den SVGs gab es schon,
+für den Sprachumschalter, und sie deckt 20 der 23 Länder ab; `CountryFlag`
+schlägt darin nach und beschneidet auf eine feste 16×12-Box, weil die
+viewBoxen von 5:3 bis 1000:700 reichen und eine Reihe unbeschnittener
+Flaggen eine Reihe unterschiedlicher Breiten wäre. Saudi-Arabien, Malaysia
+und Singapur bekommen ein neutrales Kürzel-Feld, vier Parks zusammen.
+Emoji-Flaggen wären der kurze Weg gewesen und sind der Grund, warum diese
+Datei überhaupt existiert: Windows liefert keine Flaggen-Glyphen, dort
+steht dann „DE".
+
+Fotos gibt es an zwei Stellen und aus zwei verschiedenen Gründen. Im
+Blog-Panel tragen die vier neuesten Beiträge ihr eigenes Titelbild – die
+Abdeckung liegt bei 7 von 7 und die 16:9-Zuschnitte existieren bereits. Im
+Parks-Panel steht dagegen eine feste Spalte „Beliebte Parks" mit vier
+Karten, denn die Mediendatenbank hält für **14 von 212 Parks** überhaupt
+ein Bild: ein Thumbnail je Parkzeile wären neun Fotos und zweihundert leere
+Kästen gewesen. Welche vier, entscheidet die Liste der Startseite
+(`FEATURED_PARK_SLUGS`, je Sprache), geschnitten mit den Parks, die ein
+Foto haben. Eine zweite kuratierte Liste wäre eine zweite Liste zum
+Nachziehen, und die Frage, welche Parks eine deutschsprachige Leserin
+sucht, ist dort schon einmal beantwortet worden, mit Besucherzahlen im
+Kommentar. Aufgelöst wird das im Layout, weil `@/lib/media` der 107-KB-
+Katalog ist und der Header eine Client-Komponente – über die Grenze gehen
+vier URLs. Angefragt werden die Bilder erst beim Öffnen: drei
+Foto-Requests auf einer normalen Parkseite, sieben nach dem Aufklappen.
+
+Das Band ist Glas, nicht deckend: `bg-popover/95` plus `backdrop-blur-xl`
+und der Ring, den `components/ui/popover.tsx` schon trägt. „Flach" schließt
+den Pointer-Tilt und die geschichteten Glaskarten der Seiten aus, nicht den
+Blur. Aber `/95` statt der `/80` der kleinen Popover: die sitzen über einer
+Karte oder einem Rand, dieses hier über einer halben Parkseite, und bei
+80 % lasen sich Überschrift, Status-Badges und ein Absatz Fließtext quer
+durch das Menü.
+
+Zwei Dinge, die dabei aufgefallen sind: das Band braucht `overflow-hidden`,
+weil die Zeilen `-mx-2` tragen und bei exakt 1024 px – wo der Container so
+breit ist wie der Viewport – die letzte Spalte 8 px überstand und dem
+Dokument eine horizontale Scrollleiste gab. Und die Detailzeile hält ihre
+Höhe, ob ein Land offen ist oder nicht; sie füllt sich unter dem Zeiger,
+und ein Band, das beim Lesen die Größe ändert, wäre schlechter.
+
+Gemessen, Parkseite, `de`: 4 → 46 crawlbare Links in der Hauptnavigation,
+davon keiner auf Stadt- oder Parkebene; Seitengewicht 59,04 → 63,94 KB
+brotli, also **+4,90 KB**, wovon rund 3,9 KB auf die 22 Flaggen entfallen;
+CLS unverändert 0,0000 auf Mobil. Die Flaggen sind dekorativ
+(`aria-hidden`) – sollte dieser Preis auf 35.000 Seiten irgendwann zu hoch
+werden, verschiebt ein Rendern nach dem Mount sie in den geteilten
+JS-Chunk.
+
+See [header navigation](features/header-navigation.md).
+
+---
+
+## Unreleased – feat: the menu band settles in instead of appearing
+
+Its columns lift into place on open, and the detail row settles again each time
+it fills with a different country. Same split the header's own reveal uses: CSS
+owns visibility, GSAP owns motion. The timeline animates `y` and never
+`opacity`, because the panel is shown and hidden by a `hidden` class and a fade
+needs its from-state written before the first frame — a from-state that lands
+without its tween is a menu that opens empty.
+
+The band is glass, and that decided the whole shape of this. A transform or an
+opacity on the surface, or on any ancestor of it, makes it a backdrop root for
+as long as the animation runs, so the blur would go flat exactly while somebody
+watches it appear. Every target is a descendant of that surface instead.
+Sampled mid-tween: `transform: none`, `opacity: 1`,
+`backdrop-filter: blur(24px)` the whole way through.
+
+The open restarts rather than reversing — opening a menu is a discrete event,
+not a state being crossed back and forth the way the header's scroll threshold
+is, and closing snaps, because a menu that lingers on the way out is a menu in
+the way. The detail row's re-settle is deliberately shorter and flatter, 6 px
+over 0.25 s against 10 px over 0.4 s: it fires on every country somebody rests
+on, and a full flourish repeated down a column of 23 countries is the fidget
+that got the header's reveal rewritten once already.
+
+Zero GSAP requests on a plain page view, one on the first menu opened, and the
+chunk is the one the header's reveal already uses. Under
+`prefers-reduced-motion: reduce` the import never happens and no transform is
+written. The tween clears its inline `transform` when it lands. CLS unchanged at
+0.0000 on mobile — the band is out of flow, which is why it was positioned that
+way in the first place.
+
+See [header navigation](features/header-navigation.md#motion).
+
+---
+
+## Unreleased – fix: the menu's countries loaded once, if at all
+
+Four things, and the first two turned out to be one.
+
+**Passing over a country switched to it.** The detail row sits under the country
+columns, so the way down to it leads over every country below the one you
+wanted. Each of those rewrote the row, and it landed on whichever country
+happened to be last — the row was effectively unreachable for the country
+somebody actually meant. Entering a row only arms the switch now, and leaving
+before 140 ms disarms it. Rest on a country and it commits; cross it and it
+never fires. Focus is exempt, because a keyboard user lands on exactly the
+country they chose.
+
+**And that gesture is what stopped countries loading.** The effect discarded its
+response on cleanup while leaving the key in `requested`, so skimming past a
+country threw its answer away and the guard then refused to ask again: the row
+sat on its skeleton for the rest of the session. The response is a cache write
+keyed by country, correct whenever it lands, so nothing cancels it any more, and
+a failed request drops its key instead of caching the failure. Measured over all
+23 countries — hover one, move on before the answer lands, come back and rest:
+**23 of 23 stayed empty before, 0 of 23 after.**
+
+Both were invisible to the first round of checks because the test hovered the
+same country twice, which never triggers the cleanup, and counted every
+six-segment link in the header — including the photo rail, which links park
+pages too. The reproduction now sweeps between two countries and measures below
+`xl`, where the rail is hidden.
+
+**Saudi Arabia, Malaysia and Singapore had no flag** and fell back to a chip with
+their country code, which in a row of flags reads as something still loading.
+All 23 draw a flag now. Malaysia's fourteen-point star and Singapore's five are
+computed polygons; Saudi Arabia's shahada is a band rather than an approximation
+of the calligraphy, because at 16×12 the inscription is under 2 px tall and comes
+out an indistinct smudge whichever path you draw. The sword does the
+identifying.
+
+**The photo rail was two cards short of its column.** Six now instead of four —
+nine parks carry a `park-background`, so this is the shelf being filled rather
+than stretched.
+
+Cost after all four: **+5.65 KB brotli per page** against `main` (was +4.90),
+4 → 48 crawlable nav links, every one of the 46 distinct targets answering 200.
+
+See [header navigation](features/header-navigation.md).
+
+---
+
+## Unreleased – feat: a header that leads somewhere, and stops before it dilutes
+
+The bar had four links. "Parks entdecken" pointed at `/parks/europe` — past
+the discovery index, into one of its five children — and the best-travel-time
+hub was not linked at all, which the header found a way to be funny about: it
+matches that route's localized segment so it can float transparent over the
+hub's hero, so it could name the page and would not link it. Two translation
+keys, `navigation.parks` and `navigation.continents`, had been sitting unused
+in all six locales for the same reason.
+
+Now: "Parks entdecken" goes to `/parks` and opens a panel, Blog opens one,
+Beste Reisezeit is a link, Wörterbuch and Anleitung are unchanged.
+
+The parks panel is three panes, and two of them are a different kind of thing
+from the third. Continents and countries are server-rendered into every page
+and always in the document — the four inactive country lists are
+`display:none`, not unmounted, because a crawler does not hover and a panel
+built on first interaction contributes nothing whatsoever to the link graph.
+Cities and parks are fetched per opened country from
+`/api/nav/geo/[continent]/[country]`.
+
+That split is about links rather than bytes. Everything the bar renders is a
+link on some 35,000 pages. 28 hub links concentrate internal weight on the
+continent and country pages, which is the point of putting geography in a
+header; the 144 cities and 212 parks under them are already reachable from
+those hubs and from the sitemap, so shipping them would spread the same weight
+over 356 more targets and buy no discovery at all.
+
+The same reasoning shaped the blog panel, which is why it is small. The blog
+holds 7 posts per locale in 3 categories, with 31 tags and one author. The
+categories are in and the four newest posts are in; the tags are out. 31 tag
+pages over 7 posts are mostly one post's teaser at a second URL, and a
+template that runs on every page is the last place to promote them.
+
+`SiteNavigationElement` markup joins the existing `Organization` and `WebSite`
+data — the five bar entries and the five continent hubs, ten items, no more.
+The 23 country links are in the rendered `<nav>`; a second copy in the head of
+every page tells a crawler nothing the markup did not.
+
+One bug fixed on the way, and it predates this. The nav appeared at `md` while
+the search input waits for `lg`, so between 768 and 1023 px the row carried the
+full navigation, a 256 px search button and no burger: 789 px of content in a
+736 px box on `main`, which wrapped the German nav onto two lines and gave the
+document a horizontal scrollbar. One breakpoint now — the trigger is icon-only
+below `lg`, the nav starts where the input does, and under that width
+everything is in the burger, where a native `<details>` opens the continents
+with no JavaScript. Checked at 768/900/1024/1100/1280 in all six languages.
+
+Measured, park page, `de`: 4 → 40 crawlable links in the main nav, none of them
+city or park level; page weight 59.04 → 60.70 KB brotli, so **+1.66 KB**; layout
+chrome messages 6066 → 6224 B; CLS unchanged at 0.0000 on mobile. The chrome
+number is worth a second look — one `useTranslations('blog')` in a header
+component briefly pulled the whole namespace into the set every page
+serializes, 6066 B to 9047 B times six locales, for the single word
+"Kategorien". It comes out of `navigation` instead.
+
+See [header navigation](features/header-navigation.md).
+
+---
+
+## Unreleased – fix: the header, and the two logos that were never the same logo
+
+The bar is 48 px instead of 56, the search field 32 instead of 40, and the logo
+24 px everywhere instead of 28 on a phone and 36 on a desktop. It reads quieter,
+which is what this started as.
+
+The reason it also runs better is the second half. On a hero page the header
+renders the lockup twice — one copy parked in the corner over the photo, one in
+the flex flow — and cross-fades them while sliding one onto the other. The
+comment above that code claimed the two coincide at the midpoint. They never
+did: the bar copy was `h-7 md:h-9` + `h-5 md:h-6` + `gap-0.5` against the
+corner's `h-6` + `h-5` + `gap-1`, so the handoff computed a scale of 0.667 and
+animated a 1.5× blow-up under the slide. And no single factor could have saved
+it, because 36:24 is not 24:20 — measured at 1440, the corner copy stayed 15 px
+wider than the bar copy at the top and 25 px wider once solid. They also sat
+0.5 px apart vertically, the in-flow copy being centred on a hard-coded `h-14`
+box and the corner copy on the header's 55 px content box.
+
+Both copies render one `BrandLockup` now, so the scale resolves to 1.000 and the
+handoff is a plain translate. Sampled per animation frame, the two boxes agree
+to 0.0 px on all four edges from start to finish.
+
+Heights come off the button scale rather than out of the air. The old bar had
+the largest control in the design system — the 40 px `lg` search field — in the
+shortest row in the app; it is the 32 px `sm` size now, with 8 px of air above
+and below it, and the two 36 px controls below `lg` (search, burger) are finally
+the same box as each other instead of 40 against 36.
+
+Four numbers had to move together: the bar itself, the `<Suspense>` fallback in
+the locale layout that reserves it, and the `-mt-14` on the three heroes the
+header floats over. `pnpm measure:cls --late` reads 0.0000 on mobile for the
+homepage and the park page afterwards.
+
+See [design system → header geometry](design/design-system.md#header-geometry).
+
+---
+
 ## Unreleased – feat: the facts a park page could not state
 
 A park page had a map, a forecast, a weather chart and no way to say where the

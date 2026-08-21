@@ -149,7 +149,7 @@ export default async function HomePage({ params }: HomePageProps) {
           the hero search dropdown floats out of this section over the content beneath it, and
           `overflow-hidden` keeps the background photo in. The sticky header is z-50, so it still
           wins. */}
-        <section className="hero-entering relative z-10 -mt-14 overflow-visible px-6 pt-24 pb-8 md:pb-10 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-20 lg:pb-12">
+        <section className="hero-entering relative z-10 -mt-12 overflow-visible px-6 pt-24 pb-8 md:pb-10 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-20 lg:pb-12">
           <HeroRotationProvider>
             <HeroBackground
               imageSrc={randomHeroImage}

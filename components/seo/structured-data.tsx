@@ -207,6 +207,43 @@ export function WebSiteStructuredData({
   return <JsonLd data={data as WithContext<Thing>} />;
 }
 
+export function SiteNavigationStructuredData({
+  locale,
+  items,
+}: {
+  locale: string;
+  /** Label + path (locale-relative, leading slash) of each entry, in the order the bar shows them. */
+  items: { name: string; path: string }[];
+}) {
+  const baseUrl = `${SITE_URL}/${locale}`;
+
+  /*
+   * What the header's main navigation is, stated rather than inferred.
+   *
+   * Google works the primary navigation out from the markup on its own, so this is a hint, not a
+   * requirement — which is exactly why it stays SHORT. It names the five bar entries and the five
+   * continent hubs and stops there. The 23 country links are in the rendered `<nav>` where they
+   * belong; repeating them here would put a second copy of the same list into the head of every
+   * one of ~35,000 pages to tell the crawler something the markup already says.
+   *
+   * An `ItemList` rather than a bare array: the order is the bar's order, and `position` is the
+   * only way to say so.
+   */
+  const data = {
+    '@context': 'https://schema.org' as const,
+    '@type': 'ItemList' as const,
+    name: 'park.fan',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'SiteNavigationElement' as const,
+      position: index + 1,
+      name: item.name,
+      url: `${baseUrl}${item.path}`,
+    })),
+  };
+
+  return <JsonLd data={data as WithContext<Thing>} />;
+}
+
 export function ParkStructuredData({
   park,
   url,

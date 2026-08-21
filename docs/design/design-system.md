@@ -218,6 +218,72 @@ The `CommandDialog` in `components/ui/command.tsx` uses brand blue throughout:
 
 ---
 
+## Header geometry
+
+The bar is **48 px** (`h-12` on `<header>`, plus the 1 px border it draws itself, so 49 px in the
+document). It used to be 56 px and read heavier than anything in it deserved.
+
+Four numbers have to move together, and three of them live outside the header file:
+
+| Where                                                                                                    | What                                                                                     |
+| -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `components/layout/header.tsx`                                                                           | `h-12` on `<header>`; the inner container is `h-full`, never a second copy of the number |
+| `app/[locale]/layout.tsx`                                                                                | the `<Suspense>` fallback that reserves the bar while the client `Header` streams in     |
+| `app/[locale]/page.tsx`, `components/blog/blog-post-banner.tsx`, `components/marketing/editorial-ui.tsx` | `-mt-12` — the three heroes the header floats over                                       |
+
+Get the fallback wrong and every page starts with a shift of the difference; get a `-mt-` wrong and
+the hero leaves a gap or eats the bar.
+
+### What sits in it
+
+| Element                     | Height | Of the bar |
+| --------------------------- | -----: | ---------: |
+| logo lockup (`BrandLockup`) |  24 px |       50 % |
+| search field, `lg` and up   |  32 px |       67 % |
+| search button, below `lg`   |  36 px |       75 % |
+| locale switcher             |  32 px |       67 % |
+| burger, below `md`          |  36 px |       75 % |
+| theme toggle                |  28 px |       58 % |
+| nav links (text)            |  20 px |       42 % |
+
+Sizes come off the button scale in `components/ui/button.tsx` (`sm` 32 / default 36 / `lg` 40), not
+out of the air. The old bar put the **largest** of them — a 40 px search field, the `lg` size — in
+the smallest row in the app, at 71 % of a 56 px bar; the field is `sm` now and the bar keeps 8 px of
+air above and below it. `.touch-target` (44 px) is the floor for anything that is only a tap target;
+the two 36 px controls below `lg` are the same box as each other, which they were not before (40
+against 36).
+
+For the outside view: Material 3's small top app bar is 64 dp, and the general advice for a
+**sticky** bar is to stay under about 60 px on desktop and 50 on mobile, since it costs that much
+of every viewport for the whole visit. 48 px sits under both, and the reference bars that look
+calm — Tailwind's own site, shadcn/ui — run a ~24 px lockup in a 56–64 px bar, i.e. the mark takes
+40–50 % of the row. Ours took 64 %.
+
+### One lockup, two copies
+
+On a hero page the header renders the lockup **twice**: parked in the corner while the bar is
+transparent, in the flex flow once it solidifies. The two cross-fade while sliding onto each other,
+and that only reads as one object moving if they are congruent.
+
+They were not. The bar carried `h-7 md:h-9` + `h-5 md:h-6` + `gap-0.5`, the corner `h-6` + `h-5` +
+`gap-1`, so the handoff measured `logoScale = 24/36 = 0.667` and ran a 1.5× scale under the slide.
+A single factor cannot reconcile a pin:wordmark ratio of 36:24 against 24:20, so the copies never
+met: measured at 1440, 98.1 px wide against 82.7 px at the top and 147.2 px against 122.2 px once
+solid. They were 0.5 px apart vertically as well, because the in-flow copy was centred on a
+hard-coded `h-14` box while the corner copy was centred on the header's 55 px content box.
+
+Both render `components/layout/brand-lockup.tsx` now — pin 24 px, wordmark 20 px, `gap-1`, defined
+once. `logoScale` resolves to 1.000 and the handoff is a pure translate; sampled per animation
+frame, the two boxes agree to 0.0 px on all four edges the whole way across. The scale stays in the
+formula as the safety net it was meant to be, with nothing left to correct.
+
+`logo-small.svg` is a 144×144 **square** with the pin drawn inside it, filling 86 % of the box
+height and 62.5 % of its width. So 24 px of box is ~20.7 px of visible pin with ~4.5 px of empty
+space on either side, and `gap-1` on top of that reads as a ~10.7 px optical gap — which is why the
+lockup looks right at a gap that measures small.
+
+---
+
 ## Interactive Utilities
 
 - `.interactive-card` – `hover:border-primary/50 transition-all hover:shadow-lg`

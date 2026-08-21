@@ -6,17 +6,24 @@ import { Link, usePathname } from '@/i18n/navigation';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import type { Locale } from '@/i18n/config';
-import { Menu, MapPin } from 'lucide-react';
-import Image from 'next/image';
+import { Menu, MapPin, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { BrandLockup } from '@/components/layout/brand-lockup';
+import { NavMenu } from '@/components/layout/nav-menu';
+import { ParksMenuPanel } from '@/components/layout/parks-menu-panel';
+import { BlogMenuPanel } from '@/components/layout/blog-menu-panel';
 import { useHeaderReveal } from '@/lib/hooks/use-header-reveal';
 import { ThemeToggle } from '@/components/common/theme-toggle';
 import { LocaleSwitcher } from '@/components/common/locale-switcher';
 import { SearchCommand } from '@/components/search/search-bar';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
+import { translateContinent } from '@/lib/i18n/helpers';
 import type { NearbyParksData } from '@/types/nearby';
+import type { GeoMenuContinent } from '@/lib/navigation/geo-menu';
+import type { FeaturedParkCard } from '@/lib/navigation/featured-parks-menu';
+import type { BlogMenu } from '@/lib/navigation/blog-menu';
 
 /** API returns distance in meters. Only show "Nearby: Park" when nearest park is within this (m). */
 const NEAR_PARK_HEADER_RADIUS_M = 5000; // 5 km
@@ -25,13 +32,30 @@ interface HeaderProps {
   /** Whether the blog has at least one published post — every blog link
    *  hides while the answer is no. Computed server-side in the layout. */
   showBlog?: boolean;
+  /**
+   * Continents and their countries for the parks menu. Fetched in the layout (a cached discovery
+   * read, not a per-page request) and passed down because this is a Client Component. 28 links,
+   * 420 B brotli — see `lib/navigation/geo-menu.ts` for why it stops at countries.
+   */
+  geoMenu?: GeoMenuContinent[];
+  /** Categories + newest posts for the blog menu, read from the generated manifest. */
+  blogMenu?: BlogMenu;
+  /**
+   * The photo rail in the parks menu. Resolved in the layout because `@/lib/media` is the 107 KB
+   * catalog and this is a Client Component — only four URLs cross the boundary.
+   */
+  featuredParks?: FeaturedParkCard[];
 }
 
-export function Header({ showBlog = true }: HeaderProps) {
+export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: HeaderProps) {
   const t = useTranslations('navigation');
   const tCommon = useTranslations('common');
+  const tGeo = useTranslations('geo');
   const locale = useLocale();
   const glossaryPath = '/' + GLOSSARY_SEGMENTS[locale as Locale];
+  // The header has always KNOWN this route — `isBestTime` below uses it to float the bar over
+  // the hub's hero — and never linked it. Same localized segment, now also a destination.
+  const bestTimePath = '/' + BEST_TIME_SEGMENTS[locale as Locale];
   const pathname = usePathname();
   const { data: nearbyData } = useHomeNearbyParks();
   const parks =
@@ -96,13 +120,22 @@ export function Header({ showBlog = true }: HeaderProps) {
    * like exactly what it was — one thing disappearing while a second one appeared somewhere else,
    * at a different size on the left.
    *
-   * Each pair now travels the same path in the same 500 ms. The outgoing copy slides to where the
-   * incoming one lives (and, for the logo, grows to its size); the incoming one starts at the
-   * corner. At the midpoint the two coincide, so the eye reads one object moving.
+   * Each pair now travels the same path in the same 500 ms: the outgoing copy slides to where the
+   * incoming one lives, the incoming one starts at the corner. At the midpoint the two coincide,
+   * so the eye reads one object moving.
+   *
+   * "Coincide" is a claim about geometry, and it used to be false. Both copies render
+   * `<BrandLockup>` now, so they are congruent by construction and `logoScale` resolves to 1.000 —
+   * a pure translate, nothing rasterized at one size and painted at another. The scale is kept in
+   * the formula as the safety net it was meant to be: if the two ever diverge again the handoff
+   * still lands, it just costs a blur. Before the shared component it was carrying a 1.5× on every
+   * desktop hero page, and even that could not reconcile the two — a single factor cannot fix a
+   * pin:wordmark ratio of 36:24 against 24:20, so the corner copy stayed ~25 px wider than the bar
+   * copy the whole way across (measured at 1440: 147.2 px against 122.2 px).
    *
    * Two anchors, two conventions:
    *
-   * - **The logo** is left-aligned, so the path is measured from the left edges and grows from
+   * - **The logo** is left-aligned, so the path is measured from the left edges and scales from
    *   `origin-left` — away from the screen edge, with its left edge on the path.
    * - **The locale + theme cluster** is right-aligned, so it is measured from the RIGHT edges
    *   (`offsetLeft + offsetWidth`) and moves from `origin-right`. It needs no scale at all: both
@@ -171,7 +204,7 @@ export function Header({ showBlog = true }: HeaderProps) {
          repaint on the hero pages, and it repeats on every direction change up there. The blur
          now snaps on/off (barely perceptible: the bar is still transparent when the fade starts)
          while the colours keep cross-fading. */
-      className={`relative sticky top-0 z-50 h-14 border-b transition-[background-color,border-color] duration-500 ${
+      className={`relative sticky top-0 z-50 h-12 border-b transition-[background-color,border-color] duration-500 ${
         isTransparent
           ? 'border-transparent bg-transparent'
           : 'border-border/50 bg-background/80 backdrop-blur-md'
@@ -179,7 +212,12 @@ export function Header({ showBlog = true }: HeaderProps) {
     >
       <div
         ref={barRef}
-        className="container mx-auto flex h-14 items-center justify-between px-4 md:px-0"
+        /* `h-full`, not a second `h-12`: the header is `h-12 border-b` and Tailwind boxes are
+           border-box, so its CONTENT box is 47 px. A hard-coded 48 px here overflowed it by a
+           pixel and, worse, centred the in-flow logo on a different box than the corner copy,
+           which is absolutely centred in the header itself — the two copies of the same lockup
+           sat 0.5 px apart for the whole handoff. */
+        className="container mx-auto flex h-full items-center justify-between px-4 md:px-0"
       >
         {/* Corner logo – absolute, visible only when transparent (hero top).
             Same left-6 offset as the hero image info text below. On scroll it hands over to the
@@ -197,66 +235,7 @@ export function Header({ showBlog = true }: HeaderProps) {
           aria-label="park.fan - Home"
           tabIndex={isTransparent ? 0 : -1}
         >
-          {darkHero ? (
-            // Dark hero (Fancast): always the light/white logo so it stays visible
-            // over the dark image in both colour themes.
-            <>
-              <Image
-                src="/logo-small-dark.svg"
-                width={26}
-                height={30}
-                alt=""
-                aria-hidden="true"
-                className="h-6 w-auto"
-                loading="eager"
-              />
-              <Image
-                src="/parkfan-dark.svg"
-                width={84}
-                height={24}
-                alt="park.fan"
-                className="h-5 w-auto"
-                loading="eager"
-              />
-            </>
-          ) : (
-            <>
-              <Image
-                src="/logo-small-dark.svg"
-                width={26}
-                height={30}
-                alt=""
-                aria-hidden="true"
-                className="hidden h-6 w-auto dark:block"
-                loading="eager"
-              />
-              <Image
-                src="/logo-small.svg"
-                width={26}
-                height={30}
-                alt=""
-                aria-hidden="true"
-                className="block h-6 w-auto dark:hidden"
-                loading="eager"
-              />
-              <Image
-                src="/parkfan-dark.svg"
-                width={84}
-                height={24}
-                alt="park.fan"
-                className="hidden h-5 w-auto dark:block"
-                loading="eager"
-              />
-              <Image
-                src="/parkfan.svg"
-                width={84}
-                height={24}
-                alt="park.fan"
-                className="block h-5 w-auto dark:hidden"
-                loading="eager"
-              />
-            </>
-          )}
+          <BrandLockup forceLight={darkHero} />
         </Link>
 
         {/* Header logo – in flex flow, arrives from the corner on scroll. Keeps the
@@ -267,52 +246,25 @@ export function Header({ showBlog = true }: HeaderProps) {
           href="/"
           prefetch={false}
           style={barLogoStyle}
-          className={`flex shrink-0 origin-left items-center gap-0.5 motion-reduce:transform-none! ${handoffMotion} ${
+          className={`flex shrink-0 origin-left items-center gap-1 motion-reduce:transform-none! ${handoffMotion} ${
             isTransparent ? 'pointer-events-none opacity-0' : 'opacity-100'
           }`}
           aria-label="park.fan - Home"
           tabIndex={isTransparent ? -1 : 0}
         >
-          <Image
-            src="/logo-small-dark.svg"
-            width={26}
-            height={30}
-            alt=""
-            aria-hidden="true"
-            className="hidden h-7 w-auto md:h-9 dark:block"
-            loading="eager"
-          />
-          <Image
-            src="/logo-small.svg"
-            width={26}
-            height={30}
-            alt="park.fan"
-            aria-hidden="true"
-            className="block h-7 w-auto md:h-9 dark:hidden"
-            loading="eager"
-          />
-          <Image
-            src="/parkfan-dark.svg"
-            width={84}
-            height={24}
-            alt="park.fan"
-            className="hidden h-5 w-auto md:h-6 dark:block"
-            loading="eager"
-          />
-          <Image
-            src="/parkfan.svg"
-            width={84}
-            height={24}
-            alt=""
-            aria-hidden="true"
-            className="block h-5 w-auto md:h-6 dark:hidden"
-            loading="eager"
-          />
+          <BrandLockup />
         </Link>
 
         {/* Desktop Navigation – fades in on scroll */}
+        {/* One breakpoint for the whole bar, not two.
+            The nav used to appear at `md` while the search input waits for `lg`, so between 768
+            and 1023 px the row carried the full navigation AND a 256 px search button AND no
+            burger — 789 px of content in a 736 px box. German wrapped it onto two lines and the
+            document grew a horizontal scrollbar. The trigger is icon-only below `lg` now, and the
+            nav starts where the input does; under that width everything lives in the burger,
+            which is the only arrangement that holds in all six languages. */}
         <nav
-          className={`hidden items-center gap-6 md:flex ${fadeClass}`}
+          className={`hidden items-center gap-5 lg:flex xl:gap-6 ${fadeClass}`}
           aria-label="Main navigation"
           aria-hidden={isTransparent}
         >
@@ -329,25 +281,49 @@ export function Header({ showBlog = true }: HeaderProps) {
               <span className="max-w-[140px] truncate">{nearestPark.name}</span>
             </Link>
           )}
-          {showBlog && (
+          {/* Discovery. The trigger goes to `/parks` — the actual index — where it used to go
+              straight to `/parks/europe`, i.e. past the hub and into one of its five children. */}
+          {geoMenu && geoMenu.length > 0 ? (
+            <NavMenu href="/parks" label={t('explore')} disabled={isTransparent}>
+              <ParksMenuPanel continents={geoMenu} featured={featuredParks ?? []} />
+            </NavMenu>
+          ) : (
             <Link
-              href="/blog"
+              href="/parks"
               prefetch={false}
               className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
               tabIndex={isTransparent ? -1 : 0}
               data-header-stagger
             >
-              {t('blog')}
+              {t('explore')}
             </Link>
           )}
+          {showBlog &&
+            (blogMenu && blogMenu.categories.length > 0 ? (
+              <NavMenu href="/blog" label={t('blog')} disabled={isTransparent}>
+                <BlogMenuPanel {...blogMenu} />
+              </NavMenu>
+            ) : (
+              <Link
+                href="/blog"
+                prefetch={false}
+                className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+                tabIndex={isTransparent ? -1 : 0}
+                data-header-stagger
+              >
+                {t('blog')}
+              </Link>
+            ))}
+          {/* Visible from `md` up, like the rest of the row. Hiding it until `lg` would have left
+              the hub unreachable between 768 and 1023 px, where the burger is already gone. */}
           <Link
-            href="/parks/europe"
+            href={bestTimePath}
             prefetch={false}
             className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
             tabIndex={isTransparent ? -1 : 0}
             data-header-stagger
           >
-            {t('explore')}
+            {t('bestTime')}
           </Link>
           <Link
             href={glossaryPath}
@@ -402,7 +378,7 @@ export function Header({ showBlog = true }: HeaderProps) {
         <div className="flex items-center gap-2">
           {/* Search Button Mobile – fades in on scroll */}
           <div className={`lg:hidden ${fadeClass}`}>
-            <SearchCommand trigger="button" />
+            <SearchCommand trigger="button" size="sm" />
           </div>
 
           {/* In-flow locale + theme – fades in on scroll, keeps flex anchor when invisible */}
@@ -424,7 +400,7 @@ export function Header({ showBlog = true }: HeaderProps) {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="md:hidden"
+                  className="lg:hidden"
                   suppressHydrationWarning
                   tabIndex={isTransparent ? -1 : 0}
                   data-header-stagger
@@ -462,12 +438,44 @@ export function Header({ showBlog = true }: HeaderProps) {
                   >
                     {t('home')}
                   </Link>
+                  {/* Discovery in the sheet: a native <details>, so the continents open with no
+                      JavaScript at all and the disclosure state is the browser's, not ours. The
+                      countries stay out of it — the sheet is a phone-sized column, and the
+                      continent hubs are one tap from the parks that matter. */}
+                  <details className="group">
+                    <summary className="hover:text-primary flex cursor-pointer list-none items-center justify-between text-lg font-medium transition-colors">
+                      {t('explore')}
+                      <ChevronDown
+                        className="h-4 w-4 shrink-0 transition-transform group-open:rotate-180"
+                        aria-hidden="true"
+                      />
+                    </summary>
+                    <div className="border-border/60 mt-2 ml-1 flex flex-col gap-2 border-l pl-3">
+                      <Link
+                        href="/parks"
+                        prefetch={false}
+                        className="text-muted-foreground hover:text-foreground text-sm transition-colors"
+                      >
+                        {t('parks')}
+                      </Link>
+                      {(geoMenu ?? []).map((continent) => (
+                        <Link
+                          key={continent.slug}
+                          href={`/parks/${continent.slug}`}
+                          prefetch={false}
+                          className="text-muted-foreground hover:text-foreground text-sm transition-colors"
+                        >
+                          {translateContinent(tGeo, continent.slug, locale, continent.name)}
+                        </Link>
+                      ))}
+                    </div>
+                  </details>
                   <Link
-                    href="/parks/europe"
+                    href={bestTimePath}
                     prefetch={false}
                     className="hover:text-primary text-lg font-medium transition-colors"
                   >
-                    {t('explore')}
+                    {t('bestTime')}
                   </Link>
                   <Link
                     href={glossaryPath}

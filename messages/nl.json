@@ -282,7 +282,14 @@
     "nearbyPark": "In de buurt: {parkName}",
     "howto": "Gids",
     "glossary": "Woordenboek",
-    "blog": "Blog"
+    "blog": "Blog",
+    "bestTime": "Beste reistijd",
+    "latestPosts": "Nieuwste berichten",
+    "moreCities": "{count, plural, =1 {nog 1 stad} other {nog # steden}}",
+    "categories": "Categorieën",
+    "popularParks": "Populaire parken",
+    "allPosts": "Alle berichten bekijken",
+    "readingTime": "{minutes} min."
   },
   "theme": {
     "light": "Licht",
