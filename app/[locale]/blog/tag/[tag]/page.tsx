@@ -5,7 +5,13 @@ import { Tag } from 'lucide-react';
 import { routing, type Locale } from '@/i18n/routing';
 import { locales, localeToOpenGraphLocale, SITE_URL } from '@/i18n/config';
 import { BLOG_POSTS_PER_PAGE, listPosts, hasPublishedPosts } from '@/lib/blog/listing';
-import { buildTagAlternates, findCanonicalTag, listTags, normalizeTagSlug } from '@/lib/blog/tags';
+import {
+  buildTagAlternates,
+  findCanonicalTag,
+  isIndexableTag,
+  listTags,
+  normalizeTagSlug,
+} from '@/lib/blog/tags';
 import { BlogPostGrid } from '@/components/blog/blog-post-grid';
 import { BlogCategoryTree } from '@/components/blog/blog-category-tree';
 import { BlogTagCloud } from '@/components/blog/blog-tag-cloud';
@@ -50,6 +56,21 @@ export async function generateMetadata({ params }: TagPageProps): Promise<Metada
   return {
     title: { absolute: fullTitle },
     description,
+    // A tag archive below TAG_INDEX_MIN_POSTS is one post's teaser at a second
+    // URL, so it stays out of the index — but `follow` keeps it passing signal
+    // to the posts it lists, and the page itself stays reachable and crawlable.
+    // The locale layout sets `index: true` with a `googleBot` block; page
+    // metadata replaces that object rather than merging into it, so `googleBot`
+    // is restated here instead of being left to inherit a contradicting value.
+    ...(isIndexableTag(locale as Locale, tag)
+      ? {}
+      : {
+          robots: {
+            index: false,
+            follow: true,
+            googleBot: { index: false, follow: true },
+          },
+        }),
     openGraph: {
       title: fullTitle,
       description,
