@@ -156,7 +156,10 @@ export const TabsWithHash = memo(function TabsWithHash({
               <Zap className="h-5 w-5 shrink-0" aria-hidden="true" />
               {t('attractions')}
             </h2>
-            {offSeasonAttractionCount > 0 && (
+            {/* Hidden while searching: the search reaches past the season on purpose, so
+                the toggle governs nothing there and pressing it would appear to do
+                nothing. It comes back with the browsable list. */}
+            {offSeasonAttractionCount > 0 && !isSearching && (
               <OffSeasonToggle
                 count={offSeasonAttractionCount}
                 shown={showOffSeasonAttractions}
