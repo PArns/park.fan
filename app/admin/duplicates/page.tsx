@@ -61,16 +61,13 @@ function PairRow({ pair, canMerge }: { pair: DuplicatePair; canMerge: boolean })
         survivingSlug?: string;
         removedSlug?: string;
         inheritedColumns?: string[];
-      }>(
-        '/api/admin/merge-duplicate-attractions',
-        {
-          method: 'POST',
-          // `dryRun: false` is what merges. Sent explicitly on both paths
-          // because the endpoint treats an absent flag as a rehearsal, and a
-          // request that means to delete a row should say so in its body.
-          body: { winnerId: pair.winnerId, loserId: pair.loserId, dryRun },
-        }
-      );
+      }>('/api/admin/merge-duplicate-attractions', {
+        method: 'POST',
+        // `dryRun: false` is what merges. Sent explicitly on both paths
+        // because the endpoint treats an absent flag as a rehearsal, and a
+        // request that means to delete a row should say so in its body.
+        body: { winnerId: pair.winnerId, loserId: pair.loserId, dryRun },
+      });
       if (dryRun) {
         // The backend answers a rehearsal with what it would do — the slug
         // that survives, the one that stops resolving, and the columns the
@@ -226,9 +223,7 @@ function ParkMergePanel() {
       );
       setPairs(result.pairs);
       setReport(
-        result.total === 0
-          ? 'Keine Parkduplikate gefunden.'
-          : `${result.total} Paar(e) gefunden.`
+        result.total === 0 ? 'Keine Parkduplikate gefunden.' : `${result.total} Paar(e) gefunden.`
       );
     } catch (err) {
       setReport(err instanceof Error ? err.message : 'Suche fehlgeschlagen');
@@ -329,8 +324,7 @@ function ParkMergePanel() {
       {pairs && pairs.length > 0 && (
         <ul className="space-y-2">
           {pairs.map((pair) => {
-            const winner =
-              pair.winnerId === pair.park2.id ? pair.park2 : pair.park1;
+            const winner = pair.winnerId === pair.park2.id ? pair.park2 : pair.park1;
             const loser = winner.id === pair.park1.id ? pair.park2 : pair.park1;
             return (
               <li

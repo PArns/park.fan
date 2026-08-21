@@ -59,8 +59,11 @@ export default function AdminDashboard() {
           does not throw away the picture somebody was just looking at — and a
           tool for editing theme parks gets to look like one. The band has a
           fixed height, so nothing moves when the image lands. */}
-      <div className="border-border/60 relative h-32 overflow-hidden rounded-2xl border shadow-lg shadow-black/20 ring-1 ring-white/[0.03] sm:h-40">
-        <div aria-hidden="true" className="from-primary/25 absolute inset-0 bg-gradient-to-br to-transparent" />
+      <div className="border-border/60 relative h-32 overflow-hidden rounded-2xl border shadow-lg ring-1 shadow-black/20 ring-white/[0.03] sm:h-40">
+        <div
+          aria-hidden="true"
+          className="from-primary/25 absolute inset-0 bg-gradient-to-br to-transparent"
+        />
         {hero && (
           <Image
             src={hero.src}
@@ -94,7 +97,7 @@ export default function AdminDashboard() {
         </div>
 
         {hero?.meta && (
-          <p className="animate-in fade-in absolute right-3 bottom-3 hidden max-w-[45%] truncate rounded-full border border-white/10 bg-black/40 px-2.5 py-1 text-[11px] text-white/70 backdrop-blur-md duration-1000 sm:block motion-reduce:animate-none">
+          <p className="animate-in fade-in absolute right-3 bottom-3 hidden max-w-[45%] truncate rounded-full border border-white/10 bg-black/40 px-2.5 py-1 text-[11px] text-white/70 backdrop-blur-md duration-1000 motion-reduce:animate-none sm:block">
             {[hero.meta.attractionName, hero.meta.parkName].filter(Boolean).join(' · ')}
           </p>
         )}
@@ -301,7 +304,7 @@ function Stat({
     <Link
       href={href}
       className={cn(
-        'border-border/60 bg-card/80 hover:border-primary/40 group relative overflow-hidden rounded-xl border p-3 shadow-lg shadow-black/20 ring-1 ring-white/[0.03] backdrop-blur-sm transition-colors',
+        'border-border/60 bg-card/80 hover:border-primary/40 group relative overflow-hidden rounded-xl border p-3 shadow-lg ring-1 shadow-black/20 ring-white/[0.03] backdrop-blur-sm transition-colors',
         className
       )}
     >

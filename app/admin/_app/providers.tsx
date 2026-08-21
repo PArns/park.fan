@@ -75,8 +75,7 @@ function SessionGate({ children }: { children: ReactNode }) {
   // here as a logout and put the login form in front of somebody whose session
   // was fine — where every credential they typed would fail for the same
   // reason. Unreachable is its own answer, below.
-  const unauthorized =
-    session.error instanceof AdminApiError && session.error.isUnauthorized;
+  const unauthorized = session.error instanceof AdminApiError && session.error.isUnauthorized;
   if (session.isError && !session.data && unauthorized) return <LoginScreen />;
 
   // The 503 `/api/admin/session` answers when the backend cannot be reached at
