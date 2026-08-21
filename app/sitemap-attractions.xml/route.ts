@@ -1,37 +1,30 @@
-import { getAttractionPaths, localizedUrls } from '@/lib/content-urls';
-import { SITE_URL } from '@/i18n/config';
+import { locales, SITE_URL } from '@/i18n/config';
 
 /**
- * Attraction sitemap — separate from app/sitemap.ts on purpose.
+ * Sitemap INDEX for the attraction pages.
  *
- * ~5.8k attractions × 6 locales ≈ 35k URLs: with the full per-entry hreflang
- * alternate block (like the main sitemap emits) the XML would approach the
- * 50 MB sitemap limit, so entries here are lean <loc>-only. That's fine —
- * hreflang is optional in sitemaps and every attraction page already emits
- * the complete alternate set in its <head> via generateMetadata.
+ * This URL used to be the urlset itself: 42,606 `<loc>` entries (7,101
+ * attractions × 6 locales) in one 6.98 MiB file. Two ceilings were closing in on
+ * it — 50,000 URLs per file, which left room for 1,232 more attractions, and
+ * 50 MB uncompressed, which is what an `xhtml:link` block per entry would have
+ * cost (the alternates are seven near-full URLs each, so annotating this file
+ * measured 49 MiB, 98 % of the limit).
  *
- * Noindex variant slugs are excluded by getAttractionPaths (same base-exists
- * rule as the attraction page and the IndexNow submitter).
+ * The URL stays what it is because it is the one submitted in Search Console;
+ * only its content changed, from a urlset to an index over
+ * `/sitemap-attractions/<locale>.xml`. hreflang stays out of the children: every
+ * attraction page already serves the full alternate set from its `<head>`, which
+ * Google weighs the same, so the 42 MB would buy a second copy of a signal that
+ * is already there.
  */
 export const revalidate = 86400;
 
-function xmlEscape(s: string): string {
-  return s
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll("'", '&apos;')
-    .replaceAll('"', '&quot;');
-}
-
 export async function GET(): Promise<Response> {
-  const paths = await getAttractionPaths();
-  const urls = localizedUrls(paths, SITE_URL).map(
-    (url) =>
-      `<url><loc>${xmlEscape(url)}</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>`
-  );
+  const children = locales
+    .map((locale) => `<sitemap><loc>${SITE_URL}/sitemap-attractions/${locale}.xml</loc></sitemap>`)
+    .join('\n');
 
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>`;
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${children}\n</sitemapindex>`;
 
   return new Response(xml, {
     headers: { 'Content-Type': 'application/xml; charset=utf-8' },

@@ -70,7 +70,7 @@ export function Panel({ className, ...props }: ComponentProps<'section'>) {
   return (
     <section
       className={cn(
-        'border-border/60 bg-card/80 relative rounded-xl border shadow-lg shadow-black/20 ring-1 ring-white/[0.03] backdrop-blur-sm',
+        'border-border/60 bg-card/80 relative rounded-xl border shadow-lg ring-1 shadow-black/20 ring-white/[0.03] backdrop-blur-sm',
         'before:pointer-events-none before:absolute before:inset-x-6 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent',
         className
       )}

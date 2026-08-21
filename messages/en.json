@@ -190,10 +190,10 @@
     },
     "about": {
       "title": "What Is park.fan?",
-      "p1": "park.fan was born from a frustration every theme park fan knows: standing in a 90-minute queue and wondering whether smarter planning could have avoided it. What started as a side project—\"let me just track some wait times\"—grew into a full platform now covering 151 parks, 5,253 attractions, and millions of queue data records processed every day. The goal has always been the same: take the guesswork out of planning a theme park visit.",
+      "p1": "park.fan was born from a frustration every theme park fan knows: standing in a 90-minute queue and wondering whether smarter planning could have avoided it. What started as a side project—\"let me just track some wait times\"—grew into a full platform now covering 212 parks, 7,101 attractions, and millions of queue data records processed every day. The goal has always been the same: take the guesswork out of planning a theme park visit.",
       "p2": "The AI behind park.fan analyzes historical crowd data, weather forecasts, school holiday calendars, and special events to predict crowd levels and wait times days or even weeks ahead. Instead of guessing, you can check whether next Saturday at Europa-Park Resort or Phantasialand is going to be a green day—short queues, relaxed atmosphere—or a red day where every popular ride has a 60-minute wait. The model is continuously trained on new data, so its predictions get sharper over time.",
       "coverageTitle": "Which Parks Are Covered?",
-      "p3": "park.fan currently tracks 151 theme parks and 5,253 individual attractions worldwide—from Walt Disney World, Disneyland Resort, Universal Orlando, and Universal Studios Japan to European parks like Europa-Park, Phantasialand, Efteling, Heide Park, and Toverland, plus parks across Asia, Australia, and South America. New parks are added regularly as the platform continues to grow.",
+      "p3": "park.fan currently tracks 212 theme parks and 7,101 individual attractions worldwide—from Walt Disney World, Disneyland Resort, Universal Orlando, and Universal Studios Japan to European parks like Europa-Park, Phantasialand, Efteling, Heide Park, and Toverland, plus parks across Asia, Australia, and South America. New parks are added regularly as the platform continues to grow.",
       "howTitle": "How To Use park.fan",
       "p4": "Search for your destination park using the search bar, or browse by continent, country, and city. On the park page you will find live wait times for every ride, restaurant, and show—updated every minute—alongside AI crowd predictions and a day-by-day crowd calendar. Green days signal short queues and smaller crowds; orange or red days mean higher attendance and longer waits.",
       "p5": "park.fan is a living project, constantly evolving with new features and parks. Save your favourite parks for quick access, use in-park navigation to plan the most efficient route through the park, and always check the crowd calendar before booking to make sure your visit lands on the best possible day.",
@@ -210,7 +210,7 @@
     }
   },
   "footer": {
-    "description": "Live wait times and AI-powered crowd predictions for 142+ theme parks worldwide. Plan your perfect park visit with real-time data and in-park navigation.",
+    "description": "Live wait times and AI-powered crowd predictions for 200+ theme parks worldwide. Plan your perfect park visit with real-time data and in-park navigation.",
     "keywords": "theme park wait times, live wait times, wait times today, crowd calendar, AI crowd forecast, queue times, crowd predictions, opening hours, amusement park, roller coaster, Disney wait times, Universal Studios, Europa-Park, Phantasialand, best time to visit",
     "sections": {
       "explore": "Parks Worldwide",
@@ -1042,7 +1042,7 @@
   "seo": {
     "global": {
       "title": "park.fan - Theme Park Wait Times & Predictions",
-      "description": "Real-time theme park wait times, crowd predictions, and schedules. Plan your perfect visit with ML-powered forecasts for 142+ theme parks worldwide.",
+      "description": "Real-time theme park wait times, crowd predictions, and schedules. Plan your perfect visit with ML-powered forecasts for 200+ theme parks worldwide.",
       "keywords": "theme park wait times, live wait times, wait times today, crowd calendar, AI crowd forecast, queue times, crowd predictions, opening hours, amusement park, roller coaster, Disney wait times, Universal Studios, Europa-Park, Phantasialand, best time to visit"
     },
     "home": {
@@ -1064,7 +1064,14 @@
     "attraction": {
       "titleTemplate": "{attraction} at {park} – Live Wait Times & Status",
       "metaDescriptionTemplate": "Live wait times and predictions for {attraction} at {park}. Check queue data and crowd levels.",
-      "keywordWaitTime": "wait times"
+      "keywordWaitTime": "wait times",
+      "titleTemplateShort": "{attraction} at {park} – Wait Times",
+      "titleTemplateBare": "{attraction} – Live Wait Times",
+      "metaDescriptionTemplateFacts": "Live wait times and predictions for {attraction} at {park}. {facts}.",
+      "factBy": "built by {manufacturer}",
+      "factOpened": "opened {year}",
+      "factMinHeight": "min. height {height}",
+      "factLand": "{land} area"
     },
     "continent": {
       "titleTemplate": "Theme Parks in {location}: Wait Times, Map & Overview",
@@ -1135,9 +1142,9 @@
     "homepage": {
       "faq": {
         "whatIsQ": "What is park.fan?",
-        "whatIsA": "park.fan is your central platform for live wait times and current information from over 30 theme parks in Europe, Asia, and North America. We show you in real-time how long the wait times are at your favorite attractions, which shows are currently running, and when the parks are open.",
+        "whatIsA": "park.fan is your central platform for live wait times and current information from over 200 theme parks in Europe, Asia, and North America. We show you in real-time how long the wait times are at your favorite attractions, which shows are currently running, and when the parks are open.",
         "whichParksQ": "Which theme parks are supported by park.fan?",
-        "whichParksA": "park.fan supports over 30 theme parks worldwide, including Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland, Bobbejaanland, and many more. You can find the complete list of all parks with live wait times on our parks overview page. We are continuously expanding our offering with additional theme parks.",
+        "whichParksA": "park.fan supports over 200 theme parks worldwide, including Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland, Bobbejaanland, and many more. You can find the complete list of all parks with live wait times on our parks overview page. We are continuously expanding our offering with additional theme parks.",
         "liveDataQ": "Are the wait times on park.fan live and in real-time?",
         "liveDataA": "Yes! park.fan continuously updates all wait times during park operating hours. The data comes directly from the official park APIs and is synchronized in real-time. You always see the most current available wait times and can optimally plan your park visit.",
         "freeQ": "Is using park.fan free?",

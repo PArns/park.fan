@@ -22,7 +22,17 @@ import {
 } from '@/lib/utils/park-assets';
 
 import { stripNewPrefix } from '@/lib/utils';
+import { buildOpeningHoursSpecification } from '@/lib/utils/opening-hours-schema';
 import { SITE_URL } from '@/i18n/config';
+
+/**
+ * Stable node identities so the graph is one entity, not a fresh anonymous
+ * Organization on every page. Without them nothing tied `WebSite` to its
+ * publisher, and a crawler had no way to know the Organization on a park page
+ * and the one on the homepage were the same thing.
+ */
+const ORGANIZATION_ID = `${SITE_URL}/#organization`;
+const websiteId = (locale: string) => `${SITE_URL}/${locale}/#website`;
 
 type StructuredDataProps<T extends Thing> = {
   data: WithContext<T>;
@@ -150,13 +160,14 @@ export function OrganizationStructuredData({
   const data: WithContext<Organization> = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    '@id': ORGANIZATION_ID,
     name: 'park.fan',
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
     ...(image && { image }),
     description:
       description ||
-      'Real-time theme park wait times, crowd predictions, and schedules. Plan your perfect visit with ML-powered forecasts for 142+ theme parks worldwide.',
+      'Real-time theme park wait times, crowd predictions, and schedules. Plan your perfect visit with ML-powered forecasts for 200+ theme parks worldwide.',
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'Customer Service',
@@ -189,8 +200,12 @@ export function WebSiteStructuredData({
   const data = {
     '@context': 'https://schema.org' as const,
     '@type': 'WebSite' as const,
+    '@id': websiteId(locale),
     name: siteName,
     url: baseUrl,
+    // Points at the Organization node rather than restating it — the same
+    // publisher on all six locales instead of six unrelated ones.
+    publisher: { '@id': ORGANIZATION_ID },
     ...(description && { description }),
     ...(image && { image }),
     inLanguage: locale,
@@ -260,6 +275,13 @@ export function ParkStructuredData({
 }) {
   const parkName = stripNewPrefix(park.name);
   const info = 'info' in park ? park.info : null;
+  const parkSameAs = [
+    info?.website,
+    info?.wikipediaUrl,
+    info?.instagramUrl,
+    info?.facebookUrl,
+    info?.youtubeUrl,
+  ].filter((entry): entry is string => Boolean(entry));
   const data: WithContext<ThemePark> = {
     '@context': 'https://schema.org',
     '@type': 'ThemePark',
@@ -282,13 +304,9 @@ export function ParkStructuredData({
     telephone: info?.phone || undefined,
     // The park's own presence, so a search engine can tie this page to the
     // entity rather than treating it as an unrelated site about the same name.
-    sameAs: [
-      info?.website,
-      info?.wikipediaUrl,
-      info?.instagramUrl,
-      info?.facebookUrl,
-      info?.youtubeUrl,
-    ].filter((entry): entry is string => Boolean(entry)),
+    // Omitted when the API curates none — an empty `sameAs: []` is a claim that
+    // the park has no presence anywhere, which is never what we mean.
+    sameAs: parkSameAs.length ? parkSameAs : undefined,
     geo:
       park.latitude && park.longitude
         ? {
@@ -297,13 +315,9 @@ export function ParkStructuredData({
             longitude: park.longitude,
           }
         : undefined,
-    openingHoursSpecification: park.schedule?.map((s) => ({
-      '@type': 'OpeningHoursSpecification',
-      opens: s.openingTime || undefined,
-      closes: s.closingTime || undefined,
-      validFrom: s.date,
-      validThrough: s.date,
-    })),
+    // `opens`/`closes` are schema.org `Time` values in the park's own timezone,
+    // not the UTC instants the API sends — see buildOpeningHoursSpecification.
+    openingHoursSpecification: buildOpeningHoursSpecification(park.schedule, park.timezone),
     containsPlace: [
       ...('attractions' in park && park.attractions
         ? park.attractions.map((attraction) => {

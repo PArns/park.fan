@@ -167,7 +167,7 @@ export function LoginScreen() {
         aria-hidden="true"
         className={cn(
           'from-background via-background/85 to-background/40 absolute inset-0 bg-gradient-to-b',
-          'lg:from-background lg:via-background/90 lg:to-transparent lg:bg-gradient-to-r'
+          'lg:from-background lg:via-background/90 lg:bg-gradient-to-r lg:to-transparent'
         )}
       />
       <div
@@ -264,7 +264,7 @@ export function LoginScreen() {
                     onChange={(event) => setPassword(event.target.value)}
                     onKeyUp={(event) => setCapsLock(event.getModifierState?.('CapsLock') ?? false)}
                     required
-                    className={cn(FIELD_CLASS, 'pl-10 pr-11')}
+                    className={cn(FIELD_CLASS, 'pr-11 pl-10')}
                   />
                   <button
                     type="button"
@@ -488,7 +488,7 @@ function TotpDigits({
               // to the width of its `size` attribute, roughly twenty characters,
               // which outranks the zero basis `flex-1` sets. Without it two of
               // the six boxes filled the row and the rest hung off the panel.
-              'border-border/60 bg-background/50 focus:border-primary/60 focus:ring-primary/25 h-14 min-w-0 flex-1 rounded-xl border text-center text-xl font-semibold tabular-nums outline-none transition-[color,box-shadow,border-color] focus:ring-2',
+              'border-border/60 bg-background/50 focus:border-primary/60 focus:ring-primary/25 h-14 min-w-0 flex-1 rounded-xl border text-center text-xl font-semibold tabular-nums transition-[color,box-shadow,border-color] outline-none focus:ring-2',
               digits[index] && 'border-primary/40'
             )}
           />
