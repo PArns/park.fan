@@ -9,6 +9,13 @@ import { useCan } from '../_app/session';
 import { Section } from '../_lib/ui';
 import { AdminPage, Chip, EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
 import { Field, TextInput } from '../_ui/controls';
+import {
+  RETIREMENT_KEYS,
+  RETIRE_REASON_REQUIRED,
+  retireAttraction,
+  today,
+  unretireAttraction,
+} from '../_ui/retirement';
 import { useToast } from '../_ui/toast';
 
 /**
@@ -50,11 +57,6 @@ function day(value: string | null): string {
   return parsed.toLocaleDateString('de-DE', { day: '2-digit', month: 'short', year: 'numeric' });
 }
 
-/** Today, in the format `<input type="date">` and the API both want. */
-function today(): string {
-  return new Date().toISOString().slice(0, 10);
-}
-
 /** Three months out — the default for "look at this again later". */
 function inThreeMonths(): string {
   const date = new Date();
@@ -74,22 +76,19 @@ function CandidateRow({ candidate, canRetire }: { candidate: Candidate; canRetir
 
   async function retire() {
     if (!reason.trim()) {
-      setError(
-        'Grund und Quelle sind Pflicht. Ohne sie steht später niemand für die Entscheidung ein.'
-      );
+      setError(RETIRE_REASON_REQUIRED);
       return;
     }
     setBusy(true);
     setError(null);
     try {
-      await adminFetch('/api/admin/retire-attractions', {
-        method: 'POST',
-        body: {
-          retirements: [{ attractionId: candidate.attractionId, retiredAt, reason: reason.trim() }],
-        },
+      await retireAttraction({
+        attractionId: candidate.attractionId,
+        retiredAt,
+        reason: reason.trim(),
       });
       toast.push({ title: `${candidate.name} stillgelegt`, tone: 'success' });
-      invalidate(['admin', 'retirement-candidates'], ['admin', 'retired-attractions']);
+      invalidate(...RETIREMENT_KEYS);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Stilllegen fehlgeschlagen');
       setBusy(false);
@@ -240,9 +239,9 @@ function RetiredRow({ entry, canRestore }: { entry: Retired; canRestore: boolean
   async function restore() {
     setBusy(true);
     try {
-      await adminFetch(`/api/admin/unretire-attraction/${entry.id}`, { method: 'POST' });
+      await unretireAttraction(entry.id);
       toast.push({ title: `${entry.name} zurückgeholt`, tone: 'success' });
-      invalidate(['admin', 'retired-attractions'], ['admin', 'retirement-candidates']);
+      invalidate(...RETIREMENT_KEYS);
     } catch (err) {
       toast.push({
         title: 'Zurückholen fehlgeschlagen',

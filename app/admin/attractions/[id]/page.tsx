@@ -11,7 +11,6 @@ import {
   RollerCoaster,
   Sliders,
   Sparkles,
-  TriangleAlert,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../../_lib/api';
@@ -31,6 +30,7 @@ import { HistoryList } from '../../_ui/history-list';
 import { useToast } from '../../_ui/toast';
 import { useCan } from '../../_app/session';
 import { RideProfileEditor } from '../_components/ride-profile-editor';
+import { AttractionStatus } from '../_components/attraction-status';
 import { EntityMediaPanel } from '../../_ui/entity-media';
 import { EntityPostsPanel } from '../../_ui/entity-posts';
 
@@ -56,6 +56,9 @@ export default function AttractionDetailPage({ params }: { params: Promise<{ id:
   const { id } = use(params);
   const [tab, setTab] = useState<Tab>('fields');
   const canEdit = useCan('editor');
+  // Stilllegen und Zurückholen sind `owner` — dieselbe Grenze wie in der
+  // Retirement-Arbeitsliste, weil es dieselbe Entscheidung ist.
+  const canRetire = useCan('owner');
 
   const attraction = useAdminQuery<AdminAttractionDetail>(
     adminKeys.attraction(id),
@@ -122,29 +125,26 @@ export default function AttractionDetailPage({ params }: { params: Promise<{ id:
           )}
         </div>
 
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           <Meta label="Slug" value={data.slug} />
           <Meta label="Externe ID" value={data.externalId} />
           <Meta
             label="Profil"
             value={data.rideProfile ? `${data.rideProfile.elements.length} Elemente` : '—'}
           />
-          <Meta
-            label="Status"
-            value={data.retiredAt ? <span className="text-amber-400">stillgelegt</span> : 'aktiv'}
-          />
         </div>
 
-        {data.retiredAt && (
-          <p className="flex items-start gap-2 rounded-lg border border-amber-500/25 bg-amber-500/10 px-3 py-2 text-xs text-amber-300">
-            <TriangleAlert className="mt-0.5 h-3.5 w-3.5 shrink-0" />
-            <span>
-              Stillgelegt am {new Date(data.retiredAt).toLocaleDateString('de-DE')}
-              {data.retiredReason ? ` — ${data.retiredReason}` : ''}. Die Seite antwortet weiter,
-              die Bahn taucht aber in keiner Liste mehr auf.
-            </span>
-          </p>
-        )}
+        {/* Aus der Kennzahlenzeile heraus, weil er dort als Tatsache stand, die
+            man zur Kenntnis nimmt — setzen ließ er sich nur in der
+            Retirement-Arbeitsliste, und die zeigt eine Bahn nur, solange der
+            Detector sie vorlegt. */}
+        <AttractionStatus
+          attractionId={data.id}
+          name={data.name}
+          retiredAt={data.retiredAt}
+          retiredReason={data.retiredReason}
+          canRetire={canRetire}
+        />
       </header>
 
       <div className="border-border/50 flex gap-1 border-b">

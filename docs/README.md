@@ -61,11 +61,13 @@
 
 ### API & Backend
 
-| Doc                                               | Description                                   |
-| ------------------------------------------------- | --------------------------------------------- |
-| [Backend Integration](api/backend-integration.md) | Endpoints, client modules, URL conversion     |
-| [Calendar Status](api/calendar-status-closed.md)  | UNKNOWN vs CLOSED (API contract for frontend) |
-| [Backend Wishlist](api/backend-wishlist.md)       | Requested API changes (SEO & performance)     |
+| Doc                                                         | Description                                   |
+| ----------------------------------------------------------- | --------------------------------------------- |
+| [Backend Integration](api/backend-integration.md)           | Endpoints, client modules, URL conversion     |
+| [Calendar Status](api/calendar-status-closed.md)            | UNKNOWN vs CLOSED (API contract for frontend) |
+| [Seasonal attractions](api/seasonal-attractions.md)         | Rides that cannot open today, and the counter |
+| [Parks without wait times](api/parks-without-wait-times.md) | Parks with no readable source at all          |
+| [Backend Wishlist](api/backend-wishlist.md)                 | Requested API changes (SEO & performance)     |
 
 ### SEO
 

@@ -359,6 +359,9 @@
     "seasonal": "Seasonal",
     "seasonalWinter": "Winter",
     "seasonalSummer": "Summer",
+    "seasonalWinterOnly": "Winter only",
+    "seasonalSummerOnly": "Summer only",
+    "seasonalOffSeason": "Off-season",
     "offSeasonCount": "{count} off-season",
     "mapMarkers": {
       "noMapData": "No map data available for this park.",

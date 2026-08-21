@@ -3,9 +3,16 @@
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
 import Fuse from 'fuse.js';
 import type { ParkAttraction, ParkShow } from '@/lib/api/types';
+import { isInSeason } from '@/lib/utils/season';
 
-/** Seasonal entities count as in season unless the API explicitly says otherwise. */
-const isInSeason = (x: { isCurrentlyInSeason?: boolean | null }) => x.isCurrentlyInSeason !== false;
+/**
+ * Shortest pattern Fuse can match, and therefore the shortest query worth running.
+ *
+ * It is Fuse's `minMatchCharLength`, read from one place so the two cannot drift: below
+ * it every search returns nothing, so calling that "no attractions found" states
+ * something we never checked. One character means the visitor is still typing.
+ */
+const MIN_QUERY_LENGTH = 2;
 
 interface UseAttractionFilterOptions {
   attractionsByLand: Record<string, ParkAttraction[]>;
@@ -118,7 +125,7 @@ export function useAttractionFilter({
       threshold: 0.3,
       distance: 100,
       ignoreLocation: true,
-      minMatchCharLength: 2,
+      minMatchCharLength: MIN_QUERY_LENGTH,
     });
   }, [attractionsByLand]);
 
@@ -157,16 +164,27 @@ export function useAttractionFilter({
   // dominant mobile-INP cost (~700 ms/keystroke on a 96-attraction park): it used to run unmemoized
   // in the render body, so every keystroke re-ran the fuzzy search + re-rendered every land before
   // the next paint. `useMemo` also stops it recomputing on unrelated re-renders (the 5-min poll).
+  //
+  // A one-character query counts as "not searching" rather than as a search that found
+  // nothing: Fuse cannot match a pattern shorter than `minMatchCharLength`, so the first
+  // keystroke used to replace the whole grid with "no attractions found".
   const deferredQuery = useDeferredValue(searchQuery);
-  const isSearching = deferredQuery.trim() !== '';
+  const searchTerm = deferredQuery.trim();
+  const isSearching = searchTerm.length >= MIN_QUERY_LENGTH;
 
   const filteredAttractionsByLand = useMemo(() => {
-    const q = deferredQuery.trim();
-    if (q === '') return inSeasonAttractionsByLand;
+    if (!isSearching) return inSeasonAttractionsByLand;
+    // Deliberately NOT filtered by season. The toggle above declutters BROWSING; typing a
+    // name is not browsing, it is asking for one ride, and the answer to "maximus" is
+    // Maximus' Blitz Bahn whatever month it is. Filtering the hits made every exact search
+    // for one of Toverlands four off-season rides answer "no attractions found" — while
+    // `ma` and `maxi` appeared to work, because Fuse drags in loose matches (Magiezijn,
+    // Exploria Magica) that happen to be in season. So the search got emptier the more
+    // precisely you typed, and the park looked like it had never heard of the ride it has
+    // a whole page for. The cards say "Nur im Winter" and "Geschlossen" on their own.
     return fuse
-      .search(q)
+      .search(searchTerm)
       .map((result) => result.item)
-      .filter((a) => showOffSeasonAttractions || isInSeason(a))
       .reduce(
         (acc, attraction) => {
           const land = attractionLandKey[attraction.id] ?? attraction.land ?? 'Other';
@@ -175,7 +193,7 @@ export function useAttractionFilter({
         },
         {} as Record<string, ParkAttraction[]>
       );
-  }, [deferredQuery, inSeasonAttractionsByLand, fuse, showOffSeasonAttractions, attractionLandKey]);
+  }, [isSearching, searchTerm, inSeasonAttractionsByLand, fuse, attractionLandKey]);
 
   const hasSearchResults = Object.keys(filteredAttractionsByLand).length > 0;
 
