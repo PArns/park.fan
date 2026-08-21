@@ -37,8 +37,7 @@ seo:
   title: 'Toverland: Troy, Wait Times & Halloween Guide'
   description: >-
     Why Troy at Toverland is Europe's quietest world-class wooden coaster: real
-    wait-time data, Fēnix, the Swinging Bobsled, tickets, Halloween Nights and
-    getting there.
+    wait-time data, Fēnix, the Swinging Bobsled, tickets and Halloween Nights.
   keywords:
     - Toverland
     - Toverland wait times
@@ -167,11 +166,11 @@ Both Toverland rides sit at the bottom, by a margin. In the time it takes you to
 queue **once** for [Taron](ref:phantasialand/taron) at Phantasialand, you ride
 [Troy](ref:attractiepark-toverland/troy) three times here.
 
-The reason is a division I worked through in detail in
-[The Art of Waiting](/blog/the-art-of-waiting): waiting time is demand divided
-by capacity. Toverland had **1,137,000 guests** in 2025 and spreads them across
-five coasters, five water rides and more than forty attractions in total. A park
-with three times the crowd rarely has three times the capacity.
+Behind that sits the arithmetic from [The Art of
+Waiting](/blog/the-art-of-waiting), demand divided by capacity. Toverland had
+**1,137,000 guests** in 2025 and spreads them across five coasters, five water
+rides and more than forty attractions in total. Let three times as many people
+through the gate and you rarely build three times as much for them to ride.
 
 On top of that comes something other parks built in long ago and this one
 hasn't: **Toverland sells no fast pass and no express pass.** In the entire
@@ -232,8 +231,8 @@ The wet-and-dark department is better than its reputation:
   question is not _whether_ you get wet.
 - **[Expedition Zork](ref:attractiepark-toverland/expedition-zork)**, a "Twist & Splash" by
   Mack: water ride and carousel in one, and considerably meaner than it looks.
-- **[Villa Fiasko](ref:attractiepark-toverland/villa-fiasko)**, a Vekoma madhouse, the room
-  that spins around you while you swear it's the other way round.
+- **[Villa Fiasko](ref:attractiepark-toverland/villa-fiasko)**, a Vekoma madhouse that convinces
+  you, utterly, that you are the one turning and the room is standing still.
 - **[Dragonwatch](ref:attractiepark-toverland/dragonwatch)** (2023), a 40-metre observation
   tower from which you see how small this park actually is, and how complete.
 

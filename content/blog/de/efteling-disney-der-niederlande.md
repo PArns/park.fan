@@ -34,9 +34,9 @@ coverImage:
 seo:
   title: 'Efteling: Wartezeiten, Tipps & beste Reisezeit'
   description: >-
-    Das Efteling in Kaatsheuvel mit echten Wartezeit-Daten aus zwei Saisons:
-    beste Reisezeit, Tickets, Anreise, Winter Efteling und warum der Park nur
-    fünf Millionen Tagesgäste im Jahr empfangen darf.
+    Das Efteling mit echten Wartezeit-Daten aus zwei Saisons: beste Reisezeit,
+    Tickets, Winter Efteling und warum nur fünf Millionen Gäste im Jahr
+    hineindürfen.
   keywords:
     - Efteling
     - Efteling Wartezeiten

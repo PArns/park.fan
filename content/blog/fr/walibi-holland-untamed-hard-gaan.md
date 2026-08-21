@@ -36,8 +36,7 @@ seo:
   title: "Walibi Holland : Untamed, temps d'attente et Halloween"
   description: >-
     Comprendre Walibi Holland : le concept « hard gaan », Untamed et YOY avec de
-    vraies données d'attente, les Halloween Fright Nights et leurs experiences,
-    la fin des Bright Nights, les tarifs et l'accès.
+    vraies données d'attente, les Halloween Fright Nights, tarifs et accès.
   keywords:
     - Walibi Holland
     - Walibi Holland temps d'attente
@@ -509,11 +508,11 @@ tableau est le même : Phantasialand 32 minutes en moyenne, Efteling 25, Walibi
 Holland et [Walibi Belgium](ref:walibi-belgium) 20 chacun,
 [Toverland](ref:attractiepark-toverland) 15.
 
-La raison est la même division que toujours, que j'ai détaillée dans
-[l'art d'attendre](/blog/l-art-d-attendre) : le temps d'attente, c'est la
-demande divisée par la capacité. À peine un million de visiteurs par an se
-répartissent ici sur **dix coasters** et près de quarante attractions, sur 40
-hectares. Untamed à lui seul absorbe 900 personnes à l'heure.
+À peine un million de visiteurs par an se répartissent ici sur **dix coasters**
+et près de quarante attractions, sur 40 hectares. Untamed à lui seul absorbe 900
+personnes à l'heure. Beaucoup de capacité, une demande modérée, et c'est ce
+rapport qui fixe l'attente, comme détaillé dans [l'art
+d'attendre](/blog/l-art-d-attendre).
 
 Une réserve avant que quiconque prenne ces chiffres trop au sérieux : notre
 historique pour ce parc commence en août 2024, et Walibi n'ouvre que d'avril à
@@ -768,12 +767,12 @@ samedi :
 | Mercredi |  21 min |       33 min |
 | Vendredi |  21 min |       34 min |
 
-Trois minutes séparent le jour le plus calme du plus chargé. À Phantasialand, il
-y a des mondes entre un mardi et un samedi. Ici le week-end n'est tout
-simplement pas un cas particulier, et la raison est banale : hors vacances
-d'été, le parc n'ouvre de toute façon presque que le mercredi et le week-end, si
-bien que les rares jours de semaine sont plus souvent que la moyenne des jours
-de vacances. Qui a le choix prend un jeudi en mai ou en juillet.
+Trois minutes séparent le jour le plus calme du plus chargé. Le week-end n'est
+donc tout simplement pas un cas particulier ici, et la raison est banale : hors
+vacances d'été, le parc n'ouvre de toute façon presque que le mercredi et le
+week-end, si bien que les rares jours de semaine sont plus souvent que la
+moyenne des jours de vacances. Qui a le choix prend un jeudi en mai ou en
+juillet.
 
 Plutôt que de deviner, voici les prochains jours les plus calmes de notre
 calendrier d'affluence :

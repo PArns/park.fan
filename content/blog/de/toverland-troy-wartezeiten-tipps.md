@@ -37,8 +37,8 @@ seo:
   title: 'Toverland: Troy, Wartezeiten & Halloween-Guide'
   description: >-
     Warum Troy im Toverland der Geheimtipp unter Europas Holzachterbahnen ist:
-    echte Wartezeit-Daten, Fēnix, Swinging Bobsled, Tickets, Halloween Nights
-    und Anreise.
+    echte Wartezeit-Daten, Fēnix, Swinging Bobsled, Tickets und Halloween
+    Nights.
   keywords:
     - Toverland
     - Toverland Wartezeiten
@@ -171,12 +171,12 @@ Die beiden Toverland-Bahnen stehen unten, mit Abstand. Für die Zeit, die du im
 Phantasialand **einmal** bei [Taron](ref:phantasialand/taron) anstehst, fährst du
 hier [Troy](ref:attractiepark-toverland/troy) dreimal.
 
-Der Grund ist eine Division, die ich in der
-[Kunst des Wartens](/blog/die-kunst-des-wartens) ausführlich vorgerechnet habe:
-Wartezeit ist Nachfrage geteilt durch Kapazität. Das Toverland hatte 2025
-**1.137.000 Gäste** und verteilt sie auf fünf Achterbahnen, fünf
-Wasserattraktionen und über vierzig Attraktionen insgesamt. Ein Park mit dem
-dreifachen Publikum hat selten die dreifache Kapazität.
+Dahinter steckt die Rechnung aus der
+[Kunst des Wartens](/blog/die-kunst-des-wartens), Nachfrage geteilt durch
+Kapazität. Das Toverland hatte 2025 **1.137.000 Gäste** und verteilt sie auf
+fünf Achterbahnen, fünf Wasserattraktionen und über vierzig Attraktionen
+insgesamt. Wer dreimal so viele Leute einlässt, baut selten dreimal so viel
+dazu.
 
 Dazu kommt etwas, das andere Parks längst eingebaut haben und das hier fehlt:
 **Das Toverland verkauft keinen Fast Pass und keinen Express-Pass.** Es gibt im
@@ -238,8 +238,8 @@ Die Nass- und Dunkel-Abteilung ist besser als ihr Ruf:
   von Hafema. Die Frage ist nicht, _ob_ du nass wirst.
 - **[Expedition Zork](ref:attractiepark-toverland/expedition-zork)**, eine „Twist & Splash“ von
   Mack: Wasserbahn und Karussell in einem, und deutlich fieser, als sie aussieht.
-- **[Villa Fiasko](ref:attractiepark-toverland/villa-fiasko)**, ein Madhouse von Vekoma, also
-  der Raum, der sich um dich dreht, während du schwörst, dass es umgekehrt ist.
+- **[Villa Fiasko](ref:attractiepark-toverland/villa-fiasko)**, ein Madhouse von Vekoma, das
+  dich felsenfest davon überzeugt, dass du dich drehst und der Raum stillsteht.
 - **[Dragonwatch](ref:attractiepark-toverland/dragonwatch)** (2023), 40 Meter Aussichtsturm,
   von dem aus man sieht, wie klein dieser Park eigentlich ist, und wie
   vollständig.

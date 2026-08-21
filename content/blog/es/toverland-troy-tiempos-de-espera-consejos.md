@@ -37,8 +37,8 @@ seo:
   title: 'Toverland: Troy, tiempos de espera y guía de Halloween'
   description: >-
     Por qué Troy en Toverland es la montaña rusa de madera de primer nivel más
-    tranquila de Europa: datos reales de espera, Fēnix, Swinging Bobsled,
-    entradas, Halloween Nights y cómo llegar.
+    tranquila de Europa: datos reales de espera, Fēnix, entradas y Halloween
+    Nights.
   keywords:
     - Toverland
     - Toverland tiempos de espera
@@ -171,12 +171,11 @@ Las dos atracciones de Toverland están abajo, con distancia. En el tiempo que
 haces cola **una sola vez** para [Taron](ref:phantasialand/taron) en
 Phantasialand, aquí montas tres veces en [Troy](ref:attractiepark-toverland/troy).
 
-El motivo es una división que expliqué con detalle en
-[El arte de esperar](/blog/el-arte-de-esperar): el tiempo de espera es demanda
+Detrás está la cuenta de [El arte de esperar](/blog/el-arte-de-esperar), demanda
 dividida entre capacidad. Toverland tuvo **1.137.000 visitantes** en 2025 y los
 reparte entre cinco montañas rusas, cinco atracciones acuáticas y más de
-cuarenta atracciones en total. Un parque con el triple de público rara vez tiene
-el triple de capacidad.
+cuarenta atracciones en total. Quien deja entrar al triple de gente rara vez
+construye el triple para acomodarla.
 
 A eso se suma algo que otros parques incorporaron hace tiempo y que aquí falta:
 **Toverland no vende pase rápido ni pase exprés.** En todo el parque existe
@@ -242,8 +241,8 @@ El departamento mojado y oscuro es mejor que su fama:
 - **[Expedition Zork](ref:attractiepark-toverland/expedition-zork)**, un «Twist & Splash» de
   Mack: atracción acuática y carrusel en uno, y bastante más traicionera de lo
   que parece.
-- **[Villa Fiasko](ref:attractiepark-toverland/villa-fiasko)**, un madhouse de Vekoma, o sea,
-  la sala que gira a tu alrededor mientras tú juras que es al revés.
+- **[Villa Fiasko](ref:attractiepark-toverland/villa-fiasko)**, un madhouse de Vekoma que te
+  convence a pies juntillas de que giras tú y la sala está quieta.
 - **[Dragonwatch](ref:attractiepark-toverland/dragonwatch)** (2023), una torre panorámica de
   40 metros desde la que se ve lo pequeño que es en realidad este parque, y lo
   completo.

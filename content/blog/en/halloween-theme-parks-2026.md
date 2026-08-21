@@ -287,6 +287,10 @@ dignity, and Walibi took it offline on 21 August 2025. A year later the same
 clown is handing out candy floss and sleeping badly. You can call that cautious
 or clever. Probably both.
 
+What Biddinghuizen feels like without the fog machines, and what Untamed costs
+you in queue time on an ordinary day, is in the [Walibi
+guide](/blog/walibi-holland-untamed-hard-gaan).
+
 [Walibi Holland](ref:walibi-holland?full)
 
 Current line-up and dates: [walibi.nl/halloween](https://www.walibi.nl/halloween/en/halloween-fright-nights).
@@ -356,6 +360,10 @@ you get one-off, faster access to all six experiences plus a dedicated parade
 area. On busy nights, and Toverland's Halloween runs _busy_, that's the
 difference between “managed three houses” and “all six, and got out of the
 maize in one piece.”
+
+For the normal operating day, Troy included, and the question of when Sevenum is
+actually empty, there is the [Toverland
+guide](/blog/toverland-troy-wait-times-tips).
 
 [Toverland](ref:attractiepark-toverland?full)
 
@@ -461,6 +469,10 @@ winter shows and evening illumination. If you're hoping for Phantasialand
 scares in October, replan: either a neighbouring park for the fright, or a few
 weeks' patience until the icing.
 
+Wintertraum gets a chapter of its own in the [Phantasialand
+guide](/blog/phantasialand-wait-times-tips), along with the Quick Pass, which
+has worked completely differently since the 2025/26 season.
+
 [Phantasialand](ref:phantasialand?full)
 
 ### Efteling: too refined for chainsaws
@@ -484,6 +496,9 @@ Two things for the planning: **Danse Macabre is closed for maintenance from 21
 September to 2 October 2026**, so it's back in time for the autumn holidays.
 During the holidays themselves Max & Moritz and the Gondoletta are down from 26
 to 30 October, and Baron 1898 from 5 to 9 October.
+
+The five-million visitor cap and the Winter Efteling are covered in the
+[Efteling guide](/blog/efteling-disney-of-the-netherlands).
 
 [Efteling](ref:efteling?full)
 

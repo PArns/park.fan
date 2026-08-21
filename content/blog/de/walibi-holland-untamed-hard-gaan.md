@@ -36,8 +36,8 @@ seo:
   title: 'Walibi Holland: Untamed, Wartezeiten & Halloween'
   description: >-
     Walibi Holland verstehen: das Konzept „hard gaan“, Untamed und YOY mit
-    echten Wartezeit-Daten, die Halloween Fright Nights samt Experiences,
-    das Ende von Bright Nights, Preise und Anreise.
+    echten Wartezeit-Daten, die Halloween Fright Nights samt Experiences, Preise
+    und Anreise.
   keywords:
     - Walibi Holland
     - Walibi Holland Wartezeiten
@@ -508,11 +508,11 @@ Auf Parkebene ergibt sich dasselbe Bild: Phantasialand 32 Minuten im Schnitt,
 Efteling 25, Walibi Holland und [Walibi Belgium](ref:walibi-belgium) je 20, das
 [Toverland](ref:attractiepark-toverland) 15.
 
-Der Grund ist dieselbe Division wie immer, die ich in der
-[Kunst des Wartens](/blog/die-kunst-des-wartens) ausführlich vorgerechnet habe:
-Wartezeit ist Nachfrage geteilt durch Kapazität. Knapp eine Million Gäste im
-Jahr verteilen sich hier auf **zehn Achterbahnen** und knapp vierzig
-Attraktionen, auf 40 Hektar. Untamed allein schafft 900 Personen pro Stunde.
+Knapp eine Million Gäste im Jahr verteilen sich hier auf **zehn Achterbahnen**
+und knapp vierzig Attraktionen, auf 40 Hektar. Untamed allein schafft 900
+Personen pro Stunde. Viel Kapazität, überschaubare Nachfrage, und genau dieses
+Verhältnis bestimmt die Wartezeit, nachzulesen in der
+[Kunst des Wartens](/blog/die-kunst-des-wartens).
 
 Eine Einschränkung dazu, bevor jemand die Zahlen zu ernst nimmt: Unsere Historie
 für diesen Park beginnt im August 2024, und Walibi öffnet nur von April bis
@@ -761,9 +761,8 @@ stärker durchschlagen als die eigenen.
 | Mittwoch   |  21 Min |       33 Min |
 | Freitag    |  21 Min |       34 Min |
 
-Zwischen dem leersten und dem vollsten Wochentag liegen drei Minuten. Im
-Phantasialand liegen zwischen Dienstag und Samstag Welten. Hier ist das
-Wochenende einfach kein Sonderfall, und der Grund ist banal: Außerhalb der
+Zwischen dem leersten und dem vollsten Wochentag liegen drei Minuten. Das
+Wochenende ist hier also kein Sonderfall, und der Grund ist banal: Außerhalb der
 Sommerferien öffnet der Park ohnehin fast nur mittwochs und am Wochenende,
 sodass die wenigen Werktage überdurchschnittlich oft Ferientage sind. Wer die
 Wahl hat, nimmt einen Donnerstag im Mai oder Juli.

@@ -36,8 +36,7 @@ seo:
   title: 'Walibi Holland: Untamed, wachttijden & Halloween'
   description: >-
     Walibi Holland begrijpen: het concept "hard gaan", Untamed en YOY met echte
-    wachttijddata, de Halloween Fright Nights inclusief experiences, het einde
-    van Bright Nights, prijzen en bereikbaarheid.
+    wachttijddata, de Halloween Fright Nights, prijzen en bereikbaarheid.
   keywords:
     - Walibi Holland
     - Walibi Holland wachttijden
@@ -493,11 +492,11 @@ parkniveau ontstaat hetzelfde beeld: Phantasialand 32 minuten gemiddeld,
 Efteling 25, Walibi Holland en [Walibi Belgium](ref:walibi-belgium) elk 20, het
 [Toverland](ref:attractiepark-toverland) 15.
 
-De reden is dezelfde deling als altijd, die ik in
-[de kunst van het wachten](/blog/de-kunst-van-het-wachten) uitgebreid heb
-voorgerekend: wachttijd is vraag gedeeld door capaciteit. Net geen miljoen
-gasten per jaar verdelen zich hier over **tien achtbanen** en bijna veertig
-attracties, op 40 hectare. Untamed alleen doet 900 personen per uur.
+Net geen miljoen gasten per jaar verdelen zich hier over **tien achtbanen** en
+bijna veertig attracties, op 40 hectare. Untamed alleen doet 900 personen per
+uur. Veel capaciteit, overzichtelijke vraag, en juist die verhouding bepaalt de
+wachttijd, na te lezen in [de kunst van het
+wachten](/blog/de-kunst-van-het-wachten).
 
 Eén kanttekening voordat iemand de cijfers te serieus neemt: onze historie voor
 dit park begint in augustus 2024, en Walibi is alleen van april tot oktober
@@ -741,12 +740,11 @@ in dezelfde periode vallen. Wie uit Duitsland komt, moet bovendien weten dat de
 | Woensdag  |  21 min |     33 min |
 | Vrijdag   |  21 min |     34 min |
 
-Tussen de rustigste en de drukste weekdag zitten drie minuten. In Phantasialand
-liggen tussen een dinsdag en een zaterdag werelden. Hier is het weekend gewoon
-geen uitzondering, en de reden is banaal: buiten de zomervakantie opent het park
-toch al bijna alleen op woensdag en in het weekend, waardoor de weinige
-doordeweekse dagen bovengemiddeld vaak vakantiedagen zijn. Wie de keuze heeft,
-neemt een donderdag in mei of juli.
+Tussen de rustigste en de drukste weekdag zitten drie minuten. Het weekend is
+hier dus gewoon geen uitzondering, en de reden is banaal: buiten de
+zomervakantie opent het park toch al bijna alleen op woensdag en in het weekend,
+waardoor de weinige doordeweekse dagen bovengemiddeld vaak vakantiedagen zijn.
+Wie de keuze heeft, neemt een donderdag in mei of juli.
 
 In plaats van te gokken, hier de rustigste komende dagen uit onze
 drukte-kalender:

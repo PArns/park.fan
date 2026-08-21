@@ -34,9 +34,9 @@ coverImage:
 seo:
   title: "Efteling : temps d'attente, conseils et meilleure période"
   description: >-
-    Efteling à Kaatsheuvel avec de vraies données d'attente sur deux saisons :
-    meilleure période, billets, accès, Winter Efteling et pourquoi le parc n'a
-    droit qu'à cinq millions de visiteurs par an.
+    Efteling avec de vraies données d'attente sur deux saisons : meilleure
+    période, billets et pourquoi le parc n'a droit qu'à cinq millions de
+    visiteurs par an.
   keywords:
     - Efteling
     - Efteling temps d'attente

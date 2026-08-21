@@ -36,7 +36,8 @@ seo:
   title: 'Halloween pretparken 2026: alle data'
   description: >-
     Halloween 2026 in Europa's pretparken: Movie Park met negen mazes,
-    Traumatica, Walibi, Toverland en wanneer het het leegst is.
+    Traumatica, de Walibi-experiences, Toverland, plus de weigeraars en de
+    leegste dagen.
   keywords:
     - Halloween pretpark 2026
     - Halloween Horror Festival Movie Park 2026
@@ -288,6 +289,10 @@ waardigheid geschonden, Walibi haalde de spot op 21 augustus 2025 offline. Een
 jaar later deelt dezelfde clown suikerspinnen uit en slaapt slecht. Je kunt dat
 voorzichtig noemen of slim. Waarschijnlijk klopt allebei.
 
+Hoe Biddinghuizen aanvoelt zonder rookmachines, en wat Untamed op een gewone dag
+aan wachttijd kost, staat in de
+[Walibi-gids](/blog/walibi-holland-untamed-hard-gaan).
+
 [Walibi Holland](ref:walibi-holland?full)
 
 Actuele line-up en data: [walibi.nl/halloween](https://www.walibi.nl/halloween/en/halloween-fright-nights).
@@ -358,6 +363,9 @@ krijg je eenmalig snellere toegang tot alle zes experiences plus een eigen
 paradegebied. Op volle nachten, en Toverlands Halloween loopt _vol_, is dat het
 verschil tussen “drie huizen gehaald” en “alle zes, en ook nog heelhuids uit de
 mais gekomen”.
+
+Voor de gewone speeldag, Troy incluis, en de vraag wanneer Sevenum echt leeg is,
+is er de [Toverland-gids](/blog/toverland-troy-wachttijden-tips).
 
 [Toverland](ref:attractiepark-toverland?full)
 
@@ -468,6 +476,10 @@ wintershows en avondlijke illuminatie. Wie in oktober op Phantasialand-griezelen
 hoopt, plant dus om: of een buurpark voor de schrik, of een paar weken geduld
 tot het suikerglazuur.
 
+Wintertraum krijgt een eigen hoofdstuk in de
+[Phantasialand-gids](/blog/phantasialand-wachttijden-tips), samen met de Quick
+Pass, die sinds het seizoen 2025/26 compleet anders werkt.
+
 [Phantasialand](ref:phantasialand?full)
 
 ### Efteling: te voornaam voor kettingzagen
@@ -491,6 +503,9 @@ Twee dingen voor de planning: **Danse Macabre staat van 21 september tot en met
 2 oktober 2026 stil voor onderhoud**, en is dus op tijd terug voor de
 herfstvakantie. In die vakantie zelf zijn Max & Moritz en de Gondoletta dicht
 van 26 tot en met 30 oktober, en Baron 1898 van 5 tot en met 9 oktober.
+
+Het bezoekersplafond van vijf miljoen en de Winter Efteling staan in de
+[Efteling-gids](/blog/efteling-disney-van-nederland).
 
 [Efteling](ref:efteling?full)
 

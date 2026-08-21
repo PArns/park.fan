@@ -34,9 +34,8 @@ coverImage:
 seo:
   title: 'Efteling: wachttijden, tips & beste reistijd'
   description: >-
-    De Efteling in Kaatsheuvel met echte wachttijddata uit twee seizoenen: beste
-    reistijd, tickets, bereikbaarheid, Winter Efteling en waarom het park maar
-    vijf miljoen bezoekers per jaar mag ontvangen.
+    De Efteling met echte wachttijddata uit twee seizoenen: beste reistijd,
+    tickets en waarom er maar vijf miljoen bezoekers per jaar naar binnen mogen.
   keywords:
     - Efteling
     - Efteling wachttijden

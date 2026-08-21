@@ -35,8 +35,9 @@ coverImage:
 seo:
   title: "Halloween parcs d'attractions 2026"
   description: >-
-    Halloween 2026 dans les parcs d'Europe : Movie Park et ses neuf mazes,
-    Traumatica, Walibi, Toverland et les jours les plus vides.
+    Halloween 2026 dans les parcs d'Europe : Movie Park et ses neuf mazes,
+    Traumatica, Walibi, Toverland, plus les réfractaires et les jours les plus
+    vides.
   keywords:
     - Halloween parc attractions 2026
     - Halloween Horror Festival Movie Park 2026
@@ -300,6 +301,10 @@ Commissie y a vu une atteinte à la dignité humaine, et Walibi l'a retirée le 
 août 2025. Un an plus tard, le même clown distribue de la barbe à papa et dort
 mal. On peut appeler ça de la prudence ou de l'habileté. Les deux, sans doute.
 
+Ce que vaut Biddinghuizen sans machines à fumée, et ce que coûte Untamed en file
+d'attente un jour ordinaire, se trouve dans le [guide
+Walibi](/blog/walibi-holland-untamed-hard-gaan).
+
 [Walibi Holland](ref:walibi-holland?full)
 
 Programmation actuelle et dates : [walibi.nl/halloween](https://www.walibi.nl/halloween/en/halloween-fright-nights).
@@ -373,6 +378,10 @@ Pour 62,50 €, vous obtenez un accès unique et plus rapide aux six experiences
 plus un espace de parade réservé. Les nuits chargées, et l'Halloween de
 Toverland tourne _à plein_, c'est la différence entre « trois maisons faites »
 et « toutes les six, et sorti indemne du maïs ».
+
+Pour l'exploitation normale, Troy compris, et pour savoir quand Sevenum est
+vraiment vide, il y a le [guide
+Toverland](/blog/toverland-troy-temps-d-attente-conseils).
 
 [Toverland](ref:attractiepark-toverland?full)
 
@@ -485,6 +494,10 @@ avec patinoire, spectacles d'hiver et illuminations en soirée. Qui espère
 frissonner au Phantasialand en octobre revoit donc son plan : soit un parc
 voisin pour la frayeur, soit quelques semaines de patience jusqu'au glaçage.
 
+Wintertraum a droit à son propre chapitre dans le [guide
+Phantasialand](/blog/phantasialand-temps-d-attente-conseils), avec le Quick
+Pass, qui fonctionne tout autrement depuis la saison 2025/26.
+
 [Phantasialand](ref:phantasialand?full)
 
 ### Efteling : trop distingué pour les tronçonneuses
@@ -509,6 +522,9 @@ Deux points pour la planification : **Danse Macabre est à l'arrêt pour
 maintenance du 21 septembre au 2 octobre 2026**, et revient donc à temps pour
 les vacances d'automne. Pendant ces vacances, Max & Moritz et la Gondoletta sont
 fermés du 26 au 30 octobre, et Baron 1898 du 5 au 9 octobre.
+
+Le plafond de cinq millions de visiteurs et le Winter Efteling sont traités dans
+le [guide Efteling](/blog/efteling-le-disney-des-pays-bas).
 
 [Efteling](ref:efteling?full)
 

@@ -35,8 +35,7 @@ seo:
   title: 'Walibi Holland: Untamed, Wait Times & Halloween'
   description: >-
     Understanding Walibi Holland: the "hard gaan" concept, Untamed and YOY with
-    real wait-time data, the Halloween Fright Nights and their experiences, the
-    end of Bright Nights, prices and getting there.
+    real wait-time data, the Halloween Fright Nights, prices and getting there.
   keywords:
     - Walibi Holland
     - Walibi Holland wait times
@@ -485,11 +484,10 @@ is the same: Phantasialand 32 minutes on average, Efteling 25, Walibi Holland
 and [Walibi Belgium](ref:walibi-belgium) 20 each,
 [Toverland](ref:attractiepark-toverland) 15.
 
-The reason is the same division as always, which I worked through in detail in
-[the art of waiting](/blog/the-art-of-waiting): wait time is demand divided by
-capacity. Just under a million guests a year spread here across **ten coasters**
-and close to forty attractions, over 40 hectares. Untamed alone handles 900
-people an hour.
+Just under a million guests a year spread here across **ten coasters** and close
+to forty attractions, over 40 hectares. Untamed alone handles 900 people an
+hour. Plenty of capacity, manageable demand, and that ratio is what sets the
+wait, as set out in [the art of waiting](/blog/the-art-of-waiting).
 
 One caveat before anyone takes the numbers too seriously: our history for this
 park starts in August 2024, and Walibi only opens from April to October. Behind
@@ -730,12 +728,11 @@ holidays** hit far harder here than the German ones.
 | Wednesday |  21 min |     33 min |
 | Friday    |  21 min |     34 min |
 
-Three minutes separate the quietest weekday from the busiest. At Phantasialand
-there are worlds between a Tuesday and a Saturday. Here the weekend simply is
-not a special case, and the reason is mundane: outside the summer holidays the
-park mostly opens on Wednesdays and at weekends anyway, so the few weekdays are
-disproportionately often holiday days. Given the choice, take a Thursday in May
-or July.
+Three minutes separate the quietest weekday from the busiest. So the weekend
+simply is not a special case here, and the reason is mundane: outside the summer
+holidays the park mostly opens on Wednesdays and at weekends anyway, so the few
+weekdays are disproportionately often holiday days. Given the choice, take a
+Thursday in May or July.
 
 Rather than guessing, here are the quietest days coming up from our crowd
 calendar:

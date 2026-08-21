@@ -36,8 +36,8 @@ seo:
   title: 'Walibi Holland: Untamed, tempi di attesa e Halloween'
   description: >-
     Capire Walibi Holland: il concetto «hard gaan», Untamed e YOY con dati reali
-    di attesa, le Halloween Fright Nights e le loro experience, la fine delle
-    Bright Nights, prezzi e come arrivare.
+    di attesa, le Halloween Fright Nights e le loro experience, prezzi e come
+    arrivare.
   keywords:
     - Walibi Holland
     - Walibi Holland tempi di attesa
@@ -499,11 +499,11 @@ parco il quadro è lo stesso: Phantasialand 32 minuti di media, Efteling 25,
 Walibi Holland e [Walibi Belgium](ref:walibi-belgium) 20 ciascuno, il
 [Toverland](ref:attractiepark-toverland) 15.
 
-Il motivo è la solita divisione, che ho spiegato per esteso ne
-[l'arte dell'attesa](/blog/l-arte-dell-attesa): il tempo di attesa è la domanda
-divisa per la capacità. Poco meno di un milione di ospiti all'anno si
-distribuiscono qui su **dieci coaster** e quasi quaranta attrazioni, su 40
-ettari. Untamed da solo smaltisce 900 persone all'ora.
+Poco meno di un milione di ospiti all'anno si distribuiscono qui su **dieci
+coaster** e quasi quaranta attrazioni, su 40 ettari. Untamed da solo smaltisce
+900 persone all'ora. Molta capacità, domanda contenuta, ed è questo rapporto a
+fissare l'attesa, come spiegato ne [l'arte
+dell'attesa](/blog/l-arte-dell-attesa).
 
 Una precisazione prima che qualcuno prenda i numeri troppo sul serio: il nostro
 storico per questo parco comincia nell'agosto 2024, e Walibi apre solo da aprile
@@ -752,12 +752,11 @@ sabato:
 | Mercoledì | 21 min |      33 min |
 | Venerdì   | 21 min |      34 min |
 
-Tra il giorno più vuoto e quello più pieno ci sono tre minuti. A Phantasialand,
-tra un martedì e un sabato ci sono mondi. Qui il fine settimana semplicemente
-non è un caso speciale, e il motivo è banale: fuori dalle vacanze estive il
-parco apre comunque quasi solo il mercoledì e nei fine settimana, per cui i
-pochi giorni feriali sono più spesso della media giorni di vacanza. Chi può
-scegliere prende un giovedì di maggio o luglio.
+Tra il giorno più vuoto e quello più pieno ci sono tre minuti. Qui, quindi, il
+fine settimana semplicemente non è un caso speciale, e il motivo è banale: fuori
+dalle vacanze estive il parco apre comunque quasi solo il mercoledì e nei fine
+settimana, per cui i pochi giorni feriali sono più spesso della media giorni di
+vacanza. Chi può scegliere prende un giovedì di maggio o luglio.
 
 Invece di tirare a indovinare, ecco i prossimi giorni più tranquilli dal nostro
 calendario dell'affluenza:

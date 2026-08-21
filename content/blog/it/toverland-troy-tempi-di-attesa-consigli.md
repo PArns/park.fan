@@ -38,8 +38,8 @@ seo:
   title: 'Toverland: Troy, tempi di attesa e guida Halloween'
   description: >-
     Perché Troy a Toverland è il coaster in legno di livello mondiale più
-    tranquillo d'Europa: dati reali sulle attese, Fēnix, lo Swinging Bobsled,
-    biglietti, Halloween Nights e come arrivare.
+    tranquillo d'Europa: dati reali sulle attese, Fēnix, biglietti e Halloween
+    Nights.
   keywords:
     - Toverland
     - Toverland tempi di attesa
@@ -173,12 +173,11 @@ Phantasialand fai la fila **una sola volta** per
 [Taron](ref:phantasialand/taron), qui sali tre volte su
 [Troy](ref:attractiepark-toverland/troy).
 
-Il motivo è una divisione che ho spiegato per esteso ne
-[L'arte dell'attesa](/blog/l-arte-dell-attesa): il tempo di attesa è domanda
+Dietro c'è il conto de [L'arte dell'attesa](/blog/l-arte-dell-attesa), domanda
 diviso capacità. Nel 2025 Toverland ha avuto **1.137.000 ospiti** e li
 distribuisce su cinque coaster, cinque attrazioni acquatiche e oltre quaranta
-attrazioni in totale. Un parco con il triplo del pubblico raramente ha il triplo
-della capacità.
+attrazioni in totale. Chi fa entrare il triplo delle persone raramente
+costruisce il triplo per farle salire.
 
 A questo si aggiunge una cosa che altri parchi hanno introdotto da tempo e che
 qui manca: **Toverland non vende pass salta-fila né express pass.** In tutto il
@@ -243,8 +242,8 @@ Il reparto bagnato e buio è meglio della sua fama:
 - **[Expedition Zork](ref:attractiepark-toverland/expedition-zork)**, un «Twist & Splash» di
   Mack: attrazione acquatica e giostra in uno, e decisamente più cattiva di
   quanto sembri.
-- **[Villa Fiasko](ref:attractiepark-toverland/villa-fiasko)**, un madhouse di Vekoma, cioè la
-  stanza che gira intorno a te mentre tu giuri che sia il contrario.
+- **[Villa Fiasko](ref:attractiepark-toverland/villa-fiasko)**, un madhouse di Vekoma che ti
+  convince fermamente che a girare sia tu e che la stanza stia ferma.
 - **[Dragonwatch](ref:attractiepark-toverland/dragonwatch)** (2023), torre panoramica di
   40 metri da cui si vede quanto sia piccolo davvero questo parco, e quanto sia
   completo.

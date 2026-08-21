@@ -37,8 +37,8 @@ seo:
   title: 'Toverland: Troy, wachttijden & halloweengids'
   description: >-
     Waarom Troy in Toverland de rustigste topachtbaan van hout in Europa is:
-    echte wachttijdcijfers, Fēnix, de Swinging Bobsled, tickets, Halloween
-    Nights en de route.
+    echte wachttijdcijfers, Fēnix, de Swinging Bobsled, tickets en Halloween
+    Nights.
   keywords:
     - Toverland
     - Toverland wachttijden
@@ -168,12 +168,11 @@ De twee Toverland-banen staan onderaan, met afstand. Voor de tijd die je in
 Phantasialand **één keer** bij [Taron](ref:phantasialand/taron) staat, rijd je
 hier [Troy](ref:attractiepark-toverland/troy) drie keer.
 
-De reden is een deling die ik in
-[De kunst van het wachten](/blog/de-kunst-van-het-wachten) uitgebreid heb
-voorgerekend: wachttijd is vraag gedeeld door capaciteit. Toverland had in 2025
-**1.137.000 gasten** en verdeelt ze over vijf achtbanen, vijf waterattracties en
-in totaal ruim veertig attracties. Een park met driemaal zoveel publiek heeft
-zelden driemaal de capaciteit.
+Daarachter zit de rekensom uit [De kunst van het
+wachten](/blog/de-kunst-van-het-wachten), vraag gedeeld door capaciteit.
+Toverland had in 2025 **1.137.000 gasten** en verdeelt ze over vijf achtbanen,
+vijf waterattracties en in totaal ruim veertig attracties. Wie driemaal zoveel
+mensen binnenlaat, bouwt zelden driemaal zoveel erbij.
 
 Daar komt iets bij dat andere parken allang hebben ingebouwd en hier ontbreekt:
 **Toverland verkoopt geen fastpass en geen expresspass.** In het hele park is
@@ -233,8 +232,8 @@ De natte en donkere afdeling is beter dan haar reputatie:
   De vraag is niet _of_ je nat wordt.
 - **[Expedition Zork](ref:attractiepark-toverland/expedition-zork)**, een "Twist & Splash" van
   Mack: waterbaan en carrousel in één, en flink gemener dan ze eruitziet.
-- **[Villa Fiasko](ref:attractiepark-toverland/villa-fiasko)**, een madhouse van Vekoma, dus
-  de kamer die om je heen draait terwijl jij zweert dat het andersom is.
+- **[Villa Fiasko](ref:attractiepark-toverland/villa-fiasko)**, een madhouse van Vekoma dat je
+  rotsvast laat geloven dat jij draait en de kamer stilstaat.
 - **[Dragonwatch](ref:attractiepark-toverland/dragonwatch)** (2023), 40 meter uitkijktoren,
   van waaraf je ziet hoe klein dit park eigenlijk is, en hoe compleet.
 

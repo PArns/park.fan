@@ -28,6 +28,7 @@ import { BlogReferences } from '@/components/blog/blog-references';
 import { PageBottomSections } from '@/components/common/page-bottom-sections';
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { getOgImageUrl } from '@/lib/utils/og-image';
+import { fitWithin, MAX_TITLE_LENGTH } from '@/lib/utils/metadata';
 import { versionedPath } from '@/lib/media/focus';
 import { BlogPostingStructuredData } from '@/components/seo/blog-structured-data';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
@@ -59,7 +60,16 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   const { frontmatter, translationKey } = post;
   const title = frontmatter.seo?.title ?? frontmatter.title;
   const description = frontmatter.seo?.description ?? frontmatter.excerpt;
-  const fullTitle = `${title} | ${t('title')} · park.fan`;
+  // Google shows ~60 characters. The " | Blog · park.fan" suffix costs 18 of
+  // them, which clipped the tail off 18 of 42 post titles — the longest ran to
+  // 75. Same ladder the park pages use: full template, then brand only, then
+  // the bare title, which always fits because the frontmatter keeps it short.
+  const fullTitle = fitWithin(
+    MAX_TITLE_LENGTH,
+    `${title} | ${t('title')} · park.fan`,
+    `${title} · park.fan`,
+    title
+  );
   // Only locales with a real translation — fallback locales serve the EN
   // content and must not advertise themselves as translations.
   const alternates = buildPostAlternates(translationKey);

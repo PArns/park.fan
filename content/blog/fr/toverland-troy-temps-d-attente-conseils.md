@@ -37,8 +37,8 @@ seo:
   title: "Toverland : Troy, temps d'attente & guide Halloween"
   description: >-
     Pourquoi Troy à Toverland est le coaster en bois de classe mondiale le plus
-    tranquille d'Europe : vrais temps d'attente, Fēnix, Swinging Bobsled,
-    billets, Halloween Nights et accès.
+    tranquille d'Europe : vrais temps d'attente, Fēnix, billets et Halloween
+    Nights.
   keywords:
     - Toverland
     - Toverland temps d'attente
@@ -176,12 +176,11 @@ temps que tu passes à faire **une seule** fois la queue pour
 [Taron](ref:phantasialand/taron) à Phantasialand, tu fais
 [Troy](ref:attractiepark-toverland/troy) trois fois ici.
 
-La raison tient à une division que j'ai détaillée dans
-[L'art d'attendre](/blog/l-art-d-attendre) : le temps d'attente, c'est la
+Derrière, il y a le calcul de [L'art d'attendre](/blog/l-art-d-attendre), la
 demande divisée par la capacité. Toverland a accueilli **1 137 000 visiteurs**
 en 2025 et les répartit sur cinq coasters, cinq attractions aquatiques et plus
-de quarante attractions au total. Un parc avec trois fois plus de public a
-rarement trois fois plus de capacité.
+de quarante attractions au total. Qui laisse entrer trois fois plus de monde
+construit rarement trois fois plus pour les faire monter.
 
 À cela s'ajoute une chose que d'autres parcs ont intégrée depuis longtemps et
 qui manque ici : **Toverland ne vend ni coupe-file ni pass express.** Dans tout
@@ -249,8 +248,8 @@ Le département humide et sombre vaut mieux que sa réputation :
 - **[Expedition Zork](ref:attractiepark-toverland/expedition-zork)**, un « Twist & Splash » de
   Mack : attraction aquatique et manège en un, et nettement plus vicieux qu'il
   n'y paraît.
-- **[Villa Fiasko](ref:attractiepark-toverland/villa-fiasko)**, un madhouse de Vekoma, donc la
-  pièce qui tourne autour de toi pendant que tu jures que c'est l'inverse.
+- **[Villa Fiasko](ref:attractiepark-toverland/villa-fiasko)**, un madhouse de Vekoma qui te
+  convainc dur comme fer que c'est toi qui tournes et que la pièce ne bouge pas.
 - **[Dragonwatch](ref:attractiepark-toverland/dragonwatch)** (2023), tour panoramique de
   40 mètres depuis laquelle on voit à quel point ce parc est petit, et à quel
   point il est complet.

@@ -34,9 +34,9 @@ coverImage:
 seo:
   title: 'Efteling: wait times, tips & best time to visit'
   description: >-
-    Efteling in Kaatsheuvel with real wait-time data from two seasons: best time
-    to go, tickets, getting there, Winter Efteling, and why the park is only
-    allowed five million visitors a year.
+    Efteling with real wait-time data from two seasons: best time to go,
+    tickets, Winter Efteling, and why only five million visitors a year are
+    allowed in.
   keywords:
     - Efteling
     - Efteling wait times
