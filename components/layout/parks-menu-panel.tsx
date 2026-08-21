@@ -50,6 +50,15 @@ import type { FeaturedParkCard } from '@/lib/navigation/featured-parks-menu';
 /** Cities in the detail row: one per column, five columns wide. */
 const CITY_COLUMNS = 5;
 
+/**
+ * How long the pointer has to rest on a country before the detail row follows it.
+ *
+ * Long enough that crossing a row on the way down to the detail row never registers, short enough
+ * that resting on one feels immediate. 140 ms sits above a deliberate pause and well below the
+ * ~250 ms it takes to notice a delay.
+ */
+const COUNTRY_DWELL_MS = 140;
+
 interface CityEntry {
   slug: string;
   name: string;
@@ -84,21 +93,56 @@ export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
     // so a pointer wandering back and forth over the same row cannot queue a second one.
     if (requested.current.has(countryKey)) return;
     requested.current.add(countryKey);
-    let cancelled = false;
+
+    // NOT cancelled when the pointer moves on. The response is a cache write keyed by country, so
+    // it is the right answer whatever is hovered by the time it lands — and discarding it while
+    // leaving the key in `requested` is what made countries stop loading altogether: skim past one
+    // and its result was thrown away, the guard above then refused to ask again, and the row sat
+    // on its skeleton for the rest of the session. Every country you pass on the way down to the
+    // detail row is one you skim past, so it happened constantly.
     fetch(`/api/nav/geo/${countryKey}`)
       .then((r) => (r.ok ? r.json() : { cities: [] }))
-      .then((data: { cities?: CityEntry[] }) => {
-        if (!cancelled) setCities((prev) => ({ ...prev, [countryKey]: data.cities ?? [] }));
-      })
+      .then((data: { cities?: CityEntry[] }) =>
+        setCities((prev) => ({ ...prev, [countryKey]: data.cities ?? [] }))
+      )
       .catch(() => {
-        // The country link above still works; the detail row just stays on its hint.
-        if (!cancelled) setCities((prev) => ({ ...prev, [countryKey]: [] }));
+        // Let the next hover try again rather than caching a failure for the session — the country
+        // link above still works in the meantime.
+        requested.current.delete(countryKey);
       });
-
-    return () => {
-      cancelled = true;
-    };
   }, [countryKey]);
+
+  /*
+   * Hover has to be *rested* on, not merely crossed.
+   *
+   * The detail row sits under the country columns, so the way to it from any country leads over
+   * the countries below it. Switching on `pointerenter` meant that trip rewrote the row two or
+   * three times before the pointer arrived, and it landed on whichever country happened to be last
+   * — the row was effectively unreachable for the country you actually wanted.
+   *
+   * So entering a row only *arms* the switch, and leaving before the dwell is up disarms it. Rest
+   * on a country and it commits; cross it on the way somewhere else and it never fires. Focus is
+   * exempt: a keyboard user lands on exactly the country they meant.
+   */
+  const dwellRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const disarm = () => {
+    if (dwellRef.current !== null) {
+      clearTimeout(dwellRef.current);
+      dwellRef.current = null;
+    }
+  };
+  const arm = (next: { continent: string; country: string; code: string }) => {
+    disarm();
+    dwellRef.current = setTimeout(() => {
+      dwellRef.current = null;
+      setActiveCountry(next);
+    }, COUNTRY_DWELL_MS);
+  };
+  const commit = (next: { continent: string; country: string; code: string }) => {
+    disarm();
+    setActiveCountry(next);
+  };
+  useEffect(() => disarm, []);
 
   const detail = countryKey ? cities[countryKey] : undefined;
   const shown = detail?.slice(0, CITY_COLUMNS) ?? [];
@@ -126,8 +170,9 @@ export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
                       <Link
                         href={`/parks/${continent.slug}/${country.slug}`}
                         prefetch={false}
-                        onPointerEnter={() => setActiveCountry(target(continent.slug, country))}
-                        onFocus={() => setActiveCountry(target(continent.slug, country))}
+                        onPointerEnter={() => arm(target(continent.slug, country))}
+                        onPointerLeave={disarm}
+                        onFocus={() => commit(target(continent.slug, country))}
                         className={`-mx-2 flex items-center gap-2 rounded-md px-2 py-1 text-sm transition-colors ${
                           isActive
                             ? 'bg-muted text-foreground'

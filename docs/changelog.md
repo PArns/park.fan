@@ -66,6 +66,53 @@ See [header navigation](features/header-navigation.md).
 
 ---
 
+## Unreleased – fix: the menu's countries loaded once, if at all
+
+Four things, and the first two turned out to be one.
+
+**Passing over a country switched to it.** The detail row sits under the country
+columns, so the way down to it leads over every country below the one you
+wanted. Each of those rewrote the row, and it landed on whichever country
+happened to be last — the row was effectively unreachable for the country
+somebody actually meant. Entering a row only arms the switch now, and leaving
+before 140 ms disarms it. Rest on a country and it commits; cross it and it
+never fires. Focus is exempt, because a keyboard user lands on exactly the
+country they chose.
+
+**And that gesture is what stopped countries loading.** The effect discarded its
+response on cleanup while leaving the key in `requested`, so skimming past a
+country threw its answer away and the guard then refused to ask again: the row
+sat on its skeleton for the rest of the session. The response is a cache write
+keyed by country, correct whenever it lands, so nothing cancels it any more, and
+a failed request drops its key instead of caching the failure. Measured over all
+23 countries — hover one, move on before the answer lands, come back and rest:
+**23 of 23 stayed empty before, 0 of 23 after.**
+
+Both were invisible to the first round of checks because the test hovered the
+same country twice, which never triggers the cleanup, and counted every
+six-segment link in the header — including the photo rail, which links park
+pages too. The reproduction now sweeps between two countries and measures below
+`xl`, where the rail is hidden.
+
+**Saudi Arabia, Malaysia and Singapore had no flag** and fell back to a chip with
+their country code, which in a row of flags reads as something still loading.
+All 23 draw a flag now. Malaysia's fourteen-point star and Singapore's five are
+computed polygons; Saudi Arabia's shahada is a band rather than an approximation
+of the calligraphy, because at 16×12 the inscription is under 2 px tall and comes
+out an indistinct smudge whichever path you draw. The sword does the
+identifying.
+
+**The photo rail was two cards short of its column.** Six now instead of four —
+nine parks carry a `park-background`, so this is the shelf being filled rather
+than stretched.
+
+Cost after all four: **+5.65 KB brotli per page** against `main` (was +4.90),
+4 → 48 crawlable nav links, every one of the 46 distinct targets answering 200.
+
+See [header navigation](features/header-navigation.md).
+
+---
+
 ## Unreleased – feat: a header that leads somewhere, and stops before it dilutes
 
 The bar had four links. "Parks entdecken" pointed at `/parks/europe` — past

@@ -158,7 +158,14 @@ export function NavMenu({ href, label, children, disabled }: NavMenuProps) {
           body text read straight through the menu and fought with it — in both themes. The blur
           and the five points of transparency are enough to see that the photo is still there,
           which is all this effect owes the visitor. */}
-      <div id={panelId} className={`absolute inset-x-0 top-full z-50 ${open ? '' : 'hidden'}`}>
+      <div
+        id={panelId}
+        // A stable hook for the checks in scripts/: the surface class has already been
+        // `bg-popover` and then `bg-popover/95`, and a test that keys on styling silently stops
+        // testing anything the next time the design moves.
+        data-nav-panel=""
+        className={`absolute inset-x-0 top-full z-50 ${open ? '' : 'hidden'}`}
+      >
         <div className="bg-popover/95 text-popover-foreground border-border/60 w-full border-b shadow-2xl ring-1 ring-black/5 backdrop-blur-xl dark:ring-white/10">
           {/* `overflow-hidden` is load-bearing: the rows inside carry `-mx-2` so their hover
               highlight reaches into the column gaps, and at exactly 1024 px — where the container

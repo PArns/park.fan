@@ -58,7 +58,7 @@ Three kinds of content sit in there, and the difference is the whole design:
 |                        | where it comes from             | why                                                 |
 | ---------------------- | ------------------------------- | --------------------------------------------------- |
 | continents + countries | server-rendered into every page | 28 hub links worth concentrating sitewide weight on |
-| the photo rail         | server-resolved, fixed four     | only 14 of 212 parks have a picture at all          |
+| the photo rail         | server-resolved, fixed six      | only 14 of 212 parks have a picture at all          |
 | cities + parks         | fetched when a country opens    | 356 more sitewide links would buy no discovery      |
 
 **The link split.** Everything in the header is a link on ~35,000 pages:
@@ -76,9 +76,11 @@ those hubs and from the sitemap, so putting them in the template would spread th
 356 more targets and buy no discovery. That is why the detail row is a fetch
 (`/api/nav/geo/[continent]/[country]`, once per country per tab) rather than more markup.
 
-**The photo rail is a fixed four, not a thumbnail per park.** The media database holds a picture
+**The photo rail is a fixed six, not a thumbnail per park.** The media database holds a picture
 for 14 of 212 parks and a `park-background` for nine of them, so a photo on every row would have
-been nine pictures and two hundred empty boxes. Which four: the homepage's per-locale
+been nine pictures and two hundred empty boxes. Six rather than four because the five country
+columns are taller than two rows of cards were: at four the rail ended halfway up and left a hole
+beside Europe's eleven countries. Which four: the homepage's per-locale
 `FEATURED_PARK_SLUGS`, intersected with the parks that have a photo — a second curated list would
 be a second thing to keep in sync, and the question "which parks does a German reader want" was
 already answered once, with visitor numbers in the comments. Resolved in the layout, because
@@ -89,9 +91,13 @@ photo requests on a plain park page, seven after opening the panel.
 **Flags come from the set that already existed.** `components/common/icons/flags.tsx` had 20 of the
 23 countries for the locale switcher; `CountryFlag` is a lookup over it, cropped to a fixed 16×12
 box because the source viewBoxes range from 5:3 to 1000:700 and a row of un-cropped flags is a row
-of different widths. Saudi Arabia, Malaysia and Singapore have no artwork yet and get a neutral
-chip with their code — four parks between them. Emoji flags were the short route and are why that
-file exists: Windows ships no flag glyphs, so `🇩🇪` renders there as the letters "DE".
+of different widths. Saudi Arabia, Malaysia and Singapore have artwork now too, so all 23 draw a
+flag — a code chip in a row of flags reads as a loading state, not as a country. Malaysia's
+fourteen-point star and Singapore's five are computed polygons rather than eyeballed. Saudi
+Arabia's shahada is deliberately **not** an approximation of the calligraphy: at 16×12 the
+inscription is under 2 px tall and renders as an indistinct white smudge whichever path you draw,
+so it is a band, and the sword below it does the identifying. Emoji flags were the short route and
+are why that file exists: Windows ships no flag glyphs, so `🇩🇪` renders there as the letters "DE".
 
 Three details that are easy to break again:
 
@@ -102,6 +108,27 @@ Three details that are easy to break again:
   last column's 8 px of bleed gave the document a horizontal scrollbar.
 - **The detail row holds its height** whether or not a country is open. It fills in under the
   pointer as the fetch lands, and a band that resized while somebody was reading it would be worse.
+
+### Hover has to be rested on, not crossed
+
+The detail row sits under the country columns, so the way to it from any country leads over the
+countries below it. Switching on `pointerenter` rewrote the row two or three times during that trip
+and landed on whichever country happened to be last — the row was effectively unreachable for the
+country somebody actually wanted.
+
+Entering a row **arms** the switch; leaving before 140 ms disarms it. Rest on a country and it
+commits, cross it on the way somewhere else and it never fires. Focus is exempt: a keyboard user
+lands on exactly the country they meant, so it commits immediately.
+
+That gesture also broke the fetch, and the two bugs were the same bug. The effect discarded its
+response on cleanup (`cancelled = true`) while leaving the key in `requested` — so skimming past a
+country threw its answer away, the guard then refused to ask again, and the row sat on its skeleton
+for the rest of the session. Every country on the way down to the detail row is one you skim past,
+so it happened constantly. The response is a **cache write keyed by country**: it is the right
+answer whatever is hovered by the time it lands, so nothing cancels it any more, and a failed
+request drops its key so the next hover can retry instead of caching the failure. Measured over all
+23 countries, hovering one, moving on before the answer lands, then coming back: **23 of 23 stayed
+empty before, 0 of 23 after**.
 
 ## The blog panel: three categories, four posts, no tags
 
@@ -155,23 +182,23 @@ Against a running dev server, park page, `de`:
 
 |                                                         |                     before |                      after |
 | ------------------------------------------------------- | -------------------------: | -------------------------: |
-| crawlable links in `<nav aria-label="Main navigation">` |                          4 |                     **46** |
+| crawlable links in `<nav aria-label="Main navigation">` |                          4 |                     **48** |
 | city/park links in the nav (the long tail)              |                          0 |                      **0** |
-| page weight                                             | 617.6 KB raw / 59.04 KB br | 666.9 KB / **63.94 KB br** |
-| of that, the 22 country flags                           |                          — |                 ~3.9 KB br |
+| page weight                                             | 617.6 KB raw / 59.04 KB br | 671.5 KB / **64.69 KB br** |
+| of that, the 23 country flags                           |                          — |                 ~4.2 KB br |
 | layout chrome messages                                  |                     6066 B |                     6224 B |
 | CLS (`measure:cls --late`, mobile)                      |                     0.0000 |                     0.0000 |
-| menu photo requests on a plain page view                |                          — |       **0** (4 on opening) |
+| menu photo requests on a plain page view                |                          — |       **0** (6 on opening) |
 
-**+4.90 KB brotli per page** for 42 hub links, both panels, the flags and the photo markup. The band
+**+5.65 KB brotli per page** for 44 hub links, both panels, the flags and the photo markup. The band
 is absolutely positioned and `hidden`, so it reserves nothing and shifts nothing.
 
-The flags are the single biggest item in that number — 22 inline SVGs, ~1.97 KB brotli in the HTML
-and again in the RSC payload. They are decorative (`aria-hidden`), so if that sitewide cost ever
+The flags are the single biggest item in that number — 23 inline SVGs, present in the HTML and
+again in the RSC payload. They are decorative (`aria-hidden`), so if that sitewide cost ever
 stops being worth the scannability, rendering them after mount moves them into the shared JS chunk
 and off all 35,000 pages.
 
-The 46 break down as: `/parks` + 5 continents + 23 countries + 4 featured parks, `/blog` + 3
+The 48 break down as: `/parks` + 5 continents + 23 countries + 6 featured parks, `/blog` + 3
 categories + 4 posts, plus Beste Reisezeit, Wörterbuch and Anleitung.
 
 ---

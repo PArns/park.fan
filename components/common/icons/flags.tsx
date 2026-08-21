@@ -247,6 +247,65 @@ export function FlagAU(props: React.ComponentProps<'svg'>) {
   );
 }
 
+export function FlagSA(props: React.ComponentProps<'svg'>) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" aria-hidden="true" {...props}>
+      <rect width="900" height="600" fill="#006C35" />
+      {/* The shahada, as a band. The real flag carries a line of Arabic calligraphy above the
+          sword; at the 16×12 box this renders into it is under 2 px tall, which is an indistinct
+          white smudge whichever path you draw — so it is a band rather than a bad approximation of
+          script. The sword below it is what makes the flag readable at this size. */}
+      <rect width="470" height="52" x="215" y="200" rx="26" fill="#fff" />
+      <rect width="150" height="30" x="215" y="285" rx="15" fill="#fff" />
+      <rect width="230" height="30" x="420" y="285" rx="15" fill="#fff" />
+      {/* Sword: blade pointing left, hilt and pommel on the right. */}
+      <path d="M175 400 L250 375 L700 375 L700 425 L250 425 Z" fill="#fff" />
+      <rect width="26" height="110" x="700" y="345" rx="13" fill="#fff" />
+      <rect width="60" height="34" x="726" y="383" rx="17" fill="#fff" />
+    </svg>
+  );
+}
+
+export function FlagMY(props: React.ComponentProps<'svg'>) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 700" aria-hidden="true" {...props}>
+      {/* Fourteen stripes for the thirteen states and the federal territories, red first. */}
+      <rect width="1400" height="700" fill="#fff" />
+      {[0, 2, 4, 6, 8, 10, 12].map((i) => (
+        <rect key={i} width="1400" height="50" y={i * 50} fill="#CC0001" />
+      ))}
+      {/* The canton covers the top eight stripes and half the width. */}
+      <rect width="700" height="400" fill="#010066" />
+      {/* Crescent: a yellow disc with a canton-coloured one bitten out of it. */}
+      <circle cx="300" cy="200" r="112" fill="#FFCC00" />
+      <circle cx="348" cy="200" r="96" fill="#010066" />
+      <polygon
+        points="490.0,75.0 501.6,149.3 544.2,87.4 522.4,159.3 587.7,122.1 536.9,177.4 611.9,172.2 542.0,200.0 611.9,227.8 536.9,222.6 587.7,277.9 522.4,240.7 544.2,312.6 501.6,250.7 490.0,325.0 478.4,250.7 435.8,312.6 457.6,240.7 392.3,277.9 443.1,222.6 368.1,227.8 438.0,200.0 368.1,172.2 443.1,177.4 392.3,122.1 457.6,159.3 435.8,87.4 478.4,149.3"
+        fill="#FFCC00"
+      />
+    </svg>
+  );
+}
+
+export function FlagSG(props: React.ComponentProps<'svg'>) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 960" aria-hidden="true" {...props}>
+      <rect width="1440" height="960" fill="#fff" />
+      <rect width="1440" height="480" fill="#EF3340" />
+      {/* Crescent: a white disc with a red one bitten out of it. */}
+      <circle cx="330" cy="240" r="176" fill="#fff" />
+      <circle cx="402" cy="240" r="150" fill="#EF3340" />
+      <g fill="#fff">
+        <polygon points="566.0,76.0 578.3,111.0 615.5,111.9 586.0,134.5 596.6,170.1 566.0,149.0 535.4,170.1 546.0,134.5 516.5,111.9 553.7,111.0" />
+        <polygon points="672.5,153.4 684.9,188.4 722.0,189.3 692.5,211.9 703.1,247.5 672.5,226.4 642.0,247.5 652.5,211.9 623.1,189.3 660.2,188.4" />
+        <polygon points="631.8,278.6 644.2,313.6 681.3,314.5 651.8,337.1 662.4,372.7 631.8,351.6 601.3,372.7 611.9,337.1 582.4,314.5 619.5,313.6" />
+        <polygon points="500.2,278.6 512.5,313.6 549.6,314.5 520.1,337.1 530.7,372.7 500.2,351.6 469.6,372.7 480.2,337.1 450.7,314.5 487.8,313.6" />
+        <polygon points="459.5,153.4 471.8,188.4 508.9,189.3 479.5,211.9 490.0,247.5 459.5,226.4 428.9,247.5 439.5,211.9 410.0,189.3 447.1,188.4" />
+      </g>
+    </svg>
+  );
+}
+
 export function FlagBR(props: React.ComponentProps<'svg'>) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" aria-hidden="true" {...props}>
@@ -268,8 +327,8 @@ export function FlagBR(props: React.ComponentProps<'svg'>) {
  * the letters "DE" — which is exactly what `countryFlagEmoji` in `lib/utils/region-names.ts`
  * accepts for a holiday label and what a navigation menu should not.
  *
- * Missing today: Saudi Arabia, Malaysia, Singapore — four parks between them. They get a neutral
- * chip with the code rather than a wrong flag or a gap; add the SVG here and it disappears.
+ * All 23 countries the parks menu lists have artwork. A code that does not resolve still falls back
+ * to a neutral chip with its letters rather than a gap — add the SVG here and it disappears.
  */
 const FLAG_BY_CODE: Record<string, React.ComponentType<React.ComponentProps<'svg'>>> = {
   DE: FlagDE,
@@ -292,6 +351,9 @@ const FLAG_BY_CODE: Record<string, React.ComponentType<React.ComponentProps<'svg
   KR: FlagKR,
   AU: FlagAU,
   BR: FlagBR,
+  SA: FlagSA,
+  MY: FlagMY,
+  SG: FlagSG,
 };
 
 /**

@@ -3,7 +3,7 @@ import { FEATURED_PARK_SLUGS } from '@/components/home/featured-parks-section';
 import { getImagesByRole, getParkPagePath, getParkRefBySlug } from '@/lib/media';
 
 /**
- * The four photo cards in the parks menu, and why they are a fixed set rather than a thumbnail
+ * The six photo cards in the parks menu, and why they are a fixed set rather than a thumbnail
  * per park.
  *
  * The media database holds a picture for **14 of 212 parks**, and a `park-background` for nine of
@@ -19,11 +19,12 @@ import { getImagesByRole, getParkPagePath, getParkRefBySlug } from '@/lib/media'
  * that do, so the rail is never short.
  *
  * Runs on the server: `@/lib/media` is the 107 KB catalog and the header is a Client Component.
- * Only the four resolved URLs cross that boundary.
+ * Only the six resolved URLs cross that boundary.
  */
 
-/** Four cards, two by two beside five continent columns. */
-const RAIL_SIZE = 4;
+/** Six cards, two by three beside five continent columns — the column is as tall as they are.
+ *  Nine parks carry a `park-background`, so this is the shelf being filled, not stretched. */
+const RAIL_SIZE = 6;
 
 export interface FeaturedParkCard {
   slug: string;
