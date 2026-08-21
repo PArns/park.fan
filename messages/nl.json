@@ -359,6 +359,9 @@
     "seasonal": "Seizoensgebonden",
     "seasonalWinter": "Winter",
     "seasonalSummer": "Zomer",
+    "seasonalWinterOnly": "Alleen in de winter",
+    "seasonalSummerOnly": "Alleen in de zomer",
+    "seasonalOffSeason": "Buiten seizoen",
     "offSeasonCount": "{count} buiten seizoen",
     "mapMarkers": {
       "noMapData": "Geen kaartgegevens beschikbaar voor dit park.",

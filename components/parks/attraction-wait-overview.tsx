@@ -5,6 +5,7 @@ import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { getAttractionDisplayStatus } from '@/lib/utils/park-utils';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { stripNewPrefix } from '@/lib/utils';
+import { isInSeason } from '@/lib/utils/season';
 import type { ParkAttraction, ParkWithAttractions } from '@/lib/api/types';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 
@@ -103,7 +104,13 @@ export function AttractionWaitOverview({
 
       <div className="space-y-6">
         {landNames.map((landName) => {
-          const attractions = attractionsByLand[landName];
+          // Off-season rides are left out, the same way the interactive cards
+          // that replace this view leave them out — and the same way the summary
+          // line above no longer counts them. Listing Phantasialands
+          // Schlittschuhverleih here in August put it in the one piece of
+          // attraction markup a crawler sees without JS, directly under a
+          // counter that had already dropped it.
+          const attractions = attractionsByLand[landName]?.filter(isInSeason);
           if (!attractions || attractions.length === 0) return null;
 
           return (

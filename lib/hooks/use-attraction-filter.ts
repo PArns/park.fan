@@ -3,9 +3,7 @@
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
 import Fuse from 'fuse.js';
 import type { ParkAttraction, ParkShow } from '@/lib/api/types';
-
-/** Seasonal entities count as in season unless the API explicitly says otherwise. */
-const isInSeason = (x: { isCurrentlyInSeason?: boolean | null }) => x.isCurrentlyInSeason !== false;
+import { isInSeason } from '@/lib/utils/season';
 
 interface UseAttractionFilterOptions {
   attractionsByLand: Record<string, ParkAttraction[]>;
