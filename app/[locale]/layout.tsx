@@ -16,6 +16,8 @@ import { Providers } from '@/lib/providers';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { hasPublishedPosts } from '@/lib/blog/listing';
+import { getGeoMenu } from '@/lib/navigation/geo-menu';
+import { getBlogMenu } from '@/lib/navigation/blog-menu';
 import { LanguageBanner } from '@/components/layout/language-banner';
 import Script from 'next/script';
 import { UserbackFeedback } from '@/components/common/userback-feedback';
@@ -25,8 +27,12 @@ import { CardPointerFx } from '@/components/parks/card-pointer-fx';
 import { NavigationProgress } from '@/components/layout/navigation-progress';
 import {
   OrganizationStructuredData,
+  SiteNavigationStructuredData,
   WebSiteStructuredData,
 } from '@/components/seo/structured-data';
+import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
+import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
+import { translateContinent } from '@/lib/i18n/helpers';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { Geist } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
@@ -134,6 +140,27 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   // Blog surfaces show only in locales that actually list posts (German-first
   // rollout: /de/blog can be live while other locales stay blog-free).
   const showBlog = hasPublishedPosts(locale as Locale);
+  // The header's two menus. Both are structure rather than state: the geo spine is a cached
+  // discovery read (no per-page hop to api.park.fan) and the blog side is the generated
+  // manifest, read synchronously. Fetched here because `Header` is a Client Component.
+  const geoMenu = await getGeoMenu();
+  const blogMenu = showBlog ? getBlogMenu(locale as Locale) : undefined;
+  // The same entries the bar renders, in the same order, plus the continent hubs the parks menu
+  // opens onto. Kept to ten: this is a hint about the primary navigation, and the country links
+  // are already in the rendered <nav>.
+  const tNav = await getTranslations({ locale, namespace: 'navigation' });
+  const tGeo = await getTranslations({ locale, namespace: 'geo' });
+  const navigationItems = [
+    { name: tNav('explore'), path: '/parks' },
+    ...(showBlog ? [{ name: tNav('blog'), path: '/blog' }] : []),
+    { name: tNav('bestTime'), path: `/${BEST_TIME_SEGMENTS[locale as Locale]}` },
+    { name: tNav('glossary'), path: `/${GLOSSARY_SEGMENTS[locale as Locale]}` },
+    { name: tNav('howto'), path: '/howto' },
+    ...geoMenu.map((continent) => ({
+      name: translateContinent(tGeo, continent.slug, locale, continent.name),
+      path: `/parks/${continent.slug}`,
+    })),
+  ];
   const tSeo = await getTranslations({ locale, namespace: 'seo.global' });
 
   // NOTE: the temperature-unit cookie is intentionally NOT read here. Reading
@@ -216,6 +243,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
           description={tSeo('description')}
           image={getOgImageUrl([locale])}
         />
+        <SiteNavigationStructuredData locale={locale} items={navigationItems} />
         {/* park.fan is a dark site: dark for everyone by default, on every device, and light
             only for visitors who ask for it. `enableSystem` is off on purpose — following the OS
             would make the site dark for some people and light for others by accident, which is
@@ -247,7 +275,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                     so the first paint does not move when the client Header streams in. Both
                     numbers live in components/layout/header.tsx — change them together. */}
                 <Suspense fallback={<div className="h-12" />}>
-                  <Header showBlog={showBlog} />
+                  <Header showBlog={showBlog} geoMenu={geoMenu} blogMenu={blogMenu} />
                 </Suspense>
                 <main className="flex-1">{children}</main>
                 {/* Footer renders next-intl links (dynamic under Cache Components) — stream it

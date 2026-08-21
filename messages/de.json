@@ -282,7 +282,11 @@
     "nearbyPark": "In der Nähe: {parkName}",
     "howto": "Anleitung",
     "glossary": "Wörterbuch",
-    "blog": "Blog"
+    "blog": "Blog",
+    "bestTime": "Beste Reisezeit",
+    "latestPosts": "Neueste Beiträge",
+    "moreCities": "{count, plural, =1 {1 weitere Stadt} other {# weitere Städte}}",
+    "categories": "Kategorien"
   },
   "theme": {
     "light": "Hell",

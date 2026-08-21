@@ -148,24 +148,34 @@ export function SearchCommand({
       {trigger === 'button' && (
         <Button
           variant="outline"
-          // `sm` is the header bar: below `lg` this button stands in for the search field, and it
-          // shares the row with the burger, so it takes the burger's 36 px box rather than sitting
-          // 4 px taller than it. `lg` (the /ui gallery, anything outside the bar) is unchanged.
-          className={`relative p-0 md:w-64 md:justify-start md:px-3 md:py-2 ${
-            size === 'sm' ? 'h-9 w-9 md:h-8' : 'h-10 w-10 md:h-9'
+          /* `sm` is the header bar, where this stands in for the search field below `lg`. Two
+             things it must not do there:
+
+             - be taller than the burger beside it (it was 40 against 36), and
+             - widen to `md:w-64`. That expansion band is exactly 768–1023 px — the widths where
+               the bar ALSO shows the full navigation and no burger — and 256 px of search button
+               is what pushed the row over the container: 789 px of content in a 736 px box at 768,
+               which wrapped the nav to two lines and gave the document a horizontal scrollbar.
+               Icon-only until `lg` hands over to the real input.
+
+             `lg` (the /ui gallery, anything outside the bar) keeps the wide trigger. */
+          className={`relative p-0 ${
+            size === 'sm' ? 'h-9 w-9' : 'h-10 w-10 md:h-9 md:w-64 md:justify-start md:px-3 md:py-2'
           }`}
           onClick={() => openSearch(searchOpenSource)}
           aria-label={t('search')}
         >
-          <Search className="h-4 w-4 md:mr-2" />
-          <span className="hidden md:inline-flex">
+          <Search className={`h-4 w-4 ${size === 'sm' ? '' : 'md:mr-2'}`} />
+          <span className={size === 'sm' ? 'hidden' : 'hidden md:inline-flex'}>
             {placeholder || t('searchPlaceholderShort')}
           </span>
-          {/* Centred, not `top-2`: the button now comes in two heights, and a fixed offset from
-              the top only lands in the middle of one of them. */}
-          <kbd className="bg-primary/40 text-primary border-primary/40 pointer-events-none absolute top-1/2 right-2 hidden h-5 -translate-y-1/2 items-center gap-1 rounded border px-1.5 font-mono text-xs font-medium opacity-100 shadow-sm select-none md:flex">
-            {isMac ? <span className="text-xs">⌘</span> : 'Ctrl'}K
-          </kbd>
+          {/* Only on the wide trigger — there is no room for a shortcut hint in a 36 px square,
+              and centred rather than `top-2` because that trigger now comes in two heights. */}
+          {size !== 'sm' && (
+            <kbd className="bg-primary/40 text-primary border-primary/40 pointer-events-none absolute top-1/2 right-2 hidden h-5 -translate-y-1/2 items-center gap-1 rounded border px-1.5 font-mono text-xs font-medium opacity-100 shadow-sm select-none md:flex">
+              {isMac ? <span className="text-xs">⌘</span> : 'Ctrl'}K
+            </kbd>
+          )}
         </Button>
       )}
 

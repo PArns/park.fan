@@ -4,6 +4,66 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – feat: a header that leads somewhere, and stops before it dilutes
+
+The bar had four links. "Parks entdecken" pointed at `/parks/europe` — past
+the discovery index, into one of its five children — and the best-travel-time
+hub was not linked at all, which the header found a way to be funny about: it
+matches that route's localized segment so it can float transparent over the
+hub's hero, so it could name the page and would not link it. Two translation
+keys, `navigation.parks` and `navigation.continents`, had been sitting unused
+in all six locales for the same reason.
+
+Now: "Parks entdecken" goes to `/parks` and opens a panel, Blog opens one,
+Beste Reisezeit is a link, Wörterbuch and Anleitung are unchanged.
+
+The parks panel is three panes, and two of them are a different kind of thing
+from the third. Continents and countries are server-rendered into every page
+and always in the document — the four inactive country lists are
+`display:none`, not unmounted, because a crawler does not hover and a panel
+built on first interaction contributes nothing whatsoever to the link graph.
+Cities and parks are fetched per opened country from
+`/api/nav/geo/[continent]/[country]`.
+
+That split is about links rather than bytes. Everything the bar renders is a
+link on some 35,000 pages. 28 hub links concentrate internal weight on the
+continent and country pages, which is the point of putting geography in a
+header; the 144 cities and 212 parks under them are already reachable from
+those hubs and from the sitemap, so shipping them would spread the same weight
+over 356 more targets and buy no discovery at all.
+
+The same reasoning shaped the blog panel, which is why it is small. The blog
+holds 7 posts per locale in 3 categories, with 31 tags and one author. The
+categories are in and the four newest posts are in; the tags are out. 31 tag
+pages over 7 posts are mostly one post's teaser at a second URL, and a
+template that runs on every page is the last place to promote them.
+
+`SiteNavigationElement` markup joins the existing `Organization` and `WebSite`
+data — the five bar entries and the five continent hubs, ten items, no more.
+The 23 country links are in the rendered `<nav>`; a second copy in the head of
+every page tells a crawler nothing the markup did not.
+
+One bug fixed on the way, and it predates this. The nav appeared at `md` while
+the search input waits for `lg`, so between 768 and 1023 px the row carried the
+full navigation, a 256 px search button and no burger: 789 px of content in a
+736 px box on `main`, which wrapped the German nav onto two lines and gave the
+document a horizontal scrollbar. One breakpoint now — the trigger is icon-only
+below `lg`, the nav starts where the input does, and under that width
+everything is in the burger, where a native `<details>` opens the continents
+with no JavaScript. Checked at 768/900/1024/1100/1280 in all six languages.
+
+Measured, park page, `de`: 4 → 40 crawlable links in the main nav, none of them
+city or park level; page weight 59.04 → 60.70 KB brotli, so **+1.66 KB**; layout
+chrome messages 6066 → 6224 B; CLS unchanged at 0.0000 on mobile. The chrome
+number is worth a second look — one `useTranslations('blog')` in a header
+component briefly pulled the whole namespace into the set every page
+serializes, 6066 B to 9047 B times six locales, for the single word
+"Kategorien". It comes out of `navigation` instead.
+
+See [header navigation](features/header-navigation.md).
+
+---
+
 ## Unreleased – fix: the header, and the two logos that were never the same logo
 
 The bar is 48 px instead of 56, the search field 32 instead of 40, and the logo

@@ -282,7 +282,11 @@
     "nearbyPark": "Cerca: {parkName}",
     "howto": "Guía",
     "glossary": "Diccionario",
-    "blog": "Blog"
+    "blog": "Blog",
+    "bestTime": "Mejor época",
+    "latestPosts": "Últimas entradas",
+    "moreCities": "{count, plural, =1 {1 ciudad más} other {# ciudades más}}",
+    "categories": "Categorías"
   },
   "theme": {
     "light": "Claro",

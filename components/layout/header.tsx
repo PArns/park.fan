@@ -6,17 +6,23 @@ import { Link, usePathname } from '@/i18n/navigation';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import type { Locale } from '@/i18n/config';
-import { Menu, MapPin } from 'lucide-react';
+import { Menu, MapPin, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { BrandLockup } from '@/components/layout/brand-lockup';
+import { NavMenu } from '@/components/layout/nav-menu';
+import { ParksMenuPanel } from '@/components/layout/parks-menu-panel';
+import { BlogMenuPanel } from '@/components/layout/blog-menu-panel';
 import { useHeaderReveal } from '@/lib/hooks/use-header-reveal';
 import { ThemeToggle } from '@/components/common/theme-toggle';
 import { LocaleSwitcher } from '@/components/common/locale-switcher';
 import { SearchCommand } from '@/components/search/search-bar';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
+import { translateContinent } from '@/lib/i18n/helpers';
 import type { NearbyParksData } from '@/types/nearby';
+import type { GeoMenuContinent } from '@/lib/navigation/geo-menu';
+import type { BlogMenu } from '@/lib/navigation/blog-menu';
 
 /** API returns distance in meters. Only show "Nearby: Park" when nearest park is within this (m). */
 const NEAR_PARK_HEADER_RADIUS_M = 5000; // 5 km
@@ -25,13 +31,25 @@ interface HeaderProps {
   /** Whether the blog has at least one published post — every blog link
    *  hides while the answer is no. Computed server-side in the layout. */
   showBlog?: boolean;
+  /**
+   * Continents and their countries for the parks menu. Fetched in the layout (a cached discovery
+   * read, not a per-page request) and passed down because this is a Client Component. 28 links,
+   * 420 B brotli — see `lib/navigation/geo-menu.ts` for why it stops at countries.
+   */
+  geoMenu?: GeoMenuContinent[];
+  /** Categories + newest posts for the blog menu, read from the generated manifest. */
+  blogMenu?: BlogMenu;
 }
 
-export function Header({ showBlog = true }: HeaderProps) {
+export function Header({ showBlog = true, geoMenu, blogMenu }: HeaderProps) {
   const t = useTranslations('navigation');
   const tCommon = useTranslations('common');
+  const tGeo = useTranslations('geo');
   const locale = useLocale();
   const glossaryPath = '/' + GLOSSARY_SEGMENTS[locale as Locale];
+  // The header has always KNOWN this route — `isBestTime` below uses it to float the bar over
+  // the hub's hero — and never linked it. Same localized segment, now also a destination.
+  const bestTimePath = '/' + BEST_TIME_SEGMENTS[locale as Locale];
   const pathname = usePathname();
   const { data: nearbyData } = useHomeNearbyParks();
   const parks =
@@ -232,8 +250,15 @@ export function Header({ showBlog = true }: HeaderProps) {
         </Link>
 
         {/* Desktop Navigation – fades in on scroll */}
+        {/* One breakpoint for the whole bar, not two.
+            The nav used to appear at `md` while the search input waits for `lg`, so between 768
+            and 1023 px the row carried the full navigation AND a 256 px search button AND no
+            burger — 789 px of content in a 736 px box. German wrapped it onto two lines and the
+            document grew a horizontal scrollbar. The trigger is icon-only below `lg` now, and the
+            nav starts where the input does; under that width everything lives in the burger,
+            which is the only arrangement that holds in all six languages. */}
         <nav
-          className={`hidden items-center gap-6 md:flex ${fadeClass}`}
+          className={`hidden items-center gap-5 lg:flex xl:gap-6 ${fadeClass}`}
           aria-label="Main navigation"
           aria-hidden={isTransparent}
         >
@@ -250,25 +275,49 @@ export function Header({ showBlog = true }: HeaderProps) {
               <span className="max-w-[140px] truncate">{nearestPark.name}</span>
             </Link>
           )}
-          {showBlog && (
+          {/* Discovery. The trigger goes to `/parks` — the actual index — where it used to go
+              straight to `/parks/europe`, i.e. past the hub and into one of its five children. */}
+          {geoMenu && geoMenu.length > 0 ? (
+            <NavMenu href="/parks" label={t('explore')} disabled={isTransparent}>
+              <ParksMenuPanel continents={geoMenu} />
+            </NavMenu>
+          ) : (
             <Link
-              href="/blog"
+              href="/parks"
               prefetch={false}
               className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
               tabIndex={isTransparent ? -1 : 0}
               data-header-stagger
             >
-              {t('blog')}
+              {t('explore')}
             </Link>
           )}
+          {showBlog &&
+            (blogMenu && blogMenu.categories.length > 0 ? (
+              <NavMenu href="/blog" label={t('blog')} disabled={isTransparent}>
+                <BlogMenuPanel {...blogMenu} />
+              </NavMenu>
+            ) : (
+              <Link
+                href="/blog"
+                prefetch={false}
+                className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+                tabIndex={isTransparent ? -1 : 0}
+                data-header-stagger
+              >
+                {t('blog')}
+              </Link>
+            ))}
+          {/* Visible from `md` up, like the rest of the row. Hiding it until `lg` would have left
+              the hub unreachable between 768 and 1023 px, where the burger is already gone. */}
           <Link
-            href="/parks/europe"
+            href={bestTimePath}
             prefetch={false}
             className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
             tabIndex={isTransparent ? -1 : 0}
             data-header-stagger
           >
-            {t('explore')}
+            {t('bestTime')}
           </Link>
           <Link
             href={glossaryPath}
@@ -345,7 +394,7 @@ export function Header({ showBlog = true }: HeaderProps) {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="md:hidden"
+                  className="lg:hidden"
                   suppressHydrationWarning
                   tabIndex={isTransparent ? -1 : 0}
                   data-header-stagger
@@ -383,12 +432,44 @@ export function Header({ showBlog = true }: HeaderProps) {
                   >
                     {t('home')}
                   </Link>
+                  {/* Discovery in the sheet: a native <details>, so the continents open with no
+                      JavaScript at all and the disclosure state is the browser's, not ours. The
+                      countries stay out of it — the sheet is a phone-sized column, and the
+                      continent hubs are one tap from the parks that matter. */}
+                  <details className="group">
+                    <summary className="hover:text-primary flex cursor-pointer list-none items-center justify-between text-lg font-medium transition-colors">
+                      {t('explore')}
+                      <ChevronDown
+                        className="h-4 w-4 shrink-0 transition-transform group-open:rotate-180"
+                        aria-hidden="true"
+                      />
+                    </summary>
+                    <div className="border-border/60 mt-2 ml-1 flex flex-col gap-2 border-l pl-3">
+                      <Link
+                        href="/parks"
+                        prefetch={false}
+                        className="text-muted-foreground hover:text-foreground text-sm transition-colors"
+                      >
+                        {t('parks')}
+                      </Link>
+                      {(geoMenu ?? []).map((continent) => (
+                        <Link
+                          key={continent.slug}
+                          href={`/parks/${continent.slug}`}
+                          prefetch={false}
+                          className="text-muted-foreground hover:text-foreground text-sm transition-colors"
+                        >
+                          {translateContinent(tGeo, continent.slug, locale, continent.name)}
+                        </Link>
+                      ))}
+                    </div>
+                  </details>
                   <Link
-                    href="/parks/europe"
+                    href={bestTimePath}
                     prefetch={false}
                     className="hover:text-primary text-lg font-medium transition-colors"
                   >
-                    {t('explore')}
+                    {t('bestTime')}
                   </Link>
                   <Link
                     href={glossaryPath}
