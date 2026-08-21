@@ -589,7 +589,7 @@ Ein Tagesablauf, der daraus folgt:
    ist der Wert dort fast doppelt so hoch.
 2. **Danach direkt nach Kroatien zu Voltron.** In der ersten Stunde liegt die
    Schlange typischerweise bei 20 bis 25 Minuten.
-3. **Zwischen zehn und zwölf nichts erzwingen.** Das ist die Stunde für
+3. **Zwischen zehn und zwölf nichts erzwingen.** Das sind die zwei Stunden für
    Frühstück, eine Show oder den Märchenwald. Alles, was jetzt eine Schlange
    hat, hat sie am Nachmittag kürzer.
 4. **Ab zwölf Silver Star**, dann Eurosat, Piraten in Batavia, Josefinas
@@ -624,10 +624,10 @@ Toussaint-Ferien laufen oder in Basel-Stadt die Herbstferien. Unser Kalender
 rechnet die französischen und die Schweizer Ferien für diesen Park mit, der
 Ferienkalender eines einzelnen Bundeslandes tut das nicht.
 
-**Den Dienstag für einen ruhigen Wochentag halten.** Er ist der vollste
-Wochentag der Woche, mit 25 Minuten typischer Wartezeit gegenüber 22 am Montag,
-Donnerstag und Freitag. Wer ohne Kinder plant und sich zwischen zwei
-Wochentagen entscheiden kann, nimmt den Donnerstag.
+**Den Dienstag für einen ruhigen Werktag halten.** Er ist der vollste von allen,
+mit 25 Minuten typischer Wartezeit gegenüber 22 am Montag, Donnerstag und
+Freitag. Wenn ohnehin nur ein Werktag in Frage kommt, nimm Montag, Donnerstag
+oder Freitag, die liegen alle drei gleichauf.
 
 ## Halloween, HALLOWinter, Winter
 
