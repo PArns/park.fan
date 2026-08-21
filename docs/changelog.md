@@ -4,6 +4,43 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: the header, and the two logos that were never the same logo
+
+The bar is 48 px instead of 56, the search field 32 instead of 40, and the logo
+24 px everywhere instead of 28 on a phone and 36 on a desktop. It reads quieter,
+which is what this started as.
+
+The reason it also runs better is the second half. On a hero page the header
+renders the lockup twice — one copy parked in the corner over the photo, one in
+the flex flow — and cross-fades them while sliding one onto the other. The
+comment above that code claimed the two coincide at the midpoint. They never
+did: the bar copy was `h-7 md:h-9` + `h-5 md:h-6` + `gap-0.5` against the
+corner's `h-6` + `h-5` + `gap-1`, so the handoff computed a scale of 0.667 and
+animated a 1.5× blow-up under the slide. And no single factor could have saved
+it, because 36:24 is not 24:20 — measured at 1440, the corner copy stayed 15 px
+wider than the bar copy at the top and 25 px wider once solid. They also sat
+0.5 px apart vertically, the in-flow copy being centred on a hard-coded `h-14`
+box and the corner copy on the header's 55 px content box.
+
+Both copies render one `BrandLockup` now, so the scale resolves to 1.000 and the
+handoff is a plain translate. Sampled per animation frame, the two boxes agree
+to 0.0 px on all four edges from start to finish.
+
+Heights come off the button scale rather than out of the air. The old bar had
+the largest control in the design system — the 40 px `lg` search field — in the
+shortest row in the app; it is the 32 px `sm` size now, with 8 px of air above
+and below it, and the two 36 px controls below `lg` (search, burger) are finally
+the same box as each other instead of 40 against 36.
+
+Four numbers had to move together: the bar itself, the `<Suspense>` fallback in
+the locale layout that reserves it, and the `-mt-14` on the three heroes the
+header floats over. `pnpm measure:cls --late` reads 0.0000 on mobile for the
+homepage and the park page afterwards.
+
+See [design system → header geometry](design/design-system.md#header-geometry).
+
+---
+
 ## Unreleased – feat: the facts a park page could not state
 
 A park page had a map, a forecast, a weather chart and no way to say where the

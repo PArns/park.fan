@@ -35,7 +35,7 @@ export function Hero({
   titleClassName?: string;
 }) {
   return (
-    <header className="relative isolate -mt-14 flex min-h-[78vh] items-end overflow-hidden">
+    <header className="relative isolate -mt-12 flex min-h-[78vh] items-end overflow-hidden">
       <Image
         src={imageSrc}
         alt={imageAlt}

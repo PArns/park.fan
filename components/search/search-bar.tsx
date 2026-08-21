@@ -148,7 +148,12 @@ export function SearchCommand({
       {trigger === 'button' && (
         <Button
           variant="outline"
-          className="relative h-10 w-10 p-0 md:h-9 md:w-64 md:justify-start md:px-3 md:py-2"
+          // `sm` is the header bar: below `lg` this button stands in for the search field, and it
+          // shares the row with the burger, so it takes the burger's 36 px box rather than sitting
+          // 4 px taller than it. `lg` (the /ui gallery, anything outside the bar) is unchanged.
+          className={`relative p-0 md:w-64 md:justify-start md:px-3 md:py-2 ${
+            size === 'sm' ? 'h-9 w-9 md:h-8' : 'h-10 w-10 md:h-9'
+          }`}
           onClick={() => openSearch(searchOpenSource)}
           aria-label={t('search')}
         >
@@ -156,7 +161,9 @@ export function SearchCommand({
           <span className="hidden md:inline-flex">
             {placeholder || t('searchPlaceholderShort')}
           </span>
-          <kbd className="bg-primary/40 text-primary border-primary/40 pointer-events-none absolute top-2 right-2 hidden h-5 items-center gap-1 rounded border px-1.5 font-mono text-xs font-medium opacity-100 shadow-sm select-none md:flex">
+          {/* Centred, not `top-2`: the button now comes in two heights, and a fixed offset from
+              the top only lands in the middle of one of them. */}
+          <kbd className="bg-primary/40 text-primary border-primary/40 pointer-events-none absolute top-1/2 right-2 hidden h-5 -translate-y-1/2 items-center gap-1 rounded border px-1.5 font-mono text-xs font-medium opacity-100 shadow-sm select-none md:flex">
             {isMac ? <span className="text-xs">⌘</span> : 'Ctrl'}K
           </kbd>
         </Button>
@@ -173,13 +180,13 @@ export function SearchCommand({
           )}
           <Search
             className={`text-muted-foreground group-hover:text-primary absolute top-1/2 z-10 -translate-y-1/2 transition-colors ${
-              size === 'sm' ? 'left-3 h-4 w-4' : 'left-4 h-5 w-5'
+              size === 'sm' ? 'left-2.5 h-4 w-4' : 'left-4 h-5 w-5'
             }`}
           />
           <div
             className={`border-primary/20 hover:border-primary/40 text-muted-foreground flex w-full items-center justify-between border shadow-md backdrop-blur-lg transition-all hover:shadow-lg dark:bg-[oklch(0.12_0.025_241_/_0.55)] dark:hover:bg-[oklch(0.14_0.030_241_/_0.65)] ${
               size === 'sm'
-                ? 'bg-background/60 hover:bg-background/75 h-10 rounded-lg px-3 py-2 pr-12 pl-10 text-sm'
+                ? 'bg-background/60 hover:bg-background/75 h-8 rounded-lg px-3 py-1 pr-11 pl-9 text-sm'
                 : 'bg-background/77 hover:bg-background/85 h-14 rounded-xl px-4 py-3 pr-14 pl-12 text-base'
             } ${className}`}
           >
@@ -189,7 +196,9 @@ export function SearchCommand({
           </div>
           <kbd
             className={`bg-primary/20 text-primary border-primary/20 pointer-events-none absolute top-1/2 hidden -translate-y-1/2 items-center gap-0.5 rounded border font-mono font-medium shadow-sm md:flex ${
-              size === 'sm' ? 'right-2 h-6 px-1.5 text-[11px]' : 'right-3 h-8 gap-1 px-2.5 text-sm'
+              size === 'sm'
+                ? 'right-1.5 h-5 px-1.5 text-[11px]'
+                : 'right-3 h-8 gap-1 px-2.5 text-sm'
             }`}
           >
             {isMac ? (

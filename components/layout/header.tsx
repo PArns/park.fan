@@ -7,9 +7,9 @@ import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import type { Locale } from '@/i18n/config';
 import { Menu, MapPin } from 'lucide-react';
-import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { BrandLockup } from '@/components/layout/brand-lockup';
 import { useHeaderReveal } from '@/lib/hooks/use-header-reveal';
 import { ThemeToggle } from '@/components/common/theme-toggle';
 import { LocaleSwitcher } from '@/components/common/locale-switcher';
@@ -96,13 +96,22 @@ export function Header({ showBlog = true }: HeaderProps) {
    * like exactly what it was — one thing disappearing while a second one appeared somewhere else,
    * at a different size on the left.
    *
-   * Each pair now travels the same path in the same 500 ms. The outgoing copy slides to where the
-   * incoming one lives (and, for the logo, grows to its size); the incoming one starts at the
-   * corner. At the midpoint the two coincide, so the eye reads one object moving.
+   * Each pair now travels the same path in the same 500 ms: the outgoing copy slides to where the
+   * incoming one lives, the incoming one starts at the corner. At the midpoint the two coincide,
+   * so the eye reads one object moving.
+   *
+   * "Coincide" is a claim about geometry, and it used to be false. Both copies render
+   * `<BrandLockup>` now, so they are congruent by construction and `logoScale` resolves to 1.000 —
+   * a pure translate, nothing rasterized at one size and painted at another. The scale is kept in
+   * the formula as the safety net it was meant to be: if the two ever diverge again the handoff
+   * still lands, it just costs a blur. Before the shared component it was carrying a 1.5× on every
+   * desktop hero page, and even that could not reconcile the two — a single factor cannot fix a
+   * pin:wordmark ratio of 36:24 against 24:20, so the corner copy stayed ~25 px wider than the bar
+   * copy the whole way across (measured at 1440: 147.2 px against 122.2 px).
    *
    * Two anchors, two conventions:
    *
-   * - **The logo** is left-aligned, so the path is measured from the left edges and grows from
+   * - **The logo** is left-aligned, so the path is measured from the left edges and scales from
    *   `origin-left` — away from the screen edge, with its left edge on the path.
    * - **The locale + theme cluster** is right-aligned, so it is measured from the RIGHT edges
    *   (`offsetLeft + offsetWidth`) and moves from `origin-right`. It needs no scale at all: both
@@ -171,7 +180,7 @@ export function Header({ showBlog = true }: HeaderProps) {
          repaint on the hero pages, and it repeats on every direction change up there. The blur
          now snaps on/off (barely perceptible: the bar is still transparent when the fade starts)
          while the colours keep cross-fading. */
-      className={`relative sticky top-0 z-50 h-14 border-b transition-[background-color,border-color] duration-500 ${
+      className={`relative sticky top-0 z-50 h-12 border-b transition-[background-color,border-color] duration-500 ${
         isTransparent
           ? 'border-transparent bg-transparent'
           : 'border-border/50 bg-background/80 backdrop-blur-md'
@@ -179,7 +188,12 @@ export function Header({ showBlog = true }: HeaderProps) {
     >
       <div
         ref={barRef}
-        className="container mx-auto flex h-14 items-center justify-between px-4 md:px-0"
+        /* `h-full`, not a second `h-12`: the header is `h-12 border-b` and Tailwind boxes are
+           border-box, so its CONTENT box is 47 px. A hard-coded 48 px here overflowed it by a
+           pixel and, worse, centred the in-flow logo on a different box than the corner copy,
+           which is absolutely centred in the header itself — the two copies of the same lockup
+           sat 0.5 px apart for the whole handoff. */
+        className="container mx-auto flex h-full items-center justify-between px-4 md:px-0"
       >
         {/* Corner logo – absolute, visible only when transparent (hero top).
             Same left-6 offset as the hero image info text below. On scroll it hands over to the
@@ -197,66 +211,7 @@ export function Header({ showBlog = true }: HeaderProps) {
           aria-label="park.fan - Home"
           tabIndex={isTransparent ? 0 : -1}
         >
-          {darkHero ? (
-            // Dark hero (Fancast): always the light/white logo so it stays visible
-            // over the dark image in both colour themes.
-            <>
-              <Image
-                src="/logo-small-dark.svg"
-                width={26}
-                height={30}
-                alt=""
-                aria-hidden="true"
-                className="h-6 w-auto"
-                loading="eager"
-              />
-              <Image
-                src="/parkfan-dark.svg"
-                width={84}
-                height={24}
-                alt="park.fan"
-                className="h-5 w-auto"
-                loading="eager"
-              />
-            </>
-          ) : (
-            <>
-              <Image
-                src="/logo-small-dark.svg"
-                width={26}
-                height={30}
-                alt=""
-                aria-hidden="true"
-                className="hidden h-6 w-auto dark:block"
-                loading="eager"
-              />
-              <Image
-                src="/logo-small.svg"
-                width={26}
-                height={30}
-                alt=""
-                aria-hidden="true"
-                className="block h-6 w-auto dark:hidden"
-                loading="eager"
-              />
-              <Image
-                src="/parkfan-dark.svg"
-                width={84}
-                height={24}
-                alt="park.fan"
-                className="hidden h-5 w-auto dark:block"
-                loading="eager"
-              />
-              <Image
-                src="/parkfan.svg"
-                width={84}
-                height={24}
-                alt="park.fan"
-                className="block h-5 w-auto dark:hidden"
-                loading="eager"
-              />
-            </>
-          )}
+          <BrandLockup forceLight={darkHero} />
         </Link>
 
         {/* Header logo – in flex flow, arrives from the corner on scroll. Keeps the
@@ -267,47 +222,13 @@ export function Header({ showBlog = true }: HeaderProps) {
           href="/"
           prefetch={false}
           style={barLogoStyle}
-          className={`flex shrink-0 origin-left items-center gap-0.5 motion-reduce:transform-none! ${handoffMotion} ${
+          className={`flex shrink-0 origin-left items-center gap-1 motion-reduce:transform-none! ${handoffMotion} ${
             isTransparent ? 'pointer-events-none opacity-0' : 'opacity-100'
           }`}
           aria-label="park.fan - Home"
           tabIndex={isTransparent ? -1 : 0}
         >
-          <Image
-            src="/logo-small-dark.svg"
-            width={26}
-            height={30}
-            alt=""
-            aria-hidden="true"
-            className="hidden h-7 w-auto md:h-9 dark:block"
-            loading="eager"
-          />
-          <Image
-            src="/logo-small.svg"
-            width={26}
-            height={30}
-            alt="park.fan"
-            aria-hidden="true"
-            className="block h-7 w-auto md:h-9 dark:hidden"
-            loading="eager"
-          />
-          <Image
-            src="/parkfan-dark.svg"
-            width={84}
-            height={24}
-            alt="park.fan"
-            className="hidden h-5 w-auto md:h-6 dark:block"
-            loading="eager"
-          />
-          <Image
-            src="/parkfan.svg"
-            width={84}
-            height={24}
-            alt=""
-            aria-hidden="true"
-            className="block h-5 w-auto md:h-6 dark:hidden"
-            loading="eager"
-          />
+          <BrandLockup />
         </Link>
 
         {/* Desktop Navigation – fades in on scroll */}
@@ -402,7 +323,7 @@ export function Header({ showBlog = true }: HeaderProps) {
         <div className="flex items-center gap-2">
           {/* Search Button Mobile – fades in on scroll */}
           <div className={`lg:hidden ${fadeClass}`}>
-            <SearchCommand trigger="button" />
+            <SearchCommand trigger="button" size="sm" />
           </div>
 
           {/* In-flow locale + theme – fades in on scroll, keeps flex anchor when invisible */}

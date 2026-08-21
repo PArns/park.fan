@@ -243,7 +243,10 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                 <LanguageBanner currentLocale={locale as Locale} />
               </Suspense>
               <div className="flex min-h-screen flex-col">
-                <Suspense fallback={<div className="h-14" />}>
+                {/* Reserves the bar's exact height (h-12 + the 1 px border the header itself draws)
+                    so the first paint does not move when the client Header streams in. Both
+                    numbers live in components/layout/header.tsx — change them together. */}
+                <Suspense fallback={<div className="h-12" />}>
                   <Header showBlog={showBlog} />
                 </Suspense>
                 <main className="flex-1">{children}</main>
