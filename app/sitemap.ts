@@ -293,9 +293,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // ("wartezeiten" / "wait-times"), so `buildBlogAlternates` — which reuses one path for
   // every locale — would emit alternates that 404. `buildTagAlternates` resolves each
   // locale's real slug and drops locales where the tag has no page.
-  const { listTags, buildTagAlternates } = await import('@/lib/blog/tags');
+  // Only tags at or above TAG_INDEX_MIN_POSTS: the thin ones render `noindex`, and a
+  // sitemap advertising a page that asks not to be indexed is a contradiction we would
+  // be sending on purpose. Both sides read the same threshold from `@/lib/blog/tags`,
+  // so a tag crossing it reappears here and drops its robots meta in the same build.
+  const { listTags, buildTagAlternates, TAG_INDEX_MIN_POSTS } = await import('@/lib/blog/tags');
   for (const locale of blogLocales) {
     for (const tag of listTags(locale as import('@/i18n/config').Locale)) {
+      if (tag.count < TAG_INDEX_MIN_POSTS) continue;
       const tagAlternates = buildTagAlternates(locale as import('@/i18n/config').Locale, tag.slug);
       if (tagAlternates['en']) tagAlternates['x-default'] = tagAlternates['en'];
       routes.push({

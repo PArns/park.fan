@@ -23,6 +23,7 @@ import {
 
 import { stripNewPrefix } from '@/lib/utils';
 import { buildOpeningHoursSpecification } from '@/lib/utils/opening-hours-schema';
+import { buildWaitTimeObservations } from '@/lib/utils/wait-time-observations';
 import { SITE_URL } from '@/i18n/config';
 
 /**
@@ -324,6 +325,11 @@ export function ParkStructuredData({
             const attrImg = getAttractionBackgroundImage(park.slug, attraction.slug);
             return {
               '@type': 'TouristAttraction' as const,
+              // Same reason the Organization and WebSite nodes carry ids: so the
+              // ride is one entity on the page rather than several anonymous
+              // descriptions of it. The wait-time `Observation` below points
+              // here instead of repeating the ride's name.
+              '@id': `${url}/${attraction.slug}`,
               name: stripNewPrefix(attraction.name),
               url: `${url}/${attraction.slug}`,
               image: attrImg ? `${SITE_URL}${attrImg}` : undefined,
@@ -340,7 +346,28 @@ export function ParkStructuredData({
     ],
   };
 
-  return <JsonLd data={data} />;
+  // Current standby waits as `Observation` nodes, in their own block rather than
+  // inside `ThemePark` — a park does not have a property for "measurements taken
+  // about me", and the readings are about the rides anyway, which they reference
+  // by the `@id` those rides carry above. `undefined` for parks whose waits we
+  // cannot read; see buildWaitTimeObservations for the full selection rule.
+  const observations = 'attractions' in park ? buildWaitTimeObservations(park, url) : undefined;
+
+  return (
+    <>
+      <JsonLd data={data} />
+      {observations && (
+        <JsonLd
+          data={
+            {
+              '@context': 'https://schema.org',
+              '@graph': observations,
+            } as WithContext<Thing>
+          }
+        />
+      )}
+    </>
+  );
 }
 
 /**

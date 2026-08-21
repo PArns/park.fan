@@ -44,6 +44,36 @@ export const listTags = cache((locale: Locale): TagEntry[] => {
 });
 
 /**
+ * A tag archive earns a place in the index once it collects at least this many
+ * posts. Below it the page is one post's teaser at a second URL: 31 tags over 8
+ * posts put **186 of the blog's 258 sitemap URLs** (72 %) into tag archives, 18
+ * of the 31 holding a single post. That is not more of the blog on offer, it is
+ * a thinner sample of it — and the entity tags among them (`efteling`,
+ * `europa-park`) compete for their park's own, far stronger page.
+ *
+ * The header menu already drops tags for this reason. This is the same judgement
+ * applied to the index, and it is deliberately **`noindex`, not `nofollow` and
+ * not removal**: the pages stay reachable, stay crawlable, and keep passing
+ * signal to the posts they list. A tag crossing the threshold simply reappears
+ * in the index on the next build, so nothing has to be curated by hand.
+ *
+ * Both readers — {@link isIndexableTag} for the page's robots meta and the
+ * sitemap's own filter — must agree. A sitemap that omits a page Google may
+ * still index changes nothing, and a page that says `noindex` while the sitemap
+ * advertises it is a contradiction we would be sending on purpose.
+ */
+export const TAG_INDEX_MIN_POSTS = 3;
+
+/**
+ * Whether a tag archive should be indexed. Unknown slugs answer `false`: a tag
+ * with no entry has no posts, which is below any threshold.
+ */
+export function isIndexableTag(locale: Locale, slug: string): boolean {
+  const entry = listTags(locale).find((tag) => tag.slug === slug);
+  return (entry?.count ?? 0) >= TAG_INDEX_MIN_POSTS;
+}
+
+/**
  * Find the canonical display label for a slug — there may be multiple
  * differently-cased variants in posts, the first wins.
  */
