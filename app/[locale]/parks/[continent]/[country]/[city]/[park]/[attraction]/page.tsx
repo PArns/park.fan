@@ -3,6 +3,11 @@ import { formatInTimeZone } from 'date-fns-tz';
 import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
 import type { Locale } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
+import {
+  buildAttractionTitle,
+  buildAttractionDescription,
+  buildAttractionFacts,
+} from '@/lib/seo/attraction-meta';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
@@ -142,31 +147,24 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
     .filter(Boolean)
     .join(', ');
 
+  // One template for every ride fitted inside Google's ~60 characters for 33.2%
+  // of English rides, 29.9% of German ones and 7.1% of Italian, and said the same
+  // sentence on all 42,606 of them. The ladder takes every locale to ~98%; the
+  // facts come off the attraction this fetch already returned.
+  const title = buildAttractionTitle(attractionName, parkName, t);
+  const description = attraction
+    ? buildAttractionDescription(attractionName, parkName, buildAttractionFacts(attraction, t), t)
+    : t('metaDescriptionTemplate', { attraction: attractionName, park: parkName });
+
   return {
-    title: t('titleTemplate', {
-      attraction: attractionName,
-      park: parkName,
-      city: cityName,
-    }),
-    description: t('metaDescriptionTemplate', {
-      attraction: attractionName,
-      park: parkName,
-      city: cityName,
-    }),
+    title,
+    description,
     keywords,
     ...(isDeduplicatedVariant && { robots: { index: false, follow: true } }),
     ...buildOpenGraphMetadata({
       locale,
-      title: t('titleTemplate', {
-        attraction: attractionName,
-        park: parkName,
-        city: cityName,
-      }),
-      description: t('metaDescriptionTemplate', {
-        attraction: attractionName,
-        park: parkName,
-        city: cityName,
-      }),
+      title,
+      description,
       url: `${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${canonicalAttractionSlug}`,
       ogImageUrl,
       imageAlt: tImageAlt('attraction', {
@@ -344,8 +342,18 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                       </span>
                     </h1>
                     {/* Muted like the park header's address line: this is where the ride
-                      is, not what it is — the facts band below carries that. */}
-                    <div className="text-muted-foreground flex flex-wrap items-center gap-3">
+                      is, not what it is — the facts band below carries that.
+
+                      min-h is this row's own two-line height on a phone: 24px (the park link at
+                      text-base) + 12px (gap-3's row gap) + 22px (an outline Badge). Below `sm`
+                      the row sits within a couple of px of its wrap threshold, so one load
+                      flipped it 58 → 24 → 58px twice — once when Geist replaced the wider
+                      fallback face, once when ParkDistance swapped its placeholder for the real
+                      badge — and charged 0.32 CLS on a phone. Reserving the two lines makes both
+                      transitions free. `content-start` is load-bearing: with `items-center` a
+                      single line would centre itself 17px down inside the reserved box. From
+                      `sm` the row has the width never to wrap, the cutoff DistanceGap uses. */}
+                    <div className="text-muted-foreground flex min-h-[58px] flex-wrap content-start items-center gap-3 sm:min-h-0">
                       <Link
                         href={
                           `/parks/${continent}/${country}/${city}/${parkSlug}` as '/parks/europe/germany/rust/europa-park'

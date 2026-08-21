@@ -16,24 +16,61 @@ import { cn } from '@/lib/utils';
  * forever) as soon as we know no position is coming.
  */
 function DistancePlaceholder({
-  width,
+  sample,
   size,
   className,
 }: {
-  width: string;
+  sample: string;
   size: 'sm' | 'md';
   className?: string;
 }) {
   return (
-    <Skeleton
-      as="span"
-      aria-hidden="true"
-      // Matches the badge's own line height per size (text-xs vs text-sm), so the swap from
-      // placeholder to value changes nothing about the layout.
-      className={cn('inline-block align-middle', size === 'sm' ? 'h-4' : 'h-5', width, className)}
-    />
+    <DistanceReservation sample={sample} size={size} className={className}>
+      <Skeleton as="span" className="absolute inset-0 rounded-md" />
+    </DistanceReservation>
   );
 }
+
+/**
+ * The box the resolved badge will occupy, reserved by rendering that badge
+ * invisible rather than by guessing a width.
+ *
+ * A fixed `w-24` was measured at 412px against what actually renders: 104px in
+ * French, 112px English, 128px Dutch, 131px German, 149px Italian and 158px
+ * Spanish — the reservation was 62px short in the widest locale, and in a
+ * `flex-wrap` row being short by any amount flips the line count and moves the
+ * whole page. The label is the only thing that varies, so it sizes the box.
+ *
+ * `sample` uses the widest distance `formatDistance` can return, so a nearby
+ * park resolving to "250 m" shrinks inside a box that never moves.
+ */
+function DistanceReservation({
+  sample,
+  size,
+  className,
+  children,
+}: {
+  sample: string;
+  size: 'sm' | 'md';
+  className?: string;
+  children?: React.ReactNode;
+}) {
+  return (
+    <span className={cn('relative inline-flex items-center align-middle', className)}>
+      <span aria-hidden="true" className="invisible">
+        <DistanceBadge distance={sample} size={size} />
+      </span>
+      {children}
+    </span>
+  );
+}
+
+/**
+ * `formatDistance` caps at whole kilometres above 100 km, so "20000 km" is the
+ * longest number it can produce — half the planet's circumference, and the
+ * widest the badge can ever get for a real position.
+ */
+const WIDEST_DISTANCE_SAMPLE = 20_000_000;
 
 /**
  * "12.3 km away" for a single park, from the visitor's current position.
@@ -57,20 +94,25 @@ export function ParkDistance({
   const t = useTranslations('nearby');
   const { meters, pending } = useDistanceTo(latitude, longitude);
 
-  if (pending) return <DistancePlaceholder width="w-24" size={size} className={className} />;
+  const sample = `${formatDistance(WIDEST_DISTANCE_SAMPLE)} ${t('awayFrom')}`;
+
+  if (pending) return <DistancePlaceholder sample={sample} size={size} className={className} />;
   // No position is coming. Both headers put this inside a `flex-wrap` meta row that is exactly
   // wide enough to wrap around it on a phone, so dropping the element there does not free up a
   // gap — it un-wraps the row, and the page below moves up a whole line (34px, ~0.106 CLS).
   // Keep the box, empty and unannounced, for as long as the row is narrow enough to care;
   // from `sm` up the row has the width to absorb the change without reflowing, so it goes.
-  if (meters === null) return <DistanceGap size={size} className={className} />;
+  if (meters === null) return <DistanceGap sample={sample} size={size} className={className} />;
 
+  // The value sits inside the same reservation the placeholder used, so the
+  // three states are one box: "250 m" does not shrink it and Spanish does not
+  // stretch it, and the row's line count is decided once, before first paint.
   return (
-    <DistanceBadge
-      distance={`${formatDistance(meters)} ${t('awayFrom')}`}
-      size={size}
-      className={className}
-    />
+    <DistanceReservation sample={sample} size={size} className={className}>
+      <span className="absolute inset-0 flex items-center">
+        <DistanceBadge distance={`${formatDistance(meters)} ${t('awayFrom')}`} size={size} />
+      </span>
+    </DistanceReservation>
   );
 }
 
@@ -78,17 +120,16 @@ export function ParkDistance({
  * The placeholder's box without the pulse, held below `sm` only — this is the terminal state, so
  * a shimmer would promise a value that is never going to arrive.
  */
-function DistanceGap({ size, className }: { size: 'sm' | 'md'; className?: string }) {
-  return (
-    <span
-      aria-hidden="true"
-      className={cn(
-        'inline-block w-24 align-middle sm:hidden',
-        size === 'sm' ? 'h-4' : 'h-5',
-        className
-      )}
-    />
-  );
+function DistanceGap({
+  sample,
+  size,
+  className,
+}: {
+  sample: string;
+  size: 'sm' | 'md';
+  className?: string;
+}) {
+  return <DistanceReservation sample={sample} size={size} className={cn('sm:hidden', className)} />;
 }
 
 /**
@@ -108,14 +149,28 @@ export function NearestParkDistance({
   const t = useTranslations('nearby');
   const { meters, pending } = useNearestDistance(coordinates);
 
-  if (pending) return <DistancePlaceholder width="w-36" size={size} className={className} />;
+  if (pending)
+    return (
+      <DistancePlaceholder
+        sample={t('nearestParkAway', { distance: formatDistance(WIDEST_DISTANCE_SAMPLE) })}
+        size={size}
+        className={className}
+      />
+    );
   if (meters === null) return null;
 
   return (
-    <DistanceBadge
-      distance={t('nearestParkAway', { distance: formatDistance(meters) })}
+    <DistanceReservation
+      sample={t('nearestParkAway', { distance: formatDistance(WIDEST_DISTANCE_SAMPLE) })}
       size={size}
       className={className}
-    />
+    >
+      <span className="absolute inset-0 flex items-center">
+        <DistanceBadge
+          distance={t('nearestParkAway', { distance: formatDistance(meters) })}
+          size={size}
+        />
+      </span>
+    </DistanceReservation>
   );
 }

@@ -190,10 +190,10 @@
     },
     "about": {
       "title": "Qu'est-ce que park.fan ?",
-      "p1": "park.fan est né d'une frustration que tout fan de parcs d'attractions connaît bien : faire la queue 90 minutes en se demandant si une meilleure planification aurait pu l'éviter. Ce qui a commencé comme un projet personnel — « je vais juste suivre quelques temps d'attente » — est devenu une plateforme complète couvrant aujourd'hui 151 parcs, 5 253 attractions et des millions d'enregistrements de files d'attente traités chaque jour. L'objectif a toujours été le même : mettre fin aux suppositions lors de la planification d'une visite.",
+      "p1": "park.fan est né d'une frustration que tout fan de parcs d'attractions connaît bien : faire la queue 90 minutes en se demandant si une meilleure planification aurait pu l'éviter. Ce qui a commencé comme un projet personnel — « je vais juste suivre quelques temps d'attente » — est devenu une plateforme complète couvrant aujourd'hui 212 parcs, 7 101 attractions et des millions d'enregistrements de files d'attente traités chaque jour. L'objectif a toujours été le même : mettre fin aux suppositions lors de la planification d'une visite.",
       "p2": "L'IA derrière park.fan analyse les données historiques de fréquentation, les prévisions météo, les calendriers de vacances scolaires et les événements spéciaux pour prédire l'affluence et les temps d'attente des jours, voire des semaines à l'avance. Vous pouvez ainsi vérifier si le prochain samedi à Europa-Park ou Phantasialand sera une journée verte — files courtes, ambiance détendue — ou une journée rouge avec 60 minutes d'attente sur chaque attraction populaire. Le modèle est continuellement entraîné sur de nouvelles données et s'améliore avec le temps.",
       "coverageTitle": "Quels parcs sont couverts ?",
-      "p3": "park.fan couvre actuellement 151 parcs et 5 253 attractions dans le monde entier — de Walt Disney World, Disneyland Resort, Universal Orlando et Universal Studios Japan aux parcs européens comme Europa-Park, Phantasialand, Efteling, Heide Park et Toverland, ainsi que des parcs en Asie, en Australie et en Amérique du Sud. De nouveaux parcs sont régulièrement ajoutés.",
+      "p3": "park.fan couvre actuellement 212 parcs et 7 101 attractions dans le monde entier — de Walt Disney World, Disneyland Resort, Universal Orlando et Universal Studios Japan aux parcs européens comme Europa-Park, Phantasialand, Efteling, Heide Park et Toverland, ainsi que des parcs en Asie, en Australie et en Amérique du Sud. De nouveaux parcs sont régulièrement ajoutés.",
       "howTitle": "Comment utiliser park.fan ?",
       "p4": "Recherchez votre parc via la barre de recherche ou parcourez par continent, pays et ville. Sur la page du parc, vous trouverez les temps d'attente en direct pour chaque attraction, restaurant et spectacle — mis à jour chaque minute — ainsi que les prévisions d'affluence et un calendrier jour par jour. Les jours verts signalent de courtes files et moins de monde ; les jours orange ou rouges indiquent une affluence plus élevée.",
       "p5": "park.fan est un projet vivant, constamment enrichi de nouvelles fonctionnalités et de nouveaux parcs. Enregistrez vos parcs favoris pour un accès rapide, utilisez la navigation en parc pour planifier le parcours le plus efficace, et consultez toujours le calendrier d'affluence avant de réserver pour choisir le meilleur jour possible.",
@@ -210,7 +210,7 @@
     }
   },
   "footer": {
-    "description": "Temps d'attente en direct et prédictions d'affluence pour 142+ parcs d'attractions. Planifiez votre visite parfaite avec des données en temps réel et la navigation.",
+    "description": "Temps d'attente en direct et prédictions d'affluence pour 200+ parcs d'attractions. Planifiez votre visite parfaite avec des données en temps réel et la navigation.",
     "keywords": "temps d'attente parc attraction, temps d'attente en direct, temps d'attente aujourd'hui, calendrier d'affluence, prévision IA, file d'attente, prévisions affluence, horaires ouverture, parc d'attractions, montagnes russes, Disney temps d'attente, Universal Studios, Europa-Park, Phantasialand, meilleur moment visite",
     "sections": {
       "explore": "Parcs Internationaux",
@@ -1042,7 +1042,7 @@
   "seo": {
     "global": {
       "title": "park.fan - Temps d'Attente Parcs d'Attractions & Prédictions",
-      "description": "Temps d'attente en direct et prédictions d'affluence pour 142+ parcs. Planifiez votre visite avec des données en temps réel.",
+      "description": "Temps d'attente en direct et prédictions d'affluence pour 200+ parcs. Planifiez votre visite avec des données en temps réel.",
       "keywords": "temps d'attente parc attraction, temps d'attente en direct, temps d'attente aujourd'hui, calendrier d'affluence, prévision IA, file d'attente, prévisions affluence, horaires ouverture, parc d'attractions, montagnes russes, Disney temps d'attente, Universal Studios, Europa-Park, Phantasialand, meilleur moment visite"
     },
     "home": {
@@ -1064,7 +1064,14 @@
     "attraction": {
       "titleTemplate": "{attraction} à {park} – Temps d'Attente en Direct",
       "metaDescriptionTemplate": "Temps d'attente en direct pour {attraction} à {park}. Vérifiez la file et l'affluence.",
-      "keywordWaitTime": "temps d'attente"
+      "keywordWaitTime": "temps d'attente",
+      "titleTemplateShort": "{attraction} à {park} – Temps d'attente",
+      "titleTemplateBare": "{attraction} – Temps d'attente",
+      "metaDescriptionTemplateFacts": "Temps d'attente en direct pour {attraction} à {park}. {facts}.",
+      "factBy": "{manufacturer}",
+      "factOpened": "ouverture en {year}",
+      "factMinHeight": "taille min. {height}",
+      "factLand": "zone {land}"
     },
     "continent": {
       "titleTemplate": "Parcs d'Attractions en {location} : Attente & Carte",
@@ -1135,9 +1142,9 @@
     "homepage": {
       "faq": {
         "whatIsQ": "Qu'est-ce que park.fan?",
-        "whatIsA": "park.fan est votre plateforme centrale pour les temps d'attente en direct et les informations actuelles de plus de 30 parcs d'attractions en Europe, Asie et Amérique du Nord. Nous vous montrons en temps réel combien de temps d'attente il y a pour vos attractions préférées, quels spectacles sont en cours et quand les parcs sont ouverts.",
+        "whatIsA": "park.fan est votre plateforme centrale pour les temps d'attente en direct et les informations actuelles de plus de 200 parcs d'attractions en Europe, Asie et Amérique du Nord. Nous vous montrons en temps réel combien de temps d'attente il y a pour vos attractions préférées, quels spectacles sont en cours et quand les parcs sont ouverts.",
         "whichParksQ": "Quels parcs d'attractions sont pris en charge par park.fan?",
-        "whichParksA": "park.fan prend en charge plus de 30 parcs d'attractions dans le monde, notamment Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland, Bobbejaanland et bien d'autres. Vous pouvez trouver la liste complète de tous les parcs avec temps d'attente en direct sur notre page de présentation des parcs. Nous élargissons continuellement notre offre avec des parcs d'attractions supplémentaires.",
+        "whichParksA": "park.fan prend en charge plus de 200 parcs d'attractions dans le monde, notamment Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland, Bobbejaanland et bien d'autres. Vous pouvez trouver la liste complète de tous les parcs avec temps d'attente en direct sur notre page de présentation des parcs. Nous élargissons continuellement notre offre avec des parcs d'attractions supplémentaires.",
         "liveDataQ": "Les temps d'attente sur park.fan sont-ils en direct et en temps réel?",
         "liveDataA": "Oui! park.fan met à jour en continu tous les temps d'attente pendant les heures d'ouverture du parc. Les données proviennent directement des API officielles du parc et sont synchronisées en temps réel. Vous voyez toujours les temps d'attente les plus récents disponibles et pouvez planifier de manière optimale votre visite au parc.",
         "freeQ": "L'utilisation de park.fan est-elle gratuite?",

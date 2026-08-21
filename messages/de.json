@@ -190,10 +190,10 @@
     },
     "about": {
       "title": "Was ist park.fan?",
-      "p1": "park.fan entstand aus einer Frustration, die wohl jeder Freizeitpark-Fan kennt: 90 Minuten in einer Warteschlange stehen und sich fragen, ob clevere Planung das hätte verhindern können. Was als Nebenprojekt begann – «lass mich einfach ein paar Wartezeiten tracken» – wuchs zu einer vollständigen Plattform, die heute 151 Parks, 5.253 Attraktionen und täglich Millionen von Warteschlangendatensätzen verarbeitet. Das Ziel war und ist: das Rätselraten bei der Planung eines Freizeitpark-Besuchs ein für alle Mal beenden.",
+      "p1": "park.fan entstand aus einer Frustration, die wohl jeder Freizeitpark-Fan kennt: 90 Minuten in einer Warteschlange stehen und sich fragen, ob clevere Planung das hätte verhindern können. Was als Nebenprojekt begann – «lass mich einfach ein paar Wartezeiten tracken» – wuchs zu einer vollständigen Plattform, die heute 212 Parks, 7.101 Attraktionen und täglich Millionen von Warteschlangendatensätzen verarbeitet. Das Ziel war und ist: das Rätselraten bei der Planung eines Freizeitpark-Besuchs ein für alle Mal beenden.",
       "p2": "Die KI hinter park.fan analysiert historische Besucherdaten, Wetterprognosen, Schulferienkalender und Sonderveranstaltungen, um Besucherandrang und Wartezeiten Tage oder sogar Wochen im Voraus vorherzusagen. Statt zu hoffen und zu raten, kannst du vorab prüfen, ob der nächste Samstag im Europa-Park Resort oder Phantasialand ein grüner Tag wird – kurze Warteschlangen, entspannte Atmosphäre – oder ein roter Tag, an dem jede beliebte Attraktion 60 Minuten Wartezeit bedeutet. Das Modell wird kontinuierlich mit neuen Daten trainiert und wird mit der Zeit immer präziser.",
       "coverageTitle": "Welche Parks sind abgedeckt?",
-      "p3": "park.fan erfasst derzeit 151 Freizeitparks und 5.253 Attraktionen weltweit – von Walt Disney World, Disneyland Resort, Universal Orlando und Universal Studios Japan bis zu europäischen Parks wie Europa-Park, Phantasialand, Efteling, Heide Park und Toverland sowie Parks in Asien, Australien und Südamerika. Regelmäßig kommen neue Parks hinzu, denn die Plattform wächst stetig weiter.",
+      "p3": "park.fan erfasst derzeit 212 Freizeitparks und 7.101 Attraktionen weltweit – von Walt Disney World, Disneyland Resort, Universal Orlando und Universal Studios Japan bis zu europäischen Parks wie Europa-Park, Phantasialand, Efteling, Heide Park und Toverland sowie Parks in Asien, Australien und Südamerika. Regelmäßig kommen neue Parks hinzu, denn die Plattform wächst stetig weiter.",
       "howTitle": "Wie nutze ich park.fan?",
       "p4": "Suche deinen Wunschpark über die Suchleiste oder stöbere nach Kontinent, Land und Stadt. Auf der Parkseite findest du Live-Wartezeiten für alle Fahrgeschäfte, Restaurants und Shows – minütlich aktualisiert – sowie KI-Prognosen und einen tagesgenauen Crowd-Kalender. Grüne Tage signalisieren kurze Warteschlangen und wenig Betrieb; orange oder rote Tage stehen für mehr Andrang und längere Wartezeiten.",
       "p5": "park.fan ist ein lebendes Projekt, das laufend um neue Features und Parks erweitert wird. Speichere deine Lieblingsparks für schnellen Zugriff, nutze die In-Park-Navigation für die effizienteste Route durch den Park – und wirf vor der Buchung unbedingt einen Blick in den Crowd-Kalender, um deinen Besuch auf den bestmöglichen Tag zu legen.",
@@ -210,7 +210,7 @@
     }
   },
   "footer": {
-    "description": "Live-Wartezeiten und KI-gestützte Besucherprognosen für über 142 Freizeitparks weltweit. Plane deinen perfekten Parkbesuch mit Echtzeit-Daten und In-Park Navigation.",
+    "description": "Live-Wartezeiten und KI-gestützte Besucherprognosen für über 200 Freizeitparks weltweit. Plane deinen perfekten Parkbesuch mit Echtzeit-Daten und In-Park Navigation.",
     "keywords": "Freizeitpark Wartezeiten, Wartezeiten LIVE, Wartezeiten heute, Crowd-Kalender, KI-Prognose, Warteschlangen, Besucherprognosen, Öffnungszeiten, Achterbahn, Disney Wartezeiten, Universal Studios, Europa-Park, Phantasialand, beste Besuchszeit",
     "sections": {
       "explore": "Parks weltweit",
@@ -1042,7 +1042,7 @@
   "seo": {
     "global": {
       "title": "park.fan - Freizeitpark Wartezeiten & Prognosen",
-      "description": "Live-Wartezeiten und KI-Prognosen für 142+ Freizeitparks weltweit. Plane deinen Parkbesuch mit Echtzeit-Daten und In-Park-Navigation.",
+      "description": "Live-Wartezeiten und KI-Prognosen für 200+ Freizeitparks weltweit. Plane deinen Parkbesuch mit Echtzeit-Daten und In-Park-Navigation.",
       "keywords": "Freizeitpark Wartezeiten, Wartezeiten LIVE, Wartezeiten heute, Crowd-Kalender, KI-Prognose, Warteschlangen, Besucherprognosen, Öffnungszeiten, Achterbahn, Disney Wartezeiten, Universal Studios, Europa-Park, Phantasialand, beste Besuchszeit"
     },
     "home": {
@@ -1064,7 +1064,14 @@
     "attraction": {
       "titleTemplate": "{attraction} im {park} – Wartezeiten LIVE & Status",
       "metaDescriptionTemplate": "Aktuelle Wartezeiten für {attraction} im {park}. Prüfe Live-Daten und Besucherandrang.",
-      "keywordWaitTime": "Wartezeit"
+      "keywordWaitTime": "Wartezeit",
+      "titleTemplateShort": "{attraction} im {park} – Wartezeiten",
+      "titleTemplateBare": "{attraction} – Wartezeiten LIVE",
+      "metaDescriptionTemplateFacts": "Aktuelle Wartezeiten für {attraction} im {park}. {facts}.",
+      "factBy": "gebaut von {manufacturer}",
+      "factOpened": "eröffnet {year}",
+      "factMinHeight": "Mindestgröße {height}",
+      "factLand": "Bereich {land}"
     },
     "continent": {
       "titleTemplate": "Freizeitparks in {location}: Wartezeiten, Karte & Übersicht",
@@ -1135,9 +1142,9 @@
     "homepage": {
       "faq": {
         "whatIsQ": "Was ist park.fan?",
-        "whatIsA": "park.fan ist deine zentrale Plattform für Live-Wartezeiten und aktuelle Informationen aus über 30 Freizeitparks in Europa, Asien und Nordamerika. Wir zeigen dir in Echtzeit, wie lange die Wartezeiten bei deinen Lieblingsattraktionen sind, welche Shows gerade laufen und wann die Parks geöffnet haben.",
+        "whatIsA": "park.fan ist deine zentrale Plattform für Live-Wartezeiten und aktuelle Informationen aus über 200 Freizeitparks in Europa, Asien und Nordamerika. Wir zeigen dir in Echtzeit, wie lange die Wartezeiten bei deinen Lieblingsattraktionen sind, welche Shows gerade laufen und wann die Parks geöffnet haben.",
         "whichParksQ": "Welche Freizeitparks werden von park.fan unterstützt?",
-        "whichParksA": "park.fan unterstützt über 30 Freizeitparks weltweit, darunter Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland, Bobbejaanland und viele mehr. Die vollständige Liste aller Parks mit Live-Wartezeiten findest du auf unserer Parks-Übersichtsseite. Wir erweitern unser Angebot kontinuierlich um weitere Freizeitparks.",
+        "whichParksA": "park.fan unterstützt über 200 Freizeitparks weltweit, darunter Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland, Bobbejaanland und viele mehr. Die vollständige Liste aller Parks mit Live-Wartezeiten findest du auf unserer Parks-Übersichtsseite. Wir erweitern unser Angebot kontinuierlich um weitere Freizeitparks.",
         "liveDataQ": "Sind die Wartezeiten bei park.fan live und in Echtzeit?",
         "liveDataA": "Ja! park.fan aktualisiert alle Wartezeiten kontinuierlich während der Parköffnungszeiten. Die Daten stammen direkt von den offiziellen Park-APIs und werden in Echtzeit synchronisiert. Du siehst also immer die aktuellsten verfügbaren Wartezeiten und kannst deinen Parkbesuch optimal planen.",
         "freeQ": "Ist die Nutzung von park.fan kostenlos?",

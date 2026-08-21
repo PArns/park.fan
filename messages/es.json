@@ -190,10 +190,10 @@
     },
     "about": {
       "title": "¿Qué es park.fan?",
-      "p1": "park.fan nació de una frustración que todo fanático de los parques temáticos conoce bien: hacer cola 90 minutos preguntándose si una mejor planificación lo habría evitado. Lo que comenzó como un proyecto personal — «solo voy a rastrear algunos tiempos de espera» — se convirtió en una plataforma completa que hoy cubre 151 parques, 5.253 atracciones y procesa millones de registros de colas cada día. El objetivo siempre fue el mismo: eliminar las conjeturas al planificar una visita a un parque temático.",
+      "p1": "park.fan nació de una frustración que todo fanático de los parques temáticos conoce bien: hacer cola 90 minutos preguntándose si una mejor planificación lo habría evitado. Lo que comenzó como un proyecto personal — «solo voy a rastrear algunos tiempos de espera» — se convirtió en una plataforma completa que hoy cubre 212 parques, 7.101 atracciones y procesa millones de registros de colas cada día. El objetivo siempre fue el mismo: eliminar las conjeturas al planificar una visita a un parque temático.",
       "p2": "La IA detrás de park.fan analiza datos históricos de afluencia, pronósticos del tiempo, calendarios de vacaciones escolares y eventos especiales para predecir niveles de afluencia y tiempos de espera con días o incluso semanas de antelación. En lugar de adivinar, puedes comprobar si el próximo sábado en Europa-Park o Phantasialand será un día verde — colas cortas, ambiente relajado — o un día rojo con 60 minutos de espera en cada atracción popular. El modelo se entrena continuamente con nuevos datos y mejora con el tiempo.",
       "coverageTitle": "¿Qué parques están incluidos?",
-      "p3": "park.fan cubre actualmente 151 parques temáticos y 5.253 atracciones en todo el mundo — desde Walt Disney World, Disneyland Resort, Universal Orlando y Universal Studios Japan hasta parques europeos como Europa-Park, Phantasialand, Efteling, Heide Park y Toverland, además de parques en Asia, Australia y América del Sur. Se añaden nuevos parques regularmente.",
+      "p3": "park.fan cubre actualmente 212 parques temáticos y 7.101 atracciones en todo el mundo — desde Walt Disney World, Disneyland Resort, Universal Orlando y Universal Studios Japan hasta parques europeos como Europa-Park, Phantasialand, Efteling, Heide Park y Toverland, además de parques en Asia, Australia y América del Sur. Se añaden nuevos parques regularmente.",
       "howTitle": "¿Cómo usar park.fan?",
       "p4": "Busca tu parque en la barra de búsqueda o navega por continente, país y ciudad. En la página del parque encontrarás tiempos de espera en vivo para cada atracción, restaurante y espectáculo — actualizados cada minuto — junto con predicciones de afluencia y un calendario diario. Los días verdes señalan colas cortas; los días naranja o rojos indican mayor afluencia y esperas más largas.",
       "p5": "park.fan es un proyecto vivo, en constante evolución con nuevas funciones y parques. Guarda tus parques favoritos para acceder rápido, usa la navegación en el parque para planificar la ruta más eficiente, y consulta siempre el calendario de afluencia antes de reservar para elegir el mejor día posible.",
@@ -210,7 +210,7 @@
     }
   },
   "footer": {
-    "description": "Tiempos de espera en vivo y predicciones de afluencia para más de 142 parques temáticos. Planifica tu visita perfecta con datos en tiempo real y navegación.",
+    "description": "Tiempos de espera en vivo y predicciones de afluencia para más de 200 parques temáticos. Planifica tu visita perfecta con datos en tiempo real y navegación.",
     "keywords": "tiempos de espera parques temáticos, tiempos de espera en vivo, tiempos de espera hoy, calendario de afluencia, predicción IA, colas, predicciones afluencia, horarios apertura, parque de atracciones, montaña rusa, tiempos espera Disney, Universal Studios, Europa-Park, Phantasialand, mejor momento visita",
     "sections": {
       "explore": "Parques Internacionales",
@@ -1042,7 +1042,7 @@
   "seo": {
     "global": {
       "title": "park.fan - Tiempos de Espera Parques Temáticos & Predicciones",
-      "description": "Tiempos de espera en vivo y predicciones de afluencia para 142+ parques temáticos. Planifica tu visita con datos en tiempo real.",
+      "description": "Tiempos de espera en vivo y predicciones de afluencia para 200+ parques temáticos. Planifica tu visita con datos en tiempo real.",
       "keywords": "tiempos de espera parques temáticos, tiempos de espera en vivo, tiempos de espera hoy, calendario de afluencia, predicción IA, colas, predicciones afluencia, horarios apertura, parque de atracciones, montaña rusa, tiempos espera Disney, Universal Studios, Europa-Park, Phantasialand, mejor momento visita"
     },
     "home": {
@@ -1064,7 +1064,14 @@
     "attraction": {
       "titleTemplate": "{attraction} en {park} – Tiempos de Espera en Vivo",
       "metaDescriptionTemplate": "Tiempos de espera actuales para {attraction} en {park}. Revisa la cola en vivo y el nivel de afluencia.",
-      "keywordWaitTime": "tiempo de espera"
+      "keywordWaitTime": "tiempo de espera",
+      "titleTemplateShort": "{attraction} en {park} – Tiempos de espera",
+      "titleTemplateBare": "{attraction} – Tiempos de espera",
+      "metaDescriptionTemplateFacts": "Tiempos de espera actuales para {attraction} en {park}. {facts}.",
+      "factBy": "{manufacturer}",
+      "factOpened": "apertura en {year}",
+      "factMinHeight": "altura mín. {height}",
+      "factLand": "zona {land}"
     },
     "continent": {
       "titleTemplate": "Parques Temáticos en {location}: Espera y Mapa",
@@ -1135,9 +1142,9 @@
     "homepage": {
       "faq": {
         "whatIsQ": "¿Qué es park.fan?",
-        "whatIsA": "park.fan es tu plataforma central para tiempos de espera en vivo e información actual de más de 30 parques temáticos en Europa, Asia y América del Norte. Te mostramos en tiempo real cuánto tiempo de espera hay en tus atracciones favoritas, qué espectáculos están en curso y cuándo están abiertos los parques.",
+        "whatIsA": "park.fan es tu plataforma central para tiempos de espera en vivo e información actual de más de 200 parques temáticos en Europa, Asia y América del Norte. Te mostramos en tiempo real cuánto tiempo de espera hay en tus atracciones favoritas, qué espectáculos están en curso y cuándo están abiertos los parques.",
         "whichParksQ": "¿Qué parques temáticos son compatibles con park.fan?",
-        "whichParksA": "park.fan es compatible con más de 30 parques temáticos en todo el mundo, incluidos Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland, Bobbejaanland y muchos más. Puedes encontrar la lista completa de todos los parques con tiempos de espera en vivo en nuestra página de descripción general de parques. Estamos ampliando continuamente nuestra oferta con parques temáticos adicionales.",
+        "whichParksA": "park.fan es compatible con más de 200 parques temáticos en todo el mundo, incluidos Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland, Bobbejaanland y muchos más. Puedes encontrar la lista completa de todos los parques con tiempos de espera en vivo en nuestra página de descripción general de parques. Estamos ampliando continuamente nuestra oferta con parques temáticos adicionales.",
         "liveDataQ": "¿Los tiempos de espera en park.fan son en vivo y en tiempo real?",
         "liveDataA": "¡Sí! park.fan actualiza continuamente todos los tiempos de espera durante el horario de operación del parque. Los datos provienen directamente de las APIs oficiales del parque y se sincronizan en tiempo real. Siempre ves los tiempos de espera más actuales disponibles y puedes planificar óptimamente tu visita al parque.",
         "freeQ": "¿Es gratis usar park.fan?",

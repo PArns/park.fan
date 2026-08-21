@@ -434,7 +434,11 @@ export default async function ParkPage({ params }: ParkPageProps) {
                     <h1 className="mb-2 text-3xl font-bold md:text-4xl">
                       {parkName} <span className="font-normal">– {t('h1Suffix')}</span>
                     </h1>
-                    <div className="text-muted-foreground flex flex-wrap items-center gap-3">
+                    {/* 56px = 24 (the address at text-base) + 12 (gap-3) + 20 (the distance
+                      line) — two lines is what this row settles on below `sm` once the city and
+                      country are long enough. Same reservation as the ride header, reasoned
+                      through there. */}
+                    <div className="text-muted-foreground flex min-h-14 flex-wrap content-start items-center gap-3 sm:min-h-0">
                       <address className="flex items-center gap-1 not-italic">
                         <MapPin className="h-4 w-4" aria-hidden="true" />
                         <span>{cityName}</span>,{' '}
