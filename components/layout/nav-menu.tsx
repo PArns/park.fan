@@ -38,11 +38,9 @@ interface NavMenuProps {
   children: React.ReactNode;
   /** Mirrors the rest of the bar: nothing in the header is focusable while it floats transparent. */
   disabled?: boolean;
-  /** Width of the panel. Passed rather than fixed because parks and blog hold different amounts. */
-  panelClassName?: string;
 }
 
-export function NavMenu({ href, label, children, disabled, panelClassName }: NavMenuProps) {
+export function NavMenu({ href, label, children, disabled }: NavMenuProps) {
   const [requested, setRequested] = useState(false);
   // Derived, not synchronized: a panel hanging open while the header floats transparent would
   // sit over the hero attached to nothing. Closing it from an effect would be a second render
@@ -136,23 +134,37 @@ export function NavMenu({ href, label, children, disabled, panelClassName }: Nav
         </button>
       </div>
 
-      {/* Positioned against the HEADER, not against this trigger — which is why the root above
-          carries no `relative`. Centred on the trigger, a 700 px panel hanging off an entry that
-          sits 276 px from the left edge starts at −36 px and is cut off by the viewport, and the
-          narrower the window the worse it gets. Anchored to the header's own container it starts
-          where the logo starts and cannot leave the page at any width.
+      {/* Full-bleed band under the bar, positioned against the HEADER rather than against this
+          trigger — which is why the root above carries no `relative`. A box centred on the trigger
+          had to be sized by hand per panel and still ran off the left edge (a 700 px panel under
+          an entry 276 px from the edge starts at −36 px); spanning the header there is nothing
+          left to collide with, and the content inside lines up with the page's own container.
 
-          Flat on purpose: opaque `bg-popover`, a hairline border, one shadow. The frosted glass
-          and the pointer-depth tilt belong to the cards on the pages — a menu doing the same would
-          compete with the page it covers, and `backdrop-filter` over a scrolling document is the
-          most expensive repaint on this site. */}
-      <div id={panelId} className={`absolute inset-x-0 top-full z-50 pt-3 ${open ? '' : 'hidden'}`}>
-        <div className="container mx-auto px-4 md:px-0">
-          <div
-            className={`bg-popover text-popover-foreground border-border/60 w-fit max-w-full rounded-xl border p-4 shadow-xl ${panelClassName ?? ''}`}
-          >
-            {children}
-          </div>
+          It sits flush against the bar, no gap: the diagonal from the trigger into the panel has
+          nothing to fall through, and the band reads as the bar having grown rather than as a
+          card hovering under it. Square corners for the same reason.
+
+          Flat, not opaque. The band is one glass surface with the bar above it — the same
+          `bg/80` + `backdrop-blur` the header already runs, plus the ring `components/ui/popover.tsx`
+          carries, because a white panel on a white page is otherwise separated from it by a
+          hairline and nothing else. "Flat" here rules out the pointer-depth tilt and the layered
+          glass cards the pages use, not the blur: what a visitor sees through it is the photo the
+          menu is covering, which is the point of opening it over the page instead of replacing it.
+          The cost is bounded — this repaints only while a panel is open, and `backdrop-filter`
+          stays off the transition list for the same reason it is off the header's.
+
+          `/95`, not the `/80` the small popovers use. Those sit over a card or a margin; this one
+          covers half a park page, and at 80 % the headline, the status badges and a paragraph of
+          body text read straight through the menu and fought with it — in both themes. The blur
+          and the five points of transparency are enough to see that the photo is still there,
+          which is all this effect owes the visitor. */}
+      <div id={panelId} className={`absolute inset-x-0 top-full z-50 ${open ? '' : 'hidden'}`}>
+        <div className="bg-popover/95 text-popover-foreground border-border/60 w-full border-b shadow-2xl ring-1 ring-black/5 backdrop-blur-xl dark:ring-white/10">
+          {/* `overflow-hidden` is load-bearing: the rows inside carry `-mx-2` so their hover
+              highlight reaches into the column gaps, and at exactly 1024 px — where the container
+              is as wide as the viewport — the last column's 8 px of bleed gave the document a
+              horizontal scrollbar. Nothing should be able to leave a full-bleed band anyway. */}
+          <div className="container mx-auto overflow-hidden px-4 py-5 md:px-0">{children}</div>
         </div>
       </div>
     </div>

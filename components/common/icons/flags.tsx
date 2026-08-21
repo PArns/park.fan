@@ -257,3 +257,66 @@ export function FlagBR(props: React.ComponentProps<'svg'>) {
     </svg>
   );
 }
+
+/**
+ * The 20 flags above, reachable by ISO country code — plus an answer for the three the set does
+ * not cover.
+ *
+ * The header's parks menu renders one per country row, and the geo payload carries the code
+ * (`country.code`), so a lookup is all it needs. Emoji flags would have been the shorter route and
+ * are the reason this file exists at all: Windows ships no flag glyphs, so `🇩🇪` renders there as
+ * the letters "DE" — which is exactly what `countryFlagEmoji` in `lib/utils/region-names.ts`
+ * accepts for a holiday label and what a navigation menu should not.
+ *
+ * Missing today: Saudi Arabia, Malaysia, Singapore — four parks between them. They get a neutral
+ * chip with the code rather than a wrong flag or a gap; add the SVG here and it disappears.
+ */
+const FLAG_BY_CODE: Record<string, React.ComponentType<React.ComponentProps<'svg'>>> = {
+  DE: FlagDE,
+  GB: FlagGB,
+  NL: FlagNL,
+  FR: FlagFR,
+  ES: FlagES,
+  HK: FlagHK,
+  US: FlagUS,
+  JP: FlagJP,
+  CN: FlagCN,
+  AT: FlagAT,
+  BE: FlagBE,
+  DK: FlagDK,
+  IT: FlagIT,
+  PL: FlagPL,
+  SE: FlagSE,
+  CA: FlagCA,
+  MX: FlagMX,
+  KR: FlagKR,
+  AU: FlagAU,
+  BR: FlagBR,
+};
+
+/**
+ * One country flag at a fixed 16×12 box, cropped to fill it — the source viewBoxes range from 5:3
+ * to 1000:700, so without `preserveAspectRatio="slice"` a row of them would be a row of different
+ * widths and the country names beside them would not line up.
+ */
+export function CountryFlag({ code, className }: { code: string; className?: string }) {
+  const upper = (code ?? '').toUpperCase();
+  const Flag = FLAG_BY_CODE[upper];
+  const box = `border-border/60 block h-3 w-4 shrink-0 overflow-hidden rounded-[2px] border ${className ?? ''}`;
+
+  if (!Flag) {
+    return (
+      <span
+        className={`${box} bg-muted text-muted-foreground/80 text-[7px] leading-3 font-semibold tracking-tight`}
+        aria-hidden="true"
+      >
+        {upper.slice(0, 2)}
+      </span>
+    );
+  }
+  return (
+    <span className={box} aria-hidden="true">
+      <Flag className="h-full w-full" preserveAspectRatio="xMidYMid slice" />
+    </span>
+  );
+}

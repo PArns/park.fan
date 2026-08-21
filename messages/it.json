@@ -286,7 +286,10 @@
     "bestTime": "Periodo migliore",
     "latestPosts": "Ultimi articoli",
     "moreCities": "{count, plural, =1 {1 altra città} other {# altre città}}",
-    "categories": "Categorie"
+    "categories": "Categorie",
+    "popularParks": "Parchi popolari",
+    "allPosts": "Vedi tutti gli articoli",
+    "readingTime": "{minutes} min"
   },
   "theme": {
     "light": "Chiaro",

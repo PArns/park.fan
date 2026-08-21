@@ -286,7 +286,10 @@
     "bestTime": "Beste reistijd",
     "latestPosts": "Nieuwste berichten",
     "moreCities": "{count, plural, =1 {nog 1 stad} other {nog # steden}}",
-    "categories": "Categorieën"
+    "categories": "Categorieën",
+    "popularParks": "Populaire parken",
+    "allPosts": "Alle berichten bekijken",
+    "readingTime": "{minutes} min."
   },
   "theme": {
     "light": "Licht",

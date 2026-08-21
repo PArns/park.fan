@@ -38,6 +38,11 @@ export interface BlogMenuCategory {
 export interface BlogMenuPost {
   slug: string;
   title: string;
+  /** ISO date — the panel formats it in the reader's locale. */
+  date: string;
+  readingTimeMinutes: number;
+  /** Cover image, where the post has one. All seven currently do. */
+  image?: string;
 }
 
 export interface BlogMenu {
@@ -58,6 +63,14 @@ export function getBlogMenu(locale: Locale): BlogMenu {
       .sort((a, b) => b.postCount - a.postCount || a.label.localeCompare(b.label)),
     recent: listPostsByRecency(locale)
       .slice(0, RECENT_LIMIT)
-      .map((post) => ({ slug: post.slug, title: post.frontmatter.title })),
+      .map((post) => ({
+        slug: post.slug,
+        title: post.frontmatter.title,
+        date: post.frontmatter.date,
+        readingTimeMinutes: post.readingTimeMinutes,
+        // Straight out of the frontmatter — the cover is already a 16:9 crop for every post that
+        // has one, so the panel needs no image lookup and no optimizer pass.
+        image: post.frontmatter.coverImage?.src,
+      })),
   };
 }

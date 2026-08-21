@@ -29,6 +29,8 @@ export interface GeoMenuCountry {
   slug: string;
   /** Upstream English name — the header localizes it via `geo.countries.<slug>`. */
   name: string;
+  /** ISO code, which is what the flag set is keyed by. */
+  code: string;
   parkCount: number;
 }
 
@@ -60,6 +62,7 @@ export async function getGeoMenu(): Promise<GeoMenuContinent[]> {
         .map((country) => ({
           slug: country.slug,
           name: country.name,
+          code: country.code,
           parkCount: country.parkCount,
         }))
         .sort((a, b) => b.parkCount - a.parkCount || a.slug.localeCompare(b.slug)),

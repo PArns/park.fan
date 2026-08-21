@@ -286,7 +286,10 @@
     "bestTime": "Best Time to Visit",
     "latestPosts": "Latest posts",
     "moreCities": "{count, plural, =1 {1 more city} other {# more cities}}",
-    "categories": "Categories"
+    "categories": "Categories",
+    "popularParks": "Popular parks",
+    "allPosts": "See all posts",
+    "readingTime": "{minutes} min"
   },
   "theme": {
     "light": "Light",

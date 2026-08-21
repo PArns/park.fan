@@ -1,68 +1,54 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
+import { CountryFlag } from '@/components/common/icons/flags';
 import { translateContinent, translateCountry } from '@/lib/i18n/helpers';
 import type { GeoMenuContinent } from '@/lib/navigation/geo-menu';
+import type { FeaturedParkCard } from '@/lib/navigation/featured-parks-menu';
 
 /**
- * The three panes of the parks menu, and why they are not the same kind of thing.
+ * The parks menu, as a full-width band: continent columns and a photo rail over one detail row.
  *
- * - **Continents and countries** are server-rendered into every page and are always in the
- *   document, the inactive country lists merely `hidden`. 28 links, 420 B brotli, and every one of
- *   them a hub worth concentrating sitewide weight on.
- * - **Cities and their parks** are fetched when somebody opens a country. 144 cities and 212 parks
- *   in the header template would put 356 more targets into the link graph of ~35,000 pages, to
- *   reach pages that the country hubs and the sitemap already reach. See `lib/navigation/geo-menu.ts`.
+ * ```
+ * ┌──────────────────────────────────────────────────────────┬───────────────────┐
+ * │ NORDAMERIKA 85  ASIEN 72     EUROPA 49    OZEANIEN 5     │ BELIEBTE PARKS    │
+ * │ 🇺🇸 USA     81  🇨🇳 China 57 🇫🇷 Frankr. 10 🇦🇺 Austral. 5 │ ┌─────┐ ┌─────┐   │
+ * │ 🇨🇦 Kanada   2  🇯🇵 Japan  5 🇩🇪 Deutschl. 9              │ │Europa│ │Phant│  │
+ * │ 🇲🇽 Mexiko   2  …            …             SÜDAMERIKA 1  │ └─────┘ └─────┘   │
+ * ├──────────────────────────────────────────────────────────┴───────────────────┤
+ * │ 🇩🇪 DEUTSCHLAND · 9 Parks                          2 weitere Städte →         │
+ * │ RUST            BOTTROP        BRÜHL        GÜNZBURG     HASSLOCH            │
+ * │ Europa-Park     Movie Park     Phantasial.  LEGOLAND     Plopsaland          │
+ * │ Rulantica                                                                     │
+ * └───────────────────────────────────────────────────────────────────────────────┘
+ *     all 28 links in the HTML          fixed set              fetched on hover
+ * ```
  *
- * The countries pane is a two-column grid because Europe has 11 countries and South America has
- * one: a single column would make the panel change height every time the pointer crossed the rail.
- * Two columns cap it at six rows, and `min-h` holds that height for the short continents.
+ * Going full width removed machinery rather than adding it. The narrow version had a continent
+ * rail and swapped one country list in for another, so four of the five were `display:none` at any
+ * moment and the panel needed an `activeContinent`. At the container's width all 28 links fit side
+ * by side: nothing to switch, nothing hidden.
+ *
+ * Three kinds of content, and the difference matters:
+ *
+ * - **Continents and countries** are server-rendered into every page — 28 hub links worth
+ *   concentrating sitewide weight on.
+ * - **The photo rail** is a fixed four, resolved server-side. Not a thumbnail per park: the media
+ *   database holds a picture for 14 of 212 parks, so a photo on every row would be nine pictures
+ *   and two hundred empty boxes. See `lib/navigation/featured-parks-menu.ts`.
+ * - **Cities and their parks** are fetched when a country opens. 144 cities and 212 parks in the
+ *   header template would put 356 more targets into the link graph of ~35,000 pages, for pages the
+ *   country hubs and the sitemap already reach.
+ *
+ * The detail row holds its height whether or not a country is open — it fills in under the pointer
+ * as the fetch lands, and a band that resized while somebody was reading it would be worse.
  */
 
-/**
- * How many rows the third pane may draw before it defers to the country page.
- *
- * A row is a city heading OR a park under it, because that is what actually takes vertical space:
- * Germany is 7 cities but 9 parks, and Rust alone contributes four rows. Counting cities instead
- * made the pane a different height for every country. The alternative was `max-height` plus a
- * scrollbar, which cut Haßloch in half at the panel's bottom edge and read as broken rather than
- * as scrollable — a menu should end on a whole row.
- */
-const ROW_BUDGET = 12;
-
-/** Split the fetched cities at the row budget, keeping whole cities. */
-function fitCities(cities: CityEntry[]): { shown: CityEntry[]; hidden: number } {
-  const shown: CityEntry[] = [];
-  let rows = 0;
-  for (const city of cities) {
-    const cost = 1 + city.parks.length;
-    // Always show the first city, however many parks it has — a pane that renders nothing because
-    // the biggest city blew the budget on its own is worse than one that runs a little long.
-    if (shown.length > 0 && rows + cost > ROW_BUDGET) break;
-    shown.push(city);
-    rows += cost;
-  }
-  return { shown, hidden: cities.length - shown.length };
-}
-
-/**
- * Which continent the panel opens on.
- *
- * Sorted by park count the first entry is North America (85 parks against Europe's 49), and
- * opening a German, Dutch, French, Spanish or Italian reader onto Florida is a worse guess than
- * the one the URL already makes for us. The reading language is the only signal available at
- * render time that says anything about where somebody is — the nearby-park query would be a better
- * one, but it lands after the first paint and would move the panel under the pointer.
- */
-const DEFAULT_CONTINENT: Record<string, string> = {
-  de: 'europe',
-  nl: 'europe',
-  fr: 'europe',
-  es: 'europe',
-  it: 'europe',
-};
+/** Cities in the detail row: one per column, five columns wide. */
+const CITY_COLUMNS = 5;
 
 interface CityEntry {
   slug: string;
@@ -73,20 +59,18 @@ interface CityEntry {
 
 interface ParksMenuPanelProps {
   continents: GeoMenuContinent[];
+  featured: FeaturedParkCard[];
 }
 
-export function ParksMenuPanel({ continents }: ParksMenuPanelProps) {
+export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
   const t = useTranslations('geo');
   const tNav = useTranslations('navigation');
   const locale = useLocale();
-  const preferred = DEFAULT_CONTINENT[locale];
-  const [activeContinent, setActiveContinent] = useState(
-    (preferred && continents.some((c) => c.slug === preferred) ? preferred : continents[0]?.slug) ??
-      ''
-  );
-  const [activeCountry, setActiveCountry] = useState<{ continent: string; country: string } | null>(
-    null
-  );
+  const [activeCountry, setActiveCountry] = useState<{
+    continent: string;
+    country: string;
+    code: string;
+  } | null>(null);
   const [cities, setCities] = useState<Record<string, CityEntry[]>>({});
   /** Countries already requested. A ref, not the `cities` state: it has to be readable and
    *  writable inside the effect without making the effect depend on what it writes. */
@@ -107,7 +91,7 @@ export function ParksMenuPanel({ continents }: ParksMenuPanelProps) {
         if (!cancelled) setCities((prev) => ({ ...prev, [countryKey]: data.cities ?? [] }));
       })
       .catch(() => {
-        // The country link in the middle pane still works; the pane just stays empty.
+        // The country link above still works; the detail row just stays on its hint.
         if (!cancelled) setCities((prev) => ({ ...prev, [countryKey]: [] }));
       });
 
@@ -117,127 +101,148 @@ export function ParksMenuPanel({ continents }: ParksMenuPanelProps) {
   }, [countryKey]);
 
   const detail = countryKey ? cities[countryKey] : undefined;
-  const fitted = detail ? fitCities(detail) : null;
-  const activeCountryName = activeCountry
-    ? translateCountry(t, activeCountry.country, locale)
-    : null;
+  const shown = detail?.slice(0, CITY_COLUMNS) ?? [];
+  const hidden = detail ? detail.length - shown.length : 0;
 
   return (
-    <div className="flex gap-3">
-      {/* Pane 1 — continents. */}
-      <ul className="border-border/50 w-40 shrink-0 space-y-0.5 border-r pr-3">
-        {continents.map((continent) => {
-          const isActive = continent.slug === activeContinent;
-          return (
-            <li key={continent.slug}>
-              <Link
+    <div>
+      <div className="flex flex-col gap-5 xl:flex-row xl:gap-6">
+        {/* Level 1 + 2 — every continent and every country, all of it in the first HTML. */}
+        <div className="grid min-w-0 flex-1 grid-cols-3 gap-x-6 gap-y-5 lg:grid-cols-5">
+          {continents.map((continent) => (
+            <div key={continent.slug}>
+              <SectionHeading
+                label={translateContinent(t, continent.slug, locale, continent.name)}
+                count={continent.parkCount}
                 href={`/parks/${continent.slug}`}
-                prefetch={false}
-                onPointerEnter={() => {
-                  setActiveContinent(continent.slug);
-                  setActiveCountry(null);
-                }}
-                onFocus={() => {
-                  setActiveContinent(continent.slug);
-                  setActiveCountry(null);
-                }}
-                className={`flex items-center justify-between gap-2 rounded-md px-2 py-1.5 text-sm transition-colors ${
-                  isActive
-                    ? 'bg-muted text-foreground font-medium'
-                    : 'text-muted-foreground hover:text-foreground'
-                }`}
-              >
-                <span className="truncate">
-                  {translateContinent(t, continent.slug, locale, continent.name)}
-                </span>
-                <span className="text-muted-foreground/70 text-xs tabular-nums">
-                  {continent.parkCount}
-                </span>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+              />
+              <ul className="space-y-px">
+                {continent.countries.map((country) => {
+                  const isActive =
+                    activeCountry?.continent === continent.slug &&
+                    activeCountry.country === country.slug;
+                  return (
+                    <li key={country.slug}>
+                      <Link
+                        href={`/parks/${continent.slug}/${country.slug}`}
+                        prefetch={false}
+                        onPointerEnter={() => setActiveCountry(target(continent.slug, country))}
+                        onFocus={() => setActiveCountry(target(continent.slug, country))}
+                        className={`-mx-2 flex items-center gap-2 rounded-md px-2 py-1 text-sm transition-colors ${
+                          isActive
+                            ? 'bg-muted text-foreground'
+                            : 'text-muted-foreground hover:text-foreground hover:bg-muted/60'
+                        }`}
+                      >
+                        <CountryFlag code={country.code} />
+                        <span className="min-w-0 flex-1 truncate">
+                          {translateCountry(t, country.slug, locale, country.name)}
+                        </span>
+                        <span className="text-muted-foreground/70 text-xs tabular-nums">
+                          {country.parkCount}
+                        </span>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ))}
+        </div>
 
-      {/* Pane 2 — countries. Every continent's list is rendered; the inactive ones are
-          `display:none`, which keeps all 28 links in the first HTML for the crawler while the
-          pointer only ever sees one of them. */}
-      <div className="border-border/50 w-64 shrink-0 border-r pr-3">
-        {continents.map((continent) => (
-          <ul
-            key={continent.slug}
-            className={`grid min-h-44 grid-cols-2 content-start gap-x-2 gap-y-0.5 ${
-              continent.slug === activeContinent ? '' : 'hidden'
-            }`}
-          >
-            {continent.countries.map((country) => {
-              const isActive =
-                activeCountry?.continent === continent.slug &&
-                activeCountry.country === country.slug;
-              return (
-                <li key={country.slug}>
-                  <Link
-                    href={`/parks/${continent.slug}/${country.slug}`}
-                    prefetch={false}
-                    onPointerEnter={() =>
-                      setActiveCountry({ continent: continent.slug, country: country.slug })
-                    }
-                    onFocus={() =>
-                      setActiveCountry({ continent: continent.slug, country: country.slug })
-                    }
-                    className={`flex items-center justify-between gap-1.5 rounded-md px-2 py-1 text-sm transition-colors ${
-                      isActive
-                        ? 'bg-muted text-foreground'
-                        : 'text-muted-foreground hover:text-foreground'
-                    }`}
-                  >
-                    <span className="truncate">
-                      {translateCountry(t, country.slug, locale, country.name)}
+        {/* The photo rail. Hidden below `xl`: the five country columns need the room first, and a
+            2×2 photo grid stacked under them would push the detail row off the screen. */}
+        {featured.length > 0 && (
+          <div className="border-border/60 hidden w-80 shrink-0 border-l pl-6 xl:block">
+            <SectionHeading label={tNav('popularParks')} href="/parks" />
+            <div className="grid grid-cols-2 gap-2.5">
+              {featured.map((park) => (
+                <Link
+                  key={park.slug}
+                  href={park.href as '/'}
+                  prefetch={false}
+                  className="group focus-visible:ring-ring relative block aspect-[16/10] overflow-hidden rounded-lg focus-visible:ring-2 focus-visible:outline-none"
+                >
+                  <Image
+                    src={park.image}
+                    alt=""
+                    fill
+                    sizes="160px"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  {/* The scrim is what makes the name legible on a bright photo — the cards are
+                      145 px wide and there is no room to put the label anywhere else. */}
+                  <span className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
+                  <span className="absolute right-2.5 bottom-2 left-2.5 block">
+                    <span className="block text-[13px] leading-tight font-semibold text-white">
+                      {park.name}
                     </span>
-                    <span className="text-muted-foreground/70 text-xs tabular-nums">
-                      {country.parkCount}
+                    <span className="mt-px block truncate text-[10.5px] text-white/70">
+                      {park.city}
+                      {park.city && park.countrySlug ? ' · ' : ''}
+                      {park.countrySlug ? translateCountry(t, park.countrySlug, locale) : ''}
                     </span>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        ))}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
-      {/* Pane 3 — the open country's cities and parks, fetched on demand. */}
-      <div className="w-56 shrink-0">
+      {/* Level 3 — the open country's cities and parks. */}
+      <div className="border-border/60 mt-5 min-h-[7.5rem] border-t pt-4">
         {activeCountry == null ? (
-          <p className="text-muted-foreground/70 px-2 py-1 text-xs">{t('exploreByRegion')}</p>
+          <p className="text-muted-foreground/70 text-xs">{t('exploreByRegion')}</p>
         ) : (
           <>
-            <div className="text-foreground px-2 pb-1.5 text-xs font-semibold tracking-wide uppercase">
-              {activeCountryName}
+            <div className="mb-2 flex items-baseline justify-between gap-3">
+              <span className="flex items-center gap-2">
+                <span className="translate-y-[1px]">
+                  <CountryFlag code={activeCountry.code} />
+                </span>
+                <span className="text-foreground text-xs font-semibold tracking-wide uppercase">
+                  {translateCountry(t, activeCountry.country, locale)}
+                </span>
+              </span>
+              {/* Never a silent cut: the US has 50 cities and this row shows five. */}
+              {hidden > 0 && (
+                <Link
+                  href={`/parks/${activeCountry.continent}/${activeCountry.country}`}
+                  prefetch={false}
+                  className="text-primary hover:text-primary/80 shrink-0 text-xs font-medium transition-colors"
+                >
+                  {tNav('moreCities', { count: hidden })}
+                </Link>
+              )}
             </div>
             {detail === undefined ? (
-              <ul className="space-y-1.5 px-2 pt-1" aria-hidden="true">
-                {[0, 1, 2, 3].map((i) => (
-                  <li key={i} className="bg-muted/60 h-3.5 animate-pulse rounded" />
+              <div className="grid grid-cols-3 gap-x-6 lg:grid-cols-5" aria-hidden="true">
+                {Array.from({ length: CITY_COLUMNS }, (_, i) => (
+                  <div key={i} className="space-y-1.5">
+                    <div className="bg-muted/60 h-2.5 w-16 animate-pulse rounded" />
+                    <div className="bg-muted/60 h-3.5 w-full animate-pulse rounded" />
+                  </div>
                 ))}
-              </ul>
-            ) : detail.length === 0 ? null : (
-              <ul className="space-y-1.5">
-                {fitted!.shown.map((city) => (
+              </div>
+            ) : (
+              <ul className="grid grid-cols-3 items-start gap-x-6 gap-y-3 lg:grid-cols-5">
+                {shown.map((city) => (
                   <li key={city.slug}>
                     <Link
                       href={`/parks/${activeCountry.continent}/${activeCountry.country}/${city.slug}`}
                       prefetch={false}
-                      className="text-muted-foreground/70 hover:text-foreground block px-2 text-[11px] tracking-wide uppercase transition-colors"
+                      className="text-muted-foreground/70 hover:text-foreground mb-0.5 block truncate text-[11px] tracking-wide uppercase transition-colors"
                     >
                       {city.name}
                     </Link>
-                    <ul>
+                    <ul className="space-y-px">
                       {city.parks.map((park) => (
                         <li key={park.slug}>
                           <Link
                             href={`/parks/${activeCountry.continent}/${activeCountry.country}/${city.slug}/${park.slug}`}
                             prefetch={false}
-                            className="text-muted-foreground hover:text-foreground hover:bg-muted block truncate rounded-md px-2 py-0.5 text-sm transition-colors"
+                            className="text-muted-foreground hover:text-foreground hover:bg-muted/60 -mx-2 block truncate rounded-md px-2 py-0.5 text-sm transition-colors"
                           >
                             {park.name}
                           </Link>
@@ -246,23 +251,43 @@ export function ParksMenuPanel({ continents }: ParksMenuPanelProps) {
                     </ul>
                   </li>
                 ))}
-                {/* Never a silent cut: the US has 50 cities and the pane shows a handful. */}
-                {fitted!.hidden > 0 && (
-                  <li>
-                    <Link
-                      href={`/parks/${activeCountry.continent}/${activeCountry.country}`}
-                      prefetch={false}
-                      className="text-primary hover:text-primary/80 block px-2 pt-1 text-xs font-medium transition-colors"
-                    >
-                      {tNav('moreCities', { count: fitted!.hidden })}
-                    </Link>
-                  </li>
-                )}
               </ul>
             )}
           </>
         )}
       </div>
     </div>
+  );
+}
+
+/** What a hovered country row hands to the detail row below it. */
+function target(continent: string, country: { slug: string; code: string }) {
+  return { continent, country: country.slug, code: country.code };
+}
+
+/** The rule above each column — a link where there is a hub to link to. */
+function SectionHeading({ label, count, href }: { label: string; count?: number; href?: string }) {
+  const inner = (
+    <>
+      <span className="truncate">{label}</span>
+      {count != null && (
+        <span className="text-muted-foreground/70 text-[11px] font-normal tabular-nums">
+          {count}
+        </span>
+      )}
+    </>
+  );
+  const className =
+    'border-border/60 mb-2 flex items-baseline justify-between gap-2 border-b pb-1.5 text-xs font-semibold tracking-wide uppercase';
+
+  if (!href) return <div className={`${className} text-foreground`}>{inner}</div>;
+  return (
+    <Link
+      href={href as '/'}
+      prefetch={false}
+      className={`${className} text-foreground hover:text-primary transition-colors`}
+    >
+      {inner}
+    </Link>
   );
 }

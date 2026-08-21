@@ -18,6 +18,7 @@ import { Footer } from '@/components/layout/footer';
 import { hasPublishedPosts } from '@/lib/blog/listing';
 import { getGeoMenu } from '@/lib/navigation/geo-menu';
 import { getBlogMenu } from '@/lib/navigation/blog-menu';
+import { getFeaturedParksMenu } from '@/lib/navigation/featured-parks-menu';
 import { LanguageBanner } from '@/components/layout/language-banner';
 import Script from 'next/script';
 import { UserbackFeedback } from '@/components/common/userback-feedback';
@@ -145,6 +146,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   // manifest, read synchronously. Fetched here because `Header` is a Client Component.
   const geoMenu = await getGeoMenu();
   const blogMenu = showBlog ? getBlogMenu(locale as Locale) : undefined;
+  const featuredParks = getFeaturedParksMenu(locale);
   // The same entries the bar renders, in the same order, plus the continent hubs the parks menu
   // opens onto. Kept to ten: this is a hint about the primary navigation, and the country links
   // are already in the rendered <nav>.
@@ -275,7 +277,12 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                     so the first paint does not move when the client Header streams in. Both
                     numbers live in components/layout/header.tsx — change them together. */}
                 <Suspense fallback={<div className="h-12" />}>
-                  <Header showBlog={showBlog} geoMenu={geoMenu} blogMenu={blogMenu} />
+                  <Header
+                    showBlog={showBlog}
+                    geoMenu={geoMenu}
+                    blogMenu={blogMenu}
+                    featuredParks={featuredParks}
+                  />
                 </Suspense>
                 <main className="flex-1">{children}</main>
                 {/* Footer renders next-intl links (dynamic under Cache Components) — stream it

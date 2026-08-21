@@ -286,7 +286,10 @@
     "bestTime": "Beste Reisezeit",
     "latestPosts": "Neueste Beiträge",
     "moreCities": "{count, plural, =1 {1 weitere Stadt} other {# weitere Städte}}",
-    "categories": "Kategorien"
+    "categories": "Kategorien",
+    "popularParks": "Beliebte Parks",
+    "allPosts": "Alle Beiträge ansehen",
+    "readingTime": "{minutes} Min."
   },
   "theme": {
     "light": "Hell",

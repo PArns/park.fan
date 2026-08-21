@@ -4,6 +4,68 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – feat: das Menü wird ein Band, mit Flaggen und Fotos
+
+Das Panel war eine schmale Box mit einer Kontinent-Schiene, die eine
+Länderliste gegen die nächste tauschte. Vier von fünf lagen dabei auf
+`display:none` und das Ganze brauchte einen `activeContinent`. Über die
+volle Containerbreite passen alle 28 Links nebeneinander: nichts zu
+schalten, nichts versteckt, die ganze Geografie auf einen Blick. Die
+Änderung hat also Zustand entfernt statt welchen hinzuzufügen.
+
+Dazu Flaggen an jeder Länderzeile. Die Datei mit den SVGs gab es schon,
+für den Sprachumschalter, und sie deckt 20 der 23 Länder ab; `CountryFlag`
+schlägt darin nach und beschneidet auf eine feste 16×12-Box, weil die
+viewBoxen von 5:3 bis 1000:700 reichen und eine Reihe unbeschnittener
+Flaggen eine Reihe unterschiedlicher Breiten wäre. Saudi-Arabien, Malaysia
+und Singapur bekommen ein neutrales Kürzel-Feld, vier Parks zusammen.
+Emoji-Flaggen wären der kurze Weg gewesen und sind der Grund, warum diese
+Datei überhaupt existiert: Windows liefert keine Flaggen-Glyphen, dort
+steht dann „DE".
+
+Fotos gibt es an zwei Stellen und aus zwei verschiedenen Gründen. Im
+Blog-Panel tragen die vier neuesten Beiträge ihr eigenes Titelbild – die
+Abdeckung liegt bei 7 von 7 und die 16:9-Zuschnitte existieren bereits. Im
+Parks-Panel steht dagegen eine feste Spalte „Beliebte Parks" mit vier
+Karten, denn die Mediendatenbank hält für **14 von 212 Parks** überhaupt
+ein Bild: ein Thumbnail je Parkzeile wären neun Fotos und zweihundert leere
+Kästen gewesen. Welche vier, entscheidet die Liste der Startseite
+(`FEATURED_PARK_SLUGS`, je Sprache), geschnitten mit den Parks, die ein
+Foto haben. Eine zweite kuratierte Liste wäre eine zweite Liste zum
+Nachziehen, und die Frage, welche Parks eine deutschsprachige Leserin
+sucht, ist dort schon einmal beantwortet worden, mit Besucherzahlen im
+Kommentar. Aufgelöst wird das im Layout, weil `@/lib/media` der 107-KB-
+Katalog ist und der Header eine Client-Komponente – über die Grenze gehen
+vier URLs. Angefragt werden die Bilder erst beim Öffnen: drei
+Foto-Requests auf einer normalen Parkseite, sieben nach dem Aufklappen.
+
+Das Band ist Glas, nicht deckend: `bg-popover/95` plus `backdrop-blur-xl`
+und der Ring, den `components/ui/popover.tsx` schon trägt. „Flach" schließt
+den Pointer-Tilt und die geschichteten Glaskarten der Seiten aus, nicht den
+Blur. Aber `/95` statt der `/80` der kleinen Popover: die sitzen über einer
+Karte oder einem Rand, dieses hier über einer halben Parkseite, und bei
+80 % lasen sich Überschrift, Status-Badges und ein Absatz Fließtext quer
+durch das Menü.
+
+Zwei Dinge, die dabei aufgefallen sind: das Band braucht `overflow-hidden`,
+weil die Zeilen `-mx-2` tragen und bei exakt 1024 px – wo der Container so
+breit ist wie der Viewport – die letzte Spalte 8 px überstand und dem
+Dokument eine horizontale Scrollleiste gab. Und die Detailzeile hält ihre
+Höhe, ob ein Land offen ist oder nicht; sie füllt sich unter dem Zeiger,
+und ein Band, das beim Lesen die Größe ändert, wäre schlechter.
+
+Gemessen, Parkseite, `de`: 4 → 46 crawlbare Links in der Hauptnavigation,
+davon keiner auf Stadt- oder Parkebene; Seitengewicht 59,04 → 63,94 KB
+brotli, also **+4,90 KB**, wovon rund 3,9 KB auf die 22 Flaggen entfallen;
+CLS unverändert 0,0000 auf Mobil. Die Flaggen sind dekorativ
+(`aria-hidden`) – sollte dieser Preis auf 35.000 Seiten irgendwann zu hoch
+werden, verschiebt ein Rendern nach dem Mount sie in den geteilten
+JS-Chunk.
+
+See [header navigation](features/header-navigation.md).
+
+---
+
 ## Unreleased – feat: a header that leads somewhere, and stops before it dilutes
 
 The bar had four links. "Parks entdecken" pointed at `/parks/europe` — past

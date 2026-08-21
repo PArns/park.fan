@@ -22,6 +22,7 @@ import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { translateContinent } from '@/lib/i18n/helpers';
 import type { NearbyParksData } from '@/types/nearby';
 import type { GeoMenuContinent } from '@/lib/navigation/geo-menu';
+import type { FeaturedParkCard } from '@/lib/navigation/featured-parks-menu';
 import type { BlogMenu } from '@/lib/navigation/blog-menu';
 
 /** API returns distance in meters. Only show "Nearby: Park" when nearest park is within this (m). */
@@ -39,9 +40,14 @@ interface HeaderProps {
   geoMenu?: GeoMenuContinent[];
   /** Categories + newest posts for the blog menu, read from the generated manifest. */
   blogMenu?: BlogMenu;
+  /**
+   * The photo rail in the parks menu. Resolved in the layout because `@/lib/media` is the 107 KB
+   * catalog and this is a Client Component — only four URLs cross the boundary.
+   */
+  featuredParks?: FeaturedParkCard[];
 }
 
-export function Header({ showBlog = true, geoMenu, blogMenu }: HeaderProps) {
+export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: HeaderProps) {
   const t = useTranslations('navigation');
   const tCommon = useTranslations('common');
   const tGeo = useTranslations('geo');
@@ -279,7 +285,7 @@ export function Header({ showBlog = true, geoMenu, blogMenu }: HeaderProps) {
               straight to `/parks/europe`, i.e. past the hub and into one of its five children. */}
           {geoMenu && geoMenu.length > 0 ? (
             <NavMenu href="/parks" label={t('explore')} disabled={isTransparent}>
-              <ParksMenuPanel continents={geoMenu} />
+              <ParksMenuPanel continents={geoMenu} featured={featuredParks ?? []} />
             </NavMenu>
           ) : (
             <Link
