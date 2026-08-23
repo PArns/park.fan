@@ -2,6 +2,7 @@ import 'server-only';
 import type { Locale } from '@/i18n/config';
 import { buildCategoryTree } from '@/lib/blog/categories';
 import { listPostsByRecency } from '@/lib/blog/listing';
+import { versionedPath } from '@/lib/media/focus';
 
 /**
  * What the blog menu shows, and what it deliberately leaves out.
@@ -68,9 +69,12 @@ export function getBlogMenu(locale: Locale): BlogMenu {
         title: post.frontmatter.title,
         date: post.frontmatter.date,
         readingTimeMinutes: post.readingTimeMinutes,
-        // Straight out of the frontmatter — the cover is already a 16:9 crop for every post that
-        // has one, so the panel needs no image lookup and no optimizer pass.
-        image: post.frontmatter.coverImage?.src,
+        // The cover is already a 16:9 crop for every post that has one, so the panel needs no
+        // optimizer pass — but it does need the version token. Retargeting a focal point rewrites
+        // a crop's bytes at an unchanged URL, so a bare path serves the old framing out of cache
+        // until someone clears it. This rail sits in the header, i.e. on ~35,000 pages, which is
+        // why it was the largest source of unversioned media URLs on the site.
+        image: versionedPath(post.frontmatter.coverImage?.src) ?? post.frontmatter.coverImage?.src,
       })),
   };
 }

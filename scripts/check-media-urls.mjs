@@ -73,7 +73,13 @@ for (const page of PAGES) {
   for (const match of html.matchAll(
     /["'(]((?:[^"'()\s]*?)\/(?:media|images|blog)\/[^"'()\s]*?\.(?:jpe?g|png|webp|avif|svg)(?:\?[^"'()\s]*)?)["')\s]/g
   )) {
-    candidates.add(match[1].replace(/&amp;/g, '&'));
+    const url = match[1].replace(/&amp;/g, '&');
+    // A URL ending in a bare `?` is never something the page renders — it is a string that got
+    // cut at an RSC flight-chunk boundary, where the next `self.__next_f.push(...)` carries the
+    // rest of the query. Counting those reported four phantom "unversioned" paths for every real
+    // one and buried the genuine finding under them.
+    if (url.endsWith('?')) continue;
+    candidates.add(url);
   }
   for (const match of html.matchAll(/["'](\/_next\/image\?[^"']+)["']/g)) {
     for (const part of match[1].replace(/&amp;/g, '&').split(/,\s*/)) {
