@@ -198,6 +198,11 @@ in cui interi branchi di attori danno la caccia ai singoli, più spettacoli
 pirotecnici e un tappeto sonoro che ti resta nelle orecchie sulla via di casa.
 Qui l'unica cosa adatta alle famiglie è il giorno.
 
+Di giorno Rust è un altro parco, e con code sorprendentemente corte per le sue
+dimensioni. La [guida all'Europa-Park](/blog/europa-park-tempi-di-attesa-consigli)
+fa il conto e spiega anche perché un biglietto Traumatica a novembre ti costa
+l'ultima ora nel parco.
+
 [Europa-Park](ref:europa-park?full)
 
 Programma, date e regole d'età: [traumatica.com](https://traumatica.com/en/).
