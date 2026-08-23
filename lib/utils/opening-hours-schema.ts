@@ -2,7 +2,7 @@ import { formatInTimeZone } from 'date-fns-tz';
 import type { ScheduleItem } from '@/lib/api/types';
 
 /**
- * `OpeningHoursSpecification` entries for a park's `ThemePark` JSON-LD.
+ * `OpeningHoursSpecification` entries for a park's `AmusementPark` JSON-LD.
  *
  * schema.org types `opens` and `closes` as `Time` — a local clock reading like
  * `"09:00"`. The API sends `openingTime`/`closingTime` as UTC instants

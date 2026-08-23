@@ -8,7 +8,7 @@ import {
 import {
   Thing,
   WithContext,
-  ThemePark,
+  AmusementPark,
   BreadcrumbList,
   Organization,
   Attraction,
@@ -283,9 +283,9 @@ export function ParkStructuredData({
     info?.facebookUrl,
     info?.youtubeUrl,
   ].filter((entry): entry is string => Boolean(entry));
-  const data: WithContext<ThemePark> = {
+  const data: WithContext<AmusementPark> = {
     '@context': 'https://schema.org',
-    '@type': 'ThemePark',
+    '@type': 'AmusementPark',
     name: parkName,
     url: url,
     ...(locale && { inLanguage: locale }),
@@ -347,7 +347,7 @@ export function ParkStructuredData({
   };
 
   // Current standby waits as `Observation` nodes, in their own block rather than
-  // inside `ThemePark` — a park does not have a property for "measurements taken
+  // inside `AmusementPark` — a park does not have a property for "measurements taken
   // about me", and the readings are about the rides anyway, which they reference
   // by the `@id` those rides carry above. `undefined` for parks whose waits we
   // cannot read; see buildWaitTimeObservations for the full selection rule.
@@ -471,7 +471,7 @@ export function AttractionStructuredData({
       description || `${attractionName} at ${parkName} - Real-time wait times and status.`,
     image: buildStructuredImage(getAttractionImageSet(park.slug, attraction.slug), ogImageUrl),
     containedInPlace: {
-      '@type': 'ThemePark',
+      '@type': 'AmusementPark',
       name: parkName,
       url: url.split('/').slice(0, -1).join('/'), // Remove attraction slug to get park URL
     },

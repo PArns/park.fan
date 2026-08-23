@@ -1445,7 +1445,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       fr: 'harnais-epaules',
       it: 'imbracatura-spalle',
       nl: 'schouderbeugel',
-      es: 'arnés-hombros',
+      es: 'arnes-hombros',
     },
   },
   // ── Shopping ───────────────────────────────────────────────────────────────
@@ -1983,7 +1983,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       fr: 'montagnes-russes-course',
       it: 'racing-coaster',
       nl: 'racing-coaster',
-      es: 'montaña-rusa-carrera',
+      es: 'montana-rusa-carrera',
     },
   },
   // ── New Dining (P2) ───────────────────────────────────────────────────────

@@ -6,7 +6,7 @@ import type { ParkAttraction, ParkWithAttractions } from '@/lib/api/types';
 /**
  * One machine-readable wait-time reading. schema.org types `Observation` as a
  * measurement of a variable about some entity at some time, which is exactly
- * what a standby queue reading is — and unlike the surrounding `ThemePark` node
+ * what a standby queue reading is — and unlike the surrounding `AmusementPark` node
  * it carries the one thing an answer engine needs and prose cannot give it: the
  * value, its unit, and the moment it was taken, per ride.
  *

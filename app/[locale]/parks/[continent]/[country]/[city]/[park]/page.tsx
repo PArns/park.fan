@@ -420,7 +420,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
               `force-dynamic`). The BreadcrumbList JSON-LD above stays in the static shell for SEO. */}
           <BreadcrumbNav breadcrumbs={breadcrumbs} currentPage={parkCurrentPage} />
 
-          <article itemScope itemType="https://schema.org/ThemePark">
+          <article itemScope itemType="https://schema.org/AmusementPark">
             {/* Park Header */}
             <div className="mb-8">
               <GlassCard variant="medium">
