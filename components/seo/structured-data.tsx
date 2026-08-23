@@ -11,7 +11,7 @@ import {
   AmusementPark,
   BreadcrumbList,
   Organization,
-  Attraction,
+  TouristAttraction,
   Article,
 } from 'schema-dts';
 import {
@@ -35,8 +35,15 @@ import { SITE_URL } from '@/i18n/config';
 const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 const websiteId = (locale: string) => `${SITE_URL}/${locale}/#website`;
 
-type StructuredDataProps<T extends Thing> = {
-  data: WithContext<T>;
+/**
+ * A `@graph` container is not a `Thing` — it sets already-built nodes side by side, which is how
+ * the wait-time `Observation`s ship without duplicating every ride into the park node. The old
+ * `as WithContext<Thing>` cast papered over that; the union states it instead.
+ */
+type SchemaGraph = { '@context': 'https://schema.org'; '@graph': readonly object[] };
+
+type StructuredDataProps = {
+  data: WithContext<Thing> | SchemaGraph;
 };
 
 /** Escapes JSON for safe use in script tags (prevents XSS in JSON-LD). */
@@ -49,7 +56,7 @@ export function escapeJsonLd(data: object): string {
     .replace(/\u2029/g, '\\u2029');
 }
 
-function JsonLd<T extends Thing>({ data }: StructuredDataProps<T>) {
+function JsonLd({ data }: StructuredDataProps) {
   return (
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeJsonLd(data) }} />
   );
@@ -358,12 +365,10 @@ export function ParkStructuredData({
       <JsonLd data={data} />
       {observations && (
         <JsonLd
-          data={
-            {
-              '@context': 'https://schema.org',
-              '@graph': observations,
-            } as WithContext<Thing>
-          }
+          data={{
+            '@context': 'https://schema.org',
+            '@graph': observations,
+          }}
         />
       )}
     </>
@@ -461,7 +466,7 @@ export function AttractionStructuredData({
 }) {
   const attractionName = stripNewPrefix(attraction.name);
   const parkName = stripNewPrefix(park.name);
-  const data: WithContext<Attraction> = {
+  const data: WithContext<TouristAttraction> = {
     '@context': 'https://schema.org',
     '@type': 'TouristAttraction',
     name: attractionName,

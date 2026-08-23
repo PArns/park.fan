@@ -15,7 +15,7 @@ const ORG = {
     '@type': 'ImageObject',
     url: `${SITE_URL}/logo-big.svg`,
   },
-};
+} as const;
 
 function absoluteUrl(url: string | undefined | null): string | undefined {
   if (!url) return undefined;

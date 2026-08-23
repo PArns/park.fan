@@ -1,7 +1,7 @@
 import { ParkWithAttractions } from '@/lib/api/types';
 import type { BestDaysSnapshot } from '@/lib/api/integrated-calendar';
 import { getTranslations } from 'next-intl/server';
-import { WithContext, Thing } from 'schema-dts';
+import type { WithContext, FAQPage, Question } from 'schema-dts';
 import { escapeJsonLd } from '@/components/seo/structured-data';
 import { buildParkFaqItems, getLeastCrowdedDays, getParkArticleForms } from '@/lib/faq/park-faq';
 
@@ -44,7 +44,7 @@ export async function FAQStructuredData({
 
   const { parkNom, parkNomCap, parkAcc, parkLoc } = getParkArticleForms(park, locale);
 
-  const mainEntity = items.map((item) => {
+  const mainEntity: Question[] = items.map((item) => {
     const answerText =
       typeof item.answer === 'string'
         ? item.answer
@@ -92,7 +92,7 @@ export async function FAQStructuredData({
     },
   });
 
-  const jsonLd: WithContext<Thing> = {
+  const jsonLd: WithContext<FAQPage> = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity,

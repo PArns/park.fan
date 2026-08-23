@@ -1,6 +1,6 @@
 import { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
 import { useTranslations } from 'next-intl';
-import { WithContext, Thing } from 'schema-dts';
+import type { WithContext, FAQPage, Question } from 'schema-dts';
 import { escapeJsonLd } from '@/components/seo/structured-data';
 import { buildAttractionFaqItems } from '@/lib/faq/attraction-faq';
 
@@ -21,7 +21,7 @@ export function AttractionFAQStructuredData({
     t as Parameters<typeof buildAttractionFaqItems>[2]
   );
 
-  const mainEntity = faqs.map((faq) => ({
+  const mainEntity: Question[] = faqs.map((faq) => ({
     '@type': 'Question',
     name: faq.question,
     acceptedAnswer: {
@@ -30,7 +30,7 @@ export function AttractionFAQStructuredData({
     },
   }));
 
-  const jsonLd: WithContext<Thing> = {
+  const jsonLd: WithContext<FAQPage> = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity,
