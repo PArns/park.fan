@@ -222,10 +222,32 @@ gesonderten Pass. Eine einzelne Attraktion, keine Parkregel.
 
 ## Ein Park, der als Vorführraum gedacht war
 
-Die Firma ist älter als das Land, in dem sie steht. **Mack** baut seit **1780**
-Fahrzeuge in Waldkirch im Schwarzwald, seit **1880** Zirkus- und
-Schaustellerwagen und seit **1921** Achterbahnen. Acht Generationen, ein Ort,
-dieselbe Familie.
+Die Firma ist älter als das Land, in dem sie steht. **Paul Mack** gründete
+**1780** in Waldkirch im Schwarzwald eine Wagnerei, gebaut wurden Kutschen und
+Postwagen. Acht Generationen später steht die Werkstatt immer noch am selben
+Ort, in derselben Familie, und liefert inzwischen in über siebzig Länder.
+
+Der Weg von der Kutsche zur Achterbahn dauerte anderthalb Jahrhunderte:
+
+| Jahr     | Was in Waldkirch passierte                                         |
+| -------- | ------------------------------------------------------------------ |
+| **1780** | Paul Mack gründet die Wagnerei, Kutschen und Postwagen             |
+| 1880     | Ein Wagen für ein Orgelwerk, der Einstieg ins Schaustellergeschäft |
+| 1920     | Mack baut Fahrgeschäfte für Jahrmärkte                             |
+| **1921** | Die erste Holzachterbahn                                           |
+| 1936     | Das erste benzinbetriebene Fahrgeschäft                            |
+| 1951     | Die erste hölzerne Bobbahn                                         |
+| **1957** | Der Prototyp der Wilden Maus                                       |
+| 1972     | Franz und Roland Mack reisen in die USA                            |
+| **1975** | Der Europa-Park öffnet mit 15 Attraktionen                         |
+| 2005     | Aus der Heinrich Mack GmbH wird Mack Rides                         |
+| 2018     | Ein Teil der Fertigung zieht nach Herbolzheim                      |
+
+Die Zeile von 1957 hat eine Pointe, die man im Park fahren kann. Der Prototyp
+der Wilden Maus entstand in Waldkirch, 26 Kilometer Luftlinie von Rust
+entfernt, und der **[Matterhorn-Blitz](ref:europa-park/matterhorn-blitz)** ist
+genau das, eine Wilde Maus. Der Bautyp und der Park kommen aus derselben
+Werkstatt.
 
 Anfang der Siebziger hatte **Franz Mack** ein praktisches Problem. Seine Kunden
 saßen in Europa, in den USA, in Japan, und wer eine Achterbahn kaufen will, will
@@ -559,6 +581,27 @@ Planungsgrundlage. Unser Kalender rechnet für diesen Park zusätzlich die
 französischen Ferien und die der Schweizer Kantone Aargau, Basel-Stadt und
 Basel-Landschaft mit ein. Wer nur auf Baden-Württemberg schaut, wundert sich
 irgendwann über einen vollen Dienstag.
+
+### Der Brückentag
+
+Christi Himmelfahrt fällt immer auf einen Donnerstag, und voll wird nicht der
+Feiertag. Voll wird der Freitag danach, den halb Deutschland freinimmt. In
+unseren Daten steht Donnerstag, der 14. Mai 2026, auf „moderat" und der Freitag
+darauf auf „hoch". Am Sonntag lag der Park wieder auf „niedrig". Bei
+Fronleichnam ist dieselbe Form noch schärfer ausgeprägt. Der Feiertag am 4. Juni
+stand auf „niedrig", der Brückenfreitag am 5. auf „hoch".
+
+Eine Einschränkung dazu. Wir haben genau einen gemessenen Brückentag, und
+ausgerechnet der war ein milder. Am 15. Mai 2026 zog ein Gewitter durch, wärmer
+als zwölf Grad wurde es nicht, und trotzdem reichte es für „hoch". Der Kanal
+Epfan95 fährt seit Jahren an genau diesen Freitagen hin und filmt das Ergebnis.
+Für 2026 lautet der Titel „Der leerste volle Tag", für die Jahre davor
+„Besuchermassen, hohe Wartezeiten und viele Autos". Ein Brückentag bei
+Sonnenschein sieht anders aus als unser einer Messwert.
+
+https://www.youtube.com/watch?v=Js8j_qvKCoA
+
+[Derselbe Brückenfreitag ein Jahr früher](https://www.youtube.com/watch?v=Js8j_qvKCoA)
 
 ### Der Monat
 
@@ -943,7 +986,7 @@ dreht.
 ### Quellen & Weiterlesen
 
 - Parkgeschichte, Gründung am 12. Juli 1975, Themenbereiche mit Eröffnungsjahren, Fläche und Beschäftigte: [Europa-Park auf de.wikipedia](https://de.wikipedia.org/wiki/Europa-Park) · [Die Evolution des Vergnügens: Achterbahn-Geschichte im Europa-Park (offizieller Blog)](https://blog.europapark.de/europa-park/die-evolution-des-vergnuegens-achterbahn-geschichte-im-europa-park/)
-- Mack Rides seit 1780 in Waldkirch, Zirkuswagen ab 1880, Achterbahnen ab 1921: [MACK Rides – die Fahrgeschäfte-Manufaktur für die ganze weite Welt (offizieller Blog)](https://blog.europapark.de/europa-park/mack-rides-die-fahrgeschaefte-manufaktur-fuer-die-ganze-weite-welt/)
+- Firmenzeitleiste Mack: Gründung 1780 durch Paul Mack, Orgelwagen 1880, Fahrgeschäfte ab 1920, erste Holzachterbahn 1921, erstes Benzin-Fahrgeschäft 1936, hölzerne Bobbahn 1951, Prototyp der Wilden Maus 1957, Umbenennung zu Mack Rides 2005, Fertigung in Herbolzheim ab 2018: [Mack Rides auf de.wikipedia](https://de.wikipedia.org/wiki/Mack_Rides) · [MACK Rides über uns (offiziell, acht Generationen, über 70 Länder)](https://www.mack-rides.com/de/ueber-uns/) · [MACK Rides – die Fahrgeschäfte-Manufaktur für die ganze weite Welt (offizieller Blog)](https://blog.europapark.de/europa-park/mack-rides-die-fahrgeschaefte-manufaktur-fuer-die-ganze-weite-welt/)
 - Die Idee auf der USA-Reise 1972, die gescheiterten Standorte Breisach und Neuenburg, der Europaweiher als Namensgeber, Schloss Balthasar, 15 Attraktionen zur Eröffnung und die Besucherreihe seit 1975: [Europa-Park auf de.wikipedia](https://de.wikipedia.org/wiki/Europa-Park) · [MACK Rides über uns](https://www.mack-rides.com/de/ueber-uns/)
 - Besucherzahlen 2024 nach TEA/AECOM (6,2 Mio Park, 1,23 Mio Rulantica, 7,4 Mio Resort, Rang 18 weltweit): [TEA/AECOM Global Experience Index 2024](https://aecom.com/theme-index/)
 - Golden Ticket Awards, zehn Siege und die 2023 unterbrochene Serie: [Golden Ticket Awards (Amusement Today)](https://goldenticketawards.com/)
@@ -962,4 +1005,5 @@ dreht.
 - Ammolite mit zwei Michelin-Sternen seit November 2014, Silver Lake City und die Riverside Western Lodge mit 119 Zimmern: [Ammolite – The Lighthouse Restaurant (offiziell)](https://www.europapark.de/de/uebernachten/gastronomie/ammolite-lighthouse-restaurant) · [Europa-Park Riverside Western Lodge (offiziell)](https://www.europapark.de/de/uebernachten/riverside-western-lodge)
 - Anreise über die A5, Parkgebühren, Rulantica, Eatrenalin mit Michelin-Stern 2026: [Anreise zum Europa-Park (offiziell)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park) · [Europa-Park Erlebnis-Resort (offiziell)](https://www.europapark.de/de) · [Eatrenalin auf en.wikipedia](https://en.wikipedia.org/wiki/Eatrenalin)
 - Gästestruktur nach Herkunftsland und der Schweizer Anteil: [„50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort“ (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300) · [„874'000 Schweizer Besucher stellen den grössten Anteil“ (aboutTravel)](https://abouttravel.ch/reisebranche/874000-schweizer-besucher-stellen-den-groessten-anteil/)
+- Brückentag: Crowd-Level und Wetter der Tage um Christi Himmelfahrt und Fronleichnam 2026 aus unserem eigenen Kalender (gemessen, nicht prognostiziert), dazu die Videoreihe [BRÜCKENTAG im EUROPA-PARK 2025 (Epfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [dieselbe Reihe 2026 (Epfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
 - Wartezeit-, Rope-Drop- und Crowd-Daten: eigene Wartezeit-Historie über ein rollendes Jahr, Stundenprofil aus den letzten dreißig Betriebstagen, Crowd-Prognose über 90 Tage, [Europa-Park auf park.fan](ref:europa-park)
