@@ -1,4 +1,5 @@
 import { getCollection, getMediaImageBySrc, getMediaImageForPath } from '@/lib/media';
+import { cropDimensionsForPath } from '@/lib/media/crop-box.mjs';
 import { versionedPath, versionedSrc } from '@/lib/media/focus';
 import { getCreditLine, getMediaAlt, getMediaCaption } from '@/lib/media/text';
 import type { MediaImage } from '@/lib/media/types';
@@ -73,6 +74,10 @@ function enrich(image: BlogImage, locale?: string): BlogImage {
   const owner = exact ?? getMediaImageForPath(image.src);
   if (!owner) return image;
   const fromDb = toBlogImage(owner, locale);
+  // A crop's dimensions are not the source's, but they are not unknown either: the same module
+  // the generator cuts them with can state them. Leaving them undefined is what made a hand-listed
+  // gallery render `width={0} height={0}` and reflow the article on every image.
+  const cropSize = exact ? null : cropDimensionsForPath(image.src, owner.width, owner.height);
   return {
     ...image,
     // For the source file, the canonical path. For a crop, the author's OWN path
@@ -82,10 +87,10 @@ function enrich(image: BlogImage, locale?: string): BlogImage {
     alt: image.alt ?? fromDb.alt,
     caption: image.caption ?? fromDb.caption,
     credit: image.credit ?? fromDb.credit,
-    // Dimensions describe the SOURCE. A crop's are different by definition, so
-    // they are only borrowed when the author pointed at the source itself.
-    width: image.width ?? (exact ? fromDb.width : undefined),
-    height: image.height ?? (exact ? fromDb.height : undefined),
+    // Dimensions describe the SOURCE. A crop's are different by definition, so they are borrowed
+    // only when the author pointed at the source itself — and derived otherwise.
+    width: image.width ?? (exact ? fromDb.width : cropSize?.width),
+    height: image.height ?? (exact ? fromDb.height : cropSize?.height),
   };
 }
 
