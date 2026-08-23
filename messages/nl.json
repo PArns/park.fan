@@ -1256,7 +1256,17 @@
   },
   "bestTime": {
     "title": "Beste tijd om pretparken te bezoeken",
-    "description": "De rustigste weekdagen en maanden uit echte wachttijddata van 200+ parken — plus tips voor korte rijen en de drukte-kalender voor jouw park."
+    "description": "De rustigste weekdagen en maanden uit echte wachttijddata van 200+ parken — plus tips voor korte rijen en de drukte-kalender voor jouw park.",
+    "quietestByPark": {
+      "title": "De rustigste dag per park",
+      "intro": "De gemiddelden hierboven gelden voor alle parken samen. Per park ligt het anders: elk park heeft zijn eigen ritme, bepaald door schoolvakanties, reisafstand en wanneer dagbezoekers komen.",
+      "colPark": "Park",
+      "colQuietest": "Rustigste dag",
+      "colBusiest": "Drukste dag",
+      "colBasis": "Gebaseerd op",
+      "basis": "{days} dagen",
+      "insteadOf": "{day} min i.p.v. {week} min"
+    }
   },
   "howto": {
     "title": "Hoe het werkt – De complete gids",

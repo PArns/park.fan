@@ -27,6 +27,7 @@ import {
 } from '@/components/marketing/editorial-ui';
 import { FancastCta } from '../_best-time-ui';
 import { BestTimesData, type BestTimesLabels } from '../_best-times-data';
+import { QuietestDaysByPark } from '../_quietest-days-by-park';
 
 const DATA_LABELS: BestTimesLabels = {
   weekdaysTitle: 'I giorni feriali più tranquilli',
@@ -114,6 +115,7 @@ export function ContentIT() {
           dai dati reali sui tempi di attesa:
         </PG>
         <BestTimesData locale="it" labels={DATA_LABELS} />
+        <QuietestDaysByPark locale="it" />
       </SectionShell>
 
       {/* 02 — Times of day */}

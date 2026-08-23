@@ -1256,7 +1256,17 @@
   },
   "bestTime": {
     "title": "Meilleure période pour visiter les parcs d'attractions",
-    "description": "Les jours et mois les plus calmes de plus de 200 parcs, à partir de données réelles de temps d'attente — astuces anti-file et calendrier d'affluence."
+    "description": "Les jours et mois les plus calmes de plus de 200 parcs, à partir de données réelles de temps d'attente — astuces anti-file et calendrier d'affluence.",
+    "quietestByPark": {
+      "title": "Le jour le plus calme dans chaque parc",
+      "intro": "Les moyennes ci-dessus portent sur l'ensemble des parcs. Park par parc, c'est différent : chacun a son rythme, selon les vacances scolaires, les distances et l'heure d'arrivée des visiteurs à la journée.",
+      "colPark": "Parc",
+      "colQuietest": "Jour le plus calme",
+      "colBusiest": "Jour le plus chargé",
+      "colBasis": "Base de données",
+      "basis": "{days} jours",
+      "insteadOf": "{day} min contre {week} min"
+    }
   },
   "howto": {
     "title": "Comment ça marche – Le guide complet",

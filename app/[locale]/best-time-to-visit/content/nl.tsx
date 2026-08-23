@@ -27,6 +27,7 @@ import {
 } from '@/components/marketing/editorial-ui';
 import { FancastCta } from '../_best-time-ui';
 import { BestTimesData, type BestTimesLabels } from '../_best-times-data';
+import { QuietestDaysByPark } from '../_quietest-days-by-park';
 
 const DATA_LABELS: BestTimesLabels = {
   weekdaysTitle: 'De rustigste weekdagen',
@@ -112,6 +113,7 @@ export function ContentNL() {
           uit echte wachttijddata:
         </PG>
         <BestTimesData locale="nl" labels={DATA_LABELS} />
+        <QuietestDaysByPark locale="nl" />
       </SectionShell>
 
       {/* 02 — Times of day */}

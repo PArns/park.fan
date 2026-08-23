@@ -1256,7 +1256,17 @@
   },
   "bestTime": {
     "title": "Best Time to Visit Theme Parks",
-    "description": "The quietest weekdays and months across 200+ theme parks, from real wait-time data — plus tactics for short queues and a crowd calendar for your park."
+    "description": "The quietest weekdays and months across 200+ theme parks, from real wait-time data — plus tactics for short queues and a crowd calendar for your park.",
+    "quietestByPark": {
+      "title": "The quietest day at each park",
+      "intro": "The averages above cover every park at once. Individually the picture changes: each park has its own rhythm, shaped by school holidays, how far people travel and when day visitors turn up.",
+      "colPark": "Park",
+      "colQuietest": "Quietest day",
+      "colBusiest": "Busiest day",
+      "colBasis": "Based on",
+      "basis": "{days} days",
+      "insteadOf": "{day} min vs {week} min"
+    }
   },
   "howto": {
     "title": "How It Works – The Complete Guide",

@@ -1256,7 +1256,17 @@
   },
   "bestTime": {
     "title": "Periodo migliore per visitare i parchi divertimento",
-    "description": "I giorni e i mesi più tranquilli di oltre 200 parchi, da dati reali sui tempi di attesa, con trucchi per code brevi e il calendario dell'affollamento."
+    "description": "I giorni e i mesi più tranquilli di oltre 200 parchi, da dati reali sui tempi di attesa, con trucchi per code brevi e il calendario dell'affollamento.",
+    "quietestByPark": {
+      "title": "Il giorno più tranquillo in ogni parco",
+      "intro": "Le medie qui sopra valgono per tutti i parchi insieme. Presi singolarmente cambia: ogni parco ha il suo ritmo, dettato dalle vacanze scolastiche, dalle distanze e da quando arrivano i visitatori giornalieri.",
+      "colPark": "Parco",
+      "colQuietest": "Giorno più tranquillo",
+      "colBusiest": "Giorno più affollato",
+      "colBasis": "Base dati",
+      "basis": "{days} giorni",
+      "insteadOf": "{day} min contro {week} min"
+    }
   },
   "howto": {
     "title": "Come funziona – La guida completa",
