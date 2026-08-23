@@ -1,5 +1,7 @@
+import { getLocale } from 'next-intl/server';
 import { RandomHeroImage } from '@/components/layout/hero-background';
 import { heroImageSrcs } from '@/lib/media/hero';
+import { getMediaAltBySrc } from '@/lib/media/text';
 
 /**
  * Pick the glossary background server-side. Server-rendering is what makes the image an LCP-friendly
@@ -27,10 +29,15 @@ export async function GlossaryBackground() {
   const imageSrc = pickGlossaryHero();
   if (!imageSrc) return null;
 
+  // Resolved here rather than inside the image component: `@/lib/media/text` carries six locales
+  // of prose for every image and must not cross into a Client Component. This is a Server
+  // Component, so only the one resolved sentence travels.
+  const alt = getMediaAltBySrc(imageSrc, await getLocale());
+
   return (
     <div className="pointer-events-none absolute top-0 right-0 left-0 -z-10 h-[calc(90vh+4rem)] max-h-[1100px] overflow-hidden select-none">
       <div className="relative h-full w-full">
-        <RandomHeroImage imageSrc={imageSrc} noAnimation />
+        <RandomHeroImage imageSrc={imageSrc} noAnimation alt={alt ?? undefined} />
         {/* First pass: gentle fade starts at mid-image */}
         <div className="via-background/20 to-background absolute inset-0 bg-gradient-to-b from-transparent" />
         {/* Second pass: stronger fade over the lower third */}

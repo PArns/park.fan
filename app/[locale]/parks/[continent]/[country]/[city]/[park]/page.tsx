@@ -35,6 +35,7 @@ import { FAQStructuredData } from '@/components/seo/faq-structured-data';
 import { ParkFAQSection } from '@/components/faq/park-faq-section';
 import type { Metadata } from 'next';
 import { objectPositionForSrc } from '@/lib/media/focus';
+import { getMediaAltBySrc } from '@/lib/media/text';
 import { ParkBackground } from '@/components/parks/park-background';
 import { ParkFavoriteButton } from '@/components/parks/park-favorite-button';
 import { ParkDistance } from '@/components/common/park-distance';
@@ -382,7 +383,9 @@ export default async function ParkPage({ params }: ParkPageProps) {
           the correct optimized rendition. */}
         <ParkBackground
           imageSrc={parkBgImage}
-          alt={parkName}
+          // The sidecar's authored sentence in this locale, not the bare entity name:
+          // "{park}" told a screen reader nothing the heading had not already said.
+          alt={getMediaAltBySrc(parkBgImage, locale) ?? parkName}
           objectPosition={objectPositionForSrc(parkBgImage)}
         />
 

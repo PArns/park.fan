@@ -64,6 +64,7 @@ import { getOgImageUrl } from '@/lib/utils/og-image';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { pickHeroImage } from '@/lib/media/hero';
 import { heroBlurDataUrl } from '@/lib/media/hero-lqip';
+import { getMediaAltBySrc } from '@/lib/media/text';
 import { HERO_3D_ENABLED } from '@/lib/config/features';
 
 import type { Metadata } from 'next';
@@ -154,6 +155,7 @@ export default async function HomePage({ params }: HomePageProps) {
             <HeroBackground
               imageSrc={randomHeroImage}
               blurDataURL={heroBlurDataUrl(randomHeroImage)}
+              alt={getMediaAltBySrc(randomHeroImage, locale) ?? undefined}
             />
             {/* Closes the entrance window, so content that streams in later does not replay it —
               see HeroEntranceGate for what that cost in LCP. Outside the plate on purpose: a

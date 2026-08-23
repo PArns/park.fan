@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import nextDynamic from 'next/dynamic';
 import { Loader2 } from 'lucide-react';
-import { heroImageSrcs, heroObjectPosition } from '@/lib/media/hero';
+import { getHeroMetaBySrc, heroImageSrcs, heroObjectPosition } from '@/lib/media/hero';
 import { backgroundImageLoader } from '@/lib/utils/image-loader';
 import { BACKGROUND_BLUR_DATA_URL } from '@/lib/utils/image-placeholder';
 import { useHeroRotation } from '@/components/layout/hero-rotation-context';
@@ -82,9 +82,33 @@ const HERO_IMAGE_SIZES = '(max-width: 768px) 60vw, 115vw';
  */
 const PARK_LAYER_LOOKAHEAD = 1;
 
+/**
+ * Alt text for a hero photo when the caller passed none.
+ *
+ * `HERO_META` already carries what the info panel paints — ride, themed area, park — so composing
+ * from it costs no bundle bytes, unlike shipping six locales of authored alt into the client-safe
+ * slice. The authored sidecar text is better and server callers pass it via the `alt` prop; this
+ * covers the client-side rotation, whose images only mount after hydration and so never reach a
+ * crawler anyway.
+ *
+ * Returns `''` (decorative) rather than a placeholder when nothing is known: a screen reader
+ * skipping an unnamed background beats it announcing "Park Background" on every page.
+ */
+function heroAltFromMeta(src: string | null | undefined): string {
+  const meta = src ? getHeroMetaBySrc(src) : null;
+  if (!meta) return '';
+  return [meta.attractionName, meta.area, meta.parkName].filter(Boolean).join(', ');
+}
+
 interface RandomHeroImageProps {
   imageSrc?: string;
   noAnimation?: boolean;
+  /**
+   * Authored alt for `imageSrc`, resolved server-side through `getMediaAltBySrc`. Omit it and the
+   * image describes itself from {@link heroAltFromMeta} instead — correct, just not the human
+   * sentence the sidecar holds in six languages.
+   */
+  alt?: string;
   /**
    * Tiny inline preview of THIS photo, so the first frame is a blurred version of what is about
    * to arrive rather than a generic brand gradient. Falls back to the gradient when the caller
@@ -144,7 +168,7 @@ function InParkHeroImages({
             {isMounted && (
               <Image
                 src={src}
-                alt="Park Background"
+                alt={heroAltFromMeta(src)}
                 fill
                 loader={backgroundImageLoader}
                 loading="eager"
@@ -164,7 +188,7 @@ function InParkHeroImages({
   );
 }
 
-export function RandomHeroImage({ imageSrc, noAnimation, blurDataURL }: RandomHeroImageProps) {
+export function RandomHeroImage({ imageSrc, noAnimation, blurDataURL, alt }: RandomHeroImageProps) {
   const [randomImage, setRandomImage] = useState<string | null>(null);
   // The ken-burns pan waits for two things. First the image itself: transforming the LCP element
   // during its initial render is a known LCP-delay anti-pattern, so it paints static and this
@@ -214,7 +238,7 @@ export function RandomHeroImage({ imageSrc, noAnimation, blurDataURL }: RandomHe
           animating while fading so the ken-burns transform never snaps back. */}
       <Image
         src={finalImage}
-        alt="Park Background"
+        alt={alt ?? heroAltFromMeta(finalImage)}
         fill
         loader={backgroundImageLoader}
         priority={isServerImage}
@@ -247,6 +271,8 @@ export function RandomHeroImage({ imageSrc, noAnimation, blurDataURL }: RandomHe
 
 interface HeroBackgroundProps {
   imageSrc?: string;
+  /** Authored alt for `imageSrc` — see {@link RandomHeroImageProps.alt}. */
+  alt?: string;
   /** Inline preview of `imageSrc` — see {@link RandomHeroImageProps.blurDataURL}. */
   blurDataURL?: string;
 }
@@ -257,16 +283,16 @@ interface HeroBackgroundProps {
  * animated three.js park the camera flies through. Either way, when the visitor
  * is inside a real park that park's own photos crossfade in on top.
  */
-export function HeroBackground({ imageSrc, blurDataURL }: HeroBackgroundProps) {
+export function HeroBackground({ imageSrc, blurDataURL, alt }: HeroBackgroundProps) {
   return HERO_3D_ENABLED ? (
     <HeroBackground3D />
   ) : (
-    <HeroBackgroundClassic imageSrc={imageSrc} blurDataURL={blurDataURL} />
+    <HeroBackgroundClassic imageSrc={imageSrc} blurDataURL={blurDataURL} alt={alt} />
   );
 }
 
 /** Classic hero: a rotating, ken-burns park photo under a branded overlay. */
-function HeroBackgroundClassic({ imageSrc, blurDataURL }: HeroBackgroundProps) {
+function HeroBackgroundClassic({ imageSrc, blurDataURL, alt }: HeroBackgroundProps) {
   // Park the pan while the hero is scrolled away or the tab is in the background. It is a
   // 22 s infinite animation over a backdrop two glass panels are filtering, so left to itself it
   // keeps a full-viewport composited layer alive — and keeps the header's own blur invalidating —
@@ -281,7 +307,7 @@ function HeroBackgroundClassic({ imageSrc, blurDataURL }: HeroBackgroundProps) {
         !active && PAUSED_CLASS
       )}
     >
-      <RandomHeroImage imageSrc={imageSrc} blurDataURL={blurDataURL} />
+      <RandomHeroImage imageSrc={imageSrc} blurDataURL={blurDataURL} alt={alt} />
       {/* Branded overlay — from-background is navy in dark mode, near-white in light mode */}
       {/* Light mode used to wash the photo out with 60% white at the top-left, back when the
           text sat on the photo and needed it. The panels carry their own glass now (the hero

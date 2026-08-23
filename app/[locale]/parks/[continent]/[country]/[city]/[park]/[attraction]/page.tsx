@@ -23,6 +23,7 @@ import { catchNonFatal } from '@/lib/api/client';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import type { Metadata } from 'next';
 import { objectPositionForSrc } from '@/lib/media/focus';
+import { getMediaAltBySrc } from '@/lib/media/text';
 import { ParkBackground } from '@/components/parks/park-background';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { ParkDistance } from '@/components/common/park-distance';
@@ -309,7 +310,9 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
         <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
         <ParkBackground
           imageSrc={backgroundImage}
-          alt={attractionName}
+          // The sidecar's authored sentence in this locale, not the bare entity name:
+          // "{park}" told a screen reader nothing the heading had not already said.
+          alt={getMediaAltBySrc(backgroundImage, locale) ?? attractionName}
           objectPosition={objectPositionForSrc(backgroundImage)}
         />
         <PageContainer>

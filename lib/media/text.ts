@@ -28,6 +28,26 @@ export function getMediaAlt(id: string, locale: string): string | null {
   return pickText(MEDIA_TEXT[id]?.alt, locale);
 }
 
+/**
+ * Alt text for a PUBLIC PATH rather than a media id, e.g.
+ * `/media/europa-park/arthur.jpg?v=0a5e56d1` → the `europa-park/arthur` sidecar.
+ *
+ * The hero pipeline carries paths, not ids: `HERO_SRCS` is a list of `src` strings because it is
+ * the client-safe slice and an id would be a second thing to ship. Server callers that already
+ * hold such a path (the homepage hero pick, the glossary background) can resolve authored alt
+ * through here instead of inventing one from the entity name.
+ *
+ * Server-side only, like the rest of this module — see the file docstring.
+ */
+export function getMediaAltBySrc(src: string | null | undefined, locale: string): string | null {
+  if (!src) return null;
+  const id = src
+    .replace(/^\/media\//, '')
+    .replace(/\?.*$/, '')
+    .replace(/\.[^./]+$/, '');
+  return getMediaAlt(id, locale);
+}
+
 /** Caption in the requested locale, falling back through de → en → anything. */
 export function getMediaCaption(id: string, locale: string): string | null {
   return pickText(MEDIA_TEXT[id]?.caption, locale);
