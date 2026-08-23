@@ -1,7 +1,8 @@
 'use client';
 
-import { use, useMemo, useState } from 'react';
+import { use, useCallback, useMemo, useState } from 'react';
 import Link from 'next/link';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import {
   ArrowLeft,
   CalendarRange,
@@ -60,9 +61,49 @@ const TABS: Array<{ id: Tab; label: string; icon: typeof Sliders }> = [
   { id: 'history', label: 'Verlauf', icon: History },
 ];
 
+/**
+ * The active tab, read from the address bar rather than held beside it.
+ *
+ * Derived, not stored: with the URL as the only source there is no state to
+ * fall out of step with it, no effect to sync them, and the browser's back
+ * button works because it is the thing that changes the value. `replace`
+ * rather than `push`, because switching a tab is not a navigation anybody
+ * wants five of in their history — but it does have to survive a reload and a
+ * detour into a ride.
+ */
+function useTabFromUrl(): [Tab, (tab: Tab) => void] {
+  const params = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const wanted = params.get('tab');
+  const tab = TABS.some((entry) => entry.id === wanted) ? (wanted as Tab) : 'fields';
+
+  const select = useCallback(
+    (next: Tab) => {
+      const query = new URLSearchParams(params.toString());
+      if (next === 'fields') query.delete('tab');
+      else query.set('tab', next);
+      const search = query.toString();
+      router.replace(search ? `${pathname}?${search}` : pathname, { scroll: false });
+    },
+    [params, pathname, router]
+  );
+
+  return [tab, select];
+}
+
 export default function ParkDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
-  const [tab, setTab] = useState<Tab>('fields');
+  // The open tab lives in the URL, not in component state.
+  //
+  // As state it was unreachable and unrememberable in equal measure: every link
+  // that meant to open one — `?tab=attractions` from the data-quality list,
+  // `#seasons` from the seasons table — landed on Stammdaten, and so did every
+  // way back from a ride. Somebody working through a park's rides had to find
+  // their place again after each one, which is the kind of friction that makes
+  // a tool feel unfinished even when every screen behind it works.
+  const [tab, setTab] = useTabFromUrl();
   // Read once, at the top: hooks may not be called from inside the conditional
   // branches below, and calling `useCan` per tab would do exactly that.
   const canEdit = useCan('editor');

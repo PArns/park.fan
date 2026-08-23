@@ -86,13 +86,24 @@ function safeParse(text: string): unknown {
  * fine while staying silent about the one that is not.
  */
 function messageFrom(payload: unknown, response: Response): string {
-  if (payload && typeof payload === 'object') {
-    const record = payload as Record<string, unknown>;
-    if (Array.isArray(record.message)) return record.message.join(' · ');
-    if (typeof record.message === 'string') return record.message;
-    if (typeof record.error === 'string') return record.error;
-  }
-  return `${response.status} ${response.statusText}`.trim();
+  const record =
+    payload && typeof payload === 'object' ? (payload as Record<string, unknown>) : null;
+
+  const sentence = (() => {
+    if (record) {
+      if (Array.isArray(record.message)) return record.message.join(' · ');
+      if (typeof record.message === 'string') return record.message;
+      if (typeof record.error === 'string') return record.error;
+    }
+    return `${response.status} ${response.statusText}`.trim();
+  })();
+
+  // A 5xx carries a reference the backend also wrote into its error log next to
+  // the stack. Shown here, a screenshot of a failed save is enough to find what
+  // produced it — which is the whole reason the reference exists, and it was
+  // being dropped one layer short of the person looking at it.
+  const reference = record && typeof record.reference === 'string' ? record.reference : null;
+  return reference ? `${sentence} (Ref ${reference})` : sentence;
 }
 
 // ─── query helpers ────────────────────────────────────────────────────────────

@@ -78,6 +78,10 @@ export function SessionProvider({
     // document is the only way to be sure none of it outlives the session it
     // belonged to, and signing out is a deliberate, once-a-day action that can
     // afford one navigation.
+    // A full document load is the point, so the lint rule that prefers
+    // `router.push` does not apply: a client-side navigation keeps this tab's
+    // memory, and its memory is what belonged to the account that just left.
+    // eslint-disable-next-line @next/next/no-location-assign-relative-destination
     window.location.assign('/admin');
   }, [client]);
 

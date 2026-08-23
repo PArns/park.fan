@@ -240,7 +240,7 @@ function ParkTable({ parks }: { parks: AdminParkListItem[] }) {
             <td className="px-4 py-2.5 text-right tabular-nums">
               {park.seasonCount > 0 ? (
                 <Link
-                  href={`/admin/parks/${park.id}#seasons`}
+                  href={`/admin/parks/${park.id}?tab=seasons`}
                   className="hover:text-primary inline-flex items-center gap-1"
                 >
                   <CalendarRange className="h-3 w-3" />

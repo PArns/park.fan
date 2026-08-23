@@ -130,7 +130,7 @@ export default function SeasonsPage() {
                   .map((season) => (
                     <li key={season.id}>
                       <Link
-                        href={`/admin/parks/${season.parkId}#seasons`}
+                        href={`/admin/parks/${season.parkId}?tab=seasons`}
                         className="hover:bg-muted/25 flex flex-wrap items-center gap-x-3 gap-y-1 px-4 py-2.5"
                       >
                         <span className="min-w-0 flex-1 truncate text-sm font-medium">
