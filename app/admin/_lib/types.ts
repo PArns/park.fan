@@ -213,3 +213,17 @@ export interface AdminSessionInfo {
   lastSeenAt: string;
   expiresAt: string;
 }
+
+/** The dashboard's counts, from `GET /v1/admin/content/overview`. */
+export interface AdminOverview {
+  parks: { total: number; curated: number; withSeasons: number };
+  attractions: {
+    total: number;
+    curated: number;
+    withRideProfile: number;
+    seasonal: number;
+    seasonalWithoutMonths: number;
+  };
+  seasons: { total: number; running: number; upcoming: number };
+  curations: { last30Days: number; perDay: Array<{ day: string; count: number }> };
+}

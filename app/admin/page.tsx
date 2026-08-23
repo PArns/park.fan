@@ -13,12 +13,12 @@ import {
   Sparkles,
   TriangleAlert,
 } from 'lucide-react';
-import { cn } from '@/lib/utils';
 import { heroObjectPosition } from '@/lib/media/hero';
 import { useHeroPhoto } from './_lib/use-hero-photo';
 import { adminKeys, useAdminQuery } from './_lib/api';
-import type { AdminParkListItem, AuditEntry, ParkSeason } from './_lib/types';
+import type { AdminOverview, AdminParkListItem, AuditEntry, ParkSeason } from './_lib/types';
 import { ErrorState, Kbd, Panel, PanelBody, PanelHeader, SkeletonRows } from './_ui/primitives';
+import { BacklogBars, CurationTrend, MetricTile } from './_ui/metrics';
 import { HistoryList } from './_ui/history-list';
 import { useSession } from './_app/session';
 import { AdminPage } from './_ui/primitives';
@@ -50,6 +50,16 @@ export default function AdminDashboard() {
   const uncurated = useAdminQuery<{ parks: AdminParkListItem[]; total: number }>(
     adminKeys.parks({ curated: 'none' }),
     '/api/admin/content/parks?curated=none&limit=6'
+  );
+
+  // One request for every number on this screen. The tiles used to read the
+  // `total` of whichever list happened to run below them, which meant a tile
+  // silently inherited that list's `limit` — and a count capped at 500 looks
+  // exactly like a catalogue of 500.
+  const overview = useAdminQuery<AdminOverview>(
+    ['admin', 'overview'],
+    '/api/admin/content/overview',
+    { staleTime: 60_000 }
   );
 
   return (
@@ -103,34 +113,122 @@ export default function AdminDashboard() {
         )}
       </div>
 
-      {/* Three numbers the page already has.
-          Every one of these is the `total` of a query that runs below anyway,
-          so this costs no request — and it answers at a glance what the lists
-          under it answer after reading. They are counts, not a metrics wall:
-          each one is a link to the list it counts. */}
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-        <Stat
-          href="/admin/parks"
+      {/* What the catalogue looks like, and what is left to do.
+          Every tile is a link to the list it counts, and the ring is the share
+          rather than a decoration: two parks of 212 is the honest picture of
+          where curation stands, and a ring says that faster than a sentence. */}
+      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <MetricTile
+          href="/admin/parks?curated=none"
           icon={MapPin}
-          label="Parks ohne Kuratierung"
-          value={uncurated.data?.total}
-          loading={uncurated.isLoading}
+          label="Parks kuratiert"
+          value={overview.data?.parks.curated}
+          of={overview.data?.parks.total}
+          tone="brand"
+          note={
+            overview.data
+              ? `${(overview.data.parks.total - overview.data.parks.curated).toLocaleString('de-DE')} noch nie angefasst`
+              : undefined
+          }
+          loading={overview.isLoading}
         />
-        <Stat
+        <MetricTile
+          href="/admin/parks"
+          icon={Sparkles}
+          label="Bahnen kuratiert"
+          value={overview.data?.attractions.curated}
+          of={overview.data?.attractions.total}
+          tone="brand"
+          loading={overview.isLoading}
+        />
+        <MetricTile
+          href="/admin/parks"
+          icon={Images}
+          label="Bahnen mit Ride-Profil"
+          value={overview.data?.attractions.withRideProfile}
+          of={overview.data?.attractions.total}
+          tone="good"
+          loading={overview.isLoading}
+        />
+        <MetricTile
           href="/admin/seasons"
           icon={CalendarRange}
-          label="Saisons laufen heute"
-          value={seasons.data?.total}
-          loading={seasons.isLoading}
+          label="Parks mit Saisons"
+          value={overview.data?.parks.withSeasons}
+          of={overview.data?.parks.total}
+          tone={overview.data && overview.data.parks.withSeasons === 0 ? 'warn' : 'good'}
+          note={
+            overview.data
+              ? `${overview.data.seasons.running} laufen heute, ${overview.data.seasons.upcoming} kommen`
+              : undefined
+          }
+          loading={overview.isLoading}
         />
-        <Stat
-          href="/admin/history"
-          icon={History}
-          label="Änderungen insgesamt"
-          value={history.data?.total}
-          loading={history.isLoading}
-          className="col-span-2 sm:col-span-1"
-        />
+      </div>
+
+      <div className="grid gap-4 lg:grid-cols-3">
+        <Panel className="lg:col-span-1">
+          <PanelBody>
+            <CurationTrend
+              perDay={overview.data?.curations.perDay ?? []}
+              loading={overview.isLoading}
+            />
+          </PanelBody>
+        </Panel>
+
+        <Panel className="lg:col-span-2">
+          <PanelHeader
+            icon={TriangleAlert}
+            title="Was am meisten fehlt"
+            hint="Anteil am ganzen Katalog, nicht am größten Rückstand — sonst sieht jede Zeile gleich dringend aus"
+          />
+          <PanelBody>
+            <BacklogBars
+              loading={overview.isLoading}
+              rows={
+                overview.data
+                  ? [
+                      {
+                        key: 'profile',
+                        label: 'Bahnen ohne Ride-Profil',
+                        value:
+                          overview.data.attractions.total -
+                          overview.data.attractions.withRideProfile,
+                        of: overview.data.attractions.total,
+                        href: '/admin/parks',
+                        tone: 'warn' as const,
+                      },
+                      {
+                        key: 'curation',
+                        label: 'Bahnen ohne kuratiertes Feld',
+                        value:
+                          overview.data.attractions.total - overview.data.attractions.curated,
+                        of: overview.data.attractions.total,
+                        href: '/admin/parks',
+                        tone: 'neutral' as const,
+                      },
+                      {
+                        key: 'months',
+                        label: 'Saisonal markiert, ohne Monate',
+                        value: overview.data.attractions.seasonalWithoutMonths,
+                        of: overview.data.attractions.total,
+                        href: '/admin/parks',
+                        tone: 'bad' as const,
+                      },
+                      {
+                        key: 'seasons',
+                        label: 'Parks ohne erfasste Saison',
+                        value: overview.data.parks.total - overview.data.parks.withSeasons,
+                        of: overview.data.parks.total,
+                        href: '/admin/seasons',
+                        tone: 'warn' as const,
+                      },
+                    ]
+                  : []
+              }
+            />
+          </PanelBody>
+        </Panel>
       </div>
 
       <div className="grid gap-4 lg:grid-cols-3">
@@ -285,40 +383,3 @@ function QuickLink({
  * from nothing when the number lands pushes the two lists under it down, and
  * these three resolve at three different moments.
  */
-function Stat({
-  href,
-  icon: Icon,
-  label,
-  value,
-  loading,
-  className,
-}: {
-  href: string;
-  icon: typeof MapPin;
-  label: string;
-  value: number | undefined;
-  loading: boolean;
-  className?: string;
-}) {
-  return (
-    <Link
-      href={href}
-      className={cn(
-        'border-border/60 bg-card/80 hover:border-primary/40 group relative overflow-hidden rounded-xl border p-3 shadow-lg ring-1 shadow-black/20 ring-white/[0.03] backdrop-blur-sm transition-colors',
-        className
-      )}
-    >
-      <span
-        aria-hidden="true"
-        className="from-primary/10 pointer-events-none absolute -top-8 -right-8 h-24 w-24 rounded-full bg-gradient-to-br to-transparent blur-2xl transition-opacity group-hover:opacity-150"
-      />
-      <div className="relative flex items-start justify-between gap-2">
-        <p className="text-2xl leading-none font-semibold tabular-nums">
-          {loading ? <span className="text-muted-foreground/40">—</span> : (value ?? '—')}
-        </p>
-        <Icon className="text-primary/70 h-4 w-4 shrink-0" />
-      </div>
-      <p className="text-muted-foreground relative mt-2 text-[11px] leading-tight">{label}</p>
-    </Link>
-  );
-}
