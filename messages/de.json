@@ -1203,7 +1203,7 @@
       "dining": "Gastronomie"
     },
     "searchPlaceholder": "Begriffe suchen…",
-    "noResults": "Keine Begriffe für „{query}\" gefunden.",
+    "noResults": "Keine Begriffe für „{query}“ gefunden.",
     "noResultsHint": "Versuche ein anderes Wort oder sieh dir die Kategorien an.",
     "player": {
       "play": "Abspielen",
@@ -1336,9 +1336,9 @@
     },
     "widget": {
       "parkSpotlight": "Park im Fokus",
-      "parkNotFound": "Park „{slug}\" wurde nicht gefunden.",
+      "parkNotFound": "Park „{slug}“ wurde nicht gefunden.",
       "attractionSpotlight": "Attraktion im Fokus",
-      "attractionNotFound": "Attraktion „{slug}\" wurde nicht gefunden.",
+      "attractionNotFound": "Attraktion „{slug}“ wurde nicht gefunden.",
       "parkMap": "Parkplan",
       "weather": "Wetter",
       "glossary": "Glossar",
