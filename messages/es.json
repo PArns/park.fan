@@ -636,6 +636,7 @@
       "avgWait": "Espera media",
       "p50": "Típico",
       "p90": "Pico",
+      "sampleDaysShort": "días",
       "noData": "Aún no hay suficientes datos históricos disponibles."
     },
     "bestDays": {

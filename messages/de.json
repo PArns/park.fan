@@ -636,6 +636,7 @@
       "avgWait": "Ø Wartezeit",
       "p50": "Typisch",
       "p90": "Spitze",
+      "sampleDaysShort": "Tage",
       "noData": "Noch nicht genug historische Daten verfügbar."
     },
     "bestDays": {

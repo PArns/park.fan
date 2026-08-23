@@ -636,6 +636,7 @@
       "avgWait": "Attente moy.",
       "p50": "Typique",
       "p90": "Pic",
+      "sampleDaysShort": "jours",
       "noData": "Pas encore assez de données historiques disponibles."
     },
     "bestDays": {

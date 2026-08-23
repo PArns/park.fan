@@ -91,27 +91,19 @@ Unsere Wartezeit-Historie für den Europa-Park reicht zwölf Monate zurück. Üb
 alle Wochentage gerechnet liegt die **typische Wartezeit im Parkschnitt bei 23
 Minuten** (Median), das 90. Perzentil bei 36.
 
-Die zehn Attraktionen, an denen du am längsten stehst:
+Die zehn Attraktionen, an denen du am längsten stehst, mit dem Wert von heute
+daneben:
 
-| Attraktion                                                                 | Bereich      | Typisch (Median) | Spitze (P90) |
-| -------------------------------------------------------------------------- | ------------ | ---------------: | -----------: |
-| **[Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare)** | Kroatien     |       **34 Min** |       38 Min |
-| [Arthur](ref:europa-park/arthur?bare)                                      | Minimoys     |           31 Min |       37 Min |
-| [Wodan](ref:europa-park/wodan-timburcoaster?bare)                          | Island       |           28 Min |       33 Min |
-| [Eurosat CanCan Coaster](ref:europa-park/eurosat-cancan-coaster?bare)      | Frankreich   |           28 Min |       32 Min |
-| [Silver Star](ref:europa-park/silver-star?bare)                            | Monaco       |           23 Min |       28 Min |
-| [Poseidon](ref:europa-park/water-rollercoaster-poseidon?bare)              | Griechenland |           22 Min |       27 Min |
-| [Matterhorn-Blitz](ref:europa-park/matterhorn-blitz?bare)                  | Schweiz      |           21 Min |       26 Min |
-| [blue fire](ref:europa-park/blue-fire-megacoaster?bare)                    | Island       |           21 Min |       25 Min |
-| [Schweizer Bobbahn](ref:europa-park/swiss-bob-run?bare)                    | Schweiz      |           20 Min |       25 Min |
-| [Voletarium](ref:europa-park/voletarium?bare)                              | Deutschland  |           14 Min |       27 Min |
+```stats-widget slug=europa-park show=attractions
 
-Zwei Spalten, zwei Fragen. „Typisch“ ist der Median eines normalen Betriebstags,
-„Spitze“ derselbe Wert an den zehn Prozent vollsten Tagen. Beides sagt
-nichts darüber, wie sich eine Schlange über den Tag bewegt.
+```
+
+„Typisch“ ist dabei der Median eines normalen Betriebstags, die „Spitze“
+derselbe Wert an den zehn Prozent vollsten Tagen. Beides sagt nichts darüber,
+wie sich eine Schlange über den Tag bewegt.
 
 Das Voletarium fällt aus der Reihe. Sein Median von 14 Minuten ist der
-niedrigste der zehn, die Spitze mit 27 genauso hoch wie die von Poseidon. Ein
+niedrigste der zehn längsten, die Spitze mit 27 genauso hoch wie die von Poseidon. Ein
 Flugtheater lädt in großen Schüben: Zwischen zwei Vorstellungen steht kaum
 jemand an, an einem vollen Vormittag reicht die Schlange bis auf den Vorplatz.
 Im Tagesmittel bleibt davon nichts übrig.
@@ -147,10 +139,6 @@ das [Efteling](/blog/efteling-disney-der-niederlande) und das
 aufgemacht. Und in Paris, wo etwa anderthalbmal so viele Gäste
 durchgehen, steht der Parkschnitt bei 34 Minuten. Das ist exakt der Wert, den in
 Rust die _längste_ Schlange des Parks hat.
-
-```stats-widget slug=europa-park
-
-```
 
 ## Warum der größte Park die kürzesten Schlangen hat
 
@@ -551,15 +539,9 @@ Beim Wochentag weicht der Europa-Park von allem ab, was ich sonst so messe.
 
 ### Der Wochentag
 
-| Wochentag   |    Typisch | Spitze |
-| ----------- | ---------: | -----: |
-| Montag      |     22 Min | 35 Min |
-| Dienstag    |     25 Min | 38 Min |
-| Mittwoch    |     23 Min | 36 Min |
-| Donnerstag  |     22 Min | 35 Min |
-| Freitag     |     22 Min | 35 Min |
-| Samstag     |     28 Min | 44 Min |
-| **Sonntag** | **18 Min** | 30 Min |
+```stats-widget slug=europa-park show=weekdays
+
+```
 
 Sonntags ist in Rust am wenigsten los, zehn Minuten unter dem Samstag und vier
 unter dem besten Werktag. Im deutschen Parkvergleich ist das eine Ausnahme. Im
@@ -589,17 +571,17 @@ irgendwann über einen vollen Dienstag.
 
 Christi Himmelfahrt fällt immer auf einen Donnerstag, und voll wird nicht der
 Feiertag. Voll wird der Freitag danach, den halb Deutschland freinimmt. In
-unseren Daten steht Donnerstag, der 14. Mai 2026, auf „moderat" und der Freitag
-darauf auf „hoch". Am Sonntag lag der Park wieder auf „niedrig". Bei
+unseren Daten steht Donnerstag, der 14. Mai 2026, auf „moderat“ und der Freitag
+darauf auf „hoch“. Am Sonntag lag der Park wieder auf „niedrig“. Bei
 Fronleichnam ist dieselbe Form noch schärfer ausgeprägt. Der Feiertag am 4. Juni
-stand auf „niedrig", der Brückenfreitag am 5. auf „hoch".
+stand auf „niedrig“, der Brückenfreitag am 5. auf „hoch“.
 
 Eine Einschränkung dazu. Wir haben genau einen gemessenen Brückentag, und
 ausgerechnet der war ein milder. Am 15. Mai 2026 zog ein Gewitter durch, wärmer
-als zwölf Grad wurde es nicht, und trotzdem reichte es für „hoch". Der Kanal
+als zwölf Grad wurde es nicht, und trotzdem reichte es für „hoch“. Der Kanal
 Epfan95 fährt seit Jahren an genau diesen Freitagen hin und filmt das Ergebnis.
-Für 2026 lautet der Titel „Der leerste volle Tag", für die Jahre davor
-„Besuchermassen, hohe Wartezeiten und viele Autos". Ein Brückentag bei
+Für 2026 lautet der Titel „Der leerste volle Tag“, für die Jahre davor
+„Besuchermassen, hohe Wartezeiten und viele Autos“. Ein Brückentag bei
 Sonnenschein sieht anders aus als unser einer Messwert.
 
 https://www.youtube.com/watch?v=Js8j_qvKCoA
@@ -608,25 +590,18 @@ https://www.youtube.com/watch?v=Js8j_qvKCoA
 
 ### Der Monat
 
-| Monat    | Typisch | Spitze | Messtage |
-| -------- | ------: | -----: | -------: |
-| Januar   |  19 Min | 29 Min |        5 |
-| März     |  15 Min | 23 Min |        3 |
-| April    |  23 Min | 36 Min |       30 |
-| Mai      |  21 Min | 34 Min |       31 |
-| Juni     |  20 Min | 33 Min |       30 |
-| Juli     |  24 Min | 39 Min |       30 |
-| August   |  27 Min | 43 Min |       22 |
-| Dezember |  28 Min | 41 Min |        6 |
+```stats-widget slug=europa-park show=months
 
-Vorsicht bei Januar, März und Dezember: Dahinter stehen nur drei bis sechs
-Messtage. Die Größenordnung stimmt, auf die einzelne Minute würde ich mich da
+```
+
+Vorsicht bei Januar, März und Dezember. Dahinter stehen nur drei bis sechs
+Messtage, was in der Spalte rechts steht. Die Größenordnung stimmt, auf die einzelne Minute würde ich mich da
 nicht festlegen. Belastbar ist der Block April bis August, und der sagt: Mai und
 Juni sind die ruhigsten Sommermonate, August ist der vollste.
 
-Vier Monate fehlen in der Tabelle ganz: Februar, September, Oktober und November,
-dazu der März fast. Für den Herbst haben wir aus diesem Fenster also keinen
-einzigen Messtag. Über Halloween und HALLOWinter sagt diese Tabelle nichts.
+Vier Monate fehlen ganz: Februar, September, Oktober und November, dazu der März
+fast. Für den Herbst haben wir aus diesem Fenster also keinen einzigen Messtag.
+Über Halloween und HALLOWinter sagen diese Zahlen nichts.
 
 ### Die vier Wochen, die kaum jemand kennt
 

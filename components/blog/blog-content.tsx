@@ -821,7 +821,7 @@ function renderWidget(
     const slug = attrs.slug;
     if (!slug) return null;
     const park = ctx.parkMap.get(slug) ?? null;
-    return <BlogStatsWidget park={park} slug={slug} />;
+    return <BlogStatsWidget park={park} slug={slug} show={attrs.show} />;
   }
   if (name === 'attraction-widget') {
     const parkSlug = attrs.parkSlug ?? attrs.park;

@@ -636,6 +636,7 @@
       "avgWait": "Gem. wacht",
       "p50": "Typisch",
       "p90": "Piek",
+      "sampleDaysShort": "dagen",
       "noData": "Nog niet genoeg historische data beschikbaar."
     },
     "bestDays": {

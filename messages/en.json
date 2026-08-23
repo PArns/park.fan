@@ -636,6 +636,7 @@
       "avgWait": "Avg wait",
       "p50": "Typical",
       "p90": "Peak",
+      "sampleDaysShort": "days",
       "noData": "Not enough historical data available yet."
     },
     "bestDays": {
