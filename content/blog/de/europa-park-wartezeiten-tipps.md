@@ -2,7 +2,7 @@
 title: 'Europa-Park: Deutschlands größter Park, und warum er sich leer anfühlt'
 translationKey: europa-park-guide
 date: '2026-08-21'
-updatedAt: '2026-08-22'
+updatedAt: '2026-08-23'
 author: patrick
 mode: published
 featured: false
@@ -96,14 +96,14 @@ Die zehn Attraktionen, an denen du am längsten stehst:
 | Attraktion                                                                 | Bereich      | Typisch (Median) | Spitze (P90) |
 | -------------------------------------------------------------------------- | ------------ | ---------------: | -----------: |
 | **[Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare)** | Kroatien     |       **34 Min** |       38 Min |
-| [Arthur](ref:europa-park/arthur?bare)                                      | Minimoys     |           31 Min |       36 Min |
+| [Arthur](ref:europa-park/arthur?bare)                                      | Minimoys     |           31 Min |       37 Min |
 | [Wodan](ref:europa-park/wodan-timburcoaster?bare)                          | Island       |           28 Min |       33 Min |
 | [Eurosat CanCan Coaster](ref:europa-park/eurosat-cancan-coaster?bare)      | Frankreich   |           28 Min |       32 Min |
 | [Silver Star](ref:europa-park/silver-star?bare)                            | Monaco       |           23 Min |       28 Min |
 | [Poseidon](ref:europa-park/water-rollercoaster-poseidon?bare)              | Griechenland |           22 Min |       27 Min |
 | [Matterhorn-Blitz](ref:europa-park/matterhorn-blitz?bare)                  | Schweiz      |           21 Min |       26 Min |
+| [blue fire](ref:europa-park/blue-fire-megacoaster?bare)                    | Island       |           21 Min |       25 Min |
 | [Schweizer Bobbahn](ref:europa-park/swiss-bob-run?bare)                    | Schweiz      |           20 Min |       25 Min |
-| [blue fire](ref:europa-park/blue-fire-megacoaster?bare)                    | Island       |           20 Min |       25 Min |
 | [Voletarium](ref:europa-park/voletarium?bare)                              | Deutschland  |           14 Min |       27 Min |
 
 Zwei Spalten, zwei Fragen. „Typisch“ ist der Median eines normalen Betriebstags,
@@ -222,10 +222,35 @@ gesonderten Pass. Eine einzelne Attraktion, keine Parkregel.
 
 ## Ein Park, der als Vorführraum gedacht war
 
-Die Firma ist älter als das Land, in dem sie steht. **Mack** baut seit **1780**
-Fahrzeuge in Waldkirch im Schwarzwald, seit **1880** Zirkus- und
-Schaustellerwagen und seit **1921** Achterbahnen. Acht Generationen, ein Ort,
-dieselbe Familie.
+Die Firma ist älter als das Land, in dem sie steht. **Paul Mack** gründete
+**1780** in Waldkirch im Schwarzwald eine Wagnerei, gebaut wurden Kutschen und
+Postwagen. Acht Generationen später steht die Werkstatt immer noch am selben
+Ort, in derselben Familie, und liefert inzwischen in über siebzig Länder.
+
+Der Weg von der Kutsche zur Achterbahn dauerte anderthalb Jahrhunderte:
+
+| Jahr     | Was in Waldkirch passierte                                            |
+| -------- | --------------------------------------------------------------------- |
+| **1780** | Paul Mack gründet die Wagnerei, Kutschen und Postwagen                |
+| 1833     | Sohn Johann übernimmt und fertigt hölzerne Wasserleitungen            |
+| 1886     | Heinrich Mack I. verschwindet auf einer Geschäftsreise nach Straßburg |
+| 1920     | Der Betrieb steigt auf Fahrgeschäfte für Schausteller um              |
+| **1921** | Die erste Holzachterbahn, mit Seilaufzug                              |
+| 1936     | Die erste benzinbetriebene Achterbahn                                 |
+| 1951     | Die erste hölzerne Bobbahn                                            |
+| **1957** | Der Prototyp der Wilden Maus, damals noch aus Holz                    |
+| 1958     | Hermann, Willi und Franz Mack übernehmen in siebter Generation        |
+| 1972     | Franz und Roland Mack reisen in die USA                               |
+| **1975** | Der Europa-Park öffnet mit 15 Attraktionen                            |
+| 2005     | Aus der Heinrich Mack GmbH wird Mack Rides                            |
+| 2018     | Ein Teil der Fertigung zieht nach Herbolzheim                         |
+
+Die Zeile von 1957 hat eine Pointe, die man im Park fahren kann. Der Prototyp
+der Wilden Maus entstand in Waldkirch, 26 Kilometer Luftlinie von Rust, damals
+aus Holz und heute überall aus Stahl. Der
+**[Matterhorn-Blitz](ref:europa-park/matterhorn-blitz)** ist eine davon. Bautyp
+und Park kommen aus derselben Werkstatt, und bis September 2024 sind daraus 174
+Achterbahnen in aller Welt geworden.
 
 Anfang der Siebziger hatte **Franz Mack** ein praktisches Problem. Seine Kunden
 saßen in Europa, in den USA, in Japan, und wer eine Achterbahn kaufen will, will
@@ -533,10 +558,10 @@ Beim Wochentag weicht der Europa-Park von allem ab, was ich sonst so messe.
 | Mittwoch    |     23 Min | 36 Min |
 | Donnerstag  |     22 Min | 35 Min |
 | Freitag     |     22 Min | 35 Min |
-| Samstag     |     27 Min | 43 Min |
+| Samstag     |     28 Min | 44 Min |
 | **Sonntag** | **18 Min** | 30 Min |
 
-Sonntags ist in Rust am wenigsten los, neun Minuten unter dem Samstag und vier
+Sonntags ist in Rust am wenigsten los, zehn Minuten unter dem Samstag und vier
 unter dem besten Werktag. Im deutschen Parkvergleich ist das eine Ausnahme. Im
 [Phantasialand](ref:phantasialand?bare) ist der Montag der leerste Tag und der
 Sonntag nach dem Samstag der vollste, im [Efteling](ref:efteling?bare) ist es
@@ -560,18 +585,39 @@ französischen Ferien und die der Schweizer Kantone Aargau, Basel-Stadt und
 Basel-Landschaft mit ein. Wer nur auf Baden-Württemberg schaut, wundert sich
 irgendwann über einen vollen Dienstag.
 
+### Der Brückentag
+
+Christi Himmelfahrt fällt immer auf einen Donnerstag, und voll wird nicht der
+Feiertag. Voll wird der Freitag danach, den halb Deutschland freinimmt. In
+unseren Daten steht Donnerstag, der 14. Mai 2026, auf „moderat" und der Freitag
+darauf auf „hoch". Am Sonntag lag der Park wieder auf „niedrig". Bei
+Fronleichnam ist dieselbe Form noch schärfer ausgeprägt. Der Feiertag am 4. Juni
+stand auf „niedrig", der Brückenfreitag am 5. auf „hoch".
+
+Eine Einschränkung dazu. Wir haben genau einen gemessenen Brückentag, und
+ausgerechnet der war ein milder. Am 15. Mai 2026 zog ein Gewitter durch, wärmer
+als zwölf Grad wurde es nicht, und trotzdem reichte es für „hoch". Der Kanal
+Epfan95 fährt seit Jahren an genau diesen Freitagen hin und filmt das Ergebnis.
+Für 2026 lautet der Titel „Der leerste volle Tag", für die Jahre davor
+„Besuchermassen, hohe Wartezeiten und viele Autos". Ein Brückentag bei
+Sonnenschein sieht anders aus als unser einer Messwert.
+
+https://www.youtube.com/watch?v=Js8j_qvKCoA
+
+[Derselbe Brückenfreitag ein Jahr früher](https://www.youtube.com/watch?v=Js8j_qvKCoA)
+
 ### Der Monat
 
 | Monat    | Typisch | Spitze | Messtage |
 | -------- | ------: | -----: | -------: |
-| Januar   |  18 Min | 28 Min |        5 |
-| März     |  14 Min | 23 Min |        3 |
-| April    |  23 Min | 35 Min |       30 |
+| Januar   |  19 Min | 29 Min |        5 |
+| März     |  15 Min | 23 Min |        3 |
+| April    |  23 Min | 36 Min |       30 |
 | Mai      |  21 Min | 34 Min |       31 |
 | Juni     |  20 Min | 33 Min |       30 |
 | Juli     |  24 Min | 39 Min |       30 |
-| August   |  26 Min | 42 Min |       21 |
-| Dezember |  27 Min | 40 Min |        6 |
+| August   |  27 Min | 43 Min |       22 |
+| Dezember |  28 Min | 41 Min |        6 |
 
 Vorsicht bei Januar, März und Dezember: Dahinter stehen nur drei bis sechs
 Messtage. Die Größenordnung stimmt, auf die einzelne Minute würde ich mich da
@@ -696,8 +742,8 @@ Spitze liegt früher.
 ## Drei Fehler, die im Europa-Park besonders viel Zeit kosten
 
 **Den Samstag buchen, weil das Hotel am Samstag frei ist.** Der Samstag kostet
-dich neun Minuten pro Anstellvorgang gegenüber dem Sonntag. Bei zehn
-Attraktionen an einem Tag sind das anderthalb Stunden. Wenn du ohnehin zwei
+dich zehn Minuten pro Anstellvorgang gegenüber dem Sonntag. Bei zehn
+Attraktionen an einem Tag sind das gut anderthalb Stunden. Wenn du ohnehin zwei
 Nächte bleibst, dreh die Reihenfolge um: Samstag ankommen, Rulantica oder den
 Ort ansehen, Sonntag in den Park.
 
@@ -726,7 +772,7 @@ seinen Tag.
 Ab **28. November** ist Winter. Weihnachtsmärkte, eine Eisbahn, Eisshows und
 Bereiche, die es nur in diesen Wochen gibt, etwa die Winter World of Wonder und
 die Schlittenfahrt Snowflake. Die typische Wartezeit im Dezember lag bei uns bei
-27 Minuten und damit einen Tick über dem August, allerdings auf nur sechs
+28 Minuten und damit einen Tick über dem August, allerdings auf nur sechs
 Messtagen. Am **24. und 25. Dezember** ist zu, Hotelgäste dürfen bis zum 10.
 Januar bleiben.
 
@@ -846,7 +892,7 @@ aktualisiert und mit Prognose für die nächsten Tage.
 
 ### Wann ist im Europa-Park am wenigsten los?
 
-Der **Sonntag** ist der ruhigste Wochentag (18 Minuten typisch gegenüber 27 am
+Der **Sonntag** ist der ruhigste Wochentag (18 Minuten typisch gegenüber 28 am
 Samstag), Mai und Juni sind die ruhigsten Sommermonate. Am leersten ist es in der
 HALLOWinter-Saison Anfang November. In unserer Prognose für die kommenden drei
 Monate stehen alle 19 Novembertage auf „niedrig“.
@@ -903,7 +949,7 @@ Doppelte einer Tageskarte.
 Ja, mit einer Einschränkung. Die Winterdekoration, die Eisbahn und die
 Weihnachtsmärkte gibt es nur dann, dafür ist es früher dunkel, der Park macht
 schon um 19 Uhr zu, und die Wasserbahnen laufen nicht durchgehend. Die
-Wartezeiten sind im Dezember mit typisch 27 Minuten sogar einen Tick höher als im
+Wartezeiten sind im Dezember mit typisch 28 Minuten sogar einen Tick höher als im
 August. Für den November stuft unsere Prognose dagegen alle 19 Tage, die sie abdeckt, auf
 „niedrig“ ein; gemessene Wartezeiten haben wir aus diesem Monat noch nicht.
 
@@ -943,7 +989,7 @@ dreht.
 ### Quellen & Weiterlesen
 
 - Parkgeschichte, Gründung am 12. Juli 1975, Themenbereiche mit Eröffnungsjahren, Fläche und Beschäftigte: [Europa-Park auf de.wikipedia](https://de.wikipedia.org/wiki/Europa-Park) · [Die Evolution des Vergnügens: Achterbahn-Geschichte im Europa-Park (offizieller Blog)](https://blog.europapark.de/europa-park/die-evolution-des-vergnuegens-achterbahn-geschichte-im-europa-park/)
-- Mack Rides seit 1780 in Waldkirch, Zirkuswagen ab 1880, Achterbahnen ab 1921: [MACK Rides – die Fahrgeschäfte-Manufaktur für die ganze weite Welt (offizieller Blog)](https://blog.europapark.de/europa-park/mack-rides-die-fahrgeschaefte-manufaktur-fuer-die-ganze-weite-welt/)
+- Firmenzeitleiste Mack: Gründung 1780 durch Paul Mack, Johann Mack ab 1833, das Verschwinden von Heinrich Mack I. 1886, Umstieg auf Fahrgeschäfte 1920, erste Holzachterbahn mit Seilaufzug 1921, erste benzinbetriebene Achterbahn 1936, hölzerne Bobbahn 1951, hölzerner Prototyp der Wilden Maus 1957, siebte Generation ab 1958, Umbenennung zu Mack Rides 2005, Fertigung in Herbolzheim ab 2018, 174 Achterbahnen bis September 2024: [Mack Rides – ein Ausflug in die Geschichte (Parkscout)](https://www.parkscout.de/magazin/mackrides/achterbahnwissen) · [Mack Rides auf de.wikipedia](https://de.wikipedia.org/wiki/Mack_Rides) · [Mack Rides auf en.wikipedia](https://en.wikipedia.org/wiki/Mack_Rides) · [MACK Rides über uns (offiziell)](https://www.mack-rides.com/de/ueber-uns/) · [MACK Rides – die Fahrgeschäfte-Manufaktur für die ganze weite Welt (offizieller Blog)](https://blog.europapark.de/europa-park/mack-rides-die-fahrgeschaefte-manufaktur-fuer-die-ganze-weite-welt/)
 - Die Idee auf der USA-Reise 1972, die gescheiterten Standorte Breisach und Neuenburg, der Europaweiher als Namensgeber, Schloss Balthasar, 15 Attraktionen zur Eröffnung und die Besucherreihe seit 1975: [Europa-Park auf de.wikipedia](https://de.wikipedia.org/wiki/Europa-Park) · [MACK Rides über uns](https://www.mack-rides.com/de/ueber-uns/)
 - Besucherzahlen 2024 nach TEA/AECOM (6,2 Mio Park, 1,23 Mio Rulantica, 7,4 Mio Resort, Rang 18 weltweit): [TEA/AECOM Global Experience Index 2024](https://aecom.com/theme-index/)
 - Golden Ticket Awards, zehn Siege und die 2023 unterbrochene Serie: [Golden Ticket Awards (Amusement Today)](https://goldenticketawards.com/)
@@ -962,4 +1008,5 @@ dreht.
 - Ammolite mit zwei Michelin-Sternen seit November 2014, Silver Lake City und die Riverside Western Lodge mit 119 Zimmern: [Ammolite – The Lighthouse Restaurant (offiziell)](https://www.europapark.de/de/uebernachten/gastronomie/ammolite-lighthouse-restaurant) · [Europa-Park Riverside Western Lodge (offiziell)](https://www.europapark.de/de/uebernachten/riverside-western-lodge)
 - Anreise über die A5, Parkgebühren, Rulantica, Eatrenalin mit Michelin-Stern 2026: [Anreise zum Europa-Park (offiziell)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park) · [Europa-Park Erlebnis-Resort (offiziell)](https://www.europapark.de/de) · [Eatrenalin auf en.wikipedia](https://en.wikipedia.org/wiki/Eatrenalin)
 - Gästestruktur nach Herkunftsland und der Schweizer Anteil: [„50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort“ (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300) · [„874'000 Schweizer Besucher stellen den grössten Anteil“ (aboutTravel)](https://abouttravel.ch/reisebranche/874000-schweizer-besucher-stellen-den-groessten-anteil/)
+- Brückentag: Crowd-Level und Wetter der Tage um Christi Himmelfahrt und Fronleichnam 2026 aus unserem eigenen Kalender (gemessen, nicht prognostiziert), dazu die Videoreihe [BRÜCKENTAG im EUROPA-PARK 2025 (Epfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [dieselbe Reihe 2026 (Epfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
 - Wartezeit-, Rope-Drop- und Crowd-Daten: eigene Wartezeit-Historie über ein rollendes Jahr, Stundenprofil aus den letzten dreißig Betriebstagen, Crowd-Prognose über 90 Tage, [Europa-Park auf park.fan](ref:europa-park)

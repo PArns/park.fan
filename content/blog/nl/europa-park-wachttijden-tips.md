@@ -2,7 +2,7 @@
 title: 'Europa-Park: Duitslands grootste park, en waarom het er zo leeg aanvoelt'
 translationKey: europa-park-guide
 date: '2026-08-21'
-updatedAt: '2026-08-22'
+updatedAt: '2026-08-23'
 author: patrick
 mode: published
 featured: false
@@ -94,14 +94,14 @@ De tien attracties waar je het langst staat:
 | Attractie                                                                  | Gebied      | Typisch (mediaan) | Piek (P90) |
 | -------------------------------------------------------------------------- | ----------- | ----------------: | ---------: |
 | **[Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare)** | Kroatië     |        **34 min** |     38 min |
-| [Arthur](ref:europa-park/arthur?bare)                                      | Minimoys    |            31 min |     36 min |
+| [Arthur](ref:europa-park/arthur?bare)                                      | Minimoys    |            31 min |     37 min |
 | [Wodan](ref:europa-park/wodan-timburcoaster?bare)                          | IJsland     |            28 min |     33 min |
 | [Eurosat CanCan Coaster](ref:europa-park/eurosat-cancan-coaster?bare)      | Frankrijk   |            28 min |     32 min |
 | [Silver Star](ref:europa-park/silver-star?bare)                            | Monaco      |            23 min |     28 min |
 | [Poseidon](ref:europa-park/water-rollercoaster-poseidon?bare)              | Griekenland |            22 min |     27 min |
 | [Matterhorn-Blitz](ref:europa-park/matterhorn-blitz?bare)                  | Zwitserland |            21 min |     26 min |
+| [blue fire](ref:europa-park/blue-fire-megacoaster?bare)                    | IJsland     |            21 min |     25 min |
 | [Zwitserse bobbaan](ref:europa-park/swiss-bob-run?bare)                    | Zwitserland |            20 min |     25 min |
-| [blue fire](ref:europa-park/blue-fire-megacoaster?bare)                    | IJsland     |            20 min |     25 min |
 | [Voletarium](ref:europa-park/voletarium?bare)                              | Duitsland   |            14 min |     27 min |
 
 Twee kolommen, twee vragen. “Typisch” is de mediaan van een gewone bedrijfsdag,
@@ -221,10 +221,36 @@ Eén enkele attractie, geen parkregel.
 
 ## Een park dat als showroom bedoeld was
 
-Het bedrijf is ouder dan het land waarin het staat. **Mack** bouwt sinds
-**1780** voertuigen in Waldkirch in het Zwarte Woud, sinds **1880** circus- en
-kermiswagens en sinds **1921** achtbanen. Acht generaties, één plaats, dezelfde
-familie.
+Het bedrijf is ouder dan het land waarin het staat. **Paul Mack** begon in
+**1780** een wagenmakerij in Waldkirch in het Zwarte Woud; gebouwd werden
+koetsen en postwagens. Acht generaties later staat de werkplaats nog altijd op
+dezelfde plek, in dezelfde familie, en levert ze inmiddels aan ruim zeventig
+landen.
+
+De weg van de koets naar de achtbaan duurde anderhalve eeuw:
+
+| Jaar     | Wat er in Waldkirch gebeurde                                    |
+| -------- | --------------------------------------------------------------- |
+| **1780** | Paul Mack begint de wagenmakerij, koetsen en postwagens         |
+| 1833     | Zoon Johann neemt over en maakt houten waterleidingen           |
+| 1886     | Heinrich Mack I. verdwijnt op een zakenreis naar Straatsburg    |
+| 1920     | Het bedrijf stapt over op attracties voor kermisexploitanten    |
+| **1921** | De eerste houten achtbaan, met kabellift                        |
+| 1936     | De eerste achtbaan op benzine                                   |
+| 1951     | De eerste houten bobbaan                                        |
+| **1957** | Het prototype van de wilde muis, toen nog van hout              |
+| 1958     | Hermann, Willi en Franz Mack nemen over in de zevende generatie |
+| 1972     | Franz en Roland Mack reizen naar de VS                          |
+| **1975** | Het Europa-Park opent met 15 attracties                         |
+| 2005     | Heinrich Mack GmbH wordt Mack Rides                             |
+| 2018     | Een deel van de productie verhuist naar Herbolzheim             |
+
+De regel uit 1957 heeft een clou die je in het park kunt rijden. Het prototype
+van de wilde muis ontstond in Waldkirch, 26 kilometer hemelsbreed van Rust, toen
+nog van hout en tegenwoordig overal van staal. De
+**[Matterhorn-Blitz](ref:europa-park/matterhorn-blitz)** is er zo een. Het
+baantype en het park komen uit dezelfde werkplaats, en tot september 2024 zijn
+daar wereldwijd 174 achtbanen uit voortgekomen.
 
 Begin jaren zeventig had **Franz Mack** een praktisch probleem. Zijn klanten
 zaten in Europa, in de VS, in Japan, en wie een achtbaan wil kopen, wil er eerst
@@ -528,10 +554,10 @@ Bij de weekdag wijkt het Europa-Park af van alles wat ik verder meet.
 | Woensdag   |     23 min | 36 min |
 | Donderdag  |     22 min | 35 min |
 | Vrijdag    |     22 min | 35 min |
-| Zaterdag   |     27 min | 43 min |
+| Zaterdag   |     28 min | 44 min |
 | **Zondag** | **18 min** | 30 min |
 
-Op zondag is het in Rust het rustigst, negen minuten onder de zaterdag en vier
+Op zondag is het in Rust het rustigst, tien minuten onder de zaterdag en vier
 onder de beste werkdag. In de Duitse parkvergelijking is dat een uitzondering.
 In het [Phantasialand](ref:phantasialand?bare) is de maandag de leegste dag en
 de zondag na de zaterdag de drukste, in de [Efteling](ref:efteling?bare) is het
@@ -556,18 +582,38 @@ mee en die van de Zwitserse kantons Aargau, Basel-Stadt en Basel-Landschaft. Wie
 alleen naar Baden-Württemberg kijkt, verbaast zich op een gegeven moment over
 een volle dinsdag.
 
+### De brugdag
+
+Hemelvaartsdag valt altijd op een donderdag, en vol wordt niet de feestdag. Vol
+wordt de vrijdag erna, die half Duitsland vrij neemt. In onze data staat
+donderdag 14 mei 2026 op “matig” en de vrijdag erop op “hoog”. Op zondag lag het
+park weer op “laag”. Bij Sacramentsdag is dezelfde vorm nog scherper. De
+feestdag op 4 juni stond op “laag”, de brugvrijdag op de 5e op “hoog”.
+
+Eén voorbehoud daarbij. We hebben precies één gemeten brugdag, en uitgerekend
+die viel mild uit. Op 15 mei 2026 trok er een onweersbui over, warmer dan twaalf
+graden werd het niet, en toch was het genoeg voor “hoog”. Het kanaal Epfan95
+rijdt al jaren juist op die vrijdagen naar Rust en filmt het resultaat. Voor
+2026 luidt de titel “De leegste volle dag”, voor de jaren daarvoor
+“Bezoekersmassa's, hoge wachttijden en veel auto's”. Een brugdag met
+zonneschijn ziet er anders uit dan onze ene meetwaarde.
+
+https://www.youtube.com/watch?v=Js8j_qvKCoA
+
+[Dezelfde brugvrijdag een jaar eerder](https://www.youtube.com/watch?v=Js8j_qvKCoA)
+
 ### De maand
 
 | Maand    | Typisch |   Piek | Meetdagen |
 | -------- | ------: | -----: | --------: |
-| Januari  |  18 min | 28 min |         5 |
-| Maart    |  14 min | 23 min |         3 |
-| April    |  23 min | 35 min |        30 |
+| Januari  |  19 min | 29 min |         5 |
+| Maart    |  15 min | 23 min |         3 |
+| April    |  23 min | 36 min |        30 |
 | Mei      |  21 min | 34 min |        31 |
 | Juni     |  20 min | 33 min |        30 |
 | Juli     |  24 min | 39 min |        30 |
-| Augustus |  26 min | 42 min |        21 |
-| December |  27 min | 40 min |         6 |
+| Augustus |  27 min | 43 min |        22 |
+| December |  28 min | 41 min |         6 |
 
 Voorzichtig met januari, maart en december: daarachter staan maar drie tot zes
 meetdagen. De orde van grootte klopt, op de losse minuut zou ik me daar niet
@@ -692,8 +738,8 @@ eerder.
 ## Drie fouten die in het Europa-Park bijzonder veel tijd kosten
 
 **De zaterdag boeken omdat het hotel op zaterdag vrij is.** De zaterdag kost je
-negen minuten per keer aansluiten ten opzichte van de zondag. Bij tien
-attracties op een dag is dat anderhalf uur. Blijf je toch twee nachten, draai de
+tien minuten per keer aansluiten ten opzichte van de zondag. Bij tien attracties
+op een dag is dat goed anderhalf uur. Blijf je toch twee nachten, draai de
 volgorde dan om: zaterdag aankomen, Rulantica of het dorp bekijken, zondag het
 park in.
 
@@ -721,7 +767,7 @@ eigen leeftijdsgrens. Het heet Traumatica, en wie het voor een extraatje voor
 
 Vanaf **28 november** is het winter. Kerstmarkten, een ijsbaan, ijsshows en
 gebieden die er alleen in deze weken zijn, zoals de Winter World of Wonder en de
-sleerit Snowflake. De typische wachttijd in december lag bij ons op 27 minuten
+sleerit Snowflake. De typische wachttijd in december lag bij ons op 28 minuten
 en daarmee een tikje boven augustus, zij het op maar zes meetdagen. Op **24 en
 25 december** is het dicht, hotelgasten mogen tot 10 januari blijven.
 
@@ -841,7 +887,7 @@ bijgewerkt en met een voorspelling voor de komende dagen.
 
 ### Wanneer is het in het Europa-Park het rustigst?
 
-De **zondag** is de rustigste weekdag (18 minuten typisch tegenover 27 op
+De **zondag** is de rustigste weekdag (18 minuten typisch tegenover 28 op
 zaterdag), mei en juni zijn de rustigste zomermaanden. Het leegst is het in het
 HALLOWinter-seizoen begin november. In onze voorspelling voor de komende drie
 maanden staan alle 19 novemberdagen op “laag”.
@@ -897,7 +943,7 @@ dubbele van een dagkaart.
 Ja, met één kanttekening. De winterdecoratie, de ijsbaan en de kerstmarkten zijn
 er alleen dan, daar staat tegenover dat het eerder donker wordt, dat het park al
 om 19 uur dichtgaat en dat de waterbanen niet doorlopend draaien. De wachttijden
-liggen in december met typisch 27 minuten zelfs een tikje hoger dan in augustus.
+liggen in december met typisch 28 minuten zelfs een tikje hoger dan in augustus.
 Voor november zet onze voorspelling daarentegen alle 19 dagen die ze afdekt op
 “laag”; gemeten wachttijden hebben we uit die maand nog niet.
 
@@ -937,7 +983,7 @@ draait.
 ### Bronnen & verder lezen
 
 - Parkgeschiedenis, oprichting op 12 juli 1975, themagebieden met openingsjaren, oppervlakte en medewerkers: [Europa-Park op de.wikipedia](https://de.wikipedia.org/wiki/Europa-Park) · [De evolutie van het plezier: achtbaangeschiedenis in het Europa-Park (officiële blog)](https://blog.europapark.de/europa-park/die-evolution-des-vergnuegens-achterbahn-geschichte-im-europa-park/)
-- Mack Rides sinds 1780 in Waldkirch, circuswagens vanaf 1880, achtbanen vanaf 1921: [MACK Rides – de attractiemanufactuur voor de hele wijde wereld (officiële blog)](https://blog.europapark.de/europa-park/mack-rides-die-fahrgeschaefte-manufaktur-fuer-die-ganze-weite-welt/)
+- Bedrijfstijdlijn Mack: oprichting in 1780 door Paul Mack, Johann Mack vanaf 1833, het verdwijnen van Heinrich Mack I. in 1886, overstap op attracties in 1920, eerste houten achtbaan met kabellift in 1921, eerste achtbaan op benzine in 1936, houten bobbaan in 1951, houten prototype van de wilde muis in 1957, zevende generatie vanaf 1958, naamswijziging in Mack Rides in 2005, productie in Herbolzheim vanaf 2018, 174 achtbanen tot september 2024: [Mack Rides – een uitstapje in de geschiedenis (Parkscout)](https://www.parkscout.de/magazin/mackrides/achterbahnwissen) · [Mack Rides op de.wikipedia](https://de.wikipedia.org/wiki/Mack_Rides) · [Mack Rides op en.wikipedia](https://en.wikipedia.org/wiki/Mack_Rides) · [MACK Rides over ons (officieel)](https://www.mack-rides.com/de/ueber-uns/) · [MACK Rides – de attractiemanufactuur voor de hele wijde wereld (officiële blog)](https://blog.europapark.de/europa-park/mack-rides-die-fahrgeschaefte-manufaktur-fuer-die-ganze-weite-welt/)
 - Het idee op de VS-reis van 1972, de mislukte locaties Breisach en Neuenburg, de Europaweiher als naamgever, Schloss Balthasar, 15 attracties bij de opening en de bezoekersreeks sinds 1975: [Europa-Park op de.wikipedia](https://de.wikipedia.org/wiki/Europa-Park) · [MACK Rides over ons](https://www.mack-rides.com/de/ueber-uns/)
 - Bezoekcijfers 2024 volgens TEA/AECOM (6,2 mln park, 1,23 mln Rulantica, 7,4 mln resort, plek 18 wereldwijd): [TEA/AECOM Global Experience Index 2024](https://aecom.com/theme-index/)
 - Golden Ticket Awards, tien overwinningen en de in 2023 onderbroken reeks: [Golden Ticket Awards (Amusement Today)](https://goldenticketawards.com/)
@@ -956,4 +1002,5 @@ draait.
 - Het Ammolite met twee Michelinsterren sinds november 2014, Silver Lake City en de Riverside Western Lodge met 119 kamers: [Ammolite – The Lighthouse Restaurant (officieel)](https://www.europapark.de/de/uebernachten/gastronomie/ammolite-lighthouse-restaurant) · [Europa-Park Riverside Western Lodge (officieel)](https://www.europapark.de/de/uebernachten/riverside-western-lodge)
 - Route via de A5, parkeertarieven, Rulantica, de Michelinster voor Eatrenalin in 2026: [Route naar het Europa-Park (officieel)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park) · [Europa-Park Erlebnis-Resort (officieel)](https://www.europapark.de/de) · [Eatrenalin op en.wikipedia](https://en.wikipedia.org/wiki/Eatrenalin)
 - Samenstelling van het publiek naar herkomstland en het Zwitserse aandeel: [“50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort” (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300) · [“874'000 Schweizer Besucher stellen den grössten Anteil” (aboutTravel)](https://abouttravel.ch/reisebranche/874000-schweizer-besucher-stellen-den-groessten-anteil/)
+- Brugdag: crowd-niveaus en weer van de dagen rond Hemelvaart en Sacramentsdag 2026 uit onze eigen kalender (gemeten, niet voorspeld), plus de videoreeks [BRÜCKENTAG im EUROPA-PARK 2025 (Epfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [dezelfde reeks 2026 (Epfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
 - Wachttijd-, rope-drop- en druktedata: eigen wachttijdhistorie over een rollend jaar, uurprofiel uit de laatste dertig bedrijfsdagen, druktevoorspelling over 90 dagen, [Europa-Park op park.fan](ref:europa-park)

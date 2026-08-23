@@ -2,7 +2,7 @@
 title: 'Europa-Park: il parco più grande della Germania, e perché sembra vuoto'
 translationKey: europa-park-guide
 date: '2026-08-21'
-updatedAt: '2026-08-22'
+updatedAt: '2026-08-23'
 author: patrick
 mode: published
 featured: false
@@ -96,14 +96,14 @@ Le dieci attrazioni per cui aspetti di più:
 | Attrazione                                                                 | Area     | Tipico (mediana) | Picco (P90) |
 | -------------------------------------------------------------------------- | -------- | ---------------: | ----------: |
 | **[Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare)** | Croazia  |       **34 min** |      38 min |
-| [Arthur](ref:europa-park/arthur?bare)                                      | Minimoys |           31 min |      36 min |
+| [Arthur](ref:europa-park/arthur?bare)                                      | Minimoys |           31 min |      37 min |
 | [Wodan](ref:europa-park/wodan-timburcoaster?bare)                          | Islanda  |           28 min |      33 min |
 | [Eurosat CanCan Coaster](ref:europa-park/eurosat-cancan-coaster?bare)      | Francia  |           28 min |      32 min |
 | [Silver Star](ref:europa-park/silver-star?bare)                            | Monaco   |           23 min |      28 min |
 | [Poseidon](ref:europa-park/water-rollercoaster-poseidon?bare)              | Grecia   |           22 min |      27 min |
 | [Matterhorn-Blitz](ref:europa-park/matterhorn-blitz?bare)                  | Svizzera |           21 min |      26 min |
+| [blue fire](ref:europa-park/blue-fire-megacoaster?bare)                    | Islanda  |           21 min |      25 min |
 | [Bob svizzero](ref:europa-park/swiss-bob-run?bare)                         | Svizzera |           20 min |      25 min |
-| [blue fire](ref:europa-park/blue-fire-megacoaster?bare)                    | Islanda  |           20 min |      25 min |
 | [Voletarium](ref:europa-park/voletarium?bare)                              | Germania |           14 min |      27 min |
 
 Due colonne, due domande. “Tipico” è la mediana di una normale giornata di
@@ -226,10 +226,36 @@ singola attrazione, non una regola del parco.
 
 ## Un parco nato come sala d'esposizione
 
-L'azienda è più vecchia del paese in cui si trova. **Mack** costruisce veicoli a
-Waldkirch, nella Foresta Nera, dal **1780**, carri da circo e da fiera dal
-**1880** e montagne russe dal **1921**. Otto generazioni, un posto solo, la stessa
-famiglia.
+L'azienda è più vecchia del paese in cui si trova. **Paul Mack** aprì nel
+**1780** a Waldkirch, nella Foresta Nera, una bottega da carradore: si
+costruivano carrozze e diligenze postali. Otto generazioni dopo l'officina sta
+ancora nello stesso posto, nella stessa famiglia, e oggi consegna in oltre
+settanta paesi.
+
+La strada dalla carrozza alle montagne russe ha richiesto un secolo e mezzo:
+
+| Anno     | Che cosa succedeva a Waldkirch                                    |
+| -------- | ----------------------------------------------------------------- |
+| **1780** | Paul Mack apre la bottega da carradore, carrozze e diligenze      |
+| 1833     | Il figlio Johann subentra e produce condutture d'acqua in legno   |
+| 1886     | Heinrich Mack I scompare durante un viaggio d'affari a Strasburgo |
+| 1920     | L'azienda passa alle giostre per i giostrai                       |
+| **1921** | Le prime montagne russe in legno, con ascensore a fune            |
+| 1936     | Le prime montagne russe con motore a benzina                      |
+| 1951     | La prima pista da bob in legno                                    |
+| **1957** | Il prototipo del wild mouse, allora ancora in legno               |
+| 1958     | Hermann, Willi e Franz Mack subentrano in settima generazione     |
+| 1972     | Franz e Roland Mack viaggiano negli Stati Uniti                   |
+| **1975** | L'Europa-Park apre con 15 attrazioni                              |
+| 2005     | La Heinrich Mack GmbH diventa Mack Rides                          |
+| 2018     | Una parte della produzione si trasferisce a Herbolzheim           |
+
+La riga del 1957 ha una battuta finale su cui si può salire. Il prototipo del
+wild mouse nacque a Waldkirch, 26 chilometri in linea d'aria da Rust, allora in
+legno e oggi ovunque in acciaio. Il
+**[Matterhorn-Blitz](ref:europa-park/matterhorn-blitz)** è uno di questi. Il tipo
+di attrazione e il parco escono dalla stessa officina, e da lì, fino a settembre
+2024, sono uscite 174 montagne russe in tutto il mondo.
 
 All'inizio degli anni Settanta **Franz Mack** aveva un problema pratico. I suoi
 clienti stavano in Europa, negli Stati Uniti, in Giappone, e chi vuole comprare
@@ -541,10 +567,10 @@ altrove.
 | Mercoledì    |     23 min | 36 min |
 | Giovedì      |     22 min | 35 min |
 | Venerdì      |     22 min | 35 min |
-| Sabato       |     27 min | 43 min |
+| Sabato       |     28 min | 44 min |
 | **Domenica** | **18 min** | 30 min |
 
-La domenica a Rust è il giorno con meno gente, nove minuti sotto il sabato e
+La domenica a Rust è il giorno con meno gente, dieci minuti sotto il sabato e
 quattro sotto il miglior giorno feriale. Nel confronto tra i parchi tedeschi è
 un'eccezione. Al [Phantasialand](ref:phantasialand?bare) il lunedì è il giorno più
 vuoto e la domenica, dopo il sabato, il più pieno; all'[Efteling](ref:efteling?bare)
@@ -569,18 +595,39 @@ conteggia anche le vacanze francesi e quelle dei cantoni svizzeri di Argovia,
 Basilea Città e Basilea Campagna. Chi guarda solo al Baden-Württemberg, prima o
 poi si stupisce davanti a un martedì pieno.
 
+### Il ponte
+
+L'Ascensione cade sempre di giovedì, e a riempirsi non è il giorno di festa. Si
+riempie il venerdì dopo, quello che mezza Germania si prende libero per fare il
+ponte. Nei nostri dati giovedì 14 maggio 2026 sta su “moderato” e il venerdì
+successivo su “alto”. La domenica il parco era di nuovo su “basso”. Al Corpus
+Domini la stessa forma è ancora più netta: il giorno di festa, il 4 giugno,
+stava su “basso”, il venerdì del ponte, il 5, su “alto”.
+
+Una limitazione c'è. Di giorni di ponte ne abbiamo misurato esattamente uno, e
+proprio quello è stato un ponte mite. Il 15 maggio 2026 è passato un temporale,
+il termometro non ha superato i dodici gradi, e nonostante questo è bastato per
+“alto”. Il canale Epfan95 da anni ci va proprio in questi venerdì e filma il
+risultato. Per il 2026 il titolo è “Il giorno pieno più vuoto”, per gli anni
+prima “Folle di visitatori, lunghe attese e tante auto”. Un giorno di ponte con
+il sole ha tutto un altro aspetto rispetto al nostro unico dato misurato.
+
+https://www.youtube.com/watch?v=Js8j_qvKCoA
+
+[Lo stesso venerdì di ponte un anno prima](https://www.youtube.com/watch?v=Js8j_qvKCoA)
+
 ### Il mese
 
 | Mese     | Tipico |  Picco | Giorni rilevati |
 | -------- | -----: | -----: | --------------: |
-| Gennaio  | 18 min | 28 min |               5 |
-| Marzo    | 14 min | 23 min |               3 |
-| Aprile   | 23 min | 35 min |              30 |
+| Gennaio  | 19 min | 29 min |               5 |
+| Marzo    | 15 min | 23 min |               3 |
+| Aprile   | 23 min | 36 min |              30 |
 | Maggio   | 21 min | 34 min |              31 |
 | Giugno   | 20 min | 33 min |              30 |
 | Luglio   | 24 min | 39 min |              30 |
-| Agosto   | 26 min | 42 min |              21 |
-| Dicembre | 27 min | 40 min |               6 |
+| Agosto   | 27 min | 43 min |              22 |
+| Dicembre | 28 min | 41 min |               6 |
 
 Attenzione a gennaio, marzo e dicembre: dietro ci stanno solo da tre a sei giorni
 di rilevazione. L'ordine di grandezza è giusto, sul singolo minuto lì non ci
@@ -705,10 +752,10 @@ undici alle sette di sera, i numeri sono più bassi e il picco arriva prima.
 
 ## Tre errori che all'Europa-Park costano particolarmente caro
 
-**Prenotare il sabato perché l'hotel è libero il sabato.** Il sabato ti costa nove
-minuti a ogni coda rispetto alla domenica. Con dieci attrazioni in un giorno fa
-un'ora e mezza. Se comunque resti due notti, gira l'ordine: sabato arrivo,
-Rulantica o un giro in paese, domenica al parco.
+**Prenotare il sabato perché l'hotel è libero il sabato.** Il sabato ti costa
+dieci minuti a ogni coda rispetto alla domenica. Con dieci attrazioni in un
+giorno fa un'ora e mezza abbondante. Se comunque resti due notti, gira l'ordine:
+sabato arrivo, Rulantica o un giro in paese, domenica al parco.
 
 **Guardare solo alle vacanze tedesche.** Una buona metà del pubblico non viene
 dalla Germania. Un giorno di fine ottobre in Baden-Württemberg può essere un
@@ -735,7 +782,7 @@ male la giornata.
 Dal **28 novembre** è inverno. Mercatini di Natale, una pista di pattinaggio,
 spettacoli sul ghiaccio e aree che esistono solo in queste settimane, per esempio
 il Winter World of Wonder e la slitta Snowflake. L'attesa tipica di dicembre da
-noi era di 27 minuti, quindi un filo sopra agosto, però su soli sei giorni di
+noi era di 28 minuti, quindi un filo sopra agosto, però su soli sei giorni di
 rilevazione. Il **24 e il 25 dicembre** è chiuso, gli ospiti degli hotel possono
 restare fino al 10 gennaio.
 
@@ -855,7 +902,7 @@ cinque minuti e con la previsione per i prossimi giorni.
 ### Quando c'è meno gente all'Europa-Park?
 
 La **domenica** è il giorno della settimana più tranquillo (18 minuti tipici
-contro i 27 del sabato), maggio e giugno sono i mesi estivi più tranquilli. Il
+contro i 28 del sabato), maggio e giugno sono i mesi estivi più tranquilli. Il
 momento più vuoto in assoluto è la stagione HALLOWinter, a inizio novembre. Nella
 nostra previsione per i prossimi tre mesi tutti e 19 i giorni di novembre stanno
 su “basso”.
@@ -910,7 +957,7 @@ doppio di uno giornaliero.
 Sì, con una limitazione. Le decorazioni invernali, la pista di pattinaggio e i
 mercatini di Natale ci sono solo allora, in compenso fa buio prima, il parco
 chiude già alle 19 e le attrazioni acquatiche non funzionano tutte. I tempi di
-attesa a dicembre, con 27 minuti tipici, sono perfino un filo più alti che ad
+attesa a dicembre, con 28 minuti tipici, sono perfino un filo più alti che ad
 agosto. Per novembre invece la nostra previsione classifica come “basso” tutti e
 19 i giorni che copre; tempi di attesa misurati da quel mese non ne abbiamo
 ancora.
@@ -951,7 +998,7 @@ gira su se stesso.
 ### Fonti e approfondimenti
 
 - Storia del parco, fondazione il 12 luglio 1975, aree tematiche con anno di apertura, superficie e dipendenti: [Europa-Park su de.wikipedia](https://de.wikipedia.org/wiki/Europa-Park) · [L'evoluzione del divertimento: storia delle montagne russe all'Europa-Park (blog ufficiale)](https://blog.europapark.de/europa-park/die-evolution-des-vergnuegens-achterbahn-geschichte-im-europa-park/)
-- Mack Rides a Waldkirch dal 1780, carri da circo dal 1880, montagne russe dal 1921: [MACK Rides, la manifattura di giostre per il mondo intero (blog ufficiale)](https://blog.europapark.de/europa-park/mack-rides-die-fahrgeschaefte-manufaktur-fuer-die-ganze-weite-welt/)
+- Cronologia dell'azienda Mack: fondazione nel 1780 da parte di Paul Mack, Johann Mack dal 1833, la scomparsa di Heinrich Mack I nel 1886, il passaggio alle giostre nel 1920, prime montagne russe in legno con ascensore a fune nel 1921, prime montagne russe con motore a benzina nel 1936, pista da bob in legno nel 1951, prototipo in legno del wild mouse nel 1957, settima generazione dal 1958, cambio di nome in Mack Rides nel 2005, produzione a Herbolzheim dal 2018, 174 montagne russe fino a settembre 2024: [Mack Rides, una gita nella storia (Parkscout)](https://www.parkscout.de/magazin/mackrides/achterbahnwissen) · [Mack Rides su de.wikipedia](https://de.wikipedia.org/wiki/Mack_Rides) · [Mack Rides su en.wikipedia](https://en.wikipedia.org/wiki/Mack_Rides) · [MACK Rides, chi siamo (ufficiale)](https://www.mack-rides.com/de/ueber-uns/) · [MACK Rides, la manifattura di giostre per il mondo intero (blog ufficiale)](https://blog.europapark.de/europa-park/mack-rides-die-fahrgeschaefte-manufaktur-fuer-die-ganze-weite-welt/)
 - L'idea durante il viaggio negli USA del 1972, le sedi fallite di Breisach e Neuenburg, l'Europaweiher che dà il nome, il castello Balthasar, 15 attrazioni all'apertura e la serie dei visitatori dal 1975: [Europa-Park su de.wikipedia](https://de.wikipedia.org/wiki/Europa-Park) · [MACK Rides, chi siamo](https://www.mack-rides.com/de/ueber-uns/)
 - Numeri di visitatori 2024 secondo TEA/AECOM (6,2 mln parco, 1,23 mln Rulantica, 7,4 mln resort, 18° posto al mondo): [TEA/AECOM Global Experience Index 2024](https://aecom.com/theme-index/)
 - Golden Ticket Awards, dieci vittorie e la serie interrotta nel 2023: [Golden Ticket Awards (Amusement Today)](https://goldenticketawards.com/)
@@ -970,4 +1017,5 @@ gira su se stesso.
 - L'Ammolite con due stelle Michelin da novembre 2014, la Silver Lake City e la Riverside Western Lodge con 119 camere: [Ammolite – The Lighthouse Restaurant (ufficiale)](https://www.europapark.de/de/uebernachten/gastronomie/ammolite-lighthouse-restaurant) · [Europa-Park Riverside Western Lodge (ufficiale)](https://www.europapark.de/de/uebernachten/riverside-western-lodge)
 - Come arrivare dalla A5, tariffe del parcheggio, Rulantica, l'Eatrenalin con la stella Michelin nel 2026: [Come arrivare all'Europa-Park (ufficiale)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park) · [Europa-Park Erlebnis-Resort (ufficiale)](https://www.europapark.de/de) · [Eatrenalin su en.wikipedia](https://en.wikipedia.org/wiki/Eatrenalin)
 - Composizione degli ospiti per paese di provenienza e la quota svizzera: [“50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort” (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300) · [“874'000 Schweizer Besucher stellen den grössten Anteil” (aboutTravel)](https://abouttravel.ch/reisebranche/874000-schweizer-besucher-stellen-den-groessten-anteil/)
+- Il ponte: livelli di affluenza e meteo dei giorni attorno all'Ascensione e al Corpus Domini 2026 dal nostro calendario (misurati, non previsti), più la serie di video [BRÜCKENTAG im EUROPA-PARK 2025 (Epfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [la stessa serie nel 2026 (Epfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
 - Dati su tempi di attesa, rope drop e affluenza: storico proprio dei tempi di attesa su un anno mobile, profilo orario dagli ultimi trenta giorni di apertura, previsione di affluenza su 90 giorni, [Europa-Park su park.fan](ref:europa-park)
