@@ -554,50 +554,54 @@ export function CuratedFieldsEditor({
             Keine ungespeicherten Änderungen. {saveShortcutLabel()} speichert.
           </p>
         ) : (
-        <div className="space-y-2">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="text-sm font-medium">
-              {form.dirtyKeys.length} {form.dirtyKeys.length === 1 ? 'Änderung' : 'Änderungen'}
-            </span>
-            <div className="flex flex-wrap gap-1">
-              {form.dirtyKeys.map((key) => (
-                <Chip key={key} tone="primary">
-                  {fields.find((field) => field.key === key)?.label ?? key}
-                </Chip>
-              ))}
+          <div className="space-y-2">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-sm font-medium">
+                {form.dirtyKeys.length} {form.dirtyKeys.length === 1 ? 'Änderung' : 'Änderungen'}
+              </span>
+              <div className="flex flex-wrap gap-1">
+                {form.dirtyKeys.map((key) => (
+                  <Chip key={key} tone="primary">
+                    {fields.find((field) => field.key === key)?.label ?? key}
+                  </Chip>
+                ))}
+              </div>
+            </div>
+
+            <div className="grid gap-2 sm:grid-cols-2">
+              <TextInput
+                value={reason}
+                onChange={(event) => setReason(event.target.value)}
+                placeholder="Warum? (steht später im Änderungsprotokoll)"
+                disabled={saving}
+              />
+              <TextInput
+                value={sourceUrl}
+                onChange={(event) => setSourceUrl(event.target.value)}
+                placeholder="Quelle: die Seite, auf der es steht"
+                disabled={saving}
+              />
+            </div>
+
+            {saveError && <p className="text-destructive text-xs">{saveError}</p>}
+
+            <div className="flex items-center gap-2">
+              <Button onClick={handleSave} disabled={saving || disabled} size="sm">
+                {saving ? (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                ) : (
+                  <Save className="h-4 w-4" />
+                )}
+                Speichern
+              </Button>
+              <Button variant="ghost" size="sm" onClick={form.reset} disabled={saving}>
+                Verwerfen
+              </Button>
+              <p className="text-muted-foreground ml-auto hidden text-xs sm:block">
+                {saveShortcutLabel()} speichert · ohne Quelle ist eine Korrektur ein Gerücht.
+              </p>
             </div>
           </div>
-
-          <div className="grid gap-2 sm:grid-cols-2">
-            <TextInput
-              value={reason}
-              onChange={(event) => setReason(event.target.value)}
-              placeholder="Warum? (steht später im Änderungsprotokoll)"
-              disabled={saving}
-            />
-            <TextInput
-              value={sourceUrl}
-              onChange={(event) => setSourceUrl(event.target.value)}
-              placeholder="Quelle: die Seite, auf der es steht"
-              disabled={saving}
-            />
-          </div>
-
-          {saveError && <p className="text-destructive text-xs">{saveError}</p>}
-
-          <div className="flex items-center gap-2">
-            <Button onClick={handleSave} disabled={saving || disabled} size="sm">
-              {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
-              Speichern
-            </Button>
-            <Button variant="ghost" size="sm" onClick={form.reset} disabled={saving}>
-              Verwerfen
-            </Button>
-            <p className="text-muted-foreground ml-auto hidden text-xs sm:block">
-              {saveShortcutLabel()} speichert · ohne Quelle ist eine Korrektur ein Gerücht.
-            </p>
-          </div>
-        </div>
         )}
       </div>
     </div>

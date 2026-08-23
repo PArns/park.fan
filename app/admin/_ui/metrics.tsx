@@ -199,7 +199,12 @@ export function CurationTrend({
       <svg viewBox="0 0 300 64" preserveAspectRatio="none" className="mt-3 h-16 w-full">
         <defs>
           <linearGradient id="curation-fill" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" className="text-primary" stopColor="currentColor" stopOpacity="0.35" />
+            <stop
+              offset="0%"
+              className="text-primary"
+              stopColor="currentColor"
+              stopOpacity="0.35"
+            />
             <stop offset="100%" className="text-primary" stopColor="currentColor" stopOpacity="0" />
           </linearGradient>
         </defs>
@@ -274,7 +279,9 @@ export function BacklogBars({
                   {row.label}
                 </span>
                 <span className="text-muted-foreground shrink-0 tabular-nums">
-                  {loading ? '—' : `${row.value.toLocaleString('de-DE')} / ${row.of.toLocaleString('de-DE')}`}
+                  {loading
+                    ? '—'
+                    : `${row.value.toLocaleString('de-DE')} / ${row.of.toLocaleString('de-DE')}`}
                 </span>
               </div>
               <div className="bg-muted-foreground/10 mt-1 h-1.5 overflow-hidden rounded-full">

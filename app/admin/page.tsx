@@ -201,8 +201,7 @@ export default function AdminDashboard() {
                       {
                         key: 'curation',
                         label: 'Bahnen ohne kuratiertes Feld',
-                        value:
-                          overview.data.attractions.total - overview.data.attractions.curated,
+                        value: overview.data.attractions.total - overview.data.attractions.curated,
                         of: overview.data.attractions.total,
                         href: '/admin/parks',
                         tone: 'neutral' as const,
