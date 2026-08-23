@@ -165,6 +165,29 @@ without any client change.
 pages read only `geo-live` (0.7 KB) and would start paying for `realtime` (2.4–4.4 KB) to save the
 homepage one request. Measured, then dropped.
 
+## Blog widgets: what a post may fetch
+
+A blog post is not a park page, but it embeds the same client components, and the budget rule
+does not soften just because the route is cheaper. Two widgets were measured before being built,
+and only one of them exists:
+
+| Widget                       | Requests                  | Payload                | Verdict   |
+| ---------------------------- | ------------------------- | ---------------------- | --------- |
+| `park-comparison-widget`     | 7 × `/stats`              | ~3 KB each, **21 KB**  | built     |
+| an hourly-profile equivalent | 8 × `/attractions/<slug>` | 53 KB each, **425 KB** | not built |
+
+The attraction detail response is what kills the second one, and the breakdown says why: **45 %
+is `schedule`** and 37 % is `history`. The widget would render the hourly curve out of `history`
+and nothing else, so even the useful half is 176 KB. That is a backend projection waiting to be
+written — the same shape as `LiveParkSnapshot` — not a client fetch to squeeze in.
+
+The comparison widget reuses `['park-historical-stats', …]`, the key `useParkHistoricalStats`
+already owns, so a post that also embeds a `stats-widget` for one of the compared parks shares
+the cache entry instead of paying twice.
+
+Both are deferred through `useLoadLast`, like every other historical query: a post's live park
+cards must never lose the race to a table nobody has scrolled to yet.
+
 ## Adding a field
 
 The question is not "is this field useful" but "which of these is it":

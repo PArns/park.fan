@@ -9,6 +9,9 @@ interface CrowdStatRow {
   crowdLevel: CrowdLevel;
   p50: number;
   p90: number;
+  /** Measured operating days behind this row. Three days in March and 31 in May read very
+   *  differently, and without the count the thin rows look as solid as the fat ones. */
+  days?: number;
 }
 
 interface ParkStatsCrowdCardProps {
@@ -17,6 +20,8 @@ interface ParkStatsCrowdCardProps {
   rows: CrowdStatRow[];
   labelP50: string;
   labelP90: string;
+  /** Short unit for the measured-days count, e.g. "d". Omit to hide the column. */
+  labelDays?: string;
 }
 
 export function ParkStatsCrowdCard({
@@ -25,6 +30,7 @@ export function ParkStatsCrowdCard({
   rows,
   labelP50,
   labelP90,
+  labelDays,
 }: ParkStatsCrowdCardProps) {
   return (
     <GlassCard variant="medium" className="space-y-2 p-4">
@@ -56,6 +62,14 @@ export function ParkStatsCrowdCard({
                 <span className="text-muted-foreground/50">{labelP90}</span>
                 <span className="text-foreground/70 font-medium">{row.p90} min</span>
               </span>
+              {labelDays && row.days != null && (
+                <span
+                  className="text-muted-foreground/50 hidden text-xs tabular-nums md:inline"
+                  title={`${row.days}`}
+                >
+                  {row.days}&nbsp;{labelDays}
+                </span>
+              )}
             </div>
           </li>
         ))}

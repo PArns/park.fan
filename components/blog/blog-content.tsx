@@ -45,6 +45,7 @@ import { BlogMapWidget } from './blog-map-widget';
 import { BlogWeatherWidget } from './blog-weather-widget';
 import { BlogBestDaysWidget } from './blog-best-days-widget';
 import { BlogStatsWidget } from './blog-stats-widget';
+import { BlogParkComparisonWidget } from './blog-park-comparison-widget';
 import { BlogGlossaryWidget } from './blog-glossary-widget';
 import { BlogGallery } from './blog-gallery';
 import { listFolderImages, resolveGallery } from '@/lib/blog/gallery';
@@ -357,6 +358,13 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
     const { name, attrs } = seg.widget;
     if (PARK_SLUG_WIDGETS.has(name) && attrs.slug && !parkMap.has(attrs.slug)) {
       parkMap.set(attrs.slug, await resolvePark(attrs.slug));
+    }
+    // The only widget keyed by a LIST of parks, so it can't join PARK_SLUG_WIDGETS above.
+    if (name === 'park-comparison-widget' && attrs.slugs) {
+      for (const raw of attrs.slugs.split(',')) {
+        const slug = raw.trim();
+        if (slug && !parkMap.has(slug)) parkMap.set(slug, await resolvePark(slug));
+      }
     }
     if (name === 'attraction-widget') {
       const parkSlug = attrs.parkSlug ?? attrs.park;
@@ -821,7 +829,14 @@ function renderWidget(
     const slug = attrs.slug;
     if (!slug) return null;
     const park = ctx.parkMap.get(slug) ?? null;
-    return <BlogStatsWidget park={park} slug={slug} />;
+    return <BlogStatsWidget park={park} slug={slug} show={attrs.show} />;
+  }
+  if (name === 'park-comparison-widget') {
+    const slugs = attrs.slugs;
+    if (!slugs) return null;
+    return (
+      <BlogParkComparisonWidget parks={ctx.parkMap} slugs={slugs} highlight={attrs.highlight} />
+    );
   }
   if (name === 'attraction-widget') {
     const parkSlug = attrs.parkSlug ?? attrs.park;

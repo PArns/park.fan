@@ -89,51 +89,38 @@ Our wait-time history for Europa-Park goes back twelve months. Across all days
 of the week the **typical wait park-wide is 23 minutes** (median), with the 90th
 percentile at 36.
 
-The ten attractions you queue longest for:
+The ten attractions you queue longest for, with today's number beside them:
 
-| Attraction                                                                 | Area        | Typical (median) | Peak (P90) |
-| -------------------------------------------------------------------------- | ----------- | ---------------: | ---------: |
-| **[Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare)** | Croatia     |       **34 min** |     38 min |
-| [Arthur](ref:europa-park/arthur?bare)                                      | Minimoys    |           31 min |     37 min |
-| [Wodan](ref:europa-park/wodan-timburcoaster?bare)                          | Iceland     |           28 min |     33 min |
-| [Eurosat CanCan Coaster](ref:europa-park/eurosat-cancan-coaster?bare)      | France      |           28 min |     32 min |
-| [Silver Star](ref:europa-park/silver-star?bare)                            | Monaco      |           23 min |     28 min |
-| [Poseidon](ref:europa-park/water-rollercoaster-poseidon?bare)              | Greece      |           22 min |     27 min |
-| [Matterhorn-Blitz](ref:europa-park/matterhorn-blitz?bare)                  | Switzerland |           21 min |     26 min |
-| [blue fire](ref:europa-park/blue-fire-megacoaster?bare)                    | Iceland     |           21 min |     25 min |
-| [Swiss Bob Run](ref:europa-park/swiss-bob-run?bare)                        | Switzerland |           20 min |     25 min |
-| [Voletarium](ref:europa-park/voletarium?bare)                              | Germany     |           14 min |     27 min |
+```stats-widget slug=europa-park show=attractions
 
-Two columns, two questions. “Typical” is the median of an ordinary operating
-day, “Peak” the same value across the busiest ten per cent of days. Neither says
-anything about how a queue moves over the course of a day.
+```
+
+“Typical” is the median of an ordinary operating day, “Peak” the same value
+across the busiest ten per cent of days. Neither says anything about how a queue
+moves over the course of a day.
 
 The Voletarium is the odd one out. Its median of 14 minutes is the lowest of the
-ten, while its peak of 27 matches Poseidon's exactly. A flying theatre loads in
-big batches. Between two showings hardly anyone is waiting, and on a busy
-morning the queue reaches out into the square. Average that over a day and
+ten longest, while its peak of 27 matches Poseidon's exactly. A flying theatre
+loads in big batches. Between two showings hardly anyone is waiting, and on a
+busy morning the queue reaches out into the square. Average that over a day and
 nothing of it is left.
 
 Otherwise the list reads unspectacularly. **34 minutes for the ride that
 accounted for 3.25 million rides in its first year** is, measured against over
 six million guests, very little. The comparison, same data basis, same method:
 
-| Park                                                                         | Attendance | Typical park-wide | Longest queue                                  |
-| ---------------------------------------------------------------------------- | ---------- | ----------------: | ---------------------------------------------- |
-| [Disneyland Park Paris](ref:/parks/europe/france/paris/disneyland-park?bare) | ~10 m      |            34 min | 50 min (Peter Pan's Flight)                    |
-| [Phantasialand](ref:phantasialand?bare)                                      | 2.1 m      |            32 min | 49 min ([Taron](ref:phantasialand/taron?bare)) |
-| [Efteling](ref:efteling?bare)                                                | 5.6 m      |            25 min | 35 min (Joris en de Draak)                     |
-| **[Europa-Park](ref:europa-park?bare)**                                      | **6.2 m**  |        **23 min** | 34 min (Voltron Nevera)                        |
-| [Movie Park Germany](ref:movie-park-germany?bare)                            | ~1.3 m     |            19 min | 29 min (Van Helsing's Factory)                 |
-| [Heide Park](ref:heide-park?bare)                                            | ~1.5 m     |            18 min | 23 min (Wildwasserbahn)                        |
-| [Toverland](ref:attractiepark-toverland?bare)                                | 1.17 m     |            15 min | 21 min (Booster Bike)                          |
+```park-comparison-widget slugs=disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
 
-The attendance column comes from the 2024 TEA index, so for Rust that is the
-theme park's 6.2 million rather than the resort's 7.4 million. There is one
-exception: Toverland does not appear there at all, and the 1.17 million is the
-park's own figure. The last column names the attraction with the highest median
-for which we have at least a hundred days of measurements. At Toverland,
-Maximus' Blitz Bahn actually
+```
+
+The attendance figures are not in the table, because they behave differently
+from everything else here: they come from the TEA index, appear once a year and
+then do not change for a year. For 2024 that is 6.2 million in Rust for the
+theme park and not the 7.4 million of the whole resort, 2.1 million at
+Phantasialand, 5.6 at the Efteling, around ten in Paris. Toverland does not
+appear there at all, and the 1.17 million is the park's own figure. On the right
+of each row stands the attraction with the highest median for which we have at
+least a hundred days of measurements. At Toverland, Maximus' Blitz Bahn actually
 sits above that at 34 minutes, but on only 61 days, and a children's coaster
 with a thin measurement base is no yardstick for a whole park.
 
@@ -145,10 +132,6 @@ For the [Efteling](/blog/efteling-disney-of-the-netherlands) and
 And in Paris, where about one and a half times as many guests come through, the
 park-wide figure stands at 34 minutes. That is exactly the number Rust's
 _longest_ queue reaches.
-
-```stats-widget slug=europa-park
-
-```
 
 ## Why the biggest park has the shortest queues
 
@@ -540,15 +523,9 @@ On the day of the week, Europa-Park breaks with everything else I measure.
 
 ### The day of the week
 
-| Day        |    Typical |   Peak |
-| ---------- | ---------: | -----: |
-| Monday     |     22 min | 35 min |
-| Tuesday    |     25 min | 38 min |
-| Wednesday  |     23 min | 36 min |
-| Thursday   |     22 min | 35 min |
-| Friday     |     22 min | 35 min |
-| Saturday   |     28 min | 44 min |
-| **Sunday** | **18 min** | 30 min |
+```stats-widget slug=europa-park show=weekdays
+
+```
 
 Sunday is the quietest day in Rust, ten minutes below Saturday and four below
 the best weekday. Among German parks that makes it an exception. At
@@ -598,26 +575,19 @@ https://www.youtube.com/watch?v=Js8j_qvKCoA
 
 ### The month
 
-| Month    | Typical |   Peak | Days measured |
-| -------- | ------: | -----: | ------------: |
-| January  |  19 min | 29 min |             5 |
-| March    |  15 min | 23 min |             3 |
-| April    |  23 min | 36 min |            30 |
-| May      |  21 min | 34 min |            31 |
-| June     |  20 min | 33 min |            30 |
-| July     |  24 min | 39 min |            30 |
-| August   |  27 min | 43 min |            22 |
-| December |  28 min | 41 min |             6 |
+```stats-widget slug=europa-park show=months
 
-Careful with January, March and December, which rest on three to six days of
-measurements each. The order of magnitude holds, but I would not commit to the
-individual minute. The block from April to August is solid, and it says that May
-and June are the quietest summer months and August the busiest.
+```
 
-Four months are missing from the table entirely: February, September, October
-and November, with March almost gone too. For autumn, then, this window holds
-not a single day of measurements. On Halloween and HALLOWinter this table says
-nothing.
+Careful with January, March and December. Behind them sit only three to six days
+of measurements each, which is what the column on the right tells you. The order
+of magnitude holds, but I would not commit to the individual minute. The block
+from April to August is solid, and it says that May and June are the quietest
+summer months and August the busiest.
+
+Four months are missing altogether: February, September, October and November,
+with March almost gone too. For autumn, then, this window holds not a single day
+of measurements. On Halloween and HALLOWinter these numbers say nothing.
 
 ### The four weeks hardly anybody knows about
 

@@ -287,16 +287,60 @@ attributes on the info line (`key=value`, `key: value` or `key="value"`).
 ```
 ````
 
-| Widget              | Attributes                    | Renders                                  |
-| ------------------- | ----------------------------- | ---------------------------------------- |
-| `weather-widget`    | `slug`                        | Live weather + nowcast for a park.       |
-| `best-days-widget`  | `slug`                        | Quietest upcoming days (crowd calendar). |
-| `stats-widget`      | `slug`                        | Typical waits by month / weekday.        |
-| `map-widget`        | `slug`                        | Interactive park map.                    |
-| `glossary-widget`   | `slug` (a.k.a. `term` / `id`) | Full glossary definition inline.         |
-| `gallery-widget`    | `folder` (or line-based body) | Photo gallery (see below).               |
-| `park-widget`       | `slug`                        | Park spotlight card — use `ref:…?full`.  |
-| `attraction-widget` | `parkSlug`, `slug`            | Ride spotlight card — use `ref:…?full`.  |
+| Widget                   | Attributes                    | Renders                                     |
+| ------------------------ | ----------------------------- | ------------------------------------------- |
+| `weather-widget`         | `slug`                        | Live weather + nowcast for a park.          |
+| `best-days-widget`       | `slug`                        | Quietest upcoming days (crowd calendar).    |
+| `stats-widget`           | `slug`, `show`                | Typical waits: top rides, months, weekdays. |
+| `park-comparison-widget` | `slugs`, `highlight`          | Median wait across several parks.           |
+| `map-widget`             | `slug`                        | Interactive park map.                       |
+| `glossary-widget`        | `slug` (a.k.a. `term` / `id`) | Full glossary definition inline.            |
+| `gallery-widget`         | `folder` (or line-based body) | Photo gallery (see below).                  |
+| `park-widget`            | `slug`                        | Park spotlight card — use `ref:…?full`.     |
+| `attraction-widget`      | `parkSlug`, `slug`            | Ride spotlight card — use `ref:…?full`.     |
+
+### `stats-widget show=…` — one table at a time
+
+Without `show` the widget renders all three cards (top rides, by month, by weekday), which is
+what the park page shows. A post usually argues from **one** of them at a time, in sections that
+sit hundreds of words apart, so embedding the bundle twice would show a reader the weekday chart
+while the prose is still on ride queues. Name the cards you want instead:
+
+````md
+```stats-widget slug=europa-park show=attractions
+
+```
+````
+
+`show` takes any comma-separated subset of `attractions`, `months`, `weekdays`. With `show` the
+widget also drops its own `<h2>`, so it sits under the post's heading rather than starting a
+second heading ladder. An attribute naming nothing valid falls back to the full bundle — that is
+a typo in the post, not a request for an empty card.
+
+**Prefer this over typing the numbers into a Markdown table.** Those figures move every single
+day: over one night this post's Saturday median went 27 → 28, which silently falsified three
+sentences that had been derived from it.
+
+### `park-comparison-widget` — several parks side by side
+
+````md
+```park-comparison-widget slugs=europa-park,phantasialand,efteling highlight=europa-park
+
+```
+````
+
+Rows appear in the order you list them and are never re-sorted, because the sentence under such
+a table usually depends on that order. The park median is weighted by measured days, and the
+"longest queue" column only considers rides with at least 100 measured days — otherwise a
+children's coaster on a thin basis represents a whole park.
+
+It costs about 3 KB per park (~21 KB for seven), which is why this one is a client fetch while
+an hourly-profile equivalent is not: that would be 8 × 53 KB, 45 % of it `schedule` nobody
+renders. See [API budget per page](../../docs/architecture/api-budget.md).
+
+**Attendance figures have no column here on purpose.** They come from the TEA index, are curated
+once a year and are not in our API. A number that changes annually belongs in the prose; a number
+that changes daily belongs in the widget.
 
 `park-widget` / `attraction-widget` still work but are **superseded by
 `ref:slug?full`** — prefer the `ref:` form for new posts.

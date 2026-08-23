@@ -29,7 +29,17 @@ interface ParkStatsSectionProps {
    * (the blog widget) behaves as before.
    */
   hasLiveWaitTimes?: boolean;
+  /**
+   * Which cards to render. The park page wants all three; a blog post argues from one table at a
+   * time and would otherwise have to embed the whole bundle twice, 400 words apart from the prose
+   * that discusses it. Defaults to all three, so every existing call site is unchanged.
+   */
+  show?: ReadonlyArray<'attractions' | 'months' | 'weekdays'>;
+  /** Blog posts sit under their own <h2>; a second one here would break the heading ladder. */
+  hideHeading?: boolean;
 }
+
+const ALL_CARDS = ['attractions', 'months', 'weekdays'] as const;
 
 /**
  * Client wrapper: fetches the 2-year historical aggregate client-side (via the CDN-cached
@@ -45,6 +55,8 @@ export function ParkStatsSection({
   parkSlug,
   locale,
   hasLiveWaitTimes = true,
+  show = ALL_CARDS,
+  hideHeading = false,
 }: ParkStatsSectionProps) {
   // Browser-only query (disabled during SSR). Show the skeleton until mounted + loaded so the
   // static prerender renders the placeholder rather than an empty section.
@@ -74,6 +86,8 @@ export function ParkStatsSection({
       parkSlug={parkSlug}
       locale={locale}
       hasLiveWaitTimes={hasLiveWaitTimes}
+      show={show}
+      hideHeading={hideHeading}
     />
   );
 }
@@ -86,6 +100,8 @@ function StatsContent({
   parkSlug,
   locale,
   hasLiveWaitTimes,
+  show,
+  hideHeading,
 }: {
   stats: ParkHistoricalStats;
   continent: string;
@@ -94,6 +110,8 @@ function StatsContent({
   parkSlug: string;
   locale: string;
   hasLiveWaitTimes: boolean;
+  show: ReadonlyArray<'attractions' | 'months' | 'weekdays'>;
+  hideHeading: boolean;
 }) {
   const t = useTranslations('parks.stats');
   const tParks = useTranslations('parks');
@@ -183,6 +201,7 @@ function StatsContent({
       crowdLevel: m.avgCrowdLevel,
       p50: m.avgWaitP50,
       p90: m.avgWaitP90,
+      days: m.sampleDays,
     }));
   }, [stats.byMonth, locale]);
 
@@ -201,14 +220,23 @@ function StatsContent({
           crowdLevel: d.avgCrowdLevel,
           p50: d.avgWaitP50,
           p90: d.avgWaitP90,
+          days: d.sampleDays,
         };
       })
       .sort((a, b) => a.sortKey - b.sortKey);
   }, [stats.byDayOfWeek, locale]);
 
   return (
-    <section aria-labelledby="stats-heading" className="mt-8 space-y-4">
-      <div className="bg-background/70 rounded-xl px-4 py-3 backdrop-blur-md">
+    <section
+      aria-labelledby={hideHeading ? undefined : 'stats-heading'}
+      aria-label={hideHeading ? t('title') : undefined}
+      className="mt-8 space-y-4"
+    >
+      <div
+        className={
+          hideHeading ? 'hidden' : 'bg-background/70 rounded-xl px-4 py-3 backdrop-blur-md'
+        }
+      >
         <div className="flex items-center gap-2">
           <BarChart3 className="text-primary h-5 w-5" aria-hidden="true" />
           <h2 id="stats-heading" className="text-xl font-bold">
@@ -223,7 +251,7 @@ function StatsContent({
         </p>
       </div>
 
-      {stats.topAttractions.length > 0 && (
+      {show.includes('attractions') && stats.topAttractions.length > 0 && (
         <ParkStatsAttractionsCard
           attractions={stats.topAttractions}
           currentWaits={currentWaits}
@@ -241,26 +269,30 @@ function StatsContent({
         />
       )}
 
-      <div className="grid gap-4 md:grid-cols-2">
-        {monthRows.length > 0 && (
-          <ParkStatsCrowdCard
-            iconType="calendar"
-            title={t('byMonthTitle')}
-            rows={monthRows}
-            labelP50={t('p50')}
-            labelP90={t('p90')}
-          />
-        )}
-        {dowRows.length > 0 && (
-          <ParkStatsCrowdCard
-            iconType="layers"
-            title={t('byDowTitle')}
-            rows={dowRows}
-            labelP50={t('p50')}
-            labelP90={t('p90')}
-          />
-        )}
-      </div>
+      {(show.includes('months') || show.includes('weekdays')) && (
+        <div className="grid gap-4 md:grid-cols-2">
+          {show.includes('months') && monthRows.length > 0 && (
+            <ParkStatsCrowdCard
+              iconType="calendar"
+              title={t('byMonthTitle')}
+              rows={monthRows}
+              labelP50={t('p50')}
+              labelP90={t('p90')}
+              labelDays={t('sampleDaysShort')}
+            />
+          )}
+          {show.includes('weekdays') && dowRows.length > 0 && (
+            <ParkStatsCrowdCard
+              iconType="layers"
+              title={t('byDowTitle')}
+              rows={dowRows}
+              labelP50={t('p50')}
+              labelP90={t('p90')}
+              labelDays={t('sampleDaysShort')}
+            />
+          )}
+        </div>
+      )}
     </section>
   );
 }

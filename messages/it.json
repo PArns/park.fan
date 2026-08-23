@@ -636,7 +636,12 @@
       "avgWait": "Attesa media",
       "p50": "Tipico",
       "p90": "Picco",
-      "noData": "Dati storici insufficienti al momento."
+      "sampleDaysShort": "giorni",
+      "noData": "Dati storici insufficienti al momento.",
+      "comparisonTitle": "Rispetto ad altri parchi",
+      "parkAverage": "Media del parco",
+      "longestQueue": "Coda più lunga",
+      "comparisonPark": "Parco"
     },
     "bestDays": {
       "title": "Quando visitare {park}",

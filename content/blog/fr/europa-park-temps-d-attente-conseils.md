@@ -91,56 +91,43 @@ Notre historique des temps d'attente pour l'Europa-Park remonte à douze mois.
 Tous jours de la semaine confondus, le **temps d'attente typique sur l'ensemble
 du parc s'établit à 23 minutes** (médiane), le 90e centile à 36.
 
-Les dix attractions devant lesquelles tu patientes le plus longtemps :
+Les dix attractions devant lesquelles tu patientes le plus longtemps, avec la
+valeur du jour à côté :
 
-| Attraction                                                                 | Zone      | Typique (médiane) | Pointe (P90) |
-| -------------------------------------------------------------------------- | --------- | ----------------: | -----------: |
-| **[Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare)** | Croatie   |        **34 min** |       38 min |
-| [Arthur](ref:europa-park/arthur?bare)                                      | Minimoys  |            31 min |       37 min |
-| [Wodan](ref:europa-park/wodan-timburcoaster?bare)                          | Islande   |            28 min |       33 min |
-| [Eurosat CanCan Coaster](ref:europa-park/eurosat-cancan-coaster?bare)      | France    |            28 min |       32 min |
-| [Silver Star](ref:europa-park/silver-star?bare)                            | Monaco    |            23 min |       28 min |
-| [Poseidon](ref:europa-park/water-rollercoaster-poseidon?bare)              | Grèce     |            22 min |       27 min |
-| [Matterhorn-Blitz](ref:europa-park/matterhorn-blitz?bare)                  | Suisse    |            21 min |       26 min |
-| [blue fire](ref:europa-park/blue-fire-megacoaster?bare)                    | Islande   |            21 min |       25 min |
-| [Bobsleigh suisse](ref:europa-park/swiss-bob-run?bare)                     | Suisse    |            20 min |       25 min |
-| [Voletarium](ref:europa-park/voletarium?bare)                              | Allemagne |            14 min |       27 min |
+```stats-widget slug=europa-park show=attractions
 
-Deux colonnes, deux questions. « Typique » est la médiane d'une journée
-d'exploitation ordinaire, « Pointe » la même valeur sur les dix pour cent de
-journées les plus chargées. Ni l'une ni l'autre ne dit comment une file évolue au
-fil des heures.
+```
 
-Le Voletarium sort du lot. Sa médiane de 14 minutes est la plus basse des dix, sa
-pointe à 27 exactement au niveau de celle de Poseidon. Un théâtre volant embarque
-par grosses fournées. Entre deux séances, presque personne n'attend ; un matin
-chargé, la file déborde jusque sur le parvis. Moyenné sur la journée, il n'en
-reste rien.
+« Typique » est ici la médiane d'une journée d'exploitation ordinaire,
+« Pointe » la même valeur sur les dix pour cent de journées les plus chargées.
+Ni l'une ni l'autre ne dit comment une file évolue au fil des heures.
+
+Le Voletarium sort du lot. Sa médiane de 14 minutes est la plus basse des dix
+plus longues, sa pointe à 27 exactement au niveau de celle de Poseidon. Un
+théâtre volant embarque par grosses fournées. Entre deux séances, presque
+personne n'attend ; un matin chargé, la file déborde jusque sur le parvis.
+Moyenné sur la journée, il n'en reste rien.
 
 Pour le reste, la liste se lit sans grand suspense. **34 minutes pour
 l'attraction qui a totalisé 3,25 millions de tours la première année**, c'est très
 peu au regard de plus de six millions de visiteurs. La comparaison, même base de
 données, même méthode de calcul :
 
-| Parc                                                                         | Fréquentation    | Typique sur l'ensemble du parc | File la plus longue                            |
-| ---------------------------------------------------------------------------- | ---------------- | -----------------------------: | ---------------------------------------------- |
-| [Disneyland Park Paris](ref:/parks/europe/france/paris/disneyland-park?bare) | ~10 millions     |                         34 min | 50 min (Peter Pan's Flight)                    |
-| [Phantasialand](ref:phantasialand?bare)                                      | 2,1 millions     |                         32 min | 49 min ([Taron](ref:phantasialand/taron?bare)) |
-| [Efteling](ref:efteling?bare)                                                | 5,6 millions     |                         25 min | 35 min (Joris en de Draak)                     |
-| **[Europa-Park](ref:europa-park?bare)**                                      | **6,2 millions** |                     **23 min** | 34 min (Voltron Nevera)                        |
-| [Movie Park Germany](ref:movie-park-germany?bare)                            | ~1,3 million     |                         19 min | 29 min (Van Helsing's Factory)                 |
-| [Heide Park](ref:heide-park?bare)                                            | ~1,5 million     |                         18 min | 23 min (Wildwasserbahn)                        |
-| [Toverland](ref:attractiepark-toverland?bare)                                | 1,17 million     |                         15 min | 21 min (Booster Bike)                          |
+```park-comparison-widget slugs=disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
 
-La colonne de fréquentation vient de l'indice TEA 2024, donc pour Rust les
-6,2 millions du parc d'attractions et non les 7,4 millions de l'ensemble du
-resort. Il y a une exception : Toverland n'y figure pas, le chiffre de
-1,17 million vient du parc lui-même. La dernière colonne donne à chaque fois
-l'attraction à la médiane la plus haute pour laquelle nous disposons d'au moins
-cent jours de mesure. À Toverland, Maximus' Blitz Bahn se place en réalité
-au-dessus avec 34 minutes, mais sur 61 jours seulement, et des montagnes russes
-pour enfants dont la base de mesure est aussi mince ne valent rien comme
-indicateur pour un parc entier.
+```
+
+Les chiffres de fréquentation, eux, ne figurent pas dans le tableau, parce
+qu'ils se comportent autrement que tout le reste ici : ils viennent de l'indice
+TEA, paraissent une fois par an et ne changent plus pendant un an. Pour 2024,
+c'est à Rust 6,2 millions pour le parc d'attractions et non les 7,4 millions de
+l'ensemble du resort, au Phantasialand 2,1 millions, à l'Efteling 5,6, à Paris
+une dizaine. Toverland n'y figure pas, et le chiffre de 1,17 million vient du
+parc lui-même. À droite figure à chaque fois l'attraction à la médiane la plus
+haute pour laquelle nous disposons d'au moins cent jours de mesure. À Toverland,
+Maximus' Blitz Bahn se place en réalité au-dessus avec 34 minutes, mais sur
+61 jours seulement, et des montagnes russes pour enfants dont la base de mesure
+est aussi mince ne valent rien comme indicateur pour un parc entier.
 
 Avec environ un tiers du public, le Phantasialand a des files plus longues de
 neuf minutes en moyenne, ce qui tient au découpage du terrain et non aux
@@ -151,10 +138,6 @@ l'[Efteling](/blog/efteling-le-disney-des-pays-bas) et pour
 même équation. Et à Paris, où passent environ une fois et demie plus de
 visiteurs, la moyenne du parc est à 34 minutes. C'est exactement la valeur
 qu'atteint à Rust la file la _plus longue_ du parc.
-
-```stats-widget slug=europa-park
-
-```
 
 ## Pourquoi le plus grand parc a les files les plus courtes
 
@@ -567,15 +550,9 @@ ailleurs.
 
 ### Le jour de la semaine
 
-| Jour         |    Typique | Pointe |
-| ------------ | ---------: | -----: |
-| Lundi        |     22 min | 35 min |
-| Mardi        |     25 min | 38 min |
-| Mercredi     |     23 min | 36 min |
-| Jeudi        |     22 min | 35 min |
-| Vendredi     |     22 min | 35 min |
-| Samedi       |     28 min | 44 min |
-| **Dimanche** | **18 min** | 30 min |
+```stats-widget slug=europa-park show=weekdays
+
+```
 
 C'est le dimanche qu'il y a le moins de monde à Rust, dix minutes sous le samedi
 et quatre sous le meilleur jour de semaine. Dans le paysage allemand des parcs,
@@ -627,25 +604,19 @@ https://www.youtube.com/watch?v=Js8j_qvKCoA
 
 ### Le mois
 
-| Mois     | Typique | Pointe | Jours mesurés |
-| -------- | ------: | -----: | ------------: |
-| Janvier  |  19 min | 29 min |             5 |
-| Mars     |  15 min | 23 min |             3 |
-| Avril    |  23 min | 36 min |            30 |
-| Mai      |  21 min | 34 min |            31 |
-| Juin     |  20 min | 33 min |            30 |
-| Juillet  |  24 min | 39 min |            30 |
-| Août     |  27 min | 43 min |            22 |
-| Décembre |  28 min | 41 min |             6 |
+```stats-widget slug=europa-park show=months
 
-Prudence avec janvier, mars et décembre : derrière eux, il n'y a que trois à six
-jours de mesure. L'ordre de grandeur est bon, mais je ne m'engagerais pas à la
-minute près. Le bloc d'avril à août, lui, tient, et il dit ceci : mai et juin
-sont les mois d'été les plus calmes, août est le plus chargé.
+```
 
-Quatre mois manquent complètement au tableau : février, septembre, octobre et
-novembre, et mars presque. Pour l'automne, cette fenêtre ne contient donc pas un
-seul jour de mesure. Sur Halloween et HALLOWinter, ce tableau ne dit rien.
+Prudence avec janvier, mars et décembre. Derrière eux, il n'y a que trois à six
+jours de mesure, c'est ce qu'indique la colonne de droite. L'ordre de grandeur
+est bon, mais je ne m'engagerais pas à la minute près. Le bloc d'avril à août,
+lui, tient, et il dit ceci : mai et juin sont les mois d'été les plus calmes,
+août est le plus chargé.
+
+Quatre mois manquent complètement : février, septembre, octobre et novembre, et
+mars presque. Pour l'automne, cette fenêtre ne contient donc pas un seul jour de
+mesure. Sur Halloween et HALLOWinter, ces chiffres ne disent rien.
 
 ### Les quatre semaines que presque personne ne connaît
 

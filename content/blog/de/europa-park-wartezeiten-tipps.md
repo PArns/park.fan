@@ -91,27 +91,19 @@ Unsere Wartezeit-Historie für den Europa-Park reicht zwölf Monate zurück. Üb
 alle Wochentage gerechnet liegt die **typische Wartezeit im Parkschnitt bei 23
 Minuten** (Median), das 90. Perzentil bei 36.
 
-Die zehn Attraktionen, an denen du am längsten stehst:
+Die zehn Attraktionen, an denen du am längsten stehst, mit dem Wert von heute
+daneben:
 
-| Attraktion                                                                 | Bereich      | Typisch (Median) | Spitze (P90) |
-| -------------------------------------------------------------------------- | ------------ | ---------------: | -----------: |
-| **[Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare)** | Kroatien     |       **34 Min** |       38 Min |
-| [Arthur](ref:europa-park/arthur?bare)                                      | Minimoys     |           31 Min |       37 Min |
-| [Wodan](ref:europa-park/wodan-timburcoaster?bare)                          | Island       |           28 Min |       33 Min |
-| [Eurosat CanCan Coaster](ref:europa-park/eurosat-cancan-coaster?bare)      | Frankreich   |           28 Min |       32 Min |
-| [Silver Star](ref:europa-park/silver-star?bare)                            | Monaco       |           23 Min |       28 Min |
-| [Poseidon](ref:europa-park/water-rollercoaster-poseidon?bare)              | Griechenland |           22 Min |       27 Min |
-| [Matterhorn-Blitz](ref:europa-park/matterhorn-blitz?bare)                  | Schweiz      |           21 Min |       26 Min |
-| [blue fire](ref:europa-park/blue-fire-megacoaster?bare)                    | Island       |           21 Min |       25 Min |
-| [Schweizer Bobbahn](ref:europa-park/swiss-bob-run?bare)                    | Schweiz      |           20 Min |       25 Min |
-| [Voletarium](ref:europa-park/voletarium?bare)                              | Deutschland  |           14 Min |       27 Min |
+```stats-widget slug=europa-park show=attractions
 
-Zwei Spalten, zwei Fragen. „Typisch“ ist der Median eines normalen Betriebstags,
-„Spitze“ derselbe Wert an den zehn Prozent vollsten Tagen. Beides sagt
-nichts darüber, wie sich eine Schlange über den Tag bewegt.
+```
+
+„Typisch“ ist dabei der Median eines normalen Betriebstags, die „Spitze“
+derselbe Wert an den zehn Prozent vollsten Tagen. Beides sagt nichts darüber,
+wie sich eine Schlange über den Tag bewegt.
 
 Das Voletarium fällt aus der Reihe. Sein Median von 14 Minuten ist der
-niedrigste der zehn, die Spitze mit 27 genauso hoch wie die von Poseidon. Ein
+niedrigste der zehn längsten, die Spitze mit 27 genauso hoch wie die von Poseidon. Ein
 Flugtheater lädt in großen Schüben: Zwischen zwei Vorstellungen steht kaum
 jemand an, an einem vollen Vormittag reicht die Schlange bis auf den Vorplatz.
 Im Tagesmittel bleibt davon nichts übrig.
@@ -120,20 +112,17 @@ Ansonsten liest sich die Liste unspektakulär. **34 Minuten für die Bahn, auf d
 ersten Jahr 3,25 Millionen Fahrten entfielen**, sind, gemessen an über sechs
 Millionen Gästen, sehr wenig. Der Vergleich, gleiche Datenbasis, gleiche Rechenmethode:
 
-| Park                                                                         | Publikum    | Typisch im Parkschnitt | Längste Schlange                               |
-| ---------------------------------------------------------------------------- | ----------- | ---------------------: | ---------------------------------------------- |
-| [Disneyland Park Paris](ref:/parks/europe/france/paris/disneyland-park?bare) | ~10 Mio     |                 34 Min | 50 Min (Peter Pan's Flight)                    |
-| [Phantasialand](ref:phantasialand?bare)                                      | 2,1 Mio     |                 32 Min | 49 Min ([Taron](ref:phantasialand/taron?bare)) |
-| [Efteling](ref:efteling?bare)                                                | 5,6 Mio     |                 25 Min | 35 Min (Joris en de Draak)                     |
-| **[Europa-Park](ref:europa-park?bare)**                                      | **6,2 Mio** |             **23 Min** | 34 Min (Voltron Nevera)                        |
-| [Movie Park Germany](ref:movie-park-germany?bare)                            | ~1,3 Mio    |                 19 Min | 29 Min (Van Helsing's Factory)                 |
-| [Heide Park](ref:heide-park?bare)                                            | ~1,5 Mio    |                 18 Min | 23 Min (Wildwasserbahn)                        |
-| [Toverland](ref:attractiepark-toverland?bare)                                | 1,17 Mio    |                 15 Min | 21 Min (Booster Bike)                          |
+```park-comparison-widget slugs=disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
 
-Die Publikumsspalte kommt aus dem TEA-Index 2024, für Rust also die
-6,2 Millionen des Freizeitparks und nicht die 7,4 Millionen des gesamten Resorts.
-Eine Ausnahme gibt es: Toverland taucht dort nicht auf, die 1,17 Millionen sind die Eigenangabe des Parks. In der letzten
-Spalte steht jeweils die Attraktion mit dem höchsten Median, für die wir
+```
+
+Die Publikumszahlen dazu stehen nicht in der Tabelle, weil sie sich anders
+verhalten als alles andere hier: Sie kommen aus dem TEA-Index, erscheinen einmal
+im Jahr und ändern sich dann ein Jahr lang nicht. Für 2024 sind es in Rust
+6,2 Millionen für den Freizeitpark und nicht die 7,4 Millionen des gesamten
+Resorts, im Phantasialand 2,1 Millionen, im Efteling 5,6, in Paris rund zehn.
+Toverland taucht dort nicht auf, die 1,17 Millionen sind die Eigenangabe des
+Parks. Rechts steht jeweils die Attraktion mit dem höchsten Median, für die wir
 mindestens hundert Messtage haben. Im Toverland liegt darüber eigentlich
 noch Maximus' Blitz Bahn mit 34 Minuten, allerdings auf nur 61 Tagen, und eine
 Kinderachterbahn mit dünner Messbasis taugt nicht als Kennzahl für einen ganzen
@@ -147,10 +136,6 @@ das [Efteling](/blog/efteling-disney-der-niederlande) und das
 aufgemacht. Und in Paris, wo etwa anderthalbmal so viele Gäste
 durchgehen, steht der Parkschnitt bei 34 Minuten. Das ist exakt der Wert, den in
 Rust die _längste_ Schlange des Parks hat.
-
-```stats-widget slug=europa-park
-
-```
 
 ## Warum der größte Park die kürzesten Schlangen hat
 
@@ -551,15 +536,9 @@ Beim Wochentag weicht der Europa-Park von allem ab, was ich sonst so messe.
 
 ### Der Wochentag
 
-| Wochentag   |    Typisch | Spitze |
-| ----------- | ---------: | -----: |
-| Montag      |     22 Min | 35 Min |
-| Dienstag    |     25 Min | 38 Min |
-| Mittwoch    |     23 Min | 36 Min |
-| Donnerstag  |     22 Min | 35 Min |
-| Freitag     |     22 Min | 35 Min |
-| Samstag     |     28 Min | 44 Min |
-| **Sonntag** | **18 Min** | 30 Min |
+```stats-widget slug=europa-park show=weekdays
+
+```
 
 Sonntags ist in Rust am wenigsten los, zehn Minuten unter dem Samstag und vier
 unter dem besten Werktag. Im deutschen Parkvergleich ist das eine Ausnahme. Im
@@ -589,17 +568,17 @@ irgendwann über einen vollen Dienstag.
 
 Christi Himmelfahrt fällt immer auf einen Donnerstag, und voll wird nicht der
 Feiertag. Voll wird der Freitag danach, den halb Deutschland freinimmt. In
-unseren Daten steht Donnerstag, der 14. Mai 2026, auf „moderat" und der Freitag
-darauf auf „hoch". Am Sonntag lag der Park wieder auf „niedrig". Bei
+unseren Daten steht Donnerstag, der 14. Mai 2026, auf „moderat“ und der Freitag
+darauf auf „hoch“. Am Sonntag lag der Park wieder auf „niedrig“. Bei
 Fronleichnam ist dieselbe Form noch schärfer ausgeprägt. Der Feiertag am 4. Juni
-stand auf „niedrig", der Brückenfreitag am 5. auf „hoch".
+stand auf „niedrig“, der Brückenfreitag am 5. auf „hoch“.
 
 Eine Einschränkung dazu. Wir haben genau einen gemessenen Brückentag, und
 ausgerechnet der war ein milder. Am 15. Mai 2026 zog ein Gewitter durch, wärmer
-als zwölf Grad wurde es nicht, und trotzdem reichte es für „hoch". Der Kanal
+als zwölf Grad wurde es nicht, und trotzdem reichte es für „hoch“. Der Kanal
 Epfan95 fährt seit Jahren an genau diesen Freitagen hin und filmt das Ergebnis.
-Für 2026 lautet der Titel „Der leerste volle Tag", für die Jahre davor
-„Besuchermassen, hohe Wartezeiten und viele Autos". Ein Brückentag bei
+Für 2026 lautet der Titel „Der leerste volle Tag“, für die Jahre davor
+„Besuchermassen, hohe Wartezeiten und viele Autos“. Ein Brückentag bei
 Sonnenschein sieht anders aus als unser einer Messwert.
 
 https://www.youtube.com/watch?v=Js8j_qvKCoA
@@ -608,25 +587,18 @@ https://www.youtube.com/watch?v=Js8j_qvKCoA
 
 ### Der Monat
 
-| Monat    | Typisch | Spitze | Messtage |
-| -------- | ------: | -----: | -------: |
-| Januar   |  19 Min | 29 Min |        5 |
-| März     |  15 Min | 23 Min |        3 |
-| April    |  23 Min | 36 Min |       30 |
-| Mai      |  21 Min | 34 Min |       31 |
-| Juni     |  20 Min | 33 Min |       30 |
-| Juli     |  24 Min | 39 Min |       30 |
-| August   |  27 Min | 43 Min |       22 |
-| Dezember |  28 Min | 41 Min |        6 |
+```stats-widget slug=europa-park show=months
 
-Vorsicht bei Januar, März und Dezember: Dahinter stehen nur drei bis sechs
-Messtage. Die Größenordnung stimmt, auf die einzelne Minute würde ich mich da
+```
+
+Vorsicht bei Januar, März und Dezember. Dahinter stehen nur drei bis sechs
+Messtage, was in der Spalte rechts steht. Die Größenordnung stimmt, auf die einzelne Minute würde ich mich da
 nicht festlegen. Belastbar ist der Block April bis August, und der sagt: Mai und
 Juni sind die ruhigsten Sommermonate, August ist der vollste.
 
-Vier Monate fehlen in der Tabelle ganz: Februar, September, Oktober und November,
-dazu der März fast. Für den Herbst haben wir aus diesem Fenster also keinen
-einzigen Messtag. Über Halloween und HALLOWinter sagt diese Tabelle nichts.
+Vier Monate fehlen ganz: Februar, September, Oktober und November, dazu der März
+fast. Für den Herbst haben wir aus diesem Fenster also keinen einzigen Messtag.
+Über Halloween und HALLOWinter sagen diese Zahlen nichts.
 
 ### Die vier Wochen, die kaum jemand kennt
 
