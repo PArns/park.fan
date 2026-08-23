@@ -83,7 +83,15 @@ export default function AttractionDetailPage({ params }: { params: Promise<{ id:
             "where did I come from" to the browser's back button was the one
             thing every route into it had in common. */}
         <Link
-          href={data.park ? `/admin/parks/${data.park.id}` : '/admin/parks'}
+          href={
+            data.park
+              ? // Back to the ride list, not to the park's master data: this
+                // page is reached from that list, one ride at a time, and
+                // landing on another tab means finding your place again after
+                // every single one.
+                `/admin/parks/${data.park.id}?tab=attractions`
+              : '/admin/parks'
+          }
           className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-xs"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
