@@ -189,16 +189,23 @@ export function Switch({
       onClick={() => onCheckedChange(!checked)}
       className="group inline-flex items-center gap-2 disabled:opacity-50"
     >
+      {/* The knob is placed from the track's left edge, not from wherever an
+          absolutely positioned element without a `left` happens to land. It
+          landed at the track's right edge — measured at x=638 on a 602–638
+          track — so the white circle sat on top of the label next to it and
+          the switch read as broken before anybody clicked it. Two pixels of
+          inset either side, sixteen of knob, and a translate that stops
+          exactly inside: 2 + 16 + 16 = 34 of 36. */}
       <span
         className={cn(
-          'relative h-5 w-9 rounded-full transition-colors',
+          'relative h-5 w-9 shrink-0 rounded-full transition-colors',
           checked ? 'bg-primary' : 'bg-muted-foreground/30'
         )}
       >
         <span
           className={cn(
-            'absolute top-0.5 h-4 w-4 rounded-full bg-white transition-transform',
-            checked ? 'translate-x-4.5' : 'translate-x-0.5'
+            'absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform',
+            checked ? 'translate-x-4' : 'translate-x-0'
           )}
         />
       </span>

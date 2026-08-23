@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { AlertTriangle, Crosshair, GitPullRequest, ImageIcon, Plus, Search } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
@@ -57,16 +58,33 @@ const QUICK_FILTERS: { id: QuickFilter; label: string }[] = [
 ];
 
 export default function MediaAdminPage() {
+  // Opened from somewhere, most of the time.
+  //
+  // The park editor's photo coverage links here with `?park=…&ride=…`, the
+  // entity media panel with `?id=…`, the contribution moderator with
+  // `?image=…` — and this page read none of them, so every one of those links
+  // landed on the unfiltered browser with nothing selected and the operator
+  // started their search again. The parameters seed the state once; from then
+  // on the filters are ordinary state, because this browser is a workspace and
+  // not a set of addressable views.
+  const params = useSearchParams();
+
   const [data, setData] = useState<Payload | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const [q, setQ] = useState('');
-  const [park, setPark] = useState('');
-  const [tag, setTag] = useState('');
+  const [q, setQ] = useState(() => params.get('q') ?? '');
+  const [park, setPark] = useState(() => params.get('park') ?? '');
+  const [tag, setTag] = useState(() => params.get('tag') ?? '');
+  // Only ever arrives by link — the photo-coverage panel narrows to one ride.
+  // Shown as a removable chip below, because a filter nobody can see is a
+  // browser that looks empty for no reason.
+  const [ride, setRide] = useState(() => params.get('ride') ?? '');
   const [quick, setQuick] = useState<QuickFilter | null>(null);
 
-  const [detailId, setDetailId] = useState<string | null>(null);
+  const [detailId, setDetailId] = useState<string | null>(
+    () => params.get('id') ?? params.get('image') ?? null
+  );
   const [uploading, setUploading] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
   const [tokenMissing, setTokenMissing] = useState(false);
@@ -82,13 +100,14 @@ export default function MediaAdminPage() {
   const [showSession, setShowSession] = useState(false);
 
   const query = useMemo(() => {
-    const params = new URLSearchParams();
-    if (q.trim()) params.set('q', q.trim());
-    if (park) params.set('park', park);
-    if (tag) params.set('tag', tag);
-    if (quick) params.set(quick, '1');
-    return params.toString();
-  }, [q, park, tag, quick]);
+    const search = new URLSearchParams();
+    if (q.trim()) search.set('q', q.trim());
+    if (park) search.set('park', park);
+    if (ride) search.set('ride', ride);
+    if (tag) search.set('tag', tag);
+    if (quick) search.set(quick, '1');
+    return search.toString();
+  }, [q, park, ride, tag, quick]);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -337,6 +356,24 @@ export default function MediaAdminPage() {
               Add images
             </button>
           </div>
+
+          {ride && (
+            // Arrived by link and otherwise invisible: without this the browser
+            // shows one photo of a hundred and looks broken.
+            <div className="mb-3 flex items-center gap-2 text-xs">
+              <span className="border-primary/40 bg-primary/10 text-primary inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5">
+                Ride: {ride}
+                <button
+                  type="button"
+                  onClick={() => setRide('')}
+                  className="hover:text-foreground"
+                  aria-label="Ride-Filter entfernen"
+                >
+                  ×
+                </button>
+              </span>
+            </div>
+          )}
 
           <div className="mb-4 flex flex-wrap gap-1">
             {QUICK_FILTERS.map((filter) => (
