@@ -2,7 +2,7 @@
   "title": "Atlantis Adventure",
   "park": "europa-park",
   "ride": "atlantis-adventure",
-  "area": "Scandinavia",
+  "area": "Greece",
   "roles": ["ride-card", "hero"],
   "tags": ["day", "entrance", "outdoor", "photo", "ride", "signage"],
   "alt": {
@@ -14,12 +14,12 @@
     "nl": "Het bord \"Abenteuer Atlantis\" met twee gesneden koppen boven de ingang."
   },
   "caption": {
-    "de": "Skandinavien brannte 2018 zur Hälfte ab. Am 23. Juli 2019 stand der Bereich wieder.",
-    "en": "Half of Scandinavia burnt down in 2018. The area was back on 23 July 2019.",
-    "es": "La mitad de la zona escandinava ardió en 2018. Reabrió el 23 de julio de 2019.",
-    "fr": "La moitié de la zone scandinave a brûlé en 2018. Elle a rouvert le 23 juillet 2019.",
-    "it": "Metà dell'area scandinava è bruciata nel 2018. Ha riaperto il 23 luglio 2019.",
-    "nl": "Scandinavië brandde in 2018 half af. Op 23 juli 2019 stond het gebied er weer."
+    "de": "Eine interaktive Bootsfahrt im griechischen Themenbereich, bei der unterwegs geschossen wird.",
+    "en": "An interactive boat ride in the Greek area, where you shoot at targets along the way.",
+    "es": "Un paseo en barca interactivo en la zona griega, en el que se dispara a dianas por el camino.",
+    "fr": "Une balade en bateau interactive dans la zone grecque, où l'on tire sur des cibles en chemin.",
+    "it": "Un giro in barca interattivo nell'area greca, dove si spara ai bersagli lungo il percorso.",
+    "nl": "Een interactieve boottocht in het Griekse themagebied, waarbij je onderweg op doelen schiet."
   },
   "credit": {
     "author": "Patrick Arns",

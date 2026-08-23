@@ -1,5 +1,5 @@
 ---
-title: 'Europa-Park: el parque más lleno de Alemania, 23 minutos de cola'
+title: 'Europa-Park: el parque más grande de Alemania, y por qué parece medio vacío'
 translationKey: europa-park-guide
 date: '2026-08-21'
 updatedAt: '2026-08-22'
@@ -310,8 +310,6 @@ arriba se sigue incubando con toda la calma del mundo.
 
 ## Las montañas rusas del Europa-Park, las quince
 
-![El looping de blue fire de noche, iluminado en azul | blue fire de noche, con Wodan detrás. Las dos están en Islandia. | right](/media/europa-park/blue-fire-megacoaster-4x3.jpg)
-
 ### Voltron Nevera powered by Rimac
 
 El primer lanzamiento va hacia atrás. Estás sentado, da un tirón, y antes de que
@@ -367,8 +365,6 @@ croata la tormenta repentina que se levanta en verano sobre el Adriático.
 minutos. Once por encima de la media del parque, para la atracción por la que
 media Alemania del sur condujo hasta Rust en 2024.
 
-![La colina de subida y la primera bajada de Silver Star por encima de las copas de los árboles, con cielo de atardecer | Silver Star al anochecer. Desde 2026 la atracción pertenece a la nueva zona temática de Mónaco. | left](/media/europa-park/silver-star-4x3.jpg)
-
 **[Silver Star](ref:europa-park/silver-star)** es la gran dama de los récords.
 Construida en 2002 por **Bolliger & Mabillard**, de Monthey, en el Valais, como
 su primera instalación en Alemania, y en su inauguración la montaña rusa de acero
@@ -393,6 +389,8 @@ uniones atornilladas y dos millones de clavos.
 
 ```
 
+![El looping de blue fire de noche, iluminado en azul | Detrás está Wodan. Las dos comparten Islandia. | right](/media/europa-park/blue-fire-megacoaster-4x3.jpg)
+
 **[blue fire](ref:europa-park/blue-fire-megacoaster)**, de 2009, fue la primera
 lanzadera del parque y sigue siendo la alternativa más elegante a Voltron: 38
 metros, 100 km/h, cuatro inversiones, entre ellas un heartline roll que se siente
@@ -406,8 +404,6 @@ tiene una explicación de lo más banal. Es una de las pocas atracciones que
 funcionan de forma fiable cuando llueve.
 
 ![La bola plateada de Eurosat sobre la fachada del Moulin Rouge | Todo el recorrido transcurre dentro de la bola. | right](/media/europa-park/eurosat-cancan-coaster-4x3.jpg)
-
-![Un barco de madera destrozado en el estanque de Poseidon, con una muralla detrás | A las nueve de la mañana haces aquí ocho minutos de cola; a las once son cuarenta. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
 
 **[Poseidon](ref:europa-park/water-rollercoaster-poseidon)** se inauguró el 12 de
 julio de 2000, justo el día en que el parque cumplía 25 años, y con 350 segundos
@@ -458,8 +454,6 @@ bomberos sufrieron heridas leves. Los daños materiales quedaron en la franja de
 las decenas de millones. El 6 de junio, la policía y la fiscalía comunicaron qué
 había provocado el fuego: un fallo técnico en la zona del fjord rafting.
 
-![El cartel «Abenteuer Atlantis» con dos cabezas talladas sobre la entrada | Escandinavia ardió a medias en 2018 y volvió a estar en pie en julio de 2019. | right](/media/europa-park/atlantis-adventure-4x3.jpg)
-
 Lo llamativo es lo que pasó después. A las nueve de la mañana siguiente el parque
 estaba otra vez abierto, menos de veinticuatro horas después de un incendio de esa
 envergadura, con vallas solo alrededor de lo quemado. La zona escandinava
@@ -488,6 +482,16 @@ recorre Lummerland, y el
 **[Castello dei Medici](ref:europa-park/castello-dei-medici)** es el castillo
 encantado de la zona italiana.
 
+![La fachada del castillo encantado, con una figura de dragón y un reloj astronómico | Detrás de esta fachada empieza el castillo encantado. | left](/media/europa-park/castello-dei-medici-4x3.jpg)
+
+Sin raíles funciona también la
+**[Aventura Atlantis](ref:europa-park/atlantis-adventure)**, un paseo interactivo
+en barca por la zona temática griega en el que vas disparando a dianas por el
+camino. Quien va con niños la monta dos veces, porque la primera nadie está
+pendiente del marcador.
+
+![El cartel «Abenteuer Atlantis» con dos cabezas talladas sobre la entrada | La entrada está en Grecia, justo detrás de Poseidon. | right](/media/europa-park/atlantis-adventure-4x3.jpg)
+
 Desde el **[Euro-Tower](ref:europa-park/euro-tower)**, en Rust desde 1983, con
 tiempo despejado se ve hasta los Vosgos. El tren panorámico para en tres
 estaciones, en Luxemburgo y en Islandia circulan monorraíles, y el EP-Express te
@@ -504,8 +508,6 @@ siendo uno de los factores más importantes del parque.
 Quien está sentado en un espectáculo no hace cola en ninguna parte.
 
 ## Euro-Mir: la última temporada
-
-![La fachada del castillo encantado, con una figura de dragón y un reloj astronómico | Detrás de esta fachada empieza el castillo encantado, a la vuelta de la esquina de Rusia. | left](/media/europa-park/castello-dei-medici-4x3.jpg)
 
 La **[Euro-Mir](ref:europa-park/euro-mir)** se inauguró el **12 de junio de 1997**
 y en 2026 circula por última vez. Tras la temporada de invierno se desmonta.
@@ -656,6 +658,8 @@ hora y sobre los últimos treinta días de operación sale esto.
 | Poseidon              |   8 |     28 | **40** |   37 |   36 |   35 |     34 |   32 |   26 |   17 |
 | Atlantica SuperSplash |   6 |     15 |     26 |   27 |   29 |   31 | **34** |   31 |   26 |   15 |
 
+![La colina de subida y la primera bajada de Silver Star por encima de las copas de los árboles, con cielo de atardecer | Desde 2026 la atracción pertenece a la nueva zona temática de Mónaco. | right](/media/europa-park/silver-star-4x3.jpg)
+
 La fila que me sorprendió la primera vez es la de Silver Star. A las diez de la
 mañana haces allí 36 minutos, a partir de las doce solo unos veinte largos, y eso
 ya no cambia hasta la hora del cierre. Una atracción de 73 metros que funciona
@@ -667,6 +671,8 @@ atracciones tienen su máximo a las diez o a las once; solo Atlantica lo alcanza
 por la tarde. Quien
 desayuna con calma y llega a las diez y media entra exactamente en el pico del
 día.
+
+![Un barco de madera destrozado en el estanque de Poseidon, con una muralla detrás | A las nueve de la mañana haces aquí ocho minutos de cola; a las once son cuarenta. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
 
 Y luego, las acuáticas. Poseidon está a las nueve en ocho minutos, Atlantica en
 seis. A las once son 40 y 26. Quien esté dispuesto a mojarse por la mañana monta

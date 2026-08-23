@@ -1,5 +1,5 @@
 ---
-title: 'Europa-Park Wartezeiten: Deutschlands vollster Park, 23 Minuten Schlange'
+title: 'Europa-Park: Deutschlands größter Park, und warum er sich leer anfühlt'
 translationKey: europa-park-guide
 date: '2026-08-21'
 updatedAt: '2026-08-22'
@@ -305,8 +305,6 @@ und oben brütet es seelenruhig weiter.
 
 ## Die Achterbahnen im Europa-Park, alle fünfzehn
 
-![Der Looping von blue fire bei Nacht, blau angeleuchtet | blue fire bei Nacht, dahinter Wodan. Beide stehen in Island. | right](/media/europa-park/blue-fire-megacoaster-4x3.jpg)
-
 ### Voltron Nevera powered by Rimac
 
 Der erste Start geht rückwärts. Du sitzt, es ruckt, und bevor du sortiert hast,
@@ -362,8 +360,6 @@ plötzliche Gewitter, das im Sommer über der Adria aufzieht.
 Minuten. Elf über dem Parkschnitt, für die Bahn, wegen der halb Süddeutschland
 2024 nach Rust gefahren ist.
 
-![Lifthill und erste Abfahrt von Silver Star über den Baumkronen, Abendhimmel | Silver Star am Abend. Seit 2026 steht die Bahn im neuen Themenbereich Monaco. | left](/media/europa-park/silver-star-4x3.jpg)
-
 **[Silver Star](ref:europa-park/silver-star)** ist die alte Dame mit den
 Rekorden. 2002 gebaut von **Bolliger & Mabillard** aus dem Walliser
 Monthey, als deren erste Anlage in Deutschland, und bei der Eröffnung die
@@ -388,6 +384,8 @@ Millionen Nägel.
 
 ```
 
+![Der Looping von blue fire bei Nacht, blau angeleuchtet | Dahinter steht Wodan. Die beiden teilen sich Island. | right](/media/europa-park/blue-fire-megacoaster-4x3.jpg)
+
 **[blue fire](ref:europa-park/blue-fire-megacoaster)**, 2009, war die erste
 Katapultbahn des Parks und ist bis heute die elegantere Alternative zu Voltron:
 38 Meter, 100 km/h, vier Inversionen, darunter ein Heartline Roll, der sich
@@ -401,8 +399,6 @@ vier steht, hat einen banalen Grund. Sie ist eine der wenigen Bahnen, die bei
 Regen zuverlässig fahren.
 
 ![Die silberne Kugel von Eurosat über der Moulin-Rouge-Fassade | Die Bahn läuft komplett im Inneren der Kugel. | right](/media/europa-park/eurosat-cancan-coaster-4x3.jpg)
-
-![Ein zerborstenes Holzschiff im Wasserbecken von Poseidon, dahinter eine Festungsmauer | Um neun Uhr morgens stehst du hier acht Minuten an, um elf sind es vierzig. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
 
 **[Poseidon](ref:europa-park/water-rollercoaster-poseidon)** eröffnete am 12. Juli 2000, auf den Tag genau zum 25. Geburtstag des Parks, und ist mit
 350 Sekunden Fahrzeit für eine Wasserachterbahn außergewöhnlich lang.
@@ -451,8 +447,6 @@ Feuerwehrleute wurden leicht verletzt. Der Sachschaden lag im zweistelligen
 Millionenbereich. Am 6. Juni teilten Polizei und Staatsanwaltschaft mit, was den
 Brand ausgelöst hatte: ein technischer Defekt im Bereich des Fjord-Raftings.
 
-![Das Schild „Abenteuer Atlantis“ mit zwei geschnitzten Köpfen über dem Eingang | Skandinavien brannte 2018 zur Hälfte ab und stand im Juli 2019 wieder. | right](/media/europa-park/atlantis-adventure-4x3.jpg)
-
 Bemerkenswert ist, was danach passierte. Am nächsten Morgen um neun stand der
 Park wieder offen, keine vierundzwanzig Stunden nach dem Großbrand, mit
 Absperrungen nur um das Abgebrannte. Der skandinavische Themenbereich brauchte danach
@@ -480,6 +474,16 @@ fährt durch Lummerland, und das
 **[Castello dei Medici](ref:europa-park/castello-dei-medici)** ist das
 Geisterschloss im italienischen Themenbereich.
 
+![Die Fassade des Geisterschlosses mit Drachenfigur und astronomischer Uhr | Hinter dieser Fassade beginnt das Geisterschloss. | left](/media/europa-park/castello-dei-medici-4x3.jpg)
+
+Ohne Schienen kommt auch das
+**[Abenteuer Atlantis](ref:europa-park/atlantis-adventure)** aus, eine
+interaktive Bootsfahrt im griechischen Themenbereich, bei der man aus dem Boot
+auf Ziele schießt. Mit Kindern fährt man sie zweimal, weil beim ersten Mal
+niemand auf den Punktestand achtet.
+
+![Das Schild „Abenteuer Atlantis“ mit zwei geschnitzten Köpfen über dem Eingang | Der Eingang liegt in Griechenland, gleich hinter Poseidon. | right](/media/europa-park/atlantis-adventure-4x3.jpg)
+
 Vom **[Euro-Tower](ref:europa-park/euro-tower)**, seit 1983 in Rust, siehst du bei klarem
 Wetter bis in die Vogesen. Die Panoramabahn hält an drei Bahnhöfen, in Luxemburg
 und Island fahren Einschienenbahnen, und der EP-Express bringt dich zu den
@@ -496,8 +500,6 @@ im Park.
 Wer in einer Show sitzt, steht nirgends an.
 
 ## Euro-Mir: die letzte Saison
-
-![Die Fassade des Geisterschlosses mit Drachenfigur und astronomischer Uhr | Hinter dieser Fassade beginnt das Geisterschloss, gleich um die Ecke von Russland. | left](/media/europa-park/castello-dei-medici-4x3.jpg)
 
 Die **[Euro-Mir](ref:europa-park/euro-mir)** eröffnete am **12. Juni 1997** und
 fährt 2026 zum letzten Mal. Nach der Wintersaison wird sie abgebaut.
@@ -646,6 +648,8 @@ Stunde und über die letzten dreißig Betriebstage kommt das hier heraus.
 | Poseidon              |     8 |     28 | **40** |     37 |     36 |     35 |     34 |     32 |     26 |     17 |
 | Atlantica SuperSplash |     6 |     15 |     26 |     27 |     29 |     31 | **34** |     31 |     26 |     15 |
 
+![Lifthill und erste Abfahrt von Silver Star über den Baumkronen, Abendhimmel | Seit 2026 steht die Bahn im neuen Themenbereich Monaco. | right](/media/europa-park/silver-star-4x3.jpg)
+
 Die Zeile, die mich beim ersten Mal überrascht hat, ist die von Silver Star. Um
 zehn Uhr stehst du dort 36 Minuten, ab zwölf nur noch gut zwanzig, und daran
 ändert sich bis zum Feierabend nichts mehr. Eine 73-Meter-Bahn, die den halben
@@ -654,6 +658,8 @@ Tag über halb leer läuft, weil alle schon morgens dort waren.
 **Die vollsten Stunden liegen zwischen zehn und zwölf.** Sieben der acht Bahnen
 haben ihr Maximum um zehn oder um elf, nur Atlantica erst am Nachmittag. Wer gemütlich
 frühstückt und um halb elf ankommt, läuft exakt in die Tagesspitze.
+
+![Ein zerborstenes Holzschiff im Wasserbecken von Poseidon, dahinter eine Festungsmauer | Um neun Uhr morgens stehst du hier acht Minuten an, um elf sind es vierzig. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
 
 Und dann die Wasserbahnen. Poseidon steht um neun Uhr bei acht Minuten,
 Atlantica bei sechs. Um elf sind es 40 und 26. Wer bereit ist, morgens nass zu

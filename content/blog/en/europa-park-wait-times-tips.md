@@ -1,5 +1,5 @@
 ---
-title: "Europa-Park Wait Times: Germany's busiest park, a 23-minute queue"
+title: "Europa-Park: Germany's biggest park, and why it feels emptier than it is"
 translationKey: europa-park-guide
 date: '2026-08-21'
 updatedAt: '2026-08-22'
@@ -298,8 +298,6 @@ underneath, and up top the brooding carries on undisturbed.
 
 ## The Europa-Park roller coasters, all fifteen
 
-![The loop of blue fire at night, lit in blue | blue fire after dark, with Wodan behind it. Both stand in Iceland. | right](/media/europa-park/blue-fire-megacoaster-4x3.jpg)
-
 ### Voltron Nevera powered by Rimac
 
 The first launch goes backwards. You are sitting, there is a jolt, and before
@@ -354,8 +352,6 @@ summer.
 Eleven above the park average, for the ride half of southern Germany drove to
 Rust for in 2024.
 
-![Lift hill and first drop of Silver Star above the treetops, evening sky | Silver Star in the evening. Since 2026 the ride has belonged to the new Monaco area. | left](/media/europa-park/silver-star-4x3.jpg)
-
 **[Silver Star](ref:europa-park/silver-star)** is the grande dame with the
 records. Built in 2002 by **Bolliger & Mabillard** of Monthey in the Valais,
 their first installation in Germany, and on opening the tallest and fastest
@@ -380,6 +376,8 @@ two million nails.
 
 ```
 
+![The loop of blue fire at night, lit in blue | Wodan stands behind it. The two share Iceland. | right](/media/europa-park/blue-fire-megacoaster-4x3.jpg)
+
 **[blue fire](ref:europa-park/blue-fire-megacoaster)**, from 2009, was the
 park's first launch coaster and is still the more elegant alternative to
 Voltron: 38 metres, 100 km/h, four inversions, among them a heartline roll that
@@ -392,8 +390,6 @@ seconds in the dark. Its fourth place at 28 minutes typical wait has a mundane
 explanation. It is one of the few rides that keeps running reliably in the rain.
 
 ![The silver Eurosat sphere above the Moulin Rouge façade | The whole ride happens inside the sphere. | right](/media/europa-park/eurosat-cancan-coaster-4x3.jpg)
-
-![A shattered wooden ship in the Poseidon water basin, with a fortress wall behind it | At nine in the morning you wait eight minutes here, at eleven it is forty. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
 
 **[Poseidon](ref:europa-park/water-rollercoaster-poseidon)** opened on 12 July
 2000, exactly on the park's 25th birthday, and at 350 seconds of ride time is
@@ -442,8 +438,6 @@ suffered minor injuries. Damage ran into the tens of millions. On 6 June the
 police and the public prosecutor announced what had started it: a technical
 fault in the area of the fjord rafting ride.
 
-![The sign “Abenteuer Atlantis” with two carved heads above the entrance | Half of Scandinavia burned down in 2018 and stood again in July 2019. | right](/media/europa-park/atlantis-adventure-4x3.jpg)
-
 What happened next is the remarkable part. At nine the following morning the
 park was open again, less than twenty-four hours after a major fire, with
 barriers only around the burnt-out section. Rebuilding the Scandinavian area
@@ -470,6 +464,15 @@ travels through Morrowland, and the
 **[Castello dei Medici](ref:europa-park/castello-dei-medici)** is the haunted
 castle in the Italian area.
 
+![The façade of the haunted castle with a dragon figure and an astronomical clock | Behind this façade the haunted castle begins. | left](/media/europa-park/castello-dei-medici-4x3.jpg)
+
+The **[Atlantis Adventure](ref:europa-park/atlantis-adventure)** manages without
+rails as well, an interactive boat ride in the Greek area where you shoot at
+targets along the way. Anyone travelling with children rides it twice, because
+the first time round nobody is watching the score.
+
+![The sign “Abenteuer Atlantis” with two carved heads above the entrance | The entrance is in Greece, just behind Poseidon. | right](/media/europa-park/atlantis-adventure-4x3.jpg)
+
 From the **[Euro-Tower](ref:europa-park/euro-tower)**, in Rust since 1983, you
 can see as far as the Vosges in clear weather. The panorama railway stops at
 three stations, monorails run in Luxembourg and Iceland, and the EP-Express
@@ -485,8 +488,6 @@ it. For the queues they are still one of the most important factors in the park.
 Anybody sitting in a show is not queueing anywhere.
 
 ## Euro-Mir: the last season
-
-![The façade of the haunted castle with a dragon figure and an astronomical clock | Behind this façade the haunted castle begins, just round the corner from Russia. | left](/media/europa-park/castello-dei-medici-4x3.jpg)
 
 **[Euro-Mir](ref:europa-park/euro-mir)** opened on **12 June 1997** and runs for
 the last time in 2026. After the winter season it comes down.
@@ -636,6 +637,8 @@ hour and over the last thirty operating days, it comes out like this.
 | Poseidon              |      8 |      28 |  **40** |   37 |     36 |     35 |     34 |     32 |     26 |     17 |
 | Atlantica SuperSplash |      6 |      15 |      26 |   27 |     29 |     31 | **34** |     31 |     26 |     15 |
 
+![Lift hill and first drop of Silver Star above the treetops, evening sky | Since 2026 the ride has belonged to the new Monaco area. | right](/media/europa-park/silver-star-4x3.jpg)
+
 The row that surprised me first time round is Silver Star's. At ten in the
 morning you wait 36 minutes there, from midday only a little over twenty, and
 that does not change again before closing. A 73-metre coaster running half empty
@@ -645,6 +648,8 @@ for half the day, because everybody was already there in the morning.
 their maximum at ten or at eleven, only Atlantica later in the afternoon. Take a
 leisurely breakfast, arrive at half past ten, and you walk straight into the
 day's maximum.
+
+![A shattered wooden ship in the Poseidon water basin, with a fortress wall behind it | At nine in the morning you wait eight minutes here, at eleven it is forty. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
 
 Then the water rides. At nine Poseidon sits at eight minutes, Atlantica at six.
 By eleven it is 40 and 26. Anybody willing to get wet in the morning rides both
