@@ -194,6 +194,11 @@ house than as a complete parallel world: fog-shrouded alleys where whole packs
 of performers hunt individuals down, plus pyro shows and a soundscape that
 stays in your ears on the drive home. Only the daytime here is family-friendly.
 
+By daylight Rust is a different park, and one with surprisingly short queues
+for its size. The [Europa-Park guide](/blog/europa-park-wait-times-tips) does
+the maths, and explains along the way why a Traumatica ticket in November costs
+you the last hour in the park.
+
 [Europa-Park](ref:europa-park?full)
 
 Programme, dates and age rules: [traumatica.com](https://traumatica.com/en/).

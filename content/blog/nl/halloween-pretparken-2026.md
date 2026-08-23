@@ -195,6 +195,11 @@ roedels acteurs gericht op individuen jagen, plus pyroshows en een
 geluidsdecor dat je op de terugweg nog in je oren zit. Gezinsvriendelijk is
 hier echt alleen de dag.
 
+Overdag is Rust een ander park, en een met verrassend korte rijen voor zijn
+formaat. De [Europa-Park-gids](/blog/europa-park-wachttijden-tips) rekent dat na
+en legt meteen uit waarom een Traumatica-ticket in november je het laatste
+parkuur kost.
+
 [Europa-Park](ref:europa-park?full)
 
 Programma, data en leeftijdsregels: [traumatica.com](https://traumatica.com/en/).
