@@ -110,21 +110,18 @@ eerste jaar 3,25 miljoen ritten kreeg**, is, afgezet tegen ruim zes miljoen
 gasten, heel weinig. Ter vergelijking, dezelfde gegevens, dezelfde
 rekenmethode:
 
-| Park                                                                         | Publiek     | Typisch parkbreed | Langste rij                                    |
-| ---------------------------------------------------------------------------- | ----------- | ----------------: | ---------------------------------------------- |
-| [Disneyland Park Paris](ref:/parks/europe/france/paris/disneyland-park?bare) | ~10 mln     |            34 min | 50 min (Peter Pan's Flight)                    |
-| [Phantasialand](ref:phantasialand?bare)                                      | 2,1 mln     |            32 min | 49 min ([Taron](ref:phantasialand/taron?bare)) |
-| [Efteling](ref:efteling?bare)                                                | 5,6 mln     |            25 min | 35 min (Joris en de Draak)                     |
-| **[Europa-Park](ref:europa-park?bare)**                                      | **6,2 mln** |        **23 min** | 34 min (Voltron Nevera)                        |
-| [Movie Park Germany](ref:movie-park-germany?bare)                            | ~1,3 mln    |            19 min | 29 min (Van Helsing's Factory)                 |
-| [Heide Park](ref:heide-park?bare)                                            | ~1,5 mln    |            18 min | 23 min (Wildwasserbahn)                        |
-| [Toverland](ref:attractiepark-toverland?bare)                                | 1,17 mln    |            15 min | 21 min (Booster Bike)                          |
+```park-comparison-widget slugs=disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
 
-De publiekskolom komt uit de TEA-index 2024, voor Rust dus de 6,2 miljoen van
-het pretpark en niet de 7,4 miljoen van het hele resort. Eén uitzondering is er:
+```
+
+De publiekscijfers daarbij staan niet in de tabel, omdat ze zich anders gedragen
+dan al het andere hier: ze komen uit de TEA-index, verschijnen één keer per jaar
+en veranderen daarna een jaar lang niet. Voor 2024 zijn dat in Rust 6,2 miljoen
+voor het pretpark en niet de 7,4 miljoen van het hele resort, in het
+Phantasialand 2,1 miljoen, in de Efteling 5,6, in Parijs ongeveer tien.
 Toverland staat daar niet in, de 1,17 miljoen is de eigen opgave van het park.
-In de laatste kolom staat telkens de attractie met de hoogste mediaan waarvoor
-we minstens honderd meetdagen hebben. In Toverland ligt daar eigenlijk nog Maximus' Blitz
+Rechts staat telkens de attractie met de hoogste mediaan waarvoor we minstens
+honderd meetdagen hebben. In Toverland ligt daar eigenlijk nog Maximus' Blitz
 Bahn boven met 34 minuten, maar op slechts 61 dagen, en een kinderachtbaan met
 een dunne meetbasis deugt niet als kengetal voor een heel park.
 

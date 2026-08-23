@@ -113,25 +113,21 @@ l'attraction qui a totalisé 3,25 millions de tours la première année**, c'est
 peu au regard de plus de six millions de visiteurs. La comparaison, même base de
 données, même méthode de calcul :
 
-| Parc                                                                         | Fréquentation    | Typique sur l'ensemble du parc | File la plus longue                            |
-| ---------------------------------------------------------------------------- | ---------------- | -----------------------------: | ---------------------------------------------- |
-| [Disneyland Park Paris](ref:/parks/europe/france/paris/disneyland-park?bare) | ~10 millions     |                         34 min | 50 min (Peter Pan's Flight)                    |
-| [Phantasialand](ref:phantasialand?bare)                                      | 2,1 millions     |                         32 min | 49 min ([Taron](ref:phantasialand/taron?bare)) |
-| [Efteling](ref:efteling?bare)                                                | 5,6 millions     |                         25 min | 35 min (Joris en de Draak)                     |
-| **[Europa-Park](ref:europa-park?bare)**                                      | **6,2 millions** |                     **23 min** | 34 min (Voltron Nevera)                        |
-| [Movie Park Germany](ref:movie-park-germany?bare)                            | ~1,3 million     |                         19 min | 29 min (Van Helsing's Factory)                 |
-| [Heide Park](ref:heide-park?bare)                                            | ~1,5 million     |                         18 min | 23 min (Wildwasserbahn)                        |
-| [Toverland](ref:attractiepark-toverland?bare)                                | 1,17 million     |                         15 min | 21 min (Booster Bike)                          |
+```park-comparison-widget slugs=disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
 
-La colonne de fréquentation vient de l'indice TEA 2024, donc pour Rust les
-6,2 millions du parc d'attractions et non les 7,4 millions de l'ensemble du
-resort. Il y a une exception : Toverland n'y figure pas, le chiffre de
-1,17 million vient du parc lui-même. La dernière colonne donne à chaque fois
-l'attraction à la médiane la plus haute pour laquelle nous disposons d'au moins
-cent jours de mesure. À Toverland, Maximus' Blitz Bahn se place en réalité
-au-dessus avec 34 minutes, mais sur 61 jours seulement, et des montagnes russes
-pour enfants dont la base de mesure est aussi mince ne valent rien comme
-indicateur pour un parc entier.
+```
+
+Les chiffres de fréquentation, eux, ne figurent pas dans le tableau, parce
+qu'ils se comportent autrement que tout le reste ici : ils viennent de l'indice
+TEA, paraissent une fois par an et ne changent plus pendant un an. Pour 2024,
+c'est à Rust 6,2 millions pour le parc d'attractions et non les 7,4 millions de
+l'ensemble du resort, au Phantasialand 2,1 millions, à l'Efteling 5,6, à Paris
+une dizaine. Toverland n'y figure pas, et le chiffre de 1,17 million vient du
+parc lui-même. À droite figure à chaque fois l'attraction à la médiane la plus
+haute pour laquelle nous disposons d'au moins cent jours de mesure. À Toverland,
+Maximus' Blitz Bahn se place en réalité au-dessus avec 34 minutes, mais sur
+61 jours seulement, et des montagnes russes pour enfants dont la base de mesure
+est aussi mince ne valent rien comme indicateur pour un parc entier.
 
 Avec environ un tiers du public, le Phantasialand a des files plus longues de
 neuf minutes en moyenne, ce qui tient au découpage du terrain et non aux

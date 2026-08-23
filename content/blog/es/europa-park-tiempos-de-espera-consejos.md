@@ -112,24 +112,20 @@ sumó 3,25 millones de vueltas en su primer año** son, medidos contra más de s
 millones de visitantes, muy poco. La comparación, con la misma base de datos y el
 mismo método de cálculo:
 
-| Parque                                                                       | Público   | Típico en el parque | Cola más larga                                 |
-| ---------------------------------------------------------------------------- | --------- | ------------------: | ---------------------------------------------- |
-| [Disneyland Park Paris](ref:/parks/europe/france/paris/disneyland-park?bare) | ~10 M     |              34 min | 50 min (Peter Pan's Flight)                    |
-| [Phantasialand](ref:phantasialand?bare)                                      | 2,1 M     |              32 min | 49 min ([Taron](ref:phantasialand/taron?bare)) |
-| [Efteling](ref:efteling?bare)                                                | 5,6 M     |              25 min | 35 min (Joris en de Draak)                     |
-| **[Europa-Park](ref:europa-park?bare)**                                      | **6,2 M** |          **23 min** | 34 min (Voltron Nevera)                        |
-| [Movie Park Germany](ref:movie-park-germany?bare)                            | ~1,3 M    |              19 min | 29 min (Van Helsing's Factory)                 |
-| [Heide Park](ref:heide-park?bare)                                            | ~1,5 M    |              18 min | 23 min (Wildwasserbahn)                        |
-| [Toverland](ref:attractiepark-toverland?bare)                                | 1,17 M    |              15 min | 21 min (Booster Bike)                          |
+```park-comparison-widget slugs=disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
 
-La columna del público sale del índice TEA de 2024, así que para Rust son los
-6,2 millones del parque de atracciones y no los 7,4 millones de todo el resort.
-Hay una excepción: el Toverland no aparece ahí, y sus 1,17 millones son el dato
-que da el propio parque. En la última columna está siempre la atracción con la
-mediana más alta de la que tenemos al menos cien días de medición. En el Toverland, por
-encima quedaría en realidad Maximus' Blitz Bahn con 34 minutos, aunque sobre solo
-61 días, y una montaña rusa infantil con una base de medición tan fina no sirve
-como indicador de un parque entero.
+```
+
+Las cifras de público no aparecen en la tabla, porque se comportan de otra manera
+que todo lo demás que hay aquí: salen del índice TEA, se publican una vez al año y
+luego no se mueven en doce meses. Para 2024, en Rust son 6,2 millones del parque
+de atracciones y no los 7,4 millones de todo el resort; en el Phantasialand, 2,1
+millones; en el Efteling, 5,6; en París, alrededor de diez. El Toverland no
+aparece ahí, y sus 1,17 millones son el dato que da el propio parque. A la derecha
+está siempre la atracción con la mediana más alta de la que tenemos al menos cien
+días de medición. En el Toverland, por encima quedaría en realidad Maximus' Blitz
+Bahn con 34 minutos, aunque sobre solo 61 días, y una montaña rusa infantil con
+una base de medición tan fina no sirve como indicador de un parque entero.
 
 Con alrededor de un tercio de ese público, el Phantasialand tiene colas nueve
 minutos más largas en el conjunto del parque, y eso depende del trazado del

@@ -109,22 +109,18 @@ Otherwise the list reads unspectacularly. **34 minutes for the ride that
 accounted for 3.25 million rides in its first year** is, measured against over
 six million guests, very little. The comparison, same data basis, same method:
 
-| Park                                                                         | Attendance | Typical park-wide | Longest queue                                  |
-| ---------------------------------------------------------------------------- | ---------- | ----------------: | ---------------------------------------------- |
-| [Disneyland Park Paris](ref:/parks/europe/france/paris/disneyland-park?bare) | ~10 m      |            34 min | 50 min (Peter Pan's Flight)                    |
-| [Phantasialand](ref:phantasialand?bare)                                      | 2.1 m      |            32 min | 49 min ([Taron](ref:phantasialand/taron?bare)) |
-| [Efteling](ref:efteling?bare)                                                | 5.6 m      |            25 min | 35 min (Joris en de Draak)                     |
-| **[Europa-Park](ref:europa-park?bare)**                                      | **6.2 m**  |        **23 min** | 34 min (Voltron Nevera)                        |
-| [Movie Park Germany](ref:movie-park-germany?bare)                            | ~1.3 m     |            19 min | 29 min (Van Helsing's Factory)                 |
-| [Heide Park](ref:heide-park?bare)                                            | ~1.5 m     |            18 min | 23 min (Wildwasserbahn)                        |
-| [Toverland](ref:attractiepark-toverland?bare)                                | 1.17 m     |            15 min | 21 min (Booster Bike)                          |
+```park-comparison-widget slugs=disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
 
-The attendance column comes from the 2024 TEA index, so for Rust that is the
-theme park's 6.2 million rather than the resort's 7.4 million. There is one
-exception: Toverland does not appear there at all, and the 1.17 million is the
-park's own figure. The last column names the attraction with the highest median
-for which we have at least a hundred days of measurements. At Toverland,
-Maximus' Blitz Bahn actually
+```
+
+The attendance figures are not in the table, because they behave differently
+from everything else here: they come from the TEA index, appear once a year and
+then do not change for a year. For 2024 that is 6.2 million in Rust for the
+theme park and not the 7.4 million of the whole resort, 2.1 million at
+Phantasialand, 5.6 at the Efteling, around ten in Paris. Toverland does not
+appear there at all, and the 1.17 million is the park's own figure. On the right
+of each row stands the attraction with the highest median for which we have at
+least a hundred days of measurements. At Toverland, Maximus' Blitz Bahn actually
 sits above that at 34 minutes, but on only 61 days, and a children's coaster
 with a thin measurement base is no yardstick for a whole park.
 
