@@ -478,9 +478,9 @@ Geisterschloss im italienischen Themenbereich.
 
 Ohne Schienen kommt auch das
 **[Abenteuer Atlantis](ref:europa-park/atlantis-adventure)** aus, eine
-interaktive Bootsfahrt im griechischen Themenbereich, bei der man unterwegs auf
-Ziele schießt. Wer mit Kindern unterwegs ist, fährt sie zweimal, weil beim
-ersten Mal niemand auf den Punktestand achtet.
+interaktive Bootsfahrt im griechischen Themenbereich, bei der man aus dem Boot
+auf Ziele schießt. Mit Kindern fährt man sie zweimal, weil beim ersten Mal
+niemand auf den Punktestand achtet.
 
 ![Das Schild „Abenteuer Atlantis“ mit zwei geschnitzten Köpfen über dem Eingang | Der Eingang liegt in Griechenland, gleich hinter Poseidon. | right](/media/europa-park/atlantis-adventure-4x3.jpg)
 

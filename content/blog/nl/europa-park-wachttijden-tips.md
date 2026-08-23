@@ -1,5 +1,5 @@
 ---
-title: 'Europa-Park wachttijden: Duitslands drukste park, 23 minuten in de rij'
+title: 'Europa-Park: Duitslands grootste park, en waarom het er zo leeg aanvoelt'
 translationKey: europa-park-guide
 date: '2026-08-21'
 updatedAt: '2026-08-22'
@@ -304,8 +304,6 @@ doorgebroed.
 
 ## De achtbanen van het Europa-Park, alle vijftien
 
-![De looping van blue fire bij nacht, blauw aangelicht | blue fire na zonsondergang, daarachter Wodan. Allebei staan ze in IJsland. | right](/media/europa-park/blue-fire-megacoaster-4x3.jpg)
-
 ### Voltron Nevera powered by Rimac
 
 De eerste lancering gaat achteruit. Je zit, het schokt, en voordat je hebt
@@ -359,8 +357,6 @@ de zomer boven de Adriatische Zee opsteekt.
 minuten. Elf boven het parkgemiddelde, voor de baan waarvoor half
 Zuid-Duitsland in 2024 naar Rust is gereden.
 
-![Optakeling en eerste afdaling van Silver Star boven de boomkruinen, avondlucht | Silver Star in de avond. Sinds 2026 hoort de baan bij het nieuwe themagebied Monaco. | left](/media/europa-park/silver-star-4x3.jpg)
-
 **[Silver Star](ref:europa-park/silver-star)** is de oude dame met de records. In
 2002 gebouwd door **Bolliger & Mabillard** uit Monthey in Wallis, als hun
 eerste installatie in Duitsland, en bij de opening de hoogste en snelste stalen
@@ -383,6 +379,8 @@ grenenhout, 21.000 balken, 100.000 schroefverbindingen en twee miljoen spijkers.
 
 ```
 
+![De looping van blue fire bij nacht, blauw aangelicht | Daarachter staat Wodan. Die twee delen IJsland. | right](/media/europa-park/blue-fire-megacoaster-4x3.jpg)
+
 **[blue fire](ref:europa-park/blue-fire-megacoaster)**, 2009, was de eerste
 launch-coaster van het park en is tot vandaag het elegantere alternatief voor
 Voltron: 38 meter, 100 km/u, vier inversies, waaronder een heartline roll die
@@ -396,8 +394,6 @@ plek vier staat, heeft een banale reden. Ze is een van de weinige banen die bij
 regen betrouwbaar doorrijden.
 
 ![De zilveren bol van Eurosat boven de Moulin-Rouge-gevel | De hele rit speelt zich binnen in de bol af. | right](/media/europa-park/eurosat-cancan-coaster-4x3.jpg)
-
-![Een uiteengeslagen houten schip in het waterbassin van Poseidon, daarachter een vestingmuur | Om negen uur 's ochtends sta je hier acht minuten, om elf uur veertig. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
 
 **[Poseidon](ref:europa-park/water-rollercoaster-poseidon)** opende op 12 juli
 2000, precies op de 25e verjaardag van het park, en is met 350 seconden rittijd
@@ -447,8 +443,6 @@ tientallen miljoenen. Op 6 juni maakten politie en openbaar ministerie bekend
 wat de brand had veroorzaakt: een technisch defect in de omgeving van de
 fjord-rafting.
 
-![Het bord “Abenteuer Atlantis” met twee gesneden koppen boven de ingang | Scandinavië brandde in 2018 voor de helft af en stond in juli 2019 weer overeind. | right](/media/europa-park/atlantis-adventure-4x3.jpg)
-
 Opmerkelijk is wat er daarna gebeurde. De volgende ochtend om negen uur stond
 het park weer open, nog geen vierentwintig uur na de grote brand, met
 afzettingen alleen rond het afgebrande deel. Het Scandinavische themagebied had
@@ -477,6 +471,15 @@ rijdt door Lummerland, en het
 **[Castello dei Medici](ref:europa-park/castello-dei-medici)** is het spookkasteel
 in het Italiaanse themagebied.
 
+![De gevel van het spookkasteel met drakenfiguur en astronomische klok | Achter deze gevel begint het spookkasteel. | left](/media/europa-park/castello-dei-medici-4x3.jpg)
+
+Rails heeft het **[Atlantis Adventure](ref:europa-park/atlantis-adventure)** ook
+niet nodig, een interactieve boottocht in het Griekse themagebied waarin je
+onderweg op doelen schiet. Wie kinderen bij zich heeft, doet hem twee keer,
+omdat de eerste keer niemand op de score let.
+
+![Het bord “Abenteuer Atlantis” met twee gesneden koppen boven de ingang | De ingang ligt in Griekenland, meteen achter Poseidon. | right](/media/europa-park/atlantis-adventure-4x3.jpg)
+
 Vanaf de **[Euro-Tower](ref:europa-park/euro-tower)**, sinds 1983 in Rust, kijk je bij
 helder weer tot in de Vogezen. De panoramabaan stopt op drie stations, in
 Luxemburg en IJsland rijden monorails, en de EP-Express brengt je naar de
@@ -492,8 +495,6 @@ van. Voor de rijen zijn ze toch een van de belangrijkste factoren in het park.
 Wie in een show zit, staat nergens in de rij.
 
 ## Euro-Mir: het laatste seizoen
-
-![De gevel van het spookkasteel met drakenfiguur en astronomische klok | Achter deze gevel begint het spookkasteel, meteen om de hoek bij Rusland. | left](/media/europa-park/castello-dei-medici-4x3.jpg)
 
 De **[Euro-Mir](ref:europa-park/euro-mir)** opende op **12 juni 1997** en rijdt
 in 2026 voor het laatst. Na het winterseizoen wordt ze afgebroken.
@@ -643,6 +644,8 @@ de laatste dertig bedrijfsdagen komt dit eruit.
 | Poseidon              |     8 |     28 | **40** |     37 |     36 |     35 |     34 |     32 |     26 |     17 |
 | Atlantica SuperSplash |     6 |     15 |     26 |     27 |     29 |     31 | **34** |     31 |     26 |     15 |
 
+![Optakeling en eerste afdaling van Silver Star boven de boomkruinen, avondlucht | Sinds 2026 hoort de baan bij het nieuwe themagebied Monaco. | right](/media/europa-park/silver-star-4x3.jpg)
+
 De regel die me de eerste keer verraste, is die van Silver Star. Om tien uur sta
 je daar 36 minuten, vanaf twaalf uur nog maar ruim twintig, en daar verandert
 tot sluitingstijd niets meer aan. Een baan van 73 meter die de halve dag half
@@ -651,6 +654,8 @@ leeg draait, omdat iedereen er 's ochtends al is geweest.
 **De drukste uren liggen tussen tien en twaalf.** Zeven van de acht banen hebben
 hun maximum om tien of om elf uur, alleen Atlantica pas in de middag. Wie rustig
 ontbijt en om half elf aankomt, loopt precies de dagpiek in.
+
+![Een uiteengeslagen houten schip in het waterbassin van Poseidon, daarachter een vestingmuur | Om negen uur 's ochtends sta je hier acht minuten, om elf uur veertig. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
 
 En dan de waterbanen. Poseidon staat om negen uur op acht minuten, Atlantica op
 zes. Om elf uur zijn het er 40 en 26. Wie bereid is 's ochtends nat te worden,
