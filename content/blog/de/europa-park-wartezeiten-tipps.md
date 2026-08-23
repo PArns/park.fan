@@ -112,20 +112,17 @@ Ansonsten liest sich die Liste unspektakulär. **34 Minuten für die Bahn, auf d
 ersten Jahr 3,25 Millionen Fahrten entfielen**, sind, gemessen an über sechs
 Millionen Gästen, sehr wenig. Der Vergleich, gleiche Datenbasis, gleiche Rechenmethode:
 
-| Park                                                                         | Publikum    | Typisch im Parkschnitt | Längste Schlange                               |
-| ---------------------------------------------------------------------------- | ----------- | ---------------------: | ---------------------------------------------- |
-| [Disneyland Park Paris](ref:/parks/europe/france/paris/disneyland-park?bare) | ~10 Mio     |                 34 Min | 50 Min (Peter Pan's Flight)                    |
-| [Phantasialand](ref:phantasialand?bare)                                      | 2,1 Mio     |                 32 Min | 49 Min ([Taron](ref:phantasialand/taron?bare)) |
-| [Efteling](ref:efteling?bare)                                                | 5,6 Mio     |                 25 Min | 35 Min (Joris en de Draak)                     |
-| **[Europa-Park](ref:europa-park?bare)**                                      | **6,2 Mio** |             **23 Min** | 34 Min (Voltron Nevera)                        |
-| [Movie Park Germany](ref:movie-park-germany?bare)                            | ~1,3 Mio    |                 19 Min | 29 Min (Van Helsing's Factory)                 |
-| [Heide Park](ref:heide-park?bare)                                            | ~1,5 Mio    |                 18 Min | 23 Min (Wildwasserbahn)                        |
-| [Toverland](ref:attractiepark-toverland?bare)                                | 1,17 Mio    |                 15 Min | 21 Min (Booster Bike)                          |
+```park-comparison-widget slugs=disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
 
-Die Publikumsspalte kommt aus dem TEA-Index 2024, für Rust also die
-6,2 Millionen des Freizeitparks und nicht die 7,4 Millionen des gesamten Resorts.
-Eine Ausnahme gibt es: Toverland taucht dort nicht auf, die 1,17 Millionen sind die Eigenangabe des Parks. In der letzten
-Spalte steht jeweils die Attraktion mit dem höchsten Median, für die wir
+```
+
+Die Publikumszahlen dazu stehen nicht in der Tabelle, weil sie sich anders
+verhalten als alles andere hier: Sie kommen aus dem TEA-Index, erscheinen einmal
+im Jahr und ändern sich dann ein Jahr lang nicht. Für 2024 sind es in Rust
+6,2 Millionen für den Freizeitpark und nicht die 7,4 Millionen des gesamten
+Resorts, im Phantasialand 2,1 Millionen, im Efteling 5,6, in Paris rund zehn.
+Toverland taucht dort nicht auf, die 1,17 Millionen sind die Eigenangabe des
+Parks. Rechts steht jeweils die Attraktion mit dem höchsten Median, für die wir
 mindestens hundert Messtage haben. Im Toverland liegt darüber eigentlich
 noch Maximus' Blitz Bahn mit 34 Minuten, allerdings auf nur 61 Tagen, und eine
 Kinderachterbahn mit dünner Messbasis taugt nicht als Kennzahl für einen ganzen

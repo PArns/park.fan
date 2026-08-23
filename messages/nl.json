@@ -637,7 +637,11 @@
       "p50": "Typisch",
       "p90": "Piek",
       "sampleDaysShort": "dagen",
-      "noData": "Nog niet genoeg historische data beschikbaar."
+      "noData": "Nog niet genoeg historische data beschikbaar.",
+      "comparisonTitle": "Vergeleken met andere parken",
+      "parkAverage": "Parkgemiddelde",
+      "longestQueue": "Langste rij",
+      "comparisonPark": "Park"
     },
     "bestDays": {
       "title": "Beste tijd om {park} te bezoeken",

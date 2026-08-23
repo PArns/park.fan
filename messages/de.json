@@ -637,7 +637,11 @@
       "p50": "Typisch",
       "p90": "Spitze",
       "sampleDaysShort": "Tage",
-      "noData": "Noch nicht genug historische Daten verfügbar."
+      "noData": "Noch nicht genug historische Daten verfügbar.",
+      "comparisonTitle": "Im Vergleich mit anderen Parks",
+      "parkAverage": "Parkschnitt",
+      "longestQueue": "Längste Schlange",
+      "comparisonPark": "Park"
     },
     "bestDays": {
       "title": "Beste Reisezeit für {park}",

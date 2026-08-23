@@ -91,30 +91,21 @@ Il nostro storico dei tempi di attesa per l'Europa-Park risale a dodici mesi fa.
 Su tutti i giorni della settimana l'**attesa tipica nella media del parco è di 23
 minuti** (mediana), il 90° percentile di 36.
 
-Le dieci attrazioni per cui aspetti di più:
+Le dieci attrazioni per cui aspetti di più, con accanto il valore di oggi:
 
-| Attrazione                                                                 | Area     | Tipico (mediana) | Picco (P90) |
-| -------------------------------------------------------------------------- | -------- | ---------------: | ----------: |
-| **[Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare)** | Croazia  |       **34 min** |      38 min |
-| [Arthur](ref:europa-park/arthur?bare)                                      | Minimoys |           31 min |      37 min |
-| [Wodan](ref:europa-park/wodan-timburcoaster?bare)                          | Islanda  |           28 min |      33 min |
-| [Eurosat CanCan Coaster](ref:europa-park/eurosat-cancan-coaster?bare)      | Francia  |           28 min |      32 min |
-| [Silver Star](ref:europa-park/silver-star?bare)                            | Monaco   |           23 min |      28 min |
-| [Poseidon](ref:europa-park/water-rollercoaster-poseidon?bare)              | Grecia   |           22 min |      27 min |
-| [Matterhorn-Blitz](ref:europa-park/matterhorn-blitz?bare)                  | Svizzera |           21 min |      26 min |
-| [blue fire](ref:europa-park/blue-fire-megacoaster?bare)                    | Islanda  |           21 min |      25 min |
-| [Bob svizzero](ref:europa-park/swiss-bob-run?bare)                         | Svizzera |           20 min |      25 min |
-| [Voletarium](ref:europa-park/voletarium?bare)                              | Germania |           14 min |      27 min |
+```stats-widget slug=europa-park show=attractions
 
-Due colonne, due domande. “Tipico” è la mediana di una normale giornata di
-apertura, “Picco” lo stesso valore nel dieci per cento di giornate più affollate.
-Nessuno dei due dice niente su come si muove una coda nell'arco della giornata.
+```
+
+“Tipico” è la mediana di una normale giornata di apertura, “Picco” lo stesso
+valore nel dieci per cento di giornate più affollate. Nessuno dei due dice niente
+su come si muove una coda nell'arco della giornata.
 
 Il Voletarium è quello fuori scala. La sua mediana di 14 minuti è la più bassa
-delle dieci, il picco di 27 è alto esattamente quanto quello di Poseidon. Un
-teatro volante carica a ondate. Tra due proiezioni non aspetta quasi nessuno, in
-una mattina piena la coda arriva fino al piazzale. Nella media della giornata non
-ne resta niente.
+delle dieci più lunghe, il picco di 27 è alto esattamente quanto quello di
+Poseidon. Un teatro volante carica a ondate. Tra due proiezioni non aspetta quasi
+nessuno, in una mattina piena la coda arriva fino al piazzale. Nella media della
+giornata non ne resta niente.
 
 Per il resto la lista si legge senza sorprese. **34 minuti per l'attrazione che
 nel primo anno ha totalizzato 3,25 milioni di corse** sono, misurati su oltre sei
@@ -149,10 +140,6 @@ l'[Efteling](/blog/efteling-la-disney-dei-paesi-bassi) e il
 stesso calcolo. E a Parigi, dove passa circa una volta e mezza il pubblico di
 Rust, la media del parco sta a 34 minuti. È esattamente il valore che a Rust ha
 la coda _più lunga_ di tutte.
-
-```stats-widget slug=europa-park
-
-```
 
 ## Perché il parco più grande ha le code più corte
 
@@ -560,15 +547,9 @@ altrove.
 
 ### Il giorno della settimana
 
-| Giorno       |     Tipico |  Picco |
-| ------------ | ---------: | -----: |
-| Lunedì       |     22 min | 35 min |
-| Martedì      |     25 min | 38 min |
-| Mercoledì    |     23 min | 36 min |
-| Giovedì      |     22 min | 35 min |
-| Venerdì      |     22 min | 35 min |
-| Sabato       |     28 min | 44 min |
-| **Domenica** | **18 min** | 30 min |
+```stats-widget slug=europa-park show=weekdays
+
+```
 
 La domenica a Rust è il giorno con meno gente, dieci minuti sotto il sabato e
 quattro sotto il miglior giorno feriale. Nel confronto tra i parchi tedeschi è
@@ -618,26 +599,20 @@ https://www.youtube.com/watch?v=Js8j_qvKCoA
 
 ### Il mese
 
-| Mese     | Tipico |  Picco | Giorni rilevati |
-| -------- | -----: | -----: | --------------: |
-| Gennaio  | 19 min | 29 min |               5 |
-| Marzo    | 15 min | 23 min |               3 |
-| Aprile   | 23 min | 36 min |              30 |
-| Maggio   | 21 min | 34 min |              31 |
-| Giugno   | 20 min | 33 min |              30 |
-| Luglio   | 24 min | 39 min |              30 |
-| Agosto   | 27 min | 43 min |              22 |
-| Dicembre | 28 min | 41 min |               6 |
+```stats-widget slug=europa-park show=months
 
-Attenzione a gennaio, marzo e dicembre: dietro ci stanno solo da tre a sei giorni
-di rilevazione. L'ordine di grandezza è giusto, sul singolo minuto lì non ci
-metterei la mano sul fuoco. Solido è il blocco da aprile ad agosto, e dice questo:
-maggio e giugno sono i mesi estivi più tranquilli, agosto il più pieno.
+```
 
-Quattro mesi mancano del tutto dalla tabella: febbraio, settembre, ottobre e
-novembre, e per poco anche marzo. Per l'autunno, da questa finestra, non abbiamo
-quindi un solo giorno di rilevazione. Su Halloween e HALLOWinter questa tabella
-non dice niente.
+Attenzione a gennaio, marzo e dicembre. Dietro ci stanno solo da tre a sei giorni
+di rilevazione, quello che si legge nella colonna a destra. L'ordine di grandezza
+è giusto, sul singolo minuto lì non ci metterei la mano sul fuoco. Solido è il
+blocco da aprile ad agosto, e dice questo: maggio e giugno sono i mesi estivi più
+tranquilli, agosto il più pieno.
+
+Quattro mesi mancano del tutto: febbraio, settembre, ottobre e novembre, e per
+poco anche marzo. Per l'autunno, da questa finestra, non abbiamo quindi un solo
+giorno di rilevazione. Su Halloween e HALLOWinter questi numeri non dicono
+niente.
 
 ### Le quattro settimane che quasi nessuno conosce
 

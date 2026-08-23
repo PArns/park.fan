@@ -89,30 +89,21 @@ Onze wachttijdhistorie voor het Europa-Park gaat twaalf maanden terug. Over alle
 weekdagen gerekend ligt de **typische wachttijd parkbreed op 23 minuten**
 (mediaan), het 90e percentiel op 36.
 
-De tien attracties waar je het langst staat:
+De tien attracties waar je het langst staat, met de waarde van vandaag ernaast:
 
-| Attractie                                                                  | Gebied      | Typisch (mediaan) | Piek (P90) |
-| -------------------------------------------------------------------------- | ----------- | ----------------: | ---------: |
-| **[Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare)** | Kroatië     |        **34 min** |     38 min |
-| [Arthur](ref:europa-park/arthur?bare)                                      | Minimoys    |            31 min |     37 min |
-| [Wodan](ref:europa-park/wodan-timburcoaster?bare)                          | IJsland     |            28 min |     33 min |
-| [Eurosat CanCan Coaster](ref:europa-park/eurosat-cancan-coaster?bare)      | Frankrijk   |            28 min |     32 min |
-| [Silver Star](ref:europa-park/silver-star?bare)                            | Monaco      |            23 min |     28 min |
-| [Poseidon](ref:europa-park/water-rollercoaster-poseidon?bare)              | Griekenland |            22 min |     27 min |
-| [Matterhorn-Blitz](ref:europa-park/matterhorn-blitz?bare)                  | Zwitserland |            21 min |     26 min |
-| [blue fire](ref:europa-park/blue-fire-megacoaster?bare)                    | IJsland     |            21 min |     25 min |
-| [Zwitserse bobbaan](ref:europa-park/swiss-bob-run?bare)                    | Zwitserland |            20 min |     25 min |
-| [Voletarium](ref:europa-park/voletarium?bare)                              | Duitsland   |            14 min |     27 min |
+```stats-widget slug=europa-park show=attractions
 
-Twee kolommen, twee vragen. “Typisch” is de mediaan van een gewone bedrijfsdag,
-“Piek” dezelfde waarde op de tien procent drukste dagen. Geen van beide zegt
-iets over hoe een rij zich over de dag beweegt.
+```
+
+“Typisch” is daarbij de mediaan van een gewone bedrijfsdag, “Piek” dezelfde
+waarde op de tien procent drukste dagen. Geen van beide zegt iets over hoe een
+rij zich over de dag beweegt.
 
 Het Voletarium valt uit de toon. Zijn mediaan van 14 minuten is de laagste van
-de tien, de piek van 27 precies zo hoog als die van Poseidon. Een vliegtheater
-laadt in grote porties. Tussen twee voorstellingen staat er nauwelijks iemand,
-op een volle ochtend reikt de rij tot op het voorplein. In het daggemiddelde
-blijft daar niets van over.
+de tien langste, de piek van 27 precies zo hoog als die van Poseidon. Een
+vliegtheater laadt in grote porties. Tussen twee voorstellingen staat er
+nauwelijks iemand, op een volle ochtend reikt de rij tot op het voorplein. In
+het daggemiddelde blijft daar niets van over.
 
 Verder leest de lijst weinig spectaculair. **34 minuten voor de baan die in haar
 eerste jaar 3,25 miljoen ritten kreeg**, is, afgezet tegen ruim zes miljoen
@@ -145,10 +136,6 @@ Voor de [Efteling](/blog/efteling-disney-van-nederland) en
 gemaakt. En in Parijs, waar ongeveer anderhalf keer zoveel gasten doorheen gaan,
 staat het parkgemiddelde op 34 minuten. Dat is precies de waarde die in Rust de
 _langste_ rij van het park heeft.
-
-```stats-widget slug=europa-park
-
-```
 
 ## Waarom het grootste park de kortste rijen heeft
 
@@ -547,15 +534,9 @@ Bij de weekdag wijkt het Europa-Park af van alles wat ik verder meet.
 
 ### De weekdag
 
-| Dag        |    Typisch |   Piek |
-| ---------- | ---------: | -----: |
-| Maandag    |     22 min | 35 min |
-| Dinsdag    |     25 min | 38 min |
-| Woensdag   |     23 min | 36 min |
-| Donderdag  |     22 min | 35 min |
-| Vrijdag    |     22 min | 35 min |
-| Zaterdag   |     28 min | 44 min |
-| **Zondag** | **18 min** | 30 min |
+```stats-widget slug=europa-park show=weekdays
+
+```
 
 Op zondag is het in Rust het rustigst, tien minuten onder de zaterdag en vier
 onder de beste werkdag. In de Duitse parkvergelijking is dat een uitzondering.
@@ -604,25 +585,19 @@ https://www.youtube.com/watch?v=Js8j_qvKCoA
 
 ### De maand
 
-| Maand    | Typisch |   Piek | Meetdagen |
-| -------- | ------: | -----: | --------: |
-| Januari  |  19 min | 29 min |         5 |
-| Maart    |  15 min | 23 min |         3 |
-| April    |  23 min | 36 min |        30 |
-| Mei      |  21 min | 34 min |        31 |
-| Juni     |  20 min | 33 min |        30 |
-| Juli     |  24 min | 39 min |        30 |
-| Augustus |  27 min | 43 min |        22 |
-| December |  28 min | 41 min |         6 |
+```stats-widget slug=europa-park show=months
 
-Voorzichtig met januari, maart en december: daarachter staan maar drie tot zes
-meetdagen. De orde van grootte klopt, op de losse minuut zou ik me daar niet
-vastleggen. Houdbaar is het blok april tot en met augustus, en dat zegt: mei en
-juni zijn de rustigste zomermaanden, augustus is de drukste.
+```
 
-Vier maanden ontbreken helemaal in de tabel: februari, september, oktober en
-november, en maart bijna. Voor het najaar hebben we uit dit venster dus geen
-enkele meetdag. Over Halloween en HALLOWinter zegt deze tabel niets.
+Voorzichtig met januari, maart en december. Daarachter staan maar drie tot zes
+meetdagen, wat in de kolom rechts staat. De orde van grootte klopt, op de losse
+minuut zou ik me daar niet vastleggen. Houdbaar is het blok april tot en met
+augustus, en dat zegt: mei en juni zijn de rustigste zomermaanden, augustus is
+de drukste.
+
+Vier maanden ontbreken helemaal: februari, september, oktober en november, en
+maart bijna. Voor het najaar hebben we uit dit venster dus geen enkele meetdag.
+Over Halloween en HALLOWinter zeggen deze cijfers niets.
 
 ### De vier weken die bijna niemand kent
 

@@ -637,7 +637,11 @@
       "p50": "Typique",
       "p90": "Pic",
       "sampleDaysShort": "jours",
-      "noData": "Pas encore assez de données historiques disponibles."
+      "noData": "Pas encore assez de données historiques disponibles.",
+      "comparisonTitle": "En comparaison avec d’autres parcs",
+      "parkAverage": "Moyenne du parc",
+      "longestQueue": "File la plus longue",
+      "comparisonPark": "Parc"
     },
     "bestDays": {
       "title": "Meilleure période pour visiter {park}",
