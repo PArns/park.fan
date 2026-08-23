@@ -210,9 +210,20 @@ function SeasonRow({
   );
 }
 
+/**
+ * A range as a person would write it — or the raw values when they are not a
+ * range yet.
+ *
+ * `<input type="date">` reports `''` while it is being cleared, and every
+ * other consumer goes through `toDayOrNull()` for exactly that reason. This
+ * one did not, so clearing "Von" and then pressing "Löschen" threw
+ * `RangeError: Invalid time value` out of date-fns and took the render with
+ * it — losing a half-typed season, including its individually picked dates.
+ */
 function formatRange(start: string, end: string): string {
   const from = parseISO(start);
   const to = parseISO(end);
+  if (!isRealDate(from) || !isRealDate(to)) return [start, end].filter(Boolean).join(' – ') || '—';
   if (start === end) return format(from, 'd. MMMM yyyy', { locale: de });
   if (from.getFullYear() === to.getFullYear()) {
     return `${format(from, 'd. MMM', { locale: de })} – ${format(to, 'd. MMM yyyy', { locale: de })}`;
@@ -326,6 +337,18 @@ function SeasonDialog({
     const priceFrom = parsePrice(draft.priceFrom);
     if (priceFrom === 'invalid') {
       setError('Preis muss eine Zahl sein, z. B. 53,50');
+      return;
+    }
+
+    // The two dates are the one thing a season cannot be saved without, and
+    // an empty `<input type="date">` reports `''` — which the API answers with
+    // a 400 that names a field the form could have named first.
+    if (!isRealDate(parseISO(draft.startDate)) || !isRealDate(parseISO(draft.endDate))) {
+      setError('Von und Bis brauchen ein Datum.');
+      return;
+    }
+    if (draft.endDate < draft.startDate) {
+      setError('Bis darf nicht vor Von liegen.');
       return;
     }
 

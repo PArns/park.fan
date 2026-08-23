@@ -336,9 +336,22 @@ function SessionsPanel() {
   );
 
   async function revoke(id: string) {
-    await adminFetch(`/api/admin/auth/sessions/${id}`, { method: 'DELETE' });
-    invalidate(adminKeys.sessions);
-    toast.push({ title: 'Sitzung beendet', tone: 'success' });
+    // Wrapped like every other mutation on this page. Unwrapped, a failed
+    // revocation was an unhandled rejection in a console nobody has open: the
+    // row stayed exactly as it was, which is the same thing it does on
+    // success — so ending a suspicious session looked identical whether it
+    // worked or not.
+    try {
+      await adminFetch(`/api/admin/auth/sessions/${id}`, { method: 'DELETE' });
+      invalidate(adminKeys.sessions);
+      toast.push({ title: 'Sitzung beendet', tone: 'success' });
+    } catch (err) {
+      toast.push({
+        title: 'Sitzung konnte nicht beendet werden',
+        description: err instanceof Error ? err.message : undefined,
+        tone: 'error',
+      });
+    }
   }
 
   return (

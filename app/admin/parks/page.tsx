@@ -73,15 +73,26 @@ export default function ParksPage() {
     `/api/admin/content/parks?${params}`
   );
 
+  // The options come from the unfiltered list, not from the rows on screen.
+  // Derived from the filtered ones, picking "Deutschland" left the dropdown
+  // offering "Deutschland" and nothing else — the answer had removed the
+  // question. Same query key as the unfiltered view, so React Query serves
+  // both from one request whenever no filter is set.
+  const allParks = useAdminQuery<{ total: number; parks: AdminParkListItem[] }>(
+    adminKeys.parks({ params: 'limit=500' }),
+    '/api/admin/content/parks?limit=500',
+    { staleTime: 10 * 60_000 }
+  );
+
   const countries = useMemo(() => {
     const seen = new Map<string, string>();
-    for (const park of parks.data?.parks ?? []) {
+    for (const park of allParks.data?.parks ?? []) {
       if (park.countryCode && park.country) seen.set(park.countryCode, park.country);
     }
     return [...seen.entries()]
       .map(([value, label]) => ({ value, label }))
       .sort((a, b) => a.label.localeCompare(b.label, 'de'));
-  }, [parks.data]);
+  }, [allParks.data]);
 
   const rows = parks.data?.parks ?? [];
   const filtersActive = country !== null || curated !== 'all' || query.trim().length > 0;
