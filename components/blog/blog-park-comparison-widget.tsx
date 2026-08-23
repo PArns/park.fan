@@ -10,6 +10,16 @@ interface BlogParkComparisonWidgetProps {
   parks: ReadonlyMap<string, ResolvedPark | null>;
   /** Raw `slugs=` attribute, comma-separated, in the order the post wants them. */
   slugs: string;
+  /**
+   * Optional `show=quietest` — adds the quietest-weekday column.
+   *
+   * Opt-in rather than always on: a post arguing about queue lengths does not want a weekday
+   * column in the middle of its table, and the column stays empty for parks whose week was
+   * measured too unevenly to name a day (see `pickQuietestWeekday`).
+   */
+  show?: string;
+  /** Post locale — only needed for the weekday names when `show=quietest` is set. */
+  locale: string;
   /** Optional `highlight=` slug — rendered bold. Usually the post's own park. */
   highlight?: string;
 }
@@ -32,10 +42,13 @@ interface BlogParkComparisonWidgetProps {
 export async function BlogParkComparisonWidget({
   parks,
   slugs,
+  show,
+  locale,
   highlight,
 }: BlogParkComparisonWidgetProps) {
   const t = await getTranslations('parks');
   const tBlog = await getTranslations('blog');
+  const tBestTime = await getTranslations('bestTime.quietestByPark');
 
   const resolved: ComparisonPark[] = [];
   const missing: string[] = [];
@@ -58,6 +71,17 @@ export async function BlogParkComparisonWidget({
     });
   }
 
+  const showQuietest = (show ?? '')
+    .split(',')
+    .map((part) => part.trim())
+    .includes('quietest');
+  // Runtime weekday names, Sunday first — same reasoning as on the best-time hub: six translated
+  // lists would be six things to keep in sync with `DayOfWeekStat.dayOfWeek`.
+  const weekdayFormat = new Intl.DateTimeFormat(locale, { weekday: 'long' });
+  const weekdayNames = Array.from({ length: 7 }, (_, i) =>
+    weekdayFormat.format(new Date(Date.UTC(2023, 0, 1 + i)))
+  );
+
   // A single unresolvable slug is a typo in the post; showing the other six silently would hide
   // it. Name what is missing instead, the way the other widgets do.
   if (resolved.length === 0) {
@@ -79,6 +103,7 @@ export async function BlogParkComparisonWidget({
         labelParkAverage={t('stats.parkAverage')}
         labelLongest={t('stats.longestQueue')}
         labelMinutes={t('overview.minutesUnit')}
+        {...(showQuietest ? { labelQuietestDay: tBestTime('colQuietest'), weekdayNames } : {})}
       />
       {missing.length > 0 && (
         <p className="text-muted-foreground/60 mt-2 text-xs">

@@ -1260,12 +1260,7 @@
     "quietestByPark": {
       "title": "Le jour le plus calme dans chaque parc",
       "intro": "Les moyennes ci-dessus portent sur l'ensemble des parcs. Park par parc, c'est différent : chacun a son rythme, selon les vacances scolaires, les distances et l'heure d'arrivée des visiteurs à la journée.",
-      "colPark": "Parc",
-      "colQuietest": "Jour le plus calme",
-      "colBusiest": "Jour le plus chargé",
-      "colBasis": "Base de données",
-      "basis": "{days} jours",
-      "insteadOf": "{day} min contre {week} min"
+      "colQuietest": "Jour le plus calme"
     }
   },
   "howto": {

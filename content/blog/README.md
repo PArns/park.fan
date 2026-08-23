@@ -292,7 +292,7 @@ attributes on the info line (`key=value`, `key: value` or `key="value"`).
 | `weather-widget`         | `slug`                        | Live weather + nowcast for a park.          |
 | `best-days-widget`       | `slug`                        | Quietest upcoming days (crowd calendar).    |
 | `stats-widget`           | `slug`, `show`                | Typical waits: top rides, months, weekdays. |
-| `park-comparison-widget` | `slugs`, `highlight`          | Median wait across several parks.           |
+| `park-comparison-widget` | `slugs`, `show`, `highlight`  | Median wait across several parks.           |
 | `map-widget`             | `slug`                        | Interactive park map.                       |
 | `glossary-widget`        | `slug` (a.k.a. `term` / `id`) | Full glossary definition inline.            |
 | `gallery-widget`         | `folder` (or line-based body) | Photo gallery (see below).                  |
@@ -333,6 +333,26 @@ Rows appear in the order you list them and are never re-sorted, because the sent
 a table usually depends on that order. The park median is weighted by measured days, and the
 "longest queue" column only considers rides with at least 100 measured days — otherwise a
 children's coaster on a thin basis represents a whole park.
+
+`show=quietest` adds a fourth column: the weekday with the lowest median wait at each park, and
+that day's median.
+
+````md
+```park-comparison-widget slugs=europa-park,phantasialand,efteling show=quietest
+
+```
+````
+
+It is opt-in because a post arguing about queue lengths does not want a weekday column in the
+middle of its table. **Expect the column to be empty for some parks, and do not write around it
+as if it were a gap.** A park gets no day named when its weekdays were measured too unevenly to
+compare (Movie Park closes on many weekdays out of season, so its Mondays carry 13 measured days
+against 22 Sundays), when two days tie for quietest, or when the "quietest" day is not actually
+below the park's own median. The em dash is the honest answer in all three cases — the same
+reason `stats-widget` refuses to draw a chart from a thin sample.
+
+Both this and the best-travel-time hub render the same `ParkComparisonCard`, so a number quoted
+in a post and the one on that page cannot drift apart.
 
 It costs about 3 KB per park (~21 KB for seven), which is why this one is a client fetch while
 an hourly-profile equivalent is not: that would be 8 × 53 KB, 45 % of it `schedule` nobody

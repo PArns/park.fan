@@ -835,7 +835,13 @@ function renderWidget(
     const slugs = attrs.slugs;
     if (!slugs) return null;
     return (
-      <BlogParkComparisonWidget parks={ctx.parkMap} slugs={slugs} highlight={attrs.highlight} />
+      <BlogParkComparisonWidget
+        parks={ctx.parkMap}
+        slugs={slugs}
+        show={attrs.show}
+        locale={ctx.locale}
+        highlight={attrs.highlight}
+      />
     );
   }
   if (name === 'attraction-widget') {

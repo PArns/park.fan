@@ -1260,12 +1260,7 @@
     "quietestByPark": {
       "title": "Die ruhigsten Tage je Park",
       "intro": "Die Mittelwerte oben gelten für alle Parks zusammen. Einzeln sieht es anders aus: jeder Park hat seinen eigenen Rhythmus, abhängig von Schulferien, Anreisewegen und davon, wann Tagesgäste kommen.",
-      "colPark": "Park",
-      "colQuietest": "Ruhigster Tag",
-      "colBusiest": "Vollster Tag",
-      "colBasis": "Datenbasis",
-      "basis": "{days} Tage",
-      "insteadOf": "Ø {day} statt {week} min"
+      "colQuietest": "Ruhigster Tag"
     }
   },
   "howto": {

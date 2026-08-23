@@ -1260,12 +1260,7 @@
     "quietestByPark": {
       "title": "The quietest day at each park",
       "intro": "The averages above cover every park at once. Individually the picture changes: each park has its own rhythm, shaped by school holidays, how far people travel and when day visitors turn up.",
-      "colPark": "Park",
-      "colQuietest": "Quietest day",
-      "colBusiest": "Busiest day",
-      "colBasis": "Based on",
-      "basis": "{days} days",
-      "insteadOf": "{day} min vs {week} min"
+      "colQuietest": "Quietest day"
     }
   },
   "howto": {

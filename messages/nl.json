@@ -1260,12 +1260,7 @@
     "quietestByPark": {
       "title": "De rustigste dag per park",
       "intro": "De gemiddelden hierboven gelden voor alle parken samen. Per park ligt het anders: elk park heeft zijn eigen ritme, bepaald door schoolvakanties, reisafstand en wanneer dagbezoekers komen.",
-      "colPark": "Park",
-      "colQuietest": "Rustigste dag",
-      "colBusiest": "Drukste dag",
-      "colBasis": "Gebaseerd op",
-      "basis": "{days} dagen",
-      "insteadOf": "{day} min i.p.v. {week} min"
+      "colQuietest": "Rustigste dag"
     }
   },
   "howto": {

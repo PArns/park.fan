@@ -14,6 +14,13 @@ interface ParkComparisonCardProps {
   labelParkAverage: string;
   labelLongest: string;
   labelMinutes: string;
+  /**
+   * Header for the quietest-weekday column. Omit it and the column is not rendered at all — a
+   * post that argues about queue lengths does not want a weekday column in the middle of it.
+   */
+  labelQuietestDay?: string;
+  /** Localised weekday names, Sunday first, matching `DayOfWeekStat.dayOfWeek` (0–6). */
+  weekdayNames?: readonly string[];
 }
 
 const HEAD_CELL = 'px-2 py-1.5 text-xs font-medium text-muted-foreground/70';
@@ -34,7 +41,10 @@ export function ParkComparisonCard({
   labelParkAverage,
   labelLongest,
   labelMinutes,
+  labelQuietestDay,
+  weekdayNames,
 }: ParkComparisonCardProps) {
+  const showQuietest = Boolean(labelQuietestDay && weekdayNames?.length === 7);
   const { rows, isPending } = useParkComparisonStats(parks);
 
   return (
@@ -55,6 +65,11 @@ export function ParkComparisonCard({
             <th scope="col" className={cn(HEAD_CELL, 'hidden text-right sm:table-cell')}>
               {labelLongest}
             </th>
+            {showQuietest && (
+              <th scope="col" className={cn(HEAD_CELL, 'text-right')}>
+                {labelQuietestDay}
+              </th>
+            )}
           </tr>
         </thead>
         <tbody>
@@ -100,6 +115,27 @@ export function ParkComparisonCard({
                   </>
                 )}
               </td>
+              {showQuietest && (
+                <td className={cn(VALUE_CELL, 'text-foreground/70')}>
+                  {isPending && row.quietestP50 == null ? (
+                    <Skeleton className="ml-auto h-4 w-20" />
+                  ) : row.quietestDay == null || row.quietestP50 == null ? (
+                    /* Not "no data" but "the data does not support naming a day" — an unevenly
+                       measured week, a tie, or a flat one. The em dash says so without a footnote. */
+                    <span className="text-muted-foreground/40">–</span>
+                  ) : (
+                    <>
+                      <span className="text-status-operating">
+                        {weekdayNames![row.quietestDay]}
+                      </span>
+                      <span className="text-muted-foreground/50">
+                        {' '}
+                        · {row.quietestP50} {labelMinutes}
+                      </span>
+                    </>
+                  )}
+                </td>
+              )}
             </tr>
           ))}
         </tbody>

@@ -1,6 +1,6 @@
 import { useQueries } from '@tanstack/react-query';
 import { useLoadLast } from '@/lib/hooks/use-load-last';
-import type { ParkHistoricalStats } from '@/lib/api/types';
+import type { DayOfWeekStat, ParkHistoricalStats } from '@/lib/api/types';
 
 export interface ComparisonPark {
   /** Blog slug, only used as a React key and for the queryKey. */
@@ -22,6 +22,10 @@ export interface ComparisonRow extends ComparisonPark {
   parkP50: number | null;
   longestName: string | null;
   longestP50: number | null;
+  /** 0 = Sunday … 6 = Saturday. Null when the week is too ragged, too flat or tied — see below. */
+  quietestDay: number | null;
+  /** Median wait on that day, in minutes. */
+  quietestP50: number | null;
 }
 
 /**
@@ -70,13 +74,31 @@ export function useParkComparisonStats(parks: readonly ComparisonPark[]) {
 /** Minimum measured days before an attraction may represent a whole park. */
 const MIN_SAMPLE_DAYS = 100;
 
+/** Minimum measured days before ONE weekday's median means anything on its own. */
+const MIN_WEEKDAY_SAMPLE_DAYS = 8;
+
+/**
+ * A weekday needs this share of the best-observed weekday's sample count to be compared with it.
+ * Movie Park closes on many weekdays out of season, so its Mondays carry 13 measured days against
+ * 22 Sundays — naming a quietest day across those is a claim about two different parts of the year.
+ */
+const MIN_WEEKDAY_SAMPLE_RATIO = 0.7;
+
 function deriveRow(stats: ParkHistoricalStats | null): {
   parkP50: number | null;
   longestName: string | null;
   longestP50: number | null;
+  quietestDay: number | null;
+  quietestP50: number | null;
 } {
   if (!stats || !stats.meta.displayable) {
-    return { parkP50: null, longestName: null, longestP50: null };
+    return {
+      parkP50: null,
+      longestName: null,
+      longestP50: null,
+      quietestDay: null,
+      quietestP50: null,
+    };
   }
 
   // Weight by sample days rather than averaging the seven weekday medians flat: a Sunday with
@@ -97,9 +119,38 @@ function deriveRow(stats: ParkHistoricalStats | null): {
     null
   );
 
+  const quietest = pickQuietestWeekday(dow, parkP50);
+
   return {
     parkP50,
     longestName: longest?.attractionName ?? null,
     longestP50: longest?.avgWaitP50 ?? null,
+    quietestDay: quietest?.dayOfWeek ?? null,
+    quietestP50: quietest?.avgWaitP50 ?? null,
   };
+}
+
+/**
+ * The one weekday worth naming, or null whenever naming one would overstate the data.
+ *
+ * Four refusals, each of which fired on a real park: a weekday measured too rarely to stand on its
+ * own, weekdays measured so unevenly that they describe different seasons, a tie for quietest
+ * (then the sort order decides, not the data), and a "quietest" day that is not actually below the
+ * park's own median.
+ */
+function pickQuietestWeekday(dow: readonly DayOfWeekStat[], parkP50: number | null) {
+  if (parkP50 == null || dow.length < 7) return null;
+
+  const usable = dow.filter((d) => d.sampleDays >= MIN_WEEKDAY_SAMPLE_DAYS);
+  if (usable.length < 7) return null;
+
+  const maxSamples = Math.max(...usable.map((d) => d.sampleDays));
+  if (usable.some((d) => d.sampleDays < maxSamples * MIN_WEEKDAY_SAMPLE_RATIO)) return null;
+
+  const sorted = [...usable].sort((a, b) => a.avgWaitP50 - b.avgWaitP50);
+  const [quietest, runnerUp] = sorted;
+  if (quietest.avgWaitP50 === runnerUp.avgWaitP50) return null;
+  if (quietest.avgWaitP50 >= parkP50) return null;
+
+  return quietest;
 }
