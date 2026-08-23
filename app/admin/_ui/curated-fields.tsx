@@ -5,6 +5,12 @@ import { ArrowLeftRight, ExternalLink, Loader2, RotateCcw, Save, Sparkles } from
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import type { CuratedField } from '../_lib/types';
+
+/** ⌘S on a Mac, Strg+S everywhere else. Read once, in the browser. */
+function saveShortcutLabel(): string {
+  if (typeof navigator === 'undefined') return 'Strg+S';
+  return /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent) ? '⌘S' : 'Strg+S';
+}
 import { Chip } from './primitives';
 import {
   clearCuratedDraft,
@@ -474,6 +480,25 @@ export function CuratedFieldsEditor({
     setSourceUrl('');
   }
 
+  // ⌘S / Strg+S, because this form is worked with both hands on the keyboard —
+  // and the browser's own "save page" is never what somebody means while
+  // typing into a curated field. Bound only while there is something to save,
+  // so the shortcut cannot swallow a keystroke it has no answer for.
+  useEffect(() => {
+    if (!dirty || saving || disabled) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key.toLowerCase() !== 's') return;
+      if (!(event.metaKey || event.ctrlKey)) return;
+      event.preventDefault();
+      handleSave();
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+    // `handleSave` is re-created on every render and reads the current values;
+    // the effect only needs to know whether saving is possible at all.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dirty, saving, disabled]);
+
   return (
     // The marker the shell's `g`-chord looks for: unsaved corrections are not
     // in a dialog and not in a focused input, so nothing else in the DOM says
@@ -517,10 +542,18 @@ export function CuratedFieldsEditor({
           for the save button is how an edit gets abandoned. */}
       <div
         className={cn(
-          'bg-background/90 border-border/60 sticky bottom-0 -mx-4 mt-2 border-t px-4 py-3 backdrop-blur-md transition-opacity',
-          dirty ? 'opacity-100' : 'pointer-events-none opacity-0'
+          'bg-background/90 border-border/60 sticky bottom-0 -mx-4 mt-2 border-t px-4 py-3 backdrop-blur-md'
         )}
       >
+        {/* Idle it says so, rather than going invisible: a blank band the
+            height of a control panel reads as something that failed to load,
+            and it is also the only place the shortcut is written down. */}
+        {!dirty ? (
+          <p className="text-muted-foreground flex items-center gap-2 text-xs">
+            <Save className="h-3.5 w-3.5 shrink-0" />
+            Keine ungespeicherten Änderungen. {saveShortcutLabel()} speichert.
+          </p>
+        ) : (
         <div className="space-y-2">
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-sm font-medium">
@@ -561,10 +594,11 @@ export function CuratedFieldsEditor({
               Verwerfen
             </Button>
             <p className="text-muted-foreground ml-auto hidden text-xs sm:block">
-              Ohne Quelle ist eine Korrektur ein Gerücht.
+              {saveShortcutLabel()} speichert · ohne Quelle ist eine Korrektur ein Gerücht.
             </p>
           </div>
         </div>
+        )}
       </div>
     </div>
   );
