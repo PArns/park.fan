@@ -23,12 +23,24 @@ import type { Locale } from '@/i18n/config';
  */
 interface GlossaryTermPostsProps {
   termId: string;
+  /**
+   * The term as the reader sees it, for the heading.
+   *
+   * This is often the FIRST h2 on the page — glossary terms otherwise ship an h1 and no heading
+   * structure below it — so it carries the term rather than a generic "on the blog".
+   */
+  termName: string;
   locale: Locale;
   /** 2 fits the term page's narrower column; the park pages use 3 across their full width. */
   limit?: number;
 }
 
-export async function GlossaryTermPosts({ termId, locale, limit = 2 }: GlossaryTermPostsProps) {
+export async function GlossaryTermPosts({
+  termId,
+  termName,
+  locale,
+  limit = 2,
+}: GlossaryTermPostsProps) {
   // Locale-scoped: a language with no published posts hides its blog entirely, and a term page
   // must not be the one place that links into it.
   if (!hasPublishedPosts(locale)) return null;
@@ -42,7 +54,7 @@ export async function GlossaryTermPosts({ termId, locale, limit = 2 }: GlossaryT
     <section>
       <div className="mb-3 flex items-center gap-2">
         <Newspaper className="text-primary h-5 w-5" aria-hidden="true" />
-        <h2 className="text-lg font-bold">{t('title')}</h2>
+        <h2 className="text-lg font-bold">{t('title', { term: termName })}</h2>
       </div>
       <div className="grid gap-4 sm:grid-cols-2">
         {posts.map((post) => (

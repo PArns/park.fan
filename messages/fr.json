@@ -1178,7 +1178,7 @@
   },
   "glossary": {
     "blogPosts": {
-      "title": "À lire sur le blog"
+      "title": "{term} sur le blog"
     },
     "overviewTitle": "Dictionnaire des Parcs à Thème",
     "overviewDescription": "Plus de {count} termes et définitions des parcs à thème expliqués en langage clair — temps d'attente, niveaux d'affluence, Lightning Lane, files virtuelles, éléments de montagnes russes, single rider, fast pass, soft openings et plus encore.",

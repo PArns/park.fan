@@ -1178,7 +1178,7 @@
   },
   "glossary": {
     "blogPosts": {
-      "title": "Más en el blog"
+      "title": "{term} en el blog"
     },
     "overviewTitle": "Diccionario de Parques Temáticos",
     "overviewDescription": "Más de {count} términos y definiciones de parques temáticos explicados en lenguaje claro — tiempos de espera, afluencia, Lightning Lane, colas virtuales, elementos de montaña rusa, single rider, fast pass, soft openings y más.",

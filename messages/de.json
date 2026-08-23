@@ -1178,7 +1178,7 @@
   },
   "glossary": {
     "blogPosts": {
-      "title": "Dazu im Blog"
+      "title": "{term} im Blog"
     },
     "overviewTitle": "Freizeitpark-Wörterbuch",
     "overviewDescription": "Über {count} Freizeitpark-Begriffe und Definitionen verständlich erklärt – Wartezeiten, Besucherdichte, Lightning Lane, virtuelle Warteschlange, Achterbahnelemente, Single Rider, Fast Pass, Soft Opening und mehr.",

@@ -197,7 +197,9 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
              on error, and 115 of 267 terms have no rides at all, so a fixed
              fallback height would tear a permanent hole in 43 % of the glossary. */
             rides={<GlossaryTermRides termId={term.id} />}
-            posts={<GlossaryTermPosts termId={term.id} locale={locale as Locale} />}
+            posts={
+              <GlossaryTermPosts termId={term.id} termName={term.name} locale={locale as Locale} />
+            }
           />
         </PageContainer>
 

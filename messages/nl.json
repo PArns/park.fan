@@ -1178,7 +1178,7 @@
   },
   "glossary": {
     "blogPosts": {
-      "title": "Meer hierover op de blog"
+      "title": "{term} op het blog"
     },
     "overviewTitle": "Pretpark Woordenboek",
     "overviewDescription": "Meer dan {count} pretparkbegrippen en definities helder uitgelegd — wachttijden, drukte, Lightning Lane, virtuele wachtrijen, achtbaanelementen, single rider, fast pass, soft openings en meer.",
