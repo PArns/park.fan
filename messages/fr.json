@@ -1177,6 +1177,9 @@
     "emptyHint": "Appuie sur l'étoile ★ d'un parc, d'une attraction, d'un spectacle ou d'un restaurant pour l'enregistrer ici."
   },
   "glossary": {
+    "blogPosts": {
+      "title": "À lire sur le blog"
+    },
     "overviewTitle": "Dictionnaire des Parcs à Thème",
     "overviewDescription": "Plus de {count} termes et définitions des parcs à thème expliqués en langage clair — temps d'attente, niveaux d'affluence, Lightning Lane, files virtuelles, éléments de montagnes russes, single rider, fast pass, soft openings et plus encore.",
     "overviewKeywords": "dictionnaire parc à thème, définitions parc à thème, définition temps d'attente, Lightning Lane, niveau affluence, termes montagnes russes, file d'attente virtuelle, vocabulaire parc loisirs",

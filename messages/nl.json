@@ -1177,6 +1177,9 @@
     "emptyHint": "Tik op de ster ★ bij een park, attractie, show of restaurant om het hier op te slaan."
   },
   "glossary": {
+    "blogPosts": {
+      "title": "Meer hierover op de blog"
+    },
     "overviewTitle": "Pretpark Woordenboek",
     "overviewDescription": "Meer dan {count} pretparkbegrippen en definities helder uitgelegd — wachttijden, drukte, Lightning Lane, virtuele wachtrijen, achtbaanelementen, single rider, fast pass, soft openings en meer.",
     "overviewKeywords": "pretpark woordenboek, pretpark definities, wachttijd betekenis, Lightning Lane, drukteniveau, achtbaan begrippen, virtuele wachtrij, pretpark termen",

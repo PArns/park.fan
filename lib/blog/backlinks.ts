@@ -79,6 +79,7 @@ interface Mention {
 interface Index {
   parks: Map<string, Mentioned[]>;
   rides: Map<string, Mentioned[]>;
+  glossary: Map<string, Mentioned[]>;
 }
 
 /**
@@ -242,7 +243,25 @@ function buildIndex(): Index {
     return new Map([...bySlug].map(([slug, posts]) => [slug, [...posts.values()]]));
   };
 
-  INDEX = { parks: build('park'), rides: build('ride') };
+  // Glossary terms take the simple path, and deliberately so. There is no geo to disambiguate
+  // (a term id is unique site-wide), and no `glossaryLinks` frontmatter to honour — the only
+  // signal is that an author embedded the term's widget, which every post does equally or not at
+  // all. With nothing to rank by, the score stays 0 and `resolveMentions` falls back to date.
+  const buildGlossary = (): Map<string, Mentioned[]> => {
+    const byTerm = new Map<string, Map<string, Mentioned>>();
+    for (const [translationKey, entries] of byPost) {
+      for (const entry of entries) {
+        for (const termId of entry.glossaryRefs ?? []) {
+          const posts = byTerm.get(termId) ?? new Map<string, Mentioned>();
+          posts.set(translationKey, { translationKey, geoPaths: new Set(), score: 0 });
+          byTerm.set(termId, posts);
+        }
+      }
+    }
+    return new Map([...byTerm].map(([termId, posts]) => [termId, [...posts.values()]]));
+  };
+
+  INDEX = { parks: build('park'), rides: build('ride'), glossary: buildGlossary() };
   return INDEX;
 }
 
@@ -303,4 +322,24 @@ export function getPostsForRide(
   options: BacklinkOptions = {}
 ): BlogListItem[] {
   return resolveMentions(buildIndex().rides.get(`${parkSlug}/${rideSlug}`), locale, options);
+}
+
+/**
+ * Posts to link from a glossary term page, newest first.
+ *
+ * The counterpart to the widget a post embeds to explain a term — and the direction that was
+ * missing: rides ↔ glossary and blog ↔ parks/rides were both already bidirectional, this one
+ * only ran outward. Every future terminology post now earns its backlink without anyone
+ * maintaining a list, retroactively included.
+ *
+ * Locale-scoped through `resolveMentions`, so a term page never links a post the reader cannot
+ * read. Terms nobody has written about return `[]` — which is most of them, and the caller is
+ * expected to render nothing rather than an empty shell.
+ */
+export function getPostsForGlossaryTerm(
+  locale: Locale,
+  termId: string,
+  options: BacklinkOptions = {}
+): BlogListItem[] {
+  return resolveMentions(buildIndex().glossary.get(termId), locale, options);
 }

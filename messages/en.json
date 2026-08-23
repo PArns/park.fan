@@ -1177,6 +1177,9 @@
     "emptyHint": "Tap the star ★ on any park, attraction, show, or restaurant to save it here."
   },
   "glossary": {
+    "blogPosts": {
+      "title": "More on the blog"
+    },
     "overviewTitle": "Theme Park Dictionary",
     "overviewDescription": "Over {count} theme park terms and definitions explained in plain language — wait times, crowd levels, Lightning Lanes, virtual queues, coaster elements, single rider, fast pass, soft openings, and more.",
     "overviewKeywords": "theme park dictionary, theme park definitions, wait time definition, crowd level meaning, Lightning Lane, virtual queue, roller coaster terms, theme park vocabulary, amusement park terms",

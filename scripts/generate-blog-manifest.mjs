@@ -24,7 +24,12 @@ import { resolve, dirname, relative } from 'path';
 import { fileURLToPath } from 'url';
 import matter from 'gray-matter';
 // Same implementation the app uses at render time — never a second copy here.
-import { calcReadingTimeMinutes, extractParkRefs, extractRideRefs } from '../lib/blog/derive.mjs';
+import {
+  calcReadingTimeMinutes,
+  extractGlossaryRefs,
+  extractParkRefs,
+  extractRideRefs,
+} from '../lib/blog/derive.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const rootDir = resolve(__dirname, '..');
@@ -160,6 +165,7 @@ const meta = posts.map((post) => ({
   readingTimeMinutes: calcReadingTimeMinutes(post.content, post.frontmatter.readingTime),
   parkRefs: extractParkRefs(post.content),
   rideRefs: extractRideRefs(post.content),
+  glossaryRefs: extractGlossaryRefs(post.content),
 }));
 
 const bodies = Object.fromEntries(
@@ -189,6 +195,8 @@ export interface ManifestPostMeta {
   readingTimeMinutes: number;
   parkRefs: ManifestParkRef[];
   rideRefs: ManifestRideRef[];
+  /** Glossary term IDs the body embeds a glossary-widget for — see derive.mjs. */
+  glossaryRefs: string[];
 }
 
 export const BLOG_POSTS_META: ManifestPostMeta[] = ${JSON.stringify(meta, null, 2)};

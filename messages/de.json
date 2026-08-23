@@ -1177,6 +1177,9 @@
     "emptyHint": "Klicke auf den Stern ★ bei einem Park, einer Attraktion, Show oder Restaurant, um sie hier zu speichern."
   },
   "glossary": {
+    "blogPosts": {
+      "title": "Dazu im Blog"
+    },
     "overviewTitle": "Freizeitpark-Wörterbuch",
     "overviewDescription": "Über {count} Freizeitpark-Begriffe und Definitionen verständlich erklärt – Wartezeiten, Besucherdichte, Lightning Lane, virtuelle Warteschlange, Achterbahnelemente, Single Rider, Fast Pass, Soft Opening und mehr.",
     "overviewKeywords": "Freizeitpark Wörterbuch, Freizeitpark Definitionen, Wartezeit Bedeutung, Lightning Lane, Besucherdichte, Achterbahn Begriffe, virtuelle Warteschlange, Freizeitpark Fachbegriffe",

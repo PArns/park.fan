@@ -1177,6 +1177,9 @@
     "emptyHint": "Toca la estrella ★ en cualquier parque, atracción, espectáculo o restaurante para guardarlo aquí."
   },
   "glossary": {
+    "blogPosts": {
+      "title": "Más en el blog"
+    },
     "overviewTitle": "Diccionario de Parques Temáticos",
     "overviewDescription": "Más de {count} términos y definiciones de parques temáticos explicados en lenguaje claro — tiempos de espera, afluencia, Lightning Lane, colas virtuales, elementos de montaña rusa, single rider, fast pass, soft openings y más.",
     "overviewKeywords": "diccionario parque temático, definiciones parque temático, definición tiempo de espera, Lightning Lane, nivel de afluencia, términos montaña rusa, cola virtual, vocabulario parque atracciones",

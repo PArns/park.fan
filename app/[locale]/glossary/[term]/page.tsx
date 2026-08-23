@@ -7,6 +7,7 @@ import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { PageContainer } from '@/components/common/page-container';
 import { GlossaryTermRides } from '@/components/glossary/glossary-term-rides';
+import { GlossaryTermPosts } from '@/components/glossary/glossary-term-posts';
 import { GlossaryTermDetail } from '@/components/glossary/glossary-term-detail';
 import { GlossaryBackground } from '@/components/glossary/glossary-background';
 import { GlossaryStructuredData } from '@/components/seo/glossary-structured-data';
@@ -196,6 +197,7 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
              on error, and 115 of 267 terms have no rides at all, so a fixed
              fallback height would tear a permanent hole in 43 % of the glossary. */
             rides={<GlossaryTermRides termId={term.id} />}
+            posts={<GlossaryTermPosts termId={term.id} locale={locale as Locale} />}
           />
         </PageContainer>
 

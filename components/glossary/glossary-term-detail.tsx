@@ -50,6 +50,12 @@ interface GlossaryTermDetailProps {
    * separately by the caller's `<Suspense>`.
    */
   rides?: ReactNode;
+  /**
+   * The blog posts that explain this term, as a slot for the same reason as {@link rides}: it
+   * belongs in the definition's column, not in a full-width band under it. Renders nothing for
+   * the 248 of 267 terms no post covers, so it reserves no height either.
+   */
+  posts?: ReactNode;
 }
 
 export function GlossaryTermDetail({
@@ -61,6 +67,7 @@ export function GlossaryTermDetail({
   labels,
   playerLabels,
   rides,
+  posts,
 }: GlossaryTermDetailProps) {
   const hasPlayer = Boolean(term.player && playerLabels);
 
@@ -180,6 +187,7 @@ export function GlossaryTermDetail({
             </Card>
             {fancastCta}
             {rides}
+            {posts}
             {backButton}
           </div>
           {sidebar}
@@ -194,6 +202,7 @@ export function GlossaryTermDetail({
             </Card>
             {fancastCta}
             {rides}
+            {posts}
             {backButton}
           </div>
           {sidebar}
