@@ -199,6 +199,11 @@ en los que manadas enteras de actores cazan a individuos concretos, más
 espectáculos pirotécnicos y un tapiz sonoro que se te queda en el oído de
 camino a casa. Aquí lo único apto para familias es el día.
 
+De día, Rust es otro parque, y uno con colas sorprendentemente cortas para su
+tamaño. La [guía de Europa-Park](/blog/europa-park-tiempos-de-espera-consejos)
+hace el cálculo y explica de paso por qué una entrada de Traumatica en noviembre
+te cuesta la última hora dentro del parque.
+
 [Europa-Park](ref:europa-park?full)
 
 Programa, fechas y normas de edad: [traumatica.com](https://traumatica.com/en/).

@@ -203,6 +203,11 @@ meutes entières d'acteurs traquent les individus, spectacles pyrotechniques et
 un tapis sonore qui vous reste dans l'oreille sur le trajet du retour. Ici,
 seule la journée est familiale.
 
+De jour, Rust est un autre parc, et un parc aux files étonnamment courtes pour
+sa taille. Le [guide Europa-Park](/blog/europa-park-temps-d-attente-conseils)
+fait le calcul et explique au passage pourquoi un billet Traumatica en novembre
+vous coûte la dernière heure dans le parc.
+
 [Europa-Park](ref:europa-park?full)
 
 Programme, dates et règles d'âge : [traumatica.com](https://traumatica.com/en/).
