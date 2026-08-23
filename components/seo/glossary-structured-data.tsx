@@ -3,9 +3,7 @@ import { SITE_URL } from '@/i18n/config';
 import type { GlossaryTerm } from '@/lib/glossary/types';
 import type { Locale } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
-
-/** ISO date of last glossary content review — update when terms are added or changed */
-const GLOSSARY_CONTENT_DATE = '2026-03-17';
+import { GLOSSARY_CONTENT_DATE } from '@/lib/glossary/content-date';
 
 /** Maps locale codes to BCP-47 language tags used in schema.org inLanguage */
 const SCHEMA_LANGUAGE: Record<Locale, string> = {

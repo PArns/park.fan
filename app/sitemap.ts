@@ -3,6 +3,7 @@ import { getGeoStructure } from '@/lib/api/discovery';
 import { getParkImageSet } from '@/lib/utils/park-assets';
 import { locales, SITE_URL } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
+import { GLOSSARY_CONTENT_DATE } from '@/lib/glossary/content-date';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import type { GlossaryTerm } from '@/lib/glossary/types';
 
@@ -98,6 +99,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const locale of locales) {
     routes.push({
       url: `${BASE_URL}/${locale}/${GLOSSARY_SEGMENTS[locale as keyof typeof GLOSSARY_SEGMENTS]}`,
+      // The glossary is prerendered and genuinely unchanged since this date, so saying so is the
+      // rare honest `lastmod` on this site — see lib/glossary/content-date.ts for why the park
+      // and ride pages deliberately get none.
+      lastModified: new Date(GLOSSARY_CONTENT_DATE),
       changeFrequency: 'weekly',
       priority: 0.5,
       alternates: glossaryIndexAlternates,
@@ -138,6 +143,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
       routes.push({
         url: `${BASE_URL}/${locale}/${GLOSSARY_SEGMENTS[locale as keyof typeof GLOSSARY_SEGMENTS]}/${localTerm.slug}`,
+        lastModified: new Date(GLOSSARY_CONTENT_DATE),
         changeFrequency: 'monthly',
         priority: 0.8,
         alternates: { languages: termAlternates },
