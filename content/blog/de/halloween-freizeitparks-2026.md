@@ -197,11 +197,6 @@ Darstellern gezielt Jagd auf Einzelne machen, dazu Pyro-Shows und ein
 Soundteppich, der einem noch auf dem Heimweg im Ohr sitzt. Familienfreundlich
 ist hier wirklich nur der Tag.
 
-Tagsüber ist Rust ein anderer Park, und einer mit erstaunlich kurzen Schlangen
-für seine Größe. Der [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps)
-rechnet das nach und erklärt nebenbei, warum ein Traumatica-Ticket im November
-die letzte Parkstunde kostet.
-
 [Europa-Park](ref:europa-park?full)
 
 Programm, Termine und Altersregeln: [traumatica.com](https://traumatica.com/en/).
