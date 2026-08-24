@@ -274,7 +274,7 @@ the same number three times over, three completely different stories:
   [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) a year
   after opening? Either a dream day, or the crowds have finally dispersed.
 
-![Voltron Nevera inverting above a floodlit facade at night | Voltron Nevera at Europa-Park. Typical here is around 45 minutes, 70 and up on peak days. | right](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
+![Voltron Nevera inverting above a floodlit facade at night | Voltron Nevera at Europa-Park. Typical here is a good half hour, several times that on peak days. | right](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 The number is in the chart. From now on the story behind it is here, in three
 formats.

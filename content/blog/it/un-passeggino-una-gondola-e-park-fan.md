@@ -291,7 +291,7 @@ diverse.
   anno dall'apertura? O è una giornata da sogno, o la folla si è finalmente
   dispersa.
 
-![Voltron Nevera capovolto sopra una facciata illuminata, di notte | Voltron Nevera all'Europa-Park. Qui la norma è intorno ai 45 minuti, 70 e oltre nei giorni di punta. | right](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
+![Voltron Nevera capovolto sopra una facciata illuminata, di notte | Voltron Nevera all'Europa-Park. Qui la norma è una buona mezz'ora, molte volte tanto nei giorni di punta. | right](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 La cifra sta nel grafico. La storia che c'è dietro sta da adesso qui, in tre
 formati.

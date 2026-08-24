@@ -281,7 +281,7 @@ Een wachttijd zonder context is niet meer dan een gerucht met een decimaal.
   [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare), een
   jaar na de opening? Of een topdag, of de massa is eindelijk uitgewaaierd.
 
-![Voltron Nevera in een overslag boven een aangelichte gevel bij nacht | Voltron Nevera in het Europa-Park. Typisch is hier zo'n 45 minuten, op piekdagen 70 en meer. | right](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
+![Voltron Nevera in een overslag boven een aangelichte gevel bij nacht | Voltron Nevera in het Europa-Park. Typisch is hier een klein half uur, op piekdagen een veelvoud daarvan. | right](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 Het getal staat in de grafiek. Het verhaal erachter staat vanaf nu hier, in drie
 vormen.

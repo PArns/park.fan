@@ -287,7 +287,7 @@ minutos»: tres veces la misma cifra, tres historias completamente distintas.
   después de la inauguración? O es un día de ensueño, o las multitudes se han
   dispersado por fin.
 
-![Voltron Nevera invertida sobre una fachada iluminada, de noche | Voltron Nevera en el Europa-Park. Lo típico aquí son unos 45 minutos, 70 o más en días punta. | right](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
+![Voltron Nevera invertida sobre una fachada iluminada, de noche | Voltron Nevera en el Europa-Park. Lo típico aquí es media hora larga; en días punta, varias veces eso. | right](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 La cifra está en el gráfico. La historia que hay detrás está a partir de ahora
 aquí, en tres formatos.
