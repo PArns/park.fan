@@ -49,7 +49,29 @@ import {
 } from '../_demos';
 import { WaitScaleBar, WaitScaleStage, type WaitScaleStep } from '../_wait-scale';
 import { NightShift, type NightShiftJob } from '../_night-shift';
-import { TARON_WAIT_NOW, WAIT_SCALE_MAX } from '../_fixtures';
+import { Ambience, ClosingBand } from '../_chrome';
+import { ChapterRail, type Chapter } from '../_chapter-rail';
+import {
+  HOURLY_SAMPLE_DAYS,
+  TARON_BASELINE,
+  TARON_RECORD,
+  TARON_WAIT_NOW,
+  TARON_WEEKDAY_DAYS,
+  TARON_WEEKEND_DAYS,
+  WAIT_SCALE_MAX,
+} from '../_fixtures';
+
+const CHAPTERS: Chapter[] = [
+  { id: 'zahl', index: '01', label: 'Eine Zahl allein' },
+  { id: 'massstab', index: '02', label: 'Typisch, voll, Rekord' },
+  { id: 'moment', index: '03', label: 'Der beste Moment' },
+  { id: 'tag', index: '04', label: 'Der richtige Tag' },
+  { id: 'nachtschicht', index: '05', label: 'Woher die Zahlen kommen' },
+  { id: 'luecken', index: '06', label: 'Was wir nicht behaupten' },
+  { id: 'besuche', index: '07', label: 'Vier Besuche' },
+  { id: 'wegweiser', index: '08', label: 'Wo was steht' },
+  { id: 'faq', index: '09', label: 'Häufige Fragen' },
+];
 
 const PARK = '/parks/europe/germany/bruehl/phantasialand';
 const TARON = `${PARK}/taron`;
@@ -58,32 +80,43 @@ const SCALE_LABELS = {
   typical: 'Typisch',
   busy: 'Voll',
   unit: 'Min.',
+  days: 'Messtage',
+  record: 'Rekord',
   summary:
-    'Taron an einem {label}: typischerweise {typical} Minuten, an vollen Tagen {busy}. Aktuell angeschrieben sind {wait} Minuten.',
+    'Taron am {label}: typischerweise {typical} Minuten, an vollen Tagen {busy}, gemessen an {days} Tagen. Angeschrieben sind {wait} Minuten.',
 };
 
 const SCALE_LEGEND = [
   {
     term: 'Typisch',
-    def: 'Median der Tagesspitzen. An der Hälfte aller gemessenen Tage war die längste Schlange kürzer.',
+    def: 'Median der Tagesspitzen. An der Hälfte der gemessenen Tage war die längste Schlange kürzer.',
     swatch: 'bg-primary/45',
   },
   {
     term: 'Voll',
-    def: '90. Perzentil derselben Reihe. Ungefähr der eine Tag von zehn, an dem es besonders voll war.',
+    def: '90. Perzentil derselben Reihe. Der eine Tag von zehn, an dem es besonders voll war.',
     swatch: 'bg-primary/25',
   },
   {
     term: '70 Min.',
-    def: 'Was gerade angeschrieben ist. Bleibt stehen, während sich der Maßstab darunter verschiebt.',
+    def: 'Was am Eingang steht. Bleibt stehen, während sich der Maßstab darunter verschiebt.',
     swatch: 'bg-amber-500',
+  },
+  {
+    term: 'Rekord',
+    def: `${TARON_RECORD} Minuten am 16. Juli 2026. Der schlimmste Tag im Messzeitraum, und genau deshalb kein Maßstab.`,
+    swatch: 'bg-foreground/40',
   },
 ];
 
+/**
+ * Die drei Lesarten, in der Reihenfolge, in der die Grafik sie durchläuft.
+ * Zahlen aus `TARON_TYPICAL_WAITS`, also aus der API und nicht aus der Erzählung.
+ */
 const SCALE_STEPS: WaitScaleStep[] = [
-  { id: 'tuesday', label: 'Dienstag', typical: 42, busy: 70 },
-  { id: 'saturday', label: 'Samstag', typical: 70, busy: 105 },
-  { id: 'holiday', label: 'Ferien-Samstag', typical: 85, busy: 120 },
+  { id: 'monday', label: 'Montag', typical: 55, busy: 65, sampleDays: 19 },
+  { id: 'saturday', label: 'Samstag', typical: 70, busy: 85, sampleDays: 20 },
+  { id: 'weekday', label: 'Unter der Woche', typical: 60, busy: 80, sampleDays: 97 },
 ];
 
 const NIGHT_JOBS: NightShiftJob[] = [
@@ -134,7 +167,7 @@ const FAQ = [
   {
     question: 'Sind 70 Minuten Wartezeit viel?',
     answer:
-      'Das hängt von der Bahn und vom Wochentag ab. Bei einer Attraktion, deren Dienstage typischerweise bei 42 Minuten liegen, sind 70 Minuten am oberen Rand. Bei derselben Bahn an einem Samstag, an dem 70 Minuten der Normalfall sind, ist es ein durchschnittlicher Tag. park.fan zeigt beide Bezugsgrößen direkt neben der aktuellen Zahl, damit man sie nicht raten muss.',
+      'Das hängt von der Bahn und vom Wochentag ab. Taron im Phantasialand kommt montags typischerweise auf 55 Minuten und bleibt an neun von zehn Montagen unter 65; dort sind 70 Minuten also ein ungewöhnlich voller Tag. Samstags liegt der Median derselben Bahn bei genau 70 Minuten, dann ist dieselbe Anzeige völlig durchschnittlich. Beide Vergleichswerte stehen auf der Seite der Bahn, damit man sie nicht raten muss.',
   },
   {
     question: 'Woher kommen die Wartezeiten?',
@@ -174,6 +207,8 @@ export function ContentDE() {
 
   return (
     <>
+      <ChapterRail chapters={CHAPTERS} ariaLabel="Kapitel" />
+
       {/* ── Intro ───────────────────────────────────────────────────────── */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
@@ -197,23 +232,16 @@ export function ContentDE() {
             aria-label="Kapitel"
             className="bg-muted/40 not-prose grid gap-x-6 gap-y-2 rounded-2xl border p-5 text-sm sm:grid-cols-2 lg:grid-cols-3"
           >
-            {[
-              ['#zahl', '01 · Eine Zahl allein'],
-              ['#massstab', '02 · Typisch, voll, Rekord'],
-              ['#moment', '03 · Der beste Moment'],
-              ['#tag', '04 · Der richtige Tag'],
-              ['#nachtschicht', '05 · Woher die Zahlen kommen'],
-              ['#luecken', '06 · Was wir nicht behaupten'],
-              ['#besuche', '07 · Vier Besuche'],
-              ['#wegweiser', '08 · Wo was steht'],
-              ['#faq', '09 · Häufige Fragen'],
-            ].map(([href, label]) => (
+            {CHAPTERS.map((c) => (
               <a
-                key={href}
-                href={href}
-                className="text-muted-foreground hover:text-primary transition-colors"
+                key={c.id}
+                href={`#${c.id}`}
+                className="text-muted-foreground hover:text-primary group flex items-baseline gap-2 transition-colors"
               >
-                {label}
+                <span className="text-primary/40 group-hover:text-primary/70 text-xs font-bold tabular-nums transition-colors">
+                  {c.index}
+                </span>
+                {c.label}
               </a>
             ))}
           </nav>
@@ -239,19 +267,22 @@ export function ContentDE() {
           signLabel="Was der Park anschreibt"
           signCaption="Eine Zahl, kein Bezug. Ob das heute gut oder schlecht ist, weiß nur, wer schon oft genug hier war."
           cardLabel="Was park.fan daraus macht"
-          cardCaption="Dieselben 70 Minuten, plus Auslastungsstufe, Trend, Single-Rider-Zeit und der Hinweis, wann es voraussichtlich ruhiger wird."
+          cardCaption="Dieselben 70 Minuten, plus Auslastungsstufe, Trend, Single-Rider-Zeit, Mindestgröße und der Hinweis, wann es voraussichtlich ruhiger wird."
         />
 
         <div className="max-w-3xl space-y-4 pt-2">
           <P>
-            Die Auslastungsstufe oben rechts entsteht aus dem Verhältnis der aktuellen Zeit zum
-            Median dieser Bahn. Der kleine Pfeil daneben kommt aus den letzten Messungen und sagt,
-            ob die Schlange gerade wächst oder abgebaut wird. Beides sind Aussagen über heute, die
-            man nur mit gestern treffen kann.
+            „Sehr hoch&ldquo; ist dabei keine Geschmacksfrage. Taron liegt im Mittel bei{' '}
+            {TARON_BASELINE} Minuten, {TARON_WAIT_NOW} sind davon rund 156 Prozent, und die Stufen
+            wechseln bei 60, 89, 110, 150 und 200 Prozent. Ab 150 heißt sie „Sehr hoch&ldquo;. Der
+            kleine Pfeil daneben kommt aus den letzten Messungen und sagt, ob die Schlange gerade
+            wächst oder abgebaut wird.
           </P>
           <PG>
             Der zweite Wert auf der Karte ist die Single-Rider-Schlange. Viele Bahnen führen mehrere
             Warteschlangen parallel, und welche davon existiert, steht selten am selben Schild.
+            Rechts daneben die Mindestgröße, damit niemand mit einem 130 Zentimeter großen Kind
+            durch den halben Park läuft.
           </PG>
         </div>
 
@@ -266,104 +297,116 @@ export function ContentDE() {
       </SectionShell>
 
       {/* ── 02 ──────────────────────────────────────────────────────────── */}
-      <SectionShell
-        id="massstab"
-        index="02"
-        kicker="Der Maßstab"
-        title="Typisch, voll, Rekord"
-        icon={Ruler}
-      >
-        <P>
-          Um eine Zahl einzuordnen, braucht es zwei Vergleichswerte und die Angabe, worauf sie
-          beruhen. park.fan benutzt dafür den Median der Tagesspitzen und das 90. Perzentil
-          derselben Reihe. Im Klartext: Wie lang ist die längste Schlange des Tages üblicherweise,
-          und wie lang war sie an den vollsten zehn Prozent der Tage.
-        </P>
-
-        <div className="pt-2">
-          <WaitScaleStage
-            steps={SCALE_STEPS}
-            wait={TARON_WAIT_NOW}
-            max={WAIT_SCALE_MAX}
-            labels={SCALE_LABELS}
-            legend={SCALE_LEGEND}
-          >
-            {SCALE_STEPS.map((step, i) => (
-              <div key={step.id} data-wait-step={step.id} className="scroll-mt-28">
-                <div className="text-primary mb-2 text-xs font-semibold tracking-widest uppercase">
-                  {step.label}
-                </div>
-                <h3 className="mb-3 text-xl font-bold sm:text-2xl">
-                  {i === 0 && '70 Minuten sind ein sehr voller Dienstag'}
-                  {i === 1 && '70 Minuten sind ein ganz normaler Samstag'}
-                  {i === 2 && 'In den Ferien wären 70 Minuten ein Glücksfall'}
-                </h3>
-                <p className="text-muted-foreground max-w-xl leading-relaxed">
-                  {i === 0 && (
-                    <>
-                      Dienstags liegt die Tagesspitze meistens bei {step.typical} Minuten. Die
-                      angeschriebenen 70 treffen fast genau die Marke, die an neun von zehn
-                      Dienstagen unterschritten wird. Wer heute vor dieser Schlange steht, erwischt
-                      einen der volleren Dienstage des Jahres, und die Nachmittage danach werden
-                      eher schlechter als besser.
-                    </>
-                  )}
-                  {i === 1 && (
-                    <>
-                      Samstags liegt derselbe Wert bei {step.typical} Minuten. Dieselbe Anzeige
-                      bedeutet an diesem Tag: alles wie immer. Sich zu ärgern lohnt nicht, sich
-                      umzuorientieren auch nicht, denn die Nachbarbahnen haben denselben Samstag.
-                    </>
-                  )}
-                  {i === 2 && (
-                    <>
-                      In den Sommerferien rutscht die ganze Verteilung nach rechts. Der Rekord
-                      dieser Bahn, {step.busy} Minuten, steht auf genau so einem Tag. Vor 70 Minuten
-                      zu stehen, hieße hier: früh genug dran gewesen. Welche Tage das werden,
-                      beantwortet nicht diese Tabelle, sondern der Kalender aus Kapitel 04.
-                    </>
-                  )}
-                </p>
-
-                {/* Unter lg trägt jeder Schritt seine eigene Skala: dort gibt es
-                    keine mitlaufende Grafik, an der sich etwas ändern könnte. */}
-                <WaitScaleBar
-                  step={step}
-                  wait={TARON_WAIT_NOW}
-                  max={WAIT_SCALE_MAX}
-                  labels={SCALE_LABELS}
-                  className="bg-card/60 mt-5 rounded-2xl border p-5 lg:hidden"
-                />
-              </div>
-            ))}
-          </WaitScaleStage>
-        </div>
-
-        <div className="max-w-3xl space-y-4 pt-6">
-          <P>
-            Auf der Seite einer Bahn steht diese Verteilung als Tabelle, Wochentag für Wochentag.
-            Die Spalte ganz rechts ist dabei die wichtigste: Sie sagt, auf wie vielen Messtagen die
-            Zeile beruht. Ein Wert aus 34 Samstagen trägt eine Aussage. Einer aus vier Tagen nicht,
-            und dann steht dort auch keiner.
-          </P>
-        </div>
-
-        <DemoFrame
-          label="Auf der Seite einer Bahn"
-          note="Der Balken zeigt typisch und voll nebeneinander, die Zahl daneben die Messtage. Fehlt einem Wochentag die Grundlage, bleibt seine Zeile leer statt gefüllt."
-          href={TARON}
-          hrefLabel="Echte Werte für Taron →"
-          className="max-w-lg"
+      <Ambience>
+        <SectionShell
+          id="massstab"
+          index="02"
+          kicker="Der Maßstab"
+          title="Typisch, voll, Rekord"
+          icon={Ruler}
         >
-          <TypicalWaitsDemo />
-        </DemoFrame>
+          <P>
+            Um eine Zahl einzuordnen, braucht es zwei Vergleichswerte und die Angabe, worauf sie
+            beruhen. park.fan benutzt dafür den Median der Tagesspitzen und das 90. Perzentil
+            derselben Reihe. Im Klartext: Wie lang ist die längste Schlange des Tages üblicherweise,
+            und wie lang war sie an den vollsten zehn Prozent der Tage.
+          </P>
 
-        <Highlight>
-          Diese Tabelle ist der Grund, warum wir Wartezeiten überhaupt archivieren. Eine Live-Zahl
-          kann man abfragen, wenn jemand danach fragt. Ein Median über jeden gemessenen Dienstag
-          muss schon fertig sein, bevor die Frage kommt.
-        </Highlight>
-      </SectionShell>
+          <div className="pt-2">
+            <WaitScaleStage
+              steps={SCALE_STEPS}
+              wait={TARON_WAIT_NOW}
+              max={WAIT_SCALE_MAX}
+              record={TARON_RECORD}
+              labels={SCALE_LABELS}
+              legend={SCALE_LEGEND}
+            >
+              {SCALE_STEPS.map((step, i) => (
+                <div key={step.id} data-wait-step={step.id} className="scroll-mt-28">
+                  <div className="text-primary mb-2 text-xs font-semibold tracking-widest uppercase">
+                    {step.label}
+                  </div>
+                  <h3 className="mb-3 text-xl font-bold sm:text-2xl">
+                    {i === 0 && 'Für einen Montag sind 70 Minuten viel'}
+                    {i === 1 && 'Für einen Samstag ist das exakt der Normalfall'}
+                    {i === 2 && 'Und einmal waren es 135'}
+                  </h3>
+                  <p className="text-muted-foreground max-w-xl leading-relaxed">
+                    {i === 0 && (
+                      <>
+                        Montags liegt die Tagesspitze bei {step.typical} Minuten, und an neun von
+                        zehn Montagen bleibt sie unter {step.busy}. Die angeschriebenen{' '}
+                        {TARON_WAIT_NOW} liegen darüber. Wer hier steht, hat den vollsten Montag
+                        seit Wochen erwischt, und die Nachbarbahnen sind dann meistens die bessere
+                        Idee.
+                      </>
+                    )}
+                    {i === 1 && (
+                      <>
+                        Samstags ist {step.typical} Minuten der Median. Dieselbe Anzeige, derselbe
+                        Ort, dieselbe Bahn: an diesem Tag ist sie schlicht durchschnittlich. Sich zu
+                        ärgern lohnt nicht, sich umzuorientieren auch nicht, denn die Nachbarbahnen
+                        haben denselben Samstag.
+                      </>
+                    )}
+                    {i === 2 && (
+                      <>
+                        Über alle {step.sampleDays} gemessenen Wochentage liegt die Spitze bei{' '}
+                        {step.typical} Minuten. Die gestrichelte Linie weiter rechts ist der{' '}
+                        {TARON_RECORD}-Minuten-Tag vom 16. Juli. Genau wegen solcher Tage ist
+                        „voll&ldquo; ein Perzentil und kein Maximum: Ein einziger Ausreißer würde
+                        einen Mittelwert verschieben und alles darunter unbrauchbar machen.
+                      </>
+                    )}
+                  </p>
+
+                  {/* Unter lg trägt jeder Schritt seine eigene Skala: dort gibt es
+                    keine mitlaufende Grafik, an der sich etwas ändern könnte. */}
+                  <WaitScaleBar
+                    step={step}
+                    wait={TARON_WAIT_NOW}
+                    max={WAIT_SCALE_MAX}
+                    record={TARON_RECORD}
+                    labels={SCALE_LABELS}
+                    className="bg-card/60 mt-5 rounded-2xl border p-5 lg:hidden"
+                  />
+                </div>
+              ))}
+            </WaitScaleStage>
+          </div>
+
+          <div className="max-w-3xl space-y-4 pt-6">
+            <P>
+              Auf der Seite der Bahn steht dieselbe Verteilung als Balken, Wochentag für Wochentag.
+              Über jedem Balken die Voll-Marke, im hellen Teil darunter der typische Wert, und
+              rechts unten der Rekord mit Datum. Ein Wochentag ohne Grundlage bekommt keinen
+              geschätzten Balken, sondern gar keinen.
+            </P>
+            <P>
+              Wie belastbar das ist, hängt an der Zahl der Messtage: {TARON_WEEKDAY_DAYS} unter der
+              Woche und {TARON_WEEKEND_DAYS} am Wochenende sind hier zusammengekommen. Auf der
+              Parkseite steht diese Zahl als eigene Spalte neben jeder Bahn, und in den Tabellen im
+              Blog ebenfalls.
+            </P>
+          </div>
+
+          <DemoFrame
+            label="Auf der Seite einer Bahn"
+            note="Echte Werte von Taron, abgerufen am 24. August 2026. Die Zahl über jedem Balken ist die Voll-Marke des Tages, der kräftige Teil darunter der typische Wert. Samstag ist der einzige Tag, an dem die 70 vom Anfang genau in der Mitte liegen."
+            href={TARON}
+            hrefLabel="Echte Werte für Taron →"
+            className="max-w-lg"
+          >
+            <TypicalWaitsDemo />
+          </DemoFrame>
+
+          <Highlight>
+            Diese Tabelle ist der Grund, warum wir Wartezeiten überhaupt archivieren. Eine Live-Zahl
+            kann man abfragen, wenn jemand danach fragt. Ein Median über jeden gemessenen Dienstag
+            muss schon fertig sein, bevor die Frage kommt.
+          </Highlight>
+        </SectionShell>
+      </Ambience>
 
       {/* ── 03 ──────────────────────────────────────────────────────────── */}
       <SectionShell
@@ -374,41 +417,55 @@ export function ContentDE() {
         icon={Sunrise}
       >
         <P>
-          Eine Bahn hat nicht den ganzen Tag dieselbe Schlange. Der Verlauf ist erstaunlich stabil:
-          Morgens kurz, gegen Mittag am längsten, am Abend fällt sie wieder ab. Wie stark, wann
-          genau und ob sich das frühe Aufstehen dafür lohnt, ist pro Bahn verschieden und wird pro
-          Bahn ausgerechnet.
+          „Früh kommen&ldquo; ist der Rat, den jeder gibt. Er stimmt nur, wenn die Schlange im Lauf
+          des Tages überhaupt wächst, und das tut sie längst nicht überall. Zwei Bahnen aus
+          demselben Park, dieselbe Tabelle, dasselbe Jahr:
         </P>
 
-        <div className="grid gap-6 lg:grid-cols-2">
+        <DemoFrame
+          label="Wartezeit nach Uhrzeit, 90. Perzentil"
+          note="Echte Werte aus dem Stundenprofil des Parks, abgerufen am 24. August 2026."
+        >
+          <HourlyShapeDemo
+            spreadLabel="Unterschied zwischen ruhigster und vollster Stunde:"
+            unit="Min."
+            hoursLabel={`Aus ${HOURLY_SAMPLE_DAYS} Messtagen. Fünf Stunden schaffen es überhaupt in die Tabelle: Eine Stunde braucht mindestens zehn Messtage an dieser Bahn, mindestens 40 Prozent der bestgemessenen Stunde und mindestens die Hälfte der Bahnen, die sie melden. Das wirft die Randzeiten raus, in denen eine einzige Hotelgäste-Schlange sonst für den ganzen Morgen spräche.`}
+          />
+        </DemoFrame>
+
+        <div className="max-w-3xl space-y-4 pt-2">
+          <P>
+            Bei Taron entscheidet die Uhrzeit fast nichts. Die Kurve liegt den ganzen Tag im selben
+            engen Band, und was den Unterschied macht, ist der Wochentag aus Kapitel 02. Bei Chiapas
+            ist es umgekehrt: Wer um zehn dort steht, wartet gut ein Drittel weniger als am frühen
+            Nachmittag. Eine einzige Regel für den ganzen Park wäre für eine der beiden Bahnen
+            falsch, und deshalb wird sie pro Bahn gerechnet.
+          </P>
+        </div>
+
+        <div className="grid items-start gap-6 lg:grid-cols-2">
           <DemoFrame
-            label="Rope-Drop-Empfehlung"
-            note="Empfohlen wird nur, wenn die Tagesspitze mindestens 60 Minuten erreicht und der frühe Start davon mindestens 45 spart. Bahnen darunter bekommen bewusst keinen Hinweis, sonst stünde er überall."
+            label="Die Empfehlung, die daraus entsteht"
+            note="Empfohlen wird nur, wenn die Tagesspitze mindestens 60 Minuten erreicht und der frühe Start davon mindestens 45 spart. Colorado Adventure im selben Park spart 40 Minuten bei einer Spitze von 50 und bekommt deshalb keinen Hinweis."
           >
             <RopeDropDemo />
           </DemoFrame>
 
           <div className="space-y-4">
-            <DemoFrame
-              label="Der Tagesverlauf derselben Bahn"
-              note="Jeder Punkt ist eine Stunde, gemessen als 90. Perzentil über alle Tage. Eine Stunde wird erst zur Spalte, wenn sie oft genug gemessen wurde; die Randzeiten eines Parktages schaffen das meistens nicht."
-            >
-              <HourlyShapeDemo peakLabel="Spitze" troughLabel="Abends" unit="Min." />
-            </DemoFrame>
+            <PG>
+              Die Karte nennt drei Zahlen und eine Uhrzeit: die typische Wartezeit zur Öffnung, die
+              Tagesspitze, die Differenz und das Zeitfenster, in dem der Vorsprung hält. Danach ist
+              er weg, und das steht auch so da.
+            </PG>
             <P>
-              Aus dieser Kurve stammt der zweite Teil der Empfehlung: das Tal am Abend. Bei vielen
-              Headlinern ist die letzte Stunde vor Schluss genauso gut wie die erste nach der
-              Öffnung, nur ohne Wecker.
+              Der zweite Teil ist die ruhigste Zeit des Tages, wo immer sie liegt. Bei diesen Bahnen
+              fällt sie mit dem frühen Start zusammen. Bei anderen liegt sie am Abend, und dann
+              nennt die Karte diesen Zeitpunkt statt des Weckers. Für den ganzen Park listet die
+              Attraktionsübersicht die Bahnen, bei denen sich das Aufstehen am meisten lohnt,
+              sortiert nach gesparten Minuten.
             </P>
           </div>
         </div>
-
-        <PG>
-          Auf der Attraktionskarte selbst taucht das als eine Zeile auf, unter der Wartezeit: die
-          voraussichtlich beste Zeit, mit konkreter Uhrzeit in Parkzeit. Für den ganzen Park listet
-          die Übersicht die Bahnen, bei denen sich der frühe Start am meisten lohnt, sortiert nach
-          gesparten Minuten.
-        </PG>
       </SectionShell>
 
       {/* ── 04 ──────────────────────────────────────────────────────────── */}
@@ -436,15 +493,25 @@ export function ContentDE() {
         <div className="max-w-3xl space-y-4 pt-2">
           <P>
             Die Ferienkalender kommen aus zwei öffentlichen Quellen und decken jeweils vier Jahre
-            ab. Wichtiger als die eigenen sind dabei oft die der Nachbarn: Ein Park nahe der Grenze
-            merkt es sofort, wenn im Nachbarland Ferien beginnen. park.fan rechnet Regionen im
-            Umkreis von rund 200 Kilometern mit ein und markiert sie im Kalender separat.
+            ab. Wichtiger als die eigenen sind oft die der Nachbarn. Ein Beispiel von heute: Für
+            Phantasialand steht als bestimmender Ferieneintrag nicht Nordrhein-Westfalen im
+            Kalender, sondern die Sommerferien der niederländischen Provinz Gelderland. Der Park
+            liegt 90 Kilometer von der Grenze entfernt, und Tagesgäste kennen keine. Regionen im
+            Umkreis von rund 200 Kilometern zählen deshalb mit und bekommen im Kalender eine eigene
+            Markierung.
           </P>
           <PG>
             Die Farbe eines Tages ist eine Prognose, keine Messung. Sie stammt aus einem Modell, das
             jede Nacht mit den Wartezeiten des Vortags neu trainiert wird und sich hinterher an der
             Realität nachmessen lässt.
           </PG>
+          <P>
+            Wie weit der Kalender reicht, hängt am Park. Ein Park, der das ganze Jahr öffnet,
+            bekommt bis zu zwölf Monate im Voraus eine Prognose. Bei einem Saisonpark hört sie da
+            auf, wo die veröffentlichte Saison endet: Für einen Dienstag im März, an dem
+            Phantasialand nachweislich geschlossen hat, ist eine Auslastungsfarbe keine Vorhersage,
+            sondern eine Behauptung.
+          </P>
         </div>
 
         <div className="flex flex-wrap gap-3 pt-1">
@@ -468,61 +535,64 @@ export function ContentDE() {
       </SectionShell>
 
       {/* ── 05 ──────────────────────────────────────────────────────────── */}
-      <SectionShell
-        id="nachtschicht"
-        index="05"
-        kicker="Der Unterbau"
-        title="Woher die Zahlen kommen"
-        icon={Database}
-      >
-        <P>
-          Alle fünf Minuten wird jeder der 212 Parks abgefragt, aus drei öffentlichen Quellen
-          gleichzeitig. Widersprechen sie sich, entscheidet die Mehrheit, danach der Median, danach
-          der Mittelwert. Gespeichert wird nur, was sich geändert hat, gerundet auf fünf Minuten,
-          weil die Parks selbst in Fünf-Minuten-Schritten anschreiben.
-        </P>
-
-        <IngredientGrid>
-          <IngredientCard icon={Activity} title="Wartezeiten" delay={0}>
-            ThemeParks.wiki, Wartezeiten.app und Queue-Times.com, im Fünf-Minuten-Takt. Die
-            Rohwährung von allem anderen auf dieser Seite.
-          </IngredientCard>
-          <IngredientCard icon={GraduationCap} title="Ferien & Feiertage" delay={60}>
-            Nager.Date für gesetzliche Feiertage und Brückentage, OpenHolidays für Schulferien. Vier
-            Jahre, jede Region einzeln, monatlich aktualisiert.
-          </IngredientCard>
-          <IngredientCard icon={CloudSun} title="Wetter" delay={120}>
-            Open-Meteo für Vorhersage, Rückschau und den 15-Minuten-Regenradar. Amtliche
-            Unwetterwarnungen kommen von DWD und MeteoAlarm.
-          </IngredientCard>
-          <IngredientCard icon={CalendarDays} title="Öffnungszeiten" delay={0}>
-            Aus den Parkkalendern. Wo ein Park keinen veröffentlicht, rekonstruieren wir den Tag aus
-            der Aktivität der Bahnen und kennzeichnen ihn als geschätzt.
-          </IngredientCard>
-          <IngredientCard icon={Layers} title="Historie" delay={60}>
-            Nichts wird gelöscht. Ältere Zeiträume werden nur komprimiert, damit jede Auswertung
-            weiterhin auf allen Messwerten läuft.
-          </IngredientCard>
-          <IngredientCard icon={BarChart3} title="Prognosemodelle" delay={120}>
-            Drei Modelle nach Zeithorizont getrennt: eines für den laufenden Tag, eines bis 60 Tage,
-            eines bis ein Jahr. Jedes wird an den echten Zeiten nachgemessen.
-          </IngredientCard>
-        </IngredientGrid>
-
-        <div className="max-w-3xl space-y-4 pt-4">
+      <Ambience tone="emerald">
+        <SectionShell
+          id="nachtschicht"
+          index="05"
+          kicker="Der Unterbau"
+          title="Woher die Zahlen kommen"
+          icon={Database}
+        >
           <P>
-            Der zweite Teil passiert nachts, und er ist der eigentliche Grund, warum eine Seite
-            typische Wartezeiten nicht einfach so anzeigen kann. Ein Median über jeden gemessenen
-            Dienstag ist keine Abfrage, die man beim Seitenaufruf startet. Er muss vorher gerechnet
-            worden sein, in einer festen Reihenfolge, weil jeder Schritt auf dem vorigen aufbaut.
+            Alle fünf Minuten wird jeder der 212 Parks abgefragt, aus drei öffentlichen Quellen
+            gleichzeitig. Widersprechen sie sich, entscheidet die Mehrheit, danach der Median,
+            danach der Mittelwert. Gespeichert wird nur, was sich geändert hat, gerundet auf fünf
+            Minuten, weil die Parks selbst in Fünf-Minuten-Schritten anschreiben.
           </P>
-        </div>
 
-        <NightShift
-          jobs={NIGHT_JOBS}
-          caption="Alle Zeiten UTC. Die Reihenfolge ist kein Zufall: Die Rope-Drop-Empfehlung um 05:15 liest die Viertelstunden-Historie, die um 04:30 geschrieben wird."
-        />
-      </SectionShell>
+          <IngredientGrid>
+            <IngredientCard icon={Activity} title="Wartezeiten" delay={0}>
+              ThemeParks.wiki, Wartezeiten.app und Queue-Times.com, im Fünf-Minuten-Takt. Die
+              Rohwährung von allem anderen auf dieser Seite.
+            </IngredientCard>
+            <IngredientCard icon={GraduationCap} title="Ferien & Feiertage" delay={60}>
+              Nager.Date für gesetzliche Feiertage und Brückentage, OpenHolidays für Schulferien.
+              Vier Jahre, jede Region einzeln, monatlich aktualisiert.
+            </IngredientCard>
+            <IngredientCard icon={CloudSun} title="Wetter" delay={120}>
+              Open-Meteo für Vorhersage, Rückschau und den 15-Minuten-Regenradar. Amtliche
+              Unwetterwarnungen kommen von DWD und MeteoAlarm.
+            </IngredientCard>
+            <IngredientCard icon={CalendarDays} title="Öffnungszeiten" delay={0}>
+              Aus den Parkkalendern. Wo ein Park keinen veröffentlicht, rekonstruieren wir den Tag
+              aus der Aktivität der Bahnen und kennzeichnen ihn als geschätzt.
+            </IngredientCard>
+            <IngredientCard icon={Layers} title="Historie" delay={60}>
+              Nichts wird gelöscht. Ältere Zeiträume werden nur komprimiert, damit jede Auswertung
+              weiterhin auf allen Messwerten läuft.
+            </IngredientCard>
+            <IngredientCard icon={BarChart3} title="Prognosemodelle" delay={120}>
+              Nach Zeithorizont getrennt: eines für den laufenden Tag, eines für die nächsten
+              Wochen, eines für den Rest des Jahres. Jedes wird an den echten Zeiten nachgemessen.
+            </IngredientCard>
+          </IngredientGrid>
+
+          <div className="max-w-3xl space-y-4 pt-4">
+            <P>
+              Der zweite Teil passiert nachts, und er ist der eigentliche Grund, warum eine Seite
+              typische Wartezeiten nicht einfach so anzeigen kann. Ein Median über jeden gemessenen
+              Dienstag ist keine Abfrage, die man beim Seitenaufruf startet. Er muss vorher
+              gerechnet worden sein, in einer festen Reihenfolge, weil jeder Schritt auf dem vorigen
+              aufbaut.
+            </P>
+          </div>
+
+          <NightShift
+            jobs={NIGHT_JOBS}
+            caption="Alle Zeiten UTC. Die Reihenfolge ist kein Zufall: Die Rope-Drop-Empfehlung um 05:15 liest die Viertelstunden-Historie, die um 04:30 geschrieben wird."
+          />
+        </SectionShell>
+      </Ambience>
 
       {/* ── 06 ──────────────────────────────────────────────────────────── */}
       <SectionShell
@@ -600,6 +670,11 @@ export function ContentDE() {
                 selbst sagt der 15-Minuten-Regenradar oben auf der Parkseite, wann es aufhört.
               </>,
               <>
+                Auf jeder Attraktionskarte steht die Mindestgröße, wo der Park sie veröffentlicht.
+                Taron verlangt 140 Zentimeter, Colorado Adventure 120, und das entscheidet den Tag
+                mehr als jede Wartezeit.
+              </>,
+              <>
                 Kinderbahnen im Reiter <strong>Attraktionen</strong> als Favorit markieren. Sie
                 stehen danach auf der Startseite mit ihrer aktuellen Wartezeit.
               </>,
@@ -622,6 +697,11 @@ export function ContentDE() {
               <>
                 Während des Besuchs auf den Vergleichs-Badge achten: „viel höher“ heißt heute
                 wirklich außergewöhnlich, nicht bloß lang.
+              </>,
+              <>
+                Jede Attraktionsseite trägt eine Note für die eigene Prognose, aus dem Abgleich
+                vergangener Vorhersagen mit den echten Zeiten der letzten 30 Tage. Bei Taron sind
+                das gerade ein paar tausend verglichene Prognosen.
               </>,
               <>
                 Für die Reiseplanung <A href={bestTime}>die beste Reisezeit</A> vergleichen. Dort
@@ -720,7 +800,7 @@ export function ContentDE() {
               body: (
                 <>
                   Kopfbereich mit Status, Wetter und Auslastung, darunter die Reiter für
-                  Attraktionen, Shows, Kalender und Karte.
+                  Attraktionen, Shows, Restaurants, Kalender und Karte.
                 </>
               ),
             },
@@ -729,8 +809,8 @@ export function ContentDE() {
               title: 'Attraktionsseite',
               body: (
                 <>
-                  Verlauf, typische Wartezeiten pro Wochentag, Rope Drop, Layout-Elemente und die
-                  Blogbeiträge über die Bahn.
+                  Verlauf, typische Wartezeiten pro Wochentag, Rope Drop, Mindestgröße,
+                  Treffsicherheit der Prognose, Layout-Elemente und die Blogbeiträge über die Bahn.
                 </>
               ),
             },
@@ -758,6 +838,37 @@ export function ContentDE() {
       >
         <FaqList items={FAQ} />
       </SectionShell>
+
+      <ClosingBand
+        kicker="Und jetzt?"
+        title="Such dir einen Park und lies eine Zahl."
+        body="Alles auf dieser Seite ist kostenlos, ohne Konto und ohne Werbung nutzbar. Wenn du wissen willst, wie treffsicher die Prognosen sind, steht das live auf der Fancast-Seite. Wenn du wissen willst, wann du fahren solltest, fang bei der besten Reisezeit an."
+      >
+        <Link
+          href={PARK}
+          prefetch={false}
+          className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold shadow-sm transition-colors"
+        >
+          <Activity className="h-4 w-4" />
+          Beispiel-Parkseite ansehen
+        </Link>
+        <Link
+          href={bestTime}
+          prefetch={false}
+          className="border-primary/40 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-semibold transition-colors"
+        >
+          <CalendarDays className="h-4 w-4" />
+          Beste Reisezeit
+        </Link>
+        <Link
+          href="/fancast"
+          prefetch={false}
+          className="border-primary/40 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-semibold transition-colors"
+        >
+          <Sparkles className="h-4 w-4" />
+          Treffsicherheit der Prognosen
+        </Link>
+      </ClosingBand>
     </>
   );
 }

@@ -20,9 +20,25 @@ interface SparklineProps {
    * (e.g. ML scores around 0.9) stay legible instead of flattening to a near-flat line.
    */
   yDomain?: 'zero' | 'fit';
+  /**
+   * Force the top of the scale, for two charts that are meant to be compared by eye.
+   *
+   * Without it each sparkline fits its own maximum, so a series that only moves
+   * 7 minutes is drawn with the same amplitude as one that moves 22 — which is
+   * exactly backwards when the comparison IS the point. Ignored under
+   * `yDomain: 'fit'`, and never below the data's own max, so a too-small value
+   * cannot clip the curve.
+   */
+  yMax?: number;
 }
 
-export function Sparkline({ points, className, formatTooltip, yDomain = 'zero' }: SparklineProps) {
+export function Sparkline({
+  points,
+  className,
+  formatTooltip,
+  yDomain = 'zero',
+  yMax: yMaxProp,
+}: SparklineProps) {
   const [activePoint, setActivePoint] = useState<
     (SparklinePoint & { clientX: number; clientY: number }) | null
   >(null);
@@ -39,8 +55,8 @@ export function Sparkline({ points, className, formatTooltip, yDomain = 'zero' }
       const pad = (hi - lo) * 0.2 || 1;
       return { ...base, yMin: lo - pad, yMax: hi + pad };
     }
-    return { ...base, yMin: 0, yMax: Math.max(...values, 10) };
-  }, [points, yDomain]);
+    return { ...base, yMin: 0, yMax: Math.max(...values, 10, yMaxProp ?? 0) };
+  }, [points, yDomain, yMaxProp]);
 
   // Local hover handlers instead of a global `window` mousemove listener: the attraction
   // history grid mounts one sparkline per day (~31), and each global listener ran

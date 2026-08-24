@@ -72,50 +72,58 @@ function parkLocalInstant(nowMs: number, hour: number, minute: number): string {
 export const TARON_WAIT_NOW = 70;
 
 /**
- * Per-weekday level for Taron, the shape the "is 70 minutes a lot?" question
- * needs. `typical` is the median of the day's peak waits, `busy` the 90th
- * percentile of the same series — so `busy` is roughly "the busiest one day in
- * ten", not "the worst it has ever been". That record lives in `peak`.
+ * Taron's per-weekday level — **the values the API actually returned** on
+ * 2026-08-24 (`GET /v1/parks/europe/germany/bruehl/phantasialand/attractions/taron`,
+ * field `typicalWaits`), not a shape invented to make the lesson land.
+ *
+ * `typical` is the median of the day's peak waits, `busy` the 90th percentile of
+ * the same series — so `busy` is roughly "the busiest one day in ten", not "the
+ * worst it has ever been". That record lives in `peak`.
+ *
+ * They are frozen here rather than fetched because a lesson that changes shape
+ * overnight is not a lesson: the three steps in chapter 02 are written around
+ * 70 minutes landing above Monday's busy line and exactly on Saturday's median.
+ * Re-check them against the ride's own page when this page is next edited; the
+ * page links there from the same block so a reader can do it too.
  */
 export const TARON_TYPICAL_WAITS: TypicalWaits = {
-  weekday: { typical: 45, busy: 75, sampleDays: 96 },
-  weekend: { typical: 65, busy: 100, sampleDays: 68 },
+  weekday: { typical: 60, busy: 80, sampleDays: 97 },
+  weekend: { typical: 70, busy: 80, sampleDays: 38 },
   byDayOfWeek: [
-    { dayOfWeek: 1, isWeekend: false, typical: 40, busy: 68, sampleDays: 18 },
-    { dayOfWeek: 2, isWeekend: false, typical: 42, busy: 70, sampleDays: 19 },
-    { dayOfWeek: 3, isWeekend: false, typical: 44, busy: 72, sampleDays: 19 },
-    { dayOfWeek: 4, isWeekend: false, typical: 46, busy: 76, sampleDays: 20 },
-    { dayOfWeek: 5, isWeekend: false, typical: 52, busy: 84, sampleDays: 20 },
-    { dayOfWeek: 6, isWeekend: true, typical: 70, busy: 105, sampleDays: 34 },
-    { dayOfWeek: 0, isWeekend: true, typical: 62, busy: 95, sampleDays: 34 },
+    { dayOfWeek: 0, isWeekend: true, typical: 60, busy: 75, sampleDays: 18 },
+    { dayOfWeek: 1, isWeekend: false, typical: 55, busy: 65, sampleDays: 19 },
+    { dayOfWeek: 2, isWeekend: false, typical: 55, busy: 80, sampleDays: 19 },
+    { dayOfWeek: 3, isWeekend: false, typical: 60, busy: 80, sampleDays: 20 },
+    { dayOfWeek: 4, isWeekend: false, typical: 60, busy: 80, sampleDays: 18 },
+    { dayOfWeek: 5, isWeekend: false, typical: 60, busy: 80, sampleDays: 21 },
+    { dayOfWeek: 6, isWeekend: true, typical: 70, busy: 85, sampleDays: 20 },
   ],
-  peak: { value: 120, date: '2026-08-08' },
+  peak: { value: 135, date: '2026-07-16' },
   windowDays: 365,
-  dataFrom: '2025-12-24',
-  dataTo: '2026-08-17',
+  dataFrom: '2025-08-24',
+  dataTo: '2026-08-23',
   displayable: true,
-  generatedAt: '2026-08-18T03:00:00.000Z',
+  generatedAt: '2026-08-24T09:37:01.091Z',
 };
 
-/** The three readings the scroll figure walks through, in order. */
-export interface WaitVerdict {
-  /** Stable key, also the anchor id of the step. */
-  id: 'tuesday' | 'saturday' | 'record';
-  /** Weekday or occasion, as the step heading says it. */
-  label: string;
-  typical: number;
-  busy: number;
-  sampleDays: number;
-}
+/**
+ * The median Taron's live crowd level is measured against (`baseline` on the
+ * attraction payload, 45 minutes on 2026-08-24). 70 ÷ 45 is about 156 %, and the
+ * tier boundaries are 60 / 89 / 110 / 150 / 200 — which is why the demo card
+ * reads "sehr hoch" and not "hoch".
+ */
+export const TARON_BASELINE = 45;
 
-export const TARON_VERDICTS: WaitVerdict[] = [
-  { id: 'tuesday', label: 'Dienstag', typical: 42, busy: 70, sampleDays: 19 },
-  { id: 'saturday', label: 'Samstag', typical: 70, busy: 105, sampleDays: 34 },
-  { id: 'record', label: 'Rekordtag', typical: 70, busy: 120, sampleDays: 34 },
-];
+/** Taron's highest measured wait in the window, and the day it happened. */
+export const TARON_RECORD = 135;
+export const TARON_RECORD_DATE = '2026-07-16';
+
+/** Days behind the two summary buckets on the ride's card. */
+export const TARON_WEEKDAY_DAYS = 97;
+export const TARON_WEEKEND_DAYS = 38;
 
 /** Upper end of the scale the figure draws. Above Taron's record, so nothing clips. */
-export const WAIT_SCALE_MAX = 130;
+export const WAIT_SCALE_MAX = 140;
 
 // ── Attraction cards, rope drop, best slot ───────────────────────────────────
 
@@ -154,27 +162,34 @@ export function buildDemoFixtures(nowMs: number): DemoFixtures {
   };
 
   /**
-   * `worth` is true here because the daily peak clears 60 minutes and rope
-   * dropping saves at least 45 of them — the two thresholds the backend applies
-   * before it recommends anything at all.
+   * Taron's real recommendation on 2026-08-24. `worth` is true because the daily
+   * peak clears 60 minutes and rope-dropping saves at least 45 of them — the two
+   * thresholds the backend applies before it recommends anything. `strength` is
+   * `moderate` rather than `high` because the peak is 70, under the 90 that
+   * upgrades it. Same park, same morning: Colorado Adventure saves 40 minutes off
+   * a 50-minute peak and therefore gets no recommendation at all.
+   *
+   * The trough sits at the same +60 minutes as the advantage window, which is
+   * what this ride's day actually looks like — the quietest moment is right
+   * after opening, not in the evening.
    */
   const ropeDrop: RopeDropInfo = {
     worth: true,
-    strength: 'high',
+    strength: 'moderate',
     confidence: 'high',
-    busyPeak: 95,
-    openWait: 15,
-    savings: 80,
-    rideByMinutesAfterOpen: 45,
-    bestSlotMinutesAfterOpen: 585,
-    bestSlotWait: 25,
+    busyPeak: 70,
+    openWait: 10,
+    savings: 60,
+    rideByMinutesAfterOpen: 60,
+    bestSlotMinutesAfterOpen: 60,
+    bestSlotWait: 10,
     endOfDayWorth: true,
-    endOfDaySavings: 70,
-    rideByUtc: parkLocalInstant(nowMs, 9, 45),
-    bestSlotUtc: parkLocalInstant(nowMs, 18, 45),
+    endOfDaySavings: 60,
+    rideByUtc: parkLocalInstant(nowMs, 10, 0),
+    bestSlotUtc: parkLocalInstant(nowMs, 10, 0),
     byDaytype: {
-      weekend: { openWait: 20, busyPeak: 105, savings: 85 },
-      weekday: { openWait: 15, busyPeak: 85, savings: 70 },
+      weekend: { openWait: 10, busyPeak: 70, savings: 60 },
+      weekday: { openWait: 10, busyPeak: 70, savings: 60 },
     },
   };
 
@@ -187,9 +202,12 @@ export function buildDemoFixtures(nowMs: number): DemoFixtures {
     longitude: null,
     land: 'Klugheim',
     status: 'OPERATING',
-    crowdLevel: 'high',
+    // 70 ÷ the ride's 45-minute baseline is ~156 %, and the tier boundary to
+    // "very high" is 150. The card's badge is therefore not a styling choice.
+    crowdLevel: 'very_high',
     trend: 'up',
     isHeadliner: true,
+    minimumHeight: 140,
     queues: [
       {
         queueType: 'STANDBY',
@@ -206,8 +224,8 @@ export function buildDemoFixtures(nowMs: number): DemoFixtures {
       },
     ],
     statistics: {
-      avgWaitToday: 48,
-      minWaitToday: 10,
+      avgWaitToday: 50,
+      minWaitToday: 30,
       maxWaitToday: TARON_WAIT_NOW,
       peakWaitToday: TARON_WAIT_NOW,
       peakWaitTimestamp: at(-3),
@@ -234,36 +252,38 @@ export function buildDemoFixtures(nowMs: number): DemoFixtures {
     longitude: null,
     land: 'Deep in Africa',
     status: 'OPERATING',
-    crowdLevel: 'low',
+    // Live on 2026-08-24: 15 minutes against a 30-minute baseline, so "very low".
+    crowdLevel: 'very_low',
     trend: 'down',
     isHeadliner: true,
+    minimumHeight: 140,
     queues: [
       {
         queueType: 'STANDBY',
         status: 'OPERATING',
-        waitTime: 10,
+        waitTime: 15,
         lastUpdated: at(-4),
-        trend: { direction: 'down', changeRate: -3, recentAverage: 12, previousAverage: 20 },
+        trend: { direction: 'down', changeRate: -3, recentAverage: 17, previousAverage: 25 },
       },
     ],
     statistics: {
-      avgWaitToday: 18,
-      minWaitToday: 5,
-      maxWaitToday: 30,
-      peakWaitToday: 30,
+      avgWaitToday: 20,
+      minWaitToday: 10,
+      maxWaitToday: 35,
+      peakWaitToday: 35,
       peakWaitTimestamp: at(-90),
       history: [
-        { timestamp: at(-150), waitTime: 5 },
-        { timestamp: at(-120), waitTime: 15 },
-        { timestamp: at(-90), waitTime: 30 },
-        { timestamp: at(-60), waitTime: 25 },
-        { timestamp: at(-30), waitTime: 15 },
-        { timestamp: at(-4), waitTime: 10 },
+        { timestamp: at(-150), waitTime: 10 },
+        { timestamp: at(-120), waitTime: 20 },
+        { timestamp: at(-90), waitTime: 35 },
+        { timestamp: at(-60), waitTime: 30 },
+        { timestamp: at(-30), waitTime: 20 },
+        { timestamp: at(-4), waitTime: 15 },
       ],
     },
   };
 
-  return { taron, mamba, ropeDrop, bestSlot, closeUtc: parkLocalInstant(nowMs, 20, 0) };
+  return { taron, mamba, ropeDrop, bestSlot, closeUtc: parkLocalInstant(nowMs, 19, 0) };
 }
 
 /**
@@ -366,21 +386,42 @@ export const DEMO_CALENDAR_DAYS: CalendarDay[] = [
 // ── Hourly shape ─────────────────────────────────────────────────────────────
 
 /**
- * Taron's day in 90th-percentile minutes per hour — the series behind the "come
- * back at 18:45" advice. An hour only earns a column once it has been measured
- * on enough days; the early and late ends of a park's day are the ones that
- * usually have not.
+ * Two rides out of the same park, same table, same year — and two completely
+ * different days. Real figures from
+ * `GET /v1/parks/europe/germany/bruehl/phantasialand/stats/hourly?years=1`
+ * on 2026-08-24 (152 measured days, `schemaVersion` 3), 90th percentile per hour.
+ *
+ * The pair is the point of chapter 03. Taron's queue barely moves between 10:00
+ * and 17:00, so for that ride the hour is nearly irrelevant and the weekday
+ * decides everything. Chiapas climbs by more than half across the same day. A
+ * single "arrive early" rule would be wrong for one of them, which is why the
+ * recommendation is computed per ride.
+ *
+ * Only five hours are columns at all. An hour needs at least 10 measured days on
+ * that ride, at least 40 % of the best-measured hour's day count, and at least
+ * half the rides in the table have to report it — which is what removes a park
+ * day's edges, where one hotel-guest early-entry queue would otherwise speak for
+ * the whole morning.
  */
-export const TARON_HOURLY_P90 = [
-  { hour: '09:00', value: 20 },
-  { hour: '10:00', value: 45 },
-  { hour: '11:00', value: 65 },
-  { hour: '12:00', value: 80 },
-  { hour: '13:00', value: 90 },
-  { hour: '14:00', value: 95 },
-  { hour: '15:00', value: 90 },
-  { hour: '16:00', value: 75 },
-  { hour: '17:00', value: 60 },
-  { hour: '18:00', value: 40 },
-  { hour: '19:00', value: 25 },
+export interface HourlyShape {
+  name: string;
+  points: Array<{ hour: string; value: number }>;
+  /** Difference between the ride's own quietest and busiest column. */
+  spread: number;
+}
+
+function shape(name: string, hours: number[], p90: number[]): HourlyShape {
+  return {
+    name,
+    points: hours.map((h, i) => ({ hour: `${String(h).padStart(2, '0')}:00`, value: p90[i] })),
+    spread: Math.max(...p90) - Math.min(...p90),
+  };
+}
+
+export const HOURLY_SHAPES: HourlyShape[] = [
+  shape('Taron', [10, 11, 12, 13, 17], [60, 60, 54, 53, 59]),
+  shape('Chiapas', [10, 11, 12, 13, 17], [38, 50, 58, 60, 54]),
 ];
+
+/** Measured days behind the table above. */
+export const HOURLY_SAMPLE_DAYS = 152;

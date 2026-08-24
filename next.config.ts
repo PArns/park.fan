@@ -411,7 +411,8 @@ const nextConfig: NextConfig = {
       nl: 'hoe-park-fan-werkt',
       es: 'como-funciona-park-fan',
     };
-    const howtoAll = [...Object.values(howtoSegments), 'howto'];
+    const howtoLegacySegment = 'howto';
+    const howtoAll = [...Object.values(howtoSegments), howtoLegacySegment];
     for (const [locale, correct] of Object.entries(howtoSegments)) {
       for (const wrong of howtoAll) {
         if (wrong === correct) continue;
@@ -427,9 +428,13 @@ const nextConfig: NextConfig = {
         permanent: true,
       });
     }
-    // Bare `/howto` is deliberately absent: it names no language, so the intl
-    // middleware resolves the visitor's locale first and the rule above then
-    // takes `/de/howto` the rest of the way.
+    // Bare `/howto` gets no rule of its own on purpose. It names no language, so
+    // any fixed destination here would pin a German visitor to the English page.
+    // Left alone it goes the same way every unprefixed path goes: the intl
+    // middleware resolves the locale (`/howto` → `/de/howto`), and the per-locale
+    // rule above finishes it (`/de/howto` → `/de/so-funktioniert-park-fan`). Two
+    // hops, but it lands in the reader's language. Verified against a production
+    // build; `howtoLegacySegment` is only in the wrong-segment set above.
 
     // 11. Blog tag slug unified. French posts carried two spellings of the same tag
     // (`temps-attente` in two posts, `temps-d-attente` in a third), which split the archive

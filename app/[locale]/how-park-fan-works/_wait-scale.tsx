@@ -57,6 +57,8 @@ export interface WaitScaleStep {
   typical: number;
   /** 90th percentile of the same series. */
   busy: number;
+  /** How many measured days the two numbers rest on. */
+  sampleDays: number;
 }
 
 interface BarLabels {
@@ -66,7 +68,11 @@ interface BarLabels {
   busy: string;
   /** e.g. "Min." */
   unit: string;
-  /** Accessible summary, `{label}` / `{typical}` / `{busy}` / `{wait}` interpolated. */
+  /** e.g. "Messtage" */
+  days: string;
+  /** e.g. "Rekord" */
+  record: string;
+  /** Accessible summary, `{label}` / `{typical}` / `{busy}` / `{wait}` / `{days}` interpolated. */
   summary: string;
 }
 
@@ -82,6 +88,7 @@ export function WaitScaleBar({
   step,
   wait,
   max,
+  record,
   labels,
   className,
   interactive = false,
@@ -90,6 +97,8 @@ export function WaitScaleBar({
   /** The number on the sign. Fixed across all steps — it is the thing being judged. */
   wait: number;
   max: number;
+  /** The ride's all-time measured peak. A property of the ride, not of the step. */
+  record?: number;
   labels: BarLabels;
   className?: string;
   /** True for the sticky copy the stage drives; adds the transition hooks. */
@@ -99,6 +108,7 @@ export function WaitScaleBar({
     .replace('{label}', step.label)
     .replace('{typical}', String(step.typical))
     .replace('{busy}', String(step.busy))
+    .replace('{days}', String(step.sampleDays))
     .replace('{wait}', String(wait));
 
   return (
@@ -122,9 +132,10 @@ export function WaitScaleBar({
         >
           {step.label}
         </span>
-        <span className="text-muted-foreground text-xs">
+        <span className="text-muted-foreground text-xs tabular-nums">
           {labels.typical} <span data-scale-typical>{step.typical}</span> · {labels.busy}{' '}
-          <span data-scale-busy>{step.busy}</span> {labels.unit}
+          <span data-scale-busy>{step.busy}</span> {labels.unit} ·{' '}
+          <span data-scale-days>{step.sampleDays}</span> {labels.days}
         </span>
       </div>
 
@@ -151,6 +162,16 @@ export function WaitScaleBar({
         >
           {wait}
         </div>
+
+        {/* The all-time peak. Constant across the steps: it belongs to the ride,
+            not to a weekday, and it is why `busy` is a percentile and not a max. */}
+        {record != null && (
+          <div
+            className="border-foreground/40 absolute top-5 h-6 -translate-x-1/2 border-l border-dashed"
+            style={{ left: pct(record, max) }}
+            title={`${labels.record} ${record} ${labels.unit}`}
+          />
+        )}
       </div>
 
       {/* Axis. Five ticks is enough to read a position off; more is a ruler. */}
@@ -178,6 +199,7 @@ export function WaitScaleStage({
   steps,
   wait,
   max,
+  record,
   labels,
   legend,
   children,
@@ -185,6 +207,7 @@ export function WaitScaleStage({
   steps: WaitScaleStep[];
   wait: number;
   max: number;
+  record?: number;
   labels: BarLabels;
   /** What the two marks on the bar mean. Sits under it in the sticky card. */
   legend: Array<{ term: string; def: string; swatch: string }>;
@@ -210,16 +233,20 @@ export function WaitScaleStage({
     const dayEl = surface.querySelector<HTMLElement>('[data-scale-day]');
     const typicalEl = surface.querySelector<HTMLElement>('[data-scale-typical]');
     const busyEl = surface.querySelector<HTMLElement>('[data-scale-busy]');
+    const daysEl = surface.querySelector<HTMLElement>('[data-scale-days]');
 
     const reduced = prefersReducedMotion();
 
     /** Writes a reading straight to the DOM — the reduced-motion path and the tween's target. */
-    const paint = (typical: number, busy: number, label: string) => {
+    const paint = (typical: number, busy: number, label: string, days: number) => {
       surface.style.setProperty('--band-start', pct(typical, max));
       surface.style.setProperty('--band-end', pct(busy, max));
       if (dayEl) dayEl.textContent = label;
       if (typicalEl) typicalEl.textContent = String(Math.round(typical));
       if (busyEl) busyEl.textContent = String(Math.round(busy));
+      // Not tweened: a measured-day count easing through fractional values would
+      // read as a number still being counted rather than a fact about the row.
+      if (daysEl) daysEl.textContent = String(days);
     };
 
     let cancelled = false;
@@ -236,7 +263,7 @@ export function WaitScaleStage({
       if (reduced) {
         state.typical = next.typical;
         state.busy = next.busy;
-        paint(next.typical, next.busy, next.label);
+        paint(next.typical, next.busy, next.label, next.sampleDays);
         return;
       }
 
@@ -252,7 +279,7 @@ export function WaitScaleStage({
           busy: next.busy,
           duration: 0.55,
           ease: 'power2.inOut',
-          onUpdate: () => paint(state.typical, state.busy, next.label),
+          onUpdate: () => paint(state.typical, state.busy, next.label, next.sampleDays),
         });
       });
     };
@@ -284,7 +311,14 @@ export function WaitScaleStage({
       {/* Sticky on wide screens; hidden below lg, where each step carries its own bar. */}
       <div ref={figureRef} className="hidden lg:block">
         <div className="bg-card/60 sticky top-20 rounded-2xl border p-6">
-          <WaitScaleBar step={steps[0]} wait={wait} max={max} labels={labels} interactive />
+          <WaitScaleBar
+            step={steps[0]}
+            wait={wait}
+            max={max}
+            record={record}
+            labels={labels}
+            interactive
+          />
           <dl className="mt-6 space-y-2.5 border-t pt-5 text-xs leading-relaxed">
             {legend.map((row) => (
               <div key={row.term} className="flex gap-2.5">

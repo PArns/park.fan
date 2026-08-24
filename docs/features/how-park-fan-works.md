@@ -48,7 +48,43 @@ The sitemap entry is priority **0.8**, up from 0.4: it is the page every other
 surface links to when it needs to explain what a badge, a percentile or a
 forecast means.
 
-## 2. The example UI is the real UI, and it never fetches
+## 2. The numbers are the ride's own
+
+Every figure in chapters 01–03 is a value the API returned for Taron and
+Phantasialand on 2026-08-24, copied into `_fixtures.ts` with the date on it —
+not a shape invented to make the lesson land. That matters twice over: a reader
+who follows the "echte Werte" link must not find different numbers, and the
+lesson itself is better for being real. Taron's Saturday median is exactly 70
+minutes, which is why 70 is the number on the sign.
+
+Frozen rather than fetched, deliberately. The three steps in chapter 02 are
+written around 70 landing above Monday's busy line and on Saturday's median; a
+lesson that re-shapes itself overnight is not a lesson. Re-check them against
+the ride's page when this page is next edited.
+
+Things the audit caught, worth not re-introducing:
+
+- **`AttractionTypicalWaits` shows no measured-day count.** The number above each
+  bar is that weekday's P90. Sample days live in the park's stats table and the
+  blog widget, and on this page in the scale figure — which has the data because
+  the fixture carries it.
+- **`typicalWaitThisHour` / `currentVsTypical` are never rendered anywhere.**
+  They exist on the payload and are only passed through. Do not claim them.
+- **The calendar's horizon is the park's, not a year.** A year-round park
+  (Disneyland Paris, Efteling) answers with a crowd level 330 days out; a
+  seasonal one (Phantasialand, Europa-Park) returns CLOSED past its published
+  season, because a forecast for a day the park demonstrably shuts is not a
+  forecast.
+- **Taron's queue is flat across the day** (60/60/54/53/59 by hour) while Chiapas
+  climbs by 22 minutes. "Come early" is a per-ride finding, not a rule, which is
+  what chapter 03 now says.
+- **The rope-drop thresholds are visible in the same park**: Colorado Adventure
+  saves 40 minutes off a 50-minute peak and gets no recommendation, against the
+  ≥ 60 peak / ≥ 45 saved gate.
+- `minimumHeight` (Taron 140 cm) and the per-ride `predictionAccuracy` badge
+  **are** rendered — `AttractionMetaBadges` and `AttractionLivePanel`.
+
+## 3. The example UI is the real UI, and it never fetches
 
 `_demos.tsx` renders **production** components — `AttractionCard`,
 `AttractionTypicalWaits`, `RopeDropCard`, `ParkCalendarDay`,
@@ -88,7 +124,7 @@ zone**, not offsets from now, because the card renders them as "until about
 formatting the instant in the zone and re-reading those fields as if they were
 UTC — the difference is the offset in force at that instant.
 
-## 3. Motion: GSAP for the tween, `IntersectionObserver` for the trigger
+## 4. Motion: GSAP for the tween, `IntersectionObserver` for the trigger
 
 Two pieces, both following the split `lib/hooks/use-menu-reveal.ts` arrived at:
 **CSS owns the picture, GSAP owns the transition between two of them.**
@@ -104,6 +140,11 @@ Two pieces, both following the split `lib/hooks/use-menu-reveal.ts` arrived at:
 - **`_night-shift.tsx`** — the nightly job chain on the hours it actually runs
   at, which is the page's answer to "why can a site not just show this?". GSAP
   lifts the markers once on first view; the diagram is complete without it.
+
+One more shared-scale trap: `Sparkline` fits each instance to its own maximum,
+so two charts meant to be compared draw a 7-minute band with the same amplitude
+as a 22-minute one — backwards, when the comparison IS the figure. It takes a
+`yMax` prop now; pass the same value to both.
 
 **No ScrollTrigger.** Picking the active step is an intersection question and
 `IntersectionObserver` answers it in eight lines, without a second GSAP plugin,
@@ -122,14 +163,22 @@ Three rules these must keep:
    transforming an ancestor — a transform on a `backdrop-blur` element, or any
    ancestor of one, flattens the blur for as long as it runs.
 
-## 4. Structured data
+The decorative layers are wide on purpose (the sign's glow, the per-chapter
+`Ambience` tint at 1152 px) and hang off both sides of a phone, which cost the
+document 381 px of horizontal scroll the first time. They are clipped with
+**`overflow-x-clip`**, never `overflow-hidden`: hidden makes the element a scroll
+container and `position: sticky` sticks to the nearest one, so the chapter 02
+figure would stop pinning. Verified at 390 px and 1512 px: 0 px overflow, CLS
+0.0000.
+
+## 5. Structured data
 
 `ArticleStructuredData` + `BreadcrumbStructuredData` + `FaqList` (which emits
 `FAQPage` from the same array it renders). No `HowTo`: Google retired those rich
 results in 2023, which is why `components/seo/structured-data.tsx` has never had
 one. FAQ answers stay plain text so the JSON-LD is clean.
 
-## 5. The translations are staged
+## 6. The translations are staged
 
 `EDITORIAL_LOCALES` in `page.tsx` lists the locales whose content module is the
 rewritten guide; the rest render the previous feature manual inside the old
@@ -139,7 +188,7 @@ is a one-shot 301 campaign, not something to do six times), while the prose is
 translated as it is written. Delete the set and the legacy branch once the last
 locale is across.
 
-## 6. Companion post
+## 7. Companion post
 
 [`content/blog/de/sind-70-minuten-viel.md`](../../content/blog/de/sind-70-minuten-viel.md)
 makes the same argument in prose with **live** widgets rather than fixtures

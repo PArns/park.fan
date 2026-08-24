@@ -5,7 +5,8 @@ import type { Metadata } from 'next';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { ArticleStructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { Hero } from '@/components/marketing/editorial-ui';
+import { GuideHero } from './_chrome';
+import { TARON_WAIT_NOW } from './_fixtures';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import type { ComponentType } from 'react';
 import { RouteMessages } from '@/i18n/route-messages';
@@ -45,6 +46,10 @@ interface PageHeader {
   scrollLabel?: string;
   heroAlt?: string;
   stats?: Array<{ value: string; label: string }>;
+  /** Unit under the hero's wait-time sign. */
+  signUnit?: string;
+  /** One line under the sign, naming what it is. */
+  signCaption?: string;
 }
 
 const PAGE_HEADERS: Record<Locale, PageHeader> = {
@@ -57,6 +62,8 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
       '70 Minuten bei Taron. Viel? Normal? Eine Zahl allein beantwortet das nicht. Diese Seite zeigt, was park.fan daraus macht, und woher es das weiß.',
     scrollLabel: 'Scrollen',
     heroAlt: 'Phantasialand am Abend',
+    signUnit: 'Minuten',
+    signCaption: 'Taron, Phantasialand. Mehr sagt das Schild nicht.',
     stats: [
       { value: '212', label: 'Parks' },
       { value: '7.156', label: 'Attraktionen' },
@@ -295,7 +302,7 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
       <>
         {seo}
 
-        <Hero
+        <GuideHero
           kicker={header.kicker!}
           title={header.title}
           tagline={header.tagline!}
@@ -303,10 +310,19 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
           imageAlt={header.heroAlt!}
           stats={header.stats!}
           scrollLabel={header.scrollLabel!}
-          titleClassName="max-w-4xl text-4xl font-black tracking-tight sm:text-6xl"
+          sign={{
+            value: TARON_WAIT_NOW,
+            unit: header.signUnit!,
+            caption: header.signCaption!,
+          }}
         />
 
-        <div id="start" className="space-y-16 py-14 sm:space-y-24 sm:py-20">
+        {/* `overflow-x-clip` catches the decorative bleed — the sign's glow, the
+            per-chapter ambience — which is wider than a phone and would otherwise
+            hand the document a horizontal scrollbar. `clip` rather than `hidden`:
+            hidden makes this a scroll container and the sticky figure in chapter
+            02 would stick to it instead of the viewport. */}
+        <div id="start" className="space-y-16 overflow-x-clip py-14 sm:space-y-24 sm:py-20">
           <Content />
         </div>
       </>

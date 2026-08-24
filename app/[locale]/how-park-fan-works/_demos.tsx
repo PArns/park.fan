@@ -9,12 +9,13 @@ import { ParkCalendarDay } from '@/components/parks/park-calendar-day';
 import { NoLiveWaitTimesNotice } from '@/components/parks/no-live-wait-times-notice';
 import { HourlyP90Sparkline } from '@/components/parks/hourly-p90-sparkline';
 import { getServerNowMs } from '@/lib/utils/server-time';
+import { WaitSign } from './_chrome';
 import {
   buildDemoFixtures,
   DEMO_CALENDAR_DAYS,
   DEMO_TIMEZONE,
   OFF_SEASON_CARD,
-  TARON_HOURLY_P90,
+  HOURLY_SHAPES,
   TARON_TYPICAL_WAITS,
   TARON_WAIT_NOW,
 } from './_fixtures';
@@ -112,14 +113,10 @@ export async function BareNumberVsCard({
         <div className="text-muted-foreground mb-3 text-[11px] font-semibold tracking-widest uppercase">
           {signLabel}
         </div>
-        {/* The entrance sign, near enough: black box, amber dot-matrix, one number. */}
-        <div className="flex min-h-[220px] flex-1 flex-col items-center justify-center rounded-2xl border border-neutral-700 bg-neutral-900 shadow-inner">
-          <div className="font-mono text-7xl leading-none font-bold text-amber-400 tabular-nums">
-            {TARON_WAIT_NOW}
-          </div>
-          <div className="mt-3 font-mono text-xs tracking-[0.3em] text-amber-400/70 uppercase">
-            {unit}
-          </div>
+        {/* The same sign the hero shows, so the page opens and re-opens on one
+            object rather than two panels that merely resemble each other. */}
+        <div className="flex min-h-[220px] flex-1 items-center justify-center">
+          <WaitSign value={TARON_WAIT_NOW} unit={unit} size="md" className="w-full" />
         </div>
         <p className="text-muted-foreground mt-2 text-xs leading-relaxed">{signCaption}</p>
       </div>
@@ -162,52 +159,56 @@ export async function RopeDropDemo({ className }: { className?: string }) {
 }
 
 /**
- * Taron's day in 90th-percentile minutes per hour.
+ * The same day at two rides, as a pair of curves.
  *
- * `HourlyP90Sparkline` is the production curve (the attraction history grid
- * mounts one per day) and takes its height from the container — hence the
- * explicit `h-40`, the same arrangement `/ui` uses. The two callouts and the
- * hour ruler are the teaching part: the section's whole argument is *where* on
- * this curve the peak and the evening trough sit, and a bare line says neither.
+ * `HourlyP90Sparkline` is the production line (the attraction history grid
+ * mounts one per day) and takes its height from its container — hence the
+ * explicit box, the same arrangement `/ui` uses. The spread label under each is
+ * the whole comparison: one ride's queue moves by a few minutes across the day,
+ * the other's by more than half.
  */
 export function HourlyShapeDemo({
-  peakLabel,
-  troughLabel,
+  spreadLabel,
   unit,
+  hoursLabel,
 }: {
-  peakLabel: string;
-  troughLabel: string;
+  spreadLabel: string;
   unit: string;
+  hoursLabel: string;
 }) {
-  const peak = TARON_HOURLY_P90.reduce((a, b) => (b.value > a.value ? b : a));
-  const trough = TARON_HOURLY_P90[TARON_HOURLY_P90.length - 1];
-  const first = TARON_HOURLY_P90[0];
-  const span = TARON_HOURLY_P90.length - 1;
-  const xOf = (hour: string) => (TARON_HOURLY_P90.findIndex((p) => p.hour === hour) / span) * 100;
-
+  // One scale for both charts. Each sparkline otherwise fits its own maximum,
+  // which draws a 7-minute band with the same amplitude as a 22-minute one and
+  // inverts the comparison this figure exists to make.
+  const sharedMax = Math.max(...HOURLY_SHAPES.flatMap((s) => s.points.map((p) => p.value)));
   return (
-    <div className="not-prose">
-      {/* The height goes on the wrapper: `Sparkline` prepends its own `h-full`,
-          and two height utilities on one element resolve by stylesheet order,
-          not by the order they were written in. */}
-      <div className="relative h-44">
-        <HourlyP90Sparkline hourlyP90={TARON_HOURLY_P90} className="text-primary" />
-        {/* Out of flow, so neither callout can change the figure's height. */}
-        <span
-          className="absolute -top-1 -translate-x-1/2 rounded-md bg-rose-500/90 px-1.5 py-0.5 text-[10px] leading-none font-semibold whitespace-nowrap text-white"
-          style={{ left: `${xOf(peak.hour)}%` }}
-        >
-          {peakLabel} {peak.value} {unit}
-        </span>
-        <span className="absolute right-0 bottom-6 rounded-md bg-emerald-600/90 px-1.5 py-0.5 text-[10px] leading-none font-semibold whitespace-nowrap text-white">
-          {troughLabel} {trough.value} {unit}
-        </span>
-      </div>
-      <div className="text-muted-foreground/80 mt-1 flex justify-between text-[10px] tabular-nums">
-        <span>{first.hour}</span>
-        <span>{peak.hour}</span>
-        <span>{trough.hour}</span>
-      </div>
+    <div className="not-prose grid gap-5 sm:grid-cols-2">
+      {HOURLY_SHAPES.map((s) => {
+        const lo = Math.min(...s.points.map((p) => p.value));
+        const hi = Math.max(...s.points.map((p) => p.value));
+        return (
+          <figure key={s.name} className="bg-card/60 rounded-xl border p-4">
+            <figcaption className="mb-2 flex items-baseline justify-between gap-2">
+              <span className="text-sm font-semibold">{s.name}</span>
+              <span className="text-muted-foreground text-[11px] tabular-nums">
+                {lo}–{hi} {unit}
+              </span>
+            </figcaption>
+            <div className="h-28">
+              <HourlyP90Sparkline hourlyP90={s.points} yMax={sharedMax} className="text-primary" />
+            </div>
+            <div className="text-muted-foreground/80 mt-1 flex justify-between text-[10px] tabular-nums">
+              {s.points.map((p) => (
+                <span key={p.hour}>{p.hour.slice(0, 2)}</span>
+              ))}
+            </div>
+            <p className="text-muted-foreground mt-2 text-xs">
+              {spreadLabel} <strong className="text-foreground tabular-nums">{s.spread}</strong>{' '}
+              {unit}
+            </p>
+          </figure>
+        );
+      })}
+      <p className="text-muted-foreground text-xs leading-relaxed sm:col-span-2">{hoursLabel}</p>
     </div>
   );
 }
