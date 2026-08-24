@@ -356,18 +356,9 @@ percentile 36.
 
 Le dieci attrazioni più richieste:
 
-| Attrazione                                                         | Area         | Tipico (mediana) | Picco (P90) | Giorni misurati |
-| ------------------------------------------------------------------ | ------------ | ---------------: | ----------: | --------------: |
-| **[Joris en de Draak](ref:efteling/joris-en-de-draak?bare)**       | Ruigrijk     |       **34 min** |      41 min |             129 |
-| [Danse Macabre](ref:efteling/danse-macabre?bare)                   | Anderrijk    |           31 min |      36 min |             138 |
-| [De Vliegende Hollander](ref:efteling/de-vliegende-hollander?bare) | Ruigrijk     |           29 min |      33 min |             133 |
-| [Symbolica](ref:efteling/symbolica?bare)                           | Fantasierijk |           28 min |      33 min |             141 |
-| [Baron 1898](ref:efteling/baron-1898?bare)                         | Ruigrijk     |           26 min |      32 min |             116 |
-| [Piraña](ref:efteling/pirana?bare)                                 | Anderrijk    |           25 min |      30 min |             128 |
-| [Stoomtrein Oost](ref:efteling/stoomtrein-oost?bare)               | Ruigrijk     |           24 min |      28 min |              32 |
-| [Droomvlucht](ref:efteling/droomvlucht?bare)                       | Marerijk     |           22 min |      27 min |             137 |
-| [Max & Moritz](ref:efteling/max-and-moritz?bare)                   | Anderrijk    |           22 min |      27 min |             121 |
-| [Stoomtrein Marerijk](ref:efteling/stoomtrein-marerijk?bare)       | Marerijk     |           22 min |      26 min |              41 |
+```ride-waits-widget park=efteling top=10 columns=land,peak,days highlight=joris-en-de-draak
+
+```
 
 Due cose saltano all'occhio.
 
@@ -379,15 +370,14 @@ bambini stanchi non vogliono più camminare. La base di misura, però, con 32 e
 segnalano attese tutto l'anno. Non forzerei l'ordine che c'è dietro, ma l'ordine di
 grandezza tiene.
 
-Secondo: 34 minuti per la fila più lunga del parco sono, rapportati a quasi sei
-milioni di visite, pochi. Per confronto, stessa base dati, stesso metodo:
+Secondo: una buona mezz’ora per la fila più lunga del parco è, rapportata a quasi
+sei milioni di visite, poca. Per confronto, stessa base dati, stesso metodo. I
+numeri di visitatori del 2025: Europa-Park 7 mln per tutto il resort, Efteling
+5,78 mln, Toverland 1,14 mln.
 
-| Parco                                         | Pubblico 2025         | Tipico nel parco | Fila più lunga                                                           |
-| --------------------------------------------- | --------------------- | ---------------: | ------------------------------------------------------------------------ |
-| [Phantasialand](ref:phantasialand?bare)       | nessun dato ufficiale |           31 min | 48 min ([Taron](ref:phantasialand/taron?bare))                           |
-| **[Efteling](ref:efteling?bare)**             | **5,78 mln**          |       **25 min** | 34 min (Joris en de Draak)                                               |
-| [Europa-Park](ref:europa-park?bare)           | 7 mln (resort)        |           23 min | 34 min ([Voltron](ref:europa-park/voltron-nevera-powered-by-rimac?bare)) |
-| [Toverland](ref:attractiepark-toverland?bare) | 1,14 mln              |           15 min | 21 min ([Booster Bike](ref:attractiepark-toverland/booster-bike?bare))   |
+```park-comparison-widget slugs=phantasialand,efteling,europa-park,attractiepark-toverland highlight=efteling
+
+```
 
 Phantasialand non pubblica il proprio numero di visitatori; le stime del settore lo
 collocano intorno ai due milioni. Ha quindi una frazione del pubblico di Efteling e
@@ -519,15 +509,9 @@ La direzione tiene, la classifica al decimale no.
 **Per giorno della settimana** si fa interessante, perché il consiglio abituale qui
 si dissolve:
 
-| Giorno    | Tipico (mediana) | Picco (P90) |
-| --------- | ---------------: | ----------: |
-| Giovedì   |           23 min |      33 min |
-| Domenica  |           23 min |      34 min |
-| Venerdì   |           24 min |      35 min |
-| Martedì   |           25 min |      36 min |
-| Mercoledì |           25 min |      36 min |
-| Sabato    |           26 min |      37 min |
-| Lunedì    |           27 min |      39 min |
+```stats-widget slug=efteling show=weekdays
+
+```
 
 Tra il giorno migliore e il peggiore della settimana ci sono quattro minuti. A
 Phantasialand tra un martedì e un sabato c'è un abisso; qui il giorno non cambia
@@ -546,10 +530,9 @@ quello tedesco. I giorni più tranquilli in arrivo:
 
 ```
 
-E l'affluenza per mesi e giorni della settimana, calcolata sulle ultime due
-stagioni:
+E l'affluenza per mesi, calcolata sulle ultime due stagioni:
 
-```stats-widget slug=efteling
+```stats-widget slug=efteling show=months
 
 ```
 

@@ -149,23 +149,17 @@ Siebzig Kilometer weiter nordwestlich steht im [Efteling](ref:efteling)
 Doppelstrecken-Anlage ein Publikumsmagnet. Gleiche Datenbasis, gleiche
 Rechenmethode:
 
-| Holzachterbahn                                                           | Park                                          | Typisch (Median) | Spitze (P90) |
-| ------------------------------------------------------------------------ | --------------------------------------------- | ---------------: | -----------: |
-| **[Troy](ref:attractiepark-toverland/troy?bare)** (GCI, 2007)            | [Toverland](ref:attractiepark-toverland?bare) |       **16 Min** |       21 Min |
-| **[Joris en de Draak](ref:efteling/joris-en-de-draak?bare)** (GCI, 2010) | [Efteling](ref:efteling?bare)                 |           34 Min |       40 Min |
+```ride-waits-widget rides=attractiepark-toverland/troy|Troy (GCI, 2007);efteling/joris-en-de-draak|Joris en de Draak (GCI, 2010) columns=park,peak highlight=attractiepark-toverland/troy
+
+```
 
 Mehr als das Doppelte, für eine Bahn, die unter Enthusiasten in kaum einem
 Ranking über Troy steht. Über die Bauart hinweg wird das Bild noch deutlicher.
 Was kosten die großen Namen der Region an Wartezeit, egal ob Holz oder Stahl?
 
-| Achterbahn                                               | Bauart              | Park                                              | Typisch (Median) | Spitze (P90) |
-| -------------------------------------------------------- | ------------------- | ------------------------------------------------- | ---------------: | -----------: |
-| [Taron](ref:phantasialand/taron?bare)                    | Multi-Launch, Stahl | [Phantasialand](ref:phantasialand?bare)           |           48 Min |       54 Min |
-| [F.L.Y.](ref:phantasialand/fly?bare)                     | Flying, Stahl       | [Phantasialand](ref:phantasialand?bare)           |           40 Min |       47 Min |
-| [Joris en de Draak](ref:efteling/joris-en-de-draak?bare) | Holz                | [Efteling](ref:efteling?bare)                     |           34 Min |       40 Min |
-| [Baron 1898](ref:efteling/baron-1898?bare)               | Dive Coaster, Stahl | [Efteling](ref:efteling?bare)                     |           26 Min |       32 Min |
-| **[Troy](ref:attractiepark-toverland/troy?bare)**        | **Holz**            | **[Toverland](ref:attractiepark-toverland?bare)** |       **16 Min** |   **21 Min** |
-| **[Fēnix](ref:attractiepark-toverland/fenix?bare)**      | **Wing, Stahl**     | **[Toverland](ref:attractiepark-toverland?bare)** |       **16 Min** |   **20 Min** |
+```ride-waits-widget rides=phantasialand/taron|Taron|Multi-Launch, Stahl;phantasialand/fly|F.L.Y.|Flying, Stahl;efteling/joris-en-de-draak|Joris en de Draak|Holz;efteling/baron-1898|Baron 1898|Dive Coaster, Stahl;attractiepark-toverland/troy|Troy|Holz;attractiepark-toverland/fenix|Fēnix|Wing, Stahl columns=type,park,peak highlight=attractiepark-toverland/troy
+
+```
 
 Die beiden Toverland-Bahnen stehen unten, mit Abstand. Für die Zeit, die du im
 Phantasialand **einmal** bei [Taron](ref:phantasialand/taron) anstehst, fährst du

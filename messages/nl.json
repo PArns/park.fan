@@ -641,7 +641,18 @@
       "comparisonTitle": "Vergeleken met andere parken",
       "parkAverage": "Parkgemiddelde",
       "longestQueue": "Langste rij",
-      "comparisonPark": "Park"
+      "comparisonPark": "Park",
+      "rideWaitsTitle": "Wachttijden vergeleken",
+      "rideWaitsRide": "Attractie",
+      "rideWaitsLand": "Gebied",
+      "rideWaitsType": "Type",
+      "rideWaitsSampleDays": "Meetdagen",
+      "typicalWait": "Typisch (mediaan)",
+      "peakWait": "Piek (P90)",
+      "hourlyProfileTitle": "Wachttijd per uur",
+      "hourlyProfileHour": "Uur",
+      "hourlyProfilePeakNote": "Het drukste uur van elke attractie staat vet.",
+      "hourlyProfileFootnote": "Typische wachttijd in minuten, uit {days} meetdagen."
     },
     "bestDays": {
       "title": "Beste tijd om {park} te bezoeken",

@@ -658,28 +658,19 @@ En Voltron ese mismo valor está en 20 minutos; en Arthur y Silver Star, en 25.
 Todo correcto, pero nada por lo que uno se levante a las ocho. Las montañas rusas
 se pueden repartir a lo largo del día, el teatro volador no.
 
-Hasta qué punto se reparte todo esto por el día solo se ve en el perfil horario.
-Las cifras que hay ahí son más altas que las medianas anteriores porque miden otra
-cosa. La base es el percentil 90 de cada cuarto de hora, es decir, el extremo
-superior de lo que estuvo anunciado en esos quince minutos. Promediado sobre la
-hora y sobre los últimos treinta días de operación sale esto.
+Hasta qué punto se reparte todo esto por el día solo se ve en el perfil horario:
+la espera típica de cada hora, promediada sobre un año de días de operación. En
+negrita, la hora más cargada de cada atracción.
 
-| Atracción             | 9 h |   10 h |   11 h | 12 h | 13 h | 14 h |   15 h | 16 h | 17 h | 18 h |
-| --------------------- | --: | -----: | -----: | ---: | ---: | ---: | -----: | ---: | ---: | ---: |
-| Voletarium            |  33 | **57** |     48 |   30 |   38 |   31 |     30 |   28 |   21 |   16 |
-| Voltron Nevera        |  33 | **42** | **42** |   35 |   32 |   29 |     29 |   28 |   29 |   29 |
-| Arthur                |  28 | **35** |     33 |   30 |   31 |   33 |     33 |   33 |   31 |   25 |
-| Eurosat               |  32 | **42** |     38 |   32 |   29 |   29 |     29 |   29 |   26 |   23 |
-| Wodan                 |  26 |     30 | **36** |   32 |   32 |   31 |     34 |   32 |   28 |   19 |
-| Silver Star           |  26 | **36** |     31 |   24 |   22 |   20 |     22 |   21 |   22 |   23 |
-| Poseidon              |   8 |     28 | **40** |   37 |   36 |   35 |     34 |   32 |   26 |   17 |
-| Atlantica SuperSplash |   6 |     15 |     26 |   27 |   29 |   31 | **34** |   31 |   26 |   15 |
+```hourly-profile-widget slug=europa-park top=8
+
+```
 
 ![La colina de subida y la primera bajada de Silver Star por encima de las copas de los árboles, con cielo de atardecer | Desde 2026 la atracción pertenece a la nueva zona temática de Mónaco. | right](/media/europa-park/silver-star-4x3.jpg)
 
 La fila que me sorprendió la primera vez es la de Silver Star. A las diez de la
-mañana haces allí 36 minutos, a partir de las doce solo unos veinte largos, y eso
-ya no cambia hasta la hora del cierre. Una atracción de 73 metros que funciona
+mañana está su cola más larga del día; a partir de las doce es más o menos la
+mitad, y eso ya no cambia hasta la hora del cierre. Una atracción de 73 metros que funciona
 medio vacía durante media jornada porque todo el mundo pasó por allí por la
 mañana.
 
@@ -689,10 +680,10 @@ por la tarde. Quien
 desayuna con calma y llega a las diez y media entra exactamente en el pico del
 día.
 
-![Un barco de madera destrozado en el estanque de Poseidon, con una muralla detrás | A las nueve de la mañana haces aquí ocho minutos de cola; a las once son cuarenta. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
+![Un barco de madera destrozado en el estanque de Poseidon, con una muralla detrás | Casi vacía al abrir; a las once, la cola más larga del día. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
 
-Y luego, las acuáticas. Poseidon está a las nueve en ocho minutos, Atlantica en
-seis. A las once son 40 y 26. Quien esté dispuesto a mojarse por la mañana monta
+Y luego, las acuáticas. Al abrir el parque las dos están en un cuarto de hora o
+menos; Poseidon llega a su máximo a las once y Atlantica solo por la tarde. Quien esté dispuesto a mojarse por la mañana monta
 en las dos en el tiempo que a mediodía le costaría una.
 
 Un plan de día que sale de ahí:

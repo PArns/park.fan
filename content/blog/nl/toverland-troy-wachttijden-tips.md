@@ -145,24 +145,18 @@ Zeventig kilometer noordwestelijker staat in de [Efteling](ref:efteling)
 **Joris en de Draak**, ook van GCI, drie jaar jonger, als racende dubbelbaan een
 publiekstrekker. Zelfde databasis, zelfde rekenmethode:
 
-| Houten achtbaan                                                          | Park                                          | Typisch (mediaan) | Piek (P90) |
-| ------------------------------------------------------------------------ | --------------------------------------------- | ----------------: | ---------: |
-| **[Troy](ref:attractiepark-toverland/troy?bare)** (GCI, 2007)            | [Toverland](ref:attractiepark-toverland?bare) |        **16 min** |     21 min |
-| **[Joris en de Draak](ref:efteling/joris-en-de-draak?bare)** (GCI, 2010) | [Efteling](ref:efteling?bare)                 |            34 min |     40 min |
+```ride-waits-widget rides=attractiepark-toverland/troy|Troy (GCI, 2007);efteling/joris-en-de-draak|Joris en de Draak (GCI, 2010) columns=park,peak highlight=attractiepark-toverland/troy
+
+```
 
 Meer dan het dubbele, voor een baan die onder liefhebbers in bijna geen enkele
 ranglijst boven Troy staat. Over de bouwwijzen heen wordt het beeld nog
 duidelijker. Wat kosten de grote namen van de regio aan wachttijd, hout of
 staal?
 
-| Achtbaan                                                 | Type                | Park                                              | Typisch (mediaan) | Piek (P90) |
-| -------------------------------------------------------- | ------------------- | ------------------------------------------------- | ----------------: | ---------: |
-| [Taron](ref:phantasialand/taron?bare)                    | Multi-launch, staal | [Phantasialand](ref:phantasialand?bare)           |            48 min |     54 min |
-| [F.L.Y.](ref:phantasialand/fly?bare)                     | Flying, staal       | [Phantasialand](ref:phantasialand?bare)           |            40 min |     47 min |
-| [Joris en de Draak](ref:efteling/joris-en-de-draak?bare) | Hout                | [Efteling](ref:efteling?bare)                     |            34 min |     40 min |
-| [Baron 1898](ref:efteling/baron-1898?bare)               | Dive coaster, staal | [Efteling](ref:efteling?bare)                     |            26 min |     32 min |
-| **[Troy](ref:attractiepark-toverland/troy?bare)**        | **Hout**            | **[Toverland](ref:attractiepark-toverland?bare)** |        **16 min** | **21 min** |
-| **[Fēnix](ref:attractiepark-toverland/fenix?bare)**      | **Wing, staal**     | **[Toverland](ref:attractiepark-toverland?bare)** |        **16 min** | **20 min** |
+```ride-waits-widget rides=phantasialand/taron|Taron|Multi-launch, staal;phantasialand/fly|F.L.Y.|Flying, staal;efteling/joris-en-de-draak|Joris en de Draak|Hout;efteling/baron-1898|Baron 1898|Dive coaster, staal;attractiepark-toverland/troy|Troy|Hout;attractiepark-toverland/fenix|Fēnix|Wing, staal columns=type,park,peak highlight=attractiepark-toverland/troy
+
+```
 
 De twee Toverland-banen staan onderaan, met afstand. Voor de tijd die je in
 Phantasialand **één keer** bij [Taron](ref:phantasialand/taron) staat, rijd je

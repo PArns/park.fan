@@ -358,18 +358,9 @@ Wochentage gerechnet liegt die **typische Wartezeit im Parkschnitt bei
 
 Die gefragtesten zehn Attraktionen:
 
-| Attraktion                                                         | Bereich      | Typisch (Median) | Spitze (P90) | Messtage |
-| ------------------------------------------------------------------ | ------------ | ---------------: | -----------: | -------: |
-| **[Joris en de Draak](ref:efteling/joris-en-de-draak?bare)**       | Ruigrijk     |       **34 Min** |       41 Min |      129 |
-| [Danse Macabre](ref:efteling/danse-macabre?bare)                   | Anderrijk    |           31 Min |       36 Min |      138 |
-| [De Vliegende Hollander](ref:efteling/de-vliegende-hollander?bare) | Ruigrijk     |           29 Min |       33 Min |      133 |
-| [Symbolica](ref:efteling/symbolica?bare)                           | Fantasierijk |           28 Min |       33 Min |      141 |
-| [Baron 1898](ref:efteling/baron-1898?bare)                         | Ruigrijk     |           26 Min |       32 Min |      116 |
-| [Piraña](ref:efteling/pirana?bare)                                 | Anderrijk    |           25 Min |       30 Min |      128 |
-| [Stoomtrein Oost](ref:efteling/stoomtrein-oost?bare)               | Ruigrijk     |           24 Min |       28 Min |       32 |
-| [Droomvlucht](ref:efteling/droomvlucht?bare)                       | Marerijk     |           22 Min |       27 Min |      137 |
-| [Max & Moritz](ref:efteling/max-and-moritz?bare)                   | Anderrijk    |           22 Min |       27 Min |      121 |
-| [Stoomtrein Marerijk](ref:efteling/stoomtrein-marerijk?bare)       | Marerijk     |           22 Min |       26 Min |       41 |
+```ride-waits-widget park=efteling top=10 columns=land,peak,days highlight=joris-en-de-draak
+
+```
 
 Zwei Dinge fallen auf.
 
@@ -381,16 +372,14 @@ wollen. Die Messbasis ist mit 32 und 41 Tagen allerdings deutlich dünner als be
 den anderen, weil die Bahnhöfe nicht ganzjährig Wartezeiten melden. Ich würde die
 Reihenfolge dahinter nicht überstrapazieren, die Größenordnung passt aber.
 
-Zweitens: 34 Minuten für die längste Schlange des Parks sind, gemessen an fast
-sechs Millionen Besuchen, wenig. Zum Vergleich, gleiche Datenbasis, gleiche
-Rechenmethode:
+Zweitens: gut eine halbe Stunde für die längste Schlange des Parks ist, gemessen
+an fast sechs Millionen Besuchen, wenig. Zum Vergleich, gleiche Datenbasis,
+gleiche Rechenmethode. Die Besucherzahlen 2025 dazu: Europa-Park 7 Mio im ganzen
+Resort, Efteling 5,78 Mio, Toverland 1,14 Mio.
 
-| Park                                          | Publikum 2025         | Typisch im Parkschnitt | Längste Schlange                                                         |
-| --------------------------------------------- | --------------------- | ---------------------: | ------------------------------------------------------------------------ |
-| [Phantasialand](ref:phantasialand?bare)       | keine offizielle Zahl |                 31 Min | 48 Min ([Taron](ref:phantasialand/taron?bare))                           |
-| **[Efteling](ref:efteling?bare)**             | **5,78 Mio**          |             **25 Min** | 34 Min (Joris en de Draak)                                               |
-| [Europa-Park](ref:europa-park?bare)           | 7 Mio (Resort)        |                 23 Min | 34 Min ([Voltron](ref:europa-park/voltron-nevera-powered-by-rimac?bare)) |
-| [Toverland](ref:attractiepark-toverland?bare) | 1,14 Mio              |                 15 Min | 21 Min ([Booster Bike](ref:attractiepark-toverland/booster-bike?bare))   |
+```park-comparison-widget slugs=phantasialand,efteling,europa-park,attractiepark-toverland highlight=efteling
+
+```
 
 Das Phantasialand veröffentlicht seine Besucherzahl nicht, Branchenschätzungen
 liegen bei rund zwei Millionen. Es hat damit einen Bruchteil des
@@ -526,15 +515,9 @@ auswertbaren Tage. Die Richtung stimmt, die Rangfolge im Nachkommabereich nicht.
 
 **Nach Wochentag** wird es interessant, weil sich der übliche Rat hier auflöst:
 
-| Tag        | Typisch (Median) | Spitze (P90) |
-| ---------- | ---------------: | -----------: |
-| Donnerstag |           23 Min |       33 Min |
-| Sonntag    |           23 Min |       34 Min |
-| Freitag    |           24 Min |       35 Min |
-| Dienstag   |           25 Min |       36 Min |
-| Mittwoch   |           25 Min |       36 Min |
-| Samstag    |           26 Min |       37 Min |
-| Montag     |           27 Min |       39 Min |
+```stats-widget slug=efteling show=weekdays
+
+```
 
 Zwischen dem besten und dem schlechtesten Wochentag liegen vier Minuten. Im
 Phantasialand sind es zwischen Dienstag und Samstag Welten, hier ist der
@@ -553,10 +536,9 @@ zuerst, der deutsche danach. Die ruhigsten kommenden Tage:
 
 ```
 
-Und der Andrang über Monate und Wochentage, gerechnet aus den letzten beiden
-Saisons:
+Und der Andrang über die Monate, gerechnet aus den letzten beiden Saisons:
 
-```stats-widget slug=efteling
+```stats-widget slug=efteling show=months
 
 ```
 

@@ -472,15 +472,9 @@ tombent neuf mesures sur dix, atteint 31 minutes.
 
 Coaster par coaster, cela donne ceci :
 
-| Attraction                                                        | Type                | Typique (médiane) | Pointe (P90) | Jours mesurés |
-| ----------------------------------------------------------------- | ------------------- | ----------------: | -----------: | ------------: |
-| [YOY THRILL](ref:walibi-holland/yoy-thrill?bare)                  | Rail unique, acier  |            27 min |       34 min |           122 |
-| [Condor](ref:walibi-holland/condor?bare)                          | Suspended, acier    |            22 min |       30 min |           107 |
-| [YOY CHILL](ref:walibi-holland/yoy-chill?bare)                    | Rail unique, acier  |            22 min |       28 min |           115 |
-| [Lost Gravity](ref:walibi-holland/lost-gravity?bare)              | Big Dipper, acier   |            22 min |       27 min |           108 |
-| **[UNTAMED](ref:walibi-holland/untamed?bare)**                    | **Hybride**         |        **20 min** |   **25 min** |       **114** |
-| [Xpress: Platform 13](ref:walibi-holland/xpress-platform-13?bare) | Launch, acier       |            18 min |       25 min |           115 |
-| [Goliath](ref:walibi-holland/goliath?bare)                        | Mega Coaster, acier |            18 min |       24 min |           114 |
+```ride-waits-widget rides=walibi-holland/yoy-thrill|YOY THRILL|Rail unique, acier;walibi-holland/condor|Condor|Suspended, acier;walibi-holland/yoy-chill|YOY CHILL|Rail unique, acier;walibi-holland/lost-gravity|Lost Gravity|Big Dipper, acier;walibi-holland/untamed|UNTAMED|Hybride;walibi-holland/xpress-platform-13|Xpress: Platform 13|Launch, acier;walibi-holland/goliath|Goliath|Mega Coaster, acier columns=type,peak,days highlight=walibi-holland/untamed
+
+```
 
 Le meilleur coaster du parc figure dans la moitié basse de ce tableau. On
 patiente plus longtemps pour la nouveauté, pour un SLC de 1994 et pour un Mack
@@ -491,16 +485,9 @@ tu auras fait Untamed trois fois avant que la file de YOY n'ait tourné une fois
 Cela devient plus intéressant en comparaison du voisinage. Mêmes données, même
 méthode de calcul, deux dernières saisons :
 
-| Coaster                                                  | Parc                                          | Typique (médiane) | Pointe (P90) |
-| -------------------------------------------------------- | --------------------------------------------- | ----------------: | -----------: |
-| [Taron](ref:phantasialand/taron?bare)                    | [Phantasialand](ref:phantasialand?bare)       |            49 min |       56 min |
-| [F.L.Y.](ref:phantasialand/fly?bare)                     | [Phantasialand](ref:phantasialand?bare)       |            41 min |       49 min |
-| [Joris en de Draak](ref:efteling/joris-en-de-draak?bare) | [Efteling](ref:efteling?bare)                 |            35 min |       41 min |
-| [Black Mamba](ref:phantasialand/black-mamba?bare)        | [Phantasialand](ref:phantasialand?bare)       |            31 min |       40 min |
-| [Baron 1898](ref:efteling/baron-1898?bare)               | [Efteling](ref:efteling?bare)                 |            26 min |       32 min |
-| **[UNTAMED](ref:walibi-holland/untamed?bare)**           | **[Walibi Holland](ref:walibi-holland?bare)** |        **20 min** |   **25 min** |
-| [Kondaa](ref:walibi-belgium/kondaa?bare)                 | [Walibi Belgium](ref:walibi-belgium?bare)     |            20 min |       25 min |
-| [Troy](ref:attractiepark-toverland/troy?bare)            | [Toverland](ref:attractiepark-toverland?bare) |            16 min |       21 min |
+```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/fly|F.L.Y.;efteling/joris-en-de-draak|Joris en de Draak;phantasialand/black-mamba|Black Mamba;efteling/baron-1898|Baron 1898;walibi-holland/untamed|UNTAMED;walibi-belgium/kondaa|Kondaa;attractiepark-toverland/troy|Troy columns=park,peak highlight=walibi-holland/untamed
+
+```
 
 Dans le temps où tu fais **une fois** la file de [Taron](ref:phantasialand/taron)
 à Phantasialand, tu fais Untamed deux fois et demie. À l'échelle des parcs le
@@ -757,15 +744,9 @@ pèsent ici bien plus lourd que les siennes.
 **Par jour de la semaine** cela devient curieux. Le jour chargé n'est pas le
 samedi :
 
-| Jour     | Typique | Pointe (P90) |
-| -------- | ------: | -----------: |
-| Jeudi    |  18 min |       30 min |
-| Dimanche |  19 min |       30 min |
-| Samedi   |  19 min |       29 min |
-| Lundi    |  20 min |       31 min |
-| Mardi    |  21 min |       32 min |
-| Mercredi |  21 min |       33 min |
-| Vendredi |  21 min |       34 min |
+```stats-widget slug=walibi-holland show=weekdays
+
+```
 
 Trois minutes séparent le jour le plus calme du plus chargé. Le week-end n'est
 donc tout simplement pas un cas particulier ici, et la raison est banale : hors
@@ -781,10 +762,10 @@ calendrier d'affluence :
 
 ```
 
-Et voici comment l'affluence se répartit sur les mois et les jours de la
-semaine, calculée sur les deux dernières saisons :
+Et voici comment l'affluence se répartit sur les mois, calculée sur les deux
+dernières saisons :
 
-```stats-widget slug=walibi-holland
+```stats-widget slug=walibi-holland show=months
 
 ```
 

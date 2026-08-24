@@ -46,6 +46,8 @@ import { BlogWeatherWidget } from './blog-weather-widget';
 import { BlogBestDaysWidget } from './blog-best-days-widget';
 import { BlogStatsWidget } from './blog-stats-widget';
 import { BlogParkComparisonWidget } from './blog-park-comparison-widget';
+import { BlogRideWaitsWidget } from './blog-ride-waits-widget';
+import { BlogHourlyProfileWidget } from './blog-hourly-profile-widget';
 import { BlogGlossaryWidget } from './blog-glossary-widget';
 import { BlogGallery } from './blog-gallery';
 import { listFolderImages, resolveGallery } from '@/lib/blog/gallery';
@@ -114,6 +116,7 @@ const PARK_SLUG_WIDGETS = new Set([
   'weather-widget',
   'best-days-widget',
   'stats-widget',
+  'hourly-profile-widget',
 ]);
 
 const SAFE_HTTP_LIKE = /^(https?:|mailto:|tel:|#|\/)/i;
@@ -359,9 +362,21 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
     if (PARK_SLUG_WIDGETS.has(name) && attrs.slug && !parkMap.has(attrs.slug)) {
       parkMap.set(attrs.slug, await resolvePark(attrs.slug));
     }
-    // The only widget keyed by a LIST of parks, so it can't join PARK_SLUG_WIDGETS above.
+    // The two widgets keyed by a LIST of parks, so they can't join PARK_SLUG_WIDGETS above.
     if (name === 'park-comparison-widget' && attrs.slugs) {
       for (const raw of attrs.slugs.split(',')) {
+        const slug = raw.trim();
+        if (slug && !parkMap.has(slug)) parkMap.set(slug, await resolvePark(slug));
+      }
+    }
+    if (name === 'ride-waits-widget') {
+      // Either one park (`park=`) or a semicolon-separated list of `parkSlug/rideSlug` entries,
+      // each of which may carry `|Label|Type` after the ref — the park slug is everything before
+      // the first slash. Semicolons because a ride type routinely holds a comma.
+      const slugs = attrs.park
+        ? [attrs.park]
+        : (attrs.rides ?? '').split(';').map((entry) => entry.split('|')[0].split('/')[0]);
+      for (const raw of slugs) {
         const slug = raw.trim();
         if (slug && !parkMap.has(slug)) parkMap.set(slug, await resolvePark(slug));
       }
@@ -830,6 +845,28 @@ function renderWidget(
     if (!slug) return null;
     const park = ctx.parkMap.get(slug) ?? null;
     return <BlogStatsWidget park={park} slug={slug} show={attrs.show} />;
+  }
+  if (name === 'ride-waits-widget') {
+    const parkSlug = attrs.park ?? attrs.slug;
+    if (!parkSlug && !attrs.rides) return null;
+    return (
+      <BlogRideWaitsWidget
+        parks={ctx.parkMap}
+        {...(parkSlug ? { parkSlug } : {})}
+        {...(attrs.rides ? { rides: attrs.rides } : {})}
+        {...(attrs.top ? { top: attrs.top } : {})}
+        {...(attrs.columns ? { columns: attrs.columns } : {})}
+        {...(attrs.highlight ? { highlight: attrs.highlight } : {})}
+      />
+    );
+  }
+  if (name === 'hourly-profile-widget') {
+    const slug = attrs.slug;
+    if (!slug) return null;
+    const park = ctx.parkMap.get(slug) ?? null;
+    return (
+      <BlogHourlyProfileWidget park={park} slug={slug} {...(attrs.top ? { top: attrs.top } : {})} />
+    );
   }
   if (name === 'park-comparison-widget') {
     const slugs = attrs.slugs;

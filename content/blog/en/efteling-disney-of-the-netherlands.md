@@ -347,18 +347,9 @@ at 36.
 
 The ten most in-demand attractions:
 
-| Attraction                                                         | Area         | Typical (median) | Peak (P90) | Days measured |
-| ------------------------------------------------------------------ | ------------ | ---------------: | ---------: | ------------: |
-| **[Joris en de Draak](ref:efteling/joris-en-de-draak?bare)**       | Ruigrijk     |       **34 min** |     41 min |           129 |
-| [Danse Macabre](ref:efteling/danse-macabre?bare)                   | Anderrijk    |           31 min |     36 min |           138 |
-| [De Vliegende Hollander](ref:efteling/de-vliegende-hollander?bare) | Ruigrijk     |           29 min |     33 min |           133 |
-| [Symbolica](ref:efteling/symbolica?bare)                           | Fantasierijk |           28 min |     33 min |           141 |
-| [Baron 1898](ref:efteling/baron-1898?bare)                         | Ruigrijk     |           26 min |     32 min |           116 |
-| [Piraña](ref:efteling/pirana?bare)                                 | Anderrijk    |           25 min |     30 min |           128 |
-| [Stoomtrein Oost](ref:efteling/stoomtrein-oost?bare)               | Ruigrijk     |           24 min |     28 min |            32 |
-| [Droomvlucht](ref:efteling/droomvlucht?bare)                       | Marerijk     |           22 min |     27 min |           137 |
-| [Max & Moritz](ref:efteling/max-and-moritz?bare)                   | Anderrijk    |           22 min |     27 min |           121 |
-| [Stoomtrein Marerijk](ref:efteling/stoomtrein-marerijk?bare)       | Marerijk     |           22 min |     26 min |            41 |
+```ride-waits-widget park=efteling top=10 columns=land,peak,days highlight=joris-en-de-draak
+
+```
 
 Two things stand out.
 
@@ -370,15 +361,14 @@ base is much thinner than the others at 32 and 41 days, because the stations do
 not report wait times all year. I would not lean on the exact ordering behind
 that, but the order of magnitude holds.
 
-Second: 34 minutes for the longest queue in the park is, measured against almost
-six million visits, very little. For comparison, same data base, same method:
+Second: a good half hour for the longest queue in the park is, measured against
+almost six million visits, very little. For comparison, same data base, same
+method. Attendance for 2025 alongside it: Europa-Park 7 m across the resort,
+Efteling 5.78 m, Toverland 1.14 m.
 
-| Park                                          | Attendance 2025    | Typical park-wide | Longest queue                                                            |
-| --------------------------------------------- | ------------------ | ----------------: | ------------------------------------------------------------------------ |
-| [Phantasialand](ref:phantasialand?bare)       | no official figure |            31 min | 48 min ([Taron](ref:phantasialand/taron?bare))                           |
-| **[Efteling](ref:efteling?bare)**             | **5.78 m**         |        **25 min** | 34 min (Joris en de Draak)                                               |
-| [Europa-Park](ref:europa-park?bare)           | 7 m (resort)       |            23 min | 34 min ([Voltron](ref:europa-park/voltron-nevera-powered-by-rimac?bare)) |
-| [Toverland](ref:attractiepark-toverland?bare) | 1.14 m             |            15 min | 21 min ([Booster Bike](ref:attractiepark-toverland/booster-bike?bare))   |
+```park-comparison-widget slugs=phantasialand,efteling,europa-park,attractiepark-toverland highlight=efteling
+
+```
 
 Phantasialand does not publish its attendance; industry estimates put it around
 two million. So it has a fraction of Efteling's crowd and still the longest queues
@@ -504,15 +494,9 @@ decimal does not.
 
 **By day of the week** it gets interesting, because the usual advice dissolves:
 
-| Day       | Typical (median) | Peak (P90) |
-| --------- | ---------------: | ---------: |
-| Thursday  |           23 min |     33 min |
-| Sunday    |           23 min |     34 min |
-| Friday    |           24 min |     35 min |
-| Tuesday   |           25 min |     36 min |
-| Wednesday |           25 min |     36 min |
-| Saturday  |           26 min |     37 min |
-| Monday    |           27 min |     39 min |
+```stats-widget slug=efteling show=weekdays
+
+```
 
 Four minutes separate the best and the worst day of the week. At Phantasialand
 there are worlds between a Tuesday and a Saturday; here the day barely matters.
@@ -530,9 +514,9 @@ the German one after it. The quietest days coming up:
 
 ```
 
-And the crowding across months and weekdays, calculated from the last two seasons:
+And the crowding across the months, calculated from the last two seasons:
 
-```stats-widget slug=efteling
+```stats-widget slug=efteling show=months
 
 ```
 

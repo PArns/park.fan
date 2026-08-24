@@ -7,7 +7,7 @@ import {
   leanParkForLivePoll,
 } from '@/lib/api/parks';
 import { getParkWeatherNowcastFresh } from '@/lib/api/weather-nowcast';
-import { getParkHistoricalStats } from '@/lib/api/stats';
+import { getParkHistoricalStats, getParkHourlyProfile } from '@/lib/api/stats';
 import { enrichAttractionsWithImages } from '@/lib/utils/park-assets';
 
 export async function GET(
@@ -156,13 +156,22 @@ export async function GET(
   // e.g., ['europe', 'germany', 'bruehl', 'phantasialand', 'stats']
   if (path && path.length === 5 && path[4] === 'stats') {
     const [continent, country, city, park] = path;
+    const { searchParams } = new URL(request.url);
+
+    // `topN` is forwarded from a CLOSED SET, not passed through. It is part of the cache key at
+    // the CDN, so an arbitrary number lets any caller mint unlimited distinct objects per park —
+    // each of which is a cold-compute miss on the backend. 30 is the one deeper value anything
+    // asks for (the ride tables that name specific rides); everything else falls back to the
+    // backend default, which is the object the park page already warms.
+    const requestedTopN = Number(searchParams.get('topN'));
+    const topN = requestedTopN === 30 ? 30 : undefined;
 
     try {
       // 2-year aggregate — large and slow to compute (cold-park lazy compute is retried inside
       // getParkHistoricalStats). Serving it through this function response keeps the response on
       // the CDN (s-maxage) WITHOUT pulling the slow fetch into the park page's static prerender:
       // this is a cacheable function response, NOT an ISR write of the page shell.
-      const stats = await getParkHistoricalStats(continent, country, city, park);
+      const stats = await getParkHistoricalStats(continent, country, city, park, 2, topN);
 
       if (!stats) {
         return NextResponse.json({ error: 'Stats not available' }, { status: 404 });
@@ -176,6 +185,36 @@ export async function GET(
     } catch (error) {
       console.error('[Stats API] Error:', error);
       return NextResponse.json({ error: 'Failed to fetch stats data' }, { status: 500 });
+    }
+  }
+
+  // Handle the hourly profile: [continent, country, city, park, 'stats', 'hourly'] (6 segments)
+  // Median and busy wait per hour of the operating day, ride by ride — the matrix behind the
+  // "when is the queue longest" table. Its own endpoint rather than a slice of the attraction
+  // detail payload: that one is ~53 KB per ride, so an eight-ride table cost 424 KB against ~2 KB
+  // here. Recomputed once a day on the backend, so the CDN window matches `/stats`.
+  if (path && path.length === 6 && path[4] === 'stats' && path[5] === 'hourly') {
+    const [continent, country, city, park] = path;
+    const { searchParams } = new URL(request.url);
+    // Same closed-set rule as `topN` on `/stats`: these land in the CDN cache key.
+    const requestedTopN = Number(searchParams.get('topN'));
+    const topN = requestedTopN >= 1 && requestedTopN <= 12 ? Math.round(requestedTopN) : 8;
+
+    try {
+      const data = await getParkHourlyProfile(continent, country, city, park, { topN });
+
+      if (!data) {
+        return NextResponse.json({ error: 'Hourly profile not available' }, { status: 404 });
+      }
+
+      return NextResponse.json(data, {
+        headers: {
+          'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=82800',
+        },
+      });
+    } catch (error) {
+      console.error('[Hourly-Profile API] Error:', error);
+      return NextResponse.json({ error: 'Failed to fetch hourly profile' }, { status: 500 });
     }
   }
 
@@ -244,7 +283,7 @@ export async function GET(
   return NextResponse.json(
     {
       error:
-        'Invalid path format. Expected: /api/parks/{continent}/{country}/{city}/{park}, /calendar, /best-days, /stats, /wait-times, or /weather/nowcast',
+        'Invalid path format. Expected: /api/parks/{continent}/{country}/{city}/{park}, /calendar, /best-days, /stats, /stats/hourly, /wait-times, or /weather/nowcast',
     },
     { status: 400 }
   );

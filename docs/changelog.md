@@ -4,6 +4,61 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – feat: die Wartezeitentabellen im Blog holen sich ihre Zahlen selbst
+
+Vier Artikel trugen zweiundzwanzig handgepflegte Tabellen über sechs Sprachen:
+Top-Ten eines Parks, Bahnen quer über Parks hinweg, Wochentage, und das
+Stundenprofil des Europa-Parks als 8 × 10 Matrix, also achtzig Zahlen pro
+Sprache. Sie waren längst auseinandergelaufen. Der Efteling-Artikel nannte
+34 Minuten für Joris en de Draak, während die Parkseite bei 35 stand, und die
+beiden Toverland-Tabellen desselben Artikels widersprachen sich um eine Minute,
+weil sie eine Woche auseinander getippt worden waren. Auffallen konnte das
+niemandem: eine veraltete Zahl in Markdown sieht aus wie eine frische.
+
+Zwei neue Fences ersetzen sie. **`ride-waits-widget`** in zwei Formen – die
+Rangliste eines Parks (`park=` + `top=`) oder eine benannte Liste über Parks
+hinweg (`rides=`), semikolongetrennt, weil eine Bauart regelmäßig ein Komma
+enthält. Bauart und Anzeigename bleiben im Artikel: das Layout einer Achterbahn
+ändert sich zwischen zwei Seitenaufrufen nicht. Die Minuten stehen nirgends mehr
+im Text. **`hourly-profile-widget`** zeichnet die Tagesform: eine Zeile je Bahn,
+eine Spalte je Öffnungsstunde, die stärkste Stunde jeder Bahn fett. Beide Achsen
+kommen aus den Daten, ein Park der um elf öffnet fängt bei elf an.
+
+Dahinter liegt ein neuer, schlanker Endpunkt (`/stats/hourly`, ~2 KB für acht
+Bahnen). Dieselbe Auskunft über den Attraktions-Endpunkt hätte 425 KB gekostet,
+davon 45 % ein `schedule`, das niemand rendert – der Grund, warum diese Tabelle
+bisher von Hand gepflegt wurde. Alle Stats-Tabellen laufen jetzt über
+`useParkStatsQueries`, das Query-Key, Stale-Fenster und die Loads-Last-Regel an
+einer Stelle hält; zwei Tabellen zum selben Park zahlen dadurch einmal.
+
+Wo ein Satz neben einem Widget eine Zahl nannte, die das Widget selbst rendert,
+ist jetzt die Form beschrieben statt der Wert („gut eine halbe Stunde", „ab
+Mittag etwa die Hälfte"). Das bleibt wahr, während die Zahl wandert.
+
+Details: [Blog-Widgets](../content/blog/README.md#6-live-widgets-code-fences) ·
+[API-Budget](architecture/api-budget.md#blog-widgets-what-a-post-may-fetch)
+
+## Unreleased – fix: die Parknamen waren abgeschnitten, der ruhigste Tag fehlte
+
+Auf `/beste-reisezeit` las die Vergleichstabelle „Europa-P…", „Phantasia…",
+„Disneylan…". `table-layout: auto` gibt die Breite dem breitesten
+unumbrechbaren Inhalt, und das war „34 Min. · Voltron Nevera powered by Rimac";
+mit `max-w-0` auf der Parkspalte gab genau die nach. Der Name ist aber das
+Subjekt der Zeile, der Bahnname ein Detail einer Spalte – also schrumpft jetzt
+der Bahnname, und der Park steht vollständig da, auch auf 640 px.
+
+Daneben stand bei drei von sechs Parks ein Gedankenstrich, und zwar zu Recht
+nach den alten Regeln und trotzdem falsch. Ein Wochentag, der viel seltener
+gemessen wurde als die übrigen, beendete den Vergleich, statt aus ihm
+herauszufallen – Movie Park hat 13 Montage gegen 23 Sonntage, aber die
+verbleibenden vier Tage sagen etwas. Und ein Gleichstand galt als Unentschieden:
+Disneyland Paris misst sonntags wie mittwochs 32 Minuten, was bedeutet, dass der
+Park zwei ruhige Tage hat, nicht keinen. Die Zelle nennt jetzt beide. Über die
+achtzehn Parks, die diese Tabelle je zeigt, gemessen: **12 von 18 gefüllt vorher,
+17 von 18 danach**, und kein Park, der schon eine Antwort hatte, bekam eine
+andere. Der eine verbliebene Strich steht bei Disney Adventure World, wo vier
+Wochentage dieselben 39 Minuten messen – das ist ein Park ohne ruhigen Tag.
+
 ## Unreleased – feat: das Menü wird ein Band, mit Flaggen und Fotos
 
 Das Panel war eine schmale Box mit einer Kontinent-Schiene, die eine

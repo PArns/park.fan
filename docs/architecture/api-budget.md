@@ -168,25 +168,39 @@ homepage one request. Measured, then dropped.
 ## Blog widgets: what a post may fetch
 
 A blog post is not a park page, but it embeds the same client components, and the budget rule
-does not soften just because the route is cheaper. Two widgets were measured before being built,
-and only one of them exists:
+does not soften just because the route is cheaper. Every widget here was measured before it was
+built:
 
-| Widget                       | Requests                  | Payload                | Verdict   |
-| ---------------------------- | ------------------------- | ---------------------- | --------- |
-| `park-comparison-widget`     | 7 × `/stats`              | ~3 KB each, **21 KB**  | built     |
-| an hourly-profile equivalent | 8 × `/attractions/<slug>` | 53 KB each, **425 KB** | not built |
+| Widget                              | Requests              | Payload                | Verdict            |
+| ----------------------------------- | --------------------- | ---------------------- | ------------------ |
+| `park-comparison-widget`            | 7 × `/stats`          | ~3 KB each, **21 KB**  | built              |
+| `ride-waits-widget`                 | 1 per park named      | ~3 KB each             | built, shares them |
+| `hourly-profile-widget`             | 1 × `/stats/hourly`   | **~2 KB**              | built              |
+| the same, off `/attractions/<slug>` | 8 × attraction detail | 53 KB each, **425 KB** | rejected           |
 
-The attraction detail response is what kills the second one, and the breakdown says why: **45 %
-is `schedule`** and 37 % is `history`. The widget would render the hourly curve out of `history`
-and nothing else, so even the useful half is 176 KB. That is a backend projection waiting to be
-written — the same shape as `LiveParkSnapshot` — not a client fetch to squeeze in.
+The last row is what the hourly table used to cost, and the breakdown says why: **45 % is
+`schedule`** and 37 % is `history`. The widget renders an hourly curve and nothing else, so even
+the useful half was 176 KB. The fix was a backend projection — `/stats/hourly`, the same shape of
+decision as `LiveParkSnapshot` — which answers the same eight rides in ~2 KB. **This is the
+pattern: when a payload is 200× what a table needs, the answer is a projection, not a smaller
+`select`.**
 
-The comparison widget reuses `['park-historical-stats', …]`, the key `useParkHistoricalStats`
-already owns, so a post that also embeds a `stats-widget` for one of the compared parks shares
-the cache entry instead of paying twice.
+Every stats-backed table goes through **`useParkStatsQueries`**, which owns the query key, the
+stale window and the `useLoadLast` gate in one place. That matters for sharing: the key is
+`['park-historical-stats', continent, country, city, parkSlug]`, byte-identical to the one
+`useParkHistoricalStats` uses, so a post embedding a `stats-widget` and a `ride-waits-widget` for
+the same park pays once. Two `ride-waits-widget`s naming rides in the same park pay once. It had
+been three copies of that key in three files, which is one rename away from silently fetching
+twice.
 
-Both are deferred through `useLoadLast`, like every other historical query: a post's live park
-cards must never lose the race to a table nobody has scrolled to yet.
+**`topN` is a closed set, not a passthrough.** The one deeper request a table needs (`topN=30`,
+for a list that names specific rides rather than taking the top of the ranking) is forwarded; any
+other value falls back to the backend default. It reaches the CDN as part of the cache key, so an
+arbitrary number lets a caller mint unlimited distinct objects per park, each of them a cold-
+compute miss on the backend.
+
+All of them are deferred through `useLoadLast`, like every other historical query: a post's live
+park cards must never lose the race to a table nobody has scrolled to yet.
 
 ## Adding a field
 

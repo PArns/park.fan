@@ -456,15 +456,9 @@ metingen onder blijven, komt op 31 minuten.
 
 Per baan ziet het er zo uit:
 
-| Attractie                                                         | Type                | Typisch (mediaan) | Piek (P90) | Meetdagen |
-| ----------------------------------------------------------------- | ------------------- | ----------------: | ---------: | --------: |
-| [YOY THRILL](ref:walibi-holland/yoy-thrill?bare)                  | Enkele rail, staal  |            27 min |     34 min |       122 |
-| [Condor](ref:walibi-holland/condor?bare)                          | Suspended, staal    |            22 min |     30 min |       107 |
-| [YOY CHILL](ref:walibi-holland/yoy-chill?bare)                    | Enkele rail, staal  |            22 min |     28 min |       115 |
-| [Lost Gravity](ref:walibi-holland/lost-gravity?bare)              | Big Dipper, staal   |            22 min |     27 min |       108 |
-| **[UNTAMED](ref:walibi-holland/untamed?bare)**                    | **Hybride**         |        **20 min** | **25 min** |   **114** |
-| [Xpress: Platform 13](ref:walibi-holland/xpress-platform-13?bare) | Launch, staal       |            18 min |     25 min |       115 |
-| [Goliath](ref:walibi-holland/goliath?bare)                        | Mega Coaster, staal |            18 min |     24 min |       114 |
+```ride-waits-widget rides=walibi-holland/yoy-thrill|YOY THRILL|Enkele rail, staal;walibi-holland/condor|Condor|Suspended, staal;walibi-holland/yoy-chill|YOY CHILL|Enkele rail, staal;walibi-holland/lost-gravity|Lost Gravity|Big Dipper, staal;walibi-holland/untamed|UNTAMED|Hybride;walibi-holland/xpress-platform-13|Xpress: Platform 13|Launch, staal;walibi-holland/goliath|Goliath|Mega Coaster, staal columns=type,peak,days highlight=walibi-holland/untamed
+
+```
 
 De beste baan van het park staat in de onderste helft van die tabel. Er wordt
 langer gewacht voor de nieuwigheid, voor een SLC uit 1994 en voor een
@@ -475,16 +469,9 @@ heb je Untamed drie keer gereden voordat de YOY-rij één keer rond is.
 Interessanter wordt het in vergelijking met de buurt. Zelfde databasis, zelfde
 rekenmethode, laatste twee seizoenen:
 
-| Achtbaan                                                 | Park                                          | Typisch (mediaan) | Piek (P90) |
-| -------------------------------------------------------- | --------------------------------------------- | ----------------: | ---------: |
-| [Taron](ref:phantasialand/taron?bare)                    | [Phantasialand](ref:phantasialand?bare)       |            49 min |     56 min |
-| [F.L.Y.](ref:phantasialand/fly?bare)                     | [Phantasialand](ref:phantasialand?bare)       |            41 min |     49 min |
-| [Joris en de Draak](ref:efteling/joris-en-de-draak?bare) | [Efteling](ref:efteling?bare)                 |            35 min |     41 min |
-| [Black Mamba](ref:phantasialand/black-mamba?bare)        | [Phantasialand](ref:phantasialand?bare)       |            31 min |     40 min |
-| [Baron 1898](ref:efteling/baron-1898?bare)               | [Efteling](ref:efteling?bare)                 |            26 min |     32 min |
-| **[UNTAMED](ref:walibi-holland/untamed?bare)**           | **[Walibi Holland](ref:walibi-holland?bare)** |        **20 min** | **25 min** |
-| [Kondaa](ref:walibi-belgium/kondaa?bare)                 | [Walibi Belgium](ref:walibi-belgium?bare)     |            20 min |     25 min |
-| [Troy](ref:attractiepark-toverland/troy?bare)            | [Toverland](ref:attractiepark-toverland?bare) |            16 min |     21 min |
+```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/fly|F.L.Y.;efteling/joris-en-de-draak|Joris en de Draak;phantasialand/black-mamba|Black Mamba;efteling/baron-1898|Baron 1898;walibi-holland/untamed|UNTAMED;walibi-belgium/kondaa|Kondaa;attractiepark-toverland/troy|Troy columns=park,peak highlight=walibi-holland/untamed
+
+```
 
 In de tijd dat je in Phantasialand **één keer** voor
 [Taron](ref:phantasialand/taron) staat, rijd je Untamed tweeënhalf keer. Op
@@ -730,15 +717,9 @@ in dezelfde periode vallen. Wie uit Duitsland komt, moet bovendien weten dat de
 
 **Per weekdag** wordt het curieus. De drukke dag is niet de zaterdag:
 
-| Dag       | Typisch | Piek (P90) |
-| --------- | ------: | ---------: |
-| Donderdag |  18 min |     30 min |
-| Zondag    |  19 min |     30 min |
-| Zaterdag  |  19 min |     29 min |
-| Maandag   |  20 min |     31 min |
-| Dinsdag   |  21 min |     32 min |
-| Woensdag  |  21 min |     33 min |
-| Vrijdag   |  21 min |     34 min |
+```stats-widget slug=walibi-holland show=weekdays
+
+```
 
 Tussen de rustigste en de drukste weekdag zitten drie minuten. Het weekend is
 hier dus gewoon geen uitzondering, en de reden is banaal: buiten de
@@ -753,10 +734,10 @@ drukte-kalender:
 
 ```
 
-En zo ziet de drukte er over maanden en weekdagen uit, berekend uit de laatste
-twee seizoenen:
+En zo ziet de drukte er over de maanden uit, berekend uit de laatste twee
+seizoenen:
 
-```stats-widget slug=walibi-holland
+```stats-widget slug=walibi-holland show=months
 
 ```
 

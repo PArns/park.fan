@@ -649,38 +649,30 @@ Abstand höchste Wert im ganzen Park.
 Bei Voltron liegt derselbe Wert bei 20 Minuten, bei Arthur und Silver Star bei 25. Alles ordentlich, aber nichts, wofür man um acht Uhr aufsteht. Die
 Achterbahnen lassen sich über den Tag verteilen, das Flugtheater nicht.
 
-Wie stark sich das über den Tag verteilt, sieht man erst im Stundenprofil. Die
-Zahlen darin liegen höher als die Mediane weiter oben, weil sie etwas anderes
-messen. Grundlage ist das 90. Perzentil jeder Viertelstunde, also das obere Ende
-dessen, was in diesen fünfzehn Minuten angeschrieben stand. Gemittelt über die
-Stunde und über die letzten dreißig Betriebstage kommt das hier heraus.
+Wie stark sich das über den Tag verteilt, sieht man erst im Stundenprofil: die
+typische Wartezeit jeder Stunde, über ein Jahr Betriebstage gemittelt. Fett steht
+jeweils die stärkste Stunde einer Bahn.
 
-| Attraktion            | 9 Uhr | 10 Uhr | 11 Uhr | 12 Uhr | 13 Uhr | 14 Uhr | 15 Uhr | 16 Uhr | 17 Uhr | 18 Uhr |
-| --------------------- | ----: | -----: | -----: | -----: | -----: | -----: | -----: | -----: | -----: | -----: |
-| Voletarium            |    33 | **57** |     48 |     30 |     38 |     31 |     30 |     28 |     21 |     16 |
-| Voltron Nevera        |    33 | **42** | **42** |     35 |     32 |     29 |     29 |     28 |     29 |     29 |
-| Arthur                |    28 | **35** |     33 |     30 |     31 |     33 |     33 |     33 |     31 |     25 |
-| Eurosat               |    32 | **42** |     38 |     32 |     29 |     29 |     29 |     29 |     26 |     23 |
-| Wodan                 |    26 |     30 | **36** |     32 |     32 |     31 |     34 |     32 |     28 |     19 |
-| Silver Star           |    26 | **36** |     31 |     24 |     22 |     20 |     22 |     21 |     22 |     23 |
-| Poseidon              |     8 |     28 | **40** |     37 |     36 |     35 |     34 |     32 |     26 |     17 |
-| Atlantica SuperSplash |     6 |     15 |     26 |     27 |     29 |     31 | **34** |     31 |     26 |     15 |
+```hourly-profile-widget slug=europa-park top=8
+
+```
 
 ![Lifthill und erste Abfahrt von Silver Star über den Baumkronen, Abendhimmel | Seit 2026 steht die Bahn im neuen Themenbereich Monaco. | right](/media/europa-park/silver-star-4x3.jpg)
 
 Die Zeile, die mich beim ersten Mal überrascht hat, ist die von Silver Star. Um
-zehn Uhr stehst du dort 36 Minuten, ab zwölf nur noch gut zwanzig, und daran
-ändert sich bis zum Feierabend nichts mehr. Eine 73-Meter-Bahn, die den halben
+zehn Uhr steht dort die längste Schlange des Tages, ab zwölf ist es etwa die
+Hälfte, und daran ändert sich bis zum Feierabend nichts mehr. Eine 73-Meter-Bahn, die den halben
 Tag über halb leer läuft, weil alle schon morgens dort waren.
 
 **Die vollsten Stunden liegen zwischen zehn und zwölf.** Sieben der acht Bahnen
 haben ihr Maximum um zehn oder um elf, nur Atlantica erst am Nachmittag. Wer gemütlich
 frühstückt und um halb elf ankommt, läuft exakt in die Tagesspitze.
 
-![Ein zerborstenes Holzschiff im Wasserbecken von Poseidon, dahinter eine Festungsmauer | Um neun Uhr morgens stehst du hier acht Minuten an, um elf sind es vierzig. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
+![Ein zerborstenes Holzschiff im Wasserbecken von Poseidon, dahinter eine Festungsmauer | Zur Öffnung fast leer, um elf die längste Schlange des Tages. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
 
-Und dann die Wasserbahnen. Poseidon steht um neun Uhr bei acht Minuten,
-Atlantica bei sechs. Um elf sind es 40 und 26. Wer bereit ist, morgens nass zu
+Und dann die Wasserbahnen. Beide stehen zur Öffnung bei einer knappen
+Viertelstunde oder darunter, Poseidon erreicht seine Spitze um elf, Atlantica
+erst am Nachmittag. Wer bereit ist, morgens nass zu
 werden, fährt beide in der Zeit, die er mittags für eine bräuchte.
 
 Ein Tagesablauf, der daraus folgt:

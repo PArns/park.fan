@@ -346,18 +346,9 @@ de **typische wachttijd parkbreed op 25 minuten** (mediaan), het 90e percentiel 
 
 De tien meest gevraagde attracties:
 
-| Attractie                                                          | Gebied       | Typisch (mediaan) | Piek (P90) | Meetdagen |
-| ------------------------------------------------------------------ | ------------ | ----------------: | ---------: | --------: |
-| **[Joris en de Draak](ref:efteling/joris-en-de-draak?bare)**       | Ruigrijk     |        **34 min** |     41 min |       129 |
-| [Danse Macabre](ref:efteling/danse-macabre?bare)                   | Anderrijk    |            31 min |     36 min |       138 |
-| [De Vliegende Hollander](ref:efteling/de-vliegende-hollander?bare) | Ruigrijk     |            29 min |     33 min |       133 |
-| [Symbolica](ref:efteling/symbolica?bare)                           | Fantasierijk |            28 min |     33 min |       141 |
-| [Baron 1898](ref:efteling/baron-1898?bare)                         | Ruigrijk     |            26 min |     32 min |       116 |
-| [Piraña](ref:efteling/pirana?bare)                                 | Anderrijk    |            25 min |     30 min |       128 |
-| [Stoomtrein Oost](ref:efteling/stoomtrein-oost?bare)               | Ruigrijk     |            24 min |     28 min |        32 |
-| [Droomvlucht](ref:efteling/droomvlucht?bare)                       | Marerijk     |            22 min |     27 min |       137 |
-| [Max & Moritz](ref:efteling/max-and-moritz?bare)                   | Anderrijk    |            22 min |     27 min |       121 |
-| [Stoomtrein Marerijk](ref:efteling/stoomtrein-marerijk?bare)       | Marerijk     |            22 min |     26 min |        41 |
+```ride-waits-widget park=efteling top=10 columns=land,peak,days highlight=joris-en-de-draak
+
+```
 
 Twee dingen vallen op.
 
@@ -369,16 +360,14 @@ De meetbasis is met 32 en 41 dagen wel duidelijk dunner dan bij de rest, omdat d
 stations niet het hele jaar wachttijden doorgeven. Ik zou de volgorde daarachter
 niet te zwaar belasten, maar de orde van grootte klopt.
 
-Ten tweede: 34 minuten voor de langste rij van het park is, afgezet tegen bijna zes
-miljoen bezoeken, weinig. Ter vergelijking, dezelfde databasis, dezelfde
-rekenmethode:
+Ten tweede: een klein half uur voor de langste rij van het park is, afgezet tegen
+bijna zes miljoen bezoeken, weinig. Ter vergelijking, dezelfde databasis, dezelfde
+rekenmethode. De bezoekcijfers van 2025 erbij: Europa-Park 7 mln voor het hele
+resort, Efteling 5,78 mln, Toverland 1,14 mln.
 
-| Park                                          | Publiek 2025         | Typisch parkbreed | Langste rij                                                              |
-| --------------------------------------------- | -------------------- | ----------------: | ------------------------------------------------------------------------ |
-| [Phantasialand](ref:phantasialand?bare)       | geen officieel getal |            31 min | 48 min ([Taron](ref:phantasialand/taron?bare))                           |
-| **[Efteling](ref:efteling?bare)**             | **5,78 mln**         |        **25 min** | 34 min (Joris en de Draak)                                               |
-| [Europa-Park](ref:europa-park?bare)           | 7 mln (resort)       |            23 min | 34 min ([Voltron](ref:europa-park/voltron-nevera-powered-by-rimac?bare)) |
-| [Toverland](ref:attractiepark-toverland?bare) | 1,14 mln             |            15 min | 21 min ([Booster Bike](ref:attractiepark-toverland/booster-bike?bare))   |
+```park-comparison-widget slugs=phantasialand,efteling,europa-park,attractiepark-toverland highlight=efteling
+
+```
 
 Phantasialand publiceert zijn bezoekcijfer niet, brancheschattingen liggen rond de
 twee miljoen. Het heeft daarmee een fractie van het Efteling-publiek en toch de
@@ -503,15 +492,9 @@ rangorde achter de komma niet.
 
 **Per weekdag** wordt het interessant, omdat het gebruikelijke advies hier oplost:
 
-| Dag       | Typisch (mediaan) | Piek (P90) |
-| --------- | ----------------: | ---------: |
-| Donderdag |            23 min |     33 min |
-| Zondag    |            23 min |     34 min |
-| Vrijdag   |            24 min |     35 min |
-| Dinsdag   |            25 min |     36 min |
-| Woensdag  |            25 min |     36 min |
-| Zaterdag  |            26 min |     37 min |
-| Maandag   |            27 min |     39 min |
+```stats-widget slug=efteling show=weekdays
+
+```
 
 Tussen de beste en de slechtste weekdag zitten vier minuten. In Phantasialand
 liggen tussen een dinsdag en een zaterdag werelden, hier maakt de dag nauwelijks
@@ -529,9 +512,9 @@ De rustigste dagen die eraan komen:
 
 ```
 
-En de drukte over maanden en weekdagen, gerekend over de laatste twee seizoenen:
+En de drukte over de maanden, gerekend over de laatste twee seizoenen:
 
-```stats-widget slug=efteling
+```stats-widget slug=efteling show=months
 
 ```
 

@@ -641,7 +641,18 @@
       "comparisonTitle": "Im Vergleich mit anderen Parks",
       "parkAverage": "Parkschnitt",
       "longestQueue": "Längste Schlange",
-      "comparisonPark": "Park"
+      "comparisonPark": "Park",
+      "rideWaitsTitle": "Wartezeiten im Vergleich",
+      "rideWaitsRide": "Attraktion",
+      "rideWaitsLand": "Bereich",
+      "rideWaitsType": "Bauart",
+      "rideWaitsSampleDays": "Messtage",
+      "typicalWait": "Typisch (Median)",
+      "peakWait": "Spitze (P90)",
+      "hourlyProfileTitle": "Wartezeit nach Uhrzeit",
+      "hourlyProfileHour": "Uhrzeit",
+      "hourlyProfilePeakNote": "Fett markiert ist die stärkste Stunde jeder Bahn.",
+      "hourlyProfileFootnote": "Typische Wartezeit in Minuten, aus {days} Messtagen."
     },
     "bestDays": {
       "title": "Beste Reisezeit für {park}",

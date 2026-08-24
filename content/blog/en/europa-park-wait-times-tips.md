@@ -637,28 +637,19 @@ For Voltron the same figure comes to 20 minutes, for Arthur and Silver Star 25.
 All respectable, none of it worth getting up at eight for. The roller coasters
 can be spread across the day, the flying theatre cannot.
 
-How far it all spreads across the day only becomes visible hour by hour. The
-numbers here sit above the medians from earlier because they measure something
-else. The basis is the 90th percentile of every quarter of an hour, the upper
-end of what the board showed during those fifteen minutes. Averaged over the
-hour and over the last thirty operating days, it comes out like this.
+How far it all spreads across the day only becomes visible hour by hour: the
+typical wait in each hour, averaged over a year of operating days. Each ride's
+busiest hour is in bold.
 
-| Attraction            | 9 a.m. | 10 a.m. | 11 a.m. | Noon | 1 p.m. | 2 p.m. | 3 p.m. | 4 p.m. | 5 p.m. | 6 p.m. |
-| --------------------- | -----: | ------: | ------: | ---: | -----: | -----: | -----: | -----: | -----: | -----: |
-| Voletarium            |     33 |  **57** |      48 |   30 |     38 |     31 |     30 |     28 |     21 |     16 |
-| Voltron Nevera        |     33 |  **42** |  **42** |   35 |     32 |     29 |     29 |     28 |     29 |     29 |
-| Arthur                |     28 |  **35** |      33 |   30 |     31 |     33 |     33 |     33 |     31 |     25 |
-| Eurosat               |     32 |  **42** |      38 |   32 |     29 |     29 |     29 |     29 |     26 |     23 |
-| Wodan                 |     26 |      30 |  **36** |   32 |     32 |     31 |     34 |     32 |     28 |     19 |
-| Silver Star           |     26 |  **36** |      31 |   24 |     22 |     20 |     22 |     21 |     22 |     23 |
-| Poseidon              |      8 |      28 |  **40** |   37 |     36 |     35 |     34 |     32 |     26 |     17 |
-| Atlantica SuperSplash |      6 |      15 |      26 |   27 |     29 |     31 | **34** |     31 |     26 |     15 |
+```hourly-profile-widget slug=europa-park top=8
+
+```
 
 ![Lift hill and first drop of Silver Star above the treetops, evening sky | Since 2026 the ride has belonged to the new Monaco area. | right](/media/europa-park/silver-star-4x3.jpg)
 
-The row that surprised me first time round is Silver Star's. At ten in the
-morning you wait 36 minutes there, from midday only a little over twenty, and
-that does not change again before closing. A 73-metre coaster running half empty
+The row that surprised me first time round is Silver Star's. Ten in the morning
+is its longest queue of the day, from midday it is about half that, and that
+does not change again before closing. A 73-metre coaster running half empty
 for half the day, because everybody was already there in the morning.
 
 **The busiest hours fall between ten and twelve.** Seven of the eight rides hit
@@ -666,10 +657,10 @@ their maximum at ten or at eleven, only Atlantica later in the afternoon. Take a
 leisurely breakfast, arrive at half past ten, and you walk straight into the
 day's maximum.
 
-![A shattered wooden ship in the Poseidon water basin, with a fortress wall behind it | At nine in the morning you wait eight minutes here, at eleven it is forty. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
+![A shattered wooden ship in the Poseidon water basin, with a fortress wall behind it | Nearly empty at opening, longest queue of the day at eleven. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
 
-Then the water rides. At nine Poseidon sits at eight minutes, Atlantica at six.
-By eleven it is 40 and 26. Anybody willing to get wet in the morning rides both
+Then the water rides. Both sit at a quarter of an hour or less when the park
+opens; Poseidon peaks at eleven, Atlantica only in the afternoon. Anybody willing to get wet in the morning rides both
 in the time one of them would cost at midday.
 
 A plan for the day that follows from that:

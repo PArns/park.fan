@@ -1646,6 +1646,20 @@ export interface TopAttractionStat {
   avgWaitP90: number;
   sampleDays: number;
   rank: number;
+  /**
+   * The land the ride stands in, curated value winning over the Queue-Times one.
+   *
+   * OPTIONAL as well as nullable: the API strips null-valued keys from every response, and
+   * Queue-Times publishes no land at all for whole parks. Render the column only when at least
+   * one row in the table carries a value, or a park with no lands gets a column of dashes.
+   */
+  land?: string | null;
+  /**
+   * Coarse ride type ("Roller Coaster"), curated value winning. This is the free-text
+   * `attraction_type` column, NOT the ride-type glossary terms in `rideProfile` — those answer a
+   * different question ("launch coaster", "omnimover") and must not be joined onto this one.
+   */
+  attractionType?: string | null;
 }
 
 export interface ParkHistoricalStats {
@@ -1656,6 +1670,59 @@ export interface ParkHistoricalStats {
     totalSampleDays: number;
     windowYears: number;
     displayable: boolean;
+    /**
+     * Measured days an attraction needed to enter `topAttractions`. Optional: responses cached
+     * before schemaVersion 3 do not carry it, and nothing renders it — it is here so a reader of
+     * the payload can tell a filtered ranking from an unfiltered one.
+     */
+    minAttractionDays?: number;
+  };
+}
+
+// ============================================================================
+// Park Hourly Profile  (GET /v1/parks/.../stats/hourly)
+// ============================================================================
+
+export interface HourlyProfileAttraction {
+  attractionSlug: string;
+  attractionName: string;
+  land?: string | null;
+  /**
+   * Median wait per hour, POSITIONAL: `p50[i]` belongs to `hours[i]`, never to `i` o'clock.
+   * `null` is a gap — the ride reported nothing in that hour — and is not the same claim as a
+   * zero, which would say the queue was empty.
+   */
+  p50: Array<number | null>;
+  /** Busy-hour wait (P90), aligned with `hours` the same way. */
+  p90: Array<number | null>;
+  /** The hour in `hours` where this ride's own median peaks. */
+  peakHour: number | null;
+  sampleDays: number;
+}
+
+/**
+ * The park's day shape, ride by ride — the matrix behind a "when is the queue longest" table.
+ *
+ * A lean projection rather than a slice of the attraction detail endpoint: that one costs ~53 KB
+ * per ride (45 % of it a `schedule` nobody renders), so an eight-ride table cost 424 KB there and
+ * ~2 KB here. See docs/architecture/api-budget.md.
+ */
+export interface ParkHourlyProfile {
+  /**
+   * Hours the table has columns for, park-local and ascending. Derived from the data, so a park
+   * that opens at 11 starts at 11 — never assume a fixed 9–18 window.
+   */
+  hours: number[];
+  attractions: HourlyProfileAttraction[];
+  meta: {
+    parkSlug: string;
+    dataFrom: string;
+    dataTo: string;
+    windowYears: number;
+    totalSampleDays: number;
+    displayable: boolean;
+    generatedAt: string;
+    schemaVersion: number;
   };
 }
 

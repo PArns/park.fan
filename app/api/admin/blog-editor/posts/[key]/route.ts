@@ -19,6 +19,9 @@ const WIDGET_NAMES = new Set([
   'attraction-widget',
   'glossary-widget',
   'gallery-widget',
+  'park-comparison-widget',
+  'ride-waits-widget',
+  'hourly-profile-widget',
 ]);
 
 /**
