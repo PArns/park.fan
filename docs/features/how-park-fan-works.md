@@ -65,9 +65,18 @@ the ride's page when this page is next edited.
 Things the audit caught, worth not re-introducing:
 
 - **`AttractionTypicalWaits` shows no measured-day count.** The number above each
-  bar is that weekday's P90. Sample days live in the park's stats table and the
-  blog widget, and on this page in the scale figure — which has the data because
-  the fixture carries it.
+  bar is that weekday's P90; the card's own hint names the _window_
+  ("Basierend auf den letzten 365 Tagen"), which is a different thing.
+- **No surface puts sample days next to a ride, on any page.**
+  `ParkStatsAttractionsCard` — the park's longest-queue ranking, and the one this
+  page mounts live — renders rank, ride, (now), P50, P90 and nothing else. The
+  measured-day count is rendered in exactly three places: the stats section's own
+  subtitle (`parks.stats.subtitle`, the park total), the `Tage` column in the
+  by-month and by-weekday cards, and the blog's `ride-waits-widget` (`RideWaitTable`,
+  `columns=…,days`), which is the only per-ride one. Four sentences on this page
+  claimed the park page had a per-ride column; they were wrong in all six
+  languages before anybody read them in five of those. The scale figure in chapter
+  02 does show sample days, because its fixture carries them.
 - **`typicalWaitThisHour` / `currentVsTypical` are never rendered anywhere.**
   They exist on the payload and are only passed through. Do not claim them.
 - **The calendar's horizon is the park's, not a year.** A year-round park
@@ -94,12 +103,13 @@ defeat the exercise (the reader is being taught to recognise these exact cards
 an hour later in the park) and would start lying the first time one of them is
 restyled.
 
-They are all prop-driven by design; the fetching wrappers around them
-(`ParkStatsSection`, `ParkCalendarGrid`, `ParkHourlyProfileCard`, …) are
-deliberately not used. The German page therefore **prerenders fully static with
-zero API calls**, which the build output confirms — the five legacy locales
-still stream, because their content imports `PopularParksGrid` and
-`LiveCalendarExample`.
+Most of them are prop-driven by design, so the teaching figures hold still while
+chapter 02 argues about specific readings. Two blocks are the deliberate
+exception and mount the fetching wrappers (`ParkStatsSection`,
+`ParkHourlyProfileCard`): where the claim is "this is running right now", a
+frozen copy is the wrong exhibit. Both are gated by `useLoadLast` like every
+other trip-planning query, and the prose beside them names no figure they
+render — which is also what keeps the page honest when the numbers move.
 
 Every block sits in a `DemoFrame`, and the intro says in plain words that the
 figures are examples. That is not decoration: a card that is pixel-identical to
@@ -178,20 +188,30 @@ figure would stop pinning. Verified at 390 px and 1512 px: 0 px overflow, CLS
 results in 2023, which is why `components/seo/structured-data.tsx` has never had
 one. FAQ answers stay plain text so the JSON-LD is clean.
 
-## 6. The translations are staged
+## 6. Six locales, one shape
 
-`EDITORIAL_LOCALES` in `page.tsx` lists the locales whose content module is the
-rewritten guide; the rest render the previous feature manual inside the old
-container under an `<h1>`. The two are served side by side because the two
-changes are independent: the URL moved for every language at once (a slug change
-is a one-shot 301 campaign, not something to do six times), while the prose is
-translated as it is written. Delete the set and the legacy branch once the last
-locale is across.
+All six content modules are now the guide; the `EDITORIAL_LOCALES` switch and the
+legacy feature-manual branch are gone, and every field on `PageHeader` is
+required again. The URL had moved for every language at once from the start (a
+slug change is a one-shot 301 campaign, not something to do six times) while the
+prose followed as it was written.
+
+Each locale is a full `content/<locale>.tsx`, the same convention `fancast` and
+`best-time-to-visit` use, chapter ids localized with it (`#massstab`, `#scale`,
+`#echelle`, …). The duplication is real and deliberate: a shared-structure module
+with a per-locale string table would be a bespoke i18n mechanism invented for one
+page. What that costs is an edit applied six times, so two things guard it —
+`CHAPTERS` must match the rendered `<SectionShell id= index=>` calls exactly (the
+rail looks its sections up by id), and the `locale=` prop on the two live blocks
+must match the file it is in. Both are one grep each.
 
 ## 7. Companion post
 
 [`content/blog/de/sind-70-minuten-viel.md`](../../content/blog/de/sind-70-minuten-viel.md)
-makes the same argument in prose with **live** widgets rather than fixtures
+and its five translations (`translationKey: is-seventy-minutes-a-lot`) make the
+same argument in prose with **live** widgets rather than fixtures
 (`ride-waits-widget`, `hourly-profile-widget`, `park-comparison-widget`), and
-links here for the long version. Same rule as every post: no wait time is typed
-into it.
+link here for the long version. Same rule as every post: no wait time is typed
+into it. `parkLinks` puts it on the Phantasialand **and** Hansa-Park pages —
+Hansa-Park because it gets a paragraph of its own about why that park shows no
+wait times at all, which is exactly what somebody on that page is asking.

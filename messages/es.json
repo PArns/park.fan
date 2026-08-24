@@ -198,7 +198,7 @@
       "p4": "Busca tu parque en la barra de búsqueda o navega por continente, país y ciudad. En la página del parque encontrarás tiempos de espera en vivo para cada atracción, restaurante y espectáculo — actualizados cada minuto — junto con predicciones de afluencia y un calendario diario. Los días verdes señalan colas cortas; los días naranja o rojos indican mayor afluencia y esperas más largas.",
       "p5": "park.fan es un proyecto vivo, en constante evolución con nuevas funciones y parques. Guarda tus parques favoritos para acceder rápido, usa la navegación en el parque para planificar la ruta más eficiente, y consulta siempre el calendario de afluencia antes de reservar para elegir el mejor día posible.",
       "fancastLink": "Descubre Fancast",
-      "howtoLink": "Leer la guía completa"
+      "howtoLink": "Así funciona park.fan"
     },
     "worldPanel": {
       "title": "Parques en {continent}",
@@ -227,7 +227,7 @@
     },
     "api": "Documentación API",
     "impressum": "Aviso Legal",
-    "howto": "Cómo funciona",
+    "howto": "Entender los tiempos de espera",
     "fancast": "Fancast",
     "bestTime": "Mejor época para visitar",
     "glossaryLink": "Diccionario",
@@ -280,7 +280,7 @@
     "search": "Buscar Parques y Atracciones",
     "admin": "Admin",
     "nearbyPark": "Cerca: {parkName}",
-    "howto": "Guía",
+    "howto": "Cómo funciona",
     "glossary": "Diccionario",
     "blog": "Blog",
     "bestTime": "Mejor época",
@@ -1275,8 +1275,8 @@
     }
   },
   "howto": {
-    "title": "Cómo funciona – La guía completa",
-    "description": "Todo sobre park.fan explicado: búsqueda, favoritos, calendario de afluencia, predicciones IA y todas las insignias. Para familias, fanáticos y visitantes por primera vez."
+    "title": "Así funciona park.fan",
+    "description": "70 minutos en Taron: ¿mucho o normal? Cómo situar un tiempo de espera, cuándo una atracción está más tranquila y de dónde salen las cifras."
   },
   "impressum": {
     "title": "Aviso Legal - park.fan",

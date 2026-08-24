@@ -1,1108 +1,1066 @@
-/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import { Link } from '@/i18n/navigation';
-import { PopularParksGrid } from '@/components/home/featured-parks-slot';
-import { GlossaryInject } from '@/components/glossary/glossary-inject';
-import { cn } from '@/lib/utils';
+import {
+  A,
+  SectionShell,
+  Lead,
+  P,
+  PG,
+  Highlight,
+  IngredientGrid,
+  IngredientCard,
+  TouchpointGrid,
+  FaqList,
+} from '@/components/marketing/editorial-ui';
+import { Reveal } from '@/components/marketing/scroll-reveal';
+import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
-import { HeroSearchInput } from '@/components/search/hero-search-input';
-import { NearbyParksCard } from '@/components/parks/nearby-parks-card';
 import {
-  Search,
-  Star,
-  TrendingUp,
-  Clock,
-  Users,
-  AlertTriangle,
-  XCircle,
-  Wrench,
-  User,
-  Zap,
-  Ticket,
-  TrendingDown,
-  Minus,
-  PartyPopper,
-  Backpack,
-  Calendar,
-  ChevronRight,
-  Snowflake,
-  Sun,
-  Leaf,
-  EyeOff,
-  Sunrise,
+  Activity,
+  BarChart3,
+  CalendarDays,
+  CloudSun,
+  Compass,
+  Database,
+  Gauge,
+  GraduationCap,
+  HelpCircle,
+  Layers,
+  MapPin,
   Moon,
+  Ruler,
+  Search,
+  Sparkles,
+  Star,
+  Sunrise,
+  Users,
 } from 'lucide-react';
-import { Section, SubSection, DemoBadge, InfoBox, TipBox, PersonaCard, Li } from '../_howto-ui';
-import { CoasterPlayerDemo } from '../_coaster-player-demo';
 import {
-  MockParkHeader,
-  MockAttractionCards,
-  MockShowCards,
-  MockNearbyCards,
-  MockHourlyChart,
-} from '../_mock-components';
-import { LiveCalendarExample } from '../_live-calendar';
-import { WeatherWarningBannerDemo } from '@/components/parks/weather-warning-banner-demo';
-import { AttractionTypicalWaitsDemo } from '@/components/parks/attraction-typical-waits-demo';
+  BadgeRowDemo,
+  BareNumberVsCard,
+  CalendarDaysDemo,
+  DemoFrame,
+  LiveHourlyProfile,
+  LiveTopAttractions,
+  NoWaitTimesDemo,
+  OffSeasonDemo,
+  RopeDropDemo,
+  TwoRidesDemo,
+  TypicalWaitsDemo,
+} from '../_demos';
+import { WaitScaleBar, WaitScaleStage, type WaitScaleStep } from '../_wait-scale';
+import { NightShift, type NightShiftJob } from '../_night-shift';
+import { Ambience, ClosingBand, IntroWithAside, ParkAnatomy, type AnatomyStep } from '../_chrome';
+import { ChapterRail, type Chapter } from '../_chapter-rail';
+import {
+  TARON_BASELINE,
+  TARON_RECORD,
+  TARON_WAIT_NOW,
+  TARON_WEEKDAY_DAYS,
+  TARON_WEEKEND_DAYS,
+  WAIT_SCALE_MAX,
+} from '../_fixtures';
 
-function IntroFR() {
-  return (
-    <div className="space-y-4">
-      <div className="space-y-4 text-base leading-relaxed">
-        <p className="text-muted-foreground text-lg font-medium">
-          Ça te parle ? 80 minutes de queue pour Taron — et à dix mètres de là, une autre attraction
-          sans attente. Ou encore : tu réserves tes vacances et tu découvres que c&apos;est
-          exactement la semaine des congés scolaires dans toute la région.
-        </p>
-        <p className="text-muted-foreground">
-          park.fan est né de cette frustration. Ce qui a commencé comme un petit projet personnel –
-          &quot;je vais juste suivre quelques temps d&apos;attente&quot; – est devenu une plateforme
-          avec des données en direct de plus de 200 parcs, plus de 7 000 attractions et des millions
-          de points de données traités chaque jour.
-        </p>
-        <p className="text-muted-foreground">
-          L&apos;objectif est simple :{' '}
-          <strong>éliminer les approximations lors de ta visite en parc d&apos;attractions.</strong>{' '}
-          Utilise le calendrier d&apos;affluence pour choisir le bon jour, navigue avec des temps
-          d&apos;attente en direct et compte sur les prédictions IA pour savoir quand chaque
-          attraction sera la moins fréquentée. Cette page explique chaque fonctionnalité en détail.
-        </p>
-      </div>
-      <nav aria-label="Table des matières" className="bg-muted/40 not-prose rounded-xl border p-5">
-        <p className="mb-3 font-semibold">Table des matières</p>
-        <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
-          {[
-            ['#suche', '1. Recherche'],
-            ['#standort', '2. Localisation'],
-            ['#favoriten', '3. Favoris'],
-            ['#parkseite', '4. La page du parc'],
-            ['#badges', '5. Badges et statuts'],
-            ['#kalender', "6. Calendrier d'affluence"],
-            ['#prognosen', '7. Prédictions IA'],
-            ['#personas', '8. Pour qui ?'],
-            ['#parks', '9. Parcs populaires'],
-            ['#glossar', '10. Glossaire'],
-            ['#faq', '11. FAQ'],
-          ].map(([href, label]) => (
-            <li key={href}>
-              <a href={href} className="hover:text-primary transition-colors">
-                {label}
-              </a>
-            </li>
-          ))}
-        </ol>
-      </nav>
-    </div>
-  );
-}
+/**
+ * Feeds both the chapter list at the top and the rail down the right edge, and
+ * must match the `<SectionShell id=… index=…>` calls below exactly — the rail
+ * looks its sections up by id, so an entry that drifts silently stops
+ * highlighting.
+ */
+const CHAPTERS: Chapter[] = [
+  { id: 'chiffre', index: '01', label: 'Un chiffre tout seul' },
+  { id: 'echelle', index: '02', label: 'Habituel, chargé, record' },
+  { id: 'moment', index: '03', label: 'Le meilleur moment' },
+  { id: 'jour', index: '04', label: 'Le bon jour' },
+  { id: 'page-parc', index: '05', label: 'Une page de parc, de haut en bas' },
+  { id: 'nuit', index: '06', label: 'D’où viennent les chiffres' },
+  { id: 'limites', index: '07', label: 'Ce que nous n’affirmons pas' },
+  { id: 'visites', index: '08', label: 'Quatre visites' },
+  { id: 'reperes', index: '09', label: 'Où trouver quoi' },
+  { id: 'faq', index: '10', label: 'Questions fréquentes' },
+];
 
-function ContentFRSections() {
+const PARK = '/parks/europe/germany/bruehl/phantasialand';
+const TARON = `${PARK}/taron`;
+
+const SCALE_LABELS = {
+  typical: 'Habituel',
+  busy: 'Chargé',
+  unit: 'min',
+  days: 'jours mesurés',
+  record: 'Record',
+  summary:
+    'Taron le {label} : habituellement {typical} minutes, {busy} les jours chargés, sur {days} jours mesurés. Le panneau affiche {wait} minutes.',
+};
+
+const SCALE_LEGEND = [
+  {
+    term: 'Habituel',
+    def: 'Médiane des pics quotidiens. La moitié des jours mesurés, la file la plus longue était plus courte que cela.',
+    swatch: 'bg-primary/45',
+  },
+  {
+    term: 'Chargé',
+    def: '90e centile de la même série. Le jour sur dix où il y avait vraiment foule.',
+    swatch: 'bg-primary/25',
+  },
+  {
+    term: '70 min',
+    def: 'Ce qui est affiché à l’entrée. Ce chiffre ne bouge pas pendant que l’échelle en dessous se déplace.',
+    swatch: 'bg-amber-500',
+  },
+  {
+    term: 'Record',
+    def: `${TARON_RECORD} minutes le 16 juillet 2026. Le pire jour de la période mesurée, et c’est précisément pour cela qu’il ne sert pas de repère.`,
+    swatch: 'bg-foreground/40',
+  },
+];
+
+/**
+ * The three readings, in the order the figure steps through them. Numbers come
+ * from `TARON_TYPICAL_WAITS`, so from the API rather than from the story.
+ */
+const SCALE_STEPS: WaitScaleStep[] = [
+  { id: 'monday', label: 'Lundi', typical: 55, busy: 65, sampleDays: 19 },
+  { id: 'saturday', label: 'Samedi', typical: 70, busy: 85, sampleDays: 20 },
+  { id: 'weekday', label: 'En semaine', typical: 60, busy: 80, sampleDays: 97 },
+];
+
+/**
+ * The sections of a park page in exactly the order they render
+ * (`app/[locale]/parks/.../page.tsx`). Reorder them here and you reorder them
+ * there too, or this guide describes a page that does not exist.
+ */
+const PARK_SECTIONS: AnatomyStep[] = [
+  {
+    title: 'En-tête',
+    body: 'Nom, lieu, distance depuis chez vous, plus le statut, les horaires du jour, l’affluence du moment et le compteur « x sur y ouvertes ». La ligne qui répond à la plupart des visites.',
+  },
+  {
+    title: 'Vacances scolaires alentour',
+    body: 'Quelles vacances scolaires pèsent aujourd’hui sur ce parc, avec la région correspondante. Y compris celles de l’autre côté de la frontière.',
+    onlyWhen: 'une région de vacances atteint réellement ce parc aujourd’hui.',
+  },
+  {
+    title: 'Alerte météo',
+    body: 'Alertes officielles du DWD et de MeteoAlarm, reprises telles quelles. Aucun jugement de notre part sur la météo.',
+    onlyWhen: 'une alerte est active pour le lieu.',
+  },
+  {
+    title: 'Radar de pluie',
+    body: 'Les prochaines heures par quarts d’heure. Indique si l’averse sera passée dans vingt minutes ou si elle tiendra l’après-midi.',
+    onlyWhen: 'des précipitations sont à portée.',
+  },
+  {
+    title: 'Carte météo',
+    body: 'Valeur actuelle, courbe de la journée et prévision. L’axe horaire est construit autour des horaires d’ouverture : les heures où le parc est ouvert reçoivent quatre fois plus de place que celles d’avant et d’après.',
+  },
+  {
+    title: 'Prix coupe-file',
+    body: 'Tarifs quotidiens des files payantes, ruptures de stock comprises.',
+    onlyWhen:
+      'le parc les publie dans son calendrier. Pour l’instant, seulement les parcs Disney aux États-Unis.',
+  },
+  {
+    title: 'Attractions',
+    body: 'Le premier onglet, avec le nombre d’attractions dans son titre. Des cartes comme au chapitre 01, triables et cherchables, groupées par zone. En haut, l’aperçu rope drop du parc, trié par minutes gagnées.',
+  },
+  {
+    title: 'Calendrier et carte',
+    body: 'Deux onglets fixes à côté : les prévisions journalières du chapitre 04 et une carte avec les attractions en marqueurs.',
+  },
+  {
+    title: 'Spectacles et restaurants',
+    body: 'Horaires des spectacles pour toute la journée, restauration avec heures d’ouverture.',
+    onlyWhen: 'le parc les fournit. Sinon l’onglet n’existe pas du tout.',
+  },
+  {
+    title: 'Meilleurs jours',
+    body: 'Les dates les plus calmes des trois prochains mois, plus le jour de semaine le plus calme du parc.',
+    onlyWhen: 'le parc publie un calendrier d’exploitation.',
+  },
+  {
+    title: 'Parcs à proximité',
+    body: 'Ce qu’il y a d’autre à portée, avec la distance et le statut actuel.',
+    onlyWhen: 'il y a des voisins. Pour environ la moitié des 212 parcs, il n’y en a pas.',
+  },
+  {
+    title: 'Statistiques',
+    body: 'Les files les plus longues du parc avec leur valeur habituelle et chargée, plus la répartition par mois et par jour de semaine. La section indique le nombre de jours enregistrés, et les deux répartitions en font une colonne à part.',
+  },
+  {
+    title: 'Saison, infos, questions',
+    body: 'Périodes d’ouverture et événements annoncés, adresse et fuseau horaire, et les questions fréquentes sur ce parc précis.',
+  },
+];
+
+const NIGHT_JOBS: NightShiftJob[] = [
+  {
+    time: '02:00',
+    at: 0.04,
+    title: 'Centiles par heure',
+    body: 'Chaque heure mesurée de chaque attraction reçoit sa distribution. Les heures avec moins de trois relevés sont écartées.',
+  },
+  {
+    time: '03:00',
+    at: 0.22,
+    title: 'Valeurs de référence par parc',
+    body: 'La médiane contre laquelle l’affluence en direct sera ensuite calculée. Le premier entraînement du modèle démarre après.',
+  },
+  {
+    time: '04:30',
+    at: 0.42,
+    title: 'Historique au quart d’heure',
+    body: 'La journée d’hier est agrégée. Rien de ce qui dépend de la forme d’une journée ne peut tourner avant.',
+  },
+  {
+    time: '05:15',
+    at: 0.56,
+    title: 'Recommandations rope drop',
+    body: 'Par attraction : le départ matinal vaut-il le coup, combien de temps l’avance tient-elle, quand se situe le moment le plus calme de la journée.',
+  },
+  {
+    time: '05:30',
+    at: 0.67,
+    title: 'Temps d’attente habituels',
+    body: 'Le tableau du chapitre 02. Par jour de semaine, avec le jour record et sa date.',
+  },
+  {
+    time: '06:00',
+    at: 0.8,
+    title: 'Modèle de prévision',
+    body: 'Réentraîné avec les temps d’attente de la veille. Une fois en entier, chaque matin.',
+  },
+];
+
+const FAQ = [
+  {
+    question: 'Que veulent dire « habituel » et « chargé » pour un temps d’attente ?',
+    answer:
+      'Habituel est la médiane des pics quotidiens : sur la moitié des jours mesurés, la file la plus longue était plus courte, sur l’autre moitié plus longue. Chargé est le 90e centile de la même série, soit à peu près le jour sur dix où il y avait vraiment foule. Le record absolu est affiché à part, pour qu’une seule valeur extrême ne déplace ni l’une ni l’autre.',
+  },
+  {
+    question: 'Est-ce que 70 minutes d’attente, c’est beaucoup ?',
+    answer:
+      'Cela dépend de l’attraction et du jour de la semaine. Taron, à Phantasialand, plafonne habituellement à 55 minutes le lundi et reste sous 65 neuf lundis sur dix ; 70 minutes y correspondent donc à une journée exceptionnellement chargée. Le samedi, la médiane de la même attraction est exactement de 70 minutes, et le même affichage est alors parfaitement moyen. Les deux valeurs de comparaison figurent sur la page de l’attraction, pour ne pas avoir à les deviner.',
+  },
+  {
+    question: 'D’où viennent les temps d’attente ?',
+    answer:
+      'De trois sources publiques à la fois : ThemeParks.wiki, Wartezeiten.app et Queue-Times.com. Chaque parc est interrogé toutes les cinq minutes. Quand deux sources annoncent des chiffres différents, la majorité tranche, puis la médiane, puis la moyenne. Le résultat est arrondi à cinq minutes, parce que les parcs eux-mêmes affichent par pas de cinq minutes.',
+  },
+  {
+    question: 'Pourquoi certains parcs affichent-ils « Pas de prévision » ?',
+    answer:
+      'Parce que la base manque. Un niveau d’affluence naît de la comparaison avec le passé du parc lui-même, ce qui demande une trentaine de jours d’exploitation. Pour les parcs neufs ou rarement ouverts, la case reste donc vide au lieu d’afficher une couleur devinée.',
+  },
+  {
+    question: 'Pourquoi Hansa-Park n’affiche-t-il aucun temps d’attente ?',
+    answer:
+      'Le parc ne publie ses temps d’attente que dans sa propre application, et uniquement pour les appareils connectés au wifi du parc. Il n’existe aucune interface publique où nous pourrions les lire. Comme un parc sans source ressemble exactement, dans les données, à un parc fermé pour la nuit, il s’agit d’une entrée entretenue à la main et non d’une déduction : le message sur la page du parc le dit, plutôt que d’afficher 82 attractions prétendument vides.',
+  },
+  {
+    question: 'Qu’est-ce que le rope drop ?',
+    answer:
+      'Se placer à une attraction précise dès l’ouverture du parc, avant que les allées ne se remplissent. park.fan ne le recommande que si deux conditions sont réunies : le pic quotidien de l’attraction atteint au moins 60 minutes et le départ matinal en fait gagner au moins 45. La durée approximative pendant laquelle l’avance tient est toujours indiquée.',
+  },
+  {
+    question: 'park.fan est-il payant, et faut-il un compte ?',
+    answer:
+      'Non et non. Tous les temps d’attente, statistiques, calendriers et prévisions sont gratuits et utilisables sans inscription. Les favoris sont stockés dans un cookie du navigateur, pas sur un serveur.',
+  },
+  {
+    question: 'À quelle fréquence les chiffres de la page sont-ils actualisés ?',
+    answer:
+      'Une page de parc ouverte récupère de nouvelles valeurs toutes les cinq minutes, au même rythme que l’interrogation des sources. Les valeurs statistiques comme les temps d’attente habituels ou les recommandations rope drop sont recalculées une fois par nuit, parce qu’elles bougent de toute façon à peine d’un jour à l’autre.',
+  },
+];
+
+export function ContentFR() {
+  const glossary = `/${GLOSSARY_SEGMENTS.fr}`;
+  const bestTime = `/${BEST_TIME_SEGMENTS.fr}`;
+
   return (
     <>
-      {/* ── 1. Recherche ─────────────────────────────────────────────────────── */}
-      <Section id="suche" title="Recherche">
-        <p className="text-muted-foreground mb-4">
-          La recherche globale est le moyen le plus rapide de trouver un parc, une attraction, un
-          spectacle ou un restaurant – sur ordinateur comme sur mobile.
-        </p>
+      <ChapterRail chapters={CHAPTERS} ariaLabel="Chapitres" />
 
-        <SubSection title="Ouvrir la recherche">
-          <div className="space-y-2 text-sm">
-            <p>
-              <strong>Ordinateur :</strong> Appuie sur{' '}
-              <kbd className="bg-muted rounded border px-2 py-0.5 font-mono text-xs">Ctrl + K</kbd>{' '}
-              ou <kbd className="bg-muted rounded border px-2 py-0.5 font-mono text-xs">⌘ + K</kbd>{' '}
-              (Mac) pour ouvrir la recherche à tout moment.
-            </p>
-            <p>
-              <strong>Mobile et Ordinateur :</strong> Tape sur l&apos;icône{' '}
-              <Search className="inline h-4 w-4" /> dans l&apos;en-tête ou dans le champ de
-              recherche de la page d&apos;accueil.
-            </p>
-          </div>
-          <HeroSearchInput placeholder="Europa-Park, Taron, ..." />
-        </SubSection>
+      {/* ── Intro ───────────────────────────────────────────────────────── */}
+      <div className="container mx-auto space-y-5 px-4">
+        <Lead>
+          park.fan est né dans une file d’attente. Taron, milieu d’après-midi, l’affichage indiquait
+          quelque chose à trois chiffres, et personne ne savait dire si c’était de la malchance ou
+          simplement un mardi.
+        </Lead>
+        <P>
+          C’est encore cette question que le site place au centre. Afficher un temps d’attente
+          actuel, c’est la partie facile : les parcs l’affichent eux-mêmes. Il ne devient
+          intéressant que lorsqu’à côté figure ce à quoi ressemble une journée normale à cette
+          attraction, quand la file raccourcit d’ordinaire, et si aujourd’hui est un bon jour tout
+          court.
+        </P>
+        <P>
+          Il n’y a aucune capture d’écran sur cette page. Chaque carte, chaque badge et chaque
+          tableau ci-dessous sont les véritables composants d’une page de parc, remplis ici de
+          chiffres d’exemple figés. Ce que vous apprenez à lire ici a exactement la même allure une
+          heure plus tard dans le parc.
+        </P>
 
-        <SubSection title="Ce que tu peux rechercher">
-          <div className="grid gap-3 sm:grid-cols-2">
-            {[
-              { icon: '🌴', label: 'Parcs', desc: 'Europa-Park, Phantasialand, Disneyland...' },
-              { icon: '🎢', label: 'Attractions', desc: 'Taron, Silver Star, Space Mountain...' },
-              { icon: '🗺️', label: 'Villes et Pays', desc: 'Orlando, Paris, Allemagne...' },
-              { icon: '🎭', label: 'Spectacles', desc: 'Horaires et programmes des shows' },
-              { icon: '🍽️', label: 'Restaurants', desc: 'Options de restauration dans les parcs' },
-            ].map(({ icon, label, desc }) => (
-              <div key={label} className="bg-muted/30 flex items-start gap-3 rounded-lg p-3">
-                <span className="text-xl">{icon}</span>
-                <div>
-                  <p className="font-semibold">{label}</p>
-                  <p className="text-muted-foreground text-xs">{desc}</p>
-                </div>
-              </div>
+        <Reveal>
+          <nav
+            aria-label="Chapitres"
+            className="bg-muted/40 not-prose grid gap-x-6 gap-y-2 rounded-2xl border p-5 text-sm sm:grid-cols-2 lg:grid-cols-3"
+          >
+            {CHAPTERS.map((c) => (
+              <a
+                key={c.id}
+                href={`#${c.id}`}
+                className="text-muted-foreground hover:text-primary group flex items-baseline gap-2 transition-colors"
+              >
+                <span className="text-primary/40 group-hover:text-primary/70 text-xs font-bold tabular-nums transition-colors">
+                  {c.index}
+                </span>
+                {c.label}
+              </a>
             ))}
-          </div>
-        </SubSection>
+          </nav>
+        </Reveal>
+      </div>
 
-        <InfoBox label="Note">
-          La recherche utilise une recherche plein texte intelligente qui fonctionne même avec des
-          fautes de frappe. Cherche &quot;fantasia&quot; et tu trouveras &quot;Phantasialand&quot;.
-        </InfoBox>
-      </Section>
+      {/* ── 01 ──────────────────────────────────────────────────────────── */}
+      <SectionShell
+        id="chiffre"
+        index="01"
+        kicker="Le point de départ"
+        title="Un chiffre tout seul ne dit rien"
+        icon={Gauge}
+      >
+        <P>
+          À l’entrée de l’attraction, il y a un chiffre, et rien d’autre. La page du parc porte le
+          même chiffre avec quatre informations de plus : un niveau d’affluence, une tendance, la
+          seconde file et la taille minimale. Aucune d’elles ne se déduit de la seule journée en
+          cours.
+        </P>
 
-      {/* ── 2. Localisation ──────────────────────────────────────────────────── */}
-      <Section id="standort" title="Localisation et Parcs à Proximité">
-        <p className="text-muted-foreground mb-4">
-          Avec ta localisation activée, park.fan devient plus intelligent : vois les parcs et
-          attractions à proximité triés par distance. park.fan ne stocke pas ta position.
-        </p>
-        <SubSection title="Navigation dans le parc">
-          <p className="text-muted-foreground text-sm">
-            Lorsque tu es dans un parc, park.fan détecte automatiquement dans quel parc tu te
-            trouves et affiche &quot;Tu es dans [Nom du Parc]&quot; sur la page d&apos;accueil. La
-            carte du parc affiche ta position en temps réel – parfait pour te déplacer entre les
-            attractions.
-          </p>
-        </SubSection>
-        <NearbyParksCard />
-      </Section>
+        <BareNumberVsCard
+          unit="minutes"
+          signLabel="Ce que le parc affiche"
+          signCaption="Un chiffre, aucun repère. Savoir si c’est bon ou mauvais aujourd’hui n’est évident que pour qui est déjà venu assez souvent."
+          cardLabel="Ce que park.fan en fait"
+          cardCaption="Les mêmes 70 minutes, plus le niveau d’affluence, la tendance, le temps single rider, la taille minimale et l’indication du moment où cela devrait se calmer."
+        />
 
-      {/* ── 3. Favoris ───────────────────────────────────────────────────────── */}
-      <Section id="favoriten" title="Favoris">
-        <p className="text-muted-foreground mb-4">
-          Sauvegarde des parcs, attractions, spectacles et restaurants en favoris pour y accéder
-          rapidement depuis la page d&apos;accueil.
-        </p>
+        <div className="max-w-3xl space-y-4 pt-2">
+          <P>
+            « Très élevée » n’est pas ici une affaire de goût. Taron tourne en moyenne à{' '}
+            {TARON_BASELINE} minutes, {TARON_WAIT_NOW} en représentent environ 156 pour cent, et les
+            niveaux changent à 60, 89, 110, 150 et 200 pour cent. À partir de 150, cela s’appelle «
+            Très Élevée ». La petite flèche à côté vient des derniers relevés et indique si la file
+            grossit ou se résorbe.
+          </P>
+          <PG>
+            La seconde valeur de la carte est la file single rider. Beaucoup d’attractions font
+            tourner plusieurs files en parallèle, et laquelle existe figure rarement sur le même
+            panneau. À côté, la taille minimale, pour que personne ne traverse la moitié du parc
+            avec un enfant d’un mètre trente.
+          </PG>
+        </div>
 
-        <SubSection title="Ajouter un favori">
-          <p className="text-sm">
-            Clique sur l&apos;étoile <Star className="inline h-4 w-4 text-yellow-500" /> de
-            n&apos;importe quelle carte de parc ou d&apos;attraction. Les favoris sont sauvegardés
-            localement dans ton navigateur – aucune inscription requise.
-          </p>
-        </SubSection>
+        <DemoFrame
+          label="Deux attractions, la même minute"
+          note="Les deux cartes viennent du même instant dans le même parc, Taron à Klugheim et Black Mamba à Deep in Africa. Une file grossit, l’autre se résorbe. Sur la page du parc, toutes les attractions sont ainsi côte à côte, triables par temps d’attente."
+          href={PARK}
+          hrefLabel="Vers la page du parc →"
+        >
+          <TwoRidesDemo />
+        </DemoFrame>
+      </SectionShell>
 
-        <SubSection title="Favoris sur la page d'accueil">
-          <p className="text-muted-foreground text-sm">
-            Dès que tu as au moins un favori, une section dédiée apparaît sur la page d&apos;accueil
-            avec tous tes parcs, attractions, spectacles et restaurants sauvegardés. Avec la
-            localisation activée, ils sont triés par distance – le plus proche en premier.
-          </p>
-          <MockNearbyCards locale="en" />
-        </SubSection>
+      {/* ── 02 ──────────────────────────────────────────────────────────── */}
+      <Ambience>
+        <SectionShell
+          id="echelle"
+          index="02"
+          kicker="L’échelle"
+          title="Habituel, chargé, record"
+          icon={Ruler}
+        >
+          <IntroWithAside
+            value={`${TARON_RECORD} min`}
+            label="La plus longue file mesurée de Taron"
+            note="Le 16 juillet 2026, pendant les vacances d’été. Un seul jour sur 365, et c’est pourquoi l’échelle raisonne en centiles plutôt qu’en maximum."
+          >
+            <P>
+              Pour situer un chiffre, il faut deux valeurs de comparaison et l’indication de ce sur
+              quoi elles reposent. park.fan utilise pour cela la médiane des pics quotidiens et le
+              90e centile de la même série. En clair : quelle est d’ordinaire la longueur de la plus
+              longue file de la journée, et quelle était-elle les dix pour cent de jours les plus
+              chargés.
+            </P>
+          </IntroWithAside>
 
-        <SubSection title="Qu'est-ce qui est sauvegardé ?">
-          <div className="grid gap-2 sm:grid-cols-2">
-            {[
-              {
-                icon: '🌴',
-                label: 'Parcs',
-                desc: "Statut, horaires d'ouverture et niveau d'affluence en un coup d'œil",
-              },
-              {
-                icon: '🎢',
-                label: 'Attractions',
-                desc: "Temps d'attente en direct et tendance directement dans la vue d'ensemble",
-              },
-              {
-                icon: '🎭',
-                label: 'Spectacles',
-                desc: 'La prochaine représentation toujours visible',
-              },
-              { icon: '🍽️', label: 'Restaurants', desc: 'Statut de la cuisine et emplacement' },
-            ].map(({ icon, label, desc }) => (
-              <div key={label} className="bg-muted/30 flex items-start gap-3 rounded-lg p-3">
-                <span className="text-xl">{icon}</span>
-                <div>
-                  <p className="font-semibold">{label}</p>
-                  <p className="text-muted-foreground mt-0.5 text-xs">{desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </SubSection>
-
-        <TipBox label="Astuce">
-          Sauvegarde 5 à 10 attractions favorites du parc que tu prévois de visiter. Le jour J, tu
-          verras instantanément lesquelles ont de courtes files d&apos;attente – idéal pour décider
-          à la volée.
-        </TipBox>
-      </Section>
-
-      {/* ── 4. Page du Parc ──────────────────────────────────────────────────── */}
-      <Section id="parkseite" title="La Page du Parc">
-        <p className="text-muted-foreground mb-4">
-          Chaque parc possède sa propre page avec des données en temps réel, les horaires
-          d&apos;ouverture, un calendrier interactif et une carte.
-        </p>
-        <InfoBox label="Note">
-          Tous les horaires sont affichés dans le <strong>fuseau horaire local du parc</strong> –
-          indépendamment d&apos;où tu te trouves. Un parc en Floride affiche l&apos;heure de
-          l&apos;Est, Europa-Park affiche l&apos;heure d&apos;Europe Centrale.
-        </InfoBox>
-        <MockParkHeader locale="en" />
-
-        <SubSection title="Alertes météo">
-          <p className="text-muted-foreground mb-3 text-sm">
-            Lorsque le service météorologique national émet une alerte officielle pour
-            l&apos;emplacement d&apos;un parc — canicule, orage, tempête et plus —, une bannière
-            colorée apparaît en haut de la page du parc. La couleur indique la gravité (jaune →
-            orange → rouge) ; dépliez n&apos;importe quelle alerte pour les détails et les
-            consignes.
-          </p>
-          <WeatherWarningBannerDemo />
-        </SubSection>
-
-        <SubSection title="Temps d’attente typiques (par attraction)">
-          <p className="text-muted-foreground mb-3 text-sm">
-            La page de chaque attraction montre son schéma d&apos;attente typique — le pic normal
-            (médiane) et chargé (90e centile), séparé en semaine / week-end et détaillé par jour,
-            ainsi que le record absolu. Calculé sur les 365 derniers jours.
-          </p>
-          <AttractionTypicalWaitsDemo />
-        </SubSection>
-
-        <SubSection title="Onglets – Attractions, Spectacles, Calendrier, Carte">
-          <div className="space-y-3 text-sm">
-            {[
-              {
-                icon: '🎢',
-                label: 'Attractions',
-                desc: "Toutes les attractions avec temps d'attente en direct, statut, tendance et comparaison à la moyenne.",
-              },
-              {
-                icon: '🎭',
-                label: 'Spectacles',
-                desc: 'Tous les spectacles avec statut actuel et prochains horaires.',
-              },
-              {
-                icon: '📅',
-                label: 'Calendrier',
-                desc: "Prévision sur 30+ jours avec prédictions d'affluence, météo, jours fériés et vacances scolaires.",
-              },
-              {
-                icon: '🗺️',
-                label: 'Carte',
-                desc: 'Carte interactive avec toutes les attractions, spectacles et restaurants.',
-              },
-            ].map(({ icon, label, desc }) => (
-              <div key={label} className="bg-muted/30 rounded-lg p-3">
-                <p className="font-semibold">
-                  {icon} {label}
-                </p>
-                <p className="text-muted-foreground mt-0.5">{desc}</p>
-              </div>
-            ))}
-          </div>
-          <MockAttractionCards locale="en" />
-        </SubSection>
-
-        <SubSection title="Onglet Spectacles : Horaires en un coup d'œil">
-          <p className="text-muted-foreground text-sm">
-            L&apos;onglet Spectacles liste tous les shows avec leurs horaires pour aujourd&apos;hui.
-            Les horaires passés sont barrés, le <strong>prochain horaire</strong> est mis en
-            évidence en vert – pour que tu saches toujours quand et où être.
-          </p>
-          <MockShowCards />
-        </SubSection>
-
-        <SubSection title="Attractions et spectacles saisonniers">
-          <p className="text-muted-foreground mb-3 text-sm">
-            <GlossaryInject>
-              Certaines attractions saisonnières et shows ne fonctionnent qu&apos;à certaines
-              saisons — comme les patinoires en hiver ou les attractions aquatiques en été. park.fan
-              le détecte automatiquement et masque ces entrées en dehors de leur saison par défaut.
-            </GlossaryInject>
-          </p>
-          <div className="not-prose space-y-4">
-            <div className="space-y-2">
-              {[
-                {
-                  icon: Snowflake,
-                  label: 'Hiver',
-                  color: 'border border-sky-500/30 bg-sky-500/15 text-sky-400',
-                  opacity: '',
-                  desc: "L'attraction est actuellement en saison (ex. événement hivernal). Le badge s'affiche sur la carte.",
-                },
-                {
-                  icon: Sun,
-                  label: 'Été',
-                  color: 'border border-amber-500/30 bg-amber-500/15 text-amber-500',
-                  opacity: '',
-                  desc: 'Attraction estivale – ex. toboggan aquatique. Active de mai à septembre.',
-                },
-                {
-                  icon: Leaf,
-                  label: 'Saisonnier',
-                  color: 'border border-violet-500/30 bg-violet-500/15 text-violet-500',
-                  opacity: 'opacity-50',
-                  desc: 'Hors saison : badge atténué. Attraction masquée dans les onglets et sur la carte par défaut.',
-                },
-              ].map(({ icon: Icon, label, color, opacity, desc }) => (
-                <div key={label} className="flex items-start gap-3">
-                  <span
-                    className={cn(
-                      'inline-flex shrink-0 items-center gap-1 rounded-full px-2 py-0.5 text-xs font-semibold backdrop-blur-md',
-                      color,
-                      opacity
+          <div className="pt-2">
+            <WaitScaleStage
+              steps={SCALE_STEPS}
+              wait={TARON_WAIT_NOW}
+              max={WAIT_SCALE_MAX}
+              record={TARON_RECORD}
+              labels={SCALE_LABELS}
+              legend={SCALE_LEGEND}
+            >
+              {SCALE_STEPS.map((step, i) => (
+                <div key={step.id} data-wait-step={step.id} className="scroll-mt-28">
+                  <div className="text-primary mb-2 text-xs font-semibold tracking-widest uppercase">
+                    {step.label}
+                  </div>
+                  <h3 className="mb-3 text-xl font-bold sm:text-2xl">
+                    {i === 0 && 'Pour un lundi, 70 minutes, c’est beaucoup'}
+                    {i === 1 && 'Pour un samedi, c’est exactement la norme'}
+                    {i === 2 && 'Et une fois, il y en a eu 135'}
+                  </h3>
+                  <p className="text-muted-foreground max-w-xl leading-relaxed">
+                    {i === 0 && (
+                      <>
+                        Le lundi, le pic de la journée est de {step.typical} minutes, et neuf lundis
+                        sur dix il reste sous {step.busy}. Les {TARON_WAIT_NOW} affichées sont
+                        au-dessus. Qui se trouve ici est tombé sur le lundi le plus chargé depuis
+                        des semaines, et les attractions voisines sont alors le plus souvent la
+                        meilleure idée.
+                      </>
                     )}
-                  >
-                    <Icon className="h-3 w-3" />
-                    {label}
-                  </span>
-                  <p className="text-muted-foreground text-sm">{desc}</p>
+                    {i === 1 && (
+                      <>
+                        Le samedi, {step.typical} minutes, c’est la médiane. Même affichage, même
+                        endroit, même attraction : ce jour-là, elle est simplement dans la moyenne.
+                        S’agacer ne sert à rien, changer de plan non plus, car les attractions
+                        voisines vivent le même samedi.
+                      </>
+                    )}
+                    {i === 2 && (
+                      <>
+                        Sur l’ensemble des {step.sampleDays} jours de semaine mesurés, le pic est de{' '}
+                        {step.typical} minutes. La ligne pointillée plus à droite, c’est la journée
+                        à {TARON_RECORD} minutes du 16 juillet. C’est précisément à cause de
+                        journées pareilles que « chargé » est un centile et non un maximum : une
+                        seule valeur extrême déplacerait une moyenne et rendrait inutilisable tout
+                        ce qui est en dessous.
+                      </>
+                    )}
+                  </p>
+
+                  {/* Below lg every step carries its own scale: there is no
+                    running figure there for anything to change on. */}
+                  <WaitScaleBar
+                    step={step}
+                    wait={TARON_WAIT_NOW}
+                    max={WAIT_SCALE_MAX}
+                    record={TARON_RECORD}
+                    labels={SCALE_LABELS}
+                    className="bg-card/60 mt-5 rounded-2xl border p-5 lg:hidden"
+                  />
                 </div>
               ))}
-            </div>
-            <div className="flex items-start gap-3">
-              <button className="border-border/60 bg-background/60 inline-flex shrink-0 items-center gap-1.5 rounded-md border px-2 py-1 text-xs shadow-md backdrop-blur-md">
-                <EyeOff className="h-3 w-3" />3 hors saison
-              </button>
-              <p className="text-muted-foreground text-sm">
-                Quand des entrées hors saison sont masquées, ce bouton apparaît à côté du titre de
-                la section. Clique dessus pour les afficher.
-              </p>
-            </div>
+            </WaitScaleStage>
           </div>
-        </SubSection>
-      </Section>
 
-      {/* ── 5. Badges ────────────────────────────────────────────────────────── */}
-      <Section id="badges" title="Badges et Indicateurs d'État">
-        <p className="text-muted-foreground mb-4">
-          park.fan utilise un système de couleurs cohérent pour rendre l&apos;information
-          immédiatement compréhensible.
-        </p>
+          {/* Card left, prose right. The card is a park-page sidebar component and
+              looks absurd stretched across a 1500 px column, so it keeps its own
+              width and the text takes the rest instead of leaving a hole. */}
+          <div className="grid items-start gap-8 pt-6 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
+            <DemoFrame
+              label="Sur la page d’une attraction"
+              note="Valeurs réelles de Taron, relevées le 24 août 2026."
+              href={TARON}
+              hrefLabel="Valeurs réelles pour Taron →"
+            >
+              <TypicalWaitsDemo />
+            </DemoFrame>
 
-        <SubSection title="Statut des Parcs et Attractions">
-          <div className="space-y-3">
-            {[
-              {
-                icon: Clock,
-                color: 'badge-status-operating',
-                label: 'En service',
-                desc: "L'attraction / le parc est en fonctionnement. Les temps d'attente sont mis à jour en direct.",
-              },
-              {
-                icon: AlertTriangle,
-                color: 'badge-status-down',
-                label: 'En panne',
-                desc: 'Fermé temporairement – p. ex. problème technique ou arrêt de sécurité. Généralement bref.',
-              },
-              {
-                icon: XCircle,
-                color: 'badge-status-closed',
-                label: 'Fermé',
-                desc: "Pas d'opération aujourd'hui – fermeture saisonnière ou jour de repos prévu.",
-              },
-              {
-                icon: Wrench,
-                color: 'badge-status-refurbishment',
-                label: 'Rénovation',
-                desc: 'Maintenance prolongée. Fermé pendant des jours ou des semaines.',
-              },
-            ].map(({ icon: Icon, color, label, desc }) => (
-              <div key={label} className="flex items-start gap-3">
-                <DemoBadge color={color} label={label} icon={Icon} />
-                <p className="text-muted-foreground text-sm">
-                  <GlossaryInject>{desc}</GlossaryInject>
-                </p>
-              </div>
-            ))}
-          </div>
-        </SubSection>
-
-        <SubSection title="Niveaux d'Affluence">
-          <p className="text-muted-foreground mb-3 text-sm">
-            Le niveau d&apos;affluence indique à quel point un parc ou une attraction est fréquenté
-            par rapport à la médiane historique des temps d&apos;attente (P50). 100% signifie
-            exactement aussi fréquenté qu&apos;un jour moyen.
-          </p>
-          <div className="space-y-3">
-            {[
-              {
-                color: 'badge-crowd-very-low',
-                label: 'Très Faible',
-                icon: User,
-                threshold: '≤ 60% de P50',
-                desc: "Nettement plus calme que d'habitude. Presque pas de files – jour idéal pour visiter.",
-              },
-              {
-                color: 'badge-crowd-low',
-                label: 'Faible',
-                icon: User,
-                threshold: '61–89% de P50',
-                desc: "En dessous de la moyenne – courtes files d'attente pour la plupart des attractions.",
-              },
-              {
-                color: 'badge-crowd-moderate',
-                label: 'Modéré',
-                icon: Users,
-                threshold: '90–110% de P50',
-                desc: "Jour typique – temps d'attente dans la plage attendue (±10% de la médiane).",
-              },
-              {
-                color: 'badge-crowd-high',
-                label: 'Élevé',
-                icon: Users,
-                threshold: '111–150% de P50',
-                desc: "Plus fréquenté que la moyenne – temps d'attente nettement plus longs.",
-              },
-              {
-                color: 'badge-crowd-very-high',
-                label: 'Très Élevé',
-                icon: Users,
-                threshold: '151–200% de P50',
-                desc: "Très fréquenté – attentes presque deux fois plus longues que d'habitude. Arrive tôt.",
-              },
-              {
-                color: 'badge-crowd-extreme',
-                label: 'Extrême',
-                icon: AlertTriangle,
-                threshold: '> 200% de P50',
-                desc: "Affluence record – plus du double d'un jour typique. Vacances scolaires, événements spéciaux.",
-              },
-            ].map(({ color, label, icon, threshold, desc }) => (
-              <div key={label} className="flex items-start gap-3">
-                <div className="flex min-w-[100px] flex-col gap-1 sm:min-w-[120px]">
-                  <DemoBadge color={color} label={label} icon={icon} />
-                  <span className="text-muted-foreground pl-1 font-mono text-[10px]">
-                    {threshold}
-                  </span>
-                </div>
-                <p className="text-muted-foreground text-sm">
-                  <GlossaryInject>{desc}</GlossaryInject>
-                </p>
-              </div>
-            ))}
-          </div>
-          <InfoBox label="Note">
-            <strong>Comment le niveau d&apos;affluence est-il calculé ?</strong> park.fan compare le
-            temps d&apos;attente moyen actuel à la médiane historique (P50). 100% signifie aussi
-            fréquenté qu&apos;un jour moyen ; 60% est nettement plus calme, 200% signifie deux fois
-            plus fréquenté que d&apos;habitude.
-          </InfoBox>
-        </SubSection>
-
-        <SubSection title="Indicateurs de Tendance">
-          <div className="space-y-2">
-            {[
-              {
-                icon: TrendingUp,
-                color: 'text-trend-up',
-                label: 'En hausse',
-                desc: "La file s'allonge. Rejoins-la bientôt.",
-              },
-              {
-                icon: Minus,
-                color: 'text-trend-stable',
-                label: 'Stable',
-                desc: "Le temps d'attente reste constant.",
-              },
-              {
-                icon: TrendingDown,
-                color: 'text-trend-down',
-                label: 'En baisse',
-                desc: 'La file raccourcit – bon moment pour la rejoindre.',
-              },
-            ].map(({ icon: Icon, color, label, desc }) => (
-              <div key={label} className="flex items-center gap-3">
-                <span className={`flex w-28 items-center gap-1 text-sm font-semibold ${color}`}>
-                  <Icon className="h-4 w-4" />
-                  {label}
-                </span>
-                <p className="text-muted-foreground text-sm">
-                  <GlossaryInject>{desc}</GlossaryInject>
-                </p>
-              </div>
-            ))}
-          </div>
-        </SubSection>
-
-        {/* Rope-Drop */}
-        <SubSection title="Recommandations rope drop">
-          <p className="text-muted-foreground mb-3 text-sm">
-            <GlossaryInject>{`Pour les attractions phares (headliners) d'un parc, park.fan calcule chaque jour, à partir des temps d'attente des dernières semaines, si le rope drop en vaut la peine – être présent dès l'ouverture du parc – ou si la file est la plus courte le soir :`}</GlossaryInject>
-          </p>
-          <div className="space-y-3">
-            <div className="flex items-start gap-3">
-              <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/15 px-2 py-0.5 text-xs font-semibold text-emerald-600 backdrop-blur-md dark:text-emerald-300">
-                <Sunrise className="h-3 w-3" />
-                Rope drop
-              </span>
-              <p className="text-muted-foreground text-sm">
-                <GlossaryInject>{`Ça vaut le coup : soyez à l'entrée à l'ouverture et faites cette attraction en premier – vous économisez souvent 45 à 90 minutes par rapport au pic du jour. Vert = conseil fort, turquoise = bon conseil.`}</GlossaryInject>
-              </p>
-            </div>
-            <div className="flex items-start gap-3">
-              <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-indigo-500/30 bg-indigo-500/15 px-2 py-0.5 text-xs font-semibold text-indigo-500 backdrop-blur-md dark:text-indigo-300">
-                <Moon className="h-3 w-3" />
-                Mieux plus tard
-              </span>
-              <p className="text-muted-foreground text-sm">
-                <GlossaryInject>{`L'inverse : ici la file est déjà longue dès l'ouverture – elle est généralement la plus courte le soir. Évitez le sprint et revenez plus tard.`}</GlossaryInject>
-              </p>
+            <div className="space-y-4">
+              <P>
+                La même distribution en barres, jour de semaine par jour de semaine. Le chiffre
+                au-dessus de chaque barre est le repère « chargé » du jour, la partie pleine en
+                dessous la valeur habituelle, et le record avec sa date en bas à droite. Un jour
+                sans base ne reçoit pas une barre estimée, il n’en reçoit aucune.
+              </P>
+              <P>
+                Le samedi est le seul jour où les {TARON_WAIT_NOW} du début tombent pile au milieu.
+                Un lundi, les mêmes minutes seraient l’exception.
+              </P>
+              <P>
+                La solidité de tout cela tient au nombre de jours mesurés : {TARON_WEEKDAY_DAYS} en
+                semaine et {TARON_WEEKEND_DAYS} le week-end se sont accumulés ici. La fiche indique
+                elle-même la période sur laquelle elle calcule. Pour le parc entier, le total des
+                jours enregistrés figure dans la section statistiques de la page du parc, et les
+                tableaux par mois et par jour de semaine en font une colonne à part.
+              </P>
             </div>
           </div>
-          <p className="text-muted-foreground mt-3 text-sm">
-            <GlossaryInject>{`Sur la page de détail de l'attraction, un panneau dédié affiche les détails : attente à l'ouverture vs pic du jour, minutes économisées et fenêtre de temps (p. ex. « Idéal dans les 45 premières minutes après l'ouverture – jusqu'à env. 10h45 »). Sur la page du parc, un panneau de conseils au-dessus des incontournables résume où le rope drop paie aujourd'hui – et quelles attractions garder pour le soir.`}</GlossaryInject>
-          </p>
-          <InfoBox>
-            <GlossaryInject>{`Les recommandations sont recalculées chaque jour et n'apparaissent que pour les attractions phares des parcs avec horaires publiés. Toutes les heures sont affichées dans le fuseau horaire du parc – comme partout sur park.fan.`}</GlossaryInject>
-          </InfoBox>
-        </SubSection>
 
-        <SubSection title="Types de File">
-          <div className="space-y-3">
-            {[
-              {
-                color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
-                icon: User,
-                label: 'File Individuelle',
-                termId: 'single-rider',
-                desc: 'Souvent bien plus courte que la file normale – mais tu ne peux pas y aller avec ton groupe.',
-              },
-              {
-                color: 'badge-status-down',
-                icon: Zap,
-                label: 'Lightning Lane',
-                termId: 'lightning-lane',
-                desc: "Pass express payant (p. ex. chez Disney). Affiche le prix actuel et l'heure de retour.",
-              },
-              {
-                color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
-                icon: Ticket,
-                label: 'Heure de Retour',
-                termId: 'virtual-queue',
-                desc: 'File virtuelle gratuite – réserve un créneau et reviens plus tard.',
-              },
-              {
-                color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
-                icon: Ticket,
-                label: "Groupe d'Embarquement",
-                termId: 'boarding-group',
-                desc: 'File virtuelle avec numéro de groupe – populaire pour les nouvelles attractions très demandées.',
-              },
-            ].map(({ color, icon, label, termId, desc }) => (
-              <div key={label} className="flex items-start gap-3">
-                <DemoBadge color={color} label={label} icon={icon} termId={termId} />
-                <p className="text-muted-foreground text-sm">
-                  <GlossaryInject>{desc}</GlossaryInject>
-                </p>
-              </div>
-            ))}
-          </div>
-        </SubSection>
-      </Section>
-
-      {/* ── 6. Calendrier ────────────────────────────────────────────────────── */}
-      <Section id="kalender" title="Le Calendrier d'Affluence">
-        <p className="text-muted-foreground mb-4">
-          Le calendrier est l&apos;outil de planification le plus puissant de park.fan. Il affiche
-          une prévision basée sur l&apos;IA pour chacun des 30+ prochains jours – niveau
-          d&apos;affluence, horaires d&apos;ouverture, météo et événements spéciaux, tout d&apos;un
-          coup d&apos;œil.
-        </p>
-
-        <SubSection title="Que contient chaque carte du calendrier ?">
-          <div className="bg-muted/30 rounded-xl border p-4 text-sm">
-            <p className="mb-2 font-semibold">Une carte typique du calendrier affiche :</p>
-            <ul className="text-muted-foreground space-y-1.5">
-              <li>
-                📅 <strong>Date et jour de la semaine</strong>
-              </li>
-              <li>
-                🎯 <strong>Badge d&apos;Affluence</strong> (p. ex. &quot;Très Élevé&quot;) – la
-                prévision IA de l&apos;affluence globale
-              </li>
-              <li>
-                🕐 <strong>Horaires d&apos;ouverture</strong> – ou &quot;Est.&quot; si pas encore
-                confirmés officiellement
-              </li>
-              <li>
-                🌤️ <strong>Prévision météo</strong> avec températures min./max.
-              </li>
-              <li>
-                ⌚ <strong>Temps d&apos;attente moyen</strong> – attente moyenne prévue sur toutes
-                les attractions
-              </li>
-              <li>
-                🎟️ <strong>Prix du billet</strong>, quand publié par le parc
-              </li>
-            </ul>
-          </div>
-          <p className="text-muted-foreground mt-2 text-sm">
-            <strong>Que signifie &quot;Est.&quot; ?</strong> Les horaires marqués &quot;Est.&quot;
-            (Estimé) n&apos;ont pas encore été confirmés officiellement par le parc. park.fan les
-            dérive de schémas historiques – ils peuvent encore changer.
-          </p>
-        </SubSection>
-
-        <SubSection title="Icônes des cartes du calendrier">
-          <div className="space-y-2 text-sm">
-            {[
-              {
-                icon: PartyPopper,
-                color: 'text-orange-500',
-                label: 'Jour Férié',
-                desc: 'Les parcs ouvrent souvent plus longtemps, mais sont aussi plus fréquentés. Consulte la prévision !',
-              },
-              {
-                icon: Backpack,
-                color: 'text-yellow-500',
-                label: 'Vacances Scolaires',
-                desc: "Généralement les jours les plus fréquentés de l'année – temps d'attente extrêmes possibles.",
-              },
-              {
-                icon: Calendar,
-                color: 'text-blue-500',
-                label: 'Pont',
-                desc: 'Probablement plus fréquenté car beaucoup de gens prolongent les week-ends.',
-              },
-              {
-                icon: XCircle,
-                color: 'text-red-500',
-                label: 'Parc Fermé',
-                desc: "Pas d'opération ce jour-là – aucune prévision disponible.",
-              },
-            ].map(({ icon: Icon, color, label, desc }) => (
-              <div key={label} className="flex items-start gap-3">
-                <Icon className={`mt-0.5 h-5 w-5 shrink-0 ${color}`} />
-                <div>
-                  <p className="font-semibold">{label}</p>
-                  <p className="text-muted-foreground">{desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </SubSection>
-
-        <SubSection title="Exemple pratique : trouver le meilleur jour de visite">
-          <p className="text-muted-foreground mb-3 text-sm">
-            Tu planifies une visite à Europa-Park en octobre. Voici comment utiliser le calendrier :
-          </p>
-          <ol className="text-muted-foreground space-y-3 text-sm">
-            <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
-                1
-              </span>
-              <span>
-                Ouvre la page du parc et bascule sur l&apos;onglet <strong>Calendrier</strong>.
-              </span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
-                2
-              </span>
-              <span>
-                Tu repères immédiatement les semaines de vacances scolaires – beaucoup de cartes
-                avec l&apos;icône <Backpack className="inline h-4 w-4 text-yellow-500" /> et des
-                badges &quot;<strong>Très Élevé</strong>&quot; ou &quot;<strong>Extrême</strong>
-                &quot;.
-              </span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
-                3
-              </span>
-              <span>
-                Cherche un mardi ou mercredi <em>sans</em> icône de jour férié – ils affichent
-                souvent <strong>&quot;Faible&quot;</strong> ou <strong>&quot;Modéré&quot;</strong>.
-                Les horaires d&apos;ouverture et la météo t&apos;aident à trancher.
-              </span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
-                4
-              </span>
-              <span>
-                Achète les billets à l&apos;avance – les jours verts du calendrier peuvent avoir des
-                contingents limités.
-              </span>
-            </li>
-          </ol>
-          <div className="mt-6">
-            <LiveCalendarExample locale="fr" />
-          </div>
-        </SubSection>
-
-        <SubSection title="Calendrier des attractions">
-          <p className="text-muted-foreground text-sm">
-            La page de détail de chaque attraction possède également un calendrier historique
-            montrant l&apos;affluence de chaque jour passé – et si l&apos;attraction était en
-            service ou non. Parfait pour repérer les schémas récurrents : Taron avait-il constamment
-            de courtes files le jeudi après-midi le mois dernier ? C&apos;est peut-être encore le
-            cas la semaine prochaine.
-          </p>
-        </SubSection>
-
-        <TipBox label="Astuce">
-          Les meilleurs jours de visite sont généralement les jours de semaine en dehors des
-          vacances scolaires – mardi, mercredi et jeudi affichent les niveaux d&apos;affluence les
-          plus bas. Évite les semaines de vacances scolaires dans les régions très peuplées.
-        </TipBox>
-      </Section>
-
-      {/* ── 7. Prédictions IA ────────────────────────────────────────────────── */}
-      <Section id="prognosen" title="Prédictions par IA">
-        <p className="text-muted-foreground mb-4">
-          park.fan utilise l&apos;apprentissage automatique pour prédire les niveaux
-          d&apos;affluence et les temps d&apos;attente plusieurs jours à l&apos;avance. Le modèle
-          est continuellement entraîné sur de nouvelles données et tient compte de quatre facteurs
-          clés :
-        </p>
-
-        <div className="grid gap-4 sm:grid-cols-2">
-          {[
-            {
-              icon: '📊',
-              title: 'Données historiques',
-              desc: 'Des millions de points de données par attraction, jour de la semaine et heure de la journée.',
-            },
-            {
-              icon: '📅',
-              title: 'Calendriers de vacances',
-              desc: 'Vacances scolaires et jours fériés en Europe et dans le monde.',
-            },
-            {
-              icon: '🌤️',
-              title: 'Prévisions météo',
-              desc: 'Température, pluie et soleil – le mauvais temps pousse les foules vers les attractions en intérieur.',
-            },
-            {
-              icon: '🎉',
-              title: 'Événements spéciaux',
-              desc: "Nuits d'Halloween, événements de Noël et autres dates propres aux parcs génèrent une fréquentation nettement plus élevée.",
-            },
-          ].map(({ icon, title, desc }) => (
-            <div key={title} className="bg-muted/30 flex items-start gap-3 rounded-xl border p-4">
-              <span className="text-2xl">{icon}</span>
-              <div>
-                <p className="font-semibold">{title}</p>
-                <p className="text-muted-foreground text-sm">
-                  <GlossaryInject>{desc}</GlossaryInject>
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <SubSection title="Où trouver les prédictions">
-          <div className="space-y-3 text-sm">
-            <div className="bg-muted/30 rounded-lg p-3">
-              <p className="font-semibold">📅 Dans le calendrier d&apos;affluence</p>
-              <p className="text-muted-foreground mt-0.5">
-                Chaque carte du calendrier contient une prévision journalière : niveau
-                d&apos;affluence, temps d&apos;attente moyen et horaires d&apos;ouverture –
-                jusqu&apos;à 30+ jours à l&apos;avance.
-              </p>
-            </div>
-            <div className="bg-muted/30 rounded-lg p-3">
-              <p className="font-semibold">⏰ Badge heure de pointe sur la page du parc</p>
-              <p className="text-muted-foreground mt-0.5">
-                L&apos;en-tête du parc indique quand le pic d&apos;affluence est prévu
-                aujourd&apos;hui – p. ex. &quot;Pic dans 1h 30min&quot;. Planifie une pause déjeuner
-                ou visite une attraction moins populaire pendant cette fenêtre.
-              </p>
-            </div>
-            <div className="bg-muted/30 rounded-lg p-3">
-              <p className="font-semibold">
-                📈 Graphique de prédiction horaire sur la page de l&apos;attraction
-              </p>
-              <p className="text-muted-foreground mt-0.5">
-                Chaque attraction a sa propre page avec un graphique montrant comment les temps
-                d&apos;attente sont prévus d&apos;évoluer au cours de la journée – pour
-                aujourd&apos;hui et demain.
-              </p>
-            </div>
-          </div>
-        </SubSection>
-
-        <SubSection title="Exemple pratique : utiliser les prédictions le jour de la visite">
-          <p className="text-muted-foreground mb-3 text-sm">
-            Tu visites Phantasialand un samedi pendant les vacances scolaires. Le calendrier affiche
-            &quot;Très Élevé&quot;. Voici comment les prédictions t&apos;aident :
-          </p>
-          <ol className="text-muted-foreground space-y-3 text-sm">
-            <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
-                1
-              </span>
-              <span>
-                <strong>À l&apos;entrée :</strong> Le badge heure de pointe affiche &quot;Pic dans
-                ~2h&quot; – tu as jusqu&apos;à environ 11h30 pour tes premiers highlights.
-              </span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
-                2
-              </span>
-              <span>
-                <strong>Ouvre la page Taron :</strong> Le graphique de prédiction montre 9h30 ≈ 15
-                min, 12h ≈ 65 min, 15h ≈ 40 min → monte juste à l&apos;ouverture ou en milieu
-                d&apos;après-midi.
-              </span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
-                3
-              </span>
-              <span>
-                <strong>Déjeuner pendant le pic :</strong> Plutôt que de faire la queue à midi, tu
-                en profites pour manger. Les tendances en direct confirment qu&apos;à 15h
-                l&apos;attente baisse – moment parfait pour y aller.
-              </span>
-            </li>
-          </ol>
-        </SubSection>
-
-        <SubSection title="Quelle est la précision des prédictions ?">
-          <p className="text-muted-foreground text-sm">
-            La précision varie selon le parc et la fenêtre de prévision. La page de détail de chaque
-            attraction affiche sa qualité de prédiction – de <strong>Faible</strong> à{' '}
-            <strong>Excellente</strong>. Plus de données historiques signifie des prévisions plus
-            précises. Les prédictions à court terme (1–3 jours) sont intrinsèquement plus fiables
-            que celles à long terme (7–14 jours).
-          </p>
-        </SubSection>
-
-        <SubSection title="Graphiques sparkline des temps d'attente">
-          <p className="text-muted-foreground text-sm">
-            Chaque carte d&apos;attraction affiche un petit graphique sparkline avec la tendance des
-            temps d&apos;attente sur les dernières heures. Tu peux voir instantanément si les files
-            augmentent, se stabilisent ou diminuent.
-          </p>
-          <MockHourlyChart locale="en" />
-        </SubSection>
-
-        <TipBox label="Astuce">
-          Combine calendrier et prédictions : choisis un jour vert dans le calendrier, puis consulte
-          la prévision horaire sur la page de l&apos;attraction pour trouver le créneau le plus
-          calme. Tu arriveras toujours à la file la plus courte.
-        </TipBox>
-        <p className="text-muted-foreground">
-          Notre modèle de prévision porte un nom —{' '}
-          <Link href="/fancast" className="text-primary hover:underline">
-            Fancast
-          </Link>{' '}
-          — et dispose de sa propre page qui explique comment il fonctionne et sa précision
-          actuelle.
-        </p>
-        <p className="text-muted-foreground">
-          Vous ne savez pas quand y aller ? La{' '}
-          <Link href={`/${BEST_TIME_SEGMENTS.fr}`} className="text-primary hover:underline">
-            meilleure période pour visiter
-          </Link>{' '}
-          rassemble les jours de semaine et les mois les plus calmes de tous les parcs.
-        </p>
-      </Section>
-
-      {/* ── 8. Pour qui ──────────────────────────────────────────────────────── */}
-      <Section id="personas" title="Pour qui est park.fan ?">
-        <div className="grid gap-4 md:grid-cols-2">
-          <PersonaCard
-            emoji="👨‍👩‍👧‍👦"
-            title="Familles"
-            subtitle="Planifier une journée parfaite pour tout le monde"
+          <DemoFrame
+            label="Le même tableau pour tout le parc, en direct"
+            note="Pas de chiffres d’exemple : voici l’état actuel de Phantasialand, la valeur habituelle et la valeur chargée par attraction. Sur la page du parc, la ligne au-dessus dit sur combien de jours enregistrés toute la section calcule. Toutes les minutes vont par pas de cinq, parce que les parcs affichent par pas de cinq."
+            href={PARK}
+            hrefLabel="Vers la page du parc →"
           >
-            <Li>Calendrier d&apos;affluence : quel jour a les files les plus courtes ?</Li>
-            <Li>
-              Météo dans le calendrier : journée pluvieuse ? Consulte les attractions intérieures !
-            </Li>
-            <Li>Favoris : sauvegarde les 10 attractions incontournables pour les enfants.</Li>
-            <Li>
-              Temps d&apos;attente en direct : décide à la volée quelle attraction faire ensuite.
-            </Li>
-          </PersonaCard>
+            <LiveTopAttractions locale="fr" />
+          </DemoFrame>
 
-          <PersonaCard
-            emoji="🎢"
-            title="Passionnés de Parcs"
-            subtitle="Chaque minute doit être optimisée"
-          >
-            <Li>
-              Niveau d&apos;affluence (base P50) : comprends si une attraction est vraiment
-              au-dessus de la moyenne.
-            </Li>
-            <Li>Tendances historiques : quand Taron a-t-il habituellement de courtes files ?</Li>
-            <Li>
-              Indicateurs de tendance : file en hausse ? Attends 20 minutes, elle pourrait
-              raccourcir.
-            </Li>
-            <Li>
-              File Individuelle / Lightning Lane : tous les types de file avec horaires et prix.
-            </Li>
-          </PersonaCard>
+          <Highlight>
+            Ce tableau est la raison pour laquelle nous archivons les temps d’attente. Un chiffre en
+            direct peut être demandé au moment où quelqu’un le réclame. Une médiane sur chaque mardi
+            mesuré doit être prête avant que la question n’arrive.
+          </Highlight>
+        </SectionShell>
+      </Ambience>
 
-          <PersonaCard
-            emoji="🌟"
-            title="Primo-Visiteurs"
-            subtitle="Première visite dans un grand parc à thème"
-          >
-            <Li>Recherche : trouve ton parc rapidement, même si tu ne connais pas le nom exact.</Li>
-            <Li>Carte du parc : repère-toi avant et pendant ta visite.</Li>
-            <Li>
-              Badges de statut : vert = en marche, orange = bref incident, gris = fermé
-              aujourd&apos;hui.
-            </Li>
-            <Li>
-              Calendrier d&apos;affluence : les couleurs disent tout – vert c&apos;est bien, rouge
-              c&apos;est stressant.
-            </Li>
-          </PersonaCard>
+      {/* ── 03 ──────────────────────────────────────────────────────────── */}
+      <SectionShell
+        id="moment"
+        index="03"
+        kicker="L’heure"
+        title="Le meilleur moment de la journée"
+        icon={Sunrise}
+      >
+        <P>
+          « Venez tôt » est le conseil que tout le monde donne. Il n’est vrai que si la file grossit
+          au fil de la journée, et c’est loin d’être le cas partout. Six attractions du même parc,
+          le même tableau, la même année :
+        </P>
 
-          <PersonaCard
-            emoji="⚡"
-            title="Visiteurs Spontanés"
-            subtitle="Décision de dernière minute, efficacité maximale"
-          >
-            <Li>Localisation : park.fan trouve automatiquement ton parc le plus proche.</Li>
-            <Li>
-              Temps d&apos;attente en direct : vois instantanément ce qui est ouvert et combien de
-              temps il faut attendre.
-            </Li>
-            <Li>Indicateurs de tendance : file en baisse ? Moment idéal pour la rejoindre.</Li>
-          </PersonaCard>
+        <DemoFrame
+          label="Le vrai profil horaire, à l’instant"
+          note="En direct du profil horaire du parc. En gras, l’heure la plus forte de chaque attraction, et elle est loin d’être la même pour les six. Une heure ne devient une colonne qu’à partir de dix jours mesurés sur cette attraction, si elle atteint au moins 40 pour cent de l’heure la mieux mesurée et si au moins la moitié des attractions la remontent. Cela écarte les heures de bord de journée, où une seule file de clients d’hôtel parlerait sinon pour toute la matinée."
+          href={PARK}
+          hrefLabel="Vers la page du parc →"
+        >
+          <LiveHourlyProfile locale="fr" />
+        </DemoFrame>
+
+        <div className="max-w-3xl space-y-4 pt-2">
+          <P>
+            Taron est le cas où l’heure ne décide presque rien : la ligne reste toute la journée
+            dans une bande étroite, et ce qui fait la différence, c’est le jour de la semaine du
+            chapitre 02. Une ligne plus bas, Chiapas fait l’inverse : les valeurs montent nettement
+            jusqu’à l’après-midi. Une règle unique pour tout le parc serait fausse pour l’une des
+            deux, et c’est pourquoi elle est calculée par attraction.
+          </P>
         </div>
-      </Section>
 
-      {/* ── 9. Parcs populaires ─────────────────────────────────────────────── */}
-      <Section id="parks" title="Parcs populaires">
-        <p className="text-muted-foreground mb-6">
-          park.fan couvre plus de 200 parcs d&apos;attractions dans le monde. Voici les plus visités
-          de votre région avec des données en direct :
-        </p>
-        <PopularParksGrid />
-      </Section>
+        <div className="grid items-start gap-6 lg:grid-cols-2">
+          <DemoFrame
+            label="La recommandation qui en découle"
+            note="Elle n’est émise que si le pic quotidien atteint au moins 60 minutes et si le départ matinal en fait gagner au moins 45. Colorado Adventure, dans le même parc, fait gagner 40 minutes sur un pic de 50 et ne reçoit donc aucun conseil."
+          >
+            <RopeDropDemo />
+          </DemoFrame>
 
-      {/* ── 10. Glossaire ────────────────────────────────────────────────── */}
-      <Section id="glossar" title="Le Glossaire et la Mise en Évidence des Termes">
-        <p className="text-muted-foreground mb-4">
-          park.fan maintient un{' '}
-          <Link href="/glossaire" className="text-primary underline">
-            glossaire complet des termes des parcs à thème
-          </Link>{' '}
-          –{' '}
-          <GlossaryInject>
-            {`des temps d'attente et niveaux d'affluence aux éléments de montagnes russes et files d'attente virtuelles. Chaque entrée inclut une définition courte et une explication détaillée.`}
-          </GlossaryInject>
-        </p>
-
-        <SubSection title="Mise en évidence automatique des termes sur les pages d'attractions">
-          <p className="text-muted-foreground mb-3 text-sm">
-            <GlossaryInject>
-              {`Sur les pages d'attractions, les termes du glossaire sont automatiquement détectés dans le texte et soulignés en pointillés. En passant la souris, une définition courte apparaît ; un clic mène directement à l'entrée complète du glossaire.`}
-            </GlossaryInject>
-          </p>
-          <div className="bg-muted/30 rounded-xl border p-4 text-sm leading-relaxed">
-            <p className="text-muted-foreground mb-3 text-xs font-semibold tracking-wide uppercase">
-              Texte d'exemple (passez la souris sur les termes soulignés)
-            </p>
-            <p>
-              <GlossaryInject>
-                {`La meilleure façon de planifier votre visite est de consulter le calendrier d'affluence avant de réserver. Un jour de pointe, les temps d'attente pour les attractions populaires peuvent dépasser 90 minutes. Une file d'attente virtuelle vous permet de réserver votre créneau sans faire la queue, tandis qu'un pass express vous donne accès à une file prioritaire. Vérifiez le niveau d'affluence avant d'acheter.`}
-              </GlossaryInject>
-            </p>
+          <div className="max-w-prose space-y-4">
+            <PG>
+              La carte donne trois chiffres et une heure : le temps d’attente habituel à
+              l’ouverture, le pic de la journée, l’écart entre les deux, et la fenêtre pendant
+              laquelle l’avance tient. Après, elle a disparu, et c’est écrit ainsi.
+            </PG>
+            <P>
+              La seconde partie, c’est le moment le plus calme de la journée, où qu’il tombe. Pour
+              ces attractions, il coïncide avec le départ matinal. Pour d’autres, il tombe le soir,
+              et la carte nomme alors ce moment plutôt que le réveil. Pour tout le parc, l’aperçu
+              des attractions liste celles où se lever tôt rapporte le plus, triées par minutes
+              gagnées.
+            </P>
           </div>
-        </SubSection>
-
-        <TipBox label="Conseil">
-          Le glossaire complet est disponible sur{' '}
-          <Link href="/glossaire" className="text-primary font-medium underline">
-            park.fan/glossaire
-          </Link>{' '}
-          avec des termes organisés en 7 catégories.
-        </TipBox>
-      </Section>
-
-      {/* ── 11. FAQ ─────────────────────────────────────────────────────────── */}
-      <Section id="coaster-player" title="Le lecteur 3-D de montagnes russes">
-        <div className="text-muted-foreground space-y-4 text-base leading-relaxed">
-          <p>
-            <GlossaryInject>
-              Certaines entrées d'éléments de montagnes russes proposent un lecteur 3-D interactif
-              pour voir la figure plutôt que de seulement la lire. Le Celestial Spin en est un bon
-              exemple — l'élément à double voie conçu par Mack Rides pour Stardust Racers. Lancez-le
-              ci-dessous, déplacez la chronologie à n'importe quel instant (les points clés sont
-              marqués) et basculez entre trois vues de caméra :
-            </GlossaryInject>
-          </p>
         </div>
-        <div className="mt-5 max-w-2xl">
-          <CoasterPlayerDemo locale="fr" />
-        </div>
-        <SubSection title="Trois vues de caméra">
-          <ul className="text-muted-foreground space-y-2">
-            <Li>
-              <strong className="text-foreground">Frontale</strong> — la figure de face devant la
-              montagne, pour en lire la forme générale.
-            </Li>
-            <Li>
-              <strong className="text-foreground">Poursuite</strong> — une caméra qui suit le train
-              à travers la figure.
-            </Li>
-            <Li>
-              <strong className="text-foreground">Embarqué</strong> — embarquez depuis la première
-              rangée et ressentez l'inversion.
-            </Li>
-          </ul>
-        </SubSection>
-        <p className="text-muted-foreground mt-4">
-          <GlossaryInject>
-            Chaque entrée du glossaire portant le badge 3-D utilise ce même lecteur — par exemple le
-            looping vertical, le tire-bouchon et la bosse d’airtime.
-          </GlossaryInject>
-        </p>
-      </Section>
+      </SectionShell>
 
-      <Section id="faq" title="Questions Fréquentes">
-        <div className="space-y-4">
-          {[
-            {
-              q: "À quelle fréquence les temps d'attente sont-ils mis à jour ?",
-              a: "Les temps d'attente sont mis à jour chaque minute. Pour certains parcs, les mises à jour ont lieu toutes les 2 à 5 minutes selon la disponibilité des données.",
-            },
-            {
-              q: "D'où proviennent les données ?",
-              a: 'park.fan obtient des données en direct de ThemeParks.wiki, Queue-Times.com et Wartezeiten.app.',
-            },
-            {
-              q: 'park.fan est-il gratuit ?',
-              a: 'Oui, park.fan est entièrement gratuit et ne nécessite aucune inscription.',
-            },
-            {
-              q: 'Les favoris sont-ils synchronisés entre les appareils ?',
-              a: "Non, les favoris sont stockés localement dans ton navigateur (localStorage). Ils ne sont disponibles que sur l'appareil où tu les as sauvegardés.",
-            },
-            {
-              q: "Jusqu'à quand le calendrier d'affluence fait-il des prévisions ?",
-              a: 'Le calendrier affiche des prévisions pour plus de 30 jours. Les prévisions pour des dates plus éloignées sont naturellement un peu moins précises que celles à court terme.',
-            },
-            {
-              q: 'Combien de parcs sont couverts ?',
-              a: 'park.fan couvre actuellement plus de 200 parcs avec plus de 7 000 attractions dans le monde entier – de Walt Disney World et Universal à Europa-Park, Phantasialand et des parcs en Asie et en Australie.',
-            },
-          ].map(({ q, a }) => (
-            <details key={q} className="group bg-muted/30 rounded-xl border">
-              <summary className="cursor-pointer list-none p-4 font-semibold group-open:pb-2">
-                <span className="flex items-start gap-2">
-                  <ChevronRight className="text-primary mt-0.5 h-4 w-4 shrink-0 transition-transform group-open:rotate-90" />
-                  {q}
-                </span>
-              </summary>
-              <p className="text-muted-foreground px-4 pb-4 text-sm">{a}</p>
-            </details>
-          ))}
+      {/* ── 04 ──────────────────────────────────────────────────────────── */}
+      <SectionShell
+        id="jour"
+        index="04"
+        kicker="La date"
+        title="Le bon jour, des mois à l’avance"
+        icon={CalendarDays}
+      >
+        <P>
+          La plus grosse économie n’est pas dans l’heure, elle est dans la date. Entre deux jours de
+          la même semaine, il peut y avoir une demi-heure d’attente moyenne d’écart, et un
+          calendrier ordinaire n’en laisse rien paraître. Ce qui fait la différence : vacances
+          scolaires, jours fériés, ponts et météo.
+        </P>
+
+        <DemoFrame
+          label="Quatre jours d’une semaine de vacances d’automne"
+          note="Le 15 octobre est le plus calme des quatre, bien qu’il tombe en pleine période de vacances : il pleut. Le 19 est gris parce que le parc est fermé ce jour-là. Sur la page du parc, ce calendrier va jusqu’à un an."
+        >
+          <CalendarDaysDemo />
+        </DemoFrame>
+
+        {/* Two columns rather than one narrow one: the calendar above runs the
+            full width, and three paragraphs stacked at the body measure under it
+            left the right half of the band empty. */}
+        <div className="grid gap-x-10 gap-y-4 pt-2 lg:grid-cols-2 lg:items-start">
+          <P>
+            Les calendriers de vacances viennent de deux sources publiques et couvrent quatre ans
+            chacun. Celles des voisins comptent souvent plus que les siennes. Un exemple
+            d’aujourd’hui : pour Phantasialand, ce n’est pas la Rhénanie-du-Nord-Westphalie qui
+            figure au calendrier comme période déterminante, mais les vacances d’été de la province
+            néerlandaise de Gueldre. Le parc est à 90 kilomètres de la frontière, et les visiteurs à
+            la journée n’en connaissent pas. Les régions situées dans un rayon d’environ 200
+            kilomètres comptent donc aussi et reçoivent leur propre marque dans le calendrier.
+          </P>
+          <div className="space-y-4">
+            <PG>
+              La couleur d’un jour est une prévision, pas une mesure. Elle vient d’un modèle
+              réentraîné chaque nuit avec les temps d’attente de la veille, et que l’on peut ensuite
+              confronter à la réalité.
+            </PG>
+            <P>
+              Jusqu’où va le calendrier dépend du parc. Un parc ouvert toute l’année reçoit une
+              prévision jusqu’à douze mois à l’avance. Pour un parc saisonnier, elle s’arrête là où
+              finit la saison publiée : pour un mardi de mars où Phantasialand est démontrablement
+              fermé, une couleur d’affluence ne serait pas une prévision mais une affirmation.
+            </P>
+          </div>
         </div>
-      </Section>
+
+        <div className="flex flex-wrap gap-3 pt-1">
+          <Link
+            href="/fancast"
+            prefetch={false}
+            className="border-primary/40 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-semibold transition-colors"
+          >
+            <Sparkles className="h-4 w-4" />
+            La précision du modèle
+          </Link>
+          <Link
+            href={bestTime}
+            prefetch={false}
+            className="border-primary/40 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-semibold transition-colors"
+          >
+            <CalendarDays className="h-4 w-4" />
+            Meilleure période par parc
+          </Link>
+        </div>
+      </SectionShell>
+
+      {/* ── 05 ──────────────────────────────────────────────────────────── */}
+      <SectionShell
+        id="page-parc"
+        index="05"
+        kicker="La visite guidée"
+        title="Une page de parc, de haut en bas"
+        icon={Layers}
+      >
+        <P>
+          Tout ce qui précède tient sur une seule page, construite dans l’ordre où les questions
+          viennent : le parc est-il ouvert aujourd’hui ? Va-t-il pleuvoir ? Quelle est la longueur
+          de la file ? Et quand aurais-je mieux fait de venir ? Une fois, de haut en bas.
+        </P>
+
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,21rem)]">
+          <ParkAnatomy onlyWhenLabel="Seulement si :" steps={PARK_SECTIONS} />
+
+          <div className="space-y-4 lg:sticky lg:top-20 lg:self-start">
+            <Highlight>
+              La moitié de ces blocs dépend d’une condition, et c’est voulu. Un parc sans spectacles
+              n’a pas d’onglet spectacles vide, et environ la moitié des 212 parcs n’affiche aucune
+              section voisins, parce qu’il n’y a rien à portée.
+            </Highlight>
+            <PG>
+              Les onglets gardent leur choix dans l’adresse. Ouvrez le calendrier, transmettez le
+              lien, et ce que vous envoyez, c’est le calendrier et non la liste des attractions.
+            </PG>
+            <div className="pt-1">
+              <Link
+                href={PARK}
+                prefetch={false}
+                className="border-primary/40 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-semibold transition-colors"
+              >
+                <Activity className="h-4 w-4" />
+                Voir sur un parc réel
+              </Link>
+            </div>
+          </div>
+        </div>
+      </SectionShell>
+
+      {/* ── 06 ──────────────────────────────────────────────────────────── */}
+      <Ambience tone="emerald">
+        <SectionShell
+          id="nuit"
+          index="06"
+          kicker="Les fondations"
+          title="D’où viennent les chiffres"
+          icon={Database}
+        >
+          <P>
+            Toutes les cinq minutes, chacun des 212 parcs est interrogé, à partir de trois sources
+            publiques à la fois. Si elles se contredisent, la majorité tranche, puis la médiane,
+            puis la moyenne. Seul ce qui a changé est enregistré, arrondi à cinq minutes, parce que
+            les parcs eux-mêmes affichent par pas de cinq minutes.
+          </P>
+
+          <IngredientGrid>
+            <IngredientCard icon={Activity} title="Temps d’attente" delay={0}>
+              ThemeParks.wiki, Wartezeiten.app et Queue-Times.com, toutes les cinq minutes. La
+              matière première de tout le reste sur cette page.
+            </IngredientCard>
+            <IngredientCard icon={GraduationCap} title="Vacances & jours fériés" delay={60}>
+              Nager.Date pour les jours fériés et les ponts, OpenHolidays pour les vacances
+              scolaires. Quatre ans, chaque région séparément, actualisé chaque mois.
+            </IngredientCard>
+            <IngredientCard icon={CloudSun} title="Météo" delay={120}>
+              Open-Meteo pour la prévision, le rétrospectif et le radar de pluie au quart d’heure.
+              Les alertes officielles viennent du DWD et de MeteoAlarm.
+            </IngredientCard>
+            <IngredientCard icon={CalendarDays} title="Horaires d’ouverture" delay={0}>
+              Depuis les calendriers des parcs. Là où un parc n’en publie pas, nous reconstituons la
+              journée à partir de l’activité des attractions et la marquons comme estimée.
+            </IngredientCard>
+            <IngredientCard icon={Layers} title="Historique" delay={60}>
+              Rien n’est supprimé. Les périodes anciennes sont seulement compressées, pour que
+              chaque analyse continue de tourner sur tous les relevés.
+            </IngredientCard>
+            <IngredientCard icon={BarChart3} title="Modèles de prévision" delay={120}>
+              Séparés par horizon : un pour la journée en cours, un pour les semaines à venir, un
+              pour le reste de l’année. Chacun est confronté aux temps réellement observés.
+            </IngredientCard>
+          </IngredientGrid>
+
+          <div className="max-w-3xl space-y-4 pt-4">
+            <P>
+              La seconde moitié se passe la nuit, et c’est la vraie raison pour laquelle un site ne
+              peut pas simplement afficher des temps d’attente habituels. Une médiane sur chaque
+              mardi mesuré n’est pas une requête que l’on lance à l’ouverture d’une page. Elle doit
+              avoir été calculée avant, dans un ordre fixe, parce que chaque étape s’appuie sur la
+              précédente.
+            </P>
+          </div>
+
+          <NightShift
+            jobs={NIGHT_JOBS}
+            caption="Toutes les heures en UTC. L’ordre n’est pas dû au hasard : la recommandation rope drop de 05:15 lit l’historique au quart d’heure écrit à 04:30."
+          />
+        </SectionShell>
+      </Ambience>
+
+      {/* ── 07 ──────────────────────────────────────────────────────────── */}
+      <SectionShell
+        id="limites"
+        index="07"
+        kicker="Les limites"
+        title="Ce que nous n’affirmons pas"
+        icon={HelpCircle}
+      >
+        <P>
+          Un site de données ne devient pas bon parce que chaque champ est rempli. Il devient bon
+          quand on peut se fier aux champs remplis. Trois cas où park.fan préfère ne rien dire.
+        </P>
+
+        <div className="grid gap-6 lg:grid-cols-3">
+          <DemoFrame
+            label="Parc sans source lisible"
+            note="Hansa-Park ne publie ses temps d’attente que dans sa propre application, sur le wifi du parc. Dans les données, cela ressemble à un parc en pleine nuit ; c’est donc une mention entretenue à la main sur la page. Sans elle, 82 attractions y figureraient en « très faible »."
+          >
+            <NoWaitTimesDemo />
+          </DemoFrame>
+
+          <DemoFrame
+            label="Attraction hors saison"
+            note="Personne ne remonte quoi que ce soit sur une patinoire en août, parce qu’il n’y a rien à remonter. Lire ce silence comme « ouvert » serait l’erreur commode. Ce jour-là, l’attraction ne compte pas non plus dans le compteur « 12 sur 45 ouvertes »."
+          >
+            <OffSeasonDemo />
+          </DemoFrame>
+
+          <DemoFrame
+            label="Aucune base d’évaluation"
+            note="Le dernier niveau n’est pas du tout une affluence. Il dit que nous n’en avons pas encore pour ce parc : sous une trentaine de jours d’exploitation, la valeur de référence manque."
+          >
+            <BadgeRowDemo caption="En haut les niveaux d’affluence, en bas la comparaison avec l’habituel. Les deux utilisent la même échelle de couleurs, pour qu’ils ne puissent pas se contredire." />
+          </DemoFrame>
+        </div>
+
+        <Highlight>
+          La même règle vaut pour la détection de saison. Nous ne nommons les mois d’exploitation
+          d’une attraction qu’après 330 jours d’observation. Avant cela, « fonctionne de décembre à
+          avril » ne serait pas une saison mais la description de la période où nous avons mesuré
+          par hasard.
+        </Highlight>
+      </SectionShell>
+
+      {/* ── 08 ──────────────────────────────────────────────────────────── */}
+      <SectionShell
+        id="visites"
+        index="08"
+        kicker="En pratique"
+        title="Quatre visites, quatre parcours sur le site"
+        icon={Users}
+      >
+        <P>
+          Les mêmes données répondent à des questions très différentes. Quatre exemples, chacun avec
+          le chemin que nous prendrions.
+        </P>
+
+        <div className="grid gap-5 lg:grid-cols-2">
+          <PersonaBlock
+            icon={CalendarDays}
+            who="Une famille, une journée pendant les vacances d’automne"
+            question="« Quel jour de la semaine de vacances est le plus calme, et on fait quoi s’il pleut ? »"
+            steps={[
+              <>
+                Ouvrir la page du parc, onglet <strong>Calendrier</strong>. La semaine de vacances y
+                apparaît en bloc, colorée selon la prévision, avec météo et horaires dans chaque
+                tuile.
+              </>,
+              <>
+                Toucher un jour. Le détail donne l’attente moyenne attendue et les régions de
+                vacances qui pèsent ce jour-là, y compris celles du pays voisin.
+              </>,
+              <>
+                Une journée de pluie au programme ? Le calendrier la montre comme la plus calme de
+                la semaine. Le jour même, le radar de pluie au quart d’heure, en haut de la page du
+                parc, dit quand cela s’arrête.
+              </>,
+              <>
+                Chaque carte d’attraction porte la taille minimale là où le parc la publie. Taron
+                demande 140 centimètres, Colorado Adventure 120, et cela décide de la journée plus
+                que n’importe quel temps d’attente.
+              </>,
+              <>
+                Mettre les attractions pour enfants en favoris dans l’onglet{' '}
+                <strong>Attractions</strong>. Elles apparaissent ensuite sur la page d’accueil avec
+                leur temps d’attente actuel.
+              </>,
+            ]}
+          />
+
+          <PersonaBlock
+            icon={BarChart3}
+            who="Un passionné, trois parcs en une semaine"
+            question="« Où le rope drop vaut-il le coup, et cette file est-elle vraiment exceptionnelle ? »"
+            steps={[
+              <>
+                Sur la page du parc, l’aperçu des attractions rope drop, trié par minutes gagnées.
+                Les attractions sans avantage réel n’y figurent pas.
+              </>,
+              <>
+                Pour chaque attraction, lire en parallèle le tableau du chapitre 02. Il indique la
+                période sur laquelle il calcule, et un jour sans base n’y reçoit aucune barre.
+              </>,
+              <>
+                Pendant la visite, surveiller le badge de comparaison : « beaucoup plus élevé »
+                signifie réellement exceptionnel aujourd’hui, pas simplement long.
+              </>,
+              <>
+                Chaque page d’attraction porte une note sur sa propre prévision, issue de la
+                comparaison entre prévisions passées et temps réels des 30 derniers jours. Pour
+                Taron, cela représente quelques milliers de prévisions comparées.
+              </>,
+              <>
+                Pour organiser le voyage, comparer <A href={bestTime}>la meilleure période</A>.
+                Plusieurs parcs y sont côte à côte, jour de semaine le plus calme compris.
+              </>,
+            ]}
+          />
+
+          <PersonaBlock
+            icon={MapPin}
+            who="Abonné annuel, à 20 minutes du parc"
+            question="« Est-ce que ça vaut encore le déplacement ce soir ? »"
+            steps={[
+              <>
+                Page d’accueil avec la localisation autorisée. Le parc le plus proche est en haut,
+                avec statut, affluence actuelle et horaire jusqu’à ce soir.
+              </>,
+              <>
+                Une affluence « faible » sur une attraction habituellement « élevée », c’est
+                exactement la soirée pour laquelle le trajet vaut le coup.
+              </>,
+              <>
+                Dans le parc, la page d’accueil bascule en vue rapprochée : les attractions les plus
+                proches avec distance et temps d’attente actuel.
+              </>,
+              <>
+                Regarder la flèche de tendance. Une file qui baisse dans la dernière heure avant la
+                fermeture est souvent le moment le plus court de toute la journée.
+              </>,
+            ]}
+          />
+
+          <PersonaBlock
+            icon={Compass}
+            who="Première fois dans un grand parc"
+            question="« C’est quoi le single rider, et dans quel ordre on fait tout ça ? »"
+            steps={[
+              <>
+                Les termes sont dans le <A href={glossary}>dictionnaire</A>, en six langues. Sur les
+                pages d’attraction, ils sont liés directement dans le texte.
+              </>,
+              <>
+                Le matin, dérouler la recommandation rope drop du parc. C’est le seul ordre qui
+                repose sur des données mesurées plutôt que sur l’intuition.
+              </>,
+              <>
+                À partir de midi, décider selon l’affluence plutôt que selon les minutes. Une
+                attraction « faible » à 25 minutes est un meilleur choix qu’une « élevée » à 20.
+              </>,
+              <>
+                Les spectacles sont dans l’onglet du même nom. Les horaires y figurent pour toute la
+                journée, et les parades vident les allées pendant une demi-heure environ.
+              </>,
+            ]}
+          />
+        </div>
+      </SectionShell>
+
+      {/* ── 09 ──────────────────────────────────────────────────────────── */}
+      <SectionShell id="reperes" index="09" kicker="Repères" title="Où trouver quoi" icon={Search}>
+        <TouchpointGrid
+          items={[
+            {
+              icon: Search,
+              title: 'Recherche',
+              body: (
+                <>
+                  Ctrl + K ou ⌘ + K, partout sur le site. Trouve parcs, attractions, spectacles et
+                  restaurants, même avec une orthographe approximative.
+                </>
+              ),
+            },
+            {
+              icon: MapPin,
+              title: 'Localisation',
+              body: (
+                <>
+                  Autorisée, la page d’accueil montre les parcs près de vous. Dans un parc, elle
+                  bascule en vue rapprochée avec les distances.
+                </>
+              ),
+            },
+            {
+              icon: Star,
+              title: 'Favoris',
+              body: (
+                <>
+                  Une étoile sur chaque carte de parc et d’attraction. Stockés dans un cookie du
+                  navigateur, sans compte et sans serveur.
+                </>
+              ),
+            },
+            {
+              icon: Activity,
+              title: 'Blog',
+              body: (
+                <>
+                  Des textes plus longs sur des parcs et des attractions. Les tableaux qu’ils
+                  contiennent tirent les mêmes chiffres que les pages de parc au lieu de les
+                  recopier.
+                </>
+              ),
+            },
+            {
+              icon: Moon,
+              title: 'Page d’attraction',
+              body: (
+                <>
+                  Historique, temps d’attente habituels par jour de semaine, rope drop, taille
+                  minimale, précision de la prévision, éléments de tracé et les articles de blog sur
+                  l’attraction.
+                </>
+              ),
+            },
+            {
+              icon: HelpCircle,
+              title: 'Dictionnaire',
+              body: (
+                <>
+                  <A href={glossary}>Tous les termes techniques</A> avec définition, attractions
+                  d’exemple et, en partie, un modèle 3D de l’élément de tracé.
+                </>
+              ),
+            },
+          ]}
+        />
+      </SectionShell>
+
+      {/* ── 10 ──────────────────────────────────────────────────────────── */}
+      <SectionShell
+        id="faq"
+        index="10"
+        kicker="Vos questions"
+        title="Questions fréquentes"
+        icon={HelpCircle}
+      >
+        <FaqList items={FAQ} />
+      </SectionShell>
+
+      <ClosingBand
+        kicker="Et maintenant ?"
+        title="Pour aller plus loin"
+        body="Tout sur park.fan est gratuit, sans compte et sans publicité. La page d’un parc montre tout cela en conditions réelles, la page Fancast détaille publiquement la précision des prévisions des 30 derniers jours, et la meilleure période compare plusieurs parcs côte à côte."
+      >
+        <Link
+          href={PARK}
+          prefetch={false}
+          className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold shadow-sm transition-colors"
+        >
+          <Activity className="h-4 w-4" />
+          Voir un exemple de page de parc
+        </Link>
+        <Link
+          href={bestTime}
+          prefetch={false}
+          className="border-primary/40 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-semibold transition-colors"
+        >
+          <CalendarDays className="h-4 w-4" />
+          Meilleure période
+        </Link>
+        <Link
+          href="/fancast"
+          prefetch={false}
+          className="border-primary/40 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-semibold transition-colors"
+        >
+          <Sparkles className="h-4 w-4" />
+          Précision des prévisions
+        </Link>
+      </ClosingBand>
     </>
   );
 }
 
-export function ContentFR() {
+/** One worked example: who, what they are asking, and the route through the site. */
+function PersonaBlock({
+  icon: Icon,
+  who,
+  question,
+  steps,
+}: {
+  icon: React.ElementType;
+  who: string;
+  question: string;
+  steps: React.ReactNode[];
+}) {
   return (
-    <div className="space-y-16 text-base leading-7">
-      <IntroFR />
-      <ContentFRSections />
-    </div>
+    <Reveal>
+      <div className="bg-card/70 h-full rounded-2xl border p-5 sm:p-6">
+        <div className="mb-3 flex items-start gap-3">
+          <div className="bg-primary/10 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl">
+            <Icon className="text-primary h-5 w-5" />
+          </div>
+          <div>
+            <h3 className="font-semibold">{who}</h3>
+            <p className="text-muted-foreground mt-0.5 text-sm italic">{question}</p>
+          </div>
+        </div>
+        <ol className="mt-4 space-y-2.5">
+          {steps.map((step, i) => (
+            <li key={i} className="text-muted-foreground flex gap-3 text-sm leading-relaxed">
+              <span className="bg-primary/10 text-primary mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[11px] font-bold tabular-nums">
+                {i + 1}
+              </span>
+              <span>{step}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </Reveal>
   );
 }

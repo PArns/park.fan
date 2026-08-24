@@ -187,7 +187,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
   },
   {
     title: 'Statistik',
-    body: 'Die längsten Schlangen des Parks mit typischem und vollem Wert, dazu die Verteilung über Monate und Wochentage. Hier steht die Zahl der Messtage als eigene Spalte.',
+    body: 'Die längsten Schlangen des Parks mit typischem und vollem Wert, dazu die Verteilung über Monate und Wochentage. Der Abschnitt nennt die Zahl der aufgezeichneten Tage, und die beiden Verteilungen führen sie als eigene Spalte.',
   },
   {
     title: 'Saison, Infos, Fragen',
@@ -224,7 +224,7 @@ const NIGHT_JOBS: NightShiftJob[] = [
     time: '05:30',
     at: 0.67,
     title: 'Typische Wartezeiten',
-    body: 'Die Tabelle aus Kapitel 02. Pro Wochentag, mit der Zahl der Messtage daneben.',
+    body: 'Die Tabelle aus Kapitel 02. Pro Wochentag, dazu der Rekordtag mit Datum.',
   },
   {
     time: '06:00',
@@ -484,14 +484,16 @@ export function ContentDE() {
               <P>
                 Wie belastbar das alles ist, hängt an der Zahl der Messtage: {TARON_WEEKDAY_DAYS}{' '}
                 unter der Woche und {TARON_WEEKEND_DAYS} am Wochenende sind hier zusammengekommen.
-                Auf der Parkseite steht diese Zahl als eigene Spalte neben jeder Bahn.
+                Die Karte selbst nennt den Zeitraum, aus dem sie rechnet. Für den ganzen Park steht
+                die Summe der aufgezeichneten Tage im Statistik-Abschnitt der Parkseite, und in den
+                Tabellen nach Monat und Wochentag bekommt sie eine eigene Spalte.
               </P>
             </div>
           </div>
 
           <DemoFrame
             label="Dieselbe Tabelle für den ganzen Park, live"
-            note="Keine Beispielzahlen: Das ist der aktuelle Stand für Phantasialand, mit typischem Wert, vollem Wert und den Messtagen dahinter. Alle Minuten stehen in Fünferschritten, weil Parks in Fünferschritten anschreiben."
+            note="Keine Beispielzahlen: Das ist der aktuelle Stand für Phantasialand, pro Bahn der typische und der volle Wert. Auf der Parkseite steht darüber, aus wie vielen aufgezeichneten Tagen der ganze Abschnitt rechnet. Alle Minuten stehen in Fünferschritten, weil Parks in Fünferschritten anschreiben."
             href={PARK}
             hrefLabel="Zur Parkseite →"
           >
@@ -833,8 +835,8 @@ export function ContentDE() {
                 Minuten. Bahnen ohne echten Vorteil tauchen dort nicht auf.
               </>,
               <>
-                Für jede Bahn die Tabelle aus Kapitel 02 mitlesen. Die Spalte mit den Messtagen sagt
-                dir, wie belastbar der Wert ist.
+                Für jede Bahn die Tabelle aus Kapitel 02 mitlesen. Sie nennt den Zeitraum, aus dem
+                sie rechnet, und ein Wochentag ohne Grundlage bekommt dort gar keinen Balken.
               </>,
               <>
                 Während des Besuchs auf den Vergleichs-Badge achten: „viel höher“ heißt heute

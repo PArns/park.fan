@@ -198,7 +198,7 @@
       "p4": "Cerca il tuo parco nella barra di ricerca o sfoglia per continente, paese e città. Nella pagina del parco trovi i tempi di attesa in tempo reale per ogni attrazione, ristorante e spettacolo — aggiornati ogni minuto — insieme alle previsioni di affluenza e un calendario giornaliero. I giorni verdi indicano code brevi; quelli arancioni o rossi segnalano maggiore affluenza e attese più lunghe.",
       "p5": "park.fan è un progetto in continua evoluzione, arricchito regolarmente con nuove funzionalità e parchi. Salva i tuoi parchi preferiti per un accesso rapido, usa la navigazione in loco per pianificare il percorso più efficiente, e consulta sempre il calendario delle affluenze prima di prenotare per scegliere il giorno migliore.",
       "fancastLink": "Scopri Fancast",
-      "howtoLink": "Leggi la guida completa"
+      "howtoLink": "Come funziona park.fan"
     },
     "worldPanel": {
       "title": "Parchi in {continent}",
@@ -227,7 +227,7 @@
     },
     "api": "Documentazione API",
     "impressum": "Impressum",
-    "howto": "Come funziona",
+    "howto": "Capire i tempi di attesa",
     "fancast": "Fancast",
     "bestTime": "Periodo migliore",
     "glossaryLink": "Dizionario",
@@ -280,7 +280,7 @@
     "search": "Cerca parchi e attrazioni",
     "admin": "Admin",
     "nearbyPark": "Vicino: {parkName}",
-    "howto": "Guida",
+    "howto": "Come funziona",
     "glossary": "Dizionario",
     "blog": "Blog",
     "bestTime": "Periodo migliore",
@@ -1275,8 +1275,8 @@
     }
   },
   "howto": {
-    "title": "Come funziona – La guida completa",
-    "description": "Tutto su park.fan spiegato: ricerca, preferiti, calendario affollamento, previsioni AI e tutti i badge. Per famiglie, appassionati e visitatori novizi."
+    "title": "Come funziona park.fan",
+    "description": "70 minuti a Taron: tanti o normali? Come collocare un tempo di attesa, quando un’attrazione è più tranquilla e da dove arrivano i numeri."
   },
   "impressum": {
     "title": "Note legali - park.fan",

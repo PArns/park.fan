@@ -23,20 +23,6 @@ const CONTENT_LOADERS: Record<Locale, () => Promise<ComponentType>> = {
 };
 
 /**
- * Locales whose content module has been rewritten as the editorial guide: it
- * brings its own numbered sections and lives under a full-bleed hero.
- *
- * The rest still carry the previous feature manual, which renders inside a
- * plain container under an `<h1>`. Both shapes are served here rather than one
- * being held back, because the two things are independent: the URL and the
- * routing moved for every language at once (a slug change is a one-shot 301
- * campaign, not something to do six times), while the prose is translated as it
- * is written. Delete this set — and the `legacy` branch below — once the last
- * locale is across.
- */
-const EDITORIAL_LOCALES = new Set<Locale>(['de']);
-
-/**
  * When the guide's content last actually changed. Hand-maintained: a date wired
  * to the build clock would move on every unrelated deploy and stop meaning
  * anything. Bump it when a chapter is rewritten, not when a typo is fixed.
@@ -47,24 +33,23 @@ interface PageHeader {
   title: string;
   /** Meta/structured-data description. Longer than the tagline. */
   intro: string;
-  /** Editorial locales only. */
-  kicker?: string;
-  tagline?: string;
-  scrollLabel?: string;
-  heroAlt?: string;
-  stats?: Array<{ value: string; label: string }>;
+  kicker: string;
+  tagline: string;
+  scrollLabel: string;
+  heroAlt: string;
+  stats: Array<{ value: string; label: string }>;
   /**
-   * Document `<title>`, when the generic `"{title} | park.fan"` is wrong for
-   * this page. The H1 already ends in the brand, so the generic form doubled it
-   * ("So funktioniert park.fan | park.fan"), and it opened on the brand rather
-   * than on what anyone types into a search box. Set this to lead with the
-   * query and keep the brand exactly once; ~60 characters is the budget.
+   * Document `<title>`. The H1 already ends in the brand, so the generic
+   * `"{title} | park.fan"` doubled it ("So funktioniert park.fan | park.fan")
+   * and opened on the brand rather than on what anyone types into a search box.
+   * Lead with the query and keep the brand exactly once; ~60 characters is the
+   * budget.
    */
-  metaTitle?: string;
+  metaTitle: string;
   /** Unit under the hero's wait-time sign. */
-  signUnit?: string;
+  signUnit: string;
   /** One line under the sign, naming what it is. */
-  signCaption?: string;
+  signCaption: string;
 }
 
 const PAGE_HEADERS: Record<Locale, PageHeader> = {
@@ -87,29 +72,94 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
     ],
   },
   en: {
-    title: 'How does park.fan work?',
+    title: 'How park.fan works',
+    metaTitle: 'Understanding wait times – how park.fan works',
     intro:
-      'The complete guide for theme park visitors – from search and favorites to the crowd calendar, AI predictions and all badges explained.',
+      '70 minutes at Taron: a lot, or normal? This guide shows on real examples how to place a wait time, when a ride has its quietest moment and where the numbers come from.',
+    kicker: 'park.fan · The guide',
+    tagline:
+      '70 minutes at Taron. A lot? Normal? A number on its own does not answer that. This page shows what park.fan makes of it, and how it knows.',
+    scrollLabel: 'Scroll',
+    heroAlt: 'Phantasialand in the evening',
+    signUnit: 'minutes',
+    signCaption: 'Taron, Phantasialand. The sign says nothing more.',
+    stats: [
+      { value: '212', label: 'parks' },
+      { value: '7,156', label: 'attractions' },
+      { value: 'every 5 min', label: 'new readings' },
+    ],
   },
   es: {
-    title: '¿Cómo funciona park.fan?',
+    title: 'Así funciona park.fan',
+    metaTitle: 'Entender los tiempos de espera – park.fan',
     intro:
-      'La guía completa para visitar parques temáticos – desde la búsqueda y los favoritos hasta el calendario de afluencia, las predicciones IA y todos los indicadores explicados.',
+      '70 minutos en Taron: ¿mucho o normal? Esta guía muestra con ejemplos reales cómo situar un tiempo de espera, cuándo una atracción está más tranquila y de dónde salen las cifras.',
+    kicker: 'park.fan · La guía',
+    tagline:
+      '70 minutos en Taron. ¿Mucho? ¿Normal? Una cifra sola no lo responde. Esta página muestra qué hace park.fan con ella y cómo lo sabe.',
+    scrollLabel: 'Desplazar',
+    heroAlt: 'Phantasialand al anochecer',
+    signUnit: 'minutos',
+    signCaption: 'Taron, Phantasialand. El cartel no dice más.',
+    stats: [
+      { value: '212', label: 'parques' },
+      { value: '7.156', label: 'atracciones' },
+      { value: 'cada 5 min', label: 'mediciones nuevas' },
+    ],
   },
   fr: {
-    title: 'Comment fonctionne park.fan ?',
+    title: 'Comment fonctionne park.fan',
+    metaTitle: 'Comprendre les temps d’attente – park.fan',
     intro:
-      "Le guide complet pour les visiteurs de parcs d'attractions – de la recherche aux favoris en passant par le calendrier d'affluence, les prédictions IA et tous les indicateurs expliqués.",
+      '70 minutes à Taron : beaucoup, ou normal ? Ce guide montre sur des exemples réels comment situer un temps d’attente, quand une attraction connaît son moment le plus calme et d’où viennent les chiffres.',
+    kicker: 'park.fan · Le guide',
+    tagline:
+      '70 minutes à Taron. Beaucoup ? Normal ? Un chiffre seul n’y répond pas. Cette page montre ce que park.fan en fait, et comment il le sait.',
+    scrollLabel: 'Défiler',
+    heroAlt: 'Phantasialand le soir',
+    signUnit: 'minutes',
+    signCaption: 'Taron, Phantasialand. Le panneau n’en dit pas plus.',
+    stats: [
+      { value: '212', label: 'parcs' },
+      { value: '7 156', label: 'attractions' },
+      { value: 'toutes les 5 min', label: 'nouveaux relevés' },
+    ],
   },
   it: {
-    title: 'Come funziona park.fan?',
+    title: 'Come funziona park.fan',
+    metaTitle: 'Capire i tempi di attesa – park.fan',
     intro:
-      "La guida completa per i visitatori dei parchi divertimento – dalla ricerca ai preferiti, passando per il calendario dell'affluenza, le previsioni IA e tutti gli indicatori spiegati.",
+      '70 minuti a Taron: tanti o normali? Questa guida mostra con esempi reali come collocare un tempo di attesa, quando un’attrazione ha il suo momento più tranquillo e da dove arrivano i numeri.',
+    kicker: 'park.fan · La guida',
+    tagline:
+      '70 minuti a Taron. Tanti? Normali? Un numero da solo non risponde. Questa pagina mostra cosa ne ricava park.fan, e come fa a saperlo.',
+    scrollLabel: 'Scorri',
+    heroAlt: 'Phantasialand di sera',
+    signUnit: 'minuti',
+    signCaption: 'Taron, Phantasialand. Il cartello non dice altro.',
+    stats: [
+      { value: '212', label: 'parchi' },
+      { value: '7.156', label: 'attrazioni' },
+      { value: 'ogni 5 min', label: 'nuove rilevazioni' },
+    ],
   },
   nl: {
-    title: 'Hoe werkt park.fan?',
+    title: 'Zo werkt park.fan',
+    metaTitle: 'Wachttijden begrijpen – zo werkt park.fan',
     intro:
-      'De complete gids voor pretparkbezoekers – van zoeken en favorieten tot de drukte-kalender, AI-voorspellingen en alle badges uitgelegd.',
+      '70 minuten bij Taron: veel of normaal? Deze gids laat aan echte voorbeelden zien hoe je een wachttijd plaatst, wanneer een attractie haar rustigste moment heeft en waar de cijfers vandaan komen.',
+    kicker: 'park.fan · De gids',
+    tagline:
+      '70 minuten bij Taron. Veel? Normaal? Eén getal alleen beantwoordt dat niet. Deze pagina laat zien wat park.fan ermee doet, en hoe het dat weet.',
+    scrollLabel: 'Scrollen',
+    heroAlt: 'Phantasialand in de avond',
+    signUnit: 'minuten',
+    signCaption: 'Taron, Phantasialand. Meer zegt het bord niet.',
+    stats: [
+      { value: '212', label: 'parken' },
+      { value: '7.156', label: 'attracties' },
+      { value: 'elke 5 min.', label: 'nieuwe metingen' },
+    ],
   },
 };
 
@@ -147,61 +197,69 @@ const KEYWORDS: Record<Locale, string[]> = {
     'Europa-Park Wartezeiten',
   ],
   es: [
+    'entender los tiempos de espera',
     'tiempos de espera parque temático',
+    '¿es normal esta cola?',
     'aplicación parque temático',
     'guía park.fan',
     'calendario de afluencia',
     'predicciones de visitantes',
-    'colas atracciones',
-    'tiempos de espera Disneyland',
+    'rope drop',
+    'mejor hora parque temático',
     'PortAventura tiempos de espera',
-    'Gardaland tiempos de espera',
+    'Disneyland Paris tiempos de espera',
   ],
   fr: [
-    "temps d'attente parc d'attractions",
-    "application parc d'attractions",
+    'comprendre les temps d’attente',
+    'temps d’attente parc d’attractions',
+    'cette file est-elle normale',
+    'application parc d’attractions',
     'guide park.fan',
-    "calendrier d'affluence",
+    'calendrier d’affluence',
     'prévisions visiteurs',
-    "files d'attente attractions",
-    "temps d'attente Disneyland Paris",
-    "Europa-Park temps d'attente",
-    "Parc Astérix temps d'attente",
+    'rope drop',
+    'meilleure heure parc d’attractions',
+    'Disneyland Paris temps d’attente',
+    'Parc Astérix temps d’attente',
   ],
   it: [
+    'capire i tempi di attesa',
     'tempi di attesa parco divertimenti',
+    'questa coda è normale',
     'app parco divertimenti',
     'guida park.fan',
     'calendario affollamento',
     'previsioni visitatori',
-    'code attrazioni',
+    'rope drop',
+    'orario migliore parco divertimenti',
     'Gardaland tempi di attesa',
     'Europa-Park tempi di attesa',
   ],
   nl: [
+    'wachttijden begrijpen',
     'wachttijden pretpark',
+    'is deze wachttijd normaal',
     'pretpark app',
-    'park.fan handleiding',
+    'park.fan gids',
     'drukte-kalender',
     'bezoekersvoorspellingen',
-    'wachtrijen attracties',
-    'wachttijden Disneyland Paris',
+    'rope drop',
+    'beste tijd pretpark',
     'Efteling wachttijden',
-    'Europa-Park wachttijden',
     'Toverland wachttijden',
   ],
   en: [
+    'understanding wait times',
     'theme park wait times',
+    'is this wait time normal',
     'theme park app',
     'park.fan guide',
     'crowd calendar',
     'visitor predictions',
-    'ride queues',
-    'Disney wait times',
+    'rope drop',
+    'best time of day theme park',
     'Europa-Park wait times',
-    'Universal Studios wait times',
-    'Magic Kingdom wait times',
-    'theme park planning',
+    'Disney wait times',
   ],
 };
 
@@ -212,9 +270,7 @@ export async function generateMetadata({ params }: HowtoPageProps): Promise<Meta
   const ogImageUrl = getOgImageUrl([locale, HOWTO_SEGMENTS.en]);
 
   const header = PAGE_HEADERS[locale as Locale];
-  // `metaTitle` is already brand-suffixed where it is set; the generic form is
-  // for the locales still on the old headline.
-  const fullTitle = header?.metaTitle ?? `${t('title')} | park.fan`;
+  const fullTitle = header.metaTitle;
   const url = urlFor(locale as Locale);
 
   return {
@@ -282,58 +338,37 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
   const url = urlFor(typedLocale);
   const t = await getTranslations({ locale, namespace: 'common' });
 
-  const seo = (
-    <>
-      <ArticleStructuredData
-        title={header.title}
-        description={header.intro}
-        url={url}
-        locale={locale}
-        image={getOgImageUrl([locale, HOWTO_SEGMENTS.en])}
-        dateModified={CONTENT_UPDATED_AT}
-      />
-      <BreadcrumbStructuredData
-        breadcrumbs={[
-          { name: t('home'), url: '/' },
-          { name: header.title, url: `/${HOWTO_SEGMENTS[typedLocale]}` },
-        ]}
-        locale={locale}
-      />
-    </>
-  );
-
-  if (!EDITORIAL_LOCALES.has(typedLocale)) {
-    return (
-      <RouteMessages route="/how-park-fan-works">
-        <div className="container mx-auto px-4 py-12">
-          {seo}
-          <div>
-            <h1 className="mb-2 text-2xl font-bold sm:text-4xl">{header.title}</h1>
-            <p className="text-muted-foreground mb-10 text-lg">{header.intro}</p>
-            <Content />
-          </div>
-        </div>
-      </RouteMessages>
-    );
-  }
-
   return (
     <RouteMessages route="/how-park-fan-works">
       <>
-        {seo}
+        <ArticleStructuredData
+          title={header.title}
+          description={header.intro}
+          url={url}
+          locale={locale}
+          image={getOgImageUrl([locale, HOWTO_SEGMENTS.en])}
+          dateModified={CONTENT_UPDATED_AT}
+        />
+        <BreadcrumbStructuredData
+          breadcrumbs={[
+            { name: t('home'), url: '/' },
+            { name: header.title, url: `/${HOWTO_SEGMENTS[typedLocale]}` },
+          ]}
+          locale={locale}
+        />
 
         <GuideHero
-          kicker={header.kicker!}
+          kicker={header.kicker}
           title={header.title}
-          tagline={header.tagline!}
+          tagline={header.tagline}
           imageSrc={HERO_IMAGE}
-          imageAlt={header.heroAlt!}
-          stats={header.stats!}
-          scrollLabel={header.scrollLabel!}
+          imageAlt={header.heroAlt}
+          stats={header.stats}
+          scrollLabel={header.scrollLabel}
           sign={{
             value: TARON_WAIT_NOW,
-            unit: header.signUnit!,
-            caption: header.signCaption!,
+            unit: header.signUnit,
+            caption: header.signCaption,
           }}
         />
 

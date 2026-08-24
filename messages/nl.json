@@ -198,7 +198,7 @@
       "p4": "Zoek je park via de zoekbalk of blader per continent, land en stad. Op de parkpagina vind je live wachttijden voor elke attractie, restaurant en show — elke minuut bijgewerkt — samen met AI-druktevoorspellingen en een dag-voor-dag druktekalender. Groene dagen betekenen korte rijen en weinig drukte; oranje of rode dagen signaleren hogere bezetting en langere wachttijden.",
       "p5": "park.fan is een levend project dat voortdurend wordt uitgebreid met nieuwe functies en parken. Sla je favoriete parken op voor snelle toegang, gebruik de navigatie in het park voor de meest efficiënte route, en check altijd de druktekalender vóór het boeken om je bezoek op de best mogelijke dag te plannen.",
       "fancastLink": "Ontdek Fancast",
-      "howtoLink": "Lees de volledige gids"
+      "howtoLink": "Zo werkt park.fan"
     },
     "worldPanel": {
       "title": "Parken in {continent}",
@@ -227,7 +227,7 @@
     },
     "api": "API Documentatie",
     "impressum": "Colofon",
-    "howto": "Hoe het werkt",
+    "howto": "Wachttijden begrijpen",
     "fancast": "Fancast",
     "bestTime": "Beste bezoektijd",
     "glossaryLink": "Woordenboek",
@@ -280,7 +280,7 @@
     "search": "Zoek Parken & Attracties",
     "admin": "Admin",
     "nearbyPark": "In de buurt: {parkName}",
-    "howto": "Gids",
+    "howto": "Zo werkt het",
     "glossary": "Woordenboek",
     "blog": "Blog",
     "bestTime": "Beste reistijd",
@@ -1275,8 +1275,8 @@
     }
   },
   "howto": {
-    "title": "Hoe het werkt – De complete gids",
-    "description": "Alles over park.fan uitgelegd: zoeken, favorieten, drukte-kalender, AI-voorspellingen en alle badges. Voor gezinnen, pretparkfans en eerste bezoekers."
+    "title": "Zo werkt park.fan",
+    "description": "70 minuten bij Taron: veel of normaal? Hoe je een wachttijd plaatst, wanneer een attractie het rustigst is en waar de cijfers vandaan komen."
   },
   "impressum": {
     "title": "Colofon - park.fan",

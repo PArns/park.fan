@@ -198,7 +198,7 @@
       "p4": "Recherchez votre parc via la barre de recherche ou parcourez par continent, pays et ville. Sur la page du parc, vous trouverez les temps d'attente en direct pour chaque attraction, restaurant et spectacle — mis à jour chaque minute — ainsi que les prévisions d'affluence et un calendrier jour par jour. Les jours verts signalent de courtes files et moins de monde ; les jours orange ou rouges indiquent une affluence plus élevée.",
       "p5": "park.fan est un projet vivant, constamment enrichi de nouvelles fonctionnalités et de nouveaux parcs. Enregistrez vos parcs favoris pour un accès rapide, utilisez la navigation en parc pour planifier le parcours le plus efficace, et consultez toujours le calendrier d'affluence avant de réserver pour choisir le meilleur jour possible.",
       "fancastLink": "Découvrir Fancast",
-      "howtoLink": "Lire le guide complet"
+      "howtoLink": "Comment fonctionne park.fan"
     },
     "worldPanel": {
       "title": "Parcs en {continent}",
@@ -227,7 +227,7 @@
     },
     "api": "Documentation API",
     "impressum": "Mentions Légales",
-    "howto": "Comment ça marche",
+    "howto": "Comprendre les temps d’attente",
     "fancast": "Fancast",
     "bestTime": "Meilleure période",
     "glossaryLink": "Dictionnaire",
@@ -280,7 +280,7 @@
     "search": "Recherche Parcs & Attractions",
     "admin": "Admin",
     "nearbyPark": "À proximité : {parkName}",
-    "howto": "Guide",
+    "howto": "Comment ça marche",
     "glossary": "Dictionnaire",
     "blog": "Blog",
     "bestTime": "Meilleure période",
@@ -1275,8 +1275,8 @@
     }
   },
   "howto": {
-    "title": "Comment ça marche – Le guide complet",
-    "description": "Tout sur park.fan expliqué : recherche, favoris, calendrier des foules, prédictions IA et tous les badges. Pour les familles, passionnés et primo-visiteurs."
+    "title": "Comment fonctionne park.fan",
+    "description": "70 minutes à Taron : beaucoup ou normal ? Comment situer un temps d’attente, quand une attraction est au plus calme et d’où viennent les chiffres."
   },
   "impressum": {
     "title": "Mentions Légales - park.fan",

@@ -1,1068 +1,1055 @@
 import React from 'react';
 import { Link } from '@/i18n/navigation';
-import { PopularParksGrid } from '@/components/home/featured-parks-slot';
-import { GlossaryInject } from '@/components/glossary/glossary-inject';
-import { cn } from '@/lib/utils';
+import {
+  A,
+  SectionShell,
+  Lead,
+  P,
+  PG,
+  Highlight,
+  IngredientGrid,
+  IngredientCard,
+  TouchpointGrid,
+  FaqList,
+} from '@/components/marketing/editorial-ui';
+import { Reveal } from '@/components/marketing/scroll-reveal';
+import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
-import { HeroSearchInput } from '@/components/search/hero-search-input';
-import { NearbyParksCard } from '@/components/parks/nearby-parks-card';
 import {
-  Search,
-  Star,
-  TrendingUp,
-  Clock,
-  Users,
-  AlertTriangle,
-  XCircle,
-  Wrench,
-  User,
-  Zap,
-  Ticket,
-  TrendingDown,
-  Minus,
-  PartyPopper,
-  Backpack,
-  Calendar,
-  ChevronRight,
-  Snowflake,
-  Sun,
-  Leaf,
-  EyeOff,
-  Sunrise,
+  Activity,
+  BarChart3,
+  CalendarDays,
+  CloudSun,
+  Compass,
+  Database,
+  Gauge,
+  GraduationCap,
+  HelpCircle,
+  Layers,
+  MapPin,
   Moon,
+  Ruler,
+  Search,
+  Sparkles,
+  Star,
+  Sunrise,
+  Users,
 } from 'lucide-react';
-import { Section, SubSection, DemoBadge, InfoBox, TipBox, PersonaCard, Li } from '../_howto-ui';
-import { CoasterPlayerDemo } from '../_coaster-player-demo';
 import {
-  MockParkHeader,
-  MockAttractionCards,
-  MockShowCards,
-  MockNearbyCards,
-  MockHourlyChart,
-} from '../_mock-components';
-import { LiveCalendarExample } from '../_live-calendar';
-import { WeatherWarningBannerDemo } from '@/components/parks/weather-warning-banner-demo';
-import { AttractionTypicalWaitsDemo } from '@/components/parks/attraction-typical-waits-demo';
+  BadgeRowDemo,
+  BareNumberVsCard,
+  CalendarDaysDemo,
+  DemoFrame,
+  LiveHourlyProfile,
+  LiveTopAttractions,
+  NoWaitTimesDemo,
+  OffSeasonDemo,
+  RopeDropDemo,
+  TwoRidesDemo,
+  TypicalWaitsDemo,
+} from '../_demos';
+import { WaitScaleBar, WaitScaleStage, type WaitScaleStep } from '../_wait-scale';
+import { NightShift, type NightShiftJob } from '../_night-shift';
+import { Ambience, ClosingBand, IntroWithAside, ParkAnatomy, type AnatomyStep } from '../_chrome';
+import { ChapterRail, type Chapter } from '../_chapter-rail';
+import {
+  TARON_BASELINE,
+  TARON_RECORD,
+  TARON_WAIT_NOW,
+  TARON_WEEKDAY_DAYS,
+  TARON_WEEKEND_DAYS,
+  WAIT_SCALE_MAX,
+} from '../_fixtures';
 
-function IntroNL() {
-  return (
-    <div className="space-y-4">
-      <div className="space-y-4 text-base leading-relaxed">
-        <p className="text-muted-foreground text-lg font-medium">
-          Klinkt dit bekend? 80 minuten in de rij voor Taron — en tien meter verderop staat er
-          niemand bij een andere attractie. Of: je boekt je vakantie en ontdekt dat die week precies
-          de schoolvakantie valt.
-        </p>
-        <p className="text-muted-foreground">
-          park.fan is gebouwd vanuit precies die frustratie. Wat begon als een klein zijproject –
-          &quot;ik ga gewoon wat wachttijden bijhouden&quot; – is uitgegroeid tot een platform met
-          live data van 200+ parken, meer dan 7.000 attracties en miljoenen wachtrij-datapunten die
-          dagelijks worden verwerkt.
-        </p>
-        <p className="text-muted-foreground">
-          Het doel is eenvoudig: <strong>neem het giswerk weg uit je pretparkbezoek.</strong>{' '}
-          Gebruik de drukte-kalender om de juiste dag te kiezen, navigeer met live wachttijden en
-          vertrouw op AI-voorspellingen om te weten wanneer elke attractie het rustigst is. Deze
-          pagina legt elke functie in detail uit.
-        </p>
-      </div>
-      <nav aria-label="Inhoudsopgave" className="bg-muted/40 not-prose rounded-xl border p-5">
-        <p className="mb-3 font-semibold">Inhoudsopgave</p>
-        <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
-          {[
-            ['#suche', '1. Zoeken'],
-            ['#standort', '2. Locatie'],
-            ['#favoriten', '3. Favorieten'],
-            ['#parkseite', '4. De parkpagina'],
-            ['#badges', '5. Badges & statussen'],
-            ['#kalender', '6. Drukte-kalender'],
-            ['#prognosen', '7. AI-voorspellingen'],
-            ['#personas', '8. Voor wie?'],
-            ['#parks', '9. Populaire parken'],
-            ['#glossar', '10. Woordenlijst'],
-            ['#faq', '11. FAQ'],
-          ].map(([href, label]) => (
-            <li key={href}>
-              <a href={href} className="hover:text-primary transition-colors">
-                {label}
-              </a>
-            </li>
-          ))}
-        </ol>
-      </nav>
-    </div>
-  );
-}
+/**
+ * Feeds both the chapter list at the top and the rail down the right edge, and
+ * must match the `<SectionShell id=… index=…>` calls below exactly — the rail
+ * looks its sections up by id, so an entry that drifts silently stops
+ * highlighting.
+ */
+const CHAPTERS: Chapter[] = [
+  { id: 'getal', index: '01', label: 'Eén getal alleen' },
+  { id: 'maatstaf', index: '02', label: 'Normaal, druk, record' },
+  { id: 'moment', index: '03', label: 'Het beste moment' },
+  { id: 'dag', index: '04', label: 'De juiste dag' },
+  { id: 'parkpagina', index: '05', label: 'Een parkpagina van boven naar beneden' },
+  { id: 'nachtdienst', index: '06', label: 'Waar de cijfers vandaan komen' },
+  { id: 'gaten', index: '07', label: 'Wat we niet beweren' },
+  { id: 'bezoeken', index: '08', label: 'Vier bezoeken' },
+  { id: 'wegwijzer', index: '09', label: 'Waar je wat vindt' },
+  { id: 'faq', index: '10', label: 'Veelgestelde vragen' },
+];
 
-// Sections are shared across EN / ES / FR / IT / NL
+const PARK = '/parks/europe/germany/bruehl/phantasialand';
+const TARON = `${PARK}/taron`;
 
-function ContentNLSections() {
+const SCALE_LABELS = {
+  typical: 'Normaal',
+  busy: 'Druk',
+  unit: 'min',
+  days: 'meetdagen',
+  record: 'Record',
+  summary:
+    'Taron op {label}: normaal {typical} minuten, op drukke dagen {busy}, gemeten over {days} dagen. Op het bord staat {wait} minuten.',
+};
+
+const SCALE_LEGEND = [
+  {
+    term: 'Normaal',
+    def: 'Mediaan van de dagpieken. Op de helft van de gemeten dagen was de langste rij korter.',
+    swatch: 'bg-primary/45',
+  },
+  {
+    term: 'Druk',
+    def: '90e percentiel van dezelfde reeks. Die ene dag op tien waarop het uitzonderlijk vol was.',
+    swatch: 'bg-primary/25',
+  },
+  {
+    term: '70 min',
+    def: 'Wat er bij de ingang staat. Dat blijft staan terwijl de schaal eronder verschuift.',
+    swatch: 'bg-amber-500',
+  },
+  {
+    term: 'Record',
+    def: `${TARON_RECORD} minuten op 16 juli 2026. De drukste dag in de meetperiode, en precies daarom geen maatstaf.`,
+    swatch: 'bg-foreground/40',
+  },
+];
+
+/**
+ * The three readings, in the order the figure steps through them. Numbers come
+ * from `TARON_TYPICAL_WAITS`, so from the API rather than from the story.
+ */
+const SCALE_STEPS: WaitScaleStep[] = [
+  { id: 'monday', label: 'Maandag', typical: 55, busy: 65, sampleDays: 19 },
+  { id: 'saturday', label: 'Zaterdag', typical: 70, busy: 85, sampleDays: 20 },
+  { id: 'weekday', label: 'Doordeweeks', typical: 60, busy: 80, sampleDays: 97 },
+];
+
+/**
+ * The sections of a park page in exactly the order they render
+ * (`app/[locale]/parks/.../page.tsx`). Reorder them here and you reorder them
+ * there too, or this guide describes a page that does not exist.
+ */
+const PARK_SECTIONS: AnatomyStep[] = [
+  {
+    title: 'Kop',
+    body: 'Naam, plaats, afstand vanaf jou, plus status, openingstijden van vandaag, de drukte van dit moment en de teller “x van y open”. De ene regel die de meeste bezoeken beantwoordt.',
+  },
+  {
+    title: 'Vakanties in het verzorgingsgebied',
+    body: 'Welke schoolvakanties vandaag op dit park inwerken, met de bijbehorende regio. Ook die van over de grens.',
+    onlyWhen: 'er vandaag daadwerkelijk een vakantieregio meespeelt.',
+  },
+  {
+    title: 'Weerwaarschuwing',
+    body: 'Officiële waarschuwingen van DWD en MeteoAlarm, ongewijzigd overgenomen. Geen eigen oordeel over het weer.',
+    onlyWhen: 'er een waarschuwing voor de locatie actief is.',
+  },
+  {
+    title: 'Buienradar',
+    body: 'De komende uren in stappen van een kwartier. Zegt of de bui over twintig minuten voorbij is of dat het de hele middag blijft.',
+    onlyWhen: 'er neerslag in de buurt is.',
+  },
+  {
+    title: 'Weerkaart',
+    body: 'Waarde van nu, het verloop van de dag en de verwachting. De urenas is om de openingstijden heen gebouwd: de uren dat het park open is krijgen vier keer zo veel ruimte als de uren ervoor en erna.',
+  },
+  {
+    title: 'Skip-the-line-prijzen',
+    body: 'Dagprijzen voor betaalde wachtrijen, inclusief uitverkocht.',
+    onlyWhen: 'het park ze in de kalender publiceert. Tot nu toe alleen de Disney-parken in de VS.',
+  },
+  {
+    title: 'Attracties',
+    body: 'Het eerste tabblad, met het aantal attracties in de titel. Kaarten zoals in hoofdstuk 01, sorteerbaar en doorzoekbaar, gegroepeerd per gebied. Bovenaan het rope-dropoverzicht van het park, gesorteerd op bespaarde minuten.',
+  },
+  {
+    title: 'Kalender en kaart',
+    body: 'Twee vaste tabbladen ernaast: de dagvoorspellingen uit hoofdstuk 04 en een kaart met de attracties als marker.',
+  },
+  {
+    title: 'Shows en restaurants',
+    body: 'Showtijden voor de hele dag, horeca met openingstijden.',
+    onlyWhen: 'het park ze levert. Anders ontbreekt het tabblad helemaal.',
+  },
+  {
+    title: 'Beste dagen',
+    body: 'De rustigste data van de komende drie maanden, plus de rustigste weekdag van het park.',
+    onlyWhen: 'het park een openingskalender publiceert.',
+  },
+  {
+    title: 'Parken in de buurt',
+    body: 'Wat er verder binnen bereik ligt, met afstand en actuele status.',
+    onlyWhen: 'er buren zijn. Bij ongeveer de helft van de 212 parken niet.',
+  },
+  {
+    title: 'Statistiek',
+    body: 'De langste rijen van het park met hun normale en drukke waarde, plus de verdeling over maanden en weekdagen. Het blok noemt het aantal vastgelegde dagen, en beide verdelingen voeren dat aantal als eigen kolom.',
+  },
+  {
+    title: 'Seizoen, info, vragen',
+    body: 'Seizoenstijden en aangekondigde evenementen, adres en tijdzone, en de veelgestelde vragen over juist dit park.',
+  },
+];
+
+const NIGHT_JOBS: NightShiftJob[] = [
+  {
+    time: '02:00',
+    at: 0.04,
+    title: 'Percentielen per uur',
+    body: 'Elk gemeten uur van elke attractie krijgt zijn verdeling. Uren met minder dan drie metingen vallen af.',
+  },
+  {
+    time: '03:00',
+    at: 0.22,
+    title: 'Basiswaarden per park',
+    body: 'De mediaan waartegen de live drukte later wordt gerekend. Daarna start de eerste modeltraining.',
+  },
+  {
+    time: '04:30',
+    at: 0.42,
+    title: 'Kwartierhistorie',
+    body: 'Gisteren wordt samengevat. Pas daarna kan alles rekenen wat het dagverloop nodig heeft.',
+  },
+  {
+    time: '05:15',
+    at: 0.56,
+    title: 'Rope-dropadviezen',
+    body: 'Per attractie: loont de vroege start, hoe lang houdt de voorsprong stand, wanneer is het rustigste moment van de dag.',
+  },
+  {
+    time: '05:30',
+    at: 0.67,
+    title: 'Normale wachttijden',
+    body: 'De tabel uit hoofdstuk 02. Per weekdag, plus de recorddag met datum.',
+  },
+  {
+    time: '06:00',
+    at: 0.8,
+    title: 'Voorspelmodel',
+    body: 'Opnieuw getraind met de wachttijden van gisteren. Elke ochtend één keer volledig.',
+  },
+];
+
+const FAQ = [
+  {
+    question: 'Wat betekenen “normaal” en “druk” bij een wachttijd?',
+    answer:
+      'Normaal is de mediaan van de dagpieken: op de helft van alle gemeten dagen was de langste rij korter, op de andere helft langer. Druk is het 90e percentiel van dezelfde reeks, ongeveer die ene dag op tien waarop het uitzonderlijk vol was. Het absolute record staat er los naast, zodat één uitschieter beide waarden niet verschuift.',
+  },
+  {
+    question: 'Is 70 minuten wachten veel?',
+    answer:
+      'Dat hangt af van de attractie en van de weekdag. Taron in Phantasialand komt op maandag normaal op 55 minuten en blijft op negen van de tien maandagen onder de 65; daar zijn 70 minuten dus een ongewoon drukke dag. Op zaterdag ligt de mediaan van dezelfde attractie op precies 70 minuten, en dan is dezelfde weergave volstrekt gemiddeld. Beide vergelijkingswaarden staan op de pagina van de attractie, zodat je ze niet hoeft te raden.',
+  },
+  {
+    question: 'Waar komen de wachttijden vandaan?',
+    answer:
+      'Uit drie openbare bronnen tegelijk: ThemeParks.wiki, Wartezeiten.app en Queue-Times.com. Elke vijf minuten wordt elk park opgevraagd. Melden twee bronnen verschillende cijfers, dan beslist de meerderheid, daarna de mediaan, daarna het gemiddelde. Het resultaat wordt op vijf minuten afgerond, omdat de parken zelf in stappen van vijf minuten aanschrijven.',
+  },
+  {
+    question: 'Waarom staat er bij sommige parken “geen voorspelling”?',
+    answer:
+      'Omdat de basis ontbreekt. Een drukteniveau ontstaat uit de vergelijking met het eigen verleden van het park, en daarvoor zijn ongeveer 30 openingsdagen nodig. Bij nieuwe of zelden geopende parken staat er daarom niets in plaats van een gegokte kleur.',
+  },
+  {
+    question: 'Waarom toont Hansa-Park geen wachttijden?',
+    answer:
+      'Het park publiceert zijn wachttijden uitsluitend in de eigen app en alleen voor apparaten op de wifi van het park. Er is geen openbare interface waaruit wij ze zouden kunnen lezen. Omdat een park zonder bron er in de data net zo uitziet als een park dat ’s nachts gesloten is, is dit een handmatig onderhouden vermelding en geen afleiding: de melding op de parkpagina zegt het, in plaats van 82 attracties als zogenaamd leeg te tonen.',
+  },
+  {
+    question: 'Wat is rope drop?',
+    answer:
+      'Bij de opening van het park meteen bij een bepaalde attractie staan, voordat de paden vollopen. park.fan adviseert dat alleen als aan twee voorwaarden is voldaan: de dagpiek van de attractie ligt op minstens 60 minuten en de vroege start bespaart er minstens 45 van. Er staat altijd bij hoe lang de voorsprong ongeveer standhoudt.',
+  },
+  {
+    question: 'Kost park.fan iets, en heb ik een account nodig?',
+    answer:
+      'Nee en nee. Alle wachttijden, statistieken, kalenders en voorspellingen zijn gratis en zonder registratie te gebruiken. Favorieten staan als cookie in de browser, niet op een server.',
+  },
+  {
+    question: 'Hoe vaak worden de cijfers op de pagina bijgewerkt?',
+    answer:
+      'Een geopende parkpagina haalt elke vijf minuten nieuwe waarden op, in hetzelfde ritme waarin de bronnen worden bevraagd. De statistische waarden zoals normale wachttijden of rope-dropadviezen worden één keer per nacht opnieuw berekend, omdat ze van de ene op de andere dag toch nauwelijks bewegen.',
+  },
+];
+
+export function ContentNL() {
+  const glossary = `/${GLOSSARY_SEGMENTS.nl}`;
+  const bestTime = `/${BEST_TIME_SEGMENTS.nl}`;
+
   return (
     <>
-      {/* ── 1. Zoeken ────────────────────────────────────────────────────────── */}
-      <Section id="suche" title="Zoeken">
-        <p className="text-muted-foreground mb-4">
-          De globale zoekfunctie is de snelste manier om een park, attractie, show of restaurant te
-          vinden – zowel op desktop als mobiel.
-        </p>
+      <ChapterRail chapters={CHAPTERS} ariaLabel="Hoofdstukken" />
 
-        <SubSection title="Zoeken openen">
-          <div className="space-y-2 text-sm">
-            <p>
-              <strong>Desktop:</strong> Druk op{' '}
-              <kbd className="bg-muted rounded border px-2 py-0.5 font-mono text-xs">Ctrl + K</kbd>{' '}
-              of <kbd className="bg-muted rounded border px-2 py-0.5 font-mono text-xs">⌘ + K</kbd>{' '}
-              (Mac) om de zoekfunctie op elk moment te openen.
-            </p>
-            <p>
-              <strong>Mobiel en Desktop:</strong> Tik op het <Search className="inline h-4 w-4" />
-              -icoon in de koptekst of het zoekveld op de startpagina.
-            </p>
-          </div>
-          <HeroSearchInput placeholder="Europa-Park, Taron, ..." />
-        </SubSection>
+      {/* ── Intro ───────────────────────────────────────────────────────── */}
+      <div className="container mx-auto space-y-5 px-4">
+        <Lead>
+          park.fan is in een wachtrij ontstaan. Taron, middag, op het bord stond iets met drie
+          cijfers, en niemand kon zeggen of dat nu pech was of gewoon dinsdag.
+        </Lead>
+        <P>
+          Precies die vraag staat op deze site nog altijd centraal. Een actuele wachttijd tonen is
+          het makkelijke deel: de parken schrijven hem zelf aan. Interessant wordt hij pas als
+          ernaast staat hoe een normale dag bij deze attractie eruitziet, wanneer de rij doorgaans
+          korter wordt en of het vandaag überhaupt een goede dag is.
+        </P>
+        <P>
+          Op deze pagina staat geen screenshot. Elke kaart, elk badge en elke tabel hieronder zijn
+          de echte onderdelen van een parkpagina, hier alleen met vaste voorbeeldcijfers gevuld. Wat
+          je hier leert lezen, ziet er een uur later in het park precies zo uit.
+        </P>
 
-        <SubSection title="Wat kun je zoeken?">
-          <div className="grid gap-3 sm:grid-cols-2">
-            {[
-              { icon: '🌴', label: 'Parken', desc: 'Europa-Park, Phantasialand, Disneyland...' },
-              { icon: '🎢', label: 'Attracties', desc: 'Taron, Silver Star, Space Mountain...' },
-              { icon: '🗺️', label: 'Steden en Landen', desc: 'Orlando, Parijs, Duitsland...' },
-              { icon: '🎭', label: 'Shows', desc: "Showschema's en tijden" },
-              { icon: '🍽️', label: 'Restaurants', desc: 'Eetmogelijkheden in parken' },
-            ].map(({ icon, label, desc }) => (
-              <div key={label} className="bg-muted/30 flex items-start gap-3 rounded-lg p-3">
-                <span className="text-xl">{icon}</span>
-                <div>
-                  <p className="font-semibold">{label}</p>
-                  <p className="text-muted-foreground text-xs">{desc}</p>
-                </div>
-              </div>
+        <Reveal>
+          <nav
+            aria-label="Hoofdstukken"
+            className="bg-muted/40 not-prose grid gap-x-6 gap-y-2 rounded-2xl border p-5 text-sm sm:grid-cols-2 lg:grid-cols-3"
+          >
+            {CHAPTERS.map((c) => (
+              <a
+                key={c.id}
+                href={`#${c.id}`}
+                className="text-muted-foreground hover:text-primary group flex items-baseline gap-2 transition-colors"
+              >
+                <span className="text-primary/40 group-hover:text-primary/70 text-xs font-bold tabular-nums transition-colors">
+                  {c.index}
+                </span>
+                {c.label}
+              </a>
             ))}
-          </div>
-        </SubSection>
+          </nav>
+        </Reveal>
+      </div>
 
-        <InfoBox label="Opmerking">
-          De zoekfunctie gebruikt slimme volledige tekstzoekopdrachten die ook werken bij
-          typefouten. Zoek naar &quot;fantasia&quot; en je vindt &quot;Phantasialand&quot;.
-        </InfoBox>
-      </Section>
+      {/* ── 01 ──────────────────────────────────────────────────────────── */}
+      <SectionShell
+        id="getal"
+        index="01"
+        kicker="Het startpunt"
+        title="Eén getal alleen zegt niets"
+        icon={Gauge}
+      >
+        <P>
+          Bij de ingang van de attractie hangt een getal, meer niet. Op de parkpagina staat
+          hetzelfde getal met vier andere gegevens erbij: een drukteniveau, een trend, de tweede
+          wachtrij en de minimumlengte. Voor geen daarvan is een blik op vandaag genoeg.
+        </P>
 
-      {/* ── 2. Locatie ───────────────────────────────────────────────────────── */}
-      <Section id="standort" title="Locatie en Nabijgelegen Parken">
-        <p className="text-muted-foreground mb-4">
-          Met je locatie ingeschakeld wordt park.fan slimmer: zie nabijgelegen parken en attracties
-          gesorteerd op afstand. park.fan slaat je locatie niet op.
-        </p>
-        <SubSection title="Navigatie in het park">
-          <p className="text-muted-foreground text-sm">
-            Wanneer je in een park bent, detecteert park.fan automatisch in welk park je bent en
-            toont &quot;Je bent in [Parknaam]&quot; op de startpagina. De parkkaart toont je live
-            locatie – perfect voor navigeren tussen attracties.
-          </p>
-        </SubSection>
-        <NearbyParksCard />
-      </Section>
+        <BareNumberVsCard
+          unit="minuten"
+          signLabel="Wat het park aanschrijft"
+          signCaption="Eén getal, geen context. Of dat vandaag goed of slecht is, weet alleen wie hier al vaak genoeg is geweest."
+          cardLabel="Wat park.fan ervan maakt"
+          cardCaption="Dezelfde 70 minuten, plus drukteniveau, trend, single-ridertijd, minimumlengte en de aanwijzing wanneer het naar verwachting rustiger wordt."
+        />
 
-      {/* ── 3. Favorieten ────────────────────────────────────────────────────── */}
-      <Section id="favoriten" title="Favorieten">
-        <p className="text-muted-foreground mb-4">
-          Sla parken, attracties, shows en restaurants op als favorieten voor snelle toegang direct
-          vanaf de startpagina.
-        </p>
+        <div className="max-w-3xl space-y-4 pt-2">
+          <P>
+            “Zeer hoog” is daarbij geen kwestie van smaak. Taron ligt gemiddeld op {TARON_BASELINE}{' '}
+            minuten, {TARON_WAIT_NOW} is daarvan ruwweg 156 procent, en de niveaus wisselen bij 60,
+            89, 110, 150 en 200 procent. Vanaf 150 heet het “Zeer Hoog”. Het pijltje ernaast komt
+            uit de laatste metingen en zegt of de rij groeit of wordt afgebouwd.
+          </P>
+          <PG>
+            De tweede waarde op de kaart is de single-riderrij. Veel attracties hebben meerdere
+            wachtrijen naast elkaar, en welke daarvan bestaat, staat zelden op hetzelfde bord.
+            Daarbij de minimumlengte, zodat niemand met een kind van 130 centimeter het halve park
+            doorloopt.
+          </PG>
+        </div>
 
-        <SubSection title="Een favoriet toevoegen">
-          <p className="text-sm">
-            Klik op de <Star className="inline h-4 w-4 text-yellow-500" />
-            -ster op een park- of attractiekaart. Favorieten worden lokaal opgeslagen in je browser
-            – geen aanmelding vereist.
-          </p>
-        </SubSection>
+        <DemoFrame
+          label="Twee attracties, dezelfde minuut"
+          note="Beide kaarten komen uit hetzelfde moment in hetzelfde park, Taron in Klugheim en Black Mamba in Deep in Africa. De ene rij groeit, de andere bouwt af. Op de parkpagina staan alle attracties zo naast elkaar, sorteerbaar op wachttijd."
+          href={PARK}
+          hrefLabel="Naar de parkpagina →"
+        >
+          <TwoRidesDemo />
+        </DemoFrame>
+      </SectionShell>
 
-        <SubSection title="Favorieten op de startpagina">
-          <p className="text-muted-foreground text-sm">
-            Zodra je minstens één favoriet hebt, verschijnt er een speciale sectie op de startpagina
-            met al je opgeslagen parken, attracties, shows en restaurants. Met locatie ingeschakeld
-            worden ze gesorteerd op afstand – dichtstbijzijnde eerst.
-          </p>
-          <MockNearbyCards locale="en" />
-        </SubSection>
+      {/* ── 02 ──────────────────────────────────────────────────────────── */}
+      <Ambience>
+        <SectionShell
+          id="maatstaf"
+          index="02"
+          kicker="De maatstaf"
+          title="Normaal, druk, record"
+          icon={Ruler}
+        >
+          <IntroWithAside
+            value={`${TARON_RECORD} min`}
+            label="De langste gemeten rij van Taron"
+            note="Op 16 juli 2026, in de zomervakantie. Eén dag van de 365, en daarom rekent de schaal met percentielen in plaats van met het maximum."
+          >
+            <P>
+              Om een getal te plaatsen zijn twee vergelijkingswaarden nodig en de vermelding waarop
+              ze berusten. park.fan gebruikt daarvoor de mediaan van de dagpieken en het 90e
+              percentiel van dezelfde reeks. In gewone woorden: hoe lang is de langste rij van de
+              dag meestal, en hoe lang was hij op de drukste tien procent van de dagen.
+            </P>
+          </IntroWithAside>
 
-        <SubSection title="Wat wordt opgeslagen?">
-          <div className="grid gap-2 sm:grid-cols-2">
-            {[
-              {
-                icon: '🌴',
-                label: 'Parken',
-                desc: 'Status, openingstijden en drukte in één oogopslag',
-              },
-              {
-                icon: '🎢',
-                label: 'Attracties',
-                desc: 'Live wachttijd en trend direct in het overzicht',
-              },
-              { icon: '🎭', label: 'Shows', desc: 'Volgende showtime altijd zichtbaar' },
-              { icon: '🍽️', label: 'Restaurants', desc: 'Keukenstatus en locatie' },
-            ].map(({ icon, label, desc }) => (
-              <div key={label} className="bg-muted/30 flex items-start gap-3 rounded-lg p-3">
-                <span className="text-xl">{icon}</span>
-                <div>
-                  <p className="font-semibold">{label}</p>
-                  <p className="text-muted-foreground mt-0.5 text-xs">{desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </SubSection>
-
-        <TipBox label="Tip">
-          Sla 5–10 favoriete attracties op van het park dat je wilt bezoeken. Op de dag van je
-          bezoek zie je direct welke korte wachttijden hebben – ideaal voor beslissingen ter plekke.
-        </TipBox>
-      </Section>
-
-      {/* ── 4. Parkpagina ────────────────────────────────────────────────────── */}
-      <Section id="parkseite" title="De Parkpagina">
-        <p className="text-muted-foreground mb-4">
-          Elk park heeft zijn eigen pagina met live data, openingstijden, een interactieve kalender
-          en een kaart.
-        </p>
-        <InfoBox label="Opmerking">
-          Alle tijden worden weergegeven in de <strong>lokale tijdzone van het park</strong> –
-          ongeacht waar jij je bevindt. Een park in Florida toont Eastern Time, Europa-Park toont
-          Midden-Europese Tijd.
-        </InfoBox>
-        <MockParkHeader locale="en" />
-
-        <SubSection title="Weerwaarschuwingen">
-          <p className="text-muted-foreground mb-3 text-sm">
-            Wanneer de nationale weerdienst een officiële waarschuwing afgeeft voor de locatie van
-            een park — hitte, onweer, storm en meer —, verschijnt boven aan de parkpagina een
-            gekleurde melding. De kleur geeft de ernst aan (geel → oranje → rood); klap een
-            waarschuwing uit voor details en adviezen.
-          </p>
-          <WeatherWarningBannerDemo />
-        </SubSection>
-
-        <SubSection title="Typische wachttijden (per attractie)">
-          <p className="text-muted-foreground mb-3 text-sm">
-            De pagina van elke attractie toont het typische wachtpatroon — de normale (mediaan) en
-            drukke (90e percentiel) piekwachttijd, gesplitst per doordeweekse dag en weekend en per
-            dag, plus het record aller tijden. Gebaseerd op de laatste 365 dagen.
-          </p>
-          <AttractionTypicalWaitsDemo />
-        </SubSection>
-
-        <SubSection title="Tabbladen – Attracties, Shows, Kalender, Kaart">
-          <div className="space-y-3 text-sm">
-            {[
-              {
-                icon: '🎢',
-                label: 'Attracties',
-                desc: 'Alle attracties met live wachttijd, status, trend en vergelijking met het gemiddelde.',
-              },
-              {
-                icon: '🎭',
-                label: 'Shows',
-                desc: 'Alle shows met huidige status en komende tijden.',
-              },
-              {
-                icon: '📅',
-                label: 'Kalender',
-                desc: 'Vooruitblik van 30+ dagen met druktevoorspellingen, weer, feestdagen en schoolvakanties.',
-              },
-              {
-                icon: '🗺️',
-                label: 'Kaart',
-                desc: 'Interactieve kaart met alle attracties, shows en restaurants.',
-              },
-            ].map(({ icon, label, desc }) => (
-              <div key={label} className="bg-muted/30 rounded-lg p-3">
-                <p className="font-semibold">
-                  {icon} {label}
-                </p>
-                <p className="text-muted-foreground mt-0.5">{desc}</p>
-              </div>
-            ))}
-          </div>
-          <MockAttractionCards locale="en" />
-        </SubSection>
-
-        <SubSection title="Tabblad Shows: Tijden in één oogopslag">
-          <p className="text-muted-foreground text-sm">
-            Het tabblad Shows toont alle shows met hun tijden voor vandaag. Verstreken tijden zijn
-            doorgestreept, de <strong>volgende showtime</strong> is groen gemarkeerd – zodat je
-            altijd weet wanneer en waar je moet zijn.
-          </p>
-          <MockShowCards />
-        </SubSection>
-
-        <SubSection title="Seizoensgebonden attracties & shows">
-          <p className="text-muted-foreground mb-3 text-sm">
-            <GlossaryInject>
-              Sommige seizoensattracties en shows zijn alleen actief in bepaalde seizoenen — zoals
-              ijsbanen in de winter of waterattracties in de zomer. park.fan detecteert dit
-              automatisch en verbergt deze items buiten hun seizoen standaard.
-            </GlossaryInject>
-          </p>
-          <div className="not-prose space-y-4">
-            <div className="space-y-2">
-              {[
-                {
-                  icon: Snowflake,
-                  label: 'Winter',
-                  color: 'border border-sky-500/30 bg-sky-500/15 text-sky-400',
-                  opacity: '',
-                  desc: 'Attractie is momenteel in seizoen (bijv. winterevenement). Badge verschijnt op de kaart.',
-                },
-                {
-                  icon: Sun,
-                  label: 'Zomer',
-                  color: 'border border-amber-500/30 bg-amber-500/15 text-amber-500',
-                  opacity: '',
-                  desc: 'Zomerattractie – bijv. wildwaterbaan. Actief van mei tot september.',
-                },
-                {
-                  icon: Leaf,
-                  label: 'Seizoensgebonden',
-                  color: 'border border-violet-500/30 bg-violet-500/15 text-violet-500',
-                  opacity: 'opacity-50',
-                  desc: 'Buiten seizoen: badge gedempt. Attractie standaard verborgen in tabbladen en op de kaart.',
-                },
-              ].map(({ icon: Icon, label, color, opacity, desc }) => (
-                <div key={label} className="flex items-start gap-3">
-                  <span
-                    className={cn(
-                      'inline-flex shrink-0 items-center gap-1 rounded-full px-2 py-0.5 text-xs font-semibold backdrop-blur-md',
-                      color,
-                      opacity
+          <div className="pt-2">
+            <WaitScaleStage
+              steps={SCALE_STEPS}
+              wait={TARON_WAIT_NOW}
+              max={WAIT_SCALE_MAX}
+              record={TARON_RECORD}
+              labels={SCALE_LABELS}
+              legend={SCALE_LEGEND}
+            >
+              {SCALE_STEPS.map((step, i) => (
+                <div key={step.id} data-wait-step={step.id} className="scroll-mt-28">
+                  <div className="text-primary mb-2 text-xs font-semibold tracking-widest uppercase">
+                    {step.label}
+                  </div>
+                  <h3 className="mb-3 text-xl font-bold sm:text-2xl">
+                    {i === 0 && 'Voor een maandag zijn 70 minuten veel'}
+                    {i === 1 && 'Voor een zaterdag is dat precies het normale geval'}
+                    {i === 2 && 'En één keer waren het er 135'}
+                  </h3>
+                  <p className="text-muted-foreground max-w-xl leading-relaxed">
+                    {i === 0 && (
+                      <>
+                        Op maandag ligt de dagpiek op {step.typical} minuten, en op negen van de
+                        tien maandagen blijft hij onder {step.busy}. De aangeschreven{' '}
+                        {TARON_WAIT_NOW} liggen daarboven. Wie hier staat, heeft de drukste maandag
+                        in weken te pakken, en de attracties ernaast zijn dan meestal het betere
+                        idee.
+                      </>
                     )}
-                  >
-                    <Icon className="h-3 w-3" />
-                    {label}
-                  </span>
-                  <p className="text-muted-foreground text-sm">{desc}</p>
+                    {i === 1 && (
+                      <>
+                        Op zaterdag is {step.typical} minuten de mediaan. Dezelfde weergave,
+                        dezelfde plek, dezelfde attractie: op deze dag is ze simpelweg gemiddeld. Je
+                        ergeren helpt niet, uitwijken ook niet, want de attracties ernaast hebben
+                        dezelfde zaterdag.
+                      </>
+                    )}
+                    {i === 2 && (
+                      <>
+                        Over alle {step.sampleDays} gemeten weekdagen ligt de piek op {step.typical}{' '}
+                        minuten. De stippellijn verder naar rechts is de dag van {TARON_RECORD}{' '}
+                        minuten op 16 juli. Juist door zulke dagen is “druk” een percentiel en geen
+                        maximum: één uitschieter zou een gemiddelde verschuiven en alles eronder
+                        onbruikbaar maken.
+                      </>
+                    )}
+                  </p>
+
+                  {/* Below lg every step carries its own scale: there is no
+                    running figure there for anything to change on. */}
+                  <WaitScaleBar
+                    step={step}
+                    wait={TARON_WAIT_NOW}
+                    max={WAIT_SCALE_MAX}
+                    record={TARON_RECORD}
+                    labels={SCALE_LABELS}
+                    className="bg-card/60 mt-5 rounded-2xl border p-5 lg:hidden"
+                  />
                 </div>
               ))}
-            </div>
-            <div className="flex items-start gap-3">
-              <button className="border-border/60 bg-background/60 inline-flex shrink-0 items-center gap-1.5 rounded-md border px-2 py-1 text-xs shadow-md backdrop-blur-md">
-                <EyeOff className="h-3 w-3" />3 buiten seizoen
-              </button>
-              <p className="text-muted-foreground text-sm">
-                Wanneer er verborgen items buiten seizoen zijn, verschijnt deze knop naast de
-                sectietitel. Klik erop om ze te tonen.
-              </p>
-            </div>
+            </WaitScaleStage>
           </div>
-        </SubSection>
-      </Section>
 
-      {/* ── 5. Badges ────────────────────────────────────────────────────────── */}
-      <Section id="badges" title="Badges en Statusindicatoren">
-        <p className="text-muted-foreground mb-4">
-          park.fan gebruikt een consistent kleursysteem om informatie direct begrijpelijk te maken.
-        </p>
+          {/* Card left, prose right. The card is a park-page sidebar component and
+              looks absurd stretched across a 1500 px column, so it keeps its own
+              width and the text takes the rest instead of leaving a hole. */}
+          <div className="grid items-start gap-8 pt-6 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
+            <DemoFrame
+              label="Op de pagina van een attractie"
+              note="Echte waarden van Taron, opgehaald op 24 augustus 2026."
+              href={TARON}
+              hrefLabel="Echte waarden voor Taron →"
+            >
+              <TypicalWaitsDemo />
+            </DemoFrame>
 
-        <SubSection title="Park- en Attractiestatus">
-          <div className="space-y-3">
-            {[
-              {
-                icon: Clock,
-                color: 'badge-status-operating',
-                label: 'In bedrijf',
-                desc: 'Attractie / park is in werking. Wachttijden worden live bijgewerkt.',
-              },
-              {
-                icon: AlertTriangle,
-                color: 'badge-status-down',
-                label: 'Storing',
-                desc: 'Tijdelijk gesloten – bijv. technisch probleem of veiligheidspauze. Meestal kort.',
-              },
-              {
-                icon: XCircle,
-                color: 'badge-status-closed',
-                label: 'Gesloten',
-                desc: 'Vandaag niet in bedrijf – seizoensluiting of geplande rustdag.',
-              },
-              {
-                icon: Wrench,
-                color: 'badge-status-refurbishment',
-                label: 'Onderhoud',
-                desc: 'Uitgebreid onderhoud. Gesloten voor dagen of weken.',
-              },
-            ].map(({ icon: Icon, color, label, desc }) => (
-              <div key={label} className="flex items-start gap-3">
-                <DemoBadge color={color} label={label} icon={Icon} />
-                <p className="text-muted-foreground text-sm">
-                  <GlossaryInject>{desc}</GlossaryInject>
-                </p>
-              </div>
-            ))}
-          </div>
-        </SubSection>
-
-        <SubSection title="Drukteniveaus">
-          <p className="text-muted-foreground mb-3 text-sm">
-            Het drukteniveau toont hoe druk een park of attractie is ten opzichte van de historische
-            mediaan van de wachttijd (P50). 100% betekent precies even druk als een gemiddelde dag.
-          </p>
-          <div className="space-y-3">
-            {[
-              {
-                color: 'badge-crowd-very-low',
-                label: 'Zeer Laag',
-                icon: User,
-                threshold: '≤ 60% van P50',
-                desc: 'Merkbaar rustiger dan gewoonlijk. Bijna geen wachtrijen – ideale bezoekdag.',
-              },
-              {
-                color: 'badge-crowd-low',
-                label: 'Laag',
-                icon: User,
-                threshold: '61–89% van P50',
-                desc: 'Onder gemiddeld – korte wachttijden bij de meeste attracties.',
-              },
-              {
-                color: 'badge-crowd-moderate',
-                label: 'Matig',
-                icon: Users,
-                threshold: '90–110% van P50',
-                desc: 'Typische dag – wachttijden binnen het verwachte bereik (±10% van mediaan).',
-              },
-              {
-                color: 'badge-crowd-high',
-                label: 'Hoog',
-                icon: Users,
-                threshold: '111–150% van P50',
-                desc: 'Drukker dan gemiddeld – merkbaar langere wachttijden.',
-              },
-              {
-                color: 'badge-crowd-very-high',
-                label: 'Zeer Hoog',
-                icon: Users,
-                threshold: '151–200% van P50',
-                desc: 'Zeer druk – wachttijden bijna twee keer zo lang als gewoonlijk. Kom vroeg aan.',
-              },
-              {
-                color: 'badge-crowd-extreme',
-                label: 'Extreem',
-                icon: AlertTriangle,
-                threshold: '> 200% van P50',
-                desc: 'Recorddrukte – meer dan twee keer zo druk als een normale dag. Schoolvakanties, speciale evenementen.',
-              },
-            ].map(({ color, label, icon, threshold, desc }) => (
-              <div key={label} className="flex items-start gap-3">
-                <div className="flex min-w-[100px] flex-col gap-1 sm:min-w-[120px]">
-                  <DemoBadge color={color} label={label} icon={icon} />
-                  <span className="text-muted-foreground pl-1 font-mono text-[10px]">
-                    {threshold}
-                  </span>
-                </div>
-                <p className="text-muted-foreground text-sm">
-                  <GlossaryInject>{desc}</GlossaryInject>
-                </p>
-              </div>
-            ))}
-          </div>
-          <InfoBox label="Opmerking">
-            <strong>Hoe wordt het drukteniveau berekend?</strong> park.fan vergelijkt de huidige
-            gemiddelde wachttijd met de historische mediaan (P50). 100% betekent even druk als een
-            gemiddelde dag; 60% is merkbaar rustiger, 200% betekent twee keer zo druk als normaal.
-          </InfoBox>
-        </SubSection>
-
-        <SubSection title="Trendindicatoren">
-          <div className="space-y-2">
-            {[
-              {
-                icon: TrendingUp,
-                color: 'text-trend-up',
-                label: 'Stijgend',
-                desc: 'Wachtrij wordt langer. Sluit snel aan.',
-              },
-              {
-                icon: Minus,
-                color: 'text-trend-stable',
-                label: 'Stabiel',
-                desc: 'Wachttijd blijft constant.',
-              },
-              {
-                icon: TrendingDown,
-                color: 'text-trend-down',
-                label: 'Dalend',
-                desc: 'Wachtrij wordt korter – goed moment om aan te sluiten.',
-              },
-            ].map(({ icon: Icon, color, label, desc }) => (
-              <div key={label} className="flex items-center gap-3">
-                <span className={`flex w-24 items-center gap-1 text-sm font-semibold ${color}`}>
-                  <Icon className="h-4 w-4" />
-                  {label}
-                </span>
-                <p className="text-muted-foreground text-sm">
-                  <GlossaryInject>{desc}</GlossaryInject>
-                </p>
-              </div>
-            ))}
-          </div>
-        </SubSection>
-
-        {/* Rope-Drop */}
-        <SubSection title="Rope-drop-aanbevelingen">
-          <p className="text-muted-foreground mb-3 text-sm">
-            <GlossaryInject>{`Voor de topattracties (headliners) van een park berekent park.fan dagelijks uit de wachttijdpatronen van de afgelopen weken of rope drop loont – direct bij parkopening aanwezig zijn – of dat de rij ’s avonds het kortst is:`}</GlossaryInject>
-          </p>
-          <div className="space-y-3">
-            <div className="flex items-start gap-3">
-              <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/15 px-2 py-0.5 text-xs font-semibold text-emerald-600 backdrop-blur-md dark:text-emerald-300">
-                <Sunrise className="h-3 w-3" />
-                Rope drop
-              </span>
-              <p className="text-muted-foreground text-sm">
-                <GlossaryInject>{`De moeite waard: sta bij opening bij de ingang en rijd deze attractie als eerste – je bespaart vaak 45–90 minuten ten opzichte van de dagpiek. Groen = sterke tip, turquoise = goede tip.`}</GlossaryInject>
-              </p>
-            </div>
-            <div className="flex items-start gap-3">
-              <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-indigo-500/30 bg-indigo-500/15 px-2 py-0.5 text-xs font-semibold text-indigo-500 backdrop-blur-md dark:text-indigo-300">
-                <Moon className="h-3 w-3" />
-                Later beter
-              </span>
-              <p className="text-muted-foreground text-sm">
-                <GlossaryInject>{`Het omgekeerde: hier is de rij al bij opening lang – meestal is hij ’s avonds het kortst. Bespaar je de sprint en kom later terug.`}</GlossaryInject>
-              </p>
+            <div className="space-y-4">
+              <P>
+                Dezelfde verdeling als balken, weekdag voor weekdag. Het getal boven elke balk is de
+                drukmarkering van die dag, het stevige deel eronder de normale waarde, rechtsonder
+                het record met datum. Een weekdag zonder basis krijgt geen geschatte balk, maar
+                helemaal geen.
+              </P>
+              <P>
+                Zaterdag is de enige dag waarop de {TARON_WAIT_NOW} van het begin precies in het
+                midden liggen. Op een maandag zouden dezelfde minuten de uitzondering zijn.
+              </P>
+              <P>
+                Hoe hard dit alles is, hangt af van het aantal meetdagen: {TARON_WEEKDAY_DAYS}{' '}
+                doordeweeks en {TARON_WEEKEND_DAYS} in het weekend zijn hier samengekomen. De kaart
+                noemt zelf de periode waarover ze rekent. Voor het hele park staat het totaal aan
+                vastgelegde dagen in het statistiekblok van de parkpagina, en in de tabellen per
+                maand en per weekdag krijgt het een eigen kolom.
+              </P>
             </div>
           </div>
-          <p className="text-muted-foreground mt-3 text-sm">
-            <GlossaryInject>{`Op de detailpagina van de attractie toont een eigen paneel de details: wachttijd bij opening vs. dagpiek, de besparing in minuten en het tijdvenster (bijv. “Het beste binnen de eerste 45 min. na opening – tot ca. 10:45”). Op de parkpagina vat een tip-paneel boven de highlights samen waar rope drop vandaag loont – en welke attracties je beter voor de avond bewaart.`}</GlossaryInject>
-          </p>
-          <InfoBox>
-            <GlossaryInject>{`De aanbevelingen worden dagelijks opnieuw berekend en verschijnen alleen bij headliner-attracties in parken met gepubliceerde openingstijden. Alle tijden staan – zoals overal op park.fan – in de tijdzone van het park.`}</GlossaryInject>
-          </InfoBox>
-        </SubSection>
 
-        <SubSection title="Wachtrij-typen">
-          <div className="space-y-3">
-            {[
-              {
-                color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
-                icon: User,
-                label: 'Single Rider',
-                termId: 'single-rider',
-                desc: 'Vaak veel korter dan de gewone rij – maar je kunt niet met je groep meerijden.',
-              },
-              {
-                color: 'badge-status-down',
-                icon: Zap,
-                label: 'Lightning Lane',
-                termId: 'lightning-lane',
-                desc: 'Betaald express-pas (bijv. bij Disney). Toont huidige prijs en terugtijdstip.',
-              },
-              {
-                color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
-                icon: Ticket,
-                label: 'Terugtijdstip',
-                termId: 'virtual-queue',
-                desc: 'Gratis virtuele wachtrij – reserveer een tijdslot en kom later terug.',
-              },
-              {
-                color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
-                icon: Ticket,
-                label: 'Boardinggroep',
-                termId: 'boarding-group',
-                desc: 'Virtuele wachtrij met groepsnummer – populair voor veelgevraagde nieuwe attracties.',
-              },
-            ].map(({ color, icon, label, termId, desc }) => (
-              <div key={label} className="flex items-start gap-3">
-                <DemoBadge color={color} label={label} icon={icon} termId={termId} />
-                <p className="text-muted-foreground text-sm">
-                  <GlossaryInject>{desc}</GlossaryInject>
-                </p>
-              </div>
-            ))}
-          </div>
-        </SubSection>
-      </Section>
-
-      {/* ── 6. Drukte-kalender ───────────────────────────────────────────────── */}
-      <Section id="kalender" title="De Drukte-Kalender">
-        <p className="text-muted-foreground mb-4">
-          De kalender is het krachtigste planningsinstrument op park.fan. Het toont een AI-gestuurde
-          voorspelling voor elk van de komende 30+ dagen – drukteniveau, openingstijden, weer en
-          speciale evenementen, alles in één oogopslag.
-        </p>
-
-        <SubSection title="Wat staat er op elke kalenderkaart?">
-          <div className="bg-muted/30 rounded-xl border p-4 text-sm">
-            <p className="mb-2 font-semibold">Een typische kalenderkaart toont:</p>
-            <ul className="text-muted-foreground space-y-1.5">
-              <li>
-                📅 <strong>Datum en weekdag</strong>
-              </li>
-              <li>
-                🎯 <strong>Druktebadge</strong> (bijv. &quot;Zeer Hoog&quot;) – de AI-voorspelling
-                van de algehele drukte
-              </li>
-              <li>
-                🕐 <strong>Openingstijden</strong> – of &quot;Geschat&quot; als nog niet officieel
-                bevestigd
-              </li>
-              <li>
-                🌤️ <strong>Weersvoorspelling</strong> met min-/maxtemperatuur
-              </li>
-              <li>
-                ⌚ <strong>Gem. wachttijd</strong> – voorspelde gemiddelde wachttijd over alle
-                attracties
-              </li>
-              <li>
-                🎟️ <strong>Entreeprijs</strong>, wanneer gepubliceerd door het park
-              </li>
-            </ul>
-          </div>
-          <p className="text-muted-foreground mt-2 text-sm">
-            <strong>Wat betekent &quot;Geschat&quot;?</strong> Openingstijden gemarkeerd als
-            &quot;Geschat&quot; zijn nog niet officieel bevestigd door het park. park.fan leidt ze
-            af uit historische patronen – ze kunnen nog veranderen.
-          </p>
-        </SubSection>
-
-        <SubSection title="Kalenderkaart-iconen">
-          <div className="space-y-2 text-sm">
-            {[
-              {
-                icon: PartyPopper,
-                color: 'text-orange-500',
-                label: 'Feestdag',
-                desc: 'Parken zijn vaak langer open, maar ook drukker. Bekijk de voorspelling!',
-              },
-              {
-                icon: Backpack,
-                color: 'text-yellow-500',
-                label: 'Schoolvakantie',
-                desc: 'Doorgaans de drukste dagen van het jaar – extreme wachttijden mogelijk.',
-              },
-              {
-                icon: Calendar,
-                color: 'text-blue-500',
-                label: 'Brugdag',
-                desc: 'Waarschijnlijk drukker omdat veel mensen lange weekenden verlengen.',
-              },
-              {
-                icon: XCircle,
-                color: 'text-red-500',
-                label: 'Park Gesloten',
-                desc: 'Geen operatie op deze dag – geen voorspelling beschikbaar.',
-              },
-            ].map(({ icon: Icon, color, label, desc }) => (
-              <div key={label} className="flex items-start gap-3">
-                <Icon className={`mt-0.5 h-5 w-5 shrink-0 ${color}`} />
-                <div>
-                  <p className="font-semibold">{label}</p>
-                  <p className="text-muted-foreground">{desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </SubSection>
-
-        <SubSection title="Praktisch voorbeeld: de beste bezoekdag vinden">
-          <p className="text-muted-foreground mb-3 text-sm">
-            Je plant een bezoek aan Europa-Park in oktober. Zo gebruik je de kalender:
-          </p>
-          <ol className="text-muted-foreground space-y-3 text-sm">
-            <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
-                1
-              </span>
-              <span>
-                Open de parkpagina en schakel naar het tabblad <strong>Kalender</strong>.
-              </span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
-                2
-              </span>
-              <span>
-                Je ziet meteen de schoolvakantieweken – veel kaarten met het{' '}
-                <Backpack className="inline h-4 w-4 text-yellow-500" />
-                -icoon en badges van <strong>&quot;Zeer Hoog&quot;</strong> of{' '}
-                <strong>&quot;Extreem&quot;</strong>.
-              </span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
-                3
-              </span>
-              <span>
-                Zoek een dinsdag of woensdag <em>zonder</em> feestdagicoon – deze tonen vaak
-                <strong> &quot;Laag&quot;</strong> of <strong>&quot;Matig&quot;</strong>.
-                Openingstijden en weersvoorspelling helpen je de definitieve keuze te maken.
-              </span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
-                4
-              </span>
-              <span>
-                Koop tickets vooraf – op groene voorspellingsdagen kunnen tickets snel uitverkocht
-                zijn.
-              </span>
-            </li>
-          </ol>
-          <div className="mt-6">
-            <LiveCalendarExample locale="nl" />
-          </div>
-        </SubSection>
-
-        <SubSection title="Attractiekalender">
-          <p className="text-muted-foreground text-sm">
-            De detailpagina van elke attractie heeft ook een historische kalender die toont hoe druk
-            het was op elke afgelopen dag – en of de attractie in bedrijf was of niet. Perfect om
-            terugkerende patronen te herkennen: had Taron de afgelopen maand consequent korte
-            wachttijden op donderdagmiddag? Volgende week misschien ook.
-          </p>
-        </SubSection>
-
-        <TipBox label="Tip">
-          De beste bezoekdagen zijn doorgaans vroege weekdagen buiten schoolvakanties – dinsdag tot
-          donderdag vertonen de laagste drukteniveaus. Vermijd schoolvakantieweken in dichtbevolkte
-          regio&apos;s.
-        </TipBox>
-      </Section>
-
-      {/* ── 7. AI-Voorspellingen ─────────────────────────────────────────────── */}
-      <Section id="prognosen" title="AI-Voorspellingen">
-        <p className="text-muted-foreground mb-4">
-          park.fan gebruikt machine learning om drukteniveaus en wachttijden dagen van tevoren te
-          voorspellen. Het model wordt continu getraind op nieuwe data en houdt rekening met vier
-          sleutelfactoren:
-        </p>
-
-        <div className="grid gap-4 sm:grid-cols-2">
-          {[
-            {
-              icon: '📊',
-              title: 'Historische data',
-              desc: 'Miljoenen wachtrij-datapunten per attractie, weekdag en tijdstip.',
-            },
-            {
-              icon: '📅',
-              title: 'Vakantiekalenders',
-              desc: 'Schoolvakanties en feestdagen in Europa en wereldwijd.',
-            },
-            {
-              icon: '🌤️',
-              title: 'Weersvoorspellingen',
-              desc: 'Temperatuur, regen en zonneschijn – slecht weer duwt bezoekers naar overdekte attracties.',
-            },
-            {
-              icon: '🎉',
-              title: 'Speciale evenementen',
-              desc: 'Halloween-nachten, kerstevenementen en andere parkeigen data zorgen voor significant hogere bezoekersaantallen.',
-            },
-          ].map(({ icon, title, desc }) => (
-            <div key={title} className="bg-muted/30 flex items-start gap-3 rounded-xl border p-4">
-              <span className="text-2xl">{icon}</span>
-              <div>
-                <p className="font-semibold">{title}</p>
-                <p className="text-muted-foreground text-sm">
-                  <GlossaryInject>{desc}</GlossaryInject>
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <SubSection title="Waar vind je voorspellingen?">
-          <div className="space-y-3 text-sm">
-            <div className="bg-muted/30 rounded-lg p-3">
-              <p className="font-semibold">📅 In de drukte-kalender</p>
-              <p className="text-muted-foreground mt-0.5">
-                Elke kalenderkaart bevat een dagelijkse voorspelling: drukteniveau, gemiddelde
-                wachttijd en openingstijden – tot 30+ dagen vooruit.
-              </p>
-            </div>
-            <div className="bg-muted/30 rounded-lg p-3">
-              <p className="font-semibold">⏰ Piekmomenten-badge op de parkpagina</p>
-              <p className="text-muted-foreground mt-0.5">
-                De parkkoptekst toont wanneer de druktepiek van vandaag verwacht wordt – bijv.
-                &quot;Piek over 1u 30min&quot;. Plan een lunchpauze of bezoek een minder populaire
-                attractie precies in dat tijdvenster.
-              </p>
-            </div>
-            <div className="bg-muted/30 rounded-lg p-3">
-              <p className="font-semibold">📈 Uursvoorspellingsgrafiek op de attractiepagina</p>
-              <p className="text-muted-foreground mt-0.5">
-                Elke attractie heeft zijn eigen pagina met een grafiek die laat zien hoe wachttijden
-                naar verwachting verlopen door de dag – voor vandaag en morgen.
-              </p>
-            </div>
-          </div>
-        </SubSection>
-
-        <SubSection title="Praktisch voorbeeld: voorspellingen gebruiken op de dag zelf">
-          <p className="text-muted-foreground mb-3 text-sm">
-            Je bezoekt Phantasialand op een zaterdag tijdens schoolvakanties. De kalender toont
-            &quot;Zeer Hoog&quot;. Zo helpen voorspellingen:
-          </p>
-          <ol className="text-muted-foreground space-y-3 text-sm">
-            <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
-                1
-              </span>
-              <span>
-                <strong>Bij de ingang:</strong> De piekmomenten-badge toont &quot;Piek over
-                ~2u&quot; – je hebt tot ongeveer 11:30 voor je eerste hoogtepunten.
-              </span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
-                2
-              </span>
-              <span>
-                <strong>Open de Taron-pagina:</strong> De voorspellingsgrafiek toont 9:30 ≈ 15 min,
-                12:00 ≈ 65 min, 15:00 ≈ 40 min → rijd direct bij opening of midden in de middag.
-              </span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
-                3
-              </span>
-              <span>
-                <strong>Lunch tijdens de piek:</strong> In plaats van in de rij te staan om 12:00,
-                ga je lunchen. Live trends bevestigen: om 15:00 daalt de wachttijd – perfect moment
-                om te rijden.
-              </span>
-            </li>
-          </ol>
-        </SubSection>
-
-        <SubSection title="Hoe nauwkeurig zijn de voorspellingen?">
-          <p className="text-muted-foreground text-sm">
-            De nauwkeurigheid varieert per park en voorspellingsvenster. De detailpagina van elke
-            attractie toont de voorspellingskwaliteit – van <strong>Slecht</strong> tot{' '}
-            <strong>Uitstekend</strong>. Meer historische data betekent nauwkeurigere
-            voorspellingen. Kortetermijnvoorspellingen (1–3 dagen) zijn van nature betrouwbaarder
-            dan langetermijnvoorspellingen (7–14 dagen).
-          </p>
-        </SubSection>
-
-        <SubSection title="Wachttijd-sparklines">
-          <p className="text-muted-foreground text-sm">
-            Elke attractiekaart toont een kleine sparkline-grafiek met de wachttijdtrend over de
-            afgelopen uren. Je ziet direct of wachtrijen toenemen, stabiel blijven of afnemen.
-          </p>
-          <MockHourlyChart locale="en" />
-        </SubSection>
-
-        <TipBox label="Tip">
-          Combineer kalender en voorspellingen: kies een groene dag uit de kalender, controleer dan
-          de uursvoorspelling op de attractiepagina voor het rustigste tijdslot. Je arriveert altijd
-          bij de kortste wachtrij.
-        </TipBox>
-        <p className="text-muted-foreground">
-          Ons voorspellingsmodel heeft een naam —{' '}
-          <Link href="/fancast" className="text-primary hover:underline">
-            Fancast
-          </Link>{' '}
-          — met een eigen pagina die uitlegt hoe het werkt en hoe nauwkeurig het momenteel is.
-        </p>
-        <p className="text-muted-foreground">
-          Weet je nog niet wanneer je moet gaan? De{' '}
-          <Link href={`/${BEST_TIME_SEGMENTS.nl}`} className="text-primary hover:underline">
-            beste tijd om te bezoeken
-          </Link>{' '}
-          verzamelt de rustigste weekdagen en maanden van alle parken.
-        </p>
-      </Section>
-
-      {/* ── 8. Voor wie ──────────────────────────────────────────────────────── */}
-      <Section id="personas" title="Voor wie is park.fan?">
-        <div className="grid gap-4 md:grid-cols-2">
-          <PersonaCard
-            emoji="👨‍👩‍👧‍👦"
-            title="Gezinnen"
-            subtitle="Een perfecte dag plannen voor iedereen"
+          <DemoFrame
+            label="Dezelfde tabel voor het hele park, live"
+            note="Geen voorbeeldcijfers: dit is de actuele stand voor Phantasialand, per attractie de normale en de drukke waarde. Op de parkpagina staat erboven over hoeveel vastgelegde dagen het hele blok rekent. Alle minuten staan in stappen van vijf, omdat parken in stappen van vijf aanschrijven."
+            href={PARK}
+            hrefLabel="Naar de parkpagina →"
           >
-            <Li>Drukte-kalender: welke dag heeft de kortste wachtrijen?</Li>
-            <Li>Weer in de kalender: regenachtige dag? Bekijk overdekte attracties!</Li>
-            <Li>Favorieten: sla de 10 must-do attracties voor kinderen op.</Li>
-            <Li>Live wachttijden: beslis ter plekke welke attractie je als volgende doet.</Li>
-          </PersonaCard>
+            <LiveTopAttractions locale="nl" />
+          </DemoFrame>
 
-          <PersonaCard
-            emoji="🎢"
-            title="Pretpark-enthousiastelingen"
-            subtitle="Elke minuut moet geoptimaliseerd zijn"
-          >
-            <Li>Drukteniveau (P50-basis): begrijp of een attractie echt boven gemiddeld is.</Li>
-            <Li>Historische trends: wanneer heeft Taron doorgaans korte wachttijden?</Li>
-            <Li>Trendindicatoren: wachtrij stijgt? Wacht 20 minuten en het kan korter zijn.</Li>
-            <Li>Single Rider / Lightning Lane: alle wachtrij-typen met tijden en prijzen.</Li>
-          </PersonaCard>
+          <Highlight>
+            Deze tabel is de reden dat we wachttijden überhaupt archiveren. Een livegetal kun je
+            opvragen op het moment dat iemand ernaar vraagt. Een mediaan over elke gemeten dinsdag
+            moet al klaar zijn voordat de vraag komt.
+          </Highlight>
+        </SectionShell>
+      </Ambience>
 
-          <PersonaCard
-            emoji="🌟"
-            title="Eerstebezoekende"
-            subtitle="Eerste bezoek aan een groot pretpark"
-          >
-            <Li>Zoeken: vind je park snel, ook als je de exacte naam niet weet.</Li>
-            <Li>Parkkaart: oriënteer je voor en tijdens je bezoek.</Li>
-            <Li>
-              Statusbadges: groen = in bedrijf, oranje = kort probleem, grijs = vandaag gesloten.
-            </Li>
-            <Li>Drukte-kalender: kleuren zeggen alles – groen is goed, rood is stressvol.</Li>
-          </PersonaCard>
+      {/* ── 03 ──────────────────────────────────────────────────────────── */}
+      <SectionShell
+        id="moment"
+        index="03"
+        kicker="Het tijdstip"
+        title="Het beste moment van de dag"
+        icon={Sunrise}
+      >
+        <P>
+          “Kom vroeg” is het advies dat iedereen geeft. Het klopt alleen als de rij in de loop van
+          de dag ook echt groeit, en dat doet hij lang niet overal. Zes attracties uit hetzelfde
+          park, dezelfde tabel, hetzelfde jaar:
+        </P>
 
-          <PersonaCard
-            emoji="⚡"
-            title="Spontane Bezoekers"
-            subtitle="Last-minute beslissing, maximale efficiëntie"
-          >
-            <Li>Locatie: park.fan vindt automatisch je dichtstbijzijnde park.</Li>
-            <Li>Live wachttijden: zie direct wat open is en hoe lang de wachttijd is.</Li>
-            <Li>Trendindicatoren: wachtrij daalt? Perfect moment om aan te sluiten.</Li>
-          </PersonaCard>
+        <DemoFrame
+          label="Het echte uurprofiel, van zojuist"
+          note="Live uit het uurprofiel van het park. Vet staat het sterkste uur van elke attractie, en dat ligt bij deze zes attracties bepaald niet overal gelijk. Een uur wordt pas een kolom als het minstens tien meetdagen bij die attractie heeft, minstens 40 procent van het best gemeten uur haalt en door minstens de helft van de attracties wordt gemeld. Dat gooit de randuren eruit, waarin anders één hotelgastenrij voor de hele ochtend zou spreken."
+          href={PARK}
+          hrefLabel="Naar de parkpagina →"
+        >
+          <LiveHourlyProfile locale="nl" />
+        </DemoFrame>
+
+        <div className="max-w-3xl space-y-4 pt-2">
+          <P>
+            Taron is het geval waarin het tijdstip bijna niets beslist: de regel ligt de hele dag in
+            een smalle band, en wat het verschil maakt is de weekdag uit hoofdstuk 02. Bij Chiapas
+            een regel lager is het andersom, daar stijgen de waarden tot in de middag duidelijk. Eén
+            enkele regel voor het hele park zou voor een van de twee verkeerd zijn, en daarom wordt
+            hij per attractie berekend.
+          </P>
         </div>
-      </Section>
 
-      {/* ── 9. Populaire parken ─────────────────────────────────────────────── */}
-      <Section id="parks" title="Populaire parken">
-        <p className="text-muted-foreground mb-6">
-          park.fan dekt 200+ pretparken wereldwijd. Hier zijn de meest bezochte parken in jouw regio
-          met live data:
-        </p>
-        <PopularParksGrid />
-      </Section>
+        <div className="grid items-start gap-6 lg:grid-cols-2">
+          <DemoFrame
+            label="Het advies dat daaruit ontstaat"
+            note="Er wordt alleen geadviseerd als de dagpiek minstens 60 minuten haalt en de vroege start daarvan minstens 45 bespaart. Colorado Adventure in hetzelfde park bespaart 40 minuten bij een piek van 50 en krijgt daarom geen tip."
+          >
+            <RopeDropDemo />
+          </DemoFrame>
 
-      {/* ── 10. Woordenlijst ─────────────────────────────────────────────── */}
-      <Section id="glossar" title="De Woordenlijst & Termijn-Markering">
-        <p className="text-muted-foreground mb-4">
-          park.fan beheert een volledige{' '}
-          <Link href="/woordenboek" className="text-primary underline">
-            woordenlijst van pretparkbegrippen
-          </Link>{' '}
-          –{' '}
-          <GlossaryInject>
-            {`van wachttijden en drukte-niveaus tot achtbaanelementen en virtuele wachtrijen. Elke term bevat een korte definitie en een uitgebreide uitleg.`}
-          </GlossaryInject>
-        </p>
-
-        <SubSection title="Automatische termijn-markering op attractiepagina's">
-          <p className="text-muted-foreground mb-3 text-sm">
-            <GlossaryInject>
-              {`Op attractiepagina's worden woordenlijst-termen automatisch herkend in tekst en onderstreept met een stippellijn. Bij hover verschijnt een korte definitie; klikken brengt je direct naar het volledige woordenlijst-item.`}
-            </GlossaryInject>
-          </p>
-          <div className="bg-muted/30 rounded-xl border p-4 text-sm leading-relaxed">
-            <p className="text-muted-foreground mb-3 text-xs font-semibold tracking-wide uppercase">
-              Voorbeeldtekst (hover over de gestippelde termen)
-            </p>
-            <p>
-              <GlossaryInject>
-                {`De beste manier om je bezoek te plannen is de druktekalender te bekijken voor je boekt. Op een piekdag kunnen wachttijden voor populaire attracties 90 minuten overschrijden. Een virtuele wachtrij laat je een tijdslot reserveren zonder in de rij te staan, terwijl de single rider-rij je wacht meer dan de helft kan verminderen. Als het drukte-niveau hoog is, is een express pas vaak de moeite waard.`}
-              </GlossaryInject>
-            </p>
+          <div className="max-w-prose space-y-4">
+            <PG>
+              De kaart noemt drie getallen en één tijdstip: de normale wachttijd bij opening, de
+              dagpiek, het verschil en het venster waarin de voorsprong standhoudt. Daarna is hij
+              weg, en dat staat er ook zo.
+            </PG>
+            <P>
+              Het tweede deel is de rustigste tijd van de dag, waar die ook ligt. Bij deze
+              attracties valt die samen met de vroege start. Bij andere ligt hij in de avond, en dan
+              noemt de kaart dat tijdstip in plaats van de wekker. Voor het hele park somt het
+              attractieoverzicht de attracties op waarbij vroeg opstaan het meeste oplevert,
+              gesorteerd op bespaarde minuten.
+            </P>
           </div>
-        </SubSection>
-
-        <TipBox label="Tip">
-          De volledige woordenlijst is beschikbaar op{' '}
-          <Link href="/woordenboek" className="text-primary font-medium underline">
-            park.fan/woordenboek
-          </Link>{' '}
-          met termen in 7 categorieën.
-        </TipBox>
-      </Section>
-
-      {/* ── 11. Veelgestelde Vragen ──────────────────────────────────────────────────────────── */}
-      <Section id="coaster-player" title="De 3-D-achtbaanspeler">
-        <div className="text-muted-foreground space-y-4 text-base leading-relaxed">
-          <p>
-            <GlossaryInject>
-              Sommige vermeldingen over achtbaanelementen hebben een interactieve 3-D-speler, zodat
-              je de figuur kunt bekijken in plaats van er alleen over te lezen. Een goed voorbeeld
-              is de Celestial Spin — het dubbelspoor-element dat Mack Rides bouwde voor Stardust
-              Racers. Speel hem hieronder af, sleep de tijdlijn naar elk moment (de belangrijkste
-              punten zijn gemarkeerd) en wissel tussen drie cameraperspectieven:
-            </GlossaryInject>
-          </p>
         </div>
-        <div className="mt-5 max-w-2xl">
-          <CoasterPlayerDemo locale="nl" />
-        </div>
-        <SubSection title="Drie cameraperspectieven">
-          <ul className="text-muted-foreground space-y-2">
-            <Li>
-              <strong className="text-foreground">Vooraanzicht</strong> — de figuur frontaal voor de
-              berg, zodat je de algehele vorm ziet.
-            </Li>
-            <Li>
-              <strong className="text-foreground">Volgen</strong> — een volgcamera die de trein door
-              de figuur volgt.
-            </Li>
-            <Li>
-              <strong className="text-foreground">Aan boord</strong> — rijd mee vanaf de eerste rij
-              en voel de inversie.
-            </Li>
-          </ul>
-        </SubSection>
-        <p className="text-muted-foreground mt-4">
-          <GlossaryInject>
-            Elke woordenboekvermelding met het 3-D-symbool gebruikt dezelfde speler — bijvoorbeeld
-            bij de vertical loop, kurkentrekker en airtime-heuvel.
-          </GlossaryInject>
-        </p>
-      </Section>
+      </SectionShell>
 
-      <Section id="faq" title="Veelgestelde Vragen">
-        <div className="space-y-4">
-          {[
-            {
-              q: 'Hoe vaak worden wachttijden bijgewerkt?',
-              a: 'Wachttijden worden elke minuut bijgewerkt. Voor sommige parken vinden updates elke 2–5 minuten plaats, afhankelijk van de databeschikbaarheid.',
-            },
-            {
-              q: 'Waar komen de gegevens vandaan?',
-              a: 'park.fan haalt live data op van ThemeParks.wiki, Queue-Times.com en Wartezeiten.app.',
-            },
-            {
-              q: 'Is park.fan gratis?',
-              a: 'Ja, park.fan is volledig gratis en vereist geen registratie.',
-            },
-            {
-              q: 'Worden favorieten gesynchroniseerd tussen apparaten?',
-              a: 'Nee, favorieten worden lokaal opgeslagen in je browser (localStorage). Ze zijn alleen beschikbaar op het apparaat waar je ze hebt opgeslagen.',
-            },
-            {
-              q: 'Hoe ver vooruit doet de drukte-kalender voorspellingen?',
-              a: 'De kalender toont voorspellingen voor 30+ dagen. Voorspellingen voor verdere datums zijn van nature iets minder nauwkeurig dan voorspellingen op korte termijn.',
-            },
-            {
-              q: 'Hoeveel parken zijn er beschikbaar?',
-              a: 'park.fan dekt momenteel 200+ parken met 7.000+ attracties wereldwijd – van Walt Disney World en Universal tot Europa-Park, Phantasialand en parken in Azië en Australië.',
-            },
-          ].map(({ q, a }) => (
-            <details key={q} className="group bg-muted/30 rounded-xl border">
-              <summary className="cursor-pointer list-none p-4 font-semibold group-open:pb-2">
-                <span className="flex items-start gap-2">
-                  <ChevronRight className="text-primary mt-0.5 h-4 w-4 shrink-0 transition-transform group-open:rotate-90" />
-                  {q}
-                </span>
-              </summary>
-              <p className="text-muted-foreground px-4 pb-4 text-sm">{a}</p>
-            </details>
-          ))}
+      {/* ── 04 ──────────────────────────────────────────────────────────── */}
+      <SectionShell
+        id="dag"
+        index="04"
+        kicker="De datum"
+        title="De juiste dag, maanden vooruit"
+        icon={CalendarDays}
+      >
+        <P>
+          De grootste besparing zit niet in het tijdstip, maar in de datum. Tussen twee dagen van
+          dezelfde week kan een half uur gemiddelde wachttijd zitten, en aan een gewone kalender zie
+          je dat niet. Het verschil maken schoolvakanties, feestdagen, brugdagen en het weer.
+        </P>
+
+        <DemoFrame
+          label="Vier dagen uit een herfstvakantieweek"
+          note="15 oktober is de rustigste van de vier, hoewel hij midden in de vakantie valt: het regent. De 19e is grijs omdat het park die dag dicht is. Op de parkpagina loopt deze kalender een jaar vooruit."
+        >
+          <CalendarDaysDemo />
+        </DemoFrame>
+
+        {/* Two columns rather than one narrow one: the calendar above runs the
+            full width, and three paragraphs stacked at the body measure under it
+            left the right half of the band empty. */}
+        <div className="grid gap-x-10 gap-y-4 pt-2 lg:grid-cols-2 lg:items-start">
+          <P>
+            De vakantiekalenders komen uit twee openbare bronnen en dekken elk vier jaar.
+            Belangrijker dan de eigen vakanties zijn vaak die van de buren. Een voorbeeld van
+            vandaag: voor Phantasialand staat niet Noordrijn-Westfalen als bepalende vakantie in de
+            kalender, maar de zomervakantie van de Nederlandse provincie Gelderland. Het park ligt
+            90 kilometer van de grens, en daggasten kennen er geen. Regio’s binnen ongeveer 200
+            kilometer tellen daarom mee en krijgen in de kalender een eigen markering.
+          </P>
+          <div className="space-y-4">
+            <PG>
+              De kleur van een dag is een voorspelling, geen meting. Ze komt uit een model dat elke
+              nacht opnieuw wordt getraind met de wachttijden van de vorige dag en zich achteraf aan
+              de werkelijkheid laat narekenen.
+            </PG>
+            <P>
+              Hoe ver de kalender reikt, hangt van het park af. Een park dat het hele jaar open is,
+              krijgt tot twaalf maanden vooruit een voorspelling. Bij een seizoenspark houdt ze op
+              waar het gepubliceerde seizoen eindigt: voor een dinsdag in maart waarop Phantasialand
+              aantoonbaar gesloten is, is een druktekleur geen voorspelling maar een bewering.
+            </P>
+          </div>
         </div>
-      </Section>
+
+        <div className="flex flex-wrap gap-3 pt-1">
+          <Link
+            href="/fancast"
+            prefetch={false}
+            className="border-primary/40 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-semibold transition-colors"
+          >
+            <Sparkles className="h-4 w-4" />
+            Hoe goed het model raakt
+          </Link>
+          <Link
+            href={bestTime}
+            prefetch={false}
+            className="border-primary/40 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-semibold transition-colors"
+          >
+            <CalendarDays className="h-4 w-4" />
+            Beste reistijd per park
+          </Link>
+        </div>
+      </SectionShell>
+
+      {/* ── 05 ──────────────────────────────────────────────────────────── */}
+      <SectionShell
+        id="parkpagina"
+        index="05"
+        kicker="De rondgang"
+        title="Een parkpagina van boven naar beneden"
+        icon={Layers}
+      >
+        <P>
+          Alles tot hier staat op één pagina, en die is gebouwd in de volgorde waarin mensen vragen:
+          is het park vandaag open? Gaat het zo regenen? Hoe lang is de rij? En wanneer had ik beter
+          kunnen komen? Eén keer van boven naar beneden.
+        </P>
+
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,21rem)]">
+          <ParkAnatomy onlyWhenLabel="Alleen als:" steps={PARK_SECTIONS} />
+
+          <div className="space-y-4 lg:sticky lg:top-20 lg:self-start">
+            <Highlight>
+              De helft van deze blokken hangt aan een voorwaarde, en dat is opzet. Een park zonder
+              shows krijgt geen leeg showtabblad, en ongeveer de helft van de 212 parken rendert
+              helemaal geen burensectie, omdat er niets binnen bereik ligt.
+            </Highlight>
+            <PG>
+              De tabbladen onthouden hun keuze in het adres. Wie de kalender open heeft en de link
+              doorstuurt, verstuurt de kalender en niet de attractielijst.
+            </PG>
+            <div className="pt-1">
+              <Link
+                href={PARK}
+                prefetch={false}
+                className="border-primary/40 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-semibold transition-colors"
+              >
+                <Activity className="h-4 w-4" />
+                Aan het levende object bekijken
+              </Link>
+            </div>
+          </div>
+        </div>
+      </SectionShell>
+
+      {/* ── 06 ──────────────────────────────────────────────────────────── */}
+      <Ambience tone="emerald">
+        <SectionShell
+          id="nachtdienst"
+          index="06"
+          kicker="De onderbouw"
+          title="Waar de cijfers vandaan komen"
+          icon={Database}
+        >
+          <P>
+            Elke vijf minuten wordt elk van de 212 parken opgevraagd, uit drie openbare bronnen
+            tegelijk. Spreken ze elkaar tegen, dan beslist de meerderheid, daarna de mediaan, daarna
+            het gemiddelde. Opgeslagen wordt alleen wat is veranderd, afgerond op vijf minuten,
+            omdat de parken zelf in stappen van vijf minuten aanschrijven.
+          </P>
+
+          <IngredientGrid>
+            <IngredientCard icon={Activity} title="Wachttijden" delay={0}>
+              ThemeParks.wiki, Wartezeiten.app en Queue-Times.com, elke vijf minuten. De ruwe valuta
+              van al het andere op deze pagina.
+            </IngredientCard>
+            <IngredientCard icon={GraduationCap} title="Vakanties & feestdagen" delay={60}>
+              Nager.Date voor wettelijke feestdagen en brugdagen, OpenHolidays voor schoolvakanties.
+              Vier jaar, elke regio apart, maandelijks bijgewerkt.
+            </IngredientCard>
+            <IngredientCard icon={CloudSun} title="Weer" delay={120}>
+              Open-Meteo voor verwachting, terugblik en de buienradar van 15 minuten. Officiële
+              weerwaarschuwingen komen van DWD en MeteoAlarm.
+            </IngredientCard>
+            <IngredientCard icon={CalendarDays} title="Openingstijden" delay={0}>
+              Uit de parkkalenders. Waar een park er geen publiceert, reconstrueren we de dag uit de
+              activiteit van de attracties en markeren hem als geschat.
+            </IngredientCard>
+            <IngredientCard icon={Layers} title="Historie" delay={60}>
+              Er wordt niets gewist. Oudere perioden worden alleen gecomprimeerd, zodat elke analyse
+              op alle metingen blijft draaien.
+            </IngredientCard>
+            <IngredientCard icon={BarChart3} title="Voorspelmodellen" delay={120}>
+              Gescheiden naar tijdshorizon: één voor de lopende dag, één voor de komende weken, één
+              voor de rest van het jaar. Elk wordt aan de echte tijden nagerekend.
+            </IngredientCard>
+          </IngredientGrid>
+
+          <div className="max-w-3xl space-y-4 pt-4">
+            <P>
+              Het tweede deel gebeurt ’s nachts, en dat is de eigenlijke reden waarom een site
+              normale wachttijden niet zomaar kan tonen. Een mediaan over elke gemeten dinsdag is
+              geen query die je bij het openen van een pagina start. Die moet vooraf berekend zijn,
+              in een vaste volgorde, omdat elke stap op de vorige voortbouwt.
+            </P>
+          </div>
+
+          <NightShift
+            jobs={NIGHT_JOBS}
+            caption="Alle tijden in UTC. De volgorde is geen toeval: het rope-dropadvies van 05:15 leest de kwartierhistorie die om 04:30 wordt geschreven."
+          />
+        </SectionShell>
+      </Ambience>
+
+      {/* ── 07 ──────────────────────────────────────────────────────────── */}
+      <SectionShell
+        id="gaten"
+        index="07"
+        kicker="De grenzen"
+        title="Wat we niet beweren"
+        icon={HelpCircle}
+      >
+        <P>
+          Een datasite wordt niet goed doordat elk veld gevuld is. Ze wordt goed doordat je de
+          gevulde velden kunt vertrouwen. Drie gevallen waarin park.fan liever niets zegt.
+        </P>
+
+        <div className="grid gap-6 lg:grid-cols-3">
+          <DemoFrame
+            label="Park zonder leesbare bron"
+            note="Hansa-Park publiceert wachttijden alleen in de eigen app op de wifi van het park. In de data ziet dat eruit als een park midden in de nacht, daarom staat het als handmatig onderhouden melding op de pagina. Zonder die melding zouden er 82 attracties op “zeer laag” staan."
+          >
+            <NoWaitTimesDemo />
+          </DemoFrame>
+
+          <DemoFrame
+            label="Attractie buiten haar seizoen"
+            note="Over een ijsbaan in augustus meldt niemand iets, omdat er niets te melden valt. Die stilte als “open” lezen zou de gemakkelijke fout zijn. De attractie telt die dag ook niet mee in de teller “12 van 45 open”."
+          >
+            <OffSeasonDemo />
+          </DemoFrame>
+
+          <DemoFrame
+            label="Geen beoordelingsbasis"
+            note="Het laatste niveau is helemaal geen drukte. Het zegt dat we er voor dit park nog geen hebben: onder ongeveer 30 openingsdagen ontbreekt de vergelijkingswaarde waartegen gerekend zou worden."
+          >
+            <BadgeRowDemo caption="Boven de drukteniveaus, onder de vergelijking met het normale. Beide gebruiken dezelfde kleurschaal, zodat ze elkaar niet kunnen tegenspreken." />
+          </DemoFrame>
+        </div>
+
+        <Highlight>
+          Dezelfde regel geldt voor de seizoensherkenning. De bedrijfsmaanden van een attractie
+          noemen we pas na 330 waarnemingsdagen. Daarvoor zou “draait van december tot april” geen
+          seizoen zijn, maar een beschrijving van de periode waarin we toevallig al hebben gemeten.
+        </Highlight>
+      </SectionShell>
+
+      {/* ── 08 ──────────────────────────────────────────────────────────── */}
+      <SectionShell
+        id="bezoeken"
+        index="08"
+        kicker="In de praktijk"
+        title="Vier bezoeken, vier routes door de site"
+        icon={Users}
+      >
+        <P>
+          Dezelfde data beantwoorden heel verschillende vragen. Vier voorbeelden, telkens met de
+          route die wij ervoor zouden nemen.
+        </P>
+
+        <div className="grid gap-5 lg:grid-cols-2">
+          <PersonaBlock
+            icon={CalendarDays}
+            who="Gezin, één dag in de herfstvakantie"
+            question="“Welke dag van de vakantieweek is het rustigst, en wat doen we bij regen?”"
+            steps={[
+              <>
+                Parkpagina openen, tabblad <strong>Kalender</strong>. De vakantieweek staat er als
+                blok, gekleurd naar voorspelling, met weer en openingstijden in elke tegel.
+              </>,
+              <>
+                Op een dag tikken. Het detail noemt de verwachte gemiddelde wachttijd en welke
+                vakantieregio’s die dag meespelen, ook die uit het buurland.
+              </>,
+              <>
+                Regendag ingepland? De kalender toont hem als de rustigste van de week. Op de dag
+                zelf zegt de buienradar van 15 minuten bovenaan de parkpagina wanneer het ophoudt.
+              </>,
+              <>
+                Op elke attractiekaart staat de minimumlengte, waar het park die publiceert. Taron
+                vraagt 140 centimeter, Colorado Adventure 120, en dat beslist de dag meer dan welke
+                wachttijd ook.
+              </>,
+              <>
+                Kinderattracties in het tabblad <strong>Attracties</strong> als favoriet markeren.
+                Ze staan daarna op de startpagina met hun actuele wachttijd.
+              </>,
+            ]}
+          />
+
+          <PersonaBlock
+            icon={BarChart3}
+            who="Veelrijder, drie parken in een week"
+            question="“Waar loont rope drop, en is de rij op dit moment echt uitzonderlijk?”"
+            steps={[
+              <>
+                Op de parkpagina het overzicht van de rope-dropattracties, gesorteerd op bespaarde
+                minuten. Attracties zonder echt voordeel duiken daar niet op.
+              </>,
+              <>
+                Voor elke attractie de tabel uit hoofdstuk 02 meelezen. Die noemt de periode
+                waarover ze rekent, en een weekdag zonder basis krijgt daar helemaal geen balk.
+              </>,
+              <>
+                Tijdens het bezoek op het vergelijkingsbadge letten: “veel hoger” betekent vandaag
+                werkelijk uitzonderlijk, niet alleen lang.
+              </>,
+              <>
+                Elke attractiepagina draagt een cijfer voor de eigen voorspelling, uit de
+                vergelijking van eerdere voorspellingen met de echte tijden van de laatste 30 dagen.
+                Bij Taron zijn dat er op dit moment een paar duizend.
+              </>,
+              <>
+                Voor de reisplanning <A href={bestTime}>de beste reistijd</A> vergelijken. Daar
+                staan meerdere parken naast elkaar, inclusief rustigste weekdag.
+              </>,
+            ]}
+          />
+
+          <PersonaBlock
+            icon={MapPin}
+            who="Jaarkaart, 20 minuten van het park"
+            question="“Loont de rit vanavond nog?”"
+            steps={[
+              <>
+                Startpagina met locatietoestemming. Het dichtstbijzijnde park staat bovenaan, met
+                status, actuele drukte en openingstijd tot vanavond.
+              </>,
+              <>
+                Drukte “laag” bij een attractie die anders “hoog” staat, is precies de avond
+                waarvoor de rit loont.
+              </>,
+              <>
+                In het park schakelt de startpagina over naar de nabijweergave: de dichtstbijzijnde
+                attracties met afstand en actuele wachttijd.
+              </>,
+              <>
+                Let op de trendpijl. Een dalende rij in het laatste uur voor sluiting is vaak het
+                kortste moment van de hele dag.
+              </>,
+            ]}
+          />
+
+          <PersonaBlock
+            icon={Compass}
+            who="Voor het eerst in een groot park"
+            question="“Wat betekent single rider, en in welke volgorde doen we dit?”"
+            steps={[
+              <>
+                De begrippen staan in het <A href={glossary}>woordenboek</A>, in zes talen. Op de
+                attractiepagina’s zijn ze in de tekst direct gelinkt.
+              </>,
+              <>
+                ’s Ochtends het rope-dropadvies van het park afwerken. Dat is de enige volgorde die
+                op gemeten data berust in plaats van op gevoel.
+              </>,
+              <>
+                Vanaf de middag op drukte beslissen in plaats van op minuten. Een “lage” attractie
+                met 25 minuten is de betere keuze dan een “hoge” met 20.
+              </>,
+              <>
+                Shows in het gelijknamige tabblad. De tijden staan daar voor de hele dag, en parades
+                maken de paden zo’n half uur leger.
+              </>,
+            ]}
+          />
+        </div>
+      </SectionShell>
+
+      {/* ── 09 ──────────────────────────────────────────────────────────── */}
+      <SectionShell
+        id="wegwijzer"
+        index="09"
+        kicker="Wegwijzer"
+        title="Waar je wat vindt"
+        icon={Search}
+      >
+        <TouchpointGrid
+          items={[
+            {
+              icon: Search,
+              title: 'Zoeken',
+              body: (
+                <>
+                  Ctrl + K of ⌘ + K, overal op de site. Vindt parken, attracties, shows en
+                  restaurants, ook bij een globale spelling.
+                </>
+              ),
+            },
+            {
+              icon: MapPin,
+              title: 'Locatie',
+              body: (
+                <>
+                  Vrijgegeven toont de startpagina de parken bij jou in de buurt. In het park
+                  schakelt ze naar de nabijweergave met afstanden.
+                </>
+              ),
+            },
+            {
+              icon: Star,
+              title: 'Favorieten',
+              body: (
+                <>
+                  Ster op elke park- en attractiekaart. Staat als cookie in de browser, zonder
+                  account en zonder server.
+                </>
+              ),
+            },
+            {
+              icon: Activity,
+              title: 'Blog',
+              body: (
+                <>
+                  Langere stukken over afzonderlijke parken en attracties. De tabellen erin trekken
+                  dezelfde cijfers als de parkpagina’s, in plaats van ze over te tikken.
+                </>
+              ),
+            },
+            {
+              icon: Moon,
+              title: 'Attractiepagina',
+              body: (
+                <>
+                  Verloop, normale wachttijden per weekdag, rope drop, minimumlengte, trefzekerheid
+                  van de voorspelling, layout-elementen en de blogberichten over de attractie.
+                </>
+              ),
+            },
+            {
+              icon: HelpCircle,
+              title: 'Woordenboek',
+              body: (
+                <>
+                  <A href={glossary}>Alle vakbegrippen</A> met definitie, voorbeeldattracties en
+                  deels een 3D-model van het baanelement.
+                </>
+              ),
+            },
+          ]}
+        />
+      </SectionShell>
+
+      {/* ── 10 ──────────────────────────────────────────────────────────── */}
+      <SectionShell
+        id="faq"
+        index="10"
+        kicker="Nagevraagd"
+        title="Veelgestelde vragen"
+        icon={HelpCircle}
+      >
+        <FaqList items={FAQ} />
+      </SectionShell>
+
+      <ClosingBand
+        kicker="En nu?"
+        title="Verder lezen"
+        body="Alles op park.fan is gratis, zonder account en zonder reclame te gebruiken. De parkpagina toont dit alles aan het levende object, de Fancast-pagina rekent openbaar voor hoe trefzeker de voorspellingen van de laatste 30 dagen waren, en de beste reistijd zet meerdere parken naast elkaar."
+      >
+        <Link
+          href={PARK}
+          prefetch={false}
+          className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold shadow-sm transition-colors"
+        >
+          <Activity className="h-4 w-4" />
+          Voorbeeldparkpagina bekijken
+        </Link>
+        <Link
+          href={bestTime}
+          prefetch={false}
+          className="border-primary/40 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-semibold transition-colors"
+        >
+          <CalendarDays className="h-4 w-4" />
+          Beste reistijd
+        </Link>
+        <Link
+          href="/fancast"
+          prefetch={false}
+          className="border-primary/40 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-semibold transition-colors"
+        >
+          <Sparkles className="h-4 w-4" />
+          Trefzekerheid van de voorspellingen
+        </Link>
+      </ClosingBand>
     </>
   );
 }
 
-export function ContentNL() {
+/** One worked example: who, what they are asking, and the route through the site. */
+function PersonaBlock({
+  icon: Icon,
+  who,
+  question,
+  steps,
+}: {
+  icon: React.ElementType;
+  who: string;
+  question: string;
+  steps: React.ReactNode[];
+}) {
   return (
-    <div className="space-y-16 text-base leading-7">
-      <IntroNL />
-      <ContentNLSections />
-    </div>
+    <Reveal>
+      <div className="bg-card/70 h-full rounded-2xl border p-5 sm:p-6">
+        <div className="mb-3 flex items-start gap-3">
+          <div className="bg-primary/10 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl">
+            <Icon className="text-primary h-5 w-5" />
+          </div>
+          <div>
+            <h3 className="font-semibold">{who}</h3>
+            <p className="text-muted-foreground mt-0.5 text-sm italic">{question}</p>
+          </div>
+        </div>
+        <ol className="mt-4 space-y-2.5">
+          {steps.map((step, i) => (
+            <li key={i} className="text-muted-foreground flex gap-3 text-sm leading-relaxed">
+              <span className="bg-primary/10 text-primary mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[11px] font-bold tabular-nums">
+                {i + 1}
+              </span>
+              <span>{step}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </Reveal>
   );
 }
