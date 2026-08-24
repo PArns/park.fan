@@ -641,7 +641,7 @@ How far it all spreads across the day only becomes visible hour by hour: the
 typical wait in each hour, averaged over a year of operating days. Each ride's
 busiest hour is in bold.
 
-```hourly-profile-widget slug=europa-park top=8
+```hourly-profile-widget slug=europa-park top=12
 
 ```
 
@@ -652,10 +652,10 @@ is its longest queue of the day, from midday it is about half that, and that
 does not change again before closing. A 73-metre coaster running half empty
 for half the day, because everybody was already there in the morning.
 
-**The busiest hours fall between ten and twelve.** Seven of the eight rides hit
-their maximum at ten or at eleven, only Atlantica later in the afternoon. Take a
-leisurely breakfast, arrive at half past ten, and you walk straight into the
-day's maximum.
+**The busiest hours fall between ten and twelve.** Most rides hit their maximum
+at ten or at eleven; only Arthur and the two water rides fill up later in the
+afternoon. Take a leisurely breakfast, arrive at half past ten, and you walk
+straight into the day's maximum.
 
 ![A shattered wooden ship in the Poseidon water basin, with a fortress wall behind it | Nearly empty at opening, longest queue of the day at eleven. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
 
@@ -665,10 +665,10 @@ in the time one of them would cost at midday.
 
 A plan for the day that follows from that:
 
-1. **Voletarium at opening.** Germany sits close to the entrance, and by ten the
-   number there is almost twice as high.
-2. **Then straight over to Croatia for Voltron.** Right at opening it is 20 to
-   25 minutes, an hour later already 42.
+1. **Voletarium at opening.** Germany sits close to the entrance, and by ten it
+   already has its longest queue of the day.
+2. **Then straight over to Croatia for Voltron.** Its queue is at its shortest
+   right at opening and an hour later the longest in the park.
 3. **Force nothing between ten and twelve.** Those are the two hours for
    breakfast, a show or the fairy-tale forest. Anything with a queue now will
    have a shorter one in the afternoon.
@@ -676,14 +676,14 @@ A plan for the day that follows from that:
    Magical Imperial Journey and the Castello dei Medici. On hot days indoors is
    the better place to be anyway.
 5. **Water rides from five in the afternoon**, if getting soaked in the morning
-   was too early for you. Poseidon drops from its midday 37 to 26, Atlantica
-   from its afternoon high of 34 to 26.
-6. **The last hour is the best of the day.** Averaged across the eight rides,
-   the hour from six in the evening comes to 21 minutes, the opening hour to 24.
-   Only the two water rides are quieter in the morning.
+   was too early for you. Both then drop well below their midday and afternoon
+   figures.
+6. **The last hour is the best of the day.** Averaged across the coasters, the
+   hour before closing sits below the opening hour. Only the two water rides are
+   quieter in the morning.
 
-One caveat. These curves are averages from the last thirty operating days, which
-means high summer with long opening hours. On a short November day from eleven
+One caveat. These curves are averages across a full year of operating days, high
+summer and the winter season together. On a short November day from eleven
 to seven the numbers are lower and the peak comes earlier.
 
 ```map-widget slug=europa-park
@@ -955,4 +955,4 @@ real Mir training module any more on their way into a car that spins.
 - Getting there via the A5, parking fees, Rulantica, the Eatrenalin's Michelin star in 2026: [Getting to Europa-Park (official)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park) · [Europa-Park Erlebnis-Resort (official)](https://www.europapark.de/de) · [Eatrenalin on en.wikipedia](https://en.wikipedia.org/wiki/Eatrenalin)
 - Visitor mix by country of origin and the Swiss share: [“50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort” (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300) · [“874'000 Schweizer Besucher stellen den grössten Anteil” (aboutTravel)](https://abouttravel.ch/reisebranche/874000-schweizer-besucher-stellen-den-groessten-anteil/)
 - The Friday in between: crowd levels and weather for the days around Ascension Day and Corpus Christi 2026 from our own calendar (measured, not forecast), plus the video series [BRÜCKENTAG im EUROPA-PARK 2025 (Epfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [the same series in 2026 (Epfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
-- Wait-time, rope-drop and crowd data: our own wait-time history across a rolling year, the hourly profile from the last thirty operating days, the crowd forecast across 90 days, [Europa-Park on park.fan](ref:europa-park)
+- Wait-time, rope-drop and crowd data: our own wait-time history across a rolling year, the hourly profile across a rolling year, the crowd forecast across 90 days, [Europa-Park on park.fan](ref:europa-park)

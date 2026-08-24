@@ -672,7 +672,7 @@ montagnes russes se répartissent sur la journée, le théâtre volant non.
 montre : l'attente typique de chaque heure, moyennée sur une année de jours
 d'exploitation. En gras, l'heure la plus chargée de chaque attraction.
 
-```hourly-profile-widget slug=europa-park top=8
+```hourly-profile-widget slug=europa-park top=12
 
 ```
 
@@ -684,10 +684,11 @@ près la moitié, et ça ne bouge plus jusqu'à la fermeture. Un parcours de 73 
 moitié vide la moitié de la journée, parce que tout le monde y est déjà passé le
 matin.
 
-**Les heures les plus chargées se situent entre dix et douze.** Sept des huit
-attractions atteignent leur maximum à dix ou à onze heures, seule Atlantica plus
-tard dans l'après-midi. Qui prend un petit-déjeuner tranquille et arrive à dix
-heures et demie entre exactement dans la pointe du jour.
+**Les heures les plus chargées se situent entre dix et douze.** La plupart des
+attractions atteignent leur maximum à dix ou à onze heures ; seules Arthur et les
+deux attractions aquatiques se remplissent plus tard dans l'après-midi. Qui prend
+un petit-déjeuner tranquille et arrive à dix heures et demie entre exactement
+dans la pointe du jour.
 
 ![Un navire de bois éventré dans le bassin de Poseidon, une muraille de forteresse derrière | Presque vide à l'ouverture, plus longue file de la journée à onze heures. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
 
@@ -698,9 +699,9 @@ le matin fait les deux dans le temps qu'il lui faudrait à midi pour une seule.
 Un déroulé de journée qui en découle :
 
 1. **Au Voletarium dès l'ouverture.** L'Allemagne est proche de l'entrée, et à
-   dix heures la valeur y est presque deux fois plus haute.
-2. **Puis directement en Croatie, chez Voltron.** Juste à l'ouverture, il faut
-   compter 20 à 25 minutes ; une heure plus tard, c'est déjà 42.
+   dix heures elle a déjà sa plus longue file de la journée.
+2. **Puis directement en Croatie, chez Voltron.** À l'ouverture, sa file est au
+   plus court ; une heure plus tard, c'est la plus longue du parc.
 3. **Entre dix et douze, ne rien forcer.** Ce sont les deux heures du
    petit-déjeuner, d'un spectacle ou de la forêt des contes. Tout ce qui a une
    file maintenant l'aura plus courte l'après-midi.
@@ -708,15 +709,14 @@ Un déroulé de journée qui en découle :
    impérial magique de Josefina et le Castello dei Medici. Les jours de chaleur,
    l'intérieur est de toute façon plus agréable.
 5. **Les attractions aquatiques à partir de dix-sept heures**, si te faire
-   tremper le matin te paraissait trop tôt. Poseidon retombe de 37 à midi à 26,
-   Atlantica de son pic d'après-midi de 34 à 26.
-6. **La dernière heure est la meilleure de la journée.** Moyennée sur les huit
-   attractions, l'heure à partir de dix-huit heures s'établit à 21 minutes,
-   l'heure d'ouverture à 24. Seules les deux attractions aquatiques sont plus
-   vides le matin.
+   tremper le matin te paraissait trop tôt. Les deux retombent alors nettement
+   sous leurs valeurs de midi et d'après-midi.
+6. **La dernière heure est la meilleure de la journée.** Moyennée sur les
+   coasters, l'heure avant la fermeture passe sous celle de l'ouverture. Seules
+   les deux attractions aquatiques sont plus vides le matin.
 
-Une réserve là-dessus : ces courbes sont des moyennes des trente derniers jours
-d'exploitation, donc du plein été avec de longues heures d'ouverture. Par une
+Une réserve là-dessus : ces courbes sont des moyennes sur une année entière de
+jours d'exploitation, plein été et saison d'hiver confondus. Par une
 courte journée de novembre, de onze à dix-neuf heures, les chiffres sont plus bas
 et la pointe arrive plus tôt.
 
@@ -1008,4 +1008,4 @@ la Mir pour monter dans un wagon qui tourne sur lui-même.
 - Accès par l'A5, tarifs de stationnement, Rulantica, l'Eatrenalin et son étoile Michelin 2026 : [Accès à l'Europa-Park (officiel)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park) · [Europa-Park Erlebnis-Resort (officiel)](https://www.europapark.de/de) · [Eatrenalin sur en.wikipedia](https://en.wikipedia.org/wiki/Eatrenalin)
 - Composition du public par pays d'origine et part suisse : [« 50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort » (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300) · [« 874'000 Schweizer Besucher stellen den grössten Anteil » (aboutTravel)](https://abouttravel.ch/reisebranche/874000-schweizer-besucher-stellen-den-groessten-anteil/)
 - Jour de pont : niveaux d'affluence et météo des jours autour de l'Ascension et de la Fête-Dieu 2026, tirés de notre propre calendrier (mesurés, non prévus), plus la série de vidéos [BRÜCKENTAG im EUROPA-PARK 2025 (Epfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [la même série en 2026 (Epfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
-- Données de temps d'attente, de rope drop et d'affluence : notre historique de temps d'attente sur une année glissante, profil horaire des trente derniers jours d'exploitation, prévision d'affluence sur 90 jours, [Europa-Park sur park.fan](ref:europa-park)
+- Données de temps d'attente, de rope drop et d'affluence : notre historique de temps d'attente sur une année glissante, profil horaire sur une année glissante, prévision d'affluence sur 90 jours, [Europa-Park sur park.fan](ref:europa-park)

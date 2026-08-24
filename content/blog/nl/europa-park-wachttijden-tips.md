@@ -649,7 +649,7 @@ Hoe sterk zich dat over de dag verdeelt, zie je pas in het uurprofiel: de
 typische wachttijd per uur, gemiddeld over een jaar bedrijfsdagen. Het drukste
 uur van elke attractie staat vet.
 
-```hourly-profile-widget slug=europa-park top=8
+```hourly-profile-widget slug=europa-park top=12
 
 ```
 
@@ -660,9 +660,10 @@ staat er de langste rij van de dag, vanaf twaalf uur is het ongeveer de helft, e
 daar verandert tot sluitingstijd niets meer aan. Een baan van 73 meter die de halve dag half
 leeg draait, omdat iedereen er 's ochtends al is geweest.
 
-**De drukste uren liggen tussen tien en twaalf.** Zeven van de acht banen hebben
-hun maximum om tien of om elf uur, alleen Atlantica pas in de middag. Wie rustig
-ontbijt en om half elf aankomt, loopt precies de dagpiek in.
+**De drukste uren liggen tussen tien en twaalf.** De meeste banen hebben hun
+maximum om tien of om elf uur; alleen Arthur en de twee waterbanen lopen pas in
+de middag vol. Wie rustig ontbijt en om half elf aankomt, loopt precies de
+dagpiek in.
 
 ![Een uiteengeslagen houten schip in het waterbassin van Poseidon, daarachter een vestingmuur | Bij opening bijna leeg, om elf uur de langste rij van de dag. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
 
@@ -673,9 +674,9 @@ rijdt ze allebei in de tijd die hij 's middags voor één ervan nodig zou hebben
 Een dagindeling die daaruit volgt:
 
 1. **Bij opening naar het Voletarium.** Duitsland ligt dicht bij de ingang, en
-   om tien uur is de waarde daar bijna twee keer zo hoog.
-2. **Daarna meteen naar Kroatië, naar Voltron.** Meteen bij opening is het 20 tot
-   25 minuten, een uur later al 42.
+   om tien uur staat er al de langste rij van de dag.
+2. **Daarna meteen naar Kroatië, naar Voltron.** Bij opening is zijn rij het
+   kortst, een uur later de langste van het hele park.
 3. **Tussen tien en twaalf niets forceren.** Dat zijn de twee uren voor het
    ontbijt, een show of het sprookjesbos. Alles wat nu een rij heeft, heeft die
    's middags korter.
@@ -683,14 +684,13 @@ Een dagindeling die daaruit volgt:
    Keizerlijke Toverreis en het Castello dei Medici. Binnen is het op hete dagen
    toch aangenamer.
 5. **Vanaf zeventien uur de waterbanen**, als nat worden 's ochtends je te vroeg
-   was. Poseidon zakt van de 37 rond het middaguur naar 26, Atlantica van zijn
-   namiddagpiek van 34 naar 26.
-6. **Het laatste uur is het beste van de dag.** Gemiddeld over de acht banen
-   ligt het uur vanaf achttien uur op 21 minuten, het openingsuur op 24. Alleen
-   de twee waterbanen zijn 's ochtends leger.
+   was. Ze zakken dan allebei ruim onder hun middag- en namiddagwaarden.
+6. **Het laatste uur is het beste van de dag.** Gemiddeld over de achtbanen ligt
+   het uur voor sluiting onder het openingsuur. Alleen de twee waterbanen zijn
+   's ochtends leger.
 
-Eén kanttekening daarbij: deze curves zijn gemiddelden uit de laatste dertig
-bedrijfsdagen, dus uit de hoogzomer met lange openingstijden. Op een korte
+Eén kanttekening daarbij: deze curves zijn gemiddelden over een heel jaar
+bedrijfsdagen, hoogzomer en winterseizoen samen. Op een korte
 novemberdag van elf tot negentien uur liggen de getallen lager en valt de piek
 eerder.
 
@@ -966,4 +966,4 @@ draait.
 - Route via de A5, parkeertarieven, Rulantica, de Michelinster voor Eatrenalin in 2026: [Route naar het Europa-Park (officieel)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park) · [Europa-Park Erlebnis-Resort (officieel)](https://www.europapark.de/de) · [Eatrenalin op en.wikipedia](https://en.wikipedia.org/wiki/Eatrenalin)
 - Samenstelling van het publiek naar herkomstland en het Zwitserse aandeel: [“50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort” (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300) · [“874'000 Schweizer Besucher stellen den grössten Anteil” (aboutTravel)](https://abouttravel.ch/reisebranche/874000-schweizer-besucher-stellen-den-groessten-anteil/)
 - Brugdag: crowd-niveaus en weer van de dagen rond Hemelvaart en Sacramentsdag 2026 uit onze eigen kalender (gemeten, niet voorspeld), plus de videoreeks [BRÜCKENTAG im EUROPA-PARK 2025 (Epfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [dezelfde reeks 2026 (Epfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
-- Wachttijd-, rope-drop- en druktedata: eigen wachttijdhistorie over een rollend jaar, uurprofiel uit de laatste dertig bedrijfsdagen, druktevoorspelling over 90 dagen, [Europa-Park op park.fan](ref:europa-park)
+- Wachttijd-, rope-drop- en druktedata: eigen wachttijdhistorie over een rollend jaar, uurprofiel over een rollend jaar, druktevoorspelling over 90 dagen, [Europa-Park op park.fan](ref:europa-park)

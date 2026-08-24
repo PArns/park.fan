@@ -662,7 +662,7 @@ Hasta qué punto se reparte todo esto por el día solo se ve en el perfil horari
 la espera típica de cada hora, promediada sobre un año de días de operación. En
 negrita, la hora más cargada de cada atracción.
 
-```hourly-profile-widget slug=europa-park top=8
+```hourly-profile-widget slug=europa-park top=12
 
 ```
 
@@ -674,11 +674,10 @@ mitad, y eso ya no cambia hasta la hora del cierre. Una atracción de 73 metros 
 medio vacía durante media jornada porque todo el mundo pasó por allí por la
 mañana.
 
-**Las horas más llenas están entre las diez y las doce.** Siete de las ocho
-atracciones tienen su máximo a las diez o a las once; solo Atlantica lo alcanza
-por la tarde. Quien
-desayuna con calma y llega a las diez y media entra exactamente en el pico del
-día.
+**Las horas más llenas están entre las diez y las doce.** La mayoría de las
+atracciones tienen su máximo a las diez o a las once; solo Arthur y las dos
+acuáticas se llenan por la tarde. Quien desayuna con calma y llega a las diez y
+media entra exactamente en el pico del día.
 
 ![Un barco de madera destrozado en el estanque de Poseidon, con una muralla detrás | Casi vacía al abrir; a las once, la cola más larga del día. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
 
@@ -689,9 +688,9 @@ en las dos en el tiempo que a mediodía le costaría una.
 Un plan de día que sale de ahí:
 
 1. **Al Voletarium en la apertura.** Alemania queda cerca de la entrada, y a las
-   diez el valor de allí es casi el doble.
-2. **Después, directo a Croacia, a Voltron.** Justo en la apertura son 20 a 25
-   minutos; una hora más tarde, ya 42.
+   diez ya tiene su cola más larga del día.
+2. **Después, directo a Croacia, a Voltron.** En la apertura su cola es la más
+   corta del día; una hora más tarde, la más larga del parque.
 3. **Entre las diez y las doce, no fuerces nada.** Son las dos horas para el
    desayuno, un espectáculo o el bosque de los cuentos. Todo lo que ahora tenga
    cola la tendrá más corta por la tarde.
@@ -699,14 +698,14 @@ Un plan de día que sale de ahí:
    viaje imperial mágico de Josefina y el Castello dei Medici. Los días de calor,
    dentro se está mejor de todas formas.
 5. **A partir de las cinco de la tarde, las acuáticas**, si mojarte por la mañana
-   te parecía demasiado pronto. Poseidon cae de su valor de mediodía, 37, a 26;
-   Atlantica, de su máximo de tarde, 34, a 26.
-6. **La última hora es la mejor del día.** Promediada sobre las ocho atracciones,
-   la hora que empieza a las seis de la tarde está en 21 minutos, y la de apertura
-   en 24. Solo las dos acuáticas están más vacías por la mañana.
+   te parecía demasiado pronto. Las dos caen entonces bastante por debajo de sus
+   valores de mediodía y de tarde.
+6. **La última hora es la mejor del día.** Promediada sobre las montañas rusas,
+   la hora antes del cierre queda por debajo de la de apertura. Solo las dos
+   acuáticas están más vacías por la mañana.
 
-Una salvedad al respecto. Estas curvas son medias de los últimos treinta días de
-operación, o sea, del pleno verano con horarios largos. En un día corto de
+Una salvedad al respecto. Estas curvas son medias de un año entero de días de
+operación, pleno verano y temporada de invierno juntos. En un día corto de
 noviembre, de once a siete, las cifras son más bajas y el pico llega antes.
 
 ```map-widget slug=europa-park
@@ -990,4 +989,4 @@ vagoneta que gira.
 - Llegada por la A5, tarifas de aparcamiento, Rulantica, el Eatrenalin y su estrella Michelin de 2026: [Cómo llegar al Europa-Park (oficial)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park) · [Europa-Park Erlebnis-Resort (oficial)](https://www.europapark.de/de) · [Eatrenalin en en.wikipedia](https://en.wikipedia.org/wiki/Eatrenalin)
 - Composición del público por país de origen y la parte suiza: [«50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort» (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300) · [«874'000 Schweizer Besucher stellen den grössten Anteil» (aboutTravel)](https://abouttravel.ch/reisebranche/874000-schweizer-besucher-stellen-den-groessten-anteil/)
 - Viernes puente: niveles de afluencia y meteorología de los días alrededor de la Ascensión y del Corpus Christi de 2026, sacados de nuestro propio calendario (medidos, no previstos), más la serie de vídeos [«BRÜCKENTAG im EUROPA-PARK 2025» (Epfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [la misma serie en 2026 (Epfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
-- Datos de tiempos de espera, rope drop y afluencia: nuestro propio historial de tiempos de espera sobre un año móvil, perfil horario de los últimos treinta días de operación, previsión de afluencia a 90 días, [Europa-Park en park.fan](ref:europa-park)
+- Datos de tiempos de espera, rope drop y afluencia: nuestro propio historial de tiempos de espera sobre un año móvil, perfil horario sobre un año móvil, previsión de afluencia a 90 días, [Europa-Park en park.fan](ref:europa-park)
