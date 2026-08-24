@@ -176,7 +176,9 @@ verrechnet und an welchen drei Stellen wir bewusst nichts behaupten. Vier
 konkrete Besuchssituationen sind auch dabei, von der Familie in den
 Herbstferien bis zum Jahreskarten-Abend um sieben.
 
-Und wenn du das nächste Mal vor einer Zahl stehst: Sie ist nicht die Antwort.
-Sie ist die Frage.
+Und wenn du das nächste Mal am Eingang stehst und auf die Anzeige starrst:
+Schau nach, was an dieser Bahn an einem Dienstag normal ist. Dann weißt du in
+zehn Sekunden, ob du dich gerade ärgern musst oder ob heute einfach Dienstag
+ist.
 
 — Patrick

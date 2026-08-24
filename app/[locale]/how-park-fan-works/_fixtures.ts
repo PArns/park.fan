@@ -155,8 +155,13 @@ export interface DemoFixtures {
 export function buildDemoFixtures(nowMs: number): DemoFixtures {
   const at = (offsetMinutes: number) => new Date(nowMs + offsetMinutes * 60_000).toISOString();
 
+  // Park time, not an offset from now. As `now + 130 min` this read "Beste Zeit:
+  // 23:27 Uhr" on a page rendered in the evening — four hours after the park
+  // shuts. 18:45 is the ride's real evening trough and is inside the operating
+  // day whenever the reader looks; after closing the card says "Jetzt", which is
+  // the row's normal past-slot state rather than a nonsense hour.
   const bestSlot: BestVisitSlot = {
-    time: at(130),
+    time: parkLocalInstant(nowMs, 18, 45),
     predictedWaitTime: 35,
     rating: 'optimal',
   };

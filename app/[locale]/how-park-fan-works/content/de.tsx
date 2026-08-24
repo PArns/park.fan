@@ -50,7 +50,7 @@ import {
 } from '../_demos';
 import { WaitScaleBar, WaitScaleStage, type WaitScaleStep } from '../_wait-scale';
 import { NightShift, type NightShiftJob } from '../_night-shift';
-import { Ambience, ClosingBand, ParkAnatomy, type AnatomyStep } from '../_chrome';
+import { Ambience, ClosingBand, IntroWithAside, ParkAnatomy, type AnatomyStep } from '../_chrome';
 import { ChapterRail, type Chapter } from '../_chapter-rail';
 import {
   TARON_BASELINE,
@@ -61,16 +61,25 @@ import {
   WAIT_SCALE_MAX,
 } from '../_fixtures';
 
+/**
+ * Feeds both the chapter list at the top and the rail down the right edge, and
+ * must match the `<SectionShell id=… index=…>` calls below exactly — the rail
+ * looks its sections up by id, so an entry that drifts silently stops
+ * highlighting. Chapter 05 was inserted after the first draft and this list did
+ * not follow, which left the rail one chapter short and every number after 04
+ * pointing at the wrong heading.
+ */
 const CHAPTERS: Chapter[] = [
   { id: 'zahl', index: '01', label: 'Eine Zahl allein' },
   { id: 'massstab', index: '02', label: 'Typisch, voll, Rekord' },
   { id: 'moment', index: '03', label: 'Der beste Moment' },
   { id: 'tag', index: '04', label: 'Der richtige Tag' },
-  { id: 'nachtschicht', index: '05', label: 'Woher die Zahlen kommen' },
-  { id: 'luecken', index: '06', label: 'Was wir nicht behaupten' },
-  { id: 'besuche', index: '07', label: 'Vier Besuche' },
-  { id: 'wegweiser', index: '08', label: 'Wo was steht' },
-  { id: 'faq', index: '09', label: 'Häufige Fragen' },
+  { id: 'parkseite', index: '05', label: 'Die Parkseite von oben nach unten' },
+  { id: 'nachtschicht', index: '06', label: 'Woher die Zahlen kommen' },
+  { id: 'luecken', index: '07', label: 'Was wir nicht behaupten' },
+  { id: 'besuche', index: '08', label: 'Vier Besuche' },
+  { id: 'wegweiser', index: '09', label: 'Wo was steht' },
+  { id: 'faq', index: '10', label: 'Häufige Fragen' },
 ];
 
 const PARK = '/parks/europe/germany/bruehl/phantasialand';
@@ -324,9 +333,9 @@ export function ContentDE() {
         icon={Gauge}
       >
         <P>
-          Links steht, was am Eingang der Bahn hängt. Rechts dieselbe Zahl, wie park.fan sie
-          ausgibt. Der Unterschied sind nicht die hübscheren Pixel. Es ist alles, was ohne
-          Vergangenheit gar nicht erst existieren kann.
+          Am Eingang der Bahn hängt eine Zahl, sonst nichts. Auf der Parkseite steht dieselbe Zahl
+          mit vier weiteren Angaben: einer Auslastungsstufe, einem Trend, der zweiten Warteschlange
+          und der Mindestgröße. Für keine davon reicht der Blick auf heute.
         </P>
 
         <BareNumberVsCard
@@ -347,15 +356,15 @@ export function ContentDE() {
           </P>
           <PG>
             Der zweite Wert auf der Karte ist die Single-Rider-Schlange. Viele Bahnen führen mehrere
-            Warteschlangen parallel, und welche davon existiert, steht selten am selben Schild.
-            Rechts daneben die Mindestgröße, damit niemand mit einem 130 Zentimeter großen Kind
-            durch den halben Park läuft.
+            Warteschlangen parallel, und welche davon existiert, steht selten am selben Schild. Dazu
+            die Mindestgröße, damit niemand mit einem 130 Zentimeter großen Kind durch den halben
+            Park läuft.
           </PG>
         </div>
 
         <DemoFrame
           label="Zwei Bahnen, dieselbe Minute"
-          note="Beide Karten stammen aus demselben Moment im selben Land. Die eine Schlange wächst, die andere baut ab. Auf der Parkseite stehen alle Bahnen so nebeneinander, sortierbar nach Wartezeit."
+          note="Beide Karten stammen aus demselben Moment im selben Park, Taron in Klugheim und Black Mamba in Deep in Africa. Die eine Schlange wächst, die andere baut ab. Auf der Parkseite stehen alle Bahnen so nebeneinander, sortierbar nach Wartezeit."
           href={PARK}
           hrefLabel="Zur Parkseite →"
         >
@@ -372,12 +381,18 @@ export function ContentDE() {
           title="Typisch, voll, Rekord"
           icon={Ruler}
         >
-          <P>
-            Um eine Zahl einzuordnen, braucht es zwei Vergleichswerte und die Angabe, worauf sie
-            beruhen. park.fan benutzt dafür den Median der Tagesspitzen und das 90. Perzentil
-            derselben Reihe. Im Klartext: Wie lang ist die längste Schlange des Tages üblicherweise,
-            und wie lang war sie an den vollsten zehn Prozent der Tage.
-          </P>
+          <IntroWithAside
+            value={`${TARON_RECORD} Min.`}
+            label="Tarons längste gemessene Schlange"
+            note="Am 16. Juli 2026, in den Sommerferien. Ein einziger Tag von 365, und deshalb rechnet die Skala mit Perzentilen statt mit dem Maximum."
+          >
+            <P>
+              Um eine Zahl einzuordnen, braucht es zwei Vergleichswerte und die Angabe, worauf sie
+              beruhen. park.fan benutzt dafür den Median der Tagesspitzen und das 90. Perzentil
+              derselben Reihe. Im Klartext: Wie lang ist die längste Schlange des Tages
+              üblicherweise, und wie lang war sie an den vollsten zehn Prozent der Tage.
+            </P>
+          </IntroWithAside>
 
           <div className="pt-2">
             <WaitScaleStage
@@ -464,7 +479,7 @@ export function ContentDE() {
               </P>
               <P>
                 Samstag ist der einzige Tag, an dem die {TARON_WAIT_NOW} vom Anfang genau in der
-                Mitte liegen. Am Montag daneben wären sie die Ausnahme.
+                Mitte liegen. An einem Montag wären dieselben Minuten die Ausnahme.
               </P>
               <P>
                 Wie belastbar das alles ist, hängt an der Zahl der Messtage: {TARON_WEEKDAY_DAYS}{' '}
@@ -518,9 +533,9 @@ export function ContentDE() {
           <P>
             Taron ist der Fall, in dem die Uhrzeit fast nichts entscheidet: Die Zeile liegt den
             ganzen Tag in einem engen Band, und was den Unterschied macht, ist der Wochentag aus
-            Kapitel 02. Chiapas daneben ist das Gegenteil, die Zeile steigt bis in den Nachmittag
-            deutlich an. Eine einzige Regel für den ganzen Park wäre für eine der beiden Bahnen
-            falsch, und deshalb wird sie pro Bahn gerechnet.
+            Kapitel 02. Bei Chiapas eine Zeile tiefer ist es umgekehrt, die Werte steigen bis in den
+            Nachmittag deutlich an. Eine einzige Regel für den ganzen Park wäre für eine der beiden
+            Bahnen falsch, und deshalb wird sie pro Bahn gerechnet.
           </P>
         </div>
 
@@ -532,7 +547,7 @@ export function ContentDE() {
             <RopeDropDemo />
           </DemoFrame>
 
-          <div className="space-y-4">
+          <div className="max-w-prose space-y-4">
             <PG>
               Die Karte nennt drei Zahlen und eine Uhrzeit: die typische Wartezeit zur Öffnung, die
               Tagesspitze, die Differenz und das Zeitfenster, in dem der Vorsprung hält. Danach ist
@@ -571,7 +586,10 @@ export function ContentDE() {
           <CalendarDaysDemo />
         </DemoFrame>
 
-        <div className="max-w-3xl space-y-4 pt-2">
+        {/* Two columns rather than one narrow one: the calendar above runs the
+            full width, and three paragraphs stacked at the body measure under it
+            left the right half of the band empty. */}
+        <div className="grid gap-x-10 gap-y-4 pt-2 lg:grid-cols-2 lg:items-start">
           <P>
             Die Ferienkalender kommen aus zwei öffentlichen Quellen und decken jeweils vier Jahre
             ab. Wichtiger als die eigenen sind oft die der Nachbarn. Ein Beispiel von heute: Für
@@ -581,18 +599,20 @@ export function ContentDE() {
             Umkreis von rund 200 Kilometern zählen deshalb mit und bekommen im Kalender eine eigene
             Markierung.
           </P>
-          <PG>
-            Die Farbe eines Tages ist eine Prognose, keine Messung. Sie stammt aus einem Modell, das
-            jede Nacht mit den Wartezeiten des Vortags neu trainiert wird und sich hinterher an der
-            Realität nachmessen lässt.
-          </PG>
-          <P>
-            Wie weit der Kalender reicht, hängt am Park. Ein Park, der das ganze Jahr öffnet,
-            bekommt bis zu zwölf Monate im Voraus eine Prognose. Bei einem Saisonpark hört sie da
-            auf, wo die veröffentlichte Saison endet: Für einen Dienstag im März, an dem
-            Phantasialand nachweislich geschlossen hat, ist eine Auslastungsfarbe keine Vorhersage,
-            sondern eine Behauptung.
-          </P>
+          <div className="space-y-4">
+            <PG>
+              Die Farbe eines Tages ist eine Prognose, keine Messung. Sie stammt aus einem Modell,
+              das jede Nacht mit den Wartezeiten des Vortags neu trainiert wird und sich hinterher
+              an der Realität nachmessen lässt.
+            </PG>
+            <P>
+              Wie weit der Kalender reicht, hängt am Park. Ein Park, der das ganze Jahr öffnet,
+              bekommt bis zu zwölf Monate im Voraus eine Prognose. Bei einem Saisonpark hört sie da
+              auf, wo die veröffentlichte Saison endet: Für einen Dienstag im März, an dem
+              Phantasialand nachweislich geschlossen hat, ist eine Auslastungsfarbe keine
+              Vorhersage, sondern eine Behauptung.
+            </P>
+          </div>
         </div>
 
         <div className="flex flex-wrap gap-3 pt-1">
@@ -747,7 +767,7 @@ export function ContentDE() {
 
           <DemoFrame
             label="Keine Bewertungsgrundlage"
-            note="Die letzte Stufe rechts ist gar keine Auslastung. Sie sagt, dass wir für diesen Park noch keine haben: Unter rund 30 Betriebstagen fehlt der Vergleichswert, gegen den gerechnet würde."
+            note="Die letzte Stufe ist gar keine Auslastung. Sie sagt, dass wir für diesen Park noch keine haben: Unter rund 30 Betriebstagen fehlt der Vergleichswert, gegen den gerechnet würde."
           >
             <BadgeRowDemo caption="Oben die Auslastungsstufen, unten der Vergleich mit dem Typischen. Beide benutzen dieselbe Farbskala, damit sie sich nicht widersprechen können." />
           </DemoFrame>
@@ -963,8 +983,8 @@ export function ContentDE() {
 
       <ClosingBand
         kicker="Und jetzt?"
-        title="Such dir einen Park und lies eine Zahl."
-        body="Alles auf dieser Seite ist kostenlos, ohne Konto und ohne Werbung nutzbar. Wenn du wissen willst, wie treffsicher die Prognosen sind, steht das live auf der Fancast-Seite. Wenn du wissen willst, wann du fahren solltest, fang bei der besten Reisezeit an."
+        title="Weiterlesen"
+        body="Alles auf park.fan ist kostenlos, ohne Konto und ohne Werbung nutzbar. Die Parkseite zeigt das alles am lebenden Objekt, die Fancast-Seite rechnet öffentlich vor, wie treffsicher die Prognosen der letzten 30 Tage waren, und die beste Reisezeit vergleicht mehrere Parks nebeneinander."
       >
         <Link
           href={PARK}

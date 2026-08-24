@@ -561,6 +561,50 @@ hier steht`, `Kommen wir nun zu`). Just write the next paragraph.
 - **Hedge thin data explicitly** rather than rounding it into confidence: if a
   month has four measured days, say so.
 
+### The aphoristic closer — the one that keeps coming back
+
+The single most persistent tell, and it survives every other check: a short,
+symmetrical, abstract sentence parked at the end of a post, a section or a
+landing page, restating what was just said as a maxim. It contains no
+information. It exists only to sound like an ending.
+
+Real examples that were written and had to be removed:
+
+| Shipped                                                                                            | Why it fails                                                                                                                         |
+| -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `Und wenn du das nächste Mal vor einer Zahl stehst: Sie ist nicht die Antwort. Sie ist die Frage.` | Antithesis + the number turned into a metaphor. The whole text was about a concrete queue; the last line abandons it for philosophy. |
+| `Such dir einen Park und lies eine Zahl.`                                                          | Imperative two-parter with a symmetrical beat. Tells the reader nothing they cannot already see.                                     |
+| `Das ist die ganze Geschichte in einer Tabelle.`                                                   | Restates the section, adds nothing.                                                                                                  |
+| `X ist kein Y, sondern ein Z.`                                                                     | The antithesis frame itself.                                                                                                         |
+
+The shapes to grep for: `ist nicht … , sondern …` in a final sentence,
+`Sie ist nicht X. Sie ist Y.`, two imperatives joined by `und` as a heading,
+any sentence where a concrete thing (a wait time, a park, a queue) becomes a
+stand-in for an abstract one (an answer, a question, a promise).
+
+**What to do instead.** Three endings that work:
+
+1. **The concrete next action**, with the specifics kept: „Schau nach, was an
+   dieser Bahn an einem Dienstag normal ist." Not „Schau genauer hin."
+2. **A fact that has not been said yet** — a caveat, a number, a date.
+3. **Nothing.** Let the last real paragraph be the last paragraph. A section is
+   allowed to just stop.
+
+The test: cover the last sentence and read the text without it. If nothing is
+lost, it was decoration. If what is lost is only a _feeling of closure_, it was
+the antipattern.
+
+### Copy must not describe the page's own layout
+
+`Links steht, was am Eingang hängt. Rechts dieselbe Zahl …` was wrong on every
+phone, where the two panels stack. Same for „die letzte Stufe rechts" next to a
+`flex-wrap` badge row, and „Chiapas daneben" next to a table where Chiapas is a
+row _below_.
+
+Describe the thing, not where it sits. Vertical order is usually safe („weiter
+unten auf der Parkseite"), horizontal order almost never is, and „daneben" is
+only safe when the two things are in one row at every breakpoint.
+
 ### Structural slop — the tells that survive a vocabulary pass
 
 Swapping out banned words is the easy half. What actually makes a text read as

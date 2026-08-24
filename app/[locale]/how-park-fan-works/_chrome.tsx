@@ -30,6 +30,8 @@ export function WaitSign({
   caption,
   className,
   size = 'lg',
+  plate,
+  fill = false,
 }: {
   value: number;
   unit: string;
@@ -37,19 +39,25 @@ export function WaitSign({
   className?: string;
   /** `lg` for the hero, `md` where it sits next to a card. */
   size?: 'md' | 'lg';
+  /** Small engraved strip above the number, e.g. the ride's name. */
+  plate?: string;
+  /** Stretch to the parent's height, for a column that has to match a card. */
+  fill?: boolean;
 }) {
   return (
-    <div className={cn('relative', className)}>
-      {/* The glow. Out of flow and behind, so it can never affect layout. */}
+    <div className={cn('relative flex flex-col', fill && 'h-full', className)}>
+      {/* The glow. Out of flow and behind, so it can never affect layout. Kept
+          tight to the panel — at `-inset-6` on a wide box it stopped reading as
+          a lit sign and became an amber smear across the column. */}
       <div
         aria-hidden
-        className="absolute -inset-6 -z-10 rounded-[2rem] bg-amber-500/20 blur-3xl motion-safe:animate-pulse"
+        className="absolute -inset-2 -z-10 rounded-[1.75rem] bg-amber-500/25 blur-2xl"
       />
       <div
         className={cn(
-          'relative flex flex-col items-center justify-center overflow-hidden rounded-2xl',
+          'relative flex flex-1 flex-col items-center justify-center overflow-hidden rounded-2xl',
           'border border-amber-950/60 bg-[#0b0a08] shadow-2xl shadow-amber-950/40',
-          size === 'lg' ? 'px-10 py-8 sm:px-14 sm:py-10' : 'px-8 py-6'
+          size === 'lg' ? 'px-10 py-8 sm:px-14 sm:py-10' : 'px-8 py-10'
         )}
       >
         {/* Dot mask over the whole panel, the way an LED matrix reads up close. */}
@@ -62,19 +70,24 @@ export function WaitSign({
             backgroundSize: '4px 4px',
           }}
         />
+        {plate && (
+          <span className="relative mb-6 rounded-full border border-amber-500/25 px-3 py-1 font-mono text-[10px] tracking-[0.3em] text-amber-500/60 uppercase">
+            {plate}
+          </span>
+        )}
         <span
           className={cn(
             'font-mono leading-none font-bold text-amber-400 tabular-nums',
             'drop-shadow-[0_0_18px_rgba(251,191,36,0.55)]',
-            size === 'lg' ? 'text-8xl sm:text-9xl' : 'text-6xl'
+            size === 'lg' ? 'text-8xl sm:text-9xl' : 'text-7xl sm:text-8xl'
           )}
         >
           {value}
         </span>
         <span
           className={cn(
-            'mt-3 font-mono tracking-[0.35em] text-amber-400/70 uppercase',
-            size === 'lg' ? 'text-sm' : 'text-[10px]'
+            'relative mt-3 font-mono tracking-[0.35em] text-amber-400/70 uppercase',
+            size === 'lg' ? 'text-sm' : 'text-xs'
           )}
         >
           {unit}
@@ -180,6 +193,44 @@ export function GuideHero({
 
       <ScrollCue label={scrollLabel} />
     </header>
+  );
+}
+
+// ── Chapter intro with an aside ──────────────────────────────────────────────
+
+/**
+ * A chapter's opening paragraph with one fact parked beside it.
+ *
+ * Running text is capped at a readable measure while the section head rules the
+ * full width, which leaves two thirds of the band empty right under the biggest
+ * horizontal line on the page — the emptiest-looking spot in the layout. This
+ * puts a single number there. One, not a panel of them: the point is to fill
+ * the band with something worth reading, not to build a dashboard.
+ */
+export function IntroWithAside({
+  children,
+  value,
+  label,
+  note,
+}: {
+  children: React.ReactNode;
+  value: string;
+  label: string;
+  note?: string;
+}) {
+  return (
+    <div className="grid gap-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,1fr)] lg:items-start">
+      <div className="space-y-4">{children}</div>
+      <Reveal delay={80}>
+        <div className="border-primary/25 bg-primary/[0.04] rounded-2xl border p-5">
+          <div className="text-primary text-4xl font-black tracking-tight tabular-nums">
+            {value}
+          </div>
+          <div className="text-foreground mt-1 text-sm font-semibold">{label}</div>
+          {note && <p className="text-muted-foreground mt-2 text-xs leading-relaxed">{note}</p>}
+        </div>
+      </Reveal>
+    </div>
   );
 }
 
