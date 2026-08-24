@@ -340,25 +340,16 @@ take the forest in two portions on two days without getting lost.
 "A park for the whole family" is in every brochure. The only way to back it up is
 with queues.
 
-Our history for Efteling covers **145 operating days** with wait-time data,
+Our history for Efteling covers **more than 150 operating days** with wait-time data,
 recorded between August 2024 and August 2026. Across all days of the week the
 **typical wait averages 25 minutes** park-wide (median), with the 90th percentile
 at 36.
 
 The ten most in-demand attractions:
 
-| Attraction                                                         | Area         | Typical (median) | Peak (P90) | Days measured |
-| ------------------------------------------------------------------ | ------------ | ---------------: | ---------: | ------------: |
-| **[Joris en de Draak](ref:efteling/joris-en-de-draak?bare)**       | Ruigrijk     |       **34 min** |     41 min |           129 |
-| [Danse Macabre](ref:efteling/danse-macabre?bare)                   | Anderrijk    |           31 min |     36 min |           138 |
-| [De Vliegende Hollander](ref:efteling/de-vliegende-hollander?bare) | Ruigrijk     |           29 min |     33 min |           133 |
-| [Symbolica](ref:efteling/symbolica?bare)                           | Fantasierijk |           28 min |     33 min |           141 |
-| [Baron 1898](ref:efteling/baron-1898?bare)                         | Ruigrijk     |           26 min |     32 min |           116 |
-| [Piraña](ref:efteling/pirana?bare)                                 | Anderrijk    |           25 min |     30 min |           128 |
-| [Stoomtrein Oost](ref:efteling/stoomtrein-oost?bare)               | Ruigrijk     |           24 min |     28 min |            32 |
-| [Droomvlucht](ref:efteling/droomvlucht?bare)                       | Marerijk     |           22 min |     27 min |           137 |
-| [Max & Moritz](ref:efteling/max-and-moritz?bare)                   | Anderrijk    |           22 min |     27 min |           121 |
-| [Stoomtrein Marerijk](ref:efteling/stoomtrein-marerijk?bare)       | Marerijk     |           22 min |     26 min |            41 |
+```ride-waits-widget park=efteling top=10 columns=land,peak,days highlight=joris-en-de-draak
+
+```
 
 Two things stand out.
 
@@ -370,15 +361,14 @@ base is much thinner than the others at 32 and 41 days, because the stations do
 not report wait times all year. I would not lean on the exact ordering behind
 that, but the order of magnitude holds.
 
-Second: 34 minutes for the longest queue in the park is, measured against almost
-six million visits, very little. For comparison, same data base, same method:
+Second: a good half hour for the longest queue in the park is, measured against
+almost six million visits, very little. For comparison, same data base, same
+method. Attendance for 2025 alongside it: Europa-Park 7 m across the resort,
+Efteling 5.78 m, Toverland 1.14 m.
 
-| Park                                          | Attendance 2025    | Typical park-wide | Longest queue                                                            |
-| --------------------------------------------- | ------------------ | ----------------: | ------------------------------------------------------------------------ |
-| [Phantasialand](ref:phantasialand?bare)       | no official figure |            31 min | 48 min ([Taron](ref:phantasialand/taron?bare))                           |
-| **[Efteling](ref:efteling?bare)**             | **5.78 m**         |        **25 min** | 34 min (Joris en de Draak)                                               |
-| [Europa-Park](ref:europa-park?bare)           | 7 m (resort)       |            23 min | 34 min ([Voltron](ref:europa-park/voltron-nevera-powered-by-rimac?bare)) |
-| [Toverland](ref:attractiepark-toverland?bare) | 1.14 m             |            15 min | 21 min ([Booster Bike](ref:attractiepark-toverland/booster-bike?bare))   |
+```park-comparison-widget slugs=phantasialand,efteling,europa-park,attractiepark-toverland highlight=efteling
+
+```
 
 Phantasialand does not publish its attendance; industry estimates put it around
 two million. So it has a fraction of Efteling's crowd and still the longest queues
@@ -504,15 +494,9 @@ decimal does not.
 
 **By day of the week** it gets interesting, because the usual advice dissolves:
 
-| Day       | Typical (median) | Peak (P90) |
-| --------- | ---------------: | ---------: |
-| Thursday  |           23 min |     33 min |
-| Sunday    |           23 min |     34 min |
-| Friday    |           24 min |     35 min |
-| Tuesday   |           25 min |     36 min |
-| Wednesday |           25 min |     36 min |
-| Saturday  |           26 min |     37 min |
-| Monday    |           27 min |     39 min |
+```stats-widget slug=efteling show=weekdays
+
+```
 
 Four minutes separate the best and the worst day of the week. At Phantasialand
 there are worlds between a Tuesday and a Saturday; here the day barely matters.
@@ -530,9 +514,9 @@ the German one after it. The quietest days coming up:
 
 ```
 
-And the crowding across months and weekdays, calculated from the last two seasons:
+And the crowding across the months, calculated from the last two seasons:
 
-```stats-widget slug=efteling
+```stats-widget slug=efteling show=months
 
 ```
 
@@ -758,10 +742,10 @@ more in a day than the attendance figure would suggest.
 
 ### How long are the wait times at Efteling?
 
-Across 145 operating days from two seasons the typical park-wide wait is
+Across more than 150 operating days from two seasons the typical park-wide wait is
 **25 minutes** (median), with the 90th percentile at 36. The longest queue is
-[Joris en de Draak](ref:efteling/joris-en-de-draak) at 34 minutes, followed by
-[Danse Macabre](ref:efteling/danse-macabre) at 31. Current numbers are on the
+[Joris en de Draak](ref:efteling/joris-en-de-draak) at a good half hour, followed
+by [Danse Macabre](ref:efteling/danse-macabre). Current numbers are on the
 [Efteling park page](ref:efteling).
 
 ### When is Efteling least busy?
@@ -871,4 +855,4 @@ person since 1959.
 - No Halloween: ["Geen Halloween in de Efteling" (official)](https://www.efteling.com/nl/park/events/halloween) · [our Halloween guide](/blog/halloween-theme-parks-2026)
 - Prices, parking and annual passes 2026: [Ticket overview (official)](https://www.efteling.com/en/park/information/ticket-overview) · [Prices & opening hours (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/efteling/preise/) · [Annual pass comparison (Achterbahnreporter)](https://achterbahnreporter.de/ert/jahreskarten/jahreskarte-efteling/)
 - Villa Pardoes (founding, capacity, volunteers, funding): [Wie wij zijn (official)](https://www.villapardoes.nl/wie-wij-zijn) · [Villa Pardoes on Eftepedia](https://www.eftepedia.nl/lemma/Villa_Pardoes) · [Villa Pardoes on nl.wikipedia](https://nl.wikipedia.org/wiki/Villa_Pardoes) · [Donate](https://www.villapardoes.nl/doneren)
-- Wait time and crowd data: our own history from 145 operating days (August 2024 to August 2026), [Efteling on park.fan](ref:efteling)
+- Wait time and crowd data: our own history from more than 150 operating days (August 2024 to August 2026), [Efteling on park.fan](ref:efteling)

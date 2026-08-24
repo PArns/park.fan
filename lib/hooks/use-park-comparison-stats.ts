@@ -1,5 +1,4 @@
-import { useQueries } from '@tanstack/react-query';
-import { useLoadLast } from '@/lib/hooks/use-load-last';
+import { useParkStatsQueries } from '@/lib/hooks/use-park-stats-queries';
 import type { DayOfWeekStat, ParkHistoricalStats } from '@/lib/api/types';
 
 export interface ComparisonPark {
@@ -22,9 +21,18 @@ export interface ComparisonRow extends ComparisonPark {
   parkP50: number | null;
   longestName: string | null;
   longestP50: number | null;
-  /** 0 = Sunday … 6 = Saturday. Null when the week is too ragged, too flat or tied — see below. */
-  quietestDay: number | null;
-  /** Median wait on that day, in minutes. */
+  /**
+   * The quietest weekday(s), 0 = Sunday … 6 = Saturday, ascending. Empty when
+   * naming one would overstate the data — see {@link pickQuietestWeekday}.
+   *
+   * A LIST, not one day, because a tie at whole minutes is the single most
+   * common reason a park had no answer here: Disneyland Paris measures 32 on
+   * both Sunday and Wednesday, Heide Park 15 on Sunday and Friday. The old
+   * rule refused all three rather than pick by sort order — which was right
+   * about the pick and wrong about the refusal. Two quiet days is the finding.
+   */
+  quietestDays: number[];
+  /** Median wait on those days, in minutes. */
   quietestP50: number | null;
 }
 
@@ -33,40 +41,14 @@ export interface ComparisonRow extends ComparisonPark {
  * the reason this widget exists client-side at all while an hourly-profile equivalent does not
  * (8 × 53 KB, of which 45 % is `schedule` nobody renders). See docs/architecture/api-budget.md.
  *
- * Deferred through `useLoadLast` like every other historical query: a blog post embedding this
- * must never race the park cards' live data.
+ * The fetching itself lives in `useParkStatsQueries`, shared with the ride-wait tables: the query
+ * key, the stale window and the loads-last gate had to agree in three files for two tables on one
+ * page to share a cache entry rather than fetch the same park twice.
  */
 export function useParkComparisonStats(parks: readonly ComparisonPark[]) {
-  const releasedLast = useLoadLast();
+  const { stats, isPending } = useParkStatsQueries(parks);
 
-  const results = useQueries({
-    queries: parks.map((p) => ({
-      queryKey: ['park-historical-stats', p.continent, p.country, p.city, p.parkSlug],
-      queryFn: async (): Promise<ParkHistoricalStats | null> => {
-        const res = await fetch(
-          `/api/parks/${p.continent}/${p.country}/${p.city}/${p.parkSlug}/stats`,
-          { cache: 'no-store' }
-        );
-        if (res.status === 404) return null;
-        if (!res.ok) throw new Error(`stats ${p.parkSlug}: ${res.statusText}`);
-        return (await res.json()) as ParkHistoricalStats;
-      },
-      enabled: typeof window !== 'undefined' && releasedLast,
-      // Same key and window as useParkHistoricalStats, so a post that also embeds a
-      // `stats-widget` for one of these parks shares the cache entry instead of re-fetching it.
-      staleTime: 60 * 60_000,
-      gcTime: 90 * 60_000,
-      refetchOnWindowFocus: false,
-      retry: 1,
-    })),
-  });
-
-  const isPending = results.some((r) => r.isPending);
-
-  const rows: ComparisonRow[] = parks.map((p, i) => {
-    const stats = results[i]?.data ?? null;
-    return { ...p, ...deriveRow(stats) };
-  });
+  const rows: ComparisonRow[] = parks.map((p, i) => ({ ...p, ...deriveRow(stats[i] ?? null) }));
 
   return { rows, isPending };
 }
@@ -80,15 +62,35 @@ const MIN_WEEKDAY_SAMPLE_DAYS = 8;
 /**
  * A weekday needs this share of the best-observed weekday's sample count to be compared with it.
  * Movie Park closes on many weekdays out of season, so its Mondays carry 13 measured days against
- * 22 Sundays — naming a quietest day across those is a claim about two different parts of the year.
+ * 22 Sundays — comparing those two is a claim about two different parts of the year.
+ *
+ * The day that fails this is DROPPED from the candidate set, not taken as grounds to refuse the
+ * whole park: the remaining weekdays are still comparable with each other, and "the quietest of
+ * the days we watched evenly" is a true sentence. Refusing outright emptied the column for Movie
+ * Park, Heide Park, Walibi Belgium and Walibi Holland — four of the eighteen parks this table is
+ * ever asked about — while the six or four days it did have said the same thing all along.
  */
 const MIN_WEEKDAY_SAMPLE_RATIO = 0.7;
+
+/**
+ * How many evenly-measured weekdays must survive before one of them may be called the quietest.
+ * Below four there is no week left to be quiet within — a park watched on Saturdays and Sundays
+ * only would otherwise nominate "Sunday" as its quiet day.
+ */
+const MIN_COMPARABLE_WEEKDAYS = 4;
+
+/**
+ * How many days may share the quietest value before the week reads as flat rather than as having
+ * a quiet end. Disney Adventure World measures 39 minutes on Sunday, Monday, Friday AND Saturday:
+ * that is not four quiet days, that is a park with no quiet day.
+ */
+const MAX_TIED_QUIETEST_DAYS = 2;
 
 function deriveRow(stats: ParkHistoricalStats | null): {
   parkP50: number | null;
   longestName: string | null;
   longestP50: number | null;
-  quietestDay: number | null;
+  quietestDays: number[];
   quietestP50: number | null;
 } {
   if (!stats || !stats.meta.displayable) {
@@ -96,7 +98,7 @@ function deriveRow(stats: ParkHistoricalStats | null): {
       parkP50: null,
       longestName: null,
       longestP50: null,
-      quietestDay: null,
+      quietestDays: [],
       quietestP50: null,
     };
   }
@@ -125,32 +127,41 @@ function deriveRow(stats: ParkHistoricalStats | null): {
     parkP50,
     longestName: longest?.attractionName ?? null,
     longestP50: longest?.avgWaitP50 ?? null,
-    quietestDay: quietest?.dayOfWeek ?? null,
+    quietestDays: quietest?.days ?? [],
     quietestP50: quietest?.avgWaitP50 ?? null,
   };
 }
 
 /**
- * The one weekday worth naming, or null whenever naming one would overstate the data.
+ * The weekday(s) worth naming, or null whenever naming one would overstate the data.
  *
- * Four refusals, each of which fired on a real park: a weekday measured too rarely to stand on its
- * own, weekdays measured so unevenly that they describe different seasons, a tie for quietest
- * (then the sort order decides, not the data), and a "quietest" day that is not actually below the
+ * Four refusals, each of which fired on a real park: a weekday measured too rarely to stand on
+ * its own, too few evenly-measured weekdays left to have a quiet end at all, a week so flat that
+ * three or more days share its minimum, and a "quietest" day that is not actually below the
  * park's own median.
+ *
+ * Two of those used to be three. Refusing on a tie was correct as far as it went — the sort order
+ * decides, not the data — but the conclusion was wrong: when Sunday and Wednesday both measure 32
+ * at Disneyland Paris, the finding is that the park has two quiet days, not that it has none. And
+ * a raggedly-measured weekday now drops out of the comparison instead of ending it.
  */
 function pickQuietestWeekday(dow: readonly DayOfWeekStat[], parkP50: number | null) {
   if (parkP50 == null || dow.length < 7) return null;
 
   const usable = dow.filter((d) => d.sampleDays >= MIN_WEEKDAY_SAMPLE_DAYS);
-  if (usable.length < 7) return null;
+  if (usable.length === 0) return null;
 
   const maxSamples = Math.max(...usable.map((d) => d.sampleDays));
-  if (usable.some((d) => d.sampleDays < maxSamples * MIN_WEEKDAY_SAMPLE_RATIO)) return null;
+  const comparable = usable.filter((d) => d.sampleDays >= maxSamples * MIN_WEEKDAY_SAMPLE_RATIO);
+  if (comparable.length < MIN_COMPARABLE_WEEKDAYS) return null;
 
-  const sorted = [...usable].sort((a, b) => a.avgWaitP50 - b.avgWaitP50);
-  const [quietest, runnerUp] = sorted;
-  if (quietest.avgWaitP50 === runnerUp.avgWaitP50) return null;
-  if (quietest.avgWaitP50 >= parkP50) return null;
+  const avgWaitP50 = Math.min(...comparable.map((d) => d.avgWaitP50));
+  if (avgWaitP50 >= parkP50) return null;
 
-  return quietest;
+  const tied = comparable.filter((d) => d.avgWaitP50 === avgWaitP50);
+  // `tied.length === comparable.length` cannot happen once the median check above has passed, but
+  // it is the same statement as the cap and costs nothing to say out loud.
+  if (tied.length > MAX_TIED_QUIETEST_DAYS || tied.length === comparable.length) return null;
+
+  return { days: tied.map((d) => d.dayOfWeek).sort((a, b) => a - b), avgWaitP50 };
 }

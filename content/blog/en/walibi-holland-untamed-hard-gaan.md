@@ -441,22 +441,16 @@ past two years.
 
 ## Twenty minutes for the best ride in the park
 
-Across the last two seasons, calculated from **125 operating days with usable
+Across the last two seasons, calculated from **more than 130 operating days with usable
 wait-time data**, the **typical wait across the park sits at 20 minutes**
 (median). The 90th percentile, the value nine out of ten measurements fall
 below, comes to 31 minutes.
 
 Ride by ride it looks like this:
 
-| Attraction                                                        | Type                | Typical (median) | Peak (P90) | Days measured |
-| ----------------------------------------------------------------- | ------------------- | ---------------: | ---------: | ------------: |
-| [YOY THRILL](ref:walibi-holland/yoy-thrill?bare)                  | Single rail, steel  |           27 min |     34 min |           122 |
-| [Condor](ref:walibi-holland/condor?bare)                          | Suspended, steel    |           22 min |     30 min |           107 |
-| [YOY CHILL](ref:walibi-holland/yoy-chill?bare)                    | Single rail, steel  |           22 min |     28 min |           115 |
-| [Lost Gravity](ref:walibi-holland/lost-gravity?bare)              | Big Dipper, steel   |           22 min |     27 min |           108 |
-| **[UNTAMED](ref:walibi-holland/untamed?bare)**                    | **Hybrid**          |       **20 min** | **25 min** |       **114** |
-| [Xpress: Platform 13](ref:walibi-holland/xpress-platform-13?bare) | Launch, steel       |           18 min |     25 min |           115 |
-| [Goliath](ref:walibi-holland/goliath?bare)                        | Mega Coaster, steel |           18 min |     24 min |           114 |
+```ride-waits-widget rides=walibi-holland/yoy-thrill|YOY THRILL|Single rail, steel;walibi-holland/condor|Condor|Suspended, steel;walibi-holland/yoy-chill|YOY CHILL|Single rail, steel;walibi-holland/lost-gravity|Lost Gravity|Big Dipper, steel;walibi-holland/untamed|UNTAMED|Hybrid;walibi-holland/xpress-platform-13|Xpress: Platform 13|Launch, steel;walibi-holland/goliath|Goliath|Mega Coaster, steel columns=type,peak,days highlight=walibi-holland/untamed
+
+```
 
 The best ride in the park sits in the lower half of that table. People queue
 longer for the new one, for an SLC from 1994 and for a Mack ride 680 metres
@@ -467,22 +461,17 @@ Untamed three times before the YOY queue has cycled through once.
 It gets more interesting compared with the neighbourhood. Same data basis, same
 method, last two seasons:
 
-| Coaster                                                  | Park                                          | Typical (median) | Peak (P90) |
-| -------------------------------------------------------- | --------------------------------------------- | ---------------: | ---------: |
-| [Taron](ref:phantasialand/taron?bare)                    | [Phantasialand](ref:phantasialand?bare)       |           49 min |     56 min |
-| [F.L.Y.](ref:phantasialand/fly?bare)                     | [Phantasialand](ref:phantasialand?bare)       |           41 min |     49 min |
-| [Joris en de Draak](ref:efteling/joris-en-de-draak?bare) | [Efteling](ref:efteling?bare)                 |           35 min |     41 min |
-| [Black Mamba](ref:phantasialand/black-mamba?bare)        | [Phantasialand](ref:phantasialand?bare)       |           31 min |     40 min |
-| [Baron 1898](ref:efteling/baron-1898?bare)               | [Efteling](ref:efteling?bare)                 |           26 min |     32 min |
-| **[UNTAMED](ref:walibi-holland/untamed?bare)**           | **[Walibi Holland](ref:walibi-holland?bare)** |       **20 min** | **25 min** |
-| [Kondaa](ref:walibi-belgium/kondaa?bare)                 | [Walibi Belgium](ref:walibi-belgium?bare)     |           20 min |     25 min |
-| [Troy](ref:attractiepark-toverland/troy?bare)            | [Toverland](ref:attractiepark-toverland?bare) |           16 min |     21 min |
+```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/fly|F.L.Y.;efteling/joris-en-de-draak|Joris en de Draak;phantasialand/black-mamba|Black Mamba;efteling/baron-1898|Baron 1898;walibi-holland/untamed|UNTAMED;walibi-belgium/kondaa|Kondaa;attractiepark-toverland/troy|Troy columns=park,peak highlight=walibi-holland/untamed
+
+```
 
 In the time you queue **once** for [Taron](ref:phantasialand/taron) at
 Phantasialand, you ride Untamed two and a half times. At park level the picture
-is the same: Phantasialand 32 minutes on average, Efteling 25, Walibi Holland
-and [Walibi Belgium](ref:walibi-belgium) 20 each,
-[Toverland](ref:attractiepark-toverland) 15.
+is the same:
+
+```park-comparison-widget slugs=phantasialand,efteling,walibi-holland,walibi-belgium,attractiepark-toverland highlight=walibi-holland
+
+```
 
 Just under a million guests a year spread here across **ten coasters** and close
 to forty attractions, over 40 hectares. Untamed alone handles 900 people an
@@ -718,15 +707,9 @@ holidays** hit far harder here than the German ones.
 
 **By weekday** it gets curious. The busy day is not Saturday:
 
-| Day       | Typical | Peak (P90) |
-| --------- | ------: | ---------: |
-| Thursday  |  18 min |     30 min |
-| Sunday    |  19 min |     30 min |
-| Saturday  |  19 min |     29 min |
-| Monday    |  20 min |     31 min |
-| Tuesday   |  21 min |     32 min |
-| Wednesday |  21 min |     33 min |
-| Friday    |  21 min |     34 min |
+```stats-widget slug=walibi-holland show=weekdays
+
+```
 
 Three minutes separate the quietest weekday from the busiest. So the weekend
 simply is not a special case here, and the reason is mundane: outside the summer
@@ -741,10 +724,10 @@ calendar:
 
 ```
 
-And here is how the crowds spread across months and weekdays, calculated from
-the last two seasons:
+And here is how the crowds spread across the months, calculated from the last
+two seasons:
 
-```stats-widget slug=walibi-holland
+```stats-widget slug=walibi-holland show=months
 
 ```
 
@@ -848,8 +831,9 @@ world, has been held on the park's event site since 2011.
 ### How long are the wait times at Walibi Holland?
 
 Across the last two seasons the typical wait across the park is **20 minutes**
-(median), with the 90th percentile at 31 minutes. Untamed comes to 20 minutes,
-Goliath to 18, and the new YOY THRILL holds the highest value in the park at 27.
+(median), with the 90th percentile at 31 minutes. Untamed and Goliath sit just
+below that, and the new YOY THRILL holds the highest value in the park by a
+clear margin.
 Current numbers are on the
 [Walibi Holland park page](ref:walibi-holland).
 

@@ -8,8 +8,8 @@ featured: false
 excerpt: >-
   Toverland es un parque pequeño y encantado por delante del cual pasa media
   Renania camino del Efteling. Y mientras tanto, en Sevenum hay una montaña rusa
-  de madera de GCI por la que esperas 16 minutos, cuando la de madera del
-  destino cuesta 34. Sobre un parque en el que una vez hice yo mismo de espanto
+  de madera de GCI por la que esperas un cuarto de hora largo, cuando la de madera
+  del destino cuesta más del doble. Sobre un parque en el que una vez hice yo mismo de espanto
   entre bastidores, y que a día de hoy no vende ningún pase rápido.
 tags:
   - attractiepark-toverland
@@ -82,7 +82,8 @@ Países Bajos.
 
 Setenta kilómetros separan los dos parques. En ambos hay una montaña rusa de
 madera del mismo fabricante estadounidense. Por una esperas normalmente
-16 minutos, por la otra 34. La cola más corta le pertenece a la mejor atracción.
+16 minutos, por la otra más del doble. La cola más corta le pertenece a la mejor
+atracción.
 
 Aquí quiero hablar del parque que la rodea: el [Toverland](ref:attractiepark-toverland?long)
 de Sevenum, que este año cumple 25, que considero uno de los parques pequeños
@@ -138,7 +139,7 @@ brusca»: vuelve a montar.
 «Secreto mejor guardado» se escribe rápido en un titular. Demostrarlo cuesta
 más. Así que, los números.
 
-A lo largo de las dos últimas temporadas, calculado sobre 112 días de
+A lo largo de las dos últimas temporadas, calculado sobre más de 150 días de
 funcionamiento con datos de espera, el **tiempo de espera típico de Troy es de
 16 minutos** (mediana). Incluso el percentil 90, el valor por debajo del cual
 quedan nueve de cada diez mediciones, se queda en **21 minutos**. Eso no es el
@@ -148,24 +149,18 @@ Setenta kilómetros al noroeste, el [Efteling](ref:efteling) tiene
 **Joris en de Draak**, también de GCI, tres años más joven, y un imán de público
 por su doble recorrido. Misma base de datos, mismo método de cálculo:
 
-| Montaña rusa de madera                                                   | Parque                                        | Típico (mediana) | Pico (P90) |
-| ------------------------------------------------------------------------ | --------------------------------------------- | ---------------: | ---------: |
-| **[Troy](ref:attractiepark-toverland/troy?bare)** (GCI, 2007)            | [Toverland](ref:attractiepark-toverland?bare) |       **16 min** |     21 min |
-| **[Joris en de Draak](ref:efteling/joris-en-de-draak?bare)** (GCI, 2010) | [Efteling](ref:efteling?bare)                 |           34 min |     40 min |
+```ride-waits-widget rides=attractiepark-toverland/troy|Troy (GCI, 2007);efteling/joris-en-de-draak|Joris en de Draak (GCI, 2010) columns=park,peak highlight=attractiepark-toverland/troy
+
+```
 
 Más del doble, para una atracción que en casi ningún ranking de aficionados
 queda por encima de Troy. Si cruzamos tipos de construcción, la imagen se vuelve
 aún más clara. ¿Qué cuestan en tiempo de espera los grandes nombres de la
 región, sean de madera o de acero?
 
-| Montaña rusa                                             | Tipo                | Parque                                            | Típico (mediana) | Pico (P90) |
-| -------------------------------------------------------- | ------------------- | ------------------------------------------------- | ---------------: | ---------: |
-| [Taron](ref:phantasialand/taron?bare)                    | Multi-launch, acero | [Phantasialand](ref:phantasialand?bare)           |           48 min |     54 min |
-| [F.L.Y.](ref:phantasialand/fly?bare)                     | Flying, acero       | [Phantasialand](ref:phantasialand?bare)           |           40 min |     47 min |
-| [Joris en de Draak](ref:efteling/joris-en-de-draak?bare) | Madera              | [Efteling](ref:efteling?bare)                     |           34 min |     40 min |
-| [Baron 1898](ref:efteling/baron-1898?bare)               | Dive coaster, acero | [Efteling](ref:efteling?bare)                     |           26 min |     32 min |
-| **[Troy](ref:attractiepark-toverland/troy?bare)**        | **Madera**          | **[Toverland](ref:attractiepark-toverland?bare)** |       **16 min** | **21 min** |
-| **[Fēnix](ref:attractiepark-toverland/fenix?bare)**      | **Wing, acero**     | **[Toverland](ref:attractiepark-toverland?bare)** |       **16 min** | **20 min** |
+```ride-waits-widget rides=phantasialand/taron|Taron|Multi-launch, acero;phantasialand/fly|F.L.Y.|Flying, acero;efteling/joris-en-de-draak|Joris en de Draak|Madera;efteling/baron-1898|Baron 1898|Dive coaster, acero;attractiepark-toverland/troy|Troy|Madera;attractiepark-toverland/fenix|Fēnix|Wing, acero columns=type,park,peak highlight=attractiepark-toverland/troy
+
+```
 
 Las dos atracciones de Toverland están abajo, con distancia. En el tiempo que
 haces cola **una sola vez** para [Taron](ref:phantasialand/taron) en

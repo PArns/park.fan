@@ -659,47 +659,38 @@ Per Voltron lo stesso valore è di 20 minuti, per Arthur e Silver Star di 25. Tu
 rispettabile, ma niente per cui alzarsi alle otto. Le montagne russe si possono
 distribuire nell'arco della giornata, il teatro volante no.
 
-Quanto la cosa si distribuisca nella giornata si vede solo nel profilo orario. I
-numeri lì dentro sono più alti delle mediane di prima, perché misurano un'altra
-cosa. La base è il 90° percentile di ogni quarto d'ora, quindi l'estremo superiore
-di quello che in quei quindici minuti era scritto sul cartello. Mediato sull'ora e
-sugli ultimi trenta giorni di apertura, viene fuori questo.
+Quanto la cosa si distribuisca nella giornata si vede solo nel profilo orario:
+l'attesa tipica di ogni ora, mediata su un anno di giorni di apertura. In
+grassetto l'ora di punta di ogni attrazione.
 
-| Attrazione            | ore 9 | ore 10 | ore 11 | ore 12 | ore 13 | ore 14 | ore 15 | ore 16 | ore 17 | ore 18 |
-| --------------------- | ----: | -----: | -----: | -----: | -----: | -----: | -----: | -----: | -----: | -----: |
-| Voletarium            |    33 | **57** |     48 |     30 |     38 |     31 |     30 |     28 |     21 |     16 |
-| Voltron Nevera        |    33 | **42** | **42** |     35 |     32 |     29 |     29 |     28 |     29 |     29 |
-| Arthur                |    28 | **35** |     33 |     30 |     31 |     33 |     33 |     33 |     31 |     25 |
-| Eurosat               |    32 | **42** |     38 |     32 |     29 |     29 |     29 |     29 |     26 |     23 |
-| Wodan                 |    26 |     30 | **36** |     32 |     32 |     31 |     34 |     32 |     28 |     19 |
-| Silver Star           |    26 | **36** |     31 |     24 |     22 |     20 |     22 |     21 |     22 |     23 |
-| Poseidon              |     8 |     28 | **40** |     37 |     36 |     35 |     34 |     32 |     26 |     17 |
-| Atlantica SuperSplash |     6 |     15 |     26 |     27 |     29 |     31 | **34** |     31 |     26 |     15 |
+```hourly-profile-widget slug=europa-park top=12
+
+```
 
 ![Lifthill e prima discesa di Silver Star sopra le chiome degli alberi, cielo serale | Dal 2026 l'attrazione sta nella nuova area tematica Monaco. | right](/media/europa-park/silver-star-4x3.jpg)
 
 La riga che la prima volta mi ha sorpreso è quella di Silver Star. Alle dieci lì
-si aspettano 36 minuti, da mezzogiorno solo poco più di venti, e fino alla
-chiusura non cambia più niente. Un'attrazione da 73 metri che per mezza giornata
+c’è la fila più lunga della giornata, da mezzogiorno resta circa la metà, e fino
+alla chiusura non cambia più niente. Un'attrazione da 73 metri che per mezza giornata
 gira mezza vuota, perché la mattina sono già stati tutti lì.
 
-**Le ore più piene stanno tra le dieci e mezzogiorno.** Sette delle otto
-attrazioni hanno il loro massimo alle dieci o alle undici, solo Atlantica ce l'ha
-nel pomeriggio. Chi fa colazione con calma e arriva alle dieci e mezza, entra
-esattamente nel picco della giornata.
+**Le ore più piene stanno tra le dieci e mezzogiorno.** La maggior parte delle
+attrazioni ha il massimo alle dieci o alle undici; solo Arthur e le due acquatiche
+si riempiono nel pomeriggio. Chi fa colazione con calma e arriva alle dieci e
+mezza, entra esattamente nel picco della giornata.
 
-![Una nave di legno sfasciata nella vasca di Poseidon, dietro un muro di fortezza | Alle nove del mattino qui si aspettano otto minuti, alle undici sono quaranta. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
+![Una nave di legno sfasciata nella vasca di Poseidon, dietro un muro di fortezza | Quasi vuota all’apertura, alle undici la fila più lunga della giornata. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
 
-E poi le attrazioni acquatiche. Poseidon alle nove sta a otto minuti, Atlantica a
-sei. Alle undici sono 40 e 26. Chi è disposto a bagnarsi la mattina, le fa
+E poi le attrazioni acquatiche. All’apertura stanno entrambe su un quarto d’ora o
+meno; Poseidon tocca il massimo alle undici, Atlantica solo nel pomeriggio. Chi è disposto a bagnarsi la mattina, le fa
 entrambe nel tempo che a mezzogiorno gliene costerebbe una.
 
 Un programma di giornata che ne consegue:
 
 1. **Al Voletarium all'apertura.** La Germania sta vicino all'ingresso, e alle
-   dieci il valore lì è quasi il doppio.
-2. **Poi dritti in Croazia da Voltron.** Proprio all'apertura sono 20-25 minuti,
-   un'ora dopo già 42.
+   dieci ha già la fila più lunga della giornata.
+2. **Poi dritti in Croazia da Voltron.** All'apertura la sua fila è la più corta,
+   un'ora dopo la più lunga di tutto il parco.
 3. **Tra le dieci e mezzogiorno non forzare niente.** Sono le due ore per la
    colazione, uno spettacolo o il bosco delle fiabe. Tutto quello che adesso ha
    una coda, nel pomeriggio ce l'ha più corta.
@@ -707,14 +698,14 @@ Un programma di giornata che ne consegue:
    Magical Imperial Journey e il Castello dei Medici. Nelle giornate calde al
    chiuso si sta comunque meglio.
 5. **Dalle cinque del pomeriggio le attrazioni acquatiche**, se bagnarsi la
-   mattina ti sembrava troppo presto. Poseidon scende dal valore di mezzogiorno
-   di 37 a 26, Atlantica dal suo picco pomeridiano di 34 a 26.
-6. **L'ultima ora è la migliore della giornata.** Mediata sulle otto attrazioni,
-   l'ora che comincia alle sei di sera sta a 21 minuti, quella dell'apertura a 24.
-   Solo le due attrazioni acquatiche la mattina sono più vuote.
+   mattina ti sembrava troppo presto. Scendono entrambe ben sotto i loro valori
+   di mezzogiorno e del pomeriggio.
+6. **L'ultima ora è la migliore della giornata.** Mediata sui coaster, l'ora
+   prima della chiusura sta sotto quella dell'apertura. Solo le due attrazioni
+   acquatiche la mattina sono più vuote.
 
-Una limitazione: queste curve sono medie degli ultimi trenta giorni di apertura,
-quindi di piena estate con orari lunghi. In una corta giornata di novembre, dalle
+Una limitazione: queste curve sono medie su un anno intero di giorni di apertura,
+piena estate e stagione invernale insieme. In una corta giornata di novembre, dalle
 undici alle sette di sera, i numeri sono più bassi e il picco arriva prima.
 
 ```map-widget slug=europa-park
@@ -989,4 +980,4 @@ gira su se stesso.
 - Come arrivare dalla A5, tariffe del parcheggio, Rulantica, l'Eatrenalin con la stella Michelin nel 2026: [Come arrivare all'Europa-Park (ufficiale)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park) · [Europa-Park Erlebnis-Resort (ufficiale)](https://www.europapark.de/de) · [Eatrenalin su en.wikipedia](https://en.wikipedia.org/wiki/Eatrenalin)
 - Composizione degli ospiti per paese di provenienza e la quota svizzera: [“50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort” (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300) · [“874'000 Schweizer Besucher stellen den grössten Anteil” (aboutTravel)](https://abouttravel.ch/reisebranche/874000-schweizer-besucher-stellen-den-groessten-anteil/)
 - Il ponte: livelli di affluenza e meteo dei giorni attorno all'Ascensione e al Corpus Domini 2026 dal nostro calendario (misurati, non previsti), più la serie di video [BRÜCKENTAG im EUROPA-PARK 2025 (Epfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [la stessa serie nel 2026 (Epfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
-- Dati su tempi di attesa, rope drop e affluenza: storico proprio dei tempi di attesa su un anno mobile, profilo orario dagli ultimi trenta giorni di apertura, previsione di affluenza su 90 giorni, [Europa-Park su park.fan](ref:europa-park)
+- Dati su tempi di attesa, rope drop e affluenza: storico proprio dei tempi di attesa su un anno mobile, profilo orario su un anno mobile, previsione di affluenza su 90 giorni, [Europa-Park su park.fan](ref:europa-park)

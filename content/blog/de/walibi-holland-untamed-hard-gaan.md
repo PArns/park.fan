@@ -465,22 +465,16 @@ letzten zwei Jahren entschieden hat.
 
 ## Zwanzig Minuten für die beste Bahn im Park
 
-Über die letzten beiden Saisons, gerechnet aus **125 Öffnungstagen mit
+Über die letzten beiden Saisons, gerechnet aus **über 130 Öffnungstagen mit
 auswertbaren Wartezeitdaten**, liegt die **typische Wartezeit im Parkschnitt bei
 20 Minuten** (Median). Das 90. Perzentil, also der Wert, unter dem neun von zehn
 Messungen liegen, kommt auf 31 Minuten.
 
 Für die Bahnen einzeln sieht es so aus:
 
-| Attraktion                                                        | Bauart              | Typisch (Median) | Spitze (P90) | Messtage |
-| ----------------------------------------------------------------- | ------------------- | ---------------: | -----------: | -------: |
-| [YOY THRILL](ref:walibi-holland/yoy-thrill?bare)                  | Single Rail, Stahl  |           27 Min |       34 Min |      122 |
-| [Condor](ref:walibi-holland/condor?bare)                          | Suspended, Stahl    |           22 Min |       30 Min |      107 |
-| [YOY CHILL](ref:walibi-holland/yoy-chill?bare)                    | Single Rail, Stahl  |           22 Min |       28 Min |      115 |
-| [Lost Gravity](ref:walibi-holland/lost-gravity?bare)              | Big Dipper, Stahl   |           22 Min |       27 Min |      108 |
-| **[UNTAMED](ref:walibi-holland/untamed?bare)**                    | **Hybrid**          |       **20 Min** |   **25 Min** |  **114** |
-| [Xpress: Platform 13](ref:walibi-holland/xpress-platform-13?bare) | Launch, Stahl       |           18 Min |       25 Min |      115 |
-| [Goliath](ref:walibi-holland/goliath?bare)                        | Mega Coaster, Stahl |           18 Min |       24 Min |      114 |
+```ride-waits-widget rides=walibi-holland/yoy-thrill|YOY THRILL|Single Rail, Stahl;walibi-holland/condor|Condor|Suspended, Stahl;walibi-holland/yoy-chill|YOY CHILL|Single Rail, Stahl;walibi-holland/lost-gravity|Lost Gravity|Big Dipper, Stahl;walibi-holland/untamed|UNTAMED|Hybrid;walibi-holland/xpress-platform-13|Xpress: Platform 13|Launch, Stahl;walibi-holland/goliath|Goliath|Mega Coaster, Stahl columns=type,peak,days highlight=walibi-holland/untamed
+
+```
 
 Die beste Bahn im Park steht in der unteren Hälfte dieser Tabelle. Länger
 angestanden wird für die Neuheit, für einen SLC von 1994 und für eine Mack-Bahn
@@ -491,22 +485,17 @@ Untamed drei Mal, bevor die YOY-Schlange ihre erste Runde durch hat.
 Interessanter wird es im Vergleich mit der Nachbarschaft. Gleiche Datenbasis,
 gleiche Rechenmethode, letzte zwei Saisons:
 
-| Achterbahn                                               | Park                                          | Typisch (Median) | Spitze (P90) |
-| -------------------------------------------------------- | --------------------------------------------- | ---------------: | -----------: |
-| [Taron](ref:phantasialand/taron?bare)                    | [Phantasialand](ref:phantasialand?bare)       |           49 Min |       56 Min |
-| [F.L.Y.](ref:phantasialand/fly?bare)                     | [Phantasialand](ref:phantasialand?bare)       |           41 Min |       49 Min |
-| [Joris en de Draak](ref:efteling/joris-en-de-draak?bare) | [Efteling](ref:efteling?bare)                 |           35 Min |       41 Min |
-| [Black Mamba](ref:phantasialand/black-mamba?bare)        | [Phantasialand](ref:phantasialand?bare)       |           31 Min |       40 Min |
-| [Baron 1898](ref:efteling/baron-1898?bare)               | [Efteling](ref:efteling?bare)                 |           26 Min |       32 Min |
-| **[UNTAMED](ref:walibi-holland/untamed?bare)**           | **[Walibi Holland](ref:walibi-holland?bare)** |       **20 Min** |   **25 Min** |
-| [Kondaa](ref:walibi-belgium/kondaa?bare)                 | [Walibi Belgium](ref:walibi-belgium?bare)     |           20 Min |       25 Min |
-| [Troy](ref:attractiepark-toverland/troy?bare)            | [Toverland](ref:attractiepark-toverland?bare) |           16 Min |       21 Min |
+```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/fly|F.L.Y.;efteling/joris-en-de-draak|Joris en de Draak;phantasialand/black-mamba|Black Mamba;efteling/baron-1898|Baron 1898;walibi-holland/untamed|UNTAMED;walibi-belgium/kondaa|Kondaa;attractiepark-toverland/troy|Troy columns=park,peak highlight=walibi-holland/untamed
+
+```
 
 Für die Zeit, die du im Phantasialand **einmal** bei
 [Taron](ref:phantasialand/taron) anstehst, fährst du Untamed zweieinhalb Mal.
-Auf Parkebene ergibt sich dasselbe Bild: Phantasialand 32 Minuten im Schnitt,
-Efteling 25, Walibi Holland und [Walibi Belgium](ref:walibi-belgium) je 20, das
-[Toverland](ref:attractiepark-toverland) 15.
+Auf Parkebene ergibt sich dasselbe Bild:
+
+```park-comparison-widget slugs=phantasialand,efteling,walibi-holland,walibi-belgium,attractiepark-toverland highlight=walibi-holland
+
+```
 
 Knapp eine Million Gäste im Jahr verteilen sich hier auf **zehn Achterbahnen**
 und knapp vierzig Attraktionen, auf 40 Hektar. Untamed allein schafft 900
@@ -751,15 +740,9 @@ stärker durchschlagen als die eigenen.
 
 **Nach Wochentag** wird es kurios. Der volle Tag ist nicht der Samstag:
 
-| Tag        | Typisch | Spitze (P90) |
-| ---------- | ------: | -----------: |
-| Donnerstag |  18 Min |       30 Min |
-| Sonntag    |  19 Min |       30 Min |
-| Samstag    |  19 Min |       29 Min |
-| Montag     |  20 Min |       31 Min |
-| Dienstag   |  21 Min |       32 Min |
-| Mittwoch   |  21 Min |       33 Min |
-| Freitag    |  21 Min |       34 Min |
+```stats-widget slug=walibi-holland show=weekdays
+
+```
 
 Zwischen dem leersten und dem vollsten Wochentag liegen drei Minuten. Das
 Wochenende ist hier also kein Sonderfall, und der Grund ist banal: Außerhalb der
@@ -773,10 +756,9 @@ Statt zu raten, hier die ruhigsten kommenden Tage aus unserem Crowd-Kalender:
 
 ```
 
-Und der Andrang über Monate und Wochentage, gerechnet aus den letzten beiden
-Saisons:
+Und der Andrang über die Monate, gerechnet aus den letzten beiden Saisons:
 
-```stats-widget slug=walibi-holland
+```stats-widget slug=walibi-holland show=months
 
 ```
 
@@ -883,9 +865,9 @@ Parks findet seit 2011 Defqon.1 statt, das größte Hardstyle-Festival der Welt.
 ### Wie lang sind die Wartezeiten in Walibi Holland?
 
 Über die letzten beiden Saisons liegt die typische Wartezeit im Parkschnitt bei
-**20 Minuten** (Median), das 90. Perzentil bei 31 Minuten. Untamed kommt auf 20
-Minuten, Goliath auf 18, die Neuheit YOY THRILL mit 27 Minuten auf den höchsten
-Wert im Park. Aktuelle Zahlen stehen auf der
+**20 Minuten** (Median), das 90. Perzentil bei 31 Minuten. Untamed und Goliath
+liegen knapp darunter, die Neuheit YOY THRILL hält mit Abstand den höchsten Wert
+im Park. Aktuelle Zahlen stehen auf der
 [Walibi-Holland-Parkseite](ref:walibi-holland).
 
 ### Wann ist in Walibi Holland am wenigsten los?

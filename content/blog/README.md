@@ -293,6 +293,8 @@ attributes on the info line (`key=value`, `key: value` or `key="value"`).
 | `best-days-widget`       | `slug`                        | Quietest upcoming days (crowd calendar).    |
 | `stats-widget`           | `slug`, `show`                | Typical waits: top rides, months, weekdays. |
 | `park-comparison-widget` | `slugs`, `show`, `highlight`  | Median wait across several parks.           |
+| `ride-waits-widget`      | `park`+`top`, or `rides`      | Wait-time table for rides (see below).      |
+| `hourly-profile-widget`  | `slug`, `top`                 | Queue by hour of the day, ride by ride.     |
 | `map-widget`             | `slug`                        | Interactive park map.                       |
 | `glossary-widget`        | `slug` (a.k.a. `term` / `id`) | Full glossary definition inline.            |
 | `gallery-widget`         | `folder` (or line-based body) | Photo gallery (see below).                  |
@@ -344,19 +346,97 @@ that day's median.
 ````
 
 It is opt-in because a post arguing about queue lengths does not want a weekday column in the
-middle of its table. **Expect the column to be empty for some parks, and do not write around it
-as if it were a gap.** A park gets no day named when its weekdays were measured too unevenly to
-compare (Movie Park closes on many weekdays out of season, so its Mondays carry 13 measured days
-against 22 Sundays), when two days tie for quietest, or when the "quietest" day is not actually
-below the park's own median. The em dash is the honest answer in all three cases — the same
-reason `stats-widget` refuses to draw a chart from a thin sample.
+middle of its table.
+
+**The cell may name two days**, and that is a finding rather than a failure to choose: Disneyland
+Paris measures the same median on Sunday and Wednesday, Heide Park on Sunday and Friday. Do not
+write around it as if one day were meant.
+
+**It may also be empty, and that is not a gap to write around either.** A weekday measured far
+more rarely than the rest is dropped from the comparison — Movie Park closes on many weekdays out
+of season, so its Mondays carry 13 measured days against 22 Sundays, and comparing those two is a
+claim about different parts of the year. If fewer than four evenly-measured weekdays survive, if
+three or more days share the minimum (Disney Adventure World reads 39 minutes on four of them:
+that is a park with no quiet day, not four quiet ones), or if the quietest day is not actually
+below the park's own median, the column shows an em dash — the same reason `stats-widget` refuses
+to draw a chart from a thin sample.
 
 Both this and the best-travel-time hub render the same `ParkComparisonCard`, so a number quoted
 in a post and the one on that page cannot drift apart.
 
-It costs about 3 KB per park (~21 KB for seven), which is why this one is a client fetch while
-an hourly-profile equivalent is not: that would be 8 × 53 KB, 45 % of it `schedule` nobody
-renders. See [API budget per page](../../docs/architecture/api-budget.md).
+It costs about 3 KB per park (~21 KB for seven), which is why this one is a client fetch.
+
+### `ride-waits-widget` — the wait-time table you would otherwise type out
+
+Two shapes, because posts write two. **One park's ranking:**
+
+````md
+```ride-waits-widget park=efteling top=10 columns=land,peak,days highlight=joris-en-de-draak
+
+```
+````
+
+**A hand-picked list, usually across parks:**
+
+````md
+```ride-waits-widget rides=attractiepark-toverland/troy|Troy|Holz;efteling/joris-en-de-draak|Joris en de Draak|Holz columns=park,type,peak highlight=attractiepark-toverland/troy
+
+```
+````
+
+`rides` is **semicolon-separated**, not comma-separated: a build type routinely holds a comma
+("Dive Coaster, Stahl"), and a separator a value can contain is not one. Each entry is
+`parkSlug/rideSlug`, optionally followed by `|Label` and `|Type` — both positional, both optional.
+
+Those two are author-supplied on purpose. A coaster's layout does not change between two page
+loads, so the type is a stable fact that belongs in the post; **the minutes are what drifts, and
+they never appear in the fence.** Use `|Label` for a park that publishes something like
+"WODAN - Timburcoaster", or to keep a parenthetical the comparison rests on ("Troy (GCI, 2007)").
+
+`columns` takes any comma-separated subset of `park`, `land`, `type`, `peak`, `days`; the ride
+name and the median are always there. A column the data cannot fill is not rendered at all — ask
+for `land` at a park whose lands the API does not publish and you get no column rather than a
+header over six dashes.
+
+Two things differ between the modes, and both are deliberate:
+
+- **Order.** `park` mode is ranked by the data, because the ranking IS the claim. `rides` mode
+  keeps the order you wrote, because the sentence under such a table depends on it.
+- **How thin a row may be.** In `rides` mode a ride under 60 measured days shows dashes: that
+  table invites the reader to subtract one number from the other, and the thinner one would carry
+  the argument. In `park` mode there is no extra floor — the API already refuses anything under 20
+  days before ranking it, and the `days` column states each row's basis. That is what lets the
+  Efteling post keep its paragraph about the steam train sitting seventh on a thinner sample.
+
+### `hourly-profile-widget` — when the queue happens, not how long it is
+
+````md
+```hourly-profile-widget slug=europa-park top=8
+
+```
+````
+
+One row per ride, one column per hour the park is open, each ride's own busiest hour in bold.
+Both axes come from the data: a park that opens at 11 starts at 11, and an hour that was only
+measured on a handful of late-summer evenings does not become a column.
+
+It renders **nothing** when the park has too few measured days, or when fewer than three hours
+were measured often enough to be columns — so write the paragraph above it as a complete thought
+rather than a sentence the table has to finish.
+
+### Never type a wait time into a Markdown table
+
+Every widget here exists because that is what these posts used to be. Four of them carried
+twenty-two hand-maintained tables across six languages, and they had already drifted: the Efteling
+post quoted 34 minutes for Joris en de Draak while the park page said 35, and two tables in the
+same Toverland post disagreed with each other by a minute because they were typed a week apart.
+Nothing detects this — a stale number in Markdown looks exactly like a fresh one.
+
+If a sentence next to a widget names a figure the widget also renders, the sentence loses. Write
+the shape instead ("a good half hour", "roughly halves after noon"): that stays true while the
+number moves, which it does, most nights.
+
+See [API budget per page](../../docs/architecture/api-budget.md).
 
 **Attendance figures have no column here on purpose.** They come from the TEA index, are curated
 once a year and are not in our API. A number that changes annually belongs in the prose; a number

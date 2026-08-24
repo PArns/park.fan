@@ -8,7 +8,8 @@ featured: false
 excerpt: >-
   Toverland is a small, enchanted park that half of the Rhineland drives past on
   the way to the Efteling. Yet Sevenum has Troy, a GCI wooden coaster you queue
-  16 minutes for, while the woodie at the destination costs 34. About a park
+  about a quarter of an hour for, while the woodie at the destination costs more
+  than twice that. About a park
   where I once got to play the haunt myself, backstage, and which to this day
   sells no fast pass.
 tags:
@@ -80,7 +81,7 @@ Kaatsheuvel and the [Efteling](ref:efteling), the Disney of the Netherlands.
 
 Seventy kilometres separate the two parks. Both have a wooden coaster from the
 same American manufacturer. For one of them you typically wait 16 minutes, for
-the other 34. The shorter queue belongs to the better ride.
+the other more than twice that. The shorter queue belongs to the better ride.
 
 This is meant to be about the park around it: [Toverland](ref:attractiepark-toverland?long) in
 Sevenum, turning 25 this year, which I consider one of the loveliest small parks
@@ -134,7 +135,7 @@ remember it as "brilliant, but rough": ride it again.
 "Best-kept secret" is easy to put in a headline. Harder to back up. So, the
 numbers.
 
-Across the last two seasons, calculated from 112 operating days with wait-time
+Across the last two seasons, calculated from more than 150 operating days with wait-time
 data, Troy's **typical wait is 16 minutes** (median). Even the 90th percentile,
 the value nine out of ten measurements fall below, only reaches **21 minutes**.
 That is not some dead Tuesday in March, that is the average across every
@@ -144,23 +145,17 @@ Seventy kilometres to the north-west, the [Efteling](ref:efteling) has
 **Joris en de Draak**, also by GCI, three years younger, and a crowd magnet as a
 racing coaster. Same data basis, same method:
 
-| Wooden coaster                                                           | Park                                          | Typical (median) | Peak (P90) |
-| ------------------------------------------------------------------------ | --------------------------------------------- | ---------------: | ---------: |
-| **[Troy](ref:attractiepark-toverland/troy?bare)** (GCI, 2007)            | [Toverland](ref:attractiepark-toverland?bare) |       **16 min** |     21 min |
-| **[Joris en de Draak](ref:efteling/joris-en-de-draak?bare)** (GCI, 2010) | [Efteling](ref:efteling?bare)                 |           34 min |     40 min |
+```ride-waits-widget rides=attractiepark-toverland/troy|Troy (GCI, 2007);efteling/joris-en-de-draak|Joris en de Draak (GCI, 2010) columns=park,peak highlight=attractiepark-toverland/troy
+
+```
 
 More than double, for a ride that hardly any enthusiast ranking puts above Troy.
 Across ride types the picture gets clearer still. What do the big names of the
 region cost you in waiting time, wood or steel?
 
-| Coaster                                                  | Type                | Park                                              | Typical (median) | Peak (P90) |
-| -------------------------------------------------------- | ------------------- | ------------------------------------------------- | ---------------: | ---------: |
-| [Taron](ref:phantasialand/taron?bare)                    | Multi-launch, steel | [Phantasialand](ref:phantasialand?bare)           |           48 min |     54 min |
-| [F.L.Y.](ref:phantasialand/fly?bare)                     | Flying, steel       | [Phantasialand](ref:phantasialand?bare)           |           40 min |     47 min |
-| [Joris en de Draak](ref:efteling/joris-en-de-draak?bare) | Wood                | [Efteling](ref:efteling?bare)                     |           34 min |     40 min |
-| [Baron 1898](ref:efteling/baron-1898?bare)               | Dive coaster, steel | [Efteling](ref:efteling?bare)                     |           26 min |     32 min |
-| **[Troy](ref:attractiepark-toverland/troy?bare)**        | **Wood**            | **[Toverland](ref:attractiepark-toverland?bare)** |       **16 min** | **21 min** |
-| **[Fēnix](ref:attractiepark-toverland/fenix?bare)**      | **Wing, steel**     | **[Toverland](ref:attractiepark-toverland?bare)** |       **16 min** | **20 min** |
+```ride-waits-widget rides=phantasialand/taron|Taron|Multi-launch, steel;phantasialand/fly|F.L.Y.|Flying, steel;efteling/joris-en-de-draak|Joris en de Draak|Wood;efteling/baron-1898|Baron 1898|Dive coaster, steel;attractiepark-toverland/troy|Troy|Wood;attractiepark-toverland/fenix|Fēnix|Wing, steel columns=type,park,peak highlight=attractiepark-toverland/troy
+
+```
 
 Both Toverland rides sit at the bottom, by a margin. In the time it takes you to
 queue **once** for [Taron](ref:phantasialand/taron) at Phantasialand, you ride

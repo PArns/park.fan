@@ -641,7 +641,18 @@
       "comparisonTitle": "En comparación con otros parques",
       "parkAverage": "Media del parque",
       "longestQueue": "Cola más larga",
-      "comparisonPark": "Parque"
+      "comparisonPark": "Parque",
+      "rideWaitsTitle": "Tiempos de espera comparados",
+      "rideWaitsRide": "Atracción",
+      "rideWaitsLand": "Zona",
+      "rideWaitsType": "Tipo",
+      "rideWaitsSampleDays": "Días medidos",
+      "typicalWait": "Típico (mediana)",
+      "peakWait": "Pico (P90)",
+      "hourlyProfileTitle": "Tiempo de espera por hora",
+      "hourlyProfileHour": "Hora",
+      "hourlyProfilePeakNote": "La hora más cargada de cada atracción va en negrita.",
+      "hourlyProfileFootnote": "Espera típica en minutos, de {days} días medidos."
     },
     "bestDays": {
       "title": "Mejor época para visitar {park}",
