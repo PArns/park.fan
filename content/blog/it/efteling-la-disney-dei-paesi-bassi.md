@@ -349,7 +349,7 @@ perderti.
 «Un parco per tutta la famiglia» sta su ogni depliant. Dimostrarlo si può solo con
 le file.
 
-Il nostro storico per Efteling copre **145 giorni di apertura** con dati di attesa,
+Il nostro storico per Efteling copre **più di 150 giorni di apertura** con dati di attesa,
 rilevati tra agosto 2024 e agosto 2026. Su tutti i giorni della settimana
 l'**attesa tipica nella media del parco è di 25 minuti** (mediana), il 90°
 percentile 36.
@@ -764,10 +764,10 @@ pensare.
 
 ### Quanto si aspetta a Efteling?
 
-Su 145 giorni di apertura di due stagioni l'attesa tipica nella media del parco è
+Su più di 150 giorni di apertura di due stagioni l'attesa tipica nella media del parco è
 di **25 minuti** (mediana), il 90° percentile 36. Si aspetta di più a
-[Joris en de Draak](ref:efteling/joris-en-de-draak), 34 minuti, seguita da
-[Danse Macabre](ref:efteling/danse-macabre) con 31. I numeri attuali sono sulla
+[Joris en de Draak](ref:efteling/joris-en-de-draak), una buona mezz’ora, seguita
+da [Danse Macabre](ref:efteling/danse-macabre). I numeri attuali sono sulla
 [pagina del parco Efteling](ref:efteling).
 
 ### Quando c'è meno gente a Efteling?
@@ -877,4 +877,4 @@ aperta. Ringrazia, dal 1959, uno per uno.
 - Niente Halloween: [«Geen Halloween in de Efteling» (ufficiale)](https://www.efteling.com/nl/park/events/halloween) · [la nostra guida di Halloween](/blog/halloween-parchi-divertimenti-2026)
 - Prezzi, parcheggio e abbonamenti annuali 2026: [Panoramica biglietti (ufficiale)](https://www.efteling.com/en/park/information/ticket-overview) · [Prezzi e orari (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/efteling/preise/) · [Confronto abbonamenti annuali (Achterbahnreporter)](https://achterbahnreporter.de/ert/jahreskarten/jahreskarte-efteling/)
 - Villa Pardoes (fondazione, capienza, volontariato, finanziamento): [Wie wij zijn (ufficiale)](https://www.villapardoes.nl/wie-wij-zijn) · [Villa Pardoes su Eftepedia](https://www.eftepedia.nl/lemma/Villa_Pardoes) · [Villa Pardoes su nl.wikipedia](https://nl.wikipedia.org/wiki/Villa_Pardoes) · [Donare](https://www.villapardoes.nl/doneren)
-- Dati di attesa e affluenza: storico proprio di 145 giorni di apertura (agosto 2024 – agosto 2026), [Efteling su park.fan](ref:efteling)
+- Dati di attesa e affluenza: storico proprio di più di 150 giorni di apertura (agosto 2024 – agosto 2026), [Efteling su park.fan](ref:efteling)

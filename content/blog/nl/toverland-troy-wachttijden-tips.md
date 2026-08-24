@@ -8,8 +8,8 @@ featured: false
 excerpt: >-
   Toverland is een klein, betoverd park waar het halve Rijnland langsrijdt op
   weg naar de Efteling. Terwijl in Sevenum met Troy een houten achtbaan van GCI
-  staat waar je 16 minuten voor wacht, en de woodie op de eindbestemming er 34
-  kost. Over een park waar ik ooit backstage zelf de haunt mocht spelen, en dat
+  staat waar je een klein kwartier voor wacht, en de woodie op de eindbestemming
+  ruim het dubbele kost. Over een park waar ik ooit backstage zelf de haunt mocht spelen, en dat
   tot vandaag geen fastpass verkoopt.
 tags:
   - attractiepark-toverland
@@ -81,7 +81,7 @@ tot Kaatsheuvel, naar de [Efteling](ref:efteling), de Disney van Nederland.
 
 Zeventig kilometer scheidt de twee parken. In allebei staat een houten achtbaan
 van dezelfde Amerikaanse fabrikant. Voor de ene wacht je doorgaans 16 minuten,
-voor de andere 34. De kortste rij hoort bij de betere baan.
+voor de andere ruim het dubbele. De kortste rij hoort bij de betere baan.
 
 Hier wil ik het hebben over het park eromheen: [Toverland](ref:attractiepark-toverland?long)
 in Sevenum, dat dit jaar 25 wordt, dat ik een van de mooiste kleine parken van
@@ -135,7 +135,7 @@ geleden reed en haar herinnert als "geweldig, maar ruw": rijd haar nog eens.
 
 "Geheime tip" schrijf je zo in een kop. Bewijzen is lastiger. Dus de cijfers.
 
-Over de laatste twee seizoenen, gerekend uit 112 bedrijfsdagen met
+Over de laatste twee seizoenen, gerekend uit meer dan 150 bedrijfsdagen met
 wachttijdgegevens, ligt Troys **typische wachttijd op 16 minuten** (mediaan).
 Zelfs het 90e percentiel, de waarde waaronder negen van de tien metingen
 liggen, komt maar op **21 minuten**. Dat is niet de dode dinsdag in maart, dat

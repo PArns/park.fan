@@ -453,7 +453,7 @@ decidido en los dos últimos años.
 
 ## Veinte minutos para la mejor atracción del parque
 
-A lo largo de las dos últimas temporadas, calculado a partir de **125 días de
+A lo largo de las dos últimas temporadas, calculado a partir de **más de 130 días de
 apertura con datos de espera utilizables**, la **espera típica en el promedio
 del parque es de 20 minutos** (mediana). El percentil 90, el valor por debajo
 del cual quedan nueve de cada diez mediciones, llega a 31 minutos.
@@ -479,9 +479,11 @@ mismo método de cálculo, dos últimas temporadas:
 
 En el tiempo que pasas **una vez** en la cola de
 [Taron](ref:phantasialand/taron) en Phantasialand, montas Untamed dos veces y
-media. A nivel de parque el cuadro es el mismo: Phantasialand 32 minutos de
-media, Efteling 25, Walibi Holland y [Walibi Belgium](ref:walibi-belgium) 20
-cada uno, [Toverland](ref:attractiepark-toverland) 15.
+media. A nivel de parque el cuadro es el mismo:
+
+```park-comparison-widget slugs=phantasialand,efteling,walibi-holland,walibi-belgium,attractiepark-toverland highlight=walibi-holland
+
+```
 
 Apenas un millón de visitantes al año se reparten aquí entre **diez montañas
 rusas** y casi cuarenta atracciones, en 40 hectáreas. Untamed por sí sola mueve
@@ -857,8 +859,8 @@ celebra desde 2011 el Defqon.1, el mayor festival de hardstyle del mundo.
 ### ¿Cuánto se espera en Walibi Holland?
 
 En las dos últimas temporadas la espera típica en el promedio del parque es de
-**20 minutos** (mediana), con el percentil 90 en 31 minutos. Untamed se queda en
-20 minutos, Goliath en 18, y la novedad YOY THRILL tiene con 27 minutos el valor
+**20 minutos** (mediana), con el percentil 90 en 31 minutos. Untamed y Goliath
+se quedan justo por debajo, y la novedad YOY THRILL tiene con diferencia el valor
 más alto del parque. Las cifras actuales están en la
 [página del parque Walibi Holland](ref:walibi-holland).
 

@@ -465,7 +465,7 @@ letzten zwei Jahren entschieden hat.
 
 ## Zwanzig Minuten für die beste Bahn im Park
 
-Über die letzten beiden Saisons, gerechnet aus **125 Öffnungstagen mit
+Über die letzten beiden Saisons, gerechnet aus **über 130 Öffnungstagen mit
 auswertbaren Wartezeitdaten**, liegt die **typische Wartezeit im Parkschnitt bei
 20 Minuten** (Median). Das 90. Perzentil, also der Wert, unter dem neun von zehn
 Messungen liegen, kommt auf 31 Minuten.
@@ -491,9 +491,11 @@ gleiche Rechenmethode, letzte zwei Saisons:
 
 Für die Zeit, die du im Phantasialand **einmal** bei
 [Taron](ref:phantasialand/taron) anstehst, fährst du Untamed zweieinhalb Mal.
-Auf Parkebene ergibt sich dasselbe Bild: Phantasialand 32 Minuten im Schnitt,
-Efteling 25, Walibi Holland und [Walibi Belgium](ref:walibi-belgium) je 20, das
-[Toverland](ref:attractiepark-toverland) 15.
+Auf Parkebene ergibt sich dasselbe Bild:
+
+```park-comparison-widget slugs=phantasialand,efteling,walibi-holland,walibi-belgium,attractiepark-toverland highlight=walibi-holland
+
+```
 
 Knapp eine Million Gäste im Jahr verteilen sich hier auf **zehn Achterbahnen**
 und knapp vierzig Attraktionen, auf 40 Hektar. Untamed allein schafft 900
@@ -863,9 +865,9 @@ Parks findet seit 2011 Defqon.1 statt, das größte Hardstyle-Festival der Welt.
 ### Wie lang sind die Wartezeiten in Walibi Holland?
 
 Über die letzten beiden Saisons liegt die typische Wartezeit im Parkschnitt bei
-**20 Minuten** (Median), das 90. Perzentil bei 31 Minuten. Untamed kommt auf 20
-Minuten, Goliath auf 18, die Neuheit YOY THRILL mit 27 Minuten auf den höchsten
-Wert im Park. Aktuelle Zahlen stehen auf der
+**20 Minuten** (Median), das 90. Perzentil bei 31 Minuten. Untamed und Goliath
+liegen knapp darunter, die Neuheit YOY THRILL hält mit Abstand den höchsten Wert
+im Park. Aktuelle Zahlen stehen auf der
 [Walibi-Holland-Parkseite](ref:walibi-holland).
 
 ### Wann ist in Walibi Holland am wenigsten los?

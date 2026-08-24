@@ -357,7 +357,7 @@ sans se perdre.
 « Un parc pour toute la famille » figure dans chaque brochure. La seule façon de
 le prouver, ce sont les files.
 
-Notre historique pour Efteling couvre **145 jours d'exploitation** avec des
+Notre historique pour Efteling couvre **plus de 150 jours d'exploitation** avec des
 données d'attente, relevés entre août 2024 et août 2026. Tous jours de la semaine
 confondus, l'**attente typique s'établit à 25 minutes** à l'échelle du parc
 (médiane), le 90e centile à 36.
@@ -783,10 +783,10 @@ du parc, on fait en une journée plus que la fréquentation ne le laisserait pen
 
 ### Quels sont les temps d'attente à Efteling ?
 
-Sur 145 jours d'exploitation issus de deux saisons, l'attente typique à l'échelle du
+Sur plus de 150 jours d'exploitation issus de deux saisons, l'attente typique à l'échelle du
 parc est de **25 minutes** (médiane), le 90e centile de 36. C'est à
-[Joris en de Draak](ref:efteling/joris-en-de-draak) qu'on attend le plus, 34
-minutes, suivie de [Danse Macabre](ref:efteling/danse-macabre) à 31. Les chiffres
+[Joris en de Draak](ref:efteling/joris-en-de-draak) qu'on attend le plus, une
+bonne demi-heure, suivie de [Danse Macabre](ref:efteling/danse-macabre). Les chiffres
 actuels sont sur la [page du parc Efteling](ref:efteling).
 
 ### Quand y a-t-il le moins de monde à Efteling ?
@@ -899,4 +899,4 @@ jaune à la bouche ouverte. Il remercie chacun, un par un, depuis 1959.
 - Pas de Halloween : [« Geen Halloween in de Efteling » (officiel)](https://www.efteling.com/nl/park/events/halloween) · [notre guide Halloween](/blog/halloween-parcs-attractions-2026)
 - Tarifs, parking et pass annuels 2026 : [Aperçu des billets (officiel)](https://www.efteling.com/en/park/information/ticket-overview) · [Tarifs & horaires (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/efteling/preise/) · [Comparatif des pass annuels (Achterbahnreporter)](https://achterbahnreporter.de/ert/jahreskarten/jahreskarte-efteling/)
 - Villa Pardoes (création, capacité, bénévolat, financement) : [Wie wij zijn (officiel)](https://www.villapardoes.nl/wie-wij-zijn) · [Villa Pardoes sur Eftepedia](https://www.eftepedia.nl/lemma/Villa_Pardoes) · [Villa Pardoes sur nl.wikipedia](https://nl.wikipedia.org/wiki/Villa_Pardoes) · [Faire un don](https://www.villapardoes.nl/doneren)
-- Données d'attente et d'affluence : notre propre historique sur 145 jours d'exploitation (août 2024 à août 2026), [Efteling sur park.fan](ref:efteling)
+- Données d'attente et d'affluence : notre propre historique sur plus de 150 jours d'exploitation (août 2024 à août 2026), [Efteling sur park.fan](ref:efteling)

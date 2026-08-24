@@ -340,7 +340,7 @@ take the forest in two portions on two days without getting lost.
 "A park for the whole family" is in every brochure. The only way to back it up is
 with queues.
 
-Our history for Efteling covers **145 operating days** with wait-time data,
+Our history for Efteling covers **more than 150 operating days** with wait-time data,
 recorded between August 2024 and August 2026. Across all days of the week the
 **typical wait averages 25 minutes** park-wide (median), with the 90th percentile
 at 36.
@@ -742,10 +742,10 @@ more in a day than the attendance figure would suggest.
 
 ### How long are the wait times at Efteling?
 
-Across 145 operating days from two seasons the typical park-wide wait is
+Across more than 150 operating days from two seasons the typical park-wide wait is
 **25 minutes** (median), with the 90th percentile at 36. The longest queue is
-[Joris en de Draak](ref:efteling/joris-en-de-draak) at 34 minutes, followed by
-[Danse Macabre](ref:efteling/danse-macabre) at 31. Current numbers are on the
+[Joris en de Draak](ref:efteling/joris-en-de-draak) at a good half hour, followed
+by [Danse Macabre](ref:efteling/danse-macabre). Current numbers are on the
 [Efteling park page](ref:efteling).
 
 ### When is Efteling least busy?
@@ -855,4 +855,4 @@ person since 1959.
 - No Halloween: ["Geen Halloween in de Efteling" (official)](https://www.efteling.com/nl/park/events/halloween) · [our Halloween guide](/blog/halloween-theme-parks-2026)
 - Prices, parking and annual passes 2026: [Ticket overview (official)](https://www.efteling.com/en/park/information/ticket-overview) · [Prices & opening hours (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/efteling/preise/) · [Annual pass comparison (Achterbahnreporter)](https://achterbahnreporter.de/ert/jahreskarten/jahreskarte-efteling/)
 - Villa Pardoes (founding, capacity, volunteers, funding): [Wie wij zijn (official)](https://www.villapardoes.nl/wie-wij-zijn) · [Villa Pardoes on Eftepedia](https://www.eftepedia.nl/lemma/Villa_Pardoes) · [Villa Pardoes on nl.wikipedia](https://nl.wikipedia.org/wiki/Villa_Pardoes) · [Donate](https://www.villapardoes.nl/doneren)
-- Wait time and crowd data: our own history from 145 operating days (August 2024 to August 2026), [Efteling on park.fan](ref:efteling)
+- Wait time and crowd data: our own history from more than 150 operating days (August 2024 to August 2026), [Efteling on park.fan](ref:efteling)

@@ -351,7 +351,7 @@ ohne dich zu verlaufen.
 „Ein Park für die ganze Familie“ steht in jedem Prospekt. Belegen lässt sich das
 nur mit Schlangen.
 
-Unsere Historie für das Efteling umfasst **145 Betriebstage** mit
+Unsere Historie für das Efteling umfasst **über 150 Betriebstage** mit
 Wartezeit-Daten, aufgenommen zwischen August 2024 und August 2026. Über alle
 Wochentage gerechnet liegt die **typische Wartezeit im Parkschnitt bei
 25 Minuten** (Median), das 90. Perzentil bei 36.
@@ -776,10 +776,10 @@ schaffst du an einem Tag mehr, als der Besucherzahl nach zu erwarten wäre.
 
 ### Wie lang sind die Wartezeiten im Efteling?
 
-Über 145 Betriebstage aus zwei Saisons liegt die typische Wartezeit im
+Über zwei Saisons liegt die typische Wartezeit im
 Parkschnitt bei **25 Minuten** (Median), das 90. Perzentil bei 36. Am längsten
-steht man bei [Joris en de Draak](ref:efteling/joris-en-de-draak) mit 34 Minuten,
-gefolgt von [Danse Macabre](ref:efteling/danse-macabre) mit 31. Aktuelle Zahlen
+steht man bei [Joris en de Draak](ref:efteling/joris-en-de-draak) mit gut einer
+halben Stunde, gefolgt von [Danse Macabre](ref:efteling/danse-macabre). Aktuelle Zahlen
 stehen auf der [Efteling-Parkseite](ref:efteling).
 
 ### Wann ist im Efteling am wenigsten los?
@@ -890,4 +890,4 @@ mit dem offenen Mund. Er bedankt sich, seit 1959, bei jedem Einzelnen.
 - Kein Halloween: [„Geen Halloween in de Efteling“ (offiziell)](https://www.efteling.com/nl/park/events/halloween) · [unser Halloween-Guide](/blog/halloween-freizeitparks-2026)
 - Preise, Parken und Jahreskarten 2026: [Ticket-Übersicht (offiziell)](https://www.efteling.com/en/park/information/ticket-overview) · [Preise & Öffnungszeiten (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/efteling/preise/) · [Jahreskarten-Vergleich (Achterbahnreporter)](https://achterbahnreporter.de/ert/jahreskarten/jahreskarte-efteling/)
 - Villa Pardoes (Gründung, Kapazität, Ehrenamt, Finanzierung): [Wie wij zijn (offiziell)](https://www.villapardoes.nl/wie-wij-zijn) · [Villa Pardoes auf Eftepedia](https://www.eftepedia.nl/lemma/Villa_Pardoes) · [Villa Pardoes auf nl.wikipedia](https://nl.wikipedia.org/wiki/Villa_Pardoes) · [Spenden](https://www.villapardoes.nl/doneren)
-- Wartezeit- und Crowd-Daten: eigene Historie aus 145 Betriebstagen (August 2024 bis August 2026), [Efteling auf park.fan](ref:efteling)
+- Wartezeit- und Crowd-Daten: eigene Historie aus über 150 Betriebstagen (August 2024 bis August 2026), [Efteling auf park.fan](ref:efteling)

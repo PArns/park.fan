@@ -441,7 +441,7 @@ past two years.
 
 ## Twenty minutes for the best ride in the park
 
-Across the last two seasons, calculated from **125 operating days with usable
+Across the last two seasons, calculated from **more than 130 operating days with usable
 wait-time data**, the **typical wait across the park sits at 20 minutes**
 (median). The 90th percentile, the value nine out of ten measurements fall
 below, comes to 31 minutes.
@@ -467,9 +467,11 @@ method, last two seasons:
 
 In the time you queue **once** for [Taron](ref:phantasialand/taron) at
 Phantasialand, you ride Untamed two and a half times. At park level the picture
-is the same: Phantasialand 32 minutes on average, Efteling 25, Walibi Holland
-and [Walibi Belgium](ref:walibi-belgium) 20 each,
-[Toverland](ref:attractiepark-toverland) 15.
+is the same:
+
+```park-comparison-widget slugs=phantasialand,efteling,walibi-holland,walibi-belgium,attractiepark-toverland highlight=walibi-holland
+
+```
 
 Just under a million guests a year spread here across **ten coasters** and close
 to forty attractions, over 40 hectares. Untamed alone handles 900 people an
@@ -829,8 +831,9 @@ world, has been held on the park's event site since 2011.
 ### How long are the wait times at Walibi Holland?
 
 Across the last two seasons the typical wait across the park is **20 minutes**
-(median), with the 90th percentile at 31 minutes. Untamed comes to 20 minutes,
-Goliath to 18, and the new YOY THRILL holds the highest value in the park at 27.
+(median), with the 90th percentile at 31 minutes. Untamed and Goliath sit just
+below that, and the new YOY THRILL holds the highest value in the park by a
+clear margin.
 Current numbers are on the
 [Walibi Holland park page](ref:walibi-holland).
 

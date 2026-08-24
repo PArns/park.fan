@@ -8,7 +8,8 @@ featured: false
 excerpt: >-
   Toverland is a small, enchanted park that half of the Rhineland drives past on
   the way to the Efteling. Yet Sevenum has Troy, a GCI wooden coaster you queue
-  16 minutes for, while the woodie at the destination costs 34. About a park
+  about a quarter of an hour for, while the woodie at the destination costs more
+  than twice that. About a park
   where I once got to play the haunt myself, backstage, and which to this day
   sells no fast pass.
 tags:
@@ -80,7 +81,7 @@ Kaatsheuvel and the [Efteling](ref:efteling), the Disney of the Netherlands.
 
 Seventy kilometres separate the two parks. Both have a wooden coaster from the
 same American manufacturer. For one of them you typically wait 16 minutes, for
-the other 34. The shorter queue belongs to the better ride.
+the other more than twice that. The shorter queue belongs to the better ride.
 
 This is meant to be about the park around it: [Toverland](ref:attractiepark-toverland?long) in
 Sevenum, turning 25 this year, which I consider one of the loveliest small parks
@@ -134,7 +135,7 @@ remember it as "brilliant, but rough": ride it again.
 "Best-kept secret" is easy to put in a headline. Harder to back up. So, the
 numbers.
 
-Across the last two seasons, calculated from 112 operating days with wait-time
+Across the last two seasons, calculated from more than 150 operating days with wait-time
 data, Troy's **typical wait is 16 minutes** (median). Even the 90th percentile,
 the value nine out of ten measurements fall below, only reaches **21 minutes**.
 That is not some dead Tuesday in March, that is the average across every

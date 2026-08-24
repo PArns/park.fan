@@ -8,8 +8,8 @@ featured: false
 excerpt: >-
   Das Toverland ist ein verwunschener kleiner Park, an dem halb Köln und
   Düsseldorf auf dem Weg zum Efteling vorbeifahren. Dabei steht in Sevenum mit
-  Troy eine Holzachterbahn von GCI, für die man 16 Minuten ansteht, während der
-  Woodie am Ziel 34 kostet. Über einen Park, in dem ich hinter den Kulissen mal
+  Troy eine Holzachterbahn von GCI, für die man gut ein Viertelstündchen ansteht,
+  während der Woodie am Ziel mehr als das Doppelte kostet. Über einen Park, in dem ich hinter den Kulissen mal
   selbst den Hount spielen durfte, und der bis heute keinen Fast Pass verkauft.
 tags:
   - attractiepark-toverland
@@ -82,7 +82,8 @@ Disney der Niederlande.
 
 Siebzig Kilometer trennen die beiden Parks. In beiden steht eine Holzachterbahn
 vom selben amerikanischen Hersteller. Für die eine wartest du typischerweise
-16 Minuten, für die andere 34. Die kürzere Schlange gehört der besseren Bahn.
+16 Minuten, für die andere mehr als doppelt so lang. Die kürzere Schlange gehört
+der besseren Bahn.
 
 Hier soll es um den Park drumherum gehen: das [Toverland](ref:attractiepark-toverland?long) in
 Sevenum, das dieses Jahr 25 wird, das ich für einen der schönsten kleinen Parks
@@ -138,7 +139,7 @@ nochmal.
 „Geheimtipp“ schreibt sich leicht in eine Überschrift. Belegen lässt er sich
 schwerer. Also die Zahlen.
 
-Über die letzten beiden Saisons, gerechnet aus 112 Betriebstagen mit
+Über die letzten beiden Saisons, gerechnet aus über 150 Betriebstagen mit
 Wartezeit-Daten, liegt Troys **typische Wartezeit bei 16 Minuten** (Median).
 Selbst das 90. Perzentil, also der Wert, unter dem neun von zehn Messungen
 liegen, kommt nur auf **21 Minuten**. Das ist nicht der tote Dienstag im März,

@@ -8,8 +8,8 @@ featured: false
 excerpt: >-
   Toverland es un parque pequeño y encantado por delante del cual pasa media
   Renania camino del Efteling. Y mientras tanto, en Sevenum hay una montaña rusa
-  de madera de GCI por la que esperas 16 minutos, cuando la de madera del
-  destino cuesta 34. Sobre un parque en el que una vez hice yo mismo de espanto
+  de madera de GCI por la que esperas un cuarto de hora largo, cuando la de madera
+  del destino cuesta más del doble. Sobre un parque en el que una vez hice yo mismo de espanto
   entre bastidores, y que a día de hoy no vende ningún pase rápido.
 tags:
   - attractiepark-toverland
@@ -82,7 +82,8 @@ Países Bajos.
 
 Setenta kilómetros separan los dos parques. En ambos hay una montaña rusa de
 madera del mismo fabricante estadounidense. Por una esperas normalmente
-16 minutos, por la otra 34. La cola más corta le pertenece a la mejor atracción.
+16 minutos, por la otra más del doble. La cola más corta le pertenece a la mejor
+atracción.
 
 Aquí quiero hablar del parque que la rodea: el [Toverland](ref:attractiepark-toverland?long)
 de Sevenum, que este año cumple 25, que considero uno de los parques pequeños
@@ -138,7 +139,7 @@ brusca»: vuelve a montar.
 «Secreto mejor guardado» se escribe rápido en un titular. Demostrarlo cuesta
 más. Así que, los números.
 
-A lo largo de las dos últimas temporadas, calculado sobre 112 días de
+A lo largo de las dos últimas temporadas, calculado sobre más de 150 días de
 funcionamiento con datos de espera, el **tiempo de espera típico de Troy es de
 16 minutos** (mediana). Incluso el percentil 90, el valor por debajo del cual
 quedan nueve de cada diez mediciones, se queda en **21 minutos**. Eso no es el

@@ -8,8 +8,8 @@ featured: false
 excerpt: >-
   Toverland è un piccolo parco incantato davanti al quale mezza Renania passa
   dritta, diretta all'Efteling. Eppure a Sevenum c'è Troy, un coaster in legno
-  firmato GCI per cui si aspettano 16 minuti, mentre quello in legno a
-  destinazione ne costa 34. Storia di un parco in cui una volta ho fatto io
+  firmato GCI per cui si aspetta un quarto d’ora scarso, mentre quello in legno a
+  destinazione ne costa più del doppio. Storia di un parco in cui una volta ho fatto io
   stesso lo spavento dietro le quinte, e che a oggi non vende nessun pass
   salta-fila.
 tags:
@@ -83,7 +83,7 @@ Paesi Bassi.
 
 Settanta chilometri separano i due parchi. In entrambi c'è un coaster in legno
 dello stesso costruttore americano. Per uno aspetti di solito 16 minuti, per
-l'altro 34. La fila più corta appartiene all'attrazione migliore.
+l'altro più del doppio. La fila più corta appartiene all'attrazione migliore.
 
 Qui voglio parlare del parco che ci sta intorno: il
 [Toverland](ref:attractiepark-toverland?long) di Sevenum, che quest'anno compie 25 anni, che
@@ -138,7 +138,7 @@ anni fa e la ricorda come «fantastica, ma ruvida»: rifalla.
 «Segreto meglio custodito» si scrive in fretta in un titolo. Dimostrarlo è più
 complicato. Quindi, i numeri.
 
-Nelle ultime due stagioni, calcolato su 112 giorni di apertura con dati di
+Nelle ultime due stagioni, calcolato su più di 150 giorni di apertura con dati di
 attesa, il **tempo di attesa tipico di Troy è di 16 minuti** (mediana). Persino
 il 90° percentile, il valore sotto cui cadono nove misurazioni su dieci, arriva
 solo a **21 minuti**. Non è il martedì morto di marzo, è la media su tutti i
