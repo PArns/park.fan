@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from '@/i18n/navigation';
+import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { MLStatsSection } from '@/components/home/ml-stats-section';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
@@ -388,8 +389,9 @@ export function ContentFR() {
           ]}
         />
         <P>
-          Comment tout cela s’articule dans un parc, le <Link href="/howto">guide complet</Link> le
-          détaille pas à pas — calendrier d’affluence, badges et temps d’attente en direct compris.
+          Comment tout cela s’articule dans un parc, le{' '}
+          <Link href={`/${HOWTO_SEGMENTS.fr}`}>guide complet</Link> le détaille pas à pas —
+          calendrier d’affluence, badges et temps d’attente en direct compris.
         </P>
       </SectionShell>
 

@@ -7,6 +7,7 @@ import { BuildInfo } from '@/components/common/build-info';
 import { PreferredSourceButton } from '@/components/common/preferred-source-button';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
+import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { getCurrentYear } from '@/lib/utils/server-time';
 import type { Locale } from '@/i18n/config';
 
@@ -20,6 +21,7 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
   const t = await getTranslations({ locale, namespace: 'footer' });
   const glossaryPath = '/' + GLOSSARY_SEGMENTS[locale as Locale];
   const bestTimePath = '/' + BEST_TIME_SEGMENTS[locale as Locale];
+  const howtoPath = '/' + HOWTO_SEGMENTS[locale as Locale];
   const tGeo = await getTranslations({ locale, namespace: 'geo' });
   const currentYear = await getCurrentYear();
 
@@ -391,7 +393,7 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
             </Link>
             <span className="text-muted-foreground/60 flex items-center">•</span>
             <Link
-              href="/howto"
+              href={howtoPath}
               prefetch={false}
               className="hover:text-foreground text-sm transition-colors"
               aria-label={t('howto')}

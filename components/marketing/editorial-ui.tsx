@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import { Link } from '@/i18n/navigation';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
@@ -153,6 +154,38 @@ export function PG({ children }: { children: string }) {
     <p className="text-muted-foreground max-w-3xl leading-relaxed">
       <GlossaryInject>{children}</GlossaryInject>
     </p>
+  );
+}
+
+/**
+ * An inline link inside editorial prose.
+ *
+ * The site sets no global `a` style, so a bare `<Link>` in a `<P>` inherits the
+ * muted body colour and is invisible as a link — which is what every inline
+ * cross-reference on these pages looked like. Kept here rather than repeated
+ * per content file so the six translations of a page cannot drift apart on it.
+ */
+export function A({
+  href,
+  children,
+  className,
+}: {
+  href: string;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <Link
+      href={href}
+      prefetch={false}
+      className={cn(
+        'text-primary decoration-primary/40 font-medium underline underline-offset-2',
+        'hover:decoration-primary transition-colors',
+        className
+      )}
+    >
+      {children}
+    </Link>
   );
 }
 

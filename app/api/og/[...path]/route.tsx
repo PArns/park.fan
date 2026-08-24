@@ -144,7 +144,10 @@ export async function GET(
       impressum: { namespace: 'impressum', key: 'title' },
       imprint: { namespace: 'impressum', key: 'title' },
       parks: { namespace: 'explore', key: 'parksTitle' },
+      // Both segments: the guide moved from /howto to /how-park-fan-works, and an
+      // OG URL that was already shared or cached must keep rendering a card.
       howto: { namespace: 'howto', key: 'title' },
+      'how-park-fan-works': { namespace: 'howto', key: 'title' },
       fancast: { namespace: 'fancast', key: 'title' },
       'best-time-to-visit': { namespace: 'bestTime', key: 'title' },
       ...glossaryEntries,

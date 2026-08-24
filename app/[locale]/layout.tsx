@@ -33,6 +33,7 @@ import {
 } from '@/components/seo/structured-data';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
+import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { translateContinent } from '@/lib/i18n/helpers';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { Geist } from 'next/font/google';
@@ -157,7 +158,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     ...(showBlog ? [{ name: tNav('blog'), path: '/blog' }] : []),
     { name: tNav('bestTime'), path: `/${BEST_TIME_SEGMENTS[locale as Locale]}` },
     { name: tNav('glossary'), path: `/${GLOSSARY_SEGMENTS[locale as Locale]}` },
-    { name: tNav('howto'), path: '/howto' },
+    { name: tNav('howto'), path: `/${HOWTO_SEGMENTS[locale as Locale]}` },
     ...geoMenu.map((continent) => ({
       name: translateContinent(tGeo, continent.slug, locale, continent.name),
       path: `/parks/${continent.slug}`,

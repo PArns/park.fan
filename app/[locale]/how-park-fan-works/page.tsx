@@ -1,19 +1,17 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import {
-  locales,
-  generateAlternateLanguages,
-  localeToOpenGraphLocale,
-  SITE_URL,
-} from '@/i18n/config';
+import { locales, localeToOpenGraphLocale, SITE_URL } from '@/i18n/config';
 import { routing, type Locale } from '@/i18n/routing';
 import type { Metadata } from 'next';
 import { getOgImageUrl } from '@/lib/utils/og-image';
-import { ArticleStructuredData } from '@/components/seo/structured-data';
+import { getParkBackgroundImage } from '@/lib/utils/park-assets';
+import { ArticleStructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { Hero } from '@/components/marketing/editorial-ui';
+import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import type { ComponentType } from 'react';
 import { RouteMessages } from '@/i18n/route-messages';
 
-// Lazy per-locale loaders so only the requested language's ~1000-line content
-// module is evaluated per render instead of all six.
+// Lazy per-locale loaders so only the requested language's content module is
+// evaluated per render instead of all six.
 const CONTENT_LOADERS: Record<Locale, () => Promise<ComponentType>> = {
   de: () => import('./content/de').then((m) => m.ContentDE),
   en: () => import('./content/en').then((m) => m.ContentEN),
@@ -23,11 +21,47 @@ const CONTENT_LOADERS: Record<Locale, () => Promise<ComponentType>> = {
   nl: () => import('./content/nl').then((m) => m.ContentNL),
 };
 
-const PAGE_HEADERS: Record<Locale, { title: string; intro: string }> = {
+/**
+ * Locales whose content module has been rewritten as the editorial guide: it
+ * brings its own numbered sections and lives under a full-bleed hero.
+ *
+ * The rest still carry the previous feature manual, which renders inside a
+ * plain container under an `<h1>`. Both shapes are served here rather than one
+ * being held back, because the two things are independent: the URL and the
+ * routing moved for every language at once (a slug change is a one-shot 301
+ * campaign, not something to do six times), while the prose is translated as it
+ * is written. Delete this set — and the `legacy` branch below — once the last
+ * locale is across.
+ */
+const EDITORIAL_LOCALES = new Set<Locale>(['de']);
+
+interface PageHeader {
+  title: string;
+  /** Meta/structured-data description. Longer than the tagline. */
+  intro: string;
+  /** Editorial locales only. */
+  kicker?: string;
+  tagline?: string;
+  scrollLabel?: string;
+  heroAlt?: string;
+  stats?: Array<{ value: string; label: string }>;
+}
+
+const PAGE_HEADERS: Record<Locale, PageHeader> = {
   de: {
-    title: 'Wie funktioniert park.fan?',
+    title: 'So funktioniert park.fan',
     intro:
-      'Die vollständige Anleitung für Freizeitpark-Besucher – von der Suche über den Crowd-Kalender bis zu allen Badges und KI-Prognosen.',
+      '70 Minuten bei Taron: viel oder normal? Diese Anleitung zeigt an echten Beispielen, wie du eine Wartezeit einordnest, wann eine Bahn ihren ruhigsten Moment hat und woher die Zahlen kommen.',
+    kicker: 'park.fan · Die Anleitung',
+    tagline:
+      '70 Minuten bei Taron. Viel? Normal? Eine Zahl allein beantwortet das nicht. Diese Seite zeigt, was park.fan daraus macht, und woher es das weiß.',
+    scrollLabel: 'Scrollen',
+    heroAlt: 'Phantasialand am Abend',
+    stats: [
+      { value: '212', label: 'Parks' },
+      { value: '7.156', label: 'Attraktionen' },
+      { value: 'alle 5 Min.', label: 'neue Messwerte' },
+    ],
   },
   en: {
     title: 'How does park.fan work?',
@@ -56,6 +90,12 @@ const PAGE_HEADERS: Record<Locale, { title: string; intro: string }> = {
   },
 };
 
+/**
+ * Establishing shot for the hero. Asked of the media database by role rather
+ * than named by path, so the park can change which photo that is.
+ */
+const HERO_IMAGE = getParkBackgroundImage('phantasialand') ?? '/media/phantasialand/background.jpg';
+
 interface HowtoPageProps {
   params: Promise<{ locale: string }>;
 }
@@ -64,20 +104,24 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
+function urlFor(locale: Locale) {
+  return `${SITE_URL}/${locale}/${HOWTO_SEGMENTS[locale]}`;
+}
+
 const KEYWORDS: Record<Locale, string[]> = {
   de: [
+    'Wartezeiten verstehen',
     'Freizeitpark Wartezeiten',
+    'ist die Wartezeit normal',
+    'Taron Wartezeit',
     'Freizeitpark App',
     'park.fan Anleitung',
     'Crowd-Kalender',
     'Besucherprognose',
-    'Warteschlangen',
-    'Disney Wartezeiten',
-    'Europa-Park Wartezeiten',
+    'Rope Drop',
+    'beste Uhrzeit Freizeitpark',
     'Phantasialand Wartezeiten',
-    'Heide Park Wartezeiten',
-    'Efteling Wartezeiten',
-    'Freizeitpark planen',
+    'Europa-Park Wartezeiten',
   ],
   es: [
     'tiempos de espera parque temático',
@@ -141,9 +185,11 @@ const KEYWORDS: Record<Locale, string[]> = {
 export async function generateMetadata({ params }: HowtoPageProps): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'howto' });
-  const ogImageUrl = getOgImageUrl([locale, 'howto']);
+  // Locale-stable OG path: one `genericPages` key covers all six languages.
+  const ogImageUrl = getOgImageUrl([locale, HOWTO_SEGMENTS.en]);
 
   const fullTitle = `${t('title')} | park.fan`;
+  const url = urlFor(locale as Locale);
 
   return {
     title: { absolute: fullTitle },
@@ -153,7 +199,7 @@ export async function generateMetadata({ params }: HowtoPageProps): Promise<Meta
       description: t('description'),
       locale: localeToOpenGraphLocale[locale as keyof typeof localeToOpenGraphLocale],
       alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
-      url: `${SITE_URL}/${locale}/howto`,
+      url,
       siteName: 'park.fan',
       type: 'article',
       images: [
@@ -172,10 +218,13 @@ export async function generateMetadata({ params }: HowtoPageProps): Promise<Meta
       images: [ogImageUrl],
     },
     alternates: {
-      canonical: `${SITE_URL}/${locale}/howto`,
+      canonical: url,
       languages: {
-        ...generateAlternateLanguages((l) => `/${l}/howto`),
-        'x-default': `${SITE_URL}/en/howto`,
+        // Built from `urlFor`, the same function the canonical uses, so the two
+        // can never disagree — and so the locale prefix cannot go missing, which
+        // is exactly what a hand-written path template did here once.
+        ...Object.fromEntries(locales.map((l) => [l, urlFor(l)])),
+        'x-default': urlFor('en'),
       },
     },
     robots: {
@@ -201,25 +250,66 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
 
   setRequestLocale(locale);
 
-  const Content = await CONTENT_LOADERS[locale as Locale]();
-  const { title, intro } = PAGE_HEADERS[locale as Locale];
+  const typedLocale = locale as Locale;
+  const Content = await CONTENT_LOADERS[typedLocale]();
+  const header = PAGE_HEADERS[typedLocale];
+  const url = urlFor(typedLocale);
+  const t = await getTranslations({ locale, namespace: 'common' });
+
+  const seo = (
+    <>
+      <ArticleStructuredData
+        title={header.title}
+        description={header.intro}
+        url={url}
+        locale={locale}
+        image={getOgImageUrl([locale, HOWTO_SEGMENTS.en])}
+      />
+      <BreadcrumbStructuredData
+        breadcrumbs={[
+          { name: t('home'), url: '/' },
+          { name: header.title, url: `/${HOWTO_SEGMENTS[typedLocale]}` },
+        ]}
+        locale={locale}
+      />
+    </>
+  );
+
+  if (!EDITORIAL_LOCALES.has(typedLocale)) {
+    return (
+      <RouteMessages route="/how-park-fan-works">
+        <div className="container mx-auto px-4 py-12">
+          {seo}
+          <div>
+            <h1 className="mb-2 text-2xl font-bold sm:text-4xl">{header.title}</h1>
+            <p className="text-muted-foreground mb-10 text-lg">{header.intro}</p>
+            <Content />
+          </div>
+        </div>
+      </RouteMessages>
+    );
+  }
 
   return (
-    <RouteMessages route="/howto">
-      <div className="container mx-auto px-4 py-12">
-        <ArticleStructuredData
-          title={title}
-          description={intro}
-          url={`${SITE_URL}/${locale}/howto`}
-          locale={locale}
-          image={getOgImageUrl([locale, 'howto'])}
+    <RouteMessages route="/how-park-fan-works">
+      <>
+        {seo}
+
+        <Hero
+          kicker={header.kicker!}
+          title={header.title}
+          tagline={header.tagline!}
+          imageSrc={HERO_IMAGE}
+          imageAlt={header.heroAlt!}
+          stats={header.stats!}
+          scrollLabel={header.scrollLabel!}
+          titleClassName="max-w-4xl text-4xl font-black tracking-tight sm:text-6xl"
         />
-        <div>
-          <h1 className="mb-2 text-2xl font-bold sm:text-4xl">{title}</h1>
-          <p className="text-muted-foreground mb-10 text-lg">{intro}</p>
+
+        <div id="start" className="space-y-16 py-14 sm:space-y-24 sm:py-20">
           <Content />
         </div>
-      </div>
+      </>
     </RouteMessages>
   );
 }

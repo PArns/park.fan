@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import { Link } from '@/i18n/navigation';
+import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { MLStatsSection } from '@/components/home/ml-stats-section';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
@@ -389,8 +390,8 @@ export function ContentDE() {
         />
         <P>
           Wie das alles im Park zusammenspielt, erklärt die{' '}
-          <Link href="/howto">vollständige Anleitung</Link> Schritt für Schritt — inklusive
-          Crowd-Kalender, Badges und Live-Wartezeiten.
+          <Link href={`/${HOWTO_SEGMENTS.de}`}>vollständige Anleitung</Link> Schritt für Schritt —
+          inklusive Crowd-Kalender, Badges und Live-Wartezeiten.
         </P>
       </SectionShell>
 

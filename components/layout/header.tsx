@@ -5,6 +5,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
+import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import type { Locale } from '@/i18n/config';
 import { Menu, MapPin, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -56,6 +57,7 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
   // The header has always KNOWN this route — `isBestTime` below uses it to float the bar over
   // the hub's hero — and never linked it. Same localized segment, now also a destination.
   const bestTimePath = '/' + BEST_TIME_SEGMENTS[locale as Locale];
+  const howtoPath = '/' + HOWTO_SEGMENTS[locale as Locale];
   const pathname = usePathname();
   const { data: nearbyData } = useHomeNearbyParks();
   const parks =
@@ -68,6 +70,8 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
   // The hub uses localized slugs (usePathname is locale-stripped but keeps the
   // localized segment), so match against all of them.
   const isBestTime = Object.values(BEST_TIME_SEGMENTS).some((s) => pathname === '/' + s);
+  // Same for the guide, which also opens on a full-bleed hero.
+  const isHowto = Object.values(HOWTO_SEGMENTS).some((s) => pathname === '/' + s);
   // The blog index (not its sub-pages) opens with the same full-bleed hero.
   const isBlogIndex = pathname === '/blog';
   // Blog articles open with a full-bleed cover banner (always dark: a cover
@@ -83,7 +87,7 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
   // the photo in its natural colours (no dark wash) with a frosted glass panel for
   // the text — like the park pages — so the floating logo follows the theme rather
   // than being forced light (`darkHero` stays off).
-  const isHeroPage = isHomePage || isFancast || isBestTime || isBlogIndex || isBlogPost;
+  const isHeroPage = isHomePage || isFancast || isBestTime || isHowto || isBlogIndex || isBlogPost;
   const darkHero = false;
   const [scrolled, setScrolled] = useState(false);
   const rafRef = useRef<number | null>(null);
@@ -335,7 +339,7 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
             {t('glossary')}
           </Link>
           <Link
-            href="/howto"
+            href={howtoPath}
             prefetch={false}
             className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
             tabIndex={isTransparent ? -1 : 0}
@@ -485,7 +489,7 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
                     {t('glossary')}
                   </Link>
                   <Link
-                    href="/howto"
+                    href={howtoPath}
                     prefetch={false}
                     className="hover:text-primary text-lg font-medium transition-colors"
                   >
