@@ -27,6 +27,22 @@ const HEAD_CELL = 'px-2 py-1.5 text-xs font-medium text-muted-foreground/70';
 const VALUE_CELL = 'px-2 py-1.5 text-right text-sm tabular-nums whitespace-nowrap';
 
 /**
+ * The park name is never the cell that gives way.
+ *
+ * `table-layout: auto` hands space to the widest unbreakable content, and the longest-queue cell
+ * holds things like "34 Min. · Voltron Nevera powered by Rimac" — 39 unbreakable characters. With
+ * `max-w-0` on the park column it was the park column that collapsed instead, so the six featured
+ * parks on the best-time hub read "Europa-P…", "Phantasia…", "Disneylan…". The name is the row's
+ * subject and its identity; a ride name is a detail of one column, so the shrinking belongs there.
+ *
+ * `max-w-0 w-full` (below) is what makes the longest-queue cell the flexible one: `w-full` asks
+ * for everything left over, `max-w-0` lets it give all of it back, and the `truncate` inside then
+ * has a box narrow enough to act on. Without the `max-w-0` the ride name never truncates at all —
+ * it just widens the table until the page scrolls sideways.
+ */
+const PARK_CELL = 'px-2 py-1.5 text-sm whitespace-nowrap';
+
+/**
  * Cross-park median comparison, fetched live instead of typed into the post by hand.
  *
  * Rows arrive in the order the post lists them and are NOT re-sorted: the argument a post builds
@@ -75,12 +91,12 @@ export function ParkComparisonCard({
         <tbody>
           {rows.map((row) => (
             <tr key={row.slug} className="hover:bg-primary/5 transition-colors">
-              <td className="max-w-0 px-2 py-1.5 text-sm">
+              <td className={PARK_CELL}>
                 <Link
                   href={row.href}
                   prefetch={false}
                   className={cn(
-                    'hover:text-primary block truncate transition-colors',
+                    'hover:text-primary transition-colors',
                     row.highlight ? 'text-foreground font-semibold' : 'font-medium'
                   )}
                 >
@@ -103,30 +119,43 @@ export function ParkComparisonCard({
                   </>
                 )}
               </td>
-              <td className={cn(VALUE_CELL, 'text-muted-foreground/70 hidden sm:table-cell')}>
+              <td
+                className={cn(
+                  VALUE_CELL,
+                  'text-muted-foreground/70 hidden w-full max-w-0 sm:table-cell'
+                )}
+              >
                 {isPending && row.longestP50 == null ? (
                   <Skeleton className="ml-auto h-4 w-28" />
                 ) : row.longestP50 == null ? (
                   <span className="text-muted-foreground/40">–</span>
                 ) : (
-                  <>
-                    {row.longestP50} {labelMinutes}
-                    <span className="text-muted-foreground/50"> · {row.longestName}</span>
-                  </>
+                  // The minutes never shrink and the ride name always may: "34 Min." is the
+                  // number the column is named after, the ride is which queue it was.
+                  <span className="flex items-baseline justify-end gap-1">
+                    <span className="shrink-0">
+                      {row.longestP50} {labelMinutes}
+                    </span>
+                    <span className="text-muted-foreground/50 truncate">· {row.longestName}</span>
+                  </span>
                 )}
               </td>
               {showQuietest && (
                 <td className={cn(VALUE_CELL, 'text-foreground/70')}>
                   {isPending && row.quietestP50 == null ? (
                     <Skeleton className="ml-auto h-4 w-20" />
-                  ) : row.quietestDay == null || row.quietestP50 == null ? (
-                    /* Not "no data" but "the data does not support naming a day" — an unevenly
-                       measured week, a tie, or a flat one. The em dash says so without a footnote. */
+                  ) : row.quietestDays.length === 0 || row.quietestP50 == null ? (
+                    /* Not "no data" but "the data does not support naming a day" — too few evenly
+                       measured weekdays, or a week flat enough that three of them share its
+                       minimum. The em dash says so without a footnote. */
                     <span className="text-muted-foreground/40">–</span>
                   ) : (
                     <>
+                      {/* Two days at the same minute is a finding, not a failure to choose — the
+                          list is joined rather than resolved to one. `·` already separates the day
+                          from the wait, so the days join on a comma. */}
                       <span className="text-status-operating">
-                        {weekdayNames![row.quietestDay]}
+                        {row.quietestDays.map((d) => weekdayNames![d]).join(', ')}
                       </span>
                       <span className="text-muted-foreground/50">
                         {' '}
