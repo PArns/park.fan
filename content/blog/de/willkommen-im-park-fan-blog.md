@@ -292,7 +292,7 @@ Minuten“, dreimal dieselbe Zahl, dreimal eine völlig andere Geschichte:
   Jahr nach Eröffnung? Entweder Sahnetag, oder die Massen haben sich endlich
   verlaufen.
 
-![Voltron Nevera im Überschlag über einer angestrahlten Fassade bei Nacht | Voltron Nevera im Europa-Park. Typisch sind hier rund 45 Minuten, an Spitzentagen 70 und mehr. | right](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
+![Voltron Nevera im Überschlag über einer angestrahlten Fassade bei Nacht | Voltron Nevera im Europa-Park. Typisch ist hier eine gute halbe Stunde, an Spitzentagen ein Vielfaches davon. | right](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 Die Zahl steht im Diagramm. Die Geschichte dahinter steht ab jetzt hier, in
 drei Formaten.

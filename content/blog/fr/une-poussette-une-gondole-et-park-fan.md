@@ -303,7 +303,7 @@ différentes.
   après l'ouverture ? Soit une journée de rêve, soit les foules se sont enfin
   dispersées.
 
-![Voltron Nevera à l’envers au-dessus d’une façade illuminée, de nuit | Voltron Nevera à l'Europa-Park. La norme tourne ici autour de 45 minutes, 70 et plus les jours de pointe. | right](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
+![Voltron Nevera à l’envers au-dessus d’une façade illuminée, de nuit | Voltron Nevera à l'Europa-Park. La norme tourne ici autour d'une bonne demi-heure, plusieurs fois plus les jours de pointe. | right](/media/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 Le chiffre est dans le graphique. L'histoire derrière se trouve désormais ici,
 sous trois formes.
