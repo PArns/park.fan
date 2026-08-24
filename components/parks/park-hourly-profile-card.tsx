@@ -1,5 +1,6 @@
 'use client';
 
+import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import Link from 'next/link';
 import { Clock } from 'lucide-react';
 import { GlassCard } from '@/components/common/glass-card';
@@ -146,7 +147,10 @@ export function ParkHourlyProfileCard({
                   </Link>
                 </th>
                 {data.hours.map((h, i) => {
-                  const value = ride.p50[i];
+                  // Displayed in five-minute steps whatever the payload says:
+                  // an older API build hands back interpolated percentiles.
+                  const raw = ride.p50[i];
+                  const value = raw == null ? null : roundWaitTo5(raw);
                   const isPeak = ride.peakHour === h;
                   return (
                     <td

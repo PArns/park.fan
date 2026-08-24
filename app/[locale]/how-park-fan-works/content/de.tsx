@@ -40,7 +40,8 @@ import {
   BareNumberVsCard,
   CalendarDaysDemo,
   DemoFrame,
-  HourlyShapeDemo,
+  LiveHourlyProfile,
+  LiveTopAttractions,
   NoWaitTimesDemo,
   OffSeasonDemo,
   RopeDropDemo,
@@ -49,10 +50,9 @@ import {
 } from '../_demos';
 import { WaitScaleBar, WaitScaleStage, type WaitScaleStep } from '../_wait-scale';
 import { NightShift, type NightShiftJob } from '../_night-shift';
-import { Ambience, ClosingBand } from '../_chrome';
+import { Ambience, ClosingBand, ParkAnatomy, type AnatomyStep } from '../_chrome';
 import { ChapterRail, type Chapter } from '../_chapter-rail';
 import {
-  HOURLY_SAMPLE_DAYS,
   TARON_BASELINE,
   TARON_RECORD,
   TARON_WAIT_NOW,
@@ -117,6 +117,73 @@ const SCALE_STEPS: WaitScaleStep[] = [
   { id: 'monday', label: 'Montag', typical: 55, busy: 65, sampleDays: 19 },
   { id: 'saturday', label: 'Samstag', typical: 70, busy: 85, sampleDays: 20 },
   { id: 'weekday', label: 'Unter der Woche', typical: 60, busy: 80, sampleDays: 97 },
+];
+
+/**
+ * Die Abschnitte einer Parkseite in genau der Reihenfolge, in der sie rendern
+ * (`app/[locale]/parks/.../page.tsx`). Wer hier etwas umstellt, stellt es dort
+ * auch um, sonst beschreibt die Anleitung eine Seite, die es nicht gibt.
+ */
+const PARK_SECTIONS: AnatomyStep[] = [
+  {
+    title: 'Kopfbereich',
+    body: 'Name, Ort, Entfernung von dir aus, dazu Status, heutige Öffnungszeiten, die Auslastung von jetzt und der Zähler „x von y geöffnet". Die eine Zeile, die die meisten Besuche beantwortet.',
+  },
+  {
+    title: 'Ferien im Einzugsgebiet',
+    body: 'Welche Schulferien heute auf diesen Park wirken, mit der Region dazu. Auch die von jenseits der Grenze.',
+    onlyWhen: 'heute überhaupt eine Ferienregion hineinspielt.',
+  },
+  {
+    title: 'Unwetterwarnung',
+    body: 'Amtliche Warnungen von DWD und MeteoAlarm, unverändert übernommen. Kein eigenes Urteil über das Wetter.',
+    onlyWhen: 'eine Warnung für den Standort aktiv ist.',
+  },
+  {
+    title: 'Regenradar',
+    body: 'Die nächsten Stunden in Viertelstundenschritten. Sagt, ob der Schauer in zwanzig Minuten durch ist oder ob es der Nachmittag bleibt.',
+    onlyWhen: 'Niederschlag in Reichweite ist.',
+  },
+  {
+    title: 'Wetterkarte',
+    body: 'Jetzt-Wert, Tagesverlauf und Vorhersage. Die Stundenachse ist um die Öffnungszeiten gebaut: die Stunden, in denen der Park auf hat, bekommen vier Mal so viel Platz wie die davor und danach.',
+  },
+  {
+    title: 'Skip-the-line-Preise',
+    body: 'Tagespreise für kostenpflichtige Warteschlangen, inklusive ausverkauft.',
+    onlyWhen: 'der Park sie im Kalender veröffentlicht. Bisher nur die Disney-Parks in den USA.',
+  },
+  {
+    title: 'Attraktionen',
+    body: 'Der erste Reiter, mit der Zahl der Bahnen im Titel. Karten wie in Kapitel 01, sortier- und durchsuchbar, gruppiert nach Bereichen. Oben die Rope-Drop-Übersicht des Parks, nach gesparten Minuten sortiert.',
+  },
+  {
+    title: 'Kalender und Karte',
+    body: 'Zwei feste Reiter daneben: die Tagesprognosen aus Kapitel 04 und eine Karte mit den Bahnen als Marker.',
+  },
+  {
+    title: 'Shows und Restaurants',
+    body: 'Showzeiten für den ganzen Tag, Gastronomie mit Öffnungszeiten.',
+    onlyWhen: 'der Park welche liefert. Sonst fehlt der Reiter ganz.',
+  },
+  {
+    title: 'Beste Tage',
+    body: 'Die ruhigsten Termine der nächsten drei Monate, plus der ruhigste Wochentag des Parks.',
+    onlyWhen: 'der Park einen Betriebskalender veröffentlicht.',
+  },
+  {
+    title: 'Parks in der Nähe',
+    body: 'Was sonst noch in Reichweite liegt, mit Entfernung und aktuellem Status.',
+    onlyWhen: 'es Nachbarn gibt. Bei etwa der Hälfte der 212 Parks nicht.',
+  },
+  {
+    title: 'Statistik',
+    body: 'Die längsten Schlangen des Parks mit typischem und vollem Wert, dazu die Verteilung über Monate und Wochentage. Hier steht die Zahl der Messtage als eigene Spalte.',
+  },
+  {
+    title: 'Saison, Infos, Fragen',
+    body: 'Saisonzeiten und angekündigte Events, Adresse und Zeitzone, und die häufigen Fragen zu genau diesem Park.',
+  },
 ];
 
 const NIGHT_JOBS: NightShiftJob[] = [
@@ -375,29 +442,45 @@ export function ContentDE() {
             </WaitScaleStage>
           </div>
 
-          <div className="max-w-3xl space-y-4 pt-6">
-            <P>
-              Auf der Seite der Bahn steht dieselbe Verteilung als Balken, Wochentag für Wochentag.
-              Über jedem Balken die Voll-Marke, im hellen Teil darunter der typische Wert, und
-              rechts unten der Rekord mit Datum. Ein Wochentag ohne Grundlage bekommt keinen
-              geschätzten Balken, sondern gar keinen.
-            </P>
-            <P>
-              Wie belastbar das ist, hängt an der Zahl der Messtage: {TARON_WEEKDAY_DAYS} unter der
-              Woche und {TARON_WEEKEND_DAYS} am Wochenende sind hier zusammengekommen. Auf der
-              Parkseite steht diese Zahl als eigene Spalte neben jeder Bahn, und in den Tabellen im
-              Blog ebenfalls.
-            </P>
+          {/* Card left, prose right. The card is a park-page sidebar component and
+              looks absurd stretched across a 1500 px column, so it keeps its own
+              width and the text takes the rest instead of leaving a hole. */}
+          <div className="grid items-start gap-8 pt-6 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
+            <DemoFrame
+              label="Auf der Seite einer Bahn"
+              note="Echte Werte von Taron, abgerufen am 24. August 2026."
+              href={TARON}
+              hrefLabel="Echte Werte für Taron →"
+            >
+              <TypicalWaitsDemo />
+            </DemoFrame>
+
+            <div className="space-y-4">
+              <P>
+                Dieselbe Verteilung als Balken, Wochentag für Wochentag. Die Zahl über jedem Balken
+                ist die Voll-Marke des Tages, der kräftige Teil darunter der typische Wert, unten
+                rechts der Rekord mit Datum. Ein Wochentag ohne Grundlage bekommt keinen geschätzten
+                Balken, sondern gar keinen.
+              </P>
+              <P>
+                Samstag ist der einzige Tag, an dem die {TARON_WAIT_NOW} vom Anfang genau in der
+                Mitte liegen. Am Montag daneben wären sie die Ausnahme.
+              </P>
+              <P>
+                Wie belastbar das alles ist, hängt an der Zahl der Messtage: {TARON_WEEKDAY_DAYS}{' '}
+                unter der Woche und {TARON_WEEKEND_DAYS} am Wochenende sind hier zusammengekommen.
+                Auf der Parkseite steht diese Zahl als eigene Spalte neben jeder Bahn.
+              </P>
+            </div>
           </div>
 
           <DemoFrame
-            label="Auf der Seite einer Bahn"
-            note="Echte Werte von Taron, abgerufen am 24. August 2026. Die Zahl über jedem Balken ist die Voll-Marke des Tages, der kräftige Teil darunter der typische Wert. Samstag ist der einzige Tag, an dem die 70 vom Anfang genau in der Mitte liegen."
-            href={TARON}
-            hrefLabel="Echte Werte für Taron →"
-            className="max-w-lg"
+            label="Dieselbe Tabelle für den ganzen Park, live"
+            note="Keine Beispielzahlen: Das ist der aktuelle Stand für Phantasialand, mit typischem Wert, vollem Wert und den Messtagen dahinter. Alle Minuten stehen in Fünferschritten, weil Parks in Fünferschritten anschreiben."
+            href={PARK}
+            hrefLabel="Zur Parkseite →"
           >
-            <TypicalWaitsDemo />
+            <LiveTopAttractions locale="de" />
           </DemoFrame>
 
           <Highlight>
@@ -418,27 +501,25 @@ export function ContentDE() {
       >
         <P>
           „Früh kommen&ldquo; ist der Rat, den jeder gibt. Er stimmt nur, wenn die Schlange im Lauf
-          des Tages überhaupt wächst, und das tut sie längst nicht überall. Zwei Bahnen aus
+          des Tages überhaupt wächst, und das tut sie längst nicht überall. Sechs Bahnen aus
           demselben Park, dieselbe Tabelle, dasselbe Jahr:
         </P>
 
         <DemoFrame
-          label="Wartezeit nach Uhrzeit, 90. Perzentil"
-          note="Echte Werte aus dem Stundenprofil des Parks, abgerufen am 24. August 2026."
+          label="Das echte Stundenprofil, gerade eben"
+          note="Live aus dem Stundenprofil des Parks. Fett steht die stärkste Stunde jeder Bahn, und die liegt bei den sechs Bahnen keineswegs überall gleich. Eine Stunde wird erst zur Spalte, wenn sie mindestens zehn Messtage an dieser Bahn hat, mindestens 40 Prozent der bestgemessenen Stunde erreicht und von mindestens der Hälfte der Bahnen gemeldet wird. Das wirft die Randzeiten raus, in denen sonst eine einzige Hotelgäste-Schlange für den ganzen Morgen spräche."
+          href={PARK}
+          hrefLabel="Zur Parkseite →"
         >
-          <HourlyShapeDemo
-            spreadLabel="Unterschied zwischen ruhigster und vollster Stunde:"
-            unit="Min."
-            hoursLabel={`Aus ${HOURLY_SAMPLE_DAYS} Messtagen. Fünf Stunden schaffen es überhaupt in die Tabelle: Eine Stunde braucht mindestens zehn Messtage an dieser Bahn, mindestens 40 Prozent der bestgemessenen Stunde und mindestens die Hälfte der Bahnen, die sie melden. Das wirft die Randzeiten raus, in denen eine einzige Hotelgäste-Schlange sonst für den ganzen Morgen spräche.`}
-          />
+          <LiveHourlyProfile locale="de" />
         </DemoFrame>
 
         <div className="max-w-3xl space-y-4 pt-2">
           <P>
-            Bei Taron entscheidet die Uhrzeit fast nichts. Die Kurve liegt den ganzen Tag im selben
-            engen Band, und was den Unterschied macht, ist der Wochentag aus Kapitel 02. Bei Chiapas
-            ist es umgekehrt: Wer um zehn dort steht, wartet gut ein Drittel weniger als am frühen
-            Nachmittag. Eine einzige Regel für den ganzen Park wäre für eine der beiden Bahnen
+            Taron ist der Fall, in dem die Uhrzeit fast nichts entscheidet: Die Zeile liegt den
+            ganzen Tag in einem engen Band, und was den Unterschied macht, ist der Wochentag aus
+            Kapitel 02. Chiapas daneben ist das Gegenteil, die Zeile steigt bis in den Nachmittag
+            deutlich an. Eine einzige Regel für den ganzen Park wäre für eine der beiden Bahnen
             falsch, und deshalb wird sie pro Bahn gerechnet.
           </P>
         </div>
@@ -535,10 +616,51 @@ export function ContentDE() {
       </SectionShell>
 
       {/* ── 05 ──────────────────────────────────────────────────────────── */}
+      <SectionShell
+        id="parkseite"
+        index="05"
+        kicker="Der Rundgang"
+        title="Die Parkseite von oben nach unten"
+        icon={Layers}
+      >
+        <P>
+          Alles bisherige steht auf einer einzigen Seite, und die ist nach der Reihenfolge gebaut,
+          in der man fragt: Hat der Park heute auf? Regnet es gleich? Wie lang ist die Schlange? Und
+          wann wäre ich besser gekommen? Einmal von oben nach unten.
+        </P>
+
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,21rem)]">
+          <ParkAnatomy onlyWhenLabel="Nur wenn:" steps={PARK_SECTIONS} />
+
+          <div className="space-y-4 lg:sticky lg:top-20 lg:self-start">
+            <Highlight>
+              Die Hälfte dieser Blöcke hängt an einer Bedingung, und das ist Absicht. Ein Park ohne
+              Shows bekommt keinen leeren Show-Reiter, und rund die Hälfte der 212 Parks rendert gar
+              keinen Nachbar-Abschnitt, weil in Reichweite nichts liegt.
+            </Highlight>
+            <PG>
+              Die Reiter merken sich ihre Auswahl in der Adresse. Wer den Kalender offen hat und den
+              Link weitergibt, verschickt den Kalender und nicht die Attraktionsliste.
+            </PG>
+            <div className="pt-1">
+              <Link
+                href={PARK}
+                prefetch={false}
+                className="border-primary/40 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-semibold transition-colors"
+              >
+                <Activity className="h-4 w-4" />
+                Am lebenden Objekt ansehen
+              </Link>
+            </div>
+          </div>
+        </div>
+      </SectionShell>
+
+      {/* ── 06 ──────────────────────────────────────────────────────────── */}
       <Ambience tone="emerald">
         <SectionShell
           id="nachtschicht"
-          index="05"
+          index="06"
           kicker="Der Unterbau"
           title="Woher die Zahlen kommen"
           icon={Database}
@@ -594,10 +716,10 @@ export function ContentDE() {
         </SectionShell>
       </Ambience>
 
-      {/* ── 06 ──────────────────────────────────────────────────────────── */}
+      {/* ── 07 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="luecken"
-        index="06"
+        index="07"
         kicker="Die Grenzen"
         title="Was wir nicht behaupten"
         icon={HelpCircle}
@@ -638,10 +760,10 @@ export function ContentDE() {
         </Highlight>
       </SectionShell>
 
-      {/* ── 07 ──────────────────────────────────────────────────────────── */}
+      {/* ── 08 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="besuche"
-        index="07"
+        index="08"
         kicker="In der Praxis"
         title="Vier Besuche, vier Wege durch die Seite"
         icon={Users}
@@ -760,8 +882,8 @@ export function ContentDE() {
         </div>
       </SectionShell>
 
-      {/* ── 08 ──────────────────────────────────────────────────────────── */}
-      <SectionShell id="wegweiser" index="08" kicker="Wegweiser" title="Wo was steht" icon={Search}>
+      {/* ── 09 ──────────────────────────────────────────────────────────── */}
+      <SectionShell id="wegweiser" index="09" kicker="Wegweiser" title="Wo was steht" icon={Search}>
         <TouchpointGrid
           items={[
             {
@@ -796,11 +918,11 @@ export function ContentDE() {
             },
             {
               icon: Activity,
-              title: 'Parkseite',
+              title: 'Blog',
               body: (
                 <>
-                  Kopfbereich mit Status, Wetter und Auslastung, darunter die Reiter für
-                  Attraktionen, Shows, Restaurants, Kalender und Karte.
+                  Längere Stücke zu einzelnen Parks und Bahnen. Die Tabellen darin ziehen dieselben
+                  Zahlen wie die Parkseiten, statt sie abzutippen.
                 </>
               ),
             },
@@ -828,10 +950,10 @@ export function ContentDE() {
         />
       </SectionShell>
 
-      {/* ── 09 ──────────────────────────────────────────────────────────── */}
+      {/* ── 10 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="faq"
-        index="09"
+        index="10"
         kicker="Nachgefragt"
         title="Häufige Fragen"
         icon={HelpCircle}

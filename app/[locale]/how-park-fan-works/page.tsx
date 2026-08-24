@@ -36,6 +36,13 @@ const CONTENT_LOADERS: Record<Locale, () => Promise<ComponentType>> = {
  */
 const EDITORIAL_LOCALES = new Set<Locale>(['de']);
 
+/**
+ * When the guide's content last actually changed. Hand-maintained: a date wired
+ * to the build clock would move on every unrelated deploy and stop meaning
+ * anything. Bump it when a chapter is rewritten, not when a typo is fixed.
+ */
+const CONTENT_UPDATED_AT = '2026-08-24';
+
 interface PageHeader {
   title: string;
   /** Meta/structured-data description. Longer than the tagline. */
@@ -46,6 +53,14 @@ interface PageHeader {
   scrollLabel?: string;
   heroAlt?: string;
   stats?: Array<{ value: string; label: string }>;
+  /**
+   * Document `<title>`, when the generic `"{title} | park.fan"` is wrong for
+   * this page. The H1 already ends in the brand, so the generic form doubled it
+   * ("So funktioniert park.fan | park.fan"), and it opened on the brand rather
+   * than on what anyone types into a search box. Set this to lead with the
+   * query and keep the brand exactly once; ~60 characters is the budget.
+   */
+  metaTitle?: string;
   /** Unit under the hero's wait-time sign. */
   signUnit?: string;
   /** One line under the sign, naming what it is. */
@@ -55,6 +70,7 @@ interface PageHeader {
 const PAGE_HEADERS: Record<Locale, PageHeader> = {
   de: {
     title: 'So funktioniert park.fan',
+    metaTitle: 'Wartezeiten verstehen – so funktioniert park.fan',
     intro:
       '70 Minuten bei Taron: viel oder normal? Diese Anleitung zeigt an echten Beispielen, wie du eine Wartezeit einordnest, wann eine Bahn ihren ruhigsten Moment hat und woher die Zahlen kommen.',
     kicker: 'park.fan · Die Anleitung',
@@ -195,7 +211,10 @@ export async function generateMetadata({ params }: HowtoPageProps): Promise<Meta
   // Locale-stable OG path: one `genericPages` key covers all six languages.
   const ogImageUrl = getOgImageUrl([locale, HOWTO_SEGMENTS.en]);
 
-  const fullTitle = `${t('title')} | park.fan`;
+  const header = PAGE_HEADERS[locale as Locale];
+  // `metaTitle` is already brand-suffixed where it is set; the generic form is
+  // for the locales still on the old headline.
+  const fullTitle = header?.metaTitle ?? `${t('title')} | park.fan`;
   const url = urlFor(locale as Locale);
 
   return {
@@ -271,6 +290,7 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
         url={url}
         locale={locale}
         image={getOgImageUrl([locale, HOWTO_SEGMENTS.en])}
+        dateModified={CONTENT_UPDATED_AT}
       />
       <BreadcrumbStructuredData
         breadcrumbs={[

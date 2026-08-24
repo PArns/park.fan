@@ -1,4 +1,5 @@
 import { CalendarDays, Clock, Layers, TrendingUp } from 'lucide-react';
+import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { GlassCard } from '@/components/common/glass-card';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import type { CrowdLevel } from '@/lib/api/types';
@@ -54,13 +55,13 @@ export function ParkStatsCrowdCard({
               <span className="text-muted-foreground/70 hidden items-center gap-1 text-xs tabular-nums sm:flex">
                 <Clock className="h-3 w-3 shrink-0" aria-hidden="true" />
                 <span className="text-muted-foreground/50">{labelP50}</span>
-                <span className="text-foreground/70 font-medium">{row.p50} min</span>
+                <span className="text-foreground/70 font-medium">{roundWaitTo5(row.p50)} min</span>
               </span>
               <span className="text-border/60 hidden text-xs sm:inline">/</span>
               <span className="text-muted-foreground/70 flex items-center gap-1 text-xs tabular-nums">
                 <TrendingUp className="h-3 w-3 shrink-0" aria-hidden="true" />
                 <span className="text-muted-foreground/50">{labelP90}</span>
-                <span className="text-foreground/70 font-medium">{row.p90} min</span>
+                <span className="text-foreground/70 font-medium">{roundWaitTo5(row.p90)} min</span>
               </span>
               {labelDays && row.days != null && (
                 <span

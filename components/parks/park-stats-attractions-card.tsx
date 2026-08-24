@@ -1,4 +1,5 @@
 import { GlassCard } from '@/components/common/glass-card';
+import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { Clock } from 'lucide-react';
 import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { Link } from '@/i18n/navigation';
@@ -136,10 +137,10 @@ export function ParkStatsAttractionsCard({
                   </td>
                 )}
                 <td className={cn(VALUE_CELL, 'text-foreground/70 hidden sm:table-cell')}>
-                  {a.avgWaitP50} {labelMinutes}
+                  {roundWaitTo5(a.avgWaitP50)} {labelMinutes}
                 </td>
                 <td className={cn(VALUE_CELL, 'text-foreground/70 pr-2')}>
-                  {a.avgWaitP90} {labelMinutes}
+                  {roundWaitTo5(a.avgWaitP90)} {labelMinutes}
                 </td>
               </tr>
             );

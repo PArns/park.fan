@@ -17,7 +17,10 @@ tags:
   - hinter-den-kulissen
 category: behind-the-scenes
 parkLinks:
+  # Hansa-Park gets a paragraph of its own — why its page shows no wait times at
+  # all — which is exactly the question somebody on that page is asking.
   - phantasialand
+  - hansa-park
 rideLinks:
   - phantasialand/taron
 coverImage:
@@ -41,7 +44,7 @@ seo:
     - Crowd Kalender
 ---
 
-Du stehst vor Taron, die Anzeige sagt **70 Minuten**, und dein Kopf macht
+Du stehst vor [Taron](ref:phantasialand/taron), die Anzeige sagt **70 Minuten**, und dein Kopf macht
 sofort das Falsche: Er vergleicht die Zahl mit deiner Erinnerung. Beim letzten
 Besuch waren es 40, also ist heute schlimmer. Beim vorletzten 90, also ist
 heute super. Zwei Besuche sind keine Grundlage, und dein Gedächtnis rundet
@@ -68,7 +71,7 @@ Monats nach oben, obwohl an 29 Tagen nichts davon zu spüren war. Der Median
 zuckt bei so einem Tag nicht. Der Rekord steht deshalb separat daneben, mit
 Datum, damit man ihn sieht, ohne dass er die anderen beiden Zahlen anfasst.
 
-Für Phantasialand sieht die Rangliste so aus. Die Spalte mit den Messtagen ist
+Für [Phantasialand](ref:phantasialand) sieht die Rangliste so aus. Die Spalte mit den Messtagen ist
 die wichtigste: Sie sagt, wie viel Gewicht eine Zeile trägt.
 
 ```ride-waits-widget park=phantasialand top=8 columns=land,peak,days highlight=taron
@@ -146,7 +149,7 @@ Eine Seite voller gefüllter Felder ist leicht zu bauen. Interessant wird sie
 erst, wenn man den gefüllten Feldern trauen kann, und dafür müssen ein paar
 Felder leer bleiben dürfen.
 
-Hansa-Park zum Beispiel gibt seine Wartezeiten nur in der eigenen App aus, und
+[Hansa-Park](ref:hansa-park) zum Beispiel gibt seine Wartezeiten nur in der eigenen App aus, und
 nur für Geräte im Park-WLAN. Es gibt keine öffentliche Schnittstelle. In den
 Rohdaten sieht dieser Park aus wie jeder andere um drei Uhr nachts: keine Bahn
 meldet etwas. Würden wir daraus das Naheliegende ableiten, stünden dort 82

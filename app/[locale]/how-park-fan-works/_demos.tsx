@@ -1,4 +1,11 @@
+import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
+import type { Locale } from '@/i18n/config';
+import {
+  ParkHourlyProfileCard,
+  type HourlyProfileLabels,
+} from '@/components/parks/park-hourly-profile-card';
+import { ParkStatsSection } from '@/components/parks/park-stats-section';
 import { cn } from '@/lib/utils';
 import { AttractionCard } from '@/components/parks/attraction-card';
 import { AttractionTypicalWaits } from '@/components/parks/attraction-typical-waits';
@@ -7,7 +14,6 @@ import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { ComparisonBadge } from '@/components/parks/comparison-badge';
 import { ParkCalendarDay } from '@/components/parks/park-calendar-day';
 import { NoLiveWaitTimesNotice } from '@/components/parks/no-live-wait-times-notice';
-import { HourlyP90Sparkline } from '@/components/parks/hourly-p90-sparkline';
 import { getServerNowMs } from '@/lib/utils/server-time';
 import { WaitSign } from './_chrome';
 import {
@@ -15,7 +21,6 @@ import {
   DEMO_CALENDAR_DAYS,
   DEMO_TIMEZONE,
   OFF_SEASON_CARD,
-  HOURLY_SHAPES,
   TARON_TYPICAL_WAITS,
   TARON_WAIT_NOW,
 } from './_fixtures';
@@ -29,11 +34,11 @@ import {
  * lookalike: a reader is being taught to read these exact cards, and a copy
  * would start lying the first time one of them is restyled.
  *
- * They also never touch the network. Each of these is prop-driven by design
- * (the fetching wrappers are `ParkStatsSection`, `ParkCalendarGrid` and so on,
- * and those are deliberately not used here), so the guide costs a park page's
- * worth of markup and zero API calls — which matters on a page linked from
- * every surface on the site.
+ * Most of them never touch the network: the teaching figures are prop-driven so
+ * the lesson holds still, because chapter 02's three steps are written around
+ * specific readings. The two exceptions are at the bottom of this file and are
+ * marked as such — where the point is "this is running right now", a frozen
+ * copy would be the wrong exhibit.
  */
 
 const PARK_PATH = '/parks/europe/germany/bruehl/phantasialand';
@@ -159,61 +164,6 @@ export async function RopeDropDemo({ className }: { className?: string }) {
 }
 
 /**
- * The same day at two rides, as a pair of curves.
- *
- * `HourlyP90Sparkline` is the production line (the attraction history grid
- * mounts one per day) and takes its height from its container — hence the
- * explicit box, the same arrangement `/ui` uses. The spread label under each is
- * the whole comparison: one ride's queue moves by a few minutes across the day,
- * the other's by more than half.
- */
-export function HourlyShapeDemo({
-  spreadLabel,
-  unit,
-  hoursLabel,
-}: {
-  spreadLabel: string;
-  unit: string;
-  hoursLabel: string;
-}) {
-  // One scale for both charts. Each sparkline otherwise fits its own maximum,
-  // which draws a 7-minute band with the same amplitude as a 22-minute one and
-  // inverts the comparison this figure exists to make.
-  const sharedMax = Math.max(...HOURLY_SHAPES.flatMap((s) => s.points.map((p) => p.value)));
-  return (
-    <div className="not-prose grid gap-5 sm:grid-cols-2">
-      {HOURLY_SHAPES.map((s) => {
-        const lo = Math.min(...s.points.map((p) => p.value));
-        const hi = Math.max(...s.points.map((p) => p.value));
-        return (
-          <figure key={s.name} className="bg-card/60 rounded-xl border p-4">
-            <figcaption className="mb-2 flex items-baseline justify-between gap-2">
-              <span className="text-sm font-semibold">{s.name}</span>
-              <span className="text-muted-foreground text-[11px] tabular-nums">
-                {lo}–{hi} {unit}
-              </span>
-            </figcaption>
-            <div className="h-28">
-              <HourlyP90Sparkline hourlyP90={s.points} yMax={sharedMax} className="text-primary" />
-            </div>
-            <div className="text-muted-foreground/80 mt-1 flex justify-between text-[10px] tabular-nums">
-              {s.points.map((p) => (
-                <span key={p.hour}>{p.hour.slice(0, 2)}</span>
-              ))}
-            </div>
-            <p className="text-muted-foreground mt-2 text-xs">
-              {spreadLabel} <strong className="text-foreground tabular-nums">{s.spread}</strong>{' '}
-              {unit}
-            </p>
-          </figure>
-        );
-      })}
-      <p className="text-muted-foreground text-xs leading-relaxed sm:col-span-2">{hoursLabel}</p>
-    </div>
-  );
-}
-
-/**
  * Two rides, one minute, the same land. The reason a live number is worth
  * having at all — and the reason it is not the whole answer.
  */
@@ -304,4 +254,55 @@ export function BadgeRowDemo({ caption }: { caption: string }) {
       <p className="text-muted-foreground text-xs leading-relaxed">{caption}</p>
     </div>
   );
+}
+
+// ── Live blocks ──────────────────────────────────────────────────────────────
+//
+// The blocks above teach with frozen numbers, because chapter 02's three steps
+// are written around specific readings and a lesson that reshapes itself
+// overnight is not a lesson. These two are the opposite case: their whole point
+// is that the thing being described is running right now, so they mount the
+// real fetching components and show whatever the park's data says today.
+//
+// Both are safe to mount outside a park page. `useLoadLast` gates the heavy
+// trip-planning queries behind a network-idle window and releases within ~300 ms
+// here (nothing else on this page fetches), and `ParkStatsSection` already
+// supports a caller with no park object — that is how the blog widgets use it.
+// The prose beside them never quotes a figure they render.
+
+const DEMO_GEO = {
+  continent: 'europe',
+  country: 'germany',
+  city: 'bruehl',
+  parkSlug: 'phantasialand',
+} as const;
+
+/** The park's real hourly table: one row per ride, each ride's peak hour bold. */
+export async function LiveHourlyProfile({ locale }: { locale: Locale }) {
+  const [t, tOverview] = await Promise.all([
+    getTranslations({ locale, namespace: 'parks.stats' }),
+    getTranslations({ locale, namespace: 'parks.overview' }),
+  ]);
+  const labels: HourlyProfileLabels = {
+    title: t('hourlyProfileTitle'),
+    ride: t('rideWaitsRide'),
+    hour: t('hourlyProfileHour'),
+    minutes: tOverview('minutesUnit'),
+    peakNote: t('hourlyProfilePeakNote'),
+    footnote: t('hourlyProfileFootnote'),
+  };
+  return (
+    <ParkHourlyProfileCard
+      {...DEMO_GEO}
+      basePath={PARK_PATH}
+      labels={labels}
+      locale={locale}
+      topN={6}
+    />
+  );
+}
+
+/** The park's real ranking, with the measured-days column the text refers to. */
+export function LiveTopAttractions({ locale }: { locale: Locale }) {
+  return <ParkStatsSection {...DEMO_GEO} locale={locale} show={['attractions']} hideHeading />;
 }

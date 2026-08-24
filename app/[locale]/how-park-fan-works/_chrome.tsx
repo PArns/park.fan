@@ -229,6 +229,64 @@ export function Ambience({
   );
 }
 
+// ── Park page anatomy ────────────────────────────────────────────────────────
+
+export interface AnatomyStep {
+  title: string;
+  body: string;
+  /** Rendered as a muted "only when…" line. Absent = the block is always there. */
+  onlyWhen?: string;
+}
+
+/**
+ * The park page walked top to bottom, in the order the sections actually render.
+ *
+ * A numbered rail rather than a grid, because the order is the information: the
+ * page answers "is it open", "will it rain", "how long is the queue" and "when
+ * should I have come instead" in that sequence, and a reader who knows that
+ * stops hunting.
+ *
+ * `onlyWhen` matters as much as the rest. Half of these blocks are conditional,
+ * and a guide that lists them flat teaches somebody to look for a card that
+ * their park will never render.
+ */
+export function ParkAnatomy({
+  steps,
+  onlyWhenLabel,
+}: {
+  steps: AnatomyStep[];
+  onlyWhenLabel: string;
+}) {
+  return (
+    <ol className="not-prose relative space-y-0">
+      {steps.map((step, i) => (
+        <li key={step.title} className="relative flex gap-4 pb-6 last:pb-0">
+          {/* The rail. Drawn per row and stopped on the last one, so it ends at
+              the final marker instead of trailing into the next section. */}
+          {i < steps.length - 1 && (
+            <span aria-hidden className="bg-border absolute top-8 bottom-0 left-[15px] w-px" />
+          )}
+          <span
+            aria-hidden
+            className="bg-primary/10 text-primary relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-bold tabular-nums ring-4 ring-[var(--background)]"
+          >
+            {i + 1}
+          </span>
+          <div className="pt-0.5">
+            <h3 className="font-semibold">{step.title}</h3>
+            <p className="text-muted-foreground mt-1 text-sm leading-relaxed">{step.body}</p>
+            {step.onlyWhen && (
+              <p className="text-muted-foreground/80 mt-1.5 text-xs">
+                <span className="font-medium">{onlyWhenLabel}</span> {step.onlyWhen}
+              </p>
+            )}
+          </div>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
 // ── Closing band ─────────────────────────────────────────────────────────────
 
 export function ClosingBand({
