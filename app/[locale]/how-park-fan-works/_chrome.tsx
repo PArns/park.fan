@@ -291,6 +291,14 @@ export interface AnatomyStep {
    * Phantasialand — the walk-through was a list of abstractions before.
    */
   example?: string;
+  /**
+   * The real component, for the blocks a reader has not met in an earlier
+   * chapter. The three weather ones are the abstract end of this list — "the
+   * next few hours in quarter-hour steps" describes nothing you can picture —
+   * so they show the production component instead, as everything else on this
+   * page does.
+   */
+  demo?: React.ReactNode;
   /** Rendered as a muted "only when…" line. Absent = the block is always there. */
   onlyWhen?: string;
 }
@@ -337,6 +345,7 @@ export function ParkAnatomy({
                 {step.example}
               </p>
             )}
+            {step.demo && <div className="not-prose mt-3 max-w-xl">{step.demo}</div>}
             {step.onlyWhen && (
               <p className="text-muted-foreground/80 mt-1.5 text-xs">
                 <span className="font-medium">{onlyWhenLabel}</span> {step.onlyWhen}

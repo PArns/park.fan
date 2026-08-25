@@ -48,6 +48,9 @@ import {
   TwoRidesDemo,
   TypicalWaitsDemo,
 } from '../_demos';
+import { WeatherWarningBannerDemo } from '@/components/parks/weather-warning-banner-demo';
+import { NowcastBannerDemo } from '@/components/parks/nowcast-banner-demo';
+import { WeatherCardShowcase } from '@/components/parks/weather-card-demo';
 import { WaitScaleBar, WaitScaleStage, type WaitScaleStep } from '../_wait-scale';
 import { NightShift, type NightShiftJob } from '../_night-shift';
 import { Ambience, ClosingBand, IntroWithAside, ParkAnatomy, type AnatomyStep } from '../_chrome';
@@ -148,6 +151,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Severe weather warning',
     body: 'Official warnings from DWD and MeteoAlarm, passed through unchanged. No judgement of our own about the weather.',
     example: 'The DWD’s wording, unchanged. For parks outside Germany, MeteoAlarm’s.',
+    demo: <WeatherWarningBannerDemo />,
     onlyWhen: 'a warning is active for the location.',
   },
   {
@@ -155,6 +159,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     body: 'The next few hours in fifteen-minute steps. Tells you whether the shower is through in twenty minutes or whether it is the afternoon now.',
     example:
       'Quarter hours, not hours: a shower from 14:15 to 14:30 disappears inside an hourly value; here it is there.',
+    demo: <NowcastBannerDemo single />,
     onlyWhen: 'there is precipitation in range.',
   },
   {
@@ -162,6 +167,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     body: 'Current reading, the day’s curve and the forecast. The hourly axis is built around the opening hours: the hours the park is open get four times the width of the ones before and after.',
     example:
       'For Phantasialand today: the hours from 09:00 to 19:00 take three quarters of the width, the night before and after takes the rest.',
+    demo: <WeatherCardShowcase variant="single" />,
   },
   {
     title: 'Skip-the-line prices',

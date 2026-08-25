@@ -48,6 +48,9 @@ import {
   TwoRidesDemo,
   TypicalWaitsDemo,
 } from '../_demos';
+import { WeatherWarningBannerDemo } from '@/components/parks/weather-warning-banner-demo';
+import { NowcastBannerDemo } from '@/components/parks/nowcast-banner-demo';
+import { WeatherCardShowcase } from '@/components/parks/weather-card-demo';
 import { WaitScaleBar, WaitScaleStage, type WaitScaleStep } from '../_wait-scale';
 import { NightShift, type NightShiftJob } from '../_night-shift';
 import { Ambience, ClosingBand, IntroWithAside, ParkAnatomy, type AnatomyStep } from '../_chrome';
@@ -149,6 +152,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     body: 'Officiële waarschuwingen van DWD en MeteoAlarm, ongewijzigd overgenomen. Geen eigen oordeel over het weer.',
     example:
       'De formulering van de DWD, onveranderd. Voor parken buiten Duitsland die van MeteoAlarm.',
+    demo: <WeatherWarningBannerDemo />,
     onlyWhen: 'er een waarschuwing voor de locatie actief is.',
   },
   {
@@ -156,6 +160,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     body: 'De komende uren in stappen van een kwartier. Zegt of de bui over twintig minuten voorbij is of dat het de hele middag blijft.',
     example:
       'Kwartieren in plaats van uren: een bui van 14:15 tot 14:30 verdwijnt in een uurwaarde, hier staat hij er wel in.',
+    demo: <NowcastBannerDemo single />,
     onlyWhen: 'er neerslag in de buurt is.',
   },
   {
@@ -163,6 +168,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     body: 'Waarde van nu, het verloop van de dag en de verwachting. De urenas is om de openingstijden heen gebouwd: de uren dat het park open is krijgen vier keer zo veel ruimte als de uren ervoor en erna.',
     example:
       'Voor Phantasialand vandaag: de uren van 09:00 tot 19:00 nemen driekwart van de breedte, de nacht ervoor en erna de rest.',
+    demo: <WeatherCardShowcase variant="single" />,
   },
   {
     title: 'Skip-the-line-prijzen',

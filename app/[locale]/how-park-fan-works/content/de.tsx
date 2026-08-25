@@ -48,6 +48,9 @@ import {
   TwoRidesDemo,
   TypicalWaitsDemo,
 } from '../_demos';
+import { WeatherWarningBannerDemo } from '@/components/parks/weather-warning-banner-demo';
+import { NowcastBannerDemo } from '@/components/parks/nowcast-banner-demo';
+import { WeatherCardShowcase } from '@/components/parks/weather-card-demo';
 import { WaitScaleBar, WaitScaleStage, type WaitScaleStep } from '../_wait-scale';
 import { NightShift, type NightShiftJob } from '../_night-shift';
 import { Ambience, ClosingBand, IntroWithAside, ParkAnatomy, type AnatomyStep } from '../_chrome';
@@ -151,6 +154,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     body: 'Amtliche Warnungen von DWD und MeteoAlarm, unverändert übernommen. Kein eigenes Urteil über das Wetter.',
     example:
       'Der Wortlaut des DWD, unverändert. Für Parks außerhalb Deutschlands der von MeteoAlarm.',
+    demo: <WeatherWarningBannerDemo />,
     onlyWhen: 'eine Warnung für den Standort aktiv ist.',
   },
   {
@@ -158,6 +162,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     body: 'Die nächsten Stunden in Viertelstundenschritten. Sagt, ob der Schauer in zwanzig Minuten durch ist oder ob es der Nachmittag bleibt.',
     example:
       'Viertelstunden statt Stunden: Ein Schauer von 14:15 bis 14:30 verschwindet in einem Stundenwert, hier steht er drin.',
+    demo: <NowcastBannerDemo single />,
     onlyWhen: 'Niederschlag in Reichweite ist.',
   },
   {
@@ -165,6 +170,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     body: 'Jetzt-Wert, Tagesverlauf und Vorhersage. Die Stundenachse ist um die Öffnungszeiten gebaut: die Stunden, in denen der Park auf hat, bekommen vier Mal so viel Platz wie die davor und danach.',
     example:
       'Für das Phantasialand heute: Die Stunden von 09:00 bis 19:00 nehmen drei Viertel der Breite ein, die Nacht davor und danach den Rest.',
+    demo: <WeatherCardShowcase variant="single" />,
   },
   {
     title: 'Skip-the-line-Preise',

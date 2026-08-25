@@ -183,8 +183,23 @@ function buildMocks(now: number): Record<string, WeatherNowcast> {
  * Demo wrapper for the /ui showcase. Builds the mock timestamps on mount so
  * they're always fresh (the page itself may be statically generated).
  */
-export function NowcastBannerDemo() {
+export function NowcastBannerDemo({ single = false }: { single?: boolean } = {}) {
   const [mocks] = useState(() => buildMocks(Date.now()));
+
+  // The guide's walk-through wants one banner, not the priority ladder: there the
+  // point is what the block looks like, not how storm beats hail beats rain.
+  if (single) {
+    return (
+      <WeatherNowcastBanner
+        continent="demo"
+        country="demo"
+        city="demo"
+        parkSlug="rain"
+        initialData={mocks.rainSoon}
+        enabled={false}
+      />
+    );
+  }
 
   return (
     <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">

@@ -48,6 +48,9 @@ import {
   TwoRidesDemo,
   TypicalWaitsDemo,
 } from '../_demos';
+import { WeatherWarningBannerDemo } from '@/components/parks/weather-warning-banner-demo';
+import { NowcastBannerDemo } from '@/components/parks/nowcast-banner-demo';
+import { WeatherCardShowcase } from '@/components/parks/weather-card-demo';
 import { WaitScaleBar, WaitScaleStage, type WaitScaleStep } from '../_wait-scale';
 import { NightShift, type NightShiftJob } from '../_night-shift';
 import { Ambience, ClosingBand, IntroWithAside, ParkAnatomy, type AnatomyStep } from '../_chrome';
@@ -148,6 +151,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Alerte météo',
     body: 'Alertes officielles du DWD et de MeteoAlarm, reprises telles quelles. Aucun jugement de notre part sur la météo.',
     example: 'Le texte du DWD, tel quel. Pour les parcs hors d’Allemagne, celui de MeteoAlarm.',
+    demo: <WeatherWarningBannerDemo />,
     onlyWhen: 'une alerte est active pour le lieu.',
   },
   {
@@ -155,6 +159,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     body: 'Les prochaines heures par quarts d’heure. Indique si l’averse sera passée dans vingt minutes ou si elle tiendra l’après-midi.',
     example:
       'Des quarts d’heure, pas des heures : une averse de 14:15 à 14:30 disparaît dans une valeur horaire ; ici, elle y est.',
+    demo: <NowcastBannerDemo single />,
     onlyWhen: 'des précipitations sont à portée.',
   },
   {
@@ -162,6 +167,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     body: 'Valeur actuelle, courbe de la journée et prévision. L’axe horaire est construit autour des horaires d’ouverture : les heures où le parc est ouvert reçoivent quatre fois plus de place que celles d’avant et d’après.',
     example:
       'Pour Phantasialand aujourd’hui : les heures de 09:00 à 19:00 prennent les trois quarts de la largeur, la nuit avant et après le reste.',
+    demo: <WeatherCardShowcase variant="single" />,
   },
   {
     title: 'Prix coupe-file',

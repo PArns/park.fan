@@ -41,7 +41,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
   '/fancast': ['favorites', 'home', 'nearby', 'parkCard'],
   '/glossary': ['glossary'],
   '/glossary/[term]': ['favorites', 'nearby', 'parkCard'],
-  '/how-park-fan-works': ['attractions', 'favorites', 'parks'],
+  '/how-park-fan-works': ['attractions', 'favorites', 'nearby', 'parks'],
   '/impressum': [],
   '/maintenance': [],
   '/parks': ['explore', 'nearby'],
