@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { getServerApiHeaders } from '@/lib/api/client';
 import { verifyTurnstile } from '@/lib/security/turnstile';
+import { TURNSTILE_ACTIONS } from '@/lib/security/turnstile-actions';
 import { getClientIp } from '@/lib/utils/request-ip';
 import {
   ADMIN_SESSION_COOKIE,
@@ -115,7 +116,10 @@ export async function POST(request: Request) {
   const ip = clientIp(request);
 
   // Before anything else, and before the credentials leave this process.
-  const turnstile = await verifyTurnstile(String(body.turnstileToken ?? ''), ip ?? undefined);
+  const turnstile = await verifyTurnstile(String(body.turnstileToken ?? ''), {
+    expectedAction: TURNSTILE_ACTIONS.adminLogin,
+    remoteIp: ip ?? undefined,
+  });
   if (!turnstile.success) {
     // A sentence rather than a code: the form prints `message` verbatim for
     // anything that is not a 401, and "turnstile-failed" is not something to

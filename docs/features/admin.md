@@ -99,6 +99,28 @@ of wrong passwords. The lockout in particular is a weapon pointed the wrong way
 whenever they like and keep the person who owns it out. Turnstile is what puts a
 price on the attempt itself, and it is charged before either counter is touched.
 
+**`success: true` is not the answer to "may this request proceed".** Cloudflare
+confirms that a token is genuine; it says nothing about which form it was solved
+on. Two further fields settle that, and both are checked:
+
+- **action** — the label the widget was rendered with (`TURNSTILE_ACTIONS` in
+  `lib/security/turnstile-actions.ts`, its own file with no `server-only` so the
+  widget and the check can share it across the client boundary). `/contribute`
+  is a challenge anybody may solve as often as they like, and it shares this
+  widget, so without this check the upload form is a token vending machine for
+  the admin login.
+- **hostname** — where it was solved, against `TURNSTILE_HOSTNAMES`. A token
+  farmed on a copy of the login page hosted elsewhere is a genuine token, and
+  this is what refuses it.
+
+The two "not configured" cases are deliberately asymmetric. A missing secret
+refuses in production, because there is then nothing to verify with. A missing
+hostname allowlist **skips** its check — Cloudflare's own snippet refuses
+everything instead, which is right for a fresh integration where setting the
+variable is part of the same task, and wrong here: an unset variable would take
+the upload form and the admin login down on the deploy that shipped it, with no
+way in to fix it. `pnpm test:turnstile` covers both, and the cross-surface case.
+
 Two consequences that are easy to trip over:
 
 - **A token is single-use.** An account with two-factor signs in over two

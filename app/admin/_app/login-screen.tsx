@@ -18,6 +18,7 @@ import {
   TriangleAlert,
 } from 'lucide-react';
 import { TurnstileWidget, type TurnstileHandle } from '@/components/common/turnstile-widget';
+import { TURNSTILE_ACTIONS } from '@/lib/security/turnstile-actions';
 import { adminFetch, adminKeys, AdminApiError } from '../_lib/api';
 import { heroObjectPosition } from '@/lib/media/hero';
 import { useHeroPhoto } from '../_lib/use-hero-photo';
@@ -629,7 +630,7 @@ function TurnstileGate({
       <TurnstileWidget
         key={attemptKey}
         ref={ref}
-        action="admin-login"
+        action={TURNSTILE_ACTIONS.adminLogin}
         // `/admin` is hardcoded dark and mounts no theme provider, so the
         // widget has to be told rather than asked.
         theme="dark"
