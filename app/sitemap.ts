@@ -5,6 +5,7 @@ import { locales, SITE_URL } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { GLOSSARY_CONTENT_DATE } from '@/lib/glossary/content-date';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
+import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import type { GlossaryTerm } from '@/lib/glossary/types';
 
 const BASE_URL = SITE_URL;
@@ -30,7 +31,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const homepageAlternates = buildAlternates(() => '');
   const parksAlternates = buildAlternates(() => '/parks');
   const searchAlternates = buildAlternates(() => '/search');
-  const howtoAlternates = buildAlternates(() => '/howto');
   const fancastAlternates = buildAlternates(() => '/fancast');
   const contributeAlternates = buildAlternates(() => '/contribute');
 
@@ -55,12 +55,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         alternates: searchAlternates,
       },
       {
-        url: `${BASE_URL}/${locale}/howto`,
-        changeFrequency: 'monthly',
-        priority: 0.4,
-        alternates: howtoAlternates,
-      },
-      {
         url: `${BASE_URL}/${locale}/fancast`,
         changeFrequency: 'weekly',
         priority: 0.5,
@@ -75,6 +69,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         alternates: contributeAlternates,
       }
     );
+  }
+
+  // ── "How park.fan works" guide ────────────────────────────────────────────
+  // Its own loop rather than a line in the static block above: the URL segment
+  // differs per locale, so the alternates map has to be built from the segment
+  // table. Priority 0.8 — it is the page every other surface links to when it
+  // needs to explain what a badge, a percentile or a forecast means.
+  const howtoAlternates = buildAlternates(
+    (l) => `/${HOWTO_SEGMENTS[l as keyof typeof HOWTO_SEGMENTS]}`
+  );
+
+  for (const locale of locales) {
+    routes.push({
+      url: `${BASE_URL}/${locale}/${HOWTO_SEGMENTS[locale as keyof typeof HOWTO_SEGMENTS]}`,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+      alternates: howtoAlternates,
+    });
   }
 
   // ── Best time to visit hub ────────────────────────────────────────────────

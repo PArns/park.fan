@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from '@/i18n/navigation';
+import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { PopularParksGrid } from '@/components/home/featured-parks-slot';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import {
@@ -248,7 +249,7 @@ export function ContentNL() {
         />
         <P>
           Hoe dit alles in een park samenkomt, wordt stap voor stap uitgelegd in de{' '}
-          <Link href="/howto">volledige handleiding</Link>.
+          <Link href={`/${HOWTO_SEGMENTS.nl}`}>volledige handleiding</Link>.
         </P>
       </SectionShell>
 

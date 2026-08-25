@@ -2,8 +2,15 @@ import { useEffect, useState } from 'react';
 import { useIsFetching } from '@tanstack/react-query';
 
 // Query-key prefixes of the deferred trip-planning queries themselves — they
-// must not block their own release.
-const DEFERRED_KEY_PREFIXES = ['park-best-days-calendar', 'park-historical-stats'];
+// must not block their own release. Every query that gates itself on
+// `useLoadLast` belongs here, or two of them starve each other: the second to
+// mount counts the first as an outstanding "other" fetch and the grace window
+// never closes.
+const DEFERRED_KEY_PREFIXES = [
+  'park-best-days-calendar',
+  'park-historical-stats',
+  'park-hourly-profile',
+];
 
 // How long the rest of the page must be network-idle before the deferred
 // queries are released. Mount-time fetches dispatch within the same commit,

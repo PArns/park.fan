@@ -563,15 +563,18 @@ was rated “low”, the Friday after it, the 5th, “high”.
 
 One caveat on that. We have exactly one of these Fridays on record, and it
 happened to be a mild one. On 15 May 2026 a thunderstorm came through, it never
-got warmer than twelve degrees, and it still came to “high”. The Epfan95 channel
+got warmer than twelve degrees, and it still came to “high”. The Parkfan95 channel
 has been driving out on precisely these Fridays for years and filming the
 result. For 2026 the title is “The emptiest full day”, for the years before that
 “Crowds, long queues and a lot of cars”. A Friday like that in sunshine looks
 nothing like our one measurement.
 
-https://www.youtube.com/watch?v=Js8j_qvKCoA
+https://www.youtube.com/watch?v=aRH5xvAKE_I
 
 [The same Friday a year earlier](https://www.youtube.com/watch?v=Js8j_qvKCoA)
+
+Both from the real [Parkfan95](https://parkfan95.de), meaning Silas. He has the
+name; I just happened to buy the domain first.
 
 ### The month
 
@@ -954,5 +957,5 @@ real Mir training module any more on their way into a car that spins.
 - The Ammolite with two Michelin stars since November 2014, Silver Lake City and the Riverside Western Lodge with its 119 rooms: [Ammolite – The Lighthouse Restaurant (official)](https://www.europapark.de/de/uebernachten/gastronomie/ammolite-lighthouse-restaurant) · [Europa-Park Riverside Western Lodge (official)](https://www.europapark.de/de/uebernachten/riverside-western-lodge)
 - Getting there via the A5, parking fees, Rulantica, the Eatrenalin's Michelin star in 2026: [Getting to Europa-Park (official)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park) · [Europa-Park Erlebnis-Resort (official)](https://www.europapark.de/de) · [Eatrenalin on en.wikipedia](https://en.wikipedia.org/wiki/Eatrenalin)
 - Visitor mix by country of origin and the Swiss share: [“50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort” (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300) · [“874'000 Schweizer Besucher stellen den grössten Anteil” (aboutTravel)](https://abouttravel.ch/reisebranche/874000-schweizer-besucher-stellen-den-groessten-anteil/)
-- The Friday in between: crowd levels and weather for the days around Ascension Day and Corpus Christi 2026 from our own calendar (measured, not forecast), plus the video series [BRÜCKENTAG im EUROPA-PARK 2025 (Epfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [the same series in 2026 (Epfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
+- The Friday in between: crowd levels and weather for the days around Ascension Day and Corpus Christi 2026 from our own calendar (measured, not forecast), plus the video series [BRÜCKENTAG im EUROPA-PARK 2025 (Parkfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [the same series in 2026 (Parkfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
 - Wait-time, rope-drop and crowd data: our own wait-time history across a rolling year, the hourly profile across a rolling year, the crowd forecast across 90 days, [Europa-Park on park.fan](ref:europa-park)

@@ -289,8 +289,14 @@ export function ParkTimeInfoShowcase() {
 }
 
 interface WeatherCardShowcaseProps {
-  /** Render the "As seen on Park Page" (Schedule + Weather, glass on hero bg) variant. */
-  variant: 'glass-pair' | 'conditions-grid';
+  /**
+   * `glass-pair` — "As seen on Park Page" (Schedule + Weather, glass on hero bg).
+   * `conditions-grid` — one card per weather condition.
+   * `single` — one rainy card with the hour-by-hour day view, for the guide's
+   *   walk-through, where the point is the opening-hours axis rather than the
+   *   range of conditions.
+   */
+  variant: 'glass-pair' | 'conditions-grid' | 'single';
 }
 
 export function WeatherCardShowcase({ variant }: WeatherCardShowcaseProps) {
@@ -326,6 +332,18 @@ export function WeatherCardShowcase({ variant }: WeatherCardShowcaseProps) {
           />
         </div>
       </div>
+    );
+  }
+
+  if (variant === 'single') {
+    return (
+      <WeatherCard
+        weather={buildWeather(today, 'rainy')}
+        nowcast={buildNowcastFor('rainy', mountedAt)}
+        timezone="Europe/Berlin"
+        hourly={buildHourlyFor('rainy', mountedAt)}
+        schedule={[buildScheduleFor(berlinToday, 9, 19, 'Europe/Berlin')]}
+      />
     );
   }
 

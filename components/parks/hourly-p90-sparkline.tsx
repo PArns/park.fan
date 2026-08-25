@@ -7,9 +7,11 @@ import { Sparkline, type SparklinePoint } from './sparkline';
 interface HourlyP90SparklineProps {
   hourlyP90: AttractionHistoryDay['hourlyP90'];
   className?: string;
+  /** Shared top of scale, when several of these are shown side by side. */
+  yMax?: number;
 }
 
-export function HourlyP90Sparkline({ hourlyP90, className }: HourlyP90SparklineProps) {
+export function HourlyP90Sparkline({ hourlyP90, className, yMax }: HourlyP90SparklineProps) {
   const points: SparklinePoint[] = useMemo(() => {
     if (!hourlyP90 || hourlyP90.length === 0) return [];
 
@@ -26,6 +28,7 @@ export function HourlyP90Sparkline({ hourlyP90, className }: HourlyP90SparklineP
     <Sparkline
       points={points}
       className={className}
+      yMax={yMax}
       formatTooltip={(p) => ({ label: p.label, value: `${p.value} min` })}
     />
   );

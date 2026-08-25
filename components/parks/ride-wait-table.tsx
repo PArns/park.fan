@@ -1,10 +1,11 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { Clock } from 'lucide-react';
 import { GlassCard } from '@/components/common/glass-card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
+import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import {
   useRideWaitStats,
   type RideWaitPark,
@@ -235,7 +236,10 @@ export function RideWaitTable({ parks, labels, options, columns }: RideWaitTable
                       <span className="text-muted-foreground/40">–</span>
                     ) : (
                       <>
-                        {row.p50} {labels.minutes}
+                        {/* Percentiles interpolate; an API build that has not rounded
+                            hands back 51. The park page's ranking card renders the same
+                            two fields through the same helper. */}
+                        {roundWaitTo5(row.p50)} {labels.minutes}
                       </>
                     )}
                   </td>
@@ -247,7 +251,7 @@ export function RideWaitTable({ parks, labels, options, columns }: RideWaitTable
                         <span className="text-muted-foreground/40">–</span>
                       ) : (
                         <>
-                          {row.p90} {labels.minutes}
+                          {roundWaitTo5(row.p90)} {labels.minutes}
                         </>
                       )}
                     </td>

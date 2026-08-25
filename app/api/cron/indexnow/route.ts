@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { submitUrlsToIndexNow } from '@/lib/indexnow';
 import { locales, SITE_URL } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
+import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { getParkPaths, getAttractionPaths, localizedUrls } from '@/lib/content-urls';
 
 const BASE_URL = SITE_URL;
@@ -19,7 +20,7 @@ export async function GET(request: Request) {
   // ── Static pages (high-value, matches sitemap priority ≥ 0.7) ─────────────
   for (const locale of locales) {
     urls.push(`${BASE_URL}/${locale}`); // home
-    urls.push(`${BASE_URL}/${locale}/howto`); // guide
+    urls.push(`${BASE_URL}/${locale}/${HOWTO_SEGMENTS[locale]}`); // guide
     urls.push(`${BASE_URL}/${locale}/${GLOSSARY_SEGMENTS[locale]}`); // glossary overview
   }
 

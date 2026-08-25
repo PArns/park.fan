@@ -4,6 +4,7 @@ import { CardPhoto, CardPhotoFrame } from '@/components/parks/card-photo';
 import { useTranslations } from 'next-intl';
 import { Crown, ChartColumn, Clock, MapPin } from 'lucide-react';
 import { cn, stripNewPrefix } from '@/lib/utils';
+import { roundWaitDeltaTo5, roundWaitTo5 } from '@/lib/utils/wait-time';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { formatDistance } from '@/lib/utils/distance-utils';
@@ -48,10 +49,6 @@ interface AttractionCardProps {
 }
 
 // ---------- helpers ----------
-
-function roundTo5(n: number): number {
-  return Math.round(n / 5) * 5;
-}
 
 function getWaitTime(attraction: ParkAttraction | FavoriteAttraction): number | null {
   const standby = attraction.queues?.find((q) => q.queueType === 'STANDBY');
@@ -164,7 +161,9 @@ export function AttractionCard({
     const prior = history.slice(-WINDOW * 2, -WINDOW);
     const avg = (pts: typeof history) =>
       pts.reduce((s, p) => s + (typeof p.waitTime === 'number' ? p.waitTime : 0), 0) / pts.length;
-    const delta = roundTo5(avg(recent) - avg(prior));
+    // A delta, not a wait time — the signed rounder, or every falling queue
+    // reads as "stable" (see `roundWaitDeltaTo5`).
+    const delta = roundWaitDeltaTo5(avg(recent) - avg(prior));
     if (delta === 0) {
       return { direction: 'stable', delta: 0 };
     }
@@ -432,7 +431,7 @@ export function AttractionCard({
                 <div className="flex shrink-0 flex-col gap-1" style={{ width: 88 }}>
                   <div className="flex items-baseline gap-1 leading-none">
                     <WaitTimeValue
-                      minutes={roundTo5(waitTime)}
+                      minutes={roundWaitTo5(waitTime)}
                       className="text-[40px] font-extrabold tracking-[-0.02em] tabular-nums"
                     />
                     <span className="text-[12px] font-medium" style={{ color: 'var(--pk-text-3)' }}>
@@ -480,7 +479,7 @@ export function AttractionCard({
                             style={{ color: 'var(--pk-text-3)' }}
                             aria-hidden="true"
                           />
-                          <span>{t('cardHigh', { time: roundTo5(stats.peakWaitToday) })}</span>
+                          <span>{t('cardHigh', { time: roundWaitTo5(stats.peakWaitToday) })}</span>
                         </span>
                       )}
                       {stats?.peakWaitToday != null && stats?.avgWaitToday != null && (
@@ -497,7 +496,7 @@ export function AttractionCard({
                           />
                           <span>
                             {t('cardAvgToday', {
-                              time: roundTo5(stats.avgWaitToday),
+                              time: roundWaitTo5(stats.avgWaitToday),
                             })}
                           </span>
                         </span>

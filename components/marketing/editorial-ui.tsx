@@ -1,13 +1,15 @@
 import React from 'react';
 import Image from 'next/image';
+import { Link } from '@/i18n/navigation';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { FaqStructuredData } from '@/components/seo/structured-data';
 import type { CrowdLevel } from '@/lib/api/types';
-import { ChevronRight, ShieldCheck } from 'lucide-react';
+import { ChevronRight, ShieldCheck, type LucideIcon } from 'lucide-react';
 import { Reveal, ScrollCue } from './scroll-reveal';
+import { ChapterHeading } from '@/components/common/chapter-heading';
 
 // Shared editorial/marketing UI kit — a full-bleed hero, Almanac-style numbered
 // section shells, scroll-revealed figures and cards. Used by the Fancast model
@@ -105,27 +107,21 @@ export function SectionShell({
   index: string;
   kicker?: string;
   title: string;
-  icon?: React.ElementType;
+  icon?: LucideIcon;
   children: React.ReactNode;
 }) {
   return (
     <section id={id} className="scroll-mt-24">
       <div className="container mx-auto px-4">
         <Reveal>
-          <div className="border-border mb-8 flex items-start gap-4 border-b pb-5">
-            <span className="text-primary/15 text-5xl leading-none font-black tabular-nums sm:text-7xl">
-              {index}
-            </span>
-            <div className="pt-1">
-              {kicker && (
-                <div className="text-primary mb-1 flex items-center gap-1.5 text-xs font-semibold tracking-widest uppercase">
-                  {Icon && <Icon className="h-3.5 w-3.5" />}
-                  {kicker}
-                </div>
-              )}
-              <h2 className="text-2xl font-bold sm:text-4xl">{title}</h2>
-            </div>
-          </div>
+          <ChapterHeading
+            index={index}
+            icon={Icon}
+            kicker={kicker}
+            title={title}
+            size="lg"
+            className="mb-8 pb-5"
+          />
         </Reveal>
         <div className="space-y-5">{children}</div>
       </div>
@@ -134,32 +130,62 @@ export function SectionShell({
 }
 
 // ── Text primitives ──────────────────────────────────────────────────────────
-// Running text is capped at a readable measure (max-w-3xl) while its parent
-// section spans the full site width, so prose stays legible next to full-bleed
-// grids and figures.
+// Running text runs the full width of its section — the same edges as the
+// headings, rules, figures and card grids around it. A narrower measure left a
+// ragged column with a dead strip beside every paragraph.
 export function Lead({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="text-foreground/80 max-w-3xl text-xl leading-relaxed font-medium">{children}</p>
-  );
+  return <p className="text-foreground/80 text-xl leading-relaxed font-medium">{children}</p>;
 }
 
 export function P({ children }: { children: React.ReactNode }) {
-  return <p className="text-muted-foreground max-w-3xl leading-relaxed">{children}</p>;
+  return <p className="text-muted-foreground leading-relaxed">{children}</p>;
 }
 
 /** Glossary-aware paragraph — auto-links known terms (string children only). */
 export function PG({ children }: { children: string }) {
   return (
-    <p className="text-muted-foreground max-w-3xl leading-relaxed">
+    <p className="text-muted-foreground leading-relaxed">
       <GlossaryInject>{children}</GlossaryInject>
     </p>
+  );
+}
+
+/**
+ * An inline link inside editorial prose.
+ *
+ * The site sets no global `a` style, so a bare `<Link>` in a `<P>` inherits the
+ * muted body colour and is invisible as a link — which is what every inline
+ * cross-reference on these pages looked like. Kept here rather than repeated
+ * per content file so the six translations of a page cannot drift apart on it.
+ */
+export function A({
+  href,
+  children,
+  className,
+}: {
+  href: string;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <Link
+      href={href}
+      prefetch={false}
+      className={cn(
+        'text-primary decoration-primary/40 font-medium underline underline-offset-2',
+        'hover:decoration-primary transition-colors',
+        className
+      )}
+    >
+      {children}
+    </Link>
   );
 }
 
 export function Highlight({ children }: { children: React.ReactNode }) {
   return (
     <Reveal>
-      <div className="from-primary/10 border-primary/20 flex max-w-3xl gap-3 rounded-2xl border bg-gradient-to-br to-transparent p-5 text-base leading-relaxed sm:p-6">
+      <div className="from-primary/10 border-primary/20 flex gap-3 rounded-2xl border bg-gradient-to-br to-transparent p-5 text-base leading-relaxed sm:p-6">
         <ShieldCheck className="text-primary mt-0.5 h-5 w-5 shrink-0" />
         <p className="text-foreground/90">{children}</p>
       </div>

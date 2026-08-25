@@ -28,7 +28,8 @@ Hub + attraction pages were re-added in July 2026: SERP checks showed competitor
 | `/{locale}/{glossary-segment}/{term}`                        | 0.8      | monthly         | –                    |
 | `/{locale}/blog` + posts etc. (**blog-live locales only**)   | 0.4–0.7  | daily–monthly   | posts: `updatedAt`   |
 | `/{locale}/search` (plain, no query)                         | 0.5      | monthly         | –                    |
-| `/{locale}/howto`, `/{locale}/{glossary-segment}` (index)    | 0.4–0.5  | monthly/weekly  | –                    |
+| `/{locale}/{howto-segment}` (the guide, localized slug)      | 0.8      | monthly         | –                    |
+| `/{locale}/{glossary-segment}` (index)                       | 0.5      | weekly          | –                    |
 
 Every `/sitemap.xml` entry carries absolute `alternates.languages` (hreflang) for all 6 locales plus `x-default` (EN); the attraction children deliberately do not (see above).
 

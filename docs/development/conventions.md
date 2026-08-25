@@ -164,11 +164,11 @@ byte-identical with no `Slot` in play:
 ```tsx
 // ✗ server component
 <Button asChild variant="outline" size="sm" className="rounded-full">
-  <Link href="/howto">{label}</Link>
+  <Link href="/parks">{label}</Link>
 </Button>
 
 // ✓
-<Link href="/howto" {...buttonLinkProps({ variant: 'outline', size: 'sm', className: 'rounded-full' })}>
+<Link href="/parks" {...buttonLinkProps({ variant: 'outline', size: 'sm', className: 'rounded-full' })}>
   {label}
 </Link>
 ```

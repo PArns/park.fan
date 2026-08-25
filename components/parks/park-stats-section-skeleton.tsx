@@ -1,5 +1,15 @@
 import { GlassCard } from '@/components/common/glass-card';
+import { ParkStatsHeader } from '@/components/parks/park-stats-header';
 import { Skeleton } from '@/components/ui/skeleton';
+
+/** The three cards <ParkStatsSection> can render. Declared here because the skeleton has to
+ *  mirror the same selection and the section already imports this file. */
+export type StatsCard = 'attractions' | 'months' | 'weekdays';
+export const ALL_STATS_CARDS = [
+  'attractions',
+  'months',
+  'weekdays',
+] as const satisfies readonly StatsCard[];
 
 /**
  * Right-aligned wait-time column placeholders. Two by default ("typical / peak", the narrow
@@ -58,8 +68,19 @@ function CrowdCardSkeleton({ rows }: { rows: number }) {
  * Loading placeholder for <ParkStatsSection>. Mirrors the section header, the
  * top-attractions ranking card, and the two crowd-by-period cards (by month ·
  * by weekday) so the layout stays stable while the streamed stats load.
+ *
+ * It has to mirror the CALLER's `show`/`hideHeading`, not the full section: the
+ * guide page and the blog widgets mount `show={['attractions']} hideHeading`, and
+ * a skeleton that always paints a heading plus three cards collapses several
+ * hundred pixels the moment the data lands — under everything below it.
  */
-export function ParkStatsSectionSkeleton() {
+export function ParkStatsSectionSkeleton({
+  show = ALL_STATS_CARDS,
+  hideHeading = false,
+}: {
+  show?: readonly StatsCard[];
+  hideHeading?: boolean;
+} = {}) {
   const nameWidths = [
     'w-48',
     'w-32',
@@ -75,39 +96,37 @@ export function ParkStatsSectionSkeleton() {
 
   return (
     <section className="mt-8 space-y-4" aria-hidden="true">
-      <div className="bg-background/70 rounded-xl px-4 py-3 backdrop-blur-md">
-        <div className="flex items-center gap-2">
-          <Skeleton className="h-5 w-5" />
-          <Skeleton className="h-6 w-64 max-w-full" />
-        </div>
-        <Skeleton className="mt-2 h-4 w-80 max-w-full" />
-      </div>
+      <ParkStatsHeader hidden={hideHeading} />
 
-      <GlassCard variant="medium" className="space-y-2 p-4">
-        <div className="flex items-center gap-2">
-          <Skeleton className="h-4 w-4" />
-          <Skeleton className="h-4 w-64 max-w-full" />
-        </div>
-        <div className="space-y-0.5">
-          {/* Column headers of the ranking table (rank · attraction · now / typical / peak). */}
-          <div className="flex items-center gap-3 px-2 pb-1">
-            <Skeleton className="h-3 w-20" />
-            <div className="ml-auto flex shrink-0 items-center gap-3">
-              <Skeleton className="hidden h-3 w-12 sm:block" />
-              <Skeleton className="hidden h-3 w-12 sm:block" />
-              <Skeleton className="h-3 w-12" />
-            </div>
+      {show.includes('attractions') && (
+        <GlassCard variant="medium" className="space-y-2 p-4">
+          <div className="flex items-center gap-2">
+            <Skeleton className="h-4 w-4" />
+            <Skeleton className="h-4 w-64 max-w-full" />
           </div>
-          {nameWidths.map((w, i) => (
-            <AttractionRowSkeleton key={i} nameWidth={w} />
-          ))}
-        </div>
-      </GlassCard>
+          <div className="space-y-0.5">
+            {/* Column headers of the ranking table (rank · attraction · now / typical / peak). */}
+            <div className="flex items-center gap-3 px-2 pb-1">
+              <Skeleton className="h-3 w-20" />
+              <div className="ml-auto flex shrink-0 items-center gap-3">
+                <Skeleton className="hidden h-3 w-12 sm:block" />
+                <Skeleton className="hidden h-3 w-12 sm:block" />
+                <Skeleton className="h-3 w-12" />
+              </div>
+            </div>
+            {nameWidths.map((w, i) => (
+              <AttractionRowSkeleton key={i} nameWidth={w} />
+            ))}
+          </div>
+        </GlassCard>
+      )}
 
-      <div className="grid gap-4 md:grid-cols-2">
-        <CrowdCardSkeleton rows={6} />
-        <CrowdCardSkeleton rows={7} />
-      </div>
+      {(show.includes('months') || show.includes('weekdays')) && (
+        <div className="grid gap-4 md:grid-cols-2">
+          {show.includes('months') && <CrowdCardSkeleton rows={6} />}
+          {show.includes('weekdays') && <CrowdCardSkeleton rows={7} />}
+        </div>
+      )}
     </section>
   );
 }

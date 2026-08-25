@@ -1,13 +1,15 @@
 import type { ReactNode } from 'react';
 import type { LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { ChapterHeading } from '@/components/common/chapter-heading';
 
 interface SectionHeadingProps {
   /** Leading icon — gives each chapter a recognizable visual anchor. */
   icon: LucideIcon;
   /**
    * Icon tint override, e.g. rope-drop's emerald/indigo. Defaults to the
-   * primary tint (chapter: applied to the tile, plain: to the icon itself).
+   * primary tint. In the chapter variant it replaces the watermark's
+   * `text-primary/25`, so pass an opacity with it.
    */
   iconClassName?: string;
   /** Node rather than string: some titles wrap a glossary link. */
@@ -19,10 +21,10 @@ interface SectionHeadingProps {
   /** Heading level for correct document outline. Defaults to h2. */
   as?: 'h2' | 'h3';
   /**
-   * `chapter` (default): icon in a tinted rounded square + bold title — the
-   * page-level chapter header. `plain`: bare tinted icon + semibold title +
-   * optional badge — the card/sub-section header (absorbed the former
-   * separate `SectionHeader` component).
+   * `chapter` (default): the site-wide chapter header — oversized translucent
+   * icon, big title, closing rule (`ChapterHeading`). `plain`: bare tinted
+   * icon + semibold title + optional badge — the card/sub-section header
+   * (absorbed the former separate `SectionHeader` component).
    */
   variant?: 'chapter' | 'plain';
   /**
@@ -67,17 +69,19 @@ export function SectionHeading({
     );
   }
 
+  // The page-level chapter header is `ChapterHeading` — the same component the
+  // guide page's section shells and the blog's `##` headings render, so a
+  // chapter opens the same way wherever a reader meets one.
   return (
-    <div className={cn('mb-4 flex flex-wrap items-center gap-3', frost, className)}>
-      <span
-        className="bg-primary/10 text-primary flex h-9 w-9 shrink-0 items-center justify-center rounded-lg"
-        aria-hidden="true"
-      >
-        <Icon className={cn('h-5 w-5', iconClassName)} />
-      </span>
-      <As className="text-xl font-bold sm:text-2xl">{title}</As>
-      {badge}
-      {hint && <span className="text-muted-foreground ml-auto text-xs sm:text-sm">{hint}</span>}
-    </div>
+    <ChapterHeading
+      icon={Icon}
+      iconClassName={iconClassName}
+      title={title}
+      hint={hint}
+      badge={badge}
+      as={As}
+      frosted={frosted}
+      className={className}
+    />
   );
 }

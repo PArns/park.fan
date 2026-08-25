@@ -584,15 +584,18 @@ de junio estaba en «bajo»; el viernes puente, el 5, en «alto».
 
 Hay que matizarlo. Tenemos exactamente un viernes puente medido, y justo ese
 salió flojo. El 15 de mayo de 2026 pasó una tormenta, no se pasó de doce grados,
-y aun así dio para «alto». El canal Epfan95 lleva años yendo justamente
+y aun así dio para «alto». El canal Parkfan95 lleva años yendo justamente
 esos viernes y grabando el resultado. El vídeo de 2026 se titula «el día lleno
 más vacío»; los de los años anteriores, «masas de gente, tiempos de espera altos
 y muchos coches». Un viernes puente con sol tiene otra pinta que nuestro único
 valor medido.
 
-https://www.youtube.com/watch?v=Js8j_qvKCoA
+https://www.youtube.com/watch?v=aRH5xvAKE_I
 
 [El mismo viernes puente un año antes](https://www.youtube.com/watch?v=Js8j_qvKCoA)
+
+Los dos son del auténtico [Parkfan95](https://parkfan95.de), o sea de Silas. Él
+tiene el nombre; yo solo compré antes el dominio, por casualidad.
 
 ### El mes
 
@@ -988,5 +991,5 @@ vagoneta que gira.
 - El Ammolite con dos estrellas Michelin desde noviembre de 2014, Silver Lake City y la Riverside Western Lodge con sus 119 habitaciones: [Ammolite – The Lighthouse Restaurant (oficial)](https://www.europapark.de/de/uebernachten/gastronomie/ammolite-lighthouse-restaurant) · [Europa-Park Riverside Western Lodge (oficial)](https://www.europapark.de/de/uebernachten/riverside-western-lodge)
 - Llegada por la A5, tarifas de aparcamiento, Rulantica, el Eatrenalin y su estrella Michelin de 2026: [Cómo llegar al Europa-Park (oficial)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park) · [Europa-Park Erlebnis-Resort (oficial)](https://www.europapark.de/de) · [Eatrenalin en en.wikipedia](https://en.wikipedia.org/wiki/Eatrenalin)
 - Composición del público por país de origen y la parte suiza: [«50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort» (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300) · [«874'000 Schweizer Besucher stellen den grössten Anteil» (aboutTravel)](https://abouttravel.ch/reisebranche/874000-schweizer-besucher-stellen-den-groessten-anteil/)
-- Viernes puente: niveles de afluencia y meteorología de los días alrededor de la Ascensión y del Corpus Christi de 2026, sacados de nuestro propio calendario (medidos, no previstos), más la serie de vídeos [«BRÜCKENTAG im EUROPA-PARK 2025» (Epfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [la misma serie en 2026 (Epfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
+- Viernes puente: niveles de afluencia y meteorología de los días alrededor de la Ascensión y del Corpus Christi de 2026, sacados de nuestro propio calendario (medidos, no previstos), más la serie de vídeos [«BRÜCKENTAG im EUROPA-PARK 2025» (Parkfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [la misma serie en 2026 (Parkfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
 - Datos de tiempos de espera, rope drop y afluencia: nuestro propio historial de tiempos de espera sobre un año móvil, perfil horario sobre un año móvil, previsión de afluencia a 90 días, [Europa-Park en park.fan](ref:europa-park)

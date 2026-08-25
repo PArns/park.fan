@@ -152,6 +152,54 @@ Without the blend mode the whole effect sits inside the baseline's noise. **Meas
 inside the page** if you touch it: driving the pointer with Playwright's `mouse.move` puts a CDP
 round trip between frames and invented a 20 ms regression that was not there.
 
+## Chapter headings
+
+One component opens every chapter on the site: `ChapterHeading`
+(`components/common/chapter-heading.tsx`). An oversized translucent glyph on the left, an optional
+kicker, the title, and the rule that closes it.
+
+| Surface                        | Renders it through                        | Glyph                       |
+| ------------------------------ | ----------------------------------------- | --------------------------- |
+| Guide page, Fancast, best-time | `SectionShell` (`marketing/editorial-ui`) | chapter number, `size="lg"` |
+| Blog post `##`                 | `blog-content.tsx` h2 renderer            | chapter number              |
+| Ride page chapters             | `PageSection` → `SectionHeading`          | section icon                |
+| Park page chapters             | `ChapterHeading` directly                 | section icon                |
+
+Before this there were five. A park page carried `text-xl font-semibold` with an icon, `text-xl
+font-bold` with an icon, a `text-2xl` frosted pill, a bare `<h2 class="text-xl font-bold">` and
+`GlassSectionTitle`, and nothing in the page told a reader which of them opened a chapter and
+which labelled a card inside one. `GlassSectionTitle` is still in use and is not a chapter header:
+it labels a band _inside_ a page — the homepage favourites, the nearby-parks list and its
+skeleton.
+
+Three things the component decides, so a call site cannot get them wrong:
+
+- **The number, where there is one, must not skip.** A blog post's chapter numbers come from
+  `extractToc(markdown)`, not from a counter incremented while rendering: the body is split into
+  one `<ReactMarkdown>` per widget fence, so a render-time counter restarts at every widget and
+  numbers one post 01, 02, 01, 02. Park and ride chapters get **no** number at all for the same
+  reason — `NearbyParksSection` renders nothing for 48 % of parks and the school-holiday warning
+  for 6 of 27, so a fixed sequence would arrive at the reader with gaps in it.
+- **An icon standing in for the number is drawn at `/25`, not `/15`.** The numeral is a solid
+  glyph and still reads at 15 % opacity; a hairline Lucide icon at the same value disappears.
+- **`frosted` is a full-width band, not a `w-fit` pill.** Park and ride pages render over an
+  arbitrary background photo, and a watermark glyph over the bright part of one is unreadable. The
+  band is `rounded-t-xl` and the heading's own `border-b` closes it, so the rule doubles as the
+  band's lower edge.
+
+The heading's height moves when a title wraps, which on the park page happens per locale and per
+breakpoint. Both streamed chapters therefore render **the real heading** in their loading state —
+`ParkBestDaysHeader` and `ParkStatsHeader` are their own files precisely so the placeholder can
+mount them, with only the data-dependent hint line replaced by a `Skeleton`. A sized grey box in
+their place left the mobile header 66–120 px short and the whole grid below absorbed the
+difference. See [system-overview](../architecture/system-overview.md#5-a-streamed-section-owes-the-page-its-height-requirement).
+
+`SectionHeading`'s `plain` variant is untouched and is still the right choice **inside** a card
+(the rope-drop panel, the typical-waits block, a city row on a country page) — a chapter header
+nested in a chapter's own content is what the split is for.
+
+---
+
 ## Section reveals
 
 `.pk-reveal` is a scroll-driven CSS animation (`animation-timeline: view()`), not the older

@@ -4,6 +4,7 @@ import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/config';
+import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { Clock, TrendingUp, Map as MapIcon, BookOpen, Sparkles } from 'lucide-react';
 
 import nextDynamic from 'next/dynamic';
@@ -355,7 +356,7 @@ export default async function HomePage({ params }: HomePageProps) {
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                href="/howto"
+                href={`/${HOWTO_SEGMENTS[locale as Locale]}`}
                 prefetch={false}
                 className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold shadow-sm transition-colors"
               >

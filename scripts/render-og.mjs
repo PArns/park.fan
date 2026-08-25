@@ -33,7 +33,7 @@ const OUT_DIR = join(process.cwd(), '.og-preview');
 const SAMPLES = [
   { label: 'home', path: 'en' },
   { label: 'generic-search', path: 'en/search' },
-  { label: 'generic-howto', path: 'en/howto' },
+  { label: 'generic-howto', path: 'en/how-park-fan-works' },
   { label: 'generic-impressum', path: 'de/impressum' },
   { label: 'generic-glossary-overview', path: 'en/glossary' },
   { label: 'continent', path: 'en/europe' },

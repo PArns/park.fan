@@ -73,7 +73,7 @@ function toRideWaitPark(park: ResolvedPark): RideWaitPark | null {
  *   ```ride-waits-widget park=efteling top=10 columns=land,peak,days
  *   ```
  *
- *   ```ride-waits-widget rides=attractiepark-toverland/troy|Troy|Holz,efteling/joris-en-de-draak columns=park,type,peak highlight=attractiepark-toverland/troy
+ *   ```ride-waits-widget rides=attractiepark-toverland/troy|Troy|Holz;efteling/joris-en-de-draak columns=park,type,peak highlight=attractiepark-toverland/troy
  *   ```
  *
  * Replaces twenty-two hand-maintained markdown tables across four posts and six locales. They had

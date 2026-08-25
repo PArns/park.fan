@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from '@/i18n/navigation';
+import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { PopularParksGrid } from '@/components/home/featured-parks-slot';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import {
@@ -244,7 +245,7 @@ export function ContentIT() {
         />
         <P>
           Come tutto questo si combina in un parco è spiegato passo dopo passo nella{' '}
-          <Link href="/howto">guida completa</Link>.
+          <Link href={`/${HOWTO_SEGMENTS.it}`}>guida completa</Link>.
         </P>
       </SectionShell>
 

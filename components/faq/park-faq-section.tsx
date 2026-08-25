@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 import { CrowdCalendarFaqLink } from '@/components/faq/crowd-calendar-faq-link';
 import {
   ChevronDown,
+  HelpCircle,
   Calendar,
   MapPin,
   Ticket,
@@ -17,6 +18,7 @@ import {
 import { Card } from '@/components/ui/card';
 import { stripNewPrefix } from '@/lib/utils';
 import type { LucideIcon } from 'lucide-react';
+import { ChapterHeading } from '@/components/common/chapter-heading';
 import { GlossaryInjectClient } from '@/components/glossary/glossary-inject-client';
 import {
   GlossaryInjectProvider,
@@ -168,9 +170,7 @@ export function ParkFAQSection({
       segment={glossarySegment}
     >
       <section className="space-y-4">
-        <div className="bg-background/70 rounded-xl px-4 py-3 backdrop-blur-md">
-          <h2 className="text-2xl font-bold">{t('title', { park: parkName })}</h2>
-        </div>
+        <ChapterHeading icon={HelpCircle} title={t('title', { park: parkName })} frosted />
         <div className="space-y-3">
           {faqs.map((faq, index) => {
             const Icon = ICON_MAP[faq.iconName as keyof typeof ICON_MAP];

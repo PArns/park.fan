@@ -73,12 +73,24 @@ export function ArticleStructuredData({
   url,
   locale,
   image,
+  datePublished,
+  dateModified,
 }: {
   title: string;
   description: string;
   url: string;
   locale: string;
   image?: string;
+  /** `YYYY-MM-DD`. Optional — a guide with no meaningful publication date omits it. */
+  datePublished?: string;
+  /**
+   * `YYYY-MM-DD`. Worth setting on an evergreen guide: it is the only signal
+   * that separates a page kept current from one written once and abandoned, and
+   * Google shows it in the result. Must be a date the content actually changed,
+   * so it is written by hand rather than derived from the build clock — a
+   * timestamp that moves on every deploy says nothing and is arguably a lie.
+   */
+  dateModified?: string;
 }) {
   const data: WithContext<Article> = {
     '@context': 'https://schema.org',
@@ -89,6 +101,8 @@ export function ArticleStructuredData({
     url,
     inLanguage: locale,
     ...(image && { image }),
+    ...(datePublished && { datePublished }),
+    ...(dateModified && { dateModified }),
     author: { '@type': 'Organization', name: 'park.fan', url: SITE_URL },
     publisher: {
       '@type': 'Organization',

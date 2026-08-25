@@ -399,6 +399,43 @@ const nextConfig: NextConfig = {
       });
     }
 
+    // "How park.fan works" guide: localized segment canonicalization (mirrors the
+    // best-time hub above). The page shipped for a year on `/howto` in all six
+    // languages, so the legacy segment is folded into the wrong-segment set — it
+    // is what the index, the daily IndexNow push and every old link still name.
+    const howtoSegments: Record<string, string> = {
+      en: 'how-park-fan-works',
+      de: 'so-funktioniert-park-fan',
+      fr: 'comment-fonctionne-park-fan',
+      it: 'come-funziona-park-fan',
+      nl: 'hoe-park-fan-werkt',
+      es: 'como-funciona-park-fan',
+    };
+    const howtoLegacySegment = 'howto';
+    const howtoAll = [...Object.values(howtoSegments), howtoLegacySegment];
+    for (const [locale, correct] of Object.entries(howtoSegments)) {
+      for (const wrong of howtoAll) {
+        if (wrong === correct) continue;
+        rules.push({
+          source: `/${locale}/${wrong}`,
+          destination: `/${locale}/${correct}`,
+          permanent: true,
+        });
+      }
+      rules.push({
+        source: `/${correct}`,
+        destination: `/${locale}/${correct}`,
+        permanent: true,
+      });
+    }
+    // Bare `/howto` gets no rule of its own on purpose. It names no language, so
+    // any fixed destination here would pin a German visitor to the English page.
+    // Left alone it goes the same way every unprefixed path goes: the intl
+    // middleware resolves the locale (`/howto` → `/de/howto`), and the per-locale
+    // rule above finishes it (`/de/howto` → `/de/so-funktioniert-park-fan`). Two
+    // hops, but it lands in the reader's language. Verified against a production
+    // build; `howtoLegacySegment` is only in the wrong-segment set above.
+
     // 11. Blog tag slug unified. French posts carried two spellings of the same tag
     // (`temps-attente` in two posts, `temps-d-attente` in a third), which split the archive
     // in two AND made the cross-locale tag mapping ambiguous, so the French tag pages lost
@@ -472,6 +509,22 @@ const nextConfig: NextConfig = {
       rules.push({
         source: `/${locale}/${segment}`,
         destination: `/${locale}/best-time-to-visit`,
+      });
+    }
+
+    // "How park.fan works" guide: serve localized segments via the canonical
+    // route folder (app/[locale]/how-park-fan-works). EN needs no rewrite.
+    const howtoSegments: Record<string, string> = {
+      de: 'so-funktioniert-park-fan',
+      fr: 'comment-fonctionne-park-fan',
+      it: 'come-funziona-park-fan',
+      nl: 'hoe-park-fan-werkt',
+      es: 'como-funciona-park-fan',
+    };
+    for (const [locale, segment] of Object.entries(howtoSegments)) {
+      rules.push({
+        source: `/${locale}/${segment}`,
+        destination: `/${locale}/how-park-fan-works`,
       });
     }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from '@/i18n/navigation';
+import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { MLStatsSection } from '@/components/home/ml-stats-section';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
@@ -389,8 +390,8 @@ export function ContentNL() {
         />
         <P>
           Hoe dit allemaal in een park samenspeelt, loopt de{' '}
-          <Link href="/howto">volledige handleiding</Link> stap voor stap door — inclusief
-          druktekalender, badges en live wachttijden.
+          <Link href={`/${HOWTO_SEGMENTS.nl}`}>volledige handleiding</Link> stap voor stap door —
+          inclusief druktekalender, badges en live wachttijden.
         </P>
       </SectionShell>
 

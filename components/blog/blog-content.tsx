@@ -22,6 +22,8 @@ import {
   getParkBackgroundImage,
 } from '@/lib/utils/park-assets';
 import { parseGlossarySegments } from '@/lib/glossary/parse-segments';
+import { extractToc } from '@/lib/blog/toc';
+import { ChapterHeading } from '@/components/common/chapter-heading';
 import { GlossaryInjectTerm } from '@/components/glossary/glossary-inject-term';
 import { getGlossaryTerms } from '@/lib/glossary/translations';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
@@ -321,6 +323,17 @@ function segmentize(markdown: string): Segment[] {
   return segments;
 }
 
+/**
+ * Plain text of a hast element — the fallback key for a chapter number when the
+ * rendered id and the extracted one disagree.
+ */
+function hastText(node: unknown): string {
+  const n = node as { value?: string; children?: unknown[] } | undefined;
+  if (!n) return '';
+  if (typeof n.value === 'string') return n.value;
+  return (n.children ?? []).map(hastText).join('');
+}
+
 export async function BlogContent({ markdown, locale }: BlogContentProps) {
   const { parkSlugs, attractions, parkGeoPaths, attractionGeoPaths } = extractInlineRefs(markdown);
 
@@ -356,6 +369,22 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
   // Also pre-resolve any park slugs referenced from widgets — both
   // `park-widget slug=…` and `attraction-widget parkSlug=… slug=…`.
   const segments = segmentize(markdown);
+
+  // Chapter numbers for the post's `##` headings, resolved from the markdown
+  // rather than counted while rendering: the body is split into one
+  // <ReactMarkdown> per widget fence, so a render-time counter would restart
+  // at every widget and number the same post 01, 02, 01, 02. Keyed by the
+  // rehype-slug id and by the heading text, because rehype-slug runs per
+  // segment while `extractToc` slugs the whole post — a heading that repeats
+  // across two segments gets a `-1` suffix from one and not the other.
+  const chapterNumbers = new Map<string, string>();
+  extractToc(markdown)
+    .filter((entry) => entry.depth === 2)
+    .forEach((entry, i) => {
+      const n = String(i + 1).padStart(2, '0');
+      chapterNumbers.set(entry.id, n);
+      chapterNumbers.set(entry.text.toLowerCase(), n);
+    });
   for (const seg of segments) {
     if (seg.type !== 'widget' || !seg.widget) continue;
     const { name, attrs } = seg.widget;
@@ -579,13 +608,13 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
     // `clear-both`: a floated inline image from the previous section must never
     // bleed alongside the next heading — a new section always starts on a clean
     // line.
-    h2: ({ children, id }) => (
-      <h2
+    h2: ({ children, id, node }) => (
+      <ChapterHeading
         id={id}
-        className="text-foreground clear-both mt-12 mb-4 scroll-mt-24 text-2xl font-bold tracking-tight"
-      >
-        {injectGlossary(children)}
-      </h2>
+        index={chapterNumbers.get(id ?? '') ?? chapterNumbers.get(hastText(node).toLowerCase())}
+        title={injectGlossary(children)}
+        className="clear-both mt-14"
+      />
     ),
     h3: ({ children, id }) => (
       <h3

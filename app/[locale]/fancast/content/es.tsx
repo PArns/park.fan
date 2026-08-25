@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from '@/i18n/navigation';
+import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { MLStatsSection } from '@/components/home/ml-stats-section';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
@@ -389,8 +390,8 @@ export function ContentES() {
         />
         <P>
           Cómo se combina todo esto dentro de un parque lo recorre paso a paso la{' '}
-          <Link href="/howto">guía completa</Link>: calendario de afluencia, distintivos y tiempos
-          de espera en directo incluidos.
+          <Link href={`/${HOWTO_SEGMENTS.es}`}>guía completa</Link>: calendario de afluencia,
+          distintivos y tiempos de espera en directo incluidos.
         </P>
       </SectionShell>
 

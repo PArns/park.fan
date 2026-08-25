@@ -10,10 +10,17 @@ import type { ParkWithAttractions } from '@/lib/api/types';
 
 interface HeaderHolidayPanelProps {
   initialData: ParkWithAttractions;
-  continent: string;
-  country: string;
-  city: string;
-  parkSlug: string;
+  /**
+   * Geo params enable the live park poll behind `useTodaySchedule`. Omit all
+   * four and the panel renders from `initialData` alone and fetches nothing —
+   * which is what a static example wants (the guide page mounts one, and a
+   * full park payload for one row of holiday chips is not a trade worth
+   * making).
+   */
+  continent?: string;
+  country?: string;
+  city?: string;
+  parkSlug?: string;
   className?: string;
 }
 
@@ -32,10 +39,10 @@ interface HeaderHolidayPanelProps {
  */
 export function HeaderHolidayPanel({
   initialData,
-  continent,
-  country,
-  city,
-  parkSlug,
+  continent = '',
+  country = '',
+  city = '',
+  parkSlug = '',
   className,
 }: HeaderHolidayPanelProps) {
   const t = useTranslations('parks');

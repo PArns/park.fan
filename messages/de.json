@@ -198,7 +198,7 @@
       "p4": "Suche deinen Wunschpark über die Suchleiste oder stöbere nach Kontinent, Land und Stadt. Auf der Parkseite findest du Live-Wartezeiten für alle Fahrgeschäfte, Restaurants und Shows – minütlich aktualisiert – sowie KI-Prognosen und einen tagesgenauen Crowd-Kalender. Grüne Tage signalisieren kurze Warteschlangen und wenig Betrieb; orange oder rote Tage stehen für mehr Andrang und längere Wartezeiten.",
       "p5": "park.fan ist ein lebendes Projekt, das laufend um neue Features und Parks erweitert wird. Speichere deine Lieblingsparks für schnellen Zugriff, nutze die In-Park-Navigation für die effizienteste Route durch den Park – und wirf vor der Buchung unbedingt einen Blick in den Crowd-Kalender, um deinen Besuch auf den bestmöglichen Tag zu legen.",
       "fancastLink": "Fancast entdecken",
-      "howtoLink": "Vollständige Anleitung lesen"
+      "howtoLink": "So funktioniert park.fan"
     },
     "worldPanel": {
       "title": "Parks in {continent}",
@@ -227,7 +227,7 @@
     },
     "api": "API Dokumentation",
     "impressum": "Impressum",
-    "howto": "Anleitung",
+    "howto": "Wartezeiten verstehen",
     "fancast": "Fancast",
     "bestTime": "Beste Reisezeit",
     "glossaryLink": "Wörterbuch",
@@ -280,7 +280,7 @@
     "search": "Parks & Attraktionen suchen",
     "admin": "Admin",
     "nearbyPark": "In der Nähe: {parkName}",
-    "howto": "Anleitung",
+    "howto": "So funktioniert's",
     "glossary": "Wörterbuch",
     "blog": "Blog",
     "bestTime": "Beste Reisezeit",
@@ -1275,8 +1275,8 @@
     }
   },
   "howto": {
-    "title": "So funktioniert es – Die vollständige Anleitung",
-    "description": "Alles über park.fan erklärt: Suche, Favoriten, Crowd-Kalender, KI-Prognosen und alle Badges im Überblick. Für Familien, Freizeitparknerds und Erstbesucher."
+    "title": "So funktioniert park.fan",
+    "description": "70 Minuten bei Taron: viel oder normal? Wie du eine Wartezeit einordnest, wann eine Bahn am ruhigsten ist und woher die Zahlen kommen."
   },
   "impressum": {
     "title": "Impressum - park.fan",
