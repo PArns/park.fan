@@ -6,6 +6,20 @@ import { LICENSE_LINK_HEADER } from './lib/agents/licensing';
 
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
+/**
+ * A shared-cache window as the two headers it takes to reach both caches in front of this app.
+ *
+ * Vercel strips `s-maxage` and `stale-while-revalidate` out of `Cache-Control` before the response
+ * leaves its edge unless a `CDN-Cache-Control` rides along, so Cloudflare — which sits in front of
+ * Vercel and whose `/api/*` rule reads "use cache-control header if present, bypass if not" — used
+ * to see a bare `public`: present, no TTL, therefore its own default edge TTL. See
+ * lib/api/cdn-cache-headers.ts, which does the same for route handlers.
+ */
+const sharedCache = (value: string) => [
+  { key: 'Cache-Control', value },
+  { key: 'CDN-Cache-Control', value },
+];
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   // Cache Components (PPR) is intentionally OFF. The high-traffic detail pages (park, attraction,
@@ -630,6 +644,19 @@ const nextConfig: NextConfig = {
       // moved here too.) The park calendar/stats/nowcast back the park page's client-loaded
       // BestDays/Stats/weather sections; CDN-caching keeps the heavy calendar (~450 KB) + the stats
       // off the backend on every park view.
+      //
+      // Which of the two wins DEPENDS ON WHERE IT RUNS, so never let them disagree. `next dev`
+      // resolves a `headers()` rule over the route handler's own Cache-Control (the note this block
+      // used to carry, and it is right about dev); Vercel resolves it the other way — a header on a
+      // function response beats the rule for the same route
+      // (vercel.com/docs/caching/cdn-cache#using-vercel-json-and-next-config-js), verifiable on
+      // production, where `/api/parks/<geo>/<park>` answers the handler's `no-store` while the rule
+      // for it said `s-maxage=60`. Two sources of truth resolving in opposite directions is how
+      // the attraction detail spent months serving its handler's 600 s while this file said 300.
+      //
+      // So every cacheable /api route is listed here with EXACTLY the value its handler returns,
+      // and a route whose handler answers `no-store` is not listed at all — the blanket rule above
+      // already says so. Change one half and change the other.
       {
         // 30 days, matching the value the route handler sets on its own response. It had to be
         // repeated here and the two had drifted: this rule said 1 day, and a `headers()` rule
@@ -640,12 +667,9 @@ const nextConfig: NextConfig = {
         // crowd level and wait time were deliberately removed from them (see the route), since a
         // social platform re-shows a cached preview for days anyway.
         source: '/api/og/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=2592000, s-maxage=2592000, stale-while-revalidate=86400',
-          },
-        ],
+        headers: sharedCache(
+          'public, max-age=2592000, s-maxage=2592000, stale-while-revalidate=86400'
+        ),
       },
       {
         // The media database catalog. Safe to cache harder than anything else under
@@ -657,28 +681,35 @@ const nextConfig: NextConfig = {
         // route handler's own Cache-Control (see the blanket /api no-store above) —
         // keep the two in step.
         source: '/api/media/:path*',
-        headers: [
-          { key: 'Cache-Control', value: 'public, s-maxage=86400, stale-while-revalidate=604800' },
-        ],
+        headers: sharedCache('public, s-maxage=86400, stale-while-revalidate=604800'),
       },
       {
         // Same for the collection route itself, which `/api/media/:path*` does not match.
         source: '/api/media',
-        headers: [
-          { key: 'Cache-Control', value: 'public, s-maxage=86400, stale-while-revalidate=604800' },
-        ],
+        headers: sharedCache('public, s-maxage=86400, stale-while-revalidate=604800'),
       },
       {
         source: '/api/parks/:continent/:country/:city/:park/calendar',
-        headers: [
-          { key: 'Cache-Control', value: 'public, s-maxage=300, stale-while-revalidate=600' },
-        ],
+        headers: sharedCache('public, s-maxage=300, stale-while-revalidate=600'),
+      },
+      {
+        source: '/api/parks/:continent/:country/:city/:park/best-days',
+        headers: sharedCache('public, s-maxage=3600, stale-while-revalidate=86400'),
+      },
+      {
+        // The blog's inline ride references poll this, so it is live data — but the backend
+        // caches it 5 min anyway, and one post naming ten rides in one park is one request.
+        source: '/api/parks/:continent/:country/:city/:park/wait-times',
+        headers: sharedCache('public, s-maxage=60, stale-while-revalidate=240'),
       },
       {
         source: '/api/parks/:continent/:country/:city/:park/stats',
-        headers: [
-          { key: 'Cache-Control', value: 'public, s-maxage=3600, stale-while-revalidate=82800' },
-        ],
+        headers: sharedCache('public, s-maxage=3600, stale-while-revalidate=82800'),
+      },
+      {
+        // `/stats/hourly` is a separate path — the `/stats` rule above does not match it.
+        source: '/api/parks/:continent/:country/:city/:park/stats/hourly',
+        headers: sharedCache('public, s-maxage=3600, stale-while-revalidate=82800'),
       },
       {
         // Attraction detail (history + hourlyForecast time-series) backing the attraction page's
@@ -686,22 +717,14 @@ const nextConfig: NextConfig = {
         // blanket /api no-store re-enables CDN caching — without it the route handler's Cache-Control
         // is clobbered to no-store.
         //
-        // 5 min, down from 10: this response now also carries the ride page's LIVE panel (status,
-        // queues, wait time) since useLiveAttractionData stopped polling the whole park for them,
-        // and live values must not sit behind a window twice as long as the one the park poll had.
-        // 300 is exactly what the backend caches an attraction for (HttpCacheInterceptor(300)), so
-        // this adds no origin load — it just stops the edge holding a copy past the point where a
-        // fresher one exists.
+        // 5 min fresh + 1 min stale, and the reasoning is in the route handler — keep the two
+        // values identical, they resolve in opposite directions on Vercel and in `next dev`.
         source: '/api/parks/:continent/:country/:city/:park/attractions/:attraction',
-        headers: [
-          { key: 'Cache-Control', value: 'public, s-maxage=300, stale-while-revalidate=300' },
-        ],
+        headers: sharedCache('public, s-maxage=300, stale-while-revalidate=60'),
       },
       {
         source: '/api/parks/:continent/:country/:city/:park/weather/nowcast',
-        headers: [
-          { key: 'Cache-Control', value: 'public, s-maxage=60, stale-while-revalidate=120' },
-        ],
+        headers: sharedCache('public, s-maxage=60, stale-while-revalidate=120'),
       },
       {
         // Card-overlay live status batch (use-live-parks-by-region), polled by every hub card grid,
@@ -709,59 +732,54 @@ const nextConfig: NextConfig = {
         // the park poll below; the response is byte-identical for every visitor of a region set,
         // so the window is nearly a pure hit.
         source: '/api/parks/live',
-        headers: [
-          { key: 'Cache-Control', value: 'public, s-maxage=60, stale-while-revalidate=120' },
-        ],
+        headers: sharedCache('public, s-maxage=60, stale-while-revalidate=120'),
       },
-      {
-        // Live park poll (use-live-park-data, every visitor every 5 min). The backend already
-        // caches this 5 min (Redis + CDN), so data can never be fresher than that — a 60s shared
-        // CDN window adds no real staleness but collapses all concurrent visitors of a park onto
-        // a single function invocation (fetch + lean transform + re-serialize of the full payload).
-        source: '/api/parks/:continent/:country/:city/:park',
-        headers: [
-          { key: 'Cache-Control', value: 'public, s-maxage=60, stale-while-revalidate=240' },
-        ],
-      },
-      {
-        // Homepage live stats (ticker / realtime / geo-live), polled by every homepage visitor
-        // every 5 min — param-less shared data, same collapse rationale as discovery above.
-        source: '/api/analytics/:path*',
-        headers: [
-          { key: 'Cache-Control', value: 'public, s-maxage=60, stale-while-revalidate=120' },
-        ],
-      },
+      // NOT listed, on purpose: `/api/parks/:continent/:country/:city/:park` (the live park poll
+      // behind every park page's cards) and `/api/analytics/:path*`. Both handlers answer
+      // `no-store`, both did so in production while a rule here claimed `s-maxage=60`, and on
+      // Vercel the handler is the half that won. The rules are gone rather than corrected to
+      // `no-store`, because the blanket `/api` rule above already says exactly that. Keeping the
+      // park poll uncached is also what makes a park page's cards the fresher of the two readings
+      // of a queue — the ride page's live panel is served from the attraction detail, which is
+      // shared-cached above.
       {
         // Search results are query-keyed and the backend caches them 60s — a matching CDN window
         // collapses popular queries without changing freshness.
         source: '/api/search',
-        headers: [
-          { key: 'Cache-Control', value: 'public, s-maxage=60, stale-while-revalidate=120' },
-        ],
+        headers: sharedCache('public, s-maxage=60, stale-while-revalidate=120'),
       },
       {
         // Glossary search runs over build-time data — responses are immutable until the next
         // deploy (which purges the CDN), so cache them hard.
         source: '/api/glossary-search',
-        headers: [
-          { key: 'Cache-Control', value: 'public, s-maxage=86400, stale-while-revalidate=86400' },
-        ],
+        headers: sharedCache('public, s-maxage=86400, stale-while-revalidate=86400'),
       },
       {
         // Background image list is a filesystem walk over build-time assets — immutable per deploy.
         source: '/api/parks/backgrounds',
-        headers: [
-          { key: 'Cache-Control', value: 'public, s-maxage=86400, stale-while-revalidate=86400' },
-        ],
+        headers: sharedCache('public, s-maxage=86400, stale-while-revalidate=86400'),
       },
       {
         // Park image redirect (slug → optimizer). The slug→file mapping is stable,
         // so cache the 307 at the edge to skip the resolver hop on cache miss.
         // MUST stay after the blanket /api no-store rule to re-enable CDN caching.
         source: '/api/image',
-        headers: [
-          { key: 'Cache-Control', value: 'public, s-maxage=86400, stale-while-revalidate=604800' },
-        ],
+        headers: sharedCache('public, s-maxage=86400, stale-while-revalidate=604800'),
+      },
+      {
+        // Open-Meteo's hourly forecast for one park-day, behind the weather day chart.
+        source: '/api/weather/hourly',
+        headers: sharedCache('public, s-maxage=900, stale-while-revalidate=900'),
+      },
+      {
+        // The header menu's cities+parks pane, fetched per opened country. Structure, not status.
+        source: '/api/nav/geo/:continent/:country',
+        headers: sharedCache('public, max-age=300, s-maxage=86400, stale-while-revalidate=604800'),
+      },
+      {
+        // Build-time glossary ids — immutable until the next deploy.
+        source: '/api/glossary-term-ids',
+        headers: sharedCache('public, s-maxage=3600, stale-while-revalidate=86400'),
       },
       // NOTE — the park and attraction pages cannot be given a Cache-Control from here, and this
       // is now settled on the platform they actually run on, not just locally.
@@ -793,7 +811,11 @@ const nextConfig: NextConfig = {
       // up force-dynamic, and that brings back the per-URL ISR writes it was chosen to avoid
       // (~250k write units/day in Jun 2026).
       {
-        source: '/:locale/search',
+        // The search PAGE. `:locale` is pinned to the six real locales because a bare `:locale`
+        // matches any single segment — including `api`, so this rule sat after the `/api/search`
+        // rule above and quietly clobbered it back to `no-store`, on the one /api route whose
+        // window is set here and nowhere else.
+        source: `/:locale(${locales.join('|')})/search`,
         headers: [{ key: 'Cache-Control', value: 'no-store, must-revalidate' }],
       },
       {

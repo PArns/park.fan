@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getServerApiHeaders } from '@/lib/api/client';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import type { DiscoveryCityResponse, LiveParkFields } from '@/lib/api/types';
+import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://api.park.fan';
 
@@ -109,9 +110,8 @@ export async function GET(request: NextRequest) {
 
   // Every visitor of a given region set gets byte-identical JSON, so a small shared window
   // collapses them onto one backend fan-out. The client polls every 5 min; ≤60 s of CDN age
-  // is well inside that. (Needs the matching exemption in next.config.ts — the blanket
-  // `/api → no-store` rule would otherwise override this header.)
+  // is well inside that.
   return NextResponse.json(live, {
-    headers: { 'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=120' },
+    headers: cdnCacheHeaders('public, s-maxage=60, stale-while-revalidate=120'),
   });
 }

@@ -348,7 +348,7 @@ whole page exists to avoid. Don't re-run these two experiments.
 Worth watching after enabling: Vercel's own usage should stay flat except for a drop in function
 invocations. If ISR Write Units move at all, the rule is not what caused it.
 
-### The second rule: `/api/`, and why this one needs no override
+### The second rule: `/api/`, and the TTL that never reached it
 
 The `/api` routes were the opposite case, and the contrast is the useful part. Their windows have
 been tuned per route in `next.config.ts` for a long time (300 s for the attraction detail and the
@@ -377,6 +377,58 @@ protects itself by already answering `no-store`. Verified against production aft
 request IP when the client sends no coordinates, so its response is per-visitor. It is safe here
 only because it answers `no-store` and the rule respects that. Give it an `s-maxage` and a shared
 cache will hand one visitor's location result to the next.
+
+That table checked whether Cloudflare stored the response. It did not check for **how long**, and
+that is where this went wrong for a year. Vercel strips `s-maxage` and `stale-while-revalidate` out
+of `Cache-Control` before the response leaves its edge unless the response also carries a
+`CDN-Cache-Control` (vercel.com/docs/caching/cdn-cache). So what arrived at Cloudflare was
+`Cache-Control: public` — a header that is _present_, which is what the rule tests, and names no
+TTL, which is what the rule needs. Cloudflare then fell back to its own default edge TTL. Measured
+on the ride detail, whose window is 5 minutes:
+
+```
+cf-cache-status: HIT
+age: 2396
+cache-control: public
+x-vercel-cache: MISS      # frozen into Cloudflare's copy — the request never reached Vercel
+```
+
+Forty minutes, on the response that carries the ride page's live wait time. On 25 Aug 2026 Hagrid's
+read **35 min** on its own page against **60 min** on the park page's cards at the same second: the
+cards poll `/api/parks/<geo>/<park>`, which answers `no-store` and is therefore `cf-cache-status:
+BYPASS`, while the ride page reads its live panel out of `…/attractions/<slug>` — it has done so
+since `useLiveAttractionData` stopped polling the whole park (see
+[api-budget](api-budget.md)). Every route with a window shorter than Cloudflare's default was
+serving past it; the long ones (media, OG cards) were being cut short instead, which costs renders
+rather than correctness.
+
+Every cacheable API response now sends the window twice, through `cdnCacheHeaders()`
+(`lib/api/cdn-cache-headers.ts`) in route handlers and `sharedCache()` in `next.config.ts`:
+
+```
+Cache-Control:     public, s-maxage=300, stale-while-revalidate=60
+CDN-Cache-Control: public, s-maxage=300, stale-while-revalidate=60
+```
+
+`CDN-Cache-Control` is the RFC 9213 targeted header. Vercel honours it for its own edge **and**
+forwards it downstream, so Cloudflare gets an explicit TTL and `Cache-Control` survives intact for
+the browser. Check a change here by reading `age` off a second request, not by reading
+`cf-cache-status`.
+
+That window also lost half its stale allowance, from `stale-while-revalidate=300` to `60`: SWR is
+added to the age a reader can be served, not spent instead of it, so 300 + 300 is a ten-minute-old
+number under a heading that says live. 300 s fresh is exactly the backend's own attraction cache
+(`HttpCacheInterceptor(300)`), so the fresh half costs no origin calls.
+
+**Which of the two sources wins depends on where it runs.** Vercel resolves a `Cache-Control`
+returned by a route handler over the `headers()` rule for the same route; `next dev` resolves it the
+other way. Both are observable without an experiment — on production `/api/parks/<geo>/<park>`
+answered its handler's `no-store` while the rule for it said `s-maxage=60`, and the same URL on
+`next dev` answered `s-maxage=60`. Two sources of truth resolving in opposite directions is how the
+attraction detail spent months serving 600 s while `next.config.ts` said 300. So every cacheable
+`/api` route is now listed in `next.config.ts` with **exactly** the value its handler returns, and a
+route whose handler answers `no-store` (the live park poll, `/api/analytics/*`) is not listed at all
+— the blanket `/api` rule above already says that. Change one half, change the other.
 
 ---
 

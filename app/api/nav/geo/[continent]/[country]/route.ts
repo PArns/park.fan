@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getCitiesWithParks } from '@/lib/api/discovery';
+import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
 
 /**
  * The header menu's third pane: the cities of one country, each with its parks.
@@ -45,11 +46,11 @@ export async function GET(
     return NextResponse.json(
       { cities },
       {
-        headers: {
-          // Structure, not status: a park moving to another city is a once-a-year event. Long
-          // shared cache, and a stale copy is a better answer than a spinner.
-          'Cache-Control': 'public, max-age=300, s-maxage=86400, stale-while-revalidate=604800',
-        },
+        // Structure, not status: a park moving to another city is a once-a-year event. Long
+        // shared cache, and a stale copy is a better answer than a spinner.
+        headers: cdnCacheHeaders(
+          'public, max-age=300, s-maxage=86400, stale-while-revalidate=604800'
+        ),
       }
     );
   } catch {

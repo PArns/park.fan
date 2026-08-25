@@ -9,6 +9,7 @@ import {
 import { getParkWeatherNowcastFresh } from '@/lib/api/weather-nowcast';
 import { getParkHistoricalStats, getParkHourlyProfile } from '@/lib/api/stats';
 import { enrichAttractionsWithImages } from '@/lib/utils/park-assets';
+import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
 
 export async function GET(
   request: NextRequest,
@@ -94,9 +95,7 @@ export async function GET(
       // Return with caching headers
       // Cache for 5 minutes (300 seconds) - calendar data changes frequently
       return NextResponse.json(data, {
-        headers: {
-          'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600',
-        },
+        headers: cdnCacheHeaders('public, s-maxage=300, stale-while-revalidate=600'),
       });
     } catch (error) {
       console.error('[Calendar API] Error:', error);
@@ -116,9 +115,7 @@ export async function GET(
       const data = await getBestDaysSnapshotFresh(continent, country, city, park);
 
       return NextResponse.json(data, {
-        headers: {
-          'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
-        },
+        headers: cdnCacheHeaders('public, s-maxage=3600, stale-while-revalidate=86400'),
       });
     } catch (error) {
       console.error('[Best-Days API] Error:', error);
@@ -142,9 +139,7 @@ export async function GET(
       }
 
       return NextResponse.json(data, {
-        headers: {
-          'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=240',
-        },
+        headers: cdnCacheHeaders('public, s-maxage=60, stale-while-revalidate=240'),
       });
     } catch (error) {
       console.error('[Wait-Times API] Error:', error);
@@ -178,9 +173,7 @@ export async function GET(
       }
 
       return NextResponse.json(stats, {
-        headers: {
-          'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=82800',
-        },
+        headers: cdnCacheHeaders('public, s-maxage=3600, stale-while-revalidate=82800'),
       });
     } catch (error) {
       console.error('[Stats API] Error:', error);
@@ -208,9 +201,7 @@ export async function GET(
       }
 
       return NextResponse.json(data, {
-        headers: {
-          'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=82800',
-        },
+        headers: cdnCacheHeaders('public, s-maxage=3600, stale-while-revalidate=82800'),
       });
     } catch (error) {
       console.error('[Hourly-Profile API] Error:', error);
@@ -228,9 +219,17 @@ export async function GET(
       // predictionAccuracy) — that backs the daily chart, history grid and accuracy card. Serving
       // it through this CDN-cached function response (s-maxage) keeps it OFF the attraction page's
       // static prerender: it's a cacheable function response, NOT an ISR write of the page shell.
-      // Today's hourlyForecast refines through the day, so a short window (10 min fresh + 5 min SWR
-      // = ≤15 min old) matches the backend's ~5-min attraction cache while collapsing concurrent
-      // polls off the origin.
+      //
+      // 5 min fresh, 1 min stale. This response also carries the ride page's LIVE panel —
+      // status, queues, wait time — since `useLiveAttractionData` stopped polling the whole park
+      // for them, so this window is what decides how far the ride page can trail the park page's
+      // cards (those poll `/api/parks/<geo>/<park>`, which is `no-store`). 300 s is exactly what
+      // the backend caches an attraction for, so the fresh half adds no origin load at all; the
+      // stale half is deliberately short, because `stale-while-revalidate` is added to the age a
+      // reader can be served, not spent instead of it — 300 + 300 is a wait time up to ten minutes
+      // old on a panel labelled live. next.config.ts had said 300 for months with no effect: on
+      // Vercel a Cache-Control on a function response overrides the `headers()` rule for the same
+      // route, and `next dev` resolves it the other way, so the two are kept identical.
       const data = await getAttractionByGeoPathFresh(
         continent,
         country,
@@ -244,9 +243,7 @@ export async function GET(
       }
 
       return NextResponse.json(data, {
-        headers: {
-          'Cache-Control': 'public, s-maxage=600, stale-while-revalidate=300',
-        },
+        headers: cdnCacheHeaders('public, s-maxage=300, stale-while-revalidate=60'),
       });
     } catch (error) {
       console.error('[Attraction API] Error:', error);
@@ -269,9 +266,7 @@ export async function GET(
       }
 
       return NextResponse.json(data, {
-        headers: {
-          'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=120',
-        },
+        headers: cdnCacheHeaders('public, s-maxage=60, stale-while-revalidate=120'),
       });
     } catch (error) {
       console.error('[Nowcast API] Error:', error);
