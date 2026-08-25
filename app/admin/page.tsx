@@ -16,6 +16,7 @@ import {
 import { heroObjectPosition } from '@/lib/media/hero';
 import { useHeroPhoto } from './_lib/use-hero-photo';
 import { adminKeys, useAdminQuery } from './_lib/api';
+import { formatDisplayName } from './_lib/ui';
 import type { AdminOverview, AdminParkListItem, AuditEntry, ParkSeason } from './_lib/types';
 import { ErrorState, Kbd, Panel, PanelBody, PanelHeader, SkeletonRows } from './_ui/primitives';
 import { BacklogBars, CurationTrend, MetricTile } from './_ui/metrics';
@@ -99,7 +100,7 @@ export default function AdminDashboard() {
 
         <div className="absolute inset-x-0 bottom-0 flex flex-wrap items-baseline gap-x-2 gap-y-1 p-4 sm:p-5">
           <h1 className="text-xl font-bold drop-shadow-[0_1px_10px_rgba(0,0,0,0.9)] sm:text-2xl">
-            Hallo {identity.displayName.split(' ')[0]}
+            Hallo {formatDisplayName(identity.displayName.split(' ')[0])}
           </h1>
           <p className="text-muted-foreground text-sm">
             <Kbd>⌘K</Kbd> für alles, <Kbd>g</Kbd> <Kbd>p</Kbd> zu den Parks.

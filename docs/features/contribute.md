@@ -19,7 +19,7 @@ shots still come through. Nothing is shown publicly until a moderator approves i
 | Form orchestrator (start → upload → finalize)     | `components/contribute/contribute-form.tsx`   |
 | Drag & drop multi-upload + previews               | `components/contribute/photo-dropzone.tsx`    |
 | Ride/park picker (cmdk + `/api/search`)           | `components/contribute/entity-picker.tsx`     |
-| Turnstile widget                                  | `components/contribute/turnstile-widget.tsx`  |
+| Turnstile widget (shared with `/admin`)           | `components/common/turnstile-widget.tsx`      |
 | Rights / "what we do with your photos" notice     | `components/contribute/rights-notice.tsx`     |
 | Example gallery                                   | `components/contribute/example-gallery.tsx`   |
 | Reusable CTA banner (parks/rides link here)       | `components/contribute/contribute-banner.tsx` |
@@ -27,7 +27,7 @@ shots still come through. Nothing is shown publicly until a moderator approves i
 | Proxy one photo to the private Blob store         | `app/api/contribute/file/route.ts`            |
 | Finalize (write moderation record)                | `app/api/contribute/finalize/route.ts`        |
 | Client-side downscale (fit the body limit)        | `components/contribute/compress.ts`           |
-| Turnstile server verify                           | `lib/contribute/turnstile.ts`                 |
+| Turnstile server verify (shared with `/admin`)    | `lib/security/turnstile.ts`                   |
 | HMAC ticket                                       | `lib/contribute/ticket.ts`                    |
 | Storage driver resolution                         | `lib/contribute/driver.ts`                    |
 | Server-side image store (Blob `put` / local FS)   | `lib/contribute/storage.ts`                   |
@@ -93,7 +93,10 @@ userAgent.
 
 See `.env.example`:
 
-- `NEXT_PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY` — Turnstile.
+- `NEXT_PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY` — Turnstile. The same
+  pair now also gates the **admin login** (`/api/admin/session`), so an unset
+  secret in production is no longer only a broken upload form — see
+  [admin → Bot protection](admin.md#bot-protection-on-the-login).
 - `BLOB_READ_WRITE_TOKEN` (+ `BLOB_STORE_ID`, `BLOB_WEBHOOK_PUBLIC_KEY`) — auto-set
   when a Vercel Blob store is linked. For **local dev** uploads, `vercel env pull`.
 - `STORAGE_DRIVER` — force `local`/`vercel-blob` (otherwise auto).

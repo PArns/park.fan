@@ -1,7 +1,8 @@
 import 'server-only';
 import { randomUUID } from 'crypto';
 import { NextResponse, type NextRequest } from 'next/server';
-import { verifyTurnstile } from '@/lib/contribute/turnstile';
+import { verifyTurnstile } from '@/lib/security/turnstile';
+import { TURNSTILE_ACTIONS } from '@/lib/security/turnstile-actions';
 import { signTicket } from '@/lib/contribute/ticket';
 import { contributionMetaSchema } from '@/lib/contribute/types';
 import { MAX_FILES } from '@/lib/contribute/config';
@@ -30,7 +31,10 @@ export async function POST(request: NextRequest) {
 
   // 1) Bot protection.
   const clientIp = getForwardedForHeaders(request)['X-Forwarded-For'];
-  const turnstile = await verifyTurnstile(String(turnstileToken ?? ''), clientIp);
+  const turnstile = await verifyTurnstile(String(turnstileToken ?? ''), {
+    expectedAction: TURNSTILE_ACTIONS.contribute,
+    remoteIp: clientIp,
+  });
   if (!turnstile.success) {
     return NextResponse.json(
       { error: 'turnstile-failed', reason: turnstile.reason },

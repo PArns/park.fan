@@ -2,6 +2,8 @@ import 'server-only';
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { getServerApiHeaders } from '@/lib/api/client';
+import { verifyTurnstile } from '@/lib/security/turnstile';
+import { TURNSTILE_ACTIONS } from '@/lib/security/turnstile-actions';
 import { getClientIp } from '@/lib/utils/request-ip';
 import {
   ADMIN_SESSION_COOKIE,
@@ -31,12 +33,26 @@ export const dynamic = 'force-dynamic';
  * arrive from this deployment's address and share one bucket: a spray across
  * many accounts would be invisible, and the first person to mistype their
  * password would exhaust the bucket for everyone.
+ *
+ * A Turnstile token is checked **first**, before the credentials go anywhere —
+ * the same challenge `/contribute` already uses, and the same secret. Verifying
+ * before the forward rather than after is the whole value: the two defences
+ * behind this (the per-address throttle and the per-account lockout) only start
+ * counting once an attempt has been made, and the lockout in particular is a
+ * denial of service against the account holder for anyone who can spend their
+ * five attempts at will. Turnstile is what makes spending them cost something.
+ *
+ * A token is single-use, so an account with a second factor solves twice: once
+ * for the password and once for the code. The form resets its widget after
+ * every attempt (`components/common/turnstile-widget.tsx`) instead of replaying
+ * a token Cloudflare has already retired.
  */
 
 interface LoginBody {
   email?: string;
   password?: string;
   totpCode?: string;
+  turnstileToken?: string;
 }
 
 /**
@@ -98,6 +114,26 @@ export async function POST(request: Request) {
   }
 
   const ip = clientIp(request);
+
+  // Before anything else, and before the credentials leave this process.
+  const turnstile = await verifyTurnstile(String(body.turnstileToken ?? ''), {
+    expectedAction: TURNSTILE_ACTIONS.adminLogin,
+    remoteIp: ip ?? undefined,
+  });
+  if (!turnstile.success) {
+    // A sentence rather than a code: the form prints `message` verbatim for
+    // anything that is not a 401, and "turnstile-failed" is not something to
+    // put in front of somebody who is trying to sign in. The reason stays in
+    // the payload for the network tab.
+    return NextResponse.json(
+      {
+        error: 'turnstile-failed',
+        reason: turnstile.reason,
+        message: 'Die Sicherheitsprüfung ist fehlgeschlagen. Bitte erneut versuchen.',
+      },
+      { status: 403, headers: { 'Cache-Control': 'no-store, must-revalidate' } }
+    );
+  }
 
   // `getServerApiHeaders()` sets `User-Agent`; the browser's goes in the same
   // slot. Left as two differently-cased keys they both survive into the Headers

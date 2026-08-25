@@ -12,7 +12,8 @@ import { MAX_FILE_SIZE } from '@/lib/contribute/config';
 import type { AssignedEntity, UploadedBlob } from '@/lib/contribute/types';
 import { PhotoDropzone, type PendingImage } from './photo-dropzone';
 import { EntityPicker } from './entity-picker';
-import { TurnstileWidget } from './turnstile-widget';
+import { TurnstileWidget } from '@/components/common/turnstile-widget';
+import { TURNSTILE_ACTIONS } from '@/lib/security/turnstile-actions';
 import { compressImage } from './compress';
 
 interface ContributeFormProps {
@@ -188,7 +189,11 @@ export function ContributeForm({ initialEntity = null }: ContributeFormProps) {
           </Step>
 
           <Step n={4} title={t('step4')}>
-            <TurnstileWidget onVerify={setToken} onExpire={() => setToken('')} />
+            <TurnstileWidget
+              action={TURNSTILE_ACTIONS.contribute}
+              onVerify={setToken}
+              onExpire={() => setToken('')}
+            />
           </Step>
 
           {submit.status === 'error' && (

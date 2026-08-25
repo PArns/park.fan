@@ -17,6 +17,7 @@ import { Button } from '@/components/ui/button';
 import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
 import type { AdminSessionInfo } from '../_lib/types';
 import { AdminPage, Chip, Panel, PanelBody, PanelHeader, SkeletonRows } from '../_ui/primitives';
+import { formatDisplayName } from '../_lib/ui';
 import { Field, TextInput } from '../_ui/controls';
 import { useToast } from '../_ui/toast';
 import { useSession } from '../_app/session';
@@ -36,7 +37,7 @@ export default function AccountPage() {
   return (
     <AdminPage width="narrow">
       <header>
-        <h1 className="text-xl font-bold">{identity.displayName}</h1>
+        <h1 className="text-xl font-bold">{formatDisplayName(identity.displayName)}</h1>
         <p className="text-muted-foreground text-sm">{identity.email}</p>
       </header>
 
@@ -271,8 +272,13 @@ function TotpPanel({ enabled }: { enabled: boolean }) {
                   In der Passwort-App öffnen (otpauth://)
                 </a>
                 <Field label="Code aus der App">
+                  {/* `one-time-code` rather than nothing: the link above hands
+                      the secret to the password manager, and this is the field
+                      it hands the first code back into. */}
                   <TextInput
+                    name="otp"
                     inputMode="numeric"
+                    autoComplete="one-time-code"
                     maxLength={6}
                     value={code}
                     onChange={(event) => setCode(event.target.value.replace(/\D/g, ''))}
@@ -293,16 +299,20 @@ function TotpPanel({ enabled }: { enabled: boolean }) {
             <Field label="Passwort">
               <TextInput
                 type="password"
+                autoComplete="current-password"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
               />
             </Field>
             <Field label="Aktueller Code">
               <TextInput
+                name="otp"
                 inputMode="numeric"
+                autoComplete="one-time-code"
                 maxLength={6}
                 value={code}
                 onChange={(event) => setCode(event.target.value.replace(/\D/g, ''))}
+                className="tabular-nums"
               />
             </Field>
             <div className="flex items-end">
