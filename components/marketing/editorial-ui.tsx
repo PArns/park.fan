@@ -130,23 +130,21 @@ export function SectionShell({
 }
 
 // ── Text primitives ──────────────────────────────────────────────────────────
-// Running text is capped at a readable measure (max-w-3xl) while its parent
-// section spans the full site width, so prose stays legible next to full-bleed
-// grids and figures.
+// Running text runs the full width of its section — the same edges as the
+// headings, rules, figures and card grids around it. A narrower measure left a
+// ragged column with a dead strip beside every paragraph.
 export function Lead({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="text-foreground/80 max-w-3xl text-xl leading-relaxed font-medium">{children}</p>
-  );
+  return <p className="text-foreground/80 text-xl leading-relaxed font-medium">{children}</p>;
 }
 
 export function P({ children }: { children: React.ReactNode }) {
-  return <p className="text-muted-foreground max-w-3xl leading-relaxed">{children}</p>;
+  return <p className="text-muted-foreground leading-relaxed">{children}</p>;
 }
 
 /** Glossary-aware paragraph — auto-links known terms (string children only). */
 export function PG({ children }: { children: string }) {
   return (
-    <p className="text-muted-foreground max-w-3xl leading-relaxed">
+    <p className="text-muted-foreground leading-relaxed">
       <GlossaryInject>{children}</GlossaryInject>
     </p>
   );
@@ -187,7 +185,7 @@ export function A({
 export function Highlight({ children }: { children: React.ReactNode }) {
   return (
     <Reveal>
-      <div className="from-primary/10 border-primary/20 flex max-w-3xl gap-3 rounded-2xl border bg-gradient-to-br to-transparent p-5 text-base leading-relaxed sm:p-6">
+      <div className="from-primary/10 border-primary/20 flex gap-3 rounded-2xl border bg-gradient-to-br to-transparent p-5 text-base leading-relaxed sm:p-6">
         <ShieldCheck className="text-primary mt-0.5 h-5 w-5 shrink-0" />
         <p className="text-foreground/90">{children}</p>
       </div>

@@ -242,7 +242,7 @@ const FAQ = [
   {
     question: 'Settanta minuti di attesa sono tanti?',
     answer:
-      'Dipende dall’attrazione e dal giorno della settimana. Taron, al Phantasialand, di lunedì arriva tipicamente a 55 minuti e in nove lunedì su dieci resta sotto i 65; lì 70 minuti sono una giornata insolitamente piena. Di sabato la mediana della stessa attrazione è esattamente 70 minuti, e allora lo stesso numero è del tutto nella media. Entrambi i valori di confronto stanno sulla pagina dell’attrazione, così non serve indovinarli.',
+      'Dipende dall’attrazione e dal giorno della settimana. Taron, al Phantasialand, di lunedì arriva tipicamente a 55 minuti e in nove lunedì su dieci resta sotto i 65; lì 70 minuti sono una giornata insolitamente piena. Di sabato la mediana della stessa attrazione è esattamente 70 minuti, e allora lo stesso numero è del tutto nella media. Entrambi i valori di confronto stanno su park.fan, sulla pagina dell’attrazione, così non serve indovinarli.',
   },
   {
     question: 'Da dove arrivano i tempi di attesa?',
@@ -257,7 +257,7 @@ const FAQ = [
   {
     question: 'Perché Hansa-Park non mostra tempi di attesa?',
     answer:
-      'Il parco pubblica i suoi tempi di attesa solo nella propria app e soltanto per i dispositivi collegati al wi-fi del parco. Non esiste alcuna interfaccia pubblica da cui potremmo leggerli. Poiché nei dati un parco senza fonte è indistinguibile da un parco chiuso di notte, questa è una voce curata a mano e non una deduzione: l’avviso sulla pagina del parco lo dice, invece di mostrare 82 attrazioni apparentemente vuote.',
+      'Il parco pubblica i suoi tempi di attesa solo nella propria app e soltanto per i dispositivi collegati al wi-fi del parco. Non esiste alcuna interfaccia pubblica da cui potremmo leggerli. Poiché nei dati un parco senza fonte è indistinguibile da un parco chiuso di notte, questa è una voce curata a mano e non una deduzione: l’avviso su park.fan lo dice, invece di mostrare 82 attrazioni apparentemente vuote.',
   },
   {
     question: 'Che cos’è il rope drop?',
@@ -272,7 +272,7 @@ const FAQ = [
   {
     question: 'Ogni quanto si aggiornano i numeri sulla pagina?',
     answer:
-      'Una pagina di parco aperta preleva nuovi valori ogni cinque minuti, allo stesso ritmo con cui vengono interrogate le fonti. I valori statistici come i tempi di attesa tipici o i consigli rope drop vengono ricalcolati una volta a notte, perché da un giorno all’altro si muovono comunque appena.',
+      'Una pagina di parco aperta su park.fan preleva nuovi valori ogni cinque minuti, allo stesso ritmo con cui vengono interrogate le fonti. I valori statistici come i tempi di attesa tipici o i consigli rope drop vengono ricalcolati una volta a notte, perché da un giorno all’altro si muovono comunque appena.',
   },
 ];
 
@@ -334,9 +334,10 @@ export function ContentIT() {
       >
         <P>
           All’ingresso di Taron campeggiano 70 minuti, nient’altro. La coda si accalca già dalla
-          prima scalinata. Sul telefono compare lo stesso numero; sulla pagina del parco arriva con
+          prima scalinata. Sul telefono compare lo stesso numero. Nessuno dei due ti dice se
+          conviene mettersi in coda adesso o più tardi nella giornata. Su park.fan lo accompagnano
           altre quattro informazioni: un livello di affollamento, una tendenza, la seconda coda e
-          l’altezza minima. Nessuna di queste si ricava guardando solo oggi.
+          l’altezza minima.
         </P>
 
         <BareNumberVsCard
@@ -347,7 +348,7 @@ export function ContentIT() {
           cardCaption="Gli stessi 70 minuti, più livello di affollamento, tendenza, tempo single rider, altezza minima e l’indicazione di quando è prevedibile che si calmi."
         />
 
-        <div className="max-w-3xl space-y-4 pt-2">
+        <div className="space-y-4 pt-2">
           <P>
             «Molto alta» qui non è una questione di gusti. Taron sta in media su {TARON_BASELINE}{' '}
             minuti, {TARON_WAIT_NOW} ne sono circa il 156 per cento, e i livelli cambiano al 60, 89,
@@ -364,9 +365,9 @@ export function ContentIT() {
 
         <DemoFrame
           label="Due attrazioni, lo stesso minuto"
-          note="Le due card vengono dallo stesso istante nello stesso parco, Taron a Klugheim e Black Mamba a Deep in Africa. Una fila cresce, l’altra smaltisce. Sulla pagina del parco tutte le attrazioni stanno così, una accanto all’altra e ordinabili per tempo di attesa."
+          note="Le due card vengono dallo stesso istante nello stesso parco, Taron a Klugheim e Black Mamba a Deep in Africa. Una fila cresce, l’altra smaltisce. Qui su park.fan tutte le attrazioni stanno così, una accanto all’altra e ordinabili per tempo di attesa."
           href={PARK}
-          hrefLabel="Alla pagina del parco →"
+          hrefLabel="Phantasialand su park.fan →"
         >
           <TwoRidesDemo />
         </DemoFrame>
@@ -413,7 +414,7 @@ export function ContentIT() {
                     {i === 1 && 'Per un sabato è esattamente la norma'}
                     {i === 2 && 'E una volta sono stati 135'}
                   </h3>
-                  <p className="text-muted-foreground max-w-xl leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed">
                     {i === 0 && (
                       <>
                         Di lunedì il picco della giornata è di {step.typical} minuti, e in nove
@@ -484,17 +485,17 @@ export function ContentIT() {
                 Quanto tenga tutto questo dipende dal numero di giorni misurati: qui si sono
                 accumulati {TARON_WEEKDAY_DAYS} giorni feriali e {TARON_WEEKEND_DAYS} nel fine
                 settimana. La card indica da sé il periodo su cui calcola. Per l’intero parco il
-                totale dei giorni registrati sta nella sezione statistiche della pagina del parco, e
-                nelle tabelle per mese e per giorno della settimana diventa una colonna a sé.
+                totale dei giorni registrati sta nella sezione statistiche su park.fan, e nelle
+                tabelle per mese e per giorno della settimana diventa una colonna a sé.
               </P>
             </div>
           </div>
 
           <DemoFrame
             label="La stessa tabella per tutto il parco, in tempo reale"
-            note="Nessun numero d’esempio: questa è la situazione attuale del Phantasialand, il valore tipico e quello pieno per ogni attrazione. Sulla pagina del parco la riga sopra dice su quanti giorni registrati calcola l’intera sezione. Tutti i minuti vanno a passi di cinque, perché i parchi espongono a passi di cinque."
+            note="Nessun numero d’esempio: questa è la situazione attuale del Phantasialand, il valore tipico e quello pieno per ogni attrazione. Su park.fan la riga sopra dice su quanti giorni registrati calcola l’intera sezione. Tutti i minuti vanno a passi di cinque, perché i parchi espongono a passi di cinque."
             href={PARK}
-            hrefLabel="Alla pagina del parco →"
+            hrefLabel="Phantasialand su park.fan →"
           >
             <LiveTopAttractions locale="it" />
           </DemoFrame>
@@ -525,12 +526,12 @@ export function ContentIT() {
           label="Il profilo orario reale, in questo momento"
           note="In diretta dal profilo orario del parco. In grassetto l’ora più forte di ogni attrazione, e tra queste sei non è affatto la stessa. Un’ora diventa colonna solo quando ha almeno dieci giorni misurati su quell’attrazione, raggiunge almeno il 40 per cento dell’ora meglio misurata e viene riportata da almeno metà delle attrazioni. Questo esclude le ore di bordo, in cui altrimenti una sola coda di ospiti dell’hotel parlerebbe per tutta la mattina."
           href={PARK}
-          hrefLabel="Alla pagina del parco →"
+          hrefLabel="Phantasialand su park.fan →"
         >
           <LiveHourlyProfile locale="it" />
         </DemoFrame>
 
-        <div className="max-w-3xl space-y-4 pt-2">
+        <div className="space-y-4 pt-2">
           <P>
             Taron è il caso in cui l’orario non decide quasi nulla: la riga resta tutto il giorno in
             una banda stretta, e a fare la differenza è il giorno della settimana del capitolo 02.
@@ -548,7 +549,7 @@ export function ContentIT() {
             <RopeDropDemo />
           </DemoFrame>
 
-          <div className="max-w-prose space-y-4">
+          <div className="space-y-4">
             <PG>
               La card indica tre numeri e un orario: il tempo di attesa tipico all’apertura, il
               picco della giornata, la differenza e la finestra in cui il vantaggio tiene. Dopo è
@@ -581,18 +582,16 @@ export function ContentIT() {
 
         <DemoFrame
           label="Quattro giorni di una settimana di vacanze autunnali"
-          note="Il 15 ottobre è il più tranquillo dei quattro pur cadendo in piena vacanza: piove. Il 19 è grigio perché quel giorno il parco è chiuso. Sulla pagina del parco lo stesso calendario procede mese per mese, fin dove arriva la previsione per quel parco."
+          note="Il 15 ottobre è il più tranquillo dei quattro pur cadendo in piena vacanza: piove. Il 19 è grigio perché quel giorno il parco è chiuso. Su park.fan lo stesso calendario procede mese per mese, fin dove arriva la previsione per quel parco."
         >
           <CalendarDaysDemo />
         </DemoFrame>
 
-        {/* One column at the body measure, like every other chapter on this page.
-            As two prose columns this band put a third text edge under the paragraph
-            above it: 768 px of copy, then a 604 px column ending 164 px short of
-            it, then a second column starting where that paragraph still had words.
-            The empty right half is the page's normal rhythm — a full-width figure
-            over a body-measure column. */}
-        <div className="max-w-3xl space-y-4 pt-2">
+        {/* One column, full width, like every other chapter on this page. As two
+            prose columns this band put a third text edge under the paragraph above
+            it: a run of copy, then a 604 px column ending short of it, then a
+            second column starting where that paragraph still had words. */}
+        <div className="space-y-4 pt-2">
           <P>
             I calendari delle vacanze vengono da due fonti pubbliche e coprono quattro anni
             ciascuno. Spesso contano più quelli dei vicini che i propri. Un esempio di oggi: per il
@@ -644,9 +643,9 @@ export function ContentIT() {
         icon={Layers}
       >
         <P>
-          Tutto quello che precede sta su una sola pagina, costruita nell’ordine in cui si fanno le
-          domande: il parco oggi è aperto? Sta per piovere? Quanto è lunga la fila? E quando sarebbe
-          stato meglio venire?
+          Tutto quello che precede sta su una sola pagina park.fan per parco, costruita nell’ordine
+          in cui si fanno le domande: il parco oggi è aperto? Sta per piovere? Quanto è lunga la
+          fila? E quando sarebbe stato meglio venire?
         </P>
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,21rem)]">
@@ -719,7 +718,7 @@ export function ContentIT() {
             </IngredientCard>
           </IngredientGrid>
 
-          <div className="max-w-3xl space-y-4 pt-4">
+          <div className="space-y-4 pt-4">
             <P>
               La seconda metà avviene di notte. Una mediana su ogni martedì misurato non è una query
               che si lancia all’apertura di una pagina. Deve essere stata calcolata prima, in un
@@ -750,7 +749,7 @@ export function ContentIT() {
         <div className="grid gap-6 lg:grid-cols-3">
           <DemoFrame
             label="Parco senza fonte leggibile"
-            note="Hansa-Park pubblica i tempi di attesa solo nella propria app, sul wi-fi del parco. Nei dati sembra un parco nel cuore della notte, per questo sulla pagina c’è un avviso curato a mano. Senza, ci sarebbero 82 attrazioni su «molto bassa»."
+            note="Hansa-Park pubblica i tempi di attesa solo nella propria app, sul wi-fi del parco. Nei dati sembra un parco nel cuore della notte, per questo su park.fan c’è un avviso curato a mano. Senza, ci sarebbero 82 attrazioni su «molto bassa»."
           >
             <NoWaitTimesDemo />
           </DemoFrame>

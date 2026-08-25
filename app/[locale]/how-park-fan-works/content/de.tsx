@@ -243,7 +243,7 @@ const FAQ = [
   {
     question: 'Sind 70 Minuten Wartezeit viel?',
     answer:
-      'Das hängt von der Bahn und vom Wochentag ab. Taron im Phantasialand kommt montags typischerweise auf 55 Minuten und bleibt an neun von zehn Montagen unter 65; dort sind 70 Minuten also ein ungewöhnlich voller Tag. Samstags liegt der Median derselben Bahn bei genau 70 Minuten, dann ist dieselbe Anzeige völlig durchschnittlich. Beide Vergleichswerte stehen auf der Seite der Bahn, damit man sie nicht raten muss.',
+      'Das hängt von der Bahn und vom Wochentag ab. Taron im Phantasialand kommt montags typischerweise auf 55 Minuten und bleibt an neun von zehn Montagen unter 65; dort sind 70 Minuten also ein ungewöhnlich voller Tag. Samstags liegt der Median derselben Bahn bei genau 70 Minuten, dann ist dieselbe Anzeige völlig durchschnittlich. Beide Vergleichswerte stehen auf park.fan auf der Seite der Bahn, damit man sie nicht raten muss.',
   },
   {
     question: 'Woher kommen die Wartezeiten?',
@@ -258,7 +258,7 @@ const FAQ = [
   {
     question: 'Warum zeigt Hansa-Park keine Wartezeiten?',
     answer:
-      'Der Park veröffentlicht seine Wartezeiten ausschließlich in der eigenen App und nur für Geräte im Park-WLAN. Es gibt keine öffentliche Schnittstelle, aus der wir sie lesen könnten. Weil ein Park ohne Quelle in den Daten genauso aussieht wie ein Park, der nachts geschlossen ist, ist das ein gepflegter Eintrag und keine Ableitung: Der Hinweis auf der Parkseite sagt es, statt 82 Bahnen als angeblich leer anzuzeigen.',
+      'Der Park veröffentlicht seine Wartezeiten ausschließlich in der eigenen App und nur für Geräte im Park-WLAN. Es gibt keine öffentliche Schnittstelle, aus der wir sie lesen könnten. Weil ein Park ohne Quelle in den Daten genauso aussieht wie ein Park, der nachts geschlossen ist, ist das ein gepflegter Eintrag und keine Ableitung: Der Hinweis auf park.fan sagt es, statt 82 Bahnen als angeblich leer anzuzeigen.',
   },
   {
     question: 'Was ist Rope Drop?',
@@ -273,7 +273,7 @@ const FAQ = [
   {
     question: 'Wie oft aktualisieren sich die Zahlen auf der Seite?',
     answer:
-      'Eine geöffnete Parkseite holt sich alle fünf Minuten neue Werte, im selben Takt, in dem die Quellen abgefragt werden. Die statistischen Werte wie typische Wartezeiten oder Rope-Drop-Empfehlungen werden einmal pro Nacht neu gerechnet, weil sie sich von einem Tag auf den anderen ohnehin kaum bewegen.',
+      'Eine geöffnete Parkseite auf park.fan holt sich alle fünf Minuten neue Werte, im selben Takt, in dem die Quellen abgefragt werden. Die statistischen Werte wie typische Wartezeiten oder Rope-Drop-Empfehlungen werden einmal pro Nacht neu gerechnet, weil sie sich von einem Tag auf den anderen ohnehin kaum bewegen.',
   },
 ];
 
@@ -335,9 +335,10 @@ export function ContentDE() {
       >
         <P>
           Am Eingang von Taron prangen 70 Minuten, sonst nichts. Die Schlange staut sich schon ab
-          der ersten Treppe. Auf dem Handy steht dieselbe Zahl, auf der Parkseite steht sie mit vier
-          weiteren Angaben: einer Auslastungsstufe, einem Trend, der zweiten Warteschlange und der
-          Mindestgröße. Für keine davon reicht der Blick auf heute.
+          der ersten Treppe. Auf dem Handy steht dieselbe Zahl. Keine von beiden sagt dir, ob sich
+          das Anstellen jetzt gerade lohnt oder erst später am Tag. Auf park.fan stehen vier weitere
+          Angaben daneben: eine Auslastungsstufe, ein Trend, die zweite Warteschlange und die
+          Mindestgröße.
         </P>
 
         <BareNumberVsCard
@@ -348,7 +349,7 @@ export function ContentDE() {
           cardCaption="Dieselben 70 Minuten, plus Auslastungsstufe, Trend, Single-Rider-Zeit, Mindestgröße und der Hinweis, wann es voraussichtlich ruhiger wird."
         />
 
-        <div className="max-w-3xl space-y-4 pt-2">
+        <div className="space-y-4 pt-2">
           <P>
             „Sehr hoch&ldquo; ist dabei keine Geschmacksfrage. Taron liegt im Mittel bei{' '}
             {TARON_BASELINE} Minuten, {TARON_WAIT_NOW} sind davon rund 156 Prozent, und die Stufen
@@ -366,9 +367,9 @@ export function ContentDE() {
 
         <DemoFrame
           label="Zwei Bahnen, dieselbe Minute"
-          note="Beide Karten stammen aus demselben Moment im selben Park, Taron in Klugheim und Black Mamba in Deep in Africa. Die eine Schlange wächst, die andere baut ab. Auf der Parkseite stehen alle Bahnen so nebeneinander, sortierbar nach Wartezeit."
+          note="Beide Karten stammen aus demselben Moment im selben Park, Taron in Klugheim und Black Mamba in Deep in Africa. Die eine Schlange wächst, die andere baut ab. Hier auf park.fan stehen alle Bahnen so nebeneinander, sortierbar nach Wartezeit."
           href={PARK}
-          hrefLabel="Zur Parkseite →"
+          hrefLabel="Phantasialand auf park.fan →"
         >
           <TwoRidesDemo />
         </DemoFrame>
@@ -415,7 +416,7 @@ export function ContentDE() {
                     {i === 1 && 'Für einen Samstag ist das exakt der Normalfall'}
                     {i === 2 && 'Und einmal waren es 135'}
                   </h3>
-                  <p className="text-muted-foreground max-w-xl leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed">
                     {i === 0 && (
                       <>
                         Montags liegt die Tagesspitze bei {step.typical} Minuten, und an neun von
@@ -487,7 +488,7 @@ export function ContentDE() {
                 Wie belastbar das alles ist, hängt an der Zahl der Messtage: {TARON_WEEKDAY_DAYS}{' '}
                 unter der Woche und {TARON_WEEKEND_DAYS} am Wochenende sind hier zusammengekommen.
                 Die Karte selbst nennt den Zeitraum, aus dem sie rechnet. Für den ganzen Park steht
-                die Summe der aufgezeichneten Tage im Statistik-Abschnitt der Parkseite, und in den
+                die Summe der aufgezeichneten Tage im Statistik-Abschnitt auf park.fan, und in den
                 Tabellen nach Monat und Wochentag bekommt sie eine eigene Spalte.
               </P>
             </div>
@@ -495,9 +496,9 @@ export function ContentDE() {
 
           <DemoFrame
             label="Dieselbe Tabelle für den ganzen Park, live"
-            note="Keine Beispielzahlen: Das ist der aktuelle Stand für Phantasialand, pro Bahn der typische und der volle Wert. Auf der Parkseite steht darüber, aus wie vielen aufgezeichneten Tagen der ganze Abschnitt rechnet. Alle Minuten stehen in Fünferschritten, weil Parks in Fünferschritten anschreiben."
+            note="Keine Beispielzahlen: Das ist der aktuelle Stand für Phantasialand, pro Bahn der typische und der volle Wert. Auf park.fan steht darüber, aus wie vielen aufgezeichneten Tagen der ganze Abschnitt rechnet. Alle Minuten stehen in Fünferschritten, weil Parks in Fünferschritten anschreiben."
             href={PARK}
-            hrefLabel="Zur Parkseite →"
+            hrefLabel="Phantasialand auf park.fan →"
           >
             <LiveTopAttractions locale="de" />
           </DemoFrame>
@@ -528,12 +529,12 @@ export function ContentDE() {
           label="Das echte Stundenprofil, gerade eben"
           note="Live aus dem Stundenprofil des Parks. Fett steht die stärkste Stunde jeder Bahn, und die liegt bei den sechs Bahnen keineswegs überall gleich. Eine Stunde wird erst zur Spalte, wenn sie mindestens zehn Messtage an dieser Bahn hat, mindestens 40 Prozent der bestgemessenen Stunde erreicht und von mindestens der Hälfte der Bahnen gemeldet wird. Das wirft die Randzeiten raus, in denen sonst eine einzige Hotelgäste-Schlange für den ganzen Morgen spräche."
           href={PARK}
-          hrefLabel="Zur Parkseite →"
+          hrefLabel="Phantasialand auf park.fan →"
         >
           <LiveHourlyProfile locale="de" />
         </DemoFrame>
 
-        <div className="max-w-3xl space-y-4 pt-2">
+        <div className="space-y-4 pt-2">
           <P>
             Taron ist der Fall, in dem die Uhrzeit fast nichts entscheidet: Die Zeile liegt den
             ganzen Tag in einem engen Band, und was den Unterschied macht, ist der Wochentag aus
@@ -551,7 +552,7 @@ export function ContentDE() {
             <RopeDropDemo />
           </DemoFrame>
 
-          <div className="max-w-prose space-y-4">
+          <div className="space-y-4">
             <PG>
               Die Karte nennt drei Zahlen und eine Uhrzeit: die typische Wartezeit zur Öffnung, die
               Tagesspitze, die Differenz und das Zeitfenster, in dem der Vorsprung hält. Danach ist
@@ -584,18 +585,16 @@ export function ContentDE() {
 
         <DemoFrame
           label="Vier Tage einer Herbstferienwoche"
-          note="Der 15. Oktober ist der ruhigste der vier, obwohl er mitten in den Ferien liegt: Es regnet. Der 19. ist grau, weil der Park an dem Tag zu hat. Auf der Parkseite steht derselbe Kalender Monat für Monat, so weit die Prognose für diesen Park reicht."
+          note="Der 15. Oktober ist der ruhigste der vier, obwohl er mitten in den Ferien liegt: Es regnet. Der 19. ist grau, weil der Park an dem Tag zu hat. Auf park.fan steht derselbe Kalender Monat für Monat, so weit die Prognose für diesen Park reicht."
         >
           <CalendarDaysDemo />
         </DemoFrame>
 
-        {/* One column at the body measure, like every other chapter on this page.
-            As two prose columns this band put a third text edge under the paragraph
-            above it: 768 px of copy, then a 604 px column ending 164 px short of
-            it, then a second column starting where that paragraph still had words.
-            The empty right half is the page's normal rhythm — a full-width figure
-            over a body-measure column. */}
-        <div className="max-w-3xl space-y-4 pt-2">
+        {/* One column, full width, like every other chapter on this page. As two
+            prose columns this band put a third text edge under the paragraph above
+            it: a run of copy, then a 604 px column ending short of it, then a
+            second column starting where that paragraph still had words. */}
+        <div className="space-y-4 pt-2">
           <P>
             Die Ferienkalender kommen aus zwei öffentlichen Quellen und decken jeweils vier Jahre
             ab. Wichtiger als die eigenen sind oft die der Nachbarn. Ein Beispiel von heute: Für
@@ -648,9 +647,9 @@ export function ContentDE() {
         icon={Layers}
       >
         <P>
-          Alles bisherige steht auf einer einzigen Seite, und die ist nach der Reihenfolge gebaut,
-          in der man fragt: Hat der Park heute auf? Regnet es gleich? Wie lang ist die Schlange? Und
-          wann wäre ich besser gekommen?
+          Alles bisherige steht auf park.fan auf einer einzigen Seite pro Park, gebaut nach der
+          Reihenfolge, in der man fragt: Hat der Park heute auf? Regnet es gleich? Wie lang ist die
+          Schlange? Und wann wäre ich besser gekommen?
         </P>
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,21rem)]">
@@ -723,7 +722,7 @@ export function ContentDE() {
             </IngredientCard>
           </IngredientGrid>
 
-          <div className="max-w-3xl space-y-4 pt-4">
+          <div className="space-y-4 pt-4">
             <P>
               Der zweite Teil passiert nachts. Ein Median über jeden gemessenen Dienstag ist keine
               Abfrage, die man beim Seitenaufruf startet. Er muss vorher gerechnet worden sein, in
@@ -754,7 +753,7 @@ export function ContentDE() {
         <div className="grid gap-6 lg:grid-cols-3">
           <DemoFrame
             label="Park ohne lesbare Quelle"
-            note="Hansa-Park veröffentlicht Wartezeiten nur in der eigenen App im Park-WLAN. In den Daten sieht das aus wie ein Park mitten in der Nacht, deshalb steht es als gepflegter Hinweis auf der Seite. Ohne ihn stünden dort 82 Bahnen auf „sehr niedrig“."
+            note="Hansa-Park veröffentlicht Wartezeiten nur in der eigenen App im Park-WLAN. In den Daten sieht das aus wie ein Park mitten in der Nacht, deshalb steht es als gepflegter Hinweis auf park.fan. Ohne ihn stünden dort 82 Bahnen auf „sehr niedrig“."
           >
             <NoWaitTimesDemo />
           </DemoFrame>

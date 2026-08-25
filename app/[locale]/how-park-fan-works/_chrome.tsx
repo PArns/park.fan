@@ -151,10 +151,10 @@ export function GuideHero({
                 <span className="bg-primary inline-block h-2 w-2 rounded-full" />
                 {kicker}
               </p>
-              <h1 className="text-foreground max-w-3xl text-4xl font-black tracking-tight text-balance sm:text-6xl">
+              <h1 className="text-foreground text-4xl font-black tracking-tight text-balance sm:text-6xl">
                 {title}
               </h1>
-              <p className="text-foreground/80 mt-5 max-w-xl text-lg leading-relaxed sm:text-2xl">
+              <p className="text-foreground/80 mt-5 text-lg leading-relaxed sm:text-2xl">
                 {tagline}
               </p>
             </Reveal>
@@ -362,8 +362,8 @@ export function ClosingBand({
           <p className="text-primary mb-3 text-xs font-semibold tracking-[0.2em] uppercase">
             {kicker}
           </p>
-          <h2 className="max-w-3xl text-2xl font-bold text-balance sm:text-4xl">{title}</h2>
-          <p className="text-muted-foreground mt-4 max-w-2xl leading-relaxed">{body}</p>
+          <h2 className="text-2xl font-bold text-balance sm:text-4xl">{title}</h2>
+          <p className="text-muted-foreground mt-4 leading-relaxed">{body}</p>
           {children && <div className="mt-8 flex flex-wrap gap-3">{children}</div>}
         </Reveal>
       </div>

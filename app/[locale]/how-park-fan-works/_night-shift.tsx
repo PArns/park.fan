@@ -131,7 +131,7 @@ export function NightShift({ jobs, caption }: { jobs: NightShiftJob[]; caption: 
         ))}
       </ol>
 
-      <p className="text-muted-foreground mt-4 max-w-3xl text-xs leading-relaxed">{caption}</p>
+      <p className="text-muted-foreground mt-4 text-xs leading-relaxed">{caption}</p>
     </div>
   );
 }

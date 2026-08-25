@@ -242,7 +242,7 @@ const FAQ = [
   {
     question: 'Est-ce que 70 minutes d’attente, c’est beaucoup ?',
     answer:
-      'Cela dépend de l’attraction et du jour de la semaine. Taron, à Phantasialand, plafonne habituellement à 55 minutes le lundi et reste sous 65 neuf lundis sur dix ; 70 minutes y correspondent donc à une journée exceptionnellement chargée. Le samedi, la médiane de la même attraction est exactement de 70 minutes, et le même affichage est alors parfaitement moyen. Les deux valeurs de comparaison figurent sur la page de l’attraction, pour ne pas avoir à les deviner.',
+      'Cela dépend de l’attraction et du jour de la semaine. Taron, à Phantasialand, plafonne habituellement à 55 minutes le lundi et reste sous 65 neuf lundis sur dix ; 70 minutes y correspondent donc à une journée exceptionnellement chargée. Le samedi, la médiane de la même attraction est exactement de 70 minutes, et le même affichage est alors parfaitement moyen. Les deux valeurs de comparaison figurent sur park.fan, sur la page de l’attraction, pour ne pas avoir à les deviner.',
   },
   {
     question: 'D’où viennent les temps d’attente ?',
@@ -257,7 +257,7 @@ const FAQ = [
   {
     question: 'Pourquoi Hansa-Park n’affiche-t-il aucun temps d’attente ?',
     answer:
-      'Le parc ne publie ses temps d’attente que dans sa propre application, et uniquement pour les appareils connectés au wifi du parc. Il n’existe aucune interface publique où nous pourrions les lire. Comme un parc sans source ressemble exactement, dans les données, à un parc fermé pour la nuit, il s’agit d’une entrée entretenue à la main et non d’une déduction : le message sur la page du parc le dit, plutôt que d’afficher 82 attractions prétendument vides.',
+      'Le parc ne publie ses temps d’attente que dans sa propre application, et uniquement pour les appareils connectés au wifi du parc. Il n’existe aucune interface publique où nous pourrions les lire. Comme un parc sans source ressemble exactement, dans les données, à un parc fermé pour la nuit, il s’agit d’une entrée entretenue à la main et non d’une déduction : le message sur park.fan le dit, plutôt que d’afficher 82 attractions prétendument vides.',
   },
   {
     question: 'Qu’est-ce que le rope drop ?',
@@ -272,7 +272,7 @@ const FAQ = [
   {
     question: 'À quelle fréquence les chiffres de la page sont-ils actualisés ?',
     answer:
-      'Une page de parc ouverte récupère de nouvelles valeurs toutes les cinq minutes, au même rythme que l’interrogation des sources. Les valeurs statistiques comme les temps d’attente habituels ou les recommandations rope drop sont recalculées une fois par nuit, parce qu’elles bougent de toute façon à peine d’un jour à l’autre.',
+      'Une page de parc ouverte sur park.fan récupère de nouvelles valeurs toutes les cinq minutes, au même rythme que l’interrogation des sources. Les valeurs statistiques comme les temps d’attente habituels ou les recommandations rope drop sont recalculées une fois par nuit, parce qu’elles bougent de toute façon à peine d’un jour à l’autre.',
   },
 ];
 
@@ -337,9 +337,10 @@ export function ContentFR() {
       >
         <P>
           À l’entrée de Taron s’affichent 70 minutes, rien d’autre. La file s’entasse déjà depuis le
-          premier escalier. Sur ton téléphone, le même chiffre ; sur la page du parc, il vient avec
-          quatre informations de plus : un niveau d’affluence, une tendance, la seconde file et la
-          taille minimale. Aucune d’elles ne se déduit de la seule journée en cours.
+          premier escalier. Sur ton téléphone, le même chiffre. Ni l’un ni l’autre ne te dit si cela
+          vaut la peine de faire la queue maintenant ou plus tard dans la journée. Sur park.fan,
+          quatre informations l’accompagnent : un niveau d’affluence, une tendance, la seconde file
+          et la taille minimale.
         </P>
 
         <BareNumberVsCard
@@ -350,7 +351,7 @@ export function ContentFR() {
           cardCaption="Les mêmes 70 minutes, plus le niveau d’affluence, la tendance, le temps single rider, la taille minimale et l’indication du moment où cela devrait se calmer."
         />
 
-        <div className="max-w-3xl space-y-4 pt-2">
+        <div className="space-y-4 pt-2">
           <P>
             « Très élevée » n’est pas ici une affaire de goût. Taron tourne en moyenne à{' '}
             {TARON_BASELINE} minutes, {TARON_WAIT_NOW} en représentent environ 156 pour cent, et les
@@ -368,9 +369,9 @@ export function ContentFR() {
 
         <DemoFrame
           label="Deux attractions, la même minute"
-          note="Les deux cartes viennent du même instant dans le même parc, Taron à Klugheim et Black Mamba à Deep in Africa. Une file grossit, l’autre se résorbe. Sur la page du parc, toutes les attractions sont ainsi côte à côte, triables par temps d’attente."
+          note="Les deux cartes viennent du même instant dans le même parc, Taron à Klugheim et Black Mamba à Deep in Africa. Une file grossit, l’autre se résorbe. Ici, sur park.fan, toutes les attractions sont ainsi côte à côte, triables par temps d’attente."
           href={PARK}
-          hrefLabel="Vers la page du parc →"
+          hrefLabel="Phantasialand sur park.fan →"
         >
           <TwoRidesDemo />
         </DemoFrame>
@@ -418,7 +419,7 @@ export function ContentFR() {
                     {i === 1 && 'Pour un samedi, c’est exactement la norme'}
                     {i === 2 && 'Et une fois, il y en a eu 135'}
                   </h3>
-                  <p className="text-muted-foreground max-w-xl leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed">
                     {i === 0 && (
                       <>
                         Le lundi, le pic de la journée est de {step.typical} minutes, et neuf lundis
@@ -491,17 +492,17 @@ export function ContentFR() {
                 La solidité de tout cela tient au nombre de jours mesurés : {TARON_WEEKDAY_DAYS} en
                 semaine et {TARON_WEEKEND_DAYS} le week-end se sont accumulés ici. La fiche indique
                 elle-même la période sur laquelle elle calcule. Pour le parc entier, le total des
-                jours enregistrés figure dans la section statistiques de la page du parc, et les
-                tableaux par mois et par jour de semaine en font une colonne à part.
+                jours enregistrés figure dans la section statistiques sur park.fan, et les tableaux
+                par mois et par jour de semaine en font une colonne à part.
               </P>
             </div>
           </div>
 
           <DemoFrame
             label="Le même tableau pour tout le parc, en direct"
-            note="Pas de chiffres d’exemple : voici l’état actuel de Phantasialand, la valeur habituelle et la valeur chargée par attraction. Sur la page du parc, la ligne au-dessus dit sur combien de jours enregistrés toute la section calcule. Toutes les minutes vont par pas de cinq, parce que les parcs affichent par pas de cinq."
+            note="Pas de chiffres d’exemple : voici l’état actuel de Phantasialand, la valeur habituelle et la valeur chargée par attraction. Sur park.fan, la ligne au-dessus dit sur combien de jours enregistrés toute la section calcule. Toutes les minutes vont par pas de cinq, parce que les parcs affichent par pas de cinq."
             href={PARK}
-            hrefLabel="Vers la page du parc →"
+            hrefLabel="Phantasialand sur park.fan →"
           >
             <LiveTopAttractions locale="fr" />
           </DemoFrame>
@@ -532,12 +533,12 @@ export function ContentFR() {
           label="Le vrai profil horaire, à l’instant"
           note="En direct du profil horaire du parc. En gras, l’heure la plus forte de chaque attraction, et elle est loin d’être la même pour les six. Une heure ne devient une colonne qu’à partir de dix jours mesurés sur cette attraction, si elle atteint au moins 40 pour cent de l’heure la mieux mesurée et si au moins la moitié des attractions la remontent. Cela écarte les heures de bord de journée, où une seule file de clients d’hôtel parlerait sinon pour toute la matinée."
           href={PARK}
-          hrefLabel="Vers la page du parc →"
+          hrefLabel="Phantasialand sur park.fan →"
         >
           <LiveHourlyProfile locale="fr" />
         </DemoFrame>
 
-        <div className="max-w-3xl space-y-4 pt-2">
+        <div className="space-y-4 pt-2">
           <P>
             Taron est le cas où l’heure ne décide presque rien : la ligne reste toute la journée
             dans une bande étroite, et ce qui fait la différence, c’est le jour de la semaine du
@@ -555,7 +556,7 @@ export function ContentFR() {
             <RopeDropDemo />
           </DemoFrame>
 
-          <div className="max-w-prose space-y-4">
+          <div className="space-y-4">
             <PG>
               La carte donne trois chiffres et une heure : le temps d’attente habituel à
               l’ouverture, le pic de la journée, l’écart entre les deux, et la fenêtre pendant
@@ -588,18 +589,16 @@ export function ContentFR() {
 
         <DemoFrame
           label="Quatre jours d’une semaine de vacances d’automne"
-          note="Le 15 octobre est le plus calme des quatre, bien qu’il tombe en pleine période de vacances : il pleut. Le 19 est gris parce que le parc est fermé ce jour-là. Sur la page du parc, le même calendrier se déroule mois par mois, aussi loin que va la prévision pour ce parc."
+          note="Le 15 octobre est le plus calme des quatre, bien qu’il tombe en pleine période de vacances : il pleut. Le 19 est gris parce que le parc est fermé ce jour-là. Sur park.fan, le même calendrier se déroule mois par mois, aussi loin que va la prévision pour ce parc."
         >
           <CalendarDaysDemo />
         </DemoFrame>
 
-        {/* One column at the body measure, like every other chapter on this page.
-            As two prose columns this band put a third text edge under the paragraph
-            above it: 768 px of copy, then a 604 px column ending 164 px short of
-            it, then a second column starting where that paragraph still had words.
-            The empty right half is the page's normal rhythm — a full-width figure
-            over a body-measure column. */}
-        <div className="max-w-3xl space-y-4 pt-2">
+        {/* One column, full width, like every other chapter on this page. As two
+            prose columns this band put a third text edge under the paragraph above
+            it: a run of copy, then a 604 px column ending short of it, then a
+            second column starting where that paragraph still had words. */}
+        <div className="space-y-4 pt-2">
           <P>
             Les calendriers de vacances viennent de deux sources publiques et couvrent quatre ans
             chacun. Celles des voisins comptent souvent plus que les siennes. Un exemple
@@ -651,9 +650,9 @@ export function ContentFR() {
         icon={Layers}
       >
         <P>
-          Tout ce qui précède tient sur une seule page, construite dans l’ordre où les questions
-          viennent : le parc est-il ouvert aujourd’hui ? Va-t-il pleuvoir ? Quelle est la longueur
-          de la file ? Et quand aurais-je mieux fait de venir ?
+          Tout ce qui précède tient sur une seule page park.fan par parc, construite dans l’ordre où
+          les questions viennent : le parc est-il ouvert aujourd’hui ? Va-t-il pleuvoir ? Quelle est
+          la longueur de la file ? Et quand aurais-je mieux fait de venir ?
         </P>
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,21rem)]">
@@ -726,7 +725,7 @@ export function ContentFR() {
             </IngredientCard>
           </IngredientGrid>
 
-          <div className="max-w-3xl space-y-4 pt-4">
+          <div className="space-y-4 pt-4">
             <P>
               La seconde moitié se passe la nuit. Une médiane sur chaque mardi mesuré n’est pas une
               requête que l’on lance à l’ouverture d’une page. Elle doit avoir été calculée avant,
@@ -757,7 +756,7 @@ export function ContentFR() {
         <div className="grid gap-6 lg:grid-cols-3">
           <DemoFrame
             label="Parc sans source lisible"
-            note="Hansa-Park ne publie ses temps d’attente que dans sa propre application, sur le wifi du parc. Dans les données, cela ressemble à un parc en pleine nuit ; c’est donc une mention entretenue à la main sur la page. Sans elle, 82 attractions y figureraient en « très faible »."
+            note="Hansa-Park ne publie ses temps d’attente que dans sa propre application, sur le wifi du parc. Dans les données, cela ressemble à un parc en pleine nuit ; c’est donc une mention entretenue à la main sur park.fan. Sans elle, 82 attractions y figureraient en « très faible »."
           >
             <NoWaitTimesDemo />
           </DemoFrame>

@@ -100,13 +100,10 @@ export function DemoFrame({
         </div>
         {children}
       </div>
-      {/* Capped at the body measure, not the frame's. A demo block runs the full
-          column while running text stops at `max-w-3xl`, and a caption that
-          followed the frame turned into one 170-character line with a different
-          right edge from every paragraph around it. */}
-      {note && (
-        <p className="text-muted-foreground mt-2 max-w-3xl text-xs leading-relaxed">{note}</p>
-      )}
+      {/* Same edges as the frame above it and as every paragraph around it —
+          the page runs one column at full width, so a capped caption would be
+          the only element on it with a right edge of its own. */}
+      {note && <p className="text-muted-foreground mt-2 text-xs leading-relaxed">{note}</p>}
     </div>
   );
 }
@@ -280,7 +277,7 @@ export function BadgeRowDemo({ caption }: { caption: string }) {
         <ComparisonBadge comparison="higher" />
         <ComparisonBadge comparison="much_higher" />
       </div>
-      <p className="text-muted-foreground max-w-3xl text-xs leading-relaxed">{caption}</p>
+      <p className="text-muted-foreground text-xs leading-relaxed">{caption}</p>
     </div>
   );
 }
