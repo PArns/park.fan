@@ -594,6 +594,23 @@ The test: cover the last sentence and read the text without it. If nothing is
 lost, it was decoration. If what is lost is only a _feeling of closure_, it was
 the antipattern.
 
+### The sign at the entrance — the prop the copy keeps reaching for
+
+Banned outright, in every language: `das Schild`, `the sign`, `het bord`,
+`le panneau`, `el cartel`, `il cartello`. It reads like a stage direction, and it
+multiplies: by the time the guide shipped it stood in the hero caption, the scale
+legend, the figure's screen-reader summary, a chapter-01 paragraph and the
+companion post — six locales deep, one picture retold five times.
+
+Name what is actually there instead.
+
+| Don't                           | Do                                      |
+| ------------------------------- | --------------------------------------- |
+| `Mehr sagt das Schild nicht.`   | `Mehr steht am Eingang nicht.`          |
+| `Was am Schild steht.`          | `Was am Eingang steht.`                 |
+| `steht selten am selben Schild` | `erfährt man am Eingang meistens nicht` |
+| `The sign says 70 minutes.`     | `At the entrance it says 70 minutes.`   |
+
 ### Copy must not describe the page's own layout
 
 `Links steht, was am Eingang hängt. Rechts dieselbe Zahl …` was wrong on every

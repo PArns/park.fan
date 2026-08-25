@@ -74,7 +74,7 @@ const CHAPTERS: Chapter[] = [
   { id: 'giorno', index: '04', label: 'Il giorno giusto' },
   { id: 'pagina-parco', index: '05', label: 'Una pagina di parco dall’alto in basso' },
   { id: 'notte', index: '06', label: 'Da dove arrivano i numeri' },
-  { id: 'limiti', index: '07', label: 'Quello che non affermiamo' },
+  { id: 'limiti', index: '07', label: 'Quando non lo sappiamo' },
   { id: 'visite', index: '08', label: 'Quattro visite' },
   { id: 'dove', index: '09', label: 'Dove si trova cosa' },
   { id: 'faq', index: '10', label: 'Domande frequenti' },
@@ -90,7 +90,7 @@ const SCALE_LABELS = {
   days: 'giorni misurati',
   record: 'Record',
   summary:
-    'Taron di {label}: di norma {typical} minuti, {busy} nei giorni pieni, su {days} giorni misurati. Il cartello segna {wait} minuti.',
+    'Taron di {label}: di norma {typical} minuti, {busy} nei giorni pieni, su {days} giorni misurati. All’ingresso ci sono {wait} minuti.',
 };
 
 const SCALE_LEGEND = [
@@ -134,7 +134,7 @@ const SCALE_STEPS: WaitScaleStep[] = [
 const PARK_SECTIONS: AnatomyStep[] = [
   {
     title: 'Intestazione',
-    body: 'Nome, luogo, distanza da dove sei, più stato, orari di oggi, l’affollamento di adesso e il contatore «x su y aperte». La riga che risolve la maggior parte delle visite.',
+    body: 'Nome, luogo, distanza da dove sei, più stato, orari di oggi, l’affollamento di adesso e il contatore «x su y aperte».',
   },
   {
     title: 'Vacanze nel bacino d’utenza',
@@ -292,15 +292,15 @@ export function ContentIT() {
         </Lead>
         <P>
           È ancora quella domanda a stare al centro del sito. Mostrare un tempo di attesa attuale è
-          la parte facile: i parchi lo espongono da soli. Diventa interessante solo quando accanto
-          c’è scritto com’è una giornata normale a quell’attrazione, quando la fila di solito si
-          accorcia e se oggi sia perfino un buon giorno.
+          la parte facile: la maggior parte dei parchi lo pubblica da sé, all’ingresso e nella
+          propria app, che spesso funziona solo sul wi-fi del parco. Diventa interessante solo
+          quando accanto c’è scritto com’è una giornata normale a quell’attrazione, quando la fila
+          di solito si accorcia e se oggi sia perfino un buon giorno.
         </P>
         <P>
           Su questa pagina non c’è nessuno screenshot. Ogni card, ogni badge e ogni tabella qui
           sotto sono i pezzi veri di una pagina di parco, qui solo riempiti con numeri d’esempio
-          fissi. Quello che impari a leggere qui, un’ora dopo nel parco ha esattamente lo stesso
-          aspetto.
+          fissi. Le stesse card ti staranno davanti un’ora dopo, nel parco.
         </P>
 
         <Reveal>
@@ -333,9 +333,10 @@ export function ContentIT() {
         icon={Gauge}
       >
         <P>
-          All’ingresso dell’attrazione c’è un numero, e nient’altro. La pagina del parco porta lo
-          stesso numero con altre quattro informazioni: un livello di affollamento, una tendenza, la
-          seconda coda e l’altezza minima. Nessuna di queste si ricava guardando solo oggi.
+          All’ingresso di Taron campeggiano 70 minuti, nient’altro. La coda si accalca già dalla
+          prima scalinata. Sul telefono compare lo stesso numero; sulla pagina del parco arriva con
+          altre quattro informazioni: un livello di affollamento, una tendenza, la seconda coda e
+          l’altezza minima. Nessuna di queste si ricava guardando solo oggi.
         </P>
 
         <BareNumberVsCard
@@ -355,7 +356,7 @@ export function ContentIT() {
           </P>
           <PG>
             Il secondo valore sulla card è la coda single rider. Molte attrazioni gestiscono più
-            code in parallelo, e quale di queste esista è raro che stia sullo stesso cartello.
+            code in parallelo, e quale di queste esista all’ingresso non si scopre quasi mai.
             Accanto l’altezza minima, così nessuno attraversa mezzo parco con un bambino di 130
             centimetri.
           </PG>
@@ -573,9 +574,9 @@ export function ContentIT() {
         icon={CalendarDays}
       >
         <P>
-          Il risparmio maggiore non sta nell’orario, sta nella data. Tra due giorni della stessa
-          settimana ci può essere mezz’ora di attesa media di differenza, e da un calendario normale
-          non si vede. A fare la differenza sono vacanze scolastiche, festività, ponti e meteo.
+          La data decide più dell’orario. Tra due giorni della stessa settimana ci può essere
+          mezz’ora di attesa media di differenza, e da un calendario normale non si vede. A fare la
+          differenza sono vacanze scolastiche, festività, ponti e meteo.
         </P>
 
         <DemoFrame
@@ -645,7 +646,7 @@ export function ContentIT() {
         <P>
           Tutto quello che precede sta su una sola pagina, costruita nell’ordine in cui si fanno le
           domande: il parco oggi è aperto? Sta per piovere? Quanto è lunga la fila? E quando sarebbe
-          stato meglio venire? Una volta, dall’alto in basso.
+          stato meglio venire?
         </P>
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,21rem)]">
@@ -720,10 +721,9 @@ export function ContentIT() {
 
           <div className="max-w-3xl space-y-4 pt-4">
             <P>
-              La seconda metà avviene di notte, ed è il vero motivo per cui un sito non può
-              semplicemente mostrare tempi di attesa tipici. Una mediana su ogni martedì misurato
-              non è una query che si lancia all’apertura di una pagina. Deve essere stata calcolata
-              prima, in un ordine fisso, perché ogni passo si appoggia al precedente.
+              La seconda metà avviene di notte. Una mediana su ogni martedì misurato non è una query
+              che si lancia all’apertura di una pagina. Deve essere stata calcolata prima, in un
+              ordine fisso, perché ogni passo si appoggia al precedente.
             </P>
           </div>
 
@@ -739,12 +739,12 @@ export function ContentIT() {
         id="limiti"
         index="07"
         kicker="I limiti"
-        title="Quello che non affermiamo"
+        title="Quando non lo sappiamo"
         icon={HelpCircle}
       >
         <P>
-          Un sito di dati non diventa buono perché ogni campo è riempito. Diventa buono quando ci si
-          può fidare dei campi riempiti. Tre casi in cui park.fan preferisce non dire nulla.
+          Alcune caselle qui restano vuote, ed è voluto. Tre casi in cui park.fan preferisce non
+          dire nulla piuttosto che tirare a indovinare.
         </P>
 
         <div className="grid gap-6 lg:grid-cols-3">
@@ -757,14 +757,14 @@ export function ContentIT() {
 
           <DemoFrame
             label="Attrazione fuori stagione"
-            note="Su una pista di ghiaccio ad agosto non riporta niente nessuno, perché non c’è niente da riportare. Leggere quel silenzio come «aperta» sarebbe l’errore comodo. Quel giorno l’attrazione non conta nemmeno nel contatore «12 su 45 aperte»."
+            note="Su una pista di ghiaccio ad agosto non riporta niente nessuno, perché non c’è niente da riportare. Leggere quel silenzio come «aperta» trasforma una segnalazione mancante in un’attrazione aperta. Quel giorno l’attrazione non conta nemmeno nel contatore «12 su 45 aperte»."
           >
             <OffSeasonDemo />
           </DemoFrame>
 
           <DemoFrame
             label="Nessuna base di valutazione"
-            note="L’ultimo livello non è affatto un affollamento. Dice che per questo parco non ne abbiamo ancora uno: sotto i circa 30 giorni di apertura manca il valore di confronto rispetto a cui si calcolerebbe."
+            note="L’ultimo livello indica i parchi per cui non calcoliamo ancora un affollamento: sotto i circa 30 giorni di apertura manca il valore di confronto rispetto a cui si calcolerebbe."
           >
             <BadgeRowDemo caption="Sopra i livelli di affollamento, sotto il confronto con il tipico. Entrambi usano la stessa scala di colori, così non possono contraddirsi." />
           </DemoFrame>
@@ -783,7 +783,7 @@ export function ContentIT() {
         id="visite"
         index="08"
         kicker="Nella pratica"
-        title="Quattro visite, quattro percorsi nel sito"
+        title="Quattro visite"
         icon={Users}
       >
         <P>

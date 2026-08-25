@@ -74,7 +74,7 @@ const CHAPTERS: Chapter[] = [
   { id: 'day', index: '04', label: 'The right day' },
   { id: 'park-page', index: '05', label: 'A park page, top to bottom' },
   { id: 'night-shift', index: '06', label: 'Where the numbers come from' },
-  { id: 'gaps', index: '07', label: 'What we do not claim' },
+  { id: 'gaps', index: '07', label: 'When we do not know' },
   { id: 'visits', index: '08', label: 'Four visits' },
   { id: 'signposts', index: '09', label: 'Where to find what' },
   { id: 'faq', index: '10', label: 'Common questions' },
@@ -90,7 +90,7 @@ const SCALE_LABELS = {
   days: 'days measured',
   record: 'Record',
   summary:
-    'Taron on {label}: typically {typical} minutes, {busy} on busy days, measured across {days} days. The sign says {wait} minutes.',
+    'Taron on {label}: typically {typical} minutes, {busy} on busy days, measured across {days} days. At the entrance it says {wait} minutes.',
 };
 
 const SCALE_LEGEND = [
@@ -106,7 +106,7 @@ const SCALE_LEGEND = [
   },
   {
     term: '70 min',
-    def: 'What the sign at the entrance says. It stays put while the scale underneath it moves.',
+    def: 'What it says at the entrance. It stays put while the scale underneath it moves.',
     swatch: 'bg-amber-500',
   },
   {
@@ -134,7 +134,7 @@ const SCALE_STEPS: WaitScaleStep[] = [
 const PARK_SECTIONS: AnatomyStep[] = [
   {
     title: 'Header',
-    body: 'Name, location, how far it is from you, plus status, today’s opening hours, the crowd level right now and the “x of y open” counter. The one line that answers most visits.',
+    body: 'Name, location, how far it is from you, plus status, today’s opening hours, the crowd level right now and the “x of y open” counter.',
   },
   {
     title: 'School holidays in range',
@@ -291,14 +291,15 @@ export function ContentEN() {
         </Lead>
         <P>
           That question is still what the site is built around. Showing a current wait time is the
-          easy part: the parks post it themselves. It only gets interesting once something beside it
+          easy part: most parks publish it themselves, at the entrance and in their own apps, which
+          often only work on the park’s Wi-Fi. It only gets interesting once something beside it
           says what a normal day at this ride looks like, when the queue tends to get shorter, and
           whether today is a good day at all.
         </P>
         <P>
           There is no screenshot on this page. Every card, badge and table below is a real part of a
-          park page, here filled with fixed example numbers. What you learn to read here looks
-          exactly the same an hour later in the park.
+          park page, here filled with fixed example numbers. The same cards are in front of you an
+          hour later in the park.
         </P>
 
         <Reveal>
@@ -331,9 +332,10 @@ export function ContentEN() {
         icon={Gauge}
       >
         <P>
-          At the entrance to the ride there is a number and nothing else. The park page carries the
-          same number with four more pieces of information: a crowd level, a trend, the second queue
-          and the height requirement. None of them can be worked out from today alone.
+          At the entrance to Taron it says 70 minutes, and nothing else. The queue already backs up
+          from the first flight of steps. Your phone shows the same number; the park page shows it
+          with four more: a crowd level, a trend, the second queue and the height requirement. None
+          of them can be worked out from today alone.
         </P>
 
         <BareNumberVsCard
@@ -354,9 +356,9 @@ export function ContentEN() {
           </P>
           <PG>
             The second value on the card is the single-rider queue. Plenty of rides run several
-            queues in parallel, and which of them exists is rarely on the same sign. Next to it, the
-            height requirement, so nobody walks half the park with a child who is 130 centimetres
-            tall.
+            queues in parallel, and which of them exists is rarely posted at the entrance. Next to
+            it, the height requirement, so nobody walks half the park with a child who is 130
+            centimetres tall.
           </PG>
         </div>
 
@@ -415,7 +417,7 @@ export function ContentEN() {
                     {i === 0 && (
                       <>
                         On Mondays the daily peak is {step.typical} minutes, and on nine Mondays out
-                        of ten it stays under {step.busy}. The {TARON_WAIT_NOW} on the sign are
+                        of ten it stays under {step.busy}. The {TARON_WAIT_NOW} at the entrance are
                         above that. Anyone standing here has caught the busiest Monday in weeks, and
                         the rides next door are usually the better idea.
                       </>
@@ -572,10 +574,9 @@ export function ContentEN() {
         icon={CalendarDays}
       >
         <P>
-          The biggest saving is not in the time of day, it is in the date. Two days of the same week
-          can be half an hour of average wait time apart, and an ordinary calendar gives no sign of
-          it. What makes the difference is school holidays, public holidays, bridge days and the
-          weather.
+          The date decides more than the time of day. Two days of the same week can be half an hour
+          of average wait time apart, and an ordinary calendar gives no hint of it. What makes the
+          difference is school holidays, public holidays, bridge days and the weather.
         </P>
 
         <DemoFrame
@@ -644,7 +645,7 @@ export function ContentEN() {
         <P>
           Everything so far lives on a single page, and that page is built in the order people ask:
           is the park open today? Is it about to rain? How long is the queue? And when should I have
-          come instead? Once through, from the top.
+          come instead?
         </P>
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,21rem)]">
@@ -719,10 +720,9 @@ export function ContentEN() {
 
           <div className="max-w-3xl space-y-4 pt-4">
             <P>
-              The second half happens at night, and it is the real reason a site cannot just show
-              typical wait times. A median across every Tuesday on record is not a query you start
-              when somebody opens a page. It has to have been computed beforehand, in a fixed order,
-              because each step builds on the one before it.
+              The second half happens at night. A median across every Tuesday on record is not a
+              query you start when somebody opens a page. It has to have been computed beforehand,
+              in a fixed order, because each step builds on the one before it.
             </P>
           </div>
 
@@ -738,12 +738,12 @@ export function ContentEN() {
         id="gaps"
         index="07"
         kicker="The limits"
-        title="What we do not claim"
+        title="When we do not know"
         icon={HelpCircle}
       >
         <P>
-          A data site does not become good by having every field filled in. It becomes good when the
-          filled fields can be trusted. Three cases in which park.fan would rather say nothing.
+          Some fields here stay empty, and that is deliberate. Three cases in which park.fan would
+          rather say nothing than guess.
         </P>
 
         <div className="grid gap-6 lg:grid-cols-3">
@@ -756,14 +756,14 @@ export function ContentEN() {
 
           <DemoFrame
             label="A ride outside its season"
-            note="Nobody reports anything about an ice rink in August, because there is nothing to report. Reading that silence as “open” would be the convenient mistake. On that day the ride also does not count towards the “12 of 45 open” tally."
+            note="Nobody reports anything about an ice rink in August, because there is nothing to report. Reading that silence as “open” turns a missing report into an open ride. On that day the ride also does not count towards the “12 of 45 open” tally."
           >
             <OffSeasonDemo />
           </DemoFrame>
 
           <DemoFrame
             label="No basis for a rating"
-            note="The last level is not a crowd level at all. It says we do not have one for this park yet: under roughly 30 operating days the reference value to compute against is missing."
+            note="The last level stands for parks we cannot compute a crowd level for yet: under roughly 30 operating days the reference value to compute against is missing."
           >
             <BadgeRowDemo caption="Crowd levels on top, the comparison against typical below. Both use the same colour scale so they cannot contradict each other." />
           </DemoFrame>
@@ -777,13 +777,7 @@ export function ContentEN() {
       </SectionShell>
 
       {/* ── 08 ──────────────────────────────────────────────────────────── */}
-      <SectionShell
-        id="visits"
-        index="08"
-        kicker="In practice"
-        title="Four visits, four routes through the site"
-        icon={Users}
-      >
+      <SectionShell id="visits" index="08" kicker="In practice" title="Four visits" icon={Users}>
         <P>
           The same data answers very different questions. Four examples, each with the route we
           would take.

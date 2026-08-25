@@ -44,7 +44,7 @@ seo:
     - drukte-kalender
 ---
 
-Je staat voor [Taron](ref:phantasialand/taron), het bord zegt **70 minuten**, en je hoofd doet
+Je staat voor [Taron](ref:phantasialand/taron), bij de ingang staat **70 minuten**, en je hoofd doet
 meteen het verkeerde: het vergelijkt dat getal met je herinnering. Vorige keer
 was het 40, dus vandaag is het erger. De keer daarvoor 90, dus vandaag is het
 top. Twee bezoeken zijn geen basis, en je geheugen rondt sowieso in je nadeel af
@@ -172,7 +172,7 @@ en “druk” werkt, hoe de kalender de vakanties verrekent en op welke drie ple
 we bewust niets beweren. Vier concrete bezoeksituaties zitten er ook bij, van
 het gezin in de herfstvakantie tot de jaarkaarthouder om zeven uur ’s avonds.
 
-En als je de volgende keer bij de ingang staat en naar het bord staart: kijk na
+En als je de volgende keer bij de ingang staat en naar dat getal staart: kijk na
 wat bij deze attractie op een dinsdag normaal is. Dan weet je binnen tien
 seconden of je je moet ergeren of dat het gewoon dinsdag is.
 

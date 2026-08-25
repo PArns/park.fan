@@ -74,7 +74,7 @@ const CHAPTERS: Chapter[] = [
   { id: 'dia', index: '04', label: 'El día adecuado' },
   { id: 'pagina-parque', index: '05', label: 'Una página de parque de arriba abajo' },
   { id: 'noche', index: '06', label: 'De dónde salen las cifras' },
-  { id: 'limites', index: '07', label: 'Lo que no afirmamos' },
+  { id: 'limites', index: '07', label: 'Cuando no lo sabemos' },
   { id: 'visitas', index: '08', label: 'Cuatro visitas' },
   { id: 'donde', index: '09', label: 'Dónde está cada cosa' },
   { id: 'faq', index: '10', label: 'Preguntas frecuentes' },
@@ -90,7 +90,7 @@ const SCALE_LABELS = {
   days: 'días medidos',
   record: 'Récord',
   summary:
-    'Taron el {label}: normalmente {typical} minutos, {busy} en días llenos, medido sobre {days} días. El cartel marca {wait} minutos.',
+    'Taron el {label}: normalmente {typical} minutos, {busy} en días llenos, medido sobre {days} días. En la entrada pone {wait} minutos.',
 };
 
 const SCALE_LEGEND = [
@@ -134,7 +134,7 @@ const SCALE_STEPS: WaitScaleStep[] = [
 const PARK_SECTIONS: AnatomyStep[] = [
   {
     title: 'Cabecera',
-    body: 'Nombre, ubicación, distancia desde donde estás, además del estado, el horario de hoy, la afluencia de este momento y el contador «x de y abiertas». La línea que resuelve la mayoría de las visitas.',
+    body: 'Nombre, ubicación, distancia desde donde estás, además del estado, el horario de hoy, la afluencia de este momento y el contador «x de y abiertas».',
   },
   {
     title: 'Vacaciones en el área de influencia',
@@ -292,15 +292,16 @@ export function ContentES() {
         </Lead>
         <P>
           Esa pregunta sigue siendo el centro de la web. Mostrar un tiempo de espera actual es la
-          parte fácil: los parques lo anuncian ellos mismos. Solo se vuelve interesante cuando al
-          lado pone cómo es un día normal en esa atracción, cuándo suele acortarse la cola y si hoy
-          es siquiera un buen día.
+          parte fácil: la mayoría de los parques lo publican ellos mismos, en la entrada y en su
+          propia aplicación, que a menudo solo funciona con la wifi del parque. Solo se vuelve
+          interesante cuando al lado pone cómo es un día normal en esa atracción, cuándo suele
+          acortarse la cola y si hoy es siquiera un buen día.
         </P>
         <P>
           En esta página no hay ninguna captura de pantalla. Cada tarjeta, cada indicador y cada
           tabla de abajo son las piezas reales de una página de parque, aquí solo rellenadas con
-          cifras de ejemplo fijas. Lo que aprendes a leer aquí tiene exactamente el mismo aspecto
-          una hora después en el parque.
+          cifras de ejemplo fijas. Las mismas tarjetas estarán delante de ti una hora después en el
+          parque.
         </P>
 
         <Reveal>
@@ -333,9 +334,10 @@ export function ContentES() {
         icon={Gauge}
       >
         <P>
-          En la entrada de la atracción hay una cifra y nada más. La página del parque lleva la
-          misma cifra con cuatro datos más: un nivel de afluencia, una tendencia, la segunda cola y
-          la altura mínima. Ninguno de ellos se deduce mirando solo el día de hoy.
+          En la entrada de Taron lucen 70 minutos, nada más. La cola se agolpa ya desde la primera
+          escalera. En el móvil aparece la misma cifra; en la página del parque viene con cuatro
+          datos más: un nivel de afluencia, una tendencia, la segunda cola y la altura mínima.
+          Ninguno de ellos se deduce mirando solo el día de hoy.
         </P>
 
         <BareNumberVsCard
@@ -355,7 +357,7 @@ export function ContentES() {
           </P>
           <PG>
             El segundo valor de la tarjeta es la cola de single rider. Muchas atracciones tienen
-            varias colas en paralelo, y cuál de ellas existe rara vez está en el mismo cartel.
+            varias colas en paralelo, y cuál de ellas existe casi nunca se indica en la entrada.
             Además, la altura mínima, para que nadie cruce medio parque con un niño de 130
             centímetros.
           </PG>
@@ -573,10 +575,9 @@ export function ContentES() {
         icon={CalendarDays}
       >
         <P>
-          El mayor ahorro no está en la hora, sino en la fecha. Entre dos días de la misma semana
-          puede haber media hora de espera media de diferencia, y un calendario corriente no lo
-          delata. La diferencia la marcan las vacaciones escolares, los festivos, los puentes y el
-          tiempo.
+          La fecha decide más que la hora. Entre dos días de la misma semana puede haber media hora
+          de espera media de diferencia, y un calendario corriente no lo delata. La diferencia la
+          marcan las vacaciones escolares, los festivos, los puentes y el tiempo.
         </P>
 
         <DemoFrame
@@ -647,7 +648,7 @@ export function ContentES() {
         <P>
           Todo lo anterior está en una sola página, construida en el orden en que la gente pregunta:
           ¿abre hoy el parque? ¿Va a llover? ¿Cuánto mide la cola? ¿Y cuándo habría sido mejor
-          venir? Una vez, de arriba abajo.
+          venir?
         </P>
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,21rem)]">
@@ -722,9 +723,8 @@ export function ContentES() {
 
           <div className="max-w-3xl space-y-4 pt-4">
             <P>
-              La segunda mitad ocurre de noche, y es la verdadera razón por la que una web no puede
-              mostrar sin más tiempos de espera típicos. Una mediana sobre cada martes medido no es
-              una consulta que se lance al abrir una página. Tiene que estar calculada antes, en un
+              La segunda mitad ocurre de noche. Una mediana sobre cada martes medido no es una
+              consulta que se lance al abrir una página. Tiene que estar calculada antes, en un
               orden fijo, porque cada paso se apoya en el anterior.
             </P>
           </div>
@@ -741,13 +741,12 @@ export function ContentES() {
         id="limites"
         index="07"
         kicker="Los límites"
-        title="Lo que no afirmamos"
+        title="Cuando no lo sabemos"
         icon={HelpCircle}
       >
         <P>
-          Una web de datos no se vuelve buena porque todos los campos estén rellenos. Se vuelve
-          buena cuando se puede confiar en los campos rellenos. Tres casos en los que park.fan
-          prefiere no decir nada.
+          Algunas casillas se quedan vacías aquí, y es a propósito. Tres casos en los que park.fan
+          prefiere no decir nada antes que adivinar.
         </P>
 
         <div className="grid gap-6 lg:grid-cols-3">
@@ -760,14 +759,14 @@ export function ContentES() {
 
           <DemoFrame
             label="Atracción fuera de temporada"
-            note="Sobre una pista de hielo en agosto no informa nadie, porque no hay nada que informar. Leer ese silencio como «abierta» sería el error cómodo. Ese día la atracción tampoco cuenta en el contador «12 de 45 abiertas»."
+            note="Sobre una pista de hielo en agosto no informa nadie, porque no hay nada que informar. Leer ese silencio como «abierta» convierte una falta de datos en una atracción abierta. Ese día la atracción tampoco cuenta en el contador «12 de 45 abiertas»."
           >
             <OffSeasonDemo />
           </DemoFrame>
 
           <DemoFrame
             label="Sin base para valorar"
-            note="El último nivel no es una afluencia. Dice que para este parque todavía no tenemos ninguna: por debajo de unos 30 días de apertura falta el valor de comparación contra el que se calcularía."
+            note="El último nivel señala los parques para los que aún no calculamos afluencia: por debajo de unos 30 días de apertura falta el valor de comparación contra el que se calcularía."
           >
             <BadgeRowDemo caption="Arriba los niveles de afluencia, abajo la comparación con lo típico. Ambos usan la misma escala de color para que no puedan contradecirse." />
           </DemoFrame>
@@ -786,7 +785,7 @@ export function ContentES() {
         id="visitas"
         index="08"
         kicker="En la práctica"
-        title="Cuatro visitas, cuatro caminos por la web"
+        title="Cuatro visitas"
         icon={Users}
       >
         <P>

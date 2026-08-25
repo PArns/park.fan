@@ -74,7 +74,7 @@ const CHAPTERS: Chapter[] = [
   { id: 'jour', index: '04', label: 'Le bon jour' },
   { id: 'page-parc', index: '05', label: 'Une page de parc, de haut en bas' },
   { id: 'nuit', index: '06', label: 'D’où viennent les chiffres' },
-  { id: 'limites', index: '07', label: 'Ce que nous n’affirmons pas' },
+  { id: 'limites', index: '07', label: 'Quand nous ne savons pas' },
   { id: 'visites', index: '08', label: 'Quatre visites' },
   { id: 'reperes', index: '09', label: 'Où trouver quoi' },
   { id: 'faq', index: '10', label: 'Questions fréquentes' },
@@ -90,7 +90,7 @@ const SCALE_LABELS = {
   days: 'jours mesurés',
   record: 'Record',
   summary:
-    'Taron le {label} : habituellement {typical} minutes, {busy} les jours chargés, sur {days} jours mesurés. Le panneau affiche {wait} minutes.',
+    'Taron le {label} : habituellement {typical} minutes, {busy} les jours chargés, sur {days} jours mesurés. À l’entrée, {wait} minutes.',
 };
 
 const SCALE_LEGEND = [
@@ -134,7 +134,7 @@ const SCALE_STEPS: WaitScaleStep[] = [
 const PARK_SECTIONS: AnatomyStep[] = [
   {
     title: 'En-tête',
-    body: 'Nom, lieu, distance depuis chez vous, plus le statut, les horaires du jour, l’affluence du moment et le compteur « x sur y ouvertes ». La ligne qui répond à la plupart des visites.',
+    body: 'Nom, lieu, distance depuis chez vous, plus le statut, les horaires du jour, l’affluence du moment et le compteur « x sur y ouvertes ».',
   },
   {
     title: 'Vacances scolaires alentour',
@@ -293,16 +293,17 @@ export function ContentFR() {
         </Lead>
         <P>
           C’est encore cette question que le site place au centre. Afficher un temps d’attente
-          actuel, c’est la partie facile : les parcs l’affichent eux-mêmes. Il ne devient
-          intéressant que lorsqu’à côté figure ce à quoi ressemble une journée normale à cette
-          attraction, quand la file raccourcit d’ordinaire, et si aujourd’hui est un bon jour tout
-          court.
+          actuel, c’est la partie facile : la plupart des parcs le publient eux-mêmes, à l’entrée et
+          dans leur propre application, qui ne fonctionne souvent que sur le wifi du parc. Il ne
+          devient intéressant que lorsqu’à côté figure ce à quoi ressemble une journée normale à
+          cette attraction, quand la file raccourcit d’ordinaire, et si aujourd’hui est un bon jour
+          tout court.
         </P>
         <P>
           Il n’y a aucune capture d’écran sur cette page. Chaque carte, chaque badge et chaque
           tableau ci-dessous sont les véritables composants d’une page de parc, remplis ici de
-          chiffres d’exemple figés. Ce que vous apprenez à lire ici a exactement la même allure une
-          heure plus tard dans le parc.
+          chiffres d’exemple figés. Les mêmes fiches seront devant vous une heure plus tard dans le
+          parc.
         </P>
 
         <Reveal>
@@ -335,10 +336,10 @@ export function ContentFR() {
         icon={Gauge}
       >
         <P>
-          À l’entrée de l’attraction, il y a un chiffre, et rien d’autre. La page du parc porte le
-          même chiffre avec quatre informations de plus : un niveau d’affluence, une tendance, la
-          seconde file et la taille minimale. Aucune d’elles ne se déduit de la seule journée en
-          cours.
+          À l’entrée de Taron s’affichent 70 minutes, rien d’autre. La file s’entasse déjà depuis le
+          premier escalier. Sur ton téléphone, le même chiffre ; sur la page du parc, il vient avec
+          quatre informations de plus : un niveau d’affluence, une tendance, la seconde file et la
+          taille minimale. Aucune d’elles ne se déduit de la seule journée en cours.
         </P>
 
         <BareNumberVsCard
@@ -360,7 +361,7 @@ export function ContentFR() {
           <PG>
             La seconde valeur de la carte est la file single rider. Beaucoup d’attractions font
             tourner plusieurs files en parallèle, et laquelle existe figure rarement sur le même
-            panneau. À côté, la taille minimale, pour que personne ne traverse la moitié du parc
+            l’entrée. À côté, la taille minimale, pour que personne ne traverse la moitié du parc
             avec un enfant d’un mètre trente.
           </PG>
         </div>
@@ -580,10 +581,9 @@ export function ContentFR() {
         icon={CalendarDays}
       >
         <P>
-          La plus grosse économie n’est pas dans l’heure, elle est dans la date. Entre deux jours de
-          la même semaine, il peut y avoir une demi-heure d’attente moyenne d’écart, et un
-          calendrier ordinaire n’en laisse rien paraître. Ce qui fait la différence : vacances
-          scolaires, jours fériés, ponts et météo.
+          La date décide plus que l’heure. Entre deux jours de la même semaine, il peut y avoir une
+          demi-heure d’attente moyenne d’écart, et un calendrier ordinaire n’en laisse rien
+          paraître. Ce qui fait la différence : vacances scolaires, jours fériés, ponts et météo.
         </P>
 
         <DemoFrame
@@ -653,7 +653,7 @@ export function ContentFR() {
         <P>
           Tout ce qui précède tient sur une seule page, construite dans l’ordre où les questions
           viennent : le parc est-il ouvert aujourd’hui ? Va-t-il pleuvoir ? Quelle est la longueur
-          de la file ? Et quand aurais-je mieux fait de venir ? Une fois, de haut en bas.
+          de la file ? Et quand aurais-je mieux fait de venir ?
         </P>
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,21rem)]">
@@ -728,11 +728,9 @@ export function ContentFR() {
 
           <div className="max-w-3xl space-y-4 pt-4">
             <P>
-              La seconde moitié se passe la nuit, et c’est la vraie raison pour laquelle un site ne
-              peut pas simplement afficher des temps d’attente habituels. Une médiane sur chaque
-              mardi mesuré n’est pas une requête que l’on lance à l’ouverture d’une page. Elle doit
-              avoir été calculée avant, dans un ordre fixe, parce que chaque étape s’appuie sur la
-              précédente.
+              La seconde moitié se passe la nuit. Une médiane sur chaque mardi mesuré n’est pas une
+              requête que l’on lance à l’ouverture d’une page. Elle doit avoir été calculée avant,
+              dans un ordre fixe, parce que chaque étape s’appuie sur la précédente.
             </P>
           </div>
 
@@ -748,12 +746,12 @@ export function ContentFR() {
         id="limites"
         index="07"
         kicker="Les limites"
-        title="Ce que nous n’affirmons pas"
+        title="Quand nous ne savons pas"
         icon={HelpCircle}
       >
         <P>
-          Un site de données ne devient pas bon parce que chaque champ est rempli. Il devient bon
-          quand on peut se fier aux champs remplis. Trois cas où park.fan préfère ne rien dire.
+          Certaines cases restent vides ici, et c’est voulu. Trois cas où park.fan préfère ne rien
+          dire plutôt que de deviner.
         </P>
 
         <div className="grid gap-6 lg:grid-cols-3">
@@ -766,14 +764,14 @@ export function ContentFR() {
 
           <DemoFrame
             label="Attraction hors saison"
-            note="Personne ne remonte quoi que ce soit sur une patinoire en août, parce qu’il n’y a rien à remonter. Lire ce silence comme « ouvert » serait l’erreur commode. Ce jour-là, l’attraction ne compte pas non plus dans le compteur « 12 sur 45 ouvertes »."
+            note="Personne ne remonte quoi que ce soit sur une patinoire en août, parce qu’il n’y a rien à remonter. Lire ce silence comme « ouvert », c’est transformer une absence de relevé en attraction ouverte. Ce jour-là, l’attraction ne compte pas non plus dans le compteur « 12 sur 45 ouvertes »."
           >
             <OffSeasonDemo />
           </DemoFrame>
 
           <DemoFrame
             label="Aucune base d’évaluation"
-            note="Le dernier niveau n’est pas du tout une affluence. Il dit que nous n’en avons pas encore pour ce parc : sous une trentaine de jours d’exploitation, la valeur de référence manque."
+            note="Le dernier niveau désigne les parcs pour lesquels nous ne calculons pas encore d’affluence : sous une trentaine de jours d’exploitation, la valeur de référence manque."
           >
             <BadgeRowDemo caption="En haut les niveaux d’affluence, en bas la comparaison avec l’habituel. Les deux utilisent la même échelle de couleurs, pour qu’ils ne puissent pas se contredire." />
           </DemoFrame>
@@ -792,7 +790,7 @@ export function ContentFR() {
         id="visites"
         index="08"
         kicker="En pratique"
-        title="Quatre visites, quatre parcours sur le site"
+        title="Quatre visites"
         icon={Users}
       >
         <P>

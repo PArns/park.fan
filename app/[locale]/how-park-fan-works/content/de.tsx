@@ -76,7 +76,7 @@ const CHAPTERS: Chapter[] = [
   { id: 'tag', index: '04', label: 'Der richtige Tag' },
   { id: 'parkseite', index: '05', label: 'Die Parkseite von oben nach unten' },
   { id: 'nachtschicht', index: '06', label: 'Woher die Zahlen kommen' },
-  { id: 'luecken', index: '07', label: 'Was wir nicht behaupten' },
+  { id: 'luecken', index: '07', label: 'Wenn wir nichts wissen' },
   { id: 'besuche', index: '08', label: 'Vier Besuche' },
   { id: 'wegweiser', index: '09', label: 'Wo was steht' },
   { id: 'faq', index: '10', label: 'Häufige Fragen' },
@@ -136,7 +136,7 @@ const SCALE_STEPS: WaitScaleStep[] = [
 const PARK_SECTIONS: AnatomyStep[] = [
   {
     title: 'Kopfbereich',
-    body: 'Name, Ort, Entfernung von dir aus, dazu Status, heutige Öffnungszeiten, die Auslastung von jetzt und der Zähler „x von y geöffnet". Die eine Zeile, die die meisten Besuche beantwortet.',
+    body: 'Name, Ort, Entfernung von dir aus, dazu Status, heutige Öffnungszeiten, die Auslastung von jetzt und der Zähler „x von y geöffnet".',
   },
   {
     title: 'Ferien im Einzugsgebiet',
@@ -293,14 +293,15 @@ export function ContentDE() {
         </Lead>
         <P>
           Genau diese Frage stellt die Seite bis heute in den Mittelpunkt. Eine aktuelle Wartezeit
-          zu zeigen, ist der einfache Teil: Die Parks schreiben sie selbst an. Interessant wird sie
-          erst, wenn daneben steht, wie ein normaler Tag an dieser Bahn aussieht, wann die Schlange
-          erfahrungsgemäß kürzer wird und ob heute überhaupt ein guter Tag ist.
+          zu zeigen, ist der einfache Teil: Die Parks veröffentlichen sie meist selbst, am Eingang
+          und in ihren eigenen Apps, die aber oft nur im Park-WLAN funktionieren. Interessant wird
+          sie erst, wenn daneben steht, wie ein normaler Tag an dieser Bahn aussieht, wann die
+          Schlange erfahrungsgemäß kürzer wird und ob heute überhaupt ein guter Tag ist.
         </P>
         <P>
           Auf dieser Seite steht kein Screenshot. Jede Karte, jedes Badge und jede Tabelle unten
-          sind die echten Bauteile der Parkseiten, hier nur mit festen Beispielzahlen befüllt. Was
-          du gleich lesen lernst, sieht eine Stunde später im Park exakt genauso aus.
+          sind die echten Bauteile der Parkseiten, hier nur mit festen Beispielzahlen befüllt.
+          Dieselben Karten stehen eine Stunde später im Park vor dir.
         </P>
 
         <Reveal>
@@ -333,9 +334,10 @@ export function ContentDE() {
         icon={Gauge}
       >
         <P>
-          Am Eingang der Bahn hängt eine Zahl, sonst nichts. Auf der Parkseite steht dieselbe Zahl
-          mit vier weiteren Angaben: einer Auslastungsstufe, einem Trend, der zweiten Warteschlange
-          und der Mindestgröße. Für keine davon reicht der Blick auf heute.
+          Am Eingang von Taron prangen 70 Minuten, sonst nichts. Die Schlange staut sich schon ab
+          der ersten Treppe. Auf dem Handy steht dieselbe Zahl, auf der Parkseite steht sie mit vier
+          weiteren Angaben: einer Auslastungsstufe, einem Trend, der zweiten Warteschlange und der
+          Mindestgröße. Für keine davon reicht der Blick auf heute.
         </P>
 
         <BareNumberVsCard
@@ -356,9 +358,9 @@ export function ContentDE() {
           </P>
           <PG>
             Der zweite Wert auf der Karte ist die Single-Rider-Schlange. Viele Bahnen führen mehrere
-            Warteschlangen parallel, und welche davon existiert, steht selten am selben Schild. Dazu
-            die Mindestgröße, damit niemand mit einem 130 Zentimeter großen Kind durch den halben
-            Park läuft.
+            Warteschlangen parallel, und welche davon existiert, erfährt man am Eingang meistens
+            nicht. Dazu die Mindestgröße, damit niemand mit einem 130 Zentimeter großen Kind durch
+            den halben Park läuft.
           </PG>
         </div>
 
@@ -575,10 +577,9 @@ export function ContentDE() {
         icon={CalendarDays}
       >
         <P>
-          Die größte Ersparnis liegt nicht in der Uhrzeit, sondern im Datum. Zwischen zwei Tagen
-          derselben Woche kann eine halbe Stunde Durchschnittswartezeit liegen, und einem
-          gewöhnlichen Kalender sieht man das nicht an. Den Unterschied machen Schulferien,
-          Feiertage, Brückentage und das Wetter.
+          Das Datum entscheidet mehr als die Uhrzeit. Zwischen zwei Tagen derselben Woche kann eine
+          halbe Stunde Durchschnittswartezeit liegen, und einem gewöhnlichen Kalender sieht man das
+          nicht an. Den Unterschied machen Schulferien, Feiertage, Brückentage und das Wetter.
         </P>
 
         <DemoFrame
@@ -649,7 +650,7 @@ export function ContentDE() {
         <P>
           Alles bisherige steht auf einer einzigen Seite, und die ist nach der Reihenfolge gebaut,
           in der man fragt: Hat der Park heute auf? Regnet es gleich? Wie lang ist die Schlange? Und
-          wann wäre ich besser gekommen? Einmal von oben nach unten.
+          wann wäre ich besser gekommen?
         </P>
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,21rem)]">
@@ -724,11 +725,9 @@ export function ContentDE() {
 
           <div className="max-w-3xl space-y-4 pt-4">
             <P>
-              Der zweite Teil passiert nachts, und er ist der eigentliche Grund, warum eine Seite
-              typische Wartezeiten nicht einfach so anzeigen kann. Ein Median über jeden gemessenen
-              Dienstag ist keine Abfrage, die man beim Seitenaufruf startet. Er muss vorher
-              gerechnet worden sein, in einer festen Reihenfolge, weil jeder Schritt auf dem vorigen
-              aufbaut.
+              Der zweite Teil passiert nachts. Ein Median über jeden gemessenen Dienstag ist keine
+              Abfrage, die man beim Seitenaufruf startet. Er muss vorher gerechnet worden sein, in
+              einer festen Reihenfolge, weil jeder Schritt auf dem vorigen aufbaut.
             </P>
           </div>
 
@@ -744,13 +743,12 @@ export function ContentDE() {
         id="luecken"
         index="07"
         kicker="Die Grenzen"
-        title="Was wir nicht behaupten"
+        title="Wenn wir nichts wissen"
         icon={HelpCircle}
       >
         <P>
-          Eine Datenseite wird nicht dadurch gut, dass jedes Feld gefüllt ist. Sie wird dadurch gut,
-          dass man den gefüllten Feldern trauen kann. Drei Fälle, in denen park.fan lieber nichts
-          sagt.
+          Manche Felder bleiben hier leer, und zwar mit Absicht. Drei Fälle, in denen park.fan
+          lieber nichts sagt als etwas Geratenes.
         </P>
 
         <div className="grid gap-6 lg:grid-cols-3">
@@ -763,14 +761,14 @@ export function ContentDE() {
 
           <DemoFrame
             label="Bahn außerhalb ihrer Saison"
-            note="Über eine Eisbahn im August meldet niemand etwas, weil es nichts zu melden gibt. Diese Stille als „geöffnet“ zu lesen, wäre der bequeme Fehler. Die Bahn zählt an dem Tag auch nicht in den Zähler „12 von 45 geöffnet“ hinein."
+            note="Über eine Eisbahn im August meldet niemand etwas, weil es nichts zu melden gibt. Wer diese Stille als „geöffnet“ liest, macht aus einer fehlenden Meldung eine offene Bahn. Die Bahn zählt an dem Tag auch nicht in den Zähler „12 von 45 geöffnet“ hinein."
           >
             <OffSeasonDemo />
           </DemoFrame>
 
           <DemoFrame
             label="Keine Bewertungsgrundlage"
-            note="Die letzte Stufe ist gar keine Auslastung. Sie sagt, dass wir für diesen Park noch keine haben: Unter rund 30 Betriebstagen fehlt der Vergleichswert, gegen den gerechnet würde."
+            note="Die letzte Stufe steht für Parks, für die wir noch keine Auslastung berechnen: Unter rund 30 Betriebstagen fehlt der Vergleichswert, gegen den gerechnet würde."
           >
             <BadgeRowDemo caption="Oben die Auslastungsstufen, unten der Vergleich mit dem Typischen. Beide benutzen dieselbe Farbskala, damit sie sich nicht widersprechen können." />
           </DemoFrame>
@@ -788,7 +786,7 @@ export function ContentDE() {
         id="besuche"
         index="08"
         kicker="In der Praxis"
-        title="Vier Besuche, vier Wege durch die Seite"
+        title="Vier Besuche"
         icon={Users}
       >
         <P>

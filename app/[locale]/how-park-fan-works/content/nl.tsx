@@ -74,7 +74,7 @@ const CHAPTERS: Chapter[] = [
   { id: 'dag', index: '04', label: 'De juiste dag' },
   { id: 'parkpagina', index: '05', label: 'Een parkpagina van boven naar beneden' },
   { id: 'nachtdienst', index: '06', label: 'Waar de cijfers vandaan komen' },
-  { id: 'gaten', index: '07', label: 'Wat we niet beweren' },
+  { id: 'gaten', index: '07', label: 'Als we het niet weten' },
   { id: 'bezoeken', index: '08', label: 'Vier bezoeken' },
   { id: 'wegwijzer', index: '09', label: 'Waar je wat vindt' },
   { id: 'faq', index: '10', label: 'Veelgestelde vragen' },
@@ -90,7 +90,7 @@ const SCALE_LABELS = {
   days: 'meetdagen',
   record: 'Record',
   summary:
-    'Taron op {label}: normaal {typical} minuten, op drukke dagen {busy}, gemeten over {days} dagen. Op het bord staat {wait} minuten.',
+    'Taron op {label}: normaal {typical} minuten, op drukke dagen {busy}, gemeten over {days} dagen. Bij de ingang staat {wait} minuten.',
 };
 
 const SCALE_LEGEND = [
@@ -134,7 +134,7 @@ const SCALE_STEPS: WaitScaleStep[] = [
 const PARK_SECTIONS: AnatomyStep[] = [
   {
     title: 'Kop',
-    body: 'Naam, plaats, afstand vanaf jou, plus status, openingstijden van vandaag, de drukte van dit moment en de teller “x van y open”. De ene regel die de meeste bezoeken beantwoordt.',
+    body: 'Naam, plaats, afstand vanaf jou, plus status, openingstijden van vandaag, de drukte van dit moment en de teller “x van y open”.',
   },
   {
     title: 'Vakanties in het verzorgingsgebied',
@@ -286,19 +286,20 @@ export function ContentNL() {
       {/* ── Intro ───────────────────────────────────────────────────────── */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
-          park.fan is in een wachtrij ontstaan. Taron, middag, op het bord stond iets met drie
+          park.fan is in een wachtrij ontstaan. Taron, middag, bij de ingang stond iets met drie
           cijfers, en niemand kon zeggen of dat nu pech was of gewoon dinsdag.
         </Lead>
         <P>
           Precies die vraag staat op deze site nog altijd centraal. Een actuele wachttijd tonen is
-          het makkelijke deel: de parken schrijven hem zelf aan. Interessant wordt hij pas als
+          het makkelijke deel: de meeste parken publiceren hem zelf, bij de ingang en in hun eigen
+          apps, die vaak alleen op de wifi van het park werken. Interessant wordt hij pas als
           ernaast staat hoe een normale dag bij deze attractie eruitziet, wanneer de rij doorgaans
           korter wordt en of het vandaag überhaupt een goede dag is.
         </P>
         <P>
           Op deze pagina staat geen screenshot. Elke kaart, elk badge en elke tabel hieronder zijn
-          de echte onderdelen van een parkpagina, hier alleen met vaste voorbeeldcijfers gevuld. Wat
-          je hier leert lezen, ziet er een uur later in het park precies zo uit.
+          de echte onderdelen van een parkpagina, hier alleen met vaste voorbeeldcijfers gevuld.
+          Dezelfde kaarten staan een uur later in het park voor je.
         </P>
 
         <Reveal>
@@ -331,9 +332,10 @@ export function ContentNL() {
         icon={Gauge}
       >
         <P>
-          Bij de ingang van de attractie hangt een getal, meer niet. Op de parkpagina staat
-          hetzelfde getal met vier andere gegevens erbij: een drukteniveau, een trend, de tweede
-          wachtrij en de minimumlengte. Voor geen daarvan is een blik op vandaag genoeg.
+          Bij de ingang van Taron prijken 70 minuten, meer niet. De rij staat al vanaf de eerste
+          trap vast. Op je telefoon staat hetzelfde getal, op de parkpagina staat het met vier
+          andere gegevens erbij: een drukteniveau, een trend, de tweede wachtrij en de
+          minimumlengte. Voor geen daarvan is een blik op vandaag genoeg.
         </P>
 
         <BareNumberVsCard
@@ -353,7 +355,7 @@ export function ContentNL() {
           </P>
           <PG>
             De tweede waarde op de kaart is de single-riderrij. Veel attracties hebben meerdere
-            wachtrijen naast elkaar, en welke daarvan bestaat, staat zelden op hetzelfde bord.
+            wachtrijen naast elkaar, en welke daarvan bestaat, kom je bij de ingang zelden te weten.
             Daarbij de minimumlengte, zodat niemand met een kind van 130 centimeter het halve park
             doorloopt.
           </PG>
@@ -572,9 +574,9 @@ export function ContentNL() {
         icon={CalendarDays}
       >
         <P>
-          De grootste besparing zit niet in het tijdstip, maar in de datum. Tussen twee dagen van
-          dezelfde week kan een half uur gemiddelde wachttijd zitten, en aan een gewone kalender zie
-          je dat niet. Het verschil maken schoolvakanties, feestdagen, brugdagen en het weer.
+          De datum beslist meer dan het tijdstip. Tussen twee dagen van dezelfde week kan een half
+          uur gemiddelde wachttijd zitten, en aan een gewone kalender zie je dat niet. Het verschil
+          maken schoolvakanties, feestdagen, brugdagen en het weer.
         </P>
 
         <DemoFrame
@@ -643,7 +645,7 @@ export function ContentNL() {
         <P>
           Alles tot hier staat op één pagina, en die is gebouwd in de volgorde waarin mensen vragen:
           is het park vandaag open? Gaat het zo regenen? Hoe lang is de rij? En wanneer had ik beter
-          kunnen komen? Eén keer van boven naar beneden.
+          kunnen komen?
         </P>
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,21rem)]">
@@ -718,10 +720,9 @@ export function ContentNL() {
 
           <div className="max-w-3xl space-y-4 pt-4">
             <P>
-              Het tweede deel gebeurt ’s nachts, en dat is de eigenlijke reden waarom een site
-              normale wachttijden niet zomaar kan tonen. Een mediaan over elke gemeten dinsdag is
-              geen query die je bij het openen van een pagina start. Die moet vooraf berekend zijn,
-              in een vaste volgorde, omdat elke stap op de vorige voortbouwt.
+              Het tweede deel gebeurt ’s nachts. Een mediaan over elke gemeten dinsdag is geen query
+              die je bij het openen van een pagina start. Die moet vooraf berekend zijn, in een
+              vaste volgorde, omdat elke stap op de vorige voortbouwt.
             </P>
           </div>
 
@@ -737,12 +738,12 @@ export function ContentNL() {
         id="gaten"
         index="07"
         kicker="De grenzen"
-        title="Wat we niet beweren"
+        title="Als we het niet weten"
         icon={HelpCircle}
       >
         <P>
-          Een datasite wordt niet goed doordat elk veld gevuld is. Ze wordt goed doordat je de
-          gevulde velden kunt vertrouwen. Drie gevallen waarin park.fan liever niets zegt.
+          Sommige velden blijven hier leeg, en dat is met opzet. Drie gevallen waarin park.fan
+          liever niets zegt dan iets gokt.
         </P>
 
         <div className="grid gap-6 lg:grid-cols-3">
@@ -755,14 +756,14 @@ export function ContentNL() {
 
           <DemoFrame
             label="Attractie buiten haar seizoen"
-            note="Over een ijsbaan in augustus meldt niemand iets, omdat er niets te melden valt. Die stilte als “open” lezen zou de gemakkelijke fout zijn. De attractie telt die dag ook niet mee in de teller “12 van 45 open”."
+            note="Over een ijsbaan in augustus meldt niemand iets, omdat er niets te melden valt. Wie die stilte als “open” leest, maakt van een ontbrekende melding een open attractie. De attractie telt die dag ook niet mee in de teller “12 van 45 open”."
           >
             <OffSeasonDemo />
           </DemoFrame>
 
           <DemoFrame
             label="Geen beoordelingsbasis"
-            note="Het laatste niveau is helemaal geen drukte. Het zegt dat we er voor dit park nog geen hebben: onder ongeveer 30 openingsdagen ontbreekt de vergelijkingswaarde waartegen gerekend zou worden."
+            note="Het laatste niveau staat voor parken waarvoor we nog geen drukte berekenen: onder ongeveer 30 openingsdagen ontbreekt de vergelijkingswaarde waartegen gerekend zou worden."
           >
             <BadgeRowDemo caption="Boven de drukteniveaus, onder de vergelijking met het normale. Beide gebruiken dezelfde kleurschaal, zodat ze elkaar niet kunnen tegenspreken." />
           </DemoFrame>
@@ -780,7 +781,7 @@ export function ContentNL() {
         id="bezoeken"
         index="08"
         kicker="In de praktijk"
-        title="Vier bezoeken, vier routes door de site"
+        title="Vier bezoeken"
         icon={Users}
       >
         <P>

@@ -64,7 +64,7 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
     scrollLabel: 'Scrollen',
     heroAlt: 'Phantasialand am Abend',
     signUnit: 'Minuten',
-    signCaption: 'Taron, Phantasialand. Mehr sagt das Schild nicht.',
+    signCaption: 'Taron im Phantasialand. Mehr steht am Eingang nicht.',
     stats: [
       { value: '212', label: 'Parks' },
       { value: '7.156', label: 'Attraktionen' },
@@ -82,7 +82,7 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
     scrollLabel: 'Scroll',
     heroAlt: 'Phantasialand in the evening',
     signUnit: 'minutes',
-    signCaption: 'Taron, Phantasialand. The sign says nothing more.',
+    signCaption: 'Taron at Phantasialand. Nothing else is posted at the entrance.',
     stats: [
       { value: '212', label: 'parks' },
       { value: '7,156', label: 'attractions' },
@@ -100,7 +100,7 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
     scrollLabel: 'Desplazar',
     heroAlt: 'Phantasialand al anochecer',
     signUnit: 'minutos',
-    signCaption: 'Taron, Phantasialand. El cartel no dice más.',
+    signCaption: 'Taron, en Phantasialand. En la entrada no pone nada más.',
     stats: [
       { value: '212', label: 'parques' },
       { value: '7.156', label: 'atracciones' },
@@ -118,7 +118,7 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
     scrollLabel: 'Défiler',
     heroAlt: 'Phantasialand le soir',
     signUnit: 'minutes',
-    signCaption: 'Taron, Phantasialand. Le panneau n’en dit pas plus.',
+    signCaption: 'Taron, à Phantasialand. Rien de plus à l’entrée.',
     stats: [
       { value: '212', label: 'parcs' },
       { value: '7 156', label: 'attractions' },
@@ -136,7 +136,7 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
     scrollLabel: 'Scorri',
     heroAlt: 'Phantasialand di sera',
     signUnit: 'minuti',
-    signCaption: 'Taron, Phantasialand. Il cartello non dice altro.',
+    signCaption: 'Taron, al Phantasialand. All’ingresso non c’è altro.',
     stats: [
       { value: '212', label: 'parchi' },
       { value: '7.156', label: 'attrazioni' },
@@ -154,7 +154,7 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
     scrollLabel: 'Scrollen',
     heroAlt: 'Phantasialand in de avond',
     signUnit: 'minuten',
-    signCaption: 'Taron, Phantasialand. Meer zegt het bord niet.',
+    signCaption: 'Taron in Phantasialand. Meer staat er bij de ingang niet.',
     stats: [
       { value: '212', label: 'parken' },
       { value: '7.156', label: 'attracties' },
@@ -372,12 +372,27 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
           }}
         />
 
-        {/* `overflow-x-clip` catches the decorative bleed — the sign's glow, the
+        {/* The guide's column, and the reason it is capped here rather than in
+            `SectionShell`.
+
+            Every section spans `container mx-auto`, so on a 1920 px screen the
+            headings, rules, card grids and tables ran 1536 px wide while every
+            paragraph stopped at the 768 px reading measure — a 752 px dead strip
+            beside each one, half the column. Widening the measure is not the fix
+            (a 1500 px line is unreadable); narrowing the whole column is, so text
+            and figures share one width. At 1024 px the strip is 240 px, which is
+            an ordinary rag, and every figure still fits: the six-hour table, the
+            four calendar tiles and the two-card demo all render unchanged.
+
+            `overflow-x-clip` catches the decorative bleed — the sign's glow, the
             per-chapter ambience — which is wider than a phone and would otherwise
             hand the document a horizontal scrollbar. `clip` rather than `hidden`:
             hidden makes this a scroll container and the sticky figure in chapter
             02 would stick to it instead of the viewport. */}
-        <div id="start" className="space-y-16 overflow-x-clip py-14 sm:space-y-24 sm:py-20">
+        <div
+          id="start"
+          className="mx-auto max-w-5xl space-y-16 overflow-x-clip py-14 sm:space-y-24 sm:py-20"
+        >
           <Content />
         </div>
       </>
