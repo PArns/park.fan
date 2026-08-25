@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type FormEvent, type ReactNode, type Ref } from 'react';
 import Image from 'next/image';
 import { useQueryClient } from '@tanstack/react-query';
 import {
@@ -12,17 +12,19 @@ import {
   KeyRound,
   Loader2,
   MapPin,
+  RefreshCw,
   ShieldCheck,
   Timer,
   TriangleAlert,
 } from 'lucide-react';
+import { TurnstileWidget, type TurnstileHandle } from '@/components/common/turnstile-widget';
 import { adminFetch, adminKeys, AdminApiError } from '../_lib/api';
 import { heroObjectPosition } from '@/lib/media/hero';
 import { useHeroPhoto } from '../_lib/use-hero-photo';
 import { cn } from '@/lib/utils';
 
-/** Six empty slots. Never mutated in place — every writer copies first. */
-const EMPTY_CODE: readonly string[] = ['', '', '', '', '', ''];
+/** How many digits a TOTP code has. Six, everywhere. */
+const CODE_LENGTH = 6;
 
 type LoginResponse =
   | { status: 'ok' }
@@ -52,6 +54,23 @@ type LoginResponse =
  * disagree about which one, and everything under it — the gradient, the two
  * drifting aurora blobs the maintenance page already uses — carries the screen
  * on its own if the image never arrives.
+ *
+ * Two more things sit in this form and both are about somebody else's software
+ * doing the typing.
+ *
+ * A **Turnstile challenge**, the same one `/contribute` uses, solved before the
+ * credentials are sent and re-solved after every attempt because a token may be
+ * spent once — see `/api/admin/session` for why the check belongs in front of
+ * the backend's limiter rather than behind it.
+ *
+ * And the code step is **one input**, not six. It looks like six: the boxes are
+ * presentational and the real field lies over them, transparent. That is the
+ * shape a password manager can fill. The six real inputs it replaces took
+ * `value.replace(/\D/g,'').slice(-1)` per box, so 1Password handing "123456" to
+ * the first box left a 6 in it and nothing anywhere else — the autofill looked
+ * like a typo. One field with `autocomplete="one-time-code"` on it is what
+ * every manager, and iOS and Android, actually look for, and the username stays
+ * in the DOM on this step so the item they fill from is still the right one.
  */
 export function LoginScreen() {
   const client = useQueryClient();
@@ -60,12 +79,20 @@ export function LoginScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [totpDigits, setTotpDigits] = useState<readonly string[]>(EMPTY_CODE);
+  const [totpCode, setTotpCode] = useState('');
   const [needsTotp, setNeedsTotp] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [lockedFor, setLockedFor] = useState<number | null>(null);
   const [busy, setBusy] = useState(false);
   const [capsLock, setCapsLock] = useState(false);
+
+  // The Turnstile token, and the widget that mints it. Empty means "not solved
+  // yet"; `turnstileBroken` means the challenge itself never arrived — a
+  // blocked script, an offline laptop — which is worth saying out loud rather
+  // than leaving a button greyed out with no reason given.
+  const [turnstileToken, setTurnstileToken] = useState('');
+  const [turnstileBroken, setTurnstileBroken] = useState(false);
+  const turnstileRef = useRef<TurnstileHandle>(null);
 
   // Same window as the dashboard, so the park somebody signs in on is the park
   // that greets them once they are in.
@@ -85,13 +112,13 @@ export function LoginScreen() {
     return () => clearInterval(timer);
   }, [lockedFor]);
 
-  const totpCode = totpDigits.join('');
   const locked = lockedFor !== null;
-  const canSubmit = !busy && !locked && (!needsTotp || totpCode.length === 6);
+  const codeComplete = totpCode.length === CODE_LENGTH;
+  const canSubmit = !busy && !locked && Boolean(turnstileToken) && (!needsTotp || codeComplete);
 
-  async function handleSubmit(event: FormEvent) {
-    event.preventDefault();
-    if (!canSubmit) return;
+  async function attempt() {
+    if (busy || locked || !turnstileToken) return;
+    if (needsTotp && !codeComplete) return;
 
     setBusy(true);
     setError(null);
@@ -104,6 +131,7 @@ export function LoginScreen() {
         body: {
           email: email.trim(),
           password,
+          turnstileToken,
           ...(needsTotp && totpCode ? { totpCode: totpCode.trim() } : {}),
         },
       });
@@ -135,12 +163,48 @@ export function LoginScreen() {
             ? 'Der Code stimmt nicht. Er wechselt alle 30 Sekunden.'
             : 'E-Mail oder Passwort stimmt nicht.';
       setError(message);
-      setTotpDigits(EMPTY_CODE);
+      setTotpCode('');
       if (!wasTotpStep) setPassword('');
     } finally {
       setBusy(false);
+      // The token is spent whatever the answer was — including the successful
+      // password step of a two-step login, whose code step is still to come.
+      // Ask for a fresh one rather than replaying one Cloudflare has retired.
+      setTurnstileToken('');
+      turnstileRef.current?.reset();
     }
   }
+
+  function handleSubmit(event: FormEvent) {
+    event.preventDefault();
+    void attempt();
+  }
+
+  // The auto-submit below must call the *current* attempt, not the one captured
+  // on the render that armed it.
+  const attemptRef = useRef(attempt);
+  useEffect(() => {
+    attemptRef.current = attempt;
+  });
+
+  // A filled code submits itself.
+  //
+  // Not a convenience: it is the other half of making the field fillable. A
+  // manager that pastes six digits and then leaves them sitting behind a button
+  // has saved nobody the typing they came to avoid, and on a phone the keyboard
+  // is covering the button by then. Guarded against firing twice for one code —
+  // and it waits for `canSubmit`, so a code that lands before the fresh
+  // Turnstile token does goes as soon as the token arrives.
+  const autoSubmitted = useRef<string | null>(null);
+  useEffect(() => {
+    if (totpCode.length < CODE_LENGTH) {
+      autoSubmitted.current = null;
+      return;
+    }
+    if (!needsTotp || !canSubmit || autoSubmitted.current === totpCode) return;
+    autoSubmitted.current = totpCode;
+    void attemptRef.current();
+  }, [needsTotp, totpCode, canSubmit]);
 
   return (
     <div className="relative min-h-[100dvh] overflow-hidden">
@@ -284,8 +348,30 @@ export function LoginScreen() {
                 )}
               </div>
             ) : (
-              <TotpDigits digits={totpDigits} onChange={setTotpDigits} disabled={busy || locked} />
+              <TotpField
+                code={totpCode}
+                email={email}
+                onChange={setTotpCode}
+                disabled={busy || locked}
+              />
             )}
+
+            <TurnstileGate
+              ref={turnstileRef}
+              solved={Boolean(turnstileToken)}
+              broken={turnstileBroken}
+              onVerify={(token) => {
+                setTurnstileToken(token);
+                setTurnstileBroken(false);
+              }}
+              onExpire={() => setTurnstileToken('')}
+              onError={() => setTurnstileBroken(true)}
+              onRetry={() => {
+                setTurnstileBroken(false);
+                setTurnstileToken('');
+                turnstileRef.current?.reset();
+              }}
+            />
 
             {error && (
               <p
@@ -314,7 +400,7 @@ export function LoginScreen() {
                 'disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none disabled:hover:brightness-100'
               )}
             >
-              {busy ? (
+              {busy || (!turnstileToken && !turnstileBroken) ? (
                 <Loader2 className="h-4 w-4 animate-spin" />
               ) : (
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none" />
@@ -327,7 +413,7 @@ export function LoginScreen() {
                 type="button"
                 onClick={() => {
                   setNeedsTotp(false);
-                  setTotpDigits(EMPTY_CODE);
+                  setTotpCode('');
                   setError(null);
                 }}
                 className="text-muted-foreground hover:text-foreground mt-3 flex w-full items-center justify-center gap-1.5 text-xs transition-colors"
@@ -393,107 +479,191 @@ function LoginField({
 }
 
 /**
- * Six boxes rather than one field with wide letter-spacing.
+ * The six-digit code. Six boxes, one input.
  *
- * The code is six digits read off a phone and typed without looking back, and
- * separate boxes are what makes "which one am I on" answerable at a glance —
- * plus a mistyped digit costs one backspace instead of a re-read. Paste still
- * works: an authenticator's copy button hands over all six at once, so a paste
- * anywhere in the row fills the row.
+ * The boxes are drawn, not typed into: a single `<input>` lies over them,
+ * transparent, and the cells underneath render what is in it. Everything a
+ * password manager, iOS or Android looks for is then on one element —
+ * `autocomplete="one-time-code"`, `inputMode="numeric"`, a six-character limit
+ * — and everything a person looks for is still there, because six boxes is what
+ * makes "which digit am I on" answerable at a glance and a mistyped digit cost
+ * one backspace instead of a re-read.
  *
- * `one-time-code` sits on the first box only. That is what iOS and Android
- * autofill look for, and repeating it would offer the same suggestion six
- * times.
+ * It replaces six real inputs, and they were unfillable for a reason worth
+ * writing down. Each one took `value.replace(/\D/g,'').slice(-1)` on change,
+ * which is correct for a person typing one digit and destroys an autofill:
+ * 1Password writes all six characters into the first box in one event, the
+ * slice kept the last of them, and the result was a single 6 in box one and
+ * five empty boxes. No error, nothing in the console — it looked like the fill
+ * had simply missed.
+ *
+ * The username rides along, hidden. On this step the e-mail field is gone from
+ * the DOM, and a manager with nothing to match on offers codes from every item
+ * that has one rather than the account being signed in to.
  */
-function TotpDigits({
-  digits,
+function TotpField({
+  code,
+  email,
   onChange,
   disabled,
 }: {
-  digits: readonly string[];
-  onChange: (next: readonly string[]) => void;
+  code: string;
+  email: string;
+  onChange: (next: string) => void;
   disabled: boolean;
 }) {
-  const boxes = useRef<Array<HTMLInputElement | null>>([]);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [focused, setFocused] = useState(false);
 
   useEffect(() => {
-    boxes.current[0]?.focus();
+    inputRef.current?.focus();
   }, []);
 
-  function focusBox(index: number) {
-    boxes.current[Math.max(0, Math.min(5, index))]?.focus();
-  }
-
-  // Positional, which is the whole reason the six slots live in an array
-  // rather than in a string: clearing the third digit of a full code has to
-  // leave a hole, not slide the last two along one box each.
-  function setDigit(index: number, digit: string) {
-    if (index < 0 || index > 5) return;
-    const next = [...digits];
-    next[index] = digit;
-    onChange(next);
-  }
+  // Where the next digit goes. -1 once the code is full, so the caret stops
+  // blinking over a box that already has something in it.
+  const caretAt = focused && code.length < CODE_LENGTH ? code.length : -1;
 
   return (
     <div>
       <label
-        htmlFor="admin-totp-0"
+        htmlFor="admin-totp"
         className="text-muted-foreground mb-1.5 block text-[11px] font-medium tracking-wide uppercase"
       >
         Bestätigungscode
       </label>
-      <div className="flex gap-2">
-        {Array.from({ length: 6 }, (_, index) => (
-          <input
-            key={index}
-            id={`admin-totp-${index}`}
-            ref={(node) => {
-              boxes.current[index] = node;
-            }}
-            inputMode="numeric"
-            autoComplete={index === 0 ? 'one-time-code' : 'off'}
-            maxLength={1}
-            disabled={disabled}
-            aria-label={`Ziffer ${index + 1} von 6`}
-            value={digits[index] ?? ''}
-            onChange={(event) => {
-              const digit = event.target.value.replace(/\D/g, '').slice(-1);
-              if (!digit) return;
-              setDigit(index, digit);
-              focusBox(index + 1);
-            }}
-            onKeyDown={(event) => {
-              if (event.key === 'Backspace') {
-                event.preventDefault();
-                if (digits[index]) {
-                  setDigit(index, '');
-                } else {
-                  setDigit(index - 1, '');
-                  focusBox(index - 1);
-                }
-                return;
-              }
-              if (event.key === 'ArrowLeft') focusBox(index - 1);
-              if (event.key === 'ArrowRight') focusBox(index + 1);
-            }}
-            onPaste={(event) => {
-              const pasted = event.clipboardData.getData('text').replace(/\D/g, '').slice(0, 6);
-              if (!pasted) return;
-              event.preventDefault();
-              onChange(EMPTY_CODE.map((_, slot) => pasted[slot] ?? ''));
-              focusBox(pasted.length);
-            }}
-            className={cn(
-              // `min-w-0` is load-bearing: an <input> resolves `min-width: auto`
-              // to the width of its `size` attribute, roughly twenty characters,
-              // which outranks the zero basis `flex-1` sets. Without it two of
-              // the six boxes filled the row and the rest hung off the panel.
-              'border-border/60 bg-background/50 focus:border-primary/60 focus:ring-primary/25 h-14 min-w-0 flex-1 rounded-xl border text-center text-xl font-semibold tabular-nums transition-[color,box-shadow,border-color] outline-none focus:ring-2',
-              digits[index] && 'border-primary/40'
-            )}
-          />
-        ))}
+
+      {/* Not for anybody to read or reach — it is here so the manager filling
+          the code knows which saved login it belongs to. */}
+      <input
+        type="text"
+        name="username"
+        autoComplete="username"
+        value={email}
+        readOnly
+        tabIndex={-1}
+        aria-hidden="true"
+        className="sr-only"
+      />
+
+      <div className="relative h-14">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 flex gap-2">
+          {Array.from({ length: CODE_LENGTH }, (_, index) => (
+            <div
+              key={index}
+              className={cn(
+                'border-border/60 bg-background/50 flex h-14 min-w-0 flex-1 items-center justify-center rounded-xl border text-xl font-semibold tabular-nums transition-[color,box-shadow,border-color]',
+                code[index] && 'border-primary/40',
+                index === caretAt && 'border-primary/60 ring-primary/25 ring-2'
+              )}
+            >
+              {code[index] ?? ''}
+              {index === caretAt && (
+                <span className="bg-foreground h-6 w-px animate-pulse motion-reduce:animate-none" />
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* The real field. Transparent rather than `opacity-0`, and the full
+            size of the row: a manager decides whether a field is fillable by
+            looking at whether it is visible, and it hangs its own inline button
+            off the box it measures. */}
+        <input
+          ref={inputRef}
+          id="admin-totp"
+          name="otp"
+          type="text"
+          inputMode="numeric"
+          pattern="[0-9]*"
+          autoComplete="one-time-code"
+          maxLength={CODE_LENGTH}
+          disabled={disabled}
+          aria-label={`Bestätigungscode, ${CODE_LENGTH} Ziffern`}
+          value={code}
+          onChange={(event) =>
+            onChange(event.target.value.replace(/\D/g, '').slice(0, CODE_LENGTH))
+          }
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+          className="absolute inset-0 h-full w-full rounded-xl bg-transparent text-center text-xl tracking-[1em] text-transparent caret-transparent outline-none"
+        />
       </div>
+    </div>
+  );
+}
+
+/**
+ * The Turnstile challenge, and what to show while it is not solved yet.
+ *
+ * Three states, because the middle one is most of them: the widget usually
+ * settles in well under a second without asking anybody anything, so a line of
+ * text is the right amount of interface for it. The third state is the one that
+ * matters — a challenge that never loads (an extension, a captive portal, an
+ * office proxy) would otherwise be a permanently greyed-out button with no
+ * explanation, and the person in front of it has no way to guess what is wrong.
+ */
+function TurnstileGate({
+  solved,
+  broken,
+  onVerify,
+  onExpire,
+  onError,
+  onRetry,
+  ref,
+}: {
+  solved: boolean;
+  broken: boolean;
+  onVerify: (token: string) => void;
+  onExpire: () => void;
+  onError: () => void;
+  onRetry: () => void;
+  ref: Ref<TurnstileHandle>;
+}) {
+  // Retrying remounts the widget rather than resetting it: when the script
+  // itself never loaded there is no widget to reset, and that is exactly the
+  // case the button exists for.
+  const [attemptKey, setAttemptKey] = useState(0);
+
+  return (
+    <div className="mt-4">
+      <TurnstileWidget
+        key={attemptKey}
+        ref={ref}
+        action="admin-login"
+        // `/admin` is hardcoded dark and mounts no theme provider, so the
+        // widget has to be told rather than asked.
+        theme="dark"
+        onVerify={onVerify}
+        onExpire={onExpire}
+        onError={onError}
+      />
+
+      {broken ? (
+        <div className="text-muted-foreground mt-2 flex flex-wrap items-center gap-2 text-[11px]">
+          <span className="flex items-center gap-1.5">
+            <TriangleAlert className="h-3 w-3 shrink-0 text-amber-400" />
+            Die Sicherheitsprüfung konnte nicht geladen werden.
+          </span>
+          <button
+            type="button"
+            onClick={() => {
+              onRetry();
+              setAttemptKey((key) => key + 1);
+            }}
+            className="text-foreground hover:text-primary inline-flex items-center gap-1 underline underline-offset-2 transition-colors"
+          >
+            <RefreshCw className="h-3 w-3" />
+            Nochmal
+          </button>
+        </div>
+      ) : (
+        !solved && (
+          <p className="text-muted-foreground mt-2 flex items-center gap-1.5 text-[11px]">
+            <Loader2 className="h-3 w-3 shrink-0 animate-spin" />
+            Sicherheitsprüfung läuft.
+          </p>
+        )
+      )}
     </div>
   );
 }

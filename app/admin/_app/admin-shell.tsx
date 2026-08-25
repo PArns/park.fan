@@ -18,6 +18,7 @@ import {
 import { cn } from '@/lib/utils';
 import { Kbd } from '../_ui/primitives';
 import { Chip } from '../_ui/primitives';
+import { formatDisplayName } from '../_lib/ui';
 import { useAdmin } from '../_lib/admin-context';
 import { useToast } from '../_ui/toast';
 import { useLocalPreference } from '../_lib/use-local-preference';
@@ -452,7 +453,7 @@ function AccountMenu({
       {open && (
         <div className="border-border/60 bg-card absolute right-0 z-50 mt-2 w-60 rounded-xl border p-1 shadow-xl">
           <div className="border-border/50 border-b px-3 py-2.5">
-            <p className="truncate text-sm font-medium">{name}</p>
+            <p className="truncate text-sm font-medium">{formatDisplayName(name)}</p>
             <p className="text-muted-foreground truncate text-xs">{email}</p>
             <Chip tone="primary" className="mt-1.5">
               {ROLE_LABELS[role] ?? role}

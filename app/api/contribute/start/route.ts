@@ -1,7 +1,7 @@
 import 'server-only';
 import { randomUUID } from 'crypto';
 import { NextResponse, type NextRequest } from 'next/server';
-import { verifyTurnstile } from '@/lib/contribute/turnstile';
+import { verifyTurnstile } from '@/lib/security/turnstile';
 import { signTicket } from '@/lib/contribute/ticket';
 import { contributionMetaSchema } from '@/lib/contribute/types';
 import { MAX_FILES } from '@/lib/contribute/config';

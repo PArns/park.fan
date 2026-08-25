@@ -81,6 +81,50 @@ knowing:
 Roles are `owner > editor > author > viewer`, ranked rather than enumerated.
 Hiding a link a role cannot use is a courtesy; the API is the control.
 
+## Bot protection on the login
+
+The login form carries the **same Cloudflare Turnstile challenge `/contribute`
+uses**, with the same two keys — `NEXT_PUBLIC_TURNSTILE_SITE_KEY` for the widget
+and `TURNSTILE_SECRET_KEY` for the check. The widget lives in
+`components/common/turnstile-widget.tsx`, the verification in
+`lib/security/turnstile.ts`; neither is under `contribute/` any more, because
+two surfaces now use them.
+
+`/api/admin/session` verifies the token **before** it forwards anything to
+api.park.fan. That ordering is the value of the whole thing. Everything behind
+it only starts counting once an attempt has been made: the API's throttle is ten
+attempts a minute per address, and the per-account lockout trips after a handful
+of wrong passwords. The lockout in particular is a weapon pointed the wrong way
+— anybody who knows an editor's e-mail address can spend that account's attempts
+whenever they like and keep the person who owns it out. Turnstile is what puts a
+price on the attempt itself, and it is charged before either counter is touched.
+
+Two consequences that are easy to trip over:
+
+- **A token is single-use.** An account with two-factor signs in over two
+  requests, and the password step spends the first token. The form resets its
+  widget in the `finally` of every attempt, successful or not, and waits for the
+  new token before it will send the code — which is why `canSubmit` includes it
+  and why the button spins while the challenge is still running.
+- **A missing secret in production is a hard failure**, by design and now on one
+  surface more than before. `verifyTurnstile` refuses rather than waving traffic
+  through, so an unset `TURNSTILE_SECRET_KEY` on the frontend deployment locks
+  the admin out rather than leaving it unguarded. In dev, an unset secret skips
+  the check entirely, so a local checkout signs in with no Cloudflare account.
+
+The challenge is on this side, not on api.park.fan. Verifying it there would
+mean forwarding the token instead of checking it, and the two repos would have
+to be deployed in lockstep for a login to work. A direct caller reaching
+`/v1/admin/auth/login` past this app still meets the backend's own throttle and
+lockout, which are unchanged.
+
+If the challenge itself never loads — an extension, a captive portal, a proxy
+that eats `challenges.cloudflare.com` — the form says so and offers a retry that
+**remounts** the widget rather than resetting it: there is no widget to reset
+when the script never arrived, which is the case the button exists for. The
+loader forgets a failed script promise for the same reason, or the first failure
+would be cached and every retry would fail instantly without a request.
+
 ## How it looks, and why
 
 The login screen is the photograph, not a card on a wallpaper. Centring a form
@@ -98,11 +142,33 @@ would otherwise pick a different one. The dashboard asks for the **same**
 half-hour window, so the park somebody signs in on is the park that greets them
 once they are in.
 
-The second-factor step is six boxes rather than one field with wide letter
-spacing. The digits live in an array of six, not in a string: clearing the third
-digit of a full code has to leave a hole rather than slide the last two along one
-box each. Paste anywhere in the row fills the row, and `one-time-code` sits on
-the first box only, which is what phone autofill looks for.
+The second-factor step looks like six boxes and is **one input**. The boxes are
+drawn — a transparent field lies over the whole row and the cells underneath
+render what is in it, with a caret in the one that is next. Six boxes is still
+the right picture: it is what makes "which digit am I on" answerable at a glance,
+and a mistyped digit costs one backspace instead of a re-read.
+
+The six real `<input>`s it replaces could not be autofilled, and the reason is
+worth keeping. Each took `value.replace(/\D/g,'').slice(-1)` on change, which is
+exactly right for a person typing one digit into one box. A password manager does
+not type: 1Password writes all six characters into the first box in a single
+event, the slice kept the last of them, and what came out was a lone `6` in box
+one and five empty boxes. No error and nothing in the console — it read as a fill
+that had missed. One field carries everything a manager, iOS and Android actually
+look for (`autocomplete="one-time-code"`, `inputMode="numeric"`, a six-character
+limit), and a `readOnly` username field rides along hidden on that step, because
+the e-mail input is gone from the DOM by then and a manager with nothing to match
+on offers codes from every item that has one.
+
+A complete code submits itself. That is the other half of making the field
+fillable rather than a flourish — six pasted digits sitting behind a button have
+saved nobody the typing they came to avoid, and on a phone the keyboard is
+covering that button anyway. It waits for the fresh Turnstile token, so a code
+that lands first goes as soon as the token does.
+
+The same `autocomplete="one-time-code"` is on the two code fields under
+`/admin/account`, where the enrolment link hands the secret to the manager and
+the field below it is where the first code comes back.
 
 Inside, three things carry the surfaces. The layout paints one very faint wash of
 the brand colour from the top, so a panel has something to be lighter _than_ — a

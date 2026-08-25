@@ -5,7 +5,18 @@ import 'server-only';
  *
  * The browser solves the Turnstile challenge and sends us the resulting token; we
  * then call Cloudflare's `siteverify` endpoint with our SECRET key to confirm it.
- * This is what stops drive-by bots from spamming the upload endpoint.
+ * This is what stops drive-by bots from spamming an endpoint that is expensive,
+ * or — in the admin's case — worth guessing at.
+ *
+ * Two callers, and they want the same thing for different reasons:
+ *  - `/api/contribute/start` — an upload form open to anybody, so the cost of a
+ *    bot is storage and a moderation queue full of junk.
+ *  - `/api/admin/session` — the login. Here the challenge is solved **before**
+ *    the credentials are forwarded to api.park.fan at all, so a credential-
+ *    stuffing run never reaches the backend's own limiter and never counts
+ *    against the lockout of the account it is guessing at. That last part is
+ *    the point: a per-account lockout is a denial of service against the
+ *    account holder if anyone can trigger it at will.
  *
  * Env:
  *  - TURNSTILE_SECRET_KEY  (server-only) — your Turnstile widget's secret.
@@ -13,7 +24,7 @@ import 'server-only';
  * Dev fallback: if no secret is configured we skip verification (and log a warning)
  * so the prototype runs locally without a Cloudflare account. In production
  * (NODE_ENV=production) a missing secret is treated as a hard failure — we never
- * silently accept unverified uploads on the live site.
+ * silently accept unverified requests on the live site.
  */
 
 const SITEVERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
@@ -30,7 +41,7 @@ export async function verifyTurnstile(token: string, remoteIp?: string): Promise
   if (!secret) {
     if (process.env.NODE_ENV === 'production') {
       console.error(
-        '[turnstile] TURNSTILE_SECRET_KEY is not set — rejecting upload in production.'
+        '[turnstile] TURNSTILE_SECRET_KEY is not set — rejecting request in production.'
       );
       return { success: false, reason: 'not-configured' };
     }

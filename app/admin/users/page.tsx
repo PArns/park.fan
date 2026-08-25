@@ -25,6 +25,7 @@ import {
   SkeletonRows,
 } from '../_ui/primitives';
 import { Field, Select, Switch, TextInput } from '../_ui/controls';
+import { formatDisplayName } from '../_lib/ui';
 import { useToast } from '../_ui/toast';
 import { useSession } from '../_app/session';
 
@@ -152,7 +153,7 @@ function UserRow({ user, isSelf }: { user: AdminIdentity; isSelf: boolean }) {
       <div className="flex flex-wrap items-center gap-2">
         <div className="min-w-0 flex-1">
           <p className="truncate text-sm font-medium">
-            {user.displayName}
+            {formatDisplayName(user.displayName)}
             {isSelf && <span className="text-muted-foreground ml-1.5 text-xs">(du)</span>}
           </p>
           <p className="text-muted-foreground truncate text-xs">{user.email}</p>

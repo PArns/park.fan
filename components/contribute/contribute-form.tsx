@@ -12,7 +12,7 @@ import { MAX_FILE_SIZE } from '@/lib/contribute/config';
 import type { AssignedEntity, UploadedBlob } from '@/lib/contribute/types';
 import { PhotoDropzone, type PendingImage } from './photo-dropzone';
 import { EntityPicker } from './entity-picker';
-import { TurnstileWidget } from './turnstile-widget';
+import { TurnstileWidget } from '@/components/common/turnstile-widget';
 import { compressImage } from './compress';
 
 interface ContributeFormProps {

@@ -18,6 +18,26 @@ import { EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
 
 // ─── formatting ───────────────────────────────────────────────────────────────
 
+/**
+ * A person's name as a name.
+ *
+ * Accounts get created by whoever is at the keyboard and the display name
+ * arrives however it was typed, which on this deployment is `patrick` — so the
+ * dashboard opened with „Hallo patrick" in 24 px bold. It is fixed on the way
+ * out rather than on the way in: rewriting what somebody entered into their own
+ * account is not this app's business, and the greeting is.
+ *
+ * The first letter of each part, and nothing else: a part that already starts
+ * with a capital is left exactly as it is, which is what keeps `McMahon` from
+ * coming out as `Mcmahon` the way a full title-case pass would.
+ */
+export function formatDisplayName(name: string): string {
+  return name.replace(
+    /(^|[\s-])(\p{Ll})/gu,
+    (_, lead: string, first: string) => lead + first.toUpperCase()
+  );
+}
+
 export function formatUptime(hours: number) {
   const h = Math.floor(hours);
   const m = Math.floor((hours - h) * 60);
