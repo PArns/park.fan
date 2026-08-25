@@ -126,9 +126,8 @@ le calendrier. Trois parcs côte à côte, chacun avec son jour le plus calme :
 
 ```
 
-Si une cellule de la dernière colonne reste vide, ce n’est pas un trou mais un
-résultat. Cela veut dire que ce parc n’a aucun jour de semaine qui se détache
-vraiment des autres.
+Si une cellule de la dernière colonne reste vide, ce parc n’a aucun jour de
+semaine qui se détache vraiment des autres.
 
 ## À quoi sert une équipe de nuit
 
@@ -166,9 +165,8 @@ de novembre à janvier. En août, personne ne remonte rien à son sujet, parce
 qu’il n’y a rien à remonter. Lire ce silence comme « ouvert » serait l’erreur
 commode, et c’est bel et bien ce qui a figuré une fois sur la page du parc.
 Quant aux mois d’exploitation d’une attraction, nous ne les nommons qu’après 330
-jours d’observation : avant cela, « fonctionne de décembre à avril » ne serait
-pas une saison mais la description de la période où nous avons mesuré par
-hasard.
+jours d’observation : avant cela, aucun mois n’y figure, parce que « fonctionne
+de décembre à avril » décrirait la période où nous avons mesuré par hasard.
 
 ## Où tout cela se trouve
 

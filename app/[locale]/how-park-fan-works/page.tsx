@@ -372,23 +372,24 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
           }}
         />
 
-        {/* The guide's column, and the reason it is capped here rather than in
-            `SectionShell`.
+        {/* One column at the container's width, no cap of its own.
 
-            Every section spans `container mx-auto`, so on a 1920 px screen the
-            headings, rules, card grids and tables ran 1536 px wide while every
-            paragraph stopped at the 768 px reading measure — a 752 px dead strip
-            beside each one, half the column. Widening the measure is not the fix
-            (a 1500 px line is unreadable); narrowing the whole column is, so text
-            and figures share one width. At 1024 px the strip is 240 px, which is
-            an ordinary rag, and every figure still fits: the six-hour table, the
-            four calendar tiles and the two-card demo all render unchanged.
+            Every section spans `container mx-auto`, and running text used to
+            stop at a 768 px measure inside it — a 752 px dead strip beside every
+            paragraph at 1920 while the headings, rules, grids and tables beside
+            it ran the full width. Capping the column instead only moved the
+            problem: it narrowed the figures too. So the measure is gone from
+            `Lead`, `P`, `PG`, `Highlight` and the demo captions, and text and
+            figures share the section's edges. What is still narrower is narrower
+            because a layout says so — a card, a column of a two-column demo, the
+            sticky copy beside the wait-time scale.
 
-            `overflow-x-clip` catches the decorative bleed — the sign's glow, the
-            per-chapter ambience — which is wider than a phone and would otherwise
-            hand the document a horizontal scrollbar. `clip` rather than `hidden`:
-            hidden makes this a scroll container and the sticky figure in chapter
-            02 would stick to it instead of the viewport. */}
+            `overflow-x-clip` catches the decorative bleed — the glow behind the
+            opening figure, the per-chapter ambience — which is wider than a phone
+            and would otherwise hand the document a horizontal scrollbar. `clip`
+            rather than `hidden`: hidden makes this a scroll container and the
+            sticky figure in chapter 02 would stick to it instead of the
+            viewport. */}
         <div id="start" className="space-y-16 overflow-x-clip py-14 sm:space-y-24 sm:py-20">
           <Content />
         </div>

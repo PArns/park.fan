@@ -127,6 +127,11 @@ export const TabsWithHash = memo(function TabsWithHash({
             restaurantsAvailable={restaurantsAvailable}
           />
           <TabsContent value={defaultValue} className="space-y-6">
+            {/* The same chapter heading the mounted branch renders. Without it the
+                band appeared at hydration and pushed the whole ride list down by
+                its height. The off-season toggle is interactive and cannot be
+                here, but it shares the title's flex row and costs no height. */}
+            <ChapterHeading icon={Zap} title={t('attractions')} frosted />
             <AttractionWaitOverview
               park={park}
               parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}

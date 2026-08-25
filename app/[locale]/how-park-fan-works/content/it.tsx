@@ -163,7 +163,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
   },
   {
     title: 'Attrazioni',
-    body: 'La prima scheda, con il numero di attrazioni nel titolo. Card come quelle del capitolo 01, ordinabili e ricercabili, raggruppate per area. In cima il riepilogo rope drop del parco, ordinato per minuti risparmiati.',
+    body: 'La prima scheda, con il numero di attrazioni nel titolo. Card come quelle del capitolo 01, con ricerca e raggruppate per area. In cima il riepilogo rope drop del parco, ordinato per minuti risparmiati.',
   },
   {
     title: 'Calendario e mappa',
@@ -183,6 +183,11 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Parchi nelle vicinanze',
     body: 'Cos’altro c’è a portata, con distanza e stato attuale.',
     onlyWhen: 'ci sono vicini. Per circa metà dei 212 parchi non ce ne sono.',
+  },
+  {
+    title: 'Blog',
+    body: 'Articoli del blog di park.fan in cui compare questo parco.',
+    onlyWhen: 'ce ne sono.',
   },
   {
     title: 'Statistiche',
@@ -299,8 +304,8 @@ export function ContentIT() {
         </P>
         <P>
           Su questa pagina non c’è nessuno screenshot. Ogni card, ogni badge e ogni tabella qui
-          sotto sono i pezzi veri di una pagina di parco, qui solo riempiti con numeri d’esempio
-          fissi. Le stesse card ti staranno davanti un’ora dopo, nel parco.
+          sotto sono pezzi veri di park.fan, qui solo riempiti con numeri d’esempio fissi. Le stesse
+          card ti staranno davanti un’ora dopo, nel parco.
         </P>
 
         <Reveal>
@@ -365,7 +370,7 @@ export function ContentIT() {
 
         <DemoFrame
           label="Due attrazioni, lo stesso minuto"
-          note="Le due card vengono dallo stesso istante nello stesso parco, Taron a Klugheim e Black Mamba a Deep in Africa. Una fila cresce, l’altra smaltisce. Qui su park.fan tutte le attrazioni stanno così, una accanto all’altra e ordinabili per tempo di attesa."
+          note="Le due card vengono dallo stesso istante nello stesso parco, Taron a Klugheim e Black Mamba a Deep in Africa. Una fila cresce, l’altra smaltisce. Qui su park.fan tutte le attrazioni del parco stanno così, una accanto all’altra e raggruppate per area."
           href={PARK}
           hrefLabel="Phantasialand su park.fan →"
         >
@@ -493,7 +498,7 @@ export function ContentIT() {
 
           <DemoFrame
             label="La stessa tabella per tutto il parco, in tempo reale"
-            note="Nessun numero d’esempio: questa è la situazione attuale del Phantasialand, il valore tipico e quello pieno per ogni attrazione. Su park.fan la riga sopra dice su quanti giorni registrati calcola l’intera sezione. Tutti i minuti vanno a passi di cinque, perché i parchi espongono a passi di cinque."
+            note="Nessun numero d’esempio: questa è la situazione attuale del Phantasialand, il valore tipico e quello pieno per ogni attrazione. Sulla pagina del parco la riga sopra questa sezione dice su quanti giorni registrati calcola. Tutti i minuti vanno a passi di cinque, perché i parchi espongono a passi di cinque."
             href={PARK}
             hrefLabel="Phantasialand su park.fan →"
           >
@@ -535,9 +540,9 @@ export function ContentIT() {
           <P>
             Taron è il caso in cui l’orario non decide quasi nulla: la riga resta tutto il giorno in
             una banda stretta, e a fare la differenza è il giorno della settimana del capitolo 02.
-            Con Chiapas, una riga più sotto, è il contrario: i valori salgono nettamente fino al
-            pomeriggio. Una regola unica per tutto il parco sarebbe sbagliata per una delle due, ed
-            è per questo che viene calcolata attrazione per attrazione.
+            Con Chiapas è il contrario: i valori salgono nettamente fino al pomeriggio. Una regola
+            unica per tutto il parco sarebbe sbagliata per una delle due, ed è per questo che viene
+            calcolata attrazione per attrazione.
           </P>
         </div>
 
@@ -556,9 +561,10 @@ export function ContentIT() {
               finito, e c’è scritto così.
             </PG>
             <P>
-              La seconda parte è il momento più tranquillo della giornata, ovunque cada. Per queste
-              attrazioni coincide con la partenza mattutina. Per altre cade la sera, e allora la
-              card indica quel momento invece della sveglia. Per tutto il parco, il riepilogo delle
+              La card indica anche il momento più tranquillo della giornata, ma solo se cade fuori
+              dalla finestra mattutina. Per Taron non ci cade: entrambi stanno nella stessa ora,
+              perciò qui non c’è un secondo orario. Per altre attrazioni è la sera, e allora la card
+              indica quel momento invece della sveglia. Per tutto il parco, il riepilogo delle
               attrazioni elenca quelle in cui alzarsi presto rende di più, ordinate per minuti
               risparmiati.
             </P>
@@ -581,7 +587,7 @@ export function ContentIT() {
         </P>
 
         <DemoFrame
-          label="Quattro giorni di una settimana di vacanze autunnali"
+          label="Quattro giorni delle vacanze autunnali"
           note="Il 15 ottobre è il più tranquillo dei quattro pur cadendo in piena vacanza: piove. Il 19 è grigio perché quel giorno il parco è chiuso. Su park.fan lo stesso calendario procede mese per mese, fin dove arriva la previsione per quel parco."
         >
           <CalendarDaysDemo />
@@ -608,9 +614,9 @@ export function ContentIT() {
           </PG>
           <P>
             Fin dove arrivi il calendario dipende dal parco. Un parco aperto tutto l’anno riceve una
-            previsione fino a dodici mesi prima. In un parco stagionale si ferma dove finisce la
+            previsione circa undici mesi prima. In un parco stagionale si ferma dove finisce la
             stagione pubblicata: per un martedì di marzo in cui il Phantasialand è dimostrabilmente
-            chiuso, un colore di affollamento non sarebbe una previsione ma un’affermazione.
+            chiuso, nel calendario c’è scritto chiuso e nessun colore di affollamento.
           </P>
         </div>
 
@@ -771,8 +777,8 @@ export function ContentIT() {
 
         <Highlight>
           La stessa regola vale per il riconoscimento della stagione. I mesi di esercizio di
-          un’attrazione li indichiamo solo dopo 330 giorni di osservazione. Prima, «va da dicembre
-          ad aprile» non sarebbe una stagione ma la descrizione del periodo in cui per caso abbiamo
+          un’attrazione li indichiamo solo dopo 330 giorni di osservazione. Prima non compare alcun
+          mese, perché «va da dicembre ad aprile» descriverebbe il periodo in cui per caso abbiamo
           già misurato.
         </Highlight>
       </SectionShell>

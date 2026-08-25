@@ -1,6 +1,7 @@
 'use client';
 
 import { createElement, useState } from 'react';
+import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { useLocale, useTranslations } from 'next-intl';
 import { format, parseISO } from 'date-fns';
 import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
@@ -347,7 +348,7 @@ export function ParkCalendarDayDetail({
                 ))}
               </ul>
               <p className="text-muted-foreground border-border/50 mt-0.5 border-t pt-2 text-xs">
-                {t('avgWaitTime')}: Ø {forecast!.avgWait} min
+                {t('avgWaitTime')}: Ø {roundWaitTo5(forecast!.avgWait)} min
               </p>
             </section>
           )}

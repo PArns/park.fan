@@ -17,6 +17,12 @@ interface ChapterHeadingProps {
    * invisible where a solid numeral still reads.
    */
   icon?: LucideIcon;
+  /**
+   * Tint override for the icon — rope-drop's emerald, the evening panel's
+   * indigo. Replaces the watermark's default `text-primary/25`, so pass an
+   * opacity with it.
+   */
+  iconClassName?: string;
   /** Small uppercase line above the title. */
   kicker?: string;
   /** Node rather than string: some titles wrap a glossary link. */
@@ -60,6 +66,7 @@ interface ChapterHeadingProps {
 export function ChapterHeading({
   index,
   icon: Icon,
+  iconClassName,
   kicker,
   title,
   hint,
@@ -85,7 +92,7 @@ export function ChapterHeading({
           aria-hidden="true"
           className={cn(
             'shrink-0 leading-none font-black tabular-nums',
-            index ? 'text-primary/15' : 'text-primary/25',
+            index ? 'text-primary/15' : (iconClassName ?? 'text-primary/25'),
             size === 'lg' ? 'text-5xl sm:text-7xl' : 'text-4xl sm:text-6xl'
           )}
         >

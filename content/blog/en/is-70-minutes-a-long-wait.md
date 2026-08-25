@@ -122,8 +122,8 @@ side by side, each with its quietest weekday:
 
 ```
 
-If a cell in the last column comes out empty, that is not a gap but a result. It
-means this park has no weekday that reliably stands out from the others.
+If a cell in the last column stays empty, this park has no weekday that reliably
+stands out from the others.
 
 ## What a night shift is for
 
@@ -158,9 +158,9 @@ The same rule in a smaller place: the ice rink at Phantasialand runs from
 November to January. In August nobody reports anything about it, because there
 is nothing to report. Reading that silence as “open” would be the convenient
 mistake, and it did actually say that on the park page once. And we do not name
-a ride's operating months until 330 days of observation: before that, “runs from
-December to April” would not be a season but a description of the period we
-happen to have measured.
+a ride's operating months until 330 days of observation: before that it carries
+no months at all, because “runs from December to April” would describe the
+period we happen to have measured.
 
 ## Where all of this lives
 

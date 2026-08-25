@@ -162,7 +162,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
   },
   {
     title: 'Attracties',
-    body: 'Het eerste tabblad, met het aantal attracties in de titel. Kaarten zoals in hoofdstuk 01, sorteerbaar en doorzoekbaar, gegroepeerd per gebied. Bovenaan het rope-dropoverzicht van het park, gesorteerd op bespaarde minuten.',
+    body: 'Het eerste tabblad, met het aantal attracties in de titel. Kaarten zoals in hoofdstuk 01, doorzoekbaar en gegroepeerd per gebied. Bovenaan het rope-dropoverzicht van het park, gesorteerd op bespaarde minuten.',
   },
   {
     title: 'Kalender en kaart',
@@ -182,6 +182,11 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Parken in de buurt',
     body: 'Wat er verder binnen bereik ligt, met afstand en actuele status.',
     onlyWhen: 'er buren zijn. Bij ongeveer de helft van de 212 parken niet.',
+  },
+  {
+    title: 'Blog',
+    body: 'Berichten uit de park.fan-blog waarin dit park voorkomt.',
+    onlyWhen: 'die er zijn.',
   },
   {
     title: 'Statistiek',
@@ -298,8 +303,8 @@ export function ContentNL() {
         </P>
         <P>
           Op deze pagina staat geen screenshot. Elke kaart, elk badge en elke tabel hieronder zijn
-          de echte onderdelen van een parkpagina, hier alleen met vaste voorbeeldcijfers gevuld.
-          Dezelfde kaarten staan een uur later in het park voor je.
+          echte onderdelen van park.fan, hier alleen met vaste voorbeeldcijfers gevuld. Dezelfde
+          kaarten staan een uur later in het park voor je.
         </P>
 
         <Reveal>
@@ -363,7 +368,7 @@ export function ContentNL() {
 
         <DemoFrame
           label="Twee attracties, dezelfde minuut"
-          note="Beide kaarten komen uit hetzelfde moment in hetzelfde park, Taron in Klugheim en Black Mamba in Deep in Africa. De ene rij groeit, de andere bouwt af. Hier op park.fan staan alle attracties zo naast elkaar, sorteerbaar op wachttijd."
+          note="Beide kaarten komen uit hetzelfde moment in hetzelfde park, Taron in Klugheim en Black Mamba in Deep in Africa. De ene rij groeit, de andere bouwt af. Hier op park.fan staan alle attracties van het park zo naast elkaar, gegroepeerd per gebied."
           href={PARK}
           hrefLabel="Phantasialand op park.fan →"
         >
@@ -492,7 +497,7 @@ export function ContentNL() {
 
           <DemoFrame
             label="Dezelfde tabel voor het hele park, live"
-            note="Geen voorbeeldcijfers: dit is de actuele stand voor Phantasialand, per attractie de normale en de drukke waarde. Op park.fan staat erboven over hoeveel vastgelegde dagen het hele blok rekent. Alle minuten staan in stappen van vijf, omdat parken in stappen van vijf aanschrijven."
+            note="Geen voorbeeldcijfers: dit is de actuele stand voor Phantasialand, per attractie de normale en de drukke waarde. Op de parkpagina staat boven dit blok over hoeveel vastgelegde dagen het rekent. Alle minuten staan in stappen van vijf, omdat parken in stappen van vijf aanschrijven."
             href={PARK}
             hrefLabel="Phantasialand op park.fan →"
           >
@@ -534,9 +539,9 @@ export function ContentNL() {
           <P>
             Taron is het geval waarin het tijdstip bijna niets beslist: de regel ligt de hele dag in
             een smalle band, en wat het verschil maakt is de weekdag uit hoofdstuk 02. Bij Chiapas
-            een regel lager is het andersom, daar stijgen de waarden tot in de middag duidelijk. Eén
-            enkele regel voor het hele park zou voor een van de twee verkeerd zijn, en daarom wordt
-            hij per attractie berekend.
+            is het andersom, daar stijgen de waarden tot in de middag duidelijk. Eén enkele regel
+            voor het hele park zou voor een van de twee verkeerd zijn, en daarom wordt hij per
+            attractie berekend.
           </P>
         </div>
 
@@ -555,9 +560,10 @@ export function ContentNL() {
               weg, en dat staat er ook zo.
             </PG>
             <P>
-              Het tweede deel is de rustigste tijd van de dag, waar die ook ligt. Bij deze
-              attracties valt die samen met de vroege start. Bij andere ligt hij in de avond, en dan
-              noemt de kaart dat tijdstip in plaats van de wekker. Voor het hele park somt het
+              De kaart noemt ook de rustigste tijd van de dag, maar alleen als die buiten het vroege
+              venster valt. Bij Taron valt hij er niet buiten, allebei in hetzelfde uur, dus staat
+              hier geen tweede tijdstip. Bij andere attracties is het de avond, en dan noemt de
+              kaart dat tijdstip in plaats van de wekker. Voor het hele park somt het
               attractieoverzicht de attracties op waarbij vroeg opstaan het meeste oplevert,
               gesorteerd op bespaarde minuten.
             </P>
@@ -580,7 +586,7 @@ export function ContentNL() {
         </P>
 
         <DemoFrame
-          label="Vier dagen uit een herfstvakantieweek"
+          label="Vier dagen uit de herfstvakantie"
           note="15 oktober is de rustigste van de vier, hoewel hij midden in de vakantie valt: het regent. De 19e is grijs omdat het park die dag dicht is. Op park.fan staat dezelfde kalender maand voor maand, zo ver als de voorspelling voor dat park reikt."
         >
           <CalendarDaysDemo />
@@ -606,9 +612,9 @@ export function ContentNL() {
           </PG>
           <P>
             Hoe ver de kalender reikt, hangt van het park af. Een park dat het hele jaar open is,
-            krijgt tot twaalf maanden vooruit een voorspelling. Bij een seizoenspark houdt ze op
-            waar het gepubliceerde seizoen eindigt: voor een dinsdag in maart waarop Phantasialand
-            aantoonbaar gesloten is, is een druktekleur geen voorspelling maar een bewering.
+            krijgt ruim elf maanden vooruit een voorspelling. Bij een seizoenspark houdt ze op waar
+            het gepubliceerde seizoen eindigt: voor een dinsdag in maart waarop Phantasialand
+            aantoonbaar gesloten is, staat er gesloten in de kalender en geen druktekleur.
           </P>
         </div>
 
@@ -769,8 +775,9 @@ export function ContentNL() {
 
         <Highlight>
           Dezelfde regel geldt voor de seizoensherkenning. De bedrijfsmaanden van een attractie
-          noemen we pas na 330 waarnemingsdagen. Daarvoor zou “draait van december tot april” geen
-          seizoen zijn, maar een beschrijving van de periode waarin we toevallig al hebben gemeten.
+          noemen we pas na 330 waarnemingsdagen. Daarvoor staat er geen enkele maand bij, omdat
+          “draait van december tot april” dan de periode beschrijft waarin we toevallig al hebben
+          gemeten.
         </Highlight>
       </SectionShell>
 

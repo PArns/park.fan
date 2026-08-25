@@ -123,9 +123,8 @@ Vergleich, jeweils mit ihrem ruhigsten Wochentag:
 
 ```
 
-Fällt eine Zelle in der letzten Spalte leer aus, ist das keine Lücke, sondern
-ein Ergebnis. Es heißt, dass dieser Park keinen Wochentag hat, der sich
-verlässlich von den anderen abhebt.
+Bleibt eine Zelle in der letzten Spalte leer, hat dieser Park keinen Wochentag,
+der sich verlässlich von den anderen abhebt.
 
 ## Wofür man eine Nachtschicht braucht
 
@@ -162,8 +161,8 @@ Phantasialand läuft von November bis Januar. Im August meldet über ihn niemand
 etwas, weil es nichts zu melden gibt. Diese Stille als „geöffnet" zu lesen,
 wäre der bequeme Fehler, und er stand tatsächlich mal so auf der Parkseite.
 Und Betriebsmonate einer Bahn nennen wir überhaupt erst nach 330
-Beobachtungstagen: Vorher wäre „läuft von Dezember bis April" keine Saison,
-sondern eine Beschreibung des Zeitraums, in dem wir zufällig schon gemessen
+Beobachtungstagen: Vorher steht bei ihr kein Monat, weil „läuft von Dezember bis
+April" dann nur den Zeitraum beschreibt, in dem wir zufällig schon gemessen
 haben.
 
 ## Wo das alles steht

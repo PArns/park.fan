@@ -86,7 +86,7 @@ function toRow(
   return {
     key,
     name: overrides.label ?? stat?.attractionName ?? rideSlug,
-    href: `${park.basePath}/attractions/${rideSlug}`,
+    href: `${park.basePath}/${rideSlug}`,
     parkName: park.name,
     parkHref: park.href,
     land: stat?.land ?? null,

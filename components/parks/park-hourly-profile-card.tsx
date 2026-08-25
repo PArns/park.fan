@@ -1,7 +1,7 @@
 'use client';
 
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { Clock } from 'lucide-react';
 import { GlassCard } from '@/components/common/glass-card';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -143,7 +143,7 @@ export function ParkHourlyProfileCard({
                   className="bg-card sticky left-0 z-10 max-w-[10rem] py-1.5 pr-3 text-left font-medium"
                 >
                   <Link
-                    href={`${basePath}/attractions/${ride.attractionSlug}`}
+                    href={`${basePath}/${ride.attractionSlug}`}
                     prefetch={false}
                     className="hover:text-primary block truncate transition-colors"
                   >

@@ -162,7 +162,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
   },
   {
     title: 'Attractions',
-    body: 'The first tab, with the ride count in its title. Cards like the ones in chapter 01, sortable and searchable, grouped by land. The park’s rope-drop overview sits on top, sorted by minutes saved.',
+    body: 'The first tab, with the ride count in its title. Cards like the ones in chapter 01, searchable and grouped by land. The park’s rope-drop overview sits on top, sorted by minutes saved.',
   },
   {
     title: 'Calendar and map',
@@ -182,6 +182,11 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Parks nearby',
     body: 'What else is within reach, with distance and current status.',
     onlyWhen: 'there are neighbours. For about half of the 212 parks there are none.',
+  },
+  {
+    title: 'Blog',
+    body: 'Posts from the park.fan blog that this park appears in.',
+    onlyWhen: 'there are any.',
   },
   {
     title: 'Statistics',
@@ -298,8 +303,8 @@ export function ContentEN() {
         </P>
         <P>
           There is no screenshot on this page. Every card, badge and table below is a real part of a
-          park page, here filled with fixed example numbers. The same cards are in front of you an
-          hour later in the park.
+          part of park.fan, here filled with fixed example numbers. The same cards are in front of
+          you an hour later in the park.
         </P>
 
         <Reveal>
@@ -365,7 +370,7 @@ export function ContentEN() {
 
         <DemoFrame
           label="Two rides, the same minute"
-          note="Both cards come from the same moment in the same park, Taron in Klugheim and Black Mamba in Deep in Africa. One queue is growing, the other is being worked off. Here on park.fan every ride sits side by side like this, sortable by wait time."
+          note="Both cards come from the same moment in the same park, Taron in Klugheim and Black Mamba in Deep in Africa. One queue is growing, the other is being worked off. Here on park.fan every ride in the park sits side by side like this, grouped by land."
           href={PARK}
           hrefLabel="Phantasialand on park.fan →"
         >
@@ -493,7 +498,7 @@ export function ContentEN() {
 
           <DemoFrame
             label="The same table for the whole park, live"
-            note="No example numbers: this is the current state for Phantasialand, the typical and the busy value per ride. On park.fan, the line above it says how many recorded days the whole section rests on. Every figure is in five-minute steps, because parks post in five-minute steps."
+            note="No example numbers: this is the current state for Phantasialand, the typical and the busy value per ride. On the park page, the line above this section says how many recorded days it rests on. Every figure is in five-minute steps, because parks post in five-minute steps."
             href={PARK}
             hrefLabel="Phantasialand on park.fan →"
           >
@@ -534,10 +539,9 @@ export function ContentEN() {
         <div className="space-y-4 pt-2">
           <P>
             Taron is the case where the time of day decides almost nothing: the row stays in a
-            narrow band all day, and what makes the difference is the weekday from chapter 02. One
-            row down, Chiapas is the opposite, climbing clearly into the afternoon. A single rule
-            for the whole park would be wrong for one of the two, which is why it is computed per
-            ride.
+            narrow band all day, and what makes the difference is the weekday from chapter 02.
+            Chiapas is the opposite, climbing clearly into the afternoon. A single rule for the
+            whole park would be wrong for one of the two, which is why it is computed per ride.
           </P>
         </div>
 
@@ -556,11 +560,11 @@ export function ContentEN() {
               that it is gone, and the card says so.
             </PG>
             <P>
-              The second part is the quietest time of the day, wherever it falls. For these rides it
-              coincides with the early start. For others it is in the evening, and then the card
-              names that moment instead of the alarm clock. For the whole park, the attractions
-              overview lists the rides where getting up early pays off most, sorted by minutes
-              saved.
+              The card also names the quietest time of the day, but only when it falls outside the
+              early window. For Taron it does not — both land in the same hour — so there is no
+              second time here. For other rides it is the evening, and then the card names that
+              moment instead of the alarm clock. For the whole park, the attractions overview lists
+              the rides where getting up early pays off most, sorted by minutes saved.
             </P>
           </div>
         </div>
@@ -581,7 +585,7 @@ export function ContentEN() {
         </P>
 
         <DemoFrame
-          label="Four days of an autumn holiday week"
+          label="Four days from the autumn holidays"
           note="15 October is the quietest of the four even though it falls in the middle of the holidays: it is raining. The 19th is grey because the park is closed that day. On park.fan the same calendar runs month by month, as far ahead as the forecast for that park reaches."
         >
           <CalendarDaysDemo />
@@ -607,9 +611,9 @@ export function ContentEN() {
           </PG>
           <P>
             How far the calendar reaches depends on the park. A park that opens all year gets a
-            forecast up to twelve months ahead. For a seasonal park it stops where the published
-            season ends: for a Tuesday in March on which Phantasialand is demonstrably closed, a
-            crowd colour would not be a prediction but a claim.
+            forecast around eleven months ahead. For a seasonal park it stops where the published
+            season ends: for a Tuesday in March on which Phantasialand is demonstrably closed, the
+            calendar reads closed and shows no crowd colour.
           </P>
         </div>
 
@@ -770,8 +774,8 @@ export function ContentEN() {
 
         <Highlight>
           The same rule governs season detection. We only name a ride’s operating months after 330
-          days of observation. Before that, “runs from December to April” would not be a season but
-          a description of the period we happen to have measured so far.
+          days of observation. Before that it carries no months at all, because “runs from December
+          to April” would describe the period we happen to have measured so far.
         </Highlight>
       </SectionShell>
 

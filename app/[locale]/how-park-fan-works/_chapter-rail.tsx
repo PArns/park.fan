@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 
 /**
- * A fixed rail of chapter dots down the right edge, marking where in nine
- * chapters the reader is.
+ * A fixed rail of chapter dots down the right edge, marking which chapter the
+ * reader is in.
  *
  * Only above `xl`. Narrower than that there is no gutter to put it in without
  * either overlapping the measure or squeezing it, and the chapter list at the
@@ -66,7 +66,10 @@ export function ChapterRail({ chapters, ariaLabel }: { chapters: Chapter[]; aria
                     display, so the row height never changes and the rail cannot
                     nudge anything — it is fixed anyway, but the same rule keeps
                     the dots from jumping against each other. */}
+                {/* aria-hidden: the sr-only span below carries the same index and
+                    label, and without this a screen reader announced both. */}
                 <span
+                  aria-hidden
                   className={cn(
                     'bg-popover/90 text-foreground max-w-0 overflow-hidden rounded-md text-xs',
                     'whitespace-nowrap opacity-0 shadow-sm backdrop-blur-sm transition-all duration-200',

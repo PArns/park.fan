@@ -168,7 +168,9 @@ kicker, the title, and the rule that closes it.
 Before this there were five. A park page carried `text-xl font-semibold` with an icon, `text-xl
 font-bold` with an icon, a `text-2xl` frosted pill, a bare `<h2 class="text-xl font-bold">` and
 `GlassSectionTitle`, and nothing in the page told a reader which of them opened a chapter and
-which labelled a card inside one.
+which labelled a card inside one. `GlassSectionTitle` is still in use and is not a chapter header:
+it labels a band _inside_ a page — the homepage favourites, the nearby-parks list and its
+skeleton.
 
 Three things the component decides, so a call site cannot get them wrong:
 

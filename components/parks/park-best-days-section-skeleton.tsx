@@ -19,9 +19,9 @@ import { ParkBestDaysHeader } from '@/components/parks/park-best-days-header';
  * would leave an empty band on every park whose holidays are unremarkable, so it is left out and
  * the remaining ~46px (desktop) / ~86px (mobile) of movement is accepted.
  *
- * `parkName`/`locale` are optional: without them the header is skipped and only the cards are
- * reserved. Pass them wherever the reservation has content below it — on the park page that is the
- * entire attraction grid.
+ * `parkName`/`parkSlug`/`locale` are required, because the header IS the reservation: an earlier
+ * version made them optional and fell back to grey boxes, which is the shape this file exists to
+ * avoid — and which drifted out of date the moment the header changed.
  */
 export function ParkBestDaysSectionSkeleton({
   parkName,
@@ -29,35 +29,21 @@ export function ParkBestDaysSectionSkeleton({
   locale,
   showCalendarLink = false,
 }: {
-  parkName?: string;
-  parkSlug?: string;
-  locale?: string;
+  parkName: string;
+  parkSlug: string;
+  locale: string;
   /** Mirror the header's calendar button — pass what <ParkBestDaysSection> gets, or the
    *  reservation is short by the button's height on every breakpoint that wraps it. */
   showCalendarLink?: boolean;
 }) {
   return (
     <section className="mt-8 space-y-4">
-      {parkName && locale ? (
-        <ParkBestDaysHeader
-          parkName={parkName}
-          parkSlug={parkSlug ?? ''}
-          locale={locale}
-          showCalendarLink={showCalendarLink}
-        />
-      ) : (
-        <div className="bg-background/70 rounded-xl px-4 py-3 backdrop-blur-md" aria-hidden="true">
-          <div className="flex items-center gap-2">
-            <Skeleton className="h-5 w-5" />
-            <Skeleton className="h-7 w-64 max-w-full" />
-          </div>
-          <Skeleton className="mt-1 h-5 w-72 max-w-full" />
-          <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1">
-            <Skeleton className="h-4 w-28" />
-            <Skeleton className="h-4 w-36" />
-          </div>
-        </div>
-      )}
+      <ParkBestDaysHeader
+        parkName={parkName}
+        parkSlug={parkSlug}
+        locale={locale}
+        showCalendarLink={showCalendarLink}
+      />
 
       {/* The three data cards. Chip geometry mirrors <DayChip> (`px-3 py-1 text-sm` → 30px tall,
           `gap-2` between them) so the rows line up with the real ones. The date card carries five

@@ -122,9 +122,8 @@ calendario. Tres parques comparados, cada uno con su día más tranquilo:
 
 ```
 
-Si una celda de la última columna sale vacía, no es un hueco sino un resultado.
-Significa que ese parque no tiene ningún día de la semana que destaque de forma
-fiable sobre los demás.
+Si una celda de la última columna sale vacía, ese parque no tiene ningún día de
+la semana que destaque de forma fiable sobre los demás.
 
 ## Para qué hace falta un turno de noche
 
@@ -160,8 +159,8 @@ funciona de noviembre a enero. En agosto nadie informa de nada sobre ella,
 porque no hay nada que informar. Leer ese silencio como «abierta» sería el error
 cómodo, y así llegó a figurar realmente en la página del parque. Y los meses de
 funcionamiento de una atracción no los nombramos hasta 330 días de observación:
-antes de eso, «funciona de diciembre a abril» no sería una temporada, sino la
-descripción del periodo en el que casualmente ya hemos medido.
+antes de eso no aparece ningún mes, porque «funciona de diciembre a abril»
+describiría el periodo en el que casualmente ya hemos medido.
 
 ## Dónde está todo esto
 

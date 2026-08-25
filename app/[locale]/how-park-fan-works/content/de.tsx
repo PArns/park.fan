@@ -164,7 +164,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
   },
   {
     title: 'Attraktionen',
-    body: 'Der erste Reiter, mit der Zahl der Bahnen im Titel. Karten wie in Kapitel 01, sortier- und durchsuchbar, gruppiert nach Bereichen. Oben die Rope-Drop-Übersicht des Parks, nach gesparten Minuten sortiert.',
+    body: 'Der erste Reiter, mit der Zahl der Bahnen im Titel. Karten wie in Kapitel 01, durchsuchbar und nach Bereichen gruppiert. Oben die Rope-Drop-Übersicht des Parks, nach gesparten Minuten sortiert.',
   },
   {
     title: 'Kalender und Karte',
@@ -184,6 +184,11 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Parks in der Nähe',
     body: 'Was sonst noch in Reichweite liegt, mit Entfernung und aktuellem Status.',
     onlyWhen: 'es Nachbarn gibt. Bei etwa der Hälfte der 212 Parks nicht.',
+  },
+  {
+    title: 'Blog',
+    body: 'Beiträge aus dem park.fan-Blog, in denen dieser Park vorkommt.',
+    onlyWhen: 'es welche gibt.',
   },
   {
     title: 'Statistik',
@@ -300,8 +305,8 @@ export function ContentDE() {
         </P>
         <P>
           Auf dieser Seite steht kein Screenshot. Jede Karte, jedes Badge und jede Tabelle unten
-          sind die echten Bauteile der Parkseiten, hier nur mit festen Beispielzahlen befüllt.
-          Dieselben Karten stehen eine Stunde später im Park vor dir.
+          sind echte Bauteile von park.fan, hier nur mit festen Beispielzahlen befüllt. Dieselben
+          Karten stehen eine Stunde später im Park vor dir.
         </P>
 
         <Reveal>
@@ -367,7 +372,7 @@ export function ContentDE() {
 
         <DemoFrame
           label="Zwei Bahnen, dieselbe Minute"
-          note="Beide Karten stammen aus demselben Moment im selben Park, Taron in Klugheim und Black Mamba in Deep in Africa. Die eine Schlange wächst, die andere baut ab. Hier auf park.fan stehen alle Bahnen so nebeneinander, sortierbar nach Wartezeit."
+          note="Beide Karten stammen aus demselben Moment im selben Park, Taron in Klugheim und Black Mamba in Deep in Africa. Die eine Schlange wächst, die andere baut ab. Hier auf park.fan stehen alle Bahnen des Parks so nebeneinander, gruppiert nach Bereichen."
           href={PARK}
           hrefLabel="Phantasialand auf park.fan →"
         >
@@ -496,7 +501,7 @@ export function ContentDE() {
 
           <DemoFrame
             label="Dieselbe Tabelle für den ganzen Park, live"
-            note="Keine Beispielzahlen: Das ist der aktuelle Stand für Phantasialand, pro Bahn der typische und der volle Wert. Auf park.fan steht darüber, aus wie vielen aufgezeichneten Tagen der ganze Abschnitt rechnet. Alle Minuten stehen in Fünferschritten, weil Parks in Fünferschritten anschreiben."
+            note="Keine Beispielzahlen: Das ist der aktuelle Stand für Phantasialand, pro Bahn der typische und der volle Wert. Auf der Parkseite steht über diesem Abschnitt, aus wie vielen aufgezeichneten Tagen er rechnet. Alle Minuten stehen in Fünferschritten, weil Parks in Fünferschritten anschreiben."
             href={PARK}
             hrefLabel="Phantasialand auf park.fan →"
           >
@@ -538,9 +543,9 @@ export function ContentDE() {
           <P>
             Taron ist der Fall, in dem die Uhrzeit fast nichts entscheidet: Die Zeile liegt den
             ganzen Tag in einem engen Band, und was den Unterschied macht, ist der Wochentag aus
-            Kapitel 02. Bei Chiapas eine Zeile tiefer ist es umgekehrt, die Werte steigen bis in den
-            Nachmittag deutlich an. Eine einzige Regel für den ganzen Park wäre für eine der beiden
-            Bahnen falsch, und deshalb wird sie pro Bahn gerechnet.
+            Kapitel 02. Bei Chiapas ist es umgekehrt, die Werte steigen bis in den Nachmittag
+            deutlich an. Eine einzige Regel für den ganzen Park wäre für eine der beiden Bahnen
+            falsch, und deshalb wird sie pro Bahn gerechnet.
           </P>
         </div>
 
@@ -559,11 +564,12 @@ export function ContentDE() {
               er weg, und das steht auch so da.
             </PG>
             <P>
-              Der zweite Teil ist die ruhigste Zeit des Tages, wo immer sie liegt. Bei diesen Bahnen
-              fällt sie mit dem frühen Start zusammen. Bei anderen liegt sie am Abend, und dann
-              nennt die Karte diesen Zeitpunkt statt des Weckers. Für den ganzen Park listet die
-              Attraktionsübersicht die Bahnen, bei denen sich das Aufstehen am meisten lohnt,
-              sortiert nach gesparten Minuten.
+              Die Karte nennt außerdem die ruhigste Zeit des Tages, aber nur, wenn die außerhalb des
+              frühen Fensters liegt. Bei Taron liegt sie nicht draußen, beide fallen auf dieselbe
+              Stunde, deshalb steht hier keine zweite Uhrzeit. Bei anderen Bahnen ist es der Abend,
+              und dann nennt die Karte diesen Zeitpunkt statt des Weckers. Für den ganzen Park
+              listet die Attraktionsübersicht die Bahnen, bei denen sich das Aufstehen am meisten
+              lohnt, sortiert nach gesparten Minuten.
             </P>
           </div>
         </div>
@@ -584,7 +590,7 @@ export function ContentDE() {
         </P>
 
         <DemoFrame
-          label="Vier Tage einer Herbstferienwoche"
+          label="Vier Tage aus den Herbstferien"
           note="Der 15. Oktober ist der ruhigste der vier, obwohl er mitten in den Ferien liegt: Es regnet. Der 19. ist grau, weil der Park an dem Tag zu hat. Auf park.fan steht derselbe Kalender Monat für Monat, so weit die Prognose für diesen Park reicht."
         >
           <CalendarDaysDemo />
@@ -611,10 +617,9 @@ export function ContentDE() {
           </PG>
           <P>
             Wie weit der Kalender reicht, hängt am Park. Ein Park, der das ganze Jahr öffnet,
-            bekommt bis zu zwölf Monate im Voraus eine Prognose. Bei einem Saisonpark hört sie da
-            auf, wo die veröffentlichte Saison endet: Für einen Dienstag im März, an dem
-            Phantasialand nachweislich geschlossen hat, ist eine Auslastungsfarbe keine Vorhersage,
-            sondern eine Behauptung.
+            bekommt rund elf Monate im Voraus eine Prognose. Bei einem Saisonpark hört sie da auf,
+            wo die veröffentlichte Saison endet: Für einen Dienstag im März, an dem Phantasialand
+            nachweislich geschlossen hat, steht im Kalender geschlossen und keine Auslastungsfarbe.
           </P>
         </div>
 
@@ -775,8 +780,8 @@ export function ContentDE() {
 
         <Highlight>
           Dieselbe Regel gilt für die Saison-Erkennung. Betriebsmonate einer Bahn nennen wir erst
-          nach 330 Beobachtungstagen. Vorher wäre „läuft von Dezember bis April“ keine Saison,
-          sondern eine Beschreibung des Zeitraums, in dem wir zufällig schon gemessen haben.
+          nach 330 Beobachtungstagen. Vorher steht bei ihr kein Monat, weil „läuft von Dezember bis
+          April“ dann nur den Zeitraum beschreibt, in dem wir zufällig schon gemessen haben.
         </Highlight>
       </SectionShell>
 

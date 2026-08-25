@@ -8,7 +8,8 @@ interface SectionHeadingProps {
   icon: LucideIcon;
   /**
    * Icon tint override, e.g. rope-drop's emerald/indigo. Defaults to the
-   * primary tint (chapter: applied to the tile, plain: to the icon itself).
+   * primary tint. In the chapter variant it replaces the watermark's
+   * `text-primary/25`, so pass an opacity with it.
    */
   iconClassName?: string;
   /** Node rather than string: some titles wrap a glossary link. */
@@ -74,6 +75,7 @@ export function SectionHeading({
   return (
     <ChapterHeading
       icon={Icon}
+      iconClassName={iconClassName}
       title={title}
       hint={hint}
       badge={badge}

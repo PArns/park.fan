@@ -163,7 +163,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
   },
   {
     title: 'Atracciones',
-    body: 'La primera pestaña, con el número de atracciones en el título. Tarjetas como las del capítulo 01, ordenables y buscables, agrupadas por zonas. Arriba, el resumen de rope drop del parque, ordenado por minutos ahorrados.',
+    body: 'La primera pestaña, con el número de atracciones en el título. Tarjetas como las del capítulo 01, con buscador y agrupadas por zonas. Arriba, el resumen de rope drop del parque, ordenado por minutos ahorrados.',
   },
   {
     title: 'Calendario y mapa',
@@ -183,6 +183,11 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Parques cercanos',
     body: 'Qué más hay al alcance, con distancia y estado actual.',
     onlyWhen: 'hay vecinos. En aproximadamente la mitad de los 212 parques, no los hay.',
+  },
+  {
+    title: 'Blog',
+    body: 'Entradas del blog de park.fan en las que aparece este parque.',
+    onlyWhen: 'las hay.',
   },
   {
     title: 'Estadísticas',
@@ -299,9 +304,8 @@ export function ContentES() {
         </P>
         <P>
           En esta página no hay ninguna captura de pantalla. Cada tarjeta, cada indicador y cada
-          tabla de abajo son las piezas reales de una página de parque, aquí solo rellenadas con
-          cifras de ejemplo fijas. Las mismas tarjetas estarán delante de ti una hora después en el
-          parque.
+          tabla de abajo son piezas reales de park.fan, aquí solo rellenadas con cifras de ejemplo
+          fijas. Las mismas tarjetas estarán delante de ti una hora después en el parque.
         </P>
 
         <Reveal>
@@ -365,7 +369,7 @@ export function ContentES() {
 
         <DemoFrame
           label="Dos atracciones, el mismo minuto"
-          note="Las dos tarjetas son del mismo instante en el mismo parque, Taron en Klugheim y Black Mamba en Deep in Africa. Una cola crece, la otra baja. Aquí, en park.fan, todas las atracciones aparecen así, una al lado de otra y ordenables por tiempo de espera."
+          note="Las dos tarjetas son del mismo instante en el mismo parque, Taron en Klugheim y Black Mamba en Deep in Africa. Una cola crece, la otra baja. Aquí, en park.fan, todas las atracciones del parque aparecen así, una al lado de otra y agrupadas por zonas."
           href={PARK}
           hrefLabel="Phantasialand en park.fan →"
         >
@@ -493,7 +497,7 @@ export function ContentES() {
 
           <DemoFrame
             label="La misma tabla para todo el parque, en directo"
-            note="Sin cifras de ejemplo: este es el estado actual de Phantasialand, el valor típico y el valor lleno de cada atracción. En park.fan, la línea de encima dice sobre cuántos días registrados calcula toda la sección. Todos los minutos van en pasos de cinco, porque los parques anuncian en pasos de cinco."
+            note="Sin cifras de ejemplo: este es el estado actual de Phantasialand, el valor típico y el valor lleno de cada atracción. En la página del parque, la línea encima de esta sección dice sobre cuántos días registrados calcula. Todos los minutos van en pasos de cinco, porque los parques anuncian en pasos de cinco."
             href={PARK}
             hrefLabel="Phantasialand en park.fan →"
           >
@@ -535,9 +539,9 @@ export function ContentES() {
           <P>
             Taron es el caso en que la hora casi no decide nada: la fila se mantiene todo el día en
             una banda estrecha, y lo que marca la diferencia es el día de la semana del capítulo 02.
-            Con Chiapas, una fila más abajo, ocurre lo contrario: los valores suben claramente hasta
-            la tarde. Una única regla para todo el parque sería falsa para una de las dos, y por eso
-            se calcula por atracción.
+            Con Chiapas ocurre lo contrario: los valores suben claramente hasta la tarde. Una única
+            regla para todo el parque sería falsa para una de las dos, y por eso se calcula por
+            atracción.
           </P>
         </div>
 
@@ -556,8 +560,9 @@ export function ContentES() {
               desaparece, y así lo pone.
             </PG>
             <P>
-              La segunda parte es el momento más tranquilo del día, esté donde esté. En estas
-              atracciones coincide con la apertura. En otras cae por la tarde, y entonces la tarjeta
+              La tarjeta nombra además el momento más tranquilo del día, pero solo si cae fuera de
+              la ventana temprana. En Taron no cae fuera: ambos están en la misma hora, así que aquí
+              no hay una segunda hora. En otras atracciones es la tarde, y entonces la tarjeta
               nombra ese momento en lugar del despertador. Para todo el parque, el resumen de
               atracciones lista aquellas en las que más compensa madrugar, ordenadas por minutos
               ahorrados.
@@ -581,7 +586,7 @@ export function ContentES() {
         </P>
 
         <DemoFrame
-          label="Cuatro días de una semana de vacaciones de otoño"
+          label="Cuatro días de las vacaciones de otoño"
           note="El 15 de octubre es el más tranquilo de los cuatro aunque cae en plenas vacaciones: llueve. El 19 está en gris porque ese día el parque cierra. En park.fan, el mismo calendario va mes a mes, hasta donde llega la previsión de ese parque."
         >
           <CalendarDaysDemo />
@@ -608,10 +613,9 @@ export function ContentES() {
           </PG>
           <P>
             Hasta dónde llega el calendario depende del parque. Un parque que abre todo el año
-            recibe previsión hasta doce meses antes. En un parque de temporada se detiene donde
-            acaba la temporada publicada: para un martes de marzo en el que Phantasialand está
-            demostrablemente cerrado, un color de afluencia no sería una predicción sino una
-            afirmación.
+            recibe previsión unos once meses antes. En un parque de temporada se detiene donde acaba
+            la temporada publicada: para un martes de marzo en el que Phantasialand está
+            demostrablemente cerrado, el calendario pone cerrado y ningún color de afluencia.
           </P>
         </div>
 
@@ -772,9 +776,9 @@ export function ContentES() {
 
         <Highlight>
           La misma regla vale para la detección de temporada. Los meses de funcionamiento de una
-          atracción no los nombramos hasta 330 días de observación. Antes de eso, «funciona de
-          diciembre a abril» no sería una temporada, sino la descripción del periodo en el que
-          casualmente ya hemos medido.
+          atracción no los nombramos hasta 330 días de observación. Antes de eso no aparece ningún
+          mes, porque «funciona de diciembre a abril» describiría el periodo en el que casualmente
+          ya hemos medido.
         </Highlight>
       </SectionShell>
 

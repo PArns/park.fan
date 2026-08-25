@@ -1,6 +1,7 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
+import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { Scale } from 'lucide-react';
 import { GlassCard } from '@/components/common/glass-card';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -115,7 +116,7 @@ export function ParkComparisonCard({
                   <span className="text-muted-foreground/40">–</span>
                 ) : (
                   <>
-                    {row.parkP50} {labelMinutes}
+                    {roundWaitTo5(row.parkP50)} {labelMinutes}
                   </>
                 )}
               </td>
@@ -134,7 +135,7 @@ export function ParkComparisonCard({
                   // number the column is named after, the ride is which queue it was.
                   <span className="flex items-baseline justify-end gap-1">
                     <span className="shrink-0">
-                      {row.longestP50} {labelMinutes}
+                      {roundWaitTo5(row.longestP50)} {labelMinutes}
                     </span>
                     <span className="text-muted-foreground/50 truncate">· {row.longestName}</span>
                   </span>
@@ -159,7 +160,7 @@ export function ParkComparisonCard({
                       </span>
                       <span className="text-muted-foreground/50">
                         {' '}
-                        · {row.quietestP50} {labelMinutes}
+                        · {roundWaitTo5(row.quietestP50)} {labelMinutes}
                       </span>
                     </>
                   )}

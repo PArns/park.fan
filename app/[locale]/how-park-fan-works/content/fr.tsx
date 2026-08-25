@@ -163,7 +163,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
   },
   {
     title: 'Attractions',
-    body: 'Le premier onglet, avec le nombre d’attractions dans son titre. Des cartes comme au chapitre 01, triables et cherchables, groupées par zone. En haut, l’aperçu rope drop du parc, trié par minutes gagnées.',
+    body: 'Le premier onglet, avec le nombre d’attractions dans son titre. Des cartes comme au chapitre 01, avec recherche, groupées par zone. En haut, l’aperçu rope drop du parc, trié par minutes gagnées.',
   },
   {
     title: 'Calendrier et carte',
@@ -183,6 +183,11 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Parcs à proximité',
     body: 'Ce qu’il y a d’autre à portée, avec la distance et le statut actuel.',
     onlyWhen: 'il y a des voisins. Pour environ la moitié des 212 parcs, il n’y en a pas.',
+  },
+  {
+    title: 'Blog',
+    body: 'Les articles du blog park.fan où ce parc apparaît.',
+    onlyWhen: 'il y en a.',
   },
   {
     title: 'Statistiques',
@@ -301,9 +306,8 @@ export function ContentFR() {
         </P>
         <P>
           Il n’y a aucune capture d’écran sur cette page. Chaque carte, chaque badge et chaque
-          tableau ci-dessous sont les véritables composants d’une page de parc, remplis ici de
-          chiffres d’exemple figés. Les mêmes fiches seront devant vous une heure plus tard dans le
-          parc.
+          tableau ci-dessous sont de véritables composants de park.fan, remplis ici de chiffres
+          d’exemple figés. Les mêmes fiches seront devant vous une heure plus tard dans le parc.
         </P>
 
         <Reveal>
@@ -361,15 +365,15 @@ export function ContentFR() {
           </P>
           <PG>
             La seconde valeur de la carte est la file single rider. Beaucoup d’attractions font
-            tourner plusieurs files en parallèle, et laquelle existe figure rarement sur le même
-            l’entrée. À côté, la taille minimale, pour que personne ne traverse la moitié du parc
+            tourner plusieurs files en parallèle, et laquelle existe, on ne l’apprend en général pas
+            à l’entrée. À côté, la taille minimale, pour que personne ne traverse la moitié du parc
             avec un enfant d’un mètre trente.
           </PG>
         </div>
 
         <DemoFrame
           label="Deux attractions, la même minute"
-          note="Les deux cartes viennent du même instant dans le même parc, Taron à Klugheim et Black Mamba à Deep in Africa. Une file grossit, l’autre se résorbe. Ici, sur park.fan, toutes les attractions sont ainsi côte à côte, triables par temps d’attente."
+          note="Les deux cartes viennent du même instant dans le même parc, Taron à Klugheim et Black Mamba à Deep in Africa. Une file grossit, l’autre se résorbe. Ici, sur park.fan, toutes les attractions du parc sont ainsi côte à côte, groupées par zone."
           href={PARK}
           hrefLabel="Phantasialand sur park.fan →"
         >
@@ -500,7 +504,7 @@ export function ContentFR() {
 
           <DemoFrame
             label="Le même tableau pour tout le parc, en direct"
-            note="Pas de chiffres d’exemple : voici l’état actuel de Phantasialand, la valeur habituelle et la valeur chargée par attraction. Sur park.fan, la ligne au-dessus dit sur combien de jours enregistrés toute la section calcule. Toutes les minutes vont par pas de cinq, parce que les parcs affichent par pas de cinq."
+            note="Pas de chiffres d’exemple : voici l’état actuel de Phantasialand, la valeur habituelle et la valeur chargée par attraction. Sur la page du parc, la ligne au-dessus de cette section dit sur combien de jours enregistrés elle calcule. Toutes les minutes vont par pas de cinq, parce que les parcs affichent par pas de cinq."
             href={PARK}
             hrefLabel="Phantasialand sur park.fan →"
           >
@@ -542,9 +546,9 @@ export function ContentFR() {
           <P>
             Taron est le cas où l’heure ne décide presque rien : la ligne reste toute la journée
             dans une bande étroite, et ce qui fait la différence, c’est le jour de la semaine du
-            chapitre 02. Une ligne plus bas, Chiapas fait l’inverse : les valeurs montent nettement
-            jusqu’à l’après-midi. Une règle unique pour tout le parc serait fausse pour l’une des
-            deux, et c’est pourquoi elle est calculée par attraction.
+            chapitre 02. Chiapas fait l’inverse : les valeurs montent nettement jusqu’à
+            l’après-midi. Une règle unique pour tout le parc serait fausse pour l’une des deux, et
+            c’est pourquoi elle est calculée par attraction.
           </P>
         </div>
 
@@ -563,11 +567,12 @@ export function ContentFR() {
               laquelle l’avance tient. Après, elle a disparu, et c’est écrit ainsi.
             </PG>
             <P>
-              La seconde partie, c’est le moment le plus calme de la journée, où qu’il tombe. Pour
-              ces attractions, il coïncide avec le départ matinal. Pour d’autres, il tombe le soir,
-              et la carte nomme alors ce moment plutôt que le réveil. Pour tout le parc, l’aperçu
-              des attractions liste celles où se lever tôt rapporte le plus, triées par minutes
-              gagnées.
+              La carte nomme aussi le moment le plus calme de la journée, mais seulement s’il tombe
+              en dehors de la fenêtre matinale. Pour Taron, ce n’est pas le cas : les deux tombent
+              dans la même heure, il n’y a donc pas de seconde heure ici. Pour d’autres attractions,
+              c’est le soir, et la carte nomme alors ce moment plutôt que le réveil. Pour tout le
+              parc, l’aperçu des attractions liste celles où se lever tôt rapporte le plus, triées
+              par minutes gagnées.
             </P>
           </div>
         </div>
@@ -588,7 +593,7 @@ export function ContentFR() {
         </P>
 
         <DemoFrame
-          label="Quatre jours d’une semaine de vacances d’automne"
+          label="Quatre jours des vacances d’automne"
           note="Le 15 octobre est le plus calme des quatre, bien qu’il tombe en pleine période de vacances : il pleut. Le 19 est gris parce que le parc est fermé ce jour-là. Sur park.fan, le même calendrier se déroule mois par mois, aussi loin que va la prévision pour ce parc."
         >
           <CalendarDaysDemo />
@@ -615,9 +620,9 @@ export function ContentFR() {
           </PG>
           <P>
             Jusqu’où va le calendrier dépend du parc. Un parc ouvert toute l’année reçoit une
-            prévision jusqu’à douze mois à l’avance. Pour un parc saisonnier, elle s’arrête là où
+            prévision environ onze mois à l’avance. Pour un parc saisonnier, elle s’arrête là où
             finit la saison publiée : pour un mardi de mars où Phantasialand est démontrablement
-            fermé, une couleur d’affluence ne serait pas une prévision mais une affirmation.
+            fermé, le calendrier indique fermé et aucune couleur d’affluence.
           </P>
         </div>
 
@@ -778,9 +783,9 @@ export function ContentFR() {
 
         <Highlight>
           La même règle vaut pour la détection de saison. Nous ne nommons les mois d’exploitation
-          d’une attraction qu’après 330 jours d’observation. Avant cela, « fonctionne de décembre à
-          avril » ne serait pas une saison mais la description de la période où nous avons mesuré
-          par hasard.
+          d’une attraction qu’après 330 jours d’observation. Avant cela, aucun mois n’y figure,
+          parce que « fonctionne de décembre à avril » décrirait la période où nous avons mesuré par
+          hasard.
         </Highlight>
       </SectionShell>
 

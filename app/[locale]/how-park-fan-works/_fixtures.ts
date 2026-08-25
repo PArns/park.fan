@@ -17,10 +17,9 @@ import type {
  *
  * Two rules these numbers follow:
  *
- * - **Nothing here is a live claim.** The figures are a plausible Taron in
- *   summer, shaped so the teaching example works, not a reading taken on a
- *   particular day. The page says so where it matters, and every block links to
- *   the ride's own page for the real ones.
+ * - **Every figure is one the API returned**, dated in the block that renders
+ *   it, never a shape invented to make the lesson land. The page says which day
+ *   it was read on, and every block links to the ride's own page for today's.
  * - **The ones that are instants are anchored to today.** A card's sparkline
  *   stretches its axis to the reader's clock and the "best time" row counts
  *   down to it, so a hard-coded date does not stay a demo: it decays into a

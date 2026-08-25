@@ -328,7 +328,7 @@ export async function LiveHourlyProfile({ locale }: { locale: Locale }) {
   );
 }
 
-/** The park's real ranking, with the measured-days column the text refers to. */
+/** The park's real ranking: rank, ride, the live wait where there is one, typical and busy. */
 export function LiveTopAttractions({ locale }: { locale: Locale }) {
   return <ParkStatsSection {...DEMO_GEO} locale={locale} show={['attractions']} hideHeading />;
 }

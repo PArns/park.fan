@@ -122,9 +122,8 @@ elkaar, elk met hun rustigste weekdag:
 
 ```
 
-Blijft een cel in de laatste kolom leeg, dan is dat geen gat maar een uitkomst.
-Het betekent dat dit park geen weekdag heeft die zich betrouwbaar van de andere
-onderscheidt.
+Blijft een cel in de laatste kolom leeg, dan heeft dit park geen weekdag die
+zich betrouwbaar van de andere onderscheidt.
 
 ## Waar een nachtdienst voor nodig is
 
@@ -159,8 +158,8 @@ Dezelfde regel op een kleinere plek: de schaatsbaan in Phantasialand loopt van
 november tot januari. In augustus meldt niemand er iets over, omdat er niets te
 melden is. Die stilte als “open” lezen zou de gemakkelijke fout zijn, en zo
 stond het ooit ook echt op de parkpagina. En de bedrijfsmaanden van een
-attractie noemen we pas na 330 waarnemingsdagen: daarvoor zou “draait van
-december tot april” geen seizoen zijn, maar een beschrijving van de periode
+attractie noemen we pas na 330 waarnemingsdagen: daarvoor staat er geen enkele
+maand bij, omdat “draait van december tot april” dan de periode beschrijft
 waarin we toevallig al hebben gemeten.
 
 ## Waar dit allemaal staat

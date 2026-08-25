@@ -9,9 +9,11 @@ import { Skeleton } from '@/components/ui/skeleton';
  * The statistics chapter's header. Its own file for the same reason
  * `ParkBestDaysHeader` has one: it carries no data — the title is a constant
  * string and only the "aus N Messtagen" line needs the payload — so the
- * loading placeholder renders this very component instead of grey boxes
- * shaped like it, and the reservation is exact in every locale and at every
- * breakpoint.
+ * loading placeholder renders this very component instead of grey boxes shaped
+ * like it, so the title's height — which changes when it wraps — is reserved
+ * exactly in every locale and at every breakpoint. Only the hint line is a
+ * placeholder, and it holds one line where the settled subtitle can take two on
+ * a phone.
  */
 export function ParkStatsHeader({
   subtitle,

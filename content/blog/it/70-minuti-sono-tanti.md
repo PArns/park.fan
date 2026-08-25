@@ -123,9 +123,8 @@ Tre parchi a confronto, ciascuno con il suo giorno più tranquillo:
 
 ```
 
-Se una cella dell’ultima colonna resta vuota, non è un buco ma un risultato.
-Vuol dire che quel parco non ha un giorno della settimana che si stacchi in modo
-affidabile dagli altri.
+Se una cella dell’ultima colonna resta vuota, quel parco non ha un giorno della
+settimana che si stacchi in modo affidabile dagli altri.
 
 ## A cosa serve un turno di notte
 
@@ -161,8 +160,8 @@ Phantasialand va da novembre a gennaio. Ad agosto su di essa non riporta niente
 nessuno, perché non c’è niente da riportare. Leggere quel silenzio come «aperta»
 sarebbe l’errore comodo, ed è davvero comparso così sulla pagina del parco. E i
 mesi di esercizio di un’attrazione li indichiamo solo dopo 330 giorni di
-osservazione: prima, «va da dicembre ad aprile» non sarebbe una stagione ma la
-descrizione del periodo in cui per caso abbiamo già misurato.
+osservazione: prima non compare alcun mese, perché «va da dicembre ad aprile»
+descriverebbe il periodo in cui per caso abbiamo già misurato.
 
 ## Dove sta tutto questo
 
