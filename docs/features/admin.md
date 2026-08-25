@@ -112,11 +112,17 @@ Two consequences that are easy to trip over:
   the admin out rather than leaving it unguarded. In dev, an unset secret skips
   the check entirely, so a local checkout signs in with no Cloudflare account.
 
-The challenge is on this side, not on api.park.fan. Verifying it there would
-mean forwarding the token instead of checking it, and the two repos would have
-to be deployed in lockstep for a login to work. A direct caller reaching
-`/v1/admin/auth/login` past this app still meets the backend's own throttle and
-lockout, which are unchanged.
+**This side is not the only side, and it could not be.** `POST
+/v1/admin/auth/login` is public and reachable directly, so a bot that skips this
+app entirely never meets the challenge — the check here defends the path a
+browser takes and only that path. api.park.fan asks for a solved token too, of
+every caller that does **not** present a valid `THROTTLE_BYPASS_KEYS` value (see
+its `docs/admin/authentication.md`). This app is exempt from that because it
+cannot comply: a token may be redeemed once, and it redeemed it here. Making the
+API the only verifier would mean forwarding the token instead of checking it,
+and both repositories would have to be deployed in the same minute for anybody
+to sign in. So the split is deliberate — we verify for ourselves, the API
+verifies for everyone else, and one shared header decides which is which.
 
 If the challenge itself never loads — an extension, a captive portal, a proxy
 that eats `challenges.cloudflare.com` — the form says so and offers a retry that
