@@ -48,6 +48,19 @@ import {
   TwoRidesDemo,
   TypicalWaitsDemo,
 } from '../_demos';
+import {
+  AnatomyAttractionDemo,
+  AnatomyBestDaysDemo,
+  AnatomyBlogDemo,
+  AnatomyCalendarDemo,
+  AnatomyHeaderDemo,
+  AnatomyHolidayDemo,
+  AnatomyNearbyDemo,
+  AnatomyPurchasesDemo,
+  AnatomySeasonDemo,
+  AnatomyShowsDemo,
+  AnatomyStatsDemo,
+} from '../_anatomy-demos';
 import { WeatherWarningBannerDemo } from '@/components/parks/weather-warning-banner-demo';
 import { NowcastBannerDemo } from '@/components/parks/nowcast-banner-demo';
 import { WeatherCardShowcase } from '@/components/parks/weather-card-demo';
@@ -139,12 +152,14 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Header',
     body: 'Name, location, how far it is from you, plus status, today’s opening hours, the crowd level right now and the “x of y open” counter.',
     example: 'Phantasialand, Brühl. Open 09:00–19:00 today, 36 of 40 rides running.',
+    demo: <AnatomyHeaderDemo />,
   },
   {
     title: 'School holidays in range',
     body: 'Which school holidays are acting on this park today, and the region each one belongs to. Including the ones across the border.',
     example:
       'Today the entry that counts for Phantasialand is not North Rhine-Westphalia but Gelderland: school holidays there, and the border is 90 kilometres away.',
+    demo: <AnatomyHolidayDemo />,
     onlyWhen: 'a holiday region actually reaches this park today.',
   },
   {
@@ -173,6 +188,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Skip-the-line prices',
     body: 'Daily prices for paid queue access, sold-out states included.',
     example: 'Lightning Lane at the Disney parks, a day price per ride, sold out marked as such.',
+    demo: <AnatomyPurchasesDemo />,
     onlyWhen: 'the park publishes them in its calendar. So far only the Disney parks in the US.',
   },
   {
@@ -180,16 +196,19 @@ const PARK_SECTIONS: AnatomyStep[] = [
     body: 'The first tab, with the ride count in its title. Cards like the ones in chapter 01, searchable and grouped by land. The park’s rope-drop overview sits on top, sorted by minutes saved.',
     example:
       'Taron in Klugheim, from 140 centimetres — the card from chapter 01. Above it the rope-drop list, led by Chiapas at 75 minutes saved.',
+    demo: <AnatomyAttractionDemo />,
   },
   {
     title: 'Calendar and map',
     body: 'Two fixed tabs beside it: the daily forecasts from chapter 04, and a map with the rides as markers.',
     example: 'The four days from chapter 04, in the month grid next to their neighbours.',
+    demo: <AnatomyCalendarDemo />,
   },
   {
     title: 'Shows and restaurants',
     body: 'Showtimes for the whole day, dining with opening hours.',
     example: 'Phantasialand has four shows and 46 restaurants, both with times.',
+    demo: <AnatomyShowsDemo />,
     onlyWhen: 'the park supplies them. Otherwise the tab is not there at all.',
   },
   {
@@ -197,6 +216,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     body: 'The quietest dates in the next three months, plus the park’s quietest weekday.',
     example:
       'The park’s quietest weekday and the next quiet dates — the same calculation as chapter 04, three months out.',
+    demo: <AnatomyBestDaysDemo locale="en" />,
     onlyWhen: 'the park publishes an operating calendar.',
   },
   {
@@ -204,12 +224,14 @@ const PARK_SECTIONS: AnatomyStep[] = [
     body: 'What else is within reach, with distance and current status.',
     example:
       'From Phantasialand: Toverland and Movie Park Germany, both a good 90 kilometres away.',
+    demo: <AnatomyNearbyDemo />,
     onlyWhen: 'there are neighbours. For about half of the 212 parks there are none.',
   },
   {
     title: 'Blog',
     body: 'Posts from the park.fan blog that this park appears in.',
     example: 'The Phantasialand page carries, among others, the post that goes with this page.',
+    demo: <AnatomyBlogDemo locale="en" />,
     onlyWhen: 'there are any.',
   },
   {
@@ -217,11 +239,22 @@ const PARK_SECTIONS: AnatomyStep[] = [
     body: 'The park’s longest queues with their typical and busy values, plus the spread across months and weekdays. The section states how many recorded days it rests on, and both breakdowns carry that count as a column of their own.',
     example:
       'The ranking from chapter 02, plus the months and weekdays with their number of measured days.',
+    demo: (
+      <AnatomyStatsDemo
+        title="Rides with the longest queues"
+        labelAttraction="Rides"
+        labelMinutes="min"
+        labelNow="Now"
+        labelP50="Typical"
+        labelP90="Peak"
+      />
+    ),
   },
   {
     title: 'Season, info, questions',
     body: 'Operating season and announced events, address and time zone, and the common questions about this particular park.',
     example: 'The ice rink from chapter 07 sits here with November to January.',
+    demo: <AnatomySeasonDemo label="Ice rink" />,
   },
 ];
 

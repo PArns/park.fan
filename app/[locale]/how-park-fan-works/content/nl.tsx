@@ -48,6 +48,19 @@ import {
   TwoRidesDemo,
   TypicalWaitsDemo,
 } from '../_demos';
+import {
+  AnatomyAttractionDemo,
+  AnatomyBestDaysDemo,
+  AnatomyBlogDemo,
+  AnatomyCalendarDemo,
+  AnatomyHeaderDemo,
+  AnatomyHolidayDemo,
+  AnatomyNearbyDemo,
+  AnatomyPurchasesDemo,
+  AnatomySeasonDemo,
+  AnatomyShowsDemo,
+  AnatomyStatsDemo,
+} from '../_anatomy-demos';
 import { WeatherWarningBannerDemo } from '@/components/parks/weather-warning-banner-demo';
 import { NowcastBannerDemo } from '@/components/parks/nowcast-banner-demo';
 import { WeatherCardShowcase } from '@/components/parks/weather-card-demo';
@@ -139,12 +152,14 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Kop',
     body: 'Naam, plaats, afstand vanaf jou, plus status, openingstijden van vandaag, de drukte van dit moment en de teller “x van y open”.',
     example: 'Phantasialand, Brühl. Vandaag 09:00–19:00, 36 van de 40 attracties open.',
+    demo: <AnatomyHeaderDemo />,
   },
   {
     title: 'Vakanties in het verzorgingsgebied',
     body: 'Welke schoolvakanties vandaag op dit park inwerken, met de bijbehorende regio. Ook die van over de grens.',
     example:
       'Vandaag telt voor Phantasialand niet Noordrijn-Westfalen maar Gelderland: daar is zomervakantie, en de grens ligt 90 kilometer verderop.',
+    demo: <AnatomyHolidayDemo />,
     onlyWhen: 'er vandaag daadwerkelijk een vakantieregio meespeelt.',
   },
   {
@@ -175,6 +190,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     body: 'Dagprijzen voor betaalde wachtrijen, inclusief uitverkocht.',
     example:
       'Lightning Lane in de Disney-parken, een dagprijs per attractie, uitverkocht als zodanig gemarkeerd.',
+    demo: <AnatomyPurchasesDemo />,
     onlyWhen: 'het park ze in de kalender publiceert. Tot nu toe alleen de Disney-parken in de VS.',
   },
   {
@@ -182,16 +198,19 @@ const PARK_SECTIONS: AnatomyStep[] = [
     body: 'Het eerste tabblad, met het aantal attracties in de titel. Kaarten zoals in hoofdstuk 01, doorzoekbaar en gegroepeerd per gebied. Bovenaan het rope-dropoverzicht van het park, gesorteerd op bespaarde minuten.',
     example:
       'Taron in Klugheim, vanaf 140 centimeter — de kaart uit hoofdstuk 01. Daarboven de rope-droplijst, aangevoerd door Chiapas met 75 bespaarde minuten.',
+    demo: <AnatomyAttractionDemo />,
   },
   {
     title: 'Kalender en kaart',
     body: 'Twee vaste tabbladen ernaast: de dagvoorspellingen uit hoofdstuk 04 en een kaart met de attracties als marker.',
     example: 'De vier dagen uit hoofdstuk 04, in het maandraster naast hun buurdagen.',
+    demo: <AnatomyCalendarDemo />,
   },
   {
     title: 'Shows en restaurants',
     body: 'Showtijden voor de hele dag, horeca met openingstijden.',
     example: 'Phantasialand levert vier shows en 46 restaurants, beide met tijden.',
+    demo: <AnatomyShowsDemo />,
     onlyWhen: 'het park ze levert. Anders ontbreekt het tabblad helemaal.',
   },
   {
@@ -199,18 +218,21 @@ const PARK_SECTIONS: AnatomyStep[] = [
     body: 'De rustigste data van de komende drie maanden, plus de rustigste weekdag van het park.',
     example:
       'De rustigste weekdag van het park en de eerstvolgende rustige data — dezelfde berekening als hoofdstuk 04, drie maanden vooruit.',
+    demo: <AnatomyBestDaysDemo locale="nl" />,
     onlyWhen: 'het park een openingskalender publiceert.',
   },
   {
     title: 'Parken in de buurt',
     body: 'Wat er verder binnen bereik ligt, met afstand en actuele status.',
     example: 'Vanaf Phantasialand: Toverland en Movie Park Germany, allebei ruim 90 kilometer.',
+    demo: <AnatomyNearbyDemo />,
     onlyWhen: 'er buren zijn. Bij ongeveer de helft van de 212 parken niet.',
   },
   {
     title: 'Blog',
     body: 'Berichten uit de park.fan-blog waarin dit park voorkomt.',
     example: 'Op de Phantasialand-pagina staat onder meer het bericht dat bij deze pagina hoort.',
+    demo: <AnatomyBlogDemo locale="nl" />,
     onlyWhen: 'die er zijn.',
   },
   {
@@ -218,11 +240,22 @@ const PARK_SECTIONS: AnatomyStep[] = [
     body: 'De langste rijen van het park met hun normale en drukke waarde, plus de verdeling over maanden en weekdagen. Het blok noemt het aantal vastgelegde dagen, en beide verdelingen voeren dat aantal als eigen kolom.',
     example:
       'De ranglijst uit hoofdstuk 02, plus de maanden en weekdagen met hun aantal meetdagen.',
+    demo: (
+      <AnatomyStatsDemo
+        title="Attracties met de langste wachttijden"
+        labelAttraction="Attracties"
+        labelMinutes="min"
+        labelNow="Nu"
+        labelP50="Normaal"
+        labelP90="Piek"
+      />
+    ),
   },
   {
     title: 'Seizoen, info, vragen',
     body: 'Seizoenstijden en aangekondigde evenementen, adres en tijdzone, en de veelgestelde vragen over juist dit park.',
     example: 'De schaatsbaan uit hoofdstuk 07 staat hier met november tot januari.',
+    demo: <AnatomySeasonDemo label="Schaatsbaan" />,
   },
 ];
 

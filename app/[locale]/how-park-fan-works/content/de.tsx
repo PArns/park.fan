@@ -48,6 +48,19 @@ import {
   TwoRidesDemo,
   TypicalWaitsDemo,
 } from '../_demos';
+import {
+  AnatomyAttractionDemo,
+  AnatomyBestDaysDemo,
+  AnatomyBlogDemo,
+  AnatomyCalendarDemo,
+  AnatomyHeaderDemo,
+  AnatomyHolidayDemo,
+  AnatomyNearbyDemo,
+  AnatomyPurchasesDemo,
+  AnatomySeasonDemo,
+  AnatomyShowsDemo,
+  AnatomyStatsDemo,
+} from '../_anatomy-demos';
 import { WeatherWarningBannerDemo } from '@/components/parks/weather-warning-banner-demo';
 import { NowcastBannerDemo } from '@/components/parks/nowcast-banner-demo';
 import { WeatherCardShowcase } from '@/components/parks/weather-card-demo';
@@ -141,12 +154,14 @@ const PARK_SECTIONS: AnatomyStep[] = [
     title: 'Kopfbereich',
     body: 'Name, Ort, Entfernung von dir aus, dazu Status, heutige Öffnungszeiten, die Auslastung von jetzt und der Zähler „x von y geöffnet".',
     example: 'Phantasialand, Brühl. Heute 09:00–19:00, 36 von 40 Bahnen offen.',
+    demo: <AnatomyHeaderDemo />,
   },
   {
     title: 'Ferien im Einzugsgebiet',
     body: 'Welche Schulferien heute auf diesen Park wirken, mit der Region dazu. Auch die von jenseits der Grenze.',
     example:
       'Heute zählt für das Phantasialand nicht Nordrhein-Westfalen, sondern Gelderland: dort sind Sommerferien, und die Grenze ist 90 Kilometer weg.',
+    demo: <AnatomyHolidayDemo />,
     onlyWhen: 'heute überhaupt eine Ferienregion hineinspielt.',
   },
   {
@@ -177,6 +192,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     body: 'Tagespreise für kostenpflichtige Warteschlangen, inklusive ausverkauft.',
     example:
       'Lightning Lane in den Disney-Parks, Tagespreis pro Bahn, ausverkauft als solches markiert.',
+    demo: <AnatomyPurchasesDemo />,
     onlyWhen: 'der Park sie im Kalender veröffentlicht. Bisher nur die Disney-Parks in den USA.',
   },
   {
@@ -184,16 +200,19 @@ const PARK_SECTIONS: AnatomyStep[] = [
     body: 'Der erste Reiter, mit der Zahl der Bahnen im Titel. Karten wie in Kapitel 01, durchsuchbar und nach Bereichen gruppiert. Oben die Rope-Drop-Übersicht des Parks, nach gesparten Minuten sortiert.',
     example:
       'Taron in Klugheim, ab 140 Zentimeter – die Karte aus Kapitel 01. Darüber die Rope-Drop-Liste, angeführt von Chiapas mit 75 gesparten Minuten.',
+    demo: <AnatomyAttractionDemo />,
   },
   {
     title: 'Kalender und Karte',
     body: 'Zwei feste Reiter daneben: die Tagesprognosen aus Kapitel 04 und eine Karte mit den Bahnen als Marker.',
     example: 'Die vier Tage aus Kapitel 04, im Monatsraster neben ihren Nachbartagen.',
+    demo: <AnatomyCalendarDemo />,
   },
   {
     title: 'Shows und Restaurants',
     body: 'Showzeiten für den ganzen Tag, Gastronomie mit Öffnungszeiten.',
     example: 'Phantasialand liefert vier Shows und 46 Restaurants, beide mit Zeiten.',
+    demo: <AnatomyShowsDemo />,
     onlyWhen: 'der Park welche liefert. Sonst fehlt der Reiter ganz.',
   },
   {
@@ -201,6 +220,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     body: 'Die ruhigsten Termine der nächsten drei Monate, plus der ruhigste Wochentag des Parks.',
     example:
       'Der ruhigste Wochentag des Parks und die nächsten ruhigen Termine – dieselbe Rechnung wie in Kapitel 04, nur drei Monate weit.',
+    demo: <AnatomyBestDaysDemo locale="de" />,
     onlyWhen: 'der Park einen Betriebskalender veröffentlicht.',
   },
   {
@@ -208,6 +228,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     body: 'Was sonst noch in Reichweite liegt, mit Entfernung und aktuellem Status.',
     example:
       'Vom Phantasialand aus: Toverland und Movie Park Germany, beide gut 90 Kilometer entfernt.',
+    demo: <AnatomyNearbyDemo />,
     onlyWhen: 'es Nachbarn gibt. Bei etwa der Hälfte der 212 Parks nicht.',
   },
   {
@@ -215,6 +236,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     body: 'Beiträge aus dem park.fan-Blog, in denen dieser Park vorkommt.',
     example:
       'Auf der Phantasialand-Seite steht unter anderem der Beitrag, der zu dieser Seite hier gehört.',
+    demo: <AnatomyBlogDemo locale="de" />,
     onlyWhen: 'es welche gibt.',
   },
   {
@@ -222,11 +244,22 @@ const PARK_SECTIONS: AnatomyStep[] = [
     body: 'Die längsten Schlangen des Parks mit typischem und vollem Wert, dazu die Verteilung über Monate und Wochentage. Der Abschnitt nennt die Zahl der aufgezeichneten Tage, und die beiden Verteilungen führen sie als eigene Spalte.',
     example:
       'Die Rangliste aus Kapitel 02, dazu die Monate und Wochentage mit ihrer Zahl an Messtagen.',
+    demo: (
+      <AnatomyStatsDemo
+        title="Attraktionen mit längsten Wartezeiten"
+        labelAttraction="Attraktionen"
+        labelMinutes="Min."
+        labelNow="Jetzt"
+        labelP50="Typisch"
+        labelP90="Spitze"
+      />
+    ),
   },
   {
     title: 'Saison, Infos, Fragen',
     body: 'Saisonzeiten und angekündigte Events, Adresse und Zeitzone, und die häufigen Fragen zu genau diesem Park.',
     example: 'Der Schlittschuhverleih aus Kapitel 07 steht hier mit November bis Januar.',
+    demo: <AnatomySeasonDemo label="Schlittschuhverleih" />,
   },
 ];
 
