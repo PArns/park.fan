@@ -3,6 +3,7 @@
 import { CalendarDays, ArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { CrowdCalendarFaqLink } from '@/components/faq/crowd-calendar-faq-link';
+import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Link } from '@/i18n/navigation';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { getGermanArticle } from '@/lib/utils';
@@ -43,17 +44,24 @@ export function ParkBestDaysHeader({
   const displayName = localizedParkName(parkName, parkSlug, locale);
 
   return (
-    <div className="bg-background/70 rounded-xl px-4 py-3 backdrop-blur-md">
-      <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-3">
-        <div className="min-w-0">
-          <div className="flex items-center gap-2">
-            <CalendarDays className="text-primary h-5 w-5" aria-hidden="true" />
-            <h2 id="best-days-heading" className="text-xl font-semibold">
-              {t('title', { park: displayName })}
-            </h2>
-          </div>
-          <p className="text-muted-foreground mt-1 text-sm">{t('subtitle')}</p>
-          <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1">
+    <ChapterHeading
+      icon={CalendarDays}
+      title={t('title', { park: displayName })}
+      id="best-days-heading"
+      frosted
+      badge={
+        showCalendarLink ? (
+          <CrowdCalendarFaqLink className="border-primary/30 bg-primary/10 text-primary hover:bg-primary/20 hover:border-primary/50 inline-flex shrink-0 items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm font-medium no-underline transition-colors">
+            <CalendarDays className="h-4 w-4" aria-hidden="true" />
+            {t('viewCalendarLink')}
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </CrowdCalendarFaqLink>
+        ) : null
+      }
+      hint={
+        <>
+          {t('subtitle')}
+          <span className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1">
             <Link
               href="/fancast"
               className="text-primary hover:text-primary/80 inline-flex items-center gap-1 text-xs font-medium transition-colors"
@@ -68,16 +76,9 @@ export function ParkBestDaysHeader({
               {t('bestTimeLink')}
               <ArrowRight className="h-3 w-3" aria-hidden="true" />
             </Link>
-          </div>
-        </div>
-        {showCalendarLink && (
-          <CrowdCalendarFaqLink className="border-primary/30 bg-primary/10 text-primary hover:bg-primary/20 hover:border-primary/50 inline-flex shrink-0 items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm font-medium no-underline transition-colors">
-            <CalendarDays className="h-4 w-4" aria-hidden="true" />
-            {t('viewCalendarLink')}
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </CrowdCalendarFaqLink>
-        )}
-      </div>
-    </div>
+          </span>
+        </>
+      }
+    />
   );
 }

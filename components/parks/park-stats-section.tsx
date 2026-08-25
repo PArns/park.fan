@@ -1,8 +1,8 @@
 'use client';
 
 import { useMemo } from 'react';
-import { BarChart3 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { ParkStatsHeader } from '@/components/parks/park-stats-header';
 import { ParkStatsCrowdCard } from '@/components/parks/park-stats-crowd-card';
 import { ParkStatsAttractionsCard } from '@/components/parks/park-stats-attractions-card';
 import {
@@ -236,24 +236,13 @@ function StatsContent({
       aria-label={hideHeading ? t('title') : undefined}
       className="mt-8 space-y-4"
     >
-      <div
-        className={
-          hideHeading ? 'hidden' : 'bg-background/70 rounded-xl px-4 py-3 backdrop-blur-md'
-        }
-      >
-        <div className="flex items-center gap-2">
-          <BarChart3 className="text-primary h-5 w-5" aria-hidden="true" />
-          <h2 id="stats-heading" className="text-xl font-bold">
-            {t('title')}
-          </h2>
-        </div>
-        <p className="text-muted-foreground mt-1 text-sm">
-          {t('subtitle', {
-            days: stats.meta.totalSampleDays,
-            years: Math.max(stats.meta.windowYears, 1),
-          })}
-        </p>
-      </div>
+      <ParkStatsHeader
+        hidden={hideHeading}
+        subtitle={t('subtitle', {
+          days: stats.meta.totalSampleDays,
+          years: Math.max(stats.meta.windowYears, 1),
+        })}
+      />
 
       {show.includes('attractions') && stats.topAttractions.length > 0 && (
         <ParkStatsAttractionsCard

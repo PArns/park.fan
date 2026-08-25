@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import type { LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { ChapterHeading } from '@/components/common/chapter-heading';
 
 interface SectionHeadingProps {
   /** Leading icon — gives each chapter a recognizable visual anchor. */
@@ -19,10 +20,10 @@ interface SectionHeadingProps {
   /** Heading level for correct document outline. Defaults to h2. */
   as?: 'h2' | 'h3';
   /**
-   * `chapter` (default): icon in a tinted rounded square + bold title — the
-   * page-level chapter header. `plain`: bare tinted icon + semibold title +
-   * optional badge — the card/sub-section header (absorbed the former
-   * separate `SectionHeader` component).
+   * `chapter` (default): the site-wide chapter header — oversized translucent
+   * icon, big title, closing rule (`ChapterHeading`). `plain`: bare tinted
+   * icon + semibold title + optional badge — the card/sub-section header
+   * (absorbed the former separate `SectionHeader` component).
    */
   variant?: 'chapter' | 'plain';
   /**
@@ -67,17 +68,18 @@ export function SectionHeading({
     );
   }
 
+  // The page-level chapter header is `ChapterHeading` — the same component the
+  // guide page's section shells and the blog's `##` headings render, so a
+  // chapter opens the same way wherever a reader meets one.
   return (
-    <div className={cn('mb-4 flex flex-wrap items-center gap-3', frost, className)}>
-      <span
-        className="bg-primary/10 text-primary flex h-9 w-9 shrink-0 items-center justify-center rounded-lg"
-        aria-hidden="true"
-      >
-        <Icon className={cn('h-5 w-5', iconClassName)} />
-      </span>
-      <As className="text-xl font-bold sm:text-2xl">{title}</As>
-      {badge}
-      {hint && <span className="text-muted-foreground ml-auto text-xs sm:text-sm">{hint}</span>}
-    </div>
+    <ChapterHeading
+      icon={Icon}
+      title={title}
+      hint={hint}
+      badge={badge}
+      as={As}
+      frosted={frosted}
+      className={className}
+    />
   );
 }

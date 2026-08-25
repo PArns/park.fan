@@ -4,6 +4,7 @@ import { buttonLinkProps } from '@/components/ui/button';
 import { Link } from '@/i18n/navigation';
 import { BlogPostCard } from '@/components/blog/blog-post-card';
 import { PageSection } from '@/components/common/page-section';
+import { ChapterHeading } from '@/components/common/chapter-heading';
 import { hasPublishedPosts } from '@/lib/blog/listing';
 import { getPostsForPark, getPostsForRide } from '@/lib/blog/backlinks';
 import type { BlogListItem } from '@/lib/blog/types';
@@ -63,16 +64,14 @@ export async function ParkBlogPostsSection({
 
   return (
     <section className={className}>
-      <div className="bg-background/70 mb-4 rounded-xl px-4 py-3 backdrop-blur-md">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-2">
-            <Newspaper className="text-primary h-5 w-5" aria-hidden="true" />
-            <h2 className="text-xl font-bold">{t('title', { park: parkName })}</h2>
-          </div>
-          <AllPostsLink label={t('viewAll')} />
-        </div>
-        <p className="text-muted-foreground mt-1 text-sm">{t('intro', { park: parkName })}</p>
-      </div>
+      <ChapterHeading
+        icon={Newspaper}
+        title={t('title', { park: parkName })}
+        badge={<AllPostsLink label={t('viewAll')} />}
+        hint={t('intro', { park: parkName })}
+        frosted
+        className="mb-4"
+      />
 
       <BlogPostsGrid posts={posts} />
     </section>

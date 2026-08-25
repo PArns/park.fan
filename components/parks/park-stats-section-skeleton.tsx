@@ -1,4 +1,5 @@
 import { GlassCard } from '@/components/common/glass-card';
+import { ParkStatsHeader } from '@/components/parks/park-stats-header';
 import { Skeleton } from '@/components/ui/skeleton';
 
 /** The three cards <ParkStatsSection> can render. Declared here because the skeleton has to
@@ -95,15 +96,7 @@ export function ParkStatsSectionSkeleton({
 
   return (
     <section className="mt-8 space-y-4" aria-hidden="true">
-      {!hideHeading && (
-        <div className="bg-background/70 rounded-xl px-4 py-3 backdrop-blur-md">
-          <div className="flex items-center gap-2">
-            <Skeleton className="h-5 w-5" />
-            <Skeleton className="h-6 w-64 max-w-full" />
-          </div>
-          <Skeleton className="mt-2 h-4 w-80 max-w-full" />
-        </div>
-      )}
+      <ParkStatsHeader hidden={hideHeading} />
 
       {show.includes('attractions') && (
         <GlassCard variant="medium" className="space-y-2 p-4">

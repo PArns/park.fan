@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { MapPin } from 'lucide-react';
+import { ChapterHeading } from '@/components/common/chapter-heading';
 import { getParksNearLocation } from '@/lib/api/discovery';
 import { getCardObjectPosition, getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { stripNewPrefix } from '@/lib/utils';
@@ -35,13 +36,13 @@ export async function NearbyParksSection({ parkId, lat, lng, className }: Nearby
 
   return (
     <section className={className}>
-      <div className="bg-background/70 mb-4 rounded-xl px-4 py-3 backdrop-blur-md">
-        <div className="flex items-center gap-2">
-          <MapPin className="text-primary h-5 w-5" />
-          <h2 className="text-xl font-bold">{t('nearbyParks')}</h2>
-        </div>
-        <p className="text-muted-foreground mt-1 text-sm">{t('nearbyParksArea')}</p>
-      </div>
+      <ChapterHeading
+        icon={MapPin}
+        title={t('nearbyParks')}
+        hint={t('nearbyParksArea')}
+        frosted
+        className="mb-4"
+      />
 
       <LiveNearbyParks parkId={parkId} lat={lat} lng={lng} parks={staticParks} />
     </section>

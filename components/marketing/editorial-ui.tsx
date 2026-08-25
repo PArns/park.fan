@@ -7,8 +7,9 @@ import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { FaqStructuredData } from '@/components/seo/structured-data';
 import type { CrowdLevel } from '@/lib/api/types';
-import { ChevronRight, ShieldCheck } from 'lucide-react';
+import { ChevronRight, ShieldCheck, type LucideIcon } from 'lucide-react';
 import { Reveal, ScrollCue } from './scroll-reveal';
+import { ChapterHeading } from '@/components/common/chapter-heading';
 
 // Shared editorial/marketing UI kit — a full-bleed hero, Almanac-style numbered
 // section shells, scroll-revealed figures and cards. Used by the Fancast model
@@ -106,27 +107,21 @@ export function SectionShell({
   index: string;
   kicker?: string;
   title: string;
-  icon?: React.ElementType;
+  icon?: LucideIcon;
   children: React.ReactNode;
 }) {
   return (
     <section id={id} className="scroll-mt-24">
       <div className="container mx-auto px-4">
         <Reveal>
-          <div className="border-border mb-8 flex items-start gap-4 border-b pb-5">
-            <span className="text-primary/15 text-5xl leading-none font-black tabular-nums sm:text-7xl">
-              {index}
-            </span>
-            <div className="pt-1">
-              {kicker && (
-                <div className="text-primary mb-1 flex items-center gap-1.5 text-xs font-semibold tracking-widest uppercase">
-                  {Icon && <Icon className="h-3.5 w-3.5" />}
-                  {kicker}
-                </div>
-              )}
-              <h2 className="text-2xl font-bold sm:text-4xl">{title}</h2>
-            </div>
-          </div>
+          <ChapterHeading
+            index={index}
+            icon={Icon}
+            kicker={kicker}
+            title={title}
+            size="lg"
+            className="mb-8 pb-5"
+          />
         </Reveal>
         <div className="space-y-5">{children}</div>
       </div>
