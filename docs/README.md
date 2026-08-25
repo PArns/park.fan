@@ -71,10 +71,10 @@
 
 ### SEO
 
-| Doc                                   | Description                                                      |
-| ------------------------------------- | ---------------------------------------------------------------- |
-| [SEO Analysis](seo/analysis.md)       | Current status, optimizations, checklist                         |
-| [API Discovery](seo/api-discovery.md) | RFC 9727 catalog at `/.well-known/api-catalog` + homepage `Link` |
+| Doc                                       | Description                                                                             |
+| ----------------------------------------- | --------------------------------------------------------------------------------------- |
+| [SEO Analysis](seo/analysis.md)           | Current status, optimizations, checklist                                                |
+| [Agent readiness](seo/agent-readiness.md) | What the site tells machines: robots policy, llms.txt, API catalog, skills, MCP, WebMCP |
 
 ### Troubleshooting
 

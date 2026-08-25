@@ -95,6 +95,17 @@ public/media/**/*-1x1.jpg
 !CLAUDE.md
 # The media database's authoring contract lives next to the files it describes.
 !/public/media/README.md
+
+# The machine-readable surface: `*.md` and `*.txt` above are meant to keep stray notes and
+# scratch files out, but three parts of the app are named after the file they serve — the route
+# folders `app/llms.txt/` and `app/auth.md/`, and the Agent Skills whose artifacts are markdown
+# on purpose (the discovery index publishes a SHA-256 of the bytes served). Without these lines
+# `git add` silently skips them and the build ships a 404.
+!/app/**/*.txt/
+!/app/**/*.md/
+!/app/**/*.txt/**
+!/app/**/*.md/**
+!/content/agent-skills/**/*.md
 package-lock.json
 
 # impeccable design tooling — keep shared config (.impeccable/config.json,

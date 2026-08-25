@@ -4,6 +4,38 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – die Seite beantwortet auch Fragen, die keine Person stellt
+
+Ein Agent, der nur den Hostnamen hat, fand bisher robots.txt, zwei Sitemaps und sonst nichts.
+Jetzt findet er `/llms.txt`, den API-Katalog nach RFC 9727 unter
+`/.well-known/api-catalog` samt `Link`-Header auf der Startseite, drei Skills mit SHA-256-Digest
+unter `/.well-known/agent-skills/`, das ARD-Manifest, die MCP-Server-Card und `/auth.md`. Alles
+liegt in `lib/agents/`, alles wird von `pnpm check:agent-ready` von außen geprüft.
+
+Dazu ein MCP-Server unter `/api/mcp` mit drei lesenden Werkzeugen (Suche, Wartezeiten eines
+Parks, Prognose je Tag) und dieselben drei noch einmal im Tab über `navigator.modelContext`,
+plus ein viertes, das den Tab navigiert. Die Browser-Werkzeuge rufen dabei den eigenen
+MCP-Endpunkt auf, statt die API selbst zu lesen: die Regeln, an denen so eine Antwort hängt,
+liegen serverseitig bei den Daten. Hansa-Park veröffentlicht seine Wartezeiten nur in der
+eigenen App im Parkwlan, und sein Payload sieht aus wie ein Park, der nachts geschlossen ist –
+Ø 0 Minuten über eine leere Menge. Das Werkzeug meldet dafür `waitTimesAvailable: false` und
+einen Satz, keine Nullen; der Check hält das an genau diesem Park fest.
+
+`robots.txt` kommt jetzt aus einem Route-Handler, weil zwei der Zeilen in Nexts Generator nicht
+vorkommen: `Content-Signal: search=yes, ai-input=yes, ai-train=no` und `Agentmap`. Dieselbe
+Antwort steht noch einmal pro Crawler, weil ein Bot nur seinen eigenen Block liest – wer
+Trainingsmaterial sammelt, bekommt `Disallow: /`, wer eine Seite holt, weil gerade jemand
+wartet, bekommt was eine Suchmaschine bekommt.
+
+Und `/admin` steht in keinem dieser Dokumente. Es ist jetzt vierfach abgezäunt: in robots.txt,
+über `X-Robots-Tag` am Response (die JSON-Routen unter `/api/admin` rendern kein Meta-Tag), über
+die schon vorhandenen Layout-Metadaten und im Navigations-Werkzeug, das der einzige Zaun ist,
+durch den ein Agent sonst gehen könnte.
+
+Details: [Agent readiness](seo/agent-readiness.md)
+
+---
+
 ## Unreleased – feat: die Wartezeitentabellen im Blog holen sich ihre Zahlen selbst
 
 Vier Artikel trugen zweiundzwanzig handgepflegte Tabellen über sechs Sprachen:

@@ -1,4 +1,8 @@
-import { API_CATALOG_CONTENT_TYPE, API_CATALOG_LINK_HEADER, apiCatalog } from '@/lib/api-catalog';
+import {
+  API_CATALOG_CONTENT_TYPE,
+  API_CATALOG_LINK_HEADER,
+  apiCatalog,
+} from '@/lib/agents/api-catalog';
 
 /**
  * The API catalog (RFC 9727) — the path an agent guesses instead of reading our docs, so it

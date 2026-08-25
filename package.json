@@ -48,6 +48,8 @@
     "check:blog-slugs": "node scripts/check-blog-slugs.mjs",
     "check:glossary-slugs": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/check-glossary-slugs.mjs",
     "check:card-framing": "node scripts/check-card-framing.mjs",
+    "check:agent-ready": "node scripts/check-agent-ready.mjs",
+    "check:webmcp": "node scripts/check-webmcp.mjs",
     "check:hero-search-rest": "node scripts/check-hero-search-rest.mjs",
     "probe:isr": "node scripts/isr-cache-probe.mjs",
     "crawl:translations": "node scripts/crawl-translations.js",

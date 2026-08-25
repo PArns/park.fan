@@ -1,7 +1,7 @@
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 import withBundleAnalyzer from '@next/bundle-analyzer';
-import { HOMEPAGE_LINK_HEADER } from './lib/api-catalog';
+import { HOMEPAGE_LINK_HEADER } from './lib/agents/api-catalog';
 
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
@@ -561,6 +561,15 @@ const nextConfig: NextConfig = {
         source: `/:locale(${locales.join('|')})`,
         headers: [{ key: 'Link', value: HOMEPAGE_LINK_HEADER }],
       },
+      // The back office, on every surface that could index or summarize it. `/admin` carries
+      // `robots: { index: false }` in its layout metadata already, but a meta tag has to be
+      // rendered to be read — a header is on the response whether or not anything renders, and
+      // it is the only signal the JSON endpoints under /api/admin can carry at all. robots.txt
+      // disallows the same three paths; this is the half that survives a crawler that ignores it.
+      ...['/admin', '/admin/:path*', '/api/admin/:path*', '/dev', '/dev/:path*'].map((source) => ({
+        source,
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow, noarchive' }],
+      })),
       // Static images served from /public. Vercel serves /public with `max-age=0,
       // must-revalidate` by default, and the Image Optimization response INHERITS the source
       // image's Cache-Control — so every `/_next/image` hit came back `max-age=0,

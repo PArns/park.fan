@@ -25,6 +25,7 @@ import { UserbackFeedback } from '@/components/common/userback-feedback';
 import { WebVitalsReporter } from '@/components/analytics/web-vitals-reporter';
 import { ScrollToTop } from '@/components/common/scroll-to-top';
 import { CardPointerFx } from '@/components/parks/card-pointer-fx';
+import { WebMcpTools } from '@/components/agents/webmcp-tools';
 import { NavigationProgress } from '@/components/layout/navigation-progress';
 import {
   OrganizationStructuredData,
@@ -271,6 +272,11 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                 <CardPointerFx />
                 <UserbackFeedback locale={locale} />
                 <WebVitalsReporter />
+                {/* Offers this tab's search and live park data to a browser-side agent
+                    (WebMCP). Registers nothing where the API does not exist, which is nearly
+                    everywhere, and is mounted here rather than in the root layout so /admin —
+                    which has its own — never carries it. */}
+                <WebMcpTools locale={locale} />
                 <LanguageBanner currentLocale={locale as Locale} />
               </Suspense>
               <div className="flex min-h-screen flex-col">
