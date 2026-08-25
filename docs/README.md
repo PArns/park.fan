@@ -91,6 +91,7 @@
 | [Header Navigation](features/header-navigation.md) | The bar's five entries, the parks and blog panels, what is in the HTML vs fetched, and the SEO reasoning            |
 | [Homepage Hero](features/homepage-hero.md)         | Live counts, in-place vs palette search, nearby bubbles, the world-map panel and its generated path data            |
 | [Weather Day Chart](features/weather-day-chart.md) | The hourly chart's park-hours time axis, its tick tiers, the in-visit annotations and the 143 px box                |
+| [The Guide Page](features/how-park-fan-works.md)   | What `/{locale}/{howto-segment}` teaches, why every block is a production component, and the claims it may make     |
 
 ### Product
 

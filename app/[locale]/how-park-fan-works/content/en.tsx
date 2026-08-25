@@ -580,7 +580,7 @@ export function ContentEN() {
 
         <DemoFrame
           label="Four days of an autumn holiday week"
-          note="15 October is the quietest of the four even though it falls in the middle of the holidays: it is raining. The 19th is grey because the park is closed that day. On the park page this calendar runs a year ahead."
+          note="15 October is the quietest of the four even though it falls in the middle of the holidays: it is raining. The 19th is grey because the park is closed that day. On the park page the same calendar runs month by month, as far ahead as the forecast for that park reaches."
         >
           <CalendarDaysDemo />
         </DemoFrame>

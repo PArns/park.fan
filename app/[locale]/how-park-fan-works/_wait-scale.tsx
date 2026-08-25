@@ -123,7 +123,9 @@ export function WaitScaleBar({
       }
       data-wait-scale={interactive ? 'stage' : 'static'}
     >
-      <figcaption className="sr-only">{summary}</figcaption>
+      <figcaption className="sr-only" data-scale-summary>
+        {summary}
+      </figcaption>
 
       <div className="mb-3 flex items-baseline justify-between gap-3">
         <span
@@ -234,6 +236,10 @@ export function WaitScaleStage({
     const typicalEl = surface.querySelector<HTMLElement>('[data-scale-typical]');
     const busyEl = surface.querySelector<HTMLElement>('[data-scale-busy]');
     const daysEl = surface.querySelector<HTMLElement>('[data-scale-days]');
+    // The track is aria-hidden, so this caption is the ONLY accessible copy of the
+    // figure. It was rendered once from steps[0] and never touched again, which
+    // left every reading after the first announcing Monday's numbers.
+    const summaryEl = surface.querySelector<HTMLElement>('[data-scale-summary]');
 
     const reduced = prefersReducedMotion();
 
@@ -259,6 +265,17 @@ export function WaitScaleStage({
       const next = byId.get(id);
       if (!next) return;
       shownRef.current = id;
+
+      // Written on the step change with the settled numbers, not inside `paint()`:
+      // a sentence easing through fractional minutes is noise to read out.
+      if (summaryEl) {
+        summaryEl.textContent = labels.summary
+          .replace('{label}', next.label)
+          .replace('{typical}', String(next.typical))
+          .replace('{busy}', String(next.busy))
+          .replace('{days}', String(next.sampleDays))
+          .replace('{wait}', String(wait));
+      }
 
       if (reduced) {
         state.typical = next.typical;
@@ -304,7 +321,7 @@ export function WaitScaleStage({
       io.disconnect();
       tween?.kill();
     };
-  }, [steps, max]);
+  }, [steps, max, wait, labels.summary]);
 
   return (
     <div ref={rootRef} className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">

@@ -583,7 +583,7 @@ export function ContentDE() {
 
         <DemoFrame
           label="Vier Tage einer Herbstferienwoche"
-          note="Der 15. Oktober ist der ruhigste der vier, obwohl er mitten in den Ferien liegt: Es regnet. Der 19. ist grau, weil der Park an dem Tag zu hat. Auf der Parkseite geht dieser Kalender ein Jahr weit."
+          note="Der 15. Oktober ist der ruhigste der vier, obwohl er mitten in den Ferien liegt: Es regnet. Der 19. ist grau, weil der Park an dem Tag zu hat. Auf der Parkseite steht derselbe Kalender Monat für Monat, so weit die Prognose für diesen Park reicht."
         >
           <CalendarDaysDemo />
         </DemoFrame>

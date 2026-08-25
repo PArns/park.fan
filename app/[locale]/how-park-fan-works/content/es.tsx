@@ -581,7 +581,7 @@ export function ContentES() {
 
         <DemoFrame
           label="Cuatro días de una semana de vacaciones de otoño"
-          note="El 15 de octubre es el más tranquilo de los cuatro aunque cae en plenas vacaciones: llueve. El 19 está en gris porque ese día el parque cierra. En la página del parque este calendario llega a un año vista."
+          note="El 15 de octubre es el más tranquilo de los cuatro aunque cae en plenas vacaciones: llueve. El 19 está en gris porque ese día el parque cierra. En la página del parque, el mismo calendario va mes a mes, hasta donde llega la previsión de ese parque."
         >
           <CalendarDaysDemo />
         </DemoFrame>

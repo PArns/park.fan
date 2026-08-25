@@ -580,7 +580,7 @@ export function ContentIT() {
 
         <DemoFrame
           label="Quattro giorni di una settimana di vacanze autunnali"
-          note="Il 15 ottobre è il più tranquillo dei quattro pur cadendo in piena vacanza: piove. Il 19 è grigio perché quel giorno il parco è chiuso. Sulla pagina del parco questo calendario arriva a un anno."
+          note="Il 15 ottobre è il più tranquillo dei quattro pur cadendo in piena vacanza: piove. Il 19 è grigio perché quel giorno il parco è chiuso. Sulla pagina del parco lo stesso calendario procede mese per mese, fin dove arriva la previsione per quel parco."
         >
           <CalendarDaysDemo />
         </DemoFrame>

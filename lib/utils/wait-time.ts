@@ -22,3 +22,21 @@ export function roundWaitTo5(value: number): number {
   if (!Number.isFinite(n) || n < 2.5) return 0;
   return Math.floor((n + 2.5) / 5) * 5;
 }
+
+/**
+ * The same five-minute grid for a DIFFERENCE between two wait times.
+ *
+ * `roundWaitTo5` floors everything under 2.5 to zero, which is right for a
+ * queue — there is no such thing as −15 minutes of waiting. A delta is the
+ * other case, and applying the wait-time rule to it silently deleted half the
+ * scale: the attraction card's trend compares the last two readings against the
+ * two before them, so a queue being worked off produces a negative delta, and
+ * every one of them collapsed to 0 → "stable". No ride could show a falling
+ * trend at all. It was visible on the guide page itself, where Black Mamba's
+ * card sat at a grey "stabil" under a caption saying its queue was shrinking.
+ */
+export function roundWaitDeltaTo5(value: number): number {
+  const n = typeof value === 'number' ? value : Number(value);
+  if (!Number.isFinite(n)) return 0;
+  return n < 0 ? -roundWaitTo5(-n) : roundWaitTo5(n);
+}

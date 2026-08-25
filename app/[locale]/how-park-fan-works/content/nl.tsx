@@ -579,7 +579,7 @@ export function ContentNL() {
 
         <DemoFrame
           label="Vier dagen uit een herfstvakantieweek"
-          note="15 oktober is de rustigste van de vier, hoewel hij midden in de vakantie valt: het regent. De 19e is grijs omdat het park die dag dicht is. Op de parkpagina loopt deze kalender een jaar vooruit."
+          note="15 oktober is de rustigste van de vier, hoewel hij midden in de vakantie valt: het regent. De 19e is grijs omdat het park die dag dicht is. Op de parkpagina staat dezelfde kalender maand voor maand, zo ver als de voorspelling voor dat park reikt."
         >
           <CalendarDaysDemo />
         </DemoFrame>

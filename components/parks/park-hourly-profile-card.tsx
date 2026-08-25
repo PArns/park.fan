@@ -36,8 +36,12 @@ interface ParkHourlyProfileCardProps {
   topN?: number;
 }
 
-/** Rows a skeleton reserves. Matches the default `topN` so the card does not grow when data lands. */
-const SKELETON_ROWS = 8;
+/**
+ * Hour columns a skeleton reserves. The row count is `topN` itself — the guide page and the
+ * `hourly-profile-widget` fence both ask for six, and a fixed eight collapsed ~44 px under
+ * everything below the card when the data landed. `measure:cls --late` cannot see that one: it is
+ * a client-query swap, not a streamed-tail resolve.
+ */
 const SKELETON_HOURS = 10;
 
 /**
@@ -81,7 +85,7 @@ export function ParkHourlyProfileCard({
           {labels.title}
         </h3>
         <div className="space-y-1.5">
-          {Array.from({ length: SKELETON_ROWS }).map((_, r) => (
+          {Array.from({ length: topN }).map((_, r) => (
             <div key={r} className="flex items-center gap-2">
               <Skeleton className="h-4 w-28 shrink-0" />
               <div className="flex flex-1 gap-1">
@@ -159,9 +163,13 @@ export function ParkHourlyProfileCard({
                         'px-1.5 py-1.5 text-right tabular-nums',
                         // Not "no queue" but "not watched" — a zero here would be a claim about
                         // the ride rather than about the measurements.
-                        value == null
+                        //
+                        // Tier off the RAW value: the boundaries sit at 5/15/30/40/60, so a p50 of
+                        // 41.5 rounded to 40 first would drop from "very high" to "high" and the
+                        // colour would follow the display rounding instead of the measurement.
+                        raw == null
                           ? 'text-muted-foreground/30'
-                          : CROWD_TEXT_CLASS[waitTimeCrowdTier(value)],
+                          : CROWD_TEXT_CLASS[waitTimeCrowdTier(raw)],
                         isPeak && 'font-bold'
                       )}
                       title={value == null ? undefined : `${value} ${labels.minutes}`}

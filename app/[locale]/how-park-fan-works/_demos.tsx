@@ -15,6 +15,7 @@ import { ComparisonBadge } from '@/components/parks/comparison-badge';
 import { ParkCalendarDay } from '@/components/parks/park-calendar-day';
 import { NoLiveWaitTimesNotice } from '@/components/parks/no-live-wait-times-notice';
 import { getServerNowMs } from '@/lib/utils/server-time';
+import { getAttractionBackgroundImage, getCardObjectPosition } from '@/lib/utils/park-assets';
 import { WaitSign } from './_chrome';
 import {
   buildDemoFixtures,
@@ -42,10 +43,23 @@ import {
  */
 
 const PARK_PATH = '/parks/europe/germany/bruehl/phantasialand';
-const PHOTOS: Record<string, string> = {
-  taron: '/media/phantasialand/taron.jpg',
-  'black-mamba': '/media/phantasialand/black-mamba.jpg',
-};
+const DEMO_PARK = 'phantasialand';
+
+/**
+ * The card's photo through the media database, never a path typed out here.
+ *
+ * A literal `/media/phantasialand/taron.jpg` renders a different crop from the one
+ * a park page shows: the sidecar's focal point drives `object-position` (Taron sits
+ * at 0.55/0.58, Black Mamba at 0.5/0.38) and the `?v=` content hash is what lets a
+ * retargeted focal point invalidate an unchanged URL. This page's whole claim is
+ * that the card looks the same an hour later in the park.
+ */
+function photoProps(rideSlug: string) {
+  return {
+    backgroundImage: getAttractionBackgroundImage(DEMO_PARK, rideSlug),
+    objectPosition: getCardObjectPosition(DEMO_PARK, rideSlug),
+  };
+}
 
 /**
  * A frame around one example, so a card that looks exactly like the real thing
@@ -141,8 +155,8 @@ export async function BareNumberVsCard({
             attraction={taron}
             parkPath={PARK_PATH}
             parkStatus="OPERATING"
-            backgroundImage={PHOTOS.taron}
             timezone={DEMO_TIMEZONE}
+            {...photoProps(taron.slug)}
           />
         </div>
         <p className="text-muted-foreground mt-2 text-xs leading-relaxed">{cardCaption}</p>
@@ -176,16 +190,25 @@ export async function RopeDropDemo({ className }: { className?: string }) {
 export async function TwoRidesDemo() {
   const { taron, mamba } = buildDemoFixtures(await getServerNowMs());
   return (
-    <div className="not-prose grid [grid-template-rows:auto_2rem_auto] gap-4 sm:grid-cols-2 sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]">
+    // One row template PER CARD, never one shared by both. `AttractionCard` is
+    // `row-span-3` + subgrid, so two of them in a single three-row grid put the
+    // second on implicit `auto` rows: measured at 390 px the shared version gave
+    // card 1 the 32 px spacer row and card 2 a 0 px one, and its panels' -mb-4 /
+    // -mt-4 then closed over each other. Same shape as the blog widgets.
+    <div className="not-prose grid gap-4 sm:grid-cols-2">
       {[taron, mamba].map((attraction) => (
-        <AttractionCard
+        <div
           key={attraction.id}
-          attraction={attraction}
-          parkPath={PARK_PATH}
-          parkStatus="OPERATING"
-          backgroundImage={PHOTOS[attraction.slug]}
-          timezone={DEMO_TIMEZONE}
-        />
+          className="grid h-full [grid-template-rows:auto_2rem_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]"
+        >
+          <AttractionCard
+            attraction={attraction}
+            parkPath={PARK_PATH}
+            parkStatus="OPERATING"
+            timezone={DEMO_TIMEZONE}
+            {...photoProps(attraction.slug)}
+          />
+        </div>
       ))}
     </div>
   );

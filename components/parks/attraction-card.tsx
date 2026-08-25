@@ -4,7 +4,7 @@ import { CardPhoto, CardPhotoFrame } from '@/components/parks/card-photo';
 import { useTranslations } from 'next-intl';
 import { Crown, ChartColumn, Clock, MapPin } from 'lucide-react';
 import { cn, stripNewPrefix } from '@/lib/utils';
-import { roundWaitTo5 } from '@/lib/utils/wait-time';
+import { roundWaitDeltaTo5, roundWaitTo5 } from '@/lib/utils/wait-time';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { formatDistance } from '@/lib/utils/distance-utils';
@@ -161,7 +161,9 @@ export function AttractionCard({
     const prior = history.slice(-WINDOW * 2, -WINDOW);
     const avg = (pts: typeof history) =>
       pts.reduce((s, p) => s + (typeof p.waitTime === 'number' ? p.waitTime : 0), 0) / pts.length;
-    const delta = roundWaitTo5(avg(recent) - avg(prior));
+    // A delta, not a wait time — the signed rounder, or every falling queue
+    // reads as "stable" (see `roundWaitDeltaTo5`).
+    const delta = roundWaitDeltaTo5(avg(recent) - avg(prior));
     if (delta === 0) {
       return { direction: 'stable', delta: 0 };
     }

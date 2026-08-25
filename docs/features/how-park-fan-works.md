@@ -92,6 +92,16 @@ Things the audit caught, worth not re-introducing:
   ≥ 60 peak / ≥ 45 saved gate.
 - `minimumHeight` (Taron 140 cm) and the per-ride `predictionAccuracy` badge
   **are** rendered — `AttractionMetaBadges` and `AttractionLivePanel`.
+- **A shared row template holds exactly one card.** `AttractionCard` is
+  `row-span-3` + subgrid, so two of them in one three-row grid put the second on
+  implicit `auto` rows: at 390 px card 1 got the 32 px spacer row and card 2 a
+  0 px one, and its panels' `-mb-4`/`-mt-4` closed over each other. Each card
+  gets its own wrapper, like the blog widgets.
+- **The demo photos come from the media database**, not from a path typed into
+  `_demos.tsx`. A literal `/media/phantasialand/taron.jpg` drops the sidecar's
+  focal point (Taron 0.55/0.58, Black Mamba 0.5/0.38) and the `?v=` content
+  hash, so the card would be cropped differently from the one a park page paints
+  — which is the one claim this page cannot afford to get wrong.
 
 ## 3. The example UI is the real UI, and it never fetches
 

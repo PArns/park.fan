@@ -6,6 +6,7 @@ import { SectionHeading } from '@/components/common/section-heading';
 import { cn } from '@/lib/utils';
 import type { DayOfWeekWait, TypicalWaitBucket, TypicalWaits } from '@/lib/api/types';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { roundWaitTo5 } from '@/lib/utils/wait-time';
 
 interface AttractionTypicalWaitsProps {
   typicalWaits?: TypicalWaits | null;
@@ -40,7 +41,28 @@ export function AttractionTypicalWaits({ typicalWaits, className }: AttractionTy
   // Gate on the server's `displayable` flag, not a client threshold.
   if (!typicalWaits || !typicalWaits.displayable) return null;
 
-  const { weekday, weekend, byDayOfWeek, peak, windowDays } = typicalWaits;
+  const raw = typicalWaits;
+  const { windowDays } = raw;
+
+  // Both numbers are `PERCENTILE_CONT` output, so an API build that has not rounded
+  // hands back 53 and 67. Rounded once here rather than at each of the six render
+  // sites, and the bars are drawn from the same values as their labels — a bar at
+  // 78/scaleMax under a label reading 80 is a picture disagreeing with its caption.
+  const round = (v: number | null | undefined) => (v == null ? null : roundWaitTo5(v));
+  const roundBucket = (b: TypicalWaitBucket): TypicalWaitBucket => ({
+    ...b,
+    typical: round(b.typical),
+    busy: round(b.busy),
+  });
+
+  const weekday = roundBucket(raw.weekday);
+  const weekend = roundBucket(raw.weekend);
+  const byDayOfWeek = raw.byDayOfWeek.map((d) => ({
+    ...d,
+    typical: round(d.typical),
+    busy: round(d.busy),
+  }));
+  const peak = raw.peak ? { ...raw.peak, value: roundWaitTo5(raw.peak.value) } : raw.peak;
 
   const byDow = new Map<number, DayOfWeekWait>(byDayOfWeek.map((d) => [d.dayOfWeek, d]));
   const scaleMax = Math.max(

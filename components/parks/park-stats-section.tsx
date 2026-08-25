@@ -5,7 +5,11 @@ import { BarChart3 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { ParkStatsCrowdCard } from '@/components/parks/park-stats-crowd-card';
 import { ParkStatsAttractionsCard } from '@/components/parks/park-stats-attractions-card';
-import { ParkStatsSectionSkeleton } from '@/components/parks/park-stats-section-skeleton';
+import {
+  ALL_STATS_CARDS,
+  ParkStatsSectionSkeleton,
+  type StatsCard,
+} from '@/components/parks/park-stats-section-skeleton';
 import { useParkHistoricalStats } from '@/lib/hooks/use-park-historical-stats';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import { useParkWaitTimes } from '@/lib/hooks/use-park-wait-times';
@@ -34,12 +38,10 @@ interface ParkStatsSectionProps {
    * time and would otherwise have to embed the whole bundle twice, 400 words apart from the prose
    * that discusses it. Defaults to all three, so every existing call site is unchanged.
    */
-  show?: ReadonlyArray<'attractions' | 'months' | 'weekdays'>;
+  show?: readonly StatsCard[];
   /** Blog posts sit under their own <h2>; a second one here would break the heading ladder. */
   hideHeading?: boolean;
 }
-
-const ALL_CARDS = ['attractions', 'months', 'weekdays'] as const;
 
 /**
  * Client wrapper: fetches the 2-year historical aggregate client-side (via the CDN-cached
@@ -55,7 +57,7 @@ export function ParkStatsSection({
   parkSlug,
   locale,
   hasLiveWaitTimes = true,
-  show = ALL_CARDS,
+  show = ALL_STATS_CARDS,
   hideHeading = false,
 }: ParkStatsSectionProps) {
   // Browser-only query (disabled during SSR). Show the skeleton until mounted + loaded so the
@@ -72,7 +74,9 @@ export function ParkStatsSection({
   });
 
   if (!mounted || isPending) {
-    return <ParkStatsSectionSkeleton />;
+    // The placeholder mirrors what this caller will actually render, or a
+    // `show={['attractions']} hideHeading` block collapses three cards to one.
+    return <ParkStatsSectionSkeleton show={show} hideHeading={hideHeading} />;
   }
 
   if (!stats || !stats.meta.displayable) return null;
