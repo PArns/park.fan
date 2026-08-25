@@ -257,10 +257,28 @@ export function NoWaitTimesDemo() {
 /**
  * The two badges that turn a reading into a statement. Rendered as the real
  * components so their colours match the ones on a park page exactly.
+ *
+ * Each row is labelled, because unlabelled the block is an inventory of chips:
+ * a reader cannot tell that the first row rates the park against every park and
+ * the second rates a ride against itself. The labels are props rather than a
+ * sentence in the caption, so the copy never has to say "the upper row".
  */
-export function BadgeRowDemo({ caption }: { caption: string }) {
+export function BadgeRowDemo({
+  caption,
+  crowdLabel,
+  comparisonLabel,
+}: {
+  caption: string;
+  /** Names the first row, e.g. "Auslastung: wie voll ist es". */
+  crowdLabel: string;
+  /** Names the second row, e.g. "Vergleich: voller als sonst?". */
+  comparisonLabel: string;
+}) {
   return (
     <div className="not-prose space-y-3">
+      <div className="text-muted-foreground/80 text-[11px] font-semibold tracking-wide uppercase">
+        {crowdLabel}
+      </div>
       <div className="flex flex-wrap items-center gap-2">
         <CrowdLevelBadge level="very_low" />
         <CrowdLevelBadge level="low" />
@@ -269,6 +287,9 @@ export function BadgeRowDemo({ caption }: { caption: string }) {
         <CrowdLevelBadge level="very_high" />
         <CrowdLevelBadge level="extreme" />
         <CrowdLevelBadge level="unknown" />
+      </div>
+      <div className="text-muted-foreground/80 pt-1 text-[11px] font-semibold tracking-wide uppercase">
+        {comparisonLabel}
       </div>
       <div className="flex flex-wrap items-center gap-2">
         <ComparisonBadge comparison="much_lower" />

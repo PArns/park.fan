@@ -390,7 +390,10 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
             rather than `hidden`: hidden makes this a scroll container and the
             sticky figure in chapter 02 would stick to it instead of the
             viewport. */}
-        <div id="start" className="space-y-16 overflow-x-clip py-14 sm:space-y-24 sm:py-20">
+        <div
+          id="start"
+          className="u-force-metric space-y-16 overflow-x-clip py-14 sm:space-y-24 sm:py-20"
+        >
           <Content />
         </div>
       </>

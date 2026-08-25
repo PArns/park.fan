@@ -135,105 +135,133 @@ const PARK_SECTIONS: AnatomyStep[] = [
   {
     title: 'Kop',
     body: 'Naam, plaats, afstand vanaf jou, plus status, openingstijden van vandaag, de drukte van dit moment en de teller “x van y open”.',
+    example: 'Phantasialand, Brühl. Vandaag 09:00–19:00, 36 van de 40 attracties open.',
   },
   {
     title: 'Vakanties in het verzorgingsgebied',
     body: 'Welke schoolvakanties vandaag op dit park inwerken, met de bijbehorende regio. Ook die van over de grens.',
+    example:
+      'Vandaag telt voor Phantasialand niet Noordrijn-Westfalen maar Gelderland: daar is zomervakantie, en de grens ligt 90 kilometer verderop.',
     onlyWhen: 'er vandaag daadwerkelijk een vakantieregio meespeelt.',
   },
   {
     title: 'Weerwaarschuwing',
     body: 'Officiële waarschuwingen van DWD en MeteoAlarm, ongewijzigd overgenomen. Geen eigen oordeel over het weer.',
+    example:
+      'De formulering van de DWD, onveranderd. Voor parken buiten Duitsland die van MeteoAlarm.',
     onlyWhen: 'er een waarschuwing voor de locatie actief is.',
   },
   {
     title: 'Buienradar',
     body: 'De komende uren in stappen van een kwartier. Zegt of de bui over twintig minuten voorbij is of dat het de hele middag blijft.',
+    example:
+      'Kwartieren in plaats van uren: een bui van 14:15 tot 14:30 verdwijnt in een uurwaarde, hier staat hij er wel in.',
     onlyWhen: 'er neerslag in de buurt is.',
   },
   {
     title: 'Weerkaart',
     body: 'Waarde van nu, het verloop van de dag en de verwachting. De urenas is om de openingstijden heen gebouwd: de uren dat het park open is krijgen vier keer zo veel ruimte als de uren ervoor en erna.',
+    example:
+      'Voor Phantasialand vandaag: de uren van 09:00 tot 19:00 nemen driekwart van de breedte, de nacht ervoor en erna de rest.',
   },
   {
     title: 'Skip-the-line-prijzen',
     body: 'Dagprijzen voor betaalde wachtrijen, inclusief uitverkocht.',
+    example:
+      'Lightning Lane in de Disney-parken, een dagprijs per attractie, uitverkocht als zodanig gemarkeerd.',
     onlyWhen: 'het park ze in de kalender publiceert. Tot nu toe alleen de Disney-parken in de VS.',
   },
   {
     title: 'Attracties',
     body: 'Het eerste tabblad, met het aantal attracties in de titel. Kaarten zoals in hoofdstuk 01, doorzoekbaar en gegroepeerd per gebied. Bovenaan het rope-dropoverzicht van het park, gesorteerd op bespaarde minuten.',
+    example:
+      'Taron in Klugheim, vanaf 140 centimeter — de kaart uit hoofdstuk 01. Daarboven de rope-droplijst, aangevoerd door Chiapas met 75 bespaarde minuten.',
   },
   {
     title: 'Kalender en kaart',
     body: 'Twee vaste tabbladen ernaast: de dagvoorspellingen uit hoofdstuk 04 en een kaart met de attracties als marker.',
+    example: 'De vier dagen uit hoofdstuk 04, in het maandraster naast hun buurdagen.',
   },
   {
     title: 'Shows en restaurants',
     body: 'Showtijden voor de hele dag, horeca met openingstijden.',
+    example: 'Phantasialand levert vier shows en 46 restaurants, beide met tijden.',
     onlyWhen: 'het park ze levert. Anders ontbreekt het tabblad helemaal.',
   },
   {
     title: 'Beste dagen',
     body: 'De rustigste data van de komende drie maanden, plus de rustigste weekdag van het park.',
+    example:
+      'De rustigste weekdag van het park en de eerstvolgende rustige data — dezelfde berekening als hoofdstuk 04, drie maanden vooruit.',
     onlyWhen: 'het park een openingskalender publiceert.',
   },
   {
     title: 'Parken in de buurt',
     body: 'Wat er verder binnen bereik ligt, met afstand en actuele status.',
+    example: 'Vanaf Phantasialand: Toverland en Movie Park Germany, allebei ruim 90 kilometer.',
     onlyWhen: 'er buren zijn. Bij ongeveer de helft van de 212 parken niet.',
   },
   {
     title: 'Blog',
     body: 'Berichten uit de park.fan-blog waarin dit park voorkomt.',
+    example: 'Op de Phantasialand-pagina staat onder meer het bericht dat bij deze pagina hoort.',
     onlyWhen: 'die er zijn.',
   },
   {
     title: 'Statistiek',
     body: 'De langste rijen van het park met hun normale en drukke waarde, plus de verdeling over maanden en weekdagen. Het blok noemt het aantal vastgelegde dagen, en beide verdelingen voeren dat aantal als eigen kolom.',
+    example:
+      'De ranglijst uit hoofdstuk 02, plus de maanden en weekdagen met hun aantal meetdagen.',
   },
   {
     title: 'Seizoen, info, vragen',
     body: 'Seizoenstijden en aangekondigde evenementen, adres en tijdzone, en de veelgestelde vragen over juist dit park.',
+    example: 'De schaatsbaan uit hoofdstuk 07 staat hier met november tot januari.',
   },
 ];
 
 const NIGHT_JOBS: NightShiftJob[] = [
   {
-    time: '02:00',
+    hour: 2,
+    minute: 0,
     at: 0.04,
-    title: 'Percentielen per uur',
-    body: 'Elk gemeten uur van elke attractie krijgt zijn verdeling. Uren met minder dan drie metingen vallen af.',
+    title: 'Wat een uur normaal is',
+    body: 'Voor elke attractie en elk uur de normale en de drukke waarde. Uren met minder dan drie metingen vallen af.',
   },
   {
-    time: '03:00',
+    hour: 3,
+    minute: 0,
     at: 0.22,
-    title: 'Basiswaarden per park',
-    body: 'De mediaan waartegen de live drukte later wordt gerekend. Daarna start de eerste modeltraining.',
+    title: 'Het normale niveau van elk park',
+    body: 'De mediaan waartegen de drukte van nu wordt gerekend. Zonder dat is 70 minuten maar een getal.',
   },
   {
-    time: '04:30',
+    hour: 4,
+    minute: 30,
     at: 0.42,
-    title: 'Kwartierhistorie',
-    body: 'Gisteren wordt samengevat. Pas daarna kan alles rekenen wat het dagverloop nodig heeft.',
+    title: 'Gisteren samenvatten',
+    body: 'De hele vorige dag wordt tot kwartieren verdicht. Pas daarna kan alles rekenen wat het dagverloop nodig heeft.',
   },
   {
-    time: '05:15',
+    hour: 5,
+    minute: 15,
     at: 0.56,
-    title: 'Rope-dropadviezen',
-    body: 'Per attractie: loont de vroege start, hoe lang houdt de voorsprong stand, wanneer is het rustigste moment van de dag.',
+    title: 'Loont vroeg opstaan?',
+    body: 'Per attractie: hoeveel de vroege start bespaart, hoe lang de voorsprong houdt, wanneer het rustigste moment ligt.',
   },
   {
-    time: '05:30',
+    hour: 5,
+    minute: 30,
     at: 0.67,
-    title: 'Normale wachttijden',
-    body: 'De tabel uit hoofdstuk 02. Per weekdag, plus de recorddag met datum.',
+    title: 'Normaal per weekdag',
+    body: 'De tabel uit hoofdstuk 02, voor elke attractie opnieuw, plus de recorddag met datum.',
   },
   {
-    time: '06:00',
+    hour: 6,
+    minute: 0,
     at: 0.8,
-    title: 'Voorspelmodel',
-    body: 'Opnieuw getraind met de wachttijden van gisteren. Elke ochtend één keer volledig.',
+    title: 'Het voorspelmodel leert bij',
+    body: 'Het traint met de wachttijden van gisteren. Elke ochtend één keer helemaal.',
   },
 ];
 
@@ -563,9 +591,8 @@ export function ContentNL() {
               De kaart noemt ook de rustigste tijd van de dag, maar alleen als die buiten het vroege
               venster valt. Bij Taron valt hij er niet buiten, allebei in hetzelfde uur, dus staat
               hier geen tweede tijdstip. Bij andere attracties is het de avond, en dan noemt de
-              kaart dat tijdstip in plaats van de wekker. Voor het hele park somt het
-              attractieoverzicht de attracties op waarbij vroeg opstaan het meeste oplevert,
-              gesorteerd op bespaarde minuten.
+              kaart dat tijdstip. Voor het hele park somt het attractieoverzicht de attracties op
+              waarbij vroeg opstaan het meeste oplevert, gesorteerd op bespaarde minuten.
             </P>
           </div>
         </div>
@@ -724,15 +751,22 @@ export function ContentNL() {
 
           <div className="space-y-4 pt-4">
             <P>
-              Het tweede deel gebeurt ’s nachts. Een mediaan over elke gemeten dinsdag is geen query
-              die je bij het openen van een pagina start. Die moet vooraf berekend zijn, in een
-              vaste volgorde, omdat elke stap op de vorige voortbouwt.
+              Het tweede deel gebeurt ’s nachts, terwijl de parken dicht zijn. “Hoe lang is de rij
+              van Taron op een normale dinsdag” is een mediaan over elke gemeten dinsdag van het
+              afgelopen jaar. Zoiets start je niet als iemand de pagina opent, dat duurt te lang.
+              Het moet er al staan voordat de vraag komt.
+            </P>
+            <P>
+              Zes stappen in een vaste volgorde, elke nacht opnieuw. Elke stap leest wat de vorige
+              heeft geschreven, dus geen enkele kan voorgaan. Als je ’s ochtends de pagina opent, is
+              dat allemaal al berekend.
             </P>
           </div>
 
           <NightShift
+            locale="nl"
             jobs={NIGHT_JOBS}
-            caption="Alle tijden in UTC. De volgorde is geen toeval: het rope-dropadvies van 05:15 leest de kwartierhistorie die om 04:30 wordt geschreven."
+            caption="Tijden in UTC, dus midden in de nacht. De volgorde verklaart de tijden: “loont vroeg opstaan” van 05:15 heeft gisteren in kwartieren nodig, en die ontstaan pas om 04:30."
           />
         </SectionShell>
       </Ambience>
@@ -767,9 +801,13 @@ export function ContentNL() {
 
           <DemoFrame
             label="Geen beoordelingsbasis"
-            note="Het laatste niveau staat voor parken waarvoor we nog geen drukte berekenen: onder ongeveer 30 openingsdagen ontbreekt de vergelijkingswaarde waartegen gerekend zou worden."
+            note="“Geen voorspelling” is voor parken die we nog niet kunnen inschatten: onder ongeveer 30 bedrijfsdagen ontbreekt de vergelijkingswaarde. Een nieuw park krijgt liever geen kleur dan een gegokte."
           >
-            <BadgeRowDemo caption="Boven de drukteniveaus, onder de vergelijking met het normale. Beide gebruiken dezelfde kleurschaal, zodat ze elkaar niet kunnen tegenspreken." />
+            <BadgeRowDemo
+              crowdLabel="Drukte: hoe vol is het nu"
+              comparisonLabel="Vergelijking: voller dan normaal?"
+              caption="Twee schalen, één voorbeeld: bij 70 minuten staat Taron op “Zeer hoog” — dat is de drukte. Vergeleken met zijn eigen normale 45 minuten is het “Veel hoger” — dat is de vergelijking met zichzelf. Een klein park kan “Zeer hoog” zijn en toch “Normaal”: daar zijn 25 minuten gewoon."
+            />
           </DemoFrame>
         </div>
 

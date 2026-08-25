@@ -28,15 +28,38 @@ function loadGsap(): Promise<Gsap | null> {
 }
 
 export interface NightShiftJob {
-  /** Wall clock in UTC, as the scheduler has it. */
-  time: string;
+  /** UTC hour the scheduler fires at, as a 24-hour number. */
+  hour: number;
+  /** UTC minute. */
+  minute: number;
   /** Hour as a fraction of the window the track spans. */
   at: number;
   title: string;
   body: string;
 }
 
-export function NightShift({ jobs, caption }: { jobs: NightShiftJob[]; caption: string }) {
+/**
+ * "02:00" is not how every language writes two in the morning. The times are
+ * fixed points in UTC, so they are formatted from a UTC instant through `Intl`
+ * — German and Dutch get 02:00, English gets 2:00 AM.
+ */
+function formatUtc(locale: string, hour: number, minute: number): string {
+  return new Intl.DateTimeFormat(locale, {
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZone: 'UTC',
+  }).format(new Date(Date.UTC(2026, 0, 1, hour, minute)));
+}
+
+export function NightShift({
+  jobs,
+  caption,
+  locale,
+}: {
+  jobs: NightShiftJob[];
+  caption: string;
+  locale: string;
+}) {
   const rootRef = useRef<HTMLDivElement>(null);
   const playedRef = useRef(false);
 
@@ -103,12 +126,12 @@ export function NightShift({ jobs, caption }: { jobs: NightShiftJob[]; caption: 
         />
         {jobs.map((job) => (
           <div
-            key={job.time}
+            key={`${job.hour}:${job.minute}`}
             className="absolute top-0 -translate-x-1/2"
             style={{ left: `${job.at * 100}%` }}
           >
             <span className="text-muted-foreground text-[10px] font-semibold tabular-nums">
-              {job.time}
+              {formatUtc(locale, job.hour, job.minute)}
             </span>
             <span className="bg-primary/70 mx-auto mt-1.5 block h-2 w-2 rounded-full" />
           </div>
@@ -118,12 +141,12 @@ export function NightShift({ jobs, caption }: { jobs: NightShiftJob[]; caption: 
       <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {jobs.map((job) => (
           <li
-            key={job.time}
+            key={`${job.hour}:${job.minute}`}
             data-job
             className="bg-card/70 hover:border-primary/40 rounded-xl border p-4 transition-colors"
           >
-            <div className="text-primary mb-1 font-mono text-xs font-semibold tabular-nums">
-              {job.time}
+            <div className="text-primary mb-1 text-xs font-semibold tabular-nums">
+              {formatUtc(locale, job.hour, job.minute)}
             </div>
             <h3 className="text-sm font-semibold">{job.title}</h3>
             <p className="text-muted-foreground mt-1 text-sm leading-relaxed">{job.body}</p>

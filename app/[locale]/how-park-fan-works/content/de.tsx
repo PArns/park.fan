@@ -137,108 +137,137 @@ const PARK_SECTIONS: AnatomyStep[] = [
   {
     title: 'Kopfbereich',
     body: 'Name, Ort, Entfernung von dir aus, dazu Status, heutige Öffnungszeiten, die Auslastung von jetzt und der Zähler „x von y geöffnet".',
+    example: 'Phantasialand, Brühl. Heute 09:00–19:00, 36 von 40 Bahnen offen.',
   },
   {
     title: 'Ferien im Einzugsgebiet',
     body: 'Welche Schulferien heute auf diesen Park wirken, mit der Region dazu. Auch die von jenseits der Grenze.',
+    example:
+      'Heute zählt für das Phantasialand nicht Nordrhein-Westfalen, sondern Gelderland: dort sind Sommerferien, und die Grenze ist 90 Kilometer weg.',
     onlyWhen: 'heute überhaupt eine Ferienregion hineinspielt.',
   },
   {
     title: 'Unwetterwarnung',
     body: 'Amtliche Warnungen von DWD und MeteoAlarm, unverändert übernommen. Kein eigenes Urteil über das Wetter.',
+    example:
+      'Der Wortlaut des DWD, unverändert. Für Parks außerhalb Deutschlands der von MeteoAlarm.',
     onlyWhen: 'eine Warnung für den Standort aktiv ist.',
   },
   {
     title: 'Regenradar',
     body: 'Die nächsten Stunden in Viertelstundenschritten. Sagt, ob der Schauer in zwanzig Minuten durch ist oder ob es der Nachmittag bleibt.',
+    example:
+      'Viertelstunden statt Stunden: Ein Schauer von 14:15 bis 14:30 verschwindet in einem Stundenwert, hier steht er drin.',
     onlyWhen: 'Niederschlag in Reichweite ist.',
   },
   {
     title: 'Wetterkarte',
     body: 'Jetzt-Wert, Tagesverlauf und Vorhersage. Die Stundenachse ist um die Öffnungszeiten gebaut: die Stunden, in denen der Park auf hat, bekommen vier Mal so viel Platz wie die davor und danach.',
+    example:
+      'Für das Phantasialand heute: Die Stunden von 09:00 bis 19:00 nehmen drei Viertel der Breite ein, die Nacht davor und danach den Rest.',
   },
   {
     title: 'Skip-the-line-Preise',
     body: 'Tagespreise für kostenpflichtige Warteschlangen, inklusive ausverkauft.',
+    example:
+      'Lightning Lane in den Disney-Parks, Tagespreis pro Bahn, ausverkauft als solches markiert.',
     onlyWhen: 'der Park sie im Kalender veröffentlicht. Bisher nur die Disney-Parks in den USA.',
   },
   {
     title: 'Attraktionen',
     body: 'Der erste Reiter, mit der Zahl der Bahnen im Titel. Karten wie in Kapitel 01, durchsuchbar und nach Bereichen gruppiert. Oben die Rope-Drop-Übersicht des Parks, nach gesparten Minuten sortiert.',
+    example:
+      'Taron in Klugheim, ab 140 Zentimeter – die Karte aus Kapitel 01. Darüber die Rope-Drop-Liste, angeführt von Chiapas mit 75 gesparten Minuten.',
   },
   {
     title: 'Kalender und Karte',
     body: 'Zwei feste Reiter daneben: die Tagesprognosen aus Kapitel 04 und eine Karte mit den Bahnen als Marker.',
+    example: 'Die vier Tage aus Kapitel 04, im Monatsraster neben ihren Nachbartagen.',
   },
   {
     title: 'Shows und Restaurants',
     body: 'Showzeiten für den ganzen Tag, Gastronomie mit Öffnungszeiten.',
+    example: 'Phantasialand liefert vier Shows und 46 Restaurants, beide mit Zeiten.',
     onlyWhen: 'der Park welche liefert. Sonst fehlt der Reiter ganz.',
   },
   {
     title: 'Beste Tage',
     body: 'Die ruhigsten Termine der nächsten drei Monate, plus der ruhigste Wochentag des Parks.',
+    example:
+      'Der ruhigste Wochentag des Parks und die nächsten ruhigen Termine – dieselbe Rechnung wie in Kapitel 04, nur drei Monate weit.',
     onlyWhen: 'der Park einen Betriebskalender veröffentlicht.',
   },
   {
     title: 'Parks in der Nähe',
     body: 'Was sonst noch in Reichweite liegt, mit Entfernung und aktuellem Status.',
+    example:
+      'Vom Phantasialand aus: Toverland und Movie Park Germany, beide gut 90 Kilometer entfernt.',
     onlyWhen: 'es Nachbarn gibt. Bei etwa der Hälfte der 212 Parks nicht.',
   },
   {
     title: 'Blog',
     body: 'Beiträge aus dem park.fan-Blog, in denen dieser Park vorkommt.',
+    example:
+      'Auf der Phantasialand-Seite steht unter anderem der Beitrag, der zu dieser Seite hier gehört.',
     onlyWhen: 'es welche gibt.',
   },
   {
     title: 'Statistik',
     body: 'Die längsten Schlangen des Parks mit typischem und vollem Wert, dazu die Verteilung über Monate und Wochentage. Der Abschnitt nennt die Zahl der aufgezeichneten Tage, und die beiden Verteilungen führen sie als eigene Spalte.',
+    example:
+      'Die Rangliste aus Kapitel 02, dazu die Monate und Wochentage mit ihrer Zahl an Messtagen.',
   },
   {
     title: 'Saison, Infos, Fragen',
     body: 'Saisonzeiten und angekündigte Events, Adresse und Zeitzone, und die häufigen Fragen zu genau diesem Park.',
+    example: 'Der Schlittschuhverleih aus Kapitel 07 steht hier mit November bis Januar.',
   },
 ];
 
 const NIGHT_JOBS: NightShiftJob[] = [
   {
-    time: '02:00',
+    hour: 2,
+    minute: 0,
     at: 0.04,
-    title: 'Perzentile pro Stunde',
-    body: 'Jede gemessene Stunde jeder Bahn bekommt ihre Verteilung. Stunden mit weniger als drei Messwerten fallen raus.',
+    title: 'Was jede Stunde typisch ist',
+    body: 'Für jede Bahn und jede Stunde entsteht der typische und der volle Wert. Stunden mit weniger als drei Messwerten fallen raus.',
   },
   {
-    time: '03:00',
+    hour: 3,
+    minute: 0,
     at: 0.22,
-    title: 'Basiswerte pro Park',
-    body: 'Der Median, gegen den die Live-Auslastung später gerechnet wird. Danach startet das erste Modelltraining.',
+    title: 'Der Normalwert jedes Parks',
+    body: 'Der Median, gegen den die Auslastung von jetzt gerechnet wird. Ohne ihn sind 70 Minuten nur eine Zahl.',
   },
   {
-    time: '04:30',
+    hour: 4,
+    minute: 30,
     at: 0.42,
-    title: 'Viertelstunden-Historie',
-    body: 'Gestern wird zusammengefasst. Erst danach kann alles rechnen, was den Tagesverlauf braucht.',
+    title: 'Gestern zusammenfassen',
+    body: 'Der ganze Vortag wird zu Viertelstunden verdichtet. Erst danach kann alles rechnen, was den Tagesverlauf braucht.',
   },
   {
-    time: '05:15',
+    hour: 5,
+    minute: 15,
     at: 0.56,
-    title: 'Rope-Drop-Empfehlungen',
-    body: 'Für jede Bahn: lohnt der frühe Start, wie lange hält der Vorsprung, wann ist der ruhigste Moment des Tages.',
+    title: 'Lohnt früh aufstehen?',
+    body: 'Pro Bahn: wie viel der frühe Start spart, wie lange der Vorsprung hält, wann der ruhigste Moment liegt.',
   },
   {
-    time: '05:30',
+    hour: 5,
+    minute: 30,
     at: 0.67,
-    title: 'Typische Wartezeiten',
-    body: 'Die Tabelle aus Kapitel 02. Pro Wochentag, dazu der Rekordtag mit Datum.',
+    title: 'Typisch pro Wochentag',
+    body: 'Die Tabelle aus Kapitel 02 wird für jede Bahn neu gerechnet, dazu der Rekordtag mit Datum.',
   },
   {
-    time: '06:00',
+    hour: 6,
+    minute: 0,
     at: 0.8,
-    title: 'Prognosemodell',
-    body: 'Neues Training mit den Wartezeiten von gestern. Jeden Morgen einmal komplett.',
+    title: 'Das Prognosemodell lernt nach',
+    body: 'Es trainiert mit den Wartezeiten von gestern. Jeden Morgen einmal komplett.',
   },
 ];
-
 const FAQ = [
   {
     question: 'Was heißt „typisch“ und „voll“ bei einer Wartezeit?',
@@ -567,9 +596,9 @@ export function ContentDE() {
               Die Karte nennt außerdem die ruhigste Zeit des Tages, aber nur, wenn die außerhalb des
               frühen Fensters liegt. Bei Taron liegt sie nicht draußen, beide fallen auf dieselbe
               Stunde, deshalb steht hier keine zweite Uhrzeit. Bei anderen Bahnen ist es der Abend,
-              und dann nennt die Karte diesen Zeitpunkt statt des Weckers. Für den ganzen Park
-              listet die Attraktionsübersicht die Bahnen, bei denen sich das Aufstehen am meisten
-              lohnt, sortiert nach gesparten Minuten.
+              und dann steht auf der Karte diese Uhrzeit. Für den ganzen Park listet die
+              Attraktionsübersicht die Bahnen, bei denen sich das Aufstehen am meisten lohnt,
+              sortiert nach gesparten Minuten.
             </P>
           </div>
         </div>
@@ -729,15 +758,22 @@ export function ContentDE() {
 
           <div className="space-y-4 pt-4">
             <P>
-              Der zweite Teil passiert nachts. Ein Median über jeden gemessenen Dienstag ist keine
-              Abfrage, die man beim Seitenaufruf startet. Er muss vorher gerechnet worden sein, in
-              einer festen Reihenfolge, weil jeder Schritt auf dem vorigen aufbaut.
+              Der zweite Teil passiert nachts, während die Parks zu haben. „Wie lang ist Tarons
+              Schlange an einem typischen Dienstag“ ist ein Median über jeden gemessenen Dienstag
+              des letzten Jahres. So etwas startet man nicht, wenn jemand die Seite aufruft, das
+              dauert zu lange. Es muss fertig dastehen, bevor die Frage kommt.
+            </P>
+            <P>
+              Sechs Schritte in fester Reihenfolge, jede Nacht neu. Jeder liest, was der vorige
+              geschrieben hat, deshalb kann keiner vorziehen. Wenn du morgens die Seite öffnest, ist
+              all das schon gerechnet.
             </P>
           </div>
 
           <NightShift
+            locale="de"
             jobs={NIGHT_JOBS}
-            caption="Alle Zeiten UTC. Die Reihenfolge ist kein Zufall: Die Rope-Drop-Empfehlung um 05:15 liest die Viertelstunden-Historie, die um 04:30 geschrieben wird."
+            caption="Uhrzeiten in UTC, also mitten in der Nacht. Die Reihenfolge erklärt die Zeiten: „Lohnt früh aufstehen“ um 05:15 braucht die Viertelstunden von gestern, und die entstehen erst um 04:30."
           />
         </SectionShell>
       </Ambience>
@@ -772,9 +808,13 @@ export function ContentDE() {
 
           <DemoFrame
             label="Keine Bewertungsgrundlage"
-            note="Die letzte Stufe steht für Parks, für die wir noch keine Auslastung berechnen: Unter rund 30 Betriebstagen fehlt der Vergleichswert, gegen den gerechnet würde."
+            note="„Keine Prognose“ steht für Parks, die wir noch nicht einschätzen können: Unter rund 30 Betriebstagen fehlt der Vergleichswert, gegen den gerechnet würde. Ein neuer Park bekommt deshalb keine geratene Farbe, sondern gar keine."
           >
-            <BadgeRowDemo caption="Oben die Auslastungsstufen, unten der Vergleich mit dem Typischen. Beide benutzen dieselbe Farbskala, damit sie sich nicht widersprechen können." />
+            <BadgeRowDemo
+              crowdLabel="Auslastung: wie voll ist es gerade"
+              comparisonLabel="Vergleich: voller als sonst?"
+              caption="Zwei Skalen, ein Beispiel: Taron steht bei 70 Minuten auf „Sehr hoch“ – das ist die Auslastung. Verglichen mit seinen typischen 45 Minuten ist es „Viel höher“ – das ist der Vergleich mit sich selbst. Ein kleiner Park kann „Sehr hoch“ und trotzdem „Typisch“ sein: bei ihm sind 25 Minuten normal."
+            />
           </DemoFrame>
         </div>
 

@@ -135,106 +135,134 @@ const PARK_SECTIONS: AnatomyStep[] = [
   {
     title: 'En-tête',
     body: 'Nom, lieu, distance depuis chez vous, plus le statut, les horaires du jour, l’affluence du moment et le compteur « x sur y ouvertes ».',
+    example: 'Phantasialand, Brühl. Aujourd’hui 09:00–19:00, 36 attractions sur 40 ouvertes.',
   },
   {
     title: 'Vacances scolaires alentour',
     body: 'Quelles vacances scolaires pèsent aujourd’hui sur ce parc, avec la région correspondante. Y compris celles de l’autre côté de la frontière.',
+    example:
+      'Aujourd’hui, pour Phantasialand, ce n’est pas la Rhénanie-du-Nord-Westphalie qui compte mais la Gueldre : vacances scolaires là-bas, et la frontière est à 90 kilomètres.',
     onlyWhen: 'une région de vacances atteint réellement ce parc aujourd’hui.',
   },
   {
     title: 'Alerte météo',
     body: 'Alertes officielles du DWD et de MeteoAlarm, reprises telles quelles. Aucun jugement de notre part sur la météo.',
+    example: 'Le texte du DWD, tel quel. Pour les parcs hors d’Allemagne, celui de MeteoAlarm.',
     onlyWhen: 'une alerte est active pour le lieu.',
   },
   {
     title: 'Radar de pluie',
     body: 'Les prochaines heures par quarts d’heure. Indique si l’averse sera passée dans vingt minutes ou si elle tiendra l’après-midi.',
+    example:
+      'Des quarts d’heure, pas des heures : une averse de 14:15 à 14:30 disparaît dans une valeur horaire ; ici, elle y est.',
     onlyWhen: 'des précipitations sont à portée.',
   },
   {
     title: 'Carte météo',
     body: 'Valeur actuelle, courbe de la journée et prévision. L’axe horaire est construit autour des horaires d’ouverture : les heures où le parc est ouvert reçoivent quatre fois plus de place que celles d’avant et d’après.',
+    example:
+      'Pour Phantasialand aujourd’hui : les heures de 09:00 à 19:00 prennent les trois quarts de la largeur, la nuit avant et après le reste.',
   },
   {
     title: 'Prix coupe-file',
     body: 'Tarifs quotidiens des files payantes, ruptures de stock comprises.',
+    example:
+      'Lightning Lane dans les parcs Disney, un prix du jour par attraction, complet signalé comme tel.',
     onlyWhen:
       'le parc les publie dans son calendrier. Pour l’instant, seulement les parcs Disney aux États-Unis.',
   },
   {
     title: 'Attractions',
     body: 'Le premier onglet, avec le nombre d’attractions dans son titre. Des cartes comme au chapitre 01, avec recherche, groupées par zone. En haut, l’aperçu rope drop du parc, trié par minutes gagnées.',
+    example:
+      'Taron à Klugheim, à partir de 140 centimètres — la carte du chapitre 01. Au-dessus, la liste rope drop, menée par Chiapas avec 75 minutes gagnées.',
   },
   {
     title: 'Calendrier et carte',
     body: 'Deux onglets fixes à côté : les prévisions journalières du chapitre 04 et une carte avec les attractions en marqueurs.',
+    example: 'Les quatre jours du chapitre 04, dans la grille du mois à côté de leurs voisins.',
   },
   {
     title: 'Spectacles et restaurants',
     body: 'Horaires des spectacles pour toute la journée, restauration avec heures d’ouverture.',
+    example: 'Phantasialand propose quatre spectacles et 46 restaurants, les deux avec horaires.',
     onlyWhen: 'le parc les fournit. Sinon l’onglet n’existe pas du tout.',
   },
   {
     title: 'Meilleurs jours',
     body: 'Les dates les plus calmes des trois prochains mois, plus le jour de semaine le plus calme du parc.',
+    example:
+      'Le jour de semaine le plus calme du parc et les prochaines dates calmes — le même calcul qu’au chapitre 04, sur trois mois.',
     onlyWhen: 'le parc publie un calendrier d’exploitation.',
   },
   {
     title: 'Parcs à proximité',
     body: 'Ce qu’il y a d’autre à portée, avec la distance et le statut actuel.',
+    example:
+      'Depuis Phantasialand : Toverland et Movie Park Germany, tous deux à un bon 90 kilomètres.',
     onlyWhen: 'il y a des voisins. Pour environ la moitié des 212 parcs, il n’y en a pas.',
   },
   {
     title: 'Blog',
     body: 'Les articles du blog park.fan où ce parc apparaît.',
+    example: 'La page de Phantasialand porte entre autres l’article qui accompagne cette page.',
     onlyWhen: 'il y en a.',
   },
   {
     title: 'Statistiques',
     body: 'Les files les plus longues du parc avec leur valeur habituelle et chargée, plus la répartition par mois et par jour de semaine. La section indique le nombre de jours enregistrés, et les deux répartitions en font une colonne à part.',
+    example:
+      'Le classement du chapitre 02, plus les mois et les jours de semaine avec leur nombre de jours mesurés.',
   },
   {
     title: 'Saison, infos, questions',
     body: 'Périodes d’ouverture et événements annoncés, adresse et fuseau horaire, et les questions fréquentes sur ce parc précis.',
+    example: 'La patinoire du chapitre 07 figure ici avec novembre à janvier.',
   },
 ];
 
 const NIGHT_JOBS: NightShiftJob[] = [
   {
-    time: '02:00',
+    hour: 2,
+    minute: 0,
     at: 0.04,
-    title: 'Centiles par heure',
-    body: 'Chaque heure mesurée de chaque attraction reçoit sa distribution. Les heures avec moins de trois relevés sont écartées.',
+    title: 'Ce qu’une heure a d’habituel',
+    body: 'Pour chaque attraction et chaque heure, la valeur habituelle et la valeur chargée. Les heures à moins de trois mesures sautent.',
   },
   {
-    time: '03:00',
+    hour: 3,
+    minute: 0,
     at: 0.22,
-    title: 'Valeurs de référence par parc',
-    body: 'La médiane contre laquelle l’affluence en direct sera ensuite calculée. Le premier entraînement du modèle démarre après.',
+    title: 'Le niveau normal de chaque parc',
+    body: 'La médiane à laquelle l’affluence du moment est comparée. Sans elle, 70 minutes n’est qu’un chiffre.',
   },
   {
-    time: '04:30',
+    hour: 4,
+    minute: 30,
     at: 0.42,
-    title: 'Historique au quart d’heure',
-    body: 'La journée d’hier est agrégée. Rien de ce qui dépend de la forme d’une journée ne peut tourner avant.',
+    title: 'Résumer la veille',
+    body: 'Toute la journée précédente est condensée en quarts d’heure. Rien de ce qui a besoin du profil d’une journée ne peut tourner avant.',
   },
   {
-    time: '05:15',
+    hour: 5,
+    minute: 15,
     at: 0.56,
-    title: 'Recommandations rope drop',
-    body: 'Par attraction : le départ matinal vaut-il le coup, combien de temps l’avance tient-elle, quand se situe le moment le plus calme de la journée.',
+    title: 'Se lever tôt, ça vaut le coup ?',
+    body: 'Par attraction : ce que le départ matinal fait gagner, combien de temps l’avance tient, quand tombe le moment le plus calme.',
   },
   {
-    time: '05:30',
+    hour: 5,
+    minute: 30,
     at: 0.67,
-    title: 'Temps d’attente habituels',
-    body: 'Le tableau du chapitre 02. Par jour de semaine, avec le jour record et sa date.',
+    title: 'L’habituel par jour de semaine',
+    body: 'Le tableau du chapitre 02, recalculé pour chaque attraction, avec le jour record et sa date.',
   },
   {
-    time: '06:00',
+    hour: 6,
+    minute: 0,
     at: 0.8,
-    title: 'Modèle de prévision',
-    body: 'Réentraîné avec les temps d’attente de la veille. Une fois en entier, chaque matin.',
+    title: 'Le modèle de prévision réapprend',
+    body: 'Il s’entraîne sur les temps d’attente de la veille. Une fois en entier, chaque matin.',
   },
 ];
 
@@ -570,9 +598,8 @@ export function ContentFR() {
               La carte nomme aussi le moment le plus calme de la journée, mais seulement s’il tombe
               en dehors de la fenêtre matinale. Pour Taron, ce n’est pas le cas : les deux tombent
               dans la même heure, il n’y a donc pas de seconde heure ici. Pour d’autres attractions,
-              c’est le soir, et la carte nomme alors ce moment plutôt que le réveil. Pour tout le
-              parc, l’aperçu des attractions liste celles où se lever tôt rapporte le plus, triées
-              par minutes gagnées.
+              c’est le soir, et la carte indique alors cette heure. Pour tout le parc, l’aperçu des
+              attractions liste celles où se lever tôt rapporte le plus, triées par minutes gagnées.
             </P>
           </div>
         </div>
@@ -732,15 +759,22 @@ export function ContentFR() {
 
           <div className="space-y-4 pt-4">
             <P>
-              La seconde moitié se passe la nuit. Une médiane sur chaque mardi mesuré n’est pas une
-              requête que l’on lance à l’ouverture d’une page. Elle doit avoir été calculée avant,
-              dans un ordre fixe, parce que chaque étape s’appuie sur la précédente.
+              La seconde moitié se passe la nuit, pendant que les parcs sont fermés. « Combien de
+              temps dure la file de Taron un mardi ordinaire » est une médiane sur chaque mardi
+              mesuré de l’année écoulée. Cela ne se lance pas à l’ouverture d’une page, c’est trop
+              long. Il faut que ce soit déjà là quand la question arrive.
+            </P>
+            <P>
+              Six étapes dans un ordre fixe, chaque nuit. Chacune lit ce que la précédente a écrit,
+              aucune ne peut donc passer devant. Quand tu ouvres la page le matin, tout cela est
+              déjà calculé.
             </P>
           </div>
 
           <NightShift
+            locale="fr"
             jobs={NIGHT_JOBS}
-            caption="Toutes les heures en UTC. L’ordre n’est pas dû au hasard : la recommandation rope drop de 05:15 lit l’historique au quart d’heure écrit à 04:30."
+            caption="Heures en UTC, donc en pleine nuit. L’ordre explique les heures : « se lever tôt, ça vaut le coup » à 05:15 a besoin de la veille au quart d’heure, et celle-ci n’est écrite qu’à 04:30."
           />
         </SectionShell>
       </Ambience>
@@ -775,9 +809,13 @@ export function ContentFR() {
 
           <DemoFrame
             label="Aucune base d’évaluation"
-            note="Le dernier niveau désigne les parcs pour lesquels nous ne calculons pas encore d’affluence : sous une trentaine de jours d’exploitation, la valeur de référence manque."
+            note="« Aucune prévision » désigne les parcs que nous ne savons pas encore évaluer : sous une trentaine de jours d’exploitation, la valeur de référence manque. Un parc récent n’a pas de couleur plutôt qu’une couleur devinée."
           >
-            <BadgeRowDemo caption="En haut les niveaux d’affluence, en bas la comparaison avec l’habituel. Les deux utilisent la même échelle de couleurs, pour qu’ils ne puissent pas se contredire." />
+            <BadgeRowDemo
+              crowdLabel="Affluence : à quel point c’est plein maintenant"
+              comparisonLabel="Comparaison : plus que d’habitude ?"
+              caption="Deux échelles, un exemple : à 70 minutes, Taron affiche « Très élevée » — c’est l’affluence. Face à ses 45 minutes habituelles, c’est « Bien plus » — c’est la comparaison avec lui-même. Un petit parc peut être « Très élevée » et pourtant « Habituel » : chez lui, 25 minutes sont normales."
+            />
           </DemoFrame>
         </div>
 

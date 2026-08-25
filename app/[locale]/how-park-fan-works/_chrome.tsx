@@ -285,6 +285,12 @@ export function Ambience({
 export interface AnatomyStep {
   title: string;
   body: string;
+  /**
+   * What the block actually says on one real park, so the description has
+   * something to land on. Every value here is one the API returned for
+   * Phantasialand — the walk-through was a list of abstractions before.
+   */
+  example?: string;
   /** Rendered as a muted "only when…" line. Absent = the block is always there. */
   onlyWhen?: string;
 }
@@ -326,6 +332,11 @@ export function ParkAnatomy({
           <div className="pt-0.5">
             <h3 className="font-semibold">{step.title}</h3>
             <p className="text-muted-foreground mt-1 text-sm leading-relaxed">{step.body}</p>
+            {step.example && (
+              <p className="border-primary/30 text-foreground/70 mt-2 border-l-2 pl-3 text-sm">
+                {step.example}
+              </p>
+            )}
             {step.onlyWhen && (
               <p className="text-muted-foreground/80 mt-1.5 text-xs">
                 <span className="font-medium">{onlyWhenLabel}</span> {step.onlyWhen}

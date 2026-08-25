@@ -985,6 +985,20 @@ html[data-temp-unit='F'] .u-imperial {
   display: inline;
 }
 
+/* Pin a subtree to metric, whatever the visitor's unit is. The guide page needs
+   this: it teaches with the production cards, and its prose names centimetres
+   ("ein 130 Zentimeter großes Kind", "Taron verlangt 140 Zentimeter", "un mètre
+   trente"). A reader on imperial got that sentence beside a card reading
+   "From 55 in" — the card and the paragraph explaining it disagreed. The
+   html[data-temp-unit] prefix is load-bearing: without it these lose on
+   specificity to the html[data-temp-unit='F'] rules above and nothing changes. */
+html[data-temp-unit] .u-force-metric .u-metric {
+  display: inline;
+}
+html[data-temp-unit] .u-force-metric .u-imperial {
+  display: none;
+}
+
 /* ─── Blog code highlighting (rehype-highlight / highlight.js tokens) ──────
    Compact dark token palette scoped to the published blog so we don't ship a
    full hljs theme stylesheet. Tuned for the site's dark surface; in light

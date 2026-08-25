@@ -135,105 +135,132 @@ const PARK_SECTIONS: AnatomyStep[] = [
   {
     title: 'Header',
     body: 'Name, location, how far it is from you, plus status, today’s opening hours, the crowd level right now and the “x of y open” counter.',
+    example: 'Phantasialand, Brühl. Open 09:00–19:00 today, 36 of 40 rides running.',
   },
   {
     title: 'School holidays in range',
     body: 'Which school holidays are acting on this park today, and the region each one belongs to. Including the ones across the border.',
+    example:
+      'Today the entry that counts for Phantasialand is not North Rhine-Westphalia but Gelderland: school holidays there, and the border is 90 kilometres away.',
     onlyWhen: 'a holiday region actually reaches this park today.',
   },
   {
     title: 'Severe weather warning',
     body: 'Official warnings from DWD and MeteoAlarm, passed through unchanged. No judgement of our own about the weather.',
+    example: 'The DWD’s wording, unchanged. For parks outside Germany, MeteoAlarm’s.',
     onlyWhen: 'a warning is active for the location.',
   },
   {
     title: 'Rain radar',
     body: 'The next few hours in fifteen-minute steps. Tells you whether the shower is through in twenty minutes or whether it is the afternoon now.',
+    example:
+      'Quarter hours, not hours: a shower from 14:15 to 14:30 disappears inside an hourly value; here it is there.',
     onlyWhen: 'there is precipitation in range.',
   },
   {
     title: 'Weather card',
     body: 'Current reading, the day’s curve and the forecast. The hourly axis is built around the opening hours: the hours the park is open get four times the width of the ones before and after.',
+    example:
+      'For Phantasialand today: the hours from 09:00 to 19:00 take three quarters of the width, the night before and after takes the rest.',
   },
   {
     title: 'Skip-the-line prices',
     body: 'Daily prices for paid queue access, sold-out states included.',
+    example: 'Lightning Lane at the Disney parks, a day price per ride, sold out marked as such.',
     onlyWhen: 'the park publishes them in its calendar. So far only the Disney parks in the US.',
   },
   {
     title: 'Attractions',
     body: 'The first tab, with the ride count in its title. Cards like the ones in chapter 01, searchable and grouped by land. The park’s rope-drop overview sits on top, sorted by minutes saved.',
+    example:
+      'Taron in Klugheim, from 140 centimetres — the card from chapter 01. Above it the rope-drop list, led by Chiapas at 75 minutes saved.',
   },
   {
     title: 'Calendar and map',
     body: 'Two fixed tabs beside it: the daily forecasts from chapter 04, and a map with the rides as markers.',
+    example: 'The four days from chapter 04, in the month grid next to their neighbours.',
   },
   {
     title: 'Shows and restaurants',
     body: 'Showtimes for the whole day, dining with opening hours.',
+    example: 'Phantasialand has four shows and 46 restaurants, both with times.',
     onlyWhen: 'the park supplies them. Otherwise the tab is not there at all.',
   },
   {
     title: 'Best days',
     body: 'The quietest dates in the next three months, plus the park’s quietest weekday.',
+    example:
+      'The park’s quietest weekday and the next quiet dates — the same calculation as chapter 04, three months out.',
     onlyWhen: 'the park publishes an operating calendar.',
   },
   {
     title: 'Parks nearby',
     body: 'What else is within reach, with distance and current status.',
+    example:
+      'From Phantasialand: Toverland and Movie Park Germany, both a good 90 kilometres away.',
     onlyWhen: 'there are neighbours. For about half of the 212 parks there are none.',
   },
   {
     title: 'Blog',
     body: 'Posts from the park.fan blog that this park appears in.',
+    example: 'The Phantasialand page carries, among others, the post that goes with this page.',
     onlyWhen: 'there are any.',
   },
   {
     title: 'Statistics',
     body: 'The park’s longest queues with their typical and busy values, plus the spread across months and weekdays. The section states how many recorded days it rests on, and both breakdowns carry that count as a column of their own.',
+    example:
+      'The ranking from chapter 02, plus the months and weekdays with their number of measured days.',
   },
   {
     title: 'Season, info, questions',
     body: 'Operating season and announced events, address and time zone, and the common questions about this particular park.',
+    example: 'The ice rink from chapter 07 sits here with November to January.',
   },
 ];
 
 const NIGHT_JOBS: NightShiftJob[] = [
   {
-    time: '02:00',
+    hour: 2,
+    minute: 0,
     at: 0.04,
-    title: 'Percentiles per hour',
-    body: 'Every measured hour of every ride gets its distribution. Hours with fewer than three readings drop out.',
+    title: 'What a typical hour looks like',
+    body: 'For every ride and every hour, the typical value and the busy one. Hours with fewer than three readings drop out.',
   },
   {
-    time: '03:00',
+    hour: 3,
+    minute: 0,
     at: 0.22,
-    title: 'Park baselines',
-    body: 'The median that the live crowd level is later computed against. The first model training starts after it.',
+    title: 'Each park’s normal level',
+    body: 'The median the current crowd level is measured against. Without it, 70 minutes is just a number.',
   },
   {
-    time: '04:30',
+    hour: 4,
+    minute: 30,
     at: 0.42,
-    title: 'Quarter-hour history',
-    body: 'Yesterday is rolled up. Nothing that needs the shape of a day can run before this.',
+    title: 'Summing up yesterday',
+    body: 'The whole previous day is condensed into quarter hours. Nothing that needs the shape of a day can run before this.',
   },
   {
-    time: '05:15',
+    hour: 5,
+    minute: 15,
     at: 0.56,
-    title: 'Rope-drop recommendations',
-    body: 'Per ride: is the early start worth it, how long does the head start last, when is the quietest moment of the day.',
+    title: 'Is getting up early worth it?',
+    body: 'Per ride: how much the early start saves, how long the advantage holds, when the quietest moment falls.',
   },
   {
-    time: '05:30',
+    hour: 5,
+    minute: 30,
     at: 0.67,
-    title: 'Typical wait times',
-    body: 'The table from chapter 02. Per weekday, plus the record day with its date.',
+    title: 'Typical per weekday',
+    body: 'The table from chapter 02, recomputed for every ride, plus the record day with its date.',
   },
   {
-    time: '06:00',
+    hour: 6,
+    minute: 0,
     at: 0.8,
-    title: 'Forecast model',
-    body: 'Retrained on yesterday’s wait times. Once through, every morning.',
+    title: 'The forecast model catches up',
+    body: 'It trains on yesterday’s wait times. Once through, every morning.',
   },
 ];
 
@@ -562,9 +589,9 @@ export function ContentEN() {
             <P>
               The card also names the quietest time of the day, but only when it falls outside the
               early window. For Taron it does not — both land in the same hour — so there is no
-              second time here. For other rides it is the evening, and then the card names that
-              moment instead of the alarm clock. For the whole park, the attractions overview lists
-              the rides where getting up early pays off most, sorted by minutes saved.
+              second time here. For other rides it is the evening, and then that time is what the
+              card shows. For the whole park, the attractions overview lists the rides where getting
+              up early pays off most, sorted by minutes saved.
             </P>
           </div>
         </div>
@@ -723,15 +750,22 @@ export function ContentEN() {
 
           <div className="space-y-4 pt-4">
             <P>
-              The second half happens at night. A median across every Tuesday on record is not a
-              query you start when somebody opens a page. It has to have been computed beforehand,
-              in a fixed order, because each step builds on the one before it.
+              The second half happens at night, while the parks are shut. “How long is Taron’s queue
+              on a typical Tuesday” is a median across every measured Tuesday of the past year. You
+              do not start that when somebody opens a page — it takes too long. It has to be
+              standing there before the question arrives.
+            </P>
+            <P>
+              Six steps in a fixed order, every night. Each one reads what the previous one wrote,
+              so none of them can go first. By the time you open the page in the morning, all of it
+              has been computed.
             </P>
           </div>
 
           <NightShift
+            locale="en"
             jobs={NIGHT_JOBS}
-            caption="All times UTC. The order is not arbitrary: the rope-drop job at 05:15 reads the quarter-hour history that is written at 04:30."
+            caption="Times in UTC, so the middle of the night. The order explains the times: “is getting up early worth it” at 05:15 needs yesterday in quarter hours, and those are only written at 04:30."
           />
         </SectionShell>
       </Ambience>
@@ -766,9 +800,13 @@ export function ContentEN() {
 
           <DemoFrame
             label="No basis for a rating"
-            note="The last level stands for parks we cannot compute a crowd level for yet: under roughly 30 operating days the reference value to compute against is missing."
+            note="“No forecast” is for parks we cannot rate yet: under about 30 operating days the reference value is missing. A new park gets no colour rather than a guessed one."
           >
-            <BadgeRowDemo caption="Crowd levels on top, the comparison against typical below. Both use the same colour scale so they cannot contradict each other." />
+            <BadgeRowDemo
+              crowdLabel="Crowd level: how busy is it right now"
+              comparisonLabel="Comparison: busier than usual?"
+              caption="Two scales, one example: at 70 minutes Taron reads “Very high” — that is the crowd level. Against its own typical 45 minutes it reads “Much higher” — that is the comparison with itself. A small park can be “Very high” and still “Typical”: for it, 25 minutes is normal."
+            />
           </DemoFrame>
         </div>
 
