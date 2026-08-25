@@ -61,6 +61,47 @@ waiting for an answer (`OAI-SearchBot`, `ChatGPT-User`, `Claude-User`, `Claude-S
 `PerplexityBot`, …) get what a search engine gets. A bot reads only its own block, which is why
 the wildcard `Content-Signal` is repeated in the second group.
 
+The split is not invented here: Cloudflare classifies bot behaviour as **Search**, **Agent** and
+**Training**, and those are the same three questions in the same order. What park.fan allows is
+Search and Agent; what it declines is Training.
+
+## Licensing: the same three answers, in two formats
+
+`Content-Signal` is read by crawlers that already parse robots.txt. RSL is read by the licensing
+tooling that grew up around AI training deals. Cloudflare's AI Crawl Control documentation
+points at both, so park.fan publishes both, from one module (`lib/agents/licensing.ts`) — a
+licence that contradicts itself in two places is worse than either half alone.
+
+```xml
+<rsl xmlns="https://rslstandard.org/rsl">
+  <content url="https://park.fan/">
+    <license>
+      <permits type="usage">search ai-input</permits>
+      <prohibits type="usage">ai-train</prohibits>
+      <payment type="attribution" />
+    </license>
+  </content>
+</rsl>
+```
+
+`payment type="attribution"` is RSL's way of saying the price is a credit: name park.fan and
+link the page the number came from. That is not a formality here — a wait time is only checkable
+if the reader can get back to where it was published.
+
+Three placement decisions:
+
+- **The preamble is Cloudflare's text, copied, not paraphrased.** The comment block above the
+  first `Content-Signal` is the Content Signals Policy as Cloudflare publishes it, down to the
+  sentence that makes a restriction an express reservation of rights under Article 4 of the EU
+  copyright directive. A reworded legal notice is a different legal notice.
+- **`License:` in robots.txt** (RSL §4.4), next to the sitemaps.
+- **`Link: …; rel="license"` on every page** (RSL §4.5), carried by the `Content-Language` rules
+  that already match every localized path — and on nothing else, because `/_next` assets and the
+  API are not what is being licensed. This is the one header here that is _not_ homepage-only:
+  the audience for a licence is precisely the crawler that did not read robots.txt. The homepage
+  value has to carry the catalog links **and** the licence in one string, because Next resolves a
+  repeated header key last-match-wins rather than appending, and the homepage rules come last.
+
 ## The back office is not part of the offer
 
 `/admin` is fenced off four times, on purpose, because each fence covers a different kind of
@@ -200,6 +241,16 @@ curl -s -X POST https://park.fan/api/mcp -H 'Content-Type: application/json' \
 curl -X POST https://isitagentready.com/api/scan \
   -H 'Content-Type: application/json' -d '{"url":"https://park.fan"}'
 ```
+
+One check passes without a line of code in this repository: **markdown negotiation**. park.fan
+answers `Accept: text/markdown` with markdown because Cloudflare converts the HTML at the edge —
+`pnpm check:agent-ready` reports it rather than asserting it, since it is false on localhost by
+design and a failure in production is a dashboard setting, not a commit.
+
+Two things Cloudflare offers that this repo deliberately does not implement: **Web Bot Auth**
+(a key directory for bots you operate — park.fan operates none) and **pay per crawl** (a
+dashboard feature and a business decision, not a route). Enforcement of the policy above lives
+in the same place: robots.txt states preferences, AI Crawl Control is what makes them stick.
 
 Two of its checks stay red on purpose. **DNS-AID** wants SVCB/HTTPS records under
 `_agents.park.fan`, which is a DNS change and not a change in this repo. **A2A** wants an agent

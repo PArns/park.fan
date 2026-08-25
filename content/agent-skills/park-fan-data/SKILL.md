@@ -31,16 +31,16 @@ open https://api.park.fan/api                        # the same, for people
 
 The endpoints that answer most questions:
 
-| Endpoint | Answers |
-| --- | --- |
-| `/v1/search?q=` | slugs and URLs for a park, ride or city by name |
-| `/v1/parks/{continent}/{country}/{city}/{park}` | the park with all its attractions and current waits |
-| `/v1/parks/…/{park}/wait-times` | just the queues |
-| `/v1/parks/…/{park}/best-days` | the crowd projection per day |
-| `/v1/parks/…/{park}/stats`, `/stats/hourly` | historical waits by month, weekday, hour |
-| `/v1/discovery/geo` | every continent, country, city and park, i.e. all the slugs |
-| `/v1/discovery/nearby?lat=&lng=` | parks around a point |
-| `/v1/health` | whether the above is up |
+| Endpoint                                        | Answers                                                     |
+| ----------------------------------------------- | ----------------------------------------------------------- |
+| `/v1/search?q=`                                 | slugs and URLs for a park, ride or city by name             |
+| `/v1/parks/{continent}/{country}/{city}/{park}` | the park with all its attractions and current waits         |
+| `/v1/parks/…/{park}/wait-times`                 | just the queues                                             |
+| `/v1/parks/…/{park}/best-days`                  | the crowd projection per day                                |
+| `/v1/parks/…/{park}/stats`, `/stats/hourly`     | historical waits by month, weekday, hour                    |
+| `/v1/discovery/geo`                             | every continent, country, city and park, i.e. all the slugs |
+| `/v1/discovery/nearby?lat=&lng=`                | parks around a point                                        |
+| `/v1/health`                                    | whether the above is up                                     |
 
 `https://park.fan/sitemap.xml` and `/sitemap-attractions.xml` list the pages; `/llms.txt` is the
 short version of this file for a model that arrived with nothing.
@@ -52,7 +52,8 @@ short version of this file for a model that arrived with nothing.
 - Cache what does not move: slugs, ride facts, opening hours. Re-fetch the queues.
 - Send a `User-Agent` that names your project and a way to reach you.
 - Attribute park.fan and link the page you took a number from. Numbers here are hours old by
-  lunchtime; a link is what lets a reader check.
+  lunchtime; a link is what lets a reader check. That credit is the licence's only price:
+  `https://park.fan/license.xml` (RSL 1.0) permits search and answering, prohibits training.
 
 ## What is not open
 

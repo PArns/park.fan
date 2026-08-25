@@ -2,6 +2,7 @@ import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 import withBundleAnalyzer from '@next/bundle-analyzer';
 import { HOMEPAGE_LINK_HEADER } from './lib/agents/api-catalog';
+import { LICENSE_LINK_HEADER } from './lib/agents/licensing';
 
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
@@ -535,7 +536,14 @@ const nextConfig: NextConfig = {
     const locales = ['de', 'fr', 'it', 'nl', 'es', 'en'];
     const localeHeaderRules = locales.map((locale) => ({
       source: `/${locale}/:path*`,
-      headers: [{ key: 'Content-Language', value: locale }],
+      headers: [
+        { key: 'Content-Language', value: locale },
+        // The licence, on the page it applies to (RSL 1.0 §4.5). robots.txt carries the same
+        // association, but the audience for a licence is precisely the crawler that did not
+        // read robots.txt — so it rides along on the rule that already matches every page,
+        // and on nothing else: /_next assets and the API are not what is being licensed.
+        { key: 'Link', value: LICENSE_LINK_HEADER },
+      ],
     }));
 
     return [
@@ -553,13 +561,18 @@ const nextConfig: NextConfig = {
       // These have to be two rules. `/:locale(en|de|…)` matches the locale root ONLY, while
       // the Content-Language rules above end in `:path*` and therefore match every page
       // under a locale — reusing that shape here is how this would silently go site-wide.
+      //
+      // The value carries the licence link as well: the locale rules above also match a locale
+      // root, Next resolves a repeated header key last-match-wins rather than appending, and
+      // these rules come later — so a homepage that set only the catalog links would be the one
+      // page on the site with no licence header.
       {
         source: '/',
-        headers: [{ key: 'Link', value: HOMEPAGE_LINK_HEADER }],
+        headers: [{ key: 'Link', value: `${HOMEPAGE_LINK_HEADER}, ${LICENSE_LINK_HEADER}` }],
       },
       {
         source: `/:locale(${locales.join('|')})`,
-        headers: [{ key: 'Link', value: HOMEPAGE_LINK_HEADER }],
+        headers: [{ key: 'Link', value: `${HOMEPAGE_LINK_HEADER}, ${LICENSE_LINK_HEADER}` }],
       },
       // The back office, on every surface that could index or summarize it. `/admin` carries
       // `robots: { index: false }` in its layout metadata already, but a meta tag has to be

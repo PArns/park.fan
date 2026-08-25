@@ -70,6 +70,20 @@ check(
 check('robots.txt names AI crawlers explicitly', /^User-agent: GPTBot$/m.test(robots.text));
 check('robots.txt disallows the back office', /^Disallow: \/admin$/m.test(robots.text));
 check('robots.txt points at the capability manifest', /^Agentmap: /m.test(robots.text));
+check('robots.txt points at the licence', /^License: .*license\.xml$/m.test(robots.text));
+check(
+  'robots.txt carries the Content Signals Policy preamble',
+  /ARTICLE 4 OF THE EUROPEAN/.test(robots.text)
+);
+
+// ── the licence ─────────────────────────────────────────────────────────────
+const license = await get('/license.xml');
+check('license.xml serves as RSL', license.status === 200 && license.type.includes('rsl+xml'));
+check(
+  'the licence says what the Content-Signal says',
+  /<permits type="usage">search ai-input<\/permits>/.test(license.text) &&
+    /<prohibits type="usage">ai-train<\/prohibits>/.test(license.text)
+);
 
 // ── the well-known documents ────────────────────────────────────────────────
 const catalog = await get('/.well-known/api-catalog');
@@ -116,6 +130,23 @@ const home = await get('/en');
 check('the homepage advertises the catalog', /rel="api-catalog"/.test(home.link));
 const ride = await get('/en/parks');
 check('a deeper page does not', !/api-catalog/.test(ride.link));
+// A licence is for the crawler that skipped robots.txt, so it rides on every page — including
+// the homepage, where a second rule sets the same header key and Next keeps only one value.
+check('every page carries the licence link', /rel="license"/.test(ride.link), ride.link);
+check('the homepage carries it too', /rel="license"/.test(home.link));
+
+// ── markdown negotiation (edge, not this app) ───────────────────────────────
+// Nothing in this repository renders markdown for a page: park.fan answers
+// `Accept: text/markdown` because Cloudflare converts the HTML on the way out. So this is
+// reported rather than asserted — it is false on localhost by design, and a failure of it in
+// production is a dashboard setting, not a commit.
+const markdown = await get('/en', { Accept: 'text/markdown' });
+console.log(
+  `${markdown.type.includes('markdown') ? '✅' : 'ℹ️ '} markdown negotiation — ${markdown.type}` +
+    (markdown.type.includes('markdown')
+      ? ''
+      : ' (added by Cloudflare in production, never locally)')
+);
 
 // ── the back office ─────────────────────────────────────────────────────────
 const admin = await get('/admin');

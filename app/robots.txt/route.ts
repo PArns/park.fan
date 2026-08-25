@@ -1,5 +1,11 @@
 import { SITE_URL } from '@/i18n/config';
 import { AI_CATALOG_PATH } from '@/lib/agents/catalog';
+import {
+  CONTENT_SIGNAL,
+  CONTENT_SIGNALS_PREAMBLE,
+  CONTENT_SIGNAL_TRAINING_ONLY,
+  ROBOTS_LICENSE_DIRECTIVE,
+} from '@/lib/agents/licensing';
 
 /**
  * robots.txt, written by hand rather than through `MetadataRoute.Robots`.
@@ -84,19 +90,18 @@ const CRAWLABLE_RULES = [
 export function GET(): Response {
   const body =
     [
-      block(['*'], [
-        // One line, read by any crawler that has no block of its own.
-        'Content-Signal: search=yes, ai-input=yes, ai-train=no',
-        ...CRAWLABLE_RULES,
-      ]),
-      block(ANSWER_CRAWLERS, [
-        'Content-Signal: search=yes, ai-input=yes, ai-train=no',
-        ...CRAWLABLE_RULES,
-      ]),
-      block(TRAINING_CRAWLERS, ['Content-Signal: ai-train=no', 'Disallow: /']),
+      // The policy the signals below belong to, ahead of the first directive that uses one.
+      CONTENT_SIGNALS_PREAMBLE,
+      // One line, read by any crawler that has no block of its own.
+      block(['*'], [CONTENT_SIGNAL, ...CRAWLABLE_RULES]),
+      block(ANSWER_CRAWLERS, [CONTENT_SIGNAL, ...CRAWLABLE_RULES]),
+      block(TRAINING_CRAWLERS, [CONTENT_SIGNAL_TRAINING_ONLY, 'Disallow: /']),
       [
         `Sitemap: ${SITE_URL}/sitemap.xml`,
         `Sitemap: ${SITE_URL}/sitemap-attractions.xml`,
+        // The same permissions as the Content-Signal above, in the form licensing tooling
+        // reads (RSL 1.0 §4.4).
+        ROBOTS_LICENSE_DIRECTIVE,
         // Where an agent finds what park.fan can do for it, rather than which pages exist
         // (ARD §6.1). The manifest lists the API catalog, the skills and the data endpoints.
         `Agentmap: ${SITE_URL}${AI_CATALOG_PATH}`,

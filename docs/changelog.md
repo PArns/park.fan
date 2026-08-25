@@ -21,11 +21,21 @@ eigenen App im Parkwlan, und sein Payload sieht aus wie ein Park, der nachts ges
 Ø 0 Minuten über eine leere Menge. Das Werkzeug meldet dafür `waitTimesAvailable: false` und
 einen Satz, keine Nullen; der Check hält das an genau diesem Park fest.
 
-`robots.txt` kommt jetzt aus einem Route-Handler, weil zwei der Zeilen in Nexts Generator nicht
-vorkommen: `Content-Signal: search=yes, ai-input=yes, ai-train=no` und `Agentmap`. Dieselbe
-Antwort steht noch einmal pro Crawler, weil ein Bot nur seinen eigenen Block liest – wer
+`robots.txt` kommt jetzt aus einem Route-Handler, weil drei der Zeilen in Nexts Generator nicht
+vorkommen: `Content-Signal: search=yes, ai-input=yes, ai-train=no`, `License` und `Agentmap`.
+Dieselbe Antwort steht noch einmal pro Crawler, weil ein Bot nur seinen eigenen Block liest – wer
 Trainingsmaterial sammelt, bekommt `Disallow: /`, wer eine Seite holt, weil gerade jemand
-wartet, bekommt was eine Suchmaschine bekommt.
+wartet, bekommt was eine Suchmaschine bekommt. Das ist genau Cloudflares eigene Einteilung in
+Search, Agent und Training.
+
+Dieselben drei Antworten stehen ein zweites Mal als Lizenz unter `/license.xml` (RSL 1.0), weil
+die Lizenzwerkzeuge kein robots.txt lesen: erlaubt sind Suche und Beantworten, Training nicht,
+und der Preis ist eine Quellenangabe. Der Kommentarblock über der ersten `Content-Signal`-Zeile
+ist Cloudflares Policy-Text wörtlich, samt des Satzes, der aus der Einschränkung einen
+ausdrücklichen Rechtevorbehalt nach Artikel 4 der EU-Urheberrechtsrichtlinie macht. Umformuliert
+wäre es ein anderer Rechtstext. Der `Link: …; rel="license"` hängt als einziger Header dieser
+Sammlung an jeder Seite statt nur an der Startseite, denn wer eine Lizenz braucht, ist gerade
+der Crawler, der die robots.txt übersprungen hat.
 
 Und `/admin` steht in keinem dieser Dokumente. Es ist jetzt vierfach abgezäunt: in robots.txt,
 über `X-Robots-Tag` am Response (die JSON-Routen unter `/api/admin` rendern kein Meta-Tag), über

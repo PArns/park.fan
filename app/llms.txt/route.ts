@@ -77,7 +77,11 @@ ${[
   line('API catalog', `${SITE_URL}${API_CATALOG_PATH}`, 'RFC 9727 linkset for the public API'),
   line('OpenAPI', 'https://api.park.fan/api-json', 'the description; the API needs no key'),
   line('API reference', 'https://api.park.fan/api', 'the same, for people'),
-  line('Capability manifest', `${SITE_URL}${AI_CATALOG_PATH}`, 'ARD: everything on this list, typed'),
+  line(
+    'Capability manifest',
+    `${SITE_URL}${AI_CATALOG_PATH}`,
+    'ARD: everything on this list, typed'
+  ),
   line('Sitemap', `${SITE_URL}/sitemap.xml`, 'pages; rides are in /sitemap-attractions.xml'),
 ].join('\n')}
 
@@ -105,7 +109,9 @@ ${AGENT_SKILLS.map((skill) => line(skill.name, `${SITE_URL}${skillArtifactPath(s
 - \`${SITE_URL}/api/*\` is this site's internal proxy, not a public interface. Use
   api.park.fan.
 - Training on these pages is declined (\`Content-Signal: ai-train=no\` in robots.txt). Reading a
-  page to answer a question is what the site is for (\`ai-input=yes\`).
+  page to answer a question is what the site is for (\`ai-input=yes\`). The same terms in
+  machine-readable form: \`${SITE_URL}/license.xml\` (RSL 1.0). The price is a credit — name
+  park.fan and link the page a number came from.
 
 ## Contact
 
