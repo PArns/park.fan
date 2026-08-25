@@ -192,21 +192,33 @@ export function AnatomyBestDaysDemo({ locale }: { locale: Locale }) {
   return <ParkBestDaysHeader parkName="Phantasialand" parkSlug="phantasialand" locale={locale} />;
 }
 
-/** 11 — one neighbour, as the nearby list renders it. */
+/**
+ * 11 — one neighbour, as the nearby list renders it.
+ *
+ * The row template belongs on the card's own wrapper: `ParkCard` is
+ * `row-span-3` + `grid-template-rows: subgrid`, so without three tracks to
+ * borrow it collapses against the panels' negative margins — the photo escapes
+ * the card and the name gets sliced in half. Same wrapper the ride card above
+ * uses, and the same one the blog spotlight cards use.
+ */
 export function AnatomyNearbyDemo() {
   return (
-    <ParkCard
-      name="Attractiepark Toverland"
-      slug="attractiepark-toverland"
-      city="Sevenum"
-      country="Netherlands"
-      href="/parks/europe/netherlands/sevenum/attractiepark-toverland"
-      status="OPERATING"
-      crowdLevel="low"
-      distance={91.2}
-      backgroundImage={getParkBackgroundImage('attractiepark-toverland')}
-      variant="compact"
-    />
+    <div className="grid [grid-template-rows:auto_2rem_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]">
+      <ParkCard
+        name="Attractiepark Toverland"
+        slug="attractiepark-toverland"
+        city="Sevenum"
+        country="Netherlands"
+        href="/parks/europe/netherlands/sevenum/attractiepark-toverland"
+        status="OPERATING"
+        crowdLevel="low"
+        // `formatDistance` takes METRES — 91.2 renders as "91 m", which is the
+        // trap this prop's name sets. The nearby list hands it metres too.
+        distance={91_200}
+        translateCountry
+        backgroundImage={getParkBackgroundImage('attractiepark-toverland')}
+      />
+    </div>
   );
 }
 

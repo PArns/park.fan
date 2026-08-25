@@ -570,15 +570,18 @@ feestdag op 4 juni stond op “laag”, de brugvrijdag op de 5e op “hoog”.
 
 Eén voorbehoud daarbij. We hebben precies één gemeten brugdag, en uitgerekend
 die viel mild uit. Op 15 mei 2026 trok er een onweersbui over, warmer dan twaalf
-graden werd het niet, en toch was het genoeg voor “hoog”. Het kanaal Epfan95
+graden werd het niet, en toch was het genoeg voor “hoog”. Het kanaal Parkfan95
 rijdt al jaren juist op die vrijdagen naar Rust en filmt het resultaat. Voor
 2026 luidt de titel “De leegste volle dag”, voor de jaren daarvoor
 “Bezoekersmassa's, hoge wachttijden en veel auto's”. Een brugdag met
 zonneschijn ziet er anders uit dan onze ene meetwaarde.
 
-https://www.youtube.com/watch?v=Js8j_qvKCoA
+https://www.youtube.com/watch?v=aRH5xvAKE_I
 
 [Dezelfde brugvrijdag een jaar eerder](https://www.youtube.com/watch?v=Js8j_qvKCoA)
+
+Allebei van de echte [Parkfan95](https://parkfan95.de), oftewel Silas. Hij heeft
+de naam, ik had toevallig eerder het domein gekocht.
 
 ### De maand
 
@@ -965,5 +968,5 @@ draait.
 - Het Ammolite met twee Michelinsterren sinds november 2014, Silver Lake City en de Riverside Western Lodge met 119 kamers: [Ammolite – The Lighthouse Restaurant (officieel)](https://www.europapark.de/de/uebernachten/gastronomie/ammolite-lighthouse-restaurant) · [Europa-Park Riverside Western Lodge (officieel)](https://www.europapark.de/de/uebernachten/riverside-western-lodge)
 - Route via de A5, parkeertarieven, Rulantica, de Michelinster voor Eatrenalin in 2026: [Route naar het Europa-Park (officieel)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park) · [Europa-Park Erlebnis-Resort (officieel)](https://www.europapark.de/de) · [Eatrenalin op en.wikipedia](https://en.wikipedia.org/wiki/Eatrenalin)
 - Samenstelling van het publiek naar herkomstland en het Zwitserse aandeel: [“50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort” (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300) · [“874'000 Schweizer Besucher stellen den grössten Anteil” (aboutTravel)](https://abouttravel.ch/reisebranche/874000-schweizer-besucher-stellen-den-groessten-anteil/)
-- Brugdag: crowd-niveaus en weer van de dagen rond Hemelvaart en Sacramentsdag 2026 uit onze eigen kalender (gemeten, niet voorspeld), plus de videoreeks [BRÜCKENTAG im EUROPA-PARK 2025 (Epfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [dezelfde reeks 2026 (Epfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
+- Brugdag: crowd-niveaus en weer van de dagen rond Hemelvaart en Sacramentsdag 2026 uit onze eigen kalender (gemeten, niet voorspeld), plus de videoreeks [BRÜCKENTAG im EUROPA-PARK 2025 (Parkfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [dezelfde reeks 2026 (Parkfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
 - Wachttijd-, rope-drop- en druktedata: eigen wachttijdhistorie over een rollend jaar, uurprofiel over een rollend jaar, druktevoorspelling over 90 dagen, [Europa-Park op park.fan](ref:europa-park)

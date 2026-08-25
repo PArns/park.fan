@@ -576,14 +576,17 @@ stand auf „niedrig“, der Brückenfreitag am 5. auf „hoch“.
 Eine Einschränkung dazu. Wir haben genau einen gemessenen Brückentag, und
 ausgerechnet der war ein milder. Am 15. Mai 2026 zog ein Gewitter durch, wärmer
 als zwölf Grad wurde es nicht, und trotzdem reichte es für „hoch“. Der Kanal
-Epfan95 fährt seit Jahren an genau diesen Freitagen hin und filmt das Ergebnis.
+Parkfan95 fährt seit Jahren an genau diesen Freitagen hin und filmt das Ergebnis.
 Für 2026 lautet der Titel „Der leerste volle Tag“, für die Jahre davor
 „Besuchermassen, hohe Wartezeiten und viele Autos“. Ein Brückentag bei
 Sonnenschein sieht anders aus als unser einer Messwert.
 
-https://www.youtube.com/watch?v=Js8j_qvKCoA
+https://www.youtube.com/watch?v=aRH5xvAKE_I
 
 [Derselbe Brückenfreitag ein Jahr früher](https://www.youtube.com/watch?v=Js8j_qvKCoA)
+
+Beides vom echten [Parkfan95](https://parkfan95.de), also von Silas. Er hat den
+Namen, ich hatte nur zufällig vorher die Domain gekauft.
 
 ### Der Monat
 
@@ -972,5 +975,5 @@ dreht.
 - Ammolite mit zwei Michelin-Sternen seit November 2014, Silver Lake City und die Riverside Western Lodge mit 119 Zimmern: [Ammolite – The Lighthouse Restaurant (offiziell)](https://www.europapark.de/de/uebernachten/gastronomie/ammolite-lighthouse-restaurant) · [Europa-Park Riverside Western Lodge (offiziell)](https://www.europapark.de/de/uebernachten/riverside-western-lodge)
 - Anreise über die A5, Parkgebühren, Rulantica, Eatrenalin mit Michelin-Stern 2026: [Anreise zum Europa-Park (offiziell)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park) · [Europa-Park Erlebnis-Resort (offiziell)](https://www.europapark.de/de) · [Eatrenalin auf en.wikipedia](https://en.wikipedia.org/wiki/Eatrenalin)
 - Gästestruktur nach Herkunftsland und der Schweizer Anteil: [„50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort“ (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300) · [„874'000 Schweizer Besucher stellen den grössten Anteil“ (aboutTravel)](https://abouttravel.ch/reisebranche/874000-schweizer-besucher-stellen-den-groessten-anteil/)
-- Brückentag: Crowd-Level und Wetter der Tage um Christi Himmelfahrt und Fronleichnam 2026 aus unserem eigenen Kalender (gemessen, nicht prognostiziert), dazu die Videoreihe [BRÜCKENTAG im EUROPA-PARK 2025 (Epfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [dieselbe Reihe 2026 (Epfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
+- Brückentag: Crowd-Level und Wetter der Tage um Christi Himmelfahrt und Fronleichnam 2026 aus unserem eigenen Kalender (gemessen, nicht prognostiziert), dazu die Videoreihe [BRÜCKENTAG im EUROPA-PARK 2025 (Parkfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [dieselbe Reihe 2026 (Parkfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
 - Wartezeit-, Rope-Drop- und Crowd-Daten: eigene Wartezeit-Historie über ein rollendes Jahr, Stundenprofil über ein rollendes Jahr, Crowd-Prognose über 90 Tage, [Europa-Park auf park.fan](ref:europa-park)
