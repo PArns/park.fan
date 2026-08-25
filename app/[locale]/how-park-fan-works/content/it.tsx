@@ -585,10 +585,13 @@ export function ContentIT() {
           <CalendarDaysDemo />
         </DemoFrame>
 
-        {/* Two columns rather than one narrow one: the calendar above runs the
-            full width, and three paragraphs stacked at the body measure under it
-            left the right half of the band empty. */}
-        <div className="grid gap-x-10 gap-y-4 pt-2 lg:grid-cols-2 lg:items-start">
+        {/* One column at the body measure, like every other chapter on this page.
+            As two prose columns this band put a third text edge under the paragraph
+            above it: 768 px of copy, then a 604 px column ending 164 px short of
+            it, then a second column starting where that paragraph still had words.
+            The empty right half is the page's normal rhythm — a full-width figure
+            over a body-measure column. */}
+        <div className="max-w-3xl space-y-4 pt-2">
           <P>
             I calendari delle vacanze vengono da due fonti pubbliche e coprono quattro anni
             ciascuno. Spesso contano più quelli dei vicini che i propri. Un esempio di oggi: per il
@@ -598,20 +601,17 @@ export function ContentIT() {
             conoscono. Le regioni entro circa 200 chilometri contano quindi anche loro e ricevono a
             calendario un contrassegno proprio.
           </P>
-          <div className="space-y-4">
-            <PG>
-              Il colore di un giorno è una previsione, non una misura. Viene da un modello
-              riaddestrato ogni notte con i tempi di attesa del giorno prima, e che poi si può
-              verificare contro la realtà.
-            </PG>
-            <P>
-              Fin dove arrivi il calendario dipende dal parco. Un parco aperto tutto l’anno riceve
-              una previsione fino a dodici mesi prima. In un parco stagionale si ferma dove finisce
-              la stagione pubblicata: per un martedì di marzo in cui il Phantasialand è
-              dimostrabilmente chiuso, un colore di affollamento non sarebbe una previsione ma
-              un’affermazione.
-            </P>
-          </div>
+          <PG>
+            Il colore di un giorno è una previsione, non una misura. Viene da un modello
+            riaddestrato ogni notte con i tempi di attesa del giorno prima, e che poi si può
+            verificare contro la realtà.
+          </PG>
+          <P>
+            Fin dove arrivi il calendario dipende dal parco. Un parco aperto tutto l’anno riceve una
+            previsione fino a dodici mesi prima. In un parco stagionale si ferma dove finisce la
+            stagione pubblicata: per un martedì di marzo in cui il Phantasialand è dimostrabilmente
+            chiuso, un colore di affollamento non sarebbe una previsione ma un’affermazione.
+          </P>
         </div>
 
         <div className="flex flex-wrap gap-3 pt-1">

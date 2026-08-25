@@ -593,10 +593,13 @@ export function ContentFR() {
           <CalendarDaysDemo />
         </DemoFrame>
 
-        {/* Two columns rather than one narrow one: the calendar above runs the
-            full width, and three paragraphs stacked at the body measure under it
-            left the right half of the band empty. */}
-        <div className="grid gap-x-10 gap-y-4 pt-2 lg:grid-cols-2 lg:items-start">
+        {/* One column at the body measure, like every other chapter on this page.
+            As two prose columns this band put a third text edge under the paragraph
+            above it: 768 px of copy, then a 604 px column ending 164 px short of
+            it, then a second column starting where that paragraph still had words.
+            The empty right half is the page's normal rhythm — a full-width figure
+            over a body-measure column. */}
+        <div className="max-w-3xl space-y-4 pt-2">
           <P>
             Les calendriers de vacances viennent de deux sources publiques et couvrent quatre ans
             chacun. Celles des voisins comptent souvent plus que les siennes. Un exemple
@@ -606,19 +609,17 @@ export function ContentFR() {
             la journée n’en connaissent pas. Les régions situées dans un rayon d’environ 200
             kilomètres comptent donc aussi et reçoivent leur propre marque dans le calendrier.
           </P>
-          <div className="space-y-4">
-            <PG>
-              La couleur d’un jour est une prévision, pas une mesure. Elle vient d’un modèle
-              réentraîné chaque nuit avec les temps d’attente de la veille, et que l’on peut ensuite
-              confronter à la réalité.
-            </PG>
-            <P>
-              Jusqu’où va le calendrier dépend du parc. Un parc ouvert toute l’année reçoit une
-              prévision jusqu’à douze mois à l’avance. Pour un parc saisonnier, elle s’arrête là où
-              finit la saison publiée : pour un mardi de mars où Phantasialand est démontrablement
-              fermé, une couleur d’affluence ne serait pas une prévision mais une affirmation.
-            </P>
-          </div>
+          <PG>
+            La couleur d’un jour est une prévision, pas une mesure. Elle vient d’un modèle
+            réentraîné chaque nuit avec les temps d’attente de la veille, et que l’on peut ensuite
+            confronter à la réalité.
+          </PG>
+          <P>
+            Jusqu’où va le calendrier dépend du parc. Un parc ouvert toute l’année reçoit une
+            prévision jusqu’à douze mois à l’avance. Pour un parc saisonnier, elle s’arrête là où
+            finit la saison publiée : pour un mardi de mars où Phantasialand est démontrablement
+            fermé, une couleur d’affluence ne serait pas une prévision mais une affirmation.
+          </P>
         </div>
 
         <div className="flex flex-wrap gap-3 pt-1">

@@ -586,10 +586,13 @@ export function ContentES() {
           <CalendarDaysDemo />
         </DemoFrame>
 
-        {/* Two columns rather than one narrow one: the calendar above runs the
-            full width, and three paragraphs stacked at the body measure under it
-            left the right half of the band empty. */}
-        <div className="grid gap-x-10 gap-y-4 pt-2 lg:grid-cols-2 lg:items-start">
+        {/* One column at the body measure, like every other chapter on this page.
+            As two prose columns this band put a third text edge under the paragraph
+            above it: 768 px of copy, then a 604 px column ending 164 px short of
+            it, then a second column starting where that paragraph still had words.
+            The empty right half is the page's normal rhythm — a full-width figure
+            over a body-measure column. */}
+        <div className="max-w-3xl space-y-4 pt-2">
           <P>
             Los calendarios de vacaciones vienen de dos fuentes públicas y cubren cuatro años cada
             uno. A menudo importan más las del vecino que las propias. Un ejemplo de hoy: para
@@ -599,20 +602,18 @@ export function ContentES() {
             de fronteras. Por eso también cuentan las regiones en un radio de unos 200 kilómetros, y
             reciben su propia marca en el calendario.
           </P>
-          <div className="space-y-4">
-            <PG>
-              El color de un día es una previsión, no una medición. Sale de un modelo que se
-              reentrena cada noche con los tiempos de espera del día anterior y que después se puede
-              contrastar con la realidad.
-            </PG>
-            <P>
-              Hasta dónde llega el calendario depende del parque. Un parque que abre todo el año
-              recibe previsión hasta doce meses antes. En un parque de temporada se detiene donde
-              acaba la temporada publicada: para un martes de marzo en el que Phantasialand está
-              demostrablemente cerrado, un color de afluencia no sería una predicción sino una
-              afirmación.
-            </P>
-          </div>
+          <PG>
+            El color de un día es una previsión, no una medición. Sale de un modelo que se reentrena
+            cada noche con los tiempos de espera del día anterior y que después se puede contrastar
+            con la realidad.
+          </PG>
+          <P>
+            Hasta dónde llega el calendario depende del parque. Un parque que abre todo el año
+            recibe previsión hasta doce meses antes. En un parque de temporada se detiene donde
+            acaba la temporada publicada: para un martes de marzo en el que Phantasialand está
+            demostrablemente cerrado, un color de afluencia no sería una predicción sino una
+            afirmación.
+          </P>
         </div>
 
         <div className="flex flex-wrap gap-3 pt-1">

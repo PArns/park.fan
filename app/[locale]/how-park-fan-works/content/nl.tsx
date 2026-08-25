@@ -584,10 +584,13 @@ export function ContentNL() {
           <CalendarDaysDemo />
         </DemoFrame>
 
-        {/* Two columns rather than one narrow one: the calendar above runs the
-            full width, and three paragraphs stacked at the body measure under it
-            left the right half of the band empty. */}
-        <div className="grid gap-x-10 gap-y-4 pt-2 lg:grid-cols-2 lg:items-start">
+        {/* One column at the body measure, like every other chapter on this page.
+            As two prose columns this band put a third text edge under the paragraph
+            above it: 768 px of copy, then a 604 px column ending 164 px short of
+            it, then a second column starting where that paragraph still had words.
+            The empty right half is the page's normal rhythm — a full-width figure
+            over a body-measure column. */}
+        <div className="max-w-3xl space-y-4 pt-2">
           <P>
             De vakantiekalenders komen uit twee openbare bronnen en dekken elk vier jaar.
             Belangrijker dan de eigen vakanties zijn vaak die van de buren. Een voorbeeld van
@@ -596,19 +599,17 @@ export function ContentNL() {
             90 kilometer van de grens, en daggasten kennen er geen. Regio’s binnen ongeveer 200
             kilometer tellen daarom mee en krijgen in de kalender een eigen markering.
           </P>
-          <div className="space-y-4">
-            <PG>
-              De kleur van een dag is een voorspelling, geen meting. Ze komt uit een model dat elke
-              nacht opnieuw wordt getraind met de wachttijden van de vorige dag en zich achteraf aan
-              de werkelijkheid laat narekenen.
-            </PG>
-            <P>
-              Hoe ver de kalender reikt, hangt van het park af. Een park dat het hele jaar open is,
-              krijgt tot twaalf maanden vooruit een voorspelling. Bij een seizoenspark houdt ze op
-              waar het gepubliceerde seizoen eindigt: voor een dinsdag in maart waarop Phantasialand
-              aantoonbaar gesloten is, is een druktekleur geen voorspelling maar een bewering.
-            </P>
-          </div>
+          <PG>
+            De kleur van een dag is een voorspelling, geen meting. Ze komt uit een model dat elke
+            nacht opnieuw wordt getraind met de wachttijden van de vorige dag en zich achteraf aan
+            de werkelijkheid laat narekenen.
+          </PG>
+          <P>
+            Hoe ver de kalender reikt, hangt van het park af. Een park dat het hele jaar open is,
+            krijgt tot twaalf maanden vooruit een voorspelling. Bij een seizoenspark houdt ze op
+            waar het gepubliceerde seizoen eindigt: voor een dinsdag in maart waarop Phantasialand
+            aantoonbaar gesloten is, is een druktekleur geen voorspelling maar een bewering.
+          </P>
         </div>
 
         <div className="flex flex-wrap gap-3 pt-1">

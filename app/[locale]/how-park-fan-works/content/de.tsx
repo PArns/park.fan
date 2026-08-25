@@ -588,10 +588,13 @@ export function ContentDE() {
           <CalendarDaysDemo />
         </DemoFrame>
 
-        {/* Two columns rather than one narrow one: the calendar above runs the
-            full width, and three paragraphs stacked at the body measure under it
-            left the right half of the band empty. */}
-        <div className="grid gap-x-10 gap-y-4 pt-2 lg:grid-cols-2 lg:items-start">
+        {/* One column at the body measure, like every other chapter on this page.
+            As two prose columns this band put a third text edge under the paragraph
+            above it: 768 px of copy, then a 604 px column ending 164 px short of
+            it, then a second column starting where that paragraph still had words.
+            The empty right half is the page's normal rhythm — a full-width figure
+            over a body-measure column. */}
+        <div className="max-w-3xl space-y-4 pt-2">
           <P>
             Die Ferienkalender kommen aus zwei öffentlichen Quellen und decken jeweils vier Jahre
             ab. Wichtiger als die eigenen sind oft die der Nachbarn. Ein Beispiel von heute: Für
@@ -601,20 +604,18 @@ export function ContentDE() {
             Umkreis von rund 200 Kilometern zählen deshalb mit und bekommen im Kalender eine eigene
             Markierung.
           </P>
-          <div className="space-y-4">
-            <PG>
-              Die Farbe eines Tages ist eine Prognose, keine Messung. Sie stammt aus einem Modell,
-              das jede Nacht mit den Wartezeiten des Vortags neu trainiert wird und sich hinterher
-              an der Realität nachmessen lässt.
-            </PG>
-            <P>
-              Wie weit der Kalender reicht, hängt am Park. Ein Park, der das ganze Jahr öffnet,
-              bekommt bis zu zwölf Monate im Voraus eine Prognose. Bei einem Saisonpark hört sie da
-              auf, wo die veröffentlichte Saison endet: Für einen Dienstag im März, an dem
-              Phantasialand nachweislich geschlossen hat, ist eine Auslastungsfarbe keine
-              Vorhersage, sondern eine Behauptung.
-            </P>
-          </div>
+          <PG>
+            Die Farbe eines Tages ist eine Prognose, keine Messung. Sie stammt aus einem Modell, das
+            jede Nacht mit den Wartezeiten des Vortags neu trainiert wird und sich hinterher an der
+            Realität nachmessen lässt.
+          </PG>
+          <P>
+            Wie weit der Kalender reicht, hängt am Park. Ein Park, der das ganze Jahr öffnet,
+            bekommt bis zu zwölf Monate im Voraus eine Prognose. Bei einem Saisonpark hört sie da
+            auf, wo die veröffentlichte Saison endet: Für einen Dienstag im März, an dem
+            Phantasialand nachweislich geschlossen hat, ist eine Auslastungsfarbe keine Vorhersage,
+            sondern eine Behauptung.
+          </P>
         </div>
 
         <div className="flex flex-wrap gap-3 pt-1">
