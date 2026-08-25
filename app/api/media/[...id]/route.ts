@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { MEDIA_REVISION, getMediaImage, getRideImages } from '@/lib/media';
 import { serializeMediaImage } from '@/lib/media/api';
+import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
 
 /**
  * One image by its database id, with everything a client needs to render and
@@ -33,7 +34,7 @@ export async function GET(request: NextRequest, context: { params: Promise<{ id:
     return NextResponse.json(
       { error: `No image with id "${id}"` },
       // Not cached: an id that is missing today may exist after the next deploy.
-      { status: 404, headers: { 'Cache-Control': 'public, s-maxage=60' } }
+      { status: 404, headers: cdnCacheHeaders('public, s-maxage=60') }
     );
   }
 
@@ -44,7 +45,7 @@ export async function GET(request: NextRequest, context: { params: Promise<{ id:
   if (request.headers.get('if-none-match') === etag) {
     return new NextResponse(null, {
       status: 304,
-      headers: { ETag: etag, 'Cache-Control': CACHE_CONTROL },
+      headers: { ETag: etag, ...cdnCacheHeaders(CACHE_CONTROL) },
     });
   }
 
@@ -59,6 +60,6 @@ export async function GET(request: NextRequest, context: { params: Promise<{ id:
         .filter((other) => other.id !== image.id)
         .map((other) => other.id),
     },
-    { headers: { ETag: etag, 'Cache-Control': CACHE_CONTROL } }
+    { headers: { ETag: etag, ...cdnCacheHeaders(CACHE_CONTROL) } }
   );
 }

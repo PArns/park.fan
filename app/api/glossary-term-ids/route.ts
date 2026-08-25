@@ -1,4 +1,5 @@
 import { getGlossaryTerms } from '@/lib/glossary/translations';
+import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
 
 /**
  * The canonical list of glossary term ids.
@@ -35,9 +36,7 @@ export async function GET() {
   return Response.json(
     { count: ids.length, ids },
     {
-      headers: {
-        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
-      },
+      headers: cdnCacheHeaders('public, s-maxage=3600, stale-while-revalidate=86400'),
     }
   );
 }

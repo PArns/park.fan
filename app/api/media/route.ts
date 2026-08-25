@@ -10,6 +10,7 @@ import {
 } from '@/lib/media';
 import { serializeMediaImage, type MediaApiImage } from '@/lib/media/api';
 import type { MediaLicense, MediaRole } from '@/lib/media/types';
+import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
 
 /**
  * Public read API for the media database — the catalog the native app syncs.
@@ -115,12 +116,12 @@ export async function GET(request: NextRequest) {
   if (request.headers.get('if-none-match') === etag) {
     return new NextResponse(null, {
       status: 304,
-      headers: { ETag: etag, 'Cache-Control': CACHE_CONTROL },
+      headers: { ETag: etag, ...cdnCacheHeaders(CACHE_CONTROL) },
     });
   }
 
   return NextResponse.json(body, {
-    headers: { ETag: etag, 'Cache-Control': CACHE_CONTROL },
+    headers: { ETag: etag, ...cdnCacheHeaders(CACHE_CONTROL) },
   });
 }
 

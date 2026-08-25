@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import type { WeatherHourlyPoint, WeatherHourlyToday } from '@/lib/api/types';
+import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
 
 /**
  * Today's hour-by-hour forecast for a park location, proxied from Open-Meteo.
@@ -104,9 +105,7 @@ export async function GET(request: NextRequest) {
     const body: WeatherHourlyToday = { timezone: data.timezone, points };
 
     return NextResponse.json(body, {
-      headers: {
-        'Cache-Control': 'public, s-maxage=900, stale-while-revalidate=900',
-      },
+      headers: cdnCacheHeaders('public, s-maxage=900, stale-while-revalidate=900'),
     });
   } catch (error) {
     console.error('[Weather Hourly API] Error:', error);

@@ -36,6 +36,7 @@ import {
   FlagAU,
   FlagBR,
 } from '@/components/common/icons/flags'; // Added generic icon import if needed, but imported specifically here
+import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
 
 // OG Image dimensions
 const WIDTH = 1200;
@@ -775,16 +776,15 @@ export async function GET(
         {
           width: WIDTH,
           height: HEIGHT,
-          headers: {
-            // 30 days. The card carries no live data any more (no status, wait time,
-            // crowd level or sparkline), so there is nothing left to go stale — and at
-            // ~9.2k distinct OG URLs hit roughly once a day each, the previous 5-minute
-            // window expired long before a URL was requested again, giving a ~0% hit
-            // rate and one full Satori render (plus a background-image fetch) per
-            // request. A 30-day window turns ~9.5k renders/day into ~300.
-            'Cache-Control':
-              'public, max-age=2592000, s-maxage=2592000, stale-while-revalidate=86400',
-          },
+          // 30 days. The card carries no live data any more (no status, wait time,
+          // crowd level or sparkline), so there is nothing left to go stale — and at
+          // ~9.2k distinct OG URLs hit roughly once a day each, the previous 5-minute
+          // window expired long before a URL was requested again, giving a ~0% hit
+          // rate and one full Satori render (plus a background-image fetch) per
+          // request. A 30-day window turns ~9.5k renders/day into ~300.
+          headers: cdnCacheHeaders(
+            'public, max-age=2592000, s-maxage=2592000, stale-while-revalidate=86400'
+          ),
         }
       )
     );
