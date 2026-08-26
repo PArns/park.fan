@@ -715,6 +715,7 @@
       "viewAll": "Alle Beiträge lesen"
     },
     "title": "Attraktionen",
+    "sectionNavLabel": "Abschnitte dieser Seite",
     "waitTime": "Wartezeit",
     "status": {
       "operating": "In Betrieb",

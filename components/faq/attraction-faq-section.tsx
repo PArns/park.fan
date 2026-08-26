@@ -32,8 +32,15 @@ export async function AttractionFAQSection({ attraction, park }: AttractionFAQSe
   if (faqs.length === 0) return null;
 
   return (
-    /* One chapter like the others; frosted because it sits on the hero photo. */
-    <PageSection icon={HelpCircle} title={t('title', { attraction: attractionName })} frosted>
+    /* One chapter like the others; frosted because it sits on the hero photo. The id is what
+       the chapter row at the top of the page jumps to, and it brings the repo's sticky-header
+       scroll offset with it (see PageSection). */
+    <PageSection
+      icon={HelpCircle}
+      title={t('title', { attraction: attractionName })}
+      frosted
+      id="faq"
+    >
       <div className="space-y-3">
         {faqs.map((faq, index) => {
           const Icon = ICON_MAP[faq.iconName];
