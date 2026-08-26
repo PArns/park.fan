@@ -25,18 +25,26 @@ export const entryTileChip =
 
 /**
  * Icon chip + label, with the optional count inside the label rather than on a line of its own:
- * it is the only figure a tile can show without a query, and a second row would reserve height
- * on every tile for the two that have one.
+ * it is the only figure that belongs on the same line as the name.
+ *
+ * `hint` is the second line — what is actually behind the tile ("24 offen · Ø 33 min") rather
+ * than another label. Its box is reserved at two lines and clamped to two, on EVERY tile that
+ * passes one, because the text moves on the live poll: unclamped, an eight-word hint in French
+ * is a third line, and `auto-rows-fr` then makes every tile in the row taller at once.
  */
 export function EntryTileBody({
   icon: Icon,
   label,
   count,
+  hint,
   chipClassName,
 }: {
   icon: LucideIcon;
   label: string;
   count?: number;
+  /** Second line: what lies behind this tile right now. Pass `null` to keep the reserved box
+   *  empty — a row where some tiles have a hint and others have nothing is a ragged row. */
+  hint?: React.ReactNode;
   /** Extra chip classes — the park tabs light theirs up on `data-[state=active]`. */
   chipClassName?: string;
 }) {
@@ -55,6 +63,14 @@ export function EntryTileBody({
           <span className="text-muted-foreground ml-1 font-normal tabular-nums">{count}</span>
         )}
       </span>
+      {hint !== undefined && (
+        <span
+          data-tile-stagger
+          className="text-muted-foreground line-clamp-2 min-h-[2.25rem] text-xs leading-snug"
+        >
+          {hint}
+        </span>
+      )}
     </>
   );
 }
