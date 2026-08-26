@@ -629,10 +629,18 @@ export function ParkTodayPanel({
                     if (!show) {
                       return (
                         <li key={i} className="text-muted-foreground text-sm">
-                          {/* Before the clock lands every row is a dash: the rows are already
-                              the right height, and "nothing more today" is a claim that needs
-                              to know the time. */}
-                          {browserNow && i === 0 ? tCommon('noShowtimesToday') : '—'}
+                          {browserNow && i === 0 ? (
+                            tCommon('noShowtimesToday')
+                          ) : (
+                            /* The row is RESERVED, not drawn: it holds its height so the panel
+                               does not shrink as the day's showtimes pass, but a column of em
+                               dashes trailing the last real show is noise, not information.
+                               Before the clock lands every row takes this branch — "nothing more
+                               today" is a claim that needs to know the time. */
+                            <span className="invisible" aria-hidden="true">
+                              &mdash;
+                            </span>
+                          )}
                         </li>
                       );
                     }
