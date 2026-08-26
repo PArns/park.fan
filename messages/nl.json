@@ -715,6 +715,7 @@
       "viewAll": "Alle artikelen lezen"
     },
     "title": "Attracties",
+    "sectionNavLabel": "Onderdelen op deze pagina",
     "waitTime": "Wachttijd",
     "status": {
       "operating": "In Bedrijf",

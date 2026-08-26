@@ -715,6 +715,7 @@
       "viewAll": "Lire tous les articles"
     },
     "title": "Attractions",
+    "sectionNavLabel": "Sections de cette page",
     "waitTime": "Attente",
     "status": {
       "operating": "Ouvert",

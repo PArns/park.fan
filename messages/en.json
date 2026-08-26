@@ -715,6 +715,7 @@
       "viewAll": "Read all posts"
     },
     "title": "Attractions",
+    "sectionNavLabel": "Sections on this page",
     "waitTime": "Wait Time",
     "status": {
       "operating": "Operating",
