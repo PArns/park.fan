@@ -62,7 +62,11 @@ function Tile({
         // opacity over the park photo and was the least readable of the six, which is the exact
         // opposite of what selecting it should do. These two carry the tint AND the base's
         // opacity, so the active tile is the most solid one in the row.
-        'data-[state=active]:border-primary',
+        // Three signals, because one was not enough over an arbitrary photo: a primary border, a
+        // ring that thickens it without moving the box (a 2px border would shift the label by a
+        // pixel on select), and the tint below. The chip fills as well, in EntryTileBody.
+        'data-[state=active]:border-primary data-[state=active]:ring-primary/60',
+        'data-[state=active]:ring-2 data-[state=active]:ring-inset',
         'data-[state=active]:bg-[color-mix(in_oklch,var(--primary)_12%,var(--background))]/92',
         'dark:data-[state=active]:bg-[oklch(0.19_0.055_241_/_0.92)]'
       )}
@@ -194,14 +198,20 @@ export function ParkTabsList({
     // NOT `weatherDescription`: that field is the provider's own English string, and it shipped
     // as "22 °C · Overcast" on a German page. `getWeatherConfig` maps the WMO code to the key
     // the weather card already translates.
-    const { label } = getWeatherConfig(
+    const { icon, label } = getWeatherConfig(
       nowcast?.currentWeatherCode ?? w.now?.weatherCode ?? w.current.weatherCode,
       nowcast?.isDay ?? w.now?.isDay ?? true
     );
     const summary = `${Math.round(temp)} °C · ${tWeather(label)}`;
     // An official warning outranks the conditions on a tile this small: it is the reason to open
     // the weather chapter at all.
-    return (w.warnings?.length ?? 0) > 0 ? `${summary} · ${t('severeWeatherWarning')}` : summary;
+    return {
+      // The tile's icon is the CONDITIONS, not a generic weather glyph: a hard-wired CloudSun sat
+      // above "Klarer Himmel" at 24 °C. Same config that supplies the label, so icon and text
+      // cannot contradict each other.
+      icon,
+      text: (w.warnings?.length ?? 0) > 0 ? `${summary} · ${t('severeWeatherWarning')}` : summary,
+    };
   }, [park.weather, nowcast, tWeather, t]);
 
   const nextShowtime = useMemo(() => {
@@ -267,6 +277,18 @@ export function ParkTabsList({
         label={t('calendar')}
         hint={quietDayHint ?? t('tileCalendar')}
       />
+      {/* Weather sits third, not last. The order is how often a visitor needs the answer, not
+          how the tabs happened to be declared: what is open, when to come, what it will be like —
+          then the ways around the park. Radix takes the arrow-key order from the DOM, so moving
+          the tile moves the keyboard order with it. */}
+      {weatherAvailable && (
+        <Tile
+          value="weather"
+          icon={weatherHint?.icon ?? CloudSun}
+          label={t('weatherLabel')}
+          hint={weatherHint?.text ?? null}
+        />
+      )}
       <Tile value="map" icon={Map} label={t('map')} hint={t('tileMap', { lands })} />
       {showsAvailable && (
         <Tile
@@ -295,9 +317,6 @@ export function ParkTabsList({
             total: park.restaurants?.length || 0,
           })}
         />
-      )}
-      {weatherAvailable && (
-        <Tile value="weather" icon={CloudSun} label={t('weatherLabel')} hint={weatherHint} />
       )}
     </TabsList>
   );

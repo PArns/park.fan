@@ -358,13 +358,20 @@ export const TabsWithHash = memo(function TabsWithHash({
           value="calendar"
           className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
         >
-          <ChapterHeading icon={CalendarDays} title={t('calendar')} frosted />
           {/* Best travel time OPENS the calendar chapter: it is the answer ("go on these days"),
               the grid below it the evidence. It used to sit between the header and the tabs, a
               ~500px block about a future visit wedged in front of the way to everything else. It
               is NOT gated on `deferredTab` — it renders server-side from the best-days seed, and
-              deferring it would drop that out of the first HTML. */}
-          {bestDaysSlot && <div className="mb-8">{bestDaysSlot}</div>}
+              deferring it would drop that out of the first HTML.
+
+              It brings its OWN chapter header, so this tab renders no <ChapterHeading> of its
+              own when it is present: the two stacked read as the section having been opened
+              twice. Without a best-days slot the tab falls back to the normal heading. */}
+          {bestDaysSlot ? (
+            <div className="mb-8">{bestDaysSlot}</div>
+          ) : (
+            <ChapterHeading icon={CalendarDays} title={t('calendar')} frosted />
+          )}
           {deferredTab === 'calendar' ? (
             <ParkCalendarGrid
               park={park}
