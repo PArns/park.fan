@@ -55,6 +55,9 @@ interface TabsWithHashProps {
   parkSlug: string;
   landNames: string[];
   attractionsByLand: Record<string, ParkAttraction[]>;
+  /** <ParkBestDaysSection>, rendered by the page and handed down as a slot — it is a Server
+   *  Component and this tree is a client one. It opens the calendar chapter. */
+  bestDaysSlot?: React.ReactNode;
 }
 
 // Memoized: `LiveParkData` re-renders on every 5-min poll's `isFetching` flip, but all props
@@ -74,6 +77,7 @@ export const TabsWithHash = memo(function TabsWithHash({
   parkSlug,
   landNames,
   attractionsByLand,
+  bestDaysSlot,
 }: TabsWithHashProps) {
   const t = useTranslations('parks');
 
@@ -127,6 +131,10 @@ export const TabsWithHash = memo(function TabsWithHash({
         <Tabs value={defaultValue}>
           <ParkTabsList
             park={park}
+            continent={continent}
+            country={country}
+            city={city}
+            parkSlug={parkSlug}
             showsAvailable={showsAvailable}
             restaurantsAvailable={restaurantsAvailable}
             weatherAvailable={weatherAvailable}
@@ -154,6 +162,10 @@ export const TabsWithHash = memo(function TabsWithHash({
       <Tabs value={activeTab} onValueChange={handleTabChange}>
         <ParkTabsList
           park={park}
+          continent={continent}
+          country={country}
+          city={city}
+          parkSlug={parkSlug}
           showsAvailable={showsAvailable}
           restaurantsAvailable={restaurantsAvailable}
           weatherAvailable={weatherAvailable}
@@ -347,6 +359,12 @@ export const TabsWithHash = memo(function TabsWithHash({
           className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
         >
           <ChapterHeading icon={CalendarDays} title={t('calendar')} frosted />
+          {/* Best travel time OPENS the calendar chapter: it is the answer ("go on these days"),
+              the grid below it the evidence. It used to sit between the header and the tabs, a
+              ~500px block about a future visit wedged in front of the way to everything else. It
+              is NOT gated on `deferredTab` — it renders server-side from the best-days seed, and
+              deferring it would drop that out of the first HTML. */}
+          {bestDaysSlot && <div className="mb-8">{bestDaysSlot}</div>}
           {deferredTab === 'calendar' ? (
             <ParkCalendarGrid
               park={park}

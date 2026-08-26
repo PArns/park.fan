@@ -22,6 +22,7 @@ import { LocalTime } from '@/components/ui/local-time';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
+import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { formatDurationShort } from '@/lib/i18n/time';
 import { getAttractionDisplayStatus, getStandbyWait } from '@/lib/utils/park-utils';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
@@ -30,9 +31,11 @@ import { isInSeason } from '@/lib/utils/season';
 import { stripNewPrefix, cn } from '@/lib/utils';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
-/** Rows the headliner and show columns ever show. */
+/** Rows the headliner and show columns ever show. The show column runs one short of the
+ *  headliner column: its first row is the boxed "next up", which is taller than a plain row, so
+ *  four show rows and six headliner rows come out at about the same height. */
 const HEADLINER_ROWS = 6;
-const SHOW_ROWS = 3;
+const SHOW_ROWS = 4;
 
 interface ParkTodayPanelProps {
   initialData: ParkWithAttractions;
@@ -41,10 +44,6 @@ interface ParkTodayPanelProps {
   city: string;
   parkSlug: string;
   parkPath: string;
-  /** The park's address, site and ticket shop, handed in from the page as a slot.
-   *  <ParkInfoCard> is a Server Component and this panel is a Client one, so it arrives as
-   *  rendered children rather than as data — same shape `LiveParkData` uses for best-days. */
-  infoSlot?: React.ReactNode;
 }
 
 /** A captioned value inside a column: small uppercase caption + its value stack. */
@@ -110,7 +109,6 @@ export function ParkTodayPanel({
   city,
   parkSlug,
   parkPath,
-  infoSlot,
 }: ParkTodayPanelProps) {
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
@@ -140,6 +138,12 @@ export function ParkTodayPanel({
   // Seeded here, the merge lays the snapshot back over the full park, so `park` stays a complete
   // `ParkWithAttractions`. Same query key as <LiveParkData>'s, so this shares that one 5-minute
   // poll and adds no request.
+  // The SAME nowcast <WeatherCard> reads, through the same query key — no extra request. Without
+  // it the panel showed the daily `now` snapshot, which can be hours old, while the card one tab
+  // over showed the 15-minute nowcast: "22 °C · Bedeckt" in the header against "24° · Klarer
+  // Himmel" in the chapter, on the same page at the same moment.
+  const { data: nowcast } = useWeatherNowcast({ continent, country, city, parkSlug });
+
   const { data: mergedPark } = useLiveParkData({
     continent,
     country,
@@ -255,16 +259,19 @@ export function ParkTodayPanel({
   const weatherSummary = useMemo(() => {
     const w = park.weather;
     if (!w?.current) return null;
-    const temp = w.now?.temperature ?? Number(w.current.temperatureMax);
+    // Nowcast › daily `now` snapshot › day record — the precedence <WeatherCard> uses, in that
+    // order, so the two surfaces cannot disagree.
+    const temp =
+      nowcast?.currentTemperatureC ?? w.now?.temperature ?? Number(w.current.temperatureMax);
     if (!Number.isFinite(temp)) return null;
     // NOT `weatherDescription`: that field is the provider's own English string. `getWeatherConfig`
     // maps the WMO code to the key the weather card already translates, and hands over the icon
     // and its colour with it.
     const { icon, label, color } = getWeatherConfig(
-      w.now?.weatherCode ?? w.current.weatherCode,
-      w.now?.isDay ?? true
+      nowcast?.currentWeatherCode ?? w.now?.weatherCode ?? w.current.weatherCode,
+      nowcast?.isDay ?? w.now?.isDay ?? true
     );
-    const apparent = w.now?.apparentTemperature;
+    const apparent = nowcast?.currentApparentTemperatureC ?? w.now?.apparentTemperature;
     return {
       icon,
       color,
@@ -278,7 +285,7 @@ export function ParkTodayPanel({
         .filter(Boolean)
         .join(' · '),
     };
-  }, [park.weather, tWeather]);
+  }, [park.weather, nowcast, tWeather]);
 
   // Local holiday context — the chips that used to sit under the stats board. Neighbouring-region
   // breaks are NOT here: <HeaderHolidayPanel> owns that story in the row below, and a duplicate
@@ -509,7 +516,7 @@ export function ParkTodayPanel({
               {/* The last two figures off the "Ø Wartezeit" card that this panel replaced. They
                   belong beside the occupancy bar rather than in the headliner column: both are
                   park-wide readings about today, not about one queue. */}
-              {stats && (stats.peakWaitToday > 0 || stats.peakHour) && (
+              {stats && (stats.peakWaitToday > 0 || (stats.peakHour && stats.peakHourSource)) && (
                 <p className="text-muted-foreground text-xs">
                   {stats.peakWaitToday > 0 && (
                     <>
@@ -520,12 +527,18 @@ export function ParkTodayPanel({
                       {tCommon('minutes')}
                     </>
                   )}
-                  {stats.peakWaitToday > 0 && stats.peakHour && ' · '}
-                  {stats.peakHour && (
+                  {stats.peakWaitToday > 0 && stats.peakHour && stats.peakHourSource && ' · '}
+                  {/* `peakHour` is an ISO timestamp, not an hour — printed raw it read
+                      "Stoßzeit 2026-08-26T11:00:00+02:00". Same treatment the card this panel
+                      replaced gave it, including the `≈` for a value that is predicted rather
+                      than observed, and the same gate on `peakHourSource`: without a source there
+                      is nothing to qualify it with. */}
+                  {stats.peakHour && stats.peakHourSource && (
                     <>
                       {t('peakHour')}{' '}
                       <strong className="text-foreground font-semibold tabular-nums">
-                        {stats.peakHour}
+                        {stats.peakHourSource !== 'observed_today' && '≈ '}
+                        <LocalTime time={stats.peakHour} timeZone={timezone} />
                       </strong>
                     </>
                   )}
@@ -729,11 +742,6 @@ export function ParkTodayPanel({
         parkSlug={parkSlug}
         className="border-border/50 border-t px-5 py-2.5"
       />
-
-      {/* Address, website, ticket shop — the last row rather than a card of its own further down
-          the page. It is the one block here that never changes during a visit, so it closes the
-          panel instead of opening it. Renders nothing for a park nobody has curated. */}
-      {infoSlot}
 
       <ParkCalendarDayDetail
         day={detailDay}

@@ -1,6 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-import { ExternalLink, MapPin, Phone } from 'lucide-react';
-import { FacebookIcon, InstagramIcon, YouTubeIcon } from '@/components/common/brand-icons';
+import { MapPin, Phone } from 'lucide-react';
 import { GlassCard } from '@/components/common/glass-card';
 import { cn } from '@/lib/utils';
 import type { ParkInfo } from '@/lib/api/types';
@@ -45,31 +44,17 @@ export async function ParkInfoCard({ info, city, country, className }: ParkInfoC
   // header, which is noise dressed as information.
   const showAddress = Boolean(info.streetAddress) && addressLines.length > 0;
 
-  const links = [
-    { href: info.website, label: t('website') },
-    { href: info.ticketsUrl, label: t('tickets') },
-    { href: info.wikipediaUrl, label: 'Wikipedia' },
-  ].filter((link): link is { href: string; label: string } => Boolean(link.href));
-
-  const socials = [
-    { href: info.instagramUrl, label: 'Instagram', Icon: InstagramIcon },
-    { href: info.facebookUrl, label: 'Facebook', Icon: FacebookIcon },
-    { href: info.youtubeUrl, label: 'YouTube', Icon: YouTubeIcon },
-  ].filter((social): social is { href: string; label: string; Icon: typeof InstagramIcon } =>
-    Boolean(social.href)
-  );
+  // Website, ticket shop, Wikipedia and the socials are NOT here any more — they are
+  // <ParkQuickLinks>, a row under the intro in the page header. On most parks they were the only
+  // thing this section had, so it was a heading and a frame around two buttons; the guard below
+  // now correctly renders nothing for exactly those parks.
 
   const facts = [
     info.openedYear ? { label: t('opened'), value: String(info.openedYear) } : null,
     info.areaHectares ? { label: t('area'), value: `${info.areaHectares} ha` } : null,
   ].filter((fact): fact is { label: string; value: string } => fact !== null);
 
-  const hasSomething =
-    showAddress ||
-    Boolean(info.phone) ||
-    links.length > 0 ||
-    socials.length > 0 ||
-    facts.length > 0;
+  const hasSomething = showAddress || Boolean(info.phone) || facts.length > 0;
   if (!hasSomething) return null;
 
   return (
@@ -125,36 +110,6 @@ export async function ParkInfoCard({ info, city, country, className }: ParkInfoC
           </div>
         )}
       </div>
-
-      {(links.length > 0 || socials.length > 0) && (
-        <div className="border-border/60 mt-5 flex flex-wrap items-center gap-2 border-t pt-4">
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="border-border/60 hover:border-primary/50 hover:text-primary inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors"
-            >
-              {link.label}
-              <ExternalLink className="h-3.5 w-3.5 opacity-60" aria-hidden="true" />
-            </a>
-          ))}
-          {socials.map(({ href, label, Icon }) => (
-            <a
-              key={href}
-              href={href}
-              target="_blank"
-              rel="noreferrer noopener"
-              aria-label={label}
-              title={label}
-              className="border-border/60 hover:border-primary/50 hover:text-primary text-muted-foreground inline-flex h-9 w-9 items-center justify-center rounded-lg border transition-colors"
-            >
-              <Icon className="h-4 w-4" />
-            </a>
-          ))}
-        </div>
-      )}
     </GlassCard>
   );
 }

@@ -3,7 +3,6 @@
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import { TabsWithHash } from '@/components/parks/tabs-with-hash';
 import { Card } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
 import { AlertCircle, Loader2 } from 'lucide-react';
 import { useMemo } from 'react';
 import { useTranslations } from 'next-intl';
@@ -109,6 +108,7 @@ export function LiveParkData({
       parkSlug={parkSlug}
       landNames={currentLandNames}
       attractionsByLand={currentAttractionsByLand}
+      bestDaysSlot={bestDaysSlot}
     />
   );
 
@@ -144,28 +144,19 @@ export function LiveParkData({
         )}
       </div>
 
-      {/* Entry tiles + ride list first, best-days after.
+      {/* Just the tiles and the tab body now.
           The <ParkStatus variant="detailed"> board that used to open this column is gone: every
           figure on its three cards — occupancy and the vs-typical delta, today's and the live
           crowd rating, Ø wait, peak, and open-of-total — is now in <ParkTodayPanel> up in the
           header, and printing them a second time here is what made the page read as two answers
-          to one question.
-          Best-days moved BELOW the tabs for the same reason the tiles exist at all: it is a
-          ~500px block about a future visit, and while it sat between the header and the tabs it
-          pushed the way into the calendar, the map and the shows past the fold on every park.
+          to one question. Best-days moved INTO the calendar tab, where it opens the chapter it
+          belongs to; between the header and the tabs it was a ~500px block about a future visit
+          standing in front of the way to everything else.
           The heavy <TabsWithHash> stays rendered + hydrated EXACTLY ONCE — it used to be mounted
           twice (a mobile copy inside ParkStatus and a `hidden sm:block` desktop copy) and
           `display:none` does not skip hydration, which was the dominant mobile-INP source on
-          large parks like PortAventura. `gap-8` gives uniform spacing. */}
-      <div className="flex flex-col gap-8">
-        <div>{tabsWithHash}</div>
-        {bestDaysSlot && (
-          <>
-            <Separator className="hidden sm:block" />
-            <div>{bestDaysSlot}</div>
-          </>
-        )}
-      </div>
+          large parks like PortAventura. */}
+      {tabsWithHash}
     </>
   );
 }

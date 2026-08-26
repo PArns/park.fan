@@ -24,6 +24,12 @@ import { useEffect, useRef } from 'react';
  * The stagger runs over chips and labels in DOM order, so it reads as a wave crossing the row
  * rather than each tile popping as a unit — at 6 px and 20 ms it is a settle, not an entrance.
  *
+ * It runs ONCE, on mount, and nothing re-runs it on a tab click. A version that re-settled the
+ * newly selected tile was written and removed: the row is navigation somebody clicks repeatedly,
+ * and a flourish on every click is the fidget `use-header-reveal` had to be rewritten to stop
+ * doing. The selected state is already carried by the border and the filled chip, which need no
+ * animation to be read.
+ *
  * Cost: the GSAP chunk is fetched on mount, and it is the same module the header's reveal already
  * shares. A visitor who prefers reduced motion never imports it.
  */
