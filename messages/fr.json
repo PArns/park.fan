@@ -341,6 +341,9 @@
     "nextPredicted": "Suivant: {time} min prévu",
     "otherAttractions": "Autres Attractions",
     "headlinersSection": "Phares du parc",
+    "headlinersNow": "Attractions phares",
+    "nextShows": "Prochains spectacles",
+    "startsIn": "Commence dans",
     "ropeDropSection": {
       "title": "Conseil rope drop",
       "description": "Soyez là à l'ouverture – c'est pour ces attractions que ça paie le plus :",

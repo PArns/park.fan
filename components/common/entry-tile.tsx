@@ -42,10 +42,14 @@ export function EntryTileBody({
 }) {
   return (
     <>
-      <span className={cn(entryTileChip, chipClassName)}>
+      {/* `data-tile-stagger` marks what `useTileReveal` may move. It sits on the tile's contents
+          and never on the tile itself: the box carries `backdrop-blur-md`, and a transform on a
+          backdrop-filtered element (or any ancestor) makes it a backdrop root and flattens the
+          blur for the length of the animation. */}
+      <span data-tile-stagger className={cn(entryTileChip, chipClassName)}>
         <Icon className="h-4 w-4" aria-hidden="true" />
       </span>
-      <span className="text-sm leading-tight font-semibold">
+      <span data-tile-stagger className="text-sm leading-tight font-semibold">
         {label}
         {count !== undefined && (
           <span className="text-muted-foreground ml-1 font-normal tabular-nums">{count}</span>

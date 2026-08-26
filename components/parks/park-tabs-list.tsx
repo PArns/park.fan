@@ -1,10 +1,11 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { CalendarDays, Map, Sparkles, UtensilsCrossed, Zap } from 'lucide-react';
+import { CalendarDays, CloudSun, Map, Sparkles, UtensilsCrossed, Zap } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { EntryTileBody, entryTileBox } from '@/components/common/entry-tile';
+import { useTileReveal } from '@/lib/hooks/use-tile-reveal';
 import { cn } from '@/lib/utils';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
@@ -12,6 +13,8 @@ interface ParkTabsListProps {
   park: ParkWithAttractions;
   showsAvailable: boolean | undefined;
   restaurantsAvailable: boolean | undefined;
+  /** The park has weather data, so the weather chapter is a tab rather than nothing. */
+  weatherAvailable: boolean | undefined;
 }
 
 /**
@@ -70,14 +73,37 @@ function Tile({
  * `auto-rows-fr` keeps the wrapped row the same height as the first, so a two-word label in
  * French does not make its own tile taller than its neighbours.
  */
-export function ParkTabsList({ park, showsAvailable, restaurantsAvailable }: ParkTabsListProps) {
+export function ParkTabsList({
+  park,
+  showsAvailable,
+  restaurantsAvailable,
+  weatherAvailable,
+}: ParkTabsListProps) {
   const t = useTranslations('parks');
+  // The row settling in on mount. The ref goes on the LIST, and only its tiles' contents are
+  // animated — see `useTileReveal` for why the glass may not be touched.
+  const rowRef = useTileReveal<HTMLDivElement>();
+
+  // Three of the six tiles are optional, so the wide track count has to be counted rather than
+  // written down: at a fixed `lg:grid-cols-5` a park with weather leaves its sixth tile alone on
+  // a second row, and a park without shows or restaurants leaves two empty tracks.
+  const tileCount =
+    3 + (showsAvailable ? 1 : 0) + (restaurantsAvailable ? 1 : 0) + (weatherAvailable ? 1 : 0);
 
   // `items-stretch` is load-bearing: TabsList's own base class sets `items-center`, which in a
   // grid centres every tile in its row and quietly cancels `auto-rows-fr` — the tiles in a
   // wrapped row then sit at their own content height instead of matching the tallest.
   return (
-    <TabsList className="mb-6 grid h-auto w-full auto-rows-fr grid-cols-2 items-stretch gap-3 rounded-none bg-transparent p-0 sm:grid-cols-3 lg:grid-cols-5">
+    <TabsList
+      ref={rowRef}
+      className={cn(
+        'mb-6 grid h-auto w-full auto-rows-fr grid-cols-2 items-stretch gap-3 rounded-none bg-transparent p-0 sm:grid-cols-3',
+        tileCount === 6 && 'lg:grid-cols-6',
+        tileCount === 5 && 'lg:grid-cols-5',
+        tileCount === 4 && 'lg:grid-cols-4',
+        tileCount === 3 && 'lg:grid-cols-3'
+      )}
+    >
       <Tile
         value="attractions"
         icon={Zap}
@@ -97,6 +123,7 @@ export function ParkTabsList({ park, showsAvailable, restaurantsAvailable }: Par
           count={park.restaurants?.length || 0}
         />
       )}
+      {weatherAvailable && <Tile value="weather" icon={CloudSun} label={t('weatherLabel')} />}
     </TabsList>
   );
 }

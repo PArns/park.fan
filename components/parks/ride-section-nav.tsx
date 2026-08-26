@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { Boxes, Clock, HelpCircle, Sparkles } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { EntryTileBody, entryTileBox } from '@/components/common/entry-tile';
+import { EntryTileReveal } from '@/components/common/entry-tile-reveal';
 import { cn } from '@/lib/utils';
 
 interface RideSectionNavProps {
@@ -42,22 +43,27 @@ export async function RideSectionNav({ hasRideProfile, hasFaq, className }: Ride
   ];
 
   return (
-    <nav
-      aria-label={t('sectionNavLabel')}
-      className={cn(
-        'grid auto-rows-fr grid-cols-2 gap-3',
-        // Three chapters is the common case (a ride with a profile but no FAQ, or the other
-        // way round); four is the full house. Both divide evenly at these two breakpoints, so
-        // no width leaves a single tile stranded on its own row.
-        items.length >= 4 ? 'sm:grid-cols-4' : 'sm:grid-cols-3',
-        className
-      )}
-    >
-      {items.map(({ href, icon, label }) => (
-        <a key={href} href={href} className={cn(entryTileBox, 'hover:border-primary/60')}>
-          <EntryTileBody icon={icon} label={label} />
-        </a>
-      ))}
-    </nav>
+    // The wrapper is a Client Component and adds `display: contents`, so it owns the mount
+    // animation without owning a box or pulling this nav across the client boundary — the tiles
+    // below are still server-rendered into the HTML.
+    <EntryTileReveal>
+      <nav
+        aria-label={t('sectionNavLabel')}
+        className={cn(
+          'grid auto-rows-fr grid-cols-2 gap-3',
+          // Three chapters is the common case (a ride with a profile but no FAQ, or the other
+          // way round); four is the full house. Both divide evenly at these two breakpoints, so
+          // no width leaves a single tile stranded on its own row.
+          items.length >= 4 ? 'sm:grid-cols-4' : 'sm:grid-cols-3',
+          className
+        )}
+      >
+        {items.map(({ href, icon, label }) => (
+          <a key={href} href={href} className={cn(entryTileBox, 'hover:border-primary/60')}>
+            <EntryTileBody icon={icon} label={label} />
+          </a>
+        ))}
+      </nav>
+    </EntryTileReveal>
   );
 }

@@ -113,6 +113,7 @@ export function LiveParkData({
       defaultValue="attractions"
       showsAvailable={currentPark.shows && currentPark.shows.length > 0}
       restaurantsAvailable={currentPark.restaurants && currentPark.restaurants.length > 0}
+      weatherAvailable={!!currentPark.weather?.current}
       park={currentPark}
       calendarData={calendarData}
       continent={continent}

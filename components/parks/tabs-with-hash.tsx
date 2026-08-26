@@ -3,7 +3,7 @@
 import { memo, useDeferredValue, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
-import { Search, Zap, Sparkles, UtensilsCrossed, CalendarDays, Map } from 'lucide-react';
+import { Search, Zap, Sparkles, UtensilsCrossed, CalendarDays, CloudSun, Map } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent } from '@/components/ui/tabs';
@@ -12,6 +12,7 @@ import { AttractionWaitOverview } from '@/components/parks/attraction-wait-overv
 import { LandSection } from '@/components/parks/land-section';
 import { LazyMount } from '@/components/parks/lazy-mount';
 import { RestaurantCard } from '@/components/parks/restaurant-card';
+import { WeatherCard } from '@/components/parks/weather-card';
 import { RopeDropHeadliners } from '@/components/parks/rope-drop-headliners';
 import { ParkTabsList } from '@/components/parks/park-tabs-list';
 import { OffSeasonToggle } from '@/components/parks/off-season-toggle';
@@ -43,6 +44,8 @@ interface TabsWithHashProps {
   defaultValue: string;
   showsAvailable: boolean | undefined;
   restaurantsAvailable: boolean | undefined;
+  /** The park has weather data — drives both the tile and the chapter behind it. */
+  weatherAvailable: boolean | undefined;
   park: ParkWithAttractions;
   /** Optional SSR seed; the calendar grid client-fetches per visible month when omitted. */
   calendarData?: IntegratedCalendarResponse;
@@ -62,6 +65,7 @@ export const TabsWithHash = memo(function TabsWithHash({
   defaultValue,
   showsAvailable,
   restaurantsAvailable,
+  weatherAvailable,
   park,
   calendarData,
   continent,
@@ -125,6 +129,7 @@ export const TabsWithHash = memo(function TabsWithHash({
             park={park}
             showsAvailable={showsAvailable}
             restaurantsAvailable={restaurantsAvailable}
+            weatherAvailable={weatherAvailable}
           />
           <TabsContent value={defaultValue} className="space-y-6">
             {/* The same chapter heading the mounted branch renders. Without it the
@@ -151,6 +156,7 @@ export const TabsWithHash = memo(function TabsWithHash({
           park={park}
           showsAvailable={showsAvailable}
           restaurantsAvailable={restaurantsAvailable}
+          weatherAvailable={weatherAvailable}
         />
 
         <TabsContent
@@ -366,6 +372,35 @@ export const TabsWithHash = memo(function TabsWithHash({
             <Skeleton className="h-[28rem] w-full rounded-xl" />
           )}
         </TabsContent>
+
+        {/* Weather is a chapter behind a tile now, not a ~360px card wedged between the header
+            and the ride list. It answers a real question and almost nobody arrives asking it
+            first — the summary a visitor does want on arrival (temperature, the nowcast, an
+            official warning) still meets them above the fold in the banners, which stay in the
+            page body. Unlike the deferred tabs above this one renders its card as soon as the
+            tab is active without a skeleton step: everything it needs to draw is already in
+            `park.weather` from the server render, so there is nothing to wait for. */}
+        {weatherAvailable && park.weather?.current && (
+          <TabsContent
+            value="weather"
+            className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
+          >
+            <ChapterHeading icon={CloudSun} title={t('weatherLabel')} frosted />
+            <WeatherCard
+              weather={park.weather}
+              nowcast={null}
+              continent={continent}
+              country={country}
+              city={city}
+              parkSlug={parkSlug}
+              latitude={park.latitude}
+              longitude={park.longitude}
+              timezone={park.timezone}
+              schedule={park.schedule}
+              className="border-primary/10"
+            />
+          </TabsContent>
+        )}
       </Tabs>
     </div>
   );
