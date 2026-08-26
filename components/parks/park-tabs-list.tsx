@@ -12,12 +12,21 @@ import { isInSeason } from '@/lib/utils/season';
 import { getAttractionDisplayStatus, getStandbyWait } from '@/lib/utils/park-utils';
 import { formatDurationShort } from '@/lib/i18n/time';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
+import { analyzeBestDays } from '@/lib/utils/crowd-analysis';
+import { useParkBestDaysCalendar } from '@/lib/hooks/use-park-best-days-calendar';
+import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { formatTime } from '@/lib/utils/intl-format';
 import { cn } from '@/lib/utils';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
 interface ParkTabsListProps {
   park: ParkWithAttractions;
+  /** Geo params for the shared best-days query behind the calendar tile's hint. */
+  continent: string;
+  country: string;
+  city: string;
+  parkSlug: string;
   showsAvailable: boolean | undefined;
   restaurantsAvailable: boolean | undefined;
   /** The park has weather data, so the weather chapter is a tab rather than nothing. */
@@ -48,7 +57,14 @@ function Tile({
       className={cn(
         'group',
         entryTileBox,
-        'data-[state=active]:border-primary data-[state=active]:bg-primary/10 dark:data-[state=active]:bg-primary/15'
+        // The active fill is written out in full rather than as `bg-primary/10`, because
+        // tailwind-merge REPLACES the base fill with it — the selected tile then sat at 10 %
+        // opacity over the park photo and was the least readable of the six, which is the exact
+        // opposite of what selecting it should do. These two carry the tint AND the base's
+        // opacity, so the active tile is the most solid one in the row.
+        'data-[state=active]:border-primary',
+        'data-[state=active]:bg-[color-mix(in_oklch,var(--primary)_12%,var(--background))]/92',
+        'dark:data-[state=active]:bg-[oklch(0.19_0.055_241_/_0.92)]'
       )}
     >
       <EntryTileBody
@@ -85,6 +101,10 @@ function Tile({
  */
 export function ParkTabsList({
   park,
+  continent,
+  country,
+  city,
+  parkSlug,
   showsAvailable,
   restaurantsAvailable,
   weatherAvailable,
@@ -106,10 +126,37 @@ export function ParkTabsList({
   const tileCount =
     3 + (showsAvailable ? 1 : 0) + (restaurantsAvailable ? 1 : 0) + (weatherAvailable ? 1 : 0);
 
-  // Every hint below is read off the snapshot the tile row already has, so the row costs no query
-  // of its own — the one figure that would have needed one (the calendar's quietest upcoming day)
-  // is deliberately a static line instead, because the best-days query is `useLoadLast`-gated and
-  // a tab bar is not the place to wait on it.
+  // Every hint below is read off the snapshot the tile row already has, except the calendar's,
+  // which reads the best-days calendar through the SAME query key <ParkBestDaysSection> and
+  // <ParkTodayPanel> already use — one cached request between the three. It is `useLoadLast`-gated
+  // and therefore arrives late, which costs nothing here because the hint box is reserved at two
+  // lines whether or not it has text yet.
+  // Same nowcast the weather card and the panel read — one query key across all three, so the
+  // tile cannot name a temperature the chapter behind it contradicts.
+  const { data: nowcast } = useWeatherNowcast({ continent, country, city, parkSlug });
+  const { data: bestDaysCalendar } = useParkBestDaysCalendar({
+    continent,
+    country,
+    city,
+    parkSlug,
+  });
+  const quietDayHint = useMemo(() => {
+    if (!bestDaysCalendar || !browserNow) return null;
+    // Same derivation the best-days section renders its "Kommende ruhige Tage" chips from, so the
+    // tile can never name a day that section does not list. [0] is the nearest one.
+    const next = analyzeBestDays(
+      bestDaysCalendar.days,
+      browserNow.getTime(),
+      park.timezone ?? undefined
+    ).upcomingQuietDays[0];
+    if (!next) return null;
+    const [y, m, d] = next.date.split('-').map(Number);
+    const label = getDateTimeFormat(locale, { weekday: 'short', day: 'numeric', month: 'short' })
+      .format(new Date(y, m - 1, d))
+      .replace(/\.$/, '');
+    return t('tileCalendarQuietDay', { day: label });
+  }, [bestDaysCalendar, browserNow, park.timezone, locale, t]);
+
   const stats = park.analytics?.statistics;
   const lands = useMemo(
     () => new Set((park.attractions ?? []).map((a) => a.land).filter(Boolean)).size,
@@ -119,12 +166,19 @@ export function ParkTabsList({
     () => (park.restaurants ?? []).filter((r) => r.status === 'OPERATING').length,
     [park.restaurants]
   );
-  // The shortest queue in the park right now — the one figure on this tile that is a
-  // recommendation rather than a summary. Closed rides are excluded via the display status, or a
-  // ride that shut with a stale `0` on its queue would win it every time.
-  const shortestWait = useMemo(() => {
+  // The shortest HEADLINER queue, not the shortest queue in the park. Across the whole catalogue
+  // that second one is always a walk-on carousel reading 0, so the tile said "kürzeste 0 min" on
+  // every park at every hour — true, and worth nothing to somebody deciding what to walk to.
+  // Closed rides are excluded via the display status, or a ride that shut with a stale 0 on its
+  // queue would win it outright.
+  const shortestHeadlinerWait = useMemo(() => {
     const waits = (park.attractions ?? [])
-      .filter((a) => isInSeason(a) && getAttractionDisplayStatus(a, park.status) === 'OPERATING')
+      .filter(
+        (a) =>
+          a.isHeadliner &&
+          isInSeason(a) &&
+          getAttractionDisplayStatus(a, park.status) === 'OPERATING'
+      )
       .map(getStandbyWait)
       .filter((w): w is number => w !== null);
     return waits.length > 0 ? Math.min(...waits) : null;
@@ -134,20 +188,21 @@ export function ParkTabsList({
   const weatherHint = useMemo(() => {
     const w = park.weather;
     if (!w?.current) return null;
-    const temp = w.now?.temperature ?? Number(w.current.temperatureMax);
+    const temp =
+      nowcast?.currentTemperatureC ?? w.now?.temperature ?? Number(w.current.temperatureMax);
     if (!Number.isFinite(temp)) return null;
     // NOT `weatherDescription`: that field is the provider's own English string, and it shipped
     // as "22 °C · Overcast" on a German page. `getWeatherConfig` maps the WMO code to the key
     // the weather card already translates.
     const { label } = getWeatherConfig(
-      w.now?.weatherCode ?? w.current.weatherCode,
-      w.now?.isDay ?? true
+      nowcast?.currentWeatherCode ?? w.now?.weatherCode ?? w.current.weatherCode,
+      nowcast?.isDay ?? w.now?.isDay ?? true
     );
     const summary = `${Math.round(temp)} °C · ${tWeather(label)}`;
     // An official warning outranks the conditions on a tile this small: it is the reason to open
     // the weather chapter at all.
     return (w.warnings?.length ?? 0) > 0 ? `${summary} · ${t('severeWeatherWarning')}` : summary;
-  }, [park.weather, tWeather, t]);
+  }, [park.weather, nowcast, tWeather, t]);
 
   const nextShowtime = useMemo(() => {
     if (!browserNow) return null;
@@ -184,7 +239,7 @@ export function ParkTabsList({
     <TabsList
       ref={rowRef}
       className={cn(
-        'mb-6 grid h-auto w-full auto-rows-fr grid-cols-2 items-stretch gap-3 rounded-none bg-transparent p-0 sm:grid-cols-3',
+        'mb-4 grid h-auto w-full auto-rows-fr grid-cols-2 items-stretch gap-3 rounded-none bg-transparent p-0 sm:grid-cols-3',
         tileCount === 6 && 'lg:grid-cols-6',
         tileCount === 5 && 'lg:grid-cols-5',
         tileCount === 4 && 'lg:grid-cols-4',
@@ -197,16 +252,21 @@ export function ParkTabsList({
         label={t('attractions')}
         count={park.attractions?.length || 0}
         hint={
-          stats && shortestWait !== null
+          stats && shortestHeadlinerWait !== null
             ? t('tileAttractions', {
                 open: stats.operatingAttractions,
                 avg: stats.avgWaitTime,
-                min: shortestWait,
+                min: shortestHeadlinerWait,
               })
             : null
         }
       />
-      <Tile value="calendar" icon={CalendarDays} label={t('calendar')} hint={t('tileCalendar')} />
+      <Tile
+        value="calendar"
+        icon={CalendarDays}
+        label={t('calendar')}
+        hint={quietDayHint ?? t('tileCalendar')}
+      />
       <Tile value="map" icon={Map} label={t('map')} hint={t('tileMap', { lands })} />
       {showsAvailable && (
         <Tile
