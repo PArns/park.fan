@@ -18,6 +18,19 @@ export function getAttractionDisplayStatus(
 }
 
 /**
+ * STANDBY wait of an attraction in minutes, or null when it has no standby queue.
+ *
+ * Says nothing about whether the ride is open — pair it with `getAttractionDisplayStatus`, or a
+ * closed ride reports the last number its queue carried. It lived inside the wait-time overview
+ * until the header's headliner strip needed the same reading; two copies of "which queue is the
+ * one people mean" is how two surfaces on one page start disagreeing.
+ */
+export function getStandbyWait(attraction: ParkAttraction): number | null {
+  const standby = attraction.queues?.find((q) => q.queueType === 'STANDBY');
+  return standby && 'waitTime' in standby ? standby.waitTime : null;
+}
+
+/**
  * Groups attractions by their land name.
  * Attractions without a land fall back to `fallbackName`.
  * Attractions within each land are sorted alphabetically.

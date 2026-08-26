@@ -22,7 +22,6 @@ import { filterMatchableTerms } from '@/lib/glossary/parse-segments';
 import { buildParkFaqItems } from '@/lib/faq/park-faq';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import type { Locale } from '@/i18n/config';
-import { WeatherCard } from '@/components/parks/weather-card';
 import { WeatherNowcastBanner } from '@/components/parks/weather-nowcast-banner';
 import { WeatherWarningBanner } from '@/components/parks/weather-warning-banner';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
@@ -52,6 +51,7 @@ import {
 import { stripNewPrefix } from '@/lib/utils';
 import { LiveParkData } from '@/components/parks/live-park-data';
 import { ParkHeaderStats } from '@/components/parks/park-header-stats';
+import { ParkTodayHighlights } from '@/components/parks/park-today-highlights';
 import { HeaderHolidayPanel } from '@/components/parks/header-holiday-panel';
 import { ParkBestDaysSection } from '@/components/parks/park-best-days-section';
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
@@ -494,6 +494,21 @@ export default async function ParkPage({ params }: ParkPageProps) {
                     className="border-border/50 w-full border-t pt-4 lg:mt-5 lg:w-64 lg:shrink-0 lg:self-stretch lg:border-t-0 lg:border-l lg:pl-5 xl:w-72"
                   />
                 </div>
+
+                {/* What the fold was still missing: the next showtimes and what the headliners
+                  cost right now. Both lived in the tabs, several screens below the header that
+                  is supposed to answer "what do I walk to first". Its own band under the board
+                  (same top hairline and spacing), not a column inside it — the board's four
+                  metrics are single values and these are lists, and squeezing two more columns
+                  in took the metrics below their wrap width on a tablet.
+
+                  It reserves its rows from the snapshot, so the 5-min poll moves the numbers
+                  inside them and never the band's height; a park with neither shows nor
+                  headliners renders nothing here at all. */}
+                <ParkTodayHighlights
+                  park={park}
+                  parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+                />
               </GlassCard>
             </div>
 
@@ -523,31 +538,18 @@ export default async function ParkPage({ params }: ParkPageProps) {
               />
             </Suspense>
 
-            {/* Weather — rendered in the shell, NOT behind <Suspense>. Everything it needs to
-              draw its ~360px box is already in `park.weather` (the live nowcast only refines the
-              values inside it), so the boundary bought no TTFB and cost a 360px hole:
-              `fallback={null}` meant the first paint reserved nothing here and the card dropped in
-              from the stream a beat later, pushing the ride list — the thing a visitor came for
-              and is looking at — off the bottom of the screen. That was ~0.095 CLS on its own, on
-              every park with weather data. Today's schedule, status and opening hours live in the
-              <ParkHeaderStats> board up in the header, so there's no separate schedule card. */}
-            {park.weather?.current && (
-              <div className="mb-8">
-                <WeatherCard
-                  weather={park.weather}
-                  nowcast={null}
-                  continent={continent}
-                  country={country}
-                  city={city}
-                  parkSlug={parkSlug}
-                  latitude={park.latitude}
-                  longitude={park.longitude}
-                  timezone={park.timezone}
-                  schedule={park.schedule}
-                  className="border-primary/10"
-                />
-              </div>
-            )}
+            {/* The weather CARD is not here any more — it is the "Wetter" tab in <TabsWithHash>.
+              It was a ~360px box between the header and the ride list, and the ride list is what
+              a visitor came for; behind a tile it costs the fold nothing and stays one click from
+              the summary. What a visitor wants on arrival did not move: the official warning and
+              the nowcast are the two banners above, and temperature reads in the header board.
+
+              Note this is a REMOVAL from the shell, not a deferral — the old comment here warned
+              against wrapping this card in a <Suspense fallback={null}>, which reserved nothing
+              and dropped 360px in a beat after paint (~0.095 CLS on every park with weather).
+              Nothing renders in its place now, so there is no hole to reserve and no late insert;
+              the tab panel it moved into mounts only on a click, long after the page has
+              settled. */}
 
             {/* Paid skip-the-line day prices (schedule purchases) — renders nothing for parks
               without purchase data (currently everything non-Disney). */}

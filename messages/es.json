@@ -341,6 +341,9 @@
     "nextPredicted": "Siguiente: {time} min previsto",
     "otherAttractions": "Otras Atracciones",
     "headlinersSection": "Destacados",
+    "headlinersNow": "Atracciones estrella",
+    "nextShows": "Próximos espectáculos",
+    "startsIn": "Empieza en",
     "ropeDropSection": {
       "title": "Consejo rope drop",
       "description": "Llega a la apertura: en estas atracciones es donde más merece la pena:",

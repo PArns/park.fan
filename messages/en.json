@@ -341,6 +341,9 @@
     "nextPredicted": "Next: {time} min predicted",
     "otherAttractions": "Other Attractions",
     "headlinersSection": "Headliners",
+    "headlinersNow": "Headliners now",
+    "nextShows": "Next shows",
+    "startsIn": "Starts in",
     "ropeDropSection": {
       "title": "Rope Drop Tip",
       "description": "Be there at opening — it pays off most for these attractions:",

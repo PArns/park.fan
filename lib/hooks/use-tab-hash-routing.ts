@@ -57,7 +57,7 @@ export function useTabHashRouting({ defaultValue, park }: UseTabHashRoutingOptio
         tabToActivate = 'calendar';
       }
 
-      const validTabs = ['attractions', 'shows', 'restaurants', 'calendar', 'map'];
+      const validTabs = ['attractions', 'shows', 'restaurants', 'calendar', 'map', 'weather'];
       if (validTabs.includes(tabToActivate)) {
         setActiveTab(tabToActivate);
 
@@ -92,7 +92,7 @@ export function useTabHashRouting({ defaultValue, park }: UseTabHashRoutingOptio
     setActiveTab(value);
 
     const tab = value as TabChangedProps['tab'];
-    if (['attractions', 'calendar', 'map', 'shows', 'restaurants'].includes(tab)) {
+    if (['attractions', 'calendar', 'map', 'shows', 'restaurants', 'weather'].includes(tab)) {
       // `parkId` was dropped: it identified the same park as `parkName`, and Umami bills every
       // property as another event (see the property budget in `lib/analytics/umami.ts`).
       trackTabChanged({

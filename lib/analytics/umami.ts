@@ -152,8 +152,8 @@ export interface GlossarySearchedProps {
 }
 
 export interface TabChangedProps {
-  /** attractions | calendar | map | shows | restaurants */
-  tab: 'attractions' | 'calendar' | 'map' | 'shows' | 'restaurants';
+  /** attractions | calendar | map | shows | restaurants | weather */
+  tab: 'attractions' | 'calendar' | 'map' | 'shows' | 'restaurants' | 'weather';
   parkName?: string;
   [key: string]: string | number | boolean | undefined;
 }
