@@ -1,11 +1,15 @@
 'use client';
 
+import { useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { CalendarDays, CloudSun, Map, Sparkles, UtensilsCrossed, Zap } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { EntryTileBody, entryTileBox } from '@/components/common/entry-tile';
+import { LocalTime } from '@/components/ui/local-time';
 import { useTileReveal } from '@/lib/hooks/use-tile-reveal';
+import { useBrowserNow } from '@/lib/hooks/use-mounted';
+import { isInSeason } from '@/lib/utils/season';
 import { cn } from '@/lib/utils';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
@@ -27,11 +31,13 @@ function Tile({
   icon,
   label,
   count,
+  hint,
 }: {
   value: string;
   icon: LucideIcon;
   label: string;
   count?: number;
+  hint: React.ReactNode;
 }) {
   return (
     <TabsTrigger
@@ -46,6 +52,7 @@ function Tile({
         icon={icon}
         label={label}
         count={count}
+        hint={hint}
         chipClassName="group-data-[state=active]:bg-primary group-data-[state=active]:text-primary-foreground"
       />
     </TabsTrigger>
@@ -83,12 +90,52 @@ export function ParkTabsList({
   // The row settling in on mount. The ref goes on the LIST, and only its tiles' contents are
   // animated — see `useTileReveal` for why the glass may not be touched.
   const rowRef = useTileReveal<HTMLDivElement>();
+  // The show tile names the next start time, which is a question about the clock. Reading it in
+  // render would be impure and would disagree between the server and the first client render.
+  const browserNow = useBrowserNow(60_000);
 
   // Three of the six tiles are optional, so the wide track count has to be counted rather than
   // written down: at a fixed `lg:grid-cols-5` a park with weather leaves its sixth tile alone on
   // a second row, and a park without shows or restaurants leaves two empty tracks.
   const tileCount =
     3 + (showsAvailable ? 1 : 0) + (restaurantsAvailable ? 1 : 0) + (weatherAvailable ? 1 : 0);
+
+  // Every hint below is read off the snapshot the tile row already has, so the row costs no query
+  // of its own — the one figure that would have needed one (the calendar's quietest upcoming day)
+  // is deliberately a static line instead, because the best-days query is `useLoadLast`-gated and
+  // a tab bar is not the place to wait on it.
+  const stats = park.analytics?.statistics;
+  const lands = useMemo(
+    () => new Set((park.attractions ?? []).map((a) => a.land).filter(Boolean)).size,
+    [park.attractions]
+  );
+  const openRestaurants = useMemo(
+    () => (park.restaurants ?? []).filter((r) => r.status === 'OPERATING').length,
+    [park.restaurants]
+  );
+  // `now` is the live reading; `current` is the DAY record, whose temperatures are strings and a
+  // max rather than a nowcast — so it is the fallback here, never the first choice.
+  const weatherHint = useMemo(() => {
+    const w = park.weather;
+    if (!w?.current) return null;
+    const temp = w.now?.temperature ?? Number(w.current.temperatureMax);
+    if (!Number.isFinite(temp)) return null;
+    const description = w.now?.weatherDescription ?? w.current.weatherDescription;
+    return `${Math.round(temp)} °C${description ? ` · ${description}` : ''}`;
+  }, [park.weather]);
+
+  const nextShowtime = useMemo(() => {
+    if (!browserNow) return null;
+    const nowMs = browserNow.getTime();
+    return (
+      (park.shows ?? [])
+        .filter((s) => isInSeason(s))
+        .flatMap((s) => s.showtimes ?? [])
+        .map((st) => st.startTime)
+        .filter((iso) => new Date(iso).getTime() > nowMs)
+        .sort((a, b) => a.localeCompare(b))[0] ?? null
+    );
+  }, [park.shows, browserNow]);
 
   // `items-stretch` is load-bearing: TabsList's own base class sets `items-center`, which in a
   // grid centres every tile in its row and quietly cancels `auto-rows-fr` — the tiles in a
@@ -109,11 +156,28 @@ export function ParkTabsList({
         icon={Zap}
         label={t('attractions')}
         count={park.attractions?.length || 0}
+        hint={
+          stats
+            ? t('tileAttractions', { open: stats.operatingAttractions, avg: stats.avgWaitTime })
+            : null
+        }
       />
-      <Tile value="calendar" icon={CalendarDays} label={t('calendar')} />
-      <Tile value="map" icon={Map} label={t('map')} />
+      <Tile value="calendar" icon={CalendarDays} label={t('calendar')} hint={t('tileCalendar')} />
+      <Tile value="map" icon={Map} label={t('map')} hint={t('tileMap', { lands })} />
       {showsAvailable && (
-        <Tile value="shows" icon={Sparkles} label={t('shows')} count={park.shows?.length || 0} />
+        <Tile
+          value="shows"
+          icon={Sparkles}
+          label={t('shows')}
+          count={park.shows?.length || 0}
+          hint={
+            nextShowtime
+              ? t.rich('tileShowsNext', {
+                  time: () => <LocalTime time={nextShowtime} timeZone={park.timezone || 'UTC'} />,
+                })
+              : null
+          }
+        />
       )}
       {restaurantsAvailable && (
         <Tile
@@ -121,9 +185,15 @@ export function ParkTabsList({
           icon={UtensilsCrossed}
           label={t('restaurants')}
           count={park.restaurants?.length || 0}
+          hint={t('tileRestaurants', {
+            open: openRestaurants,
+            total: park.restaurants?.length || 0,
+          })}
         />
       )}
-      {weatherAvailable && <Tile value="weather" icon={CloudSun} label={t('weatherLabel')} />}
+      {weatherAvailable && (
+        <Tile value="weather" icon={CloudSun} label={t('weatherLabel')} hint={weatherHint} />
+      )}
     </TabsList>
   );
 }

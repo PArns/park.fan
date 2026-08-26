@@ -22,8 +22,6 @@ import { filterMatchableTerms } from '@/lib/glossary/parse-segments';
 import { buildParkFaqItems } from '@/lib/faq/park-faq';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import type { Locale } from '@/i18n/config';
-import { WeatherNowcastBanner } from '@/components/parks/weather-nowcast-banner';
-import { WeatherWarningBanner } from '@/components/parks/weather-warning-banner';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import {
   ParkStructuredData,
@@ -50,9 +48,7 @@ import {
 } from '@/lib/utils/redirect-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import { LiveParkData } from '@/components/parks/live-park-data';
-import { ParkHeaderStats } from '@/components/parks/park-header-stats';
-import { ParkTodayHighlights } from '@/components/parks/park-today-highlights';
-import { HeaderHolidayPanel } from '@/components/parks/header-holiday-panel';
+import { ParkTodayPanel } from '@/components/parks/park-today-panel';
 import { ParkBestDaysSection } from '@/components/parks/park-best-days-section';
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
 import { ParkInfoCard } from '@/components/parks/park-info-card';
@@ -455,101 +451,42 @@ export default async function ParkPage({ params }: ParkPageProps) {
                   {park.id && <ParkFavoriteButton parkId={park.id} />}
                 </div>
 
-                {/* Board row: today's stats board + the neighbouring-holidays column side by side, top-
-                  aligned so the holiday caption lines up with STATUS (not the header top). On < lg the
-                  holiday context has no right column and stacks under the intro instead. */}
-                <div className="flex flex-wrap items-stretch gap-4">
-                  <div className="min-w-0 flex-1">
-                    {/* At-a-glance "now vs. AI forecast" strip — live status/crowd next to
-                      today's predicted crowd (the forecast column loads last per the
-                      loading-priority rule; it shares the calendar query with the best-days
-                      section below). */}
-                    <ParkHeaderStats
-                      initialData={park}
-                      continent={continent}
-                      country={country}
-                      city={city}
-                      parkSlug={parkSlug}
-                    />
-                    {/* Keyword-rich, server-rendered intro — gives Google crawlable topical
-                      text with the exact "Wartezeiten im {park}" phrase + "heute" that the
-                      live (client-streamed) grid doesn't provide as static text. */}
-                    <p className="text-muted-foreground mt-3 max-w-2xl text-sm leading-relaxed">
-                      {t('intro', { park: parkName, city: cityName })}
-                    </p>
-                  </div>
-                  {/* Neighbouring-holidays context — ONE instance for all breakpoints (it used to be
-                    rendered twice, `lg:hidden` + `hidden lg:block`, duplicating its text in the HTML
-                    and its hydration cost). Below lg it wraps to a full-width band row under the
-                    intro (top hairline); on lg+ it becomes the right-hand column beside the board —
-                    full-height left divider + `mt-5 pt-4` matching the stats band's top rule, so its
-                    caption sits at the SAME height as STATUS. Not a floating card. Collapses to
-                    nothing when no influencing holidays apply. */}
-                  <HeaderHolidayPanel
-                    initialData={park}
-                    continent={continent}
-                    country={country}
-                    city={city}
-                    parkSlug={parkSlug}
-                    className="border-border/50 w-full border-t pt-4 lg:mt-5 lg:w-64 lg:shrink-0 lg:self-stretch lg:border-t-0 lg:border-l lg:pl-5 xl:w-72"
-                  />
-                </div>
-
-                {/* What the fold was still missing: the next showtimes and what the headliners
-                  cost right now. Both lived in the tabs, several screens below the header that
-                  is supposed to answer "what do I walk to first". Its own band under the board
-                  (same top hairline and spacing), not a column inside it — the board's four
-                  metrics are single values and these are lists, and squeezing two more columns
-                  in took the metrics below their wrap width on a tablet.
-
-                  It reserves its rows from the snapshot, so the 5-min poll moves the numbers
-                  inside them and never the band's height; a park with neither shows nor
-                  headliners renders nothing here at all. */}
-                <ParkTodayHighlights
-                  park={park}
-                  parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
-                />
+                {/* Keyword-rich, server-rendered intro — gives Google crawlable topical
+                  text with the exact "Wartezeiten im {park}" phrase + "heute" that the
+                  live (client-streamed) grid doesn't provide as static text. The stats board
+                  that used to sit above it, and the neighbouring-holiday column beside it, both
+                  moved into <ParkTodayPanel> below: they answered the same question as the
+                  weather warning and the weather card, in three other boxes. */}
+                <p className="text-muted-foreground mt-5 max-w-2xl text-sm leading-relaxed">
+                  {t('intro', { park: parkName, city: cityName })}
+                </p>
               </GlassCard>
             </div>
 
-            {/* Official severe-weather warnings (DWD / MeteoAlarm) — shown above the
-              self-derived nowcast banner since they carry authoritative severity. */}
-            <Suspense fallback={null}>
-              <WeatherWarningBanner
-                continent={continent}
-                country={country}
-                city={city}
-                parkSlug={parkSlug}
-                initialData={null}
-                className="mb-6"
-              />
-            </Suspense>
+            {/* "Heute im Park" — the one panel the fold is built around. It absorbed four things
+              that used to be four boxes: the official DWD/MeteoAlarm warning (its top strip), the
+              stats board (its first two columns), the neighbouring-holiday context (its last row)
+              and the weather summary (the nowcast strip above that row). It also carries the two
+              readings that were not above the fold at all — what the headliners cost right now and
+              when the next shows start.
 
-            {/* Weather nowcast banner (rain / storm / hail / thunderstorm) — client live query,
-              streamed as a dynamic hole under Cache Components. */}
-            <Suspense fallback={null}>
-              <WeatherNowcastBanner
-                continent={continent}
-                country={country}
-                city={city}
-                parkSlug={parkSlug}
-                initialData={null}
-                className="mb-6"
-              />
-            </Suspense>
+              Not behind <Suspense>: everything it draws is either in `park` already or arrives on
+              the client queries it starts itself, so a boundary would defer nothing and its
+              `fallback={null}` would reserve nothing — the exact shape that cost this page 0.095
+              CLS when the weather card had one.
 
-            {/* The weather CARD is not here any more — it is the "Wetter" tab in <TabsWithHash>.
-              It was a ~360px box between the header and the ride list, and the ride list is what
-              a visitor came for; behind a tile it costs the fold nothing and stays one click from
-              the summary. What a visitor wants on arrival did not move: the official warning and
-              the nowcast are the two banners above, and temperature reads in the header board.
-
-              Note this is a REMOVAL from the shell, not a deferral — the old comment here warned
-              against wrapping this card in a <Suspense fallback={null}>, which reserved nothing
-              and dropped 360px in a beat after paint (~0.095 CLS on every park with weather).
-              Nothing renders in its place now, so there is no hole to reserve and no late insert;
-              the tab panel it moved into mounts only on a click, long after the page has
-              settled. */}
+              The weather CARD is not here any more either; it is the "Wetter" tab in
+              <TabsWithHash>. That is a REMOVAL from the shell rather than a deferral, so there is
+              no hole to reserve and no late insert — the tab panel mounts on a click, long after
+              the page has settled. */}
+            <ParkTodayPanel
+              initialData={park}
+              continent={continent}
+              country={country}
+              city={city}
+              parkSlug={parkSlug}
+              parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+            />
 
             {/* Paid skip-the-line day prices (schedule purchases) — renders nothing for parks
               without purchase data (currently everything non-Disney). */}
