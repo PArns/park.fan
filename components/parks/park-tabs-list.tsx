@@ -1,15 +1,18 @@
 'use client';
 
 import { useMemo } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { CalendarDays, CloudSun, Map, Sparkles, UtensilsCrossed, Zap } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { EntryTileBody, entryTileBox } from '@/components/common/entry-tile';
-import { LocalTime } from '@/components/ui/local-time';
 import { useTileReveal } from '@/lib/hooks/use-tile-reveal';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { isInSeason } from '@/lib/utils/season';
+import { getAttractionDisplayStatus, getStandbyWait } from '@/lib/utils/park-utils';
+import { formatDurationShort } from '@/lib/i18n/time';
+import { getWeatherConfig } from '@/lib/utils/weather-utils';
+import { formatTime } from '@/lib/utils/intl-format';
 import { cn } from '@/lib/utils';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
@@ -87,6 +90,9 @@ export function ParkTabsList({
   weatherAvailable,
 }: ParkTabsListProps) {
   const t = useTranslations('parks');
+  const locale = useLocale();
+  const tWeather = useTranslations('parks.weather');
+  const tCommon = useTranslations('common');
   // The row settling in on mount. The ref goes on the LIST, and only its tiles' contents are
   // animated — see `useTileReveal` for why the glass may not be touched.
   const rowRef = useTileReveal<HTMLDivElement>();
@@ -113,6 +119,16 @@ export function ParkTabsList({
     () => (park.restaurants ?? []).filter((r) => r.status === 'OPERATING').length,
     [park.restaurants]
   );
+  // The shortest queue in the park right now — the one figure on this tile that is a
+  // recommendation rather than a summary. Closed rides are excluded via the display status, or a
+  // ride that shut with a stale `0` on its queue would win it every time.
+  const shortestWait = useMemo(() => {
+    const waits = (park.attractions ?? [])
+      .filter((a) => isInSeason(a) && getAttractionDisplayStatus(a, park.status) === 'OPERATING')
+      .map(getStandbyWait)
+      .filter((w): w is number => w !== null);
+    return waits.length > 0 ? Math.min(...waits) : null;
+  }, [park.attractions, park.status]);
   // `now` is the live reading; `current` is the DAY record, whose temperatures are strings and a
   // max rather than a nowcast — so it is the fallback here, never the first choice.
   const weatherHint = useMemo(() => {
@@ -120,22 +136,46 @@ export function ParkTabsList({
     if (!w?.current) return null;
     const temp = w.now?.temperature ?? Number(w.current.temperatureMax);
     if (!Number.isFinite(temp)) return null;
-    const description = w.now?.weatherDescription ?? w.current.weatherDescription;
-    return `${Math.round(temp)} °C${description ? ` · ${description}` : ''}`;
-  }, [park.weather]);
+    // NOT `weatherDescription`: that field is the provider's own English string, and it shipped
+    // as "22 °C · Overcast" on a German page. `getWeatherConfig` maps the WMO code to the key
+    // the weather card already translates.
+    const { label } = getWeatherConfig(
+      w.now?.weatherCode ?? w.current.weatherCode,
+      w.now?.isDay ?? true
+    );
+    const summary = `${Math.round(temp)} °C · ${tWeather(label)}`;
+    // An official warning outranks the conditions on a tile this small: it is the reason to open
+    // the weather chapter at all.
+    return (w.warnings?.length ?? 0) > 0 ? `${summary} · ${t('severeWeatherWarning')}` : summary;
+  }, [park.weather, tWeather, t]);
 
   const nextShowtime = useMemo(() => {
     if (!browserNow) return null;
     const nowMs = browserNow.getTime();
-    return (
+    const iso =
       (park.shows ?? [])
         .filter((s) => isInSeason(s))
         .flatMap((s) => s.showtimes ?? [])
         .map((st) => st.startTime)
-        .filter((iso) => new Date(iso).getTime() > nowMs)
-        .sort((a, b) => a.localeCompare(b))[0] ?? null
-    );
-  }, [park.shows, browserNow]);
+        .filter((t) => new Date(t).getTime() > nowMs)
+        .sort((a, b) => a.localeCompare(b))[0] ?? null;
+    // Formatted here rather than handed to <LocalTime>, because the hint is a translated
+    // sentence with the time inside it. `t.rich` cannot do it either: `{time}` is a placeholder
+    // and next-intl only calls a function value for a <tag>, so passing one rendered the label
+    // with an empty slot after it — "Nächste:" and nothing else, which is what shipped.
+    if (!iso) return null;
+    return {
+      // `hour`/`minute` are load-bearing: without them Intl falls back to its DATE defaults and
+      // the tile read "Nächste: 26.8.2026 · in 45 Min". Every other formatTime call site in the
+      // repo passes them for the same reason.
+      time: formatTime(new Date(iso), locale, {
+        hour: '2-digit',
+        minute: '2-digit',
+        timeZone: park.timezone || 'UTC',
+      }),
+      duration: formatDurationShort(new Date(iso).getTime() - nowMs, tCommon),
+    };
+  }, [park.shows, browserNow, locale, park.timezone, tCommon]);
 
   // `items-stretch` is load-bearing: TabsList's own base class sets `items-center`, which in a
   // grid centres every tile in its row and quietly cancels `auto-rows-fr` — the tiles in a
@@ -157,8 +197,12 @@ export function ParkTabsList({
         label={t('attractions')}
         count={park.attractions?.length || 0}
         hint={
-          stats
-            ? t('tileAttractions', { open: stats.operatingAttractions, avg: stats.avgWaitTime })
+          stats && shortestWait !== null
+            ? t('tileAttractions', {
+                open: stats.operatingAttractions,
+                avg: stats.avgWaitTime,
+                min: shortestWait,
+              })
             : null
         }
       />
@@ -172,8 +216,9 @@ export function ParkTabsList({
           count={park.shows?.length || 0}
           hint={
             nextShowtime
-              ? t.rich('tileShowsNext', {
-                  time: () => <LocalTime time={nextShowtime} timeZone={park.timezone || 'UTC'} />,
+              ? t('tileShowsNext', {
+                  time: nextShowtime.time,
+                  duration: nextShowtime.duration,
                 })
               : null
           }

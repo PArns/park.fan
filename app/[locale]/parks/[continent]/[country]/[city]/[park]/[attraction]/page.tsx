@@ -40,6 +40,7 @@ import { AttractionFAQStructuredData } from '@/components/seo/attraction-faq-str
 import { AttractionFAQSection } from '@/components/faq/attraction-faq-section';
 import { buildAttractionFaqItems } from '@/lib/faq/attraction-faq';
 import { RideSectionNav } from '@/components/parks/ride-section-nav';
+import { rideProfileRenders } from '@/lib/glossary/ride-profile';
 import { PageContainer } from '@/components/common/page-container';
 import { GlassCard } from '@/components/common/glass-card';
 import { AttractionHistorySections } from '@/components/parks/attraction-history-sections';
@@ -297,6 +298,13 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   // and the chapter row must not offer a jump to an anchor that is not on the page. Same pure
   // builder the section itself calls — it reads the attraction it was handed and does no I/O,
   // so asking twice costs a function call.
+  // Does the ride-profile chapter actually render? `RideProfileSection` returns null when the
+  // curated ids resolve to nothing and the profile carries no facts, and a tile must not point at
+  // an anchor that is not on the page. Same predicate the section itself asks.
+  const hasRideProfile = attraction.rideProfile
+    ? await rideProfileRenders(attraction.rideProfile, locale as Locale)
+    : false;
+
   const tFaqItems = await getTranslations('seo.faq.attraction');
   const hasFaq =
     buildAttractionFaqItems(
@@ -441,11 +449,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               the 30-day history, the ride profile and the FAQ out of this page's served HTML,
               which is most of what a ride page is for. Server-rendered at a fixed height, so it
               owes the page nothing when the live panel below it settles. */}
-            <RideSectionNav
-              hasRideProfile={!!attraction.rideProfile}
-              hasFaq={hasFaq}
-              className="mb-8"
-            />
+            <RideSectionNav hasRideProfile={hasRideProfile} hasFaq={hasFaq} className="mb-8" />
 
             {/* Chapter: the live wait time — the reason people are here. Was the only
               block on the page without a heading, so it read as a stray card between

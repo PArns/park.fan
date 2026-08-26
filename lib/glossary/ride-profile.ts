@@ -112,3 +112,23 @@ export async function resolveRideProfile(
       : null,
   };
 }
+
+/**
+ * Does <RideProfileSection> render anything for this profile?
+ *
+ * The section returns null when the curated ids resolve to no elements and no types and the
+ * profile carries no facts either — so the ride page's chapter row has to ask before offering a
+ * jump to `#ride-profile`. It lives here, next to the resolver, because the section asks the same
+ * question one line later and two copies of it drift: the first version of the chapter row used
+ * `!!attraction.rideProfile` and pointed at a missing anchor whenever a rename left a profile with
+ * nothing resolvable in it.
+ */
+export async function rideProfileRenders(profile: RideProfile, locale: Locale): Promise<boolean> {
+  const { elements, types } = await resolveRideProfile(profile, locale);
+  const hasFacts =
+    Boolean(profile.manufacturer) ||
+    profile.openedYear != null ||
+    profile.inversions != null ||
+    (profile.stats ?? null) !== null;
+  return elements.length > 0 || types.length > 0 || hasFacts;
+}

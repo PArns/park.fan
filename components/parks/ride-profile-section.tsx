@@ -24,7 +24,7 @@ import { cn } from '@/lib/utils';
 import { GlassCard } from '@/components/common/glass-card';
 import { PageSection } from '@/components/common/page-section';
 import { RideLayoutRail } from '@/components/parks/ride-layout-rail';
-import { resolveRideProfile } from '@/lib/glossary/ride-profile';
+import { resolveRideProfile, rideProfileRenders } from '@/lib/glossary/ride-profile';
 import type { Locale } from '@/i18n/config';
 import type { RideProfile } from '@/lib/api/types';
 
@@ -79,13 +79,16 @@ export async function RideProfileSection({ profile, locale }: RideProfileSection
   const { elements, types, manufacturerHref } = await resolveRideProfile(profile, locale);
 
   const stats = profile.stats ?? null;
+  // Whether the facts grid has anything to draw. The question of whether the CHAPTER renders at
+  // all is the same predicate the chapter row asks — one definition, in
+  // `lib/glossary/ride-profile.ts`, so the two cannot disagree about whether this anchor exists.
   const hasFacts =
     Boolean(profile.manufacturer) ||
     profile.openedYear != null ||
     profile.inversions != null ||
     stats !== null;
 
-  if (elements.length === 0 && types.length === 0 && !hasFacts) return null;
+  if (!(await rideProfileRenders(profile, locale))) return null;
 
   // The same nine keys the glossary term page builds for its own player.
   const playerLabels = {

@@ -1,7 +1,6 @@
 'use client';
 
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
-import { ParkStatus } from '@/components/parks/park-status';
 import { TabsWithHash } from '@/components/parks/tabs-with-hash';
 import { Card } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
@@ -9,7 +8,6 @@ import { AlertCircle, Loader2 } from 'lucide-react';
 import { useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { useMounted } from '@/lib/hooks/use-mounted';
-import { useTodayCrowdLevel } from '@/lib/hooks/use-today-crowd-level';
 import { groupAttractionsByLand } from '@/lib/utils/park-utils';
 import type {
   ParkWithAttractions,
@@ -73,17 +71,6 @@ export function LiveParkData({
 
   // Use current data if available, otherwise fall back to initial data
   const currentPark = park || initialData;
-
-  // Today's crowd as a DAILY rating, for the occupancy card's second badge. Same hook (and so the
-  // same one-day /calendar query) the header band reads, so the two surfaces can never disagree
-  // and this costs no request of its own.
-  const todayCrowd = useTodayCrowdLevel({
-    continent,
-    country,
-    city,
-    parkSlug,
-    timezone: currentPark.timezone ?? 'UTC',
-  });
 
   // Re-group attractions if data has changed (memoized to avoid recalculating on every render).
   // The land-less bucket name comes from the explicit `otherAttractionsLabel` prop, NOT from
@@ -157,24 +144,27 @@ export function LiveParkData({
         )}
       </div>
 
-      {/* Status, ride-list tabs and best-days are laid out in ONE flex column and reordered per
-          breakpoint via `order`, so the heavy <TabsWithHash> (the full attraction grid for big
-          parks) is rendered + hydrated EXACTLY ONCE. It used to be mounted twice — a mobile copy
-          inside ParkStatus and a `hidden sm:block` desktop copy — and `display:none` does not skip
-          hydration, so every park page paid double the hydration/re-render cost (the dominant
-          mobile-INP source on large parks like PortAventura). `gap-8` gives uniform spacing.
-            mobile : status → tabs → best-days
-            desktop: status → best-days → separator → tabs */}
+      {/* Entry tiles + ride list first, best-days after.
+          The <ParkStatus variant="detailed"> board that used to open this column is gone: every
+          figure on its three cards — occupancy and the vs-typical delta, today's and the live
+          crowd rating, Ø wait, peak, and open-of-total — is now in <ParkTodayPanel> up in the
+          header, and printing them a second time here is what made the page read as two answers
+          to one question.
+          Best-days moved BELOW the tabs for the same reason the tiles exist at all: it is a
+          ~500px block about a future visit, and while it sat between the header and the tabs it
+          pushed the way into the calendar, the map and the shows past the fold on every park.
+          The heavy <TabsWithHash> stays rendered + hydrated EXACTLY ONCE — it used to be mounted
+          twice (a mobile copy inside ParkStatus and a `hidden sm:block` desktop copy) and
+          `display:none` does not skip hydration, which was the dominant mobile-INP source on
+          large parks like PortAventura. `gap-8` gives uniform spacing. */}
       <div className="flex flex-col gap-8">
-        <ParkStatus
-          park={currentPark}
-          variant="detailed"
-          className="order-1"
-          todayCrowdLevel={todayCrowd.level}
-        />
-        <div className="order-2 sm:order-4">{tabsWithHash}</div>
-        {bestDaysSlot && <div className="order-3 sm:order-2">{bestDaysSlot}</div>}
-        <Separator className="order-3 hidden sm:block" />
+        <div>{tabsWithHash}</div>
+        {bestDaysSlot && (
+          <>
+            <Separator className="hidden sm:block" />
+            <div>{bestDaysSlot}</div>
+          </>
+        )}
       </div>
     </>
   );
