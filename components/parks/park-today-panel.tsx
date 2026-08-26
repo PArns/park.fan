@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { addDays, format, parseISO } from 'date-fns';
-import { ChevronRight, Clock, Crown, Sparkles, Users } from 'lucide-react';
+import { CalendarDays, ChevronRight, Clock, Crown, Sparkles, Users } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { useCalendarData } from '@/lib/hooks/use-calendar-data';
@@ -20,8 +20,11 @@ import { ParkTimeRange } from '@/components/common/park-time';
 import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { LocalTime } from '@/components/ui/local-time';
 import { Progress } from '@/components/ui/progress';
+import { Badge } from '@/components/ui/badge';
+import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import { formatDurationShort } from '@/lib/i18n/time';
 import { getAttractionDisplayStatus, getStandbyWait } from '@/lib/utils/park-utils';
+import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { isInSeason } from '@/lib/utils/season';
 import { stripNewPrefix, cn } from '@/lib/utils';
@@ -38,6 +41,10 @@ interface ParkTodayPanelProps {
   city: string;
   parkSlug: string;
   parkPath: string;
+  /** The park's address, site and ticket shop, handed in from the page as a slot.
+   *  <ParkInfoCard> is a Server Component and this panel is a Client one, so it arrives as
+   *  rendered children rather than as data — same shape `LiveParkData` uses for best-days. */
+  infoSlot?: React.ReactNode;
 }
 
 /** A captioned value inside a column: small uppercase caption + its value stack. */
@@ -103,9 +110,11 @@ export function ParkTodayPanel({
   city,
   parkSlug,
   parkPath,
+  infoSlot,
 }: ParkTodayPanelProps) {
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
+  const tWeather = useTranslations('parks.weather');
   const locale = useLocale();
   const timezone = initialData.timezone ?? 'UTC';
 
@@ -121,12 +130,35 @@ export function ParkTodayPanel({
     parkSlug,
   });
 
-  const park = sched.livePark ?? initialData;
-  const stats = park.analytics?.statistics;
-  const occupancy = park.analytics?.occupancy;
+  // NOT `sched.livePark`. `useTodaySchedule` runs its live query with no `initialData`, so its
+  // merge takes the `!base` branch and hands back the raw `LiveParkSnapshot` — a projection whose
+  // attractions carry no `isHeadliner` and which has no `shows` key at all. Reading structure off
+  // it made both right-hand columns render from the server park and then empty themselves the
+  // moment the first poll landed. `ParkHeaderStats` got away with the same line because it only
+  // ever read `analytics`/`currentLoad`, which the projection does carry.
+  //
+  // Seeded here, the merge lays the snapshot back over the full park, so `park` stays a complete
+  // `ParkWithAttractions`. Same query key as <LiveParkData>'s, so this shares that one 5-minute
+  // poll and adds no request.
+  const { data: mergedPark } = useLiveParkData({
+    continent,
+    country,
+    city,
+    parkSlug,
+    initialData,
+  });
+  const park = mergedPark ?? initialData;
+  const waitsReadable = hasReadableWaitTimes(park);
+  // Both are wait-derived, so a park with no wait-time source (Hansa-Park publishes only inside
+  // its own app) must not read them: over an empty set they aggregate to a wall of zeros — "0 von
+  // 82 Attraktionen offen", "Auslastung 0 %" under an empty bar, a vs-typical delta against
+  // nothing. The <ParkStatus variant="detailed"> board this panel replaced gated exactly these
+  // behind the same flag and returned null; dropping that gate re-opened the bug the curated
+  // `liveWaitTimes` flag exists to close.
+  const stats = waitsReadable ? park.analytics?.statistics : undefined;
+  const occupancy = waitsReadable ? park.analytics?.occupancy : undefined;
   const currentCrowd = stats?.crowdLevel ?? park.currentLoad?.crowdLevel ?? null;
   const isOpenish = sched.badgeStatus === 'OPERATING' || sched.isUnknown;
-  const waitsReadable = hasReadableWaitTimes(park);
 
   const browserNow = useBrowserNow(60_000);
   const { data: calendar } = useParkBestDaysCalendar({ continent, country, city, parkSlug });
@@ -165,26 +197,9 @@ export function ParkTodayPanel({
     : null;
   const todayReady = detailDate !== null || !!detailDay;
 
-  // Reserved rows — from the structure fetch, which the live merge carries unchanged.
-  const headlinerSlots = useMemo(
-    () =>
-      waitsReadable
-        ? Math.min(
-            HEADLINER_ROWS,
-            (park.attractions ?? []).filter((a) => a.isHeadliner && isInSeason(a)).length
-          )
-        : 0,
-    [park.attractions, waitsReadable]
-  );
-  const showSlots = useMemo(
-    () =>
-      Math.min(
-        SHOW_ROWS,
-        (park.shows ?? []).filter((s) => isInSeason(s) && (s.showtimes?.length ?? 0) > 0).length
-      ),
-    [park.shows]
-  );
-
+  // `isHeadliner` is the API's own classification and the exact predicate `useAttractionFilter`
+  // uses for the Highlights section, so the two lists can never disagree about what a headliner is.
+  //
   // Shortest first: the top row is the recommendation, not the trophy. A headliner with no standby
   // reading sorts last and renders a dash rather than shortening the column.
   const headliners = useMemo(() => {
@@ -204,6 +219,21 @@ export function ParkTodayPanel({
       .slice(0, HEADLINER_ROWS);
   }, [park.attractions, park.status, waitsReadable]);
 
+  // Reserved rows — the count comes from the same list the rows are drawn from, so it cannot
+  // disagree with it, and it is stable across the poll because the attraction set is.
+  const headlinerSlots = headliners.length;
+  // Counted in SHOWTIMES, not in shows: the rows are filled from the next start times park-wide,
+  // so counting shows reserved one row for a single show running hourly and silently dropped its
+  // other two upcoming slots.
+  const showSlots = useMemo(
+    () =>
+      Math.min(
+        SHOW_ROWS,
+        (park.shows ?? []).filter(isInSeason).reduce((n, s) => n + (s.showtimes?.length ?? 0), 0)
+      ),
+    [park.shows]
+  );
+
   // The next few showtimes across the whole park, not per show: the question here is what starts
   // next, not when a given show runs. Needs the clock, so it stays empty until `useBrowserNow`
   // lands rather than being answered during render (react-hooks/purity).
@@ -220,6 +250,71 @@ export function ParkTodayPanel({
       .slice(0, SHOW_ROWS);
   }, [park.shows, browserNow]);
 
+  // `now` is the live reading; `current` is the DAY record, whose temperatures are strings and a
+  // max rather than a nowcast — so it is the fallback here, never the first choice.
+  const weatherSummary = useMemo(() => {
+    const w = park.weather;
+    if (!w?.current) return null;
+    const temp = w.now?.temperature ?? Number(w.current.temperatureMax);
+    if (!Number.isFinite(temp)) return null;
+    // NOT `weatherDescription`: that field is the provider's own English string. `getWeatherConfig`
+    // maps the WMO code to the key the weather card already translates, and hands over the icon
+    // and its colour with it.
+    const { icon, label, color } = getWeatherConfig(
+      w.now?.weatherCode ?? w.current.weatherCode,
+      w.now?.isDay ?? true
+    );
+    const apparent = w.now?.apparentTemperature;
+    return {
+      icon,
+      color,
+      temperature: `${Math.round(temp)} °C`,
+      description: [
+        tWeather(label),
+        Number.isFinite(apparent)
+          ? `${tWeather('feelsLike')} ${Math.round(apparent as number)} °C`
+          : null,
+      ]
+        .filter(Boolean)
+        .join(' · '),
+    };
+  }, [park.weather, tWeather]);
+
+  // Local holiday context — the chips that used to sit under the stats board. Neighbouring-region
+  // breaks are NOT here: <HeaderHolidayPanel> owns that story in the row below, and a duplicate
+  // chip for the same fact in two rows of one panel is worse than either alone.
+  const holidayBadges = sched.holiday
+    ? [
+        sched.holiday.publicHolidayName && (
+          <Badge
+            key="public"
+            variant="outline"
+            className="border-orange-300 bg-orange-50 text-xs dark:border-orange-800 dark:bg-orange-950/50 dark:text-orange-300"
+          >
+            🎉 {sched.holiday.publicHolidayName}
+          </Badge>
+        ),
+        sched.holiday.isBridgeDay && (
+          <Badge
+            key="bridge"
+            variant="outline"
+            className="border-blue-300 bg-blue-50 text-xs dark:border-blue-800 dark:bg-blue-950/50 dark:text-blue-300"
+          >
+            🌉 {t('bridgeDay')}
+          </Badge>
+        ),
+        sched.holiday.isSchoolVacation && (
+          <Badge
+            key="vacation"
+            variant="outline"
+            className="border-yellow-300 bg-yellow-50 text-xs dark:border-yellow-800 dark:bg-yellow-950/50 dark:text-yellow-300"
+          >
+            🎒 {t('schoolVacation')}
+          </Badge>
+        ),
+      ].filter(Boolean)
+    : [];
+
   const handleDetailNavigate = (direction: -1 | 1) => {
     setDetailDate((prev) => {
       const base = prev ?? todayStr;
@@ -228,6 +323,7 @@ export function ParkTodayPanel({
   };
 
   const cell = 'border-border/50 flex flex-col gap-3 border-r border-b px-5 py-4';
+  const columnCount = 2 + (headlinerSlots > 0 ? 1 : 0) + (showSlots > 0 ? 1 : 0);
 
   return (
     <section className="bg-background/60 border-border/50 mb-6 overflow-hidden rounded-xl border shadow-sm backdrop-blur-md dark:bg-[oklch(0.12_0.025_241_/_0.55)]">
@@ -255,16 +351,32 @@ export function ParkTodayPanel({
           />
           <h2 className="text-[13px] font-bold tracking-[0.06em] uppercase">{t('todayInPark')}</h2>
         </div>
-        <span className="text-muted-foreground text-xs tabular-nums">
-          {sched.currentTimeFormatted}
-          {tCommon('timeSuffix')} · {t('localTime')}
-        </span>
+        {/* Guarded on `currentTime`, not on the formatted string: before the browser clock
+            mounts `currentTimeFormatted` is an em dash, and the first German paint read
+            "— Uhr · Ortszeit". The header this replaced carried the same guard. */}
+        {sched.currentTime && (
+          <span className="text-muted-foreground text-xs tabular-nums">
+            {sched.currentTimeFormatted}
+            {tCommon('timeSuffix')} · {t('localTime')}
+          </span>
+        )}
       </div>
 
       {/* -mr-px -mb-px + the wrapper's overflow-hidden clip the trailing hairlines, so the rules
           stay correct at four, two and one column. */}
       <div className="overflow-hidden">
-        <div className="-mr-px -mb-px grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Two of the four columns are conditional, so the wide track count is counted rather
+            than written down. At a fixed `lg:grid-cols-4` a park with no headliners and no
+            showtimes left two empty tracks sitting inside the panel's border — which is exactly
+            what shipped. */}
+        <div
+          className={cn(
+            '-mr-px -mb-px grid grid-cols-1 sm:grid-cols-2',
+            columnCount === 4 && 'lg:grid-cols-4',
+            columnCount === 3 && 'lg:grid-cols-3',
+            columnCount === 2 && 'lg:grid-cols-2'
+          )}
+        >
           {/* ── Status ── */}
           <div className={cell}>
             <Metric caption={t('statusLabel')}>
@@ -392,6 +504,31 @@ export function ParkTodayPanel({
                   <span className="text-muted-foreground">
                     {tCommon(occupancy.comparisonStatus)}
                   </span>
+                </p>
+              )}
+              {/* The last two figures off the "Ø Wartezeit" card that this panel replaced. They
+                  belong beside the occupancy bar rather than in the headliner column: both are
+                  park-wide readings about today, not about one queue. */}
+              {stats && (stats.peakWaitToday > 0 || stats.peakHour) && (
+                <p className="text-muted-foreground text-xs">
+                  {stats.peakWaitToday > 0 && (
+                    <>
+                      {t('parkPeak')}{' '}
+                      <strong className="text-foreground font-semibold tabular-nums">
+                        {stats.peakWaitToday}
+                      </strong>{' '}
+                      {tCommon('minutes')}
+                    </>
+                  )}
+                  {stats.peakWaitToday > 0 && stats.peakHour && ' · '}
+                  {stats.peakHour && (
+                    <>
+                      {t('peakHour')}{' '}
+                      <strong className="text-foreground font-semibold tabular-nums">
+                        {stats.peakHour}
+                      </strong>
+                    </>
+                  )}
                 </p>
               )}
             </div>
@@ -530,24 +667,60 @@ export function ParkTodayPanel({
         </div>
       </div>
 
-      {/* Weather summary — the nowcast banner renders inside this strip and nothing at all when
-          there is no rain/storm to report, which is why the temperature line beside it is not
-          conditional on it. The full card is one click away in the weather tab. */}
+      {/* Weather summary. The temperature line is NOT conditional on the nowcast: the nowcast
+          banner renders nothing at all unless there is rain or a storm to report, so hanging the
+          whole row off it meant every dry park showed no weather in this panel whatsoever. The
+          full card is one click away in the weather tab. */}
       {park.weather?.current && (
-        <div className="border-border/50 bg-muted/30 border-t px-5 py-2.5">
-          <WeatherNowcastBanner
-            continent={continent}
-            country={country}
-            city={city}
-            parkSlug={parkSlug}
-            initialData={null}
-            className="space-y-0 [&_.rounded-xl]:rounded-lg"
-          />
+        <div className="border-border/50 bg-muted/30 flex flex-wrap items-center gap-x-4 gap-y-2 border-t px-5 py-2.5">
+          {weatherSummary &&
+            (() => {
+              const WeatherIcon = weatherSummary.icon;
+              return (
+                <span className="flex items-center gap-2 text-sm font-semibold">
+                  <WeatherIcon className={cn('h-4 w-4', weatherSummary.color)} aria-hidden="true" />
+                  {weatherSummary.temperature}
+                </span>
+              );
+            })()}
+          {weatherSummary?.description && (
+            <span className="text-muted-foreground text-sm">{weatherSummary.description}</span>
+          )}
+          <a href="#weather" className="text-primary ml-auto text-xs whitespace-nowrap">
+            {t('weatherAndHourly')} ›
+          </a>
         </div>
       )}
 
-      {/* Neighbouring-holiday context — the "why is it so busy" behind the forecast. Renders
-          nothing when no influencing holidays apply, which is most parks most of the year. */}
+      {/* Rain / storm nowcast — its own strip because it is an alert, not a reading, and it
+          renders nothing on a dry day. */}
+      <WeatherNowcastBanner
+        continent={continent}
+        country={country}
+        city={city}
+        parkSlug={parkSlug}
+        initialData={null}
+        className="border-border/50 space-y-0 border-t px-5 py-2.5 empty:hidden"
+      />
+
+      {/* Holiday context — the "why is it so busy" behind the forecast. The local chips (public
+          holiday, bridge day, school break) sit beside the neighbouring-region panel rather than
+          in a band of their own: they answer the same question and the template puts them on one
+          line. Both halves collapse to nothing out of season, so the row can be empty and is
+          hidden when it is. */}
+      {holidayBadges.length > 0 && (
+        <div className="border-border/50 flex flex-wrap items-center gap-x-3 gap-y-2 border-t px-5 py-2.5">
+          <span className="text-muted-foreground flex shrink-0 items-center gap-1.5 text-[10px] font-semibold tracking-[0.08em] uppercase">
+            <CalendarDays className="h-3 w-3" aria-hidden="true" />
+            {t('holidaysLabel')}
+          </span>
+          {holidayBadges}
+        </div>
+      )}
+
+      {/* The neighbouring-region panel keeps its own row: it carries a caption and a sentence of
+          its own, so folding it into the chip row above would print two captions side by side.
+          Renders nothing when no influencing holidays apply. */}
       <HeaderHolidayPanel
         initialData={initialData}
         continent={continent}
@@ -556,6 +729,11 @@ export function ParkTodayPanel({
         parkSlug={parkSlug}
         className="border-border/50 border-t px-5 py-2.5"
       />
+
+      {/* Address, website, ticket shop — the last row rather than a card of its own further down
+          the page. It is the one block here that never changes during a visit, so it closes the
+          panel instead of opening it. Renders nothing for a park nobody has curated. */}
+      {infoSlot}
 
       <ParkCalendarDayDetail
         day={detailDay}

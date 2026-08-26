@@ -346,7 +346,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
   const countryName = translateCountry(tGeo, country, locale, park.country ?? undefined);
   const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
 
-  // Today's schedule is picked CLIENT-side inside <ParkHeaderStats> (from the browser clock in the
+  // Today's schedule is picked CLIENT-side inside <ParkTodayPanel> (from the browser clock in the
   // park's timezone) — the full day-stable park.schedule is handed down instead of a server-derived
   // "today" entry, so the shell never reads the server clock.
   const parkName = stripNewPrefix(park.name);
@@ -486,6 +486,20 @@ export default async function ParkPage({ params }: ParkPageProps) {
               city={city}
               parkSlug={parkSlug}
               parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+              infoSlot={
+                /* The park's own address, site and ticket shop — hand-curated in the admin,
+                   because none of the three upstream feeds carries any of it. Server-rendered
+                   (no client JS, no boundary) and handed to the panel as its closing row; absent
+                   entirely for a park nobody has curated yet, rather than an empty frame on 200
+                   pages. The className strips GlassCard's own frame: inside the panel it is a
+                   row, not a second card. */
+                <ParkInfoCard
+                  info={park.info}
+                  city={cityName}
+                  country={translateGeoSlug(tGeo, 'countries', country, countryName)}
+                  className="border-border/50 mb-0 rounded-none border-0 border-t bg-transparent px-5 py-4 shadow-none backdrop-blur-none"
+                />
+              }
             />
 
             {/* Paid skip-the-line day prices (schedule purchases) — renders nothing for parks
@@ -593,17 +607,6 @@ export default async function ParkPage({ params }: ParkPageProps) {
               re-polled every five minutes and a season changes a few times a
               year. Renders nothing for the majority of parks that have none. */}
             <ParkSeasonsCard seasons={seasons} locale={locale} className="mt-8" />
-
-            {/* The park's own address, site and ticket shop — hand-curated in the admin, because
-              none of the three upstream feeds carries any of it. Server-rendered inline (no
-              client JS, no boundary), and absent entirely for a park nobody has curated yet
-              rather than an empty frame on 200 pages. */}
-            <ParkInfoCard
-              info={park.info}
-              city={cityName}
-              country={translateGeoSlug(tGeo, 'countries', country, countryName)}
-              className="mt-8"
-            />
 
             {/* FAQ Section — Q0–Q6 + Q1 (today's hours) render immediately from the park snapshot +
               server clock. Q7 (least crowded) is NOT server-seeded here (that would require

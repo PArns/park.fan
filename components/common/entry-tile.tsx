@@ -9,14 +9,19 @@ import { cn } from '@/lib/utils';
  * icon chip, and they have to: both rows sit a few hundred pixels apart on the same park photo,
  * and a second copy of these classes is a second copy that drifts on the next restyle.
  *
- * The glass matches the rest of the page (`bg-background/60` + `backdrop-blur-md`, with the
- * hand-mixed dark value the search box and the empty-state card already use) rather than
- * `GlassCard`, which brings `p-6` and its own radius — at tile size that is a card, not a tile.
+ * Not `GlassCard`: that brings `p-6` and its own radius, and at tile size that is a card.
+ *
+ * The fill is `heavy`-grade on purpose, not the `/60` the search box and the empty-state card use.
+ * Those two sit over the page background; this row sits directly on the park photo, and at `/60`
+ * the picture came through the tiles hard enough that "Karte" and "Wetter" were unreadable over a
+ * bright patch of it — a washed-out rectangle with a photo behind the text rather than a pane of
+ * glass. Same reasoning `GlassCard`'s `heavy` variant is written down with, one step further
+ * because a tile is small and its label is the only thing in it.
  */
 export const entryTileBox = cn(
-  'border-border/50 bg-background/60 flex h-auto w-full flex-col items-start justify-start gap-2',
-  'rounded-xl border p-3.5 text-left whitespace-normal backdrop-blur-md transition-colors',
-  'dark:bg-[oklch(0.12_0.025_241_/_0.55)]'
+  'border-border/50 bg-background/85 flex h-auto w-full flex-col items-start justify-start gap-2',
+  'rounded-xl border p-3.5 text-left whitespace-normal backdrop-blur-xl transition-colors',
+  'dark:bg-[oklch(0.13_0.02_241_/_0.88)]'
 );
 
 /** The icon chip. Square, so the row is scannable by shape before any label is read. */
