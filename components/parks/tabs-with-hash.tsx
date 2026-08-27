@@ -21,7 +21,8 @@ import { AttractionCardSkeleton } from '@/components/parks/attraction-card-skele
 import { Skeleton } from '@/components/ui/skeleton';
 import { useTabHashRouting } from '@/lib/hooks/use-tab-hash-routing';
 import { useAttractionFilter } from '@/lib/hooks/use-attraction-filter';
-import { stripNewPrefix } from '@/lib/utils';
+import { stripNewPrefix, cn } from '@/lib/utils';
+import { HEAVY_GLASS } from '@/components/common/glass-card';
 
 import type { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
 
@@ -43,6 +44,37 @@ interface TabsWithHashProps {
   parkSlug: string;
   landNames: string[];
   attractionsByLand: Record<string, ParkAttraction[]>;
+  /** <ParkTodayPanel>, rendered by the page and handed down as a slot. It is the upper half of
+   *  the header card whose lower half is the entry-tile row — one card, so one component has to
+   *  own its box, and that is this one. */
+  todayPanel?: React.ReactNode;
+}
+
+/**
+ * The park page's header card: "Heute im Park" on top, the entry-tile row as its footer band.
+ *
+ * They were two cards with a gap. Both carried the same glass, the same 12 px radius and the same
+ * hairline border, so the page opened with two objects that were made of the same thing and were
+ * not the same thing — and the row of navigation cells, being the smaller and more opaque of the
+ * two, read as a separate strip rather than as the way into what the panel had just summarised.
+ *
+ * One card, and the box lives here rather than in either half: `ParkTodayPanel` renders bands and
+ * `ParkTabsList` renders a cell grid, and both need the same `overflow-hidden` to clip their
+ * trailing hairlines. Which is also why the panel comes through as a SLOT — it is a Client
+ * Component the (server) page builds, and this is where its box had to end up.
+ */
+function ParkHeaderCard({ panel, tiles }: { panel?: React.ReactNode; tiles: React.ReactNode }) {
+  return (
+    <div
+      className={cn(
+        'border-border/50 mb-4 overflow-hidden rounded-xl border shadow-sm',
+        HEAVY_GLASS
+      )}
+    >
+      {panel}
+      {tiles}
+    </div>
+  );
 }
 
 // Memoized: `LiveParkData` re-renders on every 5-min poll's `isFetching` flip, but all props
@@ -61,6 +93,7 @@ export const TabsWithHash = memo(function TabsWithHash({
   parkSlug,
   landNames,
   attractionsByLand,
+  todayPanel,
 }: TabsWithHashProps) {
   const t = useTranslations('parks');
 
@@ -116,15 +149,20 @@ export const TabsWithHash = memo(function TabsWithHash({
     return (
       <div ref={tabsRef} className="scroll-mt-20">
         <Tabs value={defaultValue}>
-          <ParkTabsList
-            park={park}
-            continent={continent}
-            country={country}
-            city={city}
-            parkSlug={parkSlug}
-            showsAvailable={showsAvailable}
-            restaurantsAvailable={restaurantsAvailable}
-            weatherAvailable={weatherAvailable}
+          <ParkHeaderCard
+            panel={todayPanel}
+            tiles={
+              <ParkTabsList
+                park={park}
+                continent={continent}
+                country={country}
+                city={city}
+                parkSlug={parkSlug}
+                showsAvailable={showsAvailable}
+                restaurantsAvailable={restaurantsAvailable}
+                weatherAvailable={weatherAvailable}
+              />
+            }
           />
           <TabsContent value={defaultValue} className="space-y-6">
             {/* The same chapter heading the mounted branch renders. Without it the
@@ -147,15 +185,20 @@ export const TabsWithHash = memo(function TabsWithHash({
   return (
     <div ref={tabsRef} className="scroll-mt-20">
       <Tabs value={activeTab} onValueChange={handleTabChange}>
-        <ParkTabsList
-          park={park}
-          continent={continent}
-          country={country}
-          city={city}
-          parkSlug={parkSlug}
-          showsAvailable={showsAvailable}
-          restaurantsAvailable={restaurantsAvailable}
-          weatherAvailable={weatherAvailable}
+        <ParkHeaderCard
+          panel={todayPanel}
+          tiles={
+            <ParkTabsList
+              park={park}
+              continent={continent}
+              country={country}
+              city={city}
+              parkSlug={parkSlug}
+              showsAvailable={showsAvailable}
+              restaurantsAvailable={restaurantsAvailable}
+              weatherAvailable={weatherAvailable}
+            />
+          }
         />
 
         <TabsContent

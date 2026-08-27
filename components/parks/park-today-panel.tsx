@@ -20,7 +20,6 @@ import { ParkTimeRange } from '@/components/common/park-time';
 import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { LocalTime } from '@/components/ui/local-time';
 import { Progress } from '@/components/ui/progress';
-import { HEAVY_GLASS } from '@/components/common/glass-card';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { formatDurationShort } from '@/lib/i18n/time';
@@ -298,13 +297,12 @@ export function ParkTodayPanel({
   const columnCount = 2 + (headlinerSlots > 0 ? 1 : 0) + (showSlots > 0 ? 1 : 0);
 
   return (
-    <section
-      className={cn(
-        'border-border/50 mb-4 overflow-hidden rounded-xl border shadow-sm',
-        // Same glass as the title card above and the tile row below — see HEAVY_GLASS.
-        HEAVY_GLASS
-      )}
-    >
+    // No box of its own. The panel and the entry-tile row used to be two bordered, rounded,
+    // glass-filled cards with a gap between them; they are one card now, and `TabsWithHash` owns
+    // it — this component contributes the upper bands, the tile row the footer band. A fragment
+    // rather than a `<div>` so the bands are direct children of that card and its
+    // `overflow-hidden` clips their hairlines the way it always clipped this panel's.
+    <>
       {/* Official severe-weather warning — the panel's top strip, above everything else it says.
           `rounded-none` also has to reach the banner's two absolutely-positioned overlay layers,
           which carry their own `rounded-xl`; left round inside a square strip they leave the
@@ -732,6 +730,6 @@ export function ParkTodayPanel({
         }}
         onNavigate={handleDetailNavigate}
       />
-    </section>
+    </>
   );
 }

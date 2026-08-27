@@ -19,6 +19,9 @@ interface LiveParkDataProps {
   attractionsByLand: Record<string, ParkAttraction[]>;
   /** Translated bucket name for attractions the API reports without a land. */
   otherAttractionsLabel: string;
+  /** <ParkTodayPanel> as a slot — it is the top half of the header card whose bottom half is the
+   *  entry-tile row, and that card is built inside <TabsWithHash>. */
+  todayPanel?: React.ReactNode;
 }
 
 /**
@@ -37,6 +40,7 @@ export function LiveParkData({
   landNames,
   attractionsByLand,
   otherAttractionsLabel,
+  todayPanel,
 }: LiveParkDataProps) {
   const t = useTranslations('common');
 
@@ -91,6 +95,7 @@ export function LiveParkData({
       parkSlug={parkSlug}
       landNames={currentLandNames}
       attractionsByLand={currentAttractionsByLand}
+      todayPanel={todayPanel}
     />
   );
 

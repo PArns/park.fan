@@ -484,31 +484,6 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
               </GlassCard>
             </div>
 
-            {/* "Heute im Park" — the one panel the fold is built around. It absorbed four things
-              that used to be four boxes: the official DWD/MeteoAlarm warning (its top strip), the
-              stats board (its first two columns), the neighbouring-holiday context (its last row)
-              and the weather summary (the nowcast strip above that row). It also carries the two
-              readings that were not above the fold at all — what the headliners cost right now and
-              when the next shows start.
-
-              Not behind <Suspense>: everything it draws is either in `park` already or arrives on
-              the client queries it starts itself, so a boundary would defer nothing and its
-              `fallback={null}` would reserve nothing — the exact shape that cost this page 0.095
-              CLS when the weather card had one.
-
-              The weather CARD is not here any more either; it is the "Wetter" tab in
-              <TabsWithHash>. That is a REMOVAL from the shell rather than a deferral, so there is
-              no hole to reserve and no late insert — the tab panel mounts on a click, long after
-              the page has settled. */}
-            <ParkTodayPanel
-              initialData={park}
-              continent={continent}
-              country={country}
-              city={city}
-              parkSlug={parkSlug}
-              parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
-            />
-
             {/* Paid skip-the-line day prices (schedule purchases) — renders nothing for parks
               without purchase data (currently everything non-Disney). */}
             <ParkPurchasesCard schedule={park.schedule} timezone={park.timezone} className="mb-8" />
@@ -524,7 +499,22 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
               className="mb-8"
             />
 
-            {/* Live Park Data (Status + Tabs with auto-refresh) */}
+            {/* Live Park Data — the header card ("Heute im Park" + the entry tiles) and the tab
+              body under it, all with auto-refresh.
+
+              "Heute im Park" is the one panel the fold is built around. It absorbed four things
+              that used to be four boxes: the official DWD/MeteoAlarm warning (its top strip), the
+              stats board (its first two columns), the holiday context (its last row) and the
+              weather summary (the nowcast strip above that row). It also carries the two readings
+              that were not above the fold at all — what the headliners cost right now and when the
+              next shows start.
+
+              It is handed down as a SLOT rather than rendered here, because it and the entry-tile
+              row are one card now and that card is built where the tiles are (see
+              <ParkHeaderCard>). Not behind <Suspense>: everything it draws is either in `park`
+              already or arrives on the client queries it starts itself, so a boundary would defer
+              nothing and its `fallback={null}` would reserve nothing — the exact shape that cost
+              this page 0.095 CLS when the weather card had one. */}
             <LiveParkData
               initialData={park}
               continent={continent}
@@ -534,6 +524,21 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
               landNames={landNames}
               attractionsByLand={attractionsByLand}
               otherAttractionsLabel={otherAttractionsLabel}
+              todayPanel={
+                // The key is not decoration: <ParkHeaderCard> renders `{panel}{tiles}`, and an
+                // element created HERE and handed through a prop into that pair is a keyless child
+                // of an array as far as React's dev validation is concerned — it warns naming
+                // ParkHeaderCard and pointing back at this file. One stable key, no extra DOM.
+                <ParkTodayPanel
+                  key="today-panel"
+                  initialData={park}
+                  continent={continent}
+                  country={country}
+                  city={city}
+                  parkSlug={parkSlug}
+                  parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+                />
+              }
             />
 
             {/* Nearby Parks — streamed (geo proximity lookup + live park cards) */}

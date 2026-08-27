@@ -7,7 +7,7 @@ import type { LucideIcon } from 'lucide-react';
 import { TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Link } from '@/i18n/navigation';
 import { parkCalendarPath } from '@/lib/parks/calendar-segments';
-import { EntryTileBody, entryTileBox } from '@/components/common/entry-tile';
+import { EntryTileBody } from '@/components/common/entry-tile';
 import { useTileReveal } from '@/lib/hooks/use-tile-reveal';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { isInSeason } from '@/lib/utils/season';
@@ -35,18 +35,71 @@ interface ParkTabsListProps {
   weatherAvailable: boolean | undefined;
 }
 
-/** Hover, shared by both tile kinds so a tab and the calendar link answer the pointer alike. */
-const tileHover = 'hover:border-primary/60';
+/**
+ * The tile as a CELL of the header card, not a card of its own.
+ *
+ * The row used to be six bordered, rounded, glass-filled boxes sitting under the "Heute im Park"
+ * panel with a gap between them. Same fill, same radius, same border as the panel — so the page
+ * opened with two objects that were made of the same thing and were not the same thing. They are
+ * one card now: this row is its footer band, and it takes the panel's own cell grammar (a right
+ * and bottom hairline, clipped by the card's `overflow-hidden`) instead of a box each.
+ *
+ * That grammar is what carries the integration. The panel's four data columns and these six
+ * navigation cells are the same width tracks separated by the same rules, so the whole header
+ * reads as one instrument rather than a stack of cards. The band is tinted a step darker
+ * (`bg-muted/20`) so it still reads as the navigation and not as a fifth row of readings.
+ *
+ * Selection cannot be a ring any more — a ring inside a hairline grid draws a box where the grid
+ * says there is none. It is a 2 px primary bar along the cell's top edge plus the primary tint
+ * and the filled chip, which is a stronger signal than the old ring was and costs no layout
+ * shift: the bar is a `::before`-style inset border on an element that already reserves it.
+ */
+const tileCell = cn(
+  'group relative border-border/50 flex h-auto w-full flex-col items-start justify-start gap-2',
+  'border-r border-b px-4 py-3.5 text-left whitespace-normal transition-colors',
+  'bg-muted/20 hover:bg-muted/40',
+  // `TabsTrigger`'s own base is built for a segmented control and has to be undone here, or the
+  // selected cell draws a rounded, shadowed, `border-input`-coloured box inside a grid whose whole
+  // point is that there are no boxes: `rounded-md`, `data-[state=active]:shadow-sm`,
+  // `dark:data-[state=active]:border-input` and `h-[calc(100%-1px)]`. The link tile carries the
+  // same overrides for free — it is not a trigger, so they are simply no-ops on it.
+  'rounded-none',
+  'data-[state=active]:border-border/50 dark:data-[state=active]:border-border/50'
+);
+
+/**
+ * The selected cell's bar, along its top edge.
+ *
+ * An element rather than a border or a shadow, and both of those were tried against the DOM
+ * first. `border-t-primary` loses because the cell already needs a SHORTHAND `border-…` colour
+ * under `data-[state=active]:` — to beat the `dark:data-[state=active]:border-input` that
+ * `TabsTrigger`'s own base sets — and a shorthand border colour beats a side-specific one in the
+ * cascade whatever order the classes are written in; measured, the selected cell's
+ * `border-top-color` came back as the plain hairline colour. An inset `shadow-[…]` loses to the
+ * base's `data-[state=active]:shadow-sm` in the same way; measured, `box-shadow` computed to
+ * `0px 0px 0px 0`.
+ *
+ * A positioned child answers to nothing but itself. It costs no reserved space either, where a
+ * `border-t-2` had to be carried by every cell in the row to keep the labels on one baseline.
+ */
+function SelectionBar() {
+  return (
+    <span
+      aria-hidden="true"
+      className="bg-primary absolute inset-x-0 top-0 h-[3px] opacity-0 transition-opacity group-data-[state=active]:opacity-100"
+    />
+  );
+}
 
 /**
  * One entry tile that switches a tab. It stays a real `TabsTrigger`, so Radix keeps the roving
  * tabindex, the arrow keys and the `aria-selected`/`aria-controls` pairing that a hand-rolled
- * button would have to re-implement. Only the skin changed.
+ * button would have to re-implement.
  *
- * The calendar tile is NOT one of these — it is a `<Link>` to `/…/<park>/kalender`, rendered
- * below. A row of six boxes that look identical and behave in two ways is a fair objection to
- * that, and the alternative was worse: the calendar's own page cannot be a tab panel, and a tab
- * that navigates away would leave Radix holding a selection for a page nobody is on.
+ * The calendar tile is NOT one of these — it is a `<Link>` to the calendar page, rendered below.
+ * A row of cells that look identical and behave in two ways is a fair objection to that, and the
+ * alternative was worse: the calendar's own page cannot be a tab panel, and a tab that navigates
+ * away would leave Radix holding a selection for a page nobody is on.
  */
 function Tile({
   value,
@@ -68,24 +121,14 @@ function Tile({
     <TabsTrigger
       value={value}
       className={cn(
-        'group',
         order,
-        entryTileBox,
-        tileHover,
-        // The active fill is written out in full rather than as `bg-primary/10`, because
-        // tailwind-merge REPLACES the base fill with it — the selected tile then sat at 10 %
-        // opacity over the park photo and was the least readable of the six, which is the exact
-        // opposite of what selecting it should do. These two carry the tint AND the base's
-        // opacity, so the active tile is the most solid one in the row.
-        // Three signals, because one was not enough over an arbitrary photo: a primary border, a
-        // ring that thickens it without moving the box (a 2px border would shift the label by a
-        // pixel on select), and the tint below. The chip fills as well, in EntryTileBody.
-        'data-[state=active]:border-primary data-[state=active]:ring-primary/60',
-        'data-[state=active]:ring-2 data-[state=active]:ring-inset',
-        'data-[state=active]:bg-[color-mix(in_oklch,var(--primary)_12%,var(--background))]/92',
-        'dark:data-[state=active]:bg-[oklch(0.19_0.055_241_/_0.92)]'
+        tileCell,
+        // A primary tint brighter than the band's own; the bar is drawn by <SelectionBar> below
+        // and the icon chip fills too (in EntryTileBody). Three signals, none of them a box.
+        'data-[state=active]:bg-primary/12 dark:data-[state=active]:bg-primary/18'
       )}
     >
+      <SelectionBar />
       <EntryTileBody
         icon={icon}
         label={label}
@@ -282,7 +325,10 @@ export function ParkTabsList({
     <div
       ref={rowRef}
       className={cn(
-        'mb-4 grid w-full auto-rows-fr grid-cols-2 items-stretch gap-3 sm:grid-cols-3',
+        // `-mr-px -mb-px` + the card's `overflow-hidden` clip the trailing hairlines, exactly as
+        // the panel's own column band does one row up. No `gap`: the cells touch and the rules
+        // between them are the separation.
+        '-mr-px -mb-px grid w-full auto-rows-fr grid-cols-2 items-stretch sm:grid-cols-3',
         tileCount === 6 && 'lg:grid-cols-6',
         tileCount === 5 && 'lg:grid-cols-5',
         tileCount === 4 && 'lg:grid-cols-4',
@@ -361,7 +407,7 @@ export function ParkTabsList({
           alone decides — attractions 1, the calendar 2, the rest 3 in DOM order. */}
       <Link
         href={parkCalendarPath(locale, continent, country, city, parkSlug)}
-        className={cn('group order-2', entryTileBox, tileHover)}
+        className={cn('order-2', tileCell)}
       >
         <EntryTileBody
           icon={CalendarDays}
