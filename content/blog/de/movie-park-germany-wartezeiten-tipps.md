@@ -83,7 +83,7 @@ Filmpark**. Der hielt von 1992 bis 1994.
 
 Dann kam Warner. Am **30. Juni 1996** ging der Park für zahlende Gäste auf, und
 die Rechnung dahinter war einfach: Ein Studio verleiht seine Figuren an einen
-Park, der Park verkauft Tickets, beide gewinnen. So lange, wie das Studio dabei bleibt.
+Park, der Park verkauft Tickets, beide gewinnen. Solange das Studio dabei bleibt.
 
 Es blieb acht Jahre. Im Oktober 1999 verkaufte Time Warner 97 Prozent an
 **Premier Parks**, die kurz darauf **Six Flags** hießen. 2004 verkauften die
@@ -132,8 +132,7 @@ Nickelodeon-Themenbereich Europas, 2017 kam Star Trek dazu, 2026 Paramount. Oder
 er kann über das erzählen, was er selbst ist. Ein Park, der seit dreißig Jahren
 Filmkulissen baut, hat dafür mehr Material als die meisten.
 
-Beide Wege laufen inzwischen nebeneinander, und an zwei Attraktionen treffen sie
-sich.
+An zwei Attraktionen treffen sich beide Wege.
 
 ### Movie Park Studio Tour
 
@@ -159,8 +158,8 @@ Attraktionen noch vorkommen.
 
 ### Journey to the Forbidden Chamber
 
-Die Neuheit von 2026 macht denselben Trick noch einmal. Am **14. Mai 2026**
-eröffnete **Journey to the Forbidden Chamber**, eine exklusive
+2026 hat der Park es genauso gemacht. Am **14. Mai 2026** eröffnete
+**Journey to the Forbidden Chamber**, eine exklusive
 Paramount-Attraktion: ein Immersive Tunnel von **Simworx**, also eine bewegliche
 Plattform vor einer Projektion, dazu Effekte im Raum. Du spielst einen
 Komparsen in einer Produktion der Paramount Studios in Los Angeles. Der Film
@@ -196,8 +195,8 @@ Immelmann, Heartline Roll und Korkenzieher. Der Soundtrack stammt von IMAscore,
 davor läuft eine Preshow mit Projektionen.
 
 Es ist außerdem die einzige Bahn im Park, bei der sich Rennen am Morgen wirklich
-auszahlt. Warum das für keine andere gilt, steht in den Stundenwerten weiter
-unten.
+auszahlt: Ihre Schlange ist in der zweiten Stunde am längsten und danach nie
+wieder so lang.
 
 [Star Trek™: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise?full)
 
@@ -251,10 +250,9 @@ Gebäude aus wie eine amerikanische Garage. Die Schiene ist verfüllt, deshalb i
 das Ding drinnen erstaunlich leise, und der zweite Lifthill zieht mit
 Reibrädern an, sodass der Wagen im Steigen schneller wird.
 
-Was diese Bahn ausbremst, steht in ihrer eigenen Datenzeile: **848 Personen pro
-Stunde**. Das ist für die beliebteste Attraktion eines Parks mit Zehntausenden
-Gästen an starken Tagen schlicht zu wenig, und man sieht es in unseren Zahlen
-über den ganzen Tag.
+Der Engpass steht im Datenblatt: **848 Personen pro Stunde**. Für die beliebteste
+Attraktion eines Parks, der an starken Tagen Zehntausende hereinlässt, ist das
+zu wenig, und man sieht es in unseren Zahlen über den ganzen Tag.
 
 ```glossary-widget slug=ride-capacity
 
@@ -272,15 +270,12 @@ zwei harten Schulterbügeln.
 
 ```
 
-Damit ist auch schon alles gesagt. Diese Bauart hat Vekoma über Jahre den Ruf
-eingebracht, den die Firma seit den Zwanzigern mühsam wieder loswird, und dieses
-Exemplar macht da keine Ausnahme. Als der Park vor ein paar Jahren seine Fans
-nach Verbesserungsvorschlägen fragte, war die meistgenannte Antwort, sie
-abzureißen.
+Diese Bauart hat Vekoma über Jahre den Ruf eingebracht, den die Firma seit den
+Zwanzigern mühsam wieder loswird, und dieses Exemplar macht da keine Ausnahme.
+Als der Park vor ein paar Jahren seine Fans nach Verbesserungsvorschlägen
+fragte, war die meistgenannte Antwort, sie abzureißen.
 
 ![Eine violett und blau angeleuchtete Achterbahn bei Nacht, dahinter der Mond, davor ein Parkplatz mit Autos | Vom Parkplatz aus, nach Feierabend. Der Mond stand günstig. Darunter fährt trotzdem eine Vekoma von 2001. | wide](/media/movie-park-germany/iron-claw.jpg)
-
-Nachts sieht sie großartig aus. Das ist nicht nichts.
 
 ### Die drei kleinen
 
@@ -310,16 +305,15 @@ und sie macht nass.
 
 **[Area 51 – Top Secret](ref:movie-park-germany/area-51-top-secret)** ist eine
 Wasserbahn mit Animatronics im Stil der Science-Fiction-B-Movies der
-Sechzigerjahre. Die Außenkulisse gehört zu den Ecken, an denen dieser Park immer
-noch zeigt, was 1996 hier gebaut wurde.
+Sechzigerjahre. Die Außenkulisse ist eine der Ecken, an denen man noch sieht,
+wie viel Geld hier 1996 verbaut wurde.
 
 ![Eine Wellblechhalle mit der Aufschrift „U.S. A.F.“, darin ein Militärjeep, daneben ein kleines Flugzeug und ein roter Felsen | Der Vorplatz von Area 51. Der Jeep steht seit dreißig Jahren an dieser Stelle. | wide](/media/movie-park-germany/area-51-top-secret.jpg)
 
 **[The High Fall](ref:movie-park-germany/the-high-fall)** ist der rund 60 Meter
 hohe Freifallturm von Intamin im Themenbereich The Old West. Die Gondel dreht
 sich beim Hochfahren, und kurz vor dem Fall kippen die Sitze nach vorn, sodass du
-mit dem Blick nach unten wartest. Das ist der bis heute unangenehmste Moment im
-ganzen Park.
+mit dem Blick nach unten wartest. Der unangenehmste Moment im ganzen Park.
 
 ```glossary-widget slug=drop-tower
 
@@ -331,10 +325,10 @@ genau deswegen sehenswert.
 
 **[Dora's Big River Adventure](ref:movie-park-germany/doras-big-river-adventure)**
 schließlich ist die Wildwasserbahn im **Nickland**, gebaut für Grundschulkinder,
-und trotzdem eine der beiden längsten Schlangen des Parks. Warum, steht im
-nächsten Kapitel.
+und trotzdem eine der beiden längsten Schlangen des Parks, weil sie an heißen
+Nachmittagen der halbe Park gleichzeitig ansteuert.
 
-Dann sind da die Bühnen, und die gehören hier seit dem ersten Tag dazu: Ein
+Die Bühnen gehören hier seit dem ersten Tag dazu: Ein
 Studio-Park ohne Stunt-Show war 1996 undenkbar, also lief zur Eröffnung die
 Police Academy Stunt Show. 2026 laufen drei neue Shows: **Black
 Thunder** im Saloon, **Frequency** im Van Helsing's Club und **Turn Back Time**
@@ -361,8 +355,8 @@ Die zehn Attraktionen, an denen du am längsten stehst:
 
 Ganz oben steht keine Achterbahn mit 90 km/h, sondern eine Hallenfahrt mit 36.
 Van Helsing's Factory hat den längsten Median im Park, direkt dahinter kommt die
-Wildwasserbahn aus dem Kinderbereich. Star Trek, wegen der die meisten überhaupt
-anreisen, liegt im Mittelfeld.
+Wildwasserbahn aus dem Kinderbereich. Star Trek liegt im Mittelfeld, obwohl die
+meisten wegen dieser Bahn überhaupt anreisen.
 
 Das hat wenig mit Beliebtheit zu tun und viel mit Durchsatz. Van Helsing schafft
 848 Personen pro Stunde, und weil die Fahrt drinnen liegt, ist sie außerdem das,
@@ -386,8 +380,7 @@ Und dann ist da Van Helsing. Diese Zeile springt in der zweiten Stunde hoch und
 bleibt danach bis zum Schluss auf demselben Wert stehen. Wer nicht in den ersten
 sechzig Minuten dort war, findet den ganzen Tag keinen besseren Moment mehr.
 
-Im Vergleich mit den Parks, die für dieselbe Zielgruppe im Umkreis liegen, sieht
-das so aus:
+Im Vergleich mit der Nachbarschaft:
 
 ```park-comparison-widget slugs=movie-park-germany,phantasialand,efteling,attractiepark-toverland,walibi-holland,europa-park highlight=movie-park-germany
 
@@ -407,7 +400,7 @@ der Movie Park nicht, dafür fährst du an einem normalen Tag mehr.
 
 ## Wann du hinfahren solltest, und der Fahrplan ab September
 
-Die Empfehlung, die für diesen Park überall im Netz steht, ist falsch.
+Die verbreitetste Empfehlung für diesen Park ist falsch.
 
 ### Der Wochentag
 
@@ -416,7 +409,7 @@ Die Empfehlung, die für diesen Park überall im Netz steht, ist falsch.
 ```
 
 Am kürzesten stehst du am **Sonntag** und am **Freitag**, am längsten am
-**Dienstag**. Wer im Netz nach Movie-Park-Tipps sucht, liest fast überall das
+**Dienstag**. Wer nach Movie-Park-Tipps sucht, liest fast überall das
 Gegenteil: Dienstag bis Donnerstag seien die ruhigen Tage, das Wochenende sei
 voll. Am Samstag stehst du tatsächlich länger als am Sonntag, und beide sind bei
 uns etwa gleich oft gemessen, also direkt vergleichbar. Nur ist der Samstag eben
@@ -429,8 +422,8 @@ und Sommerferientage sind die vollsten des Jahres. Auf der
 [Beste-Reisezeit-Seite](/beste-reisezeit) fallen diese beiden Tage deshalb aus
 dem Parkvergleich heraus, statt ihn zu verzerren.
 
-Warum ausgerechnet der Sonntag? Meine Lesart, und mehr als eine Lesart ist es
-nicht: Der Movie Park hat kein eigenes Hotel. Übernachtungen laufen über
+Warum ausgerechnet der Sonntag? Beweisen kann ich es nicht, aber die Erklärung
+liegt nahe: Der Movie Park hat kein eigenes Hotel. Übernachtungen laufen über
 Partnerhäuser in der Umgebung, das Publikum kommt am selben Tag und fährt am
 selben Tag zurück, und im Ruhrgebiet mit seinen Millionen Menschen in Fahrweite
 ist der klassische Ausflugstag der Samstag. Am Sonntag steht bei vielen schon
@@ -504,9 +497,9 @@ Testlabor bekommen, das True-Crime-Haus **Murder Museum** eine Pathologieszene.
 Dazu kommt **PHOBIA – The Live Horror Game Show** im Studio 7, eine Bühnenshow,
 bei der das Publikum mitspielt statt zuzusehen.
 
-Ein Termin lohnt sich extra: Am **17. Oktober** läuft zum fünften Mal der Event
-Day **Haunters Against Hate**. Bottrop hat den 2022 als erster Freizeitpark
-überhaupt veranstaltet, und die Idee dahinter gefällt mir. Leute, deren Job
+Einen Tag würde ich mir extra vormerken. Am **17. Oktober** läuft zum fünften Mal
+der Event Day **Haunters Against Hate**. Bottrop hat den 2022 als erster
+Freizeitpark überhaupt veranstaltet, und die Idee dahinter gefällt mir. Leute, deren Job
 sechs Wochen lang darin besteht, Fremde zu erschrecken, stellen sich einen Tag
 lang öffentlich gegen Ausgrenzung.
 
@@ -526,10 +519,9 @@ Kettensäge. Ab dem frühen Abend laufen die Darsteller durch den Park, und die
 Scare Zones sind ausdrücklich nicht für Sechsjährige gemacht. Wer mit
 Grundschulkindern da ist, plant die Abfahrt vorher ein.
 
-Einen angenehmen Nebeneffekt hat das Event: Der Park verlängert dafür bis 22 Uhr,
-und weil das Tagesticket weiterläuft, kommst du an einem Halloween-Abend auf
-zwölf Stunden am Stück im Park. So lange hat hier sonst nur der Geburtstag im
-Juli offen gehabt.
+Nebenbei ist ein Halloween-Abend der längste Parktag des Jahres. Der Park
+verlängert dafür bis 22 Uhr, das Tagesticket läuft weiter, und damit kommst du
+auf zwölf Stunden am Stück. Länger hatte nur der Geburtstag im Juli offen.
 
 [Movie Park Germany](ref:movie-park-germany?full)
 
@@ -577,16 +569,15 @@ Termine und eigene Tickets hat.
 Der Aufschlag an der Tageskasse liegt bei zwanzig Euro pro Person. Bei vier
 Leuten sind das achtzig Euro dafür, dass vorher niemand aufs Handy geschaut hat.
 
-**Saisonpässe**, und das ist der eigentliche Preistipp für diesen Park. Vier
-Stufen, für Erwachsene und Kinder zum selben Preis: Bronze 89,90 €, Silber
+**Saisonpässe.** Hier liegt der eigentliche Preistipp. Vier Stufen, für
+Erwachsene und Kinder zum selben Preis: Bronze 89,90 €, Silber
 129,90 €, Gold 149,90 €, Platin 179,90 €. Bronze liegt damit unter zwei
 Tageskarten an der Kasse und bei gut zwei Online-Tickets zum Bestpreis. Bei
 Kassenpreisen rechnet sich der Pass ab dem zweiten Besuch, online ab dem dritten,
 und für eine Familie aus dem Ruhrgebiet, die ohnehin zweimal im Jahr herfährt,
-ist das die einfachste Rechnung des Tages. Für einen Park dieser Größe ist das
-wenig Geld.
+ist das die einfachste Rechnung des Tages.
 
-Drei Dinge stehen im Kleingedruckten und kosten sonst hinterher Laune:
+Drei Dinge stehen im Kleingedruckten:
 
 - **Bronze hat die meisten Sperrtage**: Dezember und Januar komplett, dazu
   Feiertage, die Samstage in den NRW-Ferien, die Oktober-Samstage und Halloween
@@ -612,9 +603,8 @@ Regionalbahn und ein Fußweg von fünf Minuten.
 
 **Essen.** Hier bin ich kurz: Pizza, Pasta, Burger, Pommes, eine Bäckerei, und
 die Preise sind der am häufigsten genannte Kritikpunkt in Besucherbewertungen.
-Für 2026 hat der Park Verbesserungen in der Gastronomie angekündigt. Bis ich davon
-etwas merke, ist das für mich der Teil des Tages, den ich am schnellsten hinter
-mich bringe.
+Für 2026 hat der Park Verbesserungen angekündigt. Gemerkt habe ich davon bisher
+nichts, und ich esse hier so schnell wie möglich.
 
 Wie es gerade in Bottrop aussieht:
 
@@ -694,7 +684,7 @@ normalen Tag mehr als im Phantasialand oder im Europa-Park, und sechs Wochen im
 Jahr steht in denselben Kulissen das nach eigener Zählung größte Halloween-Event
 des Kontinents.
 
-Dazu gehört aber auch der andere Satz, und den sage ich als jemand, der gerne
+Der zweite Teil gehört genauso dazu, und ich sage ihn als jemand, der gerne
 hinfährt: **Seine besten Jahre hat dieser Park hinter sich.** Die lagen in der
 Warner-Zeit, als ein Studio Geld und Figuren hineinsteckte, und was danach kam,
 war über weite Strecken Verwaltung des Bestands. Die letzte Achterbahn für
@@ -705,12 +695,13 @@ Attraktion von 2014.
 Und trotzdem hat kaum ein deutscher Park so viele Leute, die immer wieder
 kommen. Im Oktober reisen sie aus dem ganzen Land nach Bottrop an, viele davon
 jedes Jahr, und wer hier mit dem Saisonpass durch die Streets of New York läuft,
-tut das nicht wegen der Investitionssumme. Auf 45 Hektar steht eine Kulissenstadt,
-die 1996 mit dem Geld eines Hollywood-Studios gebaut wurde und deren Fassaden
-immer noch stehen, obwohl das Studio seit zweiundzwanzig Jahren weg ist. Vier
-Eigentümer, jede Marke verloren, mit der er angetreten war, und irgendwann fing
-er an, Fahrgeschäfte über die eigene Vergangenheit zu bauen. Die beste Halle im
-Park erzählt heute von den Attraktionen, die es hier mal gab.
+tut das nicht, weil dort zuletzt viel investiert worden wäre. Auf 45 Hektar steht
+eine Kulissenstadt, die 1996 mit dem Geld eines Hollywood-Studios gebaut wurde
+und deren Fassaden
+immer noch stehen, obwohl das Studio seit zweiundzwanzig Jahren weg ist. Der Park
+hat vier Eigentümer hinter sich, jede Marke verloren, mit der er angetreten war,
+und irgendwann angefangen, Fahrgeschäfte über die eigene Vergangenheit zu bauen.
+Die beste Halle im Park erzählt heute von den Attraktionen, die es hier mal gab.
 
 Wenn du in diesem Herbst hinfährst: Nimm den Sonntag, nicht den Samstag, sei um
 zehn am Eingang und stell dich zuerst bei Star Trek an. Und wenn du nach
