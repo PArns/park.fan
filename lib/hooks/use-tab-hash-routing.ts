@@ -89,27 +89,28 @@ export function useTabHashRouting({
         return;
       }
 
-      const tabToActivate = hash;
+      // `#shows-<slug>` opens the shows chapter AND scrolls to that show's card — the header
+      // panel's "nächste Shows" rows link this way, so a row names a show and then puts you in
+      // front of it. Same shape the calendar tab used for its month deep links, kept because the
+      // convention is already in the codebase and in whatever anybody bookmarked.
+      const deep = /^shows-(.+)$/.exec(hash);
+      const tabToActivate = deep ? 'shows' : hash;
 
       const validTabs = ['attractions', 'shows', 'restaurants', 'map', 'weather'];
       if (validTabs.includes(tabToActivate)) {
         setActiveTab(tabToActivate);
 
-        // Scroll with a manual offset calculation for better reliability
+        // Scroll with a manual offset calculation for better reliability. The panel content is
+        // mounted through a `useDeferredValue`, so the card for a deep link does not exist yet at
+        // this point — hence the delay, and hence falling back to the tab row when the card still
+        // is not there (a slug that no longer matches a show must not leave the page put).
         setTimeout(() => {
-          const tabsContainer = tabsRef.current;
-
-          if (tabsContainer) {
-            // Prefer scrolling to the tabs container to show the navigation
-            const headerOffset = 100; // Account for sticky header
-            const elementPosition = tabsContainer.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: 'smooth',
-            });
-          }
+          const headerOffset = 100; // Account for sticky header
+          const target = (deep ? document.getElementById(hash) : null) ?? tabsRef.current;
+          if (!target) return;
+          const offsetPosition =
+            target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
         }, 500);
       }
     };

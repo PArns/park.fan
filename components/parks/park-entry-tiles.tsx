@@ -122,6 +122,15 @@ export function useParkTileItems({
 }: ParkTileSource): { items: ParkTileItem[]; tileCount: number } {
   const t = useTranslations('parks');
   const locale = useLocale();
+  /**
+   * The `<b>` every tile hint wraps its figures in. The words in a hint are context and the
+   * numbers are the reading, so the numbers take the foreground colour while the sentence around
+   * them stays `text-muted-foreground` — the same split the panel's own cells use for a value
+   * inside a caption.
+   */
+  const bold = (chunks: React.ReactNode) => (
+    <strong className="text-foreground font-semibold">{chunks}</strong>
+  );
   const tWeather = useTranslations('parks.weather');
   const tCommon = useTranslations('common');
   // The show tile names the next start time, which is a question about the clock. Reading it in
@@ -167,7 +176,7 @@ export function useParkTileItems({
       browserNow.getDate()
     );
     const days = Math.round((target.getTime() - startOfToday.getTime()) / 86_400_000);
-    return t('tileCalendarQuietDay', { day: label, days: Math.max(0, days) });
+    return t.rich('tileCalendarQuietDay', { day: label, days: Math.max(0, days), b: bold });
   }, [bestDaysCalendar, browserNow, park.timezone, locale, t]);
 
   const stats = park.analytics?.statistics;
@@ -257,14 +266,25 @@ export function useParkTileItems({
       icon: Zap,
       label: t('attractions'),
       count: park.attractions?.length || 0,
+      // Two lines, not one sentence with three clauses. At tile width the third clause broke
+      // mid-phrase — "Headliner" on the first line and "ab 35 min" on the second — because all
+      // three shared the hint's two-line clamp. The headliner reading is a different statement
+      // from how many rides are open, so it gets the second line to itself.
       hint:
-        stats && shortestHeadlinerWait !== null
-          ? t('tileAttractions', {
-              open: stats.operatingAttractions,
-              avg: stats.avgWaitTime,
-              min: shortestHeadlinerWait,
-            })
-          : null,
+        stats && shortestHeadlinerWait !== null ? (
+          <>
+            <span className="block">
+              {t.rich('tileAttractions', {
+                open: stats.operatingAttractions,
+                avg: stats.avgWaitTime,
+                b: bold,
+              })}
+            </span>
+            <span className="block">
+              {t.rich('tileAttractionsHeadliner', { min: shortestHeadlinerWait, b: bold })}
+            </span>
+          </>
+        ) : null,
       order: 'order-1',
     },
     {
@@ -286,7 +306,16 @@ export function useParkTileItems({
           },
         ]
       : []),
-    { key: 'map', icon: Map, label: t('map'), hint: t('tileMap', { lands }), order: 'order-3' },
+    {
+      key: 'map',
+      icon: Map,
+      label: t('map'),
+      // A park whose rides carry no `land` still has a map worth opening — it just has nothing
+      // to count. "· 0 Themenbereiche" was a true sentence about an empty set and read as a
+      // defect; 22 of the 40 parks sampled are in that position for one field or another.
+      hint: lands > 0 ? t.rich('tileMap', { lands, b: bold }) : t('tileMapPlain'),
+      order: 'order-3',
+    },
     ...(showsAvailable
       ? [
           {
@@ -295,7 +324,11 @@ export function useParkTileItems({
             label: t('shows'),
             count: park.shows?.length || 0,
             hint: nextShowtime
-              ? t('tileShowsNext', { time: nextShowtime.time, duration: nextShowtime.duration })
+              ? t.rich('tileShowsNext', {
+                  time: nextShowtime.time,
+                  duration: nextShowtime.duration,
+                  b: bold,
+                })
               : null,
             order: 'order-3',
           },
@@ -308,9 +341,10 @@ export function useParkTileItems({
             icon: UtensilsCrossed,
             label: t('restaurants'),
             count: park.restaurants?.length || 0,
-            hint: t('tileRestaurants', {
+            hint: t.rich('tileRestaurants', {
               open: openRestaurants,
               total: park.restaurants?.length || 0,
+              b: bold,
             }),
             order: 'order-3',
           },

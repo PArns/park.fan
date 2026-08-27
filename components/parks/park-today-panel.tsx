@@ -246,7 +246,13 @@ export function ParkTodayPanel({
     return (park.shows ?? [])
       .filter((s) => isInSeason(s))
       .flatMap((s) =>
-        (s.showtimes ?? []).map((st) => ({ name: stripNewPrefix(s.name), startTime: st.startTime }))
+        // `slug` rides along so a row can link at the show's own card in the shows chapter —
+        // see the `#shows-<slug>` hash the tab router resolves.
+        (s.showtimes ?? []).map((st) => ({
+          name: stripNewPrefix(s.name),
+          slug: s.slug,
+          startTime: st.startTime,
+        }))
       )
       .filter((e) => new Date(e.startTime).getTime() > nowMs)
       .sort((a, b) => a.startTime.localeCompare(b.startTime))
@@ -544,19 +550,22 @@ export function ParkTodayPanel({
                   {Array.from({ length: headlinerSlots }, (_, i) => {
                     const ride = headliners[i];
                     return (
-                      <li key={i} className="flex items-center gap-2 text-sm">
+                      <li key={i} className="text-sm">
                         {ride ? (
-                          <>
+                          // The WHOLE row is the link, not just the name. The wait time beside it
+                          // is the reason somebody reaches for this row at all, and a target that
+                          // stops at the last letter of "F.L.Y." is a target three characters
+                          // wide on a phone. `-mx-1 px-1` gives the hover fill a little room
+                          // without moving the text off the column's baseline grid.
+                          <Link
+                            href={
+                              `${parkPath}/${ride.slug}` as '/parks/europe/germany/rust/europa-park'
+                            }
+                            prefetch={false}
+                            className="hover:bg-muted/50 hover:text-primary -mx-1 flex items-center gap-2 rounded px-1 transition-colors"
+                          >
                             <Crown className="h-3 w-3 shrink-0 text-amber-500" aria-hidden="true" />
-                            <Link
-                              href={
-                                `${parkPath}/${ride.slug}` as '/parks/europe/germany/rust/europa-park'
-                              }
-                              prefetch={false}
-                              className="hover:text-primary min-w-0 flex-1 truncate transition-colors"
-                            >
-                              {ride.name}
-                            </Link>
+                            <span className="min-w-0 flex-1 truncate">{ride.name}</span>
                             {ride.wait !== null ? (
                               <span className="font-bold tabular-nums">
                                 <WaitTimeValue minutes={ride.wait} />
@@ -564,7 +573,7 @@ export function ParkTodayPanel({
                             ) : (
                               <span className="text-muted-foreground">—</span>
                             )}
-                          </>
+                          </Link>
                         ) : (
                           <span className="text-muted-foreground">—</span>
                         )}
@@ -636,32 +645,43 @@ export function ParkTodayPanel({
                         // "Miji African D…" beside 150 px of countdown. On its own line the
                         // countdown costs nothing horizontally, the name gets ~200 px, and the box
                         // is the same two lines tall it always was.
-                        <li
-                          key={i}
-                          className="border-primary/60 bg-primary/10 flex flex-col gap-0.5 rounded-lg border px-2.5 py-2"
-                        >
-                          <span className="flex items-baseline gap-2">
-                            <span className="shrink-0 text-base leading-none font-extrabold tabular-nums">
-                              <LocalTime time={show.startTime} timeZone={timezone} />
+                        <li key={i}>
+                          <a
+                            href={`#shows-${show.slug}`}
+                            className="border-primary/60 bg-primary/10 hover:bg-primary/20 flex flex-col gap-0.5 rounded-lg border px-2.5 py-2 transition-colors"
+                          >
+                            <span className="flex items-baseline gap-2">
+                              <span className="shrink-0 text-base leading-none font-extrabold tabular-nums">
+                                <LocalTime time={show.startTime} timeZone={timezone} />
+                              </span>
+                              <span className="min-w-0 flex-1 truncate text-sm font-semibold">
+                                {show.name}
+                              </span>
                             </span>
-                            <span className="min-w-0 flex-1 truncate text-sm font-semibold">
-                              {show.name}
-                            </span>
-                          </span>
-                          {startsIn > 0 && (
-                            <span className="text-primary text-[10px] font-bold tracking-[0.03em] uppercase">
-                              {t('startsIn')} {formatDurationShort(startsIn, tCommon)}
-                            </span>
-                          )}
+                            {startsIn > 0 && (
+                              <span className="text-primary text-[10px] font-bold tracking-[0.03em] uppercase">
+                                {t('startsIn')} {formatDurationShort(startsIn, tCommon)}
+                              </span>
+                            )}
+                          </a>
                         </li>
                       );
                     }
                     return (
-                      <li key={i} className="flex items-center gap-2.5 px-2.5 text-sm">
-                        <span className="text-muted-foreground shrink-0 font-bold tabular-nums">
-                          <LocalTime time={show.startTime} timeZone={timezone} />
-                        </span>
-                        <span className="min-w-0 flex-1 truncate">{show.name}</span>
+                      <li key={i} className="text-sm">
+                        {/* A plain `<a>` with a hash, not a next-intl `Link`: the tab router
+                            listens for `hashchange`, and `pushState` navigation does not fire it.
+                            Same reason the FAQ's calendar link used to be one — that link became a
+                            real page, this one is still a jump within the park page. */}
+                        <a
+                          href={`#shows-${show.slug}`}
+                          className="hover:bg-muted/50 hover:text-primary -mx-1 flex items-center gap-2.5 rounded px-1 transition-colors"
+                        >
+                          <span className="text-muted-foreground shrink-0 font-bold tabular-nums">
+                            <LocalTime time={show.startTime} timeZone={timezone} />
+                          </span>
+                          <span className="min-w-0 flex-1 truncate">{show.name}</span>
+                        </a>
                       </li>
                     );
                   })}

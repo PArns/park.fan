@@ -322,19 +322,28 @@ export const TabsWithHash = memo(function TabsWithHash({
                 const showHref =
                   `/parks/${continent}/${country}/${city}/${parkSlug}#shows` as '/parks/europe/germany/rust/europa-park';
                 return (
-                  <ShowCard
+                  // The anchor the header panel's "nächste Shows" rows aim at. `:target` rings the
+                  // card for as long as the hash names it, so arriving here from a row lands ON
+                  // the show rather than merely in the right chapter. `scroll-mt-20` keeps it
+                  // clear of the sticky bar when the browser does the scrolling itself.
+                  <div
                     key={show.id}
-                    id={show.id}
-                    name={stripNewPrefix(show.name)}
-                    slug={show.slug}
-                    status={show.status || 'CLOSED'}
-                    showtimes={show.showtimes}
-                    timezone={park.timezone}
-                    href={showHref}
-                    isSeasonal={show.isSeasonal}
-                    seasonMonths={show.seasonMonths}
-                    isCurrentlyInSeason={show.isCurrentlyInSeason}
-                  />
+                    id={`shows-${show.slug}`}
+                    className="target:ring-primary scroll-mt-20 rounded-xl target:ring-2 target:ring-offset-2 target:ring-offset-transparent"
+                  >
+                    <ShowCard
+                      id={show.id}
+                      name={stripNewPrefix(show.name)}
+                      slug={show.slug}
+                      status={show.status || 'CLOSED'}
+                      showtimes={show.showtimes}
+                      timezone={park.timezone}
+                      href={showHref}
+                      isSeasonal={show.isSeasonal}
+                      seasonMonths={show.seasonMonths}
+                      isCurrentlyInSeason={show.isCurrentlyInSeason}
+                    />
+                  </div>
                 );
               })}
             </div>
