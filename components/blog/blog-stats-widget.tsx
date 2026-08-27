@@ -76,6 +76,7 @@ export async function BlogStatsWidget({ park, slug, show }: BlogStatsWidgetProps
         parkSlug={geo.parkSlug}
         locale={locale}
         initialStats={initialStats}
+        flat
         {...(cards ? { show: cards, hideHeading: true } : {})}
       />
     </div>

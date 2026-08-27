@@ -571,7 +571,7 @@ eerste uitverkocht.
 
 En omdat de vraag hier altijd komt: het "grootste Halloween-evenement van
 Europa" staat naar eigen zeggen in [Movie Park](ref:movie-park-germany) in
-Bottrop, met negen mazes en ruim 280 monsters. Groot en hard zijn echter twee
+Bottrop, met negen mazes en ruim 300 monsters. Groot en hard zijn echter twee
 verschillende disciplines. De werkelijk zieke shit gebeurt twee autouren
 noordelijker, in een polder waar ze je aan een plafondrail hangen en
 afstempelen. Bottrop heeft het grotere getal. Biddinghuizen heeft de verhalen

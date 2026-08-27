@@ -560,7 +560,7 @@ areas. It runs in Dutch only and is regularly the first thing to sell out.
 
 And because the question always comes up here: the "biggest Halloween event in
 Europe" is, by its own account, at [Movie Park](ref:movie-park-germany) in
-Bottrop, with nine mazes and over 280 monsters. Big and hard, however, are two
+Bottrop, with nine mazes and over 300 monsters. Big and hard, however, are two
 different disciplines. The genuinely sick stuff happens two hours' drive further
 north, in a polder where they hang you from a ceiling rail and stamp you.
 Bottrop has the bigger number. Biddinghuizen has the stories you are better off

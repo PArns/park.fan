@@ -100,23 +100,28 @@ kannst.
 
 Das **Halloween Horror Festival** im [Movie Park Germany](ref:movie-park-germany)
 in Bottrop trägt den Titel „größtes Halloween-Event Europas“ vor sich her wie
-eine Trophäe, und nach Zahlen stimmt das auch. 2026 läuft die **28. Ausgabe**,
-mit über **280 Monstern**, vier Scare Zones und, das ist die eigentliche
-Neuigkeit, **erstmals neun Horror-Mazes**. Wer schon mal an einem
+eine Trophäe, und nach Zahlen stimmt das auch. 2026 läuft die **28. Ausgabe**
+unter dem Jahresmotto „Legends Never Die“, mit über **300 Monstern**, neun
+Horror-Mazes und vier Scare Zones. Wer schon mal an einem
 Oktober-Samstag zwischen Nebelschwaden und quietschender Kettensäge durch die
 „Streets of New York“ getrieben wurde, versteht den Kult.
 
 ![Verlassener Wohnwagen mit Holzkisten im Morgennebel | Ein einsamer Wohnwagen im Morgennebel. Selten ein gutes Zeichen. | wide](/media/halloween-2026/beispiel-wohnwagen.jpg)
 
-Zwei der neun sind neu. **Blood Moon Trailer Park** siedelt fünf Autostunden
-nördlich von Los Angeles am Rand des Yosemite: ein verlassener, verfallender
-Wohnwagenplatz ohne Empfang und ohne Hilfe. Das **Ahoj-Brause Horror Lab**
-schickt dich stattdessen auf eine Werksführung, bei der in den kleinen Tütchen
-nicht nur Brausepulver steckt. Dazu kommen die bewährten sieben: _A Quiet
-Place_, _Hell House_, _Final Stop_, _Murder Museum_, _Secrets of St. Elmo_,
-_The Slaughterhouse_ und _Circus of Freaks_. Auf der Bühne läuft **„Unhallowed
-2: The Freak Show Straight Out of Hell“** mit dem Illusionisten Christian
-Farla, dazu DJ-Sets von Max Bering auf der Plaza Stage.
+Neu ist genau ein Haus, dafür eines mit einem Namen, den auch Leute kennen, die
+das Genre nicht mögen: **Jason Universe** holt Jason Voorhees nach Bottrop und
+arbeitet sich durch die Teile zwei bis sechs der Reihe. Die anderen acht kommen
+aus den Vorjahren, zwei davon überarbeitet. Das **Ahoj-Brause Horror Lab**,
+weiterhin die Werksführung, bei der in den kleinen Tütchen nicht nur
+Brausepulver steckt, hat zusätzliche Schreckmomente und eine neue Storyline um
+einen Geschmackstest bekommen, das True-Crime-Haus **Murder Museum** eine
+Pathologieszene. Dazu kommen **Blood Moon Trailer Park**, ein verlassener,
+verfallender Wohnwagenplatz fünf Autostunden nördlich von Los Angeles am Rand
+des Yosemite, sowie _A Quiet Place_, _Hell House_, _Final Stop_, _The
+Slaughterhouse_ und _Circus of Freaks_. Auf der Bühne steht neu **„PHOBIA – The
+Live Horror Game Show“** im Studio 7, bei der das Publikum mitspielt statt
+zuzusehen, dazu die Trommelshow **„Drums of Doom“**, der Monsteraufmarsch und
+DJ-Sets von Max Bering.
 
 Nach der Ankündigung lässt sich auch die naheliegende Frage beantworten: „Am
 größten“ ist nicht automatisch „am besten“. Das HHF ist der Volkswagen unter
@@ -130,8 +135,15 @@ in Bottrop goldrichtig. Wer sich _wirklich_ fürchten will, liest weiter.
 Gespielt wird an **22 ausgewählten Abenden vom 26. September bis 8. November
 2026**, überwiegend Freitag bis Sonntag; tagsüber ist der Park ab 10 Uhr normal
 geöffnet, die Horror-Bereiche starten am frühen Abend (freitags und samstags
-bis 22, sonntags bis 21 Uhr). Tagestickets gibt es ab 39,90 €, die **Mazes sind
-separat zu buchen**. Plane das Budget ein.
+bis 22, sonntags bis 21 Uhr). Tickets für das Festival gibt es ab 39,90 €, die
+**Mazes sind separat zu buchen**. Plane das Budget ein. Einen Termin würde ich
+mir extra vormerken: Am **17. Oktober** läuft zum fünften Mal der Event Day
+**Haunters Against Hate**.
+
+Was der Park tagsüber und außerhalb dieser sechs Wochen kann, welcher Wochentag
+dort wirklich der ruhigste ist und warum ab September nur noch von Donnerstag
+bis Sonntag geöffnet wird, steht im
+[Movie-Park-Guide](/blog/movie-park-germany-wartezeiten-tipps).
 
 [Movie Park Germany](ref:movie-park-germany?full)
 

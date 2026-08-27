@@ -101,24 +101,29 @@ créneaux sont partis avant que vous ayez dit « machine à fumée ».
 ### Movie Park Germany : Halloween Horror Festival
 
 Le **Halloween Horror Festival** au [Movie Park Germany](ref:movie-park-germany)
-de Bottrop porte le titre de « plus grand événement Halloween d'Europe » comme
-un trophée, et sur le papier cela se tient. 2026 est la **28e édition**, avec
-plus de **280 monstres**, quatre scare zones et, c'est là la vraie nouvelle,
-**neuf mazes d'horreur pour la première fois**. Quiconque s'est déjà fait
-pourchasser un samedi d'octobre dans les « Streets of New York », entre nappes
-de brouillard et tronçonneuse hurlante, comprend le culte.
+de Bottrop porte le titre de « plus grand événement Halloween d'Europe » comme
+un trophée, et sur le papier cela se tient. 2026 est la **28e édition**, sous la
+devise annuelle « Legends Never Die », avec plus de **300 monstres**, neuf mazes
+d'horreur et quatre scare zones. Quiconque s'est déjà fait pourchasser un samedi
+d'octobre dans les « Streets of New York », entre nappes de brouillard et
+tronçonneuse hurlante, comprend le culte.
 
 ![Caravane abandonnée avec des caisses en bois dans la brume matinale | Une caravane solitaire dans la brume du matin. Rarement bon signe. | wide](/media/halloween-2026/beispiel-wohnwagen.jpg)
 
-Deux des neuf sont inédits. **Blood Moon Trailer Park** s'installe à cinq
-heures de route au nord de Los Angeles, en bordure du Yosemite : un parc à
-caravanes abandonné, en ruine, sans réseau et sans secours. L'**Ahoj-Brause
-Horror Lab** vous envoie plutôt en visite d'usine, où les petits sachets
-contiennent bien autre chose que de la poudre pétillante. S'y ajoutent les sept
-valeurs sûres : _A Quiet Place_, _Hell House_, _Final Stop_, _Murder Museum_,
-_Secrets of St. Elmo_, _The Slaughterhouse_ et _Circus of Freaks_. Sur scène,
-**« Unhallowed 2 : The Freak Show Straight Out of Hell »** avec l'illusionniste
-Christian Farla, plus des sets du DJ Max Bering sur la Plaza Stage.
+Il n'y a exactement qu'une maison nouvelle, mais avec un nom que connaissent
+même ceux qui n'aiment pas le genre : **Jason Universe** amène Jason Voorhees à
+Bottrop et parcourt les épisodes deux à six de la série. Les huit autres
+viennent des années précédentes, dont deux remaniées. L'**Ahoj-Brause Horror
+Lab**, toujours la visite d'usine où les petits sachets contiennent bien autre
+chose que de la poudre pétillante, a reçu des frayeurs supplémentaires et une
+nouvelle trame autour d'un test de goût, et la maison true crime **Murder
+Museum** une scène de médecine légale. S'y ajoutent **Blood Moon Trailer Park**,
+un parc à caravanes abandonné et en ruine à cinq heures de route au nord de Los
+Angeles, en bordure du Yosemite, ainsi que _A Quiet Place_, _Hell House_, _Final
+Stop_, _The Slaughterhouse_ et _Circus of Freaks_. Sur scène, la nouveauté est
+**« PHOBIA – The Live Horror Game Show »** au Studio 7, où le public joue au lieu
+de regarder, avec en plus le spectacle de percussions **« Drums of Doom »**, le
+défilé de monstres et des sets du DJ Max Bering.
 
 Maintenant que la programmation est connue, on peut aussi répondre à la
 question évidente : « le plus grand » n'est pas automatiquement « le meilleur ».
@@ -131,11 +136,17 @@ arrive). Si vous cherchez le volume et la romance à la tronçonneuse, Bottrop e
 parfait. Si vous voulez avoir _vraiment_ peur, lisez la suite.
 
 Le festival se joue sur **22 soirées sélectionnées, du 26 septembre au 8
-novembre 2026**, principalement du vendredi au dimanche ; en journée, le parc
+novembre 2026**, principalement du vendredi au dimanche ; en journée, le parc
 ouvre normalement à 10 h, et les zones d'horreur démarrent en début de soirée
-(jusqu'à 22 h les vendredis et samedis, 21 h les dimanches). Les billets
-journée démarrent à 39,90 €, et les **mazes se réservent séparément**. Prévoyez
-le budget.
+(jusqu'à 22 h les vendredis et samedis, 21 h les dimanches). Les billets pour le
+festival démarrent à 39,90 €, et les **mazes se réservent séparément**. Prévoyez
+le budget. Il y a une date que je noterais à part : le **17 octobre** se tient
+pour la cinquième fois la journée **Haunters Against Hate**.
+
+Ce que le parc sait faire en journée et en dehors de ces six semaines, quel jour
+de la semaine y est vraiment le plus calme et pourquoi il n'ouvre plus que du
+jeudi au dimanche à partir de septembre, c'est dans le
+[guide du Movie Park](/blog/movie-park-germany-temps-d-attente-conseils).
 
 [Movie Park Germany](ref:movie-park-germany?full)
 

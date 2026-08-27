@@ -52,6 +52,23 @@ export const TILE_GLASS =
   'bg-background/75 backdrop-blur-2xl dark:bg-[oklch(0.13_0.02_241_/_0.75)]';
 
 /**
+ * The same panel where there is no photograph behind it.
+ *
+ * {@link TILE_GLASS} is a fill of `--background` over a park's backdrop picture, so what a visitor
+ * reads as the panel's material is the blurred photo. Put that panel on a page with no backdrop
+ * and the fill lands on `--background` itself: in the dark theme the composite comes out at
+ * L 0.134 against the page's 0.145, an eleven-thousandth of a step and on the wrong side of it, so
+ * the box sinks into the page instead of sitting on it and only the hairline border says it is
+ * there at all. That is what the stats and best-days widgets looked like inside a blog post, next
+ * to an attraction card that has a real `--card` fill and reads as an object.
+ *
+ * `--muted` is the token that separates from `--background` in BOTH themes (0.97 against white,
+ * 0.269 against 0.145), which `--card` does not: in the light theme `--card` and `--background`
+ * are the same white. No blur, because there is nothing behind it to blur.
+ */
+export const PANEL_FLAT = 'bg-muted/30';
+
+/**
  * Glassmorphism card component with standardized glass effects
  * Used for headers and content cards with backdrop blur
  *

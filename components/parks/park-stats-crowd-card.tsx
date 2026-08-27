@@ -52,7 +52,15 @@ export function ParkStatsCrowdCard({
         )}
         {title}
       </h3>
-      <ul className="space-y-0.5">
+      {/* The readings are pushed to the row's right edge (`ml-auto`), which is right while the
+        cell is about as wide as the row needs: on the park page two of these share the panel, so a
+        cell holds 584 px of content against the row's natural 426 and „Sonntag" sits a thumb away
+        from „15 min". A blog post asks for ONE of the tables (`stats-widget show=weekdays`), that
+        cell is then the whole 960 px band, and the same rule strands the numbers half a screen
+        from the weekday they belong to. 36rem leaves 150 px of headroom over the German row for
+        the longer locales and trims 8 px off a park-page column at 1280 (more at 1920, where the
+        stranding had started there too). */}
+      <ul className="max-w-xl space-y-0.5">
         {rows.map((row) => (
           <li
             key={row.key}
