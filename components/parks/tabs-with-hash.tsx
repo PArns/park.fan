@@ -3,8 +3,7 @@
 import { memo, useDeferredValue, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
-import { Search, Zap, Sparkles, UtensilsCrossed, CloudSun, Map } from 'lucide-react';
-import { ChapterHeading } from '@/components/common/chapter-heading';
+import { Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent } from '@/components/ui/tabs';
 import { ShowCard } from '@/components/parks/show-card';
@@ -21,7 +20,7 @@ import { AttractionCardSkeleton } from '@/components/parks/attraction-card-skele
 import { Skeleton } from '@/components/ui/skeleton';
 import { useTabHashRouting } from '@/lib/hooks/use-tab-hash-routing';
 import { useAttractionFilter } from '@/lib/hooks/use-attraction-filter';
-import { stripNewPrefix } from '@/lib/utils';
+import { cn, stripNewPrefix } from '@/lib/utils';
 import { ParkHeaderCard } from '@/components/parks/park-header-card';
 
 import type { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
@@ -139,11 +138,13 @@ export const TabsWithHash = memo(function TabsWithHash({
             }
           />
           <TabsContent value={defaultValue} className="space-y-6">
-            {/* The same chapter heading the mounted branch renders. Without it the
-                band appeared at hydration and pushed the whole ride list down by
-                its height. The off-season toggle is interactive and cannot be
-                here, but it shares the title's flex row and costs no height. */}
-            <ChapterHeading icon={Zap} title={t('attractions')} frosted />
+            {/* Holds the toolbar row's height, nothing more. The row itself is the
+                off-season toggle and the search box, both interactive and neither
+                possible here — but the mounted branch has them, so without this the
+                whole ride list would move up by their height at hydration. `h-9` is
+                the button/input scale from `components/ui/button.tsx`, the same
+                number the real controls resolve to. */}
+            <div className="h-9" aria-hidden="true" />
             <AttractionWaitOverview
               park={park}
               parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
@@ -179,23 +180,29 @@ export const TabsWithHash = memo(function TabsWithHash({
           value="attractions"
           className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
         >
-          <ChapterHeading
-            icon={Zap}
-            title={t('attractions')}
-            frosted
-            /* Hidden while searching: the search reaches past the season on purpose, so
-               the toggle governs nothing there and pressing it would appear to do
-               nothing. It comes back with the browsable list. */
-            badge={
-              offSeasonAttractionCount > 0 && !isSearching ? (
+          {/* No chapter heading here, and that is deliberate: the tile above this panel
+              already says „Attraktionen 40" and is the selected one of six. A band
+              repeating the word 100 px under it is the same chapter opened twice — the
+              tile row IS this chapter's header. The other chapters on the page keep
+              theirs, because nothing above them names them.
+
+              What the band did carry stays: the off-season toggle. The row it sits in is
+              rendered whenever the park has out-of-season rides at all, with the toggle
+              only `invisible` while searching, because a row that comes and goes as
+              somebody types moves the whole list under it. */}
+          {offSeasonAttractionCount > 0 && (
+            <div className="mb-4 flex h-9 items-center">
+              {/* The search reaches past the season on purpose, so while it is active the
+                  toggle governs nothing and pressing it would appear to do nothing. */}
+              <div className={cn(isSearching && 'invisible')}>
                 <OffSeasonToggle
                   count={offSeasonAttractionCount}
                   shown={showOffSeasonAttractions}
                   onToggle={() => setShowOffSeasonAttractions((v) => !v)}
                 />
-              ) : null
-            }
-          />
+              </div>
+            </div>
+          )}
           {/* Attractions grouped by Land */}
           <div className="relative space-y-8">
             <div className="relative z-10 mb-4 md:absolute md:top-0 md:right-0 md:mb-0">
@@ -304,20 +311,17 @@ export const TabsWithHash = memo(function TabsWithHash({
             value="shows"
             className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
           >
-            <ChapterHeading
-              icon={Sparkles}
-              title={t('shows')}
-              frosted
-              badge={
-                offSeasonShowCount > 0 ? (
-                  <OffSeasonToggle
-                    count={offSeasonShowCount}
-                    shown={showOffSeasonShows}
-                    onToggle={() => setShowOffSeasonShows((v) => !v)}
-                  />
-                ) : null
-              }
-            />
+            {/* Same as the attractions panel: the „Shows 4" tile above is this chapter's
+                header, so only the control the band used to carry is left. */}
+            {offSeasonShowCount > 0 && (
+              <div className="mb-4 flex h-9 items-center">
+                <OffSeasonToggle
+                  count={offSeasonShowCount}
+                  shown={showOffSeasonShows}
+                  onToggle={() => setShowOffSeasonShows((v) => !v)}
+                />
+              </div>
+            )}
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {visibleShows.map((show) => {
                 const showHref =
@@ -356,7 +360,6 @@ export const TabsWithHash = memo(function TabsWithHash({
             value="restaurants"
             className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
           >
-            <ChapterHeading icon={UtensilsCrossed} title={t('restaurants')} frosted />
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {deferredTab === 'restaurants'
                 ? park.restaurants?.map((restaurant) => (
@@ -371,7 +374,6 @@ export const TabsWithHash = memo(function TabsWithHash({
           value="map"
           className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
         >
-          <ChapterHeading icon={Map} title={t('map')} frosted />
           {deferredTab === 'map' ? (
             <ParkMap park={park} />
           ) : (
@@ -391,7 +393,6 @@ export const TabsWithHash = memo(function TabsWithHash({
             value="weather"
             className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
           >
-            <ChapterHeading icon={CloudSun} title={t('weatherLabel')} frosted />
             <WeatherCard
               weather={park.weather}
               nowcast={null}
