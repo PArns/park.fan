@@ -1,4 +1,4 @@
-import { TILE_GLASS } from '@/components/common/glass-card';
+import { PANEL_FLAT, TILE_GLASS } from '@/components/common/glass-card';
 import { PANEL_CELL, PanelGrid } from '@/components/parks/park-panel-cell';
 import { cn } from '@/lib/utils';
 import { ParkStatsHeader } from '@/components/parks/park-stats-header';
@@ -79,9 +79,12 @@ function CrowdCardSkeleton({ rows }: { rows: number }) {
 export function ParkStatsSectionSkeleton({
   show = ALL_STATS_CARDS,
   hideHeading = false,
+  flat = false,
 }: {
   show?: readonly StatsCard[];
   hideHeading?: boolean;
+  /** See `ParkStatsSection`'s `flat`: {@link PANEL_FLAT} where no park photo sits behind it. */
+  flat?: boolean;
 } = {}) {
   const columnCount = (show.includes('months') ? 1 : 0) + (show.includes('weekdays') ? 1 : 0) || 1;
 
@@ -111,7 +114,7 @@ export function ParkStatsSectionSkeleton({
         it. */}
       <div
         className={cn(
-          TILE_GLASS,
+          flat ? PANEL_FLAT : TILE_GLASS,
           'border-border/50 overflow-hidden border',
           hideHeading ? 'rounded-xl' : 'rounded-b-xl border-t-0'
         )}

@@ -17,7 +17,7 @@ import { useMounted } from '@/lib/hooks/use-mounted';
 import type { AttractionStatus, ParkHistoricalStats } from '@/lib/api/types';
 import { getAttractionDisplayStatus } from '@/lib/utils/park-utils';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
-import { TILE_GLASS } from '@/components/common/glass-card';
+import { PANEL_FLAT, TILE_GLASS } from '@/components/common/glass-card';
 import { PANEL_CELL, PanelGrid } from '@/components/parks/park-panel-cell';
 import { cn } from '@/lib/utils';
 
@@ -44,6 +44,13 @@ interface ParkStatsSectionProps {
   show?: readonly StatsCard[];
   /** Blog posts sit under their own <h2>; a second one here would break the heading ladder. */
   hideHeading?: boolean;
+  /**
+   * Render the panel on {@link PANEL_FLAT} instead of the park page's glass. A blog post has no
+   * park photograph behind it, and `TILE_GLASS` is a fill of `--background` whose material IS that
+   * photo — without one the composite lands within a hundredth of a step of the page and the box
+   * sinks into it. Defaults to false, so the park page is unchanged.
+   */
+  flat?: boolean;
   /**
    * Server-fetched aggregate (`getParkHistoricalStatsSeed`). Present → the pre-settle render
    * shows the REAL cards instead of a skeleton, which is what puts these numbers into the
@@ -72,6 +79,7 @@ export function ParkStatsSection({
   hasLiveWaitTimes = true,
   show = ALL_STATS_CARDS,
   hideHeading = false,
+  flat = false,
   initialStats,
 }: ParkStatsSectionProps) {
   // Browser-only query (disabled during SSR). Show the skeleton until mounted + loaded so the
@@ -104,12 +112,13 @@ export function ParkStatsSection({
           hasLiveWaitTimes={hasLiveWaitTimes}
           show={show}
           hideHeading={hideHeading}
+          flat={flat}
         />
       );
     }
     // The placeholder mirrors what this caller will actually render, or a
     // `show={['attractions']} hideHeading` block collapses three cards to one.
-    return <ParkStatsSectionSkeleton show={show} hideHeading={hideHeading} />;
+    return <ParkStatsSectionSkeleton show={show} hideHeading={hideHeading} flat={flat} />;
   }
 
   if (!stats || !stats.meta.displayable) return null;
@@ -125,6 +134,7 @@ export function ParkStatsSection({
       hasLiveWaitTimes={hasLiveWaitTimes}
       show={show}
       hideHeading={hideHeading}
+      flat={flat}
     />
   );
 }
@@ -139,6 +149,7 @@ function StatsContent({
   hasLiveWaitTimes,
   show,
   hideHeading,
+  flat,
 }: {
   stats: ParkHistoricalStats;
   continent: string;
@@ -149,6 +160,7 @@ function StatsContent({
   hasLiveWaitTimes: boolean;
   show: ReadonlyArray<'attractions' | 'months' | 'weekdays'>;
   hideHeading: boolean;
+  flat: boolean;
 }) {
   const t = useTranslations('parks.stats');
   const tParks = useTranslations('parks');
@@ -294,7 +306,7 @@ function StatsContent({
         a caller can ask for one of the three. */}
       <div
         className={cn(
-          TILE_GLASS,
+          flat ? PANEL_FLAT : TILE_GLASS,
           'border-border/50 overflow-hidden border',
           hideHeading ? 'rounded-xl' : 'rounded-b-xl border-t-0'
         )}

@@ -557,33 +557,64 @@ Termine und eigene Tickets hat.
 
 **Tickets.** Der Kassenpreis ist hoch, der Onlinepreis ist es nicht:
 
-| Ticket                                                 | Kasse   | Online     |
-| ------------------------------------------------------ | ------- | ---------- |
-| Tagesticket ab 12 Jahren                               | 59,90 € | ab 39,90 € |
-| Kinder 4 bis 11 Jahre                                  | 54,90 € | ab 39,90 € |
-| Ermäßigt (ab 65, Schwangere, Menschen mit Behinderung) | 29,90 € | 29,90 €    |
-| Kinder unter 4 Jahren                                  | frei    | frei       |
-| Geburtstagsticket (nur am Geburtstag, mit Ausweis)     | 16,90 € | 16,90 €    |
-| Parken                                                 | 8 €     | 8 €        |
+| Ticket                                                        | Kasse   | Online      |
+| ------------------------------------------------------------- | ------- | ----------- |
+| Tagesticket ab 12 Jahren                                      | 59,90 € | ab 34,90 €  |
+| Kinder 4 bis 11 Jahre                                         | 54,90 € | ab 34,90 €  |
+| Ermäßigt (ab 65, Schwangere, GdB unter 100)                   | 29,90 € | 29,90 €     |
+| Familienpaket (2 Erwachsene, 2 Kinder, begrenztes Kontingent) | –       | ab 129,90 € |
+| Kinder unter 4 Jahren                                         | frei    | frei        |
+| Geburtstagsticket (am Geburtstag, mit Ausweis)                | 16,90 € | 16,90 €     |
+| Parken                                                        | 9 €     | 9 €         |
 
-Der Aufschlag an der Tageskasse liegt bei zwanzig Euro pro Person. Bei vier
-Leuten sind das achtzig Euro dafür, dass vorher niemand aufs Handy geschaut hat.
+Der Aufschlag an der Tageskasse liegt bei fünfundzwanzig Euro pro Erwachsenem.
+Bei vier Leuten sind das neunzig Euro dafür, dass vorher niemand aufs Handy
+geschaut hat. Gäste mit einem GdB von 100 und einem der Merkzeichen aG, Bl, B
+oder H kommen frei rein, die Begleitperson zahlt 29,90 €. Bevorzugtes Parken
+näher am Eingang kostet 19,90 € und gibt es nur online.
 
-**Saisonpässe.** Hier liegt der eigentliche Preistipp. Vier Stufen, für
-Erwachsene und Kinder zum selben Preis: Bronze 89,90 €, Silber
-129,90 €, Gold 149,90 €, Platin 179,90 €. Bronze liegt damit unter zwei
-Tageskarten an der Kasse und bei gut zwei Online-Tickets zum Bestpreis. Bei
-Kassenpreisen rechnet sich der Pass ab dem zweiten Besuch, online ab dem dritten,
-und für eine Familie aus dem Ruhrgebiet, die ohnehin zweimal im Jahr herfährt,
-ist das die einfachste Rechnung des Tages.
+**Saisonpässe.** Hier liegt der eigentliche Preistipp, und diese Woche
+besonders. Vier Stufen, für Erwachsene und Kinder zum selben Preis. Regulär
+kosten sie Bronze 89,90 €, Silber 135,90 €, Gold 155,90 € und Platin 179,90 €.
+Im Vorverkauf für die Saison 2027, der noch bis zum **6. September 2026** läuft,
+sind es Silber 81,50 €, Gold 93,50 € und Platin 107,90 €. Der Pass gilt ab
+Abholung, deckt also den Rest dieser Saison mitsamt dem kompletten Halloween
+Horror Festival ab und danach das ganze Jahr 2027.
 
-Drei Dinge stehen im Kleingedruckten:
+Ein Blick auf diese beiden Zeilen lohnt sich: Bronze bekommt keinen Rabatt und
+kostet damit im Vorverkauf 89,90 €, Gold 93,50 €. Für 3,60 € Unterschied fallen
+sämtliche Sperrtage weg, das Parken ist drin, und der Bonus Club kommt dazu.
+Bronze zu kaufen, solange der Sale läuft, ergibt keinen Sinn.
 
-- **Bronze hat die meisten Sperrtage**: Dezember und Januar komplett, dazu
+**Der Bonus Club** ist der Teil, den in Bottrop kaum jemand auf dem Zettel hat.
+Er hängt an Gold und Platin und an der endgültigen Plastikkarte mit Foto, und er
+bringt eine ganze Reihe fremder Parks aufs Ticket:
+
+- **Einmal freier Eintritt** pro Kalenderjahr im [Efteling](ref:efteling). Ein
+  Tagesticket dort kostet regulär rund fünfzig Euro, also ungefähr die Hälfte
+  dessen, was der Gold-Pass gerade selbst kostet.
+- **Dreimal freier Eintritt** im [Bobbejaanland](ref:bobbejaanland), im
+  Freizeitpark Slagharen (ohne Aqua Mexicana) und im Weltvogelpark Walsrode.
+  Alle drei gehören wie der Movie Park zu Parques Reunidos.
+- **Einmal freier Eintritt** in weiteren Parks der Gruppe, darunter Tropical
+  Islands, Mirabilandia in Italien, Parque Warner und der Parque de Atracciones
+  in Madrid, Tusenfryd in Norwegen und BonBonLand in Dänemark.
+- **Rabatte** obendrauf: 40 % in beiden Walibi-Parks und in den Plopsa-Parks,
+  50 % bei Belantis, Fort Fun und im Schwaben Park.
+
+Das Kleingedruckte dazu ist kurz, aber es zählt. Tropical Islands ist an
+Samstagen, an Feiertagen und in den Ferien von Berlin, Brandenburg und Sachsen
+ausgenommen, die Vorteile lassen sich nicht mit anderen Angeboten kombinieren,
+und die Liste gilt jeweils für eine Saison. Für 2026 steht sie beim Park als PDF,
+die Fassung für 2027 kommt erst.
+
+Drei Dinge stehen sonst noch im Kleingedruckten:
+
+- **Bronze hat die meisten Sperrtage**: Dezember und Januar komplett, dazu alle
   Feiertage, die Samstage in den NRW-Ferien, die Oktober-Samstage und Halloween
   selbst. Also ausgerechnet die Tage, an denen die meisten hinwollen.
-- **Parken ist erst ab Gold enthalten.** Beim Bronze-Pass kostet die Saisonkarte
-  fürs Parken 25 € extra, sonst zahlst du die 8 € bei jedem Besuch.
+- **Parken ist erst ab Gold enthalten.** Bei Bronze und Silber kostet die
+  Saisonkarte fürs Parken 25 € extra, sonst zahlst du die 9 € bei jedem Besuch.
 - **Es gibt ein Tageskontingent.** Jeder Besuch muss vorher angemeldet werden,
   und die nächste Buchung geht erst am Tag nach deinem Besuch. Spontan hinfahren
   geht mit Pass also schlechter als mit Tagesticket.
@@ -647,9 +678,10 @@ Vergleich mit den anderen europäischen Events stehen im
 ### Was kostet der Eintritt in den Movie Park 2026?
 
 An der Kasse **59,90 €** ab 12 Jahren und 54,90 € für Kinder von 4 bis 11
-Jahren, online **ab 39,90 €** für beide. Ermäßigt kostet der Tag 29,90 €, Kinder
-unter vier Jahren sind frei, Parken kostet 8 €. Die Saisonpässe beginnen bei
-89,90 € (Bronze) und reichen bis 179,90 € (Platin).
+Jahren, online **ab 34,90 €** für beide. Ermäßigt kostet der Tag 29,90 €, Kinder
+unter vier Jahren sind frei, Parken kostet 9 €. Die Saisonpässe kosten regulär
+89,90 € (Bronze) bis 179,90 € (Platin); im Vorverkauf für 2027, noch bis zum 6.
+September 2026, gibt es Gold für 93,50 € und Platin für 107,90 €.
 
 ### Wie viele Achterbahnen hat der Movie Park?
 
@@ -733,7 +765,8 @@ Mond.
 - PHOBIA – The Live Horror Game Show im Studio 7 und der Monsteraufmarsch: [Shows (offiziell)](https://www.movieparkgermany.de/en/halloween/shows)
 - Haunters Against Hate (seit 2022, 2026 die fünfte Ausgabe am 17. Oktober): [Haunters Against Hate (offiziell)](https://www.movieparkgermany.de/en/halloween/hah) · [„Haunters Against Hate“ bei Parques Reunidos](https://www.parquesreunidos.com/en/blog/haunters-against-hate-when-fear-meets-purpose-at-movie-park)
 - Hollywood Christmas 2026/27: [Movie Park's Hollywood Christmas (offiziell)](https://www.movieparkgermany.de/en/christmas)
-- Preise, Saisonpässe und Parkgebühr 2026: [Unsere Preise & Angebote (offiziell)](https://www.movieparkgermany.de/en/oeffnungszeiten-und-preise/preise) · [Eintrittspreise 2026 (NRW-Parks)](https://www.nrw-parks.de/movie-park-germany/movie-park-germany-eintrittspreise.html)
+- Preise, Saisonpässe, Vorverkauf 2027 (bis 6. September 2026) und Parkgebühr: [Unsere Preise & Angebote (offiziell)](https://www.movieparkgermany.de/oeffnungszeiten-und-preise/preise) · [Saisonpass (offiziell)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass) · [Eintrittspreise 2026 (NRW-Parks)](https://www.nrw-parks.de/movie-park-germany/movie-park-germany-eintrittspreise.html)
+- Bonus Club: Vorteile nur für Gold und Platin, freier Eintritt im Efteling je Kalenderjahr, dreimal Bobbejaanland, Slagharen und Weltvogelpark Walsrode, dazu die Rabattliste: [Bonus Club (offiziell)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass/bonusclub) · [Vorteile 2026, Parks der Gruppe (PDF)](https://www.movieparkgermany.de/content/dam/mpg/uploads/website/vorteile-saisonpassinhaber-(bonusclub(/2026/Vorteile%20f%C3%BCr%20Saisonpassinhaber%202026_Parques%20Reunidos%20Gruppe.pdf.html) · [Vorteile 2026, Freizeitparks, Zoos und Co. (PDF)](https://www.movieparkgermany.de/content/dam/mpg/uploads/website/vorteile-saisonpassinhaber-(bonusclub(/2026/Vorteile%20f%C3%BCr%20Saisonpassinhaber%202026_Freizeitparks%2c%20Zoos%20und%20Co.pdf.html)
 - Anreise, Bahnhof Feldhausen, SB16: [Anfahrt & Parken (offiziell)](https://www.movieparkgermany.de/en/plane-deinen-besuch/wichtige-informationen/anfahrt-und-parken) · [Ausflugstipp mit der Bahn (DB Regio NRW)](https://regional.bahn.de/regionen/nrw/ausflugstipps/aktiv/moviepark)
 - Herbstferien NRW 2026 (17. bis 31. Oktober): [Ferienordnung für Nordrhein-Westfalen (Bildungsportal NRW)](https://www.schulministerium.nrw/service/ferienordnung-fuer-nordrhein-westfalen-fuer-die-schuljahre-bis-202930)
 - Saisonbilanz 2024 und 30 Millionen Besucher seit 1996: [Saisonbilanz und MPHC Event 2024 (offiziell)](https://www.movieparkgermany.de/presse/pm-16-01-2025-saisonbilanz-mphc) · [Movie Park Germany begrüßt seinen 30-millionsten Besucher (EuroAmusement Professional)](https://www.eap-magazin.de/Nachricht/Deutschland:-Movie-Park-Germany-begruesst-seinen-30-millionsten-Besucher.html)
