@@ -19,10 +19,15 @@ import type { Locale } from '@/i18n/config';
  * `[attraction]`. No ride in the catalogue is, and these six words are not ride names in any
  * language; it is written down here because the next person to add a park sub-page needs the rule.
  *
- * The name is `Andrangskalender` rather than `Wartezeitenkalender` because that is what the page
- * shows: a crowd level per day, with opening hours, weather and holidays behind it. The wait-time
- * keyword lives in the meta title and the intro, where it does the search work without making the
- * URL, the tile and the H1 say three different things.
+ * The URL segment and the H1 say `Andrangskalender`, because that is what the page shows: a crowd
+ * level per day, with opening hours, weather and holidays behind it.
+ *
+ * The TILE in the header row says `Wartezeiten-Kalender` instead, and the difference is deliberate.
+ * The two words are read at different moments: on the calendar page the heading answers „what am I
+ * looking at", where „Andrang" is the accurate word; in the tile row it answers „where does this
+ * take me" from a park page about wait times, and „Wartezeiten-Kalender" is the phrase a visitor
+ * came with. The label lives in `parks.tileCalendarLabel` and is the only place the two part ways
+ * — meta title, description and intro carry both terms anyway.
  */
 export const PARK_CALENDAR_SEGMENTS: Record<Locale, string> = {
   en: 'crowd-calendar',

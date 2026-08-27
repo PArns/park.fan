@@ -420,7 +420,7 @@
     "peak": "Pico",
     "open": "abierto",
     "calendar": "Calendario",
-    "tileCalendarLabel": "Calendario de afluencia",
+    "tileCalendarLabel": "Calendario de tiempos de espera",
     "crowdCalendar": "Calendario de Afluencia y Mejores Días",
     "map": "Mapa",
     "calendarLegend": "Leyenda",
