@@ -1,7 +1,7 @@
 'use client';
 
 import { useLocale } from 'next-intl';
-import { Link } from '@/i18n/navigation';
+import { Link, getPathname } from '@/i18n/navigation';
 import { parkCalendarPath } from '@/lib/parks/calendar-segments';
 import {
   EntryTileBody,
@@ -14,6 +14,8 @@ import {
   type ParkTileKey,
   type ParkTileSource,
 } from '@/components/parks/park-entry-tiles';
+import { rememberTileRow } from '@/lib/hooks/use-tile-row-anchor';
+import { suppressScrollToTopFor } from '@/lib/navigation/history-navigation';
 import { cn } from '@/lib/utils';
 
 /**
@@ -47,7 +49,7 @@ export function ParkNavTiles({
   const parkPath = `/parks/${continent}/${country}/${city}/${parkSlug}`;
 
   return (
-    <ParkTileGrid tileCount={tileCount}>
+    <ParkTileGrid tileCount={tileCount} parkSlug={parkSlug}>
       {items.map((item) => {
         const isCurrent = item.key === current;
         const href =
@@ -81,7 +83,24 @@ export function ParkNavTiles({
             {body}
           </span>
         ) : (
-          <Link key={item.key} href={href} className={cn('group', item.order, tileCell)}>
+          <Link
+            key={item.key}
+            href={href}
+            className={cn('group', item.order, tileCell)}
+            // Every cell here leaves the page, and the row is on the page it leads to as well —
+            // so none of them may go to the top. The recorded offset then puts the row back on
+            // the pixel. `getPathname` because `ScrollToTop` compares against
+            // `window.location.pathname`, which carries the locale prefix. See
+            // `useTileRowAnchor`.
+            scroll={false}
+            onClick={(e) => {
+              rememberTileRow(e.currentTarget, parkSlug);
+              // Without the hash: the flag is matched against `window.location.pathname`, which
+              // never carries one. (A hash link is already exempt from `ScrollToTop` — this is
+              // for the calendar cell, which has none.)
+              suppressScrollToTopFor(getPathname({ href, locale }).split('#')[0]);
+            }}
+          >
             {body}
           </Link>
         );
