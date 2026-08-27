@@ -339,8 +339,8 @@ export function ParkTodayPanel({
         className="space-y-0 rounded-none border-x-0 border-t-0 shadow-none [&_.rounded-xl]:rounded-none [&>div]:rounded-none"
       />
 
-      <div className="border-border/50 flex items-center justify-between gap-3 border-b px-5 py-3">
-        <div className="flex items-center gap-2">
+      <div className="border-border/50 flex items-center gap-3 border-b px-5 py-3">
+        <div className="flex shrink-0 items-center gap-2">
           <span
             className={cn(
               'h-1.5 w-1.5 rounded-full',
@@ -350,6 +350,44 @@ export function ParkTodayPanel({
           />
           <h2 className="text-[13px] font-bold tracking-[0.06em] uppercase">{t('todayInPark')}</h2>
         </div>
+
+        {/* The weather rides in this row rather than in a strip of its own under the columns. It
+            is one reading and a word — a full-width band for it cost the panel ~41 px and put a
+            rule across the card for something that fits beside the heading. The link goes with
+            it: the whole group is the anchor, so „Wetter & Stundenverlauf ›" needs no separate
+            line either.
+
+            The description is the part that does not fit on a phone, so it is the part that goes
+            below `sm`; icon and temperature stay at every width. No `flex-wrap` on the row — it
+            would put the clock on a second line at some widths and not others, and this row is
+            what reserves the panel's header height. */}
+        {weatherSummary && (
+          <a
+            href={chapterHref('weather')}
+            /* The group is a reading, not a phrase — „18 °C Bedeckt" tells a screen reader
+               nothing about where the link goes, and below `sm` even the word is gone. */
+            aria-label={t('weatherAndHourly')}
+            className="hover:text-primary flex min-w-0 items-center gap-2 transition-colors"
+          >
+            {(() => {
+              const WeatherIcon = weatherSummary.icon;
+              return (
+                <WeatherIcon
+                  className={cn('h-4 w-4 shrink-0', weatherSummary.color)}
+                  aria-hidden="true"
+                />
+              );
+            })()}
+            <span className="text-sm font-semibold whitespace-nowrap">
+              {weatherSummary.temperature}
+            </span>
+            {weatherSummary.description && (
+              <span className="text-muted-foreground hidden truncate text-sm sm:inline">
+                {weatherSummary.description}
+              </span>
+            )}
+          </a>
+        )}
         {/* Guarded on `currentTime`, not on the formatted string: before the browser clock
             mounts `currentTimeFormatted` is an em dash, and the first German paint read
             "— Uhr · Ortszeit". The header this replaced carried the same guard. Same guard covers
@@ -358,7 +396,7 @@ export function ParkTodayPanel({
             mismatch. It costs no height — this row is here either way, which is the whole reason
             the indicator moved out of the 32 px slot it used to hold open above the tab bar. */}
         {sched.currentTime && (
-          <span className="text-muted-foreground flex items-center gap-2 text-xs tabular-nums">
+          <span className="text-muted-foreground ml-auto flex shrink-0 items-center gap-2 text-xs tabular-nums">
             {isFetching && (
               <Loader2 className="h-3 w-3 animate-spin" aria-label={tCommon('updating')} />
             )}
@@ -625,117 +663,100 @@ export function ParkTodayPanel({
                   </a>
                 }
               >
-                <ul className="flex flex-col gap-1.5">
-                  {Array.from({ length: showSlots }, (_, i) => {
-                    const show = nextShows[i];
-                    if (!show) {
-                      return (
-                        <li key={i} className="text-muted-foreground text-sm">
-                          {browserNow && i === 0 ? (
-                            tCommon('noShowtimesToday')
-                          ) : (
-                            /* The row is RESERVED, not drawn: it holds its height so the panel
-                               does not shrink as the day's showtimes pass, but a column of em
-                               dashes trailing the last real show is noise, not information.
-                               Before the clock lands every row takes this branch — "nothing more
-                               today" is a claim that needs to know the time. */
+                <div className="relative">
+                  {/* Nothing left today, and the park does have shows — `showSlots > 0` is counted
+                    from `park.shows`, so this column is not even rendered for a park without any.
+                    The sentence is centred over the rows the column has already reserved rather
+                    than written into the first of them: at the end of a show day the other three
+                    slots are empty anyway, and one line hanging at the top of an otherwise blank
+                    column reads as a list that failed to load rather than as an answer.
+
+                    The invisible rows underneath still carry the height, so the panel is the same
+                    size at 22:00 as at 11:00 — the alternative is the whole header card getting
+                    shorter as the day's showtimes pass, with everything below it moving up. */}
+                  {browserNow && nextShows.length === 0 && (
+                    <div className="text-muted-foreground absolute inset-0 flex items-center justify-center text-center text-sm">
+                      {tCommon('noShowtimesToday')}
+                    </div>
+                  )}
+                  <ul className="flex flex-col gap-1.5">
+                    {Array.from({ length: showSlots }, (_, i) => {
+                      const show = nextShows[i];
+                      if (!show) {
+                        return (
+                          <li key={i} className="text-muted-foreground text-sm">
+                            {/* The row is RESERVED, not drawn: it holds its height so the panel
+                              does not shrink as the day's showtimes pass, but a column of em
+                              dashes trailing the last real show is noise, not information. */}
                             <span className="invisible" aria-hidden="true">
                               &mdash;
                             </span>
-                          )}
-                        </li>
-                      );
-                    }
-                    const startsIn = browserNow
-                      ? new Date(show.startTime).getTime() - browserNow.getTime()
-                      : 0;
-                    // The imminent one is the only one that gets the box and the countdown: on
-                    // all three it reads as a column of durations and stops meaning "this is the
-                    // one to walk to".
-                    if (i === 0) {
+                          </li>
+                        );
+                      }
+                      const startsIn = browserNow
+                        ? new Date(show.startTime).getTime() - browserNow.getTime()
+                        : 0;
+                      // The imminent one is the only one that gets the box and the countdown: on
+                      // all three it reads as a column of durations and stops meaning "this is the
+                      // one to walk to".
+                      if (i === 0) {
+                        return (
+                          // Two rows, not two columns. The countdown used to sit UNDER the time
+                          // inside a `shrink-0` block beside the name, and "BEGINNT IN 2 STD. 31
+                          // MIN." is about 150 px wide — so it set the width of that block and left
+                          // the name roughly 110 px of a 270 px column. Every show whose name is
+                          // longer than two short words was cut: "Miji African Dancers" rendered as
+                          // "Miji African D…" beside 150 px of countdown. On its own line the
+                          // countdown costs nothing horizontally, the name gets ~200 px, and the box
+                          // is the same two lines tall it always was.
+                          <li key={i}>
+                            <a
+                              href={chapterHref(`shows-${show.slug}`)}
+                              className="border-primary/60 bg-primary/10 hover:bg-primary/20 flex flex-col gap-0.5 rounded-lg border px-2.5 py-2 transition-colors"
+                            >
+                              <span className="flex items-baseline gap-2">
+                                <span className="shrink-0 text-base leading-none font-extrabold tabular-nums">
+                                  <LocalTime time={show.startTime} timeZone={timezone} />
+                                </span>
+                                <span className="min-w-0 flex-1 truncate text-sm font-semibold">
+                                  {show.name}
+                                </span>
+                              </span>
+                              {startsIn > 0 && (
+                                <span className="text-primary text-[10px] font-bold tracking-[0.03em] uppercase">
+                                  {t('startsIn')} {formatDurationShort(startsIn, tCommon)}
+                                </span>
+                              )}
+                            </a>
+                          </li>
+                        );
+                      }
                       return (
-                        // Two rows, not two columns. The countdown used to sit UNDER the time
-                        // inside a `shrink-0` block beside the name, and "BEGINNT IN 2 STD. 31
-                        // MIN." is about 150 px wide — so it set the width of that block and left
-                        // the name roughly 110 px of a 270 px column. Every show whose name is
-                        // longer than two short words was cut: "Miji African Dancers" rendered as
-                        // "Miji African D…" beside 150 px of countdown. On its own line the
-                        // countdown costs nothing horizontally, the name gets ~200 px, and the box
-                        // is the same two lines tall it always was.
-                        <li key={i}>
-                          <a
-                            href={chapterHref(`shows-${show.slug}`)}
-                            className="border-primary/60 bg-primary/10 hover:bg-primary/20 flex flex-col gap-0.5 rounded-lg border px-2.5 py-2 transition-colors"
-                          >
-                            <span className="flex items-baseline gap-2">
-                              <span className="shrink-0 text-base leading-none font-extrabold tabular-nums">
-                                <LocalTime time={show.startTime} timeZone={timezone} />
-                              </span>
-                              <span className="min-w-0 flex-1 truncate text-sm font-semibold">
-                                {show.name}
-                              </span>
-                            </span>
-                            {startsIn > 0 && (
-                              <span className="text-primary text-[10px] font-bold tracking-[0.03em] uppercase">
-                                {t('startsIn')} {formatDurationShort(startsIn, tCommon)}
-                              </span>
-                            )}
-                          </a>
-                        </li>
-                      );
-                    }
-                    return (
-                      <li key={i} className="text-sm">
-                        {/* A plain `<a>` with a hash, not a next-intl `Link`: the tab router
+                        <li key={i} className="text-sm">
+                          {/* A plain `<a>` with a hash, not a next-intl `Link`: the tab router
                             listens for `hashchange`, and `pushState` navigation does not fire it.
                             Same reason the FAQ's calendar link used to be one — that link became a
                             real page, this one is still a jump within the park page. */}
-                        <a
-                          href={chapterHref(`shows-${show.slug}`)}
-                          className="hover:bg-muted/50 hover:text-primary -mx-1 flex items-center gap-2.5 rounded px-1 transition-colors"
-                        >
-                          <span className="text-muted-foreground shrink-0 font-bold tabular-nums">
-                            <LocalTime time={show.startTime} timeZone={timezone} />
-                          </span>
-                          <span className="min-w-0 flex-1 truncate">{show.name}</span>
-                        </a>
-                      </li>
-                    );
-                  })}
-                </ul>
+                          <a
+                            href={chapterHref(`shows-${show.slug}`)}
+                            className="hover:bg-muted/50 hover:text-primary -mx-1 flex items-center gap-2.5 rounded px-1 transition-colors"
+                          >
+                            <span className="text-muted-foreground shrink-0 font-bold tabular-nums">
+                              <LocalTime time={show.startTime} timeZone={timezone} />
+                            </span>
+                            <span className="min-w-0 flex-1 truncate">{show.name}</span>
+                          </a>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
               </Metric>
             </div>
           )}
         </div>
       </div>
-
-      {/* Weather summary. The temperature line is NOT conditional on the nowcast: the nowcast
-          banner renders nothing at all unless there is rain or a storm to report, so hanging the
-          whole row off it meant every dry park showed no weather in this panel whatsoever. The
-          full card is one click away in the weather tab. */}
-      {park.weather?.current && (
-        <div className="border-border/50 bg-muted/30 flex flex-wrap items-center gap-x-4 gap-y-2 border-t px-5 py-2.5">
-          {weatherSummary &&
-            (() => {
-              const WeatherIcon = weatherSummary.icon;
-              return (
-                <span className="flex items-center gap-2 text-sm font-semibold">
-                  <WeatherIcon className={cn('h-4 w-4', weatherSummary.color)} aria-hidden="true" />
-                  {weatherSummary.temperature}
-                </span>
-              );
-            })()}
-          {weatherSummary?.description && (
-            <span className="text-muted-foreground text-sm">{weatherSummary.description}</span>
-          )}
-          <a
-            href={chapterHref('weather')}
-            className="text-primary ml-auto text-xs whitespace-nowrap"
-          >
-            {t('weatherAndHourly')} ›
-          </a>
-        </div>
-      )}
 
       {/* Rain / storm nowcast — its own strip because it is an alert, not a reading, and it
           renders nothing on a dry day. */}

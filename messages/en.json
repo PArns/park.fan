@@ -744,6 +744,8 @@
       "gridTitle": "Month by month",
       "previousMonth": "Previous month",
       "nextMonth": "Next month",
+      "currentMonth": "Today",
+      "currentMonthAria": "Jump to the current month",
       "backToPark": "Back to wait times at {park}"
     }
   },

@@ -744,6 +744,8 @@
       "gridTitle": "Mes a mes",
       "previousMonth": "Mes anterior",
       "nextMonth": "Mes siguiente",
+      "currentMonth": "Hoy",
+      "currentMonthAria": "Ir al mes actual",
       "backToPark": "Volver a los tiempos de espera en {park}"
     }
   },

@@ -3,12 +3,13 @@
 import dynamic from 'next/dynamic';
 import { useLocale, useTranslations } from 'next-intl';
 import { useLinkStatus } from 'next/link';
-import { CalendarDays, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
+import { CalendarCheck, CalendarDays, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
-import { TILE_GLASS } from '@/components/common/glass-card';
 import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Link } from '@/i18n/navigation';
+import { Link, getPathname } from '@/i18n/navigation';
+import { suppressScrollToTopFor } from '@/lib/navigation/history-navigation';
 import { cn } from '@/lib/utils';
 import { parkCalendarPath, type ParkCalendarMonth } from '@/lib/parks/calendar-segments';
 import type { ParkWithAttractions } from '@/lib/api/types';
@@ -34,6 +35,7 @@ export function ParkCalendarPanel({
   city,
   parkSlug,
   month,
+  currentMonth,
   prevMonth,
   nextMonth,
   className,
@@ -45,6 +47,15 @@ export function ParkCalendarPanel({
   parkSlug: string;
   /** The month this URL names, or `null` on the hub — where the grid opens on today's month. */
   month: ParkCalendarMonth | null;
+  /**
+   * Today's month in the PARK's timezone, resolved on the server.
+   *
+   * Passed in rather than read here: this is a Client Component, and a park in Florida is still
+   * on yesterday's date for six hours after midnight in Berlin — computing it on both sides of
+   * the boundary would disagree across a month rollover and hydrate into a „Heute" button that
+   * points at the wrong month, or none where there should be one.
+   */
+  currentMonth: ParkCalendarMonth;
   prevMonth: ParkCalendarMonth | null;
   nextMonth: ParkCalendarMonth | null;
   className?: string;
@@ -53,6 +64,8 @@ export function ParkCalendarPanel({
   const locale = useLocale();
   const href = (m: ParkCalendarMonth | null) =>
     m ? parkCalendarPath(locale, continent, country, city, parkSlug, m) : null;
+  const isCurrentMonth =
+    month === null || (month.year === currentMonth.year && month.month === currentMonth.month);
   const label = (m: ParkCalendarMonth) =>
     new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(
       new Date(Date.UTC(m.year, m.month - 1, 1))
@@ -62,49 +75,71 @@ export function ParkCalendarPanel({
     <section className={cn(className)}>
       <ChapterHeading icon={CalendarDays} title={t('gridTitle')} frosted className="mb-0" />
 
-      {/* The stepper sits HERE, not inside the grid, and that is the whole reason the months are
-        crawlable. `ParkCalendarGrid` is a `ssr: false` dynamic import — it formats every cell
+      {/* Heading, month stepper and grid are ONE box. The card takes `rounded-t-none border-t-0`
+        so the band's own `rounded-t-xl` and its `border-b` become this box's lid and its first
+        rule — the band used to end over open air with a strip of park photo between it and the
+        grid's separate card.
+
+        The stepper sits here rather than inside `ParkCalendarGrid`, and that is the whole reason
+        the months are crawlable: the grid is a `ssr: false` dynamic import — it formats every cell
         against the browser clock — so anything inside it is absent from the served HTML. With the
-        links in there, a crawler arriving at one month found no way to any other, and the archive
+        links in there, a crawler arriving at one month found no way to any other and the archive
         existed only for whoever guessed the URLs. This component is an ordinary Client Component,
         so it renders on the server like any other and the two links are in the first byte.
 
-        It is the lower half of the chapter band rather than a row of its own, which is what
-        `rounded-t-xl` on the heading has been promising all along. As a bare row it stood on the
-        park photo with nothing behind it, so the heading's `border-b` was the bottom edge of a box
-        that had no bottom — a rounded lid over open air, then a gap of photograph, then the grid's
-        own card. The band's material closes it: `mb-0` on the heading, the radius moves down here,
-        and that rule now separates the title from the control it belongs to. Contrast comes along
-        for free rather than being the point — the semi-transparent outline buttons read 7.02:1 over
-        Phantasialand's carousel and 16.17:1 once the glass is behind them.
-
         `prevMonth`/`nextMonth` are `null` where the window the route serves runs out, and the
         stepper stops rather than pointing at a 404. */}
-      <div
-        className={cn(
-          TILE_GLASS,
-          'border-border mb-4 flex items-center justify-end gap-2 rounded-b-xl px-4 py-3'
-        )}
-      >
-        <MonthStep href={href(prevMonth)} label={t('previousMonth')}>
-          <ChevronLeft className="h-4 w-4" />
-        </MonthStep>
-        <div className="min-w-[140px] text-center font-semibold">{month ? label(month) : null}</div>
-        <MonthStep href={href(nextMonth)} label={t('nextMonth')}>
-          <ChevronRight className="h-4 w-4" />
-        </MonthStep>
-      </div>
+      <Card className="relative gap-4 rounded-t-none border-t-0 p-4 md:p-6">
+        <div className="flex items-center justify-end gap-2">
+          {/* „Heute" only once it would do something. Twelve months in each direction is a long
+            way to walk back one arrow at a time, and the browser's back button is not the same
+            offer — somebody who stepped forward six months would have to press it six times.
+            Hidden on the current month rather than disabled, because a stepper whose third
+            control is permanently greyed out on the page most visitors land on reads as broken. */}
+          {!isCurrentMonth && (
+            <Button variant="outline" size="sm" className="mr-auto h-9" asChild>
+              <Link
+                href={parkCalendarPath(locale, continent, country, city, parkSlug)}
+                aria-label={t('currentMonthAria')}
+                scroll={false}
+                onClick={() =>
+                  suppressScrollToTopFor(
+                    getPathname({
+                      href: parkCalendarPath(locale, continent, country, city, parkSlug),
+                      locale,
+                    })
+                  )
+                }
+              >
+                <MonthStepIcon>
+                  <CalendarCheck className="h-4 w-4" />
+                </MonthStepIcon>
+                {t('currentMonth')}
+              </Link>
+            </Button>
+          )}
+          <MonthStep href={href(prevMonth)} label={t('previousMonth')}>
+            <ChevronLeft className="h-4 w-4" />
+          </MonthStep>
+          <div className="min-w-[140px] text-center font-semibold">
+            {month ? label(month) : null}
+          </div>
+          <MonthStep href={href(nextMonth)} label={t('nextMonth')}>
+            <ChevronRight className="h-4 w-4" />
+          </MonthStep>
+        </div>
 
-      <ParkCalendarGrid
-        park={park}
-        continent={continent}
-        country={country}
-        city={city}
-        parkSlug={parkSlug}
-        month={month}
-        prevMonth={prevMonth}
-        nextMonth={nextMonth}
-      />
+        <ParkCalendarGrid
+          park={park}
+          continent={continent}
+          country={country}
+          city={city}
+          parkSlug={parkSlug}
+          month={month}
+          prevMonth={prevMonth}
+          nextMonth={nextMonth}
+        />
+      </Card>
     </section>
   );
 }
@@ -115,10 +150,12 @@ function MonthStep({
   label,
   children,
 }: {
+  /** Locale-RELATIVE, the way `Link` from `@/i18n/navigation` wants it. */
   href: string | null;
   label: string;
   children: React.ReactNode;
 }) {
+  const locale = useLocale();
   if (!href) {
     return (
       <Button variant="outline" size="icon" disabled aria-label={label}>
@@ -128,7 +165,22 @@ function MonthStep({
   }
   return (
     <Button variant="outline" size="icon" asChild>
-      <Link href={href} aria-label={label}>
+      {/* `scroll={false}`: a month used to be a `setState` and the page stayed where it was. It is
+        a navigation now, and Next's default is to put a new page at the top — so pressing „nächster
+        Monat" threw the reader back to the park's title card and they had to scroll down to the
+        grid again for every month. The grid is in the same place on the next page, so leaving the
+        scroll alone is what makes the arrow read as a stepper rather than as a link. Only affects
+        in-app navigation; a cold load of a month URL still opens at the top, which is right. */}
+      <Link
+        href={href}
+        aria-label={label}
+        scroll={false}
+        /* `getPathname` and not `href`: this app's own scroll handler compares against
+           `window.location.pathname`, which carries the locale prefix (`localePrefix: 'always'`),
+           while `href` here is locale-relative — the two never matched and the page kept jumping
+           to the top on every month step. */
+        onClick={() => suppressScrollToTopFor(getPathname({ href, locale }))}
+      >
         <MonthStepIcon>{children}</MonthStepIcon>
       </Link>
     </Button>

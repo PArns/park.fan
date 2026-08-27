@@ -19,7 +19,6 @@ import { useCalendarData } from '@/lib/hooks/use-calendar-data';
 import { CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
 import { parkCalendarPath, type ParkCalendarMonth } from '@/lib/parks/calendar-segments';
 import type { IntegratedCalendarResponse, ParkWithAttractions } from '@/lib/api/types';
-import { Card } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { ParkCalendarDay } from './park-calendar-day';
 import { ParkCalendarDayDetail } from './park-calendar-day-detail';
@@ -257,7 +256,12 @@ export function ParkCalendarGrid({
   today.setHours(0, 0, 0, 0);
 
   return (
-    <Card className="relative p-4 md:p-6">
+    /* No <Card> around this any more: the box lives in `ParkCalendarPanel`, because the month
+       stepper has to be INSIDE it and cannot be inside this component — this is a `ssr: false`
+       import and anything in here is missing from the served HTML, which for two <a> tags means
+       a crawler arriving at one month finds no way to any other. So the panel renders the card,
+       puts the server-rendered stepper in it, and drops this grid in underneath. */
+    <>
       <div className="space-y-4">
         {/* Error Message */}
         {error && (
@@ -444,6 +448,6 @@ export function ParkCalendarGrid({
         }}
         onNavigate={handleDayNavigate}
       />
-    </Card>
+    </>
   );
 }

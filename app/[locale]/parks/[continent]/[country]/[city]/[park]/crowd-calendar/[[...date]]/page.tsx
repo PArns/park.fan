@@ -384,6 +384,7 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
           city={city}
           parkSlug={parkSlug}
           month={shownMonth}
+          currentMonth={nowMonth}
           prevMonth={prevMonth}
           nextMonth={nextMonth}
           className="mt-8"

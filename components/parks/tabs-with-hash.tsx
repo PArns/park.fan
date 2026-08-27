@@ -180,55 +180,60 @@ export const TabsWithHash = memo(function TabsWithHash({
           value="attractions"
           className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
         >
-          {/* No chapter heading here, and that is deliberate: the tile above this panel
-              already says „Attraktionen 40" and is the selected one of six. A band
-              repeating the word 100 px under it is the same chapter opened twice — the
-              tile row IS this chapter's header. The other chapters on the page keep
-              theirs, because nothing above them names them.
+          {/* No chapter heading here, and that is deliberate: the tile above this panel already
+              says „Attraktionen 40" and is the selected one of six. A band repeating the word
+              100 px under it is the same chapter opened twice — the tile row IS this chapter's
+              header. The other chapters on the page keep theirs, because nothing above them
+              names them.
 
-              What the band did carry stays: the off-season toggle. The row it sits in is
-              rendered whenever the park has out-of-season rides at all, with the toggle
-              only `invisible` while searching, because a row that comes and goes as
-              somebody types moves the whole list under it. */}
-          {offSeasonAttractionCount > 0 && (
-            <div className="mb-4 flex h-9 items-center">
-              {/* The search reaches past the season on purpose, so while it is active the
-                  toggle governs nothing and pressing it would appear to do nothing. */}
-              <div className={cn(isSearching && 'invisible')}>
+              This row is what is left of the band: the off-season toggle it used to carry, and
+              the filter. The filter was `md:absolute md:top-0 md:right-0` inside the content
+              below, so on desktop it floated over the park photo beside the rope-drop card and
+              on a phone it was a full-width box wedged above the first land. It belongs here.
+
+              Fixed `h-9` and no wrapping: the row is exactly one control tall at every width, so
+              the pre-mount branch can reserve it with a single number and the ride list does not
+              move at hydration. Below `sm` the field takes the leftover width (`flex-1`), above
+              it its own `sm:w-[250px]` applies and `ml-auto` pushes it to the right edge. */}
+          <div className="mb-4 flex h-9 items-center gap-3">
+            {offSeasonAttractionCount > 0 && (
+              /* The search reaches past the season on purpose, so while it is active the toggle
+                 governs nothing and pressing it would appear to do nothing. `invisible` rather
+                 than unmounted: a control that comes and goes as somebody types would move the
+                 whole list under it. */
+              <div className={cn('shrink-0', isSearching && 'invisible')}>
                 <OffSeasonToggle
                   count={offSeasonAttractionCount}
                   shown={showOffSeasonAttractions}
                   onToggle={() => setShowOffSeasonAttractions((v) => !v)}
                 />
               </div>
+            )}
+            <div className="group relative ml-auto min-w-0 flex-1 sm:flex-none">
+              <Search className="text-muted-foreground group-focus-within:text-primary absolute top-2.5 left-3 z-10 h-4 w-4 transition-colors" />
+              <Input
+                ref={inputRef}
+                placeholder={t('searchAttractions')}
+                className={`bg-background/60 hover:bg-background/75 border-primary/20 hover:border-primary/40 focus-visible:border-primary/60 w-full pl-9 shadow-md backdrop-blur-md transition-all duration-300 sm:w-[250px] sm:focus:w-[300px] dark:bg-[oklch(0.12_0.025_241_/_0.55)] dark:hover:bg-[oklch(0.14_0.030_241_/_0.65)] ${
+                  isFocused && searchQuery ? 'pr-16' : 'pr-4'
+                }`}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setIsFocused(false)}
+              />
+              {isFocused && searchQuery && (
+                <div className="animate-in fade-in zoom-in pointer-events-none absolute top-1/2 right-3 -translate-y-[0.85rem] duration-200">
+                  <kbd className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none">
+                    ESC
+                  </kbd>
+                </div>
+              )}
             </div>
-          )}
+          </div>
+
           {/* Attractions grouped by Land */}
           <div className="relative space-y-8">
-            <div className="relative z-10 mb-4 md:absolute md:top-0 md:right-0 md:mb-0">
-              <div className="group relative w-full sm:w-auto">
-                <Search className="text-muted-foreground group-focus-within:text-primary absolute top-2.5 left-3 z-10 h-4 w-4 transition-colors" />
-                <Input
-                  ref={inputRef}
-                  placeholder={t('searchAttractions')}
-                  className={`bg-background/60 hover:bg-background/75 border-primary/20 hover:border-primary/40 focus-visible:border-primary/60 w-full pl-9 shadow-md backdrop-blur-md transition-all duration-300 sm:w-[250px] sm:focus:w-[300px] dark:bg-[oklch(0.12_0.025_241_/_0.55)] dark:hover:bg-[oklch(0.14_0.030_241_/_0.65)] ${
-                    isFocused && searchQuery ? 'pr-16' : 'pr-4'
-                  }`}
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  onFocus={() => setIsFocused(true)}
-                  onBlur={() => setIsFocused(false)}
-                />
-                {isFocused && searchQuery && (
-                  <div className="animate-in fade-in zoom-in pointer-events-none absolute top-1/2 right-3 -translate-y-[0.85rem] duration-200">
-                    <kbd className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none">
-                      ESC
-                    </kbd>
-                  </div>
-                )}
-              </div>
-            </div>
-
             {deferredTab !== 'attractions' ? (
               // Switching BACK to this tab remounts the whole grid. EVERYTHING below the search
               // box is deferred — the rope-drop picks and the headliner cards are real cards

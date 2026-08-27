@@ -744,6 +744,8 @@
       "gridTitle": "Maand voor maand",
       "previousMonth": "Vorige maand",
       "nextMonth": "Volgende maand",
+      "currentMonth": "Vandaag",
+      "currentMonthAria": "Naar de huidige maand",
       "backToPark": "Terug naar de wachttijden in {park}"
     }
   },
