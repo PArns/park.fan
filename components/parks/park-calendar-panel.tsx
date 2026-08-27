@@ -73,7 +73,15 @@ export function ParkCalendarPanel({
 
   return (
     <section className={cn(className)}>
-      <ChapterHeading icon={CalendarDays} title={t('gridTitle')} frosted className="mb-0" />
+      {/* `rounded-b-none`: this is the one band with something glued to its underside — the card
+        below carries `rounded-t-none border-t-0`, and the two halves are one box. Every other
+        chapter's band stands on its own and keeps all four corners. */}
+      <ChapterHeading
+        icon={CalendarDays}
+        title={t('gridTitle')}
+        frosted
+        className="mb-0 rounded-b-none"
+      />
 
       {/* Heading, month stepper and grid are ONE box. The card takes `rounded-t-none border-t-0`
         so the band's own `rounded-t-xl` and its `border-b` become this box's lid and its first

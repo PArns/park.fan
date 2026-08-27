@@ -38,40 +38,49 @@ export function ParkBestDaysSectionSkeleton({
 }) {
   return (
     <section className="mt-8 space-y-4">
-      <ParkBestDaysHeader
-        parkName={parkName}
-        parkSlug={parkSlug}
-        locale={locale}
-        showCalendarLink={showCalendarLink}
-      />
+      {/* Header and the three cards are ONE box, the way „Monat für Monat" and its month
+        stepper are: the band squares off its bottom, the card underneath drops its top border
+        and radius, and the chapter reads as one object instead of a lid resting on a gap of
+        park photograph. */}
+      <div>
+        <ParkBestDaysHeader
+          parkName={parkName}
+          parkSlug={parkSlug}
+          locale={locale}
+          showCalendarLink={showCalendarLink}
+          className="mb-0 rounded-b-none"
+        />
 
-      {/* The three data cards. Chip geometry mirrors <DayChip> (`px-3 py-1 text-sm` → 30px tall,
+        {/* The three data cards. Chip geometry mirrors <DayChip> (`px-3 py-1 text-sm` → 30px tall,
           `gap-2` between them) so the rows line up with the real ones. The date card carries five
           chips because that is what wraps to the same two rows the real list takes at both
           breakpoints — its length varies with the park (0–8 upcoming quiet days), so this is the
           middle of the range rather than a value that is exact for one park and wrong for the next. */}
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" aria-hidden="true">
-        {[
-          { titleWidth: 'w-40', chips: 3, chipWidth: 'w-12' }, // quietest weekdays
-          { titleWidth: 'w-36', chips: 1, chipWidth: 'w-12' }, // best weekend day
-          { titleWidth: 'w-36', chips: 5, chipWidth: 'w-24' }, // upcoming quiet days
-        ].map((card, i) => (
-          <Card key={i}>
-            <CardHeader className="pb-3">
-              <div className="flex items-center gap-2">
-                <Skeleton className="h-4 w-4" />
-                <Skeleton className={`h-6 ${card.titleWidth} max-w-full`} />
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-2">
-                {Array.from({ length: card.chips }).map((_, j) => (
-                  <Skeleton key={j} className={`h-[30px] ${card.chipWidth} rounded-md`} />
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+        <Card className="rounded-t-none border-t-0 p-4 md:p-6">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" aria-hidden="true">
+            {[
+              { titleWidth: 'w-40', chips: 3, chipWidth: 'w-12' }, // quietest weekdays
+              { titleWidth: 'w-36', chips: 1, chipWidth: 'w-12' }, // best weekend day
+              { titleWidth: 'w-36', chips: 5, chipWidth: 'w-24' }, // upcoming quiet days
+            ].map((card, i) => (
+              <Card key={i}>
+                <CardHeader className="pb-3">
+                  <div className="flex items-center gap-2">
+                    <Skeleton className="h-4 w-4" />
+                    <Skeleton className={`h-6 ${card.titleWidth} max-w-full`} />
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {Array.from({ length: card.chips }).map((_, j) => (
+                      <Skeleton key={j} className={`h-[30px] ${card.chipWidth} rounded-md`} />
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </Card>
       </div>
     </section>
   );

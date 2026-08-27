@@ -290,96 +290,108 @@ function BestDaysContent({
 
   return (
     <section aria-labelledby="best-days-heading" className="mt-8 space-y-4">
-      <ParkBestDaysHeader
-        parkName={parkName}
-        parkSlug={parkSlug}
-        locale={locale}
-        showCalendarLink={showCalendarLink}
-      />
+      {/* Header and the three cards are ONE box, the way „Monat für Monat" and its month
+        stepper are: the band squares off its bottom, the card underneath drops its top border
+        and radius, and the chapter reads as one object instead of a lid resting on a gap of
+        park photograph. */}
+      <div>
+        <ParkBestDaysHeader
+          parkName={parkName}
+          parkSlug={parkSlug}
+          locale={locale}
+          showCalendarLink={showCalendarLink}
+          className="mb-0 rounded-b-none"
+        />
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {hasBestDays && (
-          <Card>
-            <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2 text-base">
-                <TrendingDown className="h-4 w-4" />
-                {t('quietestDaysTitle')}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-2">
-                {bestDaysOfWeek.map((stat) => (
-                  <DayChip
-                    key={stat.dayIndex}
-                    dayIndex={stat.dayIndex}
-                    score={stat.avgScore}
-                    locale={locale}
-                  />
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        )}
-
-        {bestWeekendDay && (
-          <Card>
-            <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2 text-base">
-                <Sunset className="h-4 w-4" />
-                {t('bestWeekendDayTitle')}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-2">
-                <DayChip
-                  dayIndex={bestWeekendDay.dayOfWeek}
-                  score={bestWeekendDay.avgCrowdScore}
-                  locale={locale}
-                />
-              </div>
-            </CardContent>
-          </Card>
-        )}
-
-        <Card>
-          <CardHeader className="pb-3">
-            <CardTitle className="flex items-center gap-2 text-base">
-              <CalendarDays className="h-4 w-4" />
-              {t('upcomingQuietTitle')}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            {hasUpcoming ? (
-              <div className="flex flex-wrap gap-2">
-                {analysis.upcomingQuietDays.map((day) => {
-                  const [y, m, d] = day.date.split('-').map(Number);
-                  const date = new Date(y, m - 1, d);
-                  const label = getDateTimeFormat(locale, {
-                    weekday: 'short',
-                    day: 'numeric',
-                    month: 'short',
-                  })
-                    .format(date)
-                    .replace(/\.$/, '');
-                  // Loose lookup: crowdLevel can be 'closed'/'unknown', which carry no chip color.
-                  const chipClass = (CROWD_CHIP_CLASS as Record<string, string>)[day.crowdLevel];
-                  return (
-                    <span
-                      key={day.date}
-                      className={cn(
-                        'inline-flex items-center rounded-md px-3 py-1 text-sm font-medium',
-                        chipClass ?? 'bg-muted/20 text-muted-foreground border border-transparent'
-                      )}
-                    >
-                      {label}
-                    </span>
-                  );
-                })}
-              </div>
-            ) : (
-              <p className="text-muted-foreground text-sm">{t('noUpcomingQuiet')}</p>
+        <Card className="rounded-t-none border-t-0 p-4 md:p-6">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {hasBestDays && (
+              <Card>
+                <CardHeader className="pb-3">
+                  <CardTitle className="flex items-center gap-2 text-base">
+                    <TrendingDown className="h-4 w-4" />
+                    {t('quietestDaysTitle')}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {bestDaysOfWeek.map((stat) => (
+                      <DayChip
+                        key={stat.dayIndex}
+                        dayIndex={stat.dayIndex}
+                        score={stat.avgScore}
+                        locale={locale}
+                      />
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
             )}
-          </CardContent>
+
+            {bestWeekendDay && (
+              <Card>
+                <CardHeader className="pb-3">
+                  <CardTitle className="flex items-center gap-2 text-base">
+                    <Sunset className="h-4 w-4" />
+                    {t('bestWeekendDayTitle')}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    <DayChip
+                      dayIndex={bestWeekendDay.dayOfWeek}
+                      score={bestWeekendDay.avgCrowdScore}
+                      locale={locale}
+                    />
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+
+            <Card>
+              <CardHeader className="pb-3">
+                <CardTitle className="flex items-center gap-2 text-base">
+                  <CalendarDays className="h-4 w-4" />
+                  {t('upcomingQuietTitle')}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                {hasUpcoming ? (
+                  <div className="flex flex-wrap gap-2">
+                    {analysis.upcomingQuietDays.map((day) => {
+                      const [y, m, d] = day.date.split('-').map(Number);
+                      const date = new Date(y, m - 1, d);
+                      const label = getDateTimeFormat(locale, {
+                        weekday: 'short',
+                        day: 'numeric',
+                        month: 'short',
+                      })
+                        .format(date)
+                        .replace(/\.$/, '');
+                      // Loose lookup: crowdLevel can be 'closed'/'unknown', which carry no chip color.
+                      const chipClass = (CROWD_CHIP_CLASS as Record<string, string>)[
+                        day.crowdLevel
+                      ];
+                      return (
+                        <span
+                          key={day.date}
+                          className={cn(
+                            'inline-flex items-center rounded-md px-3 py-1 text-sm font-medium',
+                            chipClass ??
+                              'bg-muted/20 text-muted-foreground border border-transparent'
+                          )}
+                        >
+                          {label}
+                        </span>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <p className="text-muted-foreground text-sm">{t('noUpcomingQuiet')}</p>
+                )}
+              </CardContent>
+            </Card>
+          </div>
         </Card>
       </div>
 

@@ -34,11 +34,16 @@ export function ParkBestDaysHeader({
   parkSlug,
   locale,
   showCalendarLink = false,
+  className,
 }: {
   parkName: string;
   parkSlug: string;
   locale: string;
   showCalendarLink?: boolean;
+  /** Passed through to `ChapterHeading` — the section and its skeleton square off the bottom so
+   *  the card underneath can be glued to it. The guide page renders this header on its own and
+   *  keeps all four corners. */
+  className?: string;
 }) {
   const t = useTranslations('parks.bestDays');
   const displayName = localizedParkName(parkName, parkSlug, locale);
@@ -49,6 +54,7 @@ export function ParkBestDaysHeader({
       title={t('title', { park: displayName })}
       id="best-days-heading"
       frosted
+      className={className}
       badge={
         showCalendarLink ? (
           <CrowdCalendarFaqLink className="border-primary/30 bg-primary/10 text-primary hover:bg-primary/20 hover:border-primary/50 inline-flex shrink-0 items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm font-medium no-underline transition-colors">

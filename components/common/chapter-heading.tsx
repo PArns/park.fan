@@ -68,10 +68,13 @@ interface ChapterHeadingProps {
    * passes. On Phantasialand, whose photo is a dark blue night shot, the same
    * three read 5.20, 5.91 and 6.30:1.
    *
-   * What stays different from the card is the shape, and on purpose: the card is
-   * a closed box with a full border, the band is the top of the chapter under it,
-   * so it keeps `rounded-t-xl` and its own `border-b` as that chapter's opening
-   * rule.
+   * All four corners are rounded. The band used to be `rounded-t-xl`, on the
+   * reasoning that it is the lid of the chapter under it — which is true where
+   * something is actually glued to its underside (the calendar's month stepper,
+   * which passes `rounded-b-none`) and false everywhere else. On the other seven
+   * chapters of a park page the content below is a grid of cards with a gap over
+   * it, so the band was a lid with two square corners resting on the photograph.
+   * A call site that continues downward says so; a band on its own is a box.
    */
   frosted?: boolean;
   className?: string;
@@ -110,7 +113,7 @@ export function ChapterHeading({
     <div
       className={cn(
         'border-border mb-6 flex items-start gap-3 border-b pb-4 sm:gap-4',
-        frosted && cn(TILE_GLASS, 'rounded-t-xl px-4 pt-3'),
+        frosted && cn(TILE_GLASS, 'rounded-xl px-4 pt-3'),
         className
       )}
     >
