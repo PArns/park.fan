@@ -103,6 +103,25 @@ Two failure modes are handled explicitly, because both would otherwise be invisi
 `pnpm test:content-changes` pins both, plus the blindness to every live field, since none of it
 is visible from a green build.
 
+### Rejected: let the backend send the date
+
+The obvious shortcut is a new API route exposing the per-entity timestamp, which would delete the
+crawl entirely. It was checked against the backend source and it does not work:
+
+- `attractions` and `parks` do carry a TypeORM `@UpdateDateColumn`, but the children-metadata sync
+  (`0 4 * * *`) calls `attractionRepository.update(id, {name, latitude, longitude})` for every
+  matched ride **unconditionally**, and `Repository.update()` issues a raw UPDATE with no diff. So
+  `updatedAt` moves on all ~7,100 rows every morning while writing back the values already there.
+  Published as `lastmod`, that is one identical date on 44,000 URLs — the exact pathology this
+  design avoids, wearing a field name that looks authoritative.
+- A **content-scoped** column would be the right source and is worth asking the backend for, but it
+  would not remove the crawl: media versions and blog backlinks are frontend content the backend
+  has never heard of, and they are half of what makes a park or ride page change.
+- **Bandwidth is not the argument.** One pass is ~14 MB across 212 parks; the fields the
+  fingerprint reads are 24 % of it (measured over six parks, 37–96 rides each). A lean projection
+  endpoint would save ~10 MB _per day_, next to a prewarm cron in this repo that renders 1,272
+  pages every six hours. The crawl itself takes 1.4 s warm, 5.4 s cold for the whole catalog.
+
 At **build** time the snapshot may not be readable (no Blob token in the build environment). The
 sitemaps then prerender without `lastmod` and pick it up on their next revalidation, within a day.
 

@@ -34,6 +34,25 @@ import type { ContentChangeEntry, ContentChangeSnapshot, FingerprintMap } from '
  * `alt`/`caption` text in the media sidecars. Swapping a photo moves
  * `mediaVersions`; rewording the caption under the same photo moves nothing, and
  * reaches Google on the crawler's own schedule.
+ *
+ * **Why the backend cannot just hand us the date, which is the first thing anyone
+ * asks.** The `attractions` and `parks` tables do carry a TypeORM
+ * `@UpdateDateColumn`, and exposing it would delete this whole file. It would also
+ * be wrong: the children-metadata sync runs daily at 04:00 UTC and calls
+ * `attractionRepository.update(id, {name, latitude, longitude})` for every matched
+ * ride **unconditionally**. `Repository.update()` issues a raw UPDATE with no
+ * diff, so `updatedAt` moves on all ~7,100 rows every morning even though the
+ * values written are the ones already there. That is the identical-date-everywhere
+ * pathology this file exists to avoid, arriving as a field that looks
+ * authoritative. A content-scoped column on the API would be the better source,
+ * but it would still miss half the question — the media versions and blog
+ * backlinks below are frontend content the backend has never heard of.
+ *
+ * The cost is not the reason either. One pass is ~14 MB across 212 parks and the
+ * fields read here are 24 % of it, so a lean backend projection would save ~10 MB
+ * *per day*, against a prewarm cron in this same repo that renders 1,272 pages
+ * every six hours. Measured crawl time for the whole catalog: 1.4 s warm, 5.4 s
+ * cold.
  */
 
 /**
