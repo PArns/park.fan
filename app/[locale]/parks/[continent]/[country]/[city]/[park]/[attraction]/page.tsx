@@ -329,7 +329,14 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
           ogImageUrl={ogImageUrl}
         />
         <AttractionFAQStructuredData attraction={attraction} park={park} locale={locale} />
-        <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
+        <BreadcrumbStructuredData
+          breadcrumbs={breadcrumbs}
+          currentPage={{
+            name: attractionCurrentPage,
+            url: `/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
+          }}
+          locale={locale}
+        />
         <ParkBackground
           imageSrc={backgroundImage}
           // The sidecar's authored sentence in this locale, not the bare entity name:

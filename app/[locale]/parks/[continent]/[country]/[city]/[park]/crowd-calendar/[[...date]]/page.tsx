@@ -315,7 +315,16 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
         statsAfterChildren
         faqGlossaryTerms={faqGlossaryTerms}
         glossarySegment={glossarySegment}
-        head={<BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />}
+        head={
+          <BreadcrumbStructuredData
+            breadcrumbs={breadcrumbs}
+            currentPage={{
+              name: monthName ?? t('breadcrumb'),
+              url: parkCalendarPath(locale, continent, country, city, parkSlug, month ?? undefined),
+            }}
+            locale={locale}
+          />
+        }
         header={
           <ParkTitleHeader
             park={park}

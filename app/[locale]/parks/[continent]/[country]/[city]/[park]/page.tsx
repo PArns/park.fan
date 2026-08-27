@@ -351,7 +351,14 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
               locale={locale}
               ogImageUrl={ogImageUrl}
             />
-            <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
+            <BreadcrumbStructuredData
+              breadcrumbs={breadcrumbs}
+              currentPage={{
+                name: parkCurrentPage,
+                url: `/parks/${continent}/${country}/${city}/${parkSlug}`,
+              }}
+              locale={locale}
+            />
             {park.shows && park.shows.length > 0 && (
               <ShowsStructuredData shows={park.shows} park={park} />
             )}
