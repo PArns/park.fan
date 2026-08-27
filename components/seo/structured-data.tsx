@@ -33,6 +33,19 @@ import { SITE_URL } from '@/i18n/config';
  * and the one on the homepage were the same thing.
  */
 const ORGANIZATION_ID = `${SITE_URL}/#organization`;
+
+/**
+ * Third-party profiles that ARE park.fan, for `sameAs` — the edge an answer engine follows to
+ * decide that the park.fan it read about somewhere else and this site are one entity. Empty for
+ * now, and therefore omitted below rather than emitted as `sameAs: []`, which would be a claim
+ * that the brand has no presence anywhere (the same reason `ParkStructuredData` drops an empty
+ * one). Add a profile and it is one line.
+ *
+ * Only profiles of the ORGANISATION belong here. Patrick's personal accounts are a different
+ * entity and already sit on the author's `Person` node in the blog's structured data; listing
+ * them here would assert that the person and the company are the same thing.
+ */
+const ORGANIZATION_SAME_AS: readonly string[] = [];
 const websiteId = (locale: string) => `${SITE_URL}/${locale}/#website`;
 
 /**
@@ -190,6 +203,7 @@ export function OrganizationStructuredData({
     description:
       description ||
       'Real-time theme park wait times, crowd predictions, and schedules. Plan your perfect visit with ML-powered forecasts for 200+ theme parks worldwide.',
+    ...(ORGANIZATION_SAME_AS.length > 0 && { sameAs: [...ORGANIZATION_SAME_AS] }),
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'Customer Service',
@@ -307,6 +321,9 @@ export function ParkStructuredData({
   const data: WithContext<AmusementPark> = {
     '@context': 'https://schema.org',
     '@type': 'AmusementPark',
+    // Same reason the rides below carry ids: so the `WebPage` node can point at the park as the
+    // thing this page is about, instead of describing it a second time and disagreeing.
+    '@id': url,
     name: parkName,
     url: url,
     ...(locale && { inLanguage: locale }),
@@ -374,17 +391,41 @@ export function ParkStructuredData({
   // cannot read; see buildWaitTimeObservations for the full selection rule.
   const observations = 'attractions' in park ? buildWaitTimeObservations(park, url) : undefined;
 
+  // When this page's content last changed, which on a park page is the freshest wait-time reading
+  // on it. It goes on a `WebPage` node rather than onto `AmusementPark`: `dateModified` is a
+  // property of CreativeWork, and a park is a Place — the date describes the document, not the
+  // park. Omitted when there is no reading at all (a park whose waits we cannot read, one shut
+  // for the season): a stated modification date we cannot support is worse than none.
+  //
+  // Lexicographic max is safe here because every value is the same field from the same API, an
+  // ISO-8601 instant in UTC (`2026-08-23T08:13:23.908Z`).
+  const latestObservation = observations?.reduce<string | undefined>(
+    (latest, observation) =>
+      observation.observationDate && (!latest || observation.observationDate > latest)
+        ? observation.observationDate
+        : latest,
+    undefined
+  );
+
+  const webPage = {
+    '@type': 'WebPage' as const,
+    '@id': `${url}#webpage`,
+    url,
+    name: parkName,
+    ...(locale && { inLanguage: locale, isPartOf: { '@id': websiteId(locale) } }),
+    mainEntity: { '@id': url },
+    ...(latestObservation && { dateModified: latestObservation }),
+  };
+
   return (
     <>
       <JsonLd data={data} />
-      {observations && (
-        <JsonLd
-          data={{
-            '@context': 'https://schema.org',
-            '@graph': observations,
-          }}
-        />
-      )}
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@graph': [webPage, ...(observations ?? [])],
+        }}
+      />
     </>
   );
 }

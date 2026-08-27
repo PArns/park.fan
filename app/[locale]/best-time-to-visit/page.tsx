@@ -10,6 +10,18 @@ import { Hero } from '@/components/marketing/editorial-ui';
 import type { ComponentType } from 'react';
 import { RouteMessages } from '@/i18n/route-messages';
 
+/**
+ * When this page's copy was first published and last revised, for the `Article` node.
+ *
+ * Hand-maintained, because nothing else here knows: the page is six locale content modules and a
+ * header table, not a feed, so there is no timestamp to read. The initial values are the dates
+ * git has for `app/[locale]/best-time-to-visit`. Bump `MODIFIED` when the prose or the figures in
+ * it change — an undated page that quotes two years of measurements reads as stale to the
+ * engines most likely to quote it.
+ */
+const CONTENT_PUBLISHED = '2026-07-22';
+const CONTENT_MODIFIED = '2026-08-23';
+
 const CONTENT_LOADERS: Record<Locale, () => Promise<ComponentType>> = {
   de: () => import('./content/de').then((m) => m.ContentDE),
   en: () => import('./content/en').then((m) => m.ContentEN),
@@ -251,6 +263,8 @@ export default async function BestTimeToVisitPage({ params }: PageProps) {
           url={url}
           locale={locale}
           image={getOgImageUrl([locale, BEST_TIME_SEGMENTS.en])}
+          datePublished={CONTENT_PUBLISHED}
+          dateModified={CONTENT_MODIFIED}
         />
         <BreadcrumbStructuredData
           breadcrumbs={[
