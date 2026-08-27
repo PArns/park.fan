@@ -259,6 +259,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           // far less competition than "wartezeiten", so it belongs in the index on its own.
           // Weekly rather than daily: the forecast for a day three weeks out barely moves, and
           // the park page above already carries the daily signal for this park.
+          //
+          // No `lastModified`, deliberately. `parkLastModified` is the day this park's EDITORIAL
+          // content changed — a ride renamed, a photo swapped — and none of that is what this
+          // page renders, so repeating it here would be a date about a different page. The
+          // calendar's own content is a forecast that moves a little every day on all 212 parks
+          // at once, which is precisely the identical-date-everywhere value the fingerprint
+          // detector exists to avoid emitting. Absent is the honest answer until there is a
+          // fingerprint for what a calendar actually shows.
           const calendarAlternates = buildAlternates(
             (locale) => `${parkPath}/${PARK_CALENDAR_SEGMENTS[locale as Locale]}`
           );

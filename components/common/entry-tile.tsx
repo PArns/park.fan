@@ -1,4 +1,5 @@
 import type { LucideIcon } from 'lucide-react';
+import { TILE_GLASS } from '@/components/common/glass-card';
 import { cn } from '@/lib/utils';
 
 /**
@@ -9,19 +10,16 @@ import { cn } from '@/lib/utils';
  * icon chip, and they have to: both rows sit a few hundred pixels apart on the same park photo,
  * and a second copy of these classes is a second copy that drifts on the next restyle.
  *
- * Not `GlassCard`: that brings `p-6` and its own radius, and at tile size that is a card.
- *
- * The fill is `heavy`-grade on purpose, not the `/60` the search box and the empty-state card use.
- * Those two sit over the page background; this row sits directly on the park photo, and at `/60`
- * the picture came through the tiles hard enough that "Karte" and "Wetter" were unreadable over a
- * bright patch of it — a washed-out rectangle with a photo behind the text rather than a pane of
- * glass. Same reasoning `GlassCard`'s `heavy` variant is written down with, one step further
- * because a tile is small and its label is the only thing in it.
+ * Not `GlassCard`: that brings `p-6` and its own radius, and at tile size that is a card. The fill
+ * is `TILE_GLASS` — the header stack's own glass one grade more solid, which is written down with
+ * why a tile needs that grade and the two panels above it do not. What it replaces is a fill
+ * invented here (`/85`, `oklch(…/0.88)` in the dark) with no relation to theirs, so the park page
+ * opened with two panes of glass and a strip of black plastic underneath them.
  */
 export const entryTileBox = cn(
-  'border-border/50 bg-background/85 flex h-auto w-full flex-col items-start justify-start gap-2',
-  'rounded-xl border p-3.5 text-left whitespace-normal backdrop-blur-xl transition-colors',
-  'dark:bg-[oklch(0.13_0.02_241_/_0.88)]'
+  'border-border/50 flex h-auto w-full flex-col items-start justify-start gap-2',
+  'rounded-xl border p-3.5 text-left whitespace-normal transition-colors',
+  TILE_GLASS
 );
 
 /** The icon chip. Square, so the row is scannable by shape before any label is read. */

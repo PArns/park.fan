@@ -3,10 +3,9 @@
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import { TabsWithHash } from '@/components/parks/tabs-with-hash';
 import { Card } from '@/components/ui/card';
-import { AlertCircle, Loader2 } from 'lucide-react';
+import { AlertCircle } from 'lucide-react';
 import { useMemo } from 'react';
 import { useTranslations } from 'next-intl';
-import { useMounted } from '@/lib/hooks/use-mounted';
 import { groupAttractionsByLand } from '@/lib/utils/park-utils';
 import type { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
 
@@ -40,16 +39,11 @@ export function LiveParkData({
   otherAttractionsLabel,
 }: LiveParkDataProps) {
   const t = useTranslations('common');
-  // Gate the live-refetch indicator on mount: the server render (and first client render) must agree
-  // (both render the empty fixed-height slot), or the refetch-on-mount flipping `isFetching` true
-  // would cause a hydration mismatch on this force-dynamic page.
-  const mounted = useMounted();
 
   const {
     data: park,
     isError,
     error,
-    isFetching,
   } = useLiveParkData({
     continent,
     country,
@@ -120,18 +114,13 @@ export function LiveParkData({
         </Card>
       )}
 
-      {/* Subtle loading indicator during background refetch. Wrapped in a fixed-height slot that is
-          always present, so the indicator appearing/disappearing on every 5-min poll (and on the
-          immediate refetch-on-mount) no longer shifts the status + tabs below it (CLS). */}
-      <div className="mb-4 h-4">
-        {mounted && isFetching && !isError && (
-          <div className="text-muted-foreground flex items-center gap-2 text-xs">
-            <Loader2 className="h-3 w-3 animate-spin" />
-            <span>{t('updating')}</span>
-          </div>
-        )}
-      </div>
-
+      {/* The "wird aktualisiert" indicator used to sit here, in a permanently reserved `mb-4 h-4`
+          slot — 32 px of nothing between the header stack and its own navigation, on every view of
+          every park page, so that the spinner appearing on each 5-minute poll would not shift the
+          tabs. It is in <ParkTodayPanel>'s title row now, beside the park clock: that row exists
+          whether or not anything is fetching, so the indicator costs no height at all and no CLS,
+          and it sits with the live data it is about rather than above the tab bar. The panel reads
+          `isFetching` off the same query key this component polls. */}
       {/* Just the tiles and the tab body now.
           The <ParkStatus variant="detailed"> board that used to open this column is gone: every
           figure on its three cards — occupancy and the vs-typical delta, today's and the live

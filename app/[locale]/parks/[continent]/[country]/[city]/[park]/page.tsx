@@ -433,8 +433,11 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
 
           <article itemScope itemType="https://schema.org/AmusementPark">
             {/* Park Header */}
-            <div className="mb-8">
-              <GlassCard variant="medium">
+            {/* `heavy`, like the panel and the tiles under it: the three are one stacked object
+              and used to be three different fills. `mb-4` closes the rhythm — the stack ran
+              32/24/56 px between its four parts, the last of those a void nothing was in. */}
+            <div className="mb-4">
+              <GlassCard variant="heavy">
                 {/* Title row: park name + location on the left, favourite button pinned top-right. */}
                 <div className="flex items-start justify-between gap-4">
                   <div className="min-w-0 flex-1">

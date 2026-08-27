@@ -130,3 +130,5 @@ lib/i18n/message-chunks/
 # Local screenshot harness (scripts/_shot.mjs) — a scratch tool, not part of the repo.
 scripts/_shot.mjs
 scripts/_probe.mjs
+scripts/_contrast.mjs
+scripts/_shot2.mjs

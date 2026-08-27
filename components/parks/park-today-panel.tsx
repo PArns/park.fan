@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { addDays, format, parseISO } from 'date-fns';
-import { ChevronRight, Clock, Crown, Sparkles, Users } from 'lucide-react';
+import { ChevronRight, Clock, Crown, Loader2, Sparkles, Users } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { useCalendarData } from '@/lib/hooks/use-calendar-data';
@@ -20,6 +20,7 @@ import { ParkTimeRange } from '@/components/common/park-time';
 import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { LocalTime } from '@/components/ui/local-time';
 import { Progress } from '@/components/ui/progress';
+import { HEAVY_GLASS } from '@/components/common/glass-card';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { formatDurationShort } from '@/lib/i18n/time';
@@ -143,7 +144,7 @@ export function ParkTodayPanel({
   // Himmel" in the chapter, on the same page at the same moment.
   const { data: nowcast } = useWeatherNowcast({ continent, country, city, parkSlug });
 
-  const { data: mergedPark } = useLiveParkData({
+  const { data: mergedPark, isFetching } = useLiveParkData({
     continent,
     country,
     city,
@@ -297,7 +298,13 @@ export function ParkTodayPanel({
   const columnCount = 2 + (headlinerSlots > 0 ? 1 : 0) + (showSlots > 0 ? 1 : 0);
 
   return (
-    <section className="bg-background/60 border-border/50 mb-6 overflow-hidden rounded-xl border shadow-sm backdrop-blur-md dark:bg-[oklch(0.12_0.025_241_/_0.55)]">
+    <section
+      className={cn(
+        'border-border/50 mb-4 overflow-hidden rounded-xl border shadow-sm',
+        // Same glass as the title card above and the tile row below — see HEAVY_GLASS.
+        HEAVY_GLASS
+      )}
+    >
       {/* Official severe-weather warning — the panel's top strip, above everything else it says.
           `rounded-none` also has to reach the banner's two absolutely-positioned overlay layers,
           which carry their own `rounded-xl`; left round inside a square strip they leave the
@@ -324,9 +331,16 @@ export function ParkTodayPanel({
         </div>
         {/* Guarded on `currentTime`, not on the formatted string: before the browser clock
             mounts `currentTimeFormatted` is an em dash, and the first German paint read
-            "— Uhr · Ortszeit". The header this replaced carried the same guard. */}
+            "— Uhr · Ortszeit". The header this replaced carried the same guard. Same guard covers
+            the refetch spinner beside it: `isFetching` flips true on the mount refetch, and this
+            page is `force-dynamic`, so rendering it before the clock mounts would be a hydration
+            mismatch. It costs no height — this row is here either way, which is the whole reason
+            the indicator moved out of the 32 px slot it used to hold open above the tab bar. */}
         {sched.currentTime && (
-          <span className="text-muted-foreground text-xs tabular-nums">
+          <span className="text-muted-foreground flex items-center gap-2 text-xs tabular-nums">
+            {isFetching && (
+              <Loader2 className="h-3 w-3 animate-spin" aria-label={tCommon('updating')} />
+            )}
             {sched.currentTimeFormatted}
             {tCommon('timeSuffix')} · {t('localTime')}
           </span>
@@ -616,23 +630,31 @@ export function ParkTodayPanel({
                     // one to walk to".
                     if (i === 0) {
                       return (
+                        // Two rows, not two columns. The countdown used to sit UNDER the time
+                        // inside a `shrink-0` block beside the name, and "BEGINNT IN 2 STD. 31
+                        // MIN." is about 150 px wide — so it set the width of that block and left
+                        // the name roughly 110 px of a 270 px column. Every show whose name is
+                        // longer than two short words was cut: "Miji African Dancers" rendered as
+                        // "Miji African D…" beside 150 px of countdown. On its own line the
+                        // countdown costs nothing horizontally, the name gets ~200 px, and the box
+                        // is the same two lines tall it always was.
                         <li
                           key={i}
-                          className="border-primary/60 bg-primary/10 flex items-start gap-3 rounded-lg border px-2.5 py-2"
+                          className="border-primary/60 bg-primary/10 flex flex-col gap-0.5 rounded-lg border px-2.5 py-2"
                         >
-                          <span className="flex shrink-0 flex-col items-start gap-0.5">
-                            <span className="text-base leading-none font-extrabold tabular-nums">
+                          <span className="flex items-baseline gap-2">
+                            <span className="shrink-0 text-base leading-none font-extrabold tabular-nums">
                               <LocalTime time={show.startTime} timeZone={timezone} />
                             </span>
-                            {startsIn > 0 && (
-                              <span className="text-primary text-[10px] font-bold tracking-[0.03em] uppercase">
-                                {t('startsIn')} {formatDurationShort(startsIn, tCommon)}
-                              </span>
-                            )}
+                            <span className="min-w-0 flex-1 truncate text-sm font-semibold">
+                              {show.name}
+                            </span>
                           </span>
-                          <span className="min-w-0 flex-1 truncate text-sm font-semibold">
-                            {show.name}
-                          </span>
+                          {startsIn > 0 && (
+                            <span className="text-primary text-[10px] font-bold tracking-[0.03em] uppercase">
+                              {t('startsIn')} {formatDurationShort(startsIn, tCommon)}
+                            </span>
+                          )}
                         </li>
                       );
                     }
