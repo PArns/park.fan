@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { addDays, format, parseISO } from 'date-fns';
-import { ChevronRight, Clock, Crown, Loader2, Sparkles, Users } from 'lucide-react';
+import { ChevronRight, Crown, Loader2, Sparkles, Users } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { useCalendarData } from '@/lib/hooks/use-calendar-data';
@@ -27,6 +27,7 @@ import { getAttractionDisplayStatus, getStandbyWait } from '@/lib/utils/park-uti
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { isInSeason } from '@/lib/utils/season';
+import { PANEL_CELL, PanelGrid, PanelMetric } from '@/components/parks/park-panel-cell';
 import { stripNewPrefix, cn } from '@/lib/utils';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
@@ -46,32 +47,6 @@ interface ParkTodayPanelProps {
 }
 
 /** A captioned value inside a column: small uppercase caption + its value stack. */
-function Metric({
-  caption,
-  icon: Icon,
-  action,
-  children,
-}: {
-  caption: string;
-  icon?: typeof Clock;
-  /** Pushed to the caption's right — a count, an average, a link. */
-  action?: React.ReactNode;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="flex min-w-0 flex-col gap-1.5">
-      <div className="flex items-baseline justify-between gap-2">
-        <span className="text-muted-foreground flex items-center gap-1 text-[10px] font-semibold tracking-[0.08em] uppercase">
-          {Icon && <Icon className="h-3 w-3" aria-hidden="true" />}
-          {caption}
-        </span>
-        {action}
-      </div>
-      {children}
-    </div>
-  );
-}
-
 /** Subtle pill placeholder while a live/forecast value is still loading. */
 function Pending() {
   return <span className="bg-muted-foreground/20 h-5 w-20 animate-pulse rounded-full" />;
@@ -93,7 +68,7 @@ function Pending() {
  * park runs, which rides it classes as headliners, whether it has weather at all. The 5-minute
  * poll then moves the values inside those rows and never the rows themselves, so a ride that shuts
  * mid-afternoon leaves a dash behind instead of collapsing the panel and everything under it.
- * `Metric` keeps its two-line reservation for the same reason it always did — the second line of
+ * `PanelMetric` keeps its two-line reservation for the same reason it always did — the second line of
  * the status and hours cells is client-derived and arrives after the first paint.
  *
  * The dividers are drawn by every cell carrying a right and bottom hairline while the wrapper
@@ -317,7 +292,7 @@ export function ParkTodayPanel({
    */
   const chapterHref = (chapter: string) => `/${locale}${parkPath}#${chapter}`;
 
-  const cell = 'border-border/50 flex flex-col gap-3 border-r border-b px-5 py-4';
+  const cell = PANEL_CELL;
   const columnCount = 2 + (headlinerSlots > 0 ? 1 : 0) + (showSlots > 0 ? 1 : 0);
 
   return (
@@ -414,23 +389,16 @@ export function ParkTodayPanel({
             than written down. At a fixed `lg:grid-cols-4` a park with no headliners and no
             showtimes left two empty tracks sitting inside the panel's border — which is exactly
             what shipped. */}
-        <div
-          className={cn(
-            '-mr-px -mb-px grid grid-cols-1 sm:grid-cols-2',
-            columnCount === 4 && 'lg:grid-cols-4',
-            columnCount === 3 && 'lg:grid-cols-3',
-            columnCount === 2 && 'lg:grid-cols-2'
-          )}
-        >
+        <PanelGrid columnCount={columnCount}>
           {/* ── Status ── */}
           <div className={cell}>
-            <Metric caption={t('statusLabel')}>
+            <PanelMetric caption={t('statusLabel')}>
               {sched.showStatusBadge && sched.badgeStatus ? (
                 <ParkStatusBadge status={sched.badgeStatus} />
               ) : (
                 <Pending />
               )}
-            </Metric>
+            </PanelMetric>
             <div className="flex min-h-[3.25rem] flex-col gap-0.5">
               {sched.isOperatingToday && sched.openingTime && sched.closingTime ? (
                 <>
@@ -477,17 +445,17 @@ export function ParkTodayPanel({
           {/* ── Andrang ── */}
           <div className={cell}>
             <div className="flex flex-wrap gap-x-6 gap-y-3">
-              <Metric caption={t('crowdNow')}>
+              <PanelMetric caption={t('crowdNow')}>
                 {isOpenish && currentCrowd ? (
                   <CrowdLevelBadge level={currentCrowd} />
                 ) : (
                   <span className="text-muted-foreground text-sm">—</span>
                 )}
-              </Metric>
+              </PanelMetric>
               {/* Once today's full CalendarDay is loaded the value becomes a button (chevron =
                   affordance) opening the same day-detail dialog a click on today in the crowd
                   calendar opens; until then it renders static. */}
-              <Metric caption={t('forecastToday')} icon={Sparkles}>
+              <PanelMetric caption={t('forecastToday')} icon={Sparkles}>
                 {calendar ? (
                   todayReady ? (
                     <button
@@ -516,7 +484,7 @@ export function ParkTodayPanel({
                 ) : (
                   <Pending />
                 )}
-              </Metric>
+              </PanelMetric>
             </div>
 
             {/* Reserved whether or not occupancy lands — it rides the live poll, and gating the
@@ -588,7 +556,7 @@ export function ParkTodayPanel({
           {/* ── Headliner jetzt ── */}
           {headlinerSlots > 0 && (
             <div className={cell}>
-              <Metric
+              <PanelMetric
                 caption={t('headlinersNow')}
                 action={
                   stats && stats.avgWaitTime > 0 ? (
@@ -637,7 +605,7 @@ export function ParkTodayPanel({
                     );
                   })}
                 </ul>
-              </Metric>
+              </PanelMetric>
               {/* A hash link, not a callback: `useTabHashRouting` already listens for
                   `hashchange` and switches + scrolls the tab panel below, so this needs no state
                   lifted across the page and it works before hydration. */}
@@ -653,7 +621,7 @@ export function ParkTodayPanel({
           {/* ── Nächste Shows ── */}
           {showSlots > 0 && (
             <div className={cell}>
-              <Metric
+              <PanelMetric
                 caption={t('nextShows')}
                 action={
                   <a
@@ -753,10 +721,10 @@ export function ParkTodayPanel({
                     })}
                   </ul>
                 </div>
-              </Metric>
+              </PanelMetric>
             </div>
           )}
-        </div>
+        </PanelGrid>
       </div>
 
       {/* Rain / storm nowcast — its own strip because it is an alert, not a reading, and it

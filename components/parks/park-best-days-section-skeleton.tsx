@@ -1,5 +1,7 @@
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
+import { TILE_GLASS } from '@/components/common/glass-card';
+import { PANEL_CELL, PanelGrid } from '@/components/parks/park-panel-cell';
+import { cn } from '@/lib/utils';
 import { ParkBestDaysHeader } from '@/components/parks/park-best-days-header';
 
 /**
@@ -56,31 +58,38 @@ export function ParkBestDaysSectionSkeleton({
           chips because that is what wraps to the same two rows the real list takes at both
           breakpoints — its length varies with the park (0–8 upcoming quiet days), so this is the
           middle of the range rather than a value that is exact for one park and wrong for the next. */}
-        <Card className="rounded-t-none border-t-0 p-4 md:p-6">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" aria-hidden="true">
+        {/* Mirrors the real columns exactly — same wrapper, same `PANEL_CELL`, same caption line.
+          Anything that differs here is a jump the moment the seed lands, and on the park page the
+          whole attraction grid hangs below this section. */}
+        <div
+          className={cn(
+            TILE_GLASS,
+            'border-border/50 overflow-hidden rounded-b-xl border border-t-0'
+          )}
+        >
+          <PanelGrid columnCount={3}>
             {[
               { titleWidth: 'w-40', chips: 3, chipWidth: 'w-12' }, // quietest weekdays
               { titleWidth: 'w-36', chips: 1, chipWidth: 'w-12' }, // best weekend day
               { titleWidth: 'w-36', chips: 5, chipWidth: 'w-24' }, // upcoming quiet days
             ].map((card, i) => (
-              <Card key={i}>
-                <CardHeader className="pb-3">
-                  <div className="flex items-center gap-2">
-                    <Skeleton className="h-4 w-4" />
-                    <Skeleton className={`h-6 ${card.titleWidth} max-w-full`} />
+              <div key={i} className={PANEL_CELL} aria-hidden="true">
+                <div className="flex min-w-0 flex-col gap-1.5">
+                  {/* The caption is `text-[10px]` with `gap-1` — 15px tall, icon included. */}
+                  <div className="flex items-center gap-1">
+                    <Skeleton className="h-3 w-3" />
+                    <Skeleton className={`h-[15px] ${card.titleWidth} max-w-full`} />
                   </div>
-                </CardHeader>
-                <CardContent>
                   <div className="flex flex-wrap gap-2">
                     {Array.from({ length: card.chips }).map((_, j) => (
                       <Skeleton key={j} className={`h-[30px] ${card.chipWidth} rounded-md`} />
                     ))}
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             ))}
-          </div>
-        </Card>
+          </PanelGrid>
+        </div>
       </div>
     </section>
   );

@@ -4,8 +4,9 @@ import { useMemo, useState } from 'react';
 import { CalendarDays, TrendingDown, AlertTriangle, Sunset } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useMounted } from '@/lib/hooks/use-mounted';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { GlassCard } from '@/components/common/glass-card';
+import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { GlassCard, TILE_GLASS } from '@/components/common/glass-card';
+import { PANEL_CELL, PanelGrid, PanelMetric } from '@/components/parks/park-panel-cell';
 import type { IntegratedCalendarResponse } from '@/lib/api/types';
 import type { BestDaysByDayOfWeek, BestDaysSnapshot } from '@/lib/api/integrated-calendar';
 import { analyzeBestDays, scoreToCrowdLevel } from '@/lib/utils/crowd-analysis';
@@ -303,17 +304,24 @@ function BestDaysContent({
           className="mb-0 rounded-b-none"
         />
 
-        <Card className="rounded-t-none border-t-0 p-4 md:p-6">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Columns with hairline rules, not three cards in a row — the same shape „Heute im
+          Park" uses one box up the page, and for the same reason: these are three readings of
+          one thing, and a card around each of them says they are three separate objects. Shared
+          machinery in `park-panel-cell.tsx` so the rules, the padding and the caption cannot
+          drift between the two panels.
+
+          The count is computed: a park with no quiet weekday and no quiet weekend day renders one
+          column, and a fixed `lg:grid-cols-3` would leave two empty tracks inside the border. */}
+        <div
+          className={cn(
+            TILE_GLASS,
+            'border-border/50 overflow-hidden rounded-b-xl border border-t-0'
+          )}
+        >
+          <PanelGrid columnCount={1 + (hasBestDays ? 1 : 0) + (bestWeekendDay ? 1 : 0)}>
             {hasBestDays && (
-              <Card>
-                <CardHeader className="pb-3">
-                  <CardTitle className="flex items-center gap-2 text-base">
-                    <TrendingDown className="h-4 w-4" />
-                    {t('quietestDaysTitle')}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
+              <div className={PANEL_CELL}>
+                <PanelMetric caption={t('quietestDaysTitle')} icon={TrendingDown}>
                   <div className="flex flex-wrap gap-2">
                     {bestDaysOfWeek.map((stat) => (
                       <DayChip
@@ -324,19 +332,13 @@ function BestDaysContent({
                       />
                     ))}
                   </div>
-                </CardContent>
-              </Card>
+                </PanelMetric>
+              </div>
             )}
 
             {bestWeekendDay && (
-              <Card>
-                <CardHeader className="pb-3">
-                  <CardTitle className="flex items-center gap-2 text-base">
-                    <Sunset className="h-4 w-4" />
-                    {t('bestWeekendDayTitle')}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
+              <div className={PANEL_CELL}>
+                <PanelMetric caption={t('bestWeekendDayTitle')} icon={Sunset}>
                   <div className="flex flex-wrap gap-2">
                     <DayChip
                       dayIndex={bestWeekendDay.dayOfWeek}
@@ -344,18 +346,12 @@ function BestDaysContent({
                       locale={locale}
                     />
                   </div>
-                </CardContent>
-              </Card>
+                </PanelMetric>
+              </div>
             )}
 
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="flex items-center gap-2 text-base">
-                  <CalendarDays className="h-4 w-4" />
-                  {t('upcomingQuietTitle')}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
+            <div className={PANEL_CELL}>
+              <PanelMetric caption={t('upcomingQuietTitle')} icon={CalendarDays}>
                 {hasUpcoming ? (
                   <div className="flex flex-wrap gap-2">
                     {analysis.upcomingQuietDays.map((day) => {
@@ -389,10 +385,10 @@ function BestDaysContent({
                 ) : (
                   <p className="text-muted-foreground text-sm">{t('noUpcomingQuiet')}</p>
                 )}
-              </CardContent>
-            </Card>
-          </div>
-        </Card>
+              </PanelMetric>
+            </div>
+          </PanelGrid>
+        </div>
       </div>
 
       {analysis.schoolHolidaysAreBusy && (
