@@ -2,7 +2,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { Clock } from 'lucide-react';
 import { WaitTimeValue } from '@/components/common/wait-time-value';
-import { getAttractionDisplayStatus } from '@/lib/utils/park-utils';
+import { getAttractionDisplayStatus, getStandbyWait } from '@/lib/utils/park-utils';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { stripNewPrefix } from '@/lib/utils';
 import { isInSeason } from '@/lib/utils/season';
@@ -14,12 +14,6 @@ interface AttractionWaitOverviewProps {
   parkPath: string;
   landNames: string[];
   attractionsByLand: Record<string, ParkAttraction[]>;
-}
-
-/** STANDBY wait of an attraction, or null when it has none / is not operating. */
-function getStandbyWait(attraction: ParkAttraction): number | null {
-  const standby = attraction.queues?.find((q) => q.queueType === 'STANDBY');
-  return standby && 'waitTime' in standby ? standby.waitTime : null;
 }
 
 /** Newest STANDBY `lastUpdated` across the park — the honest "data as of" timestamp. */

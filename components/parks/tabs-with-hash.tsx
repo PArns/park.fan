@@ -3,8 +3,7 @@
 import { memo, useDeferredValue, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
-import { Search, Zap, Sparkles, UtensilsCrossed, CalendarDays, Map } from 'lucide-react';
-import { ChapterHeading } from '@/components/common/chapter-heading';
+import { Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent } from '@/components/ui/tabs';
 import { ShowCard } from '@/components/parks/show-card';
@@ -12,6 +11,7 @@ import { AttractionWaitOverview } from '@/components/parks/attraction-wait-overv
 import { LandSection } from '@/components/parks/land-section';
 import { LazyMount } from '@/components/parks/lazy-mount';
 import { RestaurantCard } from '@/components/parks/restaurant-card';
+import { WeatherCard } from '@/components/parks/weather-card';
 import { RopeDropHeadliners } from '@/components/parks/rope-drop-headliners';
 import { ParkTabsList } from '@/components/parks/park-tabs-list';
 import { OffSeasonToggle } from '@/components/parks/off-season-toggle';
@@ -20,38 +20,33 @@ import { AttractionCardSkeleton } from '@/components/parks/attraction-card-skele
 import { Skeleton } from '@/components/ui/skeleton';
 import { useTabHashRouting } from '@/lib/hooks/use-tab-hash-routing';
 import { useAttractionFilter } from '@/lib/hooks/use-attraction-filter';
-import { stripNewPrefix } from '@/lib/utils';
+import { cn, stripNewPrefix } from '@/lib/utils';
+import { ParkHeaderCard } from '@/components/parks/park-header-card';
 
-import type {
-  ParkWithAttractions,
-  IntegratedCalendarResponse,
-  ParkAttraction,
-} from '@/lib/api/types';
+import type { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
 
 // Dynamic import to avoid SSR issues with Leaflet and reduce bundle size
 const ParkMap = dynamic(() => import('@/components/parks/park-map').then((mod) => mod.ParkMap), {
   ssr: false,
 });
-const ParkCalendarGrid = dynamic(
-  () => import('@/components/parks/park-calendar-grid').then((mod) => mod.ParkCalendarGrid),
-  {
-    ssr: false,
-  }
-);
 
 interface TabsWithHashProps {
   defaultValue: string;
   showsAvailable: boolean | undefined;
   restaurantsAvailable: boolean | undefined;
+  /** The park has weather data — drives both the tile and the chapter behind it. */
+  weatherAvailable: boolean | undefined;
   park: ParkWithAttractions;
-  /** Optional SSR seed; the calendar grid client-fetches per visible month when omitted. */
-  calendarData?: IntegratedCalendarResponse;
   continent: string;
   country: string;
   city: string;
   parkSlug: string;
   landNames: string[];
   attractionsByLand: Record<string, ParkAttraction[]>;
+  /** <ParkTodayPanel>, rendered by the page and handed down as a slot. It is the upper half of
+   *  the header card whose lower half is the entry-tile row — one card, so one component has to
+   *  own its box, and that is this one. */
+  todayPanel?: React.ReactNode;
 }
 
 // Memoized: `LiveParkData` re-renders on every 5-min poll's `isFetching` flip, but all props
@@ -62,20 +57,26 @@ export const TabsWithHash = memo(function TabsWithHash({
   defaultValue,
   showsAvailable,
   restaurantsAvailable,
+  weatherAvailable,
   park,
-  calendarData,
   continent,
   country,
   city,
   parkSlug,
   landNames,
   attractionsByLand,
+  todayPanel,
 }: TabsWithHashProps) {
   const t = useTranslations('parks');
 
-  const { isMounted, activeTab, handleTabChange, tabsRef } = useTabHashRouting({
+  const { isMounted, activeTab, handleTabChange, tabsRef, mapShowSlug } = useTabHashRouting({
     defaultValue,
     park,
+    continent,
+    country,
+    city,
+    parkSlug,
+    timezone: park.timezone,
   });
 
   const {
@@ -121,17 +122,29 @@ export const TabsWithHash = memo(function TabsWithHash({
     return (
       <div ref={tabsRef} className="scroll-mt-20">
         <Tabs value={defaultValue}>
-          <ParkTabsList
-            park={park}
-            showsAvailable={showsAvailable}
-            restaurantsAvailable={restaurantsAvailable}
+          <ParkHeaderCard
+            panel={todayPanel}
+            tiles={
+              <ParkTabsList
+                park={park}
+                continent={continent}
+                country={country}
+                city={city}
+                parkSlug={parkSlug}
+                showsAvailable={showsAvailable}
+                restaurantsAvailable={restaurantsAvailable}
+                weatherAvailable={weatherAvailable}
+              />
+            }
           />
           <TabsContent value={defaultValue} className="space-y-6">
-            {/* The same chapter heading the mounted branch renders. Without it the
-                band appeared at hydration and pushed the whole ride list down by
-                its height. The off-season toggle is interactive and cannot be
-                here, but it shares the title's flex row and costs no height. */}
-            <ChapterHeading icon={Zap} title={t('attractions')} frosted />
+            {/* Holds the toolbar row's height, nothing more. The row itself is the
+                off-season toggle and the search box, both interactive and neither
+                possible here — but the mounted branch has them, so without this the
+                whole ride list would move up by their height at hydration. `h-9` is
+                the button/input scale from `components/ui/button.tsx`, the same
+                number the real controls resolve to. */}
+            <div className="h-9" aria-hidden="true" />
             <AttractionWaitOverview
               park={park}
               parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
@@ -147,59 +160,80 @@ export const TabsWithHash = memo(function TabsWithHash({
   return (
     <div ref={tabsRef} className="scroll-mt-20">
       <Tabs value={activeTab} onValueChange={handleTabChange}>
-        <ParkTabsList
-          park={park}
-          showsAvailable={showsAvailable}
-          restaurantsAvailable={restaurantsAvailable}
+        <ParkHeaderCard
+          panel={todayPanel}
+          tiles={
+            <ParkTabsList
+              park={park}
+              continent={continent}
+              country={country}
+              city={city}
+              parkSlug={parkSlug}
+              showsAvailable={showsAvailable}
+              restaurantsAvailable={restaurantsAvailable}
+              weatherAvailable={weatherAvailable}
+            />
+          }
         />
 
         <TabsContent
           value="attractions"
           className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
         >
-          <ChapterHeading
-            icon={Zap}
-            title={t('attractions')}
-            frosted
-            /* Hidden while searching: the search reaches past the season on purpose, so
-               the toggle governs nothing there and pressing it would appear to do
-               nothing. It comes back with the browsable list. */
-            badge={
-              offSeasonAttractionCount > 0 && !isSearching ? (
+          {/* No chapter heading here, and that is deliberate: the tile above this panel already
+              says „Attraktionen 40" and is the selected one of six. A band repeating the word
+              100 px under it is the same chapter opened twice — the tile row IS this chapter's
+              header. The other chapters on the page keep theirs, because nothing above them
+              names them.
+
+              This row is what is left of the band: the off-season toggle it used to carry, and
+              the filter. The filter was `md:absolute md:top-0 md:right-0` inside the content
+              below, so on desktop it floated over the park photo beside the rope-drop card and
+              on a phone it was a full-width box wedged above the first land. It belongs here.
+
+              Fixed `h-9` and no wrapping: the row is exactly one control tall at every width, so
+              the pre-mount branch can reserve it with a single number and the ride list does not
+              move at hydration. Below `sm` the field takes the leftover width (`flex-1`), above
+              it its own `sm:w-[250px]` applies and `ml-auto` pushes it to the right edge. */}
+          <div className="mb-4 flex h-9 items-center gap-3">
+            {offSeasonAttractionCount > 0 && (
+              /* The search reaches past the season on purpose, so while it is active the toggle
+                 governs nothing and pressing it would appear to do nothing. `invisible` rather
+                 than unmounted: a control that comes and goes as somebody types would move the
+                 whole list under it. */
+              <div className={cn('shrink-0', isSearching && 'invisible')}>
                 <OffSeasonToggle
                   count={offSeasonAttractionCount}
                   shown={showOffSeasonAttractions}
                   onToggle={() => setShowOffSeasonAttractions((v) => !v)}
                 />
-              ) : null
-            }
-          />
+              </div>
+            )}
+            <div className="group relative ml-auto min-w-0 flex-1 sm:flex-none">
+              <Search className="text-muted-foreground group-focus-within:text-primary absolute top-2.5 left-3 z-10 h-4 w-4 transition-colors" />
+              <Input
+                ref={inputRef}
+                placeholder={t('searchAttractions')}
+                className={`bg-background/60 hover:bg-background/75 border-primary/20 hover:border-primary/40 focus-visible:border-primary/60 w-full pl-9 shadow-md backdrop-blur-md transition-all duration-300 sm:w-[250px] sm:focus:w-[300px] dark:bg-[oklch(0.12_0.025_241_/_0.55)] dark:hover:bg-[oklch(0.14_0.030_241_/_0.65)] ${
+                  isFocused && searchQuery ? 'pr-16' : 'pr-4'
+                }`}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setIsFocused(false)}
+              />
+              {isFocused && searchQuery && (
+                <div className="animate-in fade-in zoom-in pointer-events-none absolute top-1/2 right-3 -translate-y-[0.85rem] duration-200">
+                  <kbd className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none">
+                    ESC
+                  </kbd>
+                </div>
+              )}
+            </div>
+          </div>
+
           {/* Attractions grouped by Land */}
           <div className="relative space-y-8">
-            <div className="relative z-10 mb-4 md:absolute md:top-0 md:right-0 md:mb-0">
-              <div className="group relative w-full sm:w-auto">
-                <Search className="text-muted-foreground group-focus-within:text-primary absolute top-2.5 left-3 z-10 h-4 w-4 transition-colors" />
-                <Input
-                  ref={inputRef}
-                  placeholder={t('searchAttractions')}
-                  className={`bg-background/60 hover:bg-background/75 border-primary/20 hover:border-primary/40 focus-visible:border-primary/60 w-full pl-9 shadow-md backdrop-blur-md transition-all duration-300 sm:w-[250px] sm:focus:w-[300px] dark:bg-[oklch(0.12_0.025_241_/_0.55)] dark:hover:bg-[oklch(0.14_0.030_241_/_0.65)] ${
-                    isFocused && searchQuery ? 'pr-16' : 'pr-4'
-                  }`}
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  onFocus={() => setIsFocused(true)}
-                  onBlur={() => setIsFocused(false)}
-                />
-                {isFocused && searchQuery && (
-                  <div className="animate-in fade-in zoom-in pointer-events-none absolute top-1/2 right-3 -translate-y-[0.85rem] duration-200">
-                    <kbd className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none">
-                      ESC
-                    </kbd>
-                  </div>
-                )}
-              </div>
-            </div>
-
             {deferredTab !== 'attractions' ? (
               // Switching BACK to this tab remounts the whole grid. EVERYTHING below the search
               // box is deferred — the rope-drop picks and the headliner cards are real cards
@@ -282,38 +316,44 @@ export const TabsWithHash = memo(function TabsWithHash({
             value="shows"
             className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
           >
-            <ChapterHeading
-              icon={Sparkles}
-              title={t('shows')}
-              frosted
-              badge={
-                offSeasonShowCount > 0 ? (
-                  <OffSeasonToggle
-                    count={offSeasonShowCount}
-                    shown={showOffSeasonShows}
-                    onToggle={() => setShowOffSeasonShows((v) => !v)}
-                  />
-                ) : null
-              }
-            />
+            {/* Same as the attractions panel: the „Shows 4" tile above is this chapter's
+                header, so only the control the band used to carry is left. */}
+            {offSeasonShowCount > 0 && (
+              <div className="mb-4 flex h-9 items-center">
+                <OffSeasonToggle
+                  count={offSeasonShowCount}
+                  shown={showOffSeasonShows}
+                  onToggle={() => setShowOffSeasonShows((v) => !v)}
+                />
+              </div>
+            )}
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {visibleShows.map((show) => {
                 const showHref =
                   `/parks/${continent}/${country}/${city}/${parkSlug}#shows` as '/parks/europe/germany/rust/europa-park';
                 return (
-                  <ShowCard
+                  // The anchor the header panel's "nächste Shows" rows aim at. `:target` rings the
+                  // card for as long as the hash names it, so arriving here from a row lands ON
+                  // the show rather than merely in the right chapter. `scroll-mt-20` keeps it
+                  // clear of the sticky bar when the browser does the scrolling itself.
+                  <div
                     key={show.id}
-                    id={show.id}
-                    name={stripNewPrefix(show.name)}
-                    slug={show.slug}
-                    status={show.status || 'CLOSED'}
-                    showtimes={show.showtimes}
-                    timezone={park.timezone}
-                    href={showHref}
-                    isSeasonal={show.isSeasonal}
-                    seasonMonths={show.seasonMonths}
-                    isCurrentlyInSeason={show.isCurrentlyInSeason}
-                  />
+                    id={`shows-${show.slug}`}
+                    className="target:ring-primary scroll-mt-20 rounded-xl target:ring-2 target:ring-offset-2 target:ring-offset-transparent"
+                  >
+                    <ShowCard
+                      id={show.id}
+                      name={stripNewPrefix(show.name)}
+                      slug={show.slug}
+                      status={show.status || 'CLOSED'}
+                      showtimes={show.showtimes}
+                      timezone={park.timezone}
+                      href={showHref}
+                      isSeasonal={show.isSeasonal}
+                      seasonMonths={show.seasonMonths}
+                      isCurrentlyInSeason={show.isCurrentlyInSeason}
+                    />
+                  </div>
                 );
               })}
             </div>
@@ -325,7 +365,6 @@ export const TabsWithHash = memo(function TabsWithHash({
             value="restaurants"
             className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
           >
-            <ChapterHeading icon={UtensilsCrossed} title={t('restaurants')} frosted />
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {deferredTab === 'restaurants'
                 ? park.restaurants?.map((restaurant) => (
@@ -337,35 +376,43 @@ export const TabsWithHash = memo(function TabsWithHash({
         )}
 
         <TabsContent
-          value="calendar"
+          value="map"
           className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
         >
-          <ChapterHeading icon={CalendarDays} title={t('calendar')} frosted />
-          {deferredTab === 'calendar' ? (
-            <ParkCalendarGrid
-              park={park}
-              initialCalendarData={calendarData}
-              continent={continent}
-              country={country}
-              city={city}
-              parkSlug={parkSlug}
-            />
+          {deferredTab === 'map' ? (
+            <ParkMap park={park} focusShowSlug={mapShowSlug} />
           ) : (
             <Skeleton className="h-[28rem] w-full rounded-xl" />
           )}
         </TabsContent>
 
-        <TabsContent
-          value="map"
-          className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
-        >
-          <ChapterHeading icon={Map} title={t('map')} frosted />
-          {deferredTab === 'map' ? (
-            <ParkMap park={park} />
-          ) : (
-            <Skeleton className="h-[28rem] w-full rounded-xl" />
-          )}
-        </TabsContent>
+        {/* Weather is a chapter behind a tile now, not a ~360px card wedged between the header
+            and the ride list. It answers a real question and almost nobody arrives asking it
+            first — the summary a visitor does want on arrival (temperature, the nowcast, an
+            official warning) still meets them above the fold in the banners, which stay in the
+            page body. Unlike the deferred tabs above this one renders its card as soon as the
+            tab is active without a skeleton step: everything it needs to draw is already in
+            `park.weather` from the server render, so there is nothing to wait for. */}
+        {weatherAvailable && park.weather?.current && (
+          <TabsContent
+            value="weather"
+            className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
+          >
+            <WeatherCard
+              weather={park.weather}
+              nowcast={null}
+              continent={continent}
+              country={country}
+              city={city}
+              parkSlug={parkSlug}
+              latitude={park.latitude}
+              longitude={park.longitude}
+              timezone={park.timezone}
+              schedule={park.schedule}
+              className="border-primary/10"
+            />
+          </TabsContent>
+        )}
       </Tabs>
     </div>
   );

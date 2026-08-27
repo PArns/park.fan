@@ -156,9 +156,9 @@ const PARK_SECTIONS: AnatomyStep[] = [
   },
   {
     title: 'Vacaciones en el área de influencia',
-    body: 'Qué vacaciones escolares afectan hoy a este parque, con su región. También las del otro lado de la frontera.',
+    body: 'Qué vacaciones escolares y festivos afectan hoy a este parque: primero su propia región, después las vecinas.',
     example:
-      'Hoy para Phantasialand no cuenta Renania del Norte-Westfalia sino Güeldres: allí hay vacaciones escolares, y la frontera está a 90 kilómetros.',
+      'En Phantasialand las vacaciones de verano de Renania del Norte-Westfalia van primero. Güeldres queda debajo, a 90 kilómetros al otro lado de la frontera.',
     demo: <AnatomyHolidayDemo />,
     onlyWhen: 'hoy hay realmente una región de vacaciones que influye.',
   },

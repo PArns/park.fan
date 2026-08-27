@@ -1,8 +1,9 @@
 'use client';
 
-import { memo } from 'react';
+import { memo, useEffect, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Marker, Popup } from 'react-leaflet';
+import type { Marker as LeafletMarker } from 'leaflet';
 import type { ParkAttraction, ParkShow, ParkRestaurant } from '@/lib/api/types';
 import { stripNewPrefix } from '@/lib/utils';
 import {
@@ -96,19 +97,54 @@ interface ShowMarkersProps {
   shows: ParkShow[];
   /** IANA timezone of the park, used to render showtimes in park-local time. */
   timezone: string;
+  /**
+   * Slug of the show a `#map-show-<slug>` deep link named — its popup opens on mount.
+   *
+   * The header panel's „nächste Shows" rows point here, so following one lands on the park map
+   * with that show's marker already speaking rather than on a map of forty identical pins with
+   * no indication which of them was the answer.
+   */
+  focusSlug?: string | null;
 }
 
 // Memoized like its two siblings — it was the only marker layer left unmemoized, so it
 // re-rendered (rebuilding a Leaflet Popup and running getNextShowtimeDate per show) on every
 // ParkMap render. Its props are `useMemo`-stable at the call site.
-export const ShowMarkers = memo(function ShowMarkers({ shows, timezone }: ShowMarkersProps) {
+export const ShowMarkers = memo(function ShowMarkers({
+  shows,
+  timezone,
+  focusSlug,
+}: ShowMarkersProps) {
   const t = useTranslations('parks.mapMarkers');
   const locale = useLocale();
+
+  /**
+   * The marker a `#map-show-<slug>` deep link named, so its popup can be opened after mount.
+   *
+   * Not from the ref callback itself: react-leaflet's `<Popup>` binds to its parent marker in its
+   * OWN effect, and a callback ref fires while the marker layer is added — before the popup
+   * exists, so `openPopup()` there is a no-op with no error (measured: the tab opened, the map
+   * drew, and nothing popped). A parent effect runs after the child's, which is exactly the order
+   * needed here.
+   */
+  const focusRef = useRef<LeafletMarker | null>(null);
+  useEffect(() => {
+    if (!focusSlug) return;
+    // One frame later still: Leaflet positions the popup against the map pane, and opening it
+    // during the same commit that sets the view puts it at the pre-pan coordinates.
+    const raf = requestAnimationFrame(() => focusRef.current?.openPopup());
+    return () => cancelAnimationFrame(raf);
+  }, [focusSlug]);
 
   return (
     <>
       {shows.map((show) => (
-        <Marker key={show.id} position={[show.latitude!, show.longitude!]} icon={showIcon}>
+        <Marker
+          key={show.id}
+          position={[show.latitude!, show.longitude!]}
+          icon={showIcon}
+          ref={focusSlug && show.slug === focusSlug ? focusRef : undefined}
+        >
           <Popup>
             <div>
               <div className="font-semibold">{stripNewPrefix(show.name)}</div>

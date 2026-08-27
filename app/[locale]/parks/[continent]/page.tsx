@@ -134,7 +134,11 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
   return (
     <RouteMessages route="/parks/[continent]">
       <PageContainer>
-        <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
+        <BreadcrumbStructuredData
+          breadcrumbs={breadcrumbs}
+          currentPage={{ name: continentCurrentPage, url: `/parks/${continent}` }}
+          locale={locale}
+        />
         <ItemListStructuredData
           items={itemListItems}
           listName={tExplore('title', { location: continentName })}

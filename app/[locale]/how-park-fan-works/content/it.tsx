@@ -156,9 +156,9 @@ const PARK_SECTIONS: AnatomyStep[] = [
   },
   {
     title: 'Vacanze nel bacino d’utenza',
-    body: 'Quali vacanze scolastiche pesano oggi su questo parco, con la relativa regione. Anche quelle oltre confine.',
+    body: 'Quali vacanze scolastiche e festività pesano oggi su questo parco: prima la sua regione, poi quelle vicine.',
     example:
-      'Oggi per il Phantasialand non conta la Renania Settentrionale-Vestfalia ma la Gheldria: lì sono vacanze scolastiche, e il confine è a 90 chilometri.',
+      'Per il Phantasialand vengono prima le vacanze estive della Renania Settentrionale-Vestfalia. La Gheldria sta sotto, 90 chilometri oltre il confine.',
     demo: <AnatomyHolidayDemo />,
     onlyWhen: 'oggi c’è davvero una regione in vacanza che incide.',
   },

@@ -1,7 +1,8 @@
-import { GlassCard } from '@/components/common/glass-card';
+import { TILE_GLASS } from '@/components/common/glass-card';
+import { PANEL_CELL, PanelGrid } from '@/components/parks/park-panel-cell';
+import { cn } from '@/lib/utils';
 import { ParkStatsHeader } from '@/components/parks/park-stats-header';
 import { Skeleton } from '@/components/ui/skeleton';
-import { cn } from '@/lib/utils';
 
 /** The three cards <ParkStatsSection> can render. Declared here because the skeleton has to
  *  mirror the same selection and the section already imports this file. */
@@ -51,7 +52,7 @@ function CrowdRowSkeleton() {
 
 function CrowdCardSkeleton({ rows }: { rows: number }) {
   return (
-    <GlassCard variant="medium" className="space-y-2 p-4">
+    <div className="space-y-2">
       <div className="flex items-center gap-2">
         <Skeleton className="h-4 w-4" />
         <Skeleton className="h-4 w-56 max-w-full" />
@@ -61,7 +62,7 @@ function CrowdCardSkeleton({ rows }: { rows: number }) {
           <CrowdRowSkeleton key={i} />
         ))}
       </div>
-    </GlassCard>
+    </div>
   );
 }
 
@@ -82,6 +83,8 @@ export function ParkStatsSectionSkeleton({
   show?: readonly StatsCard[];
   hideHeading?: boolean;
 } = {}) {
+  const columnCount = (show.includes('months') ? 1 : 0) + (show.includes('weekdays') ? 1 : 0) || 1;
+
   const nameWidths = [
     'w-48',
     'w-32',
@@ -96,46 +99,61 @@ export function ParkStatsSectionSkeleton({
   ];
 
   return (
-    <section className="mt-8 space-y-4" aria-hidden="true">
-      <ParkStatsHeader hidden={hideHeading} />
+    <section className="mt-8" aria-hidden="true">
+      <ParkStatsHeader
+        hidden={hideHeading}
+        className={hideHeading ? undefined : 'mb-0 rounded-b-none'}
+      />
 
-      {show.includes('attractions') && (
-        <GlassCard variant="medium" className="space-y-2 p-4">
-          <div className="flex items-center gap-2">
-            <Skeleton className="h-4 w-4" />
-            <Skeleton className="h-4 w-64 max-w-full" />
-          </div>
-          <div className="space-y-0.5">
-            {/* Column headers of the ranking table (rank · attraction · now / typical / peak). */}
-            <div className="flex items-center gap-3 px-2 pb-1">
-              <Skeleton className="h-3 w-20" />
-              <div className="ml-auto flex shrink-0 items-center gap-3">
-                <Skeleton className="hidden h-3 w-12 sm:block" />
-                <Skeleton className="hidden h-3 w-12 sm:block" />
-                <Skeleton className="h-3 w-12" />
+      {/* Mirrors the settled panel exactly — same box, same `PANEL_CELL`, same column count, and
+        the ranking spanning the row the same way. Anything that differs here is a jump the moment
+        the stats land, and on the park page this section has the FAQ and two more chapters under
+        it. */}
+      <div
+        className={cn(
+          TILE_GLASS,
+          'border-border/50 overflow-hidden border',
+          hideHeading ? 'rounded-xl' : 'rounded-b-xl border-t-0'
+        )}
+      >
+        <PanelGrid columnCount={columnCount}>
+          {show.includes('attractions') && (
+            <div className={cn(PANEL_CELL, columnCount === 2 && 'sm:col-span-2')}>
+              <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <Skeleton className="h-4 w-4" />
+                  <Skeleton className="h-4 w-64 max-w-full" />
+                </div>
+                <div className="space-y-0.5">
+                  {/* Column headers of the ranking table (rank · attraction · now / typical / peak). */}
+                  <div className="flex items-center gap-3 px-2 pb-1">
+                    <Skeleton className="h-3 w-20" />
+                    <div className="ml-auto flex shrink-0 items-center gap-3">
+                      <Skeleton className="hidden h-3 w-12 sm:block" />
+                      <Skeleton className="hidden h-3 w-12 sm:block" />
+                      <Skeleton className="h-3 w-12" />
+                    </div>
+                  </div>
+                  {nameWidths.map((w, i) => (
+                    <AttractionRowSkeleton key={i} nameWidth={w} />
+                  ))}
+                </div>
               </div>
             </div>
-            {nameWidths.map((w, i) => (
-              <AttractionRowSkeleton key={i} nameWidth={w} />
-            ))}
-          </div>
-        </GlassCard>
-      )}
-
-      {(show.includes('months') || show.includes('weekdays')) && (
-        // Must match the settled section's grid: two columns only when both cards are asked
-        // for. A skeleton at half the width followed by a full-width card is a sideways
-        // reflow of every row in it, which is the shift the fallback exists to prevent.
-        <div
-          className={cn(
-            'grid gap-4',
-            show.includes('months') && show.includes('weekdays') && 'md:grid-cols-2'
           )}
-        >
-          {show.includes('months') && <CrowdCardSkeleton rows={6} />}
-          {show.includes('weekdays') && <CrowdCardSkeleton rows={7} />}
-        </div>
-      )}
+
+          {show.includes('months') && (
+            <div className={PANEL_CELL}>
+              <CrowdCardSkeleton rows={6} />
+            </div>
+          )}
+          {show.includes('weekdays') && (
+            <div className={PANEL_CELL}>
+              <CrowdCardSkeleton rows={7} />
+            </div>
+          )}
+        </PanelGrid>
+      </div>
     </section>
   );
 }

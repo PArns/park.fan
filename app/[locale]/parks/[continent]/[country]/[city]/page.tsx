@@ -166,7 +166,11 @@ export default async function CityPage({ params }: CityPageProps) {
   return (
     <RouteMessages route="/parks/[continent]/[country]/[city]">
       <PageContainer>
-        <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
+        <BreadcrumbStructuredData
+          breadcrumbs={breadcrumbs}
+          currentPage={{ name: cityCurrentPage, url: `/parks/${continent}/${country}/${city}` }}
+          locale={locale}
+        />
         <ItemListStructuredData
           items={itemListItems}
           listName={t('parksIn', { location: city.name })}

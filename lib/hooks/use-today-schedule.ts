@@ -50,7 +50,12 @@ export interface TodayScheduleResult {
   /** Not operating today but reopening later. `weeks` is null when it opens within a week. */
   offseason: { dateFormatted: string; weeks: number | null; message: string } | null;
   holiday: {
+    /** Named PUBLIC holiday only. A school break has `isHoliday` set too and used to arrive
+     *  here — see `holiday` below for what that printed. */
     publicHolidayName: string | null;
+    /** The school break's own name ("Summer Holidays"), when the feed gives one. Null on the
+     *  many parks that set `isSchoolVacation` and name nothing. */
+    schoolHolidayName: string | null;
     isBridgeDay: boolean;
     isSchoolVacation: boolean;
     influencing: InfluencingHoliday[];
@@ -205,10 +210,22 @@ export function useTodaySchedule({
       todaySchedule.isHoliday ||
       todaySchedule.isBridgeDay ||
       todaySchedule.isSchoolVacation ||
+      todaySchedule.isSchoolHoliday ||
       todaySchedule.influencingHolidays;
     if (!has) return null;
     const shownNames = new Set<string>();
-    const publicHolidayName = todaySchedule.isHoliday ? todaySchedule.holidayName : null;
+    // `isHoliday` is true for a school break as well as a public one, and `holidayName` then
+    // carries the break's name. Splitting them on `holidayType` is what stops "Summer Holidays"
+    // rendering behind the party-popper the public-holiday chip uses — which is what shipped on
+    // Phantasialand for the whole of the NRW summer, in English, on the German page.
+    // `isSchoolHoliday`/`isPublicHoliday` are the fallback for feeds that send the booleans and
+    // no type; with neither, an `isHoliday` day is treated as public exactly as before.
+    const isSchoolNamed =
+      todaySchedule.holidayType === 'school' ||
+      (todaySchedule.holidayType == null && todaySchedule.isSchoolHoliday === true);
+    const namedHoliday = todaySchedule.isHoliday ? todaySchedule.holidayName : null;
+    const publicHolidayName = isSchoolNamed ? null : namedHoliday;
+    const schoolHolidayName = isSchoolNamed ? namedHoliday : null;
     if (publicHolidayName) shownNames.add(publicHolidayName.toLowerCase());
     // Keep influencing holidays DISTINCT BY REGION (name+country+region), not just by name: the same
     // holiday (e.g. "Summer Holidays") across several neighbouring states each contributes a region
@@ -229,8 +246,16 @@ export function useTodaySchedule({
     );
     return {
       publicHolidayName,
+      schoolHolidayName,
       isBridgeDay: !!todaySchedule.isBridgeDay,
-      isSchoolVacation: !!todaySchedule.isSchoolVacation,
+      // `isSchoolVacation` and `isSchoolHoliday` are the same claim under two names — the calendar
+      // sends the first, the park schedule the second, and reading only one is why the school-break
+      // chip never appeared on a German park while its name sat in the public-holiday chip.
+      isSchoolVacation: !!(
+        todaySchedule.isSchoolVacation ||
+        todaySchedule.isSchoolHoliday ||
+        schoolHolidayName
+      ),
       influencing,
     };
   }, [todaySchedule]);

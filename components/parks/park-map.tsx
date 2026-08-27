@@ -103,9 +103,11 @@ function getNextShowTime(show: ParkShow): string | null {
 
 interface ParkMapProps {
   park: ParkWithAttractions;
+  /** Slug from a `#map-show-<slug>` deep link: that show gets the view and an open popup. */
+  focusShowSlug?: string | null;
 }
 
-export function ParkMap({ park }: ParkMapProps) {
+export function ParkMap({ park, focusShowSlug }: ParkMapProps) {
   const t = useTranslations('parks.mapMarkers');
   const tCommon = useTranslations('common');
   const [userHasZoomed, setUserHasZoomed] = useState(false);
@@ -134,6 +136,12 @@ export function ParkMap({ park }: ParkMapProps) {
     [park.restaurants]
   );
 
+  /** The show a deep link named, if it is one this map actually draws. */
+  const focusedShow = useMemo(
+    () => (focusShowSlug ? (validShows.find((s) => s.slug === focusShowSlug) ?? null) : null),
+    [focusShowSlug, validShows]
+  );
+
   const { userLocation, nearbyEntities, distanceToPark, isInPark } = useParkMapGeolocation(
     park,
     validAttractions,
@@ -147,16 +155,28 @@ export function ParkMap({ park }: ParkMapProps) {
   // map visibly re-pans (animate: true) every 60 s even though nothing moved.
   const center: L.LatLngExpression = useMemo(
     () =>
-      isInPark && userLocation
-        ? [userLocation.lat, userLocation.lng]
-        : park.latitude != null && park.longitude != null
-          ? [park.latitude, park.longitude]
-          : [51.505, -0.09], // London as fallback
+      // A named show wins over the visitor's own position: they asked for THIS show, and being
+      // shown where they are standing instead is an answer to a question nobody asked.
+      focusedShow
+        ? [focusedShow.latitude!, focusedShow.longitude!]
+        : isInPark && userLocation
+          ? [userLocation.lat, userLocation.lng]
+          : park.latitude != null && park.longitude != null
+            ? [park.latitude, park.longitude]
+            : [51.505, -0.09], // London as fallback
     // Depend on the primitive coords, not the `userLocation` object identity: a new object with
     // unchanged lat/lng must NOT recompute `center` (that's exactly what caused the every-minute
     // re-pan). `userLocation?.lat` flipping to/from undefined already covers null↔fix transitions.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [isInPark, userLocation?.lat, userLocation?.lng, park.latitude, park.longitude]
+    [
+      focusedShow?.latitude,
+      focusedShow?.longitude,
+      isInPark,
+      userLocation?.lat,
+      userLocation?.lng,
+      park.latitude,
+      park.longitude,
+    ]
   );
 
   // `!= null`, not truthiness: coordinates are real numbers since the fetch boundary
@@ -188,7 +208,7 @@ export function ParkMap({ park }: ParkMapProps) {
         <ZoomTracker onUserZoom={() => setUserHasZoomed(true)} />
         <MapViewController
           center={center}
-          zoom={isInPark ? 19 : 17}
+          zoom={focusedShow || isInPark ? 19 : 17}
           userHasZoomed={userHasZoomed}
         />
 
@@ -216,7 +236,7 @@ export function ParkMap({ park }: ParkMapProps) {
         )}
 
         <AttractionMarkers attractions={validAttractions} />
-        <ShowMarkers shows={validShows} timezone={park.timezone} />
+        <ShowMarkers shows={validShows} timezone={park.timezone} focusSlug={focusShowSlug} />
         <RestaurantMarkers restaurants={validRestaurants} />
       </MapContainer>
 

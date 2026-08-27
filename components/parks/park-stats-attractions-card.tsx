@@ -1,4 +1,4 @@
-import { GlassCard } from '@/components/common/glass-card';
+import { BareFrame, CardFrame } from '@/components/parks/park-stats-frame';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { Clock } from 'lucide-react';
 import { WaitTimeValue } from '@/components/common/wait-time-value';
@@ -31,6 +31,13 @@ interface ParkStatsAttractionsCardProps {
   country: string;
   city: string;
   parkSlug: string;
+  /**
+   * Render without the card's own glass and padding — for the stats panel, where the enclosing
+   * `PANEL_CELL` already draws the box and the hairline rules and a card inside a card is one
+   * frame too many. The heading stays: it is a real `<h3>` in the document outline, not a metric
+   * label, and the table under it needs one.
+   */
+  bare?: boolean;
 }
 
 const RANK_STYLES: Record<number, string> = {
@@ -63,9 +70,11 @@ export function ParkStatsAttractionsCard({
   country,
   city,
   parkSlug,
+  bare = false,
 }: ParkStatsAttractionsCardProps) {
+  const Frame = bare ? BareFrame : CardFrame;
   return (
-    <GlassCard variant="medium" className="space-y-2 p-4">
+    <Frame>
       <h3 className="flex items-center gap-2 text-sm font-semibold">
         <Clock className="text-primary h-4 w-4" aria-hidden="true" />
         {title}
@@ -147,6 +156,6 @@ export function ParkStatsAttractionsCard({
           })}
         </tbody>
       </table>
-    </GlassCard>
+    </Frame>
   );
 }

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { usePathname } from '@/i18n/navigation';
-import { onHistoryNavigation } from '@/lib/navigation/history-navigation';
+import { consumeScrollSuppression, onHistoryNavigation } from '@/lib/navigation/history-navigation';
 
 /**
  * Scrolls to the top on client-side route changes.
@@ -22,6 +22,12 @@ import { onHistoryNavigation } from '@/lib/navigation/history-navigation';
  *    every glossary anchor) must land on the target, not the top. The effect must also stay off
  *    the very first mount, or an incoming hash link visibly jumps to the top before the target
  *    scroll — on the park page `useTabHashRouting` then scrolled back down 500 ms later.
+ * 3. **A link that asked not to.** Because this component exists, `<Link scroll={false}>` does
+ *    nothing on its own: the prop stops the ROUTER's scroll, and the router is not what scrolls
+ *    this app. `suppressScrollToTopFor(pathname)` in the link's `onClick` is the other half, and
+ *    the calendar's month stepper is what needs it — stepping a month is the same page one month
+ *    over, so throwing the reader back to the park's title card makes an arrow behave like a
+ *    link to somewhere else.
  *
  * Detecting the pop is the subtle part. `popstate` cannot classify it: React 19 / the App Router
  * commit the new route from the `navigate` handling *before* `popstate` is dispatched, so a flag
@@ -65,9 +71,13 @@ export function ScrollToTop() {
       isFirstRender.current = false;
       return;
     }
+    // Read it either way, so a flag set by a click that never navigated cannot outlive this run.
+    const suppressed = consumeScrollSuppression(window.location.pathname);
+
     // No `pushState` announced this route, so it's a back/forward — leave the restored offset be.
     if (pushed === null || pushed !== window.location.pathname) return;
     if (window.location.hash) return;
+    if (suppressed) return;
     window.scrollTo(0, 0);
   }, [pathname]);
 

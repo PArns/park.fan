@@ -115,6 +115,10 @@ export interface ScheduleItem {
   purchases: SchedulePurchaseItem[] | null;
   isHoliday?: boolean;
   holidayName: string | null;
+  /** What `holidayName` names. The API has always sent it and this type has always dropped it,
+   *  which is how a school break ("Summer Holidays") reached the header wearing the party-popper
+   *  the public-holiday chip uses — `isHoliday` alone cannot tell the two apart. */
+  holidayType?: HolidayType | string | null;
   isBridgeDay?: boolean;
   isSchoolVacation?: boolean;
   isPublicHoliday?: boolean;

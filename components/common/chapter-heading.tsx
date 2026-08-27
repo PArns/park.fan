@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import type { LucideIcon } from 'lucide-react';
+import { TILE_GLASS } from '@/components/common/glass-card';
 import { cn } from '@/lib/utils';
 
 interface ChapterHeadingProps {
@@ -45,6 +46,35 @@ interface ChapterHeadingProps {
    * Frosted band behind the heading, for the pages that render over a
    * background photo. Bare text is unreadable over the bright parts of an
    * arbitrary image, and a watermark glyph doubly so.
+   *
+   * The material is {@link TILE_GLASS} — the park header stack's, not a fourth
+   * recipe. On the park page the reader meets that card first and then eight of
+   * these bands under it, all over the same photo, so any difference between the
+   * two reads as two kinds of surface rather than one. There was one: the band
+   * was `bg-background/70` + `backdrop-blur-md`, which in the dark theme
+   * composites to a NEUTRAL near-black (`oklab(0.145 0 0 / 0.7)`) while the card
+   * above it is the blue-tinted `oklch(0.13 0.02 241 / 0.6)` at twice the blur.
+   * Different hue, different opacity, half the blur, one page.
+   *
+   * `TILE_GLASS` rather than the card's own `HEAVY_GLASS`, for the reason its
+   * docblock already gives one element over: 62 % is the fill for a 400 px panel
+   * packed with rules and numbers, and it is not the fill for a strip carrying a
+   * title and one `text-muted-foreground` hint. Measured against Europa-Park's
+   * backdrop — worst band position over a scroll of the whole page, sampling the
+   * composited `backdrop-filter` output off a screenshot, since it exists only in
+   * the framebuffer — the hint reads 2.93:1 at 62 %, 3.86:1 at the old `/70`
+   * (already under AA, and nobody had looked) and 4.60:1 at 75 %. So the band
+   * takes the tiles' grade of fill, which is the first recipe on this page that
+   * passes. On Phantasialand, whose photo is a dark blue night shot, the same
+   * three read 5.20, 5.91 and 6.30:1.
+   *
+   * All four corners are rounded. The band used to be `rounded-t-xl`, on the
+   * reasoning that it is the lid of the chapter under it — which is true where
+   * something is actually glued to its underside (the calendar's month stepper,
+   * which passes `rounded-b-none`) and false everywhere else. On the other seven
+   * chapters of a park page the content below is a grid of cards with a gap over
+   * it, so the band was a lid with two square corners resting on the photograph.
+   * A call site that continues downward says so; a band on its own is a box.
    */
   frosted?: boolean;
   className?: string;
@@ -83,7 +113,7 @@ export function ChapterHeading({
     <div
       className={cn(
         'border-border mb-6 flex items-start gap-3 border-b pb-4 sm:gap-4',
-        frosted && 'bg-background/70 rounded-t-xl px-4 pt-3 backdrop-blur-md',
+        frosted && cn(TILE_GLASS, 'rounded-xl px-4 pt-3'),
         className
       )}
     >

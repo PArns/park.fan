@@ -136,7 +136,11 @@ export default async function CountryPage({ params }: CountryPageProps) {
   return (
     <RouteMessages route="/parks/[continent]/[country]">
       <PageContainer>
-        <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
+        <BreadcrumbStructuredData
+          breadcrumbs={breadcrumbs}
+          currentPage={{ name: countryCurrentPage, url: `/parks/${continent}/${country}` }}
+          locale={locale}
+        />
         <ItemListStructuredData
           items={itemListItems}
           listName={t('parksIn', { location: countryName })}
