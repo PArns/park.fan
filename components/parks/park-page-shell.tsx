@@ -57,6 +57,14 @@ interface ParkPageShellProps {
   head?: React.ReactNode;
   /** This page's own content, between the header card and the shared tail. */
   children: React.ReactNode;
+  /**
+   * Put the historical-statistics chapter directly under `children` instead of below the blog.
+   *
+   * Only the crowd calendar sets it, and only because that page's own subject is „when should I
+   * go" — the statistics are the same question at a finer grain. On the park page the subject is
+   * today's wait times and the statistics are a footnote, so they stay where they are.
+   */
+  statsAfterChildren?: boolean;
 }
 
 /**
@@ -100,11 +108,25 @@ export async function ParkPageShell({
   head,
   pagePath,
   children,
+  statsAfterChildren = false,
 }: ParkPageShellProps) {
   const tGeo = await getTranslations('geo');
   const parkName = stripNewPrefix(park.name);
   const parkBgImage = getParkBackgroundImage(parkSlug);
   const parkPath = `/parks/${continent}/${country}/${city}/${parkSlug}`;
+
+  /* Built once and placed in one of two slots — a second copy would be a second set of props to
+     keep in step, and this one already carries six. */
+  const stats = (
+    <ParkStatsSection
+      continent={continent}
+      country={country}
+      city={city}
+      parkSlug={parkSlug}
+      locale={locale}
+      hasLiveWaitTimes={hasReadableWaitTimes(park)}
+    />
+  );
 
   return (
     <>
@@ -139,6 +161,13 @@ export async function ParkPageShell({
 
           {children}
 
+          {/* On the crowd calendar the historical numbers belong directly under the grid: the
+            month-by-month and weekday tables answer the same question the calendar does, one
+            level of detail down, and pushing „Parks in der Nähe" and the blog between them makes
+            a reader scroll past two unrelated chapters to compare them. Everywhere else the
+            statistics keep their place further down. */}
+          {statsAfterChildren ? stats : null}
+
           {/* Nearby Parks — streamed (geo proximity lookup + live park cards) */}
           {park.latitude != null && park.longitude != null && (
             <Suspense fallback={null}>
@@ -167,16 +196,7 @@ export async function ParkPageShell({
             className="mt-8"
           />
 
-          {/* Historical statistics — loaded client-side (CDN-cached /stats route); a skeleton
-            shows until the cold/slow stats response lands, so it never blocks the static shell. */}
-          <ParkStatsSection
-            continent={continent}
-            country={country}
-            city={city}
-            parkSlug={parkSlug}
-            locale={locale}
-            hasLiveWaitTimes={hasReadableWaitTimes(park)}
-          />
+          {statsAfterChildren ? null : stats}
 
           {/* What is on at this park. Hand-researched, day-stable, and its own request rather than
             a field on the park: the park payload is re-polled every five minutes and a season

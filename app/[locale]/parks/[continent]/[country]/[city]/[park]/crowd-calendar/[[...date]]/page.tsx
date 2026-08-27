@@ -140,11 +140,21 @@ export async function generateMetadata({ params }: ParkCalendarPageProps): Promi
         t('metaTitle', { park: parkName }),
         t('metaTitleShort', { park: parkName })
       );
+  // Two candidates, and the second is not decoration: the description names the park AND the
+  // city, and the catalogue's longest pair is 53 characters ("Fantawild Silk Road Heritage
+  // Jiayuguan" in "Jia Yu Guan Shi") against Phantasialand's 18. With one candidate `fitWithin`
+  // has nothing to fall back to and returns it at whatever length it came out — measured at 179
+  // to 198 characters in all six locales for that park, every one of them past the 160 Google
+  // will render. The city is the part that goes: it is already in the URL, the breadcrumb and
+  // the H1's address line. Same shape the park page has used all along.
   const description = fitWithin(
     MAX_DESCRIPTION_LENGTH,
     month
       ? t('monthMetaDescription', { park: parkName, city: cityName, month: label })
-      : t('metaDescription', { park: parkName, city: cityName })
+      : t('metaDescription', { park: parkName, city: cityName }),
+    month
+      ? t('monthMetaDescriptionNoCity', { park: parkName, month: label })
+      : t('metaDescriptionNoCity', { park: parkName })
   );
 
   const path = (l: string, m: ParkCalendarMonth | null) =>
@@ -302,6 +312,7 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
         currentPage={monthName ?? t('breadcrumb')}
         pagePath={parkCalendarPath(locale, continent, country, city, parkSlug, month ?? undefined)}
         seedNowMs={seedNowMs}
+        statsAfterChildren
         faqGlossaryTerms={faqGlossaryTerms}
         glossarySegment={glossarySegment}
         head={<BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />}

@@ -62,8 +62,22 @@ export function ParkCalendarPanel({
 }) {
   const t = useTranslations('parks.calendarPage');
   const locale = useLocale();
-  const href = (m: ParkCalendarMonth | null) =>
-    m ? parkCalendarPath(locale, continent, country, city, parkSlug, m) : null;
+  /**
+   * The URL for a month — and the hub's URL for the CURRENT month, deliberately.
+   *
+   * `/andrangskalender` and `/andrangskalender/2026/8` render the same grid in August, so the
+   * current month has two addresses. The route's canonical already points the month one at the
+   * hub, which is what a crawler needs; this stops the app from minting the duplicate in the
+   * first place. Without it, stepping back from September landed on `/2026/8` — a page whose own
+   * title, description and H1 are written for a URL that canonicals away and will never be shown.
+   *
+   * Typed and bookmarked `/2026/8` still resolves; the canonical remains the safety net for it.
+   */
+  const href = (m: ParkCalendarMonth | null) => {
+    if (!m) return null;
+    const isCurrent = m.year === currentMonth.year && m.month === currentMonth.month;
+    return parkCalendarPath(locale, continent, country, city, parkSlug, isCurrent ? undefined : m);
+  };
   const isCurrentMonth =
     month === null || (month.year === currentMonth.year && month.month === currentMonth.month);
   const label = (m: ParkCalendarMonth) =>
