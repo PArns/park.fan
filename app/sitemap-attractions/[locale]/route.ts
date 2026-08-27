@@ -1,4 +1,5 @@
 import { getAttractionPaths } from '@/lib/content-urls';
+import { getContentLastmodIndex } from '@/lib/seo/content-changes/store';
 import { locales, SITE_URL, type Locale } from '@/i18n/config';
 import { notFound } from 'next/navigation';
 
@@ -37,11 +38,18 @@ export async function GET(
   const locale = fileName.replace(/\.xml$/, '');
   if (!locales.includes(locale as Locale)) notFound();
 
-  const paths = await getAttractionPaths();
-  const urls = paths.map(
-    (path) =>
-      `<url><loc>${xmlEscape(`${SITE_URL}/${locale}${path}`)}</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>`
-  );
+  const [paths, lastmod] = await Promise.all([getAttractionPaths(), getContentLastmodIndex()]);
+  const urls = paths.map((path) => {
+    // `<lastmod>` is the only one of these three tags Google reads at all — it
+    // ignores `changefreq` and `priority` outright — so until the content-change
+    // detector existed this file carried 7,101 URLs and no signal. A path the
+    // detector has never seen (a ride added since the last crawl) gets no tag
+    // rather than a guess. See lib/seo/content-changes/fingerprint.ts.
+    const changedAt = lastmod.get(path);
+    return `<url><loc>${xmlEscape(`${SITE_URL}/${locale}${path}`)}</loc>${
+      changedAt ? `<lastmod>${changedAt}</lastmod>` : ''
+    }<changefreq>weekly</changefreq><priority>0.6</priority></url>`;
+  });
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>`;
 

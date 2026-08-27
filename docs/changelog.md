@@ -4,6 +4,51 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – feat: die Sitemap sagt jetzt, welche Seiten sich geändert haben
+
+Von 42.756 Attraktions-URLs trug keine ein `<lastmod>`, im Hauptsitemap 1.662 von 3.480. Die
+beiden anderen Tags helfen dabei nicht weiter: Google liest `changefreq` und `priority` gar
+nicht. Für alles, was aus der API kommt, stand also nichts drin.
+
+Der Grund war real. Die API führt keinen Zeitstempel je Datensatz: `/v1/sitemap/attractions`
+antwortet `{url, slug}`, ein Park-Payload datiert nur seine Live-Messwerte. Das Datum wird
+deshalb jetzt beobachtet statt behauptet. Ein täglicher Lauf um 05:30 UTC holt alle 212 Parks
+frisch, bildet einen Fingerabdruck über die _stabile_ Hälfte jeder Park- und Fahrgeschäftsseite
+und merkt sich ihn. Der Tag, an dem der Fingerabdruck sich ändert, ist der Tag, an dem die Seite
+sich geändert hat.
+
+Der Nutzen steckt in dem, was nicht im Fingerabdruck steht. Eine Parkseite ändert sich alle fünf
+Minuten, also wäre „heute" auf allen 44.000 URLs jeden Tag korrekt und trotzdem wertlos: ein
+Wert, der überall gleich ist, sagt nichts. Draußen bleiben deshalb `queues`, `status`,
+`crowdLevel`, `statistics`, `typicalWaits`, `bestVisitTimes`, `ropeDrop`, `weather`, `schedule`
+und `analytics`. Drin ist, was auf der Seite steht und stehen bleibt: Name, Land, Mindestgröße,
+Ride-Profile mit ihren Glossarbegriffen, die kuratierten Parkangaben, die Fotos aus der
+Mediendatenbank und die Artikel, die auf die Seite verlinken.
+
+Zwei Fehlerfälle sind eigens behandelt, weil beide sonst unsichtbar wären. Ein Park, den die API
+nicht beantwortet, behält seine bisherigen Daten – würde er herausfallen, käme er morgen als neu
+zurück, und neu heißt geändert: aus einem Timeout würden 82 falsche Einladungen zum Neucrawlen.
+Und eine Änderung am Fingerabdruck selbst macht die gespeicherten Hashes unvergleichbar, was
+nicht dasselbe ist wie ein geänderter Katalog; der Abgleich übernimmt dann die neuen Hashes und
+behält alle Daten. `pnpm test:content-changes` hält beides fest, dazu die Blindheit gegenüber
+jedem Live-Feld, denn ein grüner Build zeigt davon nichts.
+
+Gemessen beim ersten vollständigen Lauf: 7.100 von 7.126 Attraktions-URLs je Sprache haben ein
+Datum, im Hauptsitemap 3.444 von 3.480 statt 1.662. Ohne Datum bleiben 36 URLs – Startseite,
+Suche, fancast, contribute, Guide und Reisezeit-Hub in sechs Sprachen –, weil für die niemand
+aufschreibt, wann sie sich zuletzt geändert haben.
+
+Derselbe Schnappschuss räumt eine Etage weiter dasselbe Problem ab: der IndexNow-Cron hat jeden
+Morgen alle rund 46.000 URLs eingereicht. Jetzt gehen die Katalogseiten raus, deren Datum
+höchstens zwei Tage alt ist, dazu die kleine feste Auswahl und die Blogseiten. Montags läuft
+weiterhin alles, damit ein Detektor, der aufhört zu detektieren, nicht dazu führt, dass hier
+dauerhaft nichts mehr eingereicht wird. Mit `?dry=1` baut der Lauf die Liste und schickt sie
+nicht ab.
+
+Details: [Sitemaps](seo/sitemaps.md).
+
+---
+
 ## Unreleased – die Seite beantwortet auch Fragen, die keine Person stellt
 
 Ein Agent, der nur den Hostnamen hat, fand bisher robots.txt, zwei Sitemaps und sonst nichts.
