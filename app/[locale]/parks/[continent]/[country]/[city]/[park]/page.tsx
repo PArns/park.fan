@@ -10,34 +10,16 @@ import {
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
-import { MapPin } from 'lucide-react';
-import { Separator } from '@/components/ui/separator';
 import { getParkByGeoPath, getParkSeasons, leanParkForParkShell } from '@/lib/api/parks';
 import { getBestDaysCalendarSeed } from '@/lib/api/integrated-calendar';
 import { catchNonFatal } from '@/lib/api/client';
-import { getGlossaryTerms } from '@/lib/glossary/translations';
-import { filterMatchableTerms } from '@/lib/glossary/parse-segments';
-import { buildParkFaqItems } from '@/lib/faq/park-faq';
-import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
-import type { Locale } from '@/i18n/config';
-import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import {
   ParkStructuredData,
   BreadcrumbStructuredData,
   ShowsStructuredData,
 } from '@/components/seo/structured-data';
 import { FAQStructuredData } from '@/components/seo/faq-structured-data';
-import { ParkFAQSection } from '@/components/faq/park-faq-section';
 import type { Metadata } from 'next';
-import { objectPositionForSrc } from '@/lib/media/focus';
-import { getMediaAltBySrc } from '@/lib/media/text';
-import { ParkBackground } from '@/components/parks/park-background';
-import { ParkFavoriteButton } from '@/components/parks/park-favorite-button';
-import { ParkDistance } from '@/components/common/park-distance';
-import { ShareButtons } from '@/components/common/share-buttons';
-import { getParkBackgroundImage } from '@/lib/utils/park-assets';
-import { PageContainer } from '@/components/common/page-container';
-import { GlassCard } from '@/components/common/glass-card';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import {
   findParkPageRedirect,
@@ -46,23 +28,16 @@ import {
 } from '@/lib/utils/redirect-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import { LiveParkData } from '@/components/parks/live-park-data';
+import { ParkPageShell } from '@/components/parks/park-page-shell';
+import { ParkTitleHeader } from '@/components/parks/park-title-header';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
-import { ParkStatsSection } from '@/components/parks/park-stats-section';
-import { ParkInfoCard } from '@/components/parks/park-info-card';
-import { ParkQuickLinks } from '@/components/parks/park-quick-links';
-import { ParkSeasonsCard } from '@/components/parks/park-seasons-card';
 import { ParkPurchasesCard } from '@/components/parks/park-purchases-card';
 import { NoLiveWaitTimesNotice } from '@/components/parks/no-live-wait-times-notice';
-import { hasReadableWaitTimes, noLiveWaitTimesReason } from '@/lib/utils/live-wait-times';
-import { NearbyParksSection } from '@/components/parks/nearby-parks-section';
-import { ParkBlogPostsSection } from '@/components/parks/blog-posts-sections';
-import { ContributeBanner } from '@/components/contribute/contribute-banner';
-import { PreferredSourcePrompt } from '@/components/common/preferred-source-prompt';
-import { buildContributeHref } from '@/lib/contribute/prefill';
+import { noLiveWaitTimesReason } from '@/lib/utils/live-wait-times';
 import { groupAttractionsByLand } from '@/lib/utils/park-utils';
 import { generateParkBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
-import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { RouteMessages } from '@/i18n/route-messages';
+import { getParkFaqGlossary } from '@/lib/faq/park-faq-terms';
 import { applyParkSimulation, parseParkSimulation } from '@/lib/parks/park-simulation';
 import { ParkSimulationNotice } from '@/components/parks/park-simulation-notice';
 
@@ -295,38 +270,11 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
   // The full dictionary was 61.2 KB (18.0 KB brotli, a quarter of this page's transfer) so that a
   // few paragraphs could link a handful of terms. Same reasoning as leanParkForShell in
   // lib/api/parks.ts: pass what is read, not what is available.
-  const glossaryTerms = await getGlossaryTerms(locale as Locale);
-  const glossarySegment = GLOSSARY_SEGMENTS[locale as Locale];
-  const tFaq = await getTranslations('seo.faq');
-  // Corpus = every string the FAQ can render. Q0–Q6 are built here exactly as the client builds
-  // them; Q7 (least crowded) only appears after the client's calendar fetch, so its RAW ICU
-  // templates stand in — they carry all the literal text, and the values interpolated into them
-  // (weekday names, the park name, hours) are covered by the items above. A superset is required:
-  // a term missing from the corpus would silently stop being linked.
-  const faqCorpus = [
-    ...buildParkFaqItems(
-      park,
-      locale,
-      tFaq as Parameters<typeof buildParkFaqItems>[2],
-      tGeo as Parameters<typeof buildParkFaqItems>[3],
-      seedNowMs
-    ).flatMap((item) => [
-      item.question,
-      typeof item.answer === 'string'
-        ? item.answer
-        : [item.answer.text, ...item.answer.list].filter(Boolean).join(' '),
-    ]),
-    tFaq.raw('leastCrowdedQ'),
-    tFaq.raw('leastCrowdedA'),
-    tFaq.raw('leastCrowdedNoDataA'),
-  ].join('\n');
-  const faqGlossaryTerms = filterMatchableTerms(faqCorpus, glossaryTerms).map((term) => ({
-    id: term.id,
-    name: term.name,
-    shortDefinition: term.shortDefinition,
-    slug: term.slug,
-    aliases: term.aliases,
-  }));
+  const { terms: faqGlossaryTerms, segment: glossarySegment } = await getParkFaqGlossary(
+    park,
+    locale,
+    seedNowMs
+  );
 
   // Nowcast (rain/storm warnings) is intentionally NOT fetched in the static shell. Its `'use cache'`
   // fill can time out during prerender (the nowcast endpoint is the slowest park dependency), which
@@ -373,280 +321,119 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
     continentsLabel: tNav('continents'),
   });
 
-  const parkBgImage = getParkBackgroundImage(parkSlug);
   // OG card is only a fallback for the JSON-LD image when the park has no real photo.
   const ogImageUrl = getOgImageUrl([locale, continent, country, city, parkSlug]);
 
   return (
     <RouteMessages route="/parks/[continent]/[country]/[city]/[park]">
-      <>
-        {/* No manual <link rel="preload"> here: it pointed at the RAW /media/.../background.jpg,
-          but <ParkBackground> renders it through next/image (/_next/image?…&q=90). The raw preload
-          was never the LCP resource — it just downloaded the full-size original in parallel,
-          competing for bandwidth with the optimized image. next/image's `priority` already preloads
-          the correct optimized rendition. */}
-        <ParkBackground
-          imageSrc={parkBgImage}
-          // The sidecar's authored sentence in this locale, not the bare entity name:
-          // "{park}" told a screen reader nothing the heading had not already said.
-          alt={getMediaAltBySrc(parkBgImage, locale) ?? parkName}
-          objectPosition={objectPositionForSrc(parkBgImage)}
-        />
-
-        <PageContainer>
-          <ParkStructuredData
-            park={park}
-            url={`${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`}
-            description={tSeo('metaDescriptionTemplate', { park: parkName, city: cityName })}
-            locale={locale}
-            ogImageUrl={ogImageUrl}
-          />
-          <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
-          {park.shows && park.shows.length > 0 && (
-            <ShowsStructuredData shows={park.shows} park={park} />
-          )}
-          {/* FAQ JSON-LD streams: the base FAQPage questions don't need the seed, and the
-            least-crowded question is appended when the seed resolves — awaiting it here would
-            block TTFB, so it's rendered inside its own Suspense boundary. */}
-          <Suspense fallback={null}>
-            <FAQStructuredData
+      <ParkPageShell
+        park={park}
+        seasons={seasons}
+        locale={locale}
+        continent={continent}
+        country={country}
+        city={city}
+        parkSlug={parkSlug}
+        cityName={cityName}
+        countryName={countryName}
+        breadcrumbs={breadcrumbs}
+        currentPage={parkCurrentPage}
+        seedNowMs={seedNowMs}
+        faqGlossaryTerms={faqGlossaryTerms}
+        glossarySegment={glossarySegment}
+        head={
+          <>
+            <ParkStructuredData
               park={park}
+              url={`${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`}
+              description={tSeo('metaDescriptionTemplate', { park: parkName, city: cityName })}
               locale={locale}
-              nowMs={seedNowMs}
-              seedPromise={bestDaysSeedPromise}
+              ogImageUrl={ogImageUrl}
             />
-          </Suspense>
+            <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
+            {park.shows && park.shows.length > 0 && (
+              <ShowsStructuredData shows={park.shows} park={park} />
+            )}
+            {/* FAQ JSON-LD streams: the base FAQPage questions don't need the seed, and the
+              least-crowded question is appended when the seed resolves — awaiting it here would
+              block TTFB, so it's rendered inside its own Suspense boundary. It lives on THIS page
+              and on no other page of the park: the visible FAQ is shared furniture, the structured
+              data may not be. */}
+            <Suspense fallback={null}>
+              <FAQStructuredData
+                park={park}
+                locale={locale}
+                nowMs={seedNowMs}
+                seedPromise={bestDaysSeedPromise}
+              />
+            </Suspense>
 
-          {/* Breadcrumb — rendered inline, NOT inside <Suspense>. It has nothing to await (a
-              Client Component handed plain props, server-rendered into the first HTML like the
-              attraction page's), and the boundary it used to sit in was the park page's single
-              largest layout shift: the `h-6` fallback occupied 24px, the real nav 46px (30px pill
-              + `mb-4`), so the whole article jumped 22px down the moment the boundary resolved —
-              worth ~0.22 CLS on desktop and the reason this URL group failed Core Web Vitals. The
-              Cache Components note this comment used to carry no longer applies (the page is
-              `force-dynamic`). The BreadcrumbList JSON-LD above stays in the static shell for SEO. */}
-          <BreadcrumbNav breadcrumbs={breadcrumbs} currentPage={parkCurrentPage} />
-
-          {/* Dev/preview only — says out loud that the weather, holidays and crowd on this page
+            {/* Dev/preview only — says out loud that the weather, holidays and crowd on this page
               were fabricated by `?state=`. Never renders on production. */}
-          <ParkSimulationNotice scenarios={simScenarios} />
+            <ParkSimulationNotice scenarios={simScenarios} />
+          </>
+        }
+        header={
+          <ParkTitleHeader
+            park={park}
+            parkName={parkName}
+            cityName={cityName}
+            country={country}
+            countryName={countryName}
+            suffix={t('h1Suffix')}
+            // Keyword-rich, server-rendered intro — gives Google crawlable topical text with the
+            // exact "Wartezeiten im {park}" phrase + "heute" that the live (client-streamed) grid
+            // does not provide as static text.
+            intro={t('intro', { park: parkName, city: cityName })}
+          />
+        }
+      >
+        {/* Paid skip-the-line day prices (schedule purchases) — renders nothing for parks
+          without purchase data (currently everything non-Disney). */}
+        <ParkPurchasesCard schedule={park.schedule} timezone={park.timezone} className="mb-8" />
 
-          <article itemScope itemType="https://schema.org/AmusementPark">
-            {/* Park Header */}
-            {/* `heavy`, like the panel and the tiles under it: the three are one stacked object
-              and used to be three different fills. `mb-4` closes the rhythm — the stack ran
-              32/24/56 px between its four parts, the last of those a void nothing was in. */}
-            <div className="mb-4">
-              <GlassCard variant="heavy">
-                {/* Title row: park name + location on the left, favourite button pinned top-right. */}
-                <div className="flex items-start justify-between gap-4">
-                  <div className="min-w-0 flex-1">
-                    {/* The wait-times keyword lives INSIDE the h1 (same size + color as the
-                      park name, only lighter weight) so the target term "{park} Wartezeiten"
-                      reads as one unified heading — the single strongest on-page signal for
-                      the "<park> wartezeiten" query. */}
-                    <h1 className="mb-2 text-3xl font-bold md:text-4xl">
-                      {parkName} <span className="font-normal">– {t('h1Suffix')}</span>
-                    </h1>
-                    {/* 56px = 24 (the address at text-base) + 12 (gap-3) + 20 (the distance
-                      line) — two lines is what this row settles on below `sm` once the city and
-                      country are long enough. Same reservation as the ride header, reasoned
-                      through there. */}
-                    <div className="text-muted-foreground flex min-h-14 flex-wrap content-start items-center gap-3 sm:min-h-0">
-                      <address className="flex items-center gap-1 not-italic">
-                        <MapPin className="h-4 w-4" aria-hidden="true" />
-                        <span>{cityName}</span>,{' '}
-                        <span>{translateGeoSlug(tGeo, 'countries', country, countryName)}</span>
-                      </address>
-                      {/* How far the visitor is from this park — client-only (needs their
-                        position), so it just appears next to the address once known. */}
-                      <ParkDistance latitude={park.latitude} longitude={park.longitude} size="md" />
-                    </div>
-                  </div>
-                  {park.id && <ParkFavoriteButton parkId={park.id} />}
-                </div>
+        {/* Parks that publish wait times only inside their own app (Hansa-Park). Server-rendered,
+          not streamed: `liveWaitTimes` is day-stable, so it arrives with the structure fetch and
+          the live merge carries it — and it has to be in the first paint, because it explains the
+          empty ride list the visitor is already looking at. Renders nothing for the other 212
+          parks. */}
+        <NoLiveWaitTimesNotice reason={noLiveWaitTimesReason(park)} scope="park" className="mb-8" />
 
-                {/* Keyword-rich, server-rendered intro — gives Google crawlable topical
-                  text with the exact "Wartezeiten im {park}" phrase + "heute" that the
-                  live (client-streamed) grid doesn't provide as static text. The stats board
-                  that used to sit above it, and the neighbouring-holiday column beside it, both
-                  moved into <ParkTodayPanel> below: they answered the same question as the
-                  weather warning and the weather card, in three other boxes. */}
-                <p className="text-muted-foreground mt-5 max-w-2xl text-sm leading-relaxed">
-                  {t('intro', { park: parkName, city: cityName })}
-                </p>
+        {/* The header card ("Heute im Park" + the entry tiles) and the tab body under it, all with
+          auto-refresh. The card is inside this tree rather than in the shell because it and the
+          tab panels are one `<Tabs>`; the calendar page builds the same card with link cells.
 
-                {/* The park's own site and ticket shop, right under the intro. They used to be the
-                  bottom row of a titled "Infos zum Park" section far down the page — which on most
-                  parks was a heading and a frame around exactly these two buttons. Renders nothing
-                  for a park nobody has curated. */}
-                <ParkQuickLinks info={park.info} className="mt-4" />
-              </GlassCard>
-            </div>
+          "Heute im Park" is the one panel the fold is built around. It absorbed four things that
+          used to be four boxes: the official DWD/MeteoAlarm warning (its top strip), the stats
+          board (its first two columns), the holiday context (its last row) and the weather summary
+          (the nowcast strip above that row). It also carries the two readings that were not above
+          the fold at all — what the headliners cost right now and when the next shows start.
 
-            {/* Paid skip-the-line day prices (schedule purchases) — renders nothing for parks
-              without purchase data (currently everything non-Disney). */}
-            <ParkPurchasesCard schedule={park.schedule} timezone={park.timezone} className="mb-8" />
-
-            {/* Parks that publish wait times only inside their own app (Hansa-Park). Server-rendered,
-              not streamed: `liveWaitTimes` is day-stable, so it arrives with the structure fetch and
-              the live merge carries it — and it has to be in the first paint, because it explains
-              the empty ride list the visitor is already looking at. Renders nothing for the other
-              212 parks. */}
-            <NoLiveWaitTimesNotice
-              reason={noLiveWaitTimesReason(park)}
-              scope="park"
-              className="mb-8"
-            />
-
-            {/* Live Park Data — the header card ("Heute im Park" + the entry tiles) and the tab
-              body under it, all with auto-refresh.
-
-              "Heute im Park" is the one panel the fold is built around. It absorbed four things
-              that used to be four boxes: the official DWD/MeteoAlarm warning (its top strip), the
-              stats board (its first two columns), the holiday context (its last row) and the
-              weather summary (the nowcast strip above that row). It also carries the two readings
-              that were not above the fold at all — what the headliners cost right now and when the
-              next shows start.
-
-              It is handed down as a SLOT rather than rendered here, because it and the entry-tile
-              row are one card now and that card is built where the tiles are (see
-              <ParkHeaderCard>). Not behind <Suspense>: everything it draws is either in `park`
-              already or arrives on the client queries it starts itself, so a boundary would defer
-              nothing and its `fallback={null}` would reserve nothing — the exact shape that cost
-              this page 0.095 CLS when the weather card had one. */}
-            <LiveParkData
+          Not behind <Suspense>: everything it draws is either in `park` already or arrives on the
+          client queries it starts itself, so a boundary would defer nothing and its
+          `fallback={null}` would reserve nothing — the exact shape that cost this page 0.095 CLS
+          when the weather card had one. */}
+        <LiveParkData
+          initialData={park}
+          continent={continent}
+          country={country}
+          city={city}
+          parkSlug={parkSlug}
+          landNames={landNames}
+          attractionsByLand={attractionsByLand}
+          otherAttractionsLabel={otherAttractionsLabel}
+          todayPanel={
+            <ParkTodayPanel
               initialData={park}
               continent={continent}
               country={country}
               city={city}
               parkSlug={parkSlug}
-              landNames={landNames}
-              attractionsByLand={attractionsByLand}
-              otherAttractionsLabel={otherAttractionsLabel}
-              todayPanel={
-                // The key is not decoration: <ParkHeaderCard> renders `{panel}{tiles}`, and an
-                // element created HERE and handed through a prop into that pair is a keyless child
-                // of an array as far as React's dev validation is concerned — it warns naming
-                // ParkHeaderCard and pointing back at this file. One stable key, no extra DOM.
-                <ParkTodayPanel
-                  key="today-panel"
-                  initialData={park}
-                  continent={continent}
-                  country={country}
-                  city={city}
-                  parkSlug={parkSlug}
-                  parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
-                />
-              }
+              parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
             />
-
-            {/* Nearby Parks — streamed (geo proximity lookup + live park cards) */}
-            {park.latitude != null && park.longitude != null && (
-              <Suspense fallback={null}>
-                <NearbyParksSection
-                  parkId={park.id}
-                  lat={park.latitude}
-                  lng={park.longitude}
-                  className="mt-8"
-                />
-              </Suspense>
-            )}
-
-            {/* Blog posts about this park — static content out of the generated blog manifest
-              (no API call, no clock), so it neither competes with the live queries nor with the
-              load-last best-travel-time data. Renders nothing when no post mentions the park.
-              NOT behind <Suspense>: `hasPublishedPosts`/`getPostsForPark` are synchronous manifest
-              lookups and the only await is `getTranslations`, whose messages this render already
-              holds — so the boundary deferred nothing and bought no TTFB. What it did cost was a
-              `fallback={null}` hole: on mobile this section is ~470px that appeared out of nowhere
-              when the boundary resolved, shoving the FAQ, share row and contribute banner down the
-              page. Together with the nearby-parks hole below that was the park page's worst
-              measured layout shift. Rendered inline it is part of the first HTML, at its final
-              height, and crawlers see the links without waiting for the stream. */}
-            <ParkBlogPostsSection
-              locale={locale as Locale}
-              parkSlug={parkSlug}
-              geoPath={`${continent}/${country}/${city}`}
-              parkName={parkName}
-              className="mt-8"
-            />
-
-            {/* Historical statistics — loaded client-side (CDN-cached /stats route); a skeleton
-              shows until the cold/slow stats response lands, so it never blocks the static shell. */}
-            <ParkStatsSection
-              continent={continent}
-              country={country}
-              city={city}
-              parkSlug={parkSlug}
-              locale={locale}
-              hasLiveWaitTimes={hasReadableWaitTimes(park)}
-            />
-
-            {/* What is on at this park. Hand-researched, day-stable, and its own
-              request rather than a field on the park: the park payload is
-              re-polled every five minutes and a season changes a few times a
-              year. Renders nothing for the majority of parks that have none. */}
-            <ParkSeasonsCard seasons={seasons} locale={locale} className="mt-8" />
-
-            {/* Address, phone and the hard facts — hand-curated in the admin, because none of the
-              three upstream feeds carries any of it. The links that used to close this section are
-              <ParkQuickLinks> in the header now, so this renders nothing at all for a park that
-              had only those. */}
-            <ParkInfoCard
-              info={park.info}
-              city={cityName}
-              country={translateGeoSlug(tGeo, 'countries', country, countryName)}
-              className="mt-8"
-            />
-
-            {/* FAQ Section — Q0–Q6 + Q1 (today's hours) render immediately from the park snapshot +
-              server clock. Q7 (least crowded) is NOT server-seeded here (that would require
-              awaiting the best-days seed on the critical path); it streams in from the client
-              calendar fetch after mount. The Q7 signal for SEO lives in the streamed FAQPage
-              JSON-LD above (which is seeded off the critical path). */}
-            <Separator className="my-8" />
-            <ParkFAQSection
-              park={park}
-              locale={locale}
-              continent={continent}
-              country={country}
-              city={city}
-              parkSlug={parkSlug}
-              glossaryTerms={faqGlossaryTerms}
-              glossarySegment={glossarySegment}
-              initialCalendar={null}
-              seedNowMs={seedNowMs}
-            />
-
-            <Separator className="my-8" />
-            <ShareButtons
-              url={`${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`}
-              title={park.name}
-            />
-
-            {/* Invite visitors to contribute their own photos of this park */}
-            <ContributeBanner
-              className="mt-8"
-              href={
-                park.id
-                  ? buildContributeHref({
-                      type: 'park',
-                      id: park.id,
-                      name: parkName,
-                      slug: parkSlug,
-                      url: `/parks/${continent}/${country}/${city}/${parkSlug}`,
-                      country: park.country ?? undefined,
-                    })
-                  : undefined
-              }
-            />
-
-            {/* Secondary, lighter "make park.fan a preferred Google source" prompt */}
-            <PreferredSourcePrompt compact className="mt-8" />
-          </article>
-        </PageContainer>
-      </>
+          }
+        />
+      </ParkPageShell>
     </RouteMessages>
   );
 }

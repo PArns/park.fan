@@ -2,14 +2,13 @@ import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound, permanentRedirect } from 'next/navigation';
-import { ArrowLeft, MapPin } from 'lucide-react';
 
 import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
-import { Link } from '@/i18n/navigation';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { RouteMessages } from '@/i18n/route-messages';
+import { getParkFaqGlossary } from '@/lib/faq/park-faq-terms';
 import { catchNonFatal } from '@/lib/api/client';
-import { getParkByGeoPath } from '@/lib/api/parks';
+import { getParkByGeoPath, getParkSeasons, leanParkForParkShell } from '@/lib/api/parks';
 import { getBestDaysCalendarSeed } from '@/lib/api/integrated-calendar';
 import type { BestDaysSnapshot } from '@/lib/api/integrated-calendar';
 import {
@@ -19,7 +18,6 @@ import {
 } from '@/lib/utils/redirect-utils';
 import { parkCalendarPath } from '@/lib/parks/calendar-segments';
 import { translateContinent, translateCountry } from '@/lib/i18n/helpers';
-import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { generateParkBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import {
@@ -29,18 +27,16 @@ import {
   MAX_DESCRIPTION_LENGTH,
 } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
-import { getParkBackgroundImage } from '@/lib/utils/park-assets';
-import { objectPositionForSrc } from '@/lib/media/focus';
-import { getMediaAltBySrc } from '@/lib/media/text';
 
-import { PageContainer } from '@/components/common/page-container';
-import { GlassCard } from '@/components/common/glass-card';
-import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { ParkBackground } from '@/components/parks/park-background';
 import { ParkBestDaysSection } from '@/components/parks/park-best-days-section';
 import { ParkBestDaysSectionSkeleton } from '@/components/parks/park-best-days-section-skeleton';
 import { ParkCalendarPanel } from '@/components/parks/park-calendar-panel';
+import { ParkPageShell } from '@/components/parks/park-page-shell';
+import { ParkTitleHeader } from '@/components/parks/park-title-header';
+import { ParkHeaderCard } from '@/components/parks/park-header-card';
+import { ParkNavTiles } from '@/components/parks/park-nav-tiles';
+import { ParkTodayPanel } from '@/components/parks/park-today-panel';
 
 interface ParkCalendarPageProps {
   params: Promise<{
@@ -143,8 +139,11 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   const seedNow = new Date();
   const seedNowMs = seedNow.getTime();
   const bestDaysSeedPromise = getBestDaysCalendarSeed(continent, country, city, parkSlug);
+  const seasonsPromise = getParkSeasons(continent, country, city, parkSlug);
 
-  const park = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));
+  const parkFull = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));
+  const park = parkFull ? leanParkForParkShell(parkFull) : parkFull;
+  const seasons = await seasonsPromise;
   if (!park) {
     const relocated = await findRelocatedParkRedirect(continent, country, city, parkSlug);
     if (relocated) {
@@ -180,88 +179,105 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   // not just the browser's back button; this page is the leaf.
   const breadcrumbs = [...parkBreadcrumbs, { name: parkCurrentPage, url: parkPath }];
 
-  const parkBgImage = getParkBackgroundImage(parkSlug);
+  const { terms: faqGlossaryTerms, segment: glossarySegment } = await getParkFaqGlossary(
+    park,
+    locale,
+    seedNowMs
+  );
 
   return (
     <RouteMessages route="/parks/[continent]/[country]/[city]/[park]/calendar">
-      <>
-        <ParkBackground
-          imageSrc={parkBgImage}
-          alt={getMediaAltBySrc(parkBgImage, locale) ?? parkName}
-          objectPosition={objectPositionForSrc(parkBgImage)}
-        />
-
-        <PageContainer>
-          <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
-          <BreadcrumbNav breadcrumbs={breadcrumbs} currentPage={t('breadcrumb')} />
-
-          <article>
-            <div className="mb-8">
-              <GlassCard variant="medium">
-                <h1 className="mb-2 text-3xl font-bold md:text-4xl">
-                  {parkName} <span className="font-normal">– {t('h1Suffix')}</span>
-                </h1>
-                <div className="text-muted-foreground flex flex-wrap items-center gap-3">
-                  <address className="flex items-center gap-1 not-italic">
-                    <MapPin className="h-4 w-4" aria-hidden="true" />
-                    <span>{cityName}</span>,{' '}
-                    <span>{translateGeoSlug(tGeo, 'countries', country, countryName)}</span>
-                  </address>
-                </div>
-                <p className="text-muted-foreground mt-5 max-w-2xl text-sm leading-relaxed">
-                  {t('intro', { park: parkName })}
-                </p>
-                {/* The way back. A calendar reached from a search result is the visitor's first
-                    page on this site, and the wait times are what they came for next. */}
-                <Link
-                  href={parkPath}
-                  className="text-primary hover:text-primary/80 mt-4 inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
-                >
-                  <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-                  {t('backToPark', { park: parkName })}
-                </Link>
-              </GlassCard>
-            </div>
-
-            {/* The answer, streamed. Same seeding as on the park page, and the same placeholder —
-                which renders the REAL header, so the grid below it does not jump when the seed
-                lands. No calendar link in the header here: it would point at this page. */}
-            <Suspense
-              fallback={
-                <ParkBestDaysSectionSkeleton
-                  parkName={parkName}
-                  parkSlug={parkSlug}
-                  locale={locale}
-                />
-              }
-            >
-              <SeededBestDays
-                seedPromise={bestDaysSeedPromise}
-                continent={continent}
-                country={country}
-                city={city}
-                parkSlug={parkSlug}
-                timezone={park.timezone}
-                hasOperatingSchedule={park.hasOperatingSchedule}
-                parkName={parkName}
-                locale={locale}
-                seedNowMs={seedNowMs}
-              />
-            </Suspense>
-
-            {/* The evidence. Client-fetched per visible month — the grid is the one thing on this
-                page that genuinely needs a click before it knows what to load. */}
-            <ParkCalendarPanel
+      <ParkPageShell
+        park={park}
+        seasons={seasons}
+        locale={locale}
+        continent={continent}
+        country={country}
+        city={city}
+        parkSlug={parkSlug}
+        cityName={cityName}
+        countryName={countryName}
+        breadcrumbs={breadcrumbs}
+        currentPage={t('breadcrumb')}
+        seedNowMs={seedNowMs}
+        faqGlossaryTerms={faqGlossaryTerms}
+        glossarySegment={glossarySegment}
+        head={<BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />}
+        header={
+          <ParkTitleHeader
+            park={park}
+            parkName={parkName}
+            cityName={cityName}
+            country={country}
+            countryName={countryName}
+            suffix={t('h1Suffix')}
+            intro={t('intro', { park: parkName })}
+          />
+        }
+      >
+        {/* The same header card the park page opens with, built with LINK cells instead of tab
+          triggers — there is no `<Tabs>` on this page to switch, and a trigger without a panel is
+          a button that does nothing. The panel above them is the identical component reading the
+          identical query keys, so the card shows the same readings it does one URL over. */}
+        <ParkHeaderCard
+          panel={
+            <ParkTodayPanel
+              initialData={park}
+              continent={continent}
+              country={country}
+              city={city}
+              parkSlug={parkSlug}
+              parkPath={parkPath}
+            />
+          }
+          tiles={
+            <ParkNavTiles
+              current="calendar"
               park={park}
               continent={continent}
               country={country}
               city={city}
               parkSlug={parkSlug}
-              className="mt-8"
+              showsAvailable={(park.shows?.length ?? 0) > 0}
+              restaurantsAvailable={(park.restaurants?.length ?? 0) > 0}
+              weatherAvailable={!!park.weather?.current}
             />
-          </article>
-        </PageContainer>
-      </>
+          }
+        />
+
+        {/* The answer, streamed. Same seeding as the park page's tile hint, and the same
+          placeholder — which renders the REAL header, so the grid below it does not jump when the
+          seed lands. No calendar link in the header here: it would point at this page. */}
+        <Suspense
+          fallback={
+            <ParkBestDaysSectionSkeleton parkName={parkName} parkSlug={parkSlug} locale={locale} />
+          }
+        >
+          <SeededBestDays
+            seedPromise={bestDaysSeedPromise}
+            continent={continent}
+            country={country}
+            city={city}
+            parkSlug={parkSlug}
+            timezone={park.timezone}
+            hasOperatingSchedule={park.hasOperatingSchedule}
+            parkName={parkName}
+            locale={locale}
+            seedNowMs={seedNowMs}
+          />
+        </Suspense>
+
+        {/* The evidence. Client-fetched per visible month — the grid is the one thing on this page
+          that genuinely needs a click before it knows what to load. */}
+        <ParkCalendarPanel
+          park={park}
+          continent={continent}
+          country={country}
+          city={city}
+          parkSlug={parkSlug}
+          className="mt-8"
+        />
+      </ParkPageShell>
     </RouteMessages>
   );
 }
