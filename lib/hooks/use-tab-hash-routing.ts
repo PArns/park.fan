@@ -35,6 +35,8 @@ interface UseTabHashRoutingOptions {
  *   sticky header.
  * - `#calendar` and `#calendar-YYYY-MM` are the exception: the calendar left the tabs and became
  *   its own page, so those two forward there instead of selecting anything.
+ * - `#map-show-<slug>` selects the map tab and reports the slug back as `mapShowSlug`, so the
+ *   map can centre on that show and open its popup.
  * - `handleTabChange` tracks the analytics event and writes the new hash via
  *   `history.replaceState` (no navigation).
  */
@@ -62,6 +64,14 @@ export function useTabHashRouting({
   // time (the first INP sample taken here showed ~1 s of input delay). At transition priority
   // React can yield to input while building the grid, so an early tap is answered instead of
   // queued behind it.
+  /**
+   * Slug from a `#map-show-<slug>` deep link, handed to `ParkMap` so it can centre on that show
+   * and open its popup. Kept in state rather than read inside the map: `hashchange` is already
+   * listened for here, and two components polling `location.hash` for the same convention is how
+   * they end up disagreeing about it.
+   */
+  const [mapShowSlug, setMapShowSlug] = useState<string | null>(null);
+
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
     startTransition(() => setIsMounted(true));
@@ -114,12 +124,19 @@ export function useTabHashRouting({
         return;
       }
 
-      // `#shows-<slug>` opens the shows chapter AND scrolls to that show's card — the header
-      // panel's "nächste Shows" rows link this way, so a row names a show and then puts you in
-      // front of it. Same shape the calendar tab used for its month deep links, kept because the
-      // convention is already in the codebase and in whatever anybody bookmarked.
-      const deep = /^shows-(.+)$/.exec(hash);
-      const tabToActivate = deep ? 'shows' : hash;
+      // Two deep-link shapes, and they answer different questions about the same show.
+      //
+      // `#map-show-<slug>` opens the MAP with that show's marker selected — where is it, and how
+      // do I walk there. The header panel's "nächste Shows" rows link this way: a row already
+      // tells you the name and the time, so the thing it cannot tell you is the place.
+      //
+      // `#shows-<slug>` opens the shows chapter and scrolls to that show's card — the full
+      // description and every showtime today. Nothing links to it any more, but it is a real
+      // anchor with a `:target` ring, and it is in whatever anybody bookmarked.
+      const mapShow = /^map-show-(.+)$/.exec(hash);
+      const deep = mapShow ? null : /^shows-(.+)$/.exec(hash);
+      setMapShowSlug(mapShow ? mapShow[1] : null);
+      const tabToActivate = mapShow ? 'map' : deep ? 'shows' : hash;
 
       const validTabs = ['attractions', 'shows', 'restaurants', 'map', 'weather'];
       if (validTabs.includes(tabToActivate)) {
@@ -156,7 +173,7 @@ export function useTabHashRouting({
     window.history.replaceState(null, '', `${pathname}#${value}`);
   };
 
-  return { isMounted, activeTab, handleTabChange, tabsRef };
+  return { isMounted, activeTab, handleTabChange, tabsRef, mapShowSlug };
 }
 
 /** How far below the viewport's top edge a scrolled-to element comes to rest — the sticky bar

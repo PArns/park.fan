@@ -69,7 +69,7 @@ export const TabsWithHash = memo(function TabsWithHash({
 }: TabsWithHashProps) {
   const t = useTranslations('parks');
 
-  const { isMounted, activeTab, handleTabChange, tabsRef } = useTabHashRouting({
+  const { isMounted, activeTab, handleTabChange, tabsRef, mapShowSlug } = useTabHashRouting({
     defaultValue,
     park,
     continent,
@@ -380,7 +380,7 @@ export const TabsWithHash = memo(function TabsWithHash({
           className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
         >
           {deferredTab === 'map' ? (
-            <ParkMap park={park} />
+            <ParkMap park={park} focusShowSlug={mapShowSlug} />
           ) : (
             <Skeleton className="h-[28rem] w-full rounded-xl" />
           )}

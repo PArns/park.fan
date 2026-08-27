@@ -246,8 +246,9 @@ export function ParkTodayPanel({
     return (park.shows ?? [])
       .filter((s) => isInSeason(s))
       .flatMap((s) =>
-        // `slug` rides along so a row can link at the show's own card in the shows chapter —
-        // see the `#shows-<slug>` hash the tab router resolves.
+        // `slug` rides along so a row can link at the show's marker on the park map — see the
+        // `#map-show-<slug>` hash the tab router resolves. The row already carries the name and
+        // the time, so the thing it cannot say is WHERE, and that is what the map answers.
         (s.showtimes ?? []).map((st) => ({
           name: stripNewPrefix(s.name),
           slug: s.slug,
@@ -712,7 +713,7 @@ export function ParkTodayPanel({
                           // is the same two lines tall it always was.
                           <li key={i}>
                             <a
-                              href={chapterHref(`shows-${show.slug}`)}
+                              href={chapterHref(`map-show-${show.slug}`)}
                               className="border-primary/60 bg-primary/10 hover:bg-primary/20 flex flex-col gap-0.5 rounded-lg border px-2.5 py-2 transition-colors"
                             >
                               <span className="flex items-baseline gap-2">
@@ -739,7 +740,7 @@ export function ParkTodayPanel({
                             Same reason the FAQ's calendar link used to be one — that link became a
                             real page, this one is still a jump within the park page. */}
                           <a
-                            href={chapterHref(`shows-${show.slug}`)}
+                            href={chapterHref(`map-show-${show.slug}`)}
                             className="hover:bg-muted/50 hover:text-primary -mx-1 flex items-center gap-2.5 rounded px-1 transition-colors"
                           >
                             <span className="text-muted-foreground shrink-0 font-bold tabular-nums">
