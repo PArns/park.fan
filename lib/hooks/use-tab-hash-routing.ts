@@ -3,7 +3,7 @@
 import { startTransition, useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { useLocale } from 'next-intl';
-import { parkCalendarPath } from '@/lib/parks/calendar-segments';
+import { isParkCalendarMonthInRange, parkCalendarPath } from '@/lib/parks/calendar-segments';
 import { stripNewPrefix } from '@/lib/utils';
 import { trackTabChanged, type TabChangedProps } from '@/lib/analytics/umami';
 import type { ParkWithAttractions } from '@/lib/api/types';
@@ -69,23 +69,37 @@ export function useTabHashRouting({
       const hash = window.location.hash.slice(1);
 
       // `#calendar` and `#calendar-2026-04` are the old tab's addresses, and the calendar is a
-      // page now. They are forwarded rather than ignored: they are in Google's index, in the FAQ
-      // answers, in the best-days header link and in whatever anybody bookmarked, and dropping
-      // them would land every one of those on the ride list with no explanation. The month part
-      // rides along as the new page's hash, which is why that page kept the `calendar-YYYY-MM`
-      // spelling.
+      // page now — the month included, which is why the month part becomes PATH segments here
+      // rather than riding along as a hash. They are forwarded rather than ignored: they are in
+      // Google's index, in the FAQ answers, in the best-days header link and in whatever anybody
+      // bookmarked, and dropping them would land every one of those on the ride list with no
+      // explanation.
       //
-      // `location.replace`, not `router.replace`: a client navigation does not reliably carry a
-      // fragment through to the incoming page's mount, and the calendar grid reads the hash in
-      // its own mount effect to pick the month. Measured, `#calendar-2026-11` arrived as
-      // `#calendar-2026-08` — the grid found no hash, fell into its else branch and wrote the
-      // current month over the requested one. A document navigation puts the fragment in the URL
-      // before anything on the new page runs. `replace` either way: the visitor asked for the
-      // calendar, and a back button returning them to a URL that immediately forwards again is a
-      // trap.
-      if (hash === 'calendar' || /^calendar-\d{4}-\d{2}$/.test(hash)) {
-        const target = `/${locale}${parkCalendarPath(locale, continent, country, city, parkSlug)}`;
-        window.location.replace(hash === 'calendar' ? target : `${target}#${hash}`);
+      // A month outside the window the calendar route serves falls back to the hub instead of
+      // forwarding into a 404 — a five-year-old bookmark should still reach the calendar.
+      //
+      // `location.replace`, not `router.replace`: the target is a different route with its own
+      // server render, and this is a one-time migration hop rather than navigation the visitor
+      // asked for. `replace` either way — a back button returning them to a URL that immediately
+      // forwards again is a trap.
+      const month = /^calendar-(\d{4})-(\d{2})$/.exec(hash);
+      if (hash === 'calendar' || month) {
+        const parsed = month ? { year: Number(month[1]), month: Number(month[2]) } : null;
+        const inRange =
+          parsed &&
+          parsed.month >= 1 &&
+          parsed.month <= 12 &&
+          isParkCalendarMonthInRange(parsed, new Date().getFullYear());
+        window.location.replace(
+          `/${locale}${parkCalendarPath(
+            locale,
+            continent,
+            country,
+            city,
+            parkSlug,
+            inRange ? parsed : undefined
+          )}`
+        );
         return;
       }
 

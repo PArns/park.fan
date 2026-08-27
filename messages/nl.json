@@ -420,7 +420,7 @@
     "peak": "Piek",
     "open": "open",
     "calendar": "Kalender",
-    "tileCalendarLabel": "Wachttijden-kalender",
+    "tileCalendarLabel": "Druktekalender",
     "crowdCalendar": "Druktekalender & Beste Bezoekdagen",
     "map": "Kaart",
     "calendarLegend": "Legenda",
@@ -730,14 +730,21 @@
       "neighbor": "Vakantie in buurregio’s – meer dagjesmensen, langere wachttijden"
     },
     "calendarPage": {
-      "breadcrumb": "Kalender",
-      "h1Suffix": "wachttijden-kalender",
-      "metaTitle": "{park} wachttijden-kalender: rustige dagen & drukte",
-      "metaTitleShort": "{park} wachttijden-kalender",
+      "breadcrumb": "Druktekalender",
+      "h1Suffix": "druktekalender",
+      "metaTitle": "{park} druktekalender: rustige dagen & wachttijden",
+      "metaTitleShort": "{park} druktekalender",
       "metaDescription": "Wanneer is het rustig in {park} in {city}? Drukte per dag, openingstijden, schoolvakanties en weer voor de komende maanden, met AI-voorspelling per dag.",
       "intro": "Voor elke dag van de komende maanden: verwachte drukte, openingstijden en de vakanties die op {park} inwerken. Tik op een dag voor de details.",
-      "backToPark": "Terug naar de wachttijden in {park}",
-      "gridTitle": "Maand voor maand"
+      "monthH1Suffix": "drukte in {month}",
+      "monthMetaTitle": "{park} {month}: drukte & wachttijden",
+      "monthMetaTitleShort": "{park} in {month}",
+      "monthMetaDescription": "Hoe druk is het in {park} in {city} in {month}? Verwachte drukte per dag, openingstijden, schoolvakanties en weer, met AI-voorspelling.",
+      "monthIntro": "Dag voor dag door {month}: verwachte drukte in {park}, openingstijden, schoolvakanties en weer. Tik op een dag voor de details.",
+      "gridTitle": "Maand voor maand",
+      "previousMonth": "Vorige maand",
+      "nextMonth": "Volgende maand",
+      "backToPark": "Terug naar de wachttijden in {park}"
     }
   },
   "attractions": {

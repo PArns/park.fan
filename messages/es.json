@@ -420,7 +420,7 @@
     "peak": "Pico",
     "open": "abierto",
     "calendar": "Calendario",
-    "tileCalendarLabel": "Calendario de esperas",
+    "tileCalendarLabel": "Calendario de afluencia",
     "crowdCalendar": "Calendario de Afluencia y Mejores Días",
     "map": "Mapa",
     "calendarLegend": "Leyenda",
@@ -730,14 +730,21 @@
       "neighbor": "Vacaciones en regiones vecinas: más visitantes de día, más esperas"
     },
     "calendarPage": {
-      "breadcrumb": "Calendario",
-      "h1Suffix": "calendario de tiempos de espera",
-      "metaTitle": "{park}: calendario de esperas y días tranquilos",
-      "metaTitleShort": "{park}: calendario de esperas",
+      "breadcrumb": "Calendario de afluencia",
+      "h1Suffix": "calendario de afluencia",
+      "metaTitle": "{park}: calendario de afluencia y días tranquilos",
+      "metaTitleShort": "{park}: calendario de afluencia",
       "metaDescription": "¿Cuándo está tranquilo {park} en {city}? Afluencia día a día, horarios, vacaciones escolares y tiempo para los próximos meses, con previsión de IA diaria.",
       "intro": "Para cada día de los próximos meses: afluencia prevista, horarios y las vacaciones que afectan a {park}. Toca un día para ver el detalle.",
-      "backToPark": "Volver a los tiempos de espera en {park}",
-      "gridTitle": "Mes a mes"
+      "monthH1Suffix": "afluencia en {month}",
+      "monthMetaTitle": "{park} {month}: afluencia y colas",
+      "monthMetaTitleShort": "{park} en {month}",
+      "monthMetaDescription": "¿Cuánta gente hay en {park} en {city} en {month}? Afluencia prevista día a día, horarios, vacaciones escolares y tiempo, con previsión de IA.",
+      "monthIntro": "Día a día por {month}: afluencia prevista en {park}, horarios, vacaciones escolares y tiempo. Toca un día para ver el detalle.",
+      "gridTitle": "Mes a mes",
+      "previousMonth": "Mes anterior",
+      "nextMonth": "Mes siguiente",
+      "backToPark": "Volver a los tiempos de espera en {park}"
     }
   },
   "attractions": {

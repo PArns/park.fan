@@ -420,7 +420,7 @@
     "peak": "Picco",
     "open": "aperto",
     "calendar": "Calendario",
-    "tileCalendarLabel": "Calendario delle attese",
+    "tileCalendarLabel": "Calendario affluenza",
     "crowdCalendar": "Calendario affluenze e giorni migliori per visitare",
     "map": "Mappa",
     "calendarLegend": "Legenda",
@@ -730,14 +730,21 @@
       "neighbor": "Vacanze nelle regioni vicine – più visitatori giornalieri, attese più lunghe"
     },
     "calendarPage": {
-      "breadcrumb": "Calendario",
-      "h1Suffix": "calendario dei tempi di attesa",
-      "metaTitle": "{park}: calendario delle attese e giorni tranquilli",
-      "metaTitleShort": "{park}: calendario delle attese",
+      "breadcrumb": "Calendario dell’affluenza",
+      "h1Suffix": "calendario dell’affluenza",
+      "metaTitle": "{park}: calendario dell’affluenza e giorni tranquilli",
+      "metaTitleShort": "{park}: calendario affluenza",
       "metaDescription": "Quando è tranquillo {park} a {city}? Affluenza giorno per giorno, orari, vacanze scolastiche e meteo per i prossimi mesi, con previsione IA quotidiana.",
       "intro": "Per ogni giorno dei prossimi mesi: affluenza prevista, orari e le vacanze che pesano su {park}. Tocca un giorno per il dettaglio.",
-      "backToPark": "Torna ai tempi di attesa al {park}",
-      "gridTitle": "Mese per mese"
+      "monthH1Suffix": "affluenza a {month}",
+      "monthMetaTitle": "{park} {month}: affluenza e code",
+      "monthMetaTitleShort": "{park} a {month}",
+      "monthMetaDescription": "Quanta gente c’è a {park} a {city} a {month}? Affluenza prevista giorno per giorno, orari, vacanze scolastiche e meteo, con previsione IA.",
+      "monthIntro": "Giorno per giorno lungo {month}: affluenza prevista a {park}, orari, vacanze scolastiche e meteo. Tocca un giorno per il dettaglio.",
+      "gridTitle": "Mese per mese",
+      "previousMonth": "Mese precedente",
+      "nextMonth": "Mese successivo",
+      "backToPark": "Torna ai tempi di attesa al {park}"
     }
   },
   "attractions": {

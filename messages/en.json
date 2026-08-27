@@ -420,7 +420,7 @@
     "peak": "Peak",
     "open": "open",
     "calendar": "Calendar",
-    "tileCalendarLabel": "Wait-time calendar",
+    "tileCalendarLabel": "Crowd calendar",
     "crowdCalendar": "Crowd Calendar & Best Days to Visit",
     "map": "Map",
     "calendarLegend": "Legend",
@@ -730,14 +730,21 @@
       "neighbor": "Holidays in neighbouring regions – more day-trippers, longer waits"
     },
     "calendarPage": {
-      "breadcrumb": "Calendar",
-      "h1Suffix": "wait-time calendar",
-      "metaTitle": "{park} wait-time calendar: quiet days & crowds",
-      "metaTitleShort": "{park} wait-time calendar",
+      "breadcrumb": "Crowd calendar",
+      "h1Suffix": "crowd calendar",
+      "metaTitle": "{park} crowd calendar: quiet days & wait times",
+      "metaTitleShort": "{park} crowd calendar",
       "metaDescription": "When is {park} in {city} quiet? Day-by-day crowds, opening hours, school holidays and weather for the months ahead, with an AI forecast per day.",
       "intro": "For every day of the coming months: expected crowds, opening hours, and the holidays acting on {park}. Tap a day for the details.",
-      "backToPark": "Back to wait times at {park}",
-      "gridTitle": "Month by month"
+      "monthH1Suffix": "crowds in {month}",
+      "monthMetaTitle": "{park} {month}: crowds & wait times",
+      "monthMetaTitleShort": "{park} in {month}",
+      "monthMetaDescription": "How busy is {park} in {city} in {month}? Expected crowds day by day, opening hours, school holidays and weather, with an AI forecast.",
+      "monthIntro": "Day by day through {month}: expected crowds at {park}, opening hours, school holidays and weather. Tap a day for the details.",
+      "gridTitle": "Month by month",
+      "previousMonth": "Previous month",
+      "nextMonth": "Next month",
+      "backToPark": "Back to wait times at {park}"
     }
   },
   "attractions": {

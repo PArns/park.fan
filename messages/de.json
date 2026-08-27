@@ -480,7 +480,7 @@
     "peak": "Max.",
     "forecast": "Vorhersage",
     "calendar": "Kalender",
-    "tileCalendarLabel": "Wartezeiten-Kalender",
+    "tileCalendarLabel": "Andrangskalender",
     "crowdCalendar": "Crowd-Kalender & Beste Besuchstage",
     "map": "Karte",
     "calendarLegend": "Legende",
@@ -730,14 +730,21 @@
       "neighbor": "Ferien in Nachbarregionen – mehr Tagesgäste, längere Wartezeiten"
     },
     "calendarPage": {
-      "breadcrumb": "Kalender",
-      "h1Suffix": "Wartezeiten-Kalender",
-      "metaTitle": "{park} Wartezeiten-Kalender: ruhige Tage & Andrang",
-      "metaTitleShort": "{park}: Wartezeiten-Kalender",
+      "breadcrumb": "Andrangskalender",
+      "h1Suffix": "Andrangskalender",
+      "metaTitle": "{park} Andrangskalender: ruhige Tage & Wartezeiten",
+      "metaTitleShort": "{park}: Andrangskalender",
       "metaDescription": "Wann ist es im {park} in {city} leer? Andrang pro Tag, Öffnungszeiten, Ferien und Wetter für die nächsten Monate – mit KI-Prognose je Tag.",
       "intro": "Für jeden Tag der nächsten Monate: erwarteter Andrang, Öffnungszeiten, Ferien und Feiertage, die auf {park} wirken. Tippe auf einen Tag für die Details.",
-      "backToPark": "Zurück zu den Wartezeiten im {park}",
-      "gridTitle": "Monat für Monat"
+      "monthH1Suffix": "Andrang im {month}",
+      "monthMetaTitle": "{park} {month}: Andrang & Wartezeiten",
+      "monthMetaTitleShort": "{park} im {month}",
+      "monthMetaDescription": "Wie voll wird es im {park} in {city} im {month}? Erwarteter Andrang Tag für Tag, Öffnungszeiten, Schulferien und Wetter – mit KI-Prognose.",
+      "monthIntro": "Tag für Tag durch den {month}: erwarteter Andrang im {park}, Öffnungszeiten, Ferien und Wetter. Tippe auf einen Tag für die Details.",
+      "gridTitle": "Monat für Monat",
+      "previousMonth": "Vorheriger Monat",
+      "nextMonth": "Nächster Monat",
+      "backToPark": "Zurück zu den Wartezeiten im {park}"
     }
   },
   "attractions": {

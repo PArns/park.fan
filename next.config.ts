@@ -549,17 +549,22 @@ const nextConfig: NextConfig = {
     // rewrite. Keep in step with `lib/parks/calendar-segments.ts` — that module is what every
     // link and every canonical URL is built from, this is only what serves them.
     const parkCalendarSegments: Record<string, string> = {
-      de: 'kalender',
-      fr: 'calendrier',
-      it: 'calendario',
-      nl: 'kalender',
-      es: 'calendario',
+      de: 'andrangskalender',
+      fr: 'calendrier-affluence',
+      it: 'calendario-affluenza',
+      nl: 'drukte-kalender',
+      es: 'calendario-afluencia',
     };
     for (const [locale, segment] of Object.entries(parkCalendarSegments)) {
-      rules.push({
-        source: `/${locale}/parks/:continent/:country/:city/:park/${segment}`,
-        destination: `/${locale}/parks/:continent/:country/:city/:park/calendar`,
-      });
+      const from = `/${locale}/parks/:continent/:country/:city/:park/${segment}`;
+      const to = `/${locale}/parks/:continent/:country/:city/:park/crowd-calendar`;
+      // Two rules, because the route is an optional catch-all: the hub and the month URLs under
+      // it. `:date*` alone would also match the bare segment, but writing both makes the pair
+      // explicit and keeps the hub's rewrite independent of how the month path is spelled.
+      rules.push(
+        { source: from, destination: to },
+        { source: `${from}/:date*`, destination: `${to}/:date*` }
+      );
     }
 
     return rules;
