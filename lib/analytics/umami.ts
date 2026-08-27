@@ -152,8 +152,9 @@ export interface GlossarySearchedProps {
 }
 
 export interface TabChangedProps {
-  /** attractions | calendar | map | shows | restaurants */
-  tab: 'attractions' | 'calendar' | 'map' | 'shows' | 'restaurants';
+  /** attractions | map | shows | restaurants | weather. No `calendar`: it is a page of its own
+   *  now and is counted as a pageview, which costs no event property at all. */
+  tab: 'attractions' | 'map' | 'shows' | 'restaurants' | 'weather';
   parkName?: string;
   [key: string]: string | number | boolean | undefined;
 }

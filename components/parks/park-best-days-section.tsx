@@ -4,8 +4,9 @@ import { useMemo, useState } from 'react';
 import { CalendarDays, TrendingDown, AlertTriangle, Sunset } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useMounted } from '@/lib/hooks/use-mounted';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { GlassCard } from '@/components/common/glass-card';
+import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { GlassCard, TILE_GLASS } from '@/components/common/glass-card';
+import { PANEL_CELL, PanelGrid, PanelMetric } from '@/components/parks/park-panel-cell';
 import type { IntegratedCalendarResponse } from '@/lib/api/types';
 import type { BestDaysByDayOfWeek, BestDaysSnapshot } from '@/lib/api/integrated-calendar';
 import { analyzeBestDays, scoreToCrowdLevel } from '@/lib/utils/crowd-analysis';
@@ -290,97 +291,104 @@ function BestDaysContent({
 
   return (
     <section aria-labelledby="best-days-heading" className="mt-8 space-y-4">
-      <ParkBestDaysHeader
-        parkName={parkName}
-        parkSlug={parkSlug}
-        locale={locale}
-        showCalendarLink={showCalendarLink}
-      />
+      {/* Header and the three cards are ONE box, the way „Monat für Monat" and its month
+        stepper are: the band squares off its bottom, the card underneath drops its top border
+        and radius, and the chapter reads as one object instead of a lid resting on a gap of
+        park photograph. */}
+      <div>
+        <ParkBestDaysHeader
+          parkName={parkName}
+          parkSlug={parkSlug}
+          locale={locale}
+          showCalendarLink={showCalendarLink}
+          className="mb-0 rounded-b-none"
+        />
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {hasBestDays && (
-          <Card>
-            <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2 text-base">
-                <TrendingDown className="h-4 w-4" />
-                {t('quietestDaysTitle')}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-2">
-                {bestDaysOfWeek.map((stat) => (
-                  <DayChip
-                    key={stat.dayIndex}
-                    dayIndex={stat.dayIndex}
-                    score={stat.avgScore}
-                    locale={locale}
-                  />
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        )}
+        {/* Columns with hairline rules, not three cards in a row — the same shape „Heute im
+          Park" uses one box up the page, and for the same reason: these are three readings of
+          one thing, and a card around each of them says they are three separate objects. Shared
+          machinery in `park-panel-cell.tsx` so the rules, the padding and the caption cannot
+          drift between the two panels.
 
-        {bestWeekendDay && (
-          <Card>
-            <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2 text-base">
-                <Sunset className="h-4 w-4" />
-                {t('bestWeekendDayTitle')}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-2">
-                <DayChip
-                  dayIndex={bestWeekendDay.dayOfWeek}
-                  score={bestWeekendDay.avgCrowdScore}
-                  locale={locale}
-                />
+          The count is computed: a park with no quiet weekday and no quiet weekend day renders one
+          column, and a fixed `lg:grid-cols-3` would leave two empty tracks inside the border. */}
+        <div
+          className={cn(
+            TILE_GLASS,
+            'border-border/50 overflow-hidden rounded-b-xl border border-t-0'
+          )}
+        >
+          <PanelGrid columnCount={1 + (hasBestDays ? 1 : 0) + (bestWeekendDay ? 1 : 0)}>
+            {hasBestDays && (
+              <div className={PANEL_CELL}>
+                <PanelMetric caption={t('quietestDaysTitle')} icon={TrendingDown}>
+                  <div className="flex flex-wrap gap-2">
+                    {bestDaysOfWeek.map((stat) => (
+                      <DayChip
+                        key={stat.dayIndex}
+                        dayIndex={stat.dayIndex}
+                        score={stat.avgScore}
+                        locale={locale}
+                      />
+                    ))}
+                  </div>
+                </PanelMetric>
               </div>
-            </CardContent>
-          </Card>
-        )}
-
-        <Card>
-          <CardHeader className="pb-3">
-            <CardTitle className="flex items-center gap-2 text-base">
-              <CalendarDays className="h-4 w-4" />
-              {t('upcomingQuietTitle')}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            {hasUpcoming ? (
-              <div className="flex flex-wrap gap-2">
-                {analysis.upcomingQuietDays.map((day) => {
-                  const [y, m, d] = day.date.split('-').map(Number);
-                  const date = new Date(y, m - 1, d);
-                  const label = getDateTimeFormat(locale, {
-                    weekday: 'short',
-                    day: 'numeric',
-                    month: 'short',
-                  })
-                    .format(date)
-                    .replace(/\.$/, '');
-                  // Loose lookup: crowdLevel can be 'closed'/'unknown', which carry no chip color.
-                  const chipClass = (CROWD_CHIP_CLASS as Record<string, string>)[day.crowdLevel];
-                  return (
-                    <span
-                      key={day.date}
-                      className={cn(
-                        'inline-flex items-center rounded-md px-3 py-1 text-sm font-medium',
-                        chipClass ?? 'bg-muted/20 text-muted-foreground border border-transparent'
-                      )}
-                    >
-                      {label}
-                    </span>
-                  );
-                })}
-              </div>
-            ) : (
-              <p className="text-muted-foreground text-sm">{t('noUpcomingQuiet')}</p>
             )}
-          </CardContent>
-        </Card>
+
+            {bestWeekendDay && (
+              <div className={PANEL_CELL}>
+                <PanelMetric caption={t('bestWeekendDayTitle')} icon={Sunset}>
+                  <div className="flex flex-wrap gap-2">
+                    <DayChip
+                      dayIndex={bestWeekendDay.dayOfWeek}
+                      score={bestWeekendDay.avgCrowdScore}
+                      locale={locale}
+                    />
+                  </div>
+                </PanelMetric>
+              </div>
+            )}
+
+            <div className={PANEL_CELL}>
+              <PanelMetric caption={t('upcomingQuietTitle')} icon={CalendarDays}>
+                {hasUpcoming ? (
+                  <div className="flex flex-wrap gap-2">
+                    {analysis.upcomingQuietDays.map((day) => {
+                      const [y, m, d] = day.date.split('-').map(Number);
+                      const date = new Date(y, m - 1, d);
+                      const label = getDateTimeFormat(locale, {
+                        weekday: 'short',
+                        day: 'numeric',
+                        month: 'short',
+                      })
+                        .format(date)
+                        .replace(/\.$/, '');
+                      // Loose lookup: crowdLevel can be 'closed'/'unknown', which carry no chip color.
+                      const chipClass = (CROWD_CHIP_CLASS as Record<string, string>)[
+                        day.crowdLevel
+                      ];
+                      return (
+                        <span
+                          key={day.date}
+                          className={cn(
+                            'inline-flex items-center rounded-md px-3 py-1 text-sm font-medium',
+                            chipClass ??
+                              'bg-muted/20 text-muted-foreground border border-transparent'
+                          )}
+                        >
+                          {label}
+                        </span>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <p className="text-muted-foreground text-sm">{t('noUpcomingQuiet')}</p>
+                )}
+              </PanelMetric>
+            </div>
+          </PanelGrid>
+        </div>
       </div>
 
       {analysis.schoolHolidaysAreBusy && (

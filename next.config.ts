@@ -544,6 +544,29 @@ const nextConfig: NextConfig = {
       });
     }
 
+    // A park's crowd calendar (app/[locale]/parks/…/[park]/calendar). Same pattern one level
+    // deeper: the segment sits after four geo segments, so the rule names all four. EN needs no
+    // rewrite. Keep in step with `lib/parks/calendar-segments.ts` — that module is what every
+    // link and every canonical URL is built from, this is only what serves them.
+    const parkCalendarSegments: Record<string, string> = {
+      de: 'wartezeiten-kalender',
+      fr: 'calendrier-temps-attente',
+      it: 'calendario-tempi-attesa',
+      nl: 'wachttijden-kalender',
+      es: 'calendario-tiempos-espera',
+    };
+    for (const [locale, segment] of Object.entries(parkCalendarSegments)) {
+      const from = `/${locale}/parks/:continent/:country/:city/:park/${segment}`;
+      const to = `/${locale}/parks/:continent/:country/:city/:park/wait-time-calendar`;
+      // Two rules, because the route is an optional catch-all: the hub and the month URLs under
+      // it. `:date*` alone would also match the bare segment, but writing both makes the pair
+      // explicit and keeps the hub's rewrite independent of how the month path is spelled.
+      rules.push(
+        { source: from, destination: to },
+        { source: `${from}/:date*`, destination: `${to}/:date*` }
+      );
+    }
+
     return rules;
   },
   async headers() {

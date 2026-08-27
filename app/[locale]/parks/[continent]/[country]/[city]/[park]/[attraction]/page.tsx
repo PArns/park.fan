@@ -38,6 +38,9 @@ import {
 } from '@/components/seo/structured-data';
 import { AttractionFAQStructuredData } from '@/components/seo/attraction-faq-structured-data';
 import { AttractionFAQSection } from '@/components/faq/attraction-faq-section';
+import { buildAttractionFaqItems } from '@/lib/faq/attraction-faq';
+import { RideSectionNav } from '@/components/parks/ride-section-nav';
+import { rideProfileRenders } from '@/lib/glossary/ride-profile';
 import { PageContainer } from '@/components/common/page-container';
 import { GlassCard } from '@/components/common/glass-card';
 import { AttractionHistorySections } from '@/components/parks/attraction-history-sections';
@@ -291,6 +294,25 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
       <RcdbBadge rcdbId={attraction.rcdbId} attractionName={attractionName} />
     ) : null;
 
+  // Does the FAQ chapter actually render? <AttractionFAQSection> returns null on an empty set,
+  // and the chapter row must not offer a jump to an anchor that is not on the page. Same pure
+  // builder the section itself calls — it reads the attraction it was handed and does no I/O,
+  // so asking twice costs a function call.
+  // Does the ride-profile chapter actually render? `RideProfileSection` returns null when the
+  // curated ids resolve to nothing and the profile carries no facts, and a tile must not point at
+  // an anchor that is not on the page. Same predicate the section itself asks.
+  const hasRideProfile = attraction.rideProfile
+    ? await rideProfileRenders(attraction.rideProfile, locale as Locale)
+    : false;
+
+  const tFaqItems = await getTranslations('seo.faq.attraction');
+  const hasFaq =
+    buildAttractionFaqItems(
+      attraction,
+      park,
+      tFaqItems as Parameters<typeof buildAttractionFaqItems>[2]
+    ).length > 0;
+
   return (
     <RouteMessages route="/parks/[continent]/[country]/[city]/[park]/[attraction]">
       <>
@@ -307,7 +329,14 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
           ogImageUrl={ogImageUrl}
         />
         <AttractionFAQStructuredData attraction={attraction} park={park} locale={locale} />
-        <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
+        <BreadcrumbStructuredData
+          breadcrumbs={breadcrumbs}
+          currentPage={{
+            name: attractionCurrentPage,
+            url: `/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
+          }}
+          locale={locale}
+        />
         <ParkBackground
           imageSrc={backgroundImage}
           // The sidecar's authored sentence in this locale, not the bare entity name:
@@ -421,10 +450,18 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               </GlassCard>
             </div>
 
+            {/* The chapter row — the park page's entry tiles, one page type over, so a ride
+              reads like the park it belongs to (the header above already does this on purpose).
+              Jump links rather than tabs: switching a Tabs would take the typical-wait table,
+              the 30-day history, the ride profile and the FAQ out of this page's served HTML,
+              which is most of what a ride page is for. Server-rendered at a fixed height, so it
+              owes the page nothing when the live panel below it settles. */}
+            <RideSectionNav hasRideProfile={hasRideProfile} hasFaq={hasFaq} className="mb-8" />
+
             {/* Chapter: the live wait time — the reason people are here. Was the only
               block on the page without a heading, so it read as a stray card between
               the header and the first chapter. */}
-            <PageSection icon={Clock} title={t('sectionLiveNow')} frosted>
+            <PageSection icon={Clock} title={t('sectionLiveNow')} frosted id="live">
               {/* Why this chapter is empty, for the parks that publish wait times only inside
                 their own app. Above the live panel rather than below it: it is the answer to the
                 question the blank panel raises. Renders nothing everywhere else. */}
@@ -457,7 +494,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
             {/* Chapter: plan your visit — rope-drop, typical waits, today's chart and the
               30-day history grid are grouped under one heading so the page reads as
               chapters instead of a long stack of separator-divided blocks. */}
-            <PageSection icon={Sparkles} title={t('sectionPlanVisit')} frosted>
+            <PageSection icon={Sparkles} title={t('sectionPlanVisit')} frosted id="plan">
               {/* Rope-drop + typical waits — both server-rendered in the shell for
                 headliners, so they paint together; side by side on wide screens,
                 stacked when only one is present. */}

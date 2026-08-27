@@ -17,6 +17,9 @@ import { useMounted } from '@/lib/hooks/use-mounted';
 import type { AttractionStatus, ParkHistoricalStats } from '@/lib/api/types';
 import { getAttractionDisplayStatus } from '@/lib/utils/park-utils';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { TILE_GLASS } from '@/components/common/glass-card';
+import { PANEL_CELL, PanelGrid } from '@/components/parks/park-panel-cell';
+import { cn } from '@/lib/utils';
 
 interface ParkStatsSectionProps {
   continent: string;
@@ -260,11 +263,17 @@ function StatsContent({
       .sort((a, b) => a.sortKey - b.sortKey);
   }, [stats.byDayOfWeek, locale]);
 
+  // Two columns whenever both list cards are there, one otherwise — the ranking spans whatever
+  // the row is. A fixed `sm:grid-cols-2` would leave an empty track for a caller asking for one.
+  const columnCount =
+    (show.includes('months') && monthRows.length > 0 ? 1 : 0) +
+      (show.includes('weekdays') && dowRows.length > 0 ? 1 : 0) || 1;
+
   return (
     <section
       aria-labelledby={hideHeading ? undefined : 'stats-heading'}
       aria-label={hideHeading ? t('title') : undefined}
-      className="mt-8 space-y-4"
+      className="mt-8"
     >
       <ParkStatsHeader
         hidden={hideHeading}
@@ -272,50 +281,74 @@ function StatsContent({
           days: stats.meta.totalSampleDays,
           years: Math.max(stats.meta.windowYears, 1),
         })}
+        className={hideHeading ? undefined : 'mb-0 rounded-b-none'}
       />
 
-      {show.includes('attractions') && stats.topAttractions.length > 0 && (
-        <ParkStatsAttractionsCard
-          attractions={stats.topAttractions}
-          currentWaits={currentWaits}
-          showCurrentWaits={showCurrentWaits}
-          title={t('topAttractionsTitle')}
-          labelAttraction={tParks('attractions')}
-          labelMinutes={tParks('overview.minutesUnit')}
-          labelNow={tParks('now')}
-          labelP50={t('p50')}
-          labelP90={t('p90')}
-          continent={continent}
-          country={country}
-          city={city}
-          parkSlug={parkSlug}
-        />
-      )}
+      {/* One box with hairline columns, the shape „Heute im Park" and „Beste Reisezeit" use. The
+        three tables were three cards floating under a band with a gap of park photograph between
+        them, and they are three cuts through the same 158 measured days.
 
-      {(show.includes('months') || show.includes('weekdays')) && (
-        <div className="grid gap-4 md:grid-cols-2">
+        The ranking spans the full width because its rows are wide — ride name plus three wait
+        times — while by-month and by-weekday are label-and-badge lists that sit next to each
+        other comfortably. `columnCount` counts what is actually shown, since `show` is a prop and
+        a caller can ask for one of the three. */}
+      <div
+        className={cn(
+          TILE_GLASS,
+          'border-border/50 overflow-hidden border',
+          hideHeading ? 'rounded-xl' : 'rounded-b-xl border-t-0'
+        )}
+      >
+        <PanelGrid columnCount={columnCount}>
+          {show.includes('attractions') && stats.topAttractions.length > 0 && (
+            <div className={cn(PANEL_CELL, columnCount === 2 && 'sm:col-span-2')}>
+              <ParkStatsAttractionsCard
+                bare
+                attractions={stats.topAttractions}
+                currentWaits={currentWaits}
+                showCurrentWaits={showCurrentWaits}
+                title={t('topAttractionsTitle')}
+                labelAttraction={tParks('attractions')}
+                labelMinutes={tParks('overview.minutesUnit')}
+                labelNow={tParks('now')}
+                labelP50={t('p50')}
+                labelP90={t('p90')}
+                continent={continent}
+                country={country}
+                city={city}
+                parkSlug={parkSlug}
+              />
+            </div>
+          )}
+
           {show.includes('months') && monthRows.length > 0 && (
-            <ParkStatsCrowdCard
-              iconType="calendar"
-              title={t('byMonthTitle')}
-              rows={monthRows}
-              labelP50={t('p50')}
-              labelP90={t('p90')}
-              labelDays={t('sampleDaysShort')}
-            />
+            <div className={PANEL_CELL}>
+              <ParkStatsCrowdCard
+                bare
+                iconType="calendar"
+                title={t('byMonthTitle')}
+                rows={monthRows}
+                labelP50={t('p50')}
+                labelP90={t('p90')}
+                labelDays={t('sampleDaysShort')}
+              />
+            </div>
           )}
           {show.includes('weekdays') && dowRows.length > 0 && (
-            <ParkStatsCrowdCard
-              iconType="layers"
-              title={t('byDowTitle')}
-              rows={dowRows}
-              labelP50={t('p50')}
-              labelP90={t('p90')}
-              labelDays={t('sampleDaysShort')}
-            />
+            <div className={PANEL_CELL}>
+              <ParkStatsCrowdCard
+                bare
+                iconType="layers"
+                title={t('byDowTitle')}
+                rows={dowRows}
+                labelP50={t('p50')}
+                labelP90={t('p90')}
+                labelDays={t('sampleDaysShort')}
+              />
+            </div>
           )}
-        </div>
-      )}
+        </PanelGrid>
+      </div>
     </section>
   );
 }

@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import type { WeatherNowcast } from '@/lib/api/types';
+import { readParkSimulationParam } from '@/lib/parks/park-simulation';
 
 interface UseWeatherNowcastParams {
   continent: string;
@@ -25,13 +26,20 @@ export function useWeatherNowcast({
   initialData,
   enabled = true,
 }: UseWeatherNowcastParams) {
+  // Dev/preview `?state=` (see `lib/parks/park-simulation.ts`); `null` in production. In the key
+  // as well as the URL, so a simulated nowcast never lands in the real one's cache entry.
+  const simState =
+    typeof window !== 'undefined' ? readParkSimulationParam(window.location.search) : null;
+
   return useQuery<WeatherNowcast | null>({
-    queryKey: ['weather-nowcast', continent, country, city, parkSlug],
+    queryKey: ['weather-nowcast', continent, country, city, parkSlug, simState],
     queryFn: async () => {
-      const response = await fetch(
+      const url = new URL(
         `/api/parks/${continent}/${country}/${city}/${parkSlug}/weather/nowcast`,
-        { cache: 'no-store' }
+        window.location.origin
       );
+      if (simState) url.searchParams.set('state', simState);
+      const response = await fetch(url, { cache: 'no-store' });
 
       if (response.status === 404) {
         return null;

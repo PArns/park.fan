@@ -1,21 +1,13 @@
 'use client';
 
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
-import { ParkStatus } from '@/components/parks/park-status';
 import { TabsWithHash } from '@/components/parks/tabs-with-hash';
 import { Card } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
-import { AlertCircle, Loader2 } from 'lucide-react';
+import { AlertCircle } from 'lucide-react';
 import { useMemo } from 'react';
 import { useTranslations } from 'next-intl';
-import { useMounted } from '@/lib/hooks/use-mounted';
-import { useTodayCrowdLevel } from '@/lib/hooks/use-today-crowd-level';
 import { groupAttractionsByLand } from '@/lib/utils/park-utils';
-import type {
-  ParkWithAttractions,
-  IntegratedCalendarResponse,
-  ParkAttraction,
-} from '@/lib/api/types';
+import type { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
 
 interface LiveParkDataProps {
   initialData: ParkWithAttractions;
@@ -23,14 +15,13 @@ interface LiveParkDataProps {
   country: string;
   city: string;
   parkSlug: string;
-  /** Optional SSR seed for the calendar tab. Omitted now that the tab client-fetches per
-   *  visible month — keeps the cold calendar build off the park page's critical path. */
-  calendarData?: IntegratedCalendarResponse;
   landNames: string[];
   attractionsByLand: Record<string, ParkAttraction[]>;
   /** Translated bucket name for attractions the API reports without a land. */
   otherAttractionsLabel: string;
-  bestDaysSlot?: React.ReactNode;
+  /** <ParkTodayPanel> as a slot — it is the top half of the header card whose bottom half is the
+   *  entry-tile row, and that card is built inside <TabsWithHash>. */
+  todayPanel?: React.ReactNode;
 }
 
 /**
@@ -46,23 +37,17 @@ export function LiveParkData({
   country,
   city,
   parkSlug,
-  calendarData,
   landNames,
   attractionsByLand,
   otherAttractionsLabel,
-  bestDaysSlot,
+  todayPanel,
 }: LiveParkDataProps) {
   const t = useTranslations('common');
-  // Gate the live-refetch indicator on mount: the server render (and first client render) must agree
-  // (both render the empty fixed-height slot), or the refetch-on-mount flipping `isFetching` true
-  // would cause a hydration mismatch on this force-dynamic page.
-  const mounted = useMounted();
 
   const {
     data: park,
     isError,
     error,
-    isFetching,
   } = useLiveParkData({
     continent,
     country,
@@ -73,17 +58,6 @@ export function LiveParkData({
 
   // Use current data if available, otherwise fall back to initial data
   const currentPark = park || initialData;
-
-  // Today's crowd as a DAILY rating, for the occupancy card's second badge. Same hook (and so the
-  // same one-day /calendar query) the header band reads, so the two surfaces can never disagree
-  // and this costs no request of its own.
-  const todayCrowd = useTodayCrowdLevel({
-    continent,
-    country,
-    city,
-    parkSlug,
-    timezone: currentPark.timezone ?? 'UTC',
-  });
 
   // Re-group attractions if data has changed (memoized to avoid recalculating on every render).
   // The land-less bucket name comes from the explicit `otherAttractionsLabel` prop, NOT from
@@ -113,14 +87,15 @@ export function LiveParkData({
       defaultValue="attractions"
       showsAvailable={currentPark.shows && currentPark.shows.length > 0}
       restaurantsAvailable={currentPark.restaurants && currentPark.restaurants.length > 0}
+      weatherAvailable={!!currentPark.weather?.current}
       park={currentPark}
-      calendarData={calendarData}
       continent={continent}
       country={country}
       city={city}
       parkSlug={parkSlug}
       landNames={currentLandNames}
       attractionsByLand={currentAttractionsByLand}
+      todayPanel={todayPanel}
     />
   );
 
@@ -144,37 +119,26 @@ export function LiveParkData({
         </Card>
       )}
 
-      {/* Subtle loading indicator during background refetch. Wrapped in a fixed-height slot that is
-          always present, so the indicator appearing/disappearing on every 5-min poll (and on the
-          immediate refetch-on-mount) no longer shifts the status + tabs below it (CLS). */}
-      <div className="mb-4 h-4">
-        {mounted && isFetching && !isError && (
-          <div className="text-muted-foreground flex items-center gap-2 text-xs">
-            <Loader2 className="h-3 w-3 animate-spin" />
-            <span>{t('updating')}</span>
-          </div>
-        )}
-      </div>
-
-      {/* Status, ride-list tabs and best-days are laid out in ONE flex column and reordered per
-          breakpoint via `order`, so the heavy <TabsWithHash> (the full attraction grid for big
-          parks) is rendered + hydrated EXACTLY ONCE. It used to be mounted twice — a mobile copy
-          inside ParkStatus and a `hidden sm:block` desktop copy — and `display:none` does not skip
-          hydration, so every park page paid double the hydration/re-render cost (the dominant
-          mobile-INP source on large parks like PortAventura). `gap-8` gives uniform spacing.
-            mobile : status → tabs → best-days
-            desktop: status → best-days → separator → tabs */}
-      <div className="flex flex-col gap-8">
-        <ParkStatus
-          park={currentPark}
-          variant="detailed"
-          className="order-1"
-          todayCrowdLevel={todayCrowd.level}
-        />
-        <div className="order-2 sm:order-4">{tabsWithHash}</div>
-        {bestDaysSlot && <div className="order-3 sm:order-2">{bestDaysSlot}</div>}
-        <Separator className="order-3 hidden sm:block" />
-      </div>
+      {/* The "wird aktualisiert" indicator used to sit here, in a permanently reserved `mb-4 h-4`
+          slot — 32 px of nothing between the header stack and its own navigation, on every view of
+          every park page, so that the spinner appearing on each 5-minute poll would not shift the
+          tabs. It is in <ParkTodayPanel>'s title row now, beside the park clock: that row exists
+          whether or not anything is fetching, so the indicator costs no height at all and no CLS,
+          and it sits with the live data it is about rather than above the tab bar. The panel reads
+          `isFetching` off the same query key this component polls. */}
+      {/* Just the tiles and the tab body now.
+          The <ParkStatus variant="detailed"> board that used to open this column is gone: every
+          figure on its three cards — occupancy and the vs-typical delta, today's and the live
+          crowd rating, Ø wait, peak, and open-of-total — is now in <ParkTodayPanel> up in the
+          header, and printing them a second time here is what made the page read as two answers
+          to one question. Best-days moved INTO the calendar tab, where it opens the chapter it
+          belongs to; between the header and the tabs it was a ~500px block about a future visit
+          standing in front of the way to everything else.
+          The heavy <TabsWithHash> stays rendered + hydrated EXACTLY ONCE — it used to be mounted
+          twice (a mobile copy inside ParkStatus and a `hidden sm:block` desktop copy) and
+          `display:none` does not skip hydration, which was the dominant mobile-INP source on
+          large parks like PortAventura. */}
+      {tabsWithHash}
     </>
   );
 }

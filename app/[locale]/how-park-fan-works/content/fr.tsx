@@ -156,9 +156,9 @@ const PARK_SECTIONS: AnatomyStep[] = [
   },
   {
     title: 'Vacances scolaires alentour',
-    body: 'Quelles vacances scolaires pèsent aujourd’hui sur ce parc, avec la région correspondante. Y compris celles de l’autre côté de la frontière.',
+    body: 'Quelles vacances scolaires et quels jours fériés pèsent aujourd’hui sur ce parc : d’abord sa propre région, puis les voisines.',
     example:
-      'Aujourd’hui, pour Phantasialand, ce n’est pas la Rhénanie-du-Nord-Westphalie qui compte mais la Gueldre : vacances scolaires là-bas, et la frontière est à 90 kilomètres.',
+      'Pour Phantasialand, les vacances d’été en Rhénanie-du-Nord-Westphalie viennent en premier. La Gueldre suit en dessous, à 90 kilomètres au-delà de la frontière.',
     demo: <AnatomyHolidayDemo />,
     onlyWhen: 'une région de vacances atteint réellement ce parc aujourd’hui.',
   },

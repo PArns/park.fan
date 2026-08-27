@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
+import { useRouter } from '@/i18n/navigation';
 import {
   addDays,
   format,
@@ -11,26 +11,14 @@ import {
   eachDayOfInterval,
   startOfWeek,
   getDay,
-  addMonths,
-  subMonths,
 } from 'date-fns';
 import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
-import {
-  ChevronLeft,
-  ChevronRight,
-  Ban,
-  PartyPopper,
-  Backpack,
-  Calendar,
-  Info,
-  Luggage,
-} from 'lucide-react';
+import { Ban, PartyPopper, Backpack, Calendar, Info, Luggage } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useCalendarData } from '@/lib/hooks/use-calendar-data';
 import { CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
+import { parkCalendarPath, type ParkCalendarMonth } from '@/lib/parks/calendar-segments';
 import type { IntegratedCalendarResponse, ParkWithAttractions } from '@/lib/api/types';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { ParkCalendarDay } from './park-calendar-day';
 import { ParkCalendarDayDetail } from './park-calendar-day-detail';
@@ -44,6 +32,19 @@ interface ParkCalendarGridProps {
   country: string;
   city: string;
   parkSlug: string;
+  /**
+   * The month to show, from the URL. `null` on the calendar hub, which shows today's.
+   *
+   * It used to be component state seeded from `new Date()` and then corrected by an effect that
+   * read `#calendar-2026-04` off the location — a month that lived in a hash, was written with
+   * `replaceState`, and therefore could not be crawled, could not be a search result and did not
+   * answer the back button. It is a path segment now, so the stepper below is two real links and
+   * each month is a page.
+   */
+  month: ParkCalendarMonth | null;
+  /** Neighbouring months, already range-checked by the page — `null` means the stepper stops. */
+  prevMonth: ParkCalendarMonth | null;
+  nextMonth: ParkCalendarMonth | null;
 }
 
 export function ParkCalendarGrid({
@@ -53,10 +54,13 @@ export function ParkCalendarGrid({
   country,
   city,
   parkSlug,
+  month,
+  prevMonth,
+  nextMonth,
 }: ParkCalendarGridProps) {
   const locale = useLocale();
   const parkTimezone = park.timezone ?? 'UTC';
-  const pathname = usePathname();
+  const router = useRouter();
   const t = useTranslations('parks');
   const tAttractions = useTranslations('attractions');
   const tCommon = useTranslations('common');
@@ -72,7 +76,12 @@ export function ParkCalendarGrid({
       nl,
     }[locale as 'de' | 'en' | 'es' | 'fr' | 'it' | 'nl'] || enUS;
 
-  const [currentMonth, setCurrentMonth] = useState(new Date());
+  // Derived from the URL, not held in state. `month` is null only on the hub, where "this month"
+  // is the answer and the browser clock is the right source for it.
+  const currentMonth = useMemo(
+    () => (month ? new Date(month.year, month.month - 1, 1) : new Date()),
+    [month]
+  );
   // Selected day for the click-to-open detail panel (weather / forecast /
   // predictions). Touch-friendly replacement for the old hover-only tooltips.
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
@@ -139,48 +148,19 @@ export function ParkCalendarGrid({
     };
   }, [fetchedCalendarData, initialCalendarData, todayData, todayStr]);
 
-  // Read month from URL hash on mount (e.g., #calendar-2026-01)
-  useEffect(() => {
-    const hash = window.location.hash;
-    const match = hash.match(/^#calendar-(\d{4})-(\d{2})$/);
-    if (match) {
-      const [, year, month] = match;
-      const parsedDate = new Date(parseInt(year), parseInt(month) - 1, 1);
-      if (!isNaN(parsedDate.getTime())) {
-        setTimeout(() => {
-          setCurrentMonth(parsedDate);
-        }, 0);
-        // React Query will automatically fetch when currentMonth changes
-      }
-    } else {
-      // Set hash to current month
-      const monthHash = `calendar-${format(currentMonth, 'yyyy-MM')}`;
-      window.history.replaceState(null, '', `${pathname}#${monthHash}`);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // Only run on mount
+  const monthHref = (m: ParkCalendarMonth | null) =>
+    m ? parkCalendarPath(locale, continent, country, city, parkSlug, m) : null;
 
-  // Handle month navigation
-  const handleMonthChange = (direction: 'next' | 'prev') => {
-    const newMonth = direction === 'next' ? addMonths(currentMonth, 1) : subMonths(currentMonth, 1);
-    setCurrentMonth(newMonth);
-
-    // Update hash when user navigates
-    const monthHash = `calendar-${format(newMonth, 'yyyy-MM')}`;
-    window.history.replaceState(null, '', `${pathname}#${monthHash}`);
-
-    // React Query will automatically fetch when currentMonth changes (from/to change)
-  };
-
-  // Flip a day forward/back from inside the detail dialog. Crossing a month boundary also
-  // navigates the grid month so the target day's data loads — the dialog keeps showing the
-  // previous day dimmed until it lands (see ParkCalendarDayDetail's lastDay retention).
+  // Flip a day forward/back from inside the detail dialog. Crossing a month boundary navigates to
+  // that month's PAGE, because the month is a URL now — the dialog keeps showing the previous day
+  // dimmed until the new month's data lands (see ParkCalendarDayDetail's lastDay retention).
   const handleDayNavigate = (direction: -1 | 1) => {
     if (!selectedDate) return;
     const target = format(addDays(parseISO(selectedDate), direction), 'yyyy-MM-dd');
     setSelectedDate(target);
     if (target.slice(0, 7) !== format(currentMonth, 'yyyy-MM')) {
-      handleMonthChange(direction === 1 ? 'next' : 'prev');
+      const href = monthHref(direction === 1 ? nextMonth : prevMonth);
+      if (href) router.push(href);
     }
   };
 
@@ -276,36 +256,13 @@ export function ParkCalendarGrid({
   today.setHours(0, 0, 0, 0);
 
   return (
-    <Card className="relative p-4 md:p-6">
+    /* No <Card> around this any more: the box lives in `ParkCalendarPanel`, because the month
+       stepper has to be INSIDE it and cannot be inside this component — this is a `ssr: false`
+       import and anything in here is missing from the served HTML, which for two <a> tags means
+       a crawler arriving at one month finds no way to any other. So the panel renders the card,
+       puts the server-rendered stepper in it, and drops this grid in underneath. */
+    <>
       <div className="space-y-4">
-        {/* Header with title and navigation */}
-        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <h2 className="text-2xl font-bold">{t('crowdCalendar')}</h2>
-
-          {/* Month Navigation */}
-          <div className="flex items-center gap-2">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={() => handleMonthChange('prev')}
-              disabled={isLoading}
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </Button>
-            <div className="min-w-[140px] text-center font-semibold">
-              {format(currentMonth, 'MMMM yyyy', { locale: dateLocale })}
-            </div>
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={() => handleMonthChange('next')}
-              disabled={isLoading}
-            >
-              <ChevronRight className="h-4 w-4" />
-            </Button>
-          </div>
-        </div>
-
         {/* Error Message */}
         {error && (
           <div className="rounded-lg border border-red-500 bg-red-50 p-3 dark:bg-red-950/20">
@@ -491,6 +448,6 @@ export function ParkCalendarGrid({
         }}
         onNavigate={handleDayNavigate}
       />
-    </Card>
+    </>
   );
 }

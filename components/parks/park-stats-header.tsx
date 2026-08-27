@@ -18,11 +18,15 @@ import { Skeleton } from '@/components/ui/skeleton';
 export function ParkStatsHeader({
   subtitle,
   hidden = false,
+  className,
 }: {
   /** The data window line. Omitted while the stats query is still out. */
   subtitle?: string;
   /** The guide page and the blog widgets mount the cards without a chapter. */
   hidden?: boolean;
+  /** Passed to `ChapterHeading` — the section squares off the bottom so the panel underneath can
+   *  be glued to it. Skeleton and settled section must pass the same thing. */
+  className?: string;
 }) {
   const t = useTranslations('parks.stats');
   if (hidden) return null;
@@ -34,6 +38,7 @@ export function ParkStatsHeader({
       id="stats-heading"
       frosted
       hint={subtitle ?? <Skeleton as="span" className="block h-4 w-80 max-w-full" />}
+      className={className}
     />
   );
 }

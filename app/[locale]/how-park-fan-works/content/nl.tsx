@@ -156,9 +156,9 @@ const PARK_SECTIONS: AnatomyStep[] = [
   },
   {
     title: 'Vakanties in het verzorgingsgebied',
-    body: 'Welke schoolvakanties vandaag op dit park inwerken, met de bijbehorende regio. Ook die van over de grens.',
+    body: 'Welke schoolvakanties en feestdagen vandaag op dit park inwerken: eerst de eigen regio, daarna de buren.',
     example:
-      'Vandaag telt voor Phantasialand niet Noordrijn-Westfalen maar Gelderland: daar is zomervakantie, en de grens ligt 90 kilometer verderop.',
+      'Bij Phantasialand staat de zomervakantie in Noordrijn-Westfalen bovenaan. Gelderland komt daaronder, 90 kilometer voorbij de grens.',
     demo: <AnatomyHolidayDemo />,
     onlyWhen: 'er vandaag daadwerkelijk een vakantieregio meespeelt.',
   },

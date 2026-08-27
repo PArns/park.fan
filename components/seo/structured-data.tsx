@@ -472,12 +472,29 @@ export function ItemListStructuredData({
 
 export function BreadcrumbStructuredData({
   breadcrumbs,
+  currentPage,
   locale,
 }: {
   breadcrumbs: Breadcrumb[];
+  /**
+   * The page being rendered, as the trail's last item.
+   *
+   * Separate from `breadcrumbs` because the VISIBLE trail already takes it separately —
+   * `BreadcrumbNav` draws it unlinked, as the leaf you are standing on — so a page that hands it
+   * to both would render it twice on screen. Google's examples end the list with the current
+   * page, and every geo, park, ride and calendar page here stopped one level short of it: the
+   * park page's trail ended at „Brühl", the ride page's at „Phantasialand", the calendar's at
+   * „Phantasialand" as well. A breadcrumb rich result for the calendar therefore advertised the
+   * park. The glossary has passed its own leaf all along; this is the rest of the site catching
+   * up.
+   *
+   * The URL is the page's own — the same one its canonical points at.
+   */
+  currentPage?: Breadcrumb;
   locale?: string;
 }) {
   if (!breadcrumbs || breadcrumbs.length === 0) return null;
+  const trail = currentPage ? [...breadcrumbs, currentPage] : breadcrumbs;
 
   const toAbsoluteUrl = (url: string): string => {
     if (url.startsWith('http')) return url;
@@ -492,7 +509,7 @@ export function BreadcrumbStructuredData({
   const data: WithContext<BreadcrumbList> = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: breadcrumbs.map((crumb, index) => ({
+    itemListElement: trail.map((crumb, index) => ({
       '@type': 'ListItem',
       position: index + 1,
       name: crumb.name,

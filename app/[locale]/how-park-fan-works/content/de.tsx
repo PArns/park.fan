@@ -158,9 +158,9 @@ const PARK_SECTIONS: AnatomyStep[] = [
   },
   {
     title: 'Ferien im Einzugsgebiet',
-    body: 'Welche Schulferien heute auf diesen Park wirken, mit der Region dazu. Auch die von jenseits der Grenze.',
+    body: 'Welche Schulferien und Feiertage heute auf diesen Park wirken: zuerst die eigene Region, dann die Nachbarn.',
     example:
-      'Heute zählt für das Phantasialand nicht Nordrhein-Westfalen, sondern Gelderland: dort sind Sommerferien, und die Grenze ist 90 Kilometer weg.',
+      'Im Phantasialand stehen die Sommerferien in Nordrhein-Westfalen zuerst. Gelderland kommt darunter, 90 Kilometer hinter der Grenze.',
     demo: <AnatomyHolidayDemo />,
     onlyWhen: 'heute überhaupt eine Ferienregion hineinspielt.',
   },

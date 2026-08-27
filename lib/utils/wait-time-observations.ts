@@ -1,4 +1,4 @@
-import { getAttractionDisplayStatus } from './park-utils';
+import { getAttractionDisplayStatus, getStandbyWait } from './park-utils';
 import { hasReadableWaitTimes } from './live-wait-times';
 import { isInSeason } from './season';
 import type { ParkAttraction, ParkWithAttractions } from '@/lib/api/types';
@@ -25,12 +25,6 @@ export interface WaitTimeObservation {
   unitCode: 'MIN';
   unitText: string;
   observationDate?: string;
-}
-
-/** STANDBY wait of an attraction, or null when it has none. */
-function getStandbyWait(attraction: ParkAttraction): number | null {
-  const standby = attraction.queues?.find((q) => q.queueType === 'STANDBY');
-  return standby && 'waitTime' in standby ? standby.waitTime : null;
 }
 
 /** `lastUpdated` of the STANDBY queue — per-ride provenance for the reading. */

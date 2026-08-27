@@ -64,6 +64,15 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'parks',
     'share',
   ],
+  '/parks/[continent]/[country]/[city]/[park]/wait-time-calendar/[[...date]]': [
+    'attractions',
+    'favorites',
+    'nearby',
+    'parkCard',
+    'parks',
+    'seo.faq',
+    'share',
+  ],
   '/search': [],
   '/ui': ['attractions', 'favorites', 'nearby', 'parkCard', 'parks', 'stats'],
 } as const;
