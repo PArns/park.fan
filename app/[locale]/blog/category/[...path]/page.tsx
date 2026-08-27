@@ -28,6 +28,7 @@ import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import type { Breadcrumb } from '@/lib/api/types';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { RouteMessages } from '@/i18n/route-messages';
+import { blogFeedAlternates } from '@/lib/blog/feed';
 
 interface CategoryPageProps {
   params: Promise<{ locale: string; path: string[] }>;
@@ -77,6 +78,11 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
         ...generateAlternateLanguages((l) => `/${l}/blog/category/${fullPath}`),
         'x-default': `${SITE_URL}/en/blog/category/${fullPath}`,
       },
+      // The one blog listing that never had this. There is no per-category feed
+      // — three categories over seven posts would mostly be one post at a
+      // second URL — so a category page points at the locale's feed, which is
+      // also what the autodiscovery spec asks for: one link, the main feed.
+      types: blogFeedAlternates(locale as Locale),
     },
   };
 }

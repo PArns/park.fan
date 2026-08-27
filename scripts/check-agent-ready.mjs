@@ -207,6 +207,92 @@ check(
     bestDays.days.every((d) => /^\d{4}-\d{2}-\d{2}$/.test(d.date))
 );
 
+// ── the blog feed ───────────────────────────────────────────────────────────
+// A feed has no reader inside the site either. Nothing on park.fan renders it, so it can lose
+// its autodiscovery link, start serving HTML, or quietly drop every item's body through a green
+// build — and the first symptom would be a subscriber's client showing nothing new for weeks.
+const FEED_LOCALES = ['en', 'de', 'fr', 'it', 'nl', 'es'];
+
+for (const locale of FEED_LOCALES) {
+  const feed = await get(`/${locale}/blog/feed.xml`);
+  check(
+    `${locale} feed serves as RSS`,
+    feed.status === 200 && feed.type.startsWith('application/rss+xml'),
+    `${feed.status} ${feed.type}`
+  );
+  if (feed.status !== 200) continue;
+
+  const items = feed.text.match(/<item>/g)?.length ?? 0;
+  check(`${locale} feed carries items`, items > 0, `${items} items`);
+
+  // The feed has to name itself, or a hub and an aggregator that found it by some other route
+  // cannot tell which document they are subscribed to.
+  check(
+    `${locale} feed names itself`,
+    feed.text.includes(`href="https://park.fan/${locale}/blog/feed.xml" rel="self"`)
+  );
+
+  // Declared once and pinged daily by /api/cron/websub. Drop the declaration and subscribers
+  // silently fall back to polling; drop the ping and the hub never learns anything changed.
+  check(`${locale} feed declares a WebSub hub`, /rel="hub"/.test(feed.text));
+
+  // The whole point of the full-text feed: an item that lost its body is an item that reads as
+  // a teaser, and nothing on the site would show it.
+  const bodies = feed.text.match(/<content:encoded>/g)?.length ?? 0;
+  check(`${locale} feed ships full posts`, bodies === items, `${bodies}/${items} with a body`);
+
+  // A frozen wait-time table in a subscriber's archive is wrong forever, which is the same
+  // reason the posts hold widget fences rather than typed numbers.
+  check(`${locale} feed froze no live widget`, !feed.text.includes('-widget'));
+
+  // `ref:` is a protocol only this app resolves; in a reader it is a dead link.
+  check(
+    `${locale} feed left no unresolved entity link`,
+    !/href="(ref|park|attraction):/.test(feed.text)
+  );
+
+  // RSS requires a byte count on an enclosure, and this feed answered 0 for every cover until
+  // the length was measured off the file.
+  const lengths = [...feed.text.matchAll(/<enclosure [^>]*length="(\d+)"/g)].map((m) =>
+    Number(m[1])
+  );
+  check(
+    `${locale} feed sizes its enclosures`,
+    lengths.length > 0 && lengths.every((n) => n > 0),
+    `${lengths.filter((n) => n > 0).length}/${lengths.length} measured`
+  );
+}
+
+// Autodiscovery: the only standardized route from a page to its feed. Every one of these pages
+// declares its own `alternates`, and Next replaces a layout's rather than merging into it — so
+// this cannot be covered once centrally, and the category pages were missing it for exactly
+// that reason.
+const FEED_LINKED_PAGES = [
+  ['/en', 'homepage'],
+  ['/en/blog', 'blog index'],
+  ['/en/blog/category/guides', 'category page'],
+  ['/en/blog/tag/wait-times', 'tag page'],
+];
+for (const [path, label] of FEED_LINKED_PAGES) {
+  const page = await get(path);
+  check(
+    `${label} links its feed from the head`,
+    page.status === 200 &&
+      /<link rel="alternate" type="application\/rss\+xml" href="https:\/\/park\.fan\/en\/blog\/feed\.xml"/.test(
+        page.text
+      ),
+    page.status === 200 ? undefined : String(page.status)
+  );
+}
+
+// The path a person types when guessing.
+const rssShortcut = await get('/rss.xml');
+check(
+  '/rss.xml points at a real feed',
+  rssShortcut.status >= 300 && rssShortcut.status < 400,
+  String(rssShortcut.status)
+);
+
 console.log(
   failures === 0 ? '\nAll agent-readiness checks passed.' : `\n${failures} check(s) failed.`
 );

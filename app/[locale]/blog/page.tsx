@@ -18,6 +18,7 @@ import { Hero } from '@/components/marketing/editorial-ui';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { RouteMessages } from '@/i18n/route-messages';
+import { blogFeedAlternates } from '@/lib/blog/feed';
 
 /** Scenic establishing shot for the blog hero (distinct from Fancast/the hub). */
 // Asked of the database, so the path carries its content version and the park can
@@ -79,9 +80,7 @@ export async function generateMetadata({ params }: BlogIndexPageProps): Promise<
         ...generateAlternateLanguages((l) => `/${l}/blog`),
         'x-default': `${SITE_URL}/en/blog`,
       },
-      types: {
-        'application/rss+xml': `${SITE_URL}/${locale}/blog/feed.xml`,
-      },
+      types: blogFeedAlternates(locale as Locale),
     },
     robots: {
       index: true,

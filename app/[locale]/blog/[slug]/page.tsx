@@ -37,6 +37,7 @@ import { PreferredSourcePrompt } from '@/components/common/preferred-source-prom
 import { categoryPathBreadcrumbs, resolveCategoryLabel } from '@/lib/blog/categories';
 import type { Breadcrumb } from '@/lib/api/types';
 import { RouteMessages } from '@/i18n/route-messages';
+import { blogFeedAlternates } from '@/lib/blog/feed';
 
 interface BlogPostPageProps {
   params: Promise<{ locale: string; slug: string }>;
@@ -152,9 +153,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
         ...alternates,
         'x-default': alternates['en'] ?? localeUrl,
       },
-      types: {
-        'application/rss+xml': `${SITE_URL}/${locale}/blog/feed.xml`,
-      },
+      types: blogFeedAlternates(locale as Locale),
     },
     robots: {
       index: seoIndex,

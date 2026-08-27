@@ -23,6 +23,7 @@
     "generate:message-chunks": "node scripts/generate-message-chunks.mjs",
     "generate:blog-manifest": "node scripts/generate-blog-manifest.mjs",
     "og:preview": "node scripts/render-og.mjs",
+    "ping:websub": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/ping-websub.mjs",
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
