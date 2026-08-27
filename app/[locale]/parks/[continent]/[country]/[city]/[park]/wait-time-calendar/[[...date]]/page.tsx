@@ -127,7 +127,7 @@ export async function generateMetadata({ params }: ParkCalendarPageProps): Promi
   // `fitWithin` takes the limit first and then candidates longest-preferred: the short title is
   // the fallback for a park name that pushes the full one past 60 characters. A month page is
   // written for a different query from the hub's — "phantasialand september 2026" rather than
-  // "phantasialand andrangskalender" — so it gets its own pair rather than the hub's with a
+  // "phantasialand wartezeiten kalender" — so it gets its own pair rather than the hub's with a
   // month appended.
   const title = month
     ? fitWithin(
@@ -160,7 +160,7 @@ export async function generateMetadata({ params }: ParkCalendarPageProps): Promi
   const path = (l: string, m: ParkCalendarMonth | null) =>
     parkCalendarPath(l, continent, country, city, parkSlug, m ?? undefined);
 
-  // The hub shows the current month, so `/andrangskalender` and `/andrangskalender/2026/8` are the
+  // The hub shows the current month, so `/wartezeiten-kalender` and `/wartezeiten-kalender/2026/8` are the
   // same page in August — and the next month's "previous" arrow links straight at the second one.
   // The hub is the one that keeps working when the month turns over, so it is canonical for both;
   // every OTHER month is canonical for itself.
@@ -174,7 +174,7 @@ export async function generateMetadata({ params }: ParkCalendarPageProps): Promi
     description,
     alternates: {
       canonical,
-      // Each locale gets its OWN segment (`/de/…/andrangskalender`, `/fr/…/calendrier-affluence`),
+      // Each locale gets its OWN segment (`/de/…/wartezeiten-kalender`, `/fr/…/calendrier-temps-attente`),
       // not the canonical English folder — the localized URL is what the rewrite serves and what a
       // reader sees. The month rides along unchanged: a month is a number in every language.
       languages: {
@@ -297,7 +297,7 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   );
 
   return (
-    <RouteMessages route="/parks/[continent]/[country]/[city]/[park]/crowd-calendar/[[...date]]">
+    <RouteMessages route="/parks/[continent]/[country]/[city]/[park]/wait-time-calendar/[[...date]]">
       <ParkPageShell
         park={park}
         seasons={seasons}
@@ -415,7 +415,7 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
 }
 
 /**
- * The part of this URL after the park — `/andrangskalender` or `/andrangskalender/2026/9` — for
+ * The part of this URL after the park — `/wartezeiten-kalender` or `/wartezeiten-kalender/2026/9` — for
  * the redirects that rebuild it under a park's new geo path. Built from `parkCalendarPath` with
  * throwaway geo segments rather than reassembled by hand, so the two can never disagree about
  * how a month is spelled.

@@ -1,41 +1,40 @@
 import type { Locale } from '@/i18n/config';
 
 /**
- * Locale → localized URL segment for a park's crowd calendar, and the month URLs under it.
+ * Locale → localized URL segment for a park's wait-time calendar, and the month URLs under it.
  *
  * The calendar used to be `#calendar` on the park page — a tab whose content was mounted lazily,
  * whose URL was written with `history.replaceState` and whose month stepper wrote
  * `#calendar-2026-04`. A hash is not a page: it cannot be crawled, cannot carry its own title or
  * description, cannot be linked to from a search result, and `replaceState` means the back button
  * does not undo it. A park's "when should I go" is a question with its own answer, so it gets its
- * own URL — and so does each month of it: `/parks/<geo>/<park>/andrangskalender/2026/9`.
+ * own URL — and so does each month of it: `/parks/<geo>/<park>/wartezeiten-kalender/2026/9`.
  *
  * Same mechanism as the glossary, the best-travel-time hub and the guide: the canonical route
  * folder is the English slug and the other five locales are served on it via a rewrite in
  * `next.config.ts`.
  *
  * The segment sits in the same position as an attraction slug, so a ride slugged
- * `andrangskalender` would be shadowed by this route — Next matches the static segment before
+ * `wartezeiten-kalender` would be shadowed by this route — Next matches the static segment before
  * `[attraction]`. No ride in the catalogue is, and these six words are not ride names in any
  * language; it is written down here because the next person to add a park sub-page needs the rule.
  *
- * The URL segment and the H1 say `Andrangskalender`, because that is what the page shows: a crowd
- * level per day, with opening hours, weather and holidays behind it.
+ * The page is called the WAIT-TIME calendar everywhere — URL, tile, H1, breadcrumb and meta
+ * title. It went out as „Andrangskalender" first, on the reasoning that a crowd level per day is
+ * what the grid actually draws; the trouble is that nobody arrives searching for it. A visitor
+ * comes from a wait-time page with a wait-time question, and the calendar answers it a day at a
+ * time — so the name is the one they came with, and the crowd level is what it is measured in.
  *
- * The TILE in the header row says `Wartezeiten-Kalender` instead, and the difference is deliberate.
- * The two words are read at different moments: on the calendar page the heading answers „what am I
- * looking at", where „Andrang" is the accurate word; in the tile row it answers „where does this
- * take me" from a park page about wait times, and „Wartezeiten-Kalender" is the phrase a visitor
- * came with. The label lives in `parks.tileCalendarLabel` and is the only place the two part ways
- * — meta title, description and intro carry both terms anyway.
+ * One name in one place: a URL, a tile and a heading that say three things are three things to
+ * remember and three chances to say the wrong one.
  */
 export const PARK_CALENDAR_SEGMENTS: Record<Locale, string> = {
-  en: 'crowd-calendar',
-  de: 'andrangskalender',
-  fr: 'calendrier-affluence',
-  it: 'calendario-affluenza',
-  nl: 'drukte-kalender',
-  es: 'calendario-afluencia',
+  en: 'wait-time-calendar',
+  de: 'wartezeiten-kalender',
+  fr: 'calendrier-temps-attente',
+  it: 'calendario-tempi-attesa',
+  nl: 'wachttijden-kalender',
+  es: 'calendario-tiempos-espera',
 };
 
 /** The canonical route-folder segment (English), what the app router matches. */
@@ -43,7 +42,7 @@ export const PARK_CALENDAR_CANONICAL_SEGMENT = PARK_CALENDAR_SEGMENTS.en;
 
 /**
  * Locale-relative path to a park's calendar, e.g.
- * `/parks/europe/germany/bruehl/phantasialand/andrangskalender`, optionally for one month.
+ * `/parks/europe/germany/bruehl/phantasialand/wartezeiten-kalender`, optionally for one month.
  *
  * Locale-RELATIVE because every link to it goes through `@/i18n/navigation`'s `Link`, which
  * prefixes the locale itself. Pass the same geo segments the park page was rendered with.
@@ -93,7 +92,7 @@ export interface ParkCalendarMonth {
  *
  * Three outcomes, and the caller has to tell them apart: `null` means "no month given" (the hub),
  * a month object means a valid one, and `'invalid'` means the segments were there and wrong —
- * which is a 404, not a silent fall back to the hub. `/andrangskalender/2026/13` is somebody's
+ * which is a 404, not a silent fall back to the hub. `/wartezeiten-kalender/2026/13` is somebody's
  * typo or a crawler probing, and answering it with the current month would put the same content
  * on unbounded URLs.
  *

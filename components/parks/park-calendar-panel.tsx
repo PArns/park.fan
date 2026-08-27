@@ -65,7 +65,7 @@ export function ParkCalendarPanel({
   /**
    * The URL for a month — and the hub's URL for the CURRENT month, deliberately.
    *
-   * `/andrangskalender` and `/andrangskalender/2026/8` render the same grid in August, so the
+   * `/wartezeiten-kalender` and `/wartezeiten-kalender/2026/8` render the same grid in August, so the
    * current month has two addresses. The route's canonical already points the month one at the
    * hub, which is what a crawler needs; this stops the app from minting the duplicate in the
    * first place. Without it, stepping back from September landed on `/2026/8` — a page whose own

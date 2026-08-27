@@ -28,7 +28,7 @@ const ALL_SEGMENTS = new Set(Object.values(PARK_CALENDAR_SEGMENTS));
  * Which means it has to cut the path back to the park first. The FAQ is part of the shared park
  * shell, so it renders ON the calendar pages too, where the path already ends in the calendar
  * segment and possibly a month: appending blindly produced
- * `…/andrangskalender/andrangskalender` and `…/2026/9/andrangskalender`, both of which the month
+ * `…/wartezeiten-kalender/wartezeiten-kalender` and `…/2026/9/wartezeiten-kalender`, both of which the month
  * parser rejects — a 404 from the FAQ of every calendar page of every park in every locale.
  */
 export function CrowdCalendarFaqLink({
