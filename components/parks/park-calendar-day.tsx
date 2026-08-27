@@ -15,6 +15,7 @@ import {
 import type { CalendarDay } from '@/lib/api/types';
 import { Card } from '@/components/ui/card';
 import { useTranslations, useLocale } from 'next-intl';
+import { translateHolidayName } from '@/lib/utils/holiday-names';
 import { Temp } from '@/components/common/unit-display';
 import { format, parseISO } from 'date-fns';
 import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
@@ -84,14 +85,15 @@ function ParkCalendarDayComponent({
       return {
         Icon: PartyPopper,
         color: 'text-orange-500 dark:text-orange-400',
-        label: holiday?.name || t('holiday'),
+        label: translateHolidayName(holiday?.name, locale) || t('holiday'),
       };
     }
     if (day.isSchoolHoliday || day.isSchoolVacation) {
+      const schoolHoliday = day.events?.find((e) => e.type === 'school-holiday');
       return {
         Icon: Backpack,
         color: 'text-yellow-500 dark:text-yellow-400',
-        label: t('schoolVacation'),
+        label: translateHolidayName(schoolHoliday?.name, locale) || t('schoolVacation'),
       };
     }
     if (day.isBridgeDay) {

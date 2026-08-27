@@ -643,6 +643,8 @@
     "localTime": "local time",
     "influencingHolidays": "Holidays in nearby regions",
     "influencingHolidaysBody": "School holidays are on there right now, sending plenty of day visitors this way. Expect bigger crowds and longer waits than usual.",
+    "influencingHolidaysEffect": "School holidays there, so more day visitors than usual.",
+    "influencingHolidaysShort": "Nearby regions",
     "stats": {
       "title": "Historical Wait Time Statistics",
       "subtitle": "Based on {days} days of recorded data · Last {years} years",

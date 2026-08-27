@@ -10,6 +10,11 @@ import { getParkWeatherNowcastFresh } from '@/lib/api/weather-nowcast';
 import { getParkHistoricalStats, getParkHourlyProfile } from '@/lib/api/stats';
 import { enrichAttractionsWithImages } from '@/lib/utils/park-assets';
 import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
+import {
+  applyNowcastSimulation,
+  applyParkSimulation,
+  parseParkSimulation,
+} from '@/lib/parks/park-simulation';
 
 export async function GET(
   request: NextRequest,
@@ -32,9 +37,17 @@ export async function GET(
         return NextResponse.json({ error: 'Park not found' }, { status: 404 });
       }
 
+      // Dev/preview `?state=` — the same scenarios the page applied to the server render. It has
+      // to happen here too: `weather` IS in the projection below, so without this the first poll
+      // would quietly wash a simulated warning off a page that was rendered with one.
+      const simulated = applyParkSimulation(
+        parkData,
+        parseParkSimulation(request.nextUrl.searchParams.get('state'))
+      );
+
       // Only the fields that can change between two polls — the client lays them back over the
       // park it was server-rendered with (see leanParkForLivePoll / mergeLiveParkSnapshot).
-      const snapshot = leanParkForLivePoll(parkData);
+      const snapshot = leanParkForLivePoll(simulated);
 
       // Attach each ride's photo and focal point here, on the server. The park page's
       // attraction grid is a Client Component fed by this poll, so resolving them in
@@ -259,7 +272,10 @@ export async function GET(
       // Fresh fetch: this is the live poll path, so we don't compound our own caches on top
       // of the upstream CDN (that froze the banner / hid the update countdown). A small shared
       // CDN window keeps repeated polls off the backend without re-introducing stale data.
-      const data = await getParkWeatherNowcastFresh(continent, country, city, park);
+      const data = applyNowcastSimulation(
+        await getParkWeatherNowcastFresh(continent, country, city, park),
+        parseParkSimulation(request.nextUrl.searchParams.get('state'))
+      );
 
       if (!data) {
         return NextResponse.json({ error: 'Nowcast not available' }, { status: 404 });

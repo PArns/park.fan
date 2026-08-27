@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { addDays, format, parseISO } from 'date-fns';
-import { CalendarDays, ChevronRight, Clock, Crown, Sparkles, Users } from 'lucide-react';
+import { ChevronRight, Clock, Crown, Sparkles, Users } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { useCalendarData } from '@/lib/hooks/use-calendar-data';
@@ -13,14 +13,13 @@ import { useTodaySchedule } from '@/lib/hooks/use-today-schedule';
 import { ParkStatusBadge } from './park-status-badge';
 import { ParkCalendarDayDetail } from './park-calendar-day-detail';
 import { CrowdLevelBadge } from './crowd-level-badge';
-import { HeaderHolidayPanel } from './header-holiday-panel';
+import { ParkHolidayRow } from './park-holiday-row';
 import { WeatherWarningBanner } from './weather-warning-banner';
 import { WeatherNowcastBanner } from './weather-nowcast-banner';
 import { ParkTimeRange } from '@/components/common/park-time';
 import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { LocalTime } from '@/components/ui/local-time';
 import { Progress } from '@/components/ui/progress';
-import { Badge } from '@/components/ui/badge';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { formatDurationShort } from '@/lib/i18n/time';
@@ -286,41 +285,6 @@ export function ParkTodayPanel({
         .join(' · '),
     };
   }, [park.weather, nowcast, tWeather]);
-
-  // Local holiday context — the chips that used to sit under the stats board. Neighbouring-region
-  // breaks are NOT here: <HeaderHolidayPanel> owns that story in the row below, and a duplicate
-  // chip for the same fact in two rows of one panel is worse than either alone.
-  const holidayBadges = sched.holiday
-    ? [
-        sched.holiday.publicHolidayName && (
-          <Badge
-            key="public"
-            variant="outline"
-            className="border-orange-300 bg-orange-50 text-xs dark:border-orange-800 dark:bg-orange-950/50 dark:text-orange-300"
-          >
-            🎉 {sched.holiday.publicHolidayName}
-          </Badge>
-        ),
-        sched.holiday.isBridgeDay && (
-          <Badge
-            key="bridge"
-            variant="outline"
-            className="border-blue-300 bg-blue-50 text-xs dark:border-blue-800 dark:bg-blue-950/50 dark:text-blue-300"
-          >
-            🌉 {t('bridgeDay')}
-          </Badge>
-        ),
-        sched.holiday.isSchoolVacation && (
-          <Badge
-            key="vacation"
-            variant="outline"
-            className="border-yellow-300 bg-yellow-50 text-xs dark:border-yellow-800 dark:bg-yellow-950/50 dark:text-yellow-300"
-          >
-            🎒 {t('schoolVacation')}
-          </Badge>
-        ),
-      ].filter(Boolean)
-    : [];
 
   const handleDetailNavigate = (direction: -1 | 1) => {
     setDetailDate((prev) => {
@@ -724,31 +688,17 @@ export function ParkTodayPanel({
         className="border-border/50 space-y-0 border-t px-5 py-2.5 empty:hidden"
       />
 
-      {/* Holiday context — the "why is it so busy" behind the forecast. The local chips (public
-          holiday, bridge day, school break) sit beside the neighbouring-region panel rather than
-          in a band of their own: they answer the same question and the template puts them on one
-          line. Both halves collapse to nothing out of season, so the row can be empty and is
-          hidden when it is. */}
-      {holidayBadges.length > 0 && (
-        <div className="border-border/50 flex flex-wrap items-center gap-x-3 gap-y-2 border-t px-5 py-2.5">
-          <span className="text-muted-foreground flex shrink-0 items-center gap-1.5 text-[10px] font-semibold tracking-[0.08em] uppercase">
-            <CalendarDays className="h-3 w-3" aria-hidden="true" />
-            {t('holidaysLabel')}
-          </span>
-          {holidayBadges}
-        </div>
-      )}
-
-      {/* The neighbouring-region panel keeps its own row: it carries a caption and a sentence of
-          its own, so folding it into the chip row above would print two captions side by side.
-          Renders nothing when no influencing holidays apply. */}
-      <HeaderHolidayPanel
+      {/* Holiday context — the "why is it so busy" behind the forecast. One band now: this used
+          to be a grey chip row for the park's own state followed by a much louder amber panel for
+          the neighbouring ones, which put the emphasis on the wrong region. Renders nothing when
+          neither half has anything to say. */}
+      <ParkHolidayRow
         initialData={initialData}
         continent={continent}
         country={country}
         city={city}
         parkSlug={parkSlug}
-        className="border-border/50 border-t px-5 py-2.5"
+        className="border-border/50 border-t px-5 py-3 empty:hidden"
       />
 
       <ParkCalendarDayDetail

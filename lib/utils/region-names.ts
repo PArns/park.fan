@@ -132,3 +132,48 @@ export function getRegionLabel(
   }
   return getCountryName(countryCode, locale);
 }
+
+/**
+ * Country URL slug → ISO 3166-1 alpha-2, for the 23 countries the catalogue covers.
+ *
+ * The park payload names its country ("Germany") and its state ("Nordrhein-Westfalen", `NW`) but
+ * carries no country code, and the code is what {@link countryFlagEmoji} and every holiday-source
+ * comparison are keyed by. The code IS available from `/v1/discovery/continents` — which is a
+ * fetch, served to the header from the data cache, and not something a park page should acquire a
+ * dependency on to draw one flag.
+ *
+ * Generated from that endpoint rather than typed by hand, and it is a closed set: a park in a new
+ * country reaches this table via `parks/<continent>/<country>/…`, so an unlisted slug returns null
+ * and the caller drops the flag instead of rendering a wrong one.
+ */
+const COUNTRY_SLUG_CODES: Record<string, string> = {
+  australia: 'AU',
+  austria: 'AT',
+  belgium: 'BE',
+  brazil: 'BR',
+  canada: 'CA',
+  china: 'CN',
+  denmark: 'DK',
+  france: 'FR',
+  germany: 'DE',
+  'hong-kong': 'HK',
+  italy: 'IT',
+  japan: 'JP',
+  malaysia: 'MY',
+  mexico: 'MX',
+  netherlands: 'NL',
+  poland: 'PL',
+  'saudi-arabia': 'SA',
+  singapore: 'SG',
+  'south-korea': 'KR',
+  spain: 'ES',
+  sweden: 'SE',
+  'united-kingdom': 'GB',
+  'united-states': 'US',
+};
+
+/** ISO country code for a country URL slug, or null when the slug is not in the catalogue. */
+export function countryCodeForSlug(slug: string | null | undefined): string | null {
+  if (!slug) return null;
+  return COUNTRY_SLUG_CODES[slug.toLowerCase()] ?? null;
+}

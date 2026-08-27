@@ -643,6 +643,8 @@
     "localTime": "heure locale",
     "influencingHolidays": "Vacances dans les régions voisines",
     "influencingHolidaysBody": "Ces régions sont en vacances scolaires : beaucoup de visiteurs à la journée viennent de là. Attends-toi à plus d'affluence et des files plus longues que d'habitude.",
+    "influencingHolidaysEffect": "Vacances scolaires là-bas : plus de visiteurs à la journée.",
+    "influencingHolidaysShort": "Régions voisines",
     "stats": {
       "title": "Statistiques historiques des temps d'attente",
       "subtitle": "Basé sur {days} jours de données enregistrées · {years} dernières années",

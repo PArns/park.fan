@@ -8,7 +8,7 @@ import type {
 } from '@/lib/api/types';
 
 import { ParkTimeInfo } from '@/components/parks/park-time-info';
-import { HeaderHolidayPanel } from '@/components/parks/header-holiday-panel';
+import { ParkHolidayRow } from '@/components/parks/park-holiday-row';
 import { ParkPurchasesCard } from '@/components/parks/park-purchases-card';
 import { AttractionCard } from '@/components/parks/attraction-card';
 import { ParkCalendarDay } from '@/components/parks/park-calendar-day';
@@ -65,6 +65,10 @@ function todaySchedule(nowMs: number): ScheduleItem {
     purchases: null,
     isHoliday: true,
     holidayName: 'Summer Holidays',
+    // The API sends `holidayType` and `isHoliday` together, and this is the pair that used to
+    // print a school break behind the public holiday's party-popper: without the type, `isHoliday`
+    // alone says nothing about which of the two this is.
+    holidayType: 'school',
     isSchoolHoliday: true,
     isPublicHoliday: false,
     influencingHolidays: [
@@ -96,9 +100,15 @@ export async function AnatomyHolidayDemo() {
     nextSchedule: null,
     status: 'OPERATING',
     hasOperatingSchedule: true,
+    // The row names the park's own region beside the local chips, so the fixture has to carry one
+    // — without it the demo would show the neighbouring half alone, which is the imbalance this
+    // row exists to fix.
+    region: 'Nordrhein-Westfalen',
+    country: 'Germany',
   } as unknown as ParkWithAttractions;
-  // No geo props: the panel then renders from the seed and polls nothing.
-  return <HeaderHolidayPanel initialData={park} />;
+  // `country` is the URL slug, which is what the flag is resolved from; no other geo prop, so the
+  // row renders from the seed and polls nothing.
+  return <ParkHolidayRow initialData={park} country="germany" />;
 }
 
 /** 06 — paid skip-the-line day prices. Disney only, so the fixture is a Disney one. */

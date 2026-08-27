@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useCallback } from 'react';
 import { mergeLiveParkSnapshot, type LiveParkSnapshot } from '@/lib/api/parks';
+import { readParkSimulationParam } from '@/lib/parks/park-simulation';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
 interface UseLiveParkDataParams {
@@ -45,12 +46,20 @@ export function useLiveParkData({
     [initialData]
   );
 
+  // Dev/preview only, `null` everywhere else (see `lib/parks/park-simulation.ts`). It is part of
+  // the query key so a simulated snapshot and the real one can never share a cache entry.
+  const simState =
+    typeof window !== 'undefined' ? readParkSimulationParam(window.location.search) : null;
+
   return useQuery<LiveParkSnapshot, Error, ParkWithAttractions>({
-    queryKey: ['park-live', continent, country, city, parkSlug],
+    queryKey: ['park-live', continent, country, city, parkSlug, simState],
     queryFn: async () => {
-      const response = await fetch(`/api/parks/${continent}/${country}/${city}/${parkSlug}`, {
-        cache: 'no-store',
-      });
+      const url = new URL(
+        `/api/parks/${continent}/${country}/${city}/${parkSlug}`,
+        window.location.origin
+      );
+      if (simState) url.searchParams.set('state', simState);
+      const response = await fetch(url, { cache: 'no-store' });
 
       if (!response.ok) {
         throw new Error(`Failed to fetch park: ${response.statusText}`);

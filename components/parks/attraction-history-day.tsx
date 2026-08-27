@@ -7,7 +7,8 @@ import { CrowdLevelBadge } from './crowd-level-badge';
 import { HourlyP90Sparkline } from './hourly-p90-sparkline';
 import { NeighborHolidaysMarker } from './neighbor-holidays-marker';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+import { translateHolidayName } from '@/lib/utils/holiday-names';
 
 export interface DayDataProps {
   dateStr: string;
@@ -28,6 +29,7 @@ export function AttractionHistoryDay({ day }: AttractionHistoryDayProps) {
   const t = useTranslations('attractions');
   const tCommon = useTranslations('common');
   const tParks = useTranslations('parks');
+  const locale = useLocale();
   const { historyData } = day;
 
   // Neighbouring regions on school break that day — the same signal the park calendar carries,
@@ -68,13 +70,18 @@ export function AttractionHistoryDay({ day }: AttractionHistoryDayProps) {
       return {
         Icon: PartyPopper,
         color: 'text-orange-500 dark:text-orange-400',
-        tooltip: day.scheduleData?.holidayName || tParks('holiday'),
+        tooltip: translateHolidayName(day.scheduleData?.holidayName, locale) || tParks('holiday'),
       };
     } else if (day.scheduleData?.isSchoolHoliday || day.scheduleData?.isSchoolVacation) {
       return {
         Icon: Backpack,
         color: 'text-yellow-500 dark:text-yellow-400',
-        tooltip: tParks('schoolVacation'),
+        // A school break that arrived with `isHoliday` set carries its name in `holidayName`, so
+        // the tooltip can say "Sommerferien" rather than the generic word.
+        tooltip:
+          (day.scheduleData?.holidayType === 'school'
+            ? translateHolidayName(day.scheduleData?.holidayName, locale)
+            : '') || tParks('schoolVacation'),
       };
     } else if (day.scheduleData?.isBridgeDay) {
       return {

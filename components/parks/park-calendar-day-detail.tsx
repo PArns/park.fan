@@ -35,6 +35,7 @@ import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { ParkTimeRange } from '@/components/common/park-time';
 import { Temp } from '@/components/common/unit-display';
 import { getRegionLabel, getCountryName, countryFlagEmoji } from '@/lib/utils/region-names';
+import { translateHolidayName } from '@/lib/utils/holiday-names';
 import {
   getEventIcon,
   getWeatherIconFromCode,
@@ -176,18 +177,23 @@ export function ParkCalendarDayDetail({
   // Local holiday chips (public / school / bridge).
   const localChips: { icon: typeof PartyPopper; label: string; className: string }[] = [];
   if (day.isHoliday || day.isPublicHoliday) {
+    // The API names holidays in English only, so the name goes through the locale table before it
+    // reaches a chip on a German page — same rule as the header row.
     const name = day.events?.find((e) => e.type === 'holiday')?.name;
     localChips.push({
       icon: PartyPopper,
-      label: name || t('holiday'),
+      label: translateHolidayName(name, locale) || t('holiday'),
       className:
         'border-orange-400/60 bg-orange-50/60 text-orange-700 dark:border-orange-500/40 dark:bg-orange-950/30 dark:text-orange-300',
     });
   }
   if (day.isSchoolHoliday || day.isSchoolVacation) {
+    // The break's own name when the day's events carry one ("Sommerferien"), the generic word
+    // otherwise. `school-holiday` is the event type the calendar sends for it.
+    const schoolName = day.events?.find((e) => e.type === 'school-holiday')?.name;
     localChips.push({
       icon: Backpack,
-      label: t('schoolVacation'),
+      label: translateHolidayName(schoolName, locale) || t('schoolVacation'),
       className:
         'border-yellow-400/60 bg-yellow-50/60 text-yellow-700 dark:border-yellow-500/40 dark:bg-yellow-950/30 dark:text-yellow-300',
     });

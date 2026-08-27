@@ -156,9 +156,9 @@ const PARK_SECTIONS: AnatomyStep[] = [
   },
   {
     title: 'School holidays in range',
-    body: 'Which school holidays are acting on this park today, and the region each one belongs to. Including the ones across the border.',
+    body: 'Which school holidays and public holidays are acting on this park today: its own region first, then the neighbours.',
     example:
-      'Today the entry that counts for Phantasialand is not North Rhine-Westphalia but Gelderland: school holidays there, and the border is 90 kilometres away.',
+      'For Phantasialand the summer break in North Rhine-Westphalia comes first. Gelderland sits underneath it, 90 kilometres past the border.',
     demo: <AnatomyHolidayDemo />,
     onlyWhen: 'a holiday region actually reaches this park today.',
   },

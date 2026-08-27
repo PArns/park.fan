@@ -66,6 +66,8 @@ import { groupAttractionsByLand } from '@/lib/utils/park-utils';
 import { generateParkBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { RouteMessages } from '@/i18n/route-messages';
+import { applyParkSimulation, parseParkSimulation } from '@/lib/parks/park-simulation';
+import { ParkSimulationNotice } from '@/components/parks/park-simulation-notice';
 
 interface ParkPageProps {
   params: Promise<{
@@ -75,6 +77,10 @@ interface ParkPageProps {
     city: string;
     park: string;
   }>;
+  /** Only `?state=` is read, and only off production — the dev/preview park-state simulation
+   *  (`lib/parks/park-simulation.ts`). `generateMetadata` deliberately does not take it: a
+   *  simulated page must never produce different metadata from the real one. */
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }
 
 // FULLY DYNAMIC (force-dynamic) — rendered per request, so NO per-URL ISR shell write across the
@@ -208,8 +214,9 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
 // seeds from the data-cached calendar (timeout-guarded, see below). The LIVE values and the
 // historical stats stay CLIENT-loaded (React Query → CDN-cached /api routes) and trickle in
 // behind the SSR content, so their cold/slow fetches never block this page's TTFB.
-export default async function ParkPage({ params }: ParkPageProps) {
+export default async function ParkPage({ params, searchParams }: ParkPageProps) {
   const { locale, continent, country, city, park: parkSlug } = await params;
+  const simScenarios = parseParkSimulation((await searchParams)?.state as string | undefined);
   assertServableRoute(locale, continent, country, city, parkSlug);
   setRequestLocale(locale);
 
@@ -248,7 +255,10 @@ export default async function ParkPage({ params }: ParkPageProps) {
   // per-attraction fields only the ride page renders (typicalWaits, rideProfile) — ~11 KB of this
   // park's 33 KB attraction list that nothing here reads. The live poll returns them regardless.
   const parkFull = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));
-  const park = parkFull ? leanParkForParkShell(parkFull) : parkFull;
+  const parkLean = parkFull ? leanParkForParkShell(parkFull) : parkFull;
+  // Dev/preview only, and a no-op with no `?state=` — see `lib/parks/park-simulation.ts` for why
+  // this one fabricates data where `?sim=` refuses to.
+  const park = parkLean ? applyParkSimulation(parkLean, simScenarios) : parkLean;
   const seasons = await seasonsPromise;
 
   if (!park) {
@@ -419,6 +429,10 @@ export default async function ParkPage({ params }: ParkPageProps) {
               Cache Components note this comment used to carry no longer applies (the page is
               `force-dynamic`). The BreadcrumbList JSON-LD above stays in the static shell for SEO. */}
           <BreadcrumbNav breadcrumbs={breadcrumbs} currentPage={parkCurrentPage} />
+
+          {/* Dev/preview only — says out loud that the weather, holidays and crowd on this page
+              were fabricated by `?state=`. Never renders on production. */}
+          <ParkSimulationNotice scenarios={simScenarios} />
 
           <article itemScope itemType="https://schema.org/AmusementPark">
             {/* Park Header */}

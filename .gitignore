@@ -126,3 +126,6 @@ package-lock.json
 # Lazily fetched message namespaces — regenerated from messages/*.json by
 # `pnpm generate:message-chunks` in prebuild (see lib/i18n/route-namespaces.mjs).
 lib/i18n/message-chunks/
+
+# Local screenshot harness (scripts/_shot.mjs) — a scratch tool, not part of the repo.
+scripts/_shot.mjs
