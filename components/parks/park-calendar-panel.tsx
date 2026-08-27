@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { useLinkStatus } from 'next/link';
 import { CalendarDays, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
+import { TILE_GLASS } from '@/components/common/glass-card';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Link } from '@/i18n/navigation';
@@ -59,7 +60,7 @@ export function ParkCalendarPanel({
 
   return (
     <section className={cn(className)}>
-      <ChapterHeading icon={CalendarDays} title={t('gridTitle')} frosted />
+      <ChapterHeading icon={CalendarDays} title={t('gridTitle')} frosted className="mb-0" />
 
       {/* The stepper sits HERE, not inside the grid, and that is the whole reason the months are
         crawlable. `ParkCalendarGrid` is a `ssr: false` dynamic import — it formats every cell
@@ -68,9 +69,23 @@ export function ParkCalendarPanel({
         existed only for whoever guessed the URLs. This component is an ordinary Client Component,
         so it renders on the server like any other and the two links are in the first byte.
 
+        It is the lower half of the chapter band rather than a row of its own, which is what
+        `rounded-t-xl` on the heading has been promising all along. As a bare row it stood on the
+        park photo with nothing behind it, so the heading's `border-b` was the bottom edge of a box
+        that had no bottom — a rounded lid over open air, then a gap of photograph, then the grid's
+        own card. The band's material closes it: `mb-0` on the heading, the radius moves down here,
+        and that rule now separates the title from the control it belongs to. Contrast comes along
+        for free rather than being the point — the semi-transparent outline buttons read 7.02:1 over
+        Phantasialand's carousel and 16.17:1 once the glass is behind them.
+
         `prevMonth`/`nextMonth` are `null` where the window the route serves runs out, and the
         stepper stops rather than pointing at a 404. */}
-      <div className="mb-4 flex items-center justify-end gap-2">
+      <div
+        className={cn(
+          TILE_GLASS,
+          'border-border mb-4 flex items-center justify-end gap-2 rounded-b-xl px-4 py-3'
+        )}
+      >
         <MonthStep href={href(prevMonth)} label={t('previousMonth')}>
           <ChevronLeft className="h-4 w-4" />
         </MonthStep>
