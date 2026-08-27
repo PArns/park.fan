@@ -299,6 +299,23 @@ export function ParkTodayPanel({
     });
   };
 
+  /**
+   * A link at one of the park page's chapters.
+   *
+   * Absolute, not a bare `#shows`. This panel is part of the shared park header, so it renders on
+   * the crowd-calendar pages too — and there there is no `<Tabs>`, no `useTabHashRouting` and no
+   * element with that id, so a bare fragment was a link that did nothing at all. Prefixed with the
+   * park's own path it is a navigation from a sub-page and still a same-page jump from the park
+   * page itself, which is where `useTabHashRouting` picks it up.
+   *
+   * The locale prefix is written in by hand because these stay plain `<a>` elements: next-intl's
+   * `Link` would supply the prefix but navigates with `pushState`, which does not fire
+   * `hashchange` — the event the park page's tab router listens for. A plain anchor to the same
+   * document changes the fragment and fires it; to a different document it is an ordinary
+   * navigation and the router reads the hash on mount.
+   */
+  const chapterHref = (chapter: string) => `/${locale}${parkPath}#${chapter}`;
+
   const cell = 'border-border/50 flex flex-col gap-3 border-r border-b px-5 py-4';
   const columnCount = 2 + (headlinerSlots > 0 ? 1 : 0) + (showSlots > 0 ? 1 : 0);
 
@@ -586,7 +603,7 @@ export function ParkTodayPanel({
                   `hashchange` and switches + scrolls the tab panel below, so this needs no state
                   lifted across the page and it works before hydration. */}
               <a
-                href="#attractions"
+                href={chapterHref('attractions')}
                 className="text-primary mt-auto text-left text-xs hover:underline"
               >
                 {t('allAttractionsLink', { count: park.attractions?.length ?? 0 })}
@@ -601,7 +618,7 @@ export function ParkTodayPanel({
                 caption={t('nextShows')}
                 action={
                   <a
-                    href="#shows"
+                    href={chapterHref('shows')}
                     className="text-primary text-xs whitespace-nowrap hover:underline"
                   >
                     {t('allShowsLink', { count: park.shows?.length ?? 0 })}
@@ -647,7 +664,7 @@ export function ParkTodayPanel({
                         // is the same two lines tall it always was.
                         <li key={i}>
                           <a
-                            href={`#shows-${show.slug}`}
+                            href={chapterHref(`shows-${show.slug}`)}
                             className="border-primary/60 bg-primary/10 hover:bg-primary/20 flex flex-col gap-0.5 rounded-lg border px-2.5 py-2 transition-colors"
                           >
                             <span className="flex items-baseline gap-2">
@@ -674,7 +691,7 @@ export function ParkTodayPanel({
                             Same reason the FAQ's calendar link used to be one — that link became a
                             real page, this one is still a jump within the park page. */}
                         <a
-                          href={`#shows-${show.slug}`}
+                          href={chapterHref(`shows-${show.slug}`)}
                           className="hover:bg-muted/50 hover:text-primary -mx-1 flex items-center gap-2.5 rounded px-1 transition-colors"
                         >
                           <span className="text-muted-foreground shrink-0 font-bold tabular-nums">
@@ -711,7 +728,10 @@ export function ParkTodayPanel({
           {weatherSummary?.description && (
             <span className="text-muted-foreground text-sm">{weatherSummary.description}</span>
           )}
-          <a href="#weather" className="text-primary ml-auto text-xs whitespace-nowrap">
+          <a
+            href={chapterHref('weather')}
+            className="text-primary ml-auto text-xs whitespace-nowrap"
+          >
             {t('weatherAndHourly')} ›
           </a>
         </div>

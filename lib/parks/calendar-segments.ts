@@ -61,16 +61,22 @@ export function parkCalendarPath(
 }
 
 /**
- * The earliest and latest year a month URL may name.
+ * How far a month URL may reach, counted in MONTHS from the current one.
  *
  * Not a taste call: the API answers `/calendar` for any range, and past a park's published season
  * it answers every day `CLOSED` — measured on Phantasialand, March 2027 came back as 31 closed
- * days with no hours, no weather and no forecast. So the route has to stop somewhere, and it stops
- * at a window wide enough to hold every month the data can be about (roughly a year back for the
- * "how was it" question and a year and a bit forward for planning) and narrow enough that
- * `/andrangskalender/1998/3` is a 404 rather than a page.
+ * days with no hours, no weather and no forecast. So the route has to stop somewhere, and 12 back
+ * / 12 forward is where the data still says something: a year back for "how was it", a year ahead
+ * for planning.
+ *
+ * Counted in months rather than in years on purpose. A year-based check (`back: 1, forward: 2`)
+ * reads as "a year and a bit" and serves up to three years in December — 212 parks × 6 locales ×
+ * 36 months is ~46k indexable URLs, most of them an all-CLOSED grid under a real-looking title.
  */
-export const PARK_CALENDAR_YEAR_SPAN = { back: 1, forward: 2 } as const;
+export const PARK_CALENDAR_MONTH_SPAN = { back: 12, forward: 12 } as const;
+
+/** Months since year 0, so a window can be checked without date arithmetic. */
+const monthIndex = ({ year, month }: ParkCalendarMonth) => year * 12 + (month - 1);
 
 export interface ParkCalendarMonth {
   year: number;
@@ -91,7 +97,7 @@ export interface ParkCalendarMonth {
  */
 export function parseParkCalendarMonth(
   segments: string[] | undefined,
-  nowYear: number
+  now: ParkCalendarMonth
 ): { month: ParkCalendarMonth | null; padded: boolean } | 'invalid' {
   if (!segments || segments.length === 0) return { month: null, padded: false };
   if (segments.length !== 2) return 'invalid';
@@ -102,8 +108,7 @@ export function parseParkCalendarMonth(
   const year = Number(rawYear);
   const month = Number(rawMonth);
   if (month < 1 || month > 12) return 'invalid';
-  if (year < nowYear - PARK_CALENDAR_YEAR_SPAN.back) return 'invalid';
-  if (year > nowYear + PARK_CALENDAR_YEAR_SPAN.forward) return 'invalid';
+  if (!isParkCalendarMonthInRange({ year, month }, now)) return 'invalid';
 
   // `09` and `9` are the same month and must not be two URLs. `0` alone is already out on the
   // range check above, so the only padded form left is a leading zero on 1–9.
@@ -121,9 +126,29 @@ export function shiftParkCalendarMonth(
 
 /** Whether a month is inside the window the route serves — the prev/next links check it so they
  *  never point at a 404. */
-export function isParkCalendarMonthInRange({ year }: ParkCalendarMonth, nowYear: number): boolean {
-  return (
-    year >= nowYear - PARK_CALENDAR_YEAR_SPAN.back &&
-    year <= nowYear + PARK_CALENDAR_YEAR_SPAN.forward
-  );
+export function isParkCalendarMonthInRange(
+  month: ParkCalendarMonth,
+  now: ParkCalendarMonth
+): boolean {
+  const delta = monthIndex(month) - monthIndex(now);
+  return delta >= -PARK_CALENDAR_MONTH_SPAN.back && delta <= PARK_CALENDAR_MONTH_SPAN.forward;
+}
+
+/**
+ * Today's month in a given timezone.
+ *
+ * The park's zone, never the server's or the browser's: a park in Florida is still on yesterday's
+ * date for six hours after midnight in Berlin, and "this month" on its calendar has to mean the
+ * month it is there. One implementation, because the page computes the hub's neighbouring months
+ * and the grid decides which month to draw, and the two disagreeing across a month boundary is a
+ * stepper pointing one month off.
+ */
+export function currentParkCalendarMonth(timezone: string | null | undefined): ParkCalendarMonth {
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: timezone || 'UTC',
+    year: 'numeric',
+    month: '2-digit',
+  }).formatToParts(new Date());
+  const get = (type: string) => Number(parts.find((p) => p.type === type)?.value ?? 0);
+  return { year: get('year'), month: get('month') };
 }

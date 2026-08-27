@@ -338,6 +338,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
         countryName={countryName}
         breadcrumbs={breadcrumbs}
         currentPage={parkCurrentPage}
+        pagePath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
         seedNowMs={seedNowMs}
         faqGlossaryTerms={faqGlossaryTerms}
         glossarySegment={glossarySegment}

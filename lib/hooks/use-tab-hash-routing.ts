@@ -3,7 +3,11 @@
 import { startTransition, useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { useLocale } from 'next-intl';
-import { isParkCalendarMonthInRange, parkCalendarPath } from '@/lib/parks/calendar-segments';
+import {
+  currentParkCalendarMonth,
+  isParkCalendarMonthInRange,
+  parkCalendarPath,
+} from '@/lib/parks/calendar-segments';
 import { stripNewPrefix } from '@/lib/utils';
 import { trackTabChanged, type TabChangedProps } from '@/lib/analytics/umami';
 import type { ParkWithAttractions } from '@/lib/api/types';
@@ -18,6 +22,9 @@ interface UseTabHashRoutingOptions {
   country: string;
   city: string;
   parkSlug: string;
+  /** The park's zone — the window a forwarded month is checked against is measured from today
+   *  THERE, exactly as the calendar route measures it. */
+  timezone: string;
 }
 
 /**
@@ -38,6 +45,7 @@ export function useTabHashRouting({
   country,
   city,
   parkSlug,
+  timezone,
 }: UseTabHashRoutingOptions) {
   const pathname = usePathname();
   const locale = useLocale();
@@ -60,6 +68,9 @@ export function useTabHashRouting({
   }, []);
 
   const tabsRef = useRef<HTMLDivElement>(null);
+  /** Stops the in-flight deep-link scroll — a second hash arriving mid-poll must win. */
+  const cancelScroll = useRef<(() => void) | null>(null);
+  useEffect(() => () => cancelScroll.current?.(), []);
 
   // Sync with URL hash on mount and on hash change
   useEffect(() => {
@@ -89,7 +100,7 @@ export function useTabHashRouting({
           parsed &&
           parsed.month >= 1 &&
           parsed.month <= 12 &&
-          isParkCalendarMonthInRange(parsed, new Date().getFullYear());
+          isParkCalendarMonthInRange(parsed, currentParkCalendarMonth(timezone));
         window.location.replace(
           `/${locale}${parkCalendarPath(
             locale,
@@ -113,19 +124,10 @@ export function useTabHashRouting({
       const validTabs = ['attractions', 'shows', 'restaurants', 'map', 'weather'];
       if (validTabs.includes(tabToActivate)) {
         setActiveTab(tabToActivate);
-
-        // Scroll with a manual offset calculation for better reliability. The panel content is
-        // mounted through a `useDeferredValue`, so the card for a deep link does not exist yet at
-        // this point — hence the delay, and hence falling back to the tab row when the card still
-        // is not there (a slug that no longer matches a show must not leave the page put).
-        setTimeout(() => {
-          const headerOffset = 100; // Account for sticky header
-          const target = (deep ? document.getElementById(hash) : null) ?? tabsRef.current;
-          if (!target) return;
-          const offsetPosition =
-            target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-        }, 500);
+        cancelScroll.current?.();
+        cancelScroll.current = scrollWhenSettled(
+          () => (deep ? document.getElementById(hash) : null) ?? tabsRef.current
+        );
       }
     };
 
@@ -134,7 +136,7 @@ export function useTabHashRouting({
 
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
-  }, [isMounted, locale, continent, country, city, parkSlug]);
+  }, [isMounted, locale, continent, country, city, parkSlug, timezone]);
 
   // Update URL hash when tab changes
   const handleTabChange = (value: string) => {
@@ -155,4 +157,90 @@ export function useTabHashRouting({
   };
 
   return { isMounted, activeTab, handleTabChange, tabsRef };
+}
+
+/** How far below the viewport's top edge a scrolled-to element comes to rest — the sticky bar
+ *  plus a little air. */
+const HEADER_OFFSET = 100;
+/** Give up looking for a deep-link target and scroll to the tab row instead. */
+const TARGET_DEADLINE_MS = 4000;
+/** Stop correcting once the target has held still this long — ~15 frames. */
+const STABLE_FRAMES = 15;
+/** Hard stop for the correction phase, however busy the page stays. */
+const SETTLE_DEADLINE_MS = 6000;
+
+/**
+ * Scroll to an element and keep correcting until the page stops moving underneath it.
+ *
+ * The single `setTimeout(…, 500)` this replaces measured a document that was still rearranging,
+ * and the deep link paid for it. A cold load of `#shows-<slug>` arrives on the server-rendered
+ * pre-mount overview, which lists every attraction the park has; the card the hash names is inside
+ * the tab panel and does not exist yet, so the fallback fired against that tall document and
+ * scrolled 3974 px down — and then the overview collapsed into the short shows panel, the document
+ * went 6817 → 5374 px, and the card the visitor had asked for ended up 2907 px ABOVE the viewport.
+ * Nothing re-checked, so that is where they stayed: on the footer of a page they came to for one
+ * show.
+ *
+ * Waiting longer does not fix it and neither does waiting for a quiet frame. Measured on this
+ * page, the document goes 6817 → 13330 → 5194 → 5374 px, and the 13330 is the moment both the
+ * overview and the panel are in the tree at once. A "has it settled" test lands inside that peak
+ * as readily as anywhere else, and one measurement taken there is as wrong as one taken at 500 ms.
+ *
+ * So the position is not measured once but MAINTAINED. The reading it watches is the target's
+ * DOCUMENT offset (`rect.top + scrollY`), which is invariant under scrolling — so a change in it
+ * means the layout above the target moved, never that a smooth scroll is in flight, and the two
+ * cannot be confused. Every change re-issues the scroll; `STABLE_FRAMES` frames without one end
+ * it. The first correction is smooth, because in-page clicks (the panel's show rows, already
+ * hydrated) converge on frame one and should look like a scroll; the rest are instant, since
+ * animating a correction only means arriving late at a place that has moved again.
+ *
+ * Two deadlines, both load-bearing. A slug that no longer matches a show would poll for a target
+ * forever, so after `TARGET_DEADLINE_MS` it takes whatever the getter offers — the tab row — and
+ * scrolls there, which is where the open tab is anyway. And a page that never stops moving (a poll
+ * landing, a photo decoding) would hold the visitor's scroll hostage, so `SETTLE_DEADLINE_MS` ends
+ * the correction phase regardless. Returns its own canceller: a visitor clicking a second show
+ * mid-flight must not be dragged back to the first.
+ */
+function scrollWhenSettled(getTarget: () => HTMLElement | null) {
+  let raf = 0;
+  let cancelled = false;
+  const startedAt = performance.now();
+  let lastOffset: number | null = null;
+  let stable = 0;
+
+  const tick = () => {
+    if (cancelled) return;
+    const elapsed = performance.now() - startedAt;
+    const target = getTarget();
+
+    if (!target) {
+      // The panel mounts its cards through a `useDeferredValue` and no event says when, so this
+      // is polled per frame. Past the deadline a getter still answering `null` has nothing left
+      // to offer and there is nothing to scroll to.
+      if (elapsed < TARGET_DEADLINE_MS) raf = requestAnimationFrame(tick);
+      return;
+    }
+
+    const offset = target.getBoundingClientRect().top + window.scrollY;
+    if (offset === lastOffset) {
+      // Held still for another frame. Enough of them in a row and the layout is done.
+      if (++stable >= STABLE_FRAMES) return;
+    } else {
+      const first = lastOffset === null;
+      lastOffset = offset;
+      stable = 0;
+      window.scrollTo({
+        top: Math.max(0, offset - HEADER_OFFSET),
+        behavior: first ? 'smooth' : 'auto',
+      });
+    }
+
+    if (elapsed < SETTLE_DEADLINE_MS) raf = requestAnimationFrame(tick);
+  };
+
+  raf = requestAnimationFrame(tick);
+  return () => {
+    cancelled = true;
+    cancelAnimationFrame(raf);
+  };
 }

@@ -77,6 +77,7 @@ export const TabsWithHash = memo(function TabsWithHash({
     country,
     city,
     parkSlug,
+    timezone: park.timezone,
   });
 
   const {

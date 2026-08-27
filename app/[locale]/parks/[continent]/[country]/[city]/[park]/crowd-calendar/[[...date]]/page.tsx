@@ -17,6 +17,7 @@ import {
   findRenamedParkRedirect,
 } from '@/lib/utils/redirect-utils';
 import {
+  currentParkCalendarMonth,
   isParkCalendarMonthInRange,
   parkCalendarPath,
   parseParkCalendarMonth,
@@ -64,24 +65,9 @@ interface ParkCalendarPageProps {
  * describing — a title for September under a grid showing August is the kind of mismatch nobody
  * notices until it is in the index.
  */
-function resolveMonth(date: string[] | undefined, nowYear: number) {
-  const parsed = parseParkCalendarMonth(date, nowYear);
+function resolveMonth(date: string[] | undefined, now: ParkCalendarMonth) {
+  const parsed = parseParkCalendarMonth(date, now);
   return parsed === 'invalid' ? 'invalid' : parsed;
-}
-
-/**
- * Today's month in the PARK's timezone, for the hub — which shows the current month and has to
- * agree with the grid about which one that is. A park in Florida is still on yesterday's date for
- * six hours after midnight in Berlin, and the server clock is not the authority on either.
- */
-function currentMonthInPark(timezone: string): ParkCalendarMonth {
-  const parts = new Intl.DateTimeFormat('en-CA', {
-    timeZone: timezone || 'UTC',
-    year: 'numeric',
-    month: '2-digit',
-  }).formatToParts(new Date());
-  const get = (type: string) => Number(parts.find((p) => p.type === type)?.value ?? 0);
-  return { year: get('year'), month: get('month') };
 }
 
 /** The month's name in the reader's language, for the title, the H1 and the breadcrumb. */
@@ -124,12 +110,15 @@ export async function generateMetadata({ params }: ParkCalendarPageProps): Promi
   const t = await getTranslations({ locale, namespace: 'parks.calendarPage' });
   const tNotFound = await getTranslations({ locale, namespace: 'seo.notFound' });
 
-  const resolved = resolveMonth(date, new Date().getUTCFullYear());
-  if (resolved === 'invalid') return { title: tNotFound('park'), robots: { index: false } };
-  const month = resolved.month;
-
   const park = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));
   if (!park) return { title: tNotFound('park') };
+
+  // The window is measured from TODAY IN THE PARK, so the metadata and the page agree about which
+  // months exist even for a park whose date has already rolled over (or not yet).
+  const nowInPark = currentParkCalendarMonth(park.timezone);
+  const resolved = resolveMonth(date, nowInPark);
+  if (resolved === 'invalid') return { title: tNotFound('park'), robots: { index: false } };
+  const month = resolved.month;
 
   const parkName = stripNewPrefix(park.name);
   const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
@@ -160,7 +149,15 @@ export async function generateMetadata({ params }: ParkCalendarPageProps): Promi
 
   const path = (l: string, m: ParkCalendarMonth | null) =>
     parkCalendarPath(l, continent, country, city, parkSlug, m ?? undefined);
-  const canonical = `${SITE_URL}/${locale}${path(locale, month)}`;
+
+  // The hub shows the current month, so `/andrangskalender` and `/andrangskalender/2026/8` are the
+  // same page in August — and the next month's "previous" arrow links straight at the second one.
+  // The hub is the one that keeps working when the month turns over, so it is canonical for both;
+  // every OTHER month is canonical for itself.
+  const isCurrentMonth =
+    !!month && month.year === nowInPark.year && month.month === nowInPark.month;
+  const canonicalMonth = isCurrentMonth ? null : month;
+  const canonical = `${SITE_URL}/${locale}${path(locale, canonicalMonth)}`;
 
   return {
     title,
@@ -170,7 +167,12 @@ export async function generateMetadata({ params }: ParkCalendarPageProps): Promi
       // Each locale gets its OWN segment (`/de/…/andrangskalender`, `/fr/…/calendrier-affluence`),
       // not the canonical English folder — the localized URL is what the rewrite serves and what a
       // reader sees. The month rides along unchanged: a month is a number in every language.
-      languages: generateAlternateLanguages((l) => `/${l}${path(l, month)}`),
+      languages: {
+        ...generateAlternateLanguages((l) => `/${l}${path(l, canonicalMonth)}`),
+        // Same shape every other route uses, and the same one `app/sitemap.ts` writes for these
+        // URLs — a page and the sitemap disagreeing about x-default is an hreflang conflict.
+        'x-default': `${SITE_URL}/en${path('en', canonicalMonth)}`,
+      },
     },
     ...buildOpenGraphMetadata({
       title,
@@ -187,8 +189,10 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   assertServableRoute(locale, continent, country, city, parkSlug);
   setRequestLocale(locale);
 
-  const nowYear = new Date().getUTCFullYear();
-  const resolved = resolveMonth(date, nowYear);
+  const parkFull = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));
+  const parkForClock = parkFull ? leanParkForParkShell(parkFull) : parkFull;
+  const nowMonth = currentParkCalendarMonth(parkForClock?.timezone);
+  const resolved = resolveMonth(date, nowMonth);
   // A month that is not a month is a 404, not a quiet fall back to the hub: `/…/2026/13` is a typo
   // or a crawler probing, and answering it with the current month would put one page's content on
   // unbounded URLs.
@@ -209,7 +213,9 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   // directly from search and a stale geo path must transfer rather than 404.
   const malformed = await findParkPageRedirect(continent, country, city, parkSlug);
   if (malformed) {
-    permanentRedirect(`/${locale}${malformed}`);
+    // Keep the calendar segment and the month, exactly as the relocated/renamed branches below do.
+    // Dropping them sent somebody who asked for September 2026 to the park's wait-time page.
+    permanentRedirect(`/${locale}${malformed}${parkCalendarSuffix(locale, month)}`);
   }
 
   // Fired, not awaited: consumed inside the <Suspense> boundary below, so a cold best-days
@@ -219,8 +225,7 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   const bestDaysSeedPromise = getBestDaysCalendarSeed(continent, country, city, parkSlug);
   const seasonsPromise = getParkSeasons(continent, country, city, parkSlug);
 
-  const parkFull = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));
-  const park = parkFull ? leanParkForParkShell(parkFull) : parkFull;
+  const park = parkForClock;
   const seasons = await seasonsPromise;
   if (!park) {
     const relocated = await findRelocatedParkRedirect(continent, country, city, parkSlug);
@@ -266,11 +271,14 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
 
   // The neighbouring months, but only while they are inside the window the route serves — a
   // stepper that points at a 404 is worse than one that stops.
-  const shownMonth = month ?? currentMonthInPark(park.timezone);
+  // One month value feeds the stepper, the grid and the label, so the three cannot disagree —
+  // the page used the park's clock while the grid fell back to the browser's, which is one month
+  // apart for a few hours around every month boundary in any zone but the reader's.
+  const shownMonth = month ?? nowMonth;
   const back = shiftParkCalendarMonth(shownMonth, -1);
   const forward = shiftParkCalendarMonth(shownMonth, 1);
-  const prevMonth = isParkCalendarMonthInRange(back, nowYear) ? back : null;
-  const nextMonth = isParkCalendarMonthInRange(forward, nowYear) ? forward : null;
+  const prevMonth = isParkCalendarMonthInRange(back, nowMonth) ? back : null;
+  const nextMonth = isParkCalendarMonthInRange(forward, nowMonth) ? forward : null;
 
   const { terms: faqGlossaryTerms, segment: glossarySegment } = await getParkFaqGlossary(
     park,
@@ -292,6 +300,7 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
         countryName={countryName}
         breadcrumbs={breadcrumbs}
         currentPage={monthName ?? t('breadcrumb')}
+        pagePath={parkCalendarPath(locale, continent, country, city, parkSlug, month ?? undefined)}
         seedNowMs={seedNowMs}
         faqGlossaryTerms={faqGlossaryTerms}
         glossarySegment={glossarySegment}
@@ -374,7 +383,7 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
           country={country}
           city={city}
           parkSlug={parkSlug}
-          month={month}
+          month={shownMonth}
           prevMonth={prevMonth}
           nextMonth={nextMonth}
           className="mt-8"

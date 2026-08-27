@@ -47,6 +47,10 @@ interface ParkPageShellProps {
   /** The title card's contents — the H1 and whatever belongs beside and under it. Every page of
    *  a park has a different one; the card around it is the same. */
   header: React.ReactNode;
+  /** The locale-relative path of the page being rendered — what the share buttons hand out and
+   *  what the canonical points at. Not the park's own path: a visitor sharing from the September
+   *  2026 calendar means that page, and the shell used to give them the wait-time URL. */
+  pagePath: string;
   /** Rendered first inside the container, before the breadcrumb: JSON-LD and anything else that
    *  occupies no space. Structured data is the one thing two pages of a park may not share, so
    *  the shell takes it as a slot rather than emitting any. */
@@ -94,6 +98,7 @@ export async function ParkPageShell({
   glossarySegment,
   header,
   head,
+  pagePath,
   children,
 }: ParkPageShellProps) {
   const tGeo = await getTranslations('geo');
@@ -210,7 +215,7 @@ export async function ParkPageShell({
 
           <Separator className="my-8" />
           {/* The page being shared is the one being read, not the park's home page. */}
-          <ShareButtons url={`${SITE_URL}/${locale}${parkPath}`} title={park.name} />
+          <ShareButtons url={`${SITE_URL}/${locale}${pagePath}`} title={park.name} />
 
           {/* Invite visitors to contribute their own photos of this park */}
           <ContributeBanner
