@@ -134,7 +134,7 @@ export async function ParkPageShell({
 
         <article itemScope itemType="https://schema.org/AmusementPark">
           <div className="mb-4">
-            <GlassCard variant="heavy">{header}</GlassCard>
+            <GlassCard variant="tile">{header}</GlassCard>
           </div>
 
           {children}

@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils';
 interface GlassCardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   className?: string;
-  variant?: 'light' | 'medium' | 'strong' | 'heavy';
+  variant?: 'light' | 'medium' | 'strong' | 'heavy' | 'tile';
 }
 
 /**
@@ -60,6 +60,12 @@ export const TILE_GLASS =
  * mode, so a panel laid over the hero photo (the world map, the search dropdown) reads as one
  * pane of glass rather than a washed-out rectangle with the photo bleeding through its text.
  *
+ * `tile` is {@link TILE_GLASS}, the same recipe one grade more solid. It is what the whole PARK
+ * page is made of — title card, „Heute im Park", the entry tiles and every chapter band — while
+ * `heavy` stayed the homepage hero's. The two photos are not the same problem: the hero picture is
+ * chosen and cropped for the panel that sits on it, a park's backdrop is whatever picture that park
+ * has, and at 62 % a bright one reads straight through the intro paragraph.
+ *
  * It is deliberately NOT the biggest blur available. At 64 px over 75% fill the photo behind it
  * stopped being a photo — an even field of colour, with nothing left of the park behind the
  * panel. 24 px over 62% keeps shapes and light readable through the glass while the text on top
@@ -79,6 +85,7 @@ export function GlassCard({
     medium: 'bg-background/60 backdrop-blur-md',
     strong: 'bg-background/80 backdrop-blur-lg',
     heavy: HEAVY_GLASS,
+    tile: TILE_GLASS,
   };
 
   return (

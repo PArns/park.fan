@@ -1,7 +1,7 @@
 'use client';
 
 import { Fragment } from 'react';
-import { HEAVY_GLASS } from '@/components/common/glass-card';
+import { TILE_GLASS } from '@/components/common/glass-card';
 import { cn } from '@/lib/utils';
 
 /**
@@ -28,7 +28,7 @@ export function ParkHeaderCard({
     <div
       className={cn(
         'border-border/50 mb-4 overflow-hidden rounded-xl border shadow-sm',
-        HEAVY_GLASS
+        TILE_GLASS
       )}
     >
       {/* Keyed fragments, and not for decoration: these two children compile to an ARRAY, and an
