@@ -75,6 +75,7 @@
 | ----------------------------------------- | --------------------------------------------------------------------------------------- |
 | [SEO Analysis](seo/analysis.md)           | Current status, optimizations, checklist                                                |
 | [Agent readiness](seo/agent-readiness.md) | What the site tells machines: robots policy, llms.txt, API catalog, skills, MCP, WebMCP |
+| [Blog feeds](seo/blog-feeds.md)           | The six RSS feeds: autodiscovery, full-text items, enclosures, WebSub                   |
 
 ### Troubleshooting
 

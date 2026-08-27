@@ -21,6 +21,7 @@ import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import type { Breadcrumb } from '@/lib/api/types';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { RouteMessages } from '@/i18n/route-messages';
+import { blogFeedAlternates } from '@/lib/blog/feed';
 
 interface AuthorPageProps {
   params: Promise<{ locale: string; author: string }>;
@@ -66,9 +67,7 @@ export async function generateMetadata({ params }: AuthorPageProps): Promise<Met
         ...generateAlternateLanguages((l) => `/${l}/blog/authors/${author}`),
         'x-default': `${SITE_URL}/en/blog/authors/${author}`,
       },
-      types: {
-        'application/rss+xml': `${SITE_URL}/${locale}/blog/feed.xml`,
-      },
+      types: blogFeedAlternates(locale as Locale),
     },
   };
 }

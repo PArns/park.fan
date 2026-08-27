@@ -5,6 +5,7 @@ import { API_CATALOG_PATH } from '@/lib/agents/api-catalog';
 import { AI_CATALOG_PATH } from '@/lib/agents/catalog';
 import { agentDocumentHeaders } from '@/lib/agents/http';
 import { SITE_URL } from '@/i18n/config';
+import { blogFeedUrl } from '@/lib/blog/feed';
 
 /**
  * `/llms.txt` (llmstxt.org) — the one file to read when an agent has the hostname and nothing
@@ -83,6 +84,11 @@ ${[
     'ARD: everything on this list, typed'
   ),
   line('Sitemap', `${SITE_URL}/sitemap.xml`, 'pages; rides are in /sitemap-attractions.xml'),
+  line(
+    'Blog feed',
+    blogFeedUrl('en'),
+    'RSS 2.0, full posts, one per locale at /{locale}/blog/feed.xml; WebSub hub for push'
+  ),
 ].join('\n')}
 
 ## Skills

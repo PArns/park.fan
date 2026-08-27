@@ -71,6 +71,7 @@ import { HERO_3D_ENABLED } from '@/lib/config/features';
 import type { Metadata } from 'next';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { RouteMessages } from '@/i18n/route-messages';
+import { blogFeedAlternates } from '@/lib/blog/feed';
 
 // STATIC SHELL (per-locale build-time prerender — the homepage is only 6 pages, NOT the park/
 // attraction catalog). The shell is served straight from the CDN (fast TTFB → fast LCP, bf-cache
@@ -123,6 +124,11 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
         ...generateAlternateLanguages((l) => `/${l}`),
         'x-default': `${SITE_URL}/en`,
       },
+      // The homepage is where a reader or a crawler looks for a site's feed
+      // first, and it is the one page outside /blog that should answer. Park
+      // and glossary pages deliberately do not: the spec wants a page's own
+      // main feed, and a park page has none.
+      types: blogFeedAlternates(locale as Locale),
     },
   };
 }

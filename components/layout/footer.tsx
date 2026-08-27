@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Rss } from 'lucide-react';
 import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
 import { BuildInfo } from '@/components/common/build-info';
@@ -371,6 +371,24 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
                 >
                   {t('blog')}
                 </Link>
+                <span className="text-muted-foreground/60 flex items-center">•</span>
+                {/*
+                  The feed's only visible link on the site. The `<head>` link
+                  autodiscovery needs has been there all along, which no person
+                  can see and no reader shows you until you have already found
+                  the page — so a visitor who wanted the feed had nothing to
+                  click. A plain <a>, not the i18n `Link`: the target is a route
+                  handler, and a client-side navigation to one fetches an RSC
+                  payload that does not exist. Inside `showBlog` because the
+                  feed 404s under exactly the same condition.
+                */}
+                <a
+                  href={`/${locale}/blog/feed.xml`}
+                  className="hover:text-foreground inline-flex items-center gap-1 text-sm transition-colors"
+                >
+                  <Rss className="size-3.5" aria-hidden="true" />
+                  {t('feed')}
+                </a>
                 <span className="text-muted-foreground/60 flex items-center">•</span>
               </>
             )}

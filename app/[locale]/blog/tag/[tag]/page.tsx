@@ -23,6 +23,7 @@ import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import type { Breadcrumb } from '@/lib/api/types';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { RouteMessages } from '@/i18n/route-messages';
+import { blogFeedAlternates } from '@/lib/blog/feed';
 
 interface TagPageProps {
   params: Promise<{ locale: string; tag: string }>;
@@ -91,9 +92,7 @@ export async function generateMetadata({ params }: TagPageProps): Promise<Metada
         ...tagAlternates,
         ...(tagAlternates['en'] && { 'x-default': tagAlternates['en'] }),
       },
-      types: {
-        'application/rss+xml': `${SITE_URL}/${locale}/blog/feed.xml`,
-      },
+      types: blogFeedAlternates(locale as Locale),
     },
   };
 }
