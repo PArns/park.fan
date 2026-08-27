@@ -1,6 +1,7 @@
 import { GlassCard } from '@/components/common/glass-card';
 import { ParkStatsHeader } from '@/components/parks/park-stats-header';
 import { Skeleton } from '@/components/ui/skeleton';
+import { cn } from '@/lib/utils';
 
 /** The three cards <ParkStatsSection> can render. Declared here because the skeleton has to
  *  mirror the same selection and the section already imports this file. */
@@ -122,7 +123,15 @@ export function ParkStatsSectionSkeleton({
       )}
 
       {(show.includes('months') || show.includes('weekdays')) && (
-        <div className="grid gap-4 md:grid-cols-2">
+        // Must match the settled section's grid: two columns only when both cards are asked
+        // for. A skeleton at half the width followed by a full-width card is a sideways
+        // reflow of every row in it, which is the shift the fallback exists to prevent.
+        <div
+          className={cn(
+            'grid gap-4',
+            show.includes('months') && show.includes('weekdays') && 'md:grid-cols-2'
+          )}
+        >
           {show.includes('months') && <CrowdCardSkeleton rows={6} />}
           {show.includes('weekdays') && <CrowdCardSkeleton rows={7} />}
         </div>

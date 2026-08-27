@@ -82,8 +82,8 @@ Neunziger versuchte es die Bavaria Film hier mit einem eigenen **Bavaria
 Filmpark**. Der hielt von 1992 bis 1994.
 
 Dann kam Warner. Am **30. Juni 1996** ging der Park für zahlende Gäste auf, und
-die Rechnung dahinter war einfach: Ein Studio verleiht seine Figuren an einen Park, der Park verkauft
-Tickets, beide gewinnen. So lange, wie das Studio dabei bleibt.
+die Rechnung dahinter war einfach: Ein Studio verleiht seine Figuren an einen
+Park, der Park verkauft Tickets, beide gewinnen. So lange, wie das Studio dabei bleibt.
 
 Es blieb acht Jahre. Im Oktober 1999 verkaufte Time Warner 97 Prozent an
 **Premier Parks**, die kurz darauf **Six Flags** hießen. 2004 verkauften die
@@ -116,15 +116,15 @@ Die Fundamente wurden gegossen. Dann stoppte Parques Reunidos das Projekt, weil
 in Spanien die Besucherzahlen wegbrachen. Gebaut wurde erst 2017 wieder, und
 zwar etwas anderes.
 
-Diese Vorgeschichte ist der Grund, warum der Movie Park in der Coaster-Szene
-einen schlechteren Ruf hat, als er verdient. Wer ihn zwischen 2012 und 2016 besucht
-hat, sah einen Park, der seine Fassaden in Zweierschritten pro Jahr renovierte
-und dessen Werbeversprechen aus Filmen bestand, die er nicht mehr zeigen durfte.
+Diese Vorgeschichte erklärt den Ruf, den der Movie Park in der Coaster-Szene bis
+heute hat. Wer ihn zwischen 2012 und 2016 besucht hat, sah einen Park, der seine
+Fassaden in Zweierschritten pro Jahr renovierte und dessen Werbeversprechen aus
+Filmen bestand, die er nicht mehr zeigen durfte.
 
 ## Die Filmgeschichte, die er stattdessen erzählt
 
-Ab 2017 hat sich das gedreht, und zwar auf eine Art, die kein anderer deutscher
-Park nachmachen könnte.
+Ab 2017 kam wieder Geld ins Gelände, und die Art, wie es ausgegeben wurde, könnte
+kein anderer deutscher Park nachmachen.
 
 Ein Studio-Park ohne Studio-Lizenzen hat zwei Möglichkeiten. Er kann neue Marken
 einkaufen, was Bottrop getan hat: 2007 entstand mit dem **Nickland** der erste
@@ -226,10 +226,11 @@ Zimmerleute, darunter zwei Wandergesellen auf der Walz, im Winter 2015/16 rund
 
 ```
 
-Sie rappelt. Sie ist auch nach 27 Jahren laut, ruppig und im hinteren Wagen
-deutlich besser als im vorderen. Wer Colossos im [Heide-Park](ref:heide-park)
-als Maßstab nimmt, wird enttäuscht sein. Wer Holzachterbahnen aus den
-Neunzigern mag, fährt sie dreimal.
+Sie rappelt. Nach 27 Jahren ist sie laut und ruppig, hinten im Zug etwas
+erträglicher als vorne, und bei mir reicht es spätestens ab der zweiten Fahrt
+für Kopfschmerzen. Einmal gehört trotzdem dazu, dafür ist sie zu wichtig für die
+deutsche Achterbahngeschichte. Wer Colossos im [Heide-Park](ref:heide-park) als
+Maßstab nimmt, sollte es bei dem einen Mal belassen.
 
 ### Van Helsing's Factory
 
@@ -277,7 +278,7 @@ Exemplar macht da keine Ausnahme. Als der Park vor ein paar Jahren seine Fans
 nach Verbesserungsvorschlägen fragte, war die meistgenannte Antwort, sie
 abzureißen.
 
-![Eine violett und blau angeleuchtete Achterbahn bei Nacht, dahinter der Mond, davor ein Parkplatz mit Autos | Vom Parkplatz aus nach Feierabend. Genau diese Ansicht benutzt der Park selbst als Hintergrundbild. | wide](/media/movie-park-germany/iron-claw.jpg)
+![Eine violett und blau angeleuchtete Achterbahn bei Nacht, dahinter der Mond, davor ein Parkplatz mit Autos | Vom Parkplatz aus, nach Feierabend. Der Mond stand günstig. Darunter fährt trotzdem eine Vekoma von 2001. | wide](/media/movie-park-germany/iron-claw.jpg)
 
 Nachts sieht sie großartig aus. Das ist nicht nichts.
 
@@ -576,11 +577,25 @@ Termine und eigene Tickets hat.
 Der Aufschlag an der Tageskasse liegt bei zwanzig Euro pro Person. Bei vier
 Leuten sind das achtzig Euro dafür, dass vorher niemand aufs Handy geschaut hat.
 
-**Saisonpässe** gibt es in vier Stufen, für Erwachsene und Kinder zum selben
-Preis: Bronze 89,90 €, Silber 129,90 €, Gold 149,90 € und Platin 179,90 €. Der
-Platin-Pass enthält unter anderem Eintritte in andere europäische Parks. Ein
-Punkt, den viele übersehen: Für den Besuch mit Saisonpass gibt es ein
-Tageskontingent, jeder Besuch muss vorher angemeldet werden.
+**Saisonpässe**, und das ist der eigentliche Preistipp für diesen Park. Vier
+Stufen, für Erwachsene und Kinder zum selben Preis: Bronze 89,90 €, Silber
+129,90 €, Gold 149,90 €, Platin 179,90 €. Bronze liegt damit unter zwei
+Tageskarten an der Kasse und bei gut zwei Online-Tickets zum Bestpreis. Bei
+Kassenpreisen rechnet sich der Pass ab dem zweiten Besuch, online ab dem dritten,
+und für eine Familie aus dem Ruhrgebiet, die ohnehin zweimal im Jahr herfährt,
+ist das die einfachste Rechnung des Tages. Für einen Park dieser Größe ist das
+wenig Geld.
+
+Drei Dinge stehen im Kleingedruckten und kosten sonst hinterher Laune:
+
+- **Bronze hat die meisten Sperrtage**: Dezember und Januar komplett, dazu
+  Feiertage, die Samstage in den NRW-Ferien, die Oktober-Samstage und Halloween
+  selbst. Also ausgerechnet die Tage, an denen die meisten hinwollen.
+- **Parken ist erst ab Gold enthalten.** Beim Bronze-Pass kostet die Saisonkarte
+  fürs Parken 25 € extra, sonst zahlst du die 8 € bei jedem Besuch.
+- **Es gibt ein Tageskontingent.** Jeder Besuch muss vorher angemeldet werden,
+  und die nächste Buchung geht erst am Tag nach deinem Besuch. Spontan hinfahren
+  geht mit Pass also schlechter als mit Tagesticket.
 
 **Anreise.** Die Adresse ist **Warner-Allee 1, 46244 Bottrop**. Mit dem Auto
 über die A31, Abfahrt Kirchhellen, danach ist alles ausgeschildert. Aus Essen
@@ -635,8 +650,8 @@ Winterevent Hollywood Christmas läuft danach vom 27. November 2026 bis zum 5. J
 An 22 ausgewählten Abenden vom **26. September bis 8. November 2026**, in der
 achtundzwanzigsten Ausgabe, mit neun Horror-Mazes, vier Scare Zones und über 300
 Monstern. Neu ist das Haus **Jason Universe**, dazu die Live-Show **PHOBIA** im
-Studio 7. Die Mazes kosten extra und werden separat gebucht. Details und der Vergleich mit den anderen
-europäischen Events stehen im
+Studio 7. Die Mazes kosten extra und werden separat gebucht. Details und der
+Vergleich mit den anderen europäischen Events stehen im
 [Halloween-Guide 2026](/blog/halloween-freizeitparks-2026).
 
 ### Was kostet der Eintritt in den Movie Park 2026?
@@ -671,18 +686,31 @@ aufgehoben.
 
 ## Zum Schluss
 
-Ich bin diesem Park lange nicht gerecht geworden. Aus dem Rheinland fährt man
-am Phantasialand vorbei, um nach Bottrop zu kommen, und wer das tut, will einen
+Ich bin diesem Park lange nicht gerecht geworden. Aus dem Rheinland fährt man am
+Phantasialand vorbei, um nach Bottrop zu kommen, und wer das tut, will einen
 Grund. Zwanzig Minuten Median sind erst mal keiner, das klingt nach einem Park,
-in dem nichts los ist.
+in dem nichts los ist. Dabei ist genau das der Grund: Du fährst hier an einem
+normalen Tag mehr als im Phantasialand oder im Europa-Park, und sechs Wochen im
+Jahr steht in denselben Kulissen das nach eigener Zählung größte Halloween-Event
+des Kontinents.
 
-Es ist eher andersherum. Hier steht auf 45 Hektar eine Kulissenstadt, die 1996
-mit dem Geld eines Hollywood-Studios gebaut wurde und deren Fassaden immer noch
-stehen, obwohl das Studio seit zweiundzwanzig Jahren weg ist. Der Park hat in
-dieser Zeit vier Eigentümer gehabt, jede Marke verloren, mit der er angetreten
-war, eine gegossene Achterbahnbaustelle liegen lassen, und irgendwann angefangen,
-Fahrgeschäfte über die eigene Vergangenheit zu bauen. Die beste Halle im Park
-erzählt heute von den Attraktionen, die es hier mal gab.
+Dazu gehört aber auch der andere Satz, und den sage ich als jemand, der gerne
+hinfährt: **Seine besten Jahre hat dieser Park hinter sich.** Die lagen in der
+Warner-Zeit, als ein Studio Geld und Figuren hineinsteckte, und was danach kam,
+war über weite Strecken Verwaltung des Bestands. Die letzte Achterbahn für
+Erwachsene kam 2017, die letzte geplante liegt seit 2012 als Fundament unter dem
+Rasen, und die Neuheit im Jubiläumsjahr ist ein Filmtunnel im Gebäude einer
+Attraktion von 2014.
+
+Und trotzdem hat kaum ein deutscher Park so viele Leute, die immer wieder
+kommen. Im Oktober reisen sie aus dem ganzen Land nach Bottrop an, viele davon
+jedes Jahr, und wer hier mit dem Saisonpass durch die Streets of New York läuft,
+tut das nicht wegen der Investitionssumme. Auf 45 Hektar steht eine Kulissenstadt,
+die 1996 mit dem Geld eines Hollywood-Studios gebaut wurde und deren Fassaden
+immer noch stehen, obwohl das Studio seit zweiundzwanzig Jahren weg ist. Vier
+Eigentümer, jede Marke verloren, mit der er angetreten war, und irgendwann fing
+er an, Fahrgeschäfte über die eigene Vergangenheit zu bauen. Die beste Halle im
+Park erzählt heute von den Attraktionen, die es hier mal gab.
 
 Wenn du in diesem Herbst hinfährst: Nimm den Sonntag, nicht den Samstag, sei um
 zehn am Eingang und stell dich zuerst bei Star Trek an. Und wenn du nach

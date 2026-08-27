@@ -17,6 +17,7 @@ import { useMounted } from '@/lib/hooks/use-mounted';
 import type { AttractionStatus, ParkHistoricalStats } from '@/lib/api/types';
 import { getAttractionDisplayStatus } from '@/lib/utils/park-utils';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { cn } from '@/lib/utils';
 
 interface ParkStatsSectionProps {
   continent: string;
@@ -260,6 +261,9 @@ function StatsContent({
       .sort((a, b) => a.sortKey - b.sortKey);
   }, [stats.byDayOfWeek, locale]);
 
+  const showMonths = show.includes('months') && monthRows.length > 0;
+  const showWeekdays = show.includes('weekdays') && dowRows.length > 0;
+
   return (
     <section
       aria-labelledby={hideHeading ? undefined : 'stats-heading'}
@@ -292,9 +296,13 @@ function StatsContent({
         />
       )}
 
-      {(show.includes('months') || show.includes('weekdays')) && (
-        <div className="grid gap-4 md:grid-cols-2">
-          {show.includes('months') && monthRows.length > 0 && (
+      {(showMonths || showWeekdays) && (
+        // Two columns only when BOTH cards are there. `md:grid-cols-2` unconditionally left a
+        // lone card sitting in the first of two tracks, at half the column width with nothing
+        // beside it — which is what a blog post's `stats-widget show=weekdays` always renders,
+        // and what the park page renders for a park whose window has one of the two tables.
+        <div className={cn('grid gap-4', showMonths && showWeekdays && 'md:grid-cols-2')}>
+          {showMonths && (
             <ParkStatsCrowdCard
               iconType="calendar"
               title={t('byMonthTitle')}
@@ -304,7 +312,7 @@ function StatsContent({
               labelDays={t('sampleDaysShort')}
             />
           )}
-          {show.includes('weekdays') && dowRows.length > 0 && (
+          {showWeekdays && (
             <ParkStatsCrowdCard
               iconType="layers"
               title={t('byDowTitle')}
