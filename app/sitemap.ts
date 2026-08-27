@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { getGeoStructure } from '@/lib/api/discovery';
+import { getContentLastmodIndex } from '@/lib/seo/content-changes/store';
 import { getParkImageSet } from '@/lib/utils/park-assets';
 import { locales, SITE_URL } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
@@ -22,8 +23,22 @@ function buildAlternates(pathFn: (locale: string) => string): {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const geo = await getGeoStructure(86400);
+  const [geo, lastmodIndex] = await Promise.all([getGeoStructure(86400), getContentLastmodIndex()]);
   const routes: MetadataRoute.Sitemap = [];
+
+  /**
+   * `<lastmod>` for a catalog URL, as the daily content-change crawl observed it.
+   *
+   * Returns `undefined` for a path the crawl has not seen yet — a park added
+   * since the last run — which leaves the entry exactly as it was before this
+   * existed. Never a guess and never today's date: a value that is identical on
+   * every URL is what gets a sitemap's `lastmod` discounted wholesale. See
+   * `lib/seo/content-changes/fingerprint.ts`.
+   */
+  const lastModified = (contentPath: string): Date | undefined => {
+    const changedAt = lastmodIndex.get(contentPath);
+    return changedAt ? new Date(changedAt) : undefined;
+  };
 
   // ── Static pages ──────────────────────────────────────────────────────────
   // Impressum/Datenschutz are intentionally absent: they are noindex pages,
@@ -44,6 +59,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       },
       {
         url: `${BASE_URL}/${locale}/parks`,
+        lastModified: lastModified('/parks'),
         changeFrequency: 'weekly',
         priority: 0.8,
         alternates: parksAlternates,
@@ -111,9 +127,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const locale of locales) {
     routes.push({
       url: `${BASE_URL}/${locale}/${GLOSSARY_SEGMENTS[locale as keyof typeof GLOSSARY_SEGMENTS]}`,
-      // The glossary is prerendered and genuinely unchanged since this date, so saying so is the
-      // rare honest `lastmod` on this site — see lib/glossary/content-date.ts for why the park
-      // and ride pages deliberately get none.
+      // Hand-maintained rather than observed: the glossary is prerendered from files
+      // in this repo, so the review date is simply known — see
+      // lib/glossary/content-date.ts. Park and ride URLs get theirs from the daily
+      // content-change crawl instead, because nothing writes their date down.
       lastModified: new Date(GLOSSARY_CONTENT_DATE),
       changeFrequency: 'weekly',
       priority: 0.5,
@@ -172,9 +189,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const continent of geo.continents) {
     const continentPath = `/parks/${continent.slug}`;
     const continentAlternates = buildAlternates(() => continentPath);
+    const continentLastModified = lastModified(continentPath);
     for (const locale of locales) {
       routes.push({
         url: `${BASE_URL}/${locale}${continentPath}`,
+        lastModified: continentLastModified,
         changeFrequency: 'weekly',
         priority: 0.6,
         alternates: continentAlternates,
@@ -184,9 +203,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     for (const country of continent.countries) {
       const countryPath = `/parks/${continent.slug}/${country.slug}`;
       const countryAlternates = buildAlternates(() => countryPath);
+      const countryLastModified = lastModified(countryPath);
       for (const locale of locales) {
         routes.push({
           url: `${BASE_URL}/${locale}${countryPath}`,
+          lastModified: countryLastModified,
           changeFrequency: 'weekly',
           priority: 0.7,
           alternates: countryAlternates,
@@ -197,9 +218,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         if (city.parks.length > 1) {
           const cityPath = `/parks/${continent.slug}/${country.slug}/${city.slug}`;
           const cityAlternates = buildAlternates(() => cityPath);
+          const cityLastModified = lastModified(cityPath);
           for (const locale of locales) {
             routes.push({
               url: `${BASE_URL}/${locale}${cityPath}`,
+              lastModified: cityLastModified,
               changeFrequency: 'weekly',
               priority: 0.6,
               alternates: cityAlternates,
@@ -210,6 +233,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         for (const park of city.parks) {
           const parkPath = `/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}`;
           const parkAlternates = buildAlternates(() => parkPath);
+          const parkLastModified = lastModified(parkPath);
           // Image sitemap extension: associates the park's hero photo(s) with its URL so Google can
           // pick one as the SERP thumbnail (Google-recommended over relying on in-page discovery
           // alone). Uses the full aspect-ratio set when present, else the single base image.
@@ -221,6 +245,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           for (const locale of locales) {
             routes.push({
               url: `${BASE_URL}/${locale}${parkPath}`,
+              lastModified: parkLastModified,
               changeFrequency: 'daily',
               priority: 1.0,
               alternates: parkAlternates,
@@ -239,7 +264,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // ── Blog pages ────────────────────────────────────────────────────────────
   const { listPosts, buildPostAlternates, getTranslationIndex, hasPublishedPosts } =
     await import('@/lib/blog');
-  const { buildCategoryTree } = await import('@/lib/blog/categories');
+  const { buildCategoryTree, filterPostsByCategory, parseCategoryPath } =
+    await import('@/lib/blog/categories');
+
+  /**
+   * When a blog LISTING page last changed: the newest post it shows.
+   *
+   * These pages carry no date of their own — an index, a category, a tag and an
+   * author profile are all just a filtered list — but they change the moment a
+   * post lands in them, and that is a date the frontmatter already states. It is
+   * the same claim the posts' own entries make, so it costs nothing to be right
+   * about. `undefined` for an empty list rather than today's date.
+   */
+  const newestPostDate = (
+    posts: readonly { frontmatter: { date: string; updatedAt?: string } }[]
+  ): Date | undefined => {
+    let newest = '';
+    for (const post of posts) {
+      const dated = post.frontmatter.updatedAt ?? post.frontmatter.date;
+      if (dated > newest) newest = dated;
+    }
+    return newest ? new Date(newest) : undefined;
+  };
 
   // The blog only exists for the frontend once something is published —
   // keep the index + posts + category/tag pages out of the sitemap until then.
@@ -263,6 +309,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const locale of blogLocales) {
     routes.push({
       url: `${BASE_URL}/${locale}/blog`,
+      lastModified: newestPostDate(listPosts(locale as import('@/i18n/config').Locale)),
       changeFrequency: 'daily',
       priority: 0.7,
       alternates: blogIndexAlternates,
@@ -296,10 +343,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Blog category pages
   for (const locale of blogLocales) {
+    const posts = listPosts(locale as import('@/i18n/config').Locale);
     const { flat } = buildCategoryTree(locale as import('@/i18n/config').Locale);
     for (const path of flat.keys()) {
       routes.push({
         url: `${BASE_URL}/${locale}/blog/category/${path}`,
+        // Descendants included, exactly as the page lists them.
+        lastModified: newestPostDate(filterPostsByCategory(posts, parseCategoryPath(path))),
         changeFrequency: 'weekly',
         priority: 0.4,
         alternates: buildBlogAlternates(() => `/blog/category/${path}`),
@@ -315,14 +365,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // sitemap advertising a page that asks not to be indexed is a contradiction we would
   // be sending on purpose. Both sides read the same threshold from `@/lib/blog/tags`,
   // so a tag crossing it reappears here and drops its robots meta in the same build.
-  const { listTags, buildTagAlternates, TAG_INDEX_MIN_POSTS } = await import('@/lib/blog/tags');
+  const { listTags, buildTagAlternates, normalizeTagSlug, TAG_INDEX_MIN_POSTS } =
+    await import('@/lib/blog/tags');
   for (const locale of blogLocales) {
+    const posts = listPosts(locale as import('@/i18n/config').Locale);
     for (const tag of listTags(locale as import('@/i18n/config').Locale)) {
       if (tag.count < TAG_INDEX_MIN_POSTS) continue;
       const tagAlternates = buildTagAlternates(locale as import('@/i18n/config').Locale, tag.slug);
       if (tagAlternates['en']) tagAlternates['x-default'] = tagAlternates['en'];
       routes.push({
         url: `${BASE_URL}/${locale}/blog/tag/${tag.slug}`,
+        lastModified: newestPostDate(
+          posts.filter((p) =>
+            (p.frontmatter.tags ?? []).some((t) => normalizeTagSlug(t) === tag.slug)
+          )
+        ),
         changeFrequency: 'weekly',
         priority: 0.4,
         alternates: { languages: tagAlternates },
@@ -331,11 +388,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   // Blog author pages
-  const { listAuthorKeys } = await import('@/lib/blog/authors');
+  const { listAuthorKeys, resolveAuthor } = await import('@/lib/blog/authors');
   for (const locale of blogLocales) {
+    const posts = listPosts(locale as import('@/i18n/config').Locale);
     for (const author of listAuthorKeys()) {
       routes.push({
         url: `${BASE_URL}/${locale}/blog/authors/${author}`,
+        lastModified: newestPostDate(
+          posts.filter(
+            (p) =>
+              resolveAuthor(p.frontmatter.author, locale as import('@/i18n/config').Locale).key ===
+              author
+          )
+        ),
         changeFrequency: 'weekly',
         priority: 0.4,
         alternates: buildBlogAlternates(() => `/blog/authors/${author}`),

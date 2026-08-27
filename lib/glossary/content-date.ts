@@ -8,15 +8,18 @@
  * It lives here rather than next to the schema component because `app/sitemap.ts` also needs it,
  * and a sitemap importing from `components/seo/` would be the wrong direction.
  *
- * **Why the glossary gets a lastmod when almost nothing else does.** The API carries no per-entity
- * content timestamp — `/v1/sitemap/attractions` answers `{url, slug}`, and the park payloads only
- * date their live readings (`queues[].lastUpdated`, `typicalWaits.generatedAt`). Park and ride
- * pages are `force-dynamic` and genuinely differ every day, so stamping them with today's date
- * would be accurate but would put one moving value on ~44,000 URLs, which is indistinguishable
- * from a build stamp and is how a sitemap gets its lastmod discounted wholesale. The glossary is
- * the opposite case and the reason this is worth having: it is prerendered, it really has not
- * changed since this date, and saying so lets a crawler skip 1,608 static pages and spend the
- * budget on the ones that move.
+ * **Why this one is hand-maintained.** The API carries no per-entity content timestamp —
+ * `/v1/sitemap/attractions` answers `{url, slug}`, and the park payloads only date their live
+ * readings (`queues[].lastUpdated`, `typicalWaits.generatedAt`) — so park and ride URLs get their
+ * `<lastmod>` from an *observed* one: a daily crawl fingerprints the stable half of each page and
+ * the day the fingerprint moves is the day the page changed
+ * (`lib/seo/content-changes/fingerprint.ts`). Stamping those 44,000 URLs with today's date instead
+ * would be accurate and useless, since one moving value everywhere is indistinguishable from a
+ * build stamp and is how a sitemap gets its lastmod discounted wholesale.
+ *
+ * The glossary needs none of that machinery: it is prerendered from files in this repo, so the
+ * date it was last reviewed is simply known, and one constant beats fingerprinting 268 terms to
+ * rediscover it.
  *
  * Update it when terms are added, removed or rewritten. A stale date here is worse than none:
  * it tells a crawler not to come back for content that did change.

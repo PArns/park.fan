@@ -17,19 +17,26 @@ Hub + attraction pages were re-added in July 2026: SERP checks showed competitor
 
 ## What IS in the sitemaps
 
-| URLs                                                         | Priority | changeFrequency | lastModified         |
-| ------------------------------------------------------------ | -------- | --------------- | -------------------- |
-| `/{locale}` (home)                                           | 0.9      | weekly          | –                    |
-| `/{locale}/parks` (overview hub)                             | 0.8      | weekly          | –                    |
-| `/{locale}/parks/{continent}` + `/{country}` hubs            | 0.6–0.7  | weekly          | –                    |
-| `/{locale}/parks/…/{city}` hubs (**only multi-park cities**) | 0.6      | weekly          | –                    |
-| `/{locale}/parks/{continent}/{country}/{city}/{park}`        | 1.0      | daily           | – (no API timestamp) |
-| `/{locale}/parks/…/{park}/{attraction}` (own sitemap)        | 0.6      | weekly          | –                    |
-| `/{locale}/{glossary-segment}/{term}`                        | 0.8      | monthly         | –                    |
-| `/{locale}/blog` + posts etc. (**blog-live locales only**)   | 0.4–0.7  | daily–monthly   | posts: `updatedAt`   |
-| `/{locale}/search` (plain, no query)                         | 0.5      | monthly         | –                    |
-| `/{locale}/{howto-segment}` (the guide, localized slug)      | 0.8      | monthly         | –                    |
-| `/{locale}/{glossary-segment}` (index)                       | 0.5      | weekly          | –                    |
+| URLs                                                         | Priority | changeFrequency | lastModified              |
+| ------------------------------------------------------------ | -------- | --------------- | ------------------------- |
+| `/{locale}` (home)                                           | 0.9      | weekly          | –                         |
+| `/{locale}/parks` (overview hub)                             | 0.8      | weekly          | observed (catalog)        |
+| `/{locale}/parks/{continent}` + `/{country}` hubs            | 0.6–0.7  | weekly          | observed (catalog)        |
+| `/{locale}/parks/…/{city}` hubs (**only multi-park cities**) | 0.6      | weekly          | observed (catalog)        |
+| `/{locale}/parks/{continent}/{country}/{city}/{park}`        | 1.0      | daily           | observed (content change) |
+| `/{locale}/parks/…/{park}/{attraction}` (own sitemap)        | 0.6      | weekly          | observed (content change) |
+| `/{locale}/{glossary-segment}/{term}`                        | 0.8      | monthly         | `GLOSSARY_CONTENT_DATE`   |
+| `/{locale}/blog/{slug}` (**blog-live locales only**)         | 0.6      | monthly         | `updatedAt ?? date`       |
+| `/{locale}/blog` + category/tag/author listings              | 0.4–0.7  | daily–weekly    | newest post in the list   |
+| `/{locale}/search` (plain, no query)                         | 0.5      | monthly         | –                         |
+| `/{locale}/{howto-segment}` (the guide, localized slug)      | 0.8      | monthly         | –                         |
+| `/{locale}/{glossary-segment}` (index)                       | 0.5      | weekly          | `GLOSSARY_CONTENT_DATE`   |
+
+The six URLs still marked `–` are `/`, `/search`, `/fancast`, `/contribute`, the guide and the
+best-time hub, ×6 locales — 36 in total. They are code, not content: nothing writes down when they
+last changed, and the only honest option would be a hand-maintained constant per page that would
+be stale within two deploys. `GLOSSARY_CONTENT_DATE` earns its keep because the glossary really is
+reviewed as a body of text; these are not.
 
 Every `/sitemap.xml` entry carries absolute `alternates.languages` (hreflang) for all 6 locales plus `x-default` (EN); the attraction children deliberately do not (see above).
 
@@ -49,8 +56,91 @@ Every `/sitemap.xml` entry carries absolute `alternates.languages` (hreflang) fo
 
 ---
 
+## `<lastmod>`: observed, not stamped
+
+Google **ignores `changefreq` and `priority`** and reads `<lastmod>` only where it is
+"consistently and verifiably accurate". Until this existed the attraction children carried
+42,756 URLs with none of the three doing anything, and the main sitemap dated 1,662 of its
+3,480 — the glossary and the blog posts, which are files in this repo with a date on them.
+Everything derived from the API had nothing.
+
+The API is why: it carries **no per-entity content timestamp**. `/v1/sitemap/attractions`
+answers `{url, slug}`, and a park payload dates only its live readings
+(`analytics.occupancy.updatedAt`, `typicalWaits.dataTo`). So the date is **observed** instead:
+
+1. `/api/cron/content-changes` runs daily at 05:30 UTC, fetches all 212 parks fresh
+   (`lib/seo/content-changes/crawl.ts`) and fingerprints the **stable** half of every park and
+   ride — name, land, height limits, ride profile, curated park facts, the photos and articles
+   the page carries. Everything volatile is excluded by hand, and the exclusion list is the
+   whole point: `queues`, `status`, `crowdLevel`, `statistics`, `typicalWaits`, `bestVisitTimes`,
+   `ropeDrop`, `weather`, `schedule`, `analytics`. See
+   [`fingerprint.ts`](../../lib/seo/content-changes/fingerprint.ts).
+2. The run diffs against the stored snapshot and stamps today's date on the keys whose
+   fingerprint moved. A date only ever moves forward, and only on a real difference.
+3. The snapshot lives in Vercel Blob (`seo/content-changes.json`, local file in dev), because it
+   has to survive both a deploy and an ISR regeneration.
+4. Both sitemaps read it. A path the crawl has not seen — a ride added since the last run —
+   gets **no** tag rather than a guess.
+
+Measured on the first full run: **7,100 of 7,126** attraction URLs per locale carry a date
+(42,600 of 42,756 across six), and the main sitemap goes from 1,662/3,480 to **3,444/3,480**.
+The 26 attractions without one are in `/v1/sitemap/attractions` but not in their park's payload.
+
+**Why not just stamp today.** A park page repaints every five minutes, so "today" would be
+accurate on all 44,000 URLs every day — and a value that is identical everywhere carries nothing
+to be accurate about. That is how a sitemap's `lastmod` gets discounted wholesale, and it would
+take the glossary's and the blog's honest dates down with it.
+
+Two failure modes are handled explicitly, because both would otherwise be invisible:
+
+- **A park the API does not answer for** keeps the dates it already has (`retainUncovered`).
+  Dropping it would re-add its rides tomorrow, and a re-add reads as a change — one five-second
+  timeout would become 82 false recrawl invitations.
+- **A change to the fingerprint itself** (`FINGERPRINT_VERSION`) makes the stored hashes
+  incomparable, which is not the same as the catalog having changed. The diff then adopts the new
+  hashes and keeps every date.
+
+`pnpm test:content-changes` pins both, plus the blindness to every live field, since none of it
+is visible from a green build.
+
+### Rejected: let the backend send the date
+
+The obvious shortcut is a new API route exposing the per-entity timestamp, which would delete the
+crawl entirely. It was checked against the backend source and it does not work:
+
+- `attractions` and `parks` do carry a TypeORM `@UpdateDateColumn`, but the children-metadata sync
+  (`0 4 * * *`) calls `attractionRepository.update(id, {name, latitude, longitude})` for every
+  matched ride **unconditionally**, and `Repository.update()` issues a raw UPDATE with no diff. So
+  `updatedAt` moves on all ~7,100 rows every morning while writing back the values already there.
+  Published as `lastmod`, that is one identical date on 44,000 URLs — the exact pathology this
+  design avoids, wearing a field name that looks authoritative.
+- A **content-scoped** column would be the right source and is worth asking the backend for, but it
+  would not remove the crawl: media versions and blog backlinks are frontend content the backend
+  has never heard of, and they are half of what makes a park or ride page change.
+- **Bandwidth is not the argument.** One pass is ~14 MB across 212 parks; the fields the
+  fingerprint reads are 24 % of it (measured over six parks, 37–96 rides each). A lean projection
+  endpoint would save ~10 MB _per day_, next to a prewarm cron in this repo that renders 1,272
+  pages every six hours. The crawl itself takes 1.4 s warm, 5.4 s cold for the whole catalog.
+
+At **build** time the snapshot may not be readable (no Blob token in the build environment). The
+sitemaps then prerender without `lastmod` and pick it up on their next revalidation, within a day.
+
+### IndexNow submits what moved
+
+The same snapshot fixes the same problem one door down: `/api/cron/indexnow` used to hand
+IndexNow all ~46,000 URLs every morning, which is the "everything changed" non-signal in
+protocol form. It now submits the catalog paths whose date is within `RECENT_DAYS` (2), plus the
+static high-value set and the blog surfaces, which are a few hundred URLs and not worth a
+detector. Two fallbacks: an unreadable or empty snapshot submits everything, as before, and
+Mondays are a full sweep — a fingerprint that silently stopped detecting anything would
+otherwise mean this route pings nothing, forever. `?dry=1` builds the list and submits nothing,
+which is the only way to see which URLs a run would pick.
+
+---
+
 ## Related
 
 - [robots.ts](../../app/robots.ts) — allows `/api/og/` (OG images) explicitly; does **not** block `/_next/`
 - [SEO Analysis](analysis.md)
-- IndexNow cron (`app/api/cron/indexnow/route.ts`) submits the same URL set daily at 06:00 UTC
+- IndexNow cron (`app/api/cron/indexnow/route.ts`) — daily at 06:00 UTC, changed URLs only (see above)
+- Content-change crawl (`app/api/cron/content-changes/route.ts`) — daily at 05:30 UTC, writes the `lastmod` snapshot
