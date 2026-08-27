@@ -24,7 +24,11 @@ import { cn } from '@/lib/utils';
 import { GlassCard } from '@/components/common/glass-card';
 import { PageSection } from '@/components/common/page-section';
 import { RideLayoutRail } from '@/components/parks/ride-layout-rail';
-import { resolveRideProfile, rideProfileRenders } from '@/lib/glossary/ride-profile';
+import {
+  hasRideProfileFacts,
+  resolveRideProfile,
+  rideProfileRendersFrom,
+} from '@/lib/glossary/ride-profile';
 import type { Locale } from '@/i18n/config';
 import type { RideProfile } from '@/lib/api/types';
 
@@ -76,19 +80,18 @@ function Fact({
 export async function RideProfileSection({ profile, locale }: RideProfileSectionProps) {
   const t = await getTranslations('attraction.rideProfile');
   const tGlossary = await getTranslations('glossary');
-  const { elements, types, manufacturerHref } = await resolveRideProfile(profile, locale);
+  const resolved = await resolveRideProfile(profile, locale);
+  const { elements, types, manufacturerHref } = resolved;
 
   const stats = profile.stats ?? null;
-  // Whether the facts grid has anything to draw. The question of whether the CHAPTER renders at
-  // all is the same predicate the chapter row asks — one definition, in
-  // `lib/glossary/ride-profile.ts`, so the two cannot disagree about whether this anchor exists.
-  const hasFacts =
-    Boolean(profile.manufacturer) ||
-    profile.openedYear != null ||
-    profile.inversions != null ||
-    stats !== null;
+  // Both questions come from `lib/glossary/ride-profile.ts`: whether the facts grid has anything
+  // to draw, and whether the CHAPTER renders at all — the latter being the predicate the ride
+  // page's chapter row asks before offering a jump to `#ride-profile`. One definition each, so
+  // the row cannot offer an anchor this section declines to render. Asked against the value
+  // already resolved above rather than resolving a second time.
+  const hasFacts = hasRideProfileFacts(profile);
 
-  if (!(await rideProfileRenders(profile, locale))) return null;
+  if (!rideProfileRendersFrom(profile, resolved)) return null;
 
   // The same nine keys the glossary term page builds for its own player.
   const playerLabels = {
