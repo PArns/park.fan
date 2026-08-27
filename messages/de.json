@@ -480,6 +480,7 @@
     "peak": "Max.",
     "forecast": "Vorhersage",
     "calendar": "Kalender",
+    "tileCalendarLabel": "Wartezeiten-Kalender",
     "crowdCalendar": "Crowd-Kalender & Beste Besuchstage",
     "map": "Karte",
     "calendarLegend": "Legende",
@@ -575,7 +576,7 @@
     "holidaysLabel": "Ferien & Feiertage",
     "tileAttractions": "{open} offen · Ø {avg} min · Headliner ab {min} min",
     "tileCalendar": "Beste Besuchstage bis ein Jahr im Voraus",
-    "tileCalendarQuietDay": "Ruhigster Tag bald: {day}",
+    "tileCalendarQuietDay": "Ruhigster Tag: {day} ({days, plural, =0 {heute} =1 {morgen} other {in # Tagen}})",
     "tileMap": "Wartezeiten auf dem Plan · {lands} Themenbereiche",
     "tileShowsNext": "Nächste: {time} · in {duration}",
     "tileRestaurants": "{open} von {total} geöffnet",
@@ -725,6 +726,16 @@
       "schoolVacation": "Schulferien im Bundesland des Parks",
       "bridgeDay": "Brückentag zwischen Feiertag und Wochenende",
       "neighbor": "Ferien in Nachbarregionen – mehr Tagesgäste, längere Wartezeiten"
+    },
+    "calendarPage": {
+      "breadcrumb": "Kalender",
+      "h1Suffix": "Wartezeiten-Kalender",
+      "metaTitle": "{park} Wartezeiten-Kalender: ruhige Tage & Andrang",
+      "metaTitleShort": "{park}: Wartezeiten-Kalender",
+      "metaDescription": "Wann ist es im {park} in {city} leer? Andrang pro Tag, Öffnungszeiten, Ferien und Wetter für die nächsten Monate – mit KI-Prognose je Tag.",
+      "intro": "Für jeden Tag der nächsten Monate: erwarteter Andrang, Öffnungszeiten, Ferien und Feiertage, die auf {park} wirken. Tippe auf einen Tag für die Details.",
+      "backToPark": "Zurück zu den Wartezeiten im {park}",
+      "gridTitle": "Monat für Monat"
     }
   },
   "attractions": {

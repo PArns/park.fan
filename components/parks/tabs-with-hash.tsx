@@ -3,7 +3,7 @@
 import { memo, useDeferredValue, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
-import { Search, Zap, Sparkles, UtensilsCrossed, CalendarDays, CloudSun, Map } from 'lucide-react';
+import { Search, Zap, Sparkles, UtensilsCrossed, CloudSun, Map } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent } from '@/components/ui/tabs';
@@ -23,22 +23,12 @@ import { useTabHashRouting } from '@/lib/hooks/use-tab-hash-routing';
 import { useAttractionFilter } from '@/lib/hooks/use-attraction-filter';
 import { stripNewPrefix } from '@/lib/utils';
 
-import type {
-  ParkWithAttractions,
-  IntegratedCalendarResponse,
-  ParkAttraction,
-} from '@/lib/api/types';
+import type { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
 
 // Dynamic import to avoid SSR issues with Leaflet and reduce bundle size
 const ParkMap = dynamic(() => import('@/components/parks/park-map').then((mod) => mod.ParkMap), {
   ssr: false,
 });
-const ParkCalendarGrid = dynamic(
-  () => import('@/components/parks/park-calendar-grid').then((mod) => mod.ParkCalendarGrid),
-  {
-    ssr: false,
-  }
-);
 
 interface TabsWithHashProps {
   defaultValue: string;
@@ -47,17 +37,12 @@ interface TabsWithHashProps {
   /** The park has weather data — drives both the tile and the chapter behind it. */
   weatherAvailable: boolean | undefined;
   park: ParkWithAttractions;
-  /** Optional SSR seed; the calendar grid client-fetches per visible month when omitted. */
-  calendarData?: IntegratedCalendarResponse;
   continent: string;
   country: string;
   city: string;
   parkSlug: string;
   landNames: string[];
   attractionsByLand: Record<string, ParkAttraction[]>;
-  /** <ParkBestDaysSection>, rendered by the page and handed down as a slot — it is a Server
-   *  Component and this tree is a client one. It opens the calendar chapter. */
-  bestDaysSlot?: React.ReactNode;
 }
 
 // Memoized: `LiveParkData` re-renders on every 5-min poll's `isFetching` flip, but all props
@@ -70,20 +55,22 @@ export const TabsWithHash = memo(function TabsWithHash({
   restaurantsAvailable,
   weatherAvailable,
   park,
-  calendarData,
   continent,
   country,
   city,
   parkSlug,
   landNames,
   attractionsByLand,
-  bestDaysSlot,
 }: TabsWithHashProps) {
   const t = useTranslations('parks');
 
   const { isMounted, activeTab, handleTabChange, tabsRef } = useTabHashRouting({
     defaultValue,
     park,
+    continent,
+    country,
+    city,
+    parkSlug,
   });
 
   const {
@@ -353,38 +340,6 @@ export const TabsWithHash = memo(function TabsWithHash({
             </div>
           </TabsContent>
         )}
-
-        <TabsContent
-          value="calendar"
-          className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
-        >
-          {/* Best travel time OPENS the calendar chapter: it is the answer ("go on these days"),
-              the grid below it the evidence. It used to sit between the header and the tabs, a
-              ~500px block about a future visit wedged in front of the way to everything else. It
-              is NOT gated on `deferredTab` — it renders server-side from the best-days seed, and
-              deferring it would drop that out of the first HTML.
-
-              It brings its OWN chapter header, so this tab renders no <ChapterHeading> of its
-              own when it is present: the two stacked read as the section having been opened
-              twice. Without a best-days slot the tab falls back to the normal heading. */}
-          {bestDaysSlot ? (
-            <div className="mb-8">{bestDaysSlot}</div>
-          ) : (
-            <ChapterHeading icon={CalendarDays} title={t('calendar')} frosted />
-          )}
-          {deferredTab === 'calendar' ? (
-            <ParkCalendarGrid
-              park={park}
-              initialCalendarData={calendarData}
-              continent={continent}
-              country={country}
-              city={city}
-              parkSlug={parkSlug}
-            />
-          ) : (
-            <Skeleton className="h-[28rem] w-full rounded-xl" />
-          )}
-        </TabsContent>
 
         <TabsContent
           value="map"

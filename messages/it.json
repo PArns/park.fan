@@ -346,7 +346,7 @@
     "holidaysLabel": "Vacanze e festività",
     "tileAttractions": "{open} aperte · {avg} min in media · di punta da {min} min",
     "tileCalendar": "Giorni migliori, fino a un anno prima",
-    "tileCalendarQuietDay": "Giorno più tranquillo a breve: {day}",
+    "tileCalendarQuietDay": "Giorno più tranquillo: {day} ({days, plural, =0 {oggi} =1 {domani} other {tra # giorni}})",
     "tileMap": "Tempi di attesa sulla mappa · {lands} aree tematiche",
     "tileShowsNext": "Prossimo: {time} · tra {duration}",
     "tileRestaurants": "{open} su {total} aperti",
@@ -418,6 +418,7 @@
     "peak": "Picco",
     "open": "aperto",
     "calendar": "Calendario",
+    "tileCalendarLabel": "Calendario delle attese",
     "crowdCalendar": "Calendario affluenze e giorni migliori per visitare",
     "map": "Mappa",
     "calendarLegend": "Legenda",
@@ -725,6 +726,16 @@
       "schoolVacation": "Vacanze scolastiche nella regione del parco",
       "bridgeDay": "Ponte tra una festività e il weekend",
       "neighbor": "Vacanze nelle regioni vicine – più visitatori giornalieri, attese più lunghe"
+    },
+    "calendarPage": {
+      "breadcrumb": "Calendario",
+      "h1Suffix": "calendario dei tempi di attesa",
+      "metaTitle": "{park}: calendario delle attese e giorni tranquilli",
+      "metaTitleShort": "{park}: calendario delle attese",
+      "metaDescription": "Quando è tranquillo {park} a {city}? Affluenza giorno per giorno, orari, vacanze scolastiche e meteo per i prossimi mesi, con previsione IA quotidiana.",
+      "intro": "Per ogni giorno dei prossimi mesi: affluenza prevista, orari e le vacanze che pesano su {park}. Tocca un giorno per il dettaglio.",
+      "backToPark": "Torna ai tempi di attesa al {park}",
+      "gridTitle": "Mese per mese"
     }
   },
   "attractions": {

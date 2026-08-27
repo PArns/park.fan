@@ -2,11 +2,12 @@ import type { MetadataRoute } from 'next';
 import { getGeoStructure } from '@/lib/api/discovery';
 import { getContentLastmodIndex } from '@/lib/seo/content-changes/store';
 import { getParkImageSet } from '@/lib/utils/park-assets';
-import { locales, SITE_URL } from '@/i18n/config';
+import { locales, SITE_URL, type Locale } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { GLOSSARY_CONTENT_DATE } from '@/lib/glossary/content-date';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
+import { PARK_CALENDAR_SEGMENTS } from '@/lib/parks/calendar-segments';
 import type { GlossaryTerm } from '@/lib/glossary/types';
 
 const BASE_URL = SITE_URL;
@@ -250,6 +251,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
               priority: 1.0,
               alternates: parkAlternates,
               ...(parkImages && { images: parkImages }),
+            });
+          }
+
+          // The crowd calendar, which was `#calendar` on the park page and therefore in no
+          // sitemap at all — a hash is not a URL. It answers "wann ist es leer", a question with
+          // far less competition than "wartezeiten", so it belongs in the index on its own.
+          // Weekly rather than daily: the forecast for a day three weeks out barely moves, and
+          // the park page above already carries the daily signal for this park.
+          const calendarAlternates = buildAlternates(
+            (locale) => `${parkPath}/${PARK_CALENDAR_SEGMENTS[locale as Locale]}`
+          );
+          for (const locale of locales) {
+            routes.push({
+              url: `${BASE_URL}/${locale}${parkPath}/${PARK_CALENDAR_SEGMENTS[locale]}`,
+              changeFrequency: 'weekly',
+              priority: 0.8,
+              alternates: calendarAlternates,
             });
           }
         }

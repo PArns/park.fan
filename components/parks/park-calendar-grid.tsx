@@ -278,11 +278,12 @@ export function ParkCalendarGrid({
   return (
     <Card className="relative p-4 md:p-6">
       <div className="space-y-4">
-        {/* Header with title and navigation */}
-        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <h2 className="text-2xl font-bold">{t('crowdCalendar')}</h2>
-
-          {/* Month Navigation */}
+        {/* Month navigation. The card carried a bare `<h2>Crowd-Kalender & Beste Besuchstage</h2>`
+            here — a sixth kind of heading, and on the calendar page the third name for one thing
+            after the h1 and the chapter heading above. The chapter heading owns the title now
+            (see `ChapterHeading`, one component for every chapter on the site); this row is the
+            stepper alone. */}
+        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-end">
           <div className="flex items-center gap-2">
             <Button
               variant="outline"

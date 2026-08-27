@@ -14,8 +14,6 @@ import { MapPin } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { getParkByGeoPath, getParkSeasons, leanParkForParkShell } from '@/lib/api/parks';
 import { getBestDaysCalendarSeed } from '@/lib/api/integrated-calendar';
-import type { BestDaysSnapshot } from '@/lib/api/integrated-calendar';
-import { ParkBestDaysSectionSkeleton } from '@/components/parks/park-best-days-section-skeleton';
 import { catchNonFatal } from '@/lib/api/client';
 import { getGlossaryTerms } from '@/lib/glossary/translations';
 import { filterMatchableTerms } from '@/lib/glossary/parse-segments';
@@ -49,7 +47,6 @@ import {
 import { stripNewPrefix } from '@/lib/utils';
 import { LiveParkData } from '@/components/parks/live-park-data';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
-import { ParkBestDaysSection } from '@/components/parks/park-best-days-section';
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
 import { ParkInfoCard } from '@/components/parks/park-info-card';
 import { ParkQuickLinks } from '@/components/parks/park-quick-links';
@@ -534,37 +531,6 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
               landNames={landNames}
               attractionsByLand={attractionsByLand}
               otherAttractionsLabel={otherAttractionsLabel}
-              bestDaysSlot={
-                // Streamed: the seeded best-days content arrives in the same response a beat after
-                // the shell (skeleton shown until it lands), so the cold `/best-days` fetch never
-                // gates TTFB. The client query still takes over on hydration.
-                // The fallback gets the same header props as <SeededBestDays> below, so it holds
-                // the real (data-free) header and reserves the section's true height instead of
-                // letting the attraction grid jump when the seed lands.
-                <Suspense
-                  fallback={
-                    <ParkBestDaysSectionSkeleton
-                      parkName={parkName}
-                      parkSlug={parkSlug}
-                      locale={locale}
-                      showCalendarLink
-                    />
-                  }
-                >
-                  <SeededBestDays
-                    seedPromise={bestDaysSeedPromise}
-                    continent={continent}
-                    country={country}
-                    city={city}
-                    parkSlug={parkSlug}
-                    timezone={park.timezone}
-                    hasOperatingSchedule={park.hasOperatingSchedule}
-                    parkName={parkName}
-                    locale={locale}
-                    seedNowMs={seedNowMs}
-                  />
-                </Suspense>
-              }
             />
 
             {/* Nearby Parks — streamed (geo proximity lookup + live park cards) */}
@@ -674,55 +640,5 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
         </PageContainer>
       </>
     </RouteMessages>
-  );
-}
-
-/**
- * Streamed best-days slot: awaits the (off-critical-path) best-days seed INSIDE its own Suspense
- * boundary and renders the seeded <ParkBestDaysSection>. Because the await happens here — not in
- * the page body — the cold `/best-days` fetch never gates the page's TTFB: the shell flushes first
- * and this content streams into the same response (crawlers still get it in the final HTML). A
- * `null` seed (timeout/error) falls through to the section's own skeleton + client fetch.
- */
-async function SeededBestDays({
-  seedPromise,
-  continent,
-  country,
-  city,
-  parkSlug,
-  timezone,
-  hasOperatingSchedule,
-  parkName,
-  locale,
-  seedNowMs,
-}: {
-  seedPromise: Promise<BestDaysSnapshot | null>;
-  continent: string;
-  country: string;
-  city: string;
-  parkSlug: string;
-  timezone: string;
-  hasOperatingSchedule: boolean;
-  parkName: string;
-  locale: string;
-  seedNowMs: number;
-}) {
-  const seed = await seedPromise;
-  return (
-    <ParkBestDaysSection
-      continent={continent}
-      country={country}
-      city={city}
-      parkSlug={parkSlug}
-      timezone={timezone}
-      hasOperatingSchedule={hasOperatingSchedule}
-      parkName={parkName}
-      locale={locale}
-      initialCalendar={seed}
-      seedNowMs={seedNowMs}
-      // On the park page the `#calendar` tab exists, so surface a visible link to it — the
-      // best-days summary otherwise gave no obvious way through to the full crowd calendar.
-      showCalendarLink
-    />
   );
 }

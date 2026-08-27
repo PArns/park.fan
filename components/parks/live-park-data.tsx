@@ -8,11 +8,7 @@ import { useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { groupAttractionsByLand } from '@/lib/utils/park-utils';
-import type {
-  ParkWithAttractions,
-  IntegratedCalendarResponse,
-  ParkAttraction,
-} from '@/lib/api/types';
+import type { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
 
 interface LiveParkDataProps {
   initialData: ParkWithAttractions;
@@ -20,14 +16,10 @@ interface LiveParkDataProps {
   country: string;
   city: string;
   parkSlug: string;
-  /** Optional SSR seed for the calendar tab. Omitted now that the tab client-fetches per
-   *  visible month — keeps the cold calendar build off the park page's critical path. */
-  calendarData?: IntegratedCalendarResponse;
   landNames: string[];
   attractionsByLand: Record<string, ParkAttraction[]>;
   /** Translated bucket name for attractions the API reports without a land. */
   otherAttractionsLabel: string;
-  bestDaysSlot?: React.ReactNode;
 }
 
 /**
@@ -43,11 +35,9 @@ export function LiveParkData({
   country,
   city,
   parkSlug,
-  calendarData,
   landNames,
   attractionsByLand,
   otherAttractionsLabel,
-  bestDaysSlot,
 }: LiveParkDataProps) {
   const t = useTranslations('common');
   // Gate the live-refetch indicator on mount: the server render (and first client render) must agree
@@ -101,14 +91,12 @@ export function LiveParkData({
       restaurantsAvailable={currentPark.restaurants && currentPark.restaurants.length > 0}
       weatherAvailable={!!currentPark.weather?.current}
       park={currentPark}
-      calendarData={calendarData}
       continent={continent}
       country={country}
       city={city}
       parkSlug={parkSlug}
       landNames={currentLandNames}
       attractionsByLand={currentAttractionsByLand}
-      bestDaysSlot={bestDaysSlot}
     />
   );
 

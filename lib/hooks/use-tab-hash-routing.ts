@@ -2,6 +2,8 @@
 
 import { startTransition, useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { useLocale } from 'next-intl';
+import { parkCalendarPath } from '@/lib/parks/calendar-segments';
 import { stripNewPrefix } from '@/lib/utils';
 import { trackTabChanged, type TabChangedProps } from '@/lib/analytics/umami';
 import type { ParkWithAttractions } from '@/lib/api/types';
@@ -11,19 +13,34 @@ interface UseTabHashRoutingOptions {
   defaultValue: string;
   /** Park identity for the tab-changed analytics event. */
   park: Pick<ParkWithAttractions, 'name'>;
+  /** Geo segments, so an old `#calendar` deep link can be forwarded to the calendar PAGE. */
+  continent: string;
+  country: string;
+  city: string;
+  parkSlug: string;
 }
 
 /**
  * URL-hash ↔ tab synchronization for the park page tabs.
  *
  * - Initializes with `defaultValue` to match server rendering, then activates the tab named
- *   in the URL hash (including `calendar-YYYY-MM` month deep links) on mount and on every
- *   `hashchange`, scrolling the tabs into view below the sticky header.
+ *   in the URL hash on mount and on every `hashchange`, scrolling the tabs into view below the
+ *   sticky header.
+ * - `#calendar` and `#calendar-YYYY-MM` are the exception: the calendar left the tabs and became
+ *   its own page, so those two forward there instead of selecting anything.
  * - `handleTabChange` tracks the analytics event and writes the new hash via
- *   `history.replaceState` (no navigation), preserving a calendar month hash when present.
+ *   `history.replaceState` (no navigation).
  */
-export function useTabHashRouting({ defaultValue, park }: UseTabHashRoutingOptions) {
+export function useTabHashRouting({
+  defaultValue,
+  park,
+  continent,
+  country,
+  city,
+  parkSlug,
+}: UseTabHashRoutingOptions) {
   const pathname = usePathname();
+  const locale = useLocale();
 
   // Initialize with defaultValue to match server rendering (avoids hydration mismatch)
   const [activeTab, setActiveTab] = useState(defaultValue);
@@ -51,13 +68,30 @@ export function useTabHashRouting({ defaultValue, park }: UseTabHashRoutingOptio
     const handleHashChange = () => {
       const hash = window.location.hash.slice(1);
 
-      // Check if hash starts with 'calendar' (e.g., 'calendar' or 'calendar-2026-04')
-      let tabToActivate = hash;
-      if (hash.startsWith('calendar-')) {
-        tabToActivate = 'calendar';
+      // `#calendar` and `#calendar-2026-04` are the old tab's addresses, and the calendar is a
+      // page now. They are forwarded rather than ignored: they are in Google's index, in the FAQ
+      // answers, in the best-days header link and in whatever anybody bookmarked, and dropping
+      // them would land every one of those on the ride list with no explanation. The month part
+      // rides along as the new page's hash, which is why that page kept the `calendar-YYYY-MM`
+      // spelling.
+      //
+      // `location.replace`, not `router.replace`: a client navigation does not reliably carry a
+      // fragment through to the incoming page's mount, and the calendar grid reads the hash in
+      // its own mount effect to pick the month. Measured, `#calendar-2026-11` arrived as
+      // `#calendar-2026-08` — the grid found no hash, fell into its else branch and wrote the
+      // current month over the requested one. A document navigation puts the fragment in the URL
+      // before anything on the new page runs. `replace` either way: the visitor asked for the
+      // calendar, and a back button returning them to a URL that immediately forwards again is a
+      // trap.
+      if (hash === 'calendar' || /^calendar-\d{4}-\d{2}$/.test(hash)) {
+        const target = `/${locale}${parkCalendarPath(locale, continent, country, city, parkSlug)}`;
+        window.location.replace(hash === 'calendar' ? target : `${target}#${hash}`);
+        return;
       }
 
-      const validTabs = ['attractions', 'shows', 'restaurants', 'calendar', 'map', 'weather'];
+      const tabToActivate = hash;
+
+      const validTabs = ['attractions', 'shows', 'restaurants', 'map', 'weather'];
       if (validTabs.includes(tabToActivate)) {
         setActiveTab(tabToActivate);
 
@@ -85,14 +119,14 @@ export function useTabHashRouting({ defaultValue, park }: UseTabHashRoutingOptio
 
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
-  }, [isMounted]);
+  }, [isMounted, locale, continent, country, city, parkSlug]);
 
   // Update URL hash when tab changes
   const handleTabChange = (value: string) => {
     setActiveTab(value);
 
     const tab = value as TabChangedProps['tab'];
-    if (['attractions', 'calendar', 'map', 'shows', 'restaurants', 'weather'].includes(tab)) {
+    if (['attractions', 'map', 'shows', 'restaurants', 'weather'].includes(tab)) {
       // `parkId` was dropped: it identified the same park as `parkName`, and Umami bills every
       // property as another event (see the property budget in `lib/analytics/umami.ts`).
       trackTabChanged({
@@ -101,18 +135,8 @@ export function useTabHashRouting({ defaultValue, park }: UseTabHashRoutingOptio
       });
     }
 
-    // Preserve calendar month hash if switching to calendar tab
-    let newHash = value;
-    if (value === 'calendar') {
-      const currentHash = window.location.hash.slice(1);
-      // If current hash is calendar-YYYY-MM, keep it
-      if (currentHash.match(/^calendar-\d{4}-\d{2}$/)) {
-        newHash = currentHash;
-      }
-    }
-
     // Update URL hash without triggering navigation
-    window.history.replaceState(null, '', `${pathname}#${newHash}`);
+    window.history.replaceState(null, '', `${pathname}#${value}`);
   };
 
   return { isMounted, activeTab, handleTabChange, tabsRef };

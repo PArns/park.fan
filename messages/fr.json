@@ -346,7 +346,7 @@
     "holidaysLabel": "Vacances & jours fériés",
     "tileAttractions": "{open} ouvertes · {avg} min en moyenne · phares dès {min} min",
     "tileCalendar": "Meilleurs jours, jusqu'à un an à l'avance",
-    "tileCalendarQuietDay": "Jour le plus calme bientôt : {day}",
+    "tileCalendarQuietDay": "Jour le plus calme : {day} ({days, plural, =0 {aujourd’hui} =1 {demain} other {dans # jours}})",
     "tileMap": "Temps d'attente sur le plan · {lands} zones thématiques",
     "tileShowsNext": "Prochain : {time} · dans {duration}",
     "tileRestaurants": "{open} sur {total} ouverts",
@@ -418,6 +418,7 @@
     "peak": "Pic",
     "open": "ouvert",
     "calendar": "Calendrier",
+    "tileCalendarLabel": "Calendrier des attentes",
     "crowdCalendar": "Calendrier d'Affluence et Meilleurs Jours",
     "map": "Carte",
     "calendarLegend": "Légende",
@@ -725,6 +726,16 @@
       "schoolVacation": "Vacances scolaires dans la région du parc",
       "bridgeDay": "Jour de pont entre un férié et le week-end",
       "neighbor": "Vacances dans les régions voisines – plus de visiteurs à la journée, attentes plus longues"
+    },
+    "calendarPage": {
+      "breadcrumb": "Calendrier",
+      "h1Suffix": "calendrier des temps d’attente",
+      "metaTitle": "{park} : calendrier des temps d’attente et jours calmes",
+      "metaTitleShort": "{park} : calendrier des attentes",
+      "metaDescription": "Quand {park} à {city} est-il calme ? Affluence jour par jour, horaires, vacances scolaires et météo pour les mois à venir, avec une prévision IA quotidienne.",
+      "intro": "Pour chaque jour des prochains mois : affluence attendue, horaires et les vacances qui pèsent sur {park}. Touche un jour pour le détail.",
+      "backToPark": "Retour aux temps d’attente à {park}",
+      "gridTitle": "Mois par mois"
     }
   },
   "attractions": {

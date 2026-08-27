@@ -346,7 +346,7 @@
     "holidaysLabel": "Holidays & school breaks",
     "tileAttractions": "{open} open · avg {avg} min · headliners from {min} min",
     "tileCalendar": "Best days to visit, up to a year ahead",
-    "tileCalendarQuietDay": "Quietest day soon: {day}",
+    "tileCalendarQuietDay": "Quietest day: {day} ({days, plural, =0 {today} =1 {tomorrow} other {in # days}})",
     "tileMap": "Wait times on the map · {lands} themed areas",
     "tileShowsNext": "Next: {time} · in {duration}",
     "tileRestaurants": "{open} of {total} open",
@@ -418,6 +418,7 @@
     "peak": "Peak",
     "open": "open",
     "calendar": "Calendar",
+    "tileCalendarLabel": "Wait-time calendar",
     "crowdCalendar": "Crowd Calendar & Best Days to Visit",
     "map": "Map",
     "calendarLegend": "Legend",
@@ -725,6 +726,16 @@
       "schoolVacation": "School holidays in the park's own region",
       "bridgeDay": "Bridge day between a holiday and the weekend",
       "neighbor": "Holidays in neighbouring regions – more day-trippers, longer waits"
+    },
+    "calendarPage": {
+      "breadcrumb": "Calendar",
+      "h1Suffix": "wait-time calendar",
+      "metaTitle": "{park} wait-time calendar: quiet days & crowds",
+      "metaTitleShort": "{park} wait-time calendar",
+      "metaDescription": "When is {park} in {city} quiet? Day-by-day crowds, opening hours, school holidays and weather for the months ahead, with an AI forecast per day.",
+      "intro": "For every day of the coming months: expected crowds, opening hours, and the holidays acting on {park}. Tap a day for the details.",
+      "backToPark": "Back to wait times at {park}",
+      "gridTitle": "Month by month"
     }
   },
   "attractions": {
