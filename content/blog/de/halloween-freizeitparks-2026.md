@@ -133,6 +133,11 @@ geöffnet, die Horror-Bereiche starten am frühen Abend (freitags und samstags
 bis 22, sonntags bis 21 Uhr). Tagestickets gibt es ab 39,90 €, die **Mazes sind
 separat zu buchen**. Plane das Budget ein.
 
+Was der Park tagsüber und außerhalb dieser sechs Wochen kann, welcher Wochentag
+dort wirklich der ruhigste ist und warum ab September nur noch von Donnerstag
+bis Sonntag geöffnet wird, steht im
+[Movie-Park-Guide](/blog/movie-park-germany-wartezeiten-tipps).
+
 [Movie Park Germany](ref:movie-park-germany?full)
 
 Wer nicht bis Ende September warten will: Bottrop hat diesen Sommer eines
