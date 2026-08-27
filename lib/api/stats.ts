@@ -109,6 +109,19 @@ export async function getParkHourlyProfile(
 const STATS_SEED_TIMEOUT_MS = 3000;
 
 /**
+ * Bounds a seed fetch. A timeout and a genuine miss both resolve `null`, because they mean the
+ * same thing to every caller: render what you would render without a seed.
+ */
+function withSeedTimeout<T>(promise: Promise<T | null>): Promise<T | null> {
+  return Promise.race([
+    promise,
+    new Promise<null>((resolve) => {
+      setTimeout(() => resolve(null), STATS_SEED_TIMEOUT_MS);
+    }),
+  ]);
+}
+
+/**
  * Timeout-bounded, per-render-deduped wrapper around {@link getParkHistoricalStats} for the blog
  * widgets' server seed.
  *
@@ -136,14 +149,29 @@ export const getParkHistoricalStatsSeed = cache(async function getParkHistorical
   city: string,
   parkSlug: string
 ): Promise<ParkHistoricalStats | null> {
-  const statsPromise = getParkHistoricalStats(continent, country, city, parkSlug).catch(() => null);
+  return withSeedTimeout(
+    getParkHistoricalStats(continent, country, city, parkSlug).catch(() => null)
+  );
+});
 
-  const result = await Promise.race([
-    statsPromise,
-    new Promise<'timeout'>((resolve) => {
-      setTimeout(() => resolve('timeout'), STATS_SEED_TIMEOUT_MS);
-    }),
-  ]);
-
-  return result === 'timeout' ? null : result;
+/**
+ * The same seed for the hourly profile, which needed one for the same reason: the Europa-Park
+ * guide shipped this table as 132 skeleton placeholders — twelve rides × ten hours of nothing —
+ * in the post that replaced a hand-typed matrix with it.
+ *
+ * `topN` is part of the identity, not a detail: it reaches the API as a query parameter and the
+ * client hook keys on it, so a seed fetched with a different one would be replaced by a
+ * differently-sized table the moment the query settles. Callers pass the clamped value they give
+ * the card.
+ */
+export const getParkHourlyProfileSeed = cache(async function getParkHourlyProfileSeed(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string,
+  topN: number
+): Promise<ParkHourlyProfile | null> {
+  return withSeedTimeout(
+    getParkHourlyProfile(continent, country, city, parkSlug, { topN }).catch(() => null)
+  );
 });

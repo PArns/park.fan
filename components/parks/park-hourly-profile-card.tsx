@@ -8,6 +8,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import { CROWD_TEXT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 import { useParkHourlyProfile } from '@/lib/hooks/use-park-hourly-profile';
+import type { ParkHourlyProfile } from '@/lib/api/types';
 
 export interface HourlyProfileLabels {
   title: string;
@@ -34,6 +35,12 @@ interface ParkHourlyProfileCardProps {
   locale: string;
   /** Rides to show. Clamped to 1–12 at the route handler; 8 fills a table without scrolling far. */
   topN?: number;
+  /**
+   * Server-fetched profile (`getParkHourlyProfileSeed`), fetched with the SAME `topN`. Present →
+   * the table is drawn in the first HTML instead of the skeleton grid. Only the statically
+   * prerendered blog widget passes one; the guide page keeps its client fetch.
+   */
+  initialProfile?: ParkHourlyProfile | null;
 }
 
 /**
@@ -69,15 +76,26 @@ export function ParkHourlyProfileCard({
   labels,
   locale,
   topN = 8,
+  initialProfile,
 }: ParkHourlyProfileCardProps) {
-  const { data, isPending } = useParkHourlyProfile({ continent, country, city, parkSlug, topN });
+  const { data, isPending, isSuccess } = useParkHourlyProfile({
+    continent,
+    country,
+    city,
+    parkSlug,
+    topN,
+  });
+
+  // `isSuccess`, not `data ?? seed`: a 404 here is the settled answer "no readable profile", and a
+  // nullish fallback would put the seed back on top of it.
+  const profile = isSuccess ? data : (initialProfile ?? null);
 
   // Hour headers through Intl rather than a translated list: "9 Uhr" / "9 a.m." / "ore 9" are the
   // runtime's job, and the weekday names on the comparison table are already sourced this way.
   const hourFormat = new Intl.DateTimeFormat(locale, { hour: 'numeric' });
   const hourLabel = (h: number) => hourFormat.format(new Date(Date.UTC(2023, 0, 1, h)));
 
-  if (isPending) {
+  if (isPending && !initialProfile) {
     return (
       <GlassCard variant="medium" className="space-y-2 p-4">
         <h3 className="flex items-center gap-2 text-sm font-semibold">
@@ -103,7 +121,7 @@ export function ParkHourlyProfileCard({
   // Nothing to draw: too few measured days, or the park's hours are so ragged that no single hour
   // was measured often enough to be a column. Rendering an empty grid would claim the park has no
   // queues rather than that we cannot describe its day.
-  if (!data || !data.meta.displayable || data.hours.length === 0) return null;
+  if (!profile || !profile.meta.displayable || profile.hours.length === 0) return null;
 
   return (
     <GlassCard variant="medium" className="space-y-2 p-4">
@@ -123,7 +141,7 @@ export function ParkHourlyProfileCard({
               >
                 {labels.ride}
               </th>
-              {data.hours.map((h) => (
+              {profile.hours.map((h) => (
                 <th
                   key={h}
                   scope="col"
@@ -136,7 +154,7 @@ export function ParkHourlyProfileCard({
             </tr>
           </thead>
           <tbody>
-            {data.attractions.map((ride) => (
+            {profile.attractions.map((ride) => (
               <tr key={ride.attractionSlug} className="hover:bg-primary/5 transition-colors">
                 <th
                   scope="row"
@@ -150,7 +168,7 @@ export function ParkHourlyProfileCard({
                     {ride.attractionName}
                   </Link>
                 </th>
-                {data.hours.map((h, i) => {
+                {profile.hours.map((h, i) => {
                   // Displayed in five-minute steps whatever the payload says:
                   // an older API build hands back interpolated percentiles.
                   const raw = ride.p50[i];
@@ -187,7 +205,7 @@ export function ParkHourlyProfileCard({
         {labels.peakNote}{' '}
         {labels.footnote.replace(
           '{days}',
-          new Intl.NumberFormat(locale).format(data.meta.totalSampleDays)
+          new Intl.NumberFormat(locale).format(profile.meta.totalSampleDays)
         )}
       </p>
     </GlassCard>

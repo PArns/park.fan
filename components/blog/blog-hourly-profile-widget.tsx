@@ -4,6 +4,7 @@ import {
   ParkHourlyProfileCard,
   type HourlyProfileLabels,
 } from '@/components/parks/park-hourly-profile-card';
+import { getParkHourlyProfileSeed } from '@/lib/api/stats';
 import { parkGeoPath } from '@/lib/blog/widget-park';
 import type { ResolvedPark } from '@/lib/blog/park-resolver';
 
@@ -25,8 +26,12 @@ interface BlogHourlyProfileWidgetProps {
  * table that most needed replacing: a queue's shape over the day changes when a park moves its
  * opening time or rebuilds a queue line, and the article read as a statement about today.
  *
- * The card is a Client Component fetching the CDN-cached `/api/parks/.../stats/hourly`, so the
- * post shell stays statically prerenderable, exactly like the other data widgets here.
+ * The card is a Client Component fetching the CDN-cached `/api/parks/.../stats/hourly`, and on the
+ * guide page it stays that way. Here it gets a server seed: a blog post is statically prerendered,
+ * so the fetch happens once at build time — without it this table reached readers without
+ * JavaScript as 132 skeleton placeholders, twelve rides by ten hours of nothing, in the very post
+ * that replaced a hand-typed matrix with it. `getParkHourlyProfileSeed` is timeout-bounded and
+ * resolves `null`, in which case this renders exactly what it rendered before.
  */
 export async function BlogHourlyProfileWidget({ park, slug, top }: BlogHourlyProfileWidgetProps) {
   const [t, tOverview, tBlog] = await Promise.all([
@@ -45,6 +50,16 @@ export async function BlogHourlyProfileWidget({ park, slug, top }: BlogHourlyPro
   }
 
   const locale = await getLocale();
+  // Clamped once and used twice: the seed must be fetched with the same `topN` the card queries
+  // with, or the settling query swaps in a differently-sized table.
+  const topN = Math.min(Math.max(Number(top) || 8, 1), 12);
+  const initialProfile = await getParkHourlyProfileSeed(
+    geo.continent,
+    geo.country,
+    geo.city,
+    geo.parkSlug,
+    topN
+  );
   const labels: HourlyProfileLabels = {
     title: t('hourlyProfileTitle'),
     ride: t('rideWaitsRide'),
@@ -64,7 +79,8 @@ export async function BlogHourlyProfileWidget({ park, slug, top }: BlogHourlyPro
         basePath={park.href}
         labels={labels}
         locale={locale}
-        topN={Math.min(Math.max(Number(top) || 8, 1), 12)}
+        topN={topN}
+        initialProfile={initialProfile}
       />
     </div>
   );
