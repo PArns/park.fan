@@ -737,7 +737,7 @@
       "metaTitleShort": "{park} : temps d’attente",
       "metaDescription": "Quand {park} à {city} est-il calme ? Affluence jour par jour, horaires, vacances scolaires et météo pour les mois à venir, avec prévision IA.",
       "metaDescriptionNoCity": "Quand {park} est-il calme ? Affluence attendue par jour, horaires, vacances scolaires et météo pour les mois à venir.",
-      "intro": "Pour chaque jour des prochains mois : affluence attendue, horaires et les vacances qui pèsent sur {park}. Touche un jour pour le détail.",
+      "intro": "Pour chaque jour des prochains mois : affluence attendue, horaires et les vacances scolaires et les jours fériés qui pèsent sur {park}. Touche un jour pour le détail.",
       "monthH1Suffix": "temps d’attente en {month}",
       "monthMetaTitle": "{park} {month} : temps d’attente et affluence",
       "monthMetaTitleShort": "{park} en {month}",

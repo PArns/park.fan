@@ -737,7 +737,7 @@
       "metaTitleShort": "{park} wait-time calendar",
       "metaDescription": "When is {park} in {city} quiet? Day-by-day crowds, opening hours, school holidays and weather for the months ahead, with an AI forecast per day.",
       "metaDescriptionNoCity": "When is {park} quiet? Expected crowds per day, opening hours, school holidays and weather for the months ahead.",
-      "intro": "For every day of the coming months: expected crowds, opening hours, and the holidays acting on {park}. Tap a day for the details.",
+      "intro": "For every day of the months ahead: expected crowds, opening hours, and the school and public holidays that affect {park}. Tap a day for the details.",
       "monthH1Suffix": "wait times in {month}",
       "monthMetaTitle": "{park} {month}: wait times & crowds",
       "monthMetaTitleShort": "{park} in {month}",

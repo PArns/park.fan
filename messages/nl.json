@@ -737,7 +737,7 @@
       "metaTitleShort": "{park} wachttijden-kalender",
       "metaDescription": "Wanneer is het rustig in {park} in {city}? Drukte per dag, openingstijden, schoolvakanties en weer voor de komende maanden, met AI-voorspelling per dag.",
       "metaDescriptionNoCity": "Wanneer is het rustig in {park}? Verwachte drukte per dag, openingstijden, schoolvakanties en weer voor de komende maanden.",
-      "intro": "Voor elke dag van de komende maanden: verwachte drukte, openingstijden en de vakanties die op {park} inwerken. Tik op een dag voor de details.",
+      "intro": "Voor elke dag van de komende maanden: verwachte drukte, openingstijden en de schoolvakanties en feestdagen die van invloed zijn op {park}. Tik op een dag voor de details.",
       "monthH1Suffix": "wachttijden in {month}",
       "monthMetaTitle": "{park} {month}: wachttijden & drukte",
       "monthMetaTitleShort": "{park} in {month}",

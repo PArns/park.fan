@@ -62,10 +62,15 @@ export async function ParkTitleHeader({
             lines is what this row settles on below `sm` once the city and country are long
             enough. Same reservation as the ride header, reasoned through there. */}
           <div className="text-muted-foreground flex min-h-14 flex-wrap content-start items-center gap-3 sm:min-h-0">
+            {/* City and country are ONE flex item, not two with a comma between them: the row
+              is `gap-1`, so a bare `,` text node between two spans is a third item and the gap
+              lands in front of it — „Brühl , Germany" on every park page, in every locale. Same
+              spelling `ParkCard` uses, which never had the bug. */}
             <address className="flex items-center gap-1 not-italic">
-              <MapPin className="h-4 w-4" aria-hidden="true" />
-              <span>{cityName}</span>,{' '}
-              <span>{translateGeoSlug(tGeo, 'countries', country, countryName)}</span>
+              <MapPin className="h-4 w-4 shrink-0" aria-hidden="true" />
+              <span>
+                {cityName}, {translateGeoSlug(tGeo, 'countries', country, countryName)}
+              </span>
             </address>
             {/* How far the visitor is from this park — client-only (needs their position), so it
               just appears next to the address once known. */}

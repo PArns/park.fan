@@ -737,7 +737,7 @@
       "metaTitleShort": "{park}: tiempos de espera",
       "metaDescription": "¿Cuándo está tranquilo {park} en {city}? Afluencia día a día, horarios, vacaciones escolares y tiempo para los próximos meses, con previsión de IA diaria.",
       "metaDescriptionNoCity": "¿Cuándo hay menos gente en {park}? Afluencia prevista por día, horarios, vacaciones escolares y tiempo para los próximos meses.",
-      "intro": "Para cada día de los próximos meses: afluencia prevista, horarios y las vacaciones que afectan a {park}. Toca un día para ver el detalle.",
+      "intro": "Para cada día de los próximos meses: afluencia prevista, horarios y las vacaciones escolares y los días festivos que afectan a {park}. Toca un día para ver el detalle.",
       "monthH1Suffix": "tiempos de espera en {month}",
       "monthMetaTitle": "{park} {month}: tiempos de espera y afluencia",
       "monthMetaTitleShort": "{park} en {month}",
