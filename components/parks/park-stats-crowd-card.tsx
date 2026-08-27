@@ -1,6 +1,6 @@
 import { CalendarDays, Clock, Layers, TrendingUp } from 'lucide-react';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
-import { GlassCard } from '@/components/common/glass-card';
+import { BareFrame, CardFrame } from '@/components/parks/park-stats-frame';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import type { CrowdLevel } from '@/lib/api/types';
 
@@ -23,6 +23,13 @@ interface ParkStatsCrowdCardProps {
   labelP90: string;
   /** Short unit for the measured-days count, e.g. "d". Omit to hide the column. */
   labelDays?: string;
+  /**
+   * Render without the card's own glass and padding — for the stats panel, where the enclosing
+   * `PANEL_CELL` already draws the box and the hairline rules and a card inside a card is one
+   * frame too many. The heading stays: it is a real `<h3>` in the document outline, not a metric
+   * label, and the table under it needs one.
+   */
+  bare?: boolean;
 }
 
 export function ParkStatsCrowdCard({
@@ -32,9 +39,11 @@ export function ParkStatsCrowdCard({
   labelP50,
   labelP90,
   labelDays,
+  bare = false,
 }: ParkStatsCrowdCardProps) {
+  const Frame = bare ? BareFrame : CardFrame;
   return (
-    <GlassCard variant="medium" className="space-y-2 p-4">
+    <Frame>
       <h3 className="flex items-center gap-2 text-sm font-semibold">
         {iconType === 'calendar' ? (
           <CalendarDays className="text-primary h-4 w-4" aria-hidden="true" />
@@ -75,6 +84,6 @@ export function ParkStatsCrowdCard({
           </li>
         ))}
       </ul>
-    </GlassCard>
+    </Frame>
   );
 }
