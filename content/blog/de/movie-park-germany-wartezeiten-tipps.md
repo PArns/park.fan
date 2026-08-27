@@ -488,16 +488,29 @@ Sechs Wochen im Jahr heißt dieser Park **Horrorwood Studios**, und dann kommen
 Leute, die sonst nie in einen Freizeitpark gehen.
 
 Das **Halloween Horror Festival** läuft 2026 in seiner **28. Ausgabe** an 22
-ausgewählten Abenden vom **26. September bis 8. November**. Der Park selbst nennt
-es das größte Halloween-Event Europas, und nach Zahlen lässt sich dagegen wenig
-sagen: über 280 Darsteller, vier Scare Zones und erstmals **neun Horror-Mazes**.
-Neu dabei sind **Blood Moon Trailer Park**, ein verfallender Wohnwagenplatz am
-Rand des Yosemite, und das **Ahoj-Brause Horror Lab**, eine Werksführung, bei der
-in den Tütchen nicht nur Brausepulver steckt. Tagsüber läuft der Park ab 10 Uhr
-normal, die Horrorbereiche starten am frühen Abend.
+ausgewählten Abenden vom **26. September bis 8. November**, unter dem Jahresmotto
+„Legends Never Die“. Der Park selbst nennt es das größte Halloween-Event Europas,
+und nach Zahlen lässt sich dagegen wenig sagen: über **300 Monster**, neun
+Horror-Mazes, vier Scare Zones und ein Monsteraufmarsch. Tagsüber läuft der Park
+ab 10 Uhr normal, die Horrorbereiche starten am frühen Abend.
 
-Was das gegen Traumatica, Walibi und Toverland taugt, welche Häuser wie viel
-kosten und wo es wirklich weh tut, steht ausführlich in unserem
+Neu ist genau ein Haus, dafür eines mit einem Namen, den auch Leute kennen, die
+das Genre nicht mögen: **Jason Universe** holt Jason Voorhees nach Bottrop und
+arbeitet sich durch die Teile zwei bis sechs der Reihe. Die anderen acht kommen
+aus den Vorjahren, zwei davon überarbeitet. Das **Ahoj-Brause Horror Lab** hat
+zusätzliche Schreckmomente und eine neue Storyline um Geschmackstest und
+Testlabor bekommen, das True-Crime-Haus **Murder Museum** eine Pathologieszene.
+Dazu kommt **PHOBIA – The Live Horror Game Show** im Studio 7, eine Bühnenshow,
+bei der das Publikum mitspielt statt zuzusehen.
+
+Ein Termin lohnt sich extra: Am **17. Oktober** läuft zum fünften Mal der Event
+Day **Haunters Against Hate**. Bottrop hat den 2022 als erster Freizeitpark
+überhaupt veranstaltet, und die Idee dahinter gefällt mir. Leute, deren Job
+sechs Wochen lang darin besteht, Fremde zu erschrecken, stellen sich einen Tag
+lang öffentlich gegen Ausgrenzung.
+
+Was das Ganze gegen Traumatica, Walibi und Toverland taugt, welche Häuser wie
+viel kosten und wo es wirklich weh tut, steht ausführlich in unserem
 [Halloween-Guide 2026](/blog/halloween-freizeitparks-2026). Hier nur die zwei
 Dinge, die den Parkbesuch selbst betreffen.
 
@@ -506,9 +519,11 @@ gebucht. Wer alle neun mitnehmen will, sollte vorher rechnen, sonst kostet der
 Abend das Dreifache des Eintritts.
 
 **Zweitens:** Der Tagesbesuch und der Horrorabend sind zwei verschiedene
-Veranstaltungen am selben Ticket. Wenn du mit Kindern kommst, plane die Abfahrt
-vor dem frühen Abend ein. Ab da laufen Darsteller durch den Park, und die
-Scare Zones sind ausdrücklich nicht für Sechsjährige gemacht.
+Veranstaltungen am selben Ticket. Für kleinere Kinder gibt es tagsüber
+**Halloween for Kids** im Nickelodeon LAND, mit Basteln und Spielen und ohne
+Kettensäge. Ab dem frühen Abend laufen die Darsteller durch den Park, und die
+Scare Zones sind ausdrücklich nicht für Sechsjährige gemacht. Wer mit
+Grundschulkindern da ist, plant die Abfahrt vorher ein.
 
 Einen angenehmen Nebeneffekt hat das Event: Der Park verlängert dafür bis 22 Uhr,
 und weil das Tagesticket weiterläuft, kommst du an einem Halloween-Abend auf
@@ -618,8 +633,9 @@ Winterevent Hollywood Christmas läuft danach vom 27. November 2026 bis zum 5. J
 ### Wann ist das Halloween Horror Festival 2026?
 
 An 22 ausgewählten Abenden vom **26. September bis 8. November 2026**, in der
-achtundzwanzigsten Ausgabe, mit neun Horror-Mazes und über 280 Darstellern. Die
-Mazes kosten extra und werden separat gebucht. Details und der Vergleich mit den anderen
+achtundzwanzigsten Ausgabe, mit neun Horror-Mazes, vier Scare Zones und über 300
+Monstern. Neu ist das Haus **Jason Universe**, dazu die Live-Show **PHOBIA** im
+Studio 7. Die Mazes kosten extra und werden separat gebucht. Details und der Vergleich mit den anderen
 europäischen Events stehen im
 [Halloween-Guide 2026](/blog/halloween-freizeitparks-2026).
 
@@ -693,7 +709,10 @@ Mond.
 - Excalibur – Secrets of the Dark Forest (1996 als Die Unendliche Geschichte, 2005 Mystery River, Neueröffnung 7. Mai 2018): [Excalibur – Secrets of the Dark Forest auf de.wikipedia](https://de.wikipedia.org/wiki/Excalibur_%E2%80%93_Secrets_of_the_Dark_Forest) · [Mystery River wird zu Excalibur (Parkerlebnis)](https://www.parkerlebnis.de/movie-park-2018-mystery-river-umbau-excalibur-neuheit_55825.html)
 - Gestoppte Achterbahn für 2014 (45 Meter, zehn Millionen Euro, Fundamente gegossen): [Achterbahnpläne gestoppt (offiziell)](https://www.movieparkgermany.de/movie-park-backstage/achterbahnplaene-gestoppt) · [Movie Park Germany plant 45 Meter hohe Achterbahn (Airtimers)](https://airtimers.com/en/movie-park-germany-plant-45-meter-hohe-achterbahn/0014266/)
 - 30-jähriges Jubiläum, neue Shows 2026, Parade of Celebration: [30 Jahre Park- und Filmgeschichte (offiziell)](https://www.movieparkgermany.de/plane-deinen-besuch/veranstaltungen/30_jahre_movie_park_germany) · [Was ist neu in 2026 (offiziell)](https://www.movieparkgermany.de/en/plane-deinen-besuch/wichtige-informationen/neuheiten2026) · [30 Jahre Movie Park Germany (Themepark Central)](https://www.themepark-central.de/30-jahre-movie-park-germany/)
-- Halloween Horror Festival 2026 (26. September bis 8. November, 28. Ausgabe, neun Mazes, über 280 Darsteller): [Movie Park Halloween (offiziell)](https://www.movieparkgermany.de/en/halloween) · [Monster-Casting 2026 (FreizeitparkNEWS)](https://www.freizeitparknews.de/movie-park-germany/monster-casting-2026/) · [unser Halloween-Guide 2026](/blog/halloween-freizeitparks-2026)
+- Halloween Horror Festival 2026 (26. September bis 8. November, 28. Ausgabe, über 300 Monster, vier Scare Zones): [Movie Park Halloween (offiziell)](https://www.movieparkgermany.de/en/halloween) · [Monster-Casting 2026 (FreizeitparkNEWS)](https://www.freizeitparknews.de/movie-park-germany/monster-casting-2026/) · [unser Halloween-Guide 2026](/blog/halloween-freizeitparks-2026)
+- Die neun Häuser 2026, davon Jason Universe als einziges neues: [Horrormazes (offiziell)](https://www.movieparkgermany.de/en/halloween/horrorhauser)
+- PHOBIA – The Live Horror Game Show im Studio 7 und der Monsteraufmarsch: [Shows (offiziell)](https://www.movieparkgermany.de/en/halloween/shows)
+- Haunters Against Hate (seit 2022, 2026 die fünfte Ausgabe am 17. Oktober): [Haunters Against Hate (offiziell)](https://www.movieparkgermany.de/en/halloween/hah) · [„Haunters Against Hate“ bei Parques Reunidos](https://www.parquesreunidos.com/en/blog/haunters-against-hate-when-fear-meets-purpose-at-movie-park)
 - Hollywood Christmas 2026/27: [Movie Park's Hollywood Christmas (offiziell)](https://www.movieparkgermany.de/en/christmas)
 - Preise, Saisonpässe und Parkgebühr 2026: [Unsere Preise & Angebote (offiziell)](https://www.movieparkgermany.de/en/oeffnungszeiten-und-preise/preise) · [Eintrittspreise 2026 (NRW-Parks)](https://www.nrw-parks.de/movie-park-germany/movie-park-germany-eintrittspreise.html)
 - Anreise, Bahnhof Feldhausen, SB16: [Anfahrt & Parken (offiziell)](https://www.movieparkgermany.de/en/plane-deinen-besuch/wichtige-informationen/anfahrt-und-parken) · [Ausflugstipp mit der Bahn (DB Regio NRW)](https://regional.bahn.de/regionen/nrw/ausflugstipps/aktiv/moviepark)
