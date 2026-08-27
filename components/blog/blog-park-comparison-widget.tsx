@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { GlassCard } from '@/components/common/glass-card';
 import { ParkComparisonCard } from '@/components/parks/park-comparison-card';
+import { getParkHistoricalStatsSeed } from '@/lib/api/stats';
 import { parkGeoPath } from '@/lib/blog/widget-park';
 import type { ComparisonPark } from '@/lib/hooks/use-park-comparison-stats';
 import type { ResolvedPark } from '@/lib/blog/park-resolver';
@@ -94,10 +95,20 @@ export async function BlogParkComparisonWidget({
     );
   }
 
+  // Server seed for the numbers. Without it this table reached crawlers as park names beside
+  // empty cells — `data-slot="skeleton"` in the shipped HTML — while the prose around it argues
+  // from exactly these figures. Fetched only after the guard above, so a post with a typo'd slug
+  // does not fetch seven aggregates to render an error. `Promise.all` over a timeout-bounded,
+  // per-render-cached fetch: seven parks cost one round of ≤3s at build, never at request time.
+  const initialStats = await Promise.all(
+    resolved.map((p) => getParkHistoricalStatsSeed(p.continent, p.country, p.city, p.parkSlug))
+  );
+
   return (
     <div className="not-prose clear-both my-8">
       <ParkComparisonCard
         parks={resolved}
+        initialStats={initialStats}
         title={t('stats.comparisonTitle')}
         labelPark={t('stats.comparisonPark')}
         labelParkAverage={t('stats.parkAverage')}

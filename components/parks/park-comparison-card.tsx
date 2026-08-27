@@ -7,6 +7,7 @@ import { GlassCard } from '@/components/common/glass-card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import { useParkComparisonStats, type ComparisonPark } from '@/lib/hooks/use-park-comparison-stats';
+import type { ParkHistoricalStats } from '@/lib/api/types';
 
 interface ParkComparisonCardProps {
   parks: readonly ComparisonPark[];
@@ -22,6 +23,8 @@ interface ParkComparisonCardProps {
   labelQuietestDay?: string;
   /** Localised weekday names, Sunday first, matching `DayOfWeekStat.dayOfWeek` (0–6). */
   weekdayNames?: readonly string[];
+  /** Server seed, aligned to `parks` — see `useParkComparisonStats`. */
+  initialStats?: readonly (ParkHistoricalStats | null)[];
 }
 
 const HEAD_CELL = 'px-2 py-1.5 text-xs font-medium text-muted-foreground/70';
@@ -60,9 +63,10 @@ export function ParkComparisonCard({
   labelMinutes,
   labelQuietestDay,
   weekdayNames,
+  initialStats,
 }: ParkComparisonCardProps) {
   const showQuietest = Boolean(labelQuietestDay && weekdayNames?.length === 7);
-  const { rows, isPending } = useParkComparisonStats(parks);
+  const { rows, isPending } = useParkComparisonStats(parks, initialStats);
 
   return (
     <GlassCard variant="medium" className="space-y-2 p-4">

@@ -51,7 +51,14 @@ function statsUrl(target: ParkStatsTarget, depth: StatsDepth): string {
  */
 export function useParkStatsQueries(
   targets: readonly ParkStatsTarget[],
-  depth: StatsDepth = 'default'
+  depth: StatsDepth = 'default',
+  /**
+   * Server-fetched aggregate per target, aligned to `targets`. Rendered until the query for that
+   * park settles, which is what puts the numbers into the first HTML instead of a skeleton — a
+   * blog post shipped its tables as `data-slot="skeleton"` placeholders without it. Only the
+   * statically prerendered blog widgets pass one; the park page keeps its stats client-side.
+   */
+  initialStats?: readonly (ParkHistoricalStats | null)[]
 ) {
   const releasedLast = useLoadLast();
 
@@ -94,8 +101,14 @@ export function useParkStatsQueries(
   });
 
   return {
-    /** Aligned with `targets` by index. `null` where the park has no displayable aggregate. */
-    stats: results.map((r) => r.data ?? null),
+    /**
+     * Aligned with `targets` by index. `null` where the park has no displayable aggregate.
+     *
+     * `isSuccess`, not `data ?? seed`: a settled 404 is the answer "no displayable aggregate", and
+     * falling back on a nullish check would quietly put the seed back on top of it. Without a seed
+     * this reduces to the previous `r.data ?? null`.
+     */
+    stats: results.map((r, i) => (r.isSuccess ? r.data : (initialStats?.[i] ?? null))),
     /** True while ANY park is still outstanding — the tables render one skeleton, not seven. */
     isPending: results.some((r) => r.isPending),
   };

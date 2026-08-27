@@ -45,8 +45,16 @@ export interface ComparisonRow extends ComparisonPark {
  * key, the stale window and the loads-last gate had to agree in three files for two tables on one
  * page to share a cache entry rather than fetch the same park twice.
  */
-export function useParkComparisonStats(parks: readonly ComparisonPark[]) {
-  const { stats, isPending } = useParkStatsQueries(parks);
+export function useParkComparisonStats(
+  parks: readonly ComparisonPark[],
+  /**
+   * Server-fetched aggregate per park, aligned to `parks`. Present → the rows render their numbers
+   * in the SSR / pre-settle pass instead of the per-cell skeletons, which is what puts this table
+   * into the crawlable first HTML. The queries still run and replace it exactly as before.
+   */
+  initialStats?: readonly (ParkHistoricalStats | null)[]
+) {
+  const { stats, isPending } = useParkStatsQueries(parks, 'default', initialStats);
 
   const rows: ComparisonRow[] = parks.map((p, i) => ({ ...p, ...deriveRow(stats[i] ?? null) }));
 

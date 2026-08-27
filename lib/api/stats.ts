@@ -1,3 +1,4 @@
+import { cache } from 'react';
 import { getServerApiHeaders } from '@/lib/api/client';
 import type { ParkHistoricalStats, ParkHourlyProfile } from '@/lib/api/types';
 
@@ -100,3 +101,49 @@ export async function getParkHourlyProfile(
     return null;
   }
 }
+
+/**
+ * How long a seed may hold a render. Generous enough that a warm aggregate (a few hundred ms)
+ * always lands, short enough that a cold one does not sit in the build.
+ */
+const STATS_SEED_TIMEOUT_MS = 3000;
+
+/**
+ * Timeout-bounded, per-render-deduped wrapper around {@link getParkHistoricalStats} for the blog
+ * widgets' server seed.
+ *
+ * Why it exists: `ParkStatsSection` and `ParkComparisonCard` fetch client-side, so a blog post
+ * shipped its numbers as `data-slot="skeleton"` placeholders — the Europa-Park guide's cross-park
+ * comparison table reached crawlers as seven park names with empty cells, which is the one table
+ * in that post an answer engine would have quoted. Seeding puts the aggregate into the first HTML;
+ * the deferred client queries still replace it exactly as before.
+ *
+ * Why a TIMEOUT instead of the retry loop above: this runs inside the blog post's static
+ * prerender. `getParkHistoricalStats` waits up to 9.5s warming a cold aggregate, and a seed is
+ * not worth holding a build for — on timeout it resolves `null` and the widget renders the
+ * skeleton it renders today. Best-effort by construction, never a new failure mode.
+ *
+ * Why `cache()`: the Europa-Park guide embeds three `stats-widget`s for that park plus a
+ * seven-park comparison table, so without per-render dedupe one park costs four fetches.
+ *
+ * Only for AGGREGATES. Do not seed the best-days calendar this way: blog posts are statically
+ * prerendered, its "upcoming quiet days" are derived against a clock, and a build-time `today`
+ * would ship crawlers wrong DATES — worse than a skeleton. A two-year median carries no today.
+ */
+export const getParkHistoricalStatsSeed = cache(async function getParkHistoricalStatsSeed(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string
+): Promise<ParkHistoricalStats | null> {
+  const statsPromise = getParkHistoricalStats(continent, country, city, parkSlug).catch(() => null);
+
+  const result = await Promise.race([
+    statsPromise,
+    new Promise<'timeout'>((resolve) => {
+      setTimeout(() => resolve('timeout'), STATS_SEED_TIMEOUT_MS);
+    }),
+  ]);
+
+  return result === 'timeout' ? null : result;
+});

@@ -1,6 +1,7 @@
 import { getLocale, getTranslations } from 'next-intl/server';
 import { GlassCard } from '@/components/common/glass-card';
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
+import { getParkHistoricalStatsSeed } from '@/lib/api/stats';
 import { parkGeoPath } from '@/lib/blog/widget-park';
 import type { ResolvedPark } from '@/lib/blog/park-resolver';
 
@@ -36,10 +37,15 @@ function parseShow(show: string | undefined): readonly CardName[] | undefined {
  *   ```stats-widget slug=phantasialand
  *   ```
  *
- * Mirrors the park detail page: `ParkStatsSection` is a Client Component that
- * fetches the historical aggregate itself via the CDN-cached `/api/parks/.../stats`
- * route. Keeping the heavy 2-year fetch off the server render lets the blog post
- * shell stay statically prerenderable (no `connection()` / dynamic hole).
+ * `ParkStatsSection` is a Client Component that fetches the historical aggregate itself via the
+ * CDN-cached `/api/parks/.../stats` route, and on the park page it stays that way — moving the
+ * heavy 2-year fetch back onto that render is what forced the whole route into `no-store`.
+ *
+ * A blog post is a different case: it is statically prerendered, so the fetch happens once at
+ * build time and costs a visitor nothing. Without a seed the post shipped its numbers as
+ * skeleton placeholders, so the tables an answer engine would quote reached crawlers empty.
+ * `getParkHistoricalStatsSeed` is timeout-bounded and resolves `null` on a cold aggregate, in
+ * which case this renders exactly what it rendered before.
  */
 export async function BlogStatsWidget({ park, slug, show }: BlogStatsWidgetProps) {
   const tBlog = await getTranslations('blog');
@@ -55,6 +61,12 @@ export async function BlogStatsWidget({ park, slug, show }: BlogStatsWidgetProps
 
   const locale = await getLocale();
   const cards = parseShow(show);
+  const initialStats = await getParkHistoricalStatsSeed(
+    geo.continent,
+    geo.country,
+    geo.city,
+    geo.parkSlug
+  );
   return (
     <div className="not-prose clear-both my-8">
       <ParkStatsSection
@@ -63,6 +75,7 @@ export async function BlogStatsWidget({ park, slug, show }: BlogStatsWidgetProps
         city={geo.city}
         parkSlug={geo.parkSlug}
         locale={locale}
+        initialStats={initialStats}
         {...(cards ? { show: cards, hideHeading: true } : {})}
       />
     </div>

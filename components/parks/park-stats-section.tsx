@@ -41,6 +41,16 @@ interface ParkStatsSectionProps {
   show?: readonly StatsCard[];
   /** Blog posts sit under their own <h2>; a second one here would break the heading ladder. */
   hideHeading?: boolean;
+  /**
+   * Server-fetched aggregate (`getParkHistoricalStatsSeed`). Present → the pre-settle render
+   * shows the REAL cards instead of a skeleton, which is what puts these numbers into the
+   * crawlable first HTML. The client query still runs and replaces it exactly as before.
+   *
+   * The park page deliberately passes nothing: its stats were moved off the server render to
+   * keep the route out of `no-store`, and that trade is unchanged here — only the statically
+   * prerendered blog posts seed.
+   */
+  initialStats?: ParkHistoricalStats | null;
 }
 
 /**
@@ -59,6 +69,7 @@ export function ParkStatsSection({
   hasLiveWaitTimes = true,
   show = ALL_STATS_CARDS,
   hideHeading = false,
+  initialStats,
 }: ParkStatsSectionProps) {
   // Browser-only query (disabled during SSR). Show the skeleton until mounted + loaded so the
   // static prerender renders the placeholder rather than an empty section.
@@ -74,6 +85,25 @@ export function ParkStatsSection({
   });
 
   if (!mounted || isPending) {
+    // Render the seed when there is one. SSR and the first client render are byte-identical
+    // because both read this prop rather than React Query state — the same arrangement (and the
+    // same reason) as `initialCalendar` in ParkBestDaysSection.
+    if (initialStats) {
+      if (!initialStats.meta.displayable) return null;
+      return (
+        <StatsContent
+          stats={initialStats}
+          continent={continent}
+          country={country}
+          city={city}
+          parkSlug={parkSlug}
+          locale={locale}
+          hasLiveWaitTimes={hasLiveWaitTimes}
+          show={show}
+          hideHeading={hideHeading}
+        />
+      );
+    }
     // The placeholder mirrors what this caller will actually render, or a
     // `show={['attractions']} hideHeading` block collapses three cards to one.
     return <ParkStatsSectionSkeleton show={show} hideHeading={hideHeading} />;
