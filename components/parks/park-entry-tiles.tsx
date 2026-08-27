@@ -6,6 +6,7 @@ import { CalendarDays, CloudSun, Map, Sparkles, UtensilsCrossed, Zap } from 'luc
 import type { LucideIcon } from 'lucide-react';
 import { EntryTileBody } from '@/components/common/entry-tile';
 import { useTileReveal } from '@/lib/hooks/use-tile-reveal';
+import { TILE_ROW_ATTR, useTileRowAnchor } from '@/lib/hooks/use-tile-row-anchor';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { isInSeason } from '@/lib/utils/season';
 import { getAttractionDisplayStatus, getStandbyWait } from '@/lib/utils/park-utils';
@@ -368,17 +369,25 @@ export function useParkTileItems({
  */
 export function ParkTileGrid({
   tileCount,
+  parkSlug,
   children,
 }: {
   tileCount: number;
+  /** Which park's row this is — the handoff that keeps it in place across a navigation is only
+   *  ever redeemed on the park it was recorded on. */
+  parkSlug: string;
   children: React.ReactNode;
 }) {
   // The row settling in on mount. The ref goes on the grid, and only the cells' CONTENTS are
   // animated — see `useTileReveal` for why the glass may not be touched.
   const rowRef = useTileReveal<HTMLDivElement>();
+  // Two of the six cells lead to another PAGE of the same park, and the row is on that page too.
+  // This is the half that puts it back where the visitor left it — see `useTileRowAnchor`.
+  useTileRowAnchor(rowRef, parkSlug);
   return (
     <div
       ref={rowRef}
+      {...{ [TILE_ROW_ATTR]: '' }}
       className={cn(
         // `-mr-px -mb-px` + the card's `overflow-hidden` clip the trailing hairlines, exactly as
         // the panel's own column band does one row up. No `gap`: the cells touch and the rules

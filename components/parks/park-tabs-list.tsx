@@ -2,7 +2,7 @@
 
 import { useLocale } from 'next-intl';
 import { TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Link } from '@/i18n/navigation';
+import { Link, getPathname } from '@/i18n/navigation';
 import { parkCalendarPath } from '@/lib/parks/calendar-segments';
 import {
   EntryTileBody,
@@ -15,6 +15,8 @@ import {
   type ParkTileItem,
   type ParkTileSource,
 } from '@/components/parks/park-entry-tiles';
+import { rememberTileRow } from '@/lib/hooks/use-tile-row-anchor';
+import { suppressScrollToTopFor } from '@/lib/navigation/history-navigation';
 import { cn } from '@/lib/utils';
 
 /**
@@ -41,11 +43,12 @@ export function ParkTabsList(props: ParkTileSource) {
   const { continent, country, city, parkSlug } = props;
   const { items, tileCount } = useParkTileItems(props);
 
+  const calendarHref = parkCalendarPath(locale, continent, country, city, parkSlug);
   const calendar = items.find((i) => i.key === 'calendar');
   const tabs = items.filter((i) => i.key !== 'calendar');
 
   return (
-    <ParkTileGrid tileCount={tileCount}>
+    <ParkTileGrid tileCount={tileCount} parkSlug={parkSlug}>
       {/* The tablist lays nothing out — `display: contents` makes its triggers grid items of the
           wrapper directly, so the calendar link can be their sibling in the same row without
           sitting inside `role="tablist"`. */}
@@ -57,8 +60,18 @@ export function ParkTabsList(props: ParkTileSource) {
 
       {calendar && (
         <Link
-          href={parkCalendarPath(locale, continent, country, city, parkSlug)}
+          href={calendarHref}
           className={cn(calendar.order, tileCell)}
+          // The one cell in this row that leaves the page, and all three of these are one
+          // decision: hand the row's current position to the copy of itself on the calendar page,
+          // and stop both scroll-to-top mechanisms from throwing it away first. `getPathname`
+          // because `ScrollToTop` compares against `window.location.pathname`, which carries the
+          // locale prefix this href does not. See `useTileRowAnchor`.
+          scroll={false}
+          onClick={(e) => {
+            rememberTileRow(e.currentTarget, parkSlug);
+            suppressScrollToTopFor(getPathname({ href: calendarHref, locale }));
+          }}
         >
           <EntryTileBody
             icon={calendar.icon}

@@ -4,6 +4,53 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: die Kachelreihe bleibt beim Wechsel zwischen Parkseite und Kalender stehen
+
+Die sechs Einstiegskacheln stehen auf jeder Seite eines Parks, in derselben Reihenfolge und mit
+denselben Live-Hinweisen, damit Parkseite → Kalender → Parkseite sich wie eine Seite anfühlt.
+Genau das tat es nicht, und schuld war der Scroll. Der Kalender ist eine eigene Seite, ein Klick
+auf seine Kachel also eine Navigation, und eine Navigation springt an den Seitenanfang. Wer die
+Reihe hochgescrollt hatte, um sie zu lesen, verlor sie beim Hinweg und bekam sie beim Rückweg an
+anderer Stelle wieder – und der Rückweg war der schlimmere Fall, weil der Hash-Router der
+Parkseite die Reihe danach noch auf 100 px heranscrollte. Ein Klick kostete also einen Sprung
+nach oben plus eine Animation zurück nach unten, in beide Richtungen, jedes Mal.
+
+Die Position wird jetzt übergeben statt neu berechnet: die Kachel merkt sich, wo die Reihe im
+Moment des Klicks im Bild stand, und die Reihe auf der Zielseite korrigiert sich auf denselben
+Wert. Gemessen an Phantasialand, 1280 × 900, Reihe auf 220 px: Hinweg 220 px, Rückweg 218 px,
+vorher 0 px Scroll-Position und ein Sprung von 740 px.
+
+Das Stehenbleiben braucht **drei** Absagen, nicht eine, und jede gehört zu anderem Code.
+`scroll={false}` ist die des Routers. `suppressScrollToTopFor()` ist die von `ScrollToTop`, das
+es gibt, weil der Router-Handler immer dann aussteigt, wenn das oberste Element der neuen Seite
+schon im Bild ist – bei unseren gestreamten Shells also praktisch immer, weshalb der Prop allein
+messbar nichts tut. Und `hasTileRowHandoff()` ist die an `useTabHashRouting`, das sonst beim
+Ankommen seinen Deep-Link-Scroll fährt; nur beim Ankommen, denn ein späterer `hashchange` (die
+Show-Zeilen des Panels zielen auf `#map-show-<slug>`) ist jemand, der irgendwohin gebracht werden
+will. Fehlt eine der drei, landet die Reihe wieder irgendwo.
+
+Der Merkzettel liegt in einem Modulwert statt in `sessionStorage`, weil das App-Router-Navigationen
+sind und das Modul sie überlebt; ein harter Aufruf findet nichts vor und verhält sich wie vorher.
+Verbraucht wird er nicht, er verfällt – und das ist, was ihn Reacts doppelten Mount im
+Entwicklungsmodus überstehen lässt: eine Fassung, die ihn im Cleanup löschte, stellte gar nichts
+wieder her, weil StrictMode Setup, Cleanup, Setup fährt und der zweite Setup ein leeres Fach
+vorfand.
+
+`scrollWhenSettled` ist dafür aus `use-tab-hash-routing.ts` nach `lib/utils/` gezogen und nimmt
+jetzt einen Zielversatz und den Schalter für die weiche erste Bewegung. Zwei Dinge sind dabei
+besser geworden: der erste Scroll läuft synchron statt im nächsten Frame, was auf Parkseite →
+Kalender 208 ms mit 22 px Versatz gespart hat, und Mausrad, Wischen oder eine Scroll-Taste
+beenden die Korrekturphase sofort. Sechs Sekunden Nachführen sind sechs Sekunden, in denen jemand
+etwas anderes lesen will.
+
+Dazu, im selben Aufwasch: der Nowcast-Streifen im Kopfbereich hatte noch seine eigenen runden
+Ecken und einen Rahmen ringsum, saß also als kleinere Box lose in einem Band, dessen Nachbarn
+randlos sind. Er ist jetzt eckig wie der Warnstreifen darüber, und die Absage reicht bis zu
+seinen beiden absolut positionierten Überlagerungen, die ihr `rounded-xl` sonst behalten und den
+Panelhintergrund in allen vier Ecken durchscheinen lassen.
+
+---
+
 ## Unreleased – feat: die Sitemap sagt jetzt, welche Seiten sich geändert haben
 
 Von 42.756 Attraktions-URLs trug keine ein `<lastmod>`, im Hauptsitemap 1.662 von 3.480. Die

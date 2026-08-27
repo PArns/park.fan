@@ -728,14 +728,19 @@ export function ParkTodayPanel({
       </div>
 
       {/* Rain / storm nowcast — its own strip because it is an alert, not a reading, and it
-          renders nothing on a dry day. */}
+          renders nothing on a dry day. Squared off like the warning strip above, and for the same
+          reason: the banner's own `rounded-xl` border drew a floating pill inside a band whose
+          neighbours are full-bleed, so the card read as a box with a smaller box loose in it. The
+          overrides have to reach the two absolutely-positioned overlay layers as well — they
+          carry their own `rounded-xl`, and left round inside a square strip they show the panel
+          background through all four corners. */}
       <WeatherNowcastBanner
         continent={continent}
         country={country}
         city={city}
         parkSlug={parkSlug}
         initialData={null}
-        className="border-border/50 space-y-0 border-t px-5 py-2.5 empty:hidden"
+        className="border-border/50 space-y-0 rounded-none border-x-0 border-t border-b-0 px-5 py-2.5 shadow-none empty:hidden [&_.rounded-xl]:rounded-none [&>div]:rounded-none"
       />
 
       {/* Holiday context — the "why is it so busy" behind the forecast. One band now: this used
