@@ -589,7 +589,7 @@ als Erstes ausverkauft.
 
 Und weil die Frage an dieser Stelle immer kommt: Das „größte Halloween-Event
 Europas“ steht laut eigener Aussage im [Movie Park](ref:movie-park-germany) in
-Bottrop, mit neun Mazes und über 280 Monstern. Groß und hart sind allerdings
+Bottrop, mit neun Mazes und über 300 Monstern. Groß und hart sind allerdings
 zwei verschiedene Disziplinen. Der wirklich kranke Scheiß geht zwei Autostunden
 weiter nördlich ab, in einem Polder, in dem sie dich an eine Deckenschiene
 hängen und abstempeln. Bottrop hat die größere Zahl. Biddinghuizen hat die

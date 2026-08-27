@@ -98,23 +98,28 @@ dire “macchina del fumo”.
 
 L'**Halloween Horror Festival** del [Movie Park Germany](ref:movie-park-germany)
 a Bottrop porta il titolo di “più grande evento di Halloween d'Europa” davanti a
-sé come un trofeo, e sulla carta regge. Il 2026 è la **28ª edizione**, con oltre
-**280 mostri**, quattro scare zone e, questa è la vera notizia, **nove maze
-horror per la prima volta**. Chi si è già fatto braccare in un sabato di ottobre
-tra banchi di nebbia e una motosega stridente lungo le “Streets of New York”
-capisce il culto.
+sé come un trofeo, e sulla carta regge. Il 2026 è la **28ª edizione**, con il
+motto dell'anno “Legends Never Die”, oltre **300 mostri**, nove maze horror e
+quattro scare zone. Chi si è già fatto braccare in un sabato di ottobre tra
+banchi di nebbia e una motosega stridente lungo le “Streets of New York” capisce
+il culto.
 
 ![Roulotte abbandonata con casse di legno nella nebbia mattutina | Una roulotte solitaria nella nebbia del mattino. Raramente un buon segno. | wide](/media/halloween-2026/beispiel-wohnwagen.jpg)
 
-Due dei nove sono nuovi. **Blood Moon Trailer Park** si colloca a cinque ore di
-macchina a nord di Los Angeles, ai margini dello Yosemite: un campeggio di
-roulotte abbandonato e in rovina, senza campo e senza soccorsi.
-L'**Ahoj-Brause Horror Lab** ti manda invece in visita a una fabbrica, dove
-nelle bustine c'è ben altro che polverina frizzante. A loro si aggiungono i
-sette collaudati: _A Quiet Place_, _Hell House_, _Final Stop_, _Murder Museum_,
-_Secrets of St. Elmo_, _The Slaughterhouse_ e _Circus of Freaks_. Sul palco va
-in scena **“Unhallowed 2: The Freak Show Straight Out of Hell”** con
-l'illusionista Christian Farla, più i set del DJ Max Bering sulla Plaza Stage.
+Di nuovo c'è esattamente una casa, ma con un nome che conoscono anche quelli a
+cui il genere non piace: **Jason Universe** porta Jason Voorhees a Bottrop e
+percorre i capitoli dal due al sei della serie. Le altre otto vengono dagli anni
+scorsi, due delle quali rimaneggiate. L'**Ahoj-Brause Horror Lab**, sempre la
+visita alla fabbrica dove nelle bustine c'è ben altro che polverina frizzante, ha
+ricevuto spaventi in più e una nuova trama attorno a un test del gusto, e la casa
+true crime **Murder Museum** una scena di anatomia patologica. A loro si
+aggiungono **Blood Moon Trailer Park**, un campeggio di roulotte abbandonato e in
+rovina a cinque ore di macchina a nord di Los Angeles, ai margini dello Yosemite,
+più _A Quiet Place_, _Hell House_, _Final Stop_, _The Slaughterhouse_ e _Circus
+of Freaks_. Sul palco la novità è **“PHOBIA – The Live Horror Game Show”** allo
+Studio 7, in cui il pubblico gioca invece di guardare, più lo spettacolo di
+percussioni **“Drums of Doom”**, la parata dei mostri e i set del DJ Max
+Bering.
 
 Ora che la line-up è nota, si può rispondere anche alla domanda ovvia: “il più
 grande” non è automaticamente “il migliore”. L'HHF è la Volkswagen degli eventi
@@ -129,9 +134,15 @@ leggere.
 Si gioca in **22 serate selezionate, dal 26 settembre all'8 novembre 2026**,
 prevalentemente dal venerdì alla domenica; di giorno il parco è aperto
 normalmente dalle 10, e le aree horror partono nel primo pomeriggio-sera (fino
-alle 22 il venerdì e il sabato, fino alle 21 la domenica). I biglietti
-giornalieri partono da 39,90 €, e i **maze vanno prenotati a parte**. Mettilo
-in conto nel budget.
+alle 22 il venerdì e il sabato, fino alle 21 la domenica). I biglietti per il
+festival partono da 39,90 €, e i **maze vanno prenotati a parte**. Mettilo in
+conto nel budget. C'è una data che segnerei a parte: il **17 ottobre** si tiene
+per la quinta volta la giornata **Haunters Against Hate**.
+
+Che cosa sa fare il parco di giorno e fuori da queste sei settimane, quale giorno
+della settimana lì è davvero il più tranquillo e perché da settembre apre solo da
+giovedì a domenica, sta nella
+[guida al Movie Park](/blog/movie-park-germany-tempi-di-attesa-consigli).
 
 [Movie Park Germany](ref:movie-park-germany?full)
 

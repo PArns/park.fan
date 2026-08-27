@@ -336,7 +336,12 @@ export async function LiveHourlyProfile({ locale }: { locale: Locale }) {
     hour: t('hourlyProfileHour'),
     minutes: tOverview('minutesUnit'),
     peakNote: t('hourlyProfilePeakNote'),
-    footnote: t('hourlyProfileFootnote'),
+    // `t.raw`, not `t`: the message keeps its `{days}` placeholder and the card fills it in
+    // from `profile.meta.totalSampleDays`, a number only the settled client query knows. Run
+    // through `t` the ICU formatter is handed no `days` argument, throws FORMATTING_ERROR and
+    // next-intl returns the key path — which is how „parks.stats.hourlyProfileFootnote" shipped
+    // as visible text under the hourly table, in all six locales, on every post with this widget.
+    footnote: t.raw('hourlyProfileFootnote') as string,
   };
   return (
     <ParkHourlyProfileCard

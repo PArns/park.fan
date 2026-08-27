@@ -98,23 +98,27 @@ avonden zijn de goede slots weg voordat je “rookmachine” kunt zeggen.
 
 Het **Halloween Horror Festival** in [Movie Park Germany](ref:movie-park-germany)
 in Bottrop draagt de titel “grootste Halloween-event van Europa” voor zich uit
-als een trofee, en op papier klopt dat ook. 2026 is de **28e editie**, met ruim
-**280 monsters**, vier scare zones en, dat is het echte nieuws, **voor het
-eerst negen horrormazes**. Wie ooit op een oktoberzaterdag tussen mistflarden
+als een trofee, en op papier klopt dat ook. 2026 is de **28e editie**, onder het
+jaarmotto “Legends Never Die”, met ruim **300 monsters**, negen horrormazes en
+vier scare zones. Wie ooit op een oktoberzaterdag tussen mistflarden
 en een gierende kettingzaag door de “Streets of New York” is gejaagd, begrijpt
 de cultstatus.
 
 ![Verlaten caravan met houten kisten in de ochtendmist | Een eenzame caravan in de ochtendmist. Zelden een goed teken. | wide](/media/halloween-2026/beispiel-wohnwagen.jpg)
 
-Twee van de negen zijn nieuw. **Blood Moon Trailer Park** speelt zich vijf
-autouren ten noorden van Los Angeles af, aan de rand van Yosemite: een
-verlaten, vervallen caravanpark zonder bereik en zonder hulp. Het
-**Ahoj-Brause Horror Lab** stuurt je in plaats daarvan op een fabrieksrondleiding
-waarbij in de kleine zakjes meer zit dan bruispoeder. Daarnaast draaien de
-beproefde zeven: _A Quiet Place_, _Hell House_, _Final Stop_, _Murder Museum_,
-_Secrets of St. Elmo_, _The Slaughterhouse_ en _Circus of Freaks_. Op het
-podium staat **“Unhallowed 2: The Freak Show Straight Out of Hell”** met
-illusionist Christian Farla, plus dj-sets van Max Bering op de Plaza Stage.
+Nieuw is precies één huis, maar wel eentje met een naam die ook mensen kennen
+die het genre niet mogen: **Jason Universe** haalt Jason Voorhees naar Bottrop
+en werkt zich door deel twee tot en met zes van de reeks. De andere acht komen
+uit eerdere jaren, twee daarvan herzien. Het **Ahoj-Brause Horror Lab**, nog
+steeds de fabrieksrondleiding waarbij in de kleine zakjes meer zit dan
+bruispoeder, heeft extra schrikmomenten en een nieuwe verhaallijn rond een
+smaaktest gekregen, het true-crimehuis **Murder Museum** een pathologiescène.
+Daarnaast draaien **Blood Moon Trailer Park**, een verlaten, vervallen
+caravanpark vijf autouren ten noorden van Los Angeles aan de rand van Yosemite,
+plus _A Quiet Place_, _Hell House_, _Final Stop_, _The Slaughterhouse_ en
+_Circus of Freaks_. Nieuw op het podium staat **“PHOBIA – The Live Horror Game
+Show”** in Studio 7, waarin het publiek meespeelt in plaats van toekijkt, plus
+de drumshow **“Drums of Doom”**, de monsterparade en dj-sets van Max Bering.
 
 Nu de line-up bekend is, kan ook de voor de hand liggende vraag beantwoord
 worden: “het grootst” is niet automatisch “het best”. Het HHF is de Volkswagen
@@ -128,8 +132,15 @@ zoekt, zit in Bottrop goed. Wie zich _echt_ wil laten bang maken, leest verder.
 Er wordt gespeeld op **22 geselecteerde avonden van 26 september tot 8 november
 2026**, overwegend vrijdag tot zondag; overdag is het park vanaf 10 uur gewoon
 open, de horrorzones starten in de vroege avond (vrijdag en zaterdag tot 22
-uur, zondag tot 21 uur). Dagtickets beginnen bij € 39,90, en de **mazes moeten
-apart geboekt worden**. Reken erop in je budget.
+uur, zondag tot 21 uur). Tickets voor het festival beginnen bij € 39,90, en de
+**mazes moeten apart geboekt worden**. Reken erop in je budget. Eén datum zou ik
+apart noteren: op **17 oktober** draait voor de vijfde keer de eventdag
+**Haunters Against Hate**.
+
+Wat het park overdag en buiten deze zes weken kan, welke weekdag daar echt de
+rustigste is en waarom het vanaf september alleen nog van donderdag tot en met
+zondag opengaat, staat in de
+[Movie Park-gids](/blog/movie-park-germany-wachttijden-tips).
 
 [Movie Park Germany](ref:movie-park-germany?full)
 

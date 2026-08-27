@@ -578,7 +578,7 @@ esclusivamente in olandese ed è immancabilmente la prima cosa a esaurirsi.
 
 E poiché la domanda a questo punto arriva sempre: il «più grande evento di
 Halloween d'Europa» sta, a suo stesso dire, al
-[Movie Park](ref:movie-park-germany) di Bottrop, con nove maze e oltre 280
+[Movie Park](ref:movie-park-germany) di Bottrop, con nove maze e oltre 300
 mostri. Grande e duro sono però due discipline diverse. La roba davvero malata
 succede due ore d'auto più a nord, in un polder dove ti appendono a una rotaia a
 soffitto e ti timbrano. Bottrop ha il numero più grande. Biddinghuizen ha le

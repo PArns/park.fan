@@ -591,7 +591,7 @@ néerlandais et affiche complet en premier, systématiquement.
 
 Et parce que la question vient toujours ici : le « plus grand événement
 d'Halloween d'Europe » se trouve, de son propre aveu, au
-[Movie Park](ref:movie-park-germany) de Bottrop, avec neuf mazes et plus de 280
+[Movie Park](ref:movie-park-germany) de Bottrop, avec neuf mazes et plus de 300
 monstres. Grand et dur sont pourtant deux disciplines différentes. Le truc
 vraiment malade se passe deux heures de route plus au nord, dans un polder où
 l'on te suspend à un rail de plafond et où l'on te tamponne. Bottrop a le plus
