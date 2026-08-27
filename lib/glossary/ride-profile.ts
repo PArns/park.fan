@@ -1,3 +1,4 @@
+import { cache } from 'react';
 import { getTranslations } from 'next-intl/server';
 import { getGlossaryTerms } from '@/lib/glossary/translations';
 import { buildGlossaryTermHref } from '@/lib/glossary/segments';
@@ -57,7 +58,7 @@ export interface ResolvedRideProfile {
  * Element ORDER and REPEATS are preserved. The list is the layout walkthrough,
  * so two corkscrews in a row must read as two steps — never dedupe or sort it.
  */
-export async function resolveRideProfile(
+export const resolveRideProfile = cache(async function resolveRideProfile(
   profile: RideProfile,
   locale: Locale
 ): Promise<ResolvedRideProfile> {
@@ -111,24 +112,44 @@ export async function resolveRideProfile(
       ? buildGlossaryTermHref(locale, manufacturerTerm.slug)
       : null,
   };
-}
+});
 
 /**
- * Does <RideProfileSection> render anything for this profile?
+ * Has the profile anything for the facts grid — manufacturer, year, inversions, stats?
  *
- * The section returns null when the curated ids resolve to no elements and no types and the
- * profile carries no facts either — so the ride page's chapter row has to ask before offering a
- * jump to `#ride-profile`. It lives here, next to the resolver, because the section asks the same
- * question one line later and two copies of it drift: the first version of the chapter row used
- * `!!attraction.rideProfile` and pointed at a missing anchor whenever a rename left a profile with
- * nothing resolvable in it.
+ * The half of "does this render" that needs no term resolution. Exported because the section
+ * draws that grid conditionally and used to carry its own copy of this expression: the predicate
+ * below was single-sourced while the expression inside it was not, which is the same drift one
+ * step down.
  */
-export async function rideProfileRenders(profile: RideProfile, locale: Locale): Promise<boolean> {
-  const { elements, types } = await resolveRideProfile(profile, locale);
-  const hasFacts =
+export function hasRideProfileFacts(profile: RideProfile): boolean {
+  return (
     Boolean(profile.manufacturer) ||
     profile.openedYear != null ||
     profile.inversions != null ||
-    (profile.stats ?? null) !== null;
-  return elements.length > 0 || types.length > 0 || hasFacts;
+    (profile.stats ?? null) !== null
+  );
+}
+
+/**
+ * Does <RideProfileSection> render anything for this profile, given what its ids resolved to?
+ *
+ * The section returns null when the curated ids resolve to no elements and no types and the
+ * profile carries no facts either — so the ride page's chapter row has to ask before offering a
+ * jump to `#ride-profile`. One definition, so the row cannot offer an anchor the section declines
+ * to render: the first version of the row used `!!attraction.rideProfile` and pointed into nothing
+ * whenever a rename left a profile with no resolvable ids in it.
+ *
+ * Takes the resolved value rather than fetching it, for the caller that has one already.
+ */
+export function rideProfileRendersFrom(
+  profile: RideProfile,
+  resolved: Pick<ResolvedRideProfile, 'elements' | 'types'>
+): boolean {
+  return resolved.elements.length > 0 || resolved.types.length > 0 || hasRideProfileFacts(profile);
+}
+
+/** The same question for a caller holding only the profile — e.g. the ride page's chapter row. */
+export async function rideProfileRenders(profile: RideProfile, locale: Locale): Promise<boolean> {
+  return rideProfileRendersFrom(profile, await resolveRideProfile(profile, locale));
 }
