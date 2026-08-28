@@ -112,7 +112,15 @@ export function MLTrainingCountdown({ modelAge }: Props) {
           <div>
             <div className="text-muted-foreground mb-0.5 text-xs">{t('ai.nextTrainingIn')}</div>
             {digits ? (
-              <div className="flex items-baseline tabular-nums">
+              // `contain: paint` on the one row that changes every second.
+              //
+              // The seconds digit ticks inside a `Card`, and this project's Card is glass by
+              // default (`bg-background/60 backdrop-blur-md`). A backdrop filter has to re-read
+              // what is behind it whenever anything in its subtree paints, so without containment
+              // this tick invalidated the whole card's backdrop sixty times a minute — a dropped
+              // frame then shows the card unblurred for that frame. Same fix, same reason, as
+              // `NowcastUpdateCountdown`.
+              <div className="flex items-baseline tabular-nums [contain:paint]">
                 <NumUnit n={digits.h} u="h" />
                 <NumUnit n={digits.m} u="m" />
                 <NumUnit n={digits.s} u="s" />

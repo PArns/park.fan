@@ -155,6 +155,16 @@ export async function ParkCalendarMonthSummary({
 
   return (
     <div className="flex flex-col gap-4">
+      {/* The month, as a caption in the same shape the panel cells below use.
+        Without it the box contradicted itself: the chapter heading says „für die nächsten 3
+        Monate", this paragraph is about November, and „Kommende ruhige Tage" underneath lists
+        dates in August — three time frames, none of them labelled. The caption names this one,
+        and the columns keep the heading's. */}
+      <span className="text-muted-foreground flex items-center gap-1 text-[10px] font-semibold tracking-[0.08em] uppercase">
+        <CalendarRange className="h-3 w-3" aria-hidden="true" />
+        {monthLabel}
+      </span>
+
       <p className="text-sm leading-relaxed text-pretty md:text-base">{prose}</p>
 
       {/* The same numbers again, scannable. Not decoration: the prose above is what an answer
@@ -221,6 +231,7 @@ export async function ParkCalendarMonthSummary({
 export function ParkCalendarMonthSummarySkeleton() {
   return (
     <div className="flex flex-col gap-4" aria-hidden="true">
+      <Skeleton className="h-[15px] w-32" />
       <div className="flex flex-col gap-[6px]">
         {/* Five lines below `sm`, three from `md` — the last two collapse away where the wider
           measure fits the same words on fewer lines. */}

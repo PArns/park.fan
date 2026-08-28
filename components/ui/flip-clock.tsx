@@ -27,7 +27,14 @@ const FlipCard = ({ value, label }: { value: number; label: string }) => {
 
   return (
     <div className="flex flex-col items-center gap-2">
-      <div className="bg-foreground/10 border-foreground/10 relative h-16 w-14 overflow-hidden rounded-lg border shadow-xl backdrop-blur-md md:h-24 md:w-20 lg:h-32 lg:w-28">
+      {/* `contain: paint` because this tile is BOTH the animated thing and the blurred thing: its
+        digit flips every second under framer-motion while the element itself carries
+        `backdrop-filter`. Chromium re-reads what is behind a backdrop filter whenever its subtree
+        paints, so an animation running inside one re-rasterises the backdrop on every frame it
+        draws — and a frame lost there shows the tile unblurred. Containment promises nothing
+        paints outside this box, which is what stops the flip from reaching the backdrop.
+        `overflow-hidden` already clips it; this states the same thing to the compositor. */}
+      <div className="bg-foreground/10 border-foreground/10 relative h-16 w-14 overflow-hidden rounded-lg border shadow-xl backdrop-blur-md [contain:paint] md:h-24 md:w-20 lg:h-32 lg:w-28">
         <div className="absolute inset-0 flex items-center justify-center">
           <AnimatePresence mode="popLayout">
             <motion.span
