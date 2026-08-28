@@ -143,44 +143,55 @@ export function ParkCalendarPanel({
         {/* Control row: what the colours mean on the left, where you are in the year on the right.
           The legend was inside the `ssr: false` grid and is server-rendered here — it needs no
           data, and down there it made the grid's two loading states differ by its own height. */}
-        <div className="flex flex-wrap items-center justify-end gap-2">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
           <ParkCalendarLegend className="mr-auto" />
-          {/* „Heute" only once it would do something. Twelve months in each direction is a long
-            way to walk back one arrow at a time, and the browser's back button is not the same
-            offer — somebody who stepped forward six months would have to press it six times.
-            Hidden on the current month rather than disabled, because a stepper whose third
-            control is permanently greyed out on the page most visitors land on reads as broken. */}
-          {!isCurrentMonth && (
-            <Button variant="outline" size="sm" className="mr-auto h-9" asChild>
-              <Link
-                href={parkCalendarPath(locale, continent, country, city, parkSlug)}
-                aria-label={t('currentMonthAria')}
-                scroll={false}
-                onClick={() =>
-                  suppressScrollToTopFor(
-                    getPathname({
-                      href: parkCalendarPath(locale, continent, country, city, parkSlug),
-                      locale,
-                    })
-                  )
-                }
-              >
-                <MonthStepIcon>
-                  <CalendarCheck className="h-4 w-4" />
-                </MonthStepIcon>
-                {t('currentMonth')}
-              </Link>
-            </Button>
-          )}
-          <MonthStep href={href(prevMonth)} label={t('previousMonth')}>
-            <ChevronLeft className="h-4 w-4" />
-          </MonthStep>
-          <div className="min-w-[140px] text-center font-semibold">
-            {month ? label(month) : null}
+
+          {/* The three month controls are ONE group, not three siblings of the legend.
+            „Heute" carried `mr-auto` of its own next to the legend's, and two auto margins in one
+            flex row each push everything after them: the legend went left, the button went to the
+            middle of the gap, and the stepper it belongs to stayed on the right. Grouped, the row
+            has exactly one flexible gap — and when it wraps on a narrow card the four controls
+            wrap together instead of the button landing on a line by itself. */}
+          <div className="flex items-center gap-2">
+            {/* „Heute" only once it would do something. Twelve months in each direction is a long
+              way to walk back one arrow at a time, and the browser's back button is not the same
+              offer — somebody who stepped forward six months would have to press it six times.
+              Hidden on the current month rather than disabled, because a stepper whose third
+              control is permanently greyed out on the page most visitors land on reads as broken. */}
+            {!isCurrentMonth && (
+              <Button variant="outline" size="sm" className="h-9" asChild>
+                <Link
+                  href={parkCalendarPath(locale, continent, country, city, parkSlug)}
+                  aria-label={t('currentMonthAria')}
+                  scroll={false}
+                  onClick={() =>
+                    suppressScrollToTopFor(
+                      getPathname({
+                        href: parkCalendarPath(locale, continent, country, city, parkSlug),
+                        locale,
+                      })
+                    )
+                  }
+                >
+                  <MonthStepIcon>
+                    <CalendarCheck className="h-4 w-4" />
+                  </MonthStepIcon>
+                  {t('currentMonth')}
+                </Link>
+              </Button>
+            )}
+            <MonthStep href={href(prevMonth)} label={t('previousMonth')}>
+              <ChevronLeft className="h-4 w-4" />
+            </MonthStep>
+            {/* Centred and fixed-width so the two arrows do not move when the month name changes
+              length — „Mai 2026" against „September 2026" is 60 px of travel otherwise. */}
+            <div className="min-w-[140px] text-center font-semibold">
+              {month ? label(month) : null}
+            </div>
+            <MonthStep href={href(nextMonth)} label={t('nextMonth')}>
+              <ChevronRight className="h-4 w-4" />
+            </MonthStep>
           </div>
-          <MonthStep href={href(nextMonth)} label={t('nextMonth')}>
-            <ChevronRight className="h-4 w-4" />
-          </MonthStep>
         </div>
 
         {/* The wrapper exists to carry the reservation, and it carries it as three custom
