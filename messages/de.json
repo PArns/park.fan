@@ -970,6 +970,7 @@
       "minHeightLabel": "Ab",
       "maxHeightLabel": "Bis",
       "mayGetWet": "Nässegefahr",
+      "singleRider": "Single Rider",
       "fastPassFree": "kostenlos",
       "fastPassFrom": "ab",
       "rcdbLabel": "{attraction} in der RCDB",

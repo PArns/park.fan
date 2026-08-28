@@ -556,6 +556,14 @@ export interface ParkAttraction {
   mayGetWet?: boolean | null;
   /** RCDB (rcdb.com) database id → https://rcdb.com/{id}.htm */
   rcdbId?: number | null;
+  /**
+   * Whether the ride has a single-rider line at all.
+   *
+   * A static fact about the queue layout, NOT whether it is open right now —
+   * that is what the live `queues` array answers. Null/absent means unknown,
+   * never "no": most of the catalogue has never been checked.
+   */
+  hasSingleRider?: boolean | null;
   /** Curated queue-jump product. Absent ≠ "there is none" — see `FastPass`. */
   fastPass?: FastPass | null;
   bestVisitTimes?: BestVisitSlot[] | null;
@@ -831,6 +839,14 @@ export interface AttractionResponse {
   mayGetWet?: boolean | null;
   /** RCDB (rcdb.com) database id → https://rcdb.com/{id}.htm */
   rcdbId?: number | null;
+  /**
+   * Whether the ride has a single-rider line at all.
+   *
+   * A static fact about the queue layout, NOT whether it is open right now —
+   * that is what the live `queues` array answers. Null/absent means unknown,
+   * never "no": most of the catalogue has never been checked.
+   */
+  hasSingleRider?: boolean | null;
   /** Curated queue-jump product. Absent ≠ "there is none" — see `FastPass`. */
   fastPass?: FastPass | null;
   bestVisitTimes?: BestVisitSlot[] | null;

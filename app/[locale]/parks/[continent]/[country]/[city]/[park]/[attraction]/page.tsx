@@ -16,6 +16,7 @@ import { Clock, MapPin, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { SeasonalBadge } from '@/components/parks/seasonal-badge';
 import { FastPassBadge } from '@/components/parks/fast-pass-badge';
+import { SingleRiderBadge } from '@/components/parks/single-rider-badge';
 import { AttractionMetaBadges } from '@/components/parks/attraction-meta-badges';
 import { RcdbBadge } from '@/components/parks/rcdb-badge';
 import { PageSection } from '@/components/common/page-section';
@@ -293,6 +294,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
     attraction.minimumHeight != null ||
     attraction.maximumHeight != null ||
     Boolean(attraction.mayGetWet) ||
+    attraction.hasSingleRider === true ||
     Boolean(attraction.fastPass) ||
     attraction.rcdbId != null;
 
@@ -443,6 +445,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                     {/* After the restrictions, before what the ride IS: a queue-jump
                         pass is a fact about the visit, like the height limits, and
                         not part of the ride's identity. */}
+                    <SingleRiderBadge hasSingleRider={attraction.hasSingleRider} />
                     <FastPassBadge fastPass={attraction.fastPass} />
                     {attraction.rideProfile ? (
                       <RideProfileTeaser profile={attraction.rideProfile} locale={locale as Locale}>

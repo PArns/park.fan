@@ -28,6 +28,7 @@ import { RopeDropBadge, RopeDropEveningBadge } from './rope-drop-badge';
 import { SeasonalBadge } from './seasonal-badge';
 import { QueueTypeBadge } from './queue-type-badge';
 import { FastPassBadge } from '@/components/parks/fast-pass-badge';
+import { SingleRiderBadge } from '@/components/parks/single-rider-badge';
 import { AttractionMetaBadges } from './attraction-meta-badges';
 import { WaitTimeSparklineCard } from './wait-time-sparkline-card';
 import { TrendPill } from './trend-pill';
@@ -360,6 +361,10 @@ export function AttractionCard({
             />
             {/* `insideLink`: the whole card is an anchor, so the glossary link
                 degrades to a tooltip rather than nesting an <a> inside one. */}
+            <SingleRiderBadge
+              hasSingleRider={'hasSingleRider' in attraction ? attraction.hasSingleRider : null}
+              insideLink
+            />
             <FastPassBadge
               fastPass={'fastPass' in attraction ? attraction.fastPass : null}
               insideLink
