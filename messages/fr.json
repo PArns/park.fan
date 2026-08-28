@@ -1265,7 +1265,15 @@
     "locationHint": "Activez la localisation pour trier par distance",
     "addToFavorites": "Ajouter aux favoris",
     "removeFromFavorites": "Retirer des favoris",
-    "emptyHint": "Appuie sur l'étoile ★ d'un parc, d'une attraction, d'un spectacle ou d'un restaurant pour l'enregistrer ici."
+    "more": "{count, plural, =1 {+1 autre} other {+# autres}}",
+    "howTo": {
+      "findTitle": "Cherchez un parc ou une attraction",
+      "findText": "Par la recherche, ou depuis « Explorer les Parcs ».",
+      "starTitle": "Touchez l'étoile",
+      "starText": "Chaque carte de parc et d'attraction en porte une, et chaque page aussi.",
+      "thenTitle": "C'est tout",
+      "thenText": "Ils apparaissent ensuite dans ce menu et sur la page d'accueil, avec leur statut en direct et leur temps d'attente."
+    }
   },
   "glossary": {
     "blogPosts": {

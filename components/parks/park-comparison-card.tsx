@@ -74,106 +74,113 @@ export function ParkComparisonCard({
         <Scale className="text-primary h-4 w-4" aria-hidden="true" />
         {title}
       </h3>
-      <table className="w-full border-collapse">
-        <thead>
-          <tr className="border-border/40 border-b">
-            <th scope="col" className={cn(HEAD_CELL, 'text-left')}>
-              {labelPark}
-            </th>
-            <th scope="col" className={cn(HEAD_CELL, 'text-right')}>
-              {labelParkAverage}
-            </th>
-            <th scope="col" className={cn(HEAD_CELL, 'hidden text-right sm:table-cell')}>
-              {labelLongest}
-            </th>
-            {showQuietest && (
-              <th scope="col" className={cn(HEAD_CELL, 'text-right')}>
-                {labelQuietestDay}
+      {/* Eigener Scroll-Container. Die Zellen tragen `whitespace-nowrap` (der Ride-Name in der
+          Spalte „längste Schlange" ist bis zu 39 unumbrechbare Zeichen lang), also wird die Tabelle
+          unter ~410 px nicht schmaler — und schob auf `/beste-reisezeit` bei 390 px das ganze
+          Dokument seitwärts: 441 px Scrollbreite in einem 390-px-Viewport. Breite Tabellen scrollen
+          in sich, nie die Seite. */}
+      <div className="-mx-4 overflow-x-auto px-4">
+        <table className="w-full border-collapse">
+          <thead>
+            <tr className="border-border/40 border-b">
+              <th scope="col" className={cn(HEAD_CELL, 'text-left')}>
+                {labelPark}
               </th>
-            )}
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row) => (
-            <tr key={row.slug} className="hover:bg-primary/5 transition-colors">
-              <td className={PARK_CELL}>
-                <Link
-                  href={row.href}
-                  prefetch={false}
-                  className={cn(
-                    'hover:text-primary transition-colors',
-                    row.highlight ? 'text-foreground font-semibold' : 'font-medium'
-                  )}
+              <th scope="col" className={cn(HEAD_CELL, 'text-right')}>
+                {labelParkAverage}
+              </th>
+              <th scope="col" className={cn(HEAD_CELL, 'hidden text-right sm:table-cell')}>
+                {labelLongest}
+              </th>
+              {showQuietest && (
+                <th scope="col" className={cn(HEAD_CELL, 'text-right')}>
+                  {labelQuietestDay}
+                </th>
+              )}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr key={row.slug} className="hover:bg-primary/5 transition-colors">
+                <td className={PARK_CELL}>
+                  <Link
+                    href={row.href}
+                    prefetch={false}
+                    className={cn(
+                      'hover:text-primary transition-colors',
+                      row.highlight ? 'text-foreground font-semibold' : 'font-medium'
+                    )}
+                  >
+                    {row.name}
+                  </Link>
+                </td>
+                <td
+                  className={cn(VALUE_CELL, row.highlight ? 'font-semibold' : 'text-foreground/70')}
                 >
-                  {row.name}
-                </Link>
-              </td>
-              <td
-                className={cn(VALUE_CELL, row.highlight ? 'font-semibold' : 'text-foreground/70')}
-              >
-                {/* A pending row shows a placeholder of the same height; a settled-but-empty one
+                  {/* A pending row shows a placeholder of the same height; a settled-but-empty one
                     shows an em dash, because "we have no readable data" and "still loading" must
                     not look alike. */}
-                {isPending && row.parkP50 == null ? (
-                  <Skeleton className="ml-auto h-4 w-12" />
-                ) : row.parkP50 == null ? (
-                  <span className="text-muted-foreground/40">–</span>
-                ) : (
-                  <>
-                    {roundWaitTo5(row.parkP50)} {labelMinutes}
-                  </>
-                )}
-              </td>
-              <td
-                className={cn(
-                  VALUE_CELL,
-                  'text-muted-foreground/70 hidden w-full max-w-0 sm:table-cell'
-                )}
-              >
-                {isPending && row.longestP50 == null ? (
-                  <Skeleton className="ml-auto h-4 w-28" />
-                ) : row.longestP50 == null ? (
-                  <span className="text-muted-foreground/40">–</span>
-                ) : (
-                  // The minutes never shrink and the ride name always may: "34 Min." is the
-                  // number the column is named after, the ride is which queue it was.
-                  <span className="flex items-baseline justify-end gap-1">
-                    <span className="shrink-0">
-                      {roundWaitTo5(row.longestP50)} {labelMinutes}
-                    </span>
-                    <span className="text-muted-foreground/50 truncate">· {row.longestName}</span>
-                  </span>
-                )}
-              </td>
-              {showQuietest && (
-                <td className={cn(VALUE_CELL, 'text-foreground/70')}>
-                  {isPending && row.quietestP50 == null ? (
-                    <Skeleton className="ml-auto h-4 w-20" />
-                  ) : row.quietestDays.length === 0 || row.quietestP50 == null ? (
-                    /* Not "no data" but "the data does not support naming a day" — too few evenly
-                       measured weekdays, or a week flat enough that three of them share its
-                       minimum. The em dash says so without a footnote. */
+                  {isPending && row.parkP50 == null ? (
+                    <Skeleton className="ml-auto h-4 w-12" />
+                  ) : row.parkP50 == null ? (
                     <span className="text-muted-foreground/40">–</span>
                   ) : (
                     <>
-                      {/* Two days at the same minute is a finding, not a failure to choose — the
-                          list is joined rather than resolved to one. `·` already separates the day
-                          from the wait, so the days join on a comma. */}
-                      <span className="text-status-operating">
-                        {row.quietestDays.map((d) => weekdayNames![d]).join(', ')}
-                      </span>
-                      <span className="text-muted-foreground/50">
-                        {' '}
-                        · {roundWaitTo5(row.quietestP50)} {labelMinutes}
-                      </span>
+                      {roundWaitTo5(row.parkP50)} {labelMinutes}
                     </>
                   )}
                 </td>
-              )}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+                <td
+                  className={cn(
+                    VALUE_CELL,
+                    'text-muted-foreground/70 hidden w-full max-w-0 sm:table-cell'
+                  )}
+                >
+                  {isPending && row.longestP50 == null ? (
+                    <Skeleton className="ml-auto h-4 w-28" />
+                  ) : row.longestP50 == null ? (
+                    <span className="text-muted-foreground/40">–</span>
+                  ) : (
+                    // The minutes never shrink and the ride name always may: "34 Min." is the
+                    // number the column is named after, the ride is which queue it was.
+                    <span className="flex items-baseline justify-end gap-1">
+                      <span className="shrink-0">
+                        {roundWaitTo5(row.longestP50)} {labelMinutes}
+                      </span>
+                      <span className="text-muted-foreground/50 truncate">· {row.longestName}</span>
+                    </span>
+                  )}
+                </td>
+                {showQuietest && (
+                  <td className={cn(VALUE_CELL, 'text-foreground/70')}>
+                    {isPending && row.quietestP50 == null ? (
+                      <Skeleton className="ml-auto h-4 w-20" />
+                    ) : row.quietestDays.length === 0 || row.quietestP50 == null ? (
+                      /* Not "no data" but "the data does not support naming a day" — too few evenly
+                       measured weekdays, or a week flat enough that three of them share its
+                       minimum. The em dash says so without a footnote. */
+                      <span className="text-muted-foreground/40">–</span>
+                    ) : (
+                      <>
+                        {/* Two days at the same minute is a finding, not a failure to choose — the
+                          list is joined rather than resolved to one. `·` already separates the day
+                          from the wait, so the days join on a comma. */}
+                        <span className="text-status-operating">
+                          {row.quietestDays.map((d) => weekdayNames![d]).join(', ')}
+                        </span>
+                        <span className="text-muted-foreground/50">
+                          {' '}
+                          · {roundWaitTo5(row.quietestP50)} {labelMinutes}
+                        </span>
+                      </>
+                    )}
+                  </td>
+                )}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </GlassCard>
   );
 }

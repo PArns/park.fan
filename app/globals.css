@@ -1869,3 +1869,49 @@ html[data-temp-unit] .u-force-metric .u-imperial {
 .tippy-box[data-theme~='tiptap-popup'] > .tippy-content {
   padding: 0;
 }
+
+/* ─── Das Glas des Supermenü-Bandes ───────────────────────────────────────────
+ *
+ * Warum das eine eigene Regel ist und nicht drei Tailwind-Klassen: der Blur war bis hierher
+ * **wirkungslos**, und zwar aus zwei voneinander unabhängigen Gründen.
+ *
+ * 1. **Der Header war ein Backdrop-Root.** `<header>` trug selbst `backdrop-blur-md`. Ein Element
+ *    mit `backdrop-filter` bildet nach der Filter-Effects-Spezifikation einen Backdrop Root, und
+ *    ein Nachfahre mit eigenem `backdrop-filter` sieht dann nur noch, was INNERHALB dieses Roots
+ *    gemalt wurde. Das Band hängt im DOM unter dem Header, liegt aber unterhalb seiner Box — dort
+ *    hat der Root nichts gemalt. Es hat also 24 px weit nichts weichgezeichnet. Gemessen im
+ *    Browser: Band `blur(24px)`, Header `blur(12px)`, Band ist Nachfahre. Behoben, indem das
+ *    Material der Leiste in eine eigene, absolut positionierte Schicht IM Header gewandert ist:
+ *    die Schicht ist jetzt Geschwister des Bandes statt sein Vorfahr, der Header selbst trägt
+ *    keinen Filter mehr, und die Höhe von 48 px bleibt unverändert dort, wo sie war.
+ *
+ * 2. **Bei 95 % Deckkraft ist Glas kein Glas.** Die alte Fläche war `bg-popover/95`; selbst mit
+ *    funktionierendem Blur wäre davon nichts zu sehen gewesen. Der Grund für die 95 % war
+ *    Lesbarkeit: bei `/80` las man Überschrift, Badges und einen Absatz Fließtext durch das Menü
+ *    hindurch. Die Antwort darauf ist aber nicht mehr Deckkraft, sondern mehr Blur plus eine
+ *    Helligkeitsverschiebung — genau das, was ein echtes Glasmaterial macht. 40 px zerstören
+ *    Fließtext zuverlässig, `saturate` hält die Farbe des Fotos dahinter am Leben (sonst sieht
+ *    Glas aus wie Milch), und `brightness` zieht den Untergrund zur Flächenfarbe hin, sodass
+ *    Buchstabenformen nicht als Geister stehen bleiben.
+ */
+.pk-menu-glass {
+  background: color-mix(in oklab, var(--popover) 62%, transparent);
+  -webkit-backdrop-filter: blur(40px) saturate(180%) brightness(1.06);
+  backdrop-filter: blur(40px) saturate(180%) brightness(1.06);
+}
+.dark .pk-menu-glass {
+  background: color-mix(in oklab, var(--popover) 55%, transparent);
+  /* Dunkel muss abdunkeln statt aufhellen: der Untergrund ist hier heller als die Fläche, und
+     eine Aufhellung ließe helle Schrift durchscheinen statt sie zu schlucken. */
+  -webkit-backdrop-filter: blur(40px) saturate(150%) brightness(0.5);
+  backdrop-filter: blur(40px) saturate(150%) brightness(0.5);
+}
+
+/* Ohne `backdrop-filter` gibt es kein Glas, nur ein halbdurchsichtiges Menü über einer Parkseite —
+ * unlesbar. Dort geht die Fläche auf die alten 95 % zurück. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .pk-menu-glass,
+  .dark .pk-menu-glass {
+    background: color-mix(in oklab, var(--popover) 95%, transparent);
+  }
+}

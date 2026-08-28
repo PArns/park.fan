@@ -148,3 +148,57 @@ export function useRowReveal(key: string | null) {
 
   return rowRef;
 }
+
+/**
+ * The mobile sheet's rows settling in behind the panel that is sliding on.
+ *
+ * The burger menu is the whole navigation on a phone and it was the one menu surface with no
+ * motion at all: Radix slides the panel in from the right and the eleven rows inside arrive
+ * fully formed, as one block, which reads as a screenshot rather than as a menu opening. The
+ * same treatment as the desktop band, tuned down — a phone shows the entire list at once, so a
+ * stagger long enough to be legible on a 1400 px band is a queue on a 300 px column.
+ *
+ * The rules are `useMenuReveal`'s, for the same reasons: CSS (Radix's own `data-[state]`
+ * animation) owns visibility, this only moves the rows along one axis and never their opacity,
+ * and if the chunk never loads the sheet opens exactly as it does today. Radix unmounts the content when the sheet closes, so there is no
+ * timeline to keep — this builds one per open and lets it go.
+ */
+export function useSheetReveal(open: boolean) {
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const root = rootRef.current;
+    if (!root || prefersReducedMotion()) return;
+
+    let cancelled = false;
+    loadGsap().then((gsap) => {
+      if (cancelled || !gsap || !rootRef.current) return;
+      const targets = Array.from(
+        rootRef.current.querySelectorAll<HTMLElement>('[data-sheet-stagger]')
+      );
+      if (targets.length === 0) return;
+      // `x`, not `y`: the panel itself is travelling leftwards onto the screen, and rows that
+      // arrive along the same axis read as part of that one movement instead of as a second,
+      // unrelated one crossing it.
+      gsap.fromTo(
+        targets,
+        { x: 16 },
+        {
+          x: 0,
+          duration: 0.35,
+          ease: 'power3.out',
+          stagger: 0.025,
+          immediateRender: true,
+          clearProps: 'transform',
+        }
+      );
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [open]);
+
+  return rootRef;
+}

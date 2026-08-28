@@ -2,8 +2,8 @@
 
 import { useEffect, useId, useRef, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { Link } from '@/i18n/navigation';
-import { useMenuReveal } from '@/lib/hooks/use-menu-reveal';
+import { Link, usePathname } from '@/i18n/navigation';
+import { MenuBand } from '@/components/layout/menu-band';
 
 /**
  * A header entry that is BOTH a link and the trigger of a panel.
@@ -42,14 +42,29 @@ interface NavMenuProps {
 }
 
 export function NavMenu({ href, label, children, disabled }: NavMenuProps) {
-  const [requested, setRequested] = useState(false);
+  const pathname = usePathname();
+  /*
+   * Open state is stored as the PATH the panel was opened on, not as a boolean.
+   *
+   * The header lives in the locale layout and survives the route change, and the pointerdown
+   * handler below deliberately ignores clicks inside the band — which is exactly where the links
+   * are. So following one left the panel hanging over the page it had just navigated to: on a
+   * mouse until the pointer happened to leave it, with a keyboard or a pen until Escape.
+   *
+   * Comparing against the current path closes it during render, for free. A boolean plus an
+   * effect would do the same thing one render later, and `setState` inside an effect is a
+   * cascading render the linter is right to refuse.
+   */
+  const [openedOn, setOpenedOn] = useState<string | null>(null);
+  const requested = openedOn === pathname;
+  // A timer that fires after a navigation writes the OLD path, which compares false — i.e. a
+  // menu never opens itself onto a page the visitor has already left.
+  const setRequested = (next: boolean) => setOpenedOn(next ? pathname : null);
   // Derived, not synchronized: a panel hanging open while the header floats transparent would
   // sit over the hero attached to nothing. Closing it from an effect would be a second render
   // with the panel still up for a frame — `disabled` simply wins here.
   const open = requested && !disabled;
   const panelId = useId();
-  // Motion for the band's contents. The glass surface below is never a target — see the hook.
-  const panelContentRef = useMenuReveal(open);
   const rootRef = useRef<HTMLDivElement>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -73,14 +88,15 @@ export function NavMenu({ href, label, children, disabled }: NavMenuProps) {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        setRequested(false);
+        setOpenedOn(null);
         rootRef.current?.querySelector<HTMLAnchorElement>('a')?.focus();
       }
     };
-    // Any navigation away closes it: the panel is inside a sticky bar that survives the route
-    // change, so nothing else would.
+    // A click that lands outside the trigger and outside the band closes it. A click INSIDE is
+    // left alone on purpose — it is either a link (whose navigation moves `pathname`, which is
+    // what closes the band) or the trigger's own toggle, and closing here would race both.
     const onPointerDown = (e: PointerEvent) => {
-      if (!rootRef.current?.contains(e.target as Node)) setRequested(false);
+      if (!rootRef.current?.contains(e.target as Node)) setOpenedOn(null);
     };
     document.addEventListener('keydown', onKey);
     document.addEventListener('pointerdown', onPointerDown);
@@ -126,7 +142,7 @@ export function NavMenu({ href, label, children, disabled }: NavMenuProps) {
           tabIndex={disabled ? -1 : 0}
           onClick={() => {
             clearTimer();
-            setRequested((v) => !v);
+            setRequested(!requested);
           }}
           className="text-muted-foreground hover:text-foreground -m-1 cursor-pointer p-1 transition-colors"
         >
@@ -137,51 +153,9 @@ export function NavMenu({ href, label, children, disabled }: NavMenuProps) {
         </button>
       </div>
 
-      {/* Full-bleed band under the bar, positioned against the HEADER rather than against this
-          trigger — which is why the root above carries no `relative`. A box centred on the trigger
-          had to be sized by hand per panel and still ran off the left edge (a 700 px panel under
-          an entry 276 px from the edge starts at −36 px); spanning the header there is nothing
-          left to collide with, and the content inside lines up with the page's own container.
-
-          It sits flush against the bar, no gap: the diagonal from the trigger into the panel has
-          nothing to fall through, and the band reads as the bar having grown rather than as a
-          card hovering under it. Square corners for the same reason.
-
-          Flat, not opaque. The band is one glass surface with the bar above it — the same
-          `bg/80` + `backdrop-blur` the header already runs, plus the ring `components/ui/popover.tsx`
-          carries, because a white panel on a white page is otherwise separated from it by a
-          hairline and nothing else. "Flat" here rules out the pointer-depth tilt and the layered
-          glass cards the pages use, not the blur: what a visitor sees through it is the photo the
-          menu is covering, which is the point of opening it over the page instead of replacing it.
-          The cost is bounded — this repaints only while a panel is open, and `backdrop-filter`
-          stays off the transition list for the same reason it is off the header's.
-
-          `/95`, not the `/80` the small popovers use. Those sit over a card or a margin; this one
-          covers half a park page, and at 80 % the headline, the status badges and a paragraph of
-          body text read straight through the menu and fought with it — in both themes. The blur
-          and the five points of transparency are enough to see that the photo is still there,
-          which is all this effect owes the visitor. */}
-      <div
-        id={panelId}
-        // A stable hook for the checks in scripts/: the surface class has already been
-        // `bg-popover` and then `bg-popover/95`, and a test that keys on styling silently stops
-        // testing anything the next time the design moves.
-        data-nav-panel=""
-        className={`absolute inset-x-0 top-full z-50 ${open ? '' : 'hidden'}`}
-      >
-        <div className="bg-popover/95 text-popover-foreground border-border/60 w-full border-b shadow-2xl ring-1 ring-black/5 backdrop-blur-xl dark:ring-white/10">
-          {/* `overflow-hidden` is load-bearing: the rows inside carry `-mx-2` so their hover
-              highlight reaches into the column gaps, and at exactly 1024 px — where the container
-              is as wide as the viewport — the last column's 8 px of bleed gave the document a
-              horizontal scrollbar. Nothing should be able to leave a full-bleed band anyway. */}
-          <div
-            ref={panelContentRef}
-            className="container mx-auto overflow-hidden px-4 py-5 md:px-0"
-          >
-            {children}
-          </div>
-        </div>
-      </div>
+      <MenuBand id={panelId} open={open}>
+        {children}
+      </MenuBand>
     </div>
   );
 }

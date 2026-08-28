@@ -14,7 +14,10 @@ import { BrandLockup } from '@/components/layout/brand-lockup';
 import { NavMenu } from '@/components/layout/nav-menu';
 import { ParksMenuPanel } from '@/components/layout/parks-menu-panel';
 import { BlogMenuPanel } from '@/components/layout/blog-menu-panel';
+import { FavoritesMenu } from '@/components/layout/favorites-menu';
+import { FavoritesMenuPanel } from '@/components/layout/favorites-menu-panel';
 import { useHeaderReveal } from '@/lib/hooks/use-header-reveal';
+import { useSheetReveal } from '@/lib/hooks/use-menu-reveal';
 import { ThemeToggle } from '@/components/common/theme-toggle';
 import { LocaleSwitcher } from '@/components/common/locale-switcher';
 import { SearchCommand } from '@/components/search/search-bar';
@@ -91,6 +94,26 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
   const darkHero = false;
   const [scrolled, setScrolled] = useState(false);
   const rafRef = useRef<number | null>(null);
+
+  /*
+   * The burger sheet is CONTROLLED, and the only reason is that it has to close itself.
+   *
+   * Radix closes a dialog when something inside it calls `SheetClose`, and a `<Link>` does not:
+   * it navigates. The header lives in the locale layout and survives that navigation, so on a
+   * phone the sheet stayed open across the route change — you tapped "Glossar", the page behind
+   * the panel became the glossary, and the panel was still sitting on top of it. Every link in
+   * there had the bug; nobody could reach the page they had just asked for without also finding
+   * the X.
+   *
+   * `pathname` is the signal, and it is what the state STORES — the path the sheet was opened
+   * on, so a route change closes it during render rather than one `setState`-in-an-effect later.
+   * It comes from `@/i18n/navigation`, so it is locale-stripped, which is right here: switching
+   * language re-renders the same route and should not slam the menu shut mid-gesture.
+   */
+  const [menuOpenedOn, setMenuOpenedOn] = useState<string | null>(null);
+  const mobileMenuOpen = menuOpenedOn === pathname;
+  const setMobileMenuOpen = (next: boolean) => setMenuOpenedOn(next ? pathname : null);
+  const sheetRef = useSheetReveal(mobileMenuOpen);
 
   useEffect(() => {
     // Only hero pages have a transparent-at-the-top header, so only they need the scroll
@@ -202,18 +225,31 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
 
   return (
     <header
-      /* `backdrop-filter` is deliberately NOT in the transition list. Animating it made the
-         browser re-rasterize the blur of everything behind the full-width bar on every frame
-         for 500 ms each time the scroll crossed the 50 px threshold — by far the most expensive
-         repaint on the hero pages, and it repeats on every direction change up there. The blur
-         now snaps on/off (barely perceptible: the bar is still transparent when the fade starts)
-         while the colours keep cross-fading. */
-      className={`relative sticky top-0 z-50 h-12 border-b transition-[background-color,border-color] duration-500 ${
-        isTransparent
-          ? 'border-transparent bg-transparent'
-          : 'border-border/50 bg-background/80 backdrop-blur-md'
+      /* No `backdrop-filter` on this element, and that is load-bearing rather than tidy.
+         An element carrying one becomes a BACKDROP ROOT: a descendant with its own
+         `backdrop-filter` then samples only what was painted inside that root. The mega-menu band
+         hangs in the DOM under this header but paints below its box, where the root has painted
+         nothing — so the band's 24 px blur blurred an empty backdrop and the glass was simply not
+         there. The bar's own material moved into the sibling layer below, which blurs the page
+         exactly as before and is nobody's ancestor. */
+      className={`relative sticky top-0 z-50 h-12 border-b transition-[border-color] duration-500 ${
+        isTransparent ? 'border-transparent' : 'border-border/50'
       }`}
     >
+      {/* The bar's glass. First child, so every later sibling paints over it without a z-index.
+          `backdrop-filter` is deliberately NOT in the transition list: animating it made the
+          browser re-rasterize the blur of everything behind the full-width bar on every frame for
+          500 ms each time the scroll crossed the 50 px threshold — by far the most expensive
+          repaint on the hero pages, and it repeats on every direction change up there. The blur
+          snaps on/off (barely perceptible: the bar is still transparent when the fade starts)
+          while the colour keeps cross-fading. */}
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-0 transition-[background-color] duration-500 ${
+          isTransparent ? 'bg-transparent' : 'bg-background/80 backdrop-blur-md'
+        }`}
+      />
+
       <div
         ref={barRef}
         /* `h-full`, not a second `h-12`: the header is `h-12 border-b` and Tailwind boxes are
@@ -385,6 +421,14 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
             <SearchCommand trigger="button" size="sm" />
           </div>
 
+          {/* Favorites – the visitor's own shelf, opening the same band the nav entries do.
+              `lg:block` mirrors the nav's single breakpoint: under it everything lives in the
+              burger, and the sheet carries the same list. See FavoritesMenu for why the star is
+              rendered even when there is nothing starred. */}
+          <div className={`hidden lg:block ${fadeClass}`}>
+            <FavoritesMenu disabled={isTransparent} />
+          </div>
+
           {/* In-flow locale + theme – fades in on scroll, keeps flex anchor when invisible */}
           <div
             ref={barActionsRef}
@@ -399,7 +443,7 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
 
           {/* Mobile Menu – fades in on scroll */}
           <div className={fadeClass}>
-            <Sheet>
+            <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button
                   variant="ghost"
@@ -413,23 +457,36 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
                   <span className="sr-only">Menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] p-6 pt-12">
-                <nav className="mt-8 flex flex-col gap-4" aria-label="Mobile navigation">
+              <SheetContent side="right" className="w-[300px] overflow-y-auto p-6 pt-12">
+                <nav
+                  ref={sheetRef}
+                  className="mt-8 flex flex-col gap-4"
+                  aria-label="Mobile navigation"
+                >
                   {showNearbyPark && (
                     <Link
                       href={convertApiUrlToFrontendUrl(nearestPark.url)}
                       prefetch={false}
                       className="bg-muted/80 hover:bg-muted text-foreground flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors"
                       aria-label={t('nearbyPark', { parkName: nearestPark.name })}
+                      data-sheet-stagger
                     >
                       <MapPin className="h-4 w-4 shrink-0" aria-hidden="true" />
                       {t('nearbyPark', { parkName: nearestPark.name })}
                     </Link>
                   )}
+                  {/* Favorites, first — on a phone this sheet IS the navigation, and a returning
+                      visitor's own parks are the shortest route out of it. Radix unmounts the
+                      sheet's contents when it closes, so `open` is only ever true here and the
+                      panel's request is gated by the sheet itself. */}
+                  <div data-sheet-stagger className="border-border/60 border-b pb-4">
+                    <FavoritesMenuPanel open variant="sheet" />
+                  </div>
                   {showBlog && (
                     <Link
                       href="/blog"
                       prefetch={false}
+                      data-sheet-stagger
                       className="hover:text-primary text-lg font-medium transition-colors"
                     >
                       {t('blog')}
@@ -438,6 +495,7 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
                   <Link
                     href="/"
                     prefetch={false}
+                    data-sheet-stagger
                     className="hover:text-primary text-lg font-medium transition-colors"
                   >
                     {t('home')}
@@ -446,7 +504,7 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
                       JavaScript at all and the disclosure state is the browser's, not ours. The
                       countries stay out of it — the sheet is a phone-sized column, and the
                       continent hubs are one tap from the parks that matter. */}
-                  <details className="group">
+                  <details className="group" data-sheet-stagger>
                     <summary className="hover:text-primary flex cursor-pointer list-none items-center justify-between text-lg font-medium transition-colors">
                       {t('explore')}
                       <ChevronDown
@@ -477,6 +535,7 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
                   <Link
                     href={bestTimePath}
                     prefetch={false}
+                    data-sheet-stagger
                     className="hover:text-primary text-lg font-medium transition-colors"
                   >
                     {t('bestTime')}
@@ -484,6 +543,7 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
                   <Link
                     href={glossaryPath}
                     prefetch={false}
+                    data-sheet-stagger
                     className="hover:text-primary text-lg font-medium transition-colors"
                   >
                     {t('glossary')}
@@ -491,6 +551,7 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
                   <Link
                     href={howtoPath}
                     prefetch={false}
+                    data-sheet-stagger
                     className="hover:text-primary text-lg font-medium transition-colors"
                   >
                     {t('howto')}
