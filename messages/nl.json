@@ -425,6 +425,10 @@
     "crowdCalendar": "Druktekalender & Beste Bezoekdagen",
     "map": "Kaart",
     "calendarLegend": "Legenda",
+    "calendarLegendGroups": {
+      "crowd": "Drukte",
+      "signals": "Signalen"
+    },
     "eventTypesLabel": "Event Types",
     "crowdLevelsLabel": "Drukteniveaus",
     "crowdLevelsNote": "(Zie hieronder)",

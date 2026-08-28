@@ -1,17 +1,7 @@
 'use client';
 
 import { createElement, memo } from 'react';
-import {
-  PartyPopper,
-  Calendar,
-  Backpack,
-  Ban,
-  Ticket,
-  Clock,
-  HelpCircle,
-  Info,
-  Star,
-} from 'lucide-react';
+import { Info, Star } from 'lucide-react';
 import type { CalendarDay } from '@/lib/api/types';
 import { Card } from '@/components/ui/card';
 import { useTranslations, useLocale } from 'next-intl';
@@ -20,10 +10,12 @@ import { Temp } from '@/components/common/unit-display';
 import { format, parseISO } from 'date-fns';
 import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
 import { getWeatherIconFromCode, getEventIcon } from '@/lib/utils/calendar-utils';
-import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
-import { NeighborHolidaysMarker } from '@/components/parks/neighbor-holidays-marker';
+import { roundWaitTo5 } from '@/lib/utils/wait-time';
+import { CROWD_TEXT_CLASS, CROWD_TILE_CLASS } from '@/lib/utils/crowd-level-styles';
+import type { ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import { ParkTimeRange } from '@/components/common/park-time';
+import { cn } from '@/lib/utils';
 
 export interface ParkCalendarDayProps {
   day: CalendarDay;
@@ -39,6 +31,50 @@ export interface ParkCalendarDayProps {
   onSelect?: (date: string) => void;
 }
 
+/**
+ * The four things a day can carry besides its crowd level, as a bar across the top edge.
+ *
+ * They used to be the cell's BORDER COLOUR plus an icon in the header row, which could only ever
+ * show one of them: the border is one colour, and the icon picked a winner by priority. A Friday
+ * in the summer holidays that is also a public holiday somewhere next door is three facts, and
+ * the cell showed one. A bar splits into as many segments as there are signals, so the same cell
+ * says all of it in three pixels — and the border is free to carry the crowd level instead, which
+ * is the thing the reader came for.
+ *
+ * Colours are deliberately not the `--crowd-*` palette: these are categories, not a scale, and
+ * borrowing the scale's amber for „Ferien in Nachbarregionen" would put a legend colour next to a
+ * tier colour that means something else entirely. Red for a public holiday follows the calendar
+ * convention every German wall calendar already taught the reader.
+ */
+function daySignals(day: CalendarDay, locale: string) {
+  const signals: { key: string; className: string; label: string }[] = [];
+
+  if (day.isSchoolHoliday || day.isSchoolVacation) {
+    const name = day.events?.find((e) => e.type === 'school-holiday')?.name;
+    signals.push({
+      key: 'school',
+      className: 'bg-yellow-500 dark:bg-yellow-400',
+      label: translateHolidayName(name, locale) || '',
+    });
+  }
+  if ((day.neighborHolidays?.length ?? 0) > 0 && day.status !== 'CLOSED') {
+    signals.push({ key: 'neighbor', className: 'bg-amber-600 dark:bg-amber-500', label: '' });
+  }
+  if (day.isHoliday || day.isPublicHoliday) {
+    const name = day.events?.find((e) => e.type === 'holiday')?.name;
+    signals.push({
+      key: 'holiday',
+      className: 'bg-red-500 dark:bg-red-400',
+      label: translateHolidayName(name, locale) || '',
+    });
+  }
+  if (day.isBridgeDay) {
+    signals.push({ key: 'bridge', className: 'bg-blue-500 dark:bg-blue-400', label: '' });
+  }
+
+  return signals;
+}
+
 function ParkCalendarDayComponent({
   day,
   parkTimezone,
@@ -48,9 +84,9 @@ function ParkCalendarDayComponent({
 }: ParkCalendarDayProps) {
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
+  const tLegend = useTranslations('attractions.historyLegend');
   const locale = useLocale();
 
-  // Map locale to date-fns locale
   const dateLocale =
     {
       de,
@@ -66,91 +102,69 @@ function ParkCalendarDayComponent({
   const dayOfMonth = format(dayDate, 'd', { locale: dateLocale });
   const month = format(dayDate, 'MMM', { locale: dateLocale });
 
-  // Get schedule icon + label. The label hovers in a tooltip on desktop; the full explanation
-  // lives in the click-to-open detail panel, which is the only route to it on touch.
-  // Priority: CLOSED / UNKNOWN (by status) > Public Holiday > School Vacation > Bridge Day
-  const getScheduleIcon = () => {
-    if (day.status === 'CLOSED') {
-      return { Icon: Ban, color: 'text-red-500 dark:text-red-400', label: tCommon('closed') };
-    }
-    if (day.status === 'UNKNOWN') {
-      return {
-        Icon: HelpCircle,
-        color: 'text-gray-500 dark:text-gray-400',
-        label: t('calendarView.details.schedule.scheduleNotYetAvailable'),
-      };
-    }
-    if (day.isHoliday || day.isPublicHoliday) {
-      const holiday = day.events?.find((e) => e.type === 'holiday');
-      return {
-        Icon: PartyPopper,
-        color: 'text-orange-500 dark:text-orange-400',
-        label: translateHolidayName(holiday?.name, locale) || t('holiday'),
-      };
-    }
-    if (day.isSchoolHoliday || day.isSchoolVacation) {
-      const schoolHoliday = day.events?.find((e) => e.type === 'school-holiday');
-      return {
-        Icon: Backpack,
-        color: 'text-yellow-500 dark:text-yellow-400',
-        label: translateHolidayName(schoolHoliday?.name, locale) || t('schoolVacation'),
-      };
-    }
-    if (day.isBridgeDay) {
-      return { Icon: Calendar, color: 'text-blue-500 dark:text-blue-400', label: t('bridgeDay') };
-    }
-    return null;
-  };
-
-  // Determine border color based on schedule
-  // Priority: Park CLOSED > UNKNOWN (neutral) > Public Holiday > School Vacation > Bridge Day
-  const getBorderColor = () => {
-    const borderWidth = isToday ? 'border-4' : 'border';
-
-    if (day.status === 'CLOSED') {
-      return `${borderWidth} border-status-closed`;
-    }
-    if (day.status === 'UNKNOWN') {
-      return `${borderWidth} border-gray-300 dark:border-gray-600`;
-    }
-    if (day.isHoliday || day.isPublicHoliday) {
-      return `${borderWidth} border-orange-500 dark:border-orange-400`;
-    }
-    if (day.isSchoolHoliday || day.isSchoolVacation) {
-      return `${borderWidth} border-yellow-500 dark:border-yellow-400`;
-    }
-    if (day.isBridgeDay) {
-      return `${borderWidth} border-blue-500 dark:border-blue-400`;
-    }
-    if (isToday) {
-      return `${borderWidth} border-primary`;
-    }
-    return borderWidth;
-  };
+  const isClosed = day.status === 'CLOSED';
+  const isUnknown = day.status === 'UNKNOWN';
+  const level = day.crowdLevel;
+  // The colour is the crowd level's, and only when there IS one. A closed day and a park whose
+  // wait times nobody publishes both arrive here with no usable level, and both must stay grey —
+  // an aggregate over an empty set is Ø 0 minutes, which is byte-for-byte a very quiet day.
+  const colored: ColoredCrowdLevel | null =
+    !isClosed && level && level !== 'closed' && level !== 'unknown'
+      ? (level as ColoredCrowdLevel)
+      : null;
 
   const isBestDay = isBest ?? day.recommendation === 'highly_recommended';
-
-  // Neighbouring-region holidays (top influencing regions only) → distinct amber
-  // marker so it never blends with the local orange/yellow/blue holiday icons.
-  const hasNeighbor = (day.neighborHolidays?.length ?? 0) > 0 && day.status !== 'CLOSED';
-
-  const scheduleIcon = getScheduleIcon();
+  const signals = daySignals(day, locale);
   const clickable = !!onSelect;
+
+  /**
+   * The day's wait in one number: the average across the park's headliners.
+   *
+   * `headlinerForecast.avgWait`, NOT `day.avgWaitTime` — the cell used to render the latter and
+   * therefore rendered nothing, because `/calendar` does not send it. Checked against the live
+   * payload for Phantasialand: a day carries `crowdLevel`, `hours`, `weather`, `peakLoad`,
+   * `events`, the holiday flags and `headlinerForecast`, and no `avgWaitTime` at all. The field
+   * stays in the fallback for a park or a cached response that does send one.
+   *
+   * `roundWaitTo5` on the way out as well as in the API: a displayed wait time is always a
+   * multiple of five, and an average across a day is exactly the arithmetic that breaks it.
+   */
+  const rawWait = day.headlinerForecast?.avgWait ?? day.avgWaitTime;
+  const wait = rawWait && rawWait > 0 ? roundWaitTo5(rawWait) : null;
+
+  const statusLabel = isClosed
+    ? tCommon('closed')
+    : isUnknown
+      ? t('crowdLevels.unknown')
+      : colored
+        ? t(`crowdLevels.${colored}`)
+        : t('crowdLevels.unknown');
+
+  const signalHint = [
+    day.isHoliday || day.isPublicHoliday ? tLegend('holiday') : null,
+    day.isSchoolHoliday || day.isSchoolVacation ? tLegend('schoolVacation') : null,
+    day.isBridgeDay ? tLegend('bridgeDay') : null,
+    (day.neighborHolidays?.length ?? 0) > 0 && !isClosed ? t('influencingHolidays') : null,
+  ]
+    .filter(Boolean)
+    .join(' · ');
 
   return (
     <Card
-      className={`relative flex h-full flex-col gap-1 p-2 ${getBorderColor()} ${
-        day.status === 'CLOSED' ? 'bg-gray-100/50 dark:bg-gray-800/30' : ''
-      } ${day.status === 'UNKNOWN' ? 'bg-gray-100/50 dark:bg-gray-800/30' : ''} ${
-        clickable
-          ? 'focus-visible:ring-primary cursor-pointer transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:outline-none'
-          : ''
-      }`}
+      className={cn(
+        'relative flex h-full min-h-[92px] flex-col gap-0 overflow-hidden rounded-xl p-[10px] lg:min-h-[150px] lg:p-3',
+        colored ? CROWD_TILE_CLASS[colored] : 'bg-muted/25 border-border/60',
+        isToday && 'border-primary border-2',
+        clickable &&
+          'focus-visible:ring-primary cursor-pointer transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:outline-none'
+      )}
       {...(clickable
         ? {
             role: 'button' as const,
             tabIndex: 0,
-            'aria-label': `${dayOfWeek} ${dayOfMonth}. ${month}`,
+            'aria-label': `${dayOfWeek} ${dayOfMonth}. ${month} — ${statusLabel}${
+              signalHint ? ` · ${signalHint}` : ''
+            }`,
             onClick: () => onSelect?.(day.date),
             onKeyDown: (e: React.KeyboardEvent) => {
               if (e.key === 'Enter' || e.key === ' ') {
@@ -161,127 +175,115 @@ function ParkCalendarDayComponent({
           }
         : {})}
     >
-      {isBestDay && (
-        <div className="absolute top-0 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
-          <span className="flex items-center gap-1 rounded-full border border-green-500/80 bg-green-500/65 px-2 py-0.5 text-[9px] font-bold tracking-wide whitespace-nowrap text-white uppercase backdrop-blur-md dark:border-green-500/40 dark:bg-green-500/25">
-            <Star className="h-2.5 w-2.5" />
-            {t('bestDay')}
-          </span>
-        </div>
+      {/* The signal bar. Sits on the cell's own top edge, inside its rounding, so it reads as part
+        of the tile rather than as a chip laid on it. */}
+      {signals.length > 0 && (
+        <span className="pointer-events-none absolute inset-x-0 top-0 flex h-[3px]">
+          {signals.map((s) => (
+            <span key={s.key} className={cn('h-full flex-1', s.className)} />
+          ))}
+        </span>
       )}
-      {/* Header: Stacked Layout */}
-      <div className="mb-1 flex items-start justify-between">
-        <div className="flex flex-col">
-          <span className="text-muted-foreground text-xs leading-tight font-medium">
-            {isToday ? tCommon('today') : dayOfWeek}
-          </span>
+
+      {/* Header: the date on the left, what it costs in queue on the right.
+        `flex-wrap` and a date group that refuses to shrink, because the seven-column grid starts
+        at 1024 px where a cell is 128 px wide and „28 · HEUTE · 40 Min" wants about 133: without
+        the wrap the date group was squeezed to 44 px and the pill slid out from under it, across
+        the wait time. Wrapped, the wait drops to a line of its own and the cell still comes in
+        under its 150 px — from 1280 px up nothing wraps at all. */}
+      <div className="flex flex-wrap items-start justify-between gap-x-1.5 gap-y-0.5">
+        <div className="flex shrink-0 items-baseline gap-1.5">
           <span
-            className={`text-sm ${isToday ? 'font-bold' : 'font-semibold'} mt-0.5 leading-tight`}
+            className={cn(
+              'text-[21px] leading-none font-bold tabular-nums lg:text-[26px]',
+              colored ? CROWD_TEXT_CLASS[colored] : 'text-muted-foreground'
+            )}
           >
-            {dayOfMonth}. {month}
+            {dayOfMonth}
           </span>
-        </div>
-        <div className="flex items-center gap-1">
-          {/* Neighbouring-region holidays: amber Luggage marker (distinct from the local
-              orange/yellow/blue holiday icons), hovering into the region list. Shared with the
-              ride page's history tile so the same marker never explains itself two ways. */}
-          {hasNeighbor && <NeighborHolidaysMarker holidays={day.neighborHolidays} />}
-          {scheduleIcon && (
-            /* A styled tooltip rather than the browser's `title`: sitting next to the marker
-               above, a native tip reads as a different kind of thing — different box, different
-               delay, and on the cell it competes with the click that opens the day dialog. */
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <scheduleIcon.Icon
-                  className={`h-4 w-4 cursor-help ${scheduleIcon.color}`}
-                  aria-label={scheduleIcon.label}
-                />
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>{scheduleIcon.label}</p>
-              </TooltipContent>
-            </Tooltip>
+          {/* The weekday gives way to the „Heute" pill rather than squeezing beside it: at `lg`
+            the cell is 132 px inside its padding and „28 Fr HEUTE 15 Min" does not fit in it. */}
+          {isToday ? (
+            <span className="bg-primary text-primary-foreground rounded-full px-1.5 py-[3px] text-[8.5px] font-bold tracking-wider whitespace-nowrap uppercase">
+              {tCommon('today')}
+            </span>
+          ) : (
+            <span className="text-muted-foreground text-[11px] font-medium lg:text-xs">
+              {dayOfWeek}
+            </span>
           )}
         </div>
+        {wait !== null && (
+          <span
+            className={cn(
+              'ml-auto text-[13px] leading-tight font-bold whitespace-nowrap tabular-nums lg:text-[15px]',
+              colored ? CROWD_TEXT_CLASS[colored] : 'text-muted-foreground'
+            )}
+          >
+            {wait} {tCommon('min')}
+          </span>
+        )}
       </div>
 
-      {/* Content */}
-      {day.status === 'OPERATING' || day.status === 'UNKNOWN' ? (
-        <div className="flex flex-1 flex-col gap-2">
-          {/* Crowd Level Badge */}
-          {day.crowdLevel && day.crowdLevel !== 'closed' && (
-            <div className="flex w-full justify-center">
-              <CrowdLevelBadge
-                level={day.crowdLevel}
-                className="w-full justify-center py-0.5 text-[10px]"
-              />
-            </div>
-          )}
+      {/* What kind of day it is, in one word. */}
+      <div
+        className={cn(
+          'mt-1.5 flex items-center gap-1 text-[9.5px] font-bold tracking-wider uppercase lg:mt-2 lg:text-[10.5px]',
+          isClosed
+            ? 'text-status-closed'
+            : colored
+              ? CROWD_TEXT_CLASS[colored]
+              : 'text-muted-foreground'
+        )}
+      >
+        {isBestDay && !isClosed && (
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Star className="h-3 w-3 shrink-0 fill-current" aria-label={t('bestDay')} />
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{t('bestDay')}</p>
+            </TooltipContent>
+          </Tooltip>
+        )}
+        <span className="truncate">{statusLabel}</span>
+      </div>
 
-          {/* Opening Hours — park-local time; hover shows the viewer's local time (ParkTime). */}
-          {day.status === 'OPERATING' && day.hours ? (
-            <div className="text-muted-foreground flex flex-col items-center gap-0.5 text-[10px]">
-              <div className="flex items-center gap-1">
-                <Clock className="h-3 w-3" />
-                <span className="font-medium">
-                  <ParkTimeRange
-                    openingTime={day.hours.openingTime}
-                    closingTime={day.hours.closingTime}
-                    parkTimezone={parkTimezone}
-                    locale={locale}
-                  />
-                </span>
-                {(day.isEstimated || day.hours.isInferred) && (
-                  <span
-                    title={t('calendarView.details.schedule.estimatedHours')}
-                    className="inline-flex"
-                  >
-                    <Info className="text-muted-foreground/60 h-2.5 w-2.5" />
-                  </span>
-                )}
-              </div>
-            </div>
-          ) : null}
-
-          {/* Weather */}
-          {day.weather && (
-            <div className="text-muted-foreground flex items-center justify-center gap-1 text-[10px]">
-              {createElement(getEventIcon(getWeatherIconFromCode(day.weather.icon)), {
-                className: 'h-3.5 w-3.5',
-              })}
-              <span>
-                <Temp celsius={day.weather.tempMin} /> – <Temp celsius={day.weather.tempMax} />
-              </span>
-            </div>
-          )}
-
-          {/* Ticket Price */}
-          {day.ticket?.price && (
-            <div className="text-muted-foreground flex items-center justify-center gap-1 text-[10px]">
-              <Ticket className="h-3 w-3" />
-              <span>
-                {day.ticket.price.amount} {day.ticket.price.currency}
-              </span>
-            </div>
-          )}
-
-          {/* Average Wait Time */}
-          {day.avgWaitTime && (
-            <div className="text-muted-foreground text-center text-[10px]">
-              ø {day.avgWaitTime} min
-            </div>
-          )}
-        </div>
-      ) : (
-        <div className="flex flex-1 flex-col items-center justify-center p-2 text-center">
-          <div className="flex flex-col items-center gap-1">
-            <Ban className="h-4 w-4 text-red-500 opacity-50" />
-            <span className="text-muted-foreground text-[10px] font-medium text-red-500/80">
-              {tCommon('closed')}
+      {/* Hours and weather sit on the cell's floor, so every tile in a row lines them up. Below
+        `lg` they share a line — the two-column list is 177 px wide on a phone and a stacked pair
+        would cost the row a third of its height for two figures that fit side by side. */}
+      <div className="text-muted-foreground mt-auto flex flex-wrap items-center gap-x-2 gap-y-0.5 pt-1 text-[10.5px] lg:flex-col lg:items-start lg:gap-1 lg:text-[11px]">
+        {day.status === 'OPERATING' && day.hours && (
+          <span className="flex items-center gap-1 tabular-nums">
+            <ParkTimeRange
+              openingTime={day.hours.openingTime}
+              closingTime={day.hours.closingTime}
+              parkTimezone={parkTimezone}
+              locale={locale}
+            />
+            {(day.isEstimated || day.hours.isInferred) && (
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Info className="text-muted-foreground/60 h-2.5 w-2.5 shrink-0" />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{t('calendarView.details.schedule.estimatedHours')}</p>
+                </TooltipContent>
+              </Tooltip>
+            )}
+          </span>
+        )}
+        {day.weather && (
+          <span className="flex items-center gap-1">
+            {createElement(getEventIcon(getWeatherIconFromCode(day.weather.icon)), {
+              className: 'h-3 w-3 shrink-0',
+            })}
+            <span className="tabular-nums">
+              <Temp celsius={day.weather.tempMin} />–<Temp celsius={day.weather.tempMax} />
             </span>
-          </div>
-        </div>
-      )}
+          </span>
+        )}
+      </div>
     </Card>
   );
 }

@@ -425,6 +425,10 @@
     "crowdCalendar": "Calendario de Afluencia y Mejores Días",
     "map": "Mapa",
     "calendarLegend": "Leyenda",
+    "calendarLegendGroups": {
+      "crowd": "Afluencia",
+      "signals": "Señales"
+    },
     "eventTypesLabel": "Tipos de Eventos",
     "crowdLevelsLabel": "Niveles de Afluencia",
     "crowdLevelsNote": "(Ver abajo)",

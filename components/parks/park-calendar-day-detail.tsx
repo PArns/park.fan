@@ -18,9 +18,16 @@ import {
   Wind,
   Droplets,
   Snowflake,
+  Ticket,
 } from 'lucide-react';
 import type { CalendarDay, CrowdLevel } from '@/lib/api/types';
-import { CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
+import {
+  CROWD_DOT_CLASS,
+  CROWD_LEVEL_ORDER,
+  CROWD_TEXT_CLASS,
+  CROWD_TILE_CLASS,
+} from '@/lib/utils/crowd-level-styles';
+import type { ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Link } from '@/i18n/navigation';
@@ -44,16 +51,17 @@ import {
 
 const DATE_LOCALES = { de, en: enUS, es, fr, it, nl } as const;
 
-/** Bar colour per crowd level for the hourly forecast mini-chart — mirrors the
- *  CrowdLevelBadge colour story (teal→emerald→green, then orange→rose→red). */
+/**
+ * Bar colour per crowd level for the hourly forecast mini-chart.
+ *
+ * These were six hand-picked Tailwind shades (`bg-teal-400`, `bg-rose-400`, …) chosen to
+ * „mirror" the palette, and they missed it: the chart drew `very_high` in rose while every badge,
+ * tile and legend on the page drew it in `--crowd-very-high`, an orange. One tier, two colours,
+ * one dialog. It reads the palette now, so retuning a shade moves the chart with everything else.
+ */
 const CROWD_BAR_COLOR: Record<string, string> = {
-  very_low: 'bg-teal-400',
-  low: 'bg-emerald-400',
-  moderate: 'bg-green-500',
-  high: 'bg-orange-400',
-  very_high: 'bg-rose-400',
-  extreme: 'bg-red-500',
-  unknown: 'bg-slate-400',
+  ...CROWD_DOT_CLASS,
+  unknown: 'bg-muted-foreground/50',
 };
 
 const CROWD_MEANING_LEVELS: readonly CrowdLevel[] = CROWD_LEVEL_ORDER;
@@ -209,6 +217,35 @@ export function ParkCalendarDayDetail({
 
   const hasHolidayContext = localChips.length > 0 || showNeighbor;
 
+  /**
+   * The same three-pixel bar the day's tile in the grid wears, on the dialog's top edge.
+   *
+   * It is what makes the dialog read as that cell opened up rather than as a separate window:
+   * the reader clicked a tile with a yellow-and-amber edge and the panel that comes up carries
+   * it. Order matches the legend, so two dialogs never split the bar the other way round.
+   */
+  const signalBars = [
+    day.isSchoolHoliday || day.isSchoolVacation ? 'bg-yellow-500 dark:bg-yellow-400' : null,
+    showNeighbor ? 'bg-amber-600 dark:bg-amber-500' : null,
+    day.isHoliday || day.isPublicHoliday ? 'bg-red-500 dark:bg-red-400' : null,
+    day.isBridgeDay ? 'bg-blue-500 dark:bg-blue-400' : null,
+  ].filter((c): c is string => c !== null);
+
+  // The level the panel is TINTED by — the forecast on today (where `crowdLevel` carries the live
+  // occupancy and the two are shown side by side), the day's own level otherwise.
+  const panelLevel: ColoredCrowdLevel | null =
+    meaningLevel && meaningLevel !== 'closed' && meaningLevel !== 'unknown'
+      ? (meaningLevel as ColoredCrowdLevel)
+      : null;
+
+  // The same number the grid's cell shows, from the same field: `/calendar` sends the day's
+  // headliner average and no `avgWaitTime`, so reading the latter renders nothing.
+  const rawAvgWait = forecast?.avgWait ?? day.avgWaitTime;
+  const avgWait = rawAvgWait && rawAvgWait > 0 ? roundWaitTo5(rawAvgWait) : null;
+  // Whether the panel above the ride list already states it — if it does, the list must not
+  // repeat it underneath.
+  const heroShowsAvgWait = !!day.crowdLevel && day.crowdLevel !== 'closed' && avgWait !== null;
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
@@ -226,6 +263,14 @@ export function ParkCalendarDayDetail({
             : undefined
         }
       >
+        {signalBars.length > 0 && (
+          <div className="flex h-[3px] shrink-0" aria-hidden="true">
+            {signalBars.map((c) => (
+              <span key={c} className={cn('h-full flex-1', c)} />
+            ))}
+          </div>
+        )}
+
         <DialogHeader className="border-border/60 border-b p-5 pb-4">
           <div className="flex items-center gap-3 pr-6">
             {onNavigate && (
@@ -298,13 +343,64 @@ export function ParkCalendarDayDetail({
             </div>
           )}
 
-          {/* Crowd forecast + what it means */}
+          {/* The ticket price. It used to sit in the grid cell, where it was the one row that
+            could appear or not and therefore the one thing stopping the cell from having a fixed
+            height — which the reservation in `calendar-grid-geometry` pays for in layout shift.
+            It is a detail about one day, and this is the panel for details about one day. */}
+          {day.ticket?.price && (
+            <div className="text-muted-foreground flex items-center gap-2 text-sm">
+              <Ticket className="h-4 w-4" />
+              <span className="text-foreground font-medium tabular-nums">
+                {day.ticket.price.amount} {day.ticket.price.currency}
+              </span>
+            </div>
+          )}
+
+          {/* Crowd forecast + what it means — the panel the grid's tile leads into, carrying the
+            same tint and the same wait time the cell showed. The level used to be a badge on a
+            plain background, which put the dialog's most important line at the same weight as
+            the section headings under it. */}
           {day.crowdLevel && day.crowdLevel !== 'closed' && (
-            <section className="flex flex-col gap-2">
-              <h3 className="text-muted-foreground text-xs font-semibold tracking-[0.06em] uppercase">
-                {t('calendarView.details.crowd.title')}
-              </h3>
-              {showLiveSplit ? (
+            <section
+              className={cn(
+                'flex flex-col gap-3 rounded-xl border p-4',
+                panelLevel ? CROWD_TILE_CLASS[panelLevel] : 'bg-muted/30 border-border/60'
+              )}
+            >
+              <div className="flex flex-wrap items-start justify-between gap-x-8 gap-y-3">
+                <div className="min-w-0">
+                  <h3 className="text-muted-foreground text-xs font-semibold tracking-[0.06em] uppercase">
+                    {t('calendarView.details.crowd.title')}
+                  </h3>
+                  <p
+                    className={cn(
+                      'mt-1.5 text-xl leading-none font-bold',
+                      panelLevel ? CROWD_TEXT_CLASS[panelLevel] : 'text-muted-foreground'
+                    )}
+                  >
+                    {t(`crowdLevels.${meaningLevel}`)}
+                  </p>
+                </div>
+                {avgWait !== null && (
+                  <div className="min-w-0 text-right">
+                    <h3 className="text-muted-foreground text-xs font-semibold tracking-[0.06em] uppercase">
+                      {t('avgWaitTime')}
+                    </h3>
+                    <p
+                      className={cn(
+                        'mt-1.5 text-xl leading-none font-bold tabular-nums',
+                        panelLevel ? CROWD_TEXT_CLASS[panelLevel] : 'text-muted-foreground'
+                      )}
+                    >
+                      {avgWait} {tCommon('min')}
+                    </p>
+                  </div>
+                )}
+              </div>
+              {/* Today splits in two: `crowdLevel` is the live occupancy, `predictedCrowdLevel`
+                the morning's forecast. The panel above is tinted by the forecast, so the live
+                reading gets its badge back rather than being folded into one word. */}
+              {showLiveSplit && (
                 <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
                   <div className="flex items-center gap-2">
                     <span className="text-muted-foreground text-xs">{t('crowdNow')}</span>
@@ -317,8 +413,6 @@ export function ParkCalendarDayDetail({
                     <CrowdLevelBadge level={day.predictedCrowdLevel} />
                   </div>
                 </div>
-              ) : (
-                <CrowdLevelBadge level={day.crowdLevel} className="self-start" />
               )}
               {showMeaning && (
                 <p className="text-muted-foreground text-sm leading-relaxed">
@@ -348,14 +442,16 @@ export function ParkCalendarDayDetail({
                   <li key={r.attractionId} className="flex items-center justify-between gap-4">
                     <span className="truncate text-sm">{r.name}</span>
                     <span className="text-foreground shrink-0 text-sm font-semibold tabular-nums">
-                      ~{r.waitTime} min
+                      ~{r.waitTime} {tCommon('min')}
                     </span>
                   </li>
                 ))}
               </ul>
-              <p className="text-muted-foreground border-border/50 mt-0.5 border-t pt-2 text-xs">
-                {t('avgWaitTime')}: Ø {roundWaitTo5(forecast!.avgWait)} min
-              </p>
+              {!heroShowsAvgWait && (
+                <p className="text-muted-foreground border-border/50 mt-0.5 border-t pt-2 text-xs">
+                  {t('avgWaitTime')}: Ø {roundWaitTo5(forecast!.avgWait)} {tCommon('min')}
+                </p>
+              )}
             </section>
           )}
 
