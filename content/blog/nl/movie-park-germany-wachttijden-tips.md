@@ -654,7 +654,7 @@ grote achtbaan. De actuele cijfers staan op de
 **Zondag en vrijdag** zijn in onze gegevens de rustigste weekdagen, dinsdag is de
 drukste, en zaterdag ligt duidelijk boven zondag. Vanaf begin september is het
 park sowieso alleen nog van donderdag tot en met zondag open, in de herfstvakantie
-van 17 tot en met 31 oktober dagelijks.
+van 17 tot en met 31 oktober dagelijks. Welke dag het precies wordt, staat in de [wachttijden-kalender](ref:movie-park-germany?calendar).
 
 ### Op welke dagen is Movie Park in het najaar open?
 

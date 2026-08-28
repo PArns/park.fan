@@ -868,8 +868,8 @@ cinque minuti e con la previsione per i prossimi giorni.
 
 La **domenica** è il giorno della settimana più tranquillo (18 minuti tipici
 contro i 28 del sabato), maggio e giugno sono i mesi estivi più tranquilli. Il
-momento più vuoto in assoluto è la stagione HALLOWinter, a inizio novembre. Nella
-nostra previsione per i prossimi tre mesi tutti e 19 i giorni di novembre stanno
+momento più vuoto in assoluto è la stagione HALLOWinter, a inizio novembre. [Nella
+nostra previsione per i prossimi tre mesi](ref:europa-park?calendar) tutti e 19 i giorni di novembre stanno
 su “basso”.
 
 ### C'è un fast pass all'Europa-Park?

@@ -855,8 +855,8 @@ bijgewerkt en met een voorspelling voor de komende dagen.
 
 De **zondag** is de rustigste weekdag (18 minuten typisch tegenover 28 op
 zaterdag), mei en juni zijn de rustigste zomermaanden. Het leegst is het in het
-HALLOWinter-seizoen begin november. In onze voorspelling voor de komende drie
-maanden staan alle 19 novemberdagen op “laag”.
+HALLOWinter-seizoen begin november. [In onze voorspelling voor de komende drie
+maanden](ref:europa-park?calendar) staan alle 19 novemberdagen op “laag”.
 
 ### Is er in het Europa-Park een fast pass?
 

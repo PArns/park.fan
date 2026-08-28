@@ -541,7 +541,7 @@ con entradas de día online con fecha. Tres cosas más:
 
 Entre semana (ma–ju) fuera de las vacaciones escolares de Renania del
 Norte-Westfalia y, en general, en temporada baja. Pero no te fíes de la intuición:
-el [calendario de afluencia del Phantasialand](ref:phantasialand) te dice hasta 365
+el [calendario de afluencia del Phantasialand](ref:phantasialand?calendar) te dice hasta 365
 días por adelantado cuándo cabe esperar poca gente, verde significa ir.
 
 ### ¿Cómo evito las colas largas en el Phantasialand?

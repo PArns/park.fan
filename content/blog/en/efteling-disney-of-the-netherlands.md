@@ -754,7 +754,7 @@ By month, **April and May** are the most relaxed season months (22 and 23 minute
 and **December** is the busiest at 34. The day of the week barely matters: four
 minutes separate Thursday (23 minutes) from Monday (27). What decides it is the
 Dutch school holidays. For a specific date the
-[best days to visit calendar](ref:efteling) helps more than any rule of thumb.
+[best days to visit calendar](ref:efteling?calendar) helps more than any rule of thumb.
 
 ### Is there a fast pass at Efteling?
 

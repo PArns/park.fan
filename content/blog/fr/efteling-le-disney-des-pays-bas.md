@@ -795,7 +795,7 @@ Par mois, **avril et mai** sont les mois de saison les plus calmes (22 et 23
 minutes), et **décembre** le plus chargé avec 34. Le jour de la semaine ne joue
 presque aucun rôle : quatre minutes séparent le jeudi (23 minutes) du lundi (27).
 Ce qui décide, ce sont les vacances scolaires néerlandaises. Pour une date précise,
-le [calendrier des meilleurs jours](ref:efteling) aide plus que n'importe quelle
+le [calendrier des meilleurs jours](ref:efteling?calendar) aide plus que n'importe quelle
 règle empirique.
 
 ### Y a-t-il un fast pass à Efteling ?

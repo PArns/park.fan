@@ -654,7 +654,7 @@ not to the big coaster. The current numbers are on the
 **Sunday and Friday** are the quietest weekdays in our data, Tuesday is the
 busiest, and Saturday sits well above Sunday. From the start of September the
 park only opens Thursday to Sunday anyway, and daily during the autumn holidays
-from 17 to 31 October.
+from 17 to 31 October. Which day exactly is in the [wait-time calendar](ref:movie-park-germany?calendar).
 
 ### Which days is Movie Park open in autumn?
 

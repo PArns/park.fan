@@ -661,7 +661,7 @@ grandi montagne russe. I numeri aggiornati sono sulla
 **La domenica e il venerdì** sono nei nostri dati i giorni più tranquilli, il
 martedì il più carico, e il sabato sta nettamente sopra la domenica. Da inizio
 settembre il parco apre comunque solo da giovedì a domenica, e tutti i giorni
-nelle vacanze autunnali dal 17 al 31 ottobre.
+nelle vacanze autunnali dal 17 al 31 ottobre. Quale giorno di preciso lo dice il [calendario dei tempi di attesa](ref:movie-park-germany?calendar).
 
 ### In che giorni il Movie Park è aperto in autunno?
 

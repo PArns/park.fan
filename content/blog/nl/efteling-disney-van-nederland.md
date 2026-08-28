@@ -749,7 +749,7 @@ Per maand zijn **april en mei** de rustigste seizoensmaanden (22 respectievelijk
 23 minuten), het drukst is **december** met 34. De weekdag speelt nauwelijks een rol,
 tussen donderdag (23 minuten) en maandag (27) zitten vier minuten. Doorslaggevend
 zijn de Nederlandse schoolvakanties. Voor een concrete datum helpt de
-[kalender met de beste bezoekdagen](ref:efteling) meer dan welke vuistregel ook.
+[kalender met de beste bezoekdagen](ref:efteling?calendar) meer dan welke vuistregel ook.
 
 ### Is er een fast pass in de Efteling?
 

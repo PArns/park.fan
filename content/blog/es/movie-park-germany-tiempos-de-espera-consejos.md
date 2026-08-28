@@ -664,7 +664,7 @@ montaña rusa. Las cifras actuales están en la
 **El domingo y el viernes** son en nuestros datos los días más tranquilos, el
 martes el más cargado, y el sábado queda claramente por encima del domingo. A
 partir de principios de septiembre el parque solo abre de jueves a domingo de
-todas formas, y a diario en las vacaciones de otoño, del 17 al 31 de octubre.
+todas formas, y a diario en las vacaciones de otoño, del 17 al 31 de octubre. Qué día en concreto está en el [calendario de tiempos de espera](ref:movie-park-germany?calendar).
 
 ### ¿Qué días abre el Movie Park en otoño?
 

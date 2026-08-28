@@ -875,8 +875,8 @@ cada cinco minutos y con previsión para los próximos días.
 
 El **domingo** es el día de la semana más tranquilo (18 minutos típicos frente a
 28 el sábado), y mayo y junio son los meses de verano más tranquilos. Lo más vacío
-de todo es la temporada HALLOWinter, a principios de noviembre. En nuestra
-previsión para los próximos tres meses, los 19 días de noviembre están todos en
+de todo es la temporada HALLOWinter, a principios de noviembre. [En nuestra
+previsión para los próximos tres meses](ref:europa-park?calendar), los 19 días de noviembre están todos en
 «bajo».
 
 ### ¿Hay fast pass en el Europa-Park?

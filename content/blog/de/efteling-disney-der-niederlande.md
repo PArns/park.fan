@@ -788,7 +788,7 @@ Nach Monat sind **April und Mai** die entspanntesten Saisonmonate (22 bzw.
 23 Minuten), am vollsten ist der **Dezember** mit 34. Der Wochentag spielt kaum
 eine Rolle, zwischen Donnerstag (23 Minuten) und Montag (27) liegen vier Minuten.
 Entscheidend sind die niederländischen Schulferien. Für einen konkreten Termin
-hilft der [Kalender der besten Besuchstage](ref:efteling) mehr als jede
+hilft der [Kalender der besten Besuchstage](ref:efteling?calendar) mehr als jede
 Faustregel.
 
 ### Gibt es im Efteling einen Fast Pass?

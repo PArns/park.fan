@@ -868,7 +868,7 @@ parco. I numeri aggiornati stanno sulla
 Maggio e luglio sono nei nostri dati i mesi più rilassati (tipicamente 18
 minuti), aprile il più affollato (22 minuti). Per giorno della settimana la
 differenza è piccola, con il giovedì leggermente avanti a 18 minuti. Evita le
-vacanze olandesi di maggio e d'estate e i fine settimana di Halloween.
+vacanze olandesi di maggio e d'estate e i fine settimana di Halloween. Per una data precisa aiuta il [calendario dei tempi di attesa](ref:walibi-holland?calendar).
 
 ### Quanto costa l'ingresso a Walibi Holland?
 

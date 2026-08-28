@@ -552,7 +552,7 @@ via des billets journaliers datés en ligne. Trois choses encore :
 
 En semaine (mar.–jeu.), hors vacances scolaires de Rhénanie-du-Nord-Westphalie et,
 de manière générale, en basse saison. Mais ne te fie pas à ton intuition : le
-[calendrier d'affluence du Phantasialand](ref:phantasialand) te dit jusqu'à 365
+[calendrier d'affluence du Phantasialand](ref:phantasialand?calendar) te dit jusqu'à 365
 jours à l'avance quand s'attendre à peu de monde, vert, c'est feu vert.
 
 ### Comment éviter les longs temps d'attente au Phantasialand ?

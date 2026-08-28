@@ -1,11 +1,16 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
 import { BlogParkCardLive } from './blog-park-card-live';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
+import type { Locale } from '@/i18n/config';
+import {
+  PARK_CALENDAR_CANONICAL_SEGMENT,
+  PARK_CALENDAR_SEGMENTS,
+} from '@/lib/parks/calendar-segments';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { isNotOperating } from '@/lib/blog/live-display';
 import { useLiveBlogPark } from '@/lib/blog/use-blog-live';
@@ -47,6 +52,7 @@ export function BlogParkLink({
   children,
 }: BlogParkLinkProps) {
   const tGeo = useTranslations('geo');
+  const locale = useLocale();
   // The post is statically generated, so `resolvedPark` carries whatever the park's status was at
   // build time. Refresh it in the browser (see `useLiveBlogPark`).
   const park = useLiveBlogPark(resolvedPark);
@@ -58,6 +64,27 @@ export function BlogParkLink({
     // dead link that would 404 on a bare /parks/<slug>.
     return <span className="font-medium">{label}</span>;
   }
+
+  /**
+   * `ref:phantasialand?calendar` points at the park's wait-time calendar instead of its
+   * wait-times page.
+   *
+   * A post that argues about WHEN to go — a tips article, a best-time piece, a „wann ist es leer"
+   * — was sending readers to the live board, which answers a different question and answers it
+   * only for today. The calendar is the page that carries that argument's evidence, and it went
+   * live with nothing linking into it from the one place on this site that writes about visit
+   * timing at length.
+   *
+   * Built by appending the localized segment to the park's OWN href, not by reassembling the geo
+   * path: `ResolvedPark` carries `city` as the city's NAME („Brühl"), and there is no city slug on
+   * it — feeding that to `parkCalendarPath` produces a 404 on every park whose city is spelled
+   * with anything but its slug. The href is already the right path; the segment is the only part
+   * that is localized (`wartezeiten-kalender`, `calendrier-temps-attente`, …).
+   */
+  const wantsCalendar = options?.has('calendar') ?? false;
+  const href = wantsCalendar
+    ? `${park.href}/${PARK_CALENDAR_SEGMENTS[locale as Locale] ?? PARK_CALENDAR_CANONICAL_SEGMENT}`
+    : park.href;
 
   const country = translateGeoSlug(tGeo, 'countries', park.countrySlug, park.country);
   // Default to "City, Country". `?short` collapses to just the city.
@@ -78,7 +105,7 @@ export function BlogParkLink({
     <HoverCard openDelay={120} closeDelay={80}>
       <HoverCardTrigger asChild>
         <Link
-          href={park.href as '/'}
+          href={href as '/'}
           className="text-primary hover:text-primary/80 focus-visible:ring-ring/40 inline rounded-sm font-medium underline decoration-dotted underline-offset-4 transition-colors focus:outline-none focus-visible:ring-2"
         >
           {label}

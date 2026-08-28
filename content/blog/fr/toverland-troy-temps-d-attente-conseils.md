@@ -592,7 +592,7 @@ chiffres du jour sont sur la
 **Juin** est le mois le plus détendu dans nos données (typiquement 18 minutes),
 suivi de mai et juillet. En semaine c'est un peu plus vide que le week-end, mais
 l'écart est faible (20 contre 25 minutes le samedi). Évite avril, les vacances
-néerlandaises de mai et d'automne et la courte saison d'hiver.
+néerlandaises de mai et d'automne et la courte saison d'hiver. Jour après jour, le [calendrier des temps d’attente](ref:attractiepark-toverland?calendar) le montre.
 
 ### A-t-on besoin d'un coupe-file à Toverland ?
 

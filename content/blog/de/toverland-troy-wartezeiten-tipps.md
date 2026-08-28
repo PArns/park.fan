@@ -568,7 +568,7 @@ der [Toverland-Parkseite](ref:attractiepark-toverland).
 **Juni** ist in unseren Daten der entspannteste Monat (typisch 18 Minuten),
 gefolgt von Mai und Juli. Wochentags ist es etwas leerer als am Wochenende, aber
 der Unterschied ist klein (20 gegenüber 25 Minuten am Samstag). Meide den April,
-die niederländischen Mai- und Herbstferien und die kurze Wintersaison.
+die niederländischen Mai- und Herbstferien und die kurze Wintersaison. Tag für Tag zeigt das der [Wartezeiten-Kalender](ref:attractiepark-toverland?calendar).
 
 ### Braucht man im Toverland einen Fast Pass?
 
