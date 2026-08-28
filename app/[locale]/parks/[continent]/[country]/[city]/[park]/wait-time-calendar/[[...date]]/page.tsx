@@ -140,21 +140,20 @@ export async function generateMetadata({ params }: ParkCalendarPageProps): Promi
   const label = monthLabel(locale, month ?? nowInPark);
 
   // `fitWithin` takes the limit first and then candidates longest-preferred: the short title is
-  // the fallback for a park name that pushes the full one past 60 characters. A month page is
-  // written for a different query from the hub's — "phantasialand september 2026" rather than
-  // "phantasialand wartezeiten kalender" — so it gets its own pair rather than the hub's with a
-  // month appended.
-  const title = month
-    ? fitWithin(
-        MAX_TITLE_LENGTH,
-        t('monthMetaTitle', { park: parkName, month: label }),
-        t('monthMetaTitleShort', { park: parkName, month: label })
-      )
-    : fitWithin(
-        MAX_TITLE_LENGTH,
-        t('metaTitle', { park: parkName, month: label }),
-        t('metaTitleShort', { park: parkName, month: label })
-      );
+  // the fallback for a park name that pushes the full one past 60 characters.
+  //
+  // ONE pair for the hub and for every month, because they are one kind of page. The hub is
+  // canonical for the current month — `/2026/8` points at it in August — so it is that month's
+  // page and reads like one. It used to have a second pair of its own, and the two drifted the
+  // moment they existed: the hub said „Wartezeiten-Kalender", the months said „{month}:
+  // Wartezeiten & Andrang", and neither was the phrase a person types. Same reasoning as the
+  // segment name in `calendar-segments.ts` — two spellings of one thing are two chances to pick
+  // the wrong one.
+  const title = fitWithin(
+    MAX_TITLE_LENGTH,
+    t('metaTitle', { park: parkName, month: label }),
+    t('metaTitleShort', { park: parkName, month: label })
+  );
   // Two candidates, and the second is not decoration: the description names the park AND the
   // city, and the catalogue's longest pair is 53 characters ("Fantawild Silk Road Heritage
   // Jiayuguan" in "Jia Yu Guan Shi") against Phantasialand's 18. With one candidate `fitWithin`
@@ -394,11 +393,9 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
             countryName={countryName}
             // The H1 is the one thing that must differ between the hub and each of its months,
             // or twelve pages share a heading and a crawler has no reason to tell them apart.
-            suffix={
-              monthName
-                ? t('monthH1Suffix', { month: monthName })
-                : t('h1Suffix', { month: monthLabel(locale, nowMonth) })
-            }
+            // The month this page shows — the URL's on a month page, today's on the hub. Same
+            // suffix either way, for the same reason the title is.
+            suffix={t('h1Suffix', { month: monthName ?? monthLabel(locale, nowMonth) })}
             intro={
               monthName
                 ? t('monthIntro', { park: parkName, month: monthName })
