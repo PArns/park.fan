@@ -13,13 +13,14 @@ import {
   getDay,
 } from 'date-fns';
 import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
-import { Ban, PartyPopper, Backpack, Calendar, Info, Luggage } from 'lucide-react';
+import { Info } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useCalendarData } from '@/lib/hooks/use-calendar-data';
+import { rankOf } from '@/lib/parks/calendar-month-summary';
 import { CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
 import { parkCalendarPath, type ParkCalendarMonth } from '@/lib/parks/calendar-segments';
 import type { IntegratedCalendarResponse, ParkWithAttractions } from '@/lib/api/types';
-import { Skeleton } from '@/components/ui/skeleton';
+import { ParkCalendarGridPlaceholder } from '@/components/parks/park-calendar-grid-placeholder';
 import { ParkCalendarDay } from './park-calendar-day';
 import { ParkCalendarDayDetail } from './park-calendar-day-detail';
 
@@ -62,7 +63,6 @@ export function ParkCalendarGrid({
   const parkTimezone = park.timezone ?? 'UTC';
   const router = useRouter();
   const t = useTranslations('parks');
-  const tAttractions = useTranslations('attractions');
   const tCommon = useTranslations('common');
 
   // Map locale to date-fns locale
@@ -229,8 +229,46 @@ export function ParkCalendarGrid({
     return map;
   }, [calendarData]);
 
-  // Compute best-day set — lowest crowd level among OPERATING/UNKNOWN days without school/public holidays.
-  // Falls back to backend recommendation field once the API provides it.
+  /**
+   * How far below the month's median a day must rank before it is worth a star, in units of
+   * `rankOf` — where 1.0 is one crowd bucket and the fractional part is the headliner wait scaled
+   * over two hours.
+   *
+   * Half a bucket. Below that the badge marks noise: a month whose days all forecast `low` and
+   * differ only by five minutes of queue would otherwise have half of itself recommended.
+   */
+  const BEST_DAY_MARGIN = 0.5;
+
+  /**
+   * The days that get the „Empfohlen" star — the ones that stand out, not the ones that tie.
+   *
+   * This used to mark every candidate sitting at the month's lowest crowd BUCKET, and on a month
+   * where the bucket does not vary that is the whole month: measured on Phantasialand's November
+   * 2026, thirty days all forecast `low` and **23 of them wore the badge**. A recommendation that
+   * applies to three quarters of the month recommends nothing, and it contradicted the summary
+   * directly above the grid, which applies a median test and therefore said the month has no
+   * quiet day at all. Two answers to one question, on one page.
+   *
+   * So the same ranking as `summarizeCalendarMonth`, from the same `rankOf`: the crowd bucket with
+   * the headliner wait as the tie-break (the API sends no `crowdScore` — 0 of 30 days — so the
+   * wait is the only continuous signal that actually arrives). And a day has to beat the month's
+   * median by BEST_DAY_MARGIN, not merely beat it: "strictly below the median" still badged 13 of
+   * November's 29 candidates, and what separated them was 30 minutes of headliner wait against
+   * 35. Five minutes is not a recommendation.
+   *
+   * Half a crowd bucket is. Measured across four months of Phantasialand, that is the difference
+   * between a month with something to say and one without:
+   *
+   * ```
+   *   2026-09   29 candidates   ranks 0.21-3.50   12 badges
+   *   2026-10   15 candidates   ranks 0.21-3.50    7 badges
+   *   2026-11   29 candidates   ranks 1.25-1.29    0 badges
+   *   2026-12   22 candidates   ranks 1.25-1.29    0 badges
+   * ```
+   *
+   * No separate cap on the count: "below the median" already bounds it at half the month, and the
+   * margin does the rest of the work.
+   */
   const bestDayDates = useMemo(() => {
     const crowdOrder: readonly string[] = CROWD_LEVEL_ORDER;
     const candidates = Array.from(calendarMap.values()).filter(
@@ -242,14 +280,17 @@ export function ParkCalendarGrid({
         !d.isHoliday &&
         !d.isPublicHoliday
     );
-    if (candidates.length === 0) return new Set<string>();
-    const minIdx = Math.min(
-      ...candidates.map((d) => crowdOrder.indexOf(d.crowdLevel)).filter((i) => i >= 0)
-    );
-    if (minIdx < 0) return new Set<string>();
-    return new Set<string>(
-      candidates.filter((d) => crowdOrder.indexOf(d.crowdLevel) === minIdx).map((d) => d.date)
-    );
+    const ranked = candidates
+      .map((d) => ({ date: d.date, rank: rankOf(d, crowdOrder.indexOf(d.crowdLevel)) }))
+      .filter((d) => crowdOrder.indexOf(calendarMap.get(d.date).crowdLevel) >= 0);
+    if (ranked.length < 4) return new Set<string>();
+
+    const sorted = [...ranked].map((d) => d.rank).sort((a, b) => a - b);
+    const mid = Math.floor(sorted.length / 2);
+    const median = sorted.length % 2 === 0 ? (sorted[mid - 1] + sorted[mid]) / 2 : sorted[mid];
+
+    const standouts = ranked.filter((d) => d.rank <= median - BEST_DAY_MARGIN);
+    return new Set<string>(standouts.map((d) => d.date));
   }, [calendarMap, todayStr]);
 
   const today = new Date();
@@ -284,73 +325,10 @@ export function ParkCalendarGrid({
           </div>
         )}
 
-        {/* Legend — each chip carries a native `title` hint explaining what it means. */}
-        <div className="flex flex-wrap items-center gap-2 text-sm">
-          <div
-            title={t('legendHints.closed')}
-            className="flex items-center gap-1.5 rounded-md border border-red-500 bg-red-50/50 px-2 py-1 dark:bg-red-950/20"
-          >
-            <Ban className="h-3.5 w-3.5 text-red-500 dark:text-red-400" />
-            <span className="text-xs">{tAttractions('historyLegend.closed')}</span>
-          </div>
-          <div
-            title={t('legendHints.holiday')}
-            className="flex items-center gap-1.5 rounded-md border border-orange-500 bg-white px-2 py-1 dark:bg-gray-900/50"
-          >
-            <PartyPopper className="h-3.5 w-3.5 text-orange-500 dark:text-orange-400" />
-            <span className="text-xs">{tAttractions('historyLegend.holiday')}</span>
-          </div>
-          <div
-            title={t('legendHints.schoolVacation')}
-            className="flex items-center gap-1.5 rounded-md border border-yellow-500 bg-white px-2 py-1 dark:bg-gray-900/50"
-          >
-            <Backpack className="h-3.5 w-3.5 text-yellow-500 dark:text-yellow-400" />
-            <span className="text-xs">{tAttractions('historyLegend.schoolVacation')}</span>
-          </div>
-          <div
-            title={t('legendHints.bridgeDay')}
-            className="flex items-center gap-1.5 rounded-md border border-blue-500 bg-white px-2 py-1 dark:bg-gray-900/50"
-          >
-            <Calendar className="h-3.5 w-3.5 text-blue-500 dark:text-blue-400" />
-            <span className="text-xs">{tAttractions('historyLegend.bridgeDay')}</span>
-          </div>
-          <div
-            title={t('legendHints.neighbor')}
-            className="flex items-center gap-1.5 rounded-md border border-amber-500 bg-white px-2 py-1 dark:bg-gray-900/50"
-          >
-            <Luggage className="h-3.5 w-3.5 text-amber-500 dark:text-amber-400" />
-            <span className="text-xs">{t('influencingHolidays')}</span>
-          </div>
-        </div>
-
-        {/* Loading Skeleton */}
-        {isLoading && (
-          <div className="space-y-4">
-            {/* Desktop Skeleton */}
-            <div className="hidden md:block">
-              {/* Weekday Headers Skeleton */}
-              <div className="mb-2 grid grid-cols-7 gap-2">
-                {Array.from({ length: 7 }).map((_, i) => (
-                  <Skeleton key={i} className="h-5 w-full" />
-                ))}
-              </div>
-              {/* Calendar Grid Skeleton */}
-              {Array.from({ length: 5 }).map((_, weekIdx) => (
-                <div key={weekIdx} className="mb-2 grid grid-cols-7 gap-2">
-                  {Array.from({ length: 7 }).map((_, dayIdx) => (
-                    <Skeleton key={dayIdx} className="h-32 w-full" />
-                  ))}
-                </div>
-              ))}
-            </div>
-            {/* Mobile Skeleton */}
-            <div className="grid grid-cols-2 gap-3 md:hidden">
-              {Array.from({ length: 10 }).map((_, i) => (
-                <Skeleton key={i} className="h-40 w-full" />
-              ))}
-            </div>
-          </div>
-        )}
+        {/* The SAME box the `next/dynamic` loading showed a moment ago, and now the same box
+          exactly: the legend that used to sit above this moved up into the panel's control row,
+          so the two waits no longer differ by a row one of them draws and the other does not. */}
+        {isLoading && <ParkCalendarGridPlaceholder />}
 
         {/* Calendar Grid — dimmed while the previous month is shown as placeholder during a
             month-navigation fetch (keepPreviousData), instead of flashing back to the skeleton. */}

@@ -227,18 +227,24 @@ export function WeatherNowcastBanner({
   // banner — the common case on most park pages — a slow minute tick (skipped while
   // the tab is hidden) keeps `now` fresh enough to surface an upcoming warning,
   // instead of re-rendering the component every second forever just to return null.
-  const hasBanner = banner !== null;
-  const { ref: bannerRef, active: bannerActive } = useActiveOnScreen();
+  const { ref: bannerRef } = useActiveOnScreen();
   useEffect(() => {
     // Deferred initial stamp (same pattern as useBrowserNow) — no synchronous
     // set-state-in-effect; the banner appears one tick after mount when applicable.
     const init = window.setTimeout(() => setNow(Date.now()), 0);
-    const id = window.setInterval(
-      () => {
-        if (!document.hidden) setNow(Date.now());
-      },
-      hasBanner && bannerActive ? 1_000 : 60_000
-    );
+    // Sixty seconds, always. Everything this component derives from `now` is minute-granular —
+    // `minutesUntil` rounds to whole minutes, `isInPast` and `dayKey` are coarser still — so a
+    // per-second tick bought no accuracy anywhere on screen. What it bought was a re-render of
+    // this component sixty times a minute, and this component owns a full-bleed
+    // `backdrop-blur-md` layer (see the panel below). Chromium has to re-read what is behind a
+    // backdrop filter whenever its subtree paints, so every one of those ticks was a backdrop
+    // re-rasterisation; miss a frame and the blur flattens for exactly that frame, which is the
+    // „Heute im Park" card going transparent for an instant, irregularly, and then sitting still
+    // for seconds. The one thing that genuinely needs seconds is the mm:ss countdown, and it
+    // keeps its own ticker — scoped to itself, gated on visibility, and painted in isolation.
+    const id = window.setInterval(() => {
+      if (!document.hidden) setNow(Date.now());
+    }, 60_000);
     // Re-stamp when the tab returns so countdowns don't show the pre-hide minute.
     const onVisibility = () => {
       if (!document.hidden) setNow(Date.now());
@@ -249,7 +255,7 @@ export function WeatherNowcastBanner({
       window.clearInterval(id);
       document.removeEventListener('visibilitychange', onVisibility);
     };
-  }, [hasBanner, bannerActive]);
+  }, []);
 
   if (!data || !banner) return null;
 
@@ -372,11 +378,7 @@ export function WeatherNowcastBanner({
               aria-hidden="true"
             />
             <h3 className="text-sm font-semibold">{heading}</h3>
-            <NowcastUpdateCountdown
-              nextUpdateAt={data.nextUpdateAt}
-              now={now}
-              className="ml-auto"
-            />
+            <NowcastUpdateCountdown nextUpdateAt={data.nextUpdateAt} className="ml-auto" />
           </div>
           <div className="mt-1 flex items-start gap-4">
             <p className="text-sm leading-relaxed">{body}</p>

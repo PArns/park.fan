@@ -732,15 +732,12 @@
     },
     "calendarPage": {
       "breadcrumb": "Calendrier des temps d’attente",
-      "h1Suffix": "Calendrier des temps d’attente",
-      "metaTitle": "{park} : calendrier des temps d’attente",
-      "metaTitleShort": "{park} : temps d’attente",
+      "h1Suffix": "Temps d’attente en {month}",
+      "metaTitle": "{park} : temps d’attente en {month}",
+      "metaTitleShort": "{park} : {month}",
       "metaDescription": "Quand {park} à {city} est-il calme ? Affluence jour par jour, horaires, vacances scolaires et météo pour les mois à venir, avec prévision IA.",
       "metaDescriptionNoCity": "Quand {park} est-il calme ? Affluence attendue par jour, horaires, vacances scolaires et météo pour les mois à venir.",
       "intro": "Pour chaque jour des prochains mois : affluence attendue, horaires et les vacances scolaires et les jours fériés qui pèsent sur {park}. Touche un jour pour le détail.",
-      "monthH1Suffix": "Temps d’attente en {month}",
-      "monthMetaTitle": "{park} {month} : temps d’attente et affluence",
-      "monthMetaTitleShort": "{park} en {month}",
       "monthMetaDescription": "Quelle affluence à {park} à {city} en {month} ? Affluence jour par jour, horaires, vacances scolaires et météo, avec une prévision IA.",
       "monthMetaDescriptionNoCity": "Quelle affluence à {park} en {month} ? Affluence attendue jour par jour, horaires, vacances scolaires et météo.",
       "monthIntro": "Jour par jour à travers {month} : affluence attendue à {park}, horaires, vacances scolaires et météo. Touche un jour pour le détail.",
@@ -749,7 +746,38 @@
       "nextMonth": "Mois suivant",
       "currentMonth": "Aujourd’hui",
       "currentMonthAria": "Aller au mois en cours",
-      "backToPark": "Retour aux temps d’attente à {park}"
+      "backToPark": "Retour aux temps d’attente à {park}",
+      "monthIndexLabel": "Tous les mois",
+      "summary": {
+        "openingFuture": "En {month}, {park} ouvre {open} jours sur {total}.",
+        "openingPast": "En {month}, {park} a ouvert {open} jours sur {total}.",
+        "quietestFuture": "Les jours les plus calmes devraient être {days}.",
+        "quietestPast": "Les jours les plus calmes ont été {days}.",
+        "busiestFuture": "L’affluence sera la plus forte {days}.",
+        "busiestPast": "L’affluence a été la plus forte {days}.",
+        "hours": "Ouverture le plus souvent de {from} à {to}.",
+        "schoolVacation": "{days, plural, =1 {Un jour tombe} other {# jours tombent}} pendant les vacances scolaires de la région du parc.",
+        "headlinerFuture": "Comptez environ {minutes} minutes sur les grandes attractions.",
+        "headlinerPast": "Les grandes attractions ont affiché {minutes} minutes en moyenne.",
+        "factOpenDays": "Ouvert",
+        "factOpenDaysValue": "{open} jours sur {total}",
+        "factHours": "Horaires",
+        "factHoursValue": "{from}–{to}",
+        "factWait": "Moyenne grandes attractions",
+        "factWaitValue": "{minutes} min",
+        "factSchoolVacation": "Vacances scolaires",
+        "factSchoolVacationValue": "{days, plural, =1 {# jour} other {# jours}}",
+        "factQuietest": "Jours les plus calmes :"
+      },
+      "dataset": {
+        "name": "Affluence et temps d’attente à {park}, {month}",
+        "description": "Affluence attendue pour chaque jour de {month} à {park} : horaires, jours fériés et vacances scolaires, prévisions météo et temps d’attente attendu sur les grandes attractions. Calculé à partir de temps d’attente mesurés.",
+        "varCrowd": "Affluence attendue par jour",
+        "varWait": "Temps d’attente attendu sur les grandes attractions",
+        "varHours": "Horaires d’ouverture",
+        "varHolidays": "Jours fériés et vacances scolaires",
+        "varWeather": "Prévisions météo"
+      }
     }
   },
   "attractions": {
@@ -1110,7 +1138,7 @@
       "description": "Optimisez votre visite avec les temps d'attente en direct et les prédictions IA. Couvre Disney, Universal, Europa-Park et plus."
     },
     "parks": {
-      "title": "Parcs d'Attractions Monde",
+      "title": "Parcs d'Attractions dans le Monde : Attente & Carte",
       "description": "Comparez les temps d'attente, statuts et affluence pour les meilleurs parcs comme Disney World, Disneyland, Universal Studios et Europa-Park.",
       "metaDescriptionTemplate": "Temps d'attente en direct et calendrier pour {park} à {city}. Prévisions du jour, meilleurs jours et horaires d'ouverture.",
       "titleTemplate": "{park} Temps d'Attente LIVE – {city}",

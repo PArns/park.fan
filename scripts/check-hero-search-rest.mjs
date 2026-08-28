@@ -26,10 +26,16 @@
  */
 
 import { chromium } from 'playwright';
+import { existsSync } from 'node:fs';
 
 const BASE = process.env.BASE ?? 'http://localhost:3000';
 // Same rule as scripts/check-card-framing.mjs: prefer a Chromium the image already ships.
+/** Same fallback the other Playwright scripts use: the CI image's build when it is there, and
+ *  otherwise nothing, which hands the choice to Playwright's own resolution. `CHROMIUM_PATH` is
+ *  the name `check-card-framing`, `check-webmcp` and `render-coaster-elements` already honour —
+ *  a second spelling would be a variable a developer exports and this script ignores. */
 const PREINSTALLED = process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium';
+const LAUNCH = existsSync(PREINSTALLED) ? { executablePath: PREINSTALLED } : {};
 
 /** All six, because the heading, the hint and the park names are all translated. */
 const LOCALES = ['de', 'en', 'nl', 'fr', 'es', 'it'];
@@ -44,7 +50,7 @@ const TOP_GAP = 12;
  */
 const TOLERANCE = 2;
 
-const browser = await chromium.launch({ executablePath: PREINSTALLED });
+const browser = await chromium.launch(LAUNCH);
 
 /** Height of whichever resting card is currently on screen, plus the reserved figure. */
 const measure = (page) =>

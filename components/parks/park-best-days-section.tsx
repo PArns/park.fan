@@ -48,6 +48,15 @@ interface ParkBestDaysSectionProps {
   /** Server "now" (epoch ms) the seed was rendered with — keeps SSR and the first client
    *  render byte-identical (no hydration mismatch from two clock reads). */
   seedNowMs?: number;
+  /**
+   * Server-rendered lead-in, rendered as the first row inside this section's box.
+   *
+   * The calendar page passes its month summary here. Both answer „wann ist es leer" — this
+   * section for the next ninety days by weekday, the summary for the month on screen, day by
+   * day — so they are one chapter under one heading rather than two cards with park photograph
+   * between them.
+   */
+  intro?: React.ReactNode;
 }
 
 function getDayShort(dayIndex: number, locale: string): string {
@@ -93,6 +102,7 @@ export function ParkBestDaysSection({
   className,
   initialCalendar,
   seedNowMs,
+  intro,
 }: ParkBestDaysSectionProps) {
   // Both queries are browser-only (disabled during SSR). Gate the content render on `mounted`
   // so the static prerender (and first paint) shows the skeleton instead of reaching the
@@ -126,6 +136,7 @@ export function ParkBestDaysSection({
     if (initialCalendar && seedNowMs != null) {
       return (
         <BestDaysContent
+          intro={intro}
           calendarData={initialCalendar}
           statsByDayOfWeek={initialCalendar.byDayOfWeek}
           nowMs={seedNowMs}
@@ -139,11 +150,16 @@ export function ParkBestDaysSection({
       );
     }
     return compact ? null : (
+      // `intro` goes through here too. It is server-rendered and needs none of the queries this
+      // branch is waiting for — dropping it meant that a best-days seed which timed out silently
+      // took the month summary with it, and the page went back to being the near-duplicate this
+      // whole chapter exists to stop being. No error, no empty box, just the sentences gone.
       <ParkBestDaysSectionSkeleton
         parkName={parkName}
         parkSlug={parkSlug}
         locale={locale}
         showCalendarLink={showCalendarLink}
+        intro={intro}
       />
     );
   }
@@ -156,6 +172,7 @@ export function ParkBestDaysSection({
 
   return (
     <BestDaysContent
+      intro={intro}
       calendarData={resolvedCalendar}
       statsByDayOfWeek={stats?.byDayOfWeek}
       parkName={parkName}
@@ -181,6 +198,8 @@ interface BestDaysContentProps {
   compact?: boolean;
   showCalendarLink?: boolean;
   className?: string;
+  /** See `ParkBestDaysSectionProps.intro` — threaded through so it lands inside the panel box. */
+  intro?: React.ReactNode;
 }
 
 function BestDaysContent({
@@ -193,6 +212,7 @@ function BestDaysContent({
   compact = false,
   showCalendarLink = false,
   className,
+  intro,
 }: BestDaysContentProps) {
   const t = useTranslations('parks.bestDays');
   // Capture "now" once at mount (lazy init) — analyzeBestDays only needs day-granular precision,
@@ -318,6 +338,13 @@ function BestDaysContent({
             'border-border/50 overflow-hidden rounded-b-xl border border-t-0'
           )}
         >
+          {/* The month's own sentences, as the top row of this same box.
+            They were a separate floating card directly above, which put two answers to one
+            question — „wann ist es leer" — in two objects with a strip of park photograph
+            between them. Inside the border they read as what they are: the prose version of the
+            three readings underneath. */}
+          {intro ? <div className="border-border/50 border-b p-4 md:p-5">{intro}</div> : null}
+
           <PanelGrid columnCount={1 + (hasBestDays ? 1 : 0) + (bestWeekendDay ? 1 : 0)}>
             {hasBestDays && (
               <div className={PANEL_CELL}>

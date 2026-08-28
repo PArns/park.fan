@@ -70,7 +70,6 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'nearby',
     'parkCard',
     'parks',
-    'seo.faq',
     'share',
   ],
   '/search': [],

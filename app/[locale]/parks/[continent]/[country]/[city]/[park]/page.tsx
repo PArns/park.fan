@@ -28,6 +28,10 @@ import {
 } from '@/lib/utils/redirect-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import { LiveParkData } from '@/components/parks/live-park-data';
+import { ParkBlogPostsSection } from '@/components/parks/blog-posts-sections';
+import { ParkFAQSection } from '@/components/faq/park-faq-section';
+import { Separator } from '@/components/ui/separator';
+import type { Locale } from '@/i18n/config';
 import { ParkPageShell } from '@/components/parks/park-page-shell';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
@@ -339,9 +343,35 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
         breadcrumbs={breadcrumbs}
         currentPage={parkCurrentPage}
         pagePath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
-        seedNowMs={seedNowMs}
-        faqGlossaryTerms={faqGlossaryTerms}
-        glossarySegment={glossarySegment}
+        // The two chapters that belong to the PARK rather than to any one of its pages, handed in
+        // rather than switched on: what the shell imports, every route that uses it pays for in
+        // routed translations — see `blogSection`/`faqSection` there.
+        blogSection={
+          <ParkBlogPostsSection
+            locale={locale as Locale}
+            parkSlug={parkSlug}
+            geoPath={`${continent}/${country}/${city}`}
+            parkName={parkName}
+            className="mt-8"
+          />
+        }
+        faqSection={
+          <>
+            <Separator className="my-8" />
+            <ParkFAQSection
+              park={park}
+              locale={locale}
+              continent={continent}
+              country={country}
+              city={city}
+              parkSlug={parkSlug}
+              glossaryTerms={faqGlossaryTerms}
+              glossarySegment={glossarySegment}
+              initialCalendar={null}
+              seedNowMs={seedNowMs}
+            />
+          </>
+        }
         head={
           <>
             <ParkStructuredData

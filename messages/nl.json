@@ -732,15 +732,12 @@
     },
     "calendarPage": {
       "breadcrumb": "Wachttijden-kalender",
-      "h1Suffix": "Wachttijden-kalender",
-      "metaTitle": "{park} wachttijden-kalender: de rustige dagen",
-      "metaTitleShort": "{park} wachttijden-kalender",
+      "h1Suffix": "Wachttijden in {month}",
+      "metaTitle": "{park} wachttijden in {month}",
+      "metaTitleShort": "{park}: {month}",
       "metaDescription": "Wanneer is het rustig in {park} in {city}? Drukte per dag, openingstijden, schoolvakanties en weer voor de komende maanden, met AI-voorspelling per dag.",
       "metaDescriptionNoCity": "Wanneer is het rustig in {park}? Verwachte drukte per dag, openingstijden, schoolvakanties en weer voor de komende maanden.",
       "intro": "Voor elke dag van de komende maanden: verwachte drukte, openingstijden en de schoolvakanties en feestdagen die van invloed zijn op {park}. Tik op een dag voor de details.",
-      "monthH1Suffix": "Wachttijden in {month}",
-      "monthMetaTitle": "{park} {month}: wachttijden & drukte",
-      "monthMetaTitleShort": "{park} in {month}",
       "monthMetaDescription": "Hoe druk is het in {park} in {city} in {month}? Verwachte drukte per dag, openingstijden, schoolvakanties en weer, met AI-voorspelling.",
       "monthMetaDescriptionNoCity": "Hoe druk is het in {park} in {month}? Verwachte drukte per dag, openingstijden, schoolvakanties en weer.",
       "monthIntro": "Dag voor dag door {month}: verwachte drukte in {park}, openingstijden, schoolvakanties en weer. Tik op een dag voor de details.",
@@ -749,7 +746,38 @@
       "nextMonth": "Volgende maand",
       "currentMonth": "Vandaag",
       "currentMonthAria": "Naar de huidige maand",
-      "backToPark": "Terug naar de wachttijden in {park}"
+      "backToPark": "Terug naar de wachttijden in {park}",
+      "monthIndexLabel": "Alle maanden",
+      "summary": {
+        "openingFuture": "In {month} is {park} op {open} van de {total} dagen open.",
+        "openingPast": "In {month} was {park} op {open} van de {total} dagen open.",
+        "quietestFuture": "Het rustigst wordt het waarschijnlijk op {days}.",
+        "quietestPast": "Het rustigst was het op {days}.",
+        "busiestFuture": "Het drukst wordt het op {days}.",
+        "busiestPast": "Het drukst was het op {days}.",
+        "hours": "Meestal open van {from} tot {to} uur.",
+        "schoolVacation": "{days, plural, =1 {Op één dag} other {Op # dagen}} vallen er schoolvakanties in de regio van het park.",
+        "headlinerFuture": "Bij de grote attracties zijn gemiddeld {minutes} minuten te verwachten.",
+        "headlinerPast": "Bij de grote attracties werd gemiddeld {minutes} minuten gemeten.",
+        "factOpenDays": "Open",
+        "factOpenDaysValue": "{open} van {total} dagen",
+        "factHours": "Openingstijden",
+        "factHoursValue": "{from}–{to} uur",
+        "factWait": "Gem. grote attracties",
+        "factWaitValue": "{minutes} min.",
+        "factSchoolVacation": "Schoolvakanties",
+        "factSchoolVacationValue": "{days, plural, =1 {# dag} other {# dagen}}",
+        "factQuietest": "Rustigste dagen:"
+      },
+      "dataset": {
+        "name": "Drukte en wachttijden in {park}, {month}",
+        "description": "Verwachte drukte voor elke dag in {month} in {park}: openingstijden, feestdagen en schoolvakanties, weersverwachting en de verwachte wachttijd bij de grote attracties. Afgeleid van gemeten wachttijden.",
+        "varCrowd": "Verwachte drukte per dag",
+        "varWait": "Verwachte wachttijd bij de grote attracties",
+        "varHours": "Openingstijden",
+        "varHolidays": "Feestdagen en schoolvakanties",
+        "varWeather": "Weersverwachting"
+      }
     }
   },
   "attractions": {
@@ -1110,7 +1138,7 @@
       "description": "Maximaliseer je bezoek met realtime wachttijden, AI-voorspellingen en navigatie in het park. Omvat Disney, Universal, Europa-Park en meer."
     },
     "parks": {
-      "title": "Pretparken Wereldwijd",
+      "title": "Pretparken wereldwijd: wachttijden, kaart & overzicht",
       "description": "Vergelijk live wachttijden, status en drukte voor topparken zoals Disney World, Disneyland, Universal Studios en Europa-Park.",
       "metaDescriptionTemplate": "Live wachttijden & druktekalender voor {park} in {city}. Bekijk de druktevoorspelling, beste bezoekdagen en openingstijden.",
       "titleTemplate": "{park} Wachttijden LIVE – {city}",

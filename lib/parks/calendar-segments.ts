@@ -19,14 +19,21 @@ import type { Locale } from '@/i18n/config';
  * `[attraction]`. No ride in the catalogue is, and these six words are not ride names in any
  * language; it is written down here because the next person to add a park sub-page needs the rule.
  *
- * The page is called the WAIT-TIME calendar everywhere — URL, tile, H1, breadcrumb and meta
- * title. It went out as „Andrangskalender" first, on the reasoning that a crowd level per day is
- * what the grid actually draws; the trouble is that nobody arrives searching for it. A visitor
- * comes from a wait-time page with a wait-time question, and the calendar answers it a day at a
- * time — so the name is the one they came with, and the crowd level is what it is measured in.
+ * The page is called the WAIT-TIME calendar in URL, tile and breadcrumb. It went out as
+ * „Andrangskalender" first, on the reasoning that a crowd level per day is what the grid actually
+ * draws; the trouble is that nobody arrives searching for it. A visitor comes from a wait-time
+ * page with a wait-time question, and the calendar answers it a day at a time — so the name is
+ * the one they came with, and the crowd level is what it is measured in.
  *
- * One name in one place: a URL, a tile and a heading that say three things are three things to
+ * One name in one place: a URL, a tile and a breadcrumb that say three things are three things to
  * remember and three chances to say the wrong one.
+ *
+ * The TITLE and H1 are the exception, and deliberately so: they name the month instead
+ * („Phantasialand Wartezeiten im August 2026"). „Wartezeiten-Kalender" is this site's own coinage
+ * and close to nobody's search; „Wartezeiten im August" is what a person types. The hub is
+ * canonical for the current month anyway — `/2026/8` points at it in August — so it IS that
+ * month's page and reads like one, which also makes it structurally identical to the twelve under
+ * it rather than a differently-worded parent.
  */
 export const PARK_CALENDAR_SEGMENTS: Record<Locale, string> = {
   en: 'wait-time-calendar',
@@ -79,8 +86,58 @@ export function parkCalendarPath(
  */
 export const PARK_CALENDAR_MONTH_SPAN = { back: 12, forward: 12 } as const;
 
+/**
+ * The first day the wait-time archive holds anything at all.
+ *
+ * The backwards half of {@link PARK_CALENDAR_MONTH_SPAN} used to justify itself with „a year back
+ * for how was it", and that was measured to be false. Sampled on 2026-08-28, `/calendar` answered
+ * **0 of 30 operating days for Phantasialand in September 2025** — a month it was open every
+ * day — and 0 of 32 for October 2025, while June and July 2026 came back complete. The archive
+ * simply does not reach that far, so twelve months back was an invitation to eleven empty grids
+ * per park under real-looking titles.
+ *
+ * The boundary is this date, and the payload confirms it exactly: Phantasialand's December 2025
+ * comes back as **6 of 31** operating days, which is the 26th to the 31st.
+ *
+ * A zero-day month is NOT proof of a gap, which is why this is a date and not a heuristic:
+ * Europa-Park's 0 of 28 for February 2026 is correct, it is shut for the winter. Nothing in the
+ * payload separates „closed" from „not recorded", so the floor has to be written down.
+ */
+export const CALENDAR_DATA_START = { year: 2025, month: 12, day: 26 } as const;
+
 /** Months since year 0, so a window can be checked without date arithmetic. */
 const monthIndex = ({ year, month }: ParkCalendarMonth) => year * 12 + (month - 1);
+
+/**
+ * The oldest month a calendar page may serve: the first one the archive covers *completely*.
+ *
+ * `day > 1` pushes it forward one, and that is the point rather than an off-by-one. December 2025
+ * is covered from the 26th, so a page for it would draw 25 blank cells and its summary would
+ * read „an 6 von 31 Tagen geöffnet" — a sentence that is false about the park and true only
+ * about our recording. A partial month has no honest heading, so the window starts at the first
+ * whole one.
+ */
+const EARLIEST_CALENDAR_MONTH: ParkCalendarMonth = shiftParkCalendarMonth(
+  { year: CALENDAR_DATA_START.year, month: CALENDAR_DATA_START.month },
+  CALENDAR_DATA_START.day > 1 ? 1 : 0
+);
+
+/**
+ * How many months back the calendar actually reaches today — the smaller of the span and the
+ * distance to {@link EARLIEST_CALENDAR_MONTH}.
+ *
+ * A single source for the three places that must agree: the route's range check (so a URL past
+ * the edge is a 404 rather than an empty page), the month index (so it never links at one), and
+ * the sitemap (so it never advertises one). They drifted apart once already, when the sitemap
+ * carried its own hand-set constant.
+ *
+ * Grows on its own as the archive fills: today it yields 7, and it reaches the full 12 once a
+ * year has passed since the data start — no follow-up edit, and none to forget.
+ */
+export function parkCalendarMonthsBack(now: ParkCalendarMonth): number {
+  const available = monthIndex(now) - monthIndex(EARLIEST_CALENDAR_MONTH);
+  return Math.max(0, Math.min(PARK_CALENDAR_MONTH_SPAN.back, available));
+}
 
 export interface ParkCalendarMonth {
   year: number;
@@ -135,7 +192,7 @@ export function isParkCalendarMonthInRange(
   now: ParkCalendarMonth
 ): boolean {
   const delta = monthIndex(month) - monthIndex(now);
-  return delta >= -PARK_CALENDAR_MONTH_SPAN.back && delta <= PARK_CALENDAR_MONTH_SPAN.forward;
+  return delta >= -parkCalendarMonthsBack(now) && delta <= PARK_CALENDAR_MONTH_SPAN.forward;
 }
 
 /**

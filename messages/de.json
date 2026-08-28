@@ -732,15 +732,12 @@
     },
     "calendarPage": {
       "breadcrumb": "Wartezeiten-Kalender",
-      "h1Suffix": "Wartezeiten-Kalender",
-      "metaTitle": "{park} Wartezeiten-Kalender: die ruhigen Tage",
-      "metaTitleShort": "{park}: Wartezeiten-Kalender",
+      "h1Suffix": "Wartezeiten im {month}",
+      "metaTitle": "{park} Wartezeiten im {month}",
+      "metaTitleShort": "{park}: {month}",
       "metaDescription": "Wann ist es im {park} in {city} leer? Andrang pro Tag, Öffnungszeiten, Ferien und Wetter für die nächsten Monate – mit KI-Prognose je Tag.",
       "metaDescriptionNoCity": "Wann ist es im {park} leer? Andrang pro Tag, Öffnungszeiten, Ferien und Wetter für die nächsten Monate – mit KI-Prognose.",
       "intro": "Für jeden Tag der nächsten Monate: erwarteter Andrang, Öffnungszeiten, Ferien und Feiertage, die auf {park} wirken. Tippe auf einen Tag für die Details.",
-      "monthH1Suffix": "Wartezeiten im {month}",
-      "monthMetaTitle": "{park} {month}: Wartezeiten & Andrang",
-      "monthMetaTitleShort": "{park} im {month}",
       "monthMetaDescription": "Wie voll wird es im {park} in {city} im {month}? Erwarteter Andrang Tag für Tag, Öffnungszeiten, Schulferien und Wetter – mit KI-Prognose.",
       "monthMetaDescriptionNoCity": "Wie voll wird es im {park} im {month}? Erwarteter Andrang Tag für Tag, Öffnungszeiten, Schulferien und Wetter.",
       "monthIntro": "Tag für Tag durch den {month}: erwarteter Andrang im {park}, Öffnungszeiten, Ferien und Wetter. Tippe auf einen Tag für die Details.",
@@ -749,7 +746,38 @@
       "nextMonth": "Nächster Monat",
       "currentMonth": "Heute",
       "currentMonthAria": "Zum aktuellen Monat",
-      "backToPark": "Zurück zu den Wartezeiten im {park}"
+      "backToPark": "Zurück zu den Wartezeiten im {park}",
+      "monthIndexLabel": "Alle Monate",
+      "summary": {
+        "openingFuture": "Im {month} öffnet {park} an {open} von {total} Tagen.",
+        "openingPast": "Im {month} war {park} an {open} von {total} Tagen geöffnet.",
+        "quietestFuture": "Am ruhigsten wird es voraussichtlich am {days}.",
+        "quietestPast": "Am ruhigsten war es am {days}.",
+        "busiestFuture": "Am vollsten wird es am {days}.",
+        "busiestPast": "Am vollsten war es am {days}.",
+        "hours": "Geöffnet ist meist von {from} bis {to} Uhr.",
+        "schoolVacation": "{days, plural, =1 {An einem Tag} other {An # Tagen}} liegen in der Region des Parks Schulferien.",
+        "headlinerFuture": "An den großen Bahnen sind im Schnitt {minutes} Minuten zu erwarten.",
+        "headlinerPast": "An den großen Bahnen wurden im Schnitt {minutes} Minuten gemessen.",
+        "factOpenDays": "Geöffnet",
+        "factOpenDaysValue": "{open} von {total} Tagen",
+        "factHours": "Öffnungszeiten",
+        "factHoursValue": "{from}–{to} Uhr",
+        "factWait": "Ø an den großen Bahnen",
+        "factWaitValue": "{minutes} Min.",
+        "factSchoolVacation": "Schulferien",
+        "factSchoolVacationValue": "{days, plural, =1 {# Tag} other {# Tage}}",
+        "factQuietest": "Ruhigste Tage:"
+      },
+      "dataset": {
+        "name": "Andrang und Wartezeiten im {park}, {month}",
+        "description": "Erwarteter Andrang für jeden Tag im {month} im {park}: Öffnungszeiten, Feiertage und Schulferien, Wettervorhersage und die erwartete Wartezeit an den großen Bahnen. Aus gemessenen Wartezeiten abgeleitet.",
+        "varCrowd": "Erwarteter Andrang je Tag",
+        "varWait": "Erwartete Wartezeit an den großen Bahnen",
+        "varHours": "Öffnungszeiten",
+        "varHolidays": "Feiertage und Schulferien",
+        "varWeather": "Wettervorhersage"
+      }
     }
   },
   "attractions": {
@@ -1110,7 +1138,7 @@
       "description": "Dein Begleiter für Freizeitparks: Live-Wartezeiten, KI-Prognosen und präzise In-Park Navigation. Für Disney, Universal, Europa-Park und mehr."
     },
     "parks": {
-      "title": "Freizeitparks Weltweit",
+      "title": "Freizeitparks weltweit: Wartezeiten, Karte & Übersicht",
       "description": "Vergleiche aktuelle Wartezeiten, Betriebsstatus und Besucherandrang für Top-Freizeitparks wie Europa-Park, Phantasialand, Disney und Universal.",
       "metaDescriptionTemplate": "Live-Wartezeiten & Crowd-Kalender für {park} in {city}. Prognose für heute, beste Besuchstage & Öffnungszeiten auf einen Blick.",
       "titleTemplate": "{park} Wartezeiten LIVE – {city}",

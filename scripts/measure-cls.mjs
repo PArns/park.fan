@@ -80,6 +80,7 @@
  */
 
 import { chromium } from 'playwright';
+import { existsSync } from 'node:fs';
 import http from 'node:http';
 
 const args = process.argv.slice(2);
@@ -112,7 +113,12 @@ const LATE_MS = has('late') ? 1500 : Number(flag('late', '0'));
 /** Where the reader is parked in `--late` mode. A shift only scores what is in view. */
 const SCROLL_TO = Number(flag('scroll', '0'));
 
-const EXECUTABLE = process.env.CLS_CHROMIUM || '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
+/** Same fallback the other Playwright scripts use: the CI image's build when it is there, and
+ *  otherwise nothing, which hands the choice to Playwright's own resolution. `CHROMIUM_PATH` is
+ *  the name `check-card-framing`, `check-webmcp` and `render-coaster-elements` already honour —
+ *  a second spelling would be a variable a developer exports and this script ignores. */
+const PREINSTALLED = process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium';
+const LAUNCH = existsSync(PREINSTALLED) ? { executablePath: PREINSTALLED } : {};
 
 const VIEWPORTS = [
   { name: 'mobile', width: 390, height: 844, isMobile: true },
@@ -380,7 +386,7 @@ function sessionWindowMax(entries) {
 }
 
 if (LATE_MS > 0) {
-  const browser = await chromium.launch({ executablePath: EXECUTABLE });
+  const browser = await chromium.launch(LAUNCH);
   console.log(
     `Streamed tail held back ${LATE_MS} ms, no throttling.` +
       (SCROLL_TO ? ` Reader parked at y=${SCROLL_TO}.` : ' Reader at the top of the page.')
@@ -457,7 +463,7 @@ if (LATE_MS > 0) {
   process.exit(0);
 }
 
-const browser = await chromium.launch({ executablePath: EXECUTABLE });
+const browser = await chromium.launch(LAUNCH);
 const report = [];
 
 for (const path of URLS) {

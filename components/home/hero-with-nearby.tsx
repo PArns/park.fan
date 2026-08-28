@@ -139,7 +139,7 @@ function OpenParksBadge({ openParks }: { openParks: number | null }) {
       ) : (
         <>
           <span className="relative flex h-2 w-2" aria-hidden="true">
-            <span className="bg-status-operating absolute inline-flex h-full w-full animate-ping rounded-full opacity-60 motion-reduce:animate-none" />
+            <span className="bg-status-operating absolute inline-flex h-full w-full animate-ping rounded-full opacity-60 [will-change:transform,opacity] motion-reduce:animate-none" />
             <span className="bg-status-operating relative inline-flex h-2 w-2 rounded-full" />
           </span>
           {tHome('hero.openNow', { count: openParks })}

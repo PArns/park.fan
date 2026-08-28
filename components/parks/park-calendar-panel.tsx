@@ -7,11 +7,13 @@ import { CalendarCheck, CalendarDays, ChevronLeft, ChevronRight, Loader2 } from 
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Skeleton } from '@/components/ui/skeleton';
+import { ParkCalendarGridPlaceholder } from '@/components/parks/park-calendar-grid-placeholder';
 import { Link, getPathname } from '@/i18n/navigation';
 import { suppressScrollToTopFor } from '@/lib/navigation/history-navigation';
 import { cn } from '@/lib/utils';
 import { parkCalendarPath, type ParkCalendarMonth } from '@/lib/parks/calendar-segments';
+import { calendarGridReservation } from '@/lib/parks/calendar-grid-geometry';
+import { ParkCalendarLegend } from '@/components/parks/park-calendar-legend';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
 /**
@@ -22,10 +24,24 @@ import type { ParkWithAttractions } from '@/lib/api/types';
  * which a server render can do. The loading box is the grid's own height rather than `null`,
  * because there is a whole page footer under it and a boundary that reserves nothing pushes that
  * footer down when the chunk lands.
+ *
+ * That box used to be `h-[36rem]` — 576 px, one number for two layouts and twelve months. It was
+ * short at every breakpoint and catastrophically short on a phone: measured against production on
+ * Phantasialand's November 2026, the real grid is 1992 px at 390 px wide, so the calendar landed
+ * and threw everything below it — best days, statistics, FAQ, footer — down by 1416 px. The
+ * height now comes from `calendarGridReservation`, which reads it off the month in the URL; see
+ * that module for the measurements and why the row count is the part a server can know.
  */
 const ParkCalendarGrid = dynamic(
   () => import('@/components/parks/park-calendar-grid').then((m) => m.ParkCalendarGrid),
-  { ssr: false, loading: () => <Skeleton className="h-[36rem] w-full rounded-xl" /> }
+  {
+    ssr: false,
+    // The three custom properties are set by the wrapper below, which is the only place that
+    // knows the month. A `loading` component is created at module scope and never sees props, so
+    // the number has to reach it through the cascade — and the grid's OWN loading state renders
+    // the same component for the same reason, or the two waits reserve two different boxes.
+    loading: () => <ParkCalendarGridPlaceholder />,
+  }
 );
 
 export function ParkCalendarPanel({
@@ -38,6 +54,7 @@ export function ParkCalendarPanel({
   currentMonth,
   prevMonth,
   nextMonth,
+  monthIndex,
   className,
 }: {
   park: ParkWithAttractions;
@@ -58,10 +75,21 @@ export function ParkCalendarPanel({
   currentMonth: ParkCalendarMonth;
   prevMonth: ParkCalendarMonth | null;
   nextMonth: ParkCalendarMonth | null;
+  /**
+   * The month index, rendered inside this card under the grid.
+   *
+   * It sat under the whole page before, as a bare `<nav>` on the park photo — white chips on a
+   * night shot of a carousel, with no surface behind them and every other chapter of the page
+   * between them and the calendar they belong to. It is the same control as the stepper at the
+   * top of this card, just showing every month at once, so it belongs in the same box.
+   */
+  monthIndex?: React.ReactNode;
   className?: string;
 }) {
   const t = useTranslations('parks.calendarPage');
   const locale = useLocale();
+  // The month the grid will draw — on the hub that is today's, which is what it opens on.
+  const reservation = calendarGridReservation(month ?? currentMonth);
   /**
    * The URL for a month — and the hub's URL for the CURRENT month, deliberately.
    *
@@ -112,55 +140,92 @@ export function ParkCalendarPanel({
         `prevMonth`/`nextMonth` are `null` where the window the route serves runs out, and the
         stepper stops rather than pointing at a 404. */}
       <Card className="relative gap-4 rounded-t-none border-t-0 p-4 md:p-6">
-        <div className="flex items-center justify-end gap-2">
-          {/* „Heute" only once it would do something. Twelve months in each direction is a long
-            way to walk back one arrow at a time, and the browser's back button is not the same
-            offer — somebody who stepped forward six months would have to press it six times.
-            Hidden on the current month rather than disabled, because a stepper whose third
-            control is permanently greyed out on the page most visitors land on reads as broken. */}
-          {!isCurrentMonth && (
-            <Button variant="outline" size="sm" className="mr-auto h-9" asChild>
-              <Link
-                href={parkCalendarPath(locale, continent, country, city, parkSlug)}
-                aria-label={t('currentMonthAria')}
-                scroll={false}
-                onClick={() =>
-                  suppressScrollToTopFor(
-                    getPathname({
-                      href: parkCalendarPath(locale, continent, country, city, parkSlug),
-                      locale,
-                    })
-                  )
-                }
-              >
-                <MonthStepIcon>
-                  <CalendarCheck className="h-4 w-4" />
-                </MonthStepIcon>
-                {t('currentMonth')}
-              </Link>
-            </Button>
-          )}
-          <MonthStep href={href(prevMonth)} label={t('previousMonth')}>
-            <ChevronLeft className="h-4 w-4" />
-          </MonthStep>
-          <div className="min-w-[140px] text-center font-semibold">
-            {month ? label(month) : null}
+        {/* Control row: what the colours mean on the left, where you are in the year on the right.
+          The legend was inside the `ssr: false` grid and is server-rendered here — it needs no
+          data, and down there it made the grid's two loading states differ by its own height. */}
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+          <ParkCalendarLegend className="mr-auto" />
+
+          {/* The three month controls are ONE group, not three siblings of the legend.
+            „Heute" carried `mr-auto` of its own next to the legend's, and two auto margins in one
+            flex row each push everything after them: the legend went left, the button went to the
+            middle of the gap, and the stepper it belongs to stayed on the right. Grouped, the row
+            has exactly one flexible gap — and when it wraps on a narrow card the four controls
+            wrap together instead of the button landing on a line by itself. */}
+          <div className="flex items-center gap-2">
+            {/* „Heute" only once it would do something. Twelve months in each direction is a long
+              way to walk back one arrow at a time, and the browser's back button is not the same
+              offer — somebody who stepped forward six months would have to press it six times.
+              Hidden on the current month rather than disabled, because a stepper whose third
+              control is permanently greyed out on the page most visitors land on reads as broken. */}
+            {!isCurrentMonth && (
+              <Button variant="outline" size="sm" className="h-9" asChild>
+                <Link
+                  href={parkCalendarPath(locale, continent, country, city, parkSlug)}
+                  aria-label={t('currentMonthAria')}
+                  scroll={false}
+                  onClick={() =>
+                    suppressScrollToTopFor(
+                      getPathname({
+                        href: parkCalendarPath(locale, continent, country, city, parkSlug),
+                        locale,
+                      })
+                    )
+                  }
+                >
+                  <MonthStepIcon>
+                    <CalendarCheck className="h-4 w-4" />
+                  </MonthStepIcon>
+                  {t('currentMonth')}
+                </Link>
+              </Button>
+            )}
+            <MonthStep href={href(prevMonth)} label={t('previousMonth')}>
+              <ChevronLeft className="h-4 w-4" />
+            </MonthStep>
+            {/* Centred and fixed-width so the two arrows do not move when the month name changes
+              length — „Mai 2026" against „September 2026" is 60 px of travel otherwise. */}
+            <div className="min-w-[140px] text-center font-semibold">
+              {month ? label(month) : null}
+            </div>
+            <MonthStep href={href(nextMonth)} label={t('nextMonth')}>
+              <ChevronRight className="h-4 w-4" />
+            </MonthStep>
           </div>
-          <MonthStep href={href(nextMonth)} label={t('nextMonth')}>
-            <ChevronRight className="h-4 w-4" />
-          </MonthStep>
         </div>
 
-        <ParkCalendarGrid
-          park={park}
-          continent={continent}
-          country={country}
-          city={city}
-          parkSlug={parkSlug}
-          month={month}
-          prevMonth={prevMonth}
-          nextMonth={nextMonth}
-        />
+        {/* The wrapper exists to carry the reservation, and it carries it as three custom
+          properties rather than three classes because Tailwind cannot see a class name that was
+          computed — `h-[${n}px]` produces no CSS. The arbitrary-value utilities on the skeleton
+          read these, so the arithmetic has exactly one home (`calendarGridReservation`) and the
+          JIT keeps working.
+
+          Set on the month the GRID will show, which on the hub is the current month rather than
+          `null` — the hub opens on today and reserves for today. */}
+        <div
+          style={
+            {
+              '--cal-grid-h': `${reservation.base}px`,
+              '--cal-grid-h-md': `${reservation.md}px`,
+              '--cal-grid-h-lg': `${reservation.lg}px`,
+            } as React.CSSProperties
+          }
+        >
+          <ParkCalendarGrid
+            park={park}
+            continent={continent}
+            country={country}
+            city={city}
+            parkSlug={parkSlug}
+            month={month}
+            prevMonth={prevMonth}
+            nextMonth={nextMonth}
+          />
+        </div>
+
+        {/* Separated by a rule rather than by a gap: the stepper above, the grid, and this are one
+          control at three grains, and a floating chip row reads as a different chapter. */}
+        {monthIndex ? <div className="border-t pt-4">{monthIndex}</div> : null}
       </Card>
     </section>
   );
