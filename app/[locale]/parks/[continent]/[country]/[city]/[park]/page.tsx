@@ -135,7 +135,7 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
     cityInParkName
       ? t(titleKey, { park: parkName })
       : t(titleKey, { park: parkName, city: cityName }),
-    t('titleTemplateShort', { park: parkName })
+    t('titleTemplateShort', parkArgs(locale as Locale, parkName, park.nameArticleDe))
   );
 
   const descriptionKey = cityInParkName
@@ -144,9 +144,9 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
   const description = fitWithin(
     MAX_DESCRIPTION_LENGTH,
     cityInParkName
-      ? t(descriptionKey, { park: parkName })
-      : t(descriptionKey, { park: parkName, city: cityName }),
-    t('metaDescriptionTemplateNoCity', { park: parkName })
+      ? t(descriptionKey, parkArgs(locale as Locale, parkName, park.nameArticleDe))
+      : t(descriptionKey, { ...parkArgs(locale as Locale, parkName, park.nameArticleDe), city: cityName }),
+    t('metaDescriptionTemplateNoCity', parkArgs(locale as Locale, parkName, park.nameArticleDe))
   );
 
   const keywords = [
@@ -378,7 +378,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
             <ParkStructuredData
               park={park}
               url={`${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`}
-              description={tSeo('metaDescriptionTemplate', { park: parkName, city: cityName })}
+              description={tSeo('metaDescriptionTemplate', { ...parkArgs(locale as Locale, parkName, park.nameArticleDe), city: cityName })}
               locale={locale}
               ogImageUrl={ogImageUrl}
             />

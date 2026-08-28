@@ -170,11 +170,11 @@ export async function generateMetadata({ params }: ParkCalendarPageProps): Promi
   const description = fitWithin(
     MAX_DESCRIPTION_LENGTH,
     month
-      ? t('monthMetaDescription', { park: parkName, city: cityName, month: label })
+      ? t('monthMetaDescription', { ...parkArgs(locale as Locale, parkName, park.nameArticleDe), city: cityName, month: label })
       : t('metaDescription', { park: parkName, city: cityName }),
     month
-      ? t('monthMetaDescriptionNoCity', { park: parkName, month: label })
-      : t('metaDescriptionNoCity', { park: parkName })
+      ? t('monthMetaDescriptionNoCity', { ...parkArgs(locale as Locale, parkName, park.nameArticleDe), month: label })
+      : t('metaDescriptionNoCity', parkArgs(locale as Locale, parkName, park.nameArticleDe))
   );
 
   const path = (l: string, m: ParkCalendarMonth | null) =>
@@ -382,9 +382,12 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
             <ParkCalendarDatasetStructuredData
               url={canonicalUrl}
               parkUrl={`${SITE_URL}/${locale}${parkPath}`}
-              name={tDataset('name', { park: parkName, month: monthLabel(locale, summaryMonth) })}
+              name={tDataset('name', {
+                ...parkArgs(locale as Locale, parkName, park.nameArticleDe),
+                month: monthLabel(locale, summaryMonth),
+              })}
               description={tDataset('description', {
-                park: parkName,
+                ...parkArgs(locale as Locale, parkName, park.nameArticleDe),
                 month: monthLabel(locale, summaryMonth),
               })}
               temporalCoverage={monthTemporalCoverage(summaryMonth)}

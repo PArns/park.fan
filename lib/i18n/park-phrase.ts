@@ -92,5 +92,13 @@ export function parkArgs(locale: Locale, name: string, article: ParkArticle) {
     inPark: parkPhrase(locale, 'in', name, article),
     forPark: parkPhrase(locale, 'for', name, article),
     parkSubject: parkPhrase(locale, 'subject', name, article),
+    // The same phrase at the start of a sentence: "Im Phantasialand gibt es …",
+    // "In Cedar Point gibt es …". Capitalised here rather than by the string,
+    // because which word comes first depends on the article.
+    inParkLeading: capitalise(parkPhrase(locale, 'in', name, article)),
   };
+}
+
+function capitalise(phrase: string): string {
+  return phrase.charAt(0).toUpperCase() + phrase.slice(1);
 }

@@ -157,10 +157,16 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
   // of English rides, 29.9% of German ones and 7.1% of Italian, and said the same
   // sentence on all 42,606 of them. The ladder takes every locale to ~98%; the
   // facts come off the attraction this fetch already returned.
-  const title = buildAttractionTitle(attractionName, parkName, t);
+  const title = buildAttractionTitle(attractionName, parkName, t, {
+    locale: locale as Locale,
+    articleDe: park?.nameArticleDe,
+  });
   const description = attraction
-    ? buildAttractionDescription(attractionName, parkName, buildAttractionFacts(attraction, t), t)
-    : t('metaDescriptionTemplate', { attraction: attractionName, park: parkName });
+    ? buildAttractionDescription(attractionName, parkName, buildAttractionFacts(attraction, t), t, {
+        locale: locale as Locale,
+        articleDe: park?.nameArticleDe,
+      })
+    : t('metaDescriptionTemplate', { attraction: attractionName, ...parkArgs(locale as Locale, parkName, park?.nameArticleDe) });
 
   return {
     title,
@@ -174,6 +180,7 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
       url: `${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${canonicalAttractionSlug}`,
       ogImageUrl,
       imageAlt: tImageAlt('attraction', {
+        ...parkArgs(locale as Locale, parkName, park?.nameArticleDe),
         attraction: attractionName,
         park: parkName,
       }),
@@ -326,7 +333,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
           locale={locale}
           description={tSeo('metaDescriptionTemplate', {
             attraction: attractionName,
-            park: parkName,
+            ...parkArgs(locale as Locale, parkName, park.nameArticleDe),
             city: cityName,
           })}
           ogImageUrl={ogImageUrl}
@@ -454,7 +461,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                 <p className="text-muted-foreground mt-4 max-w-2xl text-sm leading-relaxed">
                   {t('intro', {
                     attraction: attractionName,
-                    ...parkArgs(locale as Locale, parkName, park.nameArticleDe),
+                    ...parkArgs(locale as Locale, parkName, park?.nameArticleDe),
                   })}
                 </p>
               </GlassCard>
