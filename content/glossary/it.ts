@@ -2888,6 +2888,66 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['Brogent', 'i-Ride'],
     alternateNames: ['Brogent'],
   },
+  {
+    id: 'quick-pass',
+    name: 'QUICK Pass',
+    shortDefinition:
+      'Il prodotto salta-fila a pagamento di Phantasialand, acquistato per singola attrazione.',
+    definition:
+      'Il QUICK Pass è l\'accesso a pagamento che salta la fila a Phantasialand. A differenza della maggior parte dei parchi non si compra per la giornata ma per attrazione — per Taron, Black Mamba, Chiapas, Talocan o Maus au Chocolat.\n\nSi acquista nell\'app del parco o nel parco stesso; il prezzo per attrazione è fisso e non segue l\'affluenza.\n\nIl pass accorcia l\'attesa, non la elimina: anche l\'ingresso QUICK Pass ha una fila, semplicemente molto più corta.',
+    relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time', 'fastpass'],
+    aliases: ['Quick Pass', 'QuickPass'],
+  },
+  {
+    id: 'virtual-line',
+    name: 'VirtualLine',
+    shortDefinition:
+      'La coda virtuale gratuita di Europa-Park, prenotata nell\'app del parco.',
+    definition:
+      'VirtualLine è il servizio di prenotazione gratuito di Europa-Park: nell\'app Europa-Park & Rulantica prenoti una fascia oraria per un\'attrazione selezionata ed entri in quella fascia da un ingresso ridotto. Nel frattempo puoi goderti altre attrazioni, gli spettacoli o il pranzo.\n\nÈ disponibile per blue fire Megacoaster, Euro-Mir, Pirates in Batavia, Poseidon, Voletarium, Voltron Nevera powered by Rimac e WODAN — Timburcoaster. I posti disponibili ogni giorno sono limitati.\n\nNon costa nulla, ed è questo che lo distingue da un salta-fila a pagamento: VirtualLine non vende la precedenza, sposta l\'attesa fuori dalla coda.',
+    relatedTermIds: ['virtual-queue', 'return-time', 'boarding-group', 'wait-time'],
+    aliases: ['Virtual Line'],
+  },
+  {
+    id: 'fast-lane',
+    name: 'Fast Lane',
+    shortDefinition:
+      'Il pass salta-fila a pagamento, di norma acquistato per l\'intera giornata di visita.',
+    definition:
+      'Fast Lane è il nome del prodotto salta-fila in molti parchi delle famiglie Six Flags e Walibi, da Cedar Point a Walibi Holland. Si acquista per la visita e non per un singolo giro: un braccialetto o un biglietto digitale apre per tutta la giornata l\'ingresso Fast Lane delle attrazioni incluse.\n\nDi solito ci sono più livelli — a Walibi Holland Gold (illimitato, circa il 90 % di attesa in meno), Silver, Bronze e shot singoli per uno o quattro giri. Quali attrazioni siano incluse lo decide il parco; le case di Halloween sono spesso escluse.\n\nPoiché il prezzo copre la giornata e non la singola attrazione, su park.fan quelle attrazioni riportano un prezzo «da».',
+    relatedTermIds: ['express-pass', 'quick-pass', 'wait-time', 'single-rider'],
+    aliases: ['Fastlane'],
+  },
+  {
+    id: 'speedy-pass',
+    name: 'Speedy Pass',
+    shortDefinition:
+      'La coda virtuale a pagamento di Movie Park Germany.',
+    definition:
+      'Lo Speedy Pass è il prodotto salta-fila di Movie Park Germany. Funziona come una coda virtuale: dal telefono prenoti un giro su una delle attrazioni incluse ed entri all\'orario prenotato da un ingresso dedicato.\n\nEsiste in più livelli — dallo Speedy Pass One Ride per una sola attrazione fino a Gold e Platinum, che coprono quasi tutto. Vale per oltre 25 attrazioni; alcune case e attrazioni speciali sono escluse.',
+    relatedTermIds: ['virtual-queue', 'express-pass', 'quick-pass', 'wait-time'],
+    aliases: ['Speedypass'],
+  },
+  {
+    id: 'fastrack',
+    name: 'Fastrack',
+    shortDefinition:
+      'Il biglietto salta-fila a pagamento nei parchi Merlin, come Alton Towers.',
+    definition:
+      'Fastrack è il nome con cui i parchi britannici del gruppo Merlin — Alton Towers, Thorpe Park, Chessington — vendono l\'accesso fuori dalla fila. Esiste singolo per un\'attrazione o in pacchetto: Bronze per alcune attrazioni a scelta, Silver per un giro su ogni attrazione inclusa, Gold per un uso illimitato.\n\nFastrack è sempre un biglietto aggiuntivo: l\'ingresso al parco non è compreso.',
+    relatedTermIds: ['express-pass', 'quick-pass', 'wait-time'],
+    aliases: ['Fast Track', 'Fasttrack'],
+  },
+  {
+    id: 'premier-access',
+    name: 'Disney Premier Access',
+    shortDefinition:
+      'Il salta-fila a pagamento di Disney fuori dagli Stati Uniti, prenotabile per attrazione.',
+    definition:
+      'Disney Premier Access è ciò che nei parchi statunitensi si chiama Lightning Lane: l\'accesso a pagamento che salta la fila, a Disneyland Paris e al Tokyo Disney Resort.\n\nPremier Access One si acquista per attrazione, di norma il giorno stesso tramite l\'app, e il prezzo dipende dalla data e dall\'attrazione — nettamente più alto per le novità. Premier Access Ultimate copre una volta ogni attrazione partecipante.\n\nPoiché il prezzo viene fissato ogni giorno, su park.fan quelle attrazioni non riportano un prezzo fisso.',
+    relatedTermIds: ['lightning-lane', 'express-pass', 'virtual-queue', 'wait-time'],
+    aliases: ['Premier Access'],
+  },
 ];
 
 export default translations;

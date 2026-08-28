@@ -969,6 +969,8 @@
       "minHeightLabel": "Vanaf",
       "maxHeightLabel": "Tot",
       "mayGetWet": "Je kunt nat worden",
+      "fastPassFree": "gratis",
+      "fastPassFrom": "vanaf",
       "rcdbLabel": "{attraction} in de RCDB",
       "rcdbTitle": "Technische gegevens op RCDB (Roller Coaster DataBase)"
     }

@@ -27,6 +27,7 @@ import { CrowdLevelBadge } from './crowd-level-badge';
 import { RopeDropBadge, RopeDropEveningBadge } from './rope-drop-badge';
 import { SeasonalBadge } from './seasonal-badge';
 import { QueueTypeBadge } from './queue-type-badge';
+import { FastPassBadge } from '@/components/parks/fast-pass-badge';
 import { AttractionMetaBadges } from './attraction-meta-badges';
 import { WaitTimeSparklineCard } from './wait-time-sparkline-card';
 import { TrendPill } from './trend-pill';
@@ -356,6 +357,12 @@ export function AttractionCard({
               minimumHeight={'minimumHeight' in attraction ? attraction.minimumHeight : null}
               mayGetWet={'mayGetWet' in attraction ? attraction.mayGetWet : null}
               compact
+            />
+            {/* `insideLink`: the whole card is an anchor, so the glossary link
+                degrades to a tooltip rather than nesting an <a> inside one. */}
+            <FastPassBadge
+              fastPass={'fastPass' in attraction ? attraction.fastPass : null}
+              insideLink
             />
             {isOperatingOrUnknown &&
               attraction.queues

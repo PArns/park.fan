@@ -556,6 +556,8 @@ export interface ParkAttraction {
   mayGetWet?: boolean | null;
   /** RCDB (rcdb.com) database id → https://rcdb.com/{id}.htm */
   rcdbId?: number | null;
+  /** Curated queue-jump product. Absent ≠ "there is none" — see `FastPass`. */
+  fastPass?: FastPass | null;
   bestVisitTimes?: BestVisitSlot[] | null;
   /** Only set for tier1/tier2 headliners in parks with a schedule. */
   ropeDrop?: RopeDropInfo | null;
@@ -819,6 +821,8 @@ export interface AttractionResponse {
   mayGetWet?: boolean | null;
   /** RCDB (rcdb.com) database id → https://rcdb.com/{id}.htm */
   rcdbId?: number | null;
+  /** Curated queue-jump product. Absent ≠ "there is none" — see `FastPass`. */
+  fastPass?: FastPass | null;
   bestVisitTimes?: BestVisitSlot[] | null;
   /** Only set for tier1/tier2 headliners in parks with a schedule. */
   ropeDrop?: RopeDropInfo | null;
@@ -826,6 +830,46 @@ export interface AttractionResponse {
   typicalWaits?: TypicalWaits | null;
   /** Curated ride profile (track figures, ride type, builder) — see `RideProfile`. */
   rideProfile?: RideProfile | null;
+}
+
+/**
+ * The paid (or free) queue-jump product a ride sells.
+ *
+ * Hand-curated: no feed publishes these, they live in park apps and on ticket
+ * pages. The API sends the parts and this app composes them, because "12 €" and
+ * "€12" are the same price in two locales and only the frontend knows which one
+ * the reader is in.
+ *
+ * **An absent `fastPass` is not "this ride has no fast pass."** It covers both
+ * "nobody has checked" and "somebody checked and the park sells none" — the
+ * admin keeps those apart, the payload deliberately does not. Most of the ~7000
+ * attractions have never been looked at, so rendering "kein Fastpass" from an
+ * absence would state the park's position on our behalf. Badge what is there;
+ * render nothing for what is not.
+ */
+export interface FastPass {
+  /** The park's brand, the ride's override, or the neutral "Fast Pass". */
+  name: string;
+  /**
+   * What it costs, in `currency`.
+   *
+   * **`0` means free** — Europa-Park's Virtual Line is included with admission.
+   * `null` means unknown, which includes the products priced per day. Test
+   * `price != null`, never `if (price)`.
+   */
+  price?: number | null;
+  /**
+   * What the park's cheapest version costs, for the parks that sell one pass
+   * per visit rather than one per ride — which is nearly all of them.
+   *
+   * Render as "ab 25 €". Null whenever `price` is set: they answer the same
+   * question, and showing both says one of them is wrong.
+   */
+  priceFrom?: number | null;
+  /** ISO-4217, for `Intl.NumberFormat`. Null when there is no price to denominate. */
+  currency?: string | null;
+  /** Glossary term id explaining the product kind, e.g. `quick-pass`. */
+  termId?: string | null;
 }
 
 /**

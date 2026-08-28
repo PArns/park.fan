@@ -99,6 +99,78 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
     },
   },
   {
+    id: 'quick-pass',
+    category: 'wait-times',
+    slugs: {
+      en: 'quick-pass',
+      de: 'quick-pass',
+      fr: 'quick-pass',
+      it: 'quick-pass',
+      nl: 'quick-pass',
+      es: 'quick-pass',
+    },
+  },
+  {
+    id: 'virtual-line',
+    category: 'wait-times',
+    slugs: {
+      en: 'virtual-line',
+      de: 'virtual-line',
+      fr: 'virtual-line',
+      it: 'virtual-line',
+      nl: 'virtual-line',
+      es: 'virtual-line',
+    },
+  },
+  {
+    id: 'fast-lane',
+    category: 'wait-times',
+    slugs: {
+      en: 'fast-lane',
+      de: 'fast-lane',
+      fr: 'fast-lane',
+      it: 'fast-lane',
+      nl: 'fast-lane',
+      es: 'fast-lane',
+    },
+  },
+  {
+    id: 'speedy-pass',
+    category: 'wait-times',
+    slugs: {
+      en: 'speedy-pass',
+      de: 'speedy-pass',
+      fr: 'speedy-pass',
+      it: 'speedy-pass',
+      nl: 'speedy-pass',
+      es: 'speedy-pass',
+    },
+  },
+  {
+    id: 'fastrack',
+    category: 'wait-times',
+    slugs: {
+      en: 'fastrack',
+      de: 'fastrack',
+      fr: 'fastrack',
+      it: 'fastrack',
+      nl: 'fastrack',
+      es: 'fastrack',
+    },
+  },
+  {
+    id: 'premier-access',
+    category: 'wait-times',
+    slugs: {
+      en: 'premier-access',
+      de: 'premier-access',
+      fr: 'premier-access',
+      it: 'premier-access',
+      nl: 'premier-access',
+      es: 'premier-access',
+    },
+  },
+  {
     id: 'boarding-group',
     category: 'wait-times',
     slugs: {

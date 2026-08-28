@@ -969,6 +969,8 @@
       "minHeightLabel": "From",
       "maxHeightLabel": "Up to",
       "mayGetWet": "You may get wet",
+      "fastPassFree": "free",
+      "fastPassFrom": "from",
       "rcdbLabel": "{attraction} on RCDB",
       "rcdbTitle": "Technical ride facts on RCDB (Roller Coaster DataBase)"
     }
