@@ -4,7 +4,6 @@ import { useEffect, useMemo, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { AlertTriangle, CloudHail, CloudLightning, CloudRain, Wind } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useActiveOnScreen } from '@/lib/hooks/use-active-on-screen';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { NowcastUpdateCountdown } from '@/components/parks/nowcast-update-countdown';
 import { NowcastPrecipTimeline } from '@/components/parks/nowcast-precip-timeline';
@@ -227,7 +226,15 @@ export function WeatherNowcastBanner({
   // banner — the common case on most park pages — a slow minute tick (skipped while
   // the tab is hidden) keeps `now` fresh enough to surface an upcoming warning,
   // instead of re-rendering the component every second forever just to return null.
-  const { ref: bannerRef } = useActiveOnScreen();
+  // No `useActiveOnScreen` here any more, and its absence is the point.
+  //
+  // It was left behind when the per-second tick became a flat 60-second one: nothing read its
+  // `active` value, but the hook still mounted an IntersectionObserver and a `visibilitychange`
+  // listener, and still called `setOnScreen`/`setTabVisible`. Every one of those re-rendered THIS
+  // component — the one that owns the full-bleed `backdrop-blur-md` layer below — so scrolling
+  // the banner into view or switching tabs cost exactly the backdrop invalidation the tick had
+  // cost, just on a different trigger. Which also fits „irregular and not reproducible" better
+  // than a timer does. The interval checks `document.hidden` itself; nothing else needed it.
   useEffect(() => {
     // Deferred initial stamp (same pattern as useBrowserNow) — no synchronous
     // set-state-in-effect; the banner appears one tick after mount when applicable.
@@ -345,7 +352,6 @@ export function WeatherNowcastBanner({
 
   return (
     <section
-      ref={bannerRef}
       className={cn(
         'relative rounded-xl border p-4 shadow-sm',
         styles.border,

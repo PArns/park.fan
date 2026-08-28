@@ -751,10 +751,10 @@
       "summary": {
         "openingFuture": "{month}: {park} apre {open} giorni su {total}.",
         "openingPast": "{month}: {park} ha aperto {open} giorni su {total}.",
-        "quietestFuture": "I giorni più tranquilli dovrebbero essere {days}.",
-        "quietestPast": "I giorni più tranquilli sono stati {days}.",
-        "busiestFuture": "L’affluenza maggiore è prevista {days}.",
-        "busiestPast": "L’affluenza maggiore c’è stata {days}.",
+        "quietestFuture": "{count, plural, =1 {Il giorno più tranquillo dovrebbe essere {days}.} other {I giorni più tranquilli dovrebbero essere {days}.}}",
+        "quietestPast": "{count, plural, =1 {Il giorno più tranquillo è stato {days}.} other {I giorni più tranquilli sono stati {days}.}}",
+        "busiestFuture": "{count, plural, =1 {L’affluenza maggiore è prevista {days}.} other {L’affluenza maggiore è prevista {days}.}}",
+        "busiestPast": "{count, plural, =1 {L’affluenza maggiore c’è stata {days}.} other {L’affluenza maggiore c’è stata {days}.}}",
         "hours": "Di solito aperto dalle {from} alle {to}.",
         "schoolVacation": "{days, plural, =1 {Un giorno cade} other {# giorni cadono}} nelle vacanze scolastiche della regione del parco.",
         "headlinerFuture": "Sulle attrazioni principali sono attesi in media {minutes} minuti.",
@@ -767,7 +767,7 @@
         "factWaitValue": "{minutes} min",
         "factSchoolVacation": "Vacanze scolastiche",
         "factSchoolVacationValue": "{days, plural, =1 {# giorno} other {# giorni}}",
-        "factQuietest": "Giorni più tranquilli:"
+        "factQuietest": "{count, plural, =1 {Giorno più tranquillo:} other {Giorni più tranquilli:}}"
       },
       "dataset": {
         "name": "Affluenza e tempi di attesa a {park}, {month}",

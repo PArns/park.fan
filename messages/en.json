@@ -751,10 +751,10 @@
       "summary": {
         "openingFuture": "{park} opens on {open} of the {total} days in {month}.",
         "openingPast": "{park} opened on {open} of the {total} days in {month}.",
-        "quietestFuture": "The quietest days should be {days}.",
-        "quietestPast": "The quietest days were {days}.",
-        "busiestFuture": "The busiest will be {days}.",
-        "busiestPast": "The busiest were {days}.",
+        "quietestFuture": "{count, plural, =1 {The quietest day should be {days}.} other {The quietest days should be {days}.}}",
+        "quietestPast": "{count, plural, =1 {The quietest day was {days}.} other {The quietest days were {days}.}}",
+        "busiestFuture": "{count, plural, =1 {The busiest will be {days}.} other {The busiest will be {days}.}}",
+        "busiestPast": "{count, plural, =1 {The busiest was {days}.} other {The busiest were {days}.}}",
         "hours": "Gates are usually open {from} to {to}.",
         "schoolVacation": "{days, plural, =1 {One day falls} other {# days fall}} inside a school holiday in the park's region.",
         "headlinerFuture": "Expect around {minutes} minutes at the headline rides.",
@@ -767,7 +767,7 @@
         "factWaitValue": "{minutes} min",
         "factSchoolVacation": "School holidays",
         "factSchoolVacationValue": "{days, plural, =1 {# day} other {# days}}",
-        "factQuietest": "Quietest days:"
+        "factQuietest": "{count, plural, =1 {Quietest day:} other {Quietest days:}}"
       },
       "dataset": {
         "name": "Crowd levels and wait times at {park}, {month}",

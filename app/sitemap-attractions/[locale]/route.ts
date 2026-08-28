@@ -1,3 +1,4 @@
+import { xmlEscape } from '@/lib/seo/sitemap-xml';
 import { getAttractionPaths } from '@/lib/content-urls';
 import { getContentLastmodIndex } from '@/lib/seo/content-changes/store';
 import { locales, SITE_URL, type Locale } from '@/i18n/config';
@@ -19,15 +20,6 @@ export const revalidate = 86400;
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale: `${locale}.xml` }));
-}
-
-function xmlEscape(s: string): string {
-  return s
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll("'", '&apos;')
-    .replaceAll('"', '&quot;');
 }
 
 export async function GET(

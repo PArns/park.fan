@@ -117,7 +117,14 @@ const SCROLL_TO = Number(flag('scroll', '0'));
  *  otherwise nothing, which hands the choice to Playwright's own resolution. `CHROMIUM_PATH` is
  *  the name `check-card-framing`, `check-webmcp` and `render-coaster-elements` already honour —
  *  a second spelling would be a variable a developer exports and this script ignores. */
-const PREINSTALLED = process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium';
+const PREINSTALLED =
+  process.env.CHROMIUM_PATH ?? process.env.CLS_CHROMIUM ?? '/opt/pw-browsers/chromium';
+if (!process.env.CHROMIUM_PATH && process.env.CLS_CHROMIUM) {
+  // `CLS_CHROMIUM` was this script's own name for the override before it adopted the one its
+  // three sibling harnesses use. Still honoured, but say so — an override that is silently
+  // ignored is the failure this whole fallback exists to remove.
+  console.warn('note: CLS_CHROMIUM is deprecated, use CHROMIUM_PATH (the other harnesses read it)');
+}
 const LAUNCH = existsSync(PREINSTALLED) ? { executablePath: PREINSTALLED } : {};
 
 const VIEWPORTS = [

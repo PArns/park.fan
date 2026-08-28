@@ -3,6 +3,7 @@ import { CalendarRange, Clock, GraduationCap, Timer } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 import { Skeleton } from '@/components/ui/skeleton';
+import { cn } from '@/lib/utils';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { getParkArticleForms } from '@/lib/faq/park-faq';
 import type { CalendarMonthSummary, NamedCalendarDay } from '@/lib/parks/calendar-month-summary';
@@ -101,10 +102,14 @@ export async function ParkCalendarMonthSummary({
   ];
 
   if (summary.quietest) {
-    sentences.push(t(`quietest${tense}`, { days: dayList(summary.quietest) }));
+    sentences.push(
+      t(`quietest${tense}`, { days: dayList(summary.quietest), count: summary.quietest.length })
+    );
   }
   if (summary.busiest) {
-    sentences.push(t(`busiest${tense}`, { days: dayList(summary.busiest) }));
+    sentences.push(
+      t(`busiest${tense}`, { days: dayList(summary.busiest), count: summary.busiest.length })
+    );
   }
   if (summary.hours) {
     sentences.push(t('hours', { from: summary.hours.openingTime, to: summary.hours.closingTime }));
@@ -185,7 +190,9 @@ export async function ParkCalendarMonthSummary({
         sentence and the colour in the cells below are visibly the same statement. */}
       {summary.quietest && (
         <div className="flex flex-wrap items-center gap-2 border-t pt-3">
-          <span className="text-muted-foreground text-xs">{t('factQuietest')}</span>
+          <span className="text-muted-foreground text-xs">
+            {t('factQuietest', { count: summary.quietest.length })}
+          </span>
           {summary.quietest.map((day) => (
             <span key={day.date} className="flex items-center gap-1.5">
               <span className="text-sm font-medium">
@@ -218,6 +225,14 @@ export async function ParkCalendarMonthSummary({
  * at `leading-relaxed` is 22.75 px, `md:text-base` is 26 px. The prose runs five to six lines on a
  * phone and three on a desktop, which is where the two paragraph blocks come from.
  *
+ * **What it cannot reserve honestly is its own absence.** The summary is `null` for a month with
+ * no operating day (a park shut for the season) and for a seed that hit its three-second timeout,
+ * and the boundary has already drawn this box by then — so those pages pay a collapse of roughly
+ * 185 px at `md` and up. It is left that way on purpose, for the reason CLAUDE.md gives for the
+ * nearby-parks section: the caller cannot know before the fetch, and reserving for the common
+ * outcome costs less in total than reserving for none. A seasonal park in February pays it; a
+ * year-round park never does.
+ *
  * The fact row's shape is data-dependent (two to four entries), so it reserves the four-entry
  * case: that is one line tall on `sm` and up either way, so the guess costs nothing there.
  *
@@ -243,8 +258,12 @@ export function ParkCalendarMonthSummarySkeleton() {
       </div>
 
       <dl className="grid grid-cols-2 gap-x-4 gap-y-3 sm:grid-cols-4">
+        {/* Four from `sm` up, where they are one row either way — below it the grid is two
+          columns, so a fourth entry is a whole second row, and only the first fact is
+          unconditional. Reserving two rows for a month that renders one is the same
+          over-reservation this file spent its other numbers avoiding. */}
         {[0, 1, 2, 3].map((i) => (
-          <div key={i} className="flex flex-col gap-1">
+          <div key={i} className={cn('flex flex-col gap-1', i >= 2 && 'hidden sm:flex')}>
             <Skeleton className="h-[16px] w-24" />
             <Skeleton className="h-[20px] w-16" />
           </div>

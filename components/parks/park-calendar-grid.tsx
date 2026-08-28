@@ -16,7 +16,8 @@ import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
 import { Info } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useCalendarData } from '@/lib/hooks/use-calendar-data';
-import { rankOf } from '@/lib/parks/calendar-month-summary';
+import { extremeCandidates, rankOf } from '@/lib/parks/calendar-month-summary';
+import type { CalendarDay } from '@/lib/api/types';
 import { CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
 import { parkCalendarPath, type ParkCalendarMonth } from '@/lib/parks/calendar-segments';
 import type { IntegratedCalendarResponse, ParkWithAttractions } from '@/lib/api/types';
@@ -220,7 +221,7 @@ export function ParkCalendarGrid({
 
   // Create a map of calendar data by date for quick lookup
   const calendarMap = useMemo(() => {
-    const map = new Map();
+    const map = new Map<string, CalendarDay>();
     if (calendarData?.days) {
       calendarData.days.forEach((day) => {
         map.set(day.date, day);
@@ -270,27 +271,30 @@ export function ParkCalendarGrid({
    * margin does the rest of the work.
    */
   const bestDayDates = useMemo(() => {
-    const crowdOrder: readonly string[] = CROWD_LEVEL_ORDER;
-    const candidates = Array.from(calendarMap.values()).filter(
-      (d) =>
-        d.date >= todayStr && // never recommend a day that has already passed
-        (d.status === 'OPERATING' || d.status === 'UNKNOWN') &&
-        !d.isSchoolVacation &&
-        !d.isSchoolHoliday &&
-        !d.isHoliday &&
-        !d.isPublicHoliday
-    );
-    const ranked = candidates
-      .map((d) => ({ date: d.date, rank: rankOf(d, crowdOrder.indexOf(d.crowdLevel)) }))
-      .filter((d) => crowdOrder.indexOf(calendarMap.get(d.date).crowdLevel) >= 0);
+    // The SAME candidate set the summary sentence above the grid uses — `extremeCandidates`. The
+    // two had their own lists until a review caught it: the grid dropped school and public
+    // holidays and kept today, the summary did the reverse, so their medians were computed over
+    // different populations and they could name different days on one page. A quiet Whit Monday
+    // is still the month's quietest day.
+    const all = Array.from(calendarMap.values()) as CalendarDay[];
+    const lastDate = all.reduce((acc, d) => (d.date > acc ? d.date : acc), all[0]?.date ?? '');
+    const monthIsPast = !!lastDate && lastDate < todayStr;
+    const ranked = extremeCandidates(all, todayStr, monthIsPast).map((d) => ({
+      date: d.date,
+      rank: rankOf(
+        d,
+        CROWD_LEVEL_ORDER.indexOf(d.crowdLevel as (typeof CROWD_LEVEL_ORDER)[number])
+      ),
+    }));
     if (ranked.length < 4) return new Set<string>();
 
-    const sorted = [...ranked].map((d) => d.rank).sort((a, b) => a - b);
+    const sorted = ranked.map((d) => d.rank).sort((a, b) => a - b);
     const mid = Math.floor(sorted.length / 2);
     const median = sorted.length % 2 === 0 ? (sorted[mid - 1] + sorted[mid]) / 2 : sorted[mid];
 
-    const standouts = ranked.filter((d) => d.rank <= median - BEST_DAY_MARGIN);
-    return new Set<string>(standouts.map((d) => d.date));
+    return new Set<string>(
+      ranked.filter((d) => d.rank <= median - BEST_DAY_MARGIN).map((d) => d.date)
+    );
   }, [calendarMap, todayStr]);
 
   const today = new Date();

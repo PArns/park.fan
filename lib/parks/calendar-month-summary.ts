@@ -69,8 +69,6 @@ export interface MonthHoursPattern {
   openingTime: string;
   /** `HH:mm` in the park's zone. */
   closingTime: string;
-  /** Open days matching this pair. */
-  days: number;
 }
 
 export interface CalendarMonthSummary {
@@ -98,8 +96,6 @@ export interface CalendarMonthSummary {
   hours: MonthHoursPattern | null;
   /** Days inside a school vacation for the park's own region. */
   schoolVacationDays: number;
-  /** Public-holiday dates in the month, `YYYY-MM-DD`. */
-  publicHolidays: string[];
   /**
    * Mean headliner wait across rated days, on the five-minute grid, or `null`.
    *
@@ -109,6 +105,34 @@ export interface CalendarMonthSummary {
   avgHeadlinerWait: number | null;
   /** True when the month is wholly in the past, so the prose can use the past tense. */
   isPast: boolean;
+}
+
+/**
+ * The days a month's extremes may be picked from — the one definition both surfaces use.
+ *
+ * The summary sentence and the grid's „Empfohlen" star each had their own list, and that is
+ * enough to make them disagree even after they were given a shared `rankOf`: the grid dropped
+ * school and public holidays and kept today, the summary kept the holidays and dropped today, and
+ * their medians were therefore computed over different populations. A park whose calmest day
+ * falls inside a school holiday — which the summary counts and the grid did not — got „am
+ * ruhigsten wird es am Dienstag, 3." above a grid where the 3rd wore no star.
+ *
+ * `isToday` stays out for both: `crowdLevel` is overridden with a live spot reading on today
+ * alone, so it is not on the same scale as the rest of the month. Holidays stay IN for both —
+ * a quiet Whit Monday is still the month's quietest day, and hiding it is a different claim.
+ */
+export function extremeCandidates(
+  days: CalendarDay[],
+  todayIso: string,
+  monthIsPast: boolean
+): CalendarDay[] {
+  return days.filter((day) => {
+    if (day.status !== 'OPERATING') return false;
+    if (day.isToday) return false;
+    if (!monthIsPast && day.date < todayIso) return false;
+    const level = day.crowdLevel;
+    return level !== 'closed' && level !== 'unknown' && CROWD_RANK[level] !== undefined;
+  });
 }
 
 /**
@@ -158,26 +182,10 @@ function ratedOpenDays(
   todayIso: string,
   monthIsPast: boolean
 ): Array<CalendarDay & { rank: number }> {
-  const out: Array<CalendarDay & { rank: number }> = [];
-  for (const day of days) {
-    if (day.status !== 'OPERATING') continue;
-    if (day.isToday) continue;
-    // On the month that CONTAINS today, only days somebody can still act on.
-    //
-    // The sentence is in the future tense — „am ruhigsten wird es" — and on the hub, which always
-    // shows the current month, it was ranking a month that is four fifths over. Worse, it then
-    // disagreed with the entry tile one card up: the tile names the next upcoming quiet day and
-    // said „Fr., 28. Aug (heute)", the summary ranked all 31 days and said „Montag, 31." Two
-    // quiet days for one park on one screen. A month wholly in the past keeps every day, because
-    // there the tense is „war es" and the whole month is the subject.
-    if (!monthIsPast && day.date < todayIso) continue;
-    const level = day.crowdLevel;
-    if (level === 'closed' || level === 'unknown') continue;
-    const bucket = CROWD_RANK[level];
-    if (bucket === undefined) continue;
-    out.push({ ...day, rank: rankOf(day, bucket) });
-  }
-  return out;
+  return extremeCandidates(days, todayIso, monthIsPast).map((day) => ({
+    ...day,
+    rank: rankOf(day, CROWD_RANK[day.crowdLevel as Exclude<CrowdLevel, 'unknown'>]),
+  }));
 }
 
 /** The median rank of a set already known to be non-empty. */
@@ -228,7 +236,11 @@ function extremeDays(
  * local across a DST change sends two different UTC instants for it, which as raw strings are two
  * patterns and would drop the month below the 60 % floor for no reason a reader could see.
  */
-function hoursPattern(days: CalendarDay[], timeZone: string): MonthHoursPattern | null {
+function hoursPattern(
+  days: CalendarDay[],
+  timeZone: string,
+  openDays: number
+): MonthHoursPattern | null {
   const counts = new Map<string, number>();
   let openWithHours = 0;
   for (const day of days) {
@@ -248,7 +260,7 @@ function hoursPattern(days: CalendarDay[], timeZone: string): MonthHoursPattern 
     const key = `${open}|${close}`;
     counts.set(key, (counts.get(key) ?? 0) + 1);
   }
-  if (openWithHours === 0) return null;
+  if (openWithHours === 0 || openDays === 0) return null;
 
   let bestKey = '';
   let bestCount = 0;
@@ -260,10 +272,15 @@ function hoursPattern(days: CalendarDay[], timeZone: string): MonthHoursPattern 
   }
   // Under 60 % the pair describes a minority of the month and „meist 11–20 Uhr" becomes a claim
   // that is wrong more often than a reader would forgive.
-  if (bestCount / openWithHours < 0.6) return null;
+  //
+  // Measured against the month's OPEN days, not against the days that happened to publish hours.
+  // With the latter as the denominator a park that published hours on 3 of its 30 open days
+  // scored 3/3 = 100 % and printed „meist von 09:00 bis 19:00 Uhr" off a tenth of the month —
+  // the exact claim this floor exists to refuse.
+  if (bestCount / openDays < 0.6) return null;
 
   const [openingTime, closingTime] = bestKey.split('|');
-  return { openingTime, closingTime, days: bestCount };
+  return { openingTime, closingTime };
 }
 
 /**
@@ -308,9 +325,8 @@ export function summarizeCalendarMonth(
     closedDays: days.length - openDays,
     quietest: extremeDays(rated, -1),
     busiest: extremeDays(rated, 1),
-    hours: hoursPattern(days, timeZone),
+    hours: hoursPattern(days, timeZone, openDays),
     schoolVacationDays: days.filter((d) => d.isSchoolVacation || d.isSchoolHoliday).length,
-    publicHolidays: days.filter((d) => d.isPublicHoliday ?? d.isHoliday).map((d) => d.date),
     avgHeadlinerWait: waits.length
       ? roundWaitTo5(waits.reduce((a, b) => a + b, 0) / waits.length)
       : null,

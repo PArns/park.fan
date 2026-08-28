@@ -1,4 +1,4 @@
-import { locales, SITE_URL } from '@/i18n/config';
+import { localeSitemapIndex } from '@/lib/seo/sitemap-xml';
 
 /**
  * Sitemap INDEX for the attraction pages.
@@ -20,13 +20,5 @@ import { locales, SITE_URL } from '@/i18n/config';
 export const revalidate = 86400;
 
 export async function GET(): Promise<Response> {
-  const children = locales
-    .map((locale) => `<sitemap><loc>${SITE_URL}/sitemap-attractions/${locale}.xml</loc></sitemap>`)
-    .join('\n');
-
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${children}\n</sitemapindex>`;
-
-  return new Response(xml, {
-    headers: { 'Content-Type': 'application/xml; charset=utf-8' },
-  });
+  return localeSitemapIndex((locale) => `/sitemap-attractions/${locale}.xml`);
 }

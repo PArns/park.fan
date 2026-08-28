@@ -751,10 +751,10 @@
       "summary": {
         "openingFuture": "Im {month} öffnet {park} an {open} von {total} Tagen.",
         "openingPast": "Im {month} war {park} an {open} von {total} Tagen geöffnet.",
-        "quietestFuture": "Am ruhigsten wird es voraussichtlich am {days}.",
-        "quietestPast": "Am ruhigsten war es am {days}.",
-        "busiestFuture": "Am vollsten wird es am {days}.",
-        "busiestPast": "Am vollsten war es am {days}.",
+        "quietestFuture": "{count, plural, =1 {Am ruhigsten wird es voraussichtlich am {days}.} other {Am ruhigsten wird es voraussichtlich am {days}.}}",
+        "quietestPast": "{count, plural, =1 {Am ruhigsten war es am {days}.} other {Am ruhigsten war es am {days}.}}",
+        "busiestFuture": "{count, plural, =1 {Am vollsten wird es am {days}.} other {Am vollsten wird es am {days}.}}",
+        "busiestPast": "{count, plural, =1 {Am vollsten war es am {days}.} other {Am vollsten war es am {days}.}}",
         "hours": "Geöffnet ist meist von {from} bis {to} Uhr.",
         "schoolVacation": "{days, plural, =1 {An einem Tag} other {An # Tagen}} liegen in der Region des Parks Schulferien.",
         "headlinerFuture": "An den großen Bahnen sind im Schnitt {minutes} Minuten zu erwarten.",
@@ -767,7 +767,7 @@
         "factWaitValue": "{minutes} Min.",
         "factSchoolVacation": "Schulferien",
         "factSchoolVacationValue": "{days, plural, =1 {# Tag} other {# Tage}}",
-        "factQuietest": "Ruhigste Tage:"
+        "factQuietest": "{count, plural, =1 {Ruhigster Tag:} other {Ruhigste Tage:}}"
       },
       "dataset": {
         "name": "Andrang und Wartezeiten im {park}, {month}",
