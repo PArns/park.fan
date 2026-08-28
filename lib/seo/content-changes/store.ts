@@ -89,3 +89,30 @@ export async function getContentLastmodIndex(): Promise<ReadonlyMap<string, stri
   cached = { at: Date.now(), index };
   return index;
 }
+
+/**
+ * Park path → the last date that park's schedule reaches, for the calendar sitemap.
+ *
+ * Empty when there is no snapshot yet, or when the one on disk predates the field — and empty has
+ * to mean "no answer", not "no coverage": a reader that truncated the catalogue on a cold blob
+ * would drop thousands of live URLs the first morning the store came back slow.
+ *
+ * Shares `getContentLastmodIndex`'s TTL reasoning and its cache entry would have been the obvious
+ * place to put it, except that index is keyed by *content* path and includes every ride; this one
+ * answers only for parks and is read by a different route. One extra parse every five minutes is
+ * cheaper than making either of them carry the other's shape.
+ */
+let coverageCached: { at: number; index: ReadonlyMap<string, string | null> } | null = null;
+
+export async function getScheduleCoverageIndex(): Promise<ReadonlyMap<string, string | null>> {
+  if (coverageCached && Date.now() - coverageCached.at < CACHE_TTL_MS) return coverageCached.index;
+
+  const snapshot = await readContentChangeSnapshot();
+  const index = new Map<string, string | null>();
+  for (const [parkPath, to] of Object.entries(snapshot?.scheduleCoverage ?? {})) {
+    index.set(parkPath, to);
+  }
+
+  coverageCached = { at: Date.now(), index };
+  return index;
+}

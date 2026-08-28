@@ -28,6 +28,7 @@ import {
   PARK_CALENDAR_MONTH_SPAN,
   isParkCalendarMonthInRange,
   parkCalendarMonthsBack,
+  parkCalendarMonthsForward,
 } from '../lib/parks/calendar-segments.ts';
 
 const testCases = [];
@@ -462,6 +463,88 @@ test(
     return `${isParkCalendarMonthInRange({ year: 2027, month: 8 }, now)}/${isParkCalendarMonthInRange({ year: 2027, month: 9 }, now)}`;
   },
   'true/false'
+);
+
+// --- forward edge: what the park's published schedule can actually speak for ----------------
+//
+// The API does not fall silent past the end of a schedule, it answers — with `CLOSED` for every
+// day at a seasonal park (Phantasialand, all of July 2027, mid-season) and with the constant
+// `moderate` fallback and no hours at a year-round one (Disneyland Paris, same month). Both are
+// pages that should not exist, so the forward edge follows coverage instead of a constant.
+//
+// The refusals matter more than the happy path here, exactly as above: narrowing on absent data
+// would delete a year of pages the first time a cache came back without the field.
+
+test(
+  'coverage inside the span shortens the forward edge to the month the last row falls in',
+  () => parkCalendarMonthsForward({ year: 2026, month: 8 }, '2027-01-24'),
+  5
+);
+
+test(
+  'a partially covered month still counts — coverage on the 1st reaches that month',
+  () => parkCalendarMonthsForward({ year: 2026, month: 8 }, '2026-10-01'),
+  2
+);
+
+test(
+  'coverage beyond the span is capped by the span, not extended by it',
+  () => parkCalendarMonthsForward({ year: 2026, month: 8 }, '2030-01-01'),
+  PARK_CALENDAR_MONTH_SPAN.forward
+);
+
+test(
+  'coverage already in the past yields zero forward months, never a negative',
+  () => parkCalendarMonthsForward({ year: 2026, month: 8 }, '2026-03-15'),
+  0
+);
+
+test(
+  'null coverage (park publishes no schedule) keeps the old span',
+  () => parkCalendarMonthsForward({ year: 2026, month: 8 }, null),
+  PARK_CALENDAR_MONTH_SPAN.forward
+);
+
+test(
+  'absent coverage (payload cached before the field shipped) keeps the old span',
+  () => parkCalendarMonthsForward({ year: 2026, month: 8 }, undefined),
+  PARK_CALENDAR_MONTH_SPAN.forward
+);
+
+test(
+  'a malformed date is treated as no answer rather than as month zero',
+  () => parkCalendarMonthsForward({ year: 2026, month: 8 }, 'soon'),
+  PARK_CALENDAR_MONTH_SPAN.forward
+);
+
+test(
+  'the range check follows coverage: Phantasialand serves January 2027 and refuses February',
+  () => {
+    const now = { year: 2026, month: 8 };
+    const jan = isParkCalendarMonthInRange({ year: 2027, month: 1 }, now, '2027-01-24');
+    const feb = isParkCalendarMonthInRange({ year: 2027, month: 2 }, now, '2027-01-24');
+    return `${jan}/${feb}`;
+  },
+  'true/false'
+);
+
+test(
+  'the range check without coverage behaves exactly as before',
+  () => {
+    const now = { year: 2026, month: 8 };
+    return `${isParkCalendarMonthInRange({ year: 2027, month: 8 }, now)}/${isParkCalendarMonthInRange({ year: 2027, month: 9 }, now)}`;
+  },
+  'true/false'
+);
+
+test(
+  'coverage never widens the BACK edge — the data floor still owns it',
+  () => {
+    const now = { year: 2026, month: 8 };
+    // A park covered since 2024 does not get 2025 months: the archive floor is a separate limit.
+    return isParkCalendarMonthInRange({ year: 2025, month: 6 }, now, '2027-01-24');
+  },
+  false
 );
 
 // ---------------------------------------------------------------------------

@@ -40,6 +40,18 @@ const CONCURRENCY = 8;
 
 export interface CrawlResult {
   fingerprints: Map<string, string>;
+  /**
+   * Park path → `scheduleCoverage.to`, the last date the API holds a park-level OPERATING row for.
+   *
+   * It rides along on this crawl rather than getting one of its own because the crawl already
+   * fetches all 212 park payloads and this is one field on each. The consumer is the calendar
+   * sitemap, which otherwise knows only the geo structure and would have to repeat those 212
+   * fetches to learn how far each park's schedule reaches.
+   *
+   * `null` for a park that publishes no schedule at all, and for one whose payload came back
+   * without the field — both mean "no answer", and the reader must not shorten anything on them.
+   */
+  scheduleCoverage: Map<string, string | null>;
   /** `/parks/<continent>/<country>/<city>/<park>` for every park the API did not answer for. */
   failedParkPaths: string[];
   parksCovered: number;
@@ -76,6 +88,7 @@ export async function crawlContentFingerprints(): Promise<CrawlResult> {
   const [geo, attractionPaths] = await Promise.all([getGeoStructure(86400), getAttractionPaths()]);
   const indexable = new Set(attractionPaths);
   const fingerprints = new Map<string, string>();
+  const scheduleCoverage = new Map<string, string | null>();
   const failedParkPaths: string[] = [];
   let parksCovered = 0;
   let attractionsCovered = 0;
@@ -143,6 +156,7 @@ export async function crawlContentFingerprints(): Promise<CrawlResult> {
       }
 
       fingerprints.set(target.path, fingerprintPark(park, parkContext(park.slug, target.geoPath)));
+      scheduleCoverage.set(target.path, park.scheduleCoverage?.to ?? null);
       parksCovered++;
 
       for (const attraction of park.attractions ?? []) {
@@ -161,5 +175,5 @@ export async function crawlContentFingerprints(): Promise<CrawlResult> {
 
   await Promise.all(Array.from({ length: CONCURRENCY }, () => worker()));
 
-  return { fingerprints, failedParkPaths, parksCovered, attractionsCovered };
+  return { fingerprints, scheduleCoverage, failedParkPaths, parksCovered, attractionsCovered };
 }

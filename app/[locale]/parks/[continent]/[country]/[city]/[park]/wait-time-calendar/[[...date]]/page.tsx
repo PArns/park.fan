@@ -76,8 +76,12 @@ interface ParkCalendarPageProps {
  * describing — a title for September under a grid showing August is the kind of mismatch nobody
  * notices until it is in the index.
  */
-function resolveMonth(date: string[] | undefined, now: ParkCalendarMonth) {
-  const parsed = parseParkCalendarMonth(date, now);
+function resolveMonth(
+  date: string[] | undefined,
+  now: ParkCalendarMonth,
+  coverageTo?: string | null
+) {
+  const parsed = parseParkCalendarMonth(date, now, coverageTo);
   return parsed === 'invalid' ? 'invalid' : parsed;
 }
 
@@ -127,7 +131,7 @@ export async function generateMetadata({ params }: ParkCalendarPageProps): Promi
   // The window is measured from TODAY IN THE PARK, so the metadata and the page agree about which
   // months exist even for a park whose date has already rolled over (or not yet).
   const nowInPark = currentParkCalendarMonth(park.timezone);
-  const resolved = resolveMonth(date, nowInPark);
+  const resolved = resolveMonth(date, nowInPark, park.scheduleCoverage?.to);
   if (resolved === 'invalid') return { title: tNotFound('park'), robots: { index: false } };
   const month = resolved.month;
 
@@ -216,7 +220,10 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   const parkFull = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));
   const parkForClock = parkFull ? leanParkForParkShell(parkFull) : parkFull;
   const nowMonth = currentParkCalendarMonth(parkForClock?.timezone);
-  const resolved = resolveMonth(date, nowMonth);
+  // Read off the full payload, not the lean shell projection: the shell keeps what the header
+  // renders, and the coverage window is a routing fact.
+  const coverageTo = parkFull?.scheduleCoverage?.to;
+  const resolved = resolveMonth(date, nowMonth, coverageTo);
   // A month that is not a month is a 404, not a quiet fall back to the hub: `/…/2026/13` is a typo
   // or a crawler probing, and answering it with the current month would put one page's content on
   // unbounded URLs.
@@ -339,8 +346,8 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   const shownMonth = month ?? nowMonth;
   const back = shiftParkCalendarMonth(shownMonth, -1);
   const forward = shiftParkCalendarMonth(shownMonth, 1);
-  const prevMonth = isParkCalendarMonthInRange(back, nowMonth) ? back : null;
-  const nextMonth = isParkCalendarMonthInRange(forward, nowMonth) ? forward : null;
+  const prevMonth = isParkCalendarMonthInRange(back, nowMonth, coverageTo) ? back : null;
+  const nextMonth = isParkCalendarMonthInRange(forward, nowMonth, coverageTo) ? forward : null;
 
   return (
     <RouteMessages route="/parks/[continent]/[country]/[city]/[park]/wait-time-calendar/[[...date]]">
@@ -516,6 +523,7 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
               parkSlug={parkSlug}
               currentMonth={nowMonth}
               activeMonth={month}
+              coverageTo={coverageTo}
             />
           }
         />

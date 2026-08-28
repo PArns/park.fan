@@ -3,8 +3,8 @@ import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import {
-  PARK_CALENDAR_MONTH_SPAN,
   parkCalendarMonthsBack,
+  parkCalendarMonthsForward,
   parkCalendarPath,
   shiftParkCalendarMonth,
   type ParkCalendarMonth,
@@ -36,6 +36,7 @@ export async function ParkCalendarMonthIndex({
   parkSlug,
   currentMonth,
   activeMonth,
+  coverageTo,
   className,
 }: {
   locale: string;
@@ -47,6 +48,12 @@ export async function ParkCalendarMonthIndex({
   currentMonth: ParkCalendarMonth;
   /** The month this page shows, or `null` on the hub. */
   activeMonth: ParkCalendarMonth | null;
+  /**
+   * `scheduleCoverage.to` from the park payload — the last date the API can speak for. Omitted or
+   * null keeps the old fixed forward span, so a park with no published schedule and a payload
+   * cached before the field existed both behave exactly as before.
+   */
+  coverageTo?: string | null;
   className?: string;
 }) {
   const t = await getTranslations('parks.calendarPage');
@@ -57,7 +64,7 @@ export async function ParkCalendarMonthIndex({
   const months: ParkCalendarMonth[] = [];
   for (
     let offset = -parkCalendarMonthsBack(currentMonth);
-    offset <= PARK_CALENDAR_MONTH_SPAN.forward;
+    offset <= parkCalendarMonthsForward(currentMonth, coverageTo);
     offset++
   ) {
     months.push(shiftParkCalendarMonth(currentMonth, offset));

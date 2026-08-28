@@ -139,6 +139,41 @@ export function parkCalendarMonthsBack(now: ParkCalendarMonth): number {
   return Math.max(0, Math.min(PARK_CALENDAR_MONTH_SPAN.back, available));
 }
 
+/**
+ * How many months forward this park's calendar actually says anything — the mirror of
+ * {@link parkCalendarMonthsBack}, and it exists for the same reason.
+ *
+ * The backwards half was capped because twelve months back drew eleven empty grids per park under
+ * real-looking titles. The forwards half had the same hole and it was worse, because the API does
+ * not go quiet past the end of a park's published schedule — it *answers*. Measured on 2026-08-28:
+ * Phantasialand and Europa-Park returned `status: "CLOSED"`, `crowdLevel: "closed"` for **every day
+ * of July 2027**, which is mid-season at both and simply meant their 2027 hours were not out yet;
+ * Disneyland Paris and Toverland returned `UNKNOWN` with the constant `moderate` fallback and no
+ * opening hours for the same month. Five of ten sampled parks were in the first group. A confident
+ * closure and a flat constant are both pages that should not exist.
+ *
+ * `coverageTo` is `scheduleCoverage.to` from the API — the last date it has a park-level OPERATING
+ * row for. The month that date falls in is the last one worth serving: it is partially covered, so
+ * it still carries real days.
+ *
+ * **`null` and `undefined` mean "no answer", and must not shorten anything.** A park with no
+ * schedule at all reports `null`, and a payload the API cached before the field shipped omits it
+ * entirely; in both cases we know nothing new and fall back to the old span, exactly as this file
+ * behaved before. Narrowing on absent data would delete a year of pages the day a cache went cold.
+ */
+export function parkCalendarMonthsForward(
+  now: ParkCalendarMonth,
+  coverageTo: string | null | undefined
+): number {
+  if (!coverageTo) return PARK_CALENDAR_MONTH_SPAN.forward;
+  const [year, month] = coverageTo.split('-').map(Number);
+  if (!Number.isFinite(year) || !Number.isFinite(month)) {
+    return PARK_CALENDAR_MONTH_SPAN.forward;
+  }
+  const covered = monthIndex({ year, month }) - monthIndex(now);
+  return Math.max(0, Math.min(PARK_CALENDAR_MONTH_SPAN.forward, covered));
+}
+
 export interface ParkCalendarMonth {
   year: number;
   month: number;
@@ -158,7 +193,8 @@ export interface ParkCalendarMonth {
  */
 export function parseParkCalendarMonth(
   segments: string[] | undefined,
-  now: ParkCalendarMonth
+  now: ParkCalendarMonth,
+  coverageTo?: string | null
 ): { month: ParkCalendarMonth | null; padded: boolean } | 'invalid' {
   if (!segments || segments.length === 0) return { month: null, padded: false };
   if (segments.length !== 2) return 'invalid';
@@ -169,7 +205,7 @@ export function parseParkCalendarMonth(
   const year = Number(rawYear);
   const month = Number(rawMonth);
   if (month < 1 || month > 12) return 'invalid';
-  if (!isParkCalendarMonthInRange({ year, month }, now)) return 'invalid';
+  if (!isParkCalendarMonthInRange({ year, month }, now, coverageTo)) return 'invalid';
 
   // `09` and `9` are the same month and must not be two URLs. `0` alone is already out on the
   // range check above, so the only padded form left is a leading zero on 1–9.
@@ -186,13 +222,20 @@ export function shiftParkCalendarMonth(
 }
 
 /** Whether a month is inside the window the route serves — the prev/next links check it so they
- *  never point at a 404. */
+ *  never point at a 404.
+ *
+ *  `coverageTo` is optional so every existing call keeps its behaviour: omit it and the forward
+ *  edge is the old fixed span. Pass `scheduleCoverage.to` wherever the park payload is in scope,
+ *  and the edge becomes the last month the API can speak for. */
 export function isParkCalendarMonthInRange(
   month: ParkCalendarMonth,
-  now: ParkCalendarMonth
+  now: ParkCalendarMonth,
+  coverageTo?: string | null
 ): boolean {
   const delta = monthIndex(month) - monthIndex(now);
-  return delta >= -parkCalendarMonthsBack(now) && delta <= PARK_CALENDAR_MONTH_SPAN.forward;
+  return (
+    delta >= -parkCalendarMonthsBack(now) && delta <= parkCalendarMonthsForward(now, coverageTo)
+  );
 }
 
 /**

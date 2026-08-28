@@ -28,6 +28,19 @@ export interface ContentChangeSnapshot {
   /** When the crawl that produced this snapshot ran (ISO instant, for debugging). */
   generatedAt: string;
   entries: Record<string, ContentChangeEntry>;
+  /**
+   * Park path → `scheduleCoverage.to`: the last date the API holds a park-level OPERATING row for,
+   * `null` when it holds none.
+   *
+   * It is not a fingerprint and deliberately does not travel through `diffSnapshot` — that function
+   * has one careful job (deciding which dates move) and this is a value to carry, not to compare.
+   * The cron merges it beside the diff, keeping the previous value for a park that did not answer,
+   * the same rule `retainUncovered` applies to dates.
+   *
+   * Optional because a snapshot written before this shipped has none, and the sitemap that reads it
+   * must then behave exactly as it did before rather than truncating the catalogue.
+   */
+  scheduleCoverage?: Record<string, string | null>;
 }
 
 /** Path → fingerprint, as one crawl observed the catalog. */

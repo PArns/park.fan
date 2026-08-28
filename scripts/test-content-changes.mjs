@@ -20,6 +20,7 @@ import {
   fingerprintAttraction,
   fingerprintGeoHub,
   fingerprintPark,
+  mergeScheduleCoverage,
 } from '../lib/seo/content-changes/fingerprint.ts';
 
 let passed = 0;
@@ -299,6 +300,66 @@ test('the very first run stamps everything with today, and says so', () => {
   const result = diffSnapshot(null, new Map([['/parks/a/b/c/d', 'h1']]), { today: TODAY });
   assert.deepEqual(result.added, ['/parks/a/b/c/d']);
   assert.equal(result.snapshot.entries['/parks/a/b/c/d'].changedAt, TODAY);
+});
+
+// --- schedule coverage: carried, not compared -----------------------------------------------
+//
+// The forward edge of every calendar month index, route and sitemap reads this. The failure that
+// matters is not a wrong date, it is an ABSENT park: the crawl records only parks whose payload
+// arrived, so one API wobble must not shorten 212 calendars the next morning.
+
+test('a park that answered overwrites what it had', () => {
+  const merged = mergeScheduleCoverage(
+    {
+      version: 1,
+      generatedAt: '',
+      entries: {},
+      scheduleCoverage: { '/parks/a/b/c/d': '2026-10-01' },
+    },
+    new Map([['/parks/a/b/c/d', '2027-01-24']])
+  );
+  assert.equal(merged['/parks/a/b/c/d'], '2027-01-24');
+});
+
+test("a park that did NOT answer keeps yesterday's coverage", () => {
+  const merged = mergeScheduleCoverage(
+    {
+      version: 1,
+      generatedAt: '',
+      entries: {},
+      scheduleCoverage: { '/parks/a/b/c/d': '2027-01-24', '/parks/a/b/c/e': '2026-12-31' },
+    },
+    new Map([['/parks/a/b/c/d', '2027-02-28']])
+  );
+  assert.equal(merged['/parks/a/b/c/d'], '2027-02-28');
+  assert.equal(merged['/parks/a/b/c/e'], '2026-12-31');
+});
+
+test('an explicit null IS an answer and overwrites a remembered date', () => {
+  const merged = mergeScheduleCoverage(
+    {
+      version: 1,
+      generatedAt: '',
+      entries: {},
+      scheduleCoverage: { '/parks/a/b/c/d': '2027-01-24' },
+    },
+    new Map([['/parks/a/b/c/d', null]])
+  );
+  assert.equal(merged['/parks/a/b/c/d'], null);
+  assert.ok('/parks/a/b/c/d' in merged);
+});
+
+test('a snapshot written before the field existed starts from empty, not from undefined', () => {
+  const merged = mergeScheduleCoverage(
+    { version: 1, generatedAt: '', entries: {} },
+    new Map([['/parks/a/b/c/d', '2027-01-24']])
+  );
+  assert.deepEqual(merged, { '/parks/a/b/c/d': '2027-01-24' });
+});
+
+test('no previous snapshot at all is the first run, not a crash', () => {
+  const merged = mergeScheduleCoverage(null, new Map([['/parks/a/b/c/d', null]]));
+  assert.deepEqual(merged, { '/parks/a/b/c/d': null });
 });
 
 console.log(`\n${passed} assertions passed.`);

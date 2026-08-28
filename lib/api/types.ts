@@ -708,6 +708,11 @@ export interface ParkWithAttractions extends ParkBase {
   schedule?: ScheduleItem[];
   nextSchedule?: NextScheduleItem | null;
   hasOperatingSchedule: boolean;
+  /**
+   * Day-stable like `liveWaitTimes`, so it rides on the server render and never on the live poll's
+   * projection — the calendar range it governs cannot change between two five-minute refreshes.
+   */
+  scheduleCoverage?: ScheduleCoverage;
   /** Day-stable, so it rides on the server render and the live merge carries it. */
   liveWaitTimes?: LiveWaitTimes;
 }
@@ -1512,10 +1517,31 @@ export interface CalendarEvent {
 // Integrated Calendar Types (New API)
 // ============================================================================
 
+/**
+ * How far a park's published schedule reaches — MIN/MAX of its park-level OPERATING rows.
+ *
+ * Both ends are `null` for a park that has none, and the whole field is absent on a payload the
+ * API cached before it shipped (3 min open, up to 6 h closed), so always read it optionally.
+ *
+ * Past `to` the API is no longer reporting a status, it is inferring one, and the inference is
+ * worthless in both directions: a seasonal park comes back `CLOSED` for every day (Phantasialand
+ * answered CLOSED for all of July 2027, mid-season, because its 2027 hours were not out yet) and a
+ * year-round one comes back `UNKNOWN` with the constant `moderate` fallback and no hours
+ * (Disneyland Paris and Toverland, same month). Neither is a page worth publishing.
+ */
+export interface ScheduleCoverage {
+  /** `YYYY-MM-DD` in park timezone, or null when the park publishes no schedule at all. */
+  from: string | null;
+  /** `YYYY-MM-DD` in park timezone, or null. The last date the API actually knows about. */
+  to: string | null;
+}
+
 export interface CalendarMeta {
   slug: string;
   timezone: string;
   hasOperatingSchedule: boolean;
+  /** Absent on a response the API cached before this field shipped — read it optionally. */
+  scheduleCoverage?: ScheduleCoverage;
 }
 
 export interface OperatingHours {

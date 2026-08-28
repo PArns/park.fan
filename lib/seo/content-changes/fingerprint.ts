@@ -281,3 +281,28 @@ export function diffSnapshot(
     carried,
   };
 }
+
+/**
+ * Yesterday's schedule coverage plus whatever today's crawl saw — the sibling of
+ * {@link diffSnapshot} for a value that is carried rather than compared.
+ *
+ * The one rule is the same one `retainUncovered` encodes for dates: **a park that did not answer
+ * keeps what it had.** The crawl only records parks whose payload arrived, so a park missing from
+ * `crawled` is a park we learned nothing about today, and dropping it would shorten its calendar
+ * to the fixed span tomorrow morning — 212 parks are one API wobble away from that.
+ *
+ * A park that answered with no coverage at all reports `null`, and that IS an answer: it overwrites.
+ * The consumer treats `null` as "no limit known" and falls back to the old span, so the two paths
+ * converge on the same behaviour; the difference is only whether we are storing an observation or
+ * a memory.
+ */
+export function mergeScheduleCoverage(
+  previous: ContentChangeSnapshot | null,
+  crawled: ReadonlyMap<string, string | null>
+): Record<string, string | null> {
+  const merged: Record<string, string | null> = { ...previous?.scheduleCoverage };
+  for (const [parkPath, to] of crawled) {
+    merged[parkPath] = to;
+  }
+  return merged;
+}

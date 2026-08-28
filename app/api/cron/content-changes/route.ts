@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { crawlContentFingerprints } from '@/lib/seo/content-changes/crawl';
-import { diffSnapshot } from '@/lib/seo/content-changes/fingerprint';
+import { diffSnapshot, mergeScheduleCoverage } from '@/lib/seo/content-changes/fingerprint';
 import {
   readContentChangeSnapshot,
   writeContentChangeSnapshot,
@@ -66,6 +66,12 @@ export async function GET(request: Request) {
       return false;
     },
   });
+
+  // Schedule coverage rides beside the diff, not through it: `diffSnapshot` decides which dates
+  // move and this is a value to carry. A park that did not answer keeps the coverage it already
+  // had — the same rule `retainUncovered` applies to its dates, and for the same reason: one
+  // timeout must not shorten that park's calendar to nothing tomorrow morning.
+  result.snapshot.scheduleCoverage = mergeScheduleCoverage(previous, crawl.scheduleCoverage);
 
   try {
     await writeContentChangeSnapshot(result.snapshot);
