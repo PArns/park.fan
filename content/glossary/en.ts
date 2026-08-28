@@ -2747,7 +2747,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Phantasialand\'s paid queue-jump product, bought per attraction rather than per day.',
     definition:
-      'The QUICK Pass is Phantasialand\'s paid way past the queue. Unlike most parks, it is not sold as a day product but per attraction — for rides such as Taron, Black Mamba, Chiapas, Talocan and Maus au Chocolat.\n\nSince the 2025/26 winter season its price is dynamic: it moves with the current wait, so the same ride costs more on a busy afternoon than on a quiet morning. That is why a ride with a QUICK Pass usually carries no fixed price on park.fan.\n\nThe pass shortens the wait rather than removing it — the QUICK Pass entrance has a queue too, just a much shorter one.',
+      'The QUICK Pass is Phantasialand\'s paid way past the queue. Unlike most parks, it is not sold as a day product but per attraction — for rides such as Taron, Black Mamba, Chiapas, Talocan and Maus au Chocolat.\n\nIt is bought in the park\'s app or in the park itself, and the price per attraction is fixed — it does not move with the crowds.\n\nThe pass shortens the wait rather than removing it — the QUICK Pass entrance has a queue too, just a much shorter one.',
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time', 'fastpass'],
     aliases: ['Quick Pass', 'QuickPass'],
   },

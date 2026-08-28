@@ -2813,7 +2813,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Le coupe-file payant de Phantasialand, acheté attraction par attraction.',
     definition:
-      'Le QUICK Pass est l\'accès payant qui contourne la file d\'attente à Phantasialand. Contrairement à la plupart des parcs, il ne s\'achète pas à la journée mais par attraction — pour Taron, Black Mamba, Chiapas, Talocan ou Maus au Chocolat.\n\nDepuis la saison d\'hiver 2025/26, son prix est dynamique : il suit le temps d\'attente du moment, si bien que la même attraction coûte plus cher un après-midi chargé qu\'un matin calme. C\'est pourquoi park.fan n\'affiche généralement pas de prix fixe sur une attraction avec QUICK Pass.\n\nLe pass raccourcit l\'attente, il ne la supprime pas — l\'entrée QUICK Pass a aussi sa file, simplement bien plus courte.',
+      'Le QUICK Pass est l\'accès payant qui contourne la file d\'attente à Phantasialand. Contrairement à la plupart des parcs, il ne s\'achète pas à la journée mais par attraction — pour Taron, Black Mamba, Chiapas, Talocan ou Maus au Chocolat.\n\nIl s\'achète dans l\'application du parc ou sur place ; le prix par attraction est fixe et ne suit pas l\'affluence.\n\nLe pass raccourcit l\'attente, il ne la supprime pas — l\'entrée QUICK Pass a aussi sa file, simplement bien plus courte.',
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time', 'fastpass'],
     aliases: ['Quick Pass', 'QuickPass'],
   },

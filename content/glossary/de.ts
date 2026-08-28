@@ -2915,7 +2915,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Das kostenpflichtige Warteschlangen-Produkt im Phantasialand, das pro Attraktion gekauft wird.',
     definition:
-      'Der QUICK Pass ist Phantasialands kostenpflichtiger Zugang an der Warteschlange vorbei. Anders als bei den meisten Parks wird er nicht für den ganzen Tag gekauft, sondern pro Attraktion — für Bahnen wie Taron, Black Mamba, Chiapas, Talocan oder Maus au Chocolat.\n\nSeit der Wintersaison 2025/26 ist der Preis dynamisch: Er bewegt sich mit der aktuellen Wartezeit, dieselbe Bahn kostet an einem vollen Nachmittag also mehr als an einem ruhigen Morgen. Deshalb steht auf park.fan an einer Bahn mit QUICK Pass in der Regel kein fester Preis.\n\nDer Pass verkürzt die Wartezeit, er hebt sie nicht auf — auch der QUICK-Pass-Eingang hat eine Schlange, nur eine deutlich kürzere.',
+      'Der QUICK Pass ist Phantasialands kostenpflichtiger Zugang an der Warteschlange vorbei. Anders als bei den meisten Parks wird er nicht für den ganzen Tag gekauft, sondern pro Attraktion — für Bahnen wie Taron, Black Mamba, Chiapas, Talocan oder Maus au Chocolat.\n\nGekauft wird er in der Park-App oder im Park selbst; der Preis je Attraktion steht fest und schwankt nicht mit dem Andrang.\n\nDer Pass verkürzt die Wartezeit, er hebt sie nicht auf — auch der QUICK-Pass-Eingang hat eine Schlange, nur eine deutlich kürzere.',
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time', 'fastpass'],
     aliases: ['Quick Pass', 'QuickPass', 'Quickpass'],
   },
