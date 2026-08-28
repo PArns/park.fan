@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "fan.park/park-fan",
+  "title": "park.fan",
+  "description": "Live theme-park wait times, ride status and crowd forecasts for 200+ parks.",
+  "version": "1.0.0",
+  "websiteUrl": "https://park.fan/en/how-park-fan-works",
+  "repository": {
+    "url": "https://github.com/PArns/park.fan",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://park.fan/api/mcp"
+    }
+  ]
+}
