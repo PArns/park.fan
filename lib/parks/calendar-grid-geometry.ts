@@ -19,8 +19,8 @@ import type { ParkCalendarMonth } from '@/lib/parks/calendar-segments';
  * That is the single largest reservation gap on the site, on the device the field data is
  * weighted by.
  *
- * **The fix is not a bigger constant.** The grid's height moves with the month: below `md` it is
- * a two-column list of every day, so it scales with the DAY COUNT; at `md` and up it is a
+ * **The fix is not a bigger constant.** The grid's height moves with the month: below `lg` it is
+ * a two-column list of every day, so it scales with the DAY COUNT; at `lg` and up it is a
  * seven-column week grid, so it scales with the number of WEEK ROWS the month spans. Both are
  * arithmetic on the month in the URL, which the server already has — no clock and no viewport
  * needed, which is exactly why they can be computed here while the grid itself cannot render.
@@ -33,14 +33,18 @@ import type { ParkCalendarMonth } from '@/lib/parks/calendar-segments';
  *  1280 px    600 …  973   spread 373
  * ```
  *
- * The residual after the row model is content, not structure: a month carrying more holiday and
- * event badges builds taller cells than an empty one, and no formula reaches that without the
- * data. Two six-row months measured 829 px and 973 px at `lg`, so no single number is right for
- * both — the constants are fitted to the **worst** case rather than the average, because an
- * over-reservation pulls the page up when the grid lands and an under-reservation pushes it down,
- * and both are charged. `pnpm measure:cls` read −101 px on November 2026 against the first fit
- * and is how these were tuned; expect roughly ±75 px at `lg`, which is the part that would need
- * the payload to predict — the trade the `ssr: false` import already made.
+ * The residual used to be content: a month carrying more holiday and event badges built taller
+ * cells than an empty one, two six-row months measured 829 px and 973 px at `lg`, and the
+ * constants were fitted to the worst case with roughly ±75 px left over.
+ *
+ * **The redesigned cell removed that residual.** Every day tile is now a fixed `min-h-[92px]`
+ * below `lg` and `min-h-[150px]` from `lg` up, and nothing inside it wraps or repeats: the
+ * signals became a three-pixel bar rather than a stack of badges, the „Empfohlen" pill moved
+ * inline next to the crowd word, and the ticket price moved into the day dialog. So a row is
+ * exactly one tile tall whatever the day holds, and the numbers below are arithmetic on the
+ * layout rather than a fit — `perRow` is the tile plus its `gap-2`, `base` is the weekday header
+ * row plus the grid's `pt-3`. Keep them that way: if a future cell can grow with its content, the
+ * fit and its ±75 px come back with it.
  *
  * Kept pure and away from the component for the same reason `weather-chart-axis` is:
  * `pnpm test:calendar-month` can pin the row counts over a DST boundary and a leap
@@ -58,37 +62,45 @@ export function weekRowsInMonth({ year, month }: ParkCalendarMonth): number {
   return Math.ceil((leadingBlanks + daysInMonth) / 7);
 }
 
-/** Rows the below-`md` two-column day list needs. */
+/** Rows the below-`lg` two-column day list needs. */
 export function listRowsInMonth({ year, month }: ParkCalendarMonth): number {
   const daysInMonth = new Date(Date.UTC(year, month, 0)).getUTCDate();
   return Math.ceil(daysInMonth / 2);
 }
 
 /**
- * Per-breakpoint pixel model, fitted to the measurements above.
+ * Per-breakpoint pixel model, read off the layout.
  *
- * Three bands because the grid has three: the two-column list below `md`, the week grid at `md`
- * where the cells are still tall because seven columns in 768 px are narrow, and the week grid
- * from `lg` up where it settles — 1024, 1280 and 1440 all measured the same height, so there is
- * no fourth band to add.
+ * Two layouts, three bands: the two-column day list runs everywhere below `lg` (so `base` and
+ * `md` carry the same numbers and both count LIST rows), and the seven-column week grid takes
+ * over from `lg` up, counting WEEK rows. 1024, 1280 and 1440 all measure the same height, so
+ * there is no fourth band to add.
  *
  * The offsets each dropped by the legend row when it moved up into the panel's control row: it
  * measured 60 px on a 390 px phone (two wrapped lines) and 26 px from `md` up, plus a 16 px gap in
  * both cases, and the figures above were fitted against a grid that still contained it.
  */
 const MODEL = {
-  /** < 768 px — two-column list, one row per two days. */
-  base: { perRow: 145, base: -76 },
-  /** 768–1023 px — seven-column week grid, narrow cells. */
-  md: { perRow: 165, base: 18 },
-  /** ≥ 1024 px — seven-column week grid, settled. */
-  lg: { perRow: 133, base: 58 },
+  /** < 768 px — two-column list: 92 px tile + 8 px gap, over the grid's 12 px `pt-3`. */
+  base: { perRow: 100, base: 4 },
+  /**
+   * 768–1023 px — still the two-column list, so the same numbers.
+   *
+   * The week grid used to start at `md`, and it was too early: seven columns inside a 768 px
+   * card leave 98 px per cell, and the redesigned header row („28", the „Heute" pill and the
+   * wait) needs about 115. The band stays in the model because the placeholder reads three
+   * custom properties; it no longer describes a different layout.
+   */
+  md: { perRow: 100, base: 4 },
+  /** ≥ 1024 px — seven-column week grid: 150 px tile + 8 px gap, over the 28 px weekday header
+   *  row and the 12 px `pt-3`. */
+  lg: { perRow: 158, base: 32 },
 } as const;
 
 export interface CalendarGridReservation {
-  /** Placeholder height below `md`, in px. */
+  /** Placeholder height below `md`, in px — two-column list. */
   base: number;
-  /** Placeholder height from `md` to `lg`, in px. */
+  /** Placeholder height from `md` to `lg`, in px — still the two-column list. */
   md: number;
   /** Placeholder height from `lg` up, in px. */
   lg: number;
@@ -106,7 +118,9 @@ export function calendarGridReservation(month: ParkCalendarMonth): CalendarGridR
   const listRows = listRowsInMonth(month);
   return {
     base: Math.round(MODEL.base.base + listRows * MODEL.base.perRow),
-    md: Math.round(MODEL.md.base + weeks * MODEL.md.perRow),
+    // `listRows`, not `weeks`: 768–1023 px shows the two-column list now, and reserving a week
+    // grid's height for it under-reserved a 31-day month by roughly 700 px.
+    md: Math.round(MODEL.md.base + listRows * MODEL.md.perRow),
     lg: Math.round(MODEL.lg.base + weeks * MODEL.lg.perRow),
   };
 }

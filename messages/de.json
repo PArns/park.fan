@@ -485,6 +485,10 @@
     "crowdCalendar": "Crowd-Kalender & Beste Besuchstage",
     "map": "Karte",
     "calendarLegend": "Legende",
+    "calendarLegendGroups": {
+      "crowd": "Andrang",
+      "signals": "Signalleiste"
+    },
     "eventTypesLabel": "Event-Typen",
     "crowdLevelsLabel": "Auslastungsstufen",
     "crowdLevelsNote": "(Siehe unten)",

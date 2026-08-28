@@ -425,6 +425,10 @@
     "crowdCalendar": "Crowd Calendar & Best Days to Visit",
     "map": "Map",
     "calendarLegend": "Legend",
+    "calendarLegendGroups": {
+      "crowd": "Crowds",
+      "signals": "Signals"
+    },
     "eventTypesLabel": "Event Types",
     "crowdLevelsLabel": "Crowd Levels",
     "crowdLevelsNote": "(See below)",

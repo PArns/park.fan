@@ -425,6 +425,10 @@
     "crowdCalendar": "Calendario affluenze e giorni migliori per visitare",
     "map": "Mappa",
     "calendarLegend": "Legenda",
+    "calendarLegendGroups": {
+      "crowd": "Affluenza",
+      "signals": "Segnali"
+    },
     "eventTypesLabel": "Tipi di evento",
     "crowdLevelsLabel": "Livelli di affluenza",
     "crowdLevelsNote": "(Vedi sotto)",

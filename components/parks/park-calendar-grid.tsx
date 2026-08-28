@@ -88,16 +88,16 @@ export function ParkCalendarGrid({
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
 
   // The calendar has two structurally different layouts (a reversed 2-col list on mobile, a 7-col
-  // week grid on desktop). They used to BOTH live in the DOM toggled by `md:hidden` / `hidden
-  // md:block`, so every ParkCalendarDay mounted + rendered TWICE (display:none doesn't skip render
+  // week grid on desktop). They used to BOTH live in the DOM toggled by `lg:hidden` / `hidden
+  // lg:block`, so every ParkCalendarDay mounted + rendered TWICE (display:none doesn't skip render
   // or hydration). This grid is `ssr: false` (see tabs-with-hash) and only mounts once the calendar
   // tab is opened, so we can pick the layout from the live viewport — no hydration mismatch — and
   // each day card mounts exactly once.
   const [isDesktop, setIsDesktop] = useState(() =>
-    typeof window === 'undefined' ? true : window.matchMedia('(min-width: 768px)').matches
+    typeof window === 'undefined' ? true : window.matchMedia('(min-width: 1024px)').matches
   );
   useEffect(() => {
-    const mq = window.matchMedia('(min-width: 768px)');
+    const mq = window.matchMedia('(min-width: 1024px)');
     const update = () => setIsDesktop(mq.matches);
     update();
     mq.addEventListener('change', update);
@@ -166,7 +166,7 @@ export function ParkCalendarGrid({
   };
 
   // Memoize expensive calendar layout calculations — only recalculate when month or locale changes
-  const { weeks, weekdayHeaders, reversedDays } = useMemo(() => {
+  const { weeks, weekdayHeaders, listDays } = useMemo(() => {
     // Compute start/end inside the memo so Date object identity doesn't cause spurious invalidation
     const start = startOfMonth(currentMonth);
     const end = endOfMonth(currentMonth);
@@ -215,7 +215,7 @@ export function ParkCalendarGrid({
     return {
       weeks: computedWeeks,
       weekdayHeaders: computedHeaders,
-      reversedDays: [...allDays].reverse(),
+      listDays: allDays,
     };
   }, [currentMonth, dateLocale]);
 
@@ -342,7 +342,7 @@ export function ParkCalendarGrid({
           >
             <div className="inline-block min-w-full">
               {/* Weekday Headers - Desktop Only */}
-              <div className="mb-2 hidden grid-cols-7 gap-2 md:grid">
+              <div className="mb-2 hidden grid-cols-7 gap-2 lg:grid">
                 {weekdayHeaders.map((header, idx) => (
                   <div key={idx} className="text-muted-foreground text-center text-sm font-medium">
                     {header}
@@ -351,9 +351,9 @@ export function ParkCalendarGrid({
               </div>
 
               {/* Mobile View: Reversed List (Newest First) */}
-              <div className="grid grid-cols-2 gap-6 pt-3 md:hidden">
+              <div className="grid grid-cols-2 gap-2 pt-3 lg:hidden">
                 {!isDesktop &&
-                  reversedDays.map((day) => {
+                  listDays.map((day) => {
                     const dateStr = format(day, 'yyyy-MM-dd');
                     const dayData = calendarMap.get(dateStr);
 
@@ -378,7 +378,7 @@ export function ParkCalendarGrid({
               </div>
 
               {/* Desktop View: Standard Weeks */}
-              <div className="hidden space-y-6 pt-3 md:block">
+              <div className="hidden space-y-2 pt-3 lg:block">
                 {isDesktop &&
                   weeks.map((week, weekIdx) => (
                     <div key={weekIdx} className="grid grid-cols-7 items-stretch gap-2">
