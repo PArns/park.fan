@@ -15,6 +15,8 @@ import { parkCalendarPath, type ParkCalendarMonth } from '@/lib/parks/calendar-s
 import { calendarGridReservation } from '@/lib/parks/calendar-grid-geometry';
 import { ParkCalendarLegend } from '@/components/parks/park-calendar-legend';
 import type { ParkWithAttractions } from '@/lib/api/types';
+import { parkArgs } from '@/lib/i18n/park-phrase';
+import type { Locale } from '@/i18n/config';
 
 /**
  * The month grid with its chapter heading — the client half of the calendar page.
@@ -175,7 +177,10 @@ export function ParkCalendarPanel({
       <ChapterHeading
         icon={CalendarDays}
         title={t('gridTitle')}
-        hint={t('gridSubline', { month: label(month ?? currentMonth), park: park.name })}
+        hint={t('gridSubline', {
+          month: label(month ?? currentMonth),
+          ...parkArgs(locale as Locale, park.name, park.nameArticleDe),
+        })}
         action={monthStepper}
         frosted
         className="mb-0 rounded-b-none"

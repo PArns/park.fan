@@ -44,6 +44,7 @@ import { RouteMessages } from '@/i18n/route-messages';
 import { getParkFaqGlossary } from '@/lib/faq/park-faq-terms';
 import { applyParkSimulation, parseParkSimulation } from '@/lib/parks/park-simulation';
 import { ParkSimulationNotice } from '@/components/parks/park-simulation-notice';
+import { parkArgs } from '@/lib/i18n/park-phrase';
 
 interface ParkPageProps {
   params: Promise<{
@@ -422,7 +423,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
             // Keyword-rich, server-rendered intro — gives Google crawlable topical text with the
             // exact "Wartezeiten im {park}" phrase + "heute" that the live (client-streamed) grid
             // does not provide as static text.
-            intro={t('intro', { park: parkName, city: cityName })}
+            intro={t('intro', { ...parkArgs(locale as Locale, parkName, park.nameArticleDe), city: cityName })}
           />
         }
       >

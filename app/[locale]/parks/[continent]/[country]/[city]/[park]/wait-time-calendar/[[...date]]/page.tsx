@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound, permanentRedirect } from 'next/navigation';
 
 import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
+import type { Locale } from '@/i18n/config';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { RouteMessages } from '@/i18n/route-messages';
 import { catchNonFatal } from '@/lib/api/client';
@@ -55,6 +56,7 @@ import { ParkTitleHeader } from '@/components/parks/park-title-header';
 import { ParkHeaderCard } from '@/components/parks/park-header-card';
 import { ParkNavTiles } from '@/components/parks/park-nav-tiles';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
+import { parkArgs } from '@/lib/i18n/park-phrase';
 
 interface ParkCalendarPageProps {
   params: Promise<{
@@ -433,8 +435,11 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
             suffix={t('h1Suffix', { month: monthName ?? monthLabel(locale, nowMonth) })}
             intro={
               monthName
-                ? t('monthIntro', { park: parkName, month: monthName })
-                : t('intro', { park: parkName })
+                ? t('monthIntro', {
+                    ...parkArgs(locale as Locale, parkName, park.nameArticleDe),
+                    month: monthName,
+                  })
+                : t('intro', parkArgs(locale as Locale, parkName, park.nameArticleDe))
             }
           />
         }
@@ -605,6 +610,7 @@ async function SeededBestDays({
       timezone={timezone}
       hasOperatingSchedule={hasOperatingSchedule}
       parkName={parkName}
+      articleDe={park.nameArticleDe}
       locale={locale}
       initialCalendar={seed}
       seedNowMs={seedNowMs}

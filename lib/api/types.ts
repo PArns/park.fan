@@ -610,6 +610,16 @@ export interface ParkRestaurant {
 export interface ParkBase {
   id: string;
   name: string;
+  /**
+   * The German article this park's name takes — `der`, `die` or `das` — or
+   * absent for the names that take none, which is most of them.
+   *
+   * German copy cannot interpolate a park name without it: "im Phantasialand"
+   * (das), "in der Movie World" (die), "in Toverland" (none). Pass it through
+   * `parkArgs()` and let the message use `{inPark}` / `{forPark}` rather than
+   * writing the preposition into the string.
+   */
+  nameArticleDe?: string | null;
   slug: string;
   url: string | null;
   country: string | null;

@@ -640,7 +640,7 @@
       "away": "entfernt"
     },
     "h1Suffix": "Wartezeiten live",
-    "intro": "Aktuelle Wartezeiten im {park} in {city} – live und im Minutentakt. Sieh, wie voll es heute ist, welche Attraktionen gerade geöffnet sind und wann sich dein Besuch am meisten lohnt – mit KI-Crowd-Prognose und besten Besuchstagen.",
+    "intro": "Aktuelle Wartezeiten {inPark} in {city} – live und im Minutentakt. Sieh, wie voll es heute ist, welche Attraktionen gerade geöffnet sind und wann sich dein Besuch am meisten lohnt – mit KI-Crowd-Prognose und besten Besuchstagen.",
     "now": "Jetzt",
     "forecastToday": "Prognose heute",
     "statusLabel": "Status",
@@ -681,11 +681,11 @@
       "hourlyProfileFootnote": "Typische Wartezeit in Minuten, aus {days} Messtagen."
     },
     "bestDays": {
-      "title": "Beste Reisezeit für {park}",
+      "title": "Beste Reisezeit {forPark}",
       "subtitle": "Basierend auf KI-Crowd-Prognosen für die nächsten 3 Monate",
       "quietestDaysTitle": "Ruhigste Wochentage",
       "upcomingQuietTitle": "Kommende ruhige Tage",
-      "schoolHolidayWarning": "Für {park} gilt: In den Schulferien ist es typischerweise deutlich voller — prüfe den Crowd-Kalender vor der Buchung.",
+      "schoolHolidayWarning": "In den Schulferien ist es {inPark} typischerweise deutlich voller — prüfe den Crowd-Kalender vor der Buchung.",
       "noUpcomingQuiet": "In den nächsten 30 Tagen keine besonders ruhigen Tage.",
       "noData": "Noch nicht genug Crowd-Daten verfügbar.",
       "bestWeekendDayTitle": "Bester Wochenendtag",
@@ -744,14 +744,14 @@
       "intro": "Für jeden Tag der nächsten Monate: erwarteter Andrang, Öffnungszeiten, Ferien und Feiertage, die auf den Park wirken. Tippe auf einen Tag für die Details.",
       "monthMetaDescription": "Wie voll wird es im {park} in {city} im {month}? Erwarteter Andrang Tag für Tag, Öffnungszeiten, Schulferien und Wetter – mit KI-Prognose.",
       "monthMetaDescriptionNoCity": "Wie voll wird es im {park} im {month}? Erwarteter Andrang Tag für Tag, Öffnungszeiten, Schulferien und Wetter.",
-      "monthIntro": "Tag für Tag durch den {month}: erwarteter Andrang im {park}, Öffnungszeiten, Ferien und Wetter. Tippe auf einen Tag für die Details.",
+      "monthIntro": "Tag für Tag durch den {month}: erwarteter Andrang {inPark}, Öffnungszeiten, Ferien und Wetter. Tippe auf einen Tag für die Details.",
       "gridTitle": "Den ruhigsten Tag finden",
-      "gridSubline": "Jeder Tag im {month} mit erwartetem Andrang, Öffnungszeiten, Ferien und Wetter im {park}.",
+      "gridSubline": "Jeder Tag im {month} mit erwartetem Andrang, Öffnungszeiten, Ferien und Wetter {inPark}.",
       "previousMonth": "Vorheriger Monat",
       "nextMonth": "Nächster Monat",
       "currentMonth": "Heute",
       "currentMonthAria": "Zum aktuellen Monat",
-      "backToPark": "Zurück zu den Wartezeiten im {park}",
+      "backToPark": "Zurück zu den Wartezeiten {inPark}",
       "monthIndexLabel": "Alle Monate",
       "summary": {
         "openingFuture": "Im {month} öffnet {park} an {open} von {total} Tagen.",
@@ -898,7 +898,7 @@
       }
     },
     "h1Suffix": "Aktuelle Wartezeit",
-    "intro": "Aktuelle Wartezeit für {attraction} im {park} – live und im Minutentakt. Verfolge den Live-Status, den heutigen Verlauf und typische Stoßzeiten, um lange Wartezeiten zu vermeiden.",
+    "intro": "Aktuelle Wartezeit für {attraction} {inPark} – live und im Minutentakt. Verfolge den Live-Status, den heutigen Verlauf und typische Stoßzeiten, um lange Wartezeiten zu vermeiden.",
     "headliner": {
       "title": "Headliner",
       "description": "Highlight-Attraktion dieses Parks"

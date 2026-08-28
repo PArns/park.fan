@@ -37,6 +37,7 @@
     "test:weather-chart-axis": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-weather-chart-axis.mjs",
     "test:opening-hours-schema": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-opening-hours-schema.mjs",
     "test:coordinates": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-coordinates.mjs",
+    "test:park-phrase": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-phrase.mjs",
     "test:content-changes": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-content-changes.mjs",
     "test:request-ip": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-request-ip.mjs",
     "test:turnstile": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-turnstile.mjs",

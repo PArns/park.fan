@@ -59,6 +59,7 @@ import { generateAttractionBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { stripNewPrefix, cn } from '@/lib/utils';
 import { findRelocatedParkRedirect, findRenamedParkRedirect } from '@/lib/utils/redirect-utils';
 import { RouteMessages } from '@/i18n/route-messages';
+import { parkArgs } from '@/lib/i18n/park-phrase';
 
 interface AttractionPageProps {
   params: Promise<{
@@ -451,7 +452,10 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                   provide as static HTML. Inside the card, exactly like the park page: on
                   the bare background it sat on top of the hero photo and was unreadable. */}
                 <p className="text-muted-foreground mt-4 max-w-2xl text-sm leading-relaxed">
-                  {t('intro', { attraction: attractionName, park: parkName })}
+                  {t('intro', {
+                    attraction: attractionName,
+                    ...parkArgs(locale as Locale, parkName, park.nameArticleDe),
+                  })}
                 </p>
               </GlassCard>
             </div>

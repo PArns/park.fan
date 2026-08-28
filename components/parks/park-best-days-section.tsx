@@ -17,6 +17,8 @@ import { useParkHistoricalStats } from '@/lib/hooks/use-park-historical-stats';
 import { ParkBestDaysSectionSkeleton } from '@/components/parks/park-best-days-section-skeleton';
 import { ParkBestDaysHeader, localizedParkName } from '@/components/parks/park-best-days-header';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { parkArgs } from '@/lib/i18n/park-phrase';
+import type { Locale } from '@/i18n/config';
 
 interface ParkBestDaysSectionProps {
   continent: string;
@@ -27,6 +29,8 @@ interface ParkBestDaysSectionProps {
   timezone: string;
   hasOperatingSchedule: boolean;
   parkName: string;
+  /** The park's German article, for "Beste Reisezeit für den/das …". */
+  articleDe?: string | null;
   locale: string;
   /** Renders as a compact card without section heading — for embedding in the header area */
   compact?: boolean;
@@ -96,6 +100,7 @@ export function ParkBestDaysSection({
   timezone,
   hasOperatingSchedule,
   parkName,
+  articleDe,
   locale,
   compact = false,
   showCalendarLink = false,
@@ -142,6 +147,7 @@ export function ParkBestDaysSection({
           nowMs={seedNowMs}
           parkName={parkName}
           parkSlug={parkSlug}
+          articleDe={articleDe}
           locale={locale}
           compact={compact}
           showCalendarLink={showCalendarLink}
@@ -177,6 +183,7 @@ export function ParkBestDaysSection({
       statsByDayOfWeek={stats?.byDayOfWeek}
       parkName={parkName}
       parkSlug={parkSlug}
+      articleDe={articleDe}
       locale={locale}
       compact={compact}
       showCalendarLink={showCalendarLink}
@@ -194,6 +201,8 @@ interface BestDaysContentProps {
   nowMs?: number;
   parkName: string;
   parkSlug: string;
+  /** The park's German article, for "Beste Reisezeit für den/das …". */
+  articleDe?: string | null;
   locale: string;
   compact?: boolean;
   showCalendarLink?: boolean;
@@ -208,6 +217,7 @@ function BestDaysContent({
   nowMs: nowMsProp,
   parkName,
   parkSlug,
+  articleDe,
   locale,
   compact = false,
   showCalendarLink = false,
@@ -319,6 +329,7 @@ function BestDaysContent({
         <ParkBestDaysHeader
           parkName={parkName}
           parkSlug={parkSlug}
+          articleDe={articleDe}
           locale={locale}
           showCalendarLink={showCalendarLink}
           className="mb-0 rounded-b-none"
@@ -431,7 +442,7 @@ function BestDaysContent({
           />
           <div className="relative flex items-start gap-2 px-4 py-3">
             <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
-            <p>{t('schoolHolidayWarning', { park: displayName })}</p>
+            <p>{t('schoolHolidayWarning', parkArgs(locale as Locale, displayName, articleDe))}</p>
           </div>
         </div>
       )}
