@@ -64,7 +64,10 @@ export function NowcastUpdateCountdown({
     return (
       <p
         ref={anchorRef}
-        className={cn('flex items-center gap-1 font-mono text-[11px] opacity-60', className)}
+        className={cn(
+          'flex items-center gap-1 font-mono text-[11px] opacity-60 [contain:paint]',
+          className
+        )}
         aria-live="polite"
       >
         <Loader2 className="h-3 w-3 animate-spin" aria-hidden="true" />
@@ -81,7 +84,16 @@ export function NowcastUpdateCountdown({
   return (
     <p
       ref={anchorRef}
-      className={cn('font-mono text-[11px] tabular-nums opacity-60', className)}
+      // `contain: paint` on the one element that repaints every second.
+      //
+      // This readout usually sits inside a card that carries `backdrop-blur`, and a backdrop
+      // filter has to re-read what is behind it whenever anything in its subtree paints. Without
+      // containment the mm:ss tick invalidated the whole card's backdrop sixty times a minute;
+      // a dropped frame then showed the card unblurred for that frame — an occasional flash of
+      // transparency with seconds of calm between, which is exactly how it was reported.
+      // Containment promises the browser that nothing here paints outside this box, so the tick
+      // stops reaching the ancestor.
+      className={cn('font-mono text-[11px] tabular-nums opacity-60 [contain:paint]', className)}
       title={t('updateIn', { countdown: `${mm}:${ss}` })}
     >
       <span className="sm:hidden">{`${mm}:${ss}`}</span>
