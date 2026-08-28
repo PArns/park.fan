@@ -732,9 +732,9 @@
     },
     "calendarPage": {
       "breadcrumb": "Wartezeiten-Kalender",
-      "h1Suffix": "Wartezeiten-Kalender {month}",
-      "metaTitle": "{park} Wartezeiten-Kalender: {month}",
-      "metaTitleShort": "{park}: Kalender {month}",
+      "h1Suffix": "Wartezeiten im {month}",
+      "metaTitle": "{park} Wartezeiten im {month}",
+      "metaTitleShort": "{park}: {month}",
       "metaDescription": "Wann ist es im {park} in {city} leer? Andrang pro Tag, Öffnungszeiten, Ferien und Wetter für die nächsten Monate – mit KI-Prognose je Tag.",
       "metaDescriptionNoCity": "Wann ist es im {park} leer? Andrang pro Tag, Öffnungszeiten, Ferien und Wetter für die nächsten Monate – mit KI-Prognose.",
       "intro": "Für jeden Tag der nächsten Monate: erwarteter Andrang, Öffnungszeiten, Ferien und Feiertage, die auf {park} wirken. Tippe auf einen Tag für die Details.",
@@ -771,6 +771,15 @@
         "factSchoolVacation": "Schulferien",
         "factSchoolVacationValue": "{days, plural, =1 {# Tag} other {# Tage}}",
         "factQuietest": "Ruhigste Tage:"
+      },
+      "dataset": {
+        "name": "Andrang und Wartezeiten im {park}, {month}",
+        "description": "Erwarteter Andrang für jeden Tag im {month} im {park}: Öffnungszeiten, Feiertage und Schulferien, Wettervorhersage und die erwartete Wartezeit an den großen Bahnen. Aus gemessenen Wartezeiten abgeleitet.",
+        "varCrowd": "Erwarteter Andrang je Tag",
+        "varWait": "Erwartete Wartezeit an den großen Bahnen",
+        "varHours": "Öffnungszeiten",
+        "varHolidays": "Feiertage und Schulferien",
+        "varWeather": "Wettervorhersage"
       }
     }
   },

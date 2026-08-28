@@ -732,9 +732,9 @@
     },
     "calendarPage": {
       "breadcrumb": "Calendario tempi di attesa",
-      "h1Suffix": "Calendario attese {month}",
-      "metaTitle": "{park} Calendario Attese: {month}",
-      "metaTitleShort": "{park}: Calendario {month}",
+      "h1Suffix": "Tempi di attesa a {month}",
+      "metaTitle": "{park}: tempi di attesa a {month}",
+      "metaTitleShort": "{park}: {month}",
       "metaDescription": "Quando è tranquillo {park} a {city}? Affluenza giorno per giorno, orari, vacanze scolastiche e meteo per i prossimi mesi, con previsione IA quotidiana.",
       "metaDescriptionNoCity": "Quando {park} è tranquillo? Affluenza prevista per giorno, orari, vacanze scolastiche e meteo per i prossimi mesi.",
       "intro": "Per ogni giorno dei prossimi mesi: affluenza prevista, orari e le vacanze scolastiche e le festività che pesano su {park}. Tocca un giorno per il dettaglio.",
@@ -771,6 +771,15 @@
         "factSchoolVacation": "Vacanze scolastiche",
         "factSchoolVacationValue": "{days, plural, =1 {# giorno} other {# giorni}}",
         "factQuietest": "Giorni più tranquilli:"
+      },
+      "dataset": {
+        "name": "Affluenza e tempi di attesa a {park}, {month}",
+        "description": "Affluenza prevista per ogni giorno di {month} a {park}: orari, festività e vacanze scolastiche, previsioni meteo e l’attesa prevista sulle attrazioni principali. Ricavato da tempi di attesa misurati.",
+        "varCrowd": "Affluenza prevista per giorno",
+        "varWait": "Attesa prevista sulle attrazioni principali",
+        "varHours": "Orari di apertura",
+        "varHolidays": "Festività e vacanze scolastiche",
+        "varWeather": "Previsioni meteo"
       }
     }
   },

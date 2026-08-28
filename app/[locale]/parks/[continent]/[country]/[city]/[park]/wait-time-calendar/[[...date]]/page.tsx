@@ -39,6 +39,7 @@ import { getOgImageUrl } from '@/lib/utils/og-image';
 
 import {
   BreadcrumbStructuredData,
+  ParkCalendarDatasetStructuredData,
   ParkSubPageStructuredData,
 } from '@/components/seo/structured-data';
 import { ParkBestDaysSection } from '@/components/parks/park-best-days-section';
@@ -231,6 +232,7 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   }
 
   const t = await getTranslations('parks.calendarPage');
+  const tDataset = await getTranslations('parks.calendarPage.dataset');
   const tGeo = await getTranslations('geo');
 
   // The same three redirects the park page runs, for the same reason: this URL is reachable
@@ -339,6 +341,27 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
           <>
             {/* What this page is about, pointing at the park's own `AmusementPark` node rather
               than restating it. Without this the calendar pages declared no subject at all. */}
+            {/* The page is a table of one row per day, which is what `Dataset` is for. The month
+              it covers is `summaryMonth` — on the hub that is the current one, which is what its
+              grid opens on, so the coverage matches what a visitor actually sees. */}
+            <ParkCalendarDatasetStructuredData
+              url={`${SITE_URL}/${locale}${parkCalendarPath(locale, continent, country, city, parkSlug, month ?? undefined)}`}
+              parkUrl={`${SITE_URL}/${locale}${parkPath}`}
+              name={tDataset('name', { park: parkName, month: monthLabel(locale, summaryMonth) })}
+              description={tDataset('description', {
+                park: parkName,
+                month: monthLabel(locale, summaryMonth),
+              })}
+              temporalCoverage={monthTemporalCoverage(summaryMonth)}
+              variableMeasured={[
+                tDataset('varCrowd'),
+                tDataset('varWait'),
+                tDataset('varHours'),
+                tDataset('varHolidays'),
+                tDataset('varWeather'),
+              ]}
+              locale={locale}
+            />
             <ParkSubPageStructuredData
               url={`${SITE_URL}/${locale}${parkCalendarPath(locale, continent, country, city, parkSlug, month ?? undefined)}`}
               parkUrl={`${SITE_URL}/${locale}${parkPath}`}
@@ -588,4 +611,17 @@ async function SeededMonthSummary({
       monthLabel={monthLabel}
     />
   );
+}
+
+/**
+ * ISO-8601 interval for one month, e.g. `2026-11-01/2026-11-30`, for `Dataset.temporalCoverage`.
+ *
+ * `Date.UTC(year, month, 0)` is the last day of `month` — the zeroth day of the NEXT one — which
+ * gets February and a leap year right without a table. UTC throughout so a server in a zone with
+ * a midnight DST jump cannot land the interval a day short.
+ */
+function monthTemporalCoverage({ year, month }: ParkCalendarMonth): string {
+  const pad = (n: number) => String(n).padStart(2, '0');
+  const lastDay = new Date(Date.UTC(year, month, 0)).getUTCDate();
+  return `${year}-${pad(month)}-01/${year}-${pad(month)}-${pad(lastDay)}`;
 }

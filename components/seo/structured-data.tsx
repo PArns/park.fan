@@ -22,6 +22,7 @@ import {
 } from '@/lib/utils/park-assets';
 
 import { stripNewPrefix } from '@/lib/utils';
+import { RSL_LICENSE_PATH } from '@/lib/agents/licensing';
 import { buildOpeningHoursSpecification } from '@/lib/utils/opening-hours-schema';
 import { buildWaitTimeObservations } from '@/lib/utils/wait-time-observations';
 import { SITE_URL } from '@/i18n/config';
@@ -691,6 +692,73 @@ export function ParkSubPageStructuredData({
         name,
         ...(locale && { inLanguage: locale, isPartOf: { '@id': websiteId(locale) } }),
         about: { '@id': parkUrl },
+      }}
+    />
+  );
+}
+
+/**
+ * `Dataset` for a park's crowd calendar — the hub's current month, or one month page.
+ *
+ * The calendar page is not prose about a park; it is a table of one row per day, and `Dataset` is
+ * what schema.org has for that. wartezeiten.app marks its own calendar pages the same way, which
+ * is what prompted this, but the shape here is deliberately narrower than theirs in three places
+ * because a `Dataset` makes claims a page has to be able to honour.
+ *
+ * **`variableMeasured` lists what the grid actually draws** and nothing else. It is passed in by
+ * the caller, already translated, rather than assembled from a fixed English list — the node
+ * carries `inLanguage`, so its human-readable strings have to be in that language too.
+ *
+ * **No `distribution`.** That property means „here is the file", and there is no download. Naming
+ * one would send Dataset Search at a URL that does not exist.
+ *
+ * **No `dateModified`.** A crowd forecast shifts a little every morning on all 212 parks at once,
+ * so a modification date here would be one identical value across the whole catalogue — exactly
+ * the signal docs/seo/sitemaps.md keeps out of `<lastmod>`, for the same reason.
+ *
+ * `spatialCoverage` and `creator` are references, not copies: the park's `AmusementPark` node and
+ * the site `Organization` already exist under those ids, and restating either on 24,000 URLs is
+ * one entity described 24,000 times, free to drift the moment one is edited.
+ */
+export function ParkCalendarDatasetStructuredData({
+  url,
+  parkUrl,
+  name,
+  description,
+  temporalCoverage,
+  variableMeasured,
+  locale,
+}: {
+  url: string;
+  /** The park page's URL, which is the `@id` of its `AmusementPark` node. */
+  parkUrl: string;
+  name: string;
+  description: string;
+  /** ISO-8601 interval for the month this page shows, e.g. `2026-11-01/2026-11-30`. */
+  temporalCoverage: string;
+  /** Localized names of the per-day values the grid renders. */
+  variableMeasured: string[];
+  locale?: string;
+}) {
+  return (
+    <JsonLd
+      data={{
+        '@context': 'https://schema.org',
+        '@type': 'Dataset',
+        '@id': `${url}#dataset`,
+        url,
+        name,
+        description,
+        temporalCoverage,
+        spatialCoverage: { '@id': parkUrl },
+        creator: { '@id': ORGANIZATION_ID },
+        license: `${SITE_URL}${RSL_LICENSE_PATH}`,
+        isAccessibleForFree: true,
+        ...(locale && { inLanguage: locale }),
+        variableMeasured: variableMeasured.map((v) => ({
+          '@type': 'PropertyValue' as const,
+          name: v,
+        })),
       }}
     />
   );

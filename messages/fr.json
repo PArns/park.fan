@@ -732,9 +732,9 @@
     },
     "calendarPage": {
       "breadcrumb": "Calendrier des temps d’attente",
-      "h1Suffix": "Calendrier d’affluence {month}",
-      "metaTitle": "{park} Calendrier d’Affluence : {month}",
-      "metaTitleShort": "{park} : Calendrier {month}",
+      "h1Suffix": "Temps d’attente en {month}",
+      "metaTitle": "{park} : temps d’attente en {month}",
+      "metaTitleShort": "{park} : {month}",
       "metaDescription": "Quand {park} à {city} est-il calme ? Affluence jour par jour, horaires, vacances scolaires et météo pour les mois à venir, avec prévision IA.",
       "metaDescriptionNoCity": "Quand {park} est-il calme ? Affluence attendue par jour, horaires, vacances scolaires et météo pour les mois à venir.",
       "intro": "Pour chaque jour des prochains mois : affluence attendue, horaires et les vacances scolaires et les jours fériés qui pèsent sur {park}. Touche un jour pour le détail.",
@@ -771,6 +771,15 @@
         "factSchoolVacation": "Vacances scolaires",
         "factSchoolVacationValue": "{days, plural, =1 {# jour} other {# jours}}",
         "factQuietest": "Jours les plus calmes :"
+      },
+      "dataset": {
+        "name": "Affluence et temps d’attente à {park}, {month}",
+        "description": "Affluence attendue pour chaque jour de {month} à {park} : horaires, jours fériés et vacances scolaires, prévisions météo et temps d’attente attendu sur les grandes attractions. Calculé à partir de temps d’attente mesurés.",
+        "varCrowd": "Affluence attendue par jour",
+        "varWait": "Temps d’attente attendu sur les grandes attractions",
+        "varHours": "Horaires d’ouverture",
+        "varHolidays": "Jours fériés et vacances scolaires",
+        "varWeather": "Prévisions météo"
       }
     }
   },

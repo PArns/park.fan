@@ -19,14 +19,21 @@ import type { Locale } from '@/i18n/config';
  * `[attraction]`. No ride in the catalogue is, and these six words are not ride names in any
  * language; it is written down here because the next person to add a park sub-page needs the rule.
  *
- * The page is called the WAIT-TIME calendar everywhere — URL, tile, H1, breadcrumb and meta
- * title. It went out as „Andrangskalender" first, on the reasoning that a crowd level per day is
- * what the grid actually draws; the trouble is that nobody arrives searching for it. A visitor
- * comes from a wait-time page with a wait-time question, and the calendar answers it a day at a
- * time — so the name is the one they came with, and the crowd level is what it is measured in.
+ * The page is called the WAIT-TIME calendar in URL, tile and breadcrumb. It went out as
+ * „Andrangskalender" first, on the reasoning that a crowd level per day is what the grid actually
+ * draws; the trouble is that nobody arrives searching for it. A visitor comes from a wait-time
+ * page with a wait-time question, and the calendar answers it a day at a time — so the name is
+ * the one they came with, and the crowd level is what it is measured in.
  *
- * One name in one place: a URL, a tile and a heading that say three things are three things to
+ * One name in one place: a URL, a tile and a breadcrumb that say three things are three things to
  * remember and three chances to say the wrong one.
+ *
+ * The TITLE and H1 are the exception, and deliberately so: they name the month instead
+ * („Phantasialand Wartezeiten im August 2026"). „Wartezeiten-Kalender" is this site's own coinage
+ * and close to nobody's search; „Wartezeiten im August" is what a person types. The hub is
+ * canonical for the current month anyway — `/2026/8` points at it in August — so it IS that
+ * month's page and reads like one, which also makes it structurally identical to the twelve under
+ * it rather than a differently-worded parent.
  */
 export const PARK_CALENDAR_SEGMENTS: Record<Locale, string> = {
   en: 'wait-time-calendar',

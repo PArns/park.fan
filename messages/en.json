@@ -732,9 +732,9 @@
     },
     "calendarPage": {
       "breadcrumb": "Wait-Time Calendar",
-      "h1Suffix": "Wait-time calendar {month}",
-      "metaTitle": "{park} Wait-Time Calendar: {month}",
-      "metaTitleShort": "{park}: Calendar {month}",
+      "h1Suffix": "Wait times in {month}",
+      "metaTitle": "{park} Wait Times in {month}",
+      "metaTitleShort": "{park}: {month}",
       "metaDescription": "When is {park} in {city} quiet? Day-by-day crowds, opening hours, school holidays and weather for the months ahead, with an AI forecast per day.",
       "metaDescriptionNoCity": "When is {park} quiet? Expected crowds per day, opening hours, school holidays and weather for the months ahead.",
       "intro": "For every day of the months ahead: expected crowds, opening hours, and the school and public holidays that affect {park}. Tap a day for the details.",
@@ -771,6 +771,15 @@
         "factSchoolVacation": "School holidays",
         "factSchoolVacationValue": "{days, plural, =1 {# day} other {# days}}",
         "factQuietest": "Quietest days:"
+      },
+      "dataset": {
+        "name": "Crowd levels and wait times at {park}, {month}",
+        "description": "Expected crowd level for every day of {month} at {park}: opening hours, public and school holidays, weather forecast and the expected wait at the headline rides. Derived from measured wait times.",
+        "varCrowd": "Expected crowd level per day",
+        "varWait": "Expected wait at the headline rides",
+        "varHours": "Opening hours",
+        "varHolidays": "Public and school holidays",
+        "varWeather": "Weather forecast"
       }
     }
   },

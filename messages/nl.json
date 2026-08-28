@@ -732,9 +732,9 @@
     },
     "calendarPage": {
       "breadcrumb": "Wachttijden-kalender",
-      "h1Suffix": "Wachttijden-kalender {month}",
-      "metaTitle": "{park} Wachttijden-Kalender: {month}",
-      "metaTitleShort": "{park}: Kalender {month}",
+      "h1Suffix": "Wachttijden in {month}",
+      "metaTitle": "{park} wachttijden in {month}",
+      "metaTitleShort": "{park}: {month}",
       "metaDescription": "Wanneer is het rustig in {park} in {city}? Drukte per dag, openingstijden, schoolvakanties en weer voor de komende maanden, met AI-voorspelling per dag.",
       "metaDescriptionNoCity": "Wanneer is het rustig in {park}? Verwachte drukte per dag, openingstijden, schoolvakanties en weer voor de komende maanden.",
       "intro": "Voor elke dag van de komende maanden: verwachte drukte, openingstijden en de schoolvakanties en feestdagen die van invloed zijn op {park}. Tik op een dag voor de details.",
@@ -771,6 +771,15 @@
         "factSchoolVacation": "Schoolvakanties",
         "factSchoolVacationValue": "{days, plural, =1 {# dag} other {# dagen}}",
         "factQuietest": "Rustigste dagen:"
+      },
+      "dataset": {
+        "name": "Drukte en wachttijden in {park}, {month}",
+        "description": "Verwachte drukte voor elke dag in {month} in {park}: openingstijden, feestdagen en schoolvakanties, weersverwachting en de verwachte wachttijd bij de grote attracties. Afgeleid van gemeten wachttijden.",
+        "varCrowd": "Verwachte drukte per dag",
+        "varWait": "Verwachte wachttijd bij de grote attracties",
+        "varHours": "Openingstijden",
+        "varHolidays": "Feestdagen en schoolvakanties",
+        "varWeather": "Weersverwachting"
       }
     }
   },
