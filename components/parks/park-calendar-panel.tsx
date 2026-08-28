@@ -113,6 +113,60 @@ export function ParkCalendarPanel({
       new Date(Date.UTC(m.year, m.month - 1, 1))
     );
 
+  /* The month stepper, rendered in the heading band rather than beside the grid.
+
+    It stays in THIS component wherever it sits, and that is what keeps the archive crawlable:
+    the grid is a `ssr: false` dynamic import — it formats every cell against the browser clock —
+    so anything inside it is absent from the served HTML. With the links down there a crawler
+    arriving at one month found no way to any other, and the archive existed only for whoever
+    guessed the URLs. This is an ordinary Client Component, so it renders on the server and the
+    two links are in the first byte.
+
+    `prevMonth`/`nextMonth` are `null` where the window the route serves runs out, and the stepper
+    stops rather than pointing at a 404. */
+  const monthStepper = (
+    <>
+        {!isCurrentMonth && (
+          <Button variant="outline" size="sm" className="h-9" asChild>
+            <Link
+              href={parkCalendarPath(locale, continent, country, city, parkSlug)}
+              aria-label={t('currentMonthAria')}
+              scroll={false}
+              onClick={() =>
+                suppressScrollToTopFor(
+                  getPathname({
+                    href: parkCalendarPath(locale, continent, country, city, parkSlug),
+                    locale,
+                  })
+                )
+              }
+            >
+              <MonthStepIcon>
+                <CalendarCheck className="h-4 w-4" />
+              </MonthStepIcon>
+              {t('currentMonth')}
+            </Link>
+          </Button>
+        )}
+        <MonthStep href={href(prevMonth)} label={t('previousMonth')}>
+          <ChevronLeft className="h-4 w-4" />
+        </MonthStep>
+        {/* Centred and fixed-width so the two arrows do not move when the month name changes
+          length — „Mai 2026" against „September 2026" is 60 px of travel otherwise.
+
+          `month ?? currentMonth`, because the hub names no month in its URL and used to render an
+          empty box between the two arrows. It opens on today's month, so that is the month to
+          write — and `currentMonth` is resolved on the server in the PARK's timezone precisely so
+          both sides of the hydration boundary agree about which one that is. */}
+        <div className="min-w-[140px] text-center font-semibold">
+          {label(month ?? currentMonth)}
+        </div>
+        <MonthStep href={href(nextMonth)} label={t('nextMonth')}>
+          <ChevronRight className="h-4 w-4" />
+        </MonthStep>
+    </>
+  );
+
   return (
     <section className={cn(className)}>
       {/* `rounded-b-none`: this is the one band with something glued to its underside — the card
@@ -121,24 +175,16 @@ export function ParkCalendarPanel({
       <ChapterHeading
         icon={CalendarDays}
         title={t('gridTitle')}
+        hint={t('gridSubline', { month: label(month ?? currentMonth), park: park.name })}
+        action={monthStepper}
         frosted
         className="mb-0 rounded-b-none"
       />
 
-      {/* Heading, month stepper and grid are ONE box. The card takes `rounded-t-none border-t-0`
-        so the band's own `rounded-t-xl` and its `border-b` become this box's lid and its first
-        rule — the band used to end over open air with a strip of park photo between it and the
-        grid's separate card.
-
-        The stepper sits here rather than inside `ParkCalendarGrid`, and that is the whole reason
-        the months are crawlable: the grid is a `ssr: false` dynamic import — it formats every cell
-        against the browser clock — so anything inside it is absent from the served HTML. With the
-        links in there, a crawler arriving at one month found no way to any other and the archive
-        existed only for whoever guessed the URLs. This component is an ordinary Client Component,
-        so it renders on the server like any other and the two links are in the first byte.
-
-        `prevMonth`/`nextMonth` are `null` where the window the route serves runs out, and the
-        stepper stops rather than pointing at a 404. */}
+      {/* Heading, stepper and grid are ONE box. The card takes `rounded-t-none border-t-0` so the
+        band's own `rounded-t-xl` and its `border-b` become this box's lid and its first rule — the
+        band used to end over open air with a strip of park photo between it and the grid's
+        separate card. See `monthStepper` above for why the links are not inside the grid. */}
       <div
         className={cn(
           // `TILE_GLASS`, the same recipe „Historische Wartezeit-Statistiken" and „Beste
@@ -150,59 +196,12 @@ export function ParkCalendarPanel({
           'border-border/50 relative flex flex-col gap-4 rounded-b-xl border border-t-0 p-4 md:p-6'
         )}
       >
-        {/* Control row: what the colours mean on the left, where you are in the year on the right.
-          The legend was inside the `ssr: false` grid and is server-rendered here — it needs no
+        {/* The colour key, on its own line above the grid. The month stepper used to share it
+          and has moved up into the heading band: the month is the page's subject, and ranking it
+          after a legend put the one control everybody reaches for at the end of a row. The legend
+          was inside the `ssr: false` grid before that and is server-rendered here — it needs no
           data, and down there it made the grid's two loading states differ by its own height. */}
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-          <ParkCalendarLegend className="mr-auto" />
-
-          {/* The three month controls are ONE group, not three siblings of the legend.
-            „Heute" carried `mr-auto` of its own next to the legend's, and two auto margins in one
-            flex row each push everything after them: the legend went left, the button went to the
-            middle of the gap, and the stepper it belongs to stayed on the right. Grouped, the row
-            has exactly one flexible gap — and when it wraps on a narrow card the four controls
-            wrap together instead of the button landing on a line by itself. */}
-          <div className="flex items-center gap-2">
-            {/* „Heute" only once it would do something. Twelve months in each direction is a long
-              way to walk back one arrow at a time, and the browser's back button is not the same
-              offer — somebody who stepped forward six months would have to press it six times.
-              Hidden on the current month rather than disabled, because a stepper whose third
-              control is permanently greyed out on the page most visitors land on reads as broken. */}
-            {!isCurrentMonth && (
-              <Button variant="outline" size="sm" className="h-9" asChild>
-                <Link
-                  href={parkCalendarPath(locale, continent, country, city, parkSlug)}
-                  aria-label={t('currentMonthAria')}
-                  scroll={false}
-                  onClick={() =>
-                    suppressScrollToTopFor(
-                      getPathname({
-                        href: parkCalendarPath(locale, continent, country, city, parkSlug),
-                        locale,
-                      })
-                    )
-                  }
-                >
-                  <MonthStepIcon>
-                    <CalendarCheck className="h-4 w-4" />
-                  </MonthStepIcon>
-                  {t('currentMonth')}
-                </Link>
-              </Button>
-            )}
-            <MonthStep href={href(prevMonth)} label={t('previousMonth')}>
-              <ChevronLeft className="h-4 w-4" />
-            </MonthStep>
-            {/* Centred and fixed-width so the two arrows do not move when the month name changes
-              length — „Mai 2026" against „September 2026" is 60 px of travel otherwise. */}
-            <div className="min-w-[140px] text-center font-semibold">
-              {month ? label(month) : null}
-            </div>
-            <MonthStep href={href(nextMonth)} label={t('nextMonth')}>
-              <ChevronRight className="h-4 w-4" />
-            </MonthStep>
-          </div>
-        </div>
+        <ParkCalendarLegend />
 
         {/* The wrapper exists to carry the reservation, and it carries it as three custom
           properties rather than three classes because Tailwind cannot see a class name that was
