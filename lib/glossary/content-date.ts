@@ -23,5 +23,21 @@
  *
  * Update it when terms are added, removed or rewritten. A stale date here is worse than none:
  * it tells a crawler not to come back for content that did change.
+ *
+ * It went stale exactly that way once, and silently: it read `2026-03-17` while the glossary grew
+ * from 133 terms to 267, so `pnpm check:glossary-content-date` now recomputes
+ * `GLOSSARY_CONTENT_HASH` from the parsed term data and fails when the two disagree. Bump both
+ * together, and use the date the content changed rather than the date you noticed.
  */
-export const GLOSSARY_CONTENT_DATE = '2026-03-17';
+export const GLOSSARY_CONTENT_DATE = '2026-08-23';
+
+/**
+ * SHA-256 (16 hex chars) over the glossary's reader-visible content: term ids, categories, player
+ * elements, all six locales' slugs, and every name, definition, related id and alias.
+ *
+ * It hashes *values*, not their spelling — the 2026-08-18 pass that rewrote `"…"` to `'…'` across
+ * all six locale files does not move it, while the Spanish slug rename on 2026-08-23 (which changed
+ * a URL) does. Recomputed and checked by `scripts/check-glossary-content-date.mjs`, which prints the
+ * replacement value when it fails.
+ */
+export const GLOSSARY_CONTENT_HASH = '098f64d6656b86e1';
