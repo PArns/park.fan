@@ -42,8 +42,11 @@ interface ParkPageShellProps {
   currentPage: string;
   /** Server "now" the FAQ's date-dependent answers were derived with. */
   seedNowMs: number;
-  faqGlossaryTerms: GlossaryInjectTerm[];
-  glossarySegment: string;
+  /** Glossary terms to link inside the FAQ answers. Only read when `tail` is `'full'`; a lean
+   *  page renders no FAQ and must not pay for the lookup, which walks 267 terms over the whole
+   *  FAQ corpus on every request. */
+  faqGlossaryTerms?: GlossaryInjectTerm[];
+  glossarySegment?: string;
   /** The title card's contents — the H1 and whatever belongs beside and under it. Every page of
    *  a park has a different one; the card around it is the same. */
   header: React.ReactNode;
@@ -65,6 +68,30 @@ interface ParkPageShellProps {
    * today's wait times and the statistics are a footnote, so they stay where they are.
    */
   statsAfterChildren?: boolean;
+  /**
+   * How much of the park's shared tail this page carries.
+   *
+   * `'full'` is every chapter and is what the park page wants. `'lean'` drops the FAQ and the
+   * list of articles, and the calendar pages take it.
+   *
+   * The reasoning below — that shared furniture is not a duplicate-content problem because each
+   * page owns its main content, title, H1 and canonical — was written when the calendar was ONE
+   * extra URL per park. It is now the hub plus eighteen months, so the same tail lands on
+   * roughly a hundred URLs per park per locale instead of two, and it stopped being a rounding
+   * error: measured on a month page, the FAQ and the blog list are 454 of 1,184 words, while the
+   * page's own summary and grid heading are 77. A crawler comparing two months found 64 % of the
+   * text identical.
+   *
+   * What is dropped is what belongs to the PARK rather than to the month: its FAQ answers the
+   * same seven questions on every URL it appears on, and its articles are the same list. What
+   * stays is what gives a month page its place — the neighbours, the season card (which a
+   * calendar has more use for than the park page does), the address, and the statistics, whose
+   * whole reason for sitting directly under the grid is written above.
+   *
+   * The FAQ's `FAQPage` JSON-LD was already park-page-only for exactly this reason. This extends
+   * the same judgement to the visible copy of it.
+   */
+  tail?: 'full' | 'lean';
 }
 
 /**
@@ -83,11 +110,15 @@ interface ParkPageShellProps {
  * triggers. Both therefore arrive through `children`, and `ParkHeaderCard` is what keeps them the
  * same card.
  *
- * The tail is shared FURNITURE, which is why repeating it across a park's URLs is not the
+ * The tail is shared FURNITURE, and repeating most of it across a park's URLs is not the
  * duplicate-content problem it looks like: what separates two pages for a crawler is their unique
  * main content, their title, their H1 and their canonical, and each page of a park owns all four.
  * The one thing that must not be repeated is structured data — the `FAQPage` JSON-LD stays on the
  * park page alone, and the shell emits none of its own.
+ *
+ * „Most of it" is doing work in that sentence, and the `tail` prop is where the line falls. The
+ * argument holds at two URLs per park and stops holding at a hundred; see that prop for the
+ * measurement that moved it.
  */
 export async function ParkPageShell({
   park,
@@ -109,6 +140,7 @@ export async function ParkPageShell({
   pagePath,
   children,
   statsAfterChildren = false,
+  tail = 'full',
 }: ParkPageShellProps) {
   const tGeo = await getTranslations('geo');
   const parkName = stripNewPrefix(park.name);
@@ -188,13 +220,15 @@ export async function ParkPageShell({
             holds — so the boundary deferred nothing and bought no TTFB. What it did cost was a
             `fallback={null}` hole: on mobile this section is ~470px that appeared out of nowhere
             when the boundary resolved, shoving everything under it down the page. */}
-          <ParkBlogPostsSection
-            locale={locale as Locale}
-            parkSlug={parkSlug}
-            geoPath={`${continent}/${country}/${city}`}
-            parkName={parkName}
-            className="mt-8"
-          />
+          {tail === 'full' && (
+            <ParkBlogPostsSection
+              locale={locale as Locale}
+              parkSlug={parkSlug}
+              geoPath={`${continent}/${country}/${city}`}
+              parkName={parkName}
+              className="mt-8"
+            />
+          )}
 
           {statsAfterChildren ? null : stats}
 
@@ -219,19 +253,23 @@ export async function ParkPageShell({
             critical path); it streams in from the client calendar fetch after mount. The Q7 signal
             for SEO lives in the FAQPage JSON-LD, which the PARK page emits and no other page of
             the park does. */}
-          <Separator className="my-8" />
-          <ParkFAQSection
-            park={park}
-            locale={locale}
-            continent={continent}
-            country={country}
-            city={city}
-            parkSlug={parkSlug}
-            glossaryTerms={faqGlossaryTerms}
-            glossarySegment={glossarySegment}
-            initialCalendar={null}
-            seedNowMs={seedNowMs}
-          />
+          {tail === 'full' && (
+            <>
+              <Separator className="my-8" />
+              <ParkFAQSection
+                park={park}
+                locale={locale}
+                continent={continent}
+                country={country}
+                city={city}
+                parkSlug={parkSlug}
+                glossaryTerms={faqGlossaryTerms ?? []}
+                glossarySegment={glossarySegment ?? ''}
+                initialCalendar={null}
+                seedNowMs={seedNowMs}
+              />
+            </>
+          )}
 
           <Separator className="my-8" />
           {/* The page being shared is the one being read, not the park's home page. */}

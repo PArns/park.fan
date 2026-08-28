@@ -6,7 +6,6 @@ import { notFound, permanentRedirect } from 'next/navigation';
 import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { RouteMessages } from '@/i18n/route-messages';
-import { getParkFaqGlossary } from '@/lib/faq/park-faq-terms';
 import { catchNonFatal } from '@/lib/api/client';
 import { getParkByGeoPath, getParkSeasons, leanParkForParkShell } from '@/lib/api/parks';
 import { getBestDaysCalendarSeed, getCalendarMonthSeed } from '@/lib/api/integrated-calendar';
@@ -311,12 +310,6 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   const prevMonth = isParkCalendarMonthInRange(back, nowMonth) ? back : null;
   const nextMonth = isParkCalendarMonthInRange(forward, nowMonth) ? forward : null;
 
-  const { terms: faqGlossaryTerms, segment: glossarySegment } = await getParkFaqGlossary(
-    park,
-    locale,
-    seedNowMs
-  );
-
   return (
     <RouteMessages route="/parks/[continent]/[country]/[city]/[park]/wait-time-calendar/[[...date]]">
       <ParkPageShell
@@ -334,8 +327,10 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
         pagePath={parkCalendarPath(locale, continent, country, city, parkSlug, month ?? undefined)}
         seedNowMs={seedNowMs}
         statsAfterChildren
-        faqGlossaryTerms={faqGlossaryTerms}
-        glossarySegment={glossarySegment}
+        // The park's FAQ and its article list stay on the park page. They answer the same seven
+        // questions and name the same posts on every URL of the park, and this route alone has a
+        // hub plus eighteen months per locale — 454 of a month page's 1,184 words were that.
+        tail="lean"
         head={
           <>
             {/* What this page is about, pointing at the park's own `AmusementPark` node rather
