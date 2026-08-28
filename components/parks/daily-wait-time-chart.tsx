@@ -254,7 +254,7 @@ export function DailyWaitTimeChart({
                         {/* Pulsing ring */}
                         <span
                           className={cn(
-                            'absolute -inset-0.5 animate-ping rounded-full opacity-50 [animation-duration:2s]',
+                            'absolute -inset-0.5 animate-ping rounded-full opacity-50 [will-change:transform,opacity] [animation-duration:2s]',
                             bestRating === 'optimal' ? 'bg-emerald-400' : 'bg-emerald-700'
                           )}
                         />

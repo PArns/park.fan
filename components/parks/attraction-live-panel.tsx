@@ -135,7 +135,11 @@ export function AttractionLivePanel({
              when idle) so the 5-min poll never nudges the line. */
           <p className="text-muted-foreground flex items-center gap-1.5 text-xs">
             <Loader2
-              className={cn('h-3 w-3 animate-spin', !isRefreshing && 'invisible')}
+              // `animate-spin` only while it is actually visible. The element is always rendered
+              // so the 5-minute poll never nudges the line (see the note above), but `invisible`
+              // is `visibility: hidden` — the animation kept running, forever, on something
+              // nobody can see, inside a card that carries `backdrop-filter`.
+              className={cn('h-3 w-3', isRefreshing ? 'animate-spin' : 'invisible')}
               aria-hidden={!isRefreshing}
               aria-label={isRefreshing ? labels.updating : undefined}
             />

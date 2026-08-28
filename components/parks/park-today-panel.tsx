@@ -320,7 +320,9 @@ export function ParkTodayPanel({
           <span
             className={cn(
               'h-1.5 w-1.5 rounded-full',
-              isOpenish ? 'bg-status-operating animate-pulse' : 'bg-muted-foreground/40'
+              isOpenish
+                ? 'bg-status-operating animate-pulse [will-change:opacity]'
+                : 'bg-muted-foreground/40'
             )}
             aria-hidden="true"
           />

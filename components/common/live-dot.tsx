@@ -1,3 +1,17 @@
+/*
+ * Why these dots carry `will-change`.
+ *
+ * They animate forever inside a card that carries `backdrop-filter`, and a backdrop filter is
+ * re-read whenever its region is dirtied. A runtime audit over the park, calendar, ride and home
+ * pages found six such elements — every one of them a live-status dot or its ping ring — sitting
+ * inside 50 to 70 blurred elements per page. `opacity` and `transform` are the two properties a
+ * compositor can animate without the main thread painting at all, but only once the element has
+ * its own layer; `will-change` is what promises that. A 6 px dot costs nothing to promote.
+ *
+ * NOT `contain: paint`, which is the right tool one file over for the countdowns: containment
+ * clips to the box, and `animate-ping` scales a ring beyond its own bounds on purpose.
+ */
+
 import { cn } from '@/lib/utils';
 
 interface LiveDotProps {
@@ -37,7 +51,11 @@ export function LiveDot({
   className,
 }: LiveDotProps) {
   if (variant === 'pulse') {
-    return <span className={cn(size, 'animate-pulse rounded-full', color, className)} />;
+    return (
+      <span
+        className={cn(size, 'animate-pulse rounded-full [will-change:opacity]', color, className)}
+      />
+    );
   }
 
   return (
@@ -46,6 +64,7 @@ export function LiveDot({
         <span
           className={cn(
             'absolute inline-flex h-full w-full animate-ping rounded-full',
+            '[will-change:transform,opacity]',
             pingColor ?? color
           )}
           aria-hidden="true"
