@@ -252,6 +252,23 @@ same values fill in what the park page's `ThemePark` structured data could not
 state before: a street, a postcode, a telephone, and `sameAs` pointing at the
 park's own site and profiles.
 
+## Fastpass, quer über den ganzen Park
+
+Die drei Bahnspalten (`hasFastPass`, `fastPassName`, `fastPassPrice`) und die vier Parkspalten
+(Name, Währung, Ab-Preis, Glossarbegriff) erscheinen im generischen Editor wie jedes andere
+kuratierte Feld. Trotzdem gibt es dafür einen eigenen Tab auf der Parkseite, und der Grund ist die
+Vorlage, aus der abgeschrieben wird: Die Preisseite eines Parks listet zwölf Bahnen auf einmal.
+Bahn für Bahn zu öffnen heißt vierzig Seitenaufrufe für eine Entscheidung, und vierzig Speichern
+heißt vierzig Revalidierungen ans Frontend.
+
+Der Tab schickt deshalb einen Sammel-PATCH (`/api/admin/content/parks/:id/attractions`) mit nur den
+geänderten Zeilen. Jede Bahn bekommt darin ihre eigene Protokollzeile — rückgängig geht weiter
+einzeln —, gebündelt werden nur Cache-Leerung und Revalidierung.
+
+Zwei Dinge, die der Tab sagt und der generische Editor nicht sagen könnte: dass dem Park die
+Währung fehlt (ohne sie liefert die API keinen Preis über 0 aus), und was 0 bedeutet — kostenlos,
+nicht „kein Preis". Leer heißt unbekannt und bleibt leer, wo der Park tagesabhängig bepreist.
+
 ## Seasons
 
 `park_seasons` is a new table and the editor has two levels, because a season is

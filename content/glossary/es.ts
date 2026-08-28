@@ -2924,6 +2924,66 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['Brogent', 'i-Ride'],
     alternateNames: ['Brogent'],
   },
+  {
+    id: 'quick-pass',
+    name: 'QUICK Pass',
+    shortDefinition:
+      'El producto de paso rápido de pago de Phantasialand, que se compra por atracción.',
+    definition:
+      'El QUICK Pass es el acceso de pago que evita la cola en Phantasialand. A diferencia de la mayoría de los parques, no se vende por día sino por atracción — para Taron, Black Mamba, Chiapas, Talocan o Maus au Chocolat.\n\nDesde la temporada de invierno 2025/26 su precio es dinámico: se mueve con el tiempo de espera del momento, así que la misma atracción cuesta más una tarde concurrida que una mañana tranquila. Por eso park.fan no suele mostrar un precio fijo en una atracción con QUICK Pass.\n\nEl pase acorta la espera, no la elimina: la entrada QUICK Pass también tiene cola, solo que mucho más corta.',
+    relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time', 'fastpass'],
+    aliases: ['Quick Pass', 'QuickPass'],
+  },
+  {
+    id: 'virtual-line',
+    name: 'VirtualLine',
+    shortDefinition:
+      'La cola virtual gratuita de Europa-Park, que se reserva en la app del parque.',
+    definition:
+      'VirtualLine es el servicio de reserva gratuito de Europa-Park: en la app Europa-Park & Rulantica reservas una franja horaria para una atracción seleccionada y entras en ella durante esa franja por una cola reducida. Mientras tanto puedes disfrutar de otras atracciones, espectáculos o la comida.\n\nSe ofrece en blue fire Megacoaster, Euro-Mir, Pirates in Batavia, Poseidon, Voletarium, Voltron Nevera powered by Rimac y WODAN — Timburcoaster. El número de plazas al día es limitado.\n\nNo cuesta nada, y ahí está la diferencia con un pase rápido de pago: VirtualLine no vende prioridad, saca la espera de la cola.',
+    relatedTermIds: ['virtual-queue', 'return-time', 'boarding-group', 'wait-time'],
+    aliases: ['Virtual Line'],
+  },
+  {
+    id: 'fast-lane',
+    name: 'Fast Lane',
+    shortDefinition:
+      'El pase de pago para saltarse la cola, normalmente comprado para todo el día de visita.',
+    definition:
+      'Fast Lane es el nombre del producto para saltarse la cola en muchos parques de las familias Six Flags y Walibi, de Cedar Point a Walibi Holland. Se compra para la visita y no para una vuelta: una pulsera o una entrada digital abre todo el día la entrada Fast Lane de las atracciones incluidas.\n\nSuele haber varios niveles — en Walibi Holland, Gold (ilimitado, alrededor de un 90 % menos de espera), Silver, Bronze y shots sueltos para una o cuatro vueltas. Qué atracciones entran lo decide el parque; las casas de Halloween suelen quedar fuera.\n\nComo el precio cubre el día y no la atracción, park.fan muestra en esas atracciones un precio «desde».',
+    relatedTermIds: ['express-pass', 'quick-pass', 'wait-time', 'single-rider'],
+    aliases: ['Fastlane'],
+  },
+  {
+    id: 'speedy-pass',
+    name: 'Speedy Pass',
+    shortDefinition:
+      'La cola virtual de pago de Movie Park Germany.',
+    definition:
+      'El Speedy Pass es el producto para saltarse la cola de Movie Park Germany. Funciona como una cola virtual: reservas desde el móvil una vuelta en una de las atracciones incluidas y entras a la hora reservada por una entrada propia.\n\nExiste en varios niveles — desde el Speedy Pass One Ride para una sola atracción hasta Gold y Platinum, que cubren casi todo. Vale para más de 25 atracciones; algunas casas y atracciones especiales quedan excluidas.',
+    relatedTermIds: ['virtual-queue', 'express-pass', 'quick-pass', 'wait-time'],
+    aliases: ['Speedypass'],
+  },
+  {
+    id: 'fastrack',
+    name: 'Fastrack',
+    shortDefinition:
+      'La entrada de pago para saltarse la cola en los parques Merlin, como Alton Towers.',
+    definition:
+      'Fastrack es el nombre con el que los parques británicos de Merlin — Alton Towers, Thorpe Park, Chessington — venden su acceso al margen de la cola. Se vende suelto para una atracción o como paquete: Bronze para unas cuantas atracciones a elegir, Silver para una vuelta en cada atracción incluida, Gold para uso ilimitado.\n\nFastrack es siempre una entrada adicional: no incluye el acceso al parque.',
+    relatedTermIds: ['express-pass', 'quick-pass', 'wait-time'],
+    aliases: ['Fast Track', 'Fasttrack'],
+  },
+  {
+    id: 'premier-access',
+    name: 'Disney Premier Access',
+    shortDefinition:
+      'El acceso rápido de pago de Disney fuera de EE. UU., que se reserva por atracción.',
+    definition:
+      'Disney Premier Access es lo que en los parques estadounidenses se llama Lightning Lane: el acceso de pago que evita la cola, en Disneyland Paris y Tokyo Disney Resort.\n\nPremier Access One se compra por atracción, normalmente el mismo día a través de la app, y el precio depende de la fecha y de la atracción — bastante más alto en las novedades. Premier Access Ultimate cubre una vez cada atracción participante.\n\nComo el precio se fija cada día, park.fan no muestra un precio fijo en esas atracciones.',
+    relatedTermIds: ['lightning-lane', 'express-pass', 'virtual-queue', 'wait-time'],
+    aliases: ['Premier Access'],
+  },
 ];
 
 export default translations;

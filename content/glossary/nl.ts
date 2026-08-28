@@ -2883,6 +2883,66 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['Brogent', 'i-Ride'],
     alternateNames: ['Brogent'],
   },
+  {
+    id: 'quick-pass',
+    name: 'QUICK Pass',
+    shortDefinition:
+      'Het betaalde voorrangsproduct van Phantasialand, per attractie gekocht.',
+    definition:
+      'De QUICK Pass is de betaalde manier om in Phantasialand de wachtrij voorbij te gaan. Anders dan in de meeste parken wordt hij niet per dag verkocht maar per attractie — voor banen als Taron, Black Mamba, Chiapas, Talocan en Maus au Chocolat.\n\nSinds het winterseizoen 2025/26 is de prijs dynamisch: hij beweegt mee met de actuele wachttijd, dus dezelfde baan kost op een drukke middag meer dan op een rustige ochtend. Daarom staat er op park.fan bij een baan met QUICK Pass meestal geen vaste prijs.\n\nDe pas verkort de wachttijd, hij heft hem niet op — ook bij de QUICK Pass-ingang staat een rij, alleen een veel kortere.',
+    relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time', 'fastpass'],
+    aliases: ['Quick Pass', 'QuickPass'],
+  },
+  {
+    id: 'virtual-line',
+    name: 'VirtualLine',
+    shortDefinition:
+      'De gratis virtuele wachtrij van Europa-Park, te reserveren in de app van het park.',
+    definition:
+      'VirtualLine is de gratis reserveringsdienst van Europa-Park: in de Europa-Park & Rulantica-app boek je een tijdslot voor een geselecteerde attractie en ga je binnen dat slot via een verkorte ingang naar binnen. Tot die tijd geniet je van andere attracties, shows of het eten.\n\nDe dienst geldt voor blue fire Megacoaster, Euro-Mir, Piraten in Batavia, Poseidon, Voletarium, Voltron Nevera powered by Rimac en WODAN — Timburcoaster. Het aantal plaatsen per dag is beperkt.\n\nHij kost niets, en dat is het verschil met een fastpass: VirtualLine verkoopt geen voorrang, maar haalt het wachten uit de rij.',
+    relatedTermIds: ['virtual-queue', 'return-time', 'boarding-group', 'wait-time'],
+    aliases: ['Virtual Line'],
+  },
+  {
+    id: 'fast-lane',
+    name: 'Fast Lane',
+    shortDefinition:
+      'De betaalde voorrangspas, meestal voor een hele bezoekdag gekocht.',
+    definition:
+      'Fast Lane heet het voorrangsproduct in veel parken van de Six Flags- en Walibi-familie, van Cedar Point tot Walibi Holland. Je koopt hem voor het bezoek en niet voor één rit: een polsbandje of digitaal ticket opent de hele dag de Fast Lane-ingang van de betrokken attracties.\n\nMeestal zijn er meerdere niveaus — bij Walibi Holland Gold (onbeperkt, circa 90 % minder wachttijd), Silver, Bronze en losse shots voor één of vier ritten. Welke banen meedoen bepaalt het park; halloweenhuizen vallen er vaak buiten.\n\nOmdat de prijs voor de dag geldt en niet per baan, toont park.fan bij die banen een vanaf-prijs.',
+    relatedTermIds: ['express-pass', 'quick-pass', 'wait-time', 'single-rider'],
+    aliases: ['Fastlane'],
+  },
+  {
+    id: 'speedy-pass',
+    name: 'Speedy Pass',
+    shortDefinition:
+      'De betaalde virtuele wachtrij van Movie Park Germany.',
+    definition:
+      'De Speedy Pass is het voorrangsproduct van Movie Park Germany. Hij werkt als virtuele wachtrij: je reserveert met je telefoon een rit in een van de betrokken attracties en gaat op de gereserveerde tijd via een eigen ingang naar binnen.\n\nEr zijn meerdere niveaus — van Speedy Pass One Ride voor één attractie tot Gold en Platinum, die vrijwel alles dekken. Hij geldt voor meer dan 25 attracties; enkele huizen en speciale attracties zijn uitgesloten.',
+    relatedTermIds: ['virtual-queue', 'express-pass', 'quick-pass', 'wait-time'],
+    aliases: ['Speedypass'],
+  },
+  {
+    id: 'fastrack',
+    name: 'Fastrack',
+    shortDefinition:
+      'Het betaalde voorrangsticket in de Merlin-parken, zoals Alton Towers.',
+    definition:
+      'Fastrack is de naam waaronder de Britse Merlin-parken — Alton Towers, Thorpe Park, Chessington — hun toegang langs de wachtrij verkopen. Hij is er per rit of als pakket: Bronze voor een handvol gekozen banen, Silver voor één rit per betrokken attractie, Gold voor onbeperkt gebruik.\n\nFastrack is altijd een extra ticket: entree tot het park zit er niet bij.',
+    relatedTermIds: ['express-pass', 'quick-pass', 'wait-time'],
+    aliases: ['Fast Track', 'Fasttrack'],
+  },
+  {
+    id: 'premier-access',
+    name: 'Disney Premier Access',
+    shortDefinition:
+      'Disneys betaalde voorrang buiten de VS, per attractie te boeken.',
+    definition:
+      'Disney Premier Access is wat in de Amerikaanse parken Lightning Lane heet: betaalde toegang langs de wachtrij, in Disneyland Paris en Tokyo Disney Resort.\n\nPremier Access One koop je per attractie, meestal op de dag zelf via de app, en de prijs hangt af van de datum en de attractie — bij nieuwe attracties duidelijk hoger. Premier Access Ultimate dekt elke deelnemende attractie één keer.\n\nOmdat de prijs elke dag opnieuw wordt bepaald, staat er op park.fan bij die banen geen vaste prijs.',
+    relatedTermIds: ['lightning-lane', 'express-pass', 'virtual-queue', 'wait-time'],
+    aliases: ['Premier Access'],
+  },
 ];
 
 export default translations;

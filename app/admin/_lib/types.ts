@@ -23,7 +23,17 @@ export interface AdminIdentity {
 }
 
 export type CuratedFieldType =
-  'text' | 'longtext' | 'number' | 'decimal' | 'boolean' | 'enum' | 'months' | 'url';
+  | 'text'
+  | 'longtext'
+  | 'number'
+  | 'decimal'
+  | 'boolean'
+  | 'enum'
+  | 'months'
+  | 'url'
+  // A frontend glossary term id. Rendered as a text input — the editor's
+  // `default` case — and checked against the glossary when it is saved.
+  | 'glossaryTerm';
 
 /**
  * One curated field, as the backend describes it.
@@ -116,6 +126,14 @@ export interface AdminAttractionListItem {
   seasonMonths: number[] | null;
   seasonalityCurated: boolean;
   retiredAt: string | null;
+  /**
+   * The ride's own fast-pass columns, raw rather than resolved.
+   *
+   * `name` is the per-ride override and is normally null — the product's name
+   * lives on the park. The bulk editor writes these three, so it needs what is
+   * actually stored, not what the API would serve.
+   */
+  fastPass?: { has: boolean | null; name: string | null; price: number | null };
   hasRideProfile: boolean;
   curatedFieldCount: number;
   updatedAt: string;

@@ -4,6 +4,38 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – feat: Fastpass an der Bahn, im Glossar und im Admin
+
+Die API liefert pro Bahn ein kuratiertes `fastPass`-Objekt — `{ name, price, priceFrom, currency,
+termId }`. Auf der Bahnseite und auf der Ride-Karte steht dafür jetzt ein Badge in der Faktenzeile,
+zwischen den Größenbeschränkungen und dem, was die Bahn *ist*: ein Fastpass ist eine Aussage über
+den Besuch, keine über die Bahn.
+
+Der Text wird hier zusammengesetzt, nicht von der API übernommen. „12 €" und „€12" sind derselbe
+Preis in zwei Sprachen, und nur diese Seite weiß, in welcher gelesen wird — `Intl.NumberFormat` mit
+der Locale des Besuchers. Drei Fälle: `price` ist der Preis für genau diese Bahn („QuickPass: 12 €"),
+`priceFrom` der Einstiegspreis des Parkprodukts („Fast Lane: ab 25 €", der Normalfall, weil fast
+jeder Park einen Pass für den Besuch verkauft statt einen pro Bahn), und **`price === 0` heißt
+kostenlos** — Europa-Parks VirtualLine ist im Eintritt enthalten. `if (price)` würde das
+verschlucken; getestet wird auf `!= null`.
+
+**Ein fehlendes `fastPass` heißt nicht „diese Bahn hat keinen."** Es deckt zwei Zustände ab, die die
+API bewusst nicht trennt: niemand hat nachgesehen, oder jemand hat nachgesehen und der Park verkauft
+keinen. Das Badge erscheint, wenn das Objekt da ist, und sonst gar nichts — ein „kein Fastpass" wäre
+bei ~7000 Attraktionen meistens unsere eigene Buchführung als Aussage des Parks.
+
+Neu im Glossar sind sechs Markenbegriffe (`quick-pass`, `virtual-line`, `fast-lane`, `speedy-pass`,
+`fastrack`, `premier-access`), in allen sechs Sprachen. Der Name im Badge verlinkt dorthin, sobald
+der Park eine `termId` trägt — in der Ride-Karte als Tooltip, weil die Karte selbst schon ein Link
+ist.
+
+Im Admin bekommt die Parkseite einen eigenen Tab: eine Tabelle aller Bahnen mit Ja/Nein/— und
+Preisfeld, ein Speichern für den ganzen Park (`PATCH /parks/:id/attractions`). Der Grund ist die
+Vorlage: Die Preisseite eines Parks listet zwölf Bahnen auf einmal, und vierzig Einzelspeicherungen
+sind vierzig Revalidierungen für eine Entscheidung.
+
+---
+
 ## Unreleased – fix: die Kachelreihe bleibt beim Wechsel zwischen Parkseite und Kalender stehen
 
 Die sechs Einstiegskacheln stehen auf jeder Seite eines Parks, in derselben Reihenfolge und mit

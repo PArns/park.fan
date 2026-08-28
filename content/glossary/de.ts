@@ -2909,6 +2909,66 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['Brogent', 'i-Ride'],
     alternateNames: ['Brogent'],
   },
+  {
+    id: 'quick-pass',
+    name: 'QUICK Pass',
+    shortDefinition:
+      'Das kostenpflichtige Warteschlangen-Produkt im Phantasialand, das pro Attraktion gekauft wird.',
+    definition:
+      'Der QUICK Pass ist Phantasialands kostenpflichtiger Zugang an der Warteschlange vorbei. Anders als bei den meisten Parks wird er nicht für den ganzen Tag gekauft, sondern pro Attraktion — für Bahnen wie Taron, Black Mamba, Chiapas, Talocan oder Maus au Chocolat.\n\nSeit der Wintersaison 2025/26 ist der Preis dynamisch: Er bewegt sich mit der aktuellen Wartezeit, dieselbe Bahn kostet an einem vollen Nachmittag also mehr als an einem ruhigen Morgen. Deshalb steht auf park.fan an einer Bahn mit QUICK Pass in der Regel kein fester Preis.\n\nDer Pass verkürzt die Wartezeit, er hebt sie nicht auf — auch der QUICK-Pass-Eingang hat eine Schlange, nur eine deutlich kürzere.',
+    relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time', 'fastpass'],
+    aliases: ['Quick Pass', 'QuickPass', 'Quickpass'],
+  },
+  {
+    id: 'virtual-line',
+    name: 'VirtualLine',
+    shortDefinition:
+      'Die kostenlose virtuelle Warteschlange des Europa-Parks, reserviert in der Park-App.',
+    definition:
+      'VirtualLine ist der kostenlose Reservierungsdienst des Europa-Parks: In der Europa-Park & Rulantica App buchst du für eine ausgewählte Attraktion ein Zeitfenster und betrittst sie in diesem Fenster über einen verkürzten Eingang. Bis dahin kannst du andere Attraktionen, Shows oder das Essen genießen.\n\nAngeboten wird der Dienst für blue fire Megacoaster, Euro-Mir, Piraten in Batavia, Poseidon, Voletarium, Voltron Nevera powered by Rimac und WODAN — Timburcoaster. Die Zahl der Plätze pro Tag ist begrenzt.\n\nEr kostet nichts, und das ist der entscheidende Unterschied zu einem Fastpass: VirtualLine verkauft keinen Vorrang, sondern verlegt das Warten aus der Schlange heraus.',
+    relatedTermIds: ['virtual-queue', 'return-time', 'boarding-group', 'wait-time'],
+    aliases: ['Virtual Line', 'Virtualline'],
+  },
+  {
+    id: 'fast-lane',
+    name: 'Fast Lane',
+    shortDefinition:
+      'Der kostenpflichtige Pass an der Schlange vorbei, meist für den ganzen Besuchstag gekauft.',
+    definition:
+      'Fast Lane heißt das Warteschlangen-Produkt in vielen Parks der Six-Flags- und Walibi-Familie, von Cedar Point bis Walibi Holland. Gekauft wird es für den Besuch, nicht für eine einzelne Fahrt: Ein Armband oder ein digitales Ticket öffnet den ganzen Tag über den Fast-Lane-Eingang der einbezogenen Attraktionen.\n\nEs gibt meist mehrere Stufen — bei Walibi Holland etwa Gold (unbegrenzt, rund 90 % weniger Wartezeit), Silber, Bronze sowie Einzel-Shots für eine oder vier Fahrten. Welche Bahnen dazugehören, legt der Park fest; Halloween-Häuser sind häufig ausgenommen.\n\nWeil der Preis für den Tag gilt und nicht pro Bahn, steht auf park.fan an solchen Bahnen ein „ab"-Preis statt eines festen.',
+    relatedTermIds: ['express-pass', 'quick-pass', 'wait-time', 'single-rider'],
+    aliases: ['Fastlane'],
+  },
+  {
+    id: 'speedy-pass',
+    name: 'Speedy Pass',
+    shortDefinition:
+      'Der kostenpflichtige virtuelle Warteschlangendienst im Movie Park Germany.',
+    definition:
+      'Der Speedy Pass ist das Warteschlangen-Produkt des Movie Park Germany. Er funktioniert als virtuelle Warteschlange: Über das Smartphone reservierst du eine Fahrt an einer der einbezogenen Attraktionen und betrittst sie zur reservierten Zeit über einen eigenen Eingang.\n\nEs gibt ihn in mehreren Stufen — von Speedy Pass One Ride für eine einzelne Attraktion bis zu Gold und Platinum, die nahezu alle Attraktionen abdecken. Er gilt für über 25 Attraktionen; einzelne Häuser und Sonderattraktionen sind ausgenommen.',
+    relatedTermIds: ['virtual-queue', 'express-pass', 'quick-pass', 'wait-time'],
+    aliases: ['Speedypass'],
+  },
+  {
+    id: 'fastrack',
+    name: 'Fastrack',
+    shortDefinition:
+      'Das kostenpflichtige Vorbeigehen an der Schlange in den Merlin-Parks, etwa Alton Towers.',
+    definition:
+      'Fastrack ist der Name, unter dem die britischen Merlin-Parks — Alton Towers, Thorpe Park, Chessington — ihren Zugang an der Warteschlange vorbei verkaufen. Es gibt ihn einzeln für eine Bahn oder als Paket: Bronze für eine Auswahl von Bahnen, Silber für je eine Fahrt an allen einbezogenen Attraktionen, Gold für unbegrenzte Nutzung.\n\nFastrack ist immer ein Zusatzticket: Der Parkeintritt ist darin nicht enthalten.',
+    relatedTermIds: ['express-pass', 'quick-pass', 'wait-time'],
+    aliases: ['Fast Track', 'Fasttrack'],
+  },
+  {
+    id: 'premier-access',
+    name: 'Disney Premier Access',
+    shortDefinition:
+      'Disneys kostenpflichtiger Zugang an der Warteschlange vorbei außerhalb der USA, pro Attraktion buchbar.',
+    definition:
+      'Disney Premier Access ist das, was in den US-Parks Lightning Lane heißt: der kostenpflichtige Zugang an der Warteschlange vorbei, im Disneyland Paris und in Tokyo Disney Resort.\n\nPremier Access One wird pro Attraktion gekauft, in der Regel am Besuchstag über die App, und der Preis hängt vom Datum und von der Attraktion ab — bei neuen Attraktionen liegt er deutlich höher. Premier Access Ultimate deckt alle teilnehmenden Attraktionen je einmal ab.\n\nWeil der Preis täglich neu gesetzt wird, steht auf park.fan an diesen Bahnen kein fester Preis.',
+    relatedTermIds: ['lightning-lane', 'express-pass', 'virtual-queue', 'wait-time'],
+    aliases: ['Premier Access'],
+  },
 ];
 
 export default translations;
