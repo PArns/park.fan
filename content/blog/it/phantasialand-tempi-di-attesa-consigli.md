@@ -542,7 +542,7 @@ giornalieri online con data. Ancora tre cose:
 
 Nei giorni feriali (mar–gio) fuori dalle vacanze scolastiche della Renania
 Settentrionale-Vestfalia e, in generale, in bassa stagione. Ma non affidarti
-all'istinto: il [calendario delle affluenze per il Phantasialand](ref:phantasialand)
+all'istinto: il [calendario delle affluenze per il Phantasialand](ref:phantasialand?calendar)
 ti dice fino a 365 giorni in anticipo quando aspettarsi poca folla, verde vuol
 dire andare.
 

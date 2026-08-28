@@ -589,7 +589,7 @@ actuales están en la
 **Junio** es el mes más tranquilo según nuestros datos (típicamente 18 minutos),
 seguido de mayo y julio. Entre semana está algo más vacío que el fin de semana,
 pero la diferencia es pequeña (20 frente a 25 minutos el sábado). Evita abril,
-las vacaciones neerlandesas de mayo y otoño y la corta temporada de invierno.
+las vacaciones neerlandesas de mayo y otoño y la corta temporada de invierno. Día a día lo muestra el [calendario de tiempos de espera](ref:attractiepark-toverland?calendar).
 
 ### ¿Hace falta un pase rápido en Toverland?
 

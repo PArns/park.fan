@@ -891,8 +891,8 @@ venir.
 
 Le **dimanche** est le jour le plus calme de la semaine (18 minutes typiques
 contre 28 le samedi), mai et juin sont les mois d'été les plus tranquilles. C'est
-en saison HALLOWinter, début novembre, que c'est le plus vide. Dans notre
-prévision pour les trois prochains mois, les 19 jours de novembre sont tous
+en saison HALLOWinter, début novembre, que c'est le plus vide. [Dans notre
+prévision pour les trois prochains mois](ref:europa-park?calendar), les 19 jours de novembre sont tous
 classés « faible ».
 
 ### Y a-t-il un fast pass à l'Europa-Park ?

@@ -576,7 +576,7 @@ trovano sulla [pagina del parco Toverland](ref:attractiepark-toverland).
 minuti), seguito da maggio e luglio. Nei giorni feriali è un po' più vuoto che
 nel fine settimana, ma la differenza è piccola (20 contro 25 minuti il sabato).
 Evita aprile, le vacanze olandesi di maggio e d'autunno e la breve stagione
-invernale.
+invernale. Giorno per giorno lo mostra il [calendario dei tempi di attesa](ref:attractiepark-toverland?calendar).
 
 ### Serve un pass salta-fila a Toverland?
 

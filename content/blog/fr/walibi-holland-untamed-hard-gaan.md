@@ -887,7 +887,7 @@ la plus élevée du parc. Les chiffres actuels sont sur la
 Mai et juillet sont dans nos données les mois les plus détendus (typiquement 18
 minutes), avril le plus chargé (22 minutes). Par jour de semaine l'écart est
 faible, le jeudi mène de peu avec 18 minutes. Évite les vacances néerlandaises
-de mai et d'été ainsi que les week-ends d'Halloween.
+de mai et d'été ainsi que les week-ends d'Halloween. Pour une date précise, voyez le [calendrier des temps d’attente](ref:walibi-holland?calendar).
 
 ### Combien coûte l'entrée à Walibi Holland ?
 

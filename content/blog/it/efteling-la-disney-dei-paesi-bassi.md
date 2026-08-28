@@ -776,7 +776,7 @@ Per mese, **aprile e maggio** sono i mesi di stagione più tranquilli (22 e
 23 minuti), il più pieno è **dicembre** con 34. Il giorno della settimana incide
 poco: tra giovedì (23 minuti) e lunedì (27) ci sono quattro minuti. A decidere sono
 le vacanze scolastiche olandesi. Per una data concreta il
-[calendario dei giorni migliori](ref:efteling) aiuta più di qualsiasi regola
+[calendario dei giorni migliori](ref:efteling?calendar) aiuta più di qualsiasi regola
 empirica.
 
 ### C'è un fast pass a Efteling?

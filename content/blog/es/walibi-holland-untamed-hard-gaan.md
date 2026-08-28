@@ -870,7 +870,7 @@ Mayo y julio son en nuestros datos los meses más relajados (típicamente 18
 minutos), y abril el más cargado (22 minutos). Por día de la semana la
 diferencia es pequeña, con el jueves ligeramente por delante con 18 minutos.
 Evita las vacaciones neerlandesas de mayo y de verano, así como los fines de
-semana de Halloween.
+semana de Halloween. Para una fecha concreta ayuda el [calendario de tiempos de espera](ref:walibi-holland?calendar).
 
 ### ¿Cuánto cuesta la entrada a Walibi Holland?
 

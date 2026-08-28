@@ -317,12 +317,24 @@ export function ParkTodayPanel({
 
       <div className="border-border/50 flex items-center gap-3 border-b px-5 py-3">
         <div className="flex shrink-0 items-center gap-2">
+          {/* A static dot, deliberately.
+            This card flickered — going transparent for an instant, irregularly, then sitting
+            still for seconds. Two attempts at the cause missed: consolidating the nowcast's
+            per-second tick, then promoting every endless animation under glass to its own
+            compositor layer. What settled it was measuring instead of guessing: a
+            MutationObserver on this card and its twelve ancestors, watching attributes, children
+            and starting transitions, recorded **nothing at all in thirty seconds**. No re-render,
+            no class toggle, no remount. The only thing left changing inside a card that carries
+            `backdrop-filter` was this dot's own `animate-pulse` — and a backdrop filter is
+            re-read when its region is dirtied, which is what turns a repaint into a lost frame.
+            `will-change` did not help and may have hurt: promoting a layer INSIDE a backdrop root
+            is the thing CLAUDE.md warns about one level up, where a transform on an ancestor
+            flattens the blur.
+            The dot still says „live" through its colour, which is what a reader reads anyway. */}
           <span
             className={cn(
               'h-1.5 w-1.5 rounded-full',
-              isOpenish
-                ? 'bg-status-operating animate-pulse [will-change:opacity]'
-                : 'bg-muted-foreground/40'
+              isOpenish ? 'bg-status-operating' : 'bg-muted-foreground/40'
             )}
             aria-hidden="true"
           />

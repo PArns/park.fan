@@ -658,7 +658,7 @@ große Achterbahn. Die aktuellen Zahlen stehen auf der
 **Sonntag und Freitag** sind in unseren Daten die ruhigsten Wochentage, der
 Dienstag ist der vollste, und der Samstag liegt deutlich über dem Sonntag. Ab
 Anfang September öffnet der Park ohnehin nur noch von Donnerstag bis Sonntag, in
-den Herbstferien vom 17. bis 31. Oktober täglich.
+den Herbstferien vom 17. bis 31. Oktober täglich. Welcher Tag es konkret wird, steht im [Wartezeiten-Kalender](ref:movie-park-germany?calendar).
 
 ### An welchen Tagen hat der Movie Park im Herbst geöffnet?
 

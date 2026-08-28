@@ -556,7 +556,7 @@ waarden in december en januari en in april. Actuele cijfers vind je op de
 **Juni** is in onze data de meest ontspannen maand (typisch 18 minuten), gevolgd
 door mei en juli. Doordeweeks is het iets leger dan in het weekend, maar het
 verschil is klein (20 tegenover 25 minuten op zaterdag). Vermijd april, de
-Nederlandse mei- en herfstvakantie en het korte winterseizoen.
+Nederlandse mei- en herfstvakantie en het korte winterseizoen. Dag voor dag laat de [wachttijden-kalender](ref:attractiepark-toverland?calendar) dat zien.
 
 ### Heb je in Toverland een fastpass nodig?
 

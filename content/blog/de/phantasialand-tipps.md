@@ -524,7 +524,7 @@ Online-Tagestickets. Drei Dinge noch:
 
 An Wochentagen (Di–Do) außerhalb der NRW-Schulferien und generell in der
 Nebensaison. Verlass dich aber nicht aufs Bauchgefühl: Der
-[Crowd-Kalender fürs Phantasialand](ref:phantasialand) sagt dir bis zu 365 Tage im
+[Crowd-Kalender fürs Phantasialand](ref:phantasialand?calendar) sagt dir bis zu 365 Tage im
 Voraus, wann mit wenig Andrang zu rechnen ist, grün heißt hin.
 
 ### Wie vermeide ich im Phantasialand lange Wartezeiten?

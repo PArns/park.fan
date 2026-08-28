@@ -551,7 +551,7 @@ December and January, and in April. Current figures are on the
 **June** is the calmest month in our data (typically 18 minutes), followed by
 May and July. Weekdays are a little emptier than weekends, but the difference is
 small (20 against 25 minutes on a Saturday). Avoid April, the Dutch May and
-autumn holidays, and the short winter season.
+autumn holidays, and the short winter season. Day by day, the [wait-time calendar](ref:attractiepark-toverland?calendar) shows it.
 
 ### Do you need a fast pass at Toverland?
 

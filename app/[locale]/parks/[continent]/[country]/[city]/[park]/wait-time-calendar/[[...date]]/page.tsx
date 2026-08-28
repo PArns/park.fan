@@ -35,6 +35,7 @@ import {
   MAX_DESCRIPTION_LENGTH,
 } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
+import { getServerToday } from '@/lib/utils/server-time';
 
 import {
   BreadcrumbStructuredData,
@@ -219,7 +220,25 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   // A month that is not a month is a 404, not a quiet fall back to the hub: `/…/2026/13` is a typo
   // or a crawler probing, and answering it with the current month would put one page's content on
   // unbounded URLs.
-  if (resolved === 'invalid') notFound();
+  if (resolved === 'invalid') {
+    // A well-formed month that has simply fallen out of the window gets a 301 to the hub, not a
+    // 404. Narrowing the back span from twelve months to what the archive covers turned four
+    // months × 212 parks × 6 locales from 200 into gone — URLs the stepper linked last week and a
+    // crawler may still hold. A malformed segment (`/2026/13`, `/abc/x`) stays a 404: that is a
+    // typo or a probe, and there is nothing to send it to.
+    const [rawYear, rawMonth] = date ?? [];
+    const wellFormed =
+      /^\d{4}$/.test(rawYear ?? '') &&
+      /^\d{1,2}$/.test(rawMonth ?? '') &&
+      Number(rawMonth) >= 1 &&
+      Number(rawMonth) <= 12;
+    if (wellFormed) {
+      permanentRedirect(
+        `/${locale}${parkCalendarPath(locale, continent, country, city, parkSlug)}`
+      );
+    }
+    notFound();
+  }
   const month = resolved.month;
   // `/2026/09` and `/2026/9` are the same month. One of them is canonical and the other 308s to
   // it, rather than both answering 200 with identical content.
@@ -304,6 +323,19 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   // One month value feeds the stepper, the grid and the label, so the three cannot disagree —
   // the page used the park's clock while the grid fell back to the browser's, which is one month
   // apart for a few hours around every month boundary in any zone but the reader's.
+  // Same rule `generateMetadata` applies to `alternates.canonical`: the hub is canonical for the
+  // current month, every other month for itself. Kept next to the render so the structured data
+  // and the <link> can only ever name one URL.
+  const isCurrentMonth = !!month && month.year === nowMonth.year && month.month === nowMonth.month;
+  const canonicalUrl = `${SITE_URL}/${locale}${parkCalendarPath(
+    locale,
+    continent,
+    country,
+    city,
+    parkSlug,
+    isCurrentMonth ? undefined : (month ?? undefined)
+  )}`;
+
   const shownMonth = month ?? nowMonth;
   const back = shiftParkCalendarMonth(shownMonth, -1);
   const forward = shiftParkCalendarMonth(shownMonth, 1);
@@ -328,13 +360,18 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
         statsAfterChildren
         head={
           <>
+            {/* Keyed on the CANONICAL month, not on the requested one. In August the hub and
+              `/2026/8` render the same page and the metadata canonicals the second at the first —
+              but both emitted their own `#dataset` and `#webpage` with identical name, description
+              and coverage. Two ids for one month, one of them on a URL that declares itself not
+              canonical. `canonicalMonth` is what the `<link rel=canonical>` already uses. */}
             {/* What this page is about, pointing at the park's own `AmusementPark` node rather
               than restating it. Without this the calendar pages declared no subject at all. */}
             {/* The page is a table of one row per day, which is what `Dataset` is for. The month
               it covers is `summaryMonth` — on the hub that is the current one, which is what its
               grid opens on, so the coverage matches what a visitor actually sees. */}
             <ParkCalendarDatasetStructuredData
-              url={`${SITE_URL}/${locale}${parkCalendarPath(locale, continent, country, city, parkSlug, month ?? undefined)}`}
+              url={canonicalUrl}
               parkUrl={`${SITE_URL}/${locale}${parkPath}`}
               name={tDataset('name', { park: parkName, month: monthLabel(locale, summaryMonth) })}
               description={tDataset('description', {
@@ -352,7 +389,7 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
               locale={locale}
             />
             <ParkSubPageStructuredData
-              url={`${SITE_URL}/${locale}${parkCalendarPath(locale, continent, country, city, parkSlug, month ?? undefined)}`}
+              url={canonicalUrl}
               parkUrl={`${SITE_URL}/${locale}${parkPath}`}
               parkName={parkName}
               name={monthName ? `${parkName} – ${monthName}` : `${parkName} – ${t('breadcrumb')}`}
@@ -546,12 +583,7 @@ async function SeededBestDays({
   // wird es" or „war es", and a park in Florida is still on yesterday for six hours after
   // midnight in Berlin.
   const tz = timezone || 'UTC';
-  const todayIso = new Intl.DateTimeFormat('en-CA', {
-    timeZone: tz,
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  }).format(new Date());
+  const todayIso = await getServerToday(tz);
   const summary = monthSeed?.days?.length
     ? summarizeCalendarMonth(monthSeed.days, todayIso, tz)
     : null;

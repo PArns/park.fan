@@ -224,6 +224,31 @@ test(
 );
 
 test(
+  'the hours floor counts the month, not the days that published hours',
+  () => {
+    // Three of thirty open days carry hours, all identical. Against the days-with-hours the
+    // pattern scores 3/3 and „meist von 09:00 bis 18:00 Uhr" goes out on a tenth of the month.
+    const days = month(30, (i) =>
+      i < 3 ? hoursAt(`2026-11-0${i + 1}`, '08', '17') : { crowdLevel: 'moderate' }
+    );
+    return summarizeCalendarMonth(days, '2026-12-01', TZ).hours;
+  },
+  null
+);
+
+test(
+  'a pattern that really does cover the month still prints',
+  () => {
+    const days = month(30, (i) =>
+      i < 25 ? hoursAt(`2026-11-${String(i + 1).padStart(2, '0')}`, '08', '17') : {}
+    );
+    const h = summarizeCalendarMonth(days, '2026-12-01', TZ).hours;
+    return `${h.openingTime}-${h.closingTime}`;
+  },
+  '09:00-18:00'
+);
+
+test(
   'a park with no published hours gets no hours sentence',
   () => summarizeCalendarMonth(month(30), '2026-12-01', TZ).hours,
   null

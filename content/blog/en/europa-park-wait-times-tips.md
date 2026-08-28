@@ -846,8 +846,8 @@ and with a forecast for the days ahead.
 
 **Sunday** is the quietest day of the week (18 minutes typical against 28 on
 Saturday), and May and June are the quietest summer months. Emptiest of all is
-the HALLOWinter season in early November. In our forecast for the coming three
-months all 19 November days are rated “low”.
+the HALLOWinter season in early November. [In our forecast for the coming three
+months](ref:europa-park?calendar) all 19 November days are rated “low”.
 
 ### Is there a fast pass at Europa-Park?
 

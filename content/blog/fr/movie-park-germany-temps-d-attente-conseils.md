@@ -678,7 +678,7 @@ non à la grande montagne russe. Les chiffres actuels sont sur la
 **Le dimanche et le vendredi** sont, dans nos données, les jours les plus calmes,
 le mardi le plus chargé, et le samedi se situe nettement au-dessus du dimanche. À
 partir de début septembre, le parc n'ouvre de toute façon plus que du jeudi au
-dimanche, et tous les jours pendant les vacances d'automne du 17 au 31 octobre.
+dimanche, et tous les jours pendant les vacances d'automne du 17 au 31 octobre. Le jour précis se trouve dans le [calendrier des temps d’attente](ref:movie-park-germany?calendar).
 
 ### Quels jours le Movie Park est-il ouvert en automne ?
 

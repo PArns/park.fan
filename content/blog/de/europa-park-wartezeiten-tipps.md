@@ -861,8 +861,8 @@ aktualisiert und mit Prognose für die nächsten Tage.
 
 Der **Sonntag** ist der ruhigste Wochentag (18 Minuten typisch gegenüber 28 am
 Samstag), Mai und Juni sind die ruhigsten Sommermonate. Am leersten ist es in der
-HALLOWinter-Saison Anfang November. In unserer Prognose für die kommenden drei
-Monate stehen alle 19 Novembertage auf „niedrig“.
+HALLOWinter-Saison Anfang November. [In unserer Prognose für die kommenden drei
+Monate](ref:europa-park?calendar) stehen alle 19 Novembertage auf „niedrig“.
 
 ### Gibt es im Europa-Park einen Fast Pass?
 

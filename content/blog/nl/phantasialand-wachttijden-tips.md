@@ -487,7 +487,7 @@ gedateerde online dagtickets. Nog drie dingen:
 ### Wanneer zijn in het Phantasialand de kortste wachttijden?
 
 Op weekdagen (di–do) buiten de NRW-schoolvakanties en in het algemeen in het laagseizoen. Vertrouw echter niet
-op je onderbuikgevoel: de [druktekalender voor het Phantasialand](ref:phantasialand) vertelt je tot 365 dagen
+op je onderbuikgevoel: de [druktekalender voor het Phantasialand](ref:phantasialand?calendar) vertelt je tot 365 dagen
 vooruit wanneer je op weinig drukte kunt rekenen, groen betekent gaan.
 
 ### Hoe vermijd ik in het Phantasialand lange wachttijden?

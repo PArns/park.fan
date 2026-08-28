@@ -776,7 +776,7 @@ Por meses, **abril y mayo** son los meses de temporada más tranquilos (22 y 23
 minutos), y el más lleno es **diciembre** con 34. El día de la semana apenas
 influye: entre el jueves (23 minutos) y el lunes (27) hay cuatro minutos. Lo
 decisivo son las vacaciones escolares neerlandesas. Para una fecha concreta ayuda
-más el [calendario de los mejores días](ref:efteling) que cualquier regla general.
+más el [calendario de los mejores días](ref:efteling?calendar) que cualquier regla general.
 
 ### ¿Hay fast pass en Efteling?
 

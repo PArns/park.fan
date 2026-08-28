@@ -875,7 +875,7 @@ im Park. Aktuelle Zahlen stehen auf der
 Mai und Juli sind in unseren Daten die entspanntesten Monate (typisch 18
 Minuten), der April der vollste (22 Minuten). Nach Wochentag ist der Unterschied
 klein, der Donnerstag liegt mit 18 Minuten knapp vorn. Meide die
-niederländischen Mai- und Sommerferien sowie die Halloween-Wochenenden.
+niederländischen Mai- und Sommerferien sowie die Halloween-Wochenenden. Für ein konkretes Datum hilft der [Wartezeiten-Kalender](ref:walibi-holland?calendar) weiter.
 
 ### Was kostet der Eintritt in Walibi Holland?
 

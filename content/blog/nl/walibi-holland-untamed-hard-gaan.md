@@ -856,7 +856,7 @@ hoogste waarde in het park. Actuele cijfers staan op de
 Mei en juli zijn in onze data de meest ontspannen maanden (doorgaans 18
 minuten), april de drukste (22 minuten). Per weekdag is het verschil klein, de
 donderdag staat met 18 minuten net voorop. Vermijd de Nederlandse mei- en
-zomervakantie en de Halloween-weekenden.
+zomervakantie en de Halloween-weekenden. Voor een concrete datum helpt de [wachttijden-kalender](ref:walibi-holland?calendar).
 
 ### Wat kost de entree van Walibi Holland?
 

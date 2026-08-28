@@ -519,7 +519,7 @@ tickets. Three more things:
 
 On weekdays (Tue–Thu) outside the NRW school holidays and generally in the
 off-season. But don't rely on gut feeling: the
-[crowd calendar for Phantasialand](ref:phantasialand) tells you up to 365 days in
+[crowd calendar for Phantasialand](ref:phantasialand?calendar) tells you up to 365 days in
 advance when to expect light crowds, green means go.
 
 ### How do I avoid long wait times at Phantasialand?

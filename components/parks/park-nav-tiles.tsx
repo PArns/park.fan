@@ -1,6 +1,7 @@
 'use client';
 
 import { useLocale } from 'next-intl';
+import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import { Link, getPathname } from '@/i18n/navigation';
 import { parkCalendarPath } from '@/lib/parks/calendar-segments';
 import {
@@ -45,7 +46,29 @@ export function ParkNavTiles({
 }) {
   const locale = useLocale();
   const { continent, country, city, parkSlug } = source;
-  const { items, tileCount } = useParkTileItems(source);
+  /**
+   * The same live park the tab row on the park page reads, through the same query key.
+   *
+   * This row used to hand `useParkTileItems` the server-rendered snapshot it was given, and the
+   * doc below already claimed both rows show „the same six cells with the same live hints". They
+   * did not. The park page wraps its row in `LiveParkData`, so a gap in the server payload is
+   * refilled a moment later; here nothing refilled anything, and a park payload that arrived
+   * without `analytics` left „Attraktionen 40" with an empty hint — for as long as the data cache
+   * held that entry, which is a day. Reproduced on production while the same page rendered the
+   * hint locally, with the tile code identical on both sides: not a code difference, a data one,
+   * and a row that cannot recover from it.
+   *
+   * Costs no request: `ParkTodayPanel` sits in the same card and already runs this query, so React
+   * Query serves both from one fetch (`['park-live', …]`).
+   */
+  const { data: livePark } = useLiveParkData({
+    continent,
+    country,
+    city,
+    parkSlug,
+    initialData: source.park,
+  });
+  const { items, tileCount } = useParkTileItems({ ...source, park: livePark ?? source.park });
   const parkPath = `/parks/${continent}/${country}/${city}/${parkSlug}`;
 
   return (

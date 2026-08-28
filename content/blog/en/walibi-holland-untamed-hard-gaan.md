@@ -842,7 +842,7 @@ Current numbers are on the
 May and July are the most relaxed months in our data (typically 18 minutes),
 April the busiest (22 minutes). By weekday the difference is small, with Thursday
 just ahead at 18 minutes. Avoid the Dutch May and summer holidays as well as the
-Halloween weekends.
+Halloween weekends. For a specific date, try the [wait-time calendar](ref:walibi-holland?calendar).
 
 ### How much does admission to Walibi Holland cost?
 

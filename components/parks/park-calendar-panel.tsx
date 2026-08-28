@@ -5,8 +5,8 @@ import { useLocale, useTranslations } from 'next-intl';
 import { useLinkStatus } from 'next/link';
 import { CalendarCheck, CalendarDays, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
+import { TILE_GLASS } from '@/components/common/glass-card';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
 import { ParkCalendarGridPlaceholder } from '@/components/parks/park-calendar-grid-placeholder';
 import { Link, getPathname } from '@/i18n/navigation';
 import { suppressScrollToTopFor } from '@/lib/navigation/history-navigation';
@@ -139,7 +139,17 @@ export function ParkCalendarPanel({
 
         `prevMonth`/`nextMonth` are `null` where the window the route serves runs out, and the
         stepper stops rather than pointing at a 404. */}
-      <Card className="relative gap-4 rounded-t-none border-t-0 p-4 md:p-6">
+      <div
+        className={cn(
+          // `TILE_GLASS`, the same recipe „Historische Wartezeit-Statistiken" and „Beste
+          // Reisezeit" use for their panels. This was a plain `Card`, i.e. the default
+          // `bg-background/60` + `backdrop-blur-md`, which put three chapters of one page on two
+          // different glass levels — the calendar thinner and less blurred than the two boxes
+          // above and below it, over the same park photograph.
+          TILE_GLASS,
+          'border-border/50 relative flex flex-col gap-4 rounded-b-xl border border-t-0 p-4 md:p-6'
+        )}
+      >
         {/* Control row: what the colours mean on the left, where you are in the year on the right.
           The legend was inside the `ssr: false` grid and is server-rendered here — it needs no
           data, and down there it made the grid's two loading states differ by its own height. */}
@@ -226,7 +236,7 @@ export function ParkCalendarPanel({
         {/* Separated by a rule rather than by a gap: the stepper above, the grid, and this are one
           control at three grains, and a floating chip row reads as a different chapter. */}
         {monthIndex ? <div className="border-t pt-4">{monthIndex}</div> : null}
-      </Card>
+      </div>
     </section>
   );
 }

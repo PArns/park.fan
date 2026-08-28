@@ -751,10 +751,10 @@
       "summary": {
         "openingFuture": "In {month} is {park} op {open} van de {total} dagen open.",
         "openingPast": "In {month} was {park} op {open} van de {total} dagen open.",
-        "quietestFuture": "Het rustigst wordt het waarschijnlijk op {days}.",
-        "quietestPast": "Het rustigst was het op {days}.",
-        "busiestFuture": "Het drukst wordt het op {days}.",
-        "busiestPast": "Het drukst was het op {days}.",
+        "quietestFuture": "{count, plural, =1 {Het rustigst wordt het waarschijnlijk op {days}.} other {Het rustigst wordt het waarschijnlijk op {days}.}}",
+        "quietestPast": "{count, plural, =1 {Het rustigst was het op {days}.} other {Het rustigst was het op {days}.}}",
+        "busiestFuture": "{count, plural, =1 {Het drukst wordt het op {days}.} other {Het drukst wordt het op {days}.}}",
+        "busiestPast": "{count, plural, =1 {Het drukst was het op {days}.} other {Het drukst was het op {days}.}}",
         "hours": "Meestal open van {from} tot {to} uur.",
         "schoolVacation": "{days, plural, =1 {Op één dag} other {Op # dagen}} vallen er schoolvakanties in de regio van het park.",
         "headlinerFuture": "Bij de grote attracties zijn gemiddeld {minutes} minuten te verwachten.",
@@ -767,7 +767,7 @@
         "factWaitValue": "{minutes} min.",
         "factSchoolVacation": "Schoolvakanties",
         "factSchoolVacationValue": "{days, plural, =1 {# dag} other {# dagen}}",
-        "factQuietest": "Rustigste dagen:"
+        "factQuietest": "{count, plural, =1 {Rustigste dag:} other {Rustigste dagen:}}"
       },
       "dataset": {
         "name": "Drukte en wachttijden in {park}, {month}",
