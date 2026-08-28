@@ -42,7 +42,7 @@ export async function FAQStructuredData({
     nowMs
   );
 
-  const { parkNom, parkNomCap, parkAcc, parkLoc } = getParkArticleForms(park, locale);
+  const { parkNom, parkNomCap, parkAcc, parkLoc, args } = getParkArticleForms(park, locale);
 
   const mainEntity: Question[] = items.map((item) => {
     const answerText =
@@ -88,7 +88,7 @@ export async function FAQStructuredData({
     name: t('crowdCalendarQ', { park: parkNom }),
     acceptedAnswer: {
       '@type': 'Answer',
-      text: t('crowdCalendarA', { park: parkAcc }),
+      text: t('crowdCalendarA', { ...args, park: parkAcc }),
     },
   });
 

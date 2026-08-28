@@ -16,6 +16,7 @@ import { Clock, MapPin, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { SeasonalBadge } from '@/components/parks/seasonal-badge';
 import { FastPassBadge } from '@/components/parks/fast-pass-badge';
+import { SingleRiderBadge } from '@/components/parks/single-rider-badge';
 import { AttractionMetaBadges } from '@/components/parks/attraction-meta-badges';
 import { RcdbBadge } from '@/components/parks/rcdb-badge';
 import { PageSection } from '@/components/common/page-section';
@@ -59,6 +60,7 @@ import { generateAttractionBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { stripNewPrefix, cn } from '@/lib/utils';
 import { findRelocatedParkRedirect, findRenamedParkRedirect } from '@/lib/utils/redirect-utils';
 import { RouteMessages } from '@/i18n/route-messages';
+import { parkArgs } from '@/lib/i18n/park-phrase';
 
 interface AttractionPageProps {
   params: Promise<{
@@ -156,10 +158,16 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
   // of English rides, 29.9% of German ones and 7.1% of Italian, and said the same
   // sentence on all 42,606 of them. The ladder takes every locale to ~98%; the
   // facts come off the attraction this fetch already returned.
-  const title = buildAttractionTitle(attractionName, parkName, t);
+  const title = buildAttractionTitle(attractionName, parkName, t, {
+    locale: locale as Locale,
+    articleDe: park?.nameArticleDe,
+  });
   const description = attraction
-    ? buildAttractionDescription(attractionName, parkName, buildAttractionFacts(attraction, t), t)
-    : t('metaDescriptionTemplate', { attraction: attractionName, park: parkName });
+    ? buildAttractionDescription(attractionName, parkName, buildAttractionFacts(attraction, t), t, {
+        locale: locale as Locale,
+        articleDe: park?.nameArticleDe,
+      })
+    : t('metaDescriptionTemplate', { attraction: attractionName, ...parkArgs(locale as Locale, parkName, park?.nameArticleDe) });
 
   return {
     title,
@@ -173,6 +181,7 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
       url: `${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${canonicalAttractionSlug}`,
       ogImageUrl,
       imageAlt: tImageAlt('attraction', {
+        ...parkArgs(locale as Locale, parkName, park?.nameArticleDe),
         attraction: attractionName,
         park: parkName,
       }),
@@ -285,6 +294,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
     attraction.minimumHeight != null ||
     attraction.maximumHeight != null ||
     Boolean(attraction.mayGetWet) ||
+    attraction.hasSingleRider === true ||
     Boolean(attraction.fastPass) ||
     attraction.rcdbId != null;
 
@@ -325,7 +335,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
           locale={locale}
           description={tSeo('metaDescriptionTemplate', {
             attraction: attractionName,
-            park: parkName,
+            ...parkArgs(locale as Locale, parkName, park.nameArticleDe),
             city: cityName,
           })}
           ogImageUrl={ogImageUrl}
@@ -435,6 +445,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                     {/* After the restrictions, before what the ride IS: a queue-jump
                         pass is a fact about the visit, like the height limits, and
                         not part of the ride's identity. */}
+                    <SingleRiderBadge hasSingleRider={attraction.hasSingleRider} />
                     <FastPassBadge fastPass={attraction.fastPass} />
                     {attraction.rideProfile ? (
                       <RideProfileTeaser profile={attraction.rideProfile} locale={locale as Locale}>
@@ -451,7 +462,10 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                   provide as static HTML. Inside the card, exactly like the park page: on
                   the bare background it sat on top of the hero photo and was unreadable. */}
                 <p className="text-muted-foreground mt-4 max-w-2xl text-sm leading-relaxed">
-                  {t('intro', { attraction: attractionName, park: parkName })}
+                  {t('intro', {
+                    attraction: attractionName,
+                    ...parkArgs(locale as Locale, parkName, park?.nameArticleDe),
+                  })}
                 </p>
               </GlassCard>
             </div>

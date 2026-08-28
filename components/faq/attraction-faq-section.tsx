@@ -1,5 +1,6 @@
 import { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
-import { getTranslations } from 'next-intl/server';
+import type { Locale } from '@/i18n/config';
+import { getLocale, getTranslations } from 'next-intl/server';
 import { ChevronDown, MapPin, Clock, Users, Zap, HelpCircle } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { PageSection } from '@/components/common/page-section';
@@ -22,11 +23,13 @@ interface AttractionFAQSectionProps {
 
 export async function AttractionFAQSection({ attraction, park }: AttractionFAQSectionProps) {
   const t = await getTranslations('seo.faq.attraction');
+  const locale = await getLocale();
   const attractionName = stripNewPrefix(attraction.name);
   const faqs = buildAttractionFaqItems(
     attraction,
     park,
-    t as Parameters<typeof buildAttractionFaqItems>[2]
+    t as Parameters<typeof buildAttractionFaqItems>[2],
+    locale as Locale
   );
 
   if (faqs.length === 0) return null;

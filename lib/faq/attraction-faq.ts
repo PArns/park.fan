@@ -1,4 +1,6 @@
 import type { ParkAttraction, ParkWithAttractions } from '@/lib/api/types';
+import { parkArgs } from '@/lib/i18n/park-phrase';
+import type { Locale } from '@/i18n/config';
 import { stripNewPrefix } from '@/lib/utils';
 
 export type AttractionFaqIconName = 'MapPin' | 'Clock' | 'Users' | 'Zap';
@@ -14,7 +16,9 @@ type T = (key: string, values?: Record<string, string | number | Date | undefine
 export function buildAttractionFaqItems(
   attraction: ParkAttraction,
   park: ParkWithAttractions,
-  t: T
+  t: T,
+  /** For the German "{attraction} befindet sich im/in der/in {park}". */
+  locale: Locale = 'de'
 ): AttractionFaqItem[] {
   const attractionName = stripNewPrefix(attraction.name);
   const parkName = stripNewPrefix(park.name);
@@ -26,7 +30,7 @@ export function buildAttractionFaqItems(
       question: t('locationQ', { attraction: attractionName }),
       answer: t('locationA', {
         attraction: attractionName,
-        park: parkName,
+        ...parkArgs(locale as Locale, parkName, park.nameArticleDe),
         land: attraction.land ? t('inLand', { land: attraction.land }) : '',
       }),
     });

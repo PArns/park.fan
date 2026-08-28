@@ -1,4 +1,6 @@
 import { fitWithin, MAX_TITLE_LENGTH, MAX_DESCRIPTION_LENGTH } from '@/lib/utils/metadata';
+import { parkArgs } from '@/lib/i18n/park-phrase';
+import type { Locale } from '@/i18n/config';
 import { formatRiderHeight } from '@/lib/utils/temperature';
 import type { ParkAttraction } from '@/lib/api/types';
 
@@ -51,12 +53,17 @@ export function buildAttractionFacts(attraction: ParkAttraction, t: Translate): 
 export function buildAttractionTitle(
   attractionName: string,
   parkName: string,
-  t: Translate
+  t: Translate,
+  /** Locale + the park's German article, for "{attraction} im/in der/in {park}". */
+  phrase?: { locale: Locale; articleDe?: string | null }
 ): string {
+  const park = phrase
+    ? parkArgs(phrase.locale, parkName, phrase.articleDe)
+    : { park: parkName, inPark: parkName, forPark: parkName, parkSubject: parkName, inParkLeading: parkName };
   return fitWithin(
     MAX_TITLE_LENGTH,
-    t('titleTemplate', { attraction: attractionName, park: parkName }),
-    t('titleTemplateShort', { attraction: attractionName, park: parkName }),
+    t('titleTemplate', { attraction: attractionName, ...park }),
+    t('titleTemplateShort', { attraction: attractionName, ...park }),
     t('titleTemplateBare', { attraction: attractionName })
   );
 }
@@ -72,9 +79,13 @@ export function buildAttractionDescription(
   attractionName: string,
   parkName: string,
   facts: string[],
-  t: Translate
+  t: Translate,
+  phrase?: { locale: Locale; articleDe?: string | null }
 ): string {
-  const plain = t('metaDescriptionTemplate', { attraction: attractionName, park: parkName });
+  const park = phrase
+    ? parkArgs(phrase.locale, parkName, phrase.articleDe)
+    : { park: parkName, inPark: parkName, forPark: parkName, parkSubject: parkName, inParkLeading: parkName };
+  const plain = t('metaDescriptionTemplate', { attraction: attractionName, ...park });
   if (!facts.length) return plain;
 
   // Drop the least important clause first, then fall back to the plain
@@ -82,7 +93,7 @@ export function buildAttractionDescription(
   const withFacts = facts.map((_, i) =>
     t('metaDescriptionTemplateFacts', {
       attraction: attractionName,
-      park: parkName,
+      ...park,
       facts: endOfSentence(sentenceCase(facts.slice(0, facts.length - i).join(', '))),
     })
   );

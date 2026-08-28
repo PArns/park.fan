@@ -3,6 +3,8 @@ import { formatInTimeZone } from 'date-fns-tz';
 import { translateCountry } from '@/lib/i18n/helpers';
 import { analyzeBestDays } from '@/lib/utils/crowd-analysis';
 import { stripNewPrefix, getGermanArticle } from '@/lib/utils';
+import { parkArgs, parkPhrase } from '@/lib/i18n/park-phrase';
+import type { Locale } from '@/i18n/config';
 
 export type ParkFaqIconName =
   'Calendar' | 'MapPin' | 'Ticket' | 'Map' | 'Theater' | 'UtensilsCrossed' | 'Clock2';
@@ -22,18 +24,41 @@ export interface ParkArticleForms {
   parkNomCap: string;
   parkAcc: string;
   parkLoc: string;
+  /** `{park}`, `{inPark}`, `{forPark}`, … for the strings that carry the phrase. */
+  args: ReturnType<typeof parkArgs>;
 }
 
+/**
+ * The park name in the forms German sentences need.
+ *
+ * The article now comes from the API (`nameArticleDe`), curated per park, and
+ * only falls back to the name-based guess when that is absent. `parkLoc` used
+ * to be `im ${parkName}` unconditionally — the same bug as everywhere else,
+ * producing "im Cedar Point" and "im Toverland"; it goes through `parkPhrase`,
+ * which knows that `in dem` contracts and `in der` does not.
+ */
 export function getParkArticleForms(park: ParkWithAttractions, locale: string): ParkArticleForms {
   const parkName = stripNewPrefix(park.name);
-  const article = locale === 'de' ? getGermanArticle(parkName, park.slug) : undefined;
+  const article =
+    locale === 'de' ? getGermanArticle(parkName, park.slug, park.nameArticleDe) : undefined;
   const parkNom = article ? `${article} ${parkName}` : parkName;
   const parkNomCap = article
     ? `${article.charAt(0).toUpperCase()}${article.slice(1)} ${parkName}`
     : parkName;
-  const parkAcc = article === 'der' ? `den ${parkName}` : parkNom;
-  const parkLoc = locale === 'de' ? `im ${parkName}` : parkName;
-  return { parkName, parkNom, parkNomCap, parkAcc, parkLoc };
+  const parkAcc =
+    article === 'der' ? `den ${parkName}` : article === 'die' ? `die ${parkName}` : parkNom;
+  // Only German gets a preposition here; the other locales' FAQ sentences carry
+  // their own and always did.
+  const parkLoc =
+    locale === 'de' ? parkPhrase('de', 'in', parkName, article ?? null) : parkName;
+  return {
+    parkName,
+    parkNom,
+    parkNomCap,
+    parkAcc,
+    parkLoc,
+    args: parkArgs(locale as Locale, parkName, article ?? null),
+  };
 }
 
 export function buildParkFaqItems(
@@ -50,7 +75,7 @@ export function buildParkFaqItems(
    */
   nowMs: number | null
 ): ParkFaqItem[] {
-  const { parkName, parkNom, parkNomCap } = getParkArticleForms(park, locale);
+  const { parkNom, parkNomCap, args } = getParkArticleForms(park, locale);
 
   const timeZone = park.timezone || 'UTC';
   const now = nowMs != null ? new Date(nowMs) : null;
@@ -73,9 +98,9 @@ export function buildParkFaqItems(
   if (stats && stats.operatingAttractions > 0 && stats.avgWaitToday > 0) {
     items.push({
       iconName: 'Clock2',
-      question: t('waitTimesQ', { park: parkName }),
+      question: t('waitTimesQ', args),
       answer: t('waitTimesA', {
-        park: parkName,
+        ...args,
         avg: Math.round(stats.avgWaitToday),
         peak: Math.round(stats.peakWaitToday),
         operating: stats.operatingAttractions,
@@ -84,8 +109,8 @@ export function buildParkFaqItems(
   } else {
     items.push({
       iconName: 'Clock2',
-      question: t('waitTimesQ', { park: parkName }),
-      answer: t('waitTimesNoDataA', { park: parkName }),
+      question: t('waitTimesQ', args),
+      answer: t('waitTimesNoDataA', args),
     });
   }
 
@@ -130,8 +155,8 @@ export function buildParkFaqItems(
   if (totalAttractions) {
     items.push({
       iconName: 'Ticket',
-      question: t('attractionCountQ', { park: parkName }),
-      answer: t('attractionCountA', { park: parkName, count: totalAttractions }),
+      question: t('attractionCountQ', args),
+      answer: t('attractionCountA', { ...args, count: totalAttractions }),
     });
   }
 
@@ -140,7 +165,7 @@ export function buildParkFaqItems(
   if (uniqueLands.length > 0) {
     items.push({
       iconName: 'Map',
-      question: t('themedAreasQ', { park: parkName }),
+      question: t('themedAreasQ', args),
       answer: {
         text: t('themedAreasA', { park: parkNomCap, count: uniqueLands.length }),
         list: uniqueLands,
@@ -153,7 +178,7 @@ export function buildParkFaqItems(
     const showNames = park.shows.map((s) => stripNewPrefix(s.name));
     items.push({
       iconName: 'Theater',
-      question: t('showsQ', { park: parkName }),
+      question: t('showsQ', args),
       answer: {
         text: t('showsA', { park: parkNom, count: park.shows.length }),
         list: showNames,
@@ -166,7 +191,7 @@ export function buildParkFaqItems(
     const restaurantNames = park.restaurants.map((r) => stripNewPrefix(r.name));
     items.push({
       iconName: 'UtensilsCrossed',
-      question: t('diningQ', { park: parkName }),
+      question: t('diningQ', args),
       answer: {
         text: t('diningA', { park: parkNomCap, count: park.restaurants.length }),
         list: restaurantNames,

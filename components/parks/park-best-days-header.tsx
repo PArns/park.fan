@@ -8,6 +8,7 @@ import { Link } from '@/i18n/navigation';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { getGermanArticle } from '@/lib/utils';
 import type { Locale } from '@/i18n/config';
+import { parkArgs } from '@/lib/i18n/park-phrase';
 
 /** "den Europa-Park", not "Europa-Park", where the German title needs the accusative. */
 export function localizedParkName(parkName: string, parkSlug: string, locale: string): string {
@@ -32,12 +33,15 @@ export function localizedParkName(parkName: string, parkSlug: string, locale: st
 export function ParkBestDaysHeader({
   parkName,
   parkSlug,
+  articleDe,
   locale,
   showCalendarLink = false,
   className,
 }: {
   parkName: string;
   parkSlug: string;
+  /** The park's German article, for the heading's "für den/das …". */
+  articleDe?: string | null;
   locale: string;
   showCalendarLink?: boolean;
   /** Passed through to `ChapterHeading` — the section and its skeleton square off the bottom so
@@ -51,7 +55,7 @@ export function ParkBestDaysHeader({
   return (
     <ChapterHeading
       icon={CalendarDays}
-      title={t('title', { park: displayName })}
+      title={t('title', parkArgs(locale as Locale, displayName, articleDe))}
       id="best-days-heading"
       frosted
       className={className}

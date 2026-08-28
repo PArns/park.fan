@@ -32,6 +32,18 @@ interface ChapterHeadingProps {
   hint?: ReactNode;
   /** Ready-made node after the title — a <Badge>, a link. */
   badge?: ReactNode;
+  /**
+   * A control the chapter owns, pushed to the right of the title row.
+   *
+   * `badge` sits *next to* the title and reads as part of it; this sits at the
+   * far end and reads as something to operate — the calendar's month stepper,
+   * which used to live in the row below among the colour legend, where the most
+   * important label on the page ranked after a colour key.
+   *
+   * It wraps under the title on a narrow card rather than squeezing it, because
+   * the two are one row only while there is room for both.
+   */
+  action?: ReactNode;
   /** Heading level, for the document outline. */
   as?: 'h2' | 'h3';
   /** Anchor id — lands on the heading itself, with the sticky-header offset. */
@@ -101,6 +113,7 @@ export function ChapterHeading({
   title,
   hint,
   badge,
+  action,
   as: As = 'h2',
   id,
   size = 'md',
@@ -148,6 +161,7 @@ export function ChapterHeading({
             {title}
           </As>
           {badge}
+          {action && <div className="ml-auto flex items-center gap-2">{action}</div>}
         </div>
         {hint && <p className="text-muted-foreground mt-1.5 text-sm">{hint}</p>}
       </div>

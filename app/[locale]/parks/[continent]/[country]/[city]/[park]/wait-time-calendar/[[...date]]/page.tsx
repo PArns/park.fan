@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound, permanentRedirect } from 'next/navigation';
 
 import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
+import type { Locale } from '@/i18n/config';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { RouteMessages } from '@/i18n/route-messages';
 import { catchNonFatal } from '@/lib/api/client';
@@ -55,6 +56,7 @@ import { ParkTitleHeader } from '@/components/parks/park-title-header';
 import { ParkHeaderCard } from '@/components/parks/park-header-card';
 import { ParkNavTiles } from '@/components/parks/park-nav-tiles';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
+import { parkArgs } from '@/lib/i18n/park-phrase';
 
 interface ParkCalendarPageProps {
   params: Promise<{
@@ -168,11 +170,11 @@ export async function generateMetadata({ params }: ParkCalendarPageProps): Promi
   const description = fitWithin(
     MAX_DESCRIPTION_LENGTH,
     month
-      ? t('monthMetaDescription', { park: parkName, city: cityName, month: label })
+      ? t('monthMetaDescription', { ...parkArgs(locale as Locale, parkName, park.nameArticleDe), city: cityName, month: label })
       : t('metaDescription', { park: parkName, city: cityName }),
     month
-      ? t('monthMetaDescriptionNoCity', { park: parkName, month: label })
-      : t('metaDescriptionNoCity', { park: parkName })
+      ? t('monthMetaDescriptionNoCity', { ...parkArgs(locale as Locale, parkName, park.nameArticleDe), month: label })
+      : t('metaDescriptionNoCity', parkArgs(locale as Locale, parkName, park.nameArticleDe))
   );
 
   const path = (l: string, m: ParkCalendarMonth | null) =>
@@ -380,9 +382,12 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
             <ParkCalendarDatasetStructuredData
               url={canonicalUrl}
               parkUrl={`${SITE_URL}/${locale}${parkPath}`}
-              name={tDataset('name', { park: parkName, month: monthLabel(locale, summaryMonth) })}
+              name={tDataset('name', {
+                ...parkArgs(locale as Locale, parkName, park.nameArticleDe),
+                month: monthLabel(locale, summaryMonth),
+              })}
               description={tDataset('description', {
-                park: parkName,
+                ...parkArgs(locale as Locale, parkName, park.nameArticleDe),
                 month: monthLabel(locale, summaryMonth),
               })}
               temporalCoverage={monthTemporalCoverage(summaryMonth)}
@@ -433,8 +438,11 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
             suffix={t('h1Suffix', { month: monthName ?? monthLabel(locale, nowMonth) })}
             intro={
               monthName
-                ? t('monthIntro', { park: parkName, month: monthName })
-                : t('intro', { park: parkName })
+                ? t('monthIntro', {
+                    ...parkArgs(locale as Locale, parkName, park.nameArticleDe),
+                    month: monthName,
+                  })
+                : t('intro', parkArgs(locale as Locale, parkName, park.nameArticleDe))
             }
           />
         }
@@ -605,6 +613,7 @@ async function SeededBestDays({
       timezone={timezone}
       hasOperatingSchedule={hasOperatingSchedule}
       parkName={parkName}
+      articleDe={park.nameArticleDe}
       locale={locale}
       initialCalendar={seed}
       seedNowMs={seedNowMs}
