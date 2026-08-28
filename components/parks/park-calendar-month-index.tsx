@@ -82,12 +82,14 @@ export async function ParkCalendarMonthIndex({
     );
 
   return (
-    <nav aria-label={t('monthIndexLabel')} className={cn('mt-6', className)}>
-      <p className="text-muted-foreground mb-3 text-sm">{t('monthIndexLabel')}</p>
-      <div className="flex flex-col gap-3">
+    <nav aria-label={t('monthIndexLabel')} className={cn(className)}>
+      <p className="text-muted-foreground mb-3 text-xs font-medium tracking-wide uppercase">
+        {t('monthIndexLabel')}
+      </p>
+      <div className="flex flex-col gap-2">
         {[...byYear.entries()].map(([year, entries]) => (
-          <div key={year} className="flex flex-wrap items-center gap-2">
-            <span className="text-muted-foreground w-10 shrink-0 text-xs font-semibold tabular-nums">
+          <div key={year} className="flex flex-wrap items-center gap-1.5">
+            <span className="text-muted-foreground w-9 shrink-0 text-xs font-semibold tabular-nums">
               {year}
             </span>
             {entries.map((m) => {
@@ -108,11 +110,15 @@ export async function ParkCalendarMonthIndex({
                   key={`${m.year}-${m.month}`}
                   href={href}
                   aria-current={active ? 'page' : undefined}
+                  // Every chip carries a surface, including the inactive ones. They used to be
+                  // bare text on `border-transparent`, which is legible on a card and was not
+                  // legible at all where this row used to live — directly on the park photo.
+                  // A month is a control here, and a control that looks like prose is not one.
                   className={cn(
-                    'rounded-md border px-2.5 py-1 text-xs font-medium transition-colors',
+                    'rounded-md border px-2.5 py-1 text-xs font-medium tabular-nums transition-colors',
                     active
-                      ? 'border-primary/40 bg-primary/10 text-primary'
-                      : 'hover:bg-accent hover:text-accent-foreground border-transparent'
+                      ? 'border-primary/40 bg-primary/15 text-primary'
+                      : 'border-border/60 bg-muted/40 text-foreground/80 hover:border-border hover:bg-accent hover:text-accent-foreground'
                   )}
                 >
                   {shortLabel(m)}

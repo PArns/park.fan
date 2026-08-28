@@ -13,13 +13,13 @@ import {
   getDay,
 } from 'date-fns';
 import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
-import { Ban, PartyPopper, Backpack, Calendar, Info, Luggage } from 'lucide-react';
+import { Info } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useCalendarData } from '@/lib/hooks/use-calendar-data';
 import { CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
 import { parkCalendarPath, type ParkCalendarMonth } from '@/lib/parks/calendar-segments';
 import type { IntegratedCalendarResponse, ParkWithAttractions } from '@/lib/api/types';
-import { Skeleton } from '@/components/ui/skeleton';
+import { ParkCalendarGridPlaceholder } from '@/components/parks/park-calendar-grid-placeholder';
 import { ParkCalendarDay } from './park-calendar-day';
 import { ParkCalendarDayDetail } from './park-calendar-day-detail';
 
@@ -62,7 +62,6 @@ export function ParkCalendarGrid({
   const parkTimezone = park.timezone ?? 'UTC';
   const router = useRouter();
   const t = useTranslations('parks');
-  const tAttractions = useTranslations('attractions');
   const tCommon = useTranslations('common');
 
   // Map locale to date-fns locale
@@ -284,73 +283,10 @@ export function ParkCalendarGrid({
           </div>
         )}
 
-        {/* Legend — each chip carries a native `title` hint explaining what it means. */}
-        <div className="flex flex-wrap items-center gap-2 text-sm">
-          <div
-            title={t('legendHints.closed')}
-            className="flex items-center gap-1.5 rounded-md border border-red-500 bg-red-50/50 px-2 py-1 dark:bg-red-950/20"
-          >
-            <Ban className="h-3.5 w-3.5 text-red-500 dark:text-red-400" />
-            <span className="text-xs">{tAttractions('historyLegend.closed')}</span>
-          </div>
-          <div
-            title={t('legendHints.holiday')}
-            className="flex items-center gap-1.5 rounded-md border border-orange-500 bg-white px-2 py-1 dark:bg-gray-900/50"
-          >
-            <PartyPopper className="h-3.5 w-3.5 text-orange-500 dark:text-orange-400" />
-            <span className="text-xs">{tAttractions('historyLegend.holiday')}</span>
-          </div>
-          <div
-            title={t('legendHints.schoolVacation')}
-            className="flex items-center gap-1.5 rounded-md border border-yellow-500 bg-white px-2 py-1 dark:bg-gray-900/50"
-          >
-            <Backpack className="h-3.5 w-3.5 text-yellow-500 dark:text-yellow-400" />
-            <span className="text-xs">{tAttractions('historyLegend.schoolVacation')}</span>
-          </div>
-          <div
-            title={t('legendHints.bridgeDay')}
-            className="flex items-center gap-1.5 rounded-md border border-blue-500 bg-white px-2 py-1 dark:bg-gray-900/50"
-          >
-            <Calendar className="h-3.5 w-3.5 text-blue-500 dark:text-blue-400" />
-            <span className="text-xs">{tAttractions('historyLegend.bridgeDay')}</span>
-          </div>
-          <div
-            title={t('legendHints.neighbor')}
-            className="flex items-center gap-1.5 rounded-md border border-amber-500 bg-white px-2 py-1 dark:bg-gray-900/50"
-          >
-            <Luggage className="h-3.5 w-3.5 text-amber-500 dark:text-amber-400" />
-            <span className="text-xs">{t('influencingHolidays')}</span>
-          </div>
-        </div>
-
-        {/* Loading Skeleton */}
-        {isLoading && (
-          <div className="space-y-4">
-            {/* Desktop Skeleton */}
-            <div className="hidden md:block">
-              {/* Weekday Headers Skeleton */}
-              <div className="mb-2 grid grid-cols-7 gap-2">
-                {Array.from({ length: 7 }).map((_, i) => (
-                  <Skeleton key={i} className="h-5 w-full" />
-                ))}
-              </div>
-              {/* Calendar Grid Skeleton */}
-              {Array.from({ length: 5 }).map((_, weekIdx) => (
-                <div key={weekIdx} className="mb-2 grid grid-cols-7 gap-2">
-                  {Array.from({ length: 7 }).map((_, dayIdx) => (
-                    <Skeleton key={dayIdx} className="h-32 w-full" />
-                  ))}
-                </div>
-              ))}
-            </div>
-            {/* Mobile Skeleton */}
-            <div className="grid grid-cols-2 gap-3 md:hidden">
-              {Array.from({ length: 10 }).map((_, i) => (
-                <Skeleton key={i} className="h-40 w-full" />
-              ))}
-            </div>
-          </div>
-        )}
+        {/* The SAME box the `next/dynamic` loading showed a moment ago, and now the same box
+          exactly: the legend that used to sit above this moved up into the panel's control row,
+          so the two waits no longer differ by a row one of them draws and the other does not. */}
+        {isLoading && <ParkCalendarGridPlaceholder />}
 
         {/* Calendar Grid — dimmed while the previous month is shown as placeholder during a
             month-navigation fetch (keepPreviousData), instead of flashing back to the skeleton. */}

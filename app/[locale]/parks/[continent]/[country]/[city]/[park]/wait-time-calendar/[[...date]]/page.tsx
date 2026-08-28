@@ -250,7 +250,7 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   const seasonsPromise = getParkSeasons(continent, country, city, parkSlug);
   // The month the page is ABOUT — on the hub that is the current one, which is the month the grid
   // opens on and therefore the month a summary there would describe. Fired here, awaited inside
-  // its own boundary below, and served from `unstable_cache` so 31.800 URLs do not each mean an
+  // its own boundary below, and data-cached so tens of thousands of URLs do not each mean an
   // upstream call.
   const summaryMonth = month ?? nowMonth;
   const monthSeedPromise = getCalendarMonthSeed(continent, country, city, parkSlug, summaryMonth);
@@ -359,6 +359,7 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
             <ParkSubPageStructuredData
               url={`${SITE_URL}/${locale}${parkCalendarPath(locale, continent, country, city, parkSlug, month ?? undefined)}`}
               parkUrl={`${SITE_URL}/${locale}${parkPath}`}
+              parkName={parkName}
               name={monthName ? `${parkName} – ${monthName}` : `${parkName} – ${t('breadcrumb')}`}
               locale={locale}
             />
@@ -429,31 +430,23 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
           }
         />
 
-        {/* What this month actually looks like, in sentences, on the server.
-
-          The block that makes a month page a page. Without it `/2026/11` and `/2026/2` shipped
-          the same 1.097 words of HTML apart from the word „November", because everything else a
-          reader came for is inside the `ssr: false` grid further down. */}
-        <Suspense fallback={<ParkCalendarMonthSummarySkeleton />}>
-          <SeededMonthSummary
-            seedPromise={monthSeedPromise}
-            park={park}
-            locale={locale}
-            monthLabel={monthLabel(locale, summaryMonth)}
-            timezone={park.timezone}
-          />
-        </Suspense>
-
-        {/* The answer, streamed. Same seeding as the park page's tile hint, and the same
-          placeholder — which renders the REAL header, so the grid below it does not jump when the
-          seed lands. No calendar link in the header here: it would point at this page. */}
+        {/* One chapter, one stream. „Beste Reisezeit" and the month's own sentences answer the
+          same question at two grains, so they arrive as one box rather than as two cards with a
+          strip of park photograph between them — and as one boundary rather than two, which is
+          also one placeholder to keep honest instead of two that have to agree. */}
         <Suspense
           fallback={
-            <ParkBestDaysSectionSkeleton parkName={parkName} parkSlug={parkSlug} locale={locale} />
+            <ParkBestDaysSectionSkeleton
+              parkName={parkName}
+              parkSlug={parkSlug}
+              locale={locale}
+              intro={<ParkCalendarMonthSummarySkeleton />}
+            />
           }
         >
           <SeededBestDays
             seedPromise={bestDaysSeedPromise}
+            monthSeedPromise={monthSeedPromise}
             continent={continent}
             country={country}
             city={city}
@@ -461,7 +454,9 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
             timezone={park.timezone}
             hasOperatingSchedule={park.hasOperatingSchedule}
             parkName={parkName}
+            park={park}
             locale={locale}
+            monthLabel={monthLabel(locale, summaryMonth)}
             seedNowMs={seedNowMs}
           />
         </Suspense>
@@ -479,18 +474,18 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
           prevMonth={prevMonth}
           nextMonth={nextMonth}
           className="mt-8"
-        />
-
-        {/* Every month of the window, one hop from here. The stepper above links two of them;
-          without this the far end of the range is a 25-link chain from the hub. */}
-        <ParkCalendarMonthIndex
-          locale={locale}
-          continent={continent}
-          country={country}
-          city={city}
-          parkSlug={parkSlug}
-          currentMonth={nowMonth}
-          activeMonth={month}
+          // Every month of the window, one hop from here. The stepper inside the card links two.
+          monthIndex={
+            <ParkCalendarMonthIndex
+              locale={locale}
+              continent={continent}
+              country={country}
+              city={city}
+              parkSlug={parkSlug}
+              currentMonth={nowMonth}
+              activeMonth={month}
+            />
+          }
         />
       </ParkPageShell>
     </RouteMessages>
@@ -510,12 +505,20 @@ function parkCalendarSuffix(locale: string, month: ParkCalendarMonth | null): st
 }
 
 /**
- * Streamed best-days slot — the await happens here rather than in the page body, so the shell
- * flushes at park-fetch speed and this content arrives in the same response. A `null` seed
- * (timeout or error) falls through to the section's own skeleton plus its client fetch.
+ * The streamed „beste Reisezeit" chapter, month summary included.
+ *
+ * Two awaits in one boundary on purpose. They used to be two: the month summary in its own
+ * <Suspense> above this one, each with its own placeholder, each resolving on its own schedule —
+ * so the chapter assembled itself in two visible steps. They answer the same question and are one
+ * box now, so they are one wait.
+ *
+ * Either half may be missing and the chapter still stands. A `null` best-days seed falls through
+ * to the section's own client fetch; a `null` month seed (timeout, or a month with no operating
+ * day at all) simply renders no lead-in.
  */
 async function SeededBestDays({
   seedPromise,
+  monthSeedPromise,
   continent,
   country,
   city,
@@ -523,10 +526,13 @@ async function SeededBestDays({
   timezone,
   hasOperatingSchedule,
   parkName,
+  park,
   locale,
+  monthLabel,
   seedNowMs,
 }: {
   seedPromise: Promise<BestDaysSnapshot | null>;
+  monthSeedPromise: Promise<IntegratedCalendarResponse | null>;
   continent: string;
   country: string;
   city: string;
@@ -534,10 +540,27 @@ async function SeededBestDays({
   timezone: string;
   hasOperatingSchedule: boolean;
   parkName: string;
+  park: ParkWithAttractions;
   locale: string;
+  monthLabel: string;
   seedNowMs: number;
 }) {
-  const seed = await seedPromise;
+  const [seed, monthSeed] = await Promise.all([seedPromise, monthSeedPromise]);
+
+  // The park's own date, not the server's: `isPast` decides whether the prose reads „am ruhigsten
+  // wird es" or „war es", and a park in Florida is still on yesterday for six hours after
+  // midnight in Berlin.
+  const tz = timezone || 'UTC';
+  const todayIso = new Intl.DateTimeFormat('en-CA', {
+    timeZone: tz,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date());
+  const summary = monthSeed?.days?.length
+    ? summarizeCalendarMonth(monthSeed.days, todayIso, tz)
+    : null;
+
   return (
     <ParkBestDaysSection
       continent={continent}
@@ -550,57 +573,16 @@ async function SeededBestDays({
       locale={locale}
       initialCalendar={seed}
       seedNowMs={seedNowMs}
-    />
-  );
-}
-
-/**
- * Streamed month-summary slot — the await happens here, not in the page body, so the shell
- * flushes at park-fetch speed and the month's own sentences arrive in the same response.
- *
- * Renders nothing at all in two cases, and both are deliberate. A `null` seed means the fetch
- * timed out or failed, and a `null` summary means the month held no days worth summarising (a
- * park shut for the season, an out-of-catalogue range). Neither is worth a placeholder or an
- * apology — the grid below still answers the page, and an empty card that says so would be a
- * block of furniture on however many parks are out of season this month.
- *
- * The "today" the summary compares against is the PARK's date, not the server's: `isPast` decides
- * whether the prose reads „am ruhigsten wird es" or „war es", and a park in Florida is still on
- * yesterday for six hours after midnight in Berlin.
- */
-async function SeededMonthSummary({
-  seedPromise,
-  park,
-  locale,
-  monthLabel,
-  timezone,
-}: {
-  seedPromise: Promise<IntegratedCalendarResponse | null>;
-  park: ParkWithAttractions;
-  locale: string;
-  monthLabel: string;
-  timezone: string;
-}) {
-  const seed = await seedPromise;
-  if (!seed?.days?.length) return null;
-
-  const tz = timezone || 'UTC';
-  const todayIso = new Intl.DateTimeFormat('en-CA', {
-    timeZone: tz,
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  }).format(new Date());
-
-  const summary = summarizeCalendarMonth(seed.days, todayIso, tz);
-  if (!summary) return null;
-
-  return (
-    <ParkCalendarMonthSummary
-      summary={summary}
-      park={park}
-      locale={locale}
-      monthLabel={monthLabel}
+      intro={
+        summary ? (
+          <ParkCalendarMonthSummary
+            summary={summary}
+            park={park}
+            locale={locale}
+            monthLabel={monthLabel}
+          />
+        ) : null
+      }
     />
   );
 }

@@ -30,29 +30,12 @@ import { existsSync } from 'node:fs';
 
 const BASE = process.env.BASE ?? 'http://localhost:3000';
 // Same rule as scripts/check-card-framing.mjs: prefer a Chromium the image already ships.
-const PREINSTALLED_CHROMIUM = '/opt/pw-browsers/chromium';
-/**
- * Which Chromium to drive.
- *
- * The env override first, then the image's preinstalled build, then **nothing** — and the third
- * one is the fix. This was a bare constant pointing at `/opt/pw-browsers/...`, a path that exists
- * in the CI image and on no developer machine, so `chromium.launch({ executablePath })` threw
- * `executable doesn't exist` on macOS and this script could not be run at all outside CI. That
- * matters more here than for an ordinary check: CLAUDE.md names the CLS harness as the way to
- * prove a layout-shift fix, and a harness nobody can start locally gets worked around instead of
- * used.
- *
- * Returning `undefined` hands the choice back to Playwright, which resolves its own installed
- * browser from `PLAYWRIGHT_BROWSERS_PATH` or the default cache — the normal path on a laptop.
- */
-function resolveChromium() {
-  const explicit = process.env.CHROMIUM_PATH;
-  if (explicit) return explicit;
-  if (existsSync(PREINSTALLED_CHROMIUM)) return PREINSTALLED_CHROMIUM;
-  return undefined;
-}
-
-const PREINSTALLED = resolveChromium();
+/** Same fallback the other Playwright scripts use: the CI image's build when it is there, and
+ *  otherwise nothing, which hands the choice to Playwright's own resolution. `CHROMIUM_PATH` is
+ *  the name `check-card-framing`, `check-webmcp` and `render-coaster-elements` already honour —
+ *  a second spelling would be a variable a developer exports and this script ignores. */
+const PREINSTALLED = process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium';
+const LAUNCH = existsSync(PREINSTALLED) ? { executablePath: PREINSTALLED } : {};
 
 /** All six, because the heading, the hint and the park names are all translated. */
 const LOCALES = ['de', 'en', 'nl', 'fr', 'es', 'it'];
@@ -67,7 +50,7 @@ const TOP_GAP = 12;
  */
 const TOLERANCE = 2;
 
-const browser = await chromium.launch(PREINSTALLED ? { executablePath: PREINSTALLED } : {});
+const browser = await chromium.launch(LAUNCH);
 
 /** Height of whichever resting card is currently on screen, plus the reserved figure. */
 const measure = (page) =>

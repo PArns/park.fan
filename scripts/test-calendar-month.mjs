@@ -135,6 +135,45 @@ test(
 );
 
 test(
+  'today never competes: its crowdLevel is a live reading, not a day aggregate',
+  () => {
+    // The API overrides crowdLevel on TODAY with live occupancy. At 09:30 on a busy Saturday that
+    // reads `very_low` because nobody has queued yet — and today would win a contest it is not
+    // even entered in, on the same scale as thirty forecasts.
+    const days = month(30, (i) =>
+      i === 5 ? { isToday: true, crowdLevel: 'very_low' } : { crowdLevel: 'moderate' }
+    );
+    return summarizeCalendarMonth(days, '2026-11-06', TZ).quietest;
+  },
+  null
+);
+
+test(
+  'ties are broken on crowdScore, not on the six-value bucket',
+  () => {
+    // Twenty days at `low` is what a weekday/weekend park looks like, and on the enum alone that
+    // is twenty tied winners → suppressed. The continuous score separates them.
+    const days = month(30, (i) => ({
+      crowdLevel: i < 20 ? 'low' : 'high',
+      crowdScore: i === 3 ? 0.1 : i < 20 ? 0.5 : 0.9,
+    }));
+    return summarizeCalendarMonth(days, '2026-12-01', TZ)
+      .quietest.map((d) => d.date)
+      .join(',');
+  },
+  '2026-11-04'
+);
+
+test('a zero-minute headliner day counts toward the average', () => {
+  const days = month(12, (i) => ({
+    crowdLevel: 'moderate',
+    headlinerForecast: { avgWait: i < 6 ? 0 : 20, rides: [] },
+  }));
+  // 0,0,0,0,0,0,20,20,20,20,20,20 → mean 10. Dropping the zeros would have reported 20.
+  return summarizeCalendarMonth(days, '2026-12-01', TZ).avgHeadlinerWait;
+}, 10);
+
+test(
   'an unknown crowd level is not a rating',
   () => {
     // Twenty unknown days plus seven rated ones: still under the sample floor.

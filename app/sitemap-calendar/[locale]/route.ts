@@ -24,16 +24,29 @@ import {
  * `/2026/8` to `/…/wartezeiten-kalender` in August. Listing a URL that canonicals elsewhere is a
  * duplicate signal this app would be inflicting on itself.
  *
- * **The range stops one month short of the route's window at each end.** This file is generated
- * and cached for a day; the route recomputes its range from a live clock on every request. At a
- * month rollover a cached sitemap would otherwise advertise the month that just fell off the
- * back — a 404 in a sitemap, which is the one error here that costs something.
+ * **Both ends stop one month short of what the route serves.** This file is generated and cached
+ * for a day; the route recomputes its range from a live clock on every request. At a month
+ * rollover a cached copy would otherwise advertise a month that has just fallen outside — a 404
+ * in a sitemap, which is the one error here that costs something. See the inline note at `back`
+ * for why the archive-bounded end needs the slack too.
  *
  * **The window is measured from today IN THE PARK.** `currentParkCalendarMonth(park.timezone)`,
  * exactly as the page does it, or a park whose date has already rolled over gets a sitemap for a
  * different range than its own route will answer.
  */
 export const revalidate = 86400;
+
+/** Same helper the attractions sitemap uses. The slugs come from `getGeoStructure()`, i.e.
+ *  upstream data this app does not control, and one `&` in a new park slug makes the whole
+ *  3,816-URL file malformed — rejected silently, per locale. */
+function xmlEscape(s: string): string {
+  return s
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll("'", '&apos;')
+    .replaceAll('"', '&quot;');
+}
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale: `${locale}.xml` }));
@@ -50,15 +63,17 @@ export async function GET(
   const segment = PARK_CALENDAR_SEGMENTS[locale as Locale];
   const geo = await getGeoStructure(86400);
 
-  // Backwards: whatever the archive actually covers, from `parkCalendarMonthsBack` — the same
-  // function the route's range check and the month index read, so a sitemap entry cannot outlive
-  // the URL it names. No slack subtracted at this end: the window only ever GROWS as the archive
-  // fills, so a cached sitemap lists fewer months than the route serves, never more.
+  // One month short at BOTH ends. This file is generated and cached for a day while the route
+  // recomputes its range from a live clock, so at a month rollover a cached copy would otherwise
+  // advertise a month that has just fallen outside — a 404 in a sitemap, which is the one error
+  // here that costs something.
   //
-  // Forwards: one month short, on purpose. This file is generated and cached for a day while the
-  // route recomputes its range from a live clock, so at a month rollover a cached sitemap would
-  // otherwise advertise the month that just fell off the far end — a 404 in a sitemap, which is
-  // the one error here that costs something.
+  // The back end looks like it would not need the slack, because `parkCalendarMonthsBack` grows
+  // as the archive fills and a growing window can only make a cached file too SHORT. That holds
+  // until it saturates at `PARK_CALENDAR_MONTH_SPAN.back`. From January 2027 it is pinned at
+  // twelve and the oldest served month advances with every rollover, so a copy generated on
+  // 2027-02-28 lists 2026-02 and the route stops serving it the next morning — 212 parks × 6
+  // locales of listed 404s per month boundary.
   const forward = PARK_CALENDAR_MONTH_SPAN.forward - 1;
 
   const urls: string[] = [];
@@ -70,7 +85,7 @@ export async function GET(
           const nowMonth = currentParkCalendarMonth(park.timezone);
           // Per park, because `nowMonth` is per park: a park whose date has already rolled over
           // reaches one month further back than one that has not.
-          const back = parkCalendarMonthsBack(nowMonth);
+          const back = Math.max(0, parkCalendarMonthsBack(nowMonth) - 1);
           for (let offset = -back; offset <= forward; offset++) {
             if (offset === 0) continue;
             const m = shiftParkCalendarMonth(nowMonth, offset);
@@ -81,7 +96,7 @@ export async function GET(
             // value that gets a sitemap's lastmod discounted (docs/seo/sitemaps.md). Absent is
             // the honest answer until there is a fingerprint for what a calendar shows.
             urls.push(
-              `<url><loc>${base}/${m.year}/${m.month}</loc>` +
+              `<url><loc>${xmlEscape(`${base}/${m.year}/${m.month}`)}</loc>` +
                 `<changefreq>${offset < 0 ? 'monthly' : 'weekly'}</changefreq>` +
                 `<priority>${distance <= 3 ? '0.6' : distance <= 6 ? '0.5' : '0.4'}</priority></url>`
             );

@@ -111,15 +111,42 @@ export interface CalendarMonthSummary {
   isPast: boolean;
 }
 
-/** A day that counts: scheduled to operate and carrying a crowd rating we can order. */
+/**
+ * A day that counts: scheduled to operate, carrying a rating, and comparable to the others.
+ *
+ * Two things here are not obvious and both were wrong first.
+ *
+ * **Today is excluded.** `CalendarDay.crowdLevel` is documented as being overridden on TODAY with
+ * the live occupancy, while every other day carries a day aggregate — two different statistics
+ * under one field name. A hub rendered at 09:30 on a Saturday reads today as `very_low` because
+ * nobody has queued yet, and today would be named the month's quietest day on its busiest
+ * weekday, with the grid underneath saying the opposite. One day out of thirty is a cheap price
+ * for every remaining day being on the same scale.
+ *
+ * **The ordering is `crowdScore`, not the six-value enum.** `CrowdLevel` has six buckets and a
+ * month has thirty days, so ties are the rule rather than the exception: a park whose weekdays
+ * forecast `very_low` and weekends `high` — the archetypal quiet-day shape this whole block
+ * exists to surface — puts twenty days on the minimum, and {@link MAX_NAMED_DAYS} then suppresses
+ * the sentence on exactly the months that had the clearest answer. `crowdScore` is the continuous
+ * value the bucket was derived from and is right there on the payload. The enum stays for the
+ * badge, which is what a reader sees; the ranking uses the number underneath it.
+ */
 function ratedOpenDays(days: CalendarDay[]): Array<CalendarDay & { rank: number }> {
   const out: Array<CalendarDay & { rank: number }> = [];
   for (const day of days) {
     if (day.status !== 'OPERATING') continue;
+    if (day.isToday) continue;
     const level = day.crowdLevel;
     if (level === 'closed' || level === 'unknown') continue;
-    const rank = CROWD_RANK[level];
-    if (rank === undefined) continue;
+    const bucket = CROWD_RANK[level];
+    if (bucket === undefined) continue;
+    // The score where the API sends one, the bucket where it does not. Scaled onto the bucket
+    // range so a month that mixes the two still orders sensibly rather than putting every scored
+    // day below every unscored one.
+    const rank =
+      typeof day.crowdScore === 'number' && Number.isFinite(day.crowdScore)
+        ? day.crowdScore
+        : bucket;
     out.push({ ...day, rank });
   }
   return out;
@@ -240,7 +267,10 @@ export function summarizeCalendarMonth(
 
   const waits = rated
     .map((d) => d.headlinerForecast?.avgWait)
-    .filter((w): w is number => typeof w === 'number' && Number.isFinite(w) && w > 0);
+    // `>= 0`, not `> 0`: the API rounds headliner waits to five minutes, so 0 is a value it
+    // really emits on a quiet day, not a sentinel for „absent". Dropping those days computed the
+    // month's average over its busy half and printed a number the grid underneath contradicts.
+    .filter((w): w is number => typeof w === 'number' && Number.isFinite(w) && w >= 0);
 
   const lastDate = days.reduce((acc, d) => (d.date > acc ? d.date : acc), days[0].date);
 

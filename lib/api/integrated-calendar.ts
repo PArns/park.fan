@@ -143,6 +143,37 @@ async function fetchBestDays(
 }
 
 /**
+ * Wait for a seed, but not for long, and never leave a timer behind.
+ *
+ * Two callers had a character-for-character copy of this race, which is two places to fix when
+ * the contract changes and one of them to forget. Both also leaked their `setTimeout` for the
+ * full window even when the promise resolved in 40 ms — on a route that fires two seeds per
+ * request across tens of thousands of URLs.
+ *
+ * On timeout the caller gets `null` and `after()` keeps the fetch alive past the response, so the
+ * work still lands in the data cache and the NEXT request finds it warm. Consumed inside a
+ * <Suspense> boundary, never on the critical path.
+ */
+async function withSeedTimeout<T>(promise: Promise<T | null>, ms: number): Promise<T | null> {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  try {
+    const result = await Promise.race([
+      promise,
+      new Promise<'timeout'>((resolve) => {
+        timer = setTimeout(() => resolve('timeout'), ms);
+      }),
+    ]);
+    if (result === 'timeout') {
+      after(() => promise);
+      return null;
+    }
+    return result;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+/**
  * Best-days snapshot for the SSR seed — Next data-cached ({@link BEST_DAYS_REVALIDATE}) + tagged,
  * so repeat renders never touch the backend and the on-demand `best-days:<slug>` webhook keeps it
  * fresh. Feeds the best-days section + the crowd FAQ / FAQPage JSON-LD.
@@ -196,21 +227,10 @@ export async function getBestDaysCalendarSeed(
   city: string,
   parkSlug: string
 ): Promise<BestDaysSnapshot | null> {
-  const snapshotPromise = getBestDaysCalendar(continent, country, city, parkSlug).catch(() => null);
-
-  const result = await Promise.race([
-    snapshotPromise,
-    new Promise<'timeout'>((resolve) => {
-      setTimeout(() => resolve('timeout'), BEST_DAYS_SEED_TIMEOUT_MS);
-    }),
-  ]);
-
-  if (result === 'timeout') {
-    after(() => snapshotPromise);
-    return null;
-  }
-
-  return result;
+  return withSeedTimeout(
+    getBestDaysCalendar(continent, country, city, parkSlug).catch(() => null),
+    BEST_DAYS_SEED_TIMEOUT_MS
+  );
 }
 
 /**
@@ -296,21 +316,8 @@ export async function getCalendarMonthSeed(
   const from = `${year}-${pad(month)}-01`;
   const to = `${year}-${pad(month)}-${pad(lastDay)}`;
 
-  const monthPromise = fetchCalendarMonth(continent, country, city, parkSlug, from, to).catch(
-    () => null
+  return withSeedTimeout(
+    fetchCalendarMonth(continent, country, city, parkSlug, from, to).catch(() => null),
+    CALENDAR_MONTH_SEED_TIMEOUT_MS
   );
-
-  const result = await Promise.race([
-    monthPromise,
-    new Promise<'timeout'>((resolve) => {
-      setTimeout(() => resolve('timeout'), CALENDAR_MONTH_SEED_TIMEOUT_MS);
-    }),
-  ]);
-
-  if (result === 'timeout') {
-    after(() => monthPromise);
-    return null;
-  }
-
-  return result;
 }

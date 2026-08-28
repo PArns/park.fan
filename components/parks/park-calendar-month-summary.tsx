@@ -2,7 +2,6 @@ import { getTranslations } from 'next-intl/server';
 import { CalendarRange, Clock, GraduationCap, Timer } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
-import { Card } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { getParkArticleForms } from '@/lib/faq/park-faq';
@@ -59,7 +58,12 @@ export async function ParkCalendarMonthSummary({
   monthLabel: string;
 }) {
   const t = await getTranslations('parks.calendarPage.summary');
-  const { parkNom, parkLoc } = getParkArticleForms(park, locale);
+  // Only the nominative is used. The headliner sentence used to interpolate `parkLoc`,
+  // which `getParkArticleForms` prefixes with a preposition for GERMAN ONLY — the other
+  // five locales got the bare park name glued to the end of a clause („at the headline
+  // rides Phantasialand"). The park is already named in the first sentence, so the
+  // second one does not need it at all.
+  const { parkNom } = getParkArticleForms(park, locale);
 
   /**
    * „Dienstag, 3. und Mittwoch, 11." — weekday plus day of month, joined the way the reader's
@@ -109,7 +113,7 @@ export async function ParkCalendarMonthSummary({
     sentences.push(t('schoolVacation', { days: summary.schoolVacationDays }));
   }
   if (summary.avgHeadlinerWait !== null) {
-    sentences.push(t(`headliner${tense}`, { minutes: summary.avgHeadlinerWait, park: parkLoc }));
+    sentences.push(t(`headliner${tense}`, { minutes: summary.avgHeadlinerWait }));
   }
 
   const factCandidates: Array<Fact | false | null> = [
@@ -150,7 +154,7 @@ export async function ParkCalendarMonthSummary({
   const prose = sentences.join(' ').replace(/\.\.(?=\s|$)/g, '.');
 
   return (
-    <Card className="mt-6 gap-4 p-4 md:p-6">
+    <div className="flex flex-col gap-4">
       <p className="text-sm leading-relaxed text-pretty md:text-base">{prose}</p>
 
       {/* The same numbers again, scannable. Not decoration: the prose above is what an answer
@@ -187,7 +191,7 @@ export async function ParkCalendarMonthSummary({
           ))}
         </div>
       )}
-    </Card>
+    </div>
   );
 }
 
@@ -216,7 +220,7 @@ export async function ParkCalendarMonthSummary({
  */
 export function ParkCalendarMonthSummarySkeleton() {
   return (
-    <Card className="mt-6 gap-4 p-4 md:p-6" aria-hidden="true">
+    <div className="flex flex-col gap-4" aria-hidden="true">
       <div className="flex flex-col gap-[6px]">
         {/* Five lines below `sm`, three from `md` — the last two collapse away where the wider
           measure fits the same words on fewer lines. */}
@@ -235,6 +239,6 @@ export function ParkCalendarMonthSummarySkeleton() {
           </div>
         ))}
       </dl>
-    </Card>
+    </div>
   );
 }

@@ -671,6 +671,7 @@ export function ShowsStructuredData({
 export function ParkSubPageStructuredData({
   url,
   parkUrl,
+  parkName,
   name,
   locale,
 }: {
@@ -678,6 +679,8 @@ export function ParkSubPageStructuredData({
   url: string;
   /** The park page's URL, which is also the `@id` of its `AmusementPark` node. */
   parkUrl: string;
+  /** Names the stub below — without it `about` points at nothing this document contains. */
+  parkName: string;
   /** The page's own name — the month for a month page, so the 25 do not share one. */
   name: string;
   locale?: string;
@@ -686,12 +689,25 @@ export function ParkSubPageStructuredData({
     <JsonLd
       data={{
         '@context': 'https://schema.org',
-        '@type': 'WebPage',
-        '@id': `${url}#webpage`,
-        url,
-        name,
-        ...(locale && { inLanguage: locale, isPartOf: { '@id': websiteId(locale) } }),
-        about: { '@id': parkUrl },
+        '@graph': [
+          {
+            '@type': 'WebPage',
+            '@id': `${url}#webpage`,
+            url,
+            name,
+            ...(locale && { inLanguage: locale, isPartOf: { '@id': websiteId(locale) } }),
+            about: { '@id': parkUrl },
+          },
+          // A two-property stub for the thing `about` and `Dataset.spatialCoverage` point at.
+          //
+          // `@id` on its own is a cross-document reference: correct JSON-LD, and worth nothing to
+          // a consumer reading this page without also fetching and merging the park page. The
+          // full `AmusementPark` — address, hours, photos, socials — lives there and stays there,
+          // because restating it on 24,000 URLs is one entity written 24,000 times and free to
+          // drift from the moment one of them is edited. A type and a name are enough to make the
+          // reference mean something here, and neither can go stale.
+          { '@type': 'AmusementPark', '@id': parkUrl, name: parkName, url: parkUrl },
+        ],
       }}
     />
   );

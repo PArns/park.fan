@@ -7,12 +7,13 @@ import { CalendarCheck, CalendarDays, ChevronLeft, ChevronRight, Loader2 } from 
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Skeleton } from '@/components/ui/skeleton';
+import { ParkCalendarGridPlaceholder } from '@/components/parks/park-calendar-grid-placeholder';
 import { Link, getPathname } from '@/i18n/navigation';
 import { suppressScrollToTopFor } from '@/lib/navigation/history-navigation';
 import { cn } from '@/lib/utils';
 import { parkCalendarPath, type ParkCalendarMonth } from '@/lib/parks/calendar-segments';
 import { calendarGridReservation } from '@/lib/parks/calendar-grid-geometry';
+import { ParkCalendarLegend } from '@/components/parks/park-calendar-legend';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
 /**
@@ -37,10 +38,9 @@ const ParkCalendarGrid = dynamic(
     ssr: false,
     // The three custom properties are set by the wrapper below, which is the only place that
     // knows the month. A `loading` component is created at module scope and never sees props, so
-    // the number has to reach it through the cascade.
-    loading: () => (
-      <Skeleton className="h-[var(--cal-grid-h)] w-full rounded-xl md:h-[var(--cal-grid-h-md)] lg:h-[var(--cal-grid-h-lg)]" />
-    ),
+    // the number has to reach it through the cascade — and the grid's OWN loading state renders
+    // the same component for the same reason, or the two waits reserve two different boxes.
+    loading: () => <ParkCalendarGridPlaceholder />,
   }
 );
 
@@ -54,6 +54,7 @@ export function ParkCalendarPanel({
   currentMonth,
   prevMonth,
   nextMonth,
+  monthIndex,
   className,
 }: {
   park: ParkWithAttractions;
@@ -74,6 +75,15 @@ export function ParkCalendarPanel({
   currentMonth: ParkCalendarMonth;
   prevMonth: ParkCalendarMonth | null;
   nextMonth: ParkCalendarMonth | null;
+  /**
+   * The month index, rendered inside this card under the grid.
+   *
+   * It sat under the whole page before, as a bare `<nav>` on the park photo — white chips on a
+   * night shot of a carousel, with no surface behind them and every other chapter of the page
+   * between them and the calendar they belong to. It is the same control as the stepper at the
+   * top of this card, just showing every month at once, so it belongs in the same box.
+   */
+  monthIndex?: React.ReactNode;
   className?: string;
 }) {
   const t = useTranslations('parks.calendarPage');
@@ -130,7 +140,11 @@ export function ParkCalendarPanel({
         `prevMonth`/`nextMonth` are `null` where the window the route serves runs out, and the
         stepper stops rather than pointing at a 404. */}
       <Card className="relative gap-4 rounded-t-none border-t-0 p-4 md:p-6">
-        <div className="flex items-center justify-end gap-2">
+        {/* Control row: what the colours mean on the left, where you are in the year on the right.
+          The legend was inside the `ssr: false` grid and is server-rendered here — it needs no
+          data, and down there it made the grid's two loading states differ by its own height. */}
+        <div className="flex flex-wrap items-center justify-end gap-2">
+          <ParkCalendarLegend className="mr-auto" />
           {/* „Heute" only once it would do something. Twelve months in each direction is a long
             way to walk back one arrow at a time, and the browser's back button is not the same
             offer — somebody who stepped forward six months would have to press it six times.
@@ -197,6 +211,10 @@ export function ParkCalendarPanel({
             nextMonth={nextMonth}
           />
         </div>
+
+        {/* Separated by a rule rather than by a gap: the stepper above, the grid, and this are one
+          control at three grains, and a floating chip row reads as a different chapter. */}
+        {monthIndex ? <div className="border-t pt-4">{monthIndex}</div> : null}
       </Card>
     </section>
   );

@@ -71,14 +71,18 @@ export function listRowsInMonth({ year, month }: ParkCalendarMonth): number {
  * where the cells are still tall because seven columns in 768 px are narrow, and the week grid
  * from `lg` up where it settles — 1024, 1280 and 1440 all measured the same height, so there is
  * no fourth band to add.
+ *
+ * The offsets each dropped by the legend row when it moved up into the panel's control row: it
+ * measured 60 px on a 390 px phone (two wrapped lines) and 26 px from `md` up, plus a 16 px gap in
+ * both cases, and the figures above were fitted against a grid that still contained it.
  */
 const MODEL = {
   /** < 768 px — two-column list, one row per two days. */
-  base: { perRow: 145, base: 0 },
+  base: { perRow: 145, base: -76 },
   /** 768–1023 px — seven-column week grid, narrow cells. */
-  md: { perRow: 165, base: 60 },
+  md: { perRow: 165, base: 18 },
   /** ≥ 1024 px — seven-column week grid, settled. */
-  lg: { perRow: 133, base: 100 },
+  lg: { perRow: 133, base: 58 },
 } as const;
 
 export interface CalendarGridReservation {

@@ -30,6 +30,7 @@ export function ParkBestDaysSectionSkeleton({
   parkSlug,
   locale,
   showCalendarLink = false,
+  intro,
 }: {
   parkName: string;
   parkSlug: string;
@@ -37,6 +38,9 @@ export function ParkBestDaysSectionSkeleton({
   /** Mirror the header's calendar button — pass what <ParkBestDaysSection> gets, or the
    *  reservation is short by the button's height on every breakpoint that wraps it. */
   showCalendarLink?: boolean;
+  /** Placeholder for the section's `intro` row — the calendar page's month summary. Omit where
+   *  the section renders none, or the box reserves a row it will never fill. */
+  intro?: React.ReactNode;
 }) {
   return (
     <section className="mt-8 space-y-4">
@@ -67,6 +71,9 @@ export function ParkBestDaysSectionSkeleton({
             'border-border/50 overflow-hidden rounded-b-xl border border-t-0'
           )}
         >
+          {/* Same row, same padding, same rule as the real box — the summary lands here. */}
+          {intro ? <div className="border-border/50 border-b p-4 md:p-5">{intro}</div> : null}
+
           <PanelGrid columnCount={3}>
             {[
               { titleWidth: 'w-40', chips: 3, chipWidth: 'w-12' }, // quietest weekdays
