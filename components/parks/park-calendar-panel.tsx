@@ -12,6 +12,7 @@ import { Link, getPathname } from '@/i18n/navigation';
 import { suppressScrollToTopFor } from '@/lib/navigation/history-navigation';
 import { cn } from '@/lib/utils';
 import { parkCalendarPath, type ParkCalendarMonth } from '@/lib/parks/calendar-segments';
+import { calendarGridReservation } from '@/lib/parks/calendar-grid-geometry';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
 /**
@@ -22,10 +23,25 @@ import type { ParkWithAttractions } from '@/lib/api/types';
  * which a server render can do. The loading box is the grid's own height rather than `null`,
  * because there is a whole page footer under it and a boundary that reserves nothing pushes that
  * footer down when the chunk lands.
+ *
+ * That box used to be `h-[36rem]` — 576 px, one number for two layouts and twelve months. It was
+ * short at every breakpoint and catastrophically short on a phone: measured against production on
+ * Phantasialand's November 2026, the real grid is 1992 px at 390 px wide, so the calendar landed
+ * and threw everything below it — best days, statistics, FAQ, footer — down by 1416 px. The
+ * height now comes from `calendarGridReservation`, which reads it off the month in the URL; see
+ * that module for the measurements and why the row count is the part a server can know.
  */
 const ParkCalendarGrid = dynamic(
   () => import('@/components/parks/park-calendar-grid').then((m) => m.ParkCalendarGrid),
-  { ssr: false, loading: () => <Skeleton className="h-[36rem] w-full rounded-xl" /> }
+  {
+    ssr: false,
+    // The three custom properties are set by the wrapper below, which is the only place that
+    // knows the month. A `loading` component is created at module scope and never sees props, so
+    // the number has to reach it through the cascade.
+    loading: () => (
+      <Skeleton className="h-[var(--cal-grid-h)] w-full rounded-xl md:h-[var(--cal-grid-h-md)] lg:h-[var(--cal-grid-h-lg)]" />
+    ),
+  }
 );
 
 export function ParkCalendarPanel({
@@ -62,6 +78,8 @@ export function ParkCalendarPanel({
 }) {
   const t = useTranslations('parks.calendarPage');
   const locale = useLocale();
+  // The month the grid will draw — on the hub that is today's, which is what it opens on.
+  const reservation = calendarGridReservation(month ?? currentMonth);
   /**
    * The URL for a month — and the hub's URL for the CURRENT month, deliberately.
    *
@@ -151,16 +169,34 @@ export function ParkCalendarPanel({
           </MonthStep>
         </div>
 
-        <ParkCalendarGrid
-          park={park}
-          continent={continent}
-          country={country}
-          city={city}
-          parkSlug={parkSlug}
-          month={month}
-          prevMonth={prevMonth}
-          nextMonth={nextMonth}
-        />
+        {/* The wrapper exists to carry the reservation, and it carries it as three custom
+          properties rather than three classes because Tailwind cannot see a class name that was
+          computed — `h-[${n}px]` produces no CSS. The arbitrary-value utilities on the skeleton
+          read these, so the arithmetic has exactly one home (`calendarGridReservation`) and the
+          JIT keeps working.
+
+          Set on the month the GRID will show, which on the hub is the current month rather than
+          `null` — the hub opens on today and reserves for today. */}
+        <div
+          style={
+            {
+              '--cal-grid-h': `${reservation.base}px`,
+              '--cal-grid-h-md': `${reservation.md}px`,
+              '--cal-grid-h-lg': `${reservation.lg}px`,
+            } as React.CSSProperties
+          }
+        >
+          <ParkCalendarGrid
+            park={park}
+            continent={continent}
+            country={country}
+            city={city}
+            parkSlug={parkSlug}
+            month={month}
+            prevMonth={prevMonth}
+            nextMonth={nextMonth}
+          />
+        </div>
       </Card>
     </section>
   );

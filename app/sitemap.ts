@@ -278,6 +278,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
               alternates: calendarAlternates,
             });
           }
+          // The month pages under this hub live in `/sitemap-calendar.xml`, not here. One build
+          // with them inline measured this file at 39.5 MB against a 50 MB limit — see that
+          // route for the arithmetic and why the split mirrors the attractions one.
         }
       }
     }

@@ -9,8 +9,10 @@ import { RouteMessages } from '@/i18n/route-messages';
 import { getParkFaqGlossary } from '@/lib/faq/park-faq-terms';
 import { catchNonFatal } from '@/lib/api/client';
 import { getParkByGeoPath, getParkSeasons, leanParkForParkShell } from '@/lib/api/parks';
-import { getBestDaysCalendarSeed } from '@/lib/api/integrated-calendar';
+import { getBestDaysCalendarSeed, getCalendarMonthSeed } from '@/lib/api/integrated-calendar';
 import type { BestDaysSnapshot } from '@/lib/api/integrated-calendar';
+import { summarizeCalendarMonth } from '@/lib/parks/calendar-month-summary';
+import type { IntegratedCalendarResponse, ParkWithAttractions } from '@/lib/api/types';
 import {
   findParkPageRedirect,
   findRelocatedParkRedirect,
@@ -35,10 +37,18 @@ import {
 } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 
-import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import {
+  BreadcrumbStructuredData,
+  ParkSubPageStructuredData,
+} from '@/components/seo/structured-data';
 import { ParkBestDaysSection } from '@/components/parks/park-best-days-section';
 import { ParkBestDaysSectionSkeleton } from '@/components/parks/park-best-days-section-skeleton';
 import { ParkCalendarPanel } from '@/components/parks/park-calendar-panel';
+import {
+  ParkCalendarMonthSummary,
+  ParkCalendarMonthSummarySkeleton,
+} from '@/components/parks/park-calendar-month-summary';
+import { ParkCalendarMonthIndex } from '@/components/parks/park-calendar-month-index';
 import { ParkPageShell } from '@/components/parks/park-page-shell';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
 import { ParkHeaderCard } from '@/components/parks/park-header-card';
@@ -122,7 +132,11 @@ export async function generateMetadata({ params }: ParkCalendarPageProps): Promi
 
   const parkName = stripNewPrefix(park.name);
   const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
-  const label = month ? monthLabel(locale, month) : '';
+  // The hub is canonical for the CURRENT month — `/2026/8` points at it in August — so it is
+  // that month's page and its title should say so. It used to end „: die ruhigen Tage", which
+  // names no month, matches no query and is the decorative closer CLAUDE.md rules out. The label
+  // is the month the page actually shows either way, so one variable serves both branches.
+  const label = monthLabel(locale, month ?? nowInPark);
 
   // `fitWithin` takes the limit first and then candidates longest-preferred: the short title is
   // the fallback for a park name that pushes the full one past 60 characters. A month page is
@@ -137,8 +151,8 @@ export async function generateMetadata({ params }: ParkCalendarPageProps): Promi
       )
     : fitWithin(
         MAX_TITLE_LENGTH,
-        t('metaTitle', { park: parkName }),
-        t('metaTitleShort', { park: parkName })
+        t('metaTitle', { park: parkName, month: label }),
+        t('metaTitleShort', { park: parkName, month: label })
       );
   // Two candidates, and the second is not decoration: the description names the park AND the
   // city, and the catalogue's longest pair is 53 characters ("Fantawild Silk Road Heritage
@@ -234,6 +248,12 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   const seedNowMs = seedNow.getTime();
   const bestDaysSeedPromise = getBestDaysCalendarSeed(continent, country, city, parkSlug);
   const seasonsPromise = getParkSeasons(continent, country, city, parkSlug);
+  // The month the page is ABOUT — on the hub that is the current one, which is the month the grid
+  // opens on and therefore the month a summary there would describe. Fired here, awaited inside
+  // its own boundary below, and served from `unstable_cache` so 31.800 URLs do not each mean an
+  // upstream call.
+  const summaryMonth = month ?? nowMonth;
+  const monthSeedPromise = getCalendarMonthSeed(continent, country, city, parkSlug, summaryMonth);
 
   const park = parkForClock;
   const seasons = await seasonsPromise;
@@ -316,14 +336,31 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
         faqGlossaryTerms={faqGlossaryTerms}
         glossarySegment={glossarySegment}
         head={
-          <BreadcrumbStructuredData
-            breadcrumbs={breadcrumbs}
-            currentPage={{
-              name: monthName ?? t('breadcrumb'),
-              url: parkCalendarPath(locale, continent, country, city, parkSlug, month ?? undefined),
-            }}
-            locale={locale}
-          />
+          <>
+            {/* What this page is about, pointing at the park's own `AmusementPark` node rather
+              than restating it. Without this the calendar pages declared no subject at all. */}
+            <ParkSubPageStructuredData
+              url={`${SITE_URL}/${locale}${parkCalendarPath(locale, continent, country, city, parkSlug, month ?? undefined)}`}
+              parkUrl={`${SITE_URL}/${locale}${parkPath}`}
+              name={monthName ? `${parkName} – ${monthName}` : `${parkName} – ${t('breadcrumb')}`}
+              locale={locale}
+            />
+            <BreadcrumbStructuredData
+              breadcrumbs={breadcrumbs}
+              currentPage={{
+                name: monthName ?? t('breadcrumb'),
+                url: parkCalendarPath(
+                  locale,
+                  continent,
+                  country,
+                  city,
+                  parkSlug,
+                  month ?? undefined
+                ),
+              }}
+              locale={locale}
+            />
+          </>
         }
         header={
           <ParkTitleHeader
@@ -334,7 +371,11 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
             countryName={countryName}
             // The H1 is the one thing that must differ between the hub and each of its months,
             // or twelve pages share a heading and a crawler has no reason to tell them apart.
-            suffix={monthName ? t('monthH1Suffix', { month: monthName }) : t('h1Suffix')}
+            suffix={
+              monthName
+                ? t('monthH1Suffix', { month: monthName })
+                : t('h1Suffix', { month: monthLabel(locale, nowMonth) })
+            }
             intro={
               monthName
                 ? t('monthIntro', { park: parkName, month: monthName })
@@ -373,6 +414,21 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
           }
         />
 
+        {/* What this month actually looks like, in sentences, on the server.
+
+          The block that makes a month page a page. Without it `/2026/11` and `/2026/2` shipped
+          the same 1.097 words of HTML apart from the word „November", because everything else a
+          reader came for is inside the `ssr: false` grid further down. */}
+        <Suspense fallback={<ParkCalendarMonthSummarySkeleton />}>
+          <SeededMonthSummary
+            seedPromise={monthSeedPromise}
+            park={park}
+            locale={locale}
+            monthLabel={monthLabel(locale, summaryMonth)}
+            timezone={park.timezone}
+          />
+        </Suspense>
+
         {/* The answer, streamed. Same seeding as the park page's tile hint, and the same
           placeholder — which renders the REAL header, so the grid below it does not jump when the
           seed lands. No calendar link in the header here: it would point at this page. */}
@@ -408,6 +464,18 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
           prevMonth={prevMonth}
           nextMonth={nextMonth}
           className="mt-8"
+        />
+
+        {/* Every month of the window, one hop from here. The stepper above links two of them;
+          without this the far end of the range is a 25-link chain from the hub. */}
+        <ParkCalendarMonthIndex
+          locale={locale}
+          continent={continent}
+          country={country}
+          city={city}
+          parkSlug={parkSlug}
+          currentMonth={nowMonth}
+          activeMonth={month}
         />
       </ParkPageShell>
     </RouteMessages>
@@ -467,6 +535,57 @@ async function SeededBestDays({
       locale={locale}
       initialCalendar={seed}
       seedNowMs={seedNowMs}
+    />
+  );
+}
+
+/**
+ * Streamed month-summary slot — the await happens here, not in the page body, so the shell
+ * flushes at park-fetch speed and the month's own sentences arrive in the same response.
+ *
+ * Renders nothing at all in two cases, and both are deliberate. A `null` seed means the fetch
+ * timed out or failed, and a `null` summary means the month held no days worth summarising (a
+ * park shut for the season, an out-of-catalogue range). Neither is worth a placeholder or an
+ * apology — the grid below still answers the page, and an empty card that says so would be a
+ * block of furniture on however many parks are out of season this month.
+ *
+ * The "today" the summary compares against is the PARK's date, not the server's: `isPast` decides
+ * whether the prose reads „am ruhigsten wird es" or „war es", and a park in Florida is still on
+ * yesterday for six hours after midnight in Berlin.
+ */
+async function SeededMonthSummary({
+  seedPromise,
+  park,
+  locale,
+  monthLabel,
+  timezone,
+}: {
+  seedPromise: Promise<IntegratedCalendarResponse | null>;
+  park: ParkWithAttractions;
+  locale: string;
+  monthLabel: string;
+  timezone: string;
+}) {
+  const seed = await seedPromise;
+  if (!seed?.days?.length) return null;
+
+  const tz = timezone || 'UTC';
+  const todayIso = new Intl.DateTimeFormat('en-CA', {
+    timeZone: tz,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date());
+
+  const summary = summarizeCalendarMonth(seed.days, todayIso, tz);
+  if (!summary) return null;
+
+  return (
+    <ParkCalendarMonthSummary
+      summary={summary}
+      park={park}
+      locale={locale}
+      monthLabel={monthLabel}
     />
   );
 }

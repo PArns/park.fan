@@ -648,3 +648,50 @@ export function ShowsStructuredData({
     </>
   );
 }
+
+/**
+ * The `WebPage` node for a park SUB-page — today the wait-time calendar and its months.
+ *
+ * These pages carried `Organization`, `WebSite`, `BreadcrumbList` and `ItemList` and nothing that
+ * said what they are about. A crawler could see a breadcrumb ending in „Wartezeiten-Kalender" and
+ * had to infer the rest, on a class of 1,272 hubs plus 22,896 month URLs — the largest set of
+ * pages on the site with no declared subject.
+ *
+ * It points at the park with `about` rather than describing it again. The park page emits the
+ * `AmusementPark` with `@id` set to its own URL precisely so another node can reference it, and a
+ * second full copy of the place on 24,000 URLs would be the same entity stated 24,000 times, free
+ * to drift the moment one of them is edited. `about` and not `mainEntity`, because the primary
+ * thing here is the calendar, not the park.
+ *
+ * `FAQPage` is deliberately still absent. The visible FAQ is shared furniture across every page
+ * of a park; the structured data may not be, or one set of questions competes with itself on
+ * every URL the park has.
+ */
+export function ParkSubPageStructuredData({
+  url,
+  parkUrl,
+  name,
+  locale,
+}: {
+  /** This page's canonical URL. */
+  url: string;
+  /** The park page's URL, which is also the `@id` of its `AmusementPark` node. */
+  parkUrl: string;
+  /** The page's own name — the month for a month page, so the 25 do not share one. */
+  name: string;
+  locale?: string;
+}) {
+  return (
+    <JsonLd
+      data={{
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        '@id': `${url}#webpage`,
+        url,
+        name,
+        ...(locale && { inLanguage: locale, isPartOf: { '@id': websiteId(locale) } }),
+        about: { '@id': parkUrl },
+      }}
+    />
+  );
+}

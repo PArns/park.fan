@@ -732,9 +732,9 @@
     },
     "calendarPage": {
       "breadcrumb": "Wait-Time Calendar",
-      "h1Suffix": "Wait-Time Calendar",
-      "metaTitle": "{park} Wait-Time Calendar: The Quiet Days",
-      "metaTitleShort": "{park} Wait-Time Calendar",
+      "h1Suffix": "Wait-time calendar {month}",
+      "metaTitle": "{park} Wait-Time Calendar: {month}",
+      "metaTitleShort": "{park}: Calendar {month}",
       "metaDescription": "When is {park} in {city} quiet? Day-by-day crowds, opening hours, school holidays and weather for the months ahead, with an AI forecast per day.",
       "metaDescriptionNoCity": "When is {park} quiet? Expected crowds per day, opening hours, school holidays and weather for the months ahead.",
       "intro": "For every day of the months ahead: expected crowds, opening hours, and the school and public holidays that affect {park}. Tap a day for the details.",
@@ -749,7 +749,29 @@
       "nextMonth": "Next month",
       "currentMonth": "Today",
       "currentMonthAria": "Jump to the current month",
-      "backToPark": "Back to wait times at {park}"
+      "backToPark": "Back to wait times at {park}",
+      "monthIndexLabel": "All months",
+      "summary": {
+        "openingFuture": "{park} opens on {open} of the {total} days in {month}.",
+        "openingPast": "{park} opened on {open} of the {total} days in {month}.",
+        "quietestFuture": "The quietest days should be {days}.",
+        "quietestPast": "The quietest days were {days}.",
+        "busiestFuture": "The busiest will be {days}.",
+        "busiestPast": "The busiest were {days}.",
+        "hours": "Gates are usually open {from} to {to}.",
+        "schoolVacation": "{days, plural, =1 {One day falls} other {# days fall}} inside a school holiday in the park's region.",
+        "headlinerFuture": "Expect around {minutes} minutes at the headline rides {park}.",
+        "headlinerPast": "The headline rides {park} averaged {minutes} minutes.",
+        "factOpenDays": "Open",
+        "factOpenDaysValue": "{open} of {total} days",
+        "factHours": "Opening hours",
+        "factHoursValue": "{from}–{to}",
+        "factWait": "Headliner average",
+        "factWaitValue": "{minutes} min",
+        "factSchoolVacation": "School holidays",
+        "factSchoolVacationValue": "{days, plural, =1 {# day} other {# days}}",
+        "factQuietest": "Quietest days:"
+      }
     }
   },
   "attractions": {
@@ -1110,7 +1132,7 @@
       "description": "Maximize your visit with real-time wait times, AI predictions, and in-park navigation. Covers Disney, Universal, Europa-Park, and more."
     },
     "parks": {
-      "title": "Theme Parks Worldwide",
+      "title": "Theme Parks Worldwide: Wait Times, Map & Overview",
       "description": "Compare live wait times, crowd levels, and hours for top parks: Disney, Universal, Europa-Park, and more.",
       "metaDescriptionTemplate": "Live wait times & crowd calendar for {park} in {city}. Check today's forecast, best days to visit, and opening hours.",
       "titleTemplate": "{park} Wait Times LIVE – {city}",

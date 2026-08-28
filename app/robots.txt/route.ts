@@ -99,6 +99,7 @@ export function GET(): Response {
       [
         `Sitemap: ${SITE_URL}/sitemap.xml`,
         `Sitemap: ${SITE_URL}/sitemap-attractions.xml`,
+        `Sitemap: ${SITE_URL}/sitemap-calendar.xml`,
         // The same permissions as the Content-Signal above, in the form licensing tooling
         // reads (RSL 1.0 §4.4).
         ROBOTS_LICENSE_DIRECTIVE,

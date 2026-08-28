@@ -732,9 +732,9 @@
     },
     "calendarPage": {
       "breadcrumb": "Calendario tempi di attesa",
-      "h1Suffix": "Calendario tempi di attesa",
-      "metaTitle": "{park}: calendario dei tempi di attesa",
-      "metaTitleShort": "{park}: tempi di attesa",
+      "h1Suffix": "Calendario attese {month}",
+      "metaTitle": "{park} Calendario Attese: {month}",
+      "metaTitleShort": "{park}: Calendario {month}",
       "metaDescription": "Quando è tranquillo {park} a {city}? Affluenza giorno per giorno, orari, vacanze scolastiche e meteo per i prossimi mesi, con previsione IA quotidiana.",
       "metaDescriptionNoCity": "Quando {park} è tranquillo? Affluenza prevista per giorno, orari, vacanze scolastiche e meteo per i prossimi mesi.",
       "intro": "Per ogni giorno dei prossimi mesi: affluenza prevista, orari e le vacanze scolastiche e le festività che pesano su {park}. Tocca un giorno per il dettaglio.",
@@ -749,7 +749,29 @@
       "nextMonth": "Mese successivo",
       "currentMonth": "Oggi",
       "currentMonthAria": "Vai al mese corrente",
-      "backToPark": "Torna ai tempi di attesa al {park}"
+      "backToPark": "Torna ai tempi di attesa al {park}",
+      "monthIndexLabel": "Tutti i mesi",
+      "summary": {
+        "openingFuture": "A {month} {park} apre {open} giorni su {total}.",
+        "openingPast": "A {month} {park} ha aperto {open} giorni su {total}.",
+        "quietestFuture": "I giorni più tranquilli dovrebbero essere {days}.",
+        "quietestPast": "I giorni più tranquilli sono stati {days}.",
+        "busiestFuture": "L’affluenza maggiore è prevista {days}.",
+        "busiestPast": "L’affluenza maggiore c’è stata {days}.",
+        "hours": "Di solito aperto dalle {from} alle {to}.",
+        "schoolVacation": "{days, plural, =1 {Un giorno cade} other {# giorni cadono}} nelle vacanze scolastiche della regione del parco.",
+        "headlinerFuture": "Sulle attrazioni principali {park} sono attesi in media {minutes} minuti.",
+        "headlinerPast": "Le attrazioni principali {park} hanno registrato in media {minutes} minuti.",
+        "factOpenDays": "Aperto",
+        "factOpenDaysValue": "{open} giorni su {total}",
+        "factHours": "Orari",
+        "factHoursValue": "{from}–{to}",
+        "factWait": "Media attrazioni principali",
+        "factWaitValue": "{minutes} min",
+        "factSchoolVacation": "Vacanze scolastiche",
+        "factSchoolVacationValue": "{days, plural, =1 {# giorno} other {# giorni}}",
+        "factQuietest": "Giorni più tranquilli:"
+      }
     }
   },
   "attractions": {
@@ -1110,7 +1132,7 @@
       "description": "Massimizza la tua visita con tempi di attesa in tempo reale, previsioni IA e navigazione nel parco. Copre Disney, Universal, Europa-Park e molto altro."
     },
     "parks": {
-      "title": "Parchi a tema nel mondo",
+      "title": "Parchi a tema nel mondo: tempi di attesa, mappa e panoramica",
       "description": "Confronta i tempi di coda in diretta e l'affluenza dei principali parchi: Disney, Universal Studios ed Europa-Park.",
       "metaDescriptionTemplate": "Tempi di attesa in diretta e calendario per {park} a {city}. Controlla le previsioni di oggi, giorni migliori e orari di apertura.",
       "titleTemplate": "{park} Tempi di attesa LIVE – {city}",

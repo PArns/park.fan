@@ -80,6 +80,7 @@
  */
 
 import { chromium } from 'playwright';
+import { existsSync } from 'node:fs';
 import http from 'node:http';
 
 const args = process.argv.slice(2);
@@ -112,7 +113,29 @@ const LATE_MS = has('late') ? 1500 : Number(flag('late', '0'));
 /** Where the reader is parked in `--late` mode. A shift only scores what is in view. */
 const SCROLL_TO = Number(flag('scroll', '0'));
 
-const EXECUTABLE = process.env.CLS_CHROMIUM || '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
+const PREINSTALLED_CHROMIUM = '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
+/**
+ * Which Chromium to drive.
+ *
+ * The env override first, then the image's preinstalled build, then **nothing** — and the third
+ * one is the fix. This was a bare constant pointing at `/opt/pw-browsers/...`, a path that exists
+ * in the CI image and on no developer machine, so `chromium.launch({ executablePath })` threw
+ * `executable doesn't exist` on macOS and this script could not be run at all outside CI. That
+ * matters more here than for an ordinary check: CLAUDE.md names the CLS harness as the way to
+ * prove a layout-shift fix, and a harness nobody can start locally gets worked around instead of
+ * used.
+ *
+ * Returning `undefined` hands the choice back to Playwright, which resolves its own installed
+ * browser from `PLAYWRIGHT_BROWSERS_PATH` or the default cache — the normal path on a laptop.
+ */
+function resolveChromium() {
+  const explicit = process.env.CLS_CHROMIUM;
+  if (explicit) return explicit;
+  if (existsSync(PREINSTALLED_CHROMIUM)) return PREINSTALLED_CHROMIUM;
+  return undefined;
+}
+
+const EXECUTABLE = resolveChromium();
 
 const VIEWPORTS = [
   { name: 'mobile', width: 390, height: 844, isMobile: true },
@@ -380,7 +403,7 @@ function sessionWindowMax(entries) {
 }
 
 if (LATE_MS > 0) {
-  const browser = await chromium.launch({ executablePath: EXECUTABLE });
+  const browser = await chromium.launch(EXECUTABLE ? { executablePath: EXECUTABLE } : {});
   console.log(
     `Streamed tail held back ${LATE_MS} ms, no throttling.` +
       (SCROLL_TO ? ` Reader parked at y=${SCROLL_TO}.` : ' Reader at the top of the page.')
@@ -457,7 +480,7 @@ if (LATE_MS > 0) {
   process.exit(0);
 }
 
-const browser = await chromium.launch({ executablePath: EXECUTABLE });
+const browser = await chromium.launch(EXECUTABLE ? { executablePath: EXECUTABLE } : {});
 const report = [];
 
 for (const path of URLS) {

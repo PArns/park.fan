@@ -212,3 +212,105 @@ export async function getBestDaysCalendarSeed(
 
   return result;
 }
+
+/**
+ * How long a month page's server-rendered summary may be reused.
+ *
+ * Six hours, and the number is about what the summary SAYS rather than what the payload holds:
+ * how many days the park opens that month, its quietest and busiest days, the usual hours, the
+ * headliner average. None of that differs between two visitors on the same morning. The grid
+ * beside it keeps its own live client fetch, so nothing a reader watches tick comes from here.
+ *
+ * Uncached this would be one upstream call per view across 212 parks × 22 months × 6 locales,
+ * which is the kind of addition docs/architecture/api-budget.md exists to catch. Tagged `parks`
+ * so it clears with the rest of a park's day-stable data.
+ */
+export const CALENDAR_MONTH_REVALIDATE = 6 * 60 * 60;
+
+/** How long the streamed month summary may wait before the page gives up on it. */
+const CALENDAR_MONTH_SEED_TIMEOUT_MS = 3000;
+
+/**
+ * One month of `/calendar`, data-cached, for a month page's written summary.
+ *
+ * A plain `next: { revalidate, tags }` and NOT `unstable_cache`, which this briefly used on a
+ * wrong premise. The route sets `export const dynamic = 'force-dynamic'`, and Next's own
+ * pre-Cache-Components guide still describes that as equivalent to `fetchCache = 'force-no-store'`
+ * — but 16.3.2 does not behave that way. Verified against a production build: after rendering the
+ * park page, `.next/cache/fetch-cache` holds the park, seasons and best-days responses with their
+ * intended windows and tags intact. Caching on the fetch is what the rest of this file does, it
+ * survives a redeploy, and it is reachable from `revalidateTag`; `unstable_cache` is the thing
+ * Next 16 recommends against and would have bought nothing.
+ *
+ * `includeHourly: 'none'` because the summary is a statement about days, and the hourly curves
+ * are the largest part of this payload. Asking for what nothing renders is the habit the API
+ * budget doc exists to break.
+ */
+async function fetchCalendarMonth(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string,
+  from: string,
+  to: string
+): Promise<IntegratedCalendarResponse> {
+  const url =
+    `${getApiBaseUrl()}/v1/parks/${continent}/${country}/${city}/${parkSlug}/calendar` +
+    `?from=${from}&to=${to}&includeHourly=none`;
+
+  const response = await fetch(url, {
+    next: { revalidate: CALENDAR_MONTH_REVALIDATE, tags: ['parks'] },
+    headers: {
+      'Content-Type': 'application/json',
+      ...getServerApiHeaders(),
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Calendar month ${response.status}: ${response.statusText}`);
+  }
+
+  return (await response.json()) as IntegratedCalendarResponse;
+}
+
+/**
+ * Timeout-bounded month fetch for the calendar page's streamed summary.
+ *
+ * Same posture as {@link getBestDaysCalendarSeed}: consumed inside a `<Suspense>` boundary so it
+ * never gates first byte, and a timeout resolves `null` — the page then renders without the
+ * summary block, which is a page missing one card rather than a page missing its content — while
+ * `after()` keeps the fetch alive so the next request finds the cache warm.
+ *
+ * `year`/`month` are 1-based calendar values. The range is built with `Date.UTC` so a park in a
+ * zone with a midnight DST jump cannot lose the first or last day of its own month.
+ */
+export async function getCalendarMonthSeed(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string,
+  { year, month }: { year: number; month: number }
+): Promise<IntegratedCalendarResponse | null> {
+  const pad = (n: number) => String(n).padStart(2, '0');
+  const lastDay = new Date(Date.UTC(year, month, 0)).getUTCDate();
+  const from = `${year}-${pad(month)}-01`;
+  const to = `${year}-${pad(month)}-${pad(lastDay)}`;
+
+  const monthPromise = fetchCalendarMonth(continent, country, city, parkSlug, from, to).catch(
+    () => null
+  );
+
+  const result = await Promise.race([
+    monthPromise,
+    new Promise<'timeout'>((resolve) => {
+      setTimeout(() => resolve('timeout'), CALENDAR_MONTH_SEED_TIMEOUT_MS);
+    }),
+  ]);
+
+  if (result === 'timeout') {
+    after(() => monthPromise);
+    return null;
+  }
+
+  return result;
+}
