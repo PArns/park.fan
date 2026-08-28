@@ -112,6 +112,25 @@ export interface CalendarMonthSummary {
 }
 
 /**
+ * One comparable number per day: the crowd bucket first, the headliner wait as the tie-break.
+ *
+ * The bucket dominates (a `moderate` day never sorts below a `low` one however short its queues),
+ * and within a bucket the wait separates days the six-value scale cannot. The wait is squeezed
+ * into the gap below 1 so an outlier can never climb a whole bucket.
+ *
+ * Exported because the calendar grid's „Empfohlen" badges rank on it too. The two used to
+ * disagree on the same page: the grid marked every day at the lowest bucket — 23 of 30 in one
+ * measured month — while this module, applying a median test, said the month had no quiet day at
+ * all. One definition, both surfaces.
+ */
+export function rankOf(day: CalendarDay, bucket: number): number {
+  const wait = day.headlinerForecast?.avgWait;
+  const within =
+    typeof wait === 'number' && Number.isFinite(wait) ? Math.min(0.99, Math.max(0, wait) / 120) : 0;
+  return bucket + within;
+}
+
+/**
  * A day that counts: scheduled to operate, carrying a rating, and comparable to the others.
  *
  * Two things here are not obvious and both were wrong first.
@@ -123,31 +142,40 @@ export interface CalendarMonthSummary {
  * weekday, with the grid underneath saying the opposite. One day out of thirty is a cheap price
  * for every remaining day being on the same scale.
  *
- * **The ordering is `crowdScore`, not the six-value enum.** `CrowdLevel` has six buckets and a
- * month has thirty days, so ties are the rule rather than the exception: a park whose weekdays
- * forecast `very_low` and weekends `high` — the archetypal quiet-day shape this whole block
- * exists to surface — puts twenty days on the minimum, and {@link MAX_NAMED_DAYS} then suppresses
- * the sentence on exactly the months that had the clearest answer. `crowdScore` is the continuous
- * value the bucket was derived from and is right there on the payload. The enum stays for the
- * badge, which is what a reader sees; the ranking uses the number underneath it.
+ * **The ordering breaks ties, because the six-value enum cannot.** `CrowdLevel` has six buckets
+ * and a month has thirty days, so ties are the rule rather than the exception: a park whose
+ * weekdays forecast `very_low` and weekends `high` — the archetypal quiet-day shape this whole
+ * block exists to surface — puts twenty days on the minimum, and {@link MAX_NAMED_DAYS} then
+ * suppresses the sentence on exactly the months that had the clearest answer.
+ *
+ * The obvious tie-breaker is `crowdScore`, the continuous value the bucket came from, and it is
+ * declared on `CalendarDay`. It is also never sent: measured against production, 0 of 30 days
+ * from `/calendar` and 0 of 91 from `/best-days` carry one, and `avgWaitTime` is empty on the
+ * same payloads. What does arrive is `headlinerForecast.avgWait` — see {@link rankOf}.
  */
-function ratedOpenDays(days: CalendarDay[]): Array<CalendarDay & { rank: number }> {
+function ratedOpenDays(
+  days: CalendarDay[],
+  todayIso: string,
+  monthIsPast: boolean
+): Array<CalendarDay & { rank: number }> {
   const out: Array<CalendarDay & { rank: number }> = [];
   for (const day of days) {
     if (day.status !== 'OPERATING') continue;
     if (day.isToday) continue;
+    // On the month that CONTAINS today, only days somebody can still act on.
+    //
+    // The sentence is in the future tense — „am ruhigsten wird es" — and on the hub, which always
+    // shows the current month, it was ranking a month that is four fifths over. Worse, it then
+    // disagreed with the entry tile one card up: the tile names the next upcoming quiet day and
+    // said „Fr., 28. Aug (heute)", the summary ranked all 31 days and said „Montag, 31." Two
+    // quiet days for one park on one screen. A month wholly in the past keeps every day, because
+    // there the tense is „war es" and the whole month is the subject.
+    if (!monthIsPast && day.date < todayIso) continue;
     const level = day.crowdLevel;
     if (level === 'closed' || level === 'unknown') continue;
     const bucket = CROWD_RANK[level];
     if (bucket === undefined) continue;
-    // The score where the API sends one, the bucket where it does not. Scaled onto the bucket
-    // range so a month that mixes the two still orders sensibly rather than putting every scored
-    // day below every unscored one.
-    const rank =
-      typeof day.crowdScore === 'number' && Number.isFinite(day.crowdScore)
-        ? day.crowdScore
-        : bucket;
-    out.push({ ...day, rank });
+    out.push({ ...day, rank: rankOf(day, bucket) });
   }
   return out;
 }
@@ -253,6 +281,8 @@ export function summarizeCalendarMonth(
   if (!days.length) return null;
 
   const openDays = days.filter((d) => d.status === 'OPERATING').length;
+  const lastDate = days.reduce((acc, d) => (d.date > acc ? d.date : acc), days[0].date);
+  const isPast = lastDate < todayIso;
 
   // A month with no operating day at all says nothing, and saying it anyway would be a lie on a
   // large scale. Two very different situations produce this and the payload cannot tell them
@@ -263,7 +293,7 @@ export function summarizeCalendarMonth(
   // would be false on roughly half the past months of the catalogue at once. Both cases get no
   // summary; the grid below still shows what the API actually returned.
   if (openDays === 0) return null;
-  const rated = ratedOpenDays(days);
+  const rated = ratedOpenDays(days, todayIso, isPast);
 
   const waits = rated
     .map((d) => d.headlinerForecast?.avgWait)
@@ -271,8 +301,6 @@ export function summarizeCalendarMonth(
     // really emits on a quiet day, not a sentinel for „absent". Dropping those days computed the
     // month's average over its busy half and printed a number the grid underneath contradicts.
     .filter((w): w is number => typeof w === 'number' && Number.isFinite(w) && w >= 0);
-
-  const lastDate = days.reduce((acc, d) => (d.date > acc ? d.date : acc), days[0].date);
 
   return {
     totalDays: days.length,
@@ -286,6 +314,6 @@ export function summarizeCalendarMonth(
     avgHeadlinerWait: waits.length
       ? roundWaitTo5(waits.reduce((a, b) => a + b, 0) / waits.length)
       : null,
-    isPast: lastDate < todayIso,
+    isPast,
   };
 }

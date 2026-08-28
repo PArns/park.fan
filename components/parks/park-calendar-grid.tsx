@@ -16,6 +16,7 @@ import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
 import { Info } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useCalendarData } from '@/lib/hooks/use-calendar-data';
+import { rankOf } from '@/lib/parks/calendar-month-summary';
 import { CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
 import { parkCalendarPath, type ParkCalendarMonth } from '@/lib/parks/calendar-segments';
 import type { IntegratedCalendarResponse, ParkWithAttractions } from '@/lib/api/types';
@@ -228,8 +229,46 @@ export function ParkCalendarGrid({
     return map;
   }, [calendarData]);
 
-  // Compute best-day set — lowest crowd level among OPERATING/UNKNOWN days without school/public holidays.
-  // Falls back to backend recommendation field once the API provides it.
+  /**
+   * How far below the month's median a day must rank before it is worth a star, in units of
+   * `rankOf` — where 1.0 is one crowd bucket and the fractional part is the headliner wait scaled
+   * over two hours.
+   *
+   * Half a bucket. Below that the badge marks noise: a month whose days all forecast `low` and
+   * differ only by five minutes of queue would otherwise have half of itself recommended.
+   */
+  const BEST_DAY_MARGIN = 0.5;
+
+  /**
+   * The days that get the „Empfohlen" star — the ones that stand out, not the ones that tie.
+   *
+   * This used to mark every candidate sitting at the month's lowest crowd BUCKET, and on a month
+   * where the bucket does not vary that is the whole month: measured on Phantasialand's November
+   * 2026, thirty days all forecast `low` and **23 of them wore the badge**. A recommendation that
+   * applies to three quarters of the month recommends nothing, and it contradicted the summary
+   * directly above the grid, which applies a median test and therefore said the month has no
+   * quiet day at all. Two answers to one question, on one page.
+   *
+   * So the same ranking as `summarizeCalendarMonth`, from the same `rankOf`: the crowd bucket with
+   * the headliner wait as the tie-break (the API sends no `crowdScore` — 0 of 30 days — so the
+   * wait is the only continuous signal that actually arrives). And a day has to beat the month's
+   * median by BEST_DAY_MARGIN, not merely beat it: "strictly below the median" still badged 13 of
+   * November's 29 candidates, and what separated them was 30 minutes of headliner wait against
+   * 35. Five minutes is not a recommendation.
+   *
+   * Half a crowd bucket is. Measured across four months of Phantasialand, that is the difference
+   * between a month with something to say and one without:
+   *
+   * ```
+   *   2026-09   29 candidates   ranks 0.21-3.50   12 badges
+   *   2026-10   15 candidates   ranks 0.21-3.50    7 badges
+   *   2026-11   29 candidates   ranks 1.25-1.29    0 badges
+   *   2026-12   22 candidates   ranks 1.25-1.29    0 badges
+   * ```
+   *
+   * No separate cap on the count: "below the median" already bounds it at half the month, and the
+   * margin does the rest of the work.
+   */
   const bestDayDates = useMemo(() => {
     const crowdOrder: readonly string[] = CROWD_LEVEL_ORDER;
     const candidates = Array.from(calendarMap.values()).filter(
@@ -241,14 +280,17 @@ export function ParkCalendarGrid({
         !d.isHoliday &&
         !d.isPublicHoliday
     );
-    if (candidates.length === 0) return new Set<string>();
-    const minIdx = Math.min(
-      ...candidates.map((d) => crowdOrder.indexOf(d.crowdLevel)).filter((i) => i >= 0)
-    );
-    if (minIdx < 0) return new Set<string>();
-    return new Set<string>(
-      candidates.filter((d) => crowdOrder.indexOf(d.crowdLevel) === minIdx).map((d) => d.date)
-    );
+    const ranked = candidates
+      .map((d) => ({ date: d.date, rank: rankOf(d, crowdOrder.indexOf(d.crowdLevel)) }))
+      .filter((d) => crowdOrder.indexOf(calendarMap.get(d.date).crowdLevel) >= 0);
+    if (ranked.length < 4) return new Set<string>();
+
+    const sorted = [...ranked].map((d) => d.rank).sort((a, b) => a - b);
+    const mid = Math.floor(sorted.length / 2);
+    const median = sorted.length % 2 === 0 ? (sorted[mid - 1] + sorted[mid]) / 2 : sorted[mid];
+
+    const standouts = ranked.filter((d) => d.rank <= median - BEST_DAY_MARGIN);
+    return new Set<string>(standouts.map((d) => d.date));
   }, [calendarMap, todayStr]);
 
   const today = new Date();

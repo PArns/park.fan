@@ -17,7 +17,7 @@
  * Run: pnpm test:calendar-month
  */
 
-import { summarizeCalendarMonth } from '../lib/parks/calendar-month-summary.ts';
+import { rankOf, summarizeCalendarMonth } from '../lib/parks/calendar-month-summary.ts';
 import {
   calendarGridReservation,
   listRowsInMonth,
@@ -149,19 +149,32 @@ test(
 );
 
 test(
-  'ties are broken on crowdScore, not on the six-value bucket',
+  'ties are broken on the headliner wait, the one continuous value that arrives',
   () => {
     // Twenty days at `low` is what a weekday/weekend park looks like, and on the enum alone that
-    // is twenty tied winners → suppressed. The continuous score separates them.
+    // is twenty tied winners → suppressed. `crowdScore` would break it and is never sent (0 of 30
+    // days from /calendar, 0 of 91 from /best-days); the headliner average is.
     const days = month(30, (i) => ({
       crowdLevel: i < 20 ? 'low' : 'high',
-      crowdScore: i === 3 ? 0.1 : i < 20 ? 0.5 : 0.9,
+      headlinerForecast: { avgWait: i === 3 ? 10 : i < 20 ? 25 : 60, rides: [] },
     }));
     return summarizeCalendarMonth(days, '2026-12-01', TZ)
       .quietest.map((d) => d.date)
       .join(',');
   },
   '2026-11-04'
+);
+
+test(
+  'the bucket always outranks the wait — a busy day with short queues is not a quiet day',
+  () => {
+    // `moderate` + 0 min must still sort above `low` + 119 min, or one outlier promotes a day
+    // out of its own crowd bucket.
+    const low = rankOf({ headlinerForecast: { avgWait: 119, rides: [] } }, 1);
+    const moderate = rankOf({ headlinerForecast: { avgWait: 0, rides: [] } }, 2);
+    return low < moderate;
+  },
+  true
 );
 
 test('a zero-minute headliner day counts toward the average', () => {
@@ -228,6 +241,33 @@ test('the headliner average is rounded once, at the end', () => {
   }));
   return summarizeCalendarMonth(days, '2026-12-01', TZ).avgHeadlinerWait;
 }, 30);
+
+test(
+  'the current month ranks only days that are still ahead',
+  () => {
+    // Today is the 15th. The 3rd was the quietest day of the month and is over; the sentence is
+    // in the future tense, so it must name the quietest day still to come. Ranking the whole
+    // month is also what made the summary disagree with the entry tile above it.
+    const days = month(30, (i) => ({
+      crowdLevel: i === 2 ? 'very_low' : i === 20 ? 'low' : 'high',
+      isToday: i === 14,
+    }));
+    return summarizeCalendarMonth(days, '2026-11-15', TZ)
+      .quietest.map((d) => d.date)
+      .join(',');
+  },
+  '2026-11-21'
+);
+
+test(
+  'a finished month still ranks all of it',
+  () => {
+    const days = month(30, (i) => ({ crowdLevel: i === 2 ? 'very_low' : 'high' }));
+    const s = summarizeCalendarMonth(days, '2026-12-01', TZ);
+    return `${s.isPast}/${s.quietest.map((d) => d.date).join(',')}`;
+  },
+  'true/2026-11-03'
+);
 
 test(
   'a month wholly in the past reads as past',
