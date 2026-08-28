@@ -2,7 +2,6 @@ import { Suspense } from 'react';
 import { getTranslations } from 'next-intl/server';
 
 import { SITE_URL } from '@/i18n/config';
-import type { Locale } from '@/i18n/config';
 import { objectPositionForSrc } from '@/lib/media/focus';
 import { getMediaAltBySrc } from '@/lib/media/text';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
@@ -11,7 +10,6 @@ import { buildContributeHref } from '@/lib/contribute/prefill';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { stripNewPrefix } from '@/lib/utils';
 import type { Breadcrumb, ParkSeason, ParkWithAttractions } from '@/lib/api/types';
-import type { GlossaryInjectTerm } from '@/components/glossary/glossary-inject-context';
 
 import { PageContainer } from '@/components/common/page-container';
 import { GlassCard } from '@/components/common/glass-card';
@@ -22,11 +20,9 @@ import { PreferredSourcePrompt } from '@/components/common/preferred-source-prom
 import { ContributeBanner } from '@/components/contribute/contribute-banner';
 import { ParkBackground } from '@/components/parks/park-background';
 import { NearbyParksSection } from '@/components/parks/nearby-parks-section';
-import { ParkBlogPostsSection } from '@/components/parks/blog-posts-sections';
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
 import { ParkSeasonsCard } from '@/components/parks/park-seasons-card';
 import { ParkInfoCard } from '@/components/parks/park-info-card';
-import { ParkFAQSection } from '@/components/faq/park-faq-section';
 
 interface ParkPageShellProps {
   park: ParkWithAttractions;
@@ -40,13 +36,6 @@ interface ParkPageShellProps {
   countryName: string;
   breadcrumbs: Breadcrumb[];
   currentPage: string;
-  /** Server "now" the FAQ's date-dependent answers were derived with. */
-  seedNowMs: number;
-  /** Glossary terms to link inside the FAQ answers. Only read when `tail` is `'full'`; a lean
-   *  page renders no FAQ and must not pay for the lookup, which walks 267 terms over the whole
-   *  FAQ corpus on every request. */
-  faqGlossaryTerms?: GlossaryInjectTerm[];
-  glossarySegment?: string;
   /** The title card's contents — the H1 and whatever belongs beside and under it. Every page of
    *  a park has a different one; the card around it is the same. */
   header: React.ReactNode;
@@ -69,29 +58,27 @@ interface ParkPageShellProps {
    */
   statsAfterChildren?: boolean;
   /**
-   * How much of the park's shared tail this page carries.
+   * The park's article list, rendered between the neighbours and the statistics.
    *
-   * `'full'` is every chapter and is what the park page wants. `'lean'` drops the FAQ and the
-   * list of articles, and the calendar pages take it.
-   *
-   * The reasoning below — that shared furniture is not a duplicate-content problem because each
-   * page owns its main content, title, H1 and canonical — was written when the calendar was ONE
-   * extra URL per park. It is now the hub plus eighteen months, so the same tail lands on
-   * roughly a hundred URLs per park per locale instead of two, and it stopped being a rounding
-   * error: measured on a month page, the FAQ and the blog list are 454 of 1,184 words, while the
-   * page's own summary and grid heading are 77. A crawler comparing two months found 64 % of the
-   * text identical.
-   *
-   * What is dropped is what belongs to the PARK rather than to the month: its FAQ answers the
-   * same seven questions on every URL it appears on, and its articles are the same list. What
-   * stays is what gives a month page its place — the neighbours, the season card (which a
-   * calendar has more use for than the park page does), the address, and the statistics, whose
-   * whole reason for sitting directly under the grid is written above.
-   *
-   * The FAQ's `FAQPage` JSON-LD was already park-page-only for exactly this reason. This extends
-   * the same judgement to the visible copy of it.
+   * A SLOT and not a boolean, and the difference is measurable. It was `tail="lean"` first, which
+   * stopped the section rendering but left `ParkBlogPostsSection` imported at module scope here —
+   * and the routed-translations generator walks the import graph, static and lazy alike, so every
+   * calendar URL kept serializing namespaces for markup it no longer emitted. What a page does
+   * not import, it does not pay for.
    */
-  tail?: 'full' | 'lean';
+  blogSection?: React.ReactNode;
+  /**
+   * The park's FAQ, rendered last, with its own separator.
+   *
+   * Same reasoning as {@link blogSection}, and the same measurement behind it: `seo.faq` is the
+   * heaviest namespace in this tail, and the calendar routes were shipping it for a chapter they
+   * do not render. Passing the section in from the park page is what takes it out of their graph.
+   *
+   * It is also where the FAQ's glossary terms now come from: the shell used to take them as props
+   * and hand them down, which made every caller resolve 267 terms against the FAQ corpus whether
+   * or not it rendered one.
+   */
+  faqSection?: React.ReactNode;
 }
 
 /**
@@ -116,9 +103,10 @@ interface ParkPageShellProps {
  * The one thing that must not be repeated is structured data — the `FAQPage` JSON-LD stays on the
  * park page alone, and the shell emits none of its own.
  *
- * „Most of it" is doing work in that sentence, and the `tail` prop is where the line falls. The
- * argument holds at two URLs per park and stops holding at a hundred; see that prop for the
- * measurement that moved it.
+ * „Most of it" is doing work in that sentence, and the `blogSection`/`faqSection` slots are where
+ * the line falls. The argument holds at two URLs per park and stops holding at a hundred; see
+ * those props for the measurement that moved it, and for why they are slots the caller fills
+ * rather than a flag the shell reads.
  */
 export async function ParkPageShell({
   park,
@@ -132,15 +120,13 @@ export async function ParkPageShell({
   countryName,
   breadcrumbs,
   currentPage,
-  seedNowMs,
-  faqGlossaryTerms,
-  glossarySegment,
   header,
   head,
   pagePath,
   children,
   statsAfterChildren = false,
-  tail = 'full',
+  blogSection,
+  faqSection,
 }: ParkPageShellProps) {
   const tGeo = await getTranslations('geo');
   const parkName = stripNewPrefix(park.name);
@@ -212,23 +198,7 @@ export async function ParkPageShell({
             </Suspense>
           )}
 
-          {/* Blog posts about this park — static content out of the generated blog manifest (no
-            API call, no clock), so it neither competes with the live queries nor with the
-            load-last best-travel-time data. Renders nothing when no post mentions the park. NOT
-            behind <Suspense>: `hasPublishedPosts`/`getPostsForPark` are synchronous manifest
-            lookups and the only await is `getTranslations`, whose messages this render already
-            holds — so the boundary deferred nothing and bought no TTFB. What it did cost was a
-            `fallback={null}` hole: on mobile this section is ~470px that appeared out of nowhere
-            when the boundary resolved, shoving everything under it down the page. */}
-          {tail === 'full' && (
-            <ParkBlogPostsSection
-              locale={locale as Locale}
-              parkSlug={parkSlug}
-              geoPath={`${continent}/${country}/${city}`}
-              parkName={parkName}
-              className="mt-8"
-            />
-          )}
+          {blogSection}
 
           {statsAfterChildren ? null : stats}
 
@@ -248,28 +218,7 @@ export async function ParkPageShell({
             className="mt-8"
           />
 
-          {/* FAQ — Q0–Q6 render immediately from the park snapshot + server clock. Q7 (least
-            crowded) is NOT server-seeded (that would mean awaiting the best-days seed on the
-            critical path); it streams in from the client calendar fetch after mount. The Q7 signal
-            for SEO lives in the FAQPage JSON-LD, which the PARK page emits and no other page of
-            the park does. */}
-          {tail === 'full' && (
-            <>
-              <Separator className="my-8" />
-              <ParkFAQSection
-                park={park}
-                locale={locale}
-                continent={continent}
-                country={country}
-                city={city}
-                parkSlug={parkSlug}
-                glossaryTerms={faqGlossaryTerms ?? []}
-                glossarySegment={glossarySegment ?? ''}
-                initialCalendar={null}
-                seedNowMs={seedNowMs}
-              />
-            </>
-          )}
+          {faqSection}
 
           <Separator className="my-8" />
           {/* The page being shared is the one being read, not the park's home page. */}

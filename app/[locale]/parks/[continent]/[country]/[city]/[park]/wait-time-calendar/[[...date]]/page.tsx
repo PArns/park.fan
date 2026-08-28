@@ -325,12 +325,7 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
         breadcrumbs={breadcrumbs}
         currentPage={monthName ?? t('breadcrumb')}
         pagePath={parkCalendarPath(locale, continent, country, city, parkSlug, month ?? undefined)}
-        seedNowMs={seedNowMs}
         statsAfterChildren
-        // The park's FAQ and its article list stay on the park page. They answer the same seven
-        // questions and name the same posts on every URL of the park, and this route alone has a
-        // hub plus eighteen months per locale — 454 of a month page's 1,184 words were that.
-        tail="lean"
         head={
           <>
             {/* What this page is about, pointing at the park's own `AmusementPark` node rather
