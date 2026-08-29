@@ -70,11 +70,16 @@ export function BlogMenuPanel({ categories, recent }: BlogMenu) {
                   />
                 </span>
               )}
+              {lead.category && (
+                <span className="text-primary mb-1 block text-[11px] font-semibold tracking-wide uppercase">
+                  {lead.category}
+                </span>
+              )}
               <span className="text-foreground group-hover:text-primary block text-lg leading-snug font-bold text-pretty transition-colors">
                 {lead.title}
               </span>
               {lead.excerpt && (
-                <span className="text-muted-foreground mt-1.5 line-clamp-2 block text-[13px] leading-relaxed">
+                <span className="text-muted-foreground mt-1.5 line-clamp-4 block text-[13px] leading-relaxed">
                   {lead.excerpt}
                 </span>
               )}
@@ -107,13 +112,17 @@ export function BlogMenuPanel({ categories, recent }: BlogMenu) {
                     prefetch={false}
                     className="group hover:bg-muted/60 -mx-2 flex items-start gap-3 rounded-lg px-2 py-2 transition-colors"
                   >
+                    {/* 16:10 auf 7 rem: die Zeile trägt drei Zeilen Text
+                        (Titel, Teaser, Datum) und ist damit rund 70 px hoch. Auf 6 rem und 16:10
+                        war das Bild 60 px und fiel unten aus der Zeile; auf 4:3 waren es 84 und es
+                        stand über. 112×70 trifft die Texthöhe. */}
                     {post.image && (
-                      <span className="bg-muted relative block aspect-[16/10] w-24 shrink-0 overflow-hidden rounded-lg">
+                      <span className="bg-muted relative block aspect-[16/10] w-28 shrink-0 overflow-hidden rounded-lg">
                         <Image
                           src={post.image}
                           alt=""
                           fill
-                          sizes="96px"
+                          sizes="112px"
                           className="object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                       </span>

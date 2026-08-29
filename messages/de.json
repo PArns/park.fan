@@ -307,7 +307,7 @@
     },
     "title": "Mehr Loopings, weniger Stehen",
     "heroWelcome": "Herzlich willkommen im {parkName}",
-    "heroNearPark": "Der {parkName} ist in deiner Nähe (unter 5 km). Unten siehst du aktuelle Wartezeiten, Öffnungszeiten und Auslastung – oder suche einen anderen Park.",
+    "heroNearPark": "{parkName} ist in deiner Nähe (unter 5 km). Unten siehst du aktuelle Wartezeiten, Öffnungszeiten und Auslastung – oder suche einen anderen Park.",
     "heroWelcomeAttractions": "{count} Attraktionen in Betrieb",
     "heroParkLink": "Zum Park",
     "operating": "Geöffnet",

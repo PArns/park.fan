@@ -10,6 +10,7 @@ import type { GeoMenuContinent } from '@/lib/navigation/geo-menu';
 import type { FeaturedParkCard } from '@/lib/navigation/featured-parks-menu';
 import { useRowReveal } from '@/lib/hooks/use-menu-reveal';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
+import { useMounted } from '@/lib/hooks/use-mounted';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { CROWD_TEXT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
@@ -100,7 +101,19 @@ export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
   const { data: nearbyData } = useHomeNearbyParks();
   const nearbyParks =
     nearbyData?.type === 'nearby_parks' ? (nearbyData.data as NearbyParksData).parks : [];
-  const showNearby = nearbyParks.length > 0;
+  /*
+   * Erst nach dem Mount umschalten, und das ist kein Feinschliff.
+   *
+   * `useHomeNearbyParks` seedet seine Query aus `localStorage` (`placeholderData`/`initialData`,
+   * siehe den Hook). Auf dem Server gibt es die nicht, im ERSTEN Client-Render schon — das Panel
+   * hätte also serverseitig die kuratierten Parks gerendert und im ersten Client-Render die Parks
+   * in Reichweite. Zwei verschiedene Bäume an derselben Stelle sind ein Hydration-Fehler, und
+   * React wirft daraufhin den Teilbaum weg und rendert ihn neu. Weil dieses Panel im Header
+   * steckt, hieße das: auf JEDER Seite, mitsamt der GSAP-Transforms, die der Header-Reveal auf
+   * die Leiste gelegt hat — von außen sieht das aus wie „nach dem Scrollen fehlen Elemente".
+   */
+  const mounted = useMounted();
+  const showNearby = mounted && nearbyParks.length > 0;
   const t = useTranslations('geo');
   const tNav = useTranslations('navigation');
   const locale = useLocale();
