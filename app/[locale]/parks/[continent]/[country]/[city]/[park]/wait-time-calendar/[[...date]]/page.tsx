@@ -167,14 +167,24 @@ export async function generateMetadata({ params }: ParkCalendarPageProps): Promi
   // to 198 characters in all six locales for that park, every one of them past the 160 Google
   // will render. The city is the part that goes: it is already in the URL, the breadcrumb and
   // the H1's address line. Same shape the park page has used all along.
+  /*
+   * Einmal gebeugt, viermal verwendet.
+   *
+   * `parkArgs` stand hier dreimal ausgeschrieben und im vierten Aufruf nicht — der bekam nur
+   * `{ park, city }`. Auf Englisch fiel das nicht auf, weil die Zeichenkette dort `{park}`
+   * einsetzt; auf Deutsch heißt sie „Wann ist es {inPark} in {city} leer?" und warf einen
+   * FORMATTING_ERROR beim Rendern der Metadaten. Eine Konstante kann nicht mehr an drei Stellen
+   * gepflegt und an der vierten vergessen werden.
+   */
+  const parkPhrases = parkArgs(locale as Locale, parkName, park.nameArticleDe);
   const description = fitWithin(
     MAX_DESCRIPTION_LENGTH,
     month
-      ? t('monthMetaDescription', { ...parkArgs(locale as Locale, parkName, park.nameArticleDe), city: cityName, month: label })
-      : t('metaDescription', { park: parkName, city: cityName }),
+      ? t('monthMetaDescription', { ...parkPhrases, city: cityName, month: label })
+      : t('metaDescription', { ...parkPhrases, city: cityName }),
     month
-      ? t('monthMetaDescriptionNoCity', { ...parkArgs(locale as Locale, parkName, park.nameArticleDe), month: label })
-      : t('metaDescriptionNoCity', parkArgs(locale as Locale, parkName, park.nameArticleDe))
+      ? t('monthMetaDescriptionNoCity', { ...parkPhrases, month: label })
+      : t('metaDescriptionNoCity', parkPhrases)
   );
 
   const path = (l: string, m: ParkCalendarMonth | null) =>
