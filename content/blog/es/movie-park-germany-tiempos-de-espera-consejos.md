@@ -1,16 +1,16 @@
 ---
-title: 'Movie Park Germany: 30 años, y el día más tranquilo es el domingo'
+title: '30 años de Movie Park Germany, y no queda ni una marca de 1996'
 translationKey: movie-park-germany-guide
 date: '2026-08-28'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  El Movie Park ha perdido todas las marcas de cine para las que se construyó en
-  1996, y ha hecho de eso una costumbre: construye atracciones sobre sí mismo.
-  Por su trigésimo cumpleaños, una guía con tiempos de espera medidos, el día de
-  la semana en el que los consejos habituales se equivocan, el calendario a
-  partir de septiembre y el Halloween Horror Festival desde el 26 de septiembre.
+  De esa pérdida el parque ha hecho una costumbre: construye atracciones sobre
+  sí mismo. Por su trigésimo cumpleaños, una guía con tiempos de espera
+  medidos, el día de la semana en el que los consejos habituales se equivocan,
+  el calendario a partir de septiembre y el Halloween Horror Festival desde el
+  26 de septiembre.
 tags:
   - movie-park
   - tiempos-de-espera
