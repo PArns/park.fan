@@ -383,6 +383,11 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
           >
             {t('howto')}
           </Link>
+          {/* Favoriten stehen in dieser Zeile und nicht im Aktionsbereich rechts: sie öffnen
+              dasselbe Band wie „Parks entdecken" und „Blog", mit derselben Hover-Hysterese, und
+              eine Zeile, in der ein Eintrag anders aufgeht als seine Nachbarn, muss man zweimal
+              lernen. Der einzige Eintrag ohne Link — siehe FavoritesMenu. */}
+          <FavoritesMenu disabled={isTransparent} />
         </nav>
 
         {/* Search Desktop – fades in on scroll */}
@@ -419,14 +424,6 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
           {/* Search Button Mobile – fades in on scroll */}
           <div className={`lg:hidden ${fadeClass}`}>
             <SearchCommand trigger="button" size="sm" />
-          </div>
-
-          {/* Favorites – the visitor's own shelf, opening the same band the nav entries do.
-              `lg:block` mirrors the nav's single breakpoint: under it everything lives in the
-              burger, and the sheet carries the same list. See FavoritesMenu for why the star is
-              rendered even when there is nothing starred. */}
-          <div className={`hidden lg:block ${fadeClass}`}>
-            <FavoritesMenu disabled={isTransparent} />
           </div>
 
           {/* In-flow locale + theme – fades in on scroll, keeps flex anchor when invisible */}
