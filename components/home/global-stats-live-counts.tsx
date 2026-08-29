@@ -2,6 +2,7 @@
 
 import { StatsCard } from '@/components/common/stats-card';
 import { useGlobalStats } from '@/lib/hooks/use-global-stats';
+import { useMounted } from '@/lib/hooks/use-mounted';
 import type { GlobalStats } from '@/lib/api/types';
 
 /** Labels pre-translated by the server parent — keeps next-intl out of this client chunk. */
@@ -34,7 +35,17 @@ export function GlobalStatsLiveCounts({
   locale,
 }: GlobalStatsLiveCountsProps) {
   const { data } = useGlobalStats();
-  const counts = data?.counts ?? initialCounts;
+  /*
+   * Im ersten Client-Render zählt der Seed, nicht die frischere Antwort.
+   *
+   * `useGlobalStats` kann beim Hydrieren schon Daten haben — aus dem Cache einer anderen
+   * Komponente auf derselben Seite oder aus einer Antwort, die vor dem Hydrieren eintraf. Der
+   * Server hatte 89 offene Parks in die Karte geschrieben, der Client rechnete mit 90, und React
+   * hat daraufhin den Teilbaum verworfen und neu gerendert. Ein Wert, der sich alle fünf Minuten
+   * ändert, MUSS für einen Render lang der sein, den der Server geschrieben hat.
+   */
+  const mounted = useMounted();
+  const counts = (mounted ? data?.counts : undefined) ?? initialCounts;
 
   return (
     <div className="mb-4 grid gap-4 sm:grid-cols-2">

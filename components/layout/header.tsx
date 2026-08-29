@@ -22,6 +22,7 @@ import { ThemeToggle } from '@/components/common/theme-toggle';
 import { LocaleSwitcher } from '@/components/common/locale-switcher';
 import { SearchCommand } from '@/components/search/search-bar';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
+import { useMounted } from '@/lib/hooks/use-mounted';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { translateContinent } from '@/lib/i18n/helpers';
 import type { NearbyParksData } from '@/types/nearby';
@@ -66,7 +67,17 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
   const parks =
     nearbyData?.type === 'nearby_parks' ? (nearbyData.data as NearbyParksData).parks : [];
   const nearestPark = parks[0];
-  const showNearbyPark = nearestPark != null && nearestPark.distance <= NEAR_PARK_HEADER_RADIUS_M;
+  /*
+   * Erst nach dem Mount, wie überall an dieser Query.
+   *
+   * `useHomeNearbyParks` seedet aus `localStorage`, also gibt es die Pille auf dem Server nicht
+   * und im ersten Client-Render eines Besuchers, der schon einmal in Parknähe war, schon — ein
+   * Hydration-Fehler mitten im Header, nach dem React die ganze Leiste neu rendert. Auf einer
+   * Maschine ohne Standort fällt das nie auf, weil die Pille dort nie erscheint.
+   */
+  const mounted = useMounted();
+  const showNearbyPark =
+    mounted && nearestPark != null && nearestPark.distance <= NEAR_PARK_HEADER_RADIUS_M;
 
   const isHomePage = pathname === '/';
   const isFancast = pathname === '/fancast';

@@ -5,6 +5,7 @@ import { DistanceBadge } from '@/components/common/distance-badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useDistanceTo, useNearestDistance } from '@/lib/hooks/use-distance-to';
 import { formatDistance, type Coordinate } from '@/lib/utils/distance-utils';
+import { useMounted } from '@/lib/hooks/use-mounted';
 import { cn } from '@/lib/utils';
 
 /**
@@ -93,10 +94,22 @@ export function ParkDistance({
 }) {
   const t = useTranslations('nearby');
   const { meters, pending } = useDistanceTo(latitude, longitude);
+  /*
+   * Bis zum Mount immer der Platzhalter.
+   *
+   * Die Entfernung ist ein rein clientseitiger Wert, und `useDistanceTo` kann ihn im ERSTEN
+   * Client-Render bereits haben — aus der gecachten Position. Der Server schrieb dann das
+   * Skelett und der Client an derselben Stelle das fertige Badge, was React mit einem
+   * Hydration-Fehler quittiert und den Teilbaum neu rendert. Die Reservierung ist ohnehin so
+   * gebaut, dass alle drei Zustände dieselbe Box haben — der eine zusätzliche Platzhalter-Render
+   * kostet also keinen Versatz.
+   */
+  const mounted = useMounted();
 
   const sample = `${formatDistance(WIDEST_DISTANCE_SAMPLE)} ${t('awayFrom')}`;
 
-  if (pending) return <DistancePlaceholder sample={sample} size={size} className={className} />;
+  if (!mounted || pending)
+    return <DistancePlaceholder sample={sample} size={size} className={className} />;
   // No position is coming. Both headers put this inside a `flex-wrap` meta row that is exactly
   // wide enough to wrap around it on a phone, so dropping the element there does not free up a
   // gap — it un-wraps the row, and the page below moves up a whole line (34px, ~0.106 CLS).
@@ -148,8 +161,10 @@ export function NearestParkDistance({
 }) {
   const t = useTranslations('nearby');
   const { meters, pending } = useNearestDistance(coordinates);
+  // Wie oben: die Entfernung ist clientseitig und kann im ersten Render schon dastehen.
+  const mounted = useMounted();
 
-  if (pending)
+  if (!mounted || pending)
     return (
       <DistancePlaceholder
         sample={t('nearestParkAway', { distance: formatDistance(WIDEST_DISTANCE_SAMPLE) })}
