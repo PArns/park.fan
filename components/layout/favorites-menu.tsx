@@ -50,13 +50,17 @@ export function FavoritesMenu({ disabled }: { disabled?: boolean }) {
         data-header-stagger
         className="text-muted-foreground hover:text-foreground flex cursor-pointer items-center gap-1 text-sm font-medium transition-colors"
       >
+        {/* Der Zähler sitzt AUF dem Stern, nicht daneben. Als Geschwister war er eine zweite
+            Marke in der Zeile — und er hätte den Eintrag breiter gemacht, sobald jemand etwas
+            markiert, was jeden Nachbarn in der Navigationszeile verschoben hätte. Absolut
+            positioniert ist die Breite des Auslösers konstant, ob null oder acht Favoriten. */}
         <span className="relative flex items-center">
           <Star
             className={`h-4 w-4 ${counts.total > 0 ? 'fill-primary text-primary' : ''}`}
             aria-hidden="true"
           />
           {counts.total > 0 && (
-            <span className="bg-primary text-primary-foreground ml-1.5 min-w-4 rounded-full px-1 text-[10px] leading-4 font-semibold tabular-nums">
+            <span className="bg-primary text-primary-foreground absolute -top-1.5 -right-2 min-w-[15px] rounded-full px-[3px] text-center text-[10px] leading-[15px] font-semibold tabular-nums">
               {counts.total}
             </span>
           )}

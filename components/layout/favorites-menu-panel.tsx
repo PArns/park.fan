@@ -40,8 +40,13 @@ import type { AttractionStatus, CrowdLevel, ParkStatus } from '@/lib/api/types';
  * chrome payload of every page, which is what the homepage band fetches a lazy chunk to avoid.
  */
 
-/** Cards per group before the rest collapses into a "+N" line. */
-const MAX_CARDS = 4;
+/**
+ * Cards per group before the rest collapses into a "+N" line.
+ *
+ * Two rows of four at the band's widest. The grid below fills as many columns as fit, so this is
+ * a cap on how much of the menu one group may take, not a column count.
+ */
+const MAX_CARDS = 8;
 /** Rows per group in the sheet, where they are cheaper. */
 const MAX_ROWS = 5;
 
@@ -291,9 +296,22 @@ export function FavoritesMenuPanel({
   }
 
   const loading = isPending || !data;
-  const listClass = isSheet
-    ? 'space-y-px'
-    : 'grid grid-cols-2 gap-3 sm:grid-cols-3 xl:grid-cols-4';
+  /*
+   * Die Breite folgt der Anzahl, die Spaltenzahl der Breite.
+   *
+   * Vorher waren es zwei starre Hälften: wer nur Parks markiert hat, sah eine halbleere linke
+   * Spalte neben einer leeren rechten, und wer zwei Parks und zwölf Bahnen hat, bekam für beide
+   * gleich viel Platz. `flex-grow` nach Anzahl teilt das Band proportional auf — eine einzige
+   * Gruppe bekommt damit automatisch die volle Breite —, und das Kartenraster darin füllt mit
+   * `auto-fill` so viele Spalten, wie hineinpassen, und bricht sonst um. Beides zusammen ist das
+   * „mehr Bahnen, mehr Platz, notfalls mehr Zeilen", ohne eine einzige Breakpoint-Regel.
+   */
+  const listClass = isSheet ? 'space-y-px' : 'grid gap-3';
+  const gridStyle: React.CSSProperties | undefined = isSheet
+    ? undefined
+    : { gridTemplateColumns: 'repeat(auto-fill, minmax(10.5rem, 1fr))' };
+  const groupStyle = (count: number): React.CSSProperties | undefined =>
+    isSheet ? undefined : { flexGrow: count, flexBasis: 0 };
 
   return (
     <div>
@@ -311,11 +329,11 @@ export function FavoritesMenuPanel({
         </Link>
       </div>
 
-      <div className={isSheet ? 'space-y-5' : 'grid gap-x-8 gap-y-6 lg:grid-cols-2'}>
+      <div className={isSheet ? 'space-y-5' : 'flex flex-col gap-6 lg:flex-row lg:gap-8'}>
         {counts.parks > 0 && (
-          <div data-menu-stagger>
+          <div data-menu-stagger className="min-w-0" style={groupStyle(counts.parks)}>
             <GroupHeading title={t('parks')} count={counts.parks} />
-            <ul className={listClass}>
+            <ul className={listClass} style={gridStyle}>
               {loading ? (
                 isSheet ? (
                   <RowSkeletons count={counts.parks} />
@@ -344,9 +362,9 @@ export function FavoritesMenuPanel({
         )}
 
         {counts.attractions > 0 && (
-          <div data-menu-stagger>
+          <div data-menu-stagger className="min-w-0" style={groupStyle(counts.attractions)}>
             <GroupHeading title={t('attractions')} count={counts.attractions} />
-            <ul className={listClass}>
+            <ul className={listClass} style={gridStyle}>
               {loading ? (
                 isSheet ? (
                   <RowSkeletons count={counts.attractions} />
