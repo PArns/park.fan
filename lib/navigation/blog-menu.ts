@@ -1,6 +1,6 @@
 import 'server-only';
 import type { Locale } from '@/i18n/config';
-import { buildCategoryTree } from '@/lib/blog/categories';
+import { buildCategoryTree, resolveCategoryLabel } from '@/lib/blog/categories';
 import { listPostsByRecency } from '@/lib/blog/listing';
 import { versionedPath } from '@/lib/media/focus';
 
@@ -42,19 +42,23 @@ const RECENT_LIMIT = 6;
  *
  * The excerpts in this blog run 200–300 characters, and this text is repeated in the chrome of
  * every page on the site — so it is cut here, on the server, rather than clamped in CSS: a line
- * clamp hides the bytes, it does not stop shipping them. 170 characters is two lines under the
- * opener's cover at the band's width, and one line on a row.
+ * clamp hides the bytes, it does not stop shipping them.
+ *
+ * The opener gets more of it than the rows do: it has a column to itself and its own cover above,
+ * so three lines sit in space that was otherwise empty, while a row has one line beside a 70 px
+ * picture. One number for both would either starve the opener or bloat five rows.
  */
 const EXCERPT_CHARS = 170;
+const LEAD_EXCERPT_CHARS = 300;
 
 /** Cut on a word boundary, never mid-word, and only when there is something to cut. */
-function trimExcerpt(text: string | undefined): string | undefined {
+function trimExcerpt(text: string | undefined, limit: number): string | undefined {
   if (!text) return undefined;
   const clean = text.trim();
-  if (clean.length <= EXCERPT_CHARS) return clean;
-  const cut = clean.slice(0, EXCERPT_CHARS);
+  if (clean.length <= limit) return clean;
+  const cut = clean.slice(0, limit);
   const lastSpace = cut.lastIndexOf(' ');
-  return `${(lastSpace > EXCERPT_CHARS * 0.6 ? cut.slice(0, lastSpace) : cut).trimEnd()}…`;
+  return `${(lastSpace > limit * 0.6 ? cut.slice(0, lastSpace) : cut).trimEnd()}…`;
 }
 
 export interface BlogMenuCategory {
@@ -69,8 +73,10 @@ export interface BlogMenuPost {
   /** ISO date — the panel formats it in the reader's locale. */
   date: string;
   readingTimeMinutes: number;
-  /** The post's own teaser, cut to {@link EXCERPT_CHARS} on the server. */
+  /** The post's own teaser, cut on the server — longer for the opener than for a row. */
   excerpt?: string;
+  /** The post's category, resolved to its label. Only carried for the opener, which shows it. */
+  category?: string;
   /** Cover image, where the post has one. All seven currently do. */
   image?: string;
 }
@@ -93,12 +99,25 @@ export function getBlogMenu(locale: Locale): BlogMenu {
       .sort((a, b) => b.postCount - a.postCount || a.label.localeCompare(b.label)),
     recent: listPostsByRecency(locale)
       .slice(0, RECENT_LIMIT)
-      .map((post) => ({
+      .map((post, index) => ({
         slug: post.slug,
         title: post.frontmatter.title,
         date: post.frontmatter.date,
         readingTimeMinutes: post.readingTimeMinutes,
-        excerpt: trimExcerpt(post.frontmatter.excerpt),
+        excerpt: trimExcerpt(
+          post.frontmatter.excerpt,
+          index === 0 ? LEAD_EXCERPT_CHARS : EXCERPT_CHARS
+        ),
+        // Only the opener renders it, so only the opener carries it — a label per row would be
+        // five more strings in the chrome of every page for a line nobody has room to read.
+        category:
+          index === 0 && post.frontmatter.category
+            ? resolveCategoryLabel(
+                post.frontmatter.category,
+                locale,
+                post.frontmatter.category.split('/').filter(Boolean).pop() ?? ''
+              )
+            : undefined,
         // The cover is already a 16:9 crop for every post that has one, so the panel needs no
         // optimizer pass — but it does need the version token. Retargeting a focal point rewrites
         // a crop's bytes at an unchanged URL, so a bare path serves the old framing out of cache

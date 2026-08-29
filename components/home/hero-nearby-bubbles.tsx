@@ -7,6 +7,7 @@ import { HeroBubblesSkeleton } from '@/components/home/hero-skeletons';
 import { HeroBubbleRow } from '@/components/home/hero-bubble-row';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { cn } from '@/lib/utils';
+import { useMounted } from '@/lib/hooks/use-mounted';
 import { CROWD_DOT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 
 /**
@@ -17,10 +18,21 @@ import { CROWD_DOT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styl
 export function HeroNearbyBubbles({ className }: { className?: string }) {
   const tSearch = useTranslations('search');
   const { entries, isPending } = useHeroBrowseParks();
+  /*
+   * Bis zum Mount immer das Skelett, auch wenn schon Daten dastehen.
+   *
+   * `useNearbyParks` darunter seedet seine Query aus `localStorage` (`initialData`), also ist
+   * `isPending` auf dem Server true und im ERSTEN Client-Render bei einem wiederkehrenden
+   * Besucher false. Der Server schrieb damit `<div data-slot="skeleton">`, der Client an
+   * derselben Stelle `<a href="/de/parks/…">` — ein Hydration-Fehler, nach dem React den
+   * Teilbaum wegwirft und neu rendert. Das Skelett reserviert dieselbe Box, der Tausch nach dem
+   * Mount kostet also weiterhin keinen Versatz.
+   */
+  const mounted = useMounted();
 
   // Skeleton pills while the lookup runs — same box, so the hero is settled from the first
   // paint instead of growing a row of pills into place a second later.
-  if (isPending) return <HeroBubblesSkeleton className={className} />;
+  if (!mounted || isPending) return <HeroBubblesSkeleton className={className} />;
 
   return (
     <HeroBubbleRow className={className}>
