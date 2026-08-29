@@ -14,8 +14,12 @@ import type { BlogMenu } from '@/lib/navigation/blog-menu';
  * for them, and the covers finally get a size worth looking at.
  *
  * The split is the same one the blog itself uses: the newest post is the opener, everything after
- * it is a row with a small cover, its category and its reading time — the two facts that actually
- * decide whether somebody clicks.
+ * it is a row with a small cover, its date and its reading time — the two facts that actually
+ * decide whether somebody clicks — plus a line of the post's own teaser.
+ *
+ * The teaser is there for a reader first and a crawler second, and it is cut on the SERVER
+ * (`trimExcerpt`, 170 characters): this text sits in the chrome of every page on the site, and a
+ * CSS line clamp would hide the bytes without stopping them from shipping.
  *
  * Categories move to a pill row along the bottom. As a left column they cost 13 rem of the band
  * for three links; as pills they cost one line and read as what they are, a filter rather than a
@@ -69,7 +73,12 @@ export function BlogMenuPanel({ categories, recent }: BlogMenu) {
               <span className="text-foreground group-hover:text-primary block text-lg leading-snug font-bold text-pretty transition-colors">
                 {lead.title}
               </span>
-              <span className="text-muted-foreground mt-1.5 block text-xs">
+              {lead.excerpt && (
+                <span className="text-muted-foreground mt-1.5 line-clamp-2 block text-[13px] leading-relaxed">
+                  {lead.excerpt}
+                </span>
+              )}
+              <span className="text-muted-foreground/80 mt-2 block text-xs">
                 {dateOf(lead.date)} · {t('readingTime', { minutes: lead.readingTimeMinutes })}
               </span>
             </Link>
@@ -113,6 +122,11 @@ export function BlogMenuPanel({ categories, recent }: BlogMenu) {
                       <span className="text-foreground group-hover:text-primary line-clamp-2 block text-sm leading-snug font-medium text-pretty transition-colors">
                         {post.title}
                       </span>
+                      {post.excerpt && (
+                        <span className="text-muted-foreground mt-0.5 line-clamp-1 block text-xs">
+                          {post.excerpt}
+                        </span>
+                      )}
                       <span className="text-muted-foreground/80 mt-1 block text-[11px]">
                         {dateOf(post.date)} ·{' '}
                         {t('readingTime', { minutes: post.readingTimeMinutes })}
