@@ -2,6 +2,7 @@
 
 import { OpenStatusProgress } from '@/components/common/open-status-progress';
 import { useGeoLiveStats, findOpenParkCount } from '@/lib/hooks/use-geo-live-stats';
+import { useMounted } from '@/lib/hooks/use-mounted';
 
 interface LiveContinentOpenCountProps {
   continentSlug: string;
@@ -22,8 +23,21 @@ export function LiveContinentOpenCount({
   initialOpenCount,
   parkCount,
 }: LiveContinentOpenCountProps) {
+  /*
+   * Auch hier zählt im ersten Client-Render der Seed.
+   *
+   * Dieselbe Falle wie in GlobalStatsLiveCounts, nur mit der anderen geteilten Abfrage: Der Seed
+   * kommt aus einem Fetch, der die volle Stunde des Shells gecached ist, der Poll aus dem
+   * no-store-Proxy — ob beide dieselbe Zahl nennen, ist Zufall. Und nichts garantiert, dass diese
+   * Karte die erste ist, die `useGeoLiveStats` liest: Sie sitzt in der letzten Suspense-Boundary
+   * einer langen Seite, während das World-Panel im Hero nach `load` + idle mountet und dieselbe
+   * Anfrage abschickt. Kommt deren Antwort vorher an, rendert der Client 14, wo im Server-HTML 17
+   * steht, und React verwirft den Teilbaum. Der Live-Wert landet einen Commit später.
+   */
+  const mounted = useMounted();
   const { data } = useGeoLiveStats();
-  const openParkCount = findOpenParkCount(data, continentSlug) ?? initialOpenCount;
+  const liveOpenCount = mounted ? findOpenParkCount(data, continentSlug) : undefined;
+  const openParkCount = liveOpenCount ?? initialOpenCount;
 
   return (
     <>
