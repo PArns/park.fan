@@ -290,7 +290,8 @@
     "categories": "Categorieën",
     "popularParks": "Populaire parken",
     "allPosts": "Alle berichten bekijken",
-    "readingTime": "{minutes} min."
+    "readingTime": "{minutes} min.",
+    "nearby": "Bij jou in de buurt"
   },
   "theme": {
     "light": "Licht",
