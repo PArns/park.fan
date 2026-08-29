@@ -108,6 +108,7 @@ export async function GET(req: Request) {
     license: (params.get('license') as MediaLicense) || undefined,
     unlicensedOnly: params.get('unlicensed') === '1',
     unassignedOnly: params.get('unassigned') === '1',
+    reviewOnly: params.get('review') === '1',
   });
 
   // Filters that exist only for the admin: they describe work still to do rather

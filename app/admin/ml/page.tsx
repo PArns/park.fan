@@ -147,7 +147,7 @@ function SubLabel({ children }: { children: React.ReactNode }) {
 
 function MetricsRow({ label, m }: { label: string; m: MlMetrics }) {
   return (
-    <div className="border-border/40 grid grid-cols-5 gap-2 border-b py-2 text-sm last:border-0">
+    <div className="border-border/40 grid min-w-[22rem] grid-cols-5 gap-2 border-b py-2 text-sm last:border-0">
       <span className="text-muted-foreground">{label}</span>
       <span className={`text-right font-mono tabular-nums ${maeColor(m.mae)}`}>
         {m.mae.toFixed(2)}
@@ -647,8 +647,12 @@ function TftScoreboard({ comparison }: { comparison: SystemHealthResponse['ml'][
               headliner: 'text-violet-400',
             };
             return (
-              <div className="space-y-0">
-                <div className="border-border/60 text-muted-foreground grid grid-cols-5 gap-1 border-b pb-1 text-xs font-medium tracking-wide uppercase">
+              // Scrolls sideways rather than reflowing. Five numeric columns on a
+              // phone is not a layout problem worth solving here — this page is a
+              // monitoring surface read at a desk, and the honest mobile answer is
+              // "you can still get at it", not a redesign.
+              <div className="space-y-0 overflow-x-auto">
+                <div className="border-border/60 text-muted-foreground grid min-w-[24rem] grid-cols-5 gap-1 border-b pb-1 text-xs font-medium tracking-wide uppercase">
                   <span>Date</span>
                   <span>Seg</span>
                   <span className="text-right">n</span>
@@ -662,7 +666,7 @@ function TftScoreboard({ comparison }: { comparison: SystemHealthResponse['ml'][
                   return (
                     <div
                       key={i}
-                      className="border-border/40 grid grid-cols-5 gap-1 border-b py-1 text-xs last:border-0"
+                      className="border-border/40 grid min-w-[24rem] grid-cols-5 gap-1 border-b py-1 text-xs last:border-0"
                     >
                       <span className="text-muted-foreground">{g.date?.slice(5, 10)}</span>
                       <span className={`font-mono ${segClass[g.segment] ?? ''}`}>
@@ -946,8 +950,8 @@ export default function MlPage() {
                   Accuracy · training vs live
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <div className="border-border/60 text-muted-foreground grid grid-cols-5 gap-2 border-b pb-2 text-xs font-medium tracking-wide uppercase">
+              <CardContent className="overflow-x-auto">
+                <div className="border-border/60 text-muted-foreground grid min-w-[22rem] grid-cols-5 gap-2 border-b pb-2 text-xs font-medium tracking-wide uppercase">
                   <span />
                   <span className="text-right">MAE</span>
                   <span className="text-right">RMSE</span>

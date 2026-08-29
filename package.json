@@ -46,6 +46,7 @@
     "test:live-park-counts": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-live-park-counts.mjs",
     "test:crop-box": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-crop-box.mjs",
     "test:media": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-media.mjs",
+    "test:photo-backlog": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-photo-backlog.mjs",
     "test:media-references": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-media-references.mjs",
     "test:blog-image-sidecar": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-blog-image-sidecar.mjs",
     "audit:media": "node scripts/audit-media.mjs",

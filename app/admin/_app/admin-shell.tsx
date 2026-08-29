@@ -51,6 +51,7 @@ const JUMP_KEYS: Record<string, string> = {
   s: '/admin/seasons',
   h: '/admin/history',
   m: '/admin/media',
+  f: '/admin/capture',
   b: '/admin/blog-editor',
   y: '/admin/system',
   q: '/admin/queues',

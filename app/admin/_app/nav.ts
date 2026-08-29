@@ -2,6 +2,7 @@ import {
   Activity,
   Archive,
   Brain,
+  Camera,
   CalendarRange,
   Copy,
   HeartPulse,
@@ -112,6 +113,13 @@ export const NAV_GROUPS: NavGroup[] = [
   {
     label: 'Inhalte',
     items: [
+      {
+        href: '/admin/capture',
+        label: 'Vor Ort',
+        icon: Camera,
+        description: 'Im Park fotografieren: was fehlt, und direkt hochladen',
+        keywords: ['foto', 'kamera', 'knipsen', 'handy', 'mobil', 'park', 'shooting'],
+      },
       {
         href: '/admin/media',
         label: 'Medien',

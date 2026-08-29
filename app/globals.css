@@ -1915,3 +1915,27 @@ html[data-temp-unit] .u-force-metric .u-imperial {
     background: color-mix(in oklab, var(--popover) 95%, transparent);
   }
 }
+
+/* ─── Der Admin auf einem Telefon ────────────────────────────────────────────
+ *
+ * iOS Safari zoomt die Seite heran, sobald ein fokussiertes Eingabefeld kleiner
+ * als 16 px rendert – und zoomt beim Verlassen nicht zurück. Ein Tipp ins
+ * Suchfeld ließ den Admin also auf 1,3× stehen, mit horizontaler Scrollleiste,
+ * und nur eine Zwei-Finger-Geste kam da wieder raus.
+ *
+ * Der geteilte Baukasten (`app/admin/_ui/controls.tsx`) sagt das inzwischen
+ * selbst, samt 44-px-Trefferfläche. Diese Regel ist für den Rest: knapp vierzig
+ * handgeschriebene Felder quer durch Medienbrowser, Blog-Editor und Dialoge, von
+ * denen einige in fremdem Markup stecken. Eine Klasse pro Feld hieße, beim
+ * nächsten neuen Feld wieder eine zu vergessen – und der Fehler wäre erst auf
+ * einem echten iPhone zu sehen.
+ *
+ * Nur der Admin: `data-admin` sitzt auf dessen eigenem `<html>`, die öffentliche
+ * Seite hat ihre eigene Typografie und ist davon nicht betroffen. */
+@media (max-width: 639px) {
+  [data-admin] input,
+  [data-admin] textarea,
+  [data-admin] select {
+    font-size: 16px;
+  }
+}

@@ -111,6 +111,19 @@ export interface MediaSidecar {
    * (`top`, `top-left`, `center`, `bottom-right`, …). Omit for centre.
    */
   focus?: MediaFocus | string | null;
+  /**
+   * Somebody still has to look at this one.
+   *
+   * Written by the field-capture route (`/admin/capture`), which fills in what a
+   * phone standing in front of a ride can know for certain and leaves what needs
+   * the picture on a screen: alt text, caption, the tags describing what is in
+   * frame, the focal point if it was not tapped on the spot. The flag is what
+   * separates "not written yet" from "needs none" — those two look identical in
+   * the database, which is why a missing alt text alone cannot be the signal.
+   *
+   * Cleared from the media browser's detail panel. Only `true` is ever written.
+   */
+  review?: boolean;
 }
 
 /**
@@ -185,6 +198,8 @@ export interface MediaImage {
    * head — survives every rendition instead of being cut off in the wide one.
    */
   focus: MediaFocus | null;
+  /** Still awaiting a proper pass — see `MediaSidecar.review`. */
+  review: boolean;
   /**
    * Content version: changes exactly when this image's pixels or framing change.
    * Append as `?v=` so renditions can be cached as immutable without a focal-point
@@ -239,4 +254,6 @@ export interface MediaQuery {
   unlicensedOnly?: boolean;
   /** Only images with no park assigned. */
   unassignedOnly?: boolean;
+  /** Only images still flagged for a review pass. */
+  reviewOnly?: boolean;
 }

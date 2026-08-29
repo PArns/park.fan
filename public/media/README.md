@@ -214,6 +214,21 @@ and apply here too, including **no em dash in German running text**.
 legitimate, expected state, and the build counts how many are outstanding. Do not
 fill in an author to make the warning go away.
 
+### `review` — the photograph nobody has looked at yet
+
+`"review": true` means the sidecar was written by a phone standing in front of the
+ride: park, ride, area, capture date and credit are filled in, and alt text,
+caption and the tags describing what is actually in frame are not. It is what
+`/admin/capture` sets and what the media browser's **Zu prüfen** filter lists.
+
+It is a field rather than a `needs-review` tag on purpose. Tags say what a photo
+_shows_; a workflow state filed among them would end up in the caption search and
+would still be there long after somebody had done the work.
+
+Only `true` is ever written. Absent and `false` mean the same thing, so a sidecar
+that has never been near the field workflow stays byte-identical through a
+regeneration.
+
 ## Tags
 
 A controlled vocabulary, grouped into facets, defined in `lib/media/tags.mjs`:

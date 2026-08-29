@@ -293,6 +293,88 @@ with links into the media editor rather than an editor of its own. A save button
 that behaved differently from every other save button would be worse than the
 extra click.
 
+## Vor Ort — `/admin/capture`
+
+The one screen in here that assumes a hand rather than a desk. It answers two
+questions, and the whole design follows from the fact that they are two:
+
+- **What is missing a photograph?** Ranked, so an afternoon in a park is spent on
+  the rides anybody looks up.
+- **What is in front of me?** The same list, sorted by distance, plus the nearest
+  unphotographed ride pulled out on top.
+
+One list under two sort orders rather than two lists. The ordering itself is a pure
+function in `lib/media/photo-backlog.ts` with `pnpm test:photo-backlog` behind it,
+because it is three layers deep and each layer exists to survive the loss of the one
+above it:
+
+1. the rank from `/stats.topAttractions` — measured, it answers with **ten** rows by
+   default and eighteen at `topN=30` for Phantasialand, so it covers the top of a
+   park and nothing else;
+2. `isHeadliner` off the park payload, for the marquee rides `/stats` did not rank,
+   and for the case where the cold aggregate times out entirely;
+3. today's `peakWaitToday` — which at nine in the morning is zero for the whole
+   catalogue, which is exactly why it ranks last and never first.
+
+`/api/nearby` resolves **which park**, and is deliberately not the source of the
+ride list: it drops rides without coordinates and rides that are definitively out
+of season, and the ride that cannot open before November is precisely the one
+nobody has ever photographed. The list comes from `/api/admin/media/backlog`, which
+crosses the park payload with the media index server-side and answers a few KB
+instead of the 65–85 KB park payload over park WLAN.
+
+### Three ways to a picture, and one of them is why HEIC matters
+
+The camera button carries `capture="environment"` and opens the camera. The library
+button does not, which on iOS opens the action sheet — Fotomediathek, Aufnehmen,
+Datei auswählen — and that is the path to a photograph that was cropped or
+straightened in the Fotos app first. Editing lives there, not here: iOS already
+has a better editor than anything worth building in a web view.
+
+Which is how HEIC gets in. `/contribute` accepts it; the media database does not —
+`commit`'s extension check lists jpg/jpeg/png/webp/avif/svg. Safari usually converts
+on the way out, but "Datei auswählen" does not, and `compressImage` returns anything
+under the size cap **untouched**, so a 2 MB HEIC used to sail through analysis,
+shrink and upload and fail on the last line with `Bad extension "heic"`. Format is
+asked before size now (`toDatabaseFormat`), and both re-encodes strip EXIF, which is
+why capture date and coordinates are written into the sidecar explicitly.
+
+### The queue is the point
+
+A park is the worst network this admin will ever see. A failed commit is not an
+error message, it is a row in IndexedDB carrying the blob and everything needed to
+finish later, retried on the `online` event and from the footer — never on a timer,
+because a queue that retries in a dead spot empties the battery that has to last
+until closing time. Names are reserved when the shutter closes rather than when the
+upload succeeds: `commit` writes by path and does not ask, so two photographs of one
+ride would otherwise both be called `troy` and the second would replace the first.
+
+Everything lands with `review: true` (see [media database](media-database.md)), so
+the evening's work is a filter in the media browser rather than a memory.
+
+## The admin on a phone
+
+Two things were actually broken, and neither was a layout.
+
+**iOS Safari zooms the page to meet any focused input under 16 px and does not zoom
+back on blur.** `text-sm` is 14. So the first tap on the login field left the whole
+admin at 1.3× with a horizontal scrollbar and a pinch as the only way out. The
+shared controls say `text-base sm:text-sm` and `h-11 sm:h-9` — 44 px is the smallest
+target a thumb hits reliably, and the desk keeps the 36 px off the button scale. The
+remaining ~40 hand-rolled fields are caught by one rule in `globals.css` scoped to
+`[data-admin]`, because a class per field is a class somebody forgets on the next
+one and the failure is only visible on a real phone.
+
+**The parks table is five columns.** Below `sm` its header row goes away and each
+row becomes a block: town, ride count and season count are hidden and reappear as
+one line of meta under the park's name. One markup, not two — a phone-only
+component rendering the same parks would drift, and the half nobody looks at on a
+laptop would be the half that rots.
+
+The dense monitoring grids (`ml`, `system`) scroll sideways instead. That page is
+read at a desk, and "you can still get at it" is the honest answer rather than a
+redesign nobody asked for.
+
 ## Things that will bite
 
 - `app/admin` has **no QueryClientProvider from the `[locale]` tree**. It mounts
