@@ -145,13 +145,37 @@ export function FavoritesMenuPanel({
   const moreLabel = (hidden: number) => t('more', { count: hidden });
 
   if (counts.total === 0) {
+    /*
+     * Im Sheet zwei Zeilen, im Band die ganze Anleitung.
+     *
+     * Die drei Schritte untereinander sind in einer 300-px-Spalte 358 px hoch — auf einem
+     * 390×844-Telefon 58 % des gesamten Burger-Menüs, für einen Zustand, in dem es nichts zu
+     * zeigen gibt. Das Menü ist dort die komplette Navigation; eine Funktionserklärung darf sie
+     * nicht verdrängen. Der Satz, auf den es ankommt, ist ohnehin der zweite Schritt: wo der
+     * Stern sitzt. Die vollständige Anleitung steht im Band und im Favoritenband der Startseite,
+     * wo Platz dafür ist.
+     */
+    if (variant === 'sheet') {
+      return (
+        <div data-menu-stagger className="flex gap-3">
+          <Star className="text-muted-foreground/60 mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+          <span className="min-w-0">
+            <span className="text-foreground block text-sm font-semibold">{t('empty')}</span>
+            <span className="text-muted-foreground block text-xs leading-relaxed">
+              {t('howTo.starText')}
+            </span>
+          </span>
+        </div>
+      );
+    }
+
     return (
       <div data-menu-stagger>
         <p className="text-foreground inline-flex items-center gap-2 text-sm font-semibold">
           <Star className="text-muted-foreground/60 h-4 w-4" aria-hidden="true" />
           {t('empty')}
         </p>
-        <FavoritesHowTo className="mt-4" layout={variant === 'sheet' ? 'stack' : 'auto'} />
+        <FavoritesHowTo className="mt-4" />
       </div>
     );
   }

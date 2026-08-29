@@ -19,25 +19,18 @@ import { buttonLinkProps } from '@/components/ui/button';
  * claimed for it — a card's star sits in a corner, a park page's does not, and copy that says
  * where to look is wrong on one of them and on every phone.
  *
- * Shared by the homepage band and the header's favorites menu, which is what keeps the two
- * answers identical; it is also why the geometry has to survive both a 300 px sheet column and a
- * full-width band, hence a grid that stacks rather than a fixed row.
+ * Shared by the homepage band and the header's favorites band, which is what keeps the two
+ * answers identical. It is deliberately NOT what the burger sheet shows: three steps stacked in a
+ * 300 px column are 358 px tall, i.e. 58 % of the whole menu on a 390×844 phone, and that menu is
+ * the entire navigation there — see `FavoritesMenuPanel`, which renders two lines instead.
  */
 export function FavoritesHowTo({
   className,
   cta = true,
-  layout = 'auto',
 }: {
   className?: string;
-  /** The homepage band has room for the "Explore Parks" button; the sheet column does not. */
+  /** The homepage band has room for the "Explore Parks" button; a narrower host does not. */
   cta?: boolean;
-  /**
-   * `auto` goes three-across from `sm` up. `stack` stays one column at every width, for the
-   * places where the box is narrow while the VIEWPORT is not — a sidebar rail, the mobile
-   * sheet. Tailwind's `sm:` is a viewport query and knows nothing about the 19 rem column it
-   * is sitting in, so three columns there came out one word wide.
-   */
-  layout?: 'auto' | 'stack';
 }) {
   const t = useTranslations('favorites');
   const tNav = useTranslations('navigation');
@@ -50,7 +43,7 @@ export function FavoritesHowTo({
 
   return (
     <div className={className}>
-      <ol className={`grid gap-4 ${layout === 'auto' ? 'sm:grid-cols-3' : ''}`}>
+      <ol className="grid gap-4 sm:grid-cols-3">
         {steps.map((step, i) => (
           <li key={step.title} className="flex gap-3">
             <span
