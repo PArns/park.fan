@@ -290,7 +290,8 @@
     "categories": "Catégories",
     "popularParks": "Parcs populaires",
     "allPosts": "Voir tous les articles",
-    "readingTime": "{minutes} min"
+    "readingTime": "{minutes} min",
+    "nearby": "Près de chez vous"
   },
   "theme": {
     "light": "Clair",

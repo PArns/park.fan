@@ -290,7 +290,8 @@
     "categories": "Kategorien",
     "popularParks": "Beliebte Parks",
     "allPosts": "Alle Beiträge ansehen",
-    "readingTime": "{minutes} Min."
+    "readingTime": "{minutes} Min.",
+    "nearby": "In deiner Nähe"
   },
   "theme": {
     "light": "Hell",

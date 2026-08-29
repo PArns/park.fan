@@ -9,6 +9,14 @@ import { translateContinent, translateCountry } from '@/lib/i18n/helpers';
 import type { GeoMenuContinent } from '@/lib/navigation/geo-menu';
 import type { FeaturedParkCard } from '@/lib/navigation/featured-parks-menu';
 import { useRowReveal } from '@/lib/hooks/use-menu-reveal';
+import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
+import { ParkStatusBadge } from '@/components/parks/park-status-badge';
+import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
+import { CROWD_TEXT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
+import { roundWaitTo5 } from '@/lib/utils/wait-time';
+import { formatDistance } from '@/lib/utils/distance-utils';
+import type { NearbyParksData, ParkWithDistance } from '@/types/nearby';
+import type { ParkStatus } from '@/lib/api/types';
 
 /**
  * The parks menu, as a full-width band: continent columns and a photo rail over one detail row.
@@ -60,11 +68,14 @@ const CITY_COLUMNS = 5;
  */
 const COUNTRY_DWELL_MS = 140;
 
+/** Parks in the nearby rail. Six rows is the height the 2×2 photo grid already occupied. */
+const NEARBY_LIMIT = 6;
+
 interface CityEntry {
   slug: string;
   name: string;
   parkCount: number;
-  parks: { slug: string; name: string }[];
+  parks: { slug: string; name: string; image?: string | null; imagePosition?: string }[];
 }
 
 interface ParksMenuPanelProps {
@@ -73,6 +84,23 @@ interface ParksMenuPanelProps {
 }
 
 export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
+  /*
+   * Die Parks in Reichweite, im selben Streifen wie die kuratierten.
+   *
+   * Kostenlos: der Header ruft `useHomeNearbyParks()` ohnehin für die „In der Nähe"-Pille, das
+   * Panel hängt sich an dieselbe Query. Und die Daten tragen bereits alles, was der Streifen
+   * zeigen soll — Entfernung, Status, Ø-Wartezeit, offene Attraktionen und ein server-seitig
+   * aufgelöstes `backgroundImage`; nichts davon muss nachgeholt werden.
+   *
+   * Wo nichts in der Nähe ist — kein Standort freigegeben, oder wirklich nichts in Reichweite —
+   * bleibt es bei den kuratierten Parks. Ein leerer Streifen wäre schlechter als ein Vorschlag.
+   */
+  const tCommon = useTranslations('common');
+  const minuteLabel = tCommon('minuteShort');
+  const { data: nearbyData } = useHomeNearbyParks();
+  const nearbyParks =
+    nearbyData?.type === 'nearby_parks' ? (nearbyData.data as NearbyParksData).parks : [];
+  const showNearby = nearbyParks.length > 0;
   const t = useTranslations('geo');
   const tNav = useTranslations('navigation');
   const locale = useLocale();
@@ -204,7 +232,17 @@ export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
             data-menu-stagger
             className="border-border/60 hidden w-80 shrink-0 border-l pl-6 xl:block"
           >
-            <SectionHeading label={tNav('popularParks')} href="/parks" />
+            <SectionHeading
+              label={showNearby ? tNav('nearby') : tNav('popularParks')}
+              href="/parks"
+            />
+            {showNearby ? (
+              <ul className="flex flex-col gap-1.5">
+                {nearbyParks.slice(0, NEARBY_LIMIT).map((park) => (
+                  <NearbyRow key={park.id} park={park} minuteLabel={minuteLabel} />
+                ))}
+              </ul>
+            ) : (
             <div className="grid grid-cols-2 gap-2.5">
               {featured.map((park) => (
                 <Link
@@ -236,6 +274,7 @@ export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
                 </Link>
               ))}
             </div>
+            )}
           </div>
         )}
       </div>
@@ -298,9 +337,24 @@ export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
                           <Link
                             href={`/parks/${activeCountry.continent}/${activeCountry.country}/${city.slug}/${park.slug}`}
                             prefetch={false}
-                            className="text-muted-foreground hover:text-foreground hover:bg-muted/60 -mx-2 block truncate rounded-md px-2 py-0.5 text-sm transition-colors"
+                            className="text-muted-foreground hover:text-foreground hover:bg-muted/60 group -mx-2 flex items-center gap-2 rounded-md px-2 py-0.5 text-sm transition-colors"
                           >
-                            {park.name}
+                            {/* Kein reservierter Kasten: die Mediendatenbank hat für 14 von 212
+                                Parks ein Bild, ein Platzhalter je Zeile wäre in dieser Liste fast
+                                überall eine leere Kachel. Wo eines ist, trägt es die Zeile. */}
+                            {park.image && (
+                              <span className="bg-muted relative block h-6 w-6 shrink-0 overflow-hidden rounded">
+                                <Image
+                                  src={park.image}
+                                  alt=""
+                                  fill
+                                  sizes="24px"
+                                  className="object-cover"
+                                  style={{ objectPosition: park.imagePosition }}
+                                />
+                              </span>
+                            )}
+                            <span className="min-w-0 flex-1 truncate">{park.name}</span>
                           </Link>
                         </li>
                       ))}
@@ -345,5 +399,68 @@ function SectionHeading({ label, count, href }: { label: string; count?: number;
     >
       {inner}
     </Link>
+  );
+}
+
+
+/**
+ * One nearby park in the rail: picture where there is one, and the four values somebody standing
+ * somewhere actually wants — how far, whether it is open, how busy, how long the queues are.
+ *
+ * Ø and crowd only while the park is running: a closed one aggregates over an empty set and
+ * reports the same thing a park with no wait-time source reports.
+ */
+function NearbyRow({ park, minuteLabel }: { park: ParkWithDistance; minuteLabel: string }) {
+  const operating = park.status === 'OPERATING';
+  const wait =
+    operating && park.analytics?.avgWaitTime != null
+      ? roundWaitTo5(park.analytics.avgWaitTime)
+      : null;
+
+  return (
+    <li>
+      <Link
+        href={convertApiUrlToFrontendUrl(park.url) as '/'}
+        prefetch={false}
+        className="group hover:bg-muted/60 -mx-2 flex items-center gap-2.5 rounded-lg px-2 py-1.5 transition-colors"
+      >
+        <span className="bg-muted relative block h-9 w-9 shrink-0 overflow-hidden rounded-md">
+          {park.backgroundImage && (
+            <Image
+              src={park.backgroundImage}
+              alt=""
+              fill
+              sizes="36px"
+              className="object-cover"
+              style={{ objectPosition: park.backgroundPosition }}
+            />
+          )}
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="text-foreground group-hover:text-primary block truncate text-[13px] font-semibold transition-colors">
+            {park.name}
+          </span>
+          <span className="text-muted-foreground block truncate text-[11px]">
+            {formatDistance(park.distance)}
+            {park.operatingAttractions != null && operating
+              ? ` · ${park.operatingAttractions}/${park.totalAttractions}`
+              : ''}
+          </span>
+        </span>
+        {wait !== null ? (
+          <span className="shrink-0 text-right text-sm font-semibold tabular-nums">
+            <span className={CROWD_TEXT_CLASS[waitTimeCrowdTier(wait)]}>{wait}</span>
+            <span className="text-muted-foreground ml-0.5 text-[10px] font-normal">
+              {minuteLabel}
+            </span>
+          </span>
+        ) : (
+          <ParkStatusBadge
+            status={park.status as ParkStatus}
+            className="shrink-0 px-1.5 py-0 text-[10px]"
+          />
+        )}
+      </Link>
+    </li>
   );
 }

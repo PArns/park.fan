@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getCitiesWithParks } from '@/lib/api/discovery';
+import { getCardObjectPosition, getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
 
 /**
@@ -38,7 +39,16 @@ export async function GET(
         slug: city.slug,
         name: city.name,
         parkCount: city.parkCount,
-        parks: (city.parks ?? []).map((park) => ({ slug: park.slug, name: park.name })),
+        parks: (city.parks ?? []).map((park) => ({
+          slug: park.slug,
+          name: park.name,
+          // Resolved HERE, on the server. `@/lib/media` is the 107 KB catalogue and the menu is a
+          // Client Component, so a lookup over there would ship the whole thing to the browser —
+          // only the URL crosses. `null` for most parks: the database holds a picture for 14 of
+          // 212, which is why the row keeps working without one rather than reserving a box.
+          image: getParkBackgroundImage(park.slug),
+          imagePosition: getCardObjectPosition(park.slug),
+        })),
       }))
       .filter((city) => city.parks.length > 0)
       .sort((a, b) => b.parkCount - a.parkCount || a.name.localeCompare(b.name));

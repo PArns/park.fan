@@ -27,8 +27,35 @@ import { versionedPath } from '@/lib/media/focus';
  * post body into the layout's bundle.
  */
 
-/** Posts in the panel. Four fills the column beside three categories without scrolling. */
-const RECENT_LIMIT = 4;
+/**
+ * Posts in the panel.
+ *
+ * Six, not four: an opener plus five rows fills the band's right half, and every one of them is a
+ * crawlable link with a date and a teaser on ~35,000 pages. What this may NOT become is the whole
+ * blog — see the note above on why 31 tags stayed out. Six is the point where the rows still fit
+ * beside the opener without the band scrolling.
+ */
+const RECENT_LIMIT = 6;
+
+/**
+ * How much of a post's teaser reaches the header.
+ *
+ * The excerpts in this blog run 200–300 characters, and this text is repeated in the chrome of
+ * every page on the site — so it is cut here, on the server, rather than clamped in CSS: a line
+ * clamp hides the bytes, it does not stop shipping them. 170 characters is two lines under the
+ * opener's cover at the band's width, and one line on a row.
+ */
+const EXCERPT_CHARS = 170;
+
+/** Cut on a word boundary, never mid-word, and only when there is something to cut. */
+function trimExcerpt(text: string | undefined): string | undefined {
+  if (!text) return undefined;
+  const clean = text.trim();
+  if (clean.length <= EXCERPT_CHARS) return clean;
+  const cut = clean.slice(0, EXCERPT_CHARS);
+  const lastSpace = cut.lastIndexOf(' ');
+  return `${(lastSpace > EXCERPT_CHARS * 0.6 ? cut.slice(0, lastSpace) : cut).trimEnd()}…`;
+}
 
 export interface BlogMenuCategory {
   path: string;
@@ -42,6 +69,8 @@ export interface BlogMenuPost {
   /** ISO date — the panel formats it in the reader's locale. */
   date: string;
   readingTimeMinutes: number;
+  /** The post's own teaser, cut to {@link EXCERPT_CHARS} on the server. */
+  excerpt?: string;
   /** Cover image, where the post has one. All seven currently do. */
   image?: string;
 }
@@ -69,6 +98,7 @@ export function getBlogMenu(locale: Locale): BlogMenu {
         title: post.frontmatter.title,
         date: post.frontmatter.date,
         readingTimeMinutes: post.readingTimeMinutes,
+        excerpt: trimExcerpt(post.frontmatter.excerpt),
         // The cover is already a 16:9 crop for every post that has one, so the panel needs no
         // optimizer pass — but it does need the version token. Retargeting a focal point rewrites
         // a crop's bytes at an unchanged URL, so a bare path serves the old framing out of cache
