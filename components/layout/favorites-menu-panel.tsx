@@ -13,8 +13,17 @@ import { CROWD_TEXT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-sty
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { stripNewPrefix } from '@/lib/utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
-import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
-import type { FavoriteAttraction, FavoritePark } from '@/lib/api/favorites';
+import {
+  buildRestaurantUrl,
+  buildShowUrl,
+  convertApiUrlToFrontendUrl,
+} from '@/lib/utils/url-utils';
+import type {
+  FavoriteAttraction,
+  FavoritePark,
+  FavoriteRestaurant,
+  FavoriteShow,
+} from '@/lib/api/favorites';
 import type { AttractionStatus, CrowdLevel, ParkStatus } from '@/lib/api/types';
 
 /**
@@ -296,6 +305,20 @@ export function FavoritesMenuPanel({
   }
 
   const loading = isPending || !data;
+  const cap = isSheet ? MAX_ROWS : MAX_CARDS;
+  /*
+   * „Alle anzeigen" nur, wenn es etwas zu sehen gibt, das hier nicht steht.
+   *
+   * Der Link stand immer da, auch wenn drei Favoriten in ein Band mit Platz für sechzehn passen —
+   * dann führt er auf eine Seite, die exakt dasselbe zeigt. Sichtbar wird er, wenn eine Gruppe
+   * über ihre Obergrenze läuft oder wenn Shows und Restaurants dabei sind: die rendert dieses
+   * Panel als eigene Gruppe, aber ohne Bild und Kennzahl, und die Startseite zeigt sie
+   * vollständig.
+   */
+  const hiddenParks = Math.max(0, counts.parks - cap);
+  const hiddenAttractions = Math.max(0, counts.attractions - cap);
+  const hiddenVenues = Math.max(0, counts.shows + counts.restaurants - cap);
+  const somethingHidden = hiddenParks + hiddenAttractions + hiddenVenues > 0;
   /*
    * Die Breite folgt der Anzahl, die Spaltenzahl der Breite.
    *
@@ -320,13 +343,47 @@ export function FavoritesMenuPanel({
           <Star className="text-primary h-4 w-4 fill-current" aria-hidden="true" />
           {t('title')}
         </span>
-        <Link
-          href="/#favorites"
-          prefetch={false}
-          className="text-primary hover:text-primary/80 text-xs font-medium transition-colors"
-        >
-          {tCommon('viewAll')}
-        </Link>
+        {somethingHidden && (
+          <Link
+            href="/#favorites"
+            prefetch={false}
+            className="text-primary hover:text-primary/80 text-xs font-medium transition-colors"
+          >
+            {tCommon('viewAll')}
+          </Link>
+        )}
+
+        {counts.shows + counts.restaurants > 0 && (
+          <div
+            data-menu-stagger
+            className="min-w-0"
+            style={groupStyle(counts.shows + counts.restaurants)}
+          >
+            <GroupHeading
+              title={counts.shows > 0 ? t('shows') : t('restaurants')}
+              count={counts.shows + counts.restaurants}
+            />
+            <ul className={isSheet ? 'space-y-px' : 'space-y-px'}>
+              {loading ? (
+                <RowSkeletons count={counts.shows + counts.restaurants} />
+              ) : (
+                <>
+                  {venueRows(data.shows, data.restaurants)
+                    .slice(0, cap)
+                    .map((venue) => (
+                      <Row
+                        key={venue.id}
+                        href={venue.href}
+                        title={venue.title}
+                        subtitle={venue.park}
+                      />
+                    ))}
+                  <MoreLine hidden={hiddenVenues} label={more} />
+                </>
+              )}
+            </ul>
+          </div>
+        )}
       </div>
 
       <div className={isSheet ? 'space-y-5' : 'flex flex-col gap-6 lg:flex-row lg:gap-8'}>
@@ -539,4 +596,49 @@ function AttractionEntry({
       figure={wait !== null ? <WaitFigure minutes={wait} unit={minuteLabel} /> : null}
     />
   );
+}
+
+
+/**
+ * Shows und Restaurants in einer Gruppe, als Zeilen.
+ *
+ * Sie bekommen keine Karte: die Mediendatenbank hat für keinen von beiden ein Bild, und eine
+ * Kennzahl gibt es auch nicht — eine Karte wäre eine leere Fläche mit einem Namen darin. Beide
+ * haben zudem keine eigene Seite; sie leben auf der Parkseite unter ihrem Reiter, weshalb der
+ * Link dorthin geht.
+ *
+ * Der Grund, warum es diese Gruppe überhaupt (wieder) gibt: der Umbau auf Karten hat sie
+ * herausgeworfen, und wer nur eine Show markiert hatte, öffnete danach ein leeres Menü mit einer
+ * Zahl am Stern.
+ */
+function venueRows(shows: FavoriteShow[], restaurants: FavoriteRestaurant[]) {
+  const parkHref = (url: string | undefined) => {
+    if (!url) return null;
+    const converted = convertApiUrlToFrontendUrl(url);
+    return converted !== '#' && converted.startsWith('/parks/') ? converted : null;
+  };
+
+  return [
+    ...shows.map((show) => ({
+      id: show.id,
+      title: stripNewPrefix(show.name),
+      park: show.park ? stripNewPrefix(show.park.name) : null,
+      base: parkHref(show.url),
+      build: buildShowUrl,
+    })),
+    ...restaurants.map((restaurant) => ({
+      id: restaurant.id,
+      title: stripNewPrefix(restaurant.name),
+      park: restaurant.park ? stripNewPrefix(restaurant.park.name) : null,
+      base: parkHref(restaurant.url),
+      build: buildRestaurantUrl,
+    })),
+  ].map((v) => ({
+    id: v.id,
+    title: v.title,
+    park: v.park,
+    // Ohne auflösbare Parkseite bleibt das Favoritenband der Startseite der einzige Ort, an dem
+    // der Eintrag noch zu sehen ist.
+    href: v.base ? v.build(v.base) : '/#favorites',
+  }));
 }
