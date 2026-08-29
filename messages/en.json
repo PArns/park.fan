@@ -207,6 +207,50 @@
       "countryOpen": "{count} open",
       "viewAll": "See all parks in {continent}",
       "countryClosed": "{count} closed"
+    },
+    "faq": {
+      "title": "Frequently asked questions about park.fan"
+    },
+    "hubs": {
+      "title": "Carry on from here",
+      "intro": "Five starting points the rest of the site takes for granted.",
+      "parks": "The whole catalogue, by continent, country and city.",
+      "bestTime": "Which month, which weekday — measured, not guessed.",
+      "glossary": "What rope drop, single rider and average wait actually mean.",
+      "fancast": "The forecast model: how it works and how often it is wrong.",
+      "howto": "This site's cards, explained with real numbers."
+    },
+    "board": {
+      "park": "Park",
+      "status": "Status",
+      "today": "Hours",
+      "averageWait": "Avg wait",
+      "crowd": "Crowd"
+    },
+    "draft": {
+      "todayMark": "Today",
+      "todayTitle": "Who is open, until when, and how busy it is",
+      "todayLead": "The six parks searched for most in your region — opening hours in park time, and the average across every ride currently running.",
+      "weekMark": "This week",
+      "weekTitle": "Which weekday is worth it",
+      "weekLead": "From each park’s own measured days, not from a rule of thumb. The quietest weekday is rarely the one you would guess.",
+      "alwaysMark": "Always",
+      "alwaysTitle": "What stays put",
+      "alwaysLead": "Guides built on measured numbers, the dictionary, and how this site arrives at its forecasts."
+    },
+    "context": {
+      "kicker": "What park.fan does",
+      "headline": "A number at the entrance tells you almost nothing on its own.",
+      "body": "Right now it says {minutes} minutes. Whether that is a lot is not written next to it — it only follows from what this ride usually runs at this hour. That is the comparison park.fan computes, for every ride, every hour.",
+      "archive": "The reference comes from {records} million measured queues. Every ride we have ever seen counts towards the next answer.",
+      "now": "Right now",
+      "typical": "Usual at this hour",
+      "verdictShorter": "So {minutes} minutes shorter than usual at this hour. A good moment to join.",
+      "verdictLonger": "So {minutes} minutes longer than usual at this hour. Wait it out if you can.",
+      "bodyNoRide": "Whether a wait is a lot is not written at the entrance — it only follows from what this ride usually runs at this hour. That is the comparison park.fan computes, for every ride, every hour."
+    },
+    "blogLead": {
+      "headline": "Measured wait times, written up."
     }
   },
   "footer": {

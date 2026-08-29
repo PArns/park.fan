@@ -207,6 +207,50 @@
       "countryOpen": "{count} offen",
       "viewAll": "Alle Parks in {continent} ansehen",
       "countryClosed": "{count} geschlossen"
+    },
+    "faq": {
+      "title": "Häufige Fragen zu park.fan"
+    },
+    "hubs": {
+      "title": "Von hier aus weiter",
+      "intro": "Fünf Einstiege, die der Rest der Seite voraussetzt.",
+      "parks": "Der ganze Katalog, nach Kontinent, Land und Stadt.",
+      "bestTime": "Welcher Monat, welcher Wochentag – gemessen, nicht geschätzt.",
+      "glossary": "Was Rope Drop, Single Rider und Ø-Wartezeit bedeuten.",
+      "fancast": "Das Prognosemodell: wie es rechnet und wie oft es danebenliegt.",
+      "howto": "Die Karten dieser Seite, erklärt an echten Zahlen."
+    },
+    "board": {
+      "park": "Park",
+      "status": "Status",
+      "today": "Öffnungszeiten",
+      "averageWait": "Ø Wartezeit",
+      "crowd": "Andrang"
+    },
+    "draft": {
+      "todayMark": "Heute",
+      "todayTitle": "Wer hat offen, bis wann, und wie voll ist es dort",
+      "todayLead": "Die sechs Parks, nach denen in deiner Region am meisten gesucht wird — mit Öffnungszeiten in Parkzeit und dem Durchschnitt über alle laufenden Attraktionen.",
+      "weekMark": "Diese Woche",
+      "weekTitle": "An welchem Wochentag es sich lohnt",
+      "weekLead": "Aus den gemessenen Tagen jedes Parks, nicht aus einer Faustregel. Der ruhigste Wochentag ist selten der, den man erwartet.",
+      "alwaysMark": "Immer",
+      "alwaysTitle": "Was stehen bleibt",
+      "alwaysLead": "Guides mit gemessenen Zahlen, das Wörterbuch, und wie diese Seite auf ihre Prognosen kommt."
+    },
+    "context": {
+      "kicker": "Was park.fan macht",
+      "headline": "Eine Zahl am Eingang sagt für sich genommen fast nichts.",
+      "body": "Gerade stehen dort {minutes} Minuten. Ob das viel ist, steht nicht dran — es ergibt sich erst aus dem, was um diese Uhrzeit an dieser Bahn üblich ist. Genau diesen Vergleich rechnet park.fan für jede Attraktion, jede Stunde.",
+      "archive": "Der Vergleichswert kommt aus {records} Millionen gemessenen Warteschlangen. Jede Fahrt, die wir je gesehen haben, zählt für die nächste Auskunft mit.",
+      "now": "Jetzt",
+      "typical": "Um diese Uhrzeit üblich",
+      "verdictShorter": "Also {minutes} Minuten kürzer als sonst um diese Zeit. Ein guter Moment, sich anzustellen.",
+      "verdictLonger": "Also {minutes} Minuten länger als sonst um diese Zeit. Wer warten kann, wartet.",
+      "bodyNoRide": "Ob eine Wartezeit viel ist, steht nicht am Eingang — es ergibt sich erst aus dem, was um diese Uhrzeit an dieser Bahn üblich ist. Genau diesen Vergleich rechnet park.fan für jede Attraktion, jede Stunde."
+    },
+    "blogLead": {
+      "headline": "Gemessene Wartezeiten, ausgeschrieben."
     }
   },
   "footer": {

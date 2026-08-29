@@ -47,9 +47,10 @@
 
 ### Design
 
-| Doc                                      | Description                                   |
-| ---------------------------------------- | --------------------------------------------- |
-| [Design System](design/design-system.md) | CSS variables, glassmorphism, badges, spacing |
+| Doc                                                             | Description                                                                |
+| --------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| [Design System](design/design-system.md)                        | CSS variables, glassmorphism, badges, spacing                              |
+| [Startseite: der Entwurf](design/homepage-drafts.md) | Was unter dem Hero nicht funktioniert, und der Entwurf dagegen (`/design`) |
 
 ### Internationalization (i18n)
 

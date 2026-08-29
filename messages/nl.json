@@ -207,6 +207,50 @@
       "countryOpen": "{count} open",
       "viewAll": "Alle parken in {continent} bekijken",
       "countryClosed": "{count} gesloten"
+    },
+    "faq": {
+      "title": "Veelgestelde vragen over park.fan"
+    },
+    "hubs": {
+      "title": "Vanaf hier verder",
+      "intro": "Vijf ingangen die de rest van de site veronderstelt.",
+      "parks": "De hele catalogus, per continent, land en stad.",
+      "bestTime": "Welke maand, welke weekdag — gemeten, niet geschat.",
+      "glossary": "Wat rope drop, single rider en gemiddelde wachttijd betekenen.",
+      "fancast": "Het voorspelmodel: hoe het rekent en hoe vaak het ernaast zit.",
+      "howto": "De kaarten van deze site, uitgelegd met echte cijfers."
+    },
+    "board": {
+      "park": "Park",
+      "status": "Status",
+      "today": "Openingstijden",
+      "averageWait": "Gem. wachttijd",
+      "crowd": "Drukte"
+    },
+    "draft": {
+      "todayMark": "Vandaag",
+      "todayTitle": "Wie open is, tot hoe laat, en hoe druk het er is",
+      "todayLead": "De zes parken waar in jouw regio het meest op wordt gezocht — openingstijden in parktijd, en het gemiddelde over alle draaiende attracties.",
+      "weekMark": "Deze week",
+      "weekTitle": "Welke weekdag de moeite waard is",
+      "weekLead": "Uit de gemeten dagen van elk park, niet uit een vuistregel. De rustigste weekdag is zelden degene die je verwacht.",
+      "alwaysMark": "Altijd",
+      "alwaysTitle": "Wat blijft staan",
+      "alwaysLead": "Gidsen met gemeten cijfers, het woordenboek, en hoe deze site aan haar voorspellingen komt."
+    },
+    "context": {
+      "kicker": "Wat park.fan doet",
+      "headline": "Een getal bij de ingang zegt op zichzelf bijna niets.",
+      "body": "Er staat nu {minutes} minuten. Of dat veel is staat er niet bij — dat volgt pas uit wat er op dit uur gebruikelijk is bij deze attractie. Precies die vergelijking rekent park.fan uit, voor elke attractie, elk uur.",
+      "archive": "De vergelijkingswaarde komt uit {records} miljoen gemeten wachtrijen. Elke rit die we ooit zagen telt mee voor het volgende antwoord.",
+      "now": "Nu",
+      "typical": "Gebruikelijk op dit uur",
+      "verdictShorter": "Dus {minutes} minuten korter dan normaal op dit uur. Een goed moment om aan te sluiten.",
+      "verdictLonger": "Dus {minutes} minuten langer dan normaal op dit uur. Wie kan wachten, wacht.",
+      "bodyNoRide": "Of een wachttijd veel is staat niet bij de ingang — dat volgt pas uit wat er op dit uur gebruikelijk is bij die attractie. Precies die vergelijking rekent park.fan uit, voor elke attractie, elk uur."
+    },
+    "blogLead": {
+      "headline": "Gemeten wachttijden, uitgeschreven."
     }
   },
   "footer": {

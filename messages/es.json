@@ -207,6 +207,50 @@
       "countryOpen": "{count, plural, one {# abierto} other {# abiertos}}",
       "viewAll": "Ver todos los parques en {continent}",
       "countryClosed": "{count, plural, one {# cerrado} other {# cerrados}}"
+    },
+    "faq": {
+      "title": "Preguntas frecuentes sobre park.fan"
+    },
+    "hubs": {
+      "title": "Seguir desde aquí",
+      "intro": "Cinco puntos de partida que el resto del sitio da por sabidos.",
+      "parks": "El catálogo entero, por continente, país y ciudad.",
+      "bestTime": "Qué mes, qué día de la semana: medido, no estimado.",
+      "glossary": "Qué significan rope drop, single rider y espera media.",
+      "fancast": "El modelo de previsión: cómo calcula y con qué frecuencia falla.",
+      "howto": "Las tarjetas de este sitio, explicadas con cifras reales."
+    },
+    "board": {
+      "park": "Parque",
+      "status": "Estado",
+      "today": "Horario",
+      "averageWait": "Espera media",
+      "crowd": "Afluencia"
+    },
+    "draft": {
+      "todayMark": "Hoy",
+      "todayTitle": "Quién abre, hasta cuándo y cuánta gente hay",
+      "todayLead": "Los seis parques más buscados en tu región: horarios en hora del parque y la media de todas las atracciones en funcionamiento.",
+      "weekMark": "Esta semana",
+      "weekTitle": "Qué día de la semana compensa",
+      "weekLead": "A partir de los días medidos de cada parque, no de una regla general. El día más tranquilo rara vez es el que uno supone.",
+      "alwaysMark": "Siempre",
+      "alwaysTitle": "Lo que se queda",
+      "alwaysLead": "Guías con cifras medidas, el diccionario y cómo llega este sitio a sus previsiones."
+    },
+    "context": {
+      "kicker": "Qué hace park.fan",
+      "headline": "Un número en la entrada, por sí solo, no dice casi nada.",
+      "body": "Ahora mismo marca {minutes} minutos. Si eso es mucho no está escrito al lado: solo se deduce de lo que es habitual a esta hora en esta atracción. Esa es la comparación que calcula park.fan, para cada atracción y cada hora.",
+      "archive": "La referencia sale de {records} millones de colas medidas. Cada vuelta que hemos visto cuenta para la siguiente respuesta.",
+      "now": "Ahora",
+      "typical": "Habitual a esta hora",
+      "verdictShorter": "Es decir, {minutes} minutos menos de lo normal a esta hora. Buen momento para ponerse.",
+      "verdictLonger": "Es decir, {minutes} minutos más de lo normal a esta hora. Quien pueda esperar, que espere.",
+      "bodyNoRide": "Si una espera es mucha no está escrito en la entrada: solo se deduce de lo que es habitual a esta hora en esa atracción. Esa es la comparación que calcula park.fan, para cada atracción y cada hora."
+    },
+    "blogLead": {
+      "headline": "Tiempos de espera medidos, puestos por escrito."
     }
   },
   "footer": {

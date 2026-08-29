@@ -1915,3 +1915,48 @@ html[data-temp-unit] .u-force-metric .u-imperial {
     background: color-mix(in oklab, var(--popover) 95%, transparent);
   }
 }
+
+/* ─── Startseiten-Entwurf: Nachtband + Schriftrollen ──────────────────────────
+ *
+ * Zwei Schriften, die diese Seite bisher nicht hatte, und eine Fläche, die immer dunkel ist.
+ *
+ * `--font-display` und `--font-numeric` werden von der Route gesetzt, die sie braucht (siehe
+ * `app/[locale]/design/_variants/fonts.ts`). Beide Klassen fallen auf `--font-sans` zurück, wenn
+ * die Variable fehlt — eine Komponente mit `.pk-mono` sieht auf einer Seite ohne die Schriften
+ * also aus wie vorher und nicht kaputt.
+ *
+ * Warum überhaupt: die App lädt genau eine Schrift (Geist) und aliast `--font-mono` auf sie. Für
+ * eine Seite, deren ganzer Gegenstand gemessene Minuten sind, gibt es damit keinen Schriftschnitt
+ * für Messwerte — jede Zahl sieht aus wie Fließtext.
+ */
+.pk-display {
+  font-family: var(--font-display, var(--font-sans));
+  font-feature-settings: 'ss01';
+}
+.pk-mono {
+  font-family: var(--font-numeric, var(--font-sans));
+  font-variant-numeric: tabular-nums;
+}
+
+/* Das Nachtband. In beiden Themes dieselbe Fläche: es bedeutet „gerade eben", und das trägt ein
+ * Nachtbild besser als eine Karte auf Weiß. Der Farbton ist das Markennavy, zwei Stufen dunkler.
+ */
+.pk-night {
+  background: linear-gradient(180deg, oklch(0.21 0.024 238) 0%, oklch(0.26 0.028 238) 100%);
+  color: oklch(0.98 0 0);
+}
+/* Der blaue Schein sitzt links unten, hinter dem größten Punktstapel — nicht mittig, sonst
+ * beleuchtet er die leere Hälfte der Achse. `pointer-events: none`, damit er keinen Punkt
+ * abfängt. */
+.pk-night-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    42rem 22rem at 22% 88%,
+    /* Markenblau als Literal, nicht `--primary`: das Band ist in beiden Themes dieselbe
+         Fläche, also darf sein Licht nicht mit dem Theme wandern. */
+    color-mix(in oklab, oklch(0.628 0.137 241) 26%, transparent) 0%,
+    transparent 70%
+  );
+}

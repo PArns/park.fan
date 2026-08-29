@@ -842,11 +842,34 @@ const nextConfig: NextConfig = {
         headers: [{ key: 'Cache-Control', value: 'no-store, must-revalidate' }],
       },
       {
-        source: '/(.*)',
+        // Everything except the design working page's draft previews, which the page next to
+        // them embeds in a 390 px iframe so the phone layout can be judged without resizing the
+        // window. `DENY` refuses that from our own origin too — the exception below is the same
+        // header set with `SAMEORIGIN`, i.e. park.fan may frame park.fan and nobody else may.
+        // Written as an exclusion rather than a second rule on top, because two matching
+        // sources both emit their `X-Frame-Options` and a browser meeting two of them blocks.
+        source: '/((?!.*/design/preview/).*)',
         headers: [
           { key: 'Referrer-Policy', value: 'origin-when-cross-origin' },
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'X-Frame-Options', value: 'DENY' },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'geolocation=(self), camera=(), microphone=()',
+          },
+        ],
+      },
+      {
+        source: '/:locale/design/preview/:variant',
+        headers: [
+          { key: 'Referrer-Policy', value: 'origin-when-cross-origin' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+          { key: 'X-Robots-Tag', value: 'noindex, nofollow' },
           {
             key: 'Strict-Transport-Security',
             value: 'max-age=63072000; includeSubDomains; preload',

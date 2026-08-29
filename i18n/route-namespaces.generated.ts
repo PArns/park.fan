@@ -39,6 +39,8 @@ export const ROUTE_MESSAGE_NAMESPACES = {
   ],
   '/contribute/thanks': [],
   '/datenschutz': ['datenschutz.analyticsOptOut'],
+  '/design': ['home.board', 'nearby', 'parkCard'],
+  '/design/preview/[variant]': ['home.board', 'nearby', 'parkCard'],
   '/fancast': ['home', 'nearby', 'parkCard'],
   '/glossary': ['glossary'],
   '/glossary/[term]': ['nearby', 'parkCard'],
