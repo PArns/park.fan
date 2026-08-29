@@ -699,7 +699,10 @@ function venueRows(shows: FavoriteShow[], restaurants: FavoriteRestaurant[]) {
  */
 function SuggestionChip({ park }: { park: ParkWithDistance }) {
   return (
-    <li className="border-border/70 bg-card/40 hover:border-primary/40 flex items-center gap-1 rounded-full border py-1 pr-1 pl-1 transition-colors">
+    /* Links 1, rechts 2.5: die Pille ist `rounded-full`, ihr Rand krümmt sich also nach außen.
+       Links füllt das runde Bild die Höhe und sitzt satt in der Krümmung; rechts steht ein 16-px-
+       Stern in der Mitte, und mit denselben 4 px klebte er am Rand. */
+    <li className="border-border/70 bg-card/40 hover:border-primary/40 flex items-center gap-1 rounded-full border py-1 pr-2.5 pl-1 transition-colors">
       <Link
         href={convertApiUrlToFrontendUrl(park.url) as '/'}
         prefetch={false}
