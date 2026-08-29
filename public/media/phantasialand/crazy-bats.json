@@ -1,0 +1,22 @@
+{
+  "park": "phantasialand",
+  "ride": "crazy-bats",
+  "area": "Fantasy",
+  "tags": [
+    "day",
+    "photo",
+    "ride"
+  ],
+  "credit": {
+    "author": "Patrick",
+    "license": "all-rights-reserved",
+    "source": "own",
+    "year": 2022
+  },
+  "shotAt": "2022-12-18",
+  "gps": {
+    "lat": 50.800061,
+    "lon": 6.880528
+  },
+  "review": true
+}
