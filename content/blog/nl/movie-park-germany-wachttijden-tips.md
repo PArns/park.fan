@@ -1,16 +1,15 @@
 ---
-title: 'Movie Park Germany: 30 jaar oud, en de rustigste dag is zondag'
+title: '30 jaar Movie Park Germany, en geen enkel merk uit 1996 is er nog'
 translationKey: movie-park-germany-guide
 date: '2026-08-28'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Movie Park is elk filmmerk kwijtgeraakt waarvoor het in 1996 werd gebouwd, en
-  heeft daar een gewoonte van gemaakt: het bouwt attracties over zichzelf. Voor
-  de dertigste verjaardag een gids met gemeten wachttijden, de weekdag waar de
-  gangbare tips naast zitten, het rooster vanaf september en het Halloween
-  Horror Festival vanaf 26 september.
+  Van dat verlies heeft het park een gewoonte gemaakt: het bouwt attracties
+  over zichzelf. Voor de dertigste verjaardag een gids met gemeten
+  wachttijden, de weekdag waar de gangbare tips naast zitten, het rooster
+  vanaf september en het Halloween Horror Festival vanaf 26 september.
 tags:
   - movie-park
   - wachttijden

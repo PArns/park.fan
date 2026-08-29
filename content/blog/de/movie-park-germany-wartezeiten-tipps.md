@@ -1,16 +1,16 @@
 ---
-title: 'Movie Park Germany: 30 Jahre alt, und der ruhigste Tag ist der Sonntag'
+title: '30 Jahre Movie Park Germany, und keine Marke von 1996 ist noch da'
 translationKey: movie-park-germany-guide
 date: '2026-08-28'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Der Movie Park hat jede Filmmarke verloren, für die er 1996 gebaut wurde, und
-  daraus eine Angewohnheit gemacht: Er baut Fahrgeschäfte über sich selbst. Zum
-  30. Geburtstag ein Guide mit gemessenen Wartezeiten, dem Wochentag, bei dem die
-  üblichen Ratgeber danebenliegen, dem Fahrplan ab September und dem Halloween
-  Horror Festival ab dem 26. September.
+  Aus dem Verlust hat der Park eine Angewohnheit gemacht: Er baut
+  Fahrgeschäfte über sich selbst. Zum 30. Geburtstag ein Guide mit gemessenen
+  Wartezeiten, dem Wochentag, bei dem die üblichen Ratgeber danebenliegen, dem
+  Fahrplan ab September und dem Halloween Horror Festival ab dem 26.
+  September.
 tags:
   - movie-park
   - wartezeiten

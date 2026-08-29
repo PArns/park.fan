@@ -1,15 +1,15 @@
 ---
-title: 'Movie Park Germany: 30 years old, and the quietest day is Sunday'
+title: '30 years of Movie Park Germany, and not one brand from 1996 is left'
 translationKey: movie-park-germany-guide
 date: '2026-08-28'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Movie Park has lost every film brand it was built with in 1996, and made a
-  habit out of it: it builds rides about itself. A guide for its 30th birthday,
-  with measured wait times, the weekday every other tip sheet gets wrong, the
-  timetable from September and the Halloween Horror Festival from 26 September.
+  The park has made a habit out of that loss: it builds rides about itself. A
+  guide for its 30th birthday, with measured wait times, the weekday every
+  other tip sheet gets wrong, the timetable from September and the Halloween
+  Horror Festival from 26 September.
 tags:
   - movie-park
   - wait-times
