@@ -449,8 +449,15 @@ export function LoginScreen() {
   );
 }
 
+/**
+ * The login card keeps its own geometry — `h-11`, `rounded-xl`, a card rather than
+ * a form row — but not its own font size. Under 16 px, iOS Safari zooms the page in
+ * to meet a focused input and does not zoom back out on blur, so the first tap on
+ * the first screen of the admin left somebody at 1.3× with a horizontal scrollbar
+ * and a pinch to undo it. `sm:` puts 14 px back where there is a mouse.
+ */
 const FIELD_CLASS =
-  'border-border/60 bg-background/50 focus:border-primary/60 focus:ring-primary/25 placeholder:text-muted-foreground/50 h-11 w-full rounded-xl border px-3 text-sm outline-none transition-[color,box-shadow,border-color] focus:ring-2';
+  'border-border/60 bg-background/50 focus:border-primary/60 focus:ring-primary/25 placeholder:text-muted-foreground/50 h-11 w-full rounded-xl border px-3 text-base outline-none transition-[color,box-shadow,border-color] focus:ring-2 sm:text-sm';
 
 function LoginField({
   label,

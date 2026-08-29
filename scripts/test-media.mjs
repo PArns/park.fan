@@ -23,6 +23,7 @@ import {
 } from '../lib/media/index.ts';
 import { checkParkAssignment, distanceMeters, formatDistance } from '../lib/media/geo.ts';
 import { getCreditLine, resolveMediaImage } from '../lib/media/text.ts';
+import { normalizeSidecar, serializeSidecar } from '../lib/media/sidecar.mjs';
 
 let passed = 0;
 let failed = 0;
@@ -280,6 +281,29 @@ checkThat(
   checkParkAssignment({ ...efBg, gps: { lat: 0, lon: 0, source: 'exif' } }, PARKS).status ===
     'no-park-nearby'
 );
+
+// ─── the review flag ─────────────────────────────────────────────────────────
+// Written by `/admin/capture` and cleared in the media browser, so it has to
+// survive the same normalize → serialize round trip a hand-authored sidecar does.
+// The asymmetry is the part worth pinning: `true` is written, `false` is not, or
+// the next `pnpm generate:media` would rewrite every sidecar in the repository to
+// state something it already said by staying silent.
+{
+  const round = (raw) => {
+    const { sidecar, text, issues } = normalizeSidecar(raw);
+    return { json: JSON.parse(serializeSidecar(sidecar, text)), sidecar, issues };
+  };
+
+  check('review: true survives the round trip', round({ review: true }).json.review, true);
+  checkThat('review: false is not written', !('review' in round({ review: false }).json));
+  checkThat('an absent review key stays absent', !('review' in round({}).json));
+  check('review defaults to false', round({}).sidecar.review, false);
+  check('a non-boolean review is dropped', round({ review: 'yes' }).sidecar.review, false);
+  checkThat(
+    '…and is reported',
+    round({ review: 'yes' }).issues.some((i) => i.startsWith('review:'))
+  );
+}
 
 console.log('\n' + '='.repeat(62));
 console.log(`\n📊 ${passed} passed, ${failed} failed\n`);

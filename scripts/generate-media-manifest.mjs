@@ -291,6 +291,10 @@ async function build() {
       order: sidecar.order,
       gps: sidecar.gps ?? gps,
       focus: sidecar.focus,
+      // Not part of the content version: clearing the flag changes nothing about
+      // the pixels or the framing, so a review pass must not invalidate every
+      // cached rendition of the photo it signs off.
+      review: sidecar.review ?? false,
       version: contentVersion(abs, sidecar.focus),
       variants: aspectVariants(abs, base, ext, collection),
     });
@@ -823,6 +827,7 @@ checkBlogReferences(new Set(images.flatMap((i) => [i.src, ...i.variants])));
 
 const unlicensed = images.filter((i) => i.credit.license === 'unknown').length;
 const unassigned = images.filter((i) => !i.park).length;
+const awaitingReview = images.filter((i) => i.review).length;
 const collections = new Set(images.map((i) => i.collection)).size;
 
 console.log(
@@ -831,6 +836,9 @@ console.log(
 console.log(`   ${Object.keys(text).length} carry localized text.`);
 if (unlicensed) console.log(`   ⚠️  ${unlicensed} with unestablished rights (license: unknown).`);
 if (unassigned) console.log(`   ⚠️  ${unassigned} without a park assigned.`);
+// Counted like the other backlogs rather than warned about: a photo shot in the
+// field this morning is SUPPOSED to be sitting here until somebody tags it.
+if (awaitingReview) console.log(`   📝 ${awaitingReview} waiting for a review pass.`);
 for (const message of warnings) console.log(`   ⚠️  ${message}`);
 for (const out of [MANIFEST_OUT, TEXT_OUT, SEARCH_OUT]) {
   console.log(

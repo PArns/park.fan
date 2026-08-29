@@ -52,7 +52,7 @@ const EXT_RE = /^(jpg|jpeg|png|webp|avif|svg)$/i;
  * rejects request bodies over ~4.5 MB before this handler ever runs, and base64
  * adds a third on top. A limit advertised above the real one turns a clear "too
  * large" into an opaque platform error, so it sits below it instead. The client
- * shrinks anything bigger before sending — see `_lib/upload-transport.ts`.
+ * shrinks anything bigger before sending — see `app/admin/_lib/upload-transport.ts`.
  */
 const MAX_BYTES = 3.5 * 1024 * 1024;
 
@@ -72,6 +72,8 @@ interface SidecarPayload {
   order?: number | null;
   gps?: { lat: number; lon: number } | null;
   focus?: { x: number; y: number } | string | null;
+  /** Still needs a proper pass — written by `/admin/capture`, cleared in the browser. */
+  review?: boolean;
 }
 
 interface Operation {
@@ -142,6 +144,9 @@ function buildSidecarFile(existingId: string | undefined, payload: SidecarPayloa
     // written back — only a manual override belongs on disk.
     gps: payload.gps ?? (current?.gps?.source === 'manual' ? current.gps : null),
     focus: payload.focus !== undefined ? payload.focus : current?.focus,
+    // `!== undefined`, like every other three-state field here: clearing the flag
+    // IS the edit the review pass makes, and `?? current` would make it unclearable.
+    review: payload.review !== undefined ? payload.review : current?.review,
   };
 
   const { sidecar, text, issues } = normalizeSidecar(merged);

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import {
   Activity,
   CalendarRange,
+  Camera,
   History,
   Images,
   MapPin,
@@ -113,6 +114,25 @@ export default function AdminDashboard() {
           </p>
         )}
       </div>
+
+      {/* Straight to the camera.
+          Under the thumb and above everything else, because the moment this
+          screen is opened on a phone is almost always the moment somebody has
+          just walked through a park gate — and every other tile on this page
+          leads to a table nobody works on a 390 px screen. Full width below
+          `sm`, a normal-sized action above it, where the mouse is. */}
+      <Link
+        href="/admin/capture"
+        className="border-primary/40 bg-primary/15 text-primary hover:bg-primary/25 flex min-h-14 w-full items-center gap-3 rounded-2xl border px-4 font-medium transition-colors sm:min-h-12 sm:w-auto"
+      >
+        <Camera className="h-5 w-5 shrink-0" />
+        <span className="flex-1 text-left">
+          Vor Ort fotografieren
+          <span className="text-primary/70 block text-xs font-normal">
+            Was im Park noch kein Bild hat — knipsen und hoch damit
+          </span>
+        </span>
+      </Link>
 
       {/* What the catalogue looks like, and what is left to do.
           Every tile is a link to the list it counts, and the ring is the share

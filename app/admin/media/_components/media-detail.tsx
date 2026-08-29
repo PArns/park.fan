@@ -1,9 +1,19 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { AlertTriangle, Check, ExternalLink, MapPin, Save, Upload, X } from 'lucide-react';
+import {
+  AlertTriangle,
+  Check,
+  ClipboardCheck,
+  ExternalLink,
+  MapPin,
+  Save,
+  Upload,
+  X,
+} from 'lucide-react';
 
 import { cn } from '@/lib/utils';
+import { FIELD_CLASS } from '../../_ui/controls';
 import type { MediaRole } from '@/lib/media/types';
 import type { MediaRow, Vocabulary } from '../_lib/types';
 import {
@@ -14,11 +24,11 @@ import {
 import { FocusEditor } from './focus-editor';
 import { Chip, Field, Notice, Section } from './panel-ui';
 import { OpenInEditor } from '../../_ui/open-in-editor';
-import { fitForCommit } from '../_lib/upload-transport';
+import { fitForCommit } from '../../_lib/upload-transport';
 
 /** Shared field styling — the admin has no form primitives of its own. */
-const INPUT =
-  'border-border bg-background focus:border-foreground focus:ring-foreground/20 w-full rounded-lg border px-2.5 py-1.5 text-sm transition-colors outline-none focus:ring-2';
+/** One look for every field in the admin — see `FIELD_CLASS`. */
+const INPUT = FIELD_CLASS;
 
 /**
  * Edit one image: what it shows, how it is credited, how it is framed, where it
@@ -208,6 +218,7 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
       v.credit ?? null,
       v.shotAt ?? null,
       v.focus ?? null,
+      v.review ?? false,
     ]);
   // A staged file counts: it is an unsaved change like any other, and it is the
   // one whose loss on an accidental close would hurt most.
@@ -230,6 +241,7 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
       ['caption', draft.caption ?? {}, row.caption ?? {}],
       ['credit', draft.credit ?? null, row.credit ?? null],
       ['capture date', draft.shotAt ?? null, row.shotAt ?? null],
+      ['review flag', draft.review ?? false, row.review ?? false],
     ];
     for (const [label, next, before] of fields) {
       if (JSON.stringify(next) !== JSON.stringify(before)) out.push(label);
@@ -311,6 +323,7 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
                 credit: draft!.credit,
                 shotAt: draft!.shotAt ?? null,
                 focus: draft!.focus ?? null,
+                review: draft!.review ?? false,
               },
             },
           ],
@@ -622,6 +635,23 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
                 {geo.status === 'suggestion' && `Shot at ${geo.match?.park.name} — assign it?`}
                 {geo.status === 'no-park-nearby' && 'Coordinates are not near any known park'}
               </span>
+            </Notice>
+          )}
+
+          {draft.review && (
+            <Notice tone="warn">
+              <ClipboardCheck className="mt-px h-3.5 w-3.5 shrink-0" />
+              <span className="min-w-0 flex-1">
+                Vor Ort aufgenommen und noch nicht durchgesehen. Alt-Text, Bildunterschrift und die
+                Tags, die beschreiben was zu sehen ist, fehlen — ein Fokuspunkt vermutlich auch.
+              </span>
+              <button
+                type="button"
+                onClick={() => set('review', false)}
+                className="shrink-0 font-semibold underline underline-offset-2"
+              >
+                Geprüft
+              </button>
             </Notice>
           )}
 

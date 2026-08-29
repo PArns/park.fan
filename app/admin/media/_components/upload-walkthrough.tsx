@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
+import { FIELD_CLASS } from '../../_ui/controls';
 import type { AnalyzedFile, Assignment, Vocabulary } from '../_lib/types';
 import { Chip, Field, Section } from './panel-ui';
 
@@ -34,8 +35,8 @@ import { Chip, Field, Section } from './panel-ui';
  * what commits. Skipping is a decision the queue records, not a way out of it.
  */
 
-const INPUT =
-  'border-border bg-background focus:border-foreground focus:ring-foreground/20 w-full rounded-lg border px-2.5 py-1.5 text-sm outline-none transition-colors focus:ring-2';
+/** One look for every field in the admin — see `FIELD_CLASS`. */
+const INPUT = FIELD_CLASS;
 
 interface Props {
   index: number;

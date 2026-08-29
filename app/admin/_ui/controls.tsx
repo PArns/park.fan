@@ -59,11 +59,42 @@ export function Field({
   );
 }
 
+/**
+ * The shared look of every field, and the two numbers in it that are responsive.
+ *
+ * **`text-base` below `sm`, because iOS Safari zooms.** A focused input whose
+ * computed font-size is under 16 px makes the browser scale the page up to meet
+ * it, and it does not scale back on blur — so tapping the search field on a park
+ * page left the whole admin at 1.3× with a horizontal scrollbar, and the only way
+ * out was a pinch. `text-sm` is 14. Above `sm` there is a mouse and no zoom
+ * behaviour, and 14 px is the density this tool is built around.
+ *
+ * **`h-11` below `sm`** is 44 px, which is the smallest target a thumb hits
+ * reliably. The desk keeps `h-9`, off the button scale in `components/ui/button.tsx`
+ * like the rest of the admin's control heights.
+ */
 const CONTROL_BASE =
-  'border-border/70 bg-background/60 focus-visible:border-primary/60 focus-visible:ring-primary/20 w-full rounded-lg border px-3 text-sm outline-none transition-colors focus-visible:ring-2 disabled:opacity-50';
+  'border-border/70 bg-background/60 focus-visible:border-primary/60 focus-visible:ring-primary/20 w-full rounded-lg border px-3 text-base outline-none transition-colors focus-visible:ring-2 disabled:opacity-50 sm:text-sm';
+
+/** Field height: a thumb's worth on a phone, the admin's own scale on a desk. */
+const CONTROL_HEIGHT = 'h-11 sm:h-9';
+
+/**
+ * The same look for the places that render a bare `<input>` or `<textarea>`.
+ *
+ * Three of them existed — the media browser's detail panel, its upload dialog and
+ * the walkthrough — each with its own copy of this string and its own idea of the
+ * padding and the corner radius. They are the reason this is exported rather than
+ * private: a fourth copy is how one field in the admin keeps zooming iOS after the
+ * other three were fixed.
+ *
+ * Padded rather than fixed-height, because two of those call sites put it on a
+ * `<textarea>` with its own `min-h-*`, and a height here would fight it.
+ */
+export const FIELD_CLASS = `${CONTROL_BASE} py-2 sm:py-1.5`;
 
 export function TextInput({ className, ...props }: ComponentProps<'input'>) {
-  return <input className={cn(CONTROL_BASE, 'h-9', className)} {...props} />;
+  return <input className={cn(CONTROL_BASE, CONTROL_HEIGHT, className)} {...props} />;
 }
 
 export function TextArea({ className, ...props }: ComponentProps<'textarea'>) {
@@ -94,7 +125,7 @@ export function NumberInput({
     <input
       type="number"
       inputMode="numeric"
-      className={cn(CONTROL_BASE, 'h-9', className)}
+      className={cn(CONTROL_BASE, CONTROL_HEIGHT, className)}
       value={value === null || value === undefined ? '' : String(value)}
       onChange={(event) => {
         const raw = event.target.value;
@@ -154,7 +185,7 @@ export function TriSwitch({
             disabled={disabled}
             onClick={() => onValueChange(option.value)}
             className={cn(
-              'rounded-md px-3 py-1 text-xs font-medium transition-colors disabled:opacity-50',
+              'min-h-9 rounded-md px-3 py-1 text-xs font-medium transition-colors disabled:opacity-50 sm:min-h-0',
               active
                 ? 'bg-primary text-primary-foreground'
                 : 'text-muted-foreground hover:text-foreground'
@@ -233,7 +264,7 @@ export function Checkbox({
       role="checkbox"
       aria-checked={indeterminate ? 'mixed' : checked}
       onClick={() => onCheckedChange(!checked)}
-      className={cn('inline-flex items-center gap-2 text-sm', className)}
+      className={cn('inline-flex min-h-11 items-center gap-2 text-sm sm:min-h-0', className)}
     >
       <span
         className={cn(
@@ -303,7 +334,8 @@ export function Select({
           disabled={disabled}
           className={cn(
             CONTROL_BASE,
-            'flex h-9 items-center justify-between gap-2 text-left',
+            CONTROL_HEIGHT,
+            'flex items-center justify-between gap-2 text-left',
             className
           )}
         >
@@ -441,7 +473,7 @@ export function MonthPicker({
             onClick={() => toggle(month)}
             title={inReference && !active ? 'Upstream sagt: aktiv' : undefined}
             className={cn(
-              'rounded-md border px-1 py-1.5 text-[11px] font-medium transition-colors disabled:opacity-50',
+              'min-h-10 rounded-md border px-1 py-1.5 text-[11px] font-medium transition-colors disabled:opacity-50 sm:min-h-0',
               active
                 ? 'border-primary bg-primary text-primary-foreground'
                 : inReference

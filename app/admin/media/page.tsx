@@ -47,14 +47,27 @@ interface SessionInfo {
   files: { path: string; status: string; additions: number; deletions: number }[];
 }
 
-type QuickFilter = 'unlicensed' | 'unassigned' | 'lowres' | 'nofocus' | 'noalt';
+type QuickFilter = 'review' | 'unlicensed' | 'unassigned' | 'lowres' | 'nofocus' | 'noalt';
 
+/**
+ * The maintenance backlog as a row of chips. Each id IS the query parameter, so a
+ * new one needs a matching branch in `/api/admin/media`.
+ *
+ * German, like the rest of the admin. The row was English while the panel above it
+ * said "Bildabdeckung" and the sidebar said "Medien" — one row of a tool used in
+ * one language, and the odd one out.
+ *
+ * `review` sits first because it is the only one with somebody waiting on it: a
+ * photograph shot in a park this morning has no alt text, no caption and no tags
+ * describing what is in it, and this is the list that finds them again.
+ */
 const QUICK_FILTERS: { id: QuickFilter; label: string }[] = [
-  { id: 'unlicensed', label: 'Rights unknown' },
-  { id: 'unassigned', label: 'No park' },
-  { id: 'lowres', label: 'Low resolution' },
-  { id: 'nofocus', label: 'No focal point' },
-  { id: 'noalt', label: 'No alt text' },
+  { id: 'review', label: 'Zu prüfen' },
+  { id: 'unlicensed', label: 'Rechte unklar' },
+  { id: 'unassigned', label: 'Ohne Park' },
+  { id: 'lowres', label: 'Niedrig aufgelöst' },
+  { id: 'nofocus', label: 'Ohne Fokuspunkt' },
+  { id: 'noalt', label: 'Ohne Alt-Text' },
 ];
 
 export default function MediaAdminPage() {

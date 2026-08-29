@@ -216,10 +216,23 @@ function ViewSwitch({ mode, onChange }: { mode: ViewMode; onChange: (mode: ViewM
 
 // ─── table ────────────────────────────────────────────────────────────────────
 
+/**
+ * 212 parks, as a table on a desk and as a list of rows on a phone.
+ *
+ * One markup, not two. Below `sm` the header row goes away and each `<tr>` becomes
+ * a block: the three narrow columns — town, ride count, season count — are hidden
+ * and their contents reappear as one line of meta under the park's name, because a
+ * five-column table on a 390 px screen is either four columns of ellipsis or a
+ * sideways scroll, and both are worse than a sentence.
+ *
+ * A second, phone-only component rendering the same parks would be the obvious
+ * alternative and is the thing to avoid: the two would drift, and the one nobody
+ * looks at on a laptop would be the one that rots.
+ */
 function ParkTable({ parks }: { parks: AdminParkListItem[] }) {
   return (
-    <table className="w-full text-sm">
-      <thead className="bg-background/80 text-muted-foreground sticky top-0 z-10 text-left text-xs backdrop-blur-md">
+    <table className="w-full text-sm max-sm:block">
+      <thead className="bg-background/80 text-muted-foreground sticky top-0 z-10 text-left text-xs backdrop-blur-md max-sm:hidden">
         <tr className="border-border/50 border-b">
           <th className="px-4 py-2 font-medium">Park</th>
           <th className="px-4 py-2 font-medium">Ort</th>
@@ -228,10 +241,13 @@ function ParkTable({ parks }: { parks: AdminParkListItem[] }) {
           <th className="px-4 py-2 font-medium">Kuratiert</th>
         </tr>
       </thead>
-      <tbody className="divide-border/40 divide-y">
+      <tbody className="divide-border/40 divide-y max-sm:block">
         {parks.map((park) => (
-          <tr key={park.id} className="hover:bg-muted/25 group">
-            <td className="px-4 py-2.5">
+          <tr
+            key={park.id}
+            className="hover:bg-muted/25 group max-sm:flex max-sm:items-start max-sm:gap-3 max-sm:px-4 max-sm:py-3"
+          >
+            <td className="px-4 py-2.5 max-sm:min-w-0 max-sm:flex-1 max-sm:p-0">
               <Link href={`/admin/parks/${park.id}`} className="block min-w-0">
                 <span className="group-hover:text-primary flex items-center gap-1.5 font-medium">
                   {park.name}
@@ -243,12 +259,24 @@ function ParkTable({ parks }: { parks: AdminParkListItem[] }) {
                   </span>
                 )}
               </Link>
+              {/* What the three hidden columns say, on the screens that hide them. */}
+              <span className="text-muted-foreground mt-0.5 block text-xs sm:hidden">
+                {[
+                  [park.city, park.country].filter(Boolean).join(', '),
+                  `${park.attractionCount} Bahnen`,
+                  park.seasonCount > 0 ? `${park.seasonCount} Saisons` : null,
+                ]
+                  .filter(Boolean)
+                  .join(' · ')}
+              </span>
             </td>
-            <td className="text-muted-foreground px-4 py-2.5 text-xs">
+            <td className="text-muted-foreground px-4 py-2.5 text-xs max-sm:hidden">
               {[park.city, park.country].filter(Boolean).join(', ') || '—'}
             </td>
-            <td className="px-4 py-2.5 text-right tabular-nums">{park.attractionCount}</td>
-            <td className="px-4 py-2.5 text-right tabular-nums">
+            <td className="px-4 py-2.5 text-right tabular-nums max-sm:hidden">
+              {park.attractionCount}
+            </td>
+            <td className="px-4 py-2.5 text-right tabular-nums max-sm:hidden">
               {park.seasonCount > 0 ? (
                 <Link
                   href={`/admin/parks/${park.id}?tab=seasons`}
@@ -261,7 +289,7 @@ function ParkTable({ parks }: { parks: AdminParkListItem[] }) {
                 <span className="text-muted-foreground">—</span>
               )}
             </td>
-            <td className="px-4 py-2.5">
+            <td className="px-4 py-2.5 max-sm:shrink-0 max-sm:p-0">
               <ParkCuratedChips park={park} />
             </td>
           </tr>

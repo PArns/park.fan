@@ -301,6 +301,32 @@ landing on it forwarded that activation and tore the panel down mid-drop. And
 `dragleave` checks `relatedTarget`, or the highlight flickers off every time the
 pointer crosses the icon or the text inside the zone.
 
+### `review` — the field workflow's other half
+
+A photograph taken from `/admin/capture` arrives with what a phone standing in front
+of a ride can know for certain: park, ride, area, capture date, credit, `photo`,
+`ride`, and `day` or `night` if the park's own clock is unambiguous about it. What it
+cannot know is what is in frame — the alt text, the caption, the subject and weather
+tags, usually the focal point. Those are the evening's work, and `review: true` is
+what finds them again: the **Zu prüfen** chip in this browser, and a count in
+`pnpm generate:media`'s report next to the unlicensed and unassigned ones.
+
+Three decisions in it:
+
+- **A field, not a `needs-review` tag.** Tags describe what a photo shows. A workflow
+  state filed among them reaches the caption search and outlives the work.
+- **Only `true` is written.** Absent and `false` mean the same thing, so the ~900
+  sidecars that predate this survive a regeneration byte-identical. `pnpm test:media`
+  pins that asymmetry along with the round trip.
+- **Not part of the content version.** Signing a photo off changes neither its pixels
+  nor its framing, so it must not invalidate every cached rendition of it.
+
+Clearing it is an ordinary edit in the detail panel, and it goes out in the session's
+pull request like any other sidecar change. Which means the practical rhythm is:
+shoot in the park, merge the PR on the way home, tag from the sofa once the deploy has
+regenerated the manifest — this browser reads `main`, so an unmerged photograph is not
+in it.
+
 ### One session, one pull request
 
 A **session** is the branch starting with `media/session-` and the pull request opened

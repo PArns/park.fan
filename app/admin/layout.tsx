@@ -30,7 +30,7 @@ export const metadata: Metadata = {
  */
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="de" className="dark" suppressHydrationWarning>
+    <html lang="de" className="dark" data-admin="" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} bg-background text-foreground relative min-h-screen font-sans antialiased`}
       >

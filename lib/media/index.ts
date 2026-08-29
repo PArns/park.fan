@@ -314,7 +314,18 @@ function matchesForQuery(raw: string): Set<number> | null {
  * never drift apart in what they consider a match.
  */
 export function searchMedia(query: MediaQuery = {}): MediaImage[] {
-  const { q, park, ride, collection, tags, role, license, unlicensedOnly, unassignedOnly } = query;
+  const {
+    q,
+    park,
+    ride,
+    collection,
+    tags,
+    role,
+    license,
+    unlicensedOnly,
+    unassignedOnly,
+    reviewOnly,
+  } = query;
 
   const trimmed = q?.trim();
   let matches: Set<number> | null = null;
@@ -339,6 +350,7 @@ export function searchMedia(query: MediaQuery = {}): MediaImage[] {
     if (license && image.credit.license !== license) return false;
     if (unlicensedOnly && image.credit.license !== 'unknown') return false;
     if (unassignedOnly && image.park) return false;
+    if (reviewOnly && !image.review) return false;
     if (tags?.length && !tags.every((tag) => image.tags.includes(tag.toLowerCase()))) return false;
     return true;
   });
@@ -376,6 +388,7 @@ export function mediaStats() {
     withGps: MEDIA_IMAGES.filter((i) => i.gps).length,
     unlicensed: MEDIA_IMAGES.filter((i) => i.credit.license === 'unknown').length,
     unassigned: MEDIA_IMAGES.filter((i) => !i.park).length,
+    review: MEDIA_IMAGES.filter((i) => i.review).length,
     bytes: MEDIA_IMAGES.reduce((sum, i) => sum + i.bytes, 0),
   };
 }

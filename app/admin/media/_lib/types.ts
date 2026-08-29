@@ -34,42 +34,19 @@ export interface MediaStats {
   withGps: number;
   unlicensed: number;
   unassigned: number;
+  /** Shot in the field and still waiting for alt text, caption and tags. */
+  review: number;
   bytes: number;
   lowRes: number;
 }
 
-export interface RideSuggestion {
-  slug: string;
-  name: string;
-  distanceM: number;
-  distanceLabel: string;
-  area: string | null;
-}
-
-export interface ParkSuggestion {
-  slug: string;
-  name: string;
-  distanceM: number;
-  distanceLabel: string;
-  confidence: 'confident' | 'uncertain' | 'none';
-}
-
-/** One file in an upload batch, as returned by /api/admin/media/analyze. */
-export interface AnalyzedFile {
-  name: string;
-  size: number;
-  type: string;
-  width: number;
-  height: number;
-  lowRes: boolean;
-  gps: { lat: number; lon: number; source: string } | null;
-  shotAt: string | null;
-  suggestion: {
-    park: ParkSuggestion | null;
-    rides: RideSuggestion[];
-    area: string | null;
-  };
-}
+/**
+ * The upload pipeline's shapes, re-exported so this file stays the one import for
+ * the media browser. They live in `admin/_lib/media-upload.ts` because the
+ * field-capture route uses the same pipeline and must not reach across into a
+ * sibling route's folder for its types.
+ */
+export type { AnalyzedFile, ParkSuggestion, RideSuggestion } from '../../_lib/media-upload';
 
 /** The editable assignment the admin builds up per uploaded file. */
 export interface Assignment {
