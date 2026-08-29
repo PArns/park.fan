@@ -5,6 +5,7 @@ import { Link } from '@/i18n/navigation';
 import { ChevronRight } from 'lucide-react';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useGlobalStats } from '@/lib/hooks/use-global-stats';
+import { useMounted } from '@/lib/hooks/use-mounted';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { stripNewPrefix, cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
@@ -159,7 +160,18 @@ export function HeroWithNearby({ initialCounts }: { initialCounts: HeroInitialCo
   const tHome = useTranslations('home');
   const tCommon = useTranslations('common');
   const locale = useLocale();
-  const { data: nearbyData } = useHomeNearbyParks();
+  const { data: liveNearbyData } = useHomeNearbyParks();
+  /*
+   * Die Nähe-Variante erst nach dem Mount.
+   *
+   * `useHomeNearbyParks` liest die zuletzt bekannte Position aus dem localStorage und kann deshalb
+   * schon im ERSTEN Client-Render einen Park liefern. Der Server schrieb dann den allgemeinen
+   * Einleitungssatz und der Client an derselben Stelle „Das Phantasialand ist in deiner Nähe" —
+   * React verwirft den Teilbaum mit einem Hydration-Fehler. Die Umschaltung passiert ohnehin erst
+   * eine Runde später, das Gate verschiebt sie nur um einen Render.
+   */
+  const mounted = useMounted();
+  const nearbyData = mounted ? liveNearbyData : undefined;
   const { data: liveStats } = useGlobalStats();
 
   const counts = liveStats?.counts ?? initialCounts;
