@@ -3,6 +3,7 @@
 import { Star } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { GlassSectionTitle } from '@/components/parks/glass-section-title';
+import { FavoritesHowTo } from '@/components/parks/favorites-how-to';
 
 /**
  * The favorites band as it looks for a visitor who has none — which is almost everyone
@@ -29,9 +30,21 @@ export function FavoritesEmptyState({ textHidden = false }: { textHidden?: boole
         <GlassSectionTitle icon={Star} iconClassName="text-primary" className="mb-4">
           {t('title')}
         </GlassSectionTitle>
-        <div aria-hidden={textHidden || undefined} className={textHidden ? 'invisible' : undefined}>
+        {/* `inert`, not just `aria-hidden`: the box now holds a link and a button, and a
+            focusable control inside an aria-hidden subtree is reachable by keyboard while being
+            invisible to a screen reader — the worst of both. Before FavoritesHowTo there were
+            only two paragraphs in here, so aria-hidden alone was enough. */}
+        <div
+          aria-hidden={textHidden || undefined}
+          inert={textHidden || undefined}
+          className={textHidden ? 'invisible' : undefined}
+        >
           <p className="text-foreground mt-4 text-center text-base font-semibold">{t('empty')}</p>
-          <p className="text-muted-foreground mt-2 text-center text-sm">{t('emptyHint')}</p>
+          {/* The one-line hint this replaced named the star and nothing else — see
+              FavoritesHowTo. Every state of this band renders the same component, so the box
+              growing costs no shift: the pre-mount copy, the dynamic-import fallback and the
+              settled empty state are the same markup with the text held back. */}
+          <FavoritesHowTo className="mx-auto mt-5 max-w-3xl" />
         </div>
       </div>
     </section>

@@ -1265,7 +1265,15 @@
     "locationHint": "Abilita l'accesso alla posizione per ordinare per distanza",
     "addToFavorites": "Aggiungi ai preferiti",
     "removeFromFavorites": "Rimuovi dai preferiti",
-    "emptyHint": "Tocca la stella ★ su qualsiasi parco, attrazione, spettacolo o ristorante per salvarlo qui."
+    "more": "{count, plural, =1 {+1 altro} other {+# altri}}",
+    "howTo": {
+      "findTitle": "Cerca un parco o un'attrazione",
+      "findText": "Dalla ricerca oppure da «Esplora i parchi».",
+      "starTitle": "Tocca la stella",
+      "starText": "Ce l'ha ogni scheda di parco e attrazione, e anche ogni pagina.",
+      "thenTitle": "Fatto",
+      "thenText": "Da quel momento compaiono in questo menu e in home page, con stato live e tempo di attesa."
+    }
   },
   "glossary": {
     "blogPosts": {

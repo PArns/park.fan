@@ -1265,7 +1265,15 @@
     "locationHint": "Enable location access to sort by distance",
     "addToFavorites": "Add to favorites",
     "removeFromFavorites": "Remove from favorites",
-    "emptyHint": "Tap the star ★ on any park, attraction, show, or restaurant to save it here."
+    "more": "{count, plural, =1 {+1 more} other {+# more}}",
+    "howTo": {
+      "findTitle": "Find a park or a ride",
+      "findText": "Use the search, or start from “Explore Parks”.",
+      "starTitle": "Tap the star",
+      "starText": "Every park and ride card carries one, and so does every park and ride page.",
+      "thenTitle": "That's it",
+      "thenText": "From then on they show up in this menu and on the homepage, with live status and wait time."
+    }
   },
   "glossary": {
     "blogPosts": {

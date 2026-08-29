@@ -254,3 +254,69 @@ in all six locales: no overflow, no wrap.
 - [Design system → header geometry](../design/design-system.md#header-geometry)
 - [Internationalization → which namespaces reach the client](../i18n/internationalization.md#which-namespaces-reach-the-client)
 - [API budget per page](../architecture/api-budget.md)
+
+## Favoriten im Band
+
+Der Stern rechts in der Leiste öffnet dieselbe volle Bandfläche wie „Parks entdecken" und „Blog",
+über die gemeinsame `MenuBand` (`components/layout/menu-band.tsx`, aus `NavMenu` herausgelöst, als
+der zweite Auslöser dazukam — zwei Kopien der Glasfläche wären zwei Gelegenheiten, dass Ring, Blur
+und Container-Padding auseinanderlaufen).
+
+Warum es das gibt: Favoriten sind der einzige Zustand, den diese Seite über einen Besucher
+speichert, und sichtbar waren sie ausschließlich in einem Band zwei Bildschirme unter dem Hero der
+Startseite. Von einer Parkseite aus — also von der Seite, auf der man den Stern tatsächlich drückt
+— führte kein Weg zurück zu dem, was man gesammelt hat.
+
+Vier Entscheidungen sitzen darin:
+
+- **Der Stern ist immer da, auch bei null Favoriten.** Der Aktionsbereich wird server-gerendert,
+  das Cookie ist erst nach dem Mount lesbar, und ein Bedienelement, das nach der Hydration
+  auftaucht, schiebt Sprachwahl, Theme-Schalter und Burger zur Seite. 32 px, dafür kein Sprung.
+- **Er öffnet nur auf Klick, nie auf Hover.** Das Band liegt zwischen Suchfeld und Theme-Schalter;
+  eines, das sich beim Vorbeifahren aufrollt, stünde mehrmals pro Sitzung im Weg.
+- **Die Anfrage läuft erst beim Öffnen** (`useFavorites({ enabled, poll })`). Der Header rendert
+  auf ~35 000 Seiten; ungebremst wäre das ein `/api/favorites`-Call pro Seite für jeden, der je
+  etwas markiert hat. Der Query-Key ist derselbe wie auf der Startseite, dort kostet das Öffnen
+  also nichts.
+- **Zeilen, keine Karten.** `ParkCard`/`AttractionCard` lesen die Namespaces `parks` +
+  `attractions`; die müssten dann in die Chrome-Payload jeder Seite. Das Panel liest `favorites`,
+  `common`, `geo` und `parks.status` — die letzten drei waren schon Chrome, `favorites` (503 B) ist
+  dazugekommen und dafür aus 20 Route-Deltas verschwunden.
+
+Bei null Favoriten steht die Anleitung im Panel: drei Schritte plus der echte Stern in der Größe,
+in der er auf den Karten sitzt (`components/parks/favorites-how-to.tsx`). Dieselbe Komponente
+steckt im leeren Favoritenband der Startseite, damit beide Stellen dieselbe Antwort geben. Sie
+nennt **keine** Position für den Stern: auf einer Karte sitzt er in einer Ecke, auf einer Parkseite
+nicht, und eine Angabe wäre auf einer von beiden falsch.
+
+## Das Menü schließt sich beim Seitenwechsel
+
+Radix schließt einen Dialog, wenn etwas darin `SheetClose` ruft — ein `<Link>` tut das nicht, der
+navigiert. Der Header lebt im Locale-Layout und überlebt die Navigation, also blieb das
+Burger-Panel auf dem Handy über der neuen Seite liegen: Tippen auf „Glossar" wechselte die Seite
+dahinter und ließ das Panel stehen. Jeder Link darin hatte den Fehler.
+
+Die Desktop-Bänder hatten dieselbe Form desselben Fehlers aus dem anderen Grund: ihr
+Außenklick-Handler ignoriert Klicks **innerhalb** des Bandes bewusst — und genau dort sitzen die
+Links.
+
+Der offene Zustand ist deshalb überall der **Pfad**, auf dem geöffnet wurde, nicht ein Boolean:
+
+```tsx
+const [openedOn, setOpenedOn] = useState<string | null>(null);
+const open = openedOn === pathname;
+```
+
+Ändert sich `pathname`, ist das Menü im selben Render zu. Ein Boolean plus Effekt täte dasselbe
+einen Render später und ist genau das `setState`-im-Effekt, das der Linter zu Recht ablehnt.
+`pathname` kommt aus `@/i18n/navigation`, ist also locale-bereinigt — richtig hier, weil ein
+Sprachwechsel dieselbe Route neu rendert und das Menü nicht mitten in der Geste zuschlagen soll.
+
+## Bewegung im Sheet
+
+Das Burger-Menü war die einzige Menüfläche ohne Bewegung. `useSheetReveal`
+(`lib/hooks/use-menu-reveal.ts`) staffelt die Zeilen jetzt entlang **derselben Achse**, auf der das
+Panel selbst hereinfährt (`x`, nicht `y`) — zwei Bewegungen über Kreuz lesen sich als zwei Dinge,
+eine als eine. Regeln wie beim Desktop-Band: CSS (Radix' eigene `data-[state]`-Animation) besitzt
+die Sichtbarkeit, GSAP bewegt nur, `prefers-reduced-motion` importiert den Chunk gar nicht erst,
+und ohne ihn öffnet das Menü exakt wie vorher.

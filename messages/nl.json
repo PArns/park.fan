@@ -1265,7 +1265,15 @@
     "locationHint": "Schakel locatie in om op afstand te sorteren",
     "addToFavorites": "Toevoegen aan favorieten",
     "removeFromFavorites": "Verwijderen uit favorieten",
-    "emptyHint": "Tik op de ster ★ bij een park, attractie, show of restaurant om het hier op te slaan."
+    "more": "{count, plural, =1 {+1 meer} other {+# meer}}",
+    "howTo": {
+      "findTitle": "Zoek een park of attractie",
+      "findText": "Via de zoekbalk of via „Ontdek Parken”.",
+      "starTitle": "Tik op de ster",
+      "starText": "Elke park- en attractiekaart heeft er een, en elke park- en attractiepagina ook.",
+      "thenTitle": "Klaar",
+      "thenText": "Vanaf dan staan ze in dit menu en op de homepage, met live status en wachttijd."
+    }
   },
   "glossary": {
     "blogPosts": {

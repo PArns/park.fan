@@ -8,6 +8,7 @@
  */
 export const LAYOUT_MESSAGE_NAMESPACES = [
   'common',
+  'favorites',
   'feedback',
   'footer',
   'geo',
@@ -23,13 +24,13 @@ export const LAYOUT_MESSAGE_NAMESPACES = [
  * An empty list means the chrome set already covers the route.
  */
 export const ROUTE_MESSAGE_NAMESPACES = {
-  '/': ['attractions', 'favorites', 'home', 'nearby', 'parkCard', 'parks', 'stats'],
-  '/best-time-to-visit': ['favorites', 'nearby', 'parkCard'],
-  '/blog': ['favorites', 'nearby', 'parkCard'],
-  '/blog/[slug]': ['attractions', 'blog', 'favorites', 'nearby', 'parkCard', 'parks', 'share'],
-  '/blog/authors/[author]': ['favorites', 'nearby', 'parkCard'],
-  '/blog/category/[...path]': ['favorites', 'nearby', 'parkCard'],
-  '/blog/tag/[tag]': ['favorites', 'nearby', 'parkCard'],
+  '/': ['attractions', 'home', 'nearby', 'parkCard', 'parks', 'stats'],
+  '/best-time-to-visit': ['nearby', 'parkCard'],
+  '/blog': ['nearby', 'parkCard'],
+  '/blog/[slug]': ['attractions', 'blog', 'nearby', 'parkCard', 'parks', 'share'],
+  '/blog/authors/[author]': ['nearby', 'parkCard'],
+  '/blog/category/[...path]': ['nearby', 'parkCard'],
+  '/blog/tag/[tag]': ['nearby', 'parkCard'],
   '/contribute': [
     'contribute.dropzone',
     'contribute.error',
@@ -38,19 +39,18 @@ export const ROUTE_MESSAGE_NAMESPACES = {
   ],
   '/contribute/thanks': [],
   '/datenschutz': ['datenschutz.analyticsOptOut'],
-  '/fancast': ['favorites', 'home', 'nearby', 'parkCard'],
+  '/fancast': ['home', 'nearby', 'parkCard'],
   '/glossary': ['glossary'],
-  '/glossary/[term]': ['favorites', 'nearby', 'parkCard'],
-  '/how-park-fan-works': ['attractions', 'favorites', 'nearby', 'parkCard', 'parks'],
+  '/glossary/[term]': ['nearby', 'parkCard'],
+  '/how-park-fan-works': ['attractions', 'nearby', 'parkCard', 'parks'],
   '/impressum': [],
   '/maintenance': [],
   '/parks': ['explore', 'nearby'],
   '/parks/[continent]': ['explore', 'nearby'],
-  '/parks/[continent]/[country]': ['favorites', 'nearby', 'parkCard'],
-  '/parks/[continent]/[country]/[city]': ['favorites', 'nearby', 'parkCard'],
+  '/parks/[continent]/[country]': ['nearby', 'parkCard'],
+  '/parks/[continent]/[country]/[city]': ['nearby', 'parkCard'],
   '/parks/[continent]/[country]/[city]/[park]': [
     'attractions',
-    'favorites',
     'nearby',
     'parkCard',
     'parks',
@@ -59,21 +59,19 @@ export const ROUTE_MESSAGE_NAMESPACES = {
   ],
   '/parks/[continent]/[country]/[city]/[park]/[attraction]': [
     'attractions',
-    'favorites',
     'nearby',
     'parks',
     'share',
   ],
   '/parks/[continent]/[country]/[city]/[park]/wait-time-calendar/[[...date]]': [
     'attractions.historyLegend',
-    'favorites',
     'nearby',
     'parkCard',
     'parks',
     'share',
   ],
   '/search': [],
-  '/ui': ['attractions', 'favorites', 'nearby', 'parkCard', 'parks', 'stats'],
+  '/ui': ['attractions', 'nearby', 'parkCard', 'parks', 'stats'],
 } as const;
 
 /**

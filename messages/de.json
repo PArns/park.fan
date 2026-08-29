@@ -1265,7 +1265,15 @@
     "locationHint": "Standortzugriff aktivieren, um nach Entfernung zu sortieren",
     "addToFavorites": "Zu Favoriten hinzufügen",
     "removeFromFavorites": "Aus Favoriten entfernen",
-    "emptyHint": "Klicke auf den Stern ★ bei einem Park, einer Attraktion, Show oder Restaurant, um sie hier zu speichern."
+    "more": "{count, plural, =1 {+1 weiterer} other {+# weitere}}",
+    "howTo": {
+      "findTitle": "Park oder Attraktion suchen",
+      "findText": "Über die Suche oder über „Parks entdecken\".",
+      "starTitle": "Auf den Stern tippen",
+      "starText": "Jede Park- und Attraktionskarte hat einen, und jede Park- und Attraktionsseite auch.",
+      "thenTitle": "Fertig",
+      "thenText": "Ab dann stehen sie hier im Menü und auf der Startseite, mit Live-Status und Wartezeit."
+    }
   },
   "glossary": {
     "blogPosts": {
