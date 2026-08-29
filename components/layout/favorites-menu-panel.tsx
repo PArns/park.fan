@@ -1,92 +1,160 @@
 'use client';
 
+import Image from 'next/image';
 import { Star } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
-import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { Skeleton } from '@/components/ui/skeleton';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { FavoritesHowTo } from '@/components/parks/favorites-how-to';
 import { useFavorites } from '@/lib/hooks/use-favorites';
-import { useFavoriteCounts, type FavoriteCounts } from '@/lib/hooks/use-favorite-counts';
+import { useFavoriteCounts } from '@/lib/hooks/use-favorite-counts';
 import { CROWD_TEXT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { stripNewPrefix } from '@/lib/utils';
-import {
-  buildRestaurantUrl,
-  buildShowUrl,
-  convertApiUrlToFrontendUrl,
-} from '@/lib/utils/url-utils';
-import type {
-  FavoriteAttraction,
-  FavoritePark,
-  FavoriteRestaurant,
-  FavoriteShow,
-} from '@/lib/api/favorites';
-import type { AttractionStatus, ParkStatus } from '@/lib/api/types';
+import { translateGeoSlug } from '@/lib/utils/geo-translate';
+import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
+import type { FavoriteAttraction, FavoritePark } from '@/lib/api/favorites';
+import type { AttractionStatus, CrowdLevel, ParkStatus } from '@/lib/api/types';
 
 /**
- * The favorites menu's contents — the same body in the desktop band and in the mobile sheet.
+ * The favorites menu's contents — cards in the full-width band, rows in the 300 px burger sheet.
  *
  * Three things it is built around:
  *
  * 1. **It does not fetch until it is opened.** The header renders on every one of ~35,000 pages;
  *    an ungated `useFavorites()` here would put a `/api/favorites` request on all of them for
- *    every visitor who has ever starred anything. `open` is the gate (see the hook), and the query
- *    key is shared with the homepage band, so opening the menu there resolves from cache.
- * 2. **Rows, not cards.** `ParkCard`/`AttractionCard` read the `parks` + `attractions` namespaces,
- *    which the header would then have to carry into the chrome payload of every page — the
- *    homepage band fetches them as a lazy chunk precisely to avoid that. Everything below reads
- *    `favorites`, `common` and `parks.status`, and the last two are already chrome.
- * 3. **The loading state is sized off the cookie.** The ids are known before the names are, so a
- *    visitor with three parks and one ride waits in a box with three park rows and one ride row
- *    in it, not a spinner.
+ *    every visitor who has ever starred anything. `open` is the gate, and the query key is shared
+ *    with the homepage band, so opening the menu there resolves from cache.
+ * 2. **Two shapes, because the two hosts are 1100 px apart.** The band gets cards with the photo
+ *    the favorites proxy already attaches (`enrichParksWithImages`) and the wait time set large —
+ *    that is what somebody opens this for. The sheet gets rows: a card grid in a 300 px column is
+ *    one card per screen.
+ * 3. **The picture is optional and the layout is not.** The media database holds an image for 14
+ *    of 212 parks, so most cards fall back to a tinted field carrying the park's own crowd colour.
+ *    Its box is identical either way — a grid that reflows depending on which parks somebody
+ *    happens to have starred reads as broken.
+ *
+ * Everything here reads `favorites`, `common`, `geo` and `parks.status`, all of which the layout
+ * chrome already carries. `ParkCard`/`AttractionCard` would drag `parks` + `attractions` into the
+ * chrome payload of every page, which is what the homepage band fetches a lazy chunk to avoid.
  */
 
-/** Rows per column before the rest collapses into a "+N" line. */
+/** Cards per group before the rest collapses into a "+N" line. */
+const MAX_CARDS = 4;
+/** Rows per group in the sheet, where they are cheaper. */
 const MAX_ROWS = 5;
+
+/** The tint a card without a photo gets, from the park's own crowd level. Full class names. */
+const CROWD_FIELD: Record<string, string> = {
+  very_low: 'from-crowd-very-low/25',
+  low: 'from-crowd-low/25',
+  moderate: 'from-crowd-moderate/25',
+  high: 'from-crowd-high/25',
+  very_high: 'from-crowd-very-high/25',
+  extreme: 'from-crowd-extreme/25',
+};
 
 function standbyWait(attraction: FavoriteAttraction): number | null {
   const standby = attraction.queues?.find((q) => q.queueType === 'STANDBY');
   return standby?.waitTime ?? null;
 }
 
-/** The park page a show or restaurant belongs to, plus the tab hash. Both live on the park page. */
-function parkHrefFor(url: string | undefined): string | null {
-  if (!url) return null;
-  const converted = convertApiUrlToFrontendUrl(url);
-  return converted !== '#' && converted.startsWith('/parks/') ? converted : null;
-}
-
-function Column({
-  title,
-  count,
-  children,
-}: {
-  title: string;
-  count: number;
-  children: React.ReactNode;
-}) {
+/** The wait time as the card's headline figure — the reason somebody opened this menu. */
+function WaitFigure({ minutes, unit }: { minutes: number; unit: string }) {
   return (
-    <div data-menu-stagger>
-      <div className="text-foreground border-border/60 mb-2 flex items-center justify-between gap-2 border-b pb-1.5 text-xs font-semibold tracking-wide uppercase">
-        <span>{title}</span>
-        <span className="text-muted-foreground/70 tabular-nums">{count}</span>
-      </div>
-      <ul className="space-y-px">{children}</ul>
-    </div>
+    <span className="flex items-baseline gap-1">
+      <span
+        className={`text-2xl leading-none font-bold tabular-nums ${CROWD_TEXT_CLASS[waitTimeCrowdTier(minutes)]}`}
+      >
+        {minutes}
+      </span>
+      <span className="text-muted-foreground text-[11px]">{unit}</span>
+    </span>
   );
 }
 
+/**
+ * One favorite as a card: picture on top, name and place under it, the figure in the footer.
+ *
+ * `aspect-[16/10]` rather than a fixed height: the band is fluid between 1024 and 1536 px, and a
+ * fixed picture height turns into a different crop at every width instead of the same one scaled.
+ */
+function Card({
+  href,
+  title,
+  subtitle,
+  image,
+  imagePosition,
+  crowd,
+  figure,
+  badge,
+}: {
+  href: string;
+  title: string;
+  subtitle?: string | null;
+  image?: string | null;
+  imagePosition?: string;
+  crowd?: CrowdLevel | null;
+  figure?: React.ReactNode;
+  badge?: React.ReactNode;
+}) {
+  const tint = crowd && crowd !== 'unknown' ? CROWD_FIELD[crowd] : null;
+
+  return (
+    <li>
+      <Link
+        href={href}
+        prefetch={false}
+        className="group border-border/60 bg-card/40 hover:border-primary/40 flex h-full flex-col overflow-hidden rounded-xl border transition-colors"
+      >
+        <span className="bg-muted relative block aspect-[16/10] overflow-hidden">
+          {image ? (
+            <Image
+              src={image}
+              alt=""
+              fill
+              sizes="(min-width: 1280px) 220px, 180px"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              style={{ objectPosition: imagePosition }}
+            />
+          ) : (
+            <span
+              className={`absolute inset-0 bg-gradient-to-br to-transparent ${tint ?? 'from-primary/15'}`}
+              aria-hidden="true"
+            />
+          )}
+          {badge && <span className="absolute top-2 right-2">{badge}</span>}
+        </span>
+
+        <span className="flex min-w-0 flex-1 flex-col gap-0.5 p-3">
+          <span className="text-foreground group-hover:text-primary truncate text-sm font-semibold transition-colors">
+            {title}
+          </span>
+          {subtitle && (
+            <span className="text-muted-foreground truncate text-xs">{subtitle}</span>
+          )}
+          {figure && <span className="mt-1.5 block">{figure}</span>}
+        </span>
+      </Link>
+    </li>
+  );
+}
+
+/** The sheet's shape: thumbnail, two lines, the figure on the right. */
 function Row({
   href,
   title,
   subtitle,
+  image,
+  imagePosition,
   trailing,
 }: {
   href: string;
   title: string;
   subtitle?: string | null;
+  image?: string | null;
+  imagePosition?: string;
   trailing?: React.ReactNode;
 }) {
   return (
@@ -94,9 +162,23 @@ function Row({
       <Link
         href={href}
         prefetch={false}
-        className="hover:bg-muted/60 -mx-2 flex items-center justify-between gap-3 rounded-md px-2 py-1.5 transition-colors"
+        className="hover:bg-muted/60 -mx-2 flex items-center gap-3 rounded-md px-2 py-1.5 transition-colors"
       >
-        <span className="min-w-0">
+        {/* The box is always drawn, picture or not: a row that indents depending on which park it
+            is reads as a rendering fault. */}
+        <span className="bg-muted relative block h-10 w-10 shrink-0 overflow-hidden rounded-lg">
+          {image && (
+            <Image
+              src={image}
+              alt=""
+              fill
+              sizes="40px"
+              className="object-cover"
+              style={{ objectPosition: imagePosition }}
+            />
+          )}
+        </span>
+        <span className="min-w-0 flex-1">
           <span className="text-foreground block truncate text-sm font-medium">{title}</span>
           {subtitle && (
             <span className="text-muted-foreground block truncate text-xs">{subtitle}</span>
@@ -108,13 +190,42 @@ function Row({
   );
 }
 
-function SkeletonRows({ count }: { count: number }) {
+function GroupHeading({ title, count }: { title: string; count: number }) {
+  return (
+    <div className="text-foreground border-border/60 mb-2.5 flex items-center justify-between gap-2 border-b pb-1.5 text-xs font-semibold tracking-wide uppercase">
+      <span>{title}</span>
+      <span className="text-muted-foreground/70 tabular-nums">{count}</span>
+    </div>
+  );
+}
+
+function CardSkeletons({ count }: { count: number }) {
+  return (
+    <>
+      {Array.from({ length: Math.min(count, MAX_CARDS) }).map((_, i) => (
+        <li key={i} className="border-border/60 overflow-hidden rounded-xl border">
+          <Skeleton className="aspect-[16/10] rounded-none" />
+          <div className="p-3">
+            <Skeleton className="h-4 w-28" />
+            <Skeleton className="mt-1.5 h-3 w-20" />
+            <Skeleton className="mt-2 h-5 w-12" />
+          </div>
+        </li>
+      ))}
+    </>
+  );
+}
+
+function RowSkeletons({ count }: { count: number }) {
   return (
     <>
       {Array.from({ length: Math.min(count, MAX_ROWS) }).map((_, i) => (
-        <li key={i} className="px-2 py-1.5">
-          <Skeleton className="h-4 w-32" />
-          <Skeleton className="mt-1 h-3 w-20" />
+        <li key={i} className="flex items-center gap-3 px-2 py-1.5">
+          <Skeleton className="h-10 w-10 shrink-0 rounded-lg" />
+          <span className="min-w-0 flex-1">
+            <Skeleton className="h-4 w-28" />
+            <Skeleton className="mt-1 h-3 w-16" />
+          </span>
         </li>
       ))}
     </>
@@ -131,31 +242,30 @@ export function FavoritesMenuPanel({
    *
    * Not cosmetic: every `sm:`/`lg:` below is a VIEWPORT query, and the sheet is 300 px wide at
    * every viewport that shows it — including 640–1023 px, where the burger is still the whole
-   * navigation. Left on the band's classes, the three how-to steps and the three favorites
-   * columns both went three-across inside 300 px on a tablet.
+   * navigation.
    */
   variant?: 'band' | 'sheet';
 }) {
   const t = useTranslations('favorites');
   const tCommon = useTranslations('common');
+  const tGeo = useTranslations('geo');
   const counts = useFavoriteCounts();
   // `poll: false` — the menu is on screen for seconds. The homepage band is the surface that
   // stays open long enough for a five-minute refresh to mean anything, and it keeps its own.
   const { data, isPending } = useFavorites({ enabled: open && counts.total > 0, poll: false });
-  const moreLabel = (hidden: number) => t('more', { count: hidden });
+  const minuteLabel = tCommon('minuteShort');
+  const isSheet = variant === 'sheet';
+  const more = (hidden: number) => t('more', { count: hidden });
 
   if (counts.total === 0) {
     /*
-     * Im Sheet zwei Zeilen, im Band die ganze Anleitung.
+     * In the sheet two lines, in the band the whole guide.
      *
-     * Die drei Schritte untereinander sind in einer 300-px-Spalte 358 px hoch — auf einem
-     * 390×844-Telefon 58 % des gesamten Burger-Menüs, für einen Zustand, in dem es nichts zu
-     * zeigen gibt. Das Menü ist dort die komplette Navigation; eine Funktionserklärung darf sie
-     * nicht verdrängen. Der Satz, auf den es ankommt, ist ohnehin der zweite Schritt: wo der
-     * Stern sitzt. Die vollständige Anleitung steht im Band und im Favoritenband der Startseite,
-     * wo Platz dafür ist.
+     * The three steps stacked in a 300 px column are 358 px tall — 58 % of the entire burger menu
+     * on a 390×844 phone, for a state with nothing to show. That menu is the whole navigation
+     * there. The sentence that matters is the second step anyway: where the star is.
      */
-    if (variant === 'sheet') {
+    if (isSheet) {
       return (
         <div data-menu-stagger className="flex gap-3">
           <Star className="text-muted-foreground/60 mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
@@ -181,12 +291,15 @@ export function FavoritesMenuPanel({
   }
 
   const loading = isPending || !data;
+  const listClass = isSheet
+    ? 'space-y-px'
+    : 'grid grid-cols-2 gap-3 sm:grid-cols-3 xl:grid-cols-4';
 
   return (
     <div>
-      <div className="mb-3 flex items-center justify-between gap-4">
+      <div className="mb-4 flex items-center justify-between gap-4">
         <span className="text-foreground inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase">
-          <Star className="text-primary h-4 w-4" aria-hidden="true" />
+          <Star className="text-primary h-4 w-4 fill-current" aria-hidden="true" />
           {t('title')}
         </span>
         <Link
@@ -198,198 +311,214 @@ export function FavoritesMenuPanel({
         </Link>
       </div>
 
-      <div
-        className={`grid gap-x-6 gap-y-5 ${
-          variant === 'sheet' ? '' : 'sm:grid-cols-2 lg:grid-cols-3'
-        }`}
-      >
+      <div className={isSheet ? 'space-y-5' : 'grid gap-x-8 gap-y-6 lg:grid-cols-2'}>
         {counts.parks > 0 && (
-          <Column title={t('parks')} count={counts.parks}>
-            {loading ? (
-              <SkeletonRows count={counts.parks} />
-            ) : (
-              <ParkRows parks={data.parks} counts={counts} moreLabel={moreLabel} />
-            )}
-          </Column>
+          <div data-menu-stagger>
+            <GroupHeading title={t('parks')} count={counts.parks} />
+            <ul className={listClass}>
+              {loading ? (
+                isSheet ? (
+                  <RowSkeletons count={counts.parks} />
+                ) : (
+                  <CardSkeletons count={counts.parks} />
+                )
+              ) : (
+                <>
+                  {data.parks.slice(0, isSheet ? MAX_ROWS : MAX_CARDS).map((park) => (
+                    <ParkEntry
+                      key={park.id}
+                      park={park}
+                      isSheet={isSheet}
+                      minuteLabel={minuteLabel}
+                      country={translateGeoSlug(tGeo, 'countries', park.country, park.country)}
+                    />
+                  ))}
+                  <MoreLine
+                    hidden={counts.parks - Math.min(data.parks.length, isSheet ? MAX_ROWS : MAX_CARDS)}
+                    label={more}
+                  />
+                </>
+              )}
+            </ul>
+          </div>
         )}
 
         {counts.attractions > 0 && (
-          <Column title={t('attractions')} count={counts.attractions}>
-            {loading ? (
-              <SkeletonRows count={counts.attractions} />
-            ) : (
-              <AttractionRows
-                attractions={data.attractions}
-                counts={counts}
-                minuteLabel={tCommon('minuteShort')}
-                moreLabel={moreLabel}
-              />
-            )}
-          </Column>
-        )}
-
-        {(counts.shows > 0 || counts.restaurants > 0) && (
-          <Column
-            title={counts.shows > 0 ? t('shows') : t('restaurants')}
-            count={counts.shows + counts.restaurants}
-          >
-            {loading ? (
-              <SkeletonRows count={counts.shows + counts.restaurants} />
-            ) : (
-              <VenueRows shows={data.shows} restaurants={data.restaurants} />
-            )}
-          </Column>
+          <div data-menu-stagger>
+            <GroupHeading title={t('attractions')} count={counts.attractions} />
+            <ul className={listClass}>
+              {loading ? (
+                isSheet ? (
+                  <RowSkeletons count={counts.attractions} />
+                ) : (
+                  <CardSkeletons count={counts.attractions} />
+                )
+              ) : (
+                <>
+                  {data.attractions
+                    .slice(0, isSheet ? MAX_ROWS : MAX_CARDS)
+                    .map((attraction) => (
+                      <AttractionEntry
+                        key={attraction.id}
+                        attraction={attraction}
+                        isSheet={isSheet}
+                        minuteLabel={minuteLabel}
+                      />
+                    ))}
+                  <MoreLine
+                    hidden={
+                      counts.attractions -
+                      Math.min(data.attractions.length, isSheet ? MAX_ROWS : MAX_CARDS)
+                    }
+                    label={more}
+                  />
+                </>
+              )}
+            </ul>
+          </div>
         )}
       </div>
     </div>
   );
 }
 
-function MoreRow({ hidden, label }: { hidden: number; label: string }) {
+function MoreLine({ hidden, label }: { hidden: number; label: (n: number) => string }) {
   if (hidden <= 0) return null;
   return (
-    <li className="px-2 pt-1.5">
+    <li className="col-span-full px-2 pt-1">
       <Link
         href="/#favorites"
         prefetch={false}
         className="text-muted-foreground hover:text-foreground text-xs transition-colors"
       >
-        {label}
+        {label(hidden)}
       </Link>
     </li>
   );
 }
 
-function ParkRows({
-  parks,
-  counts,
-  moreLabel,
-}: {
-  parks: FavoritePark[];
-  counts: FavoriteCounts;
-  moreLabel: (hidden: number) => string;
-}) {
-  // The API answers with the country SLUG ("germany"), same as everywhere else — `ParkCard`
-  // translates it too. The `geo` namespace is already part of the layout chrome, so this costs
-  // the header nothing.
-  const tGeo = useTranslations('geo');
-  return (
-    <>
-      {parks.slice(0, MAX_ROWS).map((park) => (
-        <Row
-          key={park.id}
-          href={convertApiUrlToFrontendUrl(park.url)}
-          title={stripNewPrefix(park.name)}
-          subtitle={[park.city, translateGeoSlug(tGeo, 'countries', park.country, park.country)]
-            .filter(Boolean)
-            .join(' · ')}
-          trailing={
-            <ParkStatusBadge
-              status={park.status as ParkStatus}
-              className="px-1.5 py-0 text-[10px]"
-            />
-          }
-        />
-      ))}
-      <MoreRow
-        hidden={counts.parks - Math.min(parks.length, MAX_ROWS)}
-        label={moreLabel(counts.parks - Math.min(parks.length, MAX_ROWS))}
-      />
-    </>
-  );
-}
-
-function AttractionRows({
-  attractions,
-  counts,
+function ParkEntry({
+  park,
+  isSheet,
   minuteLabel,
-  moreLabel,
+  country,
 }: {
-  attractions: FavoriteAttraction[];
-  counts: FavoriteCounts;
+  park: FavoritePark;
+  isSheet: boolean;
   minuteLabel: string;
-  moreLabel: (hidden: number) => string;
+  country: string;
 }) {
-  return (
-    <>
-      {attractions.slice(0, MAX_ROWS).map((attraction) => {
-        const wait = standbyWait(attraction);
-        // `effectiveStatus`, never the raw `status`: a ride out of season is closed, and the raw
-        // field does not know that. See `docs/api/seasonal-attractions.md`.
-        const status = (attraction.effectiveStatus ??
-          attraction.status ??
-          'CLOSED') as AttractionStatus;
-        const open = status === 'OPERATING';
-        const rounded = wait !== null ? roundWaitTo5(wait) : null;
-        return (
-          <Row
-            key={attraction.id}
-            href={convertApiUrlToFrontendUrl(attraction.url)}
-            title={stripNewPrefix(attraction.name)}
-            subtitle={attraction.park ? stripNewPrefix(attraction.park.name) : null}
-            trailing={
-              open && rounded !== null ? (
-                <span className="text-sm font-semibold tabular-nums">
-                  <span className={CROWD_TEXT_CLASS[waitTimeCrowdTier(rounded)]}>{rounded}</span>
-                  <span className="text-muted-foreground ml-1 text-xs font-normal">
-                    {minuteLabel}
-                  </span>
-                </span>
-              ) : (
-                <ParkStatusBadge status={status} className="px-1.5 py-0 text-[10px]" />
-              )
-            }
-          />
-        );
-      })}
-      <MoreRow
-        hidden={counts.attractions - Math.min(attractions.length, MAX_ROWS)}
-        label={moreLabel(counts.attractions - Math.min(attractions.length, MAX_ROWS))}
+  const href = convertApiUrlToFrontendUrl(park.url);
+  const title = stripNewPrefix(park.name);
+  const operating = park.status === 'OPERATING';
+  // Ø and crowd only for a park that is actually running: a closed one aggregates over an empty
+  // set and reports the same thing a park with no wait-time source reports.
+  const wait =
+    operating && park.analytics?.avgWaitTime != null
+      ? roundWaitTo5(park.analytics.avgWaitTime)
+      : null;
+  const badge = <ParkStatusBadge status={park.status as ParkStatus} className="px-1.5 py-0 text-[10px]" />;
+
+  if (isSheet) {
+    return (
+      <Row
+        href={href}
+        title={title}
+        subtitle={[park.city, country].filter(Boolean).join(' · ')}
+        image={park.backgroundImage}
+        imagePosition={park.backgroundPosition}
+        trailing={
+          wait !== null ? (
+            <span className="text-sm font-semibold tabular-nums">
+              <span className={CROWD_TEXT_CLASS[waitTimeCrowdTier(wait)]}>{wait}</span>
+              <span className="text-muted-foreground ml-1 text-xs font-normal">{minuteLabel}</span>
+            </span>
+          ) : (
+            badge
+          )
+        }
       />
-    </>
+    );
+  }
+
+  return (
+    <Card
+      href={href}
+      title={title}
+      subtitle={[park.city, country].filter(Boolean).join(' · ')}
+      image={park.backgroundImage}
+      imagePosition={park.backgroundPosition}
+      crowd={operating ? park.analytics?.crowdLevel : null}
+      badge={badge}
+      figure={
+        wait !== null ? (
+          <WaitFigure minutes={wait} unit={minuteLabel} />
+        ) : (
+          <span className="text-muted-foreground text-xs">
+            {park.operatingAttractions != null
+              ? `${park.operatingAttractions}/${park.totalAttractions}`
+              : `${park.totalAttractions}`}
+          </span>
+        )
+      }
+    />
   );
 }
 
-function VenueRows({
-  shows,
-  restaurants,
+function AttractionEntry({
+  attraction,
+  isSheet,
+  minuteLabel,
 }: {
-  shows: FavoriteShow[];
-  restaurants: FavoriteRestaurant[];
+  attraction: FavoriteAttraction;
+  isSheet: boolean;
+  minuteLabel: string;
 }) {
-  const rows = [
-    ...shows.map((show) => ({
-      id: show.id,
-      name: show.name,
-      park: show.park?.name,
-      href: parkHrefFor(show.url),
-      hash: 'show' as const,
-    })),
-    ...restaurants.map((restaurant) => ({
-      id: restaurant.id,
-      name: restaurant.name,
-      park: restaurant.park?.name,
-      href: parkHrefFor(restaurant.url),
-      hash: 'restaurant' as const,
-    })),
-  ];
+  const href = convertApiUrlToFrontendUrl(attraction.url);
+  const title = stripNewPrefix(attraction.name);
+  const parkName = attraction.park ? stripNewPrefix(attraction.park.name) : null;
+  // `effectiveStatus`, never the raw `status`: a ride out of season is closed, and the raw field
+  // does not know that. See `docs/api/seasonal-attractions.md`.
+  const status = (attraction.effectiveStatus ??
+    attraction.status ??
+    'CLOSED') as AttractionStatus;
+  const operating = status === 'OPERATING';
+  const raw = standbyWait(attraction);
+  const wait = operating && raw !== null ? roundWaitTo5(raw) : null;
+  const badge = <ParkStatusBadge status={status} className="px-1.5 py-0 text-[10px]" />;
+
+  if (isSheet) {
+    return (
+      <Row
+        href={href}
+        title={title}
+        subtitle={parkName}
+        image={attraction.backgroundImage}
+        imagePosition={attraction.backgroundPosition}
+        trailing={
+          wait !== null ? (
+            <span className="text-sm font-semibold tabular-nums">
+              <span className={CROWD_TEXT_CLASS[waitTimeCrowdTier(wait)]}>{wait}</span>
+              <span className="text-muted-foreground ml-1 text-xs font-normal">{minuteLabel}</span>
+            </span>
+          ) : (
+            badge
+          )
+        }
+      />
+    );
+  }
 
   return (
-    <>
-      {rows.slice(0, MAX_ROWS).map((row) => (
-        <Row
-          key={row.id}
-          href={
-            row.href
-              ? row.hash === 'show'
-                ? buildShowUrl(row.href)
-                : buildRestaurantUrl(row.href)
-              : '/#favorites'
-          }
-          title={stripNewPrefix(row.name)}
-          subtitle={row.park ? stripNewPrefix(row.park) : null}
-        />
-      ))}
-    </>
+    <Card
+      href={href}
+      title={title}
+      subtitle={parkName}
+      image={attraction.backgroundImage}
+      imagePosition={attraction.backgroundPosition}
+      crowd={operating ? attraction.crowdLevel : null}
+      badge={badge}
+      figure={wait !== null ? <WaitFigure minutes={wait} unit={minuteLabel} /> : null}
+    />
   );
 }
