@@ -236,7 +236,22 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
         isTransparent ? 'border-transparent' : 'border-border/50'
       }`}
     >
-      {/* The bar's glass. First child, so every later sibling paints over it without a z-index.
+      {/* The bar's glass.
+          `-z-10` is not decoration, it is the whole reason this layer works. Being first in the
+          DOM does NOT put it behind its siblings: in CSS painting order a POSITIONED element with
+          `z-index: auto` paints above every non-positioned in-flow descendant, so an
+          `absolute inset-0` sheet covers the bar's contents. It shipped that way and swallowed
+          the logo, the locale switcher and both chevrons the moment the bar solidified — while the
+          nav links, the search field and the favorites star stayed visible, because those carry
+          `data-header-stagger` and the reveal's GSAP transform makes each of them its own
+          stacking context that escapes above the sheet. "Everything without a transform
+          disappears" is what that bug looked like from the outside.
+          The header is `sticky` with `z-index: 50`, so it is a stacking context of its own and a
+          negative z-index here cannot slip behind the page — it lands between the header's own
+          (transparent) background and its contents, which is exactly where a material belongs.
+          Making the inner container `relative` instead would also fix the painting, and must not
+          be done: `MenuBand` is absolutely positioned and resolves against the `<header>`, which
+          is what keeps the full-width band from being measured off a trigger.
           `backdrop-filter` is deliberately NOT in the transition list: animating it made the
           browser re-rasterize the blur of everything behind the full-width bar on every frame for
           500 ms each time the scroll crossed the 50 px threshold — by far the most expensive
@@ -245,7 +260,7 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
           while the colour keeps cross-fading. */}
       <div
         aria-hidden="true"
-        className={`pointer-events-none absolute inset-0 transition-[background-color] duration-500 ${
+        className={`pointer-events-none absolute inset-0 -z-10 transition-[background-color] duration-500 ${
           isTransparent ? 'bg-transparent' : 'bg-background/80 backdrop-blur-md'
         }`}
       />
