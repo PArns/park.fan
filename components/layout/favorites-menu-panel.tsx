@@ -9,6 +9,11 @@ import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { FavoritesHowTo } from '@/components/parks/favorites-how-to';
 import { useFavorites } from '@/lib/hooks/use-favorites';
 import { useFavoriteCounts } from '@/lib/hooks/use-favorite-counts';
+import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
+import { useMounted } from '@/lib/hooks/use-mounted';
+import { FavoriteStar } from '@/components/common/favorite-star';
+import { formatDistance } from '@/lib/utils/distance-utils';
+import type { NearbyParksData, ParkWithDistance } from '@/types/nearby';
 import { CROWD_TEXT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { stripNewPrefix } from '@/lib/utils';
@@ -58,6 +63,9 @@ import type { AttractionStatus, CrowdLevel, ParkStatus } from '@/lib/api/types';
 const MAX_CARDS = 8;
 /** Rows per group in the sheet, where they are cheaper. */
 const MAX_ROWS = 5;
+
+/** Parks offered for one-tap starring while the list is still empty. */
+const SUGGESTION_LIMIT = 5;
 
 /** The tint a card without a photo gets, from the park's own crowd level. Full class names. */
 const CROWD_FIELD: Record<string, string> = {
@@ -263,12 +271,28 @@ export function FavoritesMenuPanel({
   const t = useTranslations('favorites');
   const tCommon = useTranslations('common');
   const tGeo = useTranslations('geo');
+  const tNav = useTranslations('navigation');
   const counts = useFavoriteCounts();
   // `poll: false` — the menu is on screen for seconds. The homepage band is the surface that
   // stays open long enough for a five-minute refresh to mean anything, and it keeps its own.
   const { data, isPending } = useFavorites({ enabled: open && counts.total > 0, poll: false });
   const minuteLabel = tCommon('minuteShort');
   const isSheet = variant === 'sheet';
+
+  /*
+   * Vorschläge für den leeren Zustand.
+   *
+   * Dieselbe Query, die der Header für die „In der Nähe"-Pille und das Parkmenü ohnehin stellt —
+   * keine zusätzliche Anfrage. `useMounted` ist Pflicht und kein Feinschliff: der Hook seedet aus
+   * `localStorage`, ohne das Gatter stünde serverseitig keine Zeile und im ersten Client-Render
+   * eine, und React würde den Teilbaum wegwerfen (siehe #360).
+   */
+  const mounted = useMounted();
+  const { data: nearbyData } = useHomeNearbyParks();
+  const suggestions =
+    mounted && nearbyData?.type === 'nearby_parks'
+      ? (nearbyData.data as NearbyParksData).parks.slice(0, isSheet ? 3 : SUGGESTION_LIMIT)
+      : [];
   const more = (hidden: number) => t('more', { count: hidden });
 
   if (counts.total === 0) {
@@ -294,12 +318,34 @@ export function FavoritesMenuPanel({
     }
 
     return (
-      <div data-menu-stagger>
+      /* Der leere Zustand steht mittig, der gefüllte nicht: hier gibt es nichts zu vergleichen,
+         nur eine Anleitung und ein paar Vorschläge, und ein linksbündiger Block in einem
+         1400 px breiten Band hätte rechts eine leere Hälfte. Sobald Favoriten da sind, ordnen
+         sich die Karten wieder an ihrer Kante — dann ist die Spalte die Struktur. */
+      <div data-menu-stagger className="flex flex-col items-center text-center">
         <p className="text-foreground inline-flex items-center gap-2 text-sm font-semibold">
           <Star className="text-muted-foreground/60 h-4 w-4" aria-hidden="true" />
           {t('empty')}
         </p>
-        <FavoritesHowTo className="mt-4" />
+        {/* `max-w-3xl`: über die volle Bandbreite wäre jeder der drei Schritte 460 px breit für
+            zwei Zeilen Text, und die Anleitung liefe quer durch den Bildschirm statt sich lesen
+            zu lassen. */}
+        <FavoritesHowTo className="mt-4 w-full max-w-3xl text-left" />
+        {suggestions.length > 0 && (
+          <div className="border-border/60 mt-5 w-full max-w-3xl border-t pt-4">
+            <span className="text-muted-foreground mb-2.5 block text-[11px] font-semibold tracking-wide uppercase">
+              {tNav('nearby')}
+            </span>
+            {/* Der Stern steht NEBEN dem Link, nicht darin: verschachtelt würde ein Klick darauf
+                zur Parkseite navigieren, statt den Park zu markieren. Genau das ist hier aber der
+                Sinn — ein Tippen, und das Panel füllt sich. */}
+            <ul className="flex flex-wrap justify-center gap-2">
+              {suggestions.map((park) => (
+                <SuggestionChip key={park.id} park={park} />
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     );
   }
@@ -641,4 +687,44 @@ function venueRows(shows: FavoriteShow[], restaurants: FavoriteRestaurant[]) {
     // der Eintrag noch zu sehen ist.
     href: v.base ? v.build(v.base) : '/#favorites',
   }));
+}
+
+
+/**
+ * Ein Parkvorschlag: antippbar zum Öffnen, mit einem Stern daneben zum Markieren.
+ *
+ * Der leere Zustand erklärt bisher, wo der Stern sitzt — und schickt den Leser damit weg, um ihn
+ * zu suchen. Die Parks in Reichweite stehen ohnehin schon in der Antwort, die der Header für
+ * seine Pille holt; sie hier anzubieten macht aus der Anleitung eine Handlung.
+ */
+function SuggestionChip({ park }: { park: ParkWithDistance }) {
+  return (
+    <li className="border-border/70 bg-card/40 hover:border-primary/40 flex items-center gap-1 rounded-full border py-1 pr-1 pl-1 transition-colors">
+      <Link
+        href={convertApiUrlToFrontendUrl(park.url) as '/'}
+        prefetch={false}
+        className="group flex min-w-0 items-center gap-2 pr-1"
+      >
+        <span className="bg-muted relative block h-6 w-6 shrink-0 overflow-hidden rounded-full">
+          {park.backgroundImage && (
+            <Image
+              src={park.backgroundImage}
+              alt=""
+              fill
+              sizes="24px"
+              className="object-cover"
+              style={{ objectPosition: park.backgroundPosition }}
+            />
+          )}
+        </span>
+        <span className="text-foreground group-hover:text-primary truncate text-[13px] font-medium transition-colors">
+          {stripNewPrefix(park.name)}
+        </span>
+        <span className="text-muted-foreground shrink-0 text-[11px] tabular-nums">
+          {formatDistance(park.distance)}
+        </span>
+      </Link>
+      <FavoriteStar type="park" id={park.id} name={park.name} size="sm" />
+    </li>
+  );
 }
