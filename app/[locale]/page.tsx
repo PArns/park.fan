@@ -53,11 +53,15 @@ import {
   LiveActivitySkeleton,
 } from '@/components/home/home-skeletons';
 import { LatestBlogSection } from '@/components/home/latest-blog-section';
+import { getSectionHeadingLabels } from '@/components/home/section-headings';
 
 // The homepage story — "what is park.fan", chapter by chapter. Every one of these
 // is a Server Component whose copy is read server-side, so ~2 500 words of German
 // explanation never reach the client bundle (see the routed-translations rule).
-import { ParkShortcutSlot } from '@/components/home/story/park-shortcut-slot';
+import {
+  ParkShortcutSlot,
+  ParkShortcutStripSkeleton,
+} from '@/components/home/story/park-shortcut-slot';
 import { ThreeSteps } from '@/components/home/story/three-steps';
 import { NearbyChapter } from '@/components/home/story/nearby-chapter';
 import { ChapterLiveWaits } from '@/components/home/story/chapter-live-waits';
@@ -153,6 +157,10 @@ export default async function HomePage({ params }: HomePageProps) {
   // data-dependent section fetches its own data (and translations) inside a
   // Suspense boundary below, so the hero renders/streams without waiting on the API.
   const tHome = await getTranslations('home');
+  // Resolved once, here, because the two streamed sections and their fallbacks
+  // must mount the SAME heading node — and a fallback that awaits anything
+  // suspends, so the skeleton cannot look these up itself.
+  const headingLabels = await getSectionHeadingLabels();
   const heroImage = pickHeroImage(HERO_TTL_MS);
   const randomHeroImage = heroImage?.src;
   const heroMeta = heroImage?.meta ?? null;
@@ -238,8 +246,13 @@ export default async function HomePage({ params }: HomePageProps) {
 
         {/* Returning visitors first: one row of park links before the page
           argues anything. Shares its live overlay with the featured grid below
-          (same region set → one React Query entry), so it costs no request. */}
-        <Suspense fallback={null}>
+          (same region set → one React Query entry), so it costs no request.
+
+          The fallback is a box, not `null`: this band resolves for every locale
+          whose featured list resolves, i.e. every normal request, and everything
+          below it would otherwise be laid out 57 px too high and then pushed
+          down when the geo fetch lands. */}
+        <Suspense fallback={<ParkShortcutStripSkeleton />}>
           <ParkShortcutSlot locale={locale} />
         </Suspense>
 
@@ -268,8 +281,11 @@ export default async function HomePage({ params }: HomePageProps) {
           forecast (the one thing almost nobody else attempts), then the
           calendar and the day curve that plan a visit around it.
 
-          Tinted and untinted bands alternate the whole way down. Two tinted
-          sections in a row read as one long section with a rule through it. */}
+          Tinted and untinted bands alternate the whole way down, with one
+          deliberate exception: `FavoritesSection` is a shared band (it renders on
+          blog and glossary pages too), so its tint is not this page's to flip,
+          and it lands next to the tinted live-wait-times chapter. The chapter's
+          own `border-t` carries that boundary — which is what the rule is for. */}
         <ThreeSteps />
 
         {/* Step 1, made real: the visitor's own nearest parks, then their own
@@ -293,7 +309,7 @@ export default async function HomePage({ params }: HomePageProps) {
           own live counters, so it belongs directly under the six reasons rather
           than between the founder and the blog, where it used to sit. */}
         <WhyParkFan locale={locale as Locale} />
-        <Suspense fallback={<GlobalStatsSkeleton />}>
+        <Suspense fallback={<GlobalStatsSkeleton labels={headingLabels} />}>
           <GlobalStatsSection />
         </Suspense>
 
@@ -306,7 +322,7 @@ export default async function HomePage({ params }: HomePageProps) {
 
         {/* Live Activity - Parks Open Now — no pk-reveal: its cards are GlassCards, and the
           reveal's transform would flatten their backdrop for the length of the entry range. */}
-        <Suspense fallback={<LiveActivitySkeleton />}>
+        <Suspense fallback={<LiveActivitySkeleton labels={headingLabels} />}>
           <LiveActivitySection />
         </Suspense>
 

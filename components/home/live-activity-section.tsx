@@ -1,10 +1,9 @@
-import { getTranslations } from 'next-intl/server';
-import { Globe } from 'lucide-react';
 import { getGeoStructure } from '@/lib/api/discovery';
 import { getGeoLiveStats } from '@/lib/api/analytics';
 import { catchNonFatal } from '@/lib/api/client';
 import { LiveActivityGrid, type ContinentCard } from '@/components/home/live-activity-grid';
-import { ChapterHeading } from '@/components/common/chapter-heading';
+import { getSectionHeadingLabels, LiveActivityHeading } from '@/components/home/section-headings';
+import { STORY_SECTION_TINTED } from '@/components/home/story/section-chrome';
 
 /**
  * "Parks open now" — per-continent open-park counts, server-rendered into the homepage shell.
@@ -16,11 +15,10 @@ import { ChapterHeading } from '@/components/common/chapter-heading';
  * neither fetch blocks the hero; on error the section is omitted.
  */
 export async function LiveActivitySection() {
-  const [tHome, tStory, geoData, geoLive] = await Promise.all([
-    getTranslations('home'),
-    getTranslations('homeStory'),
+  const [geoData, geoLive, headingLabels] = await Promise.all([
     catchNonFatal(getGeoStructure()),
     catchNonFatal(getGeoLiveStats()),
+    getSectionHeadingLabels(),
   ]);
 
   const continents: ContinentCard[] =
@@ -35,19 +33,13 @@ export async function LiveActivitySection() {
   if (continents.length === 0) return null;
 
   return (
-    <section className="border-border bg-muted/30 border-t px-4 py-16 sm:py-18">
+    <section className={STORY_SECTION_TINTED}>
       <div className="container mx-auto">
-        {/* `ChapterHeading`, not a bare `text-xl font-bold` h2: this section sits
-          in the homepage's chapter ladder, and it was one of the last two places
-          on the page still drawing a section header of its own. */}
-        <ChapterHeading
-          variant="tile"
-          icon={Globe}
-          kicker={tStory('liveNow.kicker')}
-          title={tHome('sections.liveNow')}
-          hint={tHome('sections.liveNowIntro')}
-          id="parks-weltweit"
-        />
+        {/* A chapter heading rather than the bare `text-xl font-bold` h2 this
+          section used to draw. In its own file so LiveActivitySkeleton mounts
+          the identical node — the heading needs no data, and its height moves
+          with how the title wraps. */}
+        <LiveActivityHeading labels={headingLabels} />
         <LiveActivityGrid continents={continents} />
       </div>
     </section>

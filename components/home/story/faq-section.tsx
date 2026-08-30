@@ -15,9 +15,10 @@ import { FaqList } from '@/components/marketing/editorial-ui';
  * honest.
  *
  * {@link FaqList} emits the `FAQPage` itself from the same array it renders, so
- * the markup cannot drift from the page. `HomepageFAQStructuredData` was
- * therefore dropped from `page.tsx` in the same change: two FAQPage blocks on
- * one URL is a worse answer than none.
+ * the markup cannot drift from the page. `components/seo/homepage-faq-structured-data.tsx`
+ * was deleted in the same change rather than left unimported: two FAQPage blocks
+ * on one URL is a worse answer than none, and a second emitter nobody calls is
+ * how the first one drifted out of sight in the first place.
  *
  * These keys are already translated in all six locales, which is why the FAQ is
  * the one part of the new homepage that is not German everywhere.

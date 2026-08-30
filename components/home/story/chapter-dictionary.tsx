@@ -78,6 +78,7 @@ export async function ChapterDictionary({ locale }: { locale: Locale }) {
             pickerTitle={t('pickerTitle')}
             ctaLabel={t('cta')}
             ctaHref={`/${segment}`}
+            stageLabel={t('stage')}
           />
         </Reveal>
       </div>

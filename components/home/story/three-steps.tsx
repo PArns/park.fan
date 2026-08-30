@@ -41,7 +41,7 @@ function StepCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="border-border bg-card/60 flex flex-col overflow-hidden rounded-2xl border shadow-sm backdrop-blur-md">
+    <div className="border-border bg-card/60 flex h-full flex-col overflow-hidden rounded-2xl border shadow-sm backdrop-blur-md">
       <div className="p-5 pb-0 sm:p-6 sm:pb-0">
         <div className="mb-3 flex items-center gap-2.5">
           <span className="bg-primary/15 text-primary flex size-8 items-center justify-center rounded-[10px] text-sm font-bold">

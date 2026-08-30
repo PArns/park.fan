@@ -40,3 +40,18 @@ export async function ParkShortcutSlot({ locale }: { locale: string }) {
     />
   );
 }
+
+/**
+ * The band's box while the geo fetch is in flight.
+ *
+ * Not `null`: the featured list resolves on every normal request, so a null
+ * fallback lays the whole page out 57 px high and then pushes it down when the
+ * boundary settles. Same paddings and the same 30 px pill row as the real strip.
+ */
+export function ParkShortcutStripSkeleton() {
+  return (
+    <section className="border-border bg-muted/30 border-y px-4 py-3.5" aria-hidden="true">
+      <div className="container mx-auto flex h-[30px] items-center" />
+    </section>
+  );
+}

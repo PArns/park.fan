@@ -240,20 +240,20 @@
     "nearby": {
       "kicker": "Schritt 1 in echt",
       "title": "Freizeitparks in deiner Nähe",
-      "lead": "Standort freigeben, und park.fan sortiert nach Entfernung: für jeden Park steht sofort da, ob er heute geöffnet ist, wie voll es gerade ist und wie lange du im Schnitt anstehst.",
+      "lead": "Standort freigeben, und park.fan zeigt dir die Parks in deiner Nähe: ob sie heute geöffnet sind, wie voll es gerade ist und wie lange du im Schnitt anstehst.",
       "allParks": "Alle Parks entdecken"
     },
     "live": {
       "kicker": "Live-Wartezeiten",
       "title": "Live-Wartezeiten: was die Warteschlange gerade wirklich macht",
-      "lead": "Minütlich direkt aus dem Park, für jede Attraktion und jede Warteschlangen-Art, dazu Öffnungszeiten und Störungen. Kein Blogpost von letztem Sommer.",
-      "body": "Wir zeigen nicht nur die Zahl, sondern was sie bedeutet: 95 Minuten sind an einem Dienstag im September viel, an einem Samstag im Oktober völlig normal. Deshalb steht neben jeder Wartezeit, wie sie zum typischen Verlauf dieser Stunde passt.",
+      "lead": "Alle fünf Minuten neu abgefragt, für jede Attraktion und jede Warteschlangen-Art, dazu Öffnungszeiten und Störungen. Kein Blogpost von letztem Sommer.",
+      "body": "Wir zeigen nicht nur die Zahl, sondern was sie bedeutet: 95 Minuten sind an einem Dienstag im September viel, an einem Samstag im Oktober völlig normal. Deshalb steht auf jeder Attraktionsseite, was an diesem Wochentag typisch ist und was ein voller Tag bedeutet.",
       "ridesTitle": "Jede Attraktion hat ihre eigene Seite",
       "ridesText": "Tausende Attraktionsseiten, jede mit dem, was für diese eine Bahn gilt: Warteschlangen-Arten, Tagesverlauf aus Messung und Prognose, typische Zeiten nach Wochentag, Mindestgröße und Rope-Drop-Tipp.",
       "ridesLink": "Beispiel ansehen",
       "typicalTitle": "Attraktionsseiten",
       "ropeDropTitle": "Rope-Drop-Tipp",
-      "ropeDropText": "Gleich zur Öffnung hierhin, das spart rund 80 Minuten gegenüber dem Tagespeak.",
+      "ropeDropText": "Gleich zur Öffnung hierhin: bei den beliebten Bahnen ist die erste Stunde regelmäßig das kürzeste Fenster des Tages.",
       "howtoLink": "Wartezeiten richtig lesen: die Anleitung"
     },
     "shows": {
@@ -288,8 +288,8 @@
       },
       "p3": {
         "title": "Anreichern",
-        "text": "Dazu kommen Signale von außen: Wetterprognose, Schulferien aus 14 Ländern, Feiertage und Brückentage, Sonderveranstaltungen wie Halloween oder Saisonstart.",
-        "label": "Länder mit Ferienkalender"
+        "text": "Dazu kommen Signale von außen: Wetterprognose, Schulferien und Feiertage aus den Ländern, in denen die Parks stehen, Brückentage, dazu Sonderveranstaltungen wie Halloween oder Saisonstart.",
+        "label": "Ferien, Feiertage, Wetter"
       },
       "p4": {
         "title": "Vorhersagen",
@@ -297,7 +297,7 @@
         "label": "Tage voraus"
       },
       "feedback": "Am Tag darauf wird jede Prognose gegen die tatsächlich gemessene Wartezeit gelegt. Die Differenz geht in das nächste Training ein, und deshalb ändert sich die Kalenderfarbe für denselben Tag, je näher er rückt.",
-      "body": "Grüne Tage stehen für kurze Warteschlangen und wenig Betrieb. Orange und rot heißen: jede beliebte Attraktion kostet dich eine dreiviertel Stunde. Der Kalender rechnet dafür Ferienkalender aus 14 Ländern, Wetterprognosen, Wochentage und Sonderveranstaltungen gegen die echte Wartezeit-Historie des Parks.",
+      "body": "Grüne Tage stehen für kurze Warteschlangen und wenig Betrieb. Orange und rot heißen: jede beliebte Attraktion kostet dich eine dreiviertel Stunde. Der Kalender rechnet dafür Ferienkalender, Wetterprognosen, Wochentage und Sonderveranstaltungen gegen die echte Wartezeit-Historie des Parks.",
       "cta": "Crowd-Kalender eines Parks ansehen",
       "bestTimeLink": "Beste Reisezeit: die ruhigsten Wochentage und Monate"
     },
@@ -344,7 +344,8 @@
       "historyTitle": "Historie",
       "historyText": "Jede Attraktion hat ihre eigene Kurve, ihren eigenen Wochenrhythmus und ihre eigene Saison. Jede Messung von heute geht morgen ins Modell ein.",
       "approx": "ca.",
-      "hubLink": "Beste Reisezeit für über 200 Parks"
+      "hubLink": "Beste Reisezeit für über 200 Parks",
+      "peakAt": "Am vollsten gegen"
     },
     "inPark": {
       "kicker": "Favoriten & Karte",
@@ -361,7 +362,8 @@
       "title": "Zero-G-Roll, Immelmann, Top Hat – im Player nachfahren",
       "lead": "Das park.fan Wörterbuch erklärt die Fachbegriffe, und für Streckenfiguren gibt es den 3-D-Player: Figur wählen, abspielen, an jeden Punkt der Fahrt scrubben.",
       "pickerTitle": "Streckenfiguren",
-      "cta": "Alle Begriffe im Wörterbuch"
+      "cta": "Alle Begriffe im Wörterbuch",
+      "stage": "Figur abspielen"
     },
     "why": {
       "kicker": "Warum park.fan",
@@ -375,15 +377,15 @@
         "text": "Durchschnittsfehler und R²-Wert stehen auf dieser Seite und werden nach jedem Training neu berechnet, gut oder schlecht."
       },
       "r3": {
-        "title": "Minütlich, nicht stündlich",
-        "text": "Live-Wartezeiten kommen direkt aus dem Park. Wenn eine Bahn ausfällt, steht es hier, bevor du davorstehst."
+        "title": "Alle fünf Minuten, nicht einmal am Tag",
+        "text": "Die Wartezeiten werden alle fünf Minuten aus drei öffentlichen Quellen zusammengeführt. Wenn eine Bahn ausfällt, steht es hier, bevor du davorstehst."
       },
       "r4": {
         "title": "Kostenlos, ohne Abo, ohne Paywall",
         "text": "Alles, was park.fan über einen Park weiß, siehst du auch, ohne Konto und ohne Bezahlschranke."
       },
       "r5": {
-        "title": "Über 200 Parks, 33 Länder, 6 Sprachen",
+        "title": "Über 200 Parks, 23 Länder, 6 Sprachen",
         "text": "Von Phantasialand bis Tokyo DisneySea. Wenn es dort Warteschlangen gibt, tracken wir sie."
       },
       "r6": {
@@ -1466,7 +1468,7 @@
         "whichParksQ": "Which theme parks are supported by park.fan?",
         "whichParksA": "park.fan supports over 200 theme parks worldwide, including Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland, Bobbejaanland, and many more. You can find the complete list of all parks with live wait times on our parks overview page. We are continuously expanding our offering with additional theme parks.",
         "liveDataQ": "Are the wait times on park.fan live and in real-time?",
-        "liveDataA": "Yes! park.fan continuously updates all wait times during park operating hours. The data comes directly from the official park APIs and is synchronized in real-time. You always see the most current available wait times and can optimally plan your park visit.",
+        "liveDataA": "Yes. Every park is polled every five minutes from three public sources at once – ThemeParks.wiki, Wartezeiten.app and Queue-Times.com. Where two sources disagree, the majority decides, then the median, then the mean. The result is rounded to five minutes, because that is how the parks post them.",
         "freeQ": "Is using park.fan free?",
         "freeA": "Yes, park.fan is completely free to use. You can view all live wait times, opening hours, shows, and restaurants without registration or payment. Our goal is to provide the best possible service to every theme park visitor.",
         "favoritesQ": "Can I save my favorite parks and attractions on park.fan?",

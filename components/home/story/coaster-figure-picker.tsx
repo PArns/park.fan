@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Play } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { CoasterPlayer, type CoasterPlayerLabels } from '@/components/glossary/coaster-player';
 import { cn } from '@/lib/utils';
@@ -21,10 +21,15 @@ export interface PickableFigure {
  * Figure list plus the site's real 3-D player.
  *
  * The player is the one from the glossary (`components/glossary/coaster-player`),
- * not a second drawing of the same figures: it already code-splits three.js
- * behind an `ssr:false` dynamic import with a matching-shape skeleton, so the
- * homepage pays for the engine only once somebody scrolls here, and a figure
- * retuned in `lib/three/coaster/elements.ts` moves in both places at once.
+ * not a second drawing of the same figures, so a figure retuned in
+ * `lib/three/coaster/elements.ts` moves in both places at once.
+ *
+ * **The player is not mounted until somebody asks for it.** `next/dynamic`
+ * fetches the three.js chunk when `CoasterPlayer` MOUNTS, not when it becomes
+ * visible — an earlier version rendered it straight away and pulled the whole
+ * engine onto the most-visited page in the app, for a chapter most readers never
+ * scroll to. Same treatment `RideLayoutRail` gives it on ride pages. Until then
+ * the stage is a button of the same shape, so arming it costs no layout shift.
  *
  * Switching figures re-keys the player deliberately — the scene builds its
  * geometry from the element on mount, so a swapped prop alone would keep the
@@ -36,14 +41,18 @@ export function CoasterFigurePicker({
   pickerTitle,
   ctaLabel,
   ctaHref,
+  stageLabel,
 }: {
   figures: PickableFigure[];
   labels: CoasterPlayerLabels;
   pickerTitle: string;
   ctaLabel: string;
   ctaHref: string;
+  /** Call to action on the un-armed stage, e.g. "Figur abspielen". */
+  stageLabel: string;
 }) {
   const [active, setActive] = useState(0);
+  const [armed, setArmed] = useState(false);
   const current = figures[active];
 
   if (!current) return null;
@@ -59,7 +68,10 @@ export function CoasterFigurePicker({
             <button
               key={figure.id}
               type="button"
-              onClick={() => setActive(i)}
+              onClick={() => {
+                setActive(i);
+                setArmed(true);
+              }}
               aria-pressed={i === active}
               className={cn(
                 'rounded-xl border px-3.5 py-2.5 text-left text-sm transition-colors lg:w-full',
@@ -85,7 +97,25 @@ export function CoasterFigurePicker({
       </div>
 
       <div>
-        <CoasterPlayer key={current.element} element={current.element} labels={labels} />
+        {armed ? (
+          <CoasterPlayer key={current.element} element={current.element} labels={labels} />
+        ) : (
+          // Same box as the player's own loading shell (aspect stage + the 57 px
+          // transport row), so arming it swaps rather than grows.
+          <button
+            type="button"
+            onClick={() => setArmed(true)}
+            className="border-primary/15 bg-muted/40 hover:border-primary/40 w-full overflow-hidden rounded-xl border text-left transition-colors"
+          >
+            <span className="text-muted-foreground flex aspect-[16/10] w-full items-center justify-center gap-2 text-sm font-medium sm:aspect-[16/9]">
+              <Play className="h-4 w-4" aria-hidden="true" />
+              {stageLabel}
+            </span>
+            <span className="block border-t px-3 py-2.5">
+              <span className="block h-9" />
+            </span>
+          </button>
+        )}
         <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
           <Link
             href={current.href as '/'}

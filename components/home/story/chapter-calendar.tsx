@@ -46,7 +46,9 @@ export async function ChapterCalendar({ locale }: { locale: string }) {
       icon: CloudSun,
       title: t('p3.title'),
       text: t('p3.text'),
-      value: <span className="tabular-nums">14</span>,
+      // No figure: the holiday-country set is derived from the parks catalogue
+      // on the backend, so any number typed here drifts silently with it.
+      value: null,
       label: t('p3.label'),
     },
     {

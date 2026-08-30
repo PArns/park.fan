@@ -1,4 +1,11 @@
 import { Skeleton } from '@/components/ui/skeleton';
+import {
+  GlobalStatsHeading,
+  LiveActivityHeading,
+  PlatformStatsHeading,
+  type SectionHeadingLabels,
+} from '@/components/home/section-headings';
+import { STORY_SECTION, STORY_SECTION_TINTED } from '@/components/home/story/section-chrome';
 import { ParkCardNearbySkeleton } from '@/components/parks/park-card-nearby-skeleton';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { AttractionCardSkeleton } from '@/components/parks/attraction-card-skeleton';
@@ -61,13 +68,17 @@ function StatCardRow({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function GlobalStatsSkeleton() {
+export function GlobalStatsSkeleton({ labels }: { labels: SectionHeadingLabels }) {
   return (
     <>
       {/* Global Stats */}
-      <section className="bg-muted/30 px-4 py-12">
+      <section className={STORY_SECTION_TINTED}>
         <div className="container mx-auto">
-          <SectionHeaderSkeleton />
+          {/* The REAL heading, not blocks shaped like one. It needs no data, and
+              since it became a `ChapterHeading` tile its height moves with how
+              the title and hint wrap — per locale, per breakpoint. A sized
+              placeholder cannot follow that; this node follows it by being it. */}
+          <GlobalStatsHeading labels={labels} />
           {/* Row 1: two stat cards */}
           <div className="mb-4 grid gap-4 sm:grid-cols-2">
             <StatsCardSkeleton />
@@ -99,9 +110,9 @@ export function GlobalStatsSkeleton() {
       </section>
 
       {/* Platform Statistics */}
-      <section className="px-4 py-12">
+      <section className={STORY_SECTION}>
         <div className="container mx-auto">
-          <SectionHeaderSkeleton />
+          <PlatformStatsHeading labels={labels} />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <StatsCardSkeleton />
             <StatsCardSkeleton />
@@ -178,11 +189,11 @@ export function MLStatsSkeleton() {
   );
 }
 
-export function LiveActivitySkeleton() {
+export function LiveActivitySkeleton({ labels }: { labels: SectionHeadingLabels }) {
   return (
-    <section className="px-4 py-12">
+    <section className={STORY_SECTION_TINTED}>
       <div className="container mx-auto">
-        <SectionHeaderSkeleton />
+        <LiveActivityHeading labels={labels} />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {Array.from({ length: 6 }).map((_, i) => (
             <Card key={i} className="bg-muted/50">

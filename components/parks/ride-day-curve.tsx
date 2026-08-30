@@ -1,4 +1,18 @@
 import { cn } from '@/lib/utils';
+import {
+  axisHours as axisHoursOf,
+  bandPath as buildBandPath,
+  linePath as buildLinePath,
+  makeScales,
+  niceMax,
+  peakOf,
+  PAD_L,
+  PAD_R,
+  PAD_T,
+  PAD_B,
+  VIEW_H,
+  VIEW_W,
+} from '@/lib/utils/ride-day-curve-geometry';
 
 export interface DayCurveWindow {
   /** Label above the window, e.g. "Rope Drop". */
@@ -47,23 +61,10 @@ export interface RideDayCurveProps {
     /** Shown when it is not: the median-to-busy half. */
     bandUpperOnly: string;
     minutes: string;
+    /** Screen-reader only: "busiest around" — prefixes the peak in the summary. */
+    peakAt: string;
   };
   className?: string;
-}
-
-const VIEW_W = 720;
-const VIEW_H = 260;
-const PAD_L = 8;
-const PAD_R = 8;
-const PAD_T = 12;
-const PAD_B = 8;
-
-/** Round a max up to a friendly gridline so the axis labels are readable numbers. */
-function niceMax(value: number): number {
-  if (value <= 20) return 20;
-  if (value <= 50) return 50;
-  if (value <= 100) return 100;
-  return Math.ceil(value / 50) * 50;
 }
 
 /**
@@ -80,9 +81,19 @@ function niceMax(value: number): number {
  * without buying a 53 KB attraction response for one line.
  *
  * Geometry notes that are load-bearing:
- * - `preserveAspectRatio="none"` is deliberately NOT used. The curve is read for
- *   shape, and a non-uniform scale makes the same day look flat at one width and
- *   dramatic at another.
+ * - The box is given the viewBox's own ratio (`aspect-[720/260]`) rather than a
+ *   fixed height. `preserveAspectRatio` then has nothing to correct: with a
+ *   fixed `h-[200px]` the 720×260 viewBox letterboxed to 107 px of drawing
+ *   inside a 200 px box on a 360 px phone, and `preserveAspectRatio="none"` is
+ *   not the fix either — the curve is read for shape, and a non-uniform scale
+ *   makes the same day look flat at one width and dramatic at another. An
+ *   aspect ratio is also still deterministic from the width, so it costs no CLS.
+ * - Both axes are HTML positioned at the SVG's own coordinates, not `<text>` and
+ *   not `justify-between`. In-SVG text scales with the viewBox and rendered at
+ *   ~4.5 px on a phone; `justify-between` spaces labels evenly while `x()` places
+ *   hours linearly, so every intermediate tick pointed at the wrong column
+ *   whenever the tick hours were not equally spaced (a 09–20 day ticks
+ *   09/12/15/18/20 — the last gap is two hours, the others three).
  * - Gaps (`null`) break the path instead of interpolating across them. A ride
  *   that reported nothing between 13:00 and 15:00 has no median there, and a
  *   straight line over the hole is an invented measurement.
@@ -101,62 +112,13 @@ export function RideDayCurve({
 }: RideDayCurveProps) {
   if (hours.length < 2) return null;
 
-  const firstHour = hours[0];
-  const lastHour = hours[hours.length - 1];
-  const span = lastHour - firstHour || 1;
-
   const hasLowerEdge = Array.isArray(p25) && p25.some((v) => v != null);
   const values = [...p50, ...p90, ...(p25 ?? []), ...(today?.map((d) => d.waitTime) ?? [])].filter(
     (v): v is number => typeof v === 'number'
   );
   if (values.length === 0) return null;
   const yMax = niceMax(Math.max(...values));
-
-  const x = (hour: number) => PAD_L + ((hour - firstHour) / span) * (VIEW_W - PAD_L - PAD_R);
-  const y = (value: number) => PAD_T + (1 - value / yMax) * (VIEW_H - PAD_T - PAD_B);
-
-  /** Path for one positional series, broken at every gap. */
-  const linePath = (series: Array<number | null>) => {
-    let d = '';
-    let open = false;
-    series.forEach((value, i) => {
-      if (value == null || hours[i] == null) {
-        open = false;
-        return;
-      }
-      d += `${open ? 'L' : 'M'}${x(hours[i]).toFixed(1)},${y(value).toFixed(1)} `;
-      open = true;
-    });
-    return d.trim();
-  };
-
-  /**
-   * The filled band. Built per contiguous run so a gap opens a hole rather than
-   * closing the polygon across it.
-   */
-  const bandPath = () => {
-    const lower = hasLowerEdge ? (p25 as Array<number | null>) : p50;
-    let d = '';
-    let run: number[] = [];
-    const flush = () => {
-      if (run.length < 2) {
-        run = [];
-        return;
-      }
-      const top = run.map((i) => `${x(hours[i]).toFixed(1)},${y(p90[i] as number).toFixed(1)}`);
-      const bottom = [...run]
-        .reverse()
-        .map((i) => `${x(hours[i]).toFixed(1)},${y(lower[i] as number).toFixed(1)}`);
-      d += `M${top.join('L')}L${bottom.join('L')}Z `;
-      run = [];
-    };
-    hours.forEach((_, i) => {
-      if (p90[i] == null || lower[i] == null) flush();
-      else run.push(i);
-    });
-    flush();
-    return d.trim();
-  };
+  const { firstHour, lastHour, x, y } = makeScales(hours, yMax);
 
   const todayPath = () => {
     const points = (today ?? [])
@@ -171,12 +133,28 @@ export function RideDayCurve({
   };
   const todayLine = todayPath();
 
+  /**
+   * What the chart says, for somebody who cannot see it.
+   *
+   * `role="img"` hides the whole subtree, so without this the figure is a blank
+   * to a screen reader — and the old label was the title plus a possibly-absent
+   * subtitle, which described the card rather than the curve. The peak and the
+   * marked windows are the two things a sighted reader takes away, so they are
+   * what the label says.
+   */
+  const peak = peakOf(hours, p50);
+  const ariaLabel = [
+    title,
+    subtitle,
+    peak &&
+      `${labels.peakAt} ${String(peak.hour).padStart(2, '0')}:00, ${peak.value} ${labels.minutes}`,
+    ...windows.map((w) => `${w.label}: ${w.detail}`),
+  ]
+    .filter(Boolean)
+    .join('. ');
+
   const gridValues = [yMax, yMax / 2];
-  const axisHours = [
-    firstHour,
-    ...hours.filter((h) => h !== firstHour && h !== lastHour && (h - firstHour) % 3 === 0),
-    lastHour,
-  ];
+  const ticks = axisHoursOf(hours);
 
   return (
     <figure className={cn('border-border bg-card/55 m-0 rounded-2xl border p-4 sm:p-5', className)}>
@@ -206,9 +184,9 @@ export function RideDayCurve({
       <div className="relative">
         <svg
           viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
-          className="h-[200px] w-full sm:h-[260px]"
+          className="aspect-[720/260] w-full"
           role="img"
-          aria-label={`${title}. ${subtitle ?? ''}`}
+          aria-label={ariaLabel}
         >
           {/* Gridlines, drawn under everything. */}
           {gridValues.map((v) => (
@@ -223,14 +201,6 @@ export function RideDayCurve({
                 strokeDasharray="4 5"
                 strokeWidth={1}
               />
-              <text
-                x={PAD_L + 2}
-                y={y(v) - 4}
-                className="fill-muted-foreground text-[11px]"
-                style={{ fontVariantNumeric: 'tabular-nums' }}
-              >
-                {Math.round(v)} {labels.minutes}
-              </text>
             </g>
           ))}
 
@@ -249,9 +219,12 @@ export function RideDayCurve({
             />
           ))}
 
-          <path d={bandPath()} className="fill-primary/20" />
           <path
-            d={linePath(p50)}
+            d={buildBandPath(hours, hasLowerEdge ? (p25 as Array<number | null>) : p50, p90, x, y)}
+            className="fill-primary/20"
+          />
+          <path
+            d={buildLinePath(hours, p50, x, y)}
             fill="none"
             className="stroke-primary"
             strokeWidth={2.5}
@@ -282,14 +255,46 @@ export function RideDayCurve({
           )}
         </svg>
 
-        {/* Hour axis. Out of the SVG so the labels never scale with the viewBox. */}
-        <div
-          className="text-muted-foreground mt-1 flex justify-between text-[11px] tabular-nums"
-          aria-hidden="true"
-        >
-          {axisHours.map((h) => (
-            <span key={h}>{String(h).padStart(2, '0')}:00</span>
-          ))}
+        {/* Y labels, over the SVG at the gridlines' own y. HTML rather than
+            `<text>`, so 11 px stays 11 px at every width. */}
+        {gridValues.map((v) => (
+          <span
+            key={v}
+            aria-hidden="true"
+            className="text-muted-foreground absolute text-[11px] tabular-nums"
+            style={{
+              left: `${((PAD_L + 2) / VIEW_W) * 100}%`,
+              top: `${(y(v) / VIEW_H) * 100}%`,
+              transform: 'translateY(-100%)',
+            }}
+          >
+            {Math.round(v)} {labels.minutes}
+          </span>
+        ))}
+
+        {/* Hour axis, each label centred on the x the curve actually uses. */}
+        <div className="relative mt-1 h-4" aria-hidden="true">
+          {ticks.map((h) => {
+            const pct = (x(h) / VIEW_W) * 100;
+            // The end labels are pinned rather than centred: a centred label at
+            // 1 % or 99 % hangs outside the card and is clipped by its padding.
+            const edge = pct < 6 ? 'start' : pct > 94 ? 'end' : 'mid';
+            return (
+              <span
+                key={h}
+                className="text-muted-foreground absolute text-[11px] tabular-nums"
+                style={
+                  edge === 'start'
+                    ? { left: 0 }
+                    : edge === 'end'
+                      ? { right: 0 }
+                      : { left: `${pct}%`, transform: 'translateX(-50%)' }
+                }
+              >
+                {String(h).padStart(2, '0')}:00
+              </span>
+            );
+          })}
         </div>
       </div>
 

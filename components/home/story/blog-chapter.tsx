@@ -27,7 +27,13 @@ export async function BlogChapter({
   locale: Locale;
   children: React.ReactNode;
 }) {
-  const t = await getTranslations('homeStory.blog');
+  // `variant="bare"` drops LatestBlogSection's own BlogSectionHeader, and with
+  // it the homepage's only body link to the blog index — the hub would otherwise
+  // be reachable from the chrome alone. It moves onto the chapter heading.
+  const [t, tBlog] = await Promise.all([
+    getTranslations('homeStory.blog'),
+    getTranslations('blog'),
+  ]);
 
   return (
     <section className="border-border border-t px-4 py-16 sm:py-18">
@@ -39,6 +45,16 @@ export async function BlogChapter({
             kicker={t('kicker')}
             title={t('title')}
             hint={t('lead')}
+            action={
+              <Link
+                href="/blog"
+                prefetch={false}
+                className="text-primary inline-flex items-center gap-1.5 text-sm font-semibold hover:underline"
+              >
+                {tBlog('home.viewAll')}
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            }
             id="blog"
           />
         </Reveal>

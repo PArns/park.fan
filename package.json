@@ -35,6 +35,7 @@
     "test:calendar-month": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-calendar-month.mjs",
     "test:holiday-names": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-holiday-names.mjs",
     "test:weather-chart-axis": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-weather-chart-axis.mjs",
+    "test:ride-day-curve": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-ride-day-curve.mjs",
     "test:opening-hours-schema": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-opening-hours-schema.mjs",
     "test:coordinates": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-coordinates.mjs",
     "test:park-phrase": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-phrase.mjs",

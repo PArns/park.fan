@@ -1,4 +1,4 @@
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import { CalendarRange, Drama, FerrisWheel, Utensils } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Reveal } from '@/components/marketing/scroll-reveal';
@@ -17,8 +17,9 @@ import { catchNonFatal } from '@/lib/api/client';
  * park adds thirty restaurants.
  */
 export async function ChapterShowsRestaurants() {
-  const [t, stats] = await Promise.all([
+  const [t, locale, stats] = await Promise.all([
     getTranslations('homeStory.shows'),
+    getLocale(),
     catchNonFatal(getGlobalStats()),
   ]);
 
@@ -57,7 +58,9 @@ export async function ChapterShowsRestaurants() {
                     <Icon className="h-4.5 w-4.5" aria-hidden="true" />
                   </span>
                   <div className="min-w-0">
-                    <div className="text-xl font-bold tabular-nums">{value.toLocaleString()}</div>
+                    <div className="text-xl font-bold tabular-nums">
+                      {value.toLocaleString(locale)}
+                    </div>
                     <div className="text-muted-foreground truncate text-xs">{label}</div>
                   </div>
                 </div>

@@ -2,80 +2,41 @@
 
 import { useTranslations } from 'next-intl';
 import { Skeleton } from '@/components/ui/skeleton';
+import { cn } from '@/lib/utils';
 import { useParkHourlyProfile } from '@/lib/hooks/use-park-hourly-profile';
 import { RideDayCurve, type DayCurveWindow } from '@/components/parks/ride-day-curve';
+import { roundWaitTo5 } from '@/lib/utils/wait-time';
+import { quietWindows } from '@/lib/utils/ride-day-curve-geometry';
 import type { HourlyProfileAttraction } from '@/lib/api/types';
 
 /**
- * A quiet hour is one whose median sits at or under this share of the ride's own
- * peak hour.
+ * The chart's quiet windows, labelled.
  *
- * Relative to the ride, never an absolute number of minutes: 25 minutes is a
- * quiet hour on a headliner and the busiest hour of the day on a carousel, and
- * one threshold in minutes would mark the whole day quiet on half a park's
- * catalogue and none of it on the other half.
+ * The geometry — which hours count as quiet, where the two runs start and end,
+ * what each run averages — lives in `lib/utils/ride-day-curve-geometry.ts` and
+ * is covered by `pnpm test:ride-day-curve`. What is left here is the part that
+ * is i18n rather than maths: a time range, a rounded wait and a label.
  */
-const QUIET_RATIO = 0.55;
-
-/**
- * The two windows the chart highlights: the quiet run the day opens with, and
- * the quiet run it ends with.
- *
- * Derived from the median curve rather than from `ropeDrop`, deliberately. The
- * curve is what a reader is looking at, so a marked window that came from a
- * different computation would sooner or later contradict the line it sits on —
- * a rope-drop badge saying "ride within 45 minutes" over a curve that is still
- * climbing at 11:00. Both windows are simply where this curve is low.
- *
- * Either can be absent, and that is a real answer: a ride that is busy from
- * opening has no morning window, and one that never calms down has neither.
- */
-function quietWindows(
+function labelledWindows(
   hours: number[],
   p50: Array<number | null>,
   labels: { ropeDrop: string; lastRound: string; approx: string; minutes: string }
 ): DayCurveWindow[] {
-  const known = p50
-    .map((v, i) => ({ hour: hours[i], value: v }))
-    .filter((e): e is { hour: number; value: number } => e.value != null);
-  if (known.length < 3) return [];
-
-  const peak = Math.max(...known.map((e) => e.value));
-  if (peak <= 0) return [];
-  const quiet = (v: number) => v <= peak * QUIET_RATIO;
-
-  const windows: DayCurveWindow[] = [];
-
-  // Leading run.
-  let lead = 0;
-  while (lead < known.length && quiet(known[lead].value)) lead++;
-  if (lead >= 2) {
-    const slice = known.slice(0, lead);
-    const avg = Math.round(slice.reduce((s, e) => s + e.value, 0) / slice.length);
-    windows.push({
-      label: labels.ropeDrop,
-      detail: `${fmt(slice[0].hour)}–${fmt(slice[slice.length - 1].hour + 1)} · ${labels.approx} ${avg} ${labels.minutes}`,
-      fromHour: slice[0].hour,
-      toHour: slice[slice.length - 1].hour + 1,
-    });
-  }
-
-  // Trailing run — never allowed to overlap the leading one.
-  let tail = known.length - 1;
-  while (tail >= 0 && quiet(known[tail].value)) tail--;
-  const tailStart = tail + 1;
-  if (known.length - tailStart >= 2 && tailStart > lead) {
-    const slice = known.slice(tailStart);
-    const avg = Math.round(slice.reduce((s, e) => s + e.value, 0) / slice.length);
-    windows.push({
-      label: labels.lastRound,
-      detail: `${labels.approx} ${fmt(slice[0].hour)} · ${avg} ${labels.minutes}`,
-      fromHour: slice[0].hour,
-      toHour: slice[slice.length - 1].hour + 1,
-    });
-  }
-
-  return windows;
+  return quietWindows(hours, p50).map((w) => {
+    // Parks post wait times in fives and every surface here renders them that
+    // way; an average over the median curve is exactly the arithmetic that
+    // breaks it, so it is rounded back on the way out.
+    const wait = `${roundWaitTo5(w.averageWait)} ${labels.minutes}`;
+    return {
+      label: w.which === 'opening' ? labels.ropeDrop : labels.lastRound,
+      detail:
+        w.which === 'opening'
+          ? `${fmt(w.fromHour)}\u2013${fmt(w.toHour)} \u00b7 ${labels.approx} ${wait}`
+          : `${labels.approx} ${fmt(w.fromHour)} \u00b7 ${wait}`,
+      fromHour: w.fromHour,
+      toHour: w.toHour,
+    };
+  });
 }
 
 function fmt(hour: number): string {
@@ -131,19 +92,23 @@ export function RideDayCurveCard({
   });
 
   if (isPending) {
+    // A `<figure>`, not a `<div>`: a first-paint/settled diff pairs children by
+    // tag once their classes differ, so a div standing in for the figure reports
+    // the whole card as an insertion rather than a swap. Same padding, same
+    // aspect box, same window row — the outcome most rides actually get.
     return (
-      <div className={className}>
-        <div className="border-border bg-card/55 rounded-2xl border p-4 sm:p-5">
-          <Skeleton className="h-6 w-56" />
-          <Skeleton className="mt-2 h-3 w-40" />
-          <Skeleton className="mt-4 h-[200px] w-full sm:h-[260px]" />
-          <Skeleton className="mt-1 h-3 w-full" />
-          <div className="mt-4 grid gap-3 sm:grid-cols-2">
-            <Skeleton className="h-[62px]" />
-            <Skeleton className="h-[62px]" />
-          </div>
+      <figure
+        className={cn('border-border bg-card/55 m-0 rounded-2xl border p-4 sm:p-5', className)}
+      >
+        <Skeleton className="h-6 w-56" />
+        <Skeleton className="mt-2 h-3 w-40" />
+        <Skeleton className="mt-4 aspect-[720/260] w-full" />
+        <Skeleton className="mt-1 h-4 w-full" />
+        <div className="mt-4 grid gap-3 sm:grid-cols-2">
+          <Skeleton className="h-[62px]" />
+          <Skeleton className="h-[62px]" />
         </div>
-      </div>
+      </figure>
     );
   }
 
@@ -154,7 +119,7 @@ export function RideDayCurveCard({
     : data.attractions[0];
   if (!ride) return null;
 
-  const windows = quietWindows(data.hours, ride.p50, {
+  const windows = labelledWindows(data.hours, ride.p50, {
     ropeDrop: t('ropeDrop'),
     lastRound: t('lastRound'),
     approx: t('approx'),
@@ -162,24 +127,24 @@ export function RideDayCurveCard({
   });
 
   return (
-    <div className={className}>
-      <RideDayCurve
-        title={ride.attractionName}
-        subtitle={t('chartSubtitle', { days: ride.sampleDays })}
-        hours={data.hours}
-        p25={ride.p25 ?? null}
-        p50={ride.p50}
-        p90={ride.p90}
-        today={today}
-        windows={windows}
-        labels={{
-          today: t('legendToday'),
-          median: t('legendMedian'),
-          band: t('legendBand'),
-          bandUpperOnly: t('legendBandUpper'),
-          minutes: tOverview('minutesUnit'),
-        }}
-      />
-    </div>
+    <RideDayCurve
+      className={className}
+      title={ride.attractionName}
+      subtitle={t('chartSubtitle', { days: ride.sampleDays })}
+      hours={data.hours}
+      p25={ride.p25 ?? null}
+      p50={ride.p50}
+      p90={ride.p90}
+      today={today}
+      windows={windows}
+      labels={{
+        today: t('legendToday'),
+        median: t('legendMedian'),
+        band: t('legendBand'),
+        bandUpperOnly: t('legendBandUpper'),
+        peakAt: t('peakAt'),
+        minutes: tOverview('minutesUnit'),
+      }}
+    />
   );
 }
