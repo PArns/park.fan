@@ -51,7 +51,7 @@ const websiteId = (locale: string) => `${SITE_URL}/${locale}/#website`;
 
 /*
  * A reference to a node another `<script type="application/ld+json">` on this page describes in
- * full — and the reason every one of them below carries a `@type` it does not strictly need.
+ * full — and the reason most of them below carry a `@type` they do not strictly need.
  *
  * `{'@id': …}` on its own is correct JSON-LD and resolves against whatever graph the consumer
  * happens to have merged. Inside one `@graph` that is the document itself and the reference is
@@ -724,7 +724,7 @@ export function ParkSubPageStructuredData({
             // below is two lines down, in this same `@graph`.
             about: { '@id': parkUrl },
           },
-          // A three-property stub for the thing `about` points at.
+          // The stub for the thing `about` points at.
           //
           // `@id` on its own is a cross-document reference: correct JSON-LD, and worth nothing to
           // a consumer reading this page without also fetching and merging the park page. The
@@ -765,8 +765,8 @@ export function ParkSubPageStructuredData({
  * the whole of what Search Console reported as „Ungültiger Objekttyp für Feld spatialCoverage":
  * the park stub the reference was written against lives in `ParkSubPageStructuredData`'s
  * `@graph`, one `<script>` over, so the value Google typed was `{'@id': …}` and nothing else.
- * `spatialCoverage` also carries the park's name, since it is the one field here a consumer is
- * asked to *render* rather than follow, and a coverage area with no name is not worth listing.
+ * `spatialCoverage` also carries the park's name, because it is the one reference here a
+ * consumer renders rather than follows.
  */
 export function ParkCalendarDatasetStructuredData({
   url,
@@ -781,7 +781,7 @@ export function ParkCalendarDatasetStructuredData({
   url: string;
   /** The park page's URL, which is the `@id` of its `AmusementPark` node. */
   parkUrl: string;
-  /** Names `spatialCoverage` — an area a reader can see is better than an id they must follow. */
+  /** Names `spatialCoverage`, the one reference here a consumer renders rather than follows. */
   parkName: string;
   /** The dataset's own name — the park and the month, not the park alone. */
   name: string;
