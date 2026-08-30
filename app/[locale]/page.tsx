@@ -2,14 +2,10 @@ import { Suspense } from 'react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
-import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/config';
-import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
-import { Clock, TrendingUp, Map as MapIcon, BookOpen, Sparkles } from 'lucide-react';
 
 import nextDynamic from 'next/dynamic';
 import { HeroBackground } from '@/components/layout/hero-background';
-import { HomepageFAQStructuredData } from '@/components/seo/homepage-faq-structured-data';
 import { PreferredSourcePrompt } from '@/components/common/preferred-source-prompt';
 import { NearbyParksCardSkeleton } from '@/components/parks/nearby-parks-card-skeleton';
 import { FavoritesEmptyState } from '@/components/parks/favorites-empty-state';
@@ -37,7 +33,6 @@ const NearbyParksCard = nextDynamic(
 );
 import { AnnounceSection } from '@/components/home/announce-section';
 import { HottestParksSection } from '@/components/home/hottest-parks-section';
-import { MLStatsSection } from '@/components/home/ml-stats-section';
 import { HeroImageInfoSwitch } from '@/components/layout/hero-image-info-switch';
 import { HeroImageInfo } from '@/components/layout/hero-image-info';
 import { HeroRotationProvider } from '@/components/layout/hero-rotation-context';
@@ -55,14 +50,30 @@ import { LiveActivitySection } from '@/components/home/live-activity-section';
 import {
   GlobalStatsSkeleton,
   FeaturedParksSkeleton,
-  MLStatsSkeleton,
   LiveActivitySkeleton,
 } from '@/components/home/home-skeletons';
 import { LatestBlogSection } from '@/components/home/latest-blog-section';
-import { BlogHeroPreview } from '@/components/home/blog-hero-preview';
+
+// The homepage story — "what is park.fan", chapter by chapter. Every one of these
+// is a Server Component whose copy is read server-side, so ~2 500 words of German
+// explanation never reach the client bundle (see the routed-translations rule).
+import { ParkShortcutSlot } from '@/components/home/story/park-shortcut-slot';
+import { ThreeSteps } from '@/components/home/story/three-steps';
+import { NearbyChapter } from '@/components/home/story/nearby-chapter';
+import { ChapterLiveWaits } from '@/components/home/story/chapter-live-waits';
+import { ChapterAI } from '@/components/home/story/chapter-ai';
+import { ChapterCalendar } from '@/components/home/story/chapter-calendar';
+import { ChapterBestTime } from '@/components/home/story/chapter-best-time';
+import { ChapterShowsRestaurants } from '@/components/home/story/chapter-shows-restaurants';
+import { ChapterInPark } from '@/components/home/story/chapter-in-park';
+import { ChapterDictionary } from '@/components/home/story/chapter-dictionary';
+import { WhyParkFan } from '@/components/home/story/why-park-fan';
+import { FounderSection } from '@/components/home/story/founder-section';
+import { FaqSection } from '@/components/home/story/faq-section';
+import { BlogChapter } from '@/components/home/story/blog-chapter';
+import { ContributeBand } from '@/components/home/story/contribute-band';
 
 import { getOgImageUrl } from '@/lib/utils/og-image';
-import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { pickHeroImage } from '@/lib/media/hero';
 import { heroBlurDataUrl } from '@/lib/media/hero-lqip';
 import { getMediaAltBySrc } from '@/lib/media/text';
@@ -149,7 +160,6 @@ export default async function HomePage({ params }: HomePageProps) {
   return (
     <RouteMessages route="/">
       <div className="flex flex-col">
-        <HomepageFAQStructuredData />
         {/* Hero Section – live-numbers headline + in-place search on the left, world-map panel on
           the right (xl+ only), nearby-park bubbles below. When the user is in a park (nearby),
           the headline switches to "Willkommen im [Park]" + park info. */}
@@ -226,13 +236,12 @@ export default async function HomePage({ params }: HomePageProps) {
           </HeroRotationProvider>
         </section>
 
-        {/* "From the blog" strip — the first thing under the hero, across the full container
-          width. The full LatestBlogSection still renders further down the page. */}
-        <section className="px-6 pt-8">
-          <div className="container mx-auto">
-            <BlogHeroPreview locale={locale as Locale} />
-          </div>
-        </section>
+        {/* Returning visitors first: one row of park links before the page
+          argues anything. Shares its live overlay with the featured grid below
+          (same region set → one React Query entry), so it costs no request. */}
+        <Suspense fallback={null}>
+          <ParkShortcutSlot locale={locale} />
+        </Suspense>
 
         {/* Announcement Section */}
         <div className="pk-reveal">
@@ -248,138 +257,71 @@ export default async function HomePage({ params }: HomePageProps) {
         {/* Location banner: not for snippet/indexing (data-nosnippet); show when user has not granted location */}
         <LocationBanner />
 
-        {/* Nearby / In-Park – primary focus: nearest open park or quick park navigation when in park.
-          No top padding so the (full-bleed) in-park banner sits flush under the hero. */}
-        <section className="px-4 pb-8">
-          <div className="container mx-auto">
-            <NearbyParksCard />
-          </div>
-        </section>
+        {/* ── The story ──────────────────────────────────────────────────────
+          A first visitor arrives not knowing what this site is, so the page
+          answers that before it shows them anything to operate: three steps,
+          then one chapter per thing park.fan does, then why it is built the way
+          it is, then the proof, then the person.
 
-        {/* Favorites Section */}
+          The order inside the chapters is by what a stranger needs, not by what
+          was easiest to build: live wait times (the daily use), then the
+          forecast (the one thing almost nobody else attempts), then the
+          calendar and the day curve that plan a visit around it.
+
+          Tinted and untinted bands alternate the whole way down. Two tinted
+          sections in a row read as one long section with a rule through it. */}
+        <ThreeSteps />
+
+        {/* Step 1, made real: the visitor's own nearest parks, then their own
+          favourites. Both are Client Components that decide late (geolocation,
+          a cookie) — hence the dynamic imports at the top of this file and the
+          box-reserving fallbacks. */}
+        <NearbyChapter>
+          <NearbyParksCard />
+        </NearbyChapter>
         <FavoritesSection />
 
-        {/* Latest Blog Posts */}
-        <LatestBlogSection locale={locale as Locale} />
+        <ChapterLiveWaits locale={locale} />
+        <ChapterAI />
+        <ChapterCalendar locale={locale} />
+        <ChapterBestTime locale={locale} />
+        <ChapterShowsRestaurants />
+        <ChapterInPark />
+        <ChapterDictionary locale={locale as Locale} />
+
+        {/* The claim, then the evidence. `GlobalStatsSection` is the platform's
+          own live counters, so it belongs directly under the six reasons rather
+          than between the founder and the blog, where it used to sit. */}
+        <WhyParkFan locale={locale as Locale} />
+        <Suspense fallback={<GlobalStatsSkeleton />}>
+          <GlobalStatsSection />
+        </Suspense>
+
+        <FounderSection />
 
         {/* Featured Parks – locale-aware, direct park links for SEO (SSR seed + client live data) */}
         <Suspense fallback={<FeaturedParksSkeleton />}>
           <FeaturedParksSlot locale={locale} />
         </Suspense>
 
-        {/* Global Stats + Platform Statistics (single getGlobalStats fetch) */}
-        <Suspense fallback={<GlobalStatsSkeleton />}>
-          <GlobalStatsSection />
-        </Suspense>
-
-        {/* ML / AI Stats — no pk-reveal: its cards are GlassCards, and the reveal's transform
-          would flatten their backdrop for the length of the entry range. */}
-        <Suspense fallback={<MLStatsSkeleton />}>
-          <MLStatsSection linkToFancast />
-        </Suspense>
-
-        {/* Live Activity - Parks Open Now — no pk-reveal, same reason as ML stats above. */}
+        {/* Live Activity - Parks Open Now — no pk-reveal: its cards are GlassCards, and the
+          reveal's transform would flatten their backdrop for the length of the entry range. */}
         <Suspense fallback={<LiveActivitySkeleton />}>
           <LiveActivitySection />
         </Suspense>
 
-        {/* Features Section */}
-        <section className="pk-reveal bg-muted/30 px-4 py-16">
-          <div className="container mx-auto">
-            <div className="mb-2 flex items-center gap-2">
-              <Sparkles className="text-primary h-5 w-5" />
-              <h2 className="text-xl font-bold">
-                <GlossaryInject>{tHome('sections.plan')}</GlossaryInject>
-              </h2>
-            </div>
-            <p className="text-muted-foreground mb-12 text-sm leading-relaxed">
-              <GlossaryInject>{tHome('sections.featuresIntro')}</GlossaryInject>
-            </p>
-            <div className="grid gap-8 md:grid-cols-3">
-              <div className="text-center">
-                <div className="bg-crowd-very-low/20 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
-                  <Clock className="text-crowd-very-low h-8 w-8" />
-                </div>
-                <h3 className="mb-2 text-lg font-semibold">
-                  <GlossaryInject>{tHome('features.realtime.title')}</GlossaryInject>
-                </h3>
-                <p className="text-muted-foreground text-sm">
-                  <GlossaryInject>{tHome('features.realtime.description')}</GlossaryInject>
-                </p>
-              </div>
-              <div className="text-center">
-                <div className="bg-park-primary/20 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
-                  <TrendingUp className="text-park-primary h-8 w-8" />
-                </div>
-                <h3 className="mb-2 text-lg font-semibold">
-                  <GlossaryInject>{tHome('features.ml.title')}</GlossaryInject>
-                </h3>
-                <p className="text-muted-foreground text-sm">
-                  <GlossaryInject>{tHome('features.ml.description')}</GlossaryInject>
-                </p>
-              </div>
-              <div className="text-center">
-                <div className="bg-crowd-moderate/20 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
-                  <MapIcon className="text-crowd-moderate h-8 w-8" />
-                </div>
-                <h3 className="mb-2 text-lg font-semibold">
-                  <GlossaryInject>{tHome('features.calendar.title')}</GlossaryInject>
-                </h3>
-                <p className="text-muted-foreground text-sm">
-                  <GlossaryInject>{tHome('features.calendar.description')}</GlossaryInject>
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Latest Blog Posts, inside the story's chapter frame — the frame adds
+          the two evergreen hubs (best travel time, dictionary) that a reader who
+          got this far is most likely to open next. */}
+        <BlogChapter locale={locale as Locale}>
+          <LatestBlogSection locale={locale as Locale} variant="bare" />
+        </BlogChapter>
 
-        {/* About Section – editorial content for SEO word count */}
-        <section className="px-4 py-16">
-          <div className="container mx-auto">
-            <div className="mb-6 flex items-center gap-2">
-              <BookOpen className="text-primary h-5 w-5" />
-              <h2 className="text-xl font-bold">{tHome('about.title')}</h2>
-            </div>
-            <p className="text-muted-foreground mb-4 leading-relaxed">
-              <GlossaryInject>{tHome('about.p1')}</GlossaryInject>
-            </p>
-            <p className="text-muted-foreground mb-10 leading-relaxed">
-              <GlossaryInject>{tHome('about.p2')}</GlossaryInject>
-            </p>
+        {/* The page's only FAQPage markup — FaqSection renders the questions and
+          the JSON-LD from one array. */}
+        <FaqSection />
 
-            <h3 className="mb-4 text-xl font-semibold">{tHome('about.coverageTitle')}</h3>
-            <p className="text-muted-foreground mb-10 leading-relaxed">
-              <GlossaryInject>{tHome('about.p3')}</GlossaryInject>
-            </p>
-
-            <h3 className="mb-4 text-xl font-semibold">{tHome('about.howTitle')}</h3>
-            <p className="text-muted-foreground mb-4 leading-relaxed">
-              <GlossaryInject>{tHome('about.p4')}</GlossaryInject>
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              <GlossaryInject>{tHome('about.p5')}</GlossaryInject>
-            </p>
-
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href={`/${HOWTO_SEGMENTS[locale as Locale]}`}
-                prefetch={false}
-                className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold shadow-sm transition-colors"
-              >
-                <BookOpen className="h-4 w-4" />
-                {tHome('about.howtoLink')}
-              </Link>
-              <Link
-                href="/fancast"
-                prefetch={false}
-                className="border-primary/40 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-semibold transition-colors"
-              >
-                <Sparkles className="h-4 w-4" />
-                {tHome('about.fancastLink')}
-              </Link>
-            </div>
-          </div>
-        </section>
+        <ContributeBand />
 
         {/* Soft "make park.fan your preferred Google source" prompt — end of the page,
           once the visitor has seen what the site offers. The footer keeps the

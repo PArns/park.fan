@@ -2,6 +2,7 @@ import { getTranslations, getLocale } from 'next-intl/server';
 import { BarChart3, Database } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { StatsCard } from '@/components/common/stats-card';
+import { ChapterHeading } from '@/components/common/chapter-heading';
 import { CompactNumberWithTooltip } from '@/components/common/compact-number-with-tooltip';
 import { GlobalStatsLiveCounts } from '@/components/home/global-stats-live-counts';
 import { ParkCard } from '@/components/parks/park-card';
@@ -28,10 +29,11 @@ import {
  * pending the homepage <Suspense> shows its skeleton; on error the section is omitted.
  */
 export async function GlobalStatsSection() {
-  const [t, tCommon, tGeo, locale] = await Promise.all([
+  const [t, tCommon, tGeo, tStory, locale] = await Promise.all([
     getTranslations('stats'),
     getTranslations('common'),
     getTranslations('geo'),
+    getTranslations('homeStory'),
     getLocale(),
   ]);
   const stats = await catchNonFatal(getGlobalStats());
@@ -42,13 +44,18 @@ export async function GlobalStatsSection() {
   return (
     <>
       {/* Global Stats */}
-      <section className="bg-muted/30 px-4 py-12">
+      <section className="bg-muted/30 border-border border-t px-4 py-16 sm:py-18">
         <div className="container mx-auto">
-          <div className="mb-2 flex items-center gap-2">
-            <BarChart3 className="text-primary h-5 w-5" />
-            <h2 className="text-xl font-bold">{t('globalStats')}</h2>
-          </div>
-          <p className="text-muted-foreground mb-8 text-sm">{t('globalStatsIntro')}</p>
+          {/* The evidence for the six reasons above it, so it opens like every
+            other chapter on this page rather than with a header of its own. */}
+          <ChapterHeading
+            variant="tile"
+            icon={BarChart3}
+            kicker={tStory('platform.statsKicker')}
+            title={t('globalStats')}
+            hint={t('globalStatsIntro')}
+            id="zahlen"
+          />
 
           {/* First row — the two headline "right now" counts, live via client overlay */}
           <GlobalStatsLiveCounts
@@ -238,13 +245,15 @@ export async function GlobalStatsSection() {
       </section>
 
       {/* Platform Statistics */}
-      <section className="px-4 py-12">
+      <section className="px-4 py-16 sm:py-18">
         <div className="container mx-auto">
-          <div className="mb-2 flex items-center gap-2">
-            <Database className="text-primary h-5 w-5" />
-            <h2 className="text-xl font-bold">{t('platformStats')}</h2>
-          </div>
-          <p className="text-muted-foreground mb-8 text-sm">{t('platformStatsDescription')}</p>
+          <ChapterHeading
+            variant="tile"
+            icon={Database}
+            kicker={tStory('platform.kicker')}
+            title={t('platformStats')}
+            hint={t('platformStatsDescription')}
+          />
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {/* Total Wait Time */}

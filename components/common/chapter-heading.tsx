@@ -89,6 +89,22 @@ interface ChapterHeadingProps {
    * A call site that continues downward says so; a band on its own is a box.
    */
   frosted?: boolean;
+  /**
+   * How the chapter marks itself on the left.
+   *
+   * `watermark` (default) is the oversized translucent glyph every park, ride
+   * and blog chapter has always drawn. `tile` is the homepage story's: the icon
+   * sits in a 68 px gradient plate and the kicker becomes a pill.
+   *
+   * The two are the same component on purpose. The homepage runs eight chapters
+   * down one scroll with no numbers — `NearbyParksSection`'s rule, since a
+   * chapter here can render nothing — and a watermark icon at `/25` is the one
+   * mark that disappears when it is the only thing carrying the chapter's
+   * identity. The plate gives it an edge and a fill to sit on. Everything below
+   * the mark (kicker, title, hint, rule) is shared, so a title still wraps and
+   * measures the same in both.
+   */
+  variant?: 'watermark' | 'tile';
   className?: string;
 }
 
@@ -118,44 +134,71 @@ export function ChapterHeading({
   id,
   size = 'md',
   frosted = false,
+  variant = 'watermark',
   className,
 }: ChapterHeadingProps) {
+  const tile = variant === 'tile';
   const watermark = index ?? (Icon ? <Icon className="h-10 w-10 sm:h-14 sm:w-14" /> : null);
 
   return (
     <div
       className={cn(
-        'border-border mb-6 flex items-start gap-3 border-b pb-4 sm:gap-4',
+        'border-border flex items-start border-b',
+        tile ? 'mb-8 gap-4 pb-5' : 'mb-6 gap-3 pb-4 sm:gap-4',
         frosted && cn(TILE_GLASS, 'rounded-xl px-4 pt-3'),
         className
       )}
     >
-      {watermark !== null && (
-        <span
-          aria-hidden="true"
-          className={cn(
-            'shrink-0 leading-none font-black tabular-nums',
-            index ? 'text-primary/15' : (iconClassName ?? 'text-primary/25'),
-            size === 'lg' ? 'text-5xl sm:text-7xl' : 'text-4xl sm:text-6xl'
+      {tile
+        ? Icon && (
+            <span
+              aria-hidden="true"
+              className={cn(
+                'border-primary/30 flex size-14 shrink-0 items-center justify-center rounded-2xl border sm:size-[68px]',
+                // The plate is the one gradient the design system spends, and it
+                // runs 150° so the lit corner sits opposite the title rather than
+                // under it. `shadow-[inset…]` is the top highlight that keeps the
+                // plate from reading as a flat swatch at 68 px.
+                'bg-[linear-gradient(150deg,color-mix(in_oklab,var(--color-primary)_22%,transparent)_0%,color-mix(in_oklab,var(--color-primary)_6%,transparent)_100%)]',
+                'shadow-[inset_0_1px_0_color-mix(in_oklab,var(--color-primary)_25%,transparent)]'
+              )}
+            >
+              <Icon className={cn('size-7 sm:size-8', iconClassName ?? 'text-primary')} />
+            </span>
+          )
+        : watermark !== null && (
+            <span
+              aria-hidden="true"
+              className={cn(
+                'shrink-0 leading-none font-black tabular-nums',
+                index ? 'text-primary/15' : (iconClassName ?? 'text-primary/25'),
+                size === 'lg' ? 'text-5xl sm:text-7xl' : 'text-4xl sm:text-6xl'
+              )}
+            >
+              {watermark}
+            </span>
           )}
-        >
-          {watermark}
-        </span>
-      )}
-      <div className="min-w-0 flex-1 pt-0.5 sm:pt-1">
-        {kicker && (
-          <div className="text-primary mb-1 flex items-center gap-1.5 text-xs font-semibold tracking-widest uppercase">
-            {index && Icon && <Icon className="h-3.5 w-3.5" aria-hidden="true" />}
-            {kicker}
-          </div>
-        )}
+      <div className={cn('min-w-0 flex-1', tile ? 'pt-1' : 'pt-0.5 sm:pt-1')}>
+        {kicker &&
+          (tile ? (
+            <div className="border-primary/30 bg-primary/10 text-primary mb-3 inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-[11px] font-bold tracking-[0.14em] uppercase">
+              {Icon && <Icon className="h-3.5 w-3.5" aria-hidden="true" />}
+              {kicker}
+            </div>
+          ) : (
+            <div className="text-primary mb-1 flex items-center gap-1.5 text-xs font-semibold tracking-widest uppercase">
+              {index && Icon && <Icon className="h-3.5 w-3.5" aria-hidden="true" />}
+              {kicker}
+            </div>
+          ))}
         <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
           <As
             id={id}
             className={cn(
-              'font-bold',
               id && 'scroll-mt-24',
-              size === 'lg' ? 'text-2xl sm:text-4xl' : 'text-2xl sm:text-3xl'
+              tile
+                ? 'text-3xl leading-[1.08] font-extrabold tracking-[-0.03em] text-balance sm:text-[42px]'
+                : cn('font-bold', size === 'lg' ? 'text-2xl sm:text-4xl' : 'text-2xl sm:text-3xl')
             )}
           >
             {title}
@@ -163,7 +206,16 @@ export function ChapterHeading({
           {badge}
           {action && <div className="ml-auto flex items-center gap-2">{action}</div>}
         </div>
-        {hint && <p className="text-muted-foreground mt-1.5 text-sm">{hint}</p>}
+        {hint && (
+          <p
+            className={cn(
+              'text-muted-foreground',
+              tile ? 'mt-2.5 max-w-3xl text-[15px] leading-relaxed' : 'mt-1.5 text-sm'
+            )}
+          >
+            {hint}
+          </p>
+        )}
       </div>
     </div>
   );

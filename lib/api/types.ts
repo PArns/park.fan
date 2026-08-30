@@ -1788,6 +1788,15 @@ export interface HourlyProfileAttraction {
   attractionName: string;
   land?: string | null;
   /**
+   * Quiet-hour wait (P25), aligned with `hours` the same way as {@link p50}.
+   *
+   * Optional because it is newer than the endpoint: a deployment answering the
+   * v3 projection sends no `p25` at all, and a chart that assumed one would
+   * draw a band with no lower edge. Every reader treats an absent array as
+   * "no spread available" and falls back to the median line.
+   */
+  p25?: Array<number | null>;
+  /**
    * Median wait per hour, POSITIONAL: `p50[i]` belongs to `hours[i]`, never to `i` o'clock.
    * `null` is a gap — the ride reported nothing in that hour — and is not the same claim as a
    * zero, which would say the queue was empty.

@@ -8,14 +8,36 @@ import type { Locale } from '@/i18n/config';
 interface LatestBlogSectionProps {
   locale: Locale;
   limit?: number;
+  /**
+   * `section` (default) is the standalone tinted band with its own
+   * `BlogSectionHeader`. `bare` returns the post grid alone, for a caller that
+   * has already opened the chapter — the homepage story wraps this in
+   * `BlogChapter`, and a nested `<section>` there would stack a second tint and
+   * a second heading inside the first.
+   */
+  variant?: 'section' | 'bare';
 }
 
 // 6 fills exactly two rows of the 3-column grid below (and three rows of the
 // 2-column `sm` layout), so the section never ends on a ragged half-row.
-export async function LatestBlogSection({ locale, limit = 6 }: LatestBlogSectionProps) {
+export async function LatestBlogSection({
+  locale,
+  limit = 6,
+  variant = 'section',
+}: LatestBlogSectionProps) {
   const t = await getTranslations('blog');
   const posts = listPostsByRecency(locale).slice(0, limit);
   if (posts.length === 0) return null;
+
+  const grid = (
+    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {posts.map((post) => (
+        <BlogPostCard key={post.translationKey} post={post} />
+      ))}
+    </div>
+  );
+
+  if (variant === 'bare') return grid;
 
   return (
     <section className="bg-muted/30 relative isolate px-4 py-14">
@@ -35,11 +57,7 @@ export async function LatestBlogSection({ locale, limit = 6 }: LatestBlogSection
             icon: ArrowRight,
           }}
         />
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {posts.map((post) => (
-            <BlogPostCard key={post.translationKey} post={post} />
-          ))}
-        </div>
+        {grid}
       </div>
     </section>
   );

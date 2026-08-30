@@ -4,6 +4,7 @@ import { getGeoStructure } from '@/lib/api/discovery';
 import { getGeoLiveStats } from '@/lib/api/analytics';
 import { catchNonFatal } from '@/lib/api/client';
 import { LiveActivityGrid, type ContinentCard } from '@/components/home/live-activity-grid';
+import { ChapterHeading } from '@/components/common/chapter-heading';
 
 /**
  * "Parks open now" — per-continent open-park counts, server-rendered into the homepage shell.
@@ -15,8 +16,9 @@ import { LiveActivityGrid, type ContinentCard } from '@/components/home/live-act
  * neither fetch blocks the hero; on error the section is omitted.
  */
 export async function LiveActivitySection() {
-  const [tHome, geoData, geoLive] = await Promise.all([
+  const [tHome, tStory, geoData, geoLive] = await Promise.all([
     getTranslations('home'),
+    getTranslations('homeStory'),
     catchNonFatal(getGeoStructure()),
     catchNonFatal(getGeoLiveStats()),
   ]);
@@ -33,13 +35,19 @@ export async function LiveActivitySection() {
   if (continents.length === 0) return null;
 
   return (
-    <section className="px-4 py-12">
+    <section className="border-border bg-muted/30 border-t px-4 py-16 sm:py-18">
       <div className="container mx-auto">
-        <div className="mb-2 flex items-center gap-2">
-          <Globe className="text-primary h-5 w-5" />
-          <h2 className="text-xl font-bold">{tHome('sections.liveNow')}</h2>
-        </div>
-        <p className="text-muted-foreground mb-8 text-sm">{tHome('sections.liveNowIntro')}</p>
+        {/* `ChapterHeading`, not a bare `text-xl font-bold` h2: this section sits
+          in the homepage's chapter ladder, and it was one of the last two places
+          on the page still drawing a section header of its own. */}
+        <ChapterHeading
+          variant="tile"
+          icon={Globe}
+          kicker={tStory('liveNow.kicker')}
+          title={tHome('sections.liveNow')}
+          hint={tHome('sections.liveNowIntro')}
+          id="parks-weltweit"
+        />
         <LiveActivityGrid continents={continents} />
       </div>
     </section>
