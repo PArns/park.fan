@@ -79,9 +79,19 @@ export function AttractionWaitOverview({
         {/* For a park whose wait times are unreadable this line would read
           "Ø 0 min · Peak 0 min · 0 of 82 open" — three aggregates over an empty set,
           and the one piece of text about the park that Googlebot's first wave indexes.
-          Say what is actually true instead; the notice above carries the why. */}
+          Say what is actually true instead; the notice above carries the why.
+
+          Which is also why it is `data-nosnippet`: being the first prose under the
+          "Wartezeiten" heading is exactly what made "Keine Wartezeiten verfügbar" the
+          description Google printed under the Hansa-Park result, on the query the park
+          page is written for. Same reasoning as the notice itself — the sentence stays
+          crawlable and stays in front of the visitor, it just may not be the snippet.
+          On a `<span>` rather than the `<p>`, because Google honours the attribute on
+          `div`, `span` and `section` and nothing else. */}
         {waitTimesUnreadable ? (
-          <p className="text-muted-foreground text-sm">{t('noLiveWaitTimes.title')}</p>
+          <p className="text-muted-foreground text-sm">
+            <span data-nosnippet>{t('noLiveWaitTimes.title')}</span>
+          </p>
         ) : (
           stats && (
             <p className="text-muted-foreground text-sm">

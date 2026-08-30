@@ -43,6 +43,37 @@ exactly as before instead of warning about parks that are fine.
 | Ride cards & the ride page's live panel | `UNKNOWN` status, `unknown` crowd — both already supported                |
 | `/api/parks/live`, nearby, favourites   | wait-derived fields stripped at the projection boundary                   |
 
+### Out of the snippet, never out of the index
+
+Hansa-Park is the site's strongest single page, and the two surfaces above are the most
+quotable text on it — so Google took them for the result's description and the head query
+"Hansa-Park Wartezeiten" resolved to a listing that opens with **"Keine Wartezeiten
+verfügbar"**. A result that answers the query with "we don't have that" is a result nobody
+clicks.
+
+`noindex` is the wrong instrument twice over: it has **no per-element form** (there is no
+fragment-level directive — `<!--googleoff:index-->` was a Search Appliance feature and that
+product is dead), and the page-level one would drop the whole park out of Google rather than
+one sentence out of one snippet.
+
+`data-nosnippet` is the directive that _does_ apply to a fragment. The marked text is still
+crawled, still counts for ranking and still stands in front of the visitor who opens the
+page — it is only barred from becoming the snippet, so Google falls back to the meta
+description. It rides on:
+
+| Element                                                  | Why it is marked                                                                       |
+| -------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `NoLiveWaitTimesNotice`'s root `<section>`               | the title + reason sentence, the page's most quotable prose                            |
+| `AttractionWaitOverview`'s summary line (inner `<span>`) | first prose under the "Wartezeiten" `<h2>`, and the pre-mount markup Googlebot indexes |
+
+Google honours the attribute on **`div`, `span` and `section` only**, which is why the
+summary line wraps its text in a `<span>` instead of taking the attribute on its `<p>`.
+
+What this does **not** fix: title and meta description still promise "Wartezeiten LIVE" for
+a park that has none, and the FAQ's `waitTimesNoDataA` still points at "die Live-Wartezeiten
+oben". Rewriting the title is a ranking decision on the site's biggest page, so it is
+deliberately not bundled with the snippet fix.
+
 The crowd badges are deliberately **not** special-cased: the API sends `crowdLevel: 'unknown'`
 for these parks, which the existing badge renders as "keine Prognose" — already the right
 answer.

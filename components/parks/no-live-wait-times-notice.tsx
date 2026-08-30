@@ -20,6 +20,17 @@ interface NoLiveWaitTimesNoticeProps {
  * has any information about — and a visitor with no way to tell that apart from a
  * site that is broken.
  *
+ * **Kept out of Google's snippet (`data-nosnippet`), never out of the index.** For Hansa-Park
+ * this notice is the site's strongest single page, and its two sentences are the most
+ * quotable text on it — so Google was picking them as the result's description and the head
+ * query "Hansa-Park Wartezeiten" resolved to a result that opens with "Keine Wartezeiten
+ * verfügbar". `noindex` cannot fix that: it has no per-element form, and the page-level one
+ * would drop the whole park. `data-nosnippet` is the one directive that does apply to a
+ * fragment — the text is still crawled, still ranks and still stands in front of the visitor;
+ * it is only barred from becoming the snippet, so Google falls back to the meta description.
+ * Supported on `div`, `span` and `section` only, which is why it rides on the root `<section>`
+ * and covers the subtree from there.
+ *
  * Built on the weather banners' surface (frosted layer + tint under a `rounded-xl`
  * border) rather than a flat tinted box, because it sits among glass cards on a
  * hero photo, where a solid pastel panel reads as a browser alert pasted onto the
@@ -35,6 +46,7 @@ export function NoLiveWaitTimesNotice({ reason, scope, className }: NoLiveWaitTi
     <section
       className={cn('border-border/60 relative rounded-xl border p-4 shadow-sm', className)}
       role="note"
+      data-nosnippet
     >
       {/* Frosted surface, same as the weather banners: the tints alone are far too sheer
           over the park's hero photo. */}
