@@ -16,10 +16,17 @@ import type { ParkAttraction, ParkWithAttractions } from '@/lib/api/types';
  * the same ride. (The obvious alternative — repeating `{name}` inline, as the
  * competitor's markup does — leaves a crawler to match rides by string and
  * throws away the ride's URL, which is the part that makes it an entity.)
+ *
+ * It carries the ride's `@type` all the same, because that `containsPlace` sits
+ * in the park node's own `<script>` and these observations ship in the next one:
+ * a consumer that reads one block at a time is handed an object it cannot type,
+ * which is the shape Search Console rejected on the calendar's `Dataset`. The
+ * type is the one thing about a node that cannot drift, so stating it twice
+ * costs nothing; the ride's name and URL still live in exactly one place.
  */
 export interface WaitTimeObservation {
   '@type': 'Observation';
-  observationAbout: { '@id': string };
+  observationAbout: { '@type': 'TouristAttraction'; '@id': string };
   variableMeasured: string;
   value: number;
   unitCode: 'MIN';
@@ -76,7 +83,10 @@ export function buildWaitTimeObservations(
 
     observations.push({
       '@type': 'Observation',
-      observationAbout: { '@id': `${parkUrl}/${attraction.slug}` },
+      observationAbout: {
+        '@type': 'TouristAttraction',
+        '@id': `${parkUrl}/${attraction.slug}`,
+      },
       variableMeasured: 'Standby wait time',
       value: waitTime,
       unitCode: 'MIN',

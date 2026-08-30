@@ -392,6 +392,7 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
             <ParkCalendarDatasetStructuredData
               url={canonicalUrl}
               parkUrl={`${SITE_URL}/${locale}${parkPath}`}
+              parkName={parkName}
               name={tDataset('name', {
                 ...parkArgs(locale as Locale, parkName, park.nameArticleDe),
                 month: monthLabel(locale, summaryMonth),
