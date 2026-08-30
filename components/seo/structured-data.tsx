@@ -49,6 +49,24 @@ const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 const ORGANIZATION_SAME_AS: readonly string[] = [];
 const websiteId = (locale: string) => `${SITE_URL}/${locale}/#website`;
 
+/*
+ * A reference to a node another `<script type="application/ld+json">` on this page describes in
+ * full — and the reason most of them below carry a `@type` they do not strictly need.
+ *
+ * `{'@id': …}` on its own is correct JSON-LD and resolves against whatever graph the consumer
+ * happens to have merged. Inside one `@graph` that is the document itself and the reference is
+ * complete; across two script blocks it is a promise about a node that may never be looked up,
+ * and Search Console says so: the wait-time calendar's `Dataset` pointed `spatialCoverage` at the
+ * park id declared in the *neighbouring* block and came back „Ungültiger Objekttyp für Feld
+ * spatialCoverage" — an object with no type is not a `Place`, whatever the id would have led to.
+ *
+ * So the rule is: a reference that leaves its own script states its type. It costs one property,
+ * it cannot go stale (a node's type is the one thing about it that does not change), and it is
+ * the difference between a graph a consumer can read in one pass and one it can read only if it
+ * chose to merge. The description itself stays where it is — restating a park's address on
+ * 24,000 URLs is one entity written 24,000 times, free to drift from the first edit.
+ */
+
 /**
  * A `@graph` container is not a `Thing` — it sets already-built nodes side by side, which is how
  * the wait-time `Observation`s ship without duplicating every ride into the park node. The old
@@ -242,7 +260,7 @@ export function WebSiteStructuredData({
     url: baseUrl,
     // Points at the Organization node rather than restating it — the same
     // publisher on all six locales instead of six unrelated ones.
-    publisher: { '@id': ORGANIZATION_ID },
+    publisher: { '@type': 'Organization', '@id': ORGANIZATION_ID },
     ...(description && { description }),
     ...(image && { image }),
     inLanguage: locale,
@@ -413,8 +431,11 @@ export function ParkStructuredData({
     '@id': `${url}#webpage`,
     url,
     name: parkName,
-    ...(locale && { inLanguage: locale, isPartOf: { '@id': websiteId(locale) } }),
-    mainEntity: { '@id': url },
+    ...(locale && {
+      inLanguage: locale,
+      isPartOf: { '@type': 'WebSite', '@id': websiteId(locale) },
+    }),
+    mainEntity: { '@type': 'AmusementPark', '@id': url },
     ...(latestObservation && { dateModified: latestObservation }),
   };
 
@@ -695,10 +716,15 @@ export function ParkSubPageStructuredData({
             '@id': `${url}#webpage`,
             url,
             name,
-            ...(locale && { inLanguage: locale, isPartOf: { '@id': websiteId(locale) } }),
+            ...(locale && {
+              inLanguage: locale,
+              isPartOf: { '@type': 'WebSite', '@id': websiteId(locale) },
+            }),
+            // The only reference on this page that stays inside its own document: the stub
+            // below is two lines down, in this same `@graph`.
             about: { '@id': parkUrl },
           },
-          // A two-property stub for the thing `about` and `Dataset.spatialCoverage` point at.
+          // The stub for the thing `about` points at.
           //
           // `@id` on its own is a cross-document reference: correct JSON-LD, and worth nothing to
           // a consumer reading this page without also fetching and merging the park page. The
@@ -734,11 +760,18 @@ export function ParkSubPageStructuredData({
  *
  * `spatialCoverage` and `creator` are references, not copies: the park's `AmusementPark` node and
  * the site `Organization` already exist under those ids, and restating either on 24,000 URLs is
- * one entity described 24,000 times, free to drift the moment one is edited.
+ * one entity described 24,000 times, free to drift the moment one is edited. Both carry a
+ * `@type` because both point out of this script — see the note above `ORGANIZATION_ID`. That is
+ * the whole of what Search Console reported as „Ungültiger Objekttyp für Feld spatialCoverage":
+ * the park stub the reference was written against lives in `ParkSubPageStructuredData`'s
+ * `@graph`, one `<script>` over, so the value Google typed was `{'@id': …}` and nothing else.
+ * `spatialCoverage` also carries the park's name, because it is the one reference here a
+ * consumer renders rather than follows.
  */
 export function ParkCalendarDatasetStructuredData({
   url,
   parkUrl,
+  parkName,
   name,
   description,
   temporalCoverage,
@@ -748,6 +781,9 @@ export function ParkCalendarDatasetStructuredData({
   url: string;
   /** The park page's URL, which is the `@id` of its `AmusementPark` node. */
   parkUrl: string;
+  /** Names `spatialCoverage`, the one reference here a consumer renders rather than follows. */
+  parkName: string;
+  /** The dataset's own name — the park and the month, not the park alone. */
   name: string;
   description: string;
   /** ISO-8601 interval for the month this page shows, e.g. `2026-11-01/2026-11-30`. */
@@ -766,8 +802,8 @@ export function ParkCalendarDatasetStructuredData({
         name,
         description,
         temporalCoverage,
-        spatialCoverage: { '@id': parkUrl },
-        creator: { '@id': ORGANIZATION_ID },
+        spatialCoverage: { '@type': 'AmusementPark', '@id': parkUrl, name: parkName, url: parkUrl },
+        creator: { '@type': 'Organization', '@id': ORGANIZATION_ID },
         license: `${SITE_URL}${RSL_LICENSE_PATH}`,
         isAccessibleForFree: true,
         ...(locale && { inLanguage: locale }),
