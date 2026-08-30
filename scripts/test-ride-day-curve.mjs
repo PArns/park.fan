@@ -141,9 +141,28 @@ test(
     true
   );
   test('quietWindows: they do not overlap', w[0].toHour <= w[1].fromHour, true);
-  // Peak is 90, so the quiet threshold is 49.5 and the morning run is 15/20/45.
-  test('quietWindows: the average is the mean of the whole run', round(w[0].averageWait), 26.67);
-  test('quietWindows: the morning window ends after its last quiet hour', w[0].toHour, 12);
+  // Floor 15, peak 90 -> threshold 41.25, so the morning run is 15/20 and 45 is not quiet.
+  test('quietWindows: the average is the mean of the whole run', round(w[0].averageWait), 17.5);
+  test('quietWindows: the morning window ends after its last quiet hour', w[0].toHour, 11);
+}
+{
+  // Voltron Nevera's real shape, the day that exposed the share-of-peak bug: it
+  // runs 28-46 minutes, so 55% of its peak was 25 and nothing qualified.
+  const hours = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
+  const w = quietWindows(hours, [29, 44, 46, 45, 38, 39, 40, 33, 30, 30]);
+  test(
+    'quietWindows: a shallow day still gets both windows',
+    w.map((e) => e.which),
+    ['opening', 'closing']
+  );
+}
+{
+  // Nearly flat: the range is under 15% of the peak, so there is no quiet part.
+  test(
+    'quietWindows: a day that barely moves gets no windows',
+    quietWindows([9, 10, 11, 12, 13], [40, 42, 44, 43, 41]),
+    []
+  );
 }
 {
   // Busy from the moment it opens: no morning window.

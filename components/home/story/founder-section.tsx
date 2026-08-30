@@ -1,6 +1,9 @@
+import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { ArrowRight, Check, User } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
+import { getAuthor } from '@/lib/blog/authors';
+import type { Locale } from '@/i18n/config';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Reveal } from '@/components/marketing/scroll-reveal';
 
@@ -16,12 +19,19 @@ const AUTHOR_SLUG = 'patrick';
  * the site — and the section links there rather than growing a second biography
  * nobody will remember to update.
  *
- * No portrait: the media database holds none, and a hard-coded path to a file
- * that does not exist is a broken image on the most-visited page on the site.
- * The monogram tile takes its place and needs no asset.
+ * The portrait is the blog author registry's `avatar`, not a path typed in here:
+ * the same picture the author page and every post banner show, so there is one
+ * file to replace and no second place to remember. It is a cut-out with a real
+ * alpha channel, which is why it sits `object-contain` on a gradient plate
+ * rather than filling a frame — `cover` would crop a head off.
+ *
+ * `avatar` is optional in the registry (it was an empty string until this photo
+ * existed), so the plate falls back to the monogram rather than rendering a
+ * broken image.
  */
-export async function FounderSection() {
+export async function FounderSection({ locale }: { locale: Locale }) {
   const t = await getTranslations('homeStory.founder');
+  const author = getAuthor(AUTHOR_SLUG, locale);
   const bullets = ['b1', 'b2', 'b3', 'b4', 'b5', 'b6'] as const;
 
   return (
@@ -37,25 +47,43 @@ export async function FounderSection() {
           />
         </Reveal>
 
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,260px)_1fr] lg:items-start">
+        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <Reveal>
-            <div className="border-border bg-card/60 rounded-2xl border p-5 text-center">
-              <span
-                aria-hidden="true"
-                className="border-primary/30 bg-primary/10 text-primary mx-auto flex size-20 items-center justify-center rounded-full border text-2xl font-bold"
-              >
-                PA
-              </span>
-              <div className="mt-3 font-semibold">{t('name')}</div>
-              <div className="text-muted-foreground text-sm">{t('role')}</div>
-              <Link
-                href={`/blog/authors/${AUTHOR_SLUG}` as '/'}
-                prefetch={false}
-                className="text-primary mt-3 inline-flex items-center gap-1.5 text-sm font-semibold hover:underline"
-              >
-                {t('authorLink')}
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
+            {/* The name plate hangs off the portrait's lower-left corner, so the
+                two need one positioning context and room for the overhang —
+                hence the padding on the wrapper rather than a negative margin
+                that would be clipped by the section. */}
+            <div className="relative pb-4 pl-4">
+              <div className="border-border relative aspect-4/5 overflow-hidden rounded-[22px] border bg-[linear-gradient(160deg,color-mix(in_oklab,var(--color-primary)_12%,transparent),color-mix(in_oklab,var(--color-muted)_40%,transparent))]">
+                {author?.avatar ? (
+                  <Image
+                    src={author.avatar}
+                    alt={t('portraitAlt')}
+                    fill
+                    sizes="(min-width: 1024px) 380px, 100vw"
+                    className="object-contain object-bottom"
+                  />
+                ) : (
+                  <span
+                    aria-hidden="true"
+                    className="text-primary/40 absolute inset-0 flex items-center justify-center text-6xl font-bold"
+                  >
+                    PA
+                  </span>
+                )}
+              </div>
+              <div className="border-border bg-card/90 absolute bottom-0 left-0 rounded-[14px] border px-4 py-3 shadow-lg backdrop-blur-md">
+                <div className="text-[15px] font-bold">{t('name')}</div>
+                <div className="text-muted-foreground text-xs">{t('role')}</div>
+                <Link
+                  href={`/blog/authors/${AUTHOR_SLUG}` as '/'}
+                  prefetch={false}
+                  className="text-primary mt-1.5 inline-flex items-center gap-1.5 text-xs font-semibold hover:underline"
+                >
+                  {t('authorLink')}
+                  <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                </Link>
+              </div>
             </div>
           </Reveal>
 

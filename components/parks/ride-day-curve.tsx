@@ -81,7 +81,7 @@ export interface RideDayCurveProps {
  * without buying a 53 KB attraction response for one line.
  *
  * Geometry notes that are load-bearing:
- * - The box is given the viewBox's own ratio (`aspect-[720/260]`) rather than a
+ * - The box is given the viewBox's own ratio (`aspect-[720/200]`) rather than a
  *   fixed height. `preserveAspectRatio` then has nothing to correct: with a
  *   fixed `h-[200px]` the 720×260 viewBox letterboxed to 107 px of drawing
  *   inside a 200 px box on a 360 px phone, and `preserveAspectRatio="none"` is
@@ -184,7 +184,7 @@ export function RideDayCurve({
       <div className="relative">
         <svg
           viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
-          className="aspect-[720/260] w-full"
+          className="aspect-[720/200] w-full"
           role="img"
           aria-label={ariaLabel}
         >

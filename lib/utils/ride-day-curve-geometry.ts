@@ -16,22 +16,46 @@
  */
 
 export const VIEW_W = 720;
-export const VIEW_H = 260;
+/**
+ * 720×200 rather than 720×260.
+ *
+ * The y axis starts at zero, which is right for a magnitude, but it means a ride
+ * whose day runs 28–46 minutes on a 0–50 axis only ever uses the top half of the
+ * plot. At the taller ratio the other half was a large empty rectangle inside
+ * the card. 3.6 : 1 is the mock's own proportion and gives the curve the room it
+ * deserves without truncating the scale to fake a steeper day.
+ */
+export const VIEW_H = 200;
 export const PAD_L = 8;
 export const PAD_R = 8;
 export const PAD_T = 12;
 export const PAD_B = 8;
 
 /**
- * A quiet hour is one whose median sits at or under this share of the ride's own
- * peak hour.
+ * A quiet hour is one sitting in the lowest part of the ride's OWN daily range:
+ * at or under `min + QUIET_BAND × (max − min)`.
  *
- * Relative to the ride, never an absolute number of minutes: 25 minutes is a
- * quiet hour on a headliner and the busiest hour of the day on a carousel, and
- * one threshold in minutes would mark the whole day quiet on half a park's
- * catalogue and none of it on the other half.
+ * Relative to the ride, never an absolute number of minutes — 25 minutes is a
+ * quiet hour on a headliner and the busiest hour of the day on a carousel.
+ *
+ * Against the RANGE rather than against the peak, which is the correction that
+ * matters on real data. A share-of-peak threshold assumes the day drops towards
+ * zero, and most rides' days do not: Voltron Nevera runs 28–46 minutes, so 55 %
+ * of its 46-minute peak is 25 and NOTHING in its day qualified — a chapter
+ * headed "two perfect windows" drew a curve with neither marked. Measuring from
+ * the day's own floor finds the morning and the evening on a flat day and a
+ * peaky one alike.
  */
-export const QUIET_RATIO = 0.55;
+export const QUIET_BAND = 0.35;
+
+/**
+ * How much a day has to move before "quiet" means anything.
+ *
+ * A ride that sits at 30 minutes from open to close has no quiet window — it has
+ * a flat day — and marking one would point at an hour no better than its
+ * neighbours. Expressed against the peak so it scales with the ride.
+ */
+export const MIN_RANGE_SHARE = 0.15;
 
 /** Round a max up to a friendly gridline so the axis labels are readable numbers. */
 export function niceMax(value: number): number {
@@ -157,9 +181,9 @@ export interface QuietWindow {
  * different computation would sooner or later contradict the line it sits on.
  *
  * Either can be absent, and that is a real answer — a ride busy from opening has
- * no morning window, one that never calms down has neither. The two can never
- * overlap: the trailing run has to start strictly after the leading one ends,
- * which is what stops a flat ride reporting its whole day as both.
+ * no morning window, and a day too flat to have a quiet part gets neither. The
+ * two can never overlap: the trailing run has to start strictly after the
+ * leading one ends.
  */
 export function quietWindows(hours: number[], p50: Array<number | null>): QuietWindow[] {
   const known = p50
@@ -167,9 +191,14 @@ export function quietWindows(hours: number[], p50: Array<number | null>): QuietW
     .filter((e): e is { hour: number; value: number } => e.value != null && e.hour != null);
   if (known.length < 3) return [];
 
-  const peak = Math.max(...known.map((e) => e.value));
+  const values = known.map((e) => e.value);
+  const peak = Math.max(...values);
+  const floor = Math.min(...values);
   if (peak <= 0) return [];
-  const quiet = (v: number) => v <= peak * QUIET_RATIO;
+  // A day that barely moves has no window worth pointing at.
+  if ((peak - floor) / peak < MIN_RANGE_SHARE) return [];
+  const threshold = floor + QUIET_BAND * (peak - floor);
+  const quiet = (v: number) => v <= threshold;
   const lastHour = hours[hours.length - 1];
   const mean = (slice: { value: number }[]) =>
     slice.reduce((sum, e) => sum + e.value, 0) / slice.length;
@@ -178,9 +207,16 @@ export function quietWindows(hours: number[], p50: Array<number | null>): QuietW
 
   let lead = 0;
   while (lead < known.length && quiet(known[lead].value)) lead++;
-  // A ride quiet at EVERY measured hour has no distinguishing window, so it gets
-  // none — marking the whole plot says nothing a reader can act on.
-  if (lead >= 2 && lead < known.length) {
+  // ONE hour is enough at the edges, and that is the point: rope drop is often a
+  // single hour. Voltron Nevera dips to 29 minutes at 09:00 and is at 44 by
+  // 10:00 — requiring two consecutive quiet hours threw away the very window the
+  // chapter is about. Noise is not the risk here, because a day too flat to have
+  // a quiet part was already rejected above, and an interior dip cannot reach
+  // this branch: only a run touching the first or last measured hour does.
+  //
+  // `lead < known.length` still holds the other end: a ride quiet at EVERY hour
+  // has no distinguishing window, and marking the whole plot says nothing.
+  if (lead >= 1 && lead < known.length) {
     const slice = known.slice(0, lead);
     windows.push({
       fromHour: slice[0].hour,
@@ -193,7 +229,7 @@ export function quietWindows(hours: number[], p50: Array<number | null>): QuietW
   let tail = known.length - 1;
   while (tail >= 0 && quiet(known[tail].value)) tail--;
   const tailStart = tail + 1;
-  if (tail >= 0 && known.length - tailStart >= 2 && tailStart > lead) {
+  if (tail >= 0 && known.length - tailStart >= 1 && tailStart > lead) {
     const slice = known.slice(tailStart);
     windows.push({
       fromHour: slice[0].hour,

@@ -313,7 +313,7 @@ export default async function HomePage({ params }: HomePageProps) {
           <GlobalStatsSection />
         </Suspense>
 
-        <FounderSection />
+        <FounderSection locale={locale as Locale} />
 
         {/* Featured Parks – locale-aware, direct park links for SEO (SSR seed + client live data) */}
         <Suspense fallback={<FeaturedParksSkeleton />}>

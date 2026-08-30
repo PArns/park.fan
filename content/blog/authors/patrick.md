@@ -3,7 +3,7 @@ name: Patrick Arns
 role: Founder of park.fan
 location: Germany
 url: https://arns.dev
-avatar: ''
+avatar: '/authors/patrick-arns.webp'
 bio: 'Founder of park.fan. Coaster junkie since the stroller days, data person by trade.'
 links:
   website: https://arns.dev

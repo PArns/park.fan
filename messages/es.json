@@ -222,6 +222,7 @@
         "title": "Park wählen",
         "text": "Tippe den Park oder die Attraktion ein, oder nimm den Vorschlag in deiner Nähe. Jeder Park hat seine eigene Seite mit Live-Wartezeiten, Öffnungszeiten und Kalender.",
         "placeholder": "Park oder Attraktion",
+        "label": "Park oder Attraktion suchen",
         "hint": "Fang an zu tippen, oder nimm einen der Vorschläge."
       },
       "two": {
@@ -406,7 +407,8 @@
       "b4": "Keine Paywall, keine Abos",
       "b5": "ML-Modell komplett selbst gebaut",
       "b6": "Genauigkeit öffentlich ausgewiesen",
-      "authorLink": "Mehr über Patrick im Blog"
+      "authorLink": "Mehr über Patrick im Blog",
+      "portraitAlt": "Patrick Arns, Gründer von park.fan"
     },
     "blog": {
       "kicker": "Blog & Guides",

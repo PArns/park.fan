@@ -1,8 +1,8 @@
 import { getTranslations } from 'next-intl/server';
-import { CalendarRange, Check, Compass, Search, Sunrise } from 'lucide-react';
-import { Link } from '@/i18n/navigation';
+import { CalendarRange, Check, Compass, Sunrise } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Reveal } from '@/components/marketing/scroll-reveal';
+import { StepSearch } from './step-search';
 import { CROWD_DOT_CLASS, CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
 import { cn } from '@/lib/utils';
 
@@ -41,7 +41,7 @@ function StepCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="border-border bg-card/60 flex h-full flex-col overflow-hidden rounded-2xl border shadow-sm backdrop-blur-md">
+    <div className="border-border bg-card/60 flex h-full flex-col rounded-2xl border shadow-sm backdrop-blur-md">
       <div className="p-5 pb-0 sm:p-6 sm:pb-0">
         <div className="mb-3 flex items-center gap-2.5">
           <span className="bg-primary/15 text-primary flex size-8 items-center justify-center rounded-[10px] text-sm font-bold">
@@ -51,7 +51,7 @@ function StepCard({
         </div>
         <p className="text-muted-foreground mb-5 text-sm leading-relaxed">{text}</p>
       </div>
-      <div className="border-border bg-muted/25 mt-auto border-t p-4">{children}</div>
+      <div className="border-border bg-muted/25 mt-auto rounded-b-2xl border-t p-4">{children}</div>
     </div>
   );
 }
@@ -74,21 +74,12 @@ export async function ThreeSteps() {
         </Reveal>
 
         <div className="grid gap-5 md:grid-cols-3">
-          {/* 1 — choose a park. The footer is a real route, not a mock field: a
-              search box that cannot search is the one thing a first visitor
-              will try first. */}
+          {/* 1 — choose a park. A REAL search, not a field-shaped link: a search
+              box that cannot search is the one thing a first visitor tries
+              first. Same hooks and same result panel as the hero's dropdown. */}
           <Reveal>
             <StepCard step={1} title={t('one.title')} text={t('one.text')}>
-              <Link
-                href="/search"
-                prefetch={false}
-                className="border-input bg-background hover:border-primary/40 flex h-10 items-center gap-2.5 rounded-xl border px-3 transition-colors"
-              >
-                <Search className="text-muted-foreground h-4 w-4 shrink-0" aria-hidden="true" />
-                <span className="text-muted-foreground truncate text-[13px]">
-                  {t('one.placeholder')}
-                </span>
-              </Link>
+              <StepSearch placeholder={t('one.placeholder')} label={t('one.label')} />
               <p className="text-muted-foreground mt-2 text-[11px] leading-relaxed">
                 {t('one.hint')}
               </p>

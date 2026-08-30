@@ -102,7 +102,7 @@ export function RideDayCurveCard({
       >
         <Skeleton className="h-6 w-56" />
         <Skeleton className="mt-2 h-3 w-40" />
-        <Skeleton className="mt-4 aspect-[720/260] w-full" />
+        <Skeleton className="mt-4 aspect-[720/200] w-full" />
         <Skeleton className="mt-1 h-4 w-full" />
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
           <Skeleton className="h-[62px]" />
