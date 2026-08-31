@@ -88,10 +88,19 @@ export async function BlogChapter({
                 <BookOpen className="h-5 w-5" aria-hidden="true" />
               </span>
               <h3 className="font-semibold">{t('glossaryCta')}</h3>
-              <ArrowRight
-                className="text-primary mt-auto h-4 w-4 pt-3 transition-transform group-hover:translate-x-0.5"
-                aria-hidden="true"
-              />
+              <p className="text-muted-foreground mt-1.5 text-sm leading-relaxed">
+                {t('glossaryText')}
+              </p>
+              {/* The push to the bottom belongs on a wrapper, never on the icon:
+                  `pt-3` on a `h-4` SVG leaves four pixels of drawing area, and
+                  the arrow rendered as a stub. The other card gets this right
+                  with a plain `mt-3`, which is why only this one looked broken. */}
+              <span className="mt-auto pt-3">
+                <ArrowRight
+                  className="text-primary h-4 w-4 transition-transform group-hover:translate-x-0.5"
+                  aria-hidden="true"
+                />
+              </span>
             </Link>
           </div>
         </Reveal>

@@ -427,7 +427,8 @@
       "lead": "Guides de parcs, analyses des temps d'attente et conseils de saison, écrits par des gens qui font la queue eux-mêmes. Chaque page de parc porte les articles qui la concernent.",
       "bestTimeTitle": "Meilleure période pour visiter un parc",
       "bestTimeText": "Quand les parcs sont les plus vides : les jours et les mois les plus calmes, tirés de deux ans de temps d'attente réels sur plus de 200 parcs.",
-      "glossaryCta": "Dictionnaire : single rider, rope drop, Lightning Lane"
+      "glossaryCta": "Dictionnaire : single rider, rope drop, Lightning Lane",
+      "glossaryText": "Chaque terme expliqué en une phrase, et les figures de parcours ont leur player 3D."
     },
     "faq": {
       "kicker": "Questions fréquentes",

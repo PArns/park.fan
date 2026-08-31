@@ -427,7 +427,8 @@
       "lead": "Guide ai parchi, analisi dei tempi d'attesa e consigli stagionali, scritti da chi in fila ci sta davvero. Su ogni pagina di parco ci sono gli articoli che la riguardano.",
       "bestTimeTitle": "Periodo migliore per visitare un parco",
       "bestTimeText": "Quando i parchi sono più vuoti: i giorni e i mesi più tranquilli, da due anni di attese reali in oltre 200 parchi.",
-      "glossaryCta": "Dizionario: single rider, rope drop, Lightning Lane"
+      "glossaryCta": "Dizionario: single rider, rope drop, Lightning Lane",
+      "glossaryText": "Ogni termine spiegato in una frase, e per gli elementi di tracciato c’è il player 3D."
     },
     "faq": {
       "kicker": "Domande frequenti",
