@@ -69,6 +69,13 @@ export interface RideDayCurveCardProps {
    * exactly one.
    */
   candidates: DayCurveCandidate[];
+  /**
+   * Called once the last candidate has missed and this card has nothing left to
+   * draw. The caller owns the surrounding layout and is the only one that can
+   * take the column back — this component can do no better than render nothing
+   * into it.
+   */
+  onExhausted?: () => void;
   className?: string;
 }
 
@@ -106,6 +113,21 @@ function Candidate({
 }
 
 /**
+ * Nothing left to try.
+ *
+ * Its own component so the notice reaches the parent from an effect rather than
+ * from a render — a `setState` in the parent during this component's render is
+ * the "cannot update a component while rendering a different component" warning,
+ * and the parent's answer is to unmount this one.
+ */
+function Exhausted({ onExhausted }: { onExhausted?: () => void }) {
+  useEffect(() => {
+    onExhausted?.();
+  }, [onExhausted]);
+  return null;
+}
+
+/**
  * The day-curve chart, fed from `/stats/day`.
  *
  * A ~1 KB projection carrying all three series the chart draws — the historical
@@ -121,7 +143,7 @@ function Candidate({
  * caption and window row, and a section that appears out of nothing after the
  * idle window is the CLS this codebase measures with `pnpm measure:cls --late`.
  */
-export function RideDayCurveCard({ candidates, className }: RideDayCurveCardProps) {
+export function RideDayCurveCard({ candidates, onExhausted, className }: RideDayCurveCardProps) {
   const t = useTranslations('homeStory.bestTime');
   const tOverview = useTranslations('parks.overview');
 
@@ -138,7 +160,7 @@ export function RideDayCurveCard({ candidates, className }: RideDayCurveCardProp
 
   // Every candidate exhausted: nothing to draw, and that IS an answer — a whole
   // locale's featured list can be out of season at the same time.
-  if (!park) return null;
+  if (!park) return <Exhausted onExhausted={onExhausted} />;
 
   return (
     <Candidate
