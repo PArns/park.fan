@@ -3,11 +3,20 @@ import './globals.css';
 
 // Metadata is now handled in [locale]/layout.tsx for i18n support
 
-// app/favicon.ico and app/icon.svg are served automatically via the file
-// convention; only the Apple touch icon (iOS ignores SVG) needs an explicit
-// 180×180 PNG.
+// The whole icon set is generated from public/logo-small-dark.svg by
+// `pnpm generate:icons` — never hand-exported. See scripts/generate-icons.mjs.
+//
+// `app/favicon.ico` is emitted by the file convention and is the file GOOGLE reads: it does not
+// support SVG favicons, so the .ico is what decides what a search result shows. Only what the
+// convention cannot express is declared below.
+//
+// This object lives HERE and nowhere else. Metadata fields do not merge across segments — the
+// nearest segment that declares `icons` replaces the whole object — and `app/[locale]/layout.tsx`
+// used to declare `icon: '/favicon.ico'`, which dropped the SVG favicon from every page on the
+// site without so much as a warning.
 export const metadata: Metadata = {
   icons: {
+    icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
     apple: '/apple-touch-icon.png',
   },
 };

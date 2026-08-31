@@ -4,11 +4,56 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: Das Icon in der Google-Suche ist wieder lesbar
+
+In einem `google.de`-Treffer für „Phantasialand Wartezeiten" stand neben dem Ergebnis ein Fleck.
+Vier Fehler, jeder für sich ausreichend.
+
+**Google bekam 32 px und die Auskunft, es seien 48.** `app/favicon.ico` enthielt zwei Frames, 16
+und 32. Der `<link>`, den Next für die File-Convention schreibt, meldet den größten Frame der Datei
+als `sizes` – und meldete `48x48`. Google fragt von sich aus nach etwas oberhalb von 48×48.
+
+**Der Schriftzug steckte im Icon.** `icon-192.png`, `icon-512.png` und `apple-touch-icon.png` trugen
+die volle Lockup mit „park.fan" unter dem Pin. Der Schriftzug belegte rund ein Viertel der Höhe, bei
+16 CSS-Pixeln also etwa 4 px Versalhöhe – nicht lesbar, und er nahm der Bildmarke obendrein ein
+Viertel der Fläche.
+
+**Die Marke brachte keinen eigenen Grund mit.** Der Pin ist eine Kontur mit einem Loch als Kopf, und
+beide Fassungen hängen davon ab, was dahinter liegt: die helle ist in #293B47 gezeichnet, Googles
+dunkle Trefferseite ist #202124. Dort komponiert bleibt vom Pin nichts übrig, nur das blaue Innere.
+Ein transparentes Icon sucht sich seinen Hintergrund nicht aus, eine vollflächige Kachel schon.
+
+**Das SVG-Favicon wurde nie ausgeliefert.** `app/[locale]/layout.tsx` deklarierte
+`icons: { icon: '/favicon.ico', … }`. Metadata-Felder verschmelzen nicht über Segmente hinweg – das
+nächstgelegene Segment ersetzt das ganze Objekt –, also fiel die File-Convention `app/icon.svg` auf
+jeder Seite der Site weg. Im Live-`<head>` standen zwei favicon.ico-Links und kein SVG. Dieselbe
+Falle ist für `alternates` unter [Blog-Feeds](seo/blog-feeds.md) beschrieben. Die unterdrückte Datei
+war ohnehin ein drittes, veraltetes Artwork.
+
+Neu ist die **dunkle Fassung der Marke aus dem Header**, unverändert, auf einer Kachel im
+Brand-Navy: `public/logo-small-dark.svg` auf #293B47, 3 % Rand, 18 % Eckenradius dort, wo das Icon
+so gezeigt wird, wie es kommt, und quadratisch dort, wo ein Betriebssystem seine eigene Maske
+darüberlegt. Weißer Pin auf Navy liest sich bei 16 px in beiden Google-Modi – auf der hellen Seite
+trägt die Kachel den Kontrast, auf der dunklen der Pin.
+
+Alle sechs Dateien schneidet jetzt `pnpm generate:icons` aus dieser einen Quelle, `pnpm check:icons`
+schlägt an, sobald eine davon nicht mehr dazu passt. Vorher lagen im Set drei verschiedene Artworks
+nebeneinander und nichts verglich sie. Die Ink-Bounding-Box wird gerendert und über den Alphakanal
+gemessen, nicht eingetippt: der Pin sitzt in einer 144×144-viewBox auf 62,5 % Breite und 86 % Höhe,
+ein Skalieren der viewBox ließe also an jeder Kante ein Siebtel des Icons leer.
+
+Deklariert wird das Set nur noch in `app/layout.tsx`. Kein anderes Segment darf `icons` setzen.
+`/admin` ändert sich nicht, und die URLs bleiben, wo sie sind – Google crawlt ein Favicon nach
+eigenem Takt, Tage bis Wochen, und ein Umzug kostet diese Wartezeit erneut. Details:
+[Favicon](seo/favicon.md).
+
+---
+
 ## Unreleased – feat: Fastpass an der Bahn, im Glossar und im Admin
 
 Die API liefert pro Bahn ein kuratiertes `fastPass`-Objekt — `{ name, price, priceFrom, currency,
 termId }`. Auf der Bahnseite und auf der Ride-Karte steht dafür jetzt ein Badge in der Faktenzeile,
-zwischen den Größenbeschränkungen und dem, was die Bahn *ist*: ein Fastpass ist eine Aussage über
+zwischen den Größenbeschränkungen und dem, was die Bahn _ist_: ein Fastpass ist eine Aussage über
 den Besuch, keine über die Bahn.
 
 Der Text wird hier zusammengesetzt, nicht von der API übernommen. „12 €" und „€12" sind derselbe
