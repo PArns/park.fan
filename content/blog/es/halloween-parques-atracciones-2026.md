@@ -501,7 +501,9 @@ Porque Brühl enciende su gran temporada simplemente **más tarde**: a partir de
 **14 de noviembre de 2026**, **Wintertraum** llega hasta enero (24 de enero de
 2027), con pista de hielo, espectáculos de invierno e iluminación nocturna.
 Quien en octubre espere terror en el Phantasialand tendrá que replanificar: o un
-parque vecino para el susto, o unas semanas de paciencia hasta el glaseado.
+parque vecino para el susto, o unas semanas de paciencia hasta el glaseado. Quién más abre en Europa entre
+noviembre y enero está en la
+[guía de invierno](/blog/parques-atracciones-invierno-2026).
 
 Wintertraum tiene capítulo propio en la [guía del
 Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos), junto con el

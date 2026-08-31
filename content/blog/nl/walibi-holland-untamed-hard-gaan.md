@@ -647,7 +647,7 @@ Op **23 april 2026** heeft het park het evenement geschrapt. Zonder
 aankondiging, zonder opvolger. Walibi Holland blijft ’s winters weer helemaal
 dicht.
 
-![De ingang van Walibi Belgium, versierd met kerstballen, daarboven het bord "Walibi Winter" | Walibi Winter in Waver. Het Belgische zusterpark gaat in december door, het Nederlandse niet meer. | wide](/media/walibi-belgium/background.jpg)
+![De ingang van Walibi Belgium, versierd met kerstballen, daarboven de letters "Walibi Winter" | Walibi Winter in Waver. Het Belgische zusterpark gaat in december door, het Nederlandse niet meer. | wide](/media/walibi-belgium/background.jpg)
 
 Officieel heet het dat de korte openingsperiode en de sterke afhankelijkheid van
 het winterweer het moeilijk maakten de gewenste kwaliteit betrouwbaar te

@@ -635,7 +635,7 @@ over Christmas 2025 and into January 2026.
 On **23 April 2026** the park cancelled the event. Without warning, without a
 successor. Walibi Holland is closed all winter again.
 
-![The entrance to Walibi Belgium decorated with baubles, a "Walibi Winter" sign above it | Walibi Winter in Wavre. The Belgian sister park carries on in December, the Dutch one no longer does. | wide](/media/walibi-belgium/background.jpg)
+![The entrance to Walibi Belgium decorated with baubles, the words "Walibi Winter" above it | Walibi Winter in Wavre. The Belgian sister park carries on in December, the Dutch one no longer does. | wide](/media/walibi-belgium/background.jpg)
 
 Officially, the short opening period and the heavy dependence on winter weather
 made it hard to deliver the desired quality reliably. Managing director **Mascha
