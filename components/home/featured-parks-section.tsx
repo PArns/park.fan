@@ -73,6 +73,7 @@ interface FeaturedPark {
   continentSlug: string;
   countrySlug: string;
   countryName: string; // raw name, translated in component
+  countryCode: string; // ISO code, for flags
   href: string;
   backgroundImage?: string | null;
   backgroundPosition?: string;
@@ -101,6 +102,7 @@ export function extractFeaturedParks(geoData: GeoStructure | null, locale: strin
               continentSlug: continent.slug,
               countrySlug: country.slug,
               countryName: country.name,
+              countryCode: country.code,
               href: `/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}`,
               backgroundImage: getParkBackgroundImage(park.slug),
               backgroundPosition: getCardObjectPosition(park.slug),

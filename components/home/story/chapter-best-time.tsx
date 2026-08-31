@@ -54,6 +54,7 @@ export async function ChapterBestTime({ locale }: { locale: string }) {
             city: p.city,
             parkSlug: p.parkSlug,
             name: p.name,
+            countryCode: p.countryCode,
           }))}
         >
           <div className="space-y-4">

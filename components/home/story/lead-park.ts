@@ -10,6 +10,8 @@ export interface LeadPark {
   parkSlug: string;
   name: string;
   href: string;
+  /** ISO country code, for the flag on the picker. */
+  countryCode: string;
 }
 
 /**
@@ -60,25 +62,78 @@ export async function getLeadParks(locale: string): Promise<LeadPark[]> {
         parkSlug: park.slug,
         name: park.name,
         href: park.href,
+        countryCode: park.countryCode,
       };
     })
     .filter((p): p is LeadPark => p !== null);
 }
 
 /**
- * Candidates for a live exhibit, ordered so one of them is always in daylight.
+ * The parks the homepage's day-curve picker offers, in order.
  *
- * The locale's own featured parks first — a reader in Cologne should see
- * Phantasialand, not Orlando. But at 03:00 in Cologne every park on that list is
- * shut, and a chart headed "today" with nothing measured in it is the one thing
- * this section must not be. So the English list is appended behind it: those are
- * the Florida and California parks, which are open while Europe sleeps.
+ * NOT `FEATURED_PARK_SLUGS`. That list answers "which parks does this locale
+ * search for", and for `de` the honest answer is four German parks — which makes
+ * a picker that reads like a German directory and, worse, offers nothing open
+ * between midnight and nine. This list answers a different question: which parks
+ * have a headliner worth drawing, spread across enough of the planet that one of
+ * them is always mid-afternoon.
  *
- * Deduplicated by park slug, so a park both lists name is tried once, in the
- * position the reader's own locale gave it.
+ * Two lists rather than one because the questions differ, and both are curated
+ * by hand: an automatic "pick something far away" would land on whichever park
+ * the catalogue happens to hold, and most of them have no headliner anybody has
+ * heard of.
+ *
+ * Every slug here is one `FEATURED_PARK_SLUGS` already uses somewhere, so none
+ * of them is a new claim about the catalogue — a park that disappears upstream
+ * drops out of both.
+ */
+const CURVE_PARK_SLUGS = [
+  'europa-park', // DE — Voltron Nevera
+  'phantasialand', // DE — Taron
+  'efteling', // NL — Baron 1898
+  'disneyland-park', // FR — Paris
+  'portaventura-park', // ES — Shambhala
+  'gardaland', // IT
+  'magic-kingdom-park', // US, Orlando — open while Europe sleeps
+  'universal-studios-japan', // JP — open while Orlando sleeps
+] as const;
+
+/**
+ * Resolve {@link CURVE_PARK_SLUGS} against the geo structure, keeping this
+ * list's order rather than the catalogue's.
+ *
+ * Reads the same 24 h-cached `getGeoStructure()` as the featured grid, so it
+ * adds no request. A slug the catalogue no longer has is skipped silently here
+ * and warned about by `extractFeaturedParks`, which shares most of them.
  */
 export async function getCurveCandidates(locale: string): Promise<LeadPark[]> {
-  const [own, worldwide] = await Promise.all([getLeadParks(locale), getLeadParks('en')]);
-  const seen = new Set(own.map((p) => p.parkSlug));
-  return [...own, ...worldwide.filter((p) => !seen.has(p.parkSlug))];
+  void locale; // the list is deliberately the same everywhere; see the docblock
+  const geoData = await catchNonFatal(getGeoStructure());
+  if (!geoData) return [];
+
+  const found = new Map<string, LeadPark>();
+  for (const continent of geoData.continents) {
+    for (const country of continent.countries) {
+      for (const city of country.cities) {
+        for (const park of city.parks) {
+          if (
+            !found.has(park.slug) &&
+            (CURVE_PARK_SLUGS as readonly string[]).includes(park.slug)
+          ) {
+            found.set(park.slug, {
+              continent: continent.slug,
+              country: country.slug,
+              city: city.slug,
+              parkSlug: park.slug,
+              name: park.name,
+              href: `/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}`,
+              countryCode: country.code,
+            });
+          }
+        }
+      }
+    }
+  }
+
+  return CURVE_PARK_SLUGS.map((slug) => found.get(slug)).filter((p): p is LeadPark => p != null);
 }

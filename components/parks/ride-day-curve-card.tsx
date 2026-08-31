@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 import { useRideDayCurve } from '@/lib/hooks/use-ride-day-curve';
 import type { RideDayCurve as RideDayCurveData } from '@/lib/api/types';
 import { RideDayCurve, type DayCurveWindow } from '@/components/parks/ride-day-curve';
+import { CountryFlag } from '@/components/common/icons/flags';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { quietWindows } from '@/lib/utils/ride-day-curve-geometry';
 
@@ -58,6 +59,8 @@ export interface DayCurveCandidate {
   parkSlug: string;
   /** Park name, for the switcher. */
   name: string;
+  /** ISO country code — the flag in front of the name. */
+  countryCode: string;
 }
 
 export interface RideDayCurveCardProps {
@@ -214,12 +217,16 @@ export function RideDayCurveCard({ candidates, onExhausted, className }: RideDay
             onClick={() => setPinned(i)}
             aria-pressed={i === active}
             className={cn(
-              'rounded-full border px-3 py-1 text-xs font-medium transition-colors',
+              'inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium transition-colors',
               i === active
                 ? 'border-primary/50 bg-primary/10 text-foreground'
                 : 'border-border bg-card/55 text-muted-foreground hover:border-primary/30 hover:text-foreground'
             )}
           >
+            {/* Decorative: the park name beside it already says where this is,
+                and a screen reader reading "Flagge Deutschland Europa-Park"
+                gains nothing. */}
+            <CountryFlag code={c.countryCode} />
             {c.name}
           </button>
         ))}
