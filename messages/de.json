@@ -980,7 +980,7 @@
       "metaTitleShort": "{park}: {month}",
       "metaDescription": "Wann ist es {inPark} in {city} leer? Andrang pro Tag, Öffnungszeiten, Ferien und Wetter für die nächsten Monate – mit KI-Prognose je Tag.",
       "metaDescriptionNoCity": "Wann ist es {inPark} leer? Andrang pro Tag, Öffnungszeiten, Ferien und Wetter für die nächsten Monate – mit KI-Prognose.",
-      "intro": "Für jeden Tag der nächsten Monate: erwarteter Andrang, Öffnungszeiten, Ferien und Feiertage, die auf den Park wirken. Tippe auf einen Tag für die Details.",
+      "intro": "Für jeden Tag der nächsten Monate: erwarteter Andrang, Öffnungszeiten, Ferien und Feiertage, die {inPark} zählen. Tippe auf einen Tag für die Details.",
       "monthMetaDescription": "Wie voll wird es {inPark} in {city} im {month}? Erwarteter Andrang Tag für Tag, Öffnungszeiten, Schulferien und Wetter – mit KI-Prognose.",
       "monthMetaDescriptionNoCity": "Wie voll wird es {inPark} im {month}? Erwarteter Andrang Tag für Tag, Öffnungszeiten, Schulferien und Wetter.",
       "monthIntro": "Tag für Tag durch den {month}: erwarteter Andrang {inPark}, Öffnungszeiten, Ferien und Wetter. Tippe auf einen Tag für die Details.",
