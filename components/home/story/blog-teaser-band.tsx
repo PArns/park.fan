@@ -44,10 +44,12 @@ export async function BlogTeaserBand({ locale }: { locale: Locale }) {
   const cover = versionedPath(frontmatter.coverImage?.src);
 
   return (
-    // `relative z-20`: the panel drops out of this band over the chapters after
-    // it, and those are unpositioned siblings that would otherwise paint on top.
-    // Below the header's z-50.
-    <section className="border-border bg-muted/30 relative z-20 border-y">
+    // `relative z-40`: the panel drops out of this band ONTO the chapters after
+    // it, and those paint later. Being positioned is not enough — the steps
+    // chapter carries `z-30` of its own (its search dropdown needs it), so at
+    // z-20 this band's panel sat underneath the chapter's headline and the page
+    // read straight through it. Above that, below the header's z-50.
+    <section className="border-border bg-muted/30 relative z-40 border-y">
       <BlogTeaserReveal
         panel={
           rest.length > 0 ? (
