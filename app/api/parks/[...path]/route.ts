@@ -237,6 +237,9 @@ export async function GET(
     try {
       const data = await getRideDayCurve(continent, country, city, park, attraction);
 
+      // `null` is the API's 404 and nothing else: this park has too few measured
+      // days for a curve. Passed through as a 404 because it is the settled
+      // answer — the hook stops asking rather than retrying.
       if (!data) {
         return NextResponse.json({ error: 'Day curve not available' }, { status: 404 });
       }
@@ -245,8 +248,11 @@ export async function GET(
         headers: cdnCacheHeaders('public, s-maxage=300, stale-while-revalidate=600'),
       });
     } catch (error) {
-      console.error('[Ride-Day-Curve API] Error:', error);
-      return NextResponse.json({ error: 'Failed to fetch day curve' }, { status: 500 });
+      // A real failure, and it must not leave here as a 404 — the card walks its
+      // candidate list on a 404 and would quietly hide a broken endpoint behind
+      // six parks in a row that "have no curve".
+      console.error(`[Ride-Day-Curve API] ${continent}/${country}/${city}/${park}:`, error);
+      return NextResponse.json({ error: 'Failed to fetch day curve' }, { status: 502 });
     }
   }
 

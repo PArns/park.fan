@@ -26,6 +26,10 @@ interface HeroInlineSearchProps {
    *
    * The `isGlobal` ⌘K handler is NOT among them — `SearchCommand` defaults it
    * off and neither instance asks for it; the header owns that shortcut.
+   *
+   * It also picks the dropdown's material. The hero's glass is 62 % opaque
+   * because what it lands on is the hero photo; anywhere else it lands on page
+   * text, which reads straight through it.
    */
   primary?: boolean;
 }
@@ -36,6 +40,7 @@ type PanelComponent = ComponentType<{
   initialQuery?: string;
   autoFocus?: boolean;
   onFocusHandled?: () => void;
+  onHero?: boolean;
 }>;
 
 /**
@@ -103,6 +108,7 @@ export function HeroInlineSearch({
           initialQuery={typed ?? undefined}
           autoFocus={pendingFocus}
           onFocusHandled={() => setPendingFocus(false)}
+          onHero={primary}
         />
       ) : (
         <div onClick={primary ? () => trackHeroSearchClicked() : undefined}>

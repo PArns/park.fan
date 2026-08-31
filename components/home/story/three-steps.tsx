@@ -60,7 +60,12 @@ export async function ThreeSteps() {
   const t = await getTranslations('homeStory.steps');
 
   return (
-    <section className="px-4 py-16 sm:py-18">
+    // `relative z-30` because step 1 opens a floating dropdown that reaches past
+    // this section's lower edge. Every later chapter is an unpositioned sibling
+    // and therefore paints ON TOP of it — the results ended up behind the next
+    // chapter's heading. Below the header's z-50, which must stay above
+    // everything.
+    <section className="relative z-30 px-4 py-16 sm:py-18">
       <div className="container mx-auto">
         <Reveal>
           <ChapterHeading
@@ -79,16 +84,17 @@ export async function ThreeSteps() {
               tries first, and a second implementation is a second thing that can
               stop working. `primary={false}` is what keeps the page-wide halves
               of it (type-to-open, the hero click metric) unique. */}
-          <Reveal>
+          {/* A grid item takes `z-index` without `position`, which is what this
+              needs: `Reveal` sets a transform, so each card is its own stacking
+              context and the `z-40` inside the dropdown cannot lift it over the
+              cards that come after it in source order. */}
+          <Reveal className="relative z-10">
             <StepCard step={1} title={t('one.title')} text={t('one.text')}>
               <HeroInlineSearch
                 placeholder={t('one.placeholder')}
                 label={t('one.label')}
                 primary={false}
               />
-              <p className="text-muted-foreground mt-2 text-[11px] leading-relaxed">
-                {t('one.hint')}
-              </p>
             </StepCard>
           </Reveal>
 

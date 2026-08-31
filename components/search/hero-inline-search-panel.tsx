@@ -34,7 +34,16 @@ interface HeroInlineSearchPanelProps {
   /** Focus the input on mount — set when the visitor's own interaction pulled this chunk in. */
   autoFocus?: boolean;
   /** Called once the mount-focus has been dealt with, taken or declined. */
-  onFocusHandled?: () => void;
+  onFocusHandled?: () => void; /**
+   * `false` when the field does not sit on the hero photo.
+   *
+   * The dropdown is real glass at 62 % on purpose: in the hero it lands on the
+   * photo, the scrim and the plate, all smooth and all beautiful under blur. On
+   * a flat page it lands on whatever text happens to be under it, and that text
+   * reads straight through — in the homepage's step card the card's own hint
+   * ghosted up through the result rows.
+   */
+  onHero?: boolean;
 }
 
 /**
@@ -52,6 +61,7 @@ export default function HeroInlineSearchPanel({
   initialQuery = '',
   autoFocus = false,
   onFocusHandled,
+  onHero = true,
 }: HeroInlineSearchPanelProps) {
   const [query, setQuery] = useState(initialQuery);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -293,7 +303,12 @@ export default function HeroInlineSearchPanel({
           // Same marker the shell's skeleton carries, so `pnpm check:hero-search-rest` measures
           // the two against each other.
           data-hero-search-card=""
-          className="border-border/60 mt-3 flex max-h-[var(--hero-search-max-h,32rem)] flex-col overflow-hidden p-0 shadow-2xl"
+          className={cn(
+            'border-border/60 mt-3 flex max-h-[var(--hero-search-max-h,32rem)] flex-col overflow-hidden p-0 shadow-2xl',
+            // The header's own dropdown band uses this pair for the same reason:
+            // a surface that has to be readable over arbitrary page content.
+            !onHero && 'bg-popover/95 dark:bg-popover/95'
+          )}
         >
           <SearchResultsPanel
             query={query}

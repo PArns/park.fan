@@ -168,6 +168,17 @@ export const getParkHistoricalStatsSeed = cache(async function getParkHistorical
  * One ride's day curve. `attraction` pins a ride; without it the backend picks
  * the park's busiest ride that actually reported today, so the answer is not a
  * closed or out-of-season one.
+ *
+ * **Only a 404 is an answer.** It means "this park has no readable curve" —
+ * too few measured days — and the caller draws nothing, which is correct and
+ * needs no alarm. Every other failure is an outage and THROWS.
+ *
+ * The first version returned `null` for both, and that one line cost a day of
+ * debugging: a 500 became a 404 at the route handler, became "no curve" at the
+ * hook, became "try the next park" at the card, and six parks later the homepage
+ * chapter rendered empty with not one line in any log saying why. A broken
+ * endpoint and a thin park are not the same thing and must not arrive as the
+ * same value.
  */
 export async function getRideDayCurve(
   continent: string,
@@ -179,13 +190,17 @@ export async function getRideDayCurve(
   const query = attraction ? `?attraction=${encodeURIComponent(attraction)}` : '';
   const url = `${getApiBaseUrl()}/v1/parks/${continent}/${country}/${city}/${parkSlug}/stats/day${query}`;
 
-  try {
-    const res = await fetch(url, { headers: getServerApiHeaders() });
-    if (!res.ok) return null;
-    return (await res.json()) as RideDayCurve;
-  } catch {
-    return null;
+  const res = await fetch(url, { headers: getServerApiHeaders() });
+  if (res.status === 404) return null;
+  if (!res.ok) {
+    // The body carries the API's own message for a 500; a truncated copy of it
+    // is the difference between "it is broken" and knowing which query broke.
+    const body = await res.text().catch(() => '');
+    throw new Error(
+      `day curve ${parkSlug}: ${res.status} ${res.statusText}${body ? ` — ${body.slice(0, 200)}` : ''}`
+    );
   }
+  return (await res.json()) as RideDayCurve;
 }
 
 export const getParkHourlyProfileSeed = cache(async function getParkHourlyProfileSeed(
