@@ -1,7 +1,12 @@
 import { getTranslations, getLocale } from 'next-intl/server';
-import { BarChart3, Database } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { StatsCard } from '@/components/common/stats-card';
+import {
+  getSectionHeadingLabels,
+  GlobalStatsHeading,
+  PlatformStatsHeading,
+} from '@/components/home/section-headings';
+import { STORY_SECTION, STORY_SECTION_TINTED } from '@/components/home/story/section-chrome';
 import { CompactNumberWithTooltip } from '@/components/common/compact-number-with-tooltip';
 import { GlobalStatsLiveCounts } from '@/components/home/global-stats-live-counts';
 import { ParkCard } from '@/components/parks/park-card';
@@ -28,11 +33,12 @@ import {
  * pending the homepage <Suspense> shows its skeleton; on error the section is omitted.
  */
 export async function GlobalStatsSection() {
-  const [t, tCommon, tGeo, locale] = await Promise.all([
+  const [t, tCommon, tGeo, locale, headingLabels] = await Promise.all([
     getTranslations('stats'),
     getTranslations('common'),
     getTranslations('geo'),
     getLocale(),
+    getSectionHeadingLabels(),
   ]);
   const stats = await catchNonFatal(getGlobalStats());
   if (!stats) return null;
@@ -42,13 +48,13 @@ export async function GlobalStatsSection() {
   return (
     <>
       {/* Global Stats */}
-      <section className="bg-muted/30 px-4 py-12">
+      <section className={STORY_SECTION_TINTED}>
         <div className="container mx-auto">
-          <div className="mb-2 flex items-center gap-2">
-            <BarChart3 className="text-primary h-5 w-5" />
-            <h2 className="text-xl font-bold">{t('globalStats')}</h2>
-          </div>
-          <p className="text-muted-foreground mb-8 text-sm">{t('globalStatsIntro')}</p>
+          {/* The evidence for the six reasons above it, so it opens like every
+            other chapter on this page rather than with a header of its own.
+            Shared with GlobalStatsSkeleton, which mounts the same node — see
+            components/home/section-headings.tsx. */}
+          <GlobalStatsHeading labels={headingLabels} />
 
           {/* First row — the two headline "right now" counts, live via client overlay */}
           <GlobalStatsLiveCounts
@@ -238,13 +244,9 @@ export async function GlobalStatsSection() {
       </section>
 
       {/* Platform Statistics */}
-      <section className="px-4 py-12">
+      <section className={STORY_SECTION}>
         <div className="container mx-auto">
-          <div className="mb-2 flex items-center gap-2">
-            <Database className="text-primary h-5 w-5" />
-            <h2 className="text-xl font-bold">{t('platformStats')}</h2>
-          </div>
-          <p className="text-muted-foreground mb-8 text-sm">{t('platformStatsDescription')}</p>
+          <PlatformStatsHeading labels={headingLabels} />
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {/* Total Wait Time */}

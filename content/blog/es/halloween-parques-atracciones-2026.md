@@ -198,7 +198,7 @@ El desarrollo está cronometrado: acceso a las 17:45, food court desde las 18
 349 €). Algunos extras se pagan aparte: la experience de contacto pleno THE
 HOTEL (29 €), el club THE FORBIDDEN (10 €) y una breve VR de terror (6 €).
 
-Por el aniversario vuelve el **Vampire's Club**, y para exactamente cuatro
+Por el aniversario vuelve el **Vampire’s Club**, y para exactamente cuatro
 noches: 25 y 26 de septiembre, 2 y 3 de octubre. Esas noches ocupa el lugar de
 THE FORBIDDEN, y Marc Terenzi se sube él mismo al escenario. Después de más de
 una década de distancia entre él y el evento, es la clase de nota al pie que

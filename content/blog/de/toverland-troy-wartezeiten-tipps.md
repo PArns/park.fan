@@ -217,7 +217,7 @@ ein Jahr stehen zu lassen, zog der Park sie vor: ein paar Vorab-Tage in der
 Woche ab dem 24. September 2012, Pressefahrt am 26., und ab Samstag, dem
 **29. September 2012**, durfte jeder mitfahren, gut fünf Wochen lang bis zum 4. November. Über den Winter machte sie wieder zu, damit drumherum weitergebaut
 werden konnte, und kam im **April 2013** mit dem kompletten Themenbereich
-zurück, jetzt als Dwervelwind statt wie 2012 als d'wervelwind. Deshalb liest man
+zurück, jetzt als Dwervelwind statt wie 2012 als d’wervelwind. Deshalb liest man
 je nach Quelle 2012 oder 2013. Beides stimmt.
 
 **[Toos-Express](ref:attractiepark-toverland/toos-express)** aus dem Eröffnungsjahr 2001 ist
@@ -226,7 +226,7 @@ Achterbahn fahren.
 
 Die Nass- und Dunkel-Abteilung ist besser als ihr Ruf:
 
-- **[Merlin's Quest](ref:attractiepark-toverland/merlins-quest)** (2018), die Bootsfahrt durch
+- **[Merlin’s Quest](ref:attractiepark-toverland/merlins-quest)** (2018), die Bootsfahrt durch
   Merlins Turm, mit Animatronics und einer Szenenfolge, für die andere Parks
   Eintritt extra nehmen würden. Der stille Star von Avalon.
 - **[Djengu River](ref:attractiepark-toverland/djengu-river)**, die Wildwasser-Rafting-Anlage
@@ -278,7 +278,7 @@ trotzdem pünktlich zur Saison.
 der aus dem Ausflugsziel einen Themenpark machte: eine Erweiterung für
 35 Millionen Euro, mit einem komplett neuen Eingangsbereich im mediterranen
 Hafenstil (**Port Laguna**) und der Artus-Welt **Avalon**, in der
-[Fēnix](ref:attractiepark-toverland/fenix) und [Merlin's Quest](ref:attractiepark-toverland/merlins-quest)
+[Fēnix](ref:attractiepark-toverland/fenix) und [Merlin’s Quest](ref:attractiepark-toverland/merlins-quest)
 stehen. Damals bekam der Park auch seinen heutigen Claim, „Discover your own
 magic“, der die alten Sprüche „Magisch mooi“ und „Feel the Magic“ ablöste. Im
 selben Jahr räumte Toverland bei den **European Star Awards** ab:

@@ -46,7 +46,7 @@ seo:
 ---
 
 Some places work like a switch. You walk through a turnstile and the stuff that
-was gnawing at you two hours ago is gone. Not suppressed, actually gone. I don't
+was gnawing at you two hours ago is gone. Not suppressed, actually gone. I don’t
 know many places that manage that, and the few that do are, in the cold light of
 day, built out of plywood and paint by people you never get to see.
 
@@ -65,7 +65,7 @@ with mechanically moving figures. Red Riding Hood, Cinderella, Ali Baba.
 That fairy-tale forest is older than anything else in the park. When
 Phantasialand opened on 30 April 1967, it was the very first attraction, built
 from the collection of puppeteer Richard Schmidt, who set the park up together
-with showman Gottlieb Löffelhardt. And because puppets alone don't make a story,
+with showman Gottlieb Löffelhardt. And because puppets alone don’t make a story,
 every scene had a button. Press it once and a tape reel told you the fairy tale.
 
 I pressed those buttons, and when my parents were already two scenes ahead I ran
@@ -81,11 +81,11 @@ Then there was the **“1001 Nacht”** gondola ride, running from 1970 and the
 first stationary dark ride in Germany. By the late eighties it was a fixed part
 of every family visit. My parents and me in one of those gondolas, eight metres
 above the ground, on a journey that went a little deeper into another world with
-every metre. In through the huge dragon's mouth, past the scenes of Ali Baba and
+every metre. In through the huge dragon’s mouth, past the scenes of Ali Baba and
 Sinbad, past the legendary Rok bird, into a dripstone cave you could fall into
 the way you fall into an open book of fairy tales.
 
-My father died in 2019. Maybe that's exactly why those shared rides have become
+My father died in 2019. Maybe that’s exactly why those shared rides have become
 so precious to me. They keep my childhood alive, and with it the memory of the
 man who glided through those worlds next to me.
 
@@ -94,10 +94,10 @@ man who glided through those worlds next to me.
 Whenever my father was away on the road as a lorry driver, my mother simply
 took the wheel. She was the one I discovered a lot of other parks with, above
 all [Movie Park](ref:movie-park-germany?bare), back then still Warner Bros.
-Movie World. That's where I rode my first ever roller coaster,
+Movie World. That’s where I rode my first ever roller coaster,
 **Lethal Weapon Pursuit**: two trains styled as American police cars racing each
 other through an enclosure built to look like a warehouse, loop against loop.
-Germany's only duelling coaster, running as “Cop Car Chase” from 2005, torn down
+Germany’s only duelling coaster, running as “Cop Car Chase” from 2005, torn down
 in October 2006. The ride is gone. The addiction it triggered is not. Strictly
 speaking, my mother is to blame for everything that followed.
 
@@ -112,7 +112,7 @@ me memories that shaped my life. This is my way of giving something back.
 Parks built with real love never stop adding new moments.
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?bare) has been one of
 those since June 2011: an interactive dark ride in which pest controller Oskar
-Koslowski rids pâtissier Gustav E. Lehmann's bakery of mice, armed with a piping
+Koslowski rids pâtissier Gustav E. Lehmann’s bakery of mice, armed with a piping
 bag, spread across 48 3D screens and six minutes of ride time. A fresh high
 score still puts the same childish grin on my face it did back then. Even though
 my girlfriend has the remarkable habit of snatching the 5000-point mice at
@@ -123,16 +123,16 @@ One triumph is mine alone, though. After what feels like a hundred rides I
 finally found it, the **10,000-point mouse in the second room**. Where exactly
 it sits? That stays my secret, with all due respect to the question.
 
-Here's something I didn't know for a long time, and it still stops me short
+Here’s something I didn’t know for a long time, and it still stops me short
 every time: Maus au Chocolat was built in 2011 on exactly the ground where the
-gondola ride stood until 2009. When I'm in there arguing over points with my
-girlfriend, I'm sitting in a building that stands where I rode through the
-dragon's mouth with my father as a child. Same patch of earth, thirty years and
+gondola ride stood until 2009. When I’m in there arguing over points with my
+girlfriend, I’m sitting in a building that stands where I rode through the
+dragon’s mouth with my father as a child. Same patch of earth, thirty years and
 a whole life in between.
 
-Afterwards, pancakes and shakes at **Phenie's** in Wuze Town, fluffy and
-magnificent and far too good for theme park catering. That's the point at which
-you understand what this park bases its claim on when it calls itself “Europe's
+Afterwards, pancakes and shakes at **Phenie’s** in Wuze Town, fluffy and
+magnificent and far too good for theme park catering. That’s the point at which
+you understand what this park bases its claim on when it calls itself “Europe’s
 Most Immersive Theme Park”.
 
 ## Orlando, May 2026, once in a lifetime
@@ -140,8 +140,8 @@ Most Immersive Theme Park”.
 ![Animatronic velociraptor head in the red-lit raptor paddock of the VelociCoaster | Islands of Adventure: the raptor in the paddock, close enough to touch. | right](/media/velocicoaster/02-raptor-paddock.jpg)
 
 That left one big item on the life list with no tick next to it. In May 2026 we finally flew to Orlando: **Walt Disney World,
-Universal and SeaWorld**, the full programme, the once-in-a-lifetime trip I'd
-dreamed about since childhood. There's a strange kind of beauty in the boy from
+Universal and SeaWorld**, the full programme, the once-in-a-lifetime trip I’d
+dreamed about since childhood. There’s a strange kind of beauty in the boy from
 the Märchensee standing in front of Cinderella Castle at the
 [Magic Kingdom](ref:magic-kingdom-park?bare) decades later. Everything bigger,
 everything louder, everything further from Brühl, and still exactly the same
@@ -151,7 +151,7 @@ at [Islands of Adventure](ref:universal-islands-of-adventure?bare), orcas and
 Manta at [SeaWorld](ref:seaworld-orlando?bare). Two weeks that felt like keeping
 a very old promise to myself.
 
-I'm still sorting the pictures and the reports are in progress; both land right
+I’m still sorting the pictures and the reports are in progress; both land right
 here on the blog over the coming weeks. One thing up front: it was worth every
 single year of anticipation.
 
@@ -221,22 +221,22 @@ comes out of that is on the [Fancast page](/fancast).
 
 ## When is the best day? Is a Sunday worth it?
 
-It's always the same three questions a park visit raises, long before anyone is
+It’s always the same three questions a park visit raises, long before anyone is
 in the car. When is the best day? Is a Sunday worth it? And how busy will it
 really get?
 
-That's exactly what park.fan was built for. Every park page has a calendar of
+That’s exactly what park.fan was built for. Every park page has a calendar of
 the best days to visit, up to a year ahead, fed with school holiday calendars,
-weather forecasts, opening hours and the park's complete wait-time history.
+weather forecasts, opening hours and the park’s complete wait-time history.
 Looking into that data clears out a few gut feelings along the way. A Sunday in
 grey November can be calmer than any Tuesday during the North Rhine-Westphalian
 summer holidays. A bridge day is almost never a good idea. And the “insider tip”
 of going in the rain works exactly as long as it takes everyone else to read the
 same insider tip.
 
-The answer isn't “Sundays are busy”, it's: _this_ Sunday, in _this_ park, at
+The answer isn’t “Sundays are busy”, it’s: _this_ Sunday, in _this_ park, at
 _this_ time of year. Green, amber or red. Open the calendar, look at the colour,
-decide. And once you're in the park, the live data tells you whether the queue
+decide. And once you’re in the park, the live data tells you whether the queue
 in front of you is the exception or the rule.
 
 ## What park.fan does differently
@@ -252,7 +252,7 @@ So we go a few steps further:
 - **The calendar of best days.** Holidays, weather, schedules and years of
   history condensed into one simple answer: go, or better not.
 - **Hit rates in public.** Every forecast is later held against the wait time
-  actually measured. If you want to know how good the model is, you don't have
+  actually measured. If you want to know how good the model is, you don’t have
   to take my word for it, you can look it up on the [Fancast page](/fancast).
 - **Everything in one place.** Wait times, crowd levels, weather at the park
   entrance, opening hours and attraction histories, in six languages.
@@ -285,7 +285,7 @@ exactly the park being visited. Not “it was lovely”, but:
 was the plan, this worked, this went badly wrong.” The Orlando trip above kicks
 things off: Disney World, Universal and SeaWorld, pictures included.
 
-**Data deep dives.** What does a park's wait-time history _really_ tell you?
+**Data deep dives.** What does a park’s wait-time history _really_ tell you?
 When is [Taron](ref:phantasialand/taron?bare) most worth it? And do our
 forecasts hold up to what they promise?
 
@@ -298,27 +298,27 @@ park.fan, so what you read is what the park is actually doing at this moment. Th
 [Taron](ref:phantasialand/taron?full)
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?full)
 
-Because weather is the factor that tips a park day fastest, here's the
+Because weather is the factor that tips a park day fastest, here’s the
 situation right now at the [Phantasialand](ref:phantasialand?bare) entrance:
 
 ```weather-widget slug=phantasialand
 
 ```
 
-## Who's writing here
+## Who’s writing here
 
-Me, **Patrick**. Tap my name at the top and you'll land on my profile. Backend
+Me, **Patrick**. Tap my name at the top and you’ll land on my profile. Backend
 developer from Germany, coaster junkie since the stroller, data person by
 calling. More tech and side project material at [arns.dev](https://arns.dev).
 
-## What won't happen here
+## What won’t happen here
 
 park.fan costs nothing, shows no ads and belongs to nobody but curiosity. If a
 park is badly run, it says so here. If an app is worse than the official one,
-that goes here too. Got a topic that's bugging you? Write to me, the address is
+that goes here too. Got a topic that’s bugging you? Write to me, the address is
 in the [imprint](/impressum).
 
-And because it simply had to be, there's now even a **park.fan song**. Yes,
+And because it simply had to be, there’s now even a **park.fan song**. Yes,
 really:
 
 [More loops, less standing around, the unofficial park.fan anthem](https://suno.com/song/1b686ccc-85d3-465c-b69a-7eac1dbd5acb)
@@ -327,16 +327,16 @@ Thank you for reading this far. This place, the platform, the blog, all of it,
 is my thank-you to a park by a fairy-tale lake, to parents who took a small boy
 there again and again, to a father in a gondola, and to every single person who
 loves theme parks as much as I do. And now: go queue up. But only if the data
-says it's worth it.
+says it’s worth it.
 
 — Patrick
 
 _P.S.: Yes, the 10,000-point mouse in the second room of Maus au Chocolat really
-exists. No, I'm not telling you where it sits, find it yourself. And should you
+exists. No, I’m not telling you where it sits, find it yourself. And should you
 spot a 5000-pointer along the way: hands off, I need that one for the rematch._
 
 _P.P.S.: To Silas aka [Parkfan95](https://parkfan95.de): I had already bought
 the park.fan domain before you renamed yourself from EPFan95 to Parkfan95, pure
 coincidence, I promise. And to everyone who actually meant to visit him and
 ended up here instead: sorry! Head over to
-[parkfan95.de](https://parkfan95.de), it's worth the trip._
+[parkfan95.de](https://parkfan95.de), it’s worth the trip._

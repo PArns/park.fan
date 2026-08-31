@@ -7,7 +7,7 @@ mode: published
 excerpt: >-
   60 Minuten Wartezeit, und trotzdem vergeht die Zeit wie im Flug? Hinter jeder
   guten Warteschlange stecken Psychologie, Storytelling und knallharte
-  Kapazitäts-Mathematik. Ein Deep Dive von der Pre-Show bis zu Little's Law,
+  Kapazitäts-Mathematik. Ein Deep Dive von der Pre-Show bis zu Little’s Law,
   und mittendrin der Grund, warum es park.fan gibt.
 tags:
   - wartezeiten
@@ -36,7 +36,7 @@ seo:
     - Wartezeiten Prognose
     - Durchsatz Achterbahn
     - Kapazität Freizeitpark
-    - Little's Law
+    - Little’s Law
     - Virtual Queue
     - Pre-Show
     - Peak-End-Regel
@@ -119,7 +119,7 @@ Wahrheit angewandte Kognitionspsychologie.
 
 Die eleganteste Waffe gegen tote Zeit ist die **Pre-Show**, die das Warten
 einfach zum Teil der Attraktion umdeklariert. Das Paradebeispiel steht in den
-[Disney's Hollywood Studios](ref:disneys-hollywood-studios?bare): Beim
+[Disney’s Hollywood Studios](ref:disneys-hollywood-studios?bare): Beim
 [Tower of Terror](ref:disneys-hollywood-studios/the-twilight-zone-tower-of-terror)
 schiebst du dich nicht durch einen Korridor, sondern durch die verstaubte Lobby
 des Hollywood Tower Hotels in eine Bibliothek, in der ein Video im Stil der
@@ -155,9 +155,9 @@ kommen.
 
 Die Queue von
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage)
-in [Disney's Animal Kingdom](ref:disneys-animal-kingdom-theme-park?bare) ist im Grunde ein
+in [Disney’s Animal Kingdom](ref:disneys-animal-kingdom-theme-park?bare) ist im Grunde ein
 begehbares Museum mit Flugsimulator-Ausgang. Erst windet sich der Weg durch die
-Landschaft Pandoras und Höhlen mit Malereien der Na'vi, dann durch ein
+Landschaft Pandoras und Höhlen mit Malereien der Na’vi, dann durch ein
 verlassenes Forschungslabor, inklusive eines lebensgroßen Avatars, der in einem
 Amnio-Tank schwebt und so überzeugend atmet, dass regelmäßig Menschen stehen
 bleiben und die Schlange aufhalten. Eine Warteschlange, die sich selbst
@@ -252,7 +252,7 @@ Wartezeiten der Headliner messbar ein, und wer die Show schon kennt, fährt in
 dieser Stunde am günstigsten. Genau für solche Momente aktualisieren wir die
 Wartezeiten im Minutentakt.
 
-![Tausende Zuschauer im nächtlichen Amphitheater von Fantasmic! in Disney's Hollywood Studios | Fantasmic! in den Hollywood Studios: knapp 10.000 Menschen pro Vorstellung, eine ganze Besucherwelle, die für diese halbe Stunde garantiert nirgends in der Coaster-Schlange steht. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
+![Tausende Zuschauer im nächtlichen Amphitheater von Fantasmic! in Disney’s Hollywood Studios | Fantasmic! in den Hollywood Studios: knapp 10.000 Menschen pro Vorstellung, eine ganze Besucherwelle, die für diese halbe Stunde garantiert nirgends in der Coaster-Schlange steht. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
 ## Kapazität und Durchsatz: Das mathematische Geheimnis
 
@@ -347,12 +347,12 @@ Gäste einsteigen: eine **Rolling Station**, quasi das Omnimover-Prinzip für
 Achterbahnen. Bei nur acht Plätzen pro Zug (hintereinander, wie auf einem sehr
 entschlossenen Fahrrad) zählt eben jede Sekunde, die der Zug nicht steht.
 
-## Little's Law: Die Formel hinter jeder Wartezeit-Anzeige
+## Little’s Law: Die Formel hinter jeder Wartezeit-Anzeige
 
 Die Formel, die beide Seiten zusammenbindet, ist eines der elegantesten
 Ergebnisse der Warteschlangentheorie. Der MIT-Professor **John D. C. Little**
 bewies 1961 den Zusammenhang, der heute
-[Little's Law](https://en.wikipedia.org/wiki/Little%27s_law) heißt:
+[Little’s Law](https://en.wikipedia.org/wiki/Little%27s_law) heißt:
 
 > **L = λ × W**: die Anzahl der Wartenden (L) ist gleich Ankunftsrate (λ) mal
 > Wartezeit (W).
@@ -397,9 +397,9 @@ Größen: **Nachfrage** (wie viele Menschen wollen heute zu dieser Bahn?) und
 wofür seine Formel heute so alles benutzt wird. Wie oft unsere Prognosen die
 Realität treffen, steht auf der [Fancast-Seite](/fancast).
 
-## Warum Peter Pan's Flight immer „eskaliert“
+## Warum Peter Pan’s Flight immer „eskaliert“
 
-Warum hat ausgerechnet **Peter Pan's Flight**, ein gemütlicher Dark Ride von
+Warum hat ausgerechnet **Peter Pan’s Flight**, ein gemütlicher Dark Ride von
 1955er-Bauart, keine Achterbahn, kein Thrill, in praktisch jedem Disney-Park
 der Welt, vom
 [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park?bare) bis
@@ -408,7 +408,7 @@ nach Orlando, quasi permanent 45+ Minuten auf der Anzeige?
 Dafür gibt es drei Gründe, und alle drei sind Rechnerei:
 
 1. **Piratenschiffe sind keine Massentransportmittel.**
-   [Peter Pan's Flight in Paris](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight?bare)
+   [Peter Pan’s Flight in Paris](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight?bare)
    schickt **16 Galeonen** über London, und in jede passen, großzügig gezählt,
    fünf Menschen. Das ist die Beförderungskapazität eines mittleren Fahrstuhls,
    verteilt auf einen ganzen Nachthimmel. Inoffizielle Zählungen kommen auf
@@ -433,7 +433,7 @@ Dafür gibt es drei Gründe, und alle drei sind Rechnerei:
 Das Phänomen ist übrigens weltweit messbar. Hier die Live-Wartezeiten der
 Orlando-Version im meistbesuchten Park der Welt, direkt aus unseren Daten:
 
-[Peter Pan's Flight](ref:magic-kingdom-park/peter-pans-flight?full)
+[Peter Pan’s Flight](ref:magic-kingdom-park/peter-pans-flight?full)
 
 ## Europa wartet anders: Phantasialand & Europa-Park vs. Orlando
 
@@ -472,7 +472,7 @@ Schlangen, wenn zu wenige Attraktionen den Andrang gleichzeitig auffangen
 können.
 
 Die Zahlen dazu sind fast schon komisch. Taron schafft rund **1.200 Gäste pro
-Stunde**, also ziemlich genau so viele wie Peter Pan's Flight in Paris. Der
+Stunde**, also ziemlich genau so viele wie Peter Pan’s Flight in Paris. Der
 Unterschied liegt nicht an der Bahn, sondern daran, worauf sich die Nachfrage
 drumherum verteilen kann. In Paris steht Peter Pan zwischen Dutzenden
 Alternativen. In Brühl hat an einem Ferien-Samstag ein erheblicher Teil des
@@ -514,7 +514,7 @@ Kleiner Selbstversuch fürs nächste Mal: Du stehst in der Schlange, vor dir
 Sofort, reflexhaft, als würde die Lücke sonst jemand klauen. Und das ist, mit
 Verlaub, vollkommen sinnlos.
 
-Denn Little's Law von eben sagt es glasklar: Deine Wartezeit hängt am Durchsatz
+Denn Little’s Law von eben sagt es glasklar: Deine Wartezeit hängt am Durchsatz
 der Station ganz vorne, nicht am Abstand zu deinem Vordermann. Ob du dich an
 ihn heranschiebst oder zwei Meter Luft lässt, ändert deine Position in der
 Reihe um exakt null Plätze. Du bewegst dich zwei Meter, vorne ankommen tust du
@@ -607,7 +607,7 @@ anders. Drei Fragen bleiben, und für jede gibt es auf park.fan eine Antwort:
 
 - **Wie lang ist die Schlange _wirklich_, genau jetzt?** Dafür gibt es unsere
   **Live-Wartezeiten**: über 200 Parks, 7.000 Attraktionen, im Minutentakt.
-  Little's Law in Echtzeit, ohne dass du die 640 Leute vor dir selbst zählen
+  Little’s Law in Echtzeit, ohne dass du die 640 Leute vor dir selbst zählen
   musst.
 - **Ist das gerade viel oder normal?** Das verraten die **Langzeit-Statistiken**
   jeder Attraktion, denn 45 Minuten sind je nach Park ein Ärgernis oder ein
@@ -643,7 +643,7 @@ ich habe es schriftlich, dass mein Zeitgefühl dabei um 36 Prozent übertreibt._
 - Zur ~36-%-Überschätzung (Hornik 1984): [Consumer Perception and Evaluation of Waiting Time: A Field Experiment](https://www.researchgate.net/publication/40129944_Consumer_Perception_and_Evaluation_of_Waiting_Time_A_Field_Experiment) (Journal of Consumer Research)
 - Alex Stone: [Why Waiting Is Torture](https://www.nytimes.com/2012/08/19/opinion/sunday/why-waiting-in-line-is-torture.html) (New York Times, 2012)
 - Daniel Kahneman et al.: [Peak-End-Regel](https://en.wikipedia.org/wiki/Peak%E2%80%93end_rule)
-- John D. C. Little: [A Proof for the Queuing Formula L = λW](https://pubsonline.informs.org/doi/10.1287/opre.9.3.383) (Operations Research, 1961) · [Little's Law erklärt](https://en.wikipedia.org/wiki/Little%27s_law)
+- John D. C. Little: [A Proof for the Queuing Formula L = λW](https://pubsonline.informs.org/doi/10.1287/opre.9.3.383) (Operations Research, 1961) · [Little’s Law erklärt](https://en.wikipedia.org/wiki/Little%27s_law)
 - Zum Phantom-Stau: Sugiyama et al., [Traffic jams without bottlenecks](https://iopscience.iop.org/article/10.1088/1367-2630/10/3/033001) (New Journal of Physics, 2008) · [MIT „Jamitons“](https://www.sciencedaily.com/releases/2009/06/090608151550.htm)
 - Zum „Faster-is-slower“-Effekt: Helbing, Farkas & Vicsek, [Simulating dynamical features of escape panic](https://www.nature.com/articles/35035023) (Nature, 2000)
 - Technische Daten: [The Incredible Hulk Coaster](https://rcdb.com/557.htm), [Hollywood Rip Ride Rockit](https://rcdb.com/3866.htm) und [YOY](https://rcdb.com/20669.htm) auf RCDB · [Mack-Rides-Factsheet zu Voltron Nevera](https://mack.group/en/press-media/press-releases/2024-04-24/fact-sheet-voltron-nevera-powered-by-rimac) · [Die Technik hinter Voltron (Coaster101)](https://www.coaster101.com/2025/05/29/the-tech-behind-voltron/) · [YoY mit Rolling Station (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/walibi_holland/attraktionen/yoy-c681)

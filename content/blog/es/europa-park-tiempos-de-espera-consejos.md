@@ -771,7 +771,7 @@ atracciones de ese parque:
 [Unknown](ref:traumatica/unknown),
 [Studio -13](ref:traumatica/studio-13),
 [Rotters Road](ref:traumatica/rotters-road),
-[Grim's Funhouse](ref:traumatica/grims-funhouse),
+[Grim’s Funhouse](ref:traumatica/grims-funhouse),
 [The Hill](ref:traumatica/the-hill) y el
 [Tarot House](ref:traumatica/tarot-house).
 

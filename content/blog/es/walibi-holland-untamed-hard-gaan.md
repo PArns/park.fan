@@ -429,7 +429,7 @@ un sistema de sujeción.
   **[Crazy River](ref:walibi-holland/crazy-river)** son el departamento
   acuático, **[Space Shot](ref:walibi-holland/space-shot)** y
   **[Skydiver](ref:walibi-holland/skydiver)** las torres de caída, y
-  **[Merlin's Magic Castle](ref:walibi-holland/merlins-magic-castle)** el único
+  **[Merlin’s Magic Castle](ref:walibi-holland/merlins-magic-castle)** el único
   dark ride destacable del parque.
 
 ![Barcas en el canal de Crazy River, detrás un edificio de madera | Crazy River es la atracción de troncos de la Zero Zone. Como siempre en este tipo: delante se moja uno más. | left](/media/walibi-holland/crazy-river-4x3.jpg)

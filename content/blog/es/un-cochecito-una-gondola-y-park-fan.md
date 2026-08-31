@@ -137,9 +137,9 @@ estoy sentado en un edificio que se levanta donde de niño atravesaba las fauces
 del dragón con mi padre. El mismo trozo de tierra, treinta años y una vida
 entera de por medio.
 
-Después, tortitas y batidos en el **Phenie's** de Wuze Town, esponjosas,
+Después, tortitas y batidos en el **Phenie’s** de Wuze Town, esponjosas,
 espléndidas y demasiado buenas para ser restauración de parque. A más tardar
-entonces se entiende en qué basa este parque su pretensión de llamarse «Europe's
+entonces se entiende en qué basa este parque su pretensión de llamarse «Europe’s
 Most Immersive Theme Park».
 
 ## Orlando, mayo de 2026, una vez en la vida

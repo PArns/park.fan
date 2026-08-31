@@ -1,9 +1,9 @@
-import { getTranslations } from 'next-intl/server';
-import { Globe } from 'lucide-react';
 import { getGeoStructure } from '@/lib/api/discovery';
 import { getGeoLiveStats } from '@/lib/api/analytics';
 import { catchNonFatal } from '@/lib/api/client';
 import { LiveActivityGrid, type ContinentCard } from '@/components/home/live-activity-grid';
+import { getSectionHeadingLabels, LiveActivityHeading } from '@/components/home/section-headings';
+import { STORY_SECTION_TINTED } from '@/components/home/story/section-chrome';
 
 /**
  * "Parks open now" — per-continent open-park counts, server-rendered into the homepage shell.
@@ -15,10 +15,10 @@ import { LiveActivityGrid, type ContinentCard } from '@/components/home/live-act
  * neither fetch blocks the hero; on error the section is omitted.
  */
 export async function LiveActivitySection() {
-  const [tHome, geoData, geoLive] = await Promise.all([
-    getTranslations('home'),
+  const [geoData, geoLive, headingLabels] = await Promise.all([
     catchNonFatal(getGeoStructure()),
     catchNonFatal(getGeoLiveStats()),
+    getSectionHeadingLabels(),
   ]);
 
   const continents: ContinentCard[] =
@@ -33,13 +33,13 @@ export async function LiveActivitySection() {
   if (continents.length === 0) return null;
 
   return (
-    <section className="px-4 py-12">
+    <section className={STORY_SECTION_TINTED}>
       <div className="container mx-auto">
-        <div className="mb-2 flex items-center gap-2">
-          <Globe className="text-primary h-5 w-5" />
-          <h2 className="text-xl font-bold">{tHome('sections.liveNow')}</h2>
-        </div>
-        <p className="text-muted-foreground mb-8 text-sm">{tHome('sections.liveNowIntro')}</p>
+        {/* A chapter heading rather than the bare `text-xl font-bold` h2 this
+          section used to draw. In its own file so LiveActivitySkeleton mounts
+          the identical node — the heading needs no data, and its height moves
+          with how the title wraps. */}
+        <LiveActivityHeading labels={headingLabels} />
         <LiveActivityGrid continents={continents} />
       </div>
     </section>

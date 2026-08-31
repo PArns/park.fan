@@ -182,7 +182,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Una zona autónoma dentro de un parque temático construida en torno a un tema coherente.',
     definition:
-      "Una zona temática es un área delimitada dentro de un parque temático que combina un diseño visual unificado, una historia de fondo y atracciones, restaurantes y tiendas a juego. Ejemplos famosos incluyen El Mundo Mágico de Harry Potter en Universal, Star Wars: Galaxy's Edge en Disney y Polynesia en PortAventura. Las zonas temáticas crean una experiencia inmersiva y suelen ser las zonas más fotografiadas del parque.",
+      'Una zona temática es un área delimitada dentro de un parque temático que combina un diseño visual unificado, una historia de fondo y atracciones, restaurantes y tiendas a juego. Ejemplos famosos incluyen El Mundo Mágico de Harry Potter en Universal, Star Wars: Galaxy’s Edge en Disney y Polynesia en PortAventura. Las zonas temáticas crean una experiencia inmersiva y suelen ser las zonas más fotografiadas del parque.',
     aliases: ['Zonas temáticas'],
     alternateNames: ['Área Temática', 'Land', 'Mundo temático'],
 
@@ -325,7 +325,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un evento nocturno o especial con entrada separada que requiere un ticket adicional al de acceso regular al parque, como las fiestas de Halloween o Navidad.',
     definition:
-      "Un evento de entrada especial (hard ticket event) es un evento con ticket propio — generalmente vespertino — celebrado en un parque temático que requiere una entrada dedicada además de la admisión regular. Estos eventos ofrecen entretenimiento exclusivo, decoración temática y experiencias con personajes no disponibles en el horario habitual. Ejemplos conocidos son Mickey's Not-So-Scary Halloween Party y Mickey's Very Merry Christmas Party en Walt Disney World, Halloween Horror Nights en Universal o los eventos de temporada de Disneyland Paris. En los días de evento especial, los visitantes con entrada normal suelen tener que abandonar el parque entre las 18:00 y las 19:00. Las entradas frecuentemente se agotan semanas antes.",
+      'Un evento de entrada especial (hard ticket event) es un evento con ticket propio — generalmente vespertino — celebrado en un parque temático que requiere una entrada dedicada además de la admisión regular. Estos eventos ofrecen entretenimiento exclusivo, decoración temática y experiencias con personajes no disponibles en el horario habitual. Ejemplos conocidos son Mickey’s Not-So-Scary Halloween Party y Mickey’s Very Merry Christmas Party en Walt Disney World, Halloween Horror Nights en Universal o los eventos de temporada de Disneyland Paris. En los días de evento especial, los visitantes con entrada normal suelen tener que abandonar el parque entre las 18:00 y las 19:00. Las entradas frecuentemente se agotan semanas antes.',
     aliases: ['Eventos especiales'],
     alternateNames: ['Noche Especial', 'After-Hours', 'Hard Ticket Event'],
 
@@ -638,7 +638,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'La inversión circular clásica donde la pista forma un círculo vertical completo, llevando a los pasajeros completamente boca abajo en el punto más alto.',
     definition:
-      "El looping vertical es la inversión más icónica en la historia de las montañas rusas — un círculo completo de 360 grados en el plano vertical. Los looopings modernos utilizan una forma de clotoide (lágrima) en lugar de un círculo perfecto: la entrada y la salida son anchas, mientras que la parte superior es más cerrada. Esta forma garantiza que los pasajeros experimenten G suaves y sostenidas a lo largo del recorrido en lugar de picos extremos. El primer coaster moderno con looping (Corkscrew, Knott's Berry Farm, 1975) transformó la industria. Hoy los looopings verticales anclan el contador de inversiones en coasters de todo el mundo, desde las atracciones para principiantes hasta las máquinas récord.",
+      'El looping vertical es la inversión más icónica en la historia de las montañas rusas — un círculo completo de 360 grados en el plano vertical. Los looopings modernos utilizan una forma de clotoide (lágrima) en lugar de un círculo perfecto: la entrada y la salida son anchas, mientras que la parte superior es más cerrada. Esta forma garantiza que los pasajeros experimenten G suaves y sostenidas a lo largo del recorrido en lugar de picos extremos. El primer coaster moderno con looping (Corkscrew, Knott’s Berry Farm, 1975) transformó la industria. Hoy los looopings verticales anclan el contador de inversiones en coasters de todo el mundo, desde las atracciones para principiantes hasta las máquinas récord.',
     aliases: ['Loopings'],
     alternateNames: ['Bucle Vertical', 'Vertical Loop'],
 
@@ -794,7 +794,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un elemento de doble inversión con inversión de dirección de 180 grados, que combina dos medios looopings conectados por un medio sacacorchos — la silueta recuerda a las alas extendidas de un murciélago.',
     definition:
-      "Un Batwing consta de dos inversiones con inversión de dirección: la pista sube en arco hasta un medio looping, luego en la cima pasa por un medio sacacorchos que invierte el tren y revierte la dirección antes de espejear el medio looping de vuelta al nivel del suelo. La silueta vista desde arriba recuerda a las alas extendidas de un murciélago. Los Batwings son un elemento característico de B&M, presentes en coasters como Afterburn en Carowinds y The Incredible Hulk Coaster en Universal's Islands of Adventure. A diferencia del Bowtie (que no tiene cambio de dirección), el Batwing invierte la dirección del tren 180 grados durante la secuencia.",
+      'Un Batwing consta de dos inversiones con inversión de dirección: la pista sube en arco hasta un medio looping, luego en la cima pasa por un medio sacacorchos que invierte el tren y revierte la dirección antes de espejear el medio looping de vuelta al nivel del suelo. La silueta vista desde arriba recuerda a las alas extendidas de un murciélago. Los Batwings son un elemento característico de B&M, presentes en coasters como Afterburn en Carowinds y The Incredible Hulk Coaster en Universal’s Islands of Adventure. A diferencia del Bowtie (que no tiene cambio de dirección), el Batwing invierte la dirección del tren 180 grados durante la secuencia.',
     relatedTermIds: ['b-and-m', 'bowtie', 'cobra-roll', 'inversion'],
   },
   {
@@ -1036,7 +1036,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Figuras robóticas utilizadas en dark rides y espectáculos para crear personajes y escenas realistas.',
     definition:
-      "La animatrónica (animatronics) engloba las figuras robóticas electromecánicas empleadas en las atracciones y espectáculos de los parques temáticos para representar personajes o criaturas de forma realista. Disney acuñó el término «Audio-Animatronics» en 1964 durante la Exposición Universal. Las animatrónicas modernas van desde simples figuras cíclicas hasta robots sofisticados con expresiones faciales complejas y movimientos corporales completos. Ejemplos de referencia: el chamán Na'vi en Pandora (Walt Disney World) y los dinosaurios de la atracción Jurassic World (Universal).",
+      'La animatrónica (animatronics) engloba las figuras robóticas electromecánicas empleadas en las atracciones y espectáculos de los parques temáticos para representar personajes o criaturas de forma realista. Disney acuñó el término «Audio-Animatronics» en 1964 durante la Exposición Universal. Las animatrónicas modernas van desde simples figuras cíclicas hasta robots sofisticados con expresiones faciales complejas y movimientos corporales completos. Ejemplos de referencia: el chamán Na’vi en Pandora (Walt Disney World) y los dinosaurios de la atracción Jurassic World (Universal).',
     aliases: ['Animatrónicos'],
     alternateNames: ['Audio-Animatronics', 'Figura robótica'],
 
@@ -1346,7 +1346,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Arrow Dynamics',
     shortDefinition: 'Fabricante americano responsable del primer looping moderno.',
     definition:
-      "Arrow Dynamics (fundada en 1945) fue un fabricante americano pionero que introdujo el raíl tubular de acero moderno y el primer loop vertical moderno en Corkscrew (Knott's Berry Farm, 1975). Las atracciones Arrow son conocidas por sus corkscrews y suspended looping coasters. La empresa se declaró en quiebra en 2001 y sus activos fueron adquiridos por S&S.",
+      'Arrow Dynamics (fundada en 1945) fue un fabricante americano pionero que introdujo el raíl tubular de acero moderno y el primer loop vertical moderno en Corkscrew (Knott’s Berry Farm, 1975). Las atracciones Arrow son conocidas por sus corkscrews y suspended looping coasters. La empresa se declaró en quiebra en 2001 y sus activos fueron adquiridos por S&S.',
     relatedTermIds: ['corkscrew', 'rattle', 'steel-coaster', 'suspended-coaster', 'vertical-loop'],
     aliases: ['Arrow', 'Arrow Development', 'S&S Arrow', 'arrow dynamics'],
   },
@@ -1366,7 +1366,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Fabricante americano especializado en coasters de lanzamiento LSM/LIM — en Europa conocido por la familia Sky Scream.',
     definition:
-      "Premier Rides (fundado en 1995, Baltimore, Maryland) es un fabricante americano especializado en sistemas de lanzamiento por motor síncrono lineal (LSM) y motor de inducción lineal (LIM). El Sky Rocket II — un launch coaster compacto con una inversión — se ha extendido a parques de tamaño medio en todo el mundo.\n\nEn Europa, Premier Rides es más conocido por Sky Scream en Holiday Park (Haßloch, Alemania), un launch coaster invertido que se convirtió en una atracción de referencia regional. La tecnología LSM de Premier también equipa Hagrid's Magical Creatures Motorbike Adventure en Universal Orlando.",
+      'Premier Rides (fundado en 1995, Baltimore, Maryland) es un fabricante americano especializado en sistemas de lanzamiento por motor síncrono lineal (LSM) y motor de inducción lineal (LIM). El Sky Rocket II — un launch coaster compacto con una inversión — se ha extendido a parques de tamaño medio en todo el mundo.\n\nEn Europa, Premier Rides es más conocido por Sky Scream en Holiday Park (Haßloch, Alemania), un launch coaster invertido que se convirtió en una atracción de referencia regional. La tecnología LSM de Premier también equipa Hagrid’s Magical Creatures Motorbike Adventure en Universal Orlando.',
     alternateNames: ['Premier'],
     relatedTermIds: ['gerstlauer', 'intamin', 'launch-coaster'],
   },
@@ -1376,7 +1376,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Fabricante alemán de Múnich conocido por spinning coasters con trick track, la plataforma X-Car y el modelo vertical Sky Loop.',
     definition:
-      "Maurer Rides (Maurer AG, fabricación metálica desde 1876, atracciones desde 1993) es un fabricante muniqués. La serie SC de spinning coasters destaca por su trick track — una sección donde el vagón se inclina lateralmente — y la plataforma X-Car permite layouts compactos altamente personalizados con lanzamientos e inversiones.\n\nEl Sky Loop es un loop vertical autónomo presente en muchos parques europeos. Instalaciones europeas destacadas: Winja's Fear y Winja's Force en Phantasialand (Alemania), spinning coasters en interiores con trick track.",
+      'Maurer Rides (Maurer AG, fabricación metálica desde 1876, atracciones desde 1993) es un fabricante muniqués. La serie SC de spinning coasters destaca por su trick track — una sección donde el vagón se inclina lateralmente — y la plataforma X-Car permite layouts compactos altamente personalizados con lanzamientos e inversiones.\n\nEl Sky Loop es un loop vertical autónomo presente en muchos parques europeos. Instalaciones europeas destacadas: Winja’s Fear y Winja’s Force en Phantasialand (Alemania), spinning coasters en interiores con trick track.',
     aliases: ['Maurer AG'],
     alternateNames: ['Maurer', 'Maurer Söhne'],
     relatedTermIds: ['gerstlauer', 'launch-coaster', 'spinning-coaster', 'xtreme-spinning-coaster'],
@@ -1387,7 +1387,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Fabricante italiano con uno de los mayores portfolios de coasters familiares y atracciones del mundo — más de 250 coasters instalados.',
     definition:
-      "Zamperla (fundado en 1966, Altavilla Vicentina, Italia) es uno de los fabricantes de atracciones más prolíficos del mundo. Mientras que Intamin, B&M y Mack apuntan a grandes instalaciones de emoción, Zamperla se centra en el volumen y la accesibilidad — sus Family Coaster, Mini Coaster, Twister y Disk'O Coaster son habituales en parques medianos y complejos turísticos de todo el mundo.\n\nLas dimensiones compactas y los requisitos de altura moderados hacen que las atracciones Zamperla sean especialmente frecuentes en parques urbanos europeos, complejos hoteleros e instalaciones interiores. La empresa también construyó Thunderbolt en Coney Island (Nueva York).",
+      'Zamperla (fundado en 1966, Altavilla Vicentina, Italia) es uno de los fabricantes de atracciones más prolíficos del mundo. Mientras que Intamin, B&M y Mack apuntan a grandes instalaciones de emoción, Zamperla se centra en el volumen y la accesibilidad — sus Family Coaster, Mini Coaster, Twister y Disk’O Coaster son habituales en parques medianos y complejos turísticos de todo el mundo.\n\nLas dimensiones compactas y los requisitos de altura moderados hacen que las atracciones Zamperla sean especialmente frecuentes en parques urbanos europeos, complejos hoteleros e instalaciones interiores. La empresa también construyó Thunderbolt en Coney Island (Nueva York).',
     alternateNames: ['Zamperla rides', 'Antonio Zamperla'],
     relatedTermIds: ['credit', 'gerstlauer', 'mine-train'],
   },
@@ -1607,7 +1607,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Restaurante en que los personajes disfrazados visitan las mesas durante la comida.',
     definition:
-      "La cena con personajes es una experiencia de restaurante (servicio de mesa o bufé) en la que los personajes disfrazados visitan cada mesa para interactuar con los visitantes, hacer fotos y firmar autógrafos. Garantiza el encuentro con personajes sin cola separada, lo que lo hace muy popular entre familias. Ejemplos: Chef Mickey's (Disney World) y el Storybook Dining en Auberge de Cendrillon (Disneyland Paris).",
+      'La cena con personajes es una experiencia de restaurante (servicio de mesa o bufé) en la que los personajes disfrazados visitan cada mesa para interactuar con los visitantes, hacer fotos y firmar autógrafos. Garantiza el encuentro con personajes sin cola separada, lo que lo hace muy popular entre familias. Ejemplos: Chef Mickey’s (Disney World) y el Storybook Dining en Auberge de Cendrillon (Disneyland Paris).',
     relatedTermIds: ['character-meet-and-greet', 'quick-service', 'table-service'],
     aliases: [
       'desayuno con personajes',
@@ -1777,7 +1777,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Elemento de montaña rusa en que dos trenes en vías paralelas se pasan a distancia de un brazo.',
     definition:
-      "Un High Five es un elemento de cuasi-colisión en el que dos trenes de montaña rusa en vías separadas pero muy próximas se pasan a una distancia extremadamente corta – a veces al alcance del brazo – creando una emocionante ilusión de colisión inminente. El nombre proviene de la sensación de que los pasajeros podrían extender la mano y chocar los cinco con los del otro tren. El elemento requiere una sincronización precisa de salidas para llevar ambos trenes al punto de cruce al mismo tiempo. Los wing coasters y los inverted coasters son especialmente aptos para el High Five porque los asientos exteriores amplían el efecto de cuasi-choque. Duelling Dragons / Dragon Challenge en Universal's Islands of Adventure fue un célebre ejemplo temprano; el elemento aparece hoy en varios B&M wing coasters de todo el mundo.",
+      'Un High Five es un elemento de cuasi-colisión en el que dos trenes de montaña rusa en vías separadas pero muy próximas se pasan a una distancia extremadamente corta – a veces al alcance del brazo – creando una emocionante ilusión de colisión inminente. El nombre proviene de la sensación de que los pasajeros podrían extender la mano y chocar los cinco con los del otro tren. El elemento requiere una sincronización precisa de salidas para llevar ambos trenes al punto de cruce al mismo tiempo. Los wing coasters y los inverted coasters son especialmente aptos para el High Five porque los asientos exteriores amplían el efecto de cuasi-choque. Duelling Dragons / Dragon Challenge en Universal’s Islands of Adventure fue un célebre ejemplo temprano; el elemento aparece hoy en varios B&M wing coasters de todo el mundo.',
     relatedTermIds: ['b-and-m', 'inverted-coaster', 'wing-coaster'],
     aliases: ['elemento cuasi-colisión', 'near miss', 'near-miss element', 'high 5'],
   },
@@ -1833,7 +1833,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Una variante del zero-G roll con un cambio de dirección integrado — el tren entra y sale de la inversión con rumbos diferentes.',
     definition:
-      "El zero-G winder toma el concepto central del zero-G roll — una rotación de 360 grados en un arco parabólico que genera casi ingravidez en el vértice — y añade un cambio de dirección en la geometría de la vía. Mientras que en un zero-G roll estándar el tren entra y sale en rumbos aproximadamente paralelos, el winder curva la vía durante la rotación de modo que el tren sale apuntando en una dirección diferente de la que tenía al entrar. Esto convierte el elemento en una herramienta de diseño de trazado y también en una inversión: al mismo tiempo ofrece la sensación flotante de un zero-G roll y redirige la montaña rusa hacia la siguiente sección.\n\nLos zero-G winders están fuertemente asociados a diseños más modernos y técnicamente ambiciosos de fabricantes como Intamin y B&M. Kondaa en Walibi Belgium y VelociCoaster en Universal's Islands of Adventure son dos ejemplos destacados. La combinación de airtime, inversión y transición de dirección en un único elemento dota al zero-G winder de una sensación más compleja que un zero-G roll convencional.",
+      'El zero-G winder toma el concepto central del zero-G roll — una rotación de 360 grados en un arco parabólico que genera casi ingravidez en el vértice — y añade un cambio de dirección en la geometría de la vía. Mientras que en un zero-G roll estándar el tren entra y sale en rumbos aproximadamente paralelos, el winder curva la vía durante la rotación de modo que el tren sale apuntando en una dirección diferente de la que tenía al entrar. Esto convierte el elemento en una herramienta de diseño de trazado y también en una inversión: al mismo tiempo ofrece la sensación flotante de un zero-G roll y redirige la montaña rusa hacia la siguiente sección.\n\nLos zero-G winders están fuertemente asociados a diseños más modernos y técnicamente ambiciosos de fabricantes como Intamin y B&M. Kondaa en Walibi Belgium y VelociCoaster en Universal’s Islands of Adventure son dos ejemplos destacados. La combinación de airtime, inversión y transición de dirección en un único elemento dota al zero-G winder de una sensación más compleja que un zero-G roll convencional.',
     relatedTermIds: ['airtime', 'intamin', 'inversion', 'zero-g-roll'],
     aliases: ['zero g winder', 'Zero-G Winder', 'winder'],
   },
@@ -2131,7 +2131,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un fabricante holandés especializado en sistemas de transporte sin rieles y multi-motores.',
     definition:
-      'ETF Ride Systems es una empresa holandesa que se especializa en plataformas de transporte flexibles y de alta calidad, sobre todo vehículos sin rieles. Sus sistemas utilizan navegación por cable o posicionamiento local para moverse libremente por un suelo plano, lo que permite trayectos no lineales y vehículos "danzantes". Los sistemas de ETF impulsan muchos dark rides queridos, como Symbolica en Efteling y Ratatouille: L\'Aventure Totalement Toquée de Rémy en Disneyland Paris y Walt Disney World.',
+      'ETF Ride Systems es una empresa holandesa que se especializa en plataformas de transporte flexibles y de alta calidad, sobre todo vehículos sin rieles. Sus sistemas utilizan navegación por cable o posicionamiento local para moverse libremente por un suelo plano, lo que permite trayectos no lineales y vehículos "danzantes". Los sistemas de ETF impulsan muchos dark rides queridos, como Symbolica en Efteling y Ratatouille: L’Aventure Totalement Toquée de Rémy en Disneyland Paris y Walt Disney World.',
     relatedTermIds: ['dark-ride', 'oceaneering', 'trackless-ride'],
   },
   {
@@ -2319,13 +2319,13 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'pepper-ghost',
-    name: "Pepper's Ghost",
+    name: 'Pepper’s Ghost',
     shortDefinition:
       'Una ilusión clásica que utiliza cristal y luz para crear fantasmas "transparentes".',
     definition:
-      "Pepper's Ghost es una técnica de ilusión teatral utilizada para crear fantasmas transparentes. Funciona colocando una gran lámina de cristal en ángulo entre el público y una escena; al iluminar un objeto en una habitación oculta para que su reflejo aparezca en el cristal, parece que una figura translúcida está de pie en la escena principal. Esta técnica del siglo XIX se utiliza más famosamente a gran escala en la escena del salón de baile de Haunted Mansion de Disney.",
+      'Pepper’s Ghost es una técnica de ilusión teatral utilizada para crear fantasmas transparentes. Funciona colocando una gran lámina de cristal en ángulo entre el público y una escena; al iluminar un objeto en una habitación oculta para que su reflejo aparezca en el cristal, parece que una figura translúcida está de pie en la escena principal. Esta técnica del siglo XIX se utiliza más famosamente a gran escala en la escena del salón de baile de Haunted Mansion de Disney.',
     relatedTermIds: ['animatronics', 'dark-ride', 'pre-show', 'projection-mapping'],
-    aliases: ["Pepper's Ghost", 'Fantasma de Pepper'],
+    aliases: ['Pepper’s Ghost', 'Fantasma de Pepper'],
   },
   {
     id: 'dynamic-attractions',
@@ -2957,8 +2957,7 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'speedy-pass',
     name: 'Speedy Pass',
-    shortDefinition:
-      'La cola virtual de pago de Movie Park Germany.',
+    shortDefinition: 'La cola virtual de pago de Movie Park Germany.',
     definition:
       'El Speedy Pass es el producto para saltarse la cola de Movie Park Germany. Funciona como una cola virtual: reservas desde el móvil una vuelta en una de las atracciones incluidas y entras a la hora reservada por una entrada propia.\n\nExiste en varios niveles — desde el Speedy Pass One Ride para una sola atracción hasta Gold y Platinum, que cubren casi todo. Vale para más de 25 atracciones; algunas casas y atracciones especiales quedan excluidas.',
     relatedTermIds: ['virtual-queue', 'express-pass', 'quick-pass', 'wait-time'],
@@ -2983,6 +2982,16 @@ const translations: GlossaryTermTranslation[] = [
       'Disney Premier Access es lo que en los parques estadounidenses se llama Lightning Lane: el acceso de pago que evita la cola, en Disneyland Paris y Tokyo Disney Resort.\n\nPremier Access One se compra por atracción, normalmente el mismo día a través de la app, y el precio depende de la fecha y de la atracción — bastante más alto en las novedades. Premier Access Ultimate cubre una vez cada atracción participante.\n\nComo el precio se fija cada día, park.fan no muestra un precio fijo en esas atracciones.',
     relatedTermIds: ['lightning-lane', 'express-pass', 'virtual-queue', 'wait-time'],
     aliases: ['Premier Access'],
+  },
+  {
+    id: 'headliner',
+    name: 'Headliner',
+    shortDefinition:
+      'La atracción por la que se elige el parque, normalmente la más nueva o la más grande.',
+    definition:
+      'Un headliner es la atracción por la que un parque entra en una lista de viaje: la montaña rusa recién abierta, el dark ride más caro, lo que aparece en el cartel. Los parques construyen uno cada cinco o diez años aproximadamente, y en su temporada de estreno atrae a una parte considerable de todos los visitantes.\n\nPara planificar un día es la partida más importante. Un headliner reúne la cola más larga del parque y a menudo la mantiene desde la apertura hasta la tarde, mientras el resto del recinto por la mañana todavía está vacío. Por eso encabeza casi cualquier recomendación: primero el headliner, después todo lo demás. La excepción es una cola virtual, que de todos modos lo fija a una hora.\n\npark.fan marca los headliners en la lista de atracciones de un parque y los sube en la clasificación por tiempo de espera. Que una atracción lo sea es un dato curado y no una deducción a partir de la cola: una atracción puede tener mucha cola un día concreto sin que nadie viaje por ella.',
+    aliases: ['Atracción principal'],
+    relatedTermIds: ['wait-time', 'crowd-level', 'rope-drop', 'virtual-queue', 'peak-day'],
   },
 ];
 

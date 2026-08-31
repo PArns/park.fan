@@ -83,7 +83,7 @@ mejor día.
 
 ![Taron en el pueblo de basalto de Klugheim | Taron atraviesa a toda velocidad el pueblo de basalto de Klugheim, un pueblo entero, no una simple montaña rusa. | right](/media/phantasialand/taron-4x3.jpg)
 
-El Phantasialand se autodenomina «Europe's Most Immersive Theme Park». Quien haya estado allí entiende en qué se
+El Phantasialand se autodenomina «Europe’s Most Immersive Theme Park». Quien haya estado allí entiende en qué se
 apoya esa pretensión. En ningún otro lugar
 de Europa se desvanecen de forma tan absoluta las fronteras entre cola, atracción
 y decorado. No estás _delante_ de [Taron](ref:phantasialand/taron), estás
@@ -107,7 +107,7 @@ auténticos headliners, y en un día lleno todos quieren subirse a la vez a las
 mismas dos o tres atracciones. En nuestra inmersión a fondo sobre
 [el arte de esperar](/blog/el-arte-de-esperar) ya expliqué con números por qué
 [Taron](ref:phantasialand/taron), un sábado de vacaciones, entra en saturación
-igual de rápido que Peter Pan's Flight en París: un público pequeño no te protege
+igual de rápido que Peter Pan’s Flight en París: un público pequeño no te protege
 de las colas largas cuando hay pocas atracciones entre las que repartir la
 afluencia. La matemática es más implacable en el Phantasialand que en el extenso
 [Europa-Park](ref:europa-park) con sus trece montañas rusas. A eso se suma que el
@@ -146,7 +146,7 @@ fuego a buena parte del parque antiguo; los bomberos dijeron después que se hab
 En su lugar, se convirtió en el punto de inflexión. Sobre los escombros de las
 atracciones calcinadas, el parque levantó en apenas un año el mundo temático de
 Wuze Town con los dos locos spinning coasters
-[Winja's Fear](ref:phantasialand/winjas-fear) y Force y la atracción de aguas
+[Winja’s Fear](ref:phantasialand/winjas-fear) y Force y la atracción de aguas
 bravas [River Quest](ref:phantasialand/river-quest), en las dos sigues montando
 hoy. De las cenizas surgió una nueva actitud: si hay que construir de nuevo,
 entonces bien, entonces ambientado hasta el último tornillo.
@@ -200,7 +200,7 @@ para que ya mientras lees veas lo que hay ahora mismo:
 - **[Talocan](ref:phantasialand/talocan)**, un top spin con efectos de fuego y
   agua que desde abajo parece un decorado de templo y desde arriba se siente como
   un castigo puesto en escena con mucho cariño.
-- **[Winja's Fear](ref:phantasialand/winjas-fear)** y Winja's Force, los dos
+- **[Winja’s Fear](ref:phantasialand/winjas-fear)** y Winja’s Force, los dos
   spinning coasters de Wuze Town, llenos de ascensores, vías basculantes y
   sorpresas. Dos recorridos, y ninguna vuelta es igual a la otra.
 - **[Mystery Castle](ref:phantasialand/mystery-castle)**, la torre de caída de
@@ -215,7 +215,7 @@ bastante rápida para la segunda.
 ```gallery-widget heading="Los headliners en imágenes"
 - /media/phantasialand/chiapas-die-wasserbahn-16x9.jpg | La atracción acuática Chiapas | Chiapas, una de las atracciones acuáticas más empinadas del mundo.
 - /media/phantasialand/colorado-adventure-16x9.jpg | Colorado Adventure | Colorado Adventure, el tren minero con encanto del Lejano Oeste.
-- /media/phantasialand/winjas-fear-16x9.jpg | Winja's Force en Wuze Town | Winja's: dos spinning coasters llenos de sorpresas.
+- /media/phantasialand/winjas-fear-16x9.jpg | Winja’s Force en Wuze Town | Winja’s: dos spinning coasters llenos de sorpresas.
 - /media/phantasialand/mystery-castle-16x9.jpg | Mystery Castle en Mysteryland | Mystery Castle, la torre de caída con programas cambiantes.
 - /media/phantasialand/river-quest-16x9.jpg | River Quest | River Quest, aguas bravas con ascensores y mojadura garantizada.
 - /media/phantasialand/raik-16x9.jpg | Raik en Klugheim | Raik, la primera montaña rusa «de verdad» perfecta.
@@ -330,7 +330,7 @@ atasco no se resuelve tampoco en el fast-track. Te saltas la cola grande, pero e
 Por lo demás están incluidas las grandes atracciones, entre otras
 [Taron](ref:phantasialand/taron), [Black Mamba](ref:phantasialand/black-mamba),
 [Chiapas](ref:phantasialand/chiapas-die-wasserbahn),
-[Talocan](ref:phantasialand/talocan), [Winja's](ref:phantasialand/winjas-fear),
+[Talocan](ref:phantasialand/talocan), [Winja’s](ref:phantasialand/winjas-fear),
 [Colorado Adventure](ref:phantasialand/colorado-adventure) y
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat). Se compra en el servicio al
 cliente del Kaiserplatz, y limitado significa de verdad limitado: **justo en
@@ -389,7 +389,7 @@ firme de la experiencia, con un esmero que por lo demás solo se conoce de
 restaurantes de verdad. Un par de direcciones son auténticos tesoros escondidos por
 los que ya vale la pena la visita:
 
-- **Rutmor's Taverne** (Klugheim) es mi favorito y, para muchos fans, el mejor
+- **Rutmor’s Taverne** (Klugheim) es mi favorito y, para muchos fans, el mejor
   restaurante que se haya construido jamás en un parque de atracciones. A la carta,
   rústico hasta en los bancos de madera tallada, con cocina contundente, Spätzle,
   Schnitzel, patatas salteadas, además de sopas y tablas para compartir y un
@@ -401,7 +401,7 @@ los que ya vale la pena la visita:
   y latón, con vistas a [F.L.Y.](ref:phantasialand/fly). Pequeño secreto: por la
   noche está reservado a los huéspedes del hotel, pero de día abre para todos, así
   que a mediodía es un placer con vistas a los trenes que pasan volando.
-- **Phenie's** (Wuze Town) es mi parada dulce obligada desde que tengo uso de
+- **Phenie’s** (Wuze Town) es mi parada dulce obligada desde que tengo uso de
   razón: pancakes y batidos, esponjosos y espléndidos y demasiado buenos para el
   listón de un parque de atracciones. Hay días en los que vengo casi solo por esos
   pancakes, y luego hago como si las montañas rusas hubieran sido el motivo.
@@ -582,7 +582,7 @@ días.
 
 El Phantasialand no es un parque que se visite de pasada. Es compacto, codiciado y,
 en los días equivocados, agotador, pero en los días correctos, con el orden
-correcto y una pausa en Rutmor's Taverne, es la experiencia más inmersiva y
+correcto y una pausa en Rutmor’s Taverne, es la experiencia más inmersiva y
 cariñosa que Europa puede ofrecer. La buena noticia: casi todo lo que separa un
 buen día de uno magnífico lo decides **antes**, al mirar el calendario.
 
@@ -599,7 +599,7 @@ Y los dos protagonistas, en vivo desde nuestros datos:
 [F.L.Y.](ref:phantasialand/fly?full)
 
 Nos vemos en Klugheim. Soy el que a las 10 es el primero en la cola de Taron, a
-mediodía desaparece a escondidas por los pancakes de Phenie's, y por la noche, a
+mediodía desaparece a escondidas por los pancakes de Phenie’s, y por la noche, a
 la hora azul, sigue sin querer irse a casa.
 
 — Patrick
@@ -615,7 +615,7 @@ Pass es el día que ni siquiera llegaste a reservar._
 - Precios, entradas y horarios 2026: [tienda online del Phantasialand](https://shop.phantasialand.de/de/produkte/themenpark-tickets/) · [precios y horarios 2026 (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/phantasialand/preise/) · [entradas desde 28 € en vez de hasta 78 € (mydealz)](https://www.mydealz.de/magazin/phantasialand-tickets-ab-28-euro-warum-sich-fruehes-buchen-jetzt-lohnt-61424)
 - Fin de los abonos anuales y peticiones de los fans: [petición «Reintroducción de los abonos anuales del Phantasialand» (Change.org)](https://www.change.org/p/wiedereinf%C3%BChrung-der-phantasialand-jahreskarten)
 - Quick Pass (Single Ride / Ultimate y precios dinámicos): [«QUICK Pass Switches to Dynamic Pricing» (Wartezeiten.APP)](https://www.wartezeiten.app/en/phantasialand/news/phantasialand-quick-pass-switches-to-dynamic-pricing-fans-outraged-2429.html)
-- Comida: [Rutmor's Taverne (Freizeitpark Traveller)](https://www.freizeitpark-traveller.de/rutmors-taverne-phantasialand/) · [Restaurant Uhrwerk (oficial)](https://www.phantasialand.de/de/rookburgh/restaurant-uhrwerk/)
+- Comida: [Rutmor’s Taverne (Freizeitpark Traveller)](https://www.freizeitpark-traveller.de/rutmors-taverne-phantasialand/) · [Restaurant Uhrwerk (oficial)](https://www.phantasialand.de/de/rookburgh/restaurant-uhrwerk/)
 - Novedad 2026 «Die 3 Mausketiere»: [Phantasialand 2026 (La Vie Zine)](https://www.laviezine.com/1545370/phantasialand-2026-das-erwartet-euch-in-der-saison/)
 - Wintertraum 2026/27: [horarios del Wintertraum (NRW-Parks)](https://www.nrw-parks.de/phantasialand/oeffnungszeiten-winter.html) · [Wintertraum (oficial)](https://www.phantasialand.de/de/themenpark/wintertraum/)
 - Cómo llegar, lanzadera y aparcamiento: [cómo llegar y autobús lanzadera (oficial)](https://www.phantasialand.de/de/themenpark/information-und-anreise/anreise-und-shuttlebus/)

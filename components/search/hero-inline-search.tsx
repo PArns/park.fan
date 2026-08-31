@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useState, type ComponentType } from 'react';
+import { useCallback, useEffect, useRef, useState, type ComponentType } from 'react';
 import { SearchCommand } from '@/components/search/search-bar';
 import { HeroSearchShell } from '@/components/search/hero-search-field';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
@@ -15,6 +15,23 @@ interface HeroInlineSearchProps {
   /** What the field is for — the accessible name, since the placeholder is only examples. */
   label: string;
   className?: string;
+  /**
+   * `false` for a SECOND instance of this field on the same page.
+   *
+   * Two things here are page-wide and must exist exactly once. `autoFocusOnType`
+   * listens on `document` and opens the palette on any single keypress, so a
+   * second instance opens a second palette from one keystroke; and
+   * `trackHeroSearchClicked` measures the hero specifically, so a taller page
+   * with a field further down would quietly inflate it.
+   *
+   * The `isGlobal` ⌘K handler is NOT among them — `SearchCommand` defaults it
+   * off and neither instance asks for it; the header owns that shortcut.
+   *
+   * It also picks the dropdown's material. The hero's glass is 62 % opaque
+   * because what it lands on is the hero photo; anywhere else it lands on page
+   * text, which reads straight through it.
+   */
+  primary?: boolean;
 }
 
 type PanelComponent = ComponentType<{
@@ -23,6 +40,7 @@ type PanelComponent = ComponentType<{
   initialQuery?: string;
   autoFocus?: boolean;
   onFocusHandled?: () => void;
+  onHero?: boolean;
 }>;
 
 /**
@@ -39,7 +57,12 @@ type PanelComponent = ComponentType<{
  * on mount — so a visitor who is faster than the chunk loses nothing, and one who never touches
  * the field never pays for it.
  */
-export function HeroInlineSearch({ placeholder, label, className }: HeroInlineSearchProps) {
+export function HeroInlineSearch({
+  placeholder,
+  label,
+  className,
+  primary = true,
+}: HeroInlineSearchProps) {
   const isDesktop = useMediaQuery('(min-width: 768px)');
   const mounted = useMounted();
   const afterLoad = useAfterLoad();
@@ -56,9 +79,48 @@ export function HeroInlineSearch({ placeholder, label, className }: HeroInlineSe
     setPendingFocus(true);
   }, []);
 
+  /**
+   * Whether this field is actually on screen.
+   *
+   * Mounting the panel SCROLLS THE PAGE, and not by anything this file does:
+   * cmdk selects the first item as soon as one registers and then calls
+   * `scrollIntoView({ block: 'nearest' })` on it from a layout effect. That walks
+   * the whole chain of scroll ancestors up to the viewport, so a panel mounted
+   * far down the document drags the document to it.
+   *
+   * On the hero alone it was invisible — its item sits at y≈0, so "scroll it into
+   * view" is a no-op. The second instance in the homepage's step card sits at
+   * ~2100 px, and mounting it on a reload pulled the reader from the top of the
+   * page down to 1271 px. Proven by patching `Element.prototype.scrollIntoView`
+   * to a no-op: 1271 → 13.
+   *
+   * So the panel waits for its field to be in view. The 15 % inset keeps a field
+   * grazing the very edge of the viewport from mounting, because "nearest" would
+   * still shift the page by the few pixels needed to clear the edge.
+   */
+  const hostRef = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = hostRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) if (e.isIntersecting) setInView(true);
+      },
+      { rootMargin: '-15% 0px -15% 0px' }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   useEffect(() => {
     // Load once the page is idle, or immediately when the visitor has already reached for it.
     if (!isDesktop || Panel || (!afterLoad && typed === null)) return;
+    // …but never before it is on screen. `typed` is the exception: somebody who
+    // has already typed into the shell is looking straight at it, and the handoff
+    // (their text plus the focus) has to happen wherever they are.
+    if (!inView && typed === null) return;
     let cancelled = false;
     import('./hero-inline-search-panel').then((m) => {
       if (!cancelled) setPanel(() => m.default);
@@ -66,7 +128,7 @@ export function HeroInlineSearch({ placeholder, label, className }: HeroInlineSe
     return () => {
       cancelled = true;
     };
-  }, [isDesktop, Panel, afterLoad, typed]);
+  }, [isDesktop, Panel, afterLoad, typed, inView]);
 
   // Until the media query has an answer, render the SHELL — never the palette trigger.
   // `useMediaQuery` is false on the server and on the first client render, so the desktop hero
@@ -75,7 +137,7 @@ export function HeroInlineSearch({ placeholder, label, className }: HeroInlineSe
   const showShell = !mounted || (isDesktop && !Panel);
 
   return (
-    <div className={cn('w-full', className)}>
+    <div ref={hostRef} className={cn('w-full', className)}>
       {showShell ? (
         <HeroSearchShell placeholder={placeholder} label={label} onActivate={activate} />
       ) : isDesktop && Panel ? (
@@ -85,16 +147,17 @@ export function HeroInlineSearch({ placeholder, label, className }: HeroInlineSe
           initialQuery={typed ?? undefined}
           autoFocus={pendingFocus}
           onFocusHandled={() => setPendingFocus(false)}
+          onHero={primary}
         />
       ) : (
-        <div onClick={() => trackHeroSearchClicked()}>
+        <div onClick={primary ? () => trackHeroSearchClicked() : undefined}>
           <SearchCommand
             trigger="input"
             size="lg"
             placeholder={placeholder}
-            autoFocusOnType={true}
+            autoFocusOnType={primary}
             searchOpenSource="hero"
-            prewarm={true}
+            prewarm={primary}
           />
         </div>
       )}

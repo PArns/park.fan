@@ -219,7 +219,7 @@ desde el sábado **29 de septiembre de 2012**, entrada para todos, cinco semanas
 largas hasta el 4 de noviembre. Después volvió a cerrar durante el invierno
 para que se pudiera seguir construyendo alrededor, y regresó en **abril de
 2013** con la zona temática completa, ya como Dwervelwind en lugar de la
-d'wervelwind de 2012. Por eso, según la fuente, se lee 2012 o 2013. Ambas cosas
+d’wervelwind de 2012. Por eso, según la fuente, se lee 2012 o 2013. Ambas cosas
 son ciertas.
 
 **[Toos-Express](ref:attractiepark-toverland/toos-express)**, del año de apertura 2001, es la
@@ -228,7 +228,7 @@ desde hace un cuarto de siglo.
 
 El departamento mojado y oscuro es mejor que su fama:
 
-- **[Merlin's Quest](ref:attractiepark-toverland/merlins-quest)** (2018), el paseo en barca
+- **[Merlin’s Quest](ref:attractiepark-toverland/merlins-quest)** (2018), el paseo en barca
   por la torre de Merlín, con animatrónicos y una sucesión de escenas por las
   que otros parques cobrarían aparte. La estrella silenciosa de Avalon.
 - **[Djengu River](ref:attractiepark-toverland/djengu-river)**, los rápidos de Hafema. La
@@ -283,7 +283,7 @@ que convirtió el destino de excursión en un parque temático: una ampliación 
 35 millones de euros, con una zona de entrada completamente nueva en estilo
 portuario mediterráneo (**Port Laguna**) y el mundo artúrico de **Avalon**,
 donde están [Fēnix](ref:attractiepark-toverland/fenix) y
-[Merlin's Quest](ref:attractiepark-toverland/merlins-quest). Fue entonces cuando el parque
+[Merlin’s Quest](ref:attractiepark-toverland/merlins-quest). Fue entonces cuando el parque
 adoptó también su lema actual, «Discover your own magic», que sustituyó a los
 antiguos «Magisch mooi» y «Feel the Magic». Ese mismo año Toverland arrasó en
 los **European Star Awards**: mejor parque temático en la categoría de hasta un

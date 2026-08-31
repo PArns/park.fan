@@ -34,7 +34,17 @@ interface HeroInlineSearchPanelProps {
   /** Focus the input on mount — set when the visitor's own interaction pulled this chunk in. */
   autoFocus?: boolean;
   /** Called once the mount-focus has been dealt with, taken or declined. */
-  onFocusHandled?: () => void;
+  onFocusHandled?: () => void; /**
+   * `false` when the field does not sit on the hero photo.
+   *
+   * The dropdown is real glass at 62 % on purpose: in the hero it lands on the
+   * photo, the scrim and the plate, all smooth and all beautiful under blur. On
+   * a flat page it lands on whatever text happens to be under it, and that text
+   * reads straight through — in the homepage's step card the card's own hint
+   * ghosted up through the result rows. Off the hero it takes `tile` instead:
+   * more fill AND more blur, so it is still glass.
+   */
+  onHero?: boolean;
 }
 
 /**
@@ -52,6 +62,7 @@ export default function HeroInlineSearchPanel({
   initialQuery = '',
   autoFocus = false,
   onFocusHandled,
+  onHero = true,
 }: HeroInlineSearchPanelProps) {
   const [query, setQuery] = useState(initialQuery);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -69,6 +80,7 @@ export default function HeroInlineSearchPanel({
   const heightBeforeChange = useRef<number | null>(null);
   /** True while GSAP is tweening the card's height. See the ResizeObserver below. */
   const tweening = useRef(false);
+
   const trackedFocus = useRef(false);
 
   const search = useSearchResults(query);
@@ -248,7 +260,7 @@ export default function HeroInlineSearchPanel({
           onFocus={() => {
             heightBeforeChange.current = cardRef.current?.offsetHeight ?? null;
             setExpanded(true);
-            if (!trackedFocus.current) {
+            if (onHero && !trackedFocus.current) {
               trackedFocus.current = true;
               trackHeroSearchClicked();
             }
@@ -272,7 +284,17 @@ export default function HeroInlineSearchPanel({
       <div
         aria-hidden="true"
         className="h-[var(--hero-search-rest-h)]"
-        style={restHeight != null ? { height: restHeight + DROPDOWN_TOP_GAP_PX } : undefined}
+        // The measured height replaces the CSS estimate ON THE HERO ONLY.
+        // `--hero-search-rest-h` is calibrated for the hero's full-width column;
+        // in the homepage's step card the same dropdown sits in a third of that
+        // width, wraps differently and measures ~75 px shorter — so the spacer
+        // paints at 282 px and then shrinks the moment this chunk mounts,
+        // pulling every chapter below it up by that much. Off the hero the
+        // estimate is kept: the dropdown floats, so overhanging its reservation
+        // by a few pixels costs nothing, while moving it costs the whole page.
+        style={
+          onHero && restHeight != null ? { height: restHeight + DROPDOWN_TOP_GAP_PX } : undefined
+        }
       />
 
       {/* The dropdown itself: always open (the hero's default state is an open list of the
@@ -289,7 +311,14 @@ export default function HeroInlineSearchPanel({
             while the field has focus instead of the dropdown going opaque. */}
         <GlassCard
           ref={cardRef}
-          variant="heavy"
+          // `tile` is the same glass one grade more solid — 75 % fill and
+          // `backdrop-blur-2xl` instead of `xl` — and it exists for exactly this
+          // case: a panel that has to stay readable over whatever happens to be
+          // under it. The stronger blur is what does the work; at 2xl the card's
+          // own prose under the dropdown stops being letters. Going opaque
+          // instead would fix the ghosting by deleting the glass, which is not
+          // the same fix.
+          variant={onHero ? 'heavy' : 'tile'}
           // Same marker the shell's skeleton carries, so `pnpm check:hero-search-rest` measures
           // the two against each other.
           data-hero-search-card=""

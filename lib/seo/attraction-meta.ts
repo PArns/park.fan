@@ -59,7 +59,13 @@ export function buildAttractionTitle(
 ): string {
   const park = phrase
     ? parkArgs(phrase.locale, parkName, phrase.articleDe)
-    : { park: parkName, inPark: parkName, forPark: parkName, parkSubject: parkName, inParkLeading: parkName };
+    : {
+        park: parkName,
+        inPark: parkName,
+        forPark: parkName,
+        parkSubject: parkName,
+        inParkLeading: parkName,
+      };
   return fitWithin(
     MAX_TITLE_LENGTH,
     t('titleTemplate', { attraction: attractionName, ...park }),
@@ -84,7 +90,13 @@ export function buildAttractionDescription(
 ): string {
   const park = phrase
     ? parkArgs(phrase.locale, parkName, phrase.articleDe)
-    : { park: parkName, inPark: parkName, forPark: parkName, parkSubject: parkName, inParkLeading: parkName };
+    : {
+        park: parkName,
+        inPark: parkName,
+        forPark: parkName,
+        parkSubject: parkName,
+        inParkLeading: parkName,
+      };
   const plain = t('metaDescriptionTemplate', { attraction: attractionName, ...park });
   if (!facts.length) return plain;
 

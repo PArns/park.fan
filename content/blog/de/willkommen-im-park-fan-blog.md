@@ -138,7 +138,7 @@ sitze ich in einem Gebäude, das dort steht, wo ich als Kind mit meinem Vater
 durch das Drachenmaul gefahren bin. Dasselbe Stück Erde, dreißig Jahre und ein
 Leben dazwischen.
 
-Danach Pancakes und Shakes im **Phenie's** in Wuze Town, fluffig und prachtvoll
+Danach Pancakes und Shakes im **Phenie’s** in Wuze Town, fluffig und prachtvoll
 und viel zu gut für Freizeitpark-Gastronomie. Spätestens dann versteht man,
 womit dieser Park seinen Anspruch begründet, „Europas Most Immersive Theme
 Park“ zu sein.

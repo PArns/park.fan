@@ -29,7 +29,7 @@
  * `GLOSSARY_CONTENT_HASH` from the parsed term data and fails when the two disagree. Bump both
  * together, and use the date the content changed rather than the date you noticed.
  */
-export const GLOSSARY_CONTENT_DATE = '2026-08-23';
+export const GLOSSARY_CONTENT_DATE = '2026-08-31';
 
 /**
  * SHA-256 (16 hex chars) over the glossary's reader-visible content: term ids, categories, player
@@ -40,4 +40,4 @@ export const GLOSSARY_CONTENT_DATE = '2026-08-23';
  * a URL) does. Recomputed and checked by `scripts/check-glossary-content-date.mjs`, which prints the
  * replacement value when it fails.
  */
-export const GLOSSARY_CONTENT_HASH = '098f64d6656b86e1';
+export const GLOSSARY_CONTENT_HASH = '5d3313bec4595581';

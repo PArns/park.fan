@@ -53,7 +53,7 @@ seo:
 Op 29 juni 1996 stonden Michael Douglas, Sophia Loren en Claudia Schiffer in
 Bottrop-Kirchhellen.
 
-Twintigduizend genodigden, een park van zo'n 200 miljoen euro, gebouwd op het
+Twintigduizend genodigden, een park van zo’n 200 miljoen euro, gebouwd op het
 terrein van een mislukt filmpark aan de noordrand van het Ruhrgebied:
 **Warner Bros. Movie World**, naar het voorbeeld van het gelijknamige park dat
 Warner vijf jaar eerder aan de Australische Gold Coast had geopend. Een dag
@@ -98,7 +98,7 @@ afliep:
 | Geopend als            | Jaar | Heet nu                                          |
 | ---------------------- | ---- | ------------------------------------------------ |
 | Looney Tunes Adventure | 1996 | Movie Park Studio Tour (sinds 2021)              |
-| Gremlins Invasion      | 1996 | Van Helsing's Factory (sinds 2011)               |
+| Gremlins Invasion      | 1996 | Van Helsing’s Factory (sinds 2011)               |
 | Het Oneindige Verhaal  | 1996 | Excalibur – Secrets of the Dark Forest (2018)    |
 | Wild Wild West         | 1999 | Bandit (sinds 2005)                              |
 | Eraser                 | 2001 | Iron Claw (sinds 2023), tussendoor FX, MP-Xpress |
@@ -192,7 +192,7 @@ bij de derde aanloop is de snelheid genoeg voor de top hat, en daarna volgen
 Immelmann, heartline roll en kurkentrekker. De soundtrack is van IMAscore, met
 daarvoor een preshow met projecties.
 
-Het is bovendien de enige baan van het park waar rennen 's ochtends echt loont:
+Het is bovendien de enige baan van het park waar rennen ’s ochtends echt loont:
 de rij is in het tweede uur op zijn langst en wordt daarna nooit meer zo lang.
 
 [Star Trek™: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise?full)
@@ -214,7 +214,7 @@ Island: geen langgerekt heen en weer, maar een traject dat zichzelf op een klein
 oppervlak steeds opnieuw kruist. Het park heeft hem in een bosje gezet, en in de
 onderste bochten, waar hij het snelst is, wordt hij tot vandaag regelmatig
 opnieuw berailed. Bij de grootste retracking sinds de bouw vervingen tien
-timmerlieden, onder wie twee gezellen op reis, in de winter van 2015/16 zo'n 200
+timmerlieden, onder wie twee gezellen op reis, in de winter van 2015/16 zo’n 200
 meter rails van grenen en Oregon pine.
 
 ```glossary-widget slug=twister-coaster
@@ -227,9 +227,9 @@ toch bij, daarvoor is hij te belangrijk voor de Duitse achtbaangeschiedenis. Wie
 Colossos in het [Heide-Park](ref:heide-park) als maatstaf neemt, moet het bij die
 ene keer laten.
 
-### Van Helsing's Factory
+### Van Helsing’s Factory
 
-**[Van Helsing's Factory](ref:movie-park-germany/van-helsings-factory)** is de
+**[Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory)** is de
 attractie waar in dit park het langst voor wordt gewacht, en op papier valt dat
 niet uit te leggen. Geopend op **18 juni 2011**, een bobsled coaster van
 **Gerstlauer** in de voormalige Gremlins-hal, 3.000 vierkante meter, acht meter
@@ -271,14 +271,14 @@ jaren twintig moeizaam vanaf komt, en dit exemplaar is geen uitzondering. Toen
 het park zijn fans een paar jaar geleden om verbeterpunten vroeg, was het
 meestgenoemde antwoord: slopen.
 
-![Een paars en blauw uitgelichte achtbaan bij nacht, daarachter de maan, ervoor een parkeerplaats met auto's | Vanaf de parkeerplaats, na sluitingstijd. De maan stond gunstig. Eronder rijdt nog steeds een Vekoma uit 2001. | wide](/media/movie-park-germany/iron-claw.jpg)
+![Een paars en blauw uitgelichte achtbaan bij nacht, daarachter de maan, ervoor een parkeerplaats met auto’s | Vanaf de parkeerplaats, na sluitingstijd. De maan stond gunstig. Eronder rijdt nog steeds een Vekoma uit 2001. | wide](/media/movie-park-germany/iron-claw.jpg)
 
 ### De drie kleintjes
 
 - **[Ghost Chasers](ref:movie-park-germany/ghost-chasers)**, een wilde muis van
   **Mack Rides** uit 2000, 45 km/u. Korte bochten, weinig omhaal, en de baan
   waar in mijn wagentje steevast de volwassenen het hardst gilden.
-- **[Jimmy Neutron's Atomic Flyer](ref:movie-park-germany/jimmy-neutrons-atomic-flyer)**
+- **[Jimmy Neutron’s Atomic Flyer](ref:movie-park-germany/jimmy-neutrons-atomic-flyer)**
   van Vekoma (2007), een suspended family coaster met 47 km/u, in Nickland.
 - **[Backyardigans Mission to Mars](ref:movie-park-germany/backyardigans-mission-to-mars)**,
   een junior coaster van Vekoma uit het openingsjaar 1996, 207 meter kort.
@@ -319,7 +319,7 @@ zodat je met je blik omlaag wacht. Het onaangenaamste moment van het hele park.
 waarin John Cleese door de tijd reist. Hij ziet eruit als 1996 en is juist
 daarom de moeite waard.
 
-**[Dora's Big River Adventure](ref:movie-park-germany/doras-big-river-adventure)**
+**[Dora’s Big River Adventure](ref:movie-park-germany/doras-big-river-adventure)**
 tot slot is de wildwaterbaan in **Nickland**, gebouwd voor basisschoolkinderen,
 en toch een van de twee langste rijen van het park, omdat op warme middagen het
 halve park er tegelijk op afgaat.
@@ -327,7 +327,7 @@ halve park er tegelijk op afgaat.
 De podia horen hier vanaf dag één bij: een studiopark zonder stuntshow was in
 1996 ondenkbaar, dus liep bij de opening de Police Academy Stunt Show. In 2026
 lopen er drie nieuwe shows: **Black Thunder** in de Saloon, **Frequency** in Van
-Helsing's Club en **Turn Back Time** op de New York Plaza Stage, een reis door
+Helsing’s Club en **Turn Back Time** op de New York Plaza Stage, een reis door
 dertig jaar filmmuziek. Daarnaast loopt sinds deze zomer de twintig minuten
 durende **Parade of Celebration** met wagens, livezang en choreografie. Op
 **4 juli 2026** vierde het park zijn verjaardag, die dag met programma tot 23
@@ -350,7 +350,7 @@ De tien attracties waar je het langst staat:
 ```
 
 Bovenaan staat geen achtbaan met 90 km/u, maar een binnenrit met 36. Van
-Helsing's Factory heeft de hoogste mediaan van het park, en direct daarachter
+Helsing’s Factory heeft de hoogste mediaan van het park, en direct daarachter
 komt de wildwaterbaan uit het kinderdeel. Star Trek staat in de middenmoot,
 terwijl de meesten juist voor die baan komen.
 
@@ -464,7 +464,7 @@ De rustigste van de komende openingsdagen volgens onze kalender:
 
 ```
 
-April tot en met juni dragen elk zo'n twintig tot vijfentwintig meetdagen, juli
+April tot en met juni dragen elk zo’n twintig tot vijfentwintig meetdagen, juli
 en augustus nog een paar meer. Die vijf maanden zijn stevig onderbouwd, en ze
 zeggen wat iedereen vermoedt: in de zomervakantie wordt het druk.
 
@@ -527,7 +527,7 @@ twaalf uur aan één stuk. Langer was alleen de verjaardag in juli open.
 Loop bij opening meteen naar
 **[Star Trek](ref:movie-park-germany/star-trek-operation-enterprise?bare)**, dat
 is de baan waar rennen het meest oplevert, en daarna direct door naar
-**[Van Helsing's Factory](ref:movie-park-germany/van-helsings-factory?bare)**,
+**[Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory?bare)**,
 want die rij wordt vanaf het tweede uur tot de avond niet meer korter. De ochtend
 is daarna voor **[Bandit](ref:movie-park-germany/the-bandit?bare)** en de
 **[Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour?bare)**,
@@ -547,7 +547,7 @@ in het donker helemaal.
 
 **Seizoen.** Het reguliere seizoen 2026 loopt van **27 maart tot 8 november**.
 Daarna volgt van **27 november 2026 tot 5 januari 2027** het winterevenement
-**Movie Park's Hollywood Christmas** met ruim een miljoen lichtjes, dat eigen
+**Movie Park’s Hollywood Christmas** met ruim een miljoen lichtjes, dat eigen
 data en eigen kaartjes heeft.
 
 **Tickets.** De kassaprijs is hoog, de onlineprijs niet:
@@ -586,7 +586,7 @@ aan Gold en Platin en aan de definitieve plastic kaart met foto, en hij zet een
 hele rij vreemde parken op je ticket:
 
 - **Eén keer gratis entree** per kalenderjaar in de [Efteling](ref:efteling). Een
-  dagticket daar kost regulier zo'n vijftig euro, ongeveer de helft van wat de
+  dagticket daar kost regulier zo’n vijftig euro, ongeveer de helft van wat de
   Gold-pas op dit moment zelf kost.
 - **Drie keer gratis entree** in [Bobbejaanland](ref:bobbejaanland), in
   Attractiepark Slagharen (zonder Aqua Mexicana) en in Weltvogelpark Walsrode.
@@ -616,7 +616,7 @@ Drie dingen staan er verder nog in de kleine lettertjes:
   dus slechter dan met een dagticket.
 
 **Route.** Het adres is **Warner-Allee 1, 46244 Bottrop**. Met de auto via de
-A31, afrit Kirchhellen, daarna is alles bewegwijzerd. Vanuit Essen is het zo'n
+A31, afrit Kirchhellen, daarna is alles bewegwijzerd. Vanuit Essen is het zo’n
 twintig minuten, vanuit Düsseldorf ruim veertig, vanuit Keulen ongeveer een uur.
 
 En op één punt verslaat Bottrop elk ander groot Duits park dat ik ken: **station
@@ -644,7 +644,7 @@ Hoe het er in Bottrop nu bij staat:
 Over 135 gemeten openingsdagen sinds augustus 2025 ligt de typische wachttijd in
 het parkgemiddelde op **twintig minuten** (mediaan). De hoogste waarde van het
 park heeft
-[Van Helsing's Factory](ref:movie-park-germany/van-helsings-factory), niet de
+[Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory), niet de
 grote achtbaan. De actuele cijfers staan op de
 [Movie Park-parkpagina](ref:movie-park-germany?bare).
 
@@ -681,14 +681,14 @@ tot 6 september 2026, is Gold € 93,50 en Platin € 107,90.
 
 ### Hoeveel achtbanen heeft Movie Park?
 
-Acht: Star Trek™: Operation Enterprise, The Bandit, Van Helsing's Factory, Movie
-Park Studio Tour, Iron Claw, Ghost Chasers, Jimmy Neutron's Atomic Flyer en
+Acht: Star Trek™: Operation Enterprise, The Bandit, Van Helsing’s Factory, Movie
+Park Studio Tour, Iron Claw, Ghost Chasers, Jimmy Neutron’s Atomic Flyer en
 Backyardigans Mission to Mars. Twee daarvan liggen volledig binnen, en met Bandit
 staat hier de eerste moderne houten achtbaan van Duitsland.
 
 ### Kom je zonder auto bij Movie Park?
 
-Ja, en beter dan bij bijna elk ander Duits park. Station Feldhausen ligt zo'n 400
+Ja, en beter dan bij bijna elk ander Duits park. Station Feldhausen ligt zo’n 400
 meter van de ingang en wordt bediend door de RE14 vanaf Essen en de RB43 vanaf
 Dortmund. Buslijn SB16 vanaf Essen Hauptbahnhof stopt op het parkterrein.
 
@@ -746,7 +746,7 @@ wil slopen staat dan paars uitgelicht voor de maan.
 - Star Trek™: Operation Enterprise (Mack Rides, 40 meter, 90 km/u, 720 meter, drie inversies, LSM-lancering, IMAscore): [Star Trek: Operation Enterprise op en.wikipedia](https://en.wikipedia.org/wiki/Star_Trek:_Operation_Enterprise)
 - The Bandit (1999 als Wild Wild West, RCCA, 27,8 meter, 1.099 meter, Cyclone-lay-out, Premier-treinen vanaf 2001): [Bandit (Movie Park Germany) op de.wikipedia](<https://de.wikipedia.org/wiki/Bandit_(Movie_Park_Germany)>) · [Bandit bij Ultimate Rollercoaster](https://www.ultimaterollercoaster.com/coasters/bandit_movieparkgermany)
 - Retracking van de Bandit in de winter van 2015/16 (200 meter rails, tien timmerlieden, twee gezellen op reis): [Nieuwe rails voor the Bandit (officieel, Duits)](https://www.movieparkgermany.de/blog/neue-schienen-fuer-the-bandit-groesstes-retracking-seit-bau-der-achterbahn-im)
-- Van Helsing's Factory (18 juni 2011, Gerstlauer bobsled, 400 meter, 36 km/u, 848 personen per uur, 5 miljoen euro, voormalige Gremlins-hal): [Van Helsing's Factory op en.wikipedia](https://en.wikipedia.org/wiki/Van_Helsing%27s_Factory)
+- Van Helsing’s Factory (18 juni 2011, Gerstlauer bobsled, 400 meter, 36 km/u, 848 personen per uur, 5 miljoen euro, voormalige Gremlins-hal): [Van Helsing’s Factory op en.wikipedia](https://en.wikipedia.org/wiki/Van_Helsing%27s_Factory)
 - Iron Claw (6 april 2001 als Eraser, Vekoma SLC, 689 meter, eerdere namen FX en MP-Xpress): [Iron Claw op rcdb.com](https://rcdb.com/969.htm) · [Iron Claw (officieel)](https://www.movieparkgermany.de/en/erlebnisse/attraktionen/ironclaw)
 - Excalibur – Secrets of the Dark Forest (1996 als Het Oneindige Verhaal, 2005 Mystery River, heropening 7 mei 2018): [Excalibur – Secrets of the Dark Forest op de.wikipedia](https://de.wikipedia.org/wiki/Excalibur_%E2%80%93_Secrets_of_the_Dark_Forest) · [Mystery River wordt Excalibur (Parkerlebnis, Duits)](https://www.parkerlebnis.de/movie-park-2018-mystery-river-umbau-excalibur-neuheit_55825.html)
 - Gestopte achtbaan voor 2014 (45 meter, tien miljoen euro, funderingen gestort): [Achtbaanplannen gestopt (officieel, Duits)](https://www.movieparkgermany.de/movie-park-backstage/achterbahnplaene-gestoppt) · [Movie Park Germany plant 45 meter hoge achtbaan (Airtimers)](https://airtimers.com/en/movie-park-germany-plant-45-meter-hohe-achterbahn/0014266/)
@@ -755,7 +755,7 @@ wil slopen staat dan paars uitgelicht voor de maan.
 - De negen huizen in 2026, waarvan Jason Universe als enige nieuw: [Horrormazes (officieel)](https://www.movieparkgermany.de/en/halloween/horrorhauser)
 - PHOBIA – The Live Horror Game Show in Studio 7 en de monsterparade: [Shows (officieel)](https://www.movieparkgermany.de/en/halloween/shows)
 - Haunters Against Hate (sinds 2022, in 2026 de vijfde editie op 17 oktober): [Haunters Against Hate (officieel)](https://www.movieparkgermany.de/en/halloween/hah) · [„Haunters Against Hate" bij Parques Reunidos](https://www.parquesreunidos.com/en/blog/haunters-against-hate-when-fear-meets-purpose-at-movie-park)
-- Hollywood Christmas 2026/27: [Movie Park's Hollywood Christmas (officieel)](https://www.movieparkgermany.de/en/christmas)
+- Hollywood Christmas 2026/27: [Movie Park’s Hollywood Christmas (officieel)](https://www.movieparkgermany.de/en/christmas)
 - Prijzen, seizoenpassen, voorverkoop 2027 (tot 6 september 2026) en parkeergeld: [Onze prijzen & aanbiedingen (officieel)](https://www.movieparkgermany.de/oeffnungszeiten-und-preise/preise) · [Seizoenpas (officieel)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass) · [Entreeprijzen 2026 (NRW-Parks, Duits)](https://www.nrw-parks.de/movie-park-germany/movie-park-germany-eintrittspreise.html)
 - Bonus Club: voordelen alleen voor Gold en Platin, gratis entree in de Efteling per kalenderjaar, drie keer Bobbejaanland, Slagharen en Weltvogelpark Walsrode, plus de kortingslijst: [Bonus Club (officieel)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass/bonusclub) · [Voordelen 2026, parken van de groep (pdf, Duits)](https://www.movieparkgermany.de/content/dam/mpg/uploads/website/vorteile-saisonpassinhaber-(bonusclub(/2026/Vorteile%20f%C3%BCr%20Saisonpassinhaber%202026_Parques%20Reunidos%20Gruppe.pdf.html) · [Voordelen 2026, pretparken, dierentuinen en co. (pdf, Duits)](https://www.movieparkgermany.de/content/dam/mpg/uploads/website/vorteile-saisonpassinhaber-(bonusclub(/2026/Vorteile%20f%C3%BCr%20Saisonpassinhaber%202026_Freizeitparks%2c%20Zoos%20und%20Co.pdf.html)
 - Route, station Feldhausen, SB16: [Route & parkeren (officieel)](https://www.movieparkgermany.de/en/plane-deinen-besuch/wichtige-informationen/anfahrt-und-parken) · [Uitstapje met de trein (DB Regio NRW, Duits)](https://regional.bahn.de/regionen/nrw/ausflugstipps/aktiv/moviepark)

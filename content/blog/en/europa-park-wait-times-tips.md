@@ -1,5 +1,5 @@
 ---
-title: "Europa-Park: Germany's biggest park, and why it feels emptier than it is"
+title: 'Europa-Park: Germany’s biggest park, and why it feels emptier than it is'
 translationKey: europa-park-guide
 date: '2026-08-21'
 updatedAt: '2026-08-23'
@@ -89,7 +89,7 @@ Our wait-time history for Europa-Park goes back twelve months. Across all days
 of the week the **typical wait park-wide is 23 minutes** (median), with the 90th
 percentile at 36.
 
-The ten attractions you queue longest for, with today's number beside them:
+The ten attractions you queue longest for, with today’s number beside them:
 
 ```stats-widget slug=europa-park show=attractions
 
@@ -100,7 +100,7 @@ across the busiest ten per cent of days. Neither says anything about how a queue
 moves over the course of a day.
 
 The Voletarium is the odd one out. Its median of 14 minutes is the lowest of the
-ten longest, while its peak of 27 matches Poseidon's exactly. A flying theatre
+ten longest, while its peak of 27 matches Poseidon’s exactly. A flying theatre
 loads in big batches. Between two showings hardly anyone is waiting, and on a
 busy morning the queue reaches out into the square. Average that over a day and
 nothing of it is left.
@@ -118,10 +118,10 @@ from everything else here: they come from the TEA index, appear once a year and
 then do not change for a year. For 2024 that is 6.2 million in Rust for the
 theme park and not the 7.4 million of the whole resort, 2.1 million at
 Phantasialand, 5.6 at the Efteling, around ten in Paris. Toverland does not
-appear there at all, and the 1.17 million is the park's own figure. On the right
+appear there at all, and the 1.17 million is the park’s own figure. On the right
 of each row stands the attraction with the highest median for which we have at
 least a hundred days of measurements. At Toverland, Maximus' Blitz Bahn actually
-sits above that at 34 minutes, but on only 61 days, and a children's coaster
+sits above that at 34 minutes, but on only 61 days, and a children’s coaster
 with a thin measurement base is no yardstick for a whole park.
 
 With roughly a third of the crowd, Phantasialand has queues nine minutes longer
@@ -130,7 +130,7 @@ arithmetic is in the [Phantasialand guide](/blog/phantasialand-wait-times-tips).
 For the [Efteling](/blog/efteling-disney-of-the-netherlands) and
 [Toverland](/blog/toverland-troy-wait-times-tips) we ran the same calculation.
 And in Paris, where about one and a half times as many guests come through, the
-park-wide figure stands at 34 minutes. That is exactly the number Rust's
+park-wide figure stands at 34 minutes. That is exactly the number Rust’s
 _longest_ queue reaches.
 
 ## Why the biggest park has the shortest queues
@@ -204,7 +204,7 @@ One attraction, not a park rule.
 ## A park that was meant to be a showroom
 
 The company is older than the country it stands in. **Paul Mack** founded a
-cartwright's workshop in Waldkirch in the Black Forest in **1780**, and what it
+cartwright’s workshop in Waldkirch in the Black Forest in **1780**, and what it
 built were carriages and mail coaches. Eight generations later the workshop
 still stands in the same place, in the same family, and delivers to more than
 seventy countries.
@@ -284,7 +284,7 @@ France (1989), Austria and Scandinavia (1992), Switzerland (1993), Spain (1994),
 Germany (1996), Russia (1998), Greece (2000), Portugal (2005), Iceland (2009),
 Ireland and Luxembourg (2016), Liechtenstein (2023), Croatia (2024). Alongside
 them sit areas that are not countries at all, among them the Adventure Land,
-Grimm's fairy-tale forest and the Kingdom of the Minimoys from 2014.
+Grimm’s fairy-tale forest and the Kingdom of the Minimoys from 2014.
 
 Two of those dates I had muddled for years. The Swiss Bob Run has stood in the
 park since 1985, and the Swiss themed area was only built around it eight years
@@ -292,13 +292,13 @@ later. And the German area arrived ninth, twenty-one years after the opening.
 
 The eighteenth country arrived for the 2026 season: **Monaco**, built around the
 existing Silver Star coaster, which has thereby moved from the French part of
-the park into the Monegasque one. Côte d'Azur architecture, a digital aquarium
+the park into the Monegasque one. Côte d’Azur architecture, a digital aquarium
 modelled on the Oceanographic Museum, the International Circus Festival of
 Monte-Carlo in the converted Silver Star hall, and a Café de Paris. Prince
 Albert II attended the official opening in the summer of 2026.
 
 My favourite detail about this arrangement has nothing to do with a ride. In the
-Irish area, the children's world, sits a stork's nest older than the themed area
+Irish area, the children’s world, sits a stork’s nest older than the themed area
 around it, and four more are spread across a staff building, the tower of the
 Santa Isabel and the roof of the Bell Rock. There are no prop storks in them.
 They are wild birds that come back every spring. One member of staff rings them
@@ -364,7 +364,7 @@ Rust for in 2024.
 **[Silver Star](ref:europa-park/silver-star)** is the grande dame with the
 records. Built in 2002 by **Bolliger & Mabillard** of Monthey in the Valais,
 their first installation in Germany, and on opening the tallest and fastest
-steel roller coaster in Europe. 73 metres, 130 km/h by the park's own figure,
+steel roller coaster in Europe. 73 metres, 130 km/h by the park’s own figure,
 1,620 metres of track, not one inversion. The name comes from the sponsor, the
 star from Stuttgart.
 
@@ -375,7 +375,7 @@ star from Stuttgart.
 ![View from below into the wooden structure of Wodan, where two sections of track cross | Two million nails hold this together. | right](/media/europa-park/wodan-timburcoaster-4x3.jpg)
 
 **[Wodan](ref:europa-park/wodan-timburcoaster)** dates from 2012 and is the
-park's only wooden coaster, built by **Great Coasters International**. Forty
+park’s only wooden coaster, built by **Great Coasters International**. Forty
 metres tall, a good kilometre long, 100 km/h and up to 3.5 g. The construction
 figures read as though they came from a different industry: around fifty
 carpenters, 1,000 cubic metres of pine, 21,000 beams, 100,000 bolted joints and
@@ -388,7 +388,7 @@ two million nails.
 ![The loop of blue fire at night, lit in blue | Wodan stands behind it. The two share Iceland. | right](/media/europa-park/blue-fire-megacoaster-4x3.jpg)
 
 **[blue fire](ref:europa-park/blue-fire-megacoaster)**, from 2009, was the
-park's first launch coaster and is still the more elegant alternative to
+park’s first launch coaster and is still the more elegant alternative to
 Voltron: 38 metres, 100 km/h, four inversions, among them a heartline roll that
 feels like being turned over in slow motion.
 
@@ -401,7 +401,7 @@ explanation. It is one of the few rides that keeps running reliably in the rain.
 ![The silver Eurosat sphere above the Moulin Rouge façade | The whole ride happens inside the sphere. | right](/media/europa-park/eurosat-cancan-coaster-4x3.jpg)
 
 **[Poseidon](ref:europa-park/water-rollercoaster-poseidon)** opened on 12 July
-2000, exactly on the park's 25th birthday, and at 350 seconds of ride time is
+2000, exactly on the park’s 25th birthday, and at 350 seconds of ride time is
 unusually long for a water coaster.
 **[Atlantica SuperSplash](ref:europa-park/atlantica-supersplash)** from 2005
 throws you backwards into the pool from 30 metres.
@@ -462,10 +462,10 @@ all that is left of it is a glow of fire behind a closed gate.
 
 The park has a fair collection of dark rides.
 **[Madame Freudenreich Curiosités](ref:europa-park/madame-freudenreich-curiosites)**
-from 2018 is an Alsatian farmyard story with dinosaurs in the barn. The farmer's
+from 2018 is an Alsatian farmyard story with dinosaurs in the barn. The farmer’s
 wife talks to you like an old acquaintance, the beasts wear knitted scarves, and
 at some point you notice you are grinning your way through a dark ride.
-**[Josefina's Magical Imperial Journey](ref:europa-park/josefinas-magical-imperial-journey)**
+**[Josefina’s Magical Imperial Journey](ref:europa-park/josefinas-magical-imperial-journey)**
 from 2021 is the Austrian answer to it, calmer, and with a typical wait of five
 minutes the most relaxed quarter of an hour in the whole park.
 **[Jim Button](ref:europa-park/jim-button-journey-through-morrowland)** from 2019
@@ -536,7 +536,7 @@ both are worked out in the
 [Efteling guide](/blog/efteling-disney-of-the-netherlands).
 
 The explanation lies in who comes. From Rust it is a few kilometres to the Rhine
-and therefore to France, and less than an hour's drive to Basel, so the crowd is
+and therefore to France, and less than an hour’s drive to Basel, so the crowd is
 correspondingly international. In the last published breakdown, 49 per cent of
 guests came from Germany, 24 per cent from France and 20 per cent from
 Switzerland. Switzerland weighs heavier on the overnight side, where 27
@@ -641,7 +641,7 @@ All respectable, none of it worth getting up at eight for. The roller coasters
 can be spread across the day, the flying theatre cannot.
 
 How far it all spreads across the day only becomes visible hour by hour: the
-typical wait in each hour, averaged over a year of operating days. Each ride's
+typical wait in each hour, averaged over a year of operating days. Each ride’s
 busiest hour is in bold.
 
 ```hourly-profile-widget slug=europa-park top=12
@@ -650,7 +650,7 @@ busiest hour is in bold.
 
 ![Lift hill and first drop of Silver Star above the treetops, evening sky | Since 2026 the ride has belonged to the new Monaco area. | right](/media/europa-park/silver-star-4x3.jpg)
 
-The row that surprised me first time round is Silver Star's. Ten in the morning
+The row that surprised me first time round is Silver Star’s. Ten in the morning
 is its longest queue of the day, from midday it is about half that, and that
 does not change again before closing. A 73-metre coaster running half empty
 for half the day, because everybody was already there in the morning.
@@ -658,7 +658,7 @@ for half the day, because everybody was already there in the morning.
 **The busiest hours fall between ten and twelve.** Most rides hit their maximum
 at ten or at eleven; only Arthur and the two water rides fill up later in the
 afternoon. Take a leisurely breakfast, arrive at half past ten, and you walk
-straight into the day's maximum.
+straight into the day’s maximum.
 
 ![A shattered wooden ship in the Poseidon water basin, with a fortress wall behind it | Nearly empty at opening, longest queue of the day at eleven. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
 
@@ -675,7 +675,7 @@ A plan for the day that follows from that:
 3. **Force nothing between ten and twelve.** Those are the two hours for
    breakfast, a show or the fairy-tale forest. Anything with a queue now will
    have a shorter one in the afternoon.
-4. **Silver Star from midday**, then Eurosat, Pirates in Batavia, Josefina's
+4. **Silver Star from midday**, then Eurosat, Pirates in Batavia, Josefina’s
    Magical Imperial Journey and the Castello dei Medici. On hot days indoors is
    the better place to be anyway.
 5. **Water rides from five in the afternoon**, if getting soaked in the morning
@@ -746,7 +746,7 @@ that park:
 [Unknown](ref:traumatica/unknown),
 [Studio -13](ref:traumatica/studio-13),
 [Rotters Road](ref:traumatica/rotters-road),
-[Grim's Funhouse](ref:traumatica/grims-funhouse),
+[Grim’s Funhouse](ref:traumatica/grims-funhouse),
 [The Hill](ref:traumatica/the-hill) and the
 [Tarot House](ref:traumatica/tarot-house).
 
@@ -755,7 +755,7 @@ that park:
 Three rides from the theme park carry on into the night as well: the
 [Matterhorn-Blitz](ref:traumatica/matterhorn-blitz),
 [Pegasus](ref:traumatica/pegasus-the-youngstar-coaster) and
-[Cassandra's Curse](ref:traumatica/cassandras-curse-vr) with its VR version. A
+[Cassandra’s Curse](ref:traumatica/cassandras-curse-vr) with its VR version. A
 wild mouse in fog at half past ten at night, with performers standing between
 the supports, is one of the better ideas this event has had.
 
@@ -945,17 +945,17 @@ real Mir training module any more on their way into a car that spins.
 - The 2025 attendance record, 250,000 guests in the opening summer, the 150-millionth guest, the tenth Golden Ticket Award: [“Europa-Park records more than seven million guests for the first time” (Themepark Central)](https://www.themepark-central.de/europa-park-besucherzahlen-2025/) · [“A record year for the anniversary” (FreizeitparkNEWS)](https://www.freizeitparknews.de/europa-park/rekordjahr-7-millionen/)
 - The Monaco themed area 2026, the Silver Star hall, the circus festival, the opening with Prince Albert II: [“New themed area Monaco: the variety of the principality” (official blog)](https://blog.europapark.de/europa-park/neuer-themenbereich-monaco-die-vielfalt-des-fuerstentums/) · [“New Monaco themed area around the Silver Star coaster” (TravelScout24)](https://www.travelscout24.de/news/europa-park-monaco-themenbereich-2026-2026061048639/)
 - Voltron Nevera: opening 26 April 2024, 1,385 metres, seven inversions, the 105-degree launch, 3.25 million rides in the first year: [Voltron Nevera powered by Rimac (official)](https://www.europapark.de/de/freizeitpark/attraktionen/voltron-nevera-powered-rimac) · [“Europa-Park and its multi-launch coaster” (Ameropa)](https://www.ameropa.de/blog/voltron-nevera-powered-rimac-im-europa-park) · [“One year of pure adrenaline” (Schwarzwald aktuell)](https://www.schwarzwald-aktuell.eu/news/voltron-nevera-im-europa-park-1-jahr-pures-adrenalin-nervenkitzel-fuer-325-millionen/)
-- Poseidon, opened on 12 July 2000 for the park's 25th birthday (our API lists 1994 here instead): [Wasserachterbahn Poseidon on de.wikipedia](https://de.wikipedia.org/wiki/Wasserachterbahn_Poseidon) · [Poseidon (official)](https://www.europapark.de/de/freizeitpark/attraktionen/wasserachterbahn-poseidon)
+- Poseidon, opened on 12 July 2000 for the park’s 25th birthday (our API lists 1994 here instead): [Wasserachterbahn Poseidon on de.wikipedia](https://de.wikipedia.org/wiki/Wasserachterbahn_Poseidon) · [Poseidon (official)](https://www.europapark.de/de/freizeitpark/attraktionen/wasserachterbahn-poseidon)
 - Silver Star (the first B&M installation in Germany, 73 metres) and Wodan (fifty carpenters, 21,000 beams, two million nails): [Silver Star on de.wikipedia](<https://de.wikipedia.org/wiki/Silver_Star_(Europa-Park)>) · [Silver Star (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/europa_park/attraktionen/silver-star-c55) · [Roller coasters at Europa-Park (Achterbahnreporter)](https://achterbahnreporter.de/magazin/coasterkompass/achterbahnen-europapark/)
 - The fire of 26 May 2018, the reopening the next day and the rebuilt Pirates in Batavia (counting the days between the fire and the reopening on 28 July 2020 gives 794; several reports say 804): [“Fire at Europa-Park destroys Batavia attraction and part of the Scandinavian area” (Badische Zeitung)](https://www.badische-zeitung.de/rust/feuer-im-europa-park-zerstoert-batavia-attraktion-und-teil-des-skandinavien-bereichs--153002811.html) · [“Europa-Park reopens after fire” (Parkerlebnis)](https://www.parkerlebnis.de/europa-park-nach-feuer-2018-27-mai-geoffnet_60310.html) · [“Pirates in Batavia: from destruction to resurrection” (blooloop)](https://blooloop.com/theme-park/in-depth/pirates-in-batavia-europa-park/) · [Pirates in Batavia on en.wikipedia](https://en.wikipedia.org/wiki/Pirates_in_Batavia)
-- The five stork nests, one of them in the Irish children's world: [“All five stork nests at Europa-Park are occupied again” (Parkerlebnis)](https://www.parkerlebnis.de/europa-park-storchennester-wieder-belegt_109228.html)
+- The five stork nests, one of them in the Irish children’s world: [“All five stork nests at Europa-Park are occupied again” (Parkerlebnis)](https://www.parkerlebnis.de/europa-park-storchennester-wieder-belegt_109228.html)
 - Euro-Mir: the opening on 12 June 1997, the Mir training module, the three cosmonauts, removal after the 2026 season, the 2028 successor: [“Euro-Mir is leaving Europa-Park, a replacement comes in 2028!” (Themepark Central)](https://www.themepark-central.de/europa-park-euro-mir/) · [“Last season for Euro-Mir” (baden24)](https://www.baden24.de/reise-freizeit/freizeit/ersetzt-roland-mack-kult-neue-attraktion-euro-mir-achterbahn-europa-park-letzte-saison-93626613.html)
 - Season dates 2026/27, HALLOWinter and the winter opening: [Opening hours & seasons (official)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/europa-park-oeffnungszeiten-saisons) · [HALLOWinter 2026 (official)](https://www.europapark.de/de/uebernachten/angebote-events/hallowinter-2026)
 - The Halloween season with 180,000 pumpkins and the 2026 Traumatica dates: [Traumatica (official)](https://www.europapark.de/de/events/traumatica) · [our Halloween guide](/blog/halloween-theme-parks-2026)
 - 2026 prices, the best price with an overnight stay, the ResortPass, the surcharge at the gate: [Tickets & offers (official)](https://www.europapark.de/de/freizeitpark/tickets-angebote)
 - No fast pass, single rider at six attractions, the free Virtual Line and early entry for hotel guests (45 minutes in summer from 8:15 a.m., 60 minutes in HALLOWinter and winter from 10 a.m.): [Tips for your Europa-Park visit (official)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/tipps-fuer-ihren-besuch-im-europa-park) · [“Europa-Park Resort brings back Single Rider & Virtual Line” (Themepark Central)](https://www.themepark-central.de/europa-park-single-rider-virtual-line/)
 - The Ammolite with two Michelin stars since November 2014, Silver Lake City and the Riverside Western Lodge with its 119 rooms: [Ammolite – The Lighthouse Restaurant (official)](https://www.europapark.de/de/uebernachten/gastronomie/ammolite-lighthouse-restaurant) · [Europa-Park Riverside Western Lodge (official)](https://www.europapark.de/de/uebernachten/riverside-western-lodge)
-- Getting there via the A5, parking fees, Rulantica, the Eatrenalin's Michelin star in 2026: [Getting to Europa-Park (official)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park) · [Europa-Park Erlebnis-Resort (official)](https://www.europapark.de/de) · [Eatrenalin on en.wikipedia](https://en.wikipedia.org/wiki/Eatrenalin)
+- Getting there via the A5, parking fees, Rulantica, the Eatrenalin’s Michelin star in 2026: [Getting to Europa-Park (official)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park) · [Europa-Park Erlebnis-Resort (official)](https://www.europapark.de/de) · [Eatrenalin on en.wikipedia](https://en.wikipedia.org/wiki/Eatrenalin)
 - Visitor mix by country of origin and the Swiss share: [“50 Jahre Europa-Park Rust: Ein Schweizer Sehnsuchtsort” (NZZ)](https://www.nzz.ch/schweiz/des-schweizers-liebstes-europa-ld.1906300) · [“874'000 Schweizer Besucher stellen den grössten Anteil” (aboutTravel)](https://abouttravel.ch/reisebranche/874000-schweizer-besucher-stellen-den-groessten-anteil/)
 - The Friday in between: crowd levels and weather for the days around Ascension Day and Corpus Christi 2026 from our own calendar (measured, not forecast), plus the video series [BRÜCKENTAG im EUROPA-PARK 2025 (Parkfan95)](https://www.youtube.com/watch?v=Js8j_qvKCoA) · [the same series in 2026 (Parkfan95)](https://www.youtube.com/watch?v=aRH5xvAKE_I)
 - Wait-time, rope-drop and crowd data: our own wait-time history across a rolling year, the hourly profile across a rolling year, the crowd forecast across 90 days, [Europa-Park on park.fan](ref:europa-park)

@@ -197,7 +197,7 @@ Hartgesottene (ab 18, All-inclusive, 349 €). Manche Extra-Kitzel kosten
 obendrauf: die Vollkontakt-Experience THE HOTEL (29 €), der Club THE FORBIDDEN
 (10 €) und eine kurze Horror-VR (6 €).
 
-Zum Jubiläum kommt der **Vampire's Club** zurück, und zwar für genau vier
+Zum Jubiläum kommt der **Vampire’s Club** zurück, und zwar für genau vier
 Nächte: 25. und 26. September, 2. und 3. Oktober. An diesen Abenden tritt er an
 die Stelle von THE FORBIDDEN, und Marc Terenzi steht dort selbst auf der Bühne.
 Nach über einem Jahrzehnt Abstand zwischen ihm und dem Event ist das die Art

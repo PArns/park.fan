@@ -37,7 +37,7 @@ coverImage:
 seo:
   title: 'Toverland: Troy, Wait Times & Halloween Guide'
   description: >-
-    Why Troy at Toverland is Europe's quietest world-class wooden coaster: real
+    Why Troy at Toverland is Europe’s quietest world-class wooden coaster: real
     wait-time data, Fēnix, the Swinging Bobsled, tickets and Halloween Nights.
   keywords:
     - Toverland
@@ -102,7 +102,7 @@ lined up in a row. Instead of running straight and going up and down along the
 way, the track changes direction constantly and spends every metre of height on
 a change of direction. On paper the element list reads harmless: lift hill,
 first drop, airtime hill, overbanked turn, camelback, double down, brake run. In
-the train you never get a moment's peace.
+the train you never get a moment’s peace.
 
 ```glossary-widget slug=twister-coaster
 
@@ -119,8 +119,8 @@ That leaves the prejudice every wooden coaster picks up past a certain age:
 that it gets rough. The park has been working on it very methodically since
 **2024**. A multi-year **retrack** replaces around 198 metres of layout on both
 rails every winter, close to 400 running metres of wood per season. The work
-happens under a temporary roof so rain and frost can't hold it up, carried out
-by twenty people from the park's own team, trained specifically for the job.
+happens under a temporary roof so rain and frost can’t hold it up, carried out
+by twenty people from the park’s own team, trained specifically for the job.
 The first drop and the horseshoe went first. If you rode Troy ten years ago and
 remember it as "brilliant, but rough": ride it again.
 
@@ -136,7 +136,7 @@ remember it as "brilliant, but rough": ride it again.
 numbers.
 
 Across the last two seasons, calculated from more than 150 operating days with wait-time
-data, Troy's **typical wait is 16 minutes** (median). Even the 90th percentile,
+data, Troy’s **typical wait is 16 minutes** (median). Even the 90th percentile,
 the value nine out of ten measurements fall below, only reaches **21 minutes**.
 That is not some dead Tuesday in March, that is the average across every
 operating day.
@@ -168,7 +168,7 @@ rides and more than forty attractions in total. Let three times as many people
 through the gate and you rarely build three times as much for them to ride.
 
 On top of that comes something other parks built in long ago and this one
-hasn't: **Toverland sells no fast pass and no express pass.** In the entire
+hasn’t: **Toverland sells no fast pass and no express pass.** In the entire
 park there is exactly one way to trade money for time, and it only exists in
 October. On every other day, the queue you see is the queue there is. There has
 been a single rider line since 2023, mind you, but only at one attraction, the
@@ -193,8 +193,8 @@ the whole thing anyway. Wait: the same 16 minutes as Troy.
 ![The Fēnix station with blue track, a wing coaster train and fire bowls hanging on chains under wooden beams | The Fēnix station: fire bowls on chains, heavy beams, and the train with its seats beside the rail. | wide](/media/toverland/background-16x9.jpg)
 
 **[Booster Bike](ref:attractiepark-toverland/booster-bike)** is the oddball, and my second
-favourite here. In 2004, Vekoma built the world's prototype motorbike coaster in
-Sevenum: you don't sit, you lie on a motorbike, hands on the bars, knees tucked
+favourite here. In 2004, Vekoma built the world’s prototype motorbike coaster in
+Sevenum: you don’t sit, you lie on a motorbike, hands on the bars, knees tucked
 in, and then get launched. An uncomfortable, absurd, wonderful ride. With a
 median of 21 minutes it has, of all things, the longest typical wait of any
 coaster in the park, which comes down to boarding one at a time, lying down,
@@ -210,7 +210,7 @@ September 2012, a press run on the 26th, and from Saturday **29 September
 2012** anyone could ride, a good five weeks until 4 November. It closed again
 over the winter so construction could continue around it, and came back in
 **April 2013** with the complete themed area, now as Dwervelwind rather than
-the d'wervelwind of 2012. Which is why sources say either 2012 or 2013. Both
+the d’wervelwind of 2012. Which is why sources say either 2012 or 2013. Both
 are right.
 
 **[Toos-Express](ref:attractiepark-toverland/toos-express)** from the opening year of 2001 is
@@ -219,8 +219,8 @@ a quarter of a century.
 
 The wet-and-dark department is better than its reputation:
 
-- **[Merlin's Quest](ref:attractiepark-toverland/merlins-quest)** (2018), the boat ride
-  through Merlin's tower, with animatronics and a run of scenes other parks
+- **[Merlin’s Quest](ref:attractiepark-toverland/merlins-quest)** (2018), the boat ride
+  through Merlin’s tower, with animatronics and a run of scenes other parks
   would charge extra for. The quiet star of Avalon.
 - **[Djengu River](ref:attractiepark-toverland/djengu-river)**, the Hafema rapids. The
   question is not _whether_ you get wet.
@@ -248,7 +248,7 @@ could afford to waste, and still built something twice over that had never
 existed anywhere.
 
 **2004** brought the second hall, then "Magic Forest", today the
-**Wunderwald**. And with it [Booster Bike](ref:attractiepark-toverland/booster-bike), Vekoma's
+**Wunderwald**. And with it [Booster Bike](ref:attractiepark-toverland/booster-bike), Vekoma’s
 worldwide prototype of the motorbike coaster. A park that barely anyone outside
 Limburg had heard of had a ride type developed that did not yet exist.
 
@@ -256,7 +256,7 @@ Limburg had heard of had a ride type developed that did not yet exist.
 built around a single ride. For 6.5 million euros, a park with around half a
 million visitors at the time got itself a GCI wooden coaster of the kind
 normally bought by places with five times the crowd. Troy was only the second
-GCI installation in Europe, after Thunderbird at Finland's PowerPark, and the
+GCI installation in Europe, after Thunderbird at Finland’s PowerPark, and the
 eleventh worldwide. In March 2007, shortly before opening, part of the
 half-finished lift hill structure blew over in a storm. The park rebuilt it and
 opened on time for the season anyway.
@@ -268,7 +268,7 @@ that turned a day-trip destination into a theme park: a 35-million-euro
 expansion with a completely new entrance area in Mediterranean harbour style
 (**Port Laguna**) and the Arthurian world of **Avalon**, home to
 [Fēnix](ref:attractiepark-toverland/fenix) and
-[Merlin's Quest](ref:attractiepark-toverland/merlins-quest). That is also when the park picked
+[Merlin’s Quest](ref:attractiepark-toverland/merlins-quest). That is also when the park picked
 up its current claim, "Discover your own magic", replacing the older lines
 "Magisch mooi" and "Feel the Magic". The same year Toverland cleaned up at the
 **European Star Awards**: best theme park in the category up to one million
@@ -325,7 +325,7 @@ different events:
   recommended from age 12: **six scare zones**, **six haunted experiences**, an
   opening parade, ground fog everywhere, fireworks to close.
 
-![Illuminated pumpkins with witches' hats among dry corn stalks | Pumpkins in the corn. The park's biggest maze of 2026 is made of the same material. | left](/media/toverland-halloween/04-kuerbisse-maisfeld.jpg)
+![Illuminated pumpkins with witches' hats among dry corn stalks | Pumpkins in the corn. The park’s biggest maze of 2026 is made of the same material. | left](/media/toverland-halloween/04-kuerbisse-maisfeld.jpg)
 
 The **2026** newcomer literally grows: **"Entwined: The Maze"**, a
 **seven-hectare corn field** with walls metres high behind Fēnix, according to
@@ -333,7 +333,7 @@ the park twice the size of the whole Avalon area and marketed as the largest
 Halloween experience in Europe. It replaces the long-running rat labyrinth
 "Trapped". The only rule that counts in there: stand still and you get caught.
 
-![The Troy entrance sign redressed as "DesTROY – The Ride", with two Halloween Nights banners below | Troy becomes DesTROY. The park unscrews the coaster's entrance sign for it. | right](/media/toverland-halloween/03-destroy-schild.jpg)
+![The Troy entrance sign redressed as "DesTROY – The Ride", with two Halloween Nights banners below | Troy becomes DesTROY. The park unscrews the coaster’s entrance sign for it. | right](/media/toverland-halloween/03-destroy-schild.jpg)
 
 For Troy fans, though, the best part is still to come. One of the scare zones is
 called **"DesTroy"** and sits in **Ithaka**, right beside and underneath the
@@ -342,7 +342,7 @@ Troy runs straight through it. There are not many chances in Europe to ride a
 first-class wooden coaster in the dark through a live scare zone, with fog on
 the brake run and performers in the queue.
 
-![A Trojan warrior with a spear standing in a spotlight in front of the red-lit horse | Whether that's a prop or a performer, you find out too late. | left](/media/toverland-halloween/02-trojanisches-pferd-krieger.jpg)
+![A Trojan warrior with a spear standing in a spotlight in front of the red-lit horse | Whether that’s a prop or a performer, you find out too late. | left](/media/toverland-halloween/02-trojanisches-pferd-krieger.jpg)
 
 One of the six experiences has a second layer for me. With the
 [**Freundeskreis Kirmes und Freizeitparks**](https://fkfev.de/), a German
@@ -379,7 +379,7 @@ small enough that it can happen, and evidently important enough that it does.
 
 ![A carved decorative detail on Maximus' Blitz Bahn, lit blue, with old light bulbs on cables beside it | A detail of the Blitz Bahn, as it stood for nineteen years. Almost everything here was made by hand. | left](/media/toverland/maximus-blitzbahn-4x3.jpg)
 
-If you haven't been for a while, one attraction will be missing. On
+If you haven’t been for a while, one attraction will be missing. On
 **17 May 2026**, **[Maximus' Blitz Bahn](ref:attractiepark-toverland/maximus-blitz-bahn)** in
 the Wunderwald opened for the last time, the 2007 Mack bobsled where a brake
 lever let you decide how fast you went downhill. For years our history had it as
@@ -428,7 +428,7 @@ The answer is a relaxed one: almost always.
 
 **By month**, June is the sweet spot (typically 18 minutes park-wide), followed
 by May and July at 20 and 22 minutes. The hardest work is **April** at 25
-minutes, when Easter, King's Day and the Dutch May holidays land together, then
+minutes, when Easter, King’s Day and the Dutch May holidays land together, then
 the winter weeks in **December and January** at 31 and 26 minutes. That
 surprises a lot of people: the busiest period is not summer, it is the short,
 heavily booked winter season, when only part of the attractions run and the park
@@ -441,7 +441,7 @@ minutes) and Friday next (24 minutes), and from Sunday to Wednesday it is 20
 minutes throughout. At Phantasialand there are worlds between a Tuesday and a
 Saturday. Here, almost every day is a good day.
 
-You can't rely on that the moment Dutch and German holiday calendars, weather
+You can’t rely on that the moment Dutch and German holiday calendars, weather
 and opening hours all overlap, and in the Limburg border region they overlap
 constantly. Here are the quietest days coming up:
 
@@ -461,7 +461,7 @@ German ones, especially the autumn and May breaks in the southern provinces.
 
 ## The perfect day, in six sentences
 
-Since there is no fast pass, all you have here is timing. You won't need much of
+Since there is no fast pass, all you have here is timing. You won’t need much of
 it though.
 
 At opening, head straight to Ithaka for **Troy**, not because it gets busy
@@ -535,8 +535,8 @@ early or late, half eleven or from half two.
 
 Yes, especially for coaster fans who have had enough of queues. With around a
 million guests a year the park is small compared with the Efteling or
-Europa-Park, but it has one of Europe's best wooden coasters in
-[Troy](ref:attractiepark-toverland/troy) and the continent's longest wing coaster in
+Europa-Park, but it has one of Europe’s best wooden coasters in
+[Troy](ref:attractiepark-toverland/troy) and the continent’s longest wing coaster in
 [Fēnix](ref:attractiepark-toverland/fenix), at typical waits of 16 minutes.
 
 ### How long are the wait times at Toverland?
@@ -555,10 +555,10 @@ autumn holidays, and the short winter season. Day by day, the [wait-time calenda
 
 ### Do you need a fast pass at Toverland?
 
-There isn't one. Toverland sells no fast pass at all; the only exception is the
+There isn’t one. Toverland sells no fast pass at all; the only exception is the
 **Fear Pass** for the haunted experiences during the Halloween Nights
 (62.50 €). A free single rider line exists only at the Dragonwatch drop tower.
-With 16-minute medians on the headliners you don't need a shortcut on a normal
+With 16-minute medians on the headliners you don’t need a shortcut on a normal
 day anyway.
 
 ### Is Troy the best wooden coaster in Europe?
@@ -572,7 +572,7 @@ metres tall, 1,077 metres long and 90 km/h it is the tallest, longest and
 fastest wooden coaster in the Benelux. One thing it definitely is: the
 world-class European woodie with the shortest queue.
 
-### What's new at Toverland in 2026?
+### What’s new at Toverland in 2026?
 
 Three things: the illusion show **"Magic Memories"** by Hans Klok for the 25th
 anniversary (since 18 April, included with admission), the end of **Maximus'
@@ -596,9 +596,9 @@ though.
 
 ## Stay in your seat
 
-"Discover your own magic" is the park's claim, and I am well aware that a
+"Discover your own magic" is the park’s claim, and I am well aware that a
 sentence like that comes out of a marketing department. It just happens to be
-true here. Toverland doesn't prescribe anything. There is no fast pass you'd
+true here. Toverland doesn’t prescribe anything. There is no fast pass you’d
 have to buy to keep up, no attraction that takes two hours out of your day, and
 no running order to work through. You walk in and find what you like yourself.
 For me that has been Troy for years. Other people come for the Maison de la
@@ -621,7 +621,7 @@ And the two this was about, with their current numbers:
 [Troy](ref:attractiepark-toverland/troy?full)
 [Fēnix](ref:attractiepark-toverland/fenix?full)
 
-Take the Sevenum exit once instead of driving past it. And when you're sitting
+Take the Sevenum exit once instead of driving past it. And when you’re sitting
 in Troy and nobody is waiting behind you: just stay in your seat and go again.
 And then once more. On a Tuesday in June that works here. In most other parks in
 Europe you can forget it.

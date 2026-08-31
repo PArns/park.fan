@@ -1788,6 +1788,15 @@ export interface HourlyProfileAttraction {
   attractionName: string;
   land?: string | null;
   /**
+   * Quiet-hour wait (P25), aligned with `hours` the same way as {@link p50}.
+   *
+   * Optional because it is newer than the endpoint: a deployment answering the
+   * v3 projection sends no `p25` at all, and a chart that assumed one would
+   * draw a band with no lower edge. Every reader treats an absent array as
+   * "no spread available" and falls back to the median line.
+   */
+  p25?: Array<number | null>;
+  /**
    * Median wait per hour, POSITIONAL: `p50[i]` belongs to `hours[i]`, never to `i` o'clock.
    * `null` is a gap — the ride reported nothing in that hour — and is not the same claim as a
    * zero, which would say the queue was empty.
@@ -1798,6 +1807,50 @@ export interface HourlyProfileAttraction {
   /** The hour in `hours` where this ride's own median peaks. */
   peakHour: number | null;
   sampleDays: number;
+}
+
+/**
+ * One ride's day: what it normally does, what it has done so far today, and what
+ * the model expects for the rest.
+ *
+ * Everything is POSITIONAL against `hours`, and `today`/`forecast` never overlap
+ * — an hour already measured carries `forecast: null`, so a chart cannot draw
+ * the model's guess on top of the fact. See docs/frontend/ride-day-curve.md in
+ * the API repo.
+ */
+export interface RideDayCurve {
+  hours: number[];
+  attractionSlug: string;
+  attractionName: string;
+  p25: Array<number | null>;
+  p50: Array<number | null>;
+  p90: Array<number | null>;
+  /** Measured today. `null` for an hour not yet reached, or one the ride reported nothing in. */
+  today: Array<number | null>;
+  /** Expected, for hours not yet measured. */
+  forecast: Array<number | null>;
+  /**
+   * What the model said for each hour BEFORE it happened — every hour it has an
+   * opinion about, measured or not.
+   *
+   * Optional: an API still on the older schema sends none, and the chart then
+   * draws no comparison line rather than an empty one.
+   */
+  predicted?: Array<number | null>;
+  /**
+   * The ride's own mean absolute error in minutes.
+   *
+   * A measured, published figure — a caller may draw the forecast as
+   * `± forecastError`, but must NOT fan it out with the horizon, which nothing
+   * measures. `null` where the ride has not been scored.
+   */
+  forecastError: number | null;
+  /** False for a park not open yet, a closed ride, an out-of-season ride. */
+  measuredToday: boolean;
+  sampleDays: number;
+  timezone: string;
+  generatedAt: string;
+  schemaVersion: number;
 }
 
 /**

@@ -10,6 +10,11 @@ const DEFERRED_KEY_PREFIXES = [
   'park-best-days-calendar',
   'park-historical-stats',
   'park-hourly-profile',
+  // The ride day curve gates itself on this hook too, so leaving it out made it
+  // exactly the starvation case described above: on a ride page it and
+  // `park-historical-stats` each counted the other as outstanding traffic and
+  // kept re-arming the grace window.
+  'ride-day-curve',
 ];
 
 // How long the rest of the page must be network-idle before the deferred

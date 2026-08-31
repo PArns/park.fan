@@ -27,7 +27,7 @@ export const LANGUAGE_BANNER_MESSAGES: Record<Locale, LanguageBannerMessages> = 
     dismiss: 'Dismiss',
   },
   de: {
-    message: "Diese Seite gibt's auch auf {language}",
+    message: 'Diese Seite gibt’s auch auf {language}',
     switchButton: 'Zu {language} wechseln',
     dismiss: 'Schließen',
   },

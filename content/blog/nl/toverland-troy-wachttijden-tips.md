@@ -111,14 +111,14 @@ remstuk. In de trein kom je nooit tot rust.
 
 De tweede keuze is de trein. **Great Coasters International (GCI)** bouwt de
 zogenoemde Millennium Flyers: wagens met één enkele stoelenrij, scharnierend aan
-elkaar gehangen als een ketting. Zo'n trein legt zich in bochten, in plaats van
+elkaar gehangen als een ketting. Zo’n trein legt zich in bochten, in plaats van
 zich er doorheen te beuken. Precies daarom kan GCI stralen rijden waarin een
 klassieke houten achtbaantrein zijn gasten door elkaar zou schudden. 24 personen
 per trein, twee treinen, 850 gasten per uur.
 
 Blijft het vooroordeel dat elke houten achtbaan vanaf een zekere leeftijd
 meesleept: dat ze rammelt. Daar werkt het park sinds **2024** heel systematisch
-aan. In een meerjarige **retrack** vervangt het elke winter zo'n 198 meter
+aan. In een meerjarige **retrack** vervangt het elke winter zo’n 198 meter
 traject op beide rails, samen bijna 400 strekkende meter hout per seizoen. Er
 wordt gewerkt onder een tijdelijk dak, zodat regen en vorst de werkzaamheden
 niet ophouden, door twintig speciaal daarvoor opgeleide mensen uit het eigen
@@ -211,7 +211,7 @@ vooropeningsdagen in de week van 24 september 2012, een persrit op de 26e, en
 vanaf zaterdag **29 september 2012** mocht iedereen mee, ruim vijf weken lang
 tot 4 november. Daarna ging ze de winter over weer dicht zodat eromheen verder
 gebouwd kon worden, en kwam ze in **april 2013** terug met het complete
-themagebied, nu als Dwervelwind in plaats van de d'wervelwind van 2012. Daarom
+themagebied, nu als Dwervelwind in plaats van de d’wervelwind van 2012. Daarom
 lees je afhankelijk van de bron 2012 of 2013. Allebei klopt.
 
 **[Toos-Express](ref:attractiepark-toverland/toos-express)** uit het openingsjaar 2001 is de
@@ -219,7 +219,7 @@ juniorcoaster waarop hier al een kwart eeuw kinderen hun eerste achtbaan rijden.
 
 De natte en donkere afdeling is beter dan haar reputatie:
 
-- **[Merlin's Quest](ref:attractiepark-toverland/merlins-quest)** (2018), de boottocht door
+- **[Merlin’s Quest](ref:attractiepark-toverland/merlins-quest)** (2018), de boottocht door
   Merlijns toren, met animatronics en een reeks scènes waar andere parken extra
   entree voor zouden vragen. De stille ster van Avalon.
 - **[Djengu River](ref:attractiepark-toverland/djengu-river)**, de wildwaterbaan van Hafema.
@@ -233,7 +233,7 @@ De natte en donkere afdeling is beter dan haar reputatie:
 
 ## Van regenhal tot themapark
 
-Weinig parken van deze omvang hebben zo'n onwaarschijnlijke voorgeschiedenis.
+Weinig parken van deze omvang hebben zo’n onwaarschijnlijke voorgeschiedenis.
 Die begint namelijk zonder één enkele achtbaan.
 
 Op **19 mei 2001** opende de familie Gelissen in Sevenum een indoorspeelhal.
@@ -256,7 +256,7 @@ bestond.
 
 **2007** volgde het eerste echte buitengebied: **Ithaka**, Griekse oudheid,
 gebouwd rond één enkele baan. Voor 6,5 miljoen euro kreeg een park met destijds
-zo'n half miljoen bezoekers een houten GCI-achtbaan zoals huizen met het
+zo’n half miljoen bezoekers een houten GCI-achtbaan zoals huizen met het
 vijfvoudige aan publiek er een neerzetten. Troy was pas de tweede GCI-installatie
 in Europa, na Thunderbird in het Finse PowerPark, en de elfde wereldwijd. In
 maart 2007, kort voor de opening, waaide een deel van het halfafgebouwde
@@ -269,7 +269,7 @@ tijd voor het seizoen.
 van het uitje een themapark maakte: een uitbreiding van 35 miljoen euro, met een
 compleet nieuw entreegebied in mediterrane havenstijl (**Port Laguna**) en de
 Arthurwereld **Avalon**, waar [Fēnix](ref:attractiepark-toverland/fenix) en
-[Merlin's Quest](ref:attractiepark-toverland/merlins-quest) staan. Toen kreeg het park ook
+[Merlin’s Quest](ref:attractiepark-toverland/merlins-quest) staan. Toen kreeg het park ook
 zijn huidige claim, "Discover your own magic", die de oude leuzen "Magisch mooi"
 en "Feel the Magic" verving. In datzelfde jaar veegde Toverland de
 **European Star Awards** aan: beste themapark in de categorie tot een miljoen
@@ -289,12 +289,12 @@ Efteling of Europa-Park doorsluizen, en precies daarin zit de charme.
 De twee oerhallen bestaan trouwens nog, en ze zijn geen regenbui-plan-B. Land
 van Toos en Wunderwald zijn een eigenstandig programma, met
 [Djinn](ref:attractiepark-toverland/djinn), de zweefmolen boven de oosterse markt, als mooiste
-voorbeeld: 12,8 meter hoog, volledig overdekt, en 's avonds met een lichtsfeer
+voorbeeld: 12,8 meter hoog, volledig overdekt, en ’s avonds met een lichtsfeer
 waarvoor andere parken een buitengebied nodig zouden hebben.
 
 **2026 is jubileumjaar**, en het park viert dat op een manier waar een concern
 niet op zou komen. Sinds **18 april** loopt "Magic Memories", een illusieshow
-van diezelfde Hans Klok die 25 jaar geleden de poorten opendeed, zo'n 30 minuten
+van diezelfde Hans Klok die 25 jaar geleden de poorten opendeed, zo’n 30 minuten
 lang, meermaals per dag, bij de entree inbegrepen. En in het **weekend van
 27/28 juni** was Toverland voor het eerst in zijn geschiedenis 25 uur aan één
 stuk open, met elke vijf uur een verrassing, een XXL-parade en vuurwerk.
@@ -305,7 +305,7 @@ stuk open, met elke vijf uur een verrassing, een XXL-parade en vuurwerk.
 
 ## Halloween, en de nacht aan de andere kant
 
-![Het houten Trojaanse paard bij nacht, rood aangelicht en in nevel gehuld, ervoor een mensenmenigte | Hetzelfde paard als hierboven, zes weken later. Overdag maken families er foto's voor. | wide](/media/toverland-halloween/01-trojanisches-pferd-rot.jpg)
+![Het houten Trojaanse paard bij nacht, rood aangelicht en in nevel gehuld, ervoor een mensenmenigte | Hetzelfde paard als hierboven, zes weken later. Overdag maken families er foto’s voor. | wide](/media/toverland-halloween/01-trojanisches-pferd-rot.jpg)
 
 Zes weken per jaar krijgt dit park een tweede persoonlijkheid, en voor veel
 gasten uit West-Duitsland is dat de eigenlijke aanleiding om te komen. Hoe het
@@ -467,7 +467,7 @@ Omdat er geen fastpass is, helpt alleen timing je hier. Veel daarvan heb je
 overigens niet nodig.
 
 Ga bij opening direct naar Ithaka voor **Troy**, niet omdat ze anders vol wordt,
-maar omdat een houten achtbaan 's ochtends nog koud is en in de loop van de dag
+maar omdat een houten achtbaan ’s ochtends nog koud is en in de loop van de dag
 meetbaar sneller loopt. Rijd haar vroeg **én** laat, dan heb je twee
 verschillende banen gereden. Daarna **Fēnix** in Avalon, de twee headliners
 liggen praktisch muur aan muur. Als derde **Booster Bike**, omdat zij in onze
@@ -476,7 +476,7 @@ data de langste typische wachttijd van alle coasters heeft. De
 zit een aanzienlijk deel van de gasten een half uur in het theater, buiten is
 het dan opvallend rustig. En het laatste uur is weer voor Ithaka: Troy in de
 schemering, als de constructie wordt aangelicht en de trein hoorbaar sneller
-door het station raast dan 's ochtends.
+door het station raast dan ’s ochtends.
 
 ## Praktisch: tickets, route, eten
 
@@ -507,9 +507,9 @@ het grensgebied woont en meerdere keren per jaar naar een goed park gaat, moet
 die twee zinnen twee keer lezen.
 
 **Route.** Toverland ligt in **Sevenum** (gemeente Horst aan de Maas),
-Toverlaan 2, zo'n tien autominuten ten westen van Venlo. Via de **A67** ben je
+Toverlaan 2, zo’n tien autominuten ten westen van Venlo. Via de **A67** ben je
 er vanuit Düsseldorf in ongeveer een uur, vanuit het Ruhrgebied in ruim 1:15,
-vanuit Keulen in zo'n 1:20. Met de trein gaat het tot **Horst-Sevenum**, van
+vanuit Keulen in zo’n 1:20. Met de trein gaat het tot **Horst-Sevenum**, van
 daar met **buslijn 79 en 679** in ongeveer tien minuten naar de ingang; de
 frequentie is landelijk, plan de terugreis voor je vertrekt. Een eigen parkhotel
 is er niet, in de omgeving wel genoeg pensions en vakantieparken. Wie de streek
@@ -522,7 +522,7 @@ een uur) of inderdaad de [Efteling](ref:efteling).
   zitten: middeleeuws herbergdecor, Bourgondische keuken, vlees- en
   visgerechten, vegetarische opties, seizoensspecials. **Bestel het
   broodvoorgerecht**, dat is de echte geheime tip van het huis: heel vers brood
-  met een hele reeks smeersels. Neem het wel met z'n tweeën of drieën, alleen
+  met een hele reeks smeersels. Neem het wel met z’n tweeën of drieën, alleen
   eet je je er vol aan voordat het hoofdgerecht komt.
 - **Katara Plaza** (Magische Vallei) is het foodcourt met het beste uitzicht:
   tropische gerechten, tafels aan het water, en daarbij de watershow Katara.
@@ -538,7 +538,7 @@ half drie.
 
 ### Is Toverland een bezoek waard?
 
-Ja, vooral voor achtbaanfans die genoeg hebben van rijen. Het park is met zo'n
+Ja, vooral voor achtbaanfans die genoeg hebben van rijen. Het park is met zo’n
 een miljoen gasten per jaar klein vergeleken met de Efteling of Europa-Park,
 maar heeft met [Troy](ref:attractiepark-toverland/troy) een van de beste houten achtbanen van
 Europa en met [Fēnix](ref:attractiepark-toverland/fenix) de langste wing coaster van het
@@ -602,7 +602,7 @@ twee dagen mee vullen.
 
 ## Blijf zitten
 
-"Discover your own magic" is de claim van het park, en ik weet best dat zo'n zin
+"Discover your own magic" is de claim van het park, en ik weet best dat zo’n zin
 uit een marketingafdeling komt. Alleen klopt hij hier gewoon. Toverland schrijft
 je niets voor. Er is geen fastpass die je zou moeten kopen om mee te komen, geen
 attractie die twee uur van je dag opsnoept, en geen volgorde die je moet

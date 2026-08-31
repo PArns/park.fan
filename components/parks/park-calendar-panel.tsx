@@ -128,44 +128,42 @@ export function ParkCalendarPanel({
     stops rather than pointing at a 404. */
   const monthStepper = (
     <>
-        {!isCurrentMonth && (
-          <Button variant="outline" size="sm" className="h-9" asChild>
-            <Link
-              href={parkCalendarPath(locale, continent, country, city, parkSlug)}
-              aria-label={t('currentMonthAria')}
-              scroll={false}
-              onClick={() =>
-                suppressScrollToTopFor(
-                  getPathname({
-                    href: parkCalendarPath(locale, continent, country, city, parkSlug),
-                    locale,
-                  })
-                )
-              }
-            >
-              <MonthStepIcon>
-                <CalendarCheck className="h-4 w-4" />
-              </MonthStepIcon>
-              {t('currentMonth')}
-            </Link>
-          </Button>
-        )}
-        <MonthStep href={href(prevMonth)} label={t('previousMonth')}>
-          <ChevronLeft className="h-4 w-4" />
-        </MonthStep>
-        {/* Centred and fixed-width so the two arrows do not move when the month name changes
+      {!isCurrentMonth && (
+        <Button variant="outline" size="sm" className="h-9" asChild>
+          <Link
+            href={parkCalendarPath(locale, continent, country, city, parkSlug)}
+            aria-label={t('currentMonthAria')}
+            scroll={false}
+            onClick={() =>
+              suppressScrollToTopFor(
+                getPathname({
+                  href: parkCalendarPath(locale, continent, country, city, parkSlug),
+                  locale,
+                })
+              )
+            }
+          >
+            <MonthStepIcon>
+              <CalendarCheck className="h-4 w-4" />
+            </MonthStepIcon>
+            {t('currentMonth')}
+          </Link>
+        </Button>
+      )}
+      <MonthStep href={href(prevMonth)} label={t('previousMonth')}>
+        <ChevronLeft className="h-4 w-4" />
+      </MonthStep>
+      {/* Centred and fixed-width so the two arrows do not move when the month name changes
           length — „Mai 2026" against „September 2026" is 60 px of travel otherwise.
 
           `month ?? currentMonth`, because the hub names no month in its URL and used to render an
           empty box between the two arrows. It opens on today's month, so that is the month to
           write — and `currentMonth` is resolved on the server in the PARK's timezone precisely so
           both sides of the hydration boundary agree about which one that is. */}
-        <div className="min-w-[140px] text-center font-semibold">
-          {label(month ?? currentMonth)}
-        </div>
-        <MonthStep href={href(nextMonth)} label={t('nextMonth')}>
-          <ChevronRight className="h-4 w-4" />
-        </MonthStep>
+      <div className="min-w-[140px] text-center font-semibold">{label(month ?? currentMonth)}</div>
+      <MonthStep href={href(nextMonth)} label={t('nextMonth')}>
+        <ChevronRight className="h-4 w-4" />
+      </MonthStep>
     </>
   );
 

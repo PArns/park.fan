@@ -198,6 +198,14 @@ figure would stop pinning. Verified at 390 px and 1512 px: 0 px overflow, CLS
 results in 2023, which is why `components/seo/structured-data.tsx` has never had
 one. FAQ answers stay plain text so the JSON-LD is clean.
 
+The `FAQPage` is a **description, not a rich result**. Google retired the FAQ
+SERP feature for every site on 2026-05-07 — not just the health and government
+sites the August 2023 restriction had named. The markup stays because it costs
+nothing and honestly describes a block that really is a list of questions, but
+nothing here should be built or argued for on the promise of a rich result, and
+no AI-citation benefit has been measured either. Genuine user-submitted Q&A
+would be `QAPage`, a different type for a different thing.
+
 ## 6. Six locales, one shape
 
 All six content modules are now the guide; the `EDITORIAL_LOCALES` switch and the

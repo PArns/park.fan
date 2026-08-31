@@ -75,13 +75,13 @@ doen. Deze gids laat je allebei zien: de wonderen waarvoor je komt, en heel
 praktisch, hoe je de **Phantasialand wachttijden** klein houdt en de beste dag
 treft.
 
-![Het Phantasialand in Brühl vanuit vogelperspectief | Mijn thuispark in Brühl, Europa's immersiefste pretpark. | wide](/media/phantasialand/background-16x9.jpg)
+![Het Phantasialand in Brühl vanuit vogelperspectief | Mijn thuispark in Brühl, Europa’s immersiefste pretpark. | wide](/media/phantasialand/background-16x9.jpg)
 
 ## Een park als een andere wereld, en waarom het zo vol is
 
 ![Taron in het basaltdorp Klugheim | Taron raast door het basaltdorp Klugheim, een compleet dorp, niet zomaar een coaster. | right](/media/phantasialand/taron-4x3.jpg)
 
-Het Phantasialand noemt zichzelf “Europe's Most Immersive Theme Park”. Wie er ooit is geweest, begrijpt waar die
+Het Phantasialand noemt zichzelf “Europe’s Most Immersive Theme Park”. Wie er ooit is geweest, begrijpt waar die
 aanspraak op rust: nergens anders
 in Europa vervagen de grenzen tussen wachtrij, attractie en decor zo volledig. Je
 staat niet _voor_ [Taron](ref:phantasialand/taron), je staat _in_ Klugheim, een
@@ -101,7 +101,7 @@ Maar precies die compactheid is de keerzijde. Het park heeft maar een handvol ec
 headliners, en op een volle dag wil iedereen tegelijk op dezelfde twee, drie banen.
 In onze deep dive over de [kunst van het wachten](/blog/de-kunst-van-het-wachten)
 heb ik voorgerekend waarom [Taron](ref:phantasialand/taron) op een vakantiezaterdag
-net zo snel in de verzadiging loopt als Peter Pan's Flight in Parijs: een klein
+net zo snel in de verzadiging loopt als Peter Pan’s Flight in Parijs: een klein
 publiek beschermt je niet tegen lange rijen als er maar weinig attracties zijn
 waarover de drukte zich kan verdelen. De wiskunde is in het Phantasialand
 meedogenlozer dan in het weidse [Europa-Park](ref:europa-park) met zijn dertien
@@ -139,7 +139,7 @@ zijn.
 
 In plaats daarvan werd het het keerpunt. Op de puinhopen van de afgebrande banen
 bouwde het park binnen een jaar de themawereld Wuze Town met de twee dolle
-spinning coasters [Winja's Fear](ref:phantasialand/winjas-fear) & Force en de
+spinning coasters [Winja’s Fear](ref:phantasialand/winjas-fear) & Force en de
 wildwaterbaan [River Quest](ref:phantasialand/river-quest), allebei rijd je vandaag
 nog. Uit de as kwam een nieuwe houding: als je dan toch nieuw bouwt, doe het dan
 goed, tot de laatste schroef doorgethematiseerd.
@@ -190,11 +190,11 @@ dit moment aan de hand is:
 - **[Talocan](ref:phantasialand/talocan)**, een top spin met vuur- en watereffecten
   die er van onderen uitziet als een tempeldecor en van bovenaf aanvoelt als een
   liefdevol geënsceneerde straf.
-- **[Winja's Fear](ref:phantasialand/winjas-fear)** & Winja's Force, de twee spinning
+- **[Winja’s Fear](ref:phantasialand/winjas-fear)** & Winja’s Force, de twee spinning
   coasters in Wuze Town, vol liften, kantelrails en verrassingen. Twee parcoursen, en
   geen enkele rit is als de andere.
 - **[Mystery Castle](ref:phantasialand/mystery-castle)**, de freefall in Mysteryland,
-  met wisselende ritprogramma's en een voorshow die de halve schrik levert, lang
+  met wisselende ritprogramma’s en een voorshow die de halve schrik levert, lang
   voordat je überhaupt naar boven gaat.
 
 En voor de kleintjes (of de jong-van-hart): [Raik](ref:phantasialand/raik), de
@@ -204,8 +204,8 @@ de eerste keer, snel genoeg voor de tweede.
 ```gallery-widget heading="De headliners in beeld"
 - /media/phantasialand/chiapas-die-wasserbahn-16x9.jpg | De waterbaan Chiapas | Chiapas, een van de steilste wildwaterbanen ter wereld.
 - /media/phantasialand/colorado-adventure-16x9.jpg | Colorado Adventure | Colorado Adventure, de mijntrein met wildwestcharme.
-- /media/phantasialand/winjas-fear-16x9.jpg | Winja's Force in Wuze Town | Winja's: twee spinning coasters vol verrassingen.
-- /media/phantasialand/mystery-castle-16x9.jpg | Mystery Castle in Mysteryland | Mystery Castle, de freefall met wisselende programma's.
+- /media/phantasialand/winjas-fear-16x9.jpg | Winja’s Force in Wuze Town | Winja’s: twee spinning coasters vol verrassingen.
+- /media/phantasialand/mystery-castle-16x9.jpg | Mystery Castle in Mysteryland | Mystery Castle, de freefall met wisselende programma’s.
 - /media/phantasialand/river-quest-16x9.jpg | River Quest | River Quest, wildwater met liften en natgarantie.
 - /media/phantasialand/raik-16x9.jpg | Raik in Klugheim | Raik, de perfecte eerste “echte” coaster.
 ```
@@ -312,7 +312,7 @@ staand af.
 Verder zitten de grote banen erbij, o.a. [Taron](ref:phantasialand/taron),
 [Black Mamba](ref:phantasialand/black-mamba),
 [Chiapas](ref:phantasialand/chiapas-die-wasserbahn),
-[Talocan](ref:phantasialand/talocan), [Winja's](ref:phantasialand/winjas-fear),
+[Talocan](ref:phantasialand/talocan), [Winja’s](ref:phantasialand/winjas-fear),
 [Colorado Adventure](ref:phantasialand/colorado-adventure) en
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat). Kopen doe je bij de gastenservice op
 de Kaiserplatz, en beperkt betekent echt beperkt: **juist tijdens de Wintertraum zijn de
@@ -330,7 +330,7 @@ meteen bij de hotels.)
 ## Rope Drop & volgorde: zo omzeil je de langste wachttijden
 
 De doeltreffendste gratis truc in het Phantasialand heet **vroeg present zijn en anticyclisch
-rijden**. Er is nauwelijks iets mooiers dan zo'n park in het eerste uur: de steegjes nog leeg,
+rijden**. Er is nauwelijks iets mooiers dan zo’n park in het eerste uur: de steegjes nog leeg,
 de muziek al aan, de decors in het ochtendlicht, en de rijen zo kort dat je nauwelijks
 stilstaat. Dat uur is in het compacte Phantasialand klinkende munt waard, het is het verschil
 tussen “drie ritten” en “tien”.
@@ -363,17 +363,17 @@ woekerprijs, hoort de gastronomie hier vast bij de belevenis, met een zorgvuldig
 anders alleen van echte restaurants kent. Een paar adressen zijn echte geheimtips, waarvoor het
 bezoek alleen al de moeite waard is:
 
-- **Rutmor's Taverne** (Klugheim) is mijn favoriet en voor veel fans het beste restaurant dat ooit
+- **Rutmor’s Taverne** (Klugheim) is mijn favoriet en voor veel fans het beste restaurant dat ooit
   in een pretpark is gebouwd. À la carte, rustiek tot in de gesneden houten banken, met hartige
   keuken, Spätzle, schnitzel, gebakken aardappels, daarbij soepen en schotels om te delen en een
   Kaiserschmarrn die je even doet vergeten dat er buiten een achtbaan wacht. Grote porties, eerlijke
   prijzen, vriendelijke bediening. Als je op een parkdag één keer echt wilt zitten en eten: hierheen.
 - **Restaurant Uhrwerk** (Rookburgh) is de steampunk-broer daarvan, burgers, huisgemaakte friet,
   pasta en bowls, in een decor van tandwielen en messing, met uitzicht op
-  [F.L.Y.](ref:phantasialand/fly). Kleine geheimtip: 's avonds is het voorbehouden aan de hotelgasten,
-  maar overdag open voor iedereen, 's middags dus een genot met uitzicht op de voorbijvliegende
+  [F.L.Y.](ref:phantasialand/fly). Kleine geheimtip: ’s avonds is het voorbehouden aan de hotelgasten,
+  maar overdag open voor iedereen, ’s middags dus een genot met uitzicht op de voorbijvliegende
   treinen.
-- **Phenie's** (Wuze Town) is mijn zoete verplichte stop zolang ik me kan herinneren: pancakes en
+- **Phenie’s** (Wuze Town) is mijn zoete verplichte stop zolang ik me kan herinneren: pancakes en
   shakes, luchtig en weelderig en veel te goed naar pretparkmaatstaven. Er zijn dagen waarop ik bijna
   alleen voor die pancakes kom, en dan doe alsof de coasters de reden waren.
 
@@ -413,7 +413,7 @@ Town, en je begrijpt wat “immersief” echt betekent.
 Maar mijn allerliefste moment is voor het einde van de dag: **Klugheim in het blauwe uur.** Wanneer de
 lichten aangaan en [Taron](ref:phantasialand/taron) boven je door de basaltzuilen dendert, terwijl de
 laatste zon de rotsen oranje kleurt en de eerste lantaarns warm beginnen te gloeien, dat is de reden
-waarom ik dit park liefheb, en waarom ik 's avonds nooit naar huis wil.
+waarom ik dit park liefheb, en waarom ik ’s avonds nooit naar huis wil.
 
 ## Overnachten: de drie themahotels
 
@@ -435,14 +435,14 @@ Het Phantasialand ligt in Brühl, midden tussen Keulen en Bonn, goed bereikbaar,
 - **Met de auto:** via de A553/A555, dan de bewegwijzering volgen. Parkeren doe je op de
   parkeerterreinen _Mystery_ of _China_; het parkeertarief ligt rond de **7 € per dag** (motor
   goedkoper). Mijn tip: vroeg komen, dan staat de auto dichter bij de ingang, en die korte loop
-  's avonds, als je voeten branden, is goud waard.
+  ’s avonds, als je voeten branden, is goud waard.
 - **Met de trein:** tot **Brühl Hauptbahnhof** of **Brühl-Mitte**; vanuit Keulen brengt **lijn 18** je
   er rechtstreeks heen. Vanaf beide haltes rijdt een **shuttlebus** in ongeveer 20 minuten naar het park
   (een paar euro per rit; kinderen tot 1,00 m en rolstoelgebruikers en blinde gasten met pas reizen
   gratis).
 
 Als je de keuze hebt: trein plus shuttle bespaart je op volle dagen de parkeerstress volledig, en na een
-lange, gelukkige parkdag stap je 's avonds gewoon in, in plaats van je door de uitrijfile te worstelen.
+lange, gelukkige parkdag stap je ’s avonds gewoon in, in plaats van je door de uitrijfile te worstelen.
 
 ## Wintertraum: het Phantasialand in de sneeuw
 
@@ -493,7 +493,7 @@ vooruit wanneer je op weinig drukte kunt rekenen, groen betekent gaan.
 ### Hoe vermijd ik in het Phantasialand lange wachttijden?
 
 Drie hefbomen, in deze volgorde: **de juiste dag kiezen** (levert het meest op), **vroeg present zijn** en
-Taron + F.L.Y. in het eerste uur rijden, en **anticyclisch** op pad zijn (waterbanen 's middags, coasters
+Taron + F.L.Y. in het eerste uur rijden, en **anticyclisch** op pad zijn (waterbanen ’s middags, coasters
 tijdens de shows). De live wachttijden check je onderweg op de [Phantasialand-parkpagina](ref:phantasialand).
 
 ### Welke attractie heeft de langste wachttijden?
@@ -521,7 +521,7 @@ themahotels een klein feest) zijn twee dagen.
 ## Conclusie: weinig park, veel planning, enorme beloning
 
 Het Phantasialand is geen park dat je er even bij pakt. Het is compact, gewild en op de verkeerde dagen vermoeiend
-maar op de juiste dagen, met de juiste volgorde en een pauze in Rutmor's Taverne, is het de immersiefste,
+maar op de juiste dagen, met de juiste volgorde en een pauze in Rutmor’s Taverne, is het de immersiefste,
 liefdevolste belevenis die Europa te bieden heeft. Het goede nieuws: bijna alles wat een goede van een geweldige
 dag scheidt, beslis je **vooraf**, bij de blik op de kalender.
 
@@ -536,8 +536,8 @@ En de twee hoofdrolspelers, live uit onze data:
 [Taron](ref:phantasialand/taron?full)
 [F.L.Y.](ref:phantasialand/fly?full)
 
-We zien elkaar in Klugheim. Ik ben degene die om 10 uur als eerste bij Taron staat, 's middags stiekem voor de
-pancakes bij Phenie's verdwijnt, en 's avonds in het blauwe uur nog steeds niet naar huis wil.
+We zien elkaar in Klugheim. Ik ben degene die om 10 uur als eerste bij Taron staat, ’s middags stiekem voor de
+pancakes bij Phenie’s verdwijnt, en ’s avonds in het blauwe uur nog steeds niet naar huis wil.
 
 — Patrick
 
@@ -551,7 +551,7 @@ nodig heb. Voor de rode zaterdag geldt: de beste Fast Pass is de dag die je übe
 - Prijzen, tickets & openingstijden 2026: [Phantasialand online shop](https://shop.phantasialand.de/de/produkte/themenpark-tickets/) · [Prijzen & openingstijden 2026 (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/phantasialand/preise/) · [Tickets vanaf 28 € in plaats van tot 78 € (mydealz)](https://www.mydealz.de/magazin/phantasialand-tickets-ab-28-euro-warum-sich-fruehes-buchen-jetzt-lohnt-61424)
 - Einde van de jaarkaarten & fanpetities: [Petitie “Herinvoering van de Phantasialand jaarkaarten” (Change.org)](https://www.change.org/p/wiedereinf%C3%BChrung-der-phantasialand-jahreskarten)
 - Quick Pass (Single Ride / Ultimate & dynamische prijzen): [“QUICK Pass Switches to Dynamic Pricing” (Wartezeiten.APP)](https://www.wartezeiten.app/en/phantasialand/news/phantasialand-quick-pass-switches-to-dynamic-pricing-fans-outraged-2429.html)
-- Eten: [Rutmor's Taverne (Freizeitpark Traveller)](https://www.freizeitpark-traveller.de/rutmors-taverne-phantasialand/) · [Restaurant Uhrwerk (officieel)](https://www.phantasialand.de/de/rookburgh/restaurant-uhrwerk/)
+- Eten: [Rutmor’s Taverne (Freizeitpark Traveller)](https://www.freizeitpark-traveller.de/rutmors-taverne-phantasialand/) · [Restaurant Uhrwerk (officieel)](https://www.phantasialand.de/de/rookburgh/restaurant-uhrwerk/)
 - Nieuwigheid 2026 “Die 3 Mausketiere”: [Phantasialand 2026 (La Vie Zine)](https://www.laviezine.com/1545370/phantasialand-2026-das-erwartet-euch-in-der-saison/)
 - Wintertraum 2026/27: [Openingstijden Wintertraum (NRW-Parks)](https://www.nrw-parks.de/phantasialand/oeffnungszeiten-winter.html) · [Wintertraum (officieel)](https://www.phantasialand.de/de/themenpark/wintertraum/)
 - Route, shuttle & parkeren: [Route en shuttlebus (officieel)](https://www.phantasialand.de/de/themenpark/information-und-anreise/anreise-und-shuttlebus/)
