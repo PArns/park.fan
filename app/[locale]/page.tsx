@@ -52,7 +52,6 @@ import {
   FeaturedParksSkeleton,
   LiveActivitySkeleton,
 } from '@/components/home/home-skeletons';
-import { LatestBlogSection } from '@/components/home/latest-blog-section';
 import { getSectionHeadingLabels } from '@/components/home/section-headings';
 
 // The homepage story — "what is park.fan", chapter by chapter. Every one of these
@@ -70,6 +69,7 @@ import { ChapterInPark } from '@/components/home/story/chapter-in-park';
 import { ChapterDictionary } from '@/components/home/story/chapter-dictionary';
 import { WhyParkFan } from '@/components/home/story/why-park-fan';
 import { FounderSection } from '@/components/home/story/founder-section';
+import { LatestBlogSection } from '@/components/home/latest-blog-section';
 import { FaqSection } from '@/components/home/story/faq-section';
 import { BlogChapter } from '@/components/home/story/blog-chapter';
 import { ContributeBand } from '@/components/home/story/contribute-band';
@@ -296,12 +296,10 @@ export default async function HomePage({ params }: HomePageProps) {
         <ChapterInPark />
         <ChapterDictionary locale={locale as Locale} />
 
-        {/* The blog, directly after the feature tour and before the trust block.
-          It used to sit fifteenth of seventeen, behind the founder, the featured
-          parks and the live activity — past the point where anybody was still
-          reading. The chapter frame adds the two evergreen hubs (best travel
-          time, dictionary) that a reader who got this far is most likely to open
-          next. */}
+        {/* The blog again, and deliberately not the same shape as the band under
+          the hero: that one is three cards for a desktop reader passing by, this
+          one is the lead post with four beside it for somebody who read this far.
+          The frame adds the two evergreen hubs (best travel time, dictionary). */}
         <BlogChapter locale={locale as Locale}>
           <LatestBlogSection locale={locale as Locale} variant="lead" />
         </BlogChapter>
