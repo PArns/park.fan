@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Play } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { CoasterPlayer, type CoasterPlayerLabels } from '@/components/glossary/coaster-player';
@@ -24,12 +24,22 @@ export interface PickableFigure {
  * not a second drawing of the same figures, so a figure retuned in
  * `lib/three/coaster/elements.ts` moves in both places at once.
  *
- * **The player is not mounted until somebody asks for it.** `next/dynamic`
+ * **The player is not mounted until the reader is nearly at it.** `next/dynamic`
  * fetches the three.js chunk when `CoasterPlayer` MOUNTS, not when it becomes
  * visible — an earlier version rendered it straight away and pulled the whole
  * engine onto the most-visited page in the app, for a chapter most readers never
- * scroll to. Same treatment `RideLayoutRail` gives it on ride pages. Until then
- * the stage is a button of the same shape, so arming it costs no layout shift.
+ * scroll to. Same treatment `RideLayoutRail` gives it on ride pages.
+ *
+ * So the stage arms itself when it comes within 400 px of the viewport: far
+ * enough out that the chunk is usually decoded by the time the chapter is on
+ * screen, late enough that a reader who never gets there never pays for it.
+ * A click still arms it immediately, which is what a reader who scrolled fast
+ * gets, and the un-armed stage keeps the player's own box so the swap costs no
+ * layout shift.
+ *
+ * No `prefers-reduced-motion` branch here, deliberately: the scene reads that
+ * query itself and starts paused, so gating the MOUNT as well would leave those
+ * readers with a button that never becomes anything.
  *
  * Switching figures re-keys the player deliberately — the scene builds its
  * geometry from the element on mount, so a swapped prop alone would keep the
@@ -53,7 +63,25 @@ export function CoasterFigurePicker({
 }) {
   const [active, setActive] = useState(0);
   const [armed, setArmed] = useState(false);
+  const stageRef = useRef<HTMLDivElement>(null);
   const current = figures[active];
+
+  useEffect(() => {
+    if (armed) return;
+    const el = stageRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setArmed(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: '400px 0px' }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [armed]);
 
   if (!current) return null;
 
@@ -96,7 +124,7 @@ export function CoasterFigurePicker({
         </Link>
       </div>
 
-      <div>
+      <div ref={stageRef}>
         {armed ? (
           <CoasterPlayer key={current.element} element={current.element} labels={labels} />
         ) : (

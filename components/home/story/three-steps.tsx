@@ -2,7 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { CalendarRange, Check, Compass, Sunrise } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Reveal } from '@/components/marketing/scroll-reveal';
-import { StepSearch } from './step-search';
+import { HeroInlineSearch } from '@/components/search/hero-inline-search';
 import { CROWD_DOT_CLASS, CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
 import { cn } from '@/lib/utils';
 
@@ -74,12 +74,18 @@ export async function ThreeSteps() {
         </Reveal>
 
         <div className="grid gap-5 md:grid-cols-3">
-          {/* 1 — choose a park. A REAL search, not a field-shaped link: a search
-              box that cannot search is the one thing a first visitor tries
-              first. Same hooks and same result panel as the hero's dropdown. */}
+          {/* 1 — choose a park. Literally the hero's field, not a lookalike: a
+              search box that cannot search is the one thing a first visitor
+              tries first, and a second implementation is a second thing that can
+              stop working. `primary={false}` is what keeps the page-wide halves
+              of it (type-to-open, the hero click metric) unique. */}
           <Reveal>
             <StepCard step={1} title={t('one.title')} text={t('one.text')}>
-              <StepSearch placeholder={t('one.placeholder')} label={t('one.label')} />
+              <HeroInlineSearch
+                placeholder={t('one.placeholder')}
+                label={t('one.label')}
+                primary={false}
+              />
               <p className="text-muted-foreground mt-2 text-[11px] leading-relaxed">
                 {t('one.hint')}
               </p>

@@ -15,6 +15,19 @@ interface HeroInlineSearchProps {
   /** What the field is for — the accessible name, since the placeholder is only examples. */
   label: string;
   className?: string;
+  /**
+   * `false` for a SECOND instance of this field on the same page.
+   *
+   * Two things here are page-wide and must exist exactly once. `autoFocusOnType`
+   * listens on `document` and opens the palette on any single keypress, so a
+   * second instance opens a second palette from one keystroke; and
+   * `trackHeroSearchClicked` measures the hero specifically, so a taller page
+   * with a field further down would quietly inflate it.
+   *
+   * The `isGlobal` ⌘K handler is NOT among them — `SearchCommand` defaults it
+   * off and neither instance asks for it; the header owns that shortcut.
+   */
+  primary?: boolean;
 }
 
 type PanelComponent = ComponentType<{
@@ -39,7 +52,12 @@ type PanelComponent = ComponentType<{
  * on mount — so a visitor who is faster than the chunk loses nothing, and one who never touches
  * the field never pays for it.
  */
-export function HeroInlineSearch({ placeholder, label, className }: HeroInlineSearchProps) {
+export function HeroInlineSearch({
+  placeholder,
+  label,
+  className,
+  primary = true,
+}: HeroInlineSearchProps) {
   const isDesktop = useMediaQuery('(min-width: 768px)');
   const mounted = useMounted();
   const afterLoad = useAfterLoad();
@@ -87,14 +105,14 @@ export function HeroInlineSearch({ placeholder, label, className }: HeroInlineSe
           onFocusHandled={() => setPendingFocus(false)}
         />
       ) : (
-        <div onClick={() => trackHeroSearchClicked()}>
+        <div onClick={primary ? () => trackHeroSearchClicked() : undefined}>
           <SearchCommand
             trigger="input"
             size="lg"
             placeholder={placeholder}
-            autoFocusOnType={true}
+            autoFocusOnType={primary}
             searchOpenSource="hero"
-            prewarm={true}
+            prewarm={primary}
           />
         </div>
       )}
