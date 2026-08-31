@@ -45,7 +45,11 @@ export function FastPassBadge({
     <Badge variant="outline" className="gap-1">
       <Ticket className="h-3 w-3 shrink-0" aria-hidden="true" />
       {fastPass.termId ? (
-        <GlossaryTermLink termId={fastPass.termId} tooltipOnly={insideLink} className="font-[inherit]">
+        <GlossaryTermLink
+          termId={fastPass.termId}
+          tooltipOnly={insideLink}
+          className="font-[inherit]"
+        >
           {label}
         </GlossaryTermLink>
       ) : (

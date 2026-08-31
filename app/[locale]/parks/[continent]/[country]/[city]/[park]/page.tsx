@@ -145,7 +145,10 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
     MAX_DESCRIPTION_LENGTH,
     cityInParkName
       ? t(descriptionKey, parkArgs(locale as Locale, parkName, park.nameArticleDe))
-      : t(descriptionKey, { ...parkArgs(locale as Locale, parkName, park.nameArticleDe), city: cityName }),
+      : t(descriptionKey, {
+          ...parkArgs(locale as Locale, parkName, park.nameArticleDe),
+          city: cityName,
+        }),
     t('metaDescriptionTemplateNoCity', parkArgs(locale as Locale, parkName, park.nameArticleDe))
   );
 
@@ -378,7 +381,10 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
             <ParkStructuredData
               park={park}
               url={`${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`}
-              description={tSeo('metaDescriptionTemplate', { ...parkArgs(locale as Locale, parkName, park.nameArticleDe), city: cityName })}
+              description={tSeo('metaDescriptionTemplate', {
+                ...parkArgs(locale as Locale, parkName, park.nameArticleDe),
+                city: cityName,
+              })}
               locale={locale}
               ogImageUrl={ogImageUrl}
             />
@@ -423,7 +429,10 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
             // Keyword-rich, server-rendered intro — gives Google crawlable topical text with the
             // exact "Wartezeiten im {park}" phrase + "heute" that the live (client-streamed) grid
             // does not provide as static text.
-            intro={t('intro', { ...parkArgs(locale as Locale, parkName, park.nameArticleDe), city: cityName })}
+            intro={t('intro', {
+              ...parkArgs(locale as Locale, parkName, park.nameArticleDe),
+              city: cityName,
+            })}
           />
         }
       >

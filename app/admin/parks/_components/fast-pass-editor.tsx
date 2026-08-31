@@ -217,7 +217,11 @@ export function FastPassEditor({ park }: { park: AdminParkDetail }) {
         ) : attractions.isLoading ? (
           <SkeletonRows rows={8} />
         ) : rows.length === 0 ? (
-          <EmptyState icon={Ticket} title="Keine Fahrgeschäfte" description="Dieser Park hat keine." />
+          <EmptyState
+            icon={Ticket}
+            title="Keine Fahrgeschäfte"
+            description="Dieser Park hat keine."
+          />
         ) : (
           <ul className="divide-border/40 divide-y">
             {rows.map((row) => {
@@ -278,7 +282,8 @@ export function FastPassEditor({ park }: { park: AdminParkDetail }) {
           ) : (
             <div className="space-y-2">
               <p className="text-sm font-medium">
-                {dirtyIds.length} {dirtyIds.length === 1 ? 'Fahrgeschäft' : 'Fahrgeschäfte'} geändert
+                {dirtyIds.length} {dirtyIds.length === 1 ? 'Fahrgeschäft' : 'Fahrgeschäfte'}{' '}
+                geändert
               </p>
 
               <div className="grid gap-2 sm:grid-cols-2">
@@ -307,7 +312,12 @@ export function FastPassEditor({ park }: { park: AdminParkDetail }) {
                   )}
                   Speichern
                 </Button>
-                <Button variant="ghost" size="sm" onClick={() => setOverrides({})} disabled={saving}>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setOverrides({})}
+                  disabled={saving}
+                >
                   Verwerfen
                 </Button>
                 <p className="text-muted-foreground ml-auto hidden text-xs sm:block">

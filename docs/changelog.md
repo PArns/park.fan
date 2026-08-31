@@ -8,7 +8,7 @@ Short log of notable changes; details live in the linked docs.
 
 Die API liefert pro Bahn ein kuratiertes `fastPass`-Objekt — `{ name, price, priceFrom, currency,
 termId }`. Auf der Bahnseite und auf der Ride-Karte steht dafür jetzt ein Badge in der Faktenzeile,
-zwischen den Größenbeschränkungen und dem, was die Bahn *ist*: ein Fastpass ist eine Aussage über
+zwischen den Größenbeschränkungen und dem, was die Bahn _ist_: ein Fastpass ist eine Aussage über
 den Besuch, keine über die Bahn.
 
 Der Text wird hier zusammengesetzt, nicht von der API übernommen. „12 €" und „€12" sind derselbe

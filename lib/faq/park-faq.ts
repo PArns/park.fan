@@ -49,8 +49,7 @@ export function getParkArticleForms(park: ParkWithAttractions, locale: string): 
     article === 'der' ? `den ${parkName}` : article === 'die' ? `die ${parkName}` : parkNom;
   // Only German gets a preposition here; the other locales' FAQ sentences carry
   // their own and always did.
-  const parkLoc =
-    locale === 'de' ? parkPhrase('de', 'in', parkName, article ?? null) : parkName;
+  const parkLoc = locale === 'de' ? parkPhrase('de', 'in', parkName, article ?? null) : parkName;
   return {
     parkName,
     parkNom,

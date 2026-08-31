@@ -256,37 +256,37 @@ export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
                 ))}
               </ul>
             ) : (
-            <div className="grid grid-cols-2 gap-2.5">
-              {featured.map((park) => (
-                <Link
-                  key={park.slug}
-                  href={park.href as '/'}
-                  prefetch={false}
-                  className="group focus-visible:ring-ring relative block aspect-[16/10] overflow-hidden rounded-lg focus-visible:ring-2 focus-visible:outline-none"
-                >
-                  <Image
-                    src={park.image}
-                    alt=""
-                    fill
-                    sizes="160px"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  {/* The scrim is what makes the name legible on a bright photo — the cards are
+              <div className="grid grid-cols-2 gap-2.5">
+                {featured.map((park) => (
+                  <Link
+                    key={park.slug}
+                    href={park.href as '/'}
+                    prefetch={false}
+                    className="group focus-visible:ring-ring relative block aspect-[16/10] overflow-hidden rounded-lg focus-visible:ring-2 focus-visible:outline-none"
+                  >
+                    <Image
+                      src={park.image}
+                      alt=""
+                      fill
+                      sizes="160px"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    {/* The scrim is what makes the name legible on a bright photo — the cards are
                       145 px wide and there is no room to put the label anywhere else. */}
-                  <span className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
-                  <span className="absolute right-2.5 bottom-2 left-2.5 block">
-                    <span className="block text-[13px] leading-tight font-semibold text-white">
-                      {park.name}
+                    <span className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
+                    <span className="absolute right-2.5 bottom-2 left-2.5 block">
+                      <span className="block text-[13px] leading-tight font-semibold text-white">
+                        {park.name}
+                      </span>
+                      <span className="mt-px block truncate text-[10.5px] text-white/70">
+                        {park.city}
+                        {park.city && park.countrySlug ? ' · ' : ''}
+                        {park.countrySlug ? translateCountry(t, park.countrySlug, locale) : ''}
+                      </span>
                     </span>
-                    <span className="mt-px block truncate text-[10.5px] text-white/70">
-                      {park.city}
-                      {park.city && park.countrySlug ? ' · ' : ''}
-                      {park.countrySlug ? translateCountry(t, park.countrySlug, locale) : ''}
-                    </span>
-                  </span>
-                </Link>
-              ))}
-            </div>
+                  </Link>
+                ))}
+              </div>
             )}
           </div>
         )}
@@ -414,7 +414,6 @@ function SectionHeading({ label, count, href }: { label: string; count?: number;
     </Link>
   );
 }
-
 
 /**
  * One nearby park in the rail: picture where there is one, and the four values somebody standing

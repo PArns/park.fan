@@ -167,7 +167,10 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
         locale: locale as Locale,
         articleDe: park?.nameArticleDe,
       })
-    : t('metaDescriptionTemplate', { attraction: attractionName, ...parkArgs(locale as Locale, parkName, park?.nameArticleDe) });
+    : t('metaDescriptionTemplate', {
+        attraction: attractionName,
+        ...parkArgs(locale as Locale, parkName, park?.nameArticleDe),
+      });
 
   return {
     title,

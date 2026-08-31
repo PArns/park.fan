@@ -82,14 +82,8 @@ export function ParkCalendarLegend({ className }: { className?: string }) {
         <span className="text-muted-foreground text-[10px] font-medium tracking-widest uppercase">
           {t('calendarLegendGroups.signals')}
         </span>
-        <SignalKey
-          className="bg-yellow-500 dark:bg-yellow-400"
-          label={tLegend('schoolVacation')}
-        />
-        <SignalKey
-          className="bg-amber-600 dark:bg-amber-500"
-          label={t('influencingHolidays')}
-        />
+        <SignalKey className="bg-yellow-500 dark:bg-yellow-400" label={tLegend('schoolVacation')} />
+        <SignalKey className="bg-amber-600 dark:bg-amber-500" label={t('influencingHolidays')} />
         <SignalKey className="bg-red-500 dark:bg-red-400" label={tLegend('holiday')} />
         <SignalKey className="bg-blue-500 dark:bg-blue-400" label={tLegend('bridgeDay')} />
       </div>

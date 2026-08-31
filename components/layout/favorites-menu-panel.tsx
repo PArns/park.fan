@@ -153,9 +153,7 @@ function Card({
           <span className="text-foreground group-hover:text-primary truncate text-sm font-semibold transition-colors">
             {title}
           </span>
-          {subtitle && (
-            <span className="text-muted-foreground truncate text-xs">{subtitle}</span>
-          )}
+          {subtitle && <span className="text-muted-foreground truncate text-xs">{subtitle}</span>}
           {figure && <span className="mt-1.5 block">{figure}</span>}
         </span>
       </Link>
@@ -455,7 +453,9 @@ export function FavoritesMenuPanel({
                     />
                   ))}
                   <MoreLine
-                    hidden={counts.parks - Math.min(data.parks.length, isSheet ? MAX_ROWS : MAX_CARDS)}
+                    hidden={
+                      counts.parks - Math.min(data.parks.length, isSheet ? MAX_ROWS : MAX_CARDS)
+                    }
                     label={more}
                   />
                 </>
@@ -476,16 +476,14 @@ export function FavoritesMenuPanel({
                 )
               ) : (
                 <>
-                  {data.attractions
-                    .slice(0, isSheet ? MAX_ROWS : MAX_CARDS)
-                    .map((attraction) => (
-                      <AttractionEntry
-                        key={attraction.id}
-                        attraction={attraction}
-                        isSheet={isSheet}
-                        minuteLabel={minuteLabel}
-                      />
-                    ))}
+                  {data.attractions.slice(0, isSheet ? MAX_ROWS : MAX_CARDS).map((attraction) => (
+                    <AttractionEntry
+                      key={attraction.id}
+                      attraction={attraction}
+                      isSheet={isSheet}
+                      minuteLabel={minuteLabel}
+                    />
+                  ))}
                   <MoreLine
                     hidden={
                       counts.attractions -
@@ -538,7 +536,9 @@ function ParkEntry({
     operating && park.analytics?.avgWaitTime != null
       ? roundWaitTo5(park.analytics.avgWaitTime)
       : null;
-  const badge = <ParkStatusBadge status={park.status as ParkStatus} className="px-1.5 py-0 text-[10px]" />;
+  const badge = (
+    <ParkStatusBadge status={park.status as ParkStatus} className="px-1.5 py-0 text-[10px]" />
+  );
 
   if (isSheet) {
     return (
@@ -600,9 +600,7 @@ function AttractionEntry({
   const parkName = attraction.park ? stripNewPrefix(attraction.park.name) : null;
   // `effectiveStatus`, never the raw `status`: a ride out of season is closed, and the raw field
   // does not know that. See `docs/api/seasonal-attractions.md`.
-  const status = (attraction.effectiveStatus ??
-    attraction.status ??
-    'CLOSED') as AttractionStatus;
+  const status = (attraction.effectiveStatus ?? attraction.status ?? 'CLOSED') as AttractionStatus;
   const operating = status === 'OPERATING';
   const raw = standbyWait(attraction);
   const wait = operating && raw !== null ? roundWaitTo5(raw) : null;
@@ -643,7 +641,6 @@ function AttractionEntry({
     />
   );
 }
-
 
 /**
  * Shows und Restaurants in einer Gruppe, als Zeilen.
@@ -688,7 +685,6 @@ function venueRows(shows: FavoriteShow[], restaurants: FavoriteRestaurant[]) {
     href: v.base ? v.build(v.base) : '/#favorites',
   }));
 }
-
 
 /**
  * Ein Parkvorschlag: antippbar zum Öffnen, mit einem Stern daneben zum Markieren.
