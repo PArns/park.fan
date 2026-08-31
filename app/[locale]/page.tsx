@@ -72,7 +72,6 @@ import { FounderSection } from '@/components/home/story/founder-section';
 import { LatestBlogSection } from '@/components/home/latest-blog-section';
 import { FaqSection } from '@/components/home/story/faq-section';
 import { BlogChapter } from '@/components/home/story/blog-chapter';
-import { ContributeBand } from '@/components/home/story/contribute-band';
 
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { pickHeroImage } from '@/lib/media/hero';
@@ -328,8 +327,6 @@ export default async function HomePage({ params }: HomePageProps) {
         {/* The page's only FAQPage markup — FaqSection renders the questions and
           the JSON-LD from one array. */}
         <FaqSection />
-
-        <ContributeBand />
 
         {/* Soft "make park.fan your preferred Google source" prompt — end of the page,
           once the visitor has seen what the site offers. The footer keeps the
