@@ -248,7 +248,7 @@
     "live": {
       "kicker": "Live wait times",
       "title": "Live wait times: what the queue is actually doing right now",
-      "lead": "Polled again every five minutes, for every ride and every queue type, plus opening hours and breakdowns. Not a blog post from last summer.",
+      "lead": "Polled again every five minutes, for every ride and every queue type, plus opening hours and breakdowns.",
       "body": "We show not just the number but what it means: 95 minutes is a lot on a Tuesday in September and perfectly normal on a Saturday in October. That is why every ride page says what is typical for that weekday and what a busy day looks like.",
       "ridesTitle": "Every ride has its own page",
       "ridesText": "Thousands of ride pages, each with what holds for that one ride: queue types, the day’s course from measurement and forecast, typical times by weekday, height limit and a rope-drop tip.",

@@ -248,7 +248,7 @@
     "live": {
       "kicker": "Temps d’attente en direct",
       "title": "Temps d’attente en direct : ce que fait vraiment la file en ce moment",
-      "lead": "Relevé toutes les cinq minutes, pour chaque attraction et chaque type de file, avec les horaires et les pannes. Pas un article de l’été dernier.",
+      "lead": "Relevé toutes les cinq minutes, pour chaque attraction et chaque type de file, avec les horaires et les pannes.",
       "body": "Nous ne montrons pas seulement le chiffre, mais ce qu’il veut dire : 95 minutes, c’est beaucoup un mardi de septembre et tout à fait normal un samedi d’octobre. C’est pourquoi chaque page d’attraction indique ce qui est habituel ce jour-là et à quoi ressemble une journée chargée.",
       "ridesTitle": "Chaque attraction a sa page",
       "ridesText": "Des milliers de pages d’attraction, chacune avec ce qui vaut pour cette attraction-là : types de file, déroulé de la journée entre mesures et prévision, temps habituels par jour de semaine, taille minimale et conseil de rope drop.",
