@@ -1830,6 +1830,14 @@ export interface RideDayCurve {
   /** Expected, for hours not yet measured. */
   forecast: Array<number | null>;
   /**
+   * What the model said for each hour BEFORE it happened — every hour it has an
+   * opinion about, measured or not.
+   *
+   * Optional: an API still on the older schema sends none, and the chart then
+   * draws no comparison line rather than an empty one.
+   */
+  predicted?: Array<number | null>;
+  /**
    * The ride's own mean absolute error in minutes.
    *
    * A measured, published figure — a caller may draw the forecast as

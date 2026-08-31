@@ -19,6 +19,7 @@ import {
   niceMax,
   peakOf,
   quietWindows,
+  gridValues,
   smoothSegment,
   runsOf,
   PAD_L,
@@ -206,6 +207,43 @@ test(
 }
 
 // ---------------------------------------------------------------------------
+// gridValues
+{
+  test(
+    'gridValues: a 50-minute axis steps in tens',
+    JSON.stringify(gridValues(50)),
+    '[50,40,30,20,10]'
+  );
+  test(
+    'gridValues: a 20-minute axis steps in fives',
+    JSON.stringify(gridValues(20)),
+    '[20,15,10,5]'
+  );
+  test(
+    'gridValues: a 100-minute axis steps in twenties',
+    JSON.stringify(gridValues(100)),
+    '[100,80,60,40,20]'
+  );
+  test(
+    'gridValues: a 150-minute axis steps in thirties',
+    JSON.stringify(gridValues(150)),
+    '[150,120,90,60,30]'
+  );
+  test(
+    'gridValues: every step is a multiple of five, whatever niceMax returns',
+    [20, 50, 100, 150, 200, 250, 300, 400, 500].every((m) => {
+      const v = gridValues(m);
+      return v.every((x) => x % 5 === 0) && v[0] === m && v.length >= 3;
+    }),
+    true
+  );
+  test(
+    'gridValues: they descend',
+    gridValues(100).every((v, i, a) => i === 0 || v < a[i - 1]),
+    true
+  );
+}
+
 // quietWindows
 // ---------------------------------------------------------------------------
 {

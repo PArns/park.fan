@@ -1,9 +1,13 @@
+'use client';
+
+import { useMemo, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import {
   axisHours as axisHoursOf,
   bandPath as buildBandPath,
   linePath as buildLinePath,
   makeScales,
+  gridValues as gridValuesOf,
   niceMax,
   peakOf,
   PAD_L,
@@ -81,6 +85,18 @@ export interface RideDayCurveProps {
    */
   today?: Array<number | null> | null;
   /**
+   * What the model said for each hour BEFORE it happened, aligned with
+   * {@link hours}.
+   *
+   * Drawn only where {@link today} has a reading, because that is the only place
+   * it says something `forecast` does not: prediction against outcome, side by
+   * side. Past the last measurement the forecast line already carries the
+   * model's opinion and a second line would just trace it.
+   */
+  predicted?: Array<number | null> | null;
+  /** IANA zone of the park, for the clock in the header. */
+  timezone?: string;
+  /**
    * What the model expects for the hours still to come, same alignment.
    *
    * Never overlaps {@link today}: the endpoint nulls a forecast hour once it has
@@ -113,6 +129,16 @@ export interface RideDayCurveProps {
     minutes: string;
     /** Screen-reader only: "busiest around" — prefixes the peak in the summary. */
     peakAt: string;
+    /** Legend for the line showing what the model said before the hour happened. */
+    predicted?: string;
+    /** Suffix after the park's local clock, e.g. "Ortszeit". */
+    localTime?: string;
+    /** The ride reported a wait time in the current hour. */
+    stateLive?: string;
+    /** Inside the usual operating hours, but nothing measured this hour. */
+    stateQuiet?: string;
+    /** The park's usual day has not started, or is over. */
+    stateClosed?: string;
   };
   className?: string;
 }
@@ -156,12 +182,50 @@ export function RideDayCurve({
   p90,
   p25,
   today,
+  predicted,
+  timezone,
   forecast,
   forecastError,
   windows = [],
   labels,
   className,
 }: RideDayCurveProps) {
+  // Every hook sits above the two early returns below: a chart with fewer than
+  // two hours, or with nothing to plot, still has to call them in the same order.
+  /**
+   * The park's own clock, and what the ride is doing on it.
+   *
+   * Without this the chart is unreadable at a distance: Universal Studios Japan
+   * at 01:26 local draws no measured line at all, and a reader in Cologne has no
+   * way to know the park is asleep rather than the site broken. Three states,
+   * each of which the data actually supports — "closed" is never inferred from
+   * an absent measurement alone, only from the clock being outside the hours the
+   * park is ever open.
+   */
+  const clock = useMemo(() => {
+    if (!timezone) return null;
+    const parts = new Intl.DateTimeFormat('en-GB', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+      timeZone: timezone,
+    }).formatToParts(new Date());
+    const hh = parts.find((p) => p.type === 'hour')?.value ?? '00';
+    const mm = parts.find((p) => p.type === 'minute')?.value ?? '00';
+    const hour = Number(hh);
+    const inDay = hours.length > 0 && hour >= hours[0] && hour <= hours[hours.length - 1];
+    const idx = hours.indexOf(hour);
+    const measuringNow = inDay && idx >= 0 && today?.[idx] != null;
+    return {
+      time: `${hh}:${mm}`,
+      state: !inDay ? 'closed' : measuringNow ? 'live' : 'quiet',
+    } as const;
+  }, [timezone, hours, today]);
+
+  /** Which hour the pointer is over, as an index into `hours`. */
+  const [hoverIndex, setHoverIndex] = useState<number | null>(null);
+  const plotRef = useRef<HTMLDivElement>(null);
+
   if (hours.length < 2) return null;
 
   const hasLowerEdge = Array.isArray(p25) && p25.some((v) => v != null);
@@ -179,6 +243,12 @@ export function RideDayCurve({
   const { x, y } = makeScales(hours, yMax);
 
   const todayLine = today ? buildLinePath(hours, today, x, y) : '';
+  // Only where today has an outcome to compare against — see the prop's docblock.
+  const predictedOverMeasured =
+    predicted && today ? predicted.map((v, i) => (today[i] == null ? null : v)) : null;
+  const predictedLine = predictedOverMeasured
+    ? buildLinePath(hours, predictedOverMeasured, x, y)
+    : '';
   const forecastLine = forecast ? buildLinePath(hours, forecast, x, y) : '';
 
   /**
@@ -234,7 +304,44 @@ export function RideDayCurve({
     .filter(Boolean)
     .join('. ');
 
-  const gridValues = [yMax, yMax / 2];
+  const onPointer = (e: React.PointerEvent<HTMLDivElement>) => {
+    const el = plotRef.current;
+    if (!el || hours.length === 0) return;
+    const rect = el.getBoundingClientRect();
+    // The pointer is in CSS pixels, the scales are in viewBox units — convert
+    // once here rather than teaching the geometry about the rendered width.
+    const vx = ((e.clientX - rect.left) / rect.width) * VIEW_W;
+    let best = 0;
+    let bestDist = Infinity;
+    hours.forEach((h, i) => {
+      const d = Math.abs(x(h) - vx);
+      if (d < bestDist) {
+        bestDist = d;
+        best = i;
+      }
+    });
+    setHoverIndex(best);
+  };
+
+  const hover =
+    hoverIndex != null && hours[hoverIndex] != null
+      ? {
+          hour: hours[hoverIndex],
+          hx: x(hours[hoverIndex]),
+          rows: [
+            { key: 'today', value: today?.[hoverIndex] ?? null, label: labels.today },
+            { key: 'forecast', value: forecast?.[hoverIndex] ?? null, label: labels.forecast },
+            {
+              key: 'predicted',
+              value: predictedOverMeasured?.[hoverIndex] ?? null,
+              label: labels.predicted ?? '',
+            },
+            { key: 'median', value: p50[hoverIndex] ?? null, label: labels.median },
+          ].filter((r) => r.value != null && r.label),
+        }
+      : null;
+
+  const gridValues = gridValuesOf(yMax);
   const ticks = axisHoursOf(hours);
 
   return (
@@ -243,6 +350,33 @@ export function RideDayCurve({
         <div className="min-w-0">
           <h3 className="text-lg font-bold">{title}</h3>
           {subtitle && <p className="text-muted-foreground mt-0.5 text-xs">{subtitle}</p>}
+          {clock && (
+            <p className="text-muted-foreground mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs">
+              <span className="tabular-nums">
+                {clock.time}
+                {labels.localTime ? ` ${labels.localTime}` : ''}
+              </span>
+              <span aria-hidden="true">·</span>
+              <span className="inline-flex items-center gap-1.5">
+                <span
+                  aria-hidden="true"
+                  className={cn(
+                    'size-[7px] shrink-0 rounded-full',
+                    clock.state === 'live'
+                      ? 'bg-status-operating'
+                      : clock.state === 'quiet'
+                        ? 'bg-crowd-moderate'
+                        : 'bg-muted-foreground/50'
+                  )}
+                />
+                {clock.state === 'live'
+                  ? labels.stateLive
+                  : clock.state === 'quiet'
+                    ? labels.stateQuiet
+                    : labels.stateClosed}
+              </span>
+            </p>
+          )}
         </div>
         <ul className="text-muted-foreground flex flex-col gap-1 text-xs">
           {todayLine && (
@@ -257,6 +391,12 @@ export function RideDayCurve({
               {tunnelPath ? labels.forecastBand : labels.forecast}
             </li>
           )}
+          {predictedLine && labels.predicted && (
+            <li className="flex items-center gap-2">
+              <span className="border-status-operating/45 w-4 shrink-0 border-t-2 border-dotted" />
+              {labels.predicted}
+            </li>
+          )}
           <li className="flex items-center gap-2">
             <span className="border-primary w-4 shrink-0 border-t-2 border-dashed" />
             {labels.median}
@@ -268,7 +408,12 @@ export function RideDayCurve({
         </ul>
       </figcaption>
 
-      <div className="relative">
+      <div
+        ref={plotRef}
+        className="relative"
+        onPointerMove={onPointer}
+        onPointerLeave={() => setHoverIndex(null)}
+      >
         <svg
           viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
           className="aspect-[720/200] w-full"
@@ -340,6 +485,20 @@ export function RideDayCurve({
             />
           )}
 
+          {predictedLine && (
+            // Dotted and faint, under the solid line: this is what was expected,
+            // and the fact on top of it is what happened.
+            <path
+              d={predictedLine}
+              fill="none"
+              className="stroke-status-operating/45"
+              strokeWidth={2}
+              strokeDasharray="2 4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          )}
+
           {todayLine && (
             <path
               d={todayLine}
@@ -354,7 +513,45 @@ export function RideDayCurve({
           {nowPoint && (
             <circle cx={nowPoint.x} cy={nowPoint.y} r={4.5} className="fill-status-operating" />
           )}
+
+          {hover && (
+            <line
+              x1={hover.hx}
+              x2={hover.hx}
+              y1={PAD_T}
+              y2={VIEW_H - PAD_B}
+              className="stroke-foreground/25"
+              strokeWidth={1}
+            />
+          )}
         </svg>
+
+        {/* Readout. Positioned in percent so it tracks the guide at any width,
+            and flipped to the left half once the guide passes the middle, or it
+            hangs off the card on the last hours of the day. */}
+        {hover && hover.rows.length > 0 && (
+          <div
+            aria-hidden="true"
+            className="border-border bg-popover/95 pointer-events-none absolute top-0 z-10 rounded-lg border px-2.5 py-1.5 text-[11px] shadow-lg backdrop-blur-sm"
+            style={
+              (hover.hx / VIEW_W) * 100 > 55
+                ? { right: `${100 - (hover.hx / VIEW_W) * 100}%`, marginRight: 8 }
+                : { left: `${(hover.hx / VIEW_W) * 100}%`, marginLeft: 8 }
+            }
+          >
+            <div className="font-semibold tabular-nums">
+              {String(hover.hour).padStart(2, '0')}:00
+            </div>
+            {hover.rows.map((r) => (
+              <div key={r.key} className="text-muted-foreground mt-0.5 flex items-center gap-2">
+                <span className="truncate">{r.label}</span>
+                <span className="text-foreground ml-auto font-semibold tabular-nums">
+                  {r.value} {labels.minutes}
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
 
         {/* Y labels, over the SVG at the gridlines' own y. HTML rather than
             `<text>`, so 11 px stays 11 px at every width. */}

@@ -349,7 +349,12 @@
       "windowClosing": "Gegen Tagesende",
       "windowWait": "rund {minutes} Min. Wartezeit",
       "legendForecast": "Prognose für heute",
-      "legendForecastBand": "Prognose ±{minutes} Min."
+      "legendForecastBand": "Prognose ±{minutes} Min.",
+      "legendPredicted": "vorher gesagt",
+      "localTime": "Ortszeit",
+      "stateLive": "misst gerade",
+      "stateQuiet": "gerade keine Messung",
+      "stateClosed": "außerhalb der Öffnungszeiten"
     },
     "inPark": {
       "kicker": "Favoriten & Karte",

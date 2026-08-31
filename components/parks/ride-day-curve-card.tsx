@@ -274,6 +274,8 @@ export function RideDayCurveCard({ candidates, onExhausted, className }: RideDay
             p50={data.p50}
             p90={data.p90}
             today={data.today}
+            predicted={data.predicted ?? null}
+            timezone={data.timezone}
             forecast={data.forecast}
             forecastError={data.forecastError}
             windows={labelledWindows(data.hours, data.p50, {
@@ -291,6 +293,11 @@ export function RideDayCurveCard({ candidates, onExhausted, className }: RideDay
                 minutes: Math.round(data.forecastError ?? 0),
               }),
               peakAt: t('peakAt'),
+              predicted: t('legendPredicted'),
+              localTime: t('localTime'),
+              stateLive: t('stateLive'),
+              stateQuiet: t('stateQuiet'),
+              stateClosed: t('stateClosed'),
               minutes: tOverview('minutesUnit'),
             }}
           />

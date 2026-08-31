@@ -66,6 +66,29 @@ export function niceMax(value: number): number {
 }
 
 /**
+ * Horizontal guide values for the plot, top first.
+ *
+ * Two lines (the top and the half) is what this chart shipped with, and reading
+ * a value off it meant estimating against a 50-minute gap. Four or five is what
+ * a reader can actually count against.
+ *
+ * The step has to stay a round number, though, or the guides read worse than
+ * none: a 50-minute axis split four ways is 12.5, 25, 37.5, 50. So the divisor
+ * is chosen rather than fixed — the first of 5, 4, 3, 2 whose step lands on a
+ * multiple of five. {@link niceMax} only ever returns 20, 50, 100 or a multiple
+ * of 50, so one of them always does: 20 → 5s, 50 → 10s, 100 → 20s, 150 → 30s.
+ */
+export function gridValues(yMax: number): number[] {
+  const divisor = [5, 4, 3, 2].find((n) => {
+    const step = yMax / n;
+    return step >= 5 && step % 5 === 0;
+  });
+  if (!divisor) return [yMax, yMax / 2];
+  const step = yMax / divisor;
+  return Array.from({ length: divisor }, (_, i) => yMax - i * step);
+}
+
+/**
  * The plot's scales.
  *
  * `yMax` is clamped to at least 1 so a ride whose every reading is zero (a
