@@ -75,10 +75,9 @@ export async function generateMetadata({ params }: LocaleLayoutProps): Promise<M
     },
     description: t('description'),
     keywords: t('keywords'),
-    icons: {
-      icon: '/favicon.ico',
-      apple: '/apple-touch-icon.png',
-    },
+    // No `icons` here on purpose — see the note in app/layout.tsx. A route that declares one
+    // REPLACES the inherited object rather than merging into it, and this one used to declare
+    // `icon: '/favicon.ico'`, which is what suppressed the SVG favicon site-wide.
     alternates: {
       canonical: `${siteUrl}/${locale}`,
       languages: {

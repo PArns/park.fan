@@ -76,6 +76,7 @@
 | [SEO Analysis](seo/analysis.md)                     | Current status, optimizations, checklist                                                                                   |
 | [Agent readiness](seo/agent-readiness.md)           | What the site tells machines: robots policy, llms.txt, API catalog, skills, MCP, WebMCP                                    |
 | [Blog feeds](seo/blog-feeds.md)                     | The six RSS feeds: autodiscovery, full-text items, enclosures, WebSub                                                      |
+| [Favicon](seo/favicon.md)                           | The icon in the search result: one generated set, why the wordmark is out and the tile is in                               |
 | [MCP registry listing](seo/mcp-registry-listing.md) | Publishing the MCP server and the API where agents look for them: registry `server.json`, awesome-mcp-servers, public-apis |
 
 ### Troubleshooting
