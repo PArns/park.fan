@@ -337,7 +337,7 @@
       "chartSubtitle": "Median aus {days} Messtagen, gemessen alle 5 Minuten",
       "legendToday": "heute gemessen",
       "legendMedian": "Median vergangener Tage",
-      "legendBand": "Streuung P25–P90",
+      "legendBand": "üblicher Bereich (P25–P90)",
       "legendBandUpper": "Median bis Stoßzeit",
       "heatTitle": "Hitzewarnung",
       "heatText": "An Hitzetagen verschiebt sich der Andrang: Wasserbahnen ziehen an, Indoor-Dark-Rides werden voll, Achterbahnen leeren sich. Der Kalender rechnet das mit.",
@@ -354,7 +354,10 @@
       "localTime": "Ortszeit",
       "stateLive": "misst gerade",
       "stateQuiet": "gerade keine Messung",
-      "stateClosed": "außerhalb der Öffnungszeiten"
+      "stateClosed": "außerhalb der Öffnungszeiten",
+      "axisLabel": "Wartezeit in Minuten",
+      "nowMarker": "jetzt",
+      "vsMedian": "gegenüber Median"
     },
     "inPark": {
       "kicker": "Favoriten & Karte",

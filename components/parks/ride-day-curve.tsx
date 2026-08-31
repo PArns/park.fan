@@ -2,6 +2,7 @@
 
 import { useMemo, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
+import { roundWaitDeltaTo5 } from '@/lib/utils/wait-time';
 import {
   axisHours as axisHoursOf,
   bandPath as buildBandPath,
@@ -131,6 +132,12 @@ export interface RideDayCurveProps {
     peakAt: string;
     /** Legend for the line showing what the model said before the hour happened. */
     predicted?: string;
+    /** Names what the numbers are, once, above the plot: "Wartezeit in Min." */
+    axisLabel?: string;
+    /** Marks the end of the measured line: "jetzt". */
+    nowMarker?: string;
+    /** Row in the readout: "gegenüber Median". */
+    vsMedian?: string;
     /** Suffix after the park's local clock, e.g. "Ortszeit". */
     localTime?: string;
     /** The ride reported a wait time in the current hour. */
@@ -338,6 +345,14 @@ export function RideDayCurve({
             },
             { key: 'median', value: p50[hoverIndex] ?? null, label: labels.median },
           ].filter((r) => r.value != null && r.label),
+          // The number nobody can do in their head while reading a chart, and
+          // the one the whole card is about. A DIFFERENCE, so it goes through
+          // `roundWaitDeltaTo5` — `roundWaitTo5` floors everything under 2.5 to
+          // zero, which would delete every small improvement.
+          delta:
+            today?.[hoverIndex] != null && p50[hoverIndex] != null && labels.vsMedian
+              ? roundWaitDeltaTo5((today[hoverIndex] as number) - (p50[hoverIndex] as number))
+              : null,
         }
       : null;
 
@@ -408,9 +423,18 @@ export function RideDayCurve({
         </ul>
       </figcaption>
 
+      {labels.axisLabel && (
+        <p className="text-muted-foreground mb-1 ml-11 text-[11px]">{labels.axisLabel}</p>
+      )}
+
       <div
         ref={plotRef}
-        className="relative"
+        // `ml-11` opens a gutter for the Y labels. They used to sit INSIDE the
+        // plot at its left edge, where every one of them landed on the curve,
+        // the band or the quiet-window box — not one stood free. The pointer
+        // maths reads this element's own box, so moving the plot moves the
+        // hover with it and nothing else has to know.
+        className="relative ml-11"
         onPointerMove={onPointer}
         onPointerLeave={() => setHoverIndex(null)}
       >
@@ -513,6 +537,20 @@ export function RideDayCurve({
           {nowPoint && (
             <circle cx={nowPoint.x} cy={nowPoint.y} r={4.5} className="fill-status-operating" />
           )}
+          {nowPoint && labels.nowMarker && (
+            // Without it the measured line just stops while the median runs on,
+            // and that reads as missing data rather than as "this is how far
+            // today has got". Flipped to the left once the dot is near the right
+            // edge, where the text would otherwise be clipped by the viewBox.
+            <text
+              x={nowPoint.x + (nowPoint.x > VIEW_W * 0.8 ? -9 : 9)}
+              y={nowPoint.y - 8}
+              textAnchor={nowPoint.x > VIEW_W * 0.8 ? 'end' : 'start'}
+              className="fill-status-operating text-[13px] font-semibold"
+            >
+              {labels.nowMarker}
+            </text>
+          )}
 
           {hover && (
             <line
@@ -550,23 +588,38 @@ export function RideDayCurve({
                 </span>
               </div>
             ))}
+            {hover.delta != null && labels.vsMedian && (
+              <div className="border-border/60 text-muted-foreground mt-1.5 flex items-center gap-2 border-t pt-1.5">
+                <span className="truncate">{labels.vsMedian}</span>
+                <span
+                  className={cn(
+                    'ml-auto font-semibold tabular-nums',
+                    hover.delta < 0 ? 'text-status-operating' : 'text-foreground'
+                  )}
+                >
+                  {hover.delta > 0 ? '+' : ''}
+                  {hover.delta} {labels.minutes}
+                </span>
+              </div>
+            )}
           </div>
         )}
 
-        {/* Y labels, over the SVG at the gridlines' own y. HTML rather than
-            `<text>`, so 11 px stays 11 px at every width. */}
+        {/* Y labels, in the gutter to the left of the plot and centred on their
+            own gridline. HTML rather than `<text>`, so 11 px stays 11 px at
+            every width. No unit per label — `axisLabel` says it once above. */}
         {gridValues.map((v) => (
           <span
             key={v}
             aria-hidden="true"
-            className="text-muted-foreground absolute text-[11px] tabular-nums"
+            className="text-muted-foreground absolute mr-2 text-[11px] tabular-nums"
             style={{
-              left: `${((PAD_L + 2) / VIEW_W) * 100}%`,
+              right: '100%',
               top: `${(y(v) / VIEW_H) * 100}%`,
-              transform: 'translateY(-100%)',
+              transform: 'translateY(-50%)',
             }}
           >
-            {Math.round(v)} {labels.minutes}
+            {Math.round(v)}
           </span>
         ))}
 
