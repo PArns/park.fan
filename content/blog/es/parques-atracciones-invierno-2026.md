@@ -371,20 +371,33 @@ vacaciones de Navidad en medio. En el Wintertraum se suma que es un destino en
 sí mismo. La gente conduce hasta Brühl por los espectáculos, no a pesar de la
 estación.
 
-Dónde caen los días tranquilos lo calcula el calendario parque por parque para
-las próximas semanas:
+## Lo que no hemos medido
 
-**Phantasialand, los próximos días más tranquilos**
+Para el Wintertraum en sí nuestras estadísticas se acaban. Noviembre está en
+**cero días medidos**, diciembre en cinco, enero en cuatro, y pedir una ventana
+más amplia no cambia nada. Lo que pasa en Brühl entre noviembre y enero no lo
+hemos medido, lo hemos visto. El resto de este capítulo es observación.
 
-```best-days-widget slug=phantasialand
+Y lo que se observa es un salto, no una transición. Hasta el viernes 13 de
+noviembre incluido, Brühl funciona en temporada regular con los horarios de
+siempre, de 9 a 18 h, y esa semana es la más vacía de todo el final de
+temporada. El sábado 14 de noviembre el parque pasa a 11–20 h, y desde ese día
+está lleno. El Wintertraum llena el recinto durante semanas hasta un nivel que
+por lo demás solo alcanza el pleno verano.
 
-```
+De ahí sale un consejo incómodo: la semana vacía no te sirve, porque el
+Wintertraum todavía no existe en ella. Para verlo sin las multitudes, coge un
+día entre semana entre el 16 de noviembre y el inicio de las vacaciones de
+Navidad. Después, hasta bien entrado enero, cada día es día de vacaciones.
 
-**Europa-Park, los próximos días más tranquilos**
-
-```best-days-widget slug=europa-park
-
-```
+Una nota sobre el calendario de afluencia, porque lo sabría mejor si pudiera:
+para diciembre clasifica en Brühl 29 de 29 días de apertura como «bajo». En
+julio, en el mismo parque, reparte en cuatro niveles. La diferencia no es el
+público, es el noviembre que falta más arriba. Un modelo que nunca ha visto una
+temporada la da por tranquila, y lo mismo vale para los días de invierno en
+Europa-Park y en Efteling. Preferimos escribirlo a dejarlo pasar. En cuanto
+tengamos una temporada de invierno medida de principio a fin, el calendario
+también calculará diciembre.
 
 Y como la pregunta «¿cuál de ellos es el más lleno?» sale en cada viaje en
 coche, aquí están los parques de este artículo uno al lado del otro, cada uno
@@ -411,8 +424,9 @@ con su día de la semana más tranquilo:
 
 ## Adónde ir este año
 
-Para una temporada larga con mucho escenario, Brühl tiene el mayor margen con
-67 días de operación, más tres espectáculos de sala y cuatro al aire libre. Si
+El programa más grande está en Brühl: 67 días de operación, tres espectáculos de
+sala, cuatro al aire libre. También es el más lleno, así que coge un día entre
+semana de noviembre. Si
 el tiempo no debe influir, Kaatsheuvel es la apuesta más segura, porque buena
 parte de las mejores atracciones está de todos modos bajo techo. Y quien quiera
 montar una vez más en [Euro-Mir](ref:europa-park/euro-mir) tiene hasta el 9 de

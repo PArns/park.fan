@@ -488,7 +488,7 @@ niet nodig, een interactieve boottocht in het Griekse themagebied waarin je
 onderweg op doelen schiet. Wie kinderen bij zich heeft, doet hem twee keer,
 omdat de eerste keer niemand op de score let.
 
-![Het bord “Abenteuer Atlantis” met twee gesneden koppen boven de ingang | De ingang ligt in Griekenland, meteen achter Poseidon. | right](/media/europa-park/atlantis-adventure-4x3.jpg)
+![Het opschrift “Abenteuer Atlantis” met twee gesneden koppen boven de ingang | De ingang ligt in Griekenland, meteen achter Poseidon. | right](/media/europa-park/atlantis-adventure-4x3.jpg)
 
 Vanaf de **[Euro-Tower](ref:europa-park/euro-tower)**, sinds 1983 in Rust, kijk je bij
 helder weer tot in de Vogezen. De panoramabaan stopt op drie stations, in

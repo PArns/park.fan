@@ -333,7 +333,7 @@ the park twice the size of the whole Avalon area and marketed as the largest
 Halloween experience in Europe. It replaces the long-running rat labyrinth
 "Trapped". The only rule that counts in there: stand still and you get caught.
 
-![The Troy entrance sign redressed as "DesTROY – The Ride", with two Halloween Nights banners below | Troy becomes DesTROY. The park unscrews the coaster’s entrance sign for it. | right](/media/toverland-halloween/03-destroy-schild.jpg)
+![The Troy entrance lettering redressed as "DesTROY – The Ride", with two Halloween Nights banners below | Troy becomes DesTROY. The park unscrews the coaster’s entrance lettering for it. | right](/media/toverland-halloween/03-destroy-schild.jpg)
 
 For Troy fans, though, the best part is still to come. One of the scare zones is
 called **"DesTroy"** and sits in **Ithaka**, right beside and underneath the

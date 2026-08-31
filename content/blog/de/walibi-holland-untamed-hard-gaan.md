@@ -111,7 +111,7 @@ Zahl, die hier je erreicht wurde. Vier Jahre später waren sie wieder weg. Seit
 auch [Walibi Belgium](ref:walibi-belgium) und der
 [Parc Astérix](ref:parc-asterix) gehören.
 
-![Ein alter Käfer steht auf einem Stahlgerüst über dem Schild „Speed Zone“ | Der Eingang zur Speed Zone. Subtilität war nie das Ziel. | wide](/media/walibi-holland/background.jpg)
+![Ein alter Käfer steht auf einem Stahlgerüst über dem Schriftzug „Speed Zone“ | Der Eingang zur Speed Zone. Subtilität war nie das Ziel. | wide](/media/walibi-holland/background.jpg)
 
 Heute umfasst der Park rund **40 Hektar**, dazu kommen 20 Hektar Ferienpark
 (Walibi Village) und ein **80 Hektar großes Veranstaltungsgelände** direkt
@@ -238,7 +238,7 @@ die sich in Formen biegen lässt, die mit Holz unmöglich wären. Am **1. Juli
 
 ```
 
-![Der rostige Schriftzug „Untamed“ vor der Holzkonstruktion der Bahn | Der Rost am Schild ist gewollt. Das Holz dahinter ist echt und stand hier schon, als die Bahn noch Robin Hood hieß. | left](/media/walibi-holland/untamed-4x3.jpg)
+![Der rostige Schriftzug „Untamed“ vor der Holzkonstruktion der Bahn | Der Rost am Schriftzug ist gewollt. Das Holz dahinter ist echt und stand hier schon, als die Bahn noch Robin Hood hieß. | left](/media/walibi-holland/untamed-4x3.jpg)
 
 Die Daten: **36,5 Meter hoch**, First Drop **35,4 Meter**, **92 km/h**,
 **1.085 Meter** lang, **fünf Überschläge**, laut Hersteller **14
@@ -427,7 +427,7 @@ beim Umbau 2011 neue Züge bekommen hat: Schultergurte statt der alten Bügel.
 Fahr die beiden hintereinander, und du weißt binnen einer Sekunde, wie viel eine
 Rückhaltevorrichtung ausmacht.
 
-![Das Schild von Speed of Sound zwischen übergroßen Lautsprechern und einer Gitarre | Die Fassade verspricht ein Konzert. Dahinter wartet ein Boomerang von 2000. | wide](/media/walibi-holland/speed-of-sound.jpg)
+![Der Schriftzug von Speed of Sound zwischen übergroßen Lautsprechern und einer Gitarre | Die Fassade verspricht ein Konzert. Dahinter wartet ein Boomerang von 2000. | wide](/media/walibi-holland/speed-of-sound.jpg)
 
 ### Der Rest
 

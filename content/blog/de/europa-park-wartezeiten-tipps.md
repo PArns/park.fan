@@ -492,7 +492,7 @@ interaktive Bootsfahrt im griechischen Themenbereich, bei der man aus dem Boot
 auf Ziele schießt. Mit Kindern fährt man sie zweimal, weil beim ersten Mal
 niemand auf den Punktestand achtet.
 
-![Das Schild „Abenteuer Atlantis“ mit zwei geschnitzten Köpfen über dem Eingang | Der Eingang liegt in Griechenland, gleich hinter Poseidon. | right](/media/europa-park/atlantis-adventure-4x3.jpg)
+![Der Schriftzug „Abenteuer Atlantis“ mit zwei geschnitzten Köpfen über dem Eingang | Der Eingang liegt in Griechenland, gleich hinter Poseidon. | right](/media/europa-park/atlantis-adventure-4x3.jpg)
 
 Vom **[Euro-Tower](ref:europa-park/euro-tower)**, seit 1983 in Rust, siehst du bei klarem
 Wetter bis in die Vogesen. Die Panoramabahn hält an drei Bahnhöfen, in Luxemburg

@@ -255,7 +255,7 @@ die daaraan voorafgaat: _is het überhaupt de moeite om te gaan?_
 Daarom gaan we een paar stappen verder:
 
 - **Voorspellingen in plaats van alleen de actuele stand.** Een eigen AI-model
-  kijkt tot 365 dagen vooruit, niet alleen naar het bord boven de ingang.
+  kijkt tot 365 dagen vooruit, niet alleen naar de aanduiding boven de ingang.
 - **De kalender van de beste dagen.** Vakanties, weer, schedules en jaren aan
   historie, verdicht tot één eenvoudig antwoord: gaan of liever niet.
 - **Trefferpercentages in het openbaar.** Elke voorspelling wordt later naast de

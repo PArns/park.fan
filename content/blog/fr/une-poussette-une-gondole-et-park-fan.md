@@ -273,7 +273,7 @@ déplacement ?_
 C’est pourquoi nous allons quelques pas plus loin :
 
 - **Des prévisions, pas seulement l’état actuel.** Un modèle d’IA maison
-  regarde jusqu’à 365 jours en avant, pas seulement le panneau au-dessus de
+  regarde jusqu’à 365 jours en avant, pas seulement l’affichage au-dessus de
   l’entrée.
 - **Le calendrier des meilleurs jours.** Vacances, météo, horaires et des années
   d’historique, condensés en une réponse simple : on y va, ou plutôt pas.

@@ -67,7 +67,7 @@ function parkLocalInstant(nowMs: number, hour: number, minute: number): string {
 
 // ── The number the whole page starts from ────────────────────────────────────
 
-/** What the sign at the entrance says. Everything else on this page is context for it. */
+/** What it says at the entrance. Everything else on this page is context for it. */
 export const TARON_WAIT_NOW = 70;
 
 /**

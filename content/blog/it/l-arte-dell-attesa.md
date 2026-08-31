@@ -47,7 +47,7 @@ seo:
     - tempi di attesa Disney World
 ---
 
-Giri l’angolo verso la tua attrazione preferita ed ecco il cartello, acceso:
+Giri l’angolo verso la tua attrazione preferita ed ecco il tabellone, acceso:
 **“60 minuti di attesa.”** Certi giorni giri sui tacchi e spieghi a chi ti
 accompagna che quella giostra “è comunque sopravvalutata”. Altri giorni fai
 quegli stessi 60 minuti e giureresti poi che erano al massimo 25.

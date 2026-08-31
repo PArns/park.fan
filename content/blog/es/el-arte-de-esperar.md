@@ -47,7 +47,7 @@ seo:
     - tiempos de espera Disney World
 ---
 
-Doblas la esquina hacia tu atracción favorita y ahí está el cartel, encendido:
+Doblas la esquina hacia tu atracción favorita y ahí está el panel, encendido:
 **«60 minutos de espera».** Algunos días das media vuelta y le explicas a tu
 acompañante que la atracción «está sobrevalorada de todas formas». Otros haces
 esos mismos 60 minutos y jurarías después que fueron 25 como mucho.

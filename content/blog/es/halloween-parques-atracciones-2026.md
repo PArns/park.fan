@@ -123,7 +123,7 @@ Game Show»** en el Studio 7, en la que el público juega en lugar de mirar, má
 espectáculo de percusión **«Drums of Doom»**, el desfile de monstruos y las
 sesiones del DJ Max Bering.
 
-Ahora que se conoce el cartel, también puede responderse la pregunta obvia: «el
+Ahora que se conoce el programa, también puede responderse la pregunta obvia: «el
 mayor» no es automáticamente «el mejor». El HHF es el Volkswagen de los eventos
 de Halloween: enorme, sólido, algo para cada cual, pero en las noches llenas
 también producción en cadena con atasco delante del maze. La evolución
@@ -364,7 +364,7 @@ cercano) amplía sus **Halloween Nights** año tras año. La fecha está fijada:
 haunted experiences, entre ellas **«Unmasked»**, introducida en 2025, una
 experience con scare zone propia.
 
-![Actor con máscara de tentáculos y campanilla ante el cartel de las Toverland Halloween Nights | El vigilante nocturno de las Toverland Halloween Nights. Cara: negociable. | left](/media/halloween-2026/toverland-cthulhu.jpg)
+![Actor con máscara de tentáculos y campanilla ante el rótulo de las Toverland Halloween Nights | El vigilante nocturno de las Toverland Halloween Nights. Cara: negociable. | left](/media/halloween-2026/toverland-cthulhu.jpg)
 
 La verdadera novedad para **2026** está creciendo literalmente hacia el cielo
 ahora mismo, y ni siquiera está dentro del parque: **«Entwined: The Maze»**, un

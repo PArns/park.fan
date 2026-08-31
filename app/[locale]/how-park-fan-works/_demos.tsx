@@ -109,9 +109,9 @@ export function DemoFrame({
 }
 
 /**
- * The opening exhibit: the same 70 minutes, first as a sign at the entrance and
+ * The opening exhibit: the same 70 minutes, first as the number at the entrance and
  * then as the park page renders it. Deliberately not a card on the left — a
- * sign is what the alternative actually looks like.
+ * display is what the alternative actually looks like.
  */
 export async function BareNumberVsCard({
   signLabel,
@@ -135,7 +135,7 @@ export async function BareNumberVsCard({
         <div className="text-muted-foreground mb-3 text-[11px] font-semibold tracking-widest uppercase">
           {signLabel}
         </div>
-        {/* The same sign the hero shows, so the page opens and re-opens on one
+        {/* The same display the hero shows, so the page opens and re-opens on one
             object rather than two panels that merely resemble each other. */}
         <div className="flex min-h-[220px] flex-1 items-center justify-center">
           <WaitSign value={TARON_WAIT_NOW} unit={unit} size="md" className="w-full" />

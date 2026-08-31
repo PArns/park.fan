@@ -414,7 +414,7 @@ la reforma de 2011 recibió trenes nuevos: arneses de hombro en lugar de los
 antiguos barrotes. Monta las dos seguidas y en un segundo sabrás cuánto influye
 un sistema de sujeción.
 
-![El cartel de Speed of Sound entre altavoces gigantes y una guitarra | La fachada promete un concierto. Detrás espera un Boomerang del año 2000. | wide](/media/walibi-holland/speed-of-sound.jpg)
+![El rótulo de Speed of Sound entre altavoces gigantes y una guitarra | La fachada promete un concierto. Detrás espera un Boomerang del año 2000. | wide](/media/walibi-holland/speed-of-sound.jpg)
 
 ### El resto
 

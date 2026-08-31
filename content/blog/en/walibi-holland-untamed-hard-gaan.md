@@ -225,7 +225,7 @@ the first hybrid coaster in Europe.
 
 ```
 
-![The rusted "Untamed" lettering in front of the coaster’s wooden structure | The rust on the sign is deliberate. The timber behind it is real and was already standing here when the ride was still called Robin Hood. | left](/media/walibi-holland/untamed-4x3.jpg)
+![The rusted "Untamed" lettering in front of the coaster’s wooden structure | The rust on the lettering is deliberate. The timber behind it is real and was already standing here when the ride was still called Robin Hood. | left](/media/walibi-holland/untamed-4x3.jpg)
 
 The numbers: **36.5 metres tall**, a first drop of **35.4 metres**, **92 km/h**,
 **1,085 metres** long, **five inversions**, according to the manufacturer **14

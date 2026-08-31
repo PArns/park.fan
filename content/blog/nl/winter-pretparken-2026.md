@@ -366,20 +366,33 @@ winterbezoeker kiest tussen drie weekenden, met de kerstvakantie er middenin.
 Bij de Wintertraum komt daar nog bij dat het een doel op zich is. Mensen rijden
 naar Brühl vanwege de shows, niet ondanks het jaargetijde.
 
-Waar de rustige dagen liggen, rekent de kalender voor de komende weken per park
-uit:
+## Wat we niet gemeten hebben
 
-**Phantasialand, de rustigste dagen die eraan komen**
+Voor de Wintertraum zelf houdt onze statistiek op. November staat in onze
+metingen op **nul dagen**, december op vijf, januari op vier, en een groter
+tijdvenster opvragen verandert daar niets aan. Wat er in Brühl tussen november
+en januari gebeurt, hebben we niet gemeten maar gezien. De rest van dit
+hoofdstuk is waarneming.
 
-```best-days-widget slug=phantasialand
+En wat je waarneemt is een sprong, geen overgang. Tot en met vrijdag 13 november
+draait Brühl het reguliere seizoen op de oude tijden, van 9 tot 18 uur, en die
+week is de leegste van het hele naseizoen. Op zaterdag 14 november schakelt het
+park over naar 11 tot 20 uur, en vanaf die dag is het vol. De Wintertraum vult
+het terrein wekenlang tot een niveau dat verder alleen de hoogzomer haalt.
 
-```
+Daaruit volgt een vervelend advies: die lege week heb je niets aan, want de
+Wintertraum bestaat er nog niet. Wie hem zonder de drukte wil zien, neemt een
+doordeweekse dag tussen 16 november en het begin van de kerstvakantie. Daarna is
+tot ver in januari elke dag een vakantiedag.
 
-**Europa-Park, de rustigste dagen die eraan komen**
-
-```best-days-widget slug=europa-park
-
-```
+Nog iets over de drukte-kalender, omdat hij het beter zou weten als hij kon:
+voor december zet hij in Brühl 29 van de 29 openingsdagen op „laag“. In juli van
+hetzelfde park verdeelt hij over vier niveaus. Het verschil is niet het publiek,
+het is de ontbrekende november van hierboven. Een model dat een seizoen nooit
+gezien heeft, houdt het voor rustig, en dat geldt net zo voor de winterdagen in
+het Europa-Park en de Efteling. We schrijven het liever op dan het te laten
+staan. Zodra één winterseizoen helemaal doorgemeten is, rekent de kalender ook
+voor december.
 
 En omdat de vraag „welke van die parken is het drukst“ op elke autorit
 langskomt, hier de parken uit dit artikel naast elkaar, elk met zijn rustigste
@@ -405,8 +418,9 @@ weekdag:
 
 ## Waar naartoe dit jaar
 
-Voor een lang seizoen met veel podium heeft Brühl met 67 bedrijfsdagen de meeste
-ruimte, plus drie theatershows en vier openluchtshows. Moet het weer geen rol
+Het grootste programma staat in Brühl: 67 bedrijfsdagen, drie theatershows, vier
+openluchtshows. Het is ook het volste, dus neem een doordeweekse dag in
+november. Moet het weer geen rol
 spelen, dan is Kaatsheuvel de veiligere keuze, want een flink deel van de beste
 attracties ligt er toch al binnen. En wie de [Euro-Mir](ref:europa-park/euro-mir)
 nog één keer wil rijden, heeft tot 9 januari de tijd om naar Rust te komen.

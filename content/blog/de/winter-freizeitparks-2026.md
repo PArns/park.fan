@@ -368,20 +368,32 @@ Mitte davon liegen die Weihnachtsferien. Beim Wintertraum kommt dazu, dass er
 ein eigenes Ziel ist. Leute fahren wegen der Shows nach Brühl, nicht trotz der
 Jahreszeit.
 
-Wo die ruhigen Tage liegen, rechnet der Kalender für die kommenden Wochen pro
-Park aus:
+## Was wir nicht gemessen haben
 
-**Phantasialand, die ruhigsten kommenden Tage**
+Für den Wintertraum selbst hört unsere Statistik auf. Der November steht in
+unseren Messungen bei **null Tagen**, der Dezember bei fünf, der Januar bei
+vier, und ein größeres Zeitfenster abzufragen ändert daran nichts. Was in Brühl
+zwischen November und Januar passiert, haben wir bisher nicht gemessen, sondern
+gesehen. Der Rest dieses Kapitels ist deshalb Beobachtung.
 
-```best-days-widget slug=phantasialand
+Und beobachtet wird ein Sprung, kein Übergang. Bis einschließlich Freitag, dem 13. November, läuft in Brühl die reguläre Saison mit den alten Zeiten von 9 bis
+18 Uhr, und diese Woche ist die leerste des ganzen Spätjahrs. Am Samstag, dem 14. November, stellt der Park auf 11 bis 20 Uhr um, und ab diesem Tag ist voll.
+Der Wintertraum füllt das Gelände über Wochen so weit, wie es sonst nur der
+Hochsommer schafft.
 
-```
+Daraus folgt ein unangenehmer Rat: Die leere Woche nützt dir nichts, weil es den
+Wintertraum darin noch nicht gibt. Wer ihn ohne die Massen sehen will, nimmt
+einen Werktag zwischen dem 16. November und dem Beginn der Weihnachtsferien.
+Danach ist bis in den Januar hinein jeder Tag ein Ferientag.
 
-**Europa-Park, die ruhigsten kommenden Tage**
-
-```best-days-widget slug=europa-park
-
-```
+Ein Wort zum Crowd-Kalender an dieser Stelle, weil er es besser wüsste, wenn er
+könnte: Für den Dezember stuft er in Brühl 29 von 29 Öffnungstagen als
+„niedrig“ ein. Im Juli desselben Parks verteilt er über vier Stufen. Der
+Unterschied ist nicht das Publikum, sondern der fehlende November von oben. Ein
+Modell, das eine Saison nie gesehen hat, hält sie für ruhig, und dasselbe gilt
+für die Wintertage im Europa-Park und im Efteling. Wir schreiben das lieber hin,
+als es stehen zu lassen. Sobald eine Wintersaison durchgemessen ist, rechnet der
+Kalender auch für den Dezember.
 
 Und weil die Frage „welcher von denen ist der vollste“ auf jeder Autofahrt
 gestellt wird, hier die Parks aus diesem Artikel nebeneinander, jeweils mit
@@ -408,10 +420,10 @@ ihrem ruhigsten Wochentag:
 
 ## Wohin dieses Jahr
 
-Für eine lange Saison mit viel Bühne hat Brühl mit 67 Betriebstagen den meisten
-Spielraum, dazu drei Theatershows und vier Open-Air-Shows. Soll das Wetter keine
-Rolle spielen, ist Kaatsheuvel die sicherere Wahl, weil ein guter Teil der
-besten Attraktionen ohnehin drinnen liegt. Und wer die
+Das größte Programm steht in Brühl: 67 Betriebstage, drei Theatershows, vier
+Open-Air-Shows. Es ist auch das vollste, also nimm einen Werktag im November.
+Soll das Wetter keine Rolle spielen, ist Kaatsheuvel die sicherere Wahl, weil
+ein guter Teil der besten Attraktionen ohnehin drinnen liegt. Und wer die
 [Euro-Mir](ref:europa-park/euro-mir) noch einmal fahren will, hat bis zum 9. Januar Zeit, nach Rust zu kommen.
 
 Mit Kindern und ohne Lust auf Zusatztickets: In Kasterlee ist alles im

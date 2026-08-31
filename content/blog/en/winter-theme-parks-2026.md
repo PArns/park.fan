@@ -363,19 +363,31 @@ winter visitor chooses between three weekends, with the Christmas holidays in
 the middle of them. Wintertraum adds a further twist: it is a destination in its
 own right. People drive to Brühl for the shows, not in spite of the season.
 
-Where the quiet days fall, the calendar works out per park for the coming weeks:
+## What we have not measured
 
-**Phantasialand, the quietest days ahead**
+For Wintertraum itself, our statistics stop. November stands at **zero measured
+days**, December at five, January at four, and asking for a longer window
+changes none of that. What happens in Brühl between November and January we
+have not measured, we have watched. The rest of this chapter is observation.
 
-```best-days-widget slug=phantasialand
+And what gets watched is a jump, not a transition. Up to and including Friday
+13 November, Brühl runs its regular season on the old hours, 09:00 to 18:00,
+and that week is the emptiest of the whole late season. On Saturday 14 November
+the park switches to 11:00 to 20:00, and from that day it is full. Wintertraum
+packs the place for weeks at a level otherwise reached only in high summer.
 
-```
+Which leads to an awkward piece of advice: the empty week is no use to you,
+because Wintertraum does not exist yet during it. To see it without the crowds,
+take a weekday between 16 November and the start of the Christmas holidays.
+After that, every day is a holiday until well into January.
 
-**Europa-Park, the quietest days ahead**
-
-```best-days-widget slug=europa-park
-
-```
+A word about the crowd calendar here, because it would know better if it could:
+for December it rates 29 of 29 operating days in Brühl as "low". For July at the
+same park it spreads across four levels. The difference is not the crowd, it is
+the missing November from above. A model that has never seen a season takes it
+for a quiet one, and the same goes for the winter days at Europa-Park and the
+Efteling. We would rather write that down than let it stand. Once a winter
+season has been measured end to end, the calendar will work for December too.
 
 And because "which of them is the busiest" gets asked on every car journey,
 here are the parks from this article side by side, each with its quietest
@@ -401,8 +413,8 @@ weekday:
 
 ## Where to go this year
 
-For a long season with plenty of stage work, Brühl has the most room at
-67 operating days, plus three theatre shows and four outdoor ones. If the
+The biggest programme is in Brühl: 67 operating days, three theatre shows, four
+outdoor ones. It is also the fullest, so take a weekday in November. If the
 weather should not matter, Kaatsheuvel is the safer bet, because a good share of
 the best attractions is indoors anyway. And anyone who wants one more ride on
 [Euro-Mir](ref:europa-park/euro-mir) has until 9 January to get to Rust.
