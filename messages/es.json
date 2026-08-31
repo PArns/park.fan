@@ -333,7 +333,7 @@
     },
     "bestTime": {
       "kicker": "Beste Besuchszeit",
-      "title": "Viele Achterbahnen haben zwei perfekte Zeitfenster – wir sagen dir wann.",
+      "title": "Viele Achterbahnen haben zwei perfekte Zeitfenster – wir sagen dir wann",
       "lead": "Rope Drop am Morgen, die letzte Stunde am Abend, und dazwischen die Attraktionen, die gerade gegen den Trend laufen.",
       "chartSubtitle": "Median aus {days} Messtagen, gemessen alle 5 Minuten",
       "legendToday": "heute gemessen",
@@ -400,7 +400,7 @@
     },
     "founder": {
       "kicker": "Der Mensch dahinter",
-      "title": "Ein Entwickler, ein eigenes Datenmodell, kein Investor.",
+      "title": "Ein Entwickler, ein eigenes Datenmodell, kein Investor",
       "name": "Patrick Arns",
       "role": "Gründer von park.fan",
       "p1": "park.fan ist kein Startup mit Investoren und Roadmap-Meetings, sondern das Projekt von einem, der seit dem Kinderwagen in Freizeitparks unterwegs ist und seit über 25 Jahren Software baut. Die Frustration war konkret: 90 Minuten für eine Bahn anstehen und ahnen, dass clevere Planung das verhindert hätte.",
