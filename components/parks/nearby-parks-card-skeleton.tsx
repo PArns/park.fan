@@ -1,4 +1,7 @@
+'use client';
+
 import { MapPin } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { Skeleton } from '@/components/ui/skeleton';
 import { GlassSectionTitle } from '@/components/parks/glass-section-title';
 import { ParkCardNearbySkeleton } from '@/components/parks/park-card-nearby-skeleton';
@@ -20,16 +23,24 @@ import { cn } from '@/lib/utils';
  * nothing, the list comes back empty, and every placeholder here looks far too big.
  */
 export function NearbyParksCardSkeleton({ className }: { className?: string }) {
+  const t = useTranslations('nearby');
+
   return (
     // mt-8 mirrors NearbyParksCard's TOP_SPACING so the swap to the live parks list keeps the
     // same gap under the hero (no layout shift). The in-park banner is full-bleed and exempt.
     <section className={cn('mt-8', className)} aria-hidden="true">
       {/* The real heading is a frosted pill, not a bare h2: `px-4 py-2.5` around a `text-xl`
           line is 48 px, where the bare row this used to draw was 24. Rendering the real
-          component (with the text as a placeholder) is the only way that stays true when the
-          pill's padding changes. */}
+          component is the only way that stays true when the pill's padding changes.
+
+          And the real TEXT, not a grey bar: the title needs no data, and a `<h2>` whose only
+          child was a `Skeleton` put an empty heading into the document outline — twice, since
+          the streamed HTML carries the fallback and the resolved copy side by side. The
+          project's own rule says a fallback renders whatever needs no data rather than a box
+          shaped like it; this one was the exception nobody had noticed. The height is
+          unchanged (a `text-xl` line is the 28 px the `h-7` bar reserved). */}
       <GlassSectionTitle icon={MapPin} iconClassName="text-muted-foreground">
-        <Skeleton className="h-7 w-48" />
+        {t('title')}
       </GlassSectionTitle>
       {/* Subtitle line ("nearest open park: …") — present in the live layout, so reserve it.
           A real <p> around a 20 px bar, not a bare 16 px block: the tag and the height both
