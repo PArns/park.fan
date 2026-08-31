@@ -80,6 +80,16 @@ export default function HeroInlineSearchPanel({
   const heightBeforeChange = useRef<number | null>(null);
   /** True while GSAP is tweening the card's height. See the ResizeObserver below. */
   const tweening = useRef(false);
+  /**
+   * Whether the floating list should be on screen at all — off the hero only.
+   *
+   * The hero's dropdown is open at rest by design: an open list of the nearest
+   * parks IS the hero. Anywhere else that list would hang over the chapter below
+   * for as long as the page is open, so it belongs to the field's focus. It stays
+   * mounted either way and is only hidden, because unmounting it would throw away
+   * the browse results and re-measure the card on every focus.
+   */
+  const showDropdown = expanded || query.trim().length > 0;
   const trackedFocus = useRef(false);
 
   const search = useSearchResults(query);
@@ -259,7 +269,7 @@ export default function HeroInlineSearchPanel({
           onFocus={() => {
             heightBeforeChange.current = cardRef.current?.offsetHeight ?? null;
             setExpanded(true);
-            if (!trackedFocus.current) {
+            if (onHero && !trackedFocus.current) {
               trackedFocus.current = true;
               trackHeroSearchClicked();
             }
@@ -280,11 +290,18 @@ export default function HeroInlineSearchPanel({
           The CSS variable is only the pre-measurement estimate (it matches the shell's skeleton
           card, which is what paints before this chunk exists); from mount on, the real card's
           measured height takes over. */}
-      <div
-        aria-hidden="true"
-        className="h-[var(--hero-search-rest-h)]"
-        style={restHeight != null ? { height: restHeight + DROPDOWN_TOP_GAP_PX } : undefined}
-      />
+      {/* Only on the hero. Off it the variable is not defined, so this box paints
+          at 0 and then jumps to the measured height of a full nearby list the
+          moment this chunk mounts — several hundred pixels of shift, on every
+          load, pushing the rest of the page down. The hero WANTS the resting
+          list to occupy flow; a step card wants a dropdown that floats. */}
+      {onHero && (
+        <div
+          aria-hidden="true"
+          className="h-[var(--hero-search-rest-h)]"
+          style={restHeight != null ? { height: restHeight + DROPDOWN_TOP_GAP_PX } : undefined}
+        />
+      )}
 
       {/* The dropdown itself: always open (the hero's default state is an open list of the
           nearest parks), floating over the page. `onMouseDown` preventDefault keeps focus in
@@ -292,7 +309,7 @@ export default function HeroInlineSearchPanel({
       <div
         ref={dropdownRef}
         onMouseDown={(e) => e.preventDefault()}
-        className="absolute inset-x-0 top-14 z-40"
+        className={cn('absolute inset-x-0 top-14 z-40', !onHero && !showDropdown && 'hidden')}
       >
         {/* Real glass, not a near-opaque sheet: what it lands on is the hero photo, the scrim
             and the panel plate — all smooth, all beautiful under blur. The nearby pills would
