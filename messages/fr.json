@@ -211,240 +211,240 @@
   },
   "homeStory": {
     "steps": {
-      "kicker": "So funktioniert's",
-      "title": "In drei Schritten zum perfekten Parktag",
-      "lead": "Park wählen, Tag prüfen, Route planen. Für jeden der drei Schritte bringt park.fan die Messwerte aus über 200 Parks mit.",
+      "kicker": "Comment ça marche",
+      "title": "Trois étapes pour une journée bien menée",
+      "lead": "Choisir le parc, vérifier le jour, planifier le parcours. Pour chacune de ces trois étapes, park.fan apporte les mesures de plus de 200 parcs.",
       "one": {
-        "title": "Park wählen",
-        "text": "Tippe den Park oder die Attraktion ein, oder nimm den Vorschlag in deiner Nähe. Jeder Park hat seine eigene Seite mit Live-Wartezeiten, Öffnungszeiten und Kalender.",
-        "tip": "Die Suche findet nicht nur Parks. Wer weiß, dass er Taron fahren will, aber nicht, in welchem Park sie steht, tippt einfach den Namen der Attraktion ein. Shows und Restaurants stehen genauso drin.",
-        "placeholder": "Park oder Attraktion",
-        "label": "Park oder Attraktion suchen"
+        "title": "Choisir le parc",
+        "text": "Tape le nom du parc ou de l'attraction, ou prends la suggestion près de toi. Chaque parc a sa page avec les temps d'attente en direct, les horaires et le calendrier.",
+        "tip": "La recherche ne trouve pas que des parcs. Si tu sais que tu veux faire Taron mais pas dans quel parc elle se trouve, tape simplement le nom de l'attraction. Les spectacles et les restaurants y sont aussi.",
+        "placeholder": "Parc ou attraction",
+        "label": "Rechercher un parc ou une attraction"
       },
       "two": {
-        "title": "Tag prüfen",
-        "text": "Der Crowd-Kalender bewertet jeden Tag bis zu 365 Tage im Voraus: grün heißt kurze Warteschlangen, rot heißt volle Gänge und lange Wege.",
-        "tip": "Zwei Tage nebeneinander sind oft zwei verschiedene Parks. Wenn der Termin frei wählbar ist, lohnt der Blick auf die Woche davor und danach, bevor du buchst.",
-        "legendLow": "wenig Betrieb",
-        "caption": "Ein Monat im Kalender: jede Kachel ein Tag, die Farbe der erwartete Andrang."
+        "title": "Vérifier le jour",
+        "text": "Le calendrier d'affluence note chaque jour jusqu'à 365 jours à l'avance : vert pour des files courtes, rouge pour des allées bondées et de longs détours.",
+        "tip": "Deux jours voisins sont souvent deux parcs différents. Si la date est libre, regarde la semaine d'avant et celle d'après avant de réserver.",
+        "legendLow": "peu de monde",
+        "caption": "Un mois du calendrier : une case par jour, la couleur donne l'affluence attendue."
       },
       "three": {
-        "title": "Route planen",
-        "text": "Für jede Attraktion steht das beste Zeitfenster da, damit du beim Headliner nicht ausgerechnet in der Mittagsspitze anstehst.",
-        "tip": "„Früh kommen“ gilt nicht für jede Bahn. Manche laufen den ganzen Tag gleich voll, andere ziehen erst nach dem Mittag an. Auf der Seite der Attraktion steht ihre eigene Tageskurve.",
-        "caption": "Typischer Tagesverlauf einer Achterbahn, von der Öffnung bis zum Abend.",
-        "best": "Die ruhigsten Fenster liegen früh und in der letzten Stunde."
+        "title": "Planifier le parcours",
+        "text": "Chaque attraction affiche son meilleur créneau, pour ne pas faire la queue au headliner en plein pic de midi.",
+        "tip": "« Venir tôt » ne vaut pas pour toutes les attractions. Certaines restent aussi chargées toute la journée, d'autres ne montent qu'après midi. La page de chaque attraction porte sa propre courbe.",
+        "caption": "La journée type d'un coaster, de l'ouverture au soir.",
+        "best": "Les creux se trouvent tôt le matin et dans la dernière heure."
       }
     },
     "blogTeaser": {
-      "label": "Aus dem Blog"
+      "label": "Du blog"
     },
     "nearby": {
-      "kicker": "Schritt 1 in echt",
-      "title": "Freizeitparks in deiner Nähe",
-      "lead": "Standort freigeben, und park.fan zeigt dir die Parks in deiner Nähe: ob sie heute geöffnet sind, wie voll es gerade ist und wie lange du im Schnitt anstehst.",
-      "allParks": "Alle Parks entdecken"
+      "kicker": "L'étape 1 en vrai",
+      "title": "Les parcs près de chez toi",
+      "lead": "Partage ta position et park.fan affiche les parcs autour de toi : s'ils sont ouverts aujourd'hui, l'affluence du moment et l'attente moyenne.",
+      "allParks": "Découvrir tous les parcs"
     },
     "live": {
-      "kicker": "Live-Wartezeiten",
-      "title": "Live-Wartezeiten: was die Warteschlange gerade wirklich macht",
-      "lead": "Alle fünf Minuten neu abgefragt, für jede Attraktion und jede Warteschlangen-Art, dazu Öffnungszeiten und Störungen. Kein Blogpost von letztem Sommer.",
-      "body": "Wir zeigen nicht nur die Zahl, sondern was sie bedeutet: 95 Minuten sind an einem Dienstag im September viel, an einem Samstag im Oktober völlig normal. Deshalb steht auf jeder Attraktionsseite, was an diesem Wochentag typisch ist und was ein voller Tag bedeutet.",
-      "ridesTitle": "Jede Attraktion hat ihre eigene Seite",
-      "ridesText": "Tausende Attraktionsseiten, jede mit dem, was für diese eine Bahn gilt: Warteschlangen-Arten, Tagesverlauf aus Messung und Prognose, typische Zeiten nach Wochentag, Mindestgröße und Rope-Drop-Tipp.",
-      "ridesLink": "Beispiel ansehen",
-      "typicalTitle": "Attraktionsseiten",
-      "ropeDropTitle": "Rope-Drop-Tipp",
-      "ropeDropText": "Gleich zur Öffnung hierhin: bei den beliebten Bahnen ist die erste Stunde regelmäßig das kürzeste Fenster des Tages.",
-      "howtoLink": "Wartezeiten richtig lesen: die Anleitung"
+      "kicker": "Temps d'attente en direct",
+      "title": "Temps d'attente en direct : ce que fait vraiment la file en ce moment",
+      "lead": "Relevé toutes les cinq minutes, pour chaque attraction et chaque type de file, avec les horaires et les pannes. Pas un article de l'été dernier.",
+      "body": "Nous ne montrons pas seulement le chiffre, mais ce qu'il veut dire : 95 minutes, c'est beaucoup un mardi de septembre et tout à fait normal un samedi d'octobre. C'est pourquoi chaque page d'attraction indique ce qui est habituel ce jour-là et à quoi ressemble une journée chargée.",
+      "ridesTitle": "Chaque attraction a sa page",
+      "ridesText": "Des milliers de pages d'attraction, chacune avec ce qui vaut pour cette attraction-là : types de file, déroulé de la journée entre mesures et prévision, temps habituels par jour de semaine, taille minimale et conseil de rope drop.",
+      "ridesLink": "Voir un exemple",
+      "typicalTitle": "Pages d'attraction",
+      "ropeDropTitle": "Conseil rope drop",
+      "ropeDropText": "Ici dès l'ouverture : sur les attractions populaires, la première heure est régulièrement le créneau le plus court de la journée.",
+      "howtoLink": "Bien lire un temps d'attente : le guide"
     },
     "shows": {
-      "kicker": "Shows & Restaurants",
-      "title": "Ein Parktag besteht nicht nur aus Achterbahnen",
-      "lead": "park.fan listet auch Shows und Restaurants: die Spielzeiten des Tages, dazu Küche, Öffnungszeiten und ob ein Tisch reserviert werden muss.",
-      "showsTitle": "Spielzeiten",
-      "showsHint": "Jede Vorstellung des Tages mit ihrer Uhrzeit, die nächste zuerst, dazu ob die Show gerade Saison hat.",
-      "restaurantsTitle": "Restaurants im Park",
-      "restaurantsHint": "Küche, Öffnungszeiten und Reservierungspflicht, damit die Tischsuche nicht mitten in den besten Fahrzeiten anfängt.",
-      "body": "Eine Vorstellung um 15 Uhr zieht ein paar tausend Leute aus den Warteschlangen und stellt sie danach wieder hinein. Wer die Spielzeiten kennt, kann die halbe Stunde davor an einer Bahn stehen statt in der Show.",
-      "statAttractions": "Attraktionen",
-      "statShows": "Shows",
+      "kicker": "Spectacles et restaurants",
+      "title": "Une journée au parc, ce n'est pas que des coasters",
+      "lead": "park.fan répertorie aussi les spectacles et les restaurants : les horaires des représentations du jour, la cuisine, les heures d'ouverture et s'il faut réserver.",
+      "showsTitle": "Horaires des spectacles",
+      "showsHint": "Chaque représentation du jour avec son heure, la prochaine en tête, et si le spectacle est actuellement à l'affiche.",
+      "restaurantsTitle": "Les restaurants du parc",
+      "restaurantsHint": "Cuisine, horaires et réservation obligatoire ou non, pour que la recherche d'une table ne commence pas au milieu des meilleures heures pour les attractions.",
+      "body": "Une représentation à 15 h retire quelques milliers de personnes des files et les y remet ensuite. Connaître les horaires, c'est pouvoir passer la demi-heure d'avant sur une attraction plutôt que dans la salle.",
+      "statAttractions": "Attractions",
+      "statShows": "Spectacles",
       "statRestaurants": "Restaurants",
-      "statCalendar": "Tage Kalender"
+      "statCalendar": "jours de calendrier"
     },
     "calendar": {
-      "kicker": "Crowd-Kalender",
-      "title": "Grüner Tag oder roter Tag?",
-      "lead": "Bevor du das Hotel buchst: der Kalender bewertet jeden einzelnen Tag, bis zu 365 Tage im Voraus. Und weil eine Farbe nur so gut ist wie die Daten dahinter, steht hier, woher sie kommt.",
-      "pipelineTitle": "Von der Messung zur Tagesfarbe",
-      "pipelineLead": "Vier Schritte, jede Nacht neu. Was am Ende als grüner oder roter Tag im Kalender steht, hat diesen Weg genommen.",
+      "kicker": "Calendrier d'affluence",
+      "title": "Jour vert ou jour rouge ?",
+      "lead": "Avant de réserver l'hôtel : le calendrier note chaque jour, jusqu'à 365 jours à l'avance. Et comme une couleur ne vaut que ce que valent ses données, voici d'où elle vient.",
+      "pipelineTitle": "De la mesure à la couleur du jour",
+      "pipelineLead": "Quatre étapes, refaites chaque nuit. Ce qui finit en jour vert ou rouge dans le calendrier a suivi ce chemin.",
       "p1": {
-        "title": "Messen",
-        "text": "Alle fünf Minuten fragt park.fan die Warteschlangen-Systeme der Parks ab: Standby, Single Rider, Lightning Lane, virtuelle Queues, dazu den Öffnungsstatus jeder Attraktion.",
-        "label": "Takt der Messung"
+        "title": "Mesurer",
+        "text": "Toutes les cinq minutes, park.fan interroge les systèmes de file des parcs : standby, single rider, Lightning Lane, files virtuelles, ainsi que l'état d'ouverture de chaque attraction.",
+        "label": "Cadence de mesure"
       },
       "p2": {
-        "title": "Sammeln",
-        "text": "Jede Messung wird mit Zeitstempel, Attraktion und Park archiviert. Aus Jahren solcher Messungen entsteht für jede Bahn ein eigenes Profil: Tagesverlauf, Wochenrhythmus, Saison.",
-        "label": "Datensätze"
+        "title": "Collecter",
+        "text": "Chaque mesure est archivée avec son horodatage, son attraction et son parc. Des années de mesures donnent à chaque attraction son propre profil : déroulé de la journée, rythme de la semaine, saison.",
+        "label": "Enregistrements"
       },
       "p3": {
-        "title": "Anreichern",
-        "text": "Dazu kommen Signale von außen: Wetterprognose, Schulferien und Feiertage aus den Ländern, in denen die Parks stehen, Brückentage, dazu Sonderveranstaltungen wie Halloween oder Saisonstart.",
-        "label": "Ferien, Feiertage, Wetter"
+        "title": "Enrichir",
+        "text": "S'y ajoutent des signaux extérieurs : prévisions météo, vacances scolaires et jours fériés des pays où se trouvent les parcs, ponts, et événements spéciaux comme Halloween ou l'ouverture de saison.",
+        "label": "Vacances, météo"
       },
       "p4": {
-        "title": "Vorhersagen",
-        "text": "Fancast rechnet daraus die erwartete Wartezeit je Attraktion und Stunde und verdichtet sie zum Crowd-Level des Tages, also zu der Farbe, die du im Kalender siehst.",
-        "label": "Tage voraus"
+        "title": "Prévoir",
+        "text": "Fancast en tire l'attente attendue par attraction et par heure, puis la condense en niveau d'affluence du jour, c'est-à-dire la couleur que tu vois dans le calendrier.",
+        "label": "Jours à l'avance"
       },
-      "feedback": "Am Tag darauf wird jede Prognose gegen die tatsächlich gemessene Wartezeit gelegt. Die Differenz geht in das nächste Training ein, und deshalb ändert sich die Kalenderfarbe für denselben Tag, je näher er rückt.",
-      "body": "Grüne Tage stehen für kurze Warteschlangen und wenig Betrieb. Orange und rot heißen: jede beliebte Attraktion kostet dich eine dreiviertel Stunde. Der Kalender rechnet dafür Ferienkalender, Wetterprognosen, Wochentage und Sonderveranstaltungen gegen die echte Wartezeit-Historie des Parks.",
-      "cta": "Crowd-Kalender eines Parks ansehen",
-      "bestTimeLink": "Beste Reisezeit: die ruhigsten Wochentage und Monate"
+      "feedback": "Le lendemain, chaque prévision est confrontée au temps d'attente réellement mesuré. L'écart alimente l'entraînement suivant, et c'est pourquoi la couleur d'un même jour change à mesure qu'il approche.",
+      "body": "Les jours verts, ce sont des files courtes et de la place pour circuler. Orange et rouge veulent dire que chaque attraction populaire coûte trois quarts d'heure. Pour cela, le calendrier confronte calendriers de vacances, prévisions météo, jours de semaine et événements spéciaux à l'historique réel du parc.",
+      "cta": "Voir le calendrier d'affluence d'un parc",
+      "bestTimeLink": "Meilleure période : les jours et les mois les plus calmes"
     },
     "ai": {
-      "kicker": "Unsere KI",
-      "title": "Ein eigenes Modell – und wir zeigen, wie gut es ist",
-      "lead": "Wartezeiten vorherzusagen ist der schwierige Teil, und die meisten Seiten weichen ihm aus. park.fan geht ihn an: mit Fancast, einem eigenen Modell, jede Nacht neu trainiert, bis zu 365 Tage voraus.",
-      "compareTitle": "Wie andere Wartezeit-Seiten vorhersagen",
-      "compareLead": "Drei Ansätze sind verbreitet, und alle drei haben denselben blinden Fleck: niemand sagt dir, wie weit die Prognose danebenlag.",
+      "kicker": "Notre IA",
+      "title": "Un modèle maison – et nous montrons ce qu'il vaut",
+      "lead": "Prévoir les temps d'attente, c'est la partie difficile, et la plupart des sites la contournent. park.fan s'y attaque avec Fancast, un modèle maison réentraîné chaque nuit, jusqu'à 365 jours à l'avance.",
+      "compareTitle": "Comment les autres sites prévoient",
+      "compareLead": "Trois approches sont répandues, et toutes trois ont le même angle mort : personne ne dit de combien la prévision s'est trompée.",
       "c1": {
-        "kicker": "Ansatz 1",
-        "title": "Gar keine Prognose",
-        "text": "Die größte deutsche Wartezeiten-Seite verzichtet bewusst auf Vorhersagen: zu viele Einflussfaktoren, und eine falsche Prognose könnte Parks wie Gästen schaden. Gezeigt wird nur, wie voll es war.",
-        "limit": "Für „welchen Tag buche ich?“ hilft ein Rückblick nicht."
+        "kicker": "Approche 1",
+        "title": "Aucune prévision",
+        "text": "Le plus grand site allemand de temps d'attente renonce volontairement aux prévisions : trop de facteurs, et une prévision fausse pourrait nuire aux parcs comme aux visiteurs. Il montre seulement l'affluence passée.",
+        "limit": "Un regard en arrière ne répond pas à « quel jour réserver ? »"
       },
       "c2": {
-        "kicker": "Ansatz 2",
-        "title": "Mittelwert ähnlicher Tage",
-        "text": "Ein statistisches Modell sucht historisch vergleichbare Tage, gleicher Wochentag, gleiche Ferienlage, und bildet daraus den Durchschnitt. Meist 90 Tage voraus und oft nur für einen einzigen Park.",
-        "limit": "Ohne drei Vergleichstage bleibt der Tag leer."
+        "kicker": "Approche 2",
+        "title": "La moyenne de jours semblables",
+        "text": "Un modèle statistique cherche des jours comparables dans le passé, même jour de semaine, même situation de vacances, et en fait la moyenne. En général 90 jours à l'avance, et souvent pour un seul parc.",
+        "limit": "Sans trois jours de comparaison, la case reste vide."
       },
       "c3": {
-        "kicker": "Ansatz 3",
-        "title": "Statistik plus etwas KI",
-        "text": "Ensembles mischen statistische Auswertung mit einem KI-Anteil und rechnen Ferien, Feiertage und Wetter mit, ausgewiesen als Beta, für einen Park, in Stufen von „exzellent“ bis „sehr lang“.",
-        "limit": "Ohne Fehlerangabe bleibt offen, was die Stufe wert ist."
+        "kicker": "Approche 3",
+        "title": "Statistiques plus un peu d'IA",
+        "text": "Des ensembles mêlent analyse statistique et part d'IA en tenant compte des vacances, des jours fériés et de la météo, affichés en bêta, pour un parc, par paliers d'« excellent » à « très long ».",
+        "limit": "Sans marge d'erreur, la valeur du palier reste inconnue."
       },
-      "answerTitle": "Fancast rechnet stündlich, pro Attraktion – und weist seinen Fehler aus.",
-      "answerText": "Nicht nur ein Crowd-Level pro Tag, sondern die erwartete Wartezeit je Stunde. Jede Prognose wird später gegen die echte Messung geprüft, und daraus entstehen die Genauigkeitswerte darunter."
+      "answerTitle": "Fancast calcule à l'heure, par attraction – et publie son erreur.",
+      "answerText": "Pas un niveau d'affluence par jour, mais l'attente prévue heure par heure. Chaque prévision est ensuite confrontée à la mesure réelle, et c'est de là que viennent les taux de précision ci-dessous."
     },
     "bestTime": {
-      "kicker": "Beste Besuchszeit",
-      "title": "Viele Achterbahnen haben zwei perfekte Zeitfenster – wir sagen dir wann",
-      "lead": "Rope Drop am Morgen, die letzte Stunde am Abend, und dazwischen die Attraktionen, die gerade gegen den Trend laufen.",
-      "chartSubtitle": "Median aus {days} Messtagen, gemessen alle 5 Minuten",
-      "legendToday": "heute gemessen",
-      "legendMedian": "Median vergangener Tage",
-      "legendBand": "üblicher Bereich (P25–P90)",
-      "legendBandUpper": "Median bis Stoßzeit",
-      "heatTitle": "Hitzewarnung",
-      "heatText": "An Hitzetagen verschiebt sich der Andrang: Wasserbahnen ziehen an, Indoor-Dark-Rides werden voll, Achterbahnen leeren sich. Der Kalender rechnet das mit.",
-      "historyTitle": "Historie",
-      "historyText": "Jede Attraktion hat ihre eigene Kurve, ihren eigenen Wochenrhythmus und ihre eigene Saison. Jede Messung von heute geht morgen ins Modell ein.",
-      "hubLink": "Beste Reisezeit für über 200 Parks",
-      "peakAt": "Am vollsten gegen",
-      "windowOpening": "Guter Start in den Tag",
-      "windowClosing": "Gegen Tagesende",
-      "windowWait": "rund {minutes} Min. Wartezeit",
-      "legendForecast": "Prognose für heute",
-      "legendForecastBand": "Prognose ±{minutes} Min.",
-      "legendPredicted": "vorher gesagt",
-      "localTime": "Ortszeit",
-      "stateLive": "misst gerade",
-      "stateQuiet": "gerade keine Messung",
-      "stateClosed": "außerhalb der Öffnungszeiten",
-      "axisLabel": "Wartezeit in Minuten",
-      "nowMarker": "jetzt",
-      "vsMedian": "gegenüber Median"
+      "kicker": "Meilleur moment",
+      "title": "Beaucoup de coasters ont deux créneaux parfaits – on te dit lesquels",
+      "lead": "Le rope drop le matin, la dernière heure le soir, et entre les deux les attractions qui vont à contre-courant.",
+      "chartSubtitle": "Médiane sur {days} jours mesurés, relevés toutes les 5 minutes",
+      "legendToday": "mesuré aujourd'hui",
+      "legendMedian": "médiane des jours passés",
+      "legendBand": "plage habituelle (P25–P90)",
+      "legendBandUpper": "de la médiane au pic",
+      "heatTitle": "Alerte chaleur",
+      "heatText": "Les jours de forte chaleur, l'affluence se déplace : les attractions aquatiques montent, les dark rides intérieurs se remplissent, les coasters se vident. Le calendrier en tient compte.",
+      "historyTitle": "Historique",
+      "historyText": "Chaque attraction a sa courbe, son rythme sur la semaine et sa saison. Chaque mesure prise aujourd'hui alimente le modèle de demain.",
+      "hubLink": "Meilleure période pour plus de 200 parcs",
+      "peakAt": "Le plus chargé vers",
+      "windowOpening": "Bon début de journée",
+      "windowClosing": "En fin de journée",
+      "windowWait": "environ {minutes} min d'attente",
+      "legendForecast": "prévision du jour",
+      "legendForecastBand": "prévision ±{minutes} min",
+      "legendPredicted": "prévu à l'avance",
+      "localTime": "heure locale",
+      "stateLive": "mesure en cours",
+      "stateQuiet": "pas de mesure en ce moment",
+      "stateClosed": "hors heures d'ouverture",
+      "axisLabel": "Temps d'attente en minutes",
+      "nowMarker": "maintenant",
+      "vsMedian": "par rapport à la médiane"
     },
     "inPark": {
-      "kicker": "Favoriten & Karte",
-      "title": "Am Tag selbst zählt, was 200 Meter von dir entfernt ist",
-      "lead": "Vor dem Besuch planst du mit Kalender und Prognose. Im Park brauchst du zwei Dinge: deine gemerkten Attraktionen und die Wartezeiten auf dem Parkplan.",
-      "favTitle": "Favoriten",
-      "favHint": "Parks, Attraktionen, Shows, Restaurants",
-      "favText": "Ein Klick auf den Stern, an jedem Park, jeder Attraktion, jeder Show und jedem Restaurant. Die Favoriten stehen danach oben auf der Startseite, mit Live-Wartezeit und Öffnungsstatus. Ohne Konto, direkt im Browser gespeichert.",
-      "mapTitle": "Karte & In-Park-Modus",
-      "mapText": "Attraktionen, Shows und Restaurants sitzen als farbige Marker auf dem Parkplan, ein Tipp darauf zeigt Status, Wartezeit und Auslastung. Erkennt park.fan, dass du im Park stehst, kommt dein Standort dazu und die nächstgelegenen Attraktionen rücken nach oben."
+      "kicker": "Favoris et plan",
+      "title": "Le jour même, ce qui compte est à 200 mètres",
+      "lead": "Avant la visite, tu planifies avec le calendrier et la prévision. Dans le parc, il te faut deux choses : tes attractions mises de côté et les temps d'attente sur le plan.",
+      "favTitle": "Favoris",
+      "favHint": "Parcs, attractions, spectacles, restaurants",
+      "favText": "Un clic sur l'étoile, sur chaque parc, chaque attraction, chaque spectacle et chaque restaurant. Tes favoris apparaissent ensuite en haut de la page d'accueil, avec temps d'attente en direct et statut d'ouverture. Sans compte, enregistrés dans le navigateur.",
+      "mapTitle": "Plan et mode dans le parc",
+      "mapText": "Attractions, spectacles et restaurants apparaissent sur le plan sous forme de repères colorés ; un appui affiche le statut, l'attente et l'affluence. Quand park.fan détecte que tu es dans le parc, ta position s'y ajoute et les attractions les plus proches remontent."
     },
     "dictionary": {
-      "kicker": "Wörterbuch · Nerdwissen",
-      "title": "Zero-G-Roll, Immelmann, Top Hat – im Player nachfahren",
-      "lead": "Das park.fan Wörterbuch erklärt die Fachbegriffe, und für Streckenfiguren gibt es den 3-D-Player: Figur wählen, abspielen, an jeden Punkt der Fahrt scrubben.",
-      "pickerTitle": "Streckenfiguren",
-      "cta": "Alle Begriffe im Wörterbuch",
-      "stage": "Figur abspielen"
+      "kicker": "Dictionnaire · pour les passionnés",
+      "title": "Zero-G roll, Immelmann, top hat – à refaire dans le player",
+      "lead": "Le dictionnaire park.fan explique le jargon, et les figures de parcours ont leur player 3D : choisir une figure, la lancer, se déplacer à n'importe quel point du parcours.",
+      "pickerTitle": "Figures de parcours",
+      "cta": "Tous les termes du dictionnaire",
+      "stage": "Lancer la figure"
     },
     "why": {
-      "kicker": "Warum park.fan",
-      "title": "Sechs Gründe, warum das hier anders läuft",
+      "kicker": "Pourquoi park.fan",
+      "title": "Six raisons qui changent la donne ici",
       "r1": {
-        "title": "Eigenes Modell, täglich trainiert",
-        "text": "Kein Fremdanbieter, keine Blackbox von der Stange. Das Modell lernt jede Nacht mit den Daten des Vortags weiter."
+        "title": "Modèle maison, entraîné chaque jour",
+        "text": "Pas de prestataire tiers, pas de boîte noire sur étagère. Le modèle continue d'apprendre chaque nuit avec les données de la veille."
       },
       "r2": {
-        "title": "Genauigkeit steht öffentlich da",
-        "text": "Durchschnittsfehler und R²-Wert stehen auf dieser Seite und werden nach jedem Training neu berechnet, gut oder schlecht."
+        "title": "La précision est publiée",
+        "text": "L'erreur moyenne et le R² figurent sur cette page et sont recalculés après chaque entraînement, bons ou mauvais."
       },
       "r3": {
-        "title": "Alle fünf Minuten, nicht einmal am Tag",
-        "text": "Die Wartezeiten werden alle fünf Minuten aus drei öffentlichen Quellen zusammengeführt. Wenn eine Bahn ausfällt, steht es hier, bevor du davorstehst."
+        "title": "Toutes les cinq minutes, pas une fois par jour",
+        "text": "Les temps d'attente sont consolidés toutes les cinq minutes à partir de trois sources publiques. Si une attraction tombe en panne, c'est écrit ici avant que tu sois devant."
       },
       "r4": {
-        "title": "Kostenlos, ohne Abo, ohne Paywall",
-        "text": "Alles, was park.fan über einen Park weiß, siehst du auch, ohne Konto und ohne Bezahlschranke."
+        "title": "Gratuit, sans abonnement, sans paywall",
+        "text": "Tout ce que park.fan sait d'un parc, tu le vois aussi, sans compte et sans barrière de paiement."
       },
       "r5": {
-        "title": "Über 200 Parks, 23 Länder, 6 Sprachen",
-        "text": "Von Phantasialand bis Tokyo DisneySea. Wenn es dort Warteschlangen gibt, tracken wir sie."
+        "title": "Plus de 200 parcs, 23 pays, 6 langues",
+        "text": "De Phantasialand à Tokyo DisneySea. S'il y a des files là-bas, on les suit."
       },
       "r6": {
-        "title": "Daten, die etwas erklären",
-        "text": "Wörterbuch, Park-Guides und Datenanalysen im Blog: park.fan nennt dir nicht nur die Zahl, sondern warum sie so aussieht."
+        "title": "Des données qui expliquent",
+        "text": "Dictionnaire, guides de parcs et analyses de données sur le blog : park.fan ne donne pas seulement le chiffre, mais pourquoi il ressemble à ça."
       }
     },
     "founder": {
-      "kicker": "Der Mensch dahinter",
-      "title": "Ein Entwickler, ein eigenes Datenmodell, kein Investor",
+      "kicker": "L'humain derrière",
+      "title": "Un développeur, son propre modèle de données, aucun investisseur",
       "name": "Patrick Arns",
-      "role": "Gründer von park.fan",
-      "p1": "park.fan ist kein Startup mit Investoren und Roadmap-Meetings, sondern das Projekt von einem, der seit dem Kinderwagen in Freizeitparks unterwegs ist und seit über 25 Jahren Software baut. Die Frustration war konkret: 90 Minuten für eine Bahn anstehen und ahnen, dass clevere Planung das verhindert hätte.",
-      "p2": "Also entstand erst ein Tracker, dann eine Datenbank, dann ein eigenes ML-System, vom Datenimport bis zur Prognose selbst gebaut und jede Nacht neu trainiert. Und weil es kein Produkt für Investoren ist, gibt es keine Paywall.",
-      "b1": "25+ Jahre Software-Entwicklung",
-      "b2": "Park-Nerd seit der Kindheit",
-      "b3": "Kein Konzern, kein Investor",
-      "b4": "Keine Paywall, keine Abos",
-      "b5": "ML-Modell komplett selbst gebaut",
-      "b6": "Genauigkeit öffentlich ausgewiesen",
-      "authorLink": "Mehr über Patrick im Blog",
-      "portraitAlt": "Patrick Arns, Gründer von park.fan"
+      "role": "Fondateur de park.fan",
+      "p1": "park.fan n'est pas une startup avec des investisseurs et des réunions de roadmap. C'est le projet de quelqu'un qui fréquente les parcs depuis la poussette et développe des logiciels depuis plus de 25 ans. La frustration était très concrète : faire 90 minutes de file pour une attraction en se doutant qu'un peu d'organisation l'aurait évité.",
+      "p2": "Il y a donc eu d'abord un traqueur, puis une base de données, puis un système de machine learning maison, construit de bout en bout de l'import des données à la prévision, et réentraîné chaque nuit. Et comme ce n'est pas un produit pour investisseurs, il n'y a pas de paywall.",
+      "b1": "Plus de 25 ans de développement",
+      "b2": "Passionné de parcs depuis l'enfance",
+      "b3": "Ni groupe, ni investisseur",
+      "b4": "Pas de paywall, pas d'abonnement",
+      "b5": "Modèle ML entièrement fait maison",
+      "b6": "Précision affichée publiquement",
+      "authorLink": "En savoir plus sur Patrick sur le blog",
+      "portraitAlt": "Patrick Arns, fondateur de park.fan"
     },
     "blog": {
-      "kicker": "Blog & Guides",
-      "title": "Die Daten erklären, was im Park passiert",
-      "lead": "Park-Guides, Wartezeit-Analysen und Saison-Tipps, geschrieben von Leuten, die selbst anstehen. Zu jedem Park gibt es den passenden Artikel direkt auf der Parkseite.",
-      "bestTimeTitle": "Beste Reisezeit für Freizeitparks",
-      "bestTimeText": "Wann Parks am leersten sind: die ruhigsten Wochentage und Monate, aus zwei Jahren echter Wartezeiten von über 200 Parks.",
-      "glossaryCta": "Wörterbuch: Single Rider, Rope Drop, Lightning Lane"
+      "kicker": "Blog et guides",
+      "title": "Les données expliquent ce qui se passe dans le parc",
+      "lead": "Guides de parcs, analyses des temps d'attente et conseils de saison, écrits par des gens qui font la queue eux-mêmes. Chaque page de parc porte les articles qui la concernent.",
+      "bestTimeTitle": "Meilleure période pour visiter un parc",
+      "bestTimeText": "Quand les parcs sont les plus vides : les jours et les mois les plus calmes, tirés de deux ans de temps d'attente réels sur plus de 200 parcs.",
+      "glossaryCta": "Dictionnaire : single rider, rope drop, Lightning Lane"
     },
     "faq": {
-      "kicker": "Häufige Fragen",
-      "title": "Freizeitpark-Wartezeiten, kurz erklärt",
-      "note": "Alle Angaben ohne Gewähr."
+      "kicker": "Questions fréquentes",
+      "title": "Les temps d'attente en parc, en bref",
+      "note": "Informations données sans garantie."
     },
     "contribute": {
-      "title": "Dein Foto auf park.fan",
-      "text": "Viele Attraktionen haben noch kein gutes Bild. Wenn du im Park fotografierst: lade dein Foto hoch, mit Namensnennung und ohne Rechteabtretung.",
-      "cta": "Foto beitragen"
+      "title": "Ta photo sur park.fan",
+      "text": "Beaucoup d'attractions n'ont pas encore de bonne photo. Si tu photographies dans les parcs : envoie la tienne, avec ton nom et sans cession de droits.",
+      "cta": "Proposer une photo"
     },
     "liveNow": {
-      "kicker": "Weltweit"
+      "kicker": "Dans le monde"
     },
     "platform": {
-      "kicker": "Zahlen",
-      "statsKicker": "Live aus der Plattform"
+      "kicker": "Chiffres",
+      "statsKicker": "En direct de la plateforme"
     }
   },
   "footer": {
