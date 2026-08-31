@@ -14,14 +14,17 @@
  * footer, the OG images, the Organization logo in structured data and the maintenance page show,
  * and it is the better drawing. It stops working below about 24 px: the orbit cuts through the
  * pin's white ring and the three bars merge into one green-blue smear, so at 16 and 20 px the
- * silhouette is no longer a pin. That range is exactly where a search result and a browser tab
- * live, so those two files get the simpler castle pin — the same mark the header renders. Every
- * surface that draws the icon at 180 px or more gets the detailed one.
+ * silhouette is no longer a pin.
  *
- * One risk this split does not remove: Google reads `apple-touch-icon` as a favicon candidate too
- * and documents no priority between it and `rel="icon"`. If it ever picks the 180 px file and
- * scales it down itself, the search result is back to a smear — the fix then is to move
- * `apple-touch-icon` to the simple source below, not to redraw anything.
+ * The line is not the file's own pixel size, it is **the smallest size any surface may draw it
+ * at**. That puts `apple-touch-icon.png` on the simple pin despite being 180 px: Google reads it
+ * as a favicon candidate and documents no priority against `rel="icon"`, so it is free to take
+ * that file and scale it to 16 px itself — the exact failure this change exists to fix. With it on
+ * the simple source, Google has no detailed candidate anywhere, since the manifest is not a
+ * favicon source.
+ *
+ * What is left on the detailed pin is the app icon — the manifest's three files, which every
+ * documented surface (home screen, launcher, task switcher, splash) draws large.
  *
  * Two more decisions live here so an export cannot get them wrong:
  *
@@ -285,7 +288,7 @@ const simple = await artwork(SOURCES.simple);
 const detail = await artwork(SOURCES.detail);
 
 const outputs = [
-  // --- simple pin: everything drawn at 16–32 px ---
+  // --- simple pin: everything a surface may draw small ---
   //
   // What Google reads. Google does not support SVG favicons, so this file is the one that decides
   // what the search result shows.
@@ -299,11 +302,18 @@ const outputs = [
   },
   // The vector favicon browsers prefer — one file, crisp at any size, drawn in the tab at 16.
   { file: 'public/icon.svg', bytes: Buffer.from(simple.rounded) },
+  // 180 px on an iOS home screen, but SMALL wherever it counts: Google reads `apple-touch-icon`
+  // as a favicon candidate and documents no priority against `rel="icon"`, so it may take this
+  // file and scale it to 16 px itself. That is the exact failure this whole change exists to fix,
+  // so it takes the simple pin and Google is left with no detailed candidate at all. Square,
+  // because iOS masks the corners itself and rounding an already-rounded corner leaves
+  // transparent slivers.
+  { file: 'public/apple-touch-icon.png', bytes: await png(simple.square, 180) },
 
-  // --- detailed pin: everything drawn at 180 px or more ---
+  // --- detailed pin: the app icon, which every documented surface draws large ---
   //
-  // iOS ignores SVG and masks the corners itself, so this one is square.
-  { file: 'public/apple-touch-icon.png', bytes: await png(detail.square, 180) },
+  // These three are the manifest's, and they move together on purpose: a launcher free to pick
+  // the 192 or the 512 must not get a different mark depending on which it picked.
   { file: 'public/icon-192.png', bytes: await png(detail.rounded, 192) },
   { file: 'public/icon-512.png', bytes: await png(detail.rounded, 512) },
   { file: 'public/icon-maskable-512.png', bytes: await png(detail.maskable, 512) },

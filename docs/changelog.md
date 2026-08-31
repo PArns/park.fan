@@ -40,15 +40,19 @@ die Marke der Site – Footer, OG-Bilder, Organization-Logo in den strukturierte
 Wartungsseite zeigen ihn – und er ist die schönere Zeichnung. Unterhalb von etwa 24 px trägt er
 nicht mehr: der Orbit schneidet durch den weißen Ring, die drei Balken laufen zu einem grün-blauen
 Fleck zusammen, und bei 16 und 20 px ist die Silhouette kein Pin mehr. Genau dort zeichnen Google
-und der Browser-Tab. Also bekommen `app/favicon.ico` und `public/icon.svg` den einfachen Burg-Pin
-aus `logo-small-dark.svg`, denselben, den der Header rendert, und alles, was ab 180 px gezeichnet
-wird – Apple-Touch, die 192er und 512er des Manifests und das maskable Icon –, den Detail-Pin aus
-`logo-big-dark.svg`. Nicht aus `logo-dark.svg`: darin steckt ein 1563×1116-PNG in einer SVG-Hülle,
-deshalb wiegt die Datei 77 KB.
+und der Browser-Tab.
 
-Ein Restrisiko bleibt: Google liest auch `apple-touch-icon` als Favicon-Kandidaten und dokumentiert
-keine Reihenfolge. Greift es das 180er, ist der Fleck zurück – die Antwort wäre dann, diese eine
-Ausgabe auf die einfache Quelle umzuhängen, eine Zeile im Generator, und nichts neu zu zeichnen.
+Die Grenze ist dabei nicht die Größe der Datei, sondern **die kleinste Größe, in der irgendeine
+Oberfläche sie zeichnen darf**. Deshalb liegt auch `apple-touch-icon.png` auf dem Burg-Pin, obwohl
+die Datei 180 px groß ist: Google liest `apple-touch-icon` als Favicon-Kandidaten und dokumentiert
+keine Reihenfolge gegenüber `rel="icon"`, darf sie also greifen und selbst auf 16 px herunterrechnen
+– genau der Fehler, wegen dem diese Änderung existiert. Auf der einfachen Quelle bleibt Google gar
+kein Detail-Kandidat mehr, denn das Manifest ist keine Favicon-Quelle.
+
+Den Detail-Pin behält das App-Icon: die 192er und 512er des Manifests und das maskable Icon, aus
+`logo-big-dark.svg`. Nicht aus `logo-dark.svg`, darin steckt ein 1563×1116-PNG in einer SVG-Hülle,
+deshalb wiegt die Datei 77 KB. Die drei wandern zusammen, weil ein Launcher, der zwischen 192 und
+512 wählen darf, nicht je nach Wahl eine andere Marke bekommen soll.
 
 Alle sechs Dateien schneidet jetzt `pnpm generate:icons`, `pnpm check:icons` schlägt an, sobald eine
 davon nicht mehr zu ihrer Quelle passt. Vorher lagen im Set drei verschiedene Artworks nebeneinander

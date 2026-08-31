@@ -62,35 +62,38 @@ through the pin's white ring and the three bars merge into one green-blue smear,
 20 px the silhouette is no longer a pin. That range is exactly where a search result and a browser
 tab live.
 
-So the two files drawn at 16–32 px carry the **simple castle pin** — the same mark `BrandLockup`
-renders in the header — and everything drawn at 180 px or more carries the detailed one.
+The line is not a file's own pixel size, it is **the smallest size any surface may draw it at**.
+That is what puts `apple-touch-icon.png` on the simple pin despite the file being 180 px: Google
+reads it as a favicon candidate and documents no priority against `rel="icon"`, so it is free to
+take that file and scale it to 16 px itself. With it on the simple source, Google has no detailed
+candidate anywhere — the manifest is not a favicon source.
 
-|                 |                                                                                                                                                            |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Simple source   | `public/logo-small-dark.svg` — the pin the header renders                                                                                                  |
-| Detailed source | `public/logo-big-dark.svg` — **not** `logo-dark.svg`, which is a 1563×1116 PNG in an SVG wrapper and weighs 77 KB; only `logo-big-dark.svg` is real vector |
-| Ground          | `#293B47`, the manifest's `background_color` and the navy both pins' light colourways are drawn in                                                         |
-| Inset           | 3 % per edge (18 % for the maskable icon)                                                                                                                  |
-| Corner radius   | 18 % where the icon is composited as-is; square where the OS applies its own mask                                                                          |
-| Wordmark        | none — `logo-big-dark.svg` carries one, and it is clipped off (see below)                                                                                  |
+What is left on the detailed pin is the app icon: the manifest's three files, which every
+documented surface (home screen, launcher, task switcher, splash) draws large. Those three move
+together on purpose — a launcher free to pick the 192 or the 512 must not get a different mark
+depending on which it picked.
+
+|                 |                                                                                                                                                                                         |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Simple source   | `public/logo-small-dark.svg` — the pin the header renders                                                                                                                               |
+| Detailed source | `public/logo-big-dark.svg`, for the manifest's app icon — **not** `logo-dark.svg`, which is a 1563×1116 PNG in an SVG wrapper and weighs 77 KB; only `logo-big-dark.svg` is real vector |
+| Ground          | `#293B47`, the manifest's `background_color` and the navy both pins' light colourways are drawn in                                                                                      |
+| Inset           | 3 % per edge (18 % for the maskable icon)                                                                                                                                               |
+| Corner radius   | 18 % where the icon is composited as-is; square where the OS applies its own mask                                                                                                       |
+| Wordmark        | none — `logo-big-dark.svg` carries one, and it is clipped off (see below)                                                                                                               |
 
 A white pin on navy reads at 16 px in both of Google's modes, which is the whole point: on the
 light page the tile is the contrast, on the dark page the pin is.
 
-**One risk the split does not remove.** Google reads `apple-touch-icon` as a favicon candidate too
-and documents no priority between it and `rel="icon"`. If it ever picks the 180 px file and scales
-it down itself, the search result is back to a smear. The fix then is to move `apple-touch-icon`
-to the simple source — one line in the generator — not to redraw anything.
-
 ### The files
 
-| File                                         | Source   | Who reads it                                                                                                                                                                                       |
-| -------------------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `app/favicon.ico` (16 / 32 / 48 / 96)        | simple   | **Google** — it does not support SVG favicons, so this file decides what the search result shows. Also every browser's tab and bookmark bar                                                        |
-| `public/icon.svg`                            | simple   | Browsers that prefer a vector favicon — drawn in the tab at 16 px                                                                                                                                  |
-| `public/apple-touch-icon.png` (180)          | detailed | iOS home screen. Square: iOS masks the corners itself, and rounding an already-rounded corner leaves transparent slivers                                                                           |
-| `public/icon-192.png`, `public/icon-512.png` | detailed | The web app manifest, `purpose: "any"`                                                                                                                                                             |
-| `public/icon-maskable-512.png`               | detailed | The manifest's `purpose: "maskable"` — a separate file, not a second `purpose` on the 512, because an adaptive launcher may keep only the central 80 % circle and that would cut the pin's tip off |
+| File                                         | Source   | Who reads it                                                                                                                                                                                                                     |
+| -------------------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `app/favicon.ico` (16 / 32 / 48 / 96)        | simple   | **Google** — it does not support SVG favicons, so this file decides what the search result shows. Also every browser's tab and bookmark bar                                                                                      |
+| `public/icon.svg`                            | simple   | Browsers that prefer a vector favicon — drawn in the tab at 16 px                                                                                                                                                                |
+| `public/apple-touch-icon.png` (180)          | simple   | iOS home screen — **and a favicon candidate Google may scale to 16 px itself**, which is why it is on the simple source. Square: iOS masks the corners itself, and rounding an already-rounded corner leaves transparent slivers |
+| `public/icon-192.png`, `public/icon-512.png` | detailed | The web app manifest, `purpose: "any"`                                                                                                                                                                                           |
+| `public/icon-maskable-512.png`               | detailed | The manifest's `purpose: "maskable"` — a separate file, not a second `purpose` on the 512, because an adaptive launcher may keep only the central 80 % circle and that would cut the pin's tip off                               |
 
 ### Where they are declared
 
