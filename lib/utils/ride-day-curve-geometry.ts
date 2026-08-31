@@ -101,6 +101,101 @@ export function axisHours(hours: number[]): number[] {
 }
 
 /**
+ * Monotone cubic interpolation (Fritsch–Carlson) through a set of points.
+ *
+ * Returns one tangent per point. The whole reason for this variant rather than a
+ * plain Catmull-Rom is OVERSHOOT: a natural spline through 29, 44, 46 bulges
+ * above 46 between the last two, and this chart's y axis is minutes of queue —
+ * a curve that rises to 49 where nothing ever measured more than 46 is drawing a
+ * wait time that did not happen. Fritsch–Carlson clamps the tangents so the
+ * interpolant stays monotone on every segment the data is monotone on, which
+ * means the curve can round a corner but can never leave the interval its two
+ * neighbours define.
+ */
+function monotoneTangents(xs: number[], ys: number[]): number[] {
+  const n = xs.length;
+  if (n < 2) return new Array(n).fill(0);
+
+  const slopes: number[] = [];
+  for (let i = 0; i < n - 1; i++) {
+    const dx = xs[i + 1] - xs[i];
+    slopes.push(dx === 0 ? 0 : (ys[i + 1] - ys[i]) / dx);
+  }
+
+  const m: number[] = new Array(n);
+  m[0] = slopes[0];
+  m[n - 1] = slopes[n - 2];
+  for (let i = 1; i < n - 1; i++) {
+    // A local extremum gets a flat tangent — that is what keeps the curve from
+    // sailing past a peak or a trough.
+    m[i] = slopes[i - 1] * slopes[i] <= 0 ? 0 : (slopes[i - 1] + slopes[i]) / 2;
+  }
+
+  for (let i = 0; i < n - 1; i++) {
+    if (slopes[i] === 0) {
+      m[i] = 0;
+      m[i + 1] = 0;
+      continue;
+    }
+    const a = m[i] / slopes[i];
+    const b = m[i + 1] / slopes[i];
+    const h = Math.hypot(a, b);
+    if (h > 3) {
+      m[i] = (3 / h) * a * slopes[i];
+      m[i + 1] = (3 / h) * b * slopes[i];
+    }
+  }
+  return m;
+}
+
+/**
+ * One contiguous run of points as a smooth cubic path segment.
+ *
+ * Emitted as `C` curves rather than `L` lines because a queue does not turn
+ * corners on the hour: the readings are hourly samples of something continuous,
+ * and a polyline draws the sampling grid as if it were the shape. The
+ * interpolation is monotone (see {@link monotoneTangents}), so rounding the
+ * corners never invents a value outside the measured range.
+ */
+export function smoothSegment(points: Array<{ x: number; y: number }>): string {
+  if (points.length === 0) return '';
+  if (points.length === 1) return '';
+  const xs = points.map((p) => p.x);
+  const ys = points.map((p) => p.y);
+  const m = monotoneTangents(xs, ys);
+
+  let d = `M${xs[0].toFixed(1)},${ys[0].toFixed(1)}`;
+  for (let i = 0; i < points.length - 1; i++) {
+    const h = xs[i + 1] - xs[i];
+    const c1x = xs[i] + h / 3;
+    const c1y = ys[i] + (m[i] * h) / 3;
+    const c2x = xs[i + 1] - h / 3;
+    const c2y = ys[i + 1] - (m[i + 1] * h) / 3;
+    d += `C${c1x.toFixed(1)},${c1y.toFixed(1)} ${c2x.toFixed(1)},${c2y.toFixed(1)} ${xs[i + 1].toFixed(1)},${ys[i + 1].toFixed(1)}`;
+  }
+  return d;
+}
+
+/** Split a positional series into the contiguous runs that actually have values. */
+export function runsOf(
+  hours: number[],
+  series: Array<number | null>
+): Array<Array<{ hour: number; value: number }>> {
+  const runs: Array<Array<{ hour: number; value: number }>> = [];
+  let run: Array<{ hour: number; value: number }> = [];
+  series.forEach((value, i) => {
+    if (value == null || hours[i] == null) {
+      if (run.length) runs.push(run);
+      run = [];
+      return;
+    }
+    run.push({ hour: hours[i], value });
+  });
+  if (run.length) runs.push(run);
+  return runs;
+}
+
+/**
  * A positional series as an SVG path, broken at every gap.
  *
  * `null` is "the ride reported nothing in that hour", which is not a zero and is
@@ -113,17 +208,10 @@ export function linePath(
   x: (h: number) => number,
   y: (v: number) => number
 ): string {
-  let d = '';
-  let open = false;
-  series.forEach((value, i) => {
-    if (value == null || hours[i] == null) {
-      open = false;
-      return;
-    }
-    d += `${open ? 'L' : 'M'}${x(hours[i]).toFixed(1)},${y(value).toFixed(1)} `;
-    open = true;
-  });
-  return d.trim();
+  return runsOf(hours, series)
+    .map((run) => smoothSegment(run.map((p) => ({ x: x(p.hour), y: y(p.value) }))))
+    .filter(Boolean)
+    .join(' ');
 }
 
 /**
@@ -141,25 +229,23 @@ export function bandPath(
   x: (h: number) => number,
   y: (v: number) => number
 ): string {
+  // Both edges are smoothed with the same interpolation as the median line, or
+  // the fill would part company with the curve it is supposed to wrap.
+  const paired: Array<number | null> = hours.map((_, i) =>
+    upper[i] == null || lower[i] == null ? null : 1
+  );
   let d = '';
-  let run: number[] = [];
-  const flush = () => {
-    if (run.length < 2) {
-      run = [];
-      return;
-    }
-    const top = run.map((i) => `${x(hours[i]).toFixed(1)},${y(upper[i] as number).toFixed(1)}`);
-    const bottom = [...run]
-      .reverse()
-      .map((i) => `${x(hours[i]).toFixed(1)},${y(lower[i] as number).toFixed(1)}`);
-    d += `M${top.join('L')}L${bottom.join('L')}Z `;
-    run = [];
-  };
-  hours.forEach((_, i) => {
-    if (upper[i] == null || lower[i] == null) flush();
-    else run.push(i);
-  });
-  flush();
+  for (const run of runsOf(hours, paired)) {
+    if (run.length < 2) continue;
+    const idx = run.map((p) => hours.indexOf(p.hour));
+    const top = smoothSegment(idx.map((i) => ({ x: x(hours[i]), y: y(upper[i] as number) })));
+    const bottomPts = [...idx].reverse().map((i) => ({ x: x(hours[i]), y: y(lower[i] as number) }));
+    const bottom = smoothSegment(bottomPts);
+    if (!top || !bottom) continue;
+    // The bottom edge is appended as a curve of its own, so its leading `M`
+    // becomes an `L`: one closed subpath, not two open ones.
+    d += `${top}L${bottom.slice(1)}Z `;
+  }
   return d.trim();
 }
 

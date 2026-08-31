@@ -19,6 +19,8 @@ import {
   niceMax,
   peakOf,
   quietWindows,
+  smoothSegment,
+  runsOf,
   PAD_L,
   PAD_R,
   VIEW_W,
@@ -89,8 +91,19 @@ test(
 {
   const hours = [9, 10, 11, 12];
   const { x, y } = makeScales(hours, 100);
-  const d = linePath(hours, [10, null, 30, 40], x, y);
-  test('linePath: a gap starts a new subpath', (d.match(/M/g) || []).length, 2);
+  // Two runs of two, split by a gap: two subpaths.
+  const hours6 = [9, 10, 11, 12, 13, 14];
+  const { x: x6, y: y6 } = makeScales(hours6, 100);
+  const split = linePath(hours6, [10, 20, null, 30, 40, 45], x6, y6);
+  test('linePath: a gap starts a new subpath', (split.match(/M/g) || []).length, 2);
+  // A lone measured hour between two gaps is not a line and draws nothing — the
+  // old polyline emitted a bare `moveto` for it, which painted nothing either.
+  test(
+    'linePath: an isolated point draws nothing',
+    linePath(hours6, [null, 20, null, null, null, null], x6, y6),
+    ''
+  );
+  const d = linePath(hours, [10, 15, 30, 40], x, y);
   test('linePath: no NaN in the path data', /NaN/.test(d), false);
   test(
     'linePath: an all-null series draws nothing',
@@ -119,6 +132,77 @@ test(
   const missingLower = bandPath(hours, [null, null, null, null, null], [30, 34, 38, 44, 46], x, y);
   test('bandPath: no lower edge means no band', missingLower, '');
   test('bandPath: no NaN in the path data', /NaN/.test(withHole), false);
+}
+
+// ---------------------------------------------------------------------------
+// smoothSegment / runsOf — rounding the corners must not invent values
+// ---------------------------------------------------------------------------
+{
+  test(
+    'runsOf: splits at every gap',
+    runsOf([9, 10, 11, 12], [1, null, 3, 4]).map((r) => r.length),
+    [1, 2]
+  );
+  test('runsOf: an all-null series has no runs', runsOf([9, 10], [null, null]), []);
+
+  const d = smoothSegment([
+    { x: 0, y: 100 },
+    { x: 10, y: 50 },
+    { x: 20, y: 40 },
+  ]);
+  test('smoothSegment: emits cubic segments', (d.match(/C/g) || []).length, 2);
+  test('smoothSegment: starts at the first point', d.startsWith('M0.0,100.0'), true);
+  test('smoothSegment: a single point draws nothing', smoothSegment([{ x: 0, y: 1 }]), '');
+
+  /**
+   * Sample a cubic path densely and report the extreme y. The point of the
+   * monotone variant is that this never leaves the data's own range — a natural
+   * spline through 29/44/46 bulges past 46 and would be drawing a wait time
+   * nothing measured.
+   */
+  const extremesOf = (path) => {
+    const nums = path.match(/-?[\d.]+/g).map(Number);
+    // M x y, then repeating C c1x c1y c2x c2y x y
+    let i = 0;
+    const start = { x: nums[i++], y: nums[i++] };
+    let lo = start.y;
+    let hi = start.y;
+    let p0 = start;
+    while (i < nums.length) {
+      const c1 = { x: nums[i++], y: nums[i++] };
+      const c2 = { x: nums[i++], y: nums[i++] };
+      const p3 = { x: nums[i++], y: nums[i++] };
+      for (let t = 0; t <= 1; t += 0.02) {
+        const u = 1 - t;
+        const yv =
+          u * u * u * p0.y + 3 * u * u * t * c1.y + 3 * u * t * t * c2.y + t * t * t * p3.y;
+        lo = Math.min(lo, yv);
+        hi = Math.max(hi, yv);
+      }
+      p0 = p3;
+    }
+    return { lo: round(lo, 3), hi: round(hi, 3) };
+  };
+
+  // Voltron's opening jump — the shape that makes a naive spline overshoot.
+  const rising = smoothSegment([
+    { x: 0, y: 29 },
+    { x: 10, y: 44 },
+    { x: 20, y: 46 },
+  ]);
+  const e = extremesOf(rising);
+  test('smoothSegment: never rises above the highest point', e.hi <= 46.001, true);
+  test('smoothSegment: never falls below the lowest point', e.lo >= 28.999, true);
+
+  // A peak in the middle must not be exaggerated.
+  const peaked = smoothSegment([
+    { x: 0, y: 20 },
+    { x: 10, y: 90 },
+    { x: 20, y: 25 },
+  ]);
+  const p = extremesOf(peaked);
+  test('smoothSegment: a peak is not overshot', p.hi <= 90.001, true);
+  test('smoothSegment: a peak does not undershoot its neighbours', p.lo >= 19.999, true);
 }
 
 // ---------------------------------------------------------------------------

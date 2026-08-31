@@ -338,15 +338,15 @@
       "legendMedian": "Median vergangener Tage",
       "legendBand": "Streuung P25–P90",
       "legendBandUpper": "Median bis Stoßzeit",
-      "ropeDrop": "Rope Drop",
-      "lastRound": "Letzte Runde",
       "heatTitle": "Hitzewarnung",
       "heatText": "An Hitzetagen verschiebt sich der Andrang: Wasserbahnen ziehen an, Indoor-Dark-Rides werden voll, Achterbahnen leeren sich. Der Kalender rechnet das mit.",
       "historyTitle": "Historie",
       "historyText": "Jede Attraktion hat ihre eigene Kurve, ihren eigenen Wochenrhythmus und ihre eigene Saison. Jede Messung von heute geht morgen ins Modell ein.",
-      "approx": "ca.",
       "hubLink": "Beste Reisezeit für über 200 Parks",
-      "peakAt": "Am vollsten gegen"
+      "peakAt": "Am vollsten gegen",
+      "windowOpening": "Guter Start in den Tag",
+      "windowClosing": "Gegen Tagesende",
+      "windowWait": "rund {minutes} Min. Wartezeit"
     },
     "inPark": {
       "kicker": "Favoriten & Karte",

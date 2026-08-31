@@ -15,28 +15,34 @@ import type { HourlyProfileAttraction } from '@/lib/api/types';
  * The geometry — which hours count as quiet, where the two runs start and end,
  * what each run averages — lives in `lib/utils/ride-day-curve-geometry.ts` and
  * is covered by `pnpm test:ride-day-curve`. What is left here is the part that
- * is i18n rather than maths: a time range, a rounded wait and a label.
+ * is i18n rather than maths.
+ *
+ * The first version got the labelling wrong twice over. It called the evening
+ * window "Letzte Runde", which is not what a three-hour stretch from 15:00 is,
+ * and it printed "ca. 30 Min." — which reads as a DURATION ("for about thirty
+ * minutes") next to a time range, when the number is the wait you can expect.
+ * The range and the wait are separate fields now, and the wait says what it is.
  */
 function labelledWindows(
   hours: number[],
   p50: Array<number | null>,
-  labels: { ropeDrop: string; lastRound: string; approx: string; minutes: string }
+  labels: {
+    opening: string;
+    closing: string;
+    waitFormat: (minutes: number) => string;
+  }
 ): DayCurveWindow[] {
-  return quietWindows(hours, p50).map((w) => {
+  return quietWindows(hours, p50).map((w) => ({
+    label: w.which === 'opening' ? labels.opening : labels.closing,
+    range: `${fmt(w.fromHour)}\u2013${fmt(w.toHour)}`,
     // Parks post wait times in fives and every surface here renders them that
     // way; an average over the median curve is exactly the arithmetic that
     // breaks it, so it is rounded back on the way out.
-    const wait = `${roundWaitTo5(w.averageWait)} ${labels.minutes}`;
-    return {
-      label: w.which === 'opening' ? labels.ropeDrop : labels.lastRound,
-      detail:
-        w.which === 'opening'
-          ? `${fmt(w.fromHour)}\u2013${fmt(w.toHour)} \u00b7 ${labels.approx} ${wait}`
-          : `${labels.approx} ${fmt(w.fromHour)} \u00b7 ${wait}`,
-      fromHour: w.fromHour,
-      toHour: w.toHour,
-    };
-  });
+    wait: labels.waitFormat(roundWaitTo5(w.averageWait)),
+    fromHour: w.fromHour,
+    toHour: w.toHour,
+    which: w.which,
+  }));
 }
 
 function fmt(hour: number): string {
@@ -120,10 +126,9 @@ export function RideDayCurveCard({
   if (!ride) return null;
 
   const windows = labelledWindows(data.hours, ride.p50, {
-    ropeDrop: t('ropeDrop'),
-    lastRound: t('lastRound'),
-    approx: t('approx'),
-    minutes: tOverview('minutesUnit'),
+    opening: t('windowOpening'),
+    closing: t('windowClosing'),
+    waitFormat: (minutes) => t('windowWait', { minutes }),
   });
 
   return (

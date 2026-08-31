@@ -15,13 +15,33 @@ import {
 } from '@/lib/utils/ride-day-curve-geometry';
 
 export interface DayCurveWindow {
-  /** Label above the window, e.g. "Rope Drop". */
+  /** Label above the window, e.g. "Guter Start". */
   label: string;
-  /** Human-readable time range plus expected wait, already formatted by the caller. */
-  detail: string;
+  /** The time range, formatted by the caller. */
+  range: string;
+  /** The wait to expect across it, formatted by the caller. */
+  wait: string;
   /** Window bounds as park-local hours (may be fractional: 10.5 = 10:30). */
   fromHour: number;
   toHour: number;
+  /**
+   * Which end of the day this is.
+   *
+   * The two windows answer different questions — "when is a good time to start"
+   * and "what does the end of the day look like" — so they are not drawn as one
+   * repeated mark in one colour.
+   *
+   * Opening takes `--crowd-very-low`, the teal the crowd scale already uses for a
+   * quiet queue. Closing takes `--primary`, which is stable in both themes and
+   * claims no crowd level.
+   *
+   * NOT `--chart-2`/`--chart-3`, which was the first attempt: those two are
+   * shadcn defaults whose light and dark values are unrelated hues, and
+   * `--chart-3` flips from deep blue to AMBER in the dark theme — the colour this
+   * app's crowd scale spends on a busy queue. A quiet evening marked in amber
+   * says the opposite of what it means.
+   */
+  which: 'opening' | 'closing';
 }
 
 export interface RideDayCurveProps {
@@ -148,7 +168,7 @@ export function RideDayCurve({
     subtitle,
     peak &&
       `${labels.peakAt} ${String(peak.hour).padStart(2, '0')}:00, ${peak.value} ${labels.minutes}`,
-    ...windows.map((w) => `${w.label}: ${w.detail}`),
+    ...windows.map((w) => `${w.label}: ${w.range}, ${w.wait}`),
   ]
     .filter(Boolean)
     .join('. ');
@@ -207,15 +227,20 @@ export function RideDayCurve({
           {/* The good windows, behind the curves so the lines stay readable over them. */}
           {windows.map((w) => (
             <rect
-              key={w.label}
+              key={w.which}
               x={x(w.fromHour)}
               y={PAD_T}
               width={Math.max(2, x(w.toHour) - x(w.fromHour))}
               height={VIEW_H - PAD_T - PAD_B}
               rx={10}
-              className="fill-crowd-very-low/10 stroke-crowd-very-low/40"
-              strokeDasharray="5 4"
-              strokeWidth={1}
+              // A soft field, not a dashed cage: these mark WHERE to look, and
+              // the two heavy dashed boxes in the first version competed with
+              // the curve they were meant to point at.
+              fill={
+                w.which === 'opening'
+                  ? 'color-mix(in oklab, var(--color-crowd-very-low) 14%, transparent)'
+                  : 'color-mix(in oklab, var(--color-primary) 10%, transparent)'
+              }
             />
           ))}
 
@@ -302,13 +327,20 @@ export function RideDayCurve({
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
           {windows.map((w) => (
             <div
-              key={w.label}
-              className="border-crowd-very-low/35 bg-crowd-very-low/8 rounded-xl border px-4 py-3"
+              key={w.which}
+              className="border-border bg-card/40 rounded-xl border border-l-3 px-4 py-3"
+              style={{
+                borderLeftColor:
+                  w.which === 'opening' ? 'var(--color-crowd-very-low)' : 'var(--color-primary)',
+              }}
             >
-              <div className="text-crowd-very-low text-[11px] font-bold tracking-[0.1em] uppercase">
+              <div className="text-muted-foreground text-[11px] font-bold tracking-[0.1em] uppercase">
                 {w.label}
               </div>
-              <div className="mt-1 font-semibold">{w.detail}</div>
+              <div className="mt-1 flex flex-wrap items-baseline gap-x-2">
+                <span className="font-semibold tabular-nums">{w.range}</span>
+                <span className="text-muted-foreground text-sm">{w.wait}</span>
+              </div>
             </div>
           ))}
         </div>
