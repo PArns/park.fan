@@ -6,11 +6,11 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  One park shut down its winter operation in April and said out loud what the
-  problem was: roller coasters do not run in frost, and there is no roof over a
-  string of lights. Who is open between November and January in 2026/27, what
-  it costs, which coaster in Rust is running for the last time, and why
-  December queues sit closer to August than to May.
+  On 14 November the lights go on at Phantasialand, there are over a million of
+  them hanging in Bottrop, and in Wavre an ice rink stands under a hall roof.
+  Eleven parks in Europe are open between November and January: the dates, the
+  prices, the Europa-Park coaster running for the last time, and why the
+  emptiest week of the whole late season is the one just before it all starts.
 tags:
   - winter
   - wintertraum
@@ -34,9 +34,9 @@ coverImage:
 seo:
   title: 'Theme Parks Open in Winter 2026/27: Dates & Wait Times'
   description: >-
-    Which European theme parks are open in winter 2026/27: Wintertraum, Winter
-    Efteling, Walibi Winter, Hollywood Christmas and eight more, with dates,
-    prices and real wait-time data.
+    Ice rinks, Christmas markets and a million lights: which European theme
+    parks are open in winter 2026/27. Wintertraum, Winter Efteling, Walibi
+    Winter and eight more, with dates, prices and real wait-time data.
   keywords:
     - theme parks open in winter
     - theme park christmas 2026
@@ -50,12 +50,24 @@ seo:
     - PortAventura Christmas
 ---
 
+On 14 November the lights go on at [Phantasialand](ref:phantasialand). The park
+stays open until 20:00, and MAGIC SYMPHONY closes the evening with fireworks,
+every day from then until January. By that point over a million lamps are
+hanging in Bottrop, a 700 m² ice rink stands under a hall roof in Wavre, and in
+Kasterlee meeting Santa is in the day ticket. Between mid-November and early
+January a good share of Europe's theme parks turn into something that has only
+a passing connection to roller coasters: mulled wine, skates and fairy lights
+in the trees.
+
+Most of them do not, though. The bulk of Germany's parks close at the end of
+October and reopen in spring, and one gave up trying altogether back in April.
+
 On 23 April 2026, [Walibi Holland](ref:walibi-holland) shut down its winter
 operation. **Bright Nights**, four editions long: illuminated coasters and a
 fireworks show called "Light up the Night". Gone, with no successor. The park
 now stays shut from November until Easter.
 
-The reasoning behind the cancellation explains most of the winter season.
+The reasoning behind it explains most of the winter season.
 Managing director Mascha Taminiau pointed at the short opening window and the
 dependence on the weather. Translated: roller coasters do not run in frost,
 storms or freezing rain, and Walibi Holland has almost nothing under a roof.
@@ -342,6 +354,15 @@ five-minute forecast. The Efteling shows the same pattern with the same caveats.
 
 ```
 
+And at Europa-Park December reaches exactly the level that otherwise only the
+summer holidays get there.
+
+**Europa-Park, typical wait by month**
+
+```stats-widget slug=europa-park show=months
+
+```
+
 The obvious explanation would be the shorter day, and for two of the three parks
 it holds. We ran the published opening hours: an August day at the Efteling
 averages 11.7 hours, a November day 8.4. At Europa-Park it is 10.3 against 8.0.
@@ -363,32 +384,6 @@ winter visitor chooses between three weekends, with the Christmas holidays in
 the middle of them. Wintertraum adds a further twist: it is a destination in its
 own right. People drive to Brühl for the shows, not in spite of the season.
 
-## What we have not measured
-
-For Wintertraum itself, our statistics stop. November stands at **zero measured
-days**, December at five, January at four, and asking for a longer window
-changes none of that. What happens in Brühl between November and January we
-have not measured, we have watched. The rest of this chapter is observation.
-
-And what gets watched is a jump, not a transition. Up to and including Friday
-13 November, Brühl runs its regular season on the old hours, 09:00 to 18:00,
-and that week is the emptiest of the whole late season. On Saturday 14 November
-the park switches to 11:00 to 20:00, and from that day it is full. Wintertraum
-packs the place for weeks at a level otherwise reached only in high summer.
-
-Which leads to an awkward piece of advice: the empty week is no use to you,
-because Wintertraum does not exist yet during it. To see it without the crowds,
-take a weekday between 16 November and the start of the Christmas holidays.
-After that, every day is a holiday until well into January.
-
-A word about the crowd calendar here, because it would know better if it could:
-for December it rates 29 of 29 operating days in Brühl as "low". For July at the
-same park it spreads across four levels. The difference is not the crowd, it is
-the missing November from above. A model that has never seen a season takes it
-for a quiet one, and the same goes for the winter days at Europa-Park and the
-Efteling. We would rather write that down than let it stand. Once a winter
-season has been measured end to end, the calendar will work for December too.
-
 And because "which of them is the busiest" gets asked on every car journey,
 here are the parks from this article side by side, each with its quietest
 weekday:
@@ -396,6 +391,39 @@ weekday:
 ```park-comparison-widget slugs=phantasialand,europa-park,efteling,attractiepark-toverland,walibi-belgium,portaventura-park,gardaland show=quietest highlight=phantasialand
 
 ```
+
+## park.fan turns one this winter
+
+That is what the thin rows in the tables above are about. When the last
+Wintertraum was running, this site was only just getting going: from December
+2025 we have a handful of measured days, from January 2026 four, from November
+not a single one. Only since April have we been recording every operating day.
+Which makes winter 2026/27 the first one we accompany from the first string of
+lights to the last, and after it our model has a complete year for the first
+time.
+
+What the few winter days already show matches what anyone standing there in
+December can see. At Phantasialand, December and January sit at summer level; at
+Europa-Park, December reaches the summer holidays. Cold rain does not change
+that, and the weekday nowhere near as much as it does in summer: a Tuesday in
+Advent is busy at both parks.
+
+The switch takes exactly one night. Up to and including Friday 13 November,
+Brühl runs its regular season on the old hours, 09:00 to 18:00, and that week is
+the emptiest of the whole late season. On Saturday 14 November the park moves to
+11:00 to 20:00, and from that day it is full.
+
+Which leads to an awkward piece of advice: the empty week is no use to you,
+because Wintertraum does not exist yet during it. Your best shot is a weekday
+between 16 November and the start of the Christmas holidays. It will be busy
+then too, just not quite as busy, and from the holidays on every day is a
+holiday until well into January.
+
+Do not take the crowd calendar at its word for this one winter: for December it
+rates 29 of 29 operating days in Brühl as "low", while for July at the same park
+it spreads across four levels. A model that has never seen a season takes it for
+a quiet one, and the same goes for the winter days at Europa-Park and the
+Efteling. From next winter it will know them.
 
 ## Three things that work differently in winter
 
@@ -414,7 +442,8 @@ weekday:
 ## Where to go this year
 
 The biggest programme is in Brühl: 67 operating days, three theatre shows, four
-outdoor ones. It is also the fullest, so take a weekday in November. If the
+outdoor ones. It is also the fullest, so take a weekday before the Christmas
+holidays. If the
 weather should not matter, Kaatsheuvel is the safer bet, because a good share of
 the best attractions is indoors anyway. And anyone who wants one more ride on
 [Euro-Mir](ref:europa-park/euro-mir) has until 9 January to get to Rust.

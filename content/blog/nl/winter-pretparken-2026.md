@@ -6,11 +6,11 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Eén park stopte in april met zijn winterbedrijf en zei er hardop bij waar het
-  aan lag: achtbanen rijden niet bij vorst, en boven een lichtsnoer zit geen
-  dak. Wie er in 2026/27 tussen november en januari open is, wat het kost,
-  welke baan in Rust voor het laatst rijdt, en waarom de rijen in december
-  dichter bij augustus liggen dan bij mei.
+  Op 14 november gaan in Phantasialand de lichten aan, in Bottrop hangen er ruim
+  een miljoen, en in Waver staat een ijsbaan onder een hallendak. Elf parken in
+  Europa zijn tussen november en januari open: de data, de prijzen, de baan in
+  het Europa-Park die voor het laatst rijdt, en waarom de leegste week van het
+  hele naseizoen er net vóór ligt.
 tags:
   - winter
   - wintertraum
@@ -34,9 +34,9 @@ coverImage:
 seo:
   title: 'Pretparken open in de winter 2026/27: data & wachttijden'
   description: >-
-    Welke pretparken open zijn in de winter van 2026/27: Winter Efteling,
-    Wintertraum, Walibi Winter, Winter Feelings en acht andere, met data,
-    prijzen en echte wachttijdcijfers.
+    IJsbanen, kerstmarkten en een miljoen lichtjes: welke pretparken open zijn
+    in de winter van 2026/27. Winter Efteling, Wintertraum, Walibi Winter en
+    acht andere, met data, prijzen en echte wachttijdcijfers.
   keywords:
     - pretparken open in de winter
     - pretpark kerst 2026
@@ -50,12 +50,24 @@ seo:
     - Gardaland Magic Winter
 ---
 
+Op 14 november gaan in [Phantasialand](ref:phantasialand) de lichten aan. Het
+park blijft tot 20 uur open, en MAGIC SYMPHONY sluit de avond af met vuurwerk,
+vanaf dat moment elke dag tot in januari. In Bottrop hangen er dan ruim een
+miljoen lampen, in Waver staat een ijsbaan van 700 vierkante meter onder een
+hallendak, en in Kasterlee zit de kerstman in het dagticket. Tussen half
+november en begin januari wordt een flink deel van de Europese pretparken iets
+dat met achtbanen nog maar zijdelings te maken heeft: glühwein, schaatsen en
+lichtjes in de bomen.
+
+De meeste niet, trouwens. Het gros van de Duitse parken sluit eind oktober en
+gaat pas in het voorjaar weer open, en één is er in april helemaal mee gestopt.
+
 Op 23 april 2026 stopte [Walibi Holland](ref:walibi-holland) met zijn
 winterbedrijf. **Bright Nights**, vier edities lang: verlichte achtbanen en een
 vuurwerkshow die „Light up the Night“ heette. Voorbij, zonder opvolger. Het park
 blijft van november tot Pasen dicht.
 
-De onderbouwing van die beslissing verklaart bijna het hele winterseizoen.
+De onderbouwing daarvan verklaart bijna het hele winterseizoen.
 Directeur Mascha Taminiau wees op de korte openingsperiode en de afhankelijkheid
 van het weer. Vertaald: achtbanen rijden niet bij vorst, storm en ijzel, en
 Walibi Holland heeft vrijwel niets overdekt. Valt de techniek uit, dan houden de
@@ -344,6 +356,15 @@ voorbehouden.
 
 ```
 
+En in het Europa-Park haalt december precies het niveau dat daar verder alleen
+de zomervakantie haalt.
+
+**Europa-Park, typische wachttijd per maand**
+
+```stats-widget slug=europa-park show=months
+
+```
+
 De voor de hand liggende verklaring zou de kortere dag zijn, en voor twee van de
 drie parken klopt die ook. We hebben de gepubliceerde openingstijden
 doorgerekend: een augustusdag in de Efteling duurt gemiddeld 11,7 uur, een
@@ -366,34 +387,6 @@ winterbezoeker kiest tussen drie weekenden, met de kerstvakantie er middenin.
 Bij de Wintertraum komt daar nog bij dat het een doel op zich is. Mensen rijden
 naar Brühl vanwege de shows, niet ondanks het jaargetijde.
 
-## Wat we niet gemeten hebben
-
-Voor de Wintertraum zelf houdt onze statistiek op. November staat in onze
-metingen op **nul dagen**, december op vijf, januari op vier, en een groter
-tijdvenster opvragen verandert daar niets aan. Wat er in Brühl tussen november
-en januari gebeurt, hebben we niet gemeten maar gezien. De rest van dit
-hoofdstuk is waarneming.
-
-En wat je waarneemt is een sprong, geen overgang. Tot en met vrijdag 13 november
-draait Brühl het reguliere seizoen op de oude tijden, van 9 tot 18 uur, en die
-week is de leegste van het hele naseizoen. Op zaterdag 14 november schakelt het
-park over naar 11 tot 20 uur, en vanaf die dag is het vol. De Wintertraum vult
-het terrein wekenlang tot een niveau dat verder alleen de hoogzomer haalt.
-
-Daaruit volgt een vervelend advies: die lege week heb je niets aan, want de
-Wintertraum bestaat er nog niet. Wie hem zonder de drukte wil zien, neemt een
-doordeweekse dag tussen 16 november en het begin van de kerstvakantie. Daarna is
-tot ver in januari elke dag een vakantiedag.
-
-Nog iets over de drukte-kalender, omdat hij het beter zou weten als hij kon:
-voor december zet hij in Brühl 29 van de 29 openingsdagen op „laag“. In juli van
-hetzelfde park verdeelt hij over vier niveaus. Het verschil is niet het publiek,
-het is de ontbrekende november van hierboven. Een model dat een seizoen nooit
-gezien heeft, houdt het voor rustig, en dat geldt net zo voor de winterdagen in
-het Europa-Park en de Efteling. We schrijven het liever op dan het te laten
-staan. Zodra één winterseizoen helemaal doorgemeten is, rekent de kalender ook
-voor december.
-
 En omdat de vraag „welke van die parken is het drukst“ op elke autorit
 langskomt, hier de parken uit dit artikel naast elkaar, elk met zijn rustigste
 weekdag:
@@ -401,6 +394,38 @@ weekdag:
 ```park-comparison-widget slugs=phantasialand,europa-park,efteling,attractiepark-toverland,walibi-belgium,portaventura-park,gardaland show=quietest highlight=phantasialand
 
 ```
+
+## Deze winter wordt park.fan een jaar oud
+
+Dat verklaart de dunne regels in de tabellen hierboven. Toen de vorige
+Wintertraum liep, ging deze site net van start: uit december 2025 hebben we een
+handvol meetdagen, uit januari 2026 vier, uit november geen enkele. Pas sinds
+april schrijven we elke openingsdag mee. Daarmee is de winter 2026/27 de eerste
+die we van het eerste tot het laatste lichtsnoer volgen, en daarna heeft ons
+model voor het eerst een compleet jaar bij elkaar.
+
+Wat die paar winterdagen nu al laten zien, klopt met wat iedereen ziet die er in
+december staat. In Phantasialand liggen december en januari op zomerniveau, in
+het Europa-Park haalt december de zomervakantie. Koude regen verandert daar
+niets aan, en de weekdag lang niet zoveel als in de zomer: ook op een dinsdag in
+de advent is het in beide parken flink druk.
+
+De omslag duurt precies één nacht. Tot en met vrijdag 13 november draait Brühl
+het reguliere seizoen op de oude tijden, van 9 tot 18 uur, en die week is de
+leegste van het hele naseizoen. Op zaterdag 14 november schakelt het park over
+naar 11 tot 20 uur, en vanaf die dag is het vol.
+
+Daaruit volgt een vervelend advies: die lege week heb je niets aan, want de
+Wintertraum bestaat er nog niet. Je beste kans is een doordeweekse dag tussen
+16 november en het begin van de kerstvakantie. Druk wordt het dan ook, alleen
+net iets minder, en vanaf de vakantie is tot ver in januari elke dag een
+vakantiedag.
+
+Neem de drukte-kalender deze ene winter nog niet op zijn woord: voor december
+zet hij in Brühl 29 van de 29 openingsdagen op „laag“, terwijl hij in juli van
+hetzelfde park over vier niveaus verdeelt. Een model dat een seizoen nooit
+gezien heeft, houdt het voor rustig, en dat geldt net zo voor de winterdagen in
+het Europa-Park en de Efteling. Vanaf volgende winter kent het ze.
 
 ## Drie dingen die in de winter anders gaan
 
@@ -419,8 +444,8 @@ weekdag:
 ## Waar naartoe dit jaar
 
 Het grootste programma staat in Brühl: 67 bedrijfsdagen, drie theatershows, vier
-openluchtshows. Het is ook het volste, dus neem een doordeweekse dag in
-november. Moet het weer geen rol
+openluchtshows. Het is ook het volste, dus neem een doordeweekse dag vóór de
+kerstvakantie. Moet het weer geen rol
 spelen, dan is Kaatsheuvel de veiligere keuze, want een flink deel van de beste
 attracties ligt er toch al binnen. En wie de [Euro-Mir](ref:europa-park/euro-mir)
 nog één keer wil rijden, heeft tot 9 januari de tijd om naar Rust te komen.

@@ -6,11 +6,11 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Ein Park hat seinen Winterbetrieb im April eingestellt und dabei ausgesprochen,
-  woran es liegt: Achterbahnen fahren bei Frost nicht, und über einer
-  Lichterkette steht kein Dach. Wer 2026/27 zwischen November und Januar
-  geöffnet hat, was die Saison kostet, welche Bahn in Rust zum letzten Mal
-  fährt, und warum die Schlangen im Dezember näher am August liegen als am Mai.
+  Am 14. November gehen im Phantasialand die Lichter an, in Bottrop hängen über
+  eine Million davon, und in Wavre steht eine Eisbahn unter dem Hallendach. Elf
+  Parks in Europa haben zwischen November und Januar geöffnet: die Termine, die
+  Preise, die Bahn im Europa-Park, die zum letzten Mal fährt, und warum die
+  leerste Woche des ganzen Spätjahrs die davor ist.
 tags:
   - winter
   - wintertraum
@@ -34,9 +34,9 @@ coverImage:
 seo:
   title: 'Freizeitparks im Winter 2026/27: Termine & Wartezeiten'
   description: >-
-    Welche Freizeitparks im Winter 2026/27 geöffnet haben: Wintertraum,
-    Winter Efteling, Walibi Winter, Hollywood Christmas und acht weitere,
-    mit Terminen, Preisen und echten Wartezeit-Daten.
+    Eisbahnen, Weihnachtsmärkte und eine Million Lichter: welche Freizeitparks
+    im Winter 2026/27 geöffnet haben. Wintertraum, Winter Efteling, Walibi
+    Winter und acht weitere, mit Terminen, Preisen und echten Wartezeit-Daten.
   keywords:
     - Freizeitparks im Winter
     - Freizeitpark Winter geöffnet
@@ -50,13 +50,26 @@ seo:
     - Winterwonder Legoland
 ---
 
+Am 14. November gehen im [Phantasialand](ref:phantasialand) die Lichter an. Der
+Park bleibt bis 20 Uhr offen, und den Abend beschließt MAGIC SYMPHONY mit
+Feuerwerk, von da an jeden Tag bis in den Januar. In Bottrop hängen dann über
+eine Million Lampen, in Wavre steht eine Eisbahn von 700 Quadratmetern unter
+einem Hallendach, und in Kasterlee ist der Weihnachtsmann im Tagesticket drin.
+Zwischen Mitte November und Anfang Januar wird aus einem guten Teil der
+europäischen Freizeitparks etwas, das mit Achterbahnen nur noch nebenbei zu tun
+hat: Glühwein, Schlittschuhe und Lichterketten in den Bäumen.
+
+Aus den meisten aber nicht. Der Großteil der deutschen Parks schließt Ende
+Oktober und macht erst im Frühjahr wieder auf, und einer hat im April
+aufgehört, es überhaupt zu versuchen.
+
 Am 23. April 2026 hat [Walibi Holland](ref:walibi-holland) seinen Winterbetrieb
 eingestellt. **Bright Nights** hieß das, vier Ausgaben lang: illuminierte
 Achterbahnen und eine Feuerwerksshow namens „Light up the Night“. Vorbei, ohne
 Nachfolger. Der Park bleibt von November bis Ostern zu.
 
-Interessant an der Absage ist die Begründung, weil sie fast die ganze
-Wintersaison erklärt. Geschäftsführerin Mascha Taminiau nannte die kurze
+Interessant daran ist die Begründung, weil sie fast die ganze Wintersaison
+erklärt. Geschäftsführerin Mascha Taminiau nannte die kurze
 Öffnungsperiode und die Abhängigkeit vom Wetter. Übersetzt: Achterbahnen fahren
 bei Frost, Sturm und Eisregen nicht, und Walibi Holland hat fast nichts
 Überdachtes. Fällt die Technik aus, bleibt den Gästen eine Lichtershow, und eine
@@ -345,6 +358,15 @@ sich dasselbe Muster mit denselben Vorbehalten.
 
 ```
 
+Und im Europa-Park erreicht der Dezember genau das Niveau, das dort sonst nur
+die Sommerferien haben.
+
+**Europa-Park, typische Wartezeit nach Monat**
+
+```stats-widget slug=europa-park show=months
+
+```
+
 Die naheliegende Erklärung wäre der kürzere Tag, und für zwei der drei Parks
 stimmt sie auch. Wir haben die veröffentlichten Öffnungszeiten durchgerechnet:
 Ein Augusttag im Efteling dauert im Schnitt 11,7 Stunden, ein Novembertag 8,4.
@@ -368,33 +390,6 @@ Mitte davon liegen die Weihnachtsferien. Beim Wintertraum kommt dazu, dass er
 ein eigenes Ziel ist. Leute fahren wegen der Shows nach Brühl, nicht trotz der
 Jahreszeit.
 
-## Was wir nicht gemessen haben
-
-Für den Wintertraum selbst hört unsere Statistik auf. Der November steht in
-unseren Messungen bei **null Tagen**, der Dezember bei fünf, der Januar bei
-vier, und ein größeres Zeitfenster abzufragen ändert daran nichts. Was in Brühl
-zwischen November und Januar passiert, haben wir bisher nicht gemessen, sondern
-gesehen. Der Rest dieses Kapitels ist deshalb Beobachtung.
-
-Und beobachtet wird ein Sprung, kein Übergang. Bis einschließlich Freitag, dem 13. November, läuft in Brühl die reguläre Saison mit den alten Zeiten von 9 bis
-18 Uhr, und diese Woche ist die leerste des ganzen Spätjahrs. Am Samstag, dem 14. November, stellt der Park auf 11 bis 20 Uhr um, und ab diesem Tag ist voll.
-Der Wintertraum füllt das Gelände über Wochen so weit, wie es sonst nur der
-Hochsommer schafft.
-
-Daraus folgt ein unangenehmer Rat: Die leere Woche nützt dir nichts, weil es den
-Wintertraum darin noch nicht gibt. Wer ihn ohne die Massen sehen will, nimmt
-einen Werktag zwischen dem 16. November und dem Beginn der Weihnachtsferien.
-Danach ist bis in den Januar hinein jeder Tag ein Ferientag.
-
-Ein Wort zum Crowd-Kalender an dieser Stelle, weil er es besser wüsste, wenn er
-könnte: Für den Dezember stuft er in Brühl 29 von 29 Öffnungstagen als
-„niedrig“ ein. Im Juli desselben Parks verteilt er über vier Stufen. Der
-Unterschied ist nicht das Publikum, sondern der fehlende November von oben. Ein
-Modell, das eine Saison nie gesehen hat, hält sie für ruhig, und dasselbe gilt
-für die Wintertage im Europa-Park und im Efteling. Wir schreiben das lieber hin,
-als es stehen zu lassen. Sobald eine Wintersaison durchgemessen ist, rechnet der
-Kalender auch für den Dezember.
-
 Und weil die Frage „welcher von denen ist der vollste“ auf jeder Autofahrt
 gestellt wird, hier die Parks aus diesem Artikel nebeneinander, jeweils mit
 ihrem ruhigsten Wochentag:
@@ -402,6 +397,38 @@ ihrem ruhigsten Wochentag:
 ```park-comparison-widget slugs=phantasialand,europa-park,efteling,attractiepark-toverland,walibi-belgium,portaventura-park,gardaland show=quietest highlight=phantasialand
 
 ```
+
+## In diesem Winter wird park.fan ein Jahr alt
+
+Das erklärt die dünnen Zeilen in den Tabellen oben. Als der letzte Wintertraum
+lief, ging diese Seite gerade erst an den Start: Aus dem Dezember 2025 haben wir
+eine Handvoll Messtage, aus dem Januar 2026 vier, aus dem November keinen
+einzigen. Erst seit April schreiben wir jeden Öffnungstag mit. Der Winter
+2026/27 ist damit der erste, den wir von der ersten bis zur letzten
+Lichterkette begleiten, und danach hat unser Modell zum ersten Mal ein
+vollständiges Jahr beisammen.
+
+Was die wenigen Wintertage schon jetzt zeigen, deckt sich mit dem, was jeder
+sieht, der im Dezember dort steht. Im Phantasialand liegen Dezember und Januar
+auf Sommerniveau, im Europa-Park erreicht der Dezember die Sommerferien.
+Kalter Regen ändert daran nichts, und der Wochentag längst nicht so viel wie im
+Sommer: Auch dienstags im Advent ist in beiden Parks gut etwas los.
+
+Der Umschwung dorthin dauert genau eine Nacht. Bis einschließlich Freitag, dem 13. November, läuft in Brühl die reguläre Saison mit den alten Zeiten von 9 bis
+18 Uhr, und diese Woche ist die leerste des ganzen Spätjahrs. Am Samstag, dem 14. November, stellt der Park auf 11 bis 20 Uhr um, und ab diesem Tag ist voll.
+
+Daraus folgt ein unangenehmer Rat: Die leere Woche nützt dir nichts, weil es den
+Wintertraum darin noch nicht gibt. Am ehesten kommst du an einem Werktag
+zwischen dem 16. November und dem Beginn der Weihnachtsferien durch. Voll wird
+es auch dann, nur nicht ganz so voll, und ab den Ferien ist bis in den Januar
+hinein jeder Tag ein Ferientag.
+
+Den Crowd-Kalender solltest du für diesen einen Winter noch nicht beim Wort
+nehmen: Für den Dezember stuft er in Brühl 29 von 29 Öffnungstagen als
+„niedrig“ ein, im Juli desselben Parks verteilt er über vier Stufen. Ein
+Modell, das eine Saison nie gesehen hat, hält sie für ruhig, und dasselbe gilt
+für die Wintertage im Europa-Park und im Efteling. Ab dem nächsten Winter kennt
+es sie.
 
 ## Drei Dinge, die im Winter anders laufen
 
@@ -421,7 +448,8 @@ ihrem ruhigsten Wochentag:
 ## Wohin dieses Jahr
 
 Das größte Programm steht in Brühl: 67 Betriebstage, drei Theatershows, vier
-Open-Air-Shows. Es ist auch das vollste, also nimm einen Werktag im November.
+Open-Air-Shows. Es ist auch das vollste, also nimm einen Werktag vor den
+Weihnachtsferien.
 Soll das Wetter keine Rolle spielen, ist Kaatsheuvel die sicherere Wahl, weil
 ein guter Teil der besten Attraktionen ohnehin drinnen liegt. Und wer die
 [Euro-Mir](ref:europa-park/euro-mir) noch einmal fahren will, hat bis zum 9. Januar Zeit, nach Rust zu kommen.

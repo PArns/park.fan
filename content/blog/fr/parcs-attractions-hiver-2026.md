@@ -6,12 +6,11 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Un parc a arrêté son exploitation hivernale en avril, et il a dit tout haut
-  d'où venait le problème : les montagnes russes ne tournent pas par temps de
-  gel, et il n'y a pas de toit au-dessus d'une guirlande. Qui ouvre entre
-  novembre et janvier en 2026/27, à quel prix, quel coaster de Rust tourne pour
-  la dernière fois, et pourquoi les files de décembre ressemblent plus à celles
-  d'août qu'à celles de mai.
+  Le 14 novembre, les lumières s'allument à Phantasialand, il y en a plus d'un
+  million suspendues à Bottrop, et à Wavre une patinoire attend sous un toit de
+  hall. Onze parcs européens ouvrent entre novembre et janvier : les dates, les
+  tarifs, le coaster d'Europa-Park qui tourne pour la dernière fois, et pourquoi
+  la semaine la plus vide de tout l'arrière-saison est celle juste avant.
 tags:
   - hiver
   - wintertraum
@@ -35,9 +34,9 @@ coverImage:
 seo:
   title: "Parcs ouverts en hiver 2026/27 : dates & temps d'attente"
   description: >-
-    Quels parcs d'attractions sont ouverts en hiver 2026/27 : Noël Gaulois,
-    Wintertraum, Winter Efteling, Walibi Winter et huit autres, avec les dates,
-    les tarifs et de vraies données de temps d'attente.
+    Patinoires, marchés de Noël et un million de lumières : quels parcs sont
+    ouverts en hiver 2026/27. Noël Gaulois, Wintertraum, Winter Efteling,
+    Walibi Winter et huit autres, avec dates, tarifs et vrais temps d'attente.
   keywords:
     - parcs d'attractions ouverts en hiver
     - Parc Astérix Noël 2026
@@ -51,12 +50,25 @@ seo:
     - PortAventura Noël
 ---
 
+Le 14 novembre, les lumières s'allument à [Phantasialand](ref:phantasialand). Le
+parc reste ouvert jusqu'à 20 h, et MAGIC SYMPHONY clôt la soirée avec un feu
+d'artifice, chaque jour à partir de là et jusqu'en janvier. À ce moment-là, plus
+d'un million de lampes sont suspendues à Bottrop, une patinoire de 700 m² se
+dresse sous un toit de hall à Wavre, et à Kasterlee le père Noël est compris
+dans le billet journalier. Entre la mi-novembre et le début janvier, une bonne
+part des parcs européens devient autre chose, qui n'a plus qu'un rapport
+lointain avec les montagnes russes : vin chaud, patins et guirlandes dans les
+arbres.
+
+La plupart, non. Le gros des parcs allemands ferme fin octobre et rouvre au
+printemps, et l'un d'eux a carrément renoncé en avril.
+
 Le 23 avril 2026, [Walibi Holland](ref:walibi-holland) a arrêté son exploitation
 hivernale. **Bright Nights**, quatre éditions durant : des coasters illuminés et
 un spectacle pyrotechnique baptisé « Light up the Night ». Terminé, sans
 successeur. Le parc reste fermé de novembre à Pâques.
 
-L'argumentaire de cette annulation explique presque toute la saison d'hiver. La
+L'argumentaire en dit long sur toute la saison d'hiver. La
 directrice Mascha Taminiau a pointé la brièveté de la période d'ouverture et la
 dépendance à la météo. Traduction : les montagnes russes ne tournent pas par
 gel, tempête ou pluie verglaçante, et Walibi Holland n'a presque rien de
@@ -353,6 +365,15 @@ mêmes réserves.
 
 ```
 
+Et à Europa-Park, décembre atteint exactement le niveau que seules les vacances
+d'été y atteignent par ailleurs.
+
+**Europa-Park, temps d'attente typique par mois**
+
+```stats-widget slug=europa-park show=months
+
+```
+
 L'explication évidente serait la journée plus courte, et pour deux des trois
 parcs elle tient. Nous avons calculé les horaires publiés : une journée d'août à
 Efteling dure en moyenne 11,7 heures, une journée de novembre 8,4. À Europa-Park,
@@ -376,35 +397,6 @@ cinq mois ; un visiteur d'hiver choisit entre trois week-ends, avec les vacances
 de Noël au milieu. Pour le Wintertraum s'ajoute qu'il est une destination en
 soi. On roule vers Brühl pour les spectacles, pas malgré la saison.
 
-## Ce que nous n'avons pas mesuré
-
-Pour le Wintertraum lui-même, nos statistiques s'arrêtent. Novembre est à
-**zéro jour mesuré**, décembre à cinq, janvier à quatre, et demander une fenêtre
-plus large n'y change rien. Ce qui se passe à Brühl entre novembre et janvier,
-nous ne l'avons pas mesuré, nous l'avons vu. La suite de ce chapitre relève de
-l'observation.
-
-Et ce que l'on observe est un saut, pas une transition. Jusqu'au vendredi
-13 novembre inclus, Brühl tourne en saison régulière sur les anciens horaires,
-de 9 h à 18 h, et cette semaine-là est la plus vide de tout l'arrière-saison. Le
-samedi 14 novembre, le parc passe à 11 h – 20 h, et à partir de ce jour c'est
-plein. Le Wintertraum remplit le site pendant des semaines à un niveau que seul
-le plein été atteint autrement.
-
-D'où un conseil désagréable : la semaine vide ne vous sert à rien, puisque le
-Wintertraum n'y existe pas encore. Pour le voir sans la foule, prenez un jour de
-semaine entre le 16 novembre et le début des vacances de Noël. Ensuite, jusque
-tard en janvier, chaque jour est un jour de vacances.
-
-Un mot sur le calendrier d'affluence ici, parce qu'il saurait mieux s'il le
-pouvait : pour décembre, il classe à Brühl 29 jours d'ouverture sur 29 en
-« faible ». En juillet, dans le même parc, il répartit sur quatre niveaux.
-L'écart ne vient pas du public, il vient du novembre manquant plus haut. Un
-modèle qui n'a jamais vu une saison la croit calme, et cela vaut aussi pour les
-journées d'hiver à Europa-Park et à Efteling. Nous préférons l'écrire que le
-laisser passer. Dès qu'une saison d'hiver aura été mesurée de bout en bout, le
-calendrier saura aussi calculer décembre.
-
 Et parce que la question « lequel est le plus chargé » revient à chaque trajet en
 voiture, voici les parcs de cet article côte à côte, chacun avec son jour de
 semaine le plus calme :
@@ -412,6 +404,39 @@ semaine le plus calme :
 ```park-comparison-widget slugs=phantasialand,europa-park,efteling,attractiepark-toverland,walibi-belgium,portaventura-park,gardaland show=quietest highlight=phantasialand
 
 ```
+
+## Cet hiver, park.fan fête son premier anniversaire
+
+C'est ce qui explique les lignes maigres dans les tableaux ci-dessus. Quand le
+dernier Wintertraum tournait, ce site démarrait à peine : de décembre 2025 nous
+avons une poignée de jours mesurés, de janvier 2026 quatre, de novembre pas un
+seul. Ce n'est que depuis avril que nous consignons chaque jour d'ouverture.
+L'hiver 2026/27 est donc le premier que nous accompagnons de la première à la
+dernière guirlande, et après lui notre modèle disposera pour la première fois
+d'une année complète.
+
+Ce que ces quelques jours d'hiver montrent déjà correspond à ce que voit
+n'importe qui présent sur place en décembre. À Phantasialand, décembre et
+janvier sont au niveau de l'été ; à Europa-Park, décembre rejoint les vacances
+d'été. La pluie froide n'y change rien, et le jour de la semaine bien moins
+qu'en été : un mardi de l'avent, il y a du monde dans les deux parcs.
+
+La bascule dure exactement une nuit. Jusqu'au vendredi 13 novembre inclus, Brühl
+tourne en saison régulière sur les anciens horaires, de 9 h à 18 h, et cette
+semaine-là est la plus vide de tout l'arrière-saison. Le samedi 14 novembre, le
+parc passe à 11 h – 20 h, et à partir de ce jour c'est plein.
+
+D'où un conseil désagréable : la semaine vide ne vous sert à rien, puisque le
+Wintertraum n'y existe pas encore. Votre meilleure chance est un jour de semaine
+entre le 16 novembre et le début des vacances de Noël. Il y aura du monde là
+aussi, un peu moins seulement, et à partir des vacances chaque journée est une
+journée de vacances jusque tard en janvier.
+
+Ne prenez pas le calendrier d'affluence au mot pour cet hiver-ci : pour
+décembre, il classe à Brühl 29 jours d'ouverture sur 29 en « faible », alors
+qu'en juillet, dans le même parc, il répartit sur quatre niveaux. Un modèle qui
+n'a jamais vu une saison la croit calme, et cela vaut aussi pour les journées
+d'hiver à Europa-Park et à Efteling. Dès l'hiver prochain, il les connaîtra.
 
 ## Trois choses qui changent en hiver
 
@@ -432,7 +457,7 @@ semaine le plus calme :
 
 Le plus gros programme est à Brühl : 67 jours d'exploitation, trois spectacles
 en salle, quatre en plein air. C'est aussi le plus chargé, donc prenez un jour
-de semaine en novembre.
+de semaine avant les vacances de Noël.
 Si la météo ne doit pas compter, Kaatsheuvel est le choix le plus sûr, parce
 qu'une bonne part des meilleures attractions y est de toute façon à l'intérieur.
 Et pour refaire un tour d'[Euro-Mir](ref:europa-park/euro-mir), il reste jusqu'au
