@@ -15,11 +15,22 @@ function Avatar({ className, ...props }: React.ComponentProps<typeof AvatarPrimi
   );
 }
 
+/**
+ * The photo inside the circle.
+ *
+ * `object-cover object-top` is load-bearing, not decoration. The box is square
+ * and an `<img>` with no `object-fit` STRETCHES to fill it, so a portrait comes
+ * out squashed — which is what the blog byline did with Patrick's 729 × 1100
+ * cut-out. `cover` alone then swings the other way: it crops to the middle of a
+ * tall picture, and the middle of a person is their chest. `top` is where a face
+ * is in any portrait, and for a square source the two are identical, so nothing
+ * that already looked right can move.
+ */
 function AvatarImage({ className, ...props }: React.ComponentProps<typeof AvatarPrimitive.Image>) {
   return (
     <AvatarPrimitive.Image
       data-slot="avatar-image"
-      className={cn('aspect-square size-full', className)}
+      className={cn('aspect-square size-full object-cover object-top', className)}
       {...props}
     />
   );

@@ -3,6 +3,7 @@ import { getTranslations } from 'next-intl/server';
 import { ArrowRight, Check, User } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { getAuthor } from '@/lib/blog/authors';
+import { resolveEntryForLocale } from '@/lib/blog/listing';
 import type { Locale } from '@/i18n/config';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Reveal } from '@/components/marketing/scroll-reveal';
@@ -11,13 +12,23 @@ import { Reveal } from '@/components/marketing/scroll-reveal';
 const AUTHOR_SLUG = 'patrick';
 
 /**
+ * The post this section points at: how a childhood at Phantasialand became this
+ * site.
+ *
+ * A `translationKey`, never a slug. Every locale titles this post its own way
+ * (`willkommen-im-park-fan-blog` in German, `un-passeggino-una-gondola-e-park-fan`
+ * in Italian), so a hard-coded path would 404 in five of six languages.
+ */
+const STORY_POST_KEY = 'welcome-to-park-fan-blog';
+
+/**
  * Who is behind this.
  *
- * The bullet list and the two paragraphs deliberately restate no fact the blog's
- * own author page does not already carry — the mock's "30 Jahre" against that
- * page's "über 25 Jahre" is exactly the sort of pair that ends up quoted back at
- * the site — and the section links there rather than growing a second biography
- * nobody will remember to update.
+ * The bullet list and the two paragraphs deliberately restate no fact the blog
+ * does not already carry — the mock's "30 Jahre" against the author page's "über
+ * 25 Jahre" is exactly the sort of pair that ends up quoted back at the site —
+ * and the section links out rather than growing a second biography nobody will
+ * remember to update.
  *
  * The portrait is the blog author registry's `avatar`, not a path typed in here:
  * the same picture the author page and every post banner show, so there is one
@@ -33,6 +44,12 @@ export async function FounderSection({ locale }: { locale: Locale }) {
   const t = await getTranslations('homeStory.founder');
   const author = getAuthor(AUTHOR_SLUG, locale);
   const bullets = ['b1', 'b2', 'b3', 'b4', 'b5', 'b6'] as const;
+
+  // The post is the better read of the two — it is the story this section
+  // summarises. It falls back to the author page rather than dropping the link,
+  // because the post is a file that can be unpublished and the page cannot.
+  const storyPost = resolveEntryForLocale(STORY_POST_KEY, locale);
+  const authorHref = storyPost ? `/blog/${storyPost.entry.slug}` : `/blog/authors/${AUTHOR_SLUG}`;
 
   return (
     <section className="border-border bg-muted/30 border-t px-4 py-16 sm:py-18">
@@ -76,7 +93,7 @@ export async function FounderSection({ locale }: { locale: Locale }) {
                 <div className="text-[15px] font-bold">{t('name')}</div>
                 <div className="text-muted-foreground text-xs">{t('role')}</div>
                 <Link
-                  href={`/blog/authors/${AUTHOR_SLUG}` as '/'}
+                  href={authorHref as '/'}
                   prefetch={false}
                   className="text-primary mt-1.5 inline-flex items-center gap-1.5 text-xs font-semibold hover:underline"
                 >
