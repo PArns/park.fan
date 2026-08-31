@@ -31,7 +31,7 @@ rideLinks:
   - efteling/joris-en-de-draak
 coverImage:
   src: /media/toverland/troy-16x9.jpg
-  alt: "Il cavallo di Troia in legno nell’area a tema Ithaka di Toverland, su un carro"
+  alt: 'Il cavallo di Troia in legno nell’area a tema Ithaka di Toverland, su un carro'
   caption: 'Il cavallo di Troia a Ithaka. Dietro gli alberi si nasconde Troy.'
   credit: 'park.fan'
 seo:

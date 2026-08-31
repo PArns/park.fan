@@ -1,5 +1,5 @@
 ---
-title: "L’arte dell’attesa: perché per certe attrazioni facciamo la fila “volentieri”"
+title: 'L’arte dell’attesa: perché per certe attrazioni facciamo la fila “volentieri”'
 translationKey: the-art-of-waiting
 date: '2026-07-13'
 author: patrick
@@ -21,7 +21,7 @@ tags:
 category: behind-the-scenes
 coverImage:
   src: /media/disney-animal-kingdom/kunst-des-wartens-cover.jpg
-  alt: "L’Albero della Vita nell’Animal Kingdom di Disney, davanti le folle di visitatori del parco"
+  alt: 'L’Albero della Vita nell’Animal Kingdom di Disney, davanti le folle di visitatori del parco'
   caption: 'Animal Kingdom di Disney: decine di migliaia di ospiti, un Albero della Vita, e ovunque la domanda di quanto si stia in coda, e per cosa.'
 seo:
   title: 'Psicologia dei tempi di attesa nei parchi'

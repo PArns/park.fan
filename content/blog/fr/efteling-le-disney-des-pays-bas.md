@@ -29,10 +29,10 @@ rideLinks:
 coverImage:
   src: /media/efteling/symbolica-16x9.jpg
   alt: 'Le palais de Symbolica la nuit, éclairé en bleu, une fontaine devant'
-  caption: "Symbolica un soir d’hiver. En haut à gauche, la Pagode traverse le cadre."
+  caption: 'Symbolica un soir d’hiver. En haut à gauche, la Pagode traverse le cadre.'
   credit: 'park.fan'
 seo:
-  title: "Efteling : temps d’attente, conseils et meilleure période"
+  title: 'Efteling : temps d’attente, conseils et meilleure période'
   description: >-
     Efteling avec de vraies données d’attente sur deux saisons : meilleure
     période, billets et pourquoi le parc n’a droit qu’à cinq millions de

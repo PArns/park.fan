@@ -28,10 +28,10 @@ rideLinks:
 coverImage:
   src: /media/movie-park-germany/star-trek-operation-enterprise-16x9.jpg
   alt: 'La voie de Star Trek: Operation Enterprise éclairée en rouge la nuit, en dessous les lettres lumineuses « Horrorwood Studios »'
-  caption: "Six semaines par an, ce parc s’appelle Horrorwood Studios. Les lettres à l’entrée sont transformées pour l’occasion, pas remplacées."
+  caption: 'Six semaines par an, ce parc s’appelle Horrorwood Studios. Les lettres à l’entrée sont transformées pour l’occasion, pas remplacées.'
   credit: 'park.fan'
 seo:
-  title: "Movie Park : temps d’attente, meilleurs jours et Halloween 2026"
+  title: 'Movie Park : temps d’attente, meilleurs jours et Halloween 2026'
   description: >-
     Movie Park Germany avec de vraies données de temps d’attente : le jour le
     plus calme, le calendrier du jeudi au dimanche à partir de septembre, le

@@ -336,7 +336,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein separat ticketpflichtiges Abendevent — wie Halloween- oder Weihnachtspartys — das über den normalen Tageseintritt hinausgeht.',
     definition:
-      "Eine Sonderveranstaltung (englisch: Hard Ticket Event) ist ein separat buchbares Abend-Event mit eigenem Eintrittsticket. Diese Events bieten exklusive Unterhaltung, thematische Dekorationen und Erlebnisse, die beim regulären Parkbesuch nicht verfügbar sind. Bekannte Beispiele sind Halloween Horror Nights bei Universal, Mickey’s Not-So-Scary Halloween Party in Walt Disney World, die Weihnachtsgala im Europa-Park oder die Halloween-Events in Phantasialand. An Sonderveranstaltungstagen werden reguläre Tagesbesucher oft ab 17–18 Uhr gebeten, den Park zu verlassen. Tickets sind meist Wochen im Voraus ausverkauft.",
+      'Eine Sonderveranstaltung (englisch: Hard Ticket Event) ist ein separat buchbares Abend-Event mit eigenem Eintrittsticket. Diese Events bieten exklusive Unterhaltung, thematische Dekorationen und Erlebnisse, die beim regulären Parkbesuch nicht verfügbar sind. Bekannte Beispiele sind Halloween Horror Nights bei Universal, Mickey’s Not-So-Scary Halloween Party in Walt Disney World, die Weihnachtsgala im Europa-Park oder die Halloween-Events in Phantasialand. An Sonderveranstaltungstagen werden reguläre Tagesbesucher oft ab 17–18 Uhr gebeten, den Park zu verlassen. Tickets sind meist Wochen im Voraus ausverkauft.',
     aliases: ['Sonderveranstaltungen'],
     alternateNames: ['After-Hours-Event', 'Hard-Ticket-Event', 'Exklusivangebot'],
 
@@ -417,7 +417,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Die klassische kreisförmige Inversion, bei der die Strecke einen vollständigen vertikalen Kreis beschreibt und die Fahrgäste am Scheitelpunkt auf den Kopf stellt.',
     definition:
-      "Der Looping (englisch: Vertical Loop) ist die bekannteste Inversion der Achterbahngeschichte — ein vollständiger 360-Grad-Kreis in der vertikalen Ebene. Moderne Loopings haben eine Klothoiden-Form (Tropfenform) statt eines perfekten Kreises: Einfahrt und Ausfahrt sind weit, die Spitze eng. Diese Geometrie sorgt für gleichmäßige, anhaltende G-Kräfte statt extremer Spitzen. Der erste moderne Loop-Coaster (Corkscrew, Knott’s Berry Farm, 1975) revolutionierte die Branche. Heute ist der Looping auf Achterbahnen weltweit verbreitet, von Einstiegsbahnen bis zu Weltrekordmaschinen.",
+      'Der Looping (englisch: Vertical Loop) ist die bekannteste Inversion der Achterbahngeschichte — ein vollständiger 360-Grad-Kreis in der vertikalen Ebene. Moderne Loopings haben eine Klothoiden-Form (Tropfenform) statt eines perfekten Kreises: Einfahrt und Ausfahrt sind weit, die Spitze eng. Diese Geometrie sorgt für gleichmäßige, anhaltende G-Kräfte statt extremer Spitzen. Der erste moderne Loop-Coaster (Corkscrew, Knott’s Berry Farm, 1975) revolutionierte die Branche. Heute ist der Looping auf Achterbahnen weltweit verbreitet, von Einstiegsbahnen bis zu Weltrekordmaschinen.',
     aliases: ['Loopings'],
     alternateNames: ['Loop', 'Vertical Loop', 'Vertikaler Loop'],
 
@@ -542,7 +542,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Deutsches Familienunternehmen aus Waldkirch nahe dem Europa-Park, das Wasserfahrten, Dark Rides und zunehmend spektakuläre Stahlachterbahnen herstellt.',
     definition:
-      "Mack Rides ist ein deutsches Fahrgeschäft-Unternehmen aus Waldkirch in Baden-Württemberg — wenige Kilometer vom Europa-Park, dem Vorzeigepark der Mack-Familie, entfernt. 1921 gegründet, stellt Mack Wasserfahrten, Dark Rides (darunter Disney’s Test Track und Radiator Springs Racers) und ein wachsendes Portfolio an Hochleistungs-Coastern her. Blue Fire Megacoaster im Europa-Park (2009) war die erste Bahn mit einem Stengel-Dive-Element. Macks neuere Hypercoaster (Ride to Happiness in Plopsaland, Kondaa in Walibi Belgien) haben von der Enthusiasten-Community Höchstnoten erhalten.",
+      'Mack Rides ist ein deutsches Fahrgeschäft-Unternehmen aus Waldkirch in Baden-Württemberg — wenige Kilometer vom Europa-Park, dem Vorzeigepark der Mack-Familie, entfernt. 1921 gegründet, stellt Mack Wasserfahrten, Dark Rides (darunter Disney’s Test Track und Radiator Springs Racers) und ein wachsendes Portfolio an Hochleistungs-Coastern her. Blue Fire Megacoaster im Europa-Park (2009) war die erste Bahn mit einem Stengel-Dive-Element. Macks neuere Hypercoaster (Ride to Happiness in Plopsaland, Kondaa in Walibi Belgien) haben von der Enthusiasten-Community Höchstnoten erhalten.',
     alternateNames: ['Mack'],
 
     relatedTermIds: [
@@ -746,7 +746,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein Doppel-Inversions-Element mit 180-Grad-Richtungsumkehr, das in der Form einer Fledermaus-Flügelspannweite aussieht.',
     definition:
-      "Ein Batwing besteht aus zwei Inversionen mit Richtungsumkehr: Die Strecke zieht in einen halben Looping aufwärts, durchläuft am Scheitelpunkt einen halben Korkenzieher, der den Zug in einen kurzen Überkopf-Bereich bringt, und spiegelt dann die Sequenz zurück auf Bodenniveau — mit einer 180-Grad-Drehung der Fahrtrichtung. Aus der Vogelperspektive ähnelt der Streckenverlauf den ausgebreiteten Flügeln einer Fledermaus. Batswings sind ein Markenzeichen von B&M und erscheinen auf Coastern wie Afterburn in Carowinds und The Incredible Hulk Coaster im Universal’s Islands of Adventure. Anders als ein Bowtie (ohne Richtungsänderung) kehrt der Batwing die Fahrtrichtung um.",
+      'Ein Batwing besteht aus zwei Inversionen mit Richtungsumkehr: Die Strecke zieht in einen halben Looping aufwärts, durchläuft am Scheitelpunkt einen halben Korkenzieher, der den Zug in einen kurzen Überkopf-Bereich bringt, und spiegelt dann die Sequenz zurück auf Bodenniveau — mit einer 180-Grad-Drehung der Fahrtrichtung. Aus der Vogelperspektive ähnelt der Streckenverlauf den ausgebreiteten Flügeln einer Fledermaus. Batswings sind ein Markenzeichen von B&M und erscheinen auf Coastern wie Afterburn in Carowinds und The Incredible Hulk Coaster im Universal’s Islands of Adventure. Anders als ein Bowtie (ohne Richtungsänderung) kehrt der Batwing die Fahrtrichtung um.',
     relatedTermIds: ['b-and-m', 'bowtie', 'cobra-roll', 'inversion'],
   },
   {
@@ -1123,7 +1123,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Eine Themenfahrt ohne feste Schiene — die Fahrzeuge navigieren frei durch den Raum, geführt von in den Boden eingelassener Technologie.',
     definition:
-      "Eine Trackless Ride (schienenlose Themenfahrt) ist eine Dark-Ride-Variante, bei der die Fahrzeuge nicht an eine feste Schiene gebunden sind, sondern autonom durch den Attractionsraum navigieren — geführt durch Induktionsschleifen, WLAN oder Lasertechnik im Boden. Die freie Beweglichkeit ermöglicht wesentlich komplexere Szenengestaltung und nichtlineare Narrative: Fahrzeuge können drehen, kreisen und Szenen aus verschiedenen Winkeln anfahren. Bekannte Beispiele: Star Wars: Rise of the Resistance (Disney), Ratatouille: L’Aventure Totalement Toquée de Rémy (Disneyland Paris) und Symbolica (Efteling, Niederlande).",
+      'Eine Trackless Ride (schienenlose Themenfahrt) ist eine Dark-Ride-Variante, bei der die Fahrzeuge nicht an eine feste Schiene gebunden sind, sondern autonom durch den Attractionsraum navigieren — geführt durch Induktionsschleifen, WLAN oder Lasertechnik im Boden. Die freie Beweglichkeit ermöglicht wesentlich komplexere Szenengestaltung und nichtlineare Narrative: Fahrzeuge können drehen, kreisen und Szenen aus verschiedenen Winkeln anfahren. Bekannte Beispiele: Star Wars: Rise of the Resistance (Disney), Ratatouille: L’Aventure Totalement Toquée de Rémy (Disneyland Paris) und Symbolica (Efteling, Niederlande).',
     aliases: ['Trackless'],
     alternateNames: ['Trackless Dark Ride', 'Gleislose Attraktion'],
 
@@ -1352,7 +1352,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Arrow Dynamics',
     shortDefinition: 'Amerikanischer Achterbahnhersteller und Erfinder der modernen Loopingbahn.',
     definition:
-      "Arrow Dynamics (gegründet 1945) war ein Pionier des modernen Achterbahnbaus und führte die gebogenen Stahlrohre sowie den ersten modernen Loop auf Corkscrew (Knott’s Berry Farm, 1975) ein. Arrow-Bahnen sind bekannt für Korkenzieher und hängende Loopingbahnen. Das Unternehmen meldete 2001 Insolvenz an; die Vermögenswerte wurden von S&S übernommen.",
+      'Arrow Dynamics (gegründet 1945) war ein Pionier des modernen Achterbahnbaus und führte die gebogenen Stahlrohre sowie den ersten modernen Loop auf Corkscrew (Knott’s Berry Farm, 1975) ein. Arrow-Bahnen sind bekannt für Korkenzieher und hängende Loopingbahnen. Das Unternehmen meldete 2001 Insolvenz an; die Vermögenswerte wurden von S&S übernommen.',
     relatedTermIds: ['corkscrew', 'rattle', 'steel-coaster', 'suspended-coaster', 'vertical-loop'],
     alternateNames: ['Arrow', 'Arrow Development', 'S&S Arrow'],
   },
@@ -1372,7 +1372,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Amerikanischer Hersteller, spezialisiert auf LSM/LIM-Katapultachterbahnen — in Europa bekannt durch Sky Scream im Holiday Park.',
     definition:
-      "Premier Rides (gegründet 1995, Baltimore, Maryland) ist ein amerikanischer Achterbahnhersteller, der sich auf Linear-Synchron-Motor (LSM)- und Linear-Induktions-Motor (LIM)-Abschusstechnologien spezialisiert hat. Das Sky Rocket II-Modell — ein kompakter, einsliniger Katapultcoaster — hat sich weltweit in mittelgroßen Parks etabliert.\n\nIn Europa ist Premier Rides vor allem durch Sky Scream im Holiday Park (Haßloch, Deutschland) bekannt, einem invertierten Familienkatapultcoaster. Auch Hagrid’s Magical Creatures Motorbike Adventure in Universal Orlando nutzt Premier’s LSM-Technologie und zeigt die Vielseitigkeit des Systems.",
+      'Premier Rides (gegründet 1995, Baltimore, Maryland) ist ein amerikanischer Achterbahnhersteller, der sich auf Linear-Synchron-Motor (LSM)- und Linear-Induktions-Motor (LIM)-Abschusstechnologien spezialisiert hat. Das Sky Rocket II-Modell — ein kompakter, einsliniger Katapultcoaster — hat sich weltweit in mittelgroßen Parks etabliert.\n\nIn Europa ist Premier Rides vor allem durch Sky Scream im Holiday Park (Haßloch, Deutschland) bekannt, einem invertierten Familienkatapultcoaster. Auch Hagrid’s Magical Creatures Motorbike Adventure in Universal Orlando nutzt Premier’s LSM-Technologie und zeigt die Vielseitigkeit des Systems.',
     alternateNames: ['Premier'],
     relatedTermIds: ['gerstlauer', 'intamin', 'launch-coaster'],
   },
@@ -1382,7 +1382,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Münchner Hersteller bekannt für Spinning Coaster mit Trick Track, die X-Car-Plattform und den Vertikallooping Sky Loop.',
     definition:
-      "Maurer Rides (Maurer AG, Metallbau seit 1876, Freizeitanlagen ab 1993) ist ein Münchner Hersteller. Das Unternehmen entwickelte die SC-Spinning-Coaster-Serie mit dem charakteristischen Trick Track — einem Abschnitt, bei dem sich der Wagen seitlich neigt — sowie die X-Car-Plattform für individuelle Kompaktlayouts mit Katapultstarts und Inversionen.\n\nDer Sky Loop ist ein eigenständiges Vertikallooping-Modell, das platzsparend in vielen europäischen Parks steht. Bekannte europäische Installationen: Winja’s Fear und Winja’s Force im Phantasialand (Deutschland), Indoor-Spinning-Coaster mit Trick Track, sowie X-Car-Installationen in europäischen Parks.",
+      'Maurer Rides (Maurer AG, Metallbau seit 1876, Freizeitanlagen ab 1993) ist ein Münchner Hersteller. Das Unternehmen entwickelte die SC-Spinning-Coaster-Serie mit dem charakteristischen Trick Track — einem Abschnitt, bei dem sich der Wagen seitlich neigt — sowie die X-Car-Plattform für individuelle Kompaktlayouts mit Katapultstarts und Inversionen.\n\nDer Sky Loop ist ein eigenständiges Vertikallooping-Modell, das platzsparend in vielen europäischen Parks steht. Bekannte europäische Installationen: Winja’s Fear und Winja’s Force im Phantasialand (Deutschland), Indoor-Spinning-Coaster mit Trick Track, sowie X-Car-Installationen in europäischen Parks.',
     alternateNames: ['Maurer', 'Maurer Söhne', 'Maurer AG'],
     relatedTermIds: ['gerstlauer', 'launch-coaster', 'spinning-coaster', 'xtreme-spinning-coaster'],
   },
@@ -1392,7 +1392,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Italienischer Hersteller mit einem der größten Portfolios familienfreundlicher Achterbahnen und Fahrgeschäfte weltweit — über 250 Achterbahnen installiert.',
     definition:
-      "Zamperla (gegründet 1966, Altavilla Vicentina, Italien) ist einer der produktivsten Freizeitattraktionshersteller weltweit. Während Intamin, B&M und Mack auf große Thrill-Installationen abzielen, fokussiert sich Zamperla auf Zugänglichkeit und Volumen — Family Coaster, Mini Coaster, Twister und Disk’O Coaster sind Standardattraktionen kleinerer Parks und Resort-Midways weltweit.\n\nKompakte Grundrisse und moderate Mindestgrößen machen Zamperla-Bahnen besonders in europäischen Stadtparks, Ferienresorts und Innenbereichen verbreitet. Das Unternehmen baute auch Thunderbolt auf Coney Island (New York) und zeigt damit auch Kapazität für größere Projekte.",
+      'Zamperla (gegründet 1966, Altavilla Vicentina, Italien) ist einer der produktivsten Freizeitattraktionshersteller weltweit. Während Intamin, B&M und Mack auf große Thrill-Installationen abzielen, fokussiert sich Zamperla auf Zugänglichkeit und Volumen — Family Coaster, Mini Coaster, Twister und Disk’O Coaster sind Standardattraktionen kleinerer Parks und Resort-Midways weltweit.\n\nKompakte Grundrisse und moderate Mindestgrößen machen Zamperla-Bahnen besonders in europäischen Stadtparks, Ferienresorts und Innenbereichen verbreitet. Das Unternehmen baute auch Thunderbolt auf Coney Island (New York) und zeigt damit auch Kapazität für größere Projekte.',
     alternateNames: ['Zamperla rides', 'Antonio Zamperla'],
     relatedTermIds: ['credit', 'gerstlauer', 'mine-train'],
   },
@@ -1590,7 +1590,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Character Dining',
     shortDefinition: 'Restaurant, bei dem Kostümcharaktere die Tische der Gäste besuchen.',
     definition:
-      "Character Dining ist ein Tischservice- (oder gelegentlich Buffet-)Restauranterlebnis, bei dem Kostümcharaktere jeden Tisch besuchen, mit Gästen interagieren, Fotos machen und Autogramme geben. Es garantiert Charakterbegegnungen ohne separates Warteschlangenanstehen, was es bei Familien besonders beliebt macht. Beispiele: Chef Mickey’s (Disney World) und das Prinzessinnen-Dinner in der Auberge de Cendrillon (Disneyland Paris).",
+      'Character Dining ist ein Tischservice- (oder gelegentlich Buffet-)Restauranterlebnis, bei dem Kostümcharaktere jeden Tisch besuchen, mit Gästen interagieren, Fotos machen und Autogramme geben. Es garantiert Charakterbegegnungen ohne separates Warteschlangenanstehen, was es bei Familien besonders beliebt macht. Beispiele: Chef Mickey’s (Disney World) und das Prinzessinnen-Dinner in der Auberge de Cendrillon (Disneyland Paris).',
     relatedTermIds: ['character-meet-and-greet', 'quick-service', 'table-service'],
     alternateNames: [
       'Character Dining',
@@ -1812,7 +1812,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Eine Zero-G-Roll-Variante mit integriertem Richtungswechsel — der Zug verlässt die Inversion auf einem anderen Kurs als er eingefahren ist.',
     definition:
-      "Der Zero-G Winder verbindet die schwebende Sensation eines Zero-G Rolls mit einem Richtungswechsel in der Streckengeometrie. Während beim klassischen Zero-G Roll der Zug parallel ein- und ausfährt, kurven beim Winder die Schienen während der Drehung so, dass der Zug in eine deutlich andere Richtung zeigt, als er das Element begonnen hat. Damit erfüllt das Element zwei Funktionen gleichzeitig: Es liefert die Schwerelosigkeit einer Inversion und leitet den Coaster gleichzeitig in den nächsten Streckenabschnitt über.\n\nZero-G Winder sind vor allem auf moderneren, technisch anspruchsvollen Coaster-Designs zu finden, die von Herstellern wie Intamin und B&M gebaut werden. Kondaa im Walibi Belgium und VelociCoaster in Universal’s Islands of Adventure zählen zu den bekanntesten Beispielen. Die Kombination aus Airtime, Inversion und Richtungsänderung in einem einzigen Element macht den Zero-G Winder zu einem der vielschichtigsten Elemente im modernen Achterbahnbau.",
+      'Der Zero-G Winder verbindet die schwebende Sensation eines Zero-G Rolls mit einem Richtungswechsel in der Streckengeometrie. Während beim klassischen Zero-G Roll der Zug parallel ein- und ausfährt, kurven beim Winder die Schienen während der Drehung so, dass der Zug in eine deutlich andere Richtung zeigt, als er das Element begonnen hat. Damit erfüllt das Element zwei Funktionen gleichzeitig: Es liefert die Schwerelosigkeit einer Inversion und leitet den Coaster gleichzeitig in den nächsten Streckenabschnitt über.\n\nZero-G Winder sind vor allem auf moderneren, technisch anspruchsvollen Coaster-Designs zu finden, die von Herstellern wie Intamin und B&M gebaut werden. Kondaa im Walibi Belgium und VelociCoaster in Universal’s Islands of Adventure zählen zu den bekanntesten Beispielen. Die Kombination aus Airtime, Inversion und Richtungsänderung in einem einzigen Element macht den Zero-G Winder zu einem der vielschichtigsten Elemente im modernen Achterbahnbau.',
     relatedTermIds: ['airtime', 'intamin', 'inversion', 'zero-g-roll'],
     aliases: ['Zero-G-Winder'],
     alternateNames: ['Zero G Winder', 'Winder'],
@@ -2303,7 +2303,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'pepper-ghost',
-    name: "Pepper’s Ghost",
+    name: 'Pepper’s Ghost',
     shortDefinition:
       'Eine klassische Illusion, die Glas und Licht nutzt, um "transparente" Geister zu erzeugen.',
     definition:

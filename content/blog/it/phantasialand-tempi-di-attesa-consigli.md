@@ -26,8 +26,8 @@ parkLinks:
   - phantasialand
 coverImage:
   src: /media/phantasialand/taron-16x9.jpg
-  alt: "Taron sfreccia tra le colonne di basalto dell’area tematica Klugheim del Phantasialand"
-  caption: "Taron nel villaggio di basalto Klugheim, per me l’angolo più bello del parco."
+  alt: 'Taron sfreccia tra le colonne di basalto dell’area tematica Klugheim del Phantasialand'
+  caption: 'Taron nel villaggio di basalto Klugheim, per me l’angolo più bello del parco.'
   credit: 'park.fan'
 seo:
   title: 'Phantasialand: attesa e consigli'

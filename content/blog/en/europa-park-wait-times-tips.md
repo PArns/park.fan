@@ -1,5 +1,5 @@
 ---
-title: "Europa-Park: Germany’s biggest park, and why it feels emptier than it is"
+title: 'Europa-Park: Germany’s biggest park, and why it feels emptier than it is'
 translationKey: europa-park-guide
 date: '2026-08-21'
 updatedAt: '2026-08-23'

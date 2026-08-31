@@ -34,7 +34,7 @@ coverImage:
   caption: 'Le cheval de Troie à Ithaka. Derrière les arbres se cache Troy.'
   credit: 'park.fan'
 seo:
-  title: "Toverland : Troy, temps d’attente & guide Halloween"
+  title: 'Toverland : Troy, temps d’attente & guide Halloween'
   description: >-
     Pourquoi Troy à Toverland est le coaster en bois de classe mondiale le plus
     tranquille d’Europe : vrais temps d’attente, Fēnix, billets et Halloween

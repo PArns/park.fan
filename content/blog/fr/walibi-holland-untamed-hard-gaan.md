@@ -1,5 +1,5 @@
 ---
-title: "Walibi Holland : « hard gaan », Untamed et 20 minutes d’attente"
+title: 'Walibi Holland : « hard gaan », Untamed et 20 minutes d’attente'
 translationKey: walibi-holland-guide
 date: '2026-08-14'
 updatedAt: '2026-08-19'
@@ -30,10 +30,10 @@ rideLinks:
 coverImage:
   src: /media/walibi-holland/untamed-16x9.jpg
   alt: 'Le lettrage rouillé « Untamed » devant la structure en bois du coaster'
-  caption: "L’entrée d’Untamed. Le bois en dessous provient encore en grande partie de Robin Hood."
+  caption: 'L’entrée d’Untamed. Le bois en dessous provient encore en grande partie de Robin Hood.'
   credit: 'park.fan'
 seo:
-  title: "Walibi Holland : Untamed, temps d’attente et Halloween"
+  title: 'Walibi Holland : Untamed, temps d’attente et Halloween'
   description: >-
     Comprendre Walibi Holland : le concept « hard gaan », Untamed et YOY avec de
     vraies données d’attente, les Halloween Fright Nights, tarifs et accès.

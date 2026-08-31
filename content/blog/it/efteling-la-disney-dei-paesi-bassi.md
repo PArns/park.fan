@@ -29,7 +29,7 @@ rideLinks:
 coverImage:
   src: /media/efteling/symbolica-16x9.jpg
   alt: 'Il palazzo di Symbolica di notte, illuminato di blu, con una fontana davanti'
-  caption: "Symbolica in una sera d’inverno. In alto a sinistra passa la Pagode."
+  caption: 'Symbolica in una sera d’inverno. In alto a sinistra passa la Pagode.'
   credit: 'park.fan'
 seo:
   title: 'Efteling: tempi di attesa, consigli e periodo migliore'

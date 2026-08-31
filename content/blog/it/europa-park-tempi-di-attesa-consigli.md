@@ -31,8 +31,8 @@ rideLinks:
   - traumatica/*
 coverImage:
   src: /media/europa-park/voltron-nevera-powered-by-rimac-16x9.jpg
-  alt: "Un treno di Voltron Nevera passa a testa in giù dentro un’inversione, illuminato di rosa e blu"
-  caption: "Voltron Nevera nell’area tematica dedicata alla Croazia. Sette inversioni, e la partenza catapultata più ripida del mondo."
+  alt: 'Un treno di Voltron Nevera passa a testa in giù dentro un’inversione, illuminato di rosa e blu'
+  caption: 'Voltron Nevera nell’area tematica dedicata alla Croazia. Sette inversioni, e la partenza catapultata più ripida del mondo.'
   credit: 'park.fan'
 seo:
   title: 'Europa-Park: attesa e periodo migliore'

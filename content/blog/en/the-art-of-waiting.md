@@ -21,8 +21,8 @@ tags:
 category: behind-the-scenes
 coverImage:
   src: /media/disney-animal-kingdom/kunst-des-wartens-cover.jpg
-  alt: "The Tree of Life at Disney’s Animal Kingdom, with the crowds of the park in front of it"
-  caption: "Disney’s Animal Kingdom: tens of thousands of guests, one Tree of Life, and everywhere the question of how long you’ll wait for what."
+  alt: 'The Tree of Life at Disney’s Animal Kingdom, with the crowds of the park in front of it'
+  caption: 'Disney’s Animal Kingdom: tens of thousands of guests, one Tree of Life, and everywhere the question of how long you’ll wait for what.'
 seo:
   title: 'Queue Psychology at Theme Parks'
   description: >-

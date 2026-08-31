@@ -1,5 +1,5 @@
 ---
-title: "Halloween 2026 dans les parcs d’Europe : nuits d’horreur et mazes"
+title: 'Halloween 2026 dans les parcs d’Europe : nuits d’horreur et mazes'
 translationKey: halloween-parks-2026
 date: '2026-07-17'
 updatedAt: '2026-08-19'
@@ -30,10 +30,10 @@ tags:
 category: guides
 coverImage:
   src: /media/halloween-2026/cover.jpg
-  alt: "Phénix géant formé de milliers de citrouilles lumineuses, ailes déployées, la nuit, avec au premier plan un acteur muni d’une masse"
-  caption: "Un phénix fait de milliers de citrouilles lumineuses : voilà comment un parc sort le grand jeu de son décor d’Halloween."
+  alt: 'Phénix géant formé de milliers de citrouilles lumineuses, ailes déployées, la nuit, avec au premier plan un acteur muni d’une masse'
+  caption: 'Un phénix fait de milliers de citrouilles lumineuses : voilà comment un parc sort le grand jeu de son décor d’Halloween.'
 seo:
-  title: "Halloween parcs d’attractions 2026"
+  title: 'Halloween parcs d’attractions 2026'
   description: >-
     Halloween 2026 dans les parcs d’Europe : Movie Park et ses neuf mazes,
     Traumatica, Walibi, Toverland, plus les réfractaires et les jours les plus

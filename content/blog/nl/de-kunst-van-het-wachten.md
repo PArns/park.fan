@@ -21,8 +21,8 @@ tags:
 category: behind-the-scenes
 coverImage:
   src: /media/disney-animal-kingdom/kunst-des-wartens-cover.jpg
-  alt: "De Tree of Life in Disney’s Animal Kingdom, met daarvoor de bezoekersmassa van het park"
-  caption: "Disney’s Animal Kingdom: tienduizenden gasten, één Tree of Life, en overal de vraag hoelang je waarvoor aanschuift."
+  alt: 'De Tree of Life in Disney’s Animal Kingdom, met daarvoor de bezoekersmassa van het park'
+  caption: 'Disney’s Animal Kingdom: tienduizenden gasten, één Tree of Life, en overal de vraag hoelang je waarvoor aanschuift.'
 seo:
   title: 'Wachttijden-psychologie in het pretpark'
   description: >-

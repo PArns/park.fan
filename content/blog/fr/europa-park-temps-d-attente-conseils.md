@@ -1,5 +1,5 @@
 ---
-title: "Europa-Park : le plus grand parc d’Allemagne, et pourquoi il semble vide"
+title: 'Europa-Park : le plus grand parc d’Allemagne, et pourquoi il semble vide'
 translationKey: europa-park-guide
 date: '2026-08-21'
 updatedAt: '2026-08-23'
@@ -36,7 +36,7 @@ coverImage:
   caption: 'Voltron Nevera dans la zone croate. Sept inversions, et le lancement le plus pentu du monde.'
   credit: 'park.fan'
 seo:
-  title: "Europa-Park : temps d’attente & conseils"
+  title: 'Europa-Park : temps d’attente & conseils'
   description: >-
     Temps d’attente à l’Europa-Park, un an de mesures : 23 minutes en général,
     dimanche le plus calme, novembre le plus vide. Meilleure période, prix 2026.

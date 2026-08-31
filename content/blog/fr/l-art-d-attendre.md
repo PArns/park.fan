@@ -1,5 +1,5 @@
 ---
-title: "L’art d’attendre : pourquoi on fait « volontiers » la queue pour certaines attractions"
+title: 'L’art d’attendre : pourquoi on fait « volontiers » la queue pour certaines attractions'
 translationKey: the-art-of-waiting
 date: '2026-07-13'
 author: patrick
@@ -21,10 +21,10 @@ tags:
 category: behind-the-scenes
 coverImage:
   src: /media/disney-animal-kingdom/kunst-des-wartens-cover.jpg
-  alt: "L’Arbre de Vie du Disney’s Animal Kingdom, avec devant lui la foule des visiteurs du parc"
-  caption: "Disney’s Animal Kingdom : des dizaines de milliers de visiteurs, un Arbre de Vie, et partout la même question : combien de temps faire la queue, et pour quoi."
+  alt: 'L’Arbre de Vie du Disney’s Animal Kingdom, avec devant lui la foule des visiteurs du parc'
+  caption: 'Disney’s Animal Kingdom : des dizaines de milliers de visiteurs, un Arbre de Vie, et partout la même question : combien de temps faire la queue, et pour quoi.'
 seo:
-  title: "Psychologie des files d’attente en parc"
+  title: 'Psychologie des files d’attente en parc'
   description: >-
     Temps d’attente en parc : la psychologie et les maths des files, expliquées
     par park.fan, et pourquoi 60 minutes en paraissent parfois 20.

@@ -30,7 +30,7 @@ rideLinks:
 coverImage:
   src: /media/walibi-holland/untamed-16x9.jpg
   alt: 'La scritta arrugginita «Untamed» davanti alla struttura in legno del coaster'
-  caption: "L’ingresso di Untamed. Il legno sottostante proviene ancora in gran parte da Robin Hood."
+  caption: 'L’ingresso di Untamed. Il legno sottostante proviene ancora in gran parte da Robin Hood.'
   credit: 'park.fan'
 seo:
   title: 'Walibi Holland: Untamed, tempi di attesa e Halloween'

@@ -27,7 +27,7 @@ rideLinks:
 coverImage:
   src: /media/movie-park-germany/star-trek-operation-enterprise-16x9.jpg
   alt: 'Il tracciato di Star Trek: Operation Enterprise illuminato di rosso di notte, sotto la scritta luminosa «Horrorwood Studios»'
-  caption: "Sei settimane all’anno questo parco si chiama Horrorwood Studios. La scritta all’ingresso viene trasformata per l’occasione, non sostituita."
+  caption: 'Sei settimane all’anno questo parco si chiama Horrorwood Studios. La scritta all’ingresso viene trasformata per l’occasione, non sostituita.'
   credit: 'park.fan'
 seo:
   title: 'Movie Park: tempi di attesa, giorni migliori e Halloween 2026'

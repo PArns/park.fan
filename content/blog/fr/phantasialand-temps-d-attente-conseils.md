@@ -1,5 +1,5 @@
 ---
-title: "Phantasialand : temps d’attente, conseils et jour parfait"
+title: 'Phantasialand : temps d’attente, conseils et jour parfait'
 translationKey: phantasialand-tips-2026
 date: '2026-07-24'
 updatedAt: '2026-07-25'

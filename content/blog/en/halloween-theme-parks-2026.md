@@ -1,5 +1,5 @@
 ---
-title: "Halloween 2026 in Europe’s Theme Parks: Horror Nights and Mazes"
+title: 'Halloween 2026 in Europe’s Theme Parks: Horror Nights and Mazes'
 translationKey: halloween-parks-2026
 date: '2026-07-17'
 updatedAt: '2026-08-19'

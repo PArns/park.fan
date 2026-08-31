@@ -29,7 +29,7 @@ coverImage:
   alt: 'Looping du Velocicoaster devant le château de Poudlard, Islands of Adventure, Orlando'
   caption: 'Islands of Adventure à Orlando : le Velocicoaster en plein looping, le château de Poudlard derrière.'
 seo:
-  title: "Du lac aux contes à l’IA des files"
+  title: 'Du lac aux contes à l’IA des files'
   description: >-
     Une poussette au bord du lac aux contes, des nuits de code, une IA qui lit
     les journées de parc : l’histoire de park.fan et quand votre visite vaut le
