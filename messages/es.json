@@ -1218,11 +1218,11 @@
     }
   },
   "nearby": {
-    "title": "Parques Cercanos",
+    "title": "Parques cercanos",
     "enableDescription": "Habilita la ubicación para encontrar parques y atracciones cerca de ti.",
-    "enable": "Habilitar Ubicación",
+    "enable": "Habilitar ubicación",
     "loadingLocation": "Localizando...",
-    "permissionDenied": "Ubicación Necesaria",
+    "permissionDenied": "Ubicación necesaria",
     "permissionDeniedDescription": "park.fan funciona mejor cuando compartes tu ubicación. La usamos para mostrar parques cercanos y para la navegación.",
     "locationUnavailable": "No se pudo determinar la ubicación",
     "locationUnavailableDescription": "No pudimos determinar tu ubicación. Puedes activar la ubicación para resultados más precisos o intentar de nuevo más tarde.",
@@ -1237,11 +1237,11 @@
     "nearParkSubtitle": "Por tu zona: {parkName} y más",
     "awayFrom": "de distancia",
     "nearestParkAway": "{distance} al parque más cercano",
-    "nearestAttractions": "Atracciones Más Cercanas",
+    "nearestAttractions": "Atracciones más cercanas",
     "headliners": "Atracciones destacadas",
     "headlinerBadge": "Top",
     "noParksNearby": "No se encontraron parques cerca.",
-    "nearbyParks": "Parques Cercanos",
+    "nearbyParks": "Parques cercanos",
     "nearestOpenTitle": "Parque abierto más cercano",
     "nearbyParksClosedTitle": "Parques cercanos",
     "noOpenNearbyFocus": "No hay parques abiertos cerca – aquí los más cercanos.",
@@ -1253,7 +1253,7 @@
     "closesIn": "Cierra en",
     "day": "{count, plural, =1 {día} other {días}}",
     "week": "{count, plural, =1 {semana} other {semanas}}",
-    "offseason": "Fuera de Temporada",
+    "offseason": "Fuera de temporada",
     "nearbyParksArea": "En los alrededores"
   },
   "geo": {

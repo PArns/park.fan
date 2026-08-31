@@ -1218,11 +1218,11 @@
     }
   },
   "nearby": {
-    "title": "Parken in de Buurt",
+    "title": "Parken in de buurt",
     "enableDescription": "Schakel locatietoegang in om parken en attracties bij jou in de buurt te vinden.",
-    "enable": "Locatie Inschakelen",
+    "enable": "Locatie inschakelen",
     "loadingLocation": "Locatie bepalen...",
-    "permissionDenied": "Locatie Nodig voor Beste Ervaring",
+    "permissionDenied": "Locatie nodig voor de beste ervaring",
     "permissionDeniedDescription": "park.fan werkt het beste wanneer je je locatie deelt. We gebruiken dit om pretparken in de buurt te tonen en navigatie in het park mogelijk te maken.",
     "locationUnavailable": "Locatie kon niet worden bepaald",
     "locationUnavailableDescription": "We konden je locatie niet bepalen. Je kunt locatietoegang inschakelen voor nauwkeurigere resultaten of het later opnieuw proberen.",
@@ -1237,11 +1237,11 @@
     "nearParkSubtitle": "In jouw buurt: {parkName} en meer",
     "awayFrom": "afstand",
     "nearestParkAway": "{distance} naar het dichtstbijzijnde park",
-    "nearestAttractions": "Dichtstbijzijnde Attracties",
+    "nearestAttractions": "Dichtstbijzijnde attracties",
     "headliners": "Topattracties",
     "headlinerBadge": "Top",
     "noParksNearby": "Geen parken in de buurt gevonden.",
-    "nearbyParks": "Parken in de Buurt",
+    "nearbyParks": "Parken in de buurt",
     "nearestOpenTitle": "Dichtstbijzijnde open park",
     "nearbyParksClosedTitle": "Parken in de buurt",
     "noOpenNearbyFocus": "Geen parken in de buurt open – hier de dichtstbijzijnde.",
@@ -1253,7 +1253,7 @@
     "closesIn": "Sluit over",
     "day": "{count, plural, =1 {dag} other {dagen}}",
     "week": "{count, plural, =1 {week} other {weken}}",
-    "offseason": "Buiten Seizoen",
+    "offseason": "Buiten seizoen",
     "nearbyParksArea": "In de omgeving"
   },
   "geo": {

@@ -1253,7 +1253,7 @@
     "closesIn": "Schließt in",
     "day": "{count, plural, =1 {Tag} other {Tagen}}",
     "week": "{count, plural, =1 {Woche} other {Wochen}}",
-    "offseason": "OffSeason",
+    "offseason": "Nebensaison",
     "nearbyParksArea": "In der Umgebung"
   },
   "geo": {
