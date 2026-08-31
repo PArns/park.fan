@@ -147,7 +147,7 @@
     },
     "ai": {
       "title": "AI-gestuurde Voorspellingen — Hoe Nauwkeurig Zijn We?",
-      "subtitle": "park.fan gebruikt een eigen AI-model dat is getraind op miljoenen echte wachtrij-records om drukte en wachttijden bij pretparken wereldwijd te voorspellen. Het model houdt rekening met weersvoorspellingen, schoolvakantieschema's en bekende evenementen — en hertraint automatisch zodra nieuwe data beschikbaar is.",
+      "subtitle": "park.fan gebruikt een eigen AI-model dat is getraind op miljoenen echte wachtrij-records om drukte en wachttijden bij pretparken wereldwijd te voorspellen. Het model houdt rekening met weersvoorspellingen, schoolvakantieschema’s en bekende evenementen — en hertraint automatisch zodra nieuwe data beschikbaar is.",
       "avgError": "Gemiddelde fout",
       "avgErrorDesc": "MAE — hoeveel minuten onze voorspellingen gemiddeld afwijken",
       "rmseDesc": "RMSE — hoe zwaar grote uitschieters meetellen",
@@ -169,7 +169,7 @@
       "dailySchedule": "Dagelijks · 06:00 UTC",
       "dailyScheduleLocal": "Dagelijks · 06:00 UTC · {time} lokaal",
       "howTitle": "Hoe voorspellingen tot stand komen",
-      "howText": "Elke wachttijdvoorspelling is opgebouwd uit drie lagen data: historische wachtrij-records die jarenlang in parken zijn verzameld, externe signalen zoals weersvoorspellingen en schoolvakantieschema's, en contextuele factoren zoals speciale evenementen en seizoenspatronen. Het model genereert zowel uurlijkse wachttijdprognoses voor individuele attracties als dagelijkse drukte-beoordelingen — tot 365 dagen vooruit.",
+      "howText": "Elke wachttijdvoorspelling is opgebouwd uit drie lagen data: historische wachtrij-records die jarenlang in parken zijn verzameld, externe signalen zoals weersvoorspellingen en schoolvakantieschema’s, en contextuele factoren zoals speciale evenementen en seizoenspatronen. Het model genereert zowel uurlijkse wachttijdprognoses voor individuele attracties als dagelijkse drukte-beoordelingen — tot 365 dagen vooruit.",
       "fancastLink": "Zo werkt Fancast, ons voorspelmodel",
       "improvingTitle": "Actief in ontwikkeling — elke dag beter",
       "improvingText": "park.fan is een levend platform, nog altijd in actieve ontwikkeling. Elke dag vergelijkt het systeem automatisch zijn eerdere voorspellingen met de werkelijk geregistreerde wachttijden bij de parken, en voert die vergelijkingen terug in de volgende trainingscyclus. De nauwkeurigheidsstatistieken hierboven weerspiegelen deze echte prestaties — geen synthetische benchmarks. Nieuwe parken en attracties worden regelmatig toegevoegd, en het model wordt nauwkeuriger naarmate er meer geverifieerde data beschikbaar komt.",
@@ -251,9 +251,9 @@
       "lead": "Elke vijf minuten opnieuw opgevraagd, voor elke attractie en elk rijtype, plus openingstijden en storingen. Geen blogpost van vorige zomer.",
       "body": "We tonen niet alleen het getal, maar wat het betekent: 95 minuten is veel op een dinsdag in september en volstrekt normaal op een zaterdag in oktober. Daarom staat op elke attractiepagina wat op die weekdag gebruikelijk is en hoe een volle dag eruitziet.",
       "ridesTitle": "Elke attractie heeft een eigen pagina",
-      "ridesText": "Duizenden attractiepagina's, elk met wat voor die ene baan geldt: rijtypes, dagverloop uit meting en voorspelling, typische tijden per weekdag, minimumlengte en een rope-drop-tip.",
+      "ridesText": "Duizenden attractiepagina’s, elk met wat voor die ene baan geldt: rijtypes, dagverloop uit meting en voorspelling, typische tijden per weekdag, minimumlengte en een rope-drop-tip.",
       "ridesLink": "Bekijk een voorbeeld",
-      "typicalTitle": "Attractiepagina's",
+      "typicalTitle": "Attractiepagina’s",
       "ropeDropTitle": "Rope-drop-tip",
       "ropeDropText": "Meteen bij opening hierheen: bij de populaire banen is het eerste uur geregeld het kortste venster van de dag.",
       "howtoLink": "Wachttijden goed lezen: de handleiding"
@@ -333,7 +333,7 @@
     "bestTime": {
       "kicker": "Beste bezoektijd",
       "title": "Veel achtbanen hebben twee perfecte momenten – wij zeggen wanneer",
-      "lead": "Rope drop in de ochtend, het laatste uur 's avonds, en daartussen de attracties die juist tegen de stroom in lopen.",
+      "lead": "Rope drop in de ochtend, het laatste uur ’s avonds, en daartussen de attracties die juist tegen de stroom in lopen.",
       "chartSubtitle": "Mediaan uit {days} gemeten dagen, elke 5 minuten bemonsterd",
       "legendToday": "vandaag gemeten",
       "legendMedian": "mediaan van eerdere dagen",
@@ -600,7 +600,7 @@
       "description": "Wees er bij opening – bij deze attracties loont het het meest:",
       "save": "bespaart ca. {minutes} min.",
       "eveningDescription": "Hier kun je beter de avond afwachten:",
-      "eveningWait": "'s avonds ca. {minutes} min."
+      "eveningWait": "’s avonds ca. {minutes} min."
     },
     "operatingCount": "{count}/{total} open",
     "attractionCount": "{count, plural, =1 {# attractie} other {# attracties}}",
@@ -884,10 +884,10 @@
     "crowdTodaySoFar": "tot nu toe",
     "crowdTodayShort": "Vandaag",
     "localTime": "lokale tijd",
-    "influencingHolidays": "Vakantie in nabije regio's",
+    "influencingHolidays": "Vakantie in nabije regio’s",
     "influencingHolidaysBody": "Daar is nu schoolvakantie – van daaruit komen veel dagjesmensen. Reken op meer drukte en langere wachttijden dan normaal.",
     "influencingHolidaysEffect": "Daar is schoolvakantie, dus meer dagjesmensen dan normaal.",
-    "influencingHolidaysShort": "Nabije regio's",
+    "influencingHolidaysShort": "Nabije regio’s",
     "stats": {
       "title": "Historische wachttijdstatistieken",
       "subtitle": "Gebaseerd op {days} dagen geregistreerde data · Afgelopen {years} jaar",
@@ -1168,7 +1168,7 @@
       "eveningBestAtWait": "Meestal maar ca. {wait} min. rond <time></time>",
       "eveningBestOffset": "Meestal het kortst ca. {minutes} min. na opening",
       "eveningBestOffsetHours": "Meestal het kortst ca. {hours} u na opening",
-      "eveningWait": "'s avonds",
+      "eveningWait": "’s avonds",
       "confidenceLow": "Gebaseerd op weinig gegevens – zie dit als een ruwe indicatie",
       "notWorth": "Hier hoef je bij opening niet te haasten – de wachttijden blijven de hele dag te overzien (ca. {openWait} min. bij opening)."
     },

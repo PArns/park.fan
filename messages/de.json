@@ -211,7 +211,7 @@
   },
   "homeStory": {
     "steps": {
-      "kicker": "So funktioniert's",
+      "kicker": "So funktioniert’s",
       "title": "In drei Schritten zum perfekten Parktag",
       "lead": "Park wählen, Tag prüfen, Route planen. Für jeden der drei Schritte bringt park.fan die Messwerte aus über 200 Parks mit.",
       "one": {
@@ -515,7 +515,7 @@
     "search": "Parks & Attraktionen suchen",
     "admin": "Admin",
     "nearbyPark": "In der Nähe: {parkName}",
-    "howto": "So funktioniert's",
+    "howto": "So funktioniert’s",
     "glossary": "Wörterbuch",
     "blog": "Blog",
     "bestTime": "Beste Reisezeit",
@@ -1367,7 +1367,7 @@
     "heroHint": "Tippe los, wir suchen Parks, Attraktionen, Shows und Restaurants"
   },
   "languageBanner": {
-    "message": "Diese Seite gibt's auch auf {language}",
+    "message": "Diese Seite gibt’s auch auf {language}",
     "switchButton": "Zu {language} wechseln",
     "dismiss": "Schließen"
   },

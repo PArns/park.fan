@@ -94,12 +94,12 @@
     "errorPageTitle": "Something went wrong",
     "errorPageDescription": "An unexpected error occurred. Please try again.",
     "goHome": "Go to homepage",
-    "maintenanceTitle": "We'll be back soon!",
+    "maintenanceTitle": "We’ll be back soon!",
     "maintenanceDescription": "park.fan is temporarily unavailable while we perform maintenance. Please try again in a few minutes."
   },
   "notFound": {
     "title": "Page not found",
-    "description": "The page you're looking for doesn't exist or has been moved. Maybe the ride got renamed?",
+    "description": "The page you’re looking for doesn’t exist or has been moved. Maybe the ride got renamed?",
     "goHome": "Back to homepage",
     "browseParks": "Browse all parks"
   },
@@ -107,8 +107,8 @@
     "hottestParks": {
       "badge": "Heat wave",
       "title": "The hottest parks in Germany, France, Italy, the Netherlands and Belgium",
-      "subtitle": "Heat wave at the parks — today's three hottest destinations",
-      "description": "When park temperatures climb past 35 °C, timing matters: arrive early, plan for shade and water rides, and stay hydrated. These are today's hottest destinations.",
+      "subtitle": "Heat wave at the parks — today’s three hottest destinations",
+      "description": "When park temperatures climb past 35 °C, timing matters: arrive early, plan for shade and water rides, and stay hydrated. These are today’s hottest destinations.",
       "hottestLabel": "Hottest park",
       "viewPark": "View park"
     },
@@ -217,7 +217,7 @@
       "one": {
         "title": "Pick a park",
         "text": "Type the park or the ride, or take the suggestion near you. Every park has its own page with live wait times, opening hours and a calendar.",
-        "tip": "The search finds more than parks. If you know you want to ride Taron but not which park it stands in, just type the ride's name. Shows and restaurants are in there too.",
+        "tip": "The search finds more than parks. If you know you want to ride Taron but not which park it stands in, just type the ride’s name. Shows and restaurants are in there too.",
         "placeholder": "Park or ride",
         "label": "Search for a park or ride"
       },
@@ -231,8 +231,8 @@
       "three": {
         "title": "Plan the route",
         "text": "Every ride comes with its best window, so you are not queueing for the headliner at the midday peak.",
-        "tip": "“Get there early” does not hold for every ride. Some run just as full all day, others only pick up after lunch. Each ride's own page carries its own day curve.",
-        "caption": "A coaster's typical day, from opening to evening.",
+        "tip": "“Get there early” does not hold for every ride. Some run just as full all day, others only pick up after lunch. Each ride’s own page carries its own day curve.",
+        "caption": "A coaster’s typical day, from opening to evening.",
         "best": "The quietest windows sit early and in the last hour."
       }
     },
@@ -251,7 +251,7 @@
       "lead": "Polled again every five minutes, for every ride and every queue type, plus opening hours and breakdowns. Not a blog post from last summer.",
       "body": "We show not just the number but what it means: 95 minutes is a lot on a Tuesday in September and perfectly normal on a Saturday in October. That is why every ride page says what is typical for that weekday and what a busy day looks like.",
       "ridesTitle": "Every ride has its own page",
-      "ridesText": "Thousands of ride pages, each with what holds for that one ride: queue types, the day's course from measurement and forecast, typical times by weekday, height limit and a rope-drop tip.",
+      "ridesText": "Thousands of ride pages, each with what holds for that one ride: queue types, the day’s course from measurement and forecast, typical times by weekday, height limit and a rope-drop tip.",
       "ridesLink": "See an example",
       "typicalTitle": "Ride pages",
       "ropeDropTitle": "Rope drop tip",
@@ -261,12 +261,12 @@
     "shows": {
       "kicker": "Shows & dining",
       "title": "A park day is not only roller coasters",
-      "lead": "park.fan lists shows and restaurants too: the day's show times, plus the cuisine, the opening hours and whether a table has to be booked.",
+      "lead": "park.fan lists shows and restaurants too: the day’s show times, plus the cuisine, the opening hours and whether a table has to be booked.",
       "showsTitle": "Show times",
       "showsHint": "Every performance of the day with its time, the next one first, and whether the show is currently in season.",
       "restaurantsTitle": "Restaurants in the park",
       "restaurantsHint": "Cuisine, opening hours and whether booking is required, so the hunt for a table does not start in the middle of the best riding hours.",
-      "body": "A three o'clock performance pulls a few thousand people out of the queues and puts them back afterwards. Knowing the show times means you can spend the half hour before it at a ride instead of in the theatre.",
+      "body": "A three o’clock performance pulls a few thousand people out of the queues and puts them back afterwards. Knowing the show times means you can spend the half hour before it at a ride instead of in the theatre.",
       "statAttractions": "Rides",
       "statShows": "Shows",
       "statRestaurants": "Restaurants",
@@ -275,12 +275,12 @@
     "calendar": {
       "kicker": "Crowd calendar",
       "title": "A green day or a red one?",
-      "lead": "Before you book the hotel: the calendar rates every single day, up to 365 days ahead. Where a day's colour comes from is set out below.",
+      "lead": "Before you book the hotel: the calendar rates every single day, up to 365 days ahead. Where a day’s colour comes from is set out below.",
       "pipelineTitle": "From the measurement to the colour of a day",
       "pipelineLead": "Four steps, redone every night. Whatever ends up in the calendar as a green or a red day took this path.",
       "p1": {
         "title": "Measure",
-        "text": "Every five minutes park.fan polls the parks' queue systems: standby, single rider, Lightning Lane, virtual queues, plus the operating status of every ride.",
+        "text": "Every five minutes park.fan polls the parks’ queue systems: standby, single rider, Lightning Lane, virtual queues, plus the operating status of every ride.",
         "label": "Measurement interval"
       },
       "p2": {
@@ -295,12 +295,12 @@
       },
       "p4": {
         "title": "Forecast",
-        "text": "Fancast turns all of that into an expected wait per ride and per hour, then condenses it into the day's crowd level, which is the colour you see in the calendar.",
+        "text": "Fancast turns all of that into an expected wait per ride and per hour, then condenses it into the day’s crowd level, which is the colour you see in the calendar.",
         "label": "Days ahead"
       },
       "feedback": "The next day every forecast is laid against the wait time actually measured. The difference goes into the next round of training, and that is why the calendar colour for one and the same day changes as the day gets closer.",
-      "body": "Green days mean short queues and room to move. Orange and red mean every popular ride costs you three quarters of an hour. To get there the calendar weighs holiday calendars, weather forecasts, weekdays and special events against the park's real wait-time history.",
-      "cta": "See a park's crowd calendar",
+      "body": "Green days mean short queues and room to move. Orange and red mean every popular ride costs you three quarters of an hour. To get there the calendar weighs holiday calendars, weather forecasts, weekdays and special events against the park’s real wait-time history.",
+      "cta": "See a park’s crowd calendar",
       "bestTimeLink": "Best time to visit: the quietest weekdays and months"
     },
     "ai": {
@@ -312,7 +312,7 @@
       "c1": {
         "kicker": "Approach 1",
         "title": "No forecast at all",
-        "text": "Germany's largest wait-time site deliberately does without predictions: too many factors, and a wrong forecast could hurt parks and visitors alike. All it shows is how busy it was.",
+        "text": "Germany’s largest wait-time site deliberately does without predictions: too many factors, and a wrong forecast could hurt parks and visitors alike. All it shows is how busy it was.",
         "limit": "A look back does not answer “which day do I book?”"
       },
       "c2": {
@@ -342,7 +342,7 @@
       "heatTitle": "Heat warning",
       "heatText": "On hot days the crowd shifts: water rides pick up, indoor dark rides fill, coasters empty out. The calendar takes that into account.",
       "historyTitle": "History",
-      "historyText": "Every ride has a curve of its own, a rhythm of its own across the week and a season of its own. Every reading taken today goes into tomorrow's model.",
+      "historyText": "Every ride has a curve of its own, a rhythm of its own across the week and a season of its own. Every reading taken today goes into tomorrow’s model.",
       "hubLink": "Best time to visit for 200+ parks",
       "peakAt": "Busiest around",
       "windowOpening": "A good start to the day",
@@ -382,7 +382,7 @@
       "title": "Six reasons this one works differently",
       "r1": {
         "title": "Our own model, trained daily",
-        "text": "No third-party provider, no off-the-shelf black box. The model keeps learning every night from the previous day's data."
+        "text": "No third-party provider, no off-the-shelf black box. The model keeps learning every night from the previous day’s data."
       },
       "r2": {
         "title": "The accuracy is published",
@@ -640,7 +640,7 @@
       "nearest": "Nearby",
       "away": "away"
     },
-    "todaySchedule": "Today's Schedule",
+    "todaySchedule": "Today’s Schedule",
     "currentTime": "Current Time",
     "timezone": "Timezone",
     "openingHours": "Opening Hours",
@@ -694,7 +694,7 @@
           "title": "Operating Hours",
           "closed": "Park closed",
           "scheduleNotYetAvailable": "Opening hours not yet available",
-          "noOfficialScheduleDisclaimer": "Official hours aren't available for this park. The times shown are estimates calculated from actual park activity.",
+          "noOfficialScheduleDisclaimer": "Official hours aren’t available for this park. The times shown are estimates calculated from actual park activity.",
           "estimatedHours": "Estimated hours",
           "tba": "TBA",
           "open": "Open",
@@ -770,7 +770,7 @@
       "separateTicket": "Separate ticket",
       "fromPrice": "from {price}",
       "selectedDays": "{count, plural, =1 {1 date} other {# dates}}",
-      "details": "Park's page",
+      "details": "Park’s page",
       "kind": {
         "halloween": "Halloween",
         "christmas": "Christmas season",
@@ -842,13 +842,13 @@
       },
       "rain": {
         "heading": "Rain expected",
-        "bodyNow": "It's raining at the park right now.",
+        "bodyNow": "It’s raining at the park right now.",
         "bodyStartsInMin": "Rain expected in about {duration} ({intensity}).",
-        "bodyEndsInMin": "It's raining — ends in about {duration}.",
-        "bodyEndsInMinIntensity": "It's raining ({intensity}) — ends in about {duration}.",
-        "bodyNowIntensity": "It's raining at the park right now ({intensity}).",
-        "bodyNowEndsAt": "It's raining at the park right now. Ends around {time}.",
-        "bodyNowEndsAtIntensity": "It's raining at the park right now ({intensity}). Ends around {time}."
+        "bodyEndsInMin": "It’s raining — ends in about {duration}.",
+        "bodyEndsInMinIntensity": "It’s raining ({intensity}) — ends in about {duration}.",
+        "bodyNowIntensity": "It’s raining at the park right now ({intensity}).",
+        "bodyNowEndsAt": "It’s raining at the park right now. Ends around {time}.",
+        "bodyNowEndsAtIntensity": "It’s raining at the park right now ({intensity}). Ends around {time}."
       },
       "thunderstorm": {
         "heading": "Thunderstorm warning",
@@ -912,7 +912,7 @@
       "peakWait": "Peak (P90)",
       "hourlyProfileTitle": "Wait time by hour",
       "hourlyProfileHour": "Hour",
-      "hourlyProfilePeakNote": "Each ride's busiest hour is in bold.",
+      "hourlyProfilePeakNote": "Each ride’s busiest hour is in bold.",
       "hourlyProfileFootnote": "Typical wait in minutes, from {days} days measured."
     },
     "bestDays": {
@@ -958,14 +958,14 @@
       "hourlyTitle": "Hour-by-hour forecast",
       "holidaysTitle": "Holidays & school breaks",
       "actualWaitsTitle": "Average waits",
-      "openToday": "Show today's details",
+      "openToday": "Show today’s details",
       "prevDay": "Previous day",
       "nextDay": "Next day"
     },
     "legendHints": {
       "closed": "Park closed on this day",
       "holiday": "Public holiday – usually much busier",
-      "schoolVacation": "School holidays in the park's own region",
+      "schoolVacation": "School holidays in the park’s own region",
       "bridgeDay": "Bridge day between a holiday and the weekend",
       "neighbor": "Holidays in neighbouring regions – more day-trippers, longer waits"
     },
@@ -996,7 +996,7 @@
         "busiestFuture": "{count, plural, =1 {The busiest will be {days}.} other {The busiest will be {days}.}}",
         "busiestPast": "{count, plural, =1 {The busiest was {days}.} other {The busiest were {days}.}}",
         "hours": "Gates are usually open {from} to {to}.",
-        "schoolVacation": "{days, plural, =1 {One day falls} other {# days fall}} inside a school holiday in the park's region.",
+        "schoolVacation": "{days, plural, =1 {One day falls} other {# days fall}} inside a school holiday in the park’s region.",
         "headlinerFuture": "Expect around {minutes} minutes at the headline rides.",
         "headlinerPast": "The headline rides averaged {minutes} minutes.",
         "factOpenDays": "Open",
@@ -1042,7 +1042,7 @@
       "REFURBISHMENT": "Refurb"
     },
     "predictions": "Wait Time Predictions",
-    "todaySchedule": "Today's Hours",
+    "todaySchedule": "Today’s Hours",
     "history": "Wait Time History",
     "historyCalendar": "Wait Time History",
     "noHistoryData": "No historical data available for this attraction.",
@@ -1066,7 +1066,7 @@
     },
     "otherQueues": "Other Queue Options",
     "returnTime": "Return",
-    "peak": "Today's Peak: {time} min",
+    "peak": "Today’s Peak: {time} min",
     "bestVisit": "Best: {time}",
     "bestVisitNow": "Best time: Now",
     "bestVisitInMin": "Best: {time} (in {minutes} min)",
@@ -1133,7 +1133,7 @@
       }
     },
     "h1Suffix": "Live Wait Time",
-    "intro": "Current wait time for {attraction} {inPark} – live, updated every minute. Follow the live status, today's history and typical peak hours to avoid long queues.",
+    "intro": "Current wait time for {attraction} {inPark} – live, updated every minute. Follow the live status, today’s history and typical peak hours to avoid long queues.",
     "headliner": {
       "title": "Headliner",
       "description": "Must-see attraction at this park"
@@ -1144,11 +1144,11 @@
       "cardLine": "Rope drop: save ~{savings} min",
       "cardLineUntil": "Rope drop: save ~{savings} min (until ~<time></time>)",
       "title": "Rope Drop Tip",
-      "explainer": "Be at the gates when the park opens and head straight here — that's when the wait is shortest.",
+      "explainer": "Be at the gates when the park opens and head straight here — that’s when the wait is shortest.",
       "strengthHigh": "Strong tip",
       "strengthModerate": "Good tip",
       "atOpening": "At opening",
-      "dayPeak": "Day's peak",
+      "dayPeak": "Day’s peak",
       "savings": "You save",
       "rideWithin": "Best within the first {minutes} min after opening",
       "rideWithinUntil": "Best within the first {minutes} min after opening (until about <time></time>)",
@@ -1163,7 +1163,7 @@
       "eveningBadgeHint": "Already ~{openWait} min at opening — typically shortest later in the day",
       "eveningBadgeHintWait": "Already ~{openWait} min at opening — typically only ~{bestSlotWait} min later in the day",
       "eveningTitle": "Better later than at opening",
-      "eveningText": "<term>Rope drop</term> doesn't pay off here — the line is already ~{openWait} min right at opening (day's peak: ~{busyPeak} min).",
+      "eveningText": "<term>Rope drop</term> doesn’t pay off here — the line is already ~{openWait} min right at opening (day’s peak: ~{busyPeak} min).",
       "eveningBestAt": "Typically shortest around <time></time>",
       "eveningBestAtWait": "Typically only ~{wait} min around <time></time>",
       "eveningBestOffset": "Typically shortest ~{minutes} min after opening",
@@ -1173,7 +1173,7 @@
       "notWorth": "No need to rush here at opening — waits stay manageable throughout the day (~{openWait} min at opening)."
     },
     "todayChart": {
-      "title": "Today's Wait Times",
+      "title": "Today’s Wait Times",
       "now": "Now",
       "bestSlots": "Best times: {hours}",
       "bestSlotsGood": "Good times: {hours}",
@@ -1222,14 +1222,14 @@
     "permissionDeniedDescription": "park.fan works best when you share your location. We use this to show you theme parks nearby and to enable in-park navigation.",
     "locationUnavailable": "Location could not be determined",
     "locationUnavailableDescription": "We could not determine your location. You can enable location access for more accurate results, or try again later.",
-    "loadError": "Couldn't load nearby parks",
+    "loadError": "Couldn’t load nearby parks",
     "loadErrorDescription": "Something went wrong while loading nearby parks. Please try again.",
     "locationHint": "Nearby parks are more accurate when you enable location.",
     "bannerHeadline": "park.fan works better when you share your location!",
-    "bannerBody": "park.fan uses your exact position only to show you parks near you and to show you attractions and wait times around you when you're in a park.",
-    "bannerPrivacy": "We don't store this data.",
+    "bannerBody": "park.fan uses your exact position only to show you parks near you and to show you attractions and wait times around you when you’re in a park.",
+    "bannerPrivacy": "We don’t store this data.",
     "youAreIn": "You are here",
-    "youAreInPark": "You're at {parkName}",
+    "youAreInPark": "You’re at {parkName}",
     "nearParkSubtitle": "In your area: {parkName} and more",
     "awayFrom": "away",
     "nearestParkAway": "{distance} to the nearest park",
@@ -1353,7 +1353,7 @@
       "restaurant": "Restaurants ({count})",
       "location": "Locations ({count})",
       "nearby": "Nearby Parks",
-      "inPark": "You're at {park}",
+      "inPark": "You’re at {park}",
       "glossary": "Dictionary ({count})",
       "popular": "Popular Parks"
     },
@@ -1384,10 +1384,10 @@
     "parks": {
       "title": "Theme Parks Worldwide: Wait Times, Map & Overview",
       "description": "Compare live wait times, crowd levels, and hours for top parks: Disney, Universal, Europa-Park, and more.",
-      "metaDescriptionTemplate": "Live wait times & crowd calendar for {park} in {city}. Check today's forecast, best days to visit, and opening hours.",
+      "metaDescriptionTemplate": "Live wait times & crowd calendar for {park} in {city}. Check today’s forecast, best days to visit, and opening hours.",
       "titleTemplate": "{park} Wait Times LIVE – {city}",
       "titleTemplateNoCity": "{park} – Wait Times LIVE & Best Days",
-      "metaDescriptionTemplateNoCity": "Live wait times & crowd calendar for {park}. Check today's forecast, best days to visit, and opening hours.",
+      "metaDescriptionTemplateNoCity": "Live wait times & crowd calendar for {park}. Check today’s forecast, best days to visit, and opening hours.",
       "keywordWaitTimes": "wait times",
       "keywordCrowdCalendar": "crowd calendar",
       "keywordBestTime": "best time to visit",
@@ -1482,7 +1482,7 @@
         "freeQ": "Is using park.fan free?",
         "freeA": "Yes, park.fan is completely free to use. You can view all live wait times, opening hours, shows, and restaurants without registration or payment. Our goal is to provide the best possible service to every theme park visitor.",
         "favoritesQ": "Can I save my favorite parks and attractions on park.fan?",
-        "favoritesA": "Yes! With park.fan's favorites feature, you can mark your favorite parks and favorite attractions. These will then be displayed on your personalized homepage, so you can immediately see the current wait times for your favorites.",
+        "favoritesA": "Yes! With park.fan’s favorites feature, you can mark your favorite parks and favorite attractions. These will then be displayed on your personalized homepage, so you can immediately see the current wait times for your favorites.",
         "featuresQ": "What information does park.fan offer besides live wait times?",
         "featuresA": "In addition to live wait times for attractions, park.fan also provides park opening hours, show times, restaurant information, weather forecasts, historical wait time statistics, and crowd forecasts. This way, you can optimally plan your theme park visit and find the best times for your favorite attractions.",
         "mobileQ": "Does park.fan work on smartphones?",
@@ -1507,7 +1507,7 @@
       "findText": "Use the search, or start from “Explore Parks”.",
       "starTitle": "Tap the star",
       "starText": "Every park and ride card carries one, and so does every park and ride page.",
-      "thenTitle": "That's it",
+      "thenTitle": "That’s it",
       "thenText": "From then on they show up in this menu and on the homepage, with live status and wait time."
     }
   },
@@ -1587,7 +1587,7 @@
   },
   "fancast": {
     "title": "Fancast – our wait-time forecasting model",
-    "description": "Fancast is park.fan's AI model: it predicts theme-park crowds and wait times up to 365 days ahead — and grades its own accuracy in the open."
+    "description": "Fancast is park.fan’s AI model: it predicts theme-park crowds and wait times up to 365 days ahead — and grades its own accuracy in the open."
   },
   "bestTime": {
     "title": "Best Time to Visit Theme Parks",
@@ -1628,7 +1628,7 @@
     "heroTitle": "Stories, data and news from the parks",
     "badge": "park.fan Blog",
     "description": "Trip reports, data dives, and theme-park news from the park.fan team.",
-    "intro": "Honest trip reports, wait-time data dives, and concise news from the parks we cover. Written by humans who stand in lines so you don't have to.",
+    "intro": "Honest trip reports, wait-time data dives, and concise news from the parks we cover. Written by humans who stand in lines so you don’t have to.",
     "blog": "Blog",
     "empty": "No posts yet. Check back soon.",
     "readMore": "Read article",
