@@ -317,9 +317,16 @@ export function quietWindows(hours: number[], p50: Array<number | null>): QuietW
   const tailStart = tail + 1;
   if (tail >= 0 && known.length - tailStart >= 1 && tailStart > lead) {
     const slice = known.slice(tailStart);
+    const from = slice[0].hour;
     windows.push({
-      fromHour: slice[0].hour,
-      toHour: Math.min(lastHour, slice[slice.length - 1].hour + 1),
+      fromHour: from,
+      // A window is at least one hour wide. The `lastHour` clamp keeps a window
+      // from claiming time the plot does not draw, but for the CLOSING window
+      // the run ends on the last hour by definition, so the clamp collapsed it:
+      // Big Thunder Mountain's evening window rendered as "22:00–22:00". The
+      // hour bucket labelled 22:00 covers 22:00 to 23:00 like every other one,
+      // so a single-hour window ends an hour after it starts.
+      toHour: Math.max(from + 1, Math.min(lastHour, slice[slice.length - 1].hour + 1)),
       averageWait: mean(slice),
       which: 'closing',
     });

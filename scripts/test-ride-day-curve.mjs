@@ -225,6 +225,25 @@ test(
     true
   );
   test('quietWindows: they do not overlap', w[0].toHour <= w[1].fromHour, true);
+
+  // Big Thunder Mountain, 31.08.2026: the evening run ended on the last plotted
+  // hour, the `lastHour` clamp pulled `toHour` back onto `fromHour`, and the card
+  // printed "22:00–22:00".
+  const edgeHours = [9, 10, 11, 12, 13];
+  const edgeP50 = [60, 90, 95, 90, 20];
+  const edge = quietWindows(edgeHours, edgeP50);
+  const edgeClosing = edge.find((e) => e.which === 'closing');
+  test(
+    'quietWindows: a closing window on the last hour is still an hour wide',
+    edgeClosing?.fromHour,
+    13
+  );
+  test('quietWindows: and it ends after the hour it starts in', edgeClosing?.toHour, 14);
+  test(
+    'quietWindows: no window is ever zero hours wide',
+    quietWindows(edgeHours, edgeP50).every((e) => e.toHour > e.fromHour),
+    true
+  );
   // Floor 15, peak 90 -> threshold 41.25, so the morning run is 15/20 and 45 is not quiet.
   test('quietWindows: the average is the mean of the whole run', round(w[0].averageWait), 17.5);
   test('quietWindows: the morning window ends after its last quiet hour', w[0].toHour, 11);
