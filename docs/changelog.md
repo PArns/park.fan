@@ -30,17 +30,37 @@ jeder Seite der Site weg. Im Live-`<head>` standen zwei favicon.ico-Links und ke
 Falle ist für `alternates` unter [Blog-Feeds](seo/blog-feeds.md) beschrieben. Die unterdrückte Datei
 war ohnehin ein drittes, veraltetes Artwork.
 
-Neu ist die **dunkle Fassung der Marke aus dem Header**, unverändert, auf einer Kachel im
-Brand-Navy: `public/logo-small-dark.svg` auf #293B47, 3 % Rand, 18 % Eckenradius dort, wo das Icon
-so gezeigt wird, wie es kommt, und quadratisch dort, wo ein Betriebssystem seine eigene Maske
+Neu ist die Marke auf einer Kachel im Brand-Navy, 3 % Rand, 18 % Eckenradius dort, wo das Icon so
+gezeigt wird, wie es kommt, und quadratisch dort, wo ein Betriebssystem seine eigene Maske
 darüberlegt. Weißer Pin auf Navy liest sich bei 16 px in beiden Google-Modi – auf der hellen Seite
 trägt die Kachel den Kontrast, auf der dunklen der Pin.
 
-Alle sechs Dateien schneidet jetzt `pnpm generate:icons` aus dieser einen Quelle, `pnpm check:icons`
-schlägt an, sobald eine davon nicht mehr dazu passt. Vorher lagen im Set drei verschiedene Artworks
-nebeneinander und nichts verglich sie. Die Ink-Bounding-Box wird gerendert und über den Alphakanal
-gemessen, nicht eingetippt: der Pin sitzt in einer 144×144-viewBox auf 62,5 % Breite und 86 % Höhe,
-ein Skalieren der viewBox ließe also an jeder Kante ein Siebtel des Icons leer.
+**Zwei Quellen, und die Grenze zwischen ihnen ist gemessen, nicht Geschmack.** Der Detail-Pin ist
+die Marke der Site – Footer, OG-Bilder, Organization-Logo in den strukturierten Daten und
+Wartungsseite zeigen ihn – und er ist die schönere Zeichnung. Unterhalb von etwa 24 px trägt er
+nicht mehr: der Orbit schneidet durch den weißen Ring, die drei Balken laufen zu einem grün-blauen
+Fleck zusammen, und bei 16 und 20 px ist die Silhouette kein Pin mehr. Genau dort zeichnen Google
+und der Browser-Tab. Also bekommen `app/favicon.ico` und `public/icon.svg` den einfachen Burg-Pin
+aus `logo-small-dark.svg`, denselben, den der Header rendert, und alles, was ab 180 px gezeichnet
+wird – Apple-Touch, die 192er und 512er des Manifests und das maskable Icon –, den Detail-Pin aus
+`logo-big-dark.svg`. Nicht aus `logo-dark.svg`: darin steckt ein 1563×1116-PNG in einer SVG-Hülle,
+deshalb wiegt die Datei 77 KB.
+
+Ein Restrisiko bleibt: Google liest auch `apple-touch-icon` als Favicon-Kandidaten und dokumentiert
+keine Reihenfolge. Greift es das 180er, ist der Fleck zurück – die Antwort wäre dann, diese eine
+Ausgabe auf die einfache Quelle umzuhängen, eine Zeile im Generator, und nichts neu zu zeichnen.
+
+Alle sechs Dateien schneidet jetzt `pnpm generate:icons`, `pnpm check:icons` schlägt an, sobald eine
+davon nicht mehr zu ihrer Quelle passt. Vorher lagen im Set drei verschiedene Artworks nebeneinander
+und nichts verglich sie. Zwei Werte werden gerendert und über den Alphakanal gemessen statt
+eingetippt: die Ink-Bounding-Box – der Burg-Pin sitzt in einer 144×144-viewBox auf 62,5 % Breite und
+86 % Höhe, ein Skalieren der viewBox ließe also an jeder Kante ein Siebtel des Icons leer – und die
+Position des Schriftzugs. `logo-big-dark.svg` ist die Lockup und trägt „park.fan" unter dem Pin;
+gesucht wird das breiteste vollständig leere Zeilenband, das erst ab 4 % der Ink-Höhe als Trenner
+zählt, denn ein Pin hat nirgends eine derartige Lücke. Der Teil darüber ist die Marke und wird
+**geclippt** – nicht optional, weil der Schriftzug bei einem formatfüllend skalierten Pin exakt an
+dessen Unterkante beginnt und sonst in den unteren Streifen des Icons malen würde, statt aus der
+viewBox zu fallen.
 
 Deklariert wird das Set nur noch in `app/layout.tsx`. Kein anderes Segment darf `icons` setzen.
 `/admin` ändert sich nicht, und die URLs bleiben, wo sie sind – Google crawlt ein Favicon nach

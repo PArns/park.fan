@@ -4,9 +4,8 @@ The icon Google draws next to a search result, and everything that shares it: th
 the bookmark bar, an iOS home screen, an Android launcher, a link unfurl.
 
 It is **generated**, never hand-exported — `pnpm generate:icons`
-([`scripts/generate-icons.mjs`](../../scripts/generate-icons.mjs)) cuts the whole set from one
-file, `public/logo-small-dark.svg`. `pnpm check:icons` fails if the committed files no longer
-match that source.
+([`scripts/generate-icons.mjs`](../../scripts/generate-icons.mjs)) cuts the whole set from the
+brand files. `pnpm check:icons` fails if the committed files no longer match their source.
 
 ---
 
@@ -54,28 +53,44 @@ and the favicon.
 
 ## What ships now
 
-The **dark colourway of the header's own mark**, untouched, on a tile in the brand navy:
+Two sources, and the split is about pixels.
 
-|               |                                                                                                 |
-| ------------- | ----------------------------------------------------------------------------------------------- |
-| Source        | `public/logo-small-dark.svg` — the same pin `BrandLockup` renders                               |
-| Ground        | `#293B47`, the manifest's `background_color` and the navy the light colourway's pin is drawn in |
-| Inset         | 3 % per edge (18 % for the maskable icon)                                                       |
-| Corner radius | 18 % where the icon is composited as-is; square where the OS applies its own mask               |
-| Wordmark      | none                                                                                            |
+The **detailed pin** is the site's mark: the footer, the OG images, the Organization logo in
+structured data and the maintenance page all show it, and it is the better drawing. Measured at
+every size it will actually be composed at, it stops working below about 24 px — the orbit cuts
+through the pin's white ring and the three bars merge into one green-blue smear, so at 16 and
+20 px the silhouette is no longer a pin. That range is exactly where a search result and a browser
+tab live.
 
-The white pin on navy reads at 16 px in both of Google's modes, which is the whole point: on the
+So the two files drawn at 16–32 px carry the **simple castle pin** — the same mark `BrandLockup`
+renders in the header — and everything drawn at 180 px or more carries the detailed one.
+
+|                 |                                                                                                                                                            |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Simple source   | `public/logo-small-dark.svg` — the pin the header renders                                                                                                  |
+| Detailed source | `public/logo-big-dark.svg` — **not** `logo-dark.svg`, which is a 1563×1116 PNG in an SVG wrapper and weighs 77 KB; only `logo-big-dark.svg` is real vector |
+| Ground          | `#293B47`, the manifest's `background_color` and the navy both pins' light colourways are drawn in                                                         |
+| Inset           | 3 % per edge (18 % for the maskable icon)                                                                                                                  |
+| Corner radius   | 18 % where the icon is composited as-is; square where the OS applies its own mask                                                                          |
+| Wordmark        | none — `logo-big-dark.svg` carries one, and it is clipped off (see below)                                                                                  |
+
+A white pin on navy reads at 16 px in both of Google's modes, which is the whole point: on the
 light page the tile is the contrast, on the dark page the pin is.
+
+**One risk the split does not remove.** Google reads `apple-touch-icon` as a favicon candidate too
+and documents no priority between it and `rel="icon"`. If it ever picks the 180 px file and scales
+it down itself, the search result is back to a smear. The fix then is to move `apple-touch-icon`
+to the simple source — one line in the generator — not to redraw anything.
 
 ### The files
 
-| File                                         | Who reads it                                                                                                                                                                                       |
-| -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `app/favicon.ico` (16 / 32 / 48 / 96)        | **Google** — it does not support SVG favicons, so this file decides what the search result shows. Also every browser's tab and bookmark bar                                                        |
-| `public/icon.svg`                            | Browsers that prefer a vector favicon — one file, crisp at any size                                                                                                                                |
-| `public/apple-touch-icon.png` (180)          | iOS home screen. Square: iOS masks the corners itself, and rounding an already-rounded corner leaves transparent slivers                                                                           |
-| `public/icon-192.png`, `public/icon-512.png` | The web app manifest, `purpose: "any"`                                                                                                                                                             |
-| `public/icon-maskable-512.png`               | The manifest's `purpose: "maskable"` — a separate file, not a second `purpose` on the 512, because an adaptive launcher may keep only the central 80 % circle and that would cut the pin's tip off |
+| File                                         | Source   | Who reads it                                                                                                                                                                                       |
+| -------------------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `app/favicon.ico` (16 / 32 / 48 / 96)        | simple   | **Google** — it does not support SVG favicons, so this file decides what the search result shows. Also every browser's tab and bookmark bar                                                        |
+| `public/icon.svg`                            | simple   | Browsers that prefer a vector favicon — drawn in the tab at 16 px                                                                                                                                  |
+| `public/apple-touch-icon.png` (180)          | detailed | iOS home screen. Square: iOS masks the corners itself, and rounding an already-rounded corner leaves transparent slivers                                                                           |
+| `public/icon-192.png`, `public/icon-512.png` | detailed | The web app manifest, `purpose: "any"`                                                                                                                                                             |
+| `public/icon-maskable-512.png`               | detailed | The manifest's `purpose: "maskable"` — a separate file, not a second `purpose` on the 512, because an adaptive launcher may keep only the central 80 % circle and that would cut the pin's tip off |
 
 ### Where they are declared
 
@@ -98,7 +113,7 @@ Rendered `<head>`, every route, every locale:
 Change the source, then run the generator — not the other way round:
 
 ```bash
-pnpm generate:icons   # rewrites all six files from public/logo-small-dark.svg
+pnpm generate:icons   # rewrites all six files from the two sources
 pnpm check:icons      # fails if a committed file no longer matches
 ```
 
