@@ -61,7 +61,7 @@ gooit. Doet iemand dat, dan zegt hij netjes dank u wel. Voor mij verzamelt een
 jongen het afval van wildvreemden bij elkaar, zodat hij nog drie keer kan voeren.
 
 De eerste Holle Bolle Gijs ging op **29 maart 1959** in gebruik, bedacht door
-Peter Reijnders en Henk Knuivers. Inmiddels staan er zo'n twaalf in het park. Een
+Peter Reijnders en Henk Knuivers. Inmiddels staan er zo’n twaalf in het park. Een
 prullenbak die een personage is, met een naam, een stem en manieren, uit een tijd
 dat hier nog geen enkele achtbaan stond.
 
@@ -89,7 +89,7 @@ geen ander doel dient dan mooi zijn. Twaalf prullenbakken met een stem.
 
 Klein is de onderneming daarmee niet. In 2025 telde de Efteling **5,78 miljoen
 bezoeken** van 4,98 miljoen gasten, daarbij 347 miljoen euro bedrijfsopbrengsten,
-27,2 miljoen euro winst en zo'n 3.000 medewerkers op 72 hectare parkterrein.
+27,2 miljoen euro winst en zo’n 3.000 medewerkers op 72 hectare parkterrein.
 Daarmee is het het best bezochte pretpark van Nederland en een van de drie
 grootste van Europa (alleen het
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) in Parijs en
@@ -222,7 +222,7 @@ darkride, half waterachtbaan. Je gaat eerst door een havenstad en het spookschip
 dan buiten een stuk rail, dan een afdaling het water in die de eerste rij
 betrouwbaar te pakken heeft.
 
-![De loopings van Python bij nacht, paars aangelicht | 's Nachts paars aangelicht, wat haar bouwjaar opvallend goed verbergt. | right](/media/efteling/python-4x3.jpg)
+![De loopings van Python bij nacht, paars aangelicht | ’s Nachts paars aangelicht, wat haar bouwjaar opvallend goed verbergt. | right](/media/efteling/python-4x3.jpg)
 
 **[Python](ref:efteling/python)** is de oldtimer van **Vekoma**, geopend op
 12 april 1981: 750 meter, 29 meter hoog, vier inversies in de vorm van twee
@@ -447,7 +447,7 @@ kinderarts, een medische commissie beslist.
 Architect Anoul Bouwman bouwde eerst acht vakantiewoningen rond een gezamenlijke
 binnentuin, in 2015 kwam er een bloemvormige aanbouw bij. Nu zijn het er twaalf,
 elk apart gethematiseerd: safari, Sneeuwwitje, circus, ruimte,
-Duizend-en-één-nacht. Daarmee passen er **twaalf gezinnen per week en zo'n 600 per
+Duizend-en-één-nacht. Daarmee passen er **twaalf gezinnen per week en zo’n 600 per
 jaar** in. Gedragen wordt het door bijna **300 vrijwilligers**, de bedrijfskosten
 liggen rond **1,3 miljoen euro per jaar**, en de financiering komt volledig uit
 giften. Villa Pardoes heeft het CBF-keurmerk en de ANBI-status.
@@ -500,7 +500,7 @@ Tussen de beste en de slechtste weekdag zitten vier minuten. In Phantasialand
 liggen tussen een dinsdag en een zaterdag werelden, hier maakt de dag nauwelijks
 uit. **Maandag** is in onze data zelfs de drukste dag, wat eerst absurd klinkt en
 oplost zodra je de Nederlandse vakantieweken ernaast legt: wie een week in een
-vakantiepark of het parkhotel boekt, begint op maandag. Bij zo'n 20 meetdagen per
+vakantiepark of het parkhotel boekt, begint op maandag. Bij zo’n 20 meetdagen per
 weekdag zou ik verschillen van twee minuten toch niet als advies verkopen. Het
 maandageffect is zichtbaar, de volgorde daartussen is ruis.
 
@@ -544,7 +544,7 @@ En dan was er juni 2026 bij **[Python](ref:efteling/python)**, dat als leerstuk
 kan dienen. Van **18 tot en met 29 mei 2026** verving het park de single-riderrij
 door twee rijen op groepsgrootte: links even groepen (twee, vier, zes, acht),
 rechts oneven en eenlingen, elk met een eigen wachttijdweergave. De gedachte
-erachter is simpel. Wie met z'n drieën komt, laat rekenkundig een plek leeg, en
+erachter is simpel. Wie met z’n drieën komt, laat rekenkundig een plek leeg, en
 over een dag telt dat op tot een hoop lege stoelen.
 
 Toen werd het curieus. De proef liep af, kwam op **19 juni** terug, deze keer met
@@ -565,18 +565,18 @@ het ei zegt.
 Blijft timing over, en in de Efteling werkt dat anders dan in een compact park.
 
 Ga bij opening het **Ruigrijk** in, naar de achterste hoek. De weg daarheen is
-lang, precies daarom is hij 's ochtends leeg.
+lang, precies daarom is hij ’s ochtends leeg.
 [Joris en de Draak](ref:efteling/joris-en-de-draak) is onze duidelijkste
 rope-drop-tip voor dit park, die baan bouwt haar rij het snelst op. Er pal naast
 staan [Baron 1898](ref:efteling/baron-1898),
 [De Vliegende Hollander](ref:efteling/de-vliegende-hollander) en sinds mei
 [Hooghmoed](ref:efteling/hooghmoed): vier attracties op zichtafstand die samen
-bijna de helft van je wachttijd van de dag zouden uitmaken als je ze 's middags
+bijna de helft van je wachttijd van de dag zouden uitmaken als je ze ’s middags
 doet.
 
 Daarna dwars door het Anderrijk naar
 [Danse Macabre](ref:efteling/danse-macabre) en [Piraña](ref:efteling/pirana).
-[Symbolica](ref:efteling/symbolica) heeft met 1.400 gasten per uur zo'n hoge
+[Symbolica](ref:efteling/symbolica) heeft met 1.400 gasten per uur zo’n hoge
 capaciteit dat de rij over de dag opvallend stabiel blijft, die kun je bewaren.
 
 De **middaguren zijn voor het Sprookjesbos**. Het is juist dan het prettigst als
@@ -684,7 +684,7 @@ gestopte ticketverkoop bij zodra een vakantiedag de vergunningsgrens in zicht
 brengt. Wie het winterseizoen rustig wil zien, pakt een doordeweekse dag in november
 of in de tweede helft van januari, niet de week tussen kerst en nieuwjaar.
 
-Mijn foto's hier zijn allemaal op één winteravond gemaakt. De blauw aangelichte mist
+Mijn foto’s hier zijn allemaal op één winteravond gemaakt. De blauw aangelichte mist
 rond de ruïnekerk van Danse Macabre ziet er in juli nu eenmaal niet zo uit.
 
 ## Wat er nog aankomt

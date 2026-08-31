@@ -1,5 +1,5 @@
 ---
-title: "Halloween 2026 in Europa's pretparken: horrornachten en mazes"
+title: "Halloween 2026 in Europa’s pretparken: horrornachten en mazes"
 translationKey: halloween-parks-2026
 date: '2026-07-17'
 updatedAt: '2026-08-19'
@@ -35,7 +35,7 @@ coverImage:
 seo:
   title: 'Halloween pretparken 2026: alle data'
   description: >-
-    Halloween 2026 in Europa's pretparken: Movie Park met negen mazes,
+    Halloween 2026 in Europa’s pretparken: Movie Park met negen mazes,
     Traumatica, de Walibi-experiences, Toverland, plus de weigeraars en de
     leegste dagen.
   keywords:
@@ -56,14 +56,14 @@ seo:
 Er zijn die zes weken per jaar waarin pretparken een lichte
 persoonlijkheidsstoornis ontwikkelen. Dezelfde achtbaan die in juli naar
 zonnebrand en suikerspin rook, ligt in oktober in de grondmist; waar overdag
-gezinnen softijs likken, wringt zich 's avonds een vent met een draaiende
+gezinnen softijs likken, wringt zich ’s avonds een vent met een draaiende
 kettingzaag tussen jou en de uitgang. **Halloween** is voor de grote parken al
 lang geen beetje decoratie meer, maar een eigen seizoen, met eigen tickets,
 eigen leeftijdsgrenzen en een publiek dat precies voor deze gecontroleerde
 hartaanval afreist.
 
 Griezelen trekt zich heerlijk weinig aan van landsgrenzen, dus loont het om
-over de grens te kijken: vanuit NRW bereik je in zo'n vier uur rijden het
+over de grens te kijken: vanuit NRW bereik je in zo’n vier uur rijden het
 grootste Halloween-event van het continent en misschien wel de sluwste
 griezelinnovatie van Europa. Alleen liggen die toevallig in twee verschillende
 landen. Hier staat wat het seizoen **2026** te bieden heeft: de grote
@@ -72,7 +72,7 @@ die aan de hele poppenkast demonstratief _niet_ meedoen, en de vraag die
 park.fan beter beantwoordt dan welk persbericht ook: wanneer is het het drukst,
 en wanneer kom je er het ontspanst doorheen?
 
-> **Kort over de data:** De parken schaven hun Halloween-programma's de hele
+> **Kort over de data:** De parken schaven hun Halloween-programma’s de hele
 > zomer nog bij. Bij elk park linken we de officiële eventpagina met de
 > actuele data en prijzen. Waar hieronder een exacte datum staat, was die bij
 > het ter perse gaan bevestigd; voor de rest geldt: even nachecken voordat je
@@ -161,7 +161,7 @@ Data, maze-line-up en ticketniveaus staan op de
 
 Het [Europa-Park](ref:europa-park) doet Halloween met een gespleten
 persoonlijkheid. Overdag: kleurrijk herfstdecor met gevoelsmatig een half
-miljoen pompoenen, griezelvrij, gezinsvriendelijk, zeer instagrammable. 's
+miljoen pompoenen, griezelvrij, gezinsvriendelijk, zeer instagrammable. ’s
 Avonds neemt **Traumatica** het over, het “Festival of Fear”, en 2026 is een
 bijzondere jaargang. Het park viert **20 jaar horror en 10 jaar Traumatica**.
 
@@ -177,7 +177,7 @@ scare zone (2025), de Board of Directors Award van de Amerikaanse Haunted
 Attraction Association (2025) en recent de Scare Award 2026 als beste
 scream-parkevent van Europa.
 
-Traumatica is **strikt vanaf 16**, en zo strikt dat ook mama's handtekening en
+Traumatica is **strikt vanaf 16**, en zo strikt dat ook mama’s handtekening en
 de beste puppyogen niets uithalen: wie jonger is, komt er niet in, punt
 (afzonderlijke experiences als **THE HOTEL** en de club **THE FORBIDDEN** zelfs
 pas vanaf 18). Daarvoor krijg je ruim **150 acteurs**, meerdere gethematiseerde
@@ -194,7 +194,7 @@ voor doorgewinterden (vanaf 18, all-inclusive, € 349). Sommige extra prikkels
 kosten bovenop: de vollecontact-experience THE HOTEL (€ 29), de club THE
 FORBIDDEN (€ 10) en een korte horror-VR (€ 6).
 
-Voor het jubileum keert de **Vampire's Club** terug, en wel voor precies vier
+Voor het jubileum keert de **Vampire’s Club** terug, en wel voor precies vier
 nachten: 25 en 26 september, 2 en 3 oktober. Op die avonden komt hij in de
 plaats van THE FORBIDDEN, en staat Marc Terenzi er zelf op het podium. Na ruim
 een decennium afstand tussen hem en het event is dat het soort voetnoot waar
@@ -278,7 +278,7 @@ van het Europese Halloween, waar geen nog zo groot lopendebandevent langs komt.
 
 Een deel van die keuze neemt het park je in 2026 trouwens uit handen, want de
 twee niveaus vallen voor het eerst op **verschillende dagen**. Tot en met 2025
-deelden ze dezelfde datum, overdag pompoen en 's avonds kettingzaag, en dat was
+deelden ze dezelfde datum, overdag pompoen en ’s avonds kettingzaag, en dat was
 niet goed voor de gezinnen en niet voor de acteurs, die tussen twee totaal
 verschillende publieksgroepen moesten schakelen. De **Spooky Days** voor zes-
 tot twaalfjarigen liggen nu op **14, 15, 19, 20 en 21 oktober**, midden in de
@@ -291,7 +291,7 @@ vanaf 16 jaar.
 De trailer staat sinds vandaag online, en is op een opmerkelijke manier
 ingetogen. “Back to Reality” laat een minuut lang een uitgesproken aardige Eddie
 zien: de horrorclown drukt een jongetje bij Speed of Sound een roze knuffel in
-handen, deelt ijs en suikerspin uit, poseert lachend voor foto's en danst door
+handen, deelt ijs en suikerspin uit, poseert lachend voor foto’s en danst door
 het park tot hij in een zee van roze knuffels staat. Dan wordt hij badend in het
 zweet wakker in zijn hol, bijl nog in de hand. “Relax, het is bijna Halloween.”
 
@@ -406,7 +406,7 @@ als **Mine Blast**, **Silence**, **The Curse of Amun** en het nieuwere
 waarin nog iets loert), plus scare zones als het clowneske **Psycho Circus**,
 de fezclown hierboven laat groeten, of **Arachnophobia** voor iedereen die
 spinnen op normale grootte al niet aankan. De spookhuizen zitten **niet** bij
-de toegang inbegrepen, maar kosten als tijdslotticket zo'n **€ 7,50 tot € 8,50
+de toegang inbegrepen, maar kosten als tijdslotticket zo’n **€ 7,50 tot € 8,50
 per huis**; wie een hekel heeft aan wachten, neemt de **Speedy Pass** als fast
 lane.
 
@@ -418,7 +418,7 @@ komen erbij.
 
 Op de Ibilaw-pagina staat half augustus nog altijd niet meer dan “stay tuned”,
 Waver neemt dus de tijd. Ter oriëntatie: in 2025 waren het **18 Ibilaw-avonden**
-(11 oktober tot 2 november), op zo'n tien daarvan liep het park tot 22 uur.
+(11 oktober tot 2 november), op zo’n tien daarvan liep het park tot 22 uur.
 Nieuw was toen het spookhuis **Aquarium** in het havengebied Dock World, plus de
 scare zones Innocence, Basement en Arachnophobia. Het zou een verrassing zijn
 als daarvan in 2026 iets verdwijnt.
@@ -439,12 +439,12 @@ de ontscherpte versie: griezelen als sfeer, niet als shocktherapie.
 Het [Heide-Park](ref:heide-park) in Soltau doet allebei en laat de dosis aan
 jou. Halloween loopt **van 10 tot 31 oktober 2026**, op **vijf dagen van 12 tot
 21 uur** (za 10, za 17, za 24, vr 30 en za 31 oktober):
-overdag gezinsvriendelijke decoratie, 's avonds een scare zone en **drie
+overdag gezinsvriendelijke decoratie, ’s avonds een scare zone en **drie
 horrormazes vanaf 16**, waarvoor telkens een eigen tijdslotticket nodig is
 (bundel van drie € 22). Welk mazetrio er in 2026 aantreedt, bevestigt Soltau
 deze zomer; eindtijdsfeer zit er ervaringsgewijs bij. Ideaal voor de
 gezinsvrede: iedereen rijdt overdag samen achtbaan, en wie oud en dapper genoeg
-is, verdwijnt 's avonds in een maze terwijl de rest zich aan de braadworst
+is, verdwijnt ’s avonds in een maze terwijl de rest zich aan de braadworst
 vasthoudt.
 
 ![Roestige legertruck voor zendmasten en afzettingen overdag | Welkom in de zombiezone. De ontvangst is … rustiek. | wide](/media/halloween-2026/beispiel-endzeit-truck.jpg)
@@ -566,7 +566,7 @@ dagen** uit onze AI-druktekalender bekijken:
 
 ```
 
-Hoe zo'n park zich over oktober typisch vult, per weekdag en maand, uit echte
+Hoe zo’n park zich over oktober typisch vult, per weekdag en maand, uit echte
 meetdata van de afgelopen seizoenen, levert de statistiek er meteen bij:
 
 **Movie Park Germany, typische wachttijden per weekdag & maand**

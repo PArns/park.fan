@@ -56,7 +56,7 @@ De grond waar Untamed op staat, lag in 1957 nog onder water.
 
 Dat is geen metafoor. Op 29 juni 1957 viel Oostelijk Flevoland droog, in 1963
 werd in deze polder het dorp Biddinghuizen gesticht, en het ligt tot op vandaag
-zo'n drie meter onder zeeniveau. Als je boven op de lifthill van
+zo’n drie meter onder zeeniveau. Als je boven op de lifthill van
 [Untamed](ref:walibi-holland/untamed) zit, hang je 36,5 meter boven een akker
 die zelf onder zeeniveau ligt. Al het land onder deze achtbaan is jonger dan de
 meeste mensen die erin zitten.
@@ -109,7 +109,7 @@ het park eigendom van het Franse concern **Compagnie des Alpes**, dat ook
 
 ![Een oude kever staat op een stalen frame boven het bord "Speed Zone" | De ingang van de Speed Zone. Subtiliteit was nooit het doel. | wide](/media/walibi-holland/background.jpg)
 
-Vandaag beslaat het park zo'n **40 hectare**, plus 20 hectare vakantiepark
+Vandaag beslaat het park zo’n **40 hectare**, plus 20 hectare vakantiepark
 (Walibi Village) en een **evenemententerrein van 80 hectare** er direct naast.
 Dat terrein is belangrijk, daarover zo meer.
 
@@ -156,7 +156,7 @@ het vocabulaire overgenomen van de mensen die toch al op zijn terrein staan.
 Als je dat eenmaal doorhebt, valt de rest opeens op zijn plek. De gebieden heten
 **Speed Zone** en **Zero Zone**. De banen heten Untamed, Lost Gravity, Speed of
 Sound, Xpress, Goliath. Er is een achtbaan waarvan het station als
-opnamestudio is ingericht. Er zijn zomeravonden waarop dj's draaien en het park tot
+opnamestudio is ingericht. Er zijn zomeravonden waarop dj’s draaien en het park tot
 22 uur doorgaat. En er is een Halloween-evenement dat verder gaat dan elk ander
 in de Benelux.
 
@@ -203,7 +203,7 @@ Een jaar later probeert Eddie het met pluche.
 De spot van 19 augustus 2026 heet "Back to Reality" en laat een minuut lang een
 uitgesproken aardige horrorclown zien: hij drukt een jongetje bij Speed of Sound
 een roze knuffel in handen, deelt ijs en suikerspin uit, poseert lachend voor
-foto's en danst door het park tot hij in een zee van roze pluche staat. De schrik
+foto’s en danst door het park tot hij in een zee van roze pluche staat. De schrik
 komt pas in de laatste vijf seconden, als hij badend in het zweet wakker wordt in
 zijn hol met een bijl in zijn hand en er niets van waar blijkt te zijn. "Relax,
 het is bijna Halloween."
@@ -426,7 +426,7 @@ beveiliging uitmaakt.
   **[Crazy River](ref:walibi-holland/crazy-river)** vormen de waterafdeling,
   **[Space Shot](ref:walibi-holland/space-shot)** en
   **[Skydiver](ref:walibi-holland/skydiver)** de valtorens, en
-  **[Merlin's Magic Castle](ref:walibi-holland/merlins-magic-castle)** is de
+  **[Merlin’s Magic Castle](ref:walibi-holland/merlins-magic-castle)** is de
   enige noemenswaardige darkride in het park.
 
 ![Boten in de watergoot van Crazy River, daarachter een houten gebouw | Crazy River is de wildwaterbaan van de Zero Zone. Zoals altijd bij dit type geldt: voorin word je natter. | left](/media/walibi-holland/crazy-river-4x3.jpg)
@@ -463,7 +463,7 @@ Per baan ziet het er zo uit:
 De beste baan van het park staat in de onderste helft van die tabel. Er wordt
 langer gewacht voor de nieuwigheid, voor een SLC uit 1994 en voor een
 Mack-baan van 680 meter. Dat is geen kritiek op YOY, een nieuwe baan trekt
-altijd. Maar het betekent wel: loop je 's ochtends meteen de Wilderness in, dan
+altijd. Maar het betekent wel: loop je ’s ochtends meteen de Wilderness in, dan
 heb je Untamed drie keer gereden voordat de YOY-rij één keer rond is.
 
 Interessanter wordt het in vergelijking met de buurt. Zelfde databasis, zelfde
@@ -512,7 +512,7 @@ de Clown en een pin voor elke gast. Het begon rond het jaar 2000 met één enkel
 spookhuis vol geanimeerde poppen. Vandaag is het het evenement waaraan de hele
 Europese griezel zich meet.
 
-![Een actrice als gebroken porseleinen pop met breuklijnen in haar gezicht, achter haar een kleurrijk kinderdeel met opgehangen teddyberen | Het kinderdeel waar 's middags zesjarigen pompoenen beschilderen. Vanaf 2026 gebeurt dat niet meer op dezelfde dag. | right](/media/halloween-2026/beispiel-porzellanpuppe.jpg)
+![Een actrice als gebroken porseleinen pop met breuklijnen in haar gezicht, achter haar een kleurrijk kinderdeel met opgehangen teddyberen | Het kinderdeel waar ’s middags zesjarigen pompoenen beschilderen. Vanaf 2026 gebeurt dat niet meer op dezelfde dag. | right](/media/halloween-2026/beispiel-porzellanpuppe.jpg)
 
 Hoe zich dat verhoudt tot Movie Park, Traumatica en Toverland staat in onze
 [Halloween-gids](/blog/halloween-pretparken-2026). Waar eerste bezoekers
@@ -601,7 +601,7 @@ Graveyard en Nightmares.
 Wie werkelijk alles wil meepakken, betaalt **minimaal € 116,50 per persoon**, en
 dan nog bovenop de entree. Dat is de goedkoopst denkbare combinatie, met het
 Before Dark-pakket voor de vier eenvoudige huizen en alles in de voorverkoop.
-Met de R.I.P. Pass in plaats van losse tickets kom je op zo'n € 149, en wie 's
+Met de R.I.P. Pass in plaats van losse tickets kom je op zo’n € 149, en wie ’s
 avonds pas aan de kassa boekt, komt boven de € 156 uit. De entree komt er telkens
 bovenop. Op dit punt besluiten de meesten het bij twee huizen en één experience
 te laten. Een verstandig plan.
@@ -614,9 +614,9 @@ te laten. Een verstandig plan.
 > weg voordat je op de parkeerplaats staat.
 
 **Voor 2026 verandert de belangrijkste regel.** Tot nu toe liepen Spooky Days en
-Fright Nights op dezelfde dag, overdag pompoen, 's avonds kettingzaag. Vanaf dit
+Fright Nights op dezelfde dag, overdag pompoen, ’s avonds kettingzaag. Vanaf dit
 seizoen **splitst het park beide evenementen over verschillende dagen**. De
-motivering uit Biddinghuizen is verfrissend onromantisch: 's middags liep het
+motivering uit Biddinghuizen is verfrissend onromantisch: ’s middags liep het
 park vol met avondgasten, gezinnen met kleine kinderen bleven weg, en de acteurs
 moesten binnen enkele uren van kindvriendelijk naar compromisloos omschakelen.
 Fright Nights-bezoekers krijgen in plaats daarvan een eigen middagprogramma,
@@ -639,12 +639,12 @@ verkoopt tot nu toe alleen entree.
 
 Vier winters lang probeerde Walibi Holland ook in december open te gaan. Dat
 heette **Bright Nights**: lichtinstallaties, verlichte achtbanen, een laser- en
-vuurwerkshow genaamd "Light up the Night", zo'n elf attracties in bedrijf. Het
+vuurwerkshow genaamd "Light up the Night", zo’n elf attracties in bedrijf. Het
 was bedoeld als proef van drie jaar, verlengd tot vier. De laatste editie liep
 over kerst 2025 en januari 2026.
 
 Op **23 april 2026** heeft het park het evenement geschrapt. Zonder
-aankondiging, zonder opvolger. Walibi Holland blijft 's winters weer helemaal
+aankondiging, zonder opvolger. Walibi Holland blijft ’s winters weer helemaal
 dicht.
 
 ![De ingang van Walibi Belgium, versierd met kerstballen, daarboven het bord "Walibi Winter" | Walibi Winter in Waver. Het Belgische zusterpark gaat in december door, het Nederlandse niet meer. | wide](/media/walibi-belgium/background.jpg)
@@ -657,7 +657,7 @@ ervaring bieden.
 
 Het rekende niet, en de reden is dezelfde die het park in de zomer sterk maakt.
 
-Wie helemaal op achtbanen inzet, heeft 's winters een natuurkundig probleem.
+Wie helemaal op achtbanen inzet, heeft ’s winters een natuurkundig probleem.
 Achtbanen rijden niet bij vorst, storm en ijzel, en **Walibi Holland heeft
 vrijwel geen overdekte attracties**. Valt de techniek uit, dan blijft voor de
 gasten de lichtshow over, en een lichtshow draagt geen ticket. De concentratie op
@@ -667,7 +667,7 @@ dat er in de regen zelfs beter uitziet. Walibi kan dat niet, en het heeft
 blijkbaar vier jaar geduurd om dat uit te spreken.
 
 De aankondiging trof ook het eigen huis onvoorbereid. Reclamemateriaal en
-vouchers waren al verspreid, promovideo's voor komende jaren al opgenomen. Die
+vouchers waren al verspreid, promovideo’s voor komende jaren al opgenomen. Die
 zullen nooit draaien. Wie een abonnement voor 2026 had gekocht waarin het
 winterbedrijf van 2026 en 2027 zat, krijgt als compensatie twee gratis tickets
 voor het zomerseizoen.
@@ -688,7 +688,7 @@ hier:
 
 **#Lekkergaan** draait op zes woensdagen, op **15, 22 en 29 juli en op 5, 12 en
 19 augustus 2026**, telkens tot 22 uur. Dat is de voortzetting van het format
-dat in 2017 als zomerfestival startte: dj's, meerdere podia, een strandgebied bij
+dat in 2017 als zomerfestival startte: dj’s, meerdere podia, een strandgebied bij
 de Main Stage, alle attracties in bedrijf. Achtbaanrijden in de avondzon terwijl
 er ergens bassen draaien. De naam is het vriendelijke zusje van "hard gaan":
 "lekker gaan" betekent zoiets als goed lopen, en wie beide woorden kent, kent de
@@ -696,7 +696,7 @@ twee bedrijfsmodi van dit park.
 
 **Zomerse Zaterdagen** zijn de exacte tegenhanger, op **25 juli en op 1, 8, 15
 en 22 augustus 2026**, eveneens tot 22 uur. Overdag draait de familieshow Walibi
-& Friends, 's avonds de show **Summer Beats** met vuurwerk boven de Main Stage.
+& Friends, ’s avonds de show **Summer Beats** met vuurwerk boven de Main Stage.
 Op die dagen is er een **Half Day Half Price**-ticket waarmee je vanaf 16 uur
 naar binnen kunt.
 
@@ -756,8 +756,8 @@ je de helft van het concept gemist.
 **[El Rio Grande](ref:walibi-holland/el-rio-grande?bare)** en
 **[Crazy River](ref:walibi-holland/crazy-river?bare)** passen in de middagshitte,
 **[Speed of Sound](ref:walibi-holland/speed-of-sound?bare)** pak je mee
-wanneer je tussendoor 5,2 g nodig hebt. En het laatste uur is weer voor Untamed: de baan loopt 's avonds
-merkbaar sneller dan 's ochtends, en in het tegenlicht zie je vanaf de lifthill
+wanneer je tussendoor 5,2 g nodig hebt. En het laatste uur is weer voor Untamed: de baan loopt ’s avonds
+merkbaar sneller dan ’s ochtends, en in het tegenlicht zie je vanaf de lifthill
 hoe vlak dit land werkelijk is.
 
 ## Praktisch: tickets, route, eten
@@ -771,7 +771,7 @@ datum verschillend.
 - **Kinderen:** 3 tot 5 jaar € 23, 6 tot 11 jaar € 36, onder de 2 gratis.
   Senioren vanaf 55 en gasten met een beperking eveneens € 36.
 - **Parkeren:** € 12 per auto per dag, twintig laadpunten voor elektrische
-  auto's op het terrein. Seizoenparkeerkaart € 35, en tijdens de Fright Nights
+  auto’s op het terrein. Seizoenparkeerkaart € 35, en tijdens de Fright Nights
   is parkeren sowieso gratis.
 - **Abonnementen** heten hier Pass en komen in drie niveaus: **Walibi Pass**
   € 105, **Friends Pass** € 95 per persoon voor groepen, **Family Pass** vanaf
@@ -796,7 +796,7 @@ gasten op de meeste dagen niet hebben.
 
 **Route.** Het park ligt aan de Spijkweg 30 in **Biddinghuizen**, gemeente
 Dronten. Vanuit het Ruhrgebied is het afhankelijk van het verkeer ruim twee uur,
-vanuit Düsseldorf ongeveer 2:15, vanuit Keulen zo'n 2:30. De route loopt via de
+vanuit Düsseldorf ongeveer 2:15, vanuit Keulen zo’n 2:30. De route loopt via de
 A3 naar Arnhem, dan de A50 en A28 richting Harderwijk en over de N302 de polder
 in. Vanaf Harderwijk is alles bewegwijzerd.
 
@@ -867,7 +867,7 @@ in een groep (Friends Pass) is het € 95 en als gezin vanaf € 73 per persoon.
 
 ### Hoe werkt Halloween in Walibi Holland?
 
-In vier niveaus: **Spooky Days** overdag voor kinderen, **Fright Nights** 's
+In vier niveaus: **Spooky Days** overdag voor kinderen, **Fright Nights** ’s
 avonds vanaf 16, plus **spookhuizen** en **experiences**, die allebei extra
 kosten. In 2025 lagen de huizen tussen € 9,50 en € 17,50 en de experiences
 tussen € 19,50 en € 25,50; alles bij elkaar kostte minimaal € 116,50 bovenop de
@@ -880,7 +880,7 @@ plus 16, 22 en 23 oktober, de Spooky Days op 14, 15, 19, 20 en 21 oktober.
 ### Bestaan Bright Nights nog?
 
 Nee. Walibi Holland heeft het winterevenement op 23 april 2026 na vier edities
-gestaakt en blijft 's winters dicht. Een opvolger is niet gepland. Wie in
+gestaakt en blijft ’s winters dicht. Een opvolger is niet gepland. Wie in
 december een Walibi-park wil, rijdt naar Waver voor
 [Walibi Belgium](ref:walibi-belgium) en zijn Walibi Winter.
 
@@ -936,7 +936,7 @@ helemaal nergens meer aan.
 - Flevohof (opening 1971 door prinses Beatrix, 150 hectare, faillissement): [Flevohof op nl.wikipedia](https://nl.wikipedia.org/wiki/Flevohof) · [1971–1991: De Flevohof (Walibi24)](https://walibi24.nl/geschiedenis/flevohof/)
 - De polder (Oostelijk Flevoland droog op 29 juni 1957, Biddinghuizen 1963, −3 m NAP): [Oostelijk Flevoland op nl.wikipedia](https://nl.wikipedia.org/wiki/Oostelijk_Flevoland) · [Biddinghuizen op en.wikipedia](https://en.wikipedia.org/wiki/Biddinghuizen)
 - Bezoekersaantallen (972.000 in boekjaar 2024/25, record in 2000): ["Record voor Walibi Holland" (Looopings)](https://www.looopings.nl/weblog/31648/Record-voor-Walibi-Holland-hoogste-bezoekersaantal-sinds-het-Six-Flags-tijdperk.html)
-- `#Hardgaan`, "Dare to get Real" en de terugkeer in 2018: ["Walibi Holland vervangt 'Hardgaan' door nieuwe slogan" (Looopings)](https://www.looopings.nl/weblog/7253/Walibi-Holland-vervangt-Hardgaan-door-nieuwe-slogan.html) · ["Walibi Holland grijpt terug naar oude slogan #Hardgaan" (Looopings)](https://www.looopings.nl/weblog/9395/Walibi-Holland-grijpt-terug-naar-oude-slogan-Hardgaan.html) · ["Bezoekers Walibi Holland gaan 'hard'" (Looopings)](https://www.looopings.nl/weblog/3940/Bezoekers-Walibi-Holland-gaan-hard-pretpark-verkoopt-speciale-Walibi-condooms.html)
+- `#Hardgaan`, "Dare to get Real" en de terugkeer in 2018: ["Walibi Holland vervangt 'Hardgaan' door nieuwe slogan" (Looopings)](https://www.looopings.nl/weblog/7253/Walibi-Holland-vervangt-Hardgaan-door-nieuwe-slogan.html) · ["Walibi Holland grijpt terug naar oude slogan #Hardgaan" (Looopings)](https://www.looopings.nl/weblog/9395/Walibi-Holland-grijpt-terug-naar-oude-slogan-Hardgaan.html) · ["Bezoekers Walibi Holland gaan 'hard’" (Looopings)](https://www.looopings.nl/weblog/3940/Bezoekers-Walibi-Holland-gaan-hard-pretpark-verkoopt-speciale-Walibi-condooms.html)
 - De reclamespot "Souls for Sale", 889 klachten, oordeel van de Reclame Code Commissie: ["Geen enkele Nederlandse reclame leverde vorig jaar meer klachten op" (Looopings)](https://www.looopings.nl/weblog/32698/Geen-enkele-Nederlandse-reclame-leverde-vorig-jaar-meer-klachten-op-dan-die-van-Walibi-Holland.html) · ["Commissie: Horror-reclamespot Walibi in strijd met menselijke waardigheid" (Omroep Flevoland)](https://www.omroepflevoland.nl/nieuws/443747/commissie-in-ophef-geraakte-walibi-spot-in-strijd-met-reclame-code)
 - Defqon.1 en Lowlands op het evenemententerrein: [Event Site Walibi Holland (officieel)](https://www.walibi.nl/en/business/possibilities/locations/evenemententerrein-walibi-holland)
 - Halloween Fright Nights (opbouw, experiences, 25e editie in 2025): [Halloween Fright Nights (officieel)](https://www.walibi.nl/halloween/en/halloween-fright-nights) · [Experiences (officieel)](https://www.walibi.nl/halloween/en/halloween-fright-nights/experiences) · ["Walibi viert 25 jaar Halloween Fright Nights" (persbericht)](https://pers.walibi.nl/walibi-viert-25-jaar-halloween-fright-nights-met-exclusieve-jubileumavond) · [Geschiedenis van de Fright Nights (ScareZone)](https://scarezone.nl/2021/02/11/de-halloween-fright-nights-van-six-flags-holland-naar-walibi-holland/)

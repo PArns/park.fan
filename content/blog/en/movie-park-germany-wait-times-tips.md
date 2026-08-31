@@ -56,7 +56,7 @@ standing in Bottrop-Kirchhellen.
 Twenty thousand invited guests, a park worth around 200 million euros, built on
 the grounds of a failed film park at the northern edge of the Ruhr area:
 **Warner Bros. Movie World**, modelled on the park of the same name that Warner
-had opened five years earlier on Australia's Gold Coast. A day later the paying
+had opened five years earlier on Australia’s Gold Coast. A day later the paying
 public was let in.
 
 Of the brands all that effort was made for, not a single one is left. Bugs Bunny
@@ -64,10 +64,10 @@ gone, Batman gone, the Gremlins gone, Police Academy gone. The park has had a
 different name since 2005, has belonged to a Spanish group since 2010, and is
 celebrating its thirtieth birthday with a ride from Paramount of all studios.
 
-There is also a number here that does not fit this park's reputation at all.
+There is also a number here that does not fit this park’s reputation at all.
 Across **135 measured operating days**, the typical wait at
 [Movie Park](ref:movie-park-germany) sits at twenty minutes. At
-[Phantasialand](ref:phantasialand), barely an hour's drive further south, it is
+[Phantasialand](ref:phantasialand), barely an hour’s drive further south, it is
 thirty.
 
 And the emptiest weekday is the one no tip sheet online will tell you about.
@@ -99,7 +99,7 @@ background:
 | Opened as              | Year | Called today                                     |
 | ---------------------- | ---- | ------------------------------------------------ |
 | Looney Tunes Adventure | 1996 | Movie Park Studio Tour (since 2021)              |
-| Gremlins Invasion      | 1996 | Van Helsing's Factory (since 2011)               |
+| Gremlins Invasion      | 1996 | Van Helsing’s Factory (since 2011)               |
 | The NeverEnding Story  | 1996 | Excalibur – Secrets of the Dark Forest (2018)    |
 | Wild Wild West         | 1999 | Bandit (since 2005)                              |
 | Eraser                 | 2001 | Iron Claw (since 2023), FX and MP-Xpress between |
@@ -145,7 +145,7 @@ Across twelve scenes it tells the story of the park itself. You ride through a
 film archive, through the special effects department, through the sound
 department, through a model workshop, and everywhere there are nods to
 attractions that used to be here. King Kong snaps at the train along the way.
-The ride opened for the park's 25th birthday, which makes it a park's birthday
+The ride opened for the park’s 25th birthday, which makes it a park’s birthday
 present to itself.
 
 ![A model of a theme park site on a workshop table, next to it rolled-up plans and a coffee mug | One of the twelve scenes: the model workshop, with the park grounds sitting on the table as a model, hall and car park included. | wide](/media/movie-park-germany/movie-park-studio-tour.jpg)
@@ -202,7 +202,7 @@ long again.
 ### The Bandit
 
 **[The Bandit](ref:movie-park-germany/the-bandit)** opened in 1999 as **Wild
-Wild West** and was Germany's only wooden coaster at the time. It was built by
+Wild West** and was Germany’s only wooden coaster at the time. It was built by
 the **Roller Coaster Corporation of America**, 27.8 metres tall, a 24.9-metre
 first drop, 1,099 metres long, 80 km/h, a minute and a half of ride time. The
 Intamin trains from 1999 were swapped for Premier Rides ones as early as 2001.
@@ -229,9 +229,9 @@ starts. It still belongs on the list once, because it matters too much to German
 coaster history. If your benchmark is Colossos at [Heide-Park](ref:heide-park),
 leave it at that one ride.
 
-### Van Helsing's Factory
+### Van Helsing’s Factory
 
-**[Van Helsing's Factory](ref:movie-park-germany/van-helsings-factory)** is the
+**[Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory)** is the
 ride with the longest queue in this park, and on paper that makes no sense.
 Opened on **18 June 2011**, a bobsled coaster by **Gerstlauer** in the former
 Gremlins hall, 3,000 square metres, eight metres tall, 400 metres long,
@@ -243,7 +243,7 @@ after taking over.
 ```
 
 You ride in single cars of four people, completely in the dark, through a
-vampire hunter's workshop done up in sixties style. From the outside the
+vampire hunter’s workshop done up in sixties style. From the outside the
 building looks like an American garage. The track is filled, which makes the
 thing surprisingly quiet inside, and the second lift hill pulls with friction
 wheels, so the car speeds up as it climbs.
@@ -280,7 +280,7 @@ to tear it down.
 - **[Ghost Chasers](ref:movie-park-germany/ghost-chasers)**, a wild mouse by
   **Mack Rides** from the year 2000, 45 km/h. Short corners, no fuss, and the
   ride where the adults in my car were reliably the louder ones.
-- **[Jimmy Neutron's Atomic Flyer](ref:movie-park-germany/jimmy-neutrons-atomic-flyer)**
+- **[Jimmy Neutron’s Atomic Flyer](ref:movie-park-germany/jimmy-neutrons-atomic-flyer)**
   by Vekoma (2007), a suspended family coaster at 47 km/h, in Nickland.
 - **[Backyardigans Mission to Mars](ref:movie-park-germany/backyardigans-mission-to-mars)**,
   a junior coaster by Vekoma from the opening year 1996, a short 207 metres.
@@ -321,7 +321,7 @@ straight down. The most unpleasant moment in the whole park.
 which John Cleese travels through time. It looks like 1996 and is worth seeing
 for exactly that reason.
 
-**[Dora's Big River Adventure](ref:movie-park-germany/doras-big-river-adventure)**,
+**[Dora’s Big River Adventure](ref:movie-park-germany/doras-big-river-adventure)**,
 finally, is the log flume in **Nickland**, built for primary school children,
 and still one of the two longest queues in the park, because on hot afternoons
 half the park heads for it at once.
@@ -329,7 +329,7 @@ half the park heads for it at once.
 The stages have been part of this place since day one: a studio park without a
 stunt show was unthinkable in 1996, so the Police Academy Stunt Show ran from
 opening day. Three new shows run in 2026: **Black Thunder** in the Saloon,
-**Frequency** in Van Helsing's Club and **Turn Back Time** on the New York Plaza
+**Frequency** in Van Helsing’s Club and **Turn Back Time** on the New York Plaza
 Stage, a trip through thirty years of film music. On top of that, the
 twenty-minute **Parade of Celebration** with floats, live singing and
 choreography has been running since this summer. The park celebrated its
@@ -352,8 +352,8 @@ The ten attractions you stand in longest:
 ```
 
 Top of that list is not a coaster doing 90 km/h but an indoor ride doing 36. Van
-Helsing's Factory has the longest median in the park, with the log flume from
-the children's area right behind it. Star Trek sits mid-table, even though most
+Helsing’s Factory has the longest median in the park, with the log flume from
+the children’s area right behind it. Star Trek sits mid-table, even though most
 people travel here for that ride in the first place.
 
 That has little to do with popularity and a lot to do with throughput. Van
@@ -479,8 +479,8 @@ For six weeks a year this park is called **Horrorwood Studios**, and then people
 come who otherwise never set foot in a theme park.
 
 The **Halloween Horror Festival** runs in its **28th edition** in 2026, on 22
-selected evenings from **26 September to 8 November**, under the year's motto
-"Legends Never Die". The park itself calls it Europe's biggest Halloween event,
+selected evenings from **26 September to 8 November**, under the year’s motto
+"Legends Never Die". The park itself calls it Europe’s biggest Halloween event,
 and by the numbers there is not much to argue with: more than **300 monsters**,
 nine horror mazes, four scare zones and a monster parade. During the day the
 park runs normally from 10 am, the horror areas start in the early evening.
@@ -527,7 +527,7 @@ hours in one go. Only the birthday in July was open longer.
 Head straight for
 **[Star Trek](ref:movie-park-germany/star-trek-operation-enterprise?bare)** at
 opening, the ride where racing pays off the most, then carry straight on to
-**[Van Helsing's Factory](ref:movie-park-germany/van-helsings-factory?bare)**,
+**[Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory?bare)**,
 because its queue never gets shorter again from the second hour until the
 evening. The morning then belongs to
 **[Bandit](ref:movie-park-germany/the-bandit?bare)** and the
@@ -549,7 +549,7 @@ Halloween evening in the dark.
 
 **Season.** The regular 2026 season runs from **27 March to 8 November**. After
 that, from **27 November 2026 to 5 January 2027**, comes the winter event
-**Movie Park's Hollywood Christmas** with more than a million lights, which has
+**Movie Park’s Hollywood Christmas** with more than a million lights, which has
 its own dates and its own tickets.
 
 **Tickets.** The gate price is high, the online price is not:
@@ -602,7 +602,7 @@ puts a whole row of other parks on your ticket:
 The small print is short but it counts. Tropical Islands is excluded on
 Saturdays, on public holidays and during the school holidays in Berlin,
 Brandenburg and Saxony, the benefits cannot be combined with other offers, and
-the list holds for one season at a time. The 2026 version is a PDF on the park's
+the list holds for one season at a time. The 2026 version is a PDF on the park’s
 site; the one for 2027 is not out yet.
 
 Three more things are in the small print:
@@ -626,7 +626,7 @@ And on one point Bottrop beats every other big German park I know:
 Essen Hauptbahnhof and the RB43 from Dortmund via Herne stop there. If you would
 rather sit on a bus, take the **SB16** from Essen Hauptbahnhof, which terminates
 on the park grounds. Getting to a German theme park without a car is otherwise a
-day's work. Here it is a regional train and a five-minute walk.
+day’s work. Here it is a regional train and a five-minute walk.
 
 **Food.** I will keep this short: pizza, pasta, burgers, chips, a bakery, and
 the prices are the most frequently named criticism in visitor reviews. The park
@@ -645,7 +645,7 @@ What it looks like in Bottrop right now:
 
 Across 135 measured operating days since August 2025, the typical wait across
 the park sits at **twenty minutes** (median). The highest value in the park
-belongs to [Van Helsing's Factory](ref:movie-park-germany/van-helsings-factory),
+belongs to [Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory),
 not to the big coaster. The current numbers are on the
 [Movie Park page](ref:movie-park-germany?bare).
 
@@ -682,10 +682,10 @@ until 6 September 2026, Gold is €93.50 and Platinum €107.90.
 
 ### How many roller coasters does Movie Park have?
 
-Eight: Star Trek™: Operation Enterprise, The Bandit, Van Helsing's Factory,
-Movie Park Studio Tour, Iron Claw, Ghost Chasers, Jimmy Neutron's Atomic Flyer
+Eight: Star Trek™: Operation Enterprise, The Bandit, Van Helsing’s Factory,
+Movie Park Studio Tour, Iron Claw, Ghost Chasers, Jimmy Neutron’s Atomic Flyer
 and Backyardigans Mission to Mars. Two of them are entirely indoors, and with
-Bandit, Germany's first modern wooden coaster stands here.
+Bandit, Germany’s first modern wooden coaster stands here.
 
 ### Can you get to Movie Park without a car?
 
@@ -713,7 +713,7 @@ year the same sets host what is, by its own count, the biggest Halloween event
 on the continent.
 
 The second half belongs here just as much, and I say it as somebody who enjoys
-going: **this park's best years are behind it.** They were in the Warner era,
+going: **this park’s best years are behind it.** They were in the Warner era,
 when a studio was putting money and characters into it, and what came afterwards
 was largely administration of the existing stock. The last coaster for adults
 came in 2017, the last planned one has been sitting under the grass as a
@@ -724,7 +724,7 @@ And still, hardly any German park has so many people who keep coming back. In
 October they travel to Bottrop from all over the country, many of them every
 year, and anyone walking through the Streets of New York on a season pass is not
 doing it because a lot has been invested there lately. Across 45 hectares stands
-a backlot town built in 1996 with a Hollywood studio's money, whose facades are
+a backlot town built in 1996 with a Hollywood studio’s money, whose facades are
 still standing although the studio has been gone for twenty-two years. The park
 has had four owners, lost every brand it started out with, and at some point
 began building rides about its own past. The best hall in the park today tells
@@ -749,16 +749,16 @@ wants torn down stands there lit purple against the moon.
 - Star Trek™: Operation Enterprise (Mack Rides, 40 metres, 90 km/h, 720 metres, three inversions, LSM launch, IMAscore): [Star Trek: Operation Enterprise on en.wikipedia](https://en.wikipedia.org/wiki/Star_Trek:_Operation_Enterprise)
 - The Bandit (1999 as Wild Wild West, RCCA, 27.8 metres, 1,099 metres, Cyclone layout, Premier trains from 2001): [Bandit (Movie Park Germany) on de.wikipedia](<https://de.wikipedia.org/wiki/Bandit_(Movie_Park_Germany)>) · [Bandit at Ultimate Rollercoaster](https://www.ultimaterollercoaster.com/coasters/bandit_movieparkgermany)
 - Retracking of the Bandit in the winter of 2015/16 (200 metres of track, ten carpenters, two journeymen): [New track for the Bandit (official, German)](https://www.movieparkgermany.de/blog/neue-schienen-fuer-the-bandit-groesstes-retracking-seit-bau-der-achterbahn-im)
-- Van Helsing's Factory (18 June 2011, Gerstlauer bobsled, 400 metres, 36 km/h, 848 people per hour, 5 million euros, former Gremlins hall): [Van Helsing's Factory on en.wikipedia](https://en.wikipedia.org/wiki/Van_Helsing%27s_Factory)
+- Van Helsing’s Factory (18 June 2011, Gerstlauer bobsled, 400 metres, 36 km/h, 848 people per hour, 5 million euros, former Gremlins hall): [Van Helsing’s Factory on en.wikipedia](https://en.wikipedia.org/wiki/Van_Helsing%27s_Factory)
 - Iron Claw (6 April 2001 as Eraser, Vekoma SLC, 689 metres, earlier names FX and MP-Xpress): [Iron Claw on rcdb.com](https://rcdb.com/969.htm) · [Iron Claw (official)](https://www.movieparkgermany.de/en/erlebnisse/attraktionen/ironclaw)
 - Excalibur – Secrets of the Dark Forest (1996 as The NeverEnding Story, 2005 Mystery River, reopened 7 May 2018): [Excalibur – Secrets of the Dark Forest on de.wikipedia](https://de.wikipedia.org/wiki/Excalibur_%E2%80%93_Secrets_of_the_Dark_Forest) · [Mystery River becomes Excalibur (Parkerlebnis, German)](https://www.parkerlebnis.de/movie-park-2018-mystery-river-umbau-excalibur-neuheit_55825.html)
 - The coaster stopped for 2014 (45 metres, ten million euros, foundations poured): [Roller coaster plans stopped (official, German)](https://www.movieparkgermany.de/movie-park-backstage/achterbahnplaene-gestoppt) · [Movie Park Germany plans a 45-metre roller coaster (Airtimers)](https://airtimers.com/en/movie-park-germany-plant-45-meter-hohe-achterbahn/0014266/)
-- 30th anniversary, new shows in 2026, Parade of Celebration: [30 years of park and film history (official, German)](https://www.movieparkgermany.de/plane-deinen-besuch/veranstaltungen/30_jahre_movie_park_germany) · [What's new in 2026 (official)](https://www.movieparkgermany.de/en/plane-deinen-besuch/wichtige-informationen/neuheiten2026) · [30 years of Movie Park Germany (Themepark Central, German)](https://www.themepark-central.de/30-jahre-movie-park-germany/)
+- 30th anniversary, new shows in 2026, Parade of Celebration: [30 years of park and film history (official, German)](https://www.movieparkgermany.de/plane-deinen-besuch/veranstaltungen/30_jahre_movie_park_germany) · [What’s new in 2026 (official)](https://www.movieparkgermany.de/en/plane-deinen-besuch/wichtige-informationen/neuheiten2026) · [30 years of Movie Park Germany (Themepark Central, German)](https://www.themepark-central.de/30-jahre-movie-park-germany/)
 - Halloween Horror Festival 2026 (26 September to 8 November, 28th edition, more than 300 monsters, four scare zones): [Movie Park Halloween (official)](https://www.movieparkgermany.de/en/halloween) · [Monster casting 2026 (FreizeitparkNEWS, German)](https://www.freizeitparknews.de/movie-park-germany/monster-casting-2026/) · [our Halloween guide 2026](/blog/halloween-theme-parks-2026)
 - The nine houses in 2026, of which Jason Universe is the only new one: [Horror mazes (official)](https://www.movieparkgermany.de/en/halloween/horrorhauser)
 - PHOBIA – The Live Horror Game Show in Studio 7 and the monster parade: [Shows (official)](https://www.movieparkgermany.de/en/halloween/shows)
 - Haunters Against Hate (since 2022, the fifth edition on 17 October 2026): [Haunters Against Hate (official)](https://www.movieparkgermany.de/en/halloween/hah) · ["Haunters Against Hate" at Parques Reunidos](https://www.parquesreunidos.com/en/blog/haunters-against-hate-when-fear-meets-purpose-at-movie-park)
-- Hollywood Christmas 2026/27: [Movie Park's Hollywood Christmas (official)](https://www.movieparkgermany.de/en/christmas)
+- Hollywood Christmas 2026/27: [Movie Park’s Hollywood Christmas (official)](https://www.movieparkgermany.de/en/christmas)
 - Prices, season passes, the 2027 presale (until 6 September 2026) and the parking fee: [Our prices & offers (official)](https://www.movieparkgermany.de/en/oeffnungszeiten-und-preise/preise) · [Season pass (official)](https://www.movieparkgermany.de/en/tickets-kaufen/saisonpass) · [Admission prices 2026 (NRW-Parks, German)](https://www.nrw-parks.de/movie-park-germany/movie-park-germany-eintrittspreise.html)
 - Bonus Club: benefits for Gold and Platinum only, free entry at the Efteling once per calendar year, three times at Bobbejaanland, Slagharen and Weltvogelpark Walsrode, plus the discount list: [Bonus Club (official)](https://www.movieparkgermany.de/en/tickets-kaufen/saisonpass/bonusclub) · [2026 benefits, parks in the group (PDF, German)](https://www.movieparkgermany.de/content/dam/mpg/uploads/website/vorteile-saisonpassinhaber-(bonusclub(/2026/Vorteile%20f%C3%BCr%20Saisonpassinhaber%202026_Parques%20Reunidos%20Gruppe.pdf.html) · [2026 benefits, theme parks, zoos and co. (PDF, German)](https://www.movieparkgermany.de/content/dam/mpg/uploads/website/vorteile-saisonpassinhaber-(bonusclub(/2026/Vorteile%20f%C3%BCr%20Saisonpassinhaber%202026_Freizeitparks%2c%20Zoos%20und%20Co.pdf.html)
 - Getting there, Feldhausen station, SB16: [Directions & parking (official)](https://www.movieparkgermany.de/en/plane-deinen-besuch/wichtige-informationen/anfahrt-und-parken) · [Day trip by train (DB Regio NRW, German)](https://regional.bahn.de/regionen/nrw/ausflugstipps/aktiv/moviepark)

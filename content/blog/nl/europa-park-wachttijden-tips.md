@@ -251,7 +251,7 @@ tweede locatie bij Neuenburg am Rhein strandde op de bereikbaarheid. In Rust
 kocht de familie uiteindelijk het park van Schloss Balthasar en een aangrenzend
 sprookjespark, samen 16 hectare.
 
-Op **12 juli 1975** ging het van start, met **15 attracties** en zo'n vijftig
+Op **12 juli 1975** ging het van start, met **15 attracties** en zo’n vijftig
 medewerkers. De entree kostte vijf mark voor kinderen en zes voor volwassenen,
 en op de eerste publieksdag kwamen er ongeveer 4.000 mensen. De lokale pers was
 sceptisch tot giftig, een kop uit die tijd luidde “De gieren cirkelen boven
@@ -297,7 +297,7 @@ de opening.
 
 Voor het seizoen 2026 is het achttiende land erbij gekomen: **Monaco**, gebouwd
 rond de bestaande achtbaan Silver Star, die daarmee van het Franse naar het
-Monegaskische deel van het park is verhuisd. Côte d'Azur-architectuur, een
+Monegaskische deel van het park is verhuisd. Côte d’Azur-architectuur, een
 digitaal aquarium naar het voorbeeld van het Oceanografisch Museum, het
 Internationale Circusfestival van Monte-Carlo in de verbouwde Silver-Star-hal en
 een Café de Paris. De officiële opening in de zomer van 2026 vond plaats met
@@ -327,7 +327,7 @@ rijdt sinds 26 april 2024 en is met 1.385 meter de op een na langste baan van
 het park; alleen Silver Star is langer, met 1.620 meter. 32,5 meter, 100 km/u,
 zeven overkopelementen, drie minuten. Mack Rides noemt het type “Stryker
 Coaster”, de installatie staat op 40 bij 250 meter naast Griekenland, en de
-laatste rail kwam op 16 mei 2023 op zijn plek. Drie LSM-trajecten met samen zo'n
+laatste rail kwam op 16 mei 2023 op zijn plek. Drie LSM-trajecten met samen zo’n
 300 statoren en 2.500 pk versnellen zeven treinen; elke 36 seconden verlaat er
 een het station, goed voor 1.600 personen per uur.
 
@@ -382,7 +382,7 @@ baan, geen enkele inversie. De naam komt van de sponsor, de ster uit Stuttgart.
 **[Wodan](ref:europa-park/wodan-timburcoaster)** is van 2012 en de enige houten
 achtbaan van het park, gebouwd door **Great Coasters International**. Veertig
 meter hoog, ruim een kilometer lang, 100 km/u en tot 3,5 g. De bouwcijfers lezen
-als uit een andere branche: zo'n vijftig timmerlieden, 1.000 kubieke meter
+als uit een andere branche: zo’n vijftig timmerlieden, 1.000 kubieke meter
 grenenhout, 21.000 balken, 100.000 schroefverbindingen en twee miljoen spijkers.
 
 ```glossary-widget slug=wooden-coaster
@@ -446,7 +446,7 @@ bestand. In die 96 attracties zijn de 62 eetgelegenheden niet meegeteld, en de
 iedereen kent, en ze heeft een geschiedenis die je haar niet aanziet. Op de
 avond van **26 mei 2018**, tegen half zeven, brak er brand uit in een loods. Het
 vuur sloeg over op de attractie en van daar op het Noorse deel van het
-Scandinavische themagebied. Op dat moment waren er zo'n **25.000 gasten** in het
+Scandinavische themagebied. Op dat moment waren er zo’n **25.000 gasten** in het
 park. Het park werd ontruimd, geen gast en geen medewerker raakte gewond, zeven
 brandweerlieden liepen lichte verwondingen op. De materiële schade liep in de
 tientallen miljoenen. Op 6 juni maakten politie en openbaar ministerie bekend
@@ -473,7 +473,7 @@ Aan darkrides heeft het park het een en ander bij elkaar.
 uit 2018 is een Elzasser boerderijverhaal met dinosauriërs in de stal. De boerin
 tutoyeert je, de beesten dragen gebreide sjaals, en op een gegeven moment merk je
 dat je in een darkride zit te grijnzen.
-**[Josefina's Keizerlijke Toverreis](ref:europa-park/josefinas-magical-imperial-journey)**
+**[Josefina’s Keizerlijke Toverreis](ref:europa-park/josefinas-magical-imperial-journey)**
 uit 2021 is het Oostenrijkse antwoord daarop, rustiger en met een typische
 wachttijd van vijf minuten het meest ontspannen kwartier in het hele park.
 **[Jim Knoop](ref:europa-park/jim-button-journey-through-morrowland)** uit 2019
@@ -514,7 +514,7 @@ seconden rittijd, waarvan een flink deel binnen in twee gespiegelde torens, en
 de wagens draaien onderweg om hun eigen as, zodat je nooit weet waar je zo
 meteen naar kijkt. 982 meter, 28,2 meter hoog, 80 km/u.
 Alleen al tussen de opening in juni en het einde van het seizoen in november
-1997 zijn er zo'n 1,5 miljoen mensen in meegegaan.
+1997 zijn er zo’n 1,5 miljoen mensen in meegegaan.
 
 Daarna komt een volledig nieuw bedacht ruimtevaartgebied met een familieachtbaan
 van Mack Rides, gepland voor **2028**. De twee markante torens moeten om
@@ -550,7 +550,7 @@ uitsplitsing kwam 49 procent van de gasten uit Duitsland, 24 procent uit
 Frankrijk en 20 procent uit Zwitserland. Bij de overnachtingen weegt Zwitserland zwaarder,
 het is goed voor 27 procent van alle hotelboekingen.
 
-Zo'n park leeft van het weekendtripje. Op zaterdag reizen de mensen aan, op
+Zo’n park leeft van het weekendtripje. Op zaterdag reizen de mensen aan, op
 zondag rijden ze na het ontbijt weer naar huis, en velen komen helemaal niet
 meer in het park. De zondag is hier geen uitstapdag, het is een vertrekdag.
 
@@ -573,7 +573,7 @@ die viel mild uit. Op 15 mei 2026 trok er een onweersbui over, warmer dan twaalf
 graden werd het niet, en toch was het genoeg voor “hoog”. Het kanaal Parkfan95
 rijdt al jaren juist op die vrijdagen naar Rust en filmt het resultaat. Voor
 2026 luidt de titel “De leegste volle dag”, voor de jaren daarvoor
-“Bezoekersmassa's, hoge wachttijden en veel auto's”. Een brugdag met
+“Bezoekersmassa’s, hoge wachttijden en veel auto’s”. Een brugdag met
 zonneschijn ziet er anders uit dan onze ene meetwaarde.
 
 https://www.youtube.com/watch?v=aRH5xvAKE_I
@@ -629,7 +629,7 @@ Gratis is dat niet. Het park opent pas om 11 uur en sluit om 19 uur, dat is een
 uur minder dan in de zomer, het wordt vroeg donker, en de waterattracties
 draaien niet allemaal. Als Poseidon en Atlantica je niets kunnen schelen en je
 Voltron zonder noemenswaardige rij wilt rijden, ga dan op een zondag in
-november. De 15e zou zo'n dag zijn.
+november. De 15e zou zo’n dag zijn.
 
 ## De perfecte dag in het Europa-Park
 
@@ -661,7 +661,7 @@ uur van elke attractie staat vet.
 De regel die me de eerste keer verraste, is die van Silver Star. Om tien uur
 staat er de langste rij van de dag, vanaf twaalf uur is het ongeveer de helft, en
 daar verandert tot sluitingstijd niets meer aan. Een baan van 73 meter die de halve dag half
-leeg draait, omdat iedereen er 's ochtends al is geweest.
+leeg draait, omdat iedereen er ’s ochtends al is geweest.
 
 **De drukste uren liggen tussen tien en twaalf.** De meeste banen hebben hun
 maximum om tien of om elf uur; alleen Arthur en de twee waterbanen lopen pas in
@@ -671,8 +671,8 @@ dagpiek in.
 ![Een uiteengeslagen houten schip in het waterbassin van Poseidon, daarachter een vestingmuur | Bij opening bijna leeg, om elf uur de langste rij van de dag. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
 
 En dan de waterbanen. Bij opening staan ze allebei op een kwartier of minder;
-Poseidon piekt om elf uur, Atlantica pas in de middag. Wie bereid is 's ochtends nat te worden,
-rijdt ze allebei in de tijd die hij 's middags voor één ervan nodig zou hebben.
+Poseidon piekt om elf uur, Atlantica pas in de middag. Wie bereid is ’s ochtends nat te worden,
+rijdt ze allebei in de tijd die hij ’s middags voor één ervan nodig zou hebben.
 
 Een dagindeling die daaruit volgt:
 
@@ -682,15 +682,15 @@ Een dagindeling die daaruit volgt:
    kortst, een uur later de langste van het hele park.
 3. **Tussen tien en twaalf niets forceren.** Dat zijn de twee uren voor het
    ontbijt, een show of het sprookjesbos. Alles wat nu een rij heeft, heeft die
-   's middags korter.
-4. **Vanaf twaalf uur Silver Star**, dan Eurosat, Piraten in Batavia, Josefina's
+   ’s middags korter.
+4. **Vanaf twaalf uur Silver Star**, dan Eurosat, Piraten in Batavia, Josefina’s
    Keizerlijke Toverreis en het Castello dei Medici. Binnen is het op hete dagen
    toch aangenamer.
-5. **Vanaf zeventien uur de waterbanen**, als nat worden 's ochtends je te vroeg
+5. **Vanaf zeventien uur de waterbanen**, als nat worden ’s ochtends je te vroeg
    was. Ze zakken dan allebei ruim onder hun middag- en namiddagwaarden.
 6. **Het laatste uur is het beste van de dag.** Gemiddeld over de achtbanen ligt
    het uur voor sluiting onder het openingsuur. Alleen de twee waterbanen zijn
-   's ochtends leger.
+   ’s ochtends leger.
 
 Eén kanttekening daarbij: deze curves zijn gemiddelden over een heel jaar
 bedrijfsdagen, hoogzomer en winterseizoen samen. Op een korte
@@ -727,9 +727,9 @@ Vanaf **26 september** liggen er ruim **180.000 pompoenen** in het park, plus
 herfstdecoratie in alle achttien landen. Een horrorevent is dat niet. Het kost
 geen toeslag en loopt in de gewone dagexploitatie.
 
-Het horrorevent vindt hiernaast plaats, 's avonds, met een eigen ticket en een
+Het horrorevent vindt hiernaast plaats, ’s avonds, met een eigen ticket en een
 eigen leeftijdsgrens. Het heet Traumatica, en wie het voor een extraatje voor
-'s avonds aanziet, verplant zijn dag.
+’s avonds aanziet, verplant zijn dag.
 
 Vanaf **28 november** is het winter. Kerstmarkten, een ijsbaan, ijsshows en
 gebieden die er alleen in deze weken zijn, zoals de Winter World of Wonder en de
@@ -743,7 +743,7 @@ Bij ons in de database staat **[Traumatica](ref:traumatica)** als een eigen
 park, met een eigen vermelding, eigen attracties en een eigen kalender. Dat dekt
 de lading vrij goed. Eigen terrein, eigen ingang, eigen ticket, eigen
 leeftijdsgrens, eigen openingstijden. Wie een Europa-Park-dag plant en denkt dat
-het griezelwerk 's avonds bij het toegangsbewijs inbegrepen zit, plant verkeerd.
+het griezelwerk ’s avonds bij het toegangsbewijs inbegrepen zit, plant verkeerd.
 
 De ingang is **niet de hoofdingang**. Je loopt vanaf de grote parkeerplaats over
 een fietspad naar een afgezet terrein, en wat daar in het donker staat, is een
@@ -756,7 +756,7 @@ geregistreerd:
 [Unknown](ref:traumatica/unknown),
 [Studio -13](ref:traumatica/studio-13),
 [Rotters Road](ref:traumatica/rotters-road),
-[Grim's Funhouse](ref:traumatica/grims-funhouse),
+[Grim’s Funhouse](ref:traumatica/grims-funhouse),
 [The Hill](ref:traumatica/the-hill) en het
 [Tarot House](ref:traumatica/tarot-house).
 
@@ -766,7 +766,7 @@ Daarnaast lopen drie attracties uit het pretpark de nacht in door: de
 [Matterhorn-Blitz](ref:traumatica/matterhorn-blitz),
 [Pegasus](ref:traumatica/pegasus-the-youngstar-coaster) en de
 [Vloek van Cassandra](ref:traumatica/cassandras-curse-vr) met zijn VR-variant.
-Een wilde muis in de mist, om half elf 's avonds, terwijl er tussen de steunen
+Een wilde muis in de mist, om half elf ’s avonds, terwijl er tussen de steunen
 acteurs staan, is een van de betere ideeën die dit event heeft gehad.
 
 De twaalfde attractie op onze lijst kost extra:
@@ -776,7 +776,7 @@ die bij elk ticket bij te boeken is.
 De avond zit strak in elkaar. Tassencontrole vanaf 17.45 uur, food court vanaf
 18 uur, het terrein en de attracties vanaf 19 uur, laatste toegang tot de
 horrorattracties om 23.30 uur. Podiumshow en ijsshow zitten in elk ticket. De
-club loopt daarna door tot drie uur 's nachts.
+club loopt daarna door tot drie uur ’s nachts.
 
 **Vanaf 16, en daar valt niet over te onderhandelen.** Afzonderlijke formats als
 THE HOTEL, de club THE FORBIDDEN en het Eden Manor zijn vanaf 18. Zwangeren komen er om
@@ -790,7 +790,7 @@ staan in de [Halloween-gids](/blog/halloween-pretparken-2026).
 Voor de dagplanning is vooral de klok van belang. Traumatica begint om 19 uur,
 het pretpark sluit in het halloweenseizoen om 18 uur. Allebei op één dag kan dus,
 en zelfs zonder haast. Alleen moet je weten dat je daarna niet meer kunt rijden wat
-je overdag hebt overgeslagen, omdat van het pretpark 's avonds alleen die drie
+je overdag hebt overgeslagen, omdat van het pretpark ’s avonds alleen die drie
 banen draaien.
 
 Voor de laatste speeldagen geldt dat niet meer. Vanaf 2 november loopt in het
@@ -814,8 +814,8 @@ verdient zilver zich terug vanaf het vijfde bezoek in een jaar. Voor de meeste
 gezinnen leveren twee dagen achter elkaar meer op.
 
 **Route.** Het park ligt direct aan de **A5**, afrit **57b Rust**, en is van
-daaraf bewegwijzerd. Vanuit Freiburg is het zo'n 35 kilometer, vanuit Straatsburg
-zo'n 40, vanuit Bazel zo'n 80, vanuit Karlsruhe zo'n 130. Met de trein rijd je
+daaraf bewegwijzerd. Vanuit Freiburg is het zo’n 35 kilometer, vanuit Straatsburg
+zo’n 40, vanuit Bazel zo’n 80, vanuit Karlsruhe zo’n 130. Met de trein rijd je
 tot Ringsheim en van daar met de shuttlebus. **Parkeren kost 10 €** per dag,
 Rulantica heeft een eigen parkeerplaats voor dezelfde prijs.
 

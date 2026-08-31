@@ -103,7 +103,7 @@ echter Headliner, und an einem vollen Tag will jeder zur selben Zeit auf
 dieselben zwei, drei Bahnen. In unserem Deep Dive zur
 [Kunst des Wartens](/blog/die-kunst-des-wartens) habe ich vorgerechnet, warum
 [Taron](ref:phantasialand/taron) an einem Ferien-Samstag genauso schnell in die
-Sättigung läuft wie Peter Pan's Flight in Paris: Ein kleines Publikum schützt dich
+Sättigung läuft wie Peter Pan’s Flight in Paris: Ein kleines Publikum schützt dich
 nicht vor langen Schlangen, wenn es nur wenige Attraktionen gibt, auf die sich der
 Andrang verteilen kann. Die Mathematik ist im Phantasialand unerbittlicher als im
 weitläufigen [Europa-Park](ref:europa-park) mit seinen dreizehn Achterbahnen.
@@ -141,7 +141,7 @@ man sei „an einer Katastrophe vorbeigeschrammt“. Es hätte das Ende sein kö
 
 Es wurde stattdessen der Wendepunkt. Auf den Trümmern der abgebrannten Bahnen baute
 der Park binnen eines Jahres die Themenwelt Wuze Town mit den beiden verrückten
-Spinning Coastern [Winja's Fear](ref:phantasialand/winjas-fear) & Force und die
+Spinning Coastern [Winja’s Fear](ref:phantasialand/winjas-fear) & Force und die
 Wildwasserbahn [River Quest](ref:phantasialand/river-quest), beide fährst du heute
 noch. Aus der Asche kam eine neue Haltung: Wenn schon neu bauen, dann richtig, dann
 bis zur letzten Schraube durchthematisiert.
@@ -193,7 +193,7 @@ siehst, was gerade los ist:
 - **[Talocan](ref:phantasialand/talocan)**, ein Top Spin mit Feuer- und
   Wassereffekten, der von unten aussieht wie eine Tempel-Kulisse und sich von oben
   anfühlt wie eine liebevoll inszenierte Strafe.
-- **[Winja's Fear](ref:phantasialand/winjas-fear)** & Winja's Force, die beiden
+- **[Winja’s Fear](ref:phantasialand/winjas-fear)** & Winja’s Force, die beiden
   Spinning Coaster in Wuze Town, voller Aufzüge, Kipp-Schienen und Überraschungen.
   Zwei Strecken, und kein Durchgang ist wie der andere.
 - **[Mystery Castle](ref:phantasialand/mystery-castle)**, der Freefall im
@@ -207,7 +207,7 @@ genug fürs erste Mal, schnell genug fürs zweite.
 ```gallery-widget heading="Die Headliner in Bildern"
 - /media/phantasialand/chiapas-die-wasserbahn-16x9.jpg | Die Wasserbahn Chiapas | Chiapas, eine der steilsten Wildwasserbahnen der Welt.
 - /media/phantasialand/colorado-adventure-16x9.jpg | Colorado Adventure | Colorado Adventure, die Minenbahn mit Wildwest-Charme.
-- /media/phantasialand/winjas-fear-16x9.jpg | Winja's Force in Wuze Town | Winja's: zwei Spinning Coaster voller Überraschungen.
+- /media/phantasialand/winjas-fear-16x9.jpg | Winja’s Force in Wuze Town | Winja’s: zwei Spinning Coaster voller Überraschungen.
 - /media/phantasialand/mystery-castle-16x9.jpg | Mystery Castle im Mysteryland | Mystery Castle, der Freefall mit wechselnden Programmen.
 - /media/phantasialand/river-quest-16x9.jpg | River Quest | River Quest, Wildwasser mit Aufzügen und Nass-Garantie.
 - /media/phantasialand/raik-16x9.jpg | Raik in Klugheim | Raik, der perfekte erste „richtige“ Coaster.
@@ -319,7 +319,7 @@ zähe Stück vor dem Einstieg legst du trotzdem im Stehen zurück.
 Mit dabei sind sonst die großen Bahnen, u. a. [Taron](ref:phantasialand/taron),
 [Black Mamba](ref:phantasialand/black-mamba),
 [Chiapas](ref:phantasialand/chiapas-die-wasserbahn),
-[Talocan](ref:phantasialand/talocan), [Winja's](ref:phantasialand/winjas-fear),
+[Talocan](ref:phantasialand/talocan), [Winja’s](ref:phantasialand/winjas-fear),
 [Colorado Adventure](ref:phantasialand/colorado-adventure) und
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat). Gekauft wird am
 Gäste-Service am Kaiserplatz, und begrenzt heißt wirklich begrenzt: **Gerade
@@ -376,7 +376,7 @@ Gastronomie hier fest zum Erlebnis dazu, mit einer Sorgfalt, die man sonst nur a
 richtigen Restaurants kennt. Ein paar Adressen sind echte Geheimtipps, für die
 allein sich der Besuch schon lohnt:
 
-- **Rutmor's Taverne** (Klugheim) ist mein Favorit und für viele Fans das beste
+- **Rutmor’s Taverne** (Klugheim) ist mein Favorit und für viele Fans das beste
   Restaurant, das je in einen Freizeitpark gebaut wurde. À la carte, urig bis in
   die geschnitzten Holzbänke, mit herzhafter Küche, Spätzle, Schnitzel,
   Bratkartoffeln, dazu Suppen und Platten zum Teilen und ein Kaiserschmarrn, der
@@ -388,7 +388,7 @@ allein sich der Besuch schon lohnt:
   mit Blick auf [F.L.Y.](ref:phantasialand/fly). Kleiner Geheimtipp: Am Abend ist es
   den Hotelgästen vorbehalten, tagsüber aber offen für alle, mittags also ein
   Genuss mit Aussicht auf die vorbeifliegenden Züge.
-- **Phenie's** (Wuze Town) ist mein süßer Pflichtstopp, seit ich denken kann:
+- **Phenie’s** (Wuze Town) ist mein süßer Pflichtstopp, seit ich denken kann:
   Pancakes und Shakes, fluffig und prachtvoll und viel zu gut für
   Freizeitpark-Maßstäbe. Es gibt Tage, an denen ich fast nur wegen dieser Pancakes
   komme, und dann so tue, als wären die Coaster der Grund gewesen.
@@ -563,7 +563,7 @@ einen Tag. Entspannter (und mit den Themenhotels ein kleines Fest) sind zwei Tag
 
 Das Phantasialand ist kein Park, den man nebenbei mitnimmt. Er ist kompakt, begehrt
 und an den falschen Tagen anstrengend, aber an den richtigen Tagen, mit der
-richtigen Reihenfolge und einer Pause in Rutmor's Taverne, ist er das immersivste,
+richtigen Reihenfolge und einer Pause in Rutmor’s Taverne, ist er das immersivste,
 liebevollste Erlebnis, das Europa zu bieten hat. Die gute Nachricht: Fast alles, was
 einen guten von einem großartigen Tag trennt, entscheidest du **vorher**, beim
 Blick auf den Kalender.
@@ -581,7 +581,7 @@ Und die beiden Hauptdarsteller, live aus unseren Daten:
 [F.L.Y.](ref:phantasialand/fly?full)
 
 Wir sehen uns in Klugheim. Ich bin der, der um 10 Uhr als Erstes bei Taron steht,
-mittags heimlich für die Pancakes bei Phenie's verschwindet, und abends in der
+mittags heimlich für die Pancakes bei Phenie’s verschwindet, und abends in der
 blauen Stunde immer noch nicht heimwill.
 
 — Patrick
@@ -597,7 +597,7 @@ beste Fast Pass ist der Tag, den du gar nicht erst gebucht hast._
 - Preise, Tickets & Öffnungszeiten 2026: [Phantasialand Online-Shop](https://shop.phantasialand.de/de/produkte/themenpark-tickets/) · [Preise & Öffnungszeiten 2026 (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/phantasialand/preise/) · [Tickets ab 28 € statt bis 78 € (mydealz)](https://www.mydealz.de/magazin/phantasialand-tickets-ab-28-euro-warum-sich-fruehes-buchen-jetzt-lohnt-61424)
 - Jahreskarten-Aus & Fan-Petitionen: [Petition „Wiedereinführung der Phantasialand Jahreskarten“ (Change.org)](https://www.change.org/p/wiedereinf%C3%BChrung-der-phantasialand-jahreskarten)
 - Quick Pass (Single Ride / Ultimate & dynamische Preise): [„QUICK Pass Switches to Dynamic Pricing“ (Wartezeiten.APP)](https://www.wartezeiten.app/en/phantasialand/news/phantasialand-quick-pass-switches-to-dynamic-pricing-fans-outraged-2429.html)
-- Essen: [Rutmor's Taverne (Freizeitpark Traveller)](https://www.freizeitpark-traveller.de/rutmors-taverne-phantasialand/) · [Restaurant Uhrwerk (offiziell)](https://www.phantasialand.de/de/rookburgh/restaurant-uhrwerk/)
+- Essen: [Rutmor’s Taverne (Freizeitpark Traveller)](https://www.freizeitpark-traveller.de/rutmors-taverne-phantasialand/) · [Restaurant Uhrwerk (offiziell)](https://www.phantasialand.de/de/rookburgh/restaurant-uhrwerk/)
 - Neuheit 2026 „Die 3 Mausketiere“: [Phantasialand 2026 (La Vie Zine)](https://www.laviezine.com/1545370/phantasialand-2026-das-erwartet-euch-in-der-saison/)
 - Wintertraum 2026/27: [Öffnungszeiten Wintertraum (NRW-Parks)](https://www.nrw-parks.de/phantasialand/oeffnungszeiten-winter.html) · [Wintertraum (offiziell)](https://www.phantasialand.de/de/themenpark/wintertraum/)
 - Anreise, Shuttle & Parken: [Anreise und Shuttlebus (offiziell)](https://www.phantasialand.de/de/themenpark/information-und-anreise/anreise-und-shuttlebus/)

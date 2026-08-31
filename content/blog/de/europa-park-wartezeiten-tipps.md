@@ -299,7 +299,7 @@ der Eröffnung.
 
 Zur Saison 2026 ist das achtzehnte Land dazugekommen: **Monaco**, gebaut rund um
 die vorhandene Achterbahn Silver Star, die damit vom französischen in den
-monegassischen Teil des Parks umgezogen ist. Côte-d'Azur-Architektur, ein
+monegassischen Teil des Parks umgezogen ist. Côte-d’Azur-Architektur, ein
 digitales Aquarium nach dem Vorbild des Ozeanografischen Museums, das
 Internationale Zirkusfestival von Monte-Carlo in der umgebauten Silver-Star-Halle
 und ein Café de Paris. Die offizielle Eröffnungsfeier im Sommer 2026 fand mit
@@ -762,7 +762,7 @@ Parks geführt:
 [Unknown](ref:traumatica/unknown),
 [Studio -13](ref:traumatica/studio-13),
 [Rotters Road](ref:traumatica/rotters-road),
-[Grim's Funhouse](ref:traumatica/grims-funhouse),
+[Grim’s Funhouse](ref:traumatica/grims-funhouse),
 [The Hill](ref:traumatica/the-hill) und das
 [Tarot House](ref:traumatica/tarot-house).
 

@@ -7,7 +7,7 @@ mode: published
 excerpt: >-
   60 minuten wachttijd, en toch vliegt de tijd voorbij? Achter elke goede
   wachtrij schuilen psychologie, storytelling en keiharde capaciteitswiskunde.
-  Een deep dive van de pre-show tot Little's Law, en middenin de reden waarom
+  Een deep dive van de pre-show tot Little’s Law, en middenin de reden waarom
   park.fan bestaat.
 tags:
   - wachttijden
@@ -21,8 +21,8 @@ tags:
 category: behind-the-scenes
 coverImage:
   src: /media/disney-animal-kingdom/kunst-des-wartens-cover.jpg
-  alt: "De Tree of Life in Disney's Animal Kingdom, met daarvoor de bezoekersmassa van het park"
-  caption: "Disney's Animal Kingdom: tienduizenden gasten, één Tree of Life, en overal de vraag hoelang je waarvoor aanschuift."
+  alt: "De Tree of Life in Disney’s Animal Kingdom, met daarvoor de bezoekersmassa van het park"
+  caption: "Disney’s Animal Kingdom: tienduizenden gasten, één Tree of Life, en overal de vraag hoelang je waarvoor aanschuift."
 seo:
   title: 'Wachttijden-psychologie in het pretpark'
   description: >-
@@ -36,7 +36,7 @@ seo:
     - wachttijden voorspelling
     - doorstroom achtbaan
     - capaciteit pretpark
-    - Little's Law
+    - Little’s Law
     - virtual queue
     - pre-show
     - peak-end-regel
@@ -92,7 +92,7 @@ van marketingonderzoeker **Jacob Hornik** overschatten wachtenden de werkelijk
 verstreken tijd gemiddeld met **ruim 36 procent**. Uit gemeten tien minuten
 worden in je hoofd bijna veertien. Je innerlijke klokkenmaker is een notoire
 naar-boven-afronder, en hij rondt altijd in jouw nadeel af. En de
-MIT-wachtrijonderzoeker **Richard Larson** liet met collega's al in 1991 onder
+MIT-wachtrijonderzoeker **Richard Larson** liet met collega’s al in 1991 onder
 de mooie titel
 [“Entertain, Enlighten, and Engage”](https://www.researchgate.net/publication/304582002_Prescription_for_the_Waiting_in_Line_Blues_Entertain_Enlighten_Engage)
 zien dat zelfs simpele afleiding de ervaren kwaliteit van het wachten flink
@@ -114,7 +114,7 @@ psychologie.
 
 Het elegantste wapen tegen dode tijd is de **pre-show**, die het wachten
 simpelweg tot onderdeel van de attractie verklaart. Het schoolvoorbeeld staat
-in [Disney's Hollywood Studios](ref:disneys-hollywood-studios?bare). Bij de
+in [Disney’s Hollywood Studios](ref:disneys-hollywood-studios?bare). Bij de
 [Tower of Terror](ref:disneys-hollywood-studios/the-twilight-zone-tower-of-terror)
 schuif je niet door een gang, maar door de stoffige lobby van het Hollywood
 Tower Hotel een bibliotheek in, waar een video in de stijl van de “Twilight
@@ -150,9 +150,9 @@ eerder komen.
 
 De wachtrij van
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage)
-in [Disney's Animal Kingdom](ref:disneys-animal-kingdom-theme-park?bare) is in wezen een
+in [Disney’s Animal Kingdom](ref:disneys-animal-kingdom-theme-park?bare) is in wezen een
 doorloopmuseum met een vluchtsimulator als uitgang. Eerst kronkelt het pad door
-het landschap van Pandora en grotten met schilderingen van de Na'vi, daarna
+het landschap van Pandora en grotten met schilderingen van de Na’vi, daarna
 door een verlaten onderzoekslab, inclusief een levensgrote avatar die in een
 amniotank zweeft en zo overtuigend ademt dat er geregeld mensen blijven staan
 en de rij ophouden. Een wachtrij die zichzelf verstopt omdat ze te mooi is.
@@ -168,7 +168,7 @@ groepen en veranderen het laatste kwartier in een deel van de attractie,
 precies de fase die volgens de peak-end-regel het sterkst wordt onthouden. En
 ze zijn tegelijk de capaciteitsruggengraat: er wordt gevlogen in
 theaterachtige **link chambers** met 16 plaatsen per laag, drie lagen boven
-elkaar, vier theaters parallel. Krap 200 gasten tegelijk, zo'n 1.400 per uur.
+elkaar, vier theaters parallel. Krap 200 gasten tegelijk, zo’n 1.400 per uur.
 Zelfs na 120 minuten wachten vertellen de meesten achteraf niet over de rij,
 maar over de ademende avatar in de tank.
 
@@ -195,7 +195,7 @@ uitsluitend via een virtuele wachtrij in de app. Tweeënhalf jaar lang was de
 beroemdste rij van EPCOT er een waarin nooit iemand stond; een permanente
 standby-rij kwam pas begin 2025. De fysieke wachtrij bestond praktisch alleen
 nog als verhaaltraject, niet als opslagruimte, en dat bij een baan die met
-treinen voor 20 personen zo'n 2.000 gasten per uur wegwerkt.
+treinen voor 20 personen zo’n 2.000 gasten per uur wegwerkt.
 
 ### VelociCoaster: wachten in het raptorverblijf
 
@@ -244,7 +244,7 @@ grote avondshow zakken de wachttijden van de headliners meetbaar in, en wie de
 show al kent rijdt dat uur het voordeligst. Voor precies zulke momenten
 verversen we de wachttijden elke minuut.
 
-![Duizenden toeschouwers in het nachtelijke amfitheater van Fantasmic! in Disney's Hollywood Studios | Fantasmic! in de Hollywood Studios: bijna 10.000 mensen per voorstelling, een hele bezoekersgolf die dit halfuur gegarandeerd in geen enkele coasterrij staat. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
+![Duizenden toeschouwers in het nachtelijke amfitheater van Fantasmic! in Disney’s Hollywood Studios | Fantasmic! in de Hollywood Studios: bijna 10.000 mensen per voorstelling, een hele bezoekersgolf die dit halfuur gegarandeerd in geen enkele coasterrij staat. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
 ## Capaciteit en doorstroom: het wiskundige geheim
 
@@ -328,7 +328,7 @@ statorrijen. Elke vermeden stop betekent: het blok komt sneller vrij, het ritme
 houdt stand, de rij rolt door.
 
 En [Walibi Holland](ref:walibi-holland?bare) heeft datzelfde principe in 2025
-naar het station gebracht. Bij **YOY**, Europa's eerste single rail duelling
+naar het station gebracht. Bij **YOY**, Europa’s eerste single rail duelling
 coaster, waarbij je kiest tussen de zusterbanen
 [YOY Thrill](ref:walibi-holland/yoy-thrill?bare) en
 [YOY Chill](ref:walibi-holland/yoy-chill?bare), stoppen de treinen in het
@@ -337,12 +337,12 @@ instappen: een **rolling station**, eigenlijk het omnimover-principe voor
 achtbanen. Bij slechts acht plaatsen per trein (achter elkaar, als op een zeer
 vastberaden fiets) telt nu eenmaal elke seconde die de trein niet stilstaat.
 
-## Little's Law: de formule achter elk wachttijdenbord
+## Little’s Law: de formule achter elk wachttijdenbord
 
 De formule die beide kanten samenbindt, is een van de elegantste resultaten uit
 de wachtrijtheorie. MIT-professor **John D. C. Little** bewees in
 1961 het verband dat tegenwoordig
-[Little's Law](https://en.wikipedia.org/wiki/Little%27s_law) heet:
+[Little’s Law](https://en.wikipedia.org/wiki/Little%27s_law) heet:
 
 > **L = λ × W**: het aantal wachtenden (L) is gelijk aan de aankomstsnelheid
 > (λ) maal de wachttijd (W).
@@ -386,9 +386,9 @@ Little zou vermoedelijk verbaasd zijn waar zijn formule tegenwoordig allemaal
 voor gebruikt wordt. Hoe vaak onze voorspellingen de realiteit raken, staat op
 de [Fancast-pagina](/fancast).
 
-## Waarom Peter Pan's Flight altijd “escaleert”
+## Waarom Peter Pan’s Flight altijd “escaleert”
 
-Waarom staat uitgerekend **Peter Pan's Flight**, een gemoedelijke dark ride uit
+Waarom staat uitgerekend **Peter Pan’s Flight**, een gemoedelijke dark ride uit
 1955, geen
 achtbaan, geen thrill, in praktisch elk Disneypark ter wereld, van
 [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park?bare) tot
@@ -397,10 +397,10 @@ Orlando, vrijwel permanent op 45+ minuten?
 Daar zijn drie redenen voor, en alle drie zijn rekenwerk:
 
 1. **Piratenschepen zijn geen massavervoer.**
-   [Peter Pan's Flight in Parijs](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight?bare)
+   [Peter Pan’s Flight in Parijs](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight?bare)
    stuurt **16 galjoenen** over Londen, en in elk passen, ruim geteld, vijf
    mensen. Dat is de vervoerscapaciteit van een middelgrote lift, uitgesmeerd
-   over een hele nachtelijke hemel. Onofficiële tellingen komen op zo'n **1.200
+   over een hele nachtelijke hemel. Onofficiële tellingen komen op zo’n **1.200
    gasten per uur**, en de
    [oerversie in het Magic Kingdom](ref:magic-kingdom-park/peter-pans-flight?bare)
    haalt zelfs maar rond de 800. Eén Hulk-trein vervoert per vertrek twee keer
@@ -410,7 +410,7 @@ Daar zijn drie redenen voor, en alle drie zijn rekenwerk:
 2. **Verzadiging vanaf het ontbijt.** Zodra de vraag de maximale capaciteit
    bereikt (verzadiging = 1,0), groeit de rij met elke extra gast lineair
    verder. Krimpen kan ze pas weer als er minder mensen aankomen dan de baan
-   wegwerkt. Bij zo'n lage capaciteitsgrens is dat punt niet rond het middaguur
+   wegwerkt. Bij zo’n lage capaciteitsgrens is dat punt niet rond het middaguur
    bereikt, maar ongeveer wanneer de tweede touringcar voorrijdt.
 3. **De rij als keurmerk.** Bezoekers lezen een lange rij als bewijs dat de rit
    wel de moeite waard moet zijn. Dezelfde logica waarmee we op vakantie het
@@ -422,12 +422,12 @@ Het fenomeen is trouwens wereldwijd meetbaar. Hier de live wachttijden van de
 Orlando-versie in het drukstbezochte park ter wereld, rechtstreeks uit onze
 data:
 
-[Peter Pan's Flight](ref:magic-kingdom-park/peter-pans-flight?full)
+[Peter Pan’s Flight](ref:magic-kingdom-park/peter-pans-flight?full)
 
 ## Europa wacht anders: Phantasialand en Europa-Park versus Orlando
 
 Hoezeer vraag en capaciteit het wachttijdniveau van een heel park bepalen, zie
-je het duidelijkst in een vergelijking van de zwaargewichten, Europa's grote
+je het duidelijkst in een vergelijking van de zwaargewichten, Europa’s grote
 parken tegen de Orlando-giganten.
 
 **Orlando speelt in een eigen vraagcompetitie.** Het
@@ -459,7 +459,7 @@ Pan in Parijs. Een klein publiek beschermt nu eenmaal niet tegen lange rijen
 als er maar weinig attracties zijn om de drukte over te verdelen.
 
 De cijfers erbij zijn bijna komisch. Taron verwerkt ongeveer **1.200 gasten per
-uur**, dus vrijwel precies evenveel als Peter Pan's Flight in Parijs. Het
+uur**, dus vrijwel precies evenveel als Peter Pan’s Flight in Parijs. Het
 verschil zit niet in de baan, maar in waarover de vraag eromheen zich kan
 verdelen. In Parijs staat Peter Pan tussen tientallen alternatieven. In Brühl
 heeft op een vakantiezaterdag een fors deel van het park tegelijk dezelfde ene
@@ -501,7 +501,7 @@ ontstaat een gat van twee meter. Wat doet je lichaam? Het schuift op. Meteen,
 reflexmatig, alsof iemand anders het gat anders zou inpikken. En dat is, met
 alle respect, volkomen zinloos.
 
-Want Little's Law van zojuist zegt het glashelder: je wachttijd hangt af van de
+Want Little’s Law van zojuist zegt het glashelder: je wachttijd hangt af van de
 doorstroom van het station helemaal vooraan, niet van de afstand tot je
 voorganger. Of je nu tegen hem aan schuift of twee meter lucht laat, het
 verandert je positie in de rij met precies nul plaatsen. Je beweegt twee meter;
@@ -509,7 +509,7 @@ vooraan kom je er geen seconde eerder door aan.
 
 Erger nog: het collectieve aanschuiven maakt de rij zelfs meetbaar langzamer.
 Het is dezelfde fysica als bij de file op de snelweg die uit het niets lijkt te
-ontstaan. Natuurkundige Yuki Sugiyama stuurde 22 auto's een cirkelbaan op, met
+ontstaan. Natuurkundige Yuki Sugiyama stuurde 22 auto’s een cirkelbaan op, met
 als enige instructie constant en met gelijke afstand te rijden. Na een paar
 minuten vormde zich zonder enig knelpunt een stop-and-go-file die achterwaarts
 door de colonne liep. MIT-wiskundigen noemen die zichzelf in stand houdende
@@ -567,7 +567,7 @@ klassieke patronen:
   hoeft te wachten voordat de volgende groep instapt.
 - **Dubbele stations**, waarbij het spoor zich voor het station in twee
   parallelle perrons splitst: de ene trein wordt geladen terwijl de andere
-  wordt afgehandeld. Een truc die Vekoma's flying coasters vanwege hun lange
+  wordt afgehandeld. Een truc die Vekoma’s flying coasters vanwege hun lange
   laadtijden nodig hadden en die ook de Efteling bij de watercoaster De
   Vliegende Hollander gebruikt.
 - **Meteen twee complete trajecten**: Disneys Space Mountain in het Magic
@@ -591,7 +591,7 @@ Korter wordt de volgende rij van 60 minuten er niet van. Maar hij leest anders.
 Drie vragen blijven over, en voor elk heeft park.fan een antwoord:
 
 - **Hoe lang is de rij _echt_, precies nu?** Daarvoor zijn onze **live
-  wachttijden**: ruim 200 parken, 7.000 attracties, elke minuut. Little's Law
+  wachttijden**: ruim 200 parken, 7.000 attracties, elke minuut. Little’s Law
   in realtime, zonder dat je de 640 mensen voor je zelf hoeft te tellen.
 - **Is dat nu veel of normaal?** Dat verraden de
   **langetermijnstatistieken** van elke attractie, want 45 minuten is, zoals we
@@ -627,7 +627,7 @@ heb het zwart-op-wit dat mijn tijdsgevoel daarbij 36 procent overdrijft._
 - Over de ~36%-overschatting (Hornik 1984): [Consumer Perception and Evaluation of Waiting Time: A Field Experiment](https://www.researchgate.net/publication/40129944_Consumer_Perception_and_Evaluation_of_Waiting_Time_A_Field_Experiment) (Journal of Consumer Research)
 - Alex Stone: [Why Waiting Is Torture](https://www.nytimes.com/2012/08/19/opinion/sunday/why-waiting-in-line-is-torture.html) (New York Times, 2012)
 - Daniel Kahneman e.a.: [Peak-end-regel](https://en.wikipedia.org/wiki/Peak%E2%80%93end_rule)
-- John D. C. Little: [A Proof for the Queuing Formula L = λW](https://pubsonline.informs.org/doi/10.1287/opre.9.3.383) (Operations Research, 1961) · [Little's Law uitgelegd](https://en.wikipedia.org/wiki/Little%27s_law)
+- John D. C. Little: [A Proof for the Queuing Formula L = λW](https://pubsonline.informs.org/doi/10.1287/opre.9.3.383) (Operations Research, 1961) · [Little’s Law uitgelegd](https://en.wikipedia.org/wiki/Little%27s_law)
 - Over de spookfile: Sugiyama e.a., [Traffic jams without bottlenecks](https://iopscience.iop.org/article/10.1088/1367-2630/10/3/033001) (New Journal of Physics, 2008) · [MIT “jamitons”](https://www.sciencedaily.com/releases/2009/06/090608151550.htm)
 - Over het “faster-is-slower”-effect: Helbing, Farkas & Vicsek, [Simulating dynamical features of escape panic](https://www.nature.com/articles/35035023) (Nature, 2000)
 - Technische gegevens: [The Incredible Hulk Coaster](https://rcdb.com/557.htm), [Hollywood Rip Ride Rockit](https://rcdb.com/3866.htm) en [YOY](https://rcdb.com/20669.htm) op RCDB · [Mack-Rides-factsheet over Voltron Nevera](https://mack.group/en/press-media/press-releases/2024-04-24/fact-sheet-voltron-nevera-powered-by-rimac) · [De techniek achter Voltron (Coaster101)](https://www.coaster101.com/2025/05/29/the-tech-behind-voltron/) · [YOY met rolling station (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/walibi_holland/attraktionen/yoy-c681)

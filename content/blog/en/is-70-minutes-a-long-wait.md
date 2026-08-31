@@ -65,7 +65,7 @@ the same series, roughly the one day in ten when there really was a crowd.
 
 Both are percentiles rather than averages, and that is not a detail. A mean can
 be shifted by a single exceptional day: one afternoon with a breakdown and a
-150-minute backlog drags a whole month's average upwards, even though on 29 days
+150-minute backlog drags a whole month’s average upwards, even though on 29 days
 none of it was noticeable. The median does not flinch at a day like that. The
 record is therefore listed separately, with its date, so you can see it without
 it touching the other two numbers.
@@ -102,7 +102,7 @@ everywhere and is therefore worth nothing anywhere.
 
 The second is the quieter alternative in the evening. On the big coasters the
 last hour before closing is often as good as the first hour after opening, and
-nobody has to get up at seven for it. Both figures are on every ride's page,
+nobody has to get up at seven for it. Both figures are on every ride’s page,
 with a concrete time in park time.
 
 ## Most of it is decided before you set off
@@ -133,7 +133,7 @@ of jobs runs every night, and their order is fixed, because each step sits on
 the one before. At 02:00 UTC the percentiles per hour, at 03:00 the park
 baselines, at 04:30 the roll-up of yesterday, at 05:15 the rope-drop
 recommendations, which read exactly that roll-up. At 06:00 the forecast model
-retrains itself on the previous day's wait times.
+retrains itself on the previous day’s wait times.
 
 Then there is the other half: we throw nothing away. Older periods get
 compressed, but every analysis still runs over every reading that ever arrived.
@@ -147,7 +147,7 @@ the filled fields can be trusted, and for that a few fields have to be allowed
 to stay empty.
 
 [Hansa-Park](ref:hansa-park), for instance, only publishes its wait times in its own app, and only
-for devices on the park's Wi-Fi. There is no public interface. In the raw data
+for devices on the park’s Wi-Fi. There is no public interface. In the raw data
 this park looks like any other at three in the morning: no ride is reporting
 anything. If we drew the obvious conclusion, 82 attractions would be sitting
 there at “very low”, plus an average of 0 minutes and a forecast built on zero
@@ -158,7 +158,7 @@ The same rule in a smaller place: the ice rink at Phantasialand runs from
 November to January. In August nobody reports anything about it, because there
 is nothing to report. Reading that silence as “open” would be the convenient
 mistake, and it did actually say that on the park page once. And we do not name
-a ride's operating months until 330 days of observation: before that it carries
+a ride’s operating months until 330 days of observation: before that it carries
 no months at all, because “runs from December to April” would describe the
 period we happen to have measured.
 

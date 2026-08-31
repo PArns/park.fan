@@ -117,7 +117,7 @@ decoración es en realidad psicología cognitiva aplicada.
 
 El arma más elegante contra el tiempo muerto es el **pre-show**, que
 sencillamente declara la espera parte de la atracción. El ejemplo de manual
-está en [Disney's Hollywood Studios](ref:disneys-hollywood-studios?bare). En la
+está en [Disney’s Hollywood Studios](ref:disneys-hollywood-studios?bare). En la
 [Torre del Terror](ref:disneys-hollywood-studios/the-twilight-zone-tower-of-terror)
 no te arrastras por un pasillo: atraviesas el polvoriento vestíbulo del
 Hollywood Tower Hotel hasta una biblioteca donde un vídeo al estilo de «The
@@ -153,9 +153,9 @@ por voluntad propia.
 
 La cola de
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage)
-en [Disney's Animal Kingdom](ref:disneys-animal-kingdom-theme-park?bare) es en el fondo un
+en [Disney’s Animal Kingdom](ref:disneys-animal-kingdom-theme-park?bare) es en el fondo un
 museo transitable con un simulador de vuelo como salida. Primero el camino
-serpentea por el paisaje de Pandora y por cuevas con pinturas de los na'vi,
+serpentea por el paisaje de Pandora y por cuevas con pinturas de los na’vi,
 después por un laboratorio de investigación abandonado, con un avatar de tamaño
 natural que flota en un tanque amniótico y respira de forma tan convincente que
 la gente se para con regularidad y bloquea la cola. Una cola que se atasca a sí
@@ -250,7 +250,7 @@ los cabezas de cartel se hunden de forma medible, y quien ya conoce el
 espectáculo monta en la mejor relación del día en esa hora. Para momentos así
 actualizamos los tiempos de espera cada minuto.
 
-![Miles de espectadores en el anfiteatro nocturno de Fantasmic! en los Disney's Hollywood Studios | Fantasmic! en los Hollywood Studios: casi 10.000 personas por función, toda una ola de visitantes que durante esa media hora seguro que no está en ninguna cola de montaña rusa. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
+![Miles de espectadores en el anfiteatro nocturno de Fantasmic! en los Disney’s Hollywood Studios | Fantasmic! en los Hollywood Studios: casi 10.000 personas por función, toda una ola de visitantes que durante esa media hora seguro que no está en ninguna cola de montaña rusa. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
 ## Capacidad y rendimiento: el secreto matemático
 
@@ -394,9 +394,9 @@ probablemente se asombraría de para cuántas cosas se usa hoy su fórmula. Con
 qué frecuencia aciertan nuestras predicciones está en la
 [página de Fancast](/fancast).
 
-## Por qué Peter Pan's Flight siempre «se desmadra»
+## Por qué Peter Pan’s Flight siempre «se desmadra»
 
-¿Por qué precisamente **Peter Pan's Flight**, un dark ride tranquilo de factura
+¿Por qué precisamente **Peter Pan’s Flight**, un dark ride tranquilo de factura
 de 1955, sin montaña rusa, sin emoción fuerte, marca de forma casi permanente
 45 minutos o más en el panel en prácticamente todos los parques Disney del
 mundo, desde
@@ -406,7 +406,7 @@ Orlando?
 Hay tres razones, y las tres son aritmética:
 
 1. **Los barcos piratas no son transporte de masas.**
-   [Peter Pan's Flight en París](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight?bare)
+   [Peter Pan’s Flight en París](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight?bare)
    manda **16 galeones** sobre Londres, y en cada uno caben, contando con
    generosidad, cinco personas. Es la capacidad de transporte de un ascensor
    mediano, repartida por todo un cielo nocturno. Los recuentos no oficiales
@@ -431,7 +431,7 @@ El fenómeno, por cierto, es medible en todo el mundo. Aquí los tiempos de
 espera en vivo de la versión de Orlando en el parque más visitado del mundo,
 directamente de nuestros datos:
 
-[Peter Pan's Flight](ref:magic-kingdom-park/peter-pans-flight?full)
+[Peter Pan’s Flight](ref:magic-kingdom-park/peter-pans-flight?full)
 
 ## Europa espera de otra manera: Phantasialand y Europa-Park frente a Orlando
 
@@ -469,7 +469,7 @@ Un público pequeño no protege de las colas largas cuando hay pocas atracciones
 entre las que repartir la demanda.
 
 Las cifras casi dan risa. Taron despacha unos **1.200 visitantes por hora**, es
-decir, casi exactamente los mismos que Peter Pan's Flight en París. La
+decir, casi exactamente los mismos que Peter Pan’s Flight en París. La
 diferencia no está en la atracción, sino en aquello sobre lo que la demanda de
 alrededor puede repartirse. En París, Peter Pan está entre docenas de
 alternativas. En Brühl, un sábado de vacaciones, una parte considerable del

@@ -100,7 +100,7 @@ fondo vencía un contrato:
 | Inaugurada como          | Año  | Se llama hoy                                     |
 | ------------------------ | ---- | ------------------------------------------------ |
 | Looney Tunes Adventure   | 1996 | Movie Park Studio Tour (desde 2021)              |
-| Gremlins Invasion        | 1996 | Van Helsing's Factory (desde 2011)               |
+| Gremlins Invasion        | 1996 | Van Helsing’s Factory (desde 2011)               |
 | La historia interminable | 1996 | Excalibur – Secrets of the Dark Forest (2018)    |
 | Wild Wild West           | 1999 | Bandit (desde 2005)                              |
 | Eraser                   | 2001 | Iron Claw (desde 2023), FX y MP-Xpress por medio |
@@ -231,9 +231,9 @@ vez hay que montarla igualmente, pesa demasiado en la historia de las montañas
 rusas alemanas. Quien tome Colossos, en el [Heide-Park](ref:heide-park), como
 referencia, que se quede en esa única vez.
 
-### Van Helsing's Factory
+### Van Helsing’s Factory
 
-**[Van Helsing's Factory](ref:movie-park-germany/van-helsings-factory)** es la
+**[Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory)** es la
 atracción en la que más se espera en este parque, y sobre el papel no hay manera
 de explicarlo. Inaugurada el **18 de junio de 2011**, un bobsled coaster de
 **Gerstlauer** en la antigua nave de los Gremlins, 3.000 metros cuadrados, ocho
@@ -282,7 +282,7 @@ mejorar, la respuesta más repetida fue derribarla.
 - **[Ghost Chasers](ref:movie-park-germany/ghost-chasers)**, un ratón loco de
   **Mack Rides** del año 2000, 45 km/h. Curvas cortas, poco aparato, y la
   atracción en la que en mi vagoneta gritaban más fuerte los adultos.
-- **[Jimmy Neutron's Atomic Flyer](ref:movie-park-germany/jimmy-neutrons-atomic-flyer)**
+- **[Jimmy Neutron’s Atomic Flyer](ref:movie-park-germany/jimmy-neutrons-atomic-flyer)**
   de Vekoma (2007), un suspended family coaster de 47 km/h, en el Nickland.
 - **[Backyardigans Mission to Mars](ref:movie-park-germany/backyardigans-mission-to-mars)**,
   un junior coaster de Vekoma del año de apertura, 1996, 207 metros escasos.
@@ -324,7 +324,7 @@ parque.
 el que John Cleese viaja por el tiempo. Parece de 1996 y merece verse justo por
 eso.
 
-**[Dora's Big River Adventure](ref:movie-park-germany/doras-big-river-adventure)**,
+**[Dora’s Big River Adventure](ref:movie-park-germany/doras-big-river-adventure)**,
 por último, es el tronco del **Nickland**, hecho para niños de primaria, y aun
 así una de las dos colas más largas del parque, porque en las tardes calurosas
 medio parque se dirige a ella a la vez.
@@ -332,7 +332,7 @@ medio parque se dirige a ella a la vez.
 Los escenarios forman parte de esto desde el primer día: un parque de estudio sin
 espectáculo de especialistas era impensable en 1996, así que en la inauguración
 ya se representaba el Police Academy Stunt Show. En 2026 hay tres espectáculos
-nuevos: **Black Thunder** en el Saloon, **Frequency** en el Van Helsing's Club y
+nuevos: **Black Thunder** en el Saloon, **Frequency** en el Van Helsing’s Club y
 **Turn Back Time** en el New York Plaza Stage, un viaje por treinta años de
 música de cine. A eso se suma desde este verano la **Parade of Celebration** de
 veinte minutos, con carrozas, canto en directo y coreografía. El **4 de julio de
@@ -356,7 +356,7 @@ Las diez atracciones en las que más se espera:
 ```
 
 Arriba del todo no hay una montaña rusa de 90 km/h, sino un recorrido bajo techo
-de 36. Van Helsing's Factory tiene la mediana más alta del parque, y justo detrás
+de 36. Van Helsing’s Factory tiene la mediana más alta del parque, y justo detrás
 viene el tronco de la zona infantil. Star Trek queda a media tabla, aunque la
 mayoría viaja hasta aquí precisamente por esa atracción.
 
@@ -535,7 +535,7 @@ llega a doce horas seguidas. Solo el cumpleaños de julio abrió más tiempo.
 Al abrir, ve directo a
 **[Star Trek](ref:movie-park-germany/star-trek-operation-enterprise?bare)**, que
 es la atracción en la que correr más rinde, y de ahí sigue enseguida a
-**[Van Helsing's Factory](ref:movie-park-germany/van-helsings-factory?bare)**,
+**[Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory?bare)**,
 porque su cola ya no se acorta desde la segunda hora hasta la noche. La mañana es
 después para **[Bandit](ref:movie-park-germany/the-bandit?bare)** y la
 **[Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour?bare)**,
@@ -556,7 +556,7 @@ Halloween, a oscuras, más todavía.
 
 **Temporada.** La temporada regular de 2026 va del **27 de marzo al 8 de
 noviembre**. Después llega, del **27 de noviembre de 2026 al 5 de enero de
-2027**, el evento de invierno **Movie Park's Hollywood Christmas**, con más de un
+2027**, el evento de invierno **Movie Park’s Hollywood Christmas**, con más de un
 millón de luces, que tiene sus propias fechas y sus propias entradas.
 
 **Entradas.** El precio en taquilla es alto, el precio en línea no:
@@ -655,7 +655,7 @@ Cómo está Bottrop ahora mismo:
 A lo largo de 135 días de apertura medidos desde agosto de 2025, la espera típica
 en la media del parque es de **veinte minutos** (mediana). El valor más alto del
 parque lo tiene
-[Van Helsing's Factory](ref:movie-park-germany/van-helsings-factory), no la gran
+[Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory), no la gran
 montaña rusa. Las cifras actuales están en la
 [página del Movie Park](ref:movie-park-germany?bare).
 
@@ -694,8 +694,8 @@ Platin 107,90 €.
 
 ### ¿Cuántas montañas rusas tiene el Movie Park?
 
-Ocho: Star Trek™: Operation Enterprise, The Bandit, Van Helsing's Factory, Movie
-Park Studio Tour, Iron Claw, Ghost Chasers, Jimmy Neutron's Atomic Flyer y
+Ocho: Star Trek™: Operation Enterprise, The Bandit, Van Helsing’s Factory, Movie
+Park Studio Tour, Iron Claw, Ghost Chasers, Jimmy Neutron’s Atomic Flyer y
 Backyardigans Mission to Mars. Dos de ellas están completamente bajo techo, y con
 Bandit está aquí la primera montaña rusa de madera moderna de Alemania.
 
@@ -762,7 +762,7 @@ derribar está entonces iluminada de violeta delante de la luna.
 - Star Trek™: Operation Enterprise (Mack Rides, 40 metros, 90 km/h, 720 metros, tres inversiones, lanzamiento LSM, IMAscore): [Star Trek: Operation Enterprise en en.wikipedia](https://en.wikipedia.org/wiki/Star_Trek:_Operation_Enterprise)
 - The Bandit (1999 como Wild Wild West, RCCA, 27,8 metros, 1.099 metros, trazado Cyclone, trenes Premier desde 2001): [Bandit (Movie Park Germany) en de.wikipedia](<https://de.wikipedia.org/wiki/Bandit_(Movie_Park_Germany)>) · [Bandit en Ultimate Rollercoaster](https://www.ultimaterollercoaster.com/coasters/bandit_movieparkgermany)
 - Retracking del Bandit en el invierno de 2015/16 (200 metros de vía, diez carpinteros, dos oficiales de viaje): [Vías nuevas para the Bandit (oficial, en alemán)](https://www.movieparkgermany.de/blog/neue-schienen-fuer-the-bandit-groesstes-retracking-seit-bau-der-achterbahn-im)
-- Van Helsing's Factory (18 de junio de 2011, bobsled de Gerstlauer, 400 metros, 36 km/h, 848 personas por hora, 5 millones de euros, antigua nave de los Gremlins): [Van Helsing's Factory en en.wikipedia](https://en.wikipedia.org/wiki/Van_Helsing%27s_Factory)
+- Van Helsing’s Factory (18 de junio de 2011, bobsled de Gerstlauer, 400 metros, 36 km/h, 848 personas por hora, 5 millones de euros, antigua nave de los Gremlins): [Van Helsing’s Factory en en.wikipedia](https://en.wikipedia.org/wiki/Van_Helsing%27s_Factory)
 - Iron Claw (6 de abril de 2001 como Eraser, Vekoma SLC, 689 metros, nombres anteriores FX y MP-Xpress): [Iron Claw en rcdb.com](https://rcdb.com/969.htm) · [Iron Claw (oficial)](https://www.movieparkgermany.de/en/erlebnisse/attraktionen/ironclaw)
 - Excalibur – Secrets of the Dark Forest (1996 como La historia interminable, 2005 Mystery River, reapertura el 7 de mayo de 2018): [Excalibur – Secrets of the Dark Forest en de.wikipedia](https://de.wikipedia.org/wiki/Excalibur_%E2%80%93_Secrets_of_the_Dark_Forest) · [Mystery River se convierte en Excalibur (Parkerlebnis, en alemán)](https://www.parkerlebnis.de/movie-park-2018-mystery-river-umbau-excalibur-neuheit_55825.html)
 - Montaña rusa cancelada para 2014 (45 metros, diez millones de euros, cimientos hormigonados): [Planes de montaña rusa detenidos (oficial, en alemán)](https://www.movieparkgermany.de/movie-park-backstage/achterbahnplaene-gestoppt) · [Movie Park Germany planea una montaña rusa de 45 metros (Airtimers)](https://airtimers.com/en/movie-park-germany-plant-45-meter-hohe-achterbahn/0014266/)
@@ -771,7 +771,7 @@ derribar está entonces iluminada de violeta delante de la luna.
 - Los nueve pasajes de 2026, de los que Jason Universe es el único nuevo: [Pasajes del terror (oficial)](https://www.movieparkgermany.de/en/halloween/horrorhauser)
 - PHOBIA – The Live Horror Game Show en el Studio 7 y el desfile de monstruos: [Espectáculos (oficial)](https://www.movieparkgermany.de/en/halloween/shows)
 - Haunters Against Hate (desde 2022, quinta edición el 17 de octubre de 2026): [Haunters Against Hate (oficial)](https://www.movieparkgermany.de/en/halloween/hah) · [«Haunters Against Hate» en Parques Reunidos](https://www.parquesreunidos.com/en/blog/haunters-against-hate-when-fear-meets-purpose-at-movie-park)
-- Hollywood Christmas 2026/27: [Movie Park's Hollywood Christmas (oficial)](https://www.movieparkgermany.de/en/christmas)
+- Hollywood Christmas 2026/27: [Movie Park’s Hollywood Christmas (oficial)](https://www.movieparkgermany.de/en/christmas)
 - Precios, pases de temporada, preventa 2027 (hasta el 6 de septiembre de 2026) y aparcamiento: [Nuestros precios y ofertas (oficial)](https://www.movieparkgermany.de/oeffnungszeiten-und-preise/preise) · [Pase de temporada (oficial)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass) · [Precios de entrada 2026 (NRW-Parks, en alemán)](https://www.nrw-parks.de/movie-park-germany/movie-park-germany-eintrittspreise.html)
 - Bonus Club: ventajas solo para Gold y Platin, entrada gratuita en el Efteling una vez por año natural, tres veces Bobbejaanland, Slagharen y Weltvogelpark Walsrode, más la lista de descuentos: [Bonus Club (oficial)](https://www.movieparkgermany.de/tickets-kaufen/saisonpass/bonusclub) · [Ventajas 2026, parques del grupo (PDF, en alemán)](https://www.movieparkgermany.de/content/dam/mpg/uploads/website/vorteile-saisonpassinhaber-(bonusclub(/2026/Vorteile%20f%C3%BCr%20Saisonpassinhaber%202026_Parques%20Reunidos%20Gruppe.pdf.html) · [Ventajas 2026, parques de ocio, zoos y demás (PDF, en alemán)](https://www.movieparkgermany.de/content/dam/mpg/uploads/website/vorteile-saisonpassinhaber-(bonusclub(/2026/Vorteile%20f%C3%BCr%20Saisonpassinhaber%202026_Freizeitparks%2c%20Zoos%20und%20Co.pdf.html)
 - Cómo llegar, estación de Feldhausen, SB16: [Acceso y aparcamiento (oficial)](https://www.movieparkgermany.de/en/plane-deinen-besuch/wichtige-informationen/anfahrt-und-parken) · [Excursión en tren (DB Regio NRW, en alemán)](https://regional.bahn.de/regionen/nrw/ausflugstipps/aktiv/moviepark)

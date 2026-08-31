@@ -83,7 +83,7 @@ losgelaten.
 
 Dan was er de gondelbaan **“1001 Nacht”**, vanaf 1970 in bedrijf en de eerste
 stationaire dark ride van Duitsland. Eind jaren tachtig hoorde die vast bij elk
-familiebezoek. Mijn ouders en ik in zo'n gondel, acht meter boven de grond,
+familiebezoek. Mijn ouders en ik in zo’n gondel, acht meter boven de grond,
 samen op een reis die met elke meter dieper een andere wereld in voerde. Door de
 enorme drakenmuil naar binnen, langs de scènes van Ali Baba en Sinbad, langs de
 sagenvogel Rok, een druipsteengrot in waar je je in kon laten vallen zoals in
@@ -135,9 +135,9 @@ stond. Als ik daar met mijn vriendin over punten ruzie, zit ik in een gebouw dat
 staat waar ik als kind met mijn vader door de drakenmuil voer. Hetzelfde stuk
 grond, dertig jaar en een heel leven ertussen.
 
-Daarna pannenkoeken en shakes bij **Phenie's** in Wuze Town, luchtig en
+Daarna pannenkoeken en shakes bij **Phenie’s** in Wuze Town, luchtig en
 schitterend en veel te goed voor pretparkhoreca. Uiterlijk dan begrijp je waar
-dit park zijn aanspraak op baseert om “Europe's Most Immersive Theme Park” te
+dit park zijn aanspraak op baseert om “Europe’s Most Immersive Theme Park” te
 heten.
 
 ## Orlando, mei 2026, eenmaal in je leven
@@ -154,10 +154,10 @@ Alles groter, alles luider, alles verder weg van Brühl, en toch precies dezelfd
 kriebel als destijds in de gondel. Daartussen
 [Epic Universe](ref:universal-epic-universe?bare) in zijn eerste zomer,
 achtbanen bij [Islands of Adventure](ref:universal-islands-of-adventure?bare),
-orka's en Manta bij [SeaWorld](ref:seaworld-orlando?bare). Twee weken die
+orka’s en Manta bij [SeaWorld](ref:seaworld-orlando?bare). Twee weken die
 voelden als het inlossen van een heel oude belofte aan mezelf.
 
-De foto's ben ik nog aan het sorteren, de verslagen zijn in de maak; allebei
+De foto’s ben ik nog aan het sorteren, de verslagen zijn in de maak; allebei
 landen ze de komende weken precies hier op de blog. Alvast dit: het was elk
 afzonderlijk jaar voorpret waard.
 
@@ -197,7 +197,7 @@ inruilde voor een reling.
 Wat het werd, noemen ontwikkelaars een passieproject en vriendinnen
 vermoedelijk eerder “alweer dat parkgedoe”. Uit een script
 kwam een dataverzamelaar, uit de dataverzamelaar een pipeline, uit de pipeline
-een platform. Daartussen lagen nachten waarin ik om twee uur 's nachts naar
+een platform. Daartussen lagen nachten waarin ik om twee uur ’s nachts naar
 wachttijdcurves staarde omdat een of ander park zijn data anders doorgaf dan
 alle andere. Debugsessies die langer duurden dan menige parkdag. En dat heel
 eigen moment van ontzag wanneer een model voor het eerst een overvolle zaterdag
@@ -275,7 +275,7 @@ Een wachttijd zonder context is niet meer dan een gerucht met een decimaal.
   hadden drie echte coasters gepast.
 - **50 minuten** voor de
   [Velocicoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster?bare)
-  op een zaterdagmiddag? Sterk, de piek ligt anders op 85, je hebt zo'n beetje
+  op een zaterdagmiddag? Sterk, de piek ligt anders op 85, je hebt zo’n beetje
   de express te pakken.
 - **20 minuten** voor
   [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare), een
@@ -286,11 +286,11 @@ Een wachttijd zonder context is niet meer dan een gerucht met een decimaal.
 Het getal staat in de grafiek. Het verhaal erachter staat vanaf nu hier, in drie
 vormen.
 
-**Reisverslagen.** Lang, met een mening, met foto's, en met echte data uit precies
+**Reisverslagen.** Lang, met een mening, met foto’s, en met echte data uit precies
 het park dat bezocht is. Geen “was leuk”, maar:
 “[Magic Kingdom](ref:magic-kingdom-park?bare), 15 mei, 09:08 uur rope drop, dat
 was het plan, dit werkte, dit ging fout.” De Orlando-reis van hierboven bijt het
-spits af: Disney World, Universal en SeaWorld, foto's inbegrepen.
+spits af: Disney World, Universal en SeaWorld, foto’s inbegrepen.
 
 **Data deep dives.** Wat verraadt de wachttijdhistorie van een park _echt_?
 Wanneer is [Taron](ref:phantasialand/taron?bare) het meest de moeite waard? En
