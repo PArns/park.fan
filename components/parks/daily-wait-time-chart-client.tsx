@@ -2,6 +2,7 @@
 
 import { useMemo } from 'react';
 import { useMounted } from '@/lib/hooks/use-mounted';
+import { useRideDayCurve } from '@/lib/hooks/use-ride-day-curve';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import type {
   AttractionHistoryDay,
@@ -18,6 +19,21 @@ interface DailyWaitTimeChartClientProps {
   schedule?: ScheduleItem[];
   bestVisitTimes?: BestVisitSlot[] | null;
   translations: DailyWaitTimeChartData['translations'];
+  /**
+   * Where to read this ride's historical corridor from. All four are needed
+   * because `/stats/day` is a park-scoped route; the ride is pinned by slug so
+   * the corridor belongs to the bars it sits behind and not to whatever the
+   * endpoint would have picked on its own.
+   *
+   * Omit and the chart renders exactly as before — the corridor is additive.
+   */
+  corridor?: {
+    continent: string;
+    country: string;
+    city: string;
+    parkSlug: string;
+    attractionSlug: string;
+  };
 }
 
 /** Returns the time string (HH:mm) in the given IANA timezone from an ISO string, rounded to 15m. */
@@ -57,7 +73,10 @@ function buildChartData(
     schedule,
     bestVisitTimes,
     translations,
-  }: DailyWaitTimeChartClientProps
+    corridor,
+  }: DailyWaitTimeChartClientProps,
+  /** Hour → [P25, P90] for this ride, or null while the query is in flight. */
+  corridorByHour: Map<number, [number, number]> | null
 ): DailyWaitTimeChartData | null {
   // History P90 map: "HH:mm" → value
   const todayHistory = history?.find((h) => h.date === todayStr);
@@ -152,10 +171,15 @@ function buildChartData(
 
   while (curH < endH || (curH === endH && curM <= endM)) {
     const time = `${curH.toString().padStart(2, '0')}:${curM.toString().padStart(2, '0')}`;
+    // The corridor is hourly, so all four slots of an hour share its band —
+    // honest, because the rollup behind it is hourly too.
+    const band = corridorByHour?.get(curH) ?? null;
     slots.push({
       time,
       historyValue: historyMap.get(time) ?? null,
       forecastValue: forecastMap.get(time) ?? null,
+      typicalLow: band?.[0] ?? null,
+      typicalHigh: band?.[1] ?? null,
     });
 
     curM += 15;
@@ -198,22 +222,51 @@ function buildChartData(
     slots,
     timezone,
     bestSlots: bestSlots?.length ? bestSlots : undefined,
+    expectTypical: Boolean(corridor),
     translations,
   };
 }
 
 export function DailyWaitTimeChartClient(props: DailyWaitTimeChartClientProps) {
   const mounted = useMounted();
+  const { corridor } = props;
+
+  // The corridor arrives late on purpose. It is a historical aggregate behind the
+  // same `useLoadLast` gate as every other one, so the bars paint from the server
+  // shell's data first and the band fades in behind them — never the other way
+  // round, and never at the cost of the live numbers' request budget.
+  const { data: dayCurve } = useRideDayCurve({
+    continent: corridor?.continent ?? '',
+    country: corridor?.country ?? '',
+    city: corridor?.city ?? '',
+    parkSlug: corridor?.parkSlug ?? '',
+    attraction: corridor?.attractionSlug,
+    enabled: Boolean(corridor),
+  });
+
+  const corridorByHour = useMemo(() => {
+    if (!dayCurve) return null;
+    const map = new Map<number, [number, number]>();
+    dayCurve.hours.forEach((hour, i) => {
+      const low = dayCurve.p25[i];
+      const high = dayCurve.p90[i];
+      // A band needs both edges and a positive height; an hour with one of them
+      // missing gets no band rather than a zero-height line at the wrong height.
+      if (low == null || high == null || high <= low) return;
+      map.set(hour, [low, high]);
+    });
+    return map.size > 0 ? map : null;
+  }, [dayCurve]);
 
   // Derive "today" (park tz) on the client; before mount render nothing so SSR and the first client
   // render match (no hydration mismatch) and the static shell never reads the clock.
   const data = useMemo(() => {
     if (!mounted) return null;
     const todayStr = getTodayInTimezone(props.timezone);
-    return buildChartData(todayStr, props);
+    return buildChartData(todayStr, props, corridorByHour);
     // props is stable per render from the server shell; rebuild only on mount/tz change.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mounted, props.timezone]);
+  }, [mounted, props.timezone, corridorByHour]);
 
   if (!data) return null;
   return <DailyWaitTimeChart {...data} />;

@@ -18,6 +18,19 @@ interface TimeSlot {
   time: string; // "HH:mm"
   historyValue: number | null;
   forecastValue: number | null;
+  /**
+   * What this ride normally does at this time of day, across every measured day
+   * — the quiet quarter (P25) and the busy tenth (P90) of its own history.
+   *
+   * The corridor is the one thing this chart could not say before. It drew today
+   * with no scale to read it against, so a reader could see 45 minutes at 14:00
+   * and not know whether that was a good afternoon or a bad one. Hourly, so all
+   * four fifteen-minute slots of an hour share a value and the band reads as a
+   * step rather than a curve — which is honest, because the underlying rollup is
+   * hourly too.
+   */
+  typicalLow?: number | null;
+  typicalHigh?: number | null;
 }
 
 export interface DailyWaitTimeChartData {
@@ -25,6 +38,14 @@ export interface DailyWaitTimeChartData {
   timezone: string;
   /** Best visit slots from the backend, times already in "HH:mm" park-local format. */
   bestSlots?: { time: string; rating: 'optimal' | 'good' }[];
+  /**
+   * Whether a corridor is being fetched for this ride. The legend then holds the
+   * third entry's box from the first paint and only fills it in once the band is
+   * really there — three 11 px entries wrap onto a second line on the narrowest
+   * phones, and a legend row that grows a line after the query lands would push
+   * the whole chart and everything under it down.
+   */
+  expectTypical?: boolean;
   translations: {
     title: string;
     now: string;
@@ -42,6 +63,8 @@ export interface DailyWaitTimeChartData {
     legendRecorded: string;
     /** Legend label for future, AI-forecast bars (solid). */
     legendForecast: string;
+    /** Legend label for the historical corridor behind the bars. */
+    legendTypical?: string;
   };
 }
 
@@ -91,6 +114,7 @@ export function DailyWaitTimeChart({
   slots,
   timezone,
   bestSlots,
+  expectTypical,
   translations,
 }: DailyWaitTimeChartData) {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -112,7 +136,13 @@ export function DailyWaitTimeChart({
               ? (slot.historyValue ?? slot.forecastValue ?? null)
               : (slot.forecastValue ?? null);
 
-        return { time: slot.time, value, type };
+        return {
+          time: slot.time,
+          value,
+          type,
+          typicalLow: slot.typicalLow ?? null,
+          typicalHigh: slot.typicalHigh ?? null,
+        };
       }),
     [slots, currentTimeSlot]
   );
@@ -141,7 +171,12 @@ export function DailyWaitTimeChart({
   const hasData = typedSlots.some((s) => s.value !== null);
   if (!hasData) return null;
 
-  const maxValue = Math.max(...typedSlots.map((s) => s.value ?? 0), 10);
+  const maxValue = Math.max(
+    ...typedSlots.map((s) => s.value ?? 0),
+    ...typedSlots.map((s) => s.typicalHigh ?? 0),
+    10
+  );
+  const hasCorridor = typedSlots.some((s) => s.typicalLow != null && s.typicalHigh != null);
 
   // Bottom hint: show optimal and good times with locale-aware formatting
   const fmt = (times: string[]) =>
@@ -207,6 +242,12 @@ export function DailyWaitTimeChart({
           <span className="bg-crowd-moderate h-2.5 w-2 rounded-sm" aria-hidden="true" />
           {translations.legendForecast}
         </span>
+        {(hasCorridor || expectTypical) && translations.legendTypical && (
+          <span className={cn('flex items-center gap-1.5', !hasCorridor && 'invisible')}>
+            <span className="bg-primary/15 h-2.5 w-4 rounded-sm" aria-hidden="true" />
+            {translations.legendTypical}
+          </span>
+        )}
       </div>
 
       {/* Horizontally scrollable chart — current time centered on mount */}
@@ -244,11 +285,29 @@ export function DailyWaitTimeChart({
                   key={slot.time}
                   className="relative flex min-w-[15px] flex-1 flex-col justify-end"
                 >
+                  {/* The corridor, behind everything: where this ride's queue
+                      normally sits at this time. One block per slot rather than a
+                      path, so it shares the bars' scale by construction and needs
+                      no second geometry to keep in step with them.
+                      It bleeds one pixel to each side because the columns sit in a
+                      `gap-0.5` row: without that the four slots of an hour draw
+                      four stripes with 2 px of card between them, and a band that
+                      is constant for an hour has to look constant. */}
+                  {slot.typicalLow != null && slot.typicalHigh != null && (
+                    <div
+                      aria-hidden="true"
+                      className="bg-primary/15 pointer-events-none absolute -inset-x-px transition-all duration-500 motion-reduce:transition-none"
+                      style={{
+                        bottom: `${(slot.typicalLow / maxValue) * 100}%`,
+                        height: `${((slot.typicalHigh - slot.typicalLow) / maxValue) * 100}%`,
+                      }}
+                    />
+                  )}
                   {/* Best-time dot above bar */}
                   {bestRating && slot.value !== null && (
                     <Tooltip>
                       <TooltipTrigger
-                        className="absolute left-1/2 z-10 -translate-x-1/2 cursor-default bg-transparent p-0"
+                        className="absolute left-1/2 z-10 -translate-x-1/2 cursor-default bg-transparent p-0 transition-[bottom] duration-500 motion-reduce:transition-none"
                         style={{ bottom: `calc(${barPct}% + 3px)` }}
                       >
                         {/* Pulsing ring */}
@@ -281,7 +340,11 @@ export function DailyWaitTimeChart({
                   {slot.value !== null ? (
                     <div
                       className={cn(
-                        'w-full rounded-t',
+                        // The scale can move once: `maxValue` takes the corridor
+                        // into account and the corridor arrives after the bars.
+                        // Half a second of height is the difference between the
+                        // chart rescaling and the chart appearing to blink.
+                        'w-full rounded-t transition-[height] duration-500 motion-reduce:transition-none',
                         barColorClass(slot.value),
                         slot.type === 'past' && 'opacity-40'
                       )}

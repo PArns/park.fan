@@ -1182,7 +1182,8 @@
       "aiBadge": "AI forecast",
       "aiExplainer": "Past times are real measurements; upcoming values are AI predictions.",
       "legendRecorded": "Recorded",
-      "legendForecast": "AI forecast"
+      "legendForecast": "AI forecast",
+      "legendTypical": "Typical range"
     },
     "typicalWaits": {
       "title": "Typical wait times",

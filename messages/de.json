@@ -1182,7 +1182,8 @@
       "aiBadge": "KI-Prognose",
       "aiExplainer": "Vergangene Zeiten sind echte Messungen, künftige Werte sind KI-Vorhersagen.",
       "legendRecorded": "Aufgezeichnet",
-      "legendForecast": "KI-Prognose"
+      "legendForecast": "KI-Prognose",
+      "legendTypical": "Normalbereich"
     },
     "typicalWaits": {
       "title": "Typische Wartezeiten",

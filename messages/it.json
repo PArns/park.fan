@@ -1144,7 +1144,8 @@
       "aiBadge": "Previsione IA",
       "aiExplainer": "I tempi passati sono misurazioni reali; i valori futuri sono previsioni dell'IA.",
       "legendRecorded": "Registrato",
-      "legendForecast": "Previsione IA"
+      "legendForecast": "Previsione IA",
+      "legendTypical": "Intervallo abituale"
     },
     "headliner": {
       "title": "Attrazione principale",

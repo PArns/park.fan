@@ -1182,7 +1182,8 @@
       "aiBadge": "AI-voorspelling",
       "aiExplainer": "Tijden in het verleden zijn echte metingen; komende waarden zijn AI-voorspellingen.",
       "legendRecorded": "Geregistreerd",
-      "legendForecast": "AI-voorspelling"
+      "legendForecast": "AI-voorspelling",
+      "legendTypical": "Normaal bereik"
     },
     "typicalWaits": {
       "title": "Typische wachttijden",

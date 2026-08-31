@@ -1182,7 +1182,8 @@
       "aiBadge": "Prévision IA",
       "aiExplainer": "Les temps passés sont des mesures réelles ; les valeurs à venir sont des prévisions par IA.",
       "legendRecorded": "Enregistré",
-      "legendForecast": "Prévision IA"
+      "legendForecast": "Prévision IA",
+      "legendTypical": "Plage habituelle"
     },
     "typicalWaits": {
       "title": "Temps d’attente typiques",

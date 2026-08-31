@@ -18,12 +18,14 @@ import { getLeadParks } from './lead-park';
  * coaster has two good windows"), so the answer has to be a shape rather than a
  * number, and the windows are read off the same curve the reader is looking at.
  *
- * It reads `/stats/hourly`, a ~2 KB projection rather than the 425 KB park
- * payload, which is what lets a marketing surface mount it at all. Today's own
- * measured line is deliberately left out here: it lives on the attraction
- * payload, and 53 KB for one line on a homepage is not a trade worth making —
- * {@link RideDayCurveCard} takes it as a prop for the ride page, which already
- * holds it.
+ * It reads `/stats/day`, a ~1 KB projection rather than the 425 KB park payload,
+ * which is what lets a marketing surface mount it at all.
+ *
+ * The ride pages draw none of this. They already carry today hour by hour in
+ * `DailyWaitTimeChart`, and a second chart there would have redrawn the same two
+ * series in a different shape; what they take from this endpoint is the one
+ * thing they were missing, the historical corridor, and they take it as a band
+ * behind their own bars.
  */
 export async function ChapterBestTime({ locale }: { locale: string }) {
   const [t, parks] = await Promise.all([

@@ -257,6 +257,7 @@ export function LiveAttractionData({
               timezone={park.timezone}
               schedule={detail!.schedule}
               bestVisitTimes={detail!.bestVisitTimes ?? attraction.bestVisitTimes}
+              corridor={{ continent, country, city, parkSlug, attractionSlug }}
               translations={{
                 title: tChart('title'),
                 now: tChart('now'),
@@ -270,6 +271,7 @@ export function LiveAttractionData({
                 aiExplainer: tChart('aiExplainer'),
                 legendRecorded: tChart('legendRecorded'),
                 legendForecast: tChart('legendForecast'),
+                legendTypical: tChart('legendTypical'),
               }}
             />
             <div className="mt-3">

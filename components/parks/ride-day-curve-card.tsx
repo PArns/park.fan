@@ -69,13 +69,6 @@ export interface RideDayCurveCardProps {
    * exactly one.
    */
   candidates: DayCurveCandidate[];
-  /**
-   * Ride to pin. Omitted → the backend picks the park's busiest ride THAT
-   * REPORTED TODAY, so the card does not land on a closed or out-of-season one.
-   * A ride page pins its own; the homepage does not, because it wants whatever
-   * is showable.
-   */
-  rideSlug?: string;
   className?: string;
 }
 
@@ -88,19 +81,17 @@ export interface RideDayCurveCardProps {
  */
 function Candidate({
   park,
-  rideSlug,
   onResolved,
   fallback,
   children,
 }: {
   park: DayCurveCandidate;
-  rideSlug?: string;
   onResolved: (state: 'pending' | 'hit' | 'miss') => void;
   /** Held while this candidate is in flight, so the walk costs no layout shift. */
   fallback: React.ReactNode;
   children: (data: RideDayCurveData) => React.ReactNode;
 }) {
-  const { data, isPending } = useRideDayCurve({ ...park, attraction: rideSlug });
+  const { data, isPending } = useRideDayCurve(park);
 
   useEffect(() => {
     if (isPending) return;
@@ -130,7 +121,7 @@ function Candidate({
  * caption and window row, and a section that appears out of nothing after the
  * idle window is the CLS this codebase measures with `pnpm measure:cls --late`.
  */
-export function RideDayCurveCard({ candidates, rideSlug, className }: RideDayCurveCardProps) {
+export function RideDayCurveCard({ candidates, className }: RideDayCurveCardProps) {
   const t = useTranslations('homeStory.bestTime');
   const tOverview = useTranslations('parks.overview');
 
@@ -153,9 +144,8 @@ export function RideDayCurveCard({ candidates, rideSlug, className }: RideDayCur
     <Candidate
       // Re-keyed per park so the previous candidate's state does not leak into
       // the next one's mount.
-      key={`${park.parkSlug}:${rideSlug ?? ''}`}
+      key={park.parkSlug}
       park={park}
-      rideSlug={rideSlug}
       onResolved={onResolved}
       fallback={
         // A `<figure>`, not a `<div>`: a first-paint/settled diff pairs children
