@@ -284,7 +284,17 @@ export default function HeroInlineSearchPanel({
       <div
         aria-hidden="true"
         className="h-[var(--hero-search-rest-h)]"
-        style={restHeight != null ? { height: restHeight + DROPDOWN_TOP_GAP_PX } : undefined}
+        // The measured height replaces the CSS estimate ON THE HERO ONLY.
+        // `--hero-search-rest-h` is calibrated for the hero's full-width column;
+        // in the homepage's step card the same dropdown sits in a third of that
+        // width, wraps differently and measures ~75 px shorter — so the spacer
+        // paints at 282 px and then shrinks the moment this chunk mounts,
+        // pulling every chapter below it up by that much. Off the hero the
+        // estimate is kept: the dropdown floats, so overhanging its reservation
+        // by a few pixels costs nothing, while moving it costs the whole page.
+        style={
+          onHero && restHeight != null ? { height: restHeight + DROPDOWN_TOP_GAP_PX } : undefined
+        }
       />
 
       {/* The dropdown itself: always open (the hero's default state is an open list of the
