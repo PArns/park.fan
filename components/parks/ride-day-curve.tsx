@@ -14,6 +14,12 @@ import {
   VIEW_W,
 } from '@/lib/utils/ride-day-curve-geometry';
 
+/** Last index matching the predicate, without needing the ES2023 lib. */
+function findLastIndex<T>(items: T[], predicate: (item: T) => boolean): number {
+  for (let i = items.length - 1; i >= 0; i--) if (predicate(items[i])) return i;
+  return -1;
+}
+
 export interface DayCurveWindow {
   /** Label above the window, e.g. "Guter Start". */
   label: string;
@@ -69,8 +75,28 @@ export interface RideDayCurveProps {
    * claim about the quiet quarter of days that nothing measured.
    */
   p25?: Array<number | null> | null;
-  /** Today's measured series, if the caller already holds it. */
-  today?: Array<{ hour: number; waitTime: number }> | null;
+  /**
+   * What the ride has actually shown today, positional against {@link hours}.
+   * `null` for an hour not yet reached, or one it reported nothing in.
+   */
+  today?: Array<number | null> | null;
+  /**
+   * What the model expects for the hours still to come, same alignment.
+   *
+   * Never overlaps {@link today}: the endpoint nulls a forecast hour once it has
+   * been measured, so the two draw one continuous line — solid where it happened,
+   * dashed where it has not.
+   */
+  forecast?: Array<number | null> | null;
+  /**
+   * The ride's own mean absolute error, in minutes. Draws the forecast tunnel as
+   * `forecast ± forecastError`.
+   *
+   * Constant width on purpose. It is a measured, published figure; fanning it out
+   * with the horizon would look more like a forecast cone and would be an
+   * uncertainty model nothing here has measured.
+   */
+  forecastError?: number | null;
   /** Highlighted windows — rope drop, the last hour. */
   windows?: DayCurveWindow[];
   labels: {
@@ -80,6 +106,10 @@ export interface RideDayCurveProps {
     band: string;
     /** Shown when it is not: the median-to-busy half. */
     bandUpperOnly: string;
+    /** Legend for the forecast line. */
+    forecast: string;
+    /** Legend for the forecast tunnel, e.g. "Prognose ±7 Min." */
+    forecastBand: string;
     minutes: string;
     /** Screen-reader only: "busiest around" — prefixes the peak in the summary. */
     peakAt: string;
@@ -126,6 +156,8 @@ export function RideDayCurve({
   p90,
   p25,
   today,
+  forecast,
+  forecastError,
   windows = [],
   labels,
   className,
@@ -133,25 +165,54 @@ export function RideDayCurve({
   if (hours.length < 2) return null;
 
   const hasLowerEdge = Array.isArray(p25) && p25.some((v) => v != null);
-  const values = [...p50, ...p90, ...(p25 ?? []), ...(today?.map((d) => d.waitTime) ?? [])].filter(
-    (v): v is number => typeof v === 'number'
-  );
+  const err = forecastError != null && forecastError > 0 ? forecastError : 0;
+  const values = [
+    ...p50,
+    ...p90,
+    ...(p25 ?? []),
+    ...(today ?? []),
+    // The tunnel's top has to fit, or the band is clipped by the plot edge.
+    ...(forecast ?? []).map((v) => (v == null ? null : v + err)),
+  ].filter((v): v is number => typeof v === 'number');
   if (values.length === 0) return null;
   const yMax = niceMax(Math.max(...values));
-  const { firstHour, lastHour, x, y } = makeScales(hours, yMax);
+  const { x, y } = makeScales(hours, yMax);
 
-  const todayPath = () => {
-    const points = (today ?? [])
-      .filter((d) => d.hour >= firstHour && d.hour <= lastHour)
-      .sort((a, b) => a.hour - b.hour);
-    if (points.length < 2)
-      return { d: '', last: null as null | { hour: number; waitTime: number } };
-    const d = points
-      .map((p, i) => `${i === 0 ? 'M' : 'L'}${x(p.hour).toFixed(1)},${y(p.waitTime).toFixed(1)}`)
-      .join('');
-    return { d, last: points[points.length - 1] };
-  };
-  const todayLine = todayPath();
+  const todayLine = today ? buildLinePath(hours, today, x, y) : '';
+  const forecastLine = forecast ? buildLinePath(hours, forecast, x, y) : '';
+
+  /**
+   * The last measured hour, and the first forecast hour.
+   *
+   * The two series meet but do not overlap, so without a joining segment the
+   * chart shows a one-hour hole exactly at "now" — the most-looked-at point on
+   * it. The stub is drawn as part of the forecast, dashed, because the half of
+   * it that is a claim about the future is the forecast's.
+   */
+  const lastMeasured = today ? findLastIndex(today, (v) => v != null) : -1;
+  const firstForecast = forecast ? forecast.findIndex((v) => v != null) : -1;
+  const joinPath =
+    lastMeasured >= 0 && firstForecast > lastMeasured && today && forecast
+      ? `M${x(hours[lastMeasured]).toFixed(1)},${y(today[lastMeasured] as number).toFixed(1)}L${x(hours[firstForecast]).toFixed(1)},${y(forecast[firstForecast] as number).toFixed(1)}`
+      : '';
+
+  /** The forecast tunnel: the forecast line thickened by the ride's measured error. */
+  const tunnelPath =
+    forecast && err > 0
+      ? buildBandPath(
+          hours,
+          forecast.map((v) => (v == null ? null : Math.max(0, v - err))),
+          forecast.map((v) => (v == null ? null : v + err)),
+          x,
+          y
+        )
+      : '';
+
+  /** Where the measured day currently ends — the marker a reader reads as "now". */
+  const nowPoint =
+    lastMeasured >= 0 && today
+      ? { x: x(hours[lastMeasured]), y: y(today[lastMeasured] as number) }
+      : null;
 
   /**
    * What the chart says, for somebody who cannot see it.
@@ -184,10 +245,16 @@ export function RideDayCurve({
           {subtitle && <p className="text-muted-foreground mt-0.5 text-xs">{subtitle}</p>}
         </div>
         <ul className="text-muted-foreground flex flex-col gap-1 text-xs">
-          {todayLine.d && (
+          {todayLine && (
             <li className="flex items-center gap-2">
               <span className="bg-status-operating h-0.5 w-4 shrink-0 rounded-full" />
               {labels.today}
+            </li>
+          )}
+          {forecastLine && (
+            <li className="flex items-center gap-2">
+              <span className="border-status-operating/70 w-4 shrink-0 border-t-2 border-dashed" />
+              {tunnelPath ? labels.forecastBand : labels.forecast}
             </li>
           )}
           <li className="flex items-center gap-2">
@@ -258,25 +325,34 @@ export function RideDayCurve({
             strokeLinejoin="round"
           />
 
-          {todayLine.d && (
-            <>
-              <path
-                d={todayLine.d}
-                fill="none"
-                className="stroke-status-operating"
-                strokeWidth={2.5}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              {todayLine.last && (
-                <circle
-                  cx={x(todayLine.last.hour)}
-                  cy={y(todayLine.last.waitTime)}
-                  r={4.5}
-                  className="fill-status-operating"
-                />
-              )}
-            </>
+          {/* The tunnel sits under both lines — it is context, not the answer. */}
+          {tunnelPath && <path d={tunnelPath} className="fill-status-operating/15" />}
+
+          {(forecastLine || joinPath) && (
+            <path
+              d={`${joinPath} ${forecastLine}`.trim()}
+              fill="none"
+              className="stroke-status-operating/80"
+              strokeWidth={2.5}
+              strokeDasharray="6 5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          )}
+
+          {todayLine && (
+            <path
+              d={todayLine}
+              fill="none"
+              className="stroke-status-operating"
+              strokeWidth={2.5}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          )}
+
+          {nowPoint && (
+            <circle cx={nowPoint.x} cy={nowPoint.y} r={4.5} className="fill-status-operating" />
           )}
         </svg>
 

@@ -346,7 +346,9 @@
       "peakAt": "Am vollsten gegen",
       "windowOpening": "Guter Start in den Tag",
       "windowClosing": "Gegen Tagesende",
-      "windowWait": "rund {minutes} Min. Wartezeit"
+      "windowWait": "rund {minutes} Min. Wartezeit",
+      "legendForecast": "Prognose für heute",
+      "legendForecastBand": "Prognose ±{minutes} Min."
     },
     "inPark": {
       "kicker": "Favoriten & Karte",

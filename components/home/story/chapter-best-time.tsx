@@ -7,7 +7,7 @@ import { RideDayCurveCard } from '@/components/parks/ride-day-curve-card';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/config';
-import { getLeadPark } from './lead-park';
+import { getLeadParks } from './lead-park';
 
 /**
  * Chapter: when a ride is actually quiet.
@@ -26,7 +26,10 @@ import { getLeadPark } from './lead-park';
  * holds it.
  */
 export async function ChapterBestTime({ locale }: { locale: string }) {
-  const [t, park] = await Promise.all([getTranslations('homeStory.bestTime'), getLeadPark(locale)]);
+  const [t, parks] = await Promise.all([
+    getTranslations('homeStory.bestTime'),
+    getLeadParks(locale),
+  ]);
 
   return (
     <section className="px-4 py-16 sm:py-18">
@@ -43,13 +46,18 @@ export async function ChapterBestTime({ locale }: { locale: string }) {
         </Reveal>
 
         <div className="grid gap-6 lg:grid-cols-[1.5fr_1fr] lg:items-start">
-          {park && (
+          {parks.length > 0 && (
             <Reveal>
+              {/* The whole featured list, in order: a park in its winter break
+                  or having a maintenance day hands over to the next one rather
+                  than leaving the chapter with an empty column. */}
               <RideDayCurveCard
-                continent={park.continent}
-                country={park.country}
-                city={park.city}
-                parkSlug={park.parkSlug}
+                candidates={parks.map((p) => ({
+                  continent: p.continent,
+                  country: p.country,
+                  city: p.city,
+                  parkSlug: p.parkSlug,
+                }))}
               />
             </Reveal>
           )}

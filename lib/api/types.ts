@@ -1810,6 +1810,42 @@ export interface HourlyProfileAttraction {
 }
 
 /**
+ * One ride's day: what it normally does, what it has done so far today, and what
+ * the model expects for the rest.
+ *
+ * Everything is POSITIONAL against `hours`, and `today`/`forecast` never overlap
+ * — an hour already measured carries `forecast: null`, so a chart cannot draw
+ * the model's guess on top of the fact. See docs/frontend/ride-day-curve.md in
+ * the API repo.
+ */
+export interface RideDayCurve {
+  hours: number[];
+  attractionSlug: string;
+  attractionName: string;
+  p25: Array<number | null>;
+  p50: Array<number | null>;
+  p90: Array<number | null>;
+  /** Measured today. `null` for an hour not yet reached, or one the ride reported nothing in. */
+  today: Array<number | null>;
+  /** Expected, for hours not yet measured. */
+  forecast: Array<number | null>;
+  /**
+   * The ride's own mean absolute error in minutes.
+   *
+   * A measured, published figure — a caller may draw the forecast as
+   * `± forecastError`, but must NOT fan it out with the horizon, which nothing
+   * measures. `null` where the ride has not been scored.
+   */
+  forecastError: number | null;
+  /** False for a park not open yet, a closed ride, an out-of-season ride. */
+  measuredToday: boolean;
+  sampleDays: number;
+  timezone: string;
+  generatedAt: string;
+  schemaVersion: number;
+}
+
+/**
  * The park's day shape, ride by ride — the matrix behind a "when is the queue longest" table.
  *
  * A lean projection rather than a slice of the attraction detail endpoint: that one costs ~53 KB

@@ -1,6 +1,6 @@
 import { cache } from 'react';
 import { getServerApiHeaders } from '@/lib/api/client';
-import type { ParkHistoricalStats, ParkHourlyProfile } from '@/lib/api/types';
+import type { ParkHistoricalStats, ParkHourlyProfile, RideDayCurve } from '@/lib/api/types';
 
 const getApiBaseUrl = () =>
   typeof window === 'undefined' ? process.env.NEXT_PUBLIC_API_URL || 'https://api.park.fan' : '';
@@ -164,6 +164,30 @@ export const getParkHistoricalStatsSeed = cache(async function getParkHistorical
  * differently-sized table the moment the query settles. Callers pass the clamped value they give
  * the card.
  */
+/**
+ * One ride's day curve. `attraction` pins a ride; without it the backend picks
+ * the park's busiest ride that actually reported today, so the answer is not a
+ * closed or out-of-season one.
+ */
+export async function getRideDayCurve(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string,
+  attraction?: string
+): Promise<RideDayCurve | null> {
+  const query = attraction ? `?attraction=${encodeURIComponent(attraction)}` : '';
+  const url = `${getApiBaseUrl()}/v1/parks/${continent}/${country}/${city}/${parkSlug}/stats/day${query}`;
+
+  try {
+    const res = await fetch(url, { headers: getServerApiHeaders() });
+    if (!res.ok) return null;
+    return (await res.json()) as RideDayCurve;
+  } catch {
+    return null;
+  }
+}
+
 export const getParkHourlyProfileSeed = cache(async function getParkHourlyProfileSeed(
   continent: string,
   country: string,

@@ -7,7 +7,7 @@ import {
   leanParkForLivePoll,
 } from '@/lib/api/parks';
 import { getParkWeatherNowcastFresh } from '@/lib/api/weather-nowcast';
-import { getParkHistoricalStats, getParkHourlyProfile } from '@/lib/api/stats';
+import { getParkHistoricalStats, getParkHourlyProfile, getRideDayCurve } from '@/lib/api/stats';
 import { enrichAttractionsWithImages } from '@/lib/utils/park-assets';
 import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
 import {
@@ -222,6 +222,34 @@ export async function GET(
     }
   }
 
+  // Handle one ride's day curve: [continent, country, city, park, 'stats', 'day'] (6 segments)
+  // Historical percentiles + today's measured hours + the forecast for the rest, in ~1 KB.
+  //
+  // s-maxage is FIVE minutes, not the hourly profile's hour: two thirds of this payload is today,
+  // and an hour-old copy of "today" is the one thing this route must not serve.
+  if (path && path.length === 6 && path[4] === 'stats' && path[5] === 'day') {
+    const [continent, country, city, park] = path;
+    const { searchParams } = new URL(request.url);
+    // Passed through rather than validated against a list: the backend resolves the slug and
+    // 404s an unknown one, and the value lands in the CDN key either way.
+    const attraction = searchParams.get('attraction') ?? undefined;
+
+    try {
+      const data = await getRideDayCurve(continent, country, city, park, attraction);
+
+      if (!data) {
+        return NextResponse.json({ error: 'Day curve not available' }, { status: 404 });
+      }
+
+      return NextResponse.json(data, {
+        headers: cdnCacheHeaders('public, s-maxage=300, stale-while-revalidate=600'),
+      });
+    } catch (error) {
+      console.error('[Ride-Day-Curve API] Error:', error);
+      return NextResponse.json({ error: 'Failed to fetch day curve' }, { status: 500 });
+    }
+  }
+
   // Handle attraction detail: [continent, country, city, park, 'attractions', slug] (6 segments)
   // e.g., ['europe', 'germany', 'rust', 'europa-park', 'attractions', 'blue-fire-megacoaster']
   if (path && path.length === 6 && path[4] === 'attractions') {
@@ -294,7 +322,7 @@ export async function GET(
   return NextResponse.json(
     {
       error:
-        'Invalid path format. Expected: /api/parks/{continent}/{country}/{city}/{park}, /calendar, /best-days, /stats, /stats/hourly, /wait-times, or /weather/nowcast',
+        'Invalid path format. Expected: /api/parks/{continent}/{country}/{city}/{park}, /calendar, /best-days, /stats, /stats/hourly, /stats/day, /wait-times, or /weather/nowcast',
     },
     { status: 400 }
   );

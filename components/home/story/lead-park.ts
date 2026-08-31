@@ -28,21 +28,39 @@ export interface LeadPark {
  * rendering an empty frame.
  */
 export async function getLeadPark(locale: string): Promise<LeadPark | null> {
+  return (await getLeadParks(locale))[0] ?? null;
+}
+
+/**
+ * The locale's featured parks, in order, as candidates for an exhibit.
+ *
+ * A single lead park is not enough for anything that has to render something
+ * today. A park closes for the winter, a park has a maintenance day, a park's
+ * catalogue is too thin to have a readable curve — and the answer to any of
+ * those is the next park on the same list, not an empty card. The list is the
+ * locale's own featured ranking, so the fallback stays regionally sensible
+ * without a second thing to curate.
+ *
+ * Costs no extra request: `getGeoStructure` is the same 24 h-cached fetch the
+ * featured grid and the shortcut band already read.
+ */
+export async function getLeadParks(locale: string): Promise<LeadPark[]> {
   const geoData = await catchNonFatal(getGeoStructure());
-  const park = extractFeaturedParks(geoData, locale)[0];
-  if (!park) return null;
-
-  // `href` is built by extractFeaturedParks as /parks/<continent>/<country>/<city>/<park>;
-  // the city slug is the only one of the four not already a named field.
-  const city = park.href.split('/')[4];
-  if (!city) return null;
-
-  return {
-    continent: park.continentSlug,
-    country: park.countrySlug,
-    city,
-    parkSlug: park.slug,
-    name: park.name,
-    href: park.href,
-  };
+  return extractFeaturedParks(geoData, locale)
+    .map((park) => {
+      // `href` is built by extractFeaturedParks as
+      // /parks/<continent>/<country>/<city>/<park>; the city slug is the only
+      // one of the four not already a named field.
+      const city = park.href.split('/')[4];
+      if (!city) return null;
+      return {
+        continent: park.continentSlug,
+        country: park.countrySlug,
+        city,
+        parkSlug: park.slug,
+        name: park.name,
+        href: park.href,
+      };
+    })
+    .filter((p): p is LeadPark => p !== null);
 }
