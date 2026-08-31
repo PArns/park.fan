@@ -92,11 +92,19 @@ export async function ThreeSteps() {
               tries first, and a second implementation is a second thing that can
               stop working. `primary={false}` is what keeps the page-wide halves
               of it (type-to-open, the hero click metric) unique. */}
-          {/* A grid item takes `z-index` without `position`, which is what this
-              needs: `Reveal` sets a transform, so each card is its own stacking
-              context and the `z-40` inside the dropdown cannot lift it over the
-              cards that come after it in source order. */}
-          <Reveal className="relative z-10">
+          {/* NOT wrapped in `Reveal`, and that is the whole point: `Reveal` keeps a
+              `translate-y-0` on its wrapper for good, a transform makes that
+              wrapper a BACKDROP ROOT, and `backdrop-filter` then samples only
+              inside it. The search dropdown's glass had nothing to blur — the
+              page behind read straight through it, at every fill value, which is
+              why raising the opacity looked like the fix and was not. Same rule
+              the header menu follows: never animate the glass or an ancestor of
+              it. The entrance for this one card is the price.
+
+              `relative z-10` stays for the other reason: the two cards after it
+              are their own stacking contexts, so the `z-40` inside the dropdown
+              cannot reach over them on its own. */}
+          <div className="relative z-10">
             <StepCard
               step={1}
               title={t('one.title')}
@@ -109,7 +117,7 @@ export async function ThreeSteps() {
                 primary={false}
               />
             </StepCard>
-          </Reveal>
+          </div>
 
           {/* 2 — check the day. */}
           <Reveal delay={80}>

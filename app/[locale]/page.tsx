@@ -58,6 +58,7 @@ import { getSectionHeadingLabels } from '@/components/home/section-headings';
 // The homepage story — "what is park.fan", chapter by chapter. Every one of these
 // is a Server Component whose copy is read server-side, so ~2 500 words of German
 // explanation never reach the client bundle (see the routed-translations rule).
+import { BlogTeaserBand } from '@/components/home/story/blog-teaser-band';
 import { ThreeSteps } from '@/components/home/story/three-steps';
 import { NearbyChapter } from '@/components/home/story/nearby-chapter';
 import { ChapterLiveWaits } from '@/components/home/story/chapter-live-waits';
@@ -239,6 +240,12 @@ export default async function HomePage({ params }: HomePageProps) {
             )}
           </HeroRotationProvider>
         </section>
+
+        {/* The newest post, in the band the park shortcuts used to hold: the first
+          thing under the fold, and the only spot on this page that reaches a
+          reader who has not decided to scroll yet. Rendered inline, not behind a
+          boundary — its data is the synchronous manifest. */}
+        <BlogTeaserBand locale={locale as Locale} />
 
         {/* Announcement Section */}
         <div className="pk-reveal">

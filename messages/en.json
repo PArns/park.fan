@@ -236,6 +236,9 @@
         "best": "Die ruhigsten Fenster liegen früh und in der letzten Stunde."
       }
     },
+    "blogTeaser": {
+      "label": "Neu im Blog"
+    },
     "nearby": {
       "kicker": "Schritt 1 in echt",
       "title": "Freizeitparks in deiner Nähe",
