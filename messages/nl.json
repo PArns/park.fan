@@ -221,18 +221,21 @@
       "one": {
         "title": "Park wählen",
         "text": "Tippe den Park oder die Attraktion ein, oder nimm den Vorschlag in deiner Nähe. Jeder Park hat seine eigene Seite mit Live-Wartezeiten, Öffnungszeiten und Kalender.",
+        "tip": "Die Suche findet nicht nur Parks. Wer weiß, dass er Taron fahren will, aber nicht, in welchem Park sie steht, tippt einfach den Namen der Attraktion ein. Shows und Restaurants stehen genauso drin.",
         "placeholder": "Park oder Attraktion",
         "label": "Park oder Attraktion suchen"
       },
       "two": {
         "title": "Tag prüfen",
         "text": "Der Crowd-Kalender bewertet jeden Tag bis zu 365 Tage im Voraus: grün heißt kurze Warteschlangen, rot heißt volle Gänge und lange Wege.",
+        "tip": "Zwei Tage nebeneinander sind oft zwei verschiedene Parks. Wenn der Termin frei wählbar ist, lohnt der Blick auf die Woche davor und danach, bevor du buchst.",
         "legendLow": "wenig Betrieb",
         "caption": "Ein Monat im Kalender: jede Kachel ein Tag, die Farbe der erwartete Andrang."
       },
       "three": {
         "title": "Route planen",
         "text": "Für jede Attraktion steht das beste Zeitfenster da, damit du beim Headliner nicht ausgerechnet in der Mittagsspitze anstehst.",
+        "tip": "„Früh kommen“ gilt nicht für jede Bahn. Manche laufen den ganzen Tag gleich voll, andere ziehen erst nach dem Mittag an. Auf der Seite der Attraktion steht ihre eigene Tageskurve.",
         "caption": "Typischer Tagesverlauf einer Achterbahn, von der Öffnung bis zum Abend.",
         "best": "Die ruhigsten Fenster liegen früh und in der letzten Stunde."
       }

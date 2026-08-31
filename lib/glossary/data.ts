@@ -3355,4 +3355,16 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'brogent',
     },
   },
+  {
+    id: 'headliner',
+    category: 'attractions',
+    slugs: {
+      en: 'headliner',
+      de: 'headliner',
+      fr: 'headliner',
+      it: 'headliner',
+      nl: 'headliner',
+      es: 'headliner',
+    },
+  },
 ];

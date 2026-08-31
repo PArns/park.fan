@@ -2886,8 +2886,7 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'quick-pass',
     name: 'QUICK Pass',
-    shortDefinition:
-      'Het betaalde voorrangsproduct van Phantasialand, per attractie gekocht.',
+    shortDefinition: 'Het betaalde voorrangsproduct van Phantasialand, per attractie gekocht.',
     definition:
       'De QUICK Pass is de betaalde manier om in Phantasialand de wachtrij voorbij te gaan. Anders dan in de meeste parken wordt hij niet per dag verkocht maar per attractie — voor banen als Taron, Black Mamba, Chiapas, Talocan en Maus au Chocolat.\n\nJe koopt hem in de app van het park of in het park zelf; de prijs per attractie ligt vast en beweegt niet mee met de drukte.\n\nDe pas verkort de wachttijd, hij heft hem niet op — ook bij de QUICK Pass-ingang staat een rij, alleen een veel kortere.',
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time', 'fastpass'],
@@ -2906,8 +2905,7 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'fast-lane',
     name: 'Fast Lane',
-    shortDefinition:
-      'De betaalde voorrangspas, meestal voor een hele bezoekdag gekocht.',
+    shortDefinition: 'De betaalde voorrangspas, meestal voor een hele bezoekdag gekocht.',
     definition:
       'Fast Lane heet het voorrangsproduct in veel parken van de Six Flags- en Walibi-familie, van Cedar Point tot Walibi Holland. Je koopt hem voor het bezoek en niet voor één rit: een polsbandje of digitaal ticket opent de hele dag de Fast Lane-ingang van de betrokken attracties.\n\nMeestal zijn er meerdere niveaus — bij Walibi Holland Gold (onbeperkt, circa 90 % minder wachttijd), Silver, Bronze en losse shots voor één of vier ritten. Welke banen meedoen bepaalt het park; halloweenhuizen vallen er vaak buiten.\n\nOmdat de prijs voor de dag geldt en niet per baan, toont park.fan bij die banen een vanaf-prijs.',
     relatedTermIds: ['express-pass', 'quick-pass', 'wait-time', 'single-rider'],
@@ -2916,8 +2914,7 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'speedy-pass',
     name: 'Speedy Pass',
-    shortDefinition:
-      'De betaalde virtuele wachtrij van Movie Park Germany.',
+    shortDefinition: 'De betaalde virtuele wachtrij van Movie Park Germany.',
     definition:
       'De Speedy Pass is het voorrangsproduct van Movie Park Germany. Hij werkt als virtuele wachtrij: je reserveert met je telefoon een rit in een van de betrokken attracties en gaat op de gereserveerde tijd via een eigen ingang naar binnen.\n\nEr zijn meerdere niveaus — van Speedy Pass One Ride voor één attractie tot Gold en Platinum, die vrijwel alles dekken. Hij geldt voor meer dan 25 attracties; enkele huizen en speciale attracties zijn uitgesloten.',
     relatedTermIds: ['virtual-queue', 'express-pass', 'quick-pass', 'wait-time'],
@@ -2926,8 +2923,7 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'fastrack',
     name: 'Fastrack',
-    shortDefinition:
-      'Het betaalde voorrangsticket in de Merlin-parken, zoals Alton Towers.',
+    shortDefinition: 'Het betaalde voorrangsticket in de Merlin-parken, zoals Alton Towers.',
     definition:
       'Fastrack is de naam waaronder de Britse Merlin-parken — Alton Towers, Thorpe Park, Chessington — hun toegang langs de wachtrij verkopen. Hij is er per rit of als pakket: Bronze voor een handvol gekozen banen, Silver voor één rit per betrokken attractie, Gold voor onbeperkt gebruik.\n\nFastrack is altijd een extra ticket: entree tot het park zit er niet bij.',
     relatedTermIds: ['express-pass', 'quick-pass', 'wait-time'],
@@ -2936,12 +2932,21 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'premier-access',
     name: 'Disney Premier Access',
-    shortDefinition:
-      'Disneys betaalde voorrang buiten de VS, per attractie te boeken.',
+    shortDefinition: 'Disneys betaalde voorrang buiten de VS, per attractie te boeken.',
     definition:
       'Disney Premier Access is wat in de Amerikaanse parken Lightning Lane heet: betaalde toegang langs de wachtrij, in Disneyland Paris en Tokyo Disney Resort.\n\nPremier Access One koop je per attractie, meestal op de dag zelf via de app, en de prijs hangt af van de datum en de attractie — bij nieuwe attracties duidelijk hoger. Premier Access Ultimate dekt elke deelnemende attractie één keer.\n\nOmdat de prijs elke dag opnieuw wordt bepaald, staat er op park.fan bij die banen geen vaste prijs.',
     relatedTermIds: ['lightning-lane', 'express-pass', 'virtual-queue', 'wait-time'],
     aliases: ['Premier Access'],
+  },
+  {
+    id: 'headliner',
+    name: 'Headliner',
+    shortDefinition:
+      'De attractie waarvoor je het park überhaupt uitkiest, meestal de nieuwste of grootste baan.',
+    definition:
+      "Een headliner is de attractie waarvoor een park op een reislijst belandt: de nieuwste achtbaan, de duurste dark ride, dat wat op de poster staat. Parken bouwen er ongeveer eens in de vijf tot tien jaar een, en in het openingsseizoen trekt hij een aanzienlijk deel van alle bezoekers naar zich toe.\n\nVoor het plannen van een dag is het de belangrijkste post. Een headliner verzamelt de langste rij van het park en houdt die vaak van opening tot avond vast, terwijl de rest van het terrein 's ochtends nog leeg is. Daarom staat hij vooraan in bijna elk advies: eerst de headliner, dan de rest. De uitzondering is een virtuele wachtrij, die hem toch al op een tijdslot vastzet.\n\npark.fan markeert headliners in de attractielijst van een park en zet ze hoger in de ranglijst op wachttijd. Of een baan er een is, is een gecureerd gegeven en geen afleiding uit de rij: een baan kan op één dag een lange rij hebben zonder dat iemand ervoor afreist.",
+    aliases: ['Hoofdattractie'],
+    relatedTermIds: ['wait-time', 'crowd-level', 'rope-drop', 'virtual-queue', 'peak-day'],
   },
 ];
 

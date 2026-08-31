@@ -2810,10 +2810,9 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'quick-pass',
     name: 'QUICK Pass',
-    shortDefinition:
-      'Le coupe-file payant de Phantasialand, acheté attraction par attraction.',
+    shortDefinition: 'Le coupe-file payant de Phantasialand, acheté attraction par attraction.',
     definition:
-      'Le QUICK Pass est l\'accès payant qui contourne la file d\'attente à Phantasialand. Contrairement à la plupart des parcs, il ne s\'achète pas à la journée mais par attraction — pour Taron, Black Mamba, Chiapas, Talocan ou Maus au Chocolat.\n\nIl s\'achète dans l\'application du parc ou sur place ; le prix par attraction est fixe et ne suit pas l\'affluence.\n\nLe pass raccourcit l\'attente, il ne la supprime pas — l\'entrée QUICK Pass a aussi sa file, simplement bien plus courte.',
+      "Le QUICK Pass est l'accès payant qui contourne la file d'attente à Phantasialand. Contrairement à la plupart des parcs, il ne s'achète pas à la journée mais par attraction — pour Taron, Black Mamba, Chiapas, Talocan ou Maus au Chocolat.\n\nIl s'achète dans l'application du parc ou sur place ; le prix par attraction est fixe et ne suit pas l'affluence.\n\nLe pass raccourcit l'attente, il ne la supprime pas — l'entrée QUICK Pass a aussi sa file, simplement bien plus courte.",
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time', 'fastpass'],
     aliases: ['Quick Pass', 'QuickPass'],
   },
@@ -2821,9 +2820,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'virtual-line',
     name: 'VirtualLine',
     shortDefinition:
-      'La file d\'attente virtuelle gratuite d\'Europa-Park, réservée dans l\'application du parc.',
+      "La file d'attente virtuelle gratuite d'Europa-Park, réservée dans l'application du parc.",
     definition:
-      'VirtualLine est le service de réservation gratuit d\'Europa-Park : dans l\'application Europa-Park & Rulantica, vous réservez un créneau pour une attraction sélectionnée et vous y entrez pendant ce créneau par une file raccourcie. En attendant, vous profitez des autres attractions, des spectacles ou d\'un repas.\n\nLe service couvre blue fire Megacoaster, Euro-Mir, Pirates in Batavia, Poseidon, Voletarium, Voltron Nevera powered by Rimac et WODAN — Timburcoaster. Le nombre de créneaux par jour est limité.\n\nIl est gratuit, et c\'est ce qui le distingue d\'un coupe-file payant : VirtualLine ne vend pas la priorité, il sort l\'attente de la file.',
+      "VirtualLine est le service de réservation gratuit d'Europa-Park : dans l'application Europa-Park & Rulantica, vous réservez un créneau pour une attraction sélectionnée et vous y entrez pendant ce créneau par une file raccourcie. En attendant, vous profitez des autres attractions, des spectacles ou d'un repas.\n\nLe service couvre blue fire Megacoaster, Euro-Mir, Pirates in Batavia, Poseidon, Voletarium, Voltron Nevera powered by Rimac et WODAN — Timburcoaster. Le nombre de créneaux par jour est limité.\n\nIl est gratuit, et c'est ce qui le distingue d'un coupe-file payant : VirtualLine ne vend pas la priorité, il sort l'attente de la file.",
     relatedTermIds: ['virtual-queue', 'return-time', 'boarding-group', 'wait-time'],
     aliases: ['Virtual Line'],
   },
@@ -2833,39 +2832,46 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Le coupe-file payant, acheté le plus souvent pour toute la journée de visite.',
     definition:
-      'Fast Lane est le nom du produit coupe-file dans de nombreux parcs des familles Six Flags et Walibi, de Cedar Point à Walibi Holland. Il s\'achète pour la visite et non pour un tour : un bracelet ou un billet numérique ouvre toute la journée l\'entrée Fast Lane des attractions concernées.\n\nIl existe généralement plusieurs niveaux — chez Walibi Holland, Gold (illimité, environ 90 % d\'attente en moins), Silver, Bronze, ainsi que des shots pour un ou quatre tours. Le parc décide des attractions incluses ; les maisons d\'Halloween en sont souvent exclues.\n\nComme le prix couvre la journée et non l\'attraction, park.fan affiche un prix « à partir de » sur ces attractions.',
+      "Fast Lane est le nom du produit coupe-file dans de nombreux parcs des familles Six Flags et Walibi, de Cedar Point à Walibi Holland. Il s'achète pour la visite et non pour un tour : un bracelet ou un billet numérique ouvre toute la journée l'entrée Fast Lane des attractions concernées.\n\nIl existe généralement plusieurs niveaux — chez Walibi Holland, Gold (illimité, environ 90 % d'attente en moins), Silver, Bronze, ainsi que des shots pour un ou quatre tours. Le parc décide des attractions incluses ; les maisons d'Halloween en sont souvent exclues.\n\nComme le prix couvre la journée et non l'attraction, park.fan affiche un prix « à partir de » sur ces attractions.",
     relatedTermIds: ['express-pass', 'quick-pass', 'wait-time', 'single-rider'],
     aliases: ['Fastlane'],
   },
   {
     id: 'speedy-pass',
     name: 'Speedy Pass',
-    shortDefinition:
-      'La file d\'attente virtuelle payante de Movie Park Germany.',
+    shortDefinition: "La file d'attente virtuelle payante de Movie Park Germany.",
     definition:
-      'Le Speedy Pass est le produit coupe-file de Movie Park Germany. Il fonctionne comme une file virtuelle : vous réservez un tour depuis votre téléphone sur l\'une des attractions concernées et vous entrez à l\'heure réservée par une entrée dédiée.\n\nIl existe en plusieurs niveaux — du Speedy Pass One Ride pour une seule attraction jusqu\'aux formules Gold et Platinum, qui couvrent presque tout. Il vaut pour plus de 25 attractions ; quelques maisons et attractions spéciales en sont exclues.',
+      "Le Speedy Pass est le produit coupe-file de Movie Park Germany. Il fonctionne comme une file virtuelle : vous réservez un tour depuis votre téléphone sur l'une des attractions concernées et vous entrez à l'heure réservée par une entrée dédiée.\n\nIl existe en plusieurs niveaux — du Speedy Pass One Ride pour une seule attraction jusqu'aux formules Gold et Platinum, qui couvrent presque tout. Il vaut pour plus de 25 attractions ; quelques maisons et attractions spéciales en sont exclues.",
     relatedTermIds: ['virtual-queue', 'express-pass', 'quick-pass', 'wait-time'],
     aliases: ['Speedypass'],
   },
   {
     id: 'fastrack',
     name: 'Fastrack',
-    shortDefinition:
-      'Le billet coupe-file payant des parcs Merlin, comme Alton Towers.',
+    shortDefinition: 'Le billet coupe-file payant des parcs Merlin, comme Alton Towers.',
     definition:
-      'Fastrack est le nom sous lequel les parcs britanniques du groupe Merlin — Alton Towers, Thorpe Park, Chessington — vendent leur accès en dehors de la file. Il existe à l\'unité pour une attraction ou en forfait : Bronze pour quelques attractions au choix, Silver pour un tour sur chaque attraction concernée, Gold pour un usage illimité.\n\nFastrack est toujours un billet supplémentaire : l\'entrée du parc n\'est pas comprise.',
+      "Fastrack est le nom sous lequel les parcs britanniques du groupe Merlin — Alton Towers, Thorpe Park, Chessington — vendent leur accès en dehors de la file. Il existe à l'unité pour une attraction ou en forfait : Bronze pour quelques attractions au choix, Silver pour un tour sur chaque attraction concernée, Gold pour un usage illimité.\n\nFastrack est toujours un billet supplémentaire : l'entrée du parc n'est pas comprise.",
     relatedTermIds: ['express-pass', 'quick-pass', 'wait-time'],
     aliases: ['Fast Track', 'Fasttrack'],
   },
   {
     id: 'premier-access',
     name: 'Disney Premier Access',
-    shortDefinition:
-      'Le coupe-file payant de Disney hors des États-Unis, réservé par attraction.',
+    shortDefinition: 'Le coupe-file payant de Disney hors des États-Unis, réservé par attraction.',
     definition:
-      'Disney Premier Access est l\'équivalent du Lightning Lane américain : l\'accès payant qui contourne la file, à Disneyland Paris et à Tokyo Disney Resort.\n\nPremier Access One s\'achète par attraction, en général le jour même via l\'application, et son prix dépend de la date et de l\'attraction — nettement plus élevé pour les nouveautés. Premier Access Ultimate couvre une fois chaque attraction participante.\n\nComme le prix est fixé chaque jour, park.fan n\'affiche pas de prix fixe sur ces attractions.',
+      "Disney Premier Access est l'équivalent du Lightning Lane américain : l'accès payant qui contourne la file, à Disneyland Paris et à Tokyo Disney Resort.\n\nPremier Access One s'achète par attraction, en général le jour même via l'application, et son prix dépend de la date et de l'attraction — nettement plus élevé pour les nouveautés. Premier Access Ultimate couvre une fois chaque attraction participante.\n\nComme le prix est fixé chaque jour, park.fan n'affiche pas de prix fixe sur ces attractions.",
     relatedTermIds: ['lightning-lane', 'express-pass', 'virtual-queue', 'wait-time'],
     aliases: ['Premier Access'],
+  },
+  {
+    id: 'headliner',
+    name: 'Headliner',
+    shortDefinition:
+      "L'attraction pour laquelle on choisit le parc, en général la plus récente ou la plus grande.",
+    definition:
+      "Un headliner est l'attraction qui fait entrer un parc dans une liste de voyage : le nouveau grand huit, le dark ride le plus coûteux, ce qui figure sur l'affiche. Les parcs en construisent un tous les cinq à dix ans environ, et lors de sa saison d'ouverture il attire une part considérable des visiteurs.\n\nPour organiser une journée, c'est le poste le plus important. Un headliner rassemble la plus longue file du parc et la garde souvent de l'ouverture jusqu'au soir, alors que le reste du site est encore vide le matin. D'où sa place en tête de presque toutes les recommandations : le headliner d'abord, le reste ensuite. L'exception est la file d'attente virtuelle, qui lui attribue de toute façon un créneau.\n\npark.fan signale les headliners dans la liste des attractions d'un parc et les remonte dans le classement par temps d'attente. Ce statut est renseigné manuellement et non déduit de la file : une attraction peut avoir une longue file un jour donné sans que personne ne fasse le voyage pour elle.",
+    aliases: ['Attraction phare'],
+    relatedTermIds: ['wait-time', 'crowd-level', 'rope-drop', 'virtual-queue', 'peak-day'],
   },
 ];
 

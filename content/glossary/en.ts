@@ -2745,27 +2745,25 @@ const translations: GlossaryTermTranslation[] = [
     id: 'quick-pass',
     name: 'QUICK Pass',
     shortDefinition:
-      'Phantasialand\'s paid queue-jump product, bought per attraction rather than per day.',
+      "Phantasialand's paid queue-jump product, bought per attraction rather than per day.",
     definition:
-      'The QUICK Pass is Phantasialand\'s paid way past the queue. Unlike most parks, it is not sold as a day product but per attraction — for rides such as Taron, Black Mamba, Chiapas, Talocan and Maus au Chocolat.\n\nIt is bought in the park\'s app or in the park itself, and the price per attraction is fixed — it does not move with the crowds.\n\nThe pass shortens the wait rather than removing it — the QUICK Pass entrance has a queue too, just a much shorter one.',
+      "The QUICK Pass is Phantasialand's paid way past the queue. Unlike most parks, it is not sold as a day product but per attraction — for rides such as Taron, Black Mamba, Chiapas, Talocan and Maus au Chocolat.\n\nIt is bought in the park's app or in the park itself, and the price per attraction is fixed — it does not move with the crowds.\n\nThe pass shortens the wait rather than removing it — the QUICK Pass entrance has a queue too, just a much shorter one.",
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time', 'fastpass'],
     aliases: ['Quick Pass', 'QuickPass'],
   },
   {
     id: 'virtual-line',
     name: 'VirtualLine',
-    shortDefinition:
-      'Europa-Park\'s free virtual queue, reserved in the park\'s own app.',
+    shortDefinition: "Europa-Park's free virtual queue, reserved in the park's own app.",
     definition:
-      'VirtualLine is Europa-Park\'s free reservation service: in the Europa-Park & Rulantica app you book a time slot for a selected attraction and enter through a shortened queue during that slot. Until then you are free to enjoy other attractions, shows or a meal.\n\nIt is offered for blue fire Megacoaster, Euro-Mir, Pirates in Batavia, Poseidon, Voletarium, Voltron Nevera powered by Rimac and WODAN — Timburcoaster. The number of slots per day is limited.\n\nIt costs nothing, and that is what separates it from a fast pass: VirtualLine does not sell priority, it moves the waiting out of the queue.',
+      "VirtualLine is Europa-Park's free reservation service: in the Europa-Park & Rulantica app you book a time slot for a selected attraction and enter through a shortened queue during that slot. Until then you are free to enjoy other attractions, shows or a meal.\n\nIt is offered for blue fire Megacoaster, Euro-Mir, Pirates in Batavia, Poseidon, Voletarium, Voltron Nevera powered by Rimac and WODAN — Timburcoaster. The number of slots per day is limited.\n\nIt costs nothing, and that is what separates it from a fast pass: VirtualLine does not sell priority, it moves the waiting out of the queue.",
     relatedTermIds: ['virtual-queue', 'return-time', 'boarding-group', 'wait-time'],
     aliases: ['Virtual Line'],
   },
   {
     id: 'fast-lane',
     name: 'Fast Lane',
-    shortDefinition:
-      'The paid front-of-line pass, usually bought for a whole day of the visit.',
+    shortDefinition: 'The paid front-of-line pass, usually bought for a whole day of the visit.',
     definition:
       'Fast Lane is what the queue-jump product is called across many Six Flags and Walibi parks, from Cedar Point to Walibi Holland. It is bought for the visit rather than for a single ride: a wristband or digital ticket opens the Fast Lane entrance of the included attractions all day.\n\nThere are usually tiers — at Walibi Holland, Gold (unlimited, around 90 % less waiting), Silver, Bronze, plus single shots for one or four rides. Which rides are included is up to the park; haunted houses are frequently excluded.\n\nBecause the price covers the day rather than the ride, park.fan shows a "from" price on those rides instead of a fixed one.',
     relatedTermIds: ['express-pass', 'quick-pass', 'wait-time', 'single-rider'],
@@ -2774,18 +2772,16 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'speedy-pass',
     name: 'Speedy Pass',
-    shortDefinition:
-      'Movie Park Germany\'s paid virtual queue service.',
+    shortDefinition: "Movie Park Germany's paid virtual queue service.",
     definition:
-      'The Speedy Pass is Movie Park Germany\'s queue-jump product. It works as a virtual queue: you reserve a ride on one of the included attractions from your phone and enter through a separate entrance at the reserved time.\n\nIt comes in tiers — from Speedy Pass One Ride for a single attraction up to Gold and Platinum, which cover nearly everything. It applies to more than 25 attractions; a few houses and special attractions are excluded.',
+      "The Speedy Pass is Movie Park Germany's queue-jump product. It works as a virtual queue: you reserve a ride on one of the included attractions from your phone and enter through a separate entrance at the reserved time.\n\nIt comes in tiers — from Speedy Pass One Ride for a single attraction up to Gold and Platinum, which cover nearly everything. It applies to more than 25 attractions; a few houses and special attractions are excluded.",
     relatedTermIds: ['virtual-queue', 'express-pass', 'quick-pass', 'wait-time'],
     aliases: ['Speedypass'],
   },
   {
     id: 'fastrack',
     name: 'Fastrack',
-    shortDefinition:
-      'The paid skip-the-line ticket at the Merlin parks, such as Alton Towers.',
+    shortDefinition: 'The paid skip-the-line ticket at the Merlin parks, such as Alton Towers.',
     definition:
       'Fastrack is the name the UK Merlin parks — Alton Towers, Thorpe Park, Chessington — use for their paid access past the queue. It is sold for a single ride or as a package: Bronze for a chosen handful of rides, Silver for one ride on every included attraction, Gold for unlimited use.\n\nFastrack is always an additional ticket: park admission is not included.',
     relatedTermIds: ['express-pass', 'quick-pass', 'wait-time'],
@@ -2794,12 +2790,21 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'premier-access',
     name: 'Disney Premier Access',
-    shortDefinition:
-      'Disney\'s paid skip-the-line outside the US, bought per attraction.',
+    shortDefinition: "Disney's paid skip-the-line outside the US, bought per attraction.",
     definition:
       'Disney Premier Access is what the US parks call Lightning Lane: paid access past the queue, at Disneyland Paris and Tokyo Disney Resort.\n\nPremier Access One is bought per attraction, usually on the day of the visit through the app, and the price depends on the date and the attraction — noticeably higher for new ones. Premier Access Ultimate covers every participating attraction once.\n\nBecause the price is set anew each day, park.fan carries no fixed price on those rides.',
     relatedTermIds: ['lightning-lane', 'express-pass', 'virtual-queue', 'wait-time'],
     aliases: ['Premier Access'],
+  },
+  {
+    id: 'headliner',
+    name: 'Headliner',
+    shortDefinition:
+      'The attraction people pick the park for in the first place, usually its newest or largest ride.',
+    definition:
+      "A headliner is the attraction a park goes on a travel list for: the newest coaster, the most expensive dark ride, whatever is on the poster. Parks build one roughly every five to ten years, and in its opening season it pulls a substantial share of everyone who comes through the gate.\n\nFor planning a day it is the single biggest item. A headliner collects the park's longest queue and often holds it from opening until evening, while the rest of the place is still empty in the morning. That is why it sits at the top of almost every recommendation: the headliner first, then everything else. The exception is a virtual queue, which pins it to a time slot anyway.\n\npark.fan marks headliners in a park's attraction list and lifts them in the wait-time ranking. Whether a ride counts as one is curated rather than derived from its queue: a ride can have a long line on a given day without anybody travelling for it.",
+    aliases: ['Headliner attraction', 'Marquee attraction'],
+    relatedTermIds: ['wait-time', 'crowd-level', 'rope-drop', 'virtual-queue', 'peak-day'],
   },
 ];
 

@@ -2957,8 +2957,7 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'speedy-pass',
     name: 'Speedy Pass',
-    shortDefinition:
-      'La cola virtual de pago de Movie Park Germany.',
+    shortDefinition: 'La cola virtual de pago de Movie Park Germany.',
     definition:
       'El Speedy Pass es el producto para saltarse la cola de Movie Park Germany. Funciona como una cola virtual: reservas desde el móvil una vuelta en una de las atracciones incluidas y entras a la hora reservada por una entrada propia.\n\nExiste en varios niveles — desde el Speedy Pass One Ride para una sola atracción hasta Gold y Platinum, que cubren casi todo. Vale para más de 25 atracciones; algunas casas y atracciones especiales quedan excluidas.',
     relatedTermIds: ['virtual-queue', 'express-pass', 'quick-pass', 'wait-time'],
@@ -2983,6 +2982,16 @@ const translations: GlossaryTermTranslation[] = [
       'Disney Premier Access es lo que en los parques estadounidenses se llama Lightning Lane: el acceso de pago que evita la cola, en Disneyland Paris y Tokyo Disney Resort.\n\nPremier Access One se compra por atracción, normalmente el mismo día a través de la app, y el precio depende de la fecha y de la atracción — bastante más alto en las novedades. Premier Access Ultimate cubre una vez cada atracción participante.\n\nComo el precio se fija cada día, park.fan no muestra un precio fijo en esas atracciones.',
     relatedTermIds: ['lightning-lane', 'express-pass', 'virtual-queue', 'wait-time'],
     aliases: ['Premier Access'],
+  },
+  {
+    id: 'headliner',
+    name: 'Headliner',
+    shortDefinition:
+      'La atracción por la que se elige el parque, normalmente la más nueva o la más grande.',
+    definition:
+      'Un headliner es la atracción por la que un parque entra en una lista de viaje: la montaña rusa recién abierta, el dark ride más caro, lo que aparece en el cartel. Los parques construyen uno cada cinco o diez años aproximadamente, y en su temporada de estreno atrae a una parte considerable de todos los visitantes.\n\nPara planificar un día es la partida más importante. Un headliner reúne la cola más larga del parque y a menudo la mantiene desde la apertura hasta la tarde, mientras el resto del recinto por la mañana todavía está vacío. Por eso encabeza casi cualquier recomendación: primero el headliner, después todo lo demás. La excepción es una cola virtual, que de todos modos lo fija a una hora.\n\npark.fan marca los headliners en la lista de atracciones de un parque y los sube en la clasificación por tiempo de espera. Que una atracción lo sea es un dato curado y no una deducción a partir de la cola: una atracción puede tener mucha cola un día concreto sin que nadie viaje por ella.',
+    aliases: ['Atracción principal'],
+    relatedTermIds: ['wait-time', 'crowd-level', 'rope-drop', 'virtual-queue', 'peak-day'],
   },
 ];
 

@@ -2942,8 +2942,7 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'speedy-pass',
     name: 'Speedy Pass',
-    shortDefinition:
-      'Der kostenpflichtige virtuelle Warteschlangendienst im Movie Park Germany.',
+    shortDefinition: 'Der kostenpflichtige virtuelle Warteschlangendienst im Movie Park Germany.',
     definition:
       'Der Speedy Pass ist das Warteschlangen-Produkt des Movie Park Germany. Er funktioniert als virtuelle Warteschlange: Über das Smartphone reservierst du eine Fahrt an einer der einbezogenen Attraktionen und betrittst sie zur reservierten Zeit über einen eigenen Eingang.\n\nEs gibt ihn in mehreren Stufen — von Speedy Pass One Ride für eine einzelne Attraktion bis zu Gold und Platinum, die nahezu alle Attraktionen abdecken. Er gilt für über 25 Attraktionen; einzelne Häuser und Sonderattraktionen sind ausgenommen.',
     relatedTermIds: ['virtual-queue', 'express-pass', 'quick-pass', 'wait-time'],
@@ -2968,6 +2967,16 @@ const translations: GlossaryTermTranslation[] = [
       'Disney Premier Access ist das, was in den US-Parks Lightning Lane heißt: der kostenpflichtige Zugang an der Warteschlange vorbei, im Disneyland Paris und in Tokyo Disney Resort.\n\nPremier Access One wird pro Attraktion gekauft, in der Regel am Besuchstag über die App, und der Preis hängt vom Datum und von der Attraktion ab — bei neuen Attraktionen liegt er deutlich höher. Premier Access Ultimate deckt alle teilnehmenden Attraktionen je einmal ab.\n\nWeil der Preis täglich neu gesetzt wird, steht auf park.fan an diesen Bahnen kein fester Preis.',
     relatedTermIds: ['lightning-lane', 'express-pass', 'virtual-queue', 'wait-time'],
     aliases: ['Premier Access'],
+  },
+  {
+    id: 'headliner',
+    name: 'Headliner',
+    shortDefinition:
+      'Die Attraktion, für die Leute den Park überhaupt erst ansteuern, meist die neueste oder größte Bahn.',
+    definition:
+      'Ein Headliner ist die Attraktion, wegen der ein Park auf der Reiseliste steht: die neueste Achterbahn, der teuerste Dark Ride, das, was auf dem Plakat abgebildet ist. Parks bauen ungefähr alle fünf bis zehn Jahre einen, und im Eröffnungsjahr zieht er einen erheblichen Teil aller Besucher an sich.\n\nFür die Planung eines Tages ist er der wichtigste Einzelposten. Ein Headliner sammelt die längste Schlange des Parks und behält sie oft von der Öffnung bis zum Abend, während der Rest des Geländes am Vormittag noch leer ist. Deshalb steht er auf fast jeder Empfehlungsliste ganz vorn: erst der Headliner, dann alles andere. Die Ausnahme ist eine virtuelle Warteschlange, die ihn ohnehin auf eine Uhrzeit legt.\n\npark.fan markiert Headliner in der Attraktionsliste eines Parks und zieht sie in der Rangliste nach Wartezeit nach oben. Ob eine Bahn als Headliner gilt, ist eine kuratierte Angabe und keine Ableitung aus der Wartezeit: eine Bahn kann an einem einzelnen Tag lange Schlangen haben, ohne dass jemand ihretwegen anreist.',
+    aliases: ['Headliner-Attraktion', 'Hauptattraktion'],
+    relatedTermIds: ['wait-time', 'crowd-level', 'rope-drop', 'virtual-queue', 'peak-day'],
   },
 ];
 

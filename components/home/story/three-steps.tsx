@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
-import { CalendarRange, Check, Compass, Sunrise } from 'lucide-react';
+import { CalendarRange, Check, Compass, Lightbulb, Sunrise } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
+import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { Reveal } from '@/components/marketing/scroll-reveal';
 import { HeroInlineSearch } from '@/components/search/hero-inline-search';
 import { CROWD_DOT_CLASS, CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
@@ -33,11 +34,14 @@ function StepCard({
   step,
   title,
   text,
+  tip,
   children,
 }: {
   step: number;
   title: string;
   text: string;
+  /** The thing a first visitor gets wrong at this step. */
+  tip: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
@@ -49,7 +53,11 @@ function StepCard({
           </span>
           <h3 className="text-lg font-semibold">{title}</h3>
         </div>
-        <p className="text-muted-foreground mb-5 text-sm leading-relaxed">{text}</p>
+        <p className="text-muted-foreground text-sm leading-relaxed">{text}</p>
+        <div className="border-border/60 mt-4 mb-5 flex gap-2.5 rounded-xl border border-dashed p-3">
+          <Lightbulb className="text-primary/70 mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+          <p className="text-muted-foreground text-[12px] leading-relaxed">{tip}</p>
+        </div>
       </div>
       <div className="border-border bg-muted/25 mt-auto rounded-b-2xl border-t p-4">{children}</div>
     </div>
@@ -72,8 +80,8 @@ export async function ThreeSteps() {
             variant="tile"
             icon={Compass}
             kicker={t('kicker')}
-            title={t('title')}
-            hint={t('lead')}
+            title={<GlossaryInject noUnderline>{t('title')}</GlossaryInject>}
+            hint={<GlossaryInject>{t('lead')}</GlossaryInject>}
             id="so-funktionierts"
           />
         </Reveal>
@@ -89,7 +97,12 @@ export async function ThreeSteps() {
               context and the `z-40` inside the dropdown cannot lift it over the
               cards that come after it in source order. */}
           <Reveal className="relative z-10">
-            <StepCard step={1} title={t('one.title')} text={t('one.text')}>
+            <StepCard
+              step={1}
+              title={t('one.title')}
+              text={t('one.text')}
+              tip={<GlossaryInject>{t('one.tip')}</GlossaryInject>}
+            >
               <HeroInlineSearch
                 placeholder={t('one.placeholder')}
                 label={t('one.label')}
@@ -100,7 +113,12 @@ export async function ThreeSteps() {
 
           {/* 2 — check the day. */}
           <Reveal delay={80}>
-            <StepCard step={2} title={t('two.title')} text={t('two.text')}>
+            <StepCard
+              step={2}
+              title={t('two.title')}
+              text={t('two.text')}
+              tip={<GlossaryInject>{t('two.tip')}</GlossaryInject>}
+            >
               <div className="grid grid-cols-7 gap-1.5" aria-hidden="true">
                 {MONTH_SHAPE.map((level, i) => (
                   <span
@@ -126,7 +144,12 @@ export async function ThreeSteps() {
 
           {/* 3 — plan the route. */}
           <Reveal delay={160}>
-            <StepCard step={3} title={t('three.title')} text={t('three.text')}>
+            <StepCard
+              step={3}
+              title={t('three.title')}
+              text={t('three.text')}
+              tip={<GlossaryInject>{t('three.tip')}</GlossaryInject>}
+            >
               <div className="flex h-[74px] items-end gap-[3px]" aria-hidden="true">
                 {DAY_SHAPE.map((h, i) => (
                   <span
