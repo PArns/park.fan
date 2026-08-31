@@ -56,7 +56,7 @@
     "reservation": "Réservation requise",
     "trend": "Tendance",
     "in": "dans",
-    "vsTypical": "vs Habituel",
+    "vsTypical": "vs habituel",
     "much_higher": "Beaucoup plus élevé",
     "higher": "Plus élevé",
     "lower": "Plus bas",
@@ -68,13 +68,13 @@
     "decreasing": "Diminue",
     "stable": "Stable",
     "crowd": {
-      "very_low": "Très Faible",
+      "very_low": "Très faible",
       "low": "Faible",
       "normal": "Normale",
       "moderate": "Normal",
-      "higher": "Plus Élevée",
+      "higher": "Plus élevée",
       "high": "Élevée",
-      "very_high": "Très Élevée",
+      "very_high": "Très élevée",
       "extreme": "Extrême",
       "full": "Complet",
       "closed": "Fermé"
@@ -115,7 +115,7 @@
     "intro": "park.fan affiche les temps d'attente en direct et l'affluence pour plus de 200 parcs d'attractions et 7 000+ attractions dans le monde—dont Disney, Universal Studios, Europa-Park et Phantasialand. Planifiez votre visite avec les files en direct, horaires et prédictions IA.",
     "hero": {
       "badge": "Prédictions par IA",
-      "cta": "Explorer les Parcs",
+      "cta": "Explorer les parcs",
       "searchPlaceholder": "Rechercher parcs, attractions, spectacles & restaurants...",
       "title": "Où l'attente en vaut-elle la peine aujourd'hui ?",
       "intro": "park.fan suit en direct <strong>{parks, number} parcs d'attractions</strong> et <strong>{attractions, number} attractions</strong>, de Disneyland Paris et Europa-Park au Magic Kingdom. Cherchez votre parc, ou explorez le monde depuis la carte.",
@@ -123,7 +123,7 @@
       "searchExamples": "Disneyland Paris, Taron, Efteling …"
     },
     "sections": {
-      "explore": "Explorer par Région",
+      "explore": "Explorer par région",
       "plan": "Planifier votre visite",
       "liveNow": "Parcs ouverts dans le monde",
       "liveNowIntro": "Nombre de parcs à thème ouverts par continent en temps réel.",
@@ -133,7 +133,7 @@
     },
     "features": {
       "realtime": {
-        "title": "Temps d'Attente en Temps Réel",
+        "title": "Temps d'attente en temps réel",
         "description": "Temps d'attente mis à jour chaque minute pour les parcs du monde entier."
       },
       "ml": {
@@ -141,23 +141,23 @@
         "description": "Prédictions intelligentes de l'affluence et des temps d'attente grâce à l'IA avancée."
       },
       "calendar": {
-        "title": "Planification & Navigation",
+        "title": "Planification & navigation",
         "description": "Trouvez les meilleurs jours avec notre calendrier d'affluence et naviguez dans le parc."
       }
     },
     "ai": {
       "title": "Prédictions IA — Quelle Est Notre Précision ?",
       "subtitle": "park.fan utilise son propre modèle d'IA entraîné sur des millions de données de files d'attente réelles pour prévoir les niveaux d'affluence et les temps d'attente dans les parcs à thème du monde entier. Le modèle tient compte des prévisions météo, des calendriers de vacances scolaires et des événements connus — et se réentraîne automatiquement dès que de nouvelles données arrivent.",
-      "avgError": "Erreur Moyenne",
+      "avgError": "Erreur moyenne",
       "avgErrorDesc": "MAE — de combien de minutes nos prédictions se trompent en moyenne",
       "rmseDesc": "RMSE — l'impact des plus grandes erreurs sur la note globale",
       "mapeDesc": "MAPE — écart en pourcentage par rapport au temps d'attente réel",
-      "totalPredictions": "Prédictions Effectuées",
+      "totalPredictions": "Prédictions effectuées",
       "totalPredictionsDesc": "vérifiées par rapport aux données de files d'attente réelles",
-      "coverage": "Couverture Vérifiée",
+      "coverage": "Couverture vérifiée",
       "coverageDesc": "de toutes les prédictions croisées avec les données réelles",
       "parksCoverage": "Couverture",
-      "r2Score": "Ajustement Modèle",
+      "r2Score": "Ajustement modèle",
       "r2ScoreDesc": "R² — dans quelle mesure le modèle explique la variance des temps d'attente",
       "modelAge": "Modèle entraîné il y a {days} jours · réentraîné automatiquement sur de nouvelles données",
       "modelAgeHours": "Modèle entraîné il y a {time} heures · réentraîné automatiquement sur de nouvelles données",
@@ -168,17 +168,17 @@
       "nextTrainingIn": "Prochain entraînement dans",
       "dailySchedule": "Quotidien · 06:00 UTC",
       "dailyScheduleLocal": "Quotidien · 06:00 UTC · {time} heure locale",
-      "howTitle": "Comment Les Prédictions Sont Calculées",
+      "howTitle": "Comment les prédictions sont calculées",
       "howText": "Chaque prévision de temps d'attente repose sur trois couches de données : des historiques de files d'attente collectés dans les parcs sur plusieurs années, des signaux externes comme les prévisions météo et les calendriers de vacances scolaires, et des facteurs contextuels tels que les événements spéciaux et les tendances saisonnières. Le modèle génère à la fois des prévisions horaires pour chaque attraction et des niveaux d'affluence journaliers — disponibles jusqu'à 365 jours à l'avance.",
       "fancastLink": "Comment fonctionne Fancast, notre modèle de prévision",
-      "improvingTitle": "En Développement Actif — Meilleur Chaque Jour",
+      "improvingTitle": "En développement actif — meilleur chaque jour",
       "improvingText": "park.fan est une plateforme vivante, encore en développement actif. Chaque jour, le système compare automatiquement ses prédictions passées aux temps d'attente réellement enregistrés dans les parcs, et réintègre ces comparaisons dans le prochain cycle d'entraînement. Les métriques de précision présentées ci-dessus reflètent ces performances réelles — pas des benchmarks synthétiques. De nouveaux parcs et attractions sont ajoutés régulièrement, et le modèle gagne en précision à mesure que les données vérifiées s'accumulent.",
       "badge": {
-        "excellent": "Excellente Précision",
-        "good": "Bonne Précision",
-        "fair": "Précision Correcte",
-        "poor": "En Dessous de l'Objectif",
-        "insufficient_data": "Collecte de Données"
+        "excellent": "Excellente précision",
+        "good": "Bonne précision",
+        "fair": "Précision correcte",
+        "poor": "En dessous de l'objectif",
+        "insufficient_data": "Collecte de données"
       },
       "badgeDesc": {
         "excellent": "Les prédictions sont très précises",
@@ -451,11 +451,11 @@
     "description": "Temps d'attente en direct et prédictions d'affluence pour 200+ parcs d'attractions. Planifiez votre visite parfaite avec des données en temps réel et la navigation.",
     "keywords": "temps d'attente parc attraction, temps d'attente en direct, temps d'attente aujourd'hui, calendrier d'affluence, prévision IA, file d'attente, prévisions affluence, horaires ouverture, parc d'attractions, montagnes russes, Disney temps d'attente, Universal Studios, Europa-Park, Phantasialand, meilleur moment visite",
     "sections": {
-      "explore": "Parcs Internationaux",
-      "popularParks": "Parcs Populaires",
+      "explore": "Parcs internationaux",
+      "popularParks": "Parcs populaires",
       "germany": "Allemagne",
       "usa": "États-Unis",
-      "resources": "Développeurs & Outils",
+      "resources": "Développeurs & outils",
       "legal": "Légal"
     },
     "regions": {
@@ -464,7 +464,7 @@
       "asia": "Parcs en Asie"
     },
     "api": "Documentation API",
-    "impressum": "Mentions Légales",
+    "impressum": "Mentions légales",
     "howto": "Comprendre les temps d’attente",
     "fancast": "Fancast",
     "bestTime": "Meilleure période",
@@ -472,9 +472,9 @@
     "blog": "Blog",
     "feed": "Flux RSS",
     "datenschutz": "Confidentialité",
-    "privacy": "Politique de Confidentialité",
-    "terms": "Conditions d'Utilisation",
-    "contact": "Contact & Support",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation",
+    "contact": "Contact & support",
     "preferredSource": {
       "label": "Trouver park.fan plus vite sur Google",
       "aria": "Trouver park.fan plus vite sur Google (ouvre dans un nouvel onglet)",
@@ -513,10 +513,10 @@
   },
   "navigation": {
     "home": "Accueil",
-    "parks": "Tous les Parcs",
+    "parks": "Tous les parcs",
     "continents": "Continents",
-    "explore": "Explorer les Parcs",
-    "search": "Recherche Parcs & Attractions",
+    "explore": "Explorer les parcs",
+    "search": "Recherche parcs & attractions",
     "admin": "Admin",
     "nearbyPark": "À proximité : {parkName}",
     "howto": "Comment ça marche",
@@ -550,36 +550,36 @@
     "heroParkLink": "Voir le parc",
     "operating": "Ouvert",
     "closed": "Fermé",
-    "crowdLevel": "Niveau d'Affluence",
+    "crowdLevel": "Niveau d'affluence",
     "crowdLevels": {
-      "very_low": "Très Faible",
+      "very_low": "Très faible",
       "low": "Faible",
       "normal": "Normale",
       "moderate": "Normal",
-      "higher": "Plus Élevée",
+      "higher": "Plus élevée",
       "high": "Élevée",
-      "very_high": "Très Élevée",
+      "very_high": "Très élevée",
       "extreme": "Extrême",
       "full": "Complet",
       "unknown": "Pas de prévision",
       "closed": "Fermé"
     },
     "avgWaitTime": "Attente Moy.",
-    "openAttractions": "Attractions Ouvertes",
-    "closedAttractions": "Attractions Fermées",
+    "openAttractions": "Attractions ouvertes",
+    "closedAttractions": "Attractions fermées",
     "schedule": "Horaires",
     "weatherLabel": "Météo",
     "forecast": "Prévisions",
     "attractions": "Attractions",
     "shows": "Spectacles",
-    "predictions": "Prévisions d'Attente",
+    "predictions": "Prévisions d'attente",
     "purchases": {
       "title": "Prix des accès coupe-file",
       "forDate": "pour le {date}",
       "soldOut": "Épuisé"
     },
     "nextPredicted": "Suivant: {time} min prévu",
-    "otherAttractions": "Autres Attractions",
+    "otherAttractions": "Autres attractions",
     "headlinersSection": "Phares du parc",
     "severeWeatherWarning": "Alerte météo",
     "weatherAndHourly": "Météo & heure par heure",
@@ -614,10 +614,10 @@
       "dataAsOf": "Données au {time} – les valeurs en direct s'actualisent toutes les quelques minutes après le chargement de la page."
     },
     "restaurants": "Restaurants",
-    "viewPark": "Voir le Parc",
-    "planYourVisit": "Planifier votre Visite",
-    "bestDaysToVisit": "Meilleurs Jours",
-    "daysToAvoid": "Jours à Éviter",
+    "viewPark": "Voir le parc",
+    "planYourVisit": "Planifier votre visite",
+    "bestDaysToVisit": "Meilleurs jours",
+    "daysToAvoid": "Jours à éviter",
     "searchAttractions": "Filtrer attractions...",
     "noAttractionsFound": "Aucune attraction trouvée",
     "clearSearch": "Effacer recherche",
@@ -630,59 +630,59 @@
     "offSeasonCount": "{count} hors saison",
     "mapMarkers": {
       "noMapData": "Aucune donnée de carte disponible pour ce parc.",
-      "parkCenter": "Centre du Parc",
+      "parkCenter": "Centre du parc",
       "status": "Statut",
       "waitTime": "Attente",
       "crowdLevel": "Affluence",
       "show": "Spectacle",
-      "nextShowtime": "Prochain Spectacle",
+      "nextShowtime": "Prochain spectacle",
       "restaurant": "Restaurant",
       "cuisine": "Cuisine",
-      "yourLocation": "Votre Position",
+      "yourLocation": "Votre position",
       "inPark": "Vous êtes dans le parc",
       "distanceToPark": "Distance au parc",
       "nearest": "À proximité",
       "away": "d'ici"
     },
-    "todaySchedule": "Programme du Jour",
-    "currentTime": "Heure Actuelle",
+    "todaySchedule": "Programme du jour",
+    "currentTime": "Heure actuelle",
     "timezone": "Fuseau horaire",
-    "openingHours": "Heures d'Ouverture",
+    "openingHours": "Heures d'ouverture",
     "opensOn": "Ouvre le",
-    "offseason": "Hors Saison",
+    "offseason": "Hors saison",
     "opensIn": "Ouvre dans",
     "closesIn": "Ferme dans",
     "nextShowIn": "Prochain show dans",
     "showStartingSoon": "Commence bientôt",
     "occupancy": "Occupation",
-    "peakHour": "Heure de Pointe",
-    "parkPeak": "Pic du Parc",
+    "peakHour": "Heure de pointe",
+    "parkPeak": "Pic du parc",
     "peak": "Pic",
     "open": "ouvert",
     "calendar": "Calendrier",
     "tileCalendarLabel": "Calendrier des temps d’attente",
-    "crowdCalendar": "Calendrier d'Affluence et Meilleurs Jours",
+    "crowdCalendar": "Calendrier d'affluence et meilleurs jours",
     "map": "Carte",
     "calendarLegend": "Légende",
     "calendarLegendGroups": {
       "crowd": "Affluence",
       "signals": "Signaux"
     },
-    "eventTypesLabel": "Types d'Événements",
-    "crowdLevelsLabel": "Niveaux d'Affluence",
+    "eventTypesLabel": "Types d'événements",
+    "crowdLevelsLabel": "Niveaux d'affluence",
     "crowdLevelsNote": "(Voir ci-dessous)",
-    "specialDaysLabel": "Jours Spéciaux",
-    "schoolVacation": "Vacances Scolaires",
+    "specialDaysLabel": "Jours spéciaux",
+    "schoolVacation": "Vacances scolaires",
     "bestDay": "Recommandé",
     "bridgeDay": "Pont",
-    "holiday": "Jours Fériés",
+    "holiday": "Jours fériés",
     "eventTypes": {
       "schedule": "Horaires",
       "weather": "Météo",
-      "holiday": "Jours Fériés",
-      "crowd": "Prévisions Affluence",
+      "holiday": "Jours fériés",
+      "crowd": "Prévisions affluence",
       "recommendation": "Recommandation",
-      "specialEvent": "Événement Spécial",
+      "specialEvent": "Événement spécial",
       "show": "Spectacle"
     },
     "calendarView": {
@@ -695,38 +695,38 @@
       "today": "Aujourd'hui",
       "details": {
         "schedule": {
-          "title": "Horaires du Parc",
-          "closed": "Parc Fermé",
+          "title": "Horaires du parc",
+          "closed": "Parc fermé",
           "scheduleNotYetAvailable": "Horaires pas encore disponibles",
           "noOfficialScheduleDisclaimer": "Ce parc ne fournit pas d'horaires officiels. Les horaires affichés sont des estimations basées sur l'activité réelle.",
           "estimatedHours": "Horaires reconstitués",
           "tba": "À venir",
           "open": "Ouvert",
-          "openingHours": "Heures d'Ouverture",
+          "openingHours": "Heures d'ouverture",
           "ticketPrice": "Prix du Billet: {price}",
           "holiday": "Jour Férié: {name}",
-          "bridgeDay": "Pont Probable"
+          "bridgeDay": "Pont probable"
         },
         "weather": {
           "title": "Météo",
           "temp": "Température",
-          "rainChance": "Risque de Pluie"
+          "rainChance": "Risque de pluie"
         },
         "crowd": {
-          "title": "Prévision Affluence",
+          "title": "Prévision affluence",
           "level": "Niveau",
           "score": "Score",
           "confidence": "Confiance IA"
         },
         "show": {
-          "title": "Horaire Spectacle",
+          "title": "Horaire spectacle",
           "startsAt": "Commence à",
           "duration": "Durée"
         },
         "holiday": {
-          "title": "Jour Férié",
-          "nationwide": "Férié National",
-          "regional": "Férié Régional"
+          "title": "Jour férié",
+          "nationwide": "Férié national",
+          "regional": "Férié régional"
         },
         "recommendation": {
           "title": "Recommandation"
@@ -1034,9 +1034,9 @@
     "waitTime": "Attente",
     "status": {
       "operating": "Ouvert",
-      "down": "Panne Temporaire",
+      "down": "Panne temporaire",
       "closed": "Fermé",
-      "refurbishment": "En Rénovation",
+      "refurbishment": "En rénovation",
       "unknown": "Inconnu"
     },
     "label": {
@@ -1045,10 +1045,10 @@
       "CLOSED": "Fermé",
       "REFURBISHMENT": "Rénov"
     },
-    "predictions": "Prédictions d'Attente",
-    "todaySchedule": "Horaires Aujourd'hui",
-    "history": "Historique d'Attente",
-    "historyCalendar": "Historique d'Attente",
+    "predictions": "Prédictions d'attente",
+    "todaySchedule": "Horaires aujourd'hui",
+    "history": "Historique d'attente",
+    "historyCalendar": "Historique d'attente",
     "noHistoryData": "Pas de données historiques pour cette attraction.",
     "historyLegend": {
       "title": "Légende",
@@ -1060,22 +1060,22 @@
     },
     "statistics": "Statistiques",
     "noWaitTime": "Pas de données d'attente",
-    "predictionAccuracy": "Précision Prédiction",
+    "predictionAccuracy": "Précision prédiction",
     "accuracy": {
       "poor": "Faible",
       "fair": "Moyenne",
       "good": "Bonne",
       "excellent": "Excellente",
-      "insufficient_data": "Données Insuffisantes"
+      "insufficient_data": "Données insuffisantes"
     },
-    "otherQueues": "Autres Options de File",
+    "otherQueues": "Autres options de file",
     "returnTime": "Retour",
     "peak": "Pic Aujourd'hui: {time} min",
     "bestVisit": "Meilleur: {time}",
-    "bestVisitNow": "Meilleur moment : Maintenant",
+    "bestVisitNow": "Meilleur moment : maintenant",
     "bestVisitInMin": "Meilleur: {time} (dans {minutes} min)",
     "bestVisitGood": "Bon moment: {time}",
-    "bestVisitGoodNow": "Bon moment : Maintenant",
+    "bestVisitGoodNow": "Bon moment : maintenant",
     "bestVisitGoodInMin": "Bon moment: {time} (dans {minutes} min)",
     "now": "Maintenant",
     "cardHigh": "Max : {time} min",
@@ -1085,11 +1085,11 @@
     "cardBestTimeInMinutesOnly": "Meilleur moment : <time></time> (dans {minutes} min)",
     "return": "Retour: {start} - {end}",
     "crowdLevels": {
-      "very_low": "Très Faible",
+      "very_low": "Très faible",
       "low": "Faible",
       "moderate": "Normal",
       "high": "Élevée",
-      "very_high": "Très Élevée",
+      "very_high": "Très élevée",
       "extreme": "Extrême",
       "closed": "Fermé"
     },
@@ -1099,16 +1099,16 @@
       "previous": "Précédent",
       "today": "Aujourd'hui"
     },
-    "rideClosed": "Attraction Fermée",
-    "parkClosed": "Parc Fermé",
+    "rideClosed": "Attraction fermée",
+    "parkClosed": "Parc fermé",
     "notYetOpen": "Pas encore ouvert",
     "queue": {
       "SINGLE_RIDER": "Single Rider",
       "PREMIER_ACCESS": "Premier Access",
-      "RETURN_TIME": "Horaire de Retour",
-      "PAID_RETURN_TIME": "Créneau Payant",
-      "PAID_STANDBY": "File Payante",
-      "BOARDING_GROUP": "File Virtuelle",
+      "RETURN_TIME": "Horaire de retour",
+      "PAID_RETURN_TIME": "Créneau payant",
+      "PAID_STANDBY": "File payante",
+      "BOARDING_GROUP": "File virtuelle",
       "STANDBY": "Standard",
       "status": {
         "OPEN": "Ouvert",
@@ -1123,15 +1123,15 @@
         "singleRider": "Single Rider: {time} min",
         "singleRiderNoTime": "Single Rider",
         "lightningLane": "Lightning Lane: {price}",
-        "lightningLaneNoPrice": "Lightning Lane: Disponible",
+        "lightningLaneNoPrice": "Lightning Lane: disponible",
         "express": "Express: {price}",
-        "expressNoPrice": "Express: Disponible",
-        "virtualQueue": "File Virtuelle",
-        "virtualQueueFull": "File Virtuelle Complète",
+        "expressNoPrice": "Express: disponible",
+        "virtualQueue": "File virtuelle",
+        "virtualQueueFull": "File virtuelle complète",
         "boardingGroups": "Groupes: {start}-{end}",
-        "boardingGroupsAvailable": "Groupes Disponibles",
-        "boardingGroupsDistributed": "Groupes Distribués",
-        "boardingGroupsPaused": "Groupes Suspendus",
+        "boardingGroupsAvailable": "Groupes disponibles",
+        "boardingGroupsDistributed": "Groupes distribués",
+        "boardingGroupsPaused": "Groupes suspendus",
         "return": "Retour: {start} - {end}",
         "returnNoEnd": "Retour: {start}"
       }
@@ -1300,18 +1300,18 @@
     "exploreByRegion": "Explorer par Région"
   },
   "stats": {
-    "globalStats": "Statistiques Mondiales",
+    "globalStats": "Statistiques mondiales",
     "globalStatsIntro": "Données en direct des parcs d'attractions et attractions dans le monde.",
-    "openParks": "Parcs Ouverts",
-    "totalAttractions": "Total Attractions",
-    "mostCrowded": "Le Plus Fréquenté",
-    "leastCrowded": "Le Moins Fréquenté",
-    "longestWait": "Attente la Plus Longue",
-    "shortestWait": "Attente la Plus Courte",
-    "platformStats": "Statistiques Plateforme",
+    "openParks": "Parcs ouverts",
+    "totalAttractions": "Total attractions",
+    "mostCrowded": "Le plus fréquenté",
+    "leastCrowded": "Le moins fréquenté",
+    "longestWait": "Attente la plus longue",
+    "shortestWait": "Attente la plus courte",
+    "platformStats": "Statistiques plateforme",
     "platformStatsDescription": "Aperçu des données en temps réel sur la plateforme",
-    "totalWaitTime": "Temps d'Attente Total",
-    "dataPoints": "Points de Données",
+    "totalWaitTime": "Temps d'attente total",
+    "dataPoints": "Points de données",
     "dataPointsTooltipSuffix": "points actuellement",
     "queueDataRecords": "enregistrements files",
     "alsoTracking": "Suit aussi"
@@ -1319,13 +1319,13 @@
   "homepage": {
     "hero": {
       "badge": "Prédictions par ML",
-      "exploreParks": "Explorer les Parcs",
+      "exploreParks": "Explorer les parcs",
       "searchPlaceholder": "Rechercher des parcs, attractions, shows et restaurants..."
     },
     "features": {
       "title": "Planifiez votre Visite Parfaite au Parc d'Attractions",
       "realtime": {
-        "title": "Temps d'Attente Temps Réel",
+        "title": "Temps d'attente temps réel",
         "description": "Données en direct mises à jour chaque minute."
       },
       "predictions": {
@@ -1333,7 +1333,7 @@
         "description": "Prévisions d'affluence et de temps d'attente par IA."
       },
       "calendar": {
-        "title": "Calendrier d'Affluence",
+        "title": "Calendrier d'affluence",
         "description": "Calendrier avec météo, jours fériés et prédictions."
       }
     }
@@ -1430,15 +1430,15 @@
       "metaDescriptionTemplate": "Recherchez des parcs, attractions, spectacles et restaurants dans le monde entier."
     },
     "notFound": {
-      "park": "Parc Non Trouvé",
-      "attraction": "Attraction Non Trouvée"
+      "park": "Parc non trouvé",
+      "attraction": "Attraction non trouvée"
     },
     "imageAlt": {
       "park": "{park} - Temps d'Attente",
       "attraction": "{attraction} à {park} - Temps d'Attente"
     },
     "faq": {
-      "title": "Questions Fréquentes",
+      "title": "Questions fréquentes",
       "waitTimesQ": "Quels sont les temps d'attente à {park} aujourd'hui ?",
       "waitTimesA": "Actuellement, le temps d'attente moyen à {park} est d'environ {avg} minutes (pic {peak} minutes) sur {operating} attractions ouvertes. Les temps d'attente en direct de chaque attraction sont affichés ci-dessus sur cette page.",
       "waitTimesNoDataA": "Les temps d'attente à {park} varient selon le jour, la saison et l'affluence. Consultez les temps d'attente en direct ci-dessus, ainsi que le calendrier d'affluence pour la meilleure période de visite.",
@@ -1462,7 +1462,7 @@
       "leastCrowdedA": "{park} est généralement le plus calme le {days}. Consultez le <calendar>calendrier d'affluence</calendar> ci-dessus pour les prochains jours calmes et planifiez votre visite en conséquence.",
       "leastCrowdedNoDataA": "Consultez le <calendar>calendrier d'affluence</calendar> sur cette page pour les prochains jours calmes. Les jours verts signalent des files courtes et moins de visiteurs.",
       "attraction": {
-        "title": "Questions Fréquentes",
+        "title": "Questions fréquentes",
         "locationQ": "Où se trouve {attraction}?",
         "locationA": "{attraction} se trouve à {park}{land}.",
         "inLand": " dans la zone thématique {land}",
@@ -1519,11 +1519,11 @@
     "blogPosts": {
       "title": "{term} sur le blog"
     },
-    "overviewTitle": "Dictionnaire des Parcs à Thème",
+    "overviewTitle": "Dictionnaire des parcs à thème",
     "overviewDescription": "Plus de {count} termes et définitions des parcs à thème expliqués en langage clair — temps d'attente, niveaux d'affluence, Lightning Lane, files virtuelles, éléments de montagnes russes, single rider, fast pass, soft openings et plus encore.",
     "overviewKeywords": "dictionnaire parc à thème, définitions parc à thème, définition temps d'attente, Lightning Lane, niveau affluence, termes montagnes russes, file d'attente virtuelle, vocabulaire parc loisirs",
-    "termTitleSuffix": "Dictionnaire Parcs d'Attractions",
-    "termH1Suffix": "expliqué – Définition",
+    "termTitleSuffix": "Dictionnaire parcs d'attractions",
+    "termH1Suffix": "expliqué – définition",
     "overviewH1": "Dictionnaire des Parcs à Thème – Tous les termes & définitions",
     "relatedTerms": "Termes associés",
     "alsoKnownAs": "Aussi connu sous",
@@ -1542,7 +1542,7 @@
       "shopping": "Shopping",
       "dining": "Restauration",
       "logistics": "Logistique",
-      "ai": "IA et Technologie"
+      "ai": "IA et technologie"
     },
     "searchPlaceholder": "Rechercher un terme…",
     "noResults": "Aucun terme trouvé pour « {query} ».",
@@ -1818,7 +1818,7 @@
     "rideProfile": {
       "title": "Profil du parcours",
       "typeLabel": "Type d'attraction",
-      "multiLaunchCoaster": "Multi-Launch Coaster",
+      "multiLaunchCoaster": "Multi-Launch coaster",
       "elementsLabel": "Éléments du tracé",
       "elementsHint": "Dans l'ordre du parcours — touchez une figure pour la voir en 3-D.",
       "has3d": "3-D",
