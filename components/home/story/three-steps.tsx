@@ -45,7 +45,14 @@ function StepCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="border-border bg-card/60 flex h-full flex-col rounded-2xl border shadow-sm backdrop-blur-md">
+    // No `backdrop-blur` on this card, deliberately. It is a BACKDROP ROOT for
+    // everything inside it, and step 1 holds a search dropdown whose own glass
+    // then has only the card to sample — the page behind read straight through
+    // it at every fill value. Measured, not guessed: walking the dropdown's
+    // ancestors named this element and nothing else. The card sits on a flat
+    // page background anyway, so there was never anything here to blur (see
+    // `PANEL_FLAT` in glass-card.tsx for the same reasoning one layer up).
+    <div className="border-border bg-card/60 flex h-full flex-col rounded-2xl border shadow-sm">
       <div className="p-5 pb-0 sm:p-6 sm:pb-0">
         <div className="mb-3 flex items-center gap-2.5">
           <span className="bg-primary/15 text-primary flex size-8 items-center justify-center rounded-[10px] text-sm font-bold">
