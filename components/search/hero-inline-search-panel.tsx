@@ -41,7 +41,8 @@ interface HeroInlineSearchPanelProps {
    * photo, the scrim and the plate, all smooth and all beautiful under blur. On
    * a flat page it lands on whatever text happens to be under it, and that text
    * reads straight through — in the homepage's step card the card's own hint
-   * ghosted up through the result rows.
+   * ghosted up through the result rows. Off the hero it takes `tile` instead:
+   * more fill AND more blur, so it is still glass.
    */
   onHero?: boolean;
 }
@@ -299,16 +300,18 @@ export default function HeroInlineSearchPanel({
             while the field has focus instead of the dropdown going opaque. */}
         <GlassCard
           ref={cardRef}
-          variant="heavy"
+          // `tile` is the same glass one grade more solid — 75 % fill and
+          // `backdrop-blur-2xl` instead of `xl` — and it exists for exactly this
+          // case: a panel that has to stay readable over whatever happens to be
+          // under it. The stronger blur is what does the work; at 2xl the card's
+          // own prose under the dropdown stops being letters. Going opaque
+          // instead would fix the ghosting by deleting the glass, which is not
+          // the same fix.
+          variant={onHero ? 'heavy' : 'tile'}
           // Same marker the shell's skeleton carries, so `pnpm check:hero-search-rest` measures
           // the two against each other.
           data-hero-search-card=""
-          className={cn(
-            'border-border/60 mt-3 flex max-h-[var(--hero-search-max-h,32rem)] flex-col overflow-hidden p-0 shadow-2xl',
-            // The header's own dropdown band uses this pair for the same reason:
-            // a surface that has to be readable over arbitrary page content.
-            !onHero && 'bg-popover/95 dark:bg-popover/95'
-          )}
+          className="border-border/60 mt-3 flex max-h-[var(--hero-search-max-h,32rem)] flex-col overflow-hidden p-0 shadow-2xl"
         >
           <SearchResultsPanel
             query={query}
