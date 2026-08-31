@@ -334,7 +334,11 @@ export default async function HomePage({ params }: HomePageProps) {
         {/* Soft "make park.fan your preferred Google source" prompt — end of the page,
           once the visitor has seen what the site offers. The footer keeps the
           persistent link; this is the higher-visibility spot. */}
-        <section className="px-4 pb-16">
+        {/* `pt-8` for the same reason as the band above it: without a top padding
+          this card's distance to its neighbour is only the neighbour's bottom
+          padding, which made the gap between the two closing cards 27 px tighter
+          than the ones around them. */}
+        <section className="px-4 pt-8 pb-16">
           <div className="container mx-auto">
             <PreferredSourcePrompt />
           </div>

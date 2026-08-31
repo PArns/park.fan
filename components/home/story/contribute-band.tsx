@@ -19,7 +19,12 @@ export async function ContributeBand() {
   const t = await getTranslations('homeStory.contribute');
 
   return (
-    <section className="px-4 pb-16">
+    // `pt-8` rather than nothing: this band and the source prompt below it are
+    // the only two sections on the page with no top padding, so their spacing was
+    // whatever the previous section happened to leave behind. Measured, the three
+    // gaps down here read 96 / 69 / 93 px — the one BETWEEN the two cards, the
+    // only one made of two zero-padding neighbours, was the odd one out.
+    <section className="px-4 pt-8 pb-16">
       <div className="container mx-auto">
         <Reveal>
           <div className="border-border bg-card flex flex-col gap-5 rounded-2xl border p-6 shadow-lg sm:flex-row sm:items-center sm:p-7">
