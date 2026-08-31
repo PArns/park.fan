@@ -275,7 +275,7 @@
     "calendar": {
       "kicker": "Druktekalender",
       "title": "Groene dag of rode dag?",
-      "lead": "Voordat je het hotel boekt: de kalender beoordeelt elke afzonderlijke dag, tot 365 dagen vooruit. En omdat een kleur niet beter is dan de data erachter, staat hier waar die vandaan komt.",
+      "lead": "Voordat je het hotel boekt: de kalender beoordeelt elke afzonderlijke dag, tot 365 dagen vooruit. Waar de kleur van een dag vandaan komt, staat hieronder.",
       "pipelineTitle": "Van meting naar dagkleur",
       "pipelineLead": "Vier stappen, elke nacht opnieuw. Wat uiteindelijk als groene of rode dag in de kalender staat, heeft deze weg afgelegd.",
       "p1": {
@@ -402,7 +402,7 @@
       },
       "r6": {
         "title": "Data die iets verklaart",
-        "text": "Woordenboek, parkgidsen en data-analyses op de blog: park.fan geeft je niet alleen het getal, maar ook waarom het zo is."
+        "text": "Woordenboek, parkgidsen en data-analyses op de blog. Waarom een park in november leeg is en in oktober vol, staat als artikel uitgeschreven."
       }
     },
     "founder": {
@@ -411,7 +411,7 @@
       "name": "Patrick Arns",
       "role": "Oprichter van park.fan",
       "p1": "park.fan is geen startup met investeerders en roadmapvergaderingen, maar het project van iemand die sinds de kinderwagen in pretparken komt en al ruim 25 jaar software bouwt. De frustratie was heel concreet: 90 minuten in de rij voor één baan, met het vermoeden dat slim plannen dat had voorkomen.",
-      "p2": "Dus kwam er eerst een tracker, toen een database, toen een eigen machine-learningsysteem, van data-import tot voorspelling zelf gebouwd en elke nacht opnieuw getraind. En omdat het geen product voor investeerders is, is er geen betaalmuur.",
+      "p2": "Dus kwam er eerst een tracker, toen een database, toen een eigen machine-learningsysteem, van data-import tot voorspelling zelf gebouwd en elke nacht opnieuw getraind.",
       "b1": "25+ jaar softwareontwikkeling",
       "b2": "Parknerd sinds zijn jeugd",
       "b3": "Geen concern, geen investeerder",

@@ -275,7 +275,7 @@
     "calendar": {
       "kicker": "Calendrier d'affluence",
       "title": "Jour vert ou jour rouge ?",
-      "lead": "Avant de réserver l'hôtel : le calendrier note chaque jour, jusqu'à 365 jours à l'avance. Et comme une couleur ne vaut que ce que valent ses données, voici d'où elle vient.",
+      "lead": "Avant de réserver l'hôtel : le calendrier note chaque jour, jusqu'à 365 jours à l'avance. La provenance de la couleur d'une journée est détaillée ci-dessous.",
       "pipelineTitle": "De la mesure à la couleur du jour",
       "pipelineLead": "Quatre étapes, refaites chaque nuit. Ce qui finit en jour vert ou rouge dans le calendrier a suivi ce chemin.",
       "p1": {
@@ -402,7 +402,7 @@
       },
       "r6": {
         "title": "Des données qui expliquent",
-        "text": "Dictionnaire, guides de parcs et analyses de données sur le blog : park.fan ne donne pas seulement le chiffre, mais pourquoi il ressemble à ça."
+        "text": "Dictionnaire, guides de parcs et analyses de données sur le blog. Pourquoi un parc est vide en novembre et plein en octobre, c'est un article."
       }
     },
     "founder": {
@@ -411,7 +411,7 @@
       "name": "Patrick Arns",
       "role": "Fondateur de park.fan",
       "p1": "park.fan n'est pas une startup avec des investisseurs et des réunions de roadmap. C'est le projet de quelqu'un qui fréquente les parcs depuis la poussette et développe des logiciels depuis plus de 25 ans. La frustration était très concrète : faire 90 minutes de file pour une attraction en se doutant qu'un peu d'organisation l'aurait évité.",
-      "p2": "Il y a donc eu d'abord un traqueur, puis une base de données, puis un système de machine learning maison, construit de bout en bout de l'import des données à la prévision, et réentraîné chaque nuit. Et comme ce n'est pas un produit pour investisseurs, il n'y a pas de paywall.",
+      "p2": "Il y a donc eu d'abord un traqueur, puis une base de données, puis un système de machine learning maison, construit de bout en bout de l'import des données à la prévision, et réentraîné chaque nuit.",
       "b1": "Plus de 25 ans de développement",
       "b2": "Passionné de parcs depuis l'enfance",
       "b3": "Ni groupe, ni investisseur",

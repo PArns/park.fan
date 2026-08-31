@@ -275,7 +275,7 @@
     "calendar": {
       "kicker": "Calendario de afluencia",
       "title": "¿Día verde o día rojo?",
-      "lead": "Antes de reservar el hotel: el calendario puntúa cada día, hasta 365 días por delante. Y como un color vale lo que valen sus datos, aquí está de dónde sale.",
+      "lead": "Antes de reservar el hotel: el calendario puntúa cada día, hasta 365 días por delante. De dónde sale el color de un día está explicado más abajo.",
       "pipelineTitle": "De la medición al color del día",
       "pipelineLead": "Cuatro pasos, rehechos cada noche. Lo que acaba en el calendario como día verde o rojo ha recorrido este camino.",
       "p1": {
@@ -402,7 +402,7 @@
       },
       "r6": {
         "title": "Datos que explican algo",
-        "text": "Diccionario, guías de parques y análisis en el blog: park.fan no solo te da el número, sino por qué es así."
+        "text": "Diccionario, guías de parques y análisis en el blog. Por qué un parque está vacío en noviembre y lleno en octubre está explicado en un artículo."
       }
     },
     "founder": {
@@ -411,7 +411,7 @@
       "name": "Patrick Arns",
       "role": "Fundador de park.fan",
       "p1": "park.fan no es una startup con inversores y reuniones de hoja de ruta, sino el proyecto de alguien que pisa parques desde el carrito y lleva más de 25 años haciendo software. La frustración era concreta: 90 minutos de cola para una atracción, sospechando que planificar un poco lo habría evitado.",
-      "p2": "Así apareció primero un rastreador, después una base de datos, después un sistema de aprendizaje automático propio, construido de principio a fin desde la importación de datos hasta la previsión y reentrenado cada noche. Y como no es un producto para inversores, no hay muro de pago.",
+      "p2": "Así apareció primero un rastreador, después una base de datos, después un sistema de aprendizaje automático propio, construido de principio a fin desde la importación de datos hasta la previsión y reentrenado cada noche.",
       "b1": "Más de 25 años desarrollando software",
       "b2": "Friki de los parques desde niño",
       "b3": "Ni grupo empresarial ni inversor",

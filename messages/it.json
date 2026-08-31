@@ -275,7 +275,7 @@
     "calendar": {
       "kicker": "Calendario dell'affluenza",
       "title": "Giornata verde o giornata rossa?",
-      "lead": "Prima di prenotare l'hotel: il calendario valuta ogni singolo giorno, fino a 365 giorni in anticipo. E siccome un colore vale quanto i dati che ha dietro, qui c'è da dove arriva.",
+      "lead": "Prima di prenotare l'hotel: il calendario valuta ogni singolo giorno, fino a 365 giorni in anticipo. Da dove arriva il colore di una giornata è spiegato qui sotto.",
       "pipelineTitle": "Dalla misura al colore della giornata",
       "pipelineLead": "Quattro passi, rifatti ogni notte. Quello che finisce nel calendario come giornata verde o rossa ha fatto questa strada.",
       "p1": {
@@ -402,7 +402,7 @@
       },
       "r6": {
         "title": "Dati che spiegano qualcosa",
-        "text": "Dizionario, guide ai parchi e analisi sul blog: park.fan non ti dà solo il numero, ma perché è quello."
+        "text": "Dizionario, guide ai parchi e analisi sul blog. Perché a novembre un parco è vuoto e a ottobre pieno è spiegato in un articolo."
       }
     },
     "founder": {
@@ -411,7 +411,7 @@
       "name": "Patrick Arns",
       "role": "Fondatore di park.fan",
       "p1": "park.fan non è una startup con investitori e riunioni di roadmap, ma il progetto di uno che va nei parchi da quando stava nel passeggino e scrive software da oltre 25 anni. La frustrazione era concreta: 90 minuti di fila per un'attrazione, col sospetto che un po' di pianificazione l'avrebbe evitata.",
-      "p2": "Così è nato prima un tracker, poi un database, poi un sistema di machine learning fatto in casa, costruito dall'import dei dati fino alla previsione e riaddestrato ogni notte. E siccome non è un prodotto per investitori, non c'è paywall.",
+      "p2": "Così è nato prima un tracker, poi un database, poi un sistema di machine learning fatto in casa, costruito dall'import dei dati fino alla previsione e riaddestrato ogni notte.",
       "b1": "Oltre 25 anni di sviluppo software",
       "b2": "Appassionato di parchi fin da bambino",
       "b3": "Nessun gruppo, nessun investitore",

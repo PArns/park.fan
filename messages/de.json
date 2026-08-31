@@ -275,7 +275,7 @@
     "calendar": {
       "kicker": "Crowd-Kalender",
       "title": "Grüner Tag oder roter Tag?",
-      "lead": "Bevor du das Hotel buchst: der Kalender bewertet jeden einzelnen Tag, bis zu 365 Tage im Voraus. Und weil eine Farbe nur so gut ist wie die Daten dahinter, steht hier, woher sie kommt.",
+      "lead": "Bevor du das Hotel buchst: der Kalender bewertet jeden einzelnen Tag, bis zu 365 Tage im Voraus. Woher die Farbe eines Tages kommt, steht darunter.",
       "pipelineTitle": "Von der Messung zur Tagesfarbe",
       "pipelineLead": "Vier Schritte, jede Nacht neu. Was am Ende als grüner oder roter Tag im Kalender steht, hat diesen Weg genommen.",
       "p1": {
@@ -402,7 +402,7 @@
       },
       "r6": {
         "title": "Daten, die etwas erklären",
-        "text": "Wörterbuch, Park-Guides und Datenanalysen im Blog: park.fan nennt dir nicht nur die Zahl, sondern warum sie so aussieht."
+        "text": "Wörterbuch, Park-Guides und Datenanalysen im Blog. Warum ein Park im November leer ist und im Oktober voll, steht als Artikel da."
       }
     },
     "founder": {
@@ -411,7 +411,7 @@
       "name": "Patrick Arns",
       "role": "Gründer von park.fan",
       "p1": "park.fan ist kein Startup mit Investoren und Roadmap-Meetings, sondern das Projekt von einem, der seit dem Kinderwagen in Freizeitparks unterwegs ist und seit über 25 Jahren Software baut. Die Frustration war konkret: 90 Minuten für eine Bahn anstehen und ahnen, dass clevere Planung das verhindert hätte.",
-      "p2": "Also entstand erst ein Tracker, dann eine Datenbank, dann ein eigenes ML-System, vom Datenimport bis zur Prognose selbst gebaut und jede Nacht neu trainiert. Und weil es kein Produkt für Investoren ist, gibt es keine Paywall.",
+      "p2": "Also entstand erst ein Tracker, dann eine Datenbank, dann ein eigenes ML-System, vom Datenimport bis zur Prognose selbst gebaut und jede Nacht neu trainiert.",
       "b1": "25+ Jahre Software-Entwicklung",
       "b2": "Park-Nerd seit der Kindheit",
       "b3": "Kein Konzern, kein Investor",

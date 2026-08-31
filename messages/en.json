@@ -275,7 +275,7 @@
     "calendar": {
       "kicker": "Crowd calendar",
       "title": "A green day or a red one?",
-      "lead": "Before you book the hotel: the calendar rates every single day, up to 365 days ahead. And because a colour is only as good as the data behind it, here is where it comes from.",
+      "lead": "Before you book the hotel: the calendar rates every single day, up to 365 days ahead. Where a day's colour comes from is set out below.",
       "pipelineTitle": "From the measurement to the colour of a day",
       "pipelineLead": "Four steps, redone every night. Whatever ends up in the calendar as a green or a red day took this path.",
       "p1": {
@@ -402,7 +402,7 @@
       },
       "r6": {
         "title": "Data that explains something",
-        "text": "A dictionary, park guides and data pieces on the blog: park.fan gives you not just the number but why it looks the way it does."
+        "text": "A dictionary, park guides and data pieces on the blog. Why a park is empty in November and packed in October is written up as an article."
       }
     },
     "founder": {
@@ -411,7 +411,7 @@
       "name": "Patrick Arns",
       "role": "Founder of park.fan",
       "p1": "park.fan is not a startup with investors and roadmap meetings. It is the project of someone who has been going to theme parks since he was in a pram and building software for over 25 years. The frustration was a concrete one: queueing 90 minutes for a ride and suspecting that a bit of planning would have avoided it.",
-      "p2": "So first came a tracker, then a database, then a machine-learning system of his own, built end to end from the data import to the forecast and retrained every night. And because it is not a product for investors, there is no paywall.",
+      "p2": "So first came a tracker, then a database, then a machine-learning system of his own, built end to end from the data import to the forecast and retrained every night.",
       "b1": "25+ years of software development",
       "b2": "Park nerd since childhood",
       "b3": "No corporation, no investor",
