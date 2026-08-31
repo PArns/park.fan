@@ -58,10 +58,6 @@ import { getSectionHeadingLabels } from '@/components/home/section-headings';
 // The homepage story — "what is park.fan", chapter by chapter. Every one of these
 // is a Server Component whose copy is read server-side, so ~2 500 words of German
 // explanation never reach the client bundle (see the routed-translations rule).
-import {
-  ParkShortcutSlot,
-  ParkShortcutStripSkeleton,
-} from '@/components/home/story/park-shortcut-slot';
 import { ThreeSteps } from '@/components/home/story/three-steps';
 import { NearbyChapter } from '@/components/home/story/nearby-chapter';
 import { ChapterLiveWaits } from '@/components/home/story/chapter-live-waits';
@@ -243,18 +239,6 @@ export default async function HomePage({ params }: HomePageProps) {
             )}
           </HeroRotationProvider>
         </section>
-
-        {/* Returning visitors first: one row of park links before the page
-          argues anything. Shares its live overlay with the featured grid below
-          (same region set → one React Query entry), so it costs no request.
-
-          The fallback is a box, not `null`: this band resolves for every locale
-          whose featured list resolves, i.e. every normal request, and everything
-          below it would otherwise be laid out 57 px too high and then pushed
-          down when the geo fetch lands. */}
-        <Suspense fallback={<ParkShortcutStripSkeleton />}>
-          <ParkShortcutSlot locale={locale} />
-        </Suspense>
 
         {/* Announcement Section */}
         <div className="pk-reveal">

@@ -210,10 +210,6 @@
     }
   },
   "homeStory": {
-    "shortcuts": {
-      "label": "Direkt zum Park",
-      "all": "Alle Parks ansehen"
-    },
     "steps": {
       "kicker": "So funktioniert's",
       "title": "In drei Schritten zum perfekten Parktag",
