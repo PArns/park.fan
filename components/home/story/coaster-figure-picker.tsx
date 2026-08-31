@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { useAfterLoad } from '@/lib/hooks/use-after-load';
 import { ArrowRight, Play } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { CoasterPlayer, type CoasterPlayerLabels } from '@/components/glossary/coaster-player';
@@ -30,9 +31,11 @@ export interface PickableFigure {
  * engine onto the most-visited page in the app, for a chapter most readers never
  * scroll to. Same treatment `RideLayoutRail` gives it on ride pages.
  *
- * So the stage arms itself when it comes within 400 px of the viewport: far
- * enough out that the chunk is usually decoded by the time the chapter is on
- * screen, late enough that a reader who never gets there never pays for it.
+ * So the stage arms itself on SCROLL, and only then. Two gates, because either
+ * one alone lets the chunk through too early: the observer does not even start
+ * until `useAfterLoad`, so nothing about this can compete with the initial load,
+ * and its margin is 150 px rather than a screenful, so it fires when the chapter
+ * is genuinely being approached and not while it is still three sections away.
  * A click still arms it immediately, which is what a reader who scrolled fast
  * gets, and the un-armed stage keeps the player's own box so the swap costs no
  * layout shift.
@@ -63,11 +66,12 @@ export function CoasterFigurePicker({
 }) {
   const [active, setActive] = useState(0);
   const [armed, setArmed] = useState(false);
+  const afterLoad = useAfterLoad();
   const stageRef = useRef<HTMLDivElement>(null);
   const current = figures[active];
 
   useEffect(() => {
-    if (armed) return;
+    if (armed || !afterLoad) return;
     const el = stageRef.current;
     if (!el) return;
     const io = new IntersectionObserver(
@@ -77,11 +81,11 @@ export function CoasterFigurePicker({
           io.disconnect();
         }
       },
-      { rootMargin: '400px 0px' }
+      { rootMargin: '150px 0px' }
     );
     io.observe(el);
     return () => io.disconnect();
-  }, [armed]);
+  }, [armed, afterLoad]);
 
   if (!current) return null;
 

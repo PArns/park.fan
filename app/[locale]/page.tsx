@@ -305,6 +305,16 @@ export default async function HomePage({ params }: HomePageProps) {
         <ChapterInPark />
         <ChapterDictionary locale={locale as Locale} />
 
+        {/* The blog, directly after the feature tour and before the trust block.
+          It used to sit fifteenth of seventeen, behind the founder, the featured
+          parks and the live activity — past the point where anybody was still
+          reading. The chapter frame adds the two evergreen hubs (best travel
+          time, dictionary) that a reader who got this far is most likely to open
+          next. */}
+        <BlogChapter locale={locale as Locale}>
+          <LatestBlogSection locale={locale as Locale} variant="lead" />
+        </BlogChapter>
+
         {/* The claim, then the evidence. `GlobalStatsSection` is the platform's
           own live counters, so it belongs directly under the six reasons rather
           than between the founder and the blog, where it used to sit. */}
@@ -325,13 +335,6 @@ export default async function HomePage({ params }: HomePageProps) {
         <Suspense fallback={<LiveActivitySkeleton labels={headingLabels} />}>
           <LiveActivitySection />
         </Suspense>
-
-        {/* Latest Blog Posts, inside the story's chapter frame — the frame adds
-          the two evergreen hubs (best travel time, dictionary) that a reader who
-          got this far is most likely to open next. */}
-        <BlogChapter locale={locale as Locale}>
-          <LatestBlogSection locale={locale as Locale} variant="bare" />
-        </BlogChapter>
 
         {/* The page's only FAQPage markup — FaqSection renders the questions and
           the JSON-LD from one array. */}
