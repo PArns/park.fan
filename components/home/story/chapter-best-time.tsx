@@ -7,7 +7,7 @@ import { BestTimeGrid } from './best-time-grid';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/config';
-import { getLeadParks } from './lead-park';
+import { getCurveCandidates } from './lead-park';
 
 /**
  * Chapter: when a ride is actually quiet.
@@ -30,7 +30,7 @@ import { getLeadParks } from './lead-park';
 export async function ChapterBestTime({ locale }: { locale: string }) {
   const [t, parks] = await Promise.all([
     getTranslations('homeStory.bestTime'),
-    getLeadParks(locale),
+    getCurveCandidates(locale),
   ]);
 
   return (
@@ -53,6 +53,7 @@ export async function ChapterBestTime({ locale }: { locale: string }) {
             country: p.country,
             city: p.city,
             parkSlug: p.parkSlug,
+            name: p.name,
           }))}
         >
           <div className="space-y-4">

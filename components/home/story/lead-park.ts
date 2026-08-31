@@ -64,3 +64,21 @@ export async function getLeadParks(locale: string): Promise<LeadPark[]> {
     })
     .filter((p): p is LeadPark => p !== null);
 }
+
+/**
+ * Candidates for a live exhibit, ordered so one of them is always in daylight.
+ *
+ * The locale's own featured parks first — a reader in Cologne should see
+ * Phantasialand, not Orlando. But at 03:00 in Cologne every park on that list is
+ * shut, and a chart headed "today" with nothing measured in it is the one thing
+ * this section must not be. So the English list is appended behind it: those are
+ * the Florida and California parks, which are open while Europe sleeps.
+ *
+ * Deduplicated by park slug, so a park both lists name is tried once, in the
+ * position the reader's own locale gave it.
+ */
+export async function getCurveCandidates(locale: string): Promise<LeadPark[]> {
+  const [own, worldwide] = await Promise.all([getLeadParks(locale), getLeadParks('en')]);
+  const seen = new Set(own.map((p) => p.parkSlug));
+  return [...own, ...worldwide.filter((p) => !seen.has(p.parkSlug))];
+}
