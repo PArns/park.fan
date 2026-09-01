@@ -305,7 +305,7 @@
     },
     "ai": {
       "kicker": "Our model",
-      "title": "A model of our own – and we show you how good it is",
+      "title": "Eine eigene Prognose, und die Abweichung steht dabei",
       "lead": "Predicting wait times is the hard part, and most sites step around it. park.fan takes it on with Fancast, a model of its own, retrained every night, up to 365 days ahead.",
       "compareTitle": "How other wait-time sites forecast",
       "compareLead": "Three approaches are common, and all three share one blind spot: nobody tells you how far off the forecast was.",
@@ -332,8 +332,8 @@
     },
     "bestTime": {
       "kicker": "Best time to ride",
-      "title": "Many coasters have two perfect windows – we tell you when",
-      "lead": "Rope drop in the morning, the last hour in the evening, and in between the rides that happen to be running against the trend.",
+      "title": "Viele Bahnen haben zwei ruhige Fenster, morgens und gegen Abend",
+      "lead": "Rope Drop hilft nicht bei jeder Bahn. Die Kurve kommt aus den Messtagen der einzelnen Attraktion.",
       "chartSubtitle": "Median of {days} measured days, sampled every 5 minutes",
       "legendToday": "measured today",
       "legendMedian": "median of past days",
@@ -423,7 +423,7 @@
     },
     "blog": {
       "kicker": "Blog & guides",
-      "title": "The data explains what happens in the park",
+      "title": "Analysen zu einzelnen Parks, mit Zahlen von heute",
       "lead": "Park guides, wait-time analyses and seasonal tips, written by people who queue themselves. Every park page carries the articles that belong to it.",
       "bestTimeTitle": "Best time to visit a theme park",
       "bestTimeText": "When parks are emptiest: the quietest weekdays and months, from two years of real wait times across 200+ parks.",

@@ -305,7 +305,7 @@
     },
     "ai": {
       "kicker": "Nuestra IA",
-      "title": "Un modelo propio – y enseñamos lo bueno que es",
+      "title": "Eine eigene Prognose, und die Abweichung steht dabei",
       "lead": "Predecir tiempos de espera es la parte difícil, y la mayoría de los sitios la esquiva. park.fan la aborda con Fancast, un modelo propio, reentrenado cada noche, hasta 365 días por delante.",
       "compareTitle": "Cómo predicen otras webs de esperas",
       "compareLead": "Hay tres enfoques habituales, y los tres comparten el mismo punto ciego: nadie dice cuánto se equivocó la previsión.",
@@ -332,8 +332,8 @@
     },
     "bestTime": {
       "kicker": "Mejor momento",
-      "title": "Muchas montañas rusas tienen dos momentos perfectos – te decimos cuáles",
-      "lead": "El rope drop por la mañana, la última hora por la tarde, y entremedias las atracciones que van a contracorriente.",
+      "title": "Viele Bahnen haben zwei ruhige Fenster, morgens und gegen Abend",
+      "lead": "Rope Drop hilft nicht bei jeder Bahn. Die Kurve kommt aus den Messtagen der einzelnen Attraktion.",
       "chartSubtitle": "Mediana de {days} días medidos, muestreados cada 5 minutos",
       "legendToday": "medido hoy",
       "legendMedian": "mediana de días pasados",
@@ -423,7 +423,7 @@
     },
     "blog": {
       "kicker": "Blog y guías",
-      "title": "Los datos explican lo que pasa en el parque",
+      "title": "Analysen zu einzelnen Parks, mit Zahlen von heute",
       "lead": "Guías de parques, análisis de esperas y consejos de temporada, escritos por gente que hace cola. Cada página de parque lleva los artículos que le corresponden.",
       "bestTimeTitle": "Mejor época para visitar un parque",
       "bestTimeText": "Cuándo están más vacíos los parques: los días y los meses más tranquilos, a partir de dos años de esperas reales en más de 200 parques.",

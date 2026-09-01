@@ -305,7 +305,7 @@
     },
     "ai": {
       "kicker": "Notre IA",
-      "title": "Un modèle maison – et nous montrons ce qu’il vaut",
+      "title": "Eine eigene Prognose, und die Abweichung steht dabei",
       "lead": "Prévoir les temps d’attente, c’est la partie difficile, et la plupart des sites la contournent. park.fan s’y attaque avec Fancast, un modèle maison réentraîné chaque nuit, jusqu’à 365 jours à l’avance.",
       "compareTitle": "Comment les autres sites prévoient",
       "compareLead": "Trois approches sont répandues, et toutes trois ont le même angle mort : personne ne dit de combien la prévision s’est trompée.",
@@ -332,8 +332,8 @@
     },
     "bestTime": {
       "kicker": "Meilleur moment",
-      "title": "Beaucoup de coasters ont deux créneaux parfaits – on te dit lesquels",
-      "lead": "Le rope drop le matin, la dernière heure le soir, et entre les deux les attractions qui vont à contre-courant.",
+      "title": "Viele Bahnen haben zwei ruhige Fenster, morgens und gegen Abend",
+      "lead": "Rope Drop hilft nicht bei jeder Bahn. Die Kurve kommt aus den Messtagen der einzelnen Attraktion.",
       "chartSubtitle": "Médiane sur {days} jours mesurés, relevés toutes les 5 minutes",
       "legendToday": "mesuré aujourd’hui",
       "legendMedian": "médiane des jours passés",
@@ -423,7 +423,7 @@
     },
     "blog": {
       "kicker": "Blog et guides",
-      "title": "Les données expliquent ce qui se passe dans le parc",
+      "title": "Analysen zu einzelnen Parks, mit Zahlen von heute",
       "lead": "Guides de parcs, analyses des temps d’attente et conseils de saison, écrits par des gens qui font la queue eux-mêmes. Chaque page de parc porte les articles qui la concernent.",
       "bestTimeTitle": "Meilleure période pour visiter un parc",
       "bestTimeText": "Quand les parcs sont les plus vides : les jours et les mois les plus calmes, tirés de deux ans de temps d’attente réels sur plus de 200 parcs.",

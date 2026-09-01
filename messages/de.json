@@ -305,7 +305,7 @@
     },
     "ai": {
       "kicker": "Unsere KI",
-      "title": "Ein eigenes Modell – und wir zeigen, wie gut es ist",
+      "title": "Eine eigene Prognose, und die Abweichung steht dabei",
       "lead": "Wartezeiten vorherzusagen ist der schwierige Teil, und die meisten Seiten weichen ihm aus. park.fan geht ihn an: mit Fancast, einem eigenen Modell, jede Nacht neu trainiert, bis zu 365 Tage voraus.",
       "compareTitle": "Wie andere Wartezeit-Seiten vorhersagen",
       "compareLead": "Drei Ansätze sind verbreitet, und alle drei haben denselben blinden Fleck: niemand sagt dir, wie weit die Prognose danebenlag.",
@@ -332,8 +332,8 @@
     },
     "bestTime": {
       "kicker": "Beste Besuchszeit",
-      "title": "Viele Achterbahnen haben zwei perfekte Zeitfenster – wir sagen dir wann",
-      "lead": "Rope Drop am Morgen, die letzte Stunde am Abend, und dazwischen die Attraktionen, die gerade gegen den Trend laufen.",
+      "title": "Viele Bahnen haben zwei ruhige Fenster, morgens und gegen Abend",
+      "lead": "Rope Drop hilft nicht bei jeder Bahn. Die Kurve kommt aus den Messtagen der einzelnen Attraktion.",
       "chartSubtitle": "Median aus {days} Messtagen, gemessen alle 5 Minuten",
       "legendToday": "heute gemessen",
       "legendMedian": "Median vergangener Tage",
@@ -423,7 +423,7 @@
     },
     "blog": {
       "kicker": "Blog & Guides",
-      "title": "Die Daten erklären, was im Park passiert",
+      "title": "Analysen zu einzelnen Parks, mit Zahlen von heute",
       "lead": "Park-Guides, Wartezeit-Analysen und Saison-Tipps, geschrieben von Leuten, die selbst anstehen. Zu jedem Park gibt es den passenden Artikel direkt auf der Parkseite.",
       "bestTimeTitle": "Beste Reisezeit für Freizeitparks",
       "bestTimeText": "Wann Parks am leersten sind: die ruhigsten Wochentage und Monate, aus zwei Jahren echter Wartezeiten von über 200 Parks.",
