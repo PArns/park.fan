@@ -80,7 +80,11 @@ export function LocaleSwitcher() {
         <Button
           variant="ghost"
           size="sm"
-          className="h-8 gap-1.5 px-2 text-xs font-medium"
+          /* `max-sm:h-8` cancels the button scale's 44 px phone tier: this control only ever
+             renders inside the 48 px header, whose height is a documented requirement, and 44 in
+             48 is the mistake that requirement exists to prevent. The bar's own touch targets are
+             an open question about the bar's height, not about this class. */
+          className="h-8 gap-1.5 px-2 text-xs font-medium max-sm:h-8"
           suppressHydrationWarning
         >
           <RoundFlag locale={locale} />

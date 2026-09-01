@@ -10,6 +10,14 @@
 export default function GlobalError({ reset }: { reset: () => void }) {
   return (
     <html lang="en">
+      {/* The root layout's `viewport` export does not reach here — this file REPLACES that
+          layout, and a `viewport`/`metadata` export is only honoured on `layout` and `page`
+          (see `node_modules/next/dist/docs/.../10-error-handling.md` and
+          `generate-viewport.md`). Without it a phone falls back to the 980 px default layout
+          viewport and draws the whole page at ~40 %: the heading lands around 8 px and "Try
+          again" at roughly 40 × 13 device pixels, on the one screen where a working button is
+          the entire point. React 19 hoists this into the head. */}
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <body
         style={{
           margin: 0,

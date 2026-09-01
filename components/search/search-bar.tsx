@@ -159,8 +159,13 @@ export function SearchCommand({
                Icon-only until `lg` hands over to the real input.
 
              `lg` (the /ui gallery, anything outside the bar) keeps the wide trigger. */
+          /* The `max-sm:` pair on the `sm` branch cancels the button scale's 44 px phone tier,
+             for the same reason as the two points above: this branch IS the header bar, and 44 px
+             of control in a 48 px row is what the header-geometry requirement forbids. */
           className={`relative p-0 ${
-            size === 'sm' ? 'h-9 w-9' : 'h-10 w-10 md:h-9 md:w-64 md:justify-start md:px-3 md:py-2'
+            size === 'sm'
+              ? 'h-9 w-9 max-sm:h-9 max-sm:w-9'
+              : 'h-10 w-10 md:h-9 md:w-64 md:justify-start md:px-3 md:py-2'
           }`}
           onClick={() => openSearch(searchOpenSource)}
           aria-label={t('search')}

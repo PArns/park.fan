@@ -471,7 +471,10 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="lg:hidden"
+                  /* `max-sm:size-9` cancels the button scale's 44 px phone tier. The bar is
+                     `h-12`; a 44 px burger in it is the mistake the header-geometry requirement
+                     names. Third and last opt-out, beside LocaleSwitcher and the search trigger. */
+                  className="max-sm:size-9 lg:hidden"
                   suppressHydrationWarning
                   tabIndex={isTransparent ? -1 : 0}
                   data-header-stagger

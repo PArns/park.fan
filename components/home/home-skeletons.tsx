@@ -99,11 +99,14 @@ export function GlobalStatsSkeleton({ labels }: { labels: SectionHeadingLabels }
           </div>
           {/* Row 3: longest/shortest wait rides */}
           <div className="grid gap-4 sm:grid-cols-2">
+            {/* `stat`: these two build their card from a few stat fields — no land, no queue
+                history, no trend — so the real card settles at 197-231 px, not the 318 an
+                attractions-tab card measures. See the skeleton's own docblock. */}
             <StatCardRow>
-              <AttractionCardSkeleton />
+              <AttractionCardSkeleton variant="stat" />
             </StatCardRow>
             <StatCardRow>
-              <AttractionCardSkeleton />
+              <AttractionCardSkeleton variant="stat" />
             </StatCardRow>
           </div>
         </div>

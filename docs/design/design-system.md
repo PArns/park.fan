@@ -411,6 +411,18 @@ air above and below it. `.touch-target` (44 px) is the floor for anything that i
 the two 36 px controls below `lg` are the same box as each other, which they were not before (40
 against 36).
 
+**And the bar is the one place that opts out of the scale's phone tier.** `sm`, `default`, `icon`
+and `icon-sm` all resolve to 44 px below `sm` now (see [the button scale](#the-button-scale-has-one-phone-height)),
+which is 92 % of this row — the same mistake as the 40 px field in a 56 px bar, one size worse. So
+the three controls that live here cancel it at their own call site and say why:
+`components/common/locale-switcher.tsx` (`max-sm:h-8`), the `sm` branch of
+`components/search/search-bar.tsx` (`max-sm:h-9 max-sm:w-9`) and the burger in
+`components/layout/header.tsx` (`max-sm:size-9`). The table above therefore still holds at every
+width. What that leaves open is real and is about this bar rather than about those classes: on a
+phone the locale switcher is 32 px and the theme toggle 28, four pixels apart, in a row that has no
+room for either to grow. Fixing that means changing the bar's height on phones — the number in the
+four places above — not the button.
+
 For the outside view: Material 3's small top app bar is 64 dp, and the general advice for a
 **sticky** bar is to stay under about 60 px on desktop and 50 on mobile, since it costs that much
 of every viewport for the whole visit. 48 px sits under both, and the reference bars that look
@@ -442,10 +454,45 @@ lockup looks right at a gap that measures small.
 
 ---
 
+## The button scale has one phone height
+
+Three desk heights — 32 (`sm`) / 36 (default) / 40 (`lg`) — and **one** phone height: **44**, below
+`sm`, on `sm`, `default`, `icon` and `icon-sm`. `lg` and `icon-lg` stay at 40: they are already the
+largest step and are used where there is room, so raising them would only move the hero search
+field.
+
+44 is not a new number. `app/admin/_ui/controls.tsx` has had it since the admin's phone pass
+(`CONTROL_HEIGHT = 'h-11 sm:h-9'`), with the reason beside it — the smallest target a thumb hits
+reliably — and `.touch-target` below has carried it in `globals.css` for longer than that. Both were
+written down and neither reached the public site: a grep for `min-h-11|h-11|touch-manipulation` over
+`components/` and `app/[locale]` returned five hits and not one of them a control, and
+`.touch-target` was applied to **nothing at all**. So the public scale ran on three steps of which
+the largest, 40, still misses the floor and two sit under it — which is what most of the touch
+findings in the mobile audits actually were, rather than a fault of the component each was found in.
+The tier belongs on the scale for the same reason the height of the header does: one number, one
+place.
+
+The three sizes collapsing to one on a phone is the point, not a side effect. `sm` vs `default` vs
+`lg` is a density decision and a finger has no density. Horizontal padding still steps, so a `sm`
+button is still the narrow one.
+
+**One exception, and it is documented where it lives:** the header — see
+[header geometry](#header-geometry). Cancel the tier only where a row's height is itself a
+requirement, with `max-sm:` at the call site and a comment naming the requirement.
+
+Two things the tier does not reach, both still open: controls that are not `<Button>` (the
+temperature toggle's two 16 px halves, the glossary filter pills, the blog tag cloud, `FavoriteStar`)
+and bare `<Link>`s with no padding (the footer's nine legal and section links, 20 px tall and 8 px
+apart). `Badge` is deliberately untouched — badges are overwhelmingly labels rather than targets, and
+growing every status chip on every card would move layout the placeholders reserve for.
+
+---
+
 ## Interactive Utilities
 
 - `.interactive-card` – `hover:border-primary/50 transition-all hover:shadow-lg`
-- `.touch-target` – `min-h-[44px] min-w-[44px]`
+- `.touch-target` – `min-h-[44px] min-w-[44px]` — for a tap target that is not a `<Button>`; the
+  button scale carries its own 44 px phone tier (above)
 
 ---
 
