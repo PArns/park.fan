@@ -1,4 +1,5 @@
 import { api, ApiError } from './client';
+import { parkCacheTag } from './park-live-projection';
 import { withAttractionCoordinates, withParkCoordinates } from './coordinates';
 import type {
   ParkSeason,
@@ -10,6 +11,18 @@ import type {
   ScheduleItem,
   InfluencingHoliday,
 } from './types';
+
+/**
+ * The live poll's projection and its merge live in their own module — they are pure functions over
+ * the park shape, and this one reaches the network. Re-exported here because every call site knows
+ * them as `@/lib/api/parks`, and because `parkCacheTag` is used by the fetch below.
+ */
+export { parkCacheTag, leanParkForLivePoll, mergeLiveParkSnapshot } from './park-live-projection';
+export type {
+  LiveAttractionSnapshot,
+  LiveRestaurantSnapshot,
+  LiveParkSnapshot,
+} from './park-live-projection';
 
 // Data-cache (`fetch` `next: { revalidate }`) windows for the park/attraction structure fetch.
 // The park & attraction PAGES are `force-dynamic` (rendered per request → no per-URL ISR shell
@@ -100,124 +113,6 @@ function leanParkForShell(park: ParkWithAttractions): ParkWithAttractions {
       delete statsLean.history; // sparkline series — re-supplied by the live poll, not needed in HTML
       return { ...a, statistics: statsLean };
     }),
-  };
-}
-
-/**
- * The park poll's response: only what can change between two polls.
- *
- * `useLiveParkData` re-downloads the park every 5 minutes for as long as a tab is open, and it
- * used to fetch the whole thing — 90 KB on Phantasialand, of which ~50 KB cannot move within five
- * minutes and is already sitting in the page the visitor is looking at:
- *
- *     attractions[] static  27.6 KB   restaurants[46]   9.7 KB
- *     schedule[17]           5.6 KB   shows[4]          1.3 KB
- *
- * So the poll answers with this projection instead and `mergeLiveParkSnapshot` lays it back over
- * the server-rendered park, which gives every consumer the same complete `ParkWithAttractions`
- * they had before. Identity fields (id/name/slug/land) ride along deliberately: they cost 4 KB and
- * they are what lets the poll still surface a ride that opened since the page was rendered,
- * instead of the merge silently dropping it.
- *
- * A field belongs here only if a five-minute-old value would be WRONG on screen. Ride photos are
- * the odd one out — `backgroundImage`/`backgroundPosition` are attached by the /api/parks proxy
- * (the media catalog can't cross into a Client Component), and the park page's cards genuinely
- * have no photo until this response lands.
- */
-export interface LiveAttractionSnapshot {
-  id: string;
-  name: string;
-  slug: string;
-  land: string | null;
-  status?: ParkAttraction['status'];
-  /** Not on `ParkAttraction`; `attraction-card` reads it via an `in` check. */
-  effectiveStatus?: ParkAttraction['status'];
-  crowdLevel?: ParkAttraction['crowdLevel'];
-  trend?: ParkAttraction['trend'];
-  queues?: ParkAttraction['queues'];
-  statistics?: ParkAttraction['statistics'];
-  bestVisitTimes?: ParkAttraction['bestVisitTimes'];
-  backgroundImage?: string | null;
-  backgroundPosition?: string;
-}
-
-export interface LiveParkSnapshot {
-  status?: ParkWithAttractions['status'];
-  timezone?: string;
-  hasOperatingSchedule?: boolean;
-  currentLoad?: ParkWithAttractions['currentLoad'];
-  analytics?: ParkWithAttractions['analytics'];
-  weather?: ParkWithAttractions['weather'];
-  nextSchedule?: ParkWithAttractions['nextSchedule'];
-  attractions: LiveAttractionSnapshot[];
-}
-
-/**
- * Project a park down to {@link LiveParkSnapshot}.
- *
- * Note what is NOT here. `schedule` looks live but every consumer already receives it as a prop
- * from the (per-request, force-dynamic) server render and falls back to that prop — the poll
- * copy was never the one on screen. `ropeDrop`/`typicalWaits`/`rideProfile` are derived from
- * months of history and move once a day at most. `comparison` and `baseline` come down from the
- * API on every attraction and nothing in the app has ever rendered them.
- */
-export function leanParkForLivePoll(park: ParkWithAttractions): LiveParkSnapshot {
-  return {
-    status: park.status,
-    timezone: park.timezone,
-    hasOperatingSchedule: park.hasOperatingSchedule,
-    currentLoad: park.currentLoad,
-    analytics: park.analytics,
-    weather: park.weather,
-    nextSchedule: park.nextSchedule,
-    attractions: (park.attractions ?? []).map((a) => ({
-      id: a.id,
-      name: a.name,
-      slug: a.slug,
-      land: a.land,
-      status: a.status,
-      effectiveStatus: (a as { effectiveStatus?: ParkAttraction['status'] }).effectiveStatus,
-      crowdLevel: a.crowdLevel,
-      trend: a.trend,
-      queues: a.queues,
-      statistics: a.statistics,
-      bestVisitTimes: a.bestVisitTimes,
-    })),
-  };
-}
-
-/**
- * Lay a {@link LiveParkSnapshot} back over the server-rendered park.
- *
- * Attraction order and membership come from the SNAPSHOT (so a ride that opened, closed or was
- * renamed upstream still appears/disappears within one poll, exactly as when the poll returned
- * the whole park); the static fields for each one come from `base`. A ride the snapshot has and
- * `base` doesn't renders from the snapshot alone — it has name, slug, land and a photo, which is
- * everything the card needs.
- *
- * Tolerant on purpose: with no `base` it returns the snapshot as-is (consumers that subscribe
- * without an `initialData` seed read only park-level live fields and carry their own props for
- * the rest), and passing a full park as the snapshot is a no-op, which is what makes it safe to
- * run over React Query's `initialData` before the first poll lands.
- */
-export function mergeLiveParkSnapshot(
-  base: ParkWithAttractions | undefined,
-  live: LiveParkSnapshot
-): ParkWithAttractions {
-  if (!base) return live as unknown as ParkWithAttractions;
-  // React Query seeds the cache with the full park, so the first `select` runs base over itself.
-  // Returning it untouched keeps the attraction array's identity, which is what `LiveParkData`
-  // compares to decide whether to re-group the grid by land.
-  if ((live as unknown) === base) return base;
-  if (!Array.isArray(live.attractions)) return { ...base, ...live, attractions: base.attractions };
-
-  const staticById = new Map(base.attractions.map((a) => [a.id, a]));
-  return {
-    ...base,
-    ...live,
-    attractions: live.attractions.map(
-      (a) => ({ ...staticById.get(a.id), ...a }) as unknown as ParkAttraction
-    ),
   };
 }
 
@@ -364,7 +259,14 @@ async function fetchParkByGeoPath(
     const park = withParkCoordinates(
       await api.get<ParkWithAttractions>(
         `/v1/parks/${continent}/${country}/${city}/${parkSlug}`,
-        fresh ? { cache: 'no-store' } : { next: { revalidate: PARK_REVALIDATE, tags: ['parks'] } }
+        fresh
+          ? { cache: 'no-store' }
+          : {
+              next: {
+                revalidate: PARK_REVALIDATE,
+                tags: ['parks', parkCacheTag(continent, country, city, parkSlug)],
+              },
+            }
       )
     );
     // The ISR shell gets the aggressive trim (drops statistics.history — the biggest size-weighted

@@ -47,7 +47,15 @@ export async function GET(
 
       // Only the fields that can change between two polls — the client lays them back over the
       // park it was server-rendered with (see leanParkForLivePoll / mergeLiveParkSnapshot).
-      const snapshot = leanParkForLivePoll(simulated);
+      //
+      // `?full=1` adds the day-scoped block (shows + restaurant status). The client asks for it on
+      // its first poll and roughly every half hour after that, because those two are the only
+      // things on the page that neither the server render nor a normal poll keeps honest: the
+      // render's copy is up to PARK_REVALIDATE old and the poll never carried them. It costs
+      // nothing upstream — the fetch above is the same request either way.
+      const snapshot = leanParkForLivePoll(simulated, {
+        daily: request.nextUrl.searchParams.get('full') === '1',
+      });
 
       // Attach each ride's photo and focal point here, on the server. The park page's
       // attraction grid is a Client Component fed by this poll, so resolving them in
