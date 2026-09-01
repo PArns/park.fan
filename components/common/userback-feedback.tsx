@@ -85,7 +85,16 @@ export function UserbackFeedback({ locale }: Props) {
       onClick={handleClick}
       disabled={loading}
       aria-label={t('aria')}
-      className="fixed right-4 bottom-4 z-40 rounded-full shadow-lg"
+      // `hidden sm:inline-flex`, and this one is a judgement call rather than a measurement.
+      // On a phone this button was ~110 × 36 px parked over the bottom-right corner of the
+      // content on all ~35,000 pages, with no `sm:` gate anywhere — and on the homepage it was
+      // unreachable anyway: `components/common/location-banner.tsx` is also `z-40`, also fixed to
+      // the bottom, and renders LATER in the DOM (inside `children`, while this sits in the
+      // layout), so with equal z-index its card painted straight over it. The Userback dialog it
+      // opens is desktop-shaped, so the phone was losing a corner of every page for a control
+      // that half the time could not be pressed. Flip this back if mobile feedback matters more
+      // than the corner — then it needs a z-index above the banner, not just a gate.
+      className="fixed right-4 bottom-4 z-40 hidden rounded-full shadow-lg sm:inline-flex"
     >
       {loading ? (
         <Loader2 className="animate-spin" aria-hidden="true" />

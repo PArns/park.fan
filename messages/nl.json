@@ -1722,7 +1722,11 @@
       "postsCount": "{count, plural, =1 {# artikel} other {# artikelen}}",
       "cloudTitle": "Onderwerpen"
     },
-    "featured": "Uitgelicht"
+    "featured": "Uitgelicht",
+    "video": {
+      "play": "Video afspelen",
+      "playHint": "Laadt de YouTube-speler pas als je tikt."
+    }
   },
   "contribute": {
     "gallery": {

@@ -10,7 +10,7 @@ import { getRideCountsByTerm } from '@/lib/api/glossary-rides';
 import { GlossaryBackground } from '@/components/glossary/glossary-background';
 import { GlossaryStructuredData } from '@/components/seo/glossary-structured-data';
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import type { GlossaryCategory, GlossaryTermWithEnName } from '@/lib/glossary/types';
+import type { GlossaryCategory, GlossaryTermListItem } from '@/lib/glossary/types';
 import type { Metadata } from 'next';
 import type { Locale } from '@/i18n/config';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
@@ -96,10 +96,18 @@ export default async function GlossaryPage({ params }: GlossaryPageProps) {
   const enNameMap = new Map(enTerms.map((t) => [t.id, t.name]));
 
   // Group by category, sort alphabetically within each group
-  const grouped = new Map<GlossaryCategory, GlossaryTermWithEnName[]>();
+  const grouped = new Map<GlossaryCategory, GlossaryTermListItem[]>();
   for (const term of terms) {
-    const withEnName: GlossaryTermWithEnName = {
-      ...term,
+    // Named fields, not `...term`: everything handed to a Client Component is serialized into
+    // this page's RSC payload and its HTML, ×6 locales, and the spread carried `definition`,
+    // `relatedTermIds`, `aliases`, `alternateNames` and a six-locale `slugs` record for all 274
+    // terms — none of which the client reads. See `GlossaryTermListItem`.
+    const withEnName: GlossaryTermListItem = {
+      id: term.id,
+      name: term.name,
+      shortDefinition: term.shortDefinition,
+      slug: term.slug,
+      player: term.player,
       enName: enNameMap.get(term.id) ?? term.name,
     };
     const existing = grouped.get(term.category) ?? [];

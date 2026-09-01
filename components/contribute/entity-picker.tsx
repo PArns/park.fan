@@ -116,8 +116,12 @@ export function EntityPicker({ value, onChange, disabled }: EntityPickerProps) {
           <Icon className="size-5" />
         </div>
         <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-2">
-            <span className="truncate font-semibold">{value.name}</span>
+          {/* `flex-wrap`: the badge is `shrink-0` and „Attraktion" is ~90 px of a ~200 px text
+              column at 375 px, so the ride's own name — the thing the chip exists to confirm —
+              was the only part that gave way and truncated to a few characters. Wrapping lets it
+              drop to a second line instead, and the name gets the whole width. */}
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="min-w-0 truncate font-semibold">{value.name}</span>
             <Badge variant="secondary" className="shrink-0 capitalize">
               {t(value.type)}
             </Badge>

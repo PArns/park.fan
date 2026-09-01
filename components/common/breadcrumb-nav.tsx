@@ -209,9 +209,22 @@ export function BreadcrumbNav({
           <Separator />
           <button
             onClick={() => setUserExpanded(true)}
-            // ~21 × 14 px, and it exists ONLY where the trail collapses — which is the phone.
+            // ~17 × 14 px, and it exists ONLY where the trail collapses — which is the phone.
             // The one control on the page that a mouse never meets was the smallest one there.
-            className="hover:text-foreground inline-flex shrink-0 cursor-pointer items-center justify-center rounded px-1 leading-none tracking-widest max-sm:min-h-11 max-sm:min-w-11"
+            //
+            // The target grows, the BOX does not, and that distinction is the whole point: a
+            // `min-h-11` made this 44 px tall in a row of 20 px links, and since the button is
+            // only mounted once the client has measured the overflow, the breadcrumb grew ~24 px
+            // AFTER paint — 0.0227 of layout shift on a blog post, measured, where the row had
+            // been still. A pseudo-element takes the finger instead and the row keeps its height.
+            //
+            // Measured with `elementFromPoint`, the reach is ~41 × 30 px rather than the 45 × 44
+            // the `-inset-3` would suggest: this nav is `overflow-hidden` (load-bearing — see the
+            // note on the `<nav>`), so it clips the pseudo-element to its own 30 px. Growing past
+            // that means touching that clip, which is what keeps ~578 px of crumbs inside a
+            // 390 px viewport before the effect has collapsed them. 41 × 30 against 17 × 14 is
+            // the trade taken here.
+            className="hover:text-foreground relative inline-flex shrink-0 cursor-pointer items-center justify-center rounded px-1 leading-none tracking-widest max-sm:after:absolute max-sm:after:-inset-3 max-sm:after:content-['']"
             aria-label="Show full breadcrumb path"
           >
             &hellip;

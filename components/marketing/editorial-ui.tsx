@@ -73,11 +73,21 @@ export function Hero({
         flowInto ? 'items-start sm:items-end' : 'items-end'
       )}
     >
+      {/* `sizes="100vw"` is right and stays — this photo really does span the viewport, so a
+          DPR-3 phone asking for w=1200 is asking for what it will draw. The lever is the
+          QUALITY. It is the LCP element on all five full-bleed heroes, it carries two gradient
+          tints and a headline over it, and nothing in it is read for detail. Measured on the
+          Europa-Park background (the source is ~1200 px wide, so every larger width returns the
+          same file): q75 is 45,921 B and q60 is 30,607 B at w=1200, 33,345 → 22,406 at w=828.
+          15 KB off the largest paint a phone waits for, for a difference nobody can see through
+          the tint. `60` is in `images.qualities` (next.config.ts) — a value that is not would be
+          rejected at request time. */}
       <Image
         src={imageSrc}
         alt={imageAlt}
         fill
         priority
+        quality={60}
         sizes="100vw"
         className="object-cover motion-safe:scale-105"
       />

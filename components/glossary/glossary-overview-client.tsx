@@ -6,7 +6,7 @@ import { Search, BookOpen, X, Tag, Rotate3d } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { GlossaryTermCard } from './glossary-term-card';
-import type { GlossaryTermWithEnName, GlossaryCategory } from '@/lib/glossary/types';
+import type { GlossaryTermListItem, GlossaryCategory } from '@/lib/glossary/types';
 import type { Locale } from '@/i18n/config';
 import type { Breadcrumb } from '@/lib/api/types';
 import { cn } from '@/lib/utils';
@@ -15,7 +15,7 @@ import { trackGlossaryCategoryFiltered, trackGlossarySearched } from '@/lib/anal
 interface CategoryGroup {
   category: GlossaryCategory;
   categoryLabel: string;
-  terms: GlossaryTermWithEnName[];
+  terms: GlossaryTermListItem[];
 }
 
 interface GlossaryOverviewClientProps {

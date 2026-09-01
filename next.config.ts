@@ -105,6 +105,17 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: '**.park.fan',
       },
+      {
+        // YouTube poster frames, for the facade in components/blog/blog-youtube-embed.tsx.
+        // Routed through the optimizer ON PURPOSE rather than pointed at directly: the whole
+        // point of the facade is that a reader who never presses play never talks to Google, and
+        // an `<img src="https://i.ytimg.com/…">` would hand them a request on page load instead
+        // of on the tap. Our server fetches it, the browser sees our origin — and gets AVIF at
+        // the size it will draw rather than a 480×360 JPEG.
+        protocol: 'https',
+        hostname: 'i.ytimg.com',
+        pathname: '/vi/**',
+      },
     ],
   },
   async redirects() {

@@ -64,7 +64,10 @@ export function LocationBanner({ ariaLabel }: LocationBannerProps) {
             } catch {}
           }}
           aria-label={tCommon('close')}
-          className="text-muted-foreground hover:text-foreground hover:bg-muted absolute top-2 right-2 rounded-md p-1 transition-colors"
+          // 24 px (a 16 px glyph in `p-1`), and it is the only way out of a toast that covers the
+          // bottom of the homepage. 44 px below `sm`; the card's `pr-9` already keeps the text
+          // clear of it, and the glyph does not move.
+          className="text-muted-foreground hover:text-foreground hover:bg-muted absolute top-2 right-2 inline-flex items-center justify-center rounded-md p-1 transition-colors max-sm:min-h-11 max-sm:min-w-11"
         >
           <X className="h-4 w-4" />
         </button>

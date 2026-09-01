@@ -56,8 +56,19 @@ export function BlogPostBanner({ post, currentLocale, kicker }: BlogPostBannerPr
 
   return (
     <header className="relative isolate -mt-12 flex min-h-[58vh] items-start overflow-hidden sm:min-h-[66vh] sm:items-end">
+      {/* `quality={60}` on the cover: it is the LCP element, full-bleed under a tint and a
+          headline. See the shared `Hero` in components/marketing/editorial-ui.tsx for the
+          measured numbers. */}
       {cover ? (
-        <Image src={cover} alt={coverAlt} fill priority sizes="100vw" className="object-cover" />
+        <Image
+          src={cover}
+          alt={coverAlt}
+          fill
+          priority
+          quality={60}
+          sizes="100vw"
+          className="object-cover"
+        />
       ) : (
         <div className="from-primary/15 via-background to-muted absolute inset-0 bg-gradient-to-br" />
       )}
