@@ -76,15 +76,34 @@ export function parkCalendarPath(
  *
  * Not a taste call: the API answers `/calendar` for any range, and past a park's published season
  * it answers every day `CLOSED` — measured on Phantasialand, March 2027 came back as 31 closed
- * days with no hours, no weather and no forecast. So the route has to stop somewhere, and 12 back
- * / 12 forward is where the data still says something: a year back for "how was it", a year ahead
- * for planning.
+ * days with no hours, no weather and no forecast. So the route has to stop somewhere.
  *
  * Counted in months rather than in years on purpose. A year-based check (`back: 1, forward: 2`)
  * reads as "a year and a bit" and serves up to three years in December — 212 parks × 6 locales ×
  * 36 months is ~46k indexable URLs, most of them an all-CLOSED grid under a real-looking title.
+ *
+ * **The two halves are not symmetric, because the question is not symmetric.** Forward is the
+ * planning surface and stays at twelve; it is already trimmed per park by `scheduleCoverage`
+ * (see {@link parkCalendarMonthsForward}), so a park that has not published 2027 does not
+ * advertise it. Backward was twelve for "how was it", and three measurements said that was the
+ * expensive half of a question nobody asks:
+ *
+ * 1. On 2026-09-01 the calendar sitemap held 2,007 URLs per locale and **1,491 of them — 74 % —
+ *    were past months**, on the route that is 36 % of production traffic and the most expensive
+ *    one the site has (~158 ms Active CPU, 553 MB egress per 12 h).
+ * 2. The backend warms `/calendar` for −1…+3 months only. Outside that window it costs **15–20 s
+ *    cold against 0.4–0.9 s warm** — so every month the sitemap advertised past −3 was a
+ *    guaranteed cold path, 213 parks × 6 locales of them, offered to crawlers on purpose.
+ * 3. It was about to get worse without an edit. The cap is a ceiling on
+ *    {@link parkCalendarMonthsBack}, which grows as the archive fills; on 2026-09-01 only eight
+ *    months were available, so a twelve-month cap would have taken the calendar surface from
+ *    12,042 to ~17,200 URLs by January 2027 on its own.
+ *
+ * Three keeps the months a visitor might actually compare against ("wie voll war es letzten
+ * Monat") and matches the window the backend keeps warm. Months that fall out do not 404: the
+ * route 301s them to the hub, which is what already happens whenever this number moves.
  */
-export const PARK_CALENDAR_MONTH_SPAN = { back: 12, forward: 12 } as const;
+export const PARK_CALENDAR_MONTH_SPAN = { back: 3, forward: 12 } as const;
 
 /**
  * The first day the wait-time archive holds anything at all.
