@@ -132,12 +132,14 @@ So the block travels on request. `leanParkForLivePoll(park, { daily: true })` ad
 turns `?full=1` into that flag, and `useLiveParkData` asks for it on a tab's first poll, every 30
 minutes after, and once more whenever the park's own status flips. **Upstream this is free** — the
 proxy fetches the whole park on every poll either way and used to drop the block on the floor; the
-only cost is ~4 KB to the browser twice an hour instead of twelve times.
+only cost is 5.1 KB to the browser twice an hour instead of twelve times — ~10 KB an hour rather
+than ~61. (Measured against a running server: a normal poll is 41.6 KB and carries neither key, a
+`?full=1` poll 46.9 KB.)
 
 Shows go over whole and restaurants projected, because membership differs: the API drops a show
 with no showtimes today, so the set is itself a statement about today and the merge replaces it
 wholesale. Restaurants keep theirs, so only `status`/`waitTime`/`partySize`/`operatingHours` ride
-along and the card reads name, slug and coordinates from the server render — 3.1 KB against 9.9.
+along and the card reads name, slug and coordinates from the server render — 4.0 KB against 9.9.
 An absent block means unchanged, never empty, and the hook carries the freshest one it has seen
 into the next cached snapshot so a lean poll cannot fall back to the morning copy.
 `pnpm test:live-park-daily-block` pins all of that.

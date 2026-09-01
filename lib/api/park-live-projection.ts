@@ -65,7 +65,7 @@ export interface LiveAttractionSnapshot {
 /**
  * The volatile half of a restaurant. Name, slug and coordinates come from the server render and
  * are what makes this worth projecting: the 46 restaurants of Phantasialand are 9.9 KB whole and
- * 3.1 KB reduced to what can move.
+ * 4.0 KB reduced to what can move (measured on the response, not the type).
  */
 export interface LiveRestaurantSnapshot {
   id: string;
@@ -115,7 +115,7 @@ export interface LiveParkSnapshot {
  * a show that has no showtimes today, so the set itself is a daily fact and the merge replaces it
  * wholesale (4 shows are 1.25 KB, and a name is not optional when the card has nothing else to
  * render). Restaurants keep their membership and only their status moves, so name, slug and
- * coordinates stay in the server render — 9.9 KB against 3.1.
+ * coordinates stay in the server render — 9.9 KB against 4.0.
  */
 export function leanParkForLivePoll(
   park: ParkWithAttractions,
