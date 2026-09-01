@@ -16,6 +16,22 @@ import { ChapterHeading } from '@/components/common/chapter-heading';
 // page and the "best time to visit" hub so both read as one design system.
 
 // ── Full-bleed hero ──────────────────────────────────────────────────────────
+
+/**
+ * What the section after a `flowInto` hero must carry, so it overlaps the lower
+ * part of the photo on a phone and sits normally from `sm` up.
+ *
+ * It pairs with the hero's own mobile bottom padding (`pb-48`, 192px) and the two
+ * numbers are an invariant, not a coincidence: **the padding must exceed the pull.**
+ * That is what makes the overlap safe in every language at every width without
+ * anyone measuring a headline. The hero is `max(78vh, its content + padding)` tall
+ * and the pull is measured from its bottom edge, so a long headline grows the hero
+ * and carries the pulled-up section down with it — 192 − 176 = 16px of clearance,
+ * always. Tuned by hand it was not: at 360px the German tagline ran 10px _past_ the
+ * first card while French had 117px to spare.
+ */
+export const HERO_FLOW_INTO_PULL = '-mt-44 sm:mt-0';
+
 export function Hero({
   kicker,
   title,
@@ -25,6 +41,7 @@ export function Hero({
   stats,
   scrollLabel,
   titleClassName = 'text-6xl font-black tracking-tight sm:text-8xl',
+  flowInto = false,
 }: {
   kicker: string;
   title: string;
@@ -35,9 +52,27 @@ export function Hero({
   scrollLabel: string;
   /** Override the h1 size — long titles (the hub) want a smaller scale than "Fancast". */
   titleClassName?: string;
+  /**
+   * Let the page's own content flow into the hero below `sm`.
+   *
+   * `min-h-[78vh]` + `items-end` is 658px on a phone with the headline pinned to
+   * the bottom of it, so a listing page spends its whole first screen on one
+   * picture and a title. With this set the headline moves to the TOP on a phone
+   * and the page pulls its first section up over the lower half of the photo —
+   * the image keeps every pixel of its height, the empty part of it just stops
+   * being empty. The caller owns the pull (a negative margin) because only it
+   * knows what comes next; the hero's part is the alignment, the tint and the
+   * scroll cue.
+   */
+  flowInto?: boolean;
 }) {
   return (
-    <header className="relative isolate -mt-12 flex min-h-[78vh] items-end overflow-hidden">
+    <header
+      className={cn(
+        'relative isolate -mt-12 flex min-h-[78vh] overflow-hidden',
+        flowInto ? 'items-start sm:items-end' : 'items-end'
+      )}
+    >
       <Image
         src={imageSrc}
         alt={imageAlt}
@@ -58,8 +93,25 @@ export function Hero({
         aria-hidden
         className="from-background/40 pointer-events-none absolute inset-0 bg-gradient-to-r to-transparent"
       />
+      {/* The tint above fades UP from the bottom, because the headline used to sit
+          there. Moved to the top on a phone it would sit on the one part of the
+          photo that is barely tinted at all (`to-background/20`), so `flowInto`
+          adds the mirror image of that fade — phones only, and only over the top
+          third, so the middle of the picture stays a picture. */}
+      {flowInto && (
+        <div
+          aria-hidden
+          className="from-background pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b to-transparent sm:hidden"
+        />
+      )}
 
-      <div className="text-foreground relative container mx-auto px-4 pt-32 pb-16 sm:pb-24">
+      <div
+        className={cn(
+          'text-foreground relative container mx-auto px-4 pt-32 sm:pb-24',
+          // 192px, and it has to stay larger than HERO_FLOW_INTO_PULL — see there.
+          flowInto ? 'pb-48' : 'pb-16'
+        )}
+      >
         <Reveal>
           <p className="text-foreground/70 mb-3 flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase">
             <span className="bg-primary inline-block h-2 w-2 rounded-full" />
@@ -89,7 +141,14 @@ export function Hero({
         )}
       </div>
 
-      <ScrollCue label={scrollLabel} />
+      {/* The cue points at content that is already on screen once it flows in. */}
+      {flowInto ? (
+        <div className="hidden sm:block">
+          <ScrollCue label={scrollLabel} />
+        </div>
+      ) : (
+        <ScrollCue label={scrollLabel} />
+      )}
     </header>
   );
 }

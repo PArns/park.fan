@@ -220,6 +220,34 @@ but a phone reader now has no way to jump between chapters, which is the trade t
 posts get longer. The markup still ships (it is `display:none`, not removed), so the anchors stay
 in the HTML.
 
+### The blog index flows into its hero
+
+`Hero` is `min-h-[78vh]` with `items-end`, so on a 390 px phone it is 658 px with the headline
+pinned to the bottom of it: a listing page spending its entire first screen on one picture and a
+title, with the first card at 658 px. The picture is not the problem — losing the screen to the
+empty half of it is. `flowInto` (blog index only; Fancast and the best-time hub keep the original)
+moves the headline to the **top** below `sm` and lets the page pull its own first section up over
+the lower half of the photo. The image keeps every pixel of its height; `#start` moves 658 → 482.
+
+Three things it has to do, and each fixed something real:
+
+- **The tint has to move with the headline.** The existing fade runs _upward_ (`to-background/20`
+  at the top) because the text used to sit at the bottom. At the top the headline would land on the
+  one part of the photo that is barely tinted, so `flowInto` adds the mirror of that fade over the
+  top third, phones only, leaving the middle of the picture a picture.
+- **The overlap is safe by construction, not by measurement.** `HERO_FLOW_INTO_PULL` (`-mt-44`,
+  176 px) pairs with the hero's own mobile `pb-48` (192 px) and **the padding must stay larger than
+  the pull**. The hero is `max(78vh, content + padding)` tall and the pull is measured from its
+  bottom edge, so a long headline grows the hero and carries the pulled-up section down with it —
+  192 − 176 = 16 px of clearance, in every language at every width. Hand-tuned it was wrong
+  immediately: at 360 px the German tagline ran **10 px past** the first card while French had
+  117 px to spare. Measured after the fix, the minimum across six locales × 320/360/390/430 px is
+  16 px and never negative.
+- **The scroll cue goes.** It points at content that is already on screen.
+
+The section doing the pulling needs `relative` — the hero is `isolate`, and without it the cards
+render under the photo.
+
 ## Chapter headings
 
 One component opens every chapter on the site: `ChapterHeading`
