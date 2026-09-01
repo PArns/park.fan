@@ -35,10 +35,24 @@ export function AttractionHistorySectionsSkeleton() {
           </div>
 
           {/* Same grid, same day count, same card height as the real one. 31 = today plus the
-              30 days back that the grid builds; the card height is measured, not guessed. */}
+              30 days back that the grid builds.
+
+              The height is FOUR numbers because a day card has no fixed height: it is a label
+              row over a bar chart in a cell whose width the column count decides, so it grows
+              as the cells get narrower. One `h-[142px]` for every width was right at ≥1280 and
+              wrong everywhere else — the grid measured 2261/908/793/718 px against a
+              2392/742/742/742 px reservation, i.e. the section came out 135 px too tall on a
+              phone and 166 px too SHORT between 768 and 1023, where the layout switches to
+              seven columns before the cells are wide enough to keep the cards flat. Measured
+              per breakpoint off the real grid (`div.grid` in <AttractionHistoryGrid>, height
+              divided by its row count) — re-measure after changing the day card, because
+              nothing else will notice. */}
           <div className="grid grid-cols-2 gap-2 md:grid-cols-7">
             {Array.from({ length: 31 }).map((_, i) => (
-              <Skeleton key={i} className="h-[142px] w-full rounded-xl" />
+              <Skeleton
+                key={i}
+                className="h-[134px] w-full rounded-xl md:h-[175px] lg:h-[152px] xl:h-[137px]"
+              />
             ))}
           </div>
         </div>

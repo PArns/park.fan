@@ -90,7 +90,17 @@ const flag = (name, fallback) => {
 };
 const has = (name) => args.includes(`--${name}`);
 
-const BASE = flag('base', process.env.CLS_BASE_URL || 'http://127.0.0.1:3000');
+/**
+ * The site to measure.
+ *
+ * `localhost`, NOT `127.0.0.1`, and that is not cosmetic: `next dev` refuses cross-origin
+ * requests for `/_next/static/chunks/*` and answers **403** when the browser's origin is not
+ * one it recognises, which `127.0.0.1` is not. Every chunk then fails, the page never
+ * hydrates, and the run happily reports a page with no client JS in it at all — three
+ * consecutive "CLS 0.0000" verdicts on a page the field scores above 0.25. See
+ * `assertMeasurable`, which now refuses that run instead of grading it.
+ */
+const BASE = flag('base', process.env.CLS_BASE_URL || 'http://localhost:3000');
 const AS_JSON = has('json');
 const SETTLE_MS = Number(flag('settle', '9000'));
 /** Ignore sub-pixel noise and rounding; below this nothing is worth reporting. */
@@ -283,6 +293,43 @@ function dedupeToCauses(rows) {
   });
 }
 
+/**
+ * Refuse to grade a run that did not measure the real page.
+ *
+ * Two setups produce confident zeros, and neither announces itself:
+ *
+ * 1. **A dev server.** `next dev` injects the stylesheet through JavaScript, so the
+ *    JS-OFF pass — this script's entire model of the first paint — renders unstyled
+ *    markup. The diff then compares an unstyled document against a styled one and every
+ *    row it prints is noise (a park page reported an 8695 px "first" layout against a
+ *    4408 px settled one, all of it Tailwind that had not arrived).
+ * 2. **Chunks that 403.** See {@link BASE}.
+ *
+ * So the JS-OFF pass asserts that CSS is present (the layout sets `font-sans` on `<body>`;
+ * with no stylesheet the browser falls back to its serif default) and every pass asserts
+ * that no `/_next/` subresource failed. Both are properties of the page under test rather
+ * than a version sniff, so they also catch a build that was never run.
+ */
+function assertMeasurable({ url, js, failed, bodyFont }) {
+  if (failed.length) {
+    const [first] = failed;
+    throw new Error(
+      `${url}: ${failed.length} subresource(s) failed (${first.status} ${first.url}).\n` +
+        `  A 403 on /_next/static/chunks means a \`next dev\` server reached over an origin it\n` +
+        `  does not accept — measure a production build (\`pnpm build && pnpm start\`) and use\n` +
+        `  --base=http://localhost:3000, never 127.0.0.1.`
+    );
+  }
+  if (!js && bodyFont && /^(times|serif$)/i.test(bodyFont.trim())) {
+    throw new Error(
+      `${url}: the JS-off pass rendered without CSS (body font "${bodyFont}").\n` +
+        `  \`next dev\` ships the stylesheet through JavaScript, so its first-paint layout is\n` +
+        `  unstyled and every row this script prints against it is noise. Measure a production\n` +
+        `  build: pnpm build && pnpm start.`
+    );
+  }
+}
+
 async function layoutFor(browser, url, viewport, js, blockImages = false) {
   const ctx = await browser.newContext({
     viewport: { width: viewport.width, height: viewport.height },
@@ -292,6 +339,12 @@ async function layoutFor(browser, url, viewport, js, blockImages = false) {
     extraHTTPHeaders: { 'x-forwarded-for': CLIENT_IP },
   });
   const page = await ctx.newPage();
+  const failed = [];
+  page.on('response', (r) => {
+    if (r.status() >= 400 && new URL(r.url()).pathname.startsWith('/_next/')) {
+      failed.push({ status: r.status(), url: r.url() });
+    }
+  });
   try {
     if (blockImages) {
       // Not a network-speed simulation: the point is the space an element occupies while
@@ -303,6 +356,8 @@ async function layoutFor(browser, url, viewport, js, blockImages = false) {
     }
     await page.goto(url, { waitUntil: js ? 'domcontentloaded' : 'load', timeout: 90000 });
     await page.waitForTimeout(js ? SETTLE_MS : 800);
+    const bodyFont = await page.evaluate(() => getComputedStyle(document.body).fontFamily);
+    assertMeasurable({ url, js, failed, bodyFont });
     return await page.evaluate(collectTree);
   } finally {
     await ctx.close();
@@ -446,8 +501,17 @@ if (LATE_MS > 0) {
         page.on('console', (m) => {
           if (m.type() === 'error') pageErrors.push(m.text().split('\n')[0].slice(0, 120));
         });
+        // Same guard as the diff mode: a chunk that 403s leaves a page that never hydrates,
+        // and an unhydrated page scores 0.0000 with nothing to say it did not measure.
+        const failed = [];
+        page.on('response', (r) => {
+          if (r.status() >= 400 && new URL(r.url()).pathname.startsWith('/_next/')) {
+            failed.push({ status: r.status(), url: r.url() });
+          }
+        });
         await page.goto(origin + splitPath, { waitUntil: 'commit', timeout: 90000 });
         await page.waitForTimeout(LATE_MS + 6000);
+        assertMeasurable({ url, js: true, failed });
         const entries = await page.evaluate(() => window.__cls);
         const cls = sessionWindowMax(entries);
         console.log(`  ${viewport.name.padEnd(8)} CLS ${cls.toFixed(4)}`);
