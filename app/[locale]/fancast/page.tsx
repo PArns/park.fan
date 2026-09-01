@@ -11,7 +11,8 @@ import { getOgImageUrl } from '@/lib/utils/og-image';
 import { ArticleStructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { getMLDashboard } from '@/lib/api/ml';
 import type { ComponentType } from 'react';
-import { Hero } from './_fancast-ui';
+import { Hero, HERO_FLOW_INTO_PULL } from './_fancast-ui';
+import { cn } from '@/lib/utils';
 import { RouteMessages } from '@/i18n/route-messages';
 
 // Lazy per-locale loaders so only the requested language's content module is
@@ -299,9 +300,18 @@ export default async function FancastPage({ params }: FancastPageProps) {
           imageAlt="Voltron Nevera powered by Rimac im Europa-Park"
           stats={stats}
           scrollLabel={header.scrollLabel}
+          flowInto
         />
 
-        <div id="start" className="space-y-20 py-16 sm:space-y-28 sm:py-24">
+        {/* Pulled up over the hero on phones — see `HERO_FLOW_INTO_PULL`, which
+            owns the number so it stays paired with the hero's bottom padding. */}
+        <div
+          id="start"
+          className={cn(
+            'relative space-y-20 pt-0 pb-16 sm:space-y-28 sm:py-24',
+            HERO_FLOW_INTO_PULL
+          )}
+        >
           <Content />
         </div>
       </>

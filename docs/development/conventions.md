@@ -182,6 +182,41 @@ Two things stay fine as they are:
   `TooltipTrigger` on the `/ui` showcase page — it renders to a host `<button>` before the Slot
   ever sees it.
 
+## 15. A client-only preference may not decide server-rendered markup
+
+The °C/°F pick lives in the browser (a cookie, or the visitor's locale). The pages are statically
+cached, so the server cannot know it — which is why temperatures are server-rendered in **both**
+units and an inline script in the root layout sets `html[data-temp-unit]` before paint, with CSS
+(`.u-metric` / `.u-imperial`) showing one. No React state, no flash.
+
+The °C/°F toggle itself broke that rule and branched on the value during render. That looks like a
+flash bug and is a hydration bug:
+
+```
++ aria-pressed={false}    // client
+- aria-pressed="true"     // server
+```
+
+Hydration is not one pass. Boundaries commit separately, so the provider had already resolved the
+unit to `F` while a weather widget further down the article was still waiting to hydrate; that
+widget was then hydrated against `F` over server markup that said `C`. React logs the whole subtree
+and **patches nothing**, so the wrong value stays on screen.
+
+Two things follow, and the second is the one that is easy to get wrong:
+
+- **Express it in CSS where you can.** The pressed styling is `.u-unit-c` / `.u-unit-f` under
+  `html[data-temp-unit]`, beside the rules for the values themselves. A static class cannot
+  mismatch, and the pre-paint attribute has the answer before the first frame.
+- **Where you cannot, the guard has to be local to the consumer.** `aria-pressed` is not a class,
+  so it waits for the component's own mount. Fixing the _provider_ does not reach it:
+  `useSyncExternalStore`'s server snapshot covers the hook's own hydration render, not a consumer
+  that hydrates after the provider re-rendered. The provider uses it anyway — it is the right shape
+  for a value read from the DOM and the cookie, and it drops a `set-state-in-effect` exception —
+  but it is not the fix.
+
+The nowcast banner is the pattern done right by accident: it renders `null` until its clock stamps
+in an effect, so the unit never reaches its hydration output.
+
 ---
 
 ## Related

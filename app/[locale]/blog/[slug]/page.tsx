@@ -11,6 +11,8 @@ import {
 } from '@/lib/blog';
 import { BlogContent } from '@/components/blog/blog-content';
 import { BlogPostBanner } from '@/components/blog/blog-post-banner';
+import { HERO_FLOW_INTO_PULL } from '@/components/marketing/editorial-ui';
+import { cn } from '@/lib/utils';
 import { BlogLanguageNotice } from '@/components/blog/blog-language-notice';
 import { BlogToc } from '@/components/blog/blog-toc';
 import { BlogCategoryTree } from '@/components/blog/blog-category-tree';
@@ -258,7 +260,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         {/* Full-bleed cover banner — the header floats transparent over it. */}
         <BlogPostBanner post={post} currentLocale={locale as Locale} kicker={kicker} />
 
-        <PageContainer>
+        {/* Pulled up over the banner on phones — see `HERO_FLOW_INTO_PULL`, which
+            owns the number so it stays paired with the banner's bottom padding.
+            `relative` puts this above the banner's stacking context. */}
+        <PageContainer className={cn('relative pt-0 sm:pt-8', HERO_FLOW_INTO_PULL)}>
           <BlogPostingStructuredData post={post} locale={locale} path={`/blog/${post.slug}`} />
           <BreadcrumbStructuredData breadcrumbs={seoBreadcrumbs} locale={locale} />
 
@@ -271,7 +276,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             fallbackLabel={fallbackLabel}
           />
 
-          <article className="mt-6">
+          <article className="mt-4 sm:mt-6">
             <div
               className={
                 hasToc
@@ -280,9 +285,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               }
             >
               {hasToc && (
+                // Desktop only. On a phone the ToC is not a sidebar, it is a 998px
+                // block of chapter links between the breadcrumb and the first
+                // sentence — a full screen of navigation before any article. The
+                // two panels under it were already `hidden lg:block`, so this aside
+                // held nothing else on mobile.
                 <aside
                   data-toc-scroll
-                  className="blog-sidebar-scroll mb-8 space-y-6 lg:sticky lg:top-24 lg:col-start-2 lg:row-start-1 lg:mb-0 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
+                  className="blog-sidebar-scroll hidden space-y-6 lg:sticky lg:top-24 lg:col-start-2 lg:row-start-1 lg:block lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
                 >
                   <BlogToc markdown={post.content} title={post.frontmatter.title} />
                   {/* Desktop-only extras under the ToC; mobile keeps just the ToC up top */}

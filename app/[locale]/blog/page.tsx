@@ -14,11 +14,12 @@ import { BlogCategoryTree } from '@/components/blog/blog-category-tree';
 import { BlogTagCloud } from '@/components/blog/blog-tag-cloud';
 import { PageBottomSections } from '@/components/common/page-bottom-sections';
 import { BlogStructuredData } from '@/components/seo/blog-structured-data';
-import { Hero } from '@/components/marketing/editorial-ui';
+import { Hero, HERO_FLOW_INTO_PULL } from '@/components/marketing/editorial-ui';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { RouteMessages } from '@/i18n/route-messages';
 import { blogFeedAlternates } from '@/lib/blog/feed';
+import { cn } from '@/lib/utils';
 
 /** Scenic establishing shot for the blog hero (distinct from Fancast/the hub). */
 // Asked of the database, so the path carries its content version and the park can
@@ -141,9 +142,16 @@ export default async function BlogIndexPage({ params }: BlogIndexPageProps) {
           stats={[]}
           scrollLabel={SCROLL_LABELS[locale as Locale]}
           titleClassName="max-w-4xl text-4xl font-black tracking-tight sm:text-6xl"
+          flowInto
         />
 
-        <div id="start" className="container mx-auto px-4 py-10 sm:py-14">
+        {/* Pulled up over the hero on phones — see `HERO_FLOW_INTO_PULL`, which owns
+            the number so it stays paired with the hero's own bottom padding.
+            `relative` puts this above the hero's stacking context. */}
+        <div
+          id="start"
+          className={cn('relative container mx-auto px-4 pt-0 pb-10 sm:py-14', HERO_FLOW_INTO_PULL)}
+        >
           <div className="grid gap-8 lg:grid-cols-[1fr_280px]">
             <BlogPostGrid posts={visiblePosts} />
             <aside className="space-y-6 lg:sticky lg:top-20 lg:self-start">

@@ -6,6 +6,8 @@ import { getOgImageUrl } from '@/lib/utils/og-image';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { ArticleStructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { GuideHero } from './_chrome';
+import { HERO_FLOW_INTO_PULL } from '@/components/marketing/editorial-ui';
+import { cn } from '@/lib/utils';
 import { TARON_WAIT_NOW } from './_fixtures';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import type { ComponentType } from 'react';
@@ -392,7 +394,10 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
             viewport. */}
         <div
           id="start"
-          className="u-force-metric space-y-16 overflow-x-clip py-14 sm:space-y-24 sm:py-20"
+          className={cn(
+            'u-force-metric relative space-y-16 overflow-x-clip pt-0 pb-14 sm:space-y-24 sm:py-20',
+            HERO_FLOW_INTO_PULL
+          )}
         >
           <Content />
         </div>

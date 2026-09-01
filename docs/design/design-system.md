@@ -152,6 +152,116 @@ Without the blend mode the whole effect sits inside the baseline's noise. **Meas
 inside the page** if you touch it: driving the pointer with Playwright's `mouse.move` puts a CDP
 round trip between frames and invented a 20 ms regression that was not there.
 
+## The blog card is a row on phones
+
+`ParkCard`, `AttractionCard` and `BlogPostCardView` are the same object: a photo with two sheets of
+frosted glass over it, and below `sm` all three drop the photo so the card collapses onto its
+panels. For a park that leaves a name, a status badge and a wait time, which is the card's whole
+content. For a post it leaves the two panels and nothing between them — and the `-mb-4`/`-mt-4`
+they use to lay over the picture then overlap **each other** by 32 px, so the last line of the
+excerpt is painted over by the panel below it. About 200 px of card, for a title and a date, with
+the cover the post was picked for hidden and the excerpt cut off mid-sentence.
+
+So below `sm` the card is not rendered at all. `BlogPostRow` is:
+
+|        | phone                                          | `sm` and up                                                 |
+| ------ | ---------------------------------------------- | ----------------------------------------------------------- |
+| markup | `BlogPostRow` (`sm:hidden`)                    | the panelled card (`hidden sm:grid`)                        |
+| cover  | 96 × 64 thumbnail                              | full photo row, 240/360 px                                  |
+| text   | category, title (3 lines), date · reading time | category, title, excerpt, then date · reading time · author |
+
+It is the same component the `compact` variant already was — the list beside the homepage's lead
+post. The thumbnail takes the card's `objectPosition`, so a focal point tuned in the admin holds at
+96 × 64 too.
+
+**And it has no variants of its own.** The first version had two: a border and a three-line title
+where the row replaced a card, an `-mx-2` bleed and two lines where it sat in a list, reading time
+only in the first. On the homepage those two meet — below `lg` the lead post is a row and so are
+the four under it — and the lead came out inset by 8 px, boxed, and carrying a reading time its
+neighbours did not have. One row, one look; what the surrounding list wants is the list's business.
+
+**The gap belongs to the same decision.** The grids that hold these cards were spaced for cards
+(`gap-4` to `gap-6`); at that distance a column of rows reads as a stack of separate blocks rather
+than one list. They go to `gap-2` below `sm` and keep their own spacing from `sm` up —
+`BlogPostGrid`, `BlogRelatedPosts`, the park/ride and glossary sections, and both halves of
+`LatestBlogSection`'s `lead`, whose two gaps have to agree or the lead post detaches from its list.
+
+**Two markups, not one responsive tree.** The panels' glass is a block of inline styles
+(`background`, `backdropFilter`, the two inset shadows), and no breakpoint can switch an inline
+style off — expressing it as CSS a media query could reach would mean moving the park and ride
+cards' panels with it.
+
+**The hidden card must not preload a cover nobody sees.** Both photo layers claim `96px` for the
+phone segment of their `sizes` (`FEATURE_SIZES` / `CARD_SIZES`), which is what the row beside them
+actually paints. Left at `100vw`, a card marked `priority` — the first one in `BlogPostGrid` —
+preloaded a full-width cover for a `display:none` element on exactly the connection that could
+least afford it. Matching the row's `sizes` also means both elements pick the same srcset
+candidate, i.e. one request, not two.
+
+### The article page's own phone budget
+
+Same page, one screen down. Measured on a 390 px phone before this:
+
+|                            | before                                                      | after        |
+| -------------------------- | ----------------------------------------------------------- | ------------ |
+| banner                     | 642 px, of which **128 px** is empty photo above the kicker | 578 px       |
+| space above the breadcrumb | 32 px, around a 30 px pill                                  | 16 px        |
+| table of contents          | **998 px** between the breadcrumb and the first sentence    | not rendered |
+| article's first word at    | 782 px                                                      | 698 px       |
+
+The banner's `pt-32` is clearance for the 48 px header floating over the cover, and it framed
+nothing: the banner is content-driven there (642 px against a 490 px `min-h`), so the padding was
+height. It halves to `pt-20 pb-10` below `sm` and keeps `pt-32 pb-20` above.
+
+The table of contents is `hidden lg:block` now. In the sidebar it is navigation; on a phone it is a
+full screen of chapter links a reader has to scroll past to reach the article, on every post. The
+two panels under it in that `<aside>` were already `hidden lg:block`, so nothing else was lost —
+but a phone reader now has no way to jump between chapters, which is the trade to revisit if the
+posts get longer. The markup still ships (it is `display:none`, not removed), so the anchors stay
+in the HTML.
+
+### Full-bleed heroes flow into the page on phones
+
+Five pages open on a full-bleed photo header — `relative isolate -mt-12 flex min-h-[Nvh] items-end
+overflow-hidden` — and on a phone every one of them spent the whole first screen on one picture and
+a title. The picture is not the problem; losing the screen to the empty half of it is. So below
+`sm` the headline moves to the **top** and the page pulls its own first section up over the lower
+part of the photo. **The image keeps every pixel of its height** — in fact it usually gets taller,
+because the hero's mobile bottom padding grows.
+
+| page             | header                           | first content, 390 px |
+| ---------------- | -------------------------------- | --------------------- |
+| guide            | `min-h-[86vh]`, `GuideHero`      | 782 → **550**         |
+| Fancast          | `min-h-[78vh]`, shared `Hero`    | 722 → **533**         |
+| best travel time | `min-h-[78vh]`, shared `Hero`    | 714 → **553**         |
+| blog index       | `min-h-[78vh]`, shared `Hero`    | 658 → **482**         |
+| blog article     | `min-h-[58vh]`, `BlogPostBanner` | 594 → **554**         |
+
+The shared `Hero` takes it as a `flowInto` prop, because it is used by three pages; `GuideHero` and
+`BlogPostBanner` are one page each and carry it directly. Desktop is untouched everywhere — the
+alignment, the padding and the pull are all `sm`-gated, and the section after each hero still starts
+exactly at the hero's bottom edge.
+
+Three things it has to do, and each fixed something real:
+
+- **The tint has to move with the headline.** The existing fade runs _upward_ (`to-background/20`
+  at the top) because the text used to sit at the bottom. At the top the headline would land on the
+  one part of the photo that is barely tinted, so `flowInto` adds the mirror of that fade over the
+  top third, phones only, leaving the middle of the picture a picture.
+- **The overlap is safe by construction, not by measurement.** `HERO_FLOW_INTO_PULL` (`-mt-44`,
+  176 px) pairs with the hero's own mobile `pb-48` (192 px) and **the padding must stay larger than
+  the pull**. The hero is `max(78vh, content + padding)` tall and the pull is measured from its
+  bottom edge, so a long headline grows the hero and carries the pulled-up section down with it —
+  192 − 176 = 16 px of clearance, in every language at every width. Hand-tuned it was wrong
+  immediately: at 360 px the German tagline ran **10 px past** the first card while French had
+  117 px to spare. Measured after the fix, the minimum across six locales × 320/360/390/430 px is
+  16 px and never negative.
+- **The scroll cue goes.** It points at content that is already on screen. (The article banner never
+  had one.)
+
+The section doing the pulling needs `relative` — the hero is `isolate`, and without it the content
+renders under the photo.
+
 ## Chapter headings
 
 One component opens every chapter on the site: `ChapterHeading`

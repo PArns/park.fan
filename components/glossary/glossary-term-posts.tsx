@@ -56,7 +56,7 @@ export async function GlossaryTermPosts({
         <Newspaper className="text-primary h-5 w-5" aria-hidden="true" />
         <h2 className="text-lg font-bold">{t('title', { term: termName })}</h2>
       </div>
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-2 sm:grid-cols-2 sm:gap-4">
         {posts.map((post) => (
           <BlogPostCard key={post.translationKey} post={post} />
         ))}
