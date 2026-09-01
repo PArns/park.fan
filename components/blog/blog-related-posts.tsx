@@ -66,7 +66,7 @@ export async function BlogRelatedPosts({
   return (
     <section className="my-12">
       <h2 className="text-foreground mb-5 text-xl font-bold">{title ?? t('related.title')}</h2>
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-2 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
         {ranked.map((post) => (
           <BlogPostCard key={post.translationKey} post={post} />
         ))}

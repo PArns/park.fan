@@ -22,7 +22,7 @@ export function BlogPostGrid({ posts }: { posts: BlogListItem[] }) {
   }
 
   return (
-    <div className="grid gap-6 sm:grid-cols-2">
+    <div className="grid gap-2 sm:grid-cols-2 sm:gap-6">
       {posts.map((post, i) => (
         <BlogPostCard key={post.translationKey} post={post} priority={i === 0} />
       ))}

@@ -38,13 +38,15 @@ export async function LatestBlogSection({
   if (variant === 'lead') {
     const [lead, ...rest] = posts;
     return (
-      <div className="grid gap-6 lg:grid-cols-[1.5fr_1fr] lg:items-start">
+      // Below `lg` the lead post is a `BlogPostRow` too, so its gap to the four
+      // under it has to be the gap between them — at `gap-6` it read as a
+      // separate block rather than the first row of the list.
+      <div className="grid gap-2 lg:grid-cols-[1.5fr_1fr] lg:items-start lg:gap-6">
         <BlogPostCard post={lead} variant="feature" />
         {rest.length > 0 && (
-          // `gap-1`, not a divided list: the compact row already carries its own
-          // hover fill and a `-mx-2` bleed, and a border between two of them cuts
-          // straight through that fill.
-          <div className="flex flex-col gap-1">
+          // A gap, not a divided list: the row carries its own hover fill, and a
+          // border between two of them cuts straight through it.
+          <div className="flex flex-col gap-2 lg:gap-1">
             {rest.map((post) => (
               <BlogPostCard key={post.translationKey} post={post} variant="compact" />
             ))}
@@ -55,7 +57,7 @@ export async function LatestBlogSection({
   }
 
   const grid = (
-    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-2 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
       {posts.map((post) => (
         <BlogPostCard key={post.translationKey} post={post} />
       ))}

@@ -171,9 +171,20 @@ So below `sm` the card is not rendered at all. `BlogPostRow` is:
 | text   | category, title (3 lines), date · reading time | category, title, excerpt, then date · reading time · author |
 
 It is the same component the `compact` variant already was — the list beside the homepage's lead
-post — with the featured pill, the reading time and the EN fallback badge switched on (`rich`)
-where the row stands in for a whole card rather than sitting next to one. The thumbnail takes the
-card's `objectPosition`, so a focal point tuned in the admin holds at 96 × 64 too.
+post. The thumbnail takes the card's `objectPosition`, so a focal point tuned in the admin holds at
+96 × 64 too.
+
+**And it has no variants of its own.** The first version had two: a border and a three-line title
+where the row replaced a card, an `-mx-2` bleed and two lines where it sat in a list, reading time
+only in the first. On the homepage those two meet — below `lg` the lead post is a row and so are
+the four under it — and the lead came out inset by 8 px, boxed, and carrying a reading time its
+neighbours did not have. One row, one look; what the surrounding list wants is the list's business.
+
+**The gap belongs to the same decision.** The grids that hold these cards were spaced for cards
+(`gap-4` to `gap-6`); at that distance a column of rows reads as a stack of separate blocks rather
+than one list. They go to `gap-2` below `sm` and keep their own spacing from `sm` up —
+`BlogPostGrid`, `BlogRelatedPosts`, the park/ride and glossary sections, and both halves of
+`LatestBlogSection`'s `lead`, whose two gaps have to agree or the lead post detaches from its list.
 
 **Two markups, not one responsive tree.** The panels' glass is a block of inline styles
 (`background`, `backdropFilter`, the two inset shadows), and no breakpoint can switch an inline

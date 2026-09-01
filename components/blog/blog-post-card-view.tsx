@@ -79,7 +79,6 @@ export function BlogPostCardView({
         cover={cover}
         coverPosition={coverPosition}
         categoryLabel={categoryLabel}
-        bleed
         className={className}
       />
     );
@@ -98,7 +97,6 @@ export function BlogPostCardView({
         coverPosition={coverPosition}
         categoryLabel={categoryLabel}
         priority={priority}
-        rich
         className={cn('sm:hidden', className)}
       />
 
@@ -333,28 +331,24 @@ interface BlogPostRowProps {
   cover: string | null;
   coverPosition: string;
   categoryLabel: string | null;
-  /**
-   * `-mx-2` bleed instead of a border — for a row that sits in a list of its own
-   * (the homepage lead column), where a border between two rows would cut
-   * straight through the hover fill.
-   */
-  bleed?: boolean;
-  /**
-   * Reading time, the featured pill and the EN fallback badge. Set where the row
-   * stands in for the full card rather than sitting next to one.
-   */
-  rich?: boolean;
   priority?: boolean;
   className?: string;
 }
 
 /**
- * The blog post as a list row: cover thumbnail, category, title, date.
+ * The blog post as a list row: thumbnail, category, title, date and reading time.
  *
- * Two jobs, and they want the same thing. It is the `compact` variant, and it is
- * what every other variant renders below `sm` — the panelled card has no photo
- * there and nothing between its two sheets of glass, so it spends ~200px on a
- * title and a date and clips the excerpt where the panels overlap.
+ * Two jobs, one shape. It is the `compact` variant, and it is what every other
+ * variant renders below `sm` — the panelled card has no photo there and nothing
+ * between its two sheets of glass, so it spends ~200px on a title and a date and
+ * clips the excerpt where the panels overlap.
+ *
+ * **No variants of its own.** The first version had two: a border and three title
+ * lines where the row replaced a card, an `-mx-2` bleed and two lines where it sat
+ * in a list. On the homepage those meet — the lead post is a card below `sm`, the
+ * four under it are the list — and the lead came out inset by 8px, boxed, and with
+ * a reading time its neighbours did not have. One row, or the seam shows wherever
+ * the two are stacked.
  *
  * The thumbnail carries the same `objectPosition` the card uses, so a focal point
  * tuned in the admin holds at 96×64 too.
@@ -364,8 +358,6 @@ function BlogPostRow({
   cover,
   coverPosition,
   categoryLabel,
-  bleed = false,
-  rich = false,
   priority = false,
   className,
 }: BlogPostRowProps) {
@@ -379,7 +371,6 @@ function BlogPostRow({
       href={`/blog/${slug}` as '/'}
       className={cn(
         'group bg-card hover:bg-accent/30 flex items-start gap-3 rounded-lg p-2 transition-colors',
-        bleed ? '-mx-2' : 'border-border/60 border',
         className
       )}
     >
@@ -397,9 +388,9 @@ function BlogPostRow({
         </div>
       )}
       <div className="min-w-0 flex-1">
-        {(categoryLabel || (rich && frontmatter.featured)) && (
+        {(categoryLabel || frontmatter.featured) && (
           <div className="mb-0.5 flex flex-wrap items-center gap-x-2 gap-y-1">
-            {rich && frontmatter.featured && (
+            {frontmatter.featured && (
               <span
                 className="bg-primary/15 text-primary inline-flex items-center gap-0.5 rounded-full px-1.5 py-[1px] text-[9.5px] font-bold tracking-[0.06em] uppercase ring-1 ring-current/30"
                 aria-label={t('featured')}
@@ -415,28 +406,19 @@ function BlogPostRow({
             )}
           </div>
         )}
-        {/* Three lines where the row is the whole card: on a listing the title
-            is the only thing that sells the post, and German headlines run past
-            two lines at 250px. Two beside a card, where the card carries it. */}
-        <h3
-          className={cn(
-            'text-foreground group-hover:text-primary text-sm leading-tight font-semibold transition-colors',
-            rich ? 'line-clamp-3' : 'line-clamp-2'
-          )}
-        >
+        {/* Three lines, not two: the title is the only thing on a row that sells
+            the post, and a German headline runs past two lines at 250px. A short
+            one costs nothing — `line-clamp` is a ceiling, not a height. */}
+        <h3 className="text-foreground group-hover:text-primary line-clamp-3 text-sm leading-tight font-semibold transition-colors">
           {frontmatter.title}
         </h3>
         <div className="text-muted-foreground mt-1 flex flex-wrap items-center gap-x-[7px] gap-y-0.5 text-xs">
           <time dateTime={frontmatter.date}>
             {f.dateTime(date, { day: 'numeric', month: 'short', year: 'numeric' })}
           </time>
-          {rich && (
-            <>
-              <span aria-hidden="true">·</span>
-              <span>{t('readingTime', { minutes: readingTimeMinutes })}</span>
-            </>
-          )}
-          {rich && isFallback && (
+          <span aria-hidden="true">·</span>
+          <span>{t('readingTime', { minutes: readingTimeMinutes })}</span>
+          {isFallback && (
             <Badge variant="outline" className="h-4 text-[9px] tracking-wider uppercase">
               EN
             </Badge>
