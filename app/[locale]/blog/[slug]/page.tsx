@@ -258,7 +258,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         {/* Full-bleed cover banner — the header floats transparent over it. */}
         <BlogPostBanner post={post} currentLocale={locale as Locale} kicker={kicker} />
 
-        <PageContainer>
+        {/* `pt-4`, not the container's `py-8`: the banner already ends on 40px of
+            its own bottom padding, and the breadcrumb pill is 30px tall — the space
+            around it was three times the pill. */}
+        <PageContainer className="pt-4 sm:pt-8">
           <BlogPostingStructuredData post={post} locale={locale} path={`/blog/${post.slug}`} />
           <BreadcrumbStructuredData breadcrumbs={seoBreadcrumbs} locale={locale} />
 
@@ -271,7 +274,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             fallbackLabel={fallbackLabel}
           />
 
-          <article className="mt-6">
+          <article className="mt-4 sm:mt-6">
             <div
               className={
                 hasToc
@@ -280,9 +283,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               }
             >
               {hasToc && (
+                // Desktop only. On a phone the ToC is not a sidebar, it is a 998px
+                // block of chapter links between the breadcrumb and the first
+                // sentence — a full screen of navigation before any article. The
+                // two panels under it were already `hidden lg:block`, so this aside
+                // held nothing else on mobile.
                 <aside
                   data-toc-scroll
-                  className="blog-sidebar-scroll mb-8 space-y-6 lg:sticky lg:top-24 lg:col-start-2 lg:row-start-1 lg:mb-0 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
+                  className="blog-sidebar-scroll hidden space-y-6 lg:sticky lg:top-24 lg:col-start-2 lg:row-start-1 lg:block lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
                 >
                   <BlogToc markdown={post.content} title={post.frontmatter.title} />
                   {/* Desktop-only extras under the ToC; mobile keeps just the ToC up top */}

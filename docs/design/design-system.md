@@ -198,6 +198,28 @@ preloaded a full-width cover for a `display:none` element on exactly the connect
 least afford it. Matching the row's `sizes` also means both elements pick the same srcset
 candidate, i.e. one request, not two.
 
+### The article page's own phone budget
+
+Same page, one screen down. Measured on a 390 px phone before this:
+
+|                            | before                                                      | after        |
+| -------------------------- | ----------------------------------------------------------- | ------------ |
+| banner                     | 642 px, of which **128 px** is empty photo above the kicker | 578 px       |
+| space above the breadcrumb | 32 px, around a 30 px pill                                  | 16 px        |
+| table of contents          | **998 px** between the breadcrumb and the first sentence    | not rendered |
+| article's first word at    | 782 px                                                      | 698 px       |
+
+The banner's `pt-32` is clearance for the 48 px header floating over the cover, and it framed
+nothing: the banner is content-driven there (642 px against a 490 px `min-h`), so the padding was
+height. It halves to `pt-20 pb-10` below `sm` and keeps `pt-32 pb-20` above.
+
+The table of contents is `hidden lg:block` now. In the sidebar it is navigation; on a phone it is a
+full screen of chapter links a reader has to scroll past to reach the article, on every post. The
+two panels under it in that `<aside>` were already `hidden lg:block`, so nothing else was lost —
+but a phone reader now has no way to jump between chapters, which is the trade to revisit if the
+posts get longer. The markup still ships (it is `display:none`, not removed), so the anchors stay
+in the HTML.
+
 ## Chapter headings
 
 One component opens every chapter on the site: `ChapterHeading`

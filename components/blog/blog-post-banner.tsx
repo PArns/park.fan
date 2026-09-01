@@ -74,7 +74,11 @@ export function BlogPostBanner({ post, currentLocale, kicker }: BlogPostBannerPr
         className="from-background/40 pointer-events-none absolute inset-0 bg-gradient-to-r to-transparent"
       />
 
-      <div className="text-foreground relative container mx-auto px-4 pt-32 pb-14 sm:pb-20">
+      {/* `pt-32` is clearance for the header floating over the cover, and at 48px
+          of header that left 80px of empty photo on a phone — where the banner is
+          content-driven (642px against a 490px `min-h`), so the padding is height,
+          not framing. Half of it from `sm` down. */}
+      <div className="text-foreground relative container mx-auto px-4 pt-20 pb-10 sm:pt-32 sm:pb-20">
         <p className="text-foreground/70 mb-3 flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase">
           <span className="bg-primary inline-block h-2 w-2 rounded-full" />
           {kicker}
