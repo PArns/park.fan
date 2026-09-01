@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useCallback } from 'react';
 import { mergeLiveParkSnapshot, type LiveParkSnapshot } from '@/lib/api/parks';
 import { readParkSimulationParam } from '@/lib/parks/park-simulation';
@@ -30,7 +30,36 @@ interface UseLiveParkDataParams {
  * observer's own seed, so consumers still read a complete `ParkWithAttractions`. Subscribers
  * that pass no seed (WeatherCard, useTodaySchedule) read only park-level live fields and carry
  * props for the rest, so they see the projection unchanged.
+ *
+ * Shows and restaurant statuses are the case the projection could not cover, because they are
+ * neither live nor stable: they are set for the DAY. The server render's copy comes out of a
+ * fetch cached for PARK_REVALIDATE, so a tab opened at noon can be looking at a snapshot written
+ * before the park unlocked its gates — showtimes dated yesterday, every show CLOSED. So this hook
+ * asks for them (`?full=1`) on its first poll and every {@link DAILY_BLOCK_INTERVAL_MS} after,
+ * plus once more when the park's own status flips, which is what changes the API's answer for
+ * them. Upstream it is free: the proxy re-fetches the whole park on every poll either way.
  */
+/**
+ * How long a tab may keep a day-scoped block before asking for it again.
+ *
+ * Half an hour, because the two things it can be wrong about resolve on different clocks: the
+ * park opening (which the backend also pushes at, by dropping the park's cache tag — so a page
+ * LOADED after opening is already right, and this covers the tab that was open across it) and a
+ * show pulled during the day, which nothing announces. Twelve polls an hour carry ~4 KB between
+ * them at this cadence instead of on every one of them.
+ */
+const DAILY_BLOCK_INTERVAL_MS = 30 * 60_000;
+
+/**
+ * Per-park bookkeeping for that cadence.
+ *
+ * Module scope, because the state belongs to the QUERY, not to an observer: the park page, the
+ * weather card and `useTodaySchedule` share one `park-live` entry and therefore one `queryFn`
+ * run, so a ref would give each of them its own idea of when the last full poll was and whoever
+ * happened to trigger the fetch would decide with it.
+ */
+const dailyBlockPolls = new Map<string, { lastFullAt: number; status?: string }>();
+
 export function useLiveParkData({
   continent,
   country,
@@ -51,21 +80,51 @@ export function useLiveParkData({
   const simState =
     typeof window !== 'undefined' ? readParkSimulationParam(window.location.search) : null;
 
+  const queryClient = useQueryClient();
+  const queryKey = ['park-live', continent, country, city, parkSlug, simState];
+  const pollKey = `${continent}/${country}/${city}/${parkSlug}/${simState ?? ''}`;
+
   return useQuery<LiveParkSnapshot, Error, ParkWithAttractions>({
-    queryKey: ['park-live', continent, country, city, parkSlug, simState],
+    queryKey,
     queryFn: async () => {
       const url = new URL(
         `/api/parks/${continent}/${country}/${city}/${parkSlug}`,
         window.location.origin
       );
       if (simState) url.searchParams.set('state', simState);
+
+      // First poll of this tab, or the half hour is up — see DAILY_BLOCK_INTERVAL_MS.
+      const previousPoll = dailyBlockPolls.get(pollKey);
+      const wantsDailyBlock =
+        !previousPoll || Date.now() - previousPoll.lastFullAt >= DAILY_BLOCK_INTERVAL_MS;
+      if (wantsDailyBlock) url.searchParams.set('full', '1');
+
       const response = await fetch(url, { cache: 'no-store' });
 
       if (!response.ok) {
         throw new Error(`Failed to fetch park: ${response.statusText}`);
       }
 
-      return response.json();
+      const snapshot = (await response.json()) as LiveParkSnapshot;
+
+      // A poll without the day-scoped block means "unchanged", so the freshest one this tab has
+      // seen has to survive into the cached snapshot — `select` merges what is IN the snapshot
+      // over the server-rendered seed, and dropping the block here would hand the next render
+      // back the seed's morning copy.
+      const cached = queryClient.getQueryData<LiveParkSnapshot>(queryKey);
+      if (!snapshot.shows && cached?.shows) snapshot.shows = cached.shows;
+      if (!snapshot.restaurants && cached?.restaurants) snapshot.restaurants = cached.restaurants;
+
+      // The park opening or closing is exactly what rewrites the block upstream (the API reports
+      // every show as CLOSED for as long as the park is), so a flip seen on a lean poll asks for
+      // the next one in full rather than waiting out the half hour.
+      const statusFlipped = previousPoll ? previousPoll.status !== snapshot.status : false;
+      dailyBlockPolls.set(pollKey, {
+        lastFullAt: wantsDailyBlock ? Date.now() : statusFlipped ? 0 : previousPoll.lastFullAt,
+        status: snapshot.status,
+      });
+
+      return snapshot;
     },
     select,
     // The seed is a full park, which is a valid snapshot too — merging it over itself is a no-op,

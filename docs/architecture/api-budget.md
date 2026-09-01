@@ -92,9 +92,9 @@ what it fetched cannot change in five minutes and is already in the page the vis
 | Block                          |    Size | Changes within 5 min?                                                       |
 | ------------------------------ | ------: | --------------------------------------------------------------------------- |
 | `attractions[]` static fields  | 27.6 KB | no — names, coordinates, heights, `ropeDrop`, `typicalWaits`, `rideProfile` |
-| `restaurants[46]`              |  9.7 KB | no                                                                          |
+| `restaurants[46]`              |  9.7 KB | not in five minutes — but once a day, see below                             |
 | `schedule[17]`                 | 13.5 KB | no, and every consumer already takes it as a prop                           |
-| `shows[4]`                     |  1.3 KB | no                                                                          |
+| `shows[4]`                     |  1.3 KB | not in five minutes — but once a day, see below                             |
 | `attractions[].statistics`     | 13.8 KB | **yes** — current wait, today's peak, the card sparkline                    |
 | `attractions[].bestVisitTimes` |  6.9 KB | **yes** — ML slots that refine through the day                              |
 | `attractions[].queues`         |  4.2 KB | **yes**                                                                     |
@@ -110,6 +110,44 @@ the whole park.
 
 `comparison` and `baseline` arrive on every attraction from the API and have never been rendered
 anywhere. They are simply not in the projection.
+
+### The day-scoped block: shows and restaurant status
+
+"Does it change within five minutes" was the wrong question for two of those rows, and the site
+answered it wrongly for as long as the projection existed. Shows and restaurant statuses do not
+move between two polls — they move once, at opening — and nothing carried them across that moment:
+the poll left them out, and the server render's copy comes from a fetch cached for
+`PARK_REVALIDATE`. Whatever that entry happened to be written with stood for the rest of the day.
+
+Written overnight, which is the usual case, it is written wrong twice over. The API answers with a
+show's showtimes **for today** and reports every show as CLOSED for exactly as long as the park is
+closed (`park-integration.service.ts`), so a 04:00 entry says "yesterday's times, nothing running"
+— and that is what park.fan served all day on 2026-09-01: Phantasialand's four shows dated
+2026-08-31 under "Keine Vorstellungen heute", 0 of 46 restaurants open at 13:38, while the API
+answered `OPERATING` with today's times for all of them. Europa-Park and Efteling the same. It is
+also why "refresh shortly before opening" does not work: measured on Magic Kingdom 70 minutes
+before its gates, the showtimes are already right and all 15 shows still read CLOSED.
+
+So the block travels on request. `leanParkForLivePoll(park, { daily: true })` adds it, the proxy
+turns `?full=1` into that flag, and `useLiveParkData` asks for it on a tab's first poll, every 30
+minutes after, and once more whenever the park's own status flips. **Upstream this is free** — the
+proxy fetches the whole park on every poll either way and used to drop the block on the floor; the
+only cost is ~4 KB to the browser twice an hour instead of twelve times.
+
+Shows go over whole and restaurants projected, because membership differs: the API drops a show
+with no showtimes today, so the set is itself a statement about today and the merge replaces it
+wholesale. Restaurants keep theirs, so only `status`/`waitTime`/`partySize`/`operatingHours` ride
+along and the card reads name, slug and coordinates from the server render — 3.1 KB against 9.9.
+An absent block means unchanged, never empty, and the hook carries the freshest one it has seen
+into the next cached snapshot so a lean poll cannot fall back to the morning copy.
+`pnpm test:live-park-daily-block` pins all of that.
+
+That leaves the server render, which is what a crawler and the first paint see. It is fixed from
+the other side: the fetch carries a per-park tag (`parkCacheTag`, the geo path — slugs are not
+globally unique, `disneyland-park` is Anaheim and Paris), and the backend POSTs that tag to
+`/api/revalidate` with `"expire": 0` the moment the park's status flips. One small request per park
+per transition, and only the parks somebody then visits are re-fetched — where a cron would sweep
+all 213 on a clock that fits none of their timezones.
 
 ### Attraction detail: 58 KB → 27 KB
 
@@ -208,7 +246,11 @@ The question is not "is this field useful" but "which of these is it":
 
 1. **Rendered and volatile** → belongs in the live projection.
 2. **Rendered and day-stable** → belongs in the server render, and the merge will carry it.
-3. **Not rendered** → it costs its size on every poll of every open tab. Leave it out.
+3. **Rendered and day-_scoped_** → the awkward one, and the one that shipped a bug. It looks like
+   case 2, but "the server render carries it" is only true while something re-runs that render
+   within the day. Put it in the `daily` half of the projection and make sure the park's cache tag
+   is dropped when it changes.
+4. **Not rendered** → it costs its size on every poll of every open tab. Leave it out.
 
 Run `node scripts/measure-api-calls.mjs` before and after. A new request on the park page needs a
 reason that is not "it was easier".
