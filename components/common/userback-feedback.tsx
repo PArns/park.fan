@@ -36,6 +36,12 @@ interface Props {
  *
  * We render our own trigger and drive Userback purely via its API
  * (`trigger_type: 'api'`) so Userback's native launcher never appears.
+ *
+ * Currently NOT mounted: the locale layout no longer renders it, so no page
+ * ships the trigger and the SDK is never loaded. Re-enable by rendering
+ * `<UserbackFeedback locale={locale} />` in `app/[locale]/layout.tsx` again and
+ * re-running `pnpm generate:route-namespaces` (the `feedback` namespace is
+ * derived from that import graph).
  */
 export function UserbackFeedback({ locale }: Props) {
   const t = useTranslations('feedback');
