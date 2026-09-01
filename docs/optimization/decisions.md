@@ -345,6 +345,55 @@ regenerations/day. Left as its own piece of work.
 
 ---
 
+## 2026-09-01 — ACCEPTED: the last hourly shells, 1,076 → 657 regenerations/day
+
+**Lever:** ISR writes + invocations. Continues the entry above; cumulative **5,032 → 657/day,
+−86.9 %**.
+
+After the first pass, 19 prerendered pages were still hourly: the homepage, `/parks` and
+`/fancast` × 6 locales. All three bake live figures. Three of the four sources turned out to
+be seeds with a client overlay that already existed, and the helpers said so themselves —
+`getGlobalStats` and `getGeoLiveStats` are documented "Only an SSR SEED", refreshed on mount
+by `useGlobalStats` / `useGeoLiveStats` through no-store proxies on a 5-minute poll. Both
+defaults went to a week, and two call sites (`hero-stats`, `hero-world-panel`) were passing
+`3600` explicitly, overriding the default in the same way `park-resolver` did.
+
+**`lib/api/ml.ts`: 3600 → 86400.** Its own docstring read "Changes only on model retraining
+(daily at 06:00 UTC); cached 1h … anything lower would pin the homepage shell's ISR window
+below its 3600s" — which had the dependency backwards. `MLStatsSection` reaches the homepage
+through the AI story chapter, so this fetch _was_ the homepage's window. It held 12 pages to
+24 rebuilds a day for a figure that changes once. The new window is the data's actual cadence,
+not a floor.
+
+**Removed: the hottest-parks heat banner** (`components/home/hottest-parks-section.tsx`,
+`lib/api/weather-hottest.ts`). It was the one homepage section with no client overlay: it
+compares a live weather reading against a heat threshold, where a stale value is wrong rather
+than merely old, so it alone held the page to hourly. It rendered nothing outside a real heat
+wave — which is most of the year — and `HeatWarningBadge` stays, because the park pages use it.
+Recoverable from git if a summer wants it back with an overlay of its own. **This is a
+user-visible feature removal, decided by the owner, not a refactor side effect.**
+
+|                     |        before |       after |
+| ------------------- | ------------: | ----------: |
+| homepage (× 6)      |       144/day |       6/day |
+| `/fancast` (× 6)    |       144/day |       6/day |
+| `/parks` (× 6)      |       144/day |      ~1/day |
+| **all prerendered** | **1,076/day** | **657/day** |
+
+One route is still hourly: `/api/glossary-term-ids`, which `next.config.ts` describes as
+"immutable until the next deploy" while the route itself sets 3600. 24 regenerations/day —
+left alone, noted as an inconsistency.
+
+**Method note.** Four rounds of guessing which fetch set the homepage's clock all missed. What
+found it was walking the route's import graph (213 files) and listing every literal
+`revalidate` reachable from it. That is the tool for this question; grepping component by
+component is not.
+
+**Verification:** `pnpm release:check` green, seven test suites, five production builds with
+the manifest diffed each time.
+
+---
+
 ## Open — needs a decision, not a refactor
 
 1. **Crawl surface (largest lever).** 42,912 attraction URLs + 12,042 calendar URLs,

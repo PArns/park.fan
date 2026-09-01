@@ -32,7 +32,6 @@ const NearbyParksCard = nextDynamic(
   }
 );
 import { AnnounceSection } from '@/components/home/announce-section';
-import { HottestParksSection } from '@/components/home/hottest-parks-section';
 import { HeroImageInfoSwitch } from '@/components/layout/hero-image-info-switch';
 import { HeroImageInfo } from '@/components/layout/hero-image-info';
 import { HeroRotationProvider } from '@/components/layout/hero-rotation-context';
@@ -92,14 +91,26 @@ import { blogFeedAlternates } from '@/lib/blog/feed';
 // visitor. No `force-dynamic`: a per-request server render here was the page's biggest cost
 // (the `/` → `/{locale}` redirect + dynamic TTFB landing before LCP).
 
-// Regenerate HOURLY. Vercel bills every shell regeneration as size-weighted ISR writes (~600 KB
+// Regenerate WEEKLY. Vercel bills every shell regeneration as size-weighted ISR writes (~600 KB
 // HTML+RSC ≈ ~75 write units per locale), so the 5-min window this shipped with cost ~50k write
-// units/day across 6 locales — the dominant ISR-write driver of Jun 2026. Nothing user-visible
-// depends on the shell being younger than an hour (live data is client-refreshed, see above).
-// IMPORTANT: every `fetch` in this route's render must use `revalidate ≥ 3600` — the route's
+// units/day across 6 locales — the dominant ISR-write driver of Jun 2026. That went to an hour,
+// and an hour was still 144 rebuilds a day for numbers no reader ever sees in the shell.
+//
+// Every live figure on this page is a SEED that a client query overlays on mount: the headline
+// counts through `useGlobalStats`, the continent open-counts through `useGeoLiveStats`, both
+// no-store and polling every 5 minutes. The seed exists for first paint and for readers without
+// JavaScript, and neither is served better by being an hour old rather than a week.
+//
+// The one section that had no such overlay was the hottest-parks heat banner, which compared a
+// weather reading against a threshold — stale there is wrong rather than merely old, so it held
+// the whole page to hourly on its own. It rendered nothing outside a real heat wave, which is
+// most of the year, and it is gone; `git log` has it if a summer wants it back with a client
+// overlay of its own.
+//
+// IMPORTANT: every `fetch` in this route's render must use `revalidate ≥ 604800` — the route's
 // effective ISR window is the LOWEST fetch revalidate in it (a single 300s fetch pins the whole
 // page back to 5 min). Verify with `next build` (revalidate column) after touching section fetches.
-export const revalidate = 3600;
+export const revalidate = 604800;
 
 // Classic hero image: a deterministic pick keyed to the current 5-min window — identical for all
 // concurrent requests, and re-picked on each shell regeneration (so the photo effectively rotates
@@ -250,12 +261,6 @@ export default async function HomePage({ params }: HomePageProps) {
         <div className="pk-reveal">
           <AnnounceSection locale={locale} />
         </div>
-
-        {/* Hottest parks heat banner — only renders during a real heat wave (≥ 35 °C in DE/FR/IT/NL/BE);
-          fallback is null because the section is absent most of the year (no skeleton flash). */}
-        <Suspense fallback={null}>
-          <HottestParksSection locale={locale} />
-        </Suspense>
 
         {/* Location banner: not for snippet/indexing (data-nosnippet); show when user has not granted location */}
         <LocationBanner />

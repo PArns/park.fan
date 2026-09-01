@@ -35,7 +35,7 @@ const PANEL_COUNTRY_LIMIT = 12;
 export async function HeroWorldPanel() {
   const [structure, live] = await Promise.all([
     catchNonFatal(getGeoStructure()),
-    catchNonFatal(getGeoLiveStats(3600)),
+    catchNonFatal(getGeoLiveStats()),
   ]);
   if (!structure || structure.continents.length === 0) return null;
 

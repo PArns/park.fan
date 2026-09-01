@@ -9,12 +9,10 @@ const NOWCAST_SEED_TTL = 3600;
  * How long a nowcast seed may be cached inside a PRERENDERED page.
  *
  * A caller on a static route buys its window with ISR writes, because Next takes the shortest
- * revalidate of any fetch in a route: an hour here means that page rebuilds 24 times a day. That
- * is worth paying where the value is read (the homepage's heat warnings compare the reading
- * against a threshold, and a stale one is wrong rather than merely old) and not worth paying
- * where it is decoration — a blog post's weather card is refreshed client-side by
- * `useWeatherNowcast` before anyone reads it, and no crawler has ever cared what the rain did in
- * an article about wait times.
+ * revalidate of any fetch in a route: an hour here means that page rebuilds 24 times a day. Worth
+ * paying wherever the seed is actually read as a value; not worth paying where it is decoration —
+ * a blog post's weather card is refreshed client-side by `useWeatherNowcast` before anyone reads
+ * it, and no crawler has ever cared what the rain did in an article about wait times.
  */
 export const NOWCAST_SEED_TTL_DECORATIVE = 604800; // 7d — client refreshes it; nobody reads the seed
 
