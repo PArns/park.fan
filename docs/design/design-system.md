@@ -152,6 +152,41 @@ Without the blend mode the whole effect sits inside the baseline's noise. **Meas
 inside the page** if you touch it: driving the pointer with Playwright's `mouse.move` puts a CDP
 round trip between frames and invented a 20 ms regression that was not there.
 
+## The blog card is a row on phones
+
+`ParkCard`, `AttractionCard` and `BlogPostCardView` are the same object: a photo with two sheets of
+frosted glass over it, and below `sm` all three drop the photo so the card collapses onto its
+panels. For a park that leaves a name, a status badge and a wait time, which is the card's whole
+content. For a post it leaves the two panels and nothing between them — and the `-mb-4`/`-mt-4`
+they use to lay over the picture then overlap **each other** by 32 px, so the last line of the
+excerpt is painted over by the panel below it. About 200 px of card, for a title and a date, with
+the cover the post was picked for hidden and the excerpt cut off mid-sentence.
+
+So below `sm` the card is not rendered at all. `BlogPostRow` is:
+
+|        | phone                                          | `sm` and up                                                 |
+| ------ | ---------------------------------------------- | ----------------------------------------------------------- |
+| markup | `BlogPostRow` (`sm:hidden`)                    | the panelled card (`hidden sm:grid`)                        |
+| cover  | 96 × 64 thumbnail                              | full photo row, 240/360 px                                  |
+| text   | category, title (3 lines), date · reading time | category, title, excerpt, then date · reading time · author |
+
+It is the same component the `compact` variant already was — the list beside the homepage's lead
+post — with the featured pill, the reading time and the EN fallback badge switched on (`rich`)
+where the row stands in for a whole card rather than sitting next to one. The thumbnail takes the
+card's `objectPosition`, so a focal point tuned in the admin holds at 96 × 64 too.
+
+**Two markups, not one responsive tree.** The panels' glass is a block of inline styles
+(`background`, `backdropFilter`, the two inset shadows), and no breakpoint can switch an inline
+style off — expressing it as CSS a media query could reach would mean moving the park and ride
+cards' panels with it.
+
+**The hidden card must not preload a cover nobody sees.** Both photo layers claim `96px` for the
+phone segment of their `sizes` (`FEATURE_SIZES` / `CARD_SIZES`), which is what the row beside them
+actually paints. Left at `100vw`, a card marked `priority` — the first one in `BlogPostGrid` —
+preloaded a full-width cover for a `display:none` element on exactly the connection that could
+least afford it. Matching the row's `sizes` also means both elements pick the same srcset
+candidate, i.e. one request, not two.
+
 ## Chapter headings
 
 One component opens every chapter on the site: `ChapterHeading`
