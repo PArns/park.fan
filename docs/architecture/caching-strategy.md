@@ -238,6 +238,87 @@ Files: `lib/blog/use-blog-live.ts` (hooks), `lib/blog/live-overlay.ts` (pure mer
 
 ---
 
+## The invisible clock: a hard-coded TTL argument (Sep 2026)
+
+**A `revalidate` written at a call site is not a local decision. It is the ISR clock of every
+prerendered page that reaches that call site.**
+
+Next takes the **shortest** `revalidate` among all fetches a route executes. `export const
+revalidate` on the route does not override it — it is a default that any shorter fetch beats. So
+one number, typed in a component nobody associates with the page, silently decides how often a
+whole class of pages rebuilds. Every rebuild is an ISR write _and_ a full SSR render.
+
+### What it looked like
+
+Three call sites, all of the shape `helper(<literal>)` where the helper already had a sensible
+default:
+
+| Call site                              | Wrote                   | Actually governed                                                            |
+| -------------------------------------- | ----------------------- | ---------------------------------------------------------------------------- |
+| `lib/blog/park-resolver.ts`            | `getGeoStructure(3600)` | **all 60 blog posts** — `resolvePark` runs for the `ref:` links in every one |
+| `components/home/hero-stats.tsx`       | `getGlobalStats(3600)`  | the homepage                                                                 |
+| `components/home/hero-world-panel.tsx` | `getGeoLiveStats(3600)` | the homepage                                                                 |
+
+None of the three was about the pages it held. The blog one is the clearest: a park-slug index for
+resolving `ref:` links, given an hour, holding sixty prerendered articles to 24 rebuilds a day.
+
+A fourth had the dependency written down backwards. `lib/api/ml.ts` said _"cached 1h — anything
+lower would pin the homepage shell's ISR window below its 3600s"_, as though the hour protected the
+homepage. `MLStatsSection` reaches the homepage through the AI story chapter, so that fetch **was**
+the homepage's window, holding 12 pages to hourly for a figure that changes once a day at 06:00 UTC.
+
+Measured across the site: **5,032 → 657 regenerations/day, −86.9 %**, almost none of it from
+changing what the pages contain.
+
+### The rule
+
+1. **Do not pass a numeric TTL at a call site.** Call `getGeoStructure()`, not
+   `getGeoStructure(3600)`. The window belongs to the data, so it belongs in `CACHE_TTL`
+   (`lib/api/cache-config.ts`) or in the helper's default — one place, where the next person
+   looking for it will look.
+2. **Set the TTL from the data's cadence, not from a floor.** ML metrics change once a day at
+   06:00 UTC, so the window is a day. Geo structure changes when a park is renamed, so it is a
+   week plus a `revalidateTag('geo')` push. A window chosen to be "safely below" some page's
+   window is the bug above, written on purpose.
+3. **A seed with a client overlay may cache for a long time.** `getGlobalStats` and
+   `getGeoLiveStats` say _"Only an SSR SEED"_ in their own docstrings and are replaced on mount by
+   `useGlobalStats` / `useGeoLiveStats`. An hourly seed buys nothing the overlay does not deliver.
+   Where there is **no** overlay and the value is compared against a threshold, stale is _wrong_
+   rather than old — that was the hottest-parks heat banner, and it is why it was removed rather
+   than given a longer window.
+4. **A parameter is fine when the window is a property of the caller.** `getParkWeatherNowcast`
+   takes one, because the same reading is load-bearing in one place and decoration in another.
+   When you do that, name the constant (`NOWCAST_SEED_TTL_DECORATIVE`) and say why in the
+   docstring — a bare literal at the call site is the antipattern, a named and justified one is not.
+
+### How to find it
+
+Grepping component by component missed the homepage's clock four times. What found it in one pass
+was walking the route's import graph and listing every reachable `revalidate` literal:
+
+```js
+// for a route file, resolve @/ and relative imports transitively,
+// then report every /revalidate\s*[:=]\s*(\d+)/ in the closure
+```
+
+The check that _proves_ it is `.next/prerender-manifest.json` after a build: it gives
+`initialRevalidateSeconds` per prerendered URL, so a before/after diff shows exactly which pages
+moved and which did not. `next build`'s route table shows the same column.
+
+Note the graph walk over-reports — it follows imports, not calls, so a helper that is imported but
+never executed on that route still shows up. Treat it as a candidate list, and let the manifest
+decide.
+
+### What is correct and should stay
+
+Not every literal is the bug. These match their data and were left alone:
+
+- `getSitemapAttractions` at 86400 — feeds sitemaps that regenerate daily anyway.
+- `getCountrySummary` at 86400 — _"aggregated from ParkDailyStats, changes daily at most"_. The 138
+  country hubs sit at a day because their data does.
+- `getTickerData` at 600 — only ever called from `/api/analytics/[...path]`, which is dynamic, so it
+  pins no shell.
+
 ## API Cache Headers (Backend)
 
 The API sets the following `Cache-Control` headers:
