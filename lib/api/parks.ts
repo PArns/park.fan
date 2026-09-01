@@ -1,3 +1,5 @@
+import { cache } from 'react';
+
 import { api, ApiError } from './client';
 import { parkCacheTag } from './park-live-projection';
 import { withAttractionCoordinates, withParkCoordinates } from './coordinates';
@@ -232,15 +234,26 @@ export async function getParkSeasons(
  *
  * Returns `null` for a non-existent park (API 404). The 404 is caught inside `fetchParkByGeoPath`
  * (returns `null`) so the caller can render `notFound()`; other errors (maintenance/network) propagate.
+ *
+ * Wrapped in React `cache()` because the Data Cache only dedupes the NETWORK. Every one of the
+ * three hot routes calls this twice per request — once in `generateMetadata` for a `<title>`, once
+ * in the page body — and Next's fetch dedupe hands each call site its own `Response` clone. So
+ * `response.json()`, `withParkCoordinates()` and `leanParkForShell()`'s three full passes over
+ * `attractions`/`shows`/`restaurants` all ran a second time to produce a string. Measured against
+ * the live API: 62 kB of JSON and 40 attractions for Phantasialand, 113 kB and 96 for Europa-Park,
+ * parsed and mapped twice on the two routes that are 74 % of production traffic. `cache()` is
+ * per-request, so it changes nothing about how long a park stays cached across requests — that is
+ * still PARK_REVALIDATE.
  */
-export function getParkByGeoPath(
-  continent: string,
-  country: string,
-  city: string,
-  parkSlug: string
-): Promise<ParkWithAttractions | null> {
-  return fetchParkByGeoPath(continent, country, city, parkSlug, false);
-}
+export const getParkByGeoPath = cache(
+  (
+    continent: string,
+    country: string,
+    city: string,
+    parkSlug: string
+  ): Promise<ParkWithAttractions | null> =>
+    fetchParkByGeoPath(continent, country, city, parkSlug, false)
+);
 
 /**
  * Live (no-store) variant of {@link getParkByGeoPath} for the client poll path.
