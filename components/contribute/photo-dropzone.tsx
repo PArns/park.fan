@@ -186,7 +186,11 @@ export function PhotoDropzone({ images, onChange, disabled }: PhotoDropzoneProps
                   type="button"
                   onClick={() => removeImage(img.id)}
                   aria-label={t('remove')}
-                  className="bg-background/80 text-foreground hover:bg-destructive absolute top-1 right-1 flex size-6 items-center justify-center rounded-full shadow-sm backdrop-blur-sm transition-colors hover:text-white"
+                  // People contribute park photos from a phone, standing in the park, and taking a
+                  // wrongly-picked one back out is the whole correction gesture of this form. It
+                  // was a 24 px circle in the corner of a ~100 px tile, and long-pressing the
+                  // thumbnail does nothing. 36 px inside a 100 px tile is still unobtrusive.
+                  className="bg-background/80 text-foreground hover:bg-destructive absolute top-1 right-1 flex size-6 items-center justify-center rounded-full shadow-sm backdrop-blur-sm transition-colors hover:text-white max-sm:size-9"
                 >
                   <X className="size-3.5" />
                 </button>

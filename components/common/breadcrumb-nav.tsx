@@ -209,7 +209,9 @@ export function BreadcrumbNav({
           <Separator />
           <button
             onClick={() => setUserExpanded(true)}
-            className="hover:text-foreground shrink-0 cursor-pointer rounded px-1 leading-none tracking-widest"
+            // ~21 × 14 px, and it exists ONLY where the trail collapses — which is the phone.
+            // The one control on the page that a mouse never meets was the smallest one there.
+            className="hover:text-foreground inline-flex shrink-0 cursor-pointer items-center justify-center rounded px-1 leading-none tracking-widest max-sm:min-h-11 max-sm:min-w-11"
             aria-label="Show full breadcrumb path"
           >
             &hellip;

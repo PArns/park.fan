@@ -278,7 +278,12 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                 <WebMcpTools locale={locale} />
                 <LanguageBanner currentLocale={locale as Locale} />
               </Suspense>
-              <div className="flex min-h-screen flex-col">
+              {/* `min-h-dvh`, not `min-h-screen`: `100vh` is the LARGE viewport, the height with
+                  the URL bar retracted, so every short page (`/contribute/thanks`, a thin glossary
+                  term, a 404) was 80–115 px taller than what a phone actually shows — it scrolled
+                  for no content and made the browser chrome jitter on the way. The unit is already
+                  in the house: app/[locale]/page.tsx uses `lg:min-h-dvh`. */}
+              <div className="flex min-h-dvh flex-col">
                 {/* Reserves the bar's exact height (h-12 + the 1 px border the header itself draws)
                     so the first paint does not move when the client Header streams in. Both
                     numbers live in components/layout/header.tsx — change them together. */}

@@ -88,6 +88,14 @@ export function FavoriteStar({
       className={cn(
         'z-10 flex items-center justify-center transition-all hover:scale-110',
         'focus:ring-primary focus:ring-2 focus:ring-offset-2 focus:outline-none',
+        // The hit area, not the star. With the circle this button was 24 px (a 16 px icon in
+        // `p-1`), and on the show, restaurant and in-park cards it sits INSIDE the card's own
+        // `<Link>` — the click handler stops propagation, so hitting it is fine, but missing it by
+        // four pixels navigated away instead of favouriting. 44 px below `sm` is the same number
+        // the button scale carries. The star's drawn size is untouched: the icon keeps
+        // `sizeClasses`, and where the card supplies its own 34 px circle (`noCircle`) that circle
+        // still draws it — the card's `overflow-hidden` clips whatever reaches past its corner.
+        'max-sm:min-h-11 max-sm:min-w-11',
         !noCircle && 'border-border/50 hover:border-border rounded-full border p-1 shadow-md',
         className
       )}

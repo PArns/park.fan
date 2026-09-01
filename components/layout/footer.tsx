@@ -77,7 +77,7 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
                 href="https://api.park.fan/api"
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                className="hover:text-foreground inline-flex items-center gap-1 transition-colors"
+                className="hover:text-foreground inline-flex items-center gap-1 transition-colors max-sm:min-h-11"
                 aria-label="park.fan API Documentation (opens in new tab)"
               >
                 {t('api')}
@@ -88,7 +88,7 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
                 href="https://github.com/PArns"
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                className="hover:text-foreground inline-flex items-center gap-1 transition-colors"
+                className="hover:text-foreground inline-flex items-center gap-1 transition-colors max-sm:min-h-11"
                 aria-label="GitHub Profile (opens in new tab)"
               >
                 GitHub
@@ -99,7 +99,7 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
                 href="https://arns.dev"
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                className="hover:text-foreground inline-flex items-center gap-1 transition-colors"
+                className="hover:text-foreground inline-flex items-center gap-1 transition-colors max-sm:min-h-11"
                 aria-label="Arns.dev website (opens in new tab)"
               >
                 Arns.dev
@@ -360,13 +360,19 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
             <p>{t('copyright', { year: currentYear })}</p>
             <BuildInfo />
           </div>
+          {/* Every link in this row carries `max-sm:min-h-11`. They were bare `text-sm` with no
+              padding at all — a 14 px font on a 20 px line box, `gap-2` apart in both axes — and
+              on a German phone the row wraps to about five lines, so adjacent targets sat 8 px
+              from each other vertically. Two of the nine are Impressum and Datenschutz. The rows
+              grow on a phone and nothing moves horizontally; above `sm` the footer keeps its
+              density, the same split as the button scale's phone tier. */}
           <div className="flex flex-wrap items-center justify-center gap-2 md:justify-end">
             {showBlog && (
               <>
                 <Link
                   href="/blog"
                   prefetch={false}
-                  className="hover:text-foreground text-sm transition-colors"
+                  className="hover:text-foreground inline-flex items-center text-sm transition-colors max-sm:min-h-11"
                   aria-label={t('blog')}
                 >
                   {t('blog')}
@@ -384,7 +390,7 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
                 */}
                 <a
                   href={`/${locale}/blog/feed.xml`}
-                  className="hover:text-foreground inline-flex items-center gap-1 text-sm transition-colors"
+                  className="hover:text-foreground inline-flex items-center gap-1 text-sm transition-colors max-sm:min-h-11"
                 >
                   <Rss className="size-3.5" aria-hidden="true" />
                   {t('feed')}
@@ -395,7 +401,7 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
             <Link
               href="/fancast"
               prefetch={false}
-              className="hover:text-foreground text-sm transition-colors"
+              className="hover:text-foreground inline-flex items-center text-sm transition-colors max-sm:min-h-11"
               aria-label={t('fancast')}
             >
               {t('fancast')}
@@ -404,7 +410,7 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
             <Link
               href={bestTimePath}
               prefetch={false}
-              className="hover:text-foreground text-sm transition-colors"
+              className="hover:text-foreground inline-flex items-center text-sm transition-colors max-sm:min-h-11"
               aria-label={t('bestTime')}
             >
               {t('bestTime')}
@@ -413,7 +419,7 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
             <Link
               href={howtoPath}
               prefetch={false}
-              className="hover:text-foreground text-sm transition-colors"
+              className="hover:text-foreground inline-flex items-center text-sm transition-colors max-sm:min-h-11"
               aria-label={t('howto')}
             >
               {t('howto')}
@@ -422,7 +428,7 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
             <Link
               href={glossaryPath}
               prefetch={false}
-              className="hover:text-foreground text-sm transition-colors"
+              className="hover:text-foreground inline-flex items-center text-sm transition-colors max-sm:min-h-11"
             >
               {t('glossaryLink')}
             </Link>
@@ -430,7 +436,7 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
             <Link
               href="/impressum"
               prefetch={false}
-              className="hover:text-foreground text-sm transition-colors"
+              className="hover:text-foreground inline-flex items-center text-sm transition-colors max-sm:min-h-11"
               aria-label={t('impressum')}
             >
               {t('impressum')}
@@ -439,7 +445,7 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
             <Link
               href="/datenschutz"
               prefetch={false}
-              className="hover:text-foreground text-sm transition-colors"
+              className="hover:text-foreground inline-flex items-center text-sm transition-colors max-sm:min-h-11"
               aria-label={t('datenschutz')}
             >
               {t('datenschutz')}
@@ -450,7 +456,7 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
                 href="https://arns.dev"
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                className="hover:text-foreground transition-colors"
+                className="hover:text-foreground inline-flex items-center transition-colors max-sm:min-h-11"
                 aria-label="Visit Arns.dev website (opens in new tab)"
               >
                 <span className="hidden md:inline">{t('poweredBy')}</span> Arns.dev
