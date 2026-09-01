@@ -17,7 +17,12 @@ import type {
  * the park shape, and this one reaches the network. Re-exported here because every call site knows
  * them as `@/lib/api/parks`, and because `parkCacheTag` is used by the fetch below.
  */
-export { parkCacheTag, leanParkForLivePoll, mergeLiveParkSnapshot } from './park-live-projection';
+export {
+  parkCacheTag,
+  leanParkForLivePoll,
+  mergeLiveParkSnapshot,
+  leanParkForCalendarShell,
+} from './park-live-projection';
 export type {
   LiveAttractionSnapshot,
   LiveRestaurantSnapshot,
@@ -108,10 +113,19 @@ function leanParkForShell(park: ParkWithAttractions): ParkWithAttractions {
   return {
     ...live,
     attractions: live.attractions.map((a) => {
-      if (!a.statistics) return a;
-      const statsLean = { ...a.statistics };
+      // `comparison` and `baseline` ride in on every attraction and nothing in this app has ever
+      // rendered them — `ComparisonBadge` exists but is wired to nothing outside `/ui`, where it
+      // is fed string literals. {@link leanParkForLivePoll} already leaves them out of the poll,
+      // and that rule was written down without ever being applied to the half that reaches a
+      // reader: the SERVER render, which is the copy that lands in the HTML of every park page.
+      // 1.0 KB per park page, on the route with the second-highest origin-miss count in the app.
+      const lean = { ...a } as ParkAttraction & { comparison?: unknown; baseline?: unknown };
+      delete lean.comparison;
+      delete lean.baseline;
+      if (!lean.statistics) return lean;
+      const statsLean = { ...lean.statistics };
       delete statsLean.history; // sparkline series — re-supplied by the live poll, not needed in HTML
-      return { ...a, statistics: statsLean };
+      return { ...lean, statistics: statsLean };
     }),
   };
 }

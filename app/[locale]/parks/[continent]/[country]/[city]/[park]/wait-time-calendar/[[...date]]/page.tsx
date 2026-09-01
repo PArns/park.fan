@@ -8,7 +8,7 @@ import type { Locale } from '@/i18n/config';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { RouteMessages } from '@/i18n/route-messages';
 import { catchNonFatal } from '@/lib/api/client';
-import { getParkByGeoPath, getParkSeasons, leanParkForParkShell } from '@/lib/api/parks';
+import { getParkByGeoPath, getParkSeasons, leanParkForCalendarShell } from '@/lib/api/parks';
 import { getBestDaysCalendarSeed, getCalendarMonthSeed } from '@/lib/api/integrated-calendar';
 import type { BestDaysSnapshot } from '@/lib/api/integrated-calendar';
 import { summarizeCalendarMonth } from '@/lib/parks/calendar-month-summary';
@@ -230,7 +230,9 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   setRequestLocale(locale);
 
   const parkFull = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));
-  const parkForClock = parkFull ? leanParkForParkShell(parkFull) : parkFull;
+  // This page draws no attraction cards, so it ships none of their data — the nine fields its
+  // headliner rows and nav tiles actually read, and nothing else. See `leanParkForCalendarShell`.
+  const parkForClock = parkFull ? leanParkForCalendarShell(parkFull) : parkFull;
   const nowMonth = currentParkCalendarMonth(parkForClock?.timezone);
   // Read off the full payload, not the lean shell projection: the shell keeps what the header
   // renders, and the coverage window is a routing fact.

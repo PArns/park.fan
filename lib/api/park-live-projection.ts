@@ -220,3 +220,69 @@ export function mergeLiveParkSnapshot(
     restaurants: mergeLiveRestaurants(base, live),
   };
 }
+
+/**
+ * Trim for the CALENDAR page's serialized park.
+ *
+ * Here rather than in `./parks` for the same reason `leanParkForLivePoll` is: this module is the
+ * pure half, so a node test can import it (`--experimental-strip-types` cannot load `./parks`,
+ * which reaches the API client and its parameter properties). `./parks` re-exports it, and every
+ * call site imports it from there.
+ *
+ * The park page renders forty attraction cards, so its list earns its weight. The calendar page
+ * renders none: the only components on that route that read `park.attractions` are
+ * `ParkTodayPanel`'s headliner rows and `useParkTileItems`, for the nav row's land count and
+ * shortest-headliner hint. Between them they read twelve fields, and the route was shipping
+ * twenty-two. Measured on `/de/…/phantasialand/wartezeiten-kalender/2026/10` (40 attractions):
+ *
+ *     bestVisitTimes  9.74 KB   ropeDrop  4.52 KB   comparison + baseline + trend  1.4 KB
+ *     statistics      5.07 KB
+ *
+ * The list goes from 39.3 KB to 15.2 KB: **−28.6 KB of HTML, −1.52 KB brotli (−2.9 % of the
+ * page)**, A/B'd against the same build with the dropped fields merged back in. Brotli is good at
+ * this shape, so judge it compressed — the raw figure flatters it by 19×.
+ *
+ * `restaurants` is deliberately untouched, and it is the next 6.6 KB: `useParkTileItems` reads
+ * forty-six full records for a `.length` and an `OPERATING` count. Projecting them needs the two
+ * numbers to become props on `ParkTileSource` (two call sites, two pages) — inventing a
+ * `ParkRestaurant` with an empty `name` to satisfy the type would put a lie one render away from
+ * a reader. Worth −0.95 KB brotli when somebody does it properly.
+ *
+ * Nothing is lost that a visitor can reach: the five-minute poll returns `statistics` and
+ * `bestVisitTimes` regardless (see {@link leanParkForLivePoll}) and {@link mergeLiveParkSnapshot}
+ * lays them back over this seed, which is also why the drop cannot desync the two components
+ * sharing the `['park-live', …]` key.
+ *
+ * An ALLOW-list, not a `delete` chain like the shell trims in `./parks`, because here the kept set
+ * is the short one — and a field the API adds tomorrow then stays out of this route by default
+ * instead of quietly joining the payload.
+ */
+export function leanParkForCalendarShell(park: ParkWithAttractions): ParkWithAttractions {
+  return {
+    ...park,
+    attractions: (park.attractions ?? []).map((a) => {
+      const lean: ParkAttraction = {
+        // Required by `ParkAttraction`, and the identity the live merge keys on.
+        id: a.id,
+        name: a.name,
+        slug: a.slug,
+        latitude: a.latitude,
+        longitude: a.longitude,
+        // `useParkTileItems` counts distinct lands for the ride tile's hint.
+        land: a.land,
+        // `getAttractionDisplayStatus` + `getStandbyWait` — the headliner rows and the tile hint.
+        status: a.status,
+        queues: a.queues,
+        isHeadliner: a.isHeadliner,
+        // `isInSeason`. Reads `isCurrentlyInSeason` alone, but a ride out of season is reported
+        // by `effectiveStatus`, so the pair travels together.
+        isSeasonal: a.isSeasonal,
+        isCurrentlyInSeason: a.isCurrentlyInSeason,
+      };
+      // Not on `ParkAttraction` — the API adds it and consumers read it through an `in` check,
+      // the same way {@link leanParkForLivePoll} carries it.
+      const effectiveStatus = (a as { effectiveStatus?: ParkAttraction['status'] }).effectiveStatus;
+      return effectiveStatus === undefined ? lean : { ...lean, effectiveStatus };
+    }),
+  };
+}
