@@ -2,7 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { GlassCard } from '@/components/common/glass-card';
 import { WeatherCard } from '@/components/parks/weather-card';
 import { getParkByGeoPath } from '@/lib/api/parks';
-import { getParkWeatherNowcast } from '@/lib/api/weather-nowcast';
+import { getParkWeatherNowcast, NOWCAST_SEED_TTL_DECORATIVE } from '@/lib/api/weather-nowcast';
 import { parkGeoPath } from '@/lib/blog/widget-park';
 import type { ResolvedPark } from '@/lib/blog/park-resolver';
 
@@ -35,7 +35,13 @@ export async function BlogWeatherWidget({ park, slug }: BlogWeatherWidgetProps) 
 
   const [full, nowcast] = await Promise.all([
     getParkByGeoPath(geo.continent, geo.country, geo.city, geo.parkSlug).catch(() => null),
-    getParkWeatherNowcast(geo.continent, geo.country, geo.city, geo.parkSlug).catch(() => null),
+    getParkWeatherNowcast(
+      geo.continent,
+      geo.country,
+      geo.city,
+      geo.parkSlug,
+      NOWCAST_SEED_TTL_DECORATIVE
+    ).catch(() => null),
   ]);
   if (!full?.weather?.current) return null;
 

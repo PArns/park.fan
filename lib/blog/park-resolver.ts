@@ -77,7 +77,16 @@ interface IndexedGeo {
 const buildIndex = cache(async (): Promise<IndexedGeo> => {
   let geo: GeoStructure | null = null;
   try {
-    geo = await getGeoStructure(3600);
+    // No explicit window: this index holds park names, slugs and geo paths, which is exactly what
+    // `CACHE_TTL.geo` describes, and it is invalidated by the same `geo` tag the backend pushes on
+    // a park rename or merge.
+    //
+    // The hard-coded 3600 that stood here set the ISR clock for every blog POST. `resolvePark`
+    // runs for the `ref:` links in each one, Next takes the shortest revalidate among a route's
+    // fetches, and nothing else on those pages was shorter — so 60 prerendered posts regenerated
+    // 24 times a day off a number that was never about the posts. Declaring
+    // `export const revalidate` on the route did not help and could not: a fetch always wins.
+    geo = await getGeoStructure();
   } catch {
     geo = null;
   }

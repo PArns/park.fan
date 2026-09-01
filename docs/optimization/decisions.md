@@ -284,6 +284,67 @@ prettier, `nest build` clean. Three new tests pin the header on both max-age bra
 
 ---
 
+## 2026-09-01 — ACCEPTED: the ISR clock, 5,032 → 1,076 regenerations/day
+
+**Lever:** ISR writes + invocations. **Files:** `lib/api/cache-config.ts`,
+`lib/api/glossary-rides.ts`, `lib/blog/park-resolver.ts`, `lib/api/weather-nowcast.ts`,
+`components/blog/blog-weather-widget.tsx`.
+
+The build's `prerender-manifest.json` showed **2,992 pages revalidating every 86,400 s** and
+85 hourly. Each regeneration is an ISR write _and_ a full SSR render, so this sat behind
+both the ISR line and a slice of invocations.
+
+None of those pages set `revalidate` themselves. Every one of them inherited it, because
+Next takes the **shortest** revalidate among a route's fetches. Three fetches were setting
+the clock for the whole site:
+
+| Fetch                                                                                | Was   | Now     | Reached                                                                    |
+| ------------------------------------------------------------------------------------ | ----- | ------- | -------------------------------------------------------------------------- |
+| `CACHE_TTL.geo` / `.continents` — `getGeoMenu()` is awaited in the locale **layout** | 86400 | 604800  | every prerendered page, incl. 222 blog tag pages that fetch nothing at all |
+| `glossary-rides`                                                                     | 86400 | 604800  | 1,644 glossary term pages (55 % of all daily regenerations)                |
+| `getGeoStructure(3600)`, hard-coded in `lib/blog/park-resolver.ts`                   | 3600  | default | all 60 blog posts, via the `ref:` links in each                            |
+
+**Measured, manifest before vs after:**
+
+| revalidate | before | after |
+| ---------- | -----: | ----: |
+| 604800     |      0 | 2,844 |
+| 86400      |  2,992 |   214 |
+| 3600       |     85 |    19 |
+| false      |     32 |    32 |
+
+**Regenerations/day 5,032 → 1,076, −78.6 %.**
+
+**Why a longer window is safe here.** These are not clocks against nothing — the backend
+already pushes `revalidateTag`. `park-rename`, `park-merge`, `attraction-merge` and
+`attraction-retirement` all POST `["geo", "parks", "attractions"]`; `admin-curation` posts
+`["parks", "attractions"]` on every curated write. The one gap found: **`glossary-rides` is
+a tag no backend service has ever pushed**, so that fetch now carries `attractions`
+alongside it — a tag that is pushed, and a ride profile changing is exactly an attraction
+write. The residual exposure is a newly _ingested_ park, which nothing pushes `geo` for:
+it now reaches the nav menu and hub lists up to a week late. Its own page is
+`force-dynamic` and live immediately.
+
+**A negative result worth keeping.** `export const revalidate = 604800` was added to the
+blog post route first and the manifest did not move a single page. A fetch always wins over
+the route declaration. The export was removed again rather than left in place looking as
+though it did the work.
+
+**Cost-shift check:** none. Fewer writes, fewer renders, no new fetches, no larger payloads.
+
+**Verification:** `pnpm release:check` green (lint, format, 1,434 translation keys, client
+messages, glossary slugs, glossary content hash), `check:blog-slugs` (2,544 references),
+five test suites, and three full production builds with the manifest diffed each time.
+
+**Where it stops.** The 19 pages still hourly are the homepage, `/fancast` and `/parks`
+(× 6 locales) plus one API route — live global counters, the ML dashboard and the hottest-parks
+band. All five of those sections are Server Components that fetch; none seeds a polling client
+query. Moving them client-side is right in principle and is a refactor of the most
+CLS-sensitive page in the app, guarded by the height-reservation rule, for ~456
+regenerations/day. Left as its own piece of work.
+
+---
+
 ## Open — needs a decision, not a refactor
 
 1. **Crawl surface (largest lever).** 42,912 attraction URLs + 12,042 calendar URLs,

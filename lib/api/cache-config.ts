@@ -22,10 +22,23 @@ export const CACHE_TTL = {
   // Discovery & Park data. Raised to 24h once the hub pages (continent/country/city) render their
   // ParkCards STATUS-FREE: live status/crowd/wait now come from the client (<LiveParkGrid> →
   // /api/parks/live), so the per-locale ISR shells carry only structure (park names/slugs), which
-  // changes ~weekly. A new/removed park appears within 24h (or via on-demand revalidate); this
-  // collapses the hourly hub-page write churn ~24×.
-  geo: 86400, // geo structure changes rarely (was 3600 — hub shells no longer carry live status)
-  continents: 86400, // same as geo
+  // changes ~weekly. This collapsed the hourly hub-page write churn ~24×.
+  //
+  // Then to a week, because 24h was still a clock running against a doorbell. `getGeoMenu()` is
+  // awaited in `app/[locale]/layout.tsx`, so this TTL was the SHORTEST fetch revalidate on the
+  // whole locale tree and therefore set the ISR clock for every prerendered page under it —
+  // including 222 blog tag pages and the static pages, which reach the network not at all. 2,992
+  // pages re-rendered daily to produce the same bytes.
+  //
+  // The doorbell is `revalidateTag('geo')`, and the backend already rings it: park rename
+  // (park-rename.service.ts), park merge, attraction merge and attraction retirement all POST
+  // `["geo", "parks", "attractions"]` to /api/revalidate. What it does NOT ring for is a newly
+  // ingested park, so that one case now takes up to a week to reach the nav menu and the hub
+  // lists. It is a small case and a small delay: the park's own page is `force-dynamic` and
+  // therefore live and servable the moment the API knows about it — only its appearance in the
+  // header menu and the city hub waits.
+  geo: 604800, // 7d — structure changes rarely; real changes arrive via the `geo` tag
+  continents: 604800, // same as geo
   parks: 300, // popular parks frontend data-cached 5 min - slow-moving popularity ranking
   // Data-Cache TTL for the park/attraction structure fetch (see PARK_REVALIDATE /
   // ATTRACTION_REVALIDATE in lib/api/parks.ts). The pages render force-dynamic; this only gates
