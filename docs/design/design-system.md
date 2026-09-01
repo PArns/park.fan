@@ -220,14 +220,27 @@ but a phone reader now has no way to jump between chapters, which is the trade t
 posts get longer. The markup still ships (it is `display:none`, not removed), so the anchors stay
 in the HTML.
 
-### The blog index flows into its hero
+### Full-bleed heroes flow into the page on phones
 
-`Hero` is `min-h-[78vh]` with `items-end`, so on a 390 px phone it is 658 px with the headline
-pinned to the bottom of it: a listing page spending its entire first screen on one picture and a
-title, with the first card at 658 px. The picture is not the problem — losing the screen to the
-empty half of it is. `flowInto` (blog index only; Fancast and the best-time hub keep the original)
-moves the headline to the **top** below `sm` and lets the page pull its own first section up over
-the lower half of the photo. The image keeps every pixel of its height; `#start` moves 658 → 482.
+Five pages open on a full-bleed photo header — `relative isolate -mt-12 flex min-h-[Nvh] items-end
+overflow-hidden` — and on a phone every one of them spent the whole first screen on one picture and
+a title. The picture is not the problem; losing the screen to the empty half of it is. So below
+`sm` the headline moves to the **top** and the page pulls its own first section up over the lower
+part of the photo. **The image keeps every pixel of its height** — in fact it usually gets taller,
+because the hero's mobile bottom padding grows.
+
+| page             | header                           | first content, 390 px |
+| ---------------- | -------------------------------- | --------------------- |
+| guide            | `min-h-[86vh]`, `GuideHero`      | 782 → **550**         |
+| Fancast          | `min-h-[78vh]`, shared `Hero`    | 722 → **533**         |
+| best travel time | `min-h-[78vh]`, shared `Hero`    | 714 → **553**         |
+| blog index       | `min-h-[78vh]`, shared `Hero`    | 658 → **482**         |
+| blog article     | `min-h-[58vh]`, `BlogPostBanner` | 594 → **554**         |
+
+The shared `Hero` takes it as a `flowInto` prop, because it is used by three pages; `GuideHero` and
+`BlogPostBanner` are one page each and carry it directly. Desktop is untouched everywhere — the
+alignment, the padding and the pull are all `sm`-gated, and the section after each hero still starts
+exactly at the hero's bottom edge.
 
 Three things it has to do, and each fixed something real:
 
@@ -243,10 +256,11 @@ Three things it has to do, and each fixed something real:
   immediately: at 360 px the German tagline ran **10 px past** the first card while French had
   117 px to spare. Measured after the fix, the minimum across six locales × 320/360/390/430 px is
   16 px and never negative.
-- **The scroll cue goes.** It points at content that is already on screen.
+- **The scroll cue goes.** It points at content that is already on screen. (The article banner never
+  had one.)
 
-The section doing the pulling needs `relative` — the hero is `isolate`, and without it the cards
-render under the photo.
+The section doing the pulling needs `relative` — the hero is `isolate`, and without it the content
+renders under the photo.
 
 ## Chapter headings
 

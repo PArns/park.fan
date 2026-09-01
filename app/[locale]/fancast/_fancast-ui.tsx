@@ -4,6 +4,7 @@
 // re-export so existing Fancast content imports (`./_fancast-ui`) stay valid.
 export {
   Hero,
+  HERO_FLOW_INTO_PULL,
   SectionShell,
   Lead,
   P,

@@ -11,6 +11,8 @@ import {
 } from '@/lib/blog';
 import { BlogContent } from '@/components/blog/blog-content';
 import { BlogPostBanner } from '@/components/blog/blog-post-banner';
+import { HERO_FLOW_INTO_PULL } from '@/components/marketing/editorial-ui';
+import { cn } from '@/lib/utils';
 import { BlogLanguageNotice } from '@/components/blog/blog-language-notice';
 import { BlogToc } from '@/components/blog/blog-toc';
 import { BlogCategoryTree } from '@/components/blog/blog-category-tree';
@@ -258,10 +260,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         {/* Full-bleed cover banner — the header floats transparent over it. */}
         <BlogPostBanner post={post} currentLocale={locale as Locale} kicker={kicker} />
 
-        {/* `pt-4`, not the container's `py-8`: the banner already ends on 40px of
-            its own bottom padding, and the breadcrumb pill is 30px tall — the space
-            around it was three times the pill. */}
-        <PageContainer className="pt-4 sm:pt-8">
+        {/* Pulled up over the banner on phones — see `HERO_FLOW_INTO_PULL`, which
+            owns the number so it stays paired with the banner's bottom padding.
+            `relative` puts this above the banner's stacking context. */}
+        <PageContainer className={cn('relative pt-0 sm:pt-8', HERO_FLOW_INTO_PULL)}>
           <BlogPostingStructuredData post={post} locale={locale} path={`/blog/${post.slug}`} />
           <BreadcrumbStructuredData breadcrumbs={seoBreadcrumbs} locale={locale} />
 

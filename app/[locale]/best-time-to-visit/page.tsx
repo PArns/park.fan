@@ -6,7 +6,8 @@ import type { Metadata } from 'next';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { ArticleStructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { Hero } from '@/components/marketing/editorial-ui';
+import { Hero, HERO_FLOW_INTO_PULL } from '@/components/marketing/editorial-ui';
+import { cn } from '@/lib/utils';
 import type { ComponentType } from 'react';
 import { RouteMessages } from '@/i18n/route-messages';
 
@@ -283,9 +284,18 @@ export default async function BestTimeToVisitPage({ params }: PageProps) {
           stats={header.stats}
           scrollLabel={header.scrollLabel}
           titleClassName="max-w-4xl text-4xl font-black tracking-tight sm:text-6xl"
+          flowInto
         />
 
-        <div id="start" className="space-y-16 py-14 sm:space-y-24 sm:py-20">
+        {/* Pulled up over the hero on phones — see `HERO_FLOW_INTO_PULL`, which
+            owns the number so it stays paired with the hero's bottom padding. */}
+        <div
+          id="start"
+          className={cn(
+            'relative space-y-16 pt-0 pb-14 sm:space-y-24 sm:py-20',
+            HERO_FLOW_INTO_PULL
+          )}
+        >
           <Content />
         </div>
       </>

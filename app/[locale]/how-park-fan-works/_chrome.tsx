@@ -122,7 +122,7 @@ export function GuideHero({
   sign: { value: number; unit: string; caption: string };
 }) {
   return (
-    <header className="relative isolate -mt-12 flex min-h-[86vh] items-end overflow-hidden">
+    <header className="relative isolate -mt-12 flex min-h-[86vh] items-start overflow-hidden sm:items-end">
       <Image
         src={imageSrc}
         alt={imageAlt}
@@ -142,8 +142,15 @@ export function GuideHero({
         aria-hidden
         className="from-background/70 pointer-events-none absolute inset-0 bg-gradient-to-r via-transparent to-transparent"
       />
+      {/* Mirror of the fade above, phones only: `flowInto` puts the headline at the
+          top, where that gradient is at its weakest. Top third only, so the middle
+          of the picture stays a picture. See `HERO_FLOW_INTO_PULL`. */}
+      <div
+        aria-hidden
+        className="from-background pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b to-transparent sm:hidden"
+      />
 
-      <div className="text-foreground relative container mx-auto px-4 pt-28 pb-16 sm:pb-24">
+      <div className="text-foreground relative container mx-auto px-4 pt-28 pb-48 sm:pb-24">
         <div className="grid items-end gap-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]">
           <div>
             <Reveal>
@@ -191,7 +198,10 @@ export function GuideHero({
         </div>
       </div>
 
-      <ScrollCue label={scrollLabel} />
+      {/* The cue points at content that is already on screen once it flows in. */}
+      <div className="hidden sm:block">
+        <ScrollCue label={scrollLabel} />
+      </div>
     </header>
   );
 }

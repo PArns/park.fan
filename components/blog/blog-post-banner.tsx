@@ -55,7 +55,7 @@ export function BlogPostBanner({ post, currentLocale, kicker }: BlogPostBannerPr
   );
 
   return (
-    <header className="relative isolate -mt-12 flex min-h-[58vh] items-end overflow-hidden sm:min-h-[66vh]">
+    <header className="relative isolate -mt-12 flex min-h-[58vh] items-start overflow-hidden sm:min-h-[66vh] sm:items-end">
       {cover ? (
         <Image src={cover} alt={coverAlt} fill priority sizes="100vw" className="object-cover" />
       ) : (
@@ -73,12 +73,22 @@ export function BlogPostBanner({ post, currentLocale, kicker }: BlogPostBannerPr
         aria-hidden
         className="from-background/40 pointer-events-none absolute inset-0 bg-gradient-to-r to-transparent"
       />
+      {/* Mirror of the fade above, phones only: `flowInto` puts the headline at the
+          top, where that gradient is at its weakest. Top third only, so the middle
+          of the picture stays a picture. See `HERO_FLOW_INTO_PULL`. */}
+      <div
+        aria-hidden
+        className="from-background pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b to-transparent sm:hidden"
+      />
 
       {/* `pt-32` is clearance for the header floating over the cover, and at 48px
           of header that left 80px of empty photo on a phone — where the banner is
           content-driven (642px against a 490px `min-h`), so the padding is height,
           not framing. Half of it from `sm` down. */}
-      <div className="text-foreground relative container mx-auto px-4 pt-20 pb-10 sm:pt-32 sm:pb-20">
+      {/* `pb-48` is 192px and pairs with HERO_FLOW_INTO_PULL (176px) on the section
+          below — the padding must stay the larger of the two, which is what keeps
+          the overlap clear of the byline in every language. */}
+      <div className="text-foreground relative container mx-auto px-4 pt-20 pb-48 sm:pt-32 sm:pb-20">
         <p className="text-foreground/70 mb-3 flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase">
           <span className="bg-primary inline-block h-2 w-2 rounded-full" />
           {kicker}
