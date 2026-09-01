@@ -136,6 +136,28 @@ the glossary term page measured 0.5425 desktop and 0.4872 mobile (`--scroll=900`
 Cloudflare's 0.538 for the same page. Add `--scroll=<y>` — a shift only scores what is in
 view, and the same page reads 0.0000 from the top of the page on a phone.
 
+**Measure a production build, at `localhost`.** Both halves, and each of them fails the
+same way: the run finishes, prints `CLS 0.0000`, and looks exactly like a page with
+nothing wrong.
+
+- **`next dev` serves its stylesheet through JavaScript.** The JS-off pass is this
+  script's entire model of the first paint, so against a dev server it renders unstyled
+  markup and gets diffed against a styled one. A park page came out 8695 px "first"
+  against 4408 px settled, with icons reported as 1410 px blocks — all of it Tailwind that
+  had not arrived. Two more reasons the number would be wrong anyway: dev flushes the
+  whole document at once, so every Suspense boundary resolves before the first paint, and
+  its API responses are not the ones a phone waits on.
+- **`next dev` answers 403 for `/_next/static/chunks/*` from `127.0.0.1`** — which was
+  this script's own default base until this was found. Every chunk fails, the page never
+  hydrates, and the run grades a document with no client JavaScript in it: three
+  consecutive 0.0000 verdicts on a park page whose real problem was a 40 px band that
+  arrives at hydration. `curl` does not reproduce it (no `Origin`), so the server looks
+  healthy from the shell.
+
+Neither is graded any more: `assertMeasurable` aborts on a failed `/_next/` subresource
+and on a JS-off body still sitting in the browser's serif default, and the default base is
+`localhost`. So the sequence is `pnpm build`, `pnpm start`, then the harness.
+
 **And give the harness a client IP, which it does by default.** Browsing from 127.0.0.1,
 `/api/nearby` has no public address to geolocate: it answers `userLocation: {0, 0}` with an
 empty park list, so every run settles on the nearby card's short "no parks near you" state.

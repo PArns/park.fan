@@ -47,9 +47,17 @@ interface ParkTodayPanelProps {
 }
 
 /** A captioned value inside a column: small uppercase caption + its value stack. */
-/** Subtle pill placeholder while a live/forecast value is still loading. */
+/**
+ * Subtle pill placeholder while a live/forecast value is still loading.
+ *
+ * 22 px, not `h-5`: what lands here is a `<Badge>`, and a badge is `text-xs` (16 px) + `py-0.5`
+ * (4 px) + its 1 px border on each edge. Two pixels per metric is nothing on its own, but the
+ * status and crowd cells sit in the same grid row as the shows column, so the row took the
+ * taller of them and the whole header card grew by them at hydration — with the rest of the
+ * page under it.
+ */
 function Pending() {
-  return <span className="bg-muted-foreground/20 h-5 w-20 animate-pulse rounded-full" />;
+  return <span className="bg-muted-foreground/20 h-[22px] w-20 animate-pulse rounded-full" />;
 }
 
 /**
@@ -666,6 +674,33 @@ export function ParkTodayPanel({
                     {Array.from({ length: showSlots }, (_, i) => {
                       const show = nextShows[i];
                       if (!show) {
+                        // The FIRST row is the boxed "next up" and is 55 px, not the 20 px a
+                        // plain row takes — so an empty slot 0 cannot be reserved with the same
+                        // dash as slots 1..3. `nextShows` is derived from `browserNow`, which is
+                        // null until mount, so the first paint has NO show in slot 0 on every
+                        // park page: the column came out 120 px, hydration made it 155, and the
+                        // header card plus everything under it moved 35 px while the visitor was
+                        // looking at it. The same 35 px used to appear again as the day's last
+                        // showtime passed. So the placeholder is the box itself with its two
+                        // lines `invisible` — identical by construction rather than by matching
+                        // two numbers. Only the border stays, transparent, because it is 2 px of
+                        // the height.
+                        if (i === 0) {
+                          return (
+                            <li key={i} aria-hidden="true">
+                              <span className="flex flex-col gap-0.5 rounded-lg border border-transparent px-2.5 py-2">
+                                <span className="invisible flex items-baseline gap-2">
+                                  <span className="shrink-0 text-base leading-none font-extrabold tabular-nums">
+                                    &mdash;
+                                  </span>
+                                </span>
+                                <span className="invisible text-[10px] font-bold tracking-[0.03em] uppercase">
+                                  &mdash;
+                                </span>
+                              </span>
+                            </li>
+                          );
+                        }
                         return (
                           <li key={i} className="text-muted-foreground text-sm">
                             {/* The row is RESERVED, not drawn: it holds its height so the panel
