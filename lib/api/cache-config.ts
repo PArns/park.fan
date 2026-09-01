@@ -38,6 +38,16 @@ export const CACHE_TTL = {
   // therefore live and servable the moment the API knows about it — only its appearance in the
   // header menu and the city hub waits.
   geo: 604800, // 7d — structure changes rarely; real changes arrive via the `geo` tag
+  // The SAME structure, asked for a day fresh, by the machine-facing surfaces that enumerate URLs:
+  // `app/sitemap.ts`, `sitemap-calendar`, `llms.txt`, `lib/content-urls` (IndexNow + prewarm) and
+  // the content-change crawl. A page shell may list last week's parks — a visitor reaches a new
+  // park through search either way, since its own page is force-dynamic. A sitemap may not: it is
+  // how the park gets discovered in the first place, and a week of delay is a week unindexed.
+  //
+  // Named rather than written as `getGeoStructure(86400)` at five call sites, because a bare
+  // numeric TTL at a call site is the antipattern in docs/architecture/caching-strategy.md and the
+  // next person applying that rule would "fix" these onto `geo` and quietly slow discovery down.
+  geoSitemap: 86400,
   continents: 604800, // same as geo
   parks: 300, // popular parks frontend data-cached 5 min - slow-moving popularity ranking
   // Data-Cache TTL for the park/attraction structure fetch (see PARK_REVALIDATE /

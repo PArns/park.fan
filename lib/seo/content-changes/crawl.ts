@@ -1,5 +1,6 @@
 import 'server-only';
 import { getGeoStructure } from '@/lib/api/discovery';
+import { CACHE_TTL } from '@/lib/api/cache-config';
 import { getParkByGeoPathFresh } from '@/lib/api/parks';
 import { getAttractionPaths } from '@/lib/content-urls';
 import { getParkImages, getRideImages } from '@/lib/media';
@@ -85,7 +86,10 @@ function attractionContext(parkSlug: string, rideSlug: string, geoPath: string):
 }
 
 export async function crawlContentFingerprints(): Promise<CrawlResult> {
-  const [geo, attractionPaths] = await Promise.all([getGeoStructure(86400), getAttractionPaths()]);
+  const [geo, attractionPaths] = await Promise.all([
+    getGeoStructure(CACHE_TTL.geoSitemap),
+    getAttractionPaths(),
+  ]);
   const indexable = new Set(attractionPaths);
   const fingerprints = new Map<string, string>();
   const scheduleCoverage = new Map<string, string | null>();

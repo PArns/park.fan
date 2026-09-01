@@ -11,22 +11,29 @@ import type { GlobalStats, GeoLiveStatsDto, TickerResponse } from './types';
  * hour: at 3600 it was one of the fetches holding the homepage to hourly regeneration, and an
  * hourly seed buys nothing that the mount-time overlay does not already deliver.
  */
-export function getGlobalStats(revalidate = 604800): Promise<GlobalStats> {
+export function getGlobalStats(): Promise<GlobalStats> {
   return api.get<GlobalStats>('/v1/analytics/realtime', {
-    next: { revalidate, tags: ['analytics'] },
+    next: { revalidate: 604800, tags: ['analytics'] },
   });
 }
 
 /**
- * Get live ticker data — top wait times across all open parks. Cached 10 min so the
- * client polls hitting the /api/analytics/ticker proxy collapse onto one backend call
- * per window. The homepage shell passes 3600: its baked items are only a seed
- * (`initialDataUpdatedAt: 0` → replaced on mount) and the default 600 would pin the
- * route's ISR window to 10 min.
+ * Get live ticker data — top wait times across all open parks. Cached 10 min so the client polls
+ * hitting the `/api/analytics/ticker` proxy collapse onto one backend call per window.
+ *
+ * Exactly one consumer is left, and it is `/admin/analytics` — the public ticker component is
+ * gone. That makes the 10 minutes a pure backend-collapse window with no ISR consequence
+ * whatsoever: `/admin` is never prerendered, so nothing here can set a shell's clock.
+ *
+ * The window used to be a parameter, because the homepage seeded its items and had to pass
+ * something longer than 600 to avoid pinning its own ISR window to ten minutes. The homepage stopped
+ * baking the ticker, which left a parameter no caller passes — and a spare TTL parameter is how a
+ * literal ends up at a call site governing a page nobody was thinking about. Removed for that
+ * reason; see the hard-coded-TTL section in docs/architecture/caching-strategy.md.
  */
-export function getTickerData(revalidate = 600): Promise<TickerResponse> {
+export function getTickerData(): Promise<TickerResponse> {
   return api.get<TickerResponse>('/v1/analytics/ticker', {
-    next: { revalidate, tags: ['analytics'] },
+    next: { revalidate: 600, tags: ['analytics'] },
   });
 }
 
@@ -38,8 +45,8 @@ export function getTickerData(revalidate = 600): Promise<TickerResponse> {
  * bakes it (homepage, /parks) to its own window, which is the whole reason it is a week: those
  * two routes regenerated 24 times a day for a number the client replaces on mount.
  */
-export function getGeoLiveStats(revalidate = 604800): Promise<GeoLiveStatsDto> {
+export function getGeoLiveStats(): Promise<GeoLiveStatsDto> {
   return api.get<GeoLiveStatsDto>('/v1/analytics/geo-live', {
-    next: { revalidate, tags: ['analytics'] },
+    next: { revalidate: 604800, tags: ['analytics'] },
   });
 }

@@ -1,5 +1,6 @@
 import { extractFeaturedParks } from '@/components/home/featured-parks-section';
 import { getGeoStructure } from '@/lib/api/discovery';
+import { CACHE_TTL } from '@/lib/api/cache-config';
 import { AGENT_SKILLS_INDEX_PATH, skillArtifactPath, AGENT_SKILLS } from '@/lib/agents/skills';
 import { API_CATALOG_PATH } from '@/lib/agents/api-catalog';
 import { AI_CATALOG_PATH } from '@/lib/agents/catalog';
@@ -32,7 +33,7 @@ function line(label: string, url: string, note: string): string {
 }
 
 export async function GET(): Promise<Response> {
-  const geo = await getGeoStructure(86400).catch(() => null);
+  const geo = await getGeoStructure(CACHE_TTL.geoSitemap).catch(() => null);
   const featured = extractFeaturedParks(geo, 'en');
 
   const body = `# park.fan

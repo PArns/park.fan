@@ -317,7 +317,29 @@ Not every literal is the bug. These match their data and were left alone:
 - `getCountrySummary` at 86400 — _"aggregated from ParkDailyStats, changes daily at most"_. The 138
   country hubs sit at a day because their data does.
 - `getTickerData` at 600 — only ever called from `/api/analytics/[...path]`, which is dynamic, so it
-  pins no shell.
+  pins no shell. Its one consumer is `/admin/analytics`; the public ticker component is gone.
+- `CACHE_TTL.geoSitemap` at 86400 — the same geo structure as `CACHE_TTL.geo`, asked for a day
+  fresh by the five machine-facing surfaces that enumerate URLs (`app/sitemap.ts`,
+  `sitemap-calendar`, `llms.txt`, `lib/content-urls` for IndexNow and prewarm, and the
+  content-change crawl). A page shell may list last week's parks — a visitor reaches a new park
+  through search either way, because its own page is force-dynamic. A sitemap may not: it is how
+  the park gets discovered, and a week of delay is a week unindexed. **This is what "name the
+  constant" looks like in practice** — it was five bare `getGeoStructure(86400)` call sites, which
+  the rule above would flag and the next reader would "fix" onto `geo`, quietly slowing discovery.
+
+### Vestigial TTL parameters
+
+A helper takes a `revalidate` parameter for as long as two callers genuinely want different
+windows. When the second caller goes away, the parameter has to go with it — otherwise it is a
+loaded gun: an argument slot that nobody passes, sitting in front of a page's clock.
+
+Three were removed this way once the homepage stopped seeding its live figures: `getGlobalStats`,
+`getGeoLiveStats` and `getTickerData` all ended up with a single caller taking the default. Check
+with a grep for a numeric argument before adding one, and again before leaving one in place:
+
+```
+grep -rnE "get[A-Z][A-Za-z]+\(\s*[0-9]" app components lib
+```
 
 ## API Cache Headers (Backend)
 
