@@ -19,8 +19,16 @@ export interface RiderHeightLimits {
   maximumHeight?: number | null;
 }
 
-/** Slider step, in cm. */
+/** Grid the derived stops are rounded onto, in cm — the unit parks post their limits in. */
 export const RIDER_HEIGHT_STEP = 5;
+
+/**
+ * How far below the park's lowest limit the "clears nothing" stop sits, in cm.
+ *
+ * Small on purpose: it is a position to slide FROM, not a region to explore, and
+ * every centimetre of it is track on which the answer cannot change.
+ */
+const LEAD_IN = 10;
 
 /**
  * Whether a rider of `cm` may ride.
@@ -43,9 +51,8 @@ export function canRideAtHeight(attraction: RiderHeightLimits, cm: number): bool
 /**
  * The distinct minimum heights a park actually enforces, ascending.
  *
- * These are the only values at which the filter's result set can change, so the
- * slider draws them as ticks: they tell a visitor where the park's own steps are
- * before they drag anything.
+ * The backbone of the slider's stops: these are the heights at which a ride
+ * becomes available, and a park states them itself.
  */
 export function riderHeightThresholds(attractions: readonly RiderHeightLimits[]): number[] {
   const seen = new Set<number>();
@@ -55,47 +62,60 @@ export function riderHeightThresholds(attractions: readonly RiderHeightLimits[])
   return [...seen].sort((a, b) => a - b);
 }
 
-export interface RiderHeightRange {
-  min: number;
-  max: number;
-  /** Every distinct minimum height the park enforces, ascending — the slider's ticks. */
-  thresholds: number[];
-}
-
-const floorToStep = (n: number) => Math.floor(n / RIDER_HEIGHT_STEP) * RIDER_HEIGHT_STEP;
 const ceilToStep = (n: number) => Math.ceil(n / RIDER_HEIGHT_STEP) * RIDER_HEIGHT_STEP;
 
 /**
- * The slider's range, derived from the park rather than from a table of typical
- * child heights: a park whose lowest limit is 90 cm has nothing to say about 60 cm,
- * and a slider that spends half its travel in a region where the answer never
- * changes reads as broken.
+ * Every height the slider may be set to, ascending — and nothing else.
  *
- * So it runs from two steps below the park's lowest limit — there has to be a
- * position that clears nothing, or the filter cannot express "too small for every
- * ride that has a limit" — up to the highest limit, where the visitor clears them
- * all. Every position in between changes the answer.
+ * The track used to be a continuous 5 cm ruler from below the park's lowest limit
+ * to its highest, which spends most of its travel in places where nothing happens:
+ * Toverland's limits are 80, 90, 100, 120, 125, 132 and 140, so a fifteen-position
+ * track had eight positions on it that answer exactly like the position before
+ * them. Dragging to 115 and watching "40 von 45" sit still is a control reporting
+ * that it is broken. So the slider is a set of DETENTS, one per height at which the
+ * park's own answer changes, and every step of it changes the list.
  *
- * `maximumHeight` deliberately does NOT stretch it, though it is filtered on. Those
- * values are mostly a coaster's safety ceiling rather than a kiddie ride's cutoff:
- * Phantasialand's are 140, 145, 195, 200 and 205 cm, and honouring the top of that
- * would spend a third of the track between 140 and 205, where the only thing that
- * can change is whether somebody is too tall for a roller coaster. The ones that
- * matter to a child sit below the highest minimum and are inside the range anyway.
+ * Three kinds of stop, and the third is the one that is easy to forget:
  *
- * Returns `null` when the park publishes no minimum height at all, which is the
- * caller's signal to render no filter.
+ * 1. **Each minimum the park enforces** — the height at which a ride opens up.
+ * 2. **One lead-in stop, {@link LEAD_IN} cm below the lowest of them.** There has to
+ *    be a position that clears nothing, or the filter cannot express "too small for
+ *    every ride that has a limit" — and a slider whose thumb starts at the far left
+ *    needs somewhere to be dragged FROM.
+ * 3. **The first height that is too TALL for a kiddie ride**, i.e. one step above
+ *    each `maximumHeight` below the top. Europa-Park's maxima are 120, 130, 135,
+ *    140 and 195 against minima of 90 to 140, so without stops at 125, 135 and 140
+ *    a 132 cm rider has no position to stand on that says "too tall for the teacups"
+ *    — the filter would keep offering rides they cannot board. Rounded up onto the
+ *    5 cm grid rather than reported as `max + 1`: 121 cm is a truthful boundary and
+ *    an absurd thing to put under a slider.
+ *
+ * A maximum at or above the top minimum stretches nothing, which is the one rule
+ * carried over from the continuous version: Europa-Park's 195 cm ceiling would
+ * otherwise buy a stop whose only claim is that somebody is too tall for a roller
+ * coaster.
+ *
+ * Returns `null` when the park publishes no minimum height at all, or when what
+ * comes out has fewer than two positions — both are the caller's signal to render
+ * no filter rather than a control with nothing to say.
  */
-export function riderHeightRange(
-  attractions: readonly RiderHeightLimits[]
-): RiderHeightRange | null {
-  const thresholds = riderHeightThresholds(attractions);
-  if (thresholds.length === 0) return null;
+export function riderHeightStops(attractions: readonly RiderHeightLimits[]): number[] | null {
+  const minima = riderHeightThresholds(attractions);
+  if (minima.length === 0) return null;
 
-  const min = Math.max(RIDER_HEIGHT_STEP, floorToStep(thresholds[0]) - 2 * RIDER_HEIGHT_STEP);
-  // The floor is for a park with a single limit, where the two would otherwise sit
-  // 10 cm apart and the track would have three positions on it.
-  const max = Math.max(ceilToStep(thresholds[thresholds.length - 1]), min + 4 * RIDER_HEIGHT_STEP);
+  const top = minima[minima.length - 1];
+  const stops = new Set(minima);
 
-  return { min, max, thresholds };
+  const leadIn = minima[0] - LEAD_IN;
+  if (leadIn > 0) stops.add(leadIn);
+
+  for (const a of attractions) {
+    const max = a.maximumHeight;
+    if (max == null || max <= 0) continue;
+    const tooTall = ceilToStep(max + 1);
+    if (tooTall < top) stops.add(tooTall);
+  }
+
+  if (stops.size < 2) return null;
+  return [...stops].sort((a, b) => a - b);
 }

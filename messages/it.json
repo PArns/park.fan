@@ -630,7 +630,18 @@
       "title": "Restringi le attrazioni",
       "hint": "Mostra solo ciò che corrisponde alla tua scelta.",
       "searchLabel": "Ricerca",
-      "seasonLabel": "Stagione"
+      "todayLabel": "Oggi",
+      "traitsLabel": "Caratteristiche",
+      "openNow": "Aperto",
+      "resetOpenNow": "Mostra anche le attrazioni chiuse",
+      "wetAny": "Ti bagni",
+      "wetOnly": "Solo bagnate",
+      "wetHide": "Senza bagnarsi",
+      "fastPass": "Salta fila",
+      "singleRider": "Single rider",
+      "resetWet": "Azzera il filtro acqua",
+      "resetFastPass": "Azzera il filtro salta fila",
+      "resetSingleRider": "Azzera il filtro single rider"
     },
     "heightFilter": {
       "label": "Altezza",

@@ -2,9 +2,10 @@
 
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
 import Fuse from 'fuse.js';
-import type { ParkAttraction, ParkShow } from '@/lib/api/types';
+import type { ParkAttraction, ParkShow, ParkStatus } from '@/lib/api/types';
 import { isInSeason } from '@/lib/utils/season';
-import { canRideAtHeight, riderHeightRange } from '@/lib/utils/rider-height';
+import { getLiveAttractionStatus } from '@/lib/utils/park-utils';
+import { canRideAtHeight, riderHeightStops } from '@/lib/utils/rider-height';
 
 /**
  * Shortest pattern Fuse can match, and therefore the shortest query worth running.
@@ -20,28 +21,94 @@ interface UseAttractionFilterOptions {
   shows: ParkShow[] | undefined;
   /** Currently active tab — the type-to-focus shortcut only applies on 'attractions'. */
   activeTab: string;
+  /** The park's own live status — a shut park closes every ride in it. */
+  parkStatus?: ParkStatus;
 }
 
 /**
- * Search, rider-height and seasonal filtering for the park page's attractions and shows
- * tabs: Fuse fuzzy search over all attractions, the rider-height filter (bounds derived
- * from the park's own limits), off-season hiding (attractions + shows, with counts for
- * the "N off season" toggles), the wait-time-sorted headliners section, and the global
+ * Whether a ride counts as open for the "open now" toggle.
+ *
+ * Strictly OPERATING, and UNKNOWN is not it. The card renders a wait time for an
+ * UNKNOWN ride and its badge says "Unbekannt", which is the honest reading of a
+ * feed that has not spoken: a filter promising "open" must not answer with rides
+ * nobody has heard from. Fifty of Europa-Park's ninety-six sit there before the
+ * gates open.
+ */
+const isOpenNow = (attraction: ParkAttraction, parkStatus?: ParkStatus): boolean =>
+  getLiveAttractionStatus(attraction, parkStatus) === 'OPERATING';
+
+/** Whether a ride is one you may get off wet. Absent/null is unknown, never "dry". */
+const mayGetWet = (attraction: ParkAttraction): boolean => attraction.mayGetWet === true;
+
+/**
+ * What the wet-ride pill is set to. `null` is off.
+ *
+ * Three states rather than two because both directions are a real errand: looking
+ * for the water rides on a hot afternoon, and keeping a dry set of clothes for the
+ * evening.
+ */
+export type WetMode = 'only' | 'hide' | null;
+
+/**
+ * The three answers, and the asymmetry between the two active ones.
+ *
+ * `only` demands `=== true`, `hide` only rejects `=== true` — so a ride nobody has
+ * checked stays in the list when hiding and stays out when showing. It has to be
+ * that way round: `mayGetWet` is absent on 93 of Europa-Park's 96 rides, and a
+ * `hide` that also dropped the unknowns would answer a park of 96 with three.
+ */
+const matchesWet = (attraction: ParkAttraction, mode: WetMode): boolean =>
+  mode === null ? true : mode === 'only' ? mayGetWet(attraction) : !mayGetWet(attraction);
+
+/** The cycle the pill walks: off → the water rides → everything but them → off. */
+export const nextWetMode = (mode: WetMode): WetMode =>
+  mode === null ? 'only' : mode === 'only' ? 'hide' : null;
+
+/**
+ * Whether a ride sells a queue-jump product, tested exactly as `FastPassBadge`
+ * tests it — the filter and the badge answer one question and must not disagree
+ * about which rides carry it.
+ *
+ * Absent is "nobody checked, or the park sells none", and the payload does not
+ * separate the two. Which is why there is no "without" state here: it would turn
+ * most of the catalogue into a claim.
+ */
+const hasFastPass = (attraction: ParkAttraction): boolean => Boolean(attraction.fastPass?.name);
+
+/** `hasSingleRider` is three-valued and `SingleRiderBadge` renders only `true`; same here. */
+const hasSingleRider = (attraction: ParkAttraction): boolean => attraction.hasSingleRider === true;
+
+/**
+ * Search, rider-height, live-status, wet-ride, queue-jump, single-rider and seasonal
+ * filtering for the park page's attractions and shows tabs: Fuse fuzzy search over all
+ * attractions, the rider-height filter (stops derived from the park's own limits), the
+ * four narrowing pills, off-season hiding (attractions + shows, with counts for the
+ * "N off season" toggles), the wait-time-sorted headliners section, and the global
  * keyboard wiring for the search input (Escape clears, typing focuses).
  *
- * The three filters compose in one order and it is the order they are declared in:
- * height, then season, then search — each reading the previous one's output, so the
- * headliner row, the land grid and the panel's counts can never disagree.
+ * The filters compose in one order and it is the order they are declared in: height,
+ * then the four pills, then season, then search — each reading the previous one's
+ * output, so the headliner row, the land grid and the panel's counts can never
+ * disagree.
  */
 export function useAttractionFilter({
   attractionsByLand,
   shows,
   activeTab,
+  parkStatus,
 }: UseAttractionFilterOptions) {
   const [searchQuery, setSearchQuery] = useState('');
   /** Rider height in cm, or `null` while the height filter is off. */
   const [riderHeight, setRiderHeight] = useState<number | null>(null);
   const [showOffSeasonAttractions, setShowOffSeasonAttractions] = useState(false);
+  /** Show only rides that are OPERATING right now. */
+  const [onlyOpen, setOnlyOpen] = useState(false);
+  /** Show only the water rides, everything but them, or make no claim. */
+  const [wetMode, setWetMode] = useState<WetMode>(null);
+  /** Show only rides that sell a queue-jump product. */
+  const [onlyFastPass, setOnlyFastPass] = useState(false);
+  /** Show only rides with a single-rider line. */
+  const [onlySingleRider, setOnlySingleRider] = useState(false);
   const [showOffSeasonShows, setShowOffSeasonShows] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -97,7 +164,11 @@ export function useAttractionFilter({
         (a) =>
           a.isHeadliner &&
           (showOffSeasonAttractions || isInSeason(a)) &&
-          (riderHeight === null || canRideAtHeight(a, riderHeight))
+          (riderHeight === null || canRideAtHeight(a, riderHeight)) &&
+          (!onlyOpen || isOpenNow(a, parkStatus)) &&
+          matchesWet(a, wetMode) &&
+          (!onlyFastPass || hasFastPass(a)) &&
+          (!onlySingleRider || hasSingleRider(a))
       );
 
     // Pre-calculate wait times to avoid repeated find() calls in sort comparator (Schwartzian transform)
@@ -113,7 +184,16 @@ export function useAttractionFilter({
         return 0;
       })
       .map((item) => item.a);
-  }, [attractionsByLand, showOffSeasonAttractions, riderHeight]);
+  }, [
+    attractionsByLand,
+    showOffSeasonAttractions,
+    riderHeight,
+    onlyOpen,
+    wetMode,
+    onlyFastPass,
+    onlySingleRider,
+    parkStatus,
+  ]);
 
   // Reverse map: attraction id → land key as used in attractionsByLand (preserves translated fallback label)
   const attractionLandKey = useMemo(() => {
@@ -157,16 +237,65 @@ export function useAttractionFilter({
   );
 
   /**
-   * The slider's bounds and its tick marks, or `null` when this park publishes no
+   * The heights the slider may be set to, or `null` when this park publishes no
    * minimum height on any ride — which is the panel's signal to render no height
    * filter at all rather than an empty one. Roughly a third of the catalogue has
    * nothing on file here, and a control whose every position returns the same 40
    * rides is worse than no control.
    */
-  const heightRange = useMemo(
-    () => riderHeightRange(Object.values(attractionsByLand).flat()),
+  const heightStops = useMemo(
+    () => riderHeightStops(Object.values(attractionsByLand).flat()),
     [attractionsByLand]
   );
+
+  /**
+   * What each narrowing pill has to work with, counted over the whole park.
+   *
+   * They gate whether a pill is RENDERED at all, which is the alternative to
+   * offering a filter whose only possible outcome is "no attractions found". Most
+   * of the catalogue has none of these on file: `mayGetWet` on 3 of Europa-Park's
+   * 96 rides and 1 of Toverland's 45, `fastPass` on 7 of Europa-Park and none at
+   * all at Efteling or Toverland, `hasSingleRider` on 6 and 7 and none — and at
+   * 04:00 nothing anywhere is open.
+   */
+  const openAttractionCount = useMemo(
+    () =>
+      Object.values(attractionsByLand)
+        .flat()
+        .filter((a) => isOpenNow(a, parkStatus)).length,
+    [attractionsByLand, parkStatus]
+  );
+  const wetAttractionCount = useMemo(
+    () => Object.values(attractionsByLand).flat().filter(mayGetWet).length,
+    [attractionsByLand]
+  );
+  const fastPassAttractionCount = useMemo(
+    () => Object.values(attractionsByLand).flat().filter(hasFastPass).length,
+    [attractionsByLand]
+  );
+  const singleRiderAttractionCount = useMemo(
+    () => Object.values(attractionsByLand).flat().filter(hasSingleRider).length,
+    [attractionsByLand]
+  );
+
+  /**
+   * The park's own name for its queue-jump product, when it has exactly one.
+   *
+   * Europa-Park sells "VirtualLine" and that is the word on every sign, in the app
+   * and in the mouth of anybody who has been — a pill saying it is a pill a visitor
+   * recognizes, where a generic "Quickpass" is a word the park does not use. Two or
+   * more distinct names (a park with a per-ride override) fall back to the generic
+   * label, because a pill filtering for three products cannot be titled after one
+   * of them.
+   */
+  const fastPassLabel = useMemo(() => {
+    const names = new Set<string>();
+    for (const a of Object.values(attractionsByLand).flat()) {
+      if (a.fastPass?.name) names.add(a.fastPass.name);
+      if (names.size > 1) return null;
+    }
+    return names.size === 1 ? [...names][0] : null;
+  }, [attractionsByLand]);
 
   /**
    * Height filtering, applied BEFORE the season filter and — unlike the season —
@@ -199,15 +328,42 @@ export function useAttractionFilter({
     [heightFilteredByLand]
   );
 
-  const inSeasonAttractionsByLand = useMemo(() => {
-    if (showOffSeasonAttractions || offSeasonAttractionCount === 0) return heightFilteredByLand;
+  /**
+   * "Open now" and "you may get wet", applied after the height and before the
+   * season — and, unlike the height, NOT applied while searching.
+   *
+   * Same split as the off-season toggle, for the same reason: both are ways of
+   * decluttering a park somebody is browsing, and neither is a statement about the
+   * person queuing. Typing "Black Mamba" is asking for one ride, and the answer to
+   * it is that ride, shut or dry; the card says "Geschlossen" on its own.
+   */
+  const narrowedByLand = useMemo(() => {
+    if (!onlyOpen && wetMode === null && !onlyFastPass && !onlySingleRider) {
+      return heightFilteredByLand;
+    }
     const result: Record<string, ParkAttraction[]> = {};
     for (const [land, attractions] of Object.entries(heightFilteredByLand)) {
+      const filtered = attractions.filter(
+        (a) =>
+          (!onlyOpen || isOpenNow(a, parkStatus)) &&
+          matchesWet(a, wetMode) &&
+          (!onlyFastPass || hasFastPass(a)) &&
+          (!onlySingleRider || hasSingleRider(a))
+      );
+      if (filtered.length > 0) result[land] = filtered;
+    }
+    return result;
+  }, [heightFilteredByLand, onlyOpen, wetMode, onlyFastPass, onlySingleRider, parkStatus]);
+
+  const inSeasonAttractionsByLand = useMemo(() => {
+    if (showOffSeasonAttractions || offSeasonAttractionCount === 0) return narrowedByLand;
+    const result: Record<string, ParkAttraction[]> = {};
+    for (const [land, attractions] of Object.entries(narrowedByLand)) {
       const filtered = attractions.filter(isInSeason);
       if (filtered.length > 0) result[land] = filtered;
     }
     return result;
-  }, [heightFilteredByLand, showOffSeasonAttractions, offSeasonAttractionCount]);
+  }, [narrowedByLand, showOffSeasonAttractions, offSeasonAttractionCount]);
 
   const visibleShows = useMemo(() => {
     if (showOffSeasonShows || offSeasonShowCount === 0) return shows ?? [];
@@ -265,12 +421,27 @@ export function useAttractionFilter({
     filteredAttractionsByLand,
     hasSearchResults,
     // Rider height
-    /** Slider bounds + ticks, or `null` when the park publishes no minimum height at all. */
-    heightRange,
+    /** The heights the slider may take, or `null` when the park publishes no minimum at all. */
+    heightStops,
     riderHeight,
     setRiderHeight,
     totalAttractionCount,
     rideableAttractionCount,
+    // Narrowing pills
+    onlyOpen,
+    setOnlyOpen,
+    wetMode,
+    setWetMode,
+    onlyFastPass,
+    setOnlyFastPass,
+    onlySingleRider,
+    setOnlySingleRider,
+    openAttractionCount,
+    wetAttractionCount,
+    fastPassAttractionCount,
+    singleRiderAttractionCount,
+    /** The park's own brand for its queue-jump product, or `null` when it sells several. */
+    fastPassLabel,
     // Attractions
     headliners,
     offSeasonAttractionCount,

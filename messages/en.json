@@ -630,7 +630,18 @@
       "title": "Narrow down the attractions",
       "hint": "Shows only what matches your choices.",
       "searchLabel": "Search",
-      "seasonLabel": "Season"
+      "todayLabel": "Today",
+      "traitsLabel": "Traits",
+      "openNow": "Open",
+      "resetOpenNow": "Show closed attractions too",
+      "wetAny": "Gets you wet",
+      "wetOnly": "Only wet ones",
+      "wetHide": "No wet ones",
+      "fastPass": "Queue jump",
+      "singleRider": "Single rider",
+      "resetWet": "Clear the wet-ride filter",
+      "resetFastPass": "Clear the queue-jump filter",
+      "resetSingleRider": "Clear the single-rider filter"
     },
     "heightFilter": {
       "label": "Rider height",
