@@ -1502,6 +1502,9 @@
     "addToFavorites": "Add to favorites",
     "removeFromFavorites": "Remove from favorites",
     "more": "{count, plural, =1 {+1 more} other {+# more}}",
+    "opensIn": "Opens in",
+    "closesIn": "Closes in",
+    "opensOn": "Opens on",
     "howTo": {
       "findTitle": "Find a park or a ride",
       "findText": "Use the search, or start from “Explore Parks”.",

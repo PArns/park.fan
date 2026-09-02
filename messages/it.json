@@ -1502,6 +1502,9 @@
     "addToFavorites": "Aggiungi ai preferiti",
     "removeFromFavorites": "Rimuovi dai preferiti",
     "more": "{count, plural, =1 {+1 altro} other {+# altri}}",
+    "opensIn": "Apre tra",
+    "closesIn": "Chiude tra",
+    "opensOn": "Apre il",
     "howTo": {
       "findTitle": "Cerca un parco o un’attrazione",
       "findText": "Dalla ricerca oppure da «Esplora i parchi».",
