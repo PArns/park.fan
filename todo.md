@@ -417,15 +417,41 @@ spec in that directory as proof that the processor is wired up.
 ## 3. Frontend (`/home/user/park.fan`) — second stage
 
 Shipped so far, German only, on `claude/daily-planner-wait-times-pmegzw`: the store
-and its pure actions, the flyout (right-hand sheet / bottom sheet), the timeline with
-pointer drag, the bar with its tier-dependent edge, the context band, the ride search,
-the day picker, the overview of every park and day, the ride page's add control and the
-calendar's "plan this day". `pnpm check:planner` drives all of it in a browser;
-`pnpm test:planner-actions` covers the reducers.
+and its pure actions, the flyout (right-hand sheet / bottom sheet), the **day grid** —
+a real Outlook-style time axis with blocks at their start minute sized by their queue —
+the opening-hours band behind it, the transfer legs between blocks, show lines, the now
+line, the context band, the ride search, the day picker, the overview of every park and
+day, the ride page's add control and the calendar's "plan this day".
+
+Four pure suites (`test:planner-grid` 37, `test:planner-leg` 28, `test:planner-park-time`
+16, `test:planner-actions` 30) and `pnpm check:planner` 39/39 in a browser.
 
 `/plan/day` answers 404 in production until the backend PR is merged, and the panel says
-so rather than drawing empty bars. That is the check's 404 branch, and it is an
-assertion rather than a waiver.
+so rather than drawing empty bars — the flat list is the fallback for a day with no known
+hours, because without them there is no honest axis. The check asserts both branches, and
+a stubbed pass exercises the grid itself so a green check is not one that skipped the
+feature.
+
+### What the twelve stated requirements got
+
+| # | Requirement | State |
+|---|---|---|
+| 1 | Blocks in a time grid, height = duration | done — height is the queue; ride duration deliberately excluded, see below |
+| 2 | Not draggable earlier than the ride opens | done — hard floor at the park's opening, soft advisory floor at the first measured hour |
+| 3 | Opening hours marked in the background | done — five layers, truncation feather, rush strip |
+| 4 | "ein park Outlook" | done |
+| 5 | Always park timezone | done — `lib/planner/park-time.ts`, all three `todayLocal()` copies gone |
+| 6 | Shows as lines with their time | done for today; structurally impossible for any other date until the backend has a forward schedule |
+| 7 | Luftlinie between consecutive rides | done — on the leg and on the lower block |
+| 8 | Transfer knapp / gut / großzügig | done — floor/ceiling asymmetry, boundary at the model's own spread |
+| 9 | Live re-correction + now line | done — 45-minute window, no ratio-scaling of the later curve |
+| 10 | Warn: down all day yesterday | done — `downYesterday` from `queue_data`, today and tomorrow only |
+| 11 | Warn: reports closed | done — status directly, never the absence of a queue |
+| 12 | Show the photo where there is one | done — resolved in the proxy route, never in the client |
+
+**Ride duration is not in the block's height**, and that is a decision rather than an
+omission: the curated `durationSeconds` covers 22 of 173 rides across three parks and its
+median is 117 seconds — 2.3 px at 1.2 px/min. It lives in the leg's arithmetic instead.
 
 ### 3.1 Data model
 
