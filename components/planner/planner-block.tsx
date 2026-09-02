@@ -128,6 +128,12 @@ export function PlannerBlock({
       data-planner-entry={entry.id}
       data-planner-block=""
       data-verdict-block={conflict ? 'broken' : undefined}
+      // Clicking anywhere on the block selects it. The grip is 24 px on a fine
+      // pointer, and requiring a hit on that strip to reach a block's own
+      // actions would make them practically unreachable with a mouse. The
+      // keyboard path is the range input, which is a real control; this is the
+      // pointer affordance for the same thing.
+      onClick={onSelect}
       className={cn(
         'group absolute',
         dragging && 'z-30 opacity-90 shadow-lg',

@@ -21,6 +21,7 @@ import { bandCarriesFigure, estimateFor } from '@/lib/planner/estimate';
 import { PlannerGridGround } from './planner-grid-ground';
 import { PlannerBlock } from './planner-block';
 import { PlannerLeg } from './planner-leg';
+import { showLinePositions } from '@/lib/planner/day-grid';
 import type { PlannerEntry } from '@/lib/planner/types';
 import type { PlanDay, PlanDayRide } from '@/lib/api/types';
 
@@ -33,7 +34,9 @@ interface PlannerDayGridProps {
   /** True when the plan's date is today in the PARK's reading. */
   isToday: boolean;
   /** Live standby minutes by ride slug, where a reading applies. */
-  liveWaits?: Map<string, number>;
+  liveWaits?: Map<string, number> | null;
+  /** Showtimes as park-local minutes. `null` means "not knowable for this date". */
+  showLines?: import('@/lib/planner/live').PlannerShowLine[] | null;
   loading?: boolean;
   onMove: (entryId: string, startMinute: number) => void;
   onShiftFrom: (entryId: string, deltaMinutes: number) => void;
@@ -94,6 +97,7 @@ export function PlannerDayGrid({
   timezone,
   isToday,
   liveWaits,
+  showLines = null,
   loading = false,
   onMove,
   onShiftFrom,
@@ -409,6 +413,22 @@ export function PlannerDayGrid({
             {t('grid.closesApprox', { time: formatGridTime(grid.closeMin) })}
           </span>
         )}
+        {showLines !== null &&
+          showLinePositions(
+            grid,
+            showLines.map((line) => line.minute)
+          )
+            .filter((line) => line.minute >= grid.gridStartMin && line.minute <= grid.gridEndMin)
+            .map((line) => (
+              <span
+                key={`show-time-${line.minute}`}
+                className="bg-background text-foreground/70 absolute right-1 -translate-y-1/2 rounded px-0.5 text-[10px] tabular-nums"
+                style={{ top: line.y }}
+              >
+                {formatGridTime(line.minute)}
+              </span>
+            ))}
+
         {nowMinute !== null && nowMinute >= grid.gridStartMin && nowMinute <= grid.gridEndMin && (
           <span
             className="bg-destructive text-destructive-foreground absolute right-1 -translate-y-1/2 rounded-full px-1 text-[10px] tabular-nums"
@@ -425,6 +445,25 @@ export function PlannerDayGrid({
         style={{ height: grid.heightPx }}
       >
         <PlannerGridGround grid={grid} rushByHour={rushByHour} dense={dense} loading={loading} />
+
+        {/* Shows as lines across the grid, UNDER the blocks (`z-10` against the
+            blocks' `10 + column`) so a line never buries a name. The time goes
+            in the gutter, which is why the grid keeps its full width on the
+            ~92 % of park-days with no shows to draw. */}
+        {showLines !== null &&
+          showLinePositions(
+            grid,
+            showLines.map((line) => line.minute)
+          )
+            .filter((line) => line.minute >= grid.gridStartMin && line.minute <= grid.gridEndMin)
+            .map((line) => (
+              <div
+                key={`show-${line.minute}`}
+                className="border-foreground/25 pointer-events-none absolute inset-x-0 z-10 border-t border-dashed"
+                style={{ top: line.y }}
+                aria-hidden="true"
+              />
+            ))}
 
         {/* The now line. Outlook's, and the reason the panel says out loud that
             its clock is the park's. */}

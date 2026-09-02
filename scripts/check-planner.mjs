@@ -591,6 +591,56 @@ if (reachable) {
     });
     check('die Tastatur verschiebt um genau einen Schritt', afterKey === 585, `${afterKey}`);
 
+    // Shows: three states, never two. Which of them applies depends on whether
+    // the seeded date is today IN THE PARK'S ZONE — and it is not the same
+    // question as whether it is today in UTC. Run late enough in the evening and
+    // Berlin has already rolled over while the test's own `Date.now() + 1 day`
+    // has not, so the honest answer flips. Derive it the way the code does.
+    const parkToday = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Europe/Berlin',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }).format(new Date());
+    const bandText = await grid.locator(`${SHEET} .sticky`).first().textContent();
+    const expected = DATE === parkToday ? /Vorstellungen|·/ : /erst am Tag selbst/;
+    check(
+      'Show-Band sagt, was es über Vorstellungen weiß',
+      expected.test(bandText ?? ''),
+      `${DATE === parkToday ? 'heute' : 'künftig'}: ${(bandText ?? '').slice(0, 50)}`
+    );
+
+    // Selecting a block has to reach its actions: a 20 px block cannot carry two
+    // 44 px targets, so they dock instead — and until this was wired a block
+    // could be selected and then neither ticked off nor removed.
+    // Anywhere on the block, not on its 24 px grip.
+    await blocks.first().click({ position: { x: 80, y: 8 } });
+    await grid.waitForTimeout(300);
+    const actionRow = grid.locator(`${SHEET} button[aria-label="Als gefahren markieren"]`);
+    check('Auswahl blendet die Aktionen ein', (await actionRow.count()) > 0);
+    if ((await actionRow.count()) > 0) {
+      await actionRow.first().click();
+      await grid.waitForTimeout(400);
+      const done = await grid.evaluate(() => {
+        const plan = JSON.parse(window.localStorage.getItem('parkfan_planner') ?? '{}');
+        const days = plan?.parks?.phantasialand?.days ?? {};
+        return Object.values(days)[0]?.entries?.find((e) => e.id === 'taron-1')?.done ?? false;
+      });
+      check('Abhaken aus der Aktionsleiste greift', done === true, `${done}`);
+
+      // Un-tick, so the `pointercancel` assertion below still reads a planned
+      // block. A DIFFERENT selector on purpose: the button's `aria-label` flips
+      // with its state, which is what makes it announce the action rather than
+      // the noun — and re-using the first locator here times out precisely
+      // because that works.
+      const undo = grid.locator(`${SHEET} button[aria-label="Doch noch nicht gefahren"]`);
+      check('der Knopf benennt jetzt die Gegenaktion', (await undo.count()) > 0);
+      if ((await undo.count()) > 0) {
+        await undo.first().click();
+        await grid.waitForTimeout(300);
+      }
+    }
+
     // A gesture the browser steals must write nothing.
     const before = afterKey;
     await blocks.first().evaluate((el) => {
