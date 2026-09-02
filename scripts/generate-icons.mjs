@@ -55,9 +55,15 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
 
 /**
- * `simple` is the header's own pin and holds together at 16 px. `detail` is the site's fuller mark
- * — and it is `logo-big-dark.svg` rather than `logo-dark.svg` because only that one is real
- * vector; `logo-dark.svg` is a 1563×1116 PNG in an SVG wrapper, which is why it weighs 77 KB.
+ * `simple` is the header's own pin and holds together at 16 px. `detail` is the site's fuller mark.
+ *
+ * It reads the LOCKUP and clips the wordmark off (see `markInkBox`) rather than reading
+ * `logo-dark.svg`, which is the same pin already cut out and would need no clipping at all. That
+ * looks like the obvious simplification and is not one: `logo-dark.svg` is itself generated from
+ * this file by `generate-brand-pin.mjs`, so sourcing from it would put a generated file in front
+ * of the artwork and make the icon set depend on two generators agreeing. The clip is measured
+ * either way. (It used to be the other way round for a duller reason — `logo-dark.svg` was a
+ * 1563×1116 PNG in an SVG wrapper, 77 KB, and not vector at all.)
  */
 const SOURCES = {
   simple: 'public/logo-small-dark.svg',

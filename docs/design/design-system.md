@@ -469,6 +469,29 @@ call site, and it is why `pnpm check:icons` had to be re-run: the generator meas
 icons are geometrically unchanged, but it now rasterizes the source at a different resolution to do
 it and the placement moves by a fraction of a pixel.
 
+### The footer's pin is cut from the lockup
+
+The footer draws the **detailed** pin — the orbit and the three bars, the mark the OG images and
+the maintenance page show — and until Sep 2026 it drew it as a 1563×1116 PNG wrapped in an `<svg>`,
+77 KB per colourway. Nothing looked wrong at the 32 and 48 px it is asked for, which is exactly how
+it lasted: a raster with enough resolution for today's largest call site fails silently the first
+time somebody draws it bigger.
+
+`scripts/generate-brand-pin.mjs` cuts it out of `logo-big*.svg` instead — **6.2 KB** each, −142 KB
+across the pair. It is generated rather than hand-exported for the reason the icon set is: the pin
+is one drawing that would otherwise be stored twice, and a re-exported lockup would leave the copy
+behind with nothing failing. `pnpm check:brand-pin` is what notices.
+
+The split needs no heuristic. Affinity names the halves — `<g id="park.fan">` is the wordmark,
+`<g id="Icon">` the pin — so the wordmark goes by id, and `_Linear1` (its green dot, referenced
+nowhere else) goes with it. Everything else stays exactly where it is, enclosing transforms
+included; the one computed value is the `viewBox`, and it is the measured ink box, so the footer's
+`h-8 md:h-12` means 32 and 48 px of mark. The proof that it is the same drawing is the aspect:
+**0.8201** against the raster's **0.8202**.
+
+The `.png` twins are deliberately untouched and keep the old padded geometry, which is what
+`lib/og/brand-mark.tsx` and `lib/three/park-scene.ts` have hard-coded.
+
 ---
 
 ## Interactive Utilities
