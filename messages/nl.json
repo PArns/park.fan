@@ -247,8 +247,8 @@
     },
     "live": {
       "kicker": "Live wachttijden",
-      "title": "Wartezeiten für jede Bahn, alle fünf Minuten neu",
-      "lead": "Für jede Attraktion und jede Warteschlangen-Art, dazu Öffnungszeiten und Störungen.",
+      "title": "Wachttijden voor elke baan, elke vijf minuten opnieuw",
+      "lead": "Voor elke attractie en elk rijtype, plus openingstijden en storingen.",
       "body": "We tonen niet alleen het getal, maar wat het betekent: 95 minuten is veel op een dinsdag in september en volstrekt normaal op een zaterdag in oktober. Daarom staat op elke attractiepagina wat op die weekdag gebruikelijk is en hoe een volle dag eruitziet.",
       "ridesTitle": "Elke attractie heeft een eigen pagina",
       "ridesText": "Duizenden attractiepagina’s, elk met wat voor die ene baan geldt: rijtypes, dagverloop uit meting en voorspelling, typische tijden per weekdag, minimumlengte en een rope-drop-tip.",
@@ -305,7 +305,7 @@
     },
     "ai": {
       "kicker": "Onze AI",
-      "title": "Eine eigene Prognose, und die Abweichung steht dabei",
+      "title": "Een eigen voorspelling, met de afwijking ernaast",
       "lead": "Wachttijden voorspellen is het moeilijke deel, en de meeste sites gaan eromheen. park.fan pakt het aan met Fancast, een eigen model, elke nacht opnieuw getraind, tot 365 dagen vooruit.",
       "compareTitle": "Hoe andere wachttijdsites voorspellen",
       "compareLead": "Drie aanpakken zijn gangbaar, en alle drie hebben dezelfde blinde vlek: niemand zegt hoe ver de voorspelling ernaast zat.",
@@ -332,8 +332,8 @@
     },
     "bestTime": {
       "kicker": "Beste bezoektijd",
-      "title": "Viele Bahnen haben zwei ruhige Fenster, morgens und gegen Abend",
-      "lead": "Rope Drop hilft nicht bei jeder Bahn. Die Kurve kommt aus den Messtagen der einzelnen Attraktion.",
+      "title": "Veel banen hebben twee rustige periodes, ’s ochtends en tegen de avond",
+      "lead": "Rope drop loont niet bij elke baan. De curve komt uit de meetdagen van de attractie zelf.",
       "chartSubtitle": "Mediaan uit {days} gemeten dagen, elke 5 minuten bemonsterd",
       "legendToday": "vandaag gemeten",
       "legendMedian": "mediaan van eerdere dagen",
@@ -423,7 +423,7 @@
     },
     "blog": {
       "kicker": "Blog & gidsen",
-      "title": "Analysen zu einzelnen Parks, mit Zahlen von heute",
+      "title": "Analyses van afzonderlijke parken, met cijfers van vandaag",
       "lead": "Parkgidsen, wachttijdanalyses en seizoenstips, geschreven door mensen die zelf in de rij staan. Op elke parkpagina staan de artikelen die erbij horen.",
       "bestTimeTitle": "Beste reistijd voor pretparken",
       "bestTimeText": "Wanneer parken het leegst zijn: de rustigste weekdagen en maanden, uit twee jaar echte wachttijden van ruim 200 parken.",
