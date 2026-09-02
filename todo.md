@@ -153,6 +153,23 @@ on the day.
 
 ## 2. Backend (`/home/user/v4.api.park.fan`) — first stage
 
+**Shipped so far** (PR PArns/v4.api.park.fan#216, branch
+`claude/daily-planner-wait-times-pmegzw`):
+
+|       | What                                                                        |
+| ----- | --------------------------------------------------------------------------- |
+| §2.1  | Uncertainty band travels from `predict.py` to the public `hourlyForecast`   |
+| §2.2b | Lead-time snapshot + scoring — recording starts with the next nightly run   |
+| —     | `composeDayCurve`, the level×shape composition, as a tested pure function   |
+| §2.2  | `GET …/plan/day?date=` with the `measured` / `composed` / `long_range` tier |
+
+Full suite green at each step: 1312 tests, 129 suites, tsc + eslint + prettier clean.
+
+Two things the work changed about this file's own assumptions, both corrected in
+place above: there are **no migrations** in this repo (TypeORM `synchronize`), and
+the lead-time error **cannot be queried retroactively** — it has to be recorded
+forward, with the far buckets silent for as many days as they are wide.
+
 ### 2.1 Ship the uncertainty band `[P0]`
 
 The band already exists and is thrown away.
@@ -167,17 +184,27 @@ width "can no longer silently collapse from crossing".
 Then `predict.py:2062` folds it into one percentage
 (`confidence = 0.6 * time_confidence + 0.4 * model_confidence`) and the width is gone.
 
-- [ ] `predict.py` result dict (`:2101-2115`): add `predictedWaitLow` (q0.5, the
-      median itself is the lower edge — the band is one-sided upward by construction)
-      and `predictedWaitHigh` (q0.95), or `uncertaintyMinutes` = the width. Decide
-      one shape and keep it; do not ship both.
-- [ ] `WaitTimePrediction` entity (`src/ml/entities/wait-time-prediction.entity.ts`):
-      one nullable `smallint` column, no new index. See the note below on why that is
-      affordable and why it needs no migration.
-- [ ] Surface it: `hourlyForecast[]` items, `headlinerForecast.rides[]`, and the new
-      endpoints below.
+- [x] `predict.py` result dict: emits `uncertaintyMinutes` — the width, not a high
+      edge. One number, it is what the model computes, and a `predictedWaitHigh`
+      would imply a matching `Low` that does not exist. Not rounded to 5 (a band is
+      a difference), and NULL rather than 0 when the model reports no spread.
+- [~] ~~add `predictedWaitLow` (q0.5, the
+  median itself is the lower edge — the band is one-sided upward by construction)
+  and `predictedWaitHigh` (q0.95)~~ — decided against, see above.
+- [x] `WaitTimePrediction` entity: one nullable `smallint` column, no new index.
+- [x] Surfaced on `hourlyForecast[]` items and carried through `PredictionDto` and
+      both of `MLService`'s read paths into `/plan/day`.
+- [ ] `headlinerForecast.rides[]` still does not carry it.
 - [ ] Update `docs/ml/quantile-serving-and-calibration.md` — its TL;DR table says
       q0.95 is "not served". That stops being true.
+- [ ] `status` is set by predict.py, is NOT declared on `PredictionResponse`, and is
+      therefore dropped by pydantic on every row. The column is always NULL and the
+      filter reading it (`pred.status === "OPERATING" || pred.status === null`,
+      commented "excluding scheduled closures") passes everything. Declaring it
+      activates that filter and drops UNKNOWN rows from accuracy scoring — a metrics
+      change, so it needs its own PR with someone reading the coverage numbers. Held
+      in `KNOWN_DROPPED` in `tests/test_prediction_response_fields.py`, which fails
+      if anyone declares it without revisiting the filter.
 
 **No migration, and the column is affordable.** There are no migrations in this repo:
 `synchronize: process.env.DB_SYNCHRONIZE === "true"` (`src/config/database.config.ts:54`),
@@ -201,26 +228,26 @@ enough that it should not decompress.
 Keep `confidence` as it is. It is a different statement (time-decay blended with
 model spread) and something may already read it.
 
-### 2.2 Per-ride hourly forecast for an arbitrary day `[P0]`
+### 2.2 Per-ride hourly forecast for an arbitrary day `[P0]` — DONE
 
 The core missing capability. Nothing today answers "what will Taron's queue look
 like at 14:00 on 2026-10-17".
 
-- [ ] New endpoint, geo path like its siblings:
+- [x] New endpoint, geo path like its siblings:
       `GET /v1/parks/{continent}/{country}/{city}/{parkSlug}/plan/day?date=YYYY-MM-DD`
-- [ ] Response: per ride, an hour-indexed series over the park's opening hours for
+- [x] Response: per ride, an hour-indexed series over the park's opening hours for
       that date, each point carrying `wait`, `low`, `high`, and the **tier** (§1).
       Plus the day's context in one place: hours, crowd level, weather (or the
       climate normal with its flag), holiday/vacation/bridge flags, neighbour
       holidays, showtimes.
-- [ ] Composition for tier B/C: stored daily per-ride prediction as the level,
+- [x] Composition for tier B/C: stored daily per-ride prediction as the level,
       `/stats/hourly` P50 shape as the curve, normalised so the day's mean matches
       the daily prediction. Interpolate across missing hours — Phantasialand has
       five hours of eighteen.
-- [ ] Lean payload. `/stats/hourly` is 3.6 KB for 18 rides and that is the bar to
+- [x] Lean payload. `/stats/hourly` is 3.6 KB for 18 rides and that is the bar to
       match; the attraction detail endpoint is 48 KB per ride and is the anti-pattern.
       Never return the park's attraction objects here.
-- [ ] Cache: day-scoped. Today changes every few minutes, a day in November does not.
+- [x] Cache: day-scoped. Today changes every few minutes, a day in November does not.
       TTL by distance, same instinct as the calendar endpoint's dynamic TTL.
 
 ### 2.2b Measure the error by lead time `[P0]`
@@ -248,11 +275,11 @@ away". Two findings, both verified in the backend:
 
 So the lead-time error curve has to be **built forward**, and it has a waiting period.
 
-- [ ] Snapshot job: before each daily generation overwrites them, copy a sample of
+- [x] Snapshot job: before each daily generation overwrites them, copy a sample of
       predictions into an archive keyed by `(attractionId, targetDate, leadDays)` —
       lead buckets around 1, 3, 7, 14, 30, 60 days. Small: a handful of rows per ride
       per target day, not the whole table.
-- [ ] Score the archive against `queue_data` once each target date has passed, the way
+- [x] Score the archive against `queue_data` once each target date has passed, the way
       `compareWithActuals` does for hourly.
 - [ ] Aggregate MAE by lead bucket, globally and per ride where the sample carries it.
 - [ ] Only then expose it so `/plan/day` can attach a measured `low`/`high` at every
@@ -302,6 +329,14 @@ statistic, not any single day.
       has three values where `null` must behave exactly as before.
 
 ### 2.5 Showtimes into the day payload `[P1]`
+
+**Now known: the calendar DTO has no showtimes field at all.**
+`IntegratedCalendarDayDto` never declared one, which is why every response reads
+like a park with no shows rather than like a field nobody asked for — and it fully
+explains the measurement above (empty on all 90 sampled days). `/plan/day` returns
+an empty array with that noted; wiring `ShowsService` in is its own change, because
+the endpoint has to answer "not known this far out" rather than "no shows", and
+those are different answers.
 
 The calendar's `showTimes` was empty on all 90 days sampled. The park payload has
 them (4 shows at Phantasialand with 5 slots each), but the park fetch is cached for
