@@ -574,7 +574,12 @@ are generated into `i18n/route-namespaces.generated.ts` by
 - [x] `pnpm check:client-messages` has to stay green at every step. A missing
       namespace does not throw — next-intl logs MISSING_MESSAGE and renders the raw
       key.
-- [ ] Six locales, no exceptions. **Still German only** — deliberately, per the brief.
+- [x] Six locales, no exceptions. German-only was the brief's "erstmal", and it turned
+      out not to be a smaller version of the feature but a broken one: `/en` and `/nl`
+      rendered `planner.title` and `planner.day.today` verbatim, 31 MISSING_MESSAGE per
+      open. Neither guard saw it — `check:untranslated` looks for German copied INTO the
+      others, and `validate:translations` compares against the English master, which had
+      no `planner` key either. `pnpm check:planner` now opens the panel in all six.
 
 ### 3.7 Service worker
 

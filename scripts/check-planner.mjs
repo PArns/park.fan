@@ -688,6 +688,63 @@ if (reachable) {
   await grid.close();
 }
 
+// ── All six locales ─────────────────────────────────────────────────────────
+// The `planner` namespace existed in German alone for a while, and neither
+// guard noticed: `check:untranslated` looks for German COPIED into the others,
+// and `validate:translations` compares against the English master — which had
+// no `planner` key either. Meanwhile `/en` and `/nl` rendered `planner.title`
+// and `planner.day.today` verbatim, because next-intl logs MISSING_MESSAGE and
+// prints the raw key rather than throwing. Only opening the panel finds that.
+{
+  const LOCALE_OPEN = {
+    de: 'Planer öffnen',
+    en: 'Open planner',
+    nl: 'Planner openen',
+    fr: 'Ouvrir le planificateur',
+    es: 'Abrir el planificador',
+    it: 'Apri il pianificatore',
+  };
+
+  for (const [locale, label] of Object.entries(LOCALE_OPEN)) {
+    const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+    const missing = [];
+    page.on('console', (msg) => {
+      if (/MISSING_MESSAGE/.test(msg.text())) missing.push(msg.text());
+    });
+
+    await page.goto(`${BASE}/${locale}`, { waitUntil: 'domcontentloaded' });
+    await page.evaluate((plan) => {
+      window.localStorage.setItem('parkfan_planner', JSON.stringify(plan));
+      document.cookie = 'planner=1; path=/';
+    }, PLAN);
+    await page.goto(`${BASE}/${locale}`, { waitUntil: 'networkidle' });
+
+    const launcher = page.locator(`button[aria-label="${label}"]`);
+    const found = (await launcher.count()) === 1;
+    if (found) {
+      await launcher.click();
+      await page
+        .locator(SHEET)
+        .waitFor({ state: 'visible', timeout: 10_000 })
+        .catch(() => {});
+      await page.waitForTimeout(1500);
+    }
+    const text = (
+      (await page
+        .locator(SHEET)
+        .textContent()
+        .catch(() => '')) ?? ''
+    ).replace(/\s+/g, ' ');
+
+    check(
+      `${locale}: Planer öffnet und spricht die Sprache`,
+      found && missing.length === 0 && !/planner\.[a-z]/i.test(text),
+      `Launcher ${found ? 'da' : 'fehlt'}, ${missing.length} fehlende Texte`
+    );
+    await page.close();
+  }
+}
+
 check(
   'keine unerwarteten Konsolenfehler',
   consoleErrors.length === 0,

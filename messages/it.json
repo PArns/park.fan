@@ -1862,5 +1862,102 @@
       "viewerTitle": "Vista 3-D: {name}",
       "figureCount": "{count, plural, one {# elemento del tracciato} other {# elementi del tracciato}}"
     }
+  },
+  "planner": {
+    "title": "Pianificatore",
+    "open": "Apri il pianificatore",
+    "addRide": "Nel piano",
+    "inPlan": "Nel piano",
+    "removeRide": "Togli dal piano",
+    "empty": {
+      "title": "Ancora niente in programma",
+      "body": "Trascina qui un’attrazione o tocca «Nel piano» su una scheda.",
+      "bodyMobile": "Cerca un’attrazione qui sotto e mettila su un orario.",
+      "bodyGrid": "Cerca un’attrazione qui sotto: finisce sulla linea del tempo e da lì si sposta."
+    },
+    "day": {
+      "label": "Giorno",
+      "today": "Oggi",
+      "tomorrow": "Domani",
+      "pick": "Scegli il giorno",
+      "closed": "Quel giorno il parco è chiuso.",
+      "noHours": "Per questo giorno non si conoscono gli orari."
+    },
+    "summary": {
+      "rides": "{count, plural, =0 {Nessuna attrazione} one {Un’attrazione} other {# attrazioni}}",
+      "waiting": "Attesa complessiva",
+      "done": "{done} su {total} fatte"
+    },
+    "entry": {
+      "expected": "previsto",
+      "markDone": "Segna come fatta",
+      "markUndone": "Alla fine no",
+      "actual": "{minutes} min in realtà",
+      "noCurve": "Per questa attrazione non c’è una curva oraria.",
+      "dragHandle": "Sposta",
+      "range": "dalle {from} alle {to}"
+    },
+    "tier": {
+      "measured": "Previsione oraria",
+      "composed": "Dalla previsione del giorno",
+      "longRange": "Stima approssimativa",
+      "measuredHint": "Il modello calcola questa giornata ora per ora.",
+      "composedHint": "Il livello del giorno è previsto, l’andamento viene dai giorni passati.",
+      "longRangeHint": "Così in anticipo il livello del giorno stesso si assottiglia. Leggi i numeri come una direzione, non come una promessa."
+    },
+    "band": {
+      "plusMinus": "± {minutes} min"
+    },
+    "context": {
+      "weatherUnknown": "Nessuna previsione meteo arriva così lontano.",
+      "holiday": "Festivo",
+      "bridgeDay": "Ponte",
+      "schoolVacation": "Vacanze scolastiche",
+      "weekend": "Fine settimana",
+      "neighborHolidays": "Vacanze qui accanto",
+      "hours": "dalle {open} alle {close}"
+    },
+    "search": {
+      "placeholder": "Cerca un’attrazione",
+      "noResults": "Nessuna attrazione trovata."
+    },
+    "clearDay": "Svuota il giorno",
+    "clearDayConfirm": "Eliminare tutte le voci di questo giorno?",
+    "loading": "Caricamento del piano",
+    "error": "Non è stato possibile caricare il piano.",
+    "noPlan": "Per questo giorno non c’è una previsione.",
+    "overview": {
+      "empty": "Ancora nessun giorno pianificato."
+    },
+    "planThisDay": "Pianifica questo giorno",
+    "unit": {
+      "min": "min"
+    },
+    "grid": {
+      "closesApprox": "fino alle ~{time}",
+      "now": "Adesso"
+    },
+    "transfer": {
+      "tight": "stretto",
+      "good": "buono",
+      "generous": "ampio",
+      "broken": "non torna",
+      "unknown": "aperto",
+      "brokenBy": "mancano {minutes} min",
+      "repair": "sposta più tardi",
+      "distance": "{distance} in linea d’aria",
+      "minWalk": "almeno {minutes} min di trasferimento",
+      "allowance": "inclusi uscita dalla stazione e giro, stimato",
+      "noSpread": "calcolato senza la dispersione della previsione"
+    },
+    "close": "Annulla la selezione",
+    "shows": {
+      "notKnownYet": "Gli orari degli spettacoli si fissano solo il giorno stesso.",
+      "none": "Oggi nessuno spettacolo."
+    },
+    "warn": {
+      "closedNow": "Al momento risulta chiusa.",
+      "downYesterday": "Ieri è rimasta ferma tutto il giorno."
+    }
   }
 }

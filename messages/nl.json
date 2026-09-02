@@ -1862,5 +1862,102 @@
       "viewerTitle": "3D-weergave: {name}",
       "figureCount": "{count, plural, one {# baanelement} other {# baanelementen}}"
     }
+  },
+  "planner": {
+    "title": "Dagplanner",
+    "open": "Planner openen",
+    "addRide": "In het plan",
+    "inPlan": "In het plan",
+    "removeRide": "Uit het plan halen",
+    "empty": {
+      "title": "Nog niets gepland",
+      "body": "Sleep een attractie hierheen of tik op „In het plan” op een attractiekaart.",
+      "bodyMobile": "Zoek hieronder een attractie en zet die op een tijd.",
+      "bodyGrid": "Zoek hieronder een attractie – die komt op de tijdlijn en is daar te verschuiven."
+    },
+    "day": {
+      "label": "Dag",
+      "today": "Vandaag",
+      "tomorrow": "Morgen",
+      "pick": "Dag kiezen",
+      "closed": "Het park is die dag dicht.",
+      "noHours": "Voor deze dag zijn geen openingstijden bekend."
+    },
+    "summary": {
+      "rides": "{count, plural, =0 {Geen attractie} one {Eén attractie} other {# attracties}}",
+      "waiting": "Wachttijd bij elkaar",
+      "done": "{done} van {total} gedaan"
+    },
+    "entry": {
+      "expected": "verwacht",
+      "markDone": "Als gedaan markeren",
+      "markUndone": "Toch niet gedaan",
+      "actual": "werkelijk {minutes} min",
+      "noCurve": "Voor deze attractie is er geen uurcurve.",
+      "dragHandle": "Verplaatsen",
+      "range": "{from} tot {to}"
+    },
+    "tier": {
+      "measured": "Uurprognose",
+      "composed": "Uit de dagprognose",
+      "longRange": "Ruwe schatting",
+      "measuredHint": "Het model rekent deze dag per uur uit.",
+      "composedHint": "De hoogte van de dag is voorspeld, het verloop komt uit eerdere dagen.",
+      "longRangeHint": "Zo ver vooruit wordt de hoogte van de dag zelf dun. Lees de cijfers als richting, niet als toezegging."
+    },
+    "band": {
+      "plusMinus": "± {minutes} min"
+    },
+    "context": {
+      "weatherUnknown": "Zo ver vooruit is er geen weersverwachting.",
+      "holiday": "Feestdag",
+      "bridgeDay": "Brugdag",
+      "schoolVacation": "Schoolvakantie",
+      "weekend": "Weekend",
+      "neighborHolidays": "Vakantie hiernaast",
+      "hours": "{open} tot {close} uur"
+    },
+    "search": {
+      "placeholder": "Attractie zoeken",
+      "noResults": "Geen attractie gevonden."
+    },
+    "clearDay": "Dag leegmaken",
+    "clearDayConfirm": "Alle items van deze dag verwijderen?",
+    "loading": "Plan wordt geladen",
+    "error": "Het plan kon niet worden geladen.",
+    "noPlan": "Voor deze dag is er geen prognose.",
+    "overview": {
+      "empty": "Nog geen dagen gepland."
+    },
+    "planThisDay": "Deze dag plannen",
+    "unit": {
+      "min": "min"
+    },
+    "grid": {
+      "closesApprox": "tot ~{time}",
+      "now": "Nu"
+    },
+    "transfer": {
+      "tight": "krap",
+      "good": "goed",
+      "generous": "ruim",
+      "broken": "gaat niet",
+      "unknown": "open",
+      "brokenBy": "{minutes} min te kort",
+      "repair": "later zetten",
+      "distance": "{distance} hemelsbreed",
+      "minWalk": "minstens {minutes} min overstap",
+      "allowance": "incl. uitstappen en de rit zelf, geschat",
+      "noSpread": "gerekend zonder de spreiding van de prognose"
+    },
+    "close": "Selectie opheffen",
+    "shows": {
+      "notKnownYet": "Showtijden staan pas op de dag zelf vast.",
+      "none": "Vandaag geen voorstellingen."
+    },
+    "warn": {
+      "closedNow": "Meldt nu gesloten.",
+      "downYesterday": "Was gisteren de hele dag buiten bedrijf."
+    }
   }
 }

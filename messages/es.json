@@ -1862,5 +1862,102 @@
       "viewerTitle": "Vista 3-D: {name}",
       "figureCount": "{count, plural, one {# elemento del trazado} other {# elementos del trazado}}"
     }
+  },
+  "planner": {
+    "title": "Planificador",
+    "open": "Abrir el planificador",
+    "addRide": "Al plan",
+    "inPlan": "En el plan",
+    "removeRide": "Quitar del plan",
+    "empty": {
+      "title": "Todavía no hay nada planificado",
+      "body": "Arrastra una atracción aquí o toca «Al plan» en una tarjeta.",
+      "bodyMobile": "Busca una atracción abajo y ponla en una hora.",
+      "bodyGrid": "Busca una atracción abajo: aparece en la línea de tiempo y se mueve desde ahí."
+    },
+    "day": {
+      "label": "Día",
+      "today": "Hoy",
+      "tomorrow": "Mañana",
+      "pick": "Elegir día",
+      "closed": "El parque está cerrado ese día.",
+      "noHours": "No se conocen los horarios de ese día."
+    },
+    "summary": {
+      "rides": "{count, plural, =0 {Ninguna atracción} one {Una atracción} other {# atracciones}}",
+      "waiting": "Tiempo de cola en total",
+      "done": "{done} de {total} hechas"
+    },
+    "entry": {
+      "expected": "previsto",
+      "markDone": "Marcar como hecha",
+      "markUndone": "Al final no",
+      "actual": "{minutes} min en realidad",
+      "noCurve": "No hay curva horaria para esta atracción.",
+      "dragHandle": "Mover",
+      "range": "{from} a {to}"
+    },
+    "tier": {
+      "measured": "Previsión por horas",
+      "composed": "De la previsión del día",
+      "longRange": "Estimación aproximada",
+      "measuredHint": "El modelo calcula este día hora por hora.",
+      "composedHint": "El nivel del día está previsto; el perfil viene de días anteriores.",
+      "longRangeHint": "Tan lejos, el nivel del día se vuelve fino. Lee las cifras como una dirección, no como una promesa."
+    },
+    "band": {
+      "plusMinus": "± {minutes} min"
+    },
+    "context": {
+      "weatherUnknown": "Ninguna previsión del tiempo llega tan lejos.",
+      "holiday": "Festivo",
+      "bridgeDay": "Puente",
+      "schoolVacation": "Vacaciones escolares",
+      "weekend": "Fin de semana",
+      "neighborHolidays": "Vacaciones al lado",
+      "hours": "de {open} a {close}"
+    },
+    "search": {
+      "placeholder": "Buscar atracción",
+      "noResults": "No se encontró ninguna atracción."
+    },
+    "clearDay": "Vaciar el día",
+    "clearDayConfirm": "¿Borrar todas las entradas de este día?",
+    "loading": "Cargando el plan",
+    "error": "No se pudo cargar el plan.",
+    "noPlan": "No hay previsión para este día.",
+    "overview": {
+      "empty": "Aún no hay días planificados."
+    },
+    "planThisDay": "Planificar este día",
+    "unit": {
+      "min": "min"
+    },
+    "grid": {
+      "closesApprox": "hasta ~{time}",
+      "now": "Ahora"
+    },
+    "transfer": {
+      "tight": "justo",
+      "good": "bien",
+      "generous": "holgado",
+      "broken": "no sale",
+      "unknown": "abierto",
+      "brokenBy": "faltan {minutes} min",
+      "repair": "dejar más tarde",
+      "distance": "{distance} en línea recta",
+      "minWalk": "al menos {minutes} min de cambio",
+      "allowance": "incluye salir de la estación y la atracción, estimado",
+      "noSpread": "calculado sin la dispersión de la previsión"
+    },
+    "close": "Quitar la selección",
+    "shows": {
+      "notKnownYet": "Los horarios de los espectáculos solo se fijan el mismo día.",
+      "none": "Hoy no hay espectáculos."
+    },
+    "warn": {
+      "closedNow": "Ahora mismo indica cerrada.",
+      "downYesterday": "Ayer estuvo fuera de servicio todo el día."
+    }
   }
 }
