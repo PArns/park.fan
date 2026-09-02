@@ -106,23 +106,28 @@ export function PlannerEntryRow({
           </span>
         </div>
 
-        <div className="mt-1 flex items-center gap-2">
-          <PlannerBar
-            wait={done ? (entry.actualWait ?? null) : estimate.wait}
-            uncertaintyMinutes={done ? null : estimate.uncertaintyMinutes}
-            scale={scale}
-            tier={tier}
-            done={done}
-          />
-          {/* The figure for the band appears only where it is measured. Past
+        {/* No figure, no bar. An empty track beside an em dash reads as a bar at
+            zero — the one thing this row must never say. The reason line below
+            takes the space instead. */}
+        {figure !== null && (
+          <div className="mt-1 flex items-center gap-2">
+            <PlannerBar
+              wait={done ? (entry.actualWait ?? null) : estimate.wait}
+              uncertaintyMinutes={done ? null : estimate.uncertaintyMinutes}
+              scale={scale}
+              tier={tier}
+              done={done}
+            />
+            {/* The figure for the band appears only where it is measured. Past
               that, the bar's soft edge carries the uncertainty and no number
               is attached to it. */}
-          {!done && showBandFigure && estimate.uncertaintyMinutes !== null && (
-            <span className="text-muted-foreground shrink-0 font-mono text-[10px] tabular-nums">
-              {t('band.plusMinus', { minutes: estimate.uncertaintyMinutes })}
-            </span>
-          )}
-        </div>
+            {!done && showBandFigure && estimate.uncertaintyMinutes !== null && (
+              <span className="text-muted-foreground shrink-0 font-mono text-[10px] tabular-nums">
+                {t('band.plusMinus', { minutes: estimate.uncertaintyMinutes })}
+              </span>
+            )}
+          </div>
+        )}
 
         {missingLabel && (
           <p className="text-muted-foreground mt-0.5 truncate text-[11px]">{missingLabel}</p>

@@ -66,6 +66,7 @@
     "check:glossary-slugs": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/check-glossary-slugs.mjs",
     "check:glossary-content-date": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/check-glossary-content-date.mjs",
     "check:card-framing": "node scripts/check-card-framing.mjs",
+    "check:planner": "node scripts/check-planner.mjs",
     "check:agent-ready": "node scripts/check-agent-ready.mjs",
     "check:webmcp": "node scripts/check-webmcp.mjs",
     "check:hero-search-rest": "node scripts/check-hero-search-rest.mjs",
