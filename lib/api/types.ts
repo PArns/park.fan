@@ -1990,6 +1990,17 @@ export interface PlanDayRide {
   uncertaintyMinutes?: number | null;
   /** Measured days behind the historical shape. */
   sampleDays: number;
+  /**
+   * Where the ride is, so the planner can say how far apart two consecutive
+   * entries are without fetching forty attraction payloads.
+   *
+   * A geodesic distance between two of these is a LOWER BOUND on the walk and
+   * nothing more — park paths bend around water, queues and one-way routing, and
+   * Phantasialand stacks two lands vertically. State a floor; never present the
+   * straight line as a walking time.
+   */
+  latitude?: number | null;
+  longitude?: number | null;
 }
 
 export interface PlanDayContext {
