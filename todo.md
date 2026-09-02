@@ -56,6 +56,35 @@ Two data traps worth writing down because they will otherwise be mistaken for bu
   rather than assume a dense array.
 - The calendar endpoint refuses ranges over **90 days** (`400 Date range too large`).
 
+### Things that are already half built
+
+Found by the frontend recon and worth knowing before writing anything new.
+
+- **The error channel is already drawn.** `RideDayCurve.forecastError` is a published
+  per-ride MAE, and `components/parks/ride-day-curve.tsx:277-286` renders it as a band
+  via `buildBandPath(hours, forecast − err, forecast + err)`. The visual primitive for
+  §4 exists; it is currently fed only for today.
+- **`day.hourly` is a dead path.** The backend accepts
+  `?includeHourly=today+tomorrow|today|all|none` and `getIntegratedCalendar` carries the
+  parameter (`lib/api/integrated-calendar.ts:30-39`) — but every caller forces `'none'`
+  (`app/api/parks/[...path]/route.ts:140`, `integrated-calendar.ts:288`). A bar chart
+  for that data is already built at `park-calendar-day-detail.tsx:469-494` and renders
+  nothing. Note the payload is park-wide, not per ride, and the route is `s-maxage=86400`,
+  so turning it on costs cache key and bytes.
+- **A day-detail dialog with prev/next navigation exists**: `ParkCalendarDayDetail`
+  (`park-calendar-day-detail.tsx:93-632`), already mounted twice. It is the natural
+  place for "plan this day".
+- **`/v1/parks/…/predictions/yearly` is never called** from anywhere in the frontend.
+- `CalendarDay.showTimes`, `refurbishments`, `recommendation`, `advisoryKeys` are typed
+  and rendered by nothing. So are `typicalWaitThisHour`, `percentile95ThisHour` and
+  `currentVsTypical`.
+- `avgWaitTime` and `crowdScore` are typed on `CalendarDay` but measured absent on
+  0 of 30 and 0 of 91 days (`lib/parks/calendar-month-summary.ts:176-179`).
+- There is **no `isWeekend`** on `CalendarDay` — it is derived from the date per surface.
+- There is **no day route or day state** in the calendar: only a `useState` in
+  `park-calendar-grid.tsx:88`. Month URLs go through `parkCalendarPath()`
+  (`lib/parks/calendar-segments.ts:61`). A planner that deep-links a day has to add one.
+
 ---
 
 ## 1. The horizon problem
@@ -94,6 +123,14 @@ Today's limits, and where each is set:
 **Rule for all four: the tier is part of the answer.** Every estimate the API returns
 carries which tier produced it and how wide its channel is. The UI never renders a
 tier-D bar the way it renders a tier-A bar (§4).
+
+**And the widening has to be measured, not assumed.** `RideDayCurve.forecastError`
+carries an explicit warning in its own docstring (`lib/api/types.ts:1841-1848`): a
+caller may draw `± forecastError`, "but must NOT fan it out with the horizon, which
+nothing measures". Tiers B–D are exactly that fanning out, so the plan only works if
+somebody measures it first — see §2.2b. Until that number exists, a distant day gets
+the honest wide-and-soft treatment without a specific figure attached, never an
+invented multiplier.
 
 Weather past day 14 is its own version of this: a monthly climate normal for the
 park's coordinates, clearly marked. It must not be able to reach the wait-time model
@@ -157,6 +194,27 @@ like at 14:00 on 2026-10-17".
       Never return the park's attraction objects here.
 - [ ] Cache: day-scoped. Today changes every few minutes, a day in November does not.
       TTL by distance, same instinct as the calendar endpoint's dynamic TTL.
+
+### 2.2b Measure the error by lead time `[P0]`
+
+This is what makes tiers B–D honest, and nothing measures it today. Without it the
+widening channel is decoration.
+
+The raw material is there: `prediction_accuracy` stores both `createdAt` (when the
+prediction was made) and `predictedTime` (what it was made for), so the error grouped
+by **lead time** is a query away, not a new data collection.
+
+- [ ] Aggregate MAE by lead-time bucket (hours ahead for tier A, days ahead for B–D),
+      globally and per ride where the sample carries it. `aggregate-accuracy-stats`
+      already exists as an admin job and is the place to extend.
+- [ ] Expose it so `/plan/day` can attach a real `low`/`high` to every point at every
+      distance.
+- [ ] Then lift the docstring warning on `forecastError`, because at that point the
+      fanning-out is measured.
+- [ ] Expect the curve to flatten: `/v1/ml/accuracy/trends/hourly` already shows mae
+      moving only between 6.9 and 8.8 across the hours of the day. If lead-time error
+      turns out similarly flat, that is a finding worth showing, not a reason to fake
+      a widening band.
 
 ### 2.3 Day forecast for all rides, not five `[P1]`
 
@@ -273,7 +331,22 @@ its parse cache and its `secureJsonParse` guard against prototype pollution.
 - [ ] Mount in the locale layout. It is on every page, so it pays the layout's
       i18n budget — see §3.6.
 - [ ] Mobile: bottom sheet with ride search. `cmdk` is installed and
-      `components/ui/command.tsx` wraps it; the existing search overlay is the model.
+      `components/ui/command.tsx` wraps it. The closest existing thing is
+      `EntityPicker` (`components/contribute/entity-picker.tsx:151-213`) — a combobox
+      over parks _and_ attractions with a 250 ms debounce, an `AbortController` and
+      `MIN_CHARS = 3`. Copy its request discipline rather than reinventing it.
+
+### 3.3b Choosing the day
+
+- [ ] `ParkCalendarDayDetail` (`park-calendar-day-detail.tsx:93-632`) is already a
+      Radix dialog with prev/next day navigation, arrow-key handling and `lastDay`
+      dimming, and is already mounted from both the calendar grid and the park header.
+      "Plan this day" belongs in it rather than in a new dialog.
+- [ ] The calendar has no day route — day selection is a `useState` in
+      `park-calendar-grid.tsx:88`. A planner that links to a specific day needs one;
+      follow the month-segment pattern in `lib/parks/calendar-segments.ts`.
+- [ ] The dropdown variant of day selection is the same state by another control. One
+      source of truth, two inputs.
 
 ### 3.4 Drag and drop
 
@@ -282,7 +355,21 @@ its parse cache and its `secureJsonParse` guard against prototype pollution.
 - [ ] Follow the motion split `use-menu-reveal.ts` established: CSS owns visibility,
       GSAP animates transforms, `prefers-reduced-motion` skips the import entirely.
 - [ ] Keyboard equivalent for reordering. Drag alone is not an interface.
-- [ ] Drop targets on ride pages and in the park's attraction list.
+- [ ] **`AttractionCard` is a hostile drag surface.** Its root is a `<Link>`
+      (`components/parks/attraction-card.tsx:168-172`) with a `hover:-translate-y-1`,
+      and it carries `data-card-fx`, which a delegated `document`-level
+      `pointerover`/`pointermove` listener picks up and drives with a GSAP
+      `quickSetter` (`components/parks/card-pointer-fx.tsx:124-159`). A drag started on
+      the card body fights link navigation, the hover transform and that listener at
+      once. Use an explicit drag handle, and check what the delegated listener does
+      while a drag is in flight.
+- [ ] The natural drag surface already exists: `AttractionWaitOverview`
+      (`components/parks/attraction-wait-overview.tsx:127-157`) is a `<ul class="divide-y">`
+      of plain `<li>` rows with no link root and no photo. Same for
+      `RopeDropHeadliners` (`rope-drop-headliners.tsx:29-56`).
+- [ ] The card's top glass panel already reserves `padding: '14px 52px 13px 16px'` for
+      the favourite star at `top-3 right-3` (`attraction-card.tsx:207-233`). A second
+      control there needs more right padding, not a second absolute child.
 
 ### 3.5 Composition and correction
 
@@ -343,7 +430,9 @@ and the horizon problem in §1.
       of the opening-hours band, or it reads as data.
 - [ ] **The error channel is a filled band, not two lines.** Lines suggest bounds;
       a band suggests a distribution, which is what it is. Its opacity carries the
-      tier: crisp for tier A, softer and wider for C and D.
+      tier: crisp for tier A, softer and wider for C and D. `RideDayCurve` already
+      draws exactly this band (`ride-day-curve.tsx:277-286`, `buildBandPath`) — extend
+      that geometry rather than writing a second one.
 - [ ] Bars sit on the day's crowd colour scale — `lib/utils/crowd-level-styles.ts`
       exists and must be reused rather than re-picked.
 - [ ] Walking segments between entries as thin connectors with their minutes on them.
@@ -403,3 +492,22 @@ handled.
       its own.
 - [ ] Trip share links are unauthenticated by design. Expiry, and whether an edit
       needs a second secret.
+- [ ] Is lead-time error actually flat? `/v1/ml/accuracy/trends/hourly` shows mae
+      varying only 6.9–8.8 across the hours of the day. If the same holds across days
+      ahead, the four tiers differ in _provenance_ but barely in _width_, and the
+      visual language has to carry that honestly instead of dramatising it (§2.2b).
+- [ ] `day.hourly` is park-wide, not per ride. Worth turning on for the day-detail
+      chart that already exists, but it does not answer the planner's question and
+      must not be mistaken for it.
+
+---
+
+## 7. Recon artefacts
+
+Two workflow recons produced the facts above. Their reports are session-scratch, not
+committed. If they are needed again: frontend recon covered ML/forecast, calendar
+context, ride pages, persistence, UI overlays, i18n, push and conventions; backend
+recon covered the ML service, the NestJS ML module, calendar and stats, attractions
+and queues, infra/auth/jobs, and docs. Everything either produced that matters to the
+build is quoted in this file with its file:line, so the reports themselves are
+disposable.
