@@ -37,6 +37,8 @@ interface PlannerDayGridProps {
   liveWaits?: Map<string, number> | null;
   /** Showtimes as park-local minutes. `null` means "not knowable for this date". */
   showLines?: import('@/lib/planner/live').PlannerShowLine[] | null;
+  /** Rides reporting closed right now. Empty where the date is not today. */
+  closedNow?: ReadonlySet<string>;
   loading?: boolean;
   onMove: (entryId: string, startMinute: number) => void;
   onShiftFrom: (entryId: string, deltaMinutes: number) => void;
@@ -98,6 +100,7 @@ export function PlannerDayGrid({
   isToday,
   liveWaits,
   showLines = null,
+  closedNow,
   loading = false,
   onMove,
   onShiftFrom,
@@ -528,6 +531,16 @@ export function PlannerDayGrid({
                   metresFromPrevious={previous?.leg.metres ?? null}
                   showBandFigure={showBandFigure}
                   live={row.live}
+                  photo={
+                    row.ride?.backgroundImage
+                      ? {
+                          src: row.ride.backgroundImage,
+                          position: row.ride.backgroundPosition ?? '50% 0%',
+                        }
+                      : null
+                  }
+                  closedNow={closedNow?.has(row.entry.attractionSlug) ?? false}
+                  downYesterday={row.ride?.downYesterday === true}
                   selected={selectedId === row.entry.id}
                   dragging={draggingId === row.entry.id}
                   conflict={layout.broken.has(row.entry.id)}

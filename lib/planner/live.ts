@@ -78,3 +78,31 @@ export function showLinesFor(shows: readonly ParkShow[] | undefined | null): Pla
   }
   return out.sort((a, b) => a.minute - b.minute);
 }
+
+/**
+ * Rides reporting closed right now.
+ *
+ * Deliberately NOT the complement of {@link liveWaitsFor}: a ride can be open
+ * and simply have no standby queue, and calling that closed would put a warning
+ * on a ride somebody can walk onto. This asks the status directly, and only
+ * where the park itself is open — inside a shut park every ride is closed and
+ * saying so on every block is noise, not information.
+ *
+ * An empty set where the park has no readable feed, for the same reason
+ * `liveWaitsFor` returns null there: at 03:00 a park with no source and a park
+ * shut for the night are byte-for-byte identical.
+ */
+export function closedNowFor(park: ParkWithAttractions | undefined | null): Set<string> {
+  const out = new Set<string>();
+  if (!park || park.status !== 'OPERATING') return out;
+  if (!hasReadableWaitTimes(park)) return out;
+
+  for (const attraction of park.attractions ?? []) {
+    const status = getLiveAttractionStatus(attraction, park.status);
+    // `UNKNOWN` is not `CLOSED`. The API reports it when it cannot tell, and a
+    // warning built on it would be this app asserting exactly what the API
+    // declined to.
+    if (status === 'CLOSED' || status === 'REFURBISHMENT') out.add(attraction.slug);
+  }
+  return out;
+}
