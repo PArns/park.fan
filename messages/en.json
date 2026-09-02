@@ -1862,5 +1862,102 @@
       "viewerTitle": "3-D view: {name}",
       "figureCount": "{count, plural, one {# track element} other {# track elements}}"
     }
+  },
+  "planner": {
+    "title": "Day planner",
+    "open": "Open planner",
+    "addRide": "Add to plan",
+    "inPlan": "In the plan",
+    "removeRide": "Remove from plan",
+    "empty": {
+      "title": "Nothing planned yet",
+      "body": "Drag a ride here, or tap “Add to plan” on an attraction card.",
+      "bodyMobile": "Find a ride below and drop it on a time.",
+      "bodyGrid": "Find a ride below – it lands on the timeline and can be moved from there."
+    },
+    "day": {
+      "label": "Day",
+      "today": "Today",
+      "tomorrow": "Tomorrow",
+      "pick": "Pick a day",
+      "closed": "The park is closed that day.",
+      "noHours": "No opening hours are known for this day."
+    },
+    "summary": {
+      "rides": "{count, plural, =0 {No rides} one {One ride} other {# rides}}",
+      "waiting": "Time queuing in total",
+      "done": "{done} of {total} ridden"
+    },
+    "entry": {
+      "expected": "expected",
+      "markDone": "Mark as ridden",
+      "markUndone": "Not ridden after all",
+      "actual": "actually {minutes} min",
+      "noCurve": "There is no hourly curve for this ride.",
+      "dragHandle": "Move",
+      "range": "{from} to {to}"
+    },
+    "tier": {
+      "measured": "Hourly forecast",
+      "composed": "From the day forecast",
+      "longRange": "Rough estimate",
+      "measuredHint": "The model works this day out hour by hour.",
+      "composedHint": "The day’s level is predicted; the shape comes from earlier days.",
+      "longRangeHint": "This far ahead the day’s level itself gets thin. Read the figures as a direction, not a promise."
+    },
+    "band": {
+      "plusMinus": "± {minutes} min"
+    },
+    "context": {
+      "weatherUnknown": "No weather forecast reaches this far ahead.",
+      "holiday": "Public holiday",
+      "bridgeDay": "Bridge day",
+      "schoolVacation": "School holidays",
+      "weekend": "Weekend",
+      "neighborHolidays": "Holidays next door",
+      "hours": "{open} to {close}"
+    },
+    "search": {
+      "placeholder": "Search rides",
+      "noResults": "No ride found."
+    },
+    "clearDay": "Clear the day",
+    "clearDayConfirm": "Delete every entry for this day?",
+    "loading": "Loading the plan",
+    "error": "The plan could not be loaded.",
+    "noPlan": "There is no forecast for this day.",
+    "overview": {
+      "empty": "No days planned yet."
+    },
+    "planThisDay": "Plan this day",
+    "unit": {
+      "min": "min"
+    },
+    "grid": {
+      "closesApprox": "until ~{time}",
+      "now": "Now"
+    },
+    "transfer": {
+      "tight": "tight",
+      "good": "fine",
+      "generous": "generous",
+      "broken": "does not work",
+      "unknown": "open",
+      "brokenBy": "{minutes} min short",
+      "repair": "move later",
+      "distance": "{distance} as the crow flies",
+      "minWalk": "at least {minutes} min to change",
+      "allowance": "incl. leaving the station and the ride itself, estimated",
+      "noSpread": "calculated without the forecast’s spread"
+    },
+    "close": "Clear selection",
+    "shows": {
+      "notKnownYet": "Show times are only settled on the day itself.",
+      "none": "No shows today."
+    },
+    "warn": {
+      "closedNow": "Reporting closed right now.",
+      "downYesterday": "Was out of service all day yesterday."
+    }
   }
 }
