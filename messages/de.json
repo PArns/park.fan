@@ -247,8 +247,8 @@
     },
     "live": {
       "kicker": "Live-Wartezeiten",
-      "title": "Live-Wartezeiten: was die Warteschlange gerade wirklich macht",
-      "lead": "Alle fünf Minuten neu abgefragt, für jede Attraktion und jede Warteschlangen-Art, dazu Öffnungszeiten und Störungen.",
+      "title": "Wartezeiten für jede Bahn, alle fünf Minuten neu",
+      "lead": "Für jede Attraktion und jede Warteschlangen-Art, dazu Öffnungszeiten und Störungen.",
       "body": "Wir zeigen nicht nur die Zahl, sondern was sie bedeutet: 95 Minuten sind an einem Dienstag im September viel, an einem Samstag im Oktober völlig normal. Deshalb steht auf jeder Attraktionsseite, was an diesem Wochentag typisch ist und was ein voller Tag bedeutet.",
       "ridesTitle": "Jede Attraktion hat ihre eigene Seite",
       "ridesText": "Tausende Attraktionsseiten, jede mit dem, was für diese eine Bahn gilt: Warteschlangen-Arten, Tagesverlauf aus Messung und Prognose, typische Zeiten nach Wochentag, Mindestgröße und Rope-Drop-Tipp.",
@@ -305,7 +305,7 @@
     },
     "ai": {
       "kicker": "Unsere KI",
-      "title": "Ein eigenes Modell – und wir zeigen, wie gut es ist",
+      "title": "Eine eigene Prognose, und die Abweichung steht dabei",
       "lead": "Wartezeiten vorherzusagen ist der schwierige Teil, und die meisten Seiten weichen ihm aus. park.fan geht ihn an: mit Fancast, einem eigenen Modell, jede Nacht neu trainiert, bis zu 365 Tage voraus.",
       "compareTitle": "Wie andere Wartezeit-Seiten vorhersagen",
       "compareLead": "Drei Ansätze sind verbreitet, und alle drei haben denselben blinden Fleck: niemand sagt dir, wie weit die Prognose danebenlag.",
@@ -332,8 +332,8 @@
     },
     "bestTime": {
       "kicker": "Beste Besuchszeit",
-      "title": "Viele Achterbahnen haben zwei perfekte Zeitfenster – wir sagen dir wann",
-      "lead": "Rope Drop am Morgen, die letzte Stunde am Abend, und dazwischen die Attraktionen, die gerade gegen den Trend laufen.",
+      "title": "Viele Bahnen haben zwei ruhige Fenster, morgens und gegen Abend",
+      "lead": "Rope Drop hilft nicht bei jeder Bahn. Die Kurve kommt aus den Messtagen der einzelnen Attraktion.",
       "chartSubtitle": "Median aus {days} Messtagen, gemessen alle 5 Minuten",
       "legendToday": "heute gemessen",
       "legendMedian": "Median vergangener Tage",
@@ -423,7 +423,7 @@
     },
     "blog": {
       "kicker": "Blog & Guides",
-      "title": "Die Daten erklären, was im Park passiert",
+      "title": "Analysen zu einzelnen Parks, mit Zahlen von heute",
       "lead": "Park-Guides, Wartezeit-Analysen und Saison-Tipps, geschrieben von Leuten, die selbst anstehen. Zu jedem Park gibt es den passenden Artikel direkt auf der Parkseite.",
       "bestTimeTitle": "Beste Reisezeit für Freizeitparks",
       "bestTimeText": "Wann Parks am leersten sind: die ruhigsten Wochentage und Monate, aus zwei Jahren echter Wartezeiten von über 200 Parks.",
@@ -901,7 +901,7 @@
       "noData": "Noch nicht genug historische Daten verfügbar.",
       "comparisonTitle": "Im Vergleich mit anderen Parks",
       "parkAverage": "Parkschnitt",
-      "longestQueue": "Längste Schlange",
+      "longestQueue": "Längste Warteschlange",
       "comparisonPark": "Park",
       "rideWaitsTitle": "Wartezeiten im Vergleich",
       "rideWaitsRide": "Attraktion",
@@ -1591,7 +1591,7 @@
   },
   "bestTime": {
     "title": "Beste Reisezeit für Freizeitparks",
-    "description": "Die ruhigsten Wochentage und Monate aus echten Wartezeiten von über 200 Parks, dazu Tricks für kurze Schlangen und der Crowd-Kalender für deinen Park.",
+    "description": "Die ruhigsten Wochentage und Monate aus echten Wartezeiten von über 200 Parks, dazu Tricks für kurze Warteschlangen und der Crowd-Kalender für deinen Park.",
     "quietestByPark": {
       "title": "Die ruhigsten Tage je Park",
       "intro": "Die Mittelwerte oben gelten für alle Parks zusammen. Einzeln sieht es anders aus: jeder Park hat seinen eigenen Rhythmus, abhängig von Schulferien, Anreisewegen und davon, wann Tagesgäste kommen.",
