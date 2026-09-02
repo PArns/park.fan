@@ -862,7 +862,7 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
   return (
     <RouteMessages route="/ui">
       <Suspense fallback={null}>
-        <div className="relative min-h-screen">
+        <div className="relative min-h-dvh">
           {/* Fixed non-scrolling background — needed for glass effects */}
           <div className="fixed inset-0 -z-10">
             <Image

@@ -123,11 +123,14 @@ export function GuideHero({
 }) {
   return (
     <header className="relative isolate -mt-12 flex min-h-[86vh] items-start overflow-hidden sm:items-end">
+      {/* `quality={60}`: the LCP element, full-bleed under a tint and a headline. See the shared
+          `Hero` in components/marketing/editorial-ui.tsx for the measured numbers. */}
       <Image
         src={imageSrc}
         alt={imageAlt}
         fill
         priority
+        quality={60}
         sizes="100vw"
         className="object-cover motion-safe:scale-105"
       />

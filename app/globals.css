@@ -811,14 +811,23 @@
       transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1),
       filter 400ms ease;
   }
-  .group:hover .pk-photo-zoom {
-    transform: scale(1.04);
-  }
   .pk-photo-zoom.pk-photo-closed {
     filter: grayscale(1);
   }
-  .group:hover .pk-photo-zoom.pk-photo-closed {
-    filter: grayscale(0);
+  /* Both hover rules are gated, and the second is why it matters: greyscale is how a card says
+     the park is closed. A mobile browser applies `:hover` to a tapped element and LEAVES it
+     applied until something else is tapped, so a stray touch while scrolling un-greyed a closed
+     park's card and left it that way — the card then claims the opposite of what it means. The
+     JS half of this effect has always known the right query: `card-pointer-fx.tsx` bails on
+     `!matchMedia('(hover: hover) and (pointer: fine)')`, with the reason in a comment. Only the
+     CSS half was missing it. */
+  @media (hover: hover) and (pointer: fine) {
+    .group:hover .pk-photo-zoom {
+      transform: scale(1.04);
+    }
+    .group:hover .pk-photo-zoom.pk-photo-closed {
+      filter: grayscale(0);
+    }
   }
 
   .interactive-link {

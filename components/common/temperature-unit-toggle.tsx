@@ -50,7 +50,12 @@ export function TemperatureUnitToggle({ className }: TemperatureUnitToggleProps)
       role="group"
       aria-label={t('unitToggleLabel')}
       className={cn(
-        'border-border/60 bg-background/40 inline-flex h-6 items-center rounded-full border p-0.5 text-[10px] font-medium',
+        // 24 px tall with two 16 px halves flush against each other: a finger landing on the seam
+        // flipped to whichever side it caught, and the change is a year-long cookie with no undo
+        // cue. On a phone the group grows to 36 and the two halves take 44 px of width each with a
+        // gap between them — width rather than height, because this sits in a card header beside a
+        // temperature and 44 px tall would own the row. The desk keeps 24.
+        'border-border/60 bg-background/40 inline-flex h-6 items-center rounded-full border p-0.5 text-[10px] font-medium max-sm:h-9 max-sm:gap-1',
         className
       )}
     >
@@ -58,7 +63,7 @@ export function TemperatureUnitToggle({ className }: TemperatureUnitToggleProps)
         type="button"
         onClick={() => setUnit('C')}
         aria-pressed={mounted ? unit === 'C' : undefined}
-        className="u-unit-btn u-unit-c rounded-full px-2 py-0.5 transition-colors"
+        className="u-unit-btn u-unit-c inline-flex items-center justify-center rounded-full px-2 py-0.5 transition-colors max-sm:min-h-8 max-sm:min-w-11"
       >
         °C
       </button>
@@ -66,7 +71,7 @@ export function TemperatureUnitToggle({ className }: TemperatureUnitToggleProps)
         type="button"
         onClick={() => setUnit('F')}
         aria-pressed={mounted ? unit === 'F' : undefined}
-        className="u-unit-btn u-unit-f rounded-full px-2 py-0.5 transition-colors"
+        className="u-unit-btn u-unit-f inline-flex items-center justify-center rounded-full px-2 py-0.5 transition-colors max-sm:min-h-8 max-sm:min-w-11"
       >
         °F
       </button>

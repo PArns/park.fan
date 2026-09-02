@@ -386,14 +386,27 @@ export function WeatherNowcastBanner({
             <h3 className="text-sm font-semibold">{heading}</h3>
             <NowcastUpdateCountdown nextUpdateAt={data.nextUpdateAt} className="ml-auto" />
           </div>
-          <div className="mt-1 flex items-start gap-4">
+          {/* Stacked below `sm`, side by side above it — and the chart rendered at ZERO WIDTH
+              before that. The `<p>` is a plain flex item, so its flex base size is its
+              max-content width (the German active-rain sentence is ~350 px at `text-sm`); the
+              timeline is `flex-1`, i.e. `flex: 1 1 0%`, base 0. Inside the panel the row has
+              268 px at 390 px of viewport, so there is negative free space — and flexbox
+              distributes shrinkage by base size × shrink factor, which is ~350 for the paragraph
+              and exactly 0 for the chart. The paragraph absorbed the whole deficit and wrapped,
+              the chart kept its 0 px basis, its `flex-1` bars each resolved to 0, and all that
+              was left beside the sentence was a 40 px tall empty column with two clipped time
+              labels. It only stopped being 0 px above ~490 px of viewport.
+
+              `w-full` rather than keeping `flex-1` in the column: `flex-1` in a `flex-col`
+              container is a VERTICAL grow factor and would say nothing about width. */}
+          <div className="mt-1 flex flex-col gap-2 sm:flex-row sm:items-start sm:gap-4">
             <p className="text-sm leading-relaxed">{body}</p>
             <NowcastPrecipTimeline
               steps={data.steps}
               observedAt={data.observedAt}
               timezone={data.park.timezone}
               colorClass={styles.iconColor}
-              className="min-w-0 flex-1"
+              className="w-full sm:min-w-0 sm:flex-1"
             />
           </div>
         </div>

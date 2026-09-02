@@ -146,7 +146,10 @@ export function ParkCalendarPanel({
             <MonthStepIcon>
               <CalendarCheck className="h-4 w-4" />
             </MonthStepIcon>
-            {t('currentMonth')}
+            {/* Below `sm` the stepper has ~204 px for four controls, and this label is 45 px of
+                it in German, 84 in French. The `aria-label` above already names the target, so
+                dropping the text costs nothing but the width. */}
+            <span className="hidden sm:inline">{t('currentMonth')}</span>
           </Link>
         </Button>
       )}
@@ -160,7 +163,13 @@ export function ParkCalendarPanel({
           empty box between the two arrows. It opens on today's month, so that is the month to
           write — and `currentMonth` is resolved on the server in the PARK's timezone precisely so
           both sides of the hydration boundary agree about which one that is. */}
-      <div className="min-w-[140px] text-center font-semibold">{label(month ?? currentMonth)}</div>
+      {/* The 140 px is a DESK number: it exists so the arrows hold still while the month name
+          changes length, and a phone has no room to spend on holding anything still. Below `sm`
+          the box takes what the name needs and may wrap, which is what keeps the row inside the
+          column instead of pushing the „nächster Monat" arrow off the screen. */}
+      <div className="min-w-0 flex-1 text-center font-semibold sm:min-w-[140px] sm:flex-none">
+        {label(month ?? currentMonth)}
+      </div>
       <MonthStep href={href(nextMonth)} label={t('nextMonth')}>
         <ChevronRight className="h-4 w-4" />
       </MonthStep>

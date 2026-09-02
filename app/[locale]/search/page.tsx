@@ -218,12 +218,19 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
         fallback={
           <form action="" method="get" className="relative max-w-xl">
             <Search className="text-muted-foreground absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2" />
+            {/* No `autoFocus` here, and that is the point: this input and the one in
+                `SearchBody` are DIFFERENT elements across a Suspense boundary. The fallback
+                painted, focused itself and opened the keyboard — dropping the visual viewport to
+                about 55 % and scrolling the page to keep the field visible — then `SearchBody`
+                resolved (it awaits api.park.fan), React replaced the subtree, this uncontrolled
+                input was destroyed with anything typed into it, and the replacement's own
+                `autoFocus` shut the keyboard and opened it again. Focus once, on the input that
+                survives. */}
             <Input
               type="search"
               name="q"
               placeholder={t('searchPlaceholder')}
               className="pl-10 text-lg"
-              autoFocus
             />
           </form>
         }

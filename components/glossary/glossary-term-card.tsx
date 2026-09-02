@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import { Rotate3d, RollerCoaster } from 'lucide-react';
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import type { GlossaryTerm } from '@/lib/glossary/types';
+import type { GlossaryTermListItem } from '@/lib/glossary/types';
 import type { Locale } from '@/i18n/config';
 
 interface GlossaryTermCardProps {
-  term: GlossaryTerm;
+  term: GlossaryTermListItem;
   locale: Locale;
   segment: string;
   /** Label for the 3-D-player badge shown on terms that carry an interactive animation. */

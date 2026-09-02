@@ -1725,7 +1725,11 @@
       "postsCount": "{count, plural, =1 {# articolo} other {# articoli}}",
       "cloudTitle": "Argomenti"
     },
-    "featured": "In evidenza"
+    "featured": "In evidenza",
+    "video": {
+      "play": "Riproduci video",
+      "playHint": "Carica il player di YouTube solo al tocco."
+    }
   },
   "contribute": {
     "gallery": {

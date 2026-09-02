@@ -1725,7 +1725,11 @@
       "postsCount": "{count, plural, =1 {# article} other {# articles}}",
       "cloudTitle": "Thèmes"
     },
-    "featured": "À la une"
+    "featured": "À la une",
+    "video": {
+      "play": "Lire la vidéo",
+      "playHint": "Charge le lecteur YouTube seulement au clic."
+    }
   },
   "contribute": {
     "gallery": {

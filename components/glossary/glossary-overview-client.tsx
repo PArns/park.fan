@@ -6,7 +6,7 @@ import { Search, BookOpen, X, Tag, Rotate3d } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { GlossaryTermCard } from './glossary-term-card';
-import type { GlossaryTermWithEnName, GlossaryCategory } from '@/lib/glossary/types';
+import type { GlossaryTermListItem, GlossaryCategory } from '@/lib/glossary/types';
 import type { Locale } from '@/i18n/config';
 import type { Breadcrumb } from '@/lib/api/types';
 import { cn } from '@/lib/utils';
@@ -15,7 +15,7 @@ import { trackGlossaryCategoryFiltered, trackGlossarySearched } from '@/lib/anal
 interface CategoryGroup {
   category: GlossaryCategory;
   categoryLabel: string;
-  terms: GlossaryTermWithEnName[];
+  terms: GlossaryTermListItem[];
 }
 
 interface GlossaryOverviewClientProps {
@@ -145,7 +145,7 @@ export function GlossaryOverviewClient({
             {query && (
               <button
                 onClick={() => setQuery('')}
-                className="text-muted-foreground hover:text-foreground absolute top-1/2 right-3.5 -translate-y-1/2 transition-colors"
+                className="text-muted-foreground hover:text-foreground absolute top-1/2 right-1 flex size-11 -translate-y-1/2 items-center justify-center transition-colors sm:right-3.5 sm:size-auto"
                 aria-label="Clear search"
               >
                 <X className="h-4 w-4" />
@@ -167,7 +167,7 @@ export function GlossaryOverviewClient({
               onClick={() => setPlayerOnly((v) => !v)}
               aria-pressed={playerOnly}
               className={cn(
-                'inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs transition-colors',
+                'inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs transition-colors max-sm:min-h-9 max-sm:px-3',
                 playerOnly
                   ? 'border-primary/60 bg-primary/10 text-primary font-medium'
                   : 'border-border text-muted-foreground hover:border-primary/40 hover:text-foreground'
@@ -189,7 +189,7 @@ export function GlossaryOverviewClient({
                 }}
                 aria-pressed={activeCategory === category}
                 className={cn(
-                  'rounded-full border px-2.5 py-0.5 text-xs transition-colors',
+                  'inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs transition-colors max-sm:min-h-9 max-sm:px-3',
                   activeCategory === category
                     ? 'border-primary/60 bg-primary/10 text-primary font-medium'
                     : 'border-border text-muted-foreground hover:border-primary/40 hover:text-foreground'

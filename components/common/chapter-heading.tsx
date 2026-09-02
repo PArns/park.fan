@@ -204,7 +204,15 @@ export function ChapterHeading({
             {title}
           </As>
           {badge}
-          {action && <div className="ml-auto flex items-center gap-2">{action}</div>}
+          {/* `flex-wrap`, because this row can already wrap and the action then lands on a line of
+              its own — one unbreakable item in a ~204 px column. The calendar's month stepper is
+              317 px of that, so its „nächster Monat" arrow rendered past the viewport's right edge
+              with `body { overflow-x: clip }` swallowing it. Plain `flex-wrap`, not `max-sm:`: the
+              two other call sites (home/story/blog-chapter, nearby-chapter) pass a single small
+              link and have nothing to wrap either way. */}
+          {action && (
+            <div className="ml-auto flex flex-wrap items-center justify-end gap-2">{action}</div>
+          )}
         </div>
         {hint && (
           <p

@@ -71,7 +71,11 @@ export async function BlogTagCloud({
                 href={`/blog/tag/${tag.slug}` as '/'}
                 prefetch={false}
                 className={cn(
-                  'inline-flex items-center rounded-full font-medium ring-1 transition-colors',
+                  // The buckets run 17–26 px tall and the row is `gap-1.5`, so thirty of them sat
+                  // six pixels apart on the four blog listing pages a phone actually shows. The
+                  // size buckets still say which tag is used more; on a phone they all clear the
+                  // floor first.
+                  'inline-flex items-center rounded-full font-medium ring-1 transition-colors max-sm:min-h-9 max-sm:px-3',
                   sizeClass[size],
                   palette,
                   isActive && 'ring-2 ring-current/60'

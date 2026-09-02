@@ -471,7 +471,10 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="lg:hidden"
+                  /* `max-sm:size-9` cancels the button scale's 44 px phone tier. The bar is
+                     `h-12`; a 44 px burger in it is the mistake the header-geometry requirement
+                     names. Third and last opt-out, beside LocaleSwitcher and the search trigger. */
+                  className="max-sm:size-9 lg:hidden"
                   suppressHydrationWarning
                   tabIndex={isTransparent ? -1 : 0}
                   data-header-stagger
@@ -480,10 +483,20 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
                   <span className="sr-only">Menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] overflow-y-auto p-6 pt-12">
+              {/* The scroll belongs to the nav, not to the sheet. `SheetContent` is the
+                  positioned ancestor of the X in components/ui/sheet.tsx, so with
+                  `overflow-y-auto` on it the close button scrolled up and out of the panel with
+                  the links — on the one surface that IS the phone navigation. `overscroll-contain`
+                  stops a flick at the end of the list from carrying on into the page behind. */}
+              <SheetContent side="right" className="w-[300px] p-6 pt-12">
                 <nav
                   ref={sheetRef}
-                  className="mt-8 flex flex-col gap-4"
+                  // `min-h-0` is load-bearing, not tidying: `flex-1` leaves `min-height: auto`,
+                  // and a flex item with that will not shrink below its content — so the nav grew
+                  // past the sheet instead of scrolling inside it, and a menu longer than the
+                  // panel spilled out with no way to reach the end. With `min-h-0` it is the
+                  // scroll container the close button no longer sits in.
+                  className="mt-8 flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto overscroll-contain"
                   aria-label="Mobile navigation"
                 >
                   {showNearbyPark && (

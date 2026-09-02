@@ -1725,7 +1725,11 @@
       "postsCount": "{count, plural, =1 {# post} other {# posts}}",
       "cloudTitle": "Topics"
     },
-    "featured": "Featured"
+    "featured": "Featured",
+    "video": {
+      "play": "Play video",
+      "playHint": "Loads the YouTube player only when you tap."
+    }
   },
   "contribute": {
     "gallery": {

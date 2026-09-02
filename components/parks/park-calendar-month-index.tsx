@@ -121,8 +121,12 @@ export async function ParkCalendarMonthIndex({
                   // bare text on `border-transparent`, which is legible on a card and was not
                   // legible at all where this row used to live — directly on the park photo.
                   // A month is a control here, and a control that looks like prose is not one.
+                  // `min-h-9` and not `.touch-target`: this is the fallback route to a month once
+                  // the stepper runs out of arrows, so the chips have to be hittable — but there
+                  // are 25 of them in one block and 44 px each would turn the index into a wall.
+                  // 36 px is the button scale's own default height.
                   className={cn(
-                    'rounded-md border px-2.5 py-1 text-xs font-medium tabular-nums transition-colors',
+                    'inline-flex min-h-9 items-center rounded-md border px-2.5 py-1 text-xs font-medium tabular-nums transition-colors',
                     active
                       ? 'border-primary/40 bg-primary/15 text-primary'
                       : 'border-border/60 bg-muted/40 text-foreground/80 hover:border-border hover:bg-accent hover:text-accent-foreground'

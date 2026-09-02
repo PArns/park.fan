@@ -218,16 +218,22 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
 
         {/* View switch — top-right overlay */}
         {ready && !failed && (
-          <div className="absolute top-2 right-2 flex gap-1 rounded-full bg-black/35 p-1 backdrop-blur-sm">
+          // 34 × 22 px, four pixels apart, and below `sm` the label is gone so the only thing
+          // naming them is a `title` a finger never sees. The label stays hidden — the stage is
+          // 358 px wide on a phone and three names would cover the picture — but the buttons get
+          // a thumb's worth of box and an `aria-label`, which is what the hover-only `title` was
+          // standing in for.
+          <div className="absolute top-2 right-2 flex gap-2 rounded-full bg-black/35 p-1 backdrop-blur-sm">
             {VIEW_META.map(({ id, icon: Icon, key }) => (
               <button
                 key={id}
                 type="button"
                 onClick={() => onView(id)}
                 aria-pressed={view === id}
+                aria-label={labels[key] as string}
                 title={labels[key] as string}
                 className={cn(
-                  'inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium transition-colors',
+                  'inline-flex items-center justify-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium transition-colors max-sm:min-h-9 max-sm:min-w-9',
                   view === id ? 'bg-white text-gray-900' : 'text-white/85 hover:bg-white/15'
                 )}
               >
@@ -355,7 +361,17 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
                   onScrub(k.t);
                   endScrub();
                 }}
-                className="group absolute top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 p-1.5"
+                /* Five 22 px buttons at `z-20` over the range input covered 47 % of a 236 px
+                   track, some of them 1.6 px apart — so on a phone the timeline could be tapped
+                   but not dragged, which is the one thing a scrubber is for. A mouse can hit a
+                   22 px dot precisely and keeps them; a finger cannot, so under touch they leave
+                   the hit path entirely and the slider owns the whole track. The axis is the
+                   pointer, not the viewport: a small window on a desk still has a mouse.
+                   `pointer-fine:` is Tailwind v4's own variant — the arbitrary
+                   `[@media(hover:hover)and(pointer:fine)]:` this started as compiled to NOTHING
+                   (spaces in an arbitrary variant have to be underscores), so the markers stayed
+                   dead on the desk too until a build was checked for the rule. */
+                className="group pointer-events-none absolute top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 p-1.5 pointer-fine:pointer-events-auto"
                 style={{ left: `${k.t * 100}%` }}
                 aria-label={labels.keys[k.label] ?? k.label}
               >

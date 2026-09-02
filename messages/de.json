@@ -1725,7 +1725,11 @@
       "postsCount": "{count, plural, =1 {# Beitrag} other {# Beiträge}}",
       "cloudTitle": "Themen"
     },
-    "featured": "Empfohlen"
+    "featured": "Empfohlen",
+    "video": {
+      "play": "Video abspielen",
+      "playHint": "Lädt den YouTube-Player erst beim Tippen."
+    }
   },
   "contribute": {
     "gallery": {

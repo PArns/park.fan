@@ -39,6 +39,16 @@ interface RopeDropCardProps {
  * muted "no need to rush" note. Server Component: only the embedded <ParkTime>
  * islands (browser-timezone tooltip) hydrate on the client.
  */
+/*
+ * The three stat tiles are `grid-cols-3` and the German labels do not fit below ~380 px.
+ * Measured on the guide page: the grid is 204 px at 320 (60 px a tile, 36 px of content inside
+ * `p-3`) and 244 at 360, against a „Tagespeak" of ~54 px and a `text-2xl` value carrying a „min"
+ * after it — at 320 all three tiles overflow their box, at 360 one does, at 390 none. So the gate
+ * is `max-[380px]:`, the width where it actually breaks, rather than `sm`, which would restack the
+ * whole 390–639 px range that measures clean. Below it each tile becomes a row, label left and
+ * value right, where there is nothing left to overflow. Both grids carry it — the morning one and
+ * the evening one.
+ */
 export function RopeDropCard({
   ropeDrop,
   timezone,
@@ -123,12 +133,12 @@ export function RopeDropCard({
             })}
           </p>
           {eveningStats && (
-            <div className="mb-4 grid grid-cols-3 gap-3">
+            <div className="mb-4 grid grid-cols-3 gap-3 max-[380px]:grid-cols-1 max-[380px]:gap-2">
               {eveningStats.map(({ icon: Icon, label, value, highlight }) => (
                 <div
                   key={label}
                   className={cn(
-                    'rounded-lg border p-3 text-center',
+                    'rounded-lg border p-3 text-center max-[380px]:flex max-[380px]:items-center max-[380px]:justify-between max-[380px]:gap-3 max-[380px]:px-3 max-[380px]:py-2 max-[380px]:text-left',
                     highlight
                       ? 'border-indigo-500/30 bg-indigo-500/10'
                       : 'border-border/50 bg-background/40'
@@ -136,7 +146,7 @@ export function RopeDropCard({
                 >
                   <div
                     className={cn(
-                      'text-muted-foreground mx-auto mb-1 flex items-center justify-center gap-1 text-xs font-medium',
+                      'text-muted-foreground mx-auto mb-1 flex items-center justify-center gap-1 text-xs font-medium max-[380px]:mx-0 max-[380px]:mb-0 max-[380px]:justify-start',
                       highlight && 'text-indigo-500 dark:text-indigo-300'
                     )}
                   >
@@ -145,7 +155,7 @@ export function RopeDropCard({
                   </div>
                   <div
                     className={cn(
-                      'text-2xl font-bold tabular-nums',
+                      'text-2xl font-bold tabular-nums max-[380px]:shrink-0 max-[380px]:text-xl',
                       highlight && 'text-indigo-500 dark:text-indigo-300'
                     )}
                   >
@@ -251,12 +261,12 @@ export function RopeDropCard({
       <p className="text-muted-foreground mb-4 text-sm">{t('explainer')}</p>
 
       {/* Open wait vs day peak vs savings */}
-      <div className="mb-4 grid grid-cols-3 gap-3">
+      <div className="mb-4 grid grid-cols-3 gap-3 max-[380px]:grid-cols-1 max-[380px]:gap-2">
         {stats.map(({ icon: Icon, label, value, highlight }) => (
           <div
             key={label}
             className={cn(
-              'rounded-lg border p-3 text-center',
+              'rounded-lg border p-3 text-center max-[380px]:flex max-[380px]:items-center max-[380px]:justify-between max-[380px]:gap-3 max-[380px]:px-3 max-[380px]:py-2 max-[380px]:text-left',
               highlight
                 ? 'border-emerald-500/30 bg-emerald-500/10'
                 : 'border-border/50 bg-background/40'
@@ -264,7 +274,7 @@ export function RopeDropCard({
           >
             <div
               className={cn(
-                'text-muted-foreground mx-auto mb-1 flex items-center justify-center gap-1 text-xs font-medium',
+                'text-muted-foreground mx-auto mb-1 flex items-center justify-center gap-1 text-xs font-medium max-[380px]:mx-0 max-[380px]:mb-0 max-[380px]:justify-start',
                 highlight && 'text-emerald-600 dark:text-emerald-300'
               )}
             >
@@ -273,7 +283,7 @@ export function RopeDropCard({
             </div>
             <div
               className={cn(
-                'text-2xl font-bold tabular-nums',
+                'text-2xl font-bold tabular-nums max-[380px]:shrink-0 max-[380px]:text-xl',
                 highlight && 'text-emerald-600 dark:text-emerald-300'
               )}
             >
