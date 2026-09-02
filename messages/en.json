@@ -624,6 +624,12 @@
     "seasonalSummerOnly": "Summer only",
     "seasonalOffSeason": "Off-season",
     "offSeasonCount": "{count} off-season",
+    "heightFilter": {
+      "label": "Rider height",
+      "inactive": "Any height",
+      "reset": "Clear height filter",
+      "result": "{shown} of {total} attractions"
+    },
     "mapMarkers": {
       "noMapData": "No map data available for this park.",
       "parkCenter": "Park Center",

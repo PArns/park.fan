@@ -1,10 +1,8 @@
 'use client';
 
-import { memo, useDeferredValue, useState } from 'react';
+import { memo, useDeferredValue } from 'react';
 import { useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
-import { Search } from 'lucide-react';
-import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent } from '@/components/ui/tabs';
 import { ShowCard } from '@/components/parks/show-card';
 import { AttractionWaitOverview } from '@/components/parks/attraction-wait-overview';
@@ -15,12 +13,13 @@ import { WeatherCard } from '@/components/parks/weather-card';
 import { RopeDropHeadliners } from '@/components/parks/rope-drop-headliners';
 import { ParkTabsList } from '@/components/parks/park-tabs-list';
 import { OffSeasonToggle } from '@/components/parks/off-season-toggle';
+import { AttractionFilterPanel } from '@/components/parks/attraction-filter-panel';
 import { RestaurantCardSkeleton } from '@/components/parks/restaurant-card-skeleton';
 import { AttractionCardSkeleton } from '@/components/parks/attraction-card-skeleton';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useTabHashRouting } from '@/lib/hooks/use-tab-hash-routing';
 import { useAttractionFilter } from '@/lib/hooks/use-attraction-filter';
-import { cn, stripNewPrefix } from '@/lib/utils';
+import { stripNewPrefix } from '@/lib/utils';
 import { ParkHeaderCard } from '@/components/parks/park-header-card';
 
 import type { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
@@ -86,6 +85,11 @@ export const TabsWithHash = memo(function TabsWithHash({
     isSearching,
     filteredAttractionsByLand,
     hasSearchResults,
+    heightRange,
+    riderHeight,
+    setRiderHeight,
+    totalAttractionCount,
+    rideableAttractionCount,
     headliners,
     offSeasonAttractionCount,
     showOffSeasonAttractions,
@@ -99,8 +103,6 @@ export const TabsWithHash = memo(function TabsWithHash({
     shows: park.shows,
     activeTab,
   });
-
-  const [isFocused, setIsFocused] = useState(false);
 
   // INP: a tab tap used to mount the ENTIRE incoming panel in the same commit that moved the
   // tab highlight — 50+ glass cards, 55 restaurant cards, or the Leaflet map — so the paint
@@ -137,14 +139,32 @@ export const TabsWithHash = memo(function TabsWithHash({
               />
             }
           />
-          <TabsContent value={defaultValue} className="space-y-6">
-            {/* Holds the toolbar row's height, nothing more. The row itself is the
-                off-season toggle and the search box, both interactive and neither
-                possible here — but the mounted branch has them, so without this the
-                whole ride list would move up by their height at hydration. `h-9` is
-                the button/input scale from `components/ui/button.tsx`, the same
-                number the real controls resolve to. */}
-            <div className="h-9" aria-hidden="true" />
+          <TabsContent value={defaultValue}>
+            {/* The REAL filter panel, not a spacer shaped like it.
+                
+                It used to be an `h-9` div, and that only worked while the row was one
+                control tall: the panel now has a height row whose size depends on
+                whether the park publishes any rider limits, which is one more number
+                to keep in sync than a comment can hold. Every prop it needs is derived
+                from the park payload, so it renders identically on both sides of
+                hydration and the ride list below cannot move. Its controls are live
+                for the frame between paint and mount, and what they set survives into
+                the mounted tree — the state lives in `useAttractionFilter`, above this
+                branch. */}
+            <AttractionFilterPanel
+              inputRef={inputRef}
+              searchQuery={searchQuery}
+              onSearchChange={setSearchQuery}
+              isSearching={isSearching}
+              offSeasonCount={offSeasonAttractionCount}
+              showOffSeason={showOffSeasonAttractions}
+              onToggleOffSeason={() => setShowOffSeasonAttractions((v) => !v)}
+              heightRange={heightRange}
+              riderHeight={riderHeight}
+              onRiderHeightChange={setRiderHeight}
+              rideableCount={rideableAttractionCount}
+              totalCount={totalAttractionCount}
+            />
             <AttractionWaitOverview
               park={park}
               parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
@@ -186,51 +206,22 @@ export const TabsWithHash = memo(function TabsWithHash({
               header. The other chapters on the page keep theirs, because nothing above them
               names them.
 
-              This row is what is left of the band: the off-season toggle it used to carry, and
-              the filter. The filter was `md:absolute md:top-0 md:right-0` inside the content
-              below, so on desktop it floated over the park photo beside the rope-drop card and
-              on a phone it was a full-width box wedged above the first land. It belongs here.
-
-              Fixed `h-9` and no wrapping: the row is exactly one control tall at every width, so
-              the pre-mount branch can reserve it with a single number and the ride list does not
-              move at hydration. Below `sm` the field takes the leftover width (`flex-1`), above
-              it its own `sm:w-[250px]` applies and `ml-auto` pushes it to the right edge. */}
-          <div className="mb-4 flex h-9 items-center gap-3">
-            {offSeasonAttractionCount > 0 && (
-              /* The search reaches past the season on purpose, so while it is active the toggle
-                 governs nothing and pressing it would appear to do nothing. `invisible` rather
-                 than unmounted: a control that comes and goes as somebody types would move the
-                 whole list under it. */
-              <div className={cn('shrink-0', isSearching && 'invisible')}>
-                <OffSeasonToggle
-                  count={offSeasonAttractionCount}
-                  shown={showOffSeasonAttractions}
-                  onToggle={() => setShowOffSeasonAttractions((v) => !v)}
-                />
-              </div>
-            )}
-            <div className="group relative ml-auto min-w-0 flex-1 sm:flex-none">
-              <Search className="text-muted-foreground group-focus-within:text-primary absolute top-2.5 left-3 z-10 h-4 w-4 transition-colors" />
-              <Input
-                ref={inputRef}
-                placeholder={t('searchAttractions')}
-                className={`bg-background/60 hover:bg-background/75 border-primary/20 hover:border-primary/40 focus-visible:border-primary/60 w-full pl-9 shadow-md backdrop-blur-md transition-all duration-300 sm:w-[250px] sm:focus:w-[300px] dark:bg-[oklch(0.12_0.025_241_/_0.55)] dark:hover:bg-[oklch(0.14_0.030_241_/_0.65)] ${
-                  isFocused && searchQuery ? 'pr-16' : 'pr-4'
-                }`}
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                onFocus={() => setIsFocused(true)}
-                onBlur={() => setIsFocused(false)}
-              />
-              {isFocused && searchQuery && (
-                <div className="animate-in fade-in zoom-in pointer-events-none absolute top-1/2 right-3 -translate-y-[0.85rem] duration-200">
-                  <kbd className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none">
-                    ESC
-                  </kbd>
-                </div>
-              )}
-            </div>
-          </div>
+              What is left of that band is the controls it carried, and they are one object now:
+              search, rider height and the off-season toggle over one list. */}
+          <AttractionFilterPanel
+            inputRef={inputRef}
+            searchQuery={searchQuery}
+            onSearchChange={setSearchQuery}
+            isSearching={isSearching}
+            offSeasonCount={offSeasonAttractionCount}
+            showOffSeason={showOffSeasonAttractions}
+            onToggleOffSeason={() => setShowOffSeasonAttractions((v) => !v)}
+            heightRange={heightRange}
+            riderHeight={riderHeight}
+            onRiderHeightChange={setRiderHeight}
+            rideableCount={rideableAttractionCount}
+            totalCount={totalAttractionCount}
+          />
 
           {/* Attractions grouped by Land */}
           <div className="relative space-y-8">
@@ -297,12 +288,26 @@ export const TabsWithHash = memo(function TabsWithHash({
                   <div className="flex justify-center pt-14">
                     <div className="border-border/50 bg-background/60 inline-flex flex-col items-center rounded-xl border px-10 py-8 shadow-md backdrop-blur-md dark:bg-[oklch(0.12_0.025_241_/_0.55)]">
                       <p className="text-muted-foreground">{t('noAttractionsFound')}</p>
-                      <button
-                        className="text-primary mt-2 text-sm underline hover:no-underline"
-                        onClick={() => setSearchQuery('')}
-                      >
-                        {t('clearSearch')}
-                      </button>
+                      {/* Two filters can empty this grid and only one of them is obviously
+                          to blame: a search box you just typed into is right there, a rider
+                          height set three scrolls ago is not. So the height filter names
+                          itself here whenever it is on. */}
+                      {riderHeight !== null && (
+                        <button
+                          className="text-primary mt-2 text-sm underline hover:no-underline"
+                          onClick={() => setRiderHeight(null)}
+                        >
+                          {t('heightFilter.reset')}
+                        </button>
+                      )}
+                      {isSearching && (
+                        <button
+                          className="text-primary mt-2 text-sm underline hover:no-underline"
+                          onClick={() => setSearchQuery('')}
+                        >
+                          {t('clearSearch')}
+                        </button>
+                      )}
                     </div>
                   </div>
                 )}

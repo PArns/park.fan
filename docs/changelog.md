@@ -4,6 +4,42 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – feat: Größenfilter auf der Parkseite, und ein Panel für die drei Filter
+
+Wer mit Kind in einen Park fährt, hat eine Frage vor allen anderen: was darf es fahren. Die Antwort
+stand längst auf jeder Karte („Ab 120 cm"), aber nur einzeln – 40 Karten durchsehen und im Kopf
+mitzählen.
+
+**Der Filter kommt nur, wenn der Park Mindestgrößen liefert.** Rund ein Drittel des Katalogs hat
+dazu nichts hinterlegt, und ein Regler, dessen jede Position dieselben 40 Bahnen zeigt, ist
+schlechter als keiner. Die Skala kommt aus dem Park selbst: zwei Schritte unter der kleinsten Grenze
+(dort muss eine Position stehen, die nichts freigibt) bis zur größten, mit den Grenzen des Parks als
+Markierungen auf der Schiene. `maximumHeight` filtert mit, streckt die Schiene aber nicht – die
+Werte sind meist die Sicherheitsobergrenze einer Achterbahn, im Phantasialand 140, 145, 195, 200 und
+205 cm, und ein Drittel der Schiene für „zu groß für eine Achterbahn" wäre verschenkt.
+
+Ein Regler statt drei Knöpfen, obwohl sich das Ergebnis nur an den Grenzen des Parks ändert: niemand
+kennt die Größe seines Kindes als eine von drei Zahlen, sondern als 118. Eine Bahn ohne hinterlegte
+Grenze bleibt sichtbar – niemand hat etwas aufgeschrieben, das ist kein Verbot.
+
+**Suche, Größe und Saison stehen jetzt in einem Panel.** Vorher schwebte das Suchfeld per
+`md:absolute` über dem Parkfoto neben der Rope-Drop-Karte und lag auf dem Telefon als
+vollbreiter Kasten über dem ersten Land; der Saison-Schalter saß daneben in einer nackten Flex-Zeile.
+Nichts sagte, dass das ein Satz Bedienelemente über einer Liste ist, und für ein drittes war kein
+Platz. Ab `md` stehen die beiden Hälften nebeneinander.
+
+**Die Suche greift an der Saison vorbei, an der Größe nicht.** Die Saison ist eine Eigenschaft der
+Bahn, nach der niemand gefragt hat. Eine Körpergröße ist eine Aussage über die Person in der
+Schlange: Ein Kind mit 105 cm wird nicht größer, weil jemand „Taron" tippt. Ist die Liste deshalb
+leer, benennt sich der Filter im Leerzustand selbst.
+
+Das Panel rendert in beiden Zweigen von `tabs-with-hash.tsx` – vor und nach dem Mount dasselbe
+Bauteil statt eines `h-9`-Platzhalters, der seine Höhe ein zweites Mal aufschreiben müsste.
+Regeln als reine Funktionen in `lib/utils/rider-height.ts` (`pnpm test:rider-height`), Details unter
+[Attraction Filter Panel](features/attraction-filter-panel.md).
+
+---
+
 ## Unreleased – fix: Das Icon in der Google-Suche ist wieder lesbar
 
 In einem `google.de`-Treffer für „Phantasialand Wartezeiten" stand neben dem Ergebnis ein Fleck.

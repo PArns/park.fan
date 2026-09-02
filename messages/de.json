@@ -858,6 +858,12 @@
     "seasonalSummerOnly": "Nur im Sommer",
     "seasonalOffSeason": "Außer Saison",
     "offSeasonCount": "{count} außer Saison",
+    "heightFilter": {
+      "label": "Körpergröße",
+      "inactive": "Alle Größen",
+      "reset": "Größenfilter zurücksetzen",
+      "result": "{shown} von {total} Attraktionen"
+    },
     "mapMarkers": {
       "noMapData": "Keine Kartendaten für diesen Park verfügbar.",
       "parkCenter": "Park Zentrum",

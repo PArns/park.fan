@@ -624,6 +624,12 @@
     "seasonalSummerOnly": "Alleen in de zomer",
     "seasonalOffSeason": "Buiten seizoen",
     "offSeasonCount": "{count} buiten seizoen",
+    "heightFilter": {
+      "label": "Lichaamslengte",
+      "inactive": "Alle lengtes",
+      "reset": "Lengtefilter wissen",
+      "result": "{shown} van {total} attracties"
+    },
     "mapMarkers": {
       "noMapData": "Geen kaartgegevens beschikbaar voor dit park.",
       "parkCenter": "Park centrum",

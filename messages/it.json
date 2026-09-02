@@ -624,6 +624,12 @@
     "seasonalSummerOnly": "Solo in estate",
     "seasonalOffSeason": "Fuori stagione",
     "offSeasonCount": "{count} fuori stagione",
+    "heightFilter": {
+      "label": "Altezza",
+      "inactive": "Tutte le altezze",
+      "reset": "Azzera il filtro altezza",
+      "result": "{shown} di {total} attrazioni"
+    },
     "mapMarkers": {
       "noMapData": "Nessun dato cartografico disponibile per questo parco.",
       "parkCenter": "Centro del parco",
