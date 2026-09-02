@@ -2,7 +2,7 @@
 
 import { useId } from 'react';
 import { useTranslations } from 'next-intl';
-import { Ruler, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import { RiderHeight } from '@/components/common/unit-display';
 import { RIDER_HEIGHT_STEP, type RiderHeightRange } from '@/lib/utils/rider-height';
 import { cn } from '@/lib/utils';
@@ -51,9 +51,17 @@ export function RiderHeightFilter({
   const inputId = useId();
 
   const isActive = value !== null;
-  // Where the thumb rests before anybody touches it: the park's lowest limit, which is
-  // the first position at which the filter has anything to say.
-  const displayValue = value ?? range.thresholds[0];
+  /**
+   * Where the thumb rests before anybody touches it: the left end.
+   *
+   * It used to rest on the park's lowest limit, on the reasoning that this is the
+   * first position at which the filter has anything to say. A thumb parked a fifth
+   * of the way along a track with a filled bar behind it is a control that has been
+   * set, and that is what it looked like — a value nobody chose, presented as a
+   * choice. At the end, with no fill and a hollow head, the same control reads as
+   * untouched.
+   */
+  const displayValue = value ?? range.min;
 
   const span = range.max - range.min;
   const fraction = (cm: number) => (span > 0 ? (cm - range.min) / span : 0);
@@ -65,9 +73,14 @@ export function RiderHeightFilter({
 
   return (
     <div className={className} style={{ '--thumb': '1rem' } as React.CSSProperties}>
+      {/* This is the cell's caption row, so the label matches the plain captions over the
+          search box and the season toggle — the value and the reset ride along in it
+          because there is no other row with room for them. */}
       <div className="flex h-6 items-center gap-2">
-        <Ruler className="text-primary h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-        <label htmlFor={inputId} className="cursor-pointer text-xs font-medium">
+        <label
+          htmlFor={inputId}
+          className="text-muted-foreground cursor-pointer text-xs font-medium"
+        >
           {t('label')}
         </label>
         <span
@@ -97,13 +110,14 @@ export function RiderHeightFilter({
 
       <div className="group relative h-5">
         <div className="bg-foreground/12 dark:bg-foreground/15 absolute top-1/2 h-1.5 w-full -translate-y-1/2 rounded-full" />
-        <div
-          className={cn(
-            'absolute top-1/2 h-1.5 -translate-y-1/2 rounded-full transition-colors',
-            isActive ? 'bg-primary' : 'bg-muted-foreground/35'
-          )}
-          style={{ width: offset(displayValue) }}
-        />
+        {/* No fill at all while the filter is off — a coloured bar behind the head is
+            the thing that made an untouched control look set. */}
+        {isActive && (
+          <div
+            className="bg-primary absolute top-1/2 h-1.5 -translate-y-1/2 rounded-full"
+            style={{ width: offset(displayValue) }}
+          />
+        )}
         {range.thresholds.map((cm) => (
           <span
             key={cm}
@@ -115,8 +129,8 @@ export function RiderHeightFilter({
         <div
           aria-hidden="true"
           className={cn(
-            'border-background absolute top-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 shadow-md transition-[background-color,box-shadow]',
-            isActive ? 'bg-primary' : 'bg-muted-foreground',
+            'absolute top-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 shadow-md transition-colors',
+            isActive ? 'border-background bg-primary' : 'border-muted-foreground/60 bg-background',
             'group-has-[:focus-visible]:ring-ring/50 group-has-[:focus-visible]:ring-4'
           )}
           style={{ left: offset(displayValue) }}
@@ -129,6 +143,13 @@ export function RiderHeightFilter({
           step={RIDER_HEIGHT_STEP}
           value={displayValue}
           onChange={(e) => onChange(Number(e.target.value))}
+          // A click at the resting position sets the input to the value it already
+          // has, so `change` never fires and the filter cannot be switched on at its
+          // own left end. The press itself is the intent; the drag that may follow
+          // overwrites it a moment later.
+          onPointerDown={() => {
+            if (!isActive) onChange(range.min);
+          }}
           className="absolute inset-0 h-full w-full cursor-pointer appearance-none bg-transparent opacity-0 [&::-webkit-slider-thumb]:size-4 [&::-webkit-slider-thumb]:appearance-none"
         />
       </div>
@@ -140,7 +161,7 @@ export function RiderHeightFilter({
           <RiderHeight cm={range.min} />
         </span>
         <span className="flex-1 truncate px-2 text-center">
-          {isActive ? t('result', { shown: rideableCount, total: totalCount }) : null}
+          {isActive ? t('result', { shown: rideableCount, total: totalCount }) : t('hint')}
         </span>
         <span>
           <RiderHeight cm={range.max} />

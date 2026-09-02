@@ -624,9 +624,16 @@
     "seasonalSummerOnly": "Solo in estate",
     "seasonalOffSeason": "Fuori stagione",
     "offSeasonCount": "{count} fuori stagione",
+    "filterSection": {
+      "title": "Restringi le attrazioni",
+      "hint": "Mostra solo ciò che corrisponde alla tua scelta.",
+      "searchLabel": "Ricerca",
+      "seasonLabel": "Stagione"
+    },
     "heightFilter": {
       "label": "Altezza",
       "inactive": "Tutte le altezze",
+      "hint": "Scegli un'altezza",
       "reset": "Azzera il filtro altezza",
       "result": "{shown} di {total} attrazioni"
     },

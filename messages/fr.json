@@ -624,9 +624,16 @@
     "seasonalSummerOnly": "Été uniquement",
     "seasonalOffSeason": "Hors saison",
     "offSeasonCount": "{count} hors saison",
+    "filterSection": {
+      "title": "Affiner les attractions",
+      "hint": "N'affiche que ce qui correspond à votre choix.",
+      "searchLabel": "Recherche",
+      "seasonLabel": "Saison"
+    },
     "heightFilter": {
       "label": "Taille du visiteur",
       "inactive": "Toutes les tailles",
+      "hint": "Choisir une taille",
       "reset": "Réinitialiser le filtre de taille",
       "result": "{shown} sur {total} attractions"
     },

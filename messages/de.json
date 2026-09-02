@@ -858,9 +858,16 @@
     "seasonalSummerOnly": "Nur im Sommer",
     "seasonalOffSeason": "Außer Saison",
     "offSeasonCount": "{count} außer Saison",
+    "filterSection": {
+      "title": "Attraktionen eingrenzen",
+      "hint": "Zeigt nur, was zu deiner Auswahl passt.",
+      "searchLabel": "Suche",
+      "seasonLabel": "Saison"
+    },
     "heightFilter": {
       "label": "Körpergröße",
       "inactive": "Alle Größen",
+      "hint": "Größe wählen",
       "reset": "Größenfilter zurücksetzen",
       "result": "{shown} von {total} Attraktionen"
     },
