@@ -204,15 +204,20 @@ and **patches nothing**, so the wrong value stays on screen.
 
 Two things follow, and the second is the one that is easy to get wrong:
 
-- **Express it in CSS where you can.** The pressed styling is `.u-unit-c` / `.u-unit-f` under
-  `html[data-temp-unit]`, beside the rules for the values themselves. A static class cannot
-  mismatch, and the pre-paint attribute has the answer before the first frame.
+- **Express it in CSS where you can.** The toggle is one button in the header now (see
+  [design system → header geometry](../design/design-system.md#header-geometry)), and it draws its
+  own label off the very same `.u-metric` / `.u-imperial` pair the temperatures use: it renders
+  both `°C` and `°F` and lets `html[data-temp-unit]` pick one. A static class cannot mismatch, and
+  the pre-paint attribute has the answer before the first frame. The three classes it carried as a
+  two-segment pill (`.u-unit-btn` / `.u-unit-c` / `.u-unit-f`) are gone with the segments.
 - **Where you cannot, the guard has to be local to the consumer.** `aria-pressed` is not a class,
   so it waits for the component's own mount. Fixing the _provider_ does not reach it:
   `useSyncExternalStore`'s server snapshot covers the hook's own hydration render, not a consumer
   that hydrates after the provider re-rendered. The provider uses it anyway — it is the right shape
   for a value read from the DOM and the cookie, and it drops a `set-state-in-effect` exception —
-  but it is not the fix.
+  but it is not the fix. The single button needs no such guard at all: it has no pressed state to
+  report, and its click reads `data-temp-unit` off the document rather than the context, so what it
+  flips is by definition what the reader is looking at.
 
 The nowcast banner is the pattern done right by accident: it renders `null` until its clock stamps
 in an effect, so the unit never reaches its hydration output.

@@ -86,6 +86,7 @@ import { OpenStatusProgress } from '@/components/common/open-status-progress';
 import { CompactNumberWithTooltip } from '@/components/common/compact-number-with-tooltip';
 import { StatusInfoCard } from '@/components/common/status-info-card';
 import { ThemeToggle } from '@/components/common/theme-toggle';
+import { TemperatureUnitToggle } from '@/components/common/temperature-unit-toggle';
 import { LocaleSwitcher } from '@/components/common/locale-switcher';
 import { DistanceBadge } from '@/components/common/distance-badge';
 import { OperatingHoursDisplay } from '@/components/common/operating-hours-display';
@@ -2145,15 +2146,23 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
 
               <ComponentLabel name="ThemeToggle" file="components/common/theme-toggle.tsx" />
               <ComponentLabel name="LocaleSwitcher" file="components/common/locale-switcher.tsx" />
-              <Sub title="ThemeToggle + LocaleSwitcher — Interactive dropdowns">
+              <ComponentLabel
+                name="TemperatureUnitToggle"
+                file="components/common/temperature-unit-toggle.tsx"
+              />
+              <Sub title="The header's preference cluster — locale, theme, temperature unit">
                 <Row>
+                  <div className="flex flex-col gap-1">
+                    <span className="text-muted-foreground text-xs">LocaleSwitcher</span>
+                    <LocaleSwitcher />
+                  </div>
                   <div className="flex flex-col gap-1">
                     <span className="text-muted-foreground text-xs">ThemeToggle</span>
                     <ThemeToggle />
                   </div>
                   <div className="flex flex-col gap-1">
-                    <span className="text-muted-foreground text-xs">LocaleSwitcher</span>
-                    <LocaleSwitcher />
+                    <span className="text-muted-foreground text-xs">TemperatureUnitToggle</span>
+                    <TemperatureUnitToggle />
                   </div>
                 </Row>
               </Sub>

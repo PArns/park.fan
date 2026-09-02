@@ -19,6 +19,7 @@ import { FavoritesMenuPanel } from '@/components/layout/favorites-menu-panel';
 import { useHeaderReveal } from '@/lib/hooks/use-header-reveal';
 import { useSheetReveal } from '@/lib/hooks/use-menu-reveal';
 import { ThemeToggle } from '@/components/common/theme-toggle';
+import { TemperatureUnitToggle } from '@/components/common/temperature-unit-toggle';
 import { LocaleSwitcher } from '@/components/common/locale-switcher';
 import { SearchCommand } from '@/components/search/search-bar';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
@@ -429,7 +430,7 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
         {/* Corner pill – absolute right-6, mirrors the corner logo on the left. Fades out on scroll.
             Only ever visible on the transparent homepage header (`isTransparent` can only be true when
             `isHomePage`), so it's rendered ONLY on the homepage. On every other route it would be a
-            permanently-hidden second copy of <LocaleSwitcher/> + <ThemeToggle/> that still hydrates
+            permanently-hidden second copy of the three preference controls that still hydrates
             (display/opacity don't skip hydration) — double the work for two interactive dropdowns.
             Rendered on the hero pages (homepage + Fancast) where the header floats transparent. */}
         {isHeroPage && (
@@ -442,11 +443,17 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
           >
             <LocaleSwitcher />
             <ThemeToggle />
+            <TemperatureUnitToggle />
           </div>
         )}
 
-        {/* Actions */}
-        <div className="flex items-center gap-2">
+        {/* Actions. `max-sm:gap-1` is width, not taste: at 320 px — the smallest viewport still in
+            the logs — this row is over its box by 26 px with the °C/°F button in it, and 16 px of
+            that is absorbed by the container's own padding before the document starts scrolling
+            sideways. Halving the two gaps between the three groups gives back 8 px and puts the
+            bar where it stood before the button existed (18 px over, invisible). Below `sm`
+            nothing else in here can give: every control is already at its documented exception. */}
+        <div className="flex items-center gap-2 max-sm:gap-1">
           {/* Search Button Mobile – fades in on scroll */}
           <div className={`lg:hidden ${fadeClass}`}>
             <SearchCommand trigger="button" size="sm" />
@@ -462,6 +469,12 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
           >
             <LocaleSwitcher />
             <ThemeToggle />
+            {/* The unit lived in the weather card's header, i.e. on park pages only, while it
+                governs temperatures in the calendar, in blog posts and on the best-travel-time
+                hub as well. Third preference in the same cluster — and the one that made the row
+                measurable: see TemperatureUnitToggle and LocaleSwitcher for the 25 px of slack
+                this bar has at 360 px and where the space for it came from. */}
+            <TemperatureUnitToggle />
           </div>
 
           {/* Mobile Menu – fades in on scroll */}
