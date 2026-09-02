@@ -22,6 +22,7 @@ import {
   addEntry,
   clearDay,
   moveEntry,
+  openDay,
   removeEntry,
   reorderEntry,
   setActive,
@@ -306,6 +307,51 @@ test(
 // Runner
 // ---------------------------------------------------------------------------
 console.log('\nplanner actions\n' + '='.repeat(80) + '\n');
+// ── openDay: the calendar's entry point ──────────────────────────────────────
+
+const CAL_PARK = {
+  slug: 'phantasialand',
+  name: 'Phantasialand',
+  geo: { continent: 'europe', country: 'germany', city: 'bruehl' },
+};
+
+test(
+  'openDay: registers a park the state has never seen, with its geo',
+  openDay(EMPTY_PLANNER_STATE, CAL_PARK, '2026-10-17').parks.phantasialand?.geo,
+  CAL_PARK.geo
+);
+
+test(
+  'openDay: points the panel at that park and day',
+  (() => {
+    const s = openDay(EMPTY_PLANNER_STATE, CAL_PARK, '2026-10-17');
+    return [s.activeParkSlug, s.activeDate];
+  })(),
+  ['phantasialand', '2026-10-17']
+);
+
+// The whole point of not adding a placeholder entry: the launcher must stay
+// hidden, and the overview must not list a day with nothing in it.
+test('openDay: adds no entry', hasAnyPlan(openDay(EMPTY_PLANNER_STATE, CAL_PARK, '2026-10-17')), false);
+
+test(
+  'openDay: keeps the entries of a day that already has some',
+  entriesFor(openDay(threeRides(), CAL_PARK, PARK.date), PARK.parkSlug, PARK.date).map(
+    (e) => e.attractionSlug
+  ),
+  ['taron', 'fly', 'black-mamba']
+);
+
+test(
+  'openDay: names a park that was stored under its slug alone',
+  openDay(
+    openDay(EMPTY_PLANNER_STATE, { slug: 'phantasialand', name: 'phantasialand', geo: CAL_PARK.geo }, '2026-10-17'),
+    CAL_PARK,
+    '2026-10-18'
+  ).parks.phantasialand?.name,
+  'Phantasialand'
+);
+
 let passed = 0;
 let failed = 0;
 for (const testCase of testCases) {

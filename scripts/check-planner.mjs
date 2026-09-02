@@ -344,6 +344,55 @@ if (await phoneLauncher.count()) {
   check('mobil als Bottom-Sheet', false, 'Launcher nicht gefunden');
 }
 
+// ── The calendar's way in ────────────────────────────────────────────────────
+// A day is picked BEFORE any ride, so the launcher has to appear on a signal
+// rather than on the count — with an empty plan it would otherwise stay hidden
+// and the click would do nothing visible.
+const cal = await browser.newPage({ viewport: { width: 1280, height: 1200 } });
+noteErrors(cal);
+const CAL_URL = `${BASE}/de/parks/${PARK.geo.continent}/${PARK.geo.country}/${PARK.geo.city}/${PARK.slug}/wait-time-calendar`;
+await cal.goto(CAL_URL, { waitUntil: 'domcontentloaded' });
+// No plan at all: the point is that this works from nothing.
+await cal.evaluate(() => {
+  window.localStorage.removeItem('parkfan_planner');
+  document.cookie = 'planner=0; path=/';
+});
+await cal.reload({ waitUntil: 'networkidle' });
+await cal.waitForTimeout(4000);
+
+// The cell is a `div[role="button"]`, and the plan control only renders on a day
+// the park is OPERATING — so try a few until one is open rather than assuming
+// the first of the month is.
+const cells = cal.locator('[role="button"][tabindex="0"][aria-label*="—"]');
+const planButton = cal.getByRole('button', { name: 'Diesen Tag planen' });
+const cellCount = await cells.count();
+let reachable = false;
+for (let i = 0; i < Math.min(cellCount, 8) && !reachable; i++) {
+  await cells.nth(i).click();
+  await cal.waitForTimeout(1200);
+  reachable = (await planButton.count()) > 0;
+  if (!reachable) await cal.keyboard.press('Escape');
+}
+check('„Diesen Tag planen" im Kalendertag', reachable, `Zellen: ${cellCount}`);
+
+if (reachable) {
+  await planButton.first().click();
+  await cal
+    .locator(SHEET)
+    .waitFor({ state: 'visible', timeout: 10_000 })
+    .catch(() => {});
+  check('Kalender öffnet den Planer', await cal.locator(SHEET).isVisible());
+  const stored = await cal.evaluate(() =>
+    JSON.parse(window.localStorage.getItem('parkfan_planner') ?? '{}')
+  );
+  const entries = stored?.parks?.[PARK.slug]?.days?.[stored?.activeDate]?.entries ?? [];
+  check(
+    'Kalender setzt Park und Tag, ohne eine Bahn zu erfinden',
+    stored?.activeParkSlug === PARK.slug && Boolean(stored?.activeDate) && entries.length === 0,
+    `${stored?.activeParkSlug} / ${stored?.activeDate} / ${entries.length} Einträge`
+  );
+}
+
 check(
   'keine unerwarteten Konsolenfehler',
   consoleErrors.length === 0,

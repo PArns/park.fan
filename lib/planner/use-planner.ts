@@ -6,6 +6,7 @@ import {
   addEntry,
   clearDay as clearDayAction,
   moveEntry,
+  openDay as openDayAction,
   removeEntry,
   reorderEntry,
   setActive as setActiveAction,
@@ -72,6 +73,13 @@ export function usePlanner() {
     plannerStore.update((s) => setActiveAction(s, parkSlug, date));
   }, []);
 
+  const openDay = useCallback(
+    (park: { slug: string; name: string; geo: PlannerGeo }, date: string) => {
+      plannerStore.update((s) => openDayAction(s, park, date));
+    },
+    []
+  );
+
   const clearDay = useCallback((parkSlug: string, date: string) => {
     plannerStore.update((s) => clearDayAction(s, parkSlug, date));
   }, []);
@@ -95,6 +103,7 @@ export function usePlanner() {
     reorderRide,
     setDone,
     setActive,
+    openDay,
     clearDay,
   };
 }
