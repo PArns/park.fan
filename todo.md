@@ -54,6 +54,17 @@ Two data traps worth writing down because they will otherwise be mistaken for bu
   returns `[9 … 19]`. The gaps are real and survive `years=2` and
   `minAttractionDays=5`. Any hour-curve builder has to interpolate across them
   rather than assume a dense array.
+
+  The cause is now known and is not a bug: `hours` is a `.filter()` over observed
+  hours, never a range. The midday hole (14, 15, 16 missing while 17 is present)
+  comes from `MIN_HOUR_RIDE_RATIO` — fewer than half the ranked rides have a cell for
+  those hours — and it is possible at all because the aggregate row is already triple
+  filtered upstream (`src/queues/processors/queue-percentile.processor.ts:98-106`:
+  `status = 'OPERATING'`, `queueType = 'STANDBY'`, `waitTime IS NOT NULL`, and
+  `HAVING COUNT(*) >= 3`). An hour where the top rides mostly lacked three OPERATING
+  readings produces no bucket at all. The backend's own docs say it outright:
+  "never assume 9–18" (`docs/frontend/park-hourly-profile.md`).
+
 - The calendar endpoint refuses ranges over **90 days** (`400 Date range too large`).
 
 ### Things that are already half built
@@ -95,14 +106,15 @@ model's reach — but a fabricated number is worse than a blank. So the horizon 
 
 Today's limits, and where each is set:
 
-| Layer                                | Reach                  | Set at                                        |
-| ------------------------------------ | ---------------------- | --------------------------------------------- |
-| Hourly per-ride predictions (stored) | **48 h**               | `src/ml/ml.service.ts:1781`                   |
-| Daily per-ride predictions (stored)  | **60 d**               | `src/ml/ml.service.ts:1783`                   |
-| TFT daily serving                    | ≤45 d, headliners only | `docs/ml/quantile-serving-and-calibration.md` |
-| CatBoost daily serving               | 31–365 d               | same doc                                      |
-| Weather                              | 14–16 d (Open-Meteo)   | `docs/architecture/weather.md`                |
-| Calendar range                       | 90 d per request       | calendar service                              |
+| Layer                                   | Reach                        | Set at                                                         |
+| --------------------------------------- | ---------------------------- | -------------------------------------------------------------- |
+| Hourly per-ride predictions (generated) | **24 h**, 96 slots of 15 min | `ml-service/config.py:132` `HOURLY_PREDICTIONS = 24`           |
+| Hourly dedup/delete window              | 48 h                         | `src/ml/ml.service.ts:1781` — a delete window, not the horizon |
+| Daily per-ride predictions (stored)     | **60 d**                     | `src/ml/ml.service.ts:1783`                                    |
+| TFT daily serving                       | ≤45 d, headliners only       | `docs/ml/quantile-serving-and-calibration.md`                  |
+| CatBoost daily serving                  | 31–365 d                     | same doc                                                       |
+| Weather                                 | 14–16 d (Open-Meteo)         | `docs/architecture/weather.md`                                 |
+| Calendar range                          | 90 d per request             | calendar service                                               |
 
 ### The four tiers
 
@@ -160,32 +172,31 @@ Then `predict.py:2062` folds it into one percentage
       and `predictedWaitHigh` (q0.95), or `uncertaintyMinutes` = the width. Decide
       one shape and keep it; do not ship both.
 - [ ] `WaitTimePrediction` entity (`src/ml/entities/wait-time-prediction.entity.ts`):
-      one nullable `smallint` column, no new index.
-
-      **There are no migrations in this repo.** `synchronize: process.env.DB_SYNCHRONIZE === "true"`
-          (`src/config/database.config.ts:54`), and `.env.production.example:12` sets it
-          to `true` — TypeORM adds the column itself. Nothing to write, and nothing to
-          hand-roll either; a migration file would be the odd one out.
-
-          Cost, since this is the heaviest-written table in the system (~228k rows per
-          run, 24.66M rows, TimescaleDB hypertable): `smallint` is 2 bytes and nullable
-          costs nothing when null, because the row already carries a null bitmap for
-          `confidence`, `crowdLevel`, `status` and `baseline`. That is roughly 50 MB
-          uncompressed against the 822 + 335 + 276 + 225 MB of indexes the entity header
-          records having been removed for write cost. Compression segments by
-          `attractionId` ordered by `predictedTime ASC`
-          (`src/database/timescale-init.service.ts:296-303`), so neighbouring uncertainty
-          values compress well. Verdict: affordable.
-
-          One thing to verify on the real database before relying on it: chunks compress
-          after 14 days, and `ALTER TABLE … ADD COLUMN` has to work on already-compressed
-          chunks. The image is `timescale/timescaledb:latest-pg18`, recent enough that a
-          nullable add does not decompress — confirm rather than assume.
-
+      one nullable `smallint` column, no new index. See the note below on why that is
+      affordable and why it needs no migration.
 - [ ] Surface it: `hourlyForecast[]` items, `headlinerForecast.rides[]`, and the new
       endpoints below.
 - [ ] Update `docs/ml/quantile-serving-and-calibration.md` — its TL;DR table says
       q0.95 is "not served". That stops being true.
+
+**No migration, and the column is affordable.** There are no migrations in this repo:
+`synchronize: process.env.DB_SYNCHRONIZE === "true"` (`src/config/database.config.ts:54`),
+and `.env.production.example:12` sets it to `true`, so TypeORM adds the column itself.
+A migration file would be the odd one out.
+
+On cost, since this is the heaviest-written table in the system (~228k rows per run,
+24.66M rows, TimescaleDB hypertable): `smallint` is 2 bytes, and a nullable column
+costs nothing when null because the row already carries a null bitmap for
+`confidence`, `crowdLevel`, `status` and `baseline`. Roughly 50 MB uncompressed,
+against the 822 + 335 + 276 + 225 MB of indexes the entity header records having been
+removed for write cost. Compression segments by `attractionId` ordered by
+`predictedTime ASC` (`src/database/timescale-init.service.ts:296-303`), so
+neighbouring uncertainty values sit together and compress well.
+
+One thing to verify against the real database rather than assume: chunks compress
+after 14 days, and the nullable `ALTER TABLE … ADD COLUMN` has to work on
+already-compressed ones. The image is `timescale/timescaledb:latest-pg18`, recent
+enough that it should not decompress.
 
 Keep `confidence` as it is. It is a different statement (time-decay blended with
 model spread) and something may already read it.
@@ -282,9 +293,16 @@ reports every show as closed.
 
 ### 2.6 Extend the horizon `[P1]`
 
+- [ ] The hourly horizon is one constant: `HOURLY_PREDICTIONS = 24` in
+      `ml-service/config.py:132` ("Next 24 hours (internal use)"), which becomes
+      96 slots of 15 minutes. Raising it also means widening the 48-hour dedup window
+      (`ml.service.ts:1781`) and revisiting the purge comment at `ml.service.ts:1693-1696`,
+      which reasons from "lead ≤ 24 h". Three places, one number.
 - [ ] Raise the stored daily horizon past 60 days (`ml.service.ts:1783`) or add
       on-demand computation for 61–365. CatBoost already serves that range; only
-      storage stops early. Cost it first — this table is the heaviest-written one.
+      storage stops early. Note days 61–365 are already **not deduplicated** today,
+      so anything relying on them has to tolerate duplicates or the window has to
+      grow with it. Cost it first — this table is the heaviest-written one.
 - [ ] Tier D: a climatology fallback keyed on ISO week + weekday + holiday situation,
       from the seasons already in the database.
 - [ ] Weather climate normals past day 14, flagged, and firewalled from the wait
@@ -302,13 +320,39 @@ reports every show as closed.
 
 ### 2.8 Push `[P2]`
 
-- [ ] `push_subscriptions` table: endpoint, keys, trip id, locale, timezone,
-      which notification kinds are wanted.
-- [ ] `POST /v1/push/subscribe`, `DELETE /v1/push/subscribe`.
-- [ ] VAPID keys as env. `web-push` or an equivalent.
-- [ ] Cron that walks due notifications: next plan item, show starting, ride opening,
-      rain moving in. The existing BullMQ/scheduler setup is the pattern to copy.
+Nothing exists: `grep -rniE "web-push|webpush|vapid|push_subscription|notification|firebase|fcm|apns" src/` returns zero. There is no outbound notification of any kind in this backend — no push, no email, no user-facing webhook. The only outbound call is the revalidation hook to the frontend (`src/common/revalidation/revalidation.service.ts:45-60`). "Alert" in this codebase always means an internal ML or weather record, never something sent.
+
+- [ ] `push_subscriptions` table in **Postgres, not Redis**. Redis runs
+      `maxmemory 512mb` with `allkeys-lru` (`docker-compose.yml:45-50`), so it is
+      free to evict any key — a subscription store there would silently lose
+      subscribers.
+- [ ] Columns: endpoint (unique — the write is an **upsert on endpoint**, not an
+      insert), keys, trip id, locale, timezone, wanted topics, and a failure counter,
+      because a 404/410 from the push service means the subscription is dead and
+      should be counted then dropped.
+- [ ] `POST /v1/push/subscriptions`, `DELETE /v1/push/subscriptions`.
+- [ ] VAPID keys as env (`VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`).
+- [ ] Dependency: `web-push`. Pure JS, no native addon — which matters here for the
+      same reason `password.util.ts:13-20` gives for choosing scrypt over argon2: the
+      image has no build toolchain.
+- [ ] Job that walks due notifications: next plan item, show starting, ride opening,
+      rain moving in. **The scheduler is Bull v4, not BullMQ, and there is no
+      `@nestjs/schedule`** — no `@Cron`, no `@Interval`, no `ScheduleModule` anywhere
+      in `src/`. Both `claude.md:25` and `docs/architecture/job-queues.md:4` say
+      BullMQ and are wrong; fix them while passing through. A scheduled job is a
+      hand-written block in `QueueSchedulerService.registerScheduledJobs()`
+      (`queue-scheduler.service.ts:75-977`): check `hasRepeatableJob()`, else
+      `queue.add(name, {}, { repeat: { cron }, jobId })`.
+- [ ] Dispatch belongs on its own queue, not inside the wait-times sync, so it
+      cannot hang the 5-minute window and Bull can retry it independently.
 - [ ] Quiet hours in the subscriber's timezone. A 03:00 push kills the feature.
+- [ ] There is no visitor identity anywhere in this backend, so a subscription has to
+      carry its own — the trip id is the natural handle, which ties this to §2.7.
+
+Worth knowing while working in `src/queues/`: `MLHealthCheckProcessor`
+(`ml-health-check.processor.ts:18`) is not registered in `queues.module.ts` and its
+queue is never created, so it never runs — while its spec passes. Do not take a green
+spec in that directory as proof that the processor is wired up.
 
 ---
 
