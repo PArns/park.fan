@@ -1674,16 +1674,17 @@ export interface CalendarDay {
   hours?: OperatingHours;
   crowdLevel: CrowdLevel | 'closed';
   /** ML FORWARD prediction for this day (predicted peak ÷ typical-day-peak). Equals
-   *  crowdLevel on future days; on TODAY it differs — crowdLevel is overridden with the
-   *  live occupancy, while this stays the true "forecast today". Optional: absent on
-   *  API builds predating the field, and on days with no ratable prediction. */
+   *  `crowdLevel` on today and every future day — it used to differ on TODAY, where
+   *  `crowdLevel` was overridden with a live occupancy spot reading, and the override is
+   *  gone. Kept as its own field because a past day's `crowdLevel` is a measurement and
+   *  this one stays a prediction. Optional: absent on API builds predating the field, and
+   *  on days with no ratable prediction. */
   predictedCrowdLevel?: CrowdLevel;
-  /** TODAY ONLY: today's own DAILY rating — the value `crowdLevel` would carry if it were
-   *  not overridden with the live spot reading. The only field directly comparable to
-   *  `predictedCrowdLevel`: both are a day aggregate ÷ typical-day-peak, whereas live
-   *  `crowdLevel` is a point-in-time ratio-vs-P50. Absent before the day has enough
-   *  samples to rate, on unratable parks, on closed days and on every non-today day
-   *  (there `crowdLevel` already IS this statistic). */
+  /** TODAY ONLY: how today has actually gone SO FAR — a day-so-far aggregate, against
+   *  `crowdLevel`'s forecast for the same day. The pair is what makes „heute bisher /
+   *  Prognose" mean something; both are a day aggregate ÷ typical-day-peak, so they are on
+   *  one scale. Absent before the day has enough samples to rate, on unratable parks, on
+   *  closed days and on every non-today day (there `crowdLevel` is already a measurement). */
   todayCrowdLevel?: CrowdLevel;
   /** How many observations {@link todayCrowdLevel} was rated from — lets a surface hide a
    *  thin morning reading instead of showing "very low" next to a "very high" forecast. */

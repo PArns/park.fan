@@ -20,6 +20,26 @@ const sharedCache = (value: string) => [
   { key: 'CDN-Cache-Control', value },
 ];
 
+/**
+ * The park calendar's URL segment per locale, for the header rules below.
+ *
+ * A third copy of a list that `lib/parks/calendar-segments.ts` owns and the rewrite block further
+ * down repeats — and it is a copy rather than an import because `next.config.ts` is loaded before
+ * the path aliases exist and that module resolves `@/i18n/config`. Unlike the rewrite map this one
+ * includes `en`, whose segment needs no rewrite but whose URLs still need a cache window.
+ *
+ * If a segment ever changes, all three move together: a stale entry here is a calendar page that
+ * silently loses its cache window, which nothing renders and no test would catch.
+ */
+const parkCalendarHeaderSegments: Record<string, string> = {
+  en: 'wait-time-calendar',
+  de: 'wartezeiten-kalender',
+  fr: 'calendrier-temps-attente',
+  it: 'calendario-tempi-attesa',
+  nl: 'wachttijden-kalender',
+  es: 'calendario-tiempos-espera',
+};
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   // Cache Components (PPR) is intentionally OFF. The high-traffic detail pages (park, attraction,
@@ -737,13 +757,25 @@ const nextConfig: NextConfig = {
         headers: sharedCache('public, s-maxage=60, stale-while-revalidate=240'),
       },
       {
+        // A day, matching what api.park.fan itself answers for this object
+        // (`max-age=86400, s-maxage=86400`) and what `getParkHistoricalStats` documents. It said
+        // an hour for months, which capped a once-a-day aggregate at 24 origin refills a day.
+        // Keep in step with STATS_AGGREGATE_CACHE in app/api/parks/[...path]/route.ts — on Vercel
+        // the handler wins, in `next dev` this rule does, so the two must be identical.
         source: '/api/parks/:continent/:country/:city/:park/stats',
-        headers: sharedCache('public, s-maxage=3600, stale-while-revalidate=82800'),
+        headers: sharedCache('public, max-age=86400, s-maxage=86400, stale-while-revalidate=86400'),
       },
       {
         // `/stats/hourly` is a separate path — the `/stats` rule above does not match it.
         source: '/api/parks/:continent/:country/:city/:park/stats/hourly',
-        headers: sharedCache('public, s-maxage=3600, stale-while-revalidate=82800'),
+        headers: sharedCache('public, max-age=86400, s-maxage=86400, stale-while-revalidate=86400'),
+      },
+      {
+        // `/stats/day` had no rule at all, so in `next dev` it fell through to the blanket
+        // `/api/:path*` no-store while production served the handler's window — the exact drift
+        // the note above this block was written about, on the one branch nobody had listed.
+        source: '/api/parks/:continent/:country/:city/:park/stats/day',
+        headers: sharedCache('public, s-maxage=300, stale-while-revalidate=600'),
       },
       {
         // Attraction detail (history + hourlyForecast time-series) backing the attraction page's
@@ -841,9 +873,58 @@ const nextConfig: NextConfig = {
       // dashboard, not in this file. See "The HTML never reaches Cloudflare's cache" in
       // docs/architecture/caching-strategy.md.
       //
-      // Do not try this again from here. The only remaining lever at the origin would be giving
-      // up force-dynamic, and that brings back the per-URL ISR writes it was chosen to avoid
-      // (~250k write units/day in Jun 2026).
+      // Do not try this again from here with `Cache-Control`. The only remaining lever at the
+      // origin would be giving up force-dynamic, and that brings back the per-URL ISR writes it
+      // was chosen to avoid (~250k write units/day in Jun 2026).
+      //
+      // `CDN-Cache-Control` is a DIFFERENT key and is not the one the page writes, which is why
+      // the rule below is not a third attempt at the same thing. Both experiments above set
+      // `Cache-Control`; what they measured is a collision on that key, not an inability to add
+      // a header — their own control condition says so ("a marker header added to the same
+      // `source` arrived on the park URL"). RFC 9213's targeted header is read by Vercel's edge
+      // and forwarded downstream, so Cloudflare can be moved off "ignore cache-control, use this
+      // TTL" and onto "use cache-control header if present" — which is what puts the number in
+      // this file instead of in a dashboard nobody can diff, and what removes the reason its
+      // matcher has to exclude `/api/` by hand.
+      //
+      // VERIFY AFTER DEPLOY, do not assume: `curl -sI` a month URL and read back
+      // `cdn-cache-control`. If it is absent, the page overwrites this key too and the note
+      // above simply grows a third entry. The Cloudflare rule change is a separate, manual step
+      // and must not be made until that header is confirmed on the wire.
+      ...Object.entries(parkCalendarHeaderSegments).flatMap(([locale, segment]) => [
+        {
+          // A calendar MONTH page: `…/<segment>/2026/10`. A day, because after the backend
+          // stopped overwriting today's cell with a live occupancy reading there is nothing in
+          // a month grid that moves faster — every cell is a forecast or a measurement, and the
+          // park payload behind the page is itself cached for a day (PARK_REVALIDATE).
+          //
+          // Only `CDN-Cache-Control`: the browser keeps the page's own `no-store`, so a
+          // visitor's own tab never pins a day-old copy, while the shared caches get an
+          // explicit window.
+          source: `/${locale}/parks/:continent/:country/:city/:park/${segment}/:year/:month`,
+          headers: [
+            {
+              key: 'CDN-Cache-Control',
+              value: 'public, s-maxage=86400, stale-while-revalidate=86400',
+            },
+          ],
+        },
+        {
+          // The HUB, deliberately short and deliberately listed AFTER the month rule so the
+          // more specific source wins. The hub has no month in its URL: it renders the park's
+          // CURRENT month and dates its own summary against the park's clock, so a day-long
+          // copy serves September's grid on 1 October under a title that says September. An
+          // hour is enough to collapse a crawl burst and short enough that no reader meets a
+          // month boundary inside it.
+          source: `/${locale}/parks/:continent/:country/:city/:park/${segment}`,
+          headers: [
+            {
+              key: 'CDN-Cache-Control',
+              value: 'public, s-maxage=3600, stale-while-revalidate=3600',
+            },
+          ],
+        },
+      ]),
       {
         // The search PAGE. `:locale` is pinned to the six real locales because a bare `:locale`
         // matches any single segment — including `api`, so this rule sat after the `/api/search`
