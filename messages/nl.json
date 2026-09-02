@@ -52,6 +52,8 @@
     "status": "Status",
     "home": "Home",
     "locationBannerLabel": "Locatieservices",
+    "temperatureUnit": "Temperatuureenheid",
+    "temperatureUnitToggle": "Temperatuureenheid wisselen",
     "updated": "Bijgewerkt",
     "reservation": "Reservering vereist",
     "trend": "Trend",
@@ -823,7 +825,6 @@
       "liveValueHint": "Live-waarde – elke 15 min ververst.",
       "precipLabel": "Neerslag",
       "windLabel": "Wind",
-      "unitToggleLabel": "Temperatuureenheid",
       "compass": {
         "n": "N",
         "e": "O",

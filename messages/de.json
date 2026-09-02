@@ -76,6 +76,8 @@
     "restaurants": "Restaurants",
     "home": "Startseite",
     "locationBannerLabel": "Standortdienste",
+    "temperatureUnit": "Temperatureinheit",
+    "temperatureUnitToggle": "Temperatureinheit wechseln",
     "status": "Status",
     "updated": "Aktualisiert",
     "reservation": "Reservierung erforderlich",
@@ -617,7 +619,6 @@
       "liveValueHint": "Live-Wert – alle 15 Min aktualisiert.",
       "precipLabel": "Niederschlag",
       "windLabel": "Wind",
-      "unitToggleLabel": "Temperatureinheit",
       "compass": {
         "n": "N",
         "e": "O",

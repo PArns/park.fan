@@ -52,6 +52,8 @@
     "status": "Status",
     "home": "Home",
     "locationBannerLabel": "Location services",
+    "temperatureUnit": "Temperature unit",
+    "temperatureUnitToggle": "Switch temperature unit",
     "updated": "Updated",
     "reservation": "Reservation required",
     "trend": "Trend",
@@ -823,7 +825,6 @@
       "liveValueHint": "Live value – updated every 15 min.",
       "precipLabel": "Precip",
       "windLabel": "Wind",
-      "unitToggleLabel": "Temperature unit",
       "compass": {
         "n": "N",
         "e": "E",

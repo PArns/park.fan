@@ -52,6 +52,59 @@ Regeln als reine Funktionen in `lib/utils/rider-height.ts` (`pnpm test:rider-hei
 
 ---
 
+## Unreleased – Der °C/°F-Schalter steht jetzt neben dem Theme-Schalter
+
+Die Einheit steuert Temperaturen im Wetter-Kalender, in Blogartikeln und auf dem Reisezeit-Hub – der
+Schalter dafür saß in der Kopfzeile der Wetterkarte, also ausschließlich auf Parkseiten. Er steht
+jetzt in der Kopfleiste, direkt neben Sprache und Theme, und damit auf jeder Seite.
+
+**Die Leiste hat ein Breitenbudget, und es steht nirgends geschrieben.** Bei 360 px – der Breite,
+die die meisten Android-Telefone melden – trägt die Zeile 303 px Inhalt in 328 px: Lockup 107,
+Suchknopf 36, Sprachumschalter 56, Theme-Schalter 48, Burger 36, dazu 20 px Abstände. 25 px Luft, in
+allen sechs Sprachen bis auf 6 px gleich, weil in dieser Zeile nichts Fließtext ist.
+
+Daraus folgt die Form des Schalters. Eine zweigeteilte `°C | °F`-Pille ist 54 px breit und passt
+nicht; ein nackter Textknopf passt mit Abstand ebenfalls nicht (21,5 + 4 gegen 25). Der Knopf zeigt
+deshalb die **aktive** Einheit und wechselt beim Klick zur anderen: 28 px, auf dem Telefon 24, `h-7`
+und derselbe Ring wie der Theme-Schalter daneben, damit die beiden als Paar lesbar sind. Oberhalb von
+`sm` wären beide Segmente bezahlbar – bewusst nicht genommen, ein Steuerelement, das überall gleich
+aussieht, ist besser als zwei Markups, die ineinander hydrieren.
+
+**Seine Breite darf nicht davon abhängen, welche Einheit gerade gilt.** Nach dem Label bemessen tat
+sie es: `°F` ist schmaler als `°C`, der Knopf schrumpfte also unter dem Finger, der ihn gerade
+gedrückt hatte, und zog Theme-Schalter und Sprachflagge mit – in einer Zeile, in der jeder Pixel
+verplant ist, und ausgerechnet bei dem Bedienelement, dessen ganze Aufgabe es ist, seine Beschriftung
+zu wechseln. `min-w-7` bzw. `max-sm:min-w-6` mit `px-1` nagelt die Box auf 28 und 24: das Label ist
+rund 13 px breit und damit ohne Belang, solange es unter der Box bleibt, und der Innenabstand ist
+das, was passiert, wenn eine Leserschrift doch einmal darüber hinausgeht – dann wächst der Knopf,
+statt abzuschneiden. Über einen Wechsel in beide Richtungen und auf beiden Stufen gemessen bewegen
+sich die eigene Box und die Positionen der Nachbarn um **0,0 px**.
+
+Und daraus folgt, woher der Platz kam: aus drei Stellen, keine davon die Höhe eines Bedienelements.
+Das Länderkürzel im Sprachumschalter kostet 22 px Text und Abstand, direkt neben einer Flagge, die
+dasselbe sagt, vor einem Dropdown, das Kürzel **und** Sprachnamen auflistet – unterhalb von `sm`
+steht die Flagge nun allein. Die beiden Abstände zwischen den Aktionsgruppen geben 8 px her
+(`max-sm:gap-1`), die Telefonstufe des Knopfes selbst noch einmal 4 (`max-sm:min-w-6`).
+
+Nachgemessen bei 320/360/390 px × sechs Sprachen: 301 px belegt, bei 360 px also 27 px Luft – zwei
+Pixel weniger belegt als vor dem Knopf – und in jeder Sprache dieselbe Zahl, wo sie sich vorher um
+6 px unterschied. **Die beiden letzten Kürzungen gibt es wegen 320 px.** Das ist die schmalste
+Breite, die noch in den Logs auftaucht, und die Leiste stand dort schon vorher 15 px über ihrem
+Kasten – vom `px-4` des Containers geschluckt, also ohne Querscrollen und ohne dass es jemandem
+aufgefallen wäre. Mit dem Knopf allein waren es 26 px und das Dokument 330 px breit auf einem 320-px-
+Schirm. Jetzt sind es wieder 13, innerhalb des Paddings, und das Dokument ist von 320 bis 768 px
+exakt so breit wie der Viewport. Die Ecken-Pille der Hero-Seiten trägt dieselben drei Bedienelemente,
+endet bei jeder Breite 24 px vor dem rechten Rand und hält bei 320 px 42 px Abstand zum Eck-Logo.
+
+Die Einheit selbst kommt weiterhin ohne React-State aus: der Knopf rendert `°C` **und** `°F` und
+lässt `html[data-temp-unit]` eines davon zeigen – dieselben `.u-metric`/`.u-imperial`-Klassen, mit
+denen jede server-gerenderte Temperatur arbeitet. Der Klick liest das Attribut vom Dokument statt aus
+dem Context, kippt also per Definition das, was der Leser gerade sieht. Die drei Klassen der alten
+Pille (`.u-unit-btn`, `.u-unit-c`, `.u-unit-f`) sind mit den Segmenten weggefallen. Details unter
+[Design-System → Header-Geometrie](design/design-system.md#header-geometry).
+
+---
+
 ## Unreleased – fix: Das Icon in der Google-Suche ist wieder lesbar
 
 In einem `google.de`-Treffer für „Phantasialand Wartezeiten" stand neben dem Ergebnis ein Fleck.

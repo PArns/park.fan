@@ -52,6 +52,8 @@
     "status": "Estado",
     "home": "Inicio",
     "locationBannerLabel": "Servicios de ubicación",
+    "temperatureUnit": "Unidad de temperatura",
+    "temperatureUnitToggle": "Cambiar la unidad de temperatura",
     "updated": "Actualizado",
     "reservation": "Reserva requerida",
     "trend": "Tendencia",
@@ -823,7 +825,6 @@
       "liveValueHint": "Valor en directo – actualizado cada 15 min.",
       "precipLabel": "Precip.",
       "windLabel": "Viento",
-      "unitToggleLabel": "Unidad de temperatura",
       "compass": {
         "n": "N",
         "e": "E",
