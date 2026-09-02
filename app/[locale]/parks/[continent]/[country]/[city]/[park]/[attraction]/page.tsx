@@ -28,6 +28,7 @@ import { objectPositionForSrc } from '@/lib/media/focus';
 import { getMediaAltBySrc } from '@/lib/media/text';
 import { ParkBackground } from '@/components/parks/park-background';
 import { FavoriteStar } from '@/components/common/favorite-star';
+import { AddToPlannerButton } from '@/components/planner/add-to-planner-button';
 import { ParkDistance } from '@/components/common/park-distance';
 import { ShareButtons } from '@/components/common/share-buttons';
 import { ContributeBanner } from '@/components/contribute/contribute-banner';
@@ -424,7 +425,17 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                     </div>
                   </div>
                   {attraction.id && (
-                    <div className="flex items-center">
+                    <div className="flex items-center gap-2">
+                      {/* The planner's real entry point. Its floating launcher only
+                          appears once something is planned, so without a control
+                          here the feature has no first step. */}
+                      <AddToPlannerButton
+                        parkSlug={parkSlug}
+                        parkName={parkName}
+                        geo={{ continent, country, city }}
+                        attractionSlug={attractionSlug}
+                        attractionName={attraction.name}
+                      />
                       <FavoriteStar type="attraction" id={attraction.id} size="lg" />
                     </div>
                   )}
