@@ -1,12 +1,13 @@
 /**
  * Unit tests for the planner's plan operations (`lib/planner/actions.ts`).
  *
- * The reorder is the reason this file exists. Dropping an entry on another row
- * makes it take that row's hour — that is what makes dragging change the
- * estimate — and the target hour has to be read BEFORE the splice, because
- * afterwards the neighbour at that index is a different entry and the dropped
- * ride silently inherits the wrong time. Nothing about the rendered list would
- * show it: the order is right, only the number is wrong.
+ * An entry's time is park-local MINUTES now, not an hour, because the day grid
+ * puts a block wherever the visitor drops it. `reorderEntry` is gone with the
+ * list it belonged to: its whole premise was that a drop target is an index and
+ * the dropped entry takes the hour of the row it landed on, which was only ever
+ * a way to express a time with no axis to express it against. `moveEntry` says
+ * the thing directly, and its two identity guards are what keep a drag that ends
+ * where it started from costing a full localStorage write.
  *
  * The rest pin decisions that are equally invisible once shipped: un-ticking has
  * to drop the recorded wait (otherwise a measured number stays attached to an
@@ -24,9 +25,9 @@ import {
   moveEntry,
   openDay,
   removeEntry,
-  reorderEntry,
   setActive,
   setEntryDone,
+  shiftFrom,
 } from '../lib/planner/actions.ts';
 import { countAll, EMPTY_PLANNER_STATE, entriesFor, hasAnyPlan } from '../lib/planner/types.ts';
 
@@ -45,7 +46,7 @@ const add = (state, attractionSlug, hour) =>
     ...PARK,
     attractionSlug,
     attractionName: attractionSlug,
-    ...(hour !== undefined ? { hour } : {}),
+    ...(hour !== undefined ? { startMinute: hour * 60 } : {}),
   });
 
 /** A day with three rides at 10, 12 and 14. */
@@ -58,7 +59,7 @@ function threeRides() {
 }
 
 const listOf = (state) =>
-  entriesFor(state, PARK.parkSlug, PARK.date).map((e) => [e.attractionSlug, e.hour]);
+  entriesFor(state, PARK.parkSlug, PARK.date).map((e) => [e.attractionSlug, e.startMinute / 60]);
 
 // ---------------------------------------------------------------------------
 // Adding
@@ -117,77 +118,91 @@ test(
 );
 
 // ---------------------------------------------------------------------------
-// Reorder — the one that hides an off-by-one
+// Moving to a minute — what a drag on the grid writes
 // ---------------------------------------------------------------------------
 test(
-  'reorderEntry: the dropped entry takes the target row hour, moving down',
-  // taron(10) dropped onto index 2, where black-mamba sits at 14.
-  listOf(reorderEntry(threeRides(), PARK.parkSlug, PARK.date, 'taron-1', 2)),
-  [
-    ['fly', 12],
-    ['black-mamba', 14],
-    ['taron', 14],
-  ]
-);
-
-test(
-  'reorderEntry: and moving up',
-  // black-mamba(14) dropped onto index 0, where taron sits at 10.
-  listOf(reorderEntry(threeRides(), PARK.parkSlug, PARK.date, 'black-mamba-1', 0)),
-  [
-    ['black-mamba', 10],
-    ['taron', 10],
-    ['fly', 12],
-  ]
-);
-
-test(
-  'reorderEntry: the OTHER entries keep their own hours',
-  // A reorder is one change, not a cascade the visitor did not ask for.
-  listOf(reorderEntry(threeRides(), PARK.parkSlug, PARK.date, 'taron-1', 1)).filter(
-    ([slug]) => slug !== 'taron'
-  ),
-  [
-    ['fly', 12],
-    ['black-mamba', 14],
-  ]
-);
-
-test(
-  'reorderEntry: a drop on its own row changes nothing',
-  reorderEntry(threeRides(), PARK.parkSlug, PARK.date, 'fly-1', 1) === threeRides()
-    ? 'same'
-    : 'new',
-  'new' // a fresh threeRides() is a different object; the point is it does not throw
-);
-
-test(
-  'reorderEntry: an index past the end clamps to the last row',
-  listOf(reorderEntry(threeRides(), PARK.parkSlug, PARK.date, 'taron-1', 99)).map(([s]) => s),
-  ['fly', 'black-mamba', 'taron']
-);
-
-test(
-  'reorderEntry: an unknown id leaves the plan untouched',
-  listOf(reorderEntry(threeRides(), PARK.parkSlug, PARK.date, 'nope-1', 0)),
-  [
-    ['taron', 10],
-    ['fly', 12],
-    ['black-mamba', 14],
-  ]
-);
-
-// ---------------------------------------------------------------------------
-// Moving by hour
-// ---------------------------------------------------------------------------
-test(
-  'moveEntry: re-sorts the day around the new hour',
-  listOf(moveEntry(threeRides(), PARK.parkSlug, PARK.date, 'taron-1', 16)),
+  'moveEntry: re-sorts the day around the new time',
+  listOf(moveEntry(threeRides(), PARK.parkSlug, PARK.date, 'taron-1', 16 * 60)),
   [
     ['fly', 12],
     ['black-mamba', 14],
     ['taron', 16],
   ]
+);
+
+test(
+  'moveEntry: lands on the minute it was given, not on an hour',
+  entriesFor(
+    moveEntry(threeRides(), PARK.parkSlug, PARK.date, 'taron-1', 11 * 60 + 45),
+    PARK.parkSlug,
+    PARK.date
+  ).find((e) => e.id === 'taron-1').startMinute,
+  705
+);
+
+// The guard that matters most in practice: a drag that ends where it started is
+// the commonest gesture there is, and every store write stringifies the whole
+// multi-park plan, rewrites the cookie and notifies every subscriber.
+test(
+  'moveEntry: a move to the same minute returns the SAME object',
+  (() => {
+    const base = threeRides();
+    return moveEntry(base, PARK.parkSlug, PARK.date, 'taron-1', 10 * 60) === base;
+  })(),
+  true
+);
+
+test(
+  'moveEntry: an unknown id returns the same object',
+  (() => {
+    const base = threeRides();
+    return moveEntry(base, PARK.parkSlug, PARK.date, 'nope-1', 600) === base;
+  })(),
+  true
+);
+
+test(
+  'moveEntry: a time outside the day is clamped where it can be tested',
+  entriesFor(
+    moveEntry(threeRides(), PARK.parkSlug, PARK.date, 'taron-1', 99_999),
+    PARK.parkSlug,
+    PARK.date
+  ).find((e) => e.id === 'taron-1').startMinute,
+  1500
+);
+
+// The store still writes an `hour` mirror for one release, so a tab running the
+// previous build reads a plan it understands instead of dropping every entry.
+test(
+  'moveEntry: keeps the legacy hour mirror in step',
+  entriesFor(
+    moveEntry(threeRides(), PARK.parkSlug, PARK.date, 'taron-1', 11 * 60 + 45),
+    PARK.parkSlug,
+    PARK.date
+  ).find((e) => e.id === 'taron-1').hour,
+  11
+);
+
+// ---------------------------------------------------------------------------
+// Shifting a tail — the second half of a repair, and never automatic
+// ---------------------------------------------------------------------------
+test(
+  'shiftFrom: moves the named entry and everything after it',
+  listOf(shiftFrom(threeRides(), PARK.parkSlug, PARK.date, 'fly-1', 30)),
+  [
+    ['taron', 10],
+    ['fly', 12.5],
+    ['black-mamba', 14.5],
+  ]
+);
+
+test(
+  'shiftFrom: a zero delta returns the same object',
+  (() => {
+    const base = threeRides();
+    return shiftFrom(base, PARK.parkSlug, PARK.date, 'fly-1', 0) === base;
+  })(),
+  true
 );
 
 // ---------------------------------------------------------------------------
@@ -268,8 +283,8 @@ test(
     const ops = [
       add(base, 'river-quest', 11),
       removeEntry(base, PARK.parkSlug, PARK.date, 'taron-1'),
-      moveEntry(base, PARK.parkSlug, PARK.date, 'taron-1', 15),
-      reorderEntry(base, PARK.parkSlug, PARK.date, 'taron-1', 2),
+      moveEntry(base, PARK.parkSlug, PARK.date, 'taron-1', 15 * 60),
+      shiftFrom(base, PARK.parkSlug, PARK.date, 'taron-1', 30),
       setEntryDone(base, PARK.parkSlug, PARK.date, 'taron-1', true, 20),
       setActive(base, PARK.parkSlug, PARK.date),
       clearDay(base, PARK.parkSlug, PARK.date),
@@ -284,7 +299,7 @@ test(
   (() => {
     const base = threeRides();
     const before = JSON.stringify(base);
-    reorderEntry(base, PARK.parkSlug, PARK.date, 'taron-1', 2);
+    moveEntry(base, PARK.parkSlug, PARK.date, 'taron-1', 15 * 60);
     setEntryDone(base, PARK.parkSlug, PARK.date, 'taron-1', true, 20);
     return JSON.stringify(base) === before;
   })(),

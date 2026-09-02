@@ -1,9 +1,10 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Check, GripVertical, X } from 'lucide-react';
+import { Check, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { PlannerBar } from './planner-bar';
+import { formatGridTime } from '@/lib/planner/park-time';
 import type { PlannerEntry } from '@/lib/planner/types';
 import type { PlannerEstimate } from '@/lib/planner/estimate';
 import type { PlanDayTier } from '@/lib/api/types';
@@ -15,17 +16,8 @@ interface PlannerEntryRowProps {
   tier: PlanDayTier;
   /** Whether the band may carry a figure — see `bandCarriesFigure`. */
   showBandFigure: boolean;
-  dragging?: boolean;
-  /** The row a dragged entry would land on. */
-  dropTarget?: boolean;
   onToggleDone: () => void;
   onRemove: () => void;
-  onDragStart: (event: React.PointerEvent<HTMLElement>) => void;
-}
-
-/** `9` → `09:00`, in the park's own reading. */
-function hourLabel(hour: number): string {
-  return `${String(hour).padStart(2, '0')}:00`;
 }
 
 /**
@@ -46,11 +38,8 @@ export function PlannerEntryRow({
   scale,
   tier,
   showBandFigure,
-  dragging = false,
-  dropTarget = false,
   onToggleDone,
   onRemove,
-  onDragStart,
 }: PlannerEntryRowProps) {
   const t = useTranslations('planner');
   // `common` is in the layout set on every route, so this costs no chunk.
@@ -77,24 +66,11 @@ export function PlannerEntryRow({
       data-planner-entry={entry.id}
       className={cn(
         'group relative flex h-14 items-center gap-2 rounded-lg px-2 transition-colors',
-        dragging && 'bg-accent/60 shadow-lg',
-        dropTarget && 'ring-primary/50 ring-1',
         done && 'opacity-70'
       )}
     >
-      {/* Drag by the handle, never by the row. The row carries a checkbox and a
-          remove button, and a drag that starts anywhere would swallow both. */}
-      <button
-        type="button"
-        aria-label={t('entry.dragHandle')}
-        onPointerDown={onDragStart}
-        className="text-muted-foreground/50 hover:text-muted-foreground shrink-0 cursor-grab touch-none active:cursor-grabbing max-sm:flex max-sm:size-11 max-sm:items-center max-sm:justify-center"
-      >
-        <GripVertical className="size-4" />
-      </button>
-
       <time className="text-muted-foreground w-11 shrink-0 font-mono text-xs tabular-nums">
-        {hourLabel(entry.hour)}
+        {formatGridTime(entry.startMinute)}
       </time>
 
       <div className="min-w-0 flex-1">

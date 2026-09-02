@@ -6,6 +6,7 @@ import { Plus, Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { usePlanner } from '@/lib/planner/use-planner';
 import type { PlannerGeo } from '@/lib/planner/types';
+import { buildDayGrid, nextFreeStart } from '@/lib/planner/day-grid';
 import type { PlanDay } from '@/lib/api/types';
 import type { PlannerDayState } from './planner-context-band';
 
@@ -66,6 +67,16 @@ export function PlannerRideSearch({
     [activeEntries]
   );
 
+  // Where the next ride goes. Recomputed per render rather than per click so a
+  // second add after a first one lands after it, not on it.
+  const grid = buildDayGrid(day?.context.openHour, day?.context.closeHour);
+  const nextStart = grid
+    ? nextFreeStart(
+        activeEntries.map((entry) => ({ startMinute: entry.startMinute, spanMinutes: 45 })),
+        grid
+      )
+    : undefined;
+
   const matches = useMemo(() => {
     if (!day) return [];
     // Below: an empty list is rendered as a stated reason, not as nothing.
@@ -115,10 +126,12 @@ export function PlannerRideSearch({
                     date,
                     attractionSlug: ride.attractionSlug,
                     attractionName: ride.attractionName,
-                    // Its own busiest hour is the wrong default — the point of
-                    // planning is to avoid that. The park's opening hour is the
-                    // honest neutral start, and dragging is one gesture away.
-                    hour: day?.context.openHour ?? undefined,
+                    // The first free slot, not the opening hour. This call site
+                    // bypassed `addEntry`'s own fallback entirely and filed
+                    // everything at the same minute, so five rides added from
+                    // the search landed as five blocks in one place, all
+                    // reporting a conflict with each other on first use.
+                    startMinute: nextStart,
                   })
                 }
                 className="hover:bg-accent flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left transition-colors max-sm:py-2.5"

@@ -8,8 +8,8 @@ import {
   moveEntry,
   openDay as openDayAction,
   removeEntry,
-  reorderEntry,
   setActive as setActiveAction,
+  shiftFrom as shiftFromAction,
   setEntryDone,
 } from './actions';
 import { countAll, entriesFor, type PlannerEntry, type PlannerGeo } from './types';
@@ -21,7 +21,10 @@ interface AddRideParams {
   date: string;
   attractionSlug: string;
   attractionName: string;
-  hour?: number;
+  /** The park's IANA zone, so the plan can answer "what day is it there?". */
+  timezone?: string;
+  /** Park-local minutes since midnight. Omitted means "after the last entry". */
+  startMinute?: number;
 }
 
 /**
@@ -51,13 +54,16 @@ export function usePlanner() {
     plannerStore.update((s) => removeEntry(s, parkSlug, date, entryId));
   }, []);
 
-  const moveRide = useCallback((parkSlug: string, date: string, entryId: string, hour: number) => {
-    plannerStore.update((s) => moveEntry(s, parkSlug, date, entryId, hour));
-  }, []);
+  const moveRide = useCallback(
+    (parkSlug: string, date: string, entryId: string, startMinute: number) => {
+      plannerStore.update((s) => moveEntry(s, parkSlug, date, entryId, startMinute));
+    },
+    []
+  );
 
-  const reorderRide = useCallback(
-    (parkSlug: string, date: string, entryId: string, toIndex: number) => {
-      plannerStore.update((s) => reorderEntry(s, parkSlug, date, entryId, toIndex));
+  const shiftFrom = useCallback(
+    (parkSlug: string, date: string, entryId: string, deltaMinutes: number) => {
+      plannerStore.update((s) => shiftFromAction(s, parkSlug, date, entryId, deltaMinutes));
     },
     []
   );
@@ -100,7 +106,7 @@ export function usePlanner() {
     addRide,
     removeRide,
     moveRide,
-    reorderRide,
+    shiftFrom,
     setDone,
     setActive,
     openDay,

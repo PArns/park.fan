@@ -19,8 +19,18 @@ export interface PlannerEntry {
   id: string;
   attractionSlug: string;
   attractionName: string;
-  /** Park-local hour the visit is planned for. */
-  hour: number;
+  /**
+   * When the visit starts, as park-local minutes since midnight. Park-local
+   * always: the reader's own offset never enters the planner, because this
+   * value and the date it is filed under are what a plan IS.
+   */
+  startMinute: number;
+  /**
+   * @deprecated A write-only mirror of `Math.floor(startMinute / 60)`, kept for
+   * one release so a tab still running the previous build reads a plan it
+   * understands instead of dropping every entry. Nothing may read it.
+   */
+  hour?: number;
   /**
    * Ticked off. Once set, the estimate stops being the point: `actualWait` is
    * what happened, and the entry is a record rather than a plan.
@@ -41,6 +51,12 @@ export interface PlannerPark {
   slug: string;
   name: string;
   geo: PlannerGeo;
+  /**
+   * The park's IANA zone, stored rather than fetched: the overview lists several
+   * parks at once and has no payload for any of them, so a single "today" for
+   * the panel would be wrong by construction for all but one.
+   */
+  timezone?: string;
   /** Keyed by date, so several days of the same park sit side by side. */
   days: Record<string, PlannerDay>;
 }

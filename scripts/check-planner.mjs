@@ -67,13 +67,13 @@ const PLAN = {
               id: 'voltron-1',
               attractionSlug: 'voltron-nevera',
               attractionName: 'Voltron Nevera',
-              hour: 10,
+              startMinute: 600,
             },
             {
               id: 'silver-star-1',
               attractionSlug: 'silver-star',
               attractionName: 'Silver Star',
-              hour: 13,
+              startMinute: 780,
             },
           ],
         },
@@ -85,8 +85,11 @@ const PLAN = {
         [DATE]: {
           date: DATE,
           entries: [
-            { id: 'taron-1', attractionSlug: 'taron', attractionName: 'Taron', hour: 10 },
-            { id: 'fly-1', attractionSlug: 'fly', attractionName: 'F.L.Y.', hour: 12 },
+            { id: 'taron-1', attractionSlug: 'taron', attractionName: 'Taron', startMinute: 600 },
+            { id: 'fly-1', attractionSlug: 'fly', attractionName: 'F.L.Y.', startMinute: 750 },
+            // Deliberately the OLD shape: the store lifts `hour * 60` for one
+            // release, and a visitor with a second tab open across a deploy
+            // would otherwise watch that tab quietly empty their trip.
             {
               id: 'black-mamba-1',
               attractionSlug: 'black-mamba',
@@ -203,28 +206,60 @@ const sheetText = (await sheet.textContent()) ?? '';
 check('Park steht im Kopf', /Phantasialand/.test(sheetText));
 check('deutscher Text, keine rohen Keys', !/planner\.[a-z]|parks\.weather/i.test(sheetText));
 
-// The drag maths indexes by a fixed row height; a row that grows with its data
-// would drop an entry in the wrong place.
-const heights = await rows.evaluateAll((els) =>
-  els.map((el) => Math.round(el.getBoundingClientRect().height))
+// The one claim the grid makes: a block's HEIGHT is its duration. Forty-five
+// minutes at 1.2 px/min is 54 px, wherever the block sits — and the distance
+// between two blocks is the distance between their times.
+const blocks = page.locator('li[data-planner-block]');
+const geometry = await blocks.evaluateAll((els) =>
+  els.map((el) => ({
+    id: el.dataset.plannerEntry,
+    top: el.getBoundingClientRect().top,
+    height: el.getBoundingClientRect().height,
+  }))
 );
+if (live && geometry.length >= 2) {
+  // 600 and 750 in the seed: 150 minutes apart, so 180 px apart.
+  const delta = geometry[1].top - geometry[0].top;
+  check(
+    'Blockabstand ist der Zeitabstand',
+    Math.abs(delta - 150 * 1.2) <= 1.5,
+    `${Math.round(delta)} px`
+  );
+}
 check(
-  'Zeilen sind 56 px hoch',
-  heights.length === 3 && heights.every((h) => h === 56),
-  `Höhen: ${heights.join(', ')}`
+  'kein Block ist kleiner als die Mindestbox',
+  geometry.every((b) => b.height >= 19.5),
+  geometry.map((b) => Math.round(b.height)).join(', ')
 );
+
+// The canvas is exactly the axis: (close + 30) − (open − 30) minutes × 1.2. It
+// exists only where the park's hours are known, which is what `live` means here.
+if (live) {
+  const canvasHeight = await page
+    .locator('[data-planner-grid] > div:last-child')
+    .evaluate((el) => el.getBoundingClientRect().height)
+    .catch(() => 0);
+  check(
+    'Achse ist so hoch wie der Tag lang ist',
+    canvasHeight > 200,
+    `${Math.round(canvasHeight)} px`
+  );
+}
 
 // A skeleton that never resolves is a panel claiming to still be loading.
 const pulsing = await page.locator(`${SHEET} .animate-pulse`).count();
 check('kein hängender Skeleton', pulsing === 0, `pulsierende Blöcke: ${pulsing}`);
 
-const bars = await page.locator(`${SHEET} li[data-planner-entry] .rounded-full`).count();
+// The figure inside a block, and nothing else: the leg chips, the now pill and
+// the show labels are all `rounded-full`, so the old selector would have gone
+// red for entirely the wrong reason.
+const bars = await page.locator(`${SHEET} [data-planner-block] [data-figure]`).count();
 if (live) {
-  check('Balken werden gezeichnet', bars > 0, `gefunden: ${bars}`);
+  check('Blöcke tragen ihre Zahl', bars > 0, `gefunden: ${bars}`);
   check('mindestens eine Minutenzahl', /\d+\s*Min\./.test(sheetText));
 } else {
   // No figure means no bar: an empty track beside an em dash reads as zero.
-  check('ohne Prognose keine leeren Balken', bars === 0, `gefunden: ${bars}`);
+  check('ohne Prognose keine Zahlen an den Blöcken', bars === 0, `gefunden: ${bars}`);
   check(
     'ohne Prognose steht der Grund da',
     /keine Prognose vor/.test(sheetText),
@@ -242,6 +277,16 @@ if (await firstCheck.count()) {
   );
   const done = stored?.parks?.[PLAN.activeParkSlug]?.days?.[PLAN.activeDate]?.entries?.[0]?.done;
   check('Abhaken wird gespeichert', done === true, `done=${done}`);
+
+  // The tick-off is the first store WRITE, and the store rewrites the whole plan
+  // — so this is the first moment the migration is observable. The entry was
+  // seeded in the old shape (`hour: 15`) on purpose: localStorage is a plan's
+  // only copy, and a tab still running the previous build must not empty it.
+  const migrated =
+    stored?.parks?.[PLAN.activeParkSlug]?.days?.[PLAN.activeDate]?.entries?.find(
+      (e) => e.id === 'black-mamba-1'
+    )?.startMinute ?? null;
+  check('alter Eintrag mit `hour` wird auf Minuten gehoben', migrated === 900, `${migrated}`);
 } else {
   check('Abhaken-Knopf vorhanden', false);
 }
@@ -332,14 +377,26 @@ if (await phoneLauncher.count()) {
       : 'keine Box'
   );
 
-  // 44 px is the phone tier the button scale already writes down.
-  const handle = phone.locator('li[data-planner-entry] button[aria-label="Verschieben"]').first();
-  const handleBox = await handle.boundingBox();
-  check(
-    'Griff ist auf dem Handy 44 px',
-    Boolean(handleBox && Math.round(handleBox.height) >= 44),
-    handleBox ? `${Math.round(handleBox.width)}×${Math.round(handleBox.height)}` : 'keine Box'
-  );
+  // The touch target on the grid's grip. Measured with `elementFromPoint` and
+  // not with `boundingBox()`, because on a short block the target is grown by an
+  // `after:` pseudo-element that a bounding box does not see.
+  const phoneBlocks = phone.locator('li[data-planner-block]');
+  if ((await phoneBlocks.count()) > 0) {
+    const hit = await phone.evaluate(() => {
+      const block = document.querySelector('li[data-planner-block]');
+      if (!block) return 'no block';
+      const box = block.getBoundingClientRect();
+      const el = document.elementFromPoint(box.left + 8, box.top + box.height / 2);
+      return el?.closest('li[data-planner-block]') ? 'grip' : (el?.tagName ?? 'nothing');
+    });
+    check('Griff ist auf dem Handy treffbar', hit === 'grip', hit);
+  } else {
+    // No opening hours (which is what a 404 leaves), so the grid cannot draw and
+    // the flat list is the honest fallback. It carries no grip by design: with
+    // no axis there is no time to drag onto.
+    const fallbackRows = await phone.locator('li[data-planner-entry]').count();
+    check('ohne Achse rendert die Liste', fallbackRows > 0, `Zeilen: ${fallbackRows}`);
+  }
 } else {
   check('mobil als Bottom-Sheet', false, 'Launcher nicht gefunden');
 }
@@ -391,6 +448,169 @@ if (reachable) {
     stored?.activeParkSlug === PARK.slug && Boolean(stored?.activeDate) && entries.length === 0,
     `${stored?.activeParkSlug} / ${stored?.activeDate} / ${entries.length} Einträge`
   );
+}
+
+// ── The grid itself, against a stubbed payload ───────────────────────────────
+// `/plan/day` answers 404 until the backend PR merges, so without this the whole
+// day grid — the thing this feature IS — would go unverified by a green check.
+// The fixture is a fixture and is labelled as one; what it exercises is the real
+// geometry, the real drag and the real reducers.
+{
+  const grid = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
+  noteErrors(grid);
+
+  const OPEN_HOUR = 9;
+  const CLOSE_HOUR = 18;
+  const curve = (peak) =>
+    Array.from({ length: CLOSE_HOUR - OPEN_HOUR + 1 }, (_, i) => ({
+      hour: OPEN_HOUR + i,
+      wait: Math.round((peak * (0.4 + 0.6 * Math.sin((i / 9) * Math.PI))) / 5) * 5,
+    }));
+
+  await grid.route('**/plan/day**', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        parkSlug: PARK.slug,
+        timezone: 'Europe/Berlin',
+        context: {
+          date: DATE,
+          status: 'OPERATING',
+          openHour: OPEN_HOUR,
+          closeHour: CLOSE_HOUR,
+          crowdLevel: 'high',
+          weather: null,
+          isHoliday: false,
+          isBridgeDay: false,
+          isSchoolVacation: false,
+          isWeekend: false,
+        },
+        tier: 'measured',
+        leadDays: 1,
+        leadTimeMae: 9,
+        rides: [
+          {
+            attractionSlug: 'taron',
+            attractionName: 'Taron',
+            land: 'Klugheim',
+            hours: curve(75),
+            dayPeak: 75,
+            uncertaintyMinutes: 18,
+            sampleDays: 410,
+            latitude: 50.7996,
+            longitude: 6.8797,
+          },
+          {
+            attractionSlug: 'fly',
+            attractionName: 'F.L.Y.',
+            land: 'Rookburgh',
+            hours: curve(95),
+            dayPeak: 95,
+            uncertaintyMinutes: 25,
+            sampleDays: 380,
+            latitude: 50.8001,
+            longitude: 6.8812,
+          },
+          {
+            attractionSlug: 'black-mamba',
+            attractionName: 'Black Mamba',
+            land: 'Deep in Africa',
+            hours: curve(35),
+            dayPeak: 35,
+            uncertaintyMinutes: null,
+            sampleDays: 402,
+            latitude: 50.7987204,
+            longitude: 6.8807868,
+          },
+        ],
+        shows: [],
+      }),
+    })
+  );
+
+  await seed(grid);
+  await grid.locator(LAUNCHER).click();
+  await grid.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await grid.waitForTimeout(2500);
+
+  const blocks = grid.locator('li[data-planner-block]');
+  const count = await blocks.count();
+  check('das Raster zeichnet Blöcke', count === 3, `${count}`);
+
+  if (count === 3) {
+    const boxes = await blocks.evaluateAll((els) =>
+      els.map((el) => ({
+        id: el.dataset.plannerEntry,
+        top: el.getBoundingClientRect().top,
+        height: el.getBoundingClientRect().height,
+      }))
+    );
+    const byId = Object.fromEntries(boxes.map((b) => [b.id, b]));
+
+    // Taron sits at 600 and F.L.Y. at 750 — 150 minutes, so 180 px.
+    check(
+      'Blockabstand ist der Zeitabstand',
+      Math.abs(byId['fly-1'].top - byId['taron-1'].top - 180) <= 1.5,
+      `${Math.round(byId['fly-1'].top - byId['taron-1'].top)} px`
+    );
+
+    // And the height IS the wait. The fixture's curve is rounded to five, so
+    // every block is a multiple of 5 × 1.2 px — or the 20 px minimum box, which
+    // is a box and not a height claim.
+    check(
+      'Blockhöhe ist ein Vielfaches von 1,2 Minuten',
+      boxes.every((b) => b.height === 20 || Math.abs((b.height / 1.2) % 5) < 0.01),
+      boxes.map((b) => Math.round(b.height)).join(', ')
+    );
+
+    // The legs between them, with a verdict each.
+    const legs = await grid
+      .locator('li[data-planner-leg]')
+      .evaluateAll((els) => els.map((el) => el.dataset.verdict));
+    check('zwischen den Blöcken liegt je ein Bein', legs.length === 2, legs.join(', '));
+    check(
+      'jedes Bein trägt ein Urteil',
+      legs.every((v) => ['broken', 'tight', 'good', 'generous', 'unknown'].includes(v)),
+      legs.join(', ')
+    );
+
+    // Requirement 2: the drag may not go earlier than the park opens.
+    const range = blocks.first().locator('input[type="range"]');
+    const min = await range.getAttribute('min');
+    check('die Untergrenze ist die Parköffnung', Number(min) === OPEN_HOUR * 60, `min=${min}`);
+
+    // The keyboard equivalent writes through the same path a drag does.
+    await range.focus();
+    await grid.keyboard.press('ArrowDown');
+    await grid.waitForTimeout(400);
+    const afterKey = await grid.evaluate(() => {
+      const plan = JSON.parse(window.localStorage.getItem('parkfan_planner') ?? '{}');
+      const days = plan?.parks?.phantasialand?.days ?? {};
+      return Object.values(days)[0]?.entries?.find((e) => e.id === 'taron-1')?.startMinute ?? null;
+    });
+    check('die Tastatur verschiebt um genau einen Schritt', afterKey === 585, `${afterKey}`);
+
+    // A gesture the browser steals must write nothing.
+    const before = afterKey;
+    await blocks.first().evaluate((el) => {
+      const handle = el.querySelector('button');
+      const box = el.getBoundingClientRect();
+      const opts = { bubbles: true, clientY: box.top + 5, button: 0, pointerId: 1 };
+      handle?.dispatchEvent(new PointerEvent('pointerdown', opts));
+      handle?.dispatchEvent(new PointerEvent('pointermove', { ...opts, clientY: box.top + 200 }));
+      handle?.dispatchEvent(new PointerEvent('pointercancel', opts));
+    });
+    await grid.waitForTimeout(400);
+    const afterCancel = await grid.evaluate(() => {
+      const plan = JSON.parse(window.localStorage.getItem('parkfan_planner') ?? '{}');
+      const days = plan?.parks?.phantasialand?.days ?? {};
+      return Object.values(days)[0]?.entries?.find((e) => e.id === 'taron-1')?.startMinute ?? null;
+    });
+    check('eine abgebrochene Geste schreibt nichts', afterCancel === before, `${afterCancel}`);
+  }
+
+  await grid.close();
 }
 
 check(
