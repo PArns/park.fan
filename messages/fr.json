@@ -247,8 +247,8 @@
     },
     "live": {
       "kicker": "Temps d’attente en direct",
-      "title": "Wartezeiten für jede Bahn, alle fünf Minuten neu",
-      "lead": "Für jede Attraktion und jede Warteschlangen-Art, dazu Öffnungszeiten und Störungen.",
+      "title": "Des temps d’attente pour chaque attraction, actualisés toutes les cinq minutes",
+      "lead": "Pour chaque attraction et chaque type de file, avec les horaires et les pannes.",
       "body": "Nous ne montrons pas seulement le chiffre, mais ce qu’il veut dire : 95 minutes, c’est beaucoup un mardi de septembre et tout à fait normal un samedi d’octobre. C’est pourquoi chaque page d’attraction indique ce qui est habituel ce jour-là et à quoi ressemble une journée chargée.",
       "ridesTitle": "Chaque attraction a sa page",
       "ridesText": "Des milliers de pages d’attraction, chacune avec ce qui vaut pour cette attraction-là : types de file, déroulé de la journée entre mesures et prévision, temps habituels par jour de semaine, taille minimale et conseil de rope drop.",
@@ -305,7 +305,7 @@
     },
     "ai": {
       "kicker": "Notre IA",
-      "title": "Eine eigene Prognose, und die Abweichung steht dabei",
+      "title": "Une prévision maison, et l’écart est affiché à côté",
       "lead": "Prévoir les temps d’attente, c’est la partie difficile, et la plupart des sites la contournent. park.fan s’y attaque avec Fancast, un modèle maison réentraîné chaque nuit, jusqu’à 365 jours à l’avance.",
       "compareTitle": "Comment les autres sites prévoient",
       "compareLead": "Trois approches sont répandues, et toutes trois ont le même angle mort : personne ne dit de combien la prévision s’est trompée.",
@@ -332,8 +332,8 @@
     },
     "bestTime": {
       "kicker": "Meilleur moment",
-      "title": "Viele Bahnen haben zwei ruhige Fenster, morgens und gegen Abend",
-      "lead": "Rope Drop hilft nicht bei jeder Bahn. Die Kurve kommt aus den Messtagen der einzelnen Attraktion.",
+      "title": "Beaucoup d’attractions ont deux fenêtres calmes, le matin et en fin de journée",
+      "lead": "Le rope drop ne vaut pas le coup partout. La courbe vient des jours mesurés de chaque attraction.",
       "chartSubtitle": "Médiane sur {days} jours mesurés, relevés toutes les 5 minutes",
       "legendToday": "mesuré aujourd’hui",
       "legendMedian": "médiane des jours passés",
@@ -423,7 +423,7 @@
     },
     "blog": {
       "kicker": "Blog et guides",
-      "title": "Analysen zu einzelnen Parks, mit Zahlen von heute",
+      "title": "Des analyses parc par parc, avec les chiffres du jour",
       "lead": "Guides de parcs, analyses des temps d’attente et conseils de saison, écrits par des gens qui font la queue eux-mêmes. Chaque page de parc porte les articles qui la concernent.",
       "bestTimeTitle": "Meilleure période pour visiter un parc",
       "bestTimeText": "Quand les parcs sont les plus vides : les jours et les mois les plus calmes, tirés de deux ans de temps d’attente réels sur plus de 200 parcs.",
