@@ -434,20 +434,20 @@ feature.
 
 ### What the twelve stated requirements got
 
-| # | Requirement | State |
-|---|---|---|
-| 1 | Blocks in a time grid, height = duration | done — height is the queue; ride duration deliberately excluded, see below |
-| 2 | Not draggable earlier than the ride opens | done — hard floor at the park's opening, soft advisory floor at the first measured hour |
-| 3 | Opening hours marked in the background | done — five layers, truncation feather, rush strip |
-| 4 | "ein park Outlook" | done |
-| 5 | Always park timezone | done — `lib/planner/park-time.ts`, all three `todayLocal()` copies gone |
-| 6 | Shows as lines with their time | done for today; structurally impossible for any other date until the backend has a forward schedule |
-| 7 | Luftlinie between consecutive rides | done — on the leg and on the lower block |
-| 8 | Transfer knapp / gut / großzügig | done — floor/ceiling asymmetry, boundary at the model's own spread |
-| 9 | Live re-correction + now line | done — 45-minute window, no ratio-scaling of the later curve |
-| 10 | Warn: down all day yesterday | done — `downYesterday` from `queue_data`, today and tomorrow only |
-| 11 | Warn: reports closed | done — status directly, never the absence of a queue |
-| 12 | Show the photo where there is one | done — resolved in the proxy route, never in the client |
+| #   | Requirement                               | State                                                                                               |
+| --- | ----------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| 1   | Blocks in a time grid, height = duration  | done — height is the queue; ride duration deliberately excluded, see below                          |
+| 2   | Not draggable earlier than the ride opens | done — hard floor at the park's opening, soft advisory floor at the first measured hour             |
+| 3   | Opening hours marked in the background    | done — five layers, truncation feather, rush strip                                                  |
+| 4   | "ein park Outlook"                        | done                                                                                                |
+| 5   | Always park timezone                      | done — `lib/planner/park-time.ts`, all three `todayLocal()` copies gone                             |
+| 6   | Shows as lines with their time            | done for today; structurally impossible for any other date until the backend has a forward schedule |
+| 7   | Luftlinie between consecutive rides       | done — on the leg and on the lower block                                                            |
+| 8   | Transfer knapp / gut / großzügig          | done — floor/ceiling asymmetry, boundary at the model's own spread                                  |
+| 9   | Live re-correction + now line             | done — 45-minute window, no ratio-scaling of the later curve                                        |
+| 10  | Warn: down all day yesterday              | done — `downYesterday` from `queue_data`, today and tomorrow only                                   |
+| 11  | Warn: reports closed                      | done — status directly, never the absence of a queue                                                |
+| 12  | Show the photo where there is one         | done — resolved in the proxy route, never in the client                                             |
 
 **Ride duration is not in the block's height**, and that is a decision rather than an
 omission: the curated `durationSeconds` covers 22 of 173 rides across three parks and its
