@@ -1954,6 +1954,10 @@
     "shows": {
       "notKnownYet": "Vorstellungszeiten stehen erst am Tag selbst fest.",
       "none": "Heute keine Vorstellungen."
+    },
+    "warn": {
+      "closedNow": "Meldet gerade geschlossen.",
+      "downYesterday": "War gestern den ganzen Tag außer Betrieb."
     }
   }
 }

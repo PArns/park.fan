@@ -359,7 +359,22 @@ export async function GET(
         );
       }
 
-      return NextResponse.json(data, {
+      // The ride's photo, resolved HERE and not in the client. The media
+      // database is a 107 KB filesystem catalogue that `@/lib/media` pulls in
+      // whole, and the planner is a Client Component mounted in every page's
+      // layout — importing it there would ship the catalogue to every visitor.
+      // The same helper the park payload already uses does it server-side, with
+      // the content-hash query the focal-point editor depends on and the
+      // `object-position` a curated focal point resolves to.
+      const withImages = enrichAttractionsWithImages(
+        data.rides.map((ride) => ({ ...ride, slug: ride.attractionSlug, park: { slug: park } }))
+      );
+      const enriched = {
+        ...data,
+        rides: withImages.map(({ slug: _slug, park: _park, ...ride }) => ride),
+      };
+
+      return NextResponse.json(enriched, {
         headers: cdnCacheHeaders('public, s-maxage=900, stale-while-revalidate=1800'),
       });
     } catch (error) {

@@ -2001,6 +2001,23 @@ export interface PlanDayRide {
    */
   latitude?: number | null;
   longitude?: number | null;
+  /**
+   * The ride's photo, added by the proxy route rather than by the API: the media
+   * database is a filesystem catalogue in this repo, not something api.park.fan
+   * knows about. Carries the content hash as a query, because retargeting a
+   * focal point rewrites a crop's bytes at an unchanged URL.
+   */
+  backgroundImage?: string | null;
+  /** `object-position` from the image's curated focal point. */
+  backgroundPosition?: string;
+  /**
+   * The ride was observed all through the previous operating day and was never
+   * OPERATING in any of it — down for the whole day rather than unobserved. A
+   * ride with no observations at all is silence and is not reported here.
+   * Absent past tomorrow: yesterday's downtime says nothing a visitor can act on
+   * for a Tuesday in November.
+   */
+  downYesterday?: boolean;
 }
 
 export interface PlanDayContext {

@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { AlertTriangle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   CROWD_DOT_CLASS,
@@ -33,6 +34,12 @@ interface PlannerBlockProps {
   showBandFigure: boolean;
   /** A live standby reading replacing the forecast, when one applies. */
   live?: boolean;
+  /** The ride's photo, resolved server-side. */
+  photo?: { src: string; position: string } | null;
+  /** The ride is reporting closed right now. Only ever set for today. */
+  closedNow?: boolean;
+  /** The ride was down all of the previous operating day. */
+  downYesterday?: boolean;
   selected?: boolean;
   dragging?: boolean;
   conflict?: boolean;
@@ -70,6 +77,9 @@ export function PlannerBlock({
   metresFromPrevious,
   showBandFigure,
   live = false,
+  photo = null,
+  closedNow = false,
+  downYesterday = false,
   selected = false,
   dragging = false,
   conflict = false,
@@ -175,6 +185,25 @@ export function PlannerBlock({
           lane.column > 0 && 'ring-background ring-1'
         )}
       >
+        {/* The ride's photo, behind everything, and only where there is enough
+            block to see any of it — under 48 px it is a smear behind text and
+            costs a request for nothing. Heavily dimmed: this is a data surface
+            and the tint carries the queue, so the picture is recognition rather
+            than decoration. `background-image` and not `next/image`, because a
+            block is 130–400 px wide, its size changes with the plan, and the
+            crop is already the right one. */}
+        {photo && boxPx >= 48 && (
+          <div
+            className="absolute inset-0 opacity-[0.18]"
+            style={{
+              backgroundImage: `url(${photo.src})`,
+              backgroundSize: 'cover',
+              backgroundPosition: photo.position,
+            }}
+            aria-hidden="true"
+          />
+        )}
+
         {/* The fill, masked by the tier. Separate from the box so the box can be
             taller without the ink claiming the extra pixels. */}
         {hasFigure && tone && !done && (
@@ -252,6 +281,15 @@ export function PlannerBlock({
                 >
                   {entry.attractionName}
                 </span>
+                {(closedNow || downYesterday) && (
+                  <AlertTriangle
+                    className={cn(
+                      'size-3 shrink-0',
+                      closedNow ? 'text-destructive' : 'text-crowd-high'
+                    )}
+                    aria-label={closedNow ? t('warn.closedNow') : t('warn.downYesterday')}
+                  />
+                )}
                 {hasFigure && (
                   <span
                     data-figure=""
@@ -295,6 +333,19 @@ export function PlannerBlock({
 
           {!hasFigure && missingLabel && boxPx >= 30 && (
             <p className="text-muted-foreground truncate text-[10px]">{missingLabel}</p>
+          )}
+
+          {/* The reason, spelled out where there is room. The icon above carries
+              it on a short block; this is the same statement at full length. */}
+          {(closedNow || downYesterday) && boxPx >= 48 && (
+            <p
+              className={cn(
+                'truncate text-[10px]',
+                closedNow ? 'text-destructive' : 'text-crowd-high'
+              )}
+            >
+              {closedNow ? t('warn.closedNow') : t('warn.downYesterday')}
+            </p>
           )}
         </div>
       </div>

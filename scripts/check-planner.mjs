@@ -500,6 +500,9 @@ if (reachable) {
             sampleDays: 410,
             latitude: 50.7996,
             longitude: 6.8797,
+            backgroundImage: '/media/phantasialand/taron.jpg?v=test',
+            backgroundPosition: '50% 30%',
+            downYesterday: true,
           },
           {
             attractionSlug: 'fly',
@@ -563,6 +566,28 @@ if (reachable) {
       boxes.every((b) => b.height === 20 || Math.abs((b.height / 1.2) % 5) < 0.01),
       boxes.map((b) => Math.round(b.height)).join(', ')
     );
+
+    // The warning a ride carries when it was down all of yesterday, and the
+    // photo. BOTH are asserted here, before the keyboard test moves the block
+    // to a quieter hour: at 09:45 the queue is 30 minutes, the block is 36 px,
+    // and under 48 px neither is drawn — deliberately, because a picture behind
+    // two lines of text is a smear and a sentence has nowhere to go.
+    const warned = await grid.locator('li[data-planner-block]').first().textContent();
+    check(
+      'gestern ganztägig ausgefallen wird gewarnt',
+      /außer Betrieb/.test(warned ?? ''),
+      (warned ?? '').slice(0, 60)
+    );
+
+    // The photo, resolved by the proxy route rather than shipped as a 107 KB
+    // catalogue to every visitor.
+    const hasPhoto = await grid.evaluate(() => {
+      const block = document.querySelector('li[data-planner-block]');
+      return [...(block?.querySelectorAll('div') ?? [])].some((el) =>
+        el.style.backgroundImage.includes('taron.jpg')
+      );
+    });
+    check('das Bild der Bahn liegt im Block', hasPhoto);
 
     // The legs between them, with a verdict each.
     const legs = await grid

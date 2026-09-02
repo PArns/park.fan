@@ -17,7 +17,7 @@ import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { formatShortDuration } from '@/lib/utils/duration';
 import { buildDayGrid } from '@/lib/planner/day-grid';
 import { parkToday } from '@/lib/planner/park-time';
-import { liveWaitsFor, showLinesFor } from '@/lib/planner/live';
+import { closedNowFor, liveWaitsFor, showLinesFor } from '@/lib/planner/live';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import { PlannerShowBand } from './planner-show-band';
 import { PlannerGridActions } from './planner-grid-actions';
@@ -119,6 +119,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   });
 
   const liveWaits = liveWaitsFor(livePark);
+  const closedNow = closedNowFor(livePark);
   // `null` where the date cannot have showtimes at all. The API rewrites any
   // non-today date onto today and its source is an observation table with no
   // forward schedule, so sixty of the sixty-one dates the picker offers are
@@ -228,6 +229,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                     isToday={isToday}
                     liveWaits={liveWaits}
                     showLines={showLines}
+                  closedNow={closedNow}
                     loading={dayState === 'loading'}
                     selectedId={selectedId}
                     scrollerRef={scrollerRef}
