@@ -33,15 +33,16 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
           <section className="space-y-4 md:col-span-2">
             <Link
               href="/"
-              /* `gap-2.5`, not `gap-1.5`: the wordmark used to bring ~3.5 px of empty
-                 artwork along on its left (h-8) and ~5.25 px at `md:h-12`. `parkfan.svg` is
-                 cropped to its ink now, so the spacing is in the class. */
-              className="inline-flex items-center gap-2.5 md:gap-3"
+              /* Both halves are ink-tight artwork now, so the whole gap is in the class.
+                 It used to be `gap-1.5` plus what the two files carried: ~3.5/5.25 px of empty
+                 wordmark on its left, ~1.1/1.7 px of empty pin on its right. Optically 11.1 px
+                 and 13.7 px, which is what these two round up to. */
+              className="inline-flex items-center gap-3 md:gap-3.5"
               aria-label={`park.fan - ${locale === 'de' ? 'Startseite' : 'Home'}`}
             >
               <Image
                 src="/logo.svg"
-                width={27}
+                width={26}
                 height={32}
                 alt="park.fan"
                 className="h-8 w-auto shrink-0 md:h-12 dark:hidden"
@@ -49,7 +50,7 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
               />
               <Image
                 src="/logo-dark.svg"
-                width={27}
+                width={26}
                 height={32}
                 alt="park.fan"
                 className="hidden h-8 w-auto shrink-0 md:h-12 dark:block"
