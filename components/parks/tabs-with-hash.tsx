@@ -85,11 +85,17 @@ export const TabsWithHash = memo(function TabsWithHash({
     isSearching,
     filteredAttractionsByLand,
     hasSearchResults,
-    heightRange,
+    heightStops,
     riderHeight,
     setRiderHeight,
     totalAttractionCount,
     rideableAttractionCount,
+    onlyOpen,
+    setOnlyOpen,
+    onlyWet,
+    setOnlyWet,
+    openAttractionCount,
+    wetAttractionCount,
     headliners,
     offSeasonAttractionCount,
     showOffSeasonAttractions,
@@ -102,6 +108,7 @@ export const TabsWithHash = memo(function TabsWithHash({
     attractionsByLand,
     shows: park.shows,
     activeTab,
+    parkStatus: park.status,
   });
 
   // INP: a tab tap used to mount the ENTIRE incoming panel in the same commit that moved the
@@ -159,11 +166,17 @@ export const TabsWithHash = memo(function TabsWithHash({
               offSeasonCount={offSeasonAttractionCount}
               showOffSeason={showOffSeasonAttractions}
               onToggleOffSeason={() => setShowOffSeasonAttractions((v) => !v)}
-              heightRange={heightRange}
+              heightStops={heightStops}
               riderHeight={riderHeight}
               onRiderHeightChange={setRiderHeight}
               rideableCount={rideableAttractionCount}
               totalCount={totalAttractionCount}
+              openCount={openAttractionCount}
+              onlyOpen={onlyOpen}
+              onToggleOnlyOpen={() => setOnlyOpen((v) => !v)}
+              wetCount={wetAttractionCount}
+              onlyWet={onlyWet}
+              onToggleOnlyWet={() => setOnlyWet((v) => !v)}
             />
             <AttractionWaitOverview
               park={park}
@@ -216,11 +229,17 @@ export const TabsWithHash = memo(function TabsWithHash({
             offSeasonCount={offSeasonAttractionCount}
             showOffSeason={showOffSeasonAttractions}
             onToggleOffSeason={() => setShowOffSeasonAttractions((v) => !v)}
-            heightRange={heightRange}
+            heightStops={heightStops}
             riderHeight={riderHeight}
             onRiderHeightChange={setRiderHeight}
             rideableCount={rideableAttractionCount}
             totalCount={totalAttractionCount}
+            openCount={openAttractionCount}
+            onlyOpen={onlyOpen}
+            onToggleOnlyOpen={() => setOnlyOpen((v) => !v)}
+            wetCount={wetAttractionCount}
+            onlyWet={onlyWet}
+            onToggleOnlyWet={() => setOnlyWet((v) => !v)}
           />
 
           {/* Attractions grouped by Land */}
@@ -288,16 +307,32 @@ export const TabsWithHash = memo(function TabsWithHash({
                   <div className="flex justify-center pt-14">
                     <div className="border-border/50 bg-background/60 inline-flex flex-col items-center rounded-xl border px-10 py-8 shadow-md backdrop-blur-md dark:bg-[oklch(0.12_0.025_241_/_0.55)]">
                       <p className="text-muted-foreground">{t('noAttractionsFound')}</p>
-                      {/* Two filters can empty this grid and only one of them is obviously
+                      {/* Four filters can empty this grid and only one of them is obviously
                           to blame: a search box you just typed into is right there, a rider
-                          height set three scrolls ago is not. So the height filter names
-                          itself here whenever it is on. */}
+                          height or a switch set three scrolls ago is not. So each of them
+                          offers its own way out here whenever it is on. */}
                       {riderHeight !== null && (
                         <button
                           className="text-primary mt-2 text-sm underline hover:no-underline"
                           onClick={() => setRiderHeight(null)}
                         >
                           {t('heightFilter.reset')}
+                        </button>
+                      )}
+                      {onlyOpen && (
+                        <button
+                          className="text-primary mt-2 text-sm underline hover:no-underline"
+                          onClick={() => setOnlyOpen(false)}
+                        >
+                          {t('filterSection.resetOpenNow')}
+                        </button>
+                      )}
+                      {onlyWet && (
+                        <button
+                          className="text-primary mt-2 text-sm underline hover:no-underline"
+                          onClick={() => setOnlyWet(false)}
+                        >
+                          {t('filterSection.resetWetOnly')}
                         </button>
                       )}
                       {isSearching && (

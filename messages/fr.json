@@ -630,7 +630,11 @@
       "title": "Affiner les attractions",
       "hint": "N'affiche que ce qui correspond à votre choix.",
       "searchLabel": "Recherche",
-      "seasonLabel": "Saison"
+      "showLabel": "Afficher",
+      "openNow": "Ouvert",
+      "wetOnly": "Mouillé",
+      "resetOpenNow": "Afficher aussi les attractions fermées",
+      "resetWetOnly": "Afficher aussi les attractions sèches"
     },
     "heightFilter": {
       "label": "Taille du visiteur",

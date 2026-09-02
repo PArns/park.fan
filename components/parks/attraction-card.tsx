@@ -10,7 +10,6 @@ import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import type {
   ParkAttraction,
-  AttractionStatus,
   ParkStatus,
   BestVisitSlot,
   RopeDropInfo,
@@ -22,6 +21,7 @@ import { AttractionCardRopeDrop } from '@/components/parks/attraction-card-rope-
 import { Skeleton } from '@/components/ui/skeleton';
 import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { isEveningBetter, troughWait } from '@/lib/utils/rope-drop';
+import { getLiveAttractionStatus } from '@/lib/utils/park-utils';
 import { ParkStatusBadge } from './park-status-badge';
 import { CrowdLevelBadge } from './crowd-level-badge';
 import { RopeDropBadge, RopeDropEveningBadge } from './rope-drop-badge';
@@ -56,28 +56,6 @@ function getWaitTime(attraction: ParkAttraction | FavoriteAttraction): number | 
   const standby = attraction.queues?.find((q) => q.queueType === 'STANDBY');
   if (!standby) return null;
   return 'waitTime' in standby ? (standby.waitTime ?? null) : null;
-}
-
-function getStatus(
-  attraction: ParkAttraction | FavoriteAttraction,
-  parkStatus?: ParkStatus
-): AttractionStatus | 'UNKNOWN' {
-  if (parkStatus === 'UNKNOWN') return 'UNKNOWN';
-  if (parkStatus && parkStatus !== 'OPERATING') return 'CLOSED';
-  // Park-aware status from the API — the only source that knows the park has
-  // closed. Queue rows keep their last value when a source stops publishing at
-  // closing time, so they would still read OPERATING hours later. Cards without
-  // a `parkStatus` prop (favorites) depend on this.
-  if ('effectiveStatus' in attraction && attraction.effectiveStatus) {
-    return attraction.effectiveStatus as AttractionStatus;
-  }
-  const standby = attraction.queues?.find((q) => q.queueType === 'STANDBY');
-  if (standby && 'status' in standby) {
-    return (
-      (standby.status as AttractionStatus) ?? (attraction.status as AttractionStatus) ?? 'CLOSED'
-    );
-  }
-  return (attraction.status as AttractionStatus) ?? 'CLOSED';
 }
 
 function getCrowdLevel(attraction: ParkAttraction | FavoriteAttraction): string | undefined {
@@ -130,7 +108,7 @@ export function AttractionCard({
   const t = useTranslations('attractions');
   const tGeo = useTranslations('geo');
 
-  const status = getStatus(attraction, parkStatus);
+  const status = getLiveAttractionStatus(attraction, parkStatus);
   const isOperatingOrUnknown = status === 'OPERATING' || status === 'UNKNOWN';
   const waitTime = isOperatingOrUnknown ? getWaitTime(attraction) : null;
   const effectiveTimezone =

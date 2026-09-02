@@ -630,7 +630,11 @@
       "title": "Narrow down the attractions",
       "hint": "Shows only what matches your choices.",
       "searchLabel": "Search",
-      "seasonLabel": "Season"
+      "showLabel": "Show",
+      "openNow": "Open",
+      "wetOnly": "Gets you wet",
+      "resetOpenNow": "Show closed attractions too",
+      "resetWetOnly": "Show dry attractions too"
     },
     "heightFilter": {
       "label": "Rider height",

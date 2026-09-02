@@ -863,7 +863,11 @@
       "title": "Attraktionen eingrenzen",
       "hint": "Zeigt nur, was zu deiner Auswahl passt.",
       "searchLabel": "Suche",
-      "seasonLabel": "Saison"
+      "showLabel": "Anzeigen",
+      "openNow": "Geöffnet",
+      "wetOnly": "Nässegefahr",
+      "resetOpenNow": "Auch geschlossene Attraktionen zeigen",
+      "resetWetOnly": "Auch trockene Attraktionen zeigen"
     },
     "heightFilter": {
       "label": "Körpergröße",

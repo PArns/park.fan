@@ -2,9 +2,10 @@
 
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
 import Fuse from 'fuse.js';
-import type { ParkAttraction, ParkShow } from '@/lib/api/types';
+import type { ParkAttraction, ParkShow, ParkStatus } from '@/lib/api/types';
 import { isInSeason } from '@/lib/utils/season';
-import { canRideAtHeight, riderHeightRange } from '@/lib/utils/rider-height';
+import { getLiveAttractionStatus } from '@/lib/utils/park-utils';
+import { canRideAtHeight, riderHeightStops } from '@/lib/utils/rider-height';
 
 /**
  * Shortest pattern Fuse can match, and therefore the shortest query worth running.
@@ -20,28 +21,52 @@ interface UseAttractionFilterOptions {
   shows: ParkShow[] | undefined;
   /** Currently active tab — the type-to-focus shortcut only applies on 'attractions'. */
   activeTab: string;
+  /** The park's own live status — a shut park closes every ride in it. */
+  parkStatus?: ParkStatus;
 }
 
 /**
- * Search, rider-height and seasonal filtering for the park page's attractions and shows
- * tabs: Fuse fuzzy search over all attractions, the rider-height filter (bounds derived
- * from the park's own limits), off-season hiding (attractions + shows, with counts for
- * the "N off season" toggles), the wait-time-sorted headliners section, and the global
- * keyboard wiring for the search input (Escape clears, typing focuses).
+ * Whether a ride counts as open for the "open now" toggle.
  *
- * The three filters compose in one order and it is the order they are declared in:
- * height, then season, then search — each reading the previous one's output, so the
- * headliner row, the land grid and the panel's counts can never disagree.
+ * Strictly OPERATING, and UNKNOWN is not it. The card renders a wait time for an
+ * UNKNOWN ride and its badge says "Unbekannt", which is the honest reading of a
+ * feed that has not spoken: a filter promising "open" must not answer with rides
+ * nobody has heard from. Fifty of Europa-Park's ninety-six sit there before the
+ * gates open.
+ */
+const isOpenNow = (attraction: ParkAttraction, parkStatus?: ParkStatus): boolean =>
+  getLiveAttractionStatus(attraction, parkStatus) === 'OPERATING';
+
+/** Whether a ride is one you may get off wet. Absent/null is unknown, never "dry". */
+const mayGetWet = (attraction: ParkAttraction): boolean => attraction.mayGetWet === true;
+
+/**
+ * Search, rider-height, live-status, wet-ride and seasonal filtering for the park page's
+ * attractions and shows tabs: Fuse fuzzy search over all attractions, the rider-height
+ * filter (stops derived from the park's own limits), the "open now" and "you may get wet"
+ * toggles, off-season hiding (attractions + shows, with counts for the "N off season"
+ * toggles), the wait-time-sorted headliners section, and the global keyboard wiring for
+ * the search input (Escape clears, typing focuses).
+ *
+ * The filters compose in one order and it is the order they are declared in: height,
+ * then "open now"/"you may get wet", then season, then search — each reading the
+ * previous one's output, so the headliner row, the land grid and the panel's counts
+ * can never disagree.
  */
 export function useAttractionFilter({
   attractionsByLand,
   shows,
   activeTab,
+  parkStatus,
 }: UseAttractionFilterOptions) {
   const [searchQuery, setSearchQuery] = useState('');
   /** Rider height in cm, or `null` while the height filter is off. */
   const [riderHeight, setRiderHeight] = useState<number | null>(null);
   const [showOffSeasonAttractions, setShowOffSeasonAttractions] = useState(false);
+  /** Show only rides that are OPERATING right now. */
+  const [onlyOpen, setOnlyOpen] = useState(false);
+  /** Show only rides that may leave a rider wet. */
+  const [onlyWet, setOnlyWet] = useState(false);
   const [showOffSeasonShows, setShowOffSeasonShows] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -97,7 +122,9 @@ export function useAttractionFilter({
         (a) =>
           a.isHeadliner &&
           (showOffSeasonAttractions || isInSeason(a)) &&
-          (riderHeight === null || canRideAtHeight(a, riderHeight))
+          (riderHeight === null || canRideAtHeight(a, riderHeight)) &&
+          (!onlyOpen || isOpenNow(a, parkStatus)) &&
+          (!onlyWet || mayGetWet(a))
       );
 
     // Pre-calculate wait times to avoid repeated find() calls in sort comparator (Schwartzian transform)
@@ -113,7 +140,7 @@ export function useAttractionFilter({
         return 0;
       })
       .map((item) => item.a);
-  }, [attractionsByLand, showOffSeasonAttractions, riderHeight]);
+  }, [attractionsByLand, showOffSeasonAttractions, riderHeight, onlyOpen, onlyWet, parkStatus]);
 
   // Reverse map: attraction id → land key as used in attractionsByLand (preserves translated fallback label)
   const attractionLandKey = useMemo(() => {
@@ -157,14 +184,34 @@ export function useAttractionFilter({
   );
 
   /**
-   * The slider's bounds and its tick marks, or `null` when this park publishes no
+   * The heights the slider may be set to, or `null` when this park publishes no
    * minimum height on any ride — which is the panel's signal to render no height
    * filter at all rather than an empty one. Roughly a third of the catalogue has
    * nothing on file here, and a control whose every position returns the same 40
    * rides is worse than no control.
    */
-  const heightRange = useMemo(
-    () => riderHeightRange(Object.values(attractionsByLand).flat()),
+  const heightStops = useMemo(
+    () => riderHeightStops(Object.values(attractionsByLand).flat()),
+    [attractionsByLand]
+  );
+
+  /**
+   * What the two narrowing toggles have to work with, counted over the whole park.
+   *
+   * They gate whether the toggles are RENDERED, which is the alternative to
+   * offering a switch whose only possible outcome is "no attractions found": most
+   * of the catalogue has never had `mayGetWet` written down (3 of Europa-Park's 96,
+   * 1 of Toverland's 45), and at 04:00 nothing anywhere is open.
+   */
+  const openAttractionCount = useMemo(
+    () =>
+      Object.values(attractionsByLand)
+        .flat()
+        .filter((a) => isOpenNow(a, parkStatus)).length,
+    [attractionsByLand, parkStatus]
+  );
+  const wetAttractionCount = useMemo(
+    () => Object.values(attractionsByLand).flat().filter(mayGetWet).length,
     [attractionsByLand]
   );
 
@@ -199,15 +246,36 @@ export function useAttractionFilter({
     [heightFilteredByLand]
   );
 
-  const inSeasonAttractionsByLand = useMemo(() => {
-    if (showOffSeasonAttractions || offSeasonAttractionCount === 0) return heightFilteredByLand;
+  /**
+   * "Open now" and "you may get wet", applied after the height and before the
+   * season — and, unlike the height, NOT applied while searching.
+   *
+   * Same split as the off-season toggle, for the same reason: both are ways of
+   * decluttering a park somebody is browsing, and neither is a statement about the
+   * person queuing. Typing "Black Mamba" is asking for one ride, and the answer to
+   * it is that ride, shut or dry; the card says "Geschlossen" on its own.
+   */
+  const narrowedByLand = useMemo(() => {
+    if (!onlyOpen && !onlyWet) return heightFilteredByLand;
     const result: Record<string, ParkAttraction[]> = {};
     for (const [land, attractions] of Object.entries(heightFilteredByLand)) {
+      const filtered = attractions.filter(
+        (a) => (!onlyOpen || isOpenNow(a, parkStatus)) && (!onlyWet || mayGetWet(a))
+      );
+      if (filtered.length > 0) result[land] = filtered;
+    }
+    return result;
+  }, [heightFilteredByLand, onlyOpen, onlyWet, parkStatus]);
+
+  const inSeasonAttractionsByLand = useMemo(() => {
+    if (showOffSeasonAttractions || offSeasonAttractionCount === 0) return narrowedByLand;
+    const result: Record<string, ParkAttraction[]> = {};
+    for (const [land, attractions] of Object.entries(narrowedByLand)) {
       const filtered = attractions.filter(isInSeason);
       if (filtered.length > 0) result[land] = filtered;
     }
     return result;
-  }, [heightFilteredByLand, showOffSeasonAttractions, offSeasonAttractionCount]);
+  }, [narrowedByLand, showOffSeasonAttractions, offSeasonAttractionCount]);
 
   const visibleShows = useMemo(() => {
     if (showOffSeasonShows || offSeasonShowCount === 0) return shows ?? [];
@@ -265,12 +333,19 @@ export function useAttractionFilter({
     filteredAttractionsByLand,
     hasSearchResults,
     // Rider height
-    /** Slider bounds + ticks, or `null` when the park publishes no minimum height at all. */
-    heightRange,
+    /** The heights the slider may take, or `null` when the park publishes no minimum at all. */
+    heightStops,
     riderHeight,
     setRiderHeight,
     totalAttractionCount,
     rideableAttractionCount,
+    // Narrowing toggles
+    onlyOpen,
+    setOnlyOpen,
+    onlyWet,
+    setOnlyWet,
+    openAttractionCount,
+    wetAttractionCount,
     // Attractions
     headliners,
     offSeasonAttractionCount,

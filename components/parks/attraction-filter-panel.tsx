@@ -2,13 +2,13 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Search, SlidersHorizontal } from 'lucide-react';
+import { DoorOpen, Droplets, Search, SlidersHorizontal } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { OffSeasonToggle } from '@/components/parks/off-season-toggle';
+import { FilterToggle } from '@/components/parks/filter-toggle';
 import { RiderHeightFilter } from '@/components/parks/rider-height-filter';
 import { TILE_GLASS } from '@/components/common/glass-card';
-import type { RiderHeightRange } from '@/lib/utils/rider-height';
 import { cn } from '@/lib/utils';
 
 interface AttractionFilterPanelProps {
@@ -21,19 +21,27 @@ interface AttractionFilterPanelProps {
   showOffSeason: boolean;
   onToggleOffSeason: () => void;
   /** `null` when the park publishes no minimum height — the height cell is then not rendered. */
-  heightRange: RiderHeightRange | null;
+  heightStops: number[] | null;
   riderHeight: number | null;
   onRiderHeightChange: (cm: number | null) => void;
   rideableCount: number;
   totalCount: number;
+  /** Rides OPERATING right now — 0 hides the toggle rather than offering an empty list. */
+  openCount: number;
+  onlyOpen: boolean;
+  onToggleOnlyOpen: () => void;
+  /** Rides with `mayGetWet` — 0 hides the toggle; most of the catalogue has none on file. */
+  wetCount: number;
+  onlyWet: boolean;
+  onToggleOnlyWet: () => void;
 }
 
 /**
  * The hairline between two cells.
  *
- * Desktop only: below `md` the cells are a two-row grid rather than a row, and a rule
- * across a stack of captioned blocks is a line between things that are already apart.
- * The captions do that job there.
+ * Wide screens only: below `xl` the cells are a stacked grid rather than one row, and
+ * a rule across a stack of captioned blocks is a line between things that are already
+ * apart. The captions do that job there.
  */
 function CellDivider() {
   // `bg-foreground/…` rather than the `--border` token: in the dark theme that token is
@@ -43,13 +51,13 @@ function CellDivider() {
   return (
     <div
       aria-hidden="true"
-      className="bg-foreground/12 dark:bg-foreground/15 hidden w-px self-center md:block md:h-14"
+      className="bg-foreground/12 dark:bg-foreground/15 hidden w-px self-center xl:block xl:h-14"
     />
   );
 }
 
 /**
- * The attractions tab's filter panel: search, rider height, off season.
+ * The attractions tab's filter panel: search, rider height, and the switches.
  *
  * These were three controls loose on the page — the search box was
  * `md:absolute md:top-0 md:right-0` inside the grid, so on a desktop it floated
@@ -58,12 +66,20 @@ function CellDivider() {
  * flex row. Nothing said they were one set of controls over one list, and there was
  * nowhere to put a third.
  *
- * **Three cells, each labelled, each 60 px, separated by a hairline.** The height
- * filter needs three lines (its own value, the track, the scale) and the other two
- * are one control tall, so an uncaptioned row put a 36 px box next to a 60 px block
- * and the toggle ended up floating in the middle of the difference. A caption over
- * each cell costs the row 24 px once and buys three controls that start on the same
- * line, end on the same line, and each say what they are.
+ * **Three cells, each labelled, separated by a hairline.** The height filter needs
+ * three lines (its own value, the track, the scale) and the other two are one control
+ * tall, so an uncaptioned row put a 36 px box next to a 60 px block and the toggle
+ * ended up floating in the middle of the difference. A caption over each cell costs
+ * the row 24 px once and buys controls that start on the same line, end on the same
+ * line, and each say what they are.
+ *
+ * The third cell holds **all** the switches, and that is why the row breaks where it
+ * does. It used to hold one, at ~130 px; "geöffnet" and "Nässegefahr" beside it make
+ * ~360 px in German, and 220 + 280 + 360 plus dividers and gaps is 925 px of content
+ * that used to be asked to fit a 672 px `md` container. So the single row starts at
+ * `xl`, `md` puts search and switches on one line with the track under them, and a
+ * phone stacks all three — the track cannot share a line with anything at any width,
+ * because it is a track and a track needs its width.
  *
  * They sit **left**, in their own widths, rather than stretching: a 1200 px search
  * box is not a better search box, and the height filter pushed to the far right of a
@@ -81,12 +97,13 @@ function CellDivider() {
  * **Its height is the ride list's top edge**, so every row inside is fixed — `h-6`
  * for the captions, `h-9` for the controls (the input scale from
  * `components/ui/button.tsx`), `h-5`/`h-4` for the slider's track and scale — and
- * nothing inside appears or disappears as a visitor types or drags. Two things do
- * change the box, and both are the same on either side of hydration: whether the park
- * publishes rider limits at all, which is known on the server, and the breakpoint.
- * Which is why the pre-mount branch of `TabsWithHash` renders this same component
- * rather than a spacer shaped like it — a placeholder would have to write both
- * numbers down a second time, and be wrong about one of them.
+ * nothing inside appears or disappears as a visitor types or drags. What does change
+ * the box is which switches the park earns and the breakpoint, and both are the same
+ * on either side of hydration — the counts that gate the switches come off the same
+ * payload the server rendered. Which is why the pre-mount branch of `TabsWithHash`
+ * renders this same component rather than a spacer shaped like it: a placeholder
+ * would have to write every one of those numbers down a second time, and be wrong
+ * about one of them.
  */
 export function AttractionFilterPanel({
   inputRef,
@@ -96,14 +113,28 @@ export function AttractionFilterPanel({
   offSeasonCount,
   showOffSeason,
   onToggleOffSeason,
-  heightRange,
+  heightStops,
   riderHeight,
   onRiderHeightChange,
   rideableCount,
   totalCount,
+  openCount,
+  onlyOpen,
+  onToggleOnlyOpen,
+  wetCount,
+  onlyWet,
+  onToggleOnlyWet,
 }: AttractionFilterPanelProps) {
   const t = useTranslations('parks');
   const [isFocused, setIsFocused] = useState(false);
+
+  // A switch stays on screen while it is ON even once its count drops to zero: the
+  // "open now" one loses its rides the moment the park shuts, and a control vanishing
+  // out from under the filter it is still applying leaves a visitor with a short list
+  // and nothing to undo it with.
+  const showOpen = openCount > 0 || onlyOpen;
+  const showWet = wetCount > 0 || onlyWet;
+  const hasToggles = showOpen || showWet || offSeasonCount > 0;
 
   return (
     <div className={cn('border-border/50 mb-4 rounded-xl border p-3 shadow-sm sm:p-4', TILE_GLASS)}>
@@ -115,13 +146,8 @@ export function AttractionFilterPanel({
         className="mb-3 gap-3 pb-3 sm:gap-3"
       />
 
-      {/* Two rows on a phone rather than three, and the season toggle is what moves: it
-          is 140 px of a 358 px panel, so parking it under a full-width search box spent
-          a phone's first screen on the white space beside it. The height filter cannot
-          share a row with anything — it is a track, and a track needs its width. From
-          `md` up all three sit in one flex row and the grid placement is inert. */}
-      <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-3 md:flex md:items-center md:gap-4">
-        <div className="col-start-1 row-start-1 md:w-[220px] lg:w-[260px]">
+      <div className="grid gap-x-4 gap-y-3 md:grid-cols-[minmax(0,1fr)_auto] md:items-start xl:flex xl:items-center xl:gap-4">
+        <div className="md:col-start-1 md:row-start-1 xl:w-[220px]">
           <p className="text-muted-foreground flex h-6 items-center text-xs font-medium">
             {t('filterSection.searchLabel')}
           </p>
@@ -131,7 +157,10 @@ export function AttractionFilterPanel({
               ref={inputRef}
               placeholder={t('searchAttractions')}
               className={cn(
-                'border-primary/20 hover:border-primary/40 focus-visible:border-primary/60 w-full bg-transparent pl-9 shadow-none transition-colors dark:bg-transparent',
+                // `Input` is a flat `h-9` with no phone tier of its own; this panel stacks
+                // below `sm`, so the row it would have to stay level with is not there and
+                // it can take the 44 px the switches beside it take.
+                'border-primary/20 hover:border-primary/40 focus-visible:border-primary/60 w-full bg-transparent pl-9 shadow-none transition-colors max-sm:h-11 dark:bg-transparent',
                 isFocused && searchQuery ? 'pr-16' : 'pr-4'
               )}
               value={searchQuery}
@@ -149,12 +178,12 @@ export function AttractionFilterPanel({
           </div>
         </div>
 
-        {heightRange && (
+        {heightStops && (
           <>
             <CellDivider />
             <RiderHeightFilter
-              className="col-span-2 row-start-2 md:w-[280px] lg:w-[320px]"
-              range={heightRange}
+              className="md:col-span-2 md:row-start-2 xl:w-[280px]"
+              stops={heightStops}
               value={riderHeight}
               onChange={onRiderHeightChange}
               rideableCount={rideableCount}
@@ -163,23 +192,43 @@ export function AttractionFilterPanel({
           </>
         )}
 
-        {offSeasonCount > 0 && (
+        {hasToggles && (
           <>
             <CellDivider />
-            <div className="col-start-2 row-start-1 md:shrink-0">
+            <div className="md:col-start-2 md:row-start-1 xl:shrink-0">
               <p className="text-muted-foreground flex h-6 items-center text-xs font-medium">
-                {t('filterSection.seasonLabel')}
+                {t('filterSection.showLabel')}
               </p>
-              {/* `invisible` rather than unmounted: the search reaches past the season, so
-                  while it runs this governs nothing — and a control that came and went as
-                  somebody types would move the whole list under it. */}
-              <div className={cn(isSearching && 'invisible')}>
-                <OffSeasonToggle
-                  size="md"
-                  count={offSeasonCount}
-                  shown={showOffSeason}
-                  onToggle={onToggleOffSeason}
-                />
+              {/* `invisible` rather than unmounted: the search reaches past all three of
+                  these, so while it runs they govern nothing — and controls that came and
+                  went as somebody types would move the whole list under them. */}
+              <div className={cn('flex flex-wrap items-center gap-2', isSearching && 'invisible')}>
+                {showOpen && (
+                  <FilterToggle
+                    size="md"
+                    icon={DoorOpen}
+                    label={t('filterSection.openNow')}
+                    pressed={onlyOpen}
+                    onToggle={onToggleOnlyOpen}
+                  />
+                )}
+                {showWet && (
+                  <FilterToggle
+                    size="md"
+                    icon={Droplets}
+                    label={t('filterSection.wetOnly')}
+                    pressed={onlyWet}
+                    onToggle={onToggleOnlyWet}
+                  />
+                )}
+                {offSeasonCount > 0 && (
+                  <OffSeasonToggle
+                    size="md"
+                    count={offSeasonCount}
+                    shown={showOffSeason}
+                    onToggle={onToggleOffSeason}
+                  />
+                )}
               </div>
             </div>
           </>

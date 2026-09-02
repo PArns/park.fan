@@ -630,7 +630,11 @@
       "title": "Restringi le attrazioni",
       "hint": "Mostra solo ciò che corrisponde alla tua scelta.",
       "searchLabel": "Ricerca",
-      "seasonLabel": "Stagione"
+      "showLabel": "Mostra",
+      "openNow": "Aperto",
+      "wetOnly": "Ti bagni",
+      "resetOpenNow": "Mostra anche le attrazioni chiuse",
+      "resetWetOnly": "Mostra anche le attrazioni asciutte"
     },
     "heightFilter": {
       "label": "Altezza",

@@ -1,4 +1,5 @@
 import type { AttractionStatus, ParkAttraction, ParkStatus } from '@/lib/api/types';
+import type { FavoriteAttraction } from '@/lib/api/favorites';
 
 /**
  * Effective display status of an attraction: when the whole park is not operating every
@@ -15,6 +16,40 @@ export function getAttractionDisplayStatus(
   }
   const standbyQueue = attraction.queues?.find((q) => q.queueType === 'STANDBY');
   return standbyQueue?.status ?? attraction.status ?? 'CLOSED';
+}
+
+/**
+ * The status a visitor is shown for one attraction, from the live payload.
+ *
+ * Sharper than {@link getAttractionDisplayStatus} and not a replacement for it: this
+ * one prefers the API's `effectiveStatus`, the only source that knows the park has
+ * shut and that a ride is out of season, and it reports `UNKNOWN` rather than
+ * flattening it to CLOSED. Queue rows keep their last value when a source stops
+ * publishing at closing time, so reading them alone still says OPERATING hours later.
+ *
+ * It lived inside `attraction-card.tsx` as a private `getStatus`, which was fine
+ * while the card was the only surface asking. The filter panel's "open only" toggle
+ * is the second, and a filter that hid a card the card itself calls open would be
+ * the same class of disagreement the wait-time overview once had with the counter
+ * above it.
+ */
+export function getLiveAttractionStatus(
+  attraction: ParkAttraction | FavoriteAttraction,
+  parkStatus?: ParkStatus
+): AttractionStatus | 'UNKNOWN' {
+  if (parkStatus === 'UNKNOWN') return 'UNKNOWN';
+  if (parkStatus && parkStatus !== 'OPERATING') return 'CLOSED';
+  // Cards without a `parkStatus` prop (favorites) depend on this.
+  if ('effectiveStatus' in attraction && attraction.effectiveStatus) {
+    return attraction.effectiveStatus as AttractionStatus;
+  }
+  const standby = attraction.queues?.find((q) => q.queueType === 'STANDBY');
+  if (standby && 'status' in standby) {
+    return (
+      (standby.status as AttractionStatus) ?? (attraction.status as AttractionStatus) ?? 'CLOSED'
+    );
+  }
+  return (attraction.status as AttractionStatus) ?? 'CLOSED';
 }
 
 /**

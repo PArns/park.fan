@@ -630,7 +630,11 @@
       "title": "Attracties verfijnen",
       "hint": "Toont alleen wat bij je keuze past.",
       "searchLabel": "Zoeken",
-      "seasonLabel": "Seizoen"
+      "showLabel": "Tonen",
+      "openNow": "Open",
+      "wetOnly": "Nat worden",
+      "resetOpenNow": "Ook gesloten attracties tonen",
+      "resetWetOnly": "Ook droge attracties tonen"
     },
     "heightFilter": {
       "label": "Lichaamslengte",
