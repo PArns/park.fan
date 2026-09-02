@@ -62,6 +62,7 @@ the media database replaced both; see [media database](../features/media-databas
 | `pnpm format`                  | Format with Prettier                      |
 | `pnpm format:check`            | Check formatting                          |
 | `pnpm validate:translations`   | Validate translation keys                 |
+| `pnpm check:untranslated`      | Find German left in the other locales     |
 | `pnpm crawl:translations`      | Translation crawler (static)              |
 | `pnpm crawl:translations:live` | Translation crawler (live server)         |
 | `pnpm impeccable:detect`       | Design anti-pattern detector              |

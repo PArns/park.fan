@@ -54,6 +54,7 @@ compiles. Details: [homepage hero](../features/homepage-hero.md#the-map-data-is-
 | `generate-route-namespaces.mjs` | Derives which namespaces each route ships (committed output)                    |
 | `generate-message-chunks.mjs`   | Per-locale chunks for namespaces a lazy boundary fetches (prebuild, gitignored) |
 | `check-client-messages.mjs`     | Fails on a stale map or a mis-wired route                                       |
+| `check-untranslated.mjs`        | Fails on German copied verbatim into another locale (prebuild)                  |
 
 ### The route namespace map is generated, not written
 
