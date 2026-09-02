@@ -128,10 +128,11 @@ function rasterizable(svg, file, px) {
 
 /**
  * Bounding box of the MARK, in viewBox units, measured by rendering and walking the alpha
- * channel — never typed. `logo-small-dark.svg` draws its pin inside a 144×144 viewBox at 62.5 %
- * width and 86 % height, so scaling the viewBox instead of the ink would leave a seventh of the
- * icon empty on every edge, and a re-export at different margins would silently shrink the
- * favicon.
+ * channel — never typed. `logo-small-dark.svg` is cropped to its ink today, so measuring and
+ * scaling the viewBox would agree; it used to draw its pin inside a 144×144 viewBox at 62.5 %
+ * width and 86 % height, and scaling the viewBox instead of the ink left a seventh of the icon
+ * empty on every edge. Which is the point: the measurement is what makes the icon independent of
+ * the margins any future export happens to carry, in either direction.
  *
  * `logo-big-dark.svg` is the lockup, so it holds the wordmark under the pin. The two are
  * separated by a band of rows with no ink at all, which is what this looks for: the widest fully

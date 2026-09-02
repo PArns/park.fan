@@ -239,38 +239,41 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
         )}
 
         {/* park.fan logo (pin + wordmark) — embedded branding, bottom-left.
-            Light/dark variants toggle with the theme, matching the header. */}
+            Light/dark variants toggle with the theme, matching the header.
+            The heights are the mark's own: the artwork used to fill 86.3 % / 78.1 % of its
+            viewBox, so `h-5`/`h-4`/`gap-1.5` painted 17.25 px, 12.5 px and an optical 11.5 px.
+            The files are ink-tight now and this watermark keeps the size it had. */}
         {!failed && (
-          <div className="pointer-events-none absolute bottom-2.5 left-3 z-10 flex items-center gap-1.5 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)] select-none">
+          <div className="pointer-events-none absolute bottom-2.5 left-3 z-10 flex items-center gap-[11px] drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)] select-none">
             <Image
               src="/logo-small-dark.svg"
-              width={26}
-              height={30}
+              width={12}
+              height={17}
               alt=""
               aria-hidden="true"
-              className="hidden h-5 w-auto dark:block"
+              className="hidden h-[17px] w-auto dark:block"
             />
             <Image
               src="/logo-small.svg"
-              width={26}
-              height={30}
+              width={12}
+              height={17}
               alt=""
               aria-hidden="true"
-              className="block h-5 w-auto dark:hidden"
+              className="block h-[17px] w-auto dark:hidden"
             />
             <Image
               src="/parkfan-dark.svg"
-              width={84}
-              height={24}
+              width={55}
+              height={13}
               alt="park.fan"
-              className="hidden h-4 w-auto dark:block"
+              className="hidden h-[13px] w-auto dark:block"
             />
             <Image
               src="/parkfan.svg"
-              width={84}
-              height={24}
+              width={55}
+              height={13}
               alt="park.fan"
-              className="block h-4 w-auto dark:hidden"
+              className="block h-[13px] w-auto dark:hidden"
             />
           </div>
         )}

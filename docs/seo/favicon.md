@@ -121,10 +121,14 @@ pnpm check:icons      # fails if a committed file no longer matches
 ```
 
 Two numbers in the script are measured rather than typed, and should stay that way. The **ink
-bounding box** is found by rendering the source and walking its alpha channel: the pin sits inside
-a 144×144 viewBox at 62.5 % width and 86 % height, so scaling the viewBox instead would leave a
-seventh of the icon empty on every edge, and a re-export at different margins would silently shrink
-the favicon. The `.ico` frame list is what the `<link>`'s `sizes` reports, so adding a frame changes
+bounding box** is found by rendering the source and walking its alpha channel. `logo-small-dark.svg`
+is cropped to its ink today, so measuring and scaling the viewBox would agree — but it used to sit
+inside a 144×144 viewBox at 62.5 % width and 86 % height, and scaling the viewBox left a seventh of
+the icon empty on every edge. That is the argument for measuring: the icon is independent of
+whatever margins an export happens to carry, in either direction. When the crop landed, the
+measurement moved by a fraction of a pixel (the source rasterizes at a different resolution now) and
+`pnpm check:icons` went red on all three simple-pin files; regenerating them changed the placement
+by 0.27 of 180 units and nothing else. The `.ico` frame list is what the `<link>`'s `sizes` reports, so adding a frame changes
 what the markup claims.
 
 Two things the generator deliberately strips from the source: `serif:*` attributes (Serif/Affinity
