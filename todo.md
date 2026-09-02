@@ -225,24 +225,47 @@ like at 14:00 on 2026-10-17".
 
 ### 2.2b Measure the error by lead time `[P0]`
 
-This is what makes tiers B–D honest, and nothing measures it today. Without it the
-widening channel is decoration.
+This is what makes tiers B–D honest. Without it the widening channel is decoration,
+and `forecastError`'s docstring forbids inventing one.
 
-The raw material is there: `prediction_accuracy` stores both `createdAt` (when the
-prediction was made) and `predictedTime` (what it was made for), so the error grouped
-by **lead time** is a query away, not a new data collection.
+**The data to measure it does not exist yet, and cannot be reconstructed.** This
+corrects an earlier assumption in this file, which said the numbers were "a query
+away". Two findings, both verified in the backend:
 
-- [ ] Aggregate MAE by lead-time bucket (hours ahead for tier A, days ahead for B–D),
-      globally and per ride where the sample carries it. `aggregate-accuracy-stats`
-      already exists as an admin job and is the place to extend.
-- [ ] Expose it so `/plan/day` can attach a real `low`/`high` to every point at every
-      distance.
-- [ ] Then lift the docstring warning on `forecastError`, because at that point the
-      fanning-out is measured.
-- [ ] Expect the curve to flatten: `/v1/ml/accuracy/trends/hourly` already shows mae
-      moving only between 6.9 and 8.8 across the hours of the day. If lead-time error
-      turns out similarly flat, that is a finding worth showing, not a reason to fake
-      a widening band.
+1. Daily predictions are **never scored against reality**. It is deliberate and
+   documented: `prediction-accuracy.service.ts:13-15` says a type not compared gets
+   `tracked: false` — "e.g. daily predictions, which span up to 365 days and are
+   never compared, so 0% would read as broken". So `prediction_accuracy` holds
+   hourly rows only, which reach 24 hours. That covers tier A and nothing else.
+2. The prediction history itself does not survive. `deduplicatePredictions`
+   (`ml.service.ts:1813-1821`) deletes every daily row with `predictedTime` in
+   `[now, now+60d]` and `createdAt >= now-13d` before each generation run. Running
+   daily, that means a prediction made for day X is deleted and rewritten on every
+   run up to X, so by the time X arrives only the last one — lead time about a day —
+   is left. The 13-day clause protects rows older than that, but at a daily cadence
+   nothing reaches it. Whatever long-lead rows might be found are the residue of runs
+   that failed, not a sample.
+
+So the lead-time error curve has to be **built forward**, and it has a waiting period.
+
+- [ ] Snapshot job: before each daily generation overwrites them, copy a sample of
+      predictions into an archive keyed by `(attractionId, targetDate, leadDays)` —
+      lead buckets around 1, 3, 7, 14, 30, 60 days. Small: a handful of rows per ride
+      per target day, not the whole table.
+- [ ] Score the archive against `queue_data` once each target date has passed, the way
+      `compareWithActuals` does for hourly.
+- [ ] Aggregate MAE by lead bucket, globally and per ride where the sample carries it.
+- [ ] Only then expose it so `/plan/day` can attach a measured `low`/`high` at every
+      distance, and only then lift the docstring warning on `forecastError`.
+- [ ] Expect the curve to be flatter than intuition suggests: the hourly error already
+      moves only between 6.9 and 8.8 across a whole day. If lead-time error is similarly
+      flat, that is a finding to show, not a reason to fake a widening band.
+
+**Consequence for the frontend, and it is not a blocker.** Tier A gets a measured band
+from day one — the `uncertaintyMinutes` of §2.1 plus the hourly accuracy that already
+exists. Tiers B–D get width without a figure: wider and softer with distance, stated as
+"we have not measured how wrong we are this far out" rather than a number. That is the
+honest rendering until the archive fills, and it is what the tier label is for.
 
 ### 2.3 Day forecast for all rides, not five `[P1]`
 
