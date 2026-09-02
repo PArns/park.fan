@@ -1945,3 +1945,93 @@ export interface PopularPark {
   city: string | null;
   continent: string | null;
 }
+
+// ============================================================================
+// Trip planner — one day, ride by ride
+// ============================================================================
+
+/**
+ * How a plan number was arrived at. It travels with every curve because the
+ * three are not equally trustworthy and nothing about a rendered bar says which
+ * one produced it.
+ *
+ * - `measured` — the model's own hourly prediction. Today and tomorrow only:
+ *   the ML service generates 24 hours ahead (`HOURLY_PREDICTIONS`).
+ * - `composed` — a day-level prediction scaled by the ride's historical hour
+ *   shape. The level is predicted, the shape is historical.
+ * - `long_range` — the same composition past the stored 60-day daily horizon,
+ *   where the day level itself is thinner.
+ *
+ * A surface MUST render the three differently. A composed curve is not a
+ * measured one, and they draw identically unless something is done about it.
+ */
+export type PlanDayTier = 'measured' | 'composed' | 'long_range';
+
+export interface PlanDayHour {
+  /** Park-local hour, 0–23. */
+  hour: number;
+  /** Expected wait in minutes, already rounded to 5. */
+  wait: number;
+}
+
+export interface PlanDayRide {
+  attractionSlug: string;
+  attractionName: string;
+  land?: string | null;
+  /** One entry per open hour. */
+  hours: PlanDayHour[];
+  /** The day-level prediction this ride's curve was scaled to. */
+  dayPeak: number;
+  /**
+   * Half-width of the model's uncertainty band in minutes (its top trained
+   * quantile minus the served median). `null` where the model reports no
+   * spread — which is NOT a band of width zero and must not be drawn as one.
+   */
+  uncertaintyMinutes?: number | null;
+  /** Measured days behind the historical shape. */
+  sampleDays: number;
+}
+
+export interface PlanDayContext {
+  date: string;
+  status: ParkStatus | string;
+  /** First and last park-local hour the park is open. `null` on a closed day. */
+  openHour: number | null;
+  closeHour: number | null;
+  crowdLevel?: CrowdLevel | 'closed' | null;
+  /**
+   * Absent past the forecast's reach (about 14 days). The API does NOT
+   * substitute a climate normal there, so a caller must not present a missing
+   * value as "no rain expected".
+   */
+  weather?: WeatherSummary | null;
+  isHoliday: boolean;
+  isBridgeDay: boolean;
+  isSchoolVacation: boolean;
+  /** Derived by the API — `CalendarDay` carries no such field. */
+  isWeekend: boolean;
+  neighborHolidays?: NeighborHoliday[];
+}
+
+export interface PlanDay {
+  parkSlug: string;
+  timezone: string;
+  context: PlanDayContext;
+  tier: PlanDayTier;
+  /** Whole days from today to this date, in the park's timezone. */
+  leadDays: number;
+  /**
+   * Measured mean absolute error for predictions made this far ahead, in
+   * minutes. `null` until the backend's lead-time archive has been running that
+   * long — and `null` is the honest answer rather than a gap to fill: nothing
+   * measures how wrong the model is at this distance yet. Widen the band with
+   * distance WITHOUT attaching a figure.
+   */
+  leadTimeMae?: number | null;
+  rides: PlanDayRide[];
+  /**
+   * Empty for now. The calendar DTO carries no showtimes field at all, so the
+   * API cannot yet distinguish "no shows" from "not known this far out".
+   */
+  shows: unknown[];
+}
