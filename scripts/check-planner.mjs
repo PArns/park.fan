@@ -47,8 +47,38 @@ const DATE = new Date(Date.now() + 86_400_000).toISOString().slice(0, 10);
 
 const PLAN_PATH = `/api/parks/${PARK.geo.continent}/${PARK.geo.country}/${PARK.geo.city}/${PARK.slug}/plan/day?date=${DATE}`;
 
+/** A second park, five days out, so the overview has more than one row to draw. */
+const OTHER = {
+  slug: 'europa-park',
+  name: 'Europa-Park',
+  geo: { continent: 'europe', country: 'germany', city: 'rust' },
+};
+const OTHER_DATE = new Date(Date.now() + 5 * 86_400_000).toISOString().slice(0, 10);
+
 const PLAN = {
   parks: {
+    [OTHER.slug]: {
+      ...OTHER,
+      days: {
+        [OTHER_DATE]: {
+          date: OTHER_DATE,
+          entries: [
+            {
+              id: 'voltron-1',
+              attractionSlug: 'voltron-nevera',
+              attractionName: 'Voltron Nevera',
+              hour: 10,
+            },
+            {
+              id: 'silver-star-1',
+              attractionSlug: 'silver-star',
+              attractionName: 'Silver Star',
+              hour: 13,
+            },
+          ],
+        },
+      },
+    },
     [PARK.slug]: {
       ...PARK,
       days: {
@@ -150,7 +180,9 @@ if (!hasLauncher) {
   process.exit(1);
 }
 
-check('Launcher zeigt die Anzahl', /3/.test((await launcher.textContent()) ?? ''));
+// Three in the active day plus two in the other park: the badge counts the
+// whole plan, not the day on screen.
+check('Launcher zählt beide Parks', /5/.test((await launcher.textContent()) ?? ''));
 
 await launcher.click();
 const sheet = page.locator(SHEET);
@@ -217,6 +249,33 @@ if (await firstCheck.count()) {
 // On a phone this input is the only way to add anything, so it may never vanish
 // — not even when the day payload is missing.
 check('Ride-Suche vorhanden', (await sheet.locator('input[type="search"]').count()) === 1);
+
+// The overview: every park and day in one list, reached from the park name.
+const toggle = sheet.locator('button[aria-expanded]').first();
+check('Übersicht ist erreichbar', (await toggle.count()) === 1);
+if (await toggle.count()) {
+  await toggle.click();
+  await page.waitForTimeout(400);
+  const overviewText = (await sheet.textContent()) ?? '';
+  check(
+    'Übersicht listet beide Parks',
+    /Europa-Park/.test(overviewText) && /Phantasialand/.test(overviewText)
+  );
+  // Picking a day switches park AND date, and drops back to the timeline.
+  const otherDay = sheet.locator('button[aria-current], button').filter({ hasText: /Bahnen/ });
+  const target = otherDay.first();
+  await target.click();
+  await page.waitForTimeout(600);
+  const stored = await page.evaluate(() =>
+    JSON.parse(window.localStorage.getItem('parkfan_planner') ?? '{}')
+  );
+  check(
+    'Auswahl in der Übersicht wechselt den Park',
+    stored?.activeParkSlug === 'europa-park' && stored?.activeDate === OTHER_DATE,
+    `${stored?.activeParkSlug} / ${stored?.activeDate}`
+  );
+  check('zurück auf der Zeitleiste', (await sheet.locator('input[type="search"]').count()) === 1);
+}
 
 // The sheet is a modal and outranks the language banner at z-[70]; at z-50 the
 // banner painted straight across its header.

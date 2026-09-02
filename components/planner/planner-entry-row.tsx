@@ -53,6 +53,8 @@ export function PlannerEntryRow({
   onDragStart,
 }: PlannerEntryRowProps) {
   const t = useTranslations('planner');
+  // `common` is in the layout set on every route, so this costs no chunk.
+  const tCommon = useTranslations('common');
   const done = Boolean(entry.done);
 
   const figure = done
@@ -100,9 +102,23 @@ export function PlannerEntryRow({
           <span className={cn('truncate text-sm', done && 'line-through')}>
             {entry.attractionName}
           </span>
-          <span className="shrink-0 text-right font-mono text-sm tabular-nums">
+          {/* The number alone does not say whether it is a prediction or a
+              record — the strikethrough and the bar's tone carry that visually,
+              and neither reaches a screen reader. */}
+          <span
+            className="shrink-0 text-right font-mono text-sm tabular-nums"
+            aria-label={
+              figure === null
+                ? undefined
+                : done
+                  ? t('entry.actual', { minutes: figure })
+                  : t('entry.expected')
+            }
+          >
             {figure ?? <span className="text-muted-foreground">—</span>}
-            {figure && <span className="text-muted-foreground ml-0.5 text-xs">Min.</span>}
+            {figure && (
+              <span className="text-muted-foreground ml-0.5 text-xs">{tCommon('minuteShort')}</span>
+            )}
           </span>
         </div>
 
