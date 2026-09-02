@@ -117,9 +117,11 @@ export interface CalendarMonthSummary {
  * falls inside a school holiday — which the summary counts and the grid did not — got „am
  * ruhigsten wird es am Dienstag, 3." above a grid where the 3rd wore no star.
  *
- * `isToday` stays out for both: `crowdLevel` is overridden with a live spot reading on today
- * alone, so it is not on the same scale as the rest of the month. Holidays stay IN for both —
- * a quiet Whit Monday is still the month's quietest day, and hiding it is a different claim.
+ * `isToday` used to stay out for both, because `crowdLevel` was overridden with a live spot
+ * reading on today alone and was therefore not on the same scale as the rest of the month. That
+ * override is gone: today carries the same forecast every other day carries, so today is back in
+ * the population it belongs to. Holidays stay IN for both — a quiet Whit Monday is still the
+ * month's quietest day, and hiding it is a different claim.
  */
 export function extremeCandidates(
   days: CalendarDay[],
@@ -128,7 +130,6 @@ export function extremeCandidates(
 ): CalendarDay[] {
   return days.filter((day) => {
     if (day.status !== 'OPERATING') return false;
-    if (day.isToday) return false;
     if (!monthIsPast && day.date < todayIso) return false;
     const level = day.crowdLevel;
     return level !== 'closed' && level !== 'unknown' && CROWD_RANK[level] !== undefined;
@@ -159,12 +160,12 @@ export function rankOf(day: CalendarDay, bucket: number): number {
  *
  * Two things here are not obvious and both were wrong first.
  *
- * **Today is excluded.** `CalendarDay.crowdLevel` is documented as being overridden on TODAY with
- * the live occupancy, while every other day carries a day aggregate — two different statistics
- * under one field name. A hub rendered at 09:30 on a Saturday reads today as `very_low` because
- * nobody has queued yet, and today would be named the month's quietest day on its busiest
- * weekday, with the grid underneath saying the opposite. One day out of thirty is a cheap price
- * for every remaining day being on the same scale.
+ * **Today used to be excluded, and no longer is.** `CalendarDay.crowdLevel` was overridden on
+ * TODAY with the live occupancy while every other day carried a day aggregate — two different
+ * statistics under one field name, so a hub rendered at 09:30 on a Saturday read today as
+ * `very_low` because nobody had queued yet, and today would be named the month's quietest day on
+ * its busiest weekday with the grid underneath saying the opposite. The backend stopped doing
+ * that: today is a forecast like every other cell, on the same scale, so it counts.
  *
  * **The ordering breaks ties, because the six-value enum cannot.** `CrowdLevel` has six buckets
  * and a month has thirty days, so ties are the rule rather than the exception: a park whose

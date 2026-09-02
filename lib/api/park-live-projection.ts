@@ -136,6 +136,15 @@ export function leanParkForLivePoll(
       land: a.land,
       status: a.status,
       effectiveStatus: (a as { effectiveStatus?: ParkAttraction['status'] }).effectiveStatus,
+      // Day-scoped, not volatile — and that is exactly why it has to be here. `effectiveStatus`
+      // already travels on every poll, and `isInSeason()` reads this flag beside it; a field the
+      // poll omits falls back to the server render forever, because `mergeLiveParkSnapshot`
+      // spreads the snapshot OVER the static park rather than replacing it. The server render is
+      // `PARK_REVALIDATE` old, so a ride that comes into season on the first of the month stays
+      // hidden for up to a day, and a tab left open all day never heals. It is one boolean per
+      // ride, cheaper to send always than to branch on `daily`, and it costs nothing upstream:
+      // the proxy fetches the whole park on every poll either way.
+      isCurrentlyInSeason: a.isCurrentlyInSeason,
       crowdLevel: a.crowdLevel,
       trend: a.trend,
       queues: a.queues,

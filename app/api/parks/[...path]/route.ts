@@ -16,6 +16,33 @@ import {
   parseParkSimulation,
 } from '@/lib/parks/park-simulation';
 
+/**
+ * The shared-cache window for the two backend aggregates that are recomputed once a day.
+ *
+ * A day, because that is what the backend itself answers: `/stats` and `/stats/hourly` both leave
+ * api.park.fan as `max-age=86400, s-maxage=86400, stale-while-revalidate=172800`, and this proxy
+ * used to re-cache them at 3600 — capping a 24-hour aggregate at an hour and asking the origin for
+ * the same object 24 times a day. `getParkHistoricalStats`'s own docstring already said "cached
+ * 24h on success — data changes daily, not in real-time"; the window did not.
+ *
+ * `max-age` is named as well as `s-maxage`: without it a browser gets a `public` with no lifetime
+ * and re-requests the aggregate on every park-page view.
+ */
+const STATS_AGGREGATE_CACHE = 'public, max-age=86400, s-maxage=86400, stale-while-revalidate=86400';
+
+/**
+ * How long a "this park has no such aggregate" answer may be reused.
+ *
+ * A 404 out of these three branches is a settled answer about the park's HISTORY, not a failure
+ * and not a statement about today: too few measured days for a curve, too little history for a
+ * two-year aggregate. A park does not acquire either inside an hour, and until now every one of
+ * these answers was returned bare — so it inherited the blanket `no-store` on `/api/:path*` and
+ * every reader of a thin park's page paid a fresh Vercel invocation plus a backend round trip to
+ * be told no again. Shorter than the 200s' window because the direction that is wrong rather than
+ * old is a park CROSSING the threshold.
+ */
+const STATS_MISSING_CACHE = 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=21600';
+
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ path: string[] }> }
@@ -113,10 +140,21 @@ export async function GET(
         includeHourly: 'none', // No hourly data needed for calendar view
       });
 
-      // Return with caching headers
-      // Cache for 5 minutes (300 seconds) - calendar data changes frequently
+      // A day, because a calendar month is a set of statements about days and none of them
+      // moves faster than that any more. It was 300 s for one reason: today's cell carried a
+      // live occupancy spot reading the backend rewrote every five minutes. That override is
+      // gone (today reads the ML forecast now), and with it the only volatile field in this
+      // payload.
+      //
+      // What can still change inside a day is a schedule correction, and it does not wait for
+      // this window: `sync-schedules-only` posts the park's cache tag to /api/revalidate, so a
+      // correction arrives through the tag rather than through expiry.
+      //
+      // The stale window is a second day: this endpoint's slow path is a live PERCENTILE_CONT
+      // aggregation, one query per day of the range, so an expiry that blocks is an expiry
+      // somebody waits 2.75 s for.
       return NextResponse.json(data, {
-        headers: cdnCacheHeaders('public, s-maxage=300, stale-while-revalidate=600'),
+        headers: cdnCacheHeaders('public, s-maxage=86400, stale-while-revalidate=86400'),
       });
     } catch (error) {
       console.error('[Calendar API] Error:', error);
@@ -190,11 +228,17 @@ export async function GET(
       const stats = await getParkHistoricalStats(continent, country, city, park, 2, topN);
 
       if (!stats) {
-        return NextResponse.json({ error: 'Stats not available' }, { status: 404 });
+        // A settled answer, not a failure: this park has too little history for a two-year
+        // aggregate, and it will not acquire one inside an hour. Uncached, every reader of a
+        // thin park's page paid a fresh invocation and a backend round trip for the same no.
+        return NextResponse.json(
+          { error: 'Stats not available' },
+          { status: 404, headers: cdnCacheHeaders(STATS_MISSING_CACHE) }
+        );
       }
 
       return NextResponse.json(stats, {
-        headers: cdnCacheHeaders('public, s-maxage=3600, stale-while-revalidate=82800'),
+        headers: cdnCacheHeaders(STATS_AGGREGATE_CACHE),
       });
     } catch (error) {
       console.error('[Stats API] Error:', error);
@@ -218,11 +262,14 @@ export async function GET(
       const data = await getParkHourlyProfile(continent, country, city, park, { topN });
 
       if (!data) {
-        return NextResponse.json({ error: 'Hourly profile not available' }, { status: 404 });
+        return NextResponse.json(
+          { error: 'Hourly profile not available' },
+          { status: 404, headers: cdnCacheHeaders(STATS_MISSING_CACHE) }
+        );
       }
 
       return NextResponse.json(data, {
-        headers: cdnCacheHeaders('public, s-maxage=3600, stale-while-revalidate=82800'),
+        headers: cdnCacheHeaders(STATS_AGGREGATE_CACHE),
       });
     } catch (error) {
       console.error('[Hourly-Profile API] Error:', error);
@@ -249,7 +296,10 @@ export async function GET(
       // days for a curve. Passed through as a 404 because it is the settled
       // answer — the hook stops asking rather than retrying.
       if (!data) {
-        return NextResponse.json({ error: 'Day curve not available' }, { status: 404 });
+        return NextResponse.json(
+          { error: 'Day curve not available' },
+          { status: 404, headers: cdnCacheHeaders(STATS_MISSING_CACHE) }
+        );
       }
 
       return NextResponse.json(data, {

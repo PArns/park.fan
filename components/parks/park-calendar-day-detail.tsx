@@ -123,13 +123,22 @@ export function ParkCalendarDayDetail({
       ? t('calendarView.details.schedule.scheduleNotYetAvailable')
       : t('calendarView.details.schedule.open');
 
-  // On today the calendar overrides crowdLevel with the LIVE occupancy; the ML
-  // forecast lives in predictedCrowdLevel. Split them so both are legible.
+  /**
+   * On today the dialog can show two numbers, and they answer different questions: what the day
+   * was forecast to be, and how it has actually gone so far.
+   *
+   * The pair used to be `crowdLevel` (a live spot reading the backend wrote over today's cell)
+   * against `predictedCrowdLevel`. The override is gone — today's `crowdLevel` IS the forecast
+   * now — so the measured half comes from `todayCrowdLevel`, which is what it always was: the
+   * day-so-far P50, captured by the backend as its own field precisely so the two could be put
+   * side by side and mean something. It is absent on a closed day, on a park too thin to rate,
+   * and before the first measurement of the morning, so the row stays conditional.
+   */
   const showLiveSplit =
     day.isToday &&
-    !!day.predictedCrowdLevel &&
+    !!day.todayCrowdLevel &&
     day.crowdLevel !== 'closed' &&
-    day.predictedCrowdLevel !== day.crowdLevel;
+    day.todayCrowdLevel !== day.crowdLevel;
   const meaningLevel =
     day.isToday && day.predictedCrowdLevel ? day.predictedCrowdLevel : day.crowdLevel;
   const showMeaning =
@@ -397,20 +406,21 @@ export function ParkCalendarDayDetail({
                   </div>
                 )}
               </div>
-              {/* Today splits in two: `crowdLevel` is the live occupancy, `predictedCrowdLevel`
-                the morning's forecast. The panel above is tinted by the forecast, so the live
-                reading gets its badge back rather than being folded into one word. */}
+              {/* Today splits in two: `todayCrowdLevel` is what the day has measured so far,
+                `crowdLevel` the forecast it was given. The panel above is tinted by the
+                forecast, so the measured half gets its own badge rather than being folded
+                into one word. */}
               {showLiveSplit && (
                 <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
                   <div className="flex items-center gap-2">
                     <span className="text-muted-foreground text-xs">{t('crowdNow')}</span>
-                    <CrowdLevelBadge level={day.crowdLevel} />
+                    <CrowdLevelBadge level={day.todayCrowdLevel} />
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-muted-foreground text-xs">
                       {t('dayDetail.forecastLabel')}
                     </span>
-                    <CrowdLevelBadge level={day.predictedCrowdLevel} />
+                    <CrowdLevelBadge level={day.crowdLevel} />
                   </div>
                 </div>
               )}
