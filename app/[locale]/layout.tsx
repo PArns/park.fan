@@ -15,6 +15,7 @@ import { LAYOUT_MESSAGE_NAMESPACES } from '@/i18n/route-namespaces.generated';
 import { Providers } from '@/lib/providers';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
+import { PlannerLauncher } from '@/components/planner/planner-launcher';
 import { hasPublishedPosts } from '@/lib/blog/listing';
 import { getGeoMenu } from '@/lib/navigation/geo-menu';
 import { getBlogMenu } from '@/lib/navigation/blog-menu';
@@ -300,6 +301,10 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                   <Footer locale={locale} showBlog={showBlog} />
                 </Suspense>
               </div>
+              {/* Fixed, so it is outside the flow and reserves nothing — and it
+                  renders nothing at all until the visitor has planned something,
+                  which on the server is always. */}
+              <PlannerLauncher />
             </NextIntlClientProvider>
           </Providers>
         </ThemeProvider>

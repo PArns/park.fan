@@ -78,6 +78,6 @@ export const ROUTE_MESSAGE_NAMESPACES = {
  * page payload (see `LAZY_MESSAGE_BOUNDARIES` in
  * `lib/i18n/route-namespaces.mjs`).
  */
-export const LAZY_CHUNK_NAMESPACES = ['attractions', 'parks'] as const;
+export const LAZY_CHUNK_NAMESPACES = ['attractions', 'parks', 'planner'] as const;
 
 export type RouteMessageKey = keyof typeof ROUTE_MESSAGE_NAMESPACES;
