@@ -366,22 +366,6 @@ export function ParkCalendarDayDetail({
             </div>
           )}
 
-          {/* Into the planner from here. The calendar is where a visitor decides
-              WHICH day, and until now that decision had nowhere to go: the
-              planner's own day picker is inside a panel they had no reason to
-              have opened yet. Only on a day the park is actually open — planning
-              a closed day is planning nothing. */}
-          {planner && day.status === 'OPERATING' && day.date >= todayInPark && (
-            <div>
-              <PlanDayButtonLazy
-                parkSlug={planner.parkSlug}
-                parkName={planner.parkName}
-                geo={planner.geo}
-                date={day.date}
-              />
-            </div>
-          )}
-
           {/* The ticket price. It used to sit in the grid cell, where it was the one row that
             could appear or not and therefore the one thing stopping the cell from having a fixed
             height — which the reservation in `calendar-grid-geometry` pays for in layout shift.
@@ -654,6 +638,27 @@ export function ParkCalendarDayDetail({
                 </div>
               )}
             </section>
+          )}
+          {/* Into the planner from here, and LAST in the column on purpose: the
+              decision this control acts on is made by reading the crowd
+              forecast, the headliner waits and the weather above it. Placed
+              under the opening hours it asked for a commitment before the
+              dialog had said anything.
+
+              The calendar is where a visitor decides WHICH day, and until now
+              that decision had nowhere to go — the planner's own day picker is
+              inside a panel they had no reason to have opened yet. Only on a day
+              the park is actually open: planning a closed day is planning
+              nothing. */}
+          {planner && day.status === 'OPERATING' && day.date >= todayInPark && (
+            <div>
+              <PlanDayButtonLazy
+                parkSlug={planner.parkSlug}
+                parkName={planner.parkName}
+                geo={planner.geo}
+                date={day.date}
+              />
+            </div>
           )}
         </div>
       </DialogContent>
