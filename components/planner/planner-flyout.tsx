@@ -1,12 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { CalendarPlus, ChevronDown } from 'lucide-react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { PlannerContextBand, type PlannerDayState } from './planner-context-band';
 import { PlannerDayPicker } from './planner-day-picker';
 import { PlannerTimeline } from './planner-timeline';
+import { PlannerDayGrid } from './planner-day-grid';
 import { PlannerRideSearch } from './planner-ride-search';
 import { PlannerOverview } from './planner-overview';
 import { usePlanner } from '@/lib/planner/use-planner';
@@ -14,6 +15,8 @@ import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { totalsFor } from '@/lib/planner/estimate';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { formatShortDuration } from '@/lib/utils/duration';
+import { buildDayGrid } from '@/lib/planner/day-grid';
+import { parkToday } from '@/lib/planner/park-time';
 import { cn } from '@/lib/utils';
 
 interface PlannerFlyoutProps {
@@ -41,12 +44,16 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
     activeDate,
     activeEntries,
     state,
-    reorderRide,
     setDone,
     removeRide,
     setActive,
     clearDay,
+    moveRide,
+    shiftFrom,
   } = usePlanner();
+
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
 
   // Which of the two things the panel is: one day, or everything planned. It
   // resets on close rather than persisting, because the day is what the panel is
@@ -88,6 +95,12 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
         : 'empty';
 
   const totals = totalsFor(day ?? null, activeEntries);
+
+  // The axis, or null when the park's hours are unknown — in which case there is
+  // no honest grid to draw and the flat list is the answer.
+  const timezone = day?.timezone ?? park?.timezone ?? 'UTC';
+  const grid = buildDayGrid(day?.context.openHour, day?.context.closeHour);
+  const isToday = Boolean(activeDate && activeDate === parkToday(timezone));
 
   const parkSlugs = Object.keys(state.parks);
   // Days of THIS park that already have entries — marked in the picker so the
@@ -165,9 +178,41 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
               <PlannerContextBand day={day ?? null} state={dayState} />
             </div>
 
-            {/* The scroll lives here, not on SheetContent — see the note above. */}
-            <div className="min-h-0 flex-1 overflow-y-auto px-1 py-2">
-              {activeEntries.length === 0 ? (
+            {/* The scroll lives here, not on SheetContent — see the note above.
+                `relative` is load-bearing: `overflow-y-auto` makes a scroll
+                container but NOT a containing block, so without it the grid's
+                absolutely positioned blocks would position against the fixed
+                sheet and stay put while the grid scrolled under them.
+                `overscroll-y-contain` is on every other scroll surface in this
+                repo; a drag past the end of a bottom sheet is otherwise a
+                pull-to-refresh. */}
+            <div
+              ref={scrollerRef}
+              className="relative min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-y-contain px-1 py-2"
+            >
+              {grid ? (
+                <PlannerDayGrid
+                  entries={activeEntries}
+                  day={day ?? null}
+                  grid={grid}
+                  timezone={timezone}
+                  isToday={isToday}
+                  loading={dayState === 'loading'}
+                  selectedId={selectedId}
+                  scrollerRef={scrollerRef}
+                  onSelect={setSelectedId}
+                  onMove={(entryId, startMinute) =>
+                    activeParkSlug &&
+                    activeDate &&
+                    moveRide(activeParkSlug, activeDate, entryId, startMinute)
+                  }
+                  onShiftFrom={(entryId, delta) =>
+                    activeParkSlug &&
+                    activeDate &&
+                    shiftFrom(activeParkSlug, activeDate, entryId, delta)
+                  }
+                />
+              ) : activeEntries.length === 0 ? (
                 <div className="flex h-full min-h-[180px] flex-col items-center justify-center gap-1 px-6 text-center">
                   <p className="text-sm font-medium">{t('empty.title')}</p>
                   <p className="text-muted-foreground text-xs">
@@ -175,14 +220,13 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   </p>
                 </div>
               ) : (
+                /* No opening hours means no honest axis — not a 24-hour one,
+                   which would assert a park that never closes, and not an
+                   invented 9-to-6. The flat list is what this branch is for,
+                   and why those three components survive. */
                 <PlannerTimeline
                   entries={activeEntries}
                   day={day ?? null}
-                  onReorder={(entryId, toIndex) =>
-                    activeParkSlug &&
-                    activeDate &&
-                    reorderRide(activeParkSlug, activeDate, entryId, toIndex)
-                  }
                   onToggleDone={(entryId, done) =>
                     activeParkSlug &&
                     activeDate &&

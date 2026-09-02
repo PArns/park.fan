@@ -19,8 +19,10 @@ interface AddParams {
   date: string;
   attractionSlug: string;
   attractionName: string;
-  /** Where to put it. Omitted means "after the last entry", see below. */
-  hour?: number;
+  /** The park's IANA zone, so the plan can answer "what day is it there?". */
+  timezone?: string;
+  /** Park-local minutes since midnight. Omitted means "after the last entry". */
+  startMinute?: number;
 }
 
 /** Stable enough for a list key, and readable in stored JSON while debugging. */
@@ -37,7 +39,7 @@ function withDay(
   parkSlug: string,
   date: string,
   entries: PlannerEntry[],
-  seed?: { parkName: string; geo: PlannerGeo }
+  seed?: { parkName: string; geo: PlannerGeo; timezone?: string }
 ): PlannerState {
   const existing: PlannerPark | undefined = state.parks[parkSlug];
   const park: PlannerPark = existing ?? {
@@ -57,37 +59,62 @@ function withDay(
         // the first time a caller supplies them.
         name: seed?.parkName ?? park.name,
         geo: seed?.geo ?? park.geo,
+        timezone: seed?.timezone ?? park.timezone,
         days: { ...park.days, [date]: { date, entries } },
       },
     },
   };
 }
 
-/** Entries sorted by hour, keeping insertion order within the same hour. */
-function byHour(entries: PlannerEntry[]): PlannerEntry[] {
+/**
+ * Entries in time order, keeping insertion order within the same minute.
+ *
+ * The tie-break is not cosmetic any more: on the day grid two blocks starting at
+ * the same minute are laid out side by side, and this is the only stable
+ * ordering a plan has to decide which of them takes the left column.
+ */
+function byStart(entries: PlannerEntry[]): PlannerEntry[] {
   return entries
     .map((entry, index) => ({ entry, index }))
-    .sort((a, b) => a.entry.hour - b.entry.hour || a.index - b.index)
+    .sort((a, b) => a.entry.startMinute - b.entry.startMinute || a.index - b.index)
     .map((x) => x.entry);
 }
 
+/** The mirror the store still writes for a tab running the previous build. */
+function withHourMirror(entry: PlannerEntry): PlannerEntry {
+  return { ...entry, hour: Math.floor(entry.startMinute / 60) };
+}
+
+/** Park-local minutes, inside a day. Clamped where it can be tested. */
+function clampMinute(minute: number): number {
+  if (!Number.isFinite(minute)) return 0;
+  return Math.max(0, Math.min(1500, Math.round(minute)));
+}
+
 export function addEntry(state: PlannerState, params: AddParams): PlannerState {
-  const { parkSlug, parkName, geo, date, attractionSlug, attractionName, hour } = params;
+  const { parkSlug, parkName, geo, timezone, date, attractionSlug, attractionName, startMinute } =
+    params;
   const existing = state.parks[parkSlug]?.days[date]?.entries ?? [];
 
-  // No hour given: an hour after the last entry, so dropping several rides in a
-  // row spreads them across the day instead of stacking them on one time. The
-  // day's opening hour is not known here — the caller passes one when it is.
-  const fallbackHour = existing.length > 0 ? Math.max(...existing.map((e) => e.hour)) + 1 : 10;
+  // No time given: an hour after the last entry, so adding several rides in a
+  // row spreads them across the day instead of stacking them on one minute. The
+  // caller passes a real minute when it knows the day's shape — see
+  // `nextFreeStart`, which is what the grid uses.
+  const fallback =
+    existing.length > 0 ? Math.max(...existing.map((e) => e.startMinute)) + 60 : 10 * 60;
 
-  const entry: PlannerEntry = {
+  const entry: PlannerEntry = withHourMirror({
     id: makeId(attractionSlug, existing),
     attractionSlug,
     attractionName,
-    hour: hour ?? fallbackHour,
-  };
+    startMinute: clampMinute(startMinute ?? fallback),
+  });
 
-  return withDay(state, parkSlug, date, byHour([...existing, entry]), { parkName, geo });
+  return withDay(state, parkSlug, date, byStart([...existing, entry]), {
+    parkName,
+    geo,
+    timezone,
+  });
 }
 
 export function removeEntry(
@@ -106,57 +133,73 @@ export function removeEntry(
   );
 }
 
-/** Move one entry to another hour. The list re-sorts; nothing else moves. */
+/**
+ * Move one entry to another minute. The list re-sorts; nothing else moves.
+ *
+ * This is what a drag on the grid writes, so its two identity guards are not
+ * hygiene. Every `plannerStore.update` stringifies the whole multi-park plan,
+ * writes localStorage, rewrites the cookie and notifies every subscriber on the
+ * page — and a drag that ends where it started is the commonest gesture there
+ * is. Returning `state` itself, not a copy, is what makes that free.
+ */
 export function moveEntry(
   state: PlannerState,
   parkSlug: string,
   date: string,
   entryId: string,
-  hour: number
+  startMinute: number
 ): PlannerState {
   const existing = state.parks[parkSlug]?.days[date]?.entries;
   if (!existing) return state;
+
+  const target = clampMinute(startMinute);
+  const current = existing.find((e) => e.id === entryId);
+  if (!current) return state;
+  if (current.startMinute === target) return state;
+
   return withDay(
     state,
     parkSlug,
     date,
-    byHour(existing.map((e) => (e.id === entryId ? { ...e, hour } : e)))
+    byStart(
+      existing.map((e) => (e.id === entryId ? withHourMirror({ ...e, startMinute: target }) : e))
+    )
   );
 }
 
 /**
- * Drag-and-drop reorder by position.
+ * Push one entry and everything after it by the same amount.
  *
- * The dropped entry takes the hour of the row it landed on, which is what makes
- * dragging change the estimate — the whole point of the feature. Everything else
- * keeps its own hour, so a reorder is one change and not a cascade the visitor
- * did not ask for.
+ * The second half of a repair, and never automatic: it exists so a visitor who
+ * has been told their plan does not work can accept a fix in one gesture, with
+ * the whole cascade as a single undoable write. Nothing calls it on its own.
  */
-export function reorderEntry(
+export function shiftFrom(
   state: PlannerState,
   parkSlug: string,
   date: string,
   entryId: string,
-  toIndex: number
+  deltaMinutes: number
 ): PlannerState {
   const existing = state.parks[parkSlug]?.days[date]?.entries;
-  if (!existing) return state;
+  if (!existing || deltaMinutes === 0) return state;
 
-  const fromIndex = existing.findIndex((e) => e.id === entryId);
-  if (fromIndex === -1) return state;
+  const ordered = byStart(existing);
+  const from = ordered.findIndex((e) => e.id === entryId);
+  if (from === -1) return state;
 
-  const clamped = Math.max(0, Math.min(toIndex, existing.length - 1));
-  if (clamped === fromIndex) return state;
-
-  const next = [...existing];
-  const [moved] = next.splice(fromIndex, 1);
-  // Read the target hour BEFORE inserting: after the splice the neighbour at
-  // `clamped` is a different entry, and the dropped ride would take the hour of
-  // whatever slid into that position.
-  const targetHour = existing[clamped].hour;
-  next.splice(clamped, 0, { ...moved, hour: targetHour });
-
-  return withDay(state, parkSlug, date, byHour(next));
+  return withDay(
+    state,
+    parkSlug,
+    date,
+    byStart(
+      ordered.map((e, index) =>
+        index >= from
+          ? withHourMirror({ ...e, startMinute: clampMinute(e.startMinute + deltaMinutes) })
+          : e
+      )
+    )
+  );
 }
 
 /**
@@ -217,11 +260,15 @@ export function setActive(
  */
 export function openDay(
   state: PlannerState,
-  park: { slug: string; name: string; geo: PlannerGeo },
+  park: { slug: string; name: string; geo: PlannerGeo; timezone?: string },
   date: string
 ): PlannerState {
   const entries = state.parks[park.slug]?.days[date]?.entries ?? [];
-  const next = withDay(state, park.slug, date, entries, { parkName: park.name, geo: park.geo });
+  const next = withDay(state, park.slug, date, entries, {
+    parkName: park.name,
+    geo: park.geo,
+    timezone: park.timezone,
+  });
   return { ...next, activeParkSlug: park.slug, activeDate: date };
 }
 

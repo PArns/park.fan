@@ -43,7 +43,12 @@ export function estimateFor(day: PlanDay | null | undefined, entry: PlannerEntry
   if (openHour === null || closeHour === null) {
     return { wait: null, uncertaintyMinutes: null, missing: 'no-day' };
   }
-  if (entry.hour < openHour || entry.hour > closeHour) {
+  // The grid starts a block at any 15-minute step, and the API is hourly on both
+  // tiers, so the figure a block carries is its HOUR's. Interpolating between
+  // two points that are themselves already rounded to five is what printed 51,
+  // 53 and 47 elsewhere in this app.
+  const hour = Math.floor(entry.startMinute / 60);
+  if (hour < openHour || hour > closeHour) {
     return { wait: null, uncertaintyMinutes: null, missing: 'outside-hours' };
   }
 
@@ -52,7 +57,7 @@ export function estimateFor(day: PlanDay | null | undefined, entry: PlannerEntry
   // curve rather than a flat one. The planner says so instead of drawing a bar.
   if (!ride) return { wait: null, uncertaintyMinutes: null, missing: 'no-curve' };
 
-  const point = ride.hours.find((h) => h.hour === entry.hour);
+  const point = ride.hours.find((h) => h.hour === hour);
   if (!point) return { wait: null, uncertaintyMinutes: null, missing: 'no-curve' };
 
   return {

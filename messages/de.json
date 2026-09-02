@@ -1872,7 +1872,8 @@
     "empty": {
       "title": "Noch nichts geplant",
       "body": "Zieh eine Bahn hierher oder tipp auf „In den Plan“ auf einer Attraktionskarte.",
-      "bodyMobile": "Such dir unten eine Bahn und leg sie auf eine Uhrzeit."
+      "bodyMobile": "Such dir unten eine Bahn und leg sie auf eine Uhrzeit.",
+      "bodyGrid": "Such dir unten eine Bahn – sie landet auf der Zeitachse und lässt sich dort verschieben."
     },
     "day": {
       "label": "Tag",
@@ -1893,7 +1894,8 @@
       "markUndone": "Doch noch nicht gefahren",
       "actual": "tatsächlich {minutes} Min.",
       "noCurve": "Für diese Bahn liegt keine Stundenkurve vor.",
-      "dragHandle": "Verschieben"
+      "dragHandle": "Verschieben",
+      "range": "{from} bis {to}"
     },
     "tier": {
       "measured": "Stundenprognose",
@@ -1927,6 +1929,27 @@
     "overview": {
       "empty": "Noch keine Tage geplant."
     },
-    "planThisDay": "Diesen Tag planen"
+    "planThisDay": "Diesen Tag planen",
+    "unit": {
+      "min": "Min."
+    },
+    "grid": {
+      "closesApprox": "bis ~{time}",
+      "now": "Jetzt"
+    },
+    "transfer": {
+      "tight": "knapp",
+      "good": "gut",
+      "generous": "großzügig",
+      "broken": "geht nicht auf",
+      "unknown": "offen",
+      "brokenBy": "fehlen {minutes} Min.",
+      "repair": "später legen",
+      "distance": "{distance} Luftlinie",
+      "minWalk": "mindestens {minutes} Min. Umstieg",
+      "allowance": "inkl. Ausstieg und Fahrt, geschätzt",
+      "noSpread": "ohne Streuung der Prognose gerechnet"
+    },
+    "close": "Auswahl aufheben"
   }
 }

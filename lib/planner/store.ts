@@ -45,15 +45,44 @@ function secureJsonParse(raw: string): unknown {
   });
 }
 
-function isEntry(value: unknown): value is PlannerEntry {
-  if (typeof value !== 'object' || value === null) return false;
+/**
+ * One entry, accepting both shapes for one release.
+ *
+ * The grid moved an entry's time from a whole `hour` to a `startMinute`, and
+ * `parseState`'s policy is that anything unrecognised is DROPPED rather than
+ * repaired. localStorage is the only copy of a plan, so a visitor with a second
+ * tab open across a deploy boundary would have watched the older tab quietly
+ * empty their trip. A legacy `hour` is therefore lifted to `hour * 60` on read,
+ * and both fields are written on save, until the mirror can go.
+ */
+function toEntry(value: unknown): PlannerEntry | null {
+  if (typeof value !== 'object' || value === null) return null;
   const e = value as Record<string, unknown>;
-  return (
-    typeof e.id === 'string' &&
-    typeof e.attractionSlug === 'string' &&
-    typeof e.attractionName === 'string' &&
-    typeof e.hour === 'number'
-  );
+  if (
+    typeof e.id !== 'string' ||
+    typeof e.attractionSlug !== 'string' ||
+    typeof e.attractionName !== 'string'
+  ) {
+    return null;
+  }
+
+  const startMinute =
+    typeof e.startMinute === 'number'
+      ? e.startMinute
+      : typeof e.hour === 'number'
+        ? e.hour * 60
+        : null;
+  if (startMinute === null || !Number.isFinite(startMinute)) return null;
+
+  return {
+    id: e.id,
+    attractionSlug: e.attractionSlug,
+    attractionName: e.attractionName,
+    startMinute: Math.max(0, Math.min(1500, Math.round(startMinute))),
+    hour: Math.floor(Math.max(0, Math.min(1500, startMinute)) / 60),
+    ...(e.done === true ? { done: true } : {}),
+    ...(typeof e.actualWait === 'number' ? { actualWait: e.actualWait } : {}),
+  };
 }
 
 /**
@@ -81,7 +110,10 @@ function parseState(raw: string): PlannerState {
           if (typeof dayValue !== 'object' || dayValue === null) continue;
           const entries = (dayValue as Record<string, unknown>).entries;
           if (!Array.isArray(entries)) continue;
-          days[date] = { date, entries: entries.filter(isEntry) };
+          days[date] = {
+            date,
+            entries: entries.map(toEntry).filter((entry): entry is PlannerEntry => entry !== null),
+          };
         }
       }
 
@@ -94,6 +126,10 @@ function parseState(raw: string): PlannerState {
           city: String(geo.city ?? ''),
         },
         days,
+        // Stored so the cross-park overview and an add button on a page with no
+        // park payload can each answer "what day is it there?" — a question the
+        // browser's own offset gets wrong for any park in another zone.
+        ...(typeof park.timezone === 'string' ? { timezone: park.timezone } : {}),
       };
     }
   }
