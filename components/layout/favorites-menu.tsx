@@ -48,19 +48,38 @@ export function FavoritesMenu({ disabled }: { disabled?: boolean }) {
         tabIndex={disabled ? -1 : 0}
         onClick={toggle}
         data-header-stagger
-        className="text-muted-foreground hover:text-foreground flex cursor-pointer items-center gap-1 text-sm font-medium transition-colors"
+        /* `gap-2.5` und nicht `gap-1`: die Zählblase ragt rechts aus dem Stern heraus und lag mit
+           dem alten Abstand auf dem Chevron. Der Abstand ist konstant, ob null oder acht
+           Favoriten — die Blase ist absolut positioniert und misst nichts aus. */
+        className="text-muted-foreground hover:text-foreground flex cursor-pointer items-center gap-2.5 text-sm font-medium transition-colors"
       >
         {/* Der Zähler sitzt AUF dem Stern, nicht daneben. Als Geschwister war er eine zweite
             Marke in der Zeile — und er hätte den Eintrag breiter gemacht, sobald jemand etwas
             markiert, was jeden Nachbarn in der Navigationszeile verschoben hätte. Absolut
             positioniert ist die Breite des Auslösers konstant, ob null oder acht Favoriten. */}
         <span className="relative flex items-center">
+          {/* Gold, nicht Primärfarbe. Derselbe Stern steht auf jeder Park- und Bahnseite und in
+              jeder Karte — dort ist er `fill-amber-400 text-amber-500` (`FavoriteStar`). Zwei
+              Farben für dieselbe Geste heißt, dass der Stern hier oben etwas anderes zu sein
+              scheint als der, den man gerade gedrückt hat; und in Primärblau stand er direkt
+              neben der blauen Zählblase, die ihn ohnehin überlappt. */}
           <Star
-            className={`h-4 w-4 ${counts.total > 0 ? 'fill-primary text-primary' : ''}`}
+            className={`h-4 w-4 ${counts.total > 0 ? 'fill-amber-400 text-amber-500' : ''}`}
             aria-hidden="true"
           />
           {counts.total > 0 && (
-            <span className="bg-primary text-primary-foreground absolute -top-1.5 -right-2 min-w-[15px] rounded-full px-[3px] text-center text-[10px] leading-[15px] font-semibold tabular-nums">
+            /* Der Ring ist nicht Zierrat: die Blase liegt AUF dem Stern, und ohne eine
+               Trennkante laufen die gefüllte Sternspitze und der Blasenrand ineinander — genau
+               die Stelle, an der beide zusammen wie ein einziger unlesbarer Fleck aussehen.
+               `ring-background` ist die Farbe des Balkens darunter (`bg-background/80`), also
+               schneidet der Ring die Blase aus dem Stern heraus statt eine zweite Marke
+               danebenzusetzen.
+
+               Sie sitzt in der oberen rechten ECKE, nicht mittig auf dem Stern, und ist so klein
+               wie zwei Ziffern erlauben: mittig und einen Tick größer deckte sie bei 13
+               Favoriten dreizehn der sechzehn Sternpixel ab — vom Stern blieb ein goldener
+               Stummel unten links, und das Ding, das man auseinanderhalten soll, war weg. */
+            <span className="bg-primary text-primary-foreground ring-background absolute -top-2 -right-2.5 min-w-[14px] rounded-full px-[3px] text-center text-[9px] leading-[14px] font-semibold tabular-nums ring-2">
               {counts.total}
             </span>
           )}

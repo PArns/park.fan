@@ -1,8 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import { Star } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { Clock, Star } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { Skeleton } from '@/components/ui/skeleton';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
@@ -11,6 +11,8 @@ import { useFavorites } from '@/lib/hooks/use-favorites';
 import { useFavoriteCounts } from '@/lib/hooks/use-favorite-counts';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useMounted } from '@/lib/hooks/use-mounted';
+import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
+import { formatDurationShort } from '@/lib/i18n/time';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import type { NearbyParksData, ParkWithDistance } from '@/types/nearby';
@@ -29,7 +31,7 @@ import type {
   FavoriteRestaurant,
   FavoriteShow,
 } from '@/lib/api/favorites';
-import type { AttractionStatus, CrowdLevel, ParkStatus } from '@/lib/api/types';
+import type { AttractionStatus, CrowdLevel, ParkStatus, ScheduleSummary } from '@/lib/api/types';
 
 /**
  * The favorites menu's contents — cards in the full-width band, rows in the 300 px burger sheet.
@@ -99,8 +101,21 @@ function WaitFigure({ minutes, unit }: { minutes: number; unit: string }) {
 /**
  * One favorite as a card: picture on top, name and place under it, the figure in the footer.
  *
- * `aspect-[16/10]` rather than a fixed height: the band is fluid between 1024 and 1536 px, and a
- * fixed picture height turns into a different crop at every width instead of the same one scaled.
+ * **Every card in this panel is exactly as tall as every other one, and none of that height
+ * depends on what the API answered.** Two groups sit side by side in the band, and their columns
+ * are NOT the same width — `flexGrow: count` gives the bigger group more of the band, so five
+ * starred parks get 231 px columns next to four rides' 183 px. With `aspect-[16/10]` the picture
+ * height followed that width, so a park card stood 27 px taller than the ride card beside it
+ * before a single line of text was drawn. Hence a FIXED picture height: the crop shape now
+ * varies a little with the column width instead of the card height varying with it, which is the
+ * cheaper of the two — `object-cover` fills the box either way and the focal point still holds.
+ *
+ * The text block underneath is reserved rather than conditional, for the same reason and for a
+ * second one: within a group it made rows ragged too. A ride with no wait time rendered no
+ * figure at all (32 px shorter), a closed park's `0/64` is a `text-xs` line where an open one has
+ * a `text-2xl` one (8 px), and a ride whose park is unknown dropped its subtitle. So the
+ * subtitle, the figure and the schedule each get a box of their own whether or not there is
+ * anything to put in it.
  */
 function Card({
   href,
@@ -110,6 +125,7 @@ function Card({
   imagePosition,
   crowd,
   figure,
+  schedule,
   badge,
 }: {
   href: string;
@@ -119,6 +135,7 @@ function Card({
   imagePosition?: string;
   crowd?: CrowdLevel | null;
   figure?: React.ReactNode;
+  schedule?: React.ReactNode;
   badge?: React.ReactNode;
 }) {
   const tint = crowd && crowd !== 'unknown' ? CROWD_FIELD[crowd] : null;
@@ -130,7 +147,7 @@ function Card({
         prefetch={false}
         className="group border-border/60 bg-card/40 hover:border-primary/40 flex h-full flex-col overflow-hidden rounded-xl border transition-colors"
       >
-        <span className="bg-muted relative block aspect-[16/10] overflow-hidden">
+        <span className="bg-muted relative block h-32 shrink-0 overflow-hidden">
           {image ? (
             <Image
               src={image}
@@ -153,11 +170,126 @@ function Card({
           <span className="text-foreground group-hover:text-primary truncate text-sm font-semibold transition-colors">
             {title}
           </span>
-          {subtitle && <span className="text-muted-foreground truncate text-xs">{subtitle}</span>}
-          {figure && <span className="mt-1.5 block">{figure}</span>}
+          {/* Leer heißt leer, nicht weg — siehe oben. Das Geviert hält die Zeile offen. */}
+          <span className="text-muted-foreground truncate text-xs">{subtitle || '\u00A0'}</span>
+          {/* `h-6` ist die Höhe von `WaitFigure` (text-2xl, leading-none), damit die kleinere
+              Ersatzangabe darin sitzt statt die Karte kürzer zu machen. */}
+          <span className="mt-1.5 flex h-6 items-center">{figure}</span>
+          <span className="mt-1 flex h-4 items-center">{schedule}</span>
         </span>
       </Link>
     </li>
+  );
+}
+
+/**
+ * „Schließt in 3 Std. 12 Min." / „Öffnet in 40 Min." / „Öffnet am Fr., 5. Sept." für eine
+ * Favoritenkarte.
+ *
+ * Rein und ohne Uhr: `now` kommt von außen, damit die Funktion testbar bleibt und der Aufrufer
+ * entscheidet, wann sie überhaupt eine Antwort geben darf. Vor dem Mount ist `now` `null` und
+ * hier kommt `null` heraus — die Zeile ist dann leer, aber ihr Kasten steht (siehe `Card`), also
+ * kostet das Nachrücken nichts.
+ *
+ * Der Status des Parks wird bewusst nicht gelesen, nur der Fahrplan und die Uhr in der Zeitzone
+ * des Parks: `status` ist die Live-Lage („gerade außerplanmäßig zu"), die Frage hier ist aber,
+ * wann laut Plan auf- und zugeschlossen wird. Beides nebeneinander widerspricht sich nicht — das
+ * Badge auf dem Bild sagt das eine, diese Zeile das andere.
+ */
+function scheduleMessage(
+  {
+    todaySchedule,
+    nextSchedule,
+    timezone,
+  }: {
+    todaySchedule?: ScheduleSummary;
+    nextSchedule?: ScheduleSummary;
+    timezone?: string;
+  },
+  now: Date | null,
+  t: (key: string) => string,
+  tCommon: (key: string, values?: Record<string, string | number | Date>) => string,
+  locale: string
+): string | null {
+  if (!now) return null;
+
+  const tz = timezone ? { timeZone: timezone } : {};
+  const dayIn = (d: Date) => d.toLocaleDateString('en-CA', tz);
+
+  try {
+    if (todaySchedule?.scheduleType === 'OPERATING') {
+      const opening = new Date(todaySchedule.openingTime);
+      const closing = new Date(todaySchedule.closingTime);
+      // Der Eintrag heißt „today", muss es aber in der Zeitzone des Parks auch sein: für einen
+      // Park in Kalifornien ist der 2. September hier schon der 1. dort.
+      if (dayIn(opening) === dayIn(now)) {
+        if (now < opening) {
+          return `${t('opensIn')} ${formatDurationShort(opening.getTime() - now.getTime(), tCommon)}`;
+        }
+        if (now < closing) {
+          return `${t('closesIn')} ${formatDurationShort(closing.getTime() - now.getTime(), tCommon)}`;
+        }
+      }
+    }
+
+    if (nextSchedule?.scheduleType !== 'OPERATING') return null;
+    const next = new Date(nextSchedule.openingTime);
+    const diff = next.getTime() - now.getTime();
+    if (diff <= 0) return null;
+    // Unter einem Tag zählt die Restzeit, darüber das Datum: „öffnet in 62 Std." ist keine
+    // Angabe, mit der jemand etwas anfangen kann.
+    if (diff < 24 * 60 * 60 * 1000) {
+      return `${t('opensIn')} ${formatDurationShort(diff, tCommon)}`;
+    }
+    return `${t('opensOn')} ${next.toLocaleDateString(locale, {
+      weekday: 'short',
+      day: 'numeric',
+      month: 'short',
+      ...tz,
+    })}`;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Die Fahrplanzeile unter der Kennzahl.
+ *
+ * `suppressHydrationWarning`, weil der Text an der Uhr des Lesers hängt; `useMinuteNowDate` gibt
+ * vor dem Mount `null` zurück, der erste Client-Render stimmt also mit dem Server überein und die
+ * Zeile füllt sich eine Tick später.
+ */
+function ScheduleLine({
+  todaySchedule,
+  nextSchedule,
+  timezone,
+}: {
+  todaySchedule?: ScheduleSummary;
+  nextSchedule?: ScheduleSummary;
+  timezone?: string;
+}) {
+  const t = useTranslations('favorites');
+  const tCommon = useTranslations('common');
+  const locale = useLocale();
+  const now = useMinuteNowDate();
+
+  const message = scheduleMessage(
+    { todaySchedule, nextSchedule, timezone },
+    now,
+    t,
+    tCommon,
+    locale
+  );
+  if (!message) return null;
+
+  return (
+    <span
+      className="text-muted-foreground flex min-w-0 items-center gap-1 text-[11px]"
+      suppressHydrationWarning
+    >
+      <Clock className="h-3 w-3 shrink-0" aria-hidden="true" />
+      <span className="truncate">{message}</span>
+    </span>
   );
 }
 
@@ -222,13 +354,15 @@ function GroupHeading({ title, count }: { title: string; count: number }) {
 function CardSkeletons({ count }: { count: number }) {
   return (
     <>
+      {/* Dieselben Kästen wie in `Card`, sonst springt das Band beim Eintreffen der Daten. */}
       {Array.from({ length: Math.min(count, MAX_CARDS) }).map((_, i) => (
         <li key={i} className="border-border/60 overflow-hidden rounded-xl border">
-          <Skeleton className="aspect-[16/10] rounded-none" />
+          <Skeleton className="h-32 rounded-none" />
           <div className="p-3">
-            <Skeleton className="h-4 w-28" />
-            <Skeleton className="mt-1.5 h-3 w-20" />
-            <Skeleton className="mt-2 h-5 w-12" />
+            <Skeleton className="h-5 w-28" />
+            <Skeleton className="mt-0.5 h-4 w-20" />
+            <Skeleton className="mt-1.5 h-6 w-12" />
+            <Skeleton className="mt-1 h-4 w-24" />
           </div>
         </li>
       ))}
@@ -379,12 +513,26 @@ export function FavoritesMenuPanel({
     : { gridTemplateColumns: 'repeat(auto-fill, minmax(10.5rem, 1fr))' };
   const groupStyle = (count: number): React.CSSProperties | undefined =>
     isSheet ? undefined : { flexGrow: count, flexBasis: 0 };
+  /*
+   * Shows und Restaurants wachsen NICHT mit ihrer Anzahl.
+   *
+   * `groupStyle` teilt das Band nach Kartenzahl auf, weil mehr Karten mehr Spalten brauchen.
+   * Diese Gruppe zeichnet aber Zeilen, und eine Zeile wird von zusätzlicher Breite nur länger,
+   * nicht besser: vier Shows hätten sich hier ein Drittel des Bandes genommen und es rechts
+   * leer stehen lassen. Eine feste Grundbreite, die den Rest nur mitnimmt, wenn keine andere
+   * Gruppe ihn braucht — und die volle Breite, wenn sie als einzige da ist.
+   */
+  const venueStyle: React.CSSProperties | undefined = isSheet
+    ? undefined
+    : { flexGrow: 1, flexBasis: '13rem' };
 
   return (
     <div>
       <div className="mb-4 flex items-center justify-between gap-4">
         <span className="text-foreground inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase">
-          <Star className="text-primary h-4 w-4 fill-current" aria-hidden="true" />
+          {/* Gold wie der Auslöser im Balken und wie jeder Stern auf einer Park- oder Bahnseite
+              (`FavoriteStar`) — dieselbe Marke, dieselbe Farbe. */}
+          <Star className="h-4 w-4 fill-amber-400 text-amber-500" aria-hidden="true" />
           {t('title')}
         </span>
         {somethingHidden && (
@@ -395,38 +543,6 @@ export function FavoritesMenuPanel({
           >
             {tCommon('viewAll')}
           </Link>
-        )}
-
-        {counts.shows + counts.restaurants > 0 && (
-          <div
-            data-menu-stagger
-            className="min-w-0"
-            style={groupStyle(counts.shows + counts.restaurants)}
-          >
-            <GroupHeading
-              title={counts.shows > 0 ? t('shows') : t('restaurants')}
-              count={counts.shows + counts.restaurants}
-            />
-            <ul className={isSheet ? 'space-y-px' : 'space-y-px'}>
-              {loading ? (
-                <RowSkeletons count={counts.shows + counts.restaurants} />
-              ) : (
-                <>
-                  {venueRows(data.shows, data.restaurants)
-                    .slice(0, cap)
-                    .map((venue) => (
-                      <Row
-                        key={venue.id}
-                        href={venue.href}
-                        title={venue.title}
-                        subtitle={venue.park}
-                      />
-                    ))}
-                  <MoreLine hidden={hiddenVenues} label={more} />
-                </>
-              )}
-            </ul>
-          </div>
         )}
       </div>
 
@@ -491,6 +607,39 @@ export function FavoritesMenuPanel({
                     }
                     label={more}
                   />
+                </>
+              )}
+            </ul>
+          </div>
+        )}
+
+        {/* Shows und Restaurants stehen in DIESER Reihe, nicht in der Kopfzeile.
+            Dort standen sie: im `flex items-center justify-between` neben Überschrift und
+            „Alle anzeigen", also als dritte Spalte einer Titelleiste, vertikal zentriert und
+            32 px hoch gequetscht. Sie sind eine Gruppe wie Parks und Attraktionen und gehören
+            neben sie — nur eben als Zeilen, siehe `venueRows`. */}
+        {counts.shows + counts.restaurants > 0 && (
+          <div data-menu-stagger className="min-w-0" style={venueStyle}>
+            <GroupHeading
+              title={counts.shows > 0 ? t('shows') : t('restaurants')}
+              count={counts.shows + counts.restaurants}
+            />
+            <ul className="space-y-px">
+              {loading ? (
+                <RowSkeletons count={counts.shows + counts.restaurants} />
+              ) : (
+                <>
+                  {venueRows(data.shows, data.restaurants)
+                    .slice(0, cap)
+                    .map((venue) => (
+                      <Row
+                        key={venue.id}
+                        href={venue.href}
+                        title={venue.title}
+                        subtitle={venue.park}
+                      />
+                    ))}
+                  <MoreLine hidden={hiddenVenues} label={more} />
                 </>
               )}
             </ul>
@@ -571,6 +720,13 @@ function ParkEntry({
       imagePosition={park.backgroundPosition}
       crowd={operating ? park.analytics?.crowdLevel : null}
       badge={badge}
+      schedule={
+        <ScheduleLine
+          todaySchedule={park.todaySchedule}
+          nextSchedule={park.nextSchedule}
+          timezone={park.timezone}
+        />
+      }
       figure={
         wait !== null ? (
           <WaitFigure minutes={wait} unit={minuteLabel} />

@@ -1502,6 +1502,9 @@
     "addToFavorites": "Toevoegen aan favorieten",
     "removeFromFavorites": "Verwijderen uit favorieten",
     "more": "{count, plural, =1 {+1 meer} other {+# meer}}",
+    "opensIn": "Opent over",
+    "closesIn": "Sluit over",
+    "opensOn": "Opent op",
     "howTo": {
       "findTitle": "Zoek een park of attractie",
       "findText": "Via de zoekbalk of via „Ontdek Parken”.",
