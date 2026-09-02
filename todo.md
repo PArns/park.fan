@@ -160,11 +160,28 @@ Then `predict.py:2062` folds it into one percentage
       and `predictedWaitHigh` (q0.95), or `uncertaintyMinutes` = the width. Decide
       one shape and keep it; do not ship both.
 - [ ] `WaitTimePrediction` entity (`src/ml/entities/wait-time-prediction.entity.ts`):
-      one nullable `smallint` column. **This is the heaviest-written table in the
-      system (~228k rows per run, TimescaleDB hypertable)** — the entity header
-      documents indexes being removed for write cost. One narrow nullable column, no
-      new index.
-- [ ] Migration. Follow the existing migration convention in `src/database/`.
+      one nullable `smallint` column, no new index.
+
+      **There are no migrations in this repo.** `synchronize: process.env.DB_SYNCHRONIZE === "true"`
+          (`src/config/database.config.ts:54`), and `.env.production.example:12` sets it
+          to `true` — TypeORM adds the column itself. Nothing to write, and nothing to
+          hand-roll either; a migration file would be the odd one out.
+
+          Cost, since this is the heaviest-written table in the system (~228k rows per
+          run, 24.66M rows, TimescaleDB hypertable): `smallint` is 2 bytes and nullable
+          costs nothing when null, because the row already carries a null bitmap for
+          `confidence`, `crowdLevel`, `status` and `baseline`. That is roughly 50 MB
+          uncompressed against the 822 + 335 + 276 + 225 MB of indexes the entity header
+          records having been removed for write cost. Compression segments by
+          `attractionId` ordered by `predictedTime ASC`
+          (`src/database/timescale-init.service.ts:296-303`), so neighbouring uncertainty
+          values compress well. Verdict: affordable.
+
+          One thing to verify on the real database before relying on it: chunks compress
+          after 14 days, and `ALTER TABLE … ADD COLUMN` has to work on already-compressed
+          chunks. The image is `timescale/timescaledb:latest-pg18`, recent enough that a
+          nullable add does not decompress — confirm rather than assume.
+
 - [ ] Surface it: `hourlyForecast[]` items, `headlinerForecast.rides[]`, and the new
       endpoints below.
 - [ ] Update `docs/ml/quantile-serving-and-calibration.md` — its TL;DR table says
