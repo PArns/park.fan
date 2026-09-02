@@ -626,6 +626,19 @@
     "seasonalSummerOnly": "Alleen in de zomer",
     "seasonalOffSeason": "Buiten seizoen",
     "offSeasonCount": "{count} buiten seizoen",
+    "filterSection": {
+      "title": "Attracties verfijnen",
+      "hint": "Toont alleen wat bij je keuze past.",
+      "searchLabel": "Zoeken",
+      "seasonLabel": "Seizoen"
+    },
+    "heightFilter": {
+      "label": "Lichaamslengte",
+      "inactive": "Alle lengtes",
+      "hint": "Kies een lengte",
+      "reset": "Lengtefilter wissen",
+      "result": "{shown} van {total} attracties"
+    },
     "mapMarkers": {
       "noMapData": "Geen kaartgegevens beschikbaar voor dit park.",
       "parkCenter": "Park centrum",

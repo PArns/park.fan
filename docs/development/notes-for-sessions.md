@@ -48,7 +48,7 @@ Reminders and context for AI or human sessions working on the codebase.
     - `AttractionCard` + `ShowCard` — badge shown whenever `isSeasonal === true`.
     - Attraction detail page (`[attraction]/page.tsx`) — badge shown in the title meta row next to the land badge.
     - Search (`search-bar.tsx`) — small `🍃` Leaf icon when `isSeasonal && isCurrentlyInSeason === true`.
-    - Park tabs (`tabs-with-hash.tsx`) — off-season items hidden by default (attractions + shows + headliners). A glass toggle button **"N außer Saison"** (with `EyeOff`/`Eye` icon, `backdrop-blur-md` glass style) appears next to the section heading when any off-season items exist; clicking it reveals them.
+    - Park tabs (`tabs-with-hash.tsx`) — off-season items hidden by default (attractions + shows + headliners). A glass toggle button **"N außer Saison"** (with `EyeOff`/`Eye` icon, `backdrop-blur-md` glass style) appears when any off-season items exist; clicking it reveals them. On the attractions tab it sits in the [filter panel](../features/attraction-filter-panel.md) beside the search box and the rider-height slider; on the shows tab it is still a lone control above the grid.
     - Park map (`park-map.tsx`) — off-season attractions and shows are excluded from markers by default (no toggle on the map, by design).
 
     **Translations** — keys `seasonal`, `seasonalWinter`, `seasonalSummer`, `offSeasonCount` added to all 6 locale files (`messages/`).

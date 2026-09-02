@@ -4,6 +4,54 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – feat: Größenfilter auf der Parkseite, und ein Panel für die drei Filter
+
+Wer mit Kind in einen Park fährt, hat eine Frage vor allen anderen: was darf es fahren. Die Antwort
+stand längst auf jeder Karte („Ab 120 cm"), aber nur einzeln – 40 Karten durchsehen und im Kopf
+mitzählen.
+
+**Der Filter kommt nur, wenn der Park Mindestgrößen liefert.** Rund ein Drittel des Katalogs hat
+dazu nichts hinterlegt, und ein Regler, dessen jede Position dieselben 40 Bahnen zeigt, ist
+schlechter als keiner. Die Skala kommt aus dem Park selbst: zwei Schritte unter der kleinsten Grenze
+(dort muss eine Position stehen, die nichts freigibt) bis zur größten, mit den Grenzen des Parks als
+Markierungen auf der Schiene. `maximumHeight` filtert mit, streckt die Schiene aber nicht – die
+Werte sind meist die Sicherheitsobergrenze einer Achterbahn, im Phantasialand 140, 145, 195, 200 und
+205 cm, und ein Drittel der Schiene für „zu groß für eine Achterbahn" wäre verschenkt.
+
+Ein Regler statt drei Knöpfen, obwohl sich das Ergebnis nur an den Grenzen des Parks ändert: niemand
+kennt die Größe seines Kindes als eine von drei Zahlen, sondern als 118. Eine Bahn ohne hinterlegte
+Grenze bleibt sichtbar – niemand hat etwas aufgeschrieben, das ist kein Verbot.
+
+**Suche, Größe und Saison stehen jetzt in einem Panel** mit eigenem Header. Vorher schwebte das
+Suchfeld per `md:absolute` über dem Parkfoto neben der Rope-Drop-Karte und lag auf dem Telefon als
+vollbreiter Kasten über dem ersten Land; der Saison-Schalter saß daneben in einer nackten Flex-Zeile.
+Nichts sagte, dass das ein Satz Bedienelemente über einer Liste ist, und für ein drittes war kein
+Platz.
+
+Drei Zellen mit je einer Überschrift, je 60 px hoch, durch eine Haarlinie getrennt, links im Panel
+statt über die ganze Breite gezogen. Der Größenfilter braucht drei Zeilen, die anderen beiden je
+eine Zeile Bedienelement, und in einer Reihe ohne Überschriften stand der Saison-Schalter deshalb
+mitten in der Differenz. Unter `md` teilen sich Suche und Saison eine Zeile und der Regler nimmt die
+zweite: 275 px statt 373 px.
+
+**Der Regler sah aus, als wäre schon etwas gewählt.** Der Griff lag auf der kleinsten Grenze des
+Parks, mit gefüllter Schiene dahinter, also auf einem Wert, den niemand ausgesucht hatte. Jetzt liegt
+er am linken Ende, hohl, ohne Füllung, daneben steht „Alle Größen" und unter der Schiene „Größe
+wählen". Ein Klick genau auf die Ruheposition setzt den Wert, den das Feld schon hat, also feuert
+`change` nicht: `onPointerDown` schaltet den Filter deshalb ein.
+
+**Die Suche greift an der Saison vorbei, an der Größe nicht.** Die Saison ist eine Eigenschaft der
+Bahn, nach der niemand gefragt hat. Eine Körpergröße ist eine Aussage über die Person in der
+Schlange: Ein Kind mit 105 cm wird nicht größer, weil jemand „Taron" tippt. Ist die Liste deshalb
+leer, benennt sich der Filter im Leerzustand selbst.
+
+Das Panel rendert in beiden Zweigen von `tabs-with-hash.tsx` – vor und nach dem Mount dasselbe
+Bauteil statt eines `h-9`-Platzhalters, der seine Höhe ein zweites Mal aufschreiben müsste.
+Regeln als reine Funktionen in `lib/utils/rider-height.ts` (`pnpm test:rider-height`), Details unter
+[Attraction Filter Panel](features/attraction-filter-panel.md).
+
+---
+
 ## Unreleased – Der °C/°F-Schalter steht jetzt neben dem Theme-Schalter
 
 Die Einheit steuert Temperaturen im Wetter-Kalender, in Blogartikeln und auf dem Reisezeit-Hub – der

@@ -626,6 +626,19 @@
     "seasonalSummerOnly": "Solo en verano",
     "seasonalOffSeason": "Fuera de temporada",
     "offSeasonCount": "{count} fuera de temporada",
+    "filterSection": {
+      "title": "Acotar las atracciones",
+      "hint": "Muestra solo lo que encaja con tu selección.",
+      "searchLabel": "Búsqueda",
+      "seasonLabel": "Temporada"
+    },
+    "heightFilter": {
+      "label": "Estatura",
+      "inactive": "Todas las estaturas",
+      "hint": "Elige una estatura",
+      "reset": "Quitar el filtro de estatura",
+      "result": "{shown} de {total} atracciones"
+    },
     "mapMarkers": {
       "noMapData": "No hay datos de mapa disponibles para este parque.",
       "parkCenter": "Centro del parque",
