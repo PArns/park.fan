@@ -1,28 +1,24 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
-import { CalendarPlus } from 'lucide-react';
+import { useState } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
+import { CalendarPlus, ChevronDown } from 'lucide-react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { PlannerContextBand, type PlannerDayState } from './planner-context-band';
 import { PlannerDayPicker } from './planner-day-picker';
 import { PlannerTimeline } from './planner-timeline';
 import { PlannerRideSearch } from './planner-ride-search';
+import { PlannerOverview } from './planner-overview';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { totalsFor } from '@/lib/planner/estimate';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
+import { formatShortDuration } from '@/lib/utils/duration';
+import { cn } from '@/lib/utils';
 
 interface PlannerFlyoutProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-}
-
-/** Minutes as `1 h 25` or `45 Min.`, whichever reads shorter. */
-function formatMinutes(total: number): string {
-  if (total < 60) return `${total} Min.`;
-  const hours = Math.floor(total / 60);
-  const rest = total % 60;
-  return rest === 0 ? `${hours} h` : `${hours} h ${rest}`;
 }
 
 /**
@@ -39,6 +35,7 @@ function formatMinutes(total: number): string {
  */
 export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   const t = useTranslations('planner');
+  const locale = useLocale();
   const {
     activeParkSlug,
     activeDate,
@@ -48,7 +45,19 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
     setDone,
     removeRide,
     setActive,
+    clearDay,
   } = usePlanner();
+
+  // Which of the two things the panel is: one day, or everything planned. It
+  // resets on close rather than persisting, because the day is what the panel is
+  // FOR — reopening it into a list of dates would make the common case a step
+  // longer for the sake of the rare one. Reset in the close handler rather than
+  // in an effect on `open`: the state change belongs to the event that caused it.
+  const [showOverview, setShowOverview] = useState(false);
+  const handleOpenChange = (next: boolean) => {
+    if (!next) setShowOverview(false);
+    onOpenChange(next);
+  };
 
   const isPhone = useMediaQuery('(max-width: 639px)');
   const park = activeParkSlug ? state.parks[activeParkSlug] : null;
@@ -89,18 +98,8 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
         .map((d) => d.date)
     : [];
 
-  /** Switching park keeps a day if that park has one planned, else offers today. */
-  const switchPark = (slug: string) => {
-    const target = state.parks[slug];
-    const dates = Object.values(target?.days ?? {})
-      .filter((d) => d.entries.length > 0)
-      .map((d) => d.date)
-      .sort();
-    setActive(slug, dates[0] ?? activeDate);
-  };
-
   return (
-    <Sheet open={open} onOpenChange={onOpenChange}>
+    <Sheet open={open} onOpenChange={handleOpenChange}>
       <SheetContent
         side={isPhone ? 'bottom' : 'right'}
         // `side="bottom"` ships `h-auto` and no ceiling, so the height is the
@@ -116,29 +115,27 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
           </SheetTitle>
           {park && (
             <div className="flex items-center justify-between gap-2">
-              <div className="min-w-0">
-                <p className="text-muted-foreground truncate text-xs">{park.name}</p>
-                {/* Other parks the visitor is planning. One line, and only when
-                    there is somewhere else to go — a switcher offering one park
-                    is a control that does nothing. */}
-                {parkSlugs.length > 1 && (
-                  <div className="mt-0.5 flex flex-wrap gap-1">
-                    {parkSlugs
-                      .filter((slug) => slug !== activeParkSlug)
-                      .map((slug) => (
-                        <button
-                          key={slug}
-                          type="button"
-                          onClick={() => switchPark(slug)}
-                          className="bg-accent/40 hover:bg-accent truncate rounded px-1.5 py-0.5 text-[11px] transition-colors"
-                        >
-                          {state.parks[slug].name}
-                        </button>
-                      ))}
-                  </div>
+              {/* The park name is the way into the overview. It was a plain
+                  label with a row of chips under it naming the OTHER parks, and
+                  a chip said nothing about what was planned in one. */}
+              <button
+                type="button"
+                onClick={() => setShowOverview((value) => !value)}
+                aria-expanded={showOverview}
+                className="text-muted-foreground hover:text-foreground -mx-1 flex min-w-0 items-center gap-1 rounded px-1 py-0.5 text-xs transition-colors"
+              >
+                <span className="truncate">{park.name}</span>
+                {/* Only ever a disclosure of a list worth opening. */}
+                {(parkSlugs.length > 1 || plannedDates.length > 1) && (
+                  <ChevronDown
+                    className={cn(
+                      'size-3 shrink-0 transition-transform',
+                      showOverview && 'rotate-180'
+                    )}
+                  />
                 )}
-              </div>
-              {activeDate && (
+              </button>
+              {activeDate && !showOverview && (
                 <PlannerDayPicker
                   value={activeDate}
                   onChange={(date) => setActive(activeParkSlug, date)}
@@ -149,71 +146,98 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
           )}
         </SheetHeader>
 
-        <div className="border-border/60 shrink-0 border-b">
-          <PlannerContextBand day={day ?? null} state={dayState} />
-        </div>
-
-        {/* The scroll lives here, not on SheetContent — see the note above. */}
-        <div className="min-h-0 flex-1 overflow-y-auto px-1 py-2">
-          {activeEntries.length === 0 ? (
-            <div className="flex h-full min-h-[180px] flex-col items-center justify-center gap-1 px-6 text-center">
-              <p className="text-sm font-medium">{t('empty.title')}</p>
-              <p className="text-muted-foreground text-xs">
-                {isPhone ? t('empty.bodyMobile') : t('empty.body')}
-              </p>
-            </div>
-          ) : (
-            <PlannerTimeline
-              entries={activeEntries}
-              day={day ?? null}
-              onReorder={(entryId, toIndex) =>
-                activeParkSlug &&
-                activeDate &&
-                reorderRide(activeParkSlug, activeDate, entryId, toIndex)
-              }
-              onToggleDone={(entryId, done) =>
-                activeParkSlug && activeDate && setDone(activeParkSlug, activeDate, entryId, done)
-              }
-              onRemove={(entryId) =>
-                activeParkSlug && activeDate && removeRide(activeParkSlug, activeDate, entryId)
-              }
+        {showOverview ? (
+          <div className="min-h-0 flex-1 overflow-y-auto py-2">
+            <PlannerOverview
+              state={state}
+              activeParkSlug={activeParkSlug}
+              activeDate={activeDate}
+              onPick={(slug, date) => {
+                setActive(slug, date);
+                setShowOverview(false);
+              }}
+              onClearDay={clearDay}
             />
-          )}
-        </div>
+          </div>
+        ) : (
+          <>
+            <div className="border-border/60 shrink-0 border-b">
+              <PlannerContextBand day={day ?? null} state={dayState} />
+            </div>
 
-        {/* The way in on a phone, where there is no ride card to drag from. Also
+            {/* The scroll lives here, not on SheetContent — see the note above. */}
+            <div className="min-h-0 flex-1 overflow-y-auto px-1 py-2">
+              {activeEntries.length === 0 ? (
+                <div className="flex h-full min-h-[180px] flex-col items-center justify-center gap-1 px-6 text-center">
+                  <p className="text-sm font-medium">{t('empty.title')}</p>
+                  <p className="text-muted-foreground text-xs">
+                    {isPhone ? t('empty.bodyMobile') : t('empty.body')}
+                  </p>
+                </div>
+              ) : (
+                <PlannerTimeline
+                  entries={activeEntries}
+                  day={day ?? null}
+                  onReorder={(entryId, toIndex) =>
+                    activeParkSlug &&
+                    activeDate &&
+                    reorderRide(activeParkSlug, activeDate, entryId, toIndex)
+                  }
+                  onToggleDone={(entryId, done) =>
+                    activeParkSlug &&
+                    activeDate &&
+                    setDone(activeParkSlug, activeDate, entryId, done)
+                  }
+                  onRemove={(entryId) =>
+                    activeParkSlug && activeDate && removeRide(activeParkSlug, activeDate, entryId)
+                  }
+                />
+              )}
+            </div>
+
+            {/* The way in on a phone, where there is no ride card to drag from. Also
             shown on desktop: typing a name beats hunting for its card, and the
             list is the day's own rides either way. */}
-        {park && activeDate && (
-          <div className="shrink-0">
-            <PlannerRideSearch
-              parkSlug={park.slug}
-              parkName={park.name}
-              geo={park.geo}
-              date={activeDate}
-              day={day ?? null}
-              dayState={dayState}
-            />
-          </div>
-        )}
+            {park && activeDate && (
+              <div className="shrink-0">
+                <PlannerRideSearch
+                  parkSlug={park.slug}
+                  parkName={park.name}
+                  geo={park.geo}
+                  date={activeDate}
+                  day={day ?? null}
+                  dayState={dayState}
+                />
+              </div>
+            )}
 
-        {activeEntries.length > 0 && (
-          <div className="border-border/60 text-muted-foreground flex shrink-0 items-baseline justify-between gap-3 border-t px-3 py-2.5 text-xs">
-            <span>{t('summary.rides', { count: activeEntries.length })}</span>
-            <span className="flex items-baseline gap-3">
-              {totals.done > 0 && (
-                <span>{t('summary.done', { done: totals.done, total: activeEntries.length })}</span>
-              )}
-              {/* Expected and actual are never added together: one is a
+            {activeEntries.length > 0 && (
+              <div className="border-border/60 text-muted-foreground flex shrink-0 items-baseline justify-between gap-3 border-t px-3 py-2.5 text-xs">
+                <span>{t('summary.rides', { count: activeEntries.length })}</span>
+                <span className="flex items-baseline gap-3">
+                  {totals.done > 0 && (
+                    <span>
+                      {t('summary.done', { done: totals.done, total: activeEntries.length })}
+                    </span>
+                  )}
+                  {/* Expected and actual are never added together: one is a
                   prediction and the other a measurement, and a single figure
                   mixing them moves for two reasons at once. */}
-              {totals.counted > 0 && (
-                <span className="text-foreground font-mono tabular-nums">
-                  {formatMinutes(totals.expectedMinutes)}
+                  {totals.counted > 0 && (
+                    <span
+                      className="text-foreground font-mono tabular-nums"
+                      title={t('summary.waiting')}
+                    >
+                      {/* The site's own duration format, not a second one invented
+                      here: `formatShortDuration` is what the weather warnings
+                      already print and it knows all six locales' unit labels. */}
+                      {formatShortDuration(totals.expectedMinutes, locale)}
+                    </span>
+                  )}
                 </span>
-              )}
-            </span>
-          </div>
+              </div>
+            )}
+          </>
         )}
       </SheetContent>
     </Sheet>

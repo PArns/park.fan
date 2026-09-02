@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -43,6 +43,9 @@ function todayLocal(): string {
  */
 export function PlannerDayPicker({ value, onChange, plannedDates = [] }: PlannerDayPickerProps) {
   const t = useTranslations('planner');
+  // The reader's locale, not a hard-coded `de-DE`: this shipped German weekday
+  // abbreviations into a list that is otherwise fully translated.
+  const locale = useLocale();
   const today = todayLocal();
   const planned = useMemo(() => new Set(plannedDates), [plannedDates]);
 
@@ -50,7 +53,7 @@ export function PlannerDayPicker({ value, onChange, plannedDates = [] }: Planner
     const list: { date: string; label: string }[] = [];
     for (let i = 0; i < DAYS_AHEAD; i++) {
       const date = addDays(today, i);
-      const weekday = new Date(`${date}T12:00:00Z`).toLocaleDateString('de-DE', {
+      const weekday = new Date(`${date}T12:00:00Z`).toLocaleDateString(locale, {
         weekday: 'short',
         day: '2-digit',
         month: '2-digit',
@@ -65,7 +68,7 @@ export function PlannerDayPicker({ value, onChange, plannedDates = [] }: Planner
       list.unshift({ date: value, label: value });
     }
     return list;
-  }, [today, value, planned, t]);
+  }, [today, value, planned, locale, t]);
 
   const atStart = value <= today;
 

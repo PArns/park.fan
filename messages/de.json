@@ -1866,7 +1866,6 @@
   "planner": {
     "title": "Tagesplaner",
     "open": "Planer öffnen",
-    "close": "Planer schließen",
     "addRide": "In den Plan",
     "inPlan": "Im Plan",
     "removeRide": "Aus dem Plan nehmen",
@@ -1889,12 +1888,10 @@
       "done": "{done} von {total} gefahren"
     },
     "entry": {
-      "at": "ab {hour} Uhr",
       "expected": "erwartet",
       "markDone": "Als gefahren markieren",
       "markUndone": "Doch noch nicht gefahren",
       "actual": "tatsächlich {minutes} Min.",
-      "actualUnknown": "gefahren",
       "noCurve": "Für diese Bahn liegt keine Stundenkurve vor.",
       "dragHandle": "Verschieben"
     },
@@ -1907,13 +1904,9 @@
       "longRangeHint": "So weit im Voraus wird die Tageshöhe selbst dünn. Nimm die Zahlen als Richtung, nicht als Zusage."
     },
     "band": {
-      "label": "Schwankung",
-      "plusMinus": "± {minutes} Min.",
-      "unmeasured": "Wie weit das danebenliegt, ist für diese Entfernung noch nicht gemessen."
+      "plusMinus": "± {minutes} Min."
     },
     "context": {
-      "crowd": "Andrang",
-      "weather": "Wetter",
       "weatherUnknown": "So weit im Voraus gibt es keine Wettervorhersage.",
       "holiday": "Feiertag",
       "bridgeDay": "Brückentag",
@@ -1926,15 +1919,13 @@
       "placeholder": "Bahn suchen",
       "noResults": "Keine Bahn gefunden."
     },
-    "parks": {
-      "label": "Park",
-      "switch": "Park wechseln",
-      "other": "Andere Parks"
-    },
     "clearDay": "Tag leeren",
     "clearDayConfirm": "Alle Einträge dieses Tages löschen?",
     "loading": "Plan wird geladen",
     "error": "Der Plan konnte nicht geladen werden.",
-    "noPlan": "Für diesen Tag liegt keine Prognose vor."
+    "noPlan": "Für diesen Tag liegt keine Prognose vor.",
+    "overview": {
+      "empty": "Noch keine Tage geplant."
+    }
   }
 }

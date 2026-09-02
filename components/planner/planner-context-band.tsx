@@ -111,12 +111,13 @@ export function PlannerContextBand({ day, state }: PlannerContextBandProps) {
       <div className="flex flex-wrap items-center gap-1.5">
         {hasCrowd && <CrowdLevelBadge level={crowd} />}
 
-        {hours && (
-          <span className="text-muted-foreground inline-flex items-center gap-1 text-xs">
-            <Clock className="size-3" />
-            {hours}
-          </span>
-        )}
+        {/* A day with no published hours is not the same as a day nobody asked
+            about: every figure below depends on when the park opens, so the
+            absence is stated rather than left as a missing line. */}
+        <span className="text-muted-foreground inline-flex items-center gap-1 text-xs">
+          <Clock className="size-3" />
+          {hours ?? t('day.noHours')}
+        </span>
 
         {context.isHoliday && (
           <Badge variant="outline" className="text-[11px]">
