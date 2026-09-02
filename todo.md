@@ -416,6 +416,17 @@ spec in that directory as proof that the processor is wired up.
 
 ## 3. Frontend (`/home/user/park.fan`) — second stage
 
+Shipped so far, German only, on `claude/daily-planner-wait-times-pmegzw`: the store
+and its pure actions, the flyout (right-hand sheet / bottom sheet), the timeline with
+pointer drag, the bar with its tier-dependent edge, the context band, the ride search,
+the day picker, the overview of every park and day, the ride page's add control and the
+calendar's "plan this day". `pnpm check:planner` drives all of it in a browser;
+`pnpm test:planner-actions` covers the reducers.
+
+`/plan/day` answers 404 in production until the backend PR is merged, and the panel says
+so rather than drawing empty bars. That is the check's 404 branch, and it is an
+assertion rather than a waiver.
+
 ### 3.1 Data model
 
 - [ ] `Trip`: id, name, date range, days. `TripDay`: date, park (or rest day),
@@ -430,8 +441,9 @@ Cookies in this repo are written with `cookies-next`, `maxAge` 365 d, `path:'/'`
 `sameSite:'lax'`; `lib/utils/favorites.ts` is the reference implementation, including
 its parse cache and its `secureJsonParse` guard against prototype pollution.
 
-- [ ] Cookie holds the active trip id only — small, and server-readable.
-- [ ] localStorage holds the trips.
+- [x] Cookie holds a flag only (`planner=1`), not the plan. Server-readable, and the
+      plan itself never leaves localStorage.
+- [x] localStorage holds the plan (`parkfan_planner`), read through `secureJsonParse`.
 - [ ] Backend sync for sharing (§2.7).
 - [ ] `proxy.ts:39` strips `set-cookie` from every non-redirect response. Cookie
       writes happen client-side, like `rememberLocale()` does.
@@ -441,15 +453,18 @@ its parse cache and its `secureJsonParse` guard against prototype pollution.
 
 ### 3.3 The flyout
 
-- [ ] `components/ui/sheet.tsx` already exists (Radix Dialog based) with
+- [x] `components/ui/sheet.tsx` already exists (Radix Dialog based) with
       `side="right"` and an unused `side="bottom"` — the desktop flyout and the
       mobile sheet are both already there. `vaul` is not installed and is not needed.
-- [ ] Two traps documented in that file: a scroll container on `SheetContent` scrolls
+- [x] Two traps documented in that file: a scroll container on `SheetContent` scrolls
       the close button away (put it on a child, as the burger menu does), and
       `side="bottom"` has no max-height, so the call site supplies one.
-- [ ] Mount in the locale layout. It is on every page, so it pays the layout's
+- [x] Mount in the locale layout. It is on every page, so it pays the layout's
       i18n budget — see §3.6.
-- [ ] Mobile: bottom sheet with ride search. `cmdk` is installed and
+- [x] Mobile: bottom sheet with ride search. Built as a plain filtered list, not
+      `cmdk`: the day's twenty rides are already in memory, so `EntityPicker`'s debounce
+      and `AbortController` would add latency to a loop over an array. `cmdk` is
+      installed and
       `components/ui/command.tsx` wraps it. The closest existing thing is
       `EntityPicker` (`components/contribute/entity-picker.tsx:151-213`) — a combobox
       over parks _and_ attractions with a 250 ms debounce, an `AbortController` and
@@ -457,23 +472,42 @@ its parse cache and its `secureJsonParse` guard against prototype pollution.
 
 ### 3.3b Choosing the day
 
-- [ ] `ParkCalendarDayDetail` (`park-calendar-day-detail.tsx:93-632`) is already a
+- [x] `ParkCalendarDayDetail` (`park-calendar-day-detail.tsx:93-632`) is already a
       Radix dialog with prev/next day navigation, arrow-key handling and `lastDay`
       dimming, and is already mounted from both the calendar grid and the park header.
       "Plan this day" belongs in it rather than in a new dialog.
 - [ ] The calendar has no day route — day selection is a `useState` in
       `park-calendar-grid.tsx:88`. A planner that links to a specific day needs one;
       follow the month-segment pattern in `lib/parks/calendar-segments.ts`.
-- [ ] The dropdown variant of day selection is the same state by another control. One
+- [x] The dropdown variant of day selection is the same state by another control. One
       source of truth, two inputs.
+
+### 3.3c What the browser found that the build could not
+
+A boundary's own `useTranslations` counts against the LAYOUT set, not the boundary, so
+everything that reads `planner` sits behind the boundary file's import. That split is why
+`planner-launcher.tsx` and `planner-launcher-button.tsx` are two files, and
+`plan-day-button-lazy.tsx` and `plan-day-button.tsx` likewise.
+
+A rebuild under a running `next start` serves chunk URLs the new build does not have, the
+page never hydrates, and the planner simply is not there — which looks exactly like a
+regression in the feature. Kill the server before rebuilding.
+
+`document.documentElement.clientWidth` is not what a `fixed` element's `inset-x-0`
+resolves to once a modal's scroll lock is installed; the two differ by a scrollbar. Measure
+geometry against a reference element positioned the same way.
+
+`components/ui/sheet.tsx` sat at `z-50` while the language banner is deliberately at
+`z-[60]`, so the banner painted across the top of every open sheet — the burger menu
+included. `dialog.tsx` was already at `z-[70]`; the sheet is now too.
 
 ### 3.4 Drag and drop
 
-- [ ] No DnD library is installed and none should be added for this. Pointer events
-      plus a FLIP animation; GSAP is already a dependency.
+- [x] No DnD library is installed and none should be added for this. Pointer events
+      with `setPointerCapture` and a fixed row height for the index maths. No FLIP yet.
 - [ ] Follow the motion split `use-menu-reveal.ts` established: CSS owns visibility,
       GSAP animates transforms, `prefers-reduced-motion` skips the import entirely.
-- [ ] Keyboard equivalent for reordering. Drag alone is not an interface.
+- [ ] Keyboard equivalent for reordering. Drag alone is not an interface. **Still open.**
 - [ ] **`AttractionCard` is a hostile drag surface.** Its root is a `<Link>`
       (`components/parks/attraction-card.tsx:168-172`) with a `hover:-translate-y-1`,
       and it carries `data-card-fx`, which a delegated `document`-level
@@ -506,15 +540,15 @@ renders it, times six locales. The layout ships only `LAYOUT_MESSAGE_NAMESPACES`
 are generated into `i18n/route-namespaces.generated.ts` by
 `pnpm generate:route-namespaces` — never hand-edited.
 
-- [ ] The planner is mounted in the layout but is closed on almost every page view.
-      Its namespace belongs in `LAZY_MESSAGE_BOUNDARIES` and gets fetched as a
-      per-locale chunk when opened, the way `FavoritesSection` handles
-      `parks`+`attractions`.
+- [x] The planner is mounted in the layout but is closed on almost every page view.
+      Its namespace is in `LAZY_MESSAGE_BOUNDARIES` and is fetched as a per-locale chunk,
+      the way `FavoritesSection` handles `parks`+`attractions`. Two boundaries now: the
+      launcher, and the calendar's "plan this day".
 - [ ] The eager skeleton must reserve the same box so the swap costs no layout shift.
-- [ ] `pnpm check:client-messages` has to stay green at every step. A missing
+- [x] `pnpm check:client-messages` has to stay green at every step. A missing
       namespace does not throw — next-intl logs MISSING_MESSAGE and renders the raw
       key.
-- [ ] Six locales, no exceptions.
+- [ ] Six locales, no exceptions. **Still German only** — deliberately, per the brief.
 
 ### 3.7 Service worker
 
