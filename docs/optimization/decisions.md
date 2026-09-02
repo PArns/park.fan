@@ -434,3 +434,237 @@ scheduled yet:
 > One correction to that audit: it estimated ~230–260 kB per park payload from `history[]`
 > arrays. Direct measurement against the live API contradicts this — 61.8 kB for
 > Phantasialand, 112.9 kB for Europa-Park. Use the measured numbers.
+
+---
+
+## 2026-09-02 — ACCEPTED: heute liest die Prognose, und der Kalender darf einen Tag stehen
+
+**Hebel:** Invocations + Egress + Korrektheit. **Repos:** beide.
+**Dateien:** `calendar.service.ts`, `parks.controller.ts`, `park-metadata.processor.ts`;
+`park-calendar-grid.tsx`, `park-calendar-day-detail.tsx`, `calendar-month-summary.ts`,
+`integrated-calendar.ts`, `use-calendar-data.ts`, `app/api/parks/[...path]/route.ts`,
+`next.config.ts`.
+
+Der Auslöser war ein Wunsch nach zwei Dingen, die sich als ein Ding herausgestellt haben.
+`calendar.service.ts` überschrieb `crowdLevel` für **heute** mit dem Live-Occupancy-Spot-Reading
+aus Redis, damit die Kalenderkachel zum Badge im Park-Header passt. Das war der einzige Wert im
+Payload, der sich alle fünf Minuten bewegte — und deshalb die Zahl, an der jede TTL darüber hing:
+15 min Backend-Header, 300 s Proxy, 6 h SSR-Seed, 5 min React Query.
+
+Er blieb auch nicht im Kalender. `best-days.service.ts:158` baut seinen Snapshot aus
+`buildCalendarResponse` und projiziert `crowdLevel` wörtlich, also reiste die Momentaufnahme in
+einen Snapshot mit 26 h Redis-TTL und 72 h Next-Data-Cache — und von dort in servergerenderte
+Prosa, die heute als kommenden ruhigen Tag empfahl, auf Basis einer Messung von dem Moment, in
+dem der Warmup zufällig lief. Effektiv bis zu ~12 h alt (der Warmup läuft 08:00/20:00 UTC und
+pusht danach `revalidateBestDays`), nicht 26 oder 72 — aber ein Spot-Reading gehört in keine
+dieser Zahlen.
+
+**Was geändert wurde**
+
+| Schicht                    | vorher           | nachher                                        |
+| -------------------------- | ---------------- | ---------------------------------------------- |
+| Backend `/calendar` Header | 900 / 1800 s     | **86400 s**, 604800 s für reine Vergangenheit  |
+| Backend SWR                | 3600 s           | = TTL, außer bei einem Bereich mit HEUTE (1 h) |
+| Proxy `/api/…/calendar`    | s-maxage 300     | **86400** + 86400 SWR                          |
+| SSR-Monatszusammenfassung  | 6 h, Tag `parks` | **24 h**, Tags `parks` **+ Per-Park-Tag**      |
+| React Query                | 5 min            | **1 h**                                        |
+| Seite selbst (Monats-URL)  | keine            | **`CDN-Cache-Control: s-maxage=86400`**        |
+| Seite selbst (Hub)         | keine            | **`CDN-Cache-Control: s-maxage=3600`**         |
+
+**Drei Dinge, die eine längere TTL erst ehrlich machen, und ohne die sie falsch statt alt wäre.**
+
+1. `assembleFromMonthCaches` leitet `isToday` und `crowdLevel` jetzt gegen ein frisches „heute"
+   neu ab. Der Cache ist nach **Monat** geschlüsselt, also wird der Eintrag des laufenden Monats
+   morgen wieder gelesen, und jede tagesrelative Aussage darin ist dann einen Tag alt: `isToday`
+   markierte gestern (es war das einzige Feld, das die Funktion nicht korrigierte, während vier
+   Nachbarfelder daneben korrigiert wurden), und ein Tag, der beim Schreiben in der Zukunft lag,
+   behielt seine Prognose, nachdem er vorbei war. Bei 15 min TTL war das schwer zu treffen, bei
+   24 h ist es der Normalfall.
+2. `sync-schedules-only` pusht jetzt den Per-Park-Tag. Eine Fahrplan-Korrektur ist das Einzige,
+   was sich innerhalb eines Tages an einem Kalendermonat ändern kann; der Job leerte bisher
+   seinen eigenen Redis-Cache und hörte auf. Der Kommentar im Controller, der 900 s mit „a
+   day-old calendar would outlive the schedule corrections it is meant to show" begründete, hatte
+   recht — solange die Korrektur keinen Weg zum Frontend hatte.
+3. Der Monats-Seed trägt den Per-Park-Tag. `parks` allein ist alle 213 Parks oder keiner, und
+   genau deshalb hat ihn nie jemand für die Korrektur eines einzelnen Parks gepusht.
+
+**Der Hub bekommt eine Stunde, nicht einen Tag**, und das ist keine Vorsicht: er rendert den
+**laufenden** Monat aus der Uhr des Parks (`page.tsx:236,295`) und datiert seine Zusammenfassung
+gegen `getServerToday(tz)`. Am 1. Oktober lieferte ein 24-h-Hub das September-Raster unter einem
+Titel, der September sagt — auf 1.278 URLs. Die 5.652 Monats-URLs tragen ihren Monat im Pfad und
+haben diese Abhängigkeit nicht.
+
+**Was der Leser verliert.** Die Kachel für heute kann jetzt „moderat" sagen, während der
+Park-Header „hoch" zeigt — das war der Unterschied, den der Override 2026 beseitigt hat. Er kommt
+zurück, weil die beiden verschiedene Fragen beantworten: die Kachel sagt, wofür der Tag
+vorhergesagt war, der Header, wie es gerade ist. Der Tagesdialog stellt beide weiterhin
+nebeneinander, jetzt aber auf einer Skala (`todayCrowdLevel` gegen `crowdLevel`, beides
+Tagesaggregate) statt vorher auf zweien.
+
+**`CDN-Cache-Control` ist kein dritter Versuch derselben Sache.** `next.config.ts` hält zwei
+gescheiterte Produktionsexperimente fest und schließt mit „Do not try this again from here". Beide
+setzten `Cache-Control` — den einen Key, den eine `force-dynamic`-Seite selbst schreibt. Was sie
+gemessen haben, ist eine Kollision auf diesem Key, nicht die Unfähigkeit, einen Header zu setzen:
+ihre eigene Kontrollbedingung sagt es („a marker header added to the same `source` arrived on the
+park URL"). `CDN-Cache-Control` ist RFC 9213 und ein anderer Key. **Nach dem Deploy nachsehen:**
+`curl -sI` auf eine Monats-URL, `cdn-cache-control` lesen. Fehlt er, wächst die Notiz um einen
+dritten Eintrag. Die Cloudflare-Regel von „ignore cache-control, Edge TTL = N" auf „use
+cache-control header if present" umzustellen ist ein separater, manueller Schritt und darf erst
+danach passieren.
+
+**Verifikation:** Backend `tsc`, eslint, prettier, `nest build`, 1.282 Tests in 126 Suites grün
+(drei neue in `calendar.service.spec.ts` für die neu abgeleiteten Felder, drei neue in
+`parks.controller.calendar-cache.spec.ts` für die drei Header-Zweige). Frontend `tsc`, eslint,
+prettier, `pnpm release:check`, `pnpm build` (Exit 0, alle 12 Header-Regeln im
+`routes-manifest.json`, Monat vor Hub), sechs Testsuiten. Ein Test in `test-calendar-month.mjs`
+hatte den Override in seiner **Prämisse** — „today never competes: its crowdLevel is a live
+reading" — und ist umgedreht statt angepasst.
+
+**Kostenverschiebung, ausdrücklich:** die eingesparten Bytes verschwinden nicht, sie wandern zu
+Cloudflare (Pauschale). Und ein 24-h-Cache an einer Schicht, die **niemand purgen kann**, ist
+24 h echte Blindheit für alles, was nicht über einen Tag läuft.
+
+---
+
+## 2026-09-02 — Review-Ergebnis: die zwei größten Hebel liegen im Cloudflare-Dashboard
+
+Zwei parallele Audits (Kalender/Gesamtbild und Ride-Route), je vier bis fünf Leser und sechs
+Vorschlags-Perspektiven mit adversarialer Gegenprüfung, gegen Produktion gemessen am 2026-09-02.
+87 Vorschläge, davon die folgenden mit Zahlen. **Kein Code-Hebel in diesem Repo kommt auch nur in
+die Nähe der ersten beiden Punkte.**
+
+### Gemessen, nicht vermutet
+
+Die Hypothese, die diese ganze Zeile erklären sollte — irgendetwas macht die HTML-Antworten
+uncachebar — ist **widerlegt**: keine `set-cookie` auf vier HTML-Antworten (`proxy.ts:39` löscht
+sie), `Vary` sind ausschließlich die vier Next-RSC-Header plus `Accept-Encoding`, eine Anfrage mit
+Cookies und eine mit Googlebot-UA antworteten beide `cf-cache-status: HIT`. Cloudflare **cacht**
+die Kalender- und Ride-Seiten, trotz des `no-store` vom Origin.
+
+Was stattdessen gemessen wurde, in Stichproben aus den echten Sitemaps:
+
+|               | Stichprobe     | HIT-Quote       | max. `age` |
+| ------------- | -------------- | --------------- | ---------- |
+| Kalender-URLs | n=100          | **25 %**        | 41.989 s   |
+| Ride-URLs     | n=30 bzw. n=40 | **10 % / 25 %** | 36.516 s   |
+
+Daraus folgen die zwei Hebel.
+
+**① Die 308 auf ausgelaufene Monats-URLs sind `cf-cache-status: BYPASS`** — auf allen sieben
+geprüften. Cloudflares Cache-Rule macht 200 cachebar und 308 nicht, also ist **jeder Crawl einer
+verwaisten Monats-URL für immer eine Vercel-Invocation**. Der Body ist 70.520 B **ohne
+`content-encoding`** gegen gemessene 50.157 B brotli für eine echte Kalenderseite — der Redirect
+kostet das **1,41-fache der Seite, die er verweigert**. Aus der Egress-Identität aufgelöst:
+**~5.501 308er pro 12 h = 36,7 % der Kalender-Invocations** (Sensitivität 26–43 %), **388 MB/12 h
+= 19,4 % der Transferzeile**. Unabhängig gestützt durch den Sprung der Route von 9,9 K auf 15 K
+Invocations pro 12 h am Tag nach dem `back: 12 → 3`-Schnitt, der 6.390 URLs verwaist hat.
+
+Das steht in diesem Dokument als **DEFERRED (2026-09-01, „bodyless 308")**, und alle drei Gründe
+sind messbar falsch: die 4 % stammen aus einer Stichprobe **vor** dem Schnitt; „ein Bruchteil eines
+Prozents der Transferzeile" sind gemessen 19,4 %; und der tragende Einwand — der Fix hieße eine
+zweite Kopie der Monatsregel in `proxy.ts` — setzte voraus, dass ein bodyless Redirect der einzige
+Fix ist. Ist er nicht. `BYPASS` auf 308 gegen `HIT` auf 200 bei gleichem Pfad heißt: die Antwort
+ist **wegen ihres Statuscodes** uncachebar, und das sagt man einer Cache-Rule.
+**→ Cloudflare → Cache Rules → die Parks-Regel → Edge TTL → Statuscode-TTL für 308 (und 301,
+wegen der Stadt-Hubs) ergänzen.** Ein Dashboard-Feld, keine Zeile Code, kein dupliziertes Routing.
+Sicher per Inspektion: alle sieben Proben lieferten ein byte-identisches, konstantes `Location` —
+den Kalender-Hub des Parks. Erwartung: **−5.000 Invocations und −353 MB pro 12 h.**
+
+**② Edge TTL und Tiered Cache.** Zwei Zahlen, die das Repo nicht beantworten kann und die die
+Rangfolge von allem anderen entscheiden — beide read-only zu klären:
+
+- **Läuft Tiered Cache?** `decisions.md` (2026-09-01) hält fest, Smart Tiered Cache sei aktiv und
+  die 87 % Miss blieben. Die Messung heute sagt 75 % Miss auf dem Kalender, und alle ~~180 Proben
+  kamen aus **einem** Colo (`cf-ray …-IAD`), also ist die Lücke zwischen 15.000 Misses/12 h und
+  dem Boden eines global geteilten Caches (6.930/12 h) — Faktor 2,16 — mit Colo-Fragmentierung
+  vereinbar, aber nicht bewiesen. **Test:** dieselbe kalte URL innerhalb einer Minute aus zwei
+  Regionen abrufen. HIT beim zweiten aus einem anderen Colo = Tiered Cache an. MISS = aus, und
+  dann ist der Toggle der größte verfügbare Einzelhebel (~~**−8.000 Invocations/12 h, −27 % der
+  Site**), kostenlos.
+- **Welches Edge TTL trägt die Regel?** Aus 25 HIT-Altern auf ≈12 h eingegrenzt, nicht abgelesen.
+  Steht im Dashboard.
+
+Ist beides geklärt, gehört das TTL **nach Pfadfamilie gespalten** statt einer Zahl für ganz
+`/*/parks/*`: Monats-URLs 24 h (die App liefert den Header jetzt selbst), Hub ≤1 h, **Ride-Seiten
+48–72 h**. Bei den Ride-Seiten liegt der Punkt genau dort: ihr Crawl-Intervall ist **42 h** und ihr
+Edge TTL ~12 h, der Cache kann sich also **nie füllen** — die theoretische Obergrenze ist
+12/(12+42) = 22 %, gemessen sind es 10 %. Bei 7 d wären es 80 % Decke; realistisch −43 % bis −78 %
+der Route, **12,3–22,1 GB/Monat**. Der Preis ist ehrlich zu nennen: **nichts in beiden Repos kann
+Cloudflare purgen**, also ist eine kuratierte Korrektur an einer Bahn so lange unsichtbar wie das
+TTL läuft. Deshalb 48–72 h als erster Schritt und 7 d als Decke, nicht als Startwert.
+
+**③ Jede prerenderte Seite ist `cf-cache-status: DYNAMIC`.** Die Cache-Rule deckt nur
+`/*/parks/*`, also gehen Glossar, Blog, Startseite und Geo-Hubs bei **jedem** Request aus Vercel
+raus — `x-vercel-cache: HIT`, aber die Bytes verlassen trotzdem Vercel. 1.793 Requests / 116 MB
+pro 12 h. Keine Invocations (es läuft keine Funktion), reiner Egress: Decke **~7 GB/Monat**. Zu
+holen sind davon realistisch nur Glossar und Blog, deren Inhalt sich nur beim Deploy ändert; die
+Startseite hat ISR-Seeds und gehört auf ein kurzes TTL oder gar nicht hinein.
+
+### Code-Hebel, nach Wert
+
+1. **Das Ride-Shell-Payload braucht eine Allow-Liste, keine Delete-Kette.** `leanParkForShell`
+   ist eine Delete-Kette und behält damit alles, was die API morgen ergänzt; 6 der 21 Felder, die
+   sie ausliefert, liest niemand. Als Allow-Liste sind es 12 — dasselbe Muster wie
+   `leanParkForCalendarShell`, das dort −2,9 % brotli gebracht hat. Achtung beim Naheliegenden:
+   `typicalWaits` zu löschen spart **nichts**, weil der Flight es referenziert statt dupliziert.
+2. **Der `parks`-Namespace auf der Ride-Route.** In diesem Dokument am 2026-09-01 abgelehnt, mit
+   „~3 kB actual, ~2 GB/Monat". In situ nachgemessen, auf dem echten Produktions-HTML und mit
+   Brotli **q4** (verifiziert als Produktionsniveau: q4 reproduziert den Wire-Body auf 226 B
+   genau, q11 schmeichelt jeder Differenz um ~20 %): **−5.717 bis −5.861 B pro Invocation,
+   −10,4 % der Seite, 3,77 GB/Monat.** Das ist 1,9× die abgelehnte Zahl. Und die Migration ist
+   kleiner als gedacht: vier Aufrufstellen und zwölf Schlüssel in Sub-Namespaces
+   (`parks.holidayContext.*`, `parks.seasonal.*`) — der Mechanismus, den `parks.crowdLevels` und
+   `parks.status` schon vorführen —, nicht die 23 Aufrufstellen, mit denen CLAUDE.md die
+   siteweite Variante bepreist. Trotzdem eine Sechs-Sprachen-Migration, also
+   `pnpm check:client-messages` nach jedem Schritt.
+3. **Der Day-Curve-Request ist auf ~92 % der Ride-Seiten eine garantierte 404.** Die Seite rendert
+   `DailyWaitTimeChartClient` bedingungslos, also feuert `useRideDayCurve` immer — aber das
+   Backend antwortet nur für Bahnen im Top-8-Stundenprofil des Parks (34 von 454 Bahnen über 14
+   zufällige Parks = 7,5 %). Fix: ein `hasDayCurve`-Boolean auf der Attraction-Detail-Response,
+   die die Seite ohnehin holt, gelesen aus dem **bestehenden** Redis-Eintrag — niemals aus einem
+   Compute in der Response, das wäre wieder die Nowcast-im-Park-Fetch-Falle. Bis zu 920
+   Invocations/12 h.
+4. **`getGeoMenu()` parst 164 KB `/v1/discovery/continents` bei jedem Seitenaufruf der ganzen
+   Site**, um 1.893 B Header-Navigation zu erzeugen. Eine Backend-Projektion, keine
+   Frontend-Löschung. Der einzige CPU-Posten in diesem Audit, der über 2 ms liegt.
+5. **Der Sitemap-Varianten-Slug ist für 7 Bahnen invertiert:** `/v1/sitemap/attractions` listet
+   `raven` **und** `raven-2`, `getAttractionPaths()` verwirft `raven-2`, weil die Basis existiert
+   — aber das Park-Payload enthält nur `raven-2`. Verifiziert: `…/raven` → **404**, `…/raven-2` →
+   **200**. Kostenmäßig belanglos (80 Invocations/Tag); es geht darum, dass 7 echte Ride-Seiten
+   aus der Sitemap unerreichbar sind und an ihrer Stelle eine 404 im Index steht. Im selben
+   Aufwasch: **7.029 der 7.126 Ride-URLs (98,6 %) tragen dasselbe `<lastmod>` 2026-08-28**, weil
+   der erste Durchlauf von `diffSnapshot` jeden unbekannten Key mit „heute" stempelt — genau die
+   Pathologie, gegen die der Docstring dieser Datei geschrieben ist.
+
+### Ausdrücklich NICHT
+
+- **ISR / On-Demand-Revalidation statt `force-dynamic`.** Kauft genau das, was der CDN kauft, und
+  berechnet dafür ~1,5 M ISR-Write-Units pro Tag. Die Arithmetik, die es killt, ist die
+  Deploy-Kadenz, nicht die Write-Größe.
+- **Ein Icon-Sprite.** Gemessen als `<symbol>`+`<use>`: **419 B schlechter**, nicht 7,5 KB besser.
+  Der Render-Cost-Leser hatte es als größten Einzelposten benannt; die Messung sagt das Gegenteil.
+- **Die Backend-Payload-Löschungen** (`statistics.history`, die drei Null-Felder,
+  `comparison`/`baseline`). Bleiben abgelehnt — aber die Begründung von 2026-09-01 ist falsch. Der
+  richtige Grund ist, dass das Frontend sie ohnehin abschneidet, bevor ein Leser ein Byte sieht.
+- **Ein `robots.txt`-Disallow auf den Monats-Tail.** Die Obergrenze wäre −42 % aller Invocations,
+  aber sie hängt an der ungemessenen Annahme, dass Invocations der URL-Zahl folgen — was die
+  Sitemap-Prioritäten (Hub 0.8, Monate 0.4–0.6) und die interne Verlinkung bestreiten. **Nach ①
+  und ② fällt der inkrementelle Wert auf ~8 %** — bei identischem, dauerhaftem SEO-Verlust. Erst
+  die Cache-Fragen klären. Und falls der Sweep AI-Crawler sind (Cloudflare AI Crawl Control), gibt
+  es dieselbe Reduktion über `TRAINING_CRAWLERS` zu SEO-Kosten null.
+- **Eine schlanke Ride-Shell-Projektion, die das ganze Park-Payload ersetzt.** Kostenverschiebung:
+  multipliziert den Data-Cache-Eintrag mit 34.
+- **`/stats/day` in die Attraction-Detail-Response falten.** Zwei Client-Requests für eine Bahn,
+  aber unterschiedliche Kadenz und unterschiedliche Fehlerdomäne — der Fix ist Punkt 3 oben, nicht
+  ein Merge.
+
+### Offene Fragen, die nur eine Messung beantwortet
+
+| Frage                                                | Wie                                                                                               |
+| ---------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| Läuft Tiered Cache?                                  | Dieselbe kalte URL binnen einer Minute aus zwei Regionen; zweiter Abruf HIT aus anderem Colo = an |
+| Welches Edge TTL trägt die Parks-Regel?              | Cloudflare → Caching → Cache Rules ablesen                                                        |
+| Hub- vs. Monats-Anteil der 15 K Kalender-Invocations | Cloudflare Path Analytics                                                                         |
+| User-Agent-Split des Sweeps                          | Cloudflare AI Crawl Control — entscheidet, ob ①–③ oder ein Crawler-Block der richtige Hebel ist   |
+| Wie viele der 15 K sind 308er                        | Vercel-Logs nach Statuscode für die Kalender-Route                                                |
+| Kommt `cdn-cache-control` auf der Monats-URL an?     | `curl -sI` nach dem Deploy — Voraussetzung für die Umstellung der Cloudflare-Regel                |
