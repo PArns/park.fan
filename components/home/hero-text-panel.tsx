@@ -32,12 +32,13 @@ export function HeroTextPanel({ children, className, ...rest }: React.ComponentP
         // left-aligned against a wide empty half. It gets more width AND centres itself there;
         // from xl it goes back to hugging the left column next to the map.
         'mx-auto max-w-3xl xl:mx-0 xl:max-w-2xl',
-        // While the search field has focus its dropdown covers the nearby pills. Fading them
-        // out is what lets that dropdown be real glass: through 75% translucency the pills'
-        // high-contrast text ghosts straight through the blur, and the only alternative was to
-        // make the dropdown nearly opaque. `:has()` keeps this in CSS — no shared open state
-        // between two sibling components — and browsers without it just keep the pills.
-        '[&:has(input:focus)_[data-hero-bubbles]]:pointer-events-none [&:has(input:focus)_[data-hero-bubbles]]:opacity-0',
+        // While the search field has focus its dropdown covers everything below it — the
+        // nearby pills and, on `/de`, the Parkfan95 pill under them. Fading them out is what
+        // lets that dropdown be real glass: through 75% translucency their high-contrast text
+        // ghosts straight through the blur, and the only alternative was to make the dropdown
+        // nearly opaque. `:has()` keeps this in CSS — no shared open state between sibling
+        // components — and browsers without it just keep the pills.
+        '[&:has(input:focus)_[data-hero-under-search]]:pointer-events-none [&:has(input:focus)_[data-hero-under-search]]:opacity-0',
         // No forced height: the two columns are offset against each other rather than aligned,
         // so each is as tall as its own content.
         'xl:flex xl:flex-col',

@@ -42,6 +42,7 @@ import { HeroNearbyBubbles } from '@/components/home/hero-nearby-bubbles';
 import { HeroWorldPanel } from '@/components/home/hero-world-panel';
 import { HeroWorldPanelSkeleton } from '@/components/home/hero-skeletons';
 import { HeroTextPanel } from '@/components/home/hero-text-panel';
+import { HeroParkfan95Pill } from '@/components/home/hero-parkfan95-pill';
 import { HeroEntranceGate } from '@/components/home/hero-entrance-gate';
 import { FeaturedParksSlot } from '@/components/home/featured-parks-slot';
 import { GlobalStatsSection } from '@/components/home/global-stats-section';
@@ -220,6 +221,11 @@ export default async function HomePage({ params }: HomePageProps) {
                     the open dropdown above them as from the plate's bottom edge below — at mt-4
                     they read as glued to the card's footer. */}
                   <HeroNearbyBubbles className="mt-8" />
+                  {/* park.fan outranks Parkfan95 for his own name, so part of the German
+                    traffic here was looking for Silas. German only — the confusion is a
+                    German-search-market one, and the copy lives in the component for that
+                    reason (see HeroParkfan95Pill). */}
+                  {locale === 'de' && <HeroParkfan95Pill className="mt-4" />}
                 </HeroTextPanel>
 
                 {/* Right: world-map panel — only rendered when there is room (xl+).

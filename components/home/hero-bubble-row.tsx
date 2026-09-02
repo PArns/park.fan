@@ -20,8 +20,8 @@ export function HeroBubbleRow({
   return (
     <div
       // The marker the hero's left panel targets to fade this row out while the search
-      // dropdown is open — see HeroTextPanel.
-      data-hero-bubbles=""
+      // dropdown is open — see HeroTextPanel. The Parkfan95 pill below carries it too.
+      data-hero-under-search=""
       className={cn(
         'flex h-9 items-center gap-2.5 overflow-x-auto overflow-y-hidden',
         '[scrollbar-width:none] [&::-webkit-scrollbar]:hidden',

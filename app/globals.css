@@ -233,6 +233,17 @@
 }
 
 /*
+ * `/de` is the one locale that renders the Parkfan95 signpost at the foot of the plate (see
+ * HeroParkfan95Pill), which is 36 px of pill plus its 16 px `mt-4`. Measured the same way as the
+ * 784 above — every width from 768 px up settles at 836 — because the reservation is only worth
+ * anything while it matches the height the locale actually reaches: left at 784, German would
+ * start exactly one pill short of its own layout.
+ */
+html[lang='de'] {
+  --hero-plate-min-h: 836px;
+}
+
+/*
  * Hero entrance.
  *
  * The panels themselves never animate — see the note on the stagger rules below for why. What
