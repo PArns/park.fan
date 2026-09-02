@@ -204,6 +204,27 @@ export function setActive(
   return { ...state, activeParkSlug: parkSlug, activeDate: date };
 }
 
+/**
+ * Point the planner at a park and a day, registering the park if it is new.
+ *
+ * The way in from the park calendar, where a visitor picks the day BEFORE any
+ * ride — the reverse of the ride page's order. `setActive` alone cannot do it:
+ * it stores two strings, and a slug the state has never seen leaves the panel
+ * with no name, no geo path and therefore no forecast to fetch.
+ *
+ * It adds no entry, so `hasAnyPlan` stays false and the launcher stays hidden
+ * until something is actually planned. An existing day keeps its entries.
+ */
+export function openDay(
+  state: PlannerState,
+  park: { slug: string; name: string; geo: PlannerGeo },
+  date: string
+): PlannerState {
+  const entries = state.parks[park.slug]?.days[date]?.entries ?? [];
+  const next = withDay(state, park.slug, date, entries, { parkName: park.name, geo: park.geo });
+  return { ...next, activeParkSlug: park.slug, activeDate: date };
+}
+
 /** Drop a whole day. An empty park is dropped with it rather than lingering. */
 export function clearDay(state: PlannerState, parkSlug: string, date: string): PlannerState {
   const park = state.parks[parkSlug];

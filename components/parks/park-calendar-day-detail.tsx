@@ -21,6 +21,8 @@ import {
   Ticket,
 } from 'lucide-react';
 import type { CalendarDay, CrowdLevel } from '@/lib/api/types';
+import { PlanDayButtonLazy } from '@/components/planner/plan-day-button-lazy';
+import type { PlannerGeo } from '@/lib/planner/types';
 import {
   CROWD_DOT_CLASS,
   CROWD_LEVEL_ORDER,
@@ -80,6 +82,12 @@ export interface ParkCalendarDayDetailProps {
    * showing the previous day dimmed (see `lastDay` below) instead of closing.
    */
   onNavigate?: (direction: -1 | 1) => void;
+  /**
+   * The park this calendar belongs to. Supplied by the callers that know it, and
+   * the only thing gating the "plan this day" control — the dialog itself is
+   * given a `CalendarDay`, which names no park.
+   */
+  planner?: { parkSlug: string; parkName: string; geo: PlannerGeo };
 }
 
 /**
@@ -96,7 +104,13 @@ export function ParkCalendarDayDetail({
   open,
   onOpenChange,
   onNavigate,
+  planner,
 }: ParkCalendarDayDetailProps) {
+  // "Today" in the PARK's timezone, not the reader's: the calendar shows a whole
+  // month and a visit cannot be planned for a day that has already happened
+  // where the park is. `en-CA` because it formats as YYYY-MM-DD, which is what
+  // `CalendarDay.date` is and what compares correctly as a string.
+  const todayInPark = new Date().toLocaleDateString('en-CA', { timeZone: parkTimezone });
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
   const locale = useLocale();
@@ -349,6 +363,22 @@ export function ParkCalendarDayDetail({
                   ({t('calendarView.details.schedule.estimatedHours')})
                 </span>
               )}
+            </div>
+          )}
+
+          {/* Into the planner from here. The calendar is where a visitor decides
+              WHICH day, and until now that decision had nowhere to go: the
+              planner's own day picker is inside a panel they had no reason to
+              have opened yet. Only on a day the park is actually open — planning
+              a closed day is planning nothing. */}
+          {planner && day.status === 'OPERATING' && day.date >= todayInPark && (
+            <div>
+              <PlanDayButtonLazy
+                parkSlug={planner.parkSlug}
+                parkName={planner.parkName}
+                geo={planner.geo}
+                date={day.date}
+              />
             </div>
           )}
 

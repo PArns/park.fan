@@ -1926,6 +1926,7 @@
     "noPlan": "Für diesen Tag liegt keine Prognose vor.",
     "overview": {
       "empty": "Noch keine Tage geplant."
-    }
+    },
+    "planThisDay": "Diesen Tag planen"
   }
 }
