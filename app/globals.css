@@ -6,6 +6,21 @@
    built-in group-* family and silently drops every `group-hover:` utility app-wide. */
 @variant dark (&:where(.dark, .dark *));
 
+/*
+ * The window in which the homepage hero has a free bottom line for the Parkfan95 signpost to
+ * share with the image attribution. Both numbers are measured, not chosen — see the call site in
+ * `app/[locale]/page.tsx`: 1440 is the width at which a 497 px centred pill clears the widest
+ * caption in the rotation (428 px, `right-4`), and 980 is the height below which the 784 px
+ * plate plus the section's own padding leaves nothing for the pill to sit on but the plate.
+ *
+ * That second number falls out of the layout rather than being tried: the section centres its
+ * content in `min-h-dvh`, so the plate's lower edge is `80 + (H - 912) / 2 + 784` and the pill's
+ * upper edge is `H - 64`, which clears by `(H - 944) / 2`. 980 is what buys ~18 px of it and
+ * still catches the 14-inch laptop at 1512x982; at 900 the plate fills the section and the pill
+ * lands on the nearby-park bubbles.
+ */
+@variant hero-bottom-line (@media (min-width: 1440px) and (min-height: 980px));
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -230,17 +245,6 @@
    * It follows --hero-search-rest-h — that dropdown is 282 px of it. Re-measure both together.
    */
   --hero-plate-min-h: 784px;
-}
-
-/*
- * `/de` is the one locale that renders the Parkfan95 signpost at the foot of the plate (see
- * HeroParkfan95Pill), which is 36 px of pill plus its 16 px `mt-4`. Measured the same way as the
- * 784 above — every width from 768 px up settles at 836 — because the reservation is only worth
- * anything while it matches the height the locale actually reaches: left at 784, German would
- * start exactly one pill short of its own layout.
- */
-html[lang='de'] {
-  --hero-plate-min-h: 836px;
 }
 
 /*

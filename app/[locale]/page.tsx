@@ -221,11 +221,6 @@ export default async function HomePage({ params }: HomePageProps) {
                     the open dropdown above them as from the plate's bottom edge below — at mt-4
                     they read as glued to the card's footer. */}
                   <HeroNearbyBubbles className="mt-8" />
-                  {/* park.fan outranks Parkfan95 for his own name, so part of the German
-                    traffic here was looking for Silas. German only — the confusion is a
-                    German-search-market one, and the copy lives in the component for that
-                    reason (see HeroParkfan95Pill). */}
-                  {locale === 'de' && <HeroParkfan95Pill className="mt-4" />}
                 </HeroTextPanel>
 
                 {/* Right: world-map panel — only rendered when there is room (xl+).
@@ -241,6 +236,46 @@ export default async function HomePage({ params }: HomePageProps) {
                 </div>
               </div>
             </div>
+
+            {/* park.fan outranks Parkfan95 for his own name, so part of the German traffic here
+              was looking for Silas. German only — the confusion is a German-search-market one,
+              and the copy lives in the component for that reason.
+
+              Drawn straight onto the photo rather than onto the plate: inside the plate it was
+              the quietest thing on it and read as part of its bottom edge. Out here it is the
+              second thing on the picture itself, so where there is room it takes the image
+              attribution's baseline (`bottom-6`) and is made of the same glass — see
+              HeroParkfan95Pill.
+
+              THAT LINE IS NOT ALWAYS THERE, and both halves of the condition are measured rather
+              than picked:
+
+              - Wide enough. The pill is centred on the section and the attribution is `right-4`,
+                so they share the line only while the viewport exceeds the pill plus twice the
+                caption's width. The widest caption in the rotation is 428 px — measured by
+                cloning the live panel and swapping in all 53 hero captions — and the German pill
+                is 497, which puts the crossover at 1385. At `xl` they overlap by 14 px; at `lg`
+                the caption paints straight over the pill.
+              - Tall enough. The bottom of this hero is only photo while the plate does not reach
+                it. The section centres 912 px of content (784 plate + `pt-20` + `pb-12`) in its
+                `min-h-dvh`, so the plate's lower edge is `80 + (H - 912) / 2 + 784` against a
+                pill top of `H - 64`: they clear by `(H - 944) / 2`, and 980 is where that is
+                ~18 px and still catches the 14-inch laptop at 1512x982. At 1440x900 the plate
+                fills the section and an absolutely placed pill lands ON it, across the
+                nearby-park bubbles — exactly what moving it out here was for.
+
+              Anywhere else it stays in flow at the foot of the hero: still on the photo, still
+              centred, one line above the caption's. In flow is not by itself enough clearance —
+              the hero fills its `min-h-dvh` at those widths, so the pill landed at 908-948
+              against a caption at 919-976, on the same line by accident. `lg:mb-20` reserves the
+              band the caption occupies (its 57 px plus `bottom-6`) under the last thing in the
+              flow, which is what actually separates them; below `lg` the caption is not drawn at
+              all, so the margin goes with it. */}
+            {locale === 'de' && (
+              <div className="hero-bottom-line:absolute hero-bottom-line:inset-x-4 hero-bottom-line:bottom-6 hero-bottom-line:mt-0 hero-bottom-line:mb-0 mt-10 flex justify-center lg:mb-20">
+                <HeroParkfan95Pill />
+              </div>
+            )}
 
             {/* Hero image attribution. The 3-D hero shows no caption (only the in-park photos that
               replace it do, via the switch); the classic photo hero captions the current image's
