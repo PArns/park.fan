@@ -136,17 +136,21 @@ test(
 );
 
 test(
-  'today never competes: its crowdLevel is a live reading, not a day aggregate',
+  'today competes like any other day, because its crowdLevel is a forecast like any other',
   () => {
-    // The API overrides crowdLevel on TODAY with live occupancy. At 09:30 on a busy Saturday that
-    // reads `very_low` because nobody has queued yet — and today would win a contest it is not
-    // even entered in, on the same scale as thirty forecasts.
+    // It did not, and the reason was real: the API used to override crowdLevel on TODAY with a
+    // live occupancy reading, so at 09:30 on a busy Saturday today read `very_low` because nobody
+    // had queued yet, and it won a contest it was not entered in — thirty forecasts and one spot
+    // measurement on one scale. The backend stopped doing that; today carries the same daily ML
+    // forecast every other cell carries, so excluding it now throws away a real answer.
     const days = month(30, (i) =>
       i === 5 ? { isToday: true, crowdLevel: 'very_low' } : { crowdLevel: 'moderate' }
     );
-    return summarizeCalendarMonth(days, '2026-11-06', TZ).quietest;
+    return summarizeCalendarMonth(days, '2026-11-06', TZ)
+      .quietest.map((d) => d.date)
+      .join(',');
   },
-  null
+  '2026-11-06'
 );
 
 test(

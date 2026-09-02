@@ -26,6 +26,13 @@ import { defaultLocale, SITE_URL } from '@/i18n/config';
  *   curl -H "Authorization: Bearer $CRON_SECRET" https://park.fan/api/cron/prewarm
  * and via the Vercel cron (vercel.json) to recover from cache eviction.
  *
+ * ONCE a day, at 04:00 UTC, and the cadence is the entry's own window rather than a round number.
+ * `PARK_REVALIDATE` is 86400 (lib/api/parks.ts), so a run every six hours re-rendered 213 park
+ * pages to refresh an entry with eighteen hours left on it — 636 of its 848 daily renders were
+ * the same entry filled again. 04:00 puts it an hour ahead of the 05:30 content-change crawl, so
+ * that crawl reads warm entries. Eviction is still covered: it is what the run exists for, and a
+ * deploy triggers it by hand.
+ *
  * Parks are warmed most-popular-first (see getParkPaths) so a time-bounded run always covers the
  * highest-traffic pages. Attractions are very numerous, so they stay opt-in via
  * ?include=attractions — and they read the same per-park entry, so they are warmed one locale deep

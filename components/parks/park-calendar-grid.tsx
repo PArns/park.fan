@@ -123,31 +123,33 @@ export function ParkCalendarGrid({
     enabled: true, // Always fetch for current month
   });
 
-  // Today-only patch: fetches just today with a short staleTime (5 min) so the crowd level
-  // stays in sync with the park overview even when the full-month SSR cache (1h) is stale.
-  const todayStr = format(new Date(), 'yyyy-MM-dd');
-  const { data: todayData } = useCalendarData({
-    continent,
-    country,
-    city,
-    parkSlug,
-    from: todayStr,
-    to: todayStr,
-    staleTime: 5 * 60_000,
-  });
+  /**
+   * Today, in the PARK's timezone — never the browser's.
+   *
+   * A Florida park is still on yesterday's date for six hours after midnight in Berlin, and this
+   * value decides three visible things: which cell wears the HEUTE badge, which days enter the
+   * „Empfohlen" candidate set, and where the month's median is drawn. It read
+   * `format(new Date(), 'yyyy-MM-dd')` — the browser's local date — while the panel around it was
+   * already handed a park-timezone `currentMonth` from the server for exactly this reason.
+   *
+   * Computed inside a memo rather than at render top-level because `new Date()` in a render body
+   * is a new value on every pass; the day only changes once a day, and the month re-renders far
+   * more often than that.
+   */
+  const todayStr = useMemo(
+    () => new Intl.DateTimeFormat('en-CA', { timeZone: parkTimezone }).format(new Date()),
+    [parkTimezone]
+  );
 
-  // Merge: start from fetched month data (or SSR fallback), then overlay today's fresh day.
-  const calendarData = useMemo(() => {
-    const base = fetchedCalendarData || initialCalendarData;
-    const todayDay = todayData?.days?.[0];
-    if (!base || !todayDay) return base;
-    return {
-      ...base,
-      days: base.days.map((d) =>
-        d.date === todayStr ? { ...d, crowdLevel: todayDay.crowdLevel } : d
-      ),
-    };
-  }, [fetchedCalendarData, initialCalendarData, todayData, todayStr]);
+  /*
+   * There used to be a second query here: today alone, on a five-minute staleTime, overlaid on
+   * the month so today's cell matched the live badge in the park header. It is gone with the
+   * backend override it existed to chase — today's crowd level is the ML forecast now, the same
+   * statement every other cell in the grid makes, and a forecast does not move between two
+   * visitors on the same morning. The live reading is still on this page; it is in the header
+   * and in the today panel, where a number that ticks belongs.
+   */
+  const calendarData = fetchedCalendarData || initialCalendarData;
 
   const monthHref = (m: ParkCalendarMonth | null) =>
     m ? parkCalendarPath(locale, continent, country, city, parkSlug, m) : null;
@@ -297,9 +299,6 @@ export function ParkCalendarGrid({
     );
   }, [calendarMap, todayStr]);
 
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-
   return (
     /* No <Card> around this any more: the box lives in `ParkCalendarPanel`, because the month
        stepper has to be INSIDE it and cannot be inside this component — this is a `ssr: false`
@@ -359,10 +358,7 @@ export function ParkCalendarGrid({
 
                     if (!dayData) return null;
 
-                    const isToday =
-                      day.getFullYear() === today.getFullYear() &&
-                      day.getMonth() === today.getMonth() &&
-                      day.getDate() === today.getDate();
+                    const isToday = dateStr === todayStr;
 
                     return (
                       <ParkCalendarDay
@@ -394,10 +390,7 @@ export function ParkCalendarGrid({
                           return <div key={dateStr} className="h-full"></div>;
                         }
 
-                        const isToday =
-                          day.getFullYear() === today.getFullYear() &&
-                          day.getMonth() === today.getMonth() &&
-                          day.getDate() === today.getDate();
+                        const isToday = dateStr === todayStr;
 
                         return (
                           <ParkCalendarDay

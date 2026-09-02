@@ -1,5 +1,6 @@
 import { after } from 'next/server';
 import { getServerApiHeaders } from './client';
+import { parkCacheTag } from './park-live-projection';
 import type { IntegratedCalendarResponse } from '@/lib/api/types';
 
 // Use proxy for client-side, direct live URL for server-side
@@ -236,16 +237,24 @@ export async function getBestDaysCalendarSeed(
 /**
  * How long a month page's server-rendered summary may be reused.
  *
- * Six hours, and the number is about what the summary SAYS rather than what the payload holds:
- * how many days the park opens that month, its quietest and busiest days, the usual hours, the
- * headliner average. None of that differs between two visitors on the same morning. The grid
- * beside it keeps its own live client fetch, so nothing a reader watches tick comes from here.
+ * A day, and the number is about what the summary SAYS rather than what the payload holds: how
+ * many days the park opens that month, its quietest and busiest days, the usual hours, the
+ * headliner average. None of that differs between two visitors on the same morning, and since
+ * today's cell stopped carrying a live occupancy reading, none of it differs between two
+ * visitors on the same day either.
  *
- * Uncached this would be one upstream call per view across 212 parks × 22 months × 6 locales,
- * which is the kind of addition docs/architecture/api-budget.md exists to catch. Tagged `parks`
- * so it clears with the rest of a park's day-stable data.
+ * Six hours before that, which was four upstream calls a day per park per month for a sentence
+ * that changes once. Uncached it would be one upstream call per view across 212 parks × 15
+ * months × 6 locales, which is the kind of addition docs/architecture/api-budget.md exists to
+ * catch.
+ *
+ * The window is not the only thing that clears it, and that is what makes a day defensible: the
+ * entry carries the park's OWN tag as well as `parks`, so the two jobs that can rewrite a month
+ * — the forecast warmup and the daily schedule sync — drop it the moment they run, and a reader
+ * gets a corrected opening time without waiting out the window. `parks` alone is all 213 parks
+ * or nothing, which is why nothing ever pushed it for one park's correction.
  */
-export const CALENDAR_MONTH_REVALIDATE = 6 * 60 * 60;
+export const CALENDAR_MONTH_REVALIDATE = 24 * 60 * 60;
 
 /** How long the streamed month summary may wait before the page gives up on it. */
 const CALENDAR_MONTH_SEED_TIMEOUT_MS = 3000;
@@ -279,7 +288,10 @@ async function fetchCalendarMonth(
     `?from=${from}&to=${to}&includeHourly=none`;
 
   const response = await fetch(url, {
-    next: { revalidate: CALENDAR_MONTH_REVALIDATE, tags: ['parks'] },
+    next: {
+      revalidate: CALENDAR_MONTH_REVALIDATE,
+      tags: ['parks', parkCacheTag(continent, country, city, parkSlug)],
+    },
     headers: {
       'Content-Type': 'application/json',
       ...getServerApiHeaders(),

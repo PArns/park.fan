@@ -153,10 +153,10 @@ export function ParkTodayPanel({
     [browserNow, timezone]
   );
 
-  // "Prognose heute" = the ML FORECAST for today (predicted peak), NOT the live level: the
-  // calendar's today `crowdLevel` is overridden with real-time occupancy, so we read the separate
-  // `predictedCrowdLevel`. Fall back to crowdLevel only on older API builds / unratable days, and
-  // never surface a "closed" sentinel as a forecast.
+  // "Prognose heute" = the ML FORECAST for today (predicted peak). `predictedCrowdLevel` and
+  // `crowdLevel` now agree on today — the live override that used to separate them is gone — so
+  // the fallback is what carries older API builds and unratable days rather than the normal path.
+  // Never surface a "closed" sentinel as a forecast.
   const predictedToday = useMemo(() => {
     if (!calendar || !todayStr) return null;
     const today = calendar.days.find((d) => d.date === todayStr);
