@@ -863,11 +863,18 @@
       "title": "Attraktionen eingrenzen",
       "hint": "Zeigt nur, was zu deiner Auswahl passt.",
       "searchLabel": "Suche",
-      "showLabel": "Anzeigen",
+      "todayLabel": "Heute",
+      "traitsLabel": "Eigenschaften",
       "openNow": "Geöffnet",
-      "wetOnly": "Nässegefahr",
       "resetOpenNow": "Auch geschlossene Attraktionen zeigen",
-      "resetWetOnly": "Auch trockene Attraktionen zeigen"
+      "wetAny": "Nässegefahr",
+      "wetOnly": "Nur mit Nässe",
+      "wetHide": "Ohne Nässe",
+      "fastPass": "Quickpass",
+      "singleRider": "Single Rider",
+      "resetWet": "Nässe-Filter zurücksetzen",
+      "resetFastPass": "Quickpass-Filter zurücksetzen",
+      "resetSingleRider": "Single-Rider-Filter zurücksetzen"
     },
     "heightFilter": {
       "label": "Körpergröße",

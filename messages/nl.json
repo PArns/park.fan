@@ -630,11 +630,18 @@
       "title": "Attracties verfijnen",
       "hint": "Toont alleen wat bij je keuze past.",
       "searchLabel": "Zoeken",
-      "showLabel": "Tonen",
+      "todayLabel": "Vandaag",
+      "traitsLabel": "Kenmerken",
       "openNow": "Open",
-      "wetOnly": "Nat worden",
       "resetOpenNow": "Ook gesloten attracties tonen",
-      "resetWetOnly": "Ook droge attracties tonen"
+      "wetAny": "Nat worden",
+      "wetOnly": "Alleen natte",
+      "wetHide": "Geen natte",
+      "fastPass": "Wachtrij overslaan",
+      "singleRider": "Single rider",
+      "resetWet": "Natfilter wissen",
+      "resetFastPass": "Wachtrijfilter wissen",
+      "resetSingleRider": "Single-riderfilter wissen"
     },
     "heightFilter": {
       "label": "Lichaamslengte",

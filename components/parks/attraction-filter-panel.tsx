@@ -2,20 +2,29 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { DoorOpen, Droplets, Search, SlidersHorizontal } from 'lucide-react';
+import {
+  DoorOpen,
+  Droplet,
+  DropletOff,
+  Search,
+  SlidersHorizontal,
+  Ticket,
+  Users,
+} from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { OffSeasonToggle } from '@/components/parks/off-season-toggle';
 import { FilterToggle } from '@/components/parks/filter-toggle';
 import { RiderHeightFilter } from '@/components/parks/rider-height-filter';
 import { TILE_GLASS } from '@/components/common/glass-card';
+import type { WetMode } from '@/lib/hooks/use-attraction-filter';
 import { cn } from '@/lib/utils';
 
 interface AttractionFilterPanelProps {
   inputRef: React.RefObject<HTMLInputElement | null>;
   searchQuery: string;
   onSearchChange: (value: string) => void;
-  /** Search reaches past the season, so the off-season toggle governs nothing while it runs. */
+  /** Search reaches past the pills, so they govern nothing while it runs. */
   isSearching: boolean;
   offSeasonCount: number;
   showOffSeason: boolean;
@@ -26,38 +35,47 @@ interface AttractionFilterPanelProps {
   onRiderHeightChange: (cm: number | null) => void;
   rideableCount: number;
   totalCount: number;
-  /** Rides OPERATING right now — 0 hides the toggle rather than offering an empty list. */
+  /** Rides OPERATING right now — 0 hides the pill rather than offering an empty list. */
   openCount: number;
   onlyOpen: boolean;
   onToggleOnlyOpen: () => void;
-  /** Rides with `mayGetWet` — 0 hides the toggle; most of the catalogue has none on file. */
+  /** Rides with `mayGetWet` — 0 hides the pill; most of the catalogue has none on file. */
   wetCount: number;
-  onlyWet: boolean;
-  onToggleOnlyWet: () => void;
+  wetMode: WetMode;
+  onCycleWet: () => void;
+  /** Rides selling a queue-jump product, and the park's own name for it. */
+  fastPassCount: number;
+  fastPassLabel: string | null;
+  onlyFastPass: boolean;
+  onToggleOnlyFastPass: () => void;
+  /** Rides with a single-rider line. */
+  singleRiderCount: number;
+  onlySingleRider: boolean;
+  onToggleOnlySingleRider: () => void;
 }
 
 /**
- * The hairline between two cells.
+ * The hairline between the search box and the height slider.
  *
- * Wide screens only: below `xl` the cells are a stacked grid rather than one row, and
- * a rule across a stack of captioned blocks is a line between things that are already
- * apart. The captions do that job there.
+ * Desktop only: below `md` the two are stacked, and a rule across a stack of
+ * captioned blocks is a line between things that are already apart. The captions
+ * do that job there.
  */
 function CellDivider() {
   // `bg-foreground/…` rather than the `--border` token: in the dark theme that token is
   // white at 10 %, so any opacity modifier on it composites to nothing — `border-border/60`
-  // resolved to alpha 0.06 and the two hairlines were in the DOM at 1x56 px and invisible
-  // on screen. This is the value the slider's own track already uses on this surface.
+  // resolved to alpha 0.06 and the hairline was in the DOM at 1x56 px and invisible on
+  // screen. This is the value the slider's own track already uses on this surface.
   return (
     <div
       aria-hidden="true"
-      className="bg-foreground/12 dark:bg-foreground/15 hidden w-px self-center xl:block xl:h-14"
+      className="bg-foreground/12 dark:bg-foreground/15 hidden w-px self-center md:block md:h-14"
     />
   );
 }
 
 /**
- * The attractions tab's filter panel: search, rider height, and the switches.
+ * The attractions tab's filter panel: search, rider height, and the pills.
  *
  * These were three controls loose on the page — the search box was
  * `md:absolute md:top-0 md:right-0` inside the grid, so on a desktop it floated
@@ -66,28 +84,24 @@ function CellDivider() {
  * flex row. Nothing said they were one set of controls over one list, and there was
  * nowhere to put a third.
  *
- * **Three cells, each labelled, separated by a hairline.** The height filter needs
- * three lines (its own value, the track, the scale) and the other two are one control
- * tall, so an uncaptioned row put a 36 px box next to a 60 px block and the toggle
- * ended up floating in the middle of the difference. A caption over each cell costs
- * the row 24 px once and buys controls that start on the same line, end on the same
- * line, and each say what they are.
+ * **Two bands, not one row.** The first holds the two controls that carry a VALUE
+ * you set — a query and a height — and they sit side by side from `md` with a
+ * hairline between them. The second is the pills, which carry no value: each is on
+ * or off (the wet one has a third state) and any of them may be missing entirely,
+ * so they are a wrapping row rather than a cell of fixed width.
  *
- * The third cell holds **all** the switches, and that is why the row breaks where it
- * does. It used to hold one, at ~130 px; "geöffnet" and "Nässegefahr" beside it make
- * ~360 px in German, and 220 + 280 + 360 plus dividers and gaps is 925 px of content
- * that used to be asked to fit a 672 px `md` container. So the single row starts at
- * `xl`, `md` puts search and switches on one line with the track under them, and a
- * phone stacks all three — the track cannot share a line with anything at any width,
- * because it is a track and a track needs its width.
+ * It used to be one row of three cells, and the fifth pill is what ended that: in
+ * German the pills alone measure ~600 px, and 220 + 280 + 600 plus the dividers and
+ * gaps is ~1140 px against the ~1180 px an `xl` container has to give — a park with
+ * "12 außer Saison" would have pushed it over, on the widest screen there is. Two
+ * bands cost one row of height and stop the panel depending on a word's length.
  *
- * They sit **left**, in their own widths, rather than stretching: a 1200 px search
- * box is not a better search box, and the height filter pushed to the far right of a
- * desktop panel reads as a second toolbar rather than the third control of this one.
+ * The controls sit **left**, in their own widths, rather than stretching: a 1200 px
+ * search box is not a better search box.
  *
  * The heading is the site's `ChapterHeading`, inside the box rather than a frosted
  * band above it: the panel already carries the glass, and its own closing rule is
- * the line the cells hang under, so the header and what it heads stay one object.
+ * the line the bands hang under, so the header and what it heads stay one object.
  * No chapter number — `NearbyParksSection`'s rule, and here the count is 1 of 1.
  *
  * It takes {@link TILE_GLASS}, the material of the entry-tile row directly above it,
@@ -98,12 +112,11 @@ function CellDivider() {
  * for the captions, `h-9` for the controls (the input scale from
  * `components/ui/button.tsx`), `h-5`/`h-4` for the slider's track and scale — and
  * nothing inside appears or disappears as a visitor types or drags. What does change
- * the box is which switches the park earns and the breakpoint, and both are the same
- * on either side of hydration — the counts that gate the switches come off the same
- * payload the server rendered. Which is why the pre-mount branch of `TabsWithHash`
- * renders this same component rather than a spacer shaped like it: a placeholder
- * would have to write every one of those numbers down a second time, and be wrong
- * about one of them.
+ * the box is which pills the park earns and the breakpoint, and both are the same on
+ * either side of hydration — the counts that gate the pills come off the same payload
+ * the server rendered. Which is why the pre-mount branch of `TabsWithHash` renders
+ * this same component rather than a spacer shaped like it: a placeholder would have
+ * to write every one of those numbers down a second time, and be wrong about one.
  */
 export function AttractionFilterPanel({
   inputRef,
@@ -122,19 +135,47 @@ export function AttractionFilterPanel({
   onlyOpen,
   onToggleOnlyOpen,
   wetCount,
-  onlyWet,
-  onToggleOnlyWet,
+  wetMode,
+  onCycleWet,
+  fastPassCount,
+  fastPassLabel,
+  onlyFastPass,
+  onToggleOnlyFastPass,
+  singleRiderCount,
+  onlySingleRider,
+  onToggleOnlySingleRider,
 }: AttractionFilterPanelProps) {
   const t = useTranslations('parks');
   const [isFocused, setIsFocused] = useState(false);
 
-  // A switch stays on screen while it is ON even once its count drops to zero: the
-  // "open now" one loses its rides the moment the park shuts, and a control vanishing
-  // out from under the filter it is still applying leaves a visitor with a short list
-  // and nothing to undo it with.
+  // A pill stays on screen while it is doing something even once its count drops to
+  // zero: the "open now" one loses its rides the moment the park shuts, and a control
+  // vanishing out from under the filter it is still applying leaves a visitor with a
+  // short list and nothing to undo it with.
   const showOpen = openCount > 0 || onlyOpen;
-  const showWet = wetCount > 0 || onlyWet;
-  const hasToggles = showOpen || showWet || offSeasonCount > 0;
+  const showWet = wetCount > 0 || wetMode !== null;
+  const showFastPass = fastPassCount > 0 || onlyFastPass;
+  const showSingleRider = singleRiderCount > 0 || onlySingleRider;
+  /**
+   * The pills are two groups, and the split is the one the attraction cards already
+   * make: a status badge over the photo, the restriction badges under it. "Geöffnet"
+   * and "N außer Saison" are statements about TODAY; the water, the queue-jump product
+   * and the single-rider line are what the ride IS, all year. Five pills of equal
+   * weight in one row are a block that says none of that, and it was five that made it
+   * matter — with one it was a detail.
+   */
+  const hasToday = showOpen || offSeasonCount > 0;
+  const hasTraits = showWet || showFastPass || showSingleRider;
+  const hasPills = hasToday || hasTraits;
+
+  // All three in the order they are cycled, so the pill reserves the width of the
+  // longest and cannot resize under the finger that pressed it.
+  const wetLabels = [
+    t('filterSection.wetAny'),
+    t('filterSection.wetOnly'),
+    t('filterSection.wetHide'),
+  ];
+  const wetLabel = wetLabels[wetMode === null ? 0 : wetMode === 'only' ? 1 : 2];
 
   return (
     <div className={cn('border-border/50 mb-4 rounded-xl border p-3 shadow-sm sm:p-4', TILE_GLASS)}>
@@ -146,20 +187,20 @@ export function AttractionFilterPanel({
         className="mb-3 gap-3 pb-3 sm:gap-3"
       />
 
-      <div className="grid gap-x-4 gap-y-3 md:grid-cols-[minmax(0,1fr)_auto] md:items-start xl:flex xl:items-center xl:gap-4">
-        <div className="md:col-start-1 md:row-start-1 xl:w-[220px]">
+      <div className="flex flex-col gap-3 md:flex-row md:items-start md:gap-4">
+        <div className="md:w-[220px] lg:w-[260px]">
           <p className="text-muted-foreground flex h-6 items-center text-xs font-medium">
             {t('filterSection.searchLabel')}
           </p>
           <div className="group relative">
-            <Search className="text-muted-foreground group-focus-within:text-primary absolute top-2.5 left-3 z-10 h-4 w-4 transition-colors" />
+            <Search className="text-muted-foreground group-focus-within:text-primary absolute top-2.5 left-3 z-10 h-4 w-4 transition-colors max-sm:top-3.5" />
             <Input
               ref={inputRef}
               placeholder={t('searchAttractions')}
               className={cn(
                 // `Input` is a flat `h-9` with no phone tier of its own; this panel stacks
                 // below `sm`, so the row it would have to stay level with is not there and
-                // it can take the 44 px the switches beside it take.
+                // it can take the 44 px the pills beside it take.
                 'border-primary/20 hover:border-primary/40 focus-visible:border-primary/60 w-full bg-transparent pl-9 shadow-none transition-colors max-sm:h-11 dark:bg-transparent',
                 isFocused && searchQuery ? 'pr-16' : 'pr-4'
               )}
@@ -182,7 +223,7 @@ export function AttractionFilterPanel({
           <>
             <CellDivider />
             <RiderHeightFilter
-              className="md:col-span-2 md:row-start-2 xl:w-[280px]"
+              className="md:w-[280px] lg:w-[320px]"
               stops={heightStops}
               value={riderHeight}
               onChange={onRiderHeightChange}
@@ -191,18 +232,19 @@ export function AttractionFilterPanel({
             />
           </>
         )}
+      </div>
 
-        {hasToggles && (
-          <>
-            <CellDivider />
-            <div className="md:col-start-2 md:row-start-1 xl:shrink-0">
+      {hasPills && (
+        <div className="mt-3 flex flex-wrap gap-x-7 gap-y-3">
+          {/* `invisible` rather than unmounted: the search reaches past every one of
+              these, so while it runs they govern nothing — and controls that came and
+              went as somebody types would move the whole list under them. */}
+          {hasToday && (
+            <div className={cn(isSearching && 'invisible')}>
               <p className="text-muted-foreground flex h-6 items-center text-xs font-medium">
-                {t('filterSection.showLabel')}
+                {t('filterSection.todayLabel')}
               </p>
-              {/* `invisible` rather than unmounted: the search reaches past all three of
-                  these, so while it runs they govern nothing — and controls that came and
-                  went as somebody types would move the whole list under them. */}
-              <div className={cn('flex flex-wrap items-center gap-2', isSearching && 'invisible')}>
+              <div className="flex flex-wrap items-center gap-2">
                 {showOpen && (
                   <FilterToggle
                     size="md"
@@ -210,15 +252,6 @@ export function AttractionFilterPanel({
                     label={t('filterSection.openNow')}
                     pressed={onlyOpen}
                     onToggle={onToggleOnlyOpen}
-                  />
-                )}
-                {showWet && (
-                  <FilterToggle
-                    size="md"
-                    icon={Droplets}
-                    label={t('filterSection.wetOnly')}
-                    pressed={onlyWet}
-                    onToggle={onToggleOnlyWet}
                   />
                 )}
                 {offSeasonCount > 0 && (
@@ -231,9 +264,54 @@ export function AttractionFilterPanel({
                 )}
               </div>
             </div>
-          </>
-        )}
-      </div>
+          )}
+
+          {hasToday && hasTraits && (
+            <div
+              aria-hidden="true"
+              className="bg-foreground/12 dark:bg-foreground/15 mt-6 hidden w-px self-stretch sm:block"
+            />
+          )}
+
+          {hasTraits && (
+            <div className={cn(isSearching && 'invisible')}>
+              <p className="text-muted-foreground flex h-6 items-center text-xs font-medium">
+                {t('filterSection.traitsLabel')}
+              </p>
+              <div className="flex flex-wrap items-center gap-2">
+                {showWet && (
+                  <FilterToggle
+                    size="md"
+                    icon={wetMode === 'hide' ? DropletOff : Droplet}
+                    label={wetLabel}
+                    labels={wetLabels}
+                    pressed={wetMode !== null}
+                    onToggle={onCycleWet}
+                  />
+                )}
+                {showFastPass && (
+                  <FilterToggle
+                    size="md"
+                    icon={Ticket}
+                    label={fastPassLabel ?? t('filterSection.fastPass')}
+                    pressed={onlyFastPass}
+                    onToggle={onToggleOnlyFastPass}
+                  />
+                )}
+                {showSingleRider && (
+                  <FilterToggle
+                    size="md"
+                    icon={Users}
+                    label={t('filterSection.singleRider')}
+                    pressed={onlySingleRider}
+                    onToggle={onToggleOnlySingleRider}
+                  />
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }

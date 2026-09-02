@@ -630,11 +630,18 @@
       "title": "Acotar las atracciones",
       "hint": "Muestra solo lo que encaja con tu selección.",
       "searchLabel": "Búsqueda",
-      "showLabel": "Mostrar",
+      "todayLabel": "Hoy",
+      "traitsLabel": "Características",
       "openNow": "Abierto",
-      "wetOnly": "Te mojas",
       "resetOpenNow": "Mostrar también las atracciones cerradas",
-      "resetWetOnly": "Mostrar también las atracciones secas"
+      "wetAny": "Te mojas",
+      "wetOnly": "Solo mojadas",
+      "wetHide": "Sin mojarse",
+      "fastPass": "Salta la cola",
+      "singleRider": "Single rider",
+      "resetWet": "Quitar el filtro de agua",
+      "resetFastPass": "Quitar el filtro de salta la cola",
+      "resetSingleRider": "Quitar el filtro de single rider"
     },
     "heightFilter": {
       "label": "Estatura",

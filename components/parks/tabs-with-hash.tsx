@@ -18,7 +18,7 @@ import { RestaurantCardSkeleton } from '@/components/parks/restaurant-card-skele
 import { AttractionCardSkeleton } from '@/components/parks/attraction-card-skeleton';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useTabHashRouting } from '@/lib/hooks/use-tab-hash-routing';
-import { useAttractionFilter } from '@/lib/hooks/use-attraction-filter';
+import { nextWetMode, useAttractionFilter } from '@/lib/hooks/use-attraction-filter';
 import { stripNewPrefix } from '@/lib/utils';
 import { ParkHeaderCard } from '@/components/parks/park-header-card';
 
@@ -92,10 +92,17 @@ export const TabsWithHash = memo(function TabsWithHash({
     rideableAttractionCount,
     onlyOpen,
     setOnlyOpen,
-    onlyWet,
-    setOnlyWet,
+    wetMode,
+    setWetMode,
+    onlyFastPass,
+    setOnlyFastPass,
+    onlySingleRider,
+    setOnlySingleRider,
     openAttractionCount,
     wetAttractionCount,
+    fastPassAttractionCount,
+    singleRiderAttractionCount,
+    fastPassLabel,
     headliners,
     offSeasonAttractionCount,
     showOffSeasonAttractions,
@@ -110,6 +117,15 @@ export const TabsWithHash = memo(function TabsWithHash({
     activeTab,
     parkStatus: park.status,
   });
+
+  /** Whether anything is currently cutting the grid down — see the rope-drop block below. */
+  const isNarrowing =
+    isSearching ||
+    riderHeight !== null ||
+    onlyOpen ||
+    wetMode !== null ||
+    onlyFastPass ||
+    onlySingleRider;
 
   // INP: a tab tap used to mount the ENTIRE incoming panel in the same commit that moved the
   // tab highlight — 50+ glass cards, 55 restaurant cards, or the Leaflet map — so the paint
@@ -175,8 +191,15 @@ export const TabsWithHash = memo(function TabsWithHash({
               onlyOpen={onlyOpen}
               onToggleOnlyOpen={() => setOnlyOpen((v) => !v)}
               wetCount={wetAttractionCount}
-              onlyWet={onlyWet}
-              onToggleOnlyWet={() => setOnlyWet((v) => !v)}
+              wetMode={wetMode}
+              onCycleWet={() => setWetMode(nextWetMode)}
+              fastPassCount={fastPassAttractionCount}
+              fastPassLabel={fastPassLabel}
+              onlyFastPass={onlyFastPass}
+              onToggleOnlyFastPass={() => setOnlyFastPass((v) => !v)}
+              singleRiderCount={singleRiderAttractionCount}
+              onlySingleRider={onlySingleRider}
+              onToggleOnlySingleRider={() => setOnlySingleRider((v) => !v)}
             />
             <AttractionWaitOverview
               park={park}
@@ -238,8 +261,15 @@ export const TabsWithHash = memo(function TabsWithHash({
             onlyOpen={onlyOpen}
             onToggleOnlyOpen={() => setOnlyOpen((v) => !v)}
             wetCount={wetAttractionCount}
-            onlyWet={onlyWet}
-            onToggleOnlyWet={() => setOnlyWet((v) => !v)}
+            wetMode={wetMode}
+            onCycleWet={() => setWetMode(nextWetMode)}
+            fastPassCount={fastPassAttractionCount}
+            fastPassLabel={fastPassLabel}
+            onlyFastPass={onlyFastPass}
+            onToggleOnlyFastPass={() => setOnlyFastPass((v) => !v)}
+            singleRiderCount={singleRiderAttractionCount}
+            onlySingleRider={onlySingleRider}
+            onToggleOnlySingleRider={() => setOnlySingleRider((v) => !v)}
           />
 
           {/* Attractions grouped by Land */}
@@ -256,8 +286,16 @@ export const TabsWithHash = memo(function TabsWithHash({
               </div>
             ) : (
               <>
-                {/* Renders nothing when there are neither worth nor evening picks. */}
-                {!isSearching && (
+                {/* Renders nothing when there are neither worth nor evening picks — and
+                    nothing while a filter is narrowing the list either. It reads
+                    `park.attractions` raw, so with "Nur mit Nässe" on it put a dry
+                    rope-drop tip above a grid of four water rides, and with a rider
+                    height set it recommended being at the gate for a coaster the child
+                    below it cannot board. Hidden for the same reason it is hidden while
+                    searching: it is advice about the whole park, and the visitor has
+                    just said they are asking about part of it. The off-season toggle is
+                    not in this list — it widens the grid rather than narrowing it. */}
+                {!isNarrowing && (
                   <RopeDropHeadliners
                     headliners={park.ropeDropHeadliners ?? []}
                     attractions={park.attractions ?? []}
@@ -307,9 +345,9 @@ export const TabsWithHash = memo(function TabsWithHash({
                   <div className="flex justify-center pt-14">
                     <div className="border-border/50 bg-background/60 inline-flex flex-col items-center rounded-xl border px-10 py-8 shadow-md backdrop-blur-md dark:bg-[oklch(0.12_0.025_241_/_0.55)]">
                       <p className="text-muted-foreground">{t('noAttractionsFound')}</p>
-                      {/* Four filters can empty this grid and only one of them is obviously
+                      {/* Six filters can empty this grid and only one of them is obviously
                           to blame: a search box you just typed into is right there, a rider
-                          height or a switch set three scrolls ago is not. So each of them
+                          height or a pill set three scrolls ago is not. So each of them
                           offers its own way out here whenever it is on. */}
                       {riderHeight !== null && (
                         <button
@@ -327,12 +365,28 @@ export const TabsWithHash = memo(function TabsWithHash({
                           {t('filterSection.resetOpenNow')}
                         </button>
                       )}
-                      {onlyWet && (
+                      {wetMode !== null && (
                         <button
                           className="text-primary mt-2 text-sm underline hover:no-underline"
-                          onClick={() => setOnlyWet(false)}
+                          onClick={() => setWetMode(null)}
                         >
-                          {t('filterSection.resetWetOnly')}
+                          {t('filterSection.resetWet')}
+                        </button>
+                      )}
+                      {onlyFastPass && (
+                        <button
+                          className="text-primary mt-2 text-sm underline hover:no-underline"
+                          onClick={() => setOnlyFastPass(false)}
+                        >
+                          {t('filterSection.resetFastPass')}
+                        </button>
+                      )}
+                      {onlySingleRider && (
+                        <button
+                          className="text-primary mt-2 text-sm underline hover:no-underline"
+                          onClick={() => setOnlySingleRider(false)}
+                        >
+                          {t('filterSection.resetSingleRider')}
                         </button>
                       )}
                       {isSearching && (
