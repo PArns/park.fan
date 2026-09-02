@@ -247,8 +247,8 @@
     },
     "live": {
       "kicker": "Esperas en directo",
-      "title": "Wartezeiten für jede Bahn, alle fünf Minuten neu",
-      "lead": "Für jede Attraktion und jede Warteschlangen-Art, dazu Öffnungszeiten und Störungen.",
+      "title": "Tiempos de espera de cada atracción, actualizados cada cinco minutos",
+      "lead": "Para cada atracción y cada tipo de cola, además de horarios y averías.",
       "body": "No mostramos solo el número, sino lo que significa: 95 minutos son muchos un martes de septiembre y del todo normales un sábado de octubre. Por eso cada página de atracción dice qué es lo típico en ese día de la semana y cómo es un día lleno.",
       "ridesTitle": "Cada atracción tiene su propia página",
       "ridesText": "Miles de páginas de atracción, cada una con lo que vale para esa atracción: tipos de cola, el curso del día entre medición y previsión, tiempos típicos por día de la semana, altura mínima y consejo de rope drop.",
@@ -305,7 +305,7 @@
     },
     "ai": {
       "kicker": "Nuestra IA",
-      "title": "Eine eigene Prognose, und die Abweichung steht dabei",
+      "title": "Una previsión propia, con la desviación al lado",
       "lead": "Predecir tiempos de espera es la parte difícil, y la mayoría de los sitios la esquiva. park.fan la aborda con Fancast, un modelo propio, reentrenado cada noche, hasta 365 días por delante.",
       "compareTitle": "Cómo predicen otras webs de esperas",
       "compareLead": "Hay tres enfoques habituales, y los tres comparten el mismo punto ciego: nadie dice cuánto se equivocó la previsión.",
@@ -332,8 +332,8 @@
     },
     "bestTime": {
       "kicker": "Mejor momento",
-      "title": "Viele Bahnen haben zwei ruhige Fenster, morgens und gegen Abend",
-      "lead": "Rope Drop hilft nicht bei jeder Bahn. Die Kurve kommt aus den Messtagen der einzelnen Attraktion.",
+      "title": "Muchas atracciones tienen dos ventanas tranquilas, por la mañana y al caer la tarde",
+      "lead": "El rope drop no compensa en todas las atracciones. La curva sale de los días medidos de cada atracción.",
       "chartSubtitle": "Mediana de {days} días medidos, muestreados cada 5 minutos",
       "legendToday": "medido hoy",
       "legendMedian": "mediana de días pasados",
@@ -423,7 +423,7 @@
     },
     "blog": {
       "kicker": "Blog y guías",
-      "title": "Analysen zu einzelnen Parks, mit Zahlen von heute",
+      "title": "Análisis parque por parque, con los números de hoy",
       "lead": "Guías de parques, análisis de esperas y consejos de temporada, escritos por gente que hace cola. Cada página de parque lleva los artículos que le corresponden.",
       "bestTimeTitle": "Mejor época para visitar un parque",
       "bestTimeText": "Cuándo están más vacíos los parques: los días y los meses más tranquilos, a partir de dos años de esperas reales en más de 200 parques.",

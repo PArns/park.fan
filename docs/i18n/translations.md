@@ -115,7 +115,28 @@ Shows:
 - Keys used in code but not defined
 - Potentially unused keys
 
-### 2. Build-Time Validation
+### 2. A key can be present and still be German
+
+`validate:translations` compares the _set_ of keys, never a value. All copy here is written in
+German first, so the recurring failure is a commit that rewrites `messages/de.json` and carries the
+German into the other five files because the keys have to exist there — after which every
+structural check passes and the German ships. #378 put six German headings on the `/en` homepage
+that way.
+
+```bash
+pnpm check:untranslated
+```
+
+It runs in `prebuild`, so a build fails instead of a homepage. A value is reported when it is
+identical to the German **and** reads as German: it carries a German function word that is not a
+word in en/nl/fr/es/it, or an `ß`, or runs to five words or more. Both halves are needed — plain
+"identical to the German" flags 113 correct translations (`Blog`, `Single Rider`, `Rope Drop`, and
+everything Dutch spells the German way: `Morgen`, `Kalender`, `Historie`, `Minuten`).
+
+If a value really is the same word in both languages and trips the rule anyway, add its key to
+`ALLOWED` in `scripts/check-untranslated.mjs` with the reason — do not widen the rule.
+
+### 3. Build-Time Validation
 
 ```bash
 pnpm build
@@ -124,7 +145,7 @@ pnpm build
 cat translation-missing.json
 ```
 
-### 3. Post-Build Crawling
+### 4. Post-Build Crawling
 
 The crawler supports **two modes**:
 
