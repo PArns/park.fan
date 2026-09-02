@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 import { usePlanner } from '@/lib/planner/use-planner';
 import type { PlannerGeo } from '@/lib/planner/types';
 import type { PlanDay } from '@/lib/api/types';
+import type { PlannerDayState } from './planner-context-band';
 
 interface PlannerRideSearchProps {
   parkSlug: string;
@@ -15,6 +16,8 @@ interface PlannerRideSearchProps {
   date: string;
   /** The day's payload — its rides are the ones that can actually be planned. */
   day: PlanDay | null;
+  /** Why there is no payload, when there is none. */
+  dayState: PlannerDayState;
 }
 
 /** Diacritics folded, so "winjas" finds "Winja's" and "fly" finds "F.L.Y.". */
@@ -43,7 +46,14 @@ function fold(value: string): string {
  * `AbortController` exist because it queries the API across every park; copying
  * that discipline here would add latency to a filter over an array.
  */
-export function PlannerRideSearch({ parkSlug, parkName, geo, date, day }: PlannerRideSearchProps) {
+export function PlannerRideSearch({
+  parkSlug,
+  parkName,
+  geo,
+  date,
+  day,
+  dayState,
+}: PlannerRideSearchProps) {
   const t = useTranslations('planner');
   const { addRide, activeEntries } = usePlanner();
   const [query, setQuery] = useState('');
@@ -58,12 +68,11 @@ export function PlannerRideSearch({ parkSlug, parkName, geo, date, day }: Planne
 
   const matches = useMemo(() => {
     if (!day) return [];
+    // Below: an empty list is rendered as a stated reason, not as nothing.
     const needle = fold(query);
     if (needle.length === 0) return day.rides.slice(0, 8);
     return day.rides.filter((ride) => fold(ride.attractionName).includes(needle)).slice(0, 8);
   }, [day, query]);
-
-  if (!day) return null;
 
   return (
     <div className="border-border/60 border-t px-2 py-2">
@@ -79,7 +88,19 @@ export function PlannerRideSearch({ parkSlug, parkName, geo, date, day }: Planne
       </div>
 
       {matches.length === 0 ? (
-        <p className="text-muted-foreground px-1 py-2 text-xs">{t('search.noResults')}</p>
+        <p className="text-muted-foreground px-1 py-2 text-xs">
+          {/* Three different silences, and they are not interchangeable: a
+              query that matched nothing, a day the API has no forecast for, and
+              a request that failed. The input itself never disappears — on a
+              phone it is the only way into the plan. */}
+          {day
+            ? t('search.noResults')
+            : dayState === 'error'
+              ? t('error')
+              : dayState === 'loading'
+                ? t('loading')
+                : t('noPlan')}
+        </p>
       ) : (
         <ul className="mt-1 max-h-44 overflow-y-auto">
           {matches.map((ride) => (
@@ -97,7 +118,7 @@ export function PlannerRideSearch({ parkSlug, parkName, geo, date, day }: Planne
                     // Its own busiest hour is the wrong default — the point of
                     // planning is to avoid that. The park's opening hour is the
                     // honest neutral start, and dragging is one gesture away.
-                    hour: day.context.openHour ?? undefined,
+                    hour: day?.context.openHour ?? undefined,
                   })
                 }
                 className="hover:bg-accent flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left transition-colors max-sm:py-2.5"

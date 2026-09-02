@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { CalendarPlus } from 'lucide-react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
-import { PlannerContextBand } from './planner-context-band';
+import { PlannerContextBand, type PlannerDayState } from './planner-context-band';
 import { PlannerDayPicker } from './planner-day-picker';
 import { PlannerTimeline } from './planner-timeline';
 import { PlannerRideSearch } from './planner-ride-search';
@@ -53,7 +53,11 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   const isPhone = useMediaQuery('(max-width: 639px)');
   const park = activeParkSlug ? state.parks[activeParkSlug] : null;
 
-  const { data: day, isLoading } = usePlanDay({
+  const {
+    data: day,
+    isFetching,
+    isError,
+  } = usePlanDay({
     continent: park?.geo.continent ?? '',
     country: park?.geo.country ?? '',
     city: park?.geo.city ?? '',
@@ -61,6 +65,18 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
     date: activeDate ?? undefined,
     enabled: open && Boolean(park && activeDate),
   });
+
+  // Four states, keyed off `isFetching` rather than `isPending`: a disabled query
+  // is pending forever, so with no park picked yet the band would pulse without a
+  // request ever having been made. `isFetching && !day` also keeps a background
+  // refetch from throwing the band back to a skeleton it has already left.
+  const dayState: PlannerDayState = isError
+    ? 'error'
+    : isFetching && !day
+      ? 'loading'
+      : day
+        ? 'ready'
+        : 'empty';
 
   const totals = totalsFor(day ?? null, activeEntries);
 
@@ -134,7 +150,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
         </SheetHeader>
 
         <div className="border-border/60 shrink-0 border-b">
-          <PlannerContextBand day={day ?? null} loading={isLoading} />
+          <PlannerContextBand day={day ?? null} state={dayState} />
         </div>
 
         {/* The scroll lives here, not on SheetContent — see the note above. */}
@@ -176,6 +192,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
               geo={park.geo}
               date={activeDate}
               day={day ?? null}
+              dayState={dayState}
             />
           </div>
         )}

@@ -5,7 +5,10 @@ import { usePlanner } from '@/lib/planner/use-planner';
 import { useLazyMessages } from '@/i18n/use-lazy-messages';
 import { RouteMessagesProvider } from '@/i18n/route-messages-provider';
 
-const PLANNER_NAMESPACES = ['planner'] as const;
+// Must stay in step with this file's entry in `LAZY_MESSAGE_BOUNDARIES`
+// (`lib/i18n/route-namespaces.mjs`) — that list decides what the chunk carries,
+// this one what the provider declares to anything nested below it.
+const PLANNER_NAMESPACES = ['planner', 'parks.weather'] as const;
 
 /**
  * The planner's way in, and the panel it opens.

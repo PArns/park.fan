@@ -1924,8 +1924,7 @@
     },
     "search": {
       "placeholder": "Bahn suchen",
-      "noResults": "Keine Bahn gefunden.",
-      "hint": "Mindestens drei Buchstaben."
+      "noResults": "Keine Bahn gefunden."
     },
     "parks": {
       "label": "Park",
@@ -1935,6 +1934,7 @@
     "clearDay": "Tag leeren",
     "clearDayConfirm": "Alle Einträge dieses Tages löschen?",
     "loading": "Plan wird geladen",
-    "error": "Der Plan konnte nicht geladen werden."
+    "error": "Der Plan konnte nicht geladen werden.",
+    "noPlan": "Für diesen Tag liegt keine Prognose vor."
   }
 }
