@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { getGeoStructure } from '@/lib/api/discovery';
+import { CACHE_TTL } from '@/lib/api/cache-config';
 import { getContentLastmodIndex } from '@/lib/seo/content-changes/store';
 import { getParkImageSet } from '@/lib/utils/park-assets';
 import { locales, SITE_URL, type Locale } from '@/i18n/config';
@@ -24,7 +25,10 @@ function buildAlternates(pathFn: (locale: string) => string): {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [geo, lastmodIndex] = await Promise.all([getGeoStructure(86400), getContentLastmodIndex()]);
+  const [geo, lastmodIndex] = await Promise.all([
+    getGeoStructure(CACHE_TTL.geoSitemap),
+    getContentLastmodIndex(),
+  ]);
   const routes: MetadataRoute.Sitemap = [];
 
   /**

@@ -295,7 +295,7 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
           href="/"
           prefetch={false}
           style={cornerLogoStyle}
-          className={`absolute top-1/2 left-6 flex origin-left -translate-y-1/2 items-center gap-1 motion-reduce:transform-none! ${handoffMotion} ${
+          className={`absolute top-1/2 left-6 flex origin-left -translate-y-1/2 items-center gap-2 motion-reduce:transform-none! ${handoffMotion} ${
             isTransparent ? 'opacity-100' : 'pointer-events-none opacity-0'
           }`}
           aria-label="park.fan - Home"
@@ -312,7 +312,7 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
           href="/"
           prefetch={false}
           style={barLogoStyle}
-          className={`flex shrink-0 origin-left items-center gap-1 motion-reduce:transform-none! ${handoffMotion} ${
+          className={`flex shrink-0 origin-left items-center gap-2 motion-reduce:transform-none! ${handoffMotion} ${
             isTransparent ? 'pointer-events-none opacity-0' : 'opacity-100'
           }`}
           aria-label="park.fan - Home"

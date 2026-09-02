@@ -424,16 +424,21 @@ test(
 
 test(
   'the back window is the distance to the data start, not the full span',
-  () => parkCalendarMonthsBack({ year: 2026, month: 8 }),
-  7 // archive starts 2025-12-26 → first whole month is 2026-01 → seven months back
+  // Has to be read close to the data start now that the span is three: from 2026-05 onwards the
+  // SPAN is the binding constraint and this test would pass without proving anything about the
+  // floor. In March 2026 the archive is still the shorter of the two.
+  () => parkCalendarMonthsBack({ year: 2026, month: 3 }),
+  2 // archive starts 2025-12-26 → first whole month is 2026-01 → two months back
 );
 
 test(
   'a partial first month does not count',
   () => {
     // The archive starts on the 26th, so December 2025 is 6 of 31 days and has no honest heading.
-    const dec = isParkCalendarMonthInRange({ year: 2025, month: 12 }, { year: 2026, month: 8 });
-    const jan = isParkCalendarMonthInRange({ year: 2026, month: 1 }, { year: 2026, month: 8 });
+    // `now` sits three months after the start so January is inside the span and the only thing
+    // that can exclude December is the partial-month floor — which is what this asserts.
+    const dec = isParkCalendarMonthInRange({ year: 2025, month: 12 }, { year: 2026, month: 3 });
+    const jan = isParkCalendarMonthInRange({ year: 2026, month: 1 }, { year: 2026, month: 3 });
     return `${dec}/${jan}`;
   },
   'false/true'
@@ -441,13 +446,16 @@ test(
 
 test(
   'the window grows on its own and then stops at the span',
+  // The growth is only visible in the months right after the data start now — with a span of
+  // three it saturates at 2026-04 instead of 2027-01. Same property, read where it still shows.
   () =>
     [
-      parkCalendarMonthsBack({ year: 2026, month: 12 }),
-      parkCalendarMonthsBack({ year: 2027, month: 1 }),
+      parkCalendarMonthsBack({ year: 2026, month: 2 }),
+      parkCalendarMonthsBack({ year: 2026, month: 3 }),
+      parkCalendarMonthsBack({ year: 2026, month: 4 }),
       parkCalendarMonthsBack({ year: 2028, month: 6 }),
     ].join(','),
-  `11,12,${PARK_CALENDAR_MONTH_SPAN.back}`
+  `1,2,${PARK_CALENDAR_MONTH_SPAN.back},${PARK_CALENDAR_MONTH_SPAN.back}`
 );
 
 test(

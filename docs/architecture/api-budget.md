@@ -92,9 +92,9 @@ what it fetched cannot change in five minutes and is already in the page the vis
 | Block                          |    Size | Changes within 5 min?                                                       |
 | ------------------------------ | ------: | --------------------------------------------------------------------------- |
 | `attractions[]` static fields  | 27.6 KB | no — names, coordinates, heights, `ropeDrop`, `typicalWaits`, `rideProfile` |
-| `restaurants[46]`              |  9.7 KB | no                                                                          |
+| `restaurants[46]`              |  9.7 KB | not in five minutes — but once a day, see below                             |
 | `schedule[17]`                 | 13.5 KB | no, and every consumer already takes it as a prop                           |
-| `shows[4]`                     |  1.3 KB | no                                                                          |
+| `shows[4]`                     |  1.3 KB | not in five minutes — but once a day, see below                             |
 | `attractions[].statistics`     | 13.8 KB | **yes** — current wait, today's peak, the card sparkline                    |
 | `attractions[].bestVisitTimes` |  6.9 KB | **yes** — ML slots that refine through the day                              |
 | `attractions[].queues`         |  4.2 KB | **yes**                                                                     |
@@ -110,6 +110,46 @@ the whole park.
 
 `comparison` and `baseline` arrive on every attraction from the API and have never been rendered
 anywhere. They are simply not in the projection.
+
+### The day-scoped block: shows and restaurant status
+
+"Does it change within five minutes" was the wrong question for two of those rows, and the site
+answered it wrongly for as long as the projection existed. Shows and restaurant statuses do not
+move between two polls — they move once, at opening — and nothing carried them across that moment:
+the poll left them out, and the server render's copy comes from a fetch cached for
+`PARK_REVALIDATE`. Whatever that entry happened to be written with stood for the rest of the day.
+
+Written overnight, which is the usual case, it is written wrong twice over. The API answers with a
+show's showtimes **for today** and reports every show as CLOSED for exactly as long as the park is
+closed (`park-integration.service.ts`), so a 04:00 entry says "yesterday's times, nothing running"
+— and that is what park.fan served all day on 2026-09-01: Phantasialand's four shows dated
+2026-08-31 under "Keine Vorstellungen heute", 0 of 46 restaurants open at 13:38, while the API
+answered `OPERATING` with today's times for all of them. Europa-Park and Efteling the same. It is
+also why "refresh shortly before opening" does not work: measured on Magic Kingdom 70 minutes
+before its gates, the showtimes are already right and all 15 shows still read CLOSED.
+
+So the block travels on request. `leanParkForLivePoll(park, { daily: true })` adds it, the proxy
+turns `?full=1` into that flag, and `useLiveParkData` asks for it on a tab's first poll, every 30
+minutes after, and once more whenever the park's own status flips. **Upstream this is free** — the
+proxy fetches the whole park on every poll either way and used to drop the block on the floor; the
+only cost is 5.1 KB to the browser twice an hour instead of twelve times — ~10 KB an hour rather
+than ~61. (Measured against a running server: a normal poll is 41.6 KB and carries neither key, a
+`?full=1` poll 46.9 KB.)
+
+Shows go over whole and restaurants projected, because membership differs: the API drops a show
+with no showtimes today, so the set is itself a statement about today and the merge replaces it
+wholesale. Restaurants keep theirs, so only `status`/`waitTime`/`partySize`/`operatingHours` ride
+along and the card reads name, slug and coordinates from the server render — 4.0 KB against 9.9.
+An absent block means unchanged, never empty, and the hook carries the freshest one it has seen
+into the next cached snapshot so a lean poll cannot fall back to the morning copy.
+`pnpm test:live-park-daily-block` pins all of that.
+
+That leaves the server render, which is what a crawler and the first paint see. It is fixed from
+the other side: the fetch carries a per-park tag (`parkCacheTag`, the geo path — slugs are not
+globally unique, `disneyland-park` is Anaheim and Paris), and the backend POSTs that tag to
+`/api/revalidate` with `"expire": 0` the moment the park's status flips. One small request per park
+per transition, and only the parks somebody then visits are re-fetched — where a cron would sweep
+all 213 on a clock that fits none of their timezones.
 
 ### Attraction detail: 58 KB → 27 KB
 
@@ -202,15 +242,143 @@ compute miss on the backend.
 All of them are deferred through `useLoadLast`, like every other historical query: a post's live
 park cards must never lose the race to a table nobody has scrolled to yet.
 
+## The other copy: what the server render serializes
+
+Everything above measures the **poll**. There is a second copy of the same data on every one of
+these pages, and until Sept 2026 nobody had weighed it: whatever a Server Component hands to a
+Client Component is serialized into the RSC payload — the `self.__next_f.push([1,"…"])` script
+tags at the end of the document — so the client can hydrate. It is roughly half the bytes of a
+park page, it is paid by **every request including the crawler's**, and unlike the poll it is
+never re-fetched, so nothing about it self-corrects.
+
+Measured on production, cache-busted, uncompressed:
+
+| Page               | HTML   | RSC payload | of which park data | of which messages |
+| ------------------ | ------ | ----------- | ------------------ | ----------------- |
+| Wait-time calendar | 444 KB | 199 KB      | 60.3 KB            | 26.8 KB           |
+| Park               | 500 KB | 205 KB      | 39.4 KB            | 36.2 KB           |
+| Attraction         | 408 KB | 167 KB      | 3.7 KB             | 33.1 KB           |
+
+The attraction row is what the rule looks like when it is applied: `leanParkForAttractionShell`
+narrows the park to the one ride being shown, and 36.3 KB became 3.7 KB. The calendar row was what
+it looks like when nobody asked.
+
+### A page that renders none of a thing must not ship it
+
+The calendar page draws no attraction cards. Two things on that route read `park.attractions` at
+all — `ParkTodayPanel`'s headliner rows and `useParkTileItems`, for the nav row's land count and
+shortest-headliner hint. Between them they read twelve fields. The route was shipping twenty-two,
+for forty rides:
+
+    bestVisitTimes   9.74 KB    ropeDrop  4.52 KB    comparison + baseline + trend   1.4 KB
+    statistics       5.07 KB
+
+`leanParkForCalendarShell` takes the attraction list from **39.3 KB to 15.2 KB**: −28.6 KB of HTML
+and **−1.52 KB brotli, −2.9 % of the page**, on the route with the highest origin-miss count in the
+app.
+
+Note the ratio. Brotli finds repeated JSON keys across forty near-identical objects and prices them
+at almost nothing, so the raw figure flatters this change by 19×. **Judge these on the compressed
+number** — the same lesson the flat message allowlist taught (10 KB of JSON, 2.3 KB after brotli).
+
+`restaurants` is deliberately untouched and is the next 6.6 KB: `useParkTileItems` reads forty-six
+full records for a `.length` and an `OPERATING` count. Projecting them means moving those two
+numbers onto `ParkTileSource` (two call sites, two pages); inventing a `ParkRestaurant` with an
+empty `name` to satisfy the type would put a lie one render away from a reader. **−0.95 KB brotli**
+when somebody does it properly.
+
+It is an **allow**-list, unlike its `delete`-chain siblings, because here the kept set is the short
+one — and a field the API adds next month then stays out of this route by default instead of
+joining the payload unannounced.
+
+Nothing is lost that a visitor can reach. The five-minute poll still returns `statistics` and
+`bestVisitTimes` (`leanParkForLivePoll`), and `mergeLiveParkSnapshot` lays them back over this
+seed, which is also why trimming it cannot desync the two components sharing the `['park-live', …]`
+key. `pnpm test:calendar-park-projection` drives the projection through the real readers
+(`getStandbyWait`, `getAttractionDisplayStatus`, `isInSeason`) rather than a list of key names,
+because a field dropped here that a component still reads does not throw — the row renders a dash
+and nothing says so.
+
+### Cost follows the URL count, not the visitor count
+
+Twelve hours of production invocations, which is the table this audit should have started from:
+
+| Route              | Invocations | Active CPU | Transfer out | Distinct URLs |
+| ------------------ | ----------- | ---------- | ------------ | ------------- |
+| Attraction         | 11 K        | 22 min     | 491 MB       | 42,756        |
+| Wait-time calendar | 9.9 K       | 26 min     | 567 MB       | 27,984        |
+| Park               | 1.7 K       | 3 min      | 101 MB       | 1,272         |
+
+The park page is the one people visit and the cheapest of the three. Both routes above it are
+`force-dynamic`, so every origin miss is a render, and a crawler walking a sitemap misses the CDN
+once per URL per TTL. Divide the columns and the shape is unmistakable: each calendar URL is
+fetched about **0.7 times a day** and each ride URL about **0.5** — a daily sweep, against a cache
+that could never be warm for it.
+
+That also bounds what this section can win. Trimming the payload moves transfer and a little CPU;
+the number of _renders_ is set by the 71,000-URL crawl surface, and the only lever on that is a
+product decision about the calendar's twenty-two-month span (212 parks × 22 months × 6 locales).
+The span was chosen deliberately — see `PARK_CALENDAR_MONTH_SPAN` for what it already refuses —
+so it is named here as the largest remaining cost item, not as a recommendation.
+
+### Where the remaining weight is (server render)
+
+**Translation namespaces are as coarse as their widest consumer.** `parks` is 15.1 KB and arrives
+whole on all three routes, because 23 client components ask for `useTranslations('parks')`. A ride
+page therefore pays 3.18 KB of `parks.calendarPage` for a page with no calendar, plus
+`calendarView`, `bestDays`, `dayDetail` and `seasons`. Narrowing those call sites to the
+sub-namespaces the routed map already supports (`parks.crowdLevels` and `parks.status` prove the
+mechanism works) measured **−3.0 KB brotli, −5.7 %** on the highest-invocation route in the app.
+Not done: next-intl answers a missing namespace by logging MISSING_MESSAGE and rendering the raw
+key, so it is 23 chances to ship a visible one, and it wants `pnpm check:client-messages` green at
+every step.
+
+**Inline SVG: 51 KB per page, 112 elements**, many of them byte-identical repeats of the same
+Lucide icon. A sprite would take most of it, at the cost of a second request and a rule about
+which icons may be sprited.
+
+### How to measure it
+
+Not from the code — from the bytes, and on a **cache-busted** URL:
+
+```bash
+curl -sS -H 'Accept-Encoding: identity' "https://park.fan/de/…/wartezeiten-kalender/2026/10?cb=$RANDOM"
+```
+
+Then join the `self.__next_f.push([1,"…"])` string literals, JSON-parse the concatenation, size each
+field, and brotli-diff before against after.
+
+Two traps, both of which produced a wrong answer here first:
+
+- **A/B inside one build.** Diffing a local render against a production one measures the deploy
+  gap as well as the change — that read −3.2 KB where the truth was −1.52 KB. Take one HTML file,
+  rebuild it twice from the same flight-payload pipeline (once with the fields restored, once
+  without), and compare those two.
+- **Both sides through the same re-chunking.** Comparing a rebuilt document against the original
+  bytes measures your own serializer: the first attempt reported the trimmed page as _larger_.
+
+A plain fetch returns whatever Cloudflare is holding, and a stale copy will lie to you in the
+direction that makes you stop looking — a `cf-cache-status: HIT` park page showed `statistics` and
+`bestVisitTimes` absent from its attractions, which reads exactly like a projection that is already
+working. The fresh render of the same URL had both.
+
 ## Adding a field
 
 The question is not "is this field useful" but "which of these is it":
 
 1. **Rendered and volatile** → belongs in the live projection.
 2. **Rendered and day-stable** → belongs in the server render, and the merge will carry it.
-3. **Not rendered** → it costs its size on every poll of every open tab. Leave it out.
+3. **Rendered and day-_scoped_** → the awkward one, and the one that shipped a bug. It looks like
+   case 2, but "the server render carries it" is only true while something re-runs that render
+   within the day. Put it in the `daily` half of the projection and make sure the park's cache tag
+   is dropped when it changes.
+4. **Not rendered** → leave it out. It costs its size on every poll of every open tab **and** in
+   the HTML of every request for every URL of that route — the second one is usually the larger
+   bill (see [the other copy](#the-other-copy-what-the-server-render-serializes)).
 
-Run `node scripts/measure-api-calls.mjs` before and after. A new request on the park page needs a
+Run `node scripts/measure-api-calls.mjs` before and after for the requests, and weigh the RSC
+payload for the render — both halves, because a field can be free in one and expensive in the
+other. A new request on the park page needs a
 reason that is not "it was easier".
 
 ### Reading live data without adding a request

@@ -396,7 +396,7 @@ the hero leaves a gap or eats the bar.
 
 | Element                     | Height | Of the bar |
 | --------------------------- | -----: | ---------: |
-| logo lockup (`BrandLockup`) |  24 px |       50 % |
+| logo lockup (`BrandLockup`) |  26 px |       55 % |
 | search field, `lg` and up   |  32 px |       67 % |
 | search button, below `lg`   |  36 px |       75 % |
 | locale switcher             |  32 px |       67 % |
@@ -442,15 +442,44 @@ met: measured at 1440, 98.1 px wide against 82.7 px at the top and 147.2 px agai
 solid. They were 0.5 px apart vertically as well, because the in-flow copy was centred on a
 hard-coded `h-14` box while the corner copy was centred on the header's 55 px content box.
 
-Both render `components/layout/brand-lockup.tsx` now — pin 24 px, wordmark 20 px, `gap-1`, defined
+Both render `components/layout/brand-lockup.tsx` now — pin 26 px, wordmark 19 px, `gap-2`, defined
 once. `logoScale` resolves to 1.000 and the handoff is a pure translate; sampled per animation
 frame, the two boxes agree to 0.0 px on all four edges the whole way across. The scale stays in the
 formula as the safety net it was meant to be, with nothing left to correct.
 
-`logo-small.svg` is a 144×144 **square** with the pin drawn inside it, filling 86 % of the box
-height and 62.5 % of its width. So 24 px of box is ~20.7 px of visible pin with ~4.5 px of empty
-space on either side, and `gap-1` on top of that reads as a ~10.7 px optical gap — which is why the
-lockup looks right at a gap that measures small.
+### A height is the mark's height
+
+Those numbers used to describe a box the mark sat somewhere inside. `logo-small.svg` was a 144×144
+**square** with the pin filling 86.3 % of its height and 62.5 % of its width; `parkfan.svg` a
+2304×657 box with the wordmark on 78.1 % of the height. So `h-6` painted a **20.7 px** pin and
+`h-5` a **15.6 px** wordmark: a lockup covering 43 % of a 48 px bar while every number in the
+component said 50 %, and a fifth of the device pixels the layout had already reserved going to
+transparent artwork. On a 1× display that is what the difference between a mark and a smudge is
+made of — and it is invisible from the call site, which is the reason it survived.
+
+The viewBox of all four files is the **measured ink box** now (rendered at 6000 px, alpha walked,
+`fill = 100.00 %`, offset 0.00), so a height means what it says:
+
+|                           | aspect | header               |
+| ------------------------- | ------ | -------------------- |
+| pin (`logo-small*.svg`)   | 0.7248 | 26 px → 18.8 px wide |
+| wordmark (`parkfan*.svg`) | 4.2080 | 19 px → 80.0 px wide |
+
+The 1.37 between them is the ratio the padded files actually rendered (20.7 : 15.6 = 1.32), so the
+lockup keeps its proportions and only stops being small.
+
+The gap moved with it. It was `gap-1` plus the ~4.5 px of empty artwork the pin carried on its
+right — an optical ~8.5 px that scaled with the pin's height and that no call site could see. It is
+`gap-2` in the header, and the same margin is written down where the other three consumers used to
+inherit it: `lib/theme/theme-wipe.ts` (which had `gap:0` precisely because the file carried one),
+the coaster player's watermark and the footer. Those three keep the size they had — only the header
+grew.
+
+Cropping the artwork does **not** by itself make anything sharper: 20.7 px of ink is 20.7 px of ink
+whatever box is drawn around it. It is what lets the size be raised without a magic number at every
+call site, and it is why `pnpm check:icons` had to be re-run: the generator measures ink, so the
+icons are geometrically unchanged, but it now rasterizes the source at a different resolution to do
+it and the placement moves by a fraction of a pixel.
 
 ---
 

@@ -17,11 +17,24 @@ import Image from 'next/image';
  * translate. The measuring code in the header stays (it is a safety net, not a workaround), it
  * just has nothing left to correct.
  *
- * Size: the pin is 24 px, the wordmark 20 px — the hero corner's size, which is 50 % of the 48 px
- * bar. `logo-small.svg` is a 144×144 square with the pin drawn inside it filling 86 % of the box
- * height and 62.5 % of its width, so 24 px of box is ~20.7 px of visible ink with ~4.5 px of empty
- * space on each side; `gap-1` on top of that reads as a ~10.7 px optical gap. Change the numbers
- * here and both copies move together — that is the whole point.
+ * **A height is the mark's height, not a box it sits somewhere inside.** The four artwork files
+ * used to be exports with the artboard's margin baked in: `logo-small.svg` drew its pin at 62.5 %
+ * of the width and 86.3 % of the height of a 144×144 viewBox, `parkfan.svg` its wordmark at 78.1 %
+ * of the height of a 2304×657 one. So `h-6` painted a 20.7 px pin and `h-5` a 15.6 px wordmark —
+ * a mark filling 43 % of a 48 px bar while every number here said 50 %, and about a fifth of the
+ * device pixels the layout had already paid for going to nothing. On a 1× display that is the
+ * whole difference between a mark and a smudge. The viewBox of all four files is the measured ink
+ * box now (`fill=100 %`, offset 0), so a height here is what a reader sees:
+ *
+ * - pin **26 px** (55 % of the bar), aspect 0.7248 → 18.8 px wide
+ * - wordmark **19 px**, aspect 4.2080 → 80.0 px wide
+ *
+ * The ratio between the two (1.37) is the one the old files rendered (20.7 : 15.6 = 1.32), so the
+ * lockup keeps its proportions and only stops being small.
+ *
+ * The gap moved with it. It used to be `gap-1` plus the ~4.5 px of empty artwork the pin brought
+ * along on its right — an optical ~8.5 px that no call site could see, and that changed with the
+ * pin's height. It is `gap-2` in the header now, and it is the only place the spacing lives.
  */
 export function BrandLockup({
   /** Force the light-ink artwork regardless of theme — for a lockup over a permanently dark hero. */
@@ -29,14 +42,14 @@ export function BrandLockup({
 }: {
   forceLight?: boolean;
 }) {
-  const pin = 'h-6 w-auto';
-  const word = 'h-5 w-auto';
+  const pin = 'h-[26px] w-auto';
+  const word = 'h-[19px] w-auto';
   return (
     <>
       <Image
         src="/logo-small-dark.svg"
-        width={26}
-        height={30}
+        width={19}
+        height={26}
         alt=""
         aria-hidden="true"
         className={forceLight ? pin : `hidden ${pin} dark:block`}
@@ -45,8 +58,8 @@ export function BrandLockup({
       {!forceLight && (
         <Image
           src="/logo-small.svg"
-          width={26}
-          height={30}
+          width={19}
+          height={26}
           alt=""
           aria-hidden="true"
           className={`block ${pin} dark:hidden`}
@@ -55,8 +68,8 @@ export function BrandLockup({
       )}
       <Image
         src="/parkfan-dark.svg"
-        width={84}
-        height={24}
+        width={80}
+        height={19}
         alt=""
         aria-hidden="true"
         className={forceLight ? word : `hidden ${word} dark:block`}
@@ -65,8 +78,8 @@ export function BrandLockup({
       {!forceLight && (
         <Image
           src="/parkfan.svg"
-          width={84}
-          height={24}
+          width={80}
+          height={19}
           alt=""
           aria-hidden="true"
           className={`block ${word} dark:hidden`}

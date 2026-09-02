@@ -9,9 +9,21 @@ import type { TermAttraction } from './types';
  *
  * The data behind this is hand-curated seed that only changes when someone
  * edits the seed file in the API repo and re-runs the job — so it is cached for
- * a day rather than polled.
+ * a week rather than polled.
+ *
+ * A week, and the second tag is what makes that safe. This fetch sets the ISR clock for all
+ * 1,644 prerendered glossary term pages (274 terms x 6 locales), because Next takes the SHORTEST
+ * revalidate of any fetch in a route and nothing else on that page reaches the network. At a day
+ * those 1,644 pages re-rendered every morning to produce the same bytes, which was the single
+ * largest source of ISR writes on the site — 55 % of all daily regenerations.
+ *
+ * `glossary-rides` is a tag no backend service has ever pushed, so on its own it would have meant
+ * a curated edit sitting invisible for a week. `attractions` IS pushed, by
+ * `admin-curation.service.ts` on every curated write and by the merge/retirement services, and a
+ * ride profile changing is exactly an attraction write. So the seed still lands the moment
+ * somebody edits it; the week only governs the case where nothing changed.
  */
-const REVALIDATE = 86400; // 1d — curated seed, changes on a human's schedule
+const REVALIDATE = 604800; // 7d — curated seed; real edits arrive via the `attractions` tag
 
 interface TermAttractionsResponse {
   termId: string;
@@ -38,7 +50,7 @@ export async function getAttractionsForTerm(
       `/v1/glossary/terms/${encodeURIComponent(termId)}/attractions`,
       {
         params: { sort },
-        next: { revalidate: REVALIDATE, tags: ['glossary-rides'] },
+        next: { revalidate: REVALIDATE, tags: ['glossary-rides', 'attractions'] },
       }
     );
     return res?.data ?? [];
@@ -55,7 +67,7 @@ export async function getRideCountsByTerm(): Promise<Record<string, number>> {
   try {
     return (
       (await api.get<Record<string, number>>('/v1/glossary/terms/counts', {
-        next: { revalidate: REVALIDATE, tags: ['glossary-rides'] },
+        next: { revalidate: REVALIDATE, tags: ['glossary-rides', 'attractions'] },
       })) ?? {}
     );
   } catch {

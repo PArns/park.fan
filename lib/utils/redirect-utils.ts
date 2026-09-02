@@ -15,7 +15,7 @@ import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 
 /**
  * O(1) park-slug → geo-path index for redirect lookups. Memoized per request via React `cache()`;
- * the underlying `getGeoStructure(604800)` is itself cached cross-request in the Vercel Data Cache
+ * the underlying `getGeoStructure()` is itself cached cross-request in the Vercel Data Cache
  * (`fetch` `next: { revalidate }`), so rebuilding this small index per request is cheap and never
  * hits the backend. Used only for malformed-URL redirect detection, never to serve a valid park.
  *
@@ -25,7 +25,7 @@ import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 const getParkSlugIndex = cache(async (): Promise<Record<string, ParkLookupResult[]>> => {
   const index: Record<string, ParkLookupResult[]> = {};
   try {
-    const data = await getGeoStructure(604800);
+    const data = await getGeoStructure();
     for (const continent of data.continents) {
       for (const country of continent.countries) {
         for (const city of country.cities) {

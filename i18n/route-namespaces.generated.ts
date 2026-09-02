@@ -9,7 +9,6 @@
 export const LAYOUT_MESSAGE_NAMESPACES = [
   'common',
   'favorites',
-  'feedback',
   'footer',
   'geo',
   'navigation',

@@ -10,7 +10,7 @@ import { HeroWithNearby, type HeroInitialCounts } from './hero-with-nearby';
  * failing stats call never blocks the hero.
  */
 export async function HeroStats() {
-  const stats = await catchNonFatal(getGlobalStats(3600));
+  const stats = await catchNonFatal(getGlobalStats());
   const counts: HeroInitialCounts | null = stats
     ? {
         openParks: stats.counts.openParks,

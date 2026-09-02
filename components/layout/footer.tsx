@@ -33,7 +33,10 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
           <section className="space-y-4 md:col-span-2">
             <Link
               href="/"
-              className="inline-flex items-center gap-1.5"
+              /* `gap-2.5`, not `gap-1.5`: the wordmark used to bring ~3.5 px of empty
+                 artwork along on its left (h-8) and ~5.25 px at `md:h-12`. `parkfan.svg` is
+                 cropped to its ink now, so the spacing is in the class. */
+              className="inline-flex items-center gap-2.5 md:gap-3"
               aria-label={`park.fan - ${locale === 'de' ? 'Startseite' : 'Home'}`}
             >
               <Image
@@ -54,17 +57,17 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
               />
               <Image
                 src="/parkfan.svg"
-                width={84}
-                height={24}
+                width={105}
+                height={25}
                 alt="park.fan"
-                className="h-8 w-auto md:h-12 dark:hidden"
+                className="h-[25px] w-auto md:h-[38px] dark:hidden"
               />
               <Image
                 src="/parkfan-dark.svg"
-                width={84}
-                height={24}
+                width={105}
+                height={25}
                 alt="park.fan"
-                className="hidden h-8 w-auto md:h-12 dark:block"
+                className="hidden h-[25px] w-auto md:h-[38px] dark:block"
               />
             </Link>
             <p className="text-muted-foreground text-base leading-relaxed">{t('description')}</p>

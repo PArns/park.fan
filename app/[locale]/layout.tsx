@@ -21,7 +21,6 @@ import { getBlogMenu } from '@/lib/navigation/blog-menu';
 import { getFeaturedParksMenu } from '@/lib/navigation/featured-parks-menu';
 import { LanguageBanner } from '@/components/layout/language-banner';
 import Script from 'next/script';
-import { UserbackFeedback } from '@/components/common/userback-feedback';
 import { WebVitalsReporter } from '@/components/analytics/web-vitals-reporter';
 import { ScrollToTop } from '@/components/common/scroll-to-top';
 import { CardPointerFx } from '@/components/parks/card-pointer-fx';
@@ -269,7 +268,6 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                 {/* Pointer depth on every card, on every page — one delegated listener, and it
                     costs nothing on pages that have no cards. */}
                 <CardPointerFx />
-                <UserbackFeedback locale={locale} />
                 <WebVitalsReporter />
                 {/* Offers this tab's search and live park data to a browser-side agent
                     (WebMCP). Registers nothing where the API does not exist, which is nearly

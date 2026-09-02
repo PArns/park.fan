@@ -2,6 +2,7 @@ import { xmlEscape } from '@/lib/seo/sitemap-xml';
 import { notFound } from 'next/navigation';
 
 import { getGeoStructure } from '@/lib/api/discovery';
+import { CACHE_TTL } from '@/lib/api/cache-config';
 import { getScheduleCoverageIndex } from '@/lib/seo/content-changes/store';
 import { locales, SITE_URL, type Locale } from '@/i18n/config';
 import {
@@ -25,7 +26,10 @@ export async function GET(
   if (!locales.includes(locale as Locale)) notFound();
 
   const segment = PARK_CALENDAR_SEGMENTS[locale as Locale];
-  const [geo, coverage] = await Promise.all([getGeoStructure(86400), getScheduleCoverageIndex()]);
+  const [geo, coverage] = await Promise.all([
+    getGeoStructure(CACHE_TTL.geoSitemap),
+    getScheduleCoverageIndex(),
+  ]);
 
   // One month short at BOTH ends. This file is generated and cached for a day while the route
   // recomputes its range from a live clock, so at a month rollover a cached copy would otherwise

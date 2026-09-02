@@ -1,4 +1,5 @@
 import { getGeoStructure, getSitemapAttractions } from '@/lib/api/discovery';
+import { CACHE_TTL } from '@/lib/api/cache-config';
 import { getPopularParks } from '@/lib/api/parks';
 import { locales } from '@/i18n/config';
 
@@ -16,7 +17,7 @@ const VARIANT_SLUG_RE = /^(.+)-\d+$/;
  * parks before the long tail. Popularity ranking is best-effort.
  */
 export async function getParkPaths(): Promise<string[]> {
-  const geo = await getGeoStructure(86400);
+  const geo = await getGeoStructure(CACHE_TTL.geoSitemap);
   const parks = geo.continents.flatMap((continent) =>
     continent.countries.flatMap((country) =>
       country.cities.flatMap((city) =>

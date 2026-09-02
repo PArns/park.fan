@@ -1,22 +1,35 @@
 import { NextResponse } from 'next/server';
-import { getParkPaths, getAttractionPaths, localizedUrls } from '@/lib/content-urls';
-import { SITE_URL } from '@/i18n/config';
+import { getParkPaths, getAttractionPaths } from '@/lib/content-urls';
+import { defaultLocale, SITE_URL } from '@/i18n/config';
 
 /**
- * Cache-prewarm crawler.
+ * Data-Cache prewarm crawler.
  *
- * Park & attraction pages are on-demand ISR (statically rendered + edge-cached on
- * first request). After a deploy the cache is empty, so the *first* visitor of each
- * park would otherwise pay the cold render. This route fetches those URLs once to
- * populate the edge/ISR cache so real visitors get a HIT.
+ * Warms one locale per park, not six.
+ *
+ * What it warms is the Vercel Data Cache entry behind `getParkByGeoPath`, which is keyed by the
+ * BACKEND url and therefore shared by all six locales of a park (see lib/api/parks.ts). Warming
+ * `/en/...` and `/de/...` and four more fills the same single entry six times over, and each of
+ * those five extra requests is a full `force-dynamic` SSR render billed as Active CPU.
+ *
+ * It used to do exactly that: 213 parks x 6 locales = 1,278 renders every six hours, ~5,100 a day,
+ * roughly 10 % of all production function invocations. The docblock that justified it described a
+ * world that ended with PR #147 — it said park & attraction pages were "on-demand ISR (statically
+ * rendered + edge-cached on first request)" and that this run populated that cache so the first
+ * visitor got a HIT. Since #147 those pages are `force-dynamic`: there is no per-URL shell to
+ * populate, nothing to get a HIT on, and the five extra locales warmed nothing whatsoever.
+ *
+ * A visitor in any locale gets the same thing out of this run as before: their render reads the
+ * park snapshot it just put in the Data Cache. Only the five repeat renders are gone.
  *
  * Trigger it right after a deploy:
  *   curl -H "Authorization: Bearer $CRON_SECRET" https://park.fan/api/cron/prewarm
- * and via the daily Vercel cron (vercel.json) to recover from cache eviction.
+ * and via the Vercel cron (vercel.json) to recover from cache eviction.
  *
- * Parks are warmed most-popular-first (see getParkPaths) so a time-bounded run
- * always covers the highest-traffic pages. Attractions are light (no calendar/stats
- * server fetch) and very numerous, so they're opt-in via ?include=attractions.
+ * Parks are warmed most-popular-first (see getParkPaths) so a time-bounded run always covers the
+ * highest-traffic pages. Attractions are very numerous, so they stay opt-in via
+ * ?include=attractions — and they read the same per-park entry, so they are warmed one locale deep
+ * for the same reason.
  */
 
 export const maxDuration = 300; // warming cold parks resolves calendar/stats server-side
@@ -24,6 +37,16 @@ export const maxDuration = 300; // warming cold parks resolves calendar/stats se
 const BASE_URL = process.env.PREWARM_BASE_URL || SITE_URL;
 const CONCURRENCY = 12;
 const PER_REQUEST_TIMEOUT_MS = 20_000;
+
+/**
+ * One URL per path, in the default locale.
+ *
+ * Deliberately NOT `localizedUrls` (which indexnow still needs, because a search engine really
+ * does want all six): the entry this run fills is locale-independent, so a second locale is a
+ * second render for a cache write that already happened.
+ */
+const warmUrls = (paths: string[]): string[] =>
+  paths.map((path) => `${BASE_URL}/${defaultLocale}${path}`);
 
 async function warmAll(urls: string[]): Promise<{ ok: number; failed: number }> {
   let ok = 0;
@@ -63,9 +86,9 @@ export async function GET(request: Request) {
 
   let urls: string[];
   try {
-    urls = localizedUrls(await getParkPaths(), BASE_URL);
+    urls = warmUrls(await getParkPaths());
     if (includeAttractions) {
-      urls.push(...localizedUrls(await getAttractionPaths(), BASE_URL));
+      urls.push(...warmUrls(await getAttractionPaths()));
     }
   } catch (error) {
     console.error('[Prewarm] Failed to build URL list:', error);
