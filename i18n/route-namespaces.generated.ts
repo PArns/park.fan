@@ -60,6 +60,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'attractions',
     'nearby',
     'parks',
+    'planner',
     'share',
   ],
   '/parks/[continent]/[country]/[city]/[park]/wait-time-calendar/[[...date]]': [
