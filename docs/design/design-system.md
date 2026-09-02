@@ -439,31 +439,40 @@ Two things follow from the 25 px.
 
 **The control's shape.** A two-segment `°C | °F` pill is 54 px — it does not fit, and neither does a
 bare text button once its gap is counted (21.5 + 4 against 25). So the button shows the unit that is
-**active** and switches to the other one on click: 29 px, 25 on a phone, `h-7` and the same ring as
+**active** and switches to the other one on click: 28 px, 24 on a phone, `h-7` and the same ring as
 the theme switch beside it so the two read as one pair. Above `sm` both segments would be affordable
 and are deliberately not taken — one control that looks the same everywhere beats two markups that
 hydrate into each other.
 
-**Where the room came from**, since the button plus its gap is 29 px against 25 of slack. Three
+**And its width may not depend on which unit is active.** Sized by its label it did: `°F` is narrower
+than `°C`, so the button shrank under the finger that had just pressed it and pulled the theme switch
+and the locale flag across with it — in a row where every pixel is already spoken for, and on the one
+control whose whole job is to change what it says. `min-w-7` / `max-sm:min-w-6` with `px-1` fixes the
+box at 28 and 24: the label is ~13 px of text and stops mattering while it is under the box, and the
+padding is what happens if a reader's font ever pushes past it, so the button grows instead of
+clipping. Measured across a toggle in both directions at both tiers, the button's own box and its
+neighbours' positions move **0.0 px**.
+
+**Where the room came from**, since the button plus its gap is 28 px against 25 of slack. Three
 places, none of them a control's height:
 
-| Change                                             | Where                                                             | Saves |
-| -------------------------------------------------- | ----------------------------------------------------------------- | ----: |
-| the locale switcher's country code, below `sm`     | `components/common/locale-switcher.tsx`                           | 22 px |
-| the two gaps between the action groups, below `sm` | `components/layout/header.tsx` (`max-sm:gap-1`)                   |  8 px |
-| the button's own padding, below `sm`               | `components/common/temperature-unit-toggle.tsx` (`max-sm:px-1.5`) |  4 px |
+| Change                                             | Where                                                              | Saves |
+| -------------------------------------------------- | ------------------------------------------------------------------ | ----: |
+| the locale switcher's country code, below `sm`     | `components/common/locale-switcher.tsx`                            | 22 px |
+| the two gaps between the action groups, below `sm` | `components/layout/header.tsx` (`max-sm:gap-1`)                    |  8 px |
+| the button's own phone tier, below `sm`            | `components/common/temperature-unit-toggle.tsx` (`max-sm:min-w-6`) |  4 px |
 
 The country code is the interesting one: it sits next to a flag that already says it, in front of a
 dropdown that lists the code _and_ the language name, so below `sm` the flag stands alone. Above
 `sm` nothing is tight and the code stays.
 
-Measured after, at 320/360/390 px × six locales: **302 px used, 26 px of slack at 360** — one pixel
+Measured after, at 320/360/390 px × six locales: **301 px used, 27 px of slack at 360** — two pixels
 _less_ than the row occupied before the button existed — and the same number in every language,
 where it used to differ by 6 px. **320 px is why the last two rows of that table exist.** It is the
 narrowest viewport still in the logs and the bar was already 15 px over its box there before any of
 this; the container's own `px-4` swallowed that, so nothing scrolled sideways and nobody noticed.
 The button alone pushed it to 26 over and the document to 330 px on a 320 px screen. It is back to
-14 over now, i.e. inside the padding, and the document is exactly the viewport at every width from
+13 over now, i.e. inside the padding, and the document is exactly the viewport at every width from
 320 to 768.
 
 The corner pill on the hero pages carries the same three controls, ends 24 px from the right edge at

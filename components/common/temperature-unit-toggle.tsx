@@ -19,12 +19,12 @@ interface TemperatureUnitToggleProps {
  * **The bar decided the shape.** Measured at 360 px (the width most Android phones still report),
  * the header row carries 303 px of content in 328 px: 25 px of slack, and a two-segment pill is
  * 54 px wide. So the control shows the unit that is ACTIVE and switches to the other one on
- * click — 29 px, which fits beside the locale switcher once that drops its redundant country
- * code below `sm`. Above `sm` the extra clarity of both segments would be affordable and is
+ * click — 28 px, 24 on a phone, which fits beside the locale switcher once that drops its
+ * redundant country code below `sm`. Above `sm` the extra clarity of both segments would be affordable and is
  * deliberately not taken: one control that looks the same everywhere beats two markups that
  * hydrate into each other.
  *
- * The `max-sm:px-1.5` is the last 4 px of that budget, and it is paid here because this is the
+ * The `max-sm:min-w-6` is the last 4 px of that budget, and it is paid here because this is the
  * control that spends it: at 320 px, the smallest viewport still in the logs, the row was already
  * 15 px over its box before this button existed — absorbed by the container's own padding, so
  * nothing scrolled — and the button plus the header's tightened phone gaps have to land back
@@ -62,7 +62,15 @@ export function TemperatureUnitToggle({ className }: TemperatureUnitToggleProps)
         // burger — the bar is `h-12` and 44 in 48 is the mistake that requirement exists to
         // prevent. This is the fourth and, unless the bar grows, the last opt-out.
         'border-border/60 bg-muted/60 text-muted-foreground inline-flex h-7 shrink-0 items-center',
-        'justify-center rounded-full border px-2 text-[11px] font-medium max-sm:px-1.5',
+        'justify-center rounded-full border px-1 text-[11px] font-medium',
+        // **The width may not depend on which unit is active.** `°F` is narrower than `°C`, so a
+        // button sized by its label changed width under the finger that pressed it, and the two
+        // controls beside it slid over with it — in a row whose every pixel is accounted for. The
+        // `min-w` makes the label's width irrelevant while it is under the box (it is: ~13 px of
+        // text in 28), and the `px-1` is what happens if a reader's font ever pushes past that:
+        // the button grows rather than clipping. Circular at 28, which is what sits well beside
+        // the theme switch's 48 × 28 pill.
+        'min-w-7 max-sm:min-w-6',
         'hover:border-primary/50 hover:text-foreground focus-visible:ring-ring transition-colors',
         'focus-visible:ring-2 focus-visible:outline-none',
         className
