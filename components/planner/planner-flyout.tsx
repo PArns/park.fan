@@ -4,7 +4,9 @@ import { useTranslations } from 'next-intl';
 import { CalendarPlus } from 'lucide-react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { PlannerContextBand } from './planner-context-band';
+import { PlannerDayPicker } from './planner-day-picker';
 import { PlannerTimeline } from './planner-timeline';
+import { PlannerRideSearch } from './planner-ride-search';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { totalsFor } from '@/lib/planner/estimate';
@@ -37,8 +39,16 @@ function formatMinutes(total: number): string {
  */
 export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   const t = useTranslations('planner');
-  const { activeParkSlug, activeDate, activeEntries, state, reorderRide, setDone, removeRide } =
-    usePlanner();
+  const {
+    activeParkSlug,
+    activeDate,
+    activeEntries,
+    state,
+    reorderRide,
+    setDone,
+    removeRide,
+    setActive,
+  } = usePlanner();
 
   const isPhone = useMediaQuery('(max-width: 639px)');
   const park = activeParkSlug ? state.parks[activeParkSlug] : null;
@@ -53,6 +63,25 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   });
 
   const totals = totalsFor(day ?? null, activeEntries);
+
+  const parkSlugs = Object.keys(state.parks);
+  // Days of THIS park that already have entries — marked in the picker so the
+  // visitor can find them again without remembering the date.
+  const plannedDates = park
+    ? Object.values(park.days)
+        .filter((d) => d.entries.length > 0)
+        .map((d) => d.date)
+    : [];
+
+  /** Switching park keeps a day if that park has one planned, else offers today. */
+  const switchPark = (slug: string) => {
+    const target = state.parks[slug];
+    const dates = Object.values(target?.days ?? {})
+      .filter((d) => d.entries.length > 0)
+      .map((d) => d.date)
+      .sort();
+    setActive(slug, dates[0] ?? activeDate);
+  };
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
@@ -70,10 +99,37 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             {t('title')}
           </SheetTitle>
           {park && (
-            <p className="text-muted-foreground truncate text-xs">
-              {park.name}
-              {activeDate && <span className="ml-1 tabular-nums">{activeDate}</span>}
-            </p>
+            <div className="flex items-center justify-between gap-2">
+              <div className="min-w-0">
+                <p className="text-muted-foreground truncate text-xs">{park.name}</p>
+                {/* Other parks the visitor is planning. One line, and only when
+                    there is somewhere else to go — a switcher offering one park
+                    is a control that does nothing. */}
+                {parkSlugs.length > 1 && (
+                  <div className="mt-0.5 flex flex-wrap gap-1">
+                    {parkSlugs
+                      .filter((slug) => slug !== activeParkSlug)
+                      .map((slug) => (
+                        <button
+                          key={slug}
+                          type="button"
+                          onClick={() => switchPark(slug)}
+                          className="bg-accent/40 hover:bg-accent truncate rounded px-1.5 py-0.5 text-[11px] transition-colors"
+                        >
+                          {state.parks[slug].name}
+                        </button>
+                      ))}
+                  </div>
+                )}
+              </div>
+              {activeDate && (
+                <PlannerDayPicker
+                  value={activeDate}
+                  onChange={(date) => setActive(activeParkSlug, date)}
+                  plannedDates={plannedDates}
+                />
+              )}
+            </div>
           )}
         </SheetHeader>
 
@@ -108,6 +164,21 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             />
           )}
         </div>
+
+        {/* The way in on a phone, where there is no ride card to drag from. Also
+            shown on desktop: typing a name beats hunting for its card, and the
+            list is the day's own rides either way. */}
+        {park && activeDate && (
+          <div className="shrink-0">
+            <PlannerRideSearch
+              parkSlug={park.slug}
+              parkName={park.name}
+              geo={park.geo}
+              date={activeDate}
+              day={day ?? null}
+            />
+          </div>
+        )}
 
         {activeEntries.length > 0 && (
           <div className="border-border/60 text-muted-foreground flex shrink-0 items-baseline justify-between gap-3 border-t px-3 py-2.5 text-xs">
