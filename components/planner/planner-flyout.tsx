@@ -17,6 +17,10 @@ import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { formatShortDuration } from '@/lib/utils/duration';
 import { buildDayGrid } from '@/lib/planner/day-grid';
 import { parkToday } from '@/lib/planner/park-time';
+import { liveWaitsFor, showLinesFor } from '@/lib/planner/live';
+import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
+import { PlannerShowBand } from './planner-show-band';
+import { PlannerGridActions } from './planner-grid-actions';
 import { cn } from '@/lib/utils';
 
 interface PlannerFlyoutProps {
@@ -102,6 +106,25 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   const grid = buildDayGrid(day?.context.openHour, day?.context.closeHour);
   const isToday = Boolean(activeDate && activeDate === parkToday(timezone));
 
+  // The live poll, and it is gated on TODAY for two reasons that point the same
+  // way: a standby reading describes this minute and says nothing about a
+  // Tuesday in November, and on a park page this is a cache hit on the key the
+  // page already holds rather than a second request.
+  const { data: livePark } = useLiveParkData({
+    continent: park?.geo.continent ?? '',
+    country: park?.geo.country ?? '',
+    city: park?.geo.city ?? '',
+    parkSlug: activeParkSlug ?? '',
+    enabled: open && Boolean(park) && isToday,
+  });
+
+  const liveWaits = liveWaitsFor(livePark);
+  // `null` where the date cannot have showtimes at all. The API rewrites any
+  // non-today date onto today and its source is an observation table with no
+  // forward schedule, so sixty of the sixty-one dates the picker offers are
+  // structurally unanswerable — which is a different statement from "no shows".
+  const showLines = isToday && livePark ? showLinesFor(livePark.shows) : null;
+
   const parkSlugs = Object.keys(state.parks);
   // Days of THIS park that already have entries — marked in the picker so the
   // visitor can find them again without remembering the date.
@@ -186,55 +209,89 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 `overscroll-y-contain` is on every other scroll surface in this
                 repo; a drag past the end of a bottom sheet is otherwise a
                 pull-to-refresh. */}
-            <div
-              ref={scrollerRef}
-              className="relative min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-y-contain px-1 py-2"
-            >
-              {grid ? (
-                <PlannerDayGrid
-                  entries={activeEntries}
-                  day={day ?? null}
-                  grid={grid}
-                  timezone={timezone}
-                  isToday={isToday}
-                  loading={dayState === 'loading'}
-                  selectedId={selectedId}
-                  scrollerRef={scrollerRef}
-                  onSelect={setSelectedId}
-                  onMove={(entryId, startMinute) =>
-                    activeParkSlug &&
-                    activeDate &&
-                    moveRide(activeParkSlug, activeDate, entryId, startMinute)
-                  }
-                  onShiftFrom={(entryId, delta) =>
-                    activeParkSlug &&
-                    activeDate &&
-                    shiftFrom(activeParkSlug, activeDate, entryId, delta)
-                  }
-                />
-              ) : activeEntries.length === 0 ? (
-                <div className="flex h-full min-h-[180px] flex-col items-center justify-center gap-1 px-6 text-center">
-                  <p className="text-sm font-medium">{t('empty.title')}</p>
-                  <p className="text-muted-foreground text-xs">
-                    {isPhone ? t('empty.bodyMobile') : t('empty.body')}
-                  </p>
-                </div>
-              ) : (
-                /* No opening hours means no honest axis — not a 24-hour one,
-                   which would assert a park that never closes, and not an
-                   invented 9-to-6. The flat list is what this branch is for,
-                   and why those three components survive. */
-                <PlannerTimeline
-                  entries={activeEntries}
-                  day={day ?? null}
-                  onToggleDone={(entryId, done) =>
-                    activeParkSlug &&
-                    activeDate &&
-                    setDone(activeParkSlug, activeDate, entryId, done)
-                  }
-                  onRemove={(entryId) =>
-                    activeParkSlug && activeDate && removeRide(activeParkSlug, activeDate, entryId)
-                  }
+            {/* The scroller and its docked action row. The row is ABSOLUTE inside
+                this wrapper, so selecting a block costs no layout at all and cannot
+                resize the grid's box — which is the only arrangement in which the
+                44 px touch tier and an honest 20 px block can both hold. */}
+            <div className="relative flex min-h-0 flex-1 flex-col">
+              <div
+                ref={scrollerRef}
+                className="relative min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-y-contain px-1 py-2"
+              >
+                {grid && <PlannerShowBand lines={showLines} />}
+                {grid ? (
+                  <PlannerDayGrid
+                    entries={activeEntries}
+                    day={day ?? null}
+                    grid={grid}
+                    timezone={timezone}
+                    isToday={isToday}
+                    liveWaits={liveWaits}
+                    showLines={showLines}
+                    loading={dayState === 'loading'}
+                    selectedId={selectedId}
+                    scrollerRef={scrollerRef}
+                    onSelect={setSelectedId}
+                    onMove={(entryId, startMinute) =>
+                      activeParkSlug &&
+                      activeDate &&
+                      moveRide(activeParkSlug, activeDate, entryId, startMinute)
+                    }
+                    onShiftFrom={(entryId, delta) =>
+                      activeParkSlug &&
+                      activeDate &&
+                      shiftFrom(activeParkSlug, activeDate, entryId, delta)
+                    }
+                  />
+                ) : activeEntries.length === 0 ? (
+                  <div className="flex h-full min-h-[180px] flex-col items-center justify-center gap-1 px-6 text-center">
+                    <p className="text-sm font-medium">{t('empty.title')}</p>
+                    <p className="text-muted-foreground text-xs">
+                      {isPhone ? t('empty.bodyMobile') : t('empty.body')}
+                    </p>
+                  </div>
+                ) : (
+                  /* No opening hours means no honest axis — not a 24-hour one,
+                     which would assert a park that never closes, and not an
+                     invented 9-to-6. The flat list is what this branch is for,
+                     and why those three components survive. */
+                  <PlannerTimeline
+                    entries={activeEntries}
+                    day={day ?? null}
+                    onToggleDone={(entryId, done) =>
+                      activeParkSlug &&
+                      activeDate &&
+                      setDone(activeParkSlug, activeDate, entryId, done)
+                    }
+                    onRemove={(entryId) =>
+                      activeParkSlug &&
+                      activeDate &&
+                      removeRide(activeParkSlug, activeDate, entryId)
+                    }
+                  />
+                )}
+              </div>
+              {grid && selectedId && (
+                <PlannerGridActions
+                  entry={activeEntries.find((e) => e.id === selectedId) ?? null}
+                  onToggleDone={(entryId, done) => {
+                    if (!activeParkSlug || !activeDate) return;
+                    // The fifth argument. `setEntryDone` has taken `actualWait` since it
+                    // was written, `estimate.ts` sums it and the block renders it — and
+                    // nothing had ever passed it, so `PlannerEntry.actualWait` was dead in
+                    // production and a ticked-off block could only ever show an em dash.
+                    // Only on the way IN: un-ticking drops the figure, because a measured
+                    // number must not stay attached to an entry that is a plan again.
+                    const slug = activeEntries.find((e) => e.id === entryId)?.attractionSlug;
+                    const actual = done && slug ? liveWaits?.get(slug) : undefined;
+                    setDone(activeParkSlug, activeDate, entryId, done, actual ?? undefined);
+                  }}
+                  onRemove={(entryId) => {
+                    if (activeParkSlug && activeDate)
+                      removeRide(activeParkSlug, activeDate, entryId);
+                    setSelectedId(null);
+                  }}
+                  onClose={() => setSelectedId(null)}
                 />
               )}
             </div>
