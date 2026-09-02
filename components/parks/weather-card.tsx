@@ -19,7 +19,6 @@ import { WeatherHourlyChart } from './weather-hourly-chart';
 import { NowcastUpdateCountdown } from './nowcast-update-countdown';
 import { WeatherBackground } from './weather-background';
 import { WindCompass } from './wind-compass';
-import { TemperatureUnitToggle } from '@/components/common/temperature-unit-toggle';
 import { Temp, Wind, Precip, Distance } from '@/components/common/unit-display';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { LiveDot } from '@/components/common/live-dot';
@@ -184,30 +183,26 @@ export function WeatherCard({
     >
       <WeatherBackground code={weatherCode} isDay={isDay} glass glassBlur={4} glassOpacity={0.72} />
       <div className="relative z-10 flex flex-col gap-4">
+        {/* The °C/°F toggle used to sit at the right end of this row, which put it on park pages
+            and nowhere else — while the unit governs the calendar, the blog posts and the
+            best-travel-time hub too. It is in the header now, beside the theme switch. */}
         <CardHeader className="px-0 pt-0 pb-0">
-          <div className="flex items-center justify-between gap-2">
-            <CardTitle className="flex items-center gap-2 text-base">
-              <WeatherIcon className={`h-4 w-4 ${color}`} />
-              {tParks('weatherLabel')}
-              {activeNowcast && (
-                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-1.5 py-0.5 text-[10px] font-medium text-emerald-600 dark:text-emerald-400">
-                  <LiveDot
-                    size="h-1.5 w-1.5"
-                    color="bg-emerald-500"
-                    pingColor="bg-emerald-500/50"
-                  />
-                  {t('liveLabel')}
-                </span>
-              )}
-              {activeNowcast?.nextUpdateAt && (
-                <NowcastUpdateCountdown
-                  nextUpdateAt={activeNowcast.nextUpdateAt}
-                  className="m-0 text-emerald-600/80 dark:text-emerald-400/80"
-                />
-              )}
-            </CardTitle>
-            <TemperatureUnitToggle />
-          </div>
+          <CardTitle className="flex items-center gap-2 text-base">
+            <WeatherIcon className={`h-4 w-4 ${color}`} />
+            {tParks('weatherLabel')}
+            {activeNowcast && (
+              <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-1.5 py-0.5 text-[10px] font-medium text-emerald-600 dark:text-emerald-400">
+                <LiveDot size="h-1.5 w-1.5" color="bg-emerald-500" pingColor="bg-emerald-500/50" />
+                {t('liveLabel')}
+              </span>
+            )}
+            {activeNowcast?.nextUpdateAt && (
+              <NowcastUpdateCountdown
+                nextUpdateAt={activeNowcast.nextUpdateAt}
+                className="m-0 text-emerald-600/80 dark:text-emerald-400/80"
+              />
+            )}
+          </CardTitle>
         </CardHeader>
         <div className="space-y-4">
           <div className="flex items-center justify-between">

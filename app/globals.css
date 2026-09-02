@@ -994,33 +994,11 @@ html[data-temp-unit='F'] .u-imperial {
   display: inline;
 }
 
-/* The °C/°F toggle's own pressed state, on the same mechanism as the values it
-   governs. It used to come from React state, and that is a hydration mismatch
-   rather than a flash: the provider syncs the unit in an effect, so a widget
-   inside a boundary that hydrates after that effect has run is hydrated against
-   'F' while its server HTML says 'C' — React logs the whole subtree and patches
-   nothing. Static classes here, the pre-paint attribute decides, and the control
-   agrees with every temperature around it from the first frame, JS or no JS.
-   `aria-pressed` cannot be a class, so the component adds it after mount. */
-.u-unit-btn {
-  color: var(--muted-foreground);
-}
-.u-unit-btn:hover {
-  color: var(--foreground);
-}
-/* Default (attribute absent or "C") = metric, mirroring .u-metric above. */
-.u-unit-c {
-  background-color: color-mix(in oklab, var(--foreground) 10%, transparent);
-  color: var(--foreground);
-}
-html[data-temp-unit='F'] .u-unit-c {
-  background-color: transparent;
-  color: var(--muted-foreground);
-}
-html[data-temp-unit='F'] .u-unit-f {
-  background-color: color-mix(in oklab, var(--foreground) 10%, transparent);
-  color: var(--foreground);
-}
+/* The header's °C/°F button reads its own label off the same two classes: it renders
+   both "°C" and "°F" and lets the attribute pick one, so the control agrees with every
+   temperature around it from the first frame, JS or no JS. It carried three classes of
+   its own while it was a two-segment pill (.u-unit-btn / .u-unit-c / .u-unit-f); the
+   single button needs none. */
 
 /* Pin a subtree to metric, whatever the visitor's unit is. The guide page needs
    this: it teaches with the production cards, and its prose names centimetres

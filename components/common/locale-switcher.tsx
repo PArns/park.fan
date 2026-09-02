@@ -88,7 +88,12 @@ export function LocaleSwitcher() {
           suppressHydrationWarning
         >
           <RoundFlag locale={locale} />
-          <span>{LOCALE_CODES[locale]}</span>
+          {/* The country code is what pays for the °C/°F button beside the theme switch. At
+              360 px the bar carries 303 px of content in 328 px, this label is 22 px of it
+              (text plus its gap), and the unit control needs 35 px including its gap — so below
+              `sm` the flag stands alone and the dropdown, which lists the code AND the language
+              name, is one tap away. Above `sm` nothing is tight and the code stays. */}
+          <span className="max-sm:hidden">{LOCALE_CODES[locale]}</span>
           <span className="sr-only">Change language</span>
         </Button>
       </DropdownMenuTrigger>

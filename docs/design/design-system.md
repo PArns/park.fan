@@ -402,6 +402,7 @@ the hero leaves a gap or eats the bar.
 | locale switcher             |  32 px |       67 % |
 | burger, below `md`          |  36 px |       75 % |
 | theme toggle                |  28 px |       58 % |
+| °C/°F toggle                |  28 px |       58 % |
 | nav links (text)            |  20 px |       42 % |
 
 Sizes come off the button scale in `components/ui/button.tsx` (`sm` 32 / default 36 / `lg` 40), not
@@ -414,14 +415,63 @@ against 36).
 **And the bar is the one place that opts out of the scale's phone tier.** `sm`, `default`, `icon`
 and `icon-sm` all resolve to 44 px below `sm` now (see [the button scale](#the-button-scale-has-one-phone-height)),
 which is 92 % of this row — the same mistake as the 40 px field in a 56 px bar, one size worse. So
-the three controls that live here cancel it at their own call site and say why:
+the controls that live here cancel it at their own call site and say why:
 `components/common/locale-switcher.tsx` (`max-sm:h-8`), the `sm` branch of
-`components/search/search-bar.tsx` (`max-sm:h-9 max-sm:w-9`) and the burger in
-`components/layout/header.tsx` (`max-sm:size-9`). The table above therefore still holds at every
-width. What that leaves open is real and is about this bar rather than about those classes: on a
+`components/search/search-bar.tsx` (`max-sm:h-9 max-sm:w-9`), the burger in
+`components/layout/header.tsx` (`max-sm:size-9`) and the °C/°F button in
+`components/common/temperature-unit-toggle.tsx`, which is not a `<Button>` at all and simply never
+grows. The table above therefore still holds at every width. What that leaves open is real and is about this bar rather than about those classes: on a
 phone the locale switcher is 32 px and the theme toggle 28, four pixels apart, in a row that has no
 room for either to grow. Fixing that means changing the bar's height on phones — the number in the
 four places above — not the button.
+
+### The bar has a width budget, and it is 25 px
+
+The height is written down in four places and the width in none, so the third preference control —
+the °C/°F button that used to live in the weather card's header, i.e. on park pages only, while the
+unit governs the calendar, the blog posts and the best-travel-time hub too — was added against a
+measurement rather than an estimate. At **360 px**, the width most Android phones still report, the
+row carried **303 px of content in 328 px**: lockup 107, search button 36, locale switcher 56, theme
+toggle 48, burger 36, plus 20 px of gaps. Twenty-five pixels of slack, and identical to within 6 px
+in all six languages, because nothing in that row is prose.
+
+Two things follow from the 25 px.
+
+**The control's shape.** A two-segment `°C | °F` pill is 54 px — it does not fit, and neither does a
+bare text button once its gap is counted (21.5 + 4 against 25). So the button shows the unit that is
+**active** and switches to the other one on click: 29 px, 25 on a phone, `h-7` and the same ring as
+the theme switch beside it so the two read as one pair. Above `sm` both segments would be affordable
+and are deliberately not taken — one control that looks the same everywhere beats two markups that
+hydrate into each other.
+
+**Where the room came from**, since the button plus its gap is 29 px against 25 of slack. Three
+places, none of them a control's height:
+
+| Change                                             | Where                                                             | Saves |
+| -------------------------------------------------- | ----------------------------------------------------------------- | ----: |
+| the locale switcher's country code, below `sm`     | `components/common/locale-switcher.tsx`                           | 22 px |
+| the two gaps between the action groups, below `sm` | `components/layout/header.tsx` (`max-sm:gap-1`)                   |  8 px |
+| the button's own padding, below `sm`               | `components/common/temperature-unit-toggle.tsx` (`max-sm:px-1.5`) |  4 px |
+
+The country code is the interesting one: it sits next to a flag that already says it, in front of a
+dropdown that lists the code _and_ the language name, so below `sm` the flag stands alone. Above
+`sm` nothing is tight and the code stays.
+
+Measured after, at 320/360/390 px × six locales: **302 px used, 26 px of slack at 360** — one pixel
+_less_ than the row occupied before the button existed — and the same number in every language,
+where it used to differ by 6 px. **320 px is why the last two rows of that table exist.** It is the
+narrowest viewport still in the logs and the bar was already 15 px over its box there before any of
+this; the container's own `px-4` swallowed that, so nothing scrolled sideways and nobody noticed.
+The button alone pushed it to 26 over and the document to 330 px on a 320 px screen. It is back to
+14 over now, i.e. inside the padding, and the document is exactly the viewport at every width from
+320 to 768.
+
+The corner pill on the hero pages carries the same three controls, ends 24 px from the right edge at
+every width, and clears the corner lockup by 42 px at 320.
+
+What that leaves is a bar with no room for a fourth preference. The next thing that wants to live
+here is a question about the bar's height, or about a preferences sheet — not about shaving another
+control.
 
 For the outside view: Material 3's small top app bar is 64 dp, and the general advice for a
 **sticky** bar is to stay under about 60 px on desktop and 50 on mobile, since it costs that much
@@ -532,9 +582,8 @@ button is still the narrow one.
 [header geometry](#header-geometry). Cancel the tier only where a row's height is itself a
 requirement, with `max-sm:` at the call site and a comment naming the requirement.
 
-Two things the tier does not reach, both still open: controls that are not `<Button>` (the
-temperature toggle's two 16 px halves, the glossary filter pills, the blog tag cloud, `FavoriteStar`)
-and bare `<Link>`s with no padding (the footer's nine legal and section links, 20 px tall and 8 px
+Two things the tier does not reach, both still open: controls that are not `<Button>` (the glossary
+filter pills, the blog tag cloud, `FavoriteStar`) and bare `<Link>`s with no padding (the footer's nine legal and section links, 20 px tall and 8 px
 apart). `Badge` is deliberately untouched — badges are overwhelmingly labels rather than targets, and
 growing every status chip on every card would move layout the placeholders reserve for.
 
