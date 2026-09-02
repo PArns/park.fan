@@ -8,6 +8,7 @@ import {
 } from '@/lib/api/parks';
 import { getParkWeatherNowcastFresh } from '@/lib/api/weather-nowcast';
 import { getParkHistoricalStats, getParkHourlyProfile, getRideDayCurve } from '@/lib/api/stats';
+import { getPlanDay } from '@/lib/api/plan';
 import { enrichAttractionsWithImages } from '@/lib/utils/park-assets';
 import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
 import {
@@ -311,6 +312,42 @@ export async function GET(
       // six parks in a row that "have no curve".
       console.error(`[Ride-Day-Curve API] ${continent}/${country}/${city}/${park}:`, error);
       return NextResponse.json({ error: 'Failed to fetch day curve' }, { status: 502 });
+    }
+  }
+
+  // Handle one day's plan: [continent, country, city, park, 'plan', 'day'] (6 segments)
+  // Per-ride hourly curves for one date, plus that day's context.
+  //
+  // s-maxage is FIFTEEN minutes across the board rather than scaled by distance.
+  // A day in November genuinely does not move and could hold for hours, but the
+  // date is in the CDN key, so a per-distance TTL would mean the same URL is
+  // cached differently depending on when it was first asked for — and today, the
+  // one that does move, is by far the most requested date.
+  if (path && path.length === 6 && path[4] === 'plan' && path[5] === 'day') {
+    const [continent, country, city, park] = path;
+    const { searchParams } = new URL(request.url);
+    // Passed through as-is: the backend validates the shape and 400s a bad one,
+    // and inventing a second validator here would put two answers in the field.
+    const date = searchParams.get('date') ?? undefined;
+
+    try {
+      const data = await getPlanDay(continent, country, city, park, date);
+
+      if (!data) {
+        return NextResponse.json(
+          { error: 'Plan not available' },
+          { status: 404, headers: cdnCacheHeaders(STATS_MISSING_CACHE) }
+        );
+      }
+
+      return NextResponse.json(data, {
+        headers: cdnCacheHeaders('public, s-maxage=900, stale-while-revalidate=1800'),
+      });
+    } catch (error) {
+      // Not a 404: the planner would otherwise read a broken endpoint as "this
+      // park has no plan for that day" and quietly draw an empty timeline.
+      console.error(`[Plan-Day API] ${continent}/${country}/${city}/${park}:`, error);
+      return NextResponse.json({ error: 'Failed to fetch plan' }, { status: 502 });
     }
   }
 
