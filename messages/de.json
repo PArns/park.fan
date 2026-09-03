@@ -1873,7 +1873,7 @@
     "removeRide": "Aus dem Plan nehmen",
     "empty": {
       "title": "Noch nichts geplant",
-      "body": "Zieh eine Bahn hierher oder tipp auf „In den Plan“ auf einer Attraktionskarte.",
+      "body": "Such dir unten eine Bahn – oder öffne die Seite einer Bahn und tipp dort auf „In den Plan“.",
       "bodyMobile": "Such dir unten eine Bahn und leg sie auf eine Uhrzeit.",
       "bodyGrid": "Such dir unten eine Bahn – sie landet auf der Zeitachse und lässt sich dort verschieben."
     },

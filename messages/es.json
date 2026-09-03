@@ -1873,7 +1873,7 @@
     "removeRide": "Quitar del plan",
     "empty": {
       "title": "Todavía no hay nada planificado",
-      "body": "Arrastra una atracción aquí o toca «Al plan» en una tarjeta.",
+      "body": "Busca una atracción abajo o abre la página de una atracción y toca «Al plan».",
       "bodyMobile": "Busca una atracción abajo y ponla en una hora.",
       "bodyGrid": "Busca una atracción abajo: aparece en la línea de tiempo y se mueve desde ahí."
     },

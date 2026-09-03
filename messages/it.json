@@ -1873,7 +1873,7 @@
     "removeRide": "Togli dal piano",
     "empty": {
       "title": "Ancora niente in programma",
-      "body": "Trascina qui un’attrazione o tocca «Nel piano» su una scheda.",
+      "body": "Cerca un’attrazione qui sotto oppure apri la pagina di un’attrazione e tocca «Nel piano».",
       "bodyMobile": "Cerca un’attrazione qui sotto e mettila su un orario.",
       "bodyGrid": "Cerca un’attrazione qui sotto: finisce sulla linea del tempo e da lì si sposta."
     },
