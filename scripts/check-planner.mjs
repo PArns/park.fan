@@ -2853,7 +2853,18 @@ if (reachable) {
     await page.goto(`${BASE}/${locale}`, { waitUntil: 'networkidle' });
 
     const launcher = page.locator(`button[aria-label="${label}"]`);
-    const found = (await launcher.count()) === 1;
+    // WAITED for, not counted. The launcher is a Client Component that reads
+    // the plan out of localStorage, so it mounts after `networkidle` resolves —
+    // and this block sits at the end of a long run, where the dev server is
+    // slowest and loses that race every time. A bare `count()` here reported
+    // "Launcher fehlt" for all six locales on a page that had the button
+    // (`button[aria-label]` on the settled page lists exactly "Planer öffnen"),
+    // which reads as a broken feature rather than as a missed beat. Every other
+    // launcher assertion in this file already waits.
+    const found = await launcher
+      .waitFor({ state: 'visible', timeout: 20_000 })
+      .then(() => true)
+      .catch(() => false);
     if (found) {
       await launcher.click();
       await page
