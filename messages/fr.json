@@ -1873,7 +1873,7 @@
     "removeRide": "Retirer du planning",
     "empty": {
       "title": "Rien de prévu pour l’instant",
-      "body": "Fais glisser une attraction ici, ou touche « Au planning » sur une carte.",
+      "body": "Cherche une attraction ci-dessous – ou ouvre la page d’une attraction et touche « Au planning ».",
       "bodyMobile": "Cherche une attraction ci-dessous et pose-la sur une heure.",
       "bodyGrid": "Cherche une attraction ci-dessous – elle se pose sur la frise et se déplace de là."
     },

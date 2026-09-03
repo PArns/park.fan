@@ -2018,6 +2018,15 @@ export interface PlanDayRide {
    * for a Tuesday in November.
    */
   downYesterday?: boolean;
+
+  /**
+   * Whether the park counts this ride among its headliners.
+   *
+   * The API's CURATED answer, never re-derived here from `dayPeak`: the day's
+   * tallest bars are whatever happens to be busy, and pointing at those would
+   * recommend the queue rather than the ride. Absent on an ordinary ride.
+   */
+  isHeadliner?: boolean;
 }
 
 export interface PlanDayContext {

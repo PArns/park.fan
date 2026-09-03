@@ -1873,7 +1873,7 @@
     "removeRide": "Remove from plan",
     "empty": {
       "title": "Nothing planned yet",
-      "body": "Drag a ride here, or tap “Add to plan” on an attraction card.",
+      "body": "Find a ride below – or open a ride’s own page and tap “Add to plan” there.",
       "bodyMobile": "Find a ride below and drop it on a time.",
       "bodyGrid": "Find a ride below – it lands on the timeline and can be moved from there."
     },
