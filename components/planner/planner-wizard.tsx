@@ -22,10 +22,11 @@ import { getCountryName } from '@/lib/utils/region-names';
 import { cn } from '@/lib/utils';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { usePlannerDayFacts } from '@/lib/planner/use-day-facts';
+import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { plannerUi } from '@/lib/planner/ui-store';
-import { todayInZone } from '@/lib/planner/park-time';
+import { formatGridTime, todayInZone } from '@/lib/planner/park-time';
 import { RIDER_HEIGHT_CHOICES, RIDER_HEIGHT_DEFAULT_CM } from '@/lib/planner/party';
-import type { CalendarDay } from '@/lib/api/types';
+import type { CalendarDay, PlanDay } from '@/lib/api/types';
 import type { PlannerDayPrefs } from '@/lib/planner/types';
 import { PlannerParkSearch, type PlannerParkPick } from './planner-park-search';
 import { PlannerMonthCalendar } from './planner-month-calendar';
@@ -125,6 +126,25 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
   const [lunch, setLunch] = useState(false);
 
   const facts = usePlannerDayFacts(park, open && step !== 'park');
+  /**
+   * Opening hours and weather for the day being picked.
+   *
+   * The best-days snapshot the calendar runs on answers `hours: null` and
+   * `weather: null` on every one of its 91 days — checked against the live
+   * endpoint, not assumed — so the card under the calendar could only ever show
+   * a crowd chip. `/plan/day` carries both in its `context`, and asking for it
+   * here is not a request the wizard spends: it is the exact query the panel
+   * runs the moment this wizard finishes, under the same key, so the last step
+   * warms the first screen of the next one.
+   */
+  const planDay = usePlanDay({
+    continent: park?.geo.continent ?? '',
+    country: park?.geo.country ?? '',
+    city: park?.geo.city ?? '',
+    parkSlug: park?.slug ?? '',
+    date: date ?? undefined,
+    enabled: open && step === 'date' && Boolean(park && date),
+  });
   // The park's own zone where the forecast has arrived, the reader's until then.
   // Never a constant: `todayInZone` names that fallback and is the only door to it.
   const today = todayInZone(facts.timezone ?? park?.timezone);
@@ -243,6 +263,7 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
                 <WizardDayCard
                   date={date}
                   day={chosen}
+                  context={planDay.data?.context ?? null}
                   timezone={facts.timezone}
                   hasSchedule={facts.hasOperatingSchedule}
                   loading={facts.loading}
@@ -675,12 +696,15 @@ const RAIL_DOT_CLEARANCE = 18;
 function WizardDayCard({
   date,
   day,
+  context,
   timezone,
   hasSchedule,
   loading,
 }: {
   date: string | null;
   day: CalendarDay | undefined;
+  /** `/plan/day`'s own view of this date — the only source of hours and weather. */
+  context: PlanDay['context'] | null;
   timezone: string | null;
   hasSchedule: boolean | null;
   loading: boolean;
@@ -710,7 +734,12 @@ function WizardDayCard({
     return <p className={cn(frame, 'text-muted-foreground')}>{t('day.closed')}</p>;
   }
 
-  const weather = day.weather;
+  // Both of these come from `/plan/day` in practice: the best-days snapshot
+  // this card's crowd level comes from carries `hours: null` and
+  // `weather: null` on every day it covers. The snapshot is still read first,
+  // because a park whose snapshot ever does carry them should not be made to
+  // wait for a second request to say so.
+  const weather = day.weather ?? context?.weather ?? null;
   // The site's own weather vocabulary — icon, tint and label per WMO code — so
   // this card and the planner's weather rail describe one day the same way.
   const weatherConfig = weather ? getWeatherConfig(weather.icon, true) : null;
@@ -721,7 +750,7 @@ function WizardDayCard({
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
         <CrowdLevelBadge level={day.crowdLevel} />
 
-        {hours && timezone && (
+        {hours && timezone ? (
           <span className="text-muted-foreground flex items-center gap-1">
             <Clock className="size-3.5 shrink-0" aria-hidden="true" />
             <ParkTimeRange
@@ -731,6 +760,20 @@ function WizardDayCard({
               locale={locale}
             />
           </span>
+        ) : (
+          context?.openHour != null &&
+          context.closeHour != null && (
+            /* `/plan/day`'s hours, which are park-local HOURS rather than the
+               instants `ParkTimeRange` formats — so they are printed the way
+               the grid's own axis prints them, by the same helper, and not run
+               through a timezone conversion they have already had. */
+            <span className="text-muted-foreground flex items-center gap-1 tabular-nums">
+              <Clock className="size-3.5 shrink-0" aria-hidden="true" />
+              {formatGridTime(context.openHour * 60)}
+              {' – '}
+              {formatGridTime(context.closeHour * 60)}
+            </span>
+          )
         )}
 
         {weather && weatherConfig && (
