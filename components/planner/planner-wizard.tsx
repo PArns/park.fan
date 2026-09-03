@@ -328,12 +328,20 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
             squeezes the buttons instead of scrolling the body above them.
 
             And `px-3` below `sm` rather than the step body's `px-5`, because
-            this row is the one place a label decides the width: measured at
-            320 px across six locales, `Retour` + `Ouvrir le planning` came to
-            240 px in 231. Shortening the French was the wrong repair —
-            „planning" is the term the other nine strings in that locale use, so
-            trading it for „plan" to buy nine pixels would make one button
-            disagree with the rest of the panel. */}
+            this row is the one place a label decides the width. Measured at
+            320 px across six locales, the pair of buttons wants 194–240 px and
+            French is the outlier at 240: `Retour` + `Ouvrir le planning` had
+            231 px to sit in and was nine short. Shortening the French was the
+            wrong repair — „planning" is the term the other nine strings in that
+            locale use, so trading it for „plan" to buy nine pixels would leave
+            one button disagreeing with the rest of the panel. At `px-3` the row
+            offers 247 px, so the widest locale keeps 7 px and nothing is
+            squeezed in any of the six.
+
+            Measure the NATURAL width (`scrollWidth` per control), never the
+            span the two ends occupy: `justify-between` fills the row whatever
+            fits, so that span equals the available width right up to the moment
+            it overflows and reads as "exactly right" all the way. */}
         {step !== 'park' && (
           <div className="border-border/60 flex shrink-0 items-center justify-between gap-2 border-t px-3 py-3 sm:px-6">
             <Button

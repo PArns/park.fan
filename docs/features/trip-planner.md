@@ -98,6 +98,20 @@ There is **no footer on the first step**. Picking a park from the list _is_ the
 advance, so a `Weiter` button there is a control nobody presses sitting next to a
 `Zurück` that leads nowhere.
 
+**The footer is the one row a label sizes**, so it takes `px-3` below `sm`
+rather than the step body's `px-5`. Measured at 320 px across six locales the
+pair of buttons wants 194–240 px, and French is the outlier: `Retour` +
+`Ouvrir le planning` had 231 px and was nine short. Shortening the French was
+the wrong repair — „planning" is the term the other nine strings in that locale
+use, so buying nine pixels with „plan" would leave one button disagreeing with
+the rest of the panel. At `px-3` the row offers 247 px and the widest locale
+keeps 7. Measure the **natural** width (`scrollWidth` per control), never the
+span the two ends occupy: `justify-between` fills the row whatever fits, so that
+span equals the available width right up to the moment it overflows and reads as
+"exactly right" the whole way — which is how a first pass at this reported
+"fits" for German at precisely 231/231 and flagged all six as overflowing after
+the padding changed.
+
 **The step transition is CSS, not GSAP.** `motion-safe:animate-in
 slide-in-from-*`, remounted on a `key={step}`. The house rules for GSAP
 (`lib/hooks/use-menu-reveal.ts`) exist because a _reveal_ that strands leaves an
