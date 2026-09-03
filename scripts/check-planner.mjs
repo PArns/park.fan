@@ -1350,6 +1350,132 @@ if (reachable) {
   await shows.close();
 }
 
+// ── The planner's own page ──────────────────────────────────────────────────
+// The feature had no URL. Its launcher appears only once something is planned
+// and its panel opens from a floating button, so a visitor who had not already
+// used it could not find it, could not link to it, and could not be sent to it.
+// The page is the answer, and its EMPTY state is the half that matters: it is
+// what somebody arriving from the menu sees.
+{
+  const page = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
+  noteErrors(page);
+
+  const PATHS = {
+    de: '/de/tagesplaner',
+    en: '/en/trip-planner',
+    nl: '/nl/dagplanner',
+    fr: '/fr/planificateur',
+    es: '/es/planificador',
+    it: '/it/pianificatore',
+  };
+
+  // Every locale answers on its OWN segment. One page, six URLs, and a rewrite
+  // per language — a 404 here is a menu entry pointing at nothing.
+  for (const [locale, path] of Object.entries(PATHS)) {
+    const response = await page.goto(`${BASE}${path}`, { waitUntil: 'domcontentloaded' });
+    check(
+      `${locale}: die Planer-Seite antwortet`,
+      response?.status() === 200,
+      `${response?.status()}`
+    );
+  }
+
+  // And a visitor who lands on somebody else's segment is sent to their own,
+  // rather than served a second copy at a URL that then competes with it.
+  const wrong = await page.goto(`${BASE}/de/trip-planner`, { waitUntil: 'domcontentloaded' });
+  check(
+    'ein fremdes Segment landet bei der eigenen Sprache',
+    wrong?.url().endsWith('/de/tagesplaner'),
+    `${wrong?.url()}`
+  );
+
+  // ── Empty ─────────────────────────────────────────────────────────────────
+  await page.evaluate(() => {
+    window.localStorage.removeItem('parkfan_planner');
+    document.cookie = 'planner=1; path=/';
+  });
+  await page.goto(`${BASE}/de/tagesplaner`, { waitUntil: 'networkidle' });
+  await page.waitForTimeout(1200);
+
+  check(
+    'ohne Plan erklärt die Seite, wofür der Planer da ist',
+    (await page.locator('[data-planner-page-intro]').count()) === 1
+  );
+  const introText = (await page.locator('[data-planner-page-intro]').textContent()) ?? '';
+  check(
+    'und zwar auf Deutsch, nicht in rohen Keys',
+    !/planner\.[a-z]/i.test(introText) && /Noch nichts geplant/.test(introText),
+    introText.slice(0, 80)
+  );
+  // The park search is the first step, not a control that appears later.
+  check(
+    'die Parksuche steht auch im leeren Zustand da',
+    (await page.locator('[data-planner-park-search]').count()) === 1
+  );
+  // Nothing planned, so nothing to list — and no empty "0 geplante Tage" heading.
+  check(
+    'kein leerer Plan-Abschnitt',
+    (await page.locator('[data-planner-page-day]').count()) === 0
+  );
+
+  // ── With plans ────────────────────────────────────────────────────────────
+  const PAST = new Date(Date.now() - 6 * 86_400_000).toISOString().slice(0, 10);
+  await page.evaluate(
+    ([plan, future, past]) => {
+      const seeded = JSON.parse(JSON.stringify(plan));
+      const park = seeded.parks.phantasialand;
+      park.timezone = 'Europe/Berlin';
+      const entry = (id, done) => ({
+        id,
+        attractionSlug: 'taron',
+        attractionName: 'Taron',
+        startMinute: 600,
+        ...(done ? { done: true, actualWait: 35 } : {}),
+      });
+      park.days = {
+        [past]: { date: past, entries: [entry('old-1', true)] },
+        [future]: { date: future, entries: [entry('f-1', false)] },
+      };
+      seeded.parks = { phantasialand: park };
+      seeded.activeParkSlug = null;
+      seeded.activeDate = null;
+      window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
+      document.cookie = 'planner=1; path=/';
+    },
+    [PLAN, DATE, PAST]
+  );
+  await page.goto(`${BASE}/de/tagesplaner`, { waitUntil: 'networkidle' });
+  await page.waitForTimeout(1200);
+
+  check(
+    'mit Plänen erklärt sie nicht mehr, sondern listet',
+    (await page.locator('[data-planner-page-intro]').count()) === 0
+  );
+  const days = page.locator('[data-planner-page-day]');
+  check(
+    'beide Tage stehen da, auch der vergangene',
+    (await days.count()) === 2,
+    `${await days.count()}`
+  );
+
+  // The page is the DIRECTORY, not a second editor: picking a day sets the
+  // active day and asks the panel to open, which is the same signal the park
+  // calendar's "plan this day" already sends.
+  await days.first().click();
+  await page.waitForTimeout(900);
+  check('ein Klick auf einen Tag öffnet das Panel', (await page.locator(SHEET).count()) === 1);
+  const active = await page.evaluate(() =>
+    JSON.parse(localStorage.getItem('parkfan_planner') ?? '{}')
+  );
+  check(
+    'und zwar auf genau diesem Tag',
+    active?.activeDate === new Date(Date.now() - 6 * 86_400_000).toISOString().slice(0, 10),
+    `${active?.activeDate}`
+  );
+
+  await page.close();
+}
+
 // ── Notifications, all the way on and all the way off ───────────────────────
 // The three states earlier in this file check what the CONTROL offers. This
 // checks what pressing it does, which is the half that can be broken while

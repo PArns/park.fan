@@ -8,6 +8,7 @@ import { PreferredSourceButton } from '@/components/common/preferred-source-butt
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
+import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import { getCurrentYear } from '@/lib/utils/server-time';
 import type { Locale } from '@/i18n/config';
 
@@ -22,6 +23,7 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
   const glossaryPath = '/' + GLOSSARY_SEGMENTS[locale as Locale];
   const bestTimePath = '/' + BEST_TIME_SEGMENTS[locale as Locale];
   const howtoPath = '/' + HOWTO_SEGMENTS[locale as Locale];
+  const plannerPath = '/' + PLANNER_SEGMENTS[locale as Locale];
   const tGeo = await getTranslations({ locale, namespace: 'geo' });
   const currentYear = await getCurrentYear();
 
@@ -427,6 +429,15 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
               aria-label={t('howto')}
             >
               {t('howto')}
+            </Link>
+            <span className="text-muted-foreground/60 flex items-center">•</span>
+            <Link
+              href={plannerPath}
+              prefetch={false}
+              className="hover:text-foreground inline-flex items-center text-sm transition-colors max-sm:min-h-11"
+              aria-label={t('planner')}
+            >
+              {t('planner')}
             </Link>
             <span className="text-muted-foreground/60 flex items-center">•</span>
             <Link

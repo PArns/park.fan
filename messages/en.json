@@ -464,6 +464,7 @@
     "api": "API Documentation",
     "impressum": "Imprint",
     "howto": "Understanding wait times",
+    "planner": "Trip planner",
     "fancast": "Fancast",
     "bestTime": "Best time to visit",
     "glossaryLink": "Dictionary",
@@ -518,6 +519,7 @@
     "admin": "Admin",
     "nearbyPark": "Nearby: {parkName}",
     "howto": "How it works",
+    "planner": "Trip planner",
     "glossary": "Dictionary",
     "blog": "Blog",
     "bestTime": "Best Time to Visit",
@@ -1999,6 +2001,31 @@
       "on": "Notifications are on",
       "denied": "Your browser blocks notifications for this site. Only your browser settings can change that.",
       "storedHint": "Your plan is stored on the server for this. Whoever has its link can read and change it — there is no account and no password."
+    },
+    "page": {
+      "kicker": "Trip planner",
+      "title": "Your day in the park, sorted out first",
+      "lead": "Say which rides you want, and the planner works out with the forecast waits whether the day adds up. Everything stays in your browser — no account needed.",
+      "metaTitle": "Trip planner – plan around the wait times | park.fan",
+      "metaDescription": "Plan a park day against the forecast waits: drop rides onto a timeline, check how much time each transfer leaves, and fit shows and breaks in between.",
+      "yourPlans": "{count, plural, one {One planned day} other {# planned days}}",
+      "introTitle": "Nothing planned yet",
+      "introBody": "The planner lays your rides on a timeline and puts the wait forecast for that hour on each one. Between them it says how long you have to get across, and whether that is cutting it fine.",
+      "browseParks": "Pick a park",
+      "steps": {
+        "find": {
+          "title": "Pick a park and a day",
+          "body": "The wait-time calendar shows how busy a day will be. From there you go straight into a plan."
+        },
+        "add": {
+          "title": "Add rides",
+          "body": "There's a button on every attraction page. Inside the planner you can search, or drag a ride in."
+        },
+        "arrange": {
+          "title": "Move things until it fits",
+          "body": "Drag a block to another time. The wait and the colour move with it, because both belong to the hour."
+        }
+      }
     }
   }
 }

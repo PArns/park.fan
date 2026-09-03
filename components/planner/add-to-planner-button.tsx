@@ -54,7 +54,15 @@ export function AddToPlannerButton({
   const planned = plannedCount > 0;
 
   const handleAdd = () => {
-    addRide({ parkSlug, parkName, geo, timezone, date: targetDate, attractionSlug, attractionName });
+    addRide({
+      parkSlug,
+      parkName,
+      geo,
+      timezone,
+      date: targetDate,
+      attractionSlug,
+      attractionName,
+    });
     // Adding also decides what the flyout shows: a visitor who just planned a
     // ride at this park on this day means to look at that day, not at whatever
     // was open last week.
@@ -66,9 +74,7 @@ export function AddToPlannerButton({
       type="button"
       onClick={handleAdd}
       aria-label={
-        planned
-          ? `${t('plannedTimes', { count: plannedCount })} — ${t('addAgain')}`
-          : t('addRide')
+        planned ? `${t('plannedTimes', { count: plannedCount })} — ${t('addAgain')}` : t('addRide')
       }
       className={cn(
         'inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-colors',
