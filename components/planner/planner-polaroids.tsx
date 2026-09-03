@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { usePolaroidReveal } from '@/lib/hooks/use-polaroid-reveal';
+import { cn } from '@/lib/utils';
 
 export interface PolaroidPhoto {
   src: string;
@@ -16,7 +17,7 @@ interface PlannerPolaroidsProps {
 }
 
 /**
- * Three park photos, laid out as polaroids.
+ * A handful of park photos, laid out as polaroids.
  *
  * The page had no picture on it at all, which for a page about days out is a
  * strange thing to be. Polaroids rather than a grid of cards because the page's
@@ -45,10 +46,10 @@ export function PlannerPolaroids({ photos }: PlannerPolaroidsProps) {
       // The height is fixed so the reveal moves ink and never geometry — see
       // `use-polaroid-reveal`. `select-none` because these are decoration and a
       // drag-select over them looks like a bug.
-      className="pointer-events-none relative mx-auto h-[210px] w-full max-w-md select-none sm:h-[250px]"
+      className="pointer-events-none relative mx-auto h-[210px] w-full max-w-md select-none sm:h-[260px] sm:max-w-2xl"
       aria-hidden="true"
     >
-      {photos.slice(0, 3).map((photo, index) => (
+      {photos.slice(0, SLOTS.length).map((photo, index) => (
         /* TWO elements, and that is the whole reason this works. The wrapper
            carries the resting angle as CSS and GSAP never touches it; the
            `figure` inside is what gets tweened. One element could not do both:
@@ -59,14 +60,9 @@ export function PlannerPolaroids({ photos }: PlannerPolaroidsProps) {
            because the CSS was being overwritten rather than respected. */
         <div
           key={photo.src}
-          className="absolute top-0"
+          className={cn('absolute top-0', SLOTS[index].box)}
           style={{
-            // Hand-placed rather than evenly spread: three cards at equal
-            // angles read as a fan, and a fan reads as a widget. These overlap
-            // the way a stack somebody put down does.
-            left: `${[2, 32, 62][index]}%`,
-            width: '36%',
-            transform: `rotate(${[-6, 3, 8][index]}deg)`,
+            transform: `rotate(${SLOTS[index].rotate}deg)`,
             zIndex: index + 1,
           }}
         >
@@ -79,14 +75,20 @@ export function PlannerPolaroids({ photos }: PlannerPolaroidsProps) {
                 src={photo.src}
                 alt=""
                 fill
-                // Three cards at 36 % of a 448 px column is ~160 px, doubled for
-                // a 2× display.
-                sizes="(max-width: 640px) 33vw, 170px"
+                // A phone card is 36 % of a 448 px column, a desktop one 26 %
+                // of a 672 px band — ~160 and ~175 px, doubled for a 2× display.
+                sizes="(max-width: 640px) 33vw, 180px"
                 quality={60}
                 style={{ objectFit: 'cover', objectPosition: photo.position }}
               />
             </span>
-            <figcaption className="absolute inset-x-2 bottom-1.5 truncate text-center text-[10px] font-medium text-neutral-700">
+            {/* LEFT, not centred, and that is about the overlap rather than
+                about taste: each card covers the right 40 % of the one before
+                it, so a centred caption came out as "Phanta…", "Toverl…",
+                "Walibi H…" — every park in the stack unnamed except the last.
+                The left third is the part of a card that is never covered, and
+                a caption written into the corner reads as handwriting anyway. */}
+            <figcaption className="absolute inset-x-2 bottom-1.5 truncate text-left text-[10px] font-medium text-neutral-700">
               {photo.label}
             </figcaption>
           </figure>
@@ -95,3 +97,29 @@ export function PlannerPolaroids({ photos }: PlannerPolaroidsProps) {
     </div>
   );
 }
+
+/**
+ * Where each polaroid sits, per breakpoint.
+ *
+ * Hand-placed rather than evenly spread: cards at equal angles read as a fan,
+ * and a fan reads as a widget. These overlap the way a stack somebody put down
+ * does.
+ *
+ * FULL class strings and not an interpolated `left-[${n}%]`, because Tailwind's
+ * scanner has to see them — the same rule the crowd palette states. It is also
+ * why the breakpoint lives in classes at all: the positions differ between a
+ * phone and a desktop and an inline style has no `sm:`.
+ *
+ * Three on a phone and six above it. Not a taste call: a 358 px column cannot
+ * hold six overlapping cards and still leave a caption readable, and the extra
+ * three are `hidden` rather than unrendered so the reveal always animates the
+ * same DOM.
+ */
+const SLOTS: readonly { box: string; rotate: number }[] = [
+  { box: 'left-[2%] w-[36%] sm:left-[0%] sm:w-[26%]', rotate: -7 },
+  { box: 'left-[32%] w-[36%] sm:left-[15%] sm:w-[26%]', rotate: 4 },
+  { box: 'left-[62%] w-[36%] sm:left-[30%] sm:w-[26%]', rotate: -3 },
+  { box: 'hidden sm:block sm:left-[45%] sm:w-[26%]', rotate: 7 },
+  { box: 'hidden sm:block sm:left-[59%] sm:w-[26%]', rotate: -5 },
+  { box: 'hidden sm:block sm:left-[74%] sm:w-[26%]', rotate: 9 },
+];

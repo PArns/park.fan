@@ -138,10 +138,21 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
  * so a picture disappearing from the catalogue cannot leave a hole here.
  */
 function polaroidPhotos(): PolaroidPhoto[] {
+  // Every park the media database has a background for, in the order they are
+  // laid down. Nine exist; six are drawn (see `SLOTS`), and naming all of them
+  // means the fan stays full if one picture is retired rather than silently
+  // losing a card. Slugs are the API's, which is why two of them do not look
+  // like their labels.
   const picks: Array<{ slug: string; label: string }> = [
     { slug: 'phantasialand', label: 'Phantasialand' },
     { slug: 'europa-park', label: 'Europa-Park' },
     { slug: 'attractiepark-toverland', label: 'Toverland' },
+    { slug: 'efteling', label: 'Efteling' },
+    { slug: 'walibi-holland', label: 'Walibi Holland' },
+    { slug: 'disneyland-park', label: 'Disneyland Paris' },
+    { slug: 'bobbejaanland', label: 'Bobbejaanland' },
+    { slug: 'walibi-belgium', label: 'Walibi Belgium' },
+    { slug: 'movie-park-germany', label: 'Movie Park Germany' },
   ];
 
   const out: PolaroidPhoto[] = [];
