@@ -2001,7 +2001,15 @@
       "off": "Benachrichtigungen einschalten",
       "on": "Benachrichtigungen sind an",
       "denied": "Dein Browser blockiert Benachrichtigungen für diese Seite. Das lässt sich nur in den Browser-Einstellungen ändern.",
-      "storedHint": "Dein Plan liegt dafür auf dem Server. Wer den Link dazu hat, kann ihn lesen und ändern – es gibt kein Konto und kein Passwort."
+      "storedHint": "Dein Plan liegt dafür auf dem Server. Wer den Link dazu hat, kann ihn lesen und ändern – es gibt kein Konto und kein Passwort.",
+      "topics": {
+        "legend": "Wobei sollen wir Bescheid sagen?",
+        "only": "Du bekommst eine Nachricht: {kind}.",
+        "next-up": "Wenn du zur nächsten Bahn losmusst",
+        "show-times": "Vorstellungszeiten der Shows",
+        "ride-status": "Wenn eine geplante Bahn schließt oder wieder öffnet",
+        "wait-change": "Wenn sich eine geplante Wartezeit deutlich ändert"
+      }
     },
     "page": {
       "kicker": "Tagesplaner",

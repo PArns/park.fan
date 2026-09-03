@@ -2001,7 +2001,15 @@
       "off": "Activar notificaciones",
       "on": "Las notificaciones están activas",
       "denied": "Tu navegador bloquea las notificaciones de este sitio. Solo puedes cambiarlo en sus ajustes.",
-      "storedHint": "Para esto tu plan se guarda en el servidor. Quien tenga su enlace puede leerlo y cambiarlo: no hay cuenta ni contraseña."
+      "storedHint": "Para esto tu plan se guarda en el servidor. Quien tenga su enlace puede leerlo y cambiarlo: no hay cuenta ni contraseña.",
+      "topics": {
+        "legend": "¿Sobre qué quieres que te avisemos?",
+        "only": "Recibirás un solo tipo de aviso: {kind}.",
+        "next-up": "Cuando toca ir a la siguiente atracción",
+        "show-times": "Horarios de los espectáculos",
+        "ride-status": "Cuando una atracción planificada cierra o vuelve a abrir",
+        "wait-change": "Cuando una espera planificada cambia mucho"
+      }
     },
     "page": {
       "kicker": "Planificador",

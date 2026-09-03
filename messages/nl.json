@@ -2001,7 +2001,15 @@
       "off": "Meldingen inschakelen",
       "on": "Meldingen staan aan",
       "denied": "Je browser blokkeert meldingen voor deze site. Dat verander je alleen in de browserinstellingen.",
-      "storedHint": "Je plan staat daarvoor op de server. Wie de link heeft, kan het lezen en wijzigen – er is geen account en geen wachtwoord."
+      "storedHint": "Je plan staat daarvoor op de server. Wie de link heeft, kan het lezen en wijzigen – er is geen account en geen wachtwoord.",
+      "topics": {
+        "legend": "Waarover willen we je berichten?",
+        "only": "Je krijgt één soort bericht: {kind}.",
+        "next-up": "Wanneer je naar de volgende attractie moet",
+        "show-times": "Speeltijden van de shows",
+        "ride-status": "Als een geplande attractie sluit of weer opengaat",
+        "wait-change": "Als een geplande wachttijd flink verandert"
+      }
     },
     "page": {
       "kicker": "Dagplanner",

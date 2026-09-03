@@ -1,7 +1,8 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, useSyncExternalStore } from 'react';
 import { forgetTrip, getTripId, startTripAutoSync, stopTripAutoSync, syncTrip } from './trip-sync';
+import { plannerPushTopics, resolvePushTopics } from './push-topics';
 
 /**
  * Turning notifications on, and everything that has to be true for that to mean
@@ -45,6 +46,11 @@ interface PushAvailability {
 export function usePushSubscription() {
   const [state, setState] = useState<PushState>('checking');
   const [availability, setAvailability] = useState<PushAvailability | null>(null);
+  const selectedTopics = useSyncExternalStore(
+    plannerPushTopics.subscribe,
+    plannerPushTopics.getSnapshot,
+    plannerPushTopics.getServerSnapshot
+  );
 
   useEffect(() => {
     let cancelled = false;
@@ -149,7 +155,7 @@ export function usePushSubscription() {
           tripId,
           locale: document.documentElement.lang || 'en',
           timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-          topics: availability.topics,
+          topics: resolvePushTopics(availability.topics, selectedTopics),
         }),
       });
 
@@ -166,7 +172,50 @@ export function usePushSubscription() {
     } catch {
       setState('off');
     }
-  }, [availability]);
+  }, [availability, selectedTopics]);
+
+  /**
+   * Change which kinds are wanted, without a second permission prompt.
+   *
+   * A re-POST of the same endpoint rather than an unsubscribe and a resubscribe:
+   * the push service's endpoint is what identifies the row, so the API updates
+   * it in place, and tearing the browser subscription down to change a checkbox
+   * would risk landing in `denied` on a browser that re-prompts.
+   *
+   * Written down first and sent second, so a failed request leaves the choice
+   * visible rather than snapping a box back with no explanation — the next
+   * successful sync carries it.
+   */
+  const setTopics = useCallback(
+    async (topics: readonly string[]) => {
+      plannerPushTopics.set(topics);
+      if (state !== 'on' || !availability) return;
+      try {
+        const registration = await navigator.serviceWorker.getRegistration('/sw.js');
+        const subscription = await registration?.pushManager.getSubscription();
+        const tripId = getTripId();
+        if (!subscription || !tripId) return;
+        const json = subscription.toJSON();
+        await fetch('/api/push/subscriptions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            endpoint: subscription.endpoint,
+            p256dh: json.keys?.p256dh,
+            auth: json.keys?.auth,
+            tripId,
+            locale: document.documentElement.lang || 'en',
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+            topics: resolvePushTopics(availability.topics, topics),
+          }),
+        });
+      } catch {
+        // The choice is stored either way; the next `enable` or plan sync
+        // carries it up. Nothing here is worth a message.
+      }
+    },
+    [availability, state]
+  );
 
   const disable = useCallback(async () => {
     setState('working');
@@ -200,7 +249,16 @@ export function usePushSubscription() {
     return () => stopTripAutoSync();
   }, [state]);
 
-  return { state, enable, disable };
+  return {
+    state,
+    enable,
+    disable,
+    setTopics,
+    /** What this deploy can send. Empty until `/api/push` has answered. */
+    availableTopics: availability?.topics ?? [],
+    /** The visitor's narrowing, or `null` for "everything above". */
+    selectedTopics,
+  };
 }
 
 /**
