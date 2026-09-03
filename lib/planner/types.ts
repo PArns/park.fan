@@ -81,11 +81,31 @@ export interface PlannerEntry {
   actualWait?: number;
 }
 
+/**
+ * What the visitor said about the day itself, as against what is in it.
+ *
+ * Two answers, both about the PARTY, and they are stored per day rather than per
+ * park or per browser because that is what they are properties of: the same
+ * family comes back in October without the four-year-old, and the park has not
+ * changed. Neither ever hides a ride — see `party.ts`.
+ */
+export interface PlannerDayPrefs {
+  /**
+   * How tall the SHORTEST rider is, in centimetres. Absent means nobody was
+   * asked, which is different from "everybody is tall enough".
+   */
+  riderHeightCm?: number;
+  /** The party would rather not get soaked. Water rides carry a flag. */
+  avoidWet?: boolean;
+}
+
 /** One park's plan for one date. */
 export interface PlannerDay {
   /** YYYY-MM-DD, in the park's own timezone. */
   date: string;
   entries: PlannerEntry[];
+  /** Absent until the visitor has been asked. Never inferred. */
+  prefs?: PlannerDayPrefs;
 }
 
 export interface PlannerPark {

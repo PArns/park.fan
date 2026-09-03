@@ -1880,7 +1880,6 @@
       "bodyGrid": "Find a ride below – it lands on the timeline and can be moved from there."
     },
     "day": {
-      "label": "Day",
       "today": "Today",
       "tomorrow": "Tomorrow",
       "pick": "Pick a day",
@@ -2026,6 +2025,59 @@
           "body": "Drag a block to another time. The wait and the colour move with it, because both belong to the hour."
         }
       }
+    },
+    "calendar": {
+      "prevMonth": "Previous month",
+      "nextMonth": "Next month",
+      "prevDay": "One day back",
+      "nextDay": "One day forward"
+    },
+    "wizard": {
+      "open": "Plan a new day",
+      "addDay": "Another day",
+      "title": "Plan a day",
+      "step": "Step {step} of {total}",
+      "steps": {
+        "park": "Park",
+        "date": "Day",
+        "setup": "Who’s coming"
+      },
+      "back": "Back",
+      "next": "Next",
+      "finish": "Open the plan",
+      "lunch": {
+        "label": "Plan a lunch break",
+        "hint": "Puts a block at 12:30 into the day. You can drag it anywhere once the planner is open."
+      },
+      "kids": {
+        "label": "Children are coming",
+        "hint": "How tall is the smallest child? Rides with a higher minimum get a mark, they are not hidden.",
+        "none": "No children"
+      },
+      "wet": {
+        "label": "Stay dry if possible",
+        "hint": "Water rides get a mark in the list."
+      },
+      "facts": {
+        "title": "What we know about the day",
+        "nothing": "We have no forecast for that day yet.",
+        "pickFirst": "Pick a day and what we know about it shows up here.",
+        "loading": "Loading the forecast …"
+      },
+      "blocks": {
+        "lunch": "Lunch"
+      },
+      "hero": {
+        "question": "Which park are you going to?",
+        "plannedDays": "{count, plural, =0 {No day planned yet} one {One day already planned} other {# days already planned}}"
+      },
+      "progress": "Progress",
+      "nextUp": "Then on to {park}, where you drag rides from the list into the day."
+    },
+    "party": {
+      "add": "Who’s coming?",
+      "tooShort": "Minimum height above the smallest person in the plan",
+      "wet": "Water ride"
     }
   }
 }

@@ -28,9 +28,16 @@ import {
   removeEntry,
   setActive,
   setCustomBlock,
+  setDayPrefs,
   setEntryDone,
   shiftFrom,
 } from '../lib/planner/actions.ts';
+import {
+  hasPartyPrefs,
+  partyFlags,
+  RIDER_HEIGHT_CHOICES,
+  RIDER_HEIGHT_DEFAULT_CM,
+} from '../lib/planner/party.ts';
 import { countAll, EMPTY_PLANNER_STATE, entriesFor, hasAnyPlan } from '../lib/planner/types.ts';
 
 const testCases = [];
@@ -499,6 +506,146 @@ test(
   })(),
   2
 );
+
+// ── Who is coming ───────────────────────────────────────────────────────────
+// The wizard asks twice — how tall the shortest rider is, and whether the party
+// wants to stay dry — and the answers have to survive everything else the plan
+// does to that day. They are stored on the DAY, which is the object every other
+// action rewrites wholesale, so the interesting test is not "can it be written"
+// but "does moving a block afterwards keep it".
+{
+  const withKid = setDayPrefs(add(EMPTY_PLANNER_STATE, 'taron', 10), PARK.parkSlug, PARK.date, {
+    riderHeightCm: 105,
+  });
+  test('a height is stored on the day', withKid.parks[PARK.parkSlug].days[PARK.date].prefs, {
+    riderHeightCm: 105,
+  });
+
+  // The one that mattered: `withDay` rebuilds the day object on every edit, so
+  // anything it does not spread through survives exactly one action.
+  const moved = moveEntry(
+    withKid,
+    PARK.parkSlug,
+    PARK.date,
+    withKid.parks[PARK.parkSlug].days[PARK.date].entries[0].id,
+    13 * 60
+  );
+  test(
+    'and survives a block being moved',
+    moved.parks[PARK.parkSlug].days[PARK.date].prefs?.riderHeightCm,
+    105
+  );
+  test(
+    'and a ride being added after it',
+    add(withKid, 'fly', 12).parks[PARK.parkSlug].days[PARK.date].prefs?.riderHeightCm,
+    105
+  );
+
+  // Merged, not replaced: two questions, asked in two steps.
+  const both = setDayPrefs(withKid, PARK.parkSlug, PARK.date, { avoidWet: true });
+  test(
+    'a second answer does not erase the first',
+    both.parks[PARK.parkSlug].days[PARK.date].prefs,
+    {
+      riderHeightCm: 105,
+      avoidWet: true,
+    }
+  );
+
+  // Same answers again: the SAME object, so no render and no localStorage write.
+  test(
+    'writing the same answers changes nothing',
+    setDayPrefs(both, PARK.parkSlug, PARK.date, { avoidWet: true }) === both,
+    true
+  );
+
+  // Out of range on the way IN, not only on the way out of storage.
+  test(
+    'an impossible height is clamped',
+    setDayPrefs(withKid, PARK.parkSlug, PARK.date, { riderHeightCm: 900 }).parks[PARK.parkSlug]
+      .days[PARK.date].prefs?.riderHeightCm,
+    210
+  );
+
+  // A day the plan has never seen: the wizard asks BEFORE anything is planned.
+  const fresh = setDayPrefs(
+    openDay(
+      EMPTY_PLANNER_STATE,
+      { slug: PARK.parkSlug, name: PARK.parkName, geo: PARK.geo },
+      '2026-11-01'
+    ),
+    PARK.parkSlug,
+    '2026-11-01',
+    { avoidWet: true }
+  );
+  test('an empty day can hold answers', fresh.parks[PARK.parkSlug].days['2026-11-01'].prefs, {
+    avoidWet: true,
+  });
+  test('which is still not a plan', hasAnyPlan(fresh), false);
+
+  // A park the plan does not have is left alone rather than invented: prefs
+  // without a park would be answers about nothing.
+  test(
+    'an unknown park is untouched',
+    setDayPrefs(EMPTY_PLANNER_STATE, 'nope', PARK.date, { avoidWet: true }) === EMPTY_PLANNER_STATE,
+    true
+  );
+
+  test('no answers at all is not a party', hasPartyPrefs(undefined), false);
+  test('an empty object is not a party', hasPartyPrefs({}), false);
+  test('a height is', hasPartyPrefs({ riderHeightCm: 105 }), true);
+}
+
+// ── What the answers flag ───────────────────────────────────────────────────
+// A flag, never a filter. The visitor is the one who knows whether somebody is
+// holding the bags at the exit.
+{
+  const kid = { riderHeightCm: 105 };
+  test('a ride over the height is flagged', partyFlags({ minimumHeight: 120 }, kid).tooShort, true);
+  test('one at exactly the height is not', partyFlags({ minimumHeight: 105 }, kid).tooShort, false);
+  test('one under it is not', partyFlags({ minimumHeight: 95 }, kid).tooShort, false);
+  // The `!== false` rule this codebase applies to seasons: a missing limit means
+  // nobody wrote one down, not that the ride is off limits.
+  test('a ride with no limit is not flagged', partyFlags({}, kid).tooShort, false);
+  test('nor is one whose limit is null', partyFlags({ minimumHeight: null }, kid).tooShort, false);
+  // `maximumHeight` is a statement about the TALLEST rider and this preference
+  // names the shortest, so a kiddie ride must not come back flagged.
+  test(
+    'a kiddie ride is not too short for a child',
+    partyFlags({ minimumHeight: 90, maximumHeight: 130 }, kid).tooShort,
+    false
+  );
+  test(
+    'nothing is flagged without an answer',
+    partyFlags({ minimumHeight: 140 }, undefined).tooShort,
+    false
+  );
+
+  test(
+    'a water ride is flagged for a dry party',
+    partyFlags({ mayGetWet: true }, { avoidWet: true }).wet,
+    true
+  );
+  // Absent is unknown, never "dry" — upstream populates this for a few dozen of
+  // ~7000 attractions.
+  test('an unknown one is not', partyFlags({}, { avoidWet: true }).wet, false);
+  test(
+    'and not when nobody asked',
+    partyFlags({ mayGetWet: true }, { riderHeightCm: 105 }).wet,
+    false
+  );
+
+  // The wizard's height row opens on this value and then marks the matching
+  // chip. It opened on 105 against a row of round tens, so switching the
+  // question on rendered six chips with none of them selected while the plan
+  // already held an answer. The type annotation on the constant is the real
+  // guard; this says out loud what the annotation is for.
+  test(
+    'the default height is one of the offered chips',
+    RIDER_HEIGHT_CHOICES.includes(RIDER_HEIGHT_DEFAULT_CM),
+    true
+  );
+}
 
 let failed = 0;
 for (const testCase of testCases) {

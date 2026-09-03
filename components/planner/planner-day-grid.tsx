@@ -20,6 +20,7 @@ import { legBetween, earliestGoodStart } from '@/lib/planner/leg';
 import { formatGridTime, parkMinuteNow, todayInZone } from '@/lib/planner/park-time';
 import { bandCarriesFigure, estimateFor } from '@/lib/planner/estimate';
 import { weatherRailSegments, withinWeatherHorizon } from '@/lib/planner/weather-rail';
+import { PLANNER_RIDE_MIME, parseRideDrag, rideFromUrl } from '@/lib/planner/ride-drag';
 import { useWeatherHourly } from '@/lib/hooks/use-weather-hourly';
 import { PlannerGridGround } from './planner-grid-ground';
 import { PlannerWeatherRail } from './planner-weather-rail';
@@ -403,42 +404,34 @@ export function PlannerDayGrid({
   /**
    * A ride dragged in from the page behind the panel.
    *
-   * No change to `AttractionCard` and no drag source of our own: a card's root
-   * is an `<a>`, every browser makes links draggable, and the drag already
-   * carries `text/uri-list`. So the grid reads the URL it was given, and the
-   * card stays a Server Component rendered in eight places that knows nothing
-   * about the planner.
+   * TWO channels, and the order between them is the fix for a drop that used to
+   * be refused in silence. The planner's own payload
+   * ({@link PLANNER_RIDE_MIME}, attached by `useRideDragSource`) carries the
+   * ride's NAME, so a drop needs nothing from `/plan/day` — which answers 404
+   * until the backend ships, and until then the name lookup below finds nothing
+   * and every gesture ended in a shrug. A bare `text/uri-list` is still
+   * accepted, for a link from a surface that carries no attributes, and then the
+   * name does have to come from the day payload.
    *
-   * The park gate is the URL's own park segment against the plan's active park.
-   * Dropping Voltron onto a Phantasialand day would be filing a ride under a
-   * park that does not have it — the forecast is per park, so the block would
-   * draw nothing and the day would be a lie.
+   * The park gate is the same either way: dropping Voltron onto a
+   * Phantasialand day would file a ride under a park that does not have it, and
+   * the forecast is per park, so the block would draw nothing and the day would
+   * be a lie.
    */
   const [dropMinute, setDropMinute] = useState<number | null>(null);
 
-  const rideFromUri = useCallback(
-    (uri: string): { slug: string; name: string } | null => {
-      const path = (() => {
-        try {
-          return new URL(uri, 'https://park.fan').pathname;
-        } catch {
-          return null;
-        }
-      })();
-      if (!path) return null;
-      // /<locale>/parks/<continent>/<country>/<city>/<park>/<attraction> — read by
-      // NAME rather than by counting holes in a destructuring, which is how the
-      // first version read `bruehl` as the park and silently refused every drop.
-      const parts = path.split('/').filter(Boolean);
-      const parksAt = parts.indexOf('parks');
-      if (parksAt === -1) return null;
-      const geo = parts.slice(parksAt + 1); // continent, country, city, park, attraction
-      if (geo.length < 5) return null;
-      const droppedPark = geo[3];
-      const slug = geo[4];
-      if (droppedPark !== parkSlug) return null;
-      const ride = ridesBySlug.get(slug);
-      return ride ? { slug, name: ride.attractionName } : null;
+  const rideFromTransfer = useCallback(
+    (transfer: DataTransfer): { slug: string; name: string } | null => {
+      const dragged = parseRideDrag(transfer.getData(PLANNER_RIDE_MIME));
+      if (dragged) {
+        if (dragged.parkSlug !== parkSlug) return null;
+        return { slug: dragged.attractionSlug, name: dragged.attractionName };
+      }
+
+      const fromUrl = rideFromUrl(transfer.getData('text/uri-list'));
+      if (!fromUrl || fromUrl.parkSlug !== parkSlug) return null;
+      const ride = ridesBySlug.get(fromUrl.attractionSlug);
+      return ride ? { slug: fromUrl.attractionSlug, name: ride.attractionName } : null;
     },
     [parkSlug, ridesBySlug]
   );
@@ -661,13 +654,15 @@ export function PlannerDayGrid({
         style={{ height: grid.heightPx }}
         onDragOver={(event) => {
           if (!onDropRide) return;
-          // Only claim the drop once the URL is one we would accept, so a drag
-          // from another park keeps the browser's "no" cursor instead of
-          // promising a landing it will refuse.
-          const uri = event.dataTransfer.getData('text/uri-list');
-          // Chrome hides the payload during dragover; when it does, allow the
-          // drop and decide on `drop`, where the data is readable.
-          if (uri && !rideFromUri(uri)) return;
+          // The TYPE list, never the values: Chrome hides a drag's payload
+          // until the drop, so `getData` here answers an empty string for a
+          // drag that is perfectly acceptable — which is what the first version
+          // read, and it decided against itself half the time. `types` is
+          // readable throughout, so our own payload is accepted outright, a
+          // bare link optimistically, and a file or a text selection is left
+          // alone with the browser's own "no" cursor.
+          const types = event.dataTransfer.types;
+          if (!types.includes(PLANNER_RIDE_MIME) && !types.includes('text/uri-list')) return;
           event.preventDefault();
           event.dataTransfer.dropEffect = 'copy';
           setDropMinute(minuteAtClientY(event.clientY));
@@ -676,7 +671,7 @@ export function PlannerDayGrid({
         onDrop={(event) => {
           setDropMinute(null);
           if (!onDropRide) return;
-          const ride = rideFromUri(event.dataTransfer.getData('text/uri-list'));
+          const ride = rideFromTransfer(event.dataTransfer);
           if (!ride) return;
           event.preventDefault();
           onDropRide(ride.slug, ride.name, minuteAtClientY(event.clientY));

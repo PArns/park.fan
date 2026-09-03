@@ -1,17 +1,17 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
-import { CalendarDays, Check, Compass, MapPin, Trash2 } from 'lucide-react';
+import { CalendarDays, CalendarPlus, Check, Compass, MapPin, Plus, Trash2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { plannerUi } from '@/lib/planner/ui-store';
 import { addDays, todayInZone } from '@/lib/planner/park-time';
-import { PlannerParkSearch } from './planner-park-search';
 import { PlannerPushToggle } from './planner-push-toggle';
 import { PlannerHelpSteps } from './planner-help';
 import { PlannerPolaroids, type PolaroidPhoto } from './planner-polaroids';
+import { PlannerWizard, type WizardPark } from './planner-wizard';
 
 /**
  * The planner's own page: a directory of what is planned, and an explanation
@@ -32,7 +32,11 @@ import { PlannerPolaroids, type PolaroidPhoto } from './planner-polaroids';
 export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPhoto[] }) {
   const t = useTranslations('planner');
   const locale = useLocale();
-  const { state, setActive, openDay, clearDay } = usePlanner();
+  const { state, setActive, clearDay } = usePlanner();
+  // `null` = closed, otherwise the park the wizard starts on — which is how the
+  // per-park button skips the first step. A second boolean beside a park would
+  // be two states for one thing, and they would disagree.
+  const [wizardFor, setWizardFor] = useState<{ park: WizardPark | null } | null>(null);
 
   const parks = useMemo(() => {
     return Object.values(state.parks)
@@ -53,24 +57,31 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
     plannerUi.requestOpen();
   };
 
-  const planned = new Set(parks.map((park) => park.slug));
   const total = parks.reduce((sum, park) => sum + park.days.length, 0);
 
   return (
     <div className="flex flex-col gap-8">
-      {/* The search is above both states: with a plan it adds a park, without
-          one it is the first step rather than a control that appears later. */}
-      <section className="bg-card overflow-hidden rounded-2xl border">
-        <PlannerParkSearch
-          plannedSlugs={planned}
-          onPick={(park, date) => {
-            openDay(park, date);
-            plannerUi.requestOpen();
-          }}
-        />
-      </section>
+      {/* One way in, and it is a button rather than a search field. The field
+          asked which park and nothing else, so the two questions that decide
+          whether a day works — which day, and who is coming — were left to be
+          discovered in the panel afterwards. */}
+      {parks.length > 0 && (
+        <div>
+          <button
+            type="button"
+            onClick={() => setWizardFor({ park: null })}
+            data-planner-new-day=""
+            className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-colors"
+          >
+            <CalendarPlus className="size-4" aria-hidden="true" />
+            {t('wizard.open')}
+          </button>
+        </div>
+      )}
 
-      {parks.length === 0 ? <PlannerPageIntro photos={photos} /> : null}
+      {parks.length === 0 ? (
+        <PlannerPageIntro photos={photos} onStart={() => setWizardFor({ park: null })} />
+      ) : null}
 
       {parks.length > 0 && (
         <section>
@@ -84,7 +95,28 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
               <div key={park.slug} className="bg-card overflow-hidden rounded-2xl border">
                 <h3 className="text-muted-foreground border-border/60 flex items-center gap-1.5 border-b px-4 py-2.5 text-xs font-medium tracking-wide uppercase">
                   <MapPin className="size-3.5" aria-hidden="true" />
-                  {park.name}
+                  <span className="min-w-0 flex-1 truncate">{park.name}</span>
+                  {/* Another day at THIS park, which is the common case and
+                      would otherwise mean searching for a park the list is
+                      already showing. Starts the wizard on the date step. */}
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setWizardFor({
+                        park: {
+                          slug: park.slug,
+                          name: park.name,
+                          geo: park.geo,
+                          timezone: park.timezone,
+                        },
+                      })
+                    }
+                    data-planner-add-day=""
+                    className="hover:bg-accent hover:text-foreground -my-1 flex items-center gap-1 rounded-md px-2 py-1 normal-case transition-colors"
+                  >
+                    <Plus className="size-3.5" aria-hidden="true" />
+                    {t('wizard.addDay')}
+                  </button>
                 </h3>
                 <ul>
                   {park.days.map((day) => {
@@ -160,6 +192,16 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
           </div>
         </section>
       )}
+
+      {/* Mounted only while open — that is what resets its answers, see the note
+          on `PlannerWizard`'s `open` prop. */}
+      {wizardFor && (
+        <PlannerWizard
+          open
+          initialPark={wizardFor.park}
+          onOpenChange={(next) => setWizardFor(next ? wizardFor : null)}
+        />
+      )}
     </div>
   );
 }
@@ -175,7 +217,13 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
  * The polaroids sit ABOVE the steps rather than beside them: the picture is what
  * says "this is about a day out", and it has to land before the instructions do.
  */
-function PlannerPageIntro({ photos }: { photos: readonly PolaroidPhoto[] }) {
+function PlannerPageIntro({
+  photos,
+  onStart,
+}: {
+  photos: readonly PolaroidPhoto[];
+  onStart: () => void;
+}) {
   const t = useTranslations('planner');
 
   return (
@@ -192,9 +240,22 @@ function PlannerPageIntro({ photos }: { photos: readonly PolaroidPhoto[] }) {
       </div>
 
       <div className="mt-6 flex flex-wrap gap-2">
+        {/* The wizard is the primary action here: the honest answer to "how do I
+            begin" is "pick a park and a day", and this is the one control that
+            asks both. Browsing the catalogue stays as the way in for somebody
+            who does not know which park yet. */}
+        <button
+          type="button"
+          onClick={onStart}
+          data-planner-new-day=""
+          className="bg-primary text-primary-foreground inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-transform hover:-translate-y-0.5"
+        >
+          <CalendarPlus className="size-4" aria-hidden="true" />
+          {t('wizard.open')}
+        </button>
         <Link
           href="/parks"
-          className="bg-primary text-primary-foreground inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-transform hover:-translate-y-0.5"
+          className="hover:bg-accent inline-flex items-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-medium transition-colors"
         >
           <Compass className="size-4" aria-hidden="true" />
           {t('page.browseParks')}

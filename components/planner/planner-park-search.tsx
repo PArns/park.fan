@@ -6,19 +6,22 @@ import Image from 'next/image';
 import { MapPin, Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { getCountryName } from '@/lib/utils/region-names';
-import { todayInZone } from '@/lib/planner/park-time';
 import type { PlannerGeo } from '@/lib/planner/types';
 
 /** `/api/search` answers an empty set below this, so asking earlier is a lie. */
 const MIN_QUERY_LENGTH = 3;
 
-interface PlannerParkSearchProps {
-  /** Parks already in the plan — offered, but marked, so a pick is never a surprise. */
-  plannedSlugs: ReadonlySet<string>;
-  onPick: (park: { slug: string; name: string; geo: PlannerGeo }, date: string) => void;
-}
-
-interface ParkHit {
+/**
+ * A park as this control hands it over.
+ *
+ * Everything past `geo` is what the SEARCH payload happened to carry, and the
+ * wizard's hero paints it: a park picked here arrives with its own photograph
+ * and its own city. None of it is stored in the plan — a plan holds the four
+ * slugs and the name, because those are what rebuild a URL, and a `?v=`-hashed
+ * crop URL in persisted state would be a derived asset frozen into the
+ * visitor's browser.
+ */
+export interface PlannerParkPick {
   slug: string;
   name: string;
   geo: PlannerGeo;
@@ -29,6 +32,22 @@ interface ParkHit {
   imageUrl?: string;
   imagePosition?: string;
 }
+
+interface PlannerParkSearchProps {
+  /** Parks already in the plan — offered, but marked, so a pick is never a surprise. */
+  plannedSlugs: ReadonlySet<string>;
+  /**
+   * The park, and nothing else. It used to hand over a DATE as well — today in
+   * the READER's zone, because the search payload carries no timezone — and
+   * every call site filed the new park under it. For a Florida park picked from
+   * Germany after 18:00 that is tomorrow's plan. The date is the wizard's own
+   * question now, answered against the park's own zone once its forecast has
+   * named it.
+   */
+  onPick: (park: PlannerParkPick) => void;
+}
+
+type ParkHit = PlannerParkPick;
 
 /**
  * Adding a park the plan does not have yet.
@@ -94,7 +113,7 @@ export function PlannerParkSearch({ plannedSlugs, onPick }: PlannerParkSearchPro
   const results = useMemo(() => (short ? [] : hits.slice(0, 6)), [hits, short]);
 
   return (
-    <div className="border-border/60 border-b px-2 py-2" data-planner-park-search="">
+    <div data-planner-park-search="">
       {/* The house `Input`, not a bespoke one. This was a bare `<input>` with a
           hand-rolled `bg-accent/40` fill and no border or focus ring — so on the
           planner's own page it sat next to nothing else on the site and read as
@@ -114,7 +133,7 @@ export function PlannerParkSearch({ plannedSlugs, onPick }: PlannerParkSearchPro
       </div>
 
       {!short && (
-        <ul className="mt-1">
+        <ul className="mt-2 space-y-1">
           {results.length === 0 ? (
             <li className="text-muted-foreground px-1 py-2 text-xs">
               {busy ? t('parkSearch.searching') : t('parkSearch.noResults')}
@@ -122,37 +141,41 @@ export function PlannerParkSearch({ plannedSlugs, onPick }: PlannerParkSearchPro
           ) : (
             results.map((park) => (
               <li key={park.slug}>
+                {/* The photo is a 14:10 STRIP, not a square. Its source is the
+                    park's own background picture — a landscape shot of a
+                    skyline or a queue line — and a square crop of one is a
+                    detail of the middle of it. */}
                 <button
                   type="button"
-                  onClick={() => onPick(park, todayInZone(undefined))}
-                  className="hover:bg-accent flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left transition-colors max-sm:py-2.5"
+                  onClick={() => onPick(park)}
+                  className="hover:bg-accent focus-visible:ring-ring hover:border-border/60 flex w-full items-center gap-3 rounded-xl border border-transparent px-2 py-1.5 text-left transition-colors focus-visible:ring-2 focus-visible:outline-none max-sm:py-2"
                 >
                   {park.imageUrl ? (
-                    <span className="bg-muted relative size-8 shrink-0 overflow-hidden rounded">
+                    <span className="bg-muted relative h-10 w-14 shrink-0 overflow-hidden rounded-lg">
                       <Image
                         src={park.imageUrl}
                         alt=""
                         fill
-                        sizes="96px"
+                        sizes="112px"
                         quality={75}
                         style={{ objectFit: 'cover', objectPosition: park.imagePosition }}
                       />
                     </span>
                   ) : (
-                    <span className="bg-muted/50 text-muted-foreground/60 flex size-8 shrink-0 items-center justify-center rounded">
-                      <MapPin className="size-3.5" />
+                    <span className="bg-muted/50 text-muted-foreground/60 flex h-10 w-14 shrink-0 items-center justify-center rounded-lg">
+                      <MapPin className="size-4" />
                     </span>
                   )}
                   <span className="min-w-0 flex-1">
-                    <span className="block truncate text-sm">{park.name}</span>
+                    <span className="block truncate text-sm font-medium">{park.name}</span>
                     {(park.city || park.country) && (
-                      <span className="text-muted-foreground block truncate text-[11px]">
+                      <span className="text-muted-foreground block truncate text-xs">
                         {[park.city, countryLabel(park, locale)].filter(Boolean).join(', ')}
                       </span>
                     )}
                   </span>
                   {plannedSlugs.has(park.slug) && (
-                    <span className="text-muted-foreground shrink-0 text-[10px]">
+                    <span className="text-muted-foreground/80 shrink-0 text-[10px]">
                       {t('parkSearch.alreadyPlanned')}
                     </span>
                   )}

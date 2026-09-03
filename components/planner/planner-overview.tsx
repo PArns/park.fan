@@ -2,16 +2,22 @@
 
 import { useMemo } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { Check, MapPin, Trash2 } from 'lucide-react';
+import { CalendarPlus, Check, MapPin, Trash2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { addDays, todayInZone } from '@/lib/planner/park-time';
-import { PlannerParkSearch } from './planner-park-search';
-import type { PlannerGeo, PlannerState } from '@/lib/planner/types';
+import type { PlannerState } from '@/lib/planner/types';
 
 interface PlannerOverviewProps {
   state: PlannerState;
-  /** Adds a park the plan does not have yet. */
-  onAddPark?: (park: { slug: string; name: string; geo: PlannerGeo }, date: string) => void;
+  /**
+   * Starts a new day, through the wizard.
+   *
+   * It was a search field sitting at the top of this list, which asked the one
+   * question (which park) and skipped the two that decide whether the day works
+   * at all — which day, and who is coming. The wizard asks all three and lands
+   * on the park's own page, where the ride cards are.
+   */
+  onNewDay?: () => void;
   activeParkSlug: string | null;
   activeDate: string | null;
   onPick: (parkSlug: string, date: string) => void;
@@ -42,7 +48,7 @@ export function PlannerOverview({
   activeDate,
   onPick,
   onClearDay,
-  onAddPark,
+  onNewDay,
 }: PlannerOverviewProps) {
   const t = useTranslations('planner');
   const locale = useLocale();
@@ -65,14 +71,24 @@ export function PlannerOverview({
       .sort((a, b) => a.name.localeCompare(b.name, locale));
   }, [state.parks, locale]);
 
-  const search = onAddPark ? (
-    <PlannerParkSearch plannedSlugs={new Set(parks.map((park) => park.slug))} onPick={onAddPark} />
+  const newDay = onNewDay ? (
+    <div className="border-border/60 border-b px-2 py-2">
+      <button
+        type="button"
+        onClick={onNewDay}
+        data-planner-new-day=""
+        className="bg-primary/10 text-primary hover:bg-primary/15 flex w-full items-center justify-center gap-1.5 rounded-md px-2 py-2 text-xs font-medium transition-colors max-sm:min-h-11"
+      >
+        <CalendarPlus className="size-3.5 shrink-0" aria-hidden="true" />
+        {t('wizard.open')}
+      </button>
+    </div>
   ) : null;
 
   if (parks.length === 0) {
     return (
       <div className="flex flex-col">
-        {search}
+        {newDay}
         <div className="flex min-h-[140px] items-center justify-center px-6 text-center">
           <p className="text-muted-foreground text-xs">{t('overview.empty')}</p>
         </div>
@@ -82,7 +98,7 @@ export function PlannerOverview({
 
   return (
     <div className="flex flex-col">
-      {search}
+      {newDay}
       <div className="flex flex-col gap-3 px-1 py-1">
         {parks.map((park) => (
           <section key={park.slug}>

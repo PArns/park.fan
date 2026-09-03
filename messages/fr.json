@@ -1880,7 +1880,6 @@
       "bodyGrid": "Cherche une attraction ci-dessous – elle se pose sur la frise et se déplace de là."
     },
     "day": {
-      "label": "Jour",
       "today": "Aujourd’hui",
       "tomorrow": "Demain",
       "pick": "Choisir un jour",
@@ -2026,6 +2025,59 @@
           "body": "Faites glisser un bloc à une autre heure. L'attente et la couleur suivent, car les deux appartiennent à l'heure."
         }
       }
+    },
+    "calendar": {
+      "prevMonth": "Mois précédent",
+      "nextMonth": "Mois suivant",
+      "prevDay": "Un jour avant",
+      "nextDay": "Un jour après"
+    },
+    "wizard": {
+      "open": "Planifier une journée",
+      "addDay": "Autre jour",
+      "title": "Planifier la journée",
+      "step": "Étape {step} sur {total}",
+      "steps": {
+        "park": "Parc",
+        "date": "Jour",
+        "setup": "Qui vient"
+      },
+      "back": "Retour",
+      "next": "Suivant",
+      "finish": "Ouvrir le planning",
+      "lunch": {
+        "label": "Prévoir le déjeuner",
+        "hint": "Place un bloc à 12h30 dans la journée. Tu pourras le déplacer dans le planificateur."
+      },
+      "kids": {
+        "label": "Des enfants sont là",
+        "hint": "Quelle taille fait le plus petit enfant ? Les attractions avec une taille minimale plus élevée sont signalées, pas masquées.",
+        "none": "Pas d’enfants"
+      },
+      "wet": {
+        "label": "Rester sec si possible",
+        "hint": "Les attractions aquatiques sont signalées dans la liste."
+      },
+      "facts": {
+        "title": "Ce que nous savons de cette journée",
+        "nothing": "Nous n’avons pas encore de prévision pour ce jour.",
+        "pickFirst": "Choisis un jour et ce que nous savons de lui apparaît ici.",
+        "loading": "Chargement de la prévision …"
+      },
+      "blocks": {
+        "lunch": "Déjeuner"
+      },
+      "hero": {
+        "question": "Dans quel parc vas-tu ?",
+        "plannedDays": "{count, plural, =0 {Aucune journée planifiée} one {Une journée est déjà planifiée} other {# journées sont déjà planifiées}}"
+      },
+      "progress": "Progression",
+      "nextUp": "Ensuite, direction {park}. Là, tu glisses des attractions de la liste dans la journée."
+    },
+    "party": {
+      "add": "Qui vient ?",
+      "tooShort": "Taille minimale supérieure à celle de la plus petite personne du planning",
+      "wet": "Attraction aquatique"
     }
   }
 }

@@ -2033,6 +2033,19 @@ export interface PlanDayRide {
    * recommend the queue rather than the ride. Absent on an ordinary ride.
    */
   isHeadliner?: boolean;
+  /**
+   * Minimum rider height in centimetres, the curated answer over the synced one.
+   *
+   * Here so the planner can answer "can the six-year-old ride this" for a whole
+   * day at once — the alternative is forty attraction payloads at 425 KB each.
+   * Absent where there is no minimum to state, which covers both "nothing
+   * recorded" and "a curator says there is none", and must never be turned into
+   * a promise that anyone may ride (`canRideAtHeight` treats it that way for
+   * the same reason `isCurrentlyInSeason` uses `!== false`).
+   */
+  minimumHeight?: number | null;
+  /** Whether the ride may soak you. Absent is unknown, never "dry". */
+  mayGetWet?: boolean | null;
 }
 
 export interface PlanDayContext {

@@ -1880,7 +1880,6 @@
       "bodyGrid": "Zoek hieronder een attractie – die komt op de tijdlijn en is daar te verschuiven."
     },
     "day": {
-      "label": "Dag",
       "today": "Vandaag",
       "tomorrow": "Morgen",
       "pick": "Dag kiezen",
@@ -2026,6 +2025,59 @@
           "body": "Sleep een blok naar een ander tijdstip. De wachttijd en de kleur gaan mee, want beide horen bij het uur."
         }
       }
+    },
+    "calendar": {
+      "prevMonth": "Vorige maand",
+      "nextMonth": "Volgende maand",
+      "prevDay": "Een dag terug",
+      "nextDay": "Een dag verder"
+    },
+    "wizard": {
+      "open": "Nieuwe dag plannen",
+      "addDay": "Nog een dag",
+      "title": "Dag plannen",
+      "step": "Stap {step} van {total}",
+      "steps": {
+        "park": "Park",
+        "date": "Dag",
+        "setup": "Wie gaat mee"
+      },
+      "back": "Terug",
+      "next": "Verder",
+      "finish": "Plan openen",
+      "lunch": {
+        "label": "Lunchpauze inplannen",
+        "hint": "Zet een blok om 12:30 in de dag. In de planner kun je het verslepen."
+      },
+      "kids": {
+        "label": "Er gaan kinderen mee",
+        "hint": "Hoe groot is het kleinste kind? Attracties met een hogere minimumlengte krijgen een markering, ze verdwijnen niet.",
+        "none": "Geen kinderen"
+      },
+      "wet": {
+        "label": "Zo droog mogelijk blijven",
+        "hint": "Waterattracties krijgen een markering in de lijst."
+      },
+      "facts": {
+        "title": "Wat we over deze dag weten",
+        "nothing": "Voor deze dag hebben we nog geen verwachting.",
+        "pickFirst": "Kies een dag, dan staat hier wat we over die dag weten.",
+        "loading": "Verwachting wordt geladen …"
+      },
+      "blocks": {
+        "lunch": "Lunch"
+      },
+      "hero": {
+        "question": "Naar welk park ga je?",
+        "plannedDays": "{count, plural, =0 {Nog geen dag gepland} one {Eén dag is al gepland} other {# dagen zijn al gepland}}"
+      },
+      "progress": "Voortgang",
+      "nextUp": "Daarna naar {park}. Daar sleep je attracties uit de lijst in de dag."
+    },
+    "party": {
+      "add": "Wie gaat mee?",
+      "tooShort": "Minimumlengte hoger dan de kleinste persoon in het plan",
+      "wet": "Waterattractie"
     }
   }
 }

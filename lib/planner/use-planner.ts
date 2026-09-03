@@ -12,6 +12,7 @@ import {
   removeEntry,
   setActive as setActiveAction,
   setCustomBlock,
+  setDayPrefs as setDayPrefsAction,
   setEntryDone,
   shiftFrom as shiftFromAction,
 } from './actions';
@@ -20,6 +21,7 @@ import {
   entriesFor,
   type PlannerBlockIcon,
   type PlannerCustomBlock,
+  type PlannerDayPrefs,
   type PlannerEntry,
   type PlannerGeo,
 } from './types';
@@ -129,6 +131,11 @@ export function usePlanner() {
     plannerStore.update((s) => learnTimezoneAction(s, parkSlug, timezone));
   }, []);
 
+  /** Who is coming, for one day. Merged — see `setDayPrefs`. */
+  const setDayPrefs = useCallback((parkSlug: string, date: string, patch: PlannerDayPrefs) => {
+    plannerStore.update((s) => setDayPrefsAction(s, parkSlug, date, patch));
+  }, []);
+
   const clearDay = useCallback((parkSlug: string, date: string) => {
     plannerStore.update((s) => clearDayAction(s, parkSlug, date));
   }, []);
@@ -156,6 +163,7 @@ export function usePlanner() {
     learnTimezone,
     addCustom,
     editCustom,
+    setDayPrefs,
     clearDay,
   };
 }

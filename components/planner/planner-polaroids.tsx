@@ -82,7 +82,7 @@ export function PlannerPolaroids({ photos }: PlannerPolaroidsProps) {
                 // Three cards at 36 % of a 448 px column is ~160 px, doubled for
                 // a 2× display.
                 sizes="(max-width: 640px) 33vw, 170px"
-                quality={70}
+                quality={60}
                 style={{ objectFit: 'cover', objectPosition: photo.position }}
               />
             </span>

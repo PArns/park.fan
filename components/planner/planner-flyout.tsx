@@ -12,6 +12,8 @@ import { PlannerRideSearch } from './planner-ride-search';
 import { PlannerOverview } from './planner-overview';
 import { PlannerPushToggle } from './planner-push-toggle';
 import { PlannerHelpSteps } from './planner-help';
+import { PlannerWizard } from './planner-wizard';
+import { PlannerPartyChips } from './planner-party-chips';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { totalsFor } from '@/lib/planner/estimate';
@@ -23,6 +25,9 @@ import { closedNowFor, liveWaitsFor, showLinesFor } from '@/lib/planner/live';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import { PlannerShowBand } from './planner-show-band';
 import { PlannerGridActions } from './planner-grid-actions';
+import { PLANNER_RIDE_MIME, parseRideDrag } from '@/lib/planner/ride-drag';
+import { useRideDragSource } from '@/lib/planner/use-ride-drag-source';
+import { usePlannerDayFacts } from '@/lib/planner/use-day-facts';
 import { cn } from '@/lib/utils';
 
 interface PlannerFlyoutProps {
@@ -65,8 +70,8 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
     addCustom,
     editCustom,
     addRide,
-    openDay,
     learnTimezone,
+    setDayPrefs,
   } = usePlanner();
 
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -95,6 +100,17 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
 
   const isPhone = useMediaQuery('(max-width: 639px)');
   const park = activeParkSlug ? state.parks[activeParkSlug] : null;
+
+  // Ride cards on the page behind the panel become drag sources for as long as
+  // the panel is open. A drag needs somewhere to land, and this is the only time
+  // there is one — see `useRideDragSource` for why the payload is attached from
+  // here rather than by the card.
+  useRideDragSource(open);
+
+  /** Whether a ride is currently hovering over the flat list. */
+  const [flatDropActive, setFlatDropActive] = useState(false);
+  /** The wizard, which is how another day gets planned from in here. */
+  const [wizardOpen, setWizardOpen] = useState(false);
 
   const {
     data: day,
@@ -141,15 +157,29 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
     enabled: open && Boolean(park) && isToday,
   });
 
+  // The park's own three-month forecast, for the day picker's grid. Cheap and
+  // shared: it is the park page's own query key, so on a park page this is a
+  // cache hit rather than a second request.
+  const dayFacts = usePlannerDayFacts(park, open && !showOverview);
+
   // The zone the day payload names, written back into the plan. A park added
   // from the overview's search arrives without one — the search payload has no
   // zone to give — and would otherwise reckon its dates in the reader's for as
   // long as it stays in the plan. `learnTimezone` returns the state unchanged
   // once it has been learnt, so this settles after one write and never loops.
   useEffect(() => {
-    if (!activeParkSlug || !day?.timezone) return;
-    learnTimezone(activeParkSlug, day.timezone);
-  }, [activeParkSlug, day?.timezone, learnTimezone]);
+    // Either source will do and the second one ARRIVES: `/plan/day` answers 404
+    // until the backend ships, while the best-days snapshot is live today and
+    // names the zone in its `meta`. Without it a park added from the planner's
+    // own search reckoned its dates in the reader's zone for as long as it
+    // stayed in the plan.
+    const zone = day?.timezone ?? dayFacts.timezone;
+    if (!activeParkSlug || !zone) return;
+    learnTimezone(activeParkSlug, zone);
+  }, [activeParkSlug, day?.timezone, dayFacts.timezone, learnTimezone]);
+
+  /** Who is coming, for this day. The wizard writes it; the chips change it. */
+  const prefs = activeDate ? park?.days[activeDate]?.prefs : undefined;
 
   const liveWaits = liveWaitsFor(livePark);
   const closedNow = closedNowFor(livePark);
@@ -325,6 +355,8 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   onChange={(date) => setActive(activeParkSlug, date)}
                   plannedDates={plannedDates}
                   timezone={timezone}
+                  facts={dayFacts.byDate}
+                  maxDate={dayFacts.lastDate ?? undefined}
                 />
               )}
             </div>
@@ -342,16 +374,24 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 setShowOverview(false);
               }}
               onClearDay={clearDay}
-              onAddPark={(picked, date) => {
-                openDay(picked, date);
-                setShowOverview(false);
-              }}
+              onNewDay={() => setWizardOpen(true)}
             />
           </div>
         ) : (
           <>
             <div className="border-border/60 shrink-0 border-b">
               <PlannerContextBand day={day ?? null} state={dayState} />
+              {/* Who is coming, and changeable — the wizard asks it once and the
+                  ride list flags rides against it all day, so this cannot be
+                  write-only. */}
+              {park && activeDate && (
+                <div className="flex items-center gap-1.5 px-3 pb-2">
+                  <PlannerPartyChips
+                    prefs={prefs}
+                    onChange={(patch) => setDayPrefs(park.slug, activeDate, patch)}
+                  />
+                </div>
+              )}
             </div>
 
             {/* The scroll lives here, not on SheetContent — see the note above.
@@ -369,7 +409,45 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             <div className="relative flex min-h-0 flex-1 flex-col">
               <div
                 ref={scrollerRef}
-                className="relative min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-y-contain px-1 py-2"
+                className={cn(
+                  'relative min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-y-contain px-1 py-2',
+                  flatDropActive && 'ring-primary/60 rounded-md ring-2 ring-inset'
+                )}
+                /* The drop target for a day with NO axis. `PlannerDayGrid` owns
+                   the gesture wherever there is a grid — it can name the minute
+                   the pointer is over, which is what a grid is for — but a park
+                   whose hours we do not know draws a flat list, and a ride
+                   dragged onto that was refused with nothing said. The entry
+                   lands after the last one, exactly as the list's own add
+                   button puts it.
+
+                   Only the planner's own payload is accepted here: a bare link
+                   carries no name, and the flat list is drawn precisely when
+                   there is no day payload to look one up in. */
+                onDragOver={(event) => {
+                  if (grid || !park || !activeDate) return;
+                  if (!event.dataTransfer.types.includes(PLANNER_RIDE_MIME)) return;
+                  event.preventDefault();
+                  event.dataTransfer.dropEffect = 'copy';
+                  setFlatDropActive(true);
+                }}
+                onDragLeave={() => setFlatDropActive(false)}
+                onDrop={(event) => {
+                  setFlatDropActive(false);
+                  if (grid || !park || !activeDate) return;
+                  const dragged = parseRideDrag(event.dataTransfer.getData(PLANNER_RIDE_MIME));
+                  if (!dragged || dragged.parkSlug !== park.slug) return;
+                  event.preventDefault();
+                  addRide({
+                    parkSlug: park.slug,
+                    parkName: park.name,
+                    geo: park.geo,
+                    timezone: day?.timezone ?? park.timezone,
+                    date: activeDate,
+                    attractionSlug: dragged.attractionSlug,
+                    attractionName: dragged.attractionName,
+                  });
+                }}
               >
                 {grid && <PlannerShowBand lines={showLines} />}
                 {grid ? (
@@ -477,6 +555,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   day={day ?? null}
                   dayState={dayState}
                   timezone={day?.timezone ?? park?.timezone}
+                  prefs={prefs}
                   onAddCustom={() => {
                     if (!park || !activeDate) return;
                     addCustom({
@@ -542,6 +621,19 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
               </div>
             )}
           </>
+        )}
+
+        {/* Mounted only while it is open, which is what resets its answers —
+            see the note on `PlannerWizard`'s `open` prop. It lands on the park's
+            own page, so it closes this panel's overview on the way. */}
+        {wizardOpen && (
+          <PlannerWizard
+            open
+            onOpenChange={(next) => {
+              setWizardOpen(next);
+              if (!next) setShowOverview(false);
+            }}
+          />
         )}
       </SheetContent>
     </Sheet>
