@@ -774,6 +774,133 @@ if (reachable) {
   await grid.close();
 }
 
+// ── Shows, on a day that HAS them ───────────────────────────────────────────
+// The run above deliberately seeds tomorrow, "so the run is stable" — and
+// showtimes exist for today and no other date, so every pass so far has watched
+// the band say "not knowable yet" and has never once seen a show line. That gap
+// is why the lines could be a dashed rule with a bare time in the hour column,
+// indistinguishable from the grid they sit in, through every green check.
+{
+  const shows = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
+  noteErrors(shows);
+
+  const todayInPark = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Europe/Berlin',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date());
+
+  const OPEN = 9;
+  const CLOSE = 18;
+  // Two at 15:00 to prove one line can stand for more than one show, and a third
+  // 5 minutes later, which `showLinePositions` folds into it.
+  const SHOWS = [
+    { slug: 'a', name: 'Miji African Dancers', at: '11:30' },
+    { slug: 'b', name: 'Nobis Vol. 2', at: '15:00' },
+    { slug: 'c', name: 'BATTLE of the BEST', at: '15:00' },
+    { slug: 'd', name: 'Rock on Ice', at: '15:05' },
+  ];
+
+  await shows.route('**/api/parks/**', async (route) => {
+    const url = route.request().url();
+    // Only the two the panel reads. `**/api/parks/**` also matches the stats and
+    // best-days routes, and answering those with a park payload made
+    // `use-park-comparison-stats` read `stats.meta.displayable` off an object
+    // with no `meta` — a console error from the stub, not from the planner.
+    const isPark = /\/api\/parks\/[^/]+\/[^/]+\/[^/]+\/[^/?]+(\?|$)/.test(url);
+    if (!isPark && !url.includes('/plan/day')) return route.continue();
+    if (url.includes('/plan/day')) {
+      return route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({
+          parkSlug: PARK.slug,
+          timezone: 'Europe/Berlin',
+          context: {
+            date: todayInPark, status: 'OPERATING', openHour: OPEN, closeHour: CLOSE,
+            crowdLevel: 'moderate', weather: null,
+            isHoliday: false, isBridgeDay: false, isSchoolVacation: false, isWeekend: false,
+          },
+          tier: 'measured', leadDays: 0, leadTimeMae: 7,
+          rides: [
+            {
+              attractionSlug: 'taron', attractionName: 'Taron', land: 'Mystery',
+              hours: Array.from({ length: CLOSE - OPEN + 1 }, (_, i) => ({ hour: OPEN + i, wait: 45 })),
+              dayPeak: 45, uncertaintyMinutes: 15, sampleDays: 400,
+            },
+          ],
+          shows: [],
+        }),
+      });
+    }
+    // The live park payload, which is where showtimes actually come from.
+    return route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        slug: PARK.slug, name: PARK.name, status: 'OPERATING',
+        timezone: 'Europe/Berlin',
+        liveWaitTimes: { available: true },
+        attractions: [],
+        shows: SHOWS.map((show) => ({
+          slug: show.slug, name: show.name, isCurrentlyInSeason: true,
+          showtimes: [{ startTime: `${todayInPark}T${show.at}:00+02:00` }],
+        })),
+      }),
+    });
+  });
+
+  await shows.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  await shows.evaluate(
+    ([plan, date]) => {
+      const seeded = JSON.parse(JSON.stringify(plan));
+      const park = seeded.parks.phantasialand;
+      park.timezone = 'Europe/Berlin';
+      park.days = { [date]: { date, entries: [{ id: 'taron-1', attractionSlug: 'taron', attractionName: 'Taron', startMinute: 600 }] } };
+      seeded.parks = { phantasialand: park };
+      seeded.activeParkSlug = 'phantasialand';
+      seeded.activeDate = date;
+      window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
+      document.cookie = 'planner=1; path=/';
+    },
+    [PLAN, todayInPark]
+  );
+  await shows.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+  await shows.locator(LAUNCHER).click();
+  await shows.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await shows.waitForTimeout(2500);
+
+  // A dashed rule and a time in the hour column is not a show. The NAME is what
+  // makes it one, and it has to be on the line rather than only in the band.
+  const pills = shows.locator(`${SHEET} [data-planner-show]`);
+  const pillCount = await pills.count();
+  check('jede Showlinie trägt ihren Namen', pillCount >= 2, `${pillCount} Pillen`);
+
+  const pillText = (await pills.allTextContents()).join(' | ');
+  check(
+    'der Name steht an der Linie, nicht nur im Band',
+    /Miji African Dancers/.test(pillText),
+    pillText.slice(0, 80)
+  );
+
+  // Two shows at one minute share a line and BOTH are named — and the 15:05 one
+  // is folded in by the 14 px rule, which used to drop it silently:
+  // `collapsedWith` was written and read by nothing.
+  check(
+    'eine Linie für zwei Shows nennt beide',
+    /Nobis Vol. 2/.test(pillText) && /BATTLE of the BEST/.test(pillText),
+    pillText.slice(0, 120)
+  );
+  check(
+    'eine eingeklappte Showzeit verschwindet nicht',
+    /Rock on Ice/.test(pillText) || /\+\d/.test(pillText),
+    pillText.slice(0, 120)
+  );
+
+  await shows.close();
+}
+
 // ── All six locales ─────────────────────────────────────────────────────────
 // The `planner` namespace existed in German alone for a while, and neither
 // guard noticed: `check:untranslated` looks for German COPIED into the others,

@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
+import { Theater } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import {
   MIN_BLOCK_PX,
@@ -394,6 +395,33 @@ export function PlannerDayGrid({
   const hours: number[] = [];
   for (let h = Math.ceil(grid.openMin / 60); h * 60 <= grid.closeMin; h++) hours.push(h);
 
+  // Which SHOWS each drawn line stands for. `showLinePositions` folds labels
+  // closer than 14 px into one and records the rest in `collapsedWith` — a field
+  // that was written and read by nothing, so a 14:05 show folded into 14:00
+  // vanished from the grid with no marker at all. Both halves are resolved back
+  // to names here, which is also what turns a dashed rule into a show: the line
+  // and the time alone are indistinguishable from the hour grid they sit in, and
+  // that is why the shows read as an axis subdivision rather than as shows.
+  const showRows = useMemo(() => {
+    if (showLines === null) return null;
+    const namesByMinute = new Map<number, string[]>();
+    for (const line of showLines) {
+      const at = namesByMinute.get(line.minute) ?? [];
+      if (!at.includes(line.name)) at.push(line.name);
+      namesByMinute.set(line.minute, at);
+    }
+    return showLinePositions(
+      grid,
+      showLines.map((line) => line.minute)
+    )
+      .filter((line) => line.minute >= grid.gridStartMin && line.minute <= grid.gridEndMin)
+      .map((line) => {
+        const minutes = [line.minute, ...line.collapsedWith];
+        const names = [...new Set(minutes.flatMap((m) => namesByMinute.get(m) ?? []))];
+        return { ...line, minutes, names };
+      });
+  }, [showLines, grid]);
+
   return (
     <div className="relative flex" data-planner-grid="">
       {/* The gutter. Its own column, so a show pill and an hour label resolve
@@ -408,21 +436,15 @@ export function PlannerDayGrid({
             {formatGridTime(hour * 60)}
           </span>
         ))}
-        {showLines !== null &&
-          showLinePositions(
-            grid,
-            showLines.map((line) => line.minute)
-          )
-            .filter((line) => line.minute >= grid.gridStartMin && line.minute <= grid.gridEndMin)
-            .map((line) => (
-              <span
-                key={`show-time-${line.minute}`}
-                className="bg-background text-foreground/70 absolute right-1 -translate-y-1/2 rounded px-0.5 text-[10px] tabular-nums"
-                style={{ top: line.y }}
-              >
-                {formatGridTime(line.minute)}
-              </span>
-            ))}
+        {showRows?.map((line) => (
+          <span
+            key={`show-time-${line.minute}`}
+            className="bg-background text-foreground/70 absolute right-1 -translate-y-1/2 rounded px-0.5 text-[10px] tabular-nums"
+            style={{ top: line.y }}
+          >
+            {formatGridTime(line.minute)}
+          </span>
+        ))}
 
         {nowMinute !== null && nowMinute >= grid.gridStartMin && nowMinute <= grid.gridEndMin && (
           <span
@@ -460,20 +482,35 @@ export function PlannerDayGrid({
             blocks' `10 + column`) so a line never buries a name. The time goes
             in the gutter, which is why the grid keeps its full width on the
             ~92 % of park-days with no shows to draw. */}
-        {showLines !== null &&
-          showLinePositions(
-            grid,
-            showLines.map((line) => line.minute)
-          )
-            .filter((line) => line.minute >= grid.gridStartMin && line.minute <= grid.gridEndMin)
-            .map((line) => (
-              <div
-                key={`show-${line.minute}`}
-                className="border-foreground/25 pointer-events-none absolute inset-x-0 z-10 border-t border-dashed"
-                style={{ top: line.y }}
-                aria-hidden="true"
-              />
-            ))}
+        {showRows?.map((line) => (
+          <div key={`show-${line.minute}`}>
+            <div
+              className="border-foreground/30 pointer-events-none absolute inset-x-0 z-10 border-t border-dashed"
+              style={{ top: line.y }}
+              aria-hidden="true"
+            />
+            {/* The name, ON the line and above the blocks — a show starting while
+                somebody is in a queue is exactly the one worth reading, so it may
+                not hide behind the block it crosses. CENTRED, because the two
+                edges are spoken for: a block puts its name at the left and its
+                wait at the right, and the middle is the one strip of a block that
+                carries no figure. The mask icon is the band's, so the line and
+                the list above it read as the same subject. */}
+            <div
+              data-planner-show=""
+              className="border-border/60 bg-background/90 text-foreground/80 pointer-events-none absolute left-1/2 z-20 flex max-w-[80%] -translate-x-1/2 -translate-y-1/2 items-center gap-1 rounded-full border px-1.5 py-px text-[10px] backdrop-blur-sm"
+              style={{ top: line.y }}
+            >
+              <Theater className="size-2.5 shrink-0" aria-hidden="true" />
+              <span className="truncate">{line.names.join(' · ')}</span>
+              {line.minutes.length > 1 && (
+                <span className="text-muted-foreground shrink-0 tabular-nums">
+                  +{line.minutes.length - 1}
+                </span>
+              )}
+            </div>
+          </div>
+        ))}
 
         {/* The now line. Outlook's, and the reason the panel says out loud that
             its clock is the park's. */}
