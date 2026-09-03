@@ -471,6 +471,13 @@ the timer starts at roughly the moment the hero paints, the same clock the CSS a
 If the script is blocked the class stays and late content animates in, which is the behaviour it
 replaces; nothing is hidden that only JavaScript can reveal.
 
+Two owners therefore write that one `className`, and the section carries `suppressHydrationWarning`
+because of it. Where hydration lands after the window, React's expected class list and the DOM's
+disagree — it never applies attributes during hydration, so the value that survives is the script's,
+which is the one the gate wanted. The only thing at stake is a console message in a **development**
+build: React 19 compares hydrated attributes in `react-dom-client.development.js` alone. Measured at
+20x CPU throttle on `/de`, 5 of 5 loads warned without the attribute and 0 of 5 with it.
+
 **GSAP earns its place on interaction**, in two places:
 
 - **Switching continents** replaces the whole country-chip row, and letting the new set flick in

@@ -30,6 +30,22 @@ export const HERO_ITEM_IN_MS = 850;
  * timer starts counting too late to ever win. Parsed inline, the timer starts at roughly the
  * moment the hero paints, which is the same clock the CSS animation runs on.
  *
+ * **That is why the hero `<section>` carries `suppressHydrationWarning`.** Two owners write its
+ * one `className`: the server ships `hero-entering` in the markup, and this script takes it off
+ * 1700 ms later. Wherever hydration lands after that — the throttled phone above, a busy dev
+ * server — the class list React expects and the one in the DOM disagree. Nothing renders wrongly:
+ * React does not apply attributes during hydration at all, so the value that survives is the
+ * DOM's, which is the one this gate wanted.
+ *
+ * What the attribute silences is therefore a console message, and **only in a development build**.
+ * React 19 compares hydrated attributes in `react-dom-client.development.js` alone; the production
+ * bundle carries neither that comparison nor the "A tree hydrated but some attributes …" string,
+ * so a visitor never sees it and the flag is a no-op for them. Who does see it is whoever runs
+ * `pnpm dev` — or `pnpm check:planner` against it, which used to waive this one message by class
+ * name. React reads the flag one level deep, on this element's own attributes and text, so a real
+ * mismatch inside the hero still reports. Measured at 20x CPU throttle on `/de`: 5 of 5 loads
+ * warned without the attribute, 0 of 5 with it, the class removed either way.
+ *
  * If the script is blocked the class stays and late content animates in, which is the behaviour
  * this replaces. Nothing is hidden that only JavaScript can reveal.
  */

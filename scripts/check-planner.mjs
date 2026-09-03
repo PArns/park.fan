@@ -22,6 +22,12 @@
  * Console errors fail the run, except the one 404 the probe already established.
  * Waiving it wholesale would blind the check to the next one.
  *
+ * That assertion is only worth something against `pnpm dev`. React 19 compares
+ * hydrated attributes in its DEVELOPMENT build alone — the production bundle
+ * carries neither the comparison nor the "A tree hydrated but some attributes"
+ * string — so a run against `pnpm start` is green on every hydration mismatch
+ * in the app, including one that is a real bug.
+ *
  * Needs a running site (`pnpm dev`, or `pnpm start` after a build):
  *
  *     pnpm check:planner
@@ -212,21 +218,6 @@ const noteErrors = (page) =>
     if (msg.type() !== 'error' && !/MISSING_MESSAGE/.test(text)) return;
     // The one 404 the probe above already established. Everything else counts.
     if (!live && /404/.test(text) && /plan\/day|Failed to load resource/.test(text)) return;
-    // The homepage hero's entrance window, which is not the planner's and is not
-    // a bug. `HeroEntranceGate` is an INLINE SCRIPT that removes `.hero-entering`
-    // from the hero `<section>` 1700 ms after that markup is parsed, and its own
-    // docstring says why it cannot be an effect: "on a throttled phone hydration
-    // itself lands after it, so a `useEffect` timer starts counting too late to
-    // ever win". So on any load where hydration is slower than the window — the
-    // tail of a long run here, a mid-range phone in the field — React finds a
-    // `className` the script has already edited and warns that it will not patch
-    // it up. It does not need to: the surviving value is the one the gate wanted.
-    //
-    // Waived by the exact class and the exact attribute, not by "hydration":
-    // caught once per six runs on `/de`, and the next mismatch anywhere else in
-    // this app must still fail this check. `suppressHydrationWarning` on that one
-    // section would end it at the source, which is the homepage's call to make.
-    if (/hydrat/i.test(text) && /hero-entering/.test(text) && /className/.test(text)) return;
     // WHERE it happened, because this array is fed by every page in the run —
     // desktop, phone, the stubbed grid, the drag pair, the locale sweep — and a
     // failure that only prints the message sends the next reader hunting
