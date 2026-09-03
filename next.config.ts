@@ -1113,19 +1113,31 @@ const nextConfig: NextConfig = {
       },
       ...Object.entries(parkCalendarHeaderSegments).flatMap(([locale, segment]) => [
         {
-          // A calendar MONTH page: `…/<segment>/2026/10`. A day, because after the backend
-          // stopped overwriting today's cell with a live occupancy reading there is nothing in
-          // a month grid that moves faster — every cell is a forecast or a measurement, and the
-          // park payload behind the page is itself cached for a day (PARK_REVALIDATE).
+          // A calendar MONTH page: `…/<segment>/2026/10`. A WEEK, and the reason is that this
+          // HTML is a shell rather than the data: `useCalendarData` fetches the grid's numbers
+          // client-side from `/api/parks/…/calendar?from&to`, and `ParkTodayPanel` replaces the
+          // "heute im Park" band on mount through `useLiveParkData`. Both of those sources
+          // carry their OWN, shorter windows — the calendar proxy is 86400 s — so a reader
+          // never sees week-old figures no matter how long this document stood at the edge.
+          //
+          // It is also the route where a longer window pays most. Measured 2026-09-03: the
+          // calendar has 5,718 URLs against the ride route's 42,912, which is 3.81 requests per
+          // URL per day against 0.70 — and it is the only route whose hit rate actually moved
+          // (12 % → 22 %). A cache entry is only ever read twice if the same URL comes back
+          // inside its window, so the route with the dense traffic is the one where widening
+          // the window converts into hits.
+          //
+          // Unlike the hub below, a month URL names its month, so no amount of standing makes
+          // it show the wrong one.
           //
           // Only `CDN-Cache-Control`: the browser keeps the page's own `no-store`, so a
-          // visitor's own tab never pins a day-old copy, while the shared caches get an
+          // visitor's own tab never pins a week-old copy, while the shared caches get an
           // explicit window.
           source: `/${locale}/parks/:continent/:country/:city/:park/${segment}/:year/:month`,
           headers: [
             {
               key: 'CDN-Cache-Control',
-              value: 'public, s-maxage=86400, stale-while-revalidate=86400',
+              value: 'public, s-maxage=604800, stale-while-revalidate=3600',
             },
           ],
         },
