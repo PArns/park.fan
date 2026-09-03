@@ -45,6 +45,7 @@
     "test:planner-grid": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-grid.mjs",
     "test:planner-leg": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-leg.mjs",
     "test:planner-park-time": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-park-time.mjs",
+    "test:planner-weather-rail": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-weather-rail.mjs",
     "test:rider-height": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-rider-height.mjs",
     "test:opening-hours-schema": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-opening-hours-schema.mjs",
     "test:coordinates": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-coordinates.mjs",

@@ -17,9 +17,12 @@ import {
   type DayGrid,
 } from '@/lib/planner/day-grid';
 import { legBetween, earliestGoodStart } from '@/lib/planner/leg';
-import { formatGridTime, parkMinuteNow } from '@/lib/planner/park-time';
+import { formatGridTime, parkMinuteNow, todayInZone } from '@/lib/planner/park-time';
 import { bandCarriesFigure, estimateFor } from '@/lib/planner/estimate';
+import { weatherRailSegments, withinWeatherHorizon } from '@/lib/planner/weather-rail';
+import { useWeatherHourly } from '@/lib/hooks/use-weather-hourly';
 import { PlannerGridGround } from './planner-grid-ground';
+import { PlannerWeatherRail } from './planner-weather-rail';
 import { PlannerBlock } from './planner-block';
 import { PlannerLeg } from './planner-leg';
 import { showLinePositions } from '@/lib/planner/day-grid';
@@ -200,7 +203,9 @@ export function PlannerDayGrid({
         !entry.done &&
         nowMinute !== null &&
         Math.abs(entry.startMinute - nowMinute) <= LIVE_WINDOW_MIN
-          ? (entry.attractionSlug ? (liveWaits?.get(entry.attractionSlug) ?? null) : null)
+          ? entry.attractionSlug
+            ? (liveWaits?.get(entry.attractionSlug) ?? null)
+            : null
           : null;
 
       const effective =
@@ -278,27 +283,49 @@ export function PlannerDayGrid({
     return { rows, lanes, legs, broken };
   }, [entries, day, ridesBySlug, liveWaits, nowMinute, grid.pxPerMin]);
 
-  /** Median share of each hour's own peak — the rush strip's shape. */
-  const rushByHour = useMemo(() => {
-    const out = new Map<number, number>();
-    const rides = day?.rides ?? [];
-    if (rides.length === 0) return out;
+  /**
+   * Where the park is, to about a kilometre.
+   *
+   * Taken off the first ride that carries a position, because NOTHING the
+   * planner fetches names the park's own — `PlannerPark` stores four URL slugs
+   * and a zone, `PlanDay` a slug and a zone, and the live snapshot projects no
+   * coordinates at all. A ride's position is the park's for this purpose by a
+   * wide margin: the weather proxy rounds to two decimals, and no theme park is
+   * a kilometre across in a way that changes its rain.
+   */
+  const located = day?.rides?.find(
+    (ride) => typeof ride.latitude === 'number' && typeof ride.longitude === 'number'
+  );
+  const parkLat = located?.latitude ?? null;
+  const parkLon = located?.longitude ?? null;
 
-    const byHour = new Map<number, number[]>();
-    for (const ride of rides) {
-      if (ride.dayPeak <= 0) continue;
-      for (const point of ride.hours) {
-        const list = byHour.get(point.hour) ?? [];
-        list.push(point.wait / ride.dayPeak);
-        byHour.set(point.hour, list);
-      }
-    }
-    for (const [hour, shares] of byHour) {
-      shares.sort((a, b) => a - b);
-      out.set(hour, shares[Math.floor(shares.length / 2)]);
-    }
-    return out;
-  }, [day]);
+  /**
+   * The hourly forecast for the day being planned — NOT for today.
+   *
+   * Gated on the forecast's own reach rather than on the planner's: the panel
+   * offers sixty days and the model answers about fourteen, and past that the
+   * proxy returns an error. Asking anyway would put a failed request behind
+   * every day in the second half of the picker, retry it, and log it.
+   */
+  const planDate = day?.context.date;
+  const weatherEnabled = Boolean(
+    parkLat !== null &&
+    parkLon !== null &&
+    planDate &&
+    withinWeatherHorizon(todayInZone(timezone), planDate)
+  );
+  const { data: hourlyWeather } = useWeatherHourly({
+    latitude: parkLat,
+    longitude: parkLon,
+    timezone,
+    date: planDate,
+    enabled: weatherEnabled,
+  });
+
+  const weatherSegments = useMemo(
+    () => (loading ? [] : weatherRailSegments(grid, hourlyWeather?.points)),
+    [grid, hourlyWeather, loading]
+  );
 
   // ── The drag ───────────────────────────────────────────────────────────────
   const dragState = useRef<{
@@ -429,8 +456,7 @@ export function PlannerDayGrid({
 
       const onPointerMove = (moveEvent: PointerEvent) => {
         const deltaMinutes = (moveEvent.clientY - startY) / grid.pxPerMin;
-        const next =
-          Math.round((startMinutes + deltaMinutes) / RESIZE_STEP_MIN) * RESIZE_STEP_MIN;
+        const next = Math.round((startMinutes + deltaMinutes) / RESIZE_STEP_MIN) * RESIZE_STEP_MIN;
         onResize(entry.id, next);
       };
       const detach = () => {
@@ -594,6 +620,11 @@ export function PlannerDayGrid({
       {/* The gutter. Its own column, so a show pill and an hour label resolve
           their only possible collision with the pill's own background. */}
       <div className="relative w-11 shrink-0 max-sm:w-10" style={{ height: grid.heightPx }}>
+        {/* First in the DOM on purpose: the show chips and the now pill share
+            this column and both are opaque, so whichever of them lands on a
+            weather label paints over it — which is the right order, since a
+            showtime is an appointment and the weather is a condition. */}
+        <PlannerWeatherRail segments={weatherSegments} />
         {hours.map((hour) => (
           <span
             key={hour}
@@ -659,7 +690,7 @@ export function PlannerDayGrid({
             aria-hidden="true"
           />
         )}
-        <PlannerGridGround grid={grid} rushByHour={rushByHour} dense={dense} loading={loading} />
+        <PlannerGridGround grid={grid} dense={dense} loading={loading} />
 
         {/* "closes approximately" is a SENTENCE, and it lived in a 40 px gutter.
             It needs 50 px in German and 73 px in Italian, so all six locales were
@@ -792,9 +823,7 @@ export function PlannerDayGrid({
                   conflict={layout.broken.has(row.entry.id)}
                   onSelect={() => onSelect(row.entry.id)}
                   onDragStart={handleDragStart(row.entry, floor.hardMin)}
-                  onResizeStart={
-                    row.entry.custom ? handleResizeStart(row.entry) : undefined
-                  }
+                  onResizeStart={row.entry.custom ? handleResizeStart(row.entry) : undefined}
                   onMove={(minute) => onMove(row.entry.id, minute)}
                   minMinute={floor.hardMin}
                   maxMinute={grid.closeMin - SNAP_MIN_FINE}

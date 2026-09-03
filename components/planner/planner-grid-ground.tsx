@@ -5,8 +5,6 @@ import { heightFor, yFor, type DayGrid } from '@/lib/planner/day-grid';
 
 interface PlannerGridGroundProps {
   grid: DayGrid;
-  /** Median share of each hour's peak, keyed by park-local hour. Shape, never a level. */
-  rushByHour?: Map<number, number>;
   /** Show half-hour hairlines. A container query decides; the parent passes the answer. */
   dense?: boolean;
   loading?: boolean;
@@ -15,10 +13,17 @@ interface PlannerGridGroundProps {
 /**
  * The ground the day grid stands on.
  *
- * Five layers, `aria-hidden`, no pointer events, and not one `dark:` utility:
+ * Four layers, `aria-hidden`, no pointer events, and not one `dark:` utility:
  * every colour is a token, and the token is what flips. The crowd palette is not
  * symmetric between the themes, which is why `park-calendar-day` carries no
  * `dark:` on its tinted tile either.
+ *
+ * There were five. The fifth was a 4 px "rush strip" at the canvas's left edge
+ * whose opacity was how busy each hour typically is — a shape, never a level.
+ * It gave way to the WEATHER RAIL, which answers a question a plan cannot
+ * otherwise answer at all: the rush was already legible from the blocks
+ * themselves, since every one of them is drawn at the height of its own queue
+ * and tinted by it, while nothing on this grid said it would be raining at two.
  *
  * The whole canvas starts as "the park is shut" and the operating band is
  * painted back over it. That way the closed hours are a positive statement
@@ -27,7 +32,6 @@ interface PlannerGridGroundProps {
  */
 export function PlannerGridGround({
   grid,
-  rushByHour,
   dense = false,
   loading = false,
 }: PlannerGridGroundProps) {
@@ -94,28 +98,6 @@ export function PlannerGridGround({
               style={{ top: yFor(grid, hour * 60 + 30) }}
             />
           ))}
-
-      {/* L4 — the rush strip: a 4 px column whose opacity is how busy each hour
-          typically is, relative to the day's own peak. It is a SHAPE and never a
-          level — no figure anywhere, and deliberately not the crowd palette,
-          whose colours carry level semantics this must not borrow. It is the one
-          element that helps a visitor CHOOSE an hour rather than judging the one
-          they already chose. */}
-      {!loading && rushByHour && rushByHour.size > 0 && (
-        <div className="absolute inset-y-0 left-0 w-1">
-          {hours.slice(0, -1).map((hour) => (
-            <div
-              key={`rush-${hour}`}
-              className="bg-primary absolute inset-x-0"
-              style={{
-                top: yFor(grid, hour * 60),
-                height: heightFor(grid, 60),
-                opacity: 0.06 + 0.3 * (rushByHour.get(hour) ?? 0),
-              }}
-            />
-          ))}
-        </div>
-      )}
     </div>
   );
 }
