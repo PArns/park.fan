@@ -6,6 +6,7 @@ import {
   addCustomEntry,
   addEntry,
   clearDay as clearDayAction,
+  learnTimezone as learnTimezoneAction,
   moveEntry,
   openDay as openDayAction,
   removeEntry,
@@ -78,12 +79,7 @@ export function usePlanner() {
   }, []);
 
   const editCustom = useCallback(
-    (
-      parkSlug: string,
-      date: string,
-      entryId: string,
-      patch: Partial<PlannerCustomBlock>
-    ) => {
+    (parkSlug: string, date: string, entryId: string, patch: Partial<PlannerCustomBlock>) => {
       plannerStore.update((s) => setCustomBlock(s, parkSlug, date, entryId, patch));
     },
     []
@@ -125,6 +121,14 @@ export function usePlanner() {
     []
   );
 
+  /**
+   * Teach the plan a park's zone once the day payload names it — see
+   * `learnTimezone`. A no-op when the plan already has it.
+   */
+  const learnTimezone = useCallback((parkSlug: string, timezone: string) => {
+    plannerStore.update((s) => learnTimezoneAction(s, parkSlug, timezone));
+  }, []);
+
   const clearDay = useCallback((parkSlug: string, date: string) => {
     plannerStore.update((s) => clearDayAction(s, parkSlug, date));
   }, []);
@@ -149,6 +153,7 @@ export function usePlanner() {
     setDone,
     setActive,
     openDay,
+    learnTimezone,
     addCustom,
     editCustom,
     clearDay,
@@ -179,5 +184,6 @@ export function usePlannedCount(parkSlug: string, date: string | null, attractio
     plannerStore.getServerSnapshot
   );
   if (!date) return 0;
-  return entriesFor(state, parkSlug, date).filter((e) => e.attractionSlug === attractionSlug).length;
+  return entriesFor(state, parkSlug, date).filter((e) => e.attractionSlug === attractionSlug)
+    .length;
 }

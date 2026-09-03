@@ -1985,6 +1985,12 @@
     },
     "headliners": {
       "missing": "{count, plural, one {Falta una atracción principal} other {Faltan # atracciones principales}}"
+    },
+    "parkSearch": {
+      "placeholder": "Buscar un parque …",
+      "searching": "Buscando …",
+      "noResults": "No se encontró ningún parque.",
+      "alreadyPlanned": "ya en el plan"
     }
   }
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { CalendarPlus, ChevronDown } from 'lucide-react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
@@ -63,6 +63,8 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
     addCustom,
     editCustom,
     addRide,
+    openDay,
+    learnTimezone,
   } = usePlanner();
 
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -136,6 +138,16 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
     parkSlug: activeParkSlug ?? '',
     enabled: open && Boolean(park) && isToday,
   });
+
+  // The zone the day payload names, written back into the plan. A park added
+  // from the overview's search arrives without one — the search payload has no
+  // zone to give — and would otherwise reckon its dates in the reader's for as
+  // long as it stays in the plan. `learnTimezone` returns the state unchanged
+  // once it has been learnt, so this settles after one write and never loops.
+  useEffect(() => {
+    if (!activeParkSlug || !day?.timezone) return;
+    learnTimezone(activeParkSlug, day.timezone);
+  }, [activeParkSlug, day?.timezone, learnTimezone]);
 
   const liveWaits = liveWaitsFor(livePark);
   const closedNow = closedNowFor(livePark);
@@ -289,6 +301,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 type="button"
                 onClick={() => setShowOverview((value) => !value)}
                 aria-expanded={showOverview}
+                data-planner-overview-toggle=""
                 className="text-muted-foreground hover:text-foreground -mx-1 flex min-w-0 items-center gap-1 rounded px-1 py-0.5 text-xs transition-colors"
               >
                 <span className="truncate">{park.name}</span>
@@ -327,6 +340,10 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 setShowOverview(false);
               }}
               onClearDay={clearDay}
+              onAddPark={(picked, date) => {
+                openDay(picked, date);
+                setShowOverview(false);
+              }}
             />
           </div>
         ) : (
