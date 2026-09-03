@@ -2001,7 +2001,15 @@
       "off": "Attiva le notifiche",
       "on": "Le notifiche sono attive",
       "denied": "Il browser blocca le notifiche per questo sito. Si cambia solo nelle sue impostazioni.",
-      "storedHint": "Per questo il tuo piano è salvato sul server. Chi ha il link può leggerlo e modificarlo: non ci sono account né password."
+      "storedHint": "Per questo il tuo piano è salvato sul server. Chi ha il link può leggerlo e modificarlo: non ci sono account né password.",
+      "topics": {
+        "legend": "Su cosa vuoi essere avvisato?",
+        "only": "Riceverai un solo tipo di avviso: {kind}.",
+        "next-up": "Quando è ora di andare alla prossima attrazione",
+        "show-times": "Orari degli spettacoli",
+        "ride-status": "Quando un’attrazione in programma chiude o riapre",
+        "wait-change": "Quando un’attesa in programma cambia molto"
+      }
     },
     "page": {
       "kicker": "Pianificatore",

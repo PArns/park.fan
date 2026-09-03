@@ -2001,7 +2001,15 @@
       "off": "Turn on notifications",
       "on": "Notifications are on",
       "denied": "Your browser blocks notifications for this site. Only your browser settings can change that.",
-      "storedHint": "Your plan is stored on the server for this. Whoever has its link can read and change it — there is no account and no password."
+      "storedHint": "Your plan is stored on the server for this. Whoever has its link can read and change it — there is no account and no password.",
+      "topics": {
+        "legend": "What should we tell you about?",
+        "only": "You will get one kind of message: {kind}.",
+        "next-up": "When it is time to head to the next ride",
+        "show-times": "Show times",
+        "ride-status": "When a planned ride closes or reopens",
+        "wait-change": "When a planned wait changes a lot"
+      }
     },
     "page": {
       "kicker": "Trip planner",

@@ -24,7 +24,8 @@ import { usePushSubscription } from '@/lib/planner/use-push-subscription';
  */
 export function PlannerPushToggle() {
   const t = useTranslations('planner');
-  const { state, enable, disable } = usePushSubscription();
+  const { state, enable, disable, setTopics, availableTopics, selectedTopics } =
+    usePushSubscription();
 
   if (state === 'checking' || state === 'unsupported' || state === 'unavailable') {
     return null;
@@ -67,9 +68,69 @@ export function PlannerPushToggle() {
         )}
         <span className="min-w-0 flex-1">{on ? t('push.on') : t('push.off')}</span>
       </button>
+      {/* Which kinds, and only where there is a choice to make. A deploy that
+          can send exactly one kind gets a sentence naming it instead of a list
+          of one checkbox, which would be the master switch drawn twice.
+
+          The list is the DEPLOY's topics, never a hard-coded set: an id this
+          app has no copy for is still offered, by its id, because hiding a
+          switch is worse than showing an untranslated word — and the labels for
+          the four ids the API is expected to grow into are already written, so
+          they appear the day it advertises them. */}
+      {on && availableTopics.length > 1 && (
+        <fieldset className="mt-1 px-2" data-planner-push-topics="">
+          <legend className="text-muted-foreground text-[10px] font-medium">
+            {t('push.topics.legend')}
+          </legend>
+          <div className="mt-1 flex flex-col gap-0.5">
+            {availableTopics.map((topic) => {
+              const key = `push.topics.${topic}`;
+              const checked = selectedTopics === null || selectedTopics.includes(topic);
+              // The last one may not be unticked: a subscription with no topics
+              // is a switch that reads "on" and receives nothing. Turning all of
+              // them off is what the master switch above is for.
+              const last = checked && resolvedCount(availableTopics, selectedTopics) === 1;
+              return (
+                <label
+                  key={topic}
+                  className={cn(
+                    'flex items-center gap-2 rounded-md px-1 py-1 text-xs max-sm:min-h-9',
+                    last ? 'opacity-60' : 'hover:bg-accent/50 cursor-pointer'
+                  )}
+                >
+                  <input
+                    type="checkbox"
+                    checked={checked}
+                    disabled={last}
+                    onChange={(event) => {
+                      const next = event.target.checked
+                        ? [
+                            ...availableTopics.filter(
+                              (t2) => t2 === topic || isOn(t2, selectedTopics)
+                            ),
+                          ]
+                        : availableTopics.filter((t2) => t2 !== topic && isOn(t2, selectedTopics));
+                      void setTopics(next);
+                    }}
+                    className="accent-primary size-3.5 shrink-0"
+                  />
+                  <span className="min-w-0 flex-1">{t.has(key) ? t(key) : topic}</span>
+                </label>
+              );
+            })}
+          </div>
+        </fieldset>
+      )}
+
       {/* Only while it is on. Before that it is a warning about something that
           has not happened; after, it is the one fact about the feature a
           visitor needs to know they are living with. */}
+      {on && availableTopics.length === 1 && t.has(`push.topics.${availableTopics[0]}`) && (
+        <p className="text-muted-foreground mt-1 px-2 text-[10px] leading-snug">
+          {t('push.topics.only', { kind: t(`push.topics.${availableTopics[0]}`) })}
+        </p>
+      )}
+
       {on && (
         <p className="text-muted-foreground mt-1 px-2 text-[10px] leading-snug">
           {t('push.storedHint')}
@@ -77,4 +138,14 @@ export function PlannerPushToggle() {
       )}
     </div>
   );
+}
+
+/** Is this topic currently wanted? `null` means "everything". */
+function isOn(topic: string, selected: readonly string[] | null): boolean {
+  return selected === null || selected.includes(topic);
+}
+
+/** How many of the deploy's topics are wanted right now. */
+function resolvedCount(available: readonly string[], selected: readonly string[] | null): number {
+  return available.filter((topic) => isOn(topic, selected)).length;
 }

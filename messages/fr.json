@@ -2001,7 +2001,15 @@
       "off": "Activer les notifications",
       "on": "Les notifications sont actives",
       "denied": "Votre navigateur bloque les notifications pour ce site. Seuls ses réglages peuvent le changer.",
-      "storedHint": "Votre plan est stocké sur le serveur pour cela. Qui a le lien peut le lire et le modifier : il n'y a ni compte ni mot de passe."
+      "storedHint": "Votre plan est stocké sur le serveur pour cela. Qui a le lien peut le lire et le modifier : il n'y a ni compte ni mot de passe.",
+      "topics": {
+        "legend": "Sur quoi devons-nous vous prévenir ?",
+        "only": "Vous recevrez un seul type de message : {kind}.",
+        "next-up": "Quand il est temps de rejoindre la prochaine attraction",
+        "show-times": "Horaires des spectacles",
+        "ride-status": "Quand une attraction prévue ferme ou rouvre",
+        "wait-change": "Quand une attente prévue change nettement"
+      }
     },
     "page": {
       "kicker": "Planificateur",
