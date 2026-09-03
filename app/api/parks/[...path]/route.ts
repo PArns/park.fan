@@ -33,13 +33,19 @@ const STATS_AGGREGATE_CACHE = 'public, max-age=86400, s-maxage=86400, stale-whil
 /**
  * How long a "this park has no such aggregate" answer may be reused.
  *
- * A 404 out of these three branches is a settled answer about the park's HISTORY, not a failure
- * and not a statement about today: too few measured days for a curve, too little history for a
- * two-year aggregate. A park does not acquire either inside an hour, and until now every one of
- * these answers was returned bare — so it inherited the blanket `no-store` on `/api/:path*` and
- * every reader of a thin park's page paid a fresh Vercel invocation plus a backend round trip to
- * be told no again. Shorter than the 200s' window because the direction that is wrong rather than
- * old is a park CROSSING the threshold.
+ * A 404 out of these three branches is the API's OWN 404 — no such park, no such aggregate, too
+ * few measured days for a curve — and never a failure of ours. That distinction is load-bearing
+ * and was not always true: the fetchers used to answer `null` for an unreachable backend as well,
+ * so an outage was stored here as a settled fact about the park for an hour plus six of
+ * stale-while-revalidate. They now throw instead, and a throw leaves through the catch blocks as
+ * an uncached 500.
+ *
+ * Note that "too little history for a two-year aggregate" is NOT one of these cases: the API
+ * answers a thin park with a 200 and an aggregate to match. Until now every one of these answers
+ * was returned bare — so it inherited the blanket `no-store` on `/api/:path*` and every reader of
+ * a thin park's page paid a fresh Vercel invocation plus a backend round trip to be told no again.
+ * Shorter than the 200s' window because the direction that is wrong rather than old is a park
+ * CROSSING the threshold.
  */
 const STATS_MISSING_CACHE = 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=21600';
 
@@ -228,9 +234,19 @@ export async function GET(
       const stats = await getParkHistoricalStats(continent, country, city, park, 2, topN);
 
       if (!stats) {
-        // A settled answer, not a failure: this park has too little history for a two-year
-        // aggregate, and it will not acquire one inside an hour. Uncached, every reader of a
-        // thin park's page paid a fresh invocation and a backend round trip for the same no.
+        // `null` is the API's own 404 and nothing else — no such park, no such aggregate —
+        // so this is a settled answer and may be cached. Uncached, every reader of a thin
+        // park's page paid a fresh invocation and a backend round trip for the same no.
+        //
+        // It used to mean something else as well, and that is what made this branch
+        // dangerous: `getParkHistoricalStats` also returned `null` when all four attempts
+        // failed. A park with THIN history was never this case — the API answers those with
+        // a 200 — so in practice the 404 fired only for outages, and cached each one for an
+        // hour plus six of stale-while-revalidate. Measured on 2026-09-03: Phantasialand's
+        // stats came back `{"error":"Stats not available"}` from the edge (`x-vercel-cache:
+        // HIT`) in 158 ms — too fast to have retried at all — while the API answered every
+        // request with 200 and 3.3 KB. A failure now throws and lands in the catch below,
+        // which returns an uncached 500.
         return NextResponse.json(
           { error: 'Stats not available' },
           { status: 404, headers: cdnCacheHeaders(STATS_MISSING_CACHE) }
@@ -262,6 +278,9 @@ export async function GET(
       const data = await getParkHourlyProfile(continent, country, city, park, { topN });
 
       if (!data) {
+        // The API's 404, and nothing else: a failure throws and is answered uncached by the
+        // catch below. Caching a transient failure here would store our outage as a fact
+        // about the park for an hour — see the note on the `/stats` branch above.
         return NextResponse.json(
           { error: 'Hourly profile not available' },
           { status: 404, headers: cdnCacheHeaders(STATS_MISSING_CACHE) }

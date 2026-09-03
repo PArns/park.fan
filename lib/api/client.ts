@@ -74,14 +74,20 @@ function isCloudflareTunnelDown(body: string): boolean {
 
 export class ApiError extends Error {
   digest?: string;
+  // Declared and assigned rather than written as constructor parameter properties.
+  // Identical at runtime, and it keeps this module loadable by the repo's own test
+  // scripts: they run on node's type stripping, which refuses parameter properties
+  // outright ("not supported in strip-only mode") — and node 26 dropped the
+  // --experimental-transform-types that used to be the way around it. Anything
+  // importing this file, which is every `lib/api` fetcher, was untestable until now.
+  status: number;
+  isMaintenance: boolean;
 
-  constructor(
-    public status: number,
-    message: string,
-    public isMaintenance = false
-  ) {
+  constructor(status: number, message: string, isMaintenance = false) {
     super(message);
     this.name = 'ApiError';
+    this.status = status;
+    this.isMaintenance = isMaintenance;
     if (isMaintenance) {
       this.digest = API_MAINTENANCE_DIGEST;
     }
