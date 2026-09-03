@@ -464,6 +464,7 @@
     "api": "API documentatie",
     "impressum": "Colofon",
     "howto": "Wachttijden begrijpen",
+    "planner": "Dagplanner",
     "fancast": "Fancast",
     "bestTime": "Beste bezoektijd",
     "glossaryLink": "Woordenboek",
@@ -518,6 +519,7 @@
     "admin": "Admin",
     "nearbyPark": "In de buurt: {parkName}",
     "howto": "Zo werkt het",
+    "planner": "Dagplanner",
     "glossary": "Woordenboek",
     "blog": "Blog",
     "bestTime": "Beste reistijd",
@@ -1999,6 +2001,31 @@
       "on": "Meldingen staan aan",
       "denied": "Je browser blokkeert meldingen voor deze site. Dat verander je alleen in de browserinstellingen.",
       "storedHint": "Je plan staat daarvoor op de server. Wie de link heeft, kan het lezen en wijzigen – er is geen account en geen wachtwoord."
+    },
+    "page": {
+      "kicker": "Dagplanner",
+      "title": "Je dag in het park, vooraf op een rij",
+      "lead": "Zeg welke attracties je wilt, en de planner rekent met de voorspelde wachttijden uit of de dag klopt. Alles blijft in je browser, een account is niet nodig.",
+      "metaTitle": "Dagplanner – plan rond de wachttijden | park.fan",
+      "metaDescription": "Plan je parkdag met de voorspelde wachttijden: attracties op een tijdlijn zetten, overstaptijden bekijken, shows en pauzes ertussen.",
+      "yourPlans": "{count, plural, one {Eén geplande dag} other {# geplande dagen}}",
+      "introTitle": "Nog niets gepland",
+      "introBody": "De planner legt je attracties op een tijdlijn en zet bij elke de wachttijd die voor dat uur voorspeld is. Ertussen staat hoeveel tijd je hebt om over te steken, en of dat krap wordt.",
+      "browseParks": "Kies een park",
+      "steps": {
+        "find": {
+          "title": "Kies een park en een dag",
+          "body": "In de wachttijdenkalender zie je hoe druk een dag wordt. Vandaar ga je meteen een plan in."
+        },
+        "add": {
+          "title": "Attracties toevoegen",
+          "body": "Op elke attractiepagina staat een knop. In de planner kun je ook zoeken of een attractie erin slepen."
+        },
+        "arrange": {
+          "title": "Schuiven tot het past",
+          "body": "Sleep een blok naar een ander tijdstip. De wachttijd en de kleur gaan mee, want beide horen bij het uur."
+        }
+      }
     }
   }
 }

@@ -123,15 +123,15 @@ export function PlannerGridActions({
         <button
           type="button"
           onClick={() => onToggleDone(entry.id, !done)}
-        aria-pressed={done}
-        aria-label={done ? t('entry.markUndone') : t('entry.markDone')}
-        className={cn(
-          'flex size-9 shrink-0 items-center justify-center rounded-md transition-colors max-sm:size-11',
-          done
-            ? 'bg-crowd-low/25 text-crowd-low'
-            : 'text-muted-foreground/60 hover:bg-accent hover:text-foreground'
-        )}
-      >
+          aria-pressed={done}
+          aria-label={done ? t('entry.markUndone') : t('entry.markDone')}
+          className={cn(
+            'flex size-9 shrink-0 items-center justify-center rounded-md transition-colors max-sm:size-11',
+            done
+              ? 'bg-crowd-low/25 text-crowd-low'
+              : 'text-muted-foreground/60 hover:bg-accent hover:text-foreground'
+          )}
+        >
           <Check className="size-4" />
         </button>
       )}

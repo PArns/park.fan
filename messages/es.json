@@ -464,6 +464,7 @@
     "api": "Documentación API",
     "impressum": "Aviso legal",
     "howto": "Entender los tiempos de espera",
+    "planner": "Planificador",
     "fancast": "Fancast",
     "bestTime": "Mejor época para visitar",
     "glossaryLink": "Diccionario",
@@ -518,6 +519,7 @@
     "admin": "Admin",
     "nearbyPark": "Cerca: {parkName}",
     "howto": "Cómo funciona",
+    "planner": "Planificador",
     "glossary": "Diccionario",
     "blog": "Blog",
     "bestTime": "Mejor época",
@@ -1999,6 +2001,31 @@
       "on": "Las notificaciones están activas",
       "denied": "Tu navegador bloquea las notificaciones de este sitio. Solo puedes cambiarlo en sus ajustes.",
       "storedHint": "Para esto tu plan se guarda en el servidor. Quien tenga su enlace puede leerlo y cambiarlo: no hay cuenta ni contraseña."
+    },
+    "page": {
+      "kicker": "Planificador",
+      "title": "Tu día en el parque, ordenado antes",
+      "lead": "Di qué atracciones quieres y el planificador calcula con los tiempos previstos si el día cuadra. Todo se queda en tu navegador, sin cuenta.",
+      "metaTitle": "Planificador – organiza el día con los tiempos de espera | park.fan",
+      "metaDescription": "Organiza tu día con los tiempos de espera previstos: coloca atracciones en una línea de tiempo, comprueba los traslados y encaja espectáculos y descansos.",
+      "yourPlans": "{count, plural, one {Un día planificado} other {# días planificados}}",
+      "introTitle": "Todavía no hay nada planificado",
+      "introBody": "El planificador pone tus atracciones en una línea de tiempo y escribe en cada una la espera prevista para esa hora. Entre ellas indica cuánto tiempo tienes para cruzar, y si va justo.",
+      "browseParks": "Elegir un parque",
+      "steps": {
+        "find": {
+          "title": "Elige parque y día",
+          "body": "El calendario de esperas muestra lo lleno que estará un día. Desde ahí se entra directo al plan."
+        },
+        "add": {
+          "title": "Añadir atracciones",
+          "body": "Hay un botón en cada página de atracción. Dentro del planificador también puedes buscar o arrastrar una."
+        },
+        "arrange": {
+          "title": "Mover hasta que encaje",
+          "body": "Arrastra un bloque a otra hora. La espera y el color se mueven con él, porque ambos pertenecen a esa hora."
+        }
+      }
     }
   }
 }

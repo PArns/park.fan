@@ -71,6 +71,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'share',
   ],
   '/search': [],
+  '/trip-planner': ['planner'],
   '/ui': ['attractions', 'nearby', 'parkCard', 'parks', 'stats'],
 } as const;
 

@@ -464,6 +464,7 @@
     "api": "Documentazione API",
     "impressum": "Impressum",
     "howto": "Capire i tempi di attesa",
+    "planner": "Pianificatore",
     "fancast": "Fancast",
     "bestTime": "Periodo migliore",
     "glossaryLink": "Dizionario",
@@ -518,6 +519,7 @@
     "admin": "Admin",
     "nearbyPark": "Vicino: {parkName}",
     "howto": "Come funziona",
+    "planner": "Pianificatore",
     "glossary": "Dizionario",
     "blog": "Blog",
     "bestTime": "Periodo migliore",
@@ -1999,6 +2001,31 @@
       "on": "Le notifiche sono attive",
       "denied": "Il browser blocca le notifiche per questo sito. Si cambia solo nelle sue impostazioni.",
       "storedHint": "Per questo il tuo piano è salvato sul server. Chi ha il link può leggerlo e modificarlo: non ci sono account né password."
+    },
+    "page": {
+      "kicker": "Pianificatore",
+      "title": "La tua giornata al parco, sistemata prima",
+      "lead": "Dì quali attrazioni vuoi fare: il pianificatore calcola con le attese previste se la giornata regge. Resta tutto nel tuo browser, senza account.",
+      "metaTitle": "Pianificatore – organizza la giornata sui tempi di attesa | park.fan",
+      "metaDescription": "Organizza la giornata con le attese previste: metti le attrazioni su una linea del tempo, controlla i tempi di trasferimento, infila spettacoli e pause.",
+      "yourPlans": "{count, plural, one {Una giornata pianificata} other {# giornate pianificate}}",
+      "introTitle": "Non c’è ancora niente",
+      "introBody": "Il pianificatore mette le tue attrazioni su una linea del tempo e su ognuna scrive l'attesa prevista per quell'ora. In mezzo dice quanto tempo hai per spostarti, e se diventa stretto.",
+      "browseParks": "Scegli un parco",
+      "steps": {
+        "find": {
+          "title": "Scegli parco e giorno",
+          "body": "Il calendario delle attese mostra quanto sarà pieno un giorno. Da lì si entra dritti nel piano."
+        },
+        "add": {
+          "title": "Aggiungi attrazioni",
+          "body": "Su ogni pagina di attrazione c'è un pulsante. Nel pianificatore puoi anche cercare o trascinare un'attrazione."
+        },
+        "arrange": {
+          "title": "Sposta finché non torna",
+          "body": "Trascina un blocco a un'altra ora. L'attesa e il colore lo seguono, perché appartengono entrambi all'ora."
+        }
+      }
     }
   }
 }

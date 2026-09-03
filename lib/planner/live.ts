@@ -18,10 +18,9 @@ import type { ParkShow, ParkWithAttractions } from '@/lib/api/types';
  * is byte-for-byte a park shut for the night, so the curated flag is the only
  * signal — never the queues themselves.
  */
-export function liveWaitsFor(park: ParkWithAttractions | undefined | null): Map<
-  string,
-  number
-> | null {
+export function liveWaitsFor(
+  park: ParkWithAttractions | undefined | null
+): Map<string, number> | null {
   if (!park) return null;
   if (!hasReadableWaitTimes(park)) return null;
 
