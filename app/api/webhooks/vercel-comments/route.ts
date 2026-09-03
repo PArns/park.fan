@@ -29,7 +29,22 @@ import type { CommentDispatchPayload, NormalizedComment } from '@/lib/vercel-com
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
-const DEFAULT_REPO = 'PArns/park.fan';
+/**
+ * Repo and token follow the conventions the admin routes already established
+ * (`lib/admin/media-session.ts`), so a deployment that can already commit from
+ * the blog editor needs no second credential for this.
+ */
+function targetRepo(): string {
+  return process.env.VERCEL_COMMENT_SYNC_REPO ?? process.env.GITHUB_REPOSITORY ?? 'PArns/park.fan';
+}
+
+function dispatchToken(): string | undefined {
+  return (
+    process.env.GITHUB_DISPATCH_TOKEN ??
+    process.env.BLOG_EDITOR_GITHUB_TOKEN ??
+    process.env.GITHUB_TOKEN
+  );
+}
 
 /** Events that create or change comment text. */
 const COMMENT_EVENTS = new Set(['comment.created', 'comment.updated']);
@@ -73,17 +88,20 @@ async function enrichFromDeployment(comment: NormalizedComment): Promise<Normali
     const deployment = (await response.json()) as {
       target?: string | null;
       meta?: Record<string, string | undefined>;
-      gitSource?: { ref?: string; prId?: number };
+      gitSource?: { ref?: string; prId?: number; sha?: string };
     };
 
     const branch =
       comment.branch ?? deployment.meta?.githubCommitRef ?? deployment.gitSource?.ref ?? null;
     const prMeta = deployment.meta?.githubPrId ?? deployment.gitSource?.prId;
+    const commitSha =
+      comment.commitSha ?? deployment.meta?.githubCommitSha ?? deployment.gitSource?.sha ?? null;
     const productionBranch = (process.env.VERCEL_PRODUCTION_BRANCH || 'main').toLowerCase();
 
     return {
       ...comment,
       branch,
+      commitSha,
       prNumber: comment.prNumber ?? (prMeta ? Number(prMeta) : null),
       environment:
         deployment.target === 'production'
@@ -103,12 +121,11 @@ async function enrichFromDeployment(comment: NormalizedComment): Promise<Normali
 }
 
 async function dispatchToGitHub(payload: CommentDispatchPayload): Promise<Response> {
-  const repo = process.env.VERCEL_COMMENT_SYNC_REPO || DEFAULT_REPO;
-  return fetch(`https://api.github.com/repos/${repo}/dispatches`, {
+  return fetch(`https://api.github.com/repos/${targetRepo()}/dispatches`, {
     method: 'POST',
     headers: {
       Accept: 'application/vnd.github+json',
-      Authorization: `Bearer ${process.env.GITHUB_DISPATCH_TOKEN}`,
+      Authorization: `Bearer ${dispatchToken()}`,
       'X-GitHub-Api-Version': '2022-11-28',
       'Content-Type': 'application/json',
     },
@@ -154,18 +171,26 @@ export async function POST(request: Request) {
   }
   if (!comment.branch && !comment.prNumber) return ack('no branch or PR to map to');
 
-  if (!process.env.GITHUB_DISPATCH_TOKEN) {
-    console.error('[vercel-comments] GITHUB_DISPATCH_TOKEN is not set');
+  if (!dispatchToken()) {
+    console.error('[vercel-comments] No GitHub token set (GITHUB_DISPATCH_TOKEN)');
     return NextResponse.json({ error: 'Dispatch not configured' }, { status: 500 });
   }
 
-  const threadId = comment.threadId ?? comment.commentId ?? `${comment.branch}-${Date.now()}`;
+  // The thread id anchors one PR comment per thread. When the payload carries
+  // none, derive a STABLE one — a timestamp would make every redelivery of the
+  // same event open another PR comment.
+  const threadId =
+    comment.threadId ??
+    comment.commentId ??
+    crypto.createHash('sha1').update(rawBody).digest('hex').slice(0, 12);
+
   const dispatchPayload: CommentDispatchPayload = {
     event,
     threadId,
     marker: markerFor(threadId),
     branch: comment.branch,
     prNumber: comment.prNumber,
+    commitSha: comment.commitSha,
     resolved: comment.resolved,
     mode: isStatus ? 'status' : 'comment',
     body: renderThreadComment({ ...comment, threadId }),

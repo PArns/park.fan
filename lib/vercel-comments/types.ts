@@ -35,6 +35,10 @@ export interface NormalizedComment {
   text: string | null;
   /** Display name of whoever wrote it. */
   author: string | null;
+  /** Team members @-mentioned in the comment — usually who is being asked. */
+  mentions: string[];
+  /** When the comment was written, ISO 8601. */
+  createdAt: string | null;
   /** Whether the thread is resolved. */
   resolved: boolean;
 
@@ -46,6 +50,13 @@ export interface NormalizedComment {
   /** Deployment the comment was left on. */
   deploymentUrl: string | null;
   deploymentId: string | null;
+  /**
+   * Commit the commented-on deployment was built from. Feedback belongs to
+   * *that* commit, not to whatever the PR head happens to be by the time the
+   * webhook lands — Vercel itself warns that people comment on outdated
+   * previews. The Action compares it against the PR head and flags a stale one.
+   */
+  commitSha: string | null;
   /** Git branch behind that deployment — this is what maps to a PR. */
   branch: string | null;
   /** PR number, when Vercel hands it to us directly. */
@@ -59,7 +70,10 @@ export interface NormalizedComment {
   sourceFile: string | null;
   /** React component stack / path, when available. */
   componentPath: string | null;
-  /** Anchor coordinates within the page or element. */
+  /**
+   * Where on the page the comment was placed — a point, or the rectangle of a
+   * click-and-drag region screenshot.
+   */
   position: string | null;
 
   /** Viewport description, e.g. `1619×1284 @1.8x`. */
@@ -82,6 +96,8 @@ export interface CommentDispatchPayload {
   marker: string;
   branch: string | null;
   prNumber: number | null;
+  /** Commit the comment was left on — the Action flags it when it is stale. */
+  commitSha: string | null;
   resolved: boolean;
   /**
    * `comment` = a new comment or reply, `status` = the thread was resolved or

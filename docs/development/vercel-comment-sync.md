@@ -38,16 +38,15 @@ Vercel comment.created / .updated / .resolved / thread.resolved
 
 ### a) GitHub token
 
-Create a **fine-grained PAT** scoped to `PArns/park.fan` with **Contents: read & write** (that is what `repository_dispatch` needs). The workflow itself uses the built-in `GITHUB_TOKEN`, so this token only fires the dispatch.
+The dispatch reuses the credential the admin routes already established — `GITHUB_DISPATCH_TOKEN` → `BLOG_EDITOR_GITHUB_TOKEN` → `GITHUB_TOKEN`, and the repo comes from `VERCEL_COMMENT_SYNC_REPO` → `GITHUB_REPOSITORY` → `PArns/park.fan`. **If the blog editor already works on this deployment, there is nothing to add here.** Set `GITHUB_DISPATCH_TOKEN` only to give the dispatch its own, narrower credential (a fine-grained PAT with **Contents: write** is all `repository_dispatch` needs). The workflow itself runs with the built-in `GITHUB_TOKEN`.
 
 ### b) Vercel env vars (Production scope)
 
 ```bash
-vercel env add GITHUB_DISPATCH_TOKEN production
 vercel env add VERCEL_API_TOKEN production   # optional but recommended
 ```
 
-`VERCEL_API_TOKEN` lets the route look the deployment up (`GET /v13/deployments/:id`) to recover the git branch and the preview/production target when the comment payload does not carry them. Without it, comments whose environment cannot be determined are **dropped** rather than guessed.
+`VERCEL_API_TOKEN` lets the route look the deployment up (`GET /v13/deployments/:id`) to recover the git branch, the **commit SHA** and the preview/production target when the comment payload does not carry them. Without it, comments whose environment cannot be determined are **dropped** rather than guessed.
 
 ### c) Register the webhook
 
@@ -76,13 +75,27 @@ Add `VERCEL_API_TOKEN` as a **repository secret** if Vercel serves comment scree
 One PR comment per Vercel thread, anchored by a hidden marker (`<!-- vercel-comment-sync:thread:… -->`):
 
 - **Heading** — flips to ✅ when the thread is resolved.
-- **Quoted comment text** and author.
-- **Context table** — page, source file, component, DOM selector, position, viewport, branch, deployment, browser.
+- **Quoted comment text** (markdown and `:emoji:` intact) and author.
+- **Context table** — page, source file, component, DOM selector, position, viewport, mentions, timestamp, branch, commit, deployment, browser.
 - **Screenshots**, inline.
 - **`Context for automation (JSON)`** — a stable, flat JSON block in a `json vercel-comment-context` fence. Parse this, not the prose.
 - **`Raw Vercel webhook payload`** — the untouched payload, collapsed.
 
 Replies are appended to the same comment; resolving flips the heading.
+
+Everything Vercel lets a person put into a comment reaches the PR: text with markdown, emoji and `@mentions`, the placement (anchor point, or the rectangle of a click-and-drag region screenshot), the DOM selector and component the toolbar recorded, uploaded and camera screenshots, and the session context needed to reproduce it.
+
+### The commit a comment belongs to
+
+Feedback is about the deployment of **one commit**, and the branch often moves on before the webhook lands — Vercel itself warns that people comment on outdated previews. The commit SHA is carried through, and when it no longer matches the PR head the comment opens with a warning naming both, so nobody acts on feedback for code that has already changed.
+
+### Size
+
+Two hard 65,536-character ceilings sit downstream (a `repository_dispatch` payload and a comment body), and a long comment lands in the output three times over — quote, context JSON, raw payload. Each block is capped, the rendered body is capped again at 60,000, and appends trim the middle of a long thread rather than failing the update. The marker and the newest reply always survive a trim.
+
+### Untrusted input
+
+Comment text is written by anyone who can reach the preview, so the thread marker is neutralized inside it — otherwise a comment containing someone else's anchor would redirect later replies to the wrong PR comment.
 
 ### Screenshots
 
