@@ -1985,7 +1985,8 @@
       }
     },
     "sheet": {
-      "handle": "Agrandir ou fermer le planificateur"
+      "handle": "Agrandir ou fermer le planificateur",
+      "resize": "Ajuster la largeur"
     },
     "headliners": {
       "missing": "{count, plural, one {Il manque encore une attraction phare} other {Il manque encore # attractions phares}}"

@@ -1985,7 +1985,8 @@
       }
     },
     "sheet": {
-      "handle": "Planer vergrößern oder schließen"
+      "handle": "Planer vergrößern oder schließen",
+      "resize": "Breite ziehen"
     },
     "headliners": {
       "missing": "{count, plural, one {Ein Headliner fehlt noch} other {# Headliner fehlen noch}}"

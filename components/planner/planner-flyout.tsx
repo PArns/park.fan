@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { CalendarPlus, ChevronDown } from 'lucide-react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
@@ -29,6 +29,7 @@ import { PLANNER_RIDE_MIME, parseRideDrag } from '@/lib/planner/ride-drag';
 import { occupiedMinutes } from '@/lib/planner/estimate';
 import { useRideDragSource } from '@/lib/planner/use-ride-drag-source';
 import { usePlannerDayFacts } from '@/lib/planner/use-day-facts';
+import { PANEL_WIDTH_DEFAULT, clampPanelWidth, plannerPanelWidth } from '@/lib/planner/panel-width';
 import { cn } from '@/lib/utils';
 
 interface PlannerFlyoutProps {
@@ -100,6 +101,52 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   };
 
   const isPhone = useMediaQuery('(max-width: 639px)');
+  const panelWidth = useSyncExternalStore(
+    plannerPanelWidth.subscribe,
+    plannerPanelWidth.getSnapshot,
+    plannerPanelWidth.getServerSnapshot
+  );
+
+  /**
+   * Dragging the panel's left edge.
+   *
+   * Live rather than committed-on-release, which is the opposite of the phone
+   * handle above it — and for the reason that made that one committed: there,
+   * the two directions mean different things (resize or dismiss) and a
+   * continuous drag would have to guess which is happening. Here there is one
+   * meaning and one axis, so the panel follows the pointer and the width is
+   * written down once, on release.
+   */
+  const handleEdgeGrab = (event: React.PointerEvent<HTMLElement>) => {
+    if (event.button !== 0) return;
+    event.preventDefault();
+    const handle = event.currentTarget;
+    handle.setPointerCapture(event.pointerId);
+    const startX = event.clientX;
+    const startWidth = panelWidth;
+    // The panel is anchored right, so a drag to the LEFT makes it wider.
+    const widthAt = (clientX: number) => clampPanelWidth(startWidth + (startX - clientX));
+
+    const onMove = (moveEvent: PointerEvent) =>
+      plannerPanelWidth.preview(widthAt(moveEvent.clientX));
+    const onUp = (upEvent: PointerEvent) => {
+      plannerPanelWidth.commit(widthAt(upEvent.clientX));
+      detach();
+    };
+    const detach = () => {
+      handle.removeEventListener('pointermove', onMove);
+      handle.removeEventListener('pointerup', onUp);
+      handle.removeEventListener('pointercancel', detach);
+      try {
+        handle.releasePointerCapture(event.pointerId);
+      } catch {
+        // Already released — a cancelled gesture, or the element unmounted.
+      }
+    };
+    handle.addEventListener('pointermove', onMove);
+    handle.addEventListener('pointerup', onUp);
+    handle.addEventListener('pointercancel', detach);
+  };
   const park = activeParkSlug ? state.parks[activeParkSlug] : null;
 
   // Ride cards on the page behind the panel become drag sources for as long as
@@ -288,7 +335,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
         // makes `vh` taller than what is actually visible, and the summary row
         // at the bottom would sit under it.
         className={cn(
-          'flex w-full flex-col gap-0 p-0 max-sm:rounded-t-xl sm:max-w-md',
+          'flex w-full flex-col gap-0 p-0 max-sm:rounded-t-xl',
           // Glass, like the header's menu band: a translucent dark ground with
           // a real gaussian blur behind it, so the page keeps showing through
           // while the plan stays readable over a park photo. `/80` rather than
@@ -301,13 +348,42 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
           // leaves nothing behind once it has run, so the glass is only flat
           // while it slides.
           'bg-background/80 supports-[backdrop-filter]:bg-background/70 backdrop-blur-2xl',
-          'border-border/70 max-sm:border-t sm:border-l',
+          'border-border/70 max-sm:border-t sm:border-l sm:shadow-2xl',
+          // The width is the visitor's, so the class ceiling has to go — an
+          // inline width beats `w-3/4` but not `max-w-md`, which would clamp
+          // every drag past 448 px into looking broken rather than wide.
+          'sm:max-w-none',
           // The handle's whole job. `svh` for the same reason the cap already
           // used it: on iOS `vh` counts the address bar and the summary row
           // would sit under it.
           expanded ? 'max-sm:max-h-[96svh]' : 'max-sm:max-h-[85svh]'
         )}
+        // Phone-only guard on the WIDTH, not on the markup: below `sm` this is
+        // a bottom sheet spanning the viewport, and an inline pixel width would
+        // hold it at 448 px in the middle of a 390 px screen.
+        style={isPhone ? undefined : { width: panelWidth }}
       >
+        {/* The resize edge. Desktop only — `hidden sm:flex` rather than
+            `!isPhone`, for the reason the phone handle gives one line down: a
+            control that decides its own existence from `useMediaQuery` flickers,
+            because that hook answers `false` on the server snapshot.
+
+            A 6 px column of hit area with a 40 px pill drawn in the MIDDLE of
+            it, which is the only part a visitor is meant to see — the whole
+            edge is grabbable, and the pill is what says so. Double-click puts
+            the width back, because a drag that went too far otherwise has to be
+            dragged back by hand. */}
+        <div
+          onPointerDown={handleEdgeGrab}
+          onDoubleClick={() => plannerPanelWidth.commit(PANEL_WIDTH_DEFAULT)}
+          role="separator"
+          aria-orientation="vertical"
+          aria-label={t('sheet.resize')}
+          data-planner-resize-edge=""
+          className="group absolute inset-y-0 -left-1 z-50 hidden w-3 cursor-col-resize touch-none items-center justify-center sm:flex"
+        >
+          <span className="bg-border group-hover:bg-primary h-10 w-1 rounded-full transition-colors" />
+        </div>
         {/* The grab handle. Phone only, and `sm:hidden` rather than `!isPhone`
             because `useMediaQuery` answers `false` on the server snapshot and a
             control that decides its own existence from that flickers.
