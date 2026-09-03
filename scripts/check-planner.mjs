@@ -1350,6 +1350,194 @@ if (reachable) {
   await shows.close();
 }
 
+// ── The weather rail ────────────────────────────────────────────────────────
+// A band down the edge of the day and a label only where the weather turns.
+// It lives in the HOUR GUTTER, which is the whole reason it can exist: the
+// canvas is where the blocks are and its three lanes are already down to 112 px
+// on a phone. So the assertion that matters is geometric — nothing the rail
+// draws may leave that column, in either direction.
+{
+  const OPEN = 9;
+  const CLOSE = 19;
+  // Overcast morning, rain from 13:00, thunderstorm at 16:00, showers at 18:00.
+  const CODES = {
+    9: 3,
+    10: 3,
+    11: 2,
+    12: 2,
+    13: 61,
+    14: 63,
+    15: 65,
+    16: 95,
+    17: 95,
+    18: 80,
+    19: 3,
+  };
+  const MM = { 13: 0.4, 14: 1.2, 15: 2.4, 16: 3.6, 17: 1.1, 18: 0.3 };
+
+  for (const [label, width, height] of [
+    ['Desktop', 1280, 1200],
+    ['Handy', 390, 844],
+  ]) {
+    const rail = await browser.newPage({ viewport: { width, height } });
+    noteErrors(rail);
+
+    await rail.route('**/api/weather/hourly**', (route) =>
+      route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({
+          timezone: 'Europe/Berlin',
+          points: Array.from({ length: 24 }, (_, h) => ({
+            time: `${DATE}T${String(h).padStart(2, '0')}:00`,
+            temperatureC: 16,
+            precipitationMm: MM[h] ?? 0,
+            precipitationProbability: MM[h] ? 80 : 10,
+            weatherCode: CODES[h] ?? 3,
+            isDay: h >= 7 && h < 20,
+          })),
+        }),
+      })
+    );
+    await rail.route('**/plan/day**', (route) =>
+      route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({
+          parkSlug: PARK.slug,
+          timezone: 'Europe/Berlin',
+          context: {
+            date: DATE,
+            status: 'OPERATING',
+            openHour: OPEN,
+            closeHour: CLOSE,
+            crowdLevel: 'high',
+            weather: null,
+            isHoliday: false,
+            isBridgeDay: false,
+            isSchoolVacation: false,
+            isWeekend: false,
+          },
+          tier: 'measured',
+          leadDays: 1,
+          leadTimeMae: 8,
+          rides: [
+            {
+              attractionSlug: 'taron',
+              attractionName: 'Taron',
+              land: 'Mystery',
+              hours: Array.from({ length: CLOSE - OPEN + 1 }, (_, i) => ({
+                hour: OPEN + i,
+                wait: 45,
+              })),
+              dayPeak: 45,
+              uncertaintyMinutes: 10,
+              sampleDays: 400,
+              // The park's position, to about a kilometre. Nothing else the
+              // planner fetches carries one — this is where the rail gets it.
+              latitude: 50.7985,
+              longitude: 6.8792,
+            },
+          ],
+          shows: [],
+        }),
+      })
+    );
+
+    await rail.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+    await rail.evaluate(
+      ([plan, date]) => {
+        const seeded = JSON.parse(JSON.stringify(plan));
+        const park = seeded.parks.phantasialand;
+        park.timezone = 'Europe/Berlin';
+        park.days = {
+          [date]: {
+            date,
+            entries: [
+              { id: 'taron-1', attractionSlug: 'taron', attractionName: 'Taron', startMinute: 600 },
+            ],
+          },
+        };
+        seeded.parks = { phantasialand: park };
+        seeded.activeParkSlug = 'phantasialand';
+        seeded.activeDate = date;
+        window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
+        document.cookie = 'planner=1; path=/';
+      },
+      [PLAN, DATE]
+    );
+    await rail.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+    await rail.locator(LAUNCHER).click();
+    await rail.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+    await rail.waitForTimeout(2500);
+
+    const band = rail.locator('[data-planner-weather-rail]');
+    check(`${label}: das Wetterband ist da`, (await band.count()) === 1);
+    if ((await band.count()) !== 1) {
+      await rail.close();
+      continue;
+    }
+
+    // Only where it turns: overcast → rain → storm → showers → overcast, plus
+    // the hour the axis opens in. A figure at every hour is a table.
+    const titles = await band
+      .locator('[title]')
+      .evaluateAll((els) => els.map((el) => el.getAttribute('title') ?? ''));
+    check(`${label}: nur die Wechsel tragen ein Label`, titles.length === 5, titles.join(' | '));
+    check(
+      `${label}: ein nasser Wechsel nennt die Menge`,
+      titles.some((title) => /Gewitter/.test(title) && /mm/.test(title)),
+      titles.join(' | ')
+    );
+    // German decimals. `toFixed(1)` writes "3.6 mm", which is a different
+    // number to everybody reading a German sentence.
+    check(
+      `${label}: die Menge ist deutsch geschrieben`,
+      titles.some((title) => /\d,\d\s*mm/.test(title)),
+      titles.join(' | ')
+    );
+
+    // The geometric one. The rail is a guest in the hour gutter, so nothing it
+    // draws may hang off either edge of that column — the first version gave the
+    // container no width, and every label sat OUTSIDE the panel entirely.
+    const escaped = await rail.evaluate(() => {
+      const rail = document.querySelector('[data-planner-weather-rail]');
+      if (!rail) return 'no rail';
+      const column = rail.getBoundingClientRect();
+      const bad = [];
+      for (const el of rail.querySelectorAll('[title], div[class*="bg-"]')) {
+        const box = el.getBoundingClientRect();
+        if (box.width === 0) continue;
+        if (box.left < column.left - 0.5 || box.right > column.right + 0.5) {
+          bad.push(
+            `${el.getAttribute('title') ?? el.className} @ ${Math.round(box.left)}..${Math.round(box.right)} vs ${Math.round(column.left)}..${Math.round(column.right)}`
+          );
+        }
+      }
+      return bad.length === 0 ? null : bad.join('; ');
+    });
+    check(`${label}: nichts hängt aus der Stundenspalte`, escaped === null, escaped ?? '');
+
+    // Continuous: the band is one column with no seams, because a gap in it
+    // reads as a gap in the day.
+    const seams = await rail.evaluate(() => {
+      const slices = [
+        ...document.querySelectorAll('[data-planner-weather-rail] > div:first-child > div'),
+      ].map((el) => el.getBoundingClientRect());
+      if (slices.length < 2) return `nur ${slices.length} Scheiben`;
+      for (let i = 1; i < slices.length; i++) {
+        if (Math.abs(slices[i].top - slices[i - 1].bottom) > 0.6) {
+          return `Lücke bei ${i}: ${slices[i - 1].bottom} -> ${slices[i].top}`;
+        }
+      }
+      return null;
+    });
+    check(`${label}: das Band hat keine Nähte`, seams === null, seams ?? '');
+
+    await rail.close();
+  }
+}
+
 // ── The zone a park learns from its first day payload ───────────────────────
 // A park added from the overview's search arrives with no timezone — the search
 // payload has none to give — and every other way into a plan starts on a park
