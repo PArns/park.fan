@@ -130,8 +130,13 @@ export function ParkHourlyProfileCard({
         {labels.title}
       </h3>
       {/* A ten-hour matrix does not fit a phone at a readable size, and shrinking the type is
-          worse than scrolling it. The ride column stays put so a scrolled row keeps its subject. */}
-      <div className="-mx-1 overflow-x-auto px-1">
+          worse than scrolling it. The ride column stays put so a scrolled row keeps its subject.
+          `relative` is what keeps the scrolling inside this box: the hour headers carry an
+          `sr-only` label, `sr-only` is `position: absolute`, and an absolute box is clipped by the
+          nearest POSITIONED ancestor — without one here it resolved against something outside the
+          scroller, so the header of the last column, 178 px past the right edge of a phone, became
+          138 px of horizontal scroll on the whole document. */}
+      <div className="relative -mx-1 overflow-x-auto px-1">
         <table className="w-full border-collapse text-sm">
           <thead>
             <tr className="border-border/40 border-b">

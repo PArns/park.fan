@@ -21,6 +21,7 @@ import {
   getCardObjectPosition,
   getParkBackgroundImage,
 } from '@/lib/utils/park-assets';
+import { cn } from '@/lib/utils';
 import { parseGlossarySegments } from '@/lib/glossary/parse-segments';
 import { extractToc } from '@/lib/blog/toc';
 import { ChapterHeading } from '@/components/common/chapter-heading';
@@ -558,11 +559,34 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
         );
       }
       const isExternal = href?.startsWith('http://') || href?.startsWith('https://');
+      // A link whose visible text IS its URL — GFM autolinks a bare one, and a
+      // source list is full of them — is a single unbreakable token that runs
+      // for hundreds of characters, so on a phone it pushes the article column
+      // past the viewport and the document gets a horizontal scrollbar. Two
+      // treatments, because the two cases want opposite things:
+      //
+      //   * a URL as its own label carries no meaning past the first line, so
+      //     below `sm` it is cut off with an ellipsis (`truncate` needs a block
+      //     box, hence the inline-block) and the full address stays in `href`
+      //     and `title`;
+      //   * a real label must not lose characters, so it wraps instead —
+      //     `wrap-anywhere` rather than `break-words`, because
+      //     `overflow-wrap: break-word` breaks the token across lines but still
+      //     reports its full width as the paragraph's min-content, which is the
+      //     scrollbar all over again. Nothing changes for text that fits.
+      const label = String(flat);
+      const labelIsUrl =
+        isExternal && !!href && (label === href || label === href.replace(/^https?:\/\//, ''));
       return (
         <a
           href={href}
           {...(isExternal ? { rel: 'noopener noreferrer', target: '_blank' } : {})}
-          className="text-primary hover:text-primary/80 font-medium underline decoration-dotted underline-offset-4"
+          {...(labelIsUrl ? { title: href } : {})}
+          className={cn(
+            'text-primary hover:text-primary/80 font-medium wrap-anywhere underline decoration-dotted underline-offset-4',
+            labelIsUrl &&
+              'max-sm:inline-block max-sm:max-w-full max-sm:truncate max-sm:align-bottom'
+          )}
         >
           {children}
         </a>
