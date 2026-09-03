@@ -86,11 +86,20 @@ export function PlannerLauncher() {
     const root = document.documentElement;
     if (!open) {
       root.style.removeProperty('--planner-inset');
+      root.removeAttribute('data-planner-open');
       return;
     }
     root.style.setProperty('--planner-inset', `${panelWidth}px`);
+    // An ATTRIBUTE beside the width, and it earns its place: a ride card on the
+    // page behind the panel becomes a drag source while the planner is open,
+    // and it has to say so. Passing that down as a prop would mean a context
+    // over the whole page and a re-render of forty cards on every open; an
+    // attribute on the document element is a stylesheet match and costs the
+    // cards nothing at all.
+    root.setAttribute('data-planner-open', '');
     return () => {
       root.style.removeProperty('--planner-inset');
+      root.removeAttribute('data-planner-open');
     };
   }, [open, panelWidth]);
 

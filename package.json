@@ -90,7 +90,6 @@
     "test:stats-fetchers": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-stats-fetchers.mjs"
   },
   "dependencies": {
-    "@flags-sdk/vercel": "^1.4.7",
     "@octokit/rest": "^22.0.1",
     "@radix-ui/react-avatar": "^1.2.6",
     "@radix-ui/react-dialog": "^1.1.23",
@@ -128,7 +127,6 @@
     "date-fns": "^4.4.0",
     "date-fns-tz": "^3.2.0",
     "exif-reader": "^2.0.3",
-    "flags": "^4.3.0",
     "framer-motion": "^12.43.0",
     "fuse.js": "^7.5.0",
     "github-slugger": "^2.0.0",

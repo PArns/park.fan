@@ -658,6 +658,13 @@ export function ParkCalendarDayDetail({
                 geo={planner.geo}
                 date={day.date}
                 timezone={parkTimezone}
+                // The dialog closes on the way out, and the visitor lands on the
+                // park's ride overview. Without it the planner opened BEHIND
+                // this dialog — which is a modal, so the panel it just opened
+                // was unreachable — and the reader was left on the calendar,
+                // which is the one page in the park with no ride cards to drag
+                // from. Both halves of the button's promise were missing.
+                onPlanned={() => onOpenChange(false)}
               />
             </div>
           )}

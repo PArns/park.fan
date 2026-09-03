@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { useRouter } from '@/i18n/navigation';
 import { ArrowRight, CalendarPlus } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { usePlanner } from '@/lib/planner/use-planner';
@@ -20,6 +21,15 @@ export interface PlanDayButtonProps {
    */
   timezone?: string;
   className?: string;
+  /**
+   * Called after the plan is opened, before the navigation.
+   *
+   * The calendar's day detail is a MODAL dialog, so a planner opened from
+   * inside it appeared behind an overlay that swallowed every click — the
+   * button looked like it did nothing. Closing is the caller's business
+   * because the dialog owns its own open state.
+   */
+  onPlanned?: () => void;
 }
 
 /**
@@ -41,8 +51,10 @@ export function PlanDayButton({
   date,
   timezone,
   className,
+  onPlanned,
 }: PlanDayButtonProps) {
   const t = useTranslations('planner');
+  const router = useRouter();
   const { openDay } = usePlanner();
 
   return (
@@ -51,6 +63,15 @@ export function PlanDayButton({
       onClick={() => {
         openDay({ slug: parkSlug, name: parkName, geo, timezone }, date);
         plannerUi.requestOpen();
+        onPlanned?.();
+        // The park's own page, where the ride cards are. The calendar is the
+        // one park page with none, so a button that says "plan the rides for
+        // this day" and leaves the reader there has not finished its sentence.
+        // `@/i18n/navigation`'s router, so the localized path is built rather
+        // than guessed.
+        router.push(
+          `/parks/${geo.continent}/${geo.country}/${geo.city}/${parkSlug}` as '/europe/germany/rust/europa-park'
+        );
       }}
       className={cn(
         // A primary call to action, full width, and both halves of that are the

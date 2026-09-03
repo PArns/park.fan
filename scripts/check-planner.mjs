@@ -48,8 +48,30 @@ const PARK = {
   geo: { continent: 'europe', country: 'germany', city: 'bruehl' },
 };
 
-/** Tomorrow, park-local enough for a fixture — never today, so the run is stable. */
-const DATE = new Date(Date.now() + 86_400_000).toISOString().slice(0, 10);
+/**
+ * Today in the PARK's zone, and the fixtures counted forward from it.
+ *
+ * "Park-local enough" was `Date.now() + 86_400_000` read in UTC, and it is not
+ * enough for two hours every night: between 22:00 and 24:00 UTC, Berlin has
+ * already rolled over while the UTC arithmetic has not, so "tomorrow" resolves
+ * to the very date the panel calls TODAY. The run then took the today branch
+ * everywhere — a now line, a minute clock, a live poll — while every assertion
+ * was written for a stable future day, and two of them failed for the clock
+ * rather than for the code. Both dates are counted in the park's own calendar
+ * now, which is the same reading `parkToday()` does in the app.
+ */
+function parkDay(offsetDays) {
+  const today = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Europe/Berlin',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date());
+  const [y, m, d] = today.split('-').map(Number);
+  return new Date(Date.UTC(y, m - 1, d + offsetDays)).toISOString().slice(0, 10);
+}
+
+const DATE = parkDay(1);
 
 const PLAN_PATH = `/api/parks/${PARK.geo.continent}/${PARK.geo.country}/${PARK.geo.city}/${PARK.slug}/plan/day?date=${DATE}`;
 
@@ -59,7 +81,7 @@ const OTHER = {
   name: 'Europa-Park',
   geo: { continent: 'europe', country: 'germany', city: 'rust' },
 };
-const OTHER_DATE = new Date(Date.now() + 5 * 86_400_000).toISOString().slice(0, 10);
+const OTHER_DATE = parkDay(5);
 
 const PLAN = {
   parks: {
@@ -133,6 +155,52 @@ async function seed(page) {
     document.cookie = 'planner=1; path=/';
   }, PLAN);
   await page.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+}
+
+/**
+ * Wait until the document stops changing, and only then open a MODAL sheet.
+ *
+ * A modal Radix dialog marks everything outside itself `aria-hidden` +
+ * `data-aria-hidden` — correct, and the whole reason a bottom sheet traps. Do it
+ * while the page is still hydrating and React finds those attributes on nodes
+ * the server never wrote them on, and reports "A tree hydrated but some
+ * attributes … didn't match" once per boundary that hydrates afterwards.
+ * Measured on the homepage on a 390 px viewport: 19 of them at `networkidle`,
+ * and **zero** with eight seconds of settle first, with nothing else changed.
+ * The mismatch is real and it is dev-only — the production React build carries
+ * neither the comparison nor the string — so this is a precondition of the
+ * measurement rather than a waiver: any hydration error outside this window
+ * still fails the run.
+ *
+ * `networkidle` is not that signal. The homepage streams a couple of dozen
+ * Suspense boundaries, and on the dev server they are still hydrating seconds
+ * after the last response has landed. A quiet MutationObserver is, and it says
+ * what it is waiting for instead of naming a number that happened to work.
+ */
+async function settleHydration(page, quietMs = 1200, timeoutMs = 15_000) {
+  await page
+    .evaluate(
+      ([quiet, limit]) =>
+        new Promise((resolve) => {
+          let timer = setTimeout(resolve, quiet);
+          const observer = new MutationObserver(() => {
+            clearTimeout(timer);
+            timer = setTimeout(done, quiet);
+          });
+          function done() {
+            observer.disconnect();
+            resolve();
+          }
+          observer.observe(document.documentElement, {
+            subtree: true,
+            childList: true,
+            attributes: true,
+          });
+          setTimeout(done, limit);
+        }),
+      [quietMs, timeoutMs]
+    )
+    .catch(() => {});
 }
 
 // ── Every `quality` a planner image asks for must be configured ─────────────
@@ -300,7 +368,11 @@ const rows = page.locator('li[data-planner-entry]');
 check('drei Einträge in der Zeitleiste', (await rows.count()) === 3);
 
 const sheetText = (await sheet.textContent()) ?? '';
-check('Park steht im Kopf', /Phantasialand/.test(sheetText));
+// "Meine Pläne", never the active park's name. The header used to print the
+// plan's park, so standing on Toverland's page with a Phantasialand plan open
+// put the wrong park's name over the panel — and the control it labels opens
+// the list of ALL plans, so naming it after one of them was wrong twice.
+check('der Kopf nennt die Planliste, nicht einen Park', /Meine Pläne/.test(sheetText));
 check('deutscher Text, keine rohen Keys', !/planner\.[a-z]|parks\.weather/i.test(sheetText));
 
 // The one claim the grid makes: a block's HEIGHT is its duration. Forty-five
@@ -416,12 +488,13 @@ if (tickPath) {
 // — not even when the day payload is missing.
 check('Ride-Suche vorhanden', (await sheet.locator('input[type="search"]').count()) === 1);
 
-// The overview: every park and day in one list, reached from the park name.
+// The overview: every park and day in one list, reached from the panel header.
 // NOT `button[aria-expanded]` alone. The phone sheet's grab handle sits earlier
 // in the DOM; it is `sm:hidden`, so on this desktop viewport `.first()` resolved
-// to an invisible element and the click timed out for thirty seconds. The park
-// name is what opens the overview, so say so.
-const toggle = sheet.locator('button[aria-expanded]').filter({ hasText: PARK.name }).first();
+// to an invisible element and the click timed out for thirty seconds. The
+// attribute exists for exactly this — the label is a translated string and was
+// the park's name until it became "Meine Pläne".
+const toggle = sheet.locator('[data-planner-overview-toggle]').first();
 check('Übersicht ist erreichbar', (await toggle.count()) === 1);
 if (await toggle.count()) {
   await toggle.click();
@@ -619,6 +692,11 @@ await seed(phone);
 
 const phoneLauncher = phone.locator(LAUNCHER);
 await phoneLauncher.waitFor({ state: 'visible', timeout: 20_000 }).catch(() => {});
+// The one modal sheet in this file, and the only place that needs this — see
+// `settleHydration`. The desktop panel is deliberately NOT modal and marks
+// nothing outside itself, which is why the same open on a 1280 px viewport
+// reports no hydration error at all.
+await settleHydration(phone);
 if (await phoneLauncher.count()) {
   await phoneLauncher.click();
   await phone.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
@@ -1064,23 +1142,16 @@ if (reachable) {
     });
     check('die Tastatur verschiebt um genau einen Schritt', afterKey === 585, `${afterKey}`);
 
-    // Shows: three states, never two. Which of them applies depends on whether
-    // the seeded date is today IN THE PARK'S ZONE — and it is not the same
-    // question as whether it is today in UTC. Run late enough in the evening and
-    // Berlin has already rolled over while the test's own `Date.now() + 1 day`
-    // has not, so the honest answer flips. Derive it the way the code does.
-    const parkToday = new Intl.DateTimeFormat('en-CA', {
-      timeZone: 'Europe/Berlin',
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-    }).format(new Date());
-    const bandText = await grid.locator(`${SHEET} .sticky`).first().textContent();
-    const expected = DATE === parkToday ? /Vorstellungen|·/ : /erst am Tag selbst/;
+    // The band, on a day whose stub carries no shows at all. It used to say
+    // "showtimes are only settled on the day itself", which was true while they
+    // came off the live park payload and is not any more: `/plan/day` answers
+    // for every date, so an empty array is now a statement about the PARK rather
+    // than about the distance, and the band says it in those terms.
+    const bandText = await grid.locator(`${SHEET} [data-planner-show-band]`).first().textContent();
     check(
       'Show-Band sagt, was es über Vorstellungen weiß',
-      expected.test(bandText ?? ''),
-      `${DATE === parkToday ? 'heute' : 'künftig'}: ${(bandText ?? '').slice(0, 50)}`
+      /Keine Spielzeiten/.test(bandText ?? ''),
+      (bandText ?? '(leer)').slice(0, 60)
     );
 
     // Selecting a block has to reach its actions: a 20 px block cannot carry two
@@ -1434,8 +1505,13 @@ if (reachable) {
   );
 
   await seed(drag);
+  // `networkidle`, not `domcontentloaded`. The edge tab is server-rendered and
+  // visible before React has hydrated — it used to appear only once the store
+  // had rehydrated, which made the wait for it a wait for hydration by accident
+  // — so a click on `domcontentloaded` lands on markup with no handler on it and
+  // the panel never opens.
   await drag.goto(`${BASE}/de/parks/europe/germany/bruehl/phantasialand`, {
-    waitUntil: 'domcontentloaded',
+    waitUntil: 'networkidle',
   });
   await drag.locator(LAUNCHER).click();
   await drag.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
@@ -1506,10 +1582,15 @@ if (reachable) {
 
 // ── Shows, on a day that HAS them ───────────────────────────────────────────
 // The run above deliberately seeds tomorrow, "so the run is stable" — and
-// showtimes exist for today and no other date, so every pass so far has watched
-// the band say "not knowable yet" and has never once seen a show line. That gap
-// is why the lines could be a dashed rule with a bare time in the hour column,
+// showtimes used to exist for today and no other date, so every pass watched the
+// band say "not knowable yet" and never once saw a show line. That gap is why
+// the lines could be a dashed rule with a bare time in the hour column,
 // indistinguishable from the grid they sit in, through every green check.
+//
+// They come from `/plan/day` now, for every date and with a `source` on each:
+// the operator's own listing, or the last matching weekday carried forward. The
+// second kind may never be drawn like the first, so the stub serves both and the
+// checks below read the treatment off the markup rather than trusting the copy.
 {
   const shows = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
   noteErrors(shows);
@@ -1526,10 +1607,18 @@ if (reachable) {
   // Two at 15:00 to prove one line can stand for more than one show, and a third
   // 5 minutes later, which `showLinePositions` folds into it.
   const SHOWS = [
-    { slug: 'a', name: 'Miji African Dancers', at: '11:30' },
-    { slug: 'b', name: 'Nobis Vol. 2', at: '15:00' },
-    { slug: 'c', name: 'BATTLE of the BEST', at: '15:00' },
-    { slug: 'd', name: 'Rock on Ice', at: '15:05' },
+    { showSlug: 'a', showName: 'Miji African Dancers', times: ['11:30'], source: 'scheduled' },
+    { showSlug: 'b', showName: 'Nobis Vol. 2', times: ['15:00'], source: 'scheduled' },
+    { showSlug: 'c', showName: 'BATTLE of the BEST', times: ['15:00'], source: 'scheduled' },
+    { showSlug: 'd', showName: 'Rock on Ice', times: ['15:05'], source: 'scheduled' },
+    {
+      showSlug: 'e',
+      showName: 'Aqua Ballett',
+      times: ['16:30'],
+      source: 'projected',
+      observedOn: '2026-08-27',
+      sampleDays: 8,
+    },
   ];
 
   await shows.route('**/api/parks/**', async (route) => {
@@ -1576,11 +1665,13 @@ if (reachable) {
               sampleDays: 400,
             },
           ],
-          shows: [],
+          shows: SHOWS,
         }),
       });
     }
-    // The live park payload, which is where showtimes actually come from.
+    // The live park payload. It carries no showtimes any more and must not need
+    // to: a stub that still served them here would keep passing if the panel
+    // went back to reading them off the poll, which only ever knew today.
     return route.fulfill({
       status: 200,
       contentType: 'application/json',
@@ -1591,12 +1682,6 @@ if (reachable) {
         timezone: 'Europe/Berlin',
         liveWaitTimes: { available: true },
         attractions: [],
-        shows: SHOWS.map((show) => ({
-          slug: show.slug,
-          name: show.name,
-          isCurrentlyInSeason: true,
-          showtimes: [{ startTime: `${todayInPark}T${show.at}:00+02:00` }],
-        })),
       }),
     });
   });
@@ -1653,6 +1738,48 @@ if (reachable) {
     'eine eingeklappte Showzeit verschwindet nicht',
     /Rock on Ice/.test(pillText) || /\+\d/.test(pillText),
     pillText.slice(0, 120)
+  );
+
+  // The one rule the API states outright: a projection may never be drawn like a
+  // listing. Read off the markup, not off the copy — the pill and the gutter
+  // chip both carry the source, so a restyle that flattens the two shows up here
+  // rather than in a screenshot nobody takes.
+  const projectedPills = await shows
+    .locator(`${SHEET} [data-planner-show-source="projected"]`)
+    .count();
+  const scheduledPills = await shows
+    .locator(`${SHEET} [data-planner-show-source="scheduled"]`)
+    .count();
+  check(
+    'Hochrechnung und Betreiberangabe sind getrennt ausgezeichnet',
+    projectedPills === 1 && scheduledPills >= 2,
+    `${projectedPills} projected / ${scheduledPills} scheduled`
+  );
+
+  const projectedTime = await shows
+    .locator(`${SHEET} [data-planner-show-time="projected"]`)
+    .first()
+    .textContent();
+  check(
+    'eine hochgerechnete Zeit trägt ihr Ungefähr-Zeichen',
+    (projectedTime ?? '').includes('~'),
+    projectedTime ?? '(keine)'
+  );
+
+  // The band used to be four proper nouns joined by a dot: no time, no label,
+  // nothing the grid did not already draw. It names ONE show now and says what
+  // that naming means — which of the three it is depends on the wall clock the
+  // run happens to start at, so all three are accepted and a bare list is not.
+  const bandText = (await shows.locator(`${SHEET} [data-planner-show-band]`).textContent()) ?? '';
+  check(
+    'das Show-Band sagt, was es zeigt',
+    /Als Nächstes|Voraussichtlich|gelaufen/.test(bandText),
+    bandText.slice(0, 120)
+  );
+  check(
+    'das Show-Band ist keine Namensliste mehr',
+    !(/Miji African Dancers/.test(bandText) && /Nobis Vol\. 2/.test(bandText)),
+    bandText.slice(0, 120)
   );
 
   await shows.close();

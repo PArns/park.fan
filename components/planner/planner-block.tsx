@@ -437,15 +437,35 @@ export function PlannerBlock({
 
         <div className="pointer-events-none relative min-w-0 flex-1 px-1.5 py-0.5 pl-2.5">
           {boxPx < 30 ? (
+            /* One row, and the figure sits IN it. It used to escape past the
+               block's right edge (`left: 100%`) so a 20 px box would not have to
+               hold two things — which works only while something is beside the
+               block. A block in a lane of its own is the full width of the
+               canvas, so the escape landed outside the scroller and was clipped:
+               Chiapas at a ten-minute queue drew a bar reading "Chiapas" and
+               nothing else, on a grid whose subject is when. Inside there is
+               room for both — the name truncates the way it does in every taller
+               block, and the figure is `shrink-0`. */
             <p
               className={cn(
-                'flex items-center gap-1 truncate text-[11px] leading-none',
+                'flex items-center gap-1 text-[11px] leading-none',
                 done && 'line-through',
                 tone && !done && CROWD_TEXT_CLASS[tone]
               )}
             >
               {CustomIcon && <CustomIcon className="size-3 shrink-0" />}
-              <span className="truncate">{custom ? custom.label : entry.attractionName}</span>
+              <span className="min-w-0 flex-1 truncate">
+                {custom ? custom.label : entry.attractionName}
+              </span>
+              {hasFigure && (
+                <span
+                  data-figure=""
+                  className="text-muted-foreground shrink-0 font-mono text-[10px] tabular-nums"
+                >
+                  {formatGridTime(entry.startMinute)} · {assumed && '~'}
+                  {wait} {t('unit.min')}
+                </span>
+              )}
             </p>
           ) : (
             <>
@@ -543,23 +563,6 @@ export function PlannerBlock({
             )}
         </div>
       </div>
-
-      {/* A short block's figure escapes rather than being dropped: the box is
-          20 px and the number still has to be readable. The START TIME rides
-          along, because below `RANGE_MIN_PX` there is no second line to put it
-          on and a block with no time on a time grid is the one thing this view
-          may not be — the gutter's hour labels are every sixty minutes, which
-          does not answer "when is Chiapas". */}
-      {boxPx < 30 && hasFigure && (
-        <span
-          data-figure=""
-          className="text-muted-foreground pointer-events-none absolute top-1/2 z-20 -translate-y-1/2 pl-1 font-mono text-[10px] whitespace-nowrap tabular-nums"
-          style={{ left: '100%' }}
-        >
-          {formatGridTime(entry.startMinute)} · {assumed && '~'}
-          {wait} {t('unit.min')}
-        </span>
-      )}
     </li>
   );
 }

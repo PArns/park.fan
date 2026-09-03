@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { CalendarPlus, ChevronDown } from 'lucide-react';
+import { CalendarPlus, ChevronDown, Plus } from 'lucide-react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { PlannerContextBand, type PlannerDayState } from './planner-context-band';
 import { PlannerDayPicker } from './planner-day-picker';
@@ -12,17 +12,19 @@ import { PlannerRideSearch } from './planner-ride-search';
 import { PlannerOverview } from './planner-overview';
 import { PlannerPushToggle } from './planner-push-toggle';
 import { PlannerHelpSteps } from './planner-help';
-import { PlannerWizard } from './planner-wizard';
+import { PlannerWizard, type WizardPark } from './planner-wizard';
 import { PlannerPartyChips } from './planner-party-chips';
 import { PlannerInParkCta } from './planner-in-park-cta';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { totalsFor } from '@/lib/planner/estimate';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
+import { useRouter } from '@/i18n/navigation';
 import { formatShortDuration } from '@/lib/utils/duration';
 import { buildDayGrid, nextFreeStart } from '@/lib/planner/day-grid';
 import { parkToday, resolveTimeZone } from '@/lib/planner/park-time';
-import { closedNowFor, liveWaitsFor, showLinesFor } from '@/lib/planner/live';
+import { closedNowFor, liveWaitsFor } from '@/lib/planner/live';
+import { showLinesFor } from '@/lib/planner/shows';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import { PlannerShowBand } from './planner-show-band';
 import { PlannerGridActions } from './planner-grid-actions';
@@ -31,6 +33,7 @@ import { occupiedMinutes } from '@/lib/planner/estimate';
 import { useRideDragSource } from '@/lib/planner/use-ride-drag-source';
 import { usePlannerDayFacts } from '@/lib/planner/use-day-facts';
 import { plannerPanelWidth } from '@/lib/planner/panel-width';
+import { plannerPagePark } from '@/lib/planner/page-park';
 import { cn } from '@/lib/utils';
 
 interface PlannerFlyoutProps {
@@ -102,6 +105,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   };
 
   const isPhone = useMediaQuery('(max-width: 639px)');
+  const router = useRouter();
 
   /**
    * Delete removes the selected block.
@@ -152,6 +156,8 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   const [flatDropActive, setFlatDropActive] = useState(false);
   /** The wizard, which is how another day gets planned from in here. */
   const [wizardOpen, setWizardOpen] = useState(false);
+  /** A park to open it on, so the first step can be skipped. */
+  const [wizardPark, setWizardPark] = useState<WizardPark | null>(null);
 
   const {
     data: day,
@@ -185,6 +191,53 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   const timezone = resolveTimeZone(day?.timezone ?? park?.timezone);
   const grid = buildDayGrid(day?.context.openHour, day?.context.closeHour);
   const isToday = Boolean(activeDate && activeDate === parkToday(timezone));
+
+  /**
+   * The park the page BEHIND the panel is about, which is a different question
+   * from the park being planned and was being answered with the wrong one: the
+   * header printed the plan's park, so standing on Toverland's calendar with a
+   * Phantasialand plan open it read "Phantasialand" and there was no way to
+   * plan what was on screen without leaving for the planner's own page.
+   */
+  const pagePark = useSyncExternalStore(
+    plannerPagePark.subscribe,
+    plannerPagePark.getSnapshot,
+    plannerPagePark.getServerSnapshot
+  );
+  /** The page's park, and nothing planned for it yet. */
+  const unplannedPagePark = pagePark && !state.parks[pagePark.slug] ? pagePark : null;
+
+  /**
+   * A block the visitor writes themselves — a lunch break, a show, a meeting
+   * point. One handler, because there are two call sites for one action: the
+   * phone's inside the ride search, the desktop's on a row of its own now that
+   * the search is the phone's surface alone.
+   *
+   * A plain function rather than a `useCallback`: it closes over four values
+   * that change on nearly every render anyway, so memoizing it would either lie
+   * about its dependencies or be rebuilt each time regardless.
+   */
+  const addFreeBlock = () => {
+    if (!park || !activeDate) return;
+    addCustom({
+      parkSlug: park.slug,
+      parkName: park.name,
+      geo: park.geo,
+      timezone: day?.timezone ?? park.timezone,
+      date: activeDate,
+      label: t('custom.defaultLabel'),
+      icon: 'break',
+      startMinute: grid
+        ? nextFreeStart(
+            activeEntries.map((entry) => ({
+              startMinute: entry.startMinute,
+              spanMinutes: occupiedMinutes(day, entry),
+            })),
+            grid
+          )
+        : undefined,
+    });
+  };
 
   // The live poll, and it is gated on TODAY for two reasons that point the same
   // way: a standby reading describes this minute and says nothing about a
@@ -298,11 +351,20 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
     },
     [activeParkSlug, activeDate, activeEntries, liveWaits, setDone]
   );
-  // `null` where the date cannot have showtimes at all. The API rewrites any
-  // non-today date onto today and its source is an observation table with no
-  // forward schedule, so sixty of the sixty-one dates the picker offers are
-  // structurally unanswerable — which is a different statement from "no shows".
-  const showLines = isToday && livePark ? showLinesFor(livePark.shows) : null;
+  // `null` only while the day payload is on its way. `/plan/day` answers with
+  // showtimes for every date the picker offers — the operator's own listing for
+  // today and for days already gone, the last matching weekday carried forward
+  // for the rest — so the panel no longer has to say "not knowable". What it
+  // does have to say is WHICH of the two it is looking at, which rides along on
+  // each line as `source`.
+  const showLines = day
+    ? showLinesFor(
+        day.shows,
+        day.context.openHour !== null && day.context.closeHour !== null
+          ? { openMin: day.context.openHour * 60, closeMin: day.context.closeHour * 60 }
+          : null
+      )
+    : null;
 
   // Days of THIS park that already have entries — marked in the picker so the
   // visitor can find them again without remembering the date.
@@ -409,7 +471,11 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   data-planner-overview-toggle=""
                   className="text-muted-foreground hover:text-foreground flex min-w-0 flex-1 items-center gap-1 rounded px-1 py-0.5 text-xs transition-colors"
                 >
-                  <span className="truncate">{park.name}</span>
+                  {/* "Meine Pläne", never the active park's name. This control
+                      opens the list of ALL plans, and labelling it with one of
+                      them made it read as a statement about the page — which on
+                      a different park's page is simply wrong. */}
+                  <span className="truncate">{t('plans.title')}</span>
                   {/* Always. Hiding it until a second park or day existed made
                       the overview — the only route to another park or another
                       day — invisible to everyone who had exactly one, which is
@@ -421,6 +487,23 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                       showOverview && 'rotate-180'
                     )}
                   />
+                </button>
+                {/* A day can be started from anywhere in the panel, not only
+                    from inside the overview. It carries the page's park where
+                    there is one, so the wizard opens on the calendar rather
+                    than asking a question the route already answers. */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setWizardPark(pagePark ? { ...pagePark } : null);
+                    setWizardOpen(true);
+                  }}
+                  aria-label={t('wizard.open')}
+                  title={t('wizard.open')}
+                  data-planner-new-plan=""
+                  className="text-muted-foreground hover:text-foreground hover:bg-accent flex size-7 shrink-0 items-center justify-center rounded-md transition-colors"
+                >
+                  <Plus className="size-4" aria-hidden="true" />
                 </button>
                 {activeDate && !showOverview && (
                   <PlannerDayPicker
@@ -446,6 +529,17 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
               onPick={(slug, date) => {
                 setActive(slug, date);
                 setShowOverview(false);
+                // …and go to that park's page, because switching plans is
+                // switching subject: the ride cards a plan is filled from are
+                // on the park's own page, and staying on a different park's
+                // left the panel and the page disagreeing about which park was
+                // being planned. Skipped when it is already the page's park, so
+                // picking another DAY of the park on screen does not reload it.
+                const target = state.parks[slug];
+                if (!target || pagePark?.slug === slug) return;
+                router.push(
+                  `/parks/${target.geo.continent}/${target.geo.country}/${target.geo.city}/${target.slug}` as '/europe/germany/rust/europa-park'
+                );
               }}
               onClearDay={clearDay}
               onNewDay={() => setWizardOpen(true)}
@@ -540,7 +634,9 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   });
                 }}
               >
-                {grid && <PlannerShowBand lines={showLines} />}
+                {grid && (
+                  <PlannerShowBand lines={showLines} timezone={timezone} isToday={isToday} />
+                )}
                 {grid ? (
                   <PlannerDayGrid
                     entries={activeEntries}
@@ -592,8 +688,39 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   <div className="flex flex-col gap-3 px-4 py-5">
                     <div>
                       <p className="text-sm font-medium">{t('empty.title')}</p>
-                      <p className="text-muted-foreground mt-0.5 text-xs">
-                        {isPhone ? t('empty.bodyMobile') : t('empty.body')}
+                      {/* Standing in a park with nothing planned for it, the
+                          answer is that park — not a tour of the panel. It
+                          starts the wizard on the CALENDAR, because which park
+                          is already settled by the page. */}
+                      {unplannedPagePark && (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setWizardPark({ ...unplannedPagePark });
+                            setWizardOpen(true);
+                          }}
+                          data-planner-plan-this-park=""
+                          className="bg-primary text-primary-foreground hover:bg-primary/90 mt-2 flex w-full items-center justify-center gap-2 rounded-md px-3 py-2.5 text-sm font-semibold transition-colors max-sm:min-h-11"
+                        >
+                          <CalendarPlus className="size-4 shrink-0" aria-hidden="true" />
+                          <span className="truncate">
+                            {t('empty.planThisPark', { park: unplannedPagePark.name })}
+                          </span>
+                        </button>
+                      )}
+
+                      {/* Both sentences, one shown by CSS. The way into a plan
+                          now depends on the POINTER — a fine one drags a ride
+                          in from the page behind the panel, a coarse one has no
+                          such gesture and uses the search — and
+                          `useMediaQuery` answers `false` on the server
+                          snapshot, so a branch on it renders the phone's
+                          sentence into the first HTML of every desktop. */}
+                      <p className="text-muted-foreground mt-0.5 text-xs sm:hidden">
+                        {t('empty.bodyMobile')}
+                      </p>
+                      <p className="text-muted-foreground mt-0.5 hidden text-xs sm:block">
+                        {t('empty.body')}
                       </p>
                     </div>
                     <PlannerHelpSteps layout="list" />
@@ -633,16 +760,24 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
               )}
             </div>
 
-            {/* The way in on a phone, where there is no ride card to drag from. Also
-            shown on desktop: typing a name beats hunting for its card, and the
-            list is the day's own rides either way. */}
+            {/* PHONE ONLY, and that is the whole shape of this feature now.
+                A coarse pointer has no drag and drop, so the search is the way
+                a ride gets into a plan and it does the inserting. A fine
+                pointer drags the ride card itself out of the page behind the
+                panel — which is a better gesture, because it picks the hour at
+                the same time — so the list below would be a second way in that
+                costs the axis a third of the panel.
+
+                `sm:hidden` rather than `!isPhone`: `useMediaQuery` answers
+                `false` on the server snapshot, so a JS branch ships the phone's
+                markup in every desktop's first HTML and then deletes it. */}
             {park && activeDate && (
               /* NOT `shrink-0`, unlike its neighbours: this is the block that
                  has to give way when the sheet runs out of room, or the floor
                  above it just moves the overflow onto the summary row. It keeps
                  a cap so it cannot take the sheet on a tall phone either, and
                  scrolls inside itself past that. */
-              <div className="min-h-0 shrink overflow-y-auto overscroll-y-contain max-sm:max-h-[46svh]">
+              <div className="min-h-0 shrink overflow-y-auto overscroll-y-contain max-sm:max-h-[46svh] sm:hidden">
                 <PlannerRideSearch
                   parkSlug={park.slug}
                   parkName={park.name}
@@ -652,29 +787,27 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   dayState={dayState}
                   timezone={day?.timezone ?? park?.timezone}
                   prefs={prefs}
-                  onAddCustom={() => {
-                    if (!park || !activeDate) return;
-                    addCustom({
-                      parkSlug: park.slug,
-                      parkName: park.name,
-                      geo: park.geo,
-                      timezone: day?.timezone ?? park.timezone,
-                      date: activeDate,
-                      label: t('custom.defaultLabel'),
-                      icon: 'break',
-                      startMinute: grid
-                        ? nextFreeStart(
-                            activeEntries.map((entry) => ({
-                              startMinute: entry.startMinute,
-                              spanMinutes: occupiedMinutes(day, entry),
-                            })),
-                            grid
-                          )
-                        : undefined,
-                    });
-                  }}
+                  onAddCustom={addFreeBlock}
                 />
               </div>
+            )}
+
+            {/* A free block — a lunch break, a show, a meeting point — on its
+                own row, DESKTOP only. It used to sit inside the ride search,
+                which is now the phone's surface alone, and it is the one thing
+                in there that is not a ride: the catalogue has no answer for
+                "and then we eat". The phone keeps its copy inside the search,
+                where the same question is being asked. */}
+            {park && activeDate && (
+              <button
+                type="button"
+                onClick={addFreeBlock}
+                data-planner-add-custom=""
+                className="text-muted-foreground hover:text-foreground hover:bg-accent/50 border-border/60 hidden shrink-0 items-center gap-2 border-t px-3 py-2 text-left text-xs transition-colors sm:flex"
+              >
+                <CalendarPlus className="size-3.5 shrink-0" aria-hidden="true" />
+                <span className="truncate">{t('custom.add')}</span>
+              </button>
             )}
 
             {/* Above the push toggle and below the search, because it is an
@@ -736,9 +869,17 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
         {wizardOpen && (
           <PlannerWizard
             open
+            // Started FROM a park page, the wizard opens on the calendar: the
+            // first question is already answered by where the reader is
+            // standing, and asking it again is the panel pretending not to know
+            // what page it is on.
+            initialPark={wizardPark}
             onOpenChange={(next) => {
               setWizardOpen(next);
-              if (!next) setShowOverview(false);
+              if (!next) {
+                setShowOverview(false);
+                setWizardPark(null);
+              }
             }}
           />
         )}

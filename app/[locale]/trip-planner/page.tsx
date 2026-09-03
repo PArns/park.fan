@@ -16,9 +16,6 @@ import { PlannerPageBody } from '@/components/planner/planner-page-body';
 import type { PolaroidPhoto } from '@/components/planner/planner-polaroids';
 import { getParkBackground } from '@/lib/media';
 import { focusToObjectPosition, versionedSrc } from '@/lib/media/focus';
-import { plannerFlag } from '@/flags';
-import { PLANNER_ENABLED } from '@/lib/config/features';
-import { notFound } from 'next/navigation';
 
 interface PlannerPageProps {
   params: Promise<{ locale: string }>;
@@ -29,12 +26,16 @@ export function generateStaticParams() {
 }
 
 /**
- * Reading a flag reads headers, so this route is dynamic and says so rather than
- * letting Next discover it. That costs nothing here — six URLs — and it is the
- * reason the flag is NOT read in the locale layout, which is the shell of 3,109
- * prerendered routes.
+ * Six URLs, all prerendered, and nothing here reads a request.
+ *
+ * It was `force-dynamic` for exactly one reason — a Flags-SDK kill switch, whose
+ * evaluation reads headers and cookies — so the route rendered on every hit for
+ * a page whose only moving part lives in the visitor's own browser. The flag is
+ * gone with the feature shipped, and the page is what it always was: six
+ * translations, a handful of build-time photos out of the media database, and a
+ * Client Component that reads localStorage after mount. The plan itself never
+ * touches the server, so there is nothing per-request to keep out of the cache.
  */
-export const dynamic = 'force-dynamic';
 
 /** The localized path for this locale, which is what every link and canonical uses. */
 function path(locale: string): string {
@@ -95,11 +96,6 @@ export async function generateMetadata({ params }: PlannerPageProps): Promise<Me
 export default async function PlannerPage({ params }: PlannerPageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
-
-  // The same kill switch the launcher and the two add controls are behind. A
-  // page that renders a feature nobody can reach is worse than a 404: the menu
-  // would still link to it.
-  if (!PLANNER_ENABLED || !(await plannerFlag())) notFound();
 
   const t = await getTranslations('planner.page');
   const tNav = await getTranslations('navigation');

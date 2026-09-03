@@ -1238,6 +1238,9 @@
       "fastPassFrom": "vanaf",
       "rcdbLabel": "{attraction} in de RCDB",
       "rcdbTitle": "Technische gegevens op RCDB (Roller Coaster DataBase)"
+    },
+    "planner": {
+      "dragIn": "Naar het plan slepen"
     }
   },
   "nearby": {
@@ -1877,7 +1880,8 @@
       "title": "Nog niets gepland",
       "body": "Zoek hieronder een attractie – of open de pagina van een attractie en tik daar op „In het plan”.",
       "bodyMobile": "Zoek hieronder een attractie en zet die op een tijd.",
-      "bodyGrid": "Zoek hieronder een attractie – die komt op de tijdlijn en is daar te verschuiven."
+      "bodyGrid": "Zoek hieronder een attractie – die komt op de tijdlijn en is daar te verschuiven.",
+      "planThisPark": "{park} nu plannen"
     },
     "day": {
       "today": "Vandaag",
@@ -1963,8 +1967,13 @@
     },
     "close": "Selectie opheffen",
     "shows": {
-      "notKnownYet": "Showtijden staan pas op de dag zelf vast.",
-      "none": "Vandaag geen voorstellingen."
+      "none": "Geen speeltijden bekend.",
+      "next": "Volgende",
+      "first": "Eerste voorstelling",
+      "projected": "Naar verwachting",
+      "projectedFrom": "Tijden van {date}, doorgetrokken naar deze weekdag.",
+      "over": "Alle voorstellingen van vandaag zijn geweest.",
+      "more": "{count, plural, =1 {+1 meer} other {+# meer}}"
     },
     "warn": {
       "closedNow": "Meldt nu gesloten.",
@@ -2094,6 +2103,9 @@
     },
     "inPark": {
       "cta": "Vandaag inplannen bij {park}"
+    },
+    "plans": {
+      "title": "Mijn plannen"
     }
   }
 }

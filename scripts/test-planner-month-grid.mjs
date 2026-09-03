@@ -59,7 +59,11 @@ function inZone(tz, fn) {
 // days of lead, and February 2026 (28 days) still fits in five rows.
 {
   const cells = monthMatrix('2026-02');
-  test('February 2026 leads with six days', cells.findIndex((c) => c.inMonth), 6);
+  test(
+    'February 2026 leads with six days',
+    cells.findIndex((c) => c.inMonth),
+    6
+  );
   test('and still fits five weeks', cells.length, 35);
 }
 // March 2026 starts on a Sunday and has 31 days — six rows.

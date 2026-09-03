@@ -18,6 +18,13 @@ import {
 } from '@/lib/planner/day-grid';
 import { legBetween, earliestGoodStart } from '@/lib/planner/leg';
 import { formatGridTime, parkMinuteNow, todayInZone } from '@/lib/planner/park-time';
+import {
+  getMinuteTick,
+  getZero,
+  subscribeToMinute,
+  subscribeToNothing,
+} from '@/lib/planner/minute-tick';
+import { lineSource, type PlannerShowLine } from '@/lib/planner/shows';
 import { bandCarriesFigure, estimateFor } from '@/lib/planner/estimate';
 import { weatherRailSegments, withinWeatherHorizon } from '@/lib/planner/weather-rail';
 import { PLANNER_RIDE_MIME, parseRideDrag, rideFromUrl } from '@/lib/planner/ride-drag';
@@ -40,8 +47,8 @@ interface PlannerDayGridProps {
   isToday: boolean;
   /** Live standby minutes by ride slug, where a reading applies. */
   liveWaits?: Map<string, number> | null;
-  /** Showtimes as park-local minutes. `null` means "not knowable for this date". */
-  showLines?: import('@/lib/planner/live').PlannerShowLine[] | null;
+  /** Showtimes as park-local minutes. `null` while the day payload is on its way. */
+  showLines?: PlannerShowLine[] | null;
   /** Free blocks only: the visitor dragged the bottom edge to this many minutes. */
   onResize?: (entryId: string, durationMinutes: number) => void;
   /** The plan's active park. A ride dropped in from another park is refused. */
@@ -65,57 +72,8 @@ const LIVE_WINDOW_MIN = 45;
 /** Five minutes, like every displayed wait in this app. */
 const RESIZE_STEP_MIN = 5;
 
-/** A stable zero — a fresh arrow per render would defeat the store's caching. */
-const getZero = () => 0;
-
 const EDGE_PX = 48;
 const MAX_SCROLL_SPEED = 12;
-
-/**
- * One interval for every grid on the page, and a counter rather than a time:
- * the value only has to CHANGE each minute, and the actual clock is read in park
- * time where it is needed. On the server it is 0 and the now line is absent.
- */
-let minuteTick = 0;
-const minuteListeners = new Set<() => void>();
-
-function subscribeToMinute(listener: () => void): () => void {
-  minuteListeners.add(listener);
-  if (minuteListeners.size === 1) {
-    minuteTimer = window.setInterval(() => {
-      minuteTick += 1;
-      for (const l of minuteListeners) l();
-    }, 60_000);
-  }
-  return () => {
-    minuteListeners.delete(listener);
-    if (minuteListeners.size === 0 && minuteTimer !== null) {
-      window.clearInterval(minuteTimer);
-      minuteTimer = null;
-    }
-  };
-}
-
-let minuteTimer: number | null = null;
-
-function getMinuteTick(): number {
-  return minuteTick;
-}
-
-/**
- * The subscription a grid takes when there is no now line to move.
- *
- * A hook cannot be called conditionally, but the SUBSCRIBE function can decline
- * to subscribe — and it must, because the tick was installed unconditionally: on
- * any date that is not today, which is nearly every date somebody plans, the
- * panel ran a 60-second interval and re-rendered the whole grid once a minute
- * for a line it never draws. The layout memo was safe (its `nowMinute`
- * dependency stays `null`), but every block, leg and show pill re-rendered
- * anyway, forever, while the panel was open.
- */
-function subscribeToNothing(): () => void {
-  return () => {};
-}
 
 /**
  * The day grid: the axis, the ground, the blocks and the legs between them.
@@ -682,11 +640,11 @@ export function PlannerDayGrid({
   // that is why the shows read as an axis subdivision rather than as shows.
   const showRows = useMemo(() => {
     if (showLines === null) return null;
-    const namesByMinute = new Map<number, string[]>();
+    const byMinute = new Map<number, PlannerShowLine[]>();
     for (const line of showLines) {
-      const at = namesByMinute.get(line.minute) ?? [];
-      if (!at.includes(line.name)) at.push(line.name);
-      namesByMinute.set(line.minute, at);
+      const at = byMinute.get(line.minute) ?? [];
+      at.push(line);
+      byMinute.set(line.minute, at);
     }
     return showLinePositions(
       grid,
@@ -695,8 +653,9 @@ export function PlannerDayGrid({
       .filter((line) => line.minute >= grid.gridStartMin && line.minute <= grid.gridEndMin)
       .map((line) => {
         const minutes = [line.minute, ...line.collapsedWith];
-        const names = [...new Set(minutes.flatMap((m) => namesByMinute.get(m) ?? []))];
-        return { ...line, minutes, names };
+        const shows = minutes.flatMap((m) => byMinute.get(m) ?? []);
+        const names = [...new Set(shows.map((show) => show.name))];
+        return { ...line, minutes, names, source: lineSource(shows) };
       });
   }, [showLines, grid]);
 
@@ -719,12 +678,21 @@ export function PlannerDayGrid({
             {formatGridTime(hour * 60)}
           </span>
         ))}
+        {/* The showtime itself. A projection is prefixed with a `~` and set a
+            shade back — the API answers `scheduled` only for today and for days
+            already gone, so on nearly every planned date these times are the
+            last matching weekday carried forward, and a bare "13:30" over a plan
+            would be this app promising a performance nobody has scheduled. */}
         {showRows?.map((line) => (
           <span
             key={`show-time-${line.minute}`}
-            className="bg-background text-foreground/70 absolute right-1 -translate-y-1/2 rounded px-0.5 text-[10px] tabular-nums"
+            data-planner-show-time={line.source}
+            className={`bg-background absolute right-1 -translate-y-1/2 rounded px-0.5 text-[10px] tabular-nums ${
+              line.source === 'projected' ? 'text-foreground/50' : 'text-foreground/70'
+            }`}
             style={{ top: line.y }}
           >
+            {line.source === 'projected' ? '~' : ''}
             {formatGridTime(line.minute)}
           </span>
         ))}
@@ -802,7 +770,11 @@ export function PlannerDayGrid({
         {showRows?.map((line) => (
           <div key={`show-${line.minute}`}>
             <div
-              className="border-foreground/30 pointer-events-none absolute inset-x-0 z-10 border-t border-dashed"
+              className={`pointer-events-none absolute inset-x-0 z-10 border-t ${
+                line.source === 'projected'
+                  ? 'border-foreground/20 border-dotted'
+                  : 'border-foreground/30 border-dashed'
+              }`}
               style={{ top: line.y }}
               aria-hidden="true"
             />
@@ -815,7 +787,10 @@ export function PlannerDayGrid({
                 the list above it read as the same subject. */}
             <div
               data-planner-show=""
-              className="glass-light text-foreground pointer-events-none absolute left-1/2 z-20 flex max-w-[80%] -translate-x-1/2 -translate-y-1/2 items-center gap-1 rounded-full px-1.5 py-px text-[10px] shadow-sm"
+              data-planner-show-source={line.source}
+              className={`glass-light pointer-events-none absolute left-1/2 z-20 flex max-w-[80%] -translate-x-1/2 -translate-y-1/2 items-center gap-1 rounded-full px-1.5 py-px text-[10px] shadow-sm ${
+                line.source === 'projected' ? 'text-muted-foreground italic' : 'text-foreground'
+              }`}
               style={{ top: line.y }}
             >
               <Theater className="size-2.5 shrink-0" aria-hidden="true" />

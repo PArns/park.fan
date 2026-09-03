@@ -10,24 +10,22 @@ Experimental and debug behavior is controlled via a small set of **build-time fe
 
 A small set of **static, build-time** feature toggles live in **`lib/config/features.ts`** — for shipping a feature behind an off-by-default switch that flips per-deploy (not per-session like the Toolbar flags). Each reads a `NEXT_PUBLIC_*` env var and **defaults OFF**; set the var in Vercel project settings (or `.env.local`) to enable. `NEXT_PUBLIC_*` so the value is readable in both Server and Client Components and the unused branch tree-shakes out.
 
-| Flag              | Env var               | Default | Effect                                                                                                                                             |
-| ----------------- | --------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `HERO_3D_ENABLED` | `NEXT_PUBLIC_HERO_3D` | off     | On → animated three.js RCT-style 3-D park hero. Off → classic rotating hero photo. (three.js is only imported when on.)                            |
-| `PLANNER_ENABLED` | `NEXT_PUBLIC_PLANNER` | **on**  | Off → the trip planner disappears from the layout chrome (header nav, burger sheet, footer, parks menu, floating launcher) and its two routes 404. |
+| Flag              | Env var               | Default | Effect                                                                                                                  |
+| ----------------- | --------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `HERO_3D_ENABLED` | `NEXT_PUBLIC_HERO_3D` | off     | On → animated three.js RCT-style 3-D park hero. Off → classic rotating hero photo. (three.js is only imported when on.) |
 
 Accepts `1` / `true` / `on` / `yes` (case-insensitive). Use these for product feature gating; use the `?sim=` param below for per-session geo/debug overrides.
 
-**Why the planner has two switches.** `plannerFlag` in `flags.ts` is the per-request
-kill switch and is the one to reach for; this build-time flag exists because the
-header, the footer, the parks menu and the launcher all render in
-`app/[locale]/layout.tsx`, and reading a Flags-SDK flag reads headers and cookies
-— which would turn the layout of 3,109 prerendered routes dynamic. A statically
-rendered nav can only be gated at build time. The two are ordered, not parallel:
-`PLANNER_ENABLED` says whether a deploy ships the planner at all, `plannerFlag`
-switches it off live, and the two dynamic entry points (`/trip-planner` and the
-attraction page's add control) require **both**, so turning the chrome off cannot
-leave a page reachable with no link to it. Being a kill switch for something
-already shipped, it is the one flag here that defaults **on**.
+**The trip planner had two switches and now has none.** While it was being
+built it carried a Flags-SDK kill switch (`plannerFlag` in `flags.ts`) plus a
+build-time `PLANNER_ENABLED`, and the split was forced rather than chosen:
+reading a Flags-SDK flag reads headers and cookies, and the header, the footer,
+the parks menu and the launcher all render in `app/[locale]/layout.tsx` — the
+layout of 3,109 prerendered routes, every one of which would have turned dynamic.
+A statically rendered nav can only be gated at build time. Both are gone with the
+feature shipped, and with them `flags.ts`, `/.well-known/vercel/flags` and the
+`flags` / `@flags-sdk/vercel` packages. Anything gated per request again wants
+the same two-tier shape, and the layout half of it still cannot be per-request.
 
 ---
 

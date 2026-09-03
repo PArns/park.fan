@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import { Link } from '@/i18n/navigation';
 import { CardPhoto, CardPhotoFrame } from '@/components/parks/card-photo';
 import { useTranslations } from 'next-intl';
-import { Crown, ChartColumn, Clock, MapPin } from 'lucide-react';
+import { Crown, ChartColumn, Clock, GripVertical, MapPin } from 'lucide-react';
 import { cn, stripNewPrefix } from '@/lib/utils';
 import { roundWaitDeltaTo5, roundWaitTo5 } from '@/lib/utils/wait-time';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
@@ -163,7 +163,16 @@ export function AttractionCard({
     <Link
       href={href as '/europe/germany/rust/europa-park'}
       prefetch={false}
-      className="group row-span-3 grid [grid-template-rows:subgrid]"
+      // `data-planner-open` is set on the document element by `PlannerLauncher`
+      // while the panel is out. Both classes below are inert without it, so a
+      // page with no planner open pays one selector that never matches — and a
+      // card does not re-render when the panel opens, which is the point of
+      // doing this in CSS over forty of them.
+      //
+      // `sm:` on both, because a coarse pointer has no drag and drop at all:
+      // the phone's way into a plan is the panel's own search, and a grab
+      // cursor there would promise a gesture that does nothing.
+      className="group row-span-3 grid [grid-template-rows:subgrid] sm:[html[data-planner-open]_&]:cursor-grab sm:[html[data-planner-open]_&]:active:cursor-grabbing"
       // Read by the trip planner while a drag is in flight — see
       // `lib/planner/use-ride-drag-source.ts`, which attaches the payload from
       // one listener on the document. Two attributes rather than a handler,
@@ -181,6 +190,20 @@ export function AttractionCard({
           boxShadow: 'var(--pk-card-shadow)',
         }}
       >
+        {/* The card is a drag source while the planner is out, and it has to say
+            so: a cursor change is only discovered by somebody who already
+            suspects the gesture. Inert without `html[data-planner-open]`, which
+            `PlannerLauncher` sets, and hidden below `sm` because a coarse
+            pointer has no drag and drop at all — there the panel's own search
+            is the way in, and this badge would name a gesture that does
+            nothing. */}
+        <span
+          data-planner-drag-hint=""
+          className="bg-primary/90 text-primary-foreground ring-primary-foreground/20 pointer-events-none absolute top-2 left-2 z-30 hidden items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium shadow-sm ring-1 backdrop-blur-sm sm:[html[data-planner-open]_&]:flex"
+        >
+          <GripVertical className="size-3 shrink-0" aria-hidden="true" />
+          {t('planner.dragIn')}
+        </span>
         {/* Photo — hidden below `sm` (cards collapse on phones, matching the `sm:min-h-[220px]`
             spacer below and ParkCard), so only the gradient placeholder shows there. */}
         <div className="absolute inset-0 z-0 overflow-hidden">

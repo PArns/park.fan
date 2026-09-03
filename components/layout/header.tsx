@@ -7,7 +7,6 @@ import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
-import { PLANNER_ENABLED } from '@/lib/config/features';
 import type { Locale } from '@/i18n/config';
 import { Menu, MapPin, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -426,17 +425,15 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
               sechs Einträgen schon umbrach — das ist mit `whitespace-nowrap`
               und der schmaleren Suche oben behoben, und erst dadurch ist Platz
               für einen siebten. */}
-          {PLANNER_ENABLED && (
-            <Link
-              href={plannerPath}
-              prefetch={false}
-              className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
-              tabIndex={isTransparent ? -1 : 0}
-              data-header-stagger
-            >
-              {t('planner')}
-            </Link>
-          )}
+          <Link
+            href={plannerPath}
+            prefetch={false}
+            className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+            tabIndex={isTransparent ? -1 : 0}
+            data-header-stagger
+          >
+            {t('planner')}
+          </Link>
           {/* Favoriten stehen in dieser Zeile und nicht im Aktionsbereich rechts: sie öffnen
               dasselbe Band wie „Parks entdecken" und „Blog", mit derselben Hover-Hysterese, und
               eine Zeile, in der ein Eintrag anders aufgeht als seine Nachbarn, muss man zweimal
@@ -639,16 +636,14 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
                   >
                     {t('howto')}
                   </Link>
-                  {PLANNER_ENABLED && (
-                    <Link
-                      href={plannerPath}
-                      prefetch={false}
-                      data-sheet-stagger
-                      className="hover:text-primary text-lg font-medium transition-colors"
-                    >
-                      {t('planner')}
-                    </Link>
-                  )}
+                  <Link
+                    href={plannerPath}
+                    prefetch={false}
+                    data-sheet-stagger
+                    className="hover:text-primary text-lg font-medium transition-colors"
+                  >
+                    {t('planner')}
+                  </Link>
                 </nav>
               </SheetContent>
             </Sheet>

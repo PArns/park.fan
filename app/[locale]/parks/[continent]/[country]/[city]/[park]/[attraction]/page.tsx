@@ -61,9 +61,8 @@ import { generateAttractionBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { stripNewPrefix, cn } from '@/lib/utils';
 import { findRelocatedParkRedirect, findRenamedParkRedirect } from '@/lib/utils/redirect-utils';
 import { RouteMessages } from '@/i18n/route-messages';
+import { PlannerPageParkBeacon } from '@/components/planner/planner-page-park-beacon';
 import { parkArgs } from '@/lib/i18n/park-phrase';
-import { plannerFlag } from '@/flags';
-import { PLANNER_ENABLED } from '@/lib/config/features';
 
 interface AttractionPageProps {
   params: Promise<{
@@ -237,11 +236,6 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   // The park-embedded attraction carries everything the shell + JSON-LD + FAQ need (name,
   // statistics, bestVisitTimes); live status/wait times still come from the client poll.
   const park = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));
-  // The trip planner's kill switch. Read HERE and not in the locale layout: this
-  // route is `force-dynamic`, so a flag costs nothing, while the layout is the
-  // one 3,109 prerendered routes share and reading headers there would make
-  // every one of them dynamic.
-  const plannerEnabled = PLANNER_ENABLED && (await plannerFlag());
   const attraction = park?.attractions?.find((a) => a.slug === attractionSlug) ?? null;
 
   if (!park) {
@@ -339,6 +333,16 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   return (
     <RouteMessages route="/parks/[continent]/[country]/[city]/[park]/[attraction]">
       <>
+        {/* Tells the planner which park this route is about — see
+          `lib/planner/page-park.ts`. The panel lives in the layout and
+          otherwise cannot tell one park's page from another's, which is how its
+          header came to name a park the reader was not looking at. */}
+        <PlannerPageParkBeacon
+          slug={park.slug}
+          name={stripNewPrefix(park.name)}
+          geo={{ continent, country, city }}
+          timezone={park.timezone}
+        />
         <AttractionStructuredData
           attraction={attraction}
           park={park}
@@ -431,7 +435,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                       )}
                     </div>
                   </div>
-                  {attraction.id && plannerEnabled && (
+                  {attraction.id && (
                     <div className="flex items-center gap-2">
                       {/* The planner's real entry point. Its floating launcher only
                           appears once something is planned, so without a control

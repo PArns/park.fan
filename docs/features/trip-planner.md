@@ -5,9 +5,6 @@ which minute — laid out on a timeline against the park's own wait-time forecas
 Everything lives in the visitor's browser. There is no account system, and the
 plan is theirs.
 
-Behind the `planner` feature flag (`flags.ts`), which gates the launcher, the
-page, and the two controls that put a ride into a plan.
-
 ## Where it lives
 
 | Piece                           | File                                                     |
@@ -193,6 +190,40 @@ answer it got, so the check is meaningful in both worlds.
 
 The wizard, the month calendar and the day card need none of it: they read the
 best-days snapshot, which is live today.
+
+## Showtimes: a listing and a projection are not the same thing
+
+Shows arrive inside `/plan/day` (`lib/planner/shows.ts`), and each entry carries
+a `source` the panel may not resolve away:
+
+- `scheduled` — the operator's own listing. Published for today and for days
+  already gone, and for nothing else. No source anywhere knows showtimes in
+  advance.
+- `projected` — the last matching weekday carried forward, with the
+  `observedOn` date it was taken from and the `sampleDays` behind it.
+
+So a projection is drawn softer than a listing everywhere it appears: the band
+above the grid says „Voraussichtlich" instead of „Als Nächstes", the time in the
+gutter is prefixed with a `~`, the rule across the day is dotted rather than
+dashed and the name on it is italic and muted. Where several showtimes fold into
+one rule, a projection anywhere in the group decides the treatment — the rule
+runs one way only, so the softer one is the only one that is not a promise about
+the shows it stands for.
+
+**A projected time outside the park's published day is dropped.** The projection
+comes off a different date and that date is often the longer one: Phantasialand
+closed at 18:00 on 2026-09-03 and its projection came from 2026-08-13, a
+late-summer evening — 22 of the 48 showtimes the API returned sat past the
+close, the whole Wintertraum and laser run from 18:15 to 21:00, drawn down an
+axis that ends at 19:00. A listing is never clipped: an operator publishing a
+time for this date outranks an opening hour we derived, which the API says out
+loud for `hoursSource: "observed"`, where its window is narrower than the park's
+real one.
+
+Before this, showtimes were read off the live park payload, which only ever knew
+today — so sixty of the sixty-one dates the picker offers drew nothing and the
+band had to say „steht erst am Tag selbst fest". That sentence is gone; an empty
+`shows` array is now a statement about the park.
 
 ## Push notifications
 

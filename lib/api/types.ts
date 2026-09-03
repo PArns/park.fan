@@ -1978,6 +1978,15 @@ export interface PlanDayHour {
   hour: number;
   /** Expected wait in minutes, already rounded to 5. */
   wait: number;
+  /**
+   * Set only where THIS hour did not come from the day's {@link PlanDay.tier}.
+   *
+   * A day inside the 24-hour window is part measured and part composed — today
+   * has no measurement for the hours before now, tomorrow none for the hours
+   * after it — so the tier names the day's regime and this names the exceptions.
+   * Absent means "the day's tier", never "unknown".
+   */
+  source?: PlanDayTier | null;
 }
 
 export interface PlanDayRide {
@@ -2016,6 +2025,16 @@ export interface PlanDayRide {
   opensAt?: string | null;
   /** Measured days behind the historical shape. */
   sampleDays: number;
+  /**
+   * The typical error of this ride's own numbers, in minutes.
+   *
+   * Per RIDE and not per day, because it depends on both the lead time and the
+   * level: a queue that peaks over an hour is typically 21–25 minutes out, one
+   * under half an hour 8–13. It is a TYPICAL error and not a bound — half the
+   * days are further off than this — so it may never be drawn as an interval
+   * that contains the answer. Absent where the backend has not measured one.
+   */
+  expectedError?: number | null;
   /**
    * Where the ride is, so the planner can say how far apart two consecutive
    * entries are without fetching forty attraction payloads.
@@ -2074,6 +2093,16 @@ export interface PlanDayContext {
   /** First and last park-local hour the park is open. `null` on a closed day. */
   openHour: number | null;
   closeHour: number | null;
+  /**
+   * Where {@link openHour}/{@link closeHour} came from.
+   *
+   * `schedule` is the park's published calendar. `observed` is the window
+   * DERIVED from hours we measured, which is what the API falls back to past the
+   * publication horizon — about 60 days for half the parks — and it is narrower
+   * than the truth by construction: it can only span hours somebody recorded. On
+   * such a day `status` is not a promise either.
+   */
+  hoursSource?: 'schedule' | 'observed' | null;
   crowdLevel?: CrowdLevel | 'closed' | null;
   /**
    * Absent past the forecast's reach (about 14 days). The API does NOT
@@ -2104,10 +2133,53 @@ export interface PlanDay {
    * distance WITHOUT attaching a figure.
    */
   leadTimeMae?: number | null;
-  rides: PlanDayRide[];
   /**
-   * Empty for now. The calendar DTO carries no showtimes field at all, so the
-   * API cannot yet distinguish "no shows" from "not known this far out".
+   * Whether anybody has checked how wrong the forecast is at this distance.
+   *
+   * `measured` means the error at this lead time has been compared against days
+   * that then happened; `unmeasured` means a prediction exists and nothing has
+   * ever verified it. `null` where the API says nothing at all.
+   *
+   * NOTE, before this is wired to anything: the API answers `unmeasured` for
+   * TODAY (`leadDays: 0`) as of 2026-09-03, while its own documentation
+   * describes the value as "beyond 60 days". Until that settles, treating
+   * `unmeasured` as "not a plannable day" would refuse every day the planner
+   * has.
    */
-  shows: unknown[];
+  accuracy?: { basis?: 'measured' | 'unmeasured' | null } | null;
+  rides: PlanDayRide[];
+  shows: PlanDayShow[];
+}
+
+/**
+ * Where a showtime came from, and the one thing a surface may not blur.
+ *
+ * - `scheduled` — the operator's own listing. Published for today and for days
+ *   already past, and for nothing else: no source anywhere knows showtimes in
+ *   advance.
+ * - `projected` — this app's upstream carrying the last matching weekday
+ *   forward. It is an observation of a different day, not a promise about this
+ *   one, and the API says so explicitly with {@link PlanDayShow.observedOn}.
+ *
+ * The two MUST be drawn differently. They are the same shape and the same
+ * fields, so nothing but a deliberate difference separates them, and a
+ * projection presented as a listing is this app promising a performance that
+ * nobody has scheduled.
+ */
+export type PlanDayShowSource = 'scheduled' | 'projected';
+
+export interface PlanDayShow {
+  showSlug: string;
+  showName: string;
+  /** Park-local `HH:mm`, ascending. */
+  times: string[];
+  source: PlanDayShowSource;
+  /**
+   * `projected` only: the date these times were actually observed on — the most
+   * recent same weekday. Absent on a `scheduled` entry, which speaks for the
+   * date it was asked about.
+   */
+  observedOn?: string | null;
+  /** `projected` only: how many measured days stand behind the projection. */
+  sampleDays?: number | null;
 }

@@ -40,11 +40,7 @@ const test = (name, actual, expected) => cases.push({ name, actual, expected });
 
 // A park page is not a ride: one segment short, and dropping it would file an
 // entry with the park's own slug as its ride.
-test(
-  'a park page is refused',
-  rideFromPath('/de/parks/europe/germany/bruehl/phantasialand'),
-  null
-);
+test('a park page is refused', rideFromPath('/de/parks/europe/germany/bruehl/phantasialand'), null);
 // THE photo bug. Grabbing a card by its picture drags the image, and the image
 // lives under /media with no `parks` segment anywhere in it.
 test('an image URL is refused', rideFromPath('/media/phantasialand/taron.jpg'), null);
@@ -55,7 +51,8 @@ test('an empty path is refused', rideFromPath(''), null);
 // The format is a LIST with optional comment lines, so the first real line is
 // the one that counts. Read whole, a leading comment made the URL unparseable.
 {
-  const list = '# a comment\r\nhttps://park.fan/de/parks/europe/germany/bruehl/phantasialand/taron\r\n';
+  const list =
+    '# a comment\r\nhttps://park.fan/de/parks/europe/germany/bruehl/phantasialand/taron\r\n';
   test('a comment line is skipped', rideFromUrl(list)?.attractionSlug, 'taron');
 }
 test(

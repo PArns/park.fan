@@ -1238,6 +1238,9 @@
       "fastPassFrom": "ab",
       "rcdbLabel": "{attraction} in der RCDB",
       "rcdbTitle": "Technische Daten auf RCDB (Roller Coaster DataBase)"
+    },
+    "planner": {
+      "dragIn": "In den Plan ziehen"
     }
   },
   "nearby": {
@@ -1877,7 +1880,8 @@
       "title": "Noch nichts geplant",
       "body": "Such dir unten eine Bahn – oder öffne die Seite einer Bahn und tipp dort auf „In den Plan“.",
       "bodyMobile": "Such dir unten eine Bahn und leg sie auf eine Uhrzeit.",
-      "bodyGrid": "Such dir unten eine Bahn – sie landet auf der Zeitachse und lässt sich dort verschieben."
+      "bodyGrid": "Such dir unten eine Bahn – sie landet auf der Zeitachse und lässt sich dort verschieben.",
+      "planThisPark": "{park} jetzt planen"
     },
     "day": {
       "today": "Heute",
@@ -1963,8 +1967,13 @@
     },
     "close": "Auswahl aufheben",
     "shows": {
-      "notKnownYet": "Vorstellungszeiten stehen erst am Tag selbst fest.",
-      "none": "Heute keine Vorstellungen."
+      "none": "Keine Spielzeiten bekannt.",
+      "next": "Als Nächstes",
+      "first": "Erste Vorstellung",
+      "projected": "Voraussichtlich",
+      "projectedFrom": "Zeiten vom {date}, hochgerechnet auf diesen Wochentag.",
+      "over": "Alle Vorstellungen für heute gelaufen.",
+      "more": "{count, plural, =1 {+1 weitere} other {+# weitere}}"
     },
     "warn": {
       "closedNow": "Meldet gerade geschlossen.",
@@ -2094,6 +2103,9 @@
     },
     "inPark": {
       "cta": "Heute im {park} planen"
+    },
+    "plans": {
+      "title": "Meine Pläne"
     }
   }
 }
