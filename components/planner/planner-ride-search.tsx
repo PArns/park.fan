@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Plus, Search } from 'lucide-react';
+import { Check, Plus, Search } from 'lucide-react';
 import { usePlanner } from '@/lib/planner/use-planner';
 import type { PlannerGeo } from '@/lib/planner/types';
 import { buildDayGrid, nextFreeStart } from '@/lib/planner/day-grid';
@@ -145,7 +145,14 @@ export function PlannerRideSearch({
               >
                 <Plus className="text-muted-foreground/60 size-3.5 shrink-0" />
                 <span className="min-w-0 flex-1 truncate text-sm">{ride.attractionName}</span>
-                {(planned.get(ride.attractionSlug) ?? 0) > 0 && (
+                {/* One lap is a tick; two or more is a NUMBER. A "1×" on every
+                    planned ride is a count of the obvious — the interesting
+                    state is the repeat, and it has to stand out from the row of
+                    ordinary ticks around it. */}
+                {(planned.get(ride.attractionSlug) ?? 0) === 1 && (
+                  <Check className="text-crowd-low size-3.5 shrink-0" />
+                )}
+                {(planned.get(ride.attractionSlug) ?? 0) > 1 && (
                   <span className="bg-crowd-low/20 text-crowd-low shrink-0 rounded-full px-1.5 text-[10px] font-medium tabular-nums">
                     {planned.get(ride.attractionSlug)}×
                   </span>

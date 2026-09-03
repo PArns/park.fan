@@ -624,6 +624,31 @@ if (reachable) {
 
     check('kein Block schneidet seinen Text ab', (await clippedBlocks()).length === 0);
 
+    // Nothing in the grid may start left of the grid itself. Overflow past the
+    // INLINE-START edge of an LTR scroller is unreachable overflow: it never
+    // enters `scrollWidth`, no scrollbar appears, and nothing reports it — which
+    // is how "schließt ~19:00" sat in a 40 px gutter needing 50 (de) to 73 (it)
+    // and was cut off in all six locales, on every park, every day.
+    const overflowingLeft = await grid.evaluate(() => {
+      const root = document.querySelector('[data-planner-grid]');
+      if (!root) return ['no grid'];
+      const left = root.getBoundingClientRect().left;
+      const out = [];
+      for (const el of root.querySelectorAll('span, p')) {
+        const box = el.getBoundingClientRect();
+        if (box.width === 0) continue;
+        if (box.left < left - 0.5) {
+          out.push(`"${(el.textContent ?? '').trim().slice(0, 22)}" ${Math.round(left - box.left)}px`);
+        }
+      }
+      return out;
+    });
+    check(
+      'nichts im Raster ragt links heraus',
+      overflowingLeft.length === 0,
+      overflowingLeft.join('; ')
+    );
+
     // And the same question at the height where the answer was wrong. Moving
     // F.L.Y. to 09:00 puts a WARNED ride in a 48 px box, which is the one shape
     // the fixture above never produces on its own — without this the assertion
