@@ -16,7 +16,7 @@ import { totalsFor } from '@/lib/planner/estimate';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { formatShortDuration } from '@/lib/utils/duration';
 import { buildDayGrid } from '@/lib/planner/day-grid';
-import { parkToday } from '@/lib/planner/park-time';
+import { parkToday, resolveTimeZone } from '@/lib/planner/park-time';
 import { closedNowFor, liveWaitsFor, showLinesFor } from '@/lib/planner/live';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import { PlannerShowBand } from './planner-show-band';
@@ -102,7 +102,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
 
   // The axis, or null when the park's hours are unknown — in which case there is
   // no honest grid to draw and the flat list is the answer.
-  const timezone = day?.timezone ?? park?.timezone ?? 'UTC';
+  const timezone = resolveTimeZone(day?.timezone ?? park?.timezone);
   const grid = buildDayGrid(day?.context.openHour, day?.context.closeHour);
   const isToday = Boolean(activeDate && activeDate === parkToday(timezone));
 
@@ -177,6 +177,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   value={activeDate}
                   onChange={(date) => setActive(activeParkSlug, date)}
                   plannedDates={plannedDates}
+                  timezone={timezone}
                 />
               )}
             </div>
@@ -310,6 +311,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   date={activeDate}
                   day={day ?? null}
                   dayState={dayState}
+                  timezone={day?.timezone ?? park?.timezone}
                 />
               </div>
             )}

@@ -80,7 +80,7 @@ export function usePlanner() {
   }, []);
 
   const openDay = useCallback(
-    (park: { slug: string; name: string; geo: PlannerGeo }, date: string) => {
+    (park: { slug: string; name: string; geo: PlannerGeo; timezone?: string }, date: string) => {
       plannerStore.update((s) => openDayAction(s, park, date));
     },
     []
@@ -119,11 +119,24 @@ export function usePlanner() {
  * ride card, which shows a different state once the ride is in.
  */
 export function useIsPlanned(parkSlug: string, date: string | null, attractionSlug: string) {
+  return usePlannedCount(parkSlug, date, attractionSlug) > 0;
+}
+
+/**
+ * How many times this ride is in that day's plan.
+ *
+ * A count rather than a flag, because riding something twice is a plan and not a
+ * mistake — a morning lap on a walk-on and an evening one for the lights. The
+ * store has always allowed it (`makeId` counts collisions up), and only the two
+ * controls said otherwise: the ride page DISABLED itself once a ride was in, and
+ * the search greyed the row, which reads as "no" to everybody.
+ */
+export function usePlannedCount(parkSlug: string, date: string | null, attractionSlug: string) {
   const state = useSyncExternalStore(
     plannerStore.subscribe,
     plannerStore.getSnapshot,
     plannerStore.getServerSnapshot
   );
-  if (!date) return false;
-  return entriesFor(state, parkSlug, date).some((e) => e.attractionSlug === attractionSlug);
+  if (!date) return 0;
+  return entriesFor(state, parkSlug, date).filter((e) => e.attractionSlug === attractionSlug).length;
 }

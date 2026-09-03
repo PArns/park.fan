@@ -3,7 +3,6 @@
 import { useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Plus, Search } from 'lucide-react';
-import { cn } from '@/lib/utils';
 import { usePlanner } from '@/lib/planner/use-planner';
 import type { PlannerGeo } from '@/lib/planner/types';
 import { buildDayGrid, nextFreeStart } from '@/lib/planner/day-grid';
@@ -19,6 +18,8 @@ interface PlannerRideSearchProps {
   day: PlanDay | null;
   /** Why there is no payload, when there is none. */
   dayState: PlannerDayState;
+  /** The park's IANA zone, stored with the park so the plan reckons in it. */
+  timezone?: string;
 }
 
 /** Diacritics folded, so "winjas" finds "Winja's" and "fly" finds "F.L.Y.". */
@@ -54,18 +55,23 @@ export function PlannerRideSearch({
   date,
   day,
   dayState,
+  timezone,
 }: PlannerRideSearchProps) {
   const t = useTranslations('planner');
   const { addRide, activeEntries } = usePlanner();
   const [query, setQuery] = useState('');
 
-  // Rides already in this day's plan. A ride can legitimately be planned twice
-  // (a morning and an evening lap), so this greys the row rather than removing
-  // it — it says "already in" without taking the choice away.
-  const planned = useMemo(
-    () => new Set(activeEntries.map((entry) => entry.attractionSlug)),
-    [activeEntries]
-  );
+  // How often each ride is already in this day — a COUNT, because a ride can
+  // legitimately be planned twice (a morning lap on a walk-on, an evening one for
+  // the lights). The row used to be greyed at one, which reads as "no" and is the
+  // reason nobody found the second lap the store has always allowed.
+  const planned = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const entry of activeEntries) {
+      counts.set(entry.attractionSlug, (counts.get(entry.attractionSlug) ?? 0) + 1);
+    }
+    return counts;
+  }, [activeEntries]);
 
   // Where the next ride goes. Recomputed per render rather than per click so a
   // second add after a first one lands after it, not on it.
@@ -124,6 +130,7 @@ export function PlannerRideSearch({
                     parkName,
                     geo,
                     date,
+                    timezone,
                     attractionSlug: ride.attractionSlug,
                     attractionName: ride.attractionName,
                     // The first free slot, not the opening hour. This call site
@@ -137,14 +144,12 @@ export function PlannerRideSearch({
                 className="hover:bg-accent flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left transition-colors max-sm:py-2.5"
               >
                 <Plus className="text-muted-foreground/60 size-3.5 shrink-0" />
-                <span
-                  className={cn(
-                    'min-w-0 flex-1 truncate text-sm',
-                    planned.has(ride.attractionSlug) && 'text-muted-foreground'
-                  )}
-                >
-                  {ride.attractionName}
-                </span>
+                <span className="min-w-0 flex-1 truncate text-sm">{ride.attractionName}</span>
+                {(planned.get(ride.attractionSlug) ?? 0) > 0 && (
+                  <span className="bg-crowd-low/20 text-crowd-low shrink-0 rounded-full px-1.5 text-[10px] font-medium tabular-nums">
+                    {planned.get(ride.attractionSlug)}×
+                  </span>
+                )}
                 {ride.land && (
                   <span className="text-muted-foreground shrink-0 truncate text-[11px]">
                     {ride.land}

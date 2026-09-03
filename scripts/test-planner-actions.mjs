@@ -376,6 +376,55 @@ test(
 );
 
 let passed = 0;
+// ── The park's zone reaches the store ───────────────────────────────────────
+// It never did. `PlannerPark.timezone` was declared, `openDay` and `addEntry`
+// both accepted it, and not one call site passed it — so the flyout's
+// `day?.timezone ?? park?.timezone ?? 'UTC'` fell all the way through and the
+// planner reckoned "today", the now line and the day picker in UTC. These pin
+// the field being WRITTEN, which is the half that was missing.
+test(
+  'addEntry stores the park zone',
+  addEntry(EMPTY_PLANNER_STATE, {
+    ...PARK,
+    timezone: 'America/New_York',
+    attractionSlug: 'space-mountain',
+    attractionName: 'Space Mountain',
+  }).parks[PARK.parkSlug].timezone,
+  'America/New_York'
+);
+
+test(
+  'openDay stores the park zone',
+  openDay(
+    EMPTY_PLANNER_STATE,
+    { slug: PARK.parkSlug, name: PARK.parkName, geo: PARK.geo, timezone: 'Asia/Tokyo' },
+    PARK.date
+  ).parks[PARK.parkSlug].timezone,
+  'Asia/Tokyo'
+);
+
+// A ride planned twice is two entries, not one — the store always allowed it and
+// only the two controls refused. `makeId` counts the collision up.
+test(
+  'the same ride twice is two entries',
+  (() => {
+    let s = add(EMPTY_PLANNER_STATE, 'taron', 10);
+    s = add(s, 'taron', 17);
+    return s.parks[PARK.parkSlug].days[PARK.date].entries.length;
+  })(),
+  2
+);
+test(
+  'and they get distinct ids',
+  (() => {
+    let s = add(EMPTY_PLANNER_STATE, 'taron', 10);
+    s = add(s, 'taron', 17);
+    const ids = s.parks[PARK.parkSlug].days[PARK.date].entries.map((e) => e.id);
+    return new Set(ids).size;
+  })(),
+  2
+);
+
 let failed = 0;
 for (const testCase of testCases) {
   if (JSON.stringify(testCase.actual) === JSON.stringify(testCase.expected)) {

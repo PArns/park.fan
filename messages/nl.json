@@ -1868,6 +1868,8 @@
     "open": "Planner openen",
     "addRide": "In het plan",
     "inPlan": "In het plan",
+    "addAgain": "Nogmaals",
+    "plannedTimes": "{count}× in plan",
     "removeRide": "Uit het plan halen",
     "empty": {
       "title": "Nog niets gepland",
