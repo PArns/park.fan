@@ -326,6 +326,73 @@ if (await toggle.count()) {
   check('zurück auf der Zeitleiste', (await sheet.locator('input[type="search"]').count()) === 1);
 }
 
+// A park that is NOT in the plan yet. The overview lists parks WITH entries, so
+// without a search there was no way to start a second park from inside the
+// panel — the visitor had to leave it, navigate to that park, and use a control
+// there. Toverland is deliberately neither of the two seeded parks.
+const reopen = sheet.locator('button[data-planner-overview-toggle]');
+// Asserted, not merely branched on: a block that quietly skips itself when its
+// entry point is missing reports the same green as one that passed.
+check('die Übersicht hat einen benannten Schalter', (await reopen.count()) === 1);
+if (await reopen.count()) {
+  await reopen.click();
+  await page.waitForTimeout(300);
+  const parkSearch = sheet.locator('[data-planner-park-search] input[type="search"]');
+  check('Parksuche in der Übersicht', (await parkSearch.count()) === 1);
+
+  if (await parkSearch.count()) {
+    await parkSearch.fill('toverland');
+    const hit = sheet
+      .locator('[data-planner-park-search] button')
+      .filter({ hasText: /Toverland/i });
+    let found = false;
+    try {
+      await hit.first().waitFor({ state: 'visible', timeout: 6000 });
+      found = true;
+    } catch {
+      found = false;
+    }
+    check('die Suche findet einen Park außerhalb des Plans', found);
+
+    if (found) {
+      // The row carries where the park IS, because two parks share a name often
+      // enough — Disneyland Park is Anaheim and Paris.
+      const rowText = (await hit.first().textContent()) ?? '';
+      check(
+        'die Trefferzeile nennt Ort und Land',
+        /Sevenum/.test(rowText) && /Netherlands|Niederlande/i.test(rowText),
+        rowText.trim()
+      );
+
+      await hit.first().click();
+      await page.waitForTimeout(600);
+      const after = await page.evaluate(() =>
+        JSON.parse(window.localStorage.getItem('parkfan_planner') ?? '{}')
+      );
+      const picked = after?.parks?.['attractiepark-toverland'];
+      check(
+        'der gewählte Park landet im Plan',
+        after?.activeParkSlug === 'attractiepark-toverland' && Boolean(picked),
+        `${after?.activeParkSlug}`
+      );
+      // The geo path is TAKEN from the API's own URL, never rebuilt from the
+      // display names in the row: "Netherlands" is not `netherlands` in every
+      // language, and a guessed path is a plan pointing at a 404.
+      check(
+        'der Geopfad kommt aus der API',
+        picked?.geo?.continent === 'europe' &&
+          picked?.geo?.country === 'netherlands' &&
+          picked?.geo?.city === 'sevenum',
+        JSON.stringify(picked?.geo)
+      );
+      check(
+        'nach der Wahl steht wieder die Zeitleiste',
+        (await sheet.locator('input[type="search"]').count()) === 1
+      );
+    }
+  }
+}
+
 // The sheet is a modal and outranks the language banner at z-[70]; at z-50 the
 // banner painted straight across its header.
 const covered = await page.evaluate((sel) => {
@@ -682,7 +749,9 @@ if (reachable) {
         const box = el.getBoundingClientRect();
         if (box.width === 0) continue;
         if (box.left < left - 0.5) {
-          out.push(`"${(el.textContent ?? '').trim().slice(0, 22)}" ${Math.round(left - box.left)}px`);
+          out.push(
+            `"${(el.textContent ?? '').trim().slice(0, 22)}" ${Math.round(left - box.left)}px`
+          );
         }
       }
       return out;
@@ -705,9 +774,7 @@ if (reachable) {
     const flyRange = flyBlock.locator('input[type="range"]');
     await flyRange.fill('540');
     await grid.waitForTimeout(400);
-    const shortBox = await flyBlock.evaluate((el) =>
-      Math.round(el.getBoundingClientRect().height)
-    );
+    const shortBox = await flyBlock.evaluate((el) => Math.round(el.getBoundingClientRect().height));
     const clippedShort = await clippedBlocks();
     check(
       'auch ein 48-px-Block mit Warnung schneidet nichts ab',
@@ -845,11 +912,20 @@ if (reachable) {
         parkSlug: PARK.slug,
         timezone: 'Europe/Berlin',
         context: {
-          date: DATE, status: 'OPERATING', openHour: 9, closeHour: 18,
-          crowdLevel: 'moderate', weather: null,
-          isHoliday: false, isBridgeDay: false, isSchoolVacation: false, isWeekend: false,
+          date: DATE,
+          status: 'OPERATING',
+          openHour: 9,
+          closeHour: 18,
+          crowdLevel: 'moderate',
+          weather: null,
+          isHoliday: false,
+          isBridgeDay: false,
+          isSchoolVacation: false,
+          isWeekend: false,
         },
-        tier: 'measured', leadDays: 1, leadTimeMae: 7,
+        tier: 'measured',
+        leadDays: 1,
+        leadTimeMae: 7,
         rides: [
           // Taron is seeded into the plan; F.L.Y. is not. Black Mamba is a
           // headliner in neither sense — it must not appear in the hint.
@@ -895,8 +971,16 @@ if (reachable) {
   // below it, which lists every ride by design — the first version of this
   // assertion failed on the panel's own header.
   const hintText = (await hl.locator(`${SHEET} [data-planner-headliner-hint]`).textContent()) ?? '';
-  check('nur der FEHLENDE Headliner steht drin', /F\.L\.Y\./.test(hintText) && !/Taron/.test(hintText), hintText.slice(0, 60));
-  check('eine gewöhnliche Bahn steht nicht im Hinweis', !/Black Mamba/.test(hintText), hintText.slice(0, 60));
+  check(
+    'nur der FEHLENDE Headliner steht drin',
+    /F\.L\.Y\./.test(hintText) && !/Taron/.test(hintText),
+    hintText.slice(0, 60)
+  );
+  check(
+    'eine gewöhnliche Bahn steht nicht im Hinweis',
+    !/Black Mamba/.test(hintText),
+    hintText.slice(0, 60)
+  );
 
   // And it goes quiet once the plan is complete.
   if (await hint.count()) {
@@ -936,16 +1020,29 @@ if (reachable) {
         parkSlug: PARK.slug,
         timezone: 'Europe/Berlin',
         context: {
-          date: DATE, status: 'OPERATING', openHour: 9, closeHour: 18,
-          crowdLevel: 'moderate', weather: null,
-          isHoliday: false, isBridgeDay: false, isSchoolVacation: false, isWeekend: false,
+          date: DATE,
+          status: 'OPERATING',
+          openHour: 9,
+          closeHour: 18,
+          crowdLevel: 'moderate',
+          weather: null,
+          isHoliday: false,
+          isBridgeDay: false,
+          isSchoolVacation: false,
+          isWeekend: false,
         },
-        tier: 'measured', leadDays: 1, leadTimeMae: 7,
+        tier: 'measured',
+        leadDays: 1,
+        leadTimeMae: 7,
         rides: [
           {
-            attractionSlug: 'taron', attractionName: 'Taron', land: 'Mystery',
+            attractionSlug: 'taron',
+            attractionName: 'Taron',
+            land: 'Mystery',
             hours: Array.from({ length: 10 }, (_, i) => ({ hour: 9 + i, wait: 40 })),
-            dayPeak: 40, uncertaintyMinutes: 10, sampleDays: 400,
+            dayPeak: 40,
+            uncertaintyMinutes: 10,
+            sampleDays: 400,
           },
         ],
         shows: [],
@@ -954,8 +1051,8 @@ if (reachable) {
   );
 
   await seed(cpu);
-  const beforeOpen = await cpu.evaluate(() =>
-    (window.__intervals ?? []).filter((d) => d === 60_000).length
+  const beforeOpen = await cpu.evaluate(
+    () => (window.__intervals ?? []).filter((d) => d === 60_000).length
   );
   await cpu.locator(LAUNCHER).click();
   await cpu.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
@@ -964,8 +1061,8 @@ if (reachable) {
   // The DELTA across opening the panel, not the page's total: the app already
   // runs a 60-second interval of its own before the planner exists, so counting
   // every timer on the page would have failed this for somebody else's clock.
-  const after = await cpu.evaluate(() =>
-    (window.__intervals ?? []).filter((d) => d === 60_000).length
+  const after = await cpu.evaluate(
+    () => (window.__intervals ?? []).filter((d) => d === 60_000).length
   );
   const added = after - beforeOpen;
   check(
@@ -1000,17 +1097,28 @@ if (reachable) {
         parkSlug: PARK.slug,
         timezone: 'Europe/Berlin',
         context: {
-          date: DATE, status: 'OPERATING', openHour: OPEN, closeHour: CLOSE,
-          crowdLevel: 'moderate', weather: null,
-          isHoliday: false, isBridgeDay: false, isSchoolVacation: false, isWeekend: false,
+          date: DATE,
+          status: 'OPERATING',
+          openHour: OPEN,
+          closeHour: CLOSE,
+          crowdLevel: 'moderate',
+          weather: null,
+          isHoliday: false,
+          isBridgeDay: false,
+          isSchoolVacation: false,
+          isWeekend: false,
         },
-        tier: 'measured', leadDays: 1, leadTimeMae: 7,
+        tier: 'measured',
+        leadDays: 1,
+        leadTimeMae: 7,
         rides: ['taron', 'black-mamba'].map((slug) => ({
           attractionSlug: slug,
           attractionName: slug === 'taron' ? 'Taron' : 'Black Mamba',
           land: 'Mystery',
           hours: Array.from({ length: CLOSE - OPEN + 1 }, (_, i) => ({ hour: OPEN + i, wait: 40 })),
-          dayPeak: 40, uncertaintyMinutes: 10, sampleDays: 400,
+          dayPeak: 40,
+          uncertaintyMinutes: 10,
+          sampleDays: 400,
         })),
         shows: [],
       }),
@@ -1046,7 +1154,10 @@ if (reachable) {
     if (!canvas) return 'no canvas';
     const box = canvas.getBoundingClientRect();
     const dt = new DataTransfer();
-    dt.setData('text/uri-list', `${location.origin}/de/parks/europe/germany/bruehl/phantasialand/taron`);
+    dt.setData(
+      'text/uri-list',
+      `${location.origin}/de/parks/europe/germany/bruehl/phantasialand/taron`
+    );
     const at = { clientX: box.x + 40, clientY: box.y + 200, bubbles: true, cancelable: true };
     canvas.dispatchEvent(new DragEvent('dragover', { ...at, dataTransfer: dt }));
     canvas.dispatchEvent(new DragEvent('drop', { ...at, dataTransfer: dt }));
@@ -1054,7 +1165,11 @@ if (reachable) {
   });
   await drag.waitForTimeout(600);
   const after = await drag.locator('li[data-planner-block]').count();
-  check('ein Ride-Link landet als Block', after === before + 1, `${dropped}: ${before} -> ${after}`);
+  check(
+    'ein Ride-Link landet als Block',
+    after === before + 1,
+    `${dropped}: ${before} -> ${after}`
+  );
 
   // A ride from ANOTHER park is refused: the forecast is per park, so the block
   // would draw nothing and the day would claim a ride it has no number for.
@@ -1063,7 +1178,10 @@ if (reachable) {
     if (!canvas) return -1;
     const box = canvas.getBoundingClientRect();
     const dt = new DataTransfer();
-    dt.setData('text/uri-list', `${location.origin}/de/parks/europe/germany/rust/europa-park/voltron-nevera`);
+    dt.setData(
+      'text/uri-list',
+      `${location.origin}/de/parks/europe/germany/rust/europa-park/voltron-nevera`
+    );
     const at = { clientX: box.x + 40, clientY: box.y + 300, bubbles: true, cancelable: true };
     canvas.dispatchEvent(new DragEvent('drop', { ...at, dataTransfer: dt }));
     return document.querySelectorAll('li[data-planner-block]').length;
@@ -1122,16 +1240,32 @@ if (reachable) {
           parkSlug: PARK.slug,
           timezone: 'Europe/Berlin',
           context: {
-            date: todayInPark, status: 'OPERATING', openHour: OPEN, closeHour: CLOSE,
-            crowdLevel: 'moderate', weather: null,
-            isHoliday: false, isBridgeDay: false, isSchoolVacation: false, isWeekend: false,
+            date: todayInPark,
+            status: 'OPERATING',
+            openHour: OPEN,
+            closeHour: CLOSE,
+            crowdLevel: 'moderate',
+            weather: null,
+            isHoliday: false,
+            isBridgeDay: false,
+            isSchoolVacation: false,
+            isWeekend: false,
           },
-          tier: 'measured', leadDays: 0, leadTimeMae: 7,
+          tier: 'measured',
+          leadDays: 0,
+          leadTimeMae: 7,
           rides: [
             {
-              attractionSlug: 'taron', attractionName: 'Taron', land: 'Mystery',
-              hours: Array.from({ length: CLOSE - OPEN + 1 }, (_, i) => ({ hour: OPEN + i, wait: 45 })),
-              dayPeak: 45, uncertaintyMinutes: 15, sampleDays: 400,
+              attractionSlug: 'taron',
+              attractionName: 'Taron',
+              land: 'Mystery',
+              hours: Array.from({ length: CLOSE - OPEN + 1 }, (_, i) => ({
+                hour: OPEN + i,
+                wait: 45,
+              })),
+              dayPeak: 45,
+              uncertaintyMinutes: 15,
+              sampleDays: 400,
             },
           ],
           shows: [],
@@ -1143,12 +1277,16 @@ if (reachable) {
       status: 200,
       contentType: 'application/json',
       body: JSON.stringify({
-        slug: PARK.slug, name: PARK.name, status: 'OPERATING',
+        slug: PARK.slug,
+        name: PARK.name,
+        status: 'OPERATING',
         timezone: 'Europe/Berlin',
         liveWaitTimes: { available: true },
         attractions: [],
         shows: SHOWS.map((show) => ({
-          slug: show.slug, name: show.name, isCurrentlyInSeason: true,
+          slug: show.slug,
+          name: show.name,
+          isCurrentlyInSeason: true,
           showtimes: [{ startTime: `${todayInPark}T${show.at}:00+02:00` }],
         })),
       }),
@@ -1161,7 +1299,14 @@ if (reachable) {
       const seeded = JSON.parse(JSON.stringify(plan));
       const park = seeded.parks.phantasialand;
       park.timezone = 'Europe/Berlin';
-      park.days = { [date]: { date, entries: [{ id: 'taron-1', attractionSlug: 'taron', attractionName: 'Taron', startMinute: 600 }] } };
+      park.days = {
+        [date]: {
+          date,
+          entries: [
+            { id: 'taron-1', attractionSlug: 'taron', attractionName: 'Taron', startMinute: 600 },
+          ],
+        },
+      };
       seeded.parks = { phantasialand: park };
       seeded.activeParkSlug = 'phantasialand';
       seeded.activeDate = date;
@@ -1203,6 +1348,90 @@ if (reachable) {
   );
 
   await shows.close();
+}
+
+// ── The zone a park learns from its first day payload ───────────────────────
+// A park added from the overview's search arrives with no timezone — the search
+// payload has none to give — and every other way into a plan starts on a park
+// page that knows it. So the day payload has to teach it, or that park reckons
+// its dates in the READER's zone for as long as it stays in the plan.
+//
+// Against a fixture, and it has to be: `/plan/day` answers 404 on this backend
+// today, so the live path cannot exercise a field that only arrives with a 200.
+{
+  const learn = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+  noteErrors(learn);
+
+  const ZONE = 'America/New_York';
+  await learn.route('**/plan/day**', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        parkSlug: PARK.slug,
+        timezone: ZONE,
+        context: {
+          date: DATE,
+          status: 'OPERATING',
+          openHour: 9,
+          closeHour: 18,
+          crowdLevel: 'moderate',
+          weather: null,
+          isHoliday: false,
+          isBridgeDay: false,
+          isSchoolVacation: false,
+          isWeekend: false,
+        },
+        tier: 'measured',
+        leadDays: 1,
+        leadTimeMae: 7,
+        rides: [],
+        shows: [],
+      }),
+    })
+  );
+
+  await learn.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  await learn.evaluate(
+    ([plan, date]) => {
+      const seeded = JSON.parse(JSON.stringify(plan));
+      const park = seeded.parks.phantasialand;
+      // Exactly the state the park search leaves behind: name, geo, one day, NO
+      // zone.
+      delete park.timezone;
+      park.days = {
+        [date]: {
+          date,
+          entries: [
+            { id: 'taron-1', attractionSlug: 'taron', attractionName: 'Taron', startMinute: 600 },
+          ],
+        },
+      };
+      seeded.parks = { phantasialand: park };
+      seeded.activeParkSlug = 'phantasialand';
+      seeded.activeDate = date;
+      window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
+      document.cookie = 'planner=1; path=/';
+    },
+    [PLAN, DATE]
+  );
+  await learn.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+
+  const before = await learn.evaluate(
+    () => JSON.parse(localStorage.getItem('parkfan_planner') ?? '{}').parks?.phantasialand?.timezone
+  );
+  check('ohne Parkseite kennt der Plan keine Zone', before === undefined, `${before}`);
+
+  await learn.locator(LAUNCHER).click();
+  await learn.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await learn.waitForTimeout(2000);
+
+  const after = await learn.evaluate(
+    () => JSON.parse(localStorage.getItem('parkfan_planner') ?? '{}').parks?.phantasialand?.timezone
+  );
+  check('die erste Tagesantwort lehrt dem Plan die Zone', after === ZONE, `${after}`);
+
+  await learn.close();
 }
 
 // ── All six locales ─────────────────────────────────────────────────────────

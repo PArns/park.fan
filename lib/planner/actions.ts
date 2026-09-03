@@ -110,7 +110,6 @@ function clampMinute(minute: number): number {
   return Math.max(0, Math.min(1500, Math.round(minute)));
 }
 
-
 /**
  * A block the visitor writes themselves — a lunch break, a show, a meeting point.
  *
@@ -371,6 +370,29 @@ export function openDay(
     timezone: park.timezone,
   });
   return { ...next, activeParkSlug: park.slug, activeDate: date };
+}
+
+/**
+ * Record the zone the day payload came back with.
+ *
+ * Every other way into a plan starts on a park page, which knows the zone and
+ * passes it. The overview's park search does not — it offers every park in the
+ * catalogue and the search payload carries no zone — so a park added there would
+ * reckon its dates in the READER's zone forever, which is the wrong day for a
+ * Florida park planned from Germany after 18:00.
+ *
+ * `/plan/day` answers with the real one, so the first fetch teaches the plan.
+ * Identity-guarded: returning `state` unchanged when there is nothing to learn
+ * is what keeps the effect that calls this from looping.
+ */
+export function learnTimezone(
+  state: PlannerState,
+  parkSlug: string,
+  timezone: string
+): PlannerState {
+  const park = state.parks[parkSlug];
+  if (!park || park.timezone === timezone) return state;
+  return { ...state, parks: { ...state.parks, [parkSlug]: { ...park, timezone } } };
 }
 
 /** Drop a whole day. An empty park is dropped with it rather than lingering. */

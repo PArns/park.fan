@@ -1985,6 +1985,12 @@
     },
     "headliners": {
       "missing": "{count, plural, one {Ein Headliner fehlt noch} other {# Headliner fehlen noch}}"
+    },
+    "parkSearch": {
+      "placeholder": "Park suchen …",
+      "searching": "Suche …",
+      "noResults": "Kein Park gefunden.",
+      "alreadyPlanned": "schon im Plan"
     }
   }
 }
