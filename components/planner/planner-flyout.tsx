@@ -62,6 +62,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
     shiftFrom,
     addCustom,
     editCustom,
+    addRide,
   } = usePlanner();
 
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -227,8 +228,15 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
     : [];
 
   return (
-    <Sheet open={open} onOpenChange={handleOpenChange}>
+    // NOT modal on a desktop pointer. Radix's default puts `pointer-events: none`
+    // on everything outside the panel and a full-screen overlay over it, which
+    // is right for a dialog and wrong for a planner: the whole point of a side
+    // panel is that you keep browsing the park while it is open, and a ride card
+    // you cannot touch is a ride card you cannot drag onto the day. The phone
+    // sheet stays modal — a bottom sheet covering the screen has to trap.
+    <Sheet open={open} onOpenChange={handleOpenChange} modal={isPhone}>
       <SheetContent
+        modal={isPhone}
         side={isPhone ? 'bottom' : 'right'}
         // `side="bottom"` ships `h-auto` and no ceiling, so the height is the
         // call site's business. `svh` rather than `vh`: on iOS the address bar
@@ -355,6 +363,20 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                     liveWaits={liveWaits}
                     showLines={showLines}
                     closedNow={closedNow}
+                    parkSlug={park?.slug}
+                    onDropRide={(attractionSlug, attractionName, startMinute) => {
+                      if (!park || !activeDate) return;
+                      addRide({
+                        parkSlug: park.slug,
+                        parkName: park.name,
+                        geo: park.geo,
+                        timezone: day?.timezone ?? park.timezone,
+                        date: activeDate,
+                        attractionSlug,
+                        attractionName,
+                        startMinute,
+                      });
+                    }}
                     onResize={(entryId, durationMinutes) => {
                       if (activeParkSlug && activeDate)
                         editCustom(activeParkSlug, activeDate, entryId, { durationMinutes });

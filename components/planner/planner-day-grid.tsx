@@ -40,6 +40,10 @@ interface PlannerDayGridProps {
   showLines?: import('@/lib/planner/live').PlannerShowLine[] | null;
   /** Free blocks only: the visitor dragged the bottom edge to this many minutes. */
   onResize?: (entryId: string, durationMinutes: number) => void;
+  /** The plan's active park. A ride dropped in from another park is refused. */
+  parkSlug?: string;
+  /** A ride dragged in from the page behind the panel, dropped at this minute. */
+  onDropRide?: (attractionSlug: string, attractionName: string, startMinute: number) => void;
   /** Rides reporting closed right now. Empty where the date is not today. */
   closedNow?: ReadonlySet<string>;
   loading?: boolean;
@@ -107,6 +111,8 @@ export function PlannerDayGrid({
   liveWaits,
   showLines = null,
   onResize,
+  parkSlug,
+  onDropRide,
   closedNow,
   loading = false,
   onMove,
@@ -284,6 +290,25 @@ export function PlannerDayGrid({
     committed: boolean;
   } | null>(null);
 
+  /**
+   * The minute under a pointer, for a drop rather than a drag.
+   *
+   * Separate from `targetMinute` on purpose: that one reads `dragState` and
+   * subtracts the grab offset, because a block picked up by its middle must not
+   * jump its top to the cursor. A dropped ride has no grab offset — the cursor
+   * IS where it goes.
+   */
+  const minuteAtClientY = useCallback(
+    (clientY: number) => {
+      const canvas = canvasRef.current;
+      if (!canvas) return grid.openMin;
+      const raw = minuteAt(grid, clientY - canvas.getBoundingClientRect().top);
+      const step = matchMedia('(pointer: coarse)').matches ? SNAP_MIN_COARSE : SNAP_MIN_FINE;
+      return clampStart(grid, snapTo(raw, step), grid.openMin);
+    },
+    [grid]
+  );
+
   const targetMinute = useCallback(() => {
     const state = dragState.current;
     const canvas = canvasRef.current;
@@ -325,6 +350,49 @@ export function PlannerDayGrid({
    * object when nothing changed, so a gesture that wobbles inside one five-minute
    * step costs no write and no render.
    */
+  /**
+   * A ride dragged in from the page behind the panel.
+   *
+   * No change to `AttractionCard` and no drag source of our own: a card's root
+   * is an `<a>`, every browser makes links draggable, and the drag already
+   * carries `text/uri-list`. So the grid reads the URL it was given, and the
+   * card stays a Server Component rendered in eight places that knows nothing
+   * about the planner.
+   *
+   * The park gate is the URL's own park segment against the plan's active park.
+   * Dropping Voltron onto a Phantasialand day would be filing a ride under a
+   * park that does not have it — the forecast is per park, so the block would
+   * draw nothing and the day would be a lie.
+   */
+  const [dropMinute, setDropMinute] = useState<number | null>(null);
+
+  const rideFromUri = useCallback(
+    (uri: string): { slug: string; name: string } | null => {
+      const path = (() => {
+        try {
+          return new URL(uri, 'https://park.fan').pathname;
+        } catch {
+          return null;
+        }
+      })();
+      if (!path) return null;
+      // /<locale>/parks/<continent>/<country>/<city>/<park>/<attraction> — read by
+      // NAME rather than by counting holes in a destructuring, which is how the
+      // first version read `bruehl` as the park and silently refused every drop.
+      const parts = path.split('/').filter(Boolean);
+      const parksAt = parts.indexOf('parks');
+      if (parksAt === -1) return null;
+      const geo = parts.slice(parksAt + 1); // continent, country, city, park, attraction
+      if (geo.length < 5) return null;
+      const droppedPark = geo[3];
+      const slug = geo[4];
+      if (droppedPark !== parkSlug) return null;
+      const ride = ridesBySlug.get(slug);
+      return ride ? { slug, name: ride.attractionName } : null;
+    },
+    [parkSlug, ridesBySlug]
+  );
+
   const handleResizeStart = useCallback(
     (entry: PlannerEntry) => (event: React.PointerEvent<HTMLElement>) => {
       if (event.button !== 0 || !entry.custom || !onResize) return;
@@ -537,7 +605,38 @@ export function PlannerDayGrid({
         ref={canvasRef}
         className="relative min-w-0 flex-1 pr-2"
         style={{ height: grid.heightPx }}
+        onDragOver={(event) => {
+          if (!onDropRide) return;
+          // Only claim the drop once the URL is one we would accept, so a drag
+          // from another park keeps the browser's "no" cursor instead of
+          // promising a landing it will refuse.
+          const uri = event.dataTransfer.getData('text/uri-list');
+          // Chrome hides the payload during dragover; when it does, allow the
+          // drop and decide on `drop`, where the data is readable.
+          if (uri && !rideFromUri(uri)) return;
+          event.preventDefault();
+          event.dataTransfer.dropEffect = 'copy';
+          setDropMinute(minuteAtClientY(event.clientY));
+        }}
+        onDragLeave={() => setDropMinute(null)}
+        onDrop={(event) => {
+          setDropMinute(null);
+          if (!onDropRide) return;
+          const ride = rideFromUri(event.dataTransfer.getData('text/uri-list'));
+          if (!ride) return;
+          event.preventDefault();
+          onDropRide(ride.slug, ride.name, minuteAtClientY(event.clientY));
+        }}
       >
+        {/* Where it would land. The same line the drag itself commits to, so the
+            answer the visitor sees is the answer they get. */}
+        {dropMinute !== null && (
+          <div
+            className="bg-primary pointer-events-none absolute inset-x-0 z-30 h-0.5"
+            style={{ top: yFor(grid, dropMinute) }}
+            aria-hidden="true"
+          />
+        )}
         <PlannerGridGround grid={grid} rushByHour={rushByHour} dense={dense} loading={loading} />
 
         {/* "closes approximately" is a SENTENCE, and it lived in a 40 px gutter.
