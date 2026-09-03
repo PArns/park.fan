@@ -325,9 +325,17 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
 
             `shrink-0`, or the last step on a short phone — 746 px against the
             776 px a 92svh dialog gets at 844, and less on anything smaller —
-            squeezes the buttons instead of scrolling the body above them. */}
+            squeezes the buttons instead of scrolling the body above them.
+
+            And `px-3` below `sm` rather than the step body's `px-5`, because
+            this row is the one place a label decides the width: measured at
+            320 px across six locales, `Retour` + `Ouvrir le planning` came to
+            240 px in 231. Shortening the French was the wrong repair —
+            „planning" is the term the other nine strings in that locale use, so
+            trading it for „plan" to buy nine pixels would make one button
+            disagree with the rest of the panel. */}
         {step !== 'park' && (
-          <div className="border-border/60 flex shrink-0 items-center justify-between gap-2 border-t px-5 py-3 sm:px-6">
+          <div className="border-border/60 flex shrink-0 items-center justify-between gap-2 border-t px-3 py-3 sm:px-6">
             <Button
               variant="ghost"
               size="sm"

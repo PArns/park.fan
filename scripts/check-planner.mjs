@@ -1561,11 +1561,29 @@ if (reachable) {
     !/planner\.[a-z]/i.test(introText) && /Noch nichts geplant/.test(introText),
     introText.slice(0, 80)
   );
-  // The park search is the first step, not a control that appears later.
+  // The way in, and it is a BUTTON rather than a search field on the page.
+  // That field asked which park and nothing else, so the two questions that
+  // decide whether a day works — which day, and who is coming — were left to be
+  // discovered in the panel afterwards. The search is the wizard's first step
+  // now, so the assertion is that the empty page offers the wizard and that
+  // pressing it arrives on that step.
+  const emptyStart = page.locator('[data-planner-new-day]');
+  check('ohne Plan führt ein Knopf in den Assistenten', (await emptyStart.count()) >= 1);
   check(
-    'die Parksuche steht auch im leeren Zustand da',
-    (await page.locator('[data-planner-park-search]').count()) === 1
+    'die Parksuche steht auf der leeren Seite noch nicht im Weg',
+    (await page.locator('[data-planner-park-search]').count()) === 0
   );
+  if (await emptyStart.count()) {
+    await emptyStart.first().click();
+    const emptyWizard = page.locator('[data-slot="dialog-content"]');
+    await emptyWizard.waitFor({ state: 'visible', timeout: 10_000 }).catch(() => {});
+    check(
+      'der Assistent öffnet auf der Parksuche',
+      (await emptyWizard.locator('[data-planner-park-search] input[type="search"]').count()) === 1
+    );
+    await page.keyboard.press('Escape');
+    await emptyWizard.waitFor({ state: 'hidden', timeout: 10_000 }).catch(() => {});
+  }
   // Nothing planned, so nothing to list — and no empty "0 geplante Tage" heading.
   check(
     'kein leerer Plan-Abschnitt',
