@@ -2080,6 +2080,9 @@
       "add": "Qui vient ?",
       "tooShort": "Taille minimale supérieure à celle de la plus petite personne du planning",
       "wet": "Attraction aquatique"
+    },
+    "inPark": {
+      "cta": "Planifier la journée à {park}"
     }
   }
 }

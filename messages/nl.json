@@ -2080,6 +2080,9 @@
       "add": "Wie gaat mee?",
       "tooShort": "Minimumlengte hoger dan de kleinste persoon in het plan",
       "wet": "Waterattractie"
+    },
+    "inPark": {
+      "cta": "Vandaag inplannen bij {park}"
     }
   }
 }

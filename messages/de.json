@@ -2080,6 +2080,9 @@
       "add": "Wer kommt mit?",
       "tooShort": "Mindestgröße höher als die kleinste Person im Plan",
       "wet": "Wasserbahn"
+    },
+    "inPark": {
+      "cta": "Heute im {park} planen"
     }
   }
 }

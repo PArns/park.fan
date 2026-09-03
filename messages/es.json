@@ -2080,6 +2080,9 @@
       "add": "¿Quién viene?",
       "tooShort": "Altura mínima superior a la de la persona más baja del plan",
       "wet": "Atracción de agua"
+    },
+    "inPark": {
+      "cta": "Planifica hoy en {park}"
     }
   }
 }
