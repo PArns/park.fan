@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { Check, MapPin, Trash2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { addDays, todayInZone } from '@/lib/planner/park-time';
 import type { PlannerState } from '@/lib/planner/types';
 
 interface PlannerOverviewProps {
@@ -15,11 +16,6 @@ interface PlannerOverviewProps {
 }
 
 /** Today in the visitor's own reading, which is what "past" is measured against. */
-function todayLocal(): string {
-  const now = new Date();
-  return new Date(now.getTime() - now.getTimezoneOffset() * 60_000).toISOString().slice(0, 10);
-}
-
 /**
  * Every park and day in the plan, in one list.
  *
@@ -46,15 +42,17 @@ export function PlannerOverview({
 }: PlannerOverviewProps) {
   const t = useTranslations('planner');
   const locale = useLocale();
-  const today = todayLocal();
-  const tomorrow = new Date(`${today}T12:00:00Z`);
-  tomorrow.setUTCDate(tomorrow.getUTCDate() + 1);
-  const tomorrowDate = tomorrow.toISOString().slice(0, 10);
+  // There is no single "today" in this list. A plan may hold Phantasialand and
+  // Magic Kingdom at once, and at 23:00 in Berlin those two parks are on
+  // different dates — so "Heute" and the greying-out of past days are decided
+  // per park, against that park's own zone.
 
   const parks = useMemo(() => {
     return Object.values(state.parks)
       .map((park) => ({
         ...park,
+        today: todayInZone(park.timezone),
+        tomorrow: addDays(todayInZone(park.timezone), 1),
         days: Object.values(park.days)
           .filter((day) => day.entries.length > 0)
           .sort((a, b) => a.date.localeCompare(b.date)),
@@ -83,15 +81,15 @@ export function PlannerOverview({
           <ul>
             {park.days.map((day) => {
               const isActive = park.slug === activeParkSlug && day.date === activeDate;
-              const past = day.date < today;
+              const past = day.date < park.today;
               const done = day.entries.filter((entry) => entry.done).length;
               // Same wording as the day picker for the two dates that have a
               // name: a list that calls today "Do., 03. September" while the
               // picker beside it calls it "Heute" reads as two different days.
               const label =
-                day.date === today
+                day.date === park.today
                   ? t('day.today')
-                  : day.date === tomorrowDate
+                  : day.date === park.tomorrow
                     ? t('day.tomorrow')
                     : new Date(`${day.date}T12:00:00Z`).toLocaleDateString(locale, {
                         weekday: 'short',

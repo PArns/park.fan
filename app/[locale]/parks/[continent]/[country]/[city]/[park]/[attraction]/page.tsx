@@ -435,6 +435,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                         geo={{ continent, country, city }}
                         attractionSlug={attractionSlug}
                         attractionName={attraction.name}
+                        timezone={park.timezone}
                       />
                       <FavoriteStar type="attraction" id={attraction.id} size="lg" />
                     </div>

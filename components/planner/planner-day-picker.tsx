@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { addDays, todayInZone } from '@/lib/planner/park-time';
 
 interface PlannerDayPickerProps {
   /** Currently shown date, YYYY-MM-DD. */
@@ -11,21 +12,12 @@ interface PlannerDayPickerProps {
   onChange: (date: string) => void;
   /** Dates the plan already has entries for, marked in the list. */
   plannedDates?: readonly string[];
+  /** The active park's IANA zone — "Heute" means today THERE, not here. */
+  timezone?: string;
 }
 
 /** How far ahead the dropdown offers. The API's day payload reaches further. */
 const DAYS_AHEAD = 60;
-
-function addDays(isoDate: string, days: number): string {
-  const d = new Date(`${isoDate}T00:00:00Z`);
-  d.setUTCDate(d.getUTCDate() + days);
-  return d.toISOString().slice(0, 10);
-}
-
-function todayLocal(): string {
-  const now = new Date();
-  return new Date(now.getTime() - now.getTimezoneOffset() * 60_000).toISOString().slice(0, 10);
-}
 
 /**
  * Which day the plan is for.
@@ -41,12 +33,17 @@ function todayLocal(): string {
  * the common move — "what if we went Saturday instead" — and it should not cost
  * a dropdown, a scroll and a tap.
  */
-export function PlannerDayPicker({ value, onChange, plannedDates = [] }: PlannerDayPickerProps) {
+export function PlannerDayPicker({
+  value,
+  onChange,
+  plannedDates = [],
+  timezone,
+}: PlannerDayPickerProps) {
   const t = useTranslations('planner');
   // The reader's locale, not a hard-coded `de-DE`: this shipped German weekday
   // abbreviations into a list that is otherwise fully translated.
   const locale = useLocale();
-  const today = todayLocal();
+  const today = todayInZone(timezone);
   const planned = useMemo(() => new Set(plannedDates), [plannedDates]);
 
   const options = useMemo(() => {

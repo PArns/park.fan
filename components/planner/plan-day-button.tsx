@@ -13,6 +13,12 @@ export interface PlanDayButtonProps {
   geo: PlannerGeo;
   /** The calendar day this sits under, YYYY-MM-DD in the park's own reckoning. */
   date: string;
+  /**
+   * The park's IANA zone. The calendar already computes `todayInPark` from it,
+   * so it is always available here — and registering the park WITHOUT it is what
+   * left the whole panel reckoning in UTC.
+   */
+  timezone?: string;
   className?: string;
 }
 
@@ -28,7 +34,14 @@ export interface PlanDayButtonProps {
  * Everything that reads the `planner` namespace lives on this side of
  * `plan-day-button-lazy`'s import — see that file for why.
  */
-export function PlanDayButton({ parkSlug, parkName, geo, date, className }: PlanDayButtonProps) {
+export function PlanDayButton({
+  parkSlug,
+  parkName,
+  geo,
+  date,
+  timezone,
+  className,
+}: PlanDayButtonProps) {
   const t = useTranslations('planner');
   const { openDay } = usePlanner();
 
@@ -36,7 +49,7 @@ export function PlanDayButton({ parkSlug, parkName, geo, date, className }: Plan
     <button
       type="button"
       onClick={() => {
-        openDay({ slug: parkSlug, name: parkName, geo }, date);
+        openDay({ slug: parkSlug, name: parkName, geo, timezone }, date);
         plannerUi.requestOpen();
       }}
       className={cn(

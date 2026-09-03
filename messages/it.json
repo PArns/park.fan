@@ -1868,6 +1868,8 @@
     "open": "Apri il pianificatore",
     "addRide": "Nel piano",
     "inPlan": "Nel piano",
+    "addAgain": "Di nuovo",
+    "plannedTimes": "{count}× nel piano",
     "removeRide": "Togli dal piano",
     "empty": {
       "title": "Ancora niente in programma",

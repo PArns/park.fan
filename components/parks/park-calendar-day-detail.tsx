@@ -657,6 +657,7 @@ export function ParkCalendarDayDetail({
                 parkName={planner.parkName}
                 geo={planner.geo}
                 date={day.date}
+                timezone={parkTimezone}
               />
             </div>
           )}

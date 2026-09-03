@@ -11,7 +11,10 @@
  * Run: pnpm test:planner-park-time
  */
 
-import { addDays, formatGridTime, parkMinuteNow, parkToday } from '../lib/planner/park-time.ts';
+import { addDays, formatGridTime, parkMinuteNow, parkToday,
+  resolveTimeZone,
+  todayInZone,
+} from '../lib/planner/park-time.ts';
 
 const cases = [];
 const test = (name, actual, expected) => cases.push({ name, actual, expected });
@@ -74,6 +77,36 @@ test('a day later', addDays('2026-09-02', 1), '2026-09-03');
 test('across the autumn changeover', addDays('2026-10-24', 1), '2026-10-25');
 test('across a month end', addDays('2026-09-30', 1), '2026-10-01');
 test('backwards across a year end', addDays('2027-01-01', -1), '2026-12-31');
+
+// ── The zone the planner reckons in ─────────────────────────────────────────
+// The flyout resolved `?? 'UTC'` and no call site ever wrote the field, so the
+// whole panel ran on UTC — the wrong DATE for a large part of every day on both
+// sides of Greenwich. A known zone must win, and an unknown one must not become
+// a constant.
+const ACROSS_MIDNIGHT = Date.parse('2026-09-03T23:30:00Z');
+test(
+  'a known zone decides the date',
+  todayInZone('Pacific/Auckland', ACROSS_MIDNIGHT),
+  '2026-09-04'
+);
+test(
+  'the same instant is still the 3rd in Los Angeles',
+  todayInZone('America/Los_Angeles', ACROSS_MIDNIGHT),
+  '2026-09-03'
+);
+test(
+  'a known zone is exactly parkToday',
+  todayInZone('Europe/Berlin', ACROSS_MIDNIGHT),
+  parkToday('Europe/Berlin', ACROSS_MIDNIGHT)
+);
+test('a known zone survives resolution', resolveTimeZone('Europe/Berlin'), 'Europe/Berlin');
+// Not UTC: an unresolved zone falls back to the READER's, which is right for the
+// commonest case and merely imprecise for the rest.
+test(
+  'an unknown zone falls back to the reader, not to UTC',
+  resolveTimeZone(undefined),
+  Intl.DateTimeFormat().resolvedOptions().timeZone
+);
 
 // ── Report ───────────────────────────────────────────────────────────────────
 let failed = 0;

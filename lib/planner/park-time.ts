@@ -3,10 +3,11 @@ import { getDateTimeFormat } from '@/lib/utils/intl-format';
 /**
  * The planner's clock, which is the PARK's clock.
  *
- * Every time and every date in the planner is derived from the park's IANA zone.
- * The reader's own offset is never used — not for "today", not for the now line,
- * not for a label. `PlanDay.timezone` has been fetched and serialized since the
- * endpoint existed and was read by nothing.
+ * Every time and every date in the planner is derived from the park's IANA zone
+ * WHERE THAT ZONE IS KNOWN. The reader's offset is never used as a substitute for
+ * one we have — but the zone reaches the plan late, so `resolveTimeZone` names the
+ * one fallback and `todayInZone` is the only door to it. `PlanDay.timezone` had
+ * been fetched and serialized since the endpoint existed and was read by nothing.
  *
  * The reason is not tidiness. `add-to-planner-button.tsx` computed today from
  * `getTimezoneOffset()` and used it as the **localStorage key** an entry is
@@ -30,6 +31,40 @@ export function parkToday(timeZone: string, now: number = Date.now()): string {
     month: '2-digit',
     day: '2-digit',
   }).format(new Date(now));
+}
+
+/**
+ * Today in the park's reckoning where the zone is known, in the reader's where
+ * it is not.
+ *
+ * The fallback exists because the zone reaches the plan LATE. `PlannerPark.timezone`
+ * is written by whichever call site puts the park in — and until one does, the
+ * only alternatives are the reader's own zone or a constant. It was a constant:
+ * the flyout resolved `day?.timezone ?? park?.timezone ?? 'UTC'`, no call site
+ * ever wrote the field, and `/plan/day` answers 404 until the backend ships — so
+ * the whole planner ran on UTC, which is the wrong day for every reader west of
+ * Greenwich for part of every day and for every reader east of it after 22:00.
+ *
+ * The reader's zone is a better wrong answer than UTC and the right one for the
+ * commonest case by far, somebody planning the park they are standing in. Where
+ * the zone IS known this function is just {@link parkToday}.
+ *
+ * Not for rendering a TIME — only a date, and only where being one day out is
+ * recoverable. The now line and the grid axis take a real zone or nothing.
+ */
+export function todayInZone(timeZone: string | undefined, now: number = Date.now()): string {
+  return parkToday(resolveTimeZone(timeZone), now);
+}
+
+/**
+ * The park's zone where known, the reader's otherwise.
+ *
+ * Callers that need a zone STRING rather than a date use this — the now line and
+ * the grid's clock, where UTC put the marker hours out of place on any park not
+ * on Greenwich.
+ */
+export function resolveTimeZone(timeZone: string | undefined): string {
+  return timeZone ?? Intl.DateTimeFormat().resolvedOptions().timeZone ?? 'UTC';
 }
 
 /**
