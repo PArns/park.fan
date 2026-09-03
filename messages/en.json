@@ -1993,6 +1993,12 @@
       "searching": "Searching …",
       "noResults": "No park found.",
       "alreadyPlanned": "already planned"
+    },
+    "push": {
+      "off": "Turn on notifications",
+      "on": "Notifications are on",
+      "denied": "Your browser blocks notifications for this site. Only your browser settings can change that.",
+      "storedHint": "Your plan is stored on the server for this. Whoever has its link can read and change it — there is no account and no password."
     }
   }
 }
