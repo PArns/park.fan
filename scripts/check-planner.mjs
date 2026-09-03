@@ -188,7 +188,13 @@ const noteErrors = (page) =>
     if (msg.type() !== 'error' && !/MISSING_MESSAGE/.test(text)) return;
     // The one 404 the probe above already established. Everything else counts.
     if (!live && /404/.test(text) && /plan\/day|Failed to load resource/.test(text)) return;
-    consoleErrors.push(text);
+    // WHERE it happened, because this array is fed by every page in the run —
+    // desktop, phone, the stubbed grid, the drag pair, the locale sweep — and a
+    // failure that only prints the message sends the next reader hunting
+    // through nine flows. An intermittent hydration warning cost exactly that:
+    // it did not reproduce on any plain page load, and the report could not say
+    // which of the run's navigations had produced it.
+    consoleErrors.push(`[${page.url()}] ${text}`);
   });
 
 // ── Desktop ──────────────────────────────────────────────────────────────────
