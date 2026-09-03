@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { CalendarPlus } from 'lucide-react';
+import { ArrowRight, CalendarPlus } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { plannerUi } from '@/lib/planner/ui-store';
@@ -53,12 +53,18 @@ export function PlanDayButton({
         plannerUi.requestOpen();
       }}
       className={cn(
-        'bg-accent/60 text-foreground hover:bg-accent inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-colors max-sm:min-h-11 max-sm:px-3',
+        // A primary call to action, full width, and both halves of that are the
+        // point: this is the only way from a day somebody has just decided on
+        // into the thing that plans it, and it was a grey `text-xs` chip sitting
+        // under a wind speed — the quietest element on a panel whose every other
+        // row is a figure. It ends the panel, so it may as well be its width.
+        'bg-primary text-primary-foreground hover:bg-primary/90 flex w-full items-center justify-center gap-2 rounded-md px-4 py-2.5 text-sm font-semibold shadow-sm transition-colors max-sm:min-h-12',
         className
       )}
     >
-      <CalendarPlus className="size-3.5" />
+      <CalendarPlus className="size-4 shrink-0" />
       <span>{t('planThisDay')}</span>
+      <ArrowRight className="size-4 shrink-0" aria-hidden="true" />
     </button>
   );
 }
