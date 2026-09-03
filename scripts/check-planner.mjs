@@ -183,11 +183,46 @@ const browser = await chromium.launch(
 
 const consoleErrors = [];
 const noteErrors = (page) =>
-  page.on('console', (msg) => {
-    const text = msg.text();
+  page.on('console', async (msg) => {
+    // ARGUMENTS, not just `msg.text()`. The text is the FORMATTED message, and
+    // React puts a hydration diff — the `+`/`-` lines that name the attribute
+    // and its two values — in the arguments its `%s%s` placeholders consume. A
+    // waiver or a diagnosis written against the text alone is deciding on a
+    // string that does not contain the evidence: the same mismatch printed a
+    // deep tree with the class in one run and a tree truncated at `<main>` in
+    // another. Capped, because one of these arguments is a component tree.
+    let text = msg.text();
+    try {
+      const args = await Promise.all(
+        msg.args().map((a) =>
+          a
+            .jsonValue()
+            .then((v) => (typeof v === 'string' ? v : ''))
+            .catch(() => '')
+        )
+      );
+      text = [text, ...args].join('\n').slice(0, 20_000);
+    } catch {
+      // A closed page cannot be asked; the formatted text still counts.
+    }
     if (msg.type() !== 'error' && !/MISSING_MESSAGE/.test(text)) return;
     // The one 404 the probe above already established. Everything else counts.
     if (!live && /404/.test(text) && /plan\/day|Failed to load resource/.test(text)) return;
+    // The homepage hero's entrance window, which is not the planner's and is not
+    // a bug. `HeroEntranceGate` is an INLINE SCRIPT that removes `.hero-entering`
+    // from the hero `<section>` 1700 ms after that markup is parsed, and its own
+    // docstring says why it cannot be an effect: "on a throttled phone hydration
+    // itself lands after it, so a `useEffect` timer starts counting too late to
+    // ever win". So on any load where hydration is slower than the window — the
+    // tail of a long run here, a mid-range phone in the field — React finds a
+    // `className` the script has already edited and warns that it will not patch
+    // it up. It does not need to: the surviving value is the one the gate wanted.
+    //
+    // Waived by the exact class and the exact attribute, not by "hydration":
+    // caught once per six runs on `/de`, and the next mismatch anywhere else in
+    // this app must still fail this check. `suppressHydrationWarning` on that one
+    // section would end it at the source, which is the homepage's call to make.
+    if (/hydrat/i.test(text) && /hero-entering/.test(text) && /className/.test(text)) return;
     // WHERE it happened, because this array is fed by every page in the run —
     // desktop, phone, the stubbed grid, the drag pair, the locale sweep — and a
     // failure that only prints the message sends the next reader hunting
