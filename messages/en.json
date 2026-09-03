@@ -1956,7 +1956,8 @@
       "distance": "{distance} as the crow flies",
       "minWalk": "at least {minutes} min to change",
       "allowance": "incl. leaving the station and the ride itself, estimated",
-      "noSpread": "calculated without the forecast’s spread"
+      "noSpread": "calculated without the forecast’s spread",
+      "gap": "{minutes} min"
     },
     "close": "Clear selection",
     "shows": {

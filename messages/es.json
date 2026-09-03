@@ -1956,7 +1956,8 @@
       "distance": "{distance} en línea recta",
       "minWalk": "al menos {minutes} min de cambio",
       "allowance": "incluye salir de la estación y la atracción, estimado",
-      "noSpread": "calculado sin la dispersión de la previsión"
+      "noSpread": "calculado sin la dispersión de la previsión",
+      "gap": "{minutes} min"
     },
     "close": "Quitar la selección",
     "shows": {

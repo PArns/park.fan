@@ -747,7 +747,7 @@ await cal.waitForTimeout(4000);
 // the park is OPERATING — so try a few until one is open rather than assuming
 // the first of the month is.
 const cells = cal.locator('[role="button"][tabindex="0"][aria-label*="—"]');
-const planButton = cal.getByRole('button', { name: 'Diesen Tag planen' });
+const planButton = cal.getByRole('button', { name: 'Bahnen für diesen Tag einplanen' });
 const cellCount = await cells.count();
 let reachable = false;
 for (let i = 0; i < Math.min(cellCount, 8) && !reachable; i++) {
@@ -756,7 +756,7 @@ for (let i = 0; i < Math.min(cellCount, 8) && !reachable; i++) {
   reachable = (await planButton.count()) > 0;
   if (!reachable) await cal.keyboard.press('Escape');
 }
-check('„Diesen Tag planen" im Kalendertag', reachable, `Zellen: ${cellCount}`);
+check('„Bahnen für diesen Tag einplanen" im Kalendertag', reachable, `Zellen: ${cellCount}`);
 
 if (reachable) {
   await planButton.first().click();
@@ -2774,24 +2774,58 @@ if (reachable) {
       continue;
     }
 
-    // Only where it turns: overcast → rain → storm → showers → overcast, plus
-    // the hour the axis opens in. A figure at every hour is a table.
-    const titles = await band
-      .locator('[title]')
-      .evaluateAll((els) => els.map((el) => el.getAttribute('title') ?? ''));
-    check(`${label}: nur die Wechsel tragen ein Label`, titles.length === 5, titles.join(' | '));
+    // The band paints and the words arrive on demand. Two vocabularies to
+    // check and they live in different places now: the sparse per-change
+    // sentence — overcast → rain → storm → showers → overcast, plus the hour
+    // the axis opens in — is the `sr-only` list, and the hint a pointer gets is
+    // built per hour. A figure drawn at every hour would be a table; a figure
+    // drawn at every CHANGE was three type sizes in a 44 px column, which is
+    // why neither is drawn any more.
+    const spoken = await band
+      .locator('ul li')
+      .evaluateAll((els) => els.map((el) => el.textContent?.trim() ?? ''));
+    check(`${label}: nur die Wechsel werden vorgelesen`, spoken.length === 5, spoken.join(' | '));
     check(
       `${label}: ein nasser Wechsel nennt die Menge`,
-      titles.some((title) => /Gewitter/.test(title) && /mm/.test(title)),
-      titles.join(' | ')
+      spoken.some((line) => /Gewitter/.test(line) && /mm/.test(line)),
+      spoken.join(' | ')
     );
     // German decimals. `toFixed(1)` writes "3.6 mm", which is a different
     // number to everybody reading a German sentence.
     check(
       `${label}: die Menge ist deutsch geschrieben`,
-      titles.some((title) => /\d,\d\s*mm/.test(title)),
-      titles.join(' | ')
+      spoken.some((line) => /\d,\d\s*mm/.test(line)),
+      spoken.join(' | ')
     );
+
+    // Every hour is pointable, not just the five that change: the question a
+    // reader has is "what is it at three", and an answer only at the turns
+    // makes them work out which turn they are after.
+    const targets = band.locator('button');
+    const targetCount = await targets.count();
+    check(`${label}: jede Stunde ist anfassbar`, targetCount >= 5, `Ziele: ${targetCount}`);
+
+    // And the hint really opens. Hovered by the first target whose box is
+    // inside the viewport — the rail is taller than the panel's scroller, so
+    // the top of it can sit above the visible area.
+    let hint = null;
+    for (let i = 0; i < targetCount; i++) {
+      const box = await targets.nth(i).boundingBox();
+      if (!box || box.height < 6 || box.y < 60 || box.y + box.height > 880) continue;
+      await rail.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+      await rail.waitForTimeout(250);
+      hint = await rail.evaluate(
+        () => document.querySelector('[role="tooltip"]')?.textContent?.trim() ?? null
+      );
+      if (hint) break;
+    }
+    check(`${label}: ein Zeigen öffnet den Hinweis`, hint !== null, hint ?? 'kein Tooltip');
+    check(
+      `${label}: der Hinweis nennt die Stunde`,
+      hint !== null && /\d{2}:00/.test(hint),
+      hint ?? ''
+    );
+    await rail.mouse.move(2, 2);
 
     // The geometric one. The rail is a guest in the hour gutter, so nothing it
     // draws may hang off either edge of that column — the first version gave the
@@ -2801,12 +2835,12 @@ if (reachable) {
       if (!rail) return 'no rail';
       const column = rail.getBoundingClientRect();
       const bad = [];
-      for (const el of rail.querySelectorAll('[title], div[class*="bg-"]')) {
+      for (const el of rail.querySelectorAll('button, div[class*="bg-"]')) {
         const box = el.getBoundingClientRect();
         if (box.width === 0) continue;
         if (box.left < column.left - 0.5 || box.right > column.right + 0.5) {
           bad.push(
-            `${el.getAttribute('title') ?? el.className} @ ${Math.round(box.left)}..${Math.round(box.right)} vs ${Math.round(column.left)}..${Math.round(column.right)}`
+            `${el.getAttribute('aria-label') ?? el.className} @ ${Math.round(box.left)}..${Math.round(box.right)} vs ${Math.round(column.left)}..${Math.round(column.right)}`
           );
         }
       }

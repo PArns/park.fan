@@ -1956,7 +1956,8 @@
       "distance": "{distance} Luftlinie",
       "minWalk": "mindestens {minutes} Min. Umstieg",
       "allowance": "inkl. Ausstieg und Fahrt, geschätzt",
-      "noSpread": "ohne Streuung der Prognose gerechnet"
+      "noSpread": "ohne Streuung der Prognose gerechnet",
+      "gap": "{minutes} Min."
     },
     "close": "Auswahl aufheben",
     "shows": {
