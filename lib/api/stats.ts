@@ -66,13 +66,27 @@ export async function getParkHistoricalStats(
         // on retry, so return it and let the caller decide whether to render.
         return (await res.json()) as ParkHistoricalStats;
       }
-      // Non-OK → backend is still computing the cold aggregate → retry after backoff.
+      // A 404 is the API saying there is no such park or no such aggregate. That is a
+      // settled answer and the only one `null` may mean: retrying cannot make a park
+      // exist, and the caller is allowed to cache it. A park with THIN history is not
+      // this case — the API answers those with a 200 and an aggregate to match, which
+      // is why `null` never meant "too little history" however the route read it.
+      if (res.status === 404) return null;
+      // Anything else → backend still computing the cold aggregate → retry after backoff.
     } catch {
       // Network / transient error → retry after backoff.
     }
   }
 
-  return null;
+  // Out of attempts without an answer. This is NOT the same as the 404 above and must not
+  // be reported as one: a caller that treats it as "this park has no stats" caches our own
+  // outage as a fact about the park. It happened — three backend deploys inside ninety
+  // minutes, each a container swap wider than this 9.5-second window, and Phantasialand's
+  // stats section was served as `{"error":"Stats not available"}` from the edge for an hour
+  // while the API answered every request with 200.
+  throw new Error(
+    `historical stats ${parkSlug}: no answer after ${RETRY_DELAYS_MS.length} attempts`
+  );
 }
 
 /**
@@ -80,9 +94,11 @@ export async function getParkHistoricalStats(
  * ride by ride.
  *
  * Unlike `/stats` this is not a cold-compute path: the backend reads the same daily hourly rollup
- * and caches the projection for 24 h, so a single attempt is enough and a failure is a failure.
- * The retry loop above exists for the aggregate's first-request-builds-it behaviour, which this
- * endpoint does not have.
+ * and caches the projection for 24 h, so a single attempt is enough. The retry loop above exists
+ * for the aggregate's first-request-builds-it behaviour, which this endpoint does not have.
+ *
+ * `null` means the API answered 404 — a settled "no such profile". A failure throws, so the
+ * caller can tell the two apart; they are cached very differently.
  */
 export async function getParkHourlyProfile(
   continent: string,
@@ -93,13 +109,19 @@ export async function getParkHourlyProfile(
 ): Promise<ParkHourlyProfile | null> {
   const url = `${getApiBaseUrl()}/v1/parks/${continent}/${country}/${city}/${parkSlug}/stats/hourly?years=${years}&topN=${topN}`;
 
-  try {
-    const res = await fetch(url, { headers: getServerApiHeaders() });
-    if (!res.ok) return null;
-    return (await res.json()) as ParkHourlyProfile;
-  } catch {
-    return null;
+  const res = await fetch(url, { headers: getServerApiHeaders() });
+  // Same rule as `getRideDayCurve`: `null` is the API's 404 and nothing else — no such
+  // park, no such profile. Every other failure throws, because the route above turns a
+  // 404 into an hour of CDN cache and a throw into an uncached 500, and an outage of ours
+  // must not be stored as a fact about the park.
+  if (res.status === 404) return null;
+  if (!res.ok) {
+    const body = await res.text().catch(() => '');
+    throw new Error(
+      `hourly profile ${parkSlug}: ${res.status} ${res.statusText}${body ? ` — ${body.slice(0, 200)}` : ''}`
+    );
   }
+  return (await res.json()) as ParkHourlyProfile;
 }
 
 /**

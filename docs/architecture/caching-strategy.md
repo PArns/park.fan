@@ -628,6 +628,32 @@ const { data, isFetching } = useQuery({
 
 ---
 
+## A negative cache may only hold a settled answer (Sep 2026)
+
+`/api/parks/.../stats` served `{"error":"Stats not available"}` for Phantasialand while
+`api.park.fan` answered every request for the same data with a 200 and 3.3 KB. The response came
+back in **158 ms** with `x-vercel-cache: HIT` — too fast to have retried at all, because it never
+ran: it was a cached 404.
+
+The route caches a miss on purpose (`STATS_MISSING_CACHE`, one hour plus six of
+stale-while-revalidate), and that is right for an answer that will not change inside the hour. The
+fault was upstream of it: `getParkHistoricalStats` returned `null` for **two different things** —
+the API's own 404, and "all four attempts failed". So a backend that was briefly unreachable was
+stored at the edge as a fact about the park.
+
+It takes almost nothing to trigger. The retry ladder spans 9.5 s (`0 / 1500 / 3000 / 5000`), and a
+backend container swap is wider than that; three API deploys inside ninety minutes each opened a
+window big enough.
+
+**The rule:** a fetcher must distinguish "the API answered, and the answer is no" from "we never
+got an answer", and only the first may be cached as a miss. `getRideDayCurve` already did this —
+`null` for a 404, `throw` for anything else — and the other two now match it. A throw leaves
+through the route's `catch` as an uncached 500, so the next reader tries again.
+
+Note the case that was never real: a park with **thin history** does not produce a miss at all. The
+API answers it with a 200 and an aggregate to match, so `null` never meant "too little history",
+however the route's comment read. Guarded by `pnpm test:stats-fetchers`.
+
 ## Related
 
 - [System Overview](system-overview.md)

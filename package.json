@@ -77,7 +77,8 @@
     "impeccable:detect:ci": "npx -y impeccable@3 detect --json app components lib",
     "impeccable:install": "npx -y impeccable@3 install",
     "impeccable:update": "npx -y impeccable@3 update",
-    "measure:cls": "node scripts/measure-cls.mjs"
+    "measure:cls": "node scripts/measure-cls.mjs",
+    "test:stats-fetchers": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-stats-fetchers.mjs"
   },
   "dependencies": {
     "@octokit/rest": "^22.0.1",
