@@ -1982,6 +1982,9 @@
     },
     "sheet": {
       "handle": "Ampliar o cerrar el planificador"
+    },
+    "headliners": {
+      "missing": "{count, plural, one {Falta una atracción principal} other {Faltan # atracciones principales}}"
     }
   }
 }

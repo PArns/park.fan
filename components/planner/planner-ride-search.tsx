@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { CalendarPlus, Check, Plus, Search } from 'lucide-react';
+import { CalendarPlus, Check, Crown, Plus, Search } from 'lucide-react';
 import { usePlanner } from '@/lib/planner/use-planner';
 import type { PlannerGeo } from '@/lib/planner/types';
 import { buildDayGrid, nextFreeStart } from '@/lib/planner/day-grid';
@@ -93,6 +93,21 @@ export function PlannerRideSearch({
       )
     : undefined;
 
+  /**
+   * The park's headliners that are NOT in this day's plan.
+   *
+   * The CURATED set from the API (`isHeadliner`), never the day's tallest bars:
+   * `dayPeak` says what is busy, and "did I miss the big one" is a question
+   * about what the park is known for. A headliner having a quiet Tuesday is
+   * still the ride somebody travelled for.
+   *
+   * Silent once they are all in — a hint that never goes away is a decoration.
+   */
+  const missedHeadliners = useMemo(() => {
+    if (!day) return [];
+    return day.rides.filter((ride) => ride.isHeadliner && !planned.has(ride.attractionSlug));
+  }, [day, planned]);
+
   const matches = useMemo(() => {
     if (!day) return [];
     // Below: an empty list is rendered as a stated reason, not as nothing.
@@ -113,6 +128,41 @@ export function PlannerRideSearch({
           className="bg-accent/40 focus:bg-accent placeholder:text-muted-foreground/70 h-9 w-full rounded-md pr-2 pl-7 text-sm transition-colors outline-none max-sm:h-11"
         />
       </div>
+
+      {missedHeadliners.length > 0 && (
+        <div
+          data-planner-headliner-hint=""
+          className="border-crowd-high/30 bg-crowd-high/10 mb-2 rounded-md border px-2 py-1.5"
+        >
+          <p className="text-crowd-high flex items-center gap-1.5 text-[11px] font-medium">
+            <Crown className="size-3 shrink-0" />
+            {t('headliners.missing', { count: missedHeadliners.length })}
+          </p>
+          <div className="mt-1 flex flex-wrap gap-1">
+            {missedHeadliners.map((ride) => (
+              <button
+                key={ride.attractionSlug}
+                type="button"
+                onClick={() =>
+                  addRide({
+                    parkSlug,
+                    parkName,
+                    geo,
+                    timezone,
+                    date,
+                    attractionSlug: ride.attractionSlug,
+                    attractionName: ride.attractionName,
+                    startMinute: nextStart,
+                  })
+                }
+                className="bg-background/60 hover:bg-background border-border/50 rounded-full border px-2 py-0.5 text-[11px] transition-colors max-sm:min-h-9"
+              >
+                + {ride.attractionName}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       {onAddCustom && (
         <button

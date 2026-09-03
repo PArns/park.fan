@@ -1982,6 +1982,9 @@
     },
     "sheet": {
       "handle": "Ingrandisci o chiudi il pianificatore"
+    },
+    "headliners": {
+      "missing": "{count, plural, one {Manca ancora un’attrazione di punta} other {Mancano ancora # attrazioni di punta}}"
     }
   }
 }

@@ -1982,6 +1982,9 @@
     },
     "sheet": {
       "handle": "Planer vergrößern oder schließen"
+    },
+    "headliners": {
+      "missing": "{count, plural, one {Ein Headliner fehlt noch} other {# Headliner fehlen noch}}"
     }
   }
 }

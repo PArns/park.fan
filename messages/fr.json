@@ -1982,6 +1982,9 @@
     },
     "sheet": {
       "handle": "Agrandir ou fermer le planificateur"
+    },
+    "headliners": {
+      "missing": "{count, plural, one {Il manque encore une attraction phare} other {Il manque encore # attractions phares}}"
     }
   }
 }
