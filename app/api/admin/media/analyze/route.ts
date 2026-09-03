@@ -1,6 +1,7 @@
 import 'server-only';
 import { NextResponse } from 'next/server';
 
+import { getServerApiHeaders } from '@/lib/api/client';
 import { denyUnlessAdmin } from '@/lib/admin/session';
 import { suggestPark, suggestRides, type GeoAttraction } from '@/lib/media/suggest';
 import type { GeoPark } from '@/lib/media/geo';
@@ -53,7 +54,7 @@ function toDecimalDegrees(dms: unknown, ref: unknown): number | null {
 async function loadCatalog(): Promise<{ parks: GeoPark[] }> {
   try {
     const response = await fetch('https://api.park.fan/v1/parks?limit=1000', {
-      headers: { 'User-Agent': 'park.fan-admin/1.0' },
+      headers: getServerApiHeaders(),
       signal: AbortSignal.timeout(15_000),
       next: { revalidate: 3600 },
     });
@@ -90,7 +91,7 @@ async function loadAttractions(parkUrl: string): Promise<GeoAttraction[]> {
   if (cached) return cached;
   try {
     const response = await fetch(`https://api.park.fan${parkUrl}`, {
-      headers: { 'User-Agent': 'park.fan-admin/1.0' },
+      headers: getServerApiHeaders(),
       signal: AbortSignal.timeout(15_000),
       next: { revalidate: 3600 },
     });

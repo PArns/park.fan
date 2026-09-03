@@ -1,6 +1,7 @@
 import 'server-only';
 import { NextResponse } from 'next/server';
 
+import { getServerApiHeaders } from '@/lib/api/client';
 import { denyUnlessAdmin } from '@/lib/admin/session';
 import {
   MEDIA_REVISION,
@@ -58,7 +59,7 @@ function toRow(image: MediaImage) {
 async function loadParkGeo(): Promise<GeoPark[]> {
   try {
     const response = await fetch('https://api.park.fan/v1/parks?limit=1000', {
-      headers: { 'User-Agent': 'park.fan-admin/1.0' },
+      headers: getServerApiHeaders(),
       signal: AbortSignal.timeout(15_000),
       next: { revalidate: 3600 },
     });

@@ -27,6 +27,8 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
+import { getServerApiHeaders } from '../lib/api/client.ts';
+
 const API = process.env.CHECK_API ?? 'https://api.park.fan';
 const BLOG_DIR = 'content/blog';
 
@@ -48,7 +50,9 @@ function collect(re, text) {
 }
 
 async function parkIndex() {
-  const res = await fetch(`${API}/v1/discovery/geo`);
+  // Named the way the app names itself, from the same helper — an ad-hoc
+  // User-Agent is a second client to allow at the edge, and gets a 403.
+  const res = await fetch(`${API}/v1/discovery/geo`, { headers: getServerApiHeaders() });
   if (!res.ok) throw new Error(`geo structure: ${res.status} ${res.statusText}`);
   const geo = await res.json();
   const slugs = new Set();
