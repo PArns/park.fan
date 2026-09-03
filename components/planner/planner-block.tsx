@@ -43,6 +43,28 @@ const NO_FIGURE_PX = 40;
  * The icon is unaffected and still rides on the name row at any height — it is
  * what carries the warning where the sentence cannot go.
  */
+/**
+ * The shortest block that can carry its ride's photo.
+ *
+ * 28 px is roughly a 23-minute queue. Below it the box holds a single
+ * `text-[11px]` line and nothing else, so the picture would be a band a few
+ * pixels tall behind a name — which is what "a smear behind text" meant, and
+ * the old 48 px floor over-corrected by a factor of two.
+ */
+const PHOTO_MIN_PX = 28;
+
+/**
+ * How much of the photo shows through.
+ *
+ * This is a data surface and the tint carries the queue, so the picture is
+ * recognition rather than decoration — but 0.18 was below recognition. Swept
+ * against three real crops over the crowd tints at 0.18 / 0.30 / 0.45: at 0.18
+ * Taron's foliage is a suggestion, at 0.45 the block's own name and its
+ * "12:30–13:15 ↑ 0 m" line start losing the fight with a lit wooden track. 0.30
+ * is where the ride is recognisable and the text is still the first thing read.
+ */
+const PHOTO_OPACITY = 'opacity-[0.3]';
+
 const WARN_SENTENCE_PX = 54;
 const WARN_SENTENCE_WITH_LAND_PX = 69;
 
@@ -199,7 +221,8 @@ export function PlannerBlock({
         // just arrived in a single frame, at the instant the eye was on the
         // pointer, which is why it read as "the colour does not change". The
         // dragging branch stays transition-free or the drop fights the transform.
-        !dragging && 'transition-[box-shadow,opacity,background-color,border-color,color] duration-300'
+        !dragging &&
+          'transition-[box-shadow,opacity,background-color,border-color,color] duration-300'
       )}
       style={{
         top,
@@ -243,15 +266,23 @@ export function PlannerBlock({
         )}
       >
         {/* The ride's photo, behind everything, and only where there is enough
-            block to see any of it — under 48 px it is a smear behind text and
-            costs a request for nothing. Heavily dimmed: this is a data surface
-            and the tint carries the queue, so the picture is recognition rather
-            than decoration. `background-image` and not `next/image`, because a
-            block is 130–400 px wide, its size changes with the plan, and the
-            crop is already the right one. */}
-        {photo && boxPx >= 48 && (
+            block to see any of it. `background-image` and not `next/image`,
+            because a block is 130–400 px wide, its size changes with the plan,
+            and the crop is already the right one.
+
+            The floor was 48 px, which at 1.2 px per minute is a FORTY-MINUTE
+            queue — so the photo only ever appeared on a headliner's worst hour
+            and never on the twenty-to-thirty-five minute blocks a plan is
+            mostly made of. Measured on a four-ride day where every ride had a
+            picture: 30, 20, 36 and 42 px tall, four photos in the payload and
+            zero on screen. The proxy resolves them per request either way, so
+            that was a lookup nobody saw the result of.
+
+            {@link PHOTO_MIN_PX} is picked from the content instead: below it
+            the block is one `text-[11px]` line and a photo has nowhere to be. */}
+        {photo && boxPx >= PHOTO_MIN_PX && (
           <div
-            className="absolute inset-0 opacity-[0.18]"
+            className={cn('absolute inset-0', PHOTO_OPACITY)}
             style={{
               backgroundImage: `url(${photo.src})`,
               backgroundSize: 'cover',
@@ -418,15 +449,15 @@ export function PlannerBlock({
               it on a short block; this is the same statement at full length. */}
           {(closedNow || downYesterday) &&
             boxPx >= (boxPx >= 68 ? WARN_SENTENCE_WITH_LAND_PX : WARN_SENTENCE_PX) && (
-            <p
-              className={cn(
-                'truncate text-[10px]',
-                closedNow ? 'text-destructive' : 'text-crowd-high'
-              )}
-            >
-              {closedNow ? t('warn.closedNow') : t('warn.downYesterday')}
-            </p>
-          )}
+              <p
+                className={cn(
+                  'truncate text-[10px]',
+                  closedNow ? 'text-destructive' : 'text-crowd-high'
+                )}
+              >
+                {closedNow ? t('warn.closedNow') : t('warn.downYesterday')}
+              </p>
+            )}
         </div>
       </div>
 
