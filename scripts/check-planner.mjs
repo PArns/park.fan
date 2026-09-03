@@ -818,6 +818,74 @@ if (reachable) {
   await grid.close();
 }
 
+// ── CPU: no clock where there is no now line ────────────────────────────────
+// The minute tick was subscribed unconditionally, so on any date that is not
+// today — nearly every date somebody plans — the panel installed a 60-second
+// interval and re-rendered the whole grid once a minute for a line it never
+// draws. Counted rather than reasoned about: the page records every
+// `setInterval` before the panel opens.
+{
+  const cpu = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
+  noteErrors(cpu);
+  await cpu.addInitScript(() => {
+    const w = window;
+    w.__intervals = [];
+    const original = w.setInterval;
+    w.setInterval = function (handler, delay, ...rest) {
+      w.__intervals.push(delay);
+      return original.call(this, handler, delay, ...rest);
+    };
+  });
+
+  await cpu.route('**/plan/day**', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        parkSlug: PARK.slug,
+        timezone: 'Europe/Berlin',
+        context: {
+          date: DATE, status: 'OPERATING', openHour: 9, closeHour: 18,
+          crowdLevel: 'moderate', weather: null,
+          isHoliday: false, isBridgeDay: false, isSchoolVacation: false, isWeekend: false,
+        },
+        tier: 'measured', leadDays: 1, leadTimeMae: 7,
+        rides: [
+          {
+            attractionSlug: 'taron', attractionName: 'Taron', land: 'Mystery',
+            hours: Array.from({ length: 10 }, (_, i) => ({ hour: 9 + i, wait: 40 })),
+            dayPeak: 40, uncertaintyMinutes: 10, sampleDays: 400,
+          },
+        ],
+        shows: [],
+      }),
+    })
+  );
+
+  await seed(cpu);
+  const beforeOpen = await cpu.evaluate(() =>
+    (window.__intervals ?? []).filter((d) => d === 60_000).length
+  );
+  await cpu.locator(LAUNCHER).click();
+  await cpu.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await cpu.waitForTimeout(2500);
+
+  // The DELTA across opening the panel, not the page's total: the app already
+  // runs a 60-second interval of its own before the planner exists, so counting
+  // every timer on the page would have failed this for somebody else's clock.
+  const after = await cpu.evaluate(() =>
+    (window.__intervals ?? []).filter((d) => d === 60_000).length
+  );
+  const added = after - beforeOpen;
+  check(
+    'kein Minutentakt an einem Tag ohne Jetzt-Linie',
+    added === 0,
+    `${beforeOpen} vor dem Öffnen, ${after} danach`
+  );
+
+  await cpu.close();
+}
+
 // ── Dragging a ride in from the park page ───────────────────────────────────
 // The card is a Server Component rendered in eight places and it knows nothing
 // about the planner: its root is an `<a>`, every browser makes links draggable,
