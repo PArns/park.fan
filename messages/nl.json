@@ -1982,6 +1982,9 @@
     },
     "sheet": {
       "handle": "Planner vergroten of sluiten"
+    },
+    "headliners": {
+      "missing": "{count, plural, one {Eén headliner ontbreekt nog} other {# headliners ontbreken nog}}"
     }
   }
 }

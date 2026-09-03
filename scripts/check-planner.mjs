@@ -818,6 +818,97 @@ if (reachable) {
   await grid.close();
 }
 
+// ── The headliner a plan is missing ─────────────────────────────────────────
+// The CURATED flag, not the day's tallest bars. A plan holding Taron but not
+// F.L.Y. has to say so, and has to stop saying it the moment F.L.Y. goes in —
+// a hint that never goes away is a decoration.
+{
+  const hl = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
+  noteErrors(hl);
+
+  const ride = (slug, name, headliner) => ({
+    attractionSlug: slug,
+    attractionName: name,
+    land: 'Mystery',
+    hours: Array.from({ length: 10 }, (_, i) => ({ hour: 9 + i, wait: 40 })),
+    dayPeak: 40,
+    uncertaintyMinutes: 10,
+    sampleDays: 400,
+    ...(headliner ? { isHeadliner: true } : {}),
+  });
+
+  await hl.route('**/plan/day**', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        parkSlug: PARK.slug,
+        timezone: 'Europe/Berlin',
+        context: {
+          date: DATE, status: 'OPERATING', openHour: 9, closeHour: 18,
+          crowdLevel: 'moderate', weather: null,
+          isHoliday: false, isBridgeDay: false, isSchoolVacation: false, isWeekend: false,
+        },
+        tier: 'measured', leadDays: 1, leadTimeMae: 7,
+        rides: [
+          // Taron is seeded into the plan; F.L.Y. is not. Black Mamba is a
+          // headliner in neither sense — it must not appear in the hint.
+          ride('taron', 'Taron', true),
+          ride('fly', 'F.L.Y.', true),
+          ride('black-mamba', 'Black Mamba', false),
+        ],
+        shows: [],
+      }),
+    })
+  );
+
+  await hl.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  await hl.evaluate(
+    ([plan, date]) => {
+      const seeded = JSON.parse(JSON.stringify(plan));
+      const park = seeded.parks.phantasialand;
+      park.days = {
+        [date]: {
+          date,
+          entries: [
+            { id: 'taron-1', attractionSlug: 'taron', attractionName: 'Taron', startMinute: 600 },
+          ],
+        },
+      };
+      seeded.parks = { phantasialand: park };
+      seeded.activeParkSlug = 'phantasialand';
+      seeded.activeDate = date;
+      window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
+      document.cookie = 'planner=1; path=/';
+    },
+    [PLAN, DATE]
+  );
+  await hl.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+  await hl.locator(LAUNCHER).click();
+  await hl.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await hl.waitForTimeout(2500);
+
+  const hint = hl.locator(`${SHEET} button`).filter({ hasText: 'F.L.Y.' });
+  check('der fehlende Headliner wird angeboten', (await hint.count()) > 0, `${await hint.count()}`);
+
+  // Scoped to the hint itself. Reading the whole sheet catches the ride search
+  // below it, which lists every ride by design — the first version of this
+  // assertion failed on the panel's own header.
+  const hintText = (await hl.locator(`${SHEET} [data-planner-headliner-hint]`).textContent()) ?? '';
+  check('nur der FEHLENDE Headliner steht drin', /F\.L\.Y\./.test(hintText) && !/Taron/.test(hintText), hintText.slice(0, 60));
+  check('eine gewöhnliche Bahn steht nicht im Hinweis', !/Black Mamba/.test(hintText), hintText.slice(0, 60));
+
+  // And it goes quiet once the plan is complete.
+  if (await hint.count()) {
+    await hint.first().click();
+    await hl.waitForTimeout(600);
+    const left = await hl.locator(`${SHEET} [data-planner-headliner-hint]`).count();
+    check('der Hinweis verschwindet, sobald er erledigt ist', left === 0, `${left}`);
+  }
+
+  await hl.close();
+}
+
 // ── CPU: no clock where there is no now line ────────────────────────────────
 // The minute tick was subscribed unconditionally, so on any date that is not
 // today — nearly every date somebody plans — the panel installed a 60-second
