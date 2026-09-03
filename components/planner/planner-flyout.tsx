@@ -108,7 +108,6 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   const grid = buildDayGrid(day?.context.openHour, day?.context.closeHour);
   const isToday = Boolean(activeDate && activeDate === parkToday(timezone));
 
-
   // The live poll, and it is gated on TODAY for two reasons that point the same
   // way: a standby reading describes this minute and says nothing about a
   // Tuesday in November, and on a park page this is a cache hit on the key the
@@ -152,7 +151,6 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   // structurally unanswerable — which is a different statement from "no shows".
   const showLines = isToday && livePark ? showLinesFor(livePark.shows) : null;
 
-  const parkSlugs = Object.keys(state.parks);
   // Days of THIS park that already have entries — marked in the picker so the
   // visitor can find them again without remembering the date.
   const plannedDates = park
@@ -188,15 +186,17 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 className="text-muted-foreground hover:text-foreground -mx-1 flex min-w-0 items-center gap-1 rounded px-1 py-0.5 text-xs transition-colors"
               >
                 <span className="truncate">{park.name}</span>
-                {/* Only ever a disclosure of a list worth opening. */}
-                {(parkSlugs.length > 1 || plannedDates.length > 1) && (
-                  <ChevronDown
-                    className={cn(
-                      'size-3 shrink-0 transition-transform',
-                      showOverview && 'rotate-180'
-                    )}
-                  />
-                )}
+                {/* Always. Hiding it until a second park or day existed made the
+                    overview — the only route to another park or another day —
+                    invisible to everyone who had exactly one, which is everyone
+                    at the start. This chevron is where "how do I add another
+                    day" is answered, so it cannot wait for a second day. */}
+                <ChevronDown
+                  className={cn(
+                    'size-3 shrink-0 transition-transform',
+                    showOverview && 'rotate-180'
+                  )}
+                />
               </button>
               {activeDate && !showOverview && (
                 <PlannerDayPicker
@@ -256,11 +256,11 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                     isToday={isToday}
                     liveWaits={liveWaits}
                     showLines={showLines}
-                  closedNow={closedNow}
-                  onResize={(entryId, durationMinutes) => {
-                    if (activeParkSlug && activeDate)
-                      editCustom(activeParkSlug, activeDate, entryId, { durationMinutes });
-                  }}
+                    closedNow={closedNow}
+                    onResize={(entryId, durationMinutes) => {
+                      if (activeParkSlug && activeDate)
+                        editCustom(activeParkSlug, activeDate, entryId, { durationMinutes });
+                    }}
                     loading={dayState === 'loading'}
                     selectedId={selectedId}
                     scrollerRef={scrollerRef}

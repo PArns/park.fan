@@ -1942,9 +1942,9 @@
       "now": "Ahora"
     },
     "transfer": {
-      "tight": "justo",
-      "good": "bien",
-      "generous": "holgado",
+      "tight": "enlace justo",
+      "good": "enlace bien",
+      "generous": "enlace holgado",
       "broken": "no sale",
       "unknown": "abierto",
       "brokenBy": "faltan {minutes} min",
