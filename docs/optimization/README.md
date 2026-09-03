@@ -186,6 +186,47 @@ Vier Dinge folgen daraus, drei davon waren vorher Vermutung:
 _(Nebenbefund derselben Messung: `/de/parks/europe/germany/bruehl` — die Stadt-Ebene —
 antwortet selbst mit `308`. Deshalb stehen `301` und `308` unten in einem Atemzug.)_
 
+### Die Regel, wie sie aussehen sollte — in zwei Schritten
+
+Der Matcher darf **einfacher** werden, nicht komplizierter. `/*/parks/*/*/*/*` verlangt vier
+Segmente nach `/parks/`, um die Ride- und Park-Ebene zu treffen, und schließt dadurch die
+Geo-Hubs aus, die sowieso gecacht gehören. Ein einziges Wildcard-Level tut dasselbe und mehr:
+
+```
+http.host eq "park.fan"
+  and http.request.uri.path wildcard r"/*/parks/*"
+  and not starts_with(http.request.uri.path, "/api/")
+```
+
+**Der `/api/`-Ausschluss muss bleiben.** Das erste `*` matcht jedes erste Segment, also auch
+`api` — ohne die Zeile fängt die Regel `/api/parks/<geo>/<park>`, den Live-Poll, der alle fünf
+Minuten frische Wartezeiten holen soll, und serviert ihn 12 Stunden alt. Genau davor warnt der
+Kommentar in `next.config.ts`.
+
+Die Reihenfolge der zwei Schritte ist nicht optional:
+
+**Schritt 1 — jetzt, unabhängig von jedem Deploy, kein Risiko.**
+Nur _eine_ Einstellung: **Status code TTL → `308` und `301`** ergänzen (TTL wie das Edge TTL,
+12 h). Matcher und Edge TTL bleiben unangetastet. Damit hören die ~72 kB pro ausgelaufener
+Monats-URL sofort auf. Erwartung: −5.000 Invocations und −353 MB pro 12 h.
+
+**Schritt 2 — erst wenn PR #389 in Produktion ist und `scripts/check-cdn-cache.sh headers`
+für alle Pfade einen Wert zeigt.** Dann drei Änderungen zusammen:
+
+1. Matcher auf `/*/parks/*` vereinfachen (nimmt die Geo-Hubs mit auf).
+2. Edge TTL → **„Use cache-control header if present, bypass cache if not"**.
+3. **„Serve stale content while revalidating" einschalten** — sonst bleibt das
+   `stale-while-revalidate` aus den Headern ungenutzt.
+
+**Diese drei in der falschen Reihenfolge sind ein Rückschritt, kein Fortschritt:** stellt man
+auf „use cache-control" um, solange Ride-, Park- und Hub-Seiten keinen Header tragen, fallen
+sie auf ihr `no-store` zurück und werden **gar nicht** mehr gecacht — schlechter als die
+heutigen 10 %.
+
+Nach Schritt 2 ist der Statuscode-Eintrag aus Schritt 1 möglicherweise überflüssig, weil der
+308 dann selbst ein `cdn-cache-control` trägt (die Monats-Regel in `next.config.ts` greift auf
+ihm). Das ist eine Vermutung — nachmessen, nicht vorher entfernen.
+
 ### ① Statuscode-TTL für 308 und 301 auf der Parks-Cache-Rule
 
 **Cloudflare → Caching → Cache Rules → die `/*/parks/*`-Regel → Edge TTL → Statuscode-TTL.**
