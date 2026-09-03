@@ -31,6 +31,62 @@ const sharedCache = (value: string) => [
  * If a segment ever changes, all three move together: a stale entry here is a calendar page that
  * silently loses its cache window, which nothing renders and no test would catch.
  */
+/**
+ * A shared-cache window for a page, as the ONE header a dynamic page cannot overwrite.
+ *
+ * `Cache-Control` is off limits here — a Next page writes its own and wins (see the long note in
+ * the headers block). `CDN-Cache-Control` is RFC 9213's targeted header: Vercel forwards it and
+ * Cloudflare reads it ahead of `Cache-Control`, so it is the only place a page's edge window can
+ * be written down in this repo instead of in a dashboard nobody can diff.
+ *
+ * The shape is deliberate and the same everywhere: a SHORT `s-maxage` with a LONG
+ * `stale-while-revalidate`. Nothing in either repo can purge Cloudflare, so a long fresh window
+ * is how an edited blog post or a curated correction stays wrong for a day. With SWR the edge
+ * answers from cache and refreshes behind the reader, so a fix is out after roughly the
+ * `s-maxage` — at practically the hit rate of the long window.
+ */
+const edgeCache = (value: string) => [{ key: 'CDN-Cache-Control', value }];
+
+/** One hour fresh, a week of serving stale while it refreshes. The default for content pages. */
+const CONTENT_WINDOW = 'public, s-maxage=3600, stale-while-revalidate=604800';
+/** For documents a machine polls rather than a person reads (sitemaps, feeds, agent files). */
+const MACHINE_WINDOW = 'public, s-maxage=3600, stale-while-revalidate=86400';
+
+/**
+ * The localized URL segments for the three routes that live on a localized slug.
+ *
+ * Copies of the maps in the `redirects()`/`rewrites()` blocks below, for the same reason
+ * `parkCalendarHeaderSegments` is one: this file is loaded before the path aliases exist.
+ * `headers()` matches the INCOMING url, before any rewrite, so these must be the localized
+ * segments — matching the canonical route folder would set the header on a path nobody requests.
+ * A stale entry here is a page that silently loses its cache window; nothing renders it and no
+ * test catches it.
+ */
+const glossaryHeaderSegments = [
+  'glossary',
+  'glossar',
+  'glossaire',
+  'glossario',
+  'woordenboek',
+  'glosario',
+];
+const bestTimeHeaderSegments = [
+  'best-time-to-visit',
+  'beste-reisezeit',
+  'meilleure-periode-pour-visiter',
+  'periodo-migliore-per-visitare',
+  'beste-tijd-om-te-bezoeken',
+  'mejor-epoca-para-visitar',
+];
+const howtoHeaderSegments = [
+  'how-park-fan-works',
+  'so-funktioniert-park-fan',
+  'comment-fonctionne-park-fan',
+  'come-funziona-park-fan',
+  'hoe-park-fan-werkt',
+  'como-funciona-park-fan',
+];
+
 const parkCalendarHeaderSegments: Record<string, string> = {
   en: 'wait-time-calendar',
   de: 'wartezeiten-kalender',
@@ -891,6 +947,144 @@ const nextConfig: NextConfig = {
       // `cdn-cache-control`. If it is absent, the page overwrites this key too and the note
       // above simply grows a third entry. The Cloudflare rule change is a separate, manual step
       // and must not be made until that header is confirmed on the wire.
+      // ---------------------------------------------------------------------------------------
+      // Edge windows for everything OUTSIDE /parks/. Measured 2026-09-03: every one of these
+      // answered `cf-cache-status: DYNAMIC` and carried no window at all, so each request left
+      // Vercel in full. On the prerendered ones that is no invocation but the whole payload —
+      // the transfer line, not the compute line.
+      //
+      // They are listed BEFORE the /parks/ block so the more specific park rules win on any
+      // path both could claim.
+      // ---------------------------------------------------------------------------------------
+      {
+        // The homepage. An hour, not a day: its global counters are an SSR seed that a client
+        // overlay replaces on mount, but the seed is what a crawler reads and what a reader
+        // sees before hydration.
+        source: `/:locale(${locales.join('|')})`,
+        headers: edgeCache('public, s-maxage=3600, stale-while-revalidate=86400'),
+      },
+      {
+        // The whole blog: index, categories, tags, authors and the posts. One rule, because
+        // every one of them is markdown from this repo plus a manifest built at deploy time —
+        // they change together, when a deploy happens, and nothing here moves on its own.
+        source: '/:locale/blog/:path*',
+        headers: edgeCache(CONTENT_WINDOW),
+      },
+      {
+        // The six blog feeds. Listed AFTER the blog rule so this more specific source wins:
+        // a feed reader polls on its own clock and a week of stale would hide a new post from
+        // the one surface whose entire job is announcing it.
+        source: '/:locale/blog/feed.xml',
+        headers: edgeCache(MACHINE_WINDOW),
+      },
+      // The glossary (hub + term pages) and the two localized guide hubs. Their content is
+      // build-time data — a term page changes when a deploy changes it, never in between.
+      ...glossaryHeaderSegments.flatMap((segment) => [
+        { source: `/:locale/${segment}`, headers: edgeCache(CONTENT_WINDOW) },
+        { source: `/:locale/${segment}/:term`, headers: edgeCache(CONTENT_WINDOW) },
+      ]),
+      ...[...bestTimeHeaderSegments, ...howtoHeaderSegments, 'fancast'].map((segment) => ({
+        source: `/:locale/${segment}`,
+        headers: edgeCache(CONTENT_WINDOW),
+      })),
+      {
+        // Legal pages. A day fresh — they change once a year, and when they do, being an hour
+        // late is not the risk; being a week late is.
+        source: '/:locale/:page(impressum|datenschutz)',
+        headers: edgeCache('public, s-maxage=86400, stale-while-revalidate=604800'),
+      },
+      // The machine-facing surface. Nothing on the site renders any of it (see the agent-surface
+      // rule in CLAUDE.md), so a wrong window here is invisible — which is exactly why the
+      // window is short and the staleness long rather than the other way round.
+      ...[
+        '/robots.txt',
+        '/sitemap.xml',
+        '/sitemap-attractions.xml',
+        '/sitemap-calendar.xml',
+        '/sitemap-attractions/:locale.xml',
+        '/sitemap-calendar/:locale.xml',
+        '/llms.txt',
+        '/license.xml',
+        '/rss.xml',
+        '/manifest.webmanifest',
+      ].map((source) => ({ source, headers: edgeCache(MACHINE_WINDOW) })),
+      // NOT listed, on purpose:
+      //   /:locale/search          — answers `no-store` and must keep doing so; a query-keyed
+      //                              page shared across readers is a privacy question, not a
+      //                              cache question.
+      //   /:locale/contribute      — a form behind a Turnstile challenge. A cached challenge is
+      //                              a challenge already solved.
+      //   /admin, /api, /dev       — the Cloudflare rule excludes the first two by hand; giving
+      //                              any of them a window here would be the way to undo that.
+      // The RIDE page and the PARK page, the two highest-invocation routes in the app. Listed
+      // BEFORE the calendar block below so the calendar's own, more specific sources win — the
+      // hub `…/:park/<segment>` has the same segment count as `…/:park/:attraction` and would
+      // otherwise be claimed by the ride rule.
+      //
+      // These carry ONLY `CDN-Cache-Control`, for the reason the long note above gives: a
+      // dynamic page overwrites `Cache-Control` with its own `no-store`, and the RFC 9213
+      // targeted header is a different key that survives. Verified on the wire for the calendar
+      // month URL (2026-09-03) before these two were added.
+      //
+      // THEY DO NOTHING UNTIL THE CLOUDFLARE RULE MOVES. The `/*/parks/*` Cache Rule is on
+      // "ignore cache-control header and use this TTL", which wins over the origin. Proof: an
+      // out-of-range calendar month answers `308` carrying `cdn-cache-control: s-maxage=86400`
+      // and is still `cf-cache-status: BYPASS`. These rules exist so that rule CAN be moved to
+      // "use cache-control header if present" — which is the only way the TTL becomes a number
+      // in this file, diffable, instead of a dashboard field nobody can review.
+      //
+      // Before that switch: every page under `/*/parks/*` needs a window here, or the ones
+      // without a header fall back to the page's `no-store` and stop being cached entirely.
+      // Still missing at the time of writing: the geo hubs (`/:locale/parks`, `/…/:continent`,
+      // `/…/:country`, `/…/:city`). See docs/optimization/README.md.
+      {
+        // A ride page. Two days, and this is the longest window on the site on purpose: the
+        // crawl interval for these URLs is ~42 h against an edge TTL of ~6-12 h today, so the
+        // cache can never fill — measured hit rate 10 % against a 22 % ceiling. What the page
+        // renders that moves at all (wait time, status) is replaced on mount by the client poll;
+        // what is served from HTML is the curated ride, which changes when an editor changes it.
+        //
+        // The price, stated plainly: NOTHING in this repo or the backend can purge Cloudflare,
+        // so a curated correction stays invisible for as long as this window runs. Two days is
+        // the first step, not the ceiling — raising it further wants a Cloudflare purge in
+        // `/api/revalidate` first.
+        source: `/:locale(${locales.join('|')})/parks/:continent/:country/:city/:park/:attraction`,
+        headers: [
+          {
+            key: 'CDN-Cache-Control',
+            value: 'public, s-maxage=172800, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        // The geo hubs: `/:locale/parks`, and the continent, country and city levels under it.
+        // They are prerendered (ISR) and their live bits arrive through `/api/parks/live` on the
+        // client, so an hour costs no freshness and collapses a crawl burst.
+        //
+        // They are here for a second reason: the Cloudflare rule matches `/*/parks/*`, so once it
+        // moves to "use cache-control header if present" ANY page under that prefix without a
+        // window falls back to the page's own `no-store` and stops being cached at all. This
+        // block plus the two above plus the calendar block is that prefix, complete.
+        source: `/:locale(${locales.join('|')})/parks/:continent?/:country?/:city?`,
+        headers: [
+          {
+            key: 'CDN-Cache-Control',
+            value: 'public, s-maxage=3600, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        // A park page. An hour, not the ride page's two days: the backend POSTs this park's own
+        // cache tag at every status flip (see the API-budget rule in CLAUDE.md), and a long edge
+        // window is exactly what would swallow that. An hour still collapses a crawl burst.
+        source: `/:locale(${locales.join('|')})/parks/:continent/:country/:city/:park`,
+        headers: [
+          {
+            key: 'CDN-Cache-Control',
+            value: 'public, s-maxage=3600, stale-while-revalidate=86400',
+          },
+        ],
+      },
       ...Object.entries(parkCalendarHeaderSegments).flatMap(([locale, segment]) => [
         {
           // A calendar MONTH page: `…/<segment>/2026/10`. A day, because after the backend
