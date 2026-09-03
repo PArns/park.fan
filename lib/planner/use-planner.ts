@@ -3,16 +3,25 @@
 import { useCallback, useMemo, useSyncExternalStore } from 'react';
 import { plannerStore } from './store';
 import {
+  addCustomEntry,
   addEntry,
   clearDay as clearDayAction,
   moveEntry,
   openDay as openDayAction,
   removeEntry,
   setActive as setActiveAction,
-  shiftFrom as shiftFromAction,
+  setCustomBlock,
   setEntryDone,
+  shiftFrom as shiftFromAction,
 } from './actions';
-import { countAll, entriesFor, type PlannerEntry, type PlannerGeo } from './types';
+import {
+  countAll,
+  entriesFor,
+  type PlannerBlockIcon,
+  type PlannerCustomBlock,
+  type PlannerEntry,
+  type PlannerGeo,
+} from './types';
 
 interface AddRideParams {
   parkSlug: string;
@@ -24,6 +33,20 @@ interface AddRideParams {
   /** The park's IANA zone, so the plan can answer "what day is it there?". */
   timezone?: string;
   /** Park-local minutes since midnight. Omitted means "after the last entry". */
+  startMinute?: number;
+}
+
+/** A block the visitor writes themselves — a break, a show, a meeting point. */
+interface AddCustomRideParams {
+  parkSlug: string;
+  parkName: string;
+  geo: PlannerGeo;
+  date: string;
+  timezone?: string;
+  label: string;
+  icon: PlannerBlockIcon;
+  /** Omitted means the default hour. */
+  durationMinutes?: number;
   startMinute?: number;
 }
 
@@ -49,6 +72,22 @@ export function usePlanner() {
   const addRide = useCallback((params: AddRideParams) => {
     plannerStore.update((s) => addEntry(s, params));
   }, []);
+
+  const addCustom = useCallback((params: AddCustomRideParams) => {
+    plannerStore.update((s) => addCustomEntry(s, params));
+  }, []);
+
+  const editCustom = useCallback(
+    (
+      parkSlug: string,
+      date: string,
+      entryId: string,
+      patch: Partial<PlannerCustomBlock>
+    ) => {
+      plannerStore.update((s) => setCustomBlock(s, parkSlug, date, entryId, patch));
+    },
+    []
+  );
 
   const removeRide = useCallback((parkSlug: string, date: string, entryId: string) => {
     plannerStore.update((s) => removeEntry(s, parkSlug, date, entryId));
@@ -110,6 +149,8 @@ export function usePlanner() {
     setDone,
     setActive,
     openDay,
+    addCustom,
+    editCustom,
     clearDay,
   };
 }

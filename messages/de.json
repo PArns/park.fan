@@ -1888,7 +1888,8 @@
     "summary": {
       "rides": "{count, plural, =0 {Keine Bahn} one {Eine Bahn} other {# Bahnen}}",
       "waiting": "Wartezeit zusammen",
-      "done": "{done} von {total} gefahren"
+      "done": "{done} von {total} gefahren",
+      "blocks": "{count, plural, one {# Block} other {# Blöcke}}"
     },
     "entry": {
       "expected": "erwartet",
@@ -1897,7 +1898,8 @@
       "actual": "tatsächlich {minutes} Min.",
       "noCurve": "Für diese Bahn liegt keine Stundenkurve vor.",
       "dragHandle": "Verschieben",
-      "range": "{from} bis {to}"
+      "range": "{from} bis {to}",
+      "resizeHandle": "Dauer ziehen"
     },
     "tier": {
       "measured": "Stundenprognose",
@@ -1960,6 +1962,23 @@
     "warn": {
       "closedNow": "Meldet gerade geschlossen.",
       "downYesterday": "War gestern den ganzen Tag außer Betrieb."
+    },
+    "custom": {
+      "add": "Eigener Block",
+      "defaultLabel": "Pause",
+      "label": "Beschriftung",
+      "duration": "{minutes} Min.",
+      "shorter": "15 Minuten kürzer",
+      "longer": "15 Minuten länger",
+      "icon": {
+        "break": "Pause",
+        "food": "Essen",
+        "show": "Show",
+        "shop": "Shopping",
+        "photo": "Foto",
+        "meet": "Treffpunkt",
+        "star": "Sonstiges"
+      }
     }
   }
 }

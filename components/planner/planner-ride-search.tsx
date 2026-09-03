@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Check, Plus, Search } from 'lucide-react';
+import { CalendarPlus, Check, Plus, Search } from 'lucide-react';
 import { usePlanner } from '@/lib/planner/use-planner';
 import type { PlannerGeo } from '@/lib/planner/types';
 import { buildDayGrid, nextFreeStart } from '@/lib/planner/day-grid';
@@ -20,6 +20,12 @@ interface PlannerRideSearchProps {
   dayState: PlannerDayState;
   /** The park's IANA zone, stored with the park so the plan reckons in it. */
   timezone?: string;
+  /**
+   * Adds a block the visitor writes themselves. Beside the ride search rather
+   * than in a menu: the two are the same question — "what else goes in the day"
+   * — and one of the answers is not in the catalogue.
+   */
+  onAddCustom?: () => void;
 }
 
 /** Diacritics folded, so "winjas" finds "Winja's" and "fly" finds "F.L.Y.". */
@@ -56,6 +62,7 @@ export function PlannerRideSearch({
   day,
   dayState,
   timezone,
+  onAddCustom,
 }: PlannerRideSearchProps) {
   const t = useTranslations('planner');
   const { addRide, activeEntries } = usePlanner();
@@ -68,6 +75,8 @@ export function PlannerRideSearch({
   const planned = useMemo(() => {
     const counts = new Map<string, number>();
     for (const entry of activeEntries) {
+      // A free block has no slug and belongs to no row in this list.
+      if (!entry.attractionSlug) continue;
       counts.set(entry.attractionSlug, (counts.get(entry.attractionSlug) ?? 0) + 1);
     }
     return counts;
@@ -104,6 +113,16 @@ export function PlannerRideSearch({
         />
       </div>
 
+      {onAddCustom && (
+        <button
+          type="button"
+          onClick={onAddCustom}
+          className="text-muted-foreground hover:text-foreground hover:bg-accent/50 mt-1 flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-xs transition-colors max-sm:min-h-11"
+        >
+          <CalendarPlus className="size-3.5 shrink-0" />
+          <span className="truncate">{t('custom.add')}</span>
+        </button>
+      )}
       {matches.length === 0 ? (
         <p className="text-muted-foreground px-1 py-2 text-xs">
           {/* Three different silences, and they are not interchangeable: a

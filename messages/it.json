@@ -1888,7 +1888,8 @@
     "summary": {
       "rides": "{count, plural, =0 {Nessuna attrazione} one {Un’attrazione} other {# attrazioni}}",
       "waiting": "Attesa complessiva",
-      "done": "{done} su {total} fatte"
+      "done": "{done} su {total} fatte",
+      "blocks": "{count, plural, one {# blocco} other {# blocchi}}"
     },
     "entry": {
       "expected": "previsto",
@@ -1897,7 +1898,8 @@
       "actual": "{minutes} min in realtà",
       "noCurve": "Per questa attrazione non c’è una curva oraria.",
       "dragHandle": "Sposta",
-      "range": "dalle {from} alle {to}"
+      "range": "dalle {from} alle {to}",
+      "resizeHandle": "Trascina la durata"
     },
     "tier": {
       "measured": "Previsione oraria",
@@ -1960,6 +1962,23 @@
     "warn": {
       "closedNow": "Al momento risulta chiusa.",
       "downYesterday": "Ieri è rimasta ferma tutto il giorno."
+    },
+    "custom": {
+      "add": "Blocco personale",
+      "defaultLabel": "Pausa",
+      "label": "Etichetta",
+      "duration": "{minutes} min",
+      "shorter": "15 minuti in meno",
+      "longer": "15 minuti in più",
+      "icon": {
+        "break": "Pausa",
+        "food": "Pasto",
+        "show": "Spettacolo",
+        "shop": "Shopping",
+        "photo": "Foto",
+        "meet": "Punto d’incontro",
+        "star": "Altro"
+      }
     }
   }
 }

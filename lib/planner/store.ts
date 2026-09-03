@@ -1,7 +1,10 @@
 import { getCookie, setCookie } from 'cookies-next';
 import {
   EMPTY_PLANNER_STATE,
+  PLANNER_BLOCK_ICONS,
   hasAnyPlan,
+  type PlannerBlockIcon,
+  type PlannerCustomBlock,
   type PlannerEntry,
   type PlannerGeo,
   type PlannerState,
@@ -55,14 +58,41 @@ function secureJsonParse(raw: string): unknown {
  * empty their trip. A legacy `hour` is therefore lifted to `hour * 60` on read,
  * and both fields are written on save, until the mirror can go.
  */
+
+/**
+ * A free block, or `null` where the stored shape is not one.
+ *
+ * Read defensively because this comes out of localStorage, which is the only
+ * copy a plan has and which a previous build wrote. An icon outside the closed
+ * set falls back rather than dropping the block: the visitor's LABEL is the part
+ * they typed, and losing a lunch break over an unknown icon name would be the
+ * store deleting their plan to protect a class name.
+ */
+function toCustomBlock(value: unknown): PlannerCustomBlock | null {
+  if (typeof value !== 'object' || value === null) return null;
+  const c = value as Record<string, unknown>;
+  if (typeof c.label !== 'string') return null;
+  const icon = PLANNER_BLOCK_ICONS.includes(c.icon as PlannerBlockIcon)
+    ? (c.icon as PlannerBlockIcon)
+    : 'star';
+  const raw = typeof c.durationMinutes === 'number' ? c.durationMinutes : 60;
+  return {
+    label: c.label.slice(0, 60),
+    icon,
+    durationMinutes: Math.max(5, Math.min(720, Math.round(raw))),
+  };
+}
+
 function toEntry(value: unknown): PlannerEntry | null {
   if (typeof value !== 'object' || value === null) return null;
   const e = value as Record<string, unknown>;
-  if (
-    typeof e.id !== 'string' ||
-    typeof e.attractionSlug !== 'string' ||
-    typeof e.attractionName !== 'string'
-  ) {
+  if (typeof e.id !== 'string') return null;
+
+  // A free block carries a `custom` object and no ride. A RIDE without its two
+  // strings is a broken row and is dropped, as before — the relaxation here is
+  // for the new shape, not a general loosening.
+  const custom = toCustomBlock(e.custom);
+  if (!custom && (typeof e.attractionSlug !== 'string' || typeof e.attractionName !== 'string')) {
     return null;
   }
 
@@ -76,8 +106,9 @@ function toEntry(value: unknown): PlannerEntry | null {
 
   return {
     id: e.id,
-    attractionSlug: e.attractionSlug,
-    attractionName: e.attractionName,
+    ...(typeof e.attractionSlug === 'string' ? { attractionSlug: e.attractionSlug } : {}),
+    ...(typeof e.attractionName === 'string' ? { attractionName: e.attractionName } : {}),
+    ...(custom ? { custom } : {}),
     startMinute: Math.max(0, Math.min(1500, Math.round(startMinute))),
     hour: Math.floor(Math.max(0, Math.min(1500, startMinute)) / 60),
     ...(e.done === true ? { done: true } : {}),

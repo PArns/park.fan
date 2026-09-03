@@ -15,7 +15,7 @@ import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { totalsFor } from '@/lib/planner/estimate';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { formatShortDuration } from '@/lib/utils/duration';
-import { buildDayGrid } from '@/lib/planner/day-grid';
+import { buildDayGrid, nextFreeStart } from '@/lib/planner/day-grid';
 import { parkToday, resolveTimeZone } from '@/lib/planner/park-time';
 import { closedNowFor, liveWaitsFor, showLinesFor } from '@/lib/planner/live';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
@@ -54,6 +54,8 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
     clearDay,
     moveRide,
     shiftFrom,
+    addCustom,
+    editCustom,
   } = usePlanner();
 
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -255,6 +257,10 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                     liveWaits={liveWaits}
                     showLines={showLines}
                   closedNow={closedNow}
+                  onResize={(entryId, durationMinutes) => {
+                    if (activeParkSlug && activeDate)
+                      editCustom(activeParkSlug, activeDate, entryId, { durationMinutes });
+                  }}
                     loading={dayState === 'loading'}
                     selectedId={selectedId}
                     scrollerRef={scrollerRef}
@@ -304,6 +310,10 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                     setSelectedId(null);
                   }}
                   onClose={() => setSelectedId(null)}
+                  onEditCustom={(entryId, patch) => {
+                    if (activeParkSlug && activeDate)
+                      editCustom(activeParkSlug, activeDate, entryId, patch);
+                  }}
                 />
               )}
             </div>
@@ -321,13 +331,37 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   day={day ?? null}
                   dayState={dayState}
                   timezone={day?.timezone ?? park?.timezone}
+                  onAddCustom={() => {
+                    if (!park || !activeDate) return;
+                    addCustom({
+                      parkSlug: park.slug,
+                      parkName: park.name,
+                      geo: park.geo,
+                      timezone: day?.timezone ?? park.timezone,
+                      date: activeDate,
+                      label: t('custom.defaultLabel'),
+                      icon: 'break',
+                      startMinute: grid
+                        ? nextFreeStart(
+                            activeEntries.map((entry) => ({
+                              startMinute: entry.startMinute,
+                              spanMinutes: entry.custom?.durationMinutes ?? 45,
+                            })),
+                            grid
+                          )
+                        : undefined,
+                    });
+                  }}
                 />
               </div>
             )}
 
             {activeEntries.length > 0 && (
               <div className="border-border/60 text-muted-foreground flex shrink-0 items-baseline justify-between gap-3 border-t px-3 py-2.5 text-xs">
-                <span>{t('summary.rides', { count: activeEntries.length })}</span>
+                <span>
+                  {t('summary.rides', { count: activeEntries.length - totals.custom })}
+                  {totals.custom > 0 && ` · ${t('summary.blocks', { count: totals.custom })}`}
+                </span>
                 <span className="flex items-baseline gap-3">
                   {totals.done > 0 && (
                     <span>

@@ -10,6 +10,34 @@ export interface PlannerGeo {
   city: string;
 }
 
+/** The icons a free block may carry. A closed set, so a plan never stores a class name. */
+export const PLANNER_BLOCK_ICONS = [
+  'break',
+  'food',
+  'show',
+  'shop',
+  'photo',
+  'meet',
+  'star',
+] as const;
+export type PlannerBlockIcon = (typeof PLANNER_BLOCK_ICONS)[number];
+
+/**
+ * A block the visitor wrote themselves.
+ *
+ * Its height is a DURATION the visitor drags, not a queue the model predicts —
+ * which is the one structural difference from a ride. Everything else about it
+ * (where it sits, how it packs into lanes, what the legs either side of it say)
+ * is the same machinery, because an hour spent eating and an hour spent queuing
+ * cost the day the same hour.
+ */
+export interface PlannerCustomBlock {
+  label: string;
+  icon: PlannerBlockIcon;
+  /** Minutes. What the visitor dragged the bottom edge to. */
+  durationMinutes: number;
+}
+
 export interface PlannerEntry {
   /**
    * Stable across reorders and re-renders. Drag needs an identity that survives
@@ -17,8 +45,21 @@ export interface PlannerEntry {
    * in one day, so the slug cannot serve as the key.
    */
   id: string;
-  attractionSlug: string;
-  attractionName: string;
+  /**
+   * The ride this entry stands for — absent on a FREE BLOCK, which stands for
+   * nothing in the catalogue. Optional rather than an empty string on purpose:
+   * an empty slug would be a claim that a ride exists with no name, one render
+   * away from a reader, and every lookup keyed on it (`liveWaits`, `closedNow`,
+   * the forecast curve, the "already planned" count) would silently answer for
+   * a ride that is not there.
+   */
+  attractionSlug?: string;
+  attractionName?: string;
+  /**
+   * Set where this is a free block — a lunch break, a show, a meeting point,
+   * anything a visitor wants on the day that the catalogue does not know.
+   */
+  custom?: PlannerCustomBlock;
   /**
    * When the visit starts, as park-local minutes since midnight. Park-local
    * always: the reader's own offset never enters the planner, because this

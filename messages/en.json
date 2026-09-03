@@ -1888,7 +1888,8 @@
     "summary": {
       "rides": "{count, plural, =0 {No rides} one {One ride} other {# rides}}",
       "waiting": "Time queuing in total",
-      "done": "{done} of {total} ridden"
+      "done": "{done} of {total} ridden",
+      "blocks": "{count, plural, one {# block} other {# blocks}}"
     },
     "entry": {
       "expected": "expected",
@@ -1897,7 +1898,8 @@
       "actual": "actually {minutes} min",
       "noCurve": "There is no hourly curve for this ride.",
       "dragHandle": "Move",
-      "range": "{from} to {to}"
+      "range": "{from} to {to}",
+      "resizeHandle": "Drag duration"
     },
     "tier": {
       "measured": "Hourly forecast",
@@ -1960,6 +1962,23 @@
     "warn": {
       "closedNow": "Reporting closed right now.",
       "downYesterday": "Was out of service all day yesterday."
+    },
+    "custom": {
+      "add": "Own block",
+      "defaultLabel": "Break",
+      "label": "Label",
+      "duration": "{minutes} min",
+      "shorter": "15 minutes shorter",
+      "longer": "15 minutes longer",
+      "icon": {
+        "break": "Break",
+        "food": "Food",
+        "show": "Show",
+        "shop": "Shopping",
+        "photo": "Photo",
+        "meet": "Meeting point",
+        "star": "Other"
+      }
     }
   }
 }
