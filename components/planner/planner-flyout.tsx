@@ -14,6 +14,7 @@ import { PlannerPushToggle } from './planner-push-toggle';
 import { PlannerHelpSteps } from './planner-help';
 import { PlannerWizard } from './planner-wizard';
 import { PlannerPartyChips } from './planner-party-chips';
+import { PlannerInParkCta } from './planner-in-park-cta';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { totalsFor } from '@/lib/planner/estimate';
@@ -686,6 +687,13 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 />
               </div>
             )}
+
+            {/* Above the push toggle and below the search, because it is an
+                offer about a DIFFERENT day than the one on screen — putting it
+                in the header would read as a statement about the plan being
+                looked at. Renders nothing unless the visitor is inside a park
+                that is not the one being planned. */}
+            <PlannerInParkCta activeParkSlug={activeParkSlug} />
 
             {/* Under the ride search, above the summary: it belongs to the DAY
                 rather than to the panel's chrome, and it is the last thing
