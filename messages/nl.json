@@ -1942,9 +1942,9 @@
       "now": "Nu"
     },
     "transfer": {
-      "tight": "krap",
-      "good": "goed",
-      "generous": "ruim",
+      "tight": "overstap krap",
+      "good": "overstap goed",
+      "generous": "overstap ruim",
       "broken": "gaat niet",
       "unknown": "open",
       "brokenBy": "{minutes} min te kort",

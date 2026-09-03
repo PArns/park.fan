@@ -194,7 +194,12 @@ export function PlannerBlock({
       className={cn(
         'group absolute',
         dragging && 'z-30 opacity-90 shadow-lg',
-        !dragging && 'transition-[box-shadow,opacity] duration-150'
+        // The tone recomputes on every move — `estimate.wait` is a function of
+        // `startMinute` — so the colour DOES follow a block across the day. It
+        // just arrived in a single frame, at the instant the eye was on the
+        // pointer, which is why it read as "the colour does not change". The
+        // dragging branch stays transition-free or the drop fights the transform.
+        !dragging && 'transition-[box-shadow,opacity,background-color,border-color,color] duration-300'
       )}
       style={{
         top,

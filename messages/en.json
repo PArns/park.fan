@@ -1942,9 +1942,9 @@
       "now": "Now"
     },
     "transfer": {
-      "tight": "tight",
-      "good": "fine",
-      "generous": "generous",
+      "tight": "transfer tight",
+      "good": "transfer fine",
+      "generous": "transfer generous",
       "broken": "does not work",
       "unknown": "open",
       "brokenBy": "{minutes} min short",

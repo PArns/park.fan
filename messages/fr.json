@@ -1942,9 +1942,9 @@
       "now": "Maintenant"
     },
     "transfer": {
-      "tight": "juste",
-      "good": "correct",
-      "generous": "large",
+      "tight": "transfert juste",
+      "good": "transfert correct",
+      "generous": "transfert large",
       "broken": "ne passe pas",
       "unknown": "ouvert",
       "brokenBy": "il manque {minutes} min",

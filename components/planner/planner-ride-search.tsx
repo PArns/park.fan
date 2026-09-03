@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import { CalendarPlus, Check, Plus, Search } from 'lucide-react';
 import { usePlanner } from '@/lib/planner/use-planner';
 import type { PlannerGeo } from '@/lib/planner/types';
@@ -162,7 +163,31 @@ export function PlannerRideSearch({
                 }
                 className="hover:bg-accent flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left transition-colors max-sm:py-2.5"
               >
-                <Plus className="text-muted-foreground/60 size-3.5 shrink-0" />
+                {/* The ride's photo. It is ALREADY in the payload — the proxy
+                    route runs `enrichAttractionsWithImages` over `/plan/day`'s
+                    rides — so this costs no request, no type change and no
+                    `@/lib/media` import (that catalogue is 107 KB and this is a
+                    Client Component). `next/image` with a fixed box rather than
+                    the CSS background the block uses: the background loader is
+                    tuned for full-bleed photos at q50 and turns a 32 px
+                    thumbnail to mush. The focal point the admin set travels with
+                    it, so a photo framed for a card is framed here too. */}
+                {ride.backgroundImage ? (
+                  <span className="bg-muted relative size-8 shrink-0 overflow-hidden rounded">
+                    <Image
+                      src={ride.backgroundImage}
+                      alt=""
+                      fill
+                      sizes="96px"
+                      quality={75}
+                      style={{ objectFit: 'cover', objectPosition: ride.backgroundPosition }}
+                    />
+                  </span>
+                ) : (
+                  <span className="bg-muted/50 text-muted-foreground/60 flex size-8 shrink-0 items-center justify-center rounded">
+                    <Plus className="size-3.5" />
+                  </span>
+                )}
                 <span className="min-w-0 flex-1 truncate text-sm">{ride.attractionName}</span>
                 {/* One lap is a tick; two or more is a NUMBER. A "1×" on every
                     planned ride is a count of the obvious — the interesting
