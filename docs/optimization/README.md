@@ -148,7 +148,75 @@ Cloudflare-Regel darf nicht umgestellt werden, bevor das bestätigt ist.**
 Die ersten beiden liegen im **Cloudflare-Dashboard**. Kein Refactor in diesem Repo kommt in
 ihre Nähe, und beide sind ein Formularfeld.
 
-### Die Regel, wie sie am 2026-09-03 wirklich aussieht
+### Erledigt am 2026-09-03: die Regel steuert nichts mehr, der Header steuert alles
+
+Die Regel heißt jetzt **„Frontend cache"** und hat keinen Pfad-Matcher mehr:
+
+```
+http.host eq "park.fan"
+  and not starts_with(http.request.uri.path, "/api/")
+  and not starts_with(http.request.uri.path, "/admin/")
+```
+
+| Einstellung                    | Wert                                                         |
+| ------------------------------ | ------------------------------------------------------------ |
+| Edge TTL                       | **Use cache-control header if present, bypass cache if not** |
+| Status code TTL                | **308 → 12 h, 301 → 12 h, 404 → 1 h**                        |
+| Serve stale while revalidating | **an**                                                       |
+
+**Warum „bypass cache if not" ungefährlicher ist als es klingt** — und diese Session hat es
+zuerst zu absolut formuliert: Cloudflare liest `Cloudflare-CDN-Cache-Control` → `CDN-Cache-Control`
+→ **`Cache-Control`**. Der letzte ist ein Fallback, kein Ausschluss. Gemessen, bevor umgestellt
+wurde:
+
+| Was                                     | `Cache-Control`                       | Folge                     |
+| --------------------------------------- | ------------------------------------- | ------------------------- |
+| `/_next/static/*`, `/icon.svg`          | `public, max-age=31536000, immutable` | bleibt gecacht            |
+| `/parks/*`                              | `no-store` **+ `CDN-Cache-Control`**  | gecacht, wie gewollt      |
+| `/de/search`, `/contribute/thanks`      | `private, no-store`                   | bypass — richtig so       |
+| prerenderte Seiten ohne eigenes Fenster | `public, max-age=0, must-revalidate`  | revalidiert, kein Schaden |
+
+Dazu: **keine einzige `set-cookie`** auf `/de`, einer Ride-Seite oder `/admin` — nichts
+Personalisiertes kann in den Cache geraten. Der `/admin`-Ausschluss ist trotzdem drin, als Zaun,
+nicht als Reparatur. _(Er ist mit Schrägstrich geschrieben, `/admin/`, trifft also `/admin` selbst
+nicht — unkritisch, weil diese Seite `max-age=0, must-revalidate` sendet und die Shell keine
+Daten enthält, aber beim nächsten Anfassen der Regel gehört der Schrägstrich weg.)_
+
+Seitdem entscheidet **allein dieses Repo**, was gecacht wird, und man sieht es im Diff.
+
+#### Was mit den IP-abhängigen Routen ist (geprüft 2026-09-03)
+
+Die naheliegende Sorge bei einem geteilten Cache: eine Seite, die nach der IP des Besuchers
+rendert, wird einmal gerendert und dann allen ausgeliefert. Nachgesehen statt angenommen —
+**es gibt keine solche Seite.**
+
+Die IP wird an genau drei Stellen serverseitig gelesen, alle drei sind Route Handler unter
+`/api/`, und `/api/` ist von der Cloudflare-Regel ausgeschlossen:
+
+| Route                   | `Cache-Control`  | Cloudflare |
+| ----------------------- | ---------------- | ---------- |
+| `/api/nearby`           | `no-store`       | **BYPASS** |
+| `/api/favorites`        | `no-store`       | **BYPASS** |
+| `/api/contribute/start` | `no-store`       | —          |
+| `/api/admin/session`    | (unter `/admin`) | —          |
+
+Doppelt abgesichert also: der Pfad-Ausschluss **und** das `no-store` des Handlers.
+
+**`NearbyParksSection` ist trotz des Namens keine Ausnahme.** Sie ist zwar eine Server
+Component, bekommt aber `park.latitude`/`park.longitude` — die Koordinaten **des Parks**, nicht
+des Besuchers (`park-page-shell.tsx:192`). „Parks in der Nähe dieses Parks" ist für jeden Leser
+dieselbe Antwort und gehört in den Cache.
+
+Alles Besucherabhängige läuft im Client, nach dem Mount: `useNearbyParks`, `useGeolocation`,
+`use-distance-to`, `use-favorites`. Sie holen ihre Daten über die `no-store`-Routen oben, nie
+über den Server-Render.
+
+Die drei APIs mit einem Fenster (`/api/parks/live`, `/api/search`, `/api/weather/hourly`) sind
+**parameterabhängig, nicht nutzerabhängig** — dieselben Query-Werte, dieselbe Antwort. Und
+dazu passend: **keine `set-cookie`** auf einer HTML-Antwort (`proxy.ts:39` entfernt sie), also
+kann auch von dort nichts Personalisiertes in den Cache geraten.
+
+### Wie es vorher aussah (zur Einordnung)
 
 Aus dem Dashboard abgelesen (Regel **„Park & Ride cache"**), damit sie niemand mehr raten muss:
 
