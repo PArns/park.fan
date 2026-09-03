@@ -303,16 +303,42 @@ if (live) {
   );
 }
 
-// Ticking off writes through to storage, which is the whole persistence path.
-const firstCheck = rows.first().locator('button[aria-label="Als gefahren markieren"]');
-if (await firstCheck.count()) {
-  await firstCheck.click();
+// Ticking off writes through to storage, which is the whole persistence path —
+// and the tick is in a DIFFERENT PLACE on the two paths this panel has. The flat
+// list (what a visitor sees while `/plan/day` 404s) puts it in the entry row; the
+// grid puts it in the action bar a selected block raises, because a 24 px block
+// has no room for a control and a plan is read before it is edited. This block
+// used to look only in the row, so the day the endpoint went live it reported
+// "Abhaken-Knopf vorhanden: false" on a panel whose tick-off works — and took
+// the MIGRATION assertion down with it, which is the one that matters most here
+// and is not about ticking at all.
+const rowTick = rows.first().locator('button[aria-label="Als gefahren markieren"]');
+let tickPath = null;
+if (await rowTick.count()) {
+  await rowTick.click();
+  tickPath = 'Zeile';
+} else {
+  // The grid: select the first block, then use the bar it raises.
+  const firstBlock = page.locator('li[data-planner-block]').first();
+  if (await firstBlock.count()) {
+    await firstBlock.click();
+    await page.waitForTimeout(300);
+    const barTick = page.locator('button[aria-label="Als gefahren markieren"]').first();
+    if (await barTick.count()) {
+      await barTick.click();
+      tickPath = 'Aktionsleiste';
+    }
+  }
+}
+check('Abhaken ist erreichbar', tickPath !== null, tickPath ?? 'weder Zeile noch Aktionsleiste');
+
+if (tickPath) {
   await page.waitForTimeout(400);
   const stored = await page.evaluate(() =>
     JSON.parse(window.localStorage.getItem('parkfan_planner') ?? '{}')
   );
   const done = stored?.parks?.[PLAN.activeParkSlug]?.days?.[PLAN.activeDate]?.entries?.[0]?.done;
-  check('Abhaken wird gespeichert', done === true, `done=${done}`);
+  check('Abhaken wird gespeichert', done === true, `done=${done} über ${tickPath}`);
 
   // The tick-off is the first store WRITE, and the store rewrites the whole plan
   // — so this is the first moment the migration is observable. The entry was
@@ -323,8 +349,6 @@ if (await firstCheck.count()) {
       (e) => e.id === 'black-mamba-1'
     )?.startMinute ?? null;
   check('alter Eintrag mit `hour` wird auf Minuten gehoben', migrated === 900, `${migrated}`);
-} else {
-  check('Abhaken-Knopf vorhanden', false);
 }
 
 // On a phone this input is the only way to add anything, so it may never vanish
@@ -617,10 +641,23 @@ if (await phoneLauncher.count()) {
   // `after:` pseudo-element that a bounding box does not see.
   const phoneBlocks = phone.locator('li[data-planner-block]');
   if ((await phoneBlocks.count()) > 0) {
+    // SCROLLED INTO VIEW first, and only then sampled. `elementFromPoint` takes
+    // viewport coordinates and answers about whatever is painted there — so for
+    // a block that the grid has scrolled out of sight it reports the element
+    // that happens to occupy those coordinates instead. On the day the endpoint
+    // went live this returned a suggestion pill from the ride search two hundred
+    // pixels further down (`inBlock: false`), and the run called it a grip that
+    // could not be touched. The desktop pass had always been fine because
+    // nothing there scrolls the first block away.
+    await phoneBlocks.first().scrollIntoViewIfNeeded();
+    await phone.waitForTimeout(200);
     const hit = await phone.evaluate(() => {
       const block = document.querySelector('li[data-planner-block]');
       if (!block) return 'no block';
       const box = block.getBoundingClientRect();
+      // A box the sample point cannot be inside is not a measurement.
+      if (box.width < 1 || box.height < 1) return 'no box';
+      if (box.top < 0 || box.bottom > window.innerHeight) return 'außerhalb des Sichtfelds';
       const el = document.elementFromPoint(box.left + 8, box.top + box.height / 2);
       return el?.closest('li[data-planner-block]') ? 'grip' : (el?.tagName ?? 'nothing');
     });
