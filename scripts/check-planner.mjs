@@ -684,17 +684,37 @@ if (await phoneLauncher.count()) {
     // pixels further down (`inBlock: false`), and the run called it a grip that
     // could not be touched. The desktop pass had always been fine because
     // nothing there scrolls the first block away.
-    await phoneBlocks.first().scrollIntoViewIfNeeded();
-    await phone.waitForTimeout(200);
+    // SEVERAL points down the grip's column, and reachable at ANY of them is
+    // reachable. One mid-height sample cannot tell a covered grip from a
+    // sample point that happens to sit under a sticky layer, and this panel has
+    // two: the show band at `sticky top-0 z-40` and the action bar at
+    // `bottom-0 z-40`. Measured on a 390 px phone, the first block sat 342–366
+    // with the band pinned at 354–376 — twelve pixels of it covered, twelve
+    // free, and the one sample landed in the covered half. Two earlier versions
+    // of this probe reported "BUTTON" and then "DIV" for a grip that the element
+    // stack shows intact: the transparent range input at z-20 and the
+    // `cursor-grab` button at z-10, both inside the block, both
+    // `pointer-events: auto`.
+    //
+    // Still `elementFromPoint` and not a bounding box, for the reason the first
+    // version gives: on a short block the target is grown by an `after:`
+    // pseudo-element that no box reports.
     const hit = await phone.evaluate(() => {
       const block = document.querySelector('li[data-planner-block]');
       if (!block) return 'no block';
       const box = block.getBoundingClientRect();
-      // A box the sample point cannot be inside is not a measurement.
       if (box.width < 1 || box.height < 1) return 'no box';
-      if (box.top < 0 || box.bottom > window.innerHeight) return 'außerhalb des Sichtfelds';
-      const el = document.elementFromPoint(box.left + 8, box.top + box.height / 2);
-      return el?.closest('li[data-planner-block]') ? 'grip' : (el?.tagName ?? 'nothing');
+      const inside = (y) => y >= 0 && y <= window.innerHeight;
+      const ys = [0.15, 0.35, 0.5, 0.65, 0.85].map((f) => box.top + box.height * f).filter(inside);
+      if (ys.length === 0) return 'außerhalb des Sichtfelds';
+      const seen = [];
+      for (const y of ys) {
+        const el = document.elementFromPoint(box.left + 8, y);
+        if (el?.closest('li[data-planner-block]')) return 'grip';
+        seen.push(el?.tagName ?? 'nothing');
+      }
+      // What covered it, at every point, so a real regression names its culprit.
+      return seen.join('/');
     });
     check('Griff ist auf dem Handy treffbar', hit === 'grip', hit);
   } else {
