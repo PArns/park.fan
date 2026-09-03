@@ -136,3 +136,9 @@ scripts/_shot.mjs
 scripts/_probe.mjs
 scripts/_contrast.mjs
 scripts/_shot2.mjs
+
+# Skill installs: the SKILL.md itself is caught by the repo-wide `*.md` rule,
+# so a committed symlink into `.agents/` would dangle in every other clone.
+# `skills-lock.json` is the reproducible record and IS committed.
+.claude/skills/
+.agents/
