@@ -50,19 +50,23 @@ export function PlannerDayPicker({
     const list: { date: string; label: string }[] = [];
     for (let i = 0; i < DAYS_AHEAD; i++) {
       const date = addDays(today, i);
-      const weekday = new Date(`${date}T12:00:00Z`).toLocaleDateString(locale, {
-        weekday: 'short',
-        day: '2-digit',
-        month: '2-digit',
-      });
-      const label = i === 0 ? t('day.today') : i === 1 ? t('day.tomorrow') : weekday;
+      const label =
+        i === 0 ? t('day.today') : i === 1 ? t('day.tomorrow') : formatDay(date, locale);
       list.push({ date, label: planned.has(date) ? `${label} ·` : label });
     }
     // A day already being planned that has scrolled out of the window still has
     // to be selectable, or switching to it from the park list would show a
-    // dropdown that disagrees with the panel below it.
+    // dropdown that disagrees with the panel below it. That is every day in the
+    // PAST, which the window never covers.
+    //
+    // Formatted like the rest of the list rather than dropped in as `value`,
+    // which is what it was: a raw `2026-09-02` in a control whose every other
+    // entry reads "Mi., 02.09." — and beside an overview calling the same day
+    // "Mi., 02. September". Machine text in a UI that is otherwise fully
+    // translated, and it only ever showed up on a finished day, which is the
+    // one nobody re-checks.
     if (!list.some((o) => o.date === value)) {
-      list.unshift({ date: value, label: value });
+      list.unshift({ date: value, label: formatDay(value, locale) });
     }
     return list;
   }, [today, value, planned, locale, t]);
@@ -110,4 +114,19 @@ export function PlannerDayPicker({
       </button>
     </div>
   );
+}
+
+/**
+ * One date as this control writes them: `Mi., 02.09.`
+ *
+ * Noon UTC, never midnight: `new Date('2026-09-02')` is midnight UTC, which is
+ * the previous day for every reader west of Greenwich — the label would name a
+ * different day from the value it sits on.
+ */
+function formatDay(date: string, locale: string): string {
+  return new Date(`${date}T12:00:00Z`).toLocaleDateString(locale, {
+    weekday: 'short',
+    day: '2-digit',
+    month: '2-digit',
+  });
 }
