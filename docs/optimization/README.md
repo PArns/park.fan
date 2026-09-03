@@ -10,6 +10,66 @@ und dann `decisions.md`.**
 
 ---
 
+## Der größte Einzelposten war kein HTML, sondern die Bilder
+
+Gefunden erst, nachdem alle HTML-Fenster standen, und größer als alles davor zusammen.
+
+Auf einer Ride-Seite hängen **20 optimierte Bilder ≈ 994 kB** — gegen **57 kB** HTML. Das ist
+**~18× die Seite selbst**, und sie waren alle `cf-cache-status: BYPASS`, bei jedem einzelnen
+Abruf. Wichtig für die Einordnung, und hier zahlt sich das Trennen der beiden Cache-Schichten
+aus:
+
+```
+cf-cache-status : BYPASS    ← Cloudflare cachte nicht
+x-vercel-cache  : HIT       ← Vercels Optimizer-Cache griff
+```
+
+Es kostete also **keine CPU** (kein Bild wurde neu optimiert), aber die **vollen Bytes**
+verließen Vercel jedes Mal. Reiner Fast-Data-Transfer.
+
+**Die Ursache stand in einer zweiten Cache-Regel**, nicht im Code: eine eigene Regel für
+`/_next` hatte unter **Vary** die Option **„Bypass caching"** stehen — „skip caching when the
+request has a header listed in the response's Vary header, but does not have a specific
+configuration". `/_next/image` sendet `Vary: Accept`, konfiguriert war nichts, also: bypass.
+Die Regel „Frontend cache" steht auf **„Normalize values"**, und genau deshalb wurden
+`/media/*.jpg` **mit demselben `Vary: accept`** sauber gecacht. Gleicher Header, anderes
+Ergebnis, ein einziger Unterschied.
+
+**Der Fix war, diese Regel zu löschen** — `/_next` fällt ohnehin unter „Frontend cache".
+Danach gemessen: **10 von 10 Bildern HIT**, und die Formattrennung stimmt, jede Variante hat
+ihren eigenen Eintrag:
+
+| `Accept`                  | Format |   Größe | nach 3 Abrufen |
+| ------------------------- | ------ | ------: | -------------- |
+| `image/avif,image/webp,…` | AVIF   |  7,2 kB | MISS MISS HIT  |
+| `image/webp,*/*`          | WebP   | 20,5 kB | MISS HIT HIT   |
+| `image/jpeg`              | JPEG   | 15,8 kB | MISS HIT HIT   |
+
+Das ist der Grund, warum „Bypass caching" hier **nicht** durch Ignorieren des `Vary` ersetzt
+werden darf: der Optimizer liefert wirklich drei verschiedene Antworten, und ein Browser
+bekäme sonst ein Format, das er nicht darstellen kann.
+
+**Der Code-Weg ist tot, und das ist gemessen, nicht vermutet.** Mit `images.formats: []`
+gebaut und lokal abgefragt: Next setzt `Vary: Accept` trotzdem und liefert weiterhin AVIF an
+einen Client, der es akzeptiert. Es gibt keine Einstellung in diesem Repo, die den Header
+loswird — der Hebel liegt vollständig in Cloudflare.
+
+### `/contribute` ohne Cache ist kein Cache-Problem
+
+Was im Dashboard als „cache none" auf `/{locale}/contribute` erscheint, sind zum großen Teil
+**Cloudflares eigene Bot-Challenges**:
+
+```
+HTTP/2 403 · cf-mitigated: challenge · server: cloudflare
+```
+
+Jede trägt einen einmaligen `nonce` (zwei Abrufe waren byte-verschieden) und ist damit per
+Definition uncachebar. Diese Requests **erreichen Vercel gar nicht** und kosten nichts. Die
+echte Seite hat außerdem absichtlich kein Fenster: sie liegt hinter der Turnstile-Challenge,
+und eine gecachte Challenge ist eine bereits gelöste.
+
+---
+
 ## Ergebnis der Runde vom 2026-09-03
 
 Nach zwei PRs und drei Dashboard-Änderungen, gegen Produktion gemessen:
@@ -430,6 +490,15 @@ kleiner, nicht größer.** Reihenfolge einhalten.
   `Accept-Encoding` komplett und schickt 72 kB Klartext.
 - **Sitemap-Kürzungen wirken erst mit Wochen Verzögerung** und in der Zwischenzeit gegen
   einen: verwaiste URLs werden weiter gecrawlt und kosten mehr als die Seite, die sie ersetzt.
+- **`curl -sI` sendet HEAD, und damit füllt sich Cloudflares Cache nicht zuverlässig.** Eine
+  Stapelmessung über 20 Bild-URLs meldete so **1/20 HIT**; dieselben URLs mit GET gemessen
+  ergaben **10/10**. Für Header lesen ist HEAD richtig, für Cache-Verhalten nur GET.
+- **Ein Poll-Muster muss auf die Zahl passen, die sich ändert.** `*86400*` als Suchmuster für
+  ein neues `s-maxage=86400` traf auf das unveränderte `stale-while-revalidate=86400` und
+  meldete einen Deploy, der noch gar nicht durch war.
+- **Zwei Cache-Schichten, zwei Header.** `cf-cache-status` ist Cloudflare, `x-vercel-cache` ist
+  Vercel. Ein `BYPASS` bei gleichzeitigem `HIT` heißt: kostet Egress, aber keine CPU. Wer nur
+  einen der beiden liest, bepreist die Sache falsch.
 - **Vercel-Logs sind aus dieser Umgebung nicht erreichbar** (keine `vercel` CLI, kein Token,
   Vercel-MCP ohne Team-Zugriff). Alles hier ist von außen per `curl` gemessen. Wer den
   Statuscode-Split der 17 K Kalender-Requests braucht, muss ihn im Dashboard ablesen.
