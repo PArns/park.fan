@@ -10,6 +10,45 @@ und dann `decisions.md`.**
 
 ---
 
+## Warum die Ride-Route trotz allem nicht fällt — und der Kalender schon
+
+Gemessen am 2026-09-03, nachdem alle Fenster standen und die Cloudflare-Regel umgebaut war.
+Beide Routen bekamen dieselbe Behandlung, nur eine reagiert:
+
+|             |   URLs | Anfragen/Tag | pro URL/Tag | `cf-cache-status: HIT` |
+| ----------- | -----: | -----------: | ----------: | ---------------------: |
+| Ride-Seiten | 42.912 |      ~30.200 |    **0,70** |                   10 % |
+| Kalender    |  5.718 |      ~21.800 |    **3,81** |          22 % (von 12) |
+
+**Die Trefferquote folgt der Anfragedichte pro URL, und die folgt der URL-Zahl.** Ein Eintrag
+wird nur dann ein zweites Mal gelesen, wenn dieselbe URL **innerhalb ihres Fensters** noch
+einmal angefragt wird. Bei 0,70 Anfragen pro URL und Tag passiert das selten — bei 3,81 oft.
+
+Der Kalender ist der Gegenbeweis in eigener Sache: dort wurde am 01.09. die Sitemap von 2.007
+auf 953 URLs je Locale gekürzt, und **genau diese Route ist die, deren Quote sich verdoppelt
+hat.** Nicht weil sie ein besseres Fenster bekommen hätte, sondern weil ihre URL-Zahl fiel.
+
+Damit ist bestätigt, was `baseline-profile.md` am 01.09. bereits geschrieben hat und was in
+der Zwischenzeit fast in Vergessenheit geriet:
+
+> **Edge caching structurally cannot fix this.** 60 K rarely-requested HTML objects spread over
+> Cloudflare's PoPs are evicted long before they are requested again.
+
+**Zwei ehrliche Konsequenzen.** Erstens: der Schritt von 48 h auf 24 h (PR #392) hat die
+Ride-Quote nicht verbessert, sondern die Chance halbiert, zwei Anfragen im selben Fenster zu
+sehen. Er war eine Frische-Entscheidung, keine Kostenentscheidung, und als solche richtig —
+aber er zieht genau an der Route, an der der Cache ohnehin am dünnsten ist. Zweitens: **kein
+weiterer Cache-Handgriff bringt diese Route nennenswert nach unten.** Was bleibt, sind die
+beiden Hebel aus der Rangfolge, und beide sind Entscheidungen, keine Refactorings:
+
+1. **Die Crawl-Fläche.** 42.912 = 7.152 Bahnen × **6 Locales**. Der Multiplikator ist die
+   Lokalisierung, nicht der Katalog.
+2. **Bot-Management.** Die User-Agent-Frage ist seit dem 01.09. offen und blockiert diese
+   Entscheidung: **Cloudflare → AI Crawl Control** beantwortet sie in fünf Minuten. Ist der
+   Sweep überwiegend KI-Crawler, gibt es dieselbe Reduktion zu SEO-Kosten null.
+
+---
+
 ## Der größte Einzelposten war kein HTML, sondern die Bilder
 
 Gefunden erst, nachdem alle HTML-Fenster standen, und größer als alles davor zusammen.

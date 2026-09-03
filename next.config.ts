@@ -1008,12 +1008,28 @@ const nextConfig: NextConfig = {
         '/rss.xml',
         '/manifest.webmanifest',
       ].map((source) => ({ source, headers: edgeCache(MACHINE_WINDOW) })),
+      {
+        // The contribute form and its thank-you page. This pair was left out of the first pass
+        // with the note "a cached challenge is a challenge already solved" — which is wrong, and
+        // measurably so. `TurnstileWidget` is `'use client'` and injects Cloudflare's script from
+        // the browser; the HTML carries the PUBLIC site key and no token, so there is nothing in
+        // it that belongs to one visitor. Both routes have `generateStaticParams()`.
+        //
+        // The cost of that mistake is written down one file over, in this route's own docblock:
+        // every park and ride page links here through `buildContributeHref`, which mints one
+        // crawlable URL per entity, and over 24 h the page took **4 K requests and 154 MB — more
+        // than the park pages themselves**. The `rel="nofollow"` on those links stops new ones
+        // being walked; this is the half that stops paying for the ones already indexed.
+        //
+        // The query string stays in Cloudflare's cache key, so a prefilled variant and the bare
+        // page are separate entries and nobody gets somebody else's preselection.
+        source: '/:locale/contribute/:path*',
+        headers: edgeCache(CONTENT_WINDOW),
+      },
       // NOT listed, on purpose:
       //   /:locale/search          — answers `no-store` and must keep doing so; a query-keyed
       //                              page shared across readers is a privacy question, not a
       //                              cache question.
-      //   /:locale/contribute      — a form behind a Turnstile challenge. A cached challenge is
-      //                              a challenge already solved.
       //   /admin, /api, /dev       — the Cloudflare rule excludes the first two by hand; giving
       //                              any of them a window here would be the way to undo that.
       // The RIDE page and the PARK page, the two highest-invocation routes in the app. Listed
