@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { CalendarPlus, ChevronDown, GripVertical } from 'lucide-react';
+import { CalendarPlus, ChevronDown } from 'lucide-react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { PlannerContextBand, type PlannerDayState } from './planner-context-band';
 import { PlannerDayPicker } from './planner-day-picker';
@@ -30,7 +30,7 @@ import { PLANNER_RIDE_MIME, parseRideDrag } from '@/lib/planner/ride-drag';
 import { occupiedMinutes } from '@/lib/planner/estimate';
 import { useRideDragSource } from '@/lib/planner/use-ride-drag-source';
 import { usePlannerDayFacts } from '@/lib/planner/use-day-facts';
-import { PANEL_WIDTH_DEFAULT, clampPanelWidth, plannerPanelWidth } from '@/lib/planner/panel-width';
+import { plannerPanelWidth } from '@/lib/planner/panel-width';
 import { cn } from '@/lib/utils';
 
 interface PlannerFlyoutProps {
@@ -140,46 +140,6 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
     plannerPanelWidth.getServerSnapshot
   );
 
-  /**
-   * Dragging the panel's left edge.
-   *
-   * Live rather than committed-on-release, which is the opposite of the phone
-   * handle above it — and for the reason that made that one committed: there,
-   * the two directions mean different things (resize or dismiss) and a
-   * continuous drag would have to guess which is happening. Here there is one
-   * meaning and one axis, so the panel follows the pointer and the width is
-   * written down once, on release.
-   */
-  const handleEdgeGrab = (event: React.PointerEvent<HTMLElement>) => {
-    if (event.button !== 0) return;
-    event.preventDefault();
-    const handle = event.currentTarget;
-    handle.setPointerCapture(event.pointerId);
-    const startX = event.clientX;
-    const startWidth = panelWidth;
-    // The panel is anchored right, so a drag to the LEFT makes it wider.
-    const widthAt = (clientX: number) => clampPanelWidth(startWidth + (startX - clientX));
-
-    const onMove = (moveEvent: PointerEvent) =>
-      plannerPanelWidth.preview(widthAt(moveEvent.clientX));
-    const onUp = (upEvent: PointerEvent) => {
-      plannerPanelWidth.commit(widthAt(upEvent.clientX));
-      detach();
-    };
-    const detach = () => {
-      handle.removeEventListener('pointermove', onMove);
-      handle.removeEventListener('pointerup', onUp);
-      handle.removeEventListener('pointercancel', detach);
-      try {
-        handle.releasePointerCapture(event.pointerId);
-      } catch {
-        // Already released — a cancelled gesture, or the element unmounted.
-      }
-    };
-    handle.addEventListener('pointermove', onMove);
-    handle.addEventListener('pointerup', onUp);
-    handle.addEventListener('pointercancel', detach);
-  };
   const park = activeParkSlug ? state.parks[activeParkSlug] : null;
 
   // Ride cards on the page behind the panel become drag sources for as long as
@@ -396,52 +356,6 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
         // hold it at 448 px in the middle of a 390 px screen.
         style={isPhone ? undefined : { width: panelWidth }}
       >
-        {/* The resize edge, and the tab that says so. Desktop only —
-            `hidden sm:flex` rather than `!isPhone`, for the reason the phone
-            handle gives one line down: a control that decides its own existence
-            from `useMediaQuery` flickers, because that hook answers `false` on
-            the server snapshot.
-
-            The whole left edge is grabbable; the TAB is what makes that
-            discoverable. A 4 px bar in the panel's own edge colour was the first
-            version and could not be found — the panel could be widened and
-            nobody could tell, which is the same as not being resizable. A tab
-            that carries the panel's name, rounded on its outer side and square
-            where it meets the panel, reads as a pull rather than as a seam, and
-            it travels with the panel because it is positioned inside it.
-
-            Double-click puts the width back: a drag that overshot otherwise has
-            to be dragged back by hand. */}
-        <div
-          onPointerDown={handleEdgeGrab}
-          onDoubleClick={() => plannerPanelWidth.commit(PANEL_WIDTH_DEFAULT)}
-          role="separator"
-          aria-orientation="vertical"
-          aria-label={t('sheet.resize')}
-          data-planner-resize-edge=""
-          className="group absolute inset-y-0 -left-8 z-50 hidden w-8 cursor-col-resize touch-none items-center justify-end sm:flex"
-        >
-          <span className="bg-background/85 ring-border/70 group-hover:bg-background group-hover:ring-primary/60 flex flex-col items-center gap-2 rounded-l-xl py-4 pr-1 pl-1.5 shadow-lg ring-1 backdrop-blur-md transition-colors">
-            <CalendarPlus
-              className="text-muted-foreground group-hover:text-primary size-3.5 shrink-0 transition-colors"
-              aria-hidden="true"
-            />
-            {/* `vertical-rl` plus a half turn, which is the pair that reads
-                bottom-to-top — `vertical-rl` alone runs top-to-bottom and puts
-                the first letter under the icon rather than beside the panel it
-                names. */}
-            <span
-              className="text-muted-foreground group-hover:text-foreground [transform:rotate(180deg)] text-[10px] font-medium tracking-wide whitespace-nowrap uppercase transition-colors [writing-mode:vertical-rl]"
-              aria-hidden="true"
-            >
-              {t('title')}
-            </span>
-            <GripVertical
-              className="text-muted-foreground/70 group-hover:text-primary size-3.5 shrink-0 transition-colors"
-              aria-hidden="true"
-            />
-          </span>
-        </div>
         {/* The grab handle. Phone only, and `sm:hidden` rather than `!isPhone`
             because `useMediaQuery` answers `false` on the server snapshot and a
             control that decides its own existence from that flickers.
