@@ -1350,6 +1350,140 @@ if (reachable) {
   await shows.close();
 }
 
+// ── The tint is the crowd scale, and it moves with the block ────────────────
+// Both halves matter and neither is visible in a still: the colour has to be
+// the site's own six-level crowd palette — the same one a park card and a blog
+// badge use, so 20 minutes is the same green everywhere — and it has to follow
+// the block, because the whole reason to drag one to 09:00 is that the queue is
+// shorter there.
+{
+  const tint = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
+  noteErrors(tint);
+
+  const OPEN = 9;
+  const CLOSE = 18;
+  // A day with a real spread in it: a walk-on at opening, an hour's queue at
+  // midday. `waitTimeCrowdTier` puts 10 minutes in `low` and 80 in `extreme`.
+  const CURVE = { 9: 10, 10: 15, 11: 35, 12: 60, 13: 80, 14: 80, 15: 65, 16: 45, 17: 25, 18: 15 };
+
+  await tint.route('**/plan/day**', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        parkSlug: PARK.slug,
+        timezone: 'Europe/Berlin',
+        context: {
+          date: DATE,
+          status: 'OPERATING',
+          openHour: OPEN,
+          closeHour: CLOSE,
+          crowdLevel: 'high',
+          weather: null,
+          isHoliday: false,
+          isBridgeDay: false,
+          isSchoolVacation: false,
+          isWeekend: false,
+        },
+        tier: 'measured',
+        leadDays: 1,
+        leadTimeMae: 7,
+        rides: [
+          {
+            attractionSlug: 'taron',
+            attractionName: 'Taron',
+            land: 'Mystery',
+            hours: Object.entries(CURVE).map(([hour, wait]) => ({ hour: Number(hour), wait })),
+            dayPeak: 80,
+            uncertaintyMinutes: 10,
+            sampleDays: 400,
+          },
+        ],
+        shows: [],
+      }),
+    })
+  );
+
+  await tint.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  await tint.evaluate(
+    ([plan, date]) => {
+      const seeded = JSON.parse(JSON.stringify(plan));
+      const park = seeded.parks.phantasialand;
+      park.timezone = 'Europe/Berlin';
+      park.days = {
+        [date]: {
+          date,
+          entries: [
+            // 13:00, the day's peak.
+            { id: 'taron-1', attractionSlug: 'taron', attractionName: 'Taron', startMinute: 780 },
+          ],
+        },
+      };
+      seeded.parks = { phantasialand: park };
+      seeded.activeParkSlug = 'phantasialand';
+      seeded.activeDate = date;
+      window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
+      document.cookie = 'planner=1; path=/';
+    },
+    [PLAN, DATE]
+  );
+  await tint.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+  await tint.locator(LAUNCHER).click();
+  await tint.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await tint.waitForTimeout(2000);
+
+  /** The crowd level the block is currently painted at, off its tile classes. */
+  const toneOf = async () =>
+    tint.evaluate(() => {
+      const block = document.querySelector('li[data-planner-entry="taron-1"]');
+      if (!block) return null;
+      for (const el of block.querySelectorAll('*')) {
+        const match = /\bbg-crowd-([a-z-]+?)\/\d/.exec(el.className?.toString?.() ?? '');
+        if (match) return match[1];
+      }
+      return null;
+    });
+
+  const atPeak = await toneOf();
+  check('die Farbe kommt aus der Crowd-Skala', atPeak !== null && atPeak !== '', `${atPeak}`);
+  // 80 minutes is the top of the scale, not "somewhere warm".
+  check('80 Minuten sind das obere Ende', atPeak === 'extreme', `${atPeak}`);
+
+  // Move it to 09:00, where the same ride is a walk-on. The keyboard, not a
+  // drag: the assertion is about the colour following the block, and a pointer
+  // gesture would put the drag's own correctness in front of it.
+  // The `input[type="range"]` IS the move control — it writes through the same
+  // path a drag does — so focusing the list item does nothing.
+  const range = tint.locator('li[data-planner-entry="taron-1"] input[type="range"]');
+  await range.focus();
+  // Down is EARLIER on this control: the range runs in minutes, and up is later.
+  for (let i = 0; i < 16; i++) await tint.keyboard.press('ArrowDown');
+  await tint.waitForTimeout(900);
+
+  const atOpening = await toneOf();
+  const startMinute = await tint.evaluate(() => {
+    const state = JSON.parse(localStorage.getItem('parkfan_planner') ?? '{}');
+    const park = state.parks?.phantasialand;
+    const day = park?.days?.[state.activeDate];
+    return day?.entries?.[0]?.startMinute ?? null;
+  });
+  check('der Block ist wirklich in den Morgen gewandert', startMinute === 540, `${startMinute}`);
+  check(
+    'die Farbe zieht mit',
+    atOpening !== null && atOpening !== atPeak,
+    `${atPeak} -> ${atOpening}`
+  );
+  // 10 minutes at opening: the quiet end of the same scale, not merely a
+  // different colour.
+  check(
+    'und landet am ruhigen Ende der Skala',
+    atOpening === 'low' || atOpening === 'very-low',
+    `${atOpening}`
+  );
+
+  await tint.close();
+}
+
 // ── A day that already happened ─────────────────────────────────────────────
 // The panel offers dates in the past — a plan is a record once it is walked —
 // and the figures on such a day are not a forecast. The API answers
