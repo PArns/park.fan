@@ -148,6 +148,44 @@ Cloudflare-Regel darf nicht umgestellt werden, bevor das bestätigt ist.**
 Die ersten beiden liegen im **Cloudflare-Dashboard**. Kein Refactor in diesem Repo kommt in
 ihre Nähe, und beide sind ein Formularfeld.
 
+### Die Regel, wie sie am 2026-09-03 wirklich aussieht
+
+Aus dem Dashboard abgelesen (Regel **„Park & Ride cache"**), damit sie niemand mehr raten muss:
+
+```
+http.host eq "park.fan"
+  and http.request.uri.path wildcard r"/*/parks/*/*/*/*"
+  and not starts_with(http.request.uri.path, "/api/")
+```
+
+| Einstellung                        | Ist-Wert                                          |
+| ---------------------------------- | ------------------------------------------------- |
+| Cache eligibility                  | Eligible for cache                                |
+| Edge TTL                           | **Ignore cache-control header, TTL = 12 Stunden** |
+| **Status code TTL**                | **nichts konfiguriert**                           |
+| Vary                               | Normalize values                                  |
+| **Serve stale while revalidating** | **nicht aktiviert**                               |
+| Reihenfolge                        | Custom, nach „API caching – Frontend"             |
+
+Vier Dinge folgen daraus, drei davon waren vorher Vermutung:
+
+1. **Das Edge TTL ist 12 h.** Die Eingrenzung aus HIT-Altern stimmte. Gegen ein
+   Ride-Crawl-Intervall von ~42 h liegt die HIT-Decke damit bei 12/(12+42) = **22 %**,
+   gemessen sind es 10 %.
+2. **Die Statuscode-TTL-Liste ist leer.** Deshalb ist der 308 nicht abgedeckt, fällt auf das
+   `no-store` des Origin zurück und wird `BYPASS`. Das ist keine Nebenwirkung, das ist der
+   ganze Grund.
+3. **`stale-while-revalidate` wird heute nirgends ausgewertet.** Die Option ist aus, und
+   „ignore cache-control" liest den Header ohnehin nicht. Die SWR-Werte, die dieses Repo
+   mitschickt, sind bis dahin totes Gewicht — richtig, aber wirkungslos.
+4. **Der Matcher verlangt vier Segmente nach `/parks/`.** `/de/parks/europe` und
+   `/de/parks/europe/germany` fallen also gar nicht unter die Regel; sie sind deshalb
+   `DYNAMIC`, nicht weil eine Einstellung fehlt. Die Header, die dieses Repo für die Geo-Hubs
+   jetzt setzt, erreichen Cloudflare erst, wenn der Matcher sie einschließt.
+
+_(Nebenbefund derselben Messung: `/de/parks/europe/germany/bruehl` — die Stadt-Ebene —
+antwortet selbst mit `308`. Deshalb stehen `301` und `308` unten in einem Atemzug.)_
+
 ### ① Statuscode-TTL für 308 und 301 auf der Parks-Cache-Rule
 
 **Cloudflare → Caching → Cache Rules → die `/*/parks/*`-Regel → Edge TTL → Statuscode-TTL.**
@@ -164,8 +202,9 @@ Kalender-Route.
 
 Zwei Zahlen fehlen und beide stehen nur im Dashboard:
 
-- **Welches Edge TTL trägt die Regel?** Aus HIT-Altern eingegrenzt auf ~6–12 h (höchstes
-  beobachtetes `age` am 03.09.: 24.191 s ≈ 6,7 h auf einer Ride-URL).
+- ~~**Welches Edge TTL trägt die Regel?**~~ **Beantwortet: 12 Stunden.** Zu heben auf 48 h
+  für die Ride-Familie — und dabei „Serve stale content while revalidating" einschalten, sonst
+  bleibt das `stale-while-revalidate` aus den Headern ungenutzt.
 - **Läuft Tiered Cache?** `decisions.md` (01.09.) sagt „Smart Tiered Cache aktiv". Smart
   Topology ist [auf allen Plänen inkl. Pro verfügbar](https://developers.cloudflare.com/cache/how-to/tiered-cache/);
   Generic Global ist Enterprise. Nicht von hier prüfbar — **alle Messungen dieser Session
@@ -174,7 +213,7 @@ Zwei Zahlen fehlen und beide stehen nur im Dashboard:
   einem anderen Colo = an.
 
 Die Ride-Route ist der Fall, an dem die Zahl hängt: ihr Crawl-Intervall ist ~42 h, ihr Edge
-TTL ~6–12 h. **Der Cache kann sich nie füllen** — die theoretische Obergrenze liegt bei
+TTL 12 h. **Der Cache kann sich nie füllen** — die theoretische Obergrenze liegt bei
 12/(12+42) = 22 %, gemessen sind es 10 %. Bei 48–72 h steigt die Decke auf 53–63 %.
 
 **Der ehrliche Preis:** nichts in diesem Repo und nichts im Backend kann Cloudflare purgen.
@@ -220,9 +259,14 @@ kleiner, nicht größer.** Reihenfolge einhalten.
 
 ## Offene Messfragen
 
+Zum Nachmessen liegt **`scripts/check-cdn-cache.sh`** im Repo, in vier Modi (`headers`,
+`cache`, `hitrate`, `redirect`). Er trennt die beiden Messarten, deren Verwechslung diese
+Session gekostet hat: was der Origin **deklariert**, braucht einen Cache-Buster; was
+Cloudflare **tut**, darf keinen haben, weil der zweite Abruf derselben URL die ganze Messung
+ist.
+
 | Frage                                            | Wie                                                                              |
 | ------------------------------------------------ | -------------------------------------------------------------------------------- |
 | Läuft Tiered Cache?                              | Dieselbe kalte URL binnen einer Minute aus zwei Regionen abrufen                 |
-| Welches Edge TTL trägt die Parks-Regel?          | Cloudflare → Caching → Cache Rules ablesen                                       |
 | Wie viele der 17 K Kalender-Requests sind 308er? | Vercel-Logs nach Statuscode, oder Cloudflare Path Analytics                      |
 | User-Agent-Split des Sweeps                      | Cloudflare AI Crawl Control — entscheidet, ob Caching oder ein Block richtig ist |
