@@ -10,8 +10,16 @@ import {
   waitTimeCrowdTier,
 } from '@/lib/utils/crowd-level-styles';
 import { formatGridTime } from '@/lib/planner/park-time';
-import { MIN_BAND_PX, blockBoxFor, heightFor, yFor, type DayGrid } from '@/lib/planner/day-grid';
+import {
+  MIN_BAND_PX,
+  MIN_BLOCK_PX,
+  blockBoxFor,
+  heightFor,
+  yFor,
+  type DayGrid,
+} from '@/lib/planner/day-grid';
 import { formatDistance } from '@/lib/utils/distance-utils';
+import { PLANNER_BLOCK_ICON_COMPONENTS } from './planner-block-icons';
 import type { LanePlacement } from '@/lib/planner/day-grid';
 import type { PlannerEntry } from '@/lib/planner/types';
 import type { PlannerEstimate } from '@/lib/planner/estimate';
@@ -63,6 +71,8 @@ interface PlannerBlockProps {
   conflict?: boolean;
   onSelect: () => void;
   onDragStart: (event: React.PointerEvent<HTMLElement>) => void;
+  /** Free blocks only: dragging the bottom edge sets the duration. */
+  onResizeStart?: (event: React.PointerEvent<HTMLElement>) => void;
   onMove: (startMinute: number) => void;
   /** Bounds for the keyboard control — the same clamp the drag obeys. */
   minMinute: number;
@@ -103,6 +113,7 @@ export function PlannerBlock({
   conflict = false,
   onSelect,
   onDragStart,
+  onResizeStart,
   onMove,
   minMinute,
   maxMinute,
@@ -111,18 +122,32 @@ export function PlannerBlock({
   const t = useTranslations('planner');
   const done = Boolean(entry.done);
 
-  const wait = done ? (entry.actualWait ?? null) : estimate.wait;
+  // A free block is measured in the one unit the visitor set themselves. Its
+  // height is a DURATION, not a queue, so it carries no figure, no uncertainty
+  // band and no crowd tint — there is nothing predicted about it to be wrong.
+  const custom = entry.custom ?? null;
+  const CustomIcon = custom ? PLANNER_BLOCK_ICON_COMPONENTS[custom.icon] : null;
+
+  const wait = custom ? null : done ? (entry.actualWait ?? null) : estimate.wait;
   const hasFigure = wait !== null;
 
   const top = yFor(grid, entry.startMinute);
-  const fillPx = hasFigure ? heightFor(grid, wait) : 0;
-  const boxPx = hasFigure ? blockBoxFor(grid, wait) : NO_FIGURE_PX;
+  const fillPx = custom
+    ? heightFor(grid, custom.durationMinutes)
+    : hasFigure
+      ? heightFor(grid, wait)
+      : 0;
+  const boxPx = custom
+    ? Math.max(MIN_BLOCK_PX, fillPx)
+    : hasFigure
+      ? blockBoxFor(grid, wait)
+      : NO_FIGURE_PX;
 
-  const bandMinutes = done || live ? null : estimate.uncertaintyMinutes;
+  const bandMinutes = custom || done || live ? null : estimate.uncertaintyMinutes;
   const bandPx = bandMinutes === null ? 0 : heightFor(grid, bandMinutes);
   const drawBand = bandPx >= MIN_BAND_PX;
 
-  const tone = hasFigure ? waitTimeCrowdTier(wait) : null;
+  const tone = !custom && hasFigure ? waitTimeCrowdTier(wait) : null;
 
   // The tier's soft edge rotates from "to right" to "to bottom", and improves in
   // the rotation: a soft LOWER edge says "this may end later than we say", which
@@ -131,22 +156,26 @@ export function PlannerBlock({
   // fractions of a variable height — 12 % of a 20 px block is an antialiasing
   // artefact — so they are restated in pixels with a ceiling.
   const fadePx =
-    done || live || tier === 'measured' ? 0 : Math.min(tier === 'composed' ? 10 : 22, fillPx * 0.5);
+    custom || done || live || tier === 'measured'
+      ? 0
+      : Math.min(tier === 'composed' ? 10 : 22, fillPx * 0.5);
   const mask =
     fadePx === 0 || fillPx < 16
       ? undefined
       : `linear-gradient(to bottom, black calc(100% - ${fadePx}px), transparent 100%)`;
   const softBorder = fadePx > 0 && fillPx < 16;
 
-  const endMinute = entry.startMinute + (wait ?? 0);
+  const endMinute = entry.startMinute + (custom ? custom.durationMinutes : (wait ?? 0));
   const range = `${formatGridTime(entry.startMinute)}–${formatGridTime(endMinute)}`;
 
   const missingLabel =
-    estimate.missing === 'outside-hours'
-      ? t('day.closed')
-      : estimate.missing === 'no-curve'
-        ? t('entry.noCurve')
-        : null;
+    custom || estimate.missing === 'custom'
+      ? null
+      : estimate.missing === 'outside-hours'
+        ? t('day.closed')
+        : estimate.missing === 'no-curve'
+          ? t('entry.noCurve')
+          : null;
 
   const laneWidth = `calc((100% - ${(lane.columns - 1) * 2}px) / ${lane.columns})`;
   const laneLeft = `calc((${laneWidth} + 2px) * ${lane.column})`;
@@ -194,9 +223,14 @@ export function PlannerBlock({
           'relative flex h-full flex-col overflow-hidden rounded-md border',
           done && 'bg-foreground/10 border-foreground/30',
           !done && hasFigure && tone && CROWD_TILE_CLASS[tone],
-          // No figure: an outline, never a tint. A crowd-coloured box asserts a
-          // queue length, and this one has none.
-          !hasFigure && 'border-border/70 border-dashed',
+          // A free block: solid and neutral. Its height IS a claim — the one the
+          // visitor made — so it may not wear the dashed outline that means "no
+          // number here", and it may not wear a crowd tint either, because
+          // nothing predicted it.
+          custom && !done && 'bg-muted/50 border-border/70',
+          // No figure and not a free block: an outline, never a tint. A
+          // crowd-coloured box asserts a queue length, and this one has none.
+          !hasFigure && !custom && 'border-border/70 border-dashed',
           softBorder && 'border-b-dashed border-b-2',
           selected && 'ring-primary/60 ring-2',
           conflict && 'ring-destructive/45 ring-1',
@@ -260,6 +294,26 @@ export function PlannerBlock({
           )}
         />
 
+        {/* The bottom edge, and only on a free block. A ride's height is the
+            queue the model predicts and is not the visitor's to drag; this one
+            is a duration they set, so its edge is the control that sets it.
+            `touch-none` sits on an 8 px strip rather than on the block, which
+            covers most of the grid and would stop the plan scrolling. */}
+        {custom && onResizeStart && (
+          <button
+            type="button"
+            onPointerDown={onResizeStart}
+            onClick={(event) => event.stopPropagation()}
+            aria-label={t('entry.resizeHandle')}
+            className={cn(
+              'group/resize absolute inset-x-0 bottom-0 z-20 flex h-2 cursor-ns-resize touch-none items-end justify-center',
+              'max-sm:after:absolute max-sm:after:bottom-0 max-sm:after:h-11 max-sm:after:w-full max-sm:after:content-[""]'
+            )}
+          >
+            <span className="bg-muted-foreground/40 group-hover/resize:bg-muted-foreground/70 mb-0.5 h-0.5 w-6 rounded-full transition-colors" />
+          </button>
+        )}
+
         {/* The keyboard equivalent, and the same code path the drag commits
             through. A range input is what this repo already reaches for when a
             continuous value has to be draggable; `min` IS the ride-opening
@@ -270,7 +324,7 @@ export function PlannerBlock({
           max={maxMinute}
           step={snapStep}
           value={entry.startMinute}
-          aria-label={`${entry.attractionName} — ${range}`}
+          aria-label={`${custom ? custom.label : entry.attractionName} — ${range}`}
           onChange={(event) => onMove(Number(event.target.value))}
           className="absolute inset-y-0 left-0 z-20 w-6 cursor-pointer appearance-none bg-transparent opacity-0 max-sm:w-11"
         />
@@ -279,25 +333,27 @@ export function PlannerBlock({
           {boxPx < 30 ? (
             <p
               className={cn(
-                'truncate text-[11px] leading-none',
+                'flex items-center gap-1 truncate text-[11px] leading-none',
                 done && 'line-through',
                 tone && !done && CROWD_TEXT_CLASS[tone]
               )}
             >
-              {entry.attractionName}
+              {CustomIcon && <CustomIcon className="size-3 shrink-0" />}
+              <span className="truncate">{custom ? custom.label : entry.attractionName}</span>
             </p>
           ) : (
             <>
               <div className="flex items-baseline justify-between gap-1">
                 <span
                   className={cn(
-                    'min-w-0 flex-1 truncate',
+                    'flex min-w-0 flex-1 items-center gap-1.5 truncate',
                     boxPx >= 48 ? 'text-sm' : 'text-[11px]',
                     done && 'line-through',
                     tone && !done && CROWD_TEXT_CLASS[tone]
                   )}
                 >
-                  {entry.attractionName}
+                  {CustomIcon && <CustomIcon className="size-3.5 shrink-0" />}
+                  <span className="truncate">{custom ? custom.label : entry.attractionName}</span>
                 </span>
                 {(closedNow || downYesterday) && (
                   <AlertTriangle

@@ -1888,7 +1888,8 @@
     "summary": {
       "rides": "{count, plural, =0 {Aucune attraction} one {Une attraction} other {# attractions}}",
       "waiting": "Temps d’attente cumulé",
-      "done": "{done} sur {total} faites"
+      "done": "{done} sur {total} faites",
+      "blocks": "{count, plural, one {# bloc} other {# blocs}}"
     },
     "entry": {
       "expected": "prévu",
@@ -1897,7 +1898,8 @@
       "actual": "{minutes} min en réalité",
       "noCurve": "Aucune courbe horaire pour cette attraction.",
       "dragHandle": "Déplacer",
-      "range": "{from} à {to}"
+      "range": "{from} à {to}",
+      "resizeHandle": "Ajuster la durée"
     },
     "tier": {
       "measured": "Prévision horaire",
@@ -1960,6 +1962,23 @@
     "warn": {
       "closedNow": "Signalée fermée en ce moment.",
       "downYesterday": "Est restée hors service toute la journée d’hier."
+    },
+    "custom": {
+      "add": "Bloc personnel",
+      "defaultLabel": "Pause",
+      "label": "Intitulé",
+      "duration": "{minutes} min",
+      "shorter": "15 minutes de moins",
+      "longer": "15 minutes de plus",
+      "icon": {
+        "break": "Pause",
+        "food": "Repas",
+        "show": "Spectacle",
+        "shop": "Boutique",
+        "photo": "Photo",
+        "meet": "Point de rendez-vous",
+        "star": "Autre"
+      }
     }
   }
 }

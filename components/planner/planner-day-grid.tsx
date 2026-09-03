@@ -38,6 +38,8 @@ interface PlannerDayGridProps {
   liveWaits?: Map<string, number> | null;
   /** Showtimes as park-local minutes. `null` means "not knowable for this date". */
   showLines?: import('@/lib/planner/live').PlannerShowLine[] | null;
+  /** Free blocks only: the visitor dragged the bottom edge to this many minutes. */
+  onResize?: (entryId: string, durationMinutes: number) => void;
   /** Rides reporting closed right now. Empty where the date is not today. */
   closedNow?: ReadonlySet<string>;
   loading?: boolean;
@@ -51,6 +53,9 @@ interface PlannerDayGridProps {
 
 /** How far from a live reading's own moment it may still speak for a block. */
 const LIVE_WINDOW_MIN = 45;
+
+/** Five minutes, like every displayed wait in this app. */
+const RESIZE_STEP_MIN = 5;
 
 const EDGE_PX = 48;
 const MAX_SCROLL_SPEED = 12;
@@ -101,6 +106,7 @@ export function PlannerDayGrid({
   isToday,
   liveWaits,
   showLines = null,
+  onResize,
   closedNow,
   loading = false,
   onMove,
@@ -159,14 +165,14 @@ export function PlannerDayGrid({
     const ordered = [...entries].sort((a, b) => a.startMinute - b.startMinute);
 
     const rows = ordered.map((entry) => {
-      const ride = ridesBySlug.get(entry.attractionSlug);
+      const ride = entry.attractionSlug ? ridesBySlug.get(entry.attractionSlug) : undefined;
       const estimate = estimateFor(day, entry);
 
       const liveWait =
         !entry.done &&
         nowMinute !== null &&
         Math.abs(entry.startMinute - nowMinute) <= LIVE_WINDOW_MIN
-          ? (liveWaits?.get(entry.attractionSlug) ?? null)
+          ? (entry.attractionSlug ? (liveWaits?.get(entry.attractionSlug) ?? null) : null)
           : null;
 
       const effective =
@@ -174,7 +180,15 @@ export function PlannerDayGrid({
           ? { ...estimate, wait: liveWait, uncertaintyMinutes: null, missing: 'none' as const }
           : estimate;
 
-      const wait = entry.done ? (entry.actualWait ?? null) : effective.wait;
+      // A free block's "wait" is its DURATION. The legs either side ask how long
+      // this entry occupies the visitor, and an hour spent eating occupies the
+      // hour it lasts exactly as a queue does — so the same field carries it and
+      // the transfer arithmetic needs no special case.
+      const wait = entry.custom
+        ? entry.custom.durationMinutes
+        : entry.done
+          ? (entry.actualWait ?? null)
+          : effective.wait;
       const spanMinutes = Math.max(
         (wait ?? 0) + (entry.done ? 0 : (effective.uncertaintyMinutes ?? 0)),
         MIN_BLOCK_PX / grid.pxPerMin
@@ -281,6 +295,51 @@ export function PlannerDayGrid({
       if (commit && minute !== state.startMinute) onMove(state.entryId, minute);
     },
     [onMove, targetMinute]
+  );
+
+  /**
+   * Dragging a free block's bottom edge.
+   *
+   * Deliberately simpler than the move drag above: that one previews through a
+   * custom property in a rAF loop because it moves a block across the whole
+   * axis, while this one only changes a height and commits straight to the
+   * store. The store makes that cheap — `setCustomBlock` returns the SAME state
+   * object when nothing changed, so a gesture that wobbles inside one five-minute
+   * step costs no write and no render.
+   */
+  const handleResizeStart = useCallback(
+    (entry: PlannerEntry) => (event: React.PointerEvent<HTMLElement>) => {
+      if (event.button !== 0 || !entry.custom || !onResize) return;
+      event.preventDefault();
+      event.stopPropagation();
+
+      const handle = event.currentTarget;
+      handle.setPointerCapture(event.pointerId);
+      const startY = event.clientY;
+      const startMinutes = entry.custom.durationMinutes;
+      onSelect(entry.id);
+
+      const onPointerMove = (moveEvent: PointerEvent) => {
+        const deltaMinutes = (moveEvent.clientY - startY) / grid.pxPerMin;
+        const next =
+          Math.round((startMinutes + deltaMinutes) / RESIZE_STEP_MIN) * RESIZE_STEP_MIN;
+        onResize(entry.id, next);
+      };
+      const detach = () => {
+        handle.removeEventListener('pointermove', onPointerMove);
+        handle.removeEventListener('pointerup', detach);
+        handle.removeEventListener('pointercancel', detach);
+        try {
+          handle.releasePointerCapture(event.pointerId);
+        } catch {
+          // Already released — a cancelled gesture, or the element unmounted.
+        }
+      };
+      handle.addEventListener('pointermove', onPointerMove);
+      handle.addEventListener('pointerup', detach);
+      handle.addEventListener('pointercancel', detach);
+    },
+    [grid.pxPerMin, onResize, onSelect]
   );
 
   const handleDragStart = useCallback(
@@ -583,13 +642,20 @@ export function PlannerDayGrid({
                         }
                       : null
                   }
-                  closedNow={closedNow?.has(row.entry.attractionSlug) ?? false}
+                  closedNow={
+                    row.entry.attractionSlug
+                      ? (closedNow?.has(row.entry.attractionSlug) ?? false)
+                      : false
+                  }
                   downYesterday={row.ride?.downYesterday === true}
                   selected={selectedId === row.entry.id}
                   dragging={draggingId === row.entry.id}
                   conflict={layout.broken.has(row.entry.id)}
                   onSelect={() => onSelect(row.entry.id)}
                   onDragStart={handleDragStart(row.entry, floor.hardMin)}
+                  onResizeStart={
+                    row.entry.custom ? handleResizeStart(row.entry) : undefined
+                  }
                   onMove={(minute) => onMove(row.entry.id, minute)}
                   minMinute={floor.hardMin}
                   maxMinute={grid.closeMin - SNAP_MIN_FINE}

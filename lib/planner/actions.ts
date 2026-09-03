@@ -1,4 +1,11 @@
-import type { PlannerEntry, PlannerGeo, PlannerPark, PlannerState } from './types';
+import type {
+  PlannerBlockIcon,
+  PlannerCustomBlock,
+  PlannerEntry,
+  PlannerGeo,
+  PlannerPark,
+  PlannerState,
+} from './types';
 
 /**
  * Every change the planner can make to a plan, as pure functions on the state.
@@ -11,6 +18,18 @@ import type { PlannerEntry, PlannerGeo, PlannerPark, PlannerState } from './type
  * `useSyncExternalStore` consumer, so mutating in place would leave React
  * comparing an object to itself and skipping the render.
  */
+
+interface AddCustomParams {
+  parkSlug: string;
+  parkName: string;
+  geo: PlannerGeo;
+  date: string;
+  timezone?: string;
+  label: string;
+  icon: PlannerBlockIcon;
+  durationMinutes?: number;
+  startMinute?: number;
+}
 
 interface AddParams {
   parkSlug: string;
@@ -91,6 +110,89 @@ function clampMinute(minute: number): number {
   return Math.max(0, Math.min(1500, Math.round(minute)));
 }
 
+
+/**
+ * A block the visitor writes themselves — a lunch break, a show, a meeting point.
+ *
+ * It goes in exactly where a ride would, because to a day they cost the same
+ * thing: an hour of it. What differs is where the height comes from. A ride's
+ * block is as tall as the queue the model predicts; this one is as tall as the
+ * visitor dragged it, which is why `durationMinutes` lives on the entry and not
+ * in a forecast.
+ */
+export function addCustomEntry(state: PlannerState, params: AddCustomParams): PlannerState {
+  const { parkSlug, parkName, geo, timezone, date, label, icon, durationMinutes, startMinute } =
+    params;
+  const existing = state.parks[parkSlug]?.days[date]?.entries ?? [];
+
+  const entry: PlannerEntry = withHourMirror({
+    id: makeId('block', existing),
+    startMinute: clampMinute(startMinute ?? nextFallbackStart(existing)),
+    custom: {
+      label,
+      icon,
+      durationMinutes: clampDuration(durationMinutes ?? DEFAULT_CUSTOM_MINUTES),
+    },
+  });
+
+  return withDay(state, parkSlug, date, byStart([...existing, entry]), {
+    parkName,
+    geo,
+    timezone,
+  });
+}
+
+/** Retitle or re-icon a free block. A no-op, by identity, on a ride. */
+export function setCustomBlock(
+  state: PlannerState,
+  parkSlug: string,
+  date: string,
+  entryId: string,
+  patch: Partial<PlannerCustomBlock>
+): PlannerState {
+  const entries = state.parks[parkSlug]?.days[date]?.entries;
+  if (!entries) return state;
+  const target = entries.find((entry) => entry.id === entryId);
+  if (!target?.custom) return state;
+
+  const next: PlannerCustomBlock = {
+    label: (patch.label ?? target.custom.label).slice(0, 60),
+    icon: patch.icon ?? target.custom.icon,
+    durationMinutes: clampDuration(patch.durationMinutes ?? target.custom.durationMinutes),
+  };
+  if (
+    next.label === target.custom.label &&
+    next.icon === target.custom.icon &&
+    next.durationMinutes === target.custom.durationMinutes
+  ) {
+    // Same object by identity, so `useSyncExternalStore` skips the render and a
+    // drag that ends where it started costs no localStorage write.
+    return state;
+  }
+
+  return withDay(
+    state,
+    parkSlug,
+    date,
+    entries.map((entry) => (entry.id === entryId ? { ...entry, custom: next } : entry))
+  );
+}
+
+/** Five minutes is a block you can still read; twelve hours is a whole day. */
+export const MIN_CUSTOM_MINUTES = 5;
+export const MAX_CUSTOM_MINUTES = 720;
+export const DEFAULT_CUSTOM_MINUTES = 60;
+
+function clampDuration(minutes: number): number {
+  if (!Number.isFinite(minutes)) return DEFAULT_CUSTOM_MINUTES;
+  return Math.max(MIN_CUSTOM_MINUTES, Math.min(MAX_CUSTOM_MINUTES, Math.round(minutes)));
+}
+
+/** An hour after the last entry, so several adds in a row spread across the day. */
+function nextFallbackStart(existing: readonly PlannerEntry[]): number {
+  return existing.length > 0 ? Math.max(...existing.map((e) => e.startMinute)) + 60 : 10 * 60;
+}
+
 export function addEntry(state: PlannerState, params: AddParams): PlannerState {
   const { parkSlug, parkName, geo, timezone, date, attractionSlug, attractionName, startMinute } =
     params;
@@ -100,8 +202,7 @@ export function addEntry(state: PlannerState, params: AddParams): PlannerState {
   // row spreads them across the day instead of stacking them on one minute. The
   // caller passes a real minute when it knows the day's shape — see
   // `nextFreeStart`, which is what the grid uses.
-  const fallback =
-    existing.length > 0 ? Math.max(...existing.map((e) => e.startMinute)) + 60 : 10 * 60;
+  const fallback = nextFallbackStart(existing);
 
   const entry: PlannerEntry = withHourMirror({
     id: makeId(attractionSlug, existing),

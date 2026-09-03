@@ -20,12 +20,14 @@
  */
 
 import {
+  addCustomEntry,
   addEntry,
   clearDay,
   moveEntry,
   openDay,
   removeEntry,
   setActive,
+  setCustomBlock,
   setEntryDone,
   shiftFrom,
 } from '../lib/planner/actions.ts';
@@ -376,6 +378,79 @@ test(
 );
 
 let passed = 0;
+// ── Free blocks: a plan may contain things the catalogue does not ───────────
+// A lunch break is not a ride. It carries no slug — an empty string would be a
+// claim that a ride exists with no name, and every lookup keyed on it would
+// answer for it — and its height is a DURATION the visitor set rather than a
+// queue anyone predicted.
+const withBlock = addCustomEntry(EMPTY_PLANNER_STATE, {
+  ...PARK,
+  label: 'Mittagspause',
+  icon: 'food',
+  durationMinutes: 45,
+  startMinute: 12 * 60,
+});
+const theBlock = withBlock.parks[PARK.parkSlug].days[PARK.date].entries[0];
+
+test('a free block carries no ride', theBlock.attractionSlug, undefined);
+test('a free block carries its label', theBlock.custom.label, 'Mittagspause');
+test('a free block carries its duration', theBlock.custom.durationMinutes, 45);
+test('a free block sits where it was put', theBlock.startMinute, 720);
+
+// The clamp is the store's, not the caller's: a drag past the bottom of the day
+// must not write a twenty-hour lunch.
+test(
+  'a duration below the floor is clamped',
+  addCustomEntry(EMPTY_PLANNER_STATE, {
+    ...PARK,
+    label: 'x',
+    icon: 'break',
+    durationMinutes: -30,
+  }).parks[PARK.parkSlug].days[PARK.date].entries[0].custom.durationMinutes,
+  5
+);
+test(
+  'a duration past the ceiling is clamped',
+  addCustomEntry(EMPTY_PLANNER_STATE, {
+    ...PARK,
+    label: 'x',
+    icon: 'break',
+    durationMinutes: 5000,
+  }).parks[PARK.parkSlug].days[PARK.date].entries[0].custom.durationMinutes,
+  720
+);
+
+test(
+  'renaming a free block keeps everything else',
+  (() => {
+    const after = setCustomBlock(withBlock, PARK.parkSlug, PARK.date, theBlock.id, {
+      label: 'Eis essen',
+    });
+    const e = after.parks[PARK.parkSlug].days[PARK.date].entries[0];
+    return `${e.custom.label}/${e.custom.icon}/${e.custom.durationMinutes}`;
+  })(),
+  'Eis essen/food/45'
+);
+
+// Identity, for the same reason `moveEntry` has its guards: a resize gesture
+// wobbling inside one five-minute step must cost no write and no render.
+test(
+  'an edit that changes nothing returns the same state',
+  setCustomBlock(withBlock, PARK.parkSlug, PARK.date, theBlock.id, { durationMinutes: 45 }),
+  withBlock
+);
+
+// A ride is not the visitor's to relabel.
+test(
+  'editing a ride as if it were a block does nothing',
+  (() => {
+    const rides = add(EMPTY_PLANNER_STATE, 'taron', 10);
+    const id = rides.parks[PARK.parkSlug].days[PARK.date].entries[0].id;
+    return setCustomBlock(rides, PARK.parkSlug, PARK.date, id, { label: 'nope' }) === rides;
+  })(),
+  true
+);
+
 // ── The park's zone reaches the store ───────────────────────────────────────
 // It never did. `PlannerPark.timezone` was declared, `openDay` and `addEntry`
 // both accepted it, and not one call site passed it — so the flyout's

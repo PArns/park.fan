@@ -1888,7 +1888,8 @@
     "summary": {
       "rides": "{count, plural, =0 {Geen attractie} one {Eén attractie} other {# attracties}}",
       "waiting": "Wachttijd bij elkaar",
-      "done": "{done} van {total} gedaan"
+      "done": "{done} van {total} gedaan",
+      "blocks": "{count, plural, one {# blok} other {# blokken}}"
     },
     "entry": {
       "expected": "verwacht",
@@ -1897,7 +1898,8 @@
       "actual": "werkelijk {minutes} min",
       "noCurve": "Voor deze attractie is er geen uurcurve.",
       "dragHandle": "Verplaatsen",
-      "range": "{from} tot {to}"
+      "range": "{from} tot {to}",
+      "resizeHandle": "Duur slepen"
     },
     "tier": {
       "measured": "Uurprognose",
@@ -1960,6 +1962,23 @@
     "warn": {
       "closedNow": "Meldt nu gesloten.",
       "downYesterday": "Was gisteren de hele dag buiten bedrijf."
+    },
+    "custom": {
+      "add": "Eigen blok",
+      "defaultLabel": "Pauze",
+      "label": "Label",
+      "duration": "{minutes} min",
+      "shorter": "15 minuten korter",
+      "longer": "15 minuten langer",
+      "icon": {
+        "break": "Pauze",
+        "food": "Eten",
+        "show": "Show",
+        "shop": "Winkelen",
+        "photo": "Foto",
+        "meet": "Ontmoetingspunt",
+        "star": "Overig"
+      }
     }
   }
 }

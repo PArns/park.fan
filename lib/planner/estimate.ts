@@ -22,7 +22,7 @@ export interface PlannerEstimate {
    * are different things to tell a visitor: one is "not while the park is shut",
    * the other is "we have never measured this ride's day".
    */
-  missing: 'none' | 'no-day' | 'no-curve' | 'outside-hours';
+  missing: 'none' | 'no-day' | 'no-curve' | 'outside-hours' | 'custom';
 }
 
 const UNKNOWN: PlannerEstimate = {
@@ -52,7 +52,12 @@ export function estimateFor(day: PlanDay | null | undefined, entry: PlannerEntry
     return { wait: null, uncertaintyMinutes: null, missing: 'outside-hours' };
   }
 
-  const ride = rideOf(day, entry.attractionSlug);
+  // A free block is not a ride and has no forecast — it is a duration the
+  // visitor wrote down. `no-curve` would read as "we could not predict this",
+  // which is a claim about a queue that does not exist.
+  if (entry.custom) return { wait: null, uncertaintyMinutes: null, missing: 'custom' };
+
+  const ride = entry.attractionSlug ? rideOf(day, entry.attractionSlug) : undefined;
   // A ride the API omitted: no measured hourly shape to scale, so it has no
   // curve rather than a flat one. The planner says so instead of drawing a bar.
   if (!ride) return { wait: null, uncertaintyMinutes: null, missing: 'no-curve' };
@@ -84,6 +89,8 @@ export interface PlannerTotals {
   actualMinutes: number;
   /** Ticked-off entries that recorded a figure. */
   actualCounted: number;
+  /** Free blocks in the day — counted, never predicted. */
+  custom: number;
 }
 
 /**
@@ -104,8 +111,18 @@ export function totalsFor(
   let done = 0;
   let actualMinutes = 0;
   let actualCounted = 0;
+  let custom = 0;
 
   for (const entry of entries) {
+    // A free block is not a ride and not a forecast. It must not land in
+    // `unknown` — which would read as "we could not predict this" about a lunch
+    // break nobody asked us to predict — and its minutes are not WAITING, which
+    // is what `expectedMinutes` is labelled as.
+    if (entry.custom) {
+      custom++;
+      continue;
+    }
+
     if (entry.done) {
       done++;
       if (typeof entry.actualWait === 'number') {
@@ -126,7 +143,7 @@ export function totalsFor(
     counted++;
   }
 
-  return { expectedMinutes, counted, unknown, done, actualMinutes, actualCounted };
+  return { expectedMinutes, counted, unknown, done, actualMinutes, actualCounted, custom };
 }
 
 /**
