@@ -1979,6 +1979,9 @@
         "meet": "Treffpunkt",
         "star": "Sonstiges"
       }
+    },
+    "sheet": {
+      "handle": "Planer vergrößern oder schließen"
     }
   }
 }

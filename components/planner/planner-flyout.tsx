@@ -40,6 +40,12 @@ interface PlannerFlyoutProps {
  * button off screen. `components/ui/sheet.tsx` says so at the button, and the
  * burger menu solves it the same way.
  */
+/** Far enough that it cannot be a tap; short enough for a thumb. */
+const SHEET_EXPAND_PX = 24;
+/** Under this, the gesture was a tap and the tap handler owns it. */
+const SHEET_TAP_SLOP_PX = 6;
+const SHEET_DISMISS_PX = 90;
+
 export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   const t = useTranslations('planner');
   const locale = useLocale();
@@ -67,8 +73,18 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   // longer for the sake of the rare one. Reset in the close handler rather than
   // in an effect on `open`: the state change belongs to the event that caused it.
   const [showOverview, setShowOverview] = useState(false);
+  // The phone sheet's height, reset on the same event and for the same reason:
+  // the panel opens from a launcher on whatever page the visitor is reading, and
+  // coming back to a sheet that eats the screen because of a drag three pages ago
+  // is a surprise rather than a setting.
+  const [expanded, setExpanded] = useState(false);
+  /** Whether the gesture that just ended was a drag, so the tap can stand down. */
+  const draggedSheet = useRef(false);
   const handleOpenChange = (next: boolean) => {
-    if (!next) setShowOverview(false);
+    if (!next) {
+      setShowOverview(false);
+      setExpanded(false);
+    }
     onOpenChange(next);
   };
 
@@ -136,6 +152,57 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
    * Only on the way IN: un-ticking drops the figure, because a measured number
    * must not stay attached to an entry that is a plan again.
    */
+  /**
+   * The sheet's own height, on a phone.
+   *
+   * Reset on close rather than remembered: the panel opens from a launcher on
+   * whatever page the visitor is reading, and coming back to a sheet that eats
+   * the screen because of a drag three pages ago is a surprise, not a setting.
+   */
+
+  /**
+   * Pull up to see more of the day, push down to put it away.
+   *
+   * Committed on release against a distance, not live: a live height would fight
+   * Radix's own open/close transition on the same element, and the two
+   * directions mean different things — one resizes, the other dismisses — so a
+   * continuous drag would have to guess which is happening while it happened.
+   */
+  // A plain function, like `handleOpenChange` above it and for the same reason:
+  // it closes over that one, which is not memoized, so a `useCallback` here would
+  // either lie about its dependencies or be rebuilt every render anyway.
+  const handleSheetGrab = (event: React.PointerEvent<HTMLElement>) => {
+    if (event.button !== 0) return;
+    const handle = event.currentTarget;
+    handle.setPointerCapture(event.pointerId);
+    const startY = event.clientY;
+    // A pointer drag ALWAYS ends in a click, so without this the tap handler
+    // undid the drag one event later: pulling up set the sheet tall and the
+    // click that followed toggled it straight back. Measured, not assumed — the
+    // height came back 717 px before and 717 px after an 80 px pull.
+    draggedSheet.current = false;
+
+    const finish = (upEvent: PointerEvent) => {
+      const dy = upEvent.clientY - startY;
+      if (Math.abs(dy) > SHEET_TAP_SLOP_PX) draggedSheet.current = true;
+      if (dy > SHEET_DISMISS_PX) handleOpenChange(false);
+      else if (dy < -SHEET_EXPAND_PX) setExpanded(true);
+      else if (dy > SHEET_EXPAND_PX) setExpanded(false);
+      detach();
+    };
+    const detach = () => {
+      handle.removeEventListener('pointerup', finish);
+      handle.removeEventListener('pointercancel', detach);
+      try {
+        handle.releasePointerCapture(event.pointerId);
+      } catch {
+        // Already released — a cancelled gesture, or the element unmounted.
+      }
+    };
+    handle.addEventListener('pointerup', finish);
+    handle.addEventListener('pointercancel', detach);
+  };
+
   const toggleDone = useCallback(
     (entryId: string, done: boolean) => {
       if (!activeParkSlug || !activeDate) return;
@@ -167,8 +234,39 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
         // call site's business. `svh` rather than `vh`: on iOS the address bar
         // makes `vh` taller than what is actually visible, and the summary row
         // at the bottom would sit under it.
-        className="flex w-full flex-col gap-0 p-0 max-sm:max-h-[85svh] max-sm:rounded-t-xl sm:max-w-md"
+        className={cn(
+          'flex w-full flex-col gap-0 p-0 max-sm:rounded-t-xl sm:max-w-md',
+          // The handle's whole job. `svh` for the same reason the cap already
+          // used it: on iOS `vh` counts the address bar and the summary row
+          // would sit under it.
+          expanded ? 'max-sm:max-h-[96svh]' : 'max-sm:max-h-[85svh]'
+        )}
       >
+        {/* The grab handle. Phone only, and `sm:hidden` rather than `!isPhone`
+            because `useMediaQuery` answers `false` on the server snapshot and a
+            control that decides its own existence from that flickers.
+
+            It does the two things a bottom sheet's handle is expected to do —
+            pull up to see more of the day, push down to put it away — and a tap
+            toggles, because a tap is what most people try first. The 8 px rail
+            is what is drawn; the 44 px target is a pseudo-element, so the rail
+            can stay a hairline without the touch area shrinking with it. */}
+        <div className="flex shrink-0 justify-center pt-2 pb-1 sm:hidden">
+          <button
+            type="button"
+            onPointerDown={handleSheetGrab}
+            onClick={() => {
+              if (draggedSheet.current) return;
+              setExpanded((value) => !value);
+            }}
+            data-planner-sheet-handle=""
+            aria-label={t('sheet.handle')}
+            className='relative flex h-4 w-16 cursor-grab touch-none items-center justify-center after:absolute after:top-1/2 after:h-11 after:w-24 after:-translate-y-1/2 after:content-[""] active:cursor-grabbing'
+          >
+            <span className="bg-muted-foreground/40 h-1.5 w-10 rounded-full" />
+          </button>
+        </div>
+
         <SheetHeader className="border-border/60 shrink-0 border-b px-3 py-3">
           <SheetTitle className="flex items-center gap-2 text-base">
             <CalendarPlus className="size-4" />
