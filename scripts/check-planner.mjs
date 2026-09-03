@@ -1350,6 +1350,297 @@ if (reachable) {
   await shows.close();
 }
 
+// ── Notifications, all the way on and all the way off ───────────────────────
+// The three states earlier in this file check what the CONTROL offers. This
+// checks what pressing it does, which is the half that can be broken while
+// every label is right: a switch that turns on and cannot be turned off is
+// worse than one that never worked, because the visitor cannot tell whether
+// they are still subscribed.
+//
+// `PushManager` is stubbed. That is not a shortcut around the hard part — the
+// hard part is this app's order of operations (store the plan, then subscribe,
+// and undo the browser's subscription when the server refuses), and a real push
+// service would only add a dependency on Google's uptime to a test about our
+// own sequencing.
+{
+  const push = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
+  noteErrors(push);
+
+  const VAPID =
+    'BEl62iUYgUivxIkv69yViEuiBIa-Ib9-SkvMeAtA3LFgDzkrxZJjSgSnfckjBJuBkr3qBUYIHBQFLXYp5Nksh8U';
+  const ENDPOINT = 'https://fcm.example.test/fcm/send/abc123';
+
+  await push.addInitScript(
+    ([endpoint]) => {
+      // Permission is granted without a prompt: the prompt is the browser's,
+      // not ours, and Playwright cannot answer it.
+      Object.defineProperty(Notification, 'permission', {
+        get: () => 'granted',
+        configurable: true,
+      });
+      Notification.requestPermission = async () => 'granted';
+
+      let subscription = null;
+      const fakeSubscription = {
+        endpoint,
+        toJSON: () => ({ endpoint, keys: { p256dh: 'p256dh-value', auth: 'auth-value' } }),
+        unsubscribe: async () => {
+          subscription = null;
+          window.__pushUnsubscribed = (window.__pushUnsubscribed ?? 0) + 1;
+          return true;
+        },
+      };
+      const registration = {
+        pushManager: {
+          getSubscription: async () => subscription,
+          subscribe: async () => {
+            subscription = fakeSubscription;
+            return subscription;
+          },
+        },
+      };
+      Object.defineProperty(navigator, 'serviceWorker', {
+        configurable: true,
+        get: () => ({
+          register: async () => registration,
+          getRegistration: async () => registration,
+          ready: Promise.resolve(registration),
+        }),
+      });
+      // The page checks `'PushManager' in window` before offering anything.
+      if (!('PushManager' in window)) {
+        window.PushManager = function PushManager() {};
+      }
+    },
+    [ENDPOINT]
+  );
+
+  await push.route('**/api/push', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({ available: true, publicKey: VAPID, topics: ['next-up'] }),
+    })
+  );
+
+  // The two writes the flow makes, recorded so the ORDER can be asserted.
+  const calls = [];
+  await push.route('**/api/trips', async (route) => {
+    calls.push({ what: 'trip-create', body: route.request().postDataJSON() });
+    await route.fulfill({
+      status: 201,
+      contentType: 'application/json',
+      body: JSON.stringify({ id: 'n7Qk2Fd3Xb9pLmZa', payload: {}, expiresAt: '', updatedAt: '' }),
+    });
+  });
+  await push.route('**/api/trips/*', async (route) => {
+    calls.push({ what: 'trip-update' });
+    await route.fulfill({ status: 200, contentType: 'application/json', body: '{}' });
+  });
+  await push.route('**/api/push/subscriptions', async (route) => {
+    calls.push({
+      what: `subscription-${route.request().method()}`,
+      body: route.request().postDataJSON(),
+    });
+    await route.fulfill({ status: 204, body: '' });
+  });
+
+  await push.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  await push.evaluate(
+    ([plan, date]) => {
+      const seeded = JSON.parse(JSON.stringify(plan));
+      const park = seeded.parks.phantasialand;
+      park.timezone = 'Europe/Berlin';
+      park.days = {
+        [date]: {
+          date,
+          entries: [
+            { id: 'taron-1', attractionSlug: 'taron', attractionName: 'Taron', startMinute: 600 },
+          ],
+        },
+      };
+      seeded.parks = { phantasialand: park };
+      seeded.activeParkSlug = 'phantasialand';
+      seeded.activeDate = date;
+      window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
+      document.cookie = 'planner=1; path=/';
+    },
+    [PLAN, DATE]
+  );
+  await push.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+  await push.locator(LAUNCHER).click();
+  await push.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await push.waitForTimeout(2000);
+
+  const toggle = push.locator('[data-planner-push] button');
+  check('der Schalter ist erreichbar', (await toggle.count()) === 1);
+
+  if (await toggle.count()) {
+    // ── On ───────────────────────────────────────────────────────────────────
+    await toggle.click();
+    await push.waitForTimeout(1500);
+
+    check(
+      'einschalten meldet den Browser an',
+      (await push.locator('[data-planner-push="on"]').count()) === 1
+    );
+    check(
+      'der Schalter sagt jetzt, dass sie an sind',
+      /Benachrichtigungen sind an/.test(
+        (await push.locator('[data-planner-push]').textContent()) ?? ''
+      )
+    );
+    // The sentence about the plan living on a server, where the button is.
+    check(
+      'und sagt, dass der Plan dafür auf dem Server liegt',
+      /auf dem Server/.test((await push.locator('[data-planner-push]').textContent()) ?? '')
+    );
+
+    // The order is the point. The API refuses a subscription against a trip it
+    // does not have, so the plan has to be stored first — and a plan stored
+    // with no subscription is a row that expires, while a subscription with no
+    // plan is a switch that is on and does nothing.
+    const first = calls.findIndex((c) => c.what === 'trip-create');
+    const sub = calls.findIndex((c) => c.what === 'subscription-POST');
+    check(
+      'der Plan geht VOR dem Abo raus',
+      first !== -1 && sub !== -1 && first < sub,
+      calls.map((c) => c.what).join(' → ')
+    );
+    check(
+      'das Abo nennt den Trip, den es gerade angelegt hat',
+      calls[sub]?.body?.tripId === 'n7Qk2Fd3Xb9pLmZa',
+      `${calls[sub]?.body?.tripId}`
+    );
+    // The subscriber's language and zone, stored with the subscription: the job
+    // runs with no request to read an Accept-Language from.
+    check(
+      'und die Sprache des Lesers',
+      calls[sub]?.body?.locale === 'de',
+      `${calls[sub]?.body?.locale}`
+    );
+
+    const storedId = await push.evaluate(() => localStorage.getItem('parkfan_trip_id'));
+    check('der Browser merkt sich seinen Trip', storedId === 'n7Qk2Fd3Xb9pLmZa', `${storedId}`);
+
+    // Reopening must still say "on". The state is read back from the browser's
+    // own subscription AND the stored id, so losing either has to read as off.
+    await push.locator(`${SHEET} button[aria-label]`).first().press('Escape');
+    await push.waitForTimeout(400);
+    await push.locator(LAUNCHER).click();
+    await push.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+    await push.waitForTimeout(1500);
+    check(
+      'nach dem Wiederöffnen sind sie immer noch an',
+      (await push.locator('[data-planner-push="on"]').count()) === 1
+    );
+
+    // ── Off ──────────────────────────────────────────────────────────────────
+    await push.locator('[data-planner-push] button').click();
+    await push.waitForTimeout(1500);
+
+    check('ausschalten geht auch', (await push.locator('[data-planner-push="off"]').count()) === 1);
+    const del = calls.filter((c) => c.what === 'subscription-DELETE');
+    check('der Server erfährt davon', del.length === 1, `${del.length}`);
+    check(
+      'und zwar mit dem Endpunkt, den er kennt',
+      del[0]?.body?.endpoint === ENDPOINT,
+      `${del[0]?.body?.endpoint}`
+    );
+    // The browser's own subscription goes too, or the push service keeps
+    // delivering to a page that no longer thinks it is subscribed.
+    const unsub = await push.evaluate(() => window.__pushUnsubscribed ?? 0);
+    check('der Browser meldet sich auch selbst ab', unsub >= 1, `${unsub}`);
+    const afterId = await push.evaluate(() => localStorage.getItem('parkfan_trip_id'));
+    check('und vergisst den Trip', afterId === null, `${afterId}`);
+
+    // ── And on again ─────────────────────────────────────────────────────────
+    // A switch that only works once is the shape of bug that survives a demo.
+    await push.locator('[data-planner-push] button').click();
+    await push.waitForTimeout(1500);
+    check('und wieder an', (await push.locator('[data-planner-push="on"]').count()) === 1);
+  }
+
+  await push.close();
+}
+
+// ── Every plan is reachable, including the ones already walked ──────────────
+{
+  const past = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
+  noteErrors(past);
+
+  const YESTERDAY = new Date(Date.now() - 86_400_000).toISOString().slice(0, 10);
+  const LAST_WEEK = new Date(Date.now() - 7 * 86_400_000).toISOString().slice(0, 10);
+
+  await past.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  await past.evaluate(
+    ([plan, future, yesterday, lastWeek]) => {
+      const seeded = JSON.parse(JSON.stringify(plan));
+      const park = seeded.parks.phantasialand;
+      park.timezone = 'Europe/Berlin';
+      const entry = (id, done) => ({
+        id,
+        attractionSlug: 'taron',
+        attractionName: 'Taron',
+        startMinute: 600,
+        ...(done ? { done: true, actualWait: 35 } : {}),
+      });
+      park.days = {
+        [lastWeek]: { date: lastWeek, entries: [entry('old-1', true)] },
+        [yesterday]: { date: yesterday, entries: [entry('yesterday-1', true)] },
+        [future]: { date: future, entries: [entry('future-1', false)] },
+      };
+      seeded.parks = { phantasialand: park };
+      seeded.activeParkSlug = 'phantasialand';
+      seeded.activeDate = future;
+      window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
+      document.cookie = 'planner=1; path=/';
+    },
+    [PLAN, DATE, YESTERDAY, LAST_WEEK]
+  );
+  await past.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+  await past.locator(LAUNCHER).click();
+  await past.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await past.waitForTimeout(1500);
+
+  await past.locator('button[data-planner-overview-toggle]').click();
+  await past.waitForTimeout(500);
+
+  // A finished day is a record of what was actually queued — the ticked entries
+  // carry real measured minutes — so it is kept and shown greyed rather than
+  // swept up on a date change.
+  const rows = past.locator(`${SHEET} li button[type="button"]`);
+  const labels = (await rows.allTextContents()).map((t) => t.replace(/\s+/g, ' ').trim());
+  check('die Übersicht listet auch die vergangenen Tage', labels.length >= 3, labels.join(' | '));
+
+  // Pick the oldest one and check the panel actually goes there.
+  const oldest = rows.first();
+  await oldest.click();
+  await past.waitForTimeout(800);
+  const active = await past.evaluate(() =>
+    JSON.parse(localStorage.getItem('parkfan_planner') ?? '{}')
+  );
+  check(
+    'ein vergangener Tag lässt sich öffnen',
+    active?.activeDate === lastWeekOf(),
+    `${active?.activeDate}`
+  );
+  function lastWeekOf() {
+    return new Date(Date.now() - 7 * 86_400_000).toISOString().slice(0, 10);
+  }
+
+  // And what it shows is the record: the entry is ticked and carries the
+  // minutes it was ticked with, not a forecast. Scoped to the ENTRY — read off
+  // the whole sheet, a "35" in a date or in another ride's figure would pass
+  // this without the row being right at all.
+  const oldRow = past.locator('li[data-planner-entry="old-1"]');
+  check('der Eintrag des Tages steht da', (await oldRow.count()) === 1);
+  const rowText = ((await oldRow.first().textContent()) ?? '').replace(/\s+/g, ' ').trim();
+  check('und zeigt, was an dem Tag wirklich anstand', /35/.test(rowText), rowText);
+
+  await past.close();
+}
+
 // ── The photos the payload already carries ──────────────────────────────────
 // The plan-day proxy resolves a ride's picture from the media database on every
 // request, and for most of this feature's life nothing showed one: the block's
