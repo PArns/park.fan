@@ -106,7 +106,11 @@ const PLAN = {
   version: 2,
 };
 
-const LAUNCHER = 'button[aria-label="Planer öffnen"]';
+// The way in is a tab on the window's edge, not a floating pill in the corner,
+// and it is drawn on every page whether or not anything is planned — so this
+// selector is a data attribute rather than an aria-label: the tab's accessible
+// name is its own visible word, which differs per locale.
+const LAUNCHER = '[data-planner-edge-tab]';
 const SHEET = '[data-slot="sheet-content"]';
 
 const results = [];
@@ -236,17 +240,35 @@ const noteErrors = (page) =>
 const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
 noteErrors(page);
 
-// An empty plan must render no launcher — on the server AND after hydration, or
-// the button appears out of nowhere a second after the page settles.
+// An empty plan must STILL render the tab, which is the whole point of moving
+// the way in out of the lazily-loaded chunk: a feature nobody can see is a
+// feature nobody starts. What must not appear before the chunk lands is a raw
+// message key, so the label is asserted too — the tab reads `navigation`, which
+// the layout chrome already carries, and nothing from `planner`.
 await page.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
-check('ohne Plan kein Launcher', (await page.locator(LAUNCHER).count()) === 0);
+await page
+  .locator(LAUNCHER)
+  .waitFor({ state: 'visible', timeout: 20_000 })
+  .catch(() => {});
+check('ohne Plan trotzdem der Tab', (await page.locator(LAUNCHER).count()) === 1);
+{
+  const label = await page
+    .locator(LAUNCHER)
+    .textContent()
+    .catch(() => null);
+  check(
+    'der Tab nennt sich beim Namen, nicht beim Schlüssel',
+    label?.trim() === 'Tagesplaner',
+    JSON.stringify(label)
+  );
+}
 
 await seed(page);
 
 const launcher = page.locator(LAUNCHER);
 await launcher.waitFor({ state: 'visible', timeout: 20_000 }).catch(() => {});
 const hasLauncher = (await launcher.count()) === 1;
-check('Launcher erscheint mit Plan', hasLauncher);
+check('Launcher bleibt mit Plan', hasLauncher);
 
 if (!hasLauncher) {
   console.error('\nOhne Launcher ist der Rest nicht prüfbar.');
@@ -2960,16 +2982,21 @@ if (reachable) {
 // and `planner.day.today` verbatim, because next-intl logs MISSING_MESSAGE and
 // prints the raw key rather than throwing. Only opening the panel finds that.
 {
-  const LOCALE_OPEN = {
-    de: 'Planer öffnen',
-    en: 'Open planner',
-    nl: 'Planner openen',
-    fr: 'Ouvrir le planificateur',
-    es: 'Abrir el planificador',
-    it: 'Apri il pianificatore',
+  // The word the TAB prints, which comes from `navigation` — the namespace the
+  // layout chrome already ships — and not from `planner`, which arrives with the
+  // chunk. Asserting it is how this sweep catches the one mistake that would
+  // otherwise be invisible: an eager control reading a lazily-loaded namespace
+  // renders its raw key on every page of the site.
+  const LOCALE_TAB = {
+    de: 'Tagesplaner',
+    en: 'Trip planner',
+    nl: 'Dagplanner',
+    fr: 'Planificateur',
+    es: 'Planificador',
+    it: 'Pianificatore',
   };
 
-  for (const [locale, label] of Object.entries(LOCALE_OPEN)) {
+  for (const [locale, label] of Object.entries(LOCALE_TAB)) {
     const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
     const missing = [];
     page.on('console', (msg) => {
@@ -2983,19 +3010,25 @@ if (reachable) {
     }, PLAN);
     await page.goto(`${BASE}/${locale}`, { waitUntil: 'networkidle' });
 
-    const launcher = page.locator(`button[aria-label="${label}"]`);
-    // WAITED for, not counted. The launcher is a Client Component that reads
-    // the plan out of localStorage, so it mounts after `networkidle` resolves —
-    // and this block sits at the end of a long run, where the dev server is
-    // slowest and loses that race every time. A bare `count()` here reported
-    // "Launcher fehlt" for all six locales on a page that had the button
-    // (`button[aria-label]` on the settled page lists exactly "Planer öffnen"),
-    // which reads as a broken feature rather than as a missed beat. Every other
-    // launcher assertion in this file already waits.
+    const launcher = page.locator(LAUNCHER);
+    // WAITED for, not counted. The tab is a Client Component in the layout, so
+    // it mounts after `networkidle` resolves — and this block sits at the end of
+    // a long run, where the dev server is slowest and loses that race every
+    // time. A bare `count()` here reported "Launcher fehlt" for all six locales
+    // on a page that had the control, which reads as a broken feature rather
+    // than as a missed beat. Every other launcher assertion in this file waits.
     const found = await launcher
       .waitFor({ state: 'visible', timeout: 20_000 })
       .then(() => true)
       .catch(() => false);
+    if (found) {
+      const tabText = ((await launcher.textContent().catch(() => '')) ?? '').trim();
+      check(
+        `${locale}: der Tab trägt das Wort dieser Sprache`,
+        tabText.startsWith(label),
+        `${JSON.stringify(tabText)} statt ${JSON.stringify(label)}`
+      );
+    }
     if (found) {
       await launcher.click();
       await page
