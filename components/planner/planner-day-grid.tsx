@@ -498,7 +498,7 @@ export function PlannerDayGrid({
                 the list above it read as the same subject. */}
             <div
               data-planner-show=""
-              className="border-border/60 bg-background/90 text-foreground/80 pointer-events-none absolute left-1/2 z-20 flex max-w-[80%] -translate-x-1/2 -translate-y-1/2 items-center gap-1 rounded-full border px-1.5 py-px text-[10px] backdrop-blur-sm"
+              className="glass-light text-foreground pointer-events-none absolute left-1/2 z-20 flex max-w-[80%] -translate-x-1/2 -translate-y-1/2 items-center gap-1 rounded-full px-1.5 py-px text-[10px] shadow-sm"
               style={{ top: line.y }}
             >
               <Theater className="size-2.5 shrink-0" aria-hidden="true" />

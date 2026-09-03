@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { CalendarPlus, ChevronDown } from 'lucide-react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
@@ -106,6 +106,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   const grid = buildDayGrid(day?.context.openHour, day?.context.closeHour);
   const isToday = Boolean(activeDate && activeDate === parkToday(timezone));
 
+
   // The live poll, and it is gated on TODAY for two reasons that point the same
   // way: a standby reading describes this minute and says nothing about a
   // Tuesday in November, and on a park page this is a cache hit on the key the
@@ -120,6 +121,29 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
 
   const liveWaits = liveWaitsFor(livePark);
   const closedNow = closedNowFor(livePark);
+
+  /**
+   * Ticking a ride off, from either view.
+   *
+   * ONE handler, because there are two of them: the grid's docked action row and
+   * the flat list's row button. The grid's passed the fifth argument and the flat
+   * list's did not — and the flat list is the view every visitor actually gets
+   * while `/plan/day` answers 404, so in production every tick stored `done: true`
+   * with no figure. `setEntryDone` has taken `actualWait` since it was written,
+   * `totalsFor` sums it and the block renders it.
+   *
+   * Only on the way IN: un-ticking drops the figure, because a measured number
+   * must not stay attached to an entry that is a plan again.
+   */
+  const toggleDone = useCallback(
+    (entryId: string, done: boolean) => {
+      if (!activeParkSlug || !activeDate) return;
+      const slug = activeEntries.find((entry) => entry.id === entryId)?.attractionSlug;
+      const actual = done && slug ? liveWaits?.get(slug) : undefined;
+      setDone(activeParkSlug, activeDate, entryId, done, actual ?? undefined);
+    },
+    [activeParkSlug, activeDate, activeEntries, liveWaits, setDone]
+  );
   // `null` where the date cannot have showtimes at all. The API rewrites any
   // non-today date onto today and its source is an observation table with no
   // forward schedule, so sixty of the sixty-one dates the picker offers are
@@ -261,11 +285,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   <PlannerTimeline
                     entries={activeEntries}
                     day={day ?? null}
-                    onToggleDone={(entryId, done) =>
-                      activeParkSlug &&
-                      activeDate &&
-                      setDone(activeParkSlug, activeDate, entryId, done)
-                    }
+                    onToggleDone={toggleDone}
                     onRemove={(entryId) =>
                       activeParkSlug &&
                       activeDate &&
@@ -277,18 +297,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
               {grid && selectedId && (
                 <PlannerGridActions
                   entry={activeEntries.find((e) => e.id === selectedId) ?? null}
-                  onToggleDone={(entryId, done) => {
-                    if (!activeParkSlug || !activeDate) return;
-                    // The fifth argument. `setEntryDone` has taken `actualWait` since it
-                    // was written, `estimate.ts` sums it and the block renders it — and
-                    // nothing had ever passed it, so `PlannerEntry.actualWait` was dead in
-                    // production and a ticked-off block could only ever show an em dash.
-                    // Only on the way IN: un-ticking drops the figure, because a measured
-                    // number must not stay attached to an entry that is a plan again.
-                    const slug = activeEntries.find((e) => e.id === entryId)?.attractionSlug;
-                    const actual = done && slug ? liveWaits?.get(slug) : undefined;
-                    setDone(activeParkSlug, activeDate, entryId, done, actual ?? undefined);
-                  }}
+                  onToggleDone={toggleDone}
                   onRemove={(entryId) => {
                     if (activeParkSlug && activeDate)
                       removeRide(activeParkSlug, activeDate, entryId);
