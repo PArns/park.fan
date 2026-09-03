@@ -148,7 +148,43 @@ Cloudflare-Regel darf nicht umgestellt werden, bevor das bestätigt ist.**
 Die ersten beiden liegen im **Cloudflare-Dashboard**. Kein Refactor in diesem Repo kommt in
 ihre Nähe, und beide sind ein Formularfeld.
 
-### Die Regel, wie sie am 2026-09-03 wirklich aussieht
+### Erledigt am 2026-09-03: die Regel steuert nichts mehr, der Header steuert alles
+
+Die Regel heißt jetzt **„Frontend cache"** und hat keinen Pfad-Matcher mehr:
+
+```
+http.host eq "park.fan"
+  and not starts_with(http.request.uri.path, "/api/")
+  and not starts_with(http.request.uri.path, "/admin/")
+```
+
+| Einstellung                    | Wert                                                         |
+| ------------------------------ | ------------------------------------------------------------ |
+| Edge TTL                       | **Use cache-control header if present, bypass cache if not** |
+| Status code TTL                | **308 → 12 h, 301 → 12 h, 404 → 1 h**                        |
+| Serve stale while revalidating | **an**                                                       |
+
+**Warum „bypass cache if not" ungefährlicher ist als es klingt** — und diese Session hat es
+zuerst zu absolut formuliert: Cloudflare liest `Cloudflare-CDN-Cache-Control` → `CDN-Cache-Control`
+→ **`Cache-Control`**. Der letzte ist ein Fallback, kein Ausschluss. Gemessen, bevor umgestellt
+wurde:
+
+| Was                                     | `Cache-Control`                       | Folge                     |
+| --------------------------------------- | ------------------------------------- | ------------------------- |
+| `/_next/static/*`, `/icon.svg`          | `public, max-age=31536000, immutable` | bleibt gecacht            |
+| `/parks/*`                              | `no-store` **+ `CDN-Cache-Control`**  | gecacht, wie gewollt      |
+| `/de/search`, `/contribute/thanks`      | `private, no-store`                   | bypass — richtig so       |
+| prerenderte Seiten ohne eigenes Fenster | `public, max-age=0, must-revalidate`  | revalidiert, kein Schaden |
+
+Dazu: **keine einzige `set-cookie`** auf `/de`, einer Ride-Seite oder `/admin` — nichts
+Personalisiertes kann in den Cache geraten. Der `/admin`-Ausschluss ist trotzdem drin, als Zaun,
+nicht als Reparatur. _(Er ist mit Schrägstrich geschrieben, `/admin/`, trifft also `/admin` selbst
+nicht — unkritisch, weil diese Seite `max-age=0, must-revalidate` sendet und die Shell keine
+Daten enthält, aber beim nächsten Anfassen der Regel gehört der Schrägstrich weg.)_
+
+Seitdem entscheidet **allein dieses Repo**, was gecacht wird, und man sieht es im Diff.
+
+### Wie es vorher aussah (zur Einordnung)
 
 Aus dem Dashboard abgelesen (Regel **„Park & Ride cache"**), damit sie niemand mehr raten muss:
 
