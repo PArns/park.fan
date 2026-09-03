@@ -80,6 +80,7 @@ Nach zwei PRs und drei Dashboard-Änderungen, gegen Produktion gemessen:
 | 404                                                                                   | MISS                                    | **HIT**                                     |
 | Geo-Hubs (`/de/parks/europe` …)                                                       | `DYNAMIC`                               | **HIT**                                     |
 | Startseite, Blog, Feeds, Glossar, fancast, Guides, Rechtsseiten, Sitemaps, `llms.txt` | `DYNAMIC`, kein Fenster                 | **HIT**, Fenster im Repo                    |
+| `/_next/image` (20 Bilder ≈ 994 kB je Ride-Seite)                                     | `BYPASS`, jedes Byte aus Vercel         | **HIT**, ein Eintrag je Format              |
 | `/de/search`, `/admin`                                                                | kein Cache                              | **weiterhin kein Cache** (BYPASS / DYNAMIC) |
 
 Der 308-Fix ist der einzige mit sofortiger Wirkung: auf der Kalender-Route sind ~36 % der
