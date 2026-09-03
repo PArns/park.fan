@@ -1038,21 +1038,31 @@ const nextConfig: NextConfig = {
       // Still missing at the time of writing: the geo hubs (`/:locale/parks`, `/…/:continent`,
       // `/…/:country`, `/…/:city`). See docs/optimization/README.md.
       {
-        // A ride page. Two days, and this is the longest window on the site on purpose: the
-        // crawl interval for these URLs is ~42 h against an edge TTL of ~6-12 h today, so the
-        // cache can never fill — measured hit rate 10 % against a 22 % ceiling. What the page
-        // renders that moves at all (wait time, status) is replaced on mount by the client poll;
-        // what is served from HTML is the curated ride, which changes when an editor changes it.
+        // A ride page. A day fresh and only an hour of staleness on top, and BOTH numbers are
+        // the point — the ceiling on how old a served copy can be is their SUM, not the first
+        // of them. It started at 48 h + 24 h, which is 72 h, on a page whose own title says
+        // "Wartezeiten LIVE".
         //
-        // The price, stated plainly: NOTHING in this repo or the backend can purge Cloudflare,
-        // so a curated correction stays invisible for as long as this window runs. Two days is
-        // the first step, not the ceiling — raising it further wants a Cloudflare purge in
-        // `/api/revalidate` first.
+        // That sum matters more here than anywhere else on the site, because on a long-tail
+        // ride URL the crawler is usually the ONLY visitor: it gets the stale copy and triggers
+        // the refresh that only the next crawl, ~42 h later, would benefit from. A long
+        // stale window therefore does not shorten what a crawler sees — it is exactly what a
+        // crawler sees, every time.
+        //
+        // What that costs: the hit ceiling against a ~42 h crawl interval drops from ~53 % to
+        // ~36 %. What it buys: the one self-dating element in the rendered markup — an
+        // `Aktualisiert <time>` stamp, a clock time with the full ISO date in its attribute —
+        // is never more than a day behind. (The park page carries a full written-out date in
+        // its FAQ text and its FAQPage JSON-LD, which is why that one sits at an hour.)
+        //
+        // No measured ranking effect exists in either direction; what is real is the snippet
+        // and what a reader sees before hydration. Raising this again wants a Cloudflare purge
+        // in `/api/revalidate` first — nothing in this repo or the backend can purge it today.
         source: `/:locale(${locales.join('|')})/parks/:continent/:country/:city/:park/:attraction`,
         headers: [
           {
             key: 'CDN-Cache-Control',
-            value: 'public, s-maxage=172800, stale-while-revalidate=86400',
+            value: 'public, s-maxage=86400, stale-while-revalidate=3600',
           },
         ],
       },

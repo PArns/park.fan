@@ -152,14 +152,14 @@ Vorbereitung, keine Wirkung.
 `next.config.ts` setzt `CDN-Cache-Control` jetzt für **jede** Seite unter `/*/parks/*`, nicht
 mehr nur für den Kalender. Gegen `pnpm build && pnpm start` verifiziert:
 
-| Pfad                           |        `s-maxage` | Begründung                                                          |
-| ------------------------------ | ----------------: | ------------------------------------------------------------------- |
-| Geo-Hubs (`/parks` … `/:city`) |        3600 (1 h) | prerendert, Live-Teile kommen per Client-Poll                       |
-| Park-Seite                     |        3600 (1 h) | der Backend-Tag-Push bei Statusflips darf nicht ersticken           |
-| **Ride-Seite**                 | **172800 (48 h)** | Crawl-Intervall ~42 h gegen ~6–12 h TTL — der Kern des Problems     |
-| Kalender-Hub                   |        3600 (1 h) | rendert den _aktuellen_ Monat, darf keinen Monatswechsel überdauern |
-| Kalender-Monat                 |      86400 (24 h) | bestand schon                                                       |
-| `/de/blog`, `/api/*`           |       unverändert | keine Übergriffigkeit — gegengeprüft                                |
+| Pfad                           |                 `s-maxage` | Begründung                                                          |
+| ------------------------------ | -------------------------: | ------------------------------------------------------------------- |
+| Geo-Hubs (`/parks` … `/:city`) |                 3600 (1 h) | prerendert, Live-Teile kommen per Client-Poll                       |
+| Park-Seite                     |                 3600 (1 h) | der Backend-Tag-Push bei Statusflips darf nicht ersticken           |
+| **Ride-Seite**                 | **86400 (24 h)** + 1 h SWR | siehe „Die Summe ist die Decke“ unten                               |
+| Kalender-Hub                   |                 3600 (1 h) | rendert den _aktuellen_ Monat, darf keinen Monatswechsel überdauern |
+| Kalender-Monat                 |               86400 (24 h) | bestand schon                                                       |
+| `/de/blog`, `/api/*`           |                unverändert | keine Übergriffigkeit — gegengeprüft                                |
 
 Das war **nicht** nur Bequemlichkeit: die Cloudflare-Regel matcht `/*/parks/*`. Hätte man sie
 auf „use cache-control header if present" umgestellt, während die Geo-Hubs und die Park-Seite
@@ -172,6 +172,44 @@ Regeln steht die Bestätigung aus. `curl -sI` auf eine Ride-URL nach dem Deploy 
 Cloudflare-Regel darf nicht umgestellt werden, bevor das bestätigt ist.**
 
 ---
+
+### Die Summe ist die Decke, nicht das `s-maxage`
+
+Korrektur an der ersten Fassung dieser Seite: `s-maxage` **plus** `stale-while-revalidate`
+ergibt, wie alt eine ausgelieferte Kopie höchstens sein kann. Die Ride-Seite stand auf
+48 h + 24 h — also **72 h** — auf einer Seite, deren eigener Titel „Wartezeiten LIVE“ sagt.
+
+Und auf einer Long-Tail-Ride-URL ist der Crawler meist der **einzige** Besucher: er bekommt
+die stale Kopie und stößt die Auffrischung an, von der erst der nächste Crawl ~42 h später
+profitiert. Ein langes Stale-Fenster verkürzt dort also nicht, was ein Crawler sieht — es
+**ist**, was ein Crawler sieht, jedes Mal.
+
+| Variante                   | max. Alter | HIT-Decke bei ~42 h Crawl |
+| -------------------------- | ---------: | ------------------------: |
+| 48 h + 24 h SWR (zuerst)   |       72 h |                     ~53 % |
+| 24 h + 24 h SWR            |       48 h |                     ~46 % |
+| **24 h + 1 h SWR (jetzt)** |   **25 h** |                 **~36 %** |
+
+Ausschlaggebend war, was die Seite über sich selbst aussagt. Von neun Nennungen des
+Tagesdatums im HTML stehen **acht im RSC-Flight** und genau **eine im gerenderten Markup**:
+
+```html
+<span>Aktualisiert</span> <time datetime="2026-09-03T08:39:55.542Z">10:39</time>
+```
+
+Sichtbar ist nur die Uhrzeit, kein Datum — deutlich harmloser als die Parkseite, die ein
+ausgeschriebenes Datum im FAQ-Text **und** im FAQPage-JSON-LD trägt (genau das, weswegen
+Google bei Hansa-Park „vor 6 Tagen“ anzeigt). Die Parkseite steht deshalb ohnehin auf einer
+Stunde.
+
+**Caching selbst kostet kein Ranking** — ein `HIT` ist für Googlebot dieselbe 200, nur
+schneller, und ein besseres TTFB zählt eher dafür. Ein gemessener Ranking-Effekt existiert in
+**keiner** Richtung; real sind das Snippet und was ein Leser vor der Hydration sieht.
+
+Blog und Glossar behalten ihre sieben Tage Staleness: ihr Inhalt ist zwischen zwei Deploys
+byte-identisch, eine alte Kopie ist dort also **richtig** und nicht bloß alt. Das einzige
+Problem ist die Verzögerung nach einem Deploy — und die löst ein Cloudflare-Purge in
+`/api/revalidate`, nicht ein kürzeres Fenster.
 
 ## Die Rangfolge der offenen Hebel
 
@@ -341,8 +379,8 @@ Kalender-Route.
 
 Zwei Zahlen fehlen und beide stehen nur im Dashboard:
 
-- ~~**Welches Edge TTL trägt die Regel?**~~ **Beantwortet: 12 Stunden.** Zu heben auf 48 h
-  für die Ride-Familie — und dabei „Serve stale content while revalidating" einschalten, sonst
+- ~~**Welches Edge TTL trägt die Regel?**~~ **Beantwortet: 12 Stunden**, inzwischen ersetzt durch die
+  Fenster aus diesem Repo — und dabei „Serve stale content while revalidating" einschalten, sonst
   bleibt das `stale-while-revalidate` aus den Headern ungenutzt.
 - **Läuft Tiered Cache?** `decisions.md` (01.09.) sagt „Smart Tiered Cache aktiv". Smart
   Topology ist [auf allen Plänen inkl. Pro verfügbar](https://developers.cloudflare.com/cache/how-to/tiered-cache/);
