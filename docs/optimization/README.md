@@ -10,6 +10,36 @@ und dann `decisions.md`.**
 
 ---
 
+## Ergebnis der Runde vom 2026-09-03
+
+Nach zwei PRs und drei Dashboard-Änderungen, gegen Produktion gemessen:
+
+|                                                                                       | vorher                                  | nachher                                     |
+| ------------------------------------------------------------------------------------- | --------------------------------------- | ------------------------------------------- |
+| 308 auf ausgelaufene Monats-URL                                                       | `BYPASS`, jedes Mal 72.190 B aus Vercel | **HIT**                                     |
+| 404                                                                                   | MISS                                    | **HIT**                                     |
+| Geo-Hubs (`/de/parks/europe` …)                                                       | `DYNAMIC`                               | **HIT**                                     |
+| Startseite, Blog, Feeds, Glossar, fancast, Guides, Rechtsseiten, Sitemaps, `llms.txt` | `DYNAMIC`, kein Fenster                 | **HIT**, Fenster im Repo                    |
+| `/de/search`, `/admin`                                                                | kein Cache                              | **weiterhin kein Cache** (BYPASS / DYNAMIC) |
+
+Der 308-Fix ist der einzige mit sofortiger Wirkung: auf der Kalender-Route sind ~36 % der
+Requests solche Redirects, also **~5.600 Invocations und ~400 MB pro 12 h**, rund 40 % ihrer
+Transferzeile, für Antworten, deren einzige Nutzlast ein `Location`-Header ist.
+
+**Die HIT-Quote bewegt sich noch nicht, und das ist kein Widerspruch.** Direkt nach dem Deploy
+gemessen: Rides 7 %, Kalender 12 % — unverändert. Eine URL wird erst zum HIT, wenn sie
+**innerhalb** ihres Fensters ein zweites Mal angefragt wird, und das Crawl-Intervall einer
+Ride-URL ist ~42 h. Der Cache füllt sich also über ein bis zwei Tage, nicht über eine Stunde.
+
+**Der Frühindikator ist das `age`, nicht die Quote.** Höchstes beobachtetes `age` direkt nach
+dem Deploy: 20.387 s (5,7 h) — Einträge aus der Zeit des 12-Stunden-TTL. Sobald ein `age`
+über **43.200 s** auftaucht, ist ein Eintrag im 48-Stunden-Fenster entstanden und das neue
+Fenster wirkt. Danach lohnt die Quote wieder.
+
+Zu messen mit `./scripts/check-cdn-cache.sh hitrate`.
+
+---
+
 ## Der Stand in einem Satz
 
 Nach zwei Tagen Arbeit sind **die zwei teuersten Routen der Site unverändert teuer**, und das
