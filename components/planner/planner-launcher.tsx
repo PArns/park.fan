@@ -68,6 +68,32 @@ export function PlannerLauncher() {
     setOpen(true);
   }, [openRequests]);
 
+  /**
+   * How much of the window the panel is holding, for the page beside it.
+   *
+   * A CSS custom property on the document element rather than a prop, because
+   * the reader is `app/[locale]/layout.tsx` — a Server Component shared by 3,109
+   * prerendered routes, which cannot take a value from a client store. It is
+   * unset until the panel opens, so the server renders `0px` through the
+   * `var()` fallback and a visitor who never opens the planner never pays a
+   * style recalculation for it.
+   *
+   * Written on every resize frame on purpose: the alternative is committing it
+   * on release, and then the page visibly lags a panel edge the pointer is
+   * already holding.
+   */
+  useEffect(() => {
+    const root = document.documentElement;
+    if (!open) {
+      root.style.removeProperty('--planner-inset');
+      return;
+    }
+    root.style.setProperty('--planner-inset', `${panelWidth}px`);
+    return () => {
+      root.style.removeProperty('--planner-inset');
+    };
+  }, [open, panelWidth]);
+
   // The panel is worth loading once it has been opened, once there is something
   // in it, or once something has asked for it. Closing it again does not unload
   // the chunk: it is already in the browser, and unmounting the panel on close

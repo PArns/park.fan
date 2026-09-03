@@ -1,5 +1,6 @@
 'use client';
 
+import type { ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 import { CalendarDays, CloudOff, Clock, Droplets } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -15,10 +16,24 @@ export type PlannerDayState = 'loading' | 'error' | 'empty' | 'ready';
 interface PlannerContextBandProps {
   day: PlanDay | null;
   state: PlannerDayState;
+  /**
+   * Rendered at the end of the band's second row.
+   *
+   * The party chip used to have a line of its own under this band — 30 px of
+   * panel for one 22 px pill. It belongs on the badge row: it is the same kind
+   * of statement about the day and the same shape of control, and the panel's
+   * subject is the axis below, which was getting 324 px of 950.
+   */
+  trailing?: ReactNode;
 }
 
-/** Fixed height whatever it holds — this panel is on every page. */
-const BAND_CLASS = 'flex min-h-[76px] flex-col justify-center gap-2 px-3 py-2';
+/**
+ * Fixed height whatever it holds — this panel is on every page, and the three
+ * states it can render (loading, empty, ready) must not move the grid under a
+ * pointer when one flips to another. 60 px is the tallest of the three: 12 px of
+ * padding, a 22.5 px badge row, a 4 px gap and a 16.5 px second row.
+ */
+const BAND_CLASS = 'flex min-h-[60px] flex-col justify-center gap-1 px-3 py-1.5';
 
 /**
  * Below this a day is dry. Open-Meteo reports a few hundredths of a millimetre
@@ -50,7 +65,7 @@ const WET_MM = 0.2;
  * day have no forecast" and "still fetching" is exactly what a visitor needs to
  * know before deciding whether to wait.
  */
-export function PlannerContextBand({ day, state }: PlannerContextBandProps) {
+export function PlannerContextBand({ day, state, trailing }: PlannerContextBandProps) {
   const t = useTranslations('planner');
   const tWeather = useTranslations('parks.weather');
 
@@ -151,6 +166,11 @@ export function PlannerContextBand({ day, state }: PlannerContextBandProps) {
             {t('context.neighborHolidays')}
           </Badge>
         )}
+
+        {/* Last on the CHIP row, not on the prose row below it: the second row
+            already carries the weather and the tier and wraps at 448 px, and a
+            third line there costs the axis 22 px. A chip among chips. */}
+        {trailing}
       </div>
 
       <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px]">

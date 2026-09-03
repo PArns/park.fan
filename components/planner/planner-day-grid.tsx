@@ -283,7 +283,15 @@ export function PlannerDayGrid({
           from.estimate.uncertaintyMinutes,
           day?.tier === 'observed'
         ),
-        lane: lanes.get(to.entry.id) ?? { column: 0, columns: 1, overflow: 0 },
+        // The FROM block's lane, not the TO block's. A leg is drawn as a rail
+        // descending from where one block ends, so putting it in the
+        // destination's column made it descend from whatever happened to sit
+        // above THAT column — with Winja's Force between Taron and F.L.Y. in a
+        // second lane, the Winja's→F.L.Y. chip appeared under Taron and read as
+        // Taron→F.L.Y.: the right arithmetic against the wrong pair as far as
+        // anybody looking at it could tell. Reported as "the transfer is wrong,
+        // and so is the distance — Winja's is in between".
+        lane: lanes.get(from.entry.id) ?? { column: 0, columns: 1, overflow: 0 },
         fromMinute: from.entry.startMinute + (from.wait ?? 0),
       };
     });

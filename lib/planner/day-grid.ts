@@ -188,52 +188,63 @@ export interface RideFloor {
 }
 
 /**
- * The two floors under a ride, and the difference between them is the point.
- *
- * The HARD floor is the park's published opening — a fact — because no per-ride
- * opening time exists in any payload today. When one does (`opensAtMinute` with
- * a measured confidence) it raises this line and nothing else changes. It is
- * what a DRAG is clamped to, so nothing here can refuse a placement a visitor
- * insists on.
- *
- * The SOFT floor also carries {@link GATE_TO_FIRST_RIDE_MIN} where the park's
- * own opening is all we have: it is where a new block is FILED, and filing the
- * first ride of the day at the exact minute the gates open plans a walk nobody
- * can make.
- *
- * The SOFT floor is the first hour this ride has a curve for, and it is a
- * statement about MEASUREMENT rather than about opening: the backend skips hours
- * with no observations, so a ride merely unobserved at 09:00 would otherwise be
- * clamped as though it opened at 11:00. It never stops a drag. Entering it costs
- * the block its figure, which is exactly what `estimateFor` already returns —
- * the truth, rather than a prohibition dressed as one.
- *
- * The gates are deliberate: at least a month of measured days, and at least an
- * hour past the park's own opening, or a single quiet morning becomes a wall.
+ * `HH:mm` in the park's own clock, as minutes since midnight. `null` on
+ * anything that is not that shape — the field is optional and comes from an
+ * API, so a bad value must degrade to "not known" rather than to minute zero.
  */
+export function opensAtMinute(opensAt: string | null | undefined): number | null {
+  if (!opensAt) return null;
+  const match = /^(\d{1,2}):(\d{2})$/.exec(opensAt.trim());
+  if (!match) return null;
+  const hours = Number(match[1]);
+  const minutes = Number(match[2]);
+  if (hours > 23 || minutes > 59) return null;
+  return hours * 60 + minutes;
+}
+
 /**
  * How long after the gates open somebody can actually be queueing.
  *
- * Nobody is at a ride's entrance in the second the park opens. There is a
+ * Nobody is at a ride's entrance in the second the park opens: there is a
  * turnstile, a bag check and a walk — Phantasialand's gate to Klugheim is the
- * better part of a kilometre — and the planner was filing the first ride of the
- * day at exactly `openMin`, which is a plan no visitor has ever executed.
+ * better part of a kilometre — and the planner filed the first ride of the day
+ * at exactly `openMin`, which is a plan nobody has executed.
  *
  * The same family of judgement as `EXIT_MIN` and `SAME_LAND_CEIL_MIN` in
- * `leg.ts`, and named as one: an allowance, not a measurement. It is deliberately
- * NOT a claim that any ride is shut — no payload anywhere carries a per-ride
- * opening time, and for Phantasialand tomorrow `/plan/day` reports Taron with a
- * 30-minute queue in its 09:00 hour, so the data says the opposite. What this
- * says is where the VISITOR is, which is a different sentence.
- *
- * It moves the default placement only. Dragging a block onto the opening minute
- * is still allowed, because somebody who knows their park better than this
- * constant does must not be argued with.
+ * `leg.ts`, and named as one: an allowance, not a measurement. So it belongs to
+ * the SOFT floor — where a block is filed — and never to the hard one, which is
+ * for facts. `opensAt` is the fact, and it arrived; this is what is left over
+ * for a ride that has none.
  */
 export const GATE_TO_FIRST_RIDE_MIN = 15;
 
+/**
+ * The two floors under a ride, and the difference between them is the point.
+ *
+ * The HARD floor is a FACT and is what a drag is clamped to: the ride's own
+ * `opensAt` where the API has one, the park's published opening otherwise.
+ * That field closed a real hole — Phantasialand's gates open at 09:00 and
+ * sixteen of its rides do not run until 10:00, so the planner was offering two
+ * hours of queue that did not exist, reported three times before there was any
+ * data to prove it. It is rounded to the quarter hour upstream, because a raw
+ * 10:10 is five-minute polling plus feed lag on a 10:00 opening.
+ *
+ * The SOFT floor is where a new block is FILED, and it carries two things the
+ * hard floor may not. The first hour this ride has a curve for, which is a
+ * statement about MEASUREMENT rather than about opening — the backend skips
+ * hours with no observations, so a ride merely unobserved at 09:00 must not be
+ * clamped as though it opened at 11:00, and entering that window costs the
+ * block its figure rather than refusing the placement. And
+ * {@link GATE_TO_FIRST_RIDE_MIN}, for the walk from the gates, which is a
+ * judgement and therefore may not refuse anything either.
+ *
+ * The measurement gates are deliberate: at least a month of measured days, and
+ * at least an hour past the floor, or a single quiet morning becomes a wall.
+ */
 export function rideFloor(grid: DayGrid, ride: PlanDayRide | undefined | null): RideFloor {
-  const hardMin = grid.openMin;
+  const opens = opensAtMinute(ride?.opensAt);
+  const knowsOpening = opens !== null && opens > grid.openMin;
+  const hardMin = Math.min(knowsOpening ? opens : grid.openMin, grid.closeMin - SNAP_MIN_FINE);
 
   const first = ride?.hours?.[0]?.hour;
   const measuredEnough = (ride?.sampleDays ?? 0) >= SOFT_FLOOR_MIN_SAMPLE_DAYS;
@@ -242,15 +253,16 @@ export function rideFloor(grid: DayGrid, ride: PlanDayRide | undefined | null): 
       ? first * 60
       : hardMin;
 
-  // The gate allowance applies to the park's own opening, never on top of a
-  // raised ride floor: a ride whose curve starts at 11:00 is already a statement
-  // about being able to queue at 11:00, and adding a walk to it would push the
-  // block past the first hour anybody could ride it.
-  const withEntry = raised > hardMin ? raised : hardMin + GATE_TO_FIRST_RIDE_MIN;
+  // The walk applies to a ride that opens WITH the park and to nothing else: a
+  // ride whose own opening is later is already a statement about when somebody
+  // can queue, and adding a turnstile to it would push the block past the first
+  // hour anybody could ride it.
+  const withEntry = knowsOpening ? raised : Math.max(raised, hardMin + GATE_TO_FIRST_RIDE_MIN);
+
   return {
     hardMin,
     softMin: Math.min(withEntry, grid.closeMin - SNAP_MIN_FINE),
-    reason: raised > hardMin ? 'ride' : 'park',
+    reason: raised > hardMin || knowsOpening ? 'ride' : 'park',
   };
 }
 

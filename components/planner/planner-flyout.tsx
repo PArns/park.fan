@@ -381,48 +381,60 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
           </button>
         </div>
 
-        <SheetHeader className="border-border/60 shrink-0 border-b px-3 py-3">
-          <SheetTitle className="flex items-center gap-2 text-base">
-            <CalendarPlus className="size-4" />
-            {t('title')}
-          </SheetTitle>
-          {park && (
-            <div className="flex items-center justify-between gap-2">
-              {/* The park name is the way into the overview. It was a plain
-                  label with a row of chips under it naming the OTHER parks, and
-                  a chip said nothing about what was planned in one. */}
-              <button
-                type="button"
-                onClick={() => setShowOverview((value) => !value)}
-                aria-expanded={showOverview}
-                data-planner-overview-toggle=""
-                className="text-muted-foreground hover:text-foreground -mx-1 flex min-w-0 items-center gap-1 rounded px-1 py-0.5 text-xs transition-colors"
-              >
-                <span className="truncate">{park.name}</span>
-                {/* Always. Hiding it until a second park or day existed made the
-                    overview — the only route to another park or another day —
-                    invisible to everyone who had exactly one, which is everyone
-                    at the start. This chevron is where "how do I add another
-                    day" is answered, so it cannot wait for a second day. */}
-                <ChevronDown
-                  className={cn(
-                    'size-3 shrink-0 transition-transform',
-                    showOverview && 'rotate-180'
-                  )}
-                />
-              </button>
-              {activeDate && !showOverview && (
-                <PlannerDayPicker
-                  value={activeDate}
-                  onChange={(date) => setActive(activeParkSlug, date)}
-                  plannedDates={plannedDates}
-                  timezone={timezone}
-                  facts={dayFacts.byDate}
-                  maxDate={dayFacts.lastDate ?? undefined}
-                />
-              )}
-            </div>
-          )}
+        {/* ONE row, not two. The title sat on its own line with nothing beside
+            it but Radix's 16 px close button, and the park name and the day
+            picker sat on a second — 83 px of a panel whose subject is a
+            vertical axis with 324 px to draw it in. Merged and at `py-2` the
+            head is 45 px, and the row's height is the day picker's own 28 px.
+
+            `pr-7` is structural, not padding taste: `SheetContent` puts its
+            close button at `absolute top-4 right-4`, which is now INSIDE this
+            row, and without the clearance the picker's forward chevron sits
+            under it and one of the two becomes untappable. */}
+        <SheetHeader className="border-border/60 shrink-0 gap-0 border-b px-3 py-2">
+          <div className="flex items-center gap-2 pr-7">
+            <SheetTitle className="flex shrink-0 items-center gap-2 text-sm">
+              <CalendarPlus className="size-4" />
+              {t('title')}
+            </SheetTitle>
+            {park && (
+              <>
+                {/* The park name is the way into the overview. It was a plain
+                    label with a row of chips under it naming the OTHER parks,
+                    and a chip said nothing about what was planned in one. */}
+                <button
+                  type="button"
+                  onClick={() => setShowOverview((value) => !value)}
+                  aria-expanded={showOverview}
+                  data-planner-overview-toggle=""
+                  className="text-muted-foreground hover:text-foreground flex min-w-0 flex-1 items-center gap-1 rounded px-1 py-0.5 text-xs transition-colors"
+                >
+                  <span className="truncate">{park.name}</span>
+                  {/* Always. Hiding it until a second park or day existed made
+                      the overview — the only route to another park or another
+                      day — invisible to everyone who had exactly one, which is
+                      everyone at the start. This chevron is where "how do I add
+                      another day" is answered, so it cannot wait. */}
+                  <ChevronDown
+                    className={cn(
+                      'size-3 shrink-0 transition-transform',
+                      showOverview && 'rotate-180'
+                    )}
+                  />
+                </button>
+                {activeDate && !showOverview && (
+                  <PlannerDayPicker
+                    value={activeDate}
+                    onChange={(date) => setActive(activeParkSlug, date)}
+                    plannedDates={plannedDates}
+                    timezone={timezone}
+                    facts={dayFacts.byDate}
+                    maxDate={dayFacts.lastDate ?? undefined}
+                  />
+                )}
+              </>
+            )}
+          </div>
         </SheetHeader>
 
         {showOverview ? (
@@ -442,18 +454,24 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
         ) : (
           <>
             <div className="border-border/60 shrink-0 border-b">
-              <PlannerContextBand day={day ?? null} state={dayState} />
               {/* Who is coming, and changeable — the wizard asks it once and the
                   ride list flags rides against it all day, so this cannot be
-                  write-only. */}
-              {park && activeDate && (
-                <div className="flex items-center gap-1.5 px-3 pb-2">
-                  <PlannerPartyChips
-                    prefs={prefs}
-                    onChange={(patch) => setDayPrefs(park.slug, activeDate, patch)}
-                  />
-                </div>
-              )}
+                  write-only. It rides at the END of the band's own second row
+                  rather than on a line of its own: 30 px of panel for one 22 px
+                  pill, in the same type as the row above it, on a surface whose
+                  subject is the axis underneath. */}
+              <PlannerContextBand
+                day={day ?? null}
+                state={dayState}
+                trailing={
+                  park && activeDate ? (
+                    <PlannerPartyChips
+                      prefs={prefs}
+                      onChange={(patch) => setDayPrefs(park.slug, activeDate, patch)}
+                    />
+                  ) : null
+                }
+              />
             </div>
 
             {/* The scroll lives here, not on SheetContent — see the note above.

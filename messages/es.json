@@ -1927,7 +1927,9 @@
     },
     "search": {
       "placeholder": "Buscar atracción",
-      "noResults": "No se encontró ninguna atracción."
+      "noResults": "No se encontró ninguna atracción.",
+      "dragHint": "O arrastra una atracción desde la página del parque a la línea de tiempo.",
+      "opensAt": "desde {time}"
     },
     "clearDay": "Vaciar el día",
     "clearDayConfirm": "¿Borrar todas las entradas de este día?",
@@ -1990,7 +1992,7 @@
       "resize": "Ajustar el ancho"
     },
     "headliners": {
-      "missing": "{count, plural, one {Falta una atracción principal} other {Faltan # atracciones principales}}"
+      "label": "Atracción estrella"
     },
     "parkSearch": {
       "placeholder": "Buscar un parque …",

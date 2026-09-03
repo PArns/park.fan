@@ -1994,6 +1994,26 @@ export interface PlanDayRide {
    * spread — which is NOT a band of width zero and must not be drawn as one.
    */
   uncertaintyMinutes?: number | null;
+  /**
+   * When THIS ride starts, park-local `HH:mm`, rounded to the quarter hour.
+   *
+   * A fact the planner had no source for until the API grew it, and the gap it
+   * closes is not small: Phantasialand's gates open at 09:00 and sixteen of its
+   * rides — Taron, F.L.Y., both Winja's, Talocan, Crazy Bats, Mystery Castle,
+   * River Quest, Colorado Adventure, Raik and more — do not run until 10:00, so
+   * the planner offered two hours of queue that did not exist.
+   *
+   * `hours` already begins here, so nothing needs clamping or filtering; this
+   * field is for SAYING it. Absent means the ride opens with the park, or that
+   * too few openings have been observed to tell — the two are the same to a
+   * reader, so absent renders nothing and `hours` is right either way.
+   *
+   * The rounding is deliberate: a raw 10:10 is five-minute polling plus feed
+   * lag on top of a 10:00 opening. There is no `closesAt` and there will not be
+   * one — feeds do not reliably flip back to CLOSED in the evening, so a
+   * closing time would be a guess.
+   */
+  opensAt?: string | null;
   /** Measured days behind the historical shape. */
   sampleDays: number;
   /**

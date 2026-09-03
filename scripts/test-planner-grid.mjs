@@ -13,6 +13,7 @@
  */
 
 import {
+  GATE_TO_FIRST_RIDE_MIN,
   MIN_BLOCK_PX,
   PX_PER_MIN,
   SNAP_MIN_FINE,
@@ -158,8 +159,17 @@ test('…but its height is still zero', heightFor(g, 0), 0);
 }
 
 // ── 13. The ride floor, and its gates ────────────────────────────────────────
-// The soft floor is a statement about measurement, so it must not fire on a
-// thin sample or on a ride that simply opens with the park.
+// Two floors and they answer different questions. The HARD one is the earliest
+// minute anybody could be standing in a queue: the park's published opening
+// plus `GATE_TO_FIRST_RIDE_MIN`, because there is a turnstile, a bag check and
+// a walk between the gates opening and a ride's entrance, and a plan that files
+// the first ride on the opening minute is a plan nobody has executed. It used
+// to be the opening minute itself, which was reported three times as a ride
+// standing at 09:00 on a park whose gates open at 09:00.
+//
+// The SOFT one is a statement about MEASUREMENT — the first hour the API has a
+// curve for — so it must not fire on a thin sample or on a ride that simply
+// opens with the park.
 const ride = (hours, sampleDays) => ({
   attractionSlug: 'x',
   attractionName: 'X',
@@ -167,15 +177,26 @@ const ride = (hours, sampleDays) => ({
   dayPeak: 30,
   sampleDays,
 });
+const GATE = g.openMin + GATE_TO_FIRST_RIDE_MIN;
+// `opensAt` is the FACT and the hard floor; the gate walk is a judgement and
+// lives on the soft one. A ride that publishes its own opening therefore gets
+// no walk added on top — that opening is already a statement about when
+// somebody can be queueing.
+const opening = (hhmm) => ({ ...ride([10, 11, 12], 400), opensAt: hhmm });
+test('a published opening IS the hard floor', rideFloor(g, opening('10:00')).hardMin, 600);
+test('and nothing is added to it', rideFloor(g, opening('10:00')).softMin, 600);
+test('a malformed one is ignored', rideFloor(g, opening('nonsense')).hardMin, g.openMin);
 test(
-  'a thin sample does not raise the floor',
-  rideFloor(g, ride([11, 12, 13], 12)).softMin,
+  "an opening at the park's own hour changes nothing",
+  rideFloor(g, opening('09:00')).hardMin,
   g.openMin
 );
+test('a thin sample does not raise the floor', rideFloor(g, ride([11, 12, 13], 12)).softMin, GATE);
+test('the hard floor without an opening is the park', rideFloor(g, undefined).hardMin, g.openMin);
 test(
   'a ride measured from the opening hour does not raise it either',
   rideFloor(g, ride([9, 10, 11], 400)).softMin,
-  g.openMin
+  GATE
 );
 test(
   'a well-measured late first hour raises the soft floor only',
@@ -183,7 +204,14 @@ test(
   `${g.openMin} 660`
 );
 test('the hard floor is never the statistic', rideFloor(g, ride([11, 12], 400)).hardMin, g.openMin);
-test('a missing ride still yields the park floor', rideFloor(g, undefined).softMin, g.openMin);
+test('a missing ride still yields the park floor', rideFloor(g, undefined).softMin, GATE);
+// The allowance is an allowance, not a claim that a ride is shut: it is a fixed
+// number of minutes after the gates and nothing about the ride enters it.
+test(
+  'the gate allowance is exactly that and no more',
+  rideFloor(g, undefined).softMin - g.openMin,
+  GATE_TO_FIRST_RIDE_MIN
+);
 
 // ── 14. Show label collapse ──────────────────────────────────────────────────
 {
@@ -196,7 +224,14 @@ test('a missing ride still yields the park floor', rideFloor(g, undefined).softM
 // ── 15. Snapping and placement ───────────────────────────────────────────────
 test('snapTo rounds to the nearest step', snapTo(607, SNAP_MIN_FINE), 600);
 test('snapTo rounds up past the midpoint', snapTo(608, SNAP_MIN_FINE), 615);
+// With no floor passed, the park's opening is the contract — the ride floor is
+// the CALLER's to supply, and every call site in the app passes it.
 test('an empty day places the first ride at opening', nextFreeStart([], g), g.openMin);
+test(
+  '…and at the ride floor when one is given',
+  nextFreeStart([], g, 45, rideFloor(g, undefined).softMin),
+  GATE
+);
 test(
   'a second ride goes after the first',
   nextFreeStart([{ startMinute: 540, spanMinutes: 45 }], g) >= 585,

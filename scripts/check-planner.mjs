@@ -268,8 +268,21 @@ if (!hasLauncher) {
 }
 
 // Three in the active day plus two in the other park: the badge counts the
-// whole plan, not the day on screen.
-check('Launcher zählt beide Parks', /5/.test((await launcher.textContent()) ?? ''));
+// whole plan, not the day on screen. Read from the tab's own text, which is the
+// localized word plus the count and nothing else.
+// WAITED for, and that is new: the tab is drawn on every page whether or not
+// anything is planned, so `waitFor({ state: 'visible' })` above no longer
+// implies the plan has been read out of localStorage. The count is what has to
+// be waited for now, or this asserts against a tab that is merely present.
+{
+  const badge = await launcher
+    .filter({ hasText: /5$/ })
+    .waitFor({ state: 'visible', timeout: 20_000 })
+    .then(() => true)
+    .catch(() => false);
+  const tabText = ((await launcher.textContent()) ?? '').trim();
+  check('Launcher zählt beide Parks', badge, JSON.stringify(tabText));
+}
 
 await launcher.click();
 const sheet = page.locator(SHEET);
@@ -991,16 +1004,22 @@ if (reachable) {
     );
 
     // And the same question at the height where the answer was wrong. Moving
-    // F.L.Y. to 09:00 puts a WARNED ride in a 48 px box, which is the one shape
-    // the fixture above never produces on its own — without this the assertion
-    // is green against the bug it exists to catch, which is worth less than no
-    // assertion at all.
+    // F.L.Y. to the day's FIRST slot puts a WARNED ride in a 48 px box, which is
+    // the one shape the fixture above never produces on its own — without this
+    // the assertion is green against the bug it exists to catch, which is worth
+    // less than no assertion at all.
+    //
+    // Read off the input rather than typed: the earliest slot is the park's
+    // opening PLUS `GATE_TO_FIRST_RIDE_MIN`, so a hard-coded 09:00 is below the
+    // control's own `min` and Playwright answers "Malformed value" — a crash
+    // rather than a failure, which took the rest of the run with it.
     // By id, never by position: a locator resolves when it is used, and moving a
     // block re-sorts the list — `nth(1)` after the move is a different ride than
     // `nth(1)` before it, so the restore below would put the WRONG block back.
     const flyBlock = grid.locator('li[data-planner-entry="fly-1"]');
     const flyRange = flyBlock.locator('input[type="range"]');
-    await flyRange.fill('540');
+    const earliest = await flyRange.getAttribute('min');
+    await flyRange.fill(earliest ?? '540');
     await grid.waitForTimeout(400);
     const shortBox = await flyBlock.evaluate((el) => Math.round(el.getBoundingClientRect().height));
     const clippedShort = await clippedBlocks();
@@ -1025,10 +1044,14 @@ if (reachable) {
       legs.join(', ')
     );
 
-    // Requirement 2: the drag may not go earlier than the park opens.
+    // Requirement 2: the drag may not go earlier than the ride can be ridden.
+    // The floor is the ride's own `opensAt` where the API has one and the
+    // park's opening otherwise — a FACT either way, which is why it is allowed
+    // to refuse a placement. The stub's rides carry no `opensAt`, so this is the
+    // park branch.
     const range = blocks.first().locator('input[type="range"]');
     const min = await range.getAttribute('min');
-    check('die Untergrenze ist die Parköffnung', Number(min) === OPEN_HOUR * 60, `min=${min}`);
+    check('die Untergrenze ist die Öffnung der Bahn', Number(min) === OPEN_HOUR * 60, `min=${min}`);
 
     // The keyboard equivalent writes through the same path a drag does.
     await range.focus();
@@ -1192,31 +1215,52 @@ if (reachable) {
   await hl.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
   await hl.waitForTimeout(2500);
 
-  const hint = hl.locator(`${SHEET} button`).filter({ hasText: 'F.L.Y.' });
-  check('der fehlende Headliner wird angeboten', (await hint.count()) > 0, `${await hint.count()}`);
-
-  // Scoped to the hint itself. Reading the whole sheet catches the ride search
-  // below it, which lists every ride by design — the first version of this
-  // assertion failed on the panel's own header.
-  const hintText = (await hl.locator(`${SHEET} [data-planner-headliner-hint]`).textContent()) ?? '';
-  check(
-    'nur der FEHLENDE Headliner steht drin',
-    /F\.L\.Y\./.test(hintText) && !/Taron/.test(hintText),
-    hintText.slice(0, 60)
+  // The band of headliner pills is gone: it repeated rides the list below
+  // already showed, with the same add handler, so an unplanned headliner in the
+  // top eight rendered twice. What it said now sits on the ride's own row as a
+  // crown, and this asserts the two halves of that — every ride is offered, and
+  // the crown is on the curated headliners and on nothing else.
+  const rows = hl.locator(`${SHEET} ul li button[draggable="true"]`);
+  const listed = await rows.evaluateAll((els) =>
+    els.map((el) => ({
+      // The NAME span, not the first one: the first is the thumbnail's box, and
+      // its `RollerCoaster` fallback is an svg, so `querySelectorAll('svg')`
+      // reported a crown on every row in the park.
+      name: (el.querySelector('span.min-w-0.flex-1')?.textContent ?? '').trim(),
+      crown: Boolean(el.querySelector('svg[class*="crowd-high"]')),
+    }))
   );
   check(
-    'eine gewöhnliche Bahn steht nicht im Hinweis',
-    !/Black Mamba/.test(hintText),
-    hintText.slice(0, 60)
+    'der fehlende Headliner wird angeboten',
+    listed.some((r) => r.name === 'F.L.Y.'),
+    JSON.stringify(listed.map((r) => r.name))
   );
-
-  // And it goes quiet once the plan is complete.
-  if (await hint.count()) {
-    await hint.first().click();
-    await hl.waitForTimeout(600);
-    const left = await hl.locator(`${SHEET} [data-planner-headliner-hint]`).count();
-    check('der Hinweis verschwindet, sobald er erledigt ist', left === 0, `${left}`);
-  }
+  // The regression this replaced the band with: the list used to be
+  // `day.rides.slice(0, 8)` over a payload the API sorts busiest first, so at
+  // any park the first eight rows WERE its headliners and nothing else could be
+  // found. Black Mamba is the fixture's non-headliner.
+  check(
+    'eine gewöhnliche Bahn steht auch in der Liste',
+    listed.some((r) => r.name === 'Black Mamba'),
+    JSON.stringify(listed.map((r) => r.name))
+  );
+  check(
+    'die Liste steht alphabetisch',
+    listed.map((r) => r.name).join('|') ===
+      [...listed.map((r) => r.name)].sort((a, b) => a.localeCompare(b, 'de')).join('|'),
+    JSON.stringify(listed.map((r) => r.name))
+  );
+  check(
+    'die Krone sitzt auf den Headlinern und nur dort',
+    listed.find((r) => r.name === 'F.L.Y.')?.crown === true &&
+      listed.find((r) => r.name === 'Black Mamba')?.crown === false,
+    JSON.stringify(listed)
+  );
+  // And the band itself is gone rather than merely empty.
+  check(
+    'die doppelte Headliner-Bande ist weg',
+    (await hl.locator(`${SHEET} [data-planner-headliner-hint]`).count()) === 0
+  );
 
   await hl.close();
 }
@@ -2195,20 +2239,14 @@ if (reachable) {
     `${winja?.height} px, Foto: ${winja?.photo}`
   );
 
-  // The ride search rows and the headliner the plan is missing both carry one.
+  // Every ride search row carries its photo.
   const searchThumbs = await photos
     .locator(`${SHEET} img[src*="taron"], ${SHEET} img[src*="black-mamba"]`)
     .count();
   check('die Suchzeilen tragen ihre Fotos', searchThumbs >= 2, `${searchThumbs}`);
 
-  const hint = photos.locator('[data-planner-headliner-hint]');
-  check('der Headliner-Hinweis ist da', (await hint.count()) === 1);
-  if (await hint.count()) {
-    check(
-      'und der verpasste Headliner zeigt sich',
-      (await hint.first().locator('img').count()) >= 1
-    );
-  }
+  // The headliner band that carried a second copy of these thumbnails is gone;
+  // the row assertion two lines up is the whole of it now.
 
   await photos.close();
 }

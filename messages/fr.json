@@ -1927,7 +1927,9 @@
     },
     "search": {
       "placeholder": "Chercher une attraction",
-      "noResults": "Aucune attraction trouvée."
+      "noResults": "Aucune attraction trouvée.",
+      "dragHint": "Ou faites glisser une attraction depuis la page du parc sur la frise.",
+      "opensAt": "dès {time}"
     },
     "clearDay": "Vider la journée",
     "clearDayConfirm": "Supprimer toutes les entrées de cette journée ?",
@@ -1990,7 +1992,7 @@
       "resize": "Ajuster la largeur"
     },
     "headliners": {
-      "missing": "{count, plural, one {Il manque encore une attraction phare} other {Il manque encore # attractions phares}}"
+      "label": "Attraction phare"
     },
     "parkSearch": {
       "placeholder": "Chercher un parc …",

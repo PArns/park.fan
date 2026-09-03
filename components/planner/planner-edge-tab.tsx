@@ -93,9 +93,13 @@ export function PlannerEdgeTab({
       } catch {
         // Already released — a cancelled gesture, or the element unmounted.
       }
+      document.documentElement.style.removeProperty('--planner-inset-ms');
       setDragging(false);
     };
     setDragging(true);
+    // The page beside the panel animates its inset over 300 ms, which is right
+    // for an open and wrong under a pointer. Zero for the length of the drag.
+    document.documentElement.style.setProperty('--planner-inset-ms', '0ms');
     handle.addEventListener('pointermove', onMove);
     handle.addEventListener('pointerup', onUp);
     handle.addEventListener('pointercancel', detach);
@@ -126,13 +130,17 @@ export function PlannerEdgeTab({
           // Blue, and solid enough to be the loudest thing at the edge: this is
           // the one control that opens the feature, and a glass tab over a park
           // photo read as another panel edge rather than as a way in.
-          'bg-primary text-primary-foreground ring-primary-foreground/25 pointer-events-auto flex flex-col items-center gap-2 rounded-l-xl py-4 pr-1 pl-1.5 shadow-lg ring-1',
+          //
+          // `pr-2.5` is clearance, not padding taste: the tab sits at `right: 0`
+          // when the panel is closed, which is where the page's own scrollbar
+          // is, and at `pr-1` the word ran under it.
+          'bg-primary text-primary-foreground ring-primary-foreground/25 pointer-events-auto flex flex-col items-center gap-2 rounded-l-xl py-4 pr-2.5 pl-2 shadow-lg ring-1',
           'supports-[backdrop-filter]:bg-primary/90 backdrop-blur-md',
           'hover:bg-primary/95 transition-colors',
           open ? 'cursor-col-resize touch-none' : 'cursor-pointer'
         )}
       >
-        <CalendarPlus className="size-3.5 shrink-0" aria-hidden="true" />
+        <CalendarPlus className="size-4 shrink-0" aria-hidden="true" />
         {/* `vertical-rl` plus a half turn, which is the pair that reads
             bottom-to-top — `vertical-rl` alone runs top-to-bottom and puts the
             first letter under the icon rather than beside the panel it names.
@@ -144,17 +152,14 @@ export function PlannerEdgeTab({
         {/* No badge at zero: opened from the calendar there is nothing planned
             yet, and a "0" beside the label reads as a count that failed. */}
         {total > 0 && (
-          <span className="bg-primary-foreground/20 rounded-full px-1.5 py-0.5 font-mono text-[10px] tabular-nums">
+          <span className="bg-primary-foreground/20 rounded-full px-1.5 py-0.5 font-mono text-[11px] tabular-nums">
             {total}
           </span>
         )}
         {/* Only while it is open, because only then is there anything to drag.
             Drawn when closed it would promise a gesture that does nothing. */}
         {open && (
-          <GripVertical
-            className="text-primary-foreground/70 size-3.5 shrink-0"
-            aria-hidden="true"
-          />
+          <GripVertical className="text-primary-foreground/70 size-4 shrink-0" aria-hidden="true" />
         )}
       </button>
     </div>

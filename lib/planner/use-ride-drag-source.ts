@@ -59,7 +59,14 @@ export function useRideDragSource(enabled: boolean): void {
         // this app gets a URL that resolves.
         dt.setData('text/uri-list', anchor.href);
         dt.setData('text/plain', anchor.href);
-        dt.effectAllowed = 'copyLink';
+        // `copy`, the same as `startRideDrag` sets for the panel's own ride
+        // list — and the same as every drop target here answers with. It was
+        // `copyLink`, which is a superset the browser is entitled to render
+        // with a link cursor, so the identical gesture looked like two
+        // different gestures depending on which ride was grabbed. The
+        // `text/uri-list` above still travels; a link drop outside this app
+        // does not need `link` to be in `effectAllowed` to work.
+        dt.effectAllowed = 'copy';
       } catch {
         // A store in protected mode — the drag was not started by this gesture.
         // Nothing to add, and nothing is broken: the fallback path reads the

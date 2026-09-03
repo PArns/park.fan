@@ -1927,7 +1927,9 @@
     },
     "search": {
       "placeholder": "Attractie zoeken",
-      "noResults": "Geen attractie gevonden."
+      "noResults": "Geen attractie gevonden.",
+      "dragHint": "Of sleep een attractie vanaf de parkpagina op de tijdlijn.",
+      "opensAt": "vanaf {time}"
     },
     "clearDay": "Dag leegmaken",
     "clearDayConfirm": "Alle items van deze dag verwijderen?",
@@ -1990,7 +1992,7 @@
       "resize": "Breedte slepen"
     },
     "headliners": {
-      "missing": "{count, plural, one {Eén headliner ontbreekt nog} other {# headliners ontbreken nog}}"
+      "label": "Headliner"
     },
     "parkSearch": {
       "placeholder": "Park zoeken …",

@@ -1927,7 +1927,9 @@
     },
     "search": {
       "placeholder": "Cerca un’attrazione",
-      "noResults": "Nessuna attrazione trovata."
+      "noResults": "Nessuna attrazione trovata.",
+      "dragHint": "Oppure trascina un’attrazione dalla pagina del parco sulla linea del tempo.",
+      "opensAt": "dalle {time}"
     },
     "clearDay": "Svuota il giorno",
     "clearDayConfirm": "Eliminare tutte le voci di questo giorno?",
@@ -1990,7 +1992,7 @@
       "resize": "Regola la larghezza"
     },
     "headliners": {
-      "missing": "{count, plural, one {Manca ancora un’attrazione di punta} other {Mancano ancora # attrazioni di punta}}"
+      "label": "Attrazione di punta"
     },
     "parkSearch": {
       "placeholder": "Cerca un parco …",

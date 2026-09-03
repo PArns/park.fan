@@ -190,7 +190,9 @@ export function PlannerBlock({
   const bandPx = bandMinutes === null ? 0 : heightFor(grid, bandMinutes);
   const drawBand = bandPx >= MIN_BAND_PX;
 
-  const tone = !custom && hasFigure ? waitTimeCrowdTier(wait) : null;
+  /** An assumed figure has no colour: a tint is a claim about how busy it is. */
+  const assumed = estimate.missing === 'assumed';
+  const tone = !custom && hasFigure && !assumed ? waitTimeCrowdTier(wait) : null;
 
   // The tier's soft edge rotates from "to right" to "to bottom", and improves in
   // the rotation: a soft LOWER edge says "this may end later than we say", which
@@ -302,8 +304,15 @@ export function PlannerBlock({
           // nothing predicted it.
           custom && !done && 'bg-muted/50 border-border/70',
           // No figure and not a free block: an outline, never a tint. A
-          // crowd-coloured box asserts a queue length, and this one has none.
-          !hasFigure && !custom && 'border-border/70 border-dashed',
+          // crowd-coloured box asserts a queue length, and this one has none —
+          // but it still needs a GROUND. Transparent, it let the leg chip in the
+          // gap below it (`zIndex: 5`, under the block's own 10) paint through
+          // its own text, which reads as two sentences printed on top of each
+          // other rather than as two elements at different depths.
+          !hasFigure && !custom && 'bg-background/70 border-border/70 border-dashed',
+          // Same for an assumption: a ground, so nothing shows through, and no
+          // crowd colour, because nothing measured it.
+          assumed && !done && 'bg-muted/40 border-border/70',
           softBorder && 'border-b-dashed border-b-2',
           selected && 'ring-primary/60 ring-2',
           conflict && 'ring-destructive/45 ring-1',
@@ -475,6 +484,10 @@ export function PlannerBlock({
                         aria-hidden="true"
                       />
                     )}
+                    {/* `~` on an assumed figure and nowhere else. Five minutes
+                        for a ride nobody measured is the smallest claim that is
+                        still a claim, and it may not read like a reading. */}
+                    {assumed && '~'}
                     {wait}
                     {/* The unit, always. A bare `50` on a block next to a block
                         reading `40` is a pair of numbers with no dimension —
@@ -543,7 +556,8 @@ export function PlannerBlock({
           className="text-muted-foreground pointer-events-none absolute top-1/2 z-20 -translate-y-1/2 pl-1 font-mono text-[10px] whitespace-nowrap tabular-nums"
           style={{ left: '100%' }}
         >
-          {formatGridTime(entry.startMinute)} · {wait} {t('unit.min')}
+          {formatGridTime(entry.startMinute)} · {assumed && '~'}
+          {wait} {t('unit.min')}
         </span>
       )}
     </li>

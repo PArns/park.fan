@@ -1927,7 +1927,9 @@
     },
     "search": {
       "placeholder": "Bahn suchen",
-      "noResults": "Keine Bahn gefunden."
+      "noResults": "Keine Bahn gefunden.",
+      "dragHint": "Oder zieh eine Bahn von der Parkseite direkt auf die Zeitachse.",
+      "opensAt": "ab {time}"
     },
     "clearDay": "Tag leeren",
     "clearDayConfirm": "Alle Einträge dieses Tages löschen?",
@@ -1990,7 +1992,7 @@
       "resize": "Breite ziehen"
     },
     "headliners": {
-      "missing": "{count, plural, one {Ein Headliner fehlt noch} other {# Headliner fehlen noch}}"
+      "label": "Headliner"
     },
     "parkSearch": {
       "placeholder": "Park suchen …",

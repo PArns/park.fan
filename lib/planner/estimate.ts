@@ -21,14 +21,48 @@ export interface PlannerEstimate {
    * Why there is no number, when there is none. `outside-hours` and `no-curve`
    * are different things to tell a visitor: one is "not while the park is shut",
    * the other is "we have never measured this ride's day".
+   *
+   * `assumed` is the one value that comes WITH a figure. It is the floor below,
+   * carried as a separate state rather than folded into `none` so that every
+   * surface can tell an assumption from a forecast — a block tints itself by
+   * how busy it is, and a queue nobody measured has no business claiming a
+   * colour.
    */
-  missing: 'none' | 'no-day' | 'no-curve' | 'outside-hours' | 'custom';
+  missing: 'none' | 'assumed' | 'no-day' | 'no-curve' | 'outside-hours' | 'custom';
 }
+
+/**
+ * What a ride with no curve is taken to cost.
+ *
+ * The API omits a ride it has neither an hourly prediction nor a measured shape
+ * for, and the planner used to answer that with an outlined box, no figure and
+ * the sentence "für diese Bahn liegt keine Stundenkurve vor" — true, and useless
+ * to somebody deciding whether the afternoon adds up, because the ride then
+ * counted as zero in every total.
+ *
+ * Five minutes, and the number is not arbitrary: a park posts wait times in
+ * multiples of five, so five is the shortest queue that can be posted at all,
+ * and the rides this applies to are the ones nobody queues for — the flat rides
+ * and walk-throughs the model never had enough observations to shape. It is the
+ * smallest claim that is still a claim.
+ *
+ * It is marked wherever it is drawn (`missing: 'assumed'`): no crowd tint, and
+ * the figure carries a `~`. An assumption that renders like a measurement is
+ * the one thing this file exists to prevent.
+ */
+export const ASSUMED_WAIT_MIN = 5;
 
 const UNKNOWN: PlannerEstimate = {
   wait: null,
   uncertaintyMinutes: null,
   missing: 'no-day',
+};
+
+const ASSUMED: PlannerEstimate = {
+  wait: ASSUMED_WAIT_MIN,
+  // No band, because there is no model behind this to have a spread.
+  uncertaintyMinutes: null,
+  missing: 'assumed',
 };
 
 function rideOf(day: PlanDay, slug: string): PlanDayRide | undefined {
@@ -58,12 +92,13 @@ export function estimateFor(day: PlanDay | null | undefined, entry: PlannerEntry
   if (entry.custom) return { wait: null, uncertaintyMinutes: null, missing: 'custom' };
 
   const ride = entry.attractionSlug ? rideOf(day, entry.attractionSlug) : undefined;
-  // A ride the API omitted: no measured hourly shape to scale, so it has no
-  // curve rather than a flat one. The planner says so instead of drawing a bar.
-  if (!ride) return { wait: null, uncertaintyMinutes: null, missing: 'no-curve' };
+  // A ride the API omitted, or an hour it has no point for: no measured shape to
+  // scale, so there is no curve rather than a flat one. Both are answered with
+  // the assumption rather than with a shrug — see `ASSUMED_WAIT_MIN`.
+  if (!ride) return ASSUMED;
 
   const point = ride.hours.find((h) => h.hour === hour);
-  if (!point) return { wait: null, uncertaintyMinutes: null, missing: 'no-curve' };
+  if (!point) return ASSUMED;
 
   return {
     wait: point.wait,

@@ -1927,7 +1927,9 @@
     },
     "search": {
       "placeholder": "Search rides",
-      "noResults": "No ride found."
+      "noResults": "No ride found.",
+      "dragHint": "Or drag a ride from the park page straight onto the timeline.",
+      "opensAt": "from {time}"
     },
     "clearDay": "Clear the day",
     "clearDayConfirm": "Delete every entry for this day?",
@@ -1990,7 +1992,7 @@
       "resize": "Drag to resize"
     },
     "headliners": {
-      "missing": "{count, plural, one {One headliner is still missing} other {# headliners are still missing}}"
+      "label": "Headliner"
     },
     "parkSearch": {
       "placeholder": "Search a park …",

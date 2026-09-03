@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { CalendarPlus, Check, Crown, Droplets, Ruler, Search } from 'lucide-react';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { partyFlags } from '@/lib/planner/party';
@@ -26,11 +26,11 @@ interface PlannerRideSearchProps {
   /** The park's IANA zone, stored with the park so the plan reckons in it. */
   timezone?: string;
   /**
-   * Who is coming, if anybody asked. It changes two things and they are
-   * deliberately different: a row that the shortest rider cannot ride is
-   * FLAGGED and still offered, while the headliner hint DROPS it. A list is the
-   * catalogue and the visitor knows who is holding the bags; a hint is advice,
-   * and advice somebody cannot act on is noise.
+   * Who is coming, if anybody asked. A row the shortest rider cannot ride is
+   * FLAGGED and still offered, never dropped: this list is the catalogue, and
+   * the visitor knows who is holding the bags. The flag prints the height
+   * rather than a word, because "too small" without the number is an argument a
+   * parent cannot check.
    */
   prefs?: PlannerDayPrefs;
   /**
@@ -79,6 +79,7 @@ export function PlannerRideSearch({
   onAddCustom,
 }: PlannerRideSearchProps) {
   const t = useTranslations('planner');
+  const locale = useLocale();
   const { addRide, activeEntries } = usePlanner();
   const [query, setQuery] = useState('');
 
@@ -115,33 +116,35 @@ export function PlannerRideSearch({
       : undefined;
 
   /**
-   * The park's headliners that are NOT in this day's plan.
+   * The day's rides by NAME, and a copy rather than a sort in place.
    *
-   * The CURATED set from the API (`isHeadliner`), never the day's tallest bars:
-   * `dayPeak` says what is busy, and "did I miss the big one" is a question
-   * about what the park is known for. A headliner having a quiet Tuesday is
-   * still the ride somebody travelled for.
+   * The API sorts this array busiest first, which is the right order for "what
+   * do I book time for" and the wrong one for "where is the ride I am looking
+   * for" — the top of a park's queue table IS its headliners, so a list capped
+   * at eight showed nothing else, at any park. Reported as "the search cannot
+   * find non-headliners", and there is no headliner filter anywhere in this
+   * file: it was the ordering and the cap together. The cap sat AFTER the
+   * filter too, so a two-letter needle in a sixty-ride payload had the same
+   * effect one keystroke later.
    *
-   * Silent once they are all in — a hint that never goes away is a decoration.
+   * `[...day.rides]` because `day.rides` is React Query's cached array, read by
+   * the grid and by `estimateFor` through `find` and a `Map` — order-insensitive
+   * lookups, so sorting it in place would corrupt the cache invisibly.
    */
-  const missedHeadliners = useMemo(() => {
-    if (!day) return [];
-    return day.rides.filter(
-      (ride) =>
-        ride.isHeadliner &&
-        !planned.has(ride.attractionSlug) &&
-        // Not a headliner this party can ride is not a headliner they missed.
-        !partyFlags(ride, prefs).tooShort
-    );
-  }, [day, planned, prefs]);
+  const byName = useMemo(
+    () =>
+      day
+        ? [...day.rides].sort((a, b) => a.attractionName.localeCompare(b.attractionName, locale))
+        : [],
+    [day, locale]
+  );
 
   const matches = useMemo(() => {
-    if (!day) return [];
     // Below: an empty list is rendered as a stated reason, not as nothing.
     const needle = fold(query);
-    if (needle.length === 0) return day.rides.slice(0, 8);
-    return day.rides.filter((ride) => fold(ride.attractionName).includes(needle)).slice(0, 8);
-  }, [day, query]);
+    if (needle.length === 0) return byName;
+    return byName.filter((ride) => fold(ride.attractionName).includes(needle));
+  }, [byName, query]);
 
   return (
     <div className="border-border/60 border-t px-2 pt-2 pb-2">
@@ -156,59 +159,12 @@ export function PlannerRideSearch({
         />
       </div>
 
-      {missedHeadliners.length > 0 && (
-        <div
-          data-planner-headliner-hint=""
-          className="border-crowd-high/30 bg-crowd-high/10 mt-2 rounded-md border px-2 py-1.5"
-        >
-          <p className="text-crowd-high flex items-center gap-1.5 text-[11px] font-medium">
-            <Crown className="size-3 shrink-0" />
-            {t('headliners.missing', { count: missedHeadliners.length })}
-          </p>
-          <div className="mt-1 flex flex-wrap gap-1">
-            {missedHeadliners.map((ride) => (
-              <button
-                key={ride.attractionSlug}
-                type="button"
-                onClick={() =>
-                  addRide({
-                    parkSlug,
-                    parkName,
-                    geo,
-                    timezone,
-                    date,
-                    attractionSlug: ride.attractionSlug,
-                    attractionName: ride.attractionName,
-                    startMinute: startFor(ride),
-                  })
-                }
-                draggable
-                onDragStart={(event) =>
-                  startRideDrag(event.dataTransfer, {
-                    parkSlug,
-                    attractionSlug: ride.attractionSlug,
-                    attractionName: ride.attractionName,
-                  })
-                }
-                className="bg-background/60 hover:bg-background border-border/50 flex cursor-grab items-center gap-1.5 rounded-full border py-0.5 pr-2 pl-0.5 text-[11px] transition-colors active:cursor-grabbing max-sm:min-h-9"
-              >
-                {/* The ride, where the media database has it. This band exists
-                    to make somebody want the ride they skipped, and a name in a
-                    pill does that less well than the picture does. The photo is
-                    already in the payload — the plan-day proxy resolves it for
-                    every ride — so this costs a request the page was making
-                    anyway for the search rows below. */}
-                <PlannerRideThumb
-                  src={ride.backgroundImage}
-                  position={ride.backgroundPosition}
-                  size={4}
-                />
-                {ride.attractionName}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
+      {/* The other way in, named rather than demonstrated. This replaced a
+          band of headliner pills that repeated rides the list below already
+          shows — two components rendering the same ride with the same add
+          handler, so an unplanned headliner in the top eight appeared twice.
+          The crown on the row carries what that band was for. */}
+      <p className="text-muted-foreground mt-2 px-1 text-[11px]">{t('search.dragHint')}</p>
 
       {onAddCustom && (
         <button
@@ -235,7 +191,7 @@ export function PlannerRideSearch({
                 : t('noPlan')}
         </p>
       ) : (
-        <ul className="mt-2 max-h-44 overflow-y-auto">
+        <ul className="mt-2 max-h-44 overflow-y-auto sm:max-h-56">
           {matches.map((ride) => (
             <li key={ride.attractionSlug}>
               <button
@@ -285,6 +241,29 @@ export function PlannerRideSearch({
                   size={8}
                 />
                 <span className="min-w-0 flex-1 truncate text-sm">{ride.attractionName}</span>
+                {/* What the band above used to say, on the ride itself: the
+                    CURATED headliner set from the API, never the day's tallest
+                    bars. `dayPeak` says what is busy; "did I miss the big one"
+                    is a question about what the park is known for, and a
+                    headliner having a quiet Tuesday is still the ride somebody
+                    travelled for. */}
+                {/* When the ride starts, where that is not when the park does.
+                    Sixteen of Phantasialand's rides open an hour after its
+                    gates, and somebody planning a rope drop has to see which
+                    queues do not exist yet. Absent means "with the park, or we
+                    do not know" — the same thing to a reader, so it prints
+                    nothing rather than a hedge. */}
+                {ride.opensAt && (
+                  <span className="text-muted-foreground shrink-0 text-[10px] tabular-nums">
+                    {t('search.opensAt', { time: ride.opensAt })}
+                  </span>
+                )}
+                {ride.isHeadliner && (
+                  <Crown
+                    className="text-crowd-high size-3 shrink-0"
+                    aria-label={t('headliners.label')}
+                  />
+                )}
                 {/* What this party's own answers say about this ride. A flag,
                     never a filter — see the `prefs` prop. The height is shown
                     rather than a word, because "too small" without the number
