@@ -8,7 +8,7 @@ featured: false
 excerpt: >-
   Es ist Anfang September, und im Supermarkt liegen schon die Lebkuchen. Dann
   darf man auch bei den Parks auf Weihnachten schauen: Am 14. November gehen im
-  Phantasialand die Lichter an, in Bottrop hängen über eine Million davon, in
+  Phantasialand die Lichter an, in Bottrop hängen über 800.000 davon, in
   Wavre steht eine Eisbahn unter dem Hallendach. Elf Parks in Europa haben
   zwischen November und Januar geöffnet – Termine, Preise und die Bahn im
   Europa-Park, die zum letzten Mal fährt.
@@ -30,12 +30,12 @@ category: guides
 coverImage:
   src: /media/phantasialand/background-16x9.jpg
   alt: 'Ein beleuchtetes Kettenkarussell dreht sich bei Nacht, daneben ein Baum aus Lichterketten'
-  caption: 'Wintertraum im Phantasialand. Neun Stunden Betrieb, davon sechs im Dunkeln.'
+  caption: 'Wintertraum im Phantasialand. Neun Stunden Betrieb, davon dreieinhalb im Dunkeln.'
   credit: 'park.fan'
 seo:
   title: 'Freizeitparks im Winter 2026/27: Termine & Wartezeiten'
   description: >-
-    Eisbahnen, Weihnachtsmärkte und eine Million Lichter: welche Freizeitparks
+    Eisbahnen, Weihnachtsmärkte und 800.000 Lichter: welche Freizeitparks
     im Winter 2026/27 geöffnet haben. Wintertraum, Winter Efteling, Walibi
     Winter und acht weitere, mit Terminen, Preisen und echten Wartezeit-Daten.
   keywords:
@@ -53,8 +53,7 @@ seo:
 
 Am 14. November gehen im [Phantasialand](ref:phantasialand) die Lichter an. Der
 Park bleibt bis 20 Uhr offen, und den Abend beschließt MAGIC SYMPHONY mit
-Feuerwerk, von da an jeden Tag bis in den Januar. In Bottrop hängen dann über
-eine Million Lampen, in Wavre steht eine Eisbahn von 700 Quadratmetern unter
+Feuerwerk, von da an jeden Tag bis in den Januar. In Bottrop hängen dann über 800.000 Lampen, in Wavre steht eine Eisbahn von 700 Quadratmetern unter
 einem Hallendach, und in Kasterlee ist der Weihnachtsmann im Tagesticket drin.
 Zwischen Mitte November und Anfang Januar wird aus einem guten Teil der
 europäischen Freizeitparks etwas, das mit Achterbahnen nur noch nebenbei zu tun
@@ -67,7 +66,7 @@ aufgehört, es überhaupt zu versuchen.
 Am 23. April 2026 hat [Walibi Holland](ref:walibi-holland) seinen Winterbetrieb
 eingestellt. **Bright Nights** hieß das, vier Ausgaben lang: illuminierte
 Achterbahnen und eine Feuerwerksshow namens „Light up the Night“. Vorbei, ohne
-Nachfolger. Der Park bleibt von November bis Ostern zu.
+Nachfolger. Der Park bleibt von November bis in den April zu.
 
 Interessant daran ist die Begründung, weil sie fast die ganze Wintersaison
 erklärt. Geschäftsführerin Mascha Taminiau nannte die kurze
@@ -88,7 +87,7 @@ Preisen. Dazu eine Zahl, die den meisten quer zum Gefühl liegt: In den Monaten,
 in denen es um halb fünf dunkel wird, stehen die Leute länger an als im Mai.
 
 > **Zu den Terminen:** Die Parks schieben ihre Winterkalender bis in den Herbst
-> noch hin und her. Wo unten ein exaktes Datum steht, war es Ende August
+> noch hin und her. Wo unten ein exaktes Datum steht, war es Anfang September
 > bestätigt. Bei jedem Park steht die offizielle Seite dabei, und die
 > Öffnungstage im Kalender auf park.fan kommen direkt aus dem Fahrplan des
 > Parks. Kurz gegenchecken, bevor du buchst.
@@ -106,7 +105,7 @@ symbolischen Kürbis. Dafür zündet das [Phantasialand](ref:phantasialand) ab d
 **bis zum 24. Januar 2027**, täglich von **11 bis 20 Uhr**. Das sind
 67 Betriebstage, gut anderthalbmal so viele wie im Europa-Park.
 
-Geschlossen bleibt an vier Terminen: am 24. und 25. Dezember, am 1. Januar sowie
+Geschlossen bleibt an fünf Tagen: am 24. und 25. Dezember, am 1. Januar sowie
 am 12. und 13. Januar 2027. An Silvester endet der Betrieb um 18 Uhr. Tickets
 gibt es ab **29 €**, gebucht wird online auf ein festes Datum.
 
@@ -137,7 +136,9 @@ Termine und Tickets: [phantasialand.de → Wintertraum](https://www.phantasialan
 ### Europa-Park: Wintersaison ab 28. November, und ein Abschied
 
 Der [Europa-Park](ref:europa-park) hängt seine Wintersaison hinten an die
-Halloween-Wochen: **28. November 2026 bis 10. Januar 2027**, geschlossen nur am 24. und 25. Dezember. Rulantica läuft mit, die Hotels laufen mit, die
+Halloween-Wochen: **28. November 2026 bis 10. Januar 2027**, geschlossen nur am 24. und 25. Dezember. Der 10. Januar gehört allerdings Hotel- und geladenen
+Gästen: Für Tagesbesucher ist Samstag, der 9. Januar, der letzte reguläre Tag.
+Rulantica läuft mit, die Hotels laufen mit, die
 Dinner-Shows sind ab 260 € pro Person im Doppelzimmer buchbar, und die
 Silvester-Arrangements reichen je nach Haus von 455 € bis über 1.200 €.
 
@@ -158,7 +159,7 @@ Angebote und Termine: [europapark.de → Wintersaison 2026/2027](https://www.eur
 
 ## Die Dark-Ride-Parks: gebaut für schlechtes Wetter
 
-### Efteling: elf Wochen Winter, und der Park sieht besser aus als im Sommer
+### Efteling: zwölf Wochen Winter, und der Park sieht besser aus als im Sommer
 
 Das [Efteling](ref:efteling) ist der Park, an dem sich zeigt, wofür Dark Rides
 gut sind. [Droomvlucht](ref:efteling/droomvlucht),
@@ -169,16 +170,16 @@ mehrere in der Dämmerung besser wirken als bei Sonnenschein.
 
 ![Das blau angeleuchtete Schloss von Symbolica bei Nacht, davor ein Springbrunnen | Symbolica an einem Winterabend. Im Dezember wird es hier um halb fünf dunkel, und der Park gewinnt dabei. | wide](/media/efteling/symbolica.jpg)
 
-Die **Winter Efteling** läuft üblicherweise elf Wochen von Mitte November bis
+Die **Winter Efteling** läuft üblicherweise zwölf Wochen von Mitte November bis
 Anfang Februar, mit Eispalast und Schlittschuhbahn. In der Saison 2025/26 war
 das der 10. November bis 1. Februar, unter der Woche bis 18 Uhr, an den
 Wochenenden und in den Weihnachtsferien länger. Die Termine für 2026/27 hatte
-Kaatsheuvel Ende August noch nicht veröffentlicht; sie kommen erfahrungsgemäß im
-September oder Oktober. Im Fahrplan, den der Park an uns liefert, steht der
-November bereits komplett auf Betrieb.
+Kaatsheuvel Anfang September noch nicht veröffentlicht; sie kommen
+erfahrungsgemäß im Lauf des Septembers oder im Oktober. Im Fahrplan, den der
+Park an uns liefert, stehen November und Dezember bereits komplett auf Betrieb.
 
-Damit hat das Efteling, wenn es bei elf Wochen bleibt, die längste Wintersaison
-in dieser Übersicht, zehn Tage vor Brühl.
+Damit hat das Efteling, wenn es dabei bleibt, die längste Wintersaison in
+dieser Übersicht, knapp zwei Wochen länger als der Wintertraum.
 
 Warum überhaupt nur fünf Millionen Gäste im Jahr hinein dürfen und was das mit
 der Wintersaison zu tun hat, steht im
@@ -247,7 +248,7 @@ drin**, vom Eislaufen bis zum Eispalast. Zusatzbuchungen gibt es keine.
 
 Sechs Wochen im Herbst heißt der Park Horrorwood Studios, und kaum ist das
 vorbei, wird das Studiogelände weihnachtlich. **Movie Park’s Hollywood
-Christmas** läuft vom **27. November 2026 bis 5. Januar 2027**: über eine Million Lichter, vier weihnachtliche Bereiche, eine Eisbahn,
+Christmas** läuft vom **27. November 2026 bis 5. Januar 2027**: über 800.000 Lichter, vier weihnachtliche Bereiche, eine Eisbahn,
 die Winterversion der Parade, eine Christmas Tree Celebration, eine Meet-Santa-
 Station und neu eine Wintershow mit dem Illusionisten Christian Farla.
 
@@ -261,7 +262,7 @@ Ratgeber dabei danebenliegen, steht im
 
 ### Legoland Deutschland: WinterWonder, 28. November bis 10. Januar
 
-Günzburg fährt seine zweite Winteröffnung, und der Kalender ist gestückelt:
+Günzburg fährt seine vierte Winteröffnung, und der Kalender ist gestückelt:
 **28. und 29. November**, dann **4. bis 6.**, **11. bis 13.**, **18. bis 23.**
 und **26. bis 30. Dezember**, schließlich **2. bis 10. Januar 2027**. Es gibt
 eine Eisbahn, Curling, Shows und eine Lego-Tanne.
@@ -277,8 +278,7 @@ Bahn fahren will, schaut vorher in die Liste des Parks.
 
 Nördlich von Paris gibt es das kürzeste Fenster in dieser Übersicht:
 [Parc Astérix](ref:parc-asterix) öffnet vom **19. Dezember 2026 bis 3. Januar
-2027**, von 11 bis 20 Uhr, am 24. und 31. Dezember bis 19 Uhr. Neu sind eine
-Eisbahn unter freiem Himmel und ein vergrößerter Weihnachtsmarkt. Gallisch
+2027**, von 11 bis 20 Uhr, am 24. und 31. Dezember bis 19 Uhr. Neu sind eine Eisbahn im Wikingerbereich und ein Weihnachtsmarkt. Gallisch
 bleibt es trotzdem, inklusive der Frage, was in diesen Wochen mit dem Wildschwein
 passiert.
 
@@ -326,7 +326,7 @@ Sommer als Ausgleich. Was der Park mit der freien Zeit macht, steht im
 
 Ein Hinweis zur Vorsicht, weil er hier sonst falsch gelesen wird: Ein leerer
 Kalender bedeutet nicht, dass ein Park zu hat. Von Disneyland Paris und vom
-Liseberg in Göteborg lag Ende August schlicht noch kein Fahrplan über den
+Liseberg in Göteborg lag Anfang September schlicht noch kein Fahrplan über den
 Oktober hinaus vor, und beide haben im Dezember bekanntlich geöffnet. Der
 Kalender auf park.fan zeigt, was der Park veröffentlicht hat, und nicht, was er
 vorhat.
@@ -371,8 +371,7 @@ die Sommerferien haben.
 Die naheliegende Erklärung wäre der kürzere Tag, und für zwei der drei Parks
 stimmt sie auch. Wir haben die veröffentlichten Öffnungszeiten durchgerechnet:
 Ein Augusttag im Efteling dauert im Schnitt 11,7 Stunden, ein Novembertag 8,4.
-Im Europa-Park sind es 10,3 gegen 8,0. Wo zwei bis drei Stunden Betriebszeit
-fehlen, drängen sich dieselben Gäste in weniger Zeit.
+Im Europa-Park sind es 10,3 gegen 8,0. Wo zwei bis gut drei Stunden Betriebszeit fehlen, drängen sich dieselben Gäste in weniger Zeit.
 
 Nur im Phantasialand erklärt die Uhr gar nichts. Der Wintertraum fährt neun
 Stunden am Tag, von 11 bis 20 Uhr. Ein Maitag in Brühl dauert exakt genauso
@@ -441,7 +440,7 @@ es sie.
    lange du anstehst. Im Winter ist die Frage, ob die Bahn überhaupt läuft.
    Jeder Park veröffentlicht eine Winterliste, und bei Wasserbahnen ist die
    Antwort fast immer nein.
-3. **Rechne mit vier Stunden Dunkelheit, nicht mit neun Stunden Tageslicht.**
+3. **Rechne mit dreieinhalb Stunden Dunkelheit, nicht mit neun Stunden Tageslicht.**
    Ende Dezember geht in Brühl um halb fünf die Sonne unter, und der Park hat
    danach noch dreieinhalb Stunden offen. Wer morgens die dicke Jacke im
    Kofferraum lässt, weil die Sonne scheint, läuft abends fluchend zum Auto.

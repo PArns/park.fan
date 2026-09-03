@@ -8,7 +8,7 @@ featured: false
 excerpt: >-
   On est début septembre et les chocolats de Noël sont déjà en rayon. Autant
   regarder aussi du côté des parcs : le 14 novembre, les lumières s’allument à
-  Phantasialand, il y en a plus d’un million suspendues à Bottrop, et à Wavre une
+  Phantasialand, il y en a plus de 800 000 suspendues à Bottrop, et à Wavre une
   patinoire attend sous un toit de hall. Onze parcs européens ouvrent entre
   novembre et janvier : les dates, les tarifs et le coaster d’Europa-Park qui
   tourne pour la dernière fois.
@@ -30,12 +30,12 @@ category: guides
 coverImage:
   src: /media/phantasialand/background-16x9.jpg
   alt: 'Un carrousel volant illuminé tourne dans la nuit, à côté un arbre fait de guirlandes'
-  caption: 'Wintertraum à Phantasialand. Neuf heures d’exploitation, dont six dans le noir.'
+  caption: 'Wintertraum à Phantasialand. Neuf heures d’exploitation, dont trois et demie dans le noir.'
   credit: 'park.fan'
 seo:
   title: 'Parcs ouverts en hiver 2026/27 : dates & temps d’attente'
   description: >-
-    Patinoires, marchés de Noël et un million de lumières : quels parcs sont
+    Patinoires, marchés de Noël et 800 000 lumières : quels parcs sont
     ouverts en hiver 2026/27. Noël Gaulois, Wintertraum, Winter Efteling,
     Walibi Winter et huit autres, avec dates, tarifs et vrais temps d’attente.
   keywords:
@@ -54,7 +54,7 @@ seo:
 Le 14 novembre, les lumières s’allument à [Phantasialand](ref:phantasialand). Le
 parc reste ouvert jusqu’à 20 h, et MAGIC SYMPHONY clôt la soirée avec un feu
 d’artifice, chaque jour à partir de là et jusqu’en janvier. À ce moment-là, plus
-d’un million de lampes sont suspendues à Bottrop, une patinoire de 700 m² se
+de 800 000 lampes sont suspendues à Bottrop, une patinoire de 700 m² se
 dresse sous un toit de hall à Wavre, et à Kasterlee le père Noël est compris
 dans le billet journalier. Entre la mi-novembre et le début janvier, une bonne
 part des parcs européens devient autre chose, qui n’a plus qu’un rapport
@@ -67,7 +67,7 @@ printemps, et l’un d’eux a carrément renoncé en avril.
 Le 23 avril 2026, [Walibi Holland](ref:walibi-holland) a arrêté son exploitation
 hivernale. **Bright Nights**, quatre éditions durant : des coasters illuminés et
 un spectacle pyrotechnique baptisé « Light up the Night ». Terminé, sans
-successeur. Le parc reste fermé de novembre à Pâques.
+successeur. Le parc reste fermé de novembre à avril.
 
 L’argumentaire en dit long sur toute la saison d’hiver. La
 directrice Mascha Taminiau a pointé la brièveté de la période d’ouverture et la
@@ -90,7 +90,7 @@ la nuit tombe à seize heures trente, on attend plus longtemps qu’en mai.
 
 > **À propos des dates :** les parcs déplacent encore leur calendrier d’hiver
 > jusqu’à l’automne. Là où une date précise figure ci-dessous, elle était
-> confirmée fin août. Chaque parc renvoie à sa page officielle, et les jours
+> confirmée début septembre. Chaque parc renvoie à sa page officielle, et les jours
 > d’ouverture du calendrier park.fan viennent directement du planning du parc.
 > Vérifiez avant de réserver.
 
@@ -107,7 +107,7 @@ plus longue saison d’hiver que fasse un parc allemand : du **14 novembre 2026 
 24 janvier 2027**, tous les jours de **11 h à 20 h**. Cela fait 67 jours
 d’exploitation, une bonne fois et demie ce que fait Europa-Park.
 
-Le parc ferme quatre dates : les 24 et 25 décembre, le 1er janvier, puis les 12
+Le parc ferme cinq jours : les 24 et 25 décembre, le 1er janvier, puis les 12
 et 13 janvier 2027. Le 31 décembre, l’exploitation s’arrête à 18 h. Les billets
 démarrent à **29 €** et se réservent en ligne pour une date fixe.
 
@@ -140,7 +140,9 @@ Dates et billets : [phantasialand.de → Wintertraum](https://www.phantasialand.
 
 [Europa-Park](ref:europa-park) accroche sa saison d’hiver derrière les semaines
 d’Halloween : du **28 novembre 2026 au 10 janvier 2027**, fermé uniquement les
-24 et 25 décembre. Rulantica tourne, les hôtels tournent, les dîners-spectacles
+24 et 25 décembre. Le 10 janvier est toutefois réservé aux clients des hôtels et
+aux invités : pour les visiteurs à la journée, le dernier jour ordinaire est le
+samedi 9 janvier. Rulantica tourne, les hôtels tournent, les dîners-spectacles
 partent de 260 € par personne en chambre double, et les formules du Nouvel An
 vont de 455 € à bien plus de 1 200 € selon l’établissement.
 
@@ -162,7 +164,7 @@ Offres et dates : [europapark.de → saison d’hiver 2026/2027](https://www.eur
 
 ## Les parcs à dark rides : construits pour le mauvais temps
 
-### Efteling : onze semaines d’hiver, et le parc est plus beau qu’en été
+### Efteling : douze semaines d’hiver, et le parc est plus beau qu’en été
 
 [Efteling](ref:efteling) est le parc où l’on comprend à quoi servent les dark
 rides. [Droomvlucht](ref:efteling/droomvlucht),
@@ -173,16 +175,16 @@ fonctionnent mieux au crépuscule qu’en plein soleil.
 
 ![Le château de Symbolica éclairé en bleu la nuit, une fontaine devant | Symbolica un soir d’hiver. En décembre, la nuit tombe ici à seize heures trente, et le parc y gagne. | wide](/media/efteling/symbolica.jpg)
 
-La **Winter Efteling** dure habituellement onze semaines, de la mi-novembre au
+La **Winter Efteling** dure habituellement douze semaines, de la mi-novembre au
 début février, avec palais de glace et patinoire. En 2025/26, c’était du
 10 novembre au 1er février, jusqu’à 18 h en semaine et plus tard le week-end et
-pendant les vacances de Noël. Fin août, Kaatsheuvel n’avait pas encore publié
-les dates 2026/27 ; elles tombent d’ordinaire en septembre ou octobre. Dans le
-planning que le parc nous transmet, novembre est déjà entièrement en
-exploitation.
+pendant les vacances de Noël. Début septembre, Kaatsheuvel n’avait pas encore
+publié les dates 2026/27 ; elles tombent d’ordinaire plus tard en septembre ou
+en octobre. Dans le planning que le parc nous transmet, novembre et décembre
+sont déjà entièrement en exploitation.
 
-Si l’on reste sur onze semaines, Efteling détient la plus longue saison d’hiver
-de ce tour d’horizon, dix jours devant Brühl.
+Si cela se confirme, Efteling détient la plus longue saison d’hiver de ce tour
+d’horizon, près de deux semaines de plus que le Wintertraum.
 
 Pourquoi seuls cinq millions de visiteurs par an sont admis, et ce que cela a à
 voir avec la saison d’hiver, c’est dans le
@@ -253,8 +255,8 @@ plus.
 
 Six semaines à l’automne, le parc s’appelle Horrorwood Studios, et c’est à peine
 terminé que le plateau de tournage passe à Noël. **Movie Park’s Hollywood
-Christmas** tourne du **27 novembre 2026 au 5 janvier 2027** : plus d’un million
-de lumières, quatre zones de Noël, une patinoire, la version hivernale de la
+Christmas** tourne du **27 novembre 2026 au 5 janvier 2027** : plus de 800 000
+lumières, quatre zones de Noël, une patinoire, la version hivernale de la
 parade, une Christmas Tree Celebration, une station Meet Santa et, nouveauté, un
 spectacle d’hiver avec l’illusionniste Christian Farla.
 
@@ -268,7 +270,7 @@ habituels se trompent, c’est dans le
 
 ### Legoland Deutschland : WinterWonder, du 28 novembre au 10 janvier
 
-Günzburg fait sa deuxième ouverture d’hiver, et le calendrier est morcelé :
+Günzburg fait sa quatrième ouverture d’hiver, et le calendrier est morcelé :
 **28 et 29 novembre**, puis **4 au 6**, **11 au 13**, **18 au 23** et **26 au
 30 décembre**, enfin **2 au 10 janvier 2027**. Il y a une patinoire, du curling,
 des spectacles et un sapin en Lego.
@@ -285,7 +287,7 @@ Lisez d’abord la liste du parc.
 Au nord de Paris se trouve la fenêtre la plus courte de ce tour d’horizon. Le
 [Parc Astérix](ref:parc-asterix) ouvre du **19 décembre 2026 au 3 janvier
 2027**, de 11 h à 20 h, jusqu’à 19 h les 24 et 31 décembre. Nouveautés : une
-patinoire en plein air et un marché de Noël agrandi. Cela reste gaulois, y
+patinoire dans la zone viking et un marché de Noël. Cela reste gaulois, y
 compris la question de ce qu’il advient du sanglier pendant ces semaines.
 
 [Parc Astérix](ref:parc-asterix?full)
@@ -334,7 +336,7 @@ que le parc fait du temps libéré est dans le
 
 Une mise en garde, parce que c’est mal lu ici : un calendrier vide ne veut pas
 dire qu’un parc est fermé. Disneyland Paris et Liseberg à Göteborg n’avaient
-tout simplement pas de planning publié au-delà d’octobre fin août, et les deux
+tout simplement pas de planning publié au-delà d’octobre début septembre, et les deux
 ouvrent notoirement en décembre. Le calendrier de park.fan montre ce qu’un parc
 a publié, pas ce qu’il prévoit.
 
@@ -378,7 +380,7 @@ d’été y atteignent par ailleurs.
 L’explication évidente serait la journée plus courte, et pour deux des trois
 parcs elle tient. Nous avons calculé les horaires publiés : une journée d’août à
 Efteling dure en moyenne 11,7 heures, une journée de novembre 8,4. À Europa-Park,
-c’est 10,3 contre 8,0. Là où deux à trois heures d’exploitation manquent, les
+c’est 10,3 contre 8,0. Là où deux à bien trois heures d’exploitation manquent, les
 mêmes visiteurs se pressent dans moins de temps.
 
 À Phantasialand, en revanche, l’horloge n’explique rien du tout. Le Wintertraum
@@ -448,7 +450,7 @@ d’hiver à Europa-Park et à Efteling. Dès l’hiver prochain, il les connaî
    de savoir combien de temps vous attendez. L’hiver, la question est de savoir
    si l’attraction tourne. Chaque parc publie une liste d’hiver, et pour les
    attractions aquatiques la réponse est presque toujours non.
-3. **Habillez-vous pour quatre heures de nuit, pas pour neuf heures de jour.**
+3. **Habillez-vous pour trois heures et demie de nuit, pas pour neuf heures de jour.**
    Fin décembre, le soleil se couche à seize heures trente sur Brühl, et le parc
    reste ouvert trois heures et demie ensuite. Laisser la grosse veste dans le
    coffre parce qu’il fait beau le matin, c’est revenir à la voiture en pestant

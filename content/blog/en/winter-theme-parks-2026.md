@@ -8,7 +8,7 @@ featured: false
 excerpt: >-
   It is early September, and the first Christmas biscuits are already in the
   supermarket. So we may as well look ahead at the parks too: on 14 November the
-  lights go on at Phantasialand, over a million of them hang in Bottrop, and in
+  lights go on at Phantasialand, over 800,000 of them hang in Bottrop, and in
   Wavre an ice rink stands under a hall roof. Eleven parks in Europe are open
   between November and January: the dates, the prices and the Europa-Park coaster
   running for the last time.
@@ -30,12 +30,12 @@ category: guides
 coverImage:
   src: /media/phantasialand/background-16x9.jpg
   alt: 'A lit swing carousel turning at night, beside it a tree made of fairy lights'
-  caption: 'Wintertraum at Phantasialand. Nine hours of operation, six of them after dark.'
+  caption: 'Wintertraum at Phantasialand. Nine hours of operation, three and a half of them after dark.'
   credit: 'park.fan'
 seo:
   title: 'Theme Parks Open in Winter 2026/27: Dates & Wait Times'
   description: >-
-    Ice rinks, Christmas markets and a million lights: which European theme
+    Ice rinks, Christmas markets and 800,000 lights: which European theme
     parks are open in winter 2026/27. Wintertraum, Winter Efteling, Walibi
     Winter and eight more, with dates, prices and real wait-time data.
   keywords:
@@ -53,8 +53,7 @@ seo:
 
 On 14 November the lights go on at [Phantasialand](ref:phantasialand). The park
 stays open until 20:00, and MAGIC SYMPHONY closes the evening with fireworks,
-every day from then until January. By that point over a million lamps are
-hanging in Bottrop, a 700 m² ice rink stands under a hall roof in Wavre, and in
+every day from then until January. By that point over 800,000 lamps are hanging in Bottrop, a 700 m² ice rink stands under a hall roof in Wavre, and in
 Kasterlee meeting Santa is in the day ticket. Between mid-November and early
 January a good share of Europe’s theme parks turn into something that has only
 a passing connection to roller coasters: mulled wine, skates and fairy lights
@@ -66,7 +65,7 @@ October and reopen in spring, and one gave up trying altogether back in April.
 On 23 April 2026, [Walibi Holland](ref:walibi-holland) shut down its winter
 operation. **Bright Nights**, four editions long: illuminated coasters and a
 fireworks show called "Light up the Night". Gone, with no successor. The park
-now stays shut from November until Easter.
+now stays shut from November until April.
 
 The reasoning behind it explains most of the winter season.
 Managing director Mascha Taminiau pointed at the short opening window and the
@@ -105,7 +104,7 @@ any German park runs, from **14 November 2026 until 24 January 2027**, daily
 from **11:00 to 20:00**. That is 67 operating days, a good half again as many as
 Europa-Park.
 
-The park is closed on four dates: 24 and 25 December, 1 January, and 12 and
+The park is closed on five days: 24 and 25 December, 1 January, and 12 and
 13 January 2027. On New Year’s Eve it stops at 18:00. Tickets start at **€29**
 and are booked online for a fixed date.
 
@@ -137,7 +136,9 @@ Dates and tickets: [phantasialand.de → Wintertraum](https://www.phantasialand.
 
 [Europa-Park](ref:europa-park) hangs its winter season onto the back of the
 Halloween weeks: **28 November 2026 to 10 January 2027**, closed only on 24 and
-25 December. Rulantica runs, the hotels run, dinner shows start at €260 per
+25 December. The 10th, though, belongs to hotel and invited guests: for day
+visitors the last regular day is Saturday 9 January. Rulantica runs, the hotels
+run, dinner shows start at €260 per
 person in a double room, and the New Year packages range from €455 to well over
 €1,200 depending on the hotel.
 
@@ -158,7 +159,7 @@ Offers and dates: [europapark.de → winter season 2026/2027](https://www.europa
 
 ## The dark-ride parks: built for bad weather
 
-### Efteling: eleven weeks of winter, and the park looks better than in summer
+### Efteling: twelve weeks of winter, and the park looks better than in summer
 
 The [Efteling](ref:efteling) is the park that shows what dark rides are for.
 [Droomvlucht](ref:efteling/droomvlucht), [Symbolica](ref:efteling/symbolica),
@@ -168,15 +169,16 @@ which work better at dusk than in sunshine.
 
 ![The blue-lit Symbolica castle at night with a fountain in front of it | Symbolica on a winter evening. It gets dark here at half past four in December, and the park gains from it. | wide](/media/efteling/symbolica.jpg)
 
-**Winter Efteling** usually runs eleven weeks from mid-November to early
+**Winter Efteling** usually runs twelve weeks from mid-November to early
 February, with an ice palace and a skating rink. In 2025/26 that meant
 10 November to 1 February, until 18:00 on weekdays and longer at weekends and
 over the Christmas holidays. Kaatsheuvel had not published the 2026/27 dates by
-the end of August; they normally arrive in September or October. In the schedule
-feed the park sends us, November is already fully marked as operating.
+early September; they normally arrive later in September or in October. In the
+schedule feed the park sends us, November and December are already fully marked
+as operating.
 
-If it stays at eleven weeks, the Efteling has the longest winter season in this
-round-up, ten days ahead of Brühl.
+If it stays that way, the Efteling has the longest winter season in this
+round-up, almost two weeks longer than the Wintertraum.
 
 Why only five million guests a year are allowed in, and what that has to do with
 the winter season, is in the
@@ -246,7 +248,7 @@ on top.
 For six weeks in autumn the park is called Horrorwood Studios, and no sooner is
 that over than the studio lot turns festive. **Movie Park’s Hollywood
 Christmas** runs from **27 November 2026 to 5 January 2027**: more than a
-million lights, four Christmas-themed areas, an ice rink, the winter version of
+800,000 lights, four Christmas-themed areas, an ice rink, the winter version of
 the parade, a Christmas Tree Celebration, a Meet Santa station and a new winter
 show with illusionist Christian Farla.
 
@@ -260,7 +262,7 @@ gets it wrong, is in the
 
 ### Legoland Deutschland: WinterWonder, 28 November to 10 January
 
-Günzburg is running its second winter opening, and the calendar comes in
+Günzburg is running its fourth winter opening, and the calendar comes in
 pieces: **28 and 29 November**, then **4 to 6**, **11 to 13**, **18 to 23** and
 **26 to 30 December**, finally **2 to 10 January 2027**. There is a rink,
 curling, shows and a Lego fir tree.
@@ -277,7 +279,7 @@ first.
 North of Paris sits the shortest window in this round-up.
 [Parc Astérix](ref:parc-asterix) opens from **19 December 2026 to 3 January
 2027**, 11:00 to 20:00, until 19:00 on 24 and 31 December. New are an outdoor
-ice rink and a bigger Christmas market. It stays Gaulish throughout, including
+ice rink in the Viking area and a Christmas market. It stays Gaulish throughout, including
 the question of what happens to the wild boar during these weeks.
 
 [Parc Astérix](ref:parc-asterix?full)
@@ -326,7 +328,7 @@ with the freed-up time is in the
 
 One caution, because it gets misread here: an empty calendar does not mean a
 park is closed. Disneyland Paris and Liseberg in Gothenburg simply had no
-schedule published beyond October at the end of August, and both are famously
+schedule published beyond October in early September, and both are famously
 open in December. The park.fan calendar shows what a park has published, not
 what it intends.
 
@@ -367,7 +369,7 @@ summer holidays get there.
 The obvious explanation would be the shorter day, and for two of the three parks
 it holds. We ran the published opening hours: an August day at the Efteling
 averages 11.7 hours, a November day 8.4. At Europa-Park it is 10.3 against 8.0.
-Where two to three hours of operation go missing, the same guests crowd into
+Where two to a good three hours of operation go missing, the same guests crowd into
 less time.
 
 At Phantasialand the clock explains nothing at all. Wintertraum runs nine hours
@@ -434,7 +436,7 @@ Efteling. From next winter it will know them.
 2. **Read the ride list before you book.** In summer the question is how long
    you queue. In winter the question is whether the ride runs at all. Every park
    publishes a winter list, and for water rides the answer is almost always no.
-3. **Dress for four hours of darkness, not nine hours of daylight.** The sun
+3. **Dress for three and a half hours of darkness, not nine hours of daylight.** The sun
    sets over Brühl at half past four in late December, and the park is open for
    another three and a half hours after that. Leave the heavy coat in the boot
    because the sun is out in the morning and you will be swearing your way back

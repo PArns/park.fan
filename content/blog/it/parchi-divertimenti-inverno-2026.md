@@ -8,7 +8,7 @@ featured: false
 excerpt: >-
   È inizio settembre e al supermercato c’è già il panettone. Tanto vale guardare
   avanti anche per i parchi: il 14 novembre al Phantasialand si accendono le
-  luci, a Bottrop ne sono appese più di un milione e a Wavre c’è una pista di
+  luci, a Bottrop ne sono appese più di 800.000 e a Wavre c’è una pista di
   ghiaccio sotto il tetto di un capannone. Undici parchi europei aprono tra
   novembre e gennaio: le date, i prezzi e l’attrazione dell’Europa-Park che gira
   per l’ultima volta.
@@ -30,12 +30,12 @@ category: guides
 coverImage:
   src: /media/phantasialand/background-16x9.jpg
   alt: 'Una giostra a catenelle illuminata gira di notte, accanto un albero fatto di luci'
-  caption: 'Wintertraum al Phantasialand. Nove ore di apertura, sei delle quali al buio.'
+  caption: 'Wintertraum al Phantasialand. Nove ore di apertura, tre e mezza delle quali al buio.'
   credit: 'park.fan'
 seo:
   title: 'Parchi aperti d’inverno 2026/27: date e tempi di attesa'
   description: >-
-    Piste di ghiaccio, mercatini e un milione di luci: quali parchi sono aperti
+    Piste di ghiaccio, mercatini e 800.000 luci: quali parchi sono aperti
     nell’inverno 2026/27. Gardaland Magic Winter, Wintertraum, Winter Efteling,
     Walibi Winter e altri otto, con date, prezzi e tempi di attesa reali.
   keywords:
@@ -54,7 +54,7 @@ seo:
 Il 14 novembre al [Phantasialand](ref:phantasialand) si accendono le luci. Il
 parco resta aperto fino alle 20 e MAGIC SYMPHONY chiude la serata con i fuochi
 d’artificio, da lì in poi ogni giorno fino a gennaio. Per allora a Bottrop sono
-appese più di un milione di lampade, a Wavre c’è una pista di ghiaccio di
+appese più di 800.000 lampade, a Wavre c’è una pista di ghiaccio di
 700 metri quadri sotto il tetto di un capannone e a Kasterlee Babbo Natale è
 compreso nel biglietto giornaliero. Tra metà novembre e inizio gennaio buona
 parte dei parchi europei diventa un’altra cosa, che con le montagne russe ha
@@ -66,7 +66,7 @@ riapre in primavera, e uno ad aprile ha smesso del tutto di provarci.
 Il 23 aprile 2026 [Walibi Holland](ref:walibi-holland) ha chiuso la sua
 stagione invernale. **Bright Nights**, quattro edizioni: coaster illuminati e
 uno spettacolo pirotecnico intitolato “Light up the Night”. Finita, senza
-successore. Il parco resta chiuso da novembre a Pasqua.
+successore. Il parco resta chiuso da novembre ad aprile.
 
 La motivazione spiega quasi tutta la stagione invernale.
 La direttrice Mascha Taminiau ha indicato la brevità del periodo di apertura e
@@ -105,7 +105,7 @@ invernale più lunga che un parco tedesco metta in piedi: dal **14 novembre 2026
 al 24 gennaio 2027**, tutti i giorni dalle **11 alle 20**. Fanno 67 giorni di
 apertura, circa una volta e mezza quelli dell’Europa-Park.
 
-Chiude in quattro date: 24 e 25 dicembre, 1° gennaio e 12 e 13 gennaio 2027. A
+Chiude in cinque giorni: 24 e 25 dicembre, 1° gennaio e 12 e 13 gennaio 2027. A
 Capodanno si smette alle 18. I biglietti partono da **29 €** e si prenotano
 online su una data fissa.
 
@@ -138,7 +138,9 @@ Date e biglietti: [phantasialand.de → Wintertraum](https://www.phantasialand.d
 
 L’[Europa-Park](ref:europa-park) attacca la stagione invernale dietro le
 settimane di Halloween: dal **28 novembre 2026 al 10 gennaio 2027**, chiuso solo
-il 24 e il 25 dicembre. Rulantica gira, gli hotel girano, le cene spettacolo
+il 24 e il 25 dicembre. Il 10 gennaio però è riservato agli ospiti degli hotel e
+agli invitati: per chi va in giornata l’ultimo giorno normale è sabato 9
+gennaio. Rulantica gira, gli hotel girano, le cene spettacolo
 partono da 260 € a persona in camera doppia e i pacchetti di Capodanno vanno da
 455 € a ben oltre 1.200 € a seconda dell’albergo.
 
@@ -159,7 +161,7 @@ Offerte e date: [europapark.de → stagione invernale 2026/2027](https://www.eur
 
 ## I parchi da dark ride: costruiti per il brutto tempo
 
-### Efteling: undici settimane d’inverno, e il parco rende più che d’estate
+### Efteling: dodici settimane d’inverno, e il parco rende più che d’estate
 
 [Efteling](ref:efteling) è il parco in cui si capisce a cosa servano le dark
 ride. [Droomvlucht](ref:efteling/droomvlucht),
@@ -170,16 +172,16 @@ meglio al crepuscolo che in pieno sole.
 
 ![Il castello di Symbolica illuminato di blu di notte, davanti una fontana | Symbolica in una sera d’inverno. A dicembre qui fa buio alle cinque meno un quarto, e il parco ci guadagna. | wide](/media/efteling/symbolica.jpg)
 
-La **Winter Efteling** dura di solito undici settimane, da metà novembre a
+La **Winter Efteling** dura di solito dodici settimane, da metà novembre a
 inizio febbraio, con palazzo di ghiaccio e pista di pattinaggio. Nel 2025/26 è
 andata dal 10 novembre al 1° febbraio, fino alle 18 nei giorni feriali e più a
-lungo nei fine settimana e durante le vacanze di Natale. A fine agosto
+lungo nei fine settimana e durante le vacanze di Natale. A inizio settembre
 Kaatsheuvel non aveva ancora pubblicato le date per il 2026/27; di norma
-arrivano a settembre o ottobre. Nell’orario che il parco ci trasmette, novembre
-risulta già interamente in apertura.
+arrivano più avanti a settembre o a ottobre. Nell’orario che il parco ci
+trasmette, novembre e dicembre risultano già interamente in apertura.
 
-Se resta sulle undici settimane, Efteling ha la stagione invernale più lunga di
-questa panoramica, dieci giorni davanti a Brühl.
+Se la cosa si conferma, Efteling ha la stagione invernale più lunga di questa
+panoramica, quasi due settimane in più del Wintertraum.
 
 Perché all’anno possono entrare solo cinque milioni di ospiti, e che cosa
 c’entri con la stagione invernale, sta nella
@@ -250,7 +252,7 @@ da aggiungere a parte.
 
 Per sei settimane in autunno il parco si chiama Horrorwood Studios, e appena
 finisce il set diventa natalizio. **Movie Park’s Hollywood Christmas** va dal
-**27 novembre 2026 al 5 gennaio 2027**: oltre un milione di luci, quattro aree
+**27 novembre 2026 al 5 gennaio 2027**: oltre 800.000 luci, quattro aree
 natalizie, una pista di ghiaccio, la versione invernale della parata, una
 Christmas Tree Celebration, una postazione Meet Santa e, novità, uno spettacolo
 invernale con l’illusionista Christian Farla.
@@ -265,7 +267,7 @@ sbaglino i consigli abituali, sta nella
 
 ### Legoland Deutschland: WinterWonder, dal 28 novembre al 10 gennaio
 
-Günzburg è alla seconda apertura invernale, e il calendario è a pezzi: **28 e
+Günzburg è alla quarta apertura invernale, e il calendario è a pezzi: **28 e
 29 novembre**, poi **4-6**, **11-13**, **18-23** e **26-30 dicembre**, infine
 **2-10 gennaio 2027**. Ci sono pista di ghiaccio, curling, spettacoli e un abete
 di Lego.
@@ -282,7 +284,7 @@ Leggi prima la lista del parco.
 A nord di Parigi c’è la finestra più breve di questa panoramica. Il
 [Parc Astérix](ref:parc-asterix) apre dal **19 dicembre 2026 al 3 gennaio
 2027**, dalle 11 alle 20, fino alle 19 il 24 e il 31 dicembre. Novità: una pista
-di ghiaccio all’aperto e un mercatino di Natale ingrandito. Resta gallico
+di ghiaccio nell’area vichinga e un mercatino di Natale. Resta gallico
 comunque, compresa la domanda su che fine faccia il cinghiale in quelle
 settimane.
 
@@ -330,8 +332,8 @@ Che cosa fa il parco con il tempo liberato sta nella
 [guida al Walibi](/blog/walibi-holland-untamed-hard-gaan).
 
 Un avvertimento, perché qui viene letto male: un calendario vuoto non significa
-che un parco sia chiuso. Di Disneyland Paris e del Liseberg di Göteborg a fine
-agosto semplicemente non risultava pubblicato alcun orario oltre ottobre, ed
+che un parco sia chiuso. Di Disneyland Paris e del Liseberg di Göteborg a
+inizio settembre semplicemente non risultava pubblicato alcun orario oltre ottobre, ed
 entrambi a dicembre sono notoriamente aperti. Il calendario di park.fan mostra
 quello che un parco ha pubblicato, non quello che ha in programma.
 
@@ -373,7 +375,7 @@ altrimenti solo le vacanze estive.
 La spiegazione ovvia sarebbe la giornata più corta, e per due parchi su tre
 regge. Abbiamo calcolato gli orari pubblicati: una giornata di agosto
 all’Efteling dura in media 11,7 ore, una di novembre 8,4. All’Europa-Park sono
-10,3 contro 8,0. Dove mancano due o tre ore di apertura, gli stessi ospiti si
+10,3 contro 8,0. Dove mancano da due a più di tre ore di apertura, gli stessi ospiti si
 stringono in meno tempo.
 
 Solo che al Phantasialand l’orologio non spiega proprio nulla. Il Wintertraum
@@ -441,7 +443,7 @@ conoscerà.
    quanto aspetti. D’inverno la domanda è se l’attrazione gira. Ogni parco
    pubblica una lista invernale, e per le attrazioni acquatiche la risposta è
    quasi sempre no.
-3. **Vestiti per quattro ore di buio, non per nove ore di luce.** A fine
+3. **Vestiti per tre ore e mezza di buio, non per nove ore di luce.** A fine
    dicembre a Brühl il sole tramonta alle cinque meno un quarto, e il parco resta
    aperto altre tre ore e mezza. Chi lascia il giaccone pesante in auto perché
    la mattina c’è il sole, la sera torna alla macchina imprecando.
