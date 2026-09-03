@@ -11,6 +11,7 @@ import { PlannerDayGrid } from './planner-day-grid';
 import { PlannerRideSearch } from './planner-ride-search';
 import { PlannerOverview } from './planner-overview';
 import { PlannerPushToggle } from './planner-push-toggle';
+import { PlannerHelpSteps } from './planner-help';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { totalsFor } from '@/lib/planner/estimate';
@@ -415,11 +416,18 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                     }
                   />
                 ) : activeEntries.length === 0 ? (
-                  <div className="flex h-full min-h-[180px] flex-col items-center justify-center gap-1 px-6 text-center">
-                    <p className="text-sm font-medium">{t('empty.title')}</p>
-                    <p className="text-muted-foreground text-xs">
-                      {isPhone ? t('empty.bodyMobile') : t('empty.body')}
-                    </p>
+                  /* Two lines of prose was what this said before: what to press,
+                     and nothing about what pressing it gets you. The three steps
+                     are the same ones the page shows, from one component, so the
+                     two cannot drift. */
+                  <div className="flex flex-col gap-3 px-4 py-5">
+                    <div>
+                      <p className="text-sm font-medium">{t('empty.title')}</p>
+                      <p className="text-muted-foreground mt-0.5 text-xs">
+                        {isPhone ? t('empty.bodyMobile') : t('empty.body')}
+                      </p>
+                    </div>
+                    <PlannerHelpSteps layout="list" />
                   </div>
                 ) : (
                   /* No opening hours means no honest axis — not a 24-hour one,

@@ -3,21 +3,15 @@
 import { useMemo } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
-import {
-  CalendarDays,
-  CalendarPlus,
-  Check,
-  Compass,
-  MapPin,
-  MousePointerClick,
-  Trash2,
-} from 'lucide-react';
+import { CalendarDays, Check, Compass, MapPin, Trash2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { plannerUi } from '@/lib/planner/ui-store';
 import { addDays, todayInZone } from '@/lib/planner/park-time';
 import { PlannerParkSearch } from './planner-park-search';
 import { PlannerPushToggle } from './planner-push-toggle';
+import { PlannerHelpSteps } from './planner-help';
+import { PlannerPolaroids, type PolaroidPhoto } from './planner-polaroids';
 
 /**
  * The planner's own page: a directory of what is planned, and an explanation
@@ -35,7 +29,7 @@ import { PlannerPushToggle } from './planner-push-toggle';
  * in the menu can be arrived at on purpose, and it has room to say what the
  * thing is for.
  */
-export function PlannerPageBody() {
+export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPhoto[] }) {
   const t = useTranslations('planner');
   const locale = useLocale();
   const { state, setActive, openDay, clearDay } = usePlanner();
@@ -76,7 +70,7 @@ export function PlannerPageBody() {
         />
       </section>
 
-      {parks.length === 0 ? <PlannerPageIntro /> : null}
+      {parks.length === 0 ? <PlannerPageIntro photos={photos} /> : null}
 
       {parks.length > 0 && (
         <section>
@@ -173,43 +167,29 @@ export function PlannerPageBody() {
 /**
  * What the planner is, for somebody who has not used it.
  *
- * Three steps and two links, in that order, because the honest answer to "how do
- * I start" is "pick a park" and the page cannot pick one for them. No screenshot
- * and no mock: a picture of a feature ages the moment the feature changes, and
- * this one has changed six times this week.
+ * Three steps and a way to start, in that order, because the honest answer to
+ * "how do I begin" is "pick a park" and the page cannot pick one for them. The
+ * steps come from `PlannerHelpSteps`, which the panel's empty state also uses —
+ * two copies of the same three sentences would drift on the first edit.
+ *
+ * The polaroids sit ABOVE the steps rather than beside them: the picture is what
+ * says "this is about a day out", and it has to land before the instructions do.
  */
-function PlannerPageIntro() {
+function PlannerPageIntro({ photos }: { photos: readonly PolaroidPhoto[] }) {
   const t = useTranslations('planner');
-
-  const steps = [
-    { icon: Compass, key: 'find' },
-    { icon: CalendarPlus, key: 'add' },
-    { icon: MousePointerClick, key: 'arrange' },
-  ] as const;
 
   return (
     <section data-planner-page-intro="">
-      <h2 className="mb-2 text-lg font-semibold">{t('page.introTitle')}</h2>
+      <PlannerPolaroids photos={photos} />
+
+      <h2 className="mt-6 mb-2 text-lg font-semibold">{t('page.introTitle')}</h2>
       <p className="text-muted-foreground max-w-2xl text-sm leading-relaxed">
         {t('page.introBody')}
       </p>
 
-      <ol className="mt-6 grid gap-4 sm:grid-cols-3">
-        {steps.map(({ icon: Icon, key }, index) => (
-          <li key={key} className="bg-card rounded-2xl border p-4">
-            <div className="mb-2 flex items-center gap-2">
-              <span className="bg-muted text-muted-foreground flex size-7 shrink-0 items-center justify-center rounded-full text-xs font-medium tabular-nums">
-                {index + 1}
-              </span>
-              <Icon className="text-primary size-4" aria-hidden="true" />
-            </div>
-            <p className="text-sm font-medium">{t(`page.steps.${key}.title`)}</p>
-            <p className="text-muted-foreground mt-1 text-xs leading-relaxed">
-              {t(`page.steps.${key}.body`)}
-            </p>
-          </li>
-        ))}
-      </ol>
+      <div className="mt-6">
+        <PlannerHelpSteps layout="cards" />
+      </div>
 
       <div className="mt-6 flex flex-wrap gap-2">
         <Link

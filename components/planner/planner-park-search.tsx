@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { MapPin, Search } from 'lucide-react';
+import { Input } from '@/components/ui/input';
 import { getCountryName } from '@/lib/utils/region-names';
 import { todayInZone } from '@/lib/planner/park-time';
 import type { PlannerGeo } from '@/lib/planner/types';
@@ -94,15 +95,21 @@ export function PlannerParkSearch({ plannedSlugs, onPick }: PlannerParkSearchPro
 
   return (
     <div className="border-border/60 border-b px-2 py-2" data-planner-park-search="">
+      {/* The house `Input`, not a bespoke one. This was a bare `<input>` with a
+          hand-rolled `bg-accent/40` fill and no border or focus ring — so on the
+          planner's own page it sat next to nothing else on the site and read as
+          a placeholder somebody had not finished. `Input` carries the border,
+          the focus ring and the `dark:bg-input/30` every other field on the site
+          has; the only thing added here is room for the icon. */}
       <div className="relative">
-        <Search className="text-muted-foreground/60 pointer-events-none absolute top-1/2 left-2 size-3.5 -translate-y-1/2" />
-        <input
+        <Search className="text-muted-foreground/60 pointer-events-none absolute top-1/2 left-3 z-10 size-4 -translate-y-1/2" />
+        <Input
           type="search"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder={t('parkSearch.placeholder')}
           aria-label={t('parkSearch.placeholder')}
-          className="bg-accent/40 focus:bg-accent placeholder:text-muted-foreground/70 h-9 w-full rounded-md pr-2 pl-7 text-sm transition-colors outline-none max-sm:h-11"
+          className="pl-9 max-sm:h-11"
         />
       </div>
 

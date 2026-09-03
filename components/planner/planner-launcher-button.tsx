@@ -48,14 +48,23 @@ export function PlannerLauncherButton({
         type="button"
         onClick={() => setOpen(true)}
         aria-label={t('open')}
-        className="bg-popover/95 text-foreground ring-border/60 hover:bg-accent fixed right-4 bottom-4 z-40 flex items-center gap-2 rounded-full px-4 py-3 shadow-lg ring-1 backdrop-blur-xl transition-colors max-sm:right-3 max-sm:bottom-3"
+        // Primary, not glass. It was `bg-popover/95` with a hairline ring —
+        // the same treatment the menu band and every card on the site use, and
+        // over a park photo at the bottom of a long page that reads as another
+        // panel edge rather than as the one control that opens the feature.
+        // This is the planner's only floating entry point; it is allowed to be
+        // the loudest thing in the corner.
+        className="bg-primary text-primary-foreground ring-primary/30 hover:bg-primary/90 fixed right-4 bottom-4 z-40 flex items-center gap-2 rounded-full px-4 py-3 shadow-lg ring-1 transition-colors max-sm:right-3 max-sm:bottom-3"
       >
         <CalendarPlus className="size-4" />
         <span className="text-sm font-medium">{t('title')}</span>
         {/* No badge at zero. Opened from the calendar there is nothing planned
             yet, and a "0" beside the label reads as a count that failed. */}
         {total > 0 && (
-          <span className="bg-primary/15 text-primary rounded-full px-1.5 py-0.5 font-mono text-xs tabular-nums">
+          // On the primary fill, so the badge inverts with it: `bg-primary/15
+          // text-primary` was a tint of the button's own colour and disappeared
+          // into it the moment the button became primary.
+          <span className="bg-primary-foreground/20 text-primary-foreground rounded-full px-1.5 py-0.5 font-mono text-xs tabular-nums">
             {total}
           </span>
         )}

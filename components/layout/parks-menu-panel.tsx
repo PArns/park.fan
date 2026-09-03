@@ -12,6 +12,8 @@ import { useRowReveal } from '@/lib/hooks/use-menu-reveal';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
+import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
+import { CalendarPlus } from 'lucide-react';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { CROWD_TEXT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
@@ -301,7 +303,23 @@ export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
         className="border-border/60 mt-5 min-h-[7.5rem] border-t pt-4"
       >
         {activeCountry == null ? (
-          <p className="text-muted-foreground/70 text-xs">{t('exploreByRegion')}</p>
+          /* The resting state of the detail row, which is what the band shows
+             for as long as nobody has rested on a country — one line of grey
+             text in a 120 px band. The planner's call to action goes here: this
+             is the moment somebody is choosing where to go, and the row is
+             otherwise empty. It disappears the instant a country opens, so it
+             costs the cities nothing. */
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <p className="text-muted-foreground/70 text-xs">{t('exploreByRegion')}</p>
+            <Link
+              href={`/${PLANNER_SEGMENTS[locale as keyof typeof PLANNER_SEGMENTS] ?? PLANNER_SEGMENTS.en}`}
+              prefetch={false}
+              className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors"
+            >
+              <CalendarPlus className="size-3.5" aria-hidden="true" />
+              {tNav('planner')}
+            </Link>
+          </div>
         ) : (
           <>
             <div className="mb-2 flex items-baseline justify-between gap-3">

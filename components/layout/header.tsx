@@ -331,9 +331,18 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
             burger — 789 px of content in a 736 px box. German wrapped it onto two lines and the
             document grew a horizontal scrollbar. The trigger is icon-only below `lg` now, and the
             nav starts where the input does; under that width everything lives in the burger,
-            which is the only arrangement that holds in all six languages. */}
+            which is the only arrangement that holds in all six languages.
+
+            `whitespace-nowrap` is the other half and was missing. Without it the
+            flex items shrink and WRAP their labels: measured at 1024 px in all
+            six languages, "Parks entdecken" and "So funktioniert's" came out on
+            two lines each in a 48 px bar, and the first of them painted across
+            the logo. A nav label is never two lines — the row is one line by
+            construction — so the row is allowed to be tighter (`gap-3.5`, and
+            `xl:gap-5` instead of 6) and the search field beside it shrinks
+            before anything here does. */}
         <nav
-          className={`hidden items-center gap-5 lg:flex xl:gap-6 ${fadeClass}`}
+          className={`hidden items-center gap-3.5 whitespace-nowrap lg:flex xl:gap-5 ${fadeClass}`}
           aria-label="Main navigation"
           aria-hidden={isTransparent}
         >
@@ -412,16 +421,19 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
           >
             {t('howto')}
           </Link>
-          {/* Der Tagesplaner steht hier bewusst NICHT, obwohl er eine eigene Seite
-              hat und im Burger und im Footer verlinkt ist. Diese Zeile bricht mit
-              ihren sechs Einträgen schon heute um: unter ~1300 px (Französisch
-              unter 1600) rutschen „Parks entdecken" und „So funktioniert's" auf
-              zwei Zeilen und malen über das Logo — gemessen in allen sechs
-              Sprachen, mit und ohne einen siebten Eintrag, der Umbruch beginnt
-              bei derselben Breite. Ein siebter macht daraus bei 1024 px im
-              Französischen drei Zeilen. Der Umbruch gehört repariert, aber das
-              ist eine Änderung an der Geometrie dieser Leiste und nicht etwas,
-              das man nebenbei in einem Planer-Commit versteckt. */}
+          {/* Der Tagesplaner. Er stand hier zuerst nicht, weil diese Zeile mit
+              sechs Einträgen schon umbrach — das ist mit `whitespace-nowrap`
+              und der schmaleren Suche oben behoben, und erst dadurch ist Platz
+              für einen siebten. */}
+          <Link
+            href={plannerPath}
+            prefetch={false}
+            className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+            tabIndex={isTransparent ? -1 : 0}
+            data-header-stagger
+          >
+            {t('planner')}
+          </Link>
           {/* Favoriten stehen in dieser Zeile und nicht im Aktionsbereich rechts: sie öffnen
               dasselbe Band wie „Parks entdecken" und „Blog", mit derselben Hover-Hysterese, und
               eine Zeile, in der ein Eintrag anders aufgeht als seine Nachbarn, muss man zweimal
@@ -430,7 +442,9 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
         </nav>
 
         {/* Search Desktop – fades in on scroll */}
-        <div data-header-stagger className={`hidden lg:block lg:w-64 ${fadeClass}`}>
+        {/* The full input from `xl`. Below that the row has no width to spare —
+            see the icon trigger further down, which covers 1024–1279 px. */}
+        <div data-header-stagger className={`hidden xl:block xl:w-64 ${fadeClass}`}>
           <SearchCommand
             trigger="input"
             size="sm"
@@ -466,8 +480,13 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
             bar where it stood before the button existed (18 px over, invisible). Below `sm`
             nothing else in here can give: every control is already at its documented exception. */}
         <div className="flex items-center gap-2 max-sm:gap-1">
-          {/* Search Button Mobile – fades in on scroll */}
-          <div className={`lg:hidden ${fadeClass}`}>
+          {/* The icon trigger, up to `xl` and not just up to `lg`. The nav row
+              is one line by construction now, so it cannot give width back —
+              and at 1024 px it took the document 28 px wide in German and 103
+              in French with a 176 px input beside it. A 36 px icon that opens
+              the same palette costs nobody a search; a horizontal scrollbar on
+              every page costs everybody. */}
+          <div className={`xl:hidden ${fadeClass}`}>
             <SearchCommand trigger="button" size="sm" />
           </div>
 
