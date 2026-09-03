@@ -1350,6 +1350,170 @@ if (reachable) {
   await shows.close();
 }
 
+// ── The photos the payload already carries ──────────────────────────────────
+// The plan-day proxy resolves a ride's picture from the media database on every
+// request, and for most of this feature's life nothing showed one: the block's
+// floor was 48 px, which at 1.2 px per minute is a FORTY-minute queue, so a day
+// of twenty-to-thirty-five minute blocks — which is most days — drew none.
+// Measured before the fix on a four-ride day where every ride had a picture:
+// blocks 30, 20, 36 and 42 px tall, four photos in, zero out.
+{
+  const photos = await browser.newPage({ viewport: { width: 1280, height: 1100 } });
+  noteErrors(photos);
+
+  const OPEN = 9;
+  const CLOSE = 19;
+  // Real paths from the media database. A fabricated one would 404 and the
+  // assertion would still pass, since it asks whether the element is drawn.
+  const PHOTO = {
+    taron: ['/media/phantasialand/taron.jpg?v=04eb2f11', '55% 58%'],
+    'black-mamba': ['/media/phantasialand/black-mamba.jpg?v=5cbf7070', '50% 38%'],
+    'winjas-fear': ['/media/phantasialand/winjas-fear.jpg?v=de8fcfe6', '33% 48%'],
+  };
+  const curve = (peak) =>
+    Array.from({ length: CLOSE - OPEN + 1 }, (_, i) => ({ hour: OPEN + i, wait: peak }));
+
+  await photos.route('**/plan/day**', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        parkSlug: PARK.slug,
+        timezone: 'Europe/Berlin',
+        context: {
+          date: DATE,
+          status: 'OPERATING',
+          openHour: OPEN,
+          closeHour: CLOSE,
+          crowdLevel: 'moderate',
+          weather: null,
+          isHoliday: false,
+          isBridgeDay: false,
+          isSchoolVacation: false,
+          isWeekend: false,
+        },
+        tier: 'measured',
+        leadDays: 1,
+        leadTimeMae: 7,
+        rides: [
+          // 25 minutes — a 30 px block, and the commonest queue there is.
+          {
+            attractionSlug: 'taron',
+            attractionName: 'Taron',
+            land: 'Mystery',
+            hours: curve(25),
+            dayPeak: 25,
+            uncertaintyMinutes: 8,
+            sampleDays: 400,
+            backgroundImage: PHOTO.taron[0],
+            backgroundPosition: PHOTO.taron[1],
+          },
+          // 15 minutes — an 18 px block, below the floor: one line of text and
+          // nowhere for a picture to be.
+          {
+            attractionSlug: 'winjas-fear',
+            attractionName: "Winja's Fear",
+            land: 'Fantasy',
+            hours: curve(15),
+            dayPeak: 15,
+            uncertaintyMinutes: 5,
+            sampleDays: 400,
+            backgroundImage: PHOTO['winjas-fear'][0],
+            backgroundPosition: PHOTO['winjas-fear'][1],
+          },
+          // A headliner nobody planned: the hint below the search offers it.
+          {
+            attractionSlug: 'black-mamba',
+            attractionName: 'Black Mamba',
+            land: 'Deep in Africa',
+            hours: curve(35),
+            dayPeak: 35,
+            uncertaintyMinutes: 8,
+            sampleDays: 400,
+            isHeadliner: true,
+            backgroundImage: PHOTO['black-mamba'][0],
+            backgroundPosition: PHOTO['black-mamba'][1],
+          },
+        ],
+        shows: [],
+      }),
+    })
+  );
+
+  await photos.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  await photos.evaluate(
+    ([plan, date]) => {
+      const seeded = JSON.parse(JSON.stringify(plan));
+      const park = seeded.parks.phantasialand;
+      park.timezone = 'Europe/Berlin';
+      park.days = {
+        [date]: {
+          date,
+          entries: [
+            { id: 'taron-1', attractionSlug: 'taron', attractionName: 'Taron', startMinute: 600 },
+            {
+              id: 'winjas-fear-1',
+              attractionSlug: 'winjas-fear',
+              attractionName: "Winja's Fear",
+              startMinute: 720,
+            },
+          ],
+        },
+      };
+      seeded.parks = { phantasialand: park };
+      seeded.activeParkSlug = 'phantasialand';
+      seeded.activeDate = date;
+      window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
+      document.cookie = 'planner=1; path=/';
+    },
+    [PLAN, DATE]
+  );
+  await photos.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+  await photos.locator(LAUNCHER).click();
+  await photos.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await photos.waitForTimeout(2500);
+
+  const drawn = await photos.evaluate(() =>
+    [...document.querySelectorAll('li[data-planner-block]')].map((el) => ({
+      id: el.getAttribute('data-planner-entry'),
+      height: Math.round(el.getBoundingClientRect().height),
+      photo: Boolean(el.querySelector('div[style*="background-image"]')),
+    }))
+  );
+  const taron = drawn.find((b) => b.id === 'taron-1');
+  const winja = drawn.find((b) => b.id === 'winjas-fear-1');
+
+  check(
+    'ein gewöhnlicher Block trägt sein Foto',
+    taron?.photo === true,
+    `${taron?.height} px, Foto: ${taron?.photo}`
+  );
+  // The floor still exists and still means something: below it the block is one
+  // line of text and a picture would be a band a few pixels tall behind a name.
+  check(
+    'ein sehr kurzer Block trägt keins',
+    winja?.photo === false,
+    `${winja?.height} px, Foto: ${winja?.photo}`
+  );
+
+  // The ride search rows and the headliner the plan is missing both carry one.
+  const searchThumbs = await photos
+    .locator(`${SHEET} img[src*="taron"], ${SHEET} img[src*="black-mamba"]`)
+    .count();
+  check('die Suchzeilen tragen ihre Fotos', searchThumbs >= 2, `${searchThumbs}`);
+
+  const hint = photos.locator('[data-planner-headliner-hint]');
+  check('der Headliner-Hinweis ist da', (await hint.count()) === 1);
+  if (await hint.count()) {
+    check(
+      'und der verpasste Headliner zeigt sich',
+      (await hint.first().locator('img').count()) >= 1
+    );
+  }
+
+  await photos.close();
+}
+
 // ── Notifications ───────────────────────────────────────────────────────────
 // The rule the whole feature is built around is that a switch which turns on
 // and does nothing is worse than no switch, and there are two ways to get one:

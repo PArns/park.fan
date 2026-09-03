@@ -155,9 +155,35 @@ export function PlannerRideSearch({
                     startMinute: nextStart,
                   })
                 }
-                className="bg-background/60 hover:bg-background border-border/50 rounded-full border px-2 py-0.5 text-[11px] transition-colors max-sm:min-h-9"
+                className="bg-background/60 hover:bg-background border-border/50 flex items-center gap-1.5 rounded-full border py-0.5 pr-2 pl-0.5 text-[11px] transition-colors max-sm:min-h-9"
               >
-                + {ride.attractionName}
+                {/* The ride, where the media database has it. This band exists
+                    to make somebody want the ride they skipped, and a name in a
+                    pill does that less well than the drop does. The photo is
+                    already in the payload — the plan-day proxy resolves it for
+                    every ride — so this costs a request the page was making
+                    anyway for the search rows below.
+
+                    A `+` where there is none, in the same box: 198 of the 212
+                    parks have no picture in the database at all, so the fallback
+                    is the common case and may not be a hole. */}
+                {ride.backgroundImage ? (
+                  <span className="bg-muted relative size-4 shrink-0 overflow-hidden rounded-full">
+                    <Image
+                      src={ride.backgroundImage}
+                      alt=""
+                      fill
+                      sizes="32px"
+                      quality={70}
+                      style={{ objectFit: 'cover', objectPosition: ride.backgroundPosition }}
+                    />
+                  </span>
+                ) : (
+                  <span className="text-muted-foreground flex size-4 shrink-0 items-center justify-center">
+                    +
+                  </span>
+                )}
+                {ride.attractionName}
               </button>
             ))}
           </div>
