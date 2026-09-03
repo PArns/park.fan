@@ -1985,7 +1985,8 @@
       }
     },
     "sheet": {
-      "handle": "Ingrandisci o chiudi il pianificatore"
+      "handle": "Ingrandisci o chiudi il pianificatore",
+      "resize": "Regola la larghezza"
     },
     "headliners": {
       "missing": "{count, plural, one {Manca ancora un’attrazione di punta} other {Mancano ancora # attrazioni di punta}}"

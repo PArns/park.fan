@@ -1985,7 +1985,8 @@
       }
     },
     "sheet": {
-      "handle": "Planner vergroten of sluiten"
+      "handle": "Planner vergroten of sluiten",
+      "resize": "Breedte slepen"
     },
     "headliners": {
       "missing": "{count, plural, one {Eén headliner ontbreekt nog} other {# headliners ontbreken nog}}"
