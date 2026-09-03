@@ -1350,6 +1350,198 @@ if (reachable) {
   await shows.close();
 }
 
+// ── Notifications ───────────────────────────────────────────────────────────
+// The rule the whole feature is built around is that a switch which turns on
+// and does nothing is worse than no switch, and there are two ways to get one:
+// a deploy with no VAPID keypair, and a browser that has refused. Both are
+// checked here, because both look exactly like "working" from the code's side.
+{
+  const push = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
+  noteErrors(push);
+
+  const seedPlan = async (page) => {
+    await page.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+    await page.evaluate(
+      ([plan, date]) => {
+        const seeded = JSON.parse(JSON.stringify(plan));
+        const park = seeded.parks.phantasialand;
+        park.timezone = 'Europe/Berlin';
+        park.days = {
+          [date]: {
+            date,
+            entries: [
+              {
+                id: 'taron-1',
+                attractionSlug: 'taron',
+                attractionName: 'Taron',
+                startMinute: 600,
+              },
+            ],
+          },
+        };
+        seeded.parks = { phantasialand: park };
+        seeded.activeParkSlug = 'phantasialand';
+        seeded.activeDate = date;
+        window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
+        document.cookie = 'planner=1; path=/';
+      },
+      [PLAN, DATE]
+    );
+    await page.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+    await page.locator(LAUNCHER).click();
+    await page.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+    await page.waitForTimeout(1800);
+  };
+
+  // 1. A deploy with no keypair offers nothing at all. Not a disabled switch —
+  //    a visitor cannot tell "not yet" from "never" by looking at one.
+  await push.route('**/api/push', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({ available: false, topics: [] }),
+    })
+  );
+  await seedPlan(push);
+  check(
+    'ohne Schlüssel gibt es keinen Schalter',
+    (await push.locator('[data-planner-push]').count()) === 0
+  );
+  await push.close();
+}
+
+{
+  // 2. A configured deploy offers it, off.
+  const push = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
+  noteErrors(push);
+  await push.route('**/api/push', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        available: true,
+        // A real VAPID public key's shape: 65 uncompressed P-256 bytes as
+        // base64url, 87 characters. The control never decodes it, but a
+        // placeholder that is not one would hide a bug in the decoder.
+        publicKey:
+          'BEl62iUYgUivxIkv69yViEuiBIa-Ib9-SkvMeAtA3LFgDzkrxZJjSgSnfckjBJuBkr3qBUYIHBQFLXYp5Nksh8U',
+        topics: ['next-up'],
+      }),
+    })
+  );
+
+  await push.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  await push.evaluate(
+    ([plan, date]) => {
+      const seeded = JSON.parse(JSON.stringify(plan));
+      const park = seeded.parks.phantasialand;
+      park.timezone = 'Europe/Berlin';
+      park.days = {
+        [date]: {
+          date,
+          entries: [
+            { id: 'taron-1', attractionSlug: 'taron', attractionName: 'Taron', startMinute: 600 },
+          ],
+        },
+      };
+      seeded.parks = { phantasialand: park };
+      seeded.activeParkSlug = 'phantasialand';
+      seeded.activeDate = date;
+      window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
+      document.cookie = 'planner=1; path=/';
+    },
+    [PLAN, DATE]
+  );
+  await push.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+  await push.locator(LAUNCHER).click();
+  await push.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await push.waitForTimeout(2000);
+
+  const toggle = push.locator('[data-planner-push]');
+  check('mit Schlüssel steht der Schalter da', (await toggle.count()) === 1);
+  if (await toggle.count()) {
+    check('und er ist aus', (await toggle.first().getAttribute('data-planner-push')) === 'off');
+    const text = (await toggle.first().textContent()) ?? '';
+    check(
+      'er sagt auf Deutsch, was er tut',
+      /Benachrichtigungen einschalten/.test(text),
+      text.trim()
+    );
+    // The sentence about the plan being stored belongs to the ON state: before
+    // that it is a warning about something that has not happened.
+    check('der Speicher-Hinweis steht noch nicht da', !/auf dem Server/.test(text), text.trim());
+  }
+  await push.close();
+}
+
+{
+  // 3. A browser that has refused says so instead of offering. It is the only
+  //    state where the visitor has to go somewhere else to change the answer.
+  const context = await browser.newContext({ viewport: { width: 1280, height: 1000 } });
+  // Playwright grants nothing by default; denying explicitly is what makes
+  // `Notification.permission` read "denied" rather than "default".
+  await context.clearPermissions();
+  const push = await context.newPage();
+  noteErrors(push);
+  await push.addInitScript(() => {
+    Object.defineProperty(Notification, 'permission', {
+      get: () => 'denied',
+      configurable: true,
+    });
+  });
+  await push.route('**/api/push', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        available: true,
+        publicKey:
+          'BEl62iUYgUivxIkv69yViEuiBIa-Ib9-SkvMeAtA3LFgDzkrxZJjSgSnfckjBJuBkr3qBUYIHBQFLXYp5Nksh8U',
+        topics: ['next-up'],
+      }),
+    })
+  );
+
+  await push.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  await push.evaluate(
+    ([plan, date]) => {
+      const seeded = JSON.parse(JSON.stringify(plan));
+      const park = seeded.parks.phantasialand;
+      park.timezone = 'Europe/Berlin';
+      park.days = {
+        [date]: {
+          date,
+          entries: [
+            { id: 'taron-1', attractionSlug: 'taron', attractionName: 'Taron', startMinute: 600 },
+          ],
+        },
+      };
+      seeded.parks = { phantasialand: park };
+      seeded.activeParkSlug = 'phantasialand';
+      seeded.activeDate = date;
+      window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
+      document.cookie = 'planner=1; path=/';
+    },
+    [PLAN, DATE]
+  );
+  await push.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+  await push.locator(LAUNCHER).click();
+  await push.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await push.waitForTimeout(2000);
+
+  const denied = push.locator('[data-planner-push="denied"]');
+  check('ein abgelehnter Browser bekommt eine Erklärung', (await denied.count()) === 1);
+  if (await denied.count()) {
+    const text = (await denied.first().textContent()) ?? '';
+    check(
+      'und keinen Knopf, der nichts tut',
+      (await denied.first().locator('button').count()) === 0,
+      text.trim()
+    );
+  }
+  await context.close();
+}
+
 // ── The tint is the crowd scale, and it moves with the block ────────────────
 // Both halves matter and neither is visible in a still: the colour has to be
 // the site's own six-level crowd palette — the same one a park card and a blog

@@ -1993,6 +1993,12 @@
       "searching": "Suche …",
       "noResults": "Kein Park gefunden.",
       "alreadyPlanned": "schon im Plan"
+    },
+    "push": {
+      "off": "Benachrichtigungen einschalten",
+      "on": "Benachrichtigungen sind an",
+      "denied": "Dein Browser blockiert Benachrichtigungen für diese Seite. Das lässt sich nur in den Browser-Einstellungen ändern.",
+      "storedHint": "Dein Plan liegt dafür auf dem Server. Wer den Link dazu hat, kann ihn lesen und ändern – es gibt kein Konto und kein Passwort."
     }
   }
 }

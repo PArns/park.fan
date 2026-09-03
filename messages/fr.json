@@ -1993,6 +1993,12 @@
       "searching": "Recherche …",
       "noResults": "Aucun parc trouvé.",
       "alreadyPlanned": "déjà au planning"
+    },
+    "push": {
+      "off": "Activer les notifications",
+      "on": "Les notifications sont actives",
+      "denied": "Votre navigateur bloque les notifications pour ce site. Seuls ses réglages peuvent le changer.",
+      "storedHint": "Votre plan est stocké sur le serveur pour cela. Qui a le lien peut le lire et le modifier : il n'y a ni compte ni mot de passe."
     }
   }
 }

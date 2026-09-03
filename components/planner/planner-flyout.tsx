@@ -10,6 +10,7 @@ import { PlannerTimeline } from './planner-timeline';
 import { PlannerDayGrid } from './planner-day-grid';
 import { PlannerRideSearch } from './planner-ride-search';
 import { PlannerOverview } from './planner-overview';
+import { PlannerPushToggle } from './planner-push-toggle';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { totalsFor } from '@/lib/planner/estimate';
@@ -490,6 +491,16 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                     });
                   }}
                 />
+              </div>
+            )}
+
+            {/* Under the ride search, above the summary: it belongs to the DAY
+                rather than to the panel's chrome, and it is the last thing
+                somebody decides once the plan is actually built. Renders
+                nothing at all where push cannot work — see the component. */}
+            {activeEntries.length > 0 && (
+              <div className="border-border/60 shrink-0 border-t">
+                <PlannerPushToggle />
               </div>
             )}
 

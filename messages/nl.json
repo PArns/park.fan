@@ -1993,6 +1993,12 @@
       "searching": "Zoeken …",
       "noResults": "Geen park gevonden.",
       "alreadyPlanned": "al gepland"
+    },
+    "push": {
+      "off": "Meldingen inschakelen",
+      "on": "Meldingen staan aan",
+      "denied": "Je browser blokkeert meldingen voor deze site. Dat verander je alleen in de browserinstellingen.",
+      "storedHint": "Je plan staat daarvoor op de server. Wie de link heeft, kan het lezen en wijzigen – er is geen account en geen wachtwoord."
     }
   }
 }

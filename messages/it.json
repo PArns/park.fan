@@ -1993,6 +1993,12 @@
       "searching": "Ricerca …",
       "noResults": "Nessun parco trovato.",
       "alreadyPlanned": "già nel piano"
+    },
+    "push": {
+      "off": "Attiva le notifiche",
+      "on": "Le notifiche sono attive",
+      "denied": "Il browser blocca le notifiche per questo sito. Si cambia solo nelle sue impostazioni.",
+      "storedHint": "Per questo il tuo piano è salvato sul server. Chi ha il link può leggerlo e modificarlo: non ci sono account né password."
     }
   }
 }
