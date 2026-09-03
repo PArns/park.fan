@@ -69,6 +69,14 @@
 | [Parks without wait times](api/parks-without-wait-times.md) | Parks with no readable source at all          |
 | [Backend Wishlist](api/backend-wishlist.md)                 | Requested API changes (SEO & performance)     |
 
+### Cost & performance
+
+| Doc                                                       | Description                                                    |
+| --------------------------------------------------------- | -------------------------------------------------------------- |
+| [Optimization — Stand & Einstieg](optimization/README.md) | Where the cost work stands, what worked, what did not, next up |
+| [Baseline profile](optimization/baseline-profile.md)      | The 2026-09-01 production measurement everything compares to   |
+| [Decisions](optimization/decisions.md)                    | One entry per accepted, rejected or deferred change            |
+
 ### SEO
 
 | Doc                                                 | Description                                                                                                                |

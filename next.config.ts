@@ -891,6 +891,75 @@ const nextConfig: NextConfig = {
       // `cdn-cache-control`. If it is absent, the page overwrites this key too and the note
       // above simply grows a third entry. The Cloudflare rule change is a separate, manual step
       // and must not be made until that header is confirmed on the wire.
+      // The RIDE page and the PARK page, the two highest-invocation routes in the app. Listed
+      // BEFORE the calendar block below so the calendar's own, more specific sources win — the
+      // hub `…/:park/<segment>` has the same segment count as `…/:park/:attraction` and would
+      // otherwise be claimed by the ride rule.
+      //
+      // These carry ONLY `CDN-Cache-Control`, for the reason the long note above gives: a
+      // dynamic page overwrites `Cache-Control` with its own `no-store`, and the RFC 9213
+      // targeted header is a different key that survives. Verified on the wire for the calendar
+      // month URL (2026-09-03) before these two were added.
+      //
+      // THEY DO NOTHING UNTIL THE CLOUDFLARE RULE MOVES. The `/*/parks/*` Cache Rule is on
+      // "ignore cache-control header and use this TTL", which wins over the origin. Proof: an
+      // out-of-range calendar month answers `308` carrying `cdn-cache-control: s-maxage=86400`
+      // and is still `cf-cache-status: BYPASS`. These rules exist so that rule CAN be moved to
+      // "use cache-control header if present" — which is the only way the TTL becomes a number
+      // in this file, diffable, instead of a dashboard field nobody can review.
+      //
+      // Before that switch: every page under `/*/parks/*` needs a window here, or the ones
+      // without a header fall back to the page's `no-store` and stop being cached entirely.
+      // Still missing at the time of writing: the geo hubs (`/:locale/parks`, `/…/:continent`,
+      // `/…/:country`, `/…/:city`). See docs/optimization/README.md.
+      {
+        // A ride page. Two days, and this is the longest window on the site on purpose: the
+        // crawl interval for these URLs is ~42 h against an edge TTL of ~6-12 h today, so the
+        // cache can never fill — measured hit rate 10 % against a 22 % ceiling. What the page
+        // renders that moves at all (wait time, status) is replaced on mount by the client poll;
+        // what is served from HTML is the curated ride, which changes when an editor changes it.
+        //
+        // The price, stated plainly: NOTHING in this repo or the backend can purge Cloudflare,
+        // so a curated correction stays invisible for as long as this window runs. Two days is
+        // the first step, not the ceiling — raising it further wants a Cloudflare purge in
+        // `/api/revalidate` first.
+        source: `/:locale(${locales.join('|')})/parks/:continent/:country/:city/:park/:attraction`,
+        headers: [
+          {
+            key: 'CDN-Cache-Control',
+            value: 'public, s-maxage=172800, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        // The geo hubs: `/:locale/parks`, and the continent, country and city levels under it.
+        // They are prerendered (ISR) and their live bits arrive through `/api/parks/live` on the
+        // client, so an hour costs no freshness and collapses a crawl burst.
+        //
+        // They are here for a second reason: the Cloudflare rule matches `/*/parks/*`, so once it
+        // moves to "use cache-control header if present" ANY page under that prefix without a
+        // window falls back to the page's own `no-store` and stops being cached at all. This
+        // block plus the two above plus the calendar block is that prefix, complete.
+        source: `/:locale(${locales.join('|')})/parks/:continent?/:country?/:city?`,
+        headers: [
+          {
+            key: 'CDN-Cache-Control',
+            value: 'public, s-maxage=3600, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        // A park page. An hour, not the ride page's two days: the backend POSTs this park's own
+        // cache tag at every status flip (see the API-budget rule in CLAUDE.md), and a long edge
+        // window is exactly what would swallow that. An hour still collapses a crawl burst.
+        source: `/:locale(${locales.join('|')})/parks/:continent/:country/:city/:park`,
+        headers: [
+          {
+            key: 'CDN-Cache-Control',
+            value: 'public, s-maxage=3600, stale-while-revalidate=86400',
+          },
+        ],
+      },
       ...Object.entries(parkCalendarHeaderSegments).flatMap(([locale, segment]) => [
         {
           // A calendar MONTH page: `…/<segment>/2026/10`. A day, because after the backend
