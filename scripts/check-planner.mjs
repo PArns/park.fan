@@ -514,6 +514,11 @@ if (reachable) {
             sampleDays: 380,
             latitude: 50.8001,
             longitude: 6.8812,
+            // Warned as well as Taron, and for a different reason: at 12:30 its
+            // queue is 85 minutes and the sentence has all the room it needs,
+            // but its curve reads 40 at 09:00 — a 48 px box, which is the window
+            // the clipping bug lived in. The move below is what exercises it.
+            downYesterday: true,
           },
           {
             attractionSlug: 'black-mamba',
@@ -588,6 +593,62 @@ if (reachable) {
       );
     });
     check('das Bild der Bahn liegt im Block', hasPhoto);
+
+    // The text column is `overflow-hidden`, so a row let into a box too short
+    // for it is not merely tight — it is cut through the middle of its glyphs,
+    // and nothing about that fails a build, a typecheck or any assertion above.
+    // The warning sentence did exactly this: it hung on the threshold that
+    // admits the time range while being a THIRD line, so every block between
+    // 48 and 54 px showed half a sentence. Assert the geometry rather than any
+    // one threshold, and the next row added to this column is covered too.
+    const clippedBlocks = () =>
+      grid.evaluate(() => {
+        const out = [];
+        for (const el of document.querySelectorAll('li[data-planner-block]')) {
+          const column = el.querySelector('div.min-w-0.flex-1');
+          if (!column) continue;
+          const box = el.getBoundingClientRect().height;
+          const rows = [...column.children].reduce(
+            (sum, child) => sum + child.getBoundingClientRect().height,
+            0
+          );
+          // The column's own `py-0.5`.
+          const needed = rows + 4;
+          if (needed > box + 0.5) {
+            const name = (el.textContent ?? '').trim().split('\n')[0].slice(0, 24);
+            out.push(`${name}: ${Math.round(needed)}px in ${Math.round(box)}px`);
+          }
+        }
+        return out;
+      });
+
+    check('kein Block schneidet seinen Text ab', (await clippedBlocks()).length === 0);
+
+    // And the same question at the height where the answer was wrong. Moving
+    // F.L.Y. to 09:00 puts a WARNED ride in a 48 px box, which is the one shape
+    // the fixture above never produces on its own — without this the assertion
+    // is green against the bug it exists to catch, which is worth less than no
+    // assertion at all.
+    // By id, never by position: a locator resolves when it is used, and moving a
+    // block re-sorts the list — `nth(1)` after the move is a different ride than
+    // `nth(1)` before it, so the restore below would put the WRONG block back.
+    const flyBlock = grid.locator('li[data-planner-entry="fly-1"]');
+    const flyRange = flyBlock.locator('input[type="range"]');
+    await flyRange.fill('540');
+    await grid.waitForTimeout(400);
+    const shortBox = await flyBlock.evaluate((el) =>
+      Math.round(el.getBoundingClientRect().height)
+    );
+    const clippedShort = await clippedBlocks();
+    check(
+      'auch ein 48-px-Block mit Warnung schneidet nichts ab',
+      shortBox === 48 && clippedShort.length === 0,
+      `Box ${shortBox}px${clippedShort.length ? ` — ${clippedShort.join('; ')}` : ''}`
+    );
+    // Back where it was: at 09:00 F.L.Y. sorts ahead of Taron, and everything
+    // below here reaches for `blocks.first()` meaning Taron.
+    await flyRange.fill('750');
+    await grid.waitForTimeout(400);
 
     // The legs between them, with a verdict each.
     const legs = await grid

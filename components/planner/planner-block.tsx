@@ -20,6 +20,24 @@ import type { PlanDayTier } from '@/lib/api/types';
 /** A block with no figure gets a stated box rather than a height it cannot back. */
 const NO_FIGURE_PX = 40;
 
+/**
+ * The box a block needs before the warning SENTENCE fits under the rows above it.
+ *
+ * 48 and 68 below are design thresholds — the height at which a photo stops
+ * being a smear, the height at which the land line earns its room. This is not
+ * one of those. The text column is `overflow-hidden` and the sentence is an
+ * extra LINE, so hanging it on 48 (the threshold that admits the time range)
+ * puts a third row in a box measured for two: name 20 px + range 15 px +
+ * sentence 15 px + the column's `py-0.5` is 54, and the sentence was cut through
+ * the middle of its glyphs on every block between 48 and 54 px. The land line
+ * pushes the same stack to 69.
+ *
+ * The icon is unaffected and still rides on the name row at any height — it is
+ * what carries the warning where the sentence cannot go.
+ */
+const WARN_SENTENCE_PX = 54;
+const WARN_SENTENCE_WITH_LAND_PX = 69;
+
 interface PlannerBlockProps {
   entry: PlannerEntry;
   estimate: PlannerEstimate;
@@ -337,7 +355,8 @@ export function PlannerBlock({
 
           {/* The reason, spelled out where there is room. The icon above carries
               it on a short block; this is the same statement at full length. */}
-          {(closedNow || downYesterday) && boxPx >= 48 && (
+          {(closedNow || downYesterday) &&
+            boxPx >= (boxPx >= 68 ? WARN_SENTENCE_WITH_LAND_PX : WARN_SENTENCE_PX) && (
             <p
               className={cn(
                 'truncate text-[10px]',
