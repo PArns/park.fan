@@ -164,6 +164,13 @@ export function AttractionCard({
       href={href as '/europe/germany/rust/europa-park'}
       prefetch={false}
       className="group row-span-3 grid [grid-template-rows:subgrid]"
+      // Read by the trip planner while a drag is in flight — see
+      // `lib/planner/use-ride-drag-source.ts`, which attaches the payload from
+      // one listener on the document. Two attributes rather than a handler,
+      // because this card is a Server Component in eight places and a wrapper
+      // element between it and its parent grid would break the subgrid chain.
+      data-planner-ride={attraction.slug}
+      data-planner-ride-name={stripNewPrefix(attraction.name)}
     >
       <article
         className={cn(

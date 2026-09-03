@@ -1880,7 +1880,6 @@
       "bodyGrid": "Such dir unten eine Bahn – sie landet auf der Zeitachse und lässt sich dort verschieben."
     },
     "day": {
-      "label": "Tag",
       "today": "Heute",
       "tomorrow": "Morgen",
       "pick": "Tag wählen",
@@ -2026,6 +2025,59 @@
           "body": "Zieh einen Block auf eine andere Uhrzeit. Die Wartezeit und die Farbe ziehen mit, weil beide zur Stunde gehören."
         }
       }
+    },
+    "calendar": {
+      "prevMonth": "Vorheriger Monat",
+      "nextMonth": "Nächster Monat",
+      "prevDay": "Ein Tag zurück",
+      "nextDay": "Ein Tag weiter"
+    },
+    "wizard": {
+      "open": "Neuen Tag planen",
+      "addDay": "Weiterer Tag",
+      "title": "Tag planen",
+      "step": "Schritt {step} von {total}",
+      "steps": {
+        "park": "Park",
+        "date": "Tag",
+        "setup": "Wer kommt mit"
+      },
+      "back": "Zurück",
+      "next": "Weiter",
+      "finish": "Plan öffnen",
+      "lunch": {
+        "label": "Mittagessen einplanen",
+        "hint": "Legt einen Block um 12:30 in den Tag. Verschieben kannst du ihn im Planer."
+      },
+      "kids": {
+        "label": "Kinder sind dabei",
+        "hint": "Wie groß ist das kleinste Kind? Bahnen mit höherer Mindestgröße werden markiert, nicht versteckt.",
+        "none": "Keine Kinder"
+      },
+      "wet": {
+        "label": "Möglichst trocken bleiben",
+        "hint": "Wasserbahnen bekommen ein Zeichen in der Liste."
+      },
+      "facts": {
+        "title": "Was wir über den Tag wissen",
+        "nothing": "Für diesen Tag haben wir noch keine Prognose.",
+        "pickFirst": "Wähle einen Tag, dann steht hier, was wir über ihn wissen.",
+        "loading": "Prognose wird geladen …"
+      },
+      "blocks": {
+        "lunch": "Mittagessen"
+      },
+      "hero": {
+        "question": "In welchen Park geht's?",
+        "plannedDays": "{count, plural, =0 {Noch kein Tag geplant} one {Ein Tag ist schon geplant} other {# Tage sind schon geplant}}"
+      },
+      "progress": "Fortschritt",
+      "nextUp": "Danach geht es zu {park}. Dort ziehst du Fahrten aus der Liste in den Tag."
+    },
+    "party": {
+      "add": "Wer kommt mit?",
+      "tooShort": "Mindestgröße höher als die kleinste Person im Plan",
+      "wet": "Wasserbahn"
     }
   }
 }

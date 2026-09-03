@@ -1880,7 +1880,6 @@
       "bodyGrid": "Busca una atracción abajo: aparece en la línea de tiempo y se mueve desde ahí."
     },
     "day": {
-      "label": "Día",
       "today": "Hoy",
       "tomorrow": "Mañana",
       "pick": "Elegir día",
@@ -2026,6 +2025,59 @@
           "body": "Arrastra un bloque a otra hora. La espera y el color se mueven con él, porque ambos pertenecen a esa hora."
         }
       }
+    },
+    "calendar": {
+      "prevMonth": "Mes anterior",
+      "nextMonth": "Mes siguiente",
+      "prevDay": "Un día antes",
+      "nextDay": "Un día después"
+    },
+    "wizard": {
+      "open": "Planificar un día",
+      "addDay": "Otro día",
+      "title": "Planificar el día",
+      "step": "Paso {step} de {total}",
+      "steps": {
+        "park": "Parque",
+        "date": "Día",
+        "setup": "Quién viene"
+      },
+      "back": "Atrás",
+      "next": "Siguiente",
+      "finish": "Abrir el plan",
+      "lunch": {
+        "label": "Reservar un rato para comer",
+        "hint": "Coloca un bloque a las 12:30 en el día. Podrás moverlo en el planificador."
+      },
+      "kids": {
+        "label": "Vienen niños",
+        "hint": "¿Cuánto mide el niño más bajo? Las atracciones con una altura mínima mayor se marcan, no se ocultan.",
+        "none": "Sin niños"
+      },
+      "wet": {
+        "label": "Mojarse lo menos posible",
+        "hint": "Las atracciones de agua se marcan en la lista."
+      },
+      "facts": {
+        "title": "Lo que sabemos de este día",
+        "nothing": "Todavía no tenemos previsión para ese día.",
+        "pickFirst": "Elige un día y aquí aparece lo que sabemos de él.",
+        "loading": "Cargando la previsión …"
+      },
+      "blocks": {
+        "lunch": "Comida"
+      },
+      "hero": {
+        "question": "¿A qué parque vas?",
+        "plannedDays": "{count, plural, =0 {Ningún día planificado} one {Ya hay un día planificado} other {Ya hay # días planificados}}"
+      },
+      "progress": "Progreso",
+      "nextUp": "Después vamos a {park}. Allí arrastras atracciones de la lista al día."
+    },
+    "party": {
+      "add": "¿Quién viene?",
+      "tooShort": "Altura mínima superior a la de la persona más baja del plan",
+      "wet": "Atracción de agua"
     }
   }
 }

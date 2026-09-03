@@ -28,7 +28,7 @@
  *     BASE=http://localhost:3000 pnpm check:planner
  */
 
-import { existsSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { chromium } from 'playwright';
 
 const BASE = process.env.BASE ?? 'http://localhost:3000';
@@ -123,6 +123,36 @@ async function seed(page) {
     document.cookie = 'planner=1; path=/';
   }, PLAN);
   await page.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+}
+
+// ── Every `quality` a planner image asks for must be configured ─────────────
+//
+// Next 16 answers an unconfigured `quality` with a 400 from the image
+// optimizer, so the picture is simply absent in production — while `next dev`
+// serves it and prints a warning nobody reads. Three planner surfaces shipped
+// `quality={70}` and `quality={80}` against a configured `[50, 60, 75, 85, 90]`:
+// the ride search's avatar, the page's polaroids and the wizard's photo band,
+// i.e. every photograph the feature has. Static, so it runs before the browser
+// starts and needs no site.
+{
+  const configured = new Set(
+    (readFileSync('next.config.ts', 'utf8').match(/qualities:\s*\[([^\]]*)\]/)?.[1] ?? '')
+      .split(',')
+      .map((value) => Number(value.trim()))
+      .filter(Number.isFinite)
+  );
+  const offenders = [];
+  for (const file of readdirSync('components/planner')) {
+    const source = readFileSync(`components/planner/${file}`, 'utf8');
+    for (const [, value] of source.matchAll(/quality=\{(\d+)\}/g)) {
+      if (!configured.has(Number(value))) offenders.push(`${file}: quality={${value}}`);
+    }
+  }
+  check(
+    'every planner image quality is in next.config images.qualities',
+    configured.size > 0 && offenders.length === 0,
+    offenders.length ? offenders.join(', ') : `configured: ${[...configured].join(', ')}`
+  );
 }
 
 // ── Is the backend endpoint live? ────────────────────────────────────────────
@@ -326,75 +356,11 @@ if (await toggle.count()) {
   check('zurück auf der Zeitleiste', (await sheet.locator('input[type="search"]').count()) === 1);
 }
 
-// A park that is NOT in the plan yet. The overview lists parks WITH entries, so
-// without a search there was no way to start a second park from inside the
-// panel — the visitor had to leave it, navigate to that park, and use a control
-// there. Toverland is deliberately neither of the two seeded parks.
-const reopen = sheet.locator('button[data-planner-overview-toggle]');
-// Asserted, not merely branched on: a block that quietly skips itself when its
-// entry point is missing reports the same green as one that passed.
-check('die Übersicht hat einen benannten Schalter', (await reopen.count()) === 1);
-if (await reopen.count()) {
-  await reopen.click();
-  await page.waitForTimeout(300);
-  const parkSearch = sheet.locator('[data-planner-park-search] input[type="search"]');
-  check('Parksuche in der Übersicht', (await parkSearch.count()) === 1);
-
-  if (await parkSearch.count()) {
-    await parkSearch.fill('toverland');
-    const hit = sheet
-      .locator('[data-planner-park-search] button')
-      .filter({ hasText: /Toverland/i });
-    let found = false;
-    try {
-      await hit.first().waitFor({ state: 'visible', timeout: 6000 });
-      found = true;
-    } catch {
-      found = false;
-    }
-    check('die Suche findet einen Park außerhalb des Plans', found);
-
-    if (found) {
-      // The row carries where the park IS, because two parks share a name often
-      // enough — Disneyland Park is Anaheim and Paris.
-      const rowText = (await hit.first().textContent()) ?? '';
-      check(
-        'die Trefferzeile nennt Ort und Land',
-        /Sevenum/.test(rowText) && /Netherlands|Niederlande/i.test(rowText),
-        rowText.trim()
-      );
-
-      await hit.first().click();
-      await page.waitForTimeout(600);
-      const after = await page.evaluate(() =>
-        JSON.parse(window.localStorage.getItem('parkfan_planner') ?? '{}')
-      );
-      const picked = after?.parks?.['attractiepark-toverland'];
-      check(
-        'der gewählte Park landet im Plan',
-        after?.activeParkSlug === 'attractiepark-toverland' && Boolean(picked),
-        `${after?.activeParkSlug}`
-      );
-      // The geo path is TAKEN from the API's own URL, never rebuilt from the
-      // display names in the row: "Netherlands" is not `netherlands` in every
-      // language, and a guessed path is a plan pointing at a 404.
-      check(
-        'der Geopfad kommt aus der API',
-        picked?.geo?.continent === 'europe' &&
-          picked?.geo?.country === 'netherlands' &&
-          picked?.geo?.city === 'sevenum',
-        JSON.stringify(picked?.geo)
-      );
-      check(
-        'nach der Wahl steht wieder die Zeitleiste',
-        (await sheet.locator('input[type="search"]').count()) === 1
-      );
-    }
-  }
-}
-
 // The sheet is a modal and outranks the language banner at z-[70]; at z-50 the
-// banner painted straight across its header.
+// banner painted straight across its header. Checked HERE rather than after the
+// overview walk below, because that walk ends by finishing the wizard — which
+// navigates to the park's own page, so the panel this measures is no longer the
+// one on screen.
 const covered = await page.evaluate((sel) => {
   const box = document.querySelector(sel)?.getBoundingClientRect();
   if (!box) return 'no sheet';
@@ -402,6 +368,158 @@ const covered = await page.evaluate((sel) => {
   return probe?.closest(sel) ? null : (probe?.tagName ?? 'nothing');
 }, SHEET);
 check('nichts liegt über dem Flyout', covered === null, covered ?? '');
+
+// A park that is NOT in the plan yet. The overview lists parks WITH entries, so
+// without a way to start a park from in here the visitor had to leave the panel,
+// navigate to that park, and use a control there. Toverland is deliberately
+// neither of the two seeded parks.
+//
+// The way in used to be a bare search field in this list. It is the WIZARD now,
+// because that field asked which park and nothing else, leaving the two
+// questions that decide whether a day works — which day, and who is coming — to
+// be discovered in the panel afterwards. So the walk is longer: open the
+// overview, press the button, land on the wizard's park step, search, pick, and
+// only then is a park in the plan. Every claim the old block made about the hit
+// row and the stored geo path still holds and is still checked; they have simply
+// moved one dialog along.
+const reopen = sheet.locator('button[data-planner-overview-toggle]');
+// Asserted, not merely branched on: a block that quietly skips itself when its
+// entry point is missing reports the same green as one that passed.
+check('die Übersicht hat einen benannten Schalter', (await reopen.count()) === 1);
+if (await reopen.count()) {
+  await reopen.click();
+  await page.waitForTimeout(300);
+
+  const startWizard = sheet.locator('button[data-planner-new-day]');
+  check('die Übersicht startet den Assistenten', (await startWizard.count()) === 1);
+
+  if (await startWizard.count()) {
+    await startWizard.first().click();
+    const wizard = page.locator('[data-slot="dialog-content"]');
+    await wizard.waitFor({ state: 'visible', timeout: 10_000 }).catch(() => {});
+    check('der Assistent öffnet', await wizard.isVisible());
+
+    // The rail is the step counter, and it must show three marks and no footer
+    // on the first step: picking a park IS the advance there, so a `Weiter`
+    // button beside it is a control nobody ever presses.
+    check(
+      'der Assistent zeigt drei Schritte',
+      (await wizard.locator('ol[aria-label] li').count()) === 3,
+      `${await wizard.locator('ol[aria-label] li').count()}`
+    );
+    check(
+      'im ersten Schritt kein Weiter-Knopf',
+      (await wizard.locator('[data-planner-wizard-next]').count()) === 0
+    );
+
+    const parkSearch = wizard.locator('[data-planner-park-search] input[type="search"]');
+    check('Parksuche im Assistenten', (await parkSearch.count()) === 1);
+
+    if (await parkSearch.count()) {
+      await parkSearch.fill('toverland');
+      const hit = wizard
+        .locator('[data-planner-park-search] button')
+        .filter({ hasText: /Toverland/i });
+      let found = false;
+      try {
+        await hit.first().waitFor({ state: 'visible', timeout: 6000 });
+        found = true;
+      } catch {
+        found = false;
+      }
+      check('die Suche findet einen Park außerhalb des Plans', found);
+
+      if (found) {
+        // The row carries where the park IS, because two parks share a name
+        // often enough — Disneyland Park is Anaheim and Paris.
+        const rowText = (await hit.first().textContent()) ?? '';
+        check(
+          'die Trefferzeile nennt Ort und Land',
+          /Sevenum/.test(rowText) && /Netherlands|Niederlande/i.test(rowText),
+          rowText.trim()
+        );
+
+        await hit.first().click();
+        await page.waitForTimeout(2500);
+
+        // Picking a park does NOT write to the plan any more, and that is the
+        // point of the wizard: the date is still unanswered, and the old
+        // behaviour filed the park under today in the READER's zone — tomorrow's
+        // plan for a Florida park picked from Germany after 18:00.
+        const midway = await page.evaluate(() =>
+          JSON.parse(window.localStorage.getItem('parkfan_planner') ?? '{}')
+        );
+        check(
+          'ein gewählter Park ohne Tag steht noch nicht im Plan',
+          !midway?.parks?.['attractiepark-toverland']
+        );
+
+        // The park's own photograph, out of the search payload, in the band.
+        // Matched against the ENCODED path: `next/image` rewrites the src to
+        // `/_next/image?url=%2Fmedia%2F…`, so a `*="/media/"` selector finds
+        // nothing and reports a missing picture that is on screen.
+        const heroPhoto = await wizard
+          .locator('img[src*="%2Fmedia%2F"], img[src^="/media/"]')
+          .count();
+        check('das Parkfoto steht im Kopf des Assistenten', heroPhoto >= 1, `${heroPhoto}`);
+        const heroText = (await wizard.locator('[data-slot="dialog-title"]').textContent()) ?? '';
+        check('der Kopf nennt den Park', /Toverland/i.test(heroText), heroText.trim());
+
+        // The date step, on the month grid, and then the finish.
+        const day = wizard.locator('[data-planner-day]:not([disabled])');
+        const dayCount = await day.count();
+        check('der Monatskalender bietet wählbare Tage', dayCount > 0, `${dayCount}`);
+
+        if (dayCount > 0) {
+          await day.nth(Math.min(dayCount - 1, 5)).click();
+          await page.waitForTimeout(400);
+          await wizard.locator('[data-planner-wizard-next]').click();
+          await page.waitForTimeout(400);
+          await wizard.locator('[data-planner-wizard-finish]').click();
+          // Waited FOR rather than slept through: the wizard ends on the park's
+          // own page, and under `next dev` that route is compiled on first
+          // request — a fixed 1.2 s reported a navigation that had not committed
+          // yet on a run where nothing was wrong.
+          const landed = await page
+            .waitForURL(/attractiepark-toverland/, { timeout: 45_000 })
+            .then(() => true)
+            .catch(() => false);
+          await page.waitForTimeout(300);
+
+          const after = await page.evaluate(() =>
+            JSON.parse(window.localStorage.getItem('parkfan_planner') ?? '{}')
+          );
+          const picked = after?.parks?.['attractiepark-toverland'];
+          check(
+            'nach dem Assistenten steht der Park im Plan',
+            after?.activeParkSlug === 'attractiepark-toverland' && Boolean(picked),
+            `${after?.activeParkSlug}`
+          );
+          // The geo path is TAKEN from the API's own URL, never rebuilt from the
+          // display names in the row: "Netherlands" is not `netherlands` in every
+          // language, and a guessed path is a plan pointing at a 404.
+          check(
+            'der Geopfad kommt aus der API',
+            picked?.geo?.continent === 'europe' &&
+              picked?.geo?.country === 'netherlands' &&
+              picked?.geo?.city === 'sevenum',
+            JSON.stringify(picked?.geo)
+          );
+          // The zone the best-days snapshot named, which is what stops the day
+          // being filed under the reader's own date.
+          check(
+            'die Zeitzone des Parks kommt mit',
+            picked?.timezone === 'Europe/Amsterdam',
+            `${picked?.timezone}`
+          );
+          // The wizard ends on the park's page, so this panel is no longer on
+          // the planner page it was opened from.
+          check('der Assistent landet auf der Parkseite', landed, page.url());
+        }
+      }
+    }
+  }
+}
 
 // ── Phone ────────────────────────────────────────────────────────────────────
 const phone = await browser.newPage({ viewport: { width: 390, height: 844 } });
@@ -997,18 +1115,35 @@ if (reachable) {
 // The minute tick was subscribed unconditionally, so on any date that is not
 // today — nearly every date somebody plans — the panel installed a 60-second
 // interval and re-rendered the whole grid once a minute for a line it never
-// draws. Counted rather than reasoned about: the page records every
-// `setInterval` before the panel opens.
+// draws. Counted rather than reasoned about, and counted twice over, because the
+// first version of this measurement went red on a page where nothing was wrong:
+//
+//   - It counted CREATIONS and never removals, so a subscribe / clear /
+//     subscribe cycle — which is what React's development double-mount and a
+//     `visibilitychange` both produce — read as two live clocks.
+//   - It sampled its baseline straight after `networkidle`, and the page's OWN
+//     minute clock (`lib/hooks/use-minute-now.ts`, two stores, restarted on
+//     visibility) is installed later than that. Both of its intervals landed
+//     inside the window the panel was being blamed for.
+//
+// So intervals are tracked by ID, the live 60-second ones are what gets
+// compared, and the baseline is taken only once that number has stopped moving.
 {
   const cpu = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
   noteErrors(cpu);
   await cpu.addInitScript(() => {
     const w = window;
-    w.__intervals = [];
+    w.__liveIntervals = new Map();
     const original = w.setInterval;
     w.setInterval = function (handler, delay, ...rest) {
-      w.__intervals.push(delay);
-      return original.call(this, handler, delay, ...rest);
+      const id = original.call(this, handler, delay, ...rest);
+      w.__liveIntervals.set(id, delay);
+      return id;
+    };
+    const originalClear = w.clearInterval;
+    w.clearInterval = function (id) {
+      w.__liveIntervals.delete(id);
+      return originalClear.call(this, id);
     };
   });
 
@@ -1051,19 +1186,38 @@ if (reachable) {
   );
 
   await seed(cpu);
-  const beforeOpen = await cpu.evaluate(
-    () => (window.__intervals ?? []).filter((d) => d === 60_000).length
-  );
+
+  const liveMinuteClocks = () =>
+    cpu.evaluate(
+      () => [...(window.__liveIntervals ?? new Map()).values()].filter((d) => d === 60_000).length
+    );
+
+  // The baseline is taken with the panel ALREADY OPENED ONCE AND CLOSED AGAIN,
+  // and that is the only version of this measurement that holds still. Waiting
+  // for the count to stop moving does not: the homepage's own minute clock
+  // (`lib/hooks/use-minute-now.ts`) is installed by components that mount well
+  // after `networkidle`, non-deterministically, so consecutive runs of the same
+  // page read 0 → 0 and 0 → 1 with nothing different about the planner. Opening
+  // the panel first forces the page to finish mounting; closing it takes the
+  // planner's own subscription back off. What is left is a page whose clocks are
+  // all running and a planner that has none — which is exactly the thing the
+  // second open is being measured against.
+  await cpu.locator(LAUNCHER).click();
+  await cpu.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await cpu.waitForTimeout(2500);
+  await cpu.keyboard.press('Escape');
+  await cpu.locator(SHEET).waitFor({ state: 'hidden', timeout: 10_000 });
+  await cpu.waitForTimeout(1500);
+  const beforeOpen = await liveMinuteClocks();
+
   await cpu.locator(LAUNCHER).click();
   await cpu.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
   await cpu.waitForTimeout(2500);
 
-  // The DELTA across opening the panel, not the page's total: the app already
-  // runs a 60-second interval of its own before the planner exists, so counting
-  // every timer on the page would have failed this for somebody else's clock.
-  const after = await cpu.evaluate(
-    () => (window.__intervals ?? []).filter((d) => d === 60_000).length
-  );
+  // The DELTA across opening the panel, not the page's total: the app runs a
+  // minute clock of its own before the planner exists, so counting every timer
+  // on the page would fail this for somebody else's work.
+  const after = await liveMinuteClocks();
   const added = after - beforeOpen;
   check(
     'kein Minutentakt an einem Tag ohne Jetzt-Linie',

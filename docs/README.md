@@ -105,6 +105,7 @@
 | [Weather Day Chart](features/weather-day-chart.md)             | The hourly chart's park-hours time axis, its tick tiers, the in-visit annotations and the 143 px box                |
 | [Attraction Filter Panel](features/attraction-filter-panel.md) | The park page's search + rider-height + off-season band, and how the three filters compose                          |
 | [The Guide Page](features/how-park-fan-works.md)               | What `/{locale}/{howto-segment}` teaches, why every block is a production component, and the claims it may make     |
+| [Trip Planner](features/trip-planner.md)                       | The visitor's own day: the wizard, the month grid, park-local time, the drag payload, and life without the endpoint |
 
 ### Product
 

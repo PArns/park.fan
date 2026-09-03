@@ -3,9 +3,11 @@
 import { useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { CalendarPlus, Check, Crown, Plus, Search } from 'lucide-react';
+import { CalendarPlus, Check, Crown, Droplets, Plus, Ruler, Search } from 'lucide-react';
 import { usePlanner } from '@/lib/planner/use-planner';
-import type { PlannerGeo } from '@/lib/planner/types';
+import { partyFlags } from '@/lib/planner/party';
+import { RiderHeight } from '@/components/common/unit-display';
+import type { PlannerDayPrefs, PlannerGeo } from '@/lib/planner/types';
 import { buildDayGrid, nextFreeStart } from '@/lib/planner/day-grid';
 import type { PlanDay } from '@/lib/api/types';
 import type { PlannerDayState } from './planner-context-band';
@@ -21,6 +23,14 @@ interface PlannerRideSearchProps {
   dayState: PlannerDayState;
   /** The park's IANA zone, stored with the park so the plan reckons in it. */
   timezone?: string;
+  /**
+   * Who is coming, if anybody asked. It changes two things and they are
+   * deliberately different: a row that the shortest rider cannot ride is
+   * FLAGGED and still offered, while the headliner hint DROPS it. A list is the
+   * catalogue and the visitor knows who is holding the bags; a hint is advice,
+   * and advice somebody cannot act on is noise.
+   */
+  prefs?: PlannerDayPrefs;
   /**
    * Adds a block the visitor writes themselves. Beside the ride search rather
    * than in a menu: the two are the same question — "what else goes in the day"
@@ -63,6 +73,7 @@ export function PlannerRideSearch({
   day,
   dayState,
   timezone,
+  prefs,
   onAddCustom,
 }: PlannerRideSearchProps) {
   const t = useTranslations('planner');
@@ -105,8 +116,14 @@ export function PlannerRideSearch({
    */
   const missedHeadliners = useMemo(() => {
     if (!day) return [];
-    return day.rides.filter((ride) => ride.isHeadliner && !planned.has(ride.attractionSlug));
-  }, [day, planned]);
+    return day.rides.filter(
+      (ride) =>
+        ride.isHeadliner &&
+        !planned.has(ride.attractionSlug) &&
+        // Not a headliner this party can ride is not a headliner they missed.
+        !partyFlags(ride, prefs).tooShort
+    );
+  }, [day, planned, prefs]);
 
   const matches = useMemo(() => {
     if (!day) return [];
@@ -174,7 +191,7 @@ export function PlannerRideSearch({
                       alt=""
                       fill
                       sizes="32px"
-                      quality={70}
+                      quality={60}
                       style={{ objectFit: 'cover', objectPosition: ride.backgroundPosition }}
                     />
                   </span>
@@ -265,6 +282,33 @@ export function PlannerRideSearch({
                   </span>
                 )}
                 <span className="min-w-0 flex-1 truncate text-sm">{ride.attractionName}</span>
+                {/* What this party's own answers say about this ride. A flag,
+                    never a filter — see the `prefs` prop. The height is shown
+                    rather than a word, because "too small" without the number
+                    is an argument a parent cannot check. */}
+                {(() => {
+                  const flags = partyFlags(ride, prefs);
+                  if (!flags.tooShort && !flags.wet) return null;
+                  return (
+                    <span className="flex shrink-0 items-center gap-1">
+                      {flags.tooShort && ride.minimumHeight != null && (
+                        <span
+                          className="bg-crowd-high/15 text-crowd-high flex items-center gap-0.5 rounded-full px-1.5 text-[10px] font-medium"
+                          title={t('party.tooShort')}
+                        >
+                          <Ruler className="size-2.5 shrink-0" aria-hidden="true" />
+                          <RiderHeight cm={ride.minimumHeight} />
+                        </span>
+                      )}
+                      {flags.wet && (
+                        <Droplets
+                          className="text-crowd-moderate size-3 shrink-0"
+                          aria-label={t('party.wet')}
+                        />
+                      )}
+                    </span>
+                  );
+                })()}
                 {/* One lap is a tick; two or more is a NUMBER. A "1×" on every
                     planned ride is a count of the obvious — the interesting
                     state is the repeat, and it has to stand out from the row of

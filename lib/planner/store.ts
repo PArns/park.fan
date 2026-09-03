@@ -5,10 +5,12 @@ import {
   hasAnyPlan,
   type PlannerBlockIcon,
   type PlannerCustomBlock,
+  type PlannerDayPrefs,
   type PlannerEntry,
   type PlannerGeo,
   type PlannerState,
 } from './types';
+import { clampRiderHeight } from './party';
 
 /**
  * The planner's storage, as an external store.
@@ -83,6 +85,25 @@ function toCustomBlock(value: unknown): PlannerCustomBlock | null {
   };
 }
 
+/**
+ * The day's party preferences, or `null` where there are none.
+ *
+ * Absent rather than a zeroed object, so `hasPartyPrefs` can tell "not asked"
+ * from "asked and answered nothing" — the first is the state every day starts
+ * in and the second is a statement about the group.
+ */
+function toPrefs(value: unknown): PlannerDayPrefs | null {
+  if (typeof value !== 'object' || value === null) return null;
+  const raw = value as Record<string, unknown>;
+  const height = typeof raw.riderHeightCm === 'number' ? clampRiderHeight(raw.riderHeightCm) : null;
+  const avoidWet = raw.avoidWet === true;
+  if (height === null && !avoidWet) return null;
+  return {
+    ...(height !== null ? { riderHeightCm: height } : {}),
+    ...(avoidWet ? { avoidWet: true } : {}),
+  };
+}
+
 function toEntry(value: unknown): PlannerEntry | null {
   if (typeof value !== 'object' || value === null) return null;
   const e = value as Record<string, unknown>;
@@ -141,9 +162,11 @@ function parseState(raw: string): PlannerState {
           if (typeof dayValue !== 'object' || dayValue === null) continue;
           const entries = (dayValue as Record<string, unknown>).entries;
           if (!Array.isArray(entries)) continue;
+          const prefs = toPrefs((dayValue as Record<string, unknown>).prefs);
           days[date] = {
             date,
             entries: entries.map(toEntry).filter((entry): entry is PlannerEntry => entry !== null),
+            ...(prefs ? { prefs } : {}),
           };
         }
       }

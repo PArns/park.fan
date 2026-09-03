@@ -1,11 +1,13 @@
 import type {
   PlannerBlockIcon,
   PlannerCustomBlock,
+  PlannerDayPrefs,
   PlannerEntry,
   PlannerGeo,
   PlannerPark,
   PlannerState,
 } from './types';
+import { clampRiderHeight } from './party';
 
 /**
  * Every change the planner can make to a plan, as pure functions on the state.
@@ -79,7 +81,14 @@ function withDay(
         name: seed?.parkName ?? park.name,
         geo: seed?.geo ?? park.geo,
         timezone: seed?.timezone ?? park.timezone,
-        days: { ...park.days, [date]: { date, entries } },
+        days: {
+          ...park.days,
+          // The day's own preferences are carried through: every action here
+          // rewrites the whole day object, so anything not spread survives
+          // exactly one edit. Dropping who is coming the first time somebody
+          // moves a block would be a silent data loss.
+          [date]: { ...park.days[date], date, entries },
+        },
       },
     },
   };
@@ -393,6 +402,65 @@ export function learnTimezone(
   const park = state.parks[parkSlug];
   if (!park || park.timezone === timezone) return state;
   return { ...state, parks: { ...state.parks, [parkSlug]: { ...park, timezone } } };
+}
+
+/**
+ * Record who is coming, for one day.
+ *
+ * Merged rather than replaced, so a wizard step that only asks about the
+ * children does not erase an answer about water rides. An empty result drops
+ * the key entirely — `undefined` and "asked and answered nothing" have to stay
+ * distinguishable, because the first is what every day starts as.
+ *
+ * Creates the day if it does not exist yet: the wizard asks this BEFORE any
+ * ride is planned, which is the whole point of asking.
+ */
+export function setDayPrefs(
+  state: PlannerState,
+  parkSlug: string,
+  date: string,
+  patch: PlannerDayPrefs
+): PlannerState {
+  const park = state.parks[parkSlug];
+  if (!park) return state;
+
+  const current = park.days[date]?.prefs;
+  const merged: PlannerDayPrefs = { ...current, ...patch };
+
+  // Normalised here as well as in the store's parser: this is the write path,
+  // and a height out of range would otherwise reach localStorage and be
+  // corrected only on the way back out.
+  const height =
+    merged.riderHeightCm === undefined ? undefined : clampRiderHeight(merged.riderHeightCm);
+  const next: PlannerDayPrefs = {
+    ...(height !== undefined ? { riderHeightCm: height } : {}),
+    ...(merged.avoidWet ? { avoidWet: true } : {}),
+  };
+  const empty = Object.keys(next).length === 0;
+
+  if (
+    (current?.riderHeightCm ?? undefined) === (empty ? undefined : next.riderHeightCm) &&
+    (current?.avoidWet ?? false) === (empty ? false : (next.avoidWet ?? false))
+  ) {
+    // Same answers: the same object, so `useSyncExternalStore` skips the render
+    // and no localStorage write happens.
+    return state;
+  }
+
+  const day = park.days[date] ?? { date, entries: [] };
+  return {
+    ...state,
+    parks: {
+      ...state.parks,
+      [parkSlug]: {
+        ...park,
+        days: {
+          ...park.days,
+          [date]: { ...day, date, ...(empty ? { prefs: undefined } : { prefs: next }) },
+        },
+      },
+    },
+  };
 }
 
 /** Drop a whole day. An empty park is dropped with it rather than lingering. */

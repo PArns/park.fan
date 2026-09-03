@@ -7,6 +7,13 @@ interface UseParkBestDaysCalendarParams {
   country: string;
   city: string;
   parkSlug: string;
+  /**
+   * Off where there is no park to ask about yet — the trip planner mounts this
+   * before a park is picked, and an empty slug would fetch
+   * `/api/parks/////best-days`. Defaults to on, which is what every park-page
+   * caller means.
+   */
+  enabled?: boolean;
 }
 
 /**
@@ -31,6 +38,7 @@ export function useParkBestDaysCalendar({
   country,
   city,
   parkSlug,
+  enabled = true,
 }: UseParkBestDaysCalendarParams) {
   const releasedLast = useLoadLast();
 
@@ -50,7 +58,7 @@ export function useParkBestDaysCalendar({
     },
     // Browser-only, and held back by `releasedLast` until every other query on the page has
     // settled (loads-last rule).
-    enabled: typeof window !== 'undefined' && releasedLast,
+    enabled: enabled && Boolean(parkSlug) && typeof window !== 'undefined' && releasedLast,
     staleTime: 30 * 60_000,
     gcTime: 60 * 60_000,
     refetchOnWindowFocus: false,
