@@ -10,9 +10,8 @@ excerpt: >-
   supermarket. So we may as well look ahead at the parks too: on 14 November the
   lights go on at Phantasialand, over a million of them hang in Bottrop, and in
   Wavre an ice rink stands under a hall roof. Eleven parks in Europe are open
-  between November and January: the dates, the prices, the Europa-Park coaster
-  running for the last time, and why the emptiest week of the late season is the
-  one just before it starts.
+  between November and January: the dates, the prices and the Europa-Park coaster
+  running for the last time.
 tags:
   - winter
   - wintertraum

@@ -10,9 +10,8 @@ excerpt: >-
   darf man auch bei den Parks auf Weihnachten schauen: Am 14. November gehen im
   Phantasialand die Lichter an, in Bottrop hängen über eine Million davon, in
   Wavre steht eine Eisbahn unter dem Hallendach. Elf Parks in Europa haben
-  zwischen November und Januar geöffnet – Termine, Preise, die Bahn im
-  Europa-Park, die zum letzten Mal fährt, und warum die leerste Woche des
-  Spätjahrs die davor ist.
+  zwischen November und Januar geöffnet – Termine, Preise und die Bahn im
+  Europa-Park, die zum letzten Mal fährt.
 tags:
   - winter
   - wintertraum

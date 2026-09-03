@@ -10,9 +10,8 @@ excerpt: >-
   avanti anche per i parchi: il 14 novembre al Phantasialand si accendono le
   luci, a Bottrop ne sono appese più di un milione e a Wavre c’è una pista di
   ghiaccio sotto il tetto di un capannone. Undici parchi europei aprono tra
-  novembre e gennaio: le date, i prezzi, l’attrazione dell’Europa-Park che gira
-  per l’ultima volta e perché la settimana più vuota del fine stagione è proprio
-  quella prima.
+  novembre e gennaio: le date, i prezzi e l’attrazione dell’Europa-Park che gira
+  per l’ultima volta.
 tags:
   - inverno
   - wintertraum

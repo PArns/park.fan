@@ -10,9 +10,8 @@ excerpt: >-
   blik ook bij de parken alvast naar de winter: op 14 november gaan in
   Phantasialand de lichten aan, in Bottrop hangen er ruim een miljoen, en in
   Waver staat een ijsbaan onder een hallendak. Elf parken in Europa zijn tussen
-  november en januari open: de data, de prijzen, de baan in het Europa-Park die
-  voor het laatst rijdt, en waarom de leegste week van het naseizoen er net vóór
-  ligt.
+  november en januari open: de data, de prijzen en de baan in het Europa-Park die
+  voor het laatst rijdt.
 tags:
   - winter
   - wintertraum

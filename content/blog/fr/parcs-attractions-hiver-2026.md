@@ -10,9 +10,8 @@ excerpt: >-
   regarder aussi du côté des parcs : le 14 novembre, les lumières s’allument à
   Phantasialand, il y en a plus d’un million suspendues à Bottrop, et à Wavre une
   patinoire attend sous un toit de hall. Onze parcs européens ouvrent entre
-  novembre et janvier : les dates, les tarifs, le coaster d’Europa-Park qui
-  tourne pour la dernière fois, et pourquoi la semaine la plus vide de
-  l’arrière-saison est celle juste avant.
+  novembre et janvier : les dates, les tarifs et le coaster d’Europa-Park qui
+  tourne pour la dernière fois.
 tags:
   - hiver
   - wintertraum
