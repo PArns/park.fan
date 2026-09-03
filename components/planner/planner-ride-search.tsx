@@ -8,8 +8,9 @@ import { partyFlags } from '@/lib/planner/party';
 import { RiderHeight } from '@/components/common/unit-display';
 import { PlannerRideThumb } from '@/components/planner/planner-ride-thumb';
 import type { PlannerDayPrefs, PlannerGeo } from '@/lib/planner/types';
-import { buildDayGrid, nextFreeStart } from '@/lib/planner/day-grid';
-import type { PlanDay } from '@/lib/api/types';
+import { buildDayGrid, nextFreeStart, rideFloor } from '@/lib/planner/day-grid';
+import { startRideDrag } from '@/lib/planner/ride-drag';
+import type { PlanDay, PlanDayRide } from '@/lib/api/types';
 import type { PlannerDayState } from './planner-context-band';
 
 interface PlannerRideSearchProps {
@@ -95,14 +96,19 @@ export function PlannerRideSearch({
   }, [activeEntries]);
 
   // Where the next ride goes. Recomputed per render rather than per click so a
-  // second add after a first one lands after it, not on it.
+  // second add after a first one lands after it, not on it — and PER RIDE,
+  // because the floor is the ride's, not the park's: filing every ride at the
+  // opening hour puts a block in hours the ride has no measured curve for.
   const grid = buildDayGrid(day?.context.openHour, day?.context.closeHour);
-  const nextStart = grid
-    ? nextFreeStart(
-        activeEntries.map((entry) => ({ startMinute: entry.startMinute, spanMinutes: 45 })),
-        grid
-      )
-    : undefined;
+  const startFor = (ride: PlanDayRide) =>
+    grid
+      ? nextFreeStart(
+          activeEntries.map((entry) => ({ startMinute: entry.startMinute, spanMinutes: 45 })),
+          grid,
+          45,
+          rideFloor(grid, ride).softMin
+        )
+      : undefined;
 
   /**
    * The park's headliners that are NOT in this day's plan.
@@ -169,10 +175,18 @@ export function PlannerRideSearch({
                     date,
                     attractionSlug: ride.attractionSlug,
                     attractionName: ride.attractionName,
-                    startMinute: nextStart,
+                    startMinute: startFor(ride),
                   })
                 }
-                className="bg-background/60 hover:bg-background border-border/50 flex items-center gap-1.5 rounded-full border py-0.5 pr-2 pl-0.5 text-[11px] transition-colors max-sm:min-h-9"
+                draggable
+                onDragStart={(event) =>
+                  startRideDrag(event.dataTransfer, {
+                    parkSlug,
+                    attractionSlug: ride.attractionSlug,
+                    attractionName: ride.attractionName,
+                  })
+                }
+                className="bg-background/60 hover:bg-background border-border/50 flex cursor-grab items-center gap-1.5 rounded-full border py-0.5 pr-2 pl-0.5 text-[11px] transition-colors active:cursor-grabbing max-sm:min-h-9"
               >
                 {/* The ride, where the media database has it. This band exists
                     to make somebody want the ride they skipped, and a name in a
@@ -236,10 +250,25 @@ export function PlannerRideSearch({
                     // everything at the same minute, so five rides added from
                     // the search landed as five blocks in one place, all
                     // reporting a conflict with each other on first use.
-                    startMinute: nextStart,
+                    startMinute: startFor(ride),
                   })
                 }
-                className="hover:bg-accent flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left transition-colors max-sm:py-2.5"
+                /* Draggable, which a `<button>` is not by default — and the
+                   planner's own ride list was the one surface a ride could not
+                   be dragged out of, while every card on a park page could. The
+                   click above stays the whole path on a phone, where HTML5 drag
+                   and drop does not exist; this is the pointer path, and it is
+                   what lets somebody put a ride at a chosen hour rather than at
+                   the next free one. */
+                draggable
+                onDragStart={(event) =>
+                  startRideDrag(event.dataTransfer, {
+                    parkSlug,
+                    attractionSlug: ride.attractionSlug,
+                    attractionName: ride.attractionName,
+                  })
+                }
+                className="hover:bg-accent flex w-full cursor-grab items-center gap-2 rounded-md px-2 py-1.5 text-left transition-colors active:cursor-grabbing max-sm:py-2.5"
               >
                 {/* The ride's photo. It is ALREADY in the payload — the proxy
                     route runs `enrichAttractionsWithImages` over `/plan/day`'s

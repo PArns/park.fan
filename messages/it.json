@@ -1889,6 +1889,7 @@
     "summary": {
       "rides": "{count, plural, =0 {Nessuna attrazione} one {Un’attrazione} other {# attrazioni}}",
       "waiting": "Attesa complessiva",
+      "waitingLabel": "Attesa",
       "done": "{done} su {total} fatte",
       "blocks": "{count, plural, one {# blocco} other {# blocchi}}"
     },

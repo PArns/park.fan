@@ -1889,6 +1889,7 @@
     "summary": {
       "rides": "{count, plural, =0 {Keine Bahn} one {Eine Bahn} other {# Bahnen}}",
       "waiting": "Wartezeit zusammen",
+      "waitingLabel": "Wartezeit",
       "done": "{done} von {total} gefahren",
       "blocks": "{count, plural, one {# Block} other {# Blöcke}}"
     },

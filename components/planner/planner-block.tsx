@@ -250,7 +250,7 @@ export function PlannerBlock({
         // `pointer-events-none` covers the grip, the resize edge and the range
         // input in one place, so the ghost cannot be grabbed, focused or
         // tabbed to while the real block is under the pointer.
-        ghost && 'pointer-events-none z-20 opacity-50 outline-2 outline-dashed outline-primary/70',
+        ghost && 'outline-primary/70 pointer-events-none z-20 opacity-50 outline-2 outline-dashed',
         // The tone recomputes on every move — `estimate.wait` is a function of
         // `startMinute` — so the colour DOES follow a block across the day. It
         // just arrived in a single frame, at the instant the eye was on the
@@ -466,6 +466,15 @@ export function PlannerBlock({
                       />
                     )}
                     {wait}
+                    {/* The unit, always. A bare `50` on a block next to a block
+                        reading `40` is a pair of numbers with no dimension —
+                        this grid also carries distances, durations and a ± band,
+                        so nothing about the position says which one it is. It
+                        stays a size down and unemphasised so the figure is still
+                        what the eye lands on. */}
+                    <span className="ml-0.5 text-[9px] font-normal opacity-70">
+                      {t('unit.min')}
+                    </span>
                   </span>
                 )}
               </div>

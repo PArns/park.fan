@@ -136,3 +136,27 @@ export function buildRideDragPayload(source: RideDragSourceAttributes): PlannerR
   if (fromHref.attractionSlug !== slug) return null;
   return { parkSlug: fromHref.parkSlug, attractionSlug: slug, attractionName: name };
 }
+
+/**
+ * Start a ride drag from a control that is NOT a link.
+ *
+ * `useRideDragSource` covers the park page, where every ride is an `<a>` and a
+ * document-level `dragstart` listener can find it by its data attributes. The
+ * planner's own ride list is a list of buttons — a browser does not make those
+ * draggable at all, and nothing in that panel matched the anchor selector, so
+ * the one surface built for putting rides into a plan was the one surface a
+ * ride could not be dragged out of.
+ *
+ * No `text/uri-list` here on purpose: the list row knows the ride's slug and
+ * name but not its URL, and writing a guessed one would hand a wrong link to
+ * everything else on the desktop that accepts a drop.
+ */
+export function startRideDrag(dt: DataTransfer, ride: PlannerRideDrag): void {
+  try {
+    dt.setData(PLANNER_RIDE_MIME, serializeRideDrag(ride));
+    dt.setData('text/plain', ride.attractionName);
+    dt.effectAllowed = 'copy';
+  } catch {
+    // A store in protected mode — the drag was not started by this gesture.
+  }
+}
