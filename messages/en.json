@@ -1979,6 +1979,9 @@
         "meet": "Meeting point",
         "star": "Other"
       }
+    },
+    "sheet": {
+      "handle": "Resize or close the planner"
     }
   }
 }

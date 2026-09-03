@@ -296,7 +296,11 @@ if (await firstCheck.count()) {
 check('Ride-Suche vorhanden', (await sheet.locator('input[type="search"]').count()) === 1);
 
 // The overview: every park and day in one list, reached from the park name.
-const toggle = sheet.locator('button[aria-expanded]').first();
+// NOT `button[aria-expanded]` alone. The phone sheet's grab handle sits earlier
+// in the DOM; it is `sm:hidden`, so on this desktop viewport `.first()` resolved
+// to an invisible element and the click timed out for thirty seconds. The park
+// name is what opens the overview, so say so.
+const toggle = sheet.locator('button[aria-expanded]').filter({ hasText: PARK.name }).first();
 check('Übersicht ist erreichbar', (await toggle.count()) === 1);
 if (await toggle.count()) {
   await toggle.click();
@@ -349,6 +353,46 @@ if (await phoneLauncher.count()) {
   // element's `inset-x-0` resolves to, so `documentElement.clientWidth` and the
   // sheet legitimately disagree by a scrollbar and the check would fail for a
   // reason that has nothing to do with the sheet.
+  // The grab handle. Two directions, two meanings: pull up and the sheet gives
+  // the day more screen, push down far enough and it goes away. Asserted by
+  // HEIGHT rather than by a class, because the first version resized nothing at
+  // all — a pointer drag always ends in a click, and the tap handler toggled the
+  // state straight back one event later. 717 px in, 717 px out, green build.
+  const grab = phone.locator(`${SHEET} [data-planner-sheet-handle]`).first();
+  // The CEILING, not the rendered height. The sheet is `h-auto` under a
+  // `max-h`, so with a three-entry plan the content is 551 px and sits well
+  // under the cap — raising the cap then moves nothing, correctly. What the
+  // handle actually changes is the ceiling, so that is what is asserted.
+  const sheetCap = () =>
+    phone.locator(SHEET).evaluate((el) => Math.round(parseFloat(getComputedStyle(el).maxHeight)));
+
+  check('der Anfasser ist da', (await grab.count()) === 1);
+  if (await grab.count()) {
+    const before = await sheetCap();
+    const box = await grab.boundingBox();
+    await phone.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+    await phone.mouse.down();
+    await phone.mouse.move(box.x + box.width / 2, box.y - 80, { steps: 8 });
+    await phone.mouse.up();
+    await phone.waitForTimeout(500);
+    const after = await sheetCap();
+    check('hochziehen hebt die Obergrenze', after > before + 40, `${before} px -> ${after} px`);
+
+    // And back down, so the geometry assertions below measure the sheet in the
+    // state they were written for.
+    const box2 = await grab.boundingBox();
+    await phone.mouse.move(box2.x + box2.width / 2, box2.y + box2.height / 2);
+    await phone.mouse.down();
+    await phone.mouse.move(box2.x + box2.width / 2, box2.y + 40, { steps: 6 });
+    await phone.mouse.up();
+    await phone.waitForTimeout(500);
+    check(
+      'herunterziehen senkt sie wieder',
+      (await sheetCap()) === before,
+      `${await sheetCap()} px`
+    );
+  }
+
   const geometry = await phone.evaluate((sel) => {
     const sheet = document.querySelector(sel);
     if (!sheet) return null;

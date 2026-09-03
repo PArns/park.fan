@@ -1979,6 +1979,9 @@
         "meet": "Punto de encuentro",
         "star": "Otro"
       }
+    },
+    "sheet": {
+      "handle": "Ampliar o cerrar el planificador"
     }
   }
 }
