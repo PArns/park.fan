@@ -38,6 +38,15 @@ function serverUserAgent(): string {
  * Spread this into the `headers` of any fetch that targets the backend directly. It was called
  * `getServerAuthHeaders` while the key was the only thing in it; the User-Agent went in here
  * rather than into a second helper that call sites could forget to add.
+ *
+ * **A script of ours is not a different client.** Three call sites had invented their own
+ * name instead — `park.fan-build/1.0` in `generate-media-manifest` and `check-blog-slugs`,
+ * `park.fan-admin/1.0` in the admin media routes — and an invented name is a second client
+ * to allow at the edge. Neither was allowed anywhere, which the prebuild reported as
+ * `Park catalog unreachable (HTTP 403)` and then carried on past, skipping every slug
+ * verification for the rest of the run; the admin's GPS cross-check fails the same way, into
+ * an empty park list. All three now spread this helper, the scripts included: the module
+ * imports nothing, so `node`'s type stripping loads it straight out of `scripts/*.mjs`.
  */
 export function getServerApiHeaders(): Record<string, string> {
   if (typeof window !== 'undefined') return {};

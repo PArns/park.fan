@@ -42,6 +42,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { getServerApiHeaders } from '../lib/api/client.ts';
 import {
   ASPECT_SUFFIX_RE,
   MEDIA_IMAGE_EXTENSIONS,
@@ -365,6 +366,22 @@ async function build() {
 const API_BASE = 'https://api.park.fan';
 
 /**
+ * The build talks to api.park.fan as the deployment it belongs to, not as a
+ * script of its own: the same `User-Agent` (`park.fan/<sha> (+https://park.fan;
+ * <env>)`) and the same `x-auth-key` as every server-side fetch the running app
+ * makes, out of the one helper both sides share.
+ *
+ * The hand-written name this replaced was blocked at the edge — `Park catalog
+ * unreachable (HTTP 403)` in the build log, and every slug verification skipped
+ * with it, quietly, because a build that cannot reach the catalog is meant to
+ * carry on. A second name for the same client is a second thing to allow, and
+ * this one was allowed nowhere; it also cost the verification its throttle
+ * bypass, which matters here because reading one park per referenced slug is
+ * hundreds of requests against 300/60s.
+ */
+const API_HEADERS = getServerApiHeaders();
+
+/**
  * Park catalog, used to check that the slugs in the sidecars actually exist.
  *
  * The build must not fail because the API is unreachable, so every failure here
@@ -376,7 +393,7 @@ async function loadCatalog() {
   if (process.env.MEDIA_VERIFY === '0') return null;
   try {
     const response = await fetch(`${API_BASE}/v1/parks?limit=1000`, {
-      headers: { 'User-Agent': 'park.fan-build/1.0' },
+      headers: API_HEADERS,
       signal: AbortSignal.timeout(15_000),
     });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -404,7 +421,7 @@ async function loadAttractions(park) {
   let slugs = null;
   try {
     const response = await fetch(`${API_BASE}${url}`, {
-      headers: { 'User-Agent': 'park.fan-build/1.0' },
+      headers: API_HEADERS,
       signal: AbortSignal.timeout(15_000),
     });
     if (response.ok) {
