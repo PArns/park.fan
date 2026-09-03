@@ -308,21 +308,28 @@ export function packLanes(blocks: readonly LaneInput[]): Map<string, LanePlaceme
 /**
  * Where a newly added ride goes.
  *
- * The earliest snapped minute at or after opening whose block would overlap
- * nothing already planned. The old rule — an hour after the last entry — put
- * five rides added from the search on one minute, because the search bypassed it
- * entirely and filed everything at the opening hour.
+ * The earliest snapped minute at or after {@link floorMin} whose block would
+ * overlap nothing already planned. The old rule — an hour after the last entry —
+ * put five rides added from the search on one minute, because the search
+ * bypassed it entirely and filed everything at the opening hour.
+ *
+ * `floorMin` defaults to the park's opening and is meant to be the RIDE's own
+ * floor (`rideFloor().softMin`): a ride whose curve starts at 11:00 was being
+ * filed at 09:00 with the park, which is the planner asserting a queue in an
+ * hour nothing was ever measured in. Passing the park's opening for every ride
+ * is what made "this ride is not even open yet" a thing the grid could say.
  */
 export function nextFreeStart(
   existing: readonly { startMinute: number; spanMinutes: number }[],
   grid: DayGrid,
-  spanMinutes = 45
+  spanMinutes = 45,
+  floorMin?: number
 ): number {
   const taken = existing
     .map((e) => ({ from: e.startMinute, to: e.startMinute + Math.max(e.spanMinutes, 15) }))
     .sort((a, b) => a.from - b.from);
 
-  let candidate = snapTo(grid.openMin, SNAP_MIN_FINE);
+  let candidate = snapTo(Math.max(grid.openMin, floorMin ?? grid.openMin), SNAP_MIN_FINE);
   const last = grid.closeMin - SNAP_MIN_FINE;
 
   for (const slot of taken) {

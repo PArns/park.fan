@@ -621,7 +621,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             )}
 
             {activeEntries.length > 0 && (
-              <div className="border-border/60 text-muted-foreground flex shrink-0 items-baseline justify-between gap-3 border-t px-3 py-2.5 text-xs">
+              <div className="border-border/60 text-muted-foreground flex shrink-0 flex-wrap items-baseline justify-between gap-x-3 gap-y-1 border-t px-3 py-2.5 text-xs">
                 <span>
                   {t('summary.rides', { count: activeEntries.length - totals.custom })}
                   {totals.custom > 0 && ` · ${t('summary.blocks', { count: totals.custom })}`}
@@ -636,14 +636,18 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   prediction and the other a measurement, and a single figure
                   mixing them moves for two reasons at once. */}
                   {totals.counted > 0 && (
-                    <span
-                      className="text-foreground font-mono tabular-nums"
-                      title={t('summary.waiting')}
-                    >
+                    <span className="flex items-baseline gap-1" title={t('summary.waiting')}>
+                      {/* Named, not just hinted. The `title` said what this
+                          figure is and a phone has no hover, so on the surface
+                          where this planner is actually used the row ended in a
+                          duration with nothing saying which duration. */}
+                      <span>{t('summary.waitingLabel')}</span>
                       {/* The site's own duration format, not a second one invented
                       here: `formatShortDuration` is what the weather warnings
                       already print and it knows all six locales' unit labels. */}
-                      {formatShortDuration(totals.expectedMinutes, locale)}
+                      <span className="text-foreground font-mono tabular-nums">
+                        {formatShortDuration(totals.expectedMinutes, locale)}
+                      </span>
                     </span>
                   )}
                 </span>

@@ -370,14 +370,31 @@ export function PlannerDayGrid({
    * IS where it goes.
    */
   const minuteAtClientY = useCallback(
-    (clientY: number) => {
+    (clientY: number, floorMin?: number) => {
       const canvas = canvasRef.current;
       if (!canvas) return grid.openMin;
       const raw = minuteAt(grid, clientY - canvas.getBoundingClientRect().top);
       const step = matchMedia('(pointer: coarse)').matches ? SNAP_MIN_COARSE : SNAP_MIN_FINE;
-      return clampStart(grid, snapTo(raw, step), grid.openMin);
+      return clampStart(grid, snapTo(raw, step), Math.max(grid.openMin, floorMin ?? grid.openMin));
     },
     [grid]
+  );
+
+  /**
+   * The floor under a ride that is being dragged in from the list.
+   *
+   * The drop used to clamp to the park's opening for every ride, so a ride whose
+   * curve starts at 11:00 could be dropped at 09:00 and the block would then
+   * carry a figure for an hour nothing was ever measured in. Looked up by slug,
+   * because a drag carries a slug and a name and not the ride.
+   */
+  const floorForSlug = useCallback(
+    (slug: string) =>
+      rideFloor(
+        grid,
+        day?.rides.find((r) => r.attractionSlug === slug)
+      ).softMin,
+    [grid, day]
   );
 
   const targetMinute = useCallback(() => {
@@ -720,7 +737,7 @@ export function PlannerDayGrid({
           const ride = rideFromTransfer(event.dataTransfer);
           if (!ride) return;
           event.preventDefault();
-          onDropRide(ride.slug, ride.name, minuteAtClientY(event.clientY));
+          onDropRide(ride.slug, ride.name, minuteAtClientY(event.clientY, floorForSlug(ride.slug)));
         }}
       >
         {/* Where it would land. The same line the drag itself commits to, so the
