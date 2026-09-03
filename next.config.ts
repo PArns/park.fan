@@ -47,10 +47,23 @@ const sharedCache = (value: string) => [
  */
 const edgeCache = (value: string) => [{ key: 'CDN-Cache-Control', value }];
 
-/** One hour fresh, a week of serving stale while it refreshes. The default for content pages. */
-const CONTENT_WINDOW = 'public, s-maxage=3600, stale-while-revalidate=604800';
-/** For documents a machine polls rather than a person reads (sitemaps, feeds, agent files). */
-const MACHINE_WINDOW = 'public, s-maxage=3600, stale-while-revalidate=86400';
+/**
+ * A day fresh, an hour of stale on top. The default for anything whose content only moves when
+ * a deploy moves it: blog, glossary, the guide hubs, the legal pages, the contribute form.
+ *
+ * It was an hour until 2026-09-03, out of respect for the fact that NOTHING in either repo can
+ * purge Cloudflare — a deploy would otherwise stay invisible for as long as the window runs.
+ * The owner takes that trade knowingly and purges by hand after a deploy that has to be seen
+ * immediately, which is what buys the other 23 hours.
+ *
+ * The pages that did NOT come along are the two that date themselves, and the check is in the
+ * markup rather than in an opinion: a park page carries the current date once in its markup and
+ * **49 times in its FAQPage JSON-LD**, and the calendar hub renders whichever month is current.
+ * Both stay at an hour. Blog, glossary, guide and homepage carry the date zero times.
+ */
+const CONTENT_WINDOW = 'public, s-maxage=86400, stale-while-revalidate=3600';
+/** Same window for documents a machine polls rather than a person reads (sitemaps, feeds, agent files). */
+const MACHINE_WINDOW = 'public, s-maxage=86400, stale-while-revalidate=3600';
 
 /**
  * The localized URL segments for the three routes that live on a localized slug.
@@ -961,7 +974,7 @@ const nextConfig: NextConfig = {
         // overlay replaces on mount, but the seed is what a crawler reads and what a reader
         // sees before hydration.
         source: `/:locale(${locales.join('|')})`,
-        headers: edgeCache('public, s-maxage=3600, stale-while-revalidate=86400'),
+        headers: edgeCache(CONTENT_WINDOW),
       },
       {
         // The whole blog: index, categories, tags, authors and the posts. One rule, because
@@ -991,7 +1004,7 @@ const nextConfig: NextConfig = {
         // Legal pages. A day fresh — they change once a year, and when they do, being an hour
         // late is not the risk; being a week late is.
         source: '/:locale/:page(impressum|datenschutz)',
-        headers: edgeCache('public, s-maxage=86400, stale-while-revalidate=604800'),
+        headers: edgeCache(CONTENT_WINDOW),
       },
       // The machine-facing surface. Nothing on the site renders any of it (see the agent-surface
       // rule in CLAUDE.md), so a wrong window here is invisible — which is exactly why the
@@ -1092,22 +1105,27 @@ const nextConfig: NextConfig = {
         // window falls back to the page's own `no-store` and stops being cached at all. This
         // block plus the two above plus the calendar block is that prefix, complete.
         source: `/:locale(${locales.join('|')})/parks/:continent?/:country?/:city?`,
-        headers: [
-          {
-            key: 'CDN-Cache-Control',
-            value: 'public, s-maxage=3600, stale-while-revalidate=86400',
-          },
-        ],
+        headers: edgeCache(CONTENT_WINDOW),
       },
       {
         // A park page. An hour, not the ride page's two days: the backend POSTs this park's own
         // cache tag at every status flip (see the API-budget rule in CLAUDE.md), and a long edge
         // window is exactly what would swallow that. An hour still collapses a crawl burst.
+        //
+        // Measured 2026-09-03, and it is the stronger of the two reasons: a park page carries
+        // today's date ONCE in its markup and **49 times in its FAQPage JSON-LD** — "Heute,
+        // Sonntag, 30. August 2026, hat der Park … geöffnet", the sentence CLAUDE.md names as
+        // the reason Google prints "vor 6 Tagen" beside this site's own results. Every other
+        // page that moved to a day on this date (blog, glossary, guide hubs, homepage) carries
+        // it ZERO times. That check is what decided which pages came along, not a judgement.
         source: `/:locale(${locales.join('|')})/parks/:continent/:country/:city/:park`,
         headers: [
           {
+            // An hour of stale, not a day: the ceiling is the SUM, and 1 h + 24 h would be 25 —
+            // which would hand a crawler exactly the day-old FAQ date this window exists to
+            // prevent.
             key: 'CDN-Cache-Control',
-            value: 'public, s-maxage=3600, stale-while-revalidate=86400',
+            value: 'public, s-maxage=3600, stale-while-revalidate=3600',
           },
         ],
       },
