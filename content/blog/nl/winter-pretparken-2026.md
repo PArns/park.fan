@@ -115,7 +115,7 @@ de ijsshows **Rock on Ice** en **Arctaris – The Hidden World**, plus
 **Berliner Eislaufen** midden in het park.
 
 Dat Brühl dit volhoudt, komt door de bouwwijze. Een flink deel van het park ligt
-in de berg of onder een dak: [Winja's Fear](ref:phantasialand/winjas-fear) en
+in de berg of onder een dak: [Winja’s Fear](ref:phantasialand/winjas-fear) en
 [Force](ref:phantasialand/winjas-force),
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat),
 [Mystery Castle](ref:phantasialand/mystery-castle), de Geister Rikscha. Als de
@@ -243,7 +243,7 @@ dagticket**, van het schaatsen tot het ijspaleis. Bijboeken hoeft niet.
 ### Movie Park Germany: Hollywood Christmas, 27 november tot 5 januari
 
 Zes weken in het najaar heet het park Horrorwood Studios, en dat is nog maar net
-voorbij of het studioterrein wordt kerstelijk. **Movie Park's Hollywood
+voorbij of het studioterrein wordt kerstelijk. **Movie Park’s Hollywood
 Christmas** loopt van **27 november 2026 tot 5 januari 2027**: meer dan een
 miljoen lichtjes, vier kerstgebieden, een ijsbaan, de winterversie van de
 parade, een Christmas Tree Celebration, een Meet Santa-station en nieuw een
@@ -438,8 +438,8 @@ het Europa-Park en de Efteling. Vanaf volgende winter kent het ze.
    altijd nee.
 3. **Kleed je op vier uur donker, niet op negen uur daglicht.** Eind december
    gaat in Brühl om half vijf de zon onder, en het park is daarna nog
-   drieënhalf uur open. Wie de dikke jas 's ochtends in de kofferbak laat omdat
-   de zon schijnt, loopt 's avonds vloekend terug naar de auto.
+   drieënhalf uur open. Wie de dikke jas ’s ochtends in de kofferbak laat omdat
+   de zon schijnt, loopt ’s avonds vloekend terug naar de auto.
 
 ## Waar naartoe dit jaar
 

@@ -118,7 +118,7 @@ Hidden World**, das **Spectaculum Phantastère** und **Tiempo de Fuego**.
 Schlittschuhlaufen geht auf dem **Berliner Eislaufen** mitten im Park.
 
 Dass Brühl das durchhält, liegt an der Bauweise. Ein guter Teil des Parks liegt
-im Berg oder unter Dach: [Winja's Fear](ref:phantasialand/winjas-fear) und
+im Berg oder unter Dach: [Winja’s Fear](ref:phantasialand/winjas-fear) und
 [Force](ref:phantasialand/winjas-force),
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat), das
 [Mystery Castle](ref:phantasialand/mystery-castle), die Geister Rikscha. Wenn
@@ -245,7 +245,7 @@ drin**, vom Eislaufen bis zum Eispalast. Zusatzbuchungen gibt es keine.
 ### Movie Park Germany: Hollywood Christmas, 27. November bis 5. Januar
 
 Sechs Wochen im Herbst heißt der Park Horrorwood Studios, und kaum ist das
-vorbei, wird das Studiogelände weihnachtlich. **Movie Park's Hollywood
+vorbei, wird das Studiogelände weihnachtlich. **Movie Park’s Hollywood
 Christmas** läuft vom **27. November 2026 bis 5. Januar 2027**: über eine Million Lichter, vier weihnachtliche Bereiche, eine Eisbahn,
 die Winterversion der Parade, eine Christmas Tree Celebration, eine Meet-Santa-
 Station und neu eine Wintershow mit dem Illusionisten Christian Farla.

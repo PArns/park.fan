@@ -119,7 +119,7 @@ World**, más **Spectaculum Phantastère** y **Tiempo de Fuego**. Se patina en e
 
 Que Brühl aguante ese ritmo tiene que ver con cómo está construido. Buena parte
 del parque está dentro de la montaña o bajo techo:
-[Winja's Fear](ref:phantasialand/winjas-fear) y
+[Winja’s Fear](ref:phantasialand/winjas-fear) y
 [Force](ref:phantasialand/winjas-force),
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat),
 [Mystery Castle](ref:phantasialand/mystery-castle), la Geister Rikscha. Cuando
@@ -249,7 +249,7 @@ que reservar aparte.
 ### Movie Park Germany: Hollywood Christmas, del 27 de noviembre al 5 de enero
 
 Seis semanas en otoño el parque se llama Horrorwood Studios, y apenas termina
-eso el plató se vuelve navideño. **Movie Park's Hollywood Christmas** va del
+eso el plató se vuelve navideño. **Movie Park’s Hollywood Christmas** va del
 **27 de noviembre de 2026 al 5 de enero de 2027**: más de un millón de luces,
 cuatro zonas navideñas, una pista de hielo, la versión invernal del desfile, una
 Christmas Tree Celebration, una estación Meet Santa y, como novedad, un

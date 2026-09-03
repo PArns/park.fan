@@ -55,11 +55,11 @@ stays open until 20:00, and MAGIC SYMPHONY closes the evening with fireworks,
 every day from then until January. By that point over a million lamps are
 hanging in Bottrop, a 700 m² ice rink stands under a hall roof in Wavre, and in
 Kasterlee meeting Santa is in the day ticket. Between mid-November and early
-January a good share of Europe's theme parks turn into something that has only
+January a good share of Europe’s theme parks turn into something that has only
 a passing connection to roller coasters: mulled wine, skates and fairy lights
 in the trees.
 
-Most of them do not, though. The bulk of Germany's parks close at the end of
+Most of them do not, though. The bulk of Germany’s parks close at the end of
 October and reopen in spring, and one gave up trying altogether back in April.
 
 On 23 April 2026, [Walibi Holland](ref:walibi-holland) shut down its winter
@@ -88,7 +88,7 @@ dark at half past four, people queue longer than they do in May.
 > **About the dates:** parks keep shifting their winter calendars into the
 > autumn. Where an exact date appears below, it was confirmed at the end of
 > August. Every park links to its official page, and the opening days in the
-> park.fan calendar come straight out of the park's own schedule feed. Check
+> park.fan calendar come straight out of the park’s own schedule feed. Check
 > before you book.
 
 ## The two that simply keep going
@@ -105,7 +105,7 @@ from **11:00 to 20:00**. That is 67 operating days, a good half again as many as
 Europa-Park.
 
 The park is closed on four dates: 24 and 25 December, 1 January, and 12 and
-13 January 2027. On New Year's Eve it stops at 18:00. Tickets start at **€29**
+13 January 2027. On New Year’s Eve it stops at 18:00. Tickets start at **€29**
 and are booked online for a fixed date.
 
 ![The tower of Mystery Castle in fog, lit from below | Mystery Castle sits inside the mountain. Which is why it runs when there is freezing rain outside. | wide](/media/phantasialand/mystery-castle.jpg)
@@ -117,7 +117,7 @@ the ice shows **Rock on Ice** and **Arctaris – The Hidden World**, plus
 **Berliner Eislaufen** rink inside the park.
 
 Brühl can sustain this because of how it is built. A good share of the park sits
-inside the hill or under a roof: [Winja's Fear](ref:phantasialand/winjas-fear)
+inside the hill or under a roof: [Winja’s Fear](ref:phantasialand/winjas-fear)
 and [Force](ref:phantasialand/winjas-force),
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat),
 [Mystery Castle](ref:phantasialand/mystery-castle), the Geister Rikscha. When
@@ -186,7 +186,7 @@ the winter season, is in the
 ### Toverland: Winter Feelings, 28 November to 17 January
 
 [Toverland](ref:attractiepark-toverland) in Sevenum has two large halls,
-Magische Vallei and Port Laguna, which is the same argument as Kaatsheuvel's on
+Magische Vallei and Port Laguna, which is the same argument as Kaatsheuvel’s on
 a smaller scale. **Winter Feelings** runs from **28 November 2026 to 17 January
 2027**, on Wednesdays, at weekends and right through the Christmas holidays. The
 park opens at 11:00, until 20:00 during the holidays.
@@ -212,7 +212,7 @@ up eight decorated areas, all built along northern landscapes: Alpin Village,
 Frozen Land, Polar Playground, Glowing Greetings, Chocolate Factory, Festive
 Tropics, Twinkle Town and, new this year, **Northern Dock**, a Scandinavian
 harbour around [Mecalodon](ref:walibi-belgium/mecalodon), the family coaster
-built for the park's 50th birthday.
+built for the park’s 50th birthday.
 
 ![The Walibi Belgium entrance decorated with baubles, the words "Walibi Winter" above it | Wavre carries on, Biddinghuizen does not. Two hours of driving and a few hall roofs separate them. | wide](/media/walibi-belgium/background.jpg)
 
@@ -243,7 +243,7 @@ on top.
 ### Movie Park Germany: Hollywood Christmas, 27 November to 5 January
 
 For six weeks in autumn the park is called Horrorwood Studios, and no sooner is
-that over than the studio lot turns festive. **Movie Park's Hollywood
+that over than the studio lot turns festive. **Movie Park’s Hollywood
 Christmas** runs from **27 November 2026 to 5 January 2027**: more than a
 million lights, four Christmas-themed areas, an ice rink, the winter version of
 the parade, a Christmas Tree Celebration, a Meet Santa station and a new winter
@@ -266,7 +266,7 @@ curling, shows and a Lego fir tree.
 
 What is open is mostly the indoor line-up plus a few outdoor rides, among them
 MAXIMUS, Temple X-pedition, LEGO NINJAGO The Ride and the Techno Schleuder.
-Travelling with a child who wants one particular ride? Read the park's list
+Travelling with a child who wants one particular ride? Read the park’s list
 first.
 
 [Legoland Deutschland](ref:legoland-deutschland?full)
@@ -454,7 +454,7 @@ the tubing slide. After the Halloween weeks, where every haunted house is sold
 separately, that takes some getting used to.
 
 What is actually running on the day you want, and how long the queues are right
-now, is on each park's own page all winter.
+now, is on each park’s own page all winter.
 
 — Patrick
 
