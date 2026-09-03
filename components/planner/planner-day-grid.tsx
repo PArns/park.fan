@@ -145,6 +145,20 @@ export function PlannerDayGrid({
 }: PlannerDayGridProps) {
   const t = useTranslations('planner');
   const canvasRef = useRef<HTMLDivElement>(null);
+  /**
+   * The minute a dragged block would land on, as REACT state — and the one
+   * thing in this drag that is allowed to be.
+   *
+   * The pointer moves at 60 Hz and the block follows it through a custom
+   * property for the reason the rAF loop gives: a re-render per frame lays out
+   * every block in the day. But the SNAPPED minute changes only once per step
+   * of movement — a handful of times in a whole gesture — and that is what the
+   * ghost is drawn at. So the smooth half stays out of React and the ghost gets
+   * a real render, which is what lets it be an actual block rather than an
+   * outline: same photo, same tint, same name, and its own HEIGHT, because the
+   * height is the wait and the wait is a function of the start minute.
+   */
+  const [ghostMinute, setGhostMinute] = useState<number | null>(null);
   const [draggingId, setDraggingId] = useState<string | null>(null);
   const [dense, setDense] = useState(false);
 
@@ -324,6 +338,12 @@ export function PlannerDayGrid({
     enabled: weatherEnabled,
   });
 
+  /** The row a ghost is being drawn for, or none while nothing is dragging. */
+  const ghostRow = useMemo(
+    () => (draggingId ? (layout.rows.find((row) => row.entry.id === draggingId) ?? null) : null),
+    [draggingId, layout.rows]
+  );
+
   const weatherSegments = useMemo(
     () => (loading ? [] : weatherRailSegments(grid, hourlyWeather?.points)),
     [grid, hourlyWeather, loading]
@@ -382,6 +402,7 @@ export function PlannerDayGrid({
       const minute = targetMinute();
       dragState.current = null;
       setDraggingId(null);
+      setGhostMinute(null);
 
       // A gesture the browser steals must not write. The old list bound its end
       // handler to `pointerup` AND `pointercancel` and committed unconditionally,
@@ -550,12 +571,21 @@ export function PlannerDayGrid({
           }
         }
 
+        const minute = targetMinute();
+
         // A custom property, never `top`: writing `top` on every frame is layout
         // on N blocks in a panel that is mounted in every page's layout.
         state.element.style.setProperty(
           '--pl-drag-dy',
-          `${heightFor(grid, targetMinute() - state.startMinute)}px`
+          `${heightFor(grid, minute - state.startMinute)}px`
         );
+
+        // The ghost follows the SNAPPED minute, and only when it changes — so
+        // this setState fires a few times per gesture rather than sixty times a
+        // second. Guarded against the value it already holds because React
+        // bails out on an identical value only after re-entering the reducer,
+        // and the point here is to not call it at all.
+        setGhostMinute((current) => (current === minute ? current : minute));
 
         state.frame = requestAnimationFrame(frame);
       };
@@ -686,6 +716,7 @@ export function PlannerDayGrid({
             aria-hidden="true"
           />
         )}
+
         <PlannerGridGround grid={grid} dense={dense} loading={loading} />
 
         {/* "closes approximately" is a SENTENCE, and it lived in a 40 px gutter.
@@ -784,6 +815,53 @@ export function PlannerDayGrid({
                 }
               />
             ))}
+
+            {/* The ghost, and it is a REAL block rather than an outline: the
+                same photo, tint and name, at the minute the drag would commit
+                to, with the wait recomputed for that minute — which is what
+                makes its HEIGHT right, because the height is the wait and the
+                wait is a function of where the block sits. Moving a ride into a
+                quieter hour is the whole reason to move it, so the preview has
+                to answer "and then it is this tall" while the pointer is still
+                down.
+
+                It re-renders on the snapped minute, not on the pointer, so a
+                gesture costs a handful of renders. `ghost` makes it translucent
+                and inert; nothing about it can be clicked or dragged. */}
+            {ghostRow && ghostMinute !== null && (
+              <PlannerBlock
+                key="ghost"
+                ghost
+                entry={{ ...ghostRow.entry, startMinute: ghostMinute }}
+                estimate={estimateFor(day, { ...ghostRow.entry, startMinute: ghostMinute })}
+                grid={grid}
+                tier={tier}
+                lane={layout.lanes.get(ghostRow.entry.id) ?? { column: 0, columns: 1, overflow: 0 }}
+                land={ghostRow.ride?.land}
+                metresFromPrevious={null}
+                showBandFigure={showBandFigure}
+                live={ghostRow.live}
+                photo={
+                  ghostRow.ride?.backgroundImage
+                    ? {
+                        src: ghostRow.ride.backgroundImage,
+                        position: ghostRow.ride.backgroundPosition ?? '50% 0%',
+                      }
+                    : null
+                }
+                closedNow={false}
+                downYesterday={false}
+                selected={false}
+                dragging={false}
+                conflict={false}
+                onSelect={() => {}}
+                onDragStart={() => {}}
+                onMove={() => {}}
+                minMinute={grid.openMin}
+                maxMinute={grid.closeMin - SNAP_MIN_FINE}
+                snapStep={snapStep}
+              />
+            )}
 
             {layout.rows.map((row, index) => {
               const floor = rideFloor(grid, row.ride);
