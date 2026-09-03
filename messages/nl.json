@@ -1956,7 +1956,8 @@
       "distance": "{distance} hemelsbreed",
       "minWalk": "minstens {minutes} min overstap",
       "allowance": "incl. uitstappen en de rit zelf, geschat",
-      "noSpread": "gerekend zonder de spreiding van de prognose"
+      "noSpread": "gerekend zonder de spreiding van de prognose",
+      "gap": "{minutes} min"
     },
     "close": "Selectie opheffen",
     "shows": {

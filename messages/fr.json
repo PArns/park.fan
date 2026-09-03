@@ -1956,7 +1956,8 @@
       "distance": "{distance} à vol d’oiseau",
       "minWalk": "au moins {minutes} min de transfert",
       "allowance": "sortie de station et attraction comprises, estimé",
-      "noSpread": "calculé sans la dispersion de la prévision"
+      "noSpread": "calculé sans la dispersion de la prévision",
+      "gap": "{minutes} min"
     },
     "close": "Annuler la sélection",
     "shows": {

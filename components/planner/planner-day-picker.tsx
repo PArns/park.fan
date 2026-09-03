@@ -89,7 +89,14 @@ export function PlannerDayPicker({
             either cropped the seven columns or left a margin round them.
             `align="end"` because this sits at the right edge of the panel
             header — centred on it, the calendar hangs off the sheet. */}
-        <PopoverContent align="end" className="w-auto p-2">
+        {/* ABOVE the panel. Both this and `SheetContent` are portalled to
+          `<body>`, and the shared popover is `z-50` against the sheet's
+          `z-[70]` — so inside the planner this opened BEHIND the panel that
+          triggered it, which from the outside is a button that does nothing.
+          Fixed at the call site rather than in `components/ui/popover.tsx`:
+          every other popover on the site is correct at 50, and raising the
+          primitive would put a park page's popover over the header. */}
+        <PopoverContent align="end" className="z-[80] w-auto p-2">
           <PlannerMonthCalendar
             value={value}
             onChange={(date) => {

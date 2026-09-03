@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { CalendarPlus, ChevronDown } from 'lucide-react';
+import { CalendarPlus, ChevronDown, GripVertical } from 'lucide-react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { PlannerContextBand, type PlannerDayState } from './planner-context-band';
 import { PlannerDayPicker } from './planner-day-picker';
@@ -102,6 +102,38 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   };
 
   const isPhone = useMediaQuery('(max-width: 639px)');
+
+  /**
+   * Delete removes the selected block.
+   *
+   * A grid you can select an item in and not delete it from is a grid that owes
+   * you a mouse trip to a button — and the action row's own button stays, for
+   * the phone, where there is no Delete key.
+   *
+   * Bound to the DOCUMENT rather than to the block, because a block is not
+   * focused after a pointer selection: the grip takes focus during a drag and a
+   * plain click on the body focuses nothing at all, so a handler on the element
+   * would fire for a keyboard user and for nobody else. Guarded on the three
+   * places a Delete belongs to something else — a text field, a number field,
+   * anything `contenteditable` — since the panel carries a search box and a free
+   * block's label is an `<input>` sitting inside the very row this deletes.
+   */
+  useEffect(() => {
+    if (!selectedId || !activeParkSlug || !activeDate) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key !== 'Delete' && event.key !== 'Backspace') return;
+      const target = event.target as HTMLElement | null;
+      if (
+        target?.closest('input, textarea, select, [contenteditable=""], [contenteditable="true"]')
+      )
+        return;
+      event.preventDefault();
+      removeRide(activeParkSlug, activeDate, selectedId);
+      setSelectedId(null);
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [selectedId, activeParkSlug, activeDate, removeRide]);
   const panelWidth = useSyncExternalStore(
     plannerPanelWidth.subscribe,
     plannerPanelWidth.getSnapshot,
@@ -364,16 +396,22 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
         // hold it at 448 px in the middle of a 390 px screen.
         style={isPhone ? undefined : { width: panelWidth }}
       >
-        {/* The resize edge. Desktop only — `hidden sm:flex` rather than
-            `!isPhone`, for the reason the phone handle gives one line down: a
-            control that decides its own existence from `useMediaQuery` flickers,
-            because that hook answers `false` on the server snapshot.
+        {/* The resize edge, and the tab that says so. Desktop only —
+            `hidden sm:flex` rather than `!isPhone`, for the reason the phone
+            handle gives one line down: a control that decides its own existence
+            from `useMediaQuery` flickers, because that hook answers `false` on
+            the server snapshot.
 
-            A 6 px column of hit area with a 40 px pill drawn in the MIDDLE of
-            it, which is the only part a visitor is meant to see — the whole
-            edge is grabbable, and the pill is what says so. Double-click puts
-            the width back, because a drag that went too far otherwise has to be
-            dragged back by hand. */}
+            The whole left edge is grabbable; the TAB is what makes that
+            discoverable. A 4 px bar in the panel's own edge colour was the first
+            version and could not be found — the panel could be widened and
+            nobody could tell, which is the same as not being resizable. A tab
+            that carries the panel's name, rounded on its outer side and square
+            where it meets the panel, reads as a pull rather than as a seam, and
+            it travels with the panel because it is positioned inside it.
+
+            Double-click puts the width back: a drag that overshot otherwise has
+            to be dragged back by hand. */}
         <div
           onPointerDown={handleEdgeGrab}
           onDoubleClick={() => plannerPanelWidth.commit(PANEL_WIDTH_DEFAULT)}
@@ -381,9 +419,28 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
           aria-orientation="vertical"
           aria-label={t('sheet.resize')}
           data-planner-resize-edge=""
-          className="group absolute inset-y-0 -left-1 z-50 hidden w-3 cursor-col-resize touch-none items-center justify-center sm:flex"
+          className="group absolute inset-y-0 -left-8 z-50 hidden w-8 cursor-col-resize touch-none items-center justify-end sm:flex"
         >
-          <span className="bg-border group-hover:bg-primary h-10 w-1 rounded-full transition-colors" />
+          <span className="bg-background/85 ring-border/70 group-hover:bg-background group-hover:ring-primary/60 flex flex-col items-center gap-2 rounded-l-xl py-4 pr-1 pl-1.5 shadow-lg ring-1 backdrop-blur-md transition-colors">
+            <CalendarPlus
+              className="text-muted-foreground group-hover:text-primary size-3.5 shrink-0 transition-colors"
+              aria-hidden="true"
+            />
+            {/* `vertical-rl` plus a half turn, which is the pair that reads
+                bottom-to-top — `vertical-rl` alone runs top-to-bottom and puts
+                the first letter under the icon rather than beside the panel it
+                names. */}
+            <span
+              className="text-muted-foreground group-hover:text-foreground [transform:rotate(180deg)] text-[10px] font-medium tracking-wide whitespace-nowrap uppercase transition-colors [writing-mode:vertical-rl]"
+              aria-hidden="true"
+            >
+              {t('title')}
+            </span>
+            <GripVertical
+              className="text-muted-foreground/70 group-hover:text-primary size-3.5 shrink-0 transition-colors"
+              aria-hidden="true"
+            />
+          </span>
         </div>
         {/* The grab handle. Phone only, and `sm:hidden` rather than `!isPhone`
             because `useMediaQuery` answers `false` on the server snapshot and a

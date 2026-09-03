@@ -1956,7 +1956,8 @@
       "distance": "{distance} in linea d’aria",
       "minWalk": "almeno {minutes} min di trasferimento",
       "allowance": "inclusi uscita dalla stazione e giro, stimato",
-      "noSpread": "calcolato senza la dispersione della previsione"
+      "noSpread": "calcolato senza la dispersione della previsione",
+      "gap": "{minutes} min"
     },
     "close": "Annulla la selezione",
     "shows": {

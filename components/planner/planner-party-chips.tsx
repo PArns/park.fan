@@ -63,7 +63,14 @@ export function PlannerPartyChips({ prefs, onChange }: PlannerPartyChipsProps) {
           )}
         </button>
       </PopoverTrigger>
-      <PopoverContent align="start" className="w-64 p-3">
+      {/* ABOVE the panel. Both this and `SheetContent` are portalled to
+          `<body>`, and the shared popover is `z-50` against the sheet's
+          `z-[70]` — so inside the planner this opened BEHIND the panel that
+          triggered it, which from the outside is a button that does nothing.
+          Fixed at the call site rather than in `components/ui/popover.tsx`:
+          every other popover on the site is correct at 50, and raising the
+          primitive would put a park page's popover over the header. */}
+      <PopoverContent align="start" className="z-[80] w-64 p-3">
         <p className="mb-1.5 text-xs font-medium">{t('wizard.kids.label')}</p>
         <div className="flex flex-wrap gap-1.5">
           <button

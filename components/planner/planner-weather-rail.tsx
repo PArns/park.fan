@@ -48,10 +48,16 @@ export function PlannerWeatherRail({ segments }: PlannerWeatherRailProps) {
   const active = hovered === null ? null : (segments.find((s) => s.hour === hovered) ?? null);
 
   return (
-    <div className="absolute inset-0 z-0" data-planner-weather-rail="">
+    /* NO `z-index` on this root, and that is load-bearing rather than tidy: a
+       positioned element with one becomes a stacking context, and the hint
+       below is then trapped inside it however high its own `z-40` is — it
+       rendered UNDER the blocks, which is the one place a tooltip may not be.
+       The band's slices carry the `z-0` instead; they are what has to stay
+       behind everything. */
+    <div className="absolute inset-0" data-planner-weather-rail="">
       {/* The band. Continuous by construction — every hour on the axis the
           forecast covers gets a slice, whether or not anything changed. */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-1.5">
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-0 w-1.5">
         {segments.map((segment) => (
           <div
             key={`band-${segment.hour}`}

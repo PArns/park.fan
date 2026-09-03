@@ -51,6 +51,11 @@ export function PlannerLeg({
 
   const verdictLabel = t(`transfer.${leg.verdict}`);
   const broken = leg.verdict === 'broken';
+  const gapLabel = t('transfer.gap', { minutes: Math.max(0, leg.gapMinutes) });
+  // Against the CEILING, which is what every soft verdict is decided against —
+  // `leg.ts` says so — so the number and the word cannot disagree. `null` on
+  // `unknown`, where the whole point is that there is nothing to compare with.
+  const slack = leg.verdict === 'unknown' ? null : leg.gapMinutes - leg.ceilingMinutes;
 
   // The title carries what the chip cannot: which parts of the arithmetic are
   // measured and which are allowances. `Luftlinie` is the reader's own
@@ -111,6 +116,17 @@ export function PlannerLeg({
             {leg.metres !== null && (
               <span className="max-[399px]:hidden">↓ {formatDistance(leg.metres)}</span>
             )}
+            {/* The number the verdict is ABOUT. The chip read "↓ 102 m ·
+                Umstieg gut" — a distance and a judgement, with the quantity
+                being judged nowhere on screen, so "gut" had to be taken on
+                trust. This is how long the gap actually is. */}
+            <span className="font-medium">{gapLabel}</span>
+            {/* And by how much it clears. A verdict is a bucket; the slack is
+                the figure that lets somebody decide the bucket is wrong for
+                them — the same argument the ride list's height flag makes. */}
+            {slack !== null && (
+              <span className="opacity-70 max-[399px]:hidden">{signed(slack)}</span>
+            )}
             <span>{verdictLabel}</span>
             {leg.missing === 'no-spread' && <span aria-hidden="true">°</span>}
           </span>
@@ -118,4 +134,9 @@ export function PlannerLeg({
       </div>
     </li>
   );
+}
+
+/** `+5` / `−5`. A minus sign, not a hyphen: this is a number, not a compound. */
+function signed(minutes: number): string {
+  return minutes < 0 ? `−${Math.abs(minutes)}` : `+${minutes}`;
 }

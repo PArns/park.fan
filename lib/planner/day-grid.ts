@@ -192,7 +192,14 @@ export interface RideFloor {
  *
  * The HARD floor is the park's published opening — a fact — because no per-ride
  * opening time exists in any payload today. When one does (`opensAtMinute` with
- * a measured confidence) it raises this line and nothing else changes.
+ * a measured confidence) it raises this line and nothing else changes. It is
+ * what a DRAG is clamped to, so nothing here can refuse a placement a visitor
+ * insists on.
+ *
+ * The SOFT floor also carries {@link GATE_TO_FIRST_RIDE_MIN} where the park's
+ * own opening is all we have: it is where a new block is FILED, and filing the
+ * first ride of the day at the exact minute the gates open plans a walk nobody
+ * can make.
  *
  * The SOFT floor is the first hour this ride has a curve for, and it is a
  * statement about MEASUREMENT rather than about opening: the backend skips hours
@@ -204,6 +211,27 @@ export interface RideFloor {
  * The gates are deliberate: at least a month of measured days, and at least an
  * hour past the park's own opening, or a single quiet morning becomes a wall.
  */
+/**
+ * How long after the gates open somebody can actually be queueing.
+ *
+ * Nobody is at a ride's entrance in the second the park opens. There is a
+ * turnstile, a bag check and a walk — Phantasialand's gate to Klugheim is the
+ * better part of a kilometre — and the planner was filing the first ride of the
+ * day at exactly `openMin`, which is a plan no visitor has ever executed.
+ *
+ * The same family of judgement as `EXIT_MIN` and `SAME_LAND_CEIL_MIN` in
+ * `leg.ts`, and named as one: an allowance, not a measurement. It is deliberately
+ * NOT a claim that any ride is shut — no payload anywhere carries a per-ride
+ * opening time, and for Phantasialand tomorrow `/plan/day` reports Taron with a
+ * 30-minute queue in its 09:00 hour, so the data says the opposite. What this
+ * says is where the VISITOR is, which is a different sentence.
+ *
+ * It moves the default placement only. Dragging a block onto the opening minute
+ * is still allowed, because somebody who knows their park better than this
+ * constant does must not be argued with.
+ */
+export const GATE_TO_FIRST_RIDE_MIN = 15;
+
 export function rideFloor(grid: DayGrid, ride: PlanDayRide | undefined | null): RideFloor {
   const hardMin = grid.openMin;
 
@@ -214,7 +242,16 @@ export function rideFloor(grid: DayGrid, ride: PlanDayRide | undefined | null): 
       ? first * 60
       : hardMin;
 
-  return { hardMin, softMin: raised, reason: raised > hardMin ? 'ride' : 'park' };
+  // The gate allowance applies to the park's own opening, never on top of a
+  // raised ride floor: a ride whose curve starts at 11:00 is already a statement
+  // about being able to queue at 11:00, and adding a walk to it would push the
+  // block past the first hour anybody could ride it.
+  const withEntry = raised > hardMin ? raised : hardMin + GATE_TO_FIRST_RIDE_MIN;
+  return {
+    hardMin,
+    softMin: Math.min(withEntry, grid.closeMin - SNAP_MIN_FINE),
+    reason: raised > hardMin ? 'ride' : 'park',
+  };
 }
 
 export interface LaneInput {
