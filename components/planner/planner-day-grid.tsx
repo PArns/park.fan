@@ -265,7 +265,8 @@ export function PlannerDayGrid({
         leg: legBetween(
           { startMinute: from.entry.startMinute, wait: from.wait, ride: from.ride },
           { startMinute: to.entry.startMinute, wait: to.wait, ride: to.ride },
-          from.estimate.uncertaintyMinutes
+          from.estimate.uncertaintyMinutes,
+          day?.tier === 'observed'
         ),
         lane: lanes.get(to.entry.id) ?? { column: 0, columns: 1, overflow: 0 },
         fromMinute: from.entry.startMinute + (from.wait ?? 0),

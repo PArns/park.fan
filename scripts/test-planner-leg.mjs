@@ -190,6 +190,35 @@ test('a gap between the two is gut', legBetween(from(600, 45), to(665), 10).verd
 // ── The detour factor is an assumption, and only touches the ceiling ─────────
 test('the detour factor is the documented one', DETOUR_MAX, 1.6);
 
+// ── A measured day runs the full ladder ──────────────────────────────────────
+// On a forecast, no spread caps the verdict at `good`: "großzügig" is a claim
+// about how much room the forecast's own error leaves, and without an error
+// there is nothing to be generous about. On a day that already HAPPENED there
+// is no forecast error to leave room for — the gap is a fact — so capping it
+// would understate every leg of every past day.
+{
+  const from = { startMinute: 600, wait: 20, ride: null };
+  const to = { startMinute: 780, wait: 20, ride: null };
+
+  const forecast = legBetween(from, to, null);
+  test('ohne Spanne kappt die Prognose bei „gut"', forecast.verdict, 'good');
+  test('und markiert die fehlende Spanne', forecast.missing, 'no-spread');
+
+  const measured = legBetween(from, to, null, true);
+  test('gemessen darf dieselbe Lücke großzügig sein', measured.verdict, 'generous');
+  test('und es fehlt nichts', measured.missing, 'none');
+
+  // Floor 6 (3 exit + 3 ride), ceiling 9 (+3 same-land walk) with no
+  // coordinates. A gap of 8 clears the floor and misses the ceiling, so it is
+  // tight whether or not the day is over: a walk does not get shorter because
+  // the day is behind us.
+  const tightTo = { startMinute: 628, wait: 20, ride: null };
+  test('zu knapp bleibt zu knapp', legBetween(from, tightTo, null, true).verdict, 'tight');
+  // And below the floor it is still impossible.
+  const brokenTo = { startMinute: 622, wait: 20, ride: null };
+  test('unmöglich bleibt unmöglich', legBetween(from, brokenTo, null, true).verdict, 'broken');
+}
+
 // ── Report ───────────────────────────────────────────────────────────────────
 let failed = 0;
 for (const { name, actual, expected } of cases) {

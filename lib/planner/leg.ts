@@ -94,8 +94,22 @@ function coordsOf(ride: PlanDayRide | null | undefined): [number, number] | null
  * where "knapp" begins: the boundary is the model's own top-quantile-minus-median
  * rather than a number somebody picked, so `knapp` means precisely "this breaks
  * if the forecast is as wrong as it says it might be".
+ *
+ * `observed` says the waits are MEASUREMENTS rather than predictions, and it
+ * changes what a missing spread means. On a forecast, no spread is a gap in what
+ * the model reported and the ladder caps at "gut" — "großzügig" is a claim about
+ * how much room the forecast's own error leaves, and without an error there is
+ * nothing to be generous about. On a day that already happened there is no
+ * forecast error to leave room for: the gap is a fact. Capping it would
+ * understate every leg of every past day, and the `°` the chip carries would
+ * flag an absence that is the nature of the thing rather than a shortcoming.
  */
-export function legBetween(from: LegEnd, to: LegEnd, uncertaintyMinutes: number | null): Leg {
+export function legBetween(
+  from: LegEnd,
+  to: LegEnd,
+  uncertaintyMinutes: number | null,
+  observed = false
+): Leg {
   const a = coordsOf(from.ride);
   const b = coordsOf(to.ride);
   const metres = a && b ? calculateDistance(a[0], a[1], b[0], b[1]) : null;
@@ -140,6 +154,17 @@ export function legBetween(from: LegEnd, to: LegEnd, uncertaintyMinutes: number 
 
   if (gapMinutes < floorMinutes) {
     return { ...base, gapMinutes, verdict: 'broken', missing: 'none' };
+  }
+
+  // A measured day runs the full ladder against a spread of zero: there is no
+  // forecast error, so every minute of slack is real slack.
+  if (observed) {
+    return {
+      ...base,
+      gapMinutes,
+      verdict: slack < 0 ? 'tight' : slack < GENEROUS_MIN_MINUTES ? 'good' : 'generous',
+      missing: 'none',
+    };
   }
 
   // No spread reported is not a spread of zero. The ladder caps at `good`:
