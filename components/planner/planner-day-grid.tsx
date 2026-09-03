@@ -194,7 +194,25 @@ export function PlannerDayGrid({
         MIN_BLOCK_PX / grid.pxPerMin
       );
 
-      return { entry, ride, estimate: effective, wait, spanMinutes, live: liveWait !== null };
+      // "Meldet gerade geschlossen" is a statement about NOW, so it belongs to a
+      // block that is near now — the same window the live wait already obeys.
+      // Ungated it was put on every block of the day: a ride shut at 09:45 wore
+      // the warning on a 17:30 slot, where the word "gerade" is true about the
+      // ride and says nothing whatever about the visit.
+      const closedRelevant =
+        Boolean(entry.attractionSlug) &&
+        nowMinute !== null &&
+        Math.abs(entry.startMinute - nowMinute) <= LIVE_WINDOW_MIN;
+
+      return {
+        entry,
+        ride,
+        estimate: effective,
+        wait,
+        spanMinutes,
+        live: liveWait !== null,
+        closedRelevant,
+      };
     });
 
     const lanes = packLanes(
@@ -643,7 +661,7 @@ export function PlannerDayGrid({
                       : null
                   }
                   closedNow={
-                    row.entry.attractionSlug
+                    row.closedRelevant && row.entry.attractionSlug
                       ? (closedNow?.has(row.entry.attractionSlug) ?? false)
                       : false
                   }
