@@ -10,6 +10,36 @@ und dann `decisions.md`.**
 
 ---
 
+## Die echte Trefferquote ist 62 %, nicht 10 %
+
+Abgelesen in **Cloudflare → Caching → Overview**, 30-Minuten-Fenster, 2026-09-03:
+
+|                          |            |          |
+| ------------------------ | ---------: | -------: |
+| **Served by Cloudflare** | **8,23 k** | **62 %** |
+| Served by origin         |     5,12 k |     38 % |
+
+Aufgeschlüsselt: Hit 6,55 k · Miss 2,33 k · None 1,68 k · Expired 1,12 k · Bypass 956 ·
+Revalidated 719.
+
+**`scripts/check-cdn-cache.sh hitrate` ist eine Untergrenze, keine Messung des Traffics.** Es
+zieht 40 **zufällige** Sitemap-URLs — und bei einem Crawler-Sweep ist die Anfrageverteilung
+extrem ungleich: ein Sweep geht einmal durch alle URLs, die Wiederholung kommt erst beim
+nächsten. Wenige Hubs werden ständig getroffen, die große Mehrheit genau einmal. Eine
+Zufallsziehung trifft fast nur die zweite Gruppe und misst damit systematisch die schlechteste
+Teilmenge. Nutze das Skript zum Vergleichen von Vorher/Nachher auf **derselben** Stichprobe,
+nie als absolute Zahl.
+
+**Tiered Cache läuft** — Smart Topology, aktiv, Region Hint `aws:eu-central-1` auf FRA/ZRH
+(Dashboard, 2026-09-03). Die Hypothese, der „Faktor 0,30" sei Colo-Fragmentierung, ist damit
+widerlegt; er war ein Artefakt der Stichprobe.
+
+**Was daraus folgt:** die Ausgangslage war nie so schlecht wie die Stichprobe suggerierte, und
+die verbleibenden 38 % sind zu einem großen Teil `api.park.fan` (7,78 k von 13,35 k Requests
+sind der Host des Backends, nicht dieser App) sowie die bewusst uncachebaren Antworten.
+
+---
+
 ## Warum die Ride-Route trotz allem nicht fällt — und der Kalender schon
 
 Gemessen am 2026-09-03, nachdem alle Fenster standen und die Cloudflare-Regel umgebaut war.
