@@ -8,12 +8,7 @@ import { roundWaitDeltaTo5, roundWaitTo5 } from '@/lib/utils/wait-time';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { formatDistance } from '@/lib/utils/distance-utils';
-import type {
-  ParkAttraction,
-  ParkStatus,
-  BestVisitSlot,
-  RopeDropInfo,
-} from '@/lib/api/types';
+import type { ParkAttraction, ParkStatus, BestVisitSlot, RopeDropInfo } from '@/lib/api/types';
 import type { FavoriteAttraction } from '@/lib/api/favorites';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { AttractionCardBestTime } from '@/components/parks/attraction-card-best-time';

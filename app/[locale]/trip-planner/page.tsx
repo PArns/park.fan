@@ -12,6 +12,9 @@ import { getOgImageUrl } from '@/lib/utils/og-image';
 import { RouteMessages } from '@/i18n/route-messages';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import { PlannerPageBody } from '@/components/planner/planner-page-body';
+import type { PolaroidPhoto } from '@/components/planner/planner-polaroids';
+import { getParkBackground } from '@/lib/media';
+import { focusToObjectPosition, versionedSrc } from '@/lib/media/focus';
 import { plannerFlag } from '@/flags';
 import { notFound } from 'next/navigation';
 
@@ -97,6 +100,7 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
   if (!(await plannerFlag())) notFound();
 
   const t = await getTranslations('planner.page');
+  const photos = polaroidPhotos();
 
   return (
     <RouteMessages route="/trip-planner">
@@ -112,8 +116,42 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
           </p>
         </header>
 
-        <PlannerPageBody />
+        <PlannerPageBody photos={photos} />
       </div>
     </RouteMessages>
   );
+}
+
+/**
+ * The three photos the empty state lays out as polaroids.
+ *
+ * Resolved HERE, on the server, because `@/lib/media` is the 107 KB catalogue
+ * and `PlannerPolaroids` is a Client Component — importing it there would ship
+ * the whole thing to every visitor of this page.
+ *
+ * A fixed, hand-picked three rather than "the first three with a picture": the
+ * database holds a background for nine of 212 parks, so a derived list would be
+ * whatever the iteration order happens to be, and these are the three this
+ * project's own homepage already leads with. Any that has lost its photo simply
+ * drops out — the component draws what it is given and nothing if that is empty,
+ * so a picture disappearing from the catalogue cannot leave a hole here.
+ */
+function polaroidPhotos(): PolaroidPhoto[] {
+  const picks: Array<{ slug: string; label: string }> = [
+    { slug: 'phantasialand', label: 'Phantasialand' },
+    { slug: 'europa-park', label: 'Europa-Park' },
+    { slug: 'attractiepark-toverland', label: 'Toverland' },
+  ];
+
+  const out: PolaroidPhoto[] = [];
+  for (const pick of picks) {
+    const image = getParkBackground(pick.slug);
+    if (!image) continue;
+    out.push({
+      src: versionedSrc(image),
+      position: focusToObjectPosition(image.focus),
+      label: pick.label,
+    });
+  }
+  return out;
 }
