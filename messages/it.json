@@ -2013,10 +2013,10 @@
     },
     "page": {
       "kicker": "Pianificatore",
-      "title": "La tua giornata al parco, sistemata prima",
+      "title": "La tua giornata al parco divertimenti, sistemata prima",
       "lead": "Dì quali attrazioni vuoi fare: il pianificatore calcola con le attese previste se la giornata regge. Resta tutto nel tuo browser, senza account.",
-      "metaTitle": "Pianificatore – organizza la giornata sui tempi di attesa | park.fan",
-      "metaDescription": "Organizza la giornata con le attese previste: metti le attrazioni su una linea del tempo, controlla i tempi di trasferimento, infila spettacoli e pause.",
+      "metaTitle": "Pianificare la giornata al parco divertimenti | park.fan",
+      "metaDescription": "Organizza la giornata al parco divertimenti con le attese previste: attrazioni su una linea del tempo, tempi di trasferimento, spettacoli e pause.",
       "yourPlans": "{count, plural, one {Una giornata pianificata} other {# giornate pianificate}}",
       "introTitle": "Non c’è ancora niente",
       "introBody": "Il pianificatore mette le tue attrazioni su una linea del tempo e su ognuna scrive l'attesa prevista per quell'ora. In mezzo dice quanto tempo hai per spostarti, e se diventa stretto.",

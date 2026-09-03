@@ -11,6 +11,7 @@ import { routing, type Locale } from '@/i18n/routing';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { RouteMessages } from '@/i18n/route-messages';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
+import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { PlannerPageBody } from '@/components/planner/planner-page-body';
 import type { PolaroidPhoto } from '@/components/planner/planner-polaroids';
 import { getParkBackground } from '@/lib/media';
@@ -101,10 +102,21 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
   if (!PLANNER_ENABLED || !(await plannerFlag())) notFound();
 
   const t = await getTranslations('planner.page');
+  const tNav = await getTranslations('navigation');
   const photos = polaroidPhotos();
 
   return (
     <RouteMessages route="/trip-planner">
+      {/* The trail, and the leaf with it. The guide and Fancast both publish one
+          and this page — reachable from four places in the chrome — published
+          none, so a result for it had nothing under the title. `currentPage`
+          rather than stopping at Home: Google's examples end the list with the
+          page being rendered, and the URL is the one the canonical points at. */}
+      <BreadcrumbStructuredData
+        breadcrumbs={[{ name: tNav('home'), url: '/' }]}
+        currentPage={{ name: t('title'), url: path(locale) }}
+        locale={locale}
+      />
       <div className="mx-auto w-full max-w-3xl px-4 py-8 sm:py-12">
         <header className="mb-8">
           <p className="text-muted-foreground mb-2 flex items-center gap-2 text-xs font-medium tracking-wide uppercase">

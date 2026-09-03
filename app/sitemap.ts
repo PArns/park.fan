@@ -8,6 +8,8 @@ import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { GLOSSARY_CONTENT_DATE } from '@/lib/glossary/content-date';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
+import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
+import { PLANNER_ENABLED } from '@/lib/config/features';
 import { PARK_CALENDAR_SEGMENTS } from '@/lib/parks/calendar-segments';
 import type { GlossaryTerm } from '@/lib/glossary/types';
 
@@ -108,6 +110,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
       alternates: howtoAlternates,
     });
+  }
+
+  // ── Trip planner ──────────────────────────────────────────────────────────
+  // Behind BOTH switches, and that is the point of listing it here rather than
+  // in the static block: a deploy that ships without the planner answers 404 on
+  // this URL, and a sitemap advertising a 404 is a strike against every other
+  // URL in the file. `PLANNER_ENABLED` is build-time so it can be read here;
+  // `plannerFlag` is per-request and a sitemap is not a request anybody's
+  // session belongs to, so the runtime kill switch is deliberately not consulted
+  // — flipping it off leaves six URLs pointing at a 404 until the next deploy,
+  // which is the accepted cost of not making the sitemap dynamic.
+  if (PLANNER_ENABLED) {
+    const plannerAlternates = buildAlternates(
+      (l) => `/${PLANNER_SEGMENTS[l as keyof typeof PLANNER_SEGMENTS]}`
+    );
+
+    for (const locale of locales) {
+      routes.push({
+        url: `${BASE_URL}/${locale}/${PLANNER_SEGMENTS[locale as keyof typeof PLANNER_SEGMENTS]}`,
+        changeFrequency: 'monthly',
+        priority: 0.7,
+        alternates: plannerAlternates,
+      });
+    }
   }
 
   // ── Best time to visit hub ────────────────────────────────────────────────

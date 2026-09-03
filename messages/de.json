@@ -2013,10 +2013,10 @@
     },
     "page": {
       "kicker": "Tagesplaner",
-      "title": "Dein Tag im Park, vorher sortiert",
+      "title": "Dein Tag im Freizeitpark, vorher sortiert",
       "lead": "Leg fest, welche Bahnen du fahren willst, und der Planer rechnet mit den vorhergesagten Wartezeiten aus, ob der Tag so aufgeht. Alles liegt in deinem Browser, kein Konto nötig.",
-      "metaTitle": "Tagesplaner – Wartezeiten vorher einplanen | park.fan",
-      "metaDescription": "Plane deinen Parktag mit den vorhergesagten Wartezeiten: Bahnen in eine Zeitleiste ziehen, Umstiegszeiten prüfen, Shows und Pausen dazwischen.",
+      "metaTitle": "Freizeitpark-Tag planen: Wartezeiten einrechnen | park.fan",
+      "metaDescription": "Plane deinen Freizeitpark-Tag mit den vorhergesagten Wartezeiten: Bahnen auf eine Zeitleiste ziehen, Umstiege prüfen, Shows und Pausen einplanen. Ohne Konto.",
       "yourPlans": "{count, plural, one {Ein geplanter Tag} other {# geplante Tage}}",
       "introTitle": "Noch nichts geplant",
       "introBody": "Der Planer legt deine Bahnen auf eine Zeitleiste und setzt an jede die Wartezeit, die für diese Stunde vorhergesagt ist. Dazwischen steht, wie viel Zeit zum Umsteigen bleibt – und ob das knapp wird.",
