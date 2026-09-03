@@ -26,6 +26,7 @@ import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import { PlannerShowBand } from './planner-show-band';
 import { PlannerGridActions } from './planner-grid-actions';
 import { PLANNER_RIDE_MIME, parseRideDrag } from '@/lib/planner/ride-drag';
+import { occupiedMinutes } from '@/lib/planner/estimate';
 import { useRideDragSource } from '@/lib/planner/use-ride-drag-source';
 import { usePlannerDayFacts } from '@/lib/planner/use-day-facts';
 import { cn } from '@/lib/utils';
@@ -599,7 +600,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                         ? nextFreeStart(
                             activeEntries.map((entry) => ({
                               startMinute: entry.startMinute,
-                              spanMinutes: entry.custom?.durationMinutes ?? 45,
+                              spanMinutes: occupiedMinutes(day, entry),
                             })),
                             grid
                           )

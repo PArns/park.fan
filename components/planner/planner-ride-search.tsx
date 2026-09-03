@@ -10,6 +10,7 @@ import { PlannerRideThumb } from '@/components/planner/planner-ride-thumb';
 import type { PlannerDayPrefs, PlannerGeo } from '@/lib/planner/types';
 import { buildDayGrid, nextFreeStart, rideFloor } from '@/lib/planner/day-grid';
 import { startRideDrag } from '@/lib/planner/ride-drag';
+import { occupiedMinutes } from '@/lib/planner/estimate';
 import type { PlanDay, PlanDayRide } from '@/lib/api/types';
 import type { PlannerDayState } from './planner-context-band';
 
@@ -103,7 +104,10 @@ export function PlannerRideSearch({
   const startFor = (ride: PlanDayRide) =>
     grid
       ? nextFreeStart(
-          activeEntries.map((entry) => ({ startMinute: entry.startMinute, spanMinutes: 45 })),
+          activeEntries.map((entry) => ({
+            startMinute: entry.startMinute,
+            spanMinutes: occupiedMinutes(day, entry),
+          })),
           grid,
           45,
           rideFloor(grid, ride).softMin

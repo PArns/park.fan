@@ -397,17 +397,35 @@ export function PlannerDayGrid({
     [grid, day]
   );
 
-  const targetMinute = useCallback(() => {
-    const state = dragState.current;
-    const canvas = canvasRef.current;
-    if (!state || !canvas) return 0;
-    // Re-read the rect EVERY frame: it folds in the container's own scroll,
-    // which is the one thing the old index-based hit test already got right.
-    const top = canvas.getBoundingClientRect().top;
-    const raw = minuteAt(grid, state.lastClientY - top - state.grabOffsetPx);
-    const step = matchMedia('(pointer: coarse)').matches ? SNAP_MIN_COARSE : SNAP_MIN_FINE;
-    return clampStart(grid, snapTo(raw, step), state.floorMin);
-  }, [grid]);
+  /**
+   * The minute under the pointer, snapped or not.
+   *
+   * Both are needed at once and they are not the same number, which is what
+   * makes a drag read as a drag: the BLOCK follows the pointer freely, because
+   * a block that jumps in fifteen-minute steps feels stuck rather than snapped,
+   * and the GHOST sits on the step it will actually commit to. Drawing both
+   * from the snapped minute put them at exactly the same pixel, so the ghost —
+   * the whole point of which is to say where this lands — was hidden under the
+   * block it was previewing.
+   */
+  const minuteUnderPointer = useCallback(
+    (snap: boolean) => {
+      const state = dragState.current;
+      const canvas = canvasRef.current;
+      if (!state || !canvas) return 0;
+      // Re-read the rect EVERY frame: it folds in the container's own scroll,
+      // which is the one thing the old index-based hit test already got right.
+      const top = canvas.getBoundingClientRect().top;
+      const raw = minuteAt(grid, state.lastClientY - top - state.grabOffsetPx);
+      if (!snap) return clampStart(grid, Math.round(raw), state.floorMin);
+      const step = matchMedia('(pointer: coarse)').matches ? SNAP_MIN_COARSE : SNAP_MIN_FINE;
+      return clampStart(grid, snapTo(raw, step), state.floorMin);
+    },
+    [grid]
+  );
+
+  /** What a release commits to — always the snapped one. */
+  const targetMinute = useCallback(() => minuteUnderPointer(true), [minuteUnderPointer]);
 
   const endDrag = useCallback(
     (commit: boolean) => {
@@ -591,10 +609,12 @@ export function PlannerDayGrid({
         const minute = targetMinute();
 
         // A custom property, never `top`: writing `top` on every frame is layout
-        // on N blocks in a panel that is mounted in every page's layout.
+        // on N blocks in a panel that is mounted in every page's layout. The
+        // UNSNAPPED minute, so the block sits under the finger that is holding
+        // it rather than a step ahead of or behind it.
         state.element.style.setProperty(
           '--pl-drag-dy',
-          `${heightFor(grid, minute - state.startMinute)}px`
+          `${heightFor(grid, minuteUnderPointer(false) - state.startMinute)}px`
         );
 
         // The ghost follows the SNAPPED minute, and only when it changes — so
@@ -609,7 +629,7 @@ export function PlannerDayGrid({
 
       dragState.current.frame = requestAnimationFrame(frame);
     },
-    [endDrag, grid, onSelect, scrollerRef, targetMinute]
+    [endDrag, grid, minuteUnderPointer, onSelect, scrollerRef, targetMinute]
   );
 
   /**

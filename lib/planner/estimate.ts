@@ -167,3 +167,41 @@ export function bandCarriesFigure(day: PlanDay | null | undefined): boolean {
   if (day.tier === 'observed') return false;
   return day.tier === 'measured' || typeof day.leadTimeMae === 'number';
 }
+
+/**
+ * The default a placement falls back to when nothing measured says otherwise.
+ *
+ * Not a claim about any ride — the number the grid itself uses for a block whose
+ * wait is unknown, kept in one place so the search and the panel agree.
+ */
+export const DEFAULT_OCCUPIED_MINUTES = 45;
+
+/**
+ * How long an entry occupies the visitor, for placement arithmetic.
+ *
+ * The reason this exists: the ride search filed every existing entry as 45
+ * minutes when it looked for the next free slot, so a lunch block dragged out to
+ * 85 minutes was read as ending 40 minutes before it does, and the next ride was
+ * placed inside it — landing in a second lane with a conflict ring on it, on the
+ * very gesture the resize was made for. The panel's own custom-block path had
+ * this right and the search did not, which is exactly the kind of disagreement a
+ * shared function is for.
+ *
+ * A free block's duration IS its length; a ridden entry's is what it actually
+ * cost; everything else is the forecast plus its own band, because a block is
+ * drawn that tall and a placement that ignores the band overlaps what a reader
+ * can see. It deliberately does NOT reproduce the grid's `MIN_BLOCK_PX` floor:
+ * that floor is about a block staying legible at 1.2 px/min and says nothing
+ * about how long somebody is busy.
+ */
+export function occupiedMinutes(
+  day: PlanDay | null | undefined,
+  entry: PlannerEntry,
+  fallback = DEFAULT_OCCUPIED_MINUTES
+): number {
+  if (entry.custom) return entry.custom.durationMinutes;
+  if (entry.done) return entry.actualWait ?? fallback;
+  const estimate = estimateFor(day, entry);
+  if (estimate.wait === null) return fallback;
+  return estimate.wait + (estimate.uncertaintyMinutes ?? 0);
+}
