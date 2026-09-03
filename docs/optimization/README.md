@@ -184,6 +184,38 @@ Daten enthält, aber beim nächsten Anfassen der Regel gehört der Schrägstrich
 
 Seitdem entscheidet **allein dieses Repo**, was gecacht wird, und man sieht es im Diff.
 
+#### Was mit den IP-abhängigen Routen ist (geprüft 2026-09-03)
+
+Die naheliegende Sorge bei einem geteilten Cache: eine Seite, die nach der IP des Besuchers
+rendert, wird einmal gerendert und dann allen ausgeliefert. Nachgesehen statt angenommen —
+**es gibt keine solche Seite.**
+
+Die IP wird an genau drei Stellen serverseitig gelesen, alle drei sind Route Handler unter
+`/api/`, und `/api/` ist von der Cloudflare-Regel ausgeschlossen:
+
+| Route                   | `Cache-Control`  | Cloudflare |
+| ----------------------- | ---------------- | ---------- |
+| `/api/nearby`           | `no-store`       | **BYPASS** |
+| `/api/favorites`        | `no-store`       | **BYPASS** |
+| `/api/contribute/start` | `no-store`       | —          |
+| `/api/admin/session`    | (unter `/admin`) | —          |
+
+Doppelt abgesichert also: der Pfad-Ausschluss **und** das `no-store` des Handlers.
+
+**`NearbyParksSection` ist trotz des Namens keine Ausnahme.** Sie ist zwar eine Server
+Component, bekommt aber `park.latitude`/`park.longitude` — die Koordinaten **des Parks**, nicht
+des Besuchers (`park-page-shell.tsx:192`). „Parks in der Nähe dieses Parks" ist für jeden Leser
+dieselbe Antwort und gehört in den Cache.
+
+Alles Besucherabhängige läuft im Client, nach dem Mount: `useNearbyParks`, `useGeolocation`,
+`use-distance-to`, `use-favorites`. Sie holen ihre Daten über die `no-store`-Routen oben, nie
+über den Server-Render.
+
+Die drei APIs mit einem Fenster (`/api/parks/live`, `/api/search`, `/api/weather/hourly`) sind
+**parameterabhängig, nicht nutzerabhängig** — dieselben Query-Werte, dieselbe Antwort. Und
+dazu passend: **keine `set-cookie`** auf einer HTML-Antwort (`proxy.ts:39` entfernt sie), also
+kann auch von dort nichts Personalisiertes in den Cache geraten.
+
 ### Wie es vorher aussah (zur Einordnung)
 
 Aus dem Dashboard abgelesen (Regel **„Park & Ride cache"**), damit sie niemand mehr raten muss:
