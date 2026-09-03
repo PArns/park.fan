@@ -1965,7 +1965,13 @@ export interface PopularPark {
  * A surface MUST render the three differently. A composed curve is not a
  * measured one, and they draw identically unless something is done about it.
  */
-export type PlanDayTier = 'measured' | 'composed' | 'long_range';
+/**
+ * How a curve was produced. `observed` is the one that points BACKWARDS and is
+ * not a forecast at all: a date in the past is answered from what the queues
+ * actually did, out of the nightly 15-minute rollup, so a day somebody already
+ * walked stops predicting at itself.
+ */
+export type PlanDayTier = 'observed' | 'measured' | 'composed' | 'long_range';
 
 export interface PlanDayHour {
   /** Park-local hour, 0–23. */

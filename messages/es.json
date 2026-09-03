@@ -1902,9 +1902,11 @@
       "resizeHandle": "Arrastrar duración"
     },
     "tier": {
+      "observed": "Medido",
       "measured": "Previsión por horas",
       "composed": "De la previsión del día",
       "longRange": "Estimación aproximada",
+      "observedHint": "Este día ya pasó. Las cifras son lo que marcaron realmente las colas.",
       "measuredHint": "El modelo calcula este día hora por hora.",
       "composedHint": "El nivel del día está previsto; el perfil viene de días anteriores.",
       "longRangeHint": "Tan lejos, el nivel del día se vuelve fino. Lee las cifras como una dirección, no como una promesa."

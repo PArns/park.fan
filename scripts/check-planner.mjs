@@ -1350,6 +1350,126 @@ if (reachable) {
   await shows.close();
 }
 
+// ── A day that already happened ─────────────────────────────────────────────
+// The panel offers dates in the past — a plan is a record once it is walked —
+// and the figures on such a day are not a forecast. The API answers
+// `tier: "observed"` there, from the nightly 15-minute rollup, and the panel
+// has to say so: calling a measurement "Stundenprognose" is the panel
+// predicting the past.
+{
+  const past = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
+  noteErrors(past);
+
+  const YESTERDAY = new Date(Date.now() - 86_400_000).toISOString().slice(0, 10);
+  const OPEN = 9;
+  const CLOSE = 18;
+
+  await past.route('**/plan/day**', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        parkSlug: PARK.slug,
+        timezone: 'Europe/Berlin',
+        context: {
+          date: YESTERDAY,
+          status: 'OPERATING',
+          openHour: OPEN,
+          closeHour: CLOSE,
+          crowdLevel: 'moderate',
+          weather: null,
+          isHoliday: false,
+          isBridgeDay: false,
+          isSchoolVacation: false,
+          isWeekend: false,
+        },
+        tier: 'observed',
+        leadDays: -1,
+        leadTimeMae: null,
+        rides: [
+          {
+            attractionSlug: 'taron',
+            attractionName: 'Taron',
+            land: 'Mystery',
+            hours: Array.from({ length: CLOSE - OPEN + 1 }, (_, i) => ({
+              hour: OPEN + i,
+              wait: 25 + i * 5,
+            })),
+            dayPeak: 70,
+            // An observation has no band. A width of zero would be a claim
+            // about precision rather than the absence of one.
+            uncertaintyMinutes: null,
+            sampleDays: 1,
+          },
+        ],
+        shows: [],
+      }),
+    })
+  );
+
+  await past.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  await past.evaluate(
+    ([plan, date]) => {
+      const seeded = JSON.parse(JSON.stringify(plan));
+      const park = seeded.parks.phantasialand;
+      park.timezone = 'Europe/Berlin';
+      park.days = {
+        [date]: {
+          date,
+          entries: [
+            {
+              id: 'taron-1',
+              attractionSlug: 'taron',
+              attractionName: 'Taron',
+              startMinute: 780, // 13:00 — the rollup says 45 minutes there
+            },
+          ],
+        },
+      };
+      seeded.parks = { phantasialand: park };
+      seeded.activeParkSlug = 'phantasialand';
+      seeded.activeDate = date;
+      window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
+      document.cookie = 'planner=1; path=/';
+    },
+    [PLAN, YESTERDAY]
+  );
+  await past.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+  await past.locator(LAUNCHER).click();
+  await past.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await past.waitForTimeout(2500);
+
+  const text = (await past.locator(SHEET).textContent()) ?? '';
+  check(
+    'ein vergangener Tag heißt gemessen, nicht Prognose',
+    /Gemessen/.test(text),
+    text.slice(0, 120)
+  );
+  check('und sagt, dass der Tag vorbei ist', /Dieser Tag ist vorbei/.test(text));
+  // Both forward labels, not just the hourly one: an unknown tier used to fall
+  // through the ternary to `longRange`, so a measured day came out as "Grobe
+  // Schätzung" — wrong in the other direction and just as invisible.
+  check(
+    'kein Prognose-Etikett auf einem gemessenen Tag',
+    !/Stundenprognose/.test(text) && !/Grobe Schätzung/.test(text),
+    text.slice(0, 160)
+  );
+
+  // The block carries the number the queue actually stood at, not a forecast.
+  // 13:00 is the fifth hour of the day, so 25 + 4×5 = 45.
+  const block = past.locator('li[data-planner-entry="taron-1"]');
+  if (await block.count()) {
+    const figure = (await block.first().textContent()) ?? '';
+    check('der Block trägt die echte Wartezeit von damals', /45/.test(figure), figure.trim());
+    // No band around a measurement — the ± figure belongs to a prediction.
+    check('keine Unsicherheitsspanne an einer Messung', !/±/.test(figure), figure.trim());
+  } else {
+    check('der Block trägt die echte Wartezeit von damals', false, 'kein Block');
+  }
+
+  await past.close();
+}
+
 // ── The weather rail ────────────────────────────────────────────────────────
 // A band down the edge of the day and a label only where the weather turns.
 // It lives in the HOUR GUTTER, which is the whole reason it can exist: the

@@ -1902,9 +1902,11 @@
       "resizeHandle": "Trascina la durata"
     },
     "tier": {
+      "observed": "Misurato",
       "measured": "Previsione oraria",
       "composed": "Dalla previsione del giorno",
       "longRange": "Stima approssimativa",
+      "observedHint": "Questa giornata è finita. I numeri sono quelli che le code hanno davvero segnato.",
       "measuredHint": "Il modello calcola questa giornata ora per ora.",
       "composedHint": "Il livello del giorno è previsto, l’andamento viene dai giorni passati.",
       "longRangeHint": "Così in anticipo il livello del giorno stesso si assottiglia. Leggi i numeri come una direzione, non come una promessa."

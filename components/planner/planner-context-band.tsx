@@ -82,19 +82,26 @@ export function PlannerContextBand({ day, state }: PlannerContextBandProps) {
         })
       : null;
 
+  // `observed` first, because it is the one that is not a forecast: on a day
+  // that already happened the figures are what the queues actually did, and
+  // calling that "Stundenprognose" would be the panel predicting the past.
   const tierLabel =
-    tier === 'measured'
-      ? t('tier.measured')
-      : tier === 'composed'
-        ? t('tier.composed')
-        : t('tier.longRange');
+    tier === 'observed'
+      ? t('tier.observed')
+      : tier === 'measured'
+        ? t('tier.measured')
+        : tier === 'composed'
+          ? t('tier.composed')
+          : t('tier.longRange');
 
   const tierHint =
-    tier === 'measured'
-      ? t('tier.measuredHint')
-      : tier === 'composed'
-        ? t('tier.composedHint')
-        : t('tier.longRangeHint');
+    tier === 'observed'
+      ? t('tier.observedHint')
+      : tier === 'measured'
+        ? t('tier.measuredHint')
+        : tier === 'composed'
+          ? t('tier.composedHint')
+          : t('tier.longRangeHint');
 
   const crowd = context.crowdLevel;
   const hasCrowd = Boolean(crowd) && crowd !== 'closed';
