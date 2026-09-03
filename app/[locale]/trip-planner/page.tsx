@@ -16,6 +16,7 @@ import type { PolaroidPhoto } from '@/components/planner/planner-polaroids';
 import { getParkBackground } from '@/lib/media';
 import { focusToObjectPosition, versionedSrc } from '@/lib/media/focus';
 import { plannerFlag } from '@/flags';
+import { PLANNER_ENABLED } from '@/lib/config/features';
 import { notFound } from 'next/navigation';
 
 interface PlannerPageProps {
@@ -97,7 +98,7 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
   // The same kill switch the launcher and the two add controls are behind. A
   // page that renders a feature nobody can reach is worse than a 404: the menu
   // would still link to it.
-  if (!(await plannerFlag())) notFound();
+  if (!PLANNER_ENABLED || !(await plannerFlag())) notFound();
 
   const t = await getTranslations('planner.page');
   const photos = polaroidPhotos();

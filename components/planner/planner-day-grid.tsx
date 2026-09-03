@@ -595,14 +595,30 @@ export function PlannerDayGrid({
     [endDrag, grid, onSelect, scrollerRef, targetMinute]
   );
 
+  /**
+   * Cancel a drag the page is about to lose — and ONLY then.
+   *
+   * The listener reads `endDrag` through a ref so this effect can depend on
+   * nothing. Depending on `endDrag` directly made the cleanup run whenever its
+   * identity changed, and it changes on `onMove` — which the parent hands down
+   * fresh after the `onSelect` this very gesture calls. So starting a drag
+   * re-rendered the parent, re-ran the effect, and the cleanup cancelled the
+   * drag one frame after it began: every grip press ended in `endDrag(false)`
+   * before a single rAF frame had run.
+   */
+  const endDragRef = useRef(endDrag);
   useEffect(() => {
-    const stop = () => endDrag(false);
+    endDragRef.current = endDrag;
+  });
+
+  useEffect(() => {
+    const stop = () => endDragRef.current(false);
     document.addEventListener('visibilitychange', stop);
     return () => {
       document.removeEventListener('visibilitychange', stop);
-      endDrag(false);
+      endDragRef.current(false);
     };
-  }, [endDrag]);
+  }, []);
 
   const snapStep =
     typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches

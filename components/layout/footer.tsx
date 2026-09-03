@@ -9,6 +9,7 @@ import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
+import { PLANNER_ENABLED } from '@/lib/config/features';
 import { getCurrentYear } from '@/lib/utils/server-time';
 import type { Locale } from '@/i18n/config';
 
@@ -430,15 +431,19 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
             >
               {t('howto')}
             </Link>
-            <span className="text-muted-foreground/60 flex items-center">•</span>
-            <Link
-              href={plannerPath}
-              prefetch={false}
-              className="hover:text-foreground inline-flex items-center text-sm transition-colors max-sm:min-h-11"
-              aria-label={t('planner')}
-            >
-              {t('planner')}
-            </Link>
+            {PLANNER_ENABLED && (
+              <>
+                <span className="text-muted-foreground/60 flex items-center">•</span>
+                <Link
+                  href={plannerPath}
+                  prefetch={false}
+                  className="hover:text-foreground inline-flex items-center text-sm transition-colors max-sm:min-h-11"
+                  aria-label={t('planner')}
+                >
+                  {t('planner')}
+                </Link>
+              </>
+            )}
             <span className="text-muted-foreground/60 flex items-center">•</span>
             <Link
               href={glossaryPath}

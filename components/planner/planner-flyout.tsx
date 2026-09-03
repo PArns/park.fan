@@ -288,6 +288,19 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
         // at the bottom would sit under it.
         className={cn(
           'flex w-full flex-col gap-0 p-0 max-sm:rounded-t-xl sm:max-w-md',
+          // Glass, like the header's menu band: a translucent dark ground with
+          // a real gaussian blur behind it, so the page keeps showing through
+          // while the plan stays readable over a park photo. `/80` rather than
+          // the `/95` the menu uses — a panel this tall is mostly its own
+          // background, and at /95 the blur is doing nothing anybody can see.
+          //
+          // The blur is why nothing here may put a `transform` or an `opacity`
+          // on the panel or an ancestor: either makes it a backdrop root and
+          // the blur goes flat. The open animation is an `animation`, which
+          // leaves nothing behind once it has run, so the glass is only flat
+          // while it slides.
+          'bg-background/80 supports-[backdrop-filter]:bg-background/70 backdrop-blur-2xl',
+          'border-border/70 max-sm:border-t sm:border-l',
           // The handle's whole job. `svh` for the same reason the cap already
           // used it: on iOS `vh` counts the address bar and the summary row
           // would sit under it.
@@ -406,7 +419,18 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 this wrapper, so selecting a block costs no layout at all and cannot
                 resize the grid's box — which is the only arrangement in which the
                 44 px touch tier and an honest 20 px block can both hold. */}
-            <div className="relative flex min-h-0 flex-1 flex-col">
+            {/* A FLOOR under the grid, and it is the difference between a
+                planner and a search box. Every sibling in this column is
+                `shrink-0`, so `flex-1` gave the grid whatever the others left
+                over — on a 390 x 844 phone the ride search alone took 444 px of
+                a 717 px sheet and the grid's scroller was left with a client
+                height of **16 px**. The blocks were still laid out and still
+                reported a box, so nothing looked broken from the outside; they
+                were simply clipped away, which is why no drag worked on a phone
+                at all while both worked on a desktop. 216 px is three hours at
+                the grid's own 1.2 px/min — enough to see a block, grab it and
+                move it somewhere. The ride search below gives way instead. */}
+            <div className="relative flex min-h-0 flex-1 flex-col max-sm:min-h-[216px]">
               <div
                 ref={scrollerRef}
                 className={cn(
@@ -546,7 +570,12 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             shown on desktop: typing a name beats hunting for its card, and the
             list is the day's own rides either way. */}
             {park && activeDate && (
-              <div className="shrink-0">
+              /* NOT `shrink-0`, unlike its neighbours: this is the block that
+                 has to give way when the sheet runs out of room, or the floor
+                 above it just moves the overflow onto the summary row. It keeps
+                 a cap so it cannot take the sheet on a tall phone either, and
+                 scrolls inside itself past that. */
+              <div className="min-h-0 shrink overflow-y-auto overscroll-y-contain max-sm:max-h-[46svh]">
                 <PlannerRideSearch
                   parkSlug={park.slug}
                   parkName={park.name}

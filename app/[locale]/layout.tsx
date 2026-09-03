@@ -16,6 +16,7 @@ import { Providers } from '@/lib/providers';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { PlannerLauncher } from '@/components/planner/planner-launcher';
+import { PLANNER_ENABLED } from '@/lib/config/features';
 import { hasPublishedPosts } from '@/lib/blog/listing';
 import { getGeoMenu } from '@/lib/navigation/geo-menu';
 import { getBlogMenu } from '@/lib/navigation/blog-menu';
@@ -304,7 +305,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
               {/* Fixed, so it is outside the flow and reserves nothing — and it
                   renders nothing at all until the visitor has planned something,
                   which on the server is always. */}
-              <PlannerLauncher />
+              {PLANNER_ENABLED && <PlannerLauncher />}
             </NextIntlClientProvider>
           </Providers>
         </ThemeProvider>
