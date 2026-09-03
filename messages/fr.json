@@ -2013,10 +2013,10 @@
     },
     "page": {
       "kicker": "Planificateur",
-      "title": "Votre journée au parc, réglée à l’avance",
+      "title": "Votre journée au parc d’attractions, réglée à l’avance",
       "lead": "Indiquez les attractions que vous voulez faire : le planificateur calcule avec les temps d'attente prévus si la journée tient debout. Tout reste dans votre navigateur, sans compte.",
-      "metaTitle": "Planificateur – organiser la journée selon les temps d'attente | park.fan",
-      "metaDescription": "Organisez votre journée avec les temps d'attente prévus : placez les attractions sur une frise, vérifiez le temps de transfert, glissez les spectacles et les pauses entre.",
+      "metaTitle": "Planifier sa journée au parc d’attractions | park.fan",
+      "metaDescription": "Organisez votre journée au parc d’attractions avec les temps d’attente prévus : attractions sur une frise, temps de transfert, spectacles et pauses.",
       "yourPlans": "{count, plural, one {Une journée planifiée} other {# journées planifiées}}",
       "introTitle": "Rien de planifié pour l’instant",
       "introBody": "Le planificateur place vos attractions sur une frise et inscrit sur chacune l'attente prévue pour cette heure-là. Entre deux, il indique le temps qu'il vous reste pour traverser, et si cela devient juste.",

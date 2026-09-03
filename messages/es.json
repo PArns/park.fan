@@ -2013,10 +2013,10 @@
     },
     "page": {
       "kicker": "Planificador",
-      "title": "Tu día en el parque, ordenado antes",
+      "title": "Tu día en el parque de atracciones, ordenado antes",
       "lead": "Di qué atracciones quieres y el planificador calcula con los tiempos previstos si el día cuadra. Todo se queda en tu navegador, sin cuenta.",
-      "metaTitle": "Planificador – organiza el día con los tiempos de espera | park.fan",
-      "metaDescription": "Organiza tu día con los tiempos de espera previstos: coloca atracciones en una línea de tiempo, comprueba los traslados y encaja espectáculos y descansos.",
+      "metaTitle": "Planificar el día en el parque de atracciones | park.fan",
+      "metaDescription": "Organiza tu día en el parque de atracciones con los tiempos de espera previstos: atracciones en una línea de tiempo, traslados, espectáculos y pausas.",
       "yourPlans": "{count, plural, one {Un día planificado} other {# días planificados}}",
       "introTitle": "Todavía no hay nada planificado",
       "introBody": "El planificador pone tus atracciones en una línea de tiempo y escribe en cada una la espera prevista para esa hora. Entre ellas indica cuánto tiempo tienes para cruzar, y si va justo.",

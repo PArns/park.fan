@@ -2013,10 +2013,10 @@
     },
     "page": {
       "kicker": "Trip planner",
-      "title": "Your day in the park, sorted out first",
+      "title": "Your day at the theme park, sorted out first",
       "lead": "Say which rides you want, and the planner works out with the forecast waits whether the day adds up. Everything stays in your browser — no account needed.",
-      "metaTitle": "Trip planner – plan around the wait times | park.fan",
-      "metaDescription": "Plan a park day against the forecast waits: drop rides onto a timeline, check how much time each transfer leaves, and fit shows and breaks in between.",
+      "metaTitle": "Theme park day planner: plan around wait times | park.fan",
+      "metaDescription": "Plan a theme park day against the forecast wait times: drop rides onto a timeline, check every transfer, and fit shows and breaks in between. No account.",
       "yourPlans": "{count, plural, one {One planned day} other {# planned days}}",
       "introTitle": "Nothing planned yet",
       "introBody": "The planner lays your rides on a timeline and puts the wait forecast for that hour on each one. Between them it says how long you have to get across, and whether that is cutting it fine.",
