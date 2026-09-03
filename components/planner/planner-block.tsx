@@ -91,6 +91,16 @@ interface PlannerBlockProps {
   selected?: boolean;
   dragging?: boolean;
   conflict?: boolean;
+  /**
+   * A preview of where a drag would land, not a block in the plan.
+   *
+   * Translucent and inert. It is a whole block rather than an outline because
+   * the thing a visitor is deciding is what they GET at the new time: the wait
+   * is recomputed for that minute, so the ghost's height and its colour are the
+   * answer, and an outline of the old height would be the wrong answer drawn
+   * confidently.
+   */
+  ghost?: boolean;
   onSelect: () => void;
   onDragStart: (event: React.PointerEvent<HTMLElement>) => void;
   /** Free blocks only: dragging the bottom edge sets the duration. */
@@ -133,6 +143,7 @@ export function PlannerBlock({
   selected = false,
   dragging = false,
   conflict = false,
+  ghost = false,
   onSelect,
   onDragStart,
   onResizeStart,
@@ -213,9 +224,33 @@ export function PlannerBlock({
       // keyboard path is the range input, which is a real control; this is the
       // pointer affordance for the same thing.
       onClick={onSelect}
+      // And dragging anywhere on it MOVES it, on a fine pointer only. The grip's
+      // own comment has claimed "a rail on a coarse pointer, the whole body on a
+      // fine one" since it was written, and the body half of that was never
+      // wired: a mouse drag anywhere but the 24 px rail did nothing.
+      //
+      // Fine pointers only, and that is not a preference. `touch-none` is what
+      // lets a drag win over the browser's own scrolling, and a block covers most
+      // of the grid's area — putting it on the body would make the plan
+      // unscrollable with a finger exactly where it is read. So a touch device
+      // keeps the 44 px rail, which is why the rail exists.
+      onPointerDown={(event) => {
+        if (event.button !== 0) return;
+        if (!matchMedia('(pointer: fine)').matches) return;
+        // The rail and the resize edge start their own drags; a press that began
+        // on one of those has already been handled.
+        if ((event.target as HTMLElement).closest('button, input')) return;
+        onDragStart(event);
+      }}
       className={cn(
         'group absolute',
         dragging && 'z-30 opacity-90 shadow-lg',
+        // A preview, and it may not be mistaken for the plan: half opacity, a
+        // dashed primary ring so it reads as "would land here", and inert —
+        // `pointer-events-none` covers the grip, the resize edge and the range
+        // input in one place, so the ghost cannot be grabbed, focused or
+        // tabbed to while the real block is under the pointer.
+        ghost && 'pointer-events-none z-20 opacity-50 outline-2 outline-dashed outline-primary/70',
         // The tone recomputes on every move — `estimate.wait` is a function of
         // `startMinute` — so the colour DOES follow a block across the day. It
         // just arrived in a single frame, at the instant the eye was on the
@@ -362,7 +397,23 @@ export function PlannerBlock({
           value={entry.startMinute}
           aria-label={`${custom ? custom.label : entry.attractionName} — ${range}`}
           onChange={(event) => onMove(Number(event.target.value))}
-          className="absolute inset-y-0 left-0 z-20 w-6 cursor-pointer appearance-none bg-transparent opacity-0 max-sm:w-11"
+          /* `pointer-events-none`, and that one word is the whole reason blocks
+             could not be dragged. This input is invisible (`opacity-0`) and sits
+             at z-20 over the grip button at z-10 in the SAME column, so every
+             pointer press in the grip landed on a slider instead of on
+             `onPointerDown={onDragStart}`. Measured: on a phone a 90 px drag
+             moved the block from 600 to 600 on both the grip and the body; on a
+             desktop it moved 600 to 840, which is not a success either — 90 px
+             at 1.2 px/min is 75 minutes, so the honest answer was 675, and 840
+             is a horizontal slider whose whole day-long range is mapped across
+             24 px of width.
+
+             The input STAYS, because it is the keyboard path and its `min`/`max`
+             are the opening clamp enforced by the platform rather than by a
+             handler. `pointer-events: none` removes it from hit-testing only:
+             it keeps its place in the tab order, and arrow keys still move the
+             block by `step`. */
+          className="pointer-events-none absolute inset-y-0 left-0 z-20 w-6 cursor-pointer appearance-none bg-transparent opacity-0 focus-visible:pointer-events-auto max-sm:w-11"
         />
 
         <div className="pointer-events-none relative min-w-0 flex-1 px-1.5 py-0.5 pl-2.5">

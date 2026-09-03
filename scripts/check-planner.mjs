@@ -684,39 +684,38 @@ if (await phoneLauncher.count()) {
     // pixels further down (`inBlock: false`), and the run called it a grip that
     // could not be touched. The desktop pass had always been fine because
     // nothing there scrolls the first block away.
-    // SEVERAL points down the grip's column, and reachable at ANY of them is
-    // reachable. One mid-height sample cannot tell a covered grip from a
-    // sample point that happens to sit under a sticky layer, and this panel has
-    // two: the show band at `sticky top-0 z-40` and the action bar at
-    // `bottom-0 z-40`. Measured on a 390 px phone, the first block sat 342–366
-    // with the band pinned at 354–376 — twelve pixels of it covered, twelve
-    // free, and the one sample landed in the covered half. Two earlier versions
-    // of this probe reported "BUTTON" and then "DIV" for a grip that the element
-    // stack shows intact: the transparent range input at z-20 and the
-    // `cursor-grab` button at z-10, both inside the block, both
-    // `pointer-events: auto`.
+    // The GRIP itself, asked of Playwright, rather than a point sampled off the
+    // block. `click({ trial: true })` runs the full actionability chain —
+    // visible, stable, enabled, RECEIVES EVENTS — scrolls the element in on its
+    // own, and when something intercepts it names that element in the error.
+    // That is exactly the question, and it is the one thing this probe never
+    // asked: three earlier versions hit-tested a coordinate and were wrong three
+    // times, first at a block the grid had scrolled away (a suggestion pill in
+    // the ride search, "BUTTON"), then flush under the show band at
+    // `sticky top-0 z-40` ("DIV"), then out of the scroller again while still
+    // inside the viewport, which `getBoundingClientRect` cannot tell you because
+    // it knows nothing about a clipping ancestor.
     //
-    // Still `elementFromPoint` and not a bounding box, for the reason the first
-    // version gives: on a short block the target is grown by an `after:`
-    // pseudo-element that no box reports.
-    const hit = await phone.evaluate(() => {
-      const block = document.querySelector('li[data-planner-block]');
-      if (!block) return 'no block';
-      const box = block.getBoundingClientRect();
-      if (box.width < 1 || box.height < 1) return 'no box';
-      const inside = (y) => y >= 0 && y <= window.innerHeight;
-      const ys = [0.15, 0.35, 0.5, 0.65, 0.85].map((f) => box.top + box.height * f).filter(inside);
-      if (ys.length === 0) return 'außerhalb des Sichtfelds';
-      const seen = [];
-      for (const y of ys) {
-        const el = document.elementFromPoint(box.left + 8, y);
-        if (el?.closest('li[data-planner-block]')) return 'grip';
-        seen.push(el?.tagName ?? 'nothing');
-      }
-      // What covered it, at every point, so a real regression names its culprit.
-      return seen.join('/');
-    });
-    check('Griff ist auf dem Handy treffbar', hit === 'grip', hit);
+    // The grip has a stable hook of its own, `aria-label="Verschieben"`, and it
+    // carries the phone touch floor as `max-sm:w-11` — 44 px, the width
+    // `globals.css` documents and `controls.tsx` uses. Both are asserted, and
+    // the width is the deterministic half: a grip that shrinks below the floor
+    // is a real regression whatever any hit test says.
+    const grip = phoneBlocks.first().locator('button[aria-label="Verschieben"]');
+    check('der Block hat genau einen Griff', (await grip.count()) === 1, `${await grip.count()}`);
+    if ((await grip.count()) === 1) {
+      const gripBox = await grip.boundingBox();
+      check(
+        'der Griff hält die Touch-Breite',
+        Math.round(gripBox?.width ?? 0) >= 44,
+        `${Math.round(gripBox?.width ?? 0)} px`
+      );
+      const reachable = await grip
+        .click({ trial: true, timeout: 10_000 })
+        .then(() => 'erreichbar')
+        .catch((error) => String(error.message).split('\n')[0].slice(0, 120));
+      check('Griff ist auf dem Handy treffbar', reachable === 'erreichbar', reachable);
+    }
   } else {
     // No opening hours (which is what a 404 leaves), so the grid cannot draw and
     // the flat list is the honest fallback. It carries no grip by design: with
