@@ -1112,12 +1112,19 @@ const nextConfig: NextConfig = {
         // cache tag at every status flip (see the API-budget rule in CLAUDE.md), and a long edge
         // window is exactly what would swallow that. An hour still collapses a crawl burst.
         //
-        // Measured 2026-09-03, and it is the stronger of the two reasons: a park page carries
-        // today's date ONCE in its markup and **49 times in its FAQPage JSON-LD** — "Heute,
-        // Sonntag, 30. August 2026, hat der Park … geöffnet", the sentence CLAUDE.md names as
-        // the reason Google prints "vor 6 Tagen" beside this site's own results. Every other
+        // Measured 2026-09-03, and it is the stronger of the two reasons — this page is
+        // day-bound in its CONTENT, not merely in a phrasing that could be rewritten:
+        //
+        //   - a visible sentence naming the WEEKDAY: "Heute, Donnerstag, 3. September 2026 …",
+        //     the shape CLAUDE.md names as the reason Google prints "vor 6 Tagen" beside this
+        //     site's own results
+        //   - today's date 49 times across its JSON-LD: `AmusementPark`, the FAQ graph (36),
+        //     and four `Event` blocks
+        //   - today's opening hours, which are the point of the page
+        //
+        // None of it is client-replaced: JSON-LD and the FAQ are server-rendered. Every other
         // page that moved to a day on this date (blog, glossary, guide hubs, homepage) carries
-        // it ZERO times. That check is what decided which pages came along, not a judgement.
+        // the date ZERO times. That check is what decided which pages came along, not taste.
         source: `/:locale(${locales.join('|')})/parks/:continent/:country/:city/:park`,
         headers: [
           {
@@ -1162,10 +1169,15 @@ const nextConfig: NextConfig = {
         {
           // The HUB, deliberately short and deliberately listed AFTER the month rule so the
           // more specific source wins. The hub has no month in its URL: it renders the park's
-          // CURRENT month and dates its own summary against the park's clock, so a day-long
-          // copy serves September's grid on 1 October under a title that says September. An
-          // hour is enough to collapse a crawl burst and short enough that no reader meets a
-          // month boundary inside it.
+          // CURRENT month, and measured 2026-09-03 that month sits in the `<title>`, the `<h1>`
+          // and eight places in the markup — none of them client-replaced, unlike the grid
+          // below them. A day-long copy made on 30 September would therefore be served on
+          // 1 October under a heading that says September, above a calendar showing October.
+          //
+          // Unlike the park page above, this is a PHRASING problem rather than a content one:
+          // a month-free title ("Wartezeiten-Kalender") would let the hub take the same day as
+          // everything else. It is not worth an SEO title for 1,278 URLs (213 parks × 6
+          // locales) — but that, and not the date itself, is what keeps it here.
           source: `/${locale}/parks/:continent/:country/:city/:park/${segment}`,
           headers: [
             {
