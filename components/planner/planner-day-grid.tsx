@@ -408,14 +408,6 @@ export function PlannerDayGrid({
             {formatGridTime(hour * 60)}
           </span>
         ))}
-        {grid.closeIsTruncated && (
-          <span
-            className="text-muted-foreground/70 absolute right-1 translate-y-1 text-[10px] whitespace-nowrap"
-            style={{ top: yFor(grid, grid.closeMin) }}
-          >
-            {t('grid.closesApprox', { time: formatGridTime(grid.closeMin) })}
-          </span>
-        )}
         {showLines !== null &&
           showLinePositions(
             grid,
@@ -448,6 +440,21 @@ export function PlannerDayGrid({
         style={{ height: grid.heightPx }}
       >
         <PlannerGridGround grid={grid} rushByHour={rushByHour} dense={dense} loading={loading} />
+
+        {/* "closes approximately" is a SENTENCE, and it lived in a 40 px gutter.
+            It needs 50 px in German and 73 px in Italian, so all six locales were
+            cut off at the left — invisibly, because leftward overflow in an LTR
+            scroller never reaches `scrollWidth` and nothing can report it. It
+            belongs to the whole row rather than to the time column anyway, so it
+            is a caption on the canvas now, where a sentence has room to be one. */}
+        {grid.closeIsTruncated && (
+          <span
+            className="text-muted-foreground/70 pointer-events-none absolute left-0 z-10 translate-y-1 text-[10px] whitespace-nowrap"
+            style={{ top: yFor(grid, grid.closeMin) }}
+          >
+            {t('grid.closesApprox', { time: formatGridTime(grid.closeMin) })}
+          </span>
+        )}
 
         {/* Shows as lines across the grid, UNDER the blocks (`z-10` against the
             blocks' `10 + column`) so a line never buries a name. The time goes
