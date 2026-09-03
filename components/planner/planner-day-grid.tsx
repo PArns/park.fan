@@ -61,6 +61,9 @@ const LIVE_WINDOW_MIN = 45;
 /** Five minutes, like every displayed wait in this app. */
 const RESIZE_STEP_MIN = 5;
 
+/** A stable zero — a fresh arrow per render would defeat the store's caching. */
+const getZero = () => 0;
+
 const EDGE_PX = 48;
 const MAX_SCROLL_SPEED = 12;
 
@@ -93,6 +96,21 @@ let minuteTimer: number | null = null;
 
 function getMinuteTick(): number {
   return minuteTick;
+}
+
+/**
+ * The subscription a grid takes when there is no now line to move.
+ *
+ * A hook cannot be called conditionally, but the SUBSCRIBE function can decline
+ * to subscribe — and it must, because the tick was installed unconditionally: on
+ * any date that is not today, which is nearly every date somebody plans, the
+ * panel ran a 60-second interval and re-rendered the whole grid once a minute
+ * for a line it never draws. The layout memo was safe (its `nowMinute`
+ * dependency stays `null`), but every block, leg and show pill re-rendered
+ * anyway, forever, while the panel was open.
+ */
+function subscribeToNothing(): () => void {
+  return () => {};
 }
 
 /**
@@ -141,7 +159,11 @@ export function PlannerDayGrid({
   // IS an external source that changes on its own — and because its server
   // snapshot is `null`, so the line is never in the first HTML for a client to
   // disagree with.
-  const nowTick = useSyncExternalStore(subscribeToMinute, getMinuteTick, () => 0);
+  const nowTick = useSyncExternalStore(
+    isToday ? subscribeToMinute : subscribeToNothing,
+    isToday ? getMinuteTick : getZero,
+    getZero
+  );
   const nowMinute = useMemo(
     () => (isToday && nowTick >= 0 ? parkMinuteNow(timezone) : null),
     // `nowTick` is the dependency that makes this recompute each minute.
