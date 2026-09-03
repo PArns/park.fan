@@ -1902,9 +1902,11 @@
       "resizeHandle": "Duur slepen"
     },
     "tier": {
+      "observed": "Gemeten",
       "measured": "Uurprognose",
       "composed": "Uit de dagprognose",
       "longRange": "Ruwe schatting",
+      "observedHint": "Deze dag is voorbij. De cijfers zijn wat er echt bij de rijen stond.",
       "measuredHint": "Het model rekent deze dag per uur uit.",
       "composedHint": "De hoogte van de dag is voorspeld, het verloop komt uit eerdere dagen.",
       "longRangeHint": "Zo ver vooruit wordt de hoogte van de dag zelf dun. Lees de cijfers als richting, niet als toezegging."

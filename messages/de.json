@@ -1902,9 +1902,11 @@
       "resizeHandle": "Dauer ziehen"
     },
     "tier": {
+      "observed": "Gemessen",
       "measured": "Stundenprognose",
       "composed": "Aus Tagesprognose",
       "longRange": "Grobe Schätzung",
+      "observedHint": "Dieser Tag ist vorbei. Die Zahlen sind, was an den Warteschlangen wirklich stand.",
       "measuredHint": "Das Modell rechnet diesen Tag stundengenau.",
       "composedHint": "Die Tageshöhe ist vorhergesagt, der Verlauf kommt aus früheren Tagen.",
       "longRangeHint": "So weit im Voraus wird die Tageshöhe selbst dünn. Nimm die Zahlen als Richtung, nicht als Zusage."

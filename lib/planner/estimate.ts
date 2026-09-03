@@ -160,5 +160,10 @@ export function totalsFor(
  */
 export function bandCarriesFigure(day: PlanDay | null | undefined): boolean {
   if (!day) return false;
+  // An observed day has no band to carry a figure: the API sends
+  // `uncertaintyMinutes: null` on every ride of it, because a measurement has no
+  // spread. Saying so here rather than leaning on that keeps the two halves of
+  // the statement in one place.
+  if (day.tier === 'observed') return false;
   return day.tier === 'measured' || typeof day.leadTimeMae === 'number';
 }
