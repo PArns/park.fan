@@ -47,10 +47,23 @@ const sharedCache = (value: string) => [
  */
 const edgeCache = (value: string) => [{ key: 'CDN-Cache-Control', value }];
 
-/** One hour fresh, a week of serving stale while it refreshes. The default for content pages. */
-const CONTENT_WINDOW = 'public, s-maxage=3600, stale-while-revalidate=604800';
-/** For documents a machine polls rather than a person reads (sitemaps, feeds, agent files). */
-const MACHINE_WINDOW = 'public, s-maxage=3600, stale-while-revalidate=86400';
+/**
+ * A day fresh, an hour of stale on top. The default for anything whose content only moves when
+ * a deploy moves it: blog, glossary, the guide hubs, the legal pages, the contribute form.
+ *
+ * It was an hour until 2026-09-03, out of respect for the fact that NOTHING in either repo can
+ * purge Cloudflare — a deploy would otherwise stay invisible for as long as the window runs.
+ * The owner takes that trade knowingly and purges by hand after a deploy that has to be seen
+ * immediately, which is what buys the other 23 hours.
+ *
+ * The pages that did NOT come along are the two that date themselves, and the check is in the
+ * markup rather than in an opinion: a park page carries the current date once in its markup and
+ * **49 times in its FAQPage JSON-LD**, and the calendar hub renders whichever month is current.
+ * Both stay at an hour. Blog, glossary, guide and homepage carry the date zero times.
+ */
+const CONTENT_WINDOW = 'public, s-maxage=86400, stale-while-revalidate=3600';
+/** Same window for documents a machine polls rather than a person reads (sitemaps, feeds, agent files). */
+const MACHINE_WINDOW = 'public, s-maxage=86400, stale-while-revalidate=3600';
 
 /**
  * The localized URL segments for the three routes that live on a localized slug.
@@ -961,7 +974,7 @@ const nextConfig: NextConfig = {
         // overlay replaces on mount, but the seed is what a crawler reads and what a reader
         // sees before hydration.
         source: `/:locale(${locales.join('|')})`,
-        headers: edgeCache('public, s-maxage=3600, stale-while-revalidate=86400'),
+        headers: edgeCache(CONTENT_WINDOW),
       },
       {
         // The whole blog: index, categories, tags, authors and the posts. One rule, because
@@ -991,7 +1004,7 @@ const nextConfig: NextConfig = {
         // Legal pages. A day fresh — they change once a year, and when they do, being an hour
         // late is not the risk; being a week late is.
         source: '/:locale/:page(impressum|datenschutz)',
-        headers: edgeCache('public, s-maxage=86400, stale-while-revalidate=604800'),
+        headers: edgeCache(CONTENT_WINDOW),
       },
       // The machine-facing surface. Nothing on the site renders any of it (see the agent-surface
       // rule in CLAUDE.md), so a wrong window here is invisible — which is exactly why the
@@ -1008,12 +1021,28 @@ const nextConfig: NextConfig = {
         '/rss.xml',
         '/manifest.webmanifest',
       ].map((source) => ({ source, headers: edgeCache(MACHINE_WINDOW) })),
+      {
+        // The contribute form and its thank-you page. This pair was left out of the first pass
+        // with the note "a cached challenge is a challenge already solved" — which is wrong, and
+        // measurably so. `TurnstileWidget` is `'use client'` and injects Cloudflare's script from
+        // the browser; the HTML carries the PUBLIC site key and no token, so there is nothing in
+        // it that belongs to one visitor. Both routes have `generateStaticParams()`.
+        //
+        // The cost of that mistake is written down one file over, in this route's own docblock:
+        // every park and ride page links here through `buildContributeHref`, which mints one
+        // crawlable URL per entity, and over 24 h the page took **4 K requests and 154 MB — more
+        // than the park pages themselves**. The `rel="nofollow"` on those links stops new ones
+        // being walked; this is the half that stops paying for the ones already indexed.
+        //
+        // The query string stays in Cloudflare's cache key, so a prefilled variant and the bare
+        // page are separate entries and nobody gets somebody else's preselection.
+        source: '/:locale/contribute/:path*',
+        headers: edgeCache(CONTENT_WINDOW),
+      },
       // NOT listed, on purpose:
       //   /:locale/search          — answers `no-store` and must keep doing so; a query-keyed
       //                              page shared across readers is a privacy question, not a
       //                              cache question.
-      //   /:locale/contribute      — a form behind a Turnstile challenge. A cached challenge is
-      //                              a challenge already solved.
       //   /admin, /api, /dev       — the Cloudflare rule excludes the first two by hand; giving
       //                              any of them a window here would be the way to undo that.
       // The RIDE page and the PARK page, the two highest-invocation routes in the app. Listed
@@ -1038,21 +1067,31 @@ const nextConfig: NextConfig = {
       // Still missing at the time of writing: the geo hubs (`/:locale/parks`, `/…/:continent`,
       // `/…/:country`, `/…/:city`). See docs/optimization/README.md.
       {
-        // A ride page. Two days, and this is the longest window on the site on purpose: the
-        // crawl interval for these URLs is ~42 h against an edge TTL of ~6-12 h today, so the
-        // cache can never fill — measured hit rate 10 % against a 22 % ceiling. What the page
-        // renders that moves at all (wait time, status) is replaced on mount by the client poll;
-        // what is served from HTML is the curated ride, which changes when an editor changes it.
+        // A ride page. A day fresh and only an hour of staleness on top, and BOTH numbers are
+        // the point — the ceiling on how old a served copy can be is their SUM, not the first
+        // of them. It started at 48 h + 24 h, which is 72 h, on a page whose own title says
+        // "Wartezeiten LIVE".
         //
-        // The price, stated plainly: NOTHING in this repo or the backend can purge Cloudflare,
-        // so a curated correction stays invisible for as long as this window runs. Two days is
-        // the first step, not the ceiling — raising it further wants a Cloudflare purge in
-        // `/api/revalidate` first.
+        // That sum matters more here than anywhere else on the site, because on a long-tail
+        // ride URL the crawler is usually the ONLY visitor: it gets the stale copy and triggers
+        // the refresh that only the next crawl, ~42 h later, would benefit from. A long
+        // stale window therefore does not shorten what a crawler sees — it is exactly what a
+        // crawler sees, every time.
+        //
+        // What that costs: the hit ceiling against a ~42 h crawl interval drops from ~53 % to
+        // ~36 %. What it buys: the one self-dating element in the rendered markup — an
+        // `Aktualisiert <time>` stamp, a clock time with the full ISO date in its attribute —
+        // is never more than a day behind. (The park page carries a full written-out date in
+        // its FAQ text and its FAQPage JSON-LD, which is why that one sits at an hour.)
+        //
+        // No measured ranking effect exists in either direction; what is real is the snippet
+        // and what a reader sees before hydration. Raising this again wants a Cloudflare purge
+        // in `/api/revalidate` first — nothing in this repo or the backend can purge it today.
         source: `/:locale(${locales.join('|')})/parks/:continent/:country/:city/:park/:attraction`,
         headers: [
           {
             key: 'CDN-Cache-Control',
-            value: 'public, s-maxage=172800, stale-while-revalidate=86400',
+            value: 'public, s-maxage=86400, stale-while-revalidate=3600',
           },
         ],
       },
@@ -1066,50 +1105,79 @@ const nextConfig: NextConfig = {
         // window falls back to the page's own `no-store` and stops being cached at all. This
         // block plus the two above plus the calendar block is that prefix, complete.
         source: `/:locale(${locales.join('|')})/parks/:continent?/:country?/:city?`,
-        headers: [
-          {
-            key: 'CDN-Cache-Control',
-            value: 'public, s-maxage=3600, stale-while-revalidate=86400',
-          },
-        ],
+        headers: edgeCache(CONTENT_WINDOW),
       },
       {
         // A park page. An hour, not the ride page's two days: the backend POSTs this park's own
         // cache tag at every status flip (see the API-budget rule in CLAUDE.md), and a long edge
         // window is exactly what would swallow that. An hour still collapses a crawl burst.
+        //
+        // Measured 2026-09-03, and it is the stronger of the two reasons — this page is
+        // day-bound in its CONTENT, not merely in a phrasing that could be rewritten:
+        //
+        //   - a visible sentence naming the WEEKDAY: "Heute, Donnerstag, 3. September 2026 …",
+        //     the shape CLAUDE.md names as the reason Google prints "vor 6 Tagen" beside this
+        //     site's own results
+        //   - today's date 49 times across its JSON-LD: `AmusementPark`, the FAQ graph (36),
+        //     and four `Event` blocks
+        //   - today's opening hours, which are the point of the page
+        //
+        // None of it is client-replaced: JSON-LD and the FAQ are server-rendered. Every other
+        // page that moved to a day on this date (blog, glossary, guide hubs, homepage) carries
+        // the date ZERO times. That check is what decided which pages came along, not taste.
         source: `/:locale(${locales.join('|')})/parks/:continent/:country/:city/:park`,
         headers: [
           {
+            // An hour of stale, not a day: the ceiling is the SUM, and 1 h + 24 h would be 25 —
+            // which would hand a crawler exactly the day-old FAQ date this window exists to
+            // prevent.
             key: 'CDN-Cache-Control',
-            value: 'public, s-maxage=3600, stale-while-revalidate=86400',
+            value: 'public, s-maxage=3600, stale-while-revalidate=3600',
           },
         ],
       },
       ...Object.entries(parkCalendarHeaderSegments).flatMap(([locale, segment]) => [
         {
-          // A calendar MONTH page: `…/<segment>/2026/10`. A day, because after the backend
-          // stopped overwriting today's cell with a live occupancy reading there is nothing in
-          // a month grid that moves faster — every cell is a forecast or a measurement, and the
-          // park payload behind the page is itself cached for a day (PARK_REVALIDATE).
+          // A calendar MONTH page: `…/<segment>/2026/10`. A WEEK, and the reason is that this
+          // HTML is a shell rather than the data: `useCalendarData` fetches the grid's numbers
+          // client-side from `/api/parks/…/calendar?from&to`, and `ParkTodayPanel` replaces the
+          // "heute im Park" band on mount through `useLiveParkData`. Both of those sources
+          // carry their OWN, shorter windows — the calendar proxy is 86400 s — so a reader
+          // never sees week-old figures no matter how long this document stood at the edge.
+          //
+          // It is also the route where a longer window pays most. Measured 2026-09-03: the
+          // calendar has 5,718 URLs against the ride route's 42,912, which is 3.81 requests per
+          // URL per day against 0.70 — and it is the only route whose hit rate actually moved
+          // (12 % → 22 %). A cache entry is only ever read twice if the same URL comes back
+          // inside its window, so the route with the dense traffic is the one where widening
+          // the window converts into hits.
+          //
+          // Unlike the hub below, a month URL names its month, so no amount of standing makes
+          // it show the wrong one.
           //
           // Only `CDN-Cache-Control`: the browser keeps the page's own `no-store`, so a
-          // visitor's own tab never pins a day-old copy, while the shared caches get an
+          // visitor's own tab never pins a week-old copy, while the shared caches get an
           // explicit window.
           source: `/${locale}/parks/:continent/:country/:city/:park/${segment}/:year/:month`,
           headers: [
             {
               key: 'CDN-Cache-Control',
-              value: 'public, s-maxage=86400, stale-while-revalidate=86400',
+              value: 'public, s-maxage=604800, stale-while-revalidate=3600',
             },
           ],
         },
         {
           // The HUB, deliberately short and deliberately listed AFTER the month rule so the
           // more specific source wins. The hub has no month in its URL: it renders the park's
-          // CURRENT month and dates its own summary against the park's clock, so a day-long
-          // copy serves September's grid on 1 October under a title that says September. An
-          // hour is enough to collapse a crawl burst and short enough that no reader meets a
-          // month boundary inside it.
+          // CURRENT month, and measured 2026-09-03 that month sits in the `<title>`, the `<h1>`
+          // and eight places in the markup — none of them client-replaced, unlike the grid
+          // below them. A day-long copy made on 30 September would therefore be served on
+          // 1 October under a heading that says September, above a calendar showing October.
+          //
+          // Unlike the park page above, this is a PHRASING problem rather than a content one:
+          // a month-free title ("Wartezeiten-Kalender") would let the hub take the same day as
+          // everything else. It is not worth an SEO title for 1,278 URLs (213 parks × 6
+          // locales) — but that, and not the date itself, is what keeps it here.
           source: `/${locale}/parks/:continent/:country/:city/:park/${segment}`,
           headers: [
             {

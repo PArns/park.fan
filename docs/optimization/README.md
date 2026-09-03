@@ -10,6 +10,166 @@ und dann `decisions.md`.**
 
 ---
 
+## Die echte Trefferquote ist 62 %, nicht 10 %
+
+Abgelesen in **Cloudflare → Caching → Overview**, 30-Minuten-Fenster, 2026-09-03:
+
+|                          |            |          |
+| ------------------------ | ---------: | -------: |
+| **Served by Cloudflare** | **8,23 k** | **62 %** |
+| Served by origin         |     5,12 k |     38 % |
+
+Aufgeschlüsselt: Hit 6,55 k · Miss 2,33 k · None 1,68 k · Expired 1,12 k · Bypass 956 ·
+Revalidated 719.
+
+**`scripts/check-cdn-cache.sh hitrate` ist eine Untergrenze, keine Messung des Traffics.** Es
+zieht 40 **zufällige** Sitemap-URLs — und bei einem Crawler-Sweep ist die Anfrageverteilung
+extrem ungleich: ein Sweep geht einmal durch alle URLs, die Wiederholung kommt erst beim
+nächsten. Wenige Hubs werden ständig getroffen, die große Mehrheit genau einmal. Eine
+Zufallsziehung trifft fast nur die zweite Gruppe und misst damit systematisch die schlechteste
+Teilmenge. Nutze das Skript zum Vergleichen von Vorher/Nachher auf **derselben** Stichprobe,
+nie als absolute Zahl.
+
+**Tiered Cache läuft** — Smart Topology, aktiv, Region Hint `aws:eu-central-1` auf FRA/ZRH
+(Dashboard, 2026-09-03). Die Hypothese, der „Faktor 0,30" sei Colo-Fragmentierung, ist damit
+widerlegt; er war ein Artefakt der Stichprobe.
+
+**Was daraus folgt:** die Ausgangslage war nie so schlecht wie die Stichprobe suggerierte, und
+die verbleibenden 38 % sind zu einem großen Teil `api.park.fan` (7,78 k von 13,35 k Requests
+sind der Host des Backends, nicht dieser App) sowie die bewusst uncachebaren Antworten.
+
+---
+
+## Warum die Ride-Route trotz allem nicht fällt — und der Kalender schon
+
+Gemessen am 2026-09-03, nachdem alle Fenster standen und die Cloudflare-Regel umgebaut war.
+Beide Routen bekamen dieselbe Behandlung, nur eine reagiert:
+
+|             |   URLs | Anfragen/Tag | pro URL/Tag | `cf-cache-status: HIT` |
+| ----------- | -----: | -----------: | ----------: | ---------------------: |
+| Ride-Seiten | 42.912 |      ~30.200 |    **0,70** |                   10 % |
+| Kalender    |  5.718 |      ~21.800 |    **3,81** |          22 % (von 12) |
+
+**Die Trefferquote folgt der Anfragedichte pro URL, und die folgt der URL-Zahl.** Ein Eintrag
+wird nur dann ein zweites Mal gelesen, wenn dieselbe URL **innerhalb ihres Fensters** noch
+einmal angefragt wird. Bei 0,70 Anfragen pro URL und Tag passiert das selten — bei 3,81 oft.
+
+Der Kalender ist der Gegenbeweis in eigener Sache: dort wurde am 01.09. die Sitemap von 2.007
+auf 953 URLs je Locale gekürzt, und **genau diese Route ist die, deren Quote sich verdoppelt
+hat.** Nicht weil sie ein besseres Fenster bekommen hätte, sondern weil ihre URL-Zahl fiel.
+
+Damit ist bestätigt, was `baseline-profile.md` am 01.09. bereits geschrieben hat und was in
+der Zwischenzeit fast in Vergessenheit geriet:
+
+> **Edge caching structurally cannot fix this.** 60 K rarely-requested HTML objects spread over
+> Cloudflare's PoPs are evicted long before they are requested again.
+
+**Zwei ehrliche Konsequenzen.** Erstens: der Schritt von 48 h auf 24 h (PR #392) hat die
+Ride-Quote nicht verbessert, sondern die Chance halbiert, zwei Anfragen im selben Fenster zu
+sehen. Er war eine Frische-Entscheidung, keine Kostenentscheidung, und als solche richtig —
+aber er zieht genau an der Route, an der der Cache ohnehin am dünnsten ist. Zweitens: **kein
+weiterer Cache-Handgriff bringt diese Route nennenswert nach unten.** Was bleibt, sind die
+beiden Hebel aus der Rangfolge, und beide sind Entscheidungen, keine Refactorings:
+
+1. **Die Crawl-Fläche.** 42.912 = 7.152 Bahnen × **6 Locales**. Der Multiplikator ist die
+   Lokalisierung, nicht der Katalog.
+2. **Bot-Management.** Die User-Agent-Frage ist seit dem 01.09. offen und blockiert diese
+   Entscheidung: **Cloudflare → AI Crawl Control** beantwortet sie in fünf Minuten. Ist der
+   Sweep überwiegend KI-Crawler, gibt es dieselbe Reduktion zu SEO-Kosten null.
+
+---
+
+## Der größte Einzelposten war kein HTML, sondern die Bilder
+
+Gefunden erst, nachdem alle HTML-Fenster standen, und größer als alles davor zusammen.
+
+Auf einer Ride-Seite hängen **20 optimierte Bilder ≈ 994 kB** — gegen **57 kB** HTML. Das ist
+**~18× die Seite selbst**, und sie waren alle `cf-cache-status: BYPASS`, bei jedem einzelnen
+Abruf. Wichtig für die Einordnung, und hier zahlt sich das Trennen der beiden Cache-Schichten
+aus:
+
+```
+cf-cache-status : BYPASS    ← Cloudflare cachte nicht
+x-vercel-cache  : HIT       ← Vercels Optimizer-Cache griff
+```
+
+Es kostete also **keine CPU** (kein Bild wurde neu optimiert), aber die **vollen Bytes**
+verließen Vercel jedes Mal. Reiner Fast-Data-Transfer.
+
+**Die Ursache stand in einer zweiten Cache-Regel**, nicht im Code: eine eigene Regel für
+`/_next` hatte unter **Vary** die Option **„Bypass caching"** stehen — „skip caching when the
+request has a header listed in the response's Vary header, but does not have a specific
+configuration". `/_next/image` sendet `Vary: Accept`, konfiguriert war nichts, also: bypass.
+Die Regel „Frontend cache" steht auf **„Normalize values"**, und genau deshalb wurden
+`/media/*.jpg` **mit demselben `Vary: accept`** sauber gecacht. Gleicher Header, anderes
+Ergebnis, ein einziger Unterschied.
+
+**Der Fix war, diese Regel zu löschen** — `/_next` fällt ohnehin unter „Frontend cache".
+Danach gemessen: **10 von 10 Bildern HIT**, und die Formattrennung stimmt, jede Variante hat
+ihren eigenen Eintrag:
+
+| `Accept`                  | Format |   Größe | nach 3 Abrufen |
+| ------------------------- | ------ | ------: | -------------- |
+| `image/avif,image/webp,…` | AVIF   |  7,2 kB | MISS MISS HIT  |
+| `image/webp,*/*`          | WebP   | 20,5 kB | MISS HIT HIT   |
+| `image/jpeg`              | JPEG   | 15,8 kB | MISS HIT HIT   |
+
+Das ist der Grund, warum „Bypass caching" hier **nicht** durch Ignorieren des `Vary` ersetzt
+werden darf: der Optimizer liefert wirklich drei verschiedene Antworten, und ein Browser
+bekäme sonst ein Format, das er nicht darstellen kann.
+
+**Der Code-Weg ist tot, und das ist gemessen, nicht vermutet.** Mit `images.formats: []`
+gebaut und lokal abgefragt: Next setzt `Vary: Accept` trotzdem und liefert weiterhin AVIF an
+einen Client, der es akzeptiert. Es gibt keine Einstellung in diesem Repo, die den Header
+loswird — der Hebel liegt vollständig in Cloudflare.
+
+### `/contribute` ohne Cache ist kein Cache-Problem
+
+Was im Dashboard als „cache none" auf `/{locale}/contribute` erscheint, sind zum großen Teil
+**Cloudflares eigene Bot-Challenges**:
+
+```
+HTTP/2 403 · cf-mitigated: challenge · server: cloudflare
+```
+
+Jede trägt einen einmaligen `nonce` (zwei Abrufe waren byte-verschieden) und ist damit per
+Definition uncachebar. Diese Requests **erreichen Vercel gar nicht** und kosten nichts. Die
+echte Seite hat außerdem absichtlich kein Fenster: sie liegt hinter der Turnstile-Challenge,
+und eine gecachte Challenge ist eine bereits gelöste.
+
+---
+
+## Ergebnis der Runde vom 2026-09-03
+
+Nach zwei PRs und drei Dashboard-Änderungen, gegen Produktion gemessen:
+
+|                                                                                       | vorher                                  | nachher                                     |
+| ------------------------------------------------------------------------------------- | --------------------------------------- | ------------------------------------------- |
+| 308 auf ausgelaufene Monats-URL                                                       | `BYPASS`, jedes Mal 72.190 B aus Vercel | **HIT**                                     |
+| 404                                                                                   | MISS                                    | **HIT**                                     |
+| Geo-Hubs (`/de/parks/europe` …)                                                       | `DYNAMIC`                               | **HIT**                                     |
+| Startseite, Blog, Feeds, Glossar, fancast, Guides, Rechtsseiten, Sitemaps, `llms.txt` | `DYNAMIC`, kein Fenster                 | **HIT**, Fenster im Repo                    |
+| `/_next/image` (20 Bilder ≈ 994 kB je Ride-Seite)                                     | `BYPASS`, jedes Byte aus Vercel         | **HIT**, ein Eintrag je Format              |
+| `/de/search`, `/admin`                                                                | kein Cache                              | **weiterhin kein Cache** (BYPASS / DYNAMIC) |
+
+Der 308-Fix ist der einzige mit sofortiger Wirkung: auf der Kalender-Route sind ~36 % der
+Requests solche Redirects, also **~5.600 Invocations und ~400 MB pro 12 h**, rund 40 % ihrer
+Transferzeile, für Antworten, deren einzige Nutzlast ein `Location`-Header ist.
+
+**Die HIT-Quote bewegt sich noch nicht, und das ist kein Widerspruch.** Direkt nach dem Deploy
+gemessen: Rides 7 %, Kalender 12 % — unverändert. Eine URL wird erst zum HIT, wenn sie
+**innerhalb** ihres Fensters ein zweites Mal angefragt wird, und das Crawl-Intervall einer
+Ride-URL ist ~42 h. Der Cache füllt sich also über ein bis zwei Tage, nicht über eine Stunde.
+
+**Der Frühindikator ist das `age`, nicht die Quote.** Höchstes beobachtetes `age` direkt nach
+dem Deploy: 20.387 s (5,7 h) — Einträge aus der Zeit des 12-Stunden-TTL. Sobald ein `age`
+über **43.200 s** auftaucht, ist ein Eintrag im 48-Stunden-Fenster entstanden und das neue
+Fenster wirkt. Danach lohnt die Quote wieder.
+
+Zu messen mit `./scripts/check-cdn-cache.sh hitrate`.
+
+---
+
 ## Der Stand in einem Satz
 
 Nach zwei Tagen Arbeit sind **die zwei teuersten Routen der Site unverändert teuer**, und das
@@ -122,14 +282,14 @@ Vorbereitung, keine Wirkung.
 `next.config.ts` setzt `CDN-Cache-Control` jetzt für **jede** Seite unter `/*/parks/*`, nicht
 mehr nur für den Kalender. Gegen `pnpm build && pnpm start` verifiziert:
 
-| Pfad                           |        `s-maxage` | Begründung                                                          |
-| ------------------------------ | ----------------: | ------------------------------------------------------------------- |
-| Geo-Hubs (`/parks` … `/:city`) |        3600 (1 h) | prerendert, Live-Teile kommen per Client-Poll                       |
-| Park-Seite                     |        3600 (1 h) | der Backend-Tag-Push bei Statusflips darf nicht ersticken           |
-| **Ride-Seite**                 | **172800 (48 h)** | Crawl-Intervall ~42 h gegen ~6–12 h TTL — der Kern des Problems     |
-| Kalender-Hub                   |        3600 (1 h) | rendert den _aktuellen_ Monat, darf keinen Monatswechsel überdauern |
-| Kalender-Monat                 |      86400 (24 h) | bestand schon                                                       |
-| `/de/blog`, `/api/*`           |       unverändert | keine Übergriffigkeit — gegengeprüft                                |
+| Pfad                           |                 `s-maxage` | Begründung                                                          |
+| ------------------------------ | -------------------------: | ------------------------------------------------------------------- |
+| Geo-Hubs (`/parks` … `/:city`) |                 3600 (1 h) | prerendert, Live-Teile kommen per Client-Poll                       |
+| Park-Seite                     |                 3600 (1 h) | der Backend-Tag-Push bei Statusflips darf nicht ersticken           |
+| **Ride-Seite**                 | **86400 (24 h)** + 1 h SWR | siehe „Die Summe ist die Decke“ unten                               |
+| Kalender-Hub                   |                 3600 (1 h) | rendert den _aktuellen_ Monat, darf keinen Monatswechsel überdauern |
+| Kalender-Monat                 |               86400 (24 h) | bestand schon                                                       |
+| `/de/blog`, `/api/*`           |                unverändert | keine Übergriffigkeit — gegengeprüft                                |
 
 Das war **nicht** nur Bequemlichkeit: die Cloudflare-Regel matcht `/*/parks/*`. Hätte man sie
 auf „use cache-control header if present" umgestellt, während die Geo-Hubs und die Park-Seite
@@ -142,6 +302,44 @@ Regeln steht die Bestätigung aus. `curl -sI` auf eine Ride-URL nach dem Deploy 
 Cloudflare-Regel darf nicht umgestellt werden, bevor das bestätigt ist.**
 
 ---
+
+### Die Summe ist die Decke, nicht das `s-maxage`
+
+Korrektur an der ersten Fassung dieser Seite: `s-maxage` **plus** `stale-while-revalidate`
+ergibt, wie alt eine ausgelieferte Kopie höchstens sein kann. Die Ride-Seite stand auf
+48 h + 24 h — also **72 h** — auf einer Seite, deren eigener Titel „Wartezeiten LIVE“ sagt.
+
+Und auf einer Long-Tail-Ride-URL ist der Crawler meist der **einzige** Besucher: er bekommt
+die stale Kopie und stößt die Auffrischung an, von der erst der nächste Crawl ~42 h später
+profitiert. Ein langes Stale-Fenster verkürzt dort also nicht, was ein Crawler sieht — es
+**ist**, was ein Crawler sieht, jedes Mal.
+
+| Variante                   | max. Alter | HIT-Decke bei ~42 h Crawl |
+| -------------------------- | ---------: | ------------------------: |
+| 48 h + 24 h SWR (zuerst)   |       72 h |                     ~53 % |
+| 24 h + 24 h SWR            |       48 h |                     ~46 % |
+| **24 h + 1 h SWR (jetzt)** |   **25 h** |                 **~36 %** |
+
+Ausschlaggebend war, was die Seite über sich selbst aussagt. Von neun Nennungen des
+Tagesdatums im HTML stehen **acht im RSC-Flight** und genau **eine im gerenderten Markup**:
+
+```html
+<span>Aktualisiert</span> <time datetime="2026-09-03T08:39:55.542Z">10:39</time>
+```
+
+Sichtbar ist nur die Uhrzeit, kein Datum — deutlich harmloser als die Parkseite, die ein
+ausgeschriebenes Datum im FAQ-Text **und** im FAQPage-JSON-LD trägt (genau das, weswegen
+Google bei Hansa-Park „vor 6 Tagen“ anzeigt). Die Parkseite steht deshalb ohnehin auf einer
+Stunde.
+
+**Caching selbst kostet kein Ranking** — ein `HIT` ist für Googlebot dieselbe 200, nur
+schneller, und ein besseres TTFB zählt eher dafür. Ein gemessener Ranking-Effekt existiert in
+**keiner** Richtung; real sind das Snippet und was ein Leser vor der Hydration sieht.
+
+Blog und Glossar behalten ihre sieben Tage Staleness: ihr Inhalt ist zwischen zwei Deploys
+byte-identisch, eine alte Kopie ist dort also **richtig** und nicht bloß alt. Das einzige
+Problem ist die Verzögerung nach einem Deploy — und die löst ein Cloudflare-Purge in
+`/api/revalidate`, nicht ein kürzeres Fenster.
 
 ## Die Rangfolge der offenen Hebel
 
@@ -311,8 +509,8 @@ Kalender-Route.
 
 Zwei Zahlen fehlen und beide stehen nur im Dashboard:
 
-- ~~**Welches Edge TTL trägt die Regel?**~~ **Beantwortet: 12 Stunden.** Zu heben auf 48 h
-  für die Ride-Familie — und dabei „Serve stale content while revalidating" einschalten, sonst
+- ~~**Welches Edge TTL trägt die Regel?**~~ **Beantwortet: 12 Stunden**, inzwischen ersetzt durch die
+  Fenster aus diesem Repo — und dabei „Serve stale content while revalidating" einschalten, sonst
   bleibt das `stale-while-revalidate` aus den Headern ungenutzt.
 - **Läuft Tiered Cache?** `decisions.md` (01.09.) sagt „Smart Tiered Cache aktiv". Smart
   Topology ist [auf allen Plänen inkl. Pro verfügbar](https://developers.cloudflare.com/cache/how-to/tiered-cache/);
@@ -362,6 +560,15 @@ kleiner, nicht größer.** Reihenfolge einhalten.
   `Accept-Encoding` komplett und schickt 72 kB Klartext.
 - **Sitemap-Kürzungen wirken erst mit Wochen Verzögerung** und in der Zwischenzeit gegen
   einen: verwaiste URLs werden weiter gecrawlt und kosten mehr als die Seite, die sie ersetzt.
+- **`curl -sI` sendet HEAD, und damit füllt sich Cloudflares Cache nicht zuverlässig.** Eine
+  Stapelmessung über 20 Bild-URLs meldete so **1/20 HIT**; dieselben URLs mit GET gemessen
+  ergaben **10/10**. Für Header lesen ist HEAD richtig, für Cache-Verhalten nur GET.
+- **Ein Poll-Muster muss auf die Zahl passen, die sich ändert.** `*86400*` als Suchmuster für
+  ein neues `s-maxage=86400` traf auf das unveränderte `stale-while-revalidate=86400` und
+  meldete einen Deploy, der noch gar nicht durch war.
+- **Zwei Cache-Schichten, zwei Header.** `cf-cache-status` ist Cloudflare, `x-vercel-cache` ist
+  Vercel. Ein `BYPASS` bei gleichzeitigem `HIT` heißt: kostet Egress, aber keine CPU. Wer nur
+  einen der beiden liest, bepreist die Sache falsch.
 - **Vercel-Logs sind aus dieser Umgebung nicht erreichbar** (keine `vercel` CLI, kein Token,
   Vercel-MCP ohne Team-Zugriff). Alles hier ist von außen per `curl` gemessen. Wer den
   Statuscode-Split der 17 K Kalender-Requests braucht, muss ihn im Dashboard ablesen.
