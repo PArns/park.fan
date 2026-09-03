@@ -62,6 +62,7 @@ import { stripNewPrefix, cn } from '@/lib/utils';
 import { findRelocatedParkRedirect, findRenamedParkRedirect } from '@/lib/utils/redirect-utils';
 import { RouteMessages } from '@/i18n/route-messages';
 import { parkArgs } from '@/lib/i18n/park-phrase';
+import { plannerFlag } from '@/flags';
 
 interface AttractionPageProps {
   params: Promise<{
@@ -235,6 +236,11 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   // The park-embedded attraction carries everything the shell + JSON-LD + FAQ need (name,
   // statistics, bestVisitTimes); live status/wait times still come from the client poll.
   const park = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));
+  // The trip planner's kill switch. Read HERE and not in the locale layout: this
+  // route is `force-dynamic`, so a flag costs nothing, while the layout is the
+  // one 3,109 prerendered routes share and reading headers there would make
+  // every one of them dynamic.
+  const plannerEnabled = await plannerFlag();
   const attraction = park?.attractions?.find((a) => a.slug === attractionSlug) ?? null;
 
   if (!park) {
@@ -424,7 +430,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                       )}
                     </div>
                   </div>
-                  {attraction.id && (
+                  {attraction.id && plannerEnabled && (
                     <div className="flex items-center gap-2">
                       {/* The planner's real entry point. Its floating launcher only
                           appears once something is planned, so without a control
