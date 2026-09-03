@@ -668,3 +668,77 @@ Startseite hat ISR-Seeds und gehört auf ein kurzes TTL oder gar nicht hinein.
 | User-Agent-Split des Sweeps                          | Cloudflare AI Crawl Control — entscheidet, ob ①–③ oder ein Crawler-Block der richtige Hebel ist   |
 | Wie viele der 15 K sind 308er                        | Vercel-Logs nach Statuscode für die Kalender-Route                                                |
 | Kommt `cdn-cache-control` auf der Monats-URL an?     | `curl -sI` nach dem Deploy — Voraussetzung für die Umstellung der Cloudflare-Regel                |
+
+---
+
+## 2026-09-03 — ACCEPTED: `CDN-Cache-Control` für den ganzen `/*/parks/*`-Präfix
+
+**Hebel:** Voraussetzung für den Cloudflare-Hebel ② (Edge TTL nach Pfadfamilie).
+**Dateien:** `next.config.ts`. **Stand und Einordnung:** [README.md](./README.md).
+
+Anlass war die Frage „wir haben optimiert und ich sehe keine Verbesserung". Die Antwort ist,
+dass keine der fünf Änderungen vom 01./02.09. auf die CDN-Zeile dieser beiden Routen zielen
+konnte — die Aufschlüsselung steht im README. Zwei Messungen dazu, gegen Produktion:
+
+| Stichprobe aus der echten Sitemap | n   | `cf-cache-status: HIT` |
+| --------------------------------- | --- | ---------------------: |
+| Ride-URLs                         | 40  |               **10 %** |
+| Kalender-URLs                     | 40  |               **12 %** |
+
+Neun von zehn Abrufen erreichen Vercel. Vercels eigenes Caching-Panel zeigt auf beiden Routen
+100 % Miss, und das ist korrekt: beide sind `force-dynamic`, es gibt dort nichts zu treffen.
+Cachen kann hier nur Cloudflare.
+
+**Was hier verifiziert wurde, und es war die offene Frage aus dem Kommentar in dieser Datei:**
+`CDN-Cache-Control` **wird geroutet**. Eine Kalender-Monats-URL in Produktion antwortet mit
+
+```
+cache-control:     private, no-cache, no-store, max-age=0, must-revalidate
+cdn-cache-control: public, s-maxage=86400, stale-while-revalidate=86400
+```
+
+— der Header überlebt also die dynamische Seite, Vercels Edge und Cloudflare. Auf zwei Parks
+und zwei Locales geprüft. Damit ist die Voraussetzung erfüllt, das Edge TTL aus dem Dashboard
+in dieses Repo zu holen. **Er trug ihn nur auf dem Kalender**; Ride-, Park- und Geo-Hub-Seiten
+hatten keine Regel.
+
+**Warum das nicht nur eine Lücke war, sondern eine Falle.** Die Cloudflare-Regel matcht
+`/*/parks/*`. Stellt man sie auf „use cache-control header if present" um, während ein Teil
+dieses Präfix keinen Header trägt, fallen genau diese Seiten auf das `no-store` der Seite
+zurück und werden **gar nicht** mehr gecacht. Der Präfix ist jetzt vollständig, gegen
+`pnpm build && pnpm start` Pfad für Pfad abgefragt:
+
+| Pfad                           |                 `s-maxage` |
+| ------------------------------ | -------------------------: |
+| Geo-Hubs (`/parks` … `/:city`) |                 3600 (1 h) |
+| Park-Seite                     |                 3600 (1 h) |
+| Ride-Seite                     |          **172800 (48 h)** |
+| Kalender-Hub / -Monat          | 3600 / 86400 (unverändert) |
+| `/de/blog`, `/api/*`           |                unverändert |
+
+Die 48 h auf der Ride-Seite sind die Zahl, um die es geht: ihr Crawl-Intervall ist ~42 h, ihr
+heutiges Edge TTL ~6–12 h (höchstes beobachtetes `age`: 24.191 s), also **kann sich der Cache
+nie füllen** — Decke 22 %, gemessen 10 %. Bei 48 h steigt die Decke auf ~53 %. Der Preis ist
+zu nennen: nichts in beiden Repos kann Cloudflare purgen, eine kuratierte Korrektur bleibt so
+lange unsichtbar. Deshalb 48 h und nicht die 7 Tage, die technisch möglich wären.
+
+Park-Seite und Geo-Hubs bekommen bewusst nur eine Stunde: der Backend-Tag-Push bei jedem
+Statusflip (`parkCacheTag`) wäre unter einem langen Edge-Fenster wirkungslos.
+
+**Wirkung heute: keine, und das ist beabsichtigt.** Die Cloudflare-Regel steht auf „ignore
+cache-control header and use this TTL" und gewinnt. Bewiesen am 308 einer ausgelaufenen
+Monats-URL: er trägt `cdn-cache-control: public, s-maxage=86400` und ist trotzdem
+`cf-cache-status: BYPASS`. Diese Änderung ist die Voraussetzung, nicht der Hebel.
+
+**Cost-shift check:** keiner. Keine zusätzlichen Fetches, keine ISR-Writes, keine geänderten
+Bytes. `Cache-Control` bleibt unangetastet, der Browser des Lesers cacht also weiterhin nichts.
+
+**Verification:** `pnpm build` zweimal grün, eslint und prettier sauber, und alle zehn Pfade
+oben einzeln gegen `pnpm start` abgefragt — inklusive der beiden Negativproben (`/de/blog`
+ohne Header, `/api/parks/live` unverändert bei 60 s) und der Kollisionsprobe, die zählt: der
+Kalender-Hub hat dieselbe Segmentzahl wie eine Ride-URL und behält korrekt seine eigene
+Stunde statt der 48 h.
+
+**Offen, erst nach dem Deploy prüfbar:** ob Vercel die neuen Header genauso durchreicht wie
+den des Kalenders. `curl -sI` auf eine Ride-URL. **Die Cloudflare-Regel darf nicht umgestellt
+werden, bevor das bestätigt ist.**
