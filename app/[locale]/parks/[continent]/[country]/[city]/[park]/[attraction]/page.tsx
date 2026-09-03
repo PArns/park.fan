@@ -63,6 +63,7 @@ import { findRelocatedParkRedirect, findRenamedParkRedirect } from '@/lib/utils/
 import { RouteMessages } from '@/i18n/route-messages';
 import { parkArgs } from '@/lib/i18n/park-phrase';
 import { plannerFlag } from '@/flags';
+import { PLANNER_ENABLED } from '@/lib/config/features';
 
 interface AttractionPageProps {
   params: Promise<{
@@ -240,7 +241,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   // route is `force-dynamic`, so a flag costs nothing, while the layout is the
   // one 3,109 prerendered routes share and reading headers there would make
   // every one of them dynamic.
-  const plannerEnabled = await plannerFlag();
+  const plannerEnabled = PLANNER_ENABLED && (await plannerFlag());
   const attraction = park?.attractions?.find((a) => a.slug === attractionSlug) ?? null;
 
   if (!park) {

@@ -13,6 +13,7 @@ import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
+import { PLANNER_ENABLED } from '@/lib/config/features';
 import { CalendarPlus } from 'lucide-react';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { CROWD_TEXT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
@@ -311,14 +312,16 @@ export function ParksMenuPanel({ continents, featured }: ParksMenuPanelProps) {
              costs the cities nothing. */
           <div className="flex flex-wrap items-center justify-between gap-3">
             <p className="text-muted-foreground/70 text-xs">{t('exploreByRegion')}</p>
-            <Link
-              href={`/${PLANNER_SEGMENTS[locale as keyof typeof PLANNER_SEGMENTS] ?? PLANNER_SEGMENTS.en}`}
-              prefetch={false}
-              className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors"
-            >
-              <CalendarPlus className="size-3.5" aria-hidden="true" />
-              {tNav('planner')}
-            </Link>
+            {PLANNER_ENABLED && (
+              <Link
+                href={`/${PLANNER_SEGMENTS[locale as keyof typeof PLANNER_SEGMENTS] ?? PLANNER_SEGMENTS.en}`}
+                prefetch={false}
+                className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors"
+              >
+                <CalendarPlus className="size-3.5" aria-hidden="true" />
+                {tNav('planner')}
+              </Link>
+            )}
           </div>
         ) : (
           <>

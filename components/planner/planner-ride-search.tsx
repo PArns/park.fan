@@ -2,11 +2,11 @@
 
 import { useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
-import { CalendarPlus, Check, Crown, Droplets, Plus, Ruler, Search } from 'lucide-react';
+import { CalendarPlus, Check, Crown, Droplets, Ruler, Search } from 'lucide-react';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { partyFlags } from '@/lib/planner/party';
 import { RiderHeight } from '@/components/common/unit-display';
+import { PlannerRideThumb } from '@/components/planner/planner-ride-thumb';
 import type { PlannerDayPrefs, PlannerGeo } from '@/lib/planner/types';
 import { buildDayGrid, nextFreeStart } from '@/lib/planner/day-grid';
 import type { PlanDay } from '@/lib/api/types';
@@ -134,7 +134,7 @@ export function PlannerRideSearch({
   }, [day, query]);
 
   return (
-    <div className="border-border/60 border-t px-2 py-2">
+    <div className="border-border/60 border-t px-2 pt-2 pb-2">
       <div className="relative">
         <Search className="text-muted-foreground/60 pointer-events-none absolute top-1/2 left-2 size-3.5 -translate-y-1/2" />
         <input
@@ -149,7 +149,7 @@ export function PlannerRideSearch({
       {missedHeadliners.length > 0 && (
         <div
           data-planner-headliner-hint=""
-          className="border-crowd-high/30 bg-crowd-high/10 mb-2 rounded-md border px-2 py-1.5"
+          className="border-crowd-high/30 bg-crowd-high/10 mt-2 rounded-md border px-2 py-1.5"
         >
           <p className="text-crowd-high flex items-center gap-1.5 text-[11px] font-medium">
             <Crown className="size-3 shrink-0" />
@@ -176,30 +176,15 @@ export function PlannerRideSearch({
               >
                 {/* The ride, where the media database has it. This band exists
                     to make somebody want the ride they skipped, and a name in a
-                    pill does that less well than the drop does. The photo is
+                    pill does that less well than the picture does. The photo is
                     already in the payload — the plan-day proxy resolves it for
                     every ride — so this costs a request the page was making
-                    anyway for the search rows below.
-
-                    A `+` where there is none, in the same box: 198 of the 212
-                    parks have no picture in the database at all, so the fallback
-                    is the common case and may not be a hole. */}
-                {ride.backgroundImage ? (
-                  <span className="bg-muted relative size-4 shrink-0 overflow-hidden rounded-full">
-                    <Image
-                      src={ride.backgroundImage}
-                      alt=""
-                      fill
-                      sizes="32px"
-                      quality={60}
-                      style={{ objectFit: 'cover', objectPosition: ride.backgroundPosition }}
-                    />
-                  </span>
-                ) : (
-                  <span className="text-muted-foreground flex size-4 shrink-0 items-center justify-center">
-                    +
-                  </span>
-                )}
+                    anyway for the search rows below. */}
+                <PlannerRideThumb
+                  src={ride.backgroundImage}
+                  position={ride.backgroundPosition}
+                  size={4}
+                />
                 {ride.attractionName}
               </button>
             ))}
@@ -211,14 +196,14 @@ export function PlannerRideSearch({
         <button
           type="button"
           onClick={onAddCustom}
-          className="text-muted-foreground hover:text-foreground hover:bg-accent/50 mt-1 flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-xs transition-colors max-sm:min-h-11"
+          className="text-muted-foreground hover:text-foreground hover:bg-accent/50 mt-2 flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-xs transition-colors max-sm:min-h-11"
         >
           <CalendarPlus className="size-3.5 shrink-0" />
           <span className="truncate">{t('custom.add')}</span>
         </button>
       )}
       {matches.length === 0 ? (
-        <p className="text-muted-foreground px-1 py-2 text-xs">
+        <p className="text-muted-foreground mt-2 px-1 text-xs">
           {/* Three different silences, and they are not interchangeable: a
               query that matched nothing, a day the API has no forecast for, and
               a request that failed. The input itself never disappears — on a
@@ -232,7 +217,7 @@ export function PlannerRideSearch({
                 : t('noPlan')}
         </p>
       ) : (
-        <ul className="mt-1 max-h-44 overflow-y-auto">
+        <ul className="mt-2 max-h-44 overflow-y-auto">
           {matches.map((ride) => (
             <li key={ride.attractionSlug}>
               <button
@@ -260,27 +245,12 @@ export function PlannerRideSearch({
                     route runs `enrichAttractionsWithImages` over `/plan/day`'s
                     rides — so this costs no request, no type change and no
                     `@/lib/media` import (that catalogue is 107 KB and this is a
-                    Client Component). `next/image` with a fixed box rather than
-                    the CSS background the block uses: the background loader is
-                    tuned for full-bleed photos at q50 and turns a 32 px
-                    thumbnail to mush. The focal point the admin set travels with
-                    it, so a photo framed for a card is framed here too. */}
-                {ride.backgroundImage ? (
-                  <span className="bg-muted relative size-8 shrink-0 overflow-hidden rounded">
-                    <Image
-                      src={ride.backgroundImage}
-                      alt=""
-                      fill
-                      sizes="96px"
-                      quality={75}
-                      style={{ objectFit: 'cover', objectPosition: ride.backgroundPosition }}
-                    />
-                  </span>
-                ) : (
-                  <span className="bg-muted/50 text-muted-foreground/60 flex size-8 shrink-0 items-center justify-center rounded">
-                    <Plus className="size-3.5" />
-                  </span>
-                )}
+                    Client Component). */}
+                <PlannerRideThumb
+                  src={ride.backgroundImage}
+                  position={ride.backgroundPosition}
+                  size={8}
+                />
                 <span className="min-w-0 flex-1 truncate text-sm">{ride.attractionName}</span>
                 {/* What this party's own answers say about this ride. A flag,
                     never a filter — see the `prefs` prop. The height is shown
