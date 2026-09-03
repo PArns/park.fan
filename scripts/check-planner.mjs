@@ -818,6 +818,107 @@ if (reachable) {
   await grid.close();
 }
 
+// ── Dragging a ride in from the park page ───────────────────────────────────
+// The card is a Server Component rendered in eight places and it knows nothing
+// about the planner: its root is an `<a>`, every browser makes links draggable,
+// and the drag already carries `text/uri-list`. The grid reads that URL. Two
+// things have to hold for it to work at all, and both were false before:
+// the desktop sheet must be NON-modal (Radix's default puts `pointer-events:
+// none` on the page and a shield over it, so the card cannot be touched), and
+// the park in the dropped URL must match the plan's, or a Europa-Park ride would
+// be filed under a Phantasialand day whose forecast does not contain it.
+{
+  const drag = await browser.newPage({ viewport: { width: 1400, height: 1000 } });
+  noteErrors(drag);
+
+  const OPEN = 9;
+  const CLOSE = 18;
+  await drag.route('**/plan/day**', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        parkSlug: PARK.slug,
+        timezone: 'Europe/Berlin',
+        context: {
+          date: DATE, status: 'OPERATING', openHour: OPEN, closeHour: CLOSE,
+          crowdLevel: 'moderate', weather: null,
+          isHoliday: false, isBridgeDay: false, isSchoolVacation: false, isWeekend: false,
+        },
+        tier: 'measured', leadDays: 1, leadTimeMae: 7,
+        rides: ['taron', 'black-mamba'].map((slug) => ({
+          attractionSlug: slug,
+          attractionName: slug === 'taron' ? 'Taron' : 'Black Mamba',
+          land: 'Mystery',
+          hours: Array.from({ length: CLOSE - OPEN + 1 }, (_, i) => ({ hour: OPEN + i, wait: 40 })),
+          dayPeak: 40, uncertaintyMinutes: 10, sampleDays: 400,
+        })),
+        shows: [],
+      }),
+    })
+  );
+
+  await seed(drag);
+  await drag.goto(`${BASE}/de/parks/europe/germany/bruehl/phantasialand`, {
+    waitUntil: 'domcontentloaded',
+  });
+  await drag.locator(LAUNCHER).click();
+  await drag.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await drag.waitForTimeout(2500);
+
+  // The page behind must still be reachable. With a modal sheet it is not, and
+  // no drag can start.
+  const reachable = await drag.evaluate(() => {
+    const link = document.querySelector('a[href*="/phantasialand/taron"]');
+    if (!link) return 'no ride link';
+    // The card is far down the park page; `elementFromPoint` outside the
+    // viewport answers null and would fail this for the wrong reason.
+    link.scrollIntoView({ block: 'center' });
+    const box = link.getBoundingClientRect();
+    const hit = document.elementFromPoint(box.x + 8, box.y + 8);
+    return hit && link.contains(hit) ? 'reachable' : (hit?.tagName ?? 'nothing');
+  });
+  check('die Seite hinter dem Panel bleibt anfassbar', reachable === 'reachable', `${reachable}`);
+
+  // The drop itself, through real DataTransfer events.
+  const before = await drag.locator('li[data-planner-block]').count();
+  const dropped = await drag.evaluate(() => {
+    const canvas = document.querySelector('[data-planner-grid] > div:last-child');
+    if (!canvas) return 'no canvas';
+    const box = canvas.getBoundingClientRect();
+    const dt = new DataTransfer();
+    dt.setData('text/uri-list', `${location.origin}/de/parks/europe/germany/bruehl/phantasialand/taron`);
+    const at = { clientX: box.x + 40, clientY: box.y + 200, bubbles: true, cancelable: true };
+    canvas.dispatchEvent(new DragEvent('dragover', { ...at, dataTransfer: dt }));
+    canvas.dispatchEvent(new DragEvent('drop', { ...at, dataTransfer: dt }));
+    return 'dropped';
+  });
+  await drag.waitForTimeout(600);
+  const after = await drag.locator('li[data-planner-block]').count();
+  check('ein Ride-Link landet als Block', after === before + 1, `${dropped}: ${before} -> ${after}`);
+
+  // A ride from ANOTHER park is refused: the forecast is per park, so the block
+  // would draw nothing and the day would claim a ride it has no number for.
+  const foreign = await drag.evaluate(() => {
+    const canvas = document.querySelector('[data-planner-grid] > div:last-child');
+    if (!canvas) return -1;
+    const box = canvas.getBoundingClientRect();
+    const dt = new DataTransfer();
+    dt.setData('text/uri-list', `${location.origin}/de/parks/europe/germany/rust/europa-park/voltron-nevera`);
+    const at = { clientX: box.x + 40, clientY: box.y + 300, bubbles: true, cancelable: true };
+    canvas.dispatchEvent(new DragEvent('drop', { ...at, dataTransfer: dt }));
+    return document.querySelectorAll('li[data-planner-block]').length;
+  });
+  await drag.waitForTimeout(400);
+  check(
+    'eine Bahn aus einem anderen Park wird abgelehnt',
+    (await drag.locator('li[data-planner-block]').count()) === after,
+    `${foreign}`
+  );
+
+  await drag.close();
+}
+
 // ── Shows, on a day that HAS them ───────────────────────────────────────────
 // The run above deliberately seeds tomorrow, "so the run is stable" — and
 // showtimes exist for today and no other date, so every pass so far has watched

@@ -51,13 +51,19 @@ function SheetContent({
   className,
   children,
   side = 'right',
+  modal,
   ...props
 }: React.ComponentProps<typeof SheetPrimitive.Content> & {
   side?: 'top' | 'right' | 'bottom' | 'left';
+  /** Mirrors the root's `modal`; a non-modal sheet renders no overlay. */
+  modal?: boolean;
 }) {
   return (
     <SheetPortal>
-      <SheetOverlay />
+      {/* No shield on a non-modal sheet: it would cover the page it is
+          deliberately leaving interactive, and swallow the very drag a side
+          panel exists to receive. */}
+      {modal !== false && <SheetOverlay />}
       <SheetPrimitive.Content
         data-slot="sheet-content"
         className={cn(
