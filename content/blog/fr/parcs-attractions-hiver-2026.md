@@ -1,16 +1,18 @@
 ---
 title: 'Les parcs en hiver : qui ouvre en décembre, et qui n’en a pas les moyens'
 translationKey: winter-parks-2026
-date: '2026-08-31'
+date: '2026-09-03'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Le 14 novembre, les lumières s’allument à Phantasialand, il y en a plus d’un
-  million suspendues à Bottrop, et à Wavre une patinoire attend sous un toit de
-  hall. Onze parcs européens ouvrent entre novembre et janvier : les dates, les
-  tarifs, le coaster d’Europa-Park qui tourne pour la dernière fois, et pourquoi
-  la semaine la plus vide de tout l’arrière-saison est celle juste avant.
+  On est début septembre et les chocolats de Noël sont déjà en rayon. Autant
+  regarder aussi du côté des parcs : le 14 novembre, les lumières s’allument à
+  Phantasialand, il y en a plus d’un million suspendues à Bottrop, et à Wavre une
+  patinoire attend sous un toit de hall. Onze parcs européens ouvrent entre
+  novembre et janvier : les dates, les tarifs, le coaster d’Europa-Park qui
+  tourne pour la dernière fois, et pourquoi la semaine la plus vide de
+  l’arrière-saison est celle juste avant.
 tags:
   - hiver
   - wintertraum

@@ -1,16 +1,18 @@
 ---
 title: 'Freizeitparks im Winter: wer im Dezember aufmacht, und wer es sich nicht leisten kann'
 translationKey: winter-parks-2026
-date: '2026-08-31'
+date: '2026-09-03'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Am 14. November gehen im Phantasialand die Lichter an, in Bottrop hängen über
-  eine Million davon, und in Wavre steht eine Eisbahn unter dem Hallendach. Elf
-  Parks in Europa haben zwischen November und Januar geöffnet: die Termine, die
-  Preise, die Bahn im Europa-Park, die zum letzten Mal fährt, und warum die
-  leerste Woche des ganzen Spätjahrs die davor ist.
+  Es ist Anfang September, und im Supermarkt liegen schon die Lebkuchen. Dann
+  darf man auch bei den Parks auf Weihnachten schauen: Am 14. November gehen im
+  Phantasialand die Lichter an, in Bottrop hängen über eine Million davon, in
+  Wavre steht eine Eisbahn unter dem Hallendach. Elf Parks in Europa haben
+  zwischen November und Januar geöffnet – Termine, Preise, die Bahn im
+  Europa-Park, die zum letzten Mal fährt, und warum die leerste Woche des
+  Spätjahrs die davor ist.
 tags:
   - winter
   - wintertraum

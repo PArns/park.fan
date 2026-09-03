@@ -1,16 +1,18 @@
 ---
 title: 'Pretparken in de winter: wie in december opengaat, en wie zich dat niet kan veroorloven'
 translationKey: winter-parks-2026
-date: '2026-08-31'
+date: '2026-09-03'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Op 14 november gaan in Phantasialand de lichten aan, in Bottrop hangen er ruim
-  een miljoen, en in Waver staat een ijsbaan onder een hallendak. Elf parken in
-  Europa zijn tussen november en januari open: de data, de prijzen, de baan in
-  het Europa-Park die voor het laatst rijdt, en waarom de leegste week van het
-  hele naseizoen er net vóór ligt.
+  Het is begin september en in de supermarkt liggen de pepernoten al. Dan mag de
+  blik ook bij de parken alvast naar de winter: op 14 november gaan in
+  Phantasialand de lichten aan, in Bottrop hangen er ruim een miljoen, en in
+  Waver staat een ijsbaan onder een hallendak. Elf parken in Europa zijn tussen
+  november en januari open: de data, de prijzen, de baan in het Europa-Park die
+  voor het laatst rijdt, en waarom de leegste week van het naseizoen er net vóór
+  ligt.
 tags:
   - winter
   - wintertraum

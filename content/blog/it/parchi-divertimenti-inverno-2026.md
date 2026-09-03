@@ -1,16 +1,18 @@
 ---
 title: 'Parchi d’inverno: chi apre a dicembre e chi non se lo può permettere'
 translationKey: winter-parks-2026
-date: '2026-08-31'
+date: '2026-09-03'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Il 14 novembre al Phantasialand si accendono le luci, a Bottrop ne sono
-  appese più di un milione e a Wavre c’è una pista di ghiaccio sotto il tetto di
-  un capannone. Undici parchi europei aprono tra novembre e gennaio: le date, i
-  prezzi, l’attrazione dell’Europa-Park che gira per l’ultima volta e perché la
-  settimana più vuota di tutto il fine stagione è proprio quella prima.
+  È inizio settembre e al supermercato c’è già il panettone. Tanto vale guardare
+  avanti anche per i parchi: il 14 novembre al Phantasialand si accendono le
+  luci, a Bottrop ne sono appese più di un milione e a Wavre c’è una pista di
+  ghiaccio sotto il tetto di un capannone. Undici parchi europei aprono tra
+  novembre e gennaio: le date, i prezzi, l’attrazione dell’Europa-Park che gira
+  per l’ultima volta e perché la settimana più vuota del fine stagione è proprio
+  quella prima.
 tags:
   - inverno
   - wintertraum

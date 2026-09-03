@@ -1,16 +1,18 @@
 ---
 title: 'Parques en invierno: quién abre en diciembre y quién no puede permitírselo'
 translationKey: winter-parks-2026
-date: '2026-08-31'
+date: '2026-09-03'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  El 14 de noviembre se encienden las luces en Phantasialand, en Bottrop cuelgan
-  más de un millón, y en Wavre hay una pista de hielo bajo el techo de una nave.
-  Once parques europeos abren entre noviembre y enero: las fechas, los precios,
-  la atracción de Europa-Park que funciona por última vez y por qué la semana
-  más vacía de todo el final de temporada es justo la anterior.
+  Es principios de septiembre y en el supermercado ya hay turrón. Pues miremos
+  también hacia los parques: el 14 de noviembre se encienden las luces en
+  Phantasialand, en Bottrop cuelgan más de un millón, y en Wavre hay una pista de
+  hielo bajo el techo de una nave. Once parques europeos abren entre noviembre y
+  enero: las fechas, los precios, la atracción de Europa-Park que funciona por
+  última vez y por qué la semana más vacía del final de temporada es justo la
+  anterior.
 tags:
   - invierno
   - wintertraum
