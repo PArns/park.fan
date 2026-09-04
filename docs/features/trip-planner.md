@@ -385,6 +385,20 @@ fails on a thumbnail that was never drawn into, and it hovers each control befor
 dispatching the drag, because a synthetic `dragstart` with no pointer anywhere
 near it would measure a chip no mouse can produce.
 
+## The tab is on every page, so it has a phone tier
+
+The edge tab is drawn on **every** page whether or not anything is planned, which
+is right — the feature has to be findable from a park page — and on a phone it
+was a permanent strip down the right edge at 34 × 130 px in German and 136 in
+French, against a 390 px screen. Below `sm` everything in it steps down one size:
+the padding, the two gaps, the icon and the word. Measured 34 × 130 → **28 × 102**
+(de) and 136 → 107 (fr), with 640 px and up unchanged to the pixel.
+
+It is deliberately not reduced to the icon alone, which would halve it again and
+turn the one control that opens the feature into a glyph nobody has seen before.
+The word is also the button's accessible name, so hiding it would need an
+`aria-label` saying the same thing twice.
+
 ## The axis is the park's day, and the canvas is not
 
 `buildDayGrid` answers a question about the **park** — when it opens, when it
