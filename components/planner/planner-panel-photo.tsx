@@ -25,15 +25,33 @@
  * under a wash that never fully clears and never fully closes, so the photo
  * reads as a texture at every height and no row of the panel is fighting it.
  *
- * `aria-hidden`, `pointer-events-none`, and first in the DOM so every sibling
- * paints over it without needing a stacking context of its own — a `z-index`
- * here would trap the popovers that already fought their way to `z-[80]`.
+ * `aria-hidden` and `pointer-events-none`, and it must sit in a NEGATIVE
+ * stacking layer. Being first in the DOM is not enough and the first version
+ * shipped on the belief that it was: an absolutely positioned element paints in
+ * the stacking context's positioned layer, which is ABOVE the inline content of
+ * every in-flow sibling. So the whole chrome — the header, the context band,
+ * the coach hint, the free-block row — was being drawn UNDER this wash rather
+ * than over it, and the wash was thinning it. Only the grid looked right, and
+ * only because its blocks are absolutely positioned too.
+ *
+ * Measured off the composited panel at Phantasialand, ink against ground:
+ *
+ *   Kopfzeile        1.89:1 → 18.10:1
+ *   Kontextband      1.45:1 →  6.73:1
+ *   Tier-Zeile       1.53:1 →  6.48:1
+ *   Eigener Block    1.14:1 →  5.83:1
+ *
+ * `-z-10` puts it back where a background belongs: above the panel's own glass,
+ * below everything the panel says. It stays inside the sheet because
+ * `SheetContent` carries `isolate` — without a stacking context on the parent a
+ * negative layer keeps going and would disappear behind the panel's own
+ * background, which is a browser-dependent way of shipping no photo at all.
  */
 export function PlannerPanelPhoto({ src, position }: { src?: string | null; position?: string }) {
   if (!src) return null;
 
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
       <div
         className="absolute inset-0 bg-cover bg-no-repeat opacity-[0.12]"
         style={{ backgroundImage: `url(${src})`, backgroundPosition: position ?? '50% 0%' }}

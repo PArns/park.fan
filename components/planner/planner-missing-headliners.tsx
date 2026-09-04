@@ -96,9 +96,13 @@ export function PlannerMissingHeadliners({
 
   return (
     <div data-planner-headliner-hint="" className="border-border/60 shrink-0 border-t px-2 py-2">
-      {/* A solid-enough ground of its own: the panel has a photo behind it now,
-          and at `/10` this band read as a smudge over a lit façade. */}
-      <div className="border-crowd-high/40 bg-crowd-high/10 bg-background/70 rounded-md border px-2 py-1.5 backdrop-blur-sm">
+      {/* Its own ground, and only ONE of them: this shipped as
+          `bg-crowd-high/10 bg-background/70`, which is two `background-color`
+          declarations on one element — the tint never painted, and the band was
+          the panel's ground with a crown on it. The photo behind the panel is
+          in a negative layer now and no longer thins anything, so the band can
+          go back to being what it says it is: the crowd tint, over the panel. */}
+      <div className="border-crowd-high/40 bg-crowd-high/10 rounded-md border px-2 py-1.5">
         <p className="text-crowd-high flex items-center gap-1.5 text-[11px] font-medium">
           <Crown className="size-3 shrink-0" aria-hidden="true" />
           {t('headliners.missing', { count: missing.length })}
@@ -122,11 +126,17 @@ export function PlannerMissingHeadliners({
               }
               draggable
               onDragStart={(event) =>
-                startRideDrag(event.dataTransfer, {
-                  parkSlug,
-                  attractionSlug: ride.attractionSlug,
-                  attractionName: ride.attractionName,
-                })
+                startRideDrag(
+                  event.dataTransfer,
+                  {
+                    parkSlug,
+                    attractionSlug: ride.attractionSlug,
+                    attractionName: ride.attractionName,
+                  },
+                  // A pill carries no picture, so the chip is given the URL the
+                  // day payload already holds.
+                  { photo: ride.backgroundImage, photoPosition: ride.backgroundPosition }
+                )
               }
               className="bg-background/70 hover:bg-background border-border/50 hover:border-crowd-high/50 max-w-full truncate rounded-full border px-2 py-0.5 text-[11px] transition-colors sm:cursor-grab sm:active:cursor-grabbing"
             >

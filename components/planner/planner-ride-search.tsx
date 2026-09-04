@@ -159,12 +159,13 @@ export function PlannerRideSearch({
         />
       </div>
 
-      {/* The other way in, named rather than demonstrated. This replaced a
-          band of headliner pills that repeated rides the list below already
-          shows — two components rendering the same ride with the same add
-          handler, so an unplanned headliner in the top eight appeared twice.
-          The crown on the row carries what that band was for. */}
-      <p className="text-muted-foreground mt-2 px-1 text-[11px]">{t('search.dragHint')}</p>
+      {/* What a TAP does, because this component is mounted on phones alone
+          (`sm:hidden` at its only call site) and the sentence here used to be
+          "oder zieh eine Bahn von der Parkseite auf die Zeitachse" — an HTML5
+          drag, named on the one pointer that has no such gesture. The row's own
+          click is what this describes, and `startFor` is where the minute comes
+          from. */}
+      <p className="text-muted-foreground mt-2 px-1 text-[11px]">{t('search.tapHint')}</p>
 
       {onAddCustom && (
         <button
@@ -222,11 +223,17 @@ export function PlannerRideSearch({
                    the next free one. */
                 draggable
                 onDragStart={(event) =>
-                  startRideDrag(event.dataTransfer, {
-                    parkSlug,
-                    attractionSlug: ride.attractionSlug,
-                    attractionName: ride.attractionName,
-                  })
+                  startRideDrag(
+                    event.dataTransfer,
+                    {
+                      parkSlug,
+                      attractionSlug: ride.attractionSlug,
+                      attractionName: ride.attractionName,
+                    },
+                    // The row's own thumbnail, cloned — it is already decoded,
+                    // which a freshly built one would not be.
+                    { element: event.currentTarget }
+                  )
                 }
                 className="hover:bg-accent flex w-full cursor-grab items-center gap-2 rounded-md px-2 py-1.5 text-left transition-colors active:cursor-grabbing max-sm:py-2.5"
               >

@@ -430,6 +430,14 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
           // leaves nothing behind once it has run, so the glass is only flat
           // while it slides.
           'bg-background/80 supports-[backdrop-filter]:bg-background/70 backdrop-blur-2xl',
+          // `isolate` is what keeps the park photo INSIDE the panel. It sits in
+          // a negative stacking layer — see `PlannerPanelPhoto` for why it has
+          // to — and a negative layer with no stacking context above it keeps
+          // going until it finds one, i.e. straight behind the panel's own
+          // background. `backdrop-filter` already forms one wherever it is
+          // supported, so this only matters where it is not; it costs nothing
+          // and takes the browser's word out of the arrangement.
+          'isolate',
           'border-border/70 max-sm:border-t sm:border-l sm:shadow-2xl',
           // The width is the visitor's, so the class ceiling has to go — an
           // inline width beats `w-3/4` but not `max-w-md`, which would clamp
@@ -777,19 +785,20 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                         </button>
                       )}
 
-                      {/* Both sentences, one shown by CSS. The way into a plan
-                          now depends on the POINTER — a fine one drags a ride
-                          in from the page behind the panel, a coarse one has no
-                          such gesture and uses the search — and
-                          `useMediaQuery` answers `false` on the server
-                          snapshot, so a branch on it renders the phone's
-                          sentence into the first HTML of every desktop. */}
-                      <p className="text-muted-foreground mt-0.5 text-xs sm:hidden">
-                        {t('empty.bodyMobile')}
-                      </p>
-                      <p className="text-muted-foreground mt-0.5 hidden text-xs sm:block">
-                        {t('empty.body')}
-                      </p>
+                      {/* The two sentences that stood here are gone, and they
+                          were wrong rather than merely redundant. Both said
+                          "such dir unten eine Bahn", and this is the branch
+                          with NO axis — the ride search is mounted behind
+                          `park && activeDate` and hidden above `sm`, so in six
+                          of the six states that reach this markup there is
+                          nothing below but the three steps that follow, and on
+                          a phone the search is either absent or, on an error
+                          or a day with no forecast, a field no ride can ever
+                          appear in. The desktop half was worse: it was
+                          displayed at exactly the widths where the search does
+                          not exist at all.
+                          What is true here is the button above and the three
+                          steps below, and both are already on screen. */}
                     </div>
                     <PlannerHelpSteps layout="list" />
                   </div>
@@ -862,8 +871,14 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             )}
 
             {/* Named once, and only where the gesture exists: a fine pointer,
-                and a park page behind the panel to drag a card out of. */}
-            <PlannerDragCoach show={Boolean(pagePark && park && activeDate)} />
+                and a park page behind the panel to drag a card out of — and not
+                while the day is empty, because the empty axis says the same
+                sentence in the middle of the panel, from the same key. Two
+                copies of one instruction 300 px apart is how a hint stops
+                reading as a hint. */}
+            <PlannerDragCoach
+              show={Boolean(pagePark && park && activeDate && activeEntries.length > 0)}
+            />
 
             {/* Which of the park's big rides are still missing from the day.
                 Above the free-block row and outside the `sm:hidden` search,

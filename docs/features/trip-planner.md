@@ -228,6 +228,97 @@ today — so sixty of the sixty-one dates the picker offers drew nothing and the
 band had to say „steht erst am Tag selbst fest". That sentence is gone; an empty
 `shows` array is now a statement about the park.
 
+## The photo behind the panel sits in a NEGATIVE layer
+
+The panel carries the park's own picture — resolved server-side by the
+`/plan/day` proxy out of the media database, with the focal point a curator set.
+The first version put it in the wrong stacking layer, and the symptom was
+reported as "the elements at the top and bottom are far too transparent and
+dark".
+
+They were not transparent. They were **underneath**. `PlannerPanelPhoto` is an
+`absolute inset-0` layer, and an absolutely positioned element with
+`z-index: auto` paints in the positioned layer — above the inline content of
+every in-flow sibling. So the header, the context band, the coach hint and the
+free-block row were being drawn under a 12 % photograph and a
+`from-background/75 via-background/55 to-background/90` wash, which thinned
+them. Only the grid looked right, because its blocks are absolutely positioned
+too, and only the headliner band held up, because it carried a fill of its own.
+
+Nothing about that is visible to a DOM assertion — every class was correct — so
+it is measured off the composited panel instead. Ink against ground at
+Phantasialand, before and after `-z-10`:
+
+|                 | 1400 px panel | 390 px phone   |
+| --------------- | ------------- | -------------- |
+| Kopfzeile       | 1.49 → 8.47:1 | 1.63 → 10.48:1 |
+| Kontextband     | 1.45 → 6.02:1 | 1.48 → 5.79:1  |
+| Headliner-Bande | 1.29 → 8.44:1 | 4.49 → 11.38:1 |
+
+`SheetContent` carries `isolate` with it: a negative layer keeps going until it
+finds a stacking context, and without one it would disappear behind the panel's
+own background. `backdrop-filter` already forms one wherever it is supported, so
+the `isolate` only matters where it is not — it costs nothing and takes the
+browser's word out of the arrangement.
+
+The alternative a judged design pass proposed was the park page's own recipe:
+give every chrome row `TILE_GLASS` (75 % fill, 40 px blur). It would have worked
+and it was the wrong fix — up to ten nested 40 px backdrop-filters inside one
+sheet, live on a phone, re-rasterising while a block is dragged, to paper over a
+one-declaration stacking bug. Its own risk note said so.
+
+One thing the audit turned up on the way: the headliner band shipped as
+`bg-crowd-high/10 bg-background/70`, two `background-color` declarations on one
+element, so the crowd tint never painted at all.
+
+## A sentence may only point at something that is there
+
+Three strings promised a ride search "unten". `PlannerRideSearch` has exactly one
+call site, behind `park && activeDate` **and** a `sm:hidden` wrapper — so it
+exists only below 640 px and only with a day open. Mapped against that:
+
+- **`empty.body`** was the `sm:block` half, i.e. displayed at exactly the widths
+  where the search does not exist. False in all six states that reach it.
+- **`empty.bodyMobile`** was true in one of those six — the rarest, a day whose
+  opening hours are unknown. In the state a new visitor actually meets (panel
+  opened from the homepage, nothing planned) the search is not mounted at all
+  and the sentence pointed at three lines of help text.
+- **`empty.bodyGrid`** carries no viewport class, so it was true on a phone and
+  false at every width above it — and that desktop state is the most common
+  empty state in the panel.
+- **`search.dragHint`** named an HTML5 drag _inside the phone-only search_, i.e.
+  on the one pointer that has no such gesture, while the desktop string gave a
+  tap instruction. The two halves of the guidance were swapped across the very
+  breakpoint the search is gated on.
+
+So: the flat branch says nothing at all now — a title, the wizard button and the
+three steps, all of which are on screen and true; the grid overlay carries one
+sentence per pointer, chosen by CSS rather than by `useMediaQuery` (whose server
+snapshot is `false` and would ship the phone's line in every desktop's first
+HTML); the desktop half is `coach.drag`, the same key the coach hint uses, so
+one gesture has one wording; and the coach stands down while the day is empty so
+the two never appear together.
+
+## One chip for every drag
+
+Nothing set a drag image, so the browser snapshotted whatever the gesture
+started on and the ways into a plan looked like three different features: a
+400 × 36 px row from the panel's list, the whole 405 × 404 px `AttractionCard`
+from a park page, and a bare pill from the headliner band.
+
+`setRideDragImage` (`lib/planner/ride-drag.ts`) draws one chip — the ride's photo
+at 32 px and its name — and all three call it. Two details are what make it work
+rather than flicker: the thumbnail is **cloned** from the element being dragged
+and pinned to its `currentSrc` with the `srcset` dropped (a fresh
+`background-image` starts a load the snapshot does not wait for, and a
+`next/image` `srcset` re-evaluated at 32 px picks a candidate the page never
+fetched), and the chip is appended **off-screen rather than hidden** and removed
+two frames later (`display: none` produces no snapshot at all).
+
+`check:planner` reads it off `setDragImage` rather than off a screenshot — an
+OS-level drag image is not in the page to capture — and asserts the three
+sources hand over the same class, the same height and one image each.
+
 ## Where a figure came from, and whether anybody checked it
 
 Four fields on `/plan/day` say how much a number is worth, and each answers a

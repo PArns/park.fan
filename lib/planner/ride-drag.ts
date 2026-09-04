@@ -151,7 +151,11 @@ export function buildRideDragPayload(source: RideDragSourceAttributes): PlannerR
  * name but not its URL, and writing a guessed one would hand a wrong link to
  * everything else on the desktop that accepts a drop.
  */
-export function startRideDrag(dt: DataTransfer, ride: PlannerRideDrag): void {
+export function startRideDrag(
+  dt: DataTransfer,
+  ride: PlannerRideDrag,
+  image?: RideDragImageSource
+): void {
   try {
     dt.setData(PLANNER_RIDE_MIME, serializeRideDrag(ride));
     dt.setData('text/plain', ride.attractionName);
@@ -159,4 +163,97 @@ export function startRideDrag(dt: DataTransfer, ride: PlannerRideDrag): void {
   } catch {
     // A store in protected mode — the drag was not started by this gesture.
   }
+  setRideDragImage(dt, ride.attractionName, image);
+}
+
+/** Where the chip's thumbnail comes from, if it has one. */
+export interface RideDragImageSource {
+  /** The element being dragged. Its `<img>`, where it has one, is cloned. */
+  element?: Element | null;
+  /** A photo URL, for a control that carries no picture of its own. */
+  photo?: string | null;
+  /** `object-position` for that photo. */
+  photoPosition?: string | null;
+}
+
+/**
+ * What a dragged ride looks like while it is in the air.
+ *
+ * Without this the browser snapshots whatever element the gesture started on,
+ * and the two ways into a plan therefore looked like two different features:
+ * the panel's own list handed over a 400 × 36 px row that reads as a chip, and
+ * a park page handed over the whole `AttractionCard` — 405 × 404 px of
+ * photograph, headline, badges and wait time, dragged across the screen at
+ * half opacity. The headliner band was a third shape again, a bare pill.
+ *
+ * So the chip is drawn here, once, and every surface gets the same one. It is
+ * deliberately close to what the ride list already looked like, because that is
+ * the shape this was reported as wanting: the ride's own photo at 32 px and its
+ * name, nothing else.
+ *
+ * Two details are what make it work rather than flicker:
+ *
+ * - The thumbnail is CLONED from the element being dragged, and the clone is
+ *   pinned to `currentSrc` with its `srcset` dropped. A fresh `background-image`
+ *   would start a load the snapshot does not wait for, and a `next/image`
+ *   `srcset` re-evaluated at 32 px picks a candidate the page never fetched —
+ *   either way the chip is drawn before the picture arrives and the thumbnail
+ *   is blank.
+ * - The element must be IN the document and rendered when `setDragImage` is
+ *   called, so it is appended off-screen rather than hidden, and removed two
+ *   frames later: `display: none` produces no snapshot at all, and removing it
+ *   in the same tick races the browser in WebKit.
+ */
+export function setRideDragImage(
+  dt: DataTransfer,
+  name: string,
+  image?: RideDragImageSource
+): void {
+  if (typeof document === 'undefined' || typeof dt?.setDragImage !== 'function') return;
+
+  const chip = document.createElement('div');
+  chip.setAttribute('data-planner-drag-chip', '');
+  chip.className =
+    'pointer-events-none fixed top-[-9999px] left-[-9999px] z-[9999] flex max-w-[240px] items-center gap-2 rounded-md border bg-popover px-2 py-1.5 shadow-lg';
+
+  const thumb = dragThumb(image);
+  if (thumb) chip.appendChild(thumb);
+
+  const label = document.createElement('span');
+  label.className = 'truncate text-sm font-medium text-popover-foreground';
+  label.textContent = name;
+  chip.appendChild(label);
+
+  document.body.appendChild(chip);
+  try {
+    // Under the pointer near the chip's left edge, so the cursor stays on the
+    // hour it is about to drop into rather than on the middle of the name.
+    dt.setDragImage(chip, 20, chip.offsetHeight / 2 || 22);
+  } catch {
+    // Some browsers refuse a drag image on a protected store. The default one
+    // is then what it always was.
+  }
+  requestAnimationFrame(() => requestAnimationFrame(() => chip.remove()));
+}
+
+/** The chip's 32 px picture, cloned from the drag source or built from a URL. */
+function dragThumb(image?: RideDragImageSource): HTMLElement | null {
+  const found = image?.element?.querySelector?.('img');
+  if (found instanceof HTMLImageElement && (found.currentSrc || found.src)) {
+    const clone = document.createElement('img');
+    clone.src = found.currentSrc || found.src;
+    clone.alt = '';
+    clone.className = 'size-8 shrink-0 rounded object-cover';
+    clone.style.objectPosition = getComputedStyle(found).objectPosition;
+    return clone;
+  }
+  if (image?.photo) {
+    const box = document.createElement('img');
+    box.src = image.photo;
+    box.alt = '';
+    box.className = 'size-8 shrink-0 rounded object-cover';
+    if (image.photoPosition) box.style.objectPosition = image.photoPosition;
+    return box;
+  }
+  return null;
 }

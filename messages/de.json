@@ -1878,8 +1878,6 @@
     "removeRide": "Aus dem Plan nehmen",
     "empty": {
       "title": "Noch nichts geplant",
-      "body": "Such dir unten eine Bahn – oder öffne die Seite einer Bahn und tipp dort auf „In den Plan“.",
-      "bodyMobile": "Such dir unten eine Bahn und leg sie auf eine Uhrzeit.",
       "bodyGrid": "Such dir unten eine Bahn – sie landet auf der Zeitachse und lässt sich dort verschieben.",
       "planThisPark": "{park} jetzt planen"
     },
@@ -1941,7 +1939,7 @@
     "search": {
       "placeholder": "Bahn suchen",
       "noResults": "Keine Bahn gefunden.",
-      "dragHint": "Oder zieh eine Bahn von der Parkseite direkt auf die Zeitachse.",
+      "tapHint": "Tippe eine Bahn an – sie landet auf der nächsten freien Uhrzeit und lässt sich dort verschieben.",
       "opensAt": "ab {time}"
     },
     "clearDay": "Tag leeren",

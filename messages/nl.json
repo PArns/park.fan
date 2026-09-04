@@ -1878,8 +1878,6 @@
     "removeRide": "Uit het plan halen",
     "empty": {
       "title": "Nog niets gepland",
-      "body": "Zoek hieronder een attractie – of open de pagina van een attractie en tik daar op „In het plan”.",
-      "bodyMobile": "Zoek hieronder een attractie en zet die op een tijd.",
       "bodyGrid": "Zoek hieronder een attractie – die komt op de tijdlijn en is daar te verschuiven.",
       "planThisPark": "{park} nu plannen"
     },
@@ -1941,7 +1939,7 @@
     "search": {
       "placeholder": "Attractie zoeken",
       "noResults": "Geen attractie gevonden.",
-      "dragHint": "Of sleep een attractie vanaf de parkpagina op de tijdlijn.",
+      "tapHint": "Tik op een attractie en die landt op het eerstvolgende vrije tijdstip, waar je hem kunt verschuiven.",
       "opensAt": "vanaf {time}"
     },
     "clearDay": "Dag leegmaken",

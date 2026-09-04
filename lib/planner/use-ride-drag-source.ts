@@ -1,7 +1,12 @@
 'use client';
 
 import { useEffect } from 'react';
-import { PLANNER_RIDE_MIME, buildRideDragPayload, serializeRideDrag } from './ride-drag';
+import {
+  PLANNER_RIDE_MIME,
+  buildRideDragPayload,
+  serializeRideDrag,
+  setRideDragImage,
+} from './ride-drag';
 
 /**
  * Teach every ride card on the page what it is, for the length of a drag.
@@ -72,6 +77,11 @@ export function useRideDragSource(enabled: boolean): void {
         // Nothing to add, and nothing is broken: the fallback path reads the
         // URL the browser put there.
       }
+
+      // The same chip the panel's own list hands over. Without it the browser
+      // snapshots the whole card — 405 × 404 px of photograph and panels — and
+      // the two ways into a plan look like two different features.
+      setRideDragImage(dt, payload.attractionName, { element: anchor });
     };
 
     document.addEventListener('dragstart', onDragStart, true);

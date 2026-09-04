@@ -1878,8 +1878,6 @@
     "removeRide": "Quitar del plan",
     "empty": {
       "title": "Todavía no hay nada planificado",
-      "body": "Busca una atracción abajo o abre la página de una atracción y toca «Al plan».",
-      "bodyMobile": "Busca una atracción abajo y ponla en una hora.",
       "bodyGrid": "Busca una atracción abajo: aparece en la línea de tiempo y se mueve desde ahí.",
       "planThisPark": "Planificar {park} ahora"
     },
@@ -1941,7 +1939,7 @@
     "search": {
       "placeholder": "Buscar atracción",
       "noResults": "No se encontró ninguna atracción.",
-      "dragHint": "O arrastra una atracción desde la página del parque a la línea de tiempo.",
+      "tapHint": "Toca una atracción y se coloca en la siguiente hora libre, donde puedes moverla.",
       "opensAt": "desde {time}"
     },
     "clearDay": "Vaciar el día",

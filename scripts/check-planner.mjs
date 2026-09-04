@@ -36,6 +36,7 @@
 
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { chromium } from 'playwright';
+import sharp from 'sharp';
 
 const BASE = process.env.BASE ?? 'http://localhost:3000';
 // Same rule as scripts/check-card-framing.mjs: prefer a Chromium the image
@@ -1514,14 +1515,26 @@ if (reachable) {
         tier: 'measured',
         leadDays: 1,
         leadTimeMae: 7,
-        rides: ['taron', 'black-mamba'].map((slug) => ({
+        // `backgroundImage` is what the PROXY route adds — this stub answers in
+        // its place, so without it the ride list draws its coaster-icon
+        // fallback and the drag chip has no picture to clone. `winjas-force` is
+        // not in the seeded plan, which is what makes the headliner band render
+        // and gives the third drag source something to grab.
+        rides: [
+          { slug: 'taron', name: 'Taron' },
+          { slug: 'black-mamba', name: 'Black Mamba' },
+          { slug: 'winjas-force', name: 'Winja‘s Force' },
+        ].map(({ slug, name }) => ({
           attractionSlug: slug,
-          attractionName: slug === 'taron' ? 'Taron' : 'Black Mamba',
+          attractionName: name,
           land: 'Mystery',
           hours: Array.from({ length: CLOSE - OPEN + 1 }, (_, i) => ({ hour: OPEN + i, wait: 40 })),
           dayPeak: 40,
           uncertaintyMinutes: 10,
           sampleDays: 400,
+          isHeadliner: true,
+          backgroundImage: `/media/phantasialand/${slug === 'winjas-force' ? 'winjas-fear' : slug}.jpg`,
+          backgroundPosition: '50% 50%',
         })),
         shows: [],
       }),
@@ -1648,6 +1661,79 @@ if (reachable) {
     );
   });
   check('er verdeckt den Namen der Bahn nicht', overlaps === false, `${overlaps}`);
+
+  // What the drag LOOKS like while it is in the air. Nothing set a drag image,
+  // so the browser snapshotted whatever the gesture started on, and the two ways
+  // into a plan therefore looked like two different features: a 400 x 36 px row
+  // out of the panel's list, the whole 405 x 404 px `AttractionCard` off a park
+  // page, and a bare pill out of the headliner band. All three hand over the
+  // same chip now, and this reads it off `setDragImage` rather than off a
+  // screenshot, because an OS-level drag image is not in the page to capture.
+  await drag.evaluate(() => {
+    window.__plannerChips = [];
+    const real = DataTransfer.prototype.setDragImage;
+    DataTransfer.prototype.setDragImage = function (el, x, y) {
+      const box = el.getBoundingClientRect();
+      window.__plannerChips.push({
+        marked: el.getAttribute('data-planner-drag-chip') !== null,
+        cls: el.className,
+        text: (el.textContent ?? '').trim(),
+        height: Math.round(box.height),
+        images: el.querySelectorAll('img').length,
+      });
+      return real.call(this, el, x, y);
+    };
+  });
+  const fireDrag = (selector) =>
+    drag.evaluate((sel) => {
+      const el = document.querySelector(sel);
+      if (!el) return false;
+      el.scrollIntoView({ block: 'center' });
+      el.dispatchEvent(
+        new DragEvent('dragstart', {
+          bubbles: true,
+          cancelable: true,
+          dataTransfer: new DataTransfer(),
+        })
+      );
+      return true;
+    }, selector);
+
+  // A card WITH a picture: a ride the media database has none for would produce
+  // an honest name-only chip and make this compare two different things.
+  const firedCard = await fireDrag('a[data-planner-ride]:has(img)');
+  const firedBand = await fireDrag(`${SHEET} [data-planner-headliner-hint] button`);
+  await drag.setViewportSize({ width: 390, height: 1000 });
+  await drag.waitForTimeout(800);
+  const firedList = await fireDrag(`${SHEET} ul li button[draggable="true"]`);
+  await drag.waitForTimeout(200);
+  const chips = await drag.evaluate(() => window.__plannerChips ?? []);
+  check(
+    'alle drei Quellen starten eine Ziehgeste',
+    firedCard && firedBand && firedList && chips.length === 3,
+    `Karte ${firedCard}, Bande ${firedBand}, Liste ${firedList}, Chips ${chips.length}`
+  );
+  check(
+    'und übergeben denselben Chip',
+    chips.length === 3 &&
+      chips.every((c) => c.marked && c.cls === chips[0].cls && c.height === chips[0].height),
+    JSON.stringify(chips.map((c) => `${c.height}px`))
+  );
+  check(
+    'mit dem Namen und dem Bild der Bahn',
+    chips.length === 3 && chips.every((c) => c.text.length > 0 && c.images === 1),
+    chips.map((c) => `${c.text}/${c.images}`).join(' · ')
+  );
+  // It is appended to draw and taken away again; one left behind is a chip
+  // sitting off-screen in the document for the rest of the session. Polled
+  // rather than sampled once: the removal rides two `requestAnimationFrame`s,
+  // and a frame is not owed to anybody inside a fixed wait.
+  let leftBehind = await drag.locator('[data-planner-drag-chip]').count();
+  for (let i = 0; leftBehind > 0 && i < 20; i++) {
+    await drag.waitForTimeout(100);
+    leftBehind = await drag.locator('[data-planner-drag-chip]').count();
+  }
+  check('und räumt sich wieder ab', leftBehind === 0, `${leftBehind} übrig`);
 
   await drag.close();
 }
@@ -1840,6 +1926,250 @@ if (reachable) {
   );
 
   await acc.close();
+}
+
+// ── What the panel says about itself, and what is actually under it ─────────
+// Three sentences promised a ride search "unten". The search has ONE call site
+// and it is behind `park && activeDate` AND `sm:hidden`, so the desktop line was
+// displayed at exactly the widths where the search does not exist, the phone
+// line pointed at nothing whenever no day was open, and the sentence inside the
+// phone-only search named an HTML5 drag — the one gesture a coarse pointer does
+// not have. Each state is checked against what is really rendered below it.
+{
+  const OPEN = 9;
+  const CLOSE = 18;
+  const emptyDay = {
+    parkSlug: PARK.slug,
+    timezone: 'Europe/Berlin',
+    context: {
+      date: DATE,
+      status: 'OPERATING',
+      openHour: OPEN,
+      closeHour: CLOSE,
+      hoursSource: 'schedule',
+      crowdLevel: 'moderate',
+      weather: null,
+      isHoliday: false,
+      isBridgeDay: false,
+      isSchoolVacation: false,
+      isWeekend: false,
+    },
+    tier: 'measured',
+    leadDays: 1,
+    accuracy: { basis: 'measured', typicalError: 9 },
+    rides: ['taron', 'black-mamba'].map((slug) => ({
+      attractionSlug: slug,
+      attractionName: slug === 'taron' ? 'Taron' : 'Black Mamba',
+      land: 'Mystery',
+      hours: Array.from({ length: CLOSE - OPEN + 1 }, (_, i) => ({ hour: OPEN + i, wait: 40 })),
+      dayPeak: 40,
+      sampleDays: 400,
+      isHeadliner: true,
+    })),
+    shows: [],
+  };
+
+  /** The panel with a day that HAS an axis and nothing on it. */
+  const openEmptyDay = async (width) => {
+    const page = await browser.newPage({ viewport: { width, height: 1000 } });
+    noteErrors(page);
+    await page.route('**/plan/day**', (route) =>
+      route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify(emptyDay),
+      })
+    );
+    await page.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+    await page.evaluate(
+      ([plan, date]) => {
+        const seeded = JSON.parse(JSON.stringify(plan));
+        seeded.parks.phantasialand.timezone = 'Europe/Berlin';
+        seeded.parks.phantasialand.days = { [date]: { date, entries: [] } };
+        seeded.activeParkSlug = 'phantasialand';
+        seeded.activeDate = date;
+        window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
+        window.localStorage.removeItem('parkfan_planner_dragcoach');
+        document.cookie = 'planner=1; path=/';
+      },
+      [PLAN, DATE]
+    );
+    await page.goto(`${BASE}/de/parks/europe/germany/bruehl/phantasialand`, {
+      waitUntil: 'networkidle',
+    });
+    await page.locator(LAUNCHER).click();
+    await page.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+    await page.waitForTimeout(2500);
+    return page;
+  };
+
+  /** Only the sentence CSS is actually showing, never both halves of a pair. */
+  const shownLines = (page) =>
+    page
+      .locator(`${SHEET} [data-planner-grid] p`)
+      .evaluateAll((els) =>
+        els
+          .filter((el) => getComputedStyle(el).display !== 'none')
+          .map((el) => (el.textContent ?? '').trim())
+      );
+
+  {
+    const desk = await openEmptyDay(1400);
+    const lines = (await shownLines(desk)).join(' | ');
+    const searchVisible = await desk
+      .locator(`${SHEET} input[type="search"]`)
+      .first()
+      .isVisible()
+      .catch(() => false);
+    check(
+      'das leere Raster nennt am Rechner die Geste',
+      /Zieh eine Bahn/.test(lines) && !/unten/.test(lines),
+      lines.slice(0, 90)
+    );
+    check('und es gibt dort keine Suche, auf die es zeigen könnte', searchVisible === false);
+    // The same sentence twice, 300 px apart, is how a hint stops reading as one.
+    check(
+      'der Hinweis am Fuß schweigt, solange das Raster leer ist',
+      (await desk.locator('[data-planner-drag-coach]').count()) === 0
+    );
+    await desk.close();
+  }
+
+  {
+    const phone = await openEmptyDay(390);
+    const lines = (await shownLines(phone)).join(' | ');
+    const searchVisible = await phone
+      .locator(`${SHEET} input[type="search"]`)
+      .first()
+      .isVisible()
+      .catch(() => false);
+    check(
+      'auf dem Handy verweist es auf die Suche, und die ist da',
+      /unten/.test(lines) && searchVisible,
+      `${lines.slice(0, 70)} · Suche ${searchVisible}`
+    );
+    const hint = await phone
+      .locator(`${SHEET} input[type="search"]`)
+      .locator('xpath=../../p')
+      .first()
+      .innerText()
+      .catch(() => '');
+    check(
+      'und die Suche beschreibt einen Tipp, keine Zieh-Geste',
+      /Tippe eine Bahn an/.test(hint) && !/[Zz]ieh/.test(hint),
+      hint.slice(0, 70)
+    );
+    await phone.close();
+  }
+
+  // Nothing planned at all: the branch with no axis, where the search is not
+  // mounted at either width and the two sentences pointed at three lines of
+  // help text.
+  for (const width of [1400, 390]) {
+    const bare = await browser.newPage({ viewport: { width, height: 1000 } });
+    noteErrors(bare);
+    await bare.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+    await bare.evaluate(() => {
+      window.localStorage.removeItem('parkfan_planner');
+      document.cookie = 'planner=1; path=/';
+    });
+    await bare.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+    await bare.locator(LAUNCHER).click();
+    await bare.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+    await bare.waitForTimeout(1500);
+    const text = ((await bare.locator(SHEET).innerText()) ?? '').replace(/\s+/g, ' ');
+    check(
+      `${width} px: der leere Planer verweist auf nichts, was nicht da ist`,
+      !/unten/i.test(text),
+      text.slice(0, 80)
+    );
+    check(
+      `${width} px: er bietet den Assistenten und die drei Schritte`,
+      (await bare.locator('[data-planner-start-wizard]').count()) === 1 &&
+        /Park und Tag wählen/.test(text),
+      text.slice(0, 60)
+    );
+    await bare.close();
+  }
+}
+
+// ── The chrome has to survive the photo behind it ───────────────────────────
+// The panel carries the park's picture now, and the first version put it in the
+// positioned layer: an `absolute` element with `z-index: auto` paints ABOVE the
+// inline content of every in-flow sibling, so the header, the context band and
+// the foot rows were drawn UNDER the wash rather than over it. Nothing about
+// that is visible to a DOM assertion — the classes were all correct — so this
+// samples the composited pixels.
+{
+  const shot = await browser.newPage({ viewport: { width: 1400, height: 1000 } });
+  noteErrors(shot);
+  await seed(shot);
+  await shot.goto(`${BASE}/de/parks/europe/germany/bruehl/phantasialand`, {
+    waitUntil: 'networkidle',
+  });
+  await shot.locator(LAUNCHER).click();
+  await shot.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await shot.waitForTimeout(4000);
+
+  const photo = shot.locator(`${SHEET} [aria-hidden="true"].-z-10`);
+  const hasPhoto = (await photo.count()) > 0;
+  check('der Park bringt sein Bild mit', hasPhoto);
+
+  if (hasPhoto) {
+    check(
+      'es liegt in einer negativen Ebene',
+      Number(await photo.evaluate((el) => getComputedStyle(el).zIndex)) < 0
+    );
+    check(
+      'und das Panel hält es mit `isolate` bei sich',
+      (await shot.locator(SHEET).evaluate((el) => getComputedStyle(el).isolation)) === 'isolate'
+    );
+
+    const boxes = await shot.evaluate(() => {
+      const sheet = document.querySelector('[data-slot="sheet-content"]');
+      const s = sheet.getBoundingClientRect();
+      const rel = (el) => {
+        if (!el) return null;
+        const r = el.getBoundingClientRect();
+        return {
+          left: Math.max(0, Math.round(r.x - s.x)),
+          top: Math.max(0, Math.round(r.y - s.y)),
+          width: Math.max(1, Math.round(r.width)),
+          height: Math.max(1, Math.round(r.height)),
+        };
+      };
+      return {
+        Kopfzeile: rel(document.querySelector('[data-slot="sheet-header"]')),
+        Kontextband: rel(document.querySelector('[data-planner-context-band]')),
+      };
+    });
+    const png = await shot.locator(SHEET).screenshot();
+    for (const [name, box] of Object.entries(boxes)) {
+      if (!box) continue;
+      const { data, info } = await sharp(png)
+        .extract(box)
+        .raw()
+        .toBuffer({ resolveWithObject: true });
+      const channel = (c) => {
+        const v = c / 255;
+        return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4;
+      };
+      const ls = [];
+      for (let i = 0; i < data.length; i += info.channels) {
+        ls.push(
+          0.2126 * channel(data[i]) + 0.7152 * channel(data[i + 1]) + 0.0722 * channel(data[i + 2])
+        );
+      }
+      ls.sort((a, b) => a - b);
+      const at = (q) => ls[Math.min(ls.length - 1, Math.floor(q * ls.length))];
+      // Ink against ground, off the composited panel: the 97th percentile is
+      // the text, the 30th the surface it sits on. Measured 1.49:1 and 1.45:1
+      // with the photo in the positioned layer, 8.47:1 and 6.02:1 without.
+      const contrast = (Math.max(at(0.97), at(0.3)) + 0.05) / (Math.min(at(0.97), at(0.3)) + 0.05);
+      check(`${name} bleibt über dem Foto lesbar`, contrast >= 4.5, `${contrast.toFixed(2)}:1`);
+    }
+  }
+  await shot.close();
 }
 
 // ── Shows, on a day that HAS them ───────────────────────────────────────────
