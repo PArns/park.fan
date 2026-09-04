@@ -25,6 +25,27 @@ import {
   type PlannerEntry,
   type PlannerGeo,
 } from './types';
+import { trackPlanDayStarted } from '@/lib/analytics/umami';
+
+/**
+ * Count a day the first time something lands in it.
+ *
+ * The interesting moment is the TRANSITION, not the write: a day that already
+ * holds three rides and gains a fourth is somebody filling one in, and billing
+ * that would put a row in Umami for every lap of every plan. So the store is
+ * read BEFORE the update and the event fires only across empty → not empty,
+ * which makes it exactly one row per park and date however the block got there
+ * — dragged off a park page, added from the panel's list, or a free block
+ * somebody wrote themselves.
+ *
+ * `plannerStore.getSnapshot()` rather than the `state` this hook renders with:
+ * these callbacks are `useCallback`-stable on purpose, and closing over the
+ * rendered state would make them stale exactly when two adds land in one tick.
+ */
+function countFirstBlock(parkSlug: string, parkName: string, date: string): void {
+  const before = plannerStore.getSnapshot().parks[parkSlug]?.days[date]?.entries.length ?? 0;
+  if (before === 0) trackPlanDayStarted(parkName);
+}
 
 interface AddRideParams {
   parkSlug: string;
@@ -73,10 +94,12 @@ export function usePlanner() {
   );
 
   const addRide = useCallback((params: AddRideParams) => {
+    countFirstBlock(params.parkSlug, params.parkName, params.date);
     plannerStore.update((s) => addEntry(s, params));
   }, []);
 
   const addCustom = useCallback((params: AddCustomRideParams) => {
+    countFirstBlock(params.parkSlug, params.parkName, params.date);
     plannerStore.update((s) => addCustomEntry(s, params));
   }, []);
 

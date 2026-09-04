@@ -138,16 +138,23 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
         currentPage={{ name: t('title'), url: path(locale) }}
         locale={locale}
       />
-      <div className="mx-auto w-full max-w-3xl px-4 py-8 sm:py-12">
+      {/* The container's width, like every other page on the site. It was a
+          `max-w-3xl` column, which is a reasonable measure for an article and
+          the wrong box for this page: the directory at the top is a grid of
+          park cards and the chapters below it draw the planner's own
+          components at their real size, so a 768 px cap left a dead strip
+          beside both at any desktop width. Same decision the guide page wrote
+          down — one column at the container's width, no cap of its own. */}
+      <div className="container mx-auto px-4 py-8 sm:py-12">
         <header className="mb-8">
           <p className="text-muted-foreground mb-2 flex items-center gap-2 text-xs font-medium tracking-wide uppercase">
             <CalendarDays className="size-4" aria-hidden="true" />
             {t('kicker')}
           </p>
           <h1 className="text-3xl font-bold sm:text-4xl">{t('title')}</h1>
-          <p className="text-muted-foreground mt-3 max-w-2xl text-base leading-relaxed">
-            {t('lead')}
-          </p>
+          {/* No measure of its own. Capping the lead at 2xl inside a
+              container-wide page is the same dead strip one element down. */}
+          <p className="text-muted-foreground mt-3 text-base leading-relaxed">{t('lead')}</p>
         </header>
 
         <PlannerPageBody photos={photos} />

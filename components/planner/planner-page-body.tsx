@@ -233,9 +233,7 @@ function PlannerPageIntro({ onStart }: { onStart: () => void }) {
   return (
     <section data-planner-page-intro="">
       <h2 className="mb-2 text-lg font-semibold">{t('page.introTitle')}</h2>
-      <p className="text-muted-foreground max-w-2xl text-sm leading-relaxed">
-        {t('page.introBody')}
-      </p>
+      <p className="text-muted-foreground text-sm leading-relaxed">{t('page.introBody')}</p>
 
       <div className="mt-6">
         <PlannerHelpSteps layout="cards" />

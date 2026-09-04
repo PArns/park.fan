@@ -7,8 +7,10 @@ import { ChapterHeading } from '@/components/common/chapter-heading';
  *
  * `ChapterHeading` directly rather than the guide's `SectionShell`, for one
  * reason: `SectionShell` carries its own `container mx-auto px-4`, and this page
- * is a `max-w-3xl` column — the directory at the top and the prose under it read
- * as one document only while they share an edge.
+ * already opens one — a chapter inside it would centre a second container
+ * inside the first and inset every chapter by another gutter. The directory at
+ * the top and the prose under it read as one document only while they share an
+ * edge.
  *
  * Every chapter here renders unconditionally, which is what earns the numbers:
  * a sequence that skips because a section had no data looks like a bug rather
