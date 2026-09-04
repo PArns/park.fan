@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { CalendarPlus, ChevronDown, Plus } from 'lucide-react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
@@ -25,7 +25,7 @@ import { totalsFor } from '@/lib/planner/estimate';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { useRouter } from '@/i18n/navigation';
 import { formatShortDuration } from '@/lib/utils/duration';
-import { buildDayGrid, nextFreeStart } from '@/lib/planner/day-grid';
+import { buildDayGrid, growGridForSpans, nextFreeStart } from '@/lib/planner/day-grid';
 import { parkToday, resolveTimeZone } from '@/lib/planner/park-time';
 import { closedNowFor, liveWaitsFor } from '@/lib/planner/live';
 import { showLinesFor } from '@/lib/planner/shows';
@@ -194,7 +194,30 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   // The axis, or null when the park's hours are unknown — in which case there is
   // no honest grid to draw and the flat list is the answer.
   const timezone = resolveTimeZone(day?.timezone ?? park?.timezone);
-  const grid = buildDayGrid(day?.context.openHour, day?.context.closeHour);
+  /**
+   * How much of the day each block occupies, which two things need: the axis
+   * has to be tall enough to contain them, and a new block has to be filed
+   * somewhere none of them is.
+   */
+  const spans = useMemo(
+    () =>
+      activeEntries.map((entry) => ({
+        startMinute: entry.startMinute,
+        spanMinutes: occupiedMinutes(day, entry),
+      })),
+    [activeEntries, day]
+  );
+
+  /**
+   * The park's axis, grown until it contains the plan.
+   *
+   * `openMin` and `closeMin` are untouched by the growth, so the opening-hours
+   * band still marks the park's real day and everything that decides WHERE a
+   * block may go — `clampStart`, `rideFloor` — still speaks for the park. What
+   * grows is the canvas, and the room it gains is outside opening hours by
+   * construction, so it is hatched like every other minute out there.
+   */
+  const grid = growGridForSpans(buildDayGrid(day?.context.openHour, day?.context.closeHour), spans);
   const isToday = Boolean(activeDate && activeDate === parkToday(timezone));
 
   /**
@@ -255,15 +278,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
       date: activeDate,
       label: t('custom.defaultLabel'),
       icon: 'break',
-      startMinute: grid
-        ? nextFreeStart(
-            activeEntries.map((entry) => ({
-              startMinute: entry.startMinute,
-              spanMinutes: occupiedMinutes(day, entry),
-            })),
-            grid
-          )
-        : undefined,
+      startMinute: grid ? nextFreeStart(spans, grid) : undefined,
     });
   };
 

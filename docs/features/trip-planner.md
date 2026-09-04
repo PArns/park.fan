@@ -385,6 +385,60 @@ fails on a thumbnail that was never drawn into, and it hovers each control befor
 dispatching the drag, because a synthetic `dragstart` with no pointer anywhere
 near it would measure a chip no mouse can produce.
 
+## The axis is the park's day, and the canvas is not
+
+`buildDayGrid` answers a question about the **park** — when it opens, when it
+shuts, plus half an hour either side for the arrival and for a queue joined near
+closing. A plan is not bound by that: `clampStart` lets a block START up to
+fifteen minutes before the park shuts, so a sixty-minute free block reaches
+forty-five minutes past `closeMin` against a canvas that ends thirty past it. A
+hotel check-in written at 18:30 for an hour ran off the bottom of the grid, drawn
+over the gutter label that says when the day ends.
+
+`growGridForSpans` widens the canvas until it contains the plan. Three things
+make it honest:
+
+- **`openMin` and `closeMin` never move.** They are what the opening-hours band
+  is drawn from and what every placement rule (`clampStart`, `rideFloor`) reads,
+  so the room that appears is outside opening hours by construction — and is
+  hatched like every other minute out there, which is the right drawing of "you
+  have planned something for a time the park is shut".
+- **Only the extension is rounded**, out to the full hour: the ticks down the
+  gutter stay whole numbers, and the axis grows in steps a reader notices once
+  instead of by the minute. The base canvas already carries a deliberate
+  half-hour pad, and rounding _that_ would add empty axis to every plan that
+  fits.
+- **It is fed from the committed entries, never from a drag in flight.** `yFor`
+  measures from `gridStartMin`, so a canvas that grew mid-gesture would move
+  every other block under the pointer. It settles when the block lands.
+
+## Every ride block carries its photo
+
+There used to be a floor — 48 px first, which at 1.2 px per minute is a
+forty-minute queue, then 28 — and both were the same mistake in two sizes. A plan
+is mostly made of twenty-to-thirty-five-minute blocks, so the picture appeared on
+a headliner's worst hour and nowhere else: a four-ride day with four photographs
+in the payload drew zero of them. A ten-minute block is a thin band of a
+picture, which is a small thing rather than a wrong one; the block beside it
+having none was the actual inconsistency.
+
+Which is why the opacity dropped from 0.30 to **0.20** in the same change — the
+two are one decision. A photo on one block in a column of six is an accent and
+can afford to be strong; a photo on all six is the column's texture, and at 0.30
+a lit wooden track was the loudest thing in a panel whose subject is a number.
+The floor under it is the text, not the picture: the name and the wait are
+`text-crowd-*`, a thin orange on a busy hour, and they keep the drop shadow at
+every height.
+
+The headliner band followed. A pill was a word in a rounded box — which is what a
+_filter chip_ looks like — while these are rides, the same objects the list
+draws with a photograph each. Twenty-four of Phantasialand's thirty-four have no
+picture in the media database, so `PlannerRideThumb`'s coaster mark is the common
+case rather than the exception and the box is the same size either way; a band
+where half the pills carried a thumbnail and half did not would read as a loading
+state. It also fixed the drag: the pill now holds a decoded image, so the chip
+has pixels to copy without asking the network for any.
+
 ## Where a figure came from, and whether anybody checked it
 
 Four fields on `/plan/day` say how much a number is worth, and each answers a

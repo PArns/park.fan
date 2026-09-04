@@ -4,10 +4,11 @@ import { useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { Crown } from 'lucide-react';
 import { usePlanner } from '@/lib/planner/use-planner';
+import { PlannerRideThumb } from './planner-ride-thumb';
 import { partyFlags } from '@/lib/planner/party';
 import { buildDayGrid, nextFreeStart, rideFloor } from '@/lib/planner/day-grid';
 import { occupiedMinutes } from '@/lib/planner/estimate';
-import { startRideDrag, warmRideDragThumb } from '@/lib/planner/ride-drag';
+import { startRideDrag } from '@/lib/planner/ride-drag';
 import type { PlannerDayPrefs, PlannerGeo } from '@/lib/planner/types';
 import type { PlanDay, PlanDayRide } from '@/lib/api/types';
 
@@ -125,13 +126,6 @@ export function PlannerMissingHeadliners({
                 })
               }
               draggable
-              /* A pill draws no picture, so there is nothing decoded for the
-                 drag chip to copy — and a drag image is snapshotted inside
-                 `dragstart`, which is far too late to ask for one. The pointer
-                 arriving is the earliest honest moment: it always precedes the
-                 press that starts a mouse drag, and a band of headliners nobody
-                 points at costs nothing. */
-              onPointerEnter={() => warmRideDragThumb(ride.backgroundImage)}
               onDragStart={(event) =>
                 startRideDrag(
                   event.dataTransfer,
@@ -140,14 +134,34 @@ export function PlannerMissingHeadliners({
                     attractionSlug: ride.attractionSlug,
                     attractionName: ride.attractionName,
                   },
-                  // The URL the day payload already holds — the same one the
-                  // hover above warmed.
-                  { photo: ride.backgroundImage, photoPosition: ride.backgroundPosition }
+                  // The pill's own thumbnail, which is already decoded — a drag
+                  // image is snapshotted inside `dragstart` and cannot wait for
+                  // a load. `photo` rides along for the ride whose picture is
+                  // somehow not painted yet: it warms the same rendition so the
+                  // next drag has one.
+                  {
+                    element: event.currentTarget,
+                    photo: ride.backgroundImage,
+                    photoPosition: ride.backgroundPosition,
+                  }
                 )
               }
-              className="bg-background/70 hover:bg-background border-border/50 hover:border-crowd-high/50 max-w-full truncate rounded-full border px-2 py-0.5 text-[11px] transition-colors sm:cursor-grab sm:active:cursor-grabbing"
+              className="bg-background/70 hover:bg-background border-border/50 hover:border-crowd-high/50 flex max-w-full items-center gap-1.5 rounded-full border py-0.5 pr-2 pl-1 text-[11px] transition-colors sm:cursor-grab sm:active:cursor-grabbing"
             >
-              {ride.attractionName}
+              {/* The ride's picture, at 16 px. A pill was a word in a rounded
+                  box, which is what a filter chip looks like — and these are
+                  rides, the same objects the list below draws with a photograph
+                  each. Twenty-four of Phantasialand's thirty-four have no
+                  picture in the media database, so the coaster mark is the
+                  COMMON case rather than the exception and the box is the same
+                  size either way; a band where half the pills carried a
+                  thumbnail and half did not would read as a loading state. */}
+              <PlannerRideThumb
+                src={ride.backgroundImage}
+                position={ride.backgroundPosition}
+                size={4}
+              />
+              <span className="min-w-0 truncate">{ride.attractionName}</span>
             </button>
           ))}
         </div>

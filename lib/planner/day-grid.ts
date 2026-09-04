@@ -137,6 +137,64 @@ export function buildDayGrid(
   };
 }
 
+/**
+ * The axis, widened until it contains the plan drawn on it.
+ *
+ * `buildDayGrid` answers a question about the PARK — when it opens, when it
+ * shuts, plus half an hour either side for the arrival and for a queue joined
+ * near closing. A plan is not bound by that. `clampStart` lets a block START up
+ * to fifteen minutes before the park shuts, which for a sixty-minute free block
+ * puts its foot forty-five minutes past `closeMin` against a canvas that ends
+ * thirty past it; a hotel check-in written at 18:30 for an hour simply ran off
+ * the bottom, drawn over the gutter label that says when the day ends.
+ *
+ * So the park's own hours stay exactly as they were — `openMin` and `closeMin`
+ * are what the opening-hours band is drawn from, and moving them would be the
+ * panel inventing a longer day — and only the CANVAS grows. The room that
+ * appears is outside opening hours by construction, so it is hatched like every
+ * other minute out there, which is the honest drawing of "you have planned
+ * something for a time the park is shut".
+ *
+ * Rounded out to the full hour, for two reasons that happen to agree: the hour
+ * ticks down the gutter stay whole numbers, and the axis then grows in steps a
+ * reader notices once instead of by the minute while a block is being resized.
+ *
+ * Fed from the COMMITTED entries and never from a drag in flight. Growing the
+ * canvas mid-gesture would move every other block under the pointer, because
+ * `yFor` is measured from `gridStartMin` — the axis settles when the block
+ * lands, which is also when the visitor can see what they did.
+ */
+export function growGridForSpans(
+  grid: DayGrid | null,
+  spans: readonly { startMinute: number; spanMinutes: number }[]
+): DayGrid | null {
+  if (!grid || spans.length === 0) return grid;
+
+  let earliest = grid.gridStartMin;
+  let latest = grid.gridEndMin;
+  for (const span of spans) {
+    if (!Number.isFinite(span.startMinute)) continue;
+    const end = span.startMinute + Math.max(0, span.spanMinutes || 0);
+    if (span.startMinute - PRE_PAD_MIN < earliest) earliest = span.startMinute - PRE_PAD_MIN;
+    if (end + POST_PAD_MIN > latest) latest = end + POST_PAD_MIN;
+  }
+
+  // Rounded only where it actually moved. The base canvas already carries a
+  // deliberate half-hour pad at each end — rounding that to the hour would add
+  // thirty minutes of empty axis to every plan that fits comfortably.
+  const gridStartMin =
+    earliest < grid.gridStartMin ? Math.floor(earliest / 60) * 60 : grid.gridStartMin;
+  const gridEndMin = latest > grid.gridEndMin ? Math.ceil(latest / 60) * 60 : grid.gridEndMin;
+  if (gridStartMin === grid.gridStartMin && gridEndMin === grid.gridEndMin) return grid;
+
+  return {
+    ...grid,
+    gridStartMin,
+    gridEndMin,
+    heightPx: (gridEndMin - gridStartMin) * grid.pxPerMin,
+  };
+}
+
 /** Pixels from the canvas top for a park-local minute. */
 export function yFor(grid: DayGrid, minute: number): number {
   return (minute - grid.gridStartMin) * grid.pxPerMin;
