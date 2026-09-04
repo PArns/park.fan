@@ -49,6 +49,8 @@ interface PlannerDayGridProps {
   liveWaits?: Map<string, number> | null;
   /** Showtimes as park-local minutes. `null` while the day payload is on its way. */
   showLines?: PlannerShowLine[] | null;
+  /** Rendered inside the "nothing planned yet" overlay. Usually `null`. */
+  emptyAction?: React.ReactNode;
   /** Free blocks only: the visitor dragged the bottom edge to this many minutes. */
   onResize?: (entryId: string, durationMinutes: number) => void;
   /** The plan's active park. A ride dropped in from another park is refused. */
@@ -90,6 +92,7 @@ export function PlannerDayGrid({
   isToday,
   liveWaits,
   showLines = null,
+  emptyAction = null,
   onResize,
   parkSlug,
   onDropRide,
@@ -818,6 +821,14 @@ export function PlannerDayGrid({
           <div className="text-muted-foreground absolute inset-x-4 top-1/3 text-center text-xs">
             <p className="text-foreground text-sm font-medium">{t('empty.title')}</p>
             <p className="mt-1">{t('empty.bodyGrid')}</p>
+            {/* The way OUT of an empty day, where a reader standing in another
+                park would otherwise be told to drag in a ride that does not
+                belong to the day on screen. Optional and usually absent — see
+                `PlannerPlanParkCta`. `pointer-events-auto` because the overlay
+                it sits in is inside the drop canvas. */}
+            {emptyAction && (
+              <div className="pointer-events-auto mx-auto max-w-56">{emptyAction}</div>
+            )}
           </div>
         ) : (
           <ol className="absolute inset-0">

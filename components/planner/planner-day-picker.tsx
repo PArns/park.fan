@@ -85,8 +85,18 @@ export function PlannerDayPicker({
             {dayLabel(value, today, locale, t)}
           </button>
         </PopoverTrigger>
-        {/* `w-auto`: the grid sizes itself, and a popover with a fixed width
-            either cropped the seven columns or left a margin round them.
+        {/* A DERIVED width, not `w-auto` and not one picked by eye.
+            `w-auto` made the popover shrink-to-fit, and what it fitted was its
+            widest ROW — which is never the day grid (`grid-cols-7` is
+            `minmax(0,1fr)` and takes whatever it is given) but the caption,
+            whose text is `toLocaleDateString(locale, {month:'long'})`. So the
+            calendar was as wide as the month's name: measured in de-DE,
+            Juli 144.8 px, August 155.5, September 177.9, Oktober 161.6,
+            November 173.4 — the popover coming out at caption + 82 px every
+            time, and the seven columns silently redistributing the difference.
+            254 px is 7 × 32 (the compact cell's `h-8`) + 6 × 2 (`gap-0.5`)
+            + 2 × 8 (`p-2`) + 2 × 1 (border), so the columns land on exactly
+            32.000 px and the box no longer depends on the calendar.
             `align="end"` because this sits at the right edge of the panel
             header — centred on it, the calendar hangs off the sheet. */}
         {/* ABOVE the panel. Both this and `SheetContent` are portalled to
@@ -96,7 +106,7 @@ export function PlannerDayPicker({
           Fixed at the call site rather than in `components/ui/popover.tsx`:
           every other popover on the site is correct at 50, and raising the
           primitive would put a park page's popover over the header. */}
-        <PopoverContent align="end" className="z-[80] w-auto p-2">
+        <PopoverContent align="end" className="z-[80] w-[254px] p-2">
           <PlannerMonthCalendar
             value={value}
             onChange={(date) => {

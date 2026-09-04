@@ -119,6 +119,19 @@ export function ParkCalendarDayDetail({
   // Retain the last non-null day so a nav step (parent fetches the target day → `day` is
   // briefly null) dims the open dialog instead of unmounting it. Render-phase derived-state
   // update (the React-sanctioned pattern) — no effect, no extra frame with stale content.
+  //
+  // NOT retained across the close, and that is measured rather than assumed.
+  // `ParkCalendarGrid` derives `day` and `open` from one `selectedDate`, so both
+  // go in the same commit and this returns `null` before Radix can put
+  // `data-state="closed"` on the content — the dialog is destroyed rather than
+  // closed, and `components/ui/dialog.tsx`'s 200 ms exit never runs, for every
+  // way out of it (the X, Escape and the overlay alike). Keeping `lastDay`
+  // through the close does restore that animation, and it costs far more than
+  // it is worth: the content then re-renders on every commit that follows the
+  // close — the planner panel mounting, the route changing — and the dialog took
+  // 605 ms to leave instead of 147 ungthrottled, 3868 instead of 1116 at 6× CPU
+  // and 20.8 s instead of 4.0 at 20×. A missing fade is a blemish; four extra
+  // seconds on a phone is the bug this was reported as.
   const [lastDay, setLastDay] = useState<CalendarDay | null>(dayProp);
   if (dayProp && dayProp !== lastDay) setLastDay(dayProp);
   const day = dayProp ?? (open ? lastDay : null);

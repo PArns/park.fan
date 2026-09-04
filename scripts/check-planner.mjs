@@ -158,47 +158,57 @@ async function seed(page) {
 }
 
 /**
- * Wait until the document stops changing, and only then open a MODAL sheet.
+ * Wait until the main thread has nothing left to do, and only then open a MODAL
+ * sheet.
  *
  * A modal Radix dialog marks everything outside itself `aria-hidden` +
  * `data-aria-hidden` — correct, and the whole reason a bottom sheet traps. Do it
  * while the page is still hydrating and React finds those attributes on nodes
  * the server never wrote them on, and reports "A tree hydrated but some
  * attributes … didn't match" once per boundary that hydrates afterwards.
- * Measured on the homepage on a 390 px viewport: 19 of them at `networkidle`,
- * and **zero** with eight seconds of settle first, with nothing else changed.
- * The mismatch is real and it is dev-only — the production React build carries
- * neither the comparison nor the string — so this is a precondition of the
- * measurement rather than a waiver: any hydration error outside this window
- * still fails the run.
+ * Measured in isolation on the homepage at 390 px: 17 of them when the sheet
+ * opens at `networkidle`, zero without opening it, zero on a desktop viewport
+ * (the panel there is deliberately not modal) and zero with eight seconds of
+ * quiet first. The mismatch is real and it is dev-only — the production React
+ * build carries neither the comparison nor the string — so this is a
+ * precondition of the measurement rather than a waiver: any hydration error
+ * outside this window still fails the run.
  *
- * `networkidle` is not that signal. The homepage streams a couple of dozen
- * Suspense boundaries, and on the dev server they are still hydrating seconds
- * after the last response has landed. A quiet MutationObserver is, and it says
- * what it is waiting for instead of naming a number that happened to work.
+ * It does not make the RUN green, and that is worth stating rather than hiding:
+ * the three warnings this file still reports arrive before the first assertion
+ * has executed, from the pages the earlier blocks open, not from the phone one.
+ * Waiting here fixes the block it is in and nothing else.
+ *
+ * It watched a MutationObserver first, and that was the wrong instrument for a
+ * reason worth writing down: **hydration barely mutates the DOM.** React walks
+ * server-rendered nodes and attaches to them, so the observer went quiet long
+ * before React was done, and the check passed or failed depending on which of
+ * the two won a race it could not see. Idle callbacks measure the thing that is
+ * actually busy — three consecutive idle periods with real time left in them,
+ * which a hydrating main thread does not hand out.
  */
-async function settleHydration(page, quietMs = 1200, timeoutMs = 15_000) {
+async function settleHydration(page, idleRuns = 3, timeoutMs = 15_000) {
   await page
     .evaluate(
-      ([quiet, limit]) =>
+      ([runs, limit]) =>
         new Promise((resolve) => {
-          let timer = setTimeout(resolve, quiet);
-          const observer = new MutationObserver(() => {
-            clearTimeout(timer);
-            timer = setTimeout(done, quiet);
-          });
-          function done() {
-            observer.disconnect();
-            resolve();
-          }
-          observer.observe(document.documentElement, {
-            subtree: true,
-            childList: true,
-            attributes: true,
-          });
-          setTimeout(done, limit);
+          const started = performance.now();
+          let quiet = 0;
+          const step = () => {
+            if (performance.now() - started > limit) return resolve();
+            requestIdleCallback(
+              (deadline) => {
+                quiet = deadline.timeRemaining() > 40 ? quiet + 1 : 0;
+                if (quiet >= runs) resolve();
+                else step();
+              },
+              { timeout: 500 }
+            );
+          };
+          if (typeof requestIdleCallback === 'function') step();
+          else setTimeout(resolve, 3000);
         }),
-      [quietMs, timeoutMs]
+      [idleRuns, timeoutMs]
     )
     .catch(() => {});
 }

@@ -246,7 +246,38 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
          nothing — so the band's 24 px blur blurred an empty backdrop and the glass was simply not
          there. The bar's own material moved into the sibling layer below, which blurs the page
          exactly as before and is nobody's ancestor. */
-      className={`relative sticky top-0 z-50 h-12 border-b transition-[border-color] duration-500 ${
+      /* `@container`, so the four visibility switches below ask how wide THIS BAR
+         is rather than how wide the window is. The two stopped being the same
+         number when the trip planner's panel started insetting the page: the
+         wrapper in `app/[locale]/layout.tsx` pads the page by the panel's width,
+         so with a 448 px panel on a 1440 px window the bar's box is 992 px while
+         `lg:`/`xl:` still read 1440 and kept handing it a desktop's worth of
+         content. Measured then: children summing 1087.9 px in a 992 px box, the
+         °C/°F toggle and the theme switch 95.9 px UNDER the panel in German and
+         171.1 px in French, and worse at 1280 (+255.9) and 1024 (+389.7),
+         because the panel is a fixed width and the box it leaves shrinks with
+         the window.
+
+         On the HEADER and not on the row inside it: `container-type` makes an
+         element the containing block for absolutely positioned descendants, and
+         the corner logo is `absolute left-6` — against the row (which is
+         `container mx-auto`, i.e. 1280 wide and centred in a 1440 window) it
+         would sit 80 px further right and break the handoff the whole lockup
+         geometry is built on. The header is already `relative`, so nothing about
+         that resolution changes here.
+
+         `container-type: inline-size` implies `contain: layout style
+         inline-size` and NOT `contain: paint`, which is what would have made
+         this element a backdrop root — see the note above about why the bar's
+         material lives in a sibling layer. Measured after the change: the menu
+         band's blur is unchanged.
+
+         The thresholds are the old ones on purpose. With the planner shut the
+         header spans the viewport, so 1024 and 1280 as container queries are the
+         same two switches at the same two window widths — the bar keeps every
+         layout it had, and only gains the ones it needs while the panel is
+         open. */
+      className={`@container relative sticky top-0 z-50 h-12 border-b transition-[border-color] duration-500 ${
         isTransparent ? 'border-transparent' : 'border-border/50'
       }`}
     >
@@ -342,7 +373,7 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
             `xl:gap-5` instead of 6) and the search field beside it shrinks
             before anything here does. */}
         <nav
-          className={`hidden items-center gap-3.5 whitespace-nowrap lg:flex xl:gap-5 ${fadeClass}`}
+          className={`hidden items-center gap-3.5 whitespace-nowrap @min-[1024px]:flex @min-[1280px]:gap-5 ${fadeClass}`}
           aria-label="Main navigation"
           aria-hidden={isTransparent}
         >
@@ -444,7 +475,10 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
         {/* Search Desktop – fades in on scroll */}
         {/* The full input from `xl`. Below that the row has no width to spare —
             see the icon trigger further down, which covers 1024–1279 px. */}
-        <div data-header-stagger className={`hidden xl:block xl:w-64 ${fadeClass}`}>
+        <div
+          data-header-stagger
+          className={`hidden @min-[1280px]:block @min-[1280px]:w-64 ${fadeClass}`}
+        >
           <SearchCommand
             trigger="input"
             size="sm"
@@ -486,7 +520,7 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
               in French with a 176 px input beside it. A 36 px icon that opens
               the same palette costs nobody a search; a horizontal scrollbar on
               every page costs everybody. */}
-          <div className={`xl:hidden ${fadeClass}`}>
+          <div className={`@min-[1280px]:hidden ${fadeClass}`}>
             <SearchCommand trigger="button" size="sm" />
           </div>
 
@@ -518,7 +552,7 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
                   /* `max-sm:size-9` cancels the button scale's 44 px phone tier. The bar is
                      `h-12`; a 44 px burger in it is the mistake the header-geometry requirement
                      names. Third and last opt-out, beside LocaleSwitcher and the search trigger. */
-                  className="max-sm:size-9 lg:hidden"
+                  className="max-sm:size-9 @min-[1024px]:hidden"
                   suppressHydrationWarning
                   tabIndex={isTransparent ? -1 : 0}
                   data-header-stagger

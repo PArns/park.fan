@@ -15,6 +15,7 @@ import { PlannerHelpSteps } from './planner-help';
 import { PlannerWizard, type WizardPark } from './planner-wizard';
 import { PlannerPartyChips } from './planner-party-chips';
 import { PlannerInParkCta } from './planner-in-park-cta';
+import { PlannerPlanParkCta } from './planner-plan-park-cta';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { totalsFor } from '@/lib/planner/estimate';
@@ -204,8 +205,31 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
     plannerPagePark.getSnapshot,
     plannerPagePark.getServerSnapshot
   );
-  /** The page's park, and nothing planned for it yet. */
-  const unplannedPagePark = pagePark && !state.parks[pagePark.slug] ? pagePark : null;
+  /**
+   * The page's park, where the day on screen is not already its own.
+   *
+   * It used to ask `!state.parks[pagePark.slug]` — whether the store had ever
+   * HEARD of the park — and that is not the question. `openDay` registers a park
+   * the moment a day is opened for it and adds no entry, `removeEntry` leaves
+   * `days[date] = {date, entries: []}` behind, and only `clearDay` prunes, and
+   * only when it drops the park's last day. So one visit to the calendar's plan
+   * button left an empty husk that silenced the offer for good — which is the
+   * state the panel was in when this was reported.
+   *
+   * What it asks now is whether the reader is already planning THIS park today.
+   * That covers the husk, and it covers the case the old test could not express
+   * at all: standing on Toverland's page with a Phantasialand day open, the
+   * right offer is Toverland.
+   */
+  const unplannedPagePark =
+    pagePark && !(activeParkSlug === pagePark.slug && activeDate) ? pagePark : null;
+
+  /** Starts the wizard on the CALENDAR — which park is settled by the route. */
+  const startPagePark = useCallback(() => {
+    if (!unplannedPagePark) return;
+    setWizardPark({ ...unplannedPagePark });
+    setWizardOpen(true);
+  }, [unplannedPagePark]);
 
   /**
    * A block the visitor writes themselves — a lunch break, a show, a meeting
@@ -547,26 +571,42 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
           </div>
         ) : (
           <>
-            <div className="border-border/60 shrink-0 border-b">
-              {/* Who is coming, and changeable — the wizard asks it once and the
-                  ride list flags rides against it all day, so this cannot be
-                  write-only. It rides at the END of the band's own second row
-                  rather than on a line of its own: 30 px of panel for one 22 px
-                  pill, in the same type as the row above it, on a surface whose
-                  subject is the axis underneath. */}
-              <PlannerContextBand
-                day={day ?? null}
-                state={dayState}
-                trailing={
-                  park && activeDate ? (
+            {/* Only where a day has been CHOSEN, and that is the whole fix for a
+                sentence the panel had no business saying. `dayState` ends in a
+                fall-through `: 'empty'` (see above), and with no active park or
+                date the query is disabled — so `isFetching` is false, `day` is
+                undefined, and 'empty' arrives at the band meaning "nobody ever
+                asked". The band cannot tell that from a real 404 and printed
+                "Für diesen Tag liegt keine Prognose vor." over an empty
+                planner, above the offer to plan the park the reader is standing
+                in. Measured: zero requests to `/plan/day` had been made.
+
+                Guarded HERE rather than inside the band, because 'empty' is
+                also the honest 404 — a park and a date are chosen, the API
+                answered, and there the sentence is the only right one. And the
+                guard has to sit on the wrapper: it carries the `border-b`, so a
+                band that returned `null` from inside would leave a hairline
+                under the sheet header with nothing above it. */}
+            {park && activeDate && (
+              <div className="border-border/60 shrink-0 border-b">
+                {/* Who is coming, and changeable — the wizard asks it once and
+                    the ride list flags rides against it all day, so this cannot
+                    be write-only. It rides at the END of the band's own second
+                    row rather than on a line of its own: 30 px of panel for one
+                    22 px pill, in the same type as the row above it, on a
+                    surface whose subject is the axis underneath. */}
+                <PlannerContextBand
+                  day={day ?? null}
+                  state={dayState}
+                  trailing={
                     <PlannerPartyChips
                       prefs={prefs}
                       onChange={(patch) => setDayPrefs(park.slug, activeDate, patch)}
                     />
-                  ) : null
-                }
-              />
-            </div>
+                  }
+                />
+              </div>
+            )}
 
             {/* The scroll lives here, not on SheetContent — see the note above.
                 `relative` is load-bearing: `overflow-y-auto` makes a scroll
@@ -666,6 +706,18 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                         editCustom(activeParkSlug, activeDate, entryId, { durationMinutes });
                     }}
                     loading={dayState === 'loading'}
+                    /* The same offer, in the branch that is actually on screen.
+                       An axis exists for every open day, so this is where a
+                       reader standing in another park sees it. */
+                    emptyAction={
+                      unplannedPagePark ? (
+                        <PlannerPlanParkCta
+                          parkName={unplannedPagePark.name}
+                          onStart={startPagePark}
+                          className="mt-3"
+                        />
+                      ) : null
+                    }
                     selectedId={selectedId}
                     scrollerRef={scrollerRef}
                     onSelect={setSelectedId}
@@ -693,20 +745,11 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                           starts the wizard on the CALENDAR, because which park
                           is already settled by the page. */}
                       {unplannedPagePark && (
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setWizardPark({ ...unplannedPagePark });
-                            setWizardOpen(true);
-                          }}
-                          data-planner-plan-this-park=""
-                          className="bg-primary text-primary-foreground hover:bg-primary/90 mt-2 flex w-full items-center justify-center gap-2 rounded-md px-3 py-2.5 text-sm font-semibold transition-colors max-sm:min-h-11"
-                        >
-                          <CalendarPlus className="size-4 shrink-0" aria-hidden="true" />
-                          <span className="truncate">
-                            {t('empty.planThisPark', { park: unplannedPagePark.name })}
-                          </span>
-                        </button>
+                        <PlannerPlanParkCta
+                          parkName={unplannedPagePark.name}
+                          onStart={startPagePark}
+                          className="mt-2"
+                        />
                       )}
 
                       {/* Both sentences, one shown by CSS. The way into a plan

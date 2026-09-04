@@ -225,6 +225,48 @@ today — so sixty of the sixty-one dates the picker offers drew nothing and the
 band had to say „steht erst am Tag selbst fest". That sentence is gone; an empty
 `shows` array is now a statement about the park.
 
+## The panel changes the page's width, and four things had to learn that
+
+Opening the panel sets `--planner-inset` on the document element and the layout
+wrapper pads by it. Padding an ancestor is not the same as making the window
+smaller, and each of these found that out separately:
+
+- **The header's breakpoints** were viewport queries in a box that had shrunk —
+  see the header-geometry requirement in `CLAUDE.md`. `@container` on the
+  `<header>`, same two thresholds.
+- **The park hero** is `position: fixed`, which resolves against the viewport, so
+  the padding never reached it: the photo spanned the full 1440 px behind a glass
+  panel and read straight through it. Its right edge follows the same variable
+  now (`sm:right-[var(--planner-inset,0px)]`), which is `0px` while the planner
+  is shut.
+- **The panel's own width** is capped so the page keeps `PAGE_MIN_PX` (360),
+  measured off the header's least compressible row. At 768 px the stored 448
+  becomes 408.
+- **The attraction cards** were the reported symptom and were never the problem:
+  measured across the whole scrolled page at five widths, the rightmost card is
+  always exactly 16 px inside the panel's edge.
+
+## Standing in a park, planning that park
+
+Two gates hid the "<Park> jetzt planen" button, and both had to go:
+
+- It asked whether the store had ever HEARD of the park (`!state.parks[slug]`).
+  `openDay` registers a park and adds no entry, `removeEntry` leaves an empty day
+  behind, and only `clearDay` prunes — so one visit to the calendar's plan button
+  left a husk that silenced the offer for good. It asks whether the day on screen
+  is already this park's now, which also answers the case the old test could not
+  express: on Toverland's page with a Phantasialand day open, the right offer is
+  Toverland.
+- It lived in the panel's no-axis empty branch, which is reached only when
+  `buildDayGrid` returns `null` — and an axis exists for every open day. So the
+  container was unreachable the moment anything was active, and the reader got
+  the grid's own "Noch nichts geplant" overlay, which offered nothing.
+  `PlannerPlanParkCta` is its own component and renders in both.
+
+The wizard already starts on the calendar when it is handed a park
+(`useState<Step>(initialPark ? 'date' : 'park')`, a two-step rail) — nothing to
+change there.
+
 ## Push notifications
 
 `lib/planner/use-push-subscription.ts` + `public/sw.js`, VAPID, one topic

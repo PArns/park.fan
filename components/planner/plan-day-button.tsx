@@ -1,5 +1,7 @@
 'use client';
 
+import { flushSync } from 'react-dom';
+
 import { useTranslations } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
 import { ArrowRight, CalendarPlus } from 'lucide-react';
@@ -61,17 +63,37 @@ export function PlanDayButton({
     <button
       type="button"
       onClick={() => {
-        openDay({ slug: parkSlug, name: parkName, geo, timezone }, date);
-        plannerUi.requestOpen();
-        onPlanned?.();
-        // The park's own page, where the ride cards are. The calendar is the
-        // one park page with none, so a button that says "plan the rides for
-        // this day" and leaves the reader there has not finished its sentence.
-        // `@/i18n/navigation`'s router, so the localized path is built rather
-        // than guessed.
-        router.push(
-          `/parks/${geo.continent}/${geo.country}/${geo.city}/${parkSlug}` as '/europe/germany/rust/europa-park'
-        );
+        // The close first, in a commit of its own, and the rest AFTER a paint.
+        // Both halves are needed and neither is enough alone.
+        //
+        // Everything here is one discrete React event, so without `flushSync`
+        // the close rides in the same commit as the store write, the panel
+        // mounting and the route render. And `flushSync` only writes the DOM —
+        // the browser still paints nothing until the handler returns, so on its
+        // own it moved the measured freeze not at all: 2639 ms at 6× CPU
+        // throttling, 12163 ms at 20×, with the dialog opaque and unresponsive
+        // for all of it. That is the "schließt sich nicht sauber": not a dialog
+        // that stays, a dialog that stops answering.
+        //
+        // So the expensive three go behind a double `requestAnimationFrame`,
+        // which is the first moment the closed dialog is actually on screen.
+        // They are not a gesture the browser gates (no popup, no download), and
+        // `router.push` works the same one frame later.
+        if (onPlanned) flushSync(onPlanned);
+        const rest = () => {
+          openDay({ slug: parkSlug, name: parkName, geo, timezone }, date);
+          plannerUi.requestOpen();
+          // The park's own page, where the ride cards are. The calendar is the
+          // one park page with none, so a button that says "plan the rides for
+          // this day" and leaves the reader there has not finished its
+          // sentence. `@/i18n/navigation`'s router, so the localized path is
+          // built rather than guessed.
+          router.push(
+            `/parks/${geo.continent}/${geo.country}/${geo.city}/${parkSlug}` as '/europe/germany/rust/europa-park'
+          );
+        };
+        if (onPlanned) requestAnimationFrame(() => requestAnimationFrame(rest));
+        else rest();
       }}
       className={cn(
         // A primary call to action, full width, and both halves of that are the

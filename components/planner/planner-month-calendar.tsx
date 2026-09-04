@@ -108,7 +108,12 @@ export function PlannerMonthCalendar({
         >
           <ChevronLeft className="size-4" />
         </button>
-        <span aria-live="polite" className="font-medium">
+        {/* `min-w-0 flex-1 truncate`, because the box is fixed now and the
+            caption is the one thing in this header whose width is a locale's
+            business: it may shrink below its content and, in a language that
+            writes a very long month, end in an ellipsis rather than push the
+            two arrows out of the popover. */}
+        <span aria-live="polite" className="min-w-0 flex-1 truncate text-center font-medium">
           {monthLabel(month, locale)}
         </span>
         <button
