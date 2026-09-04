@@ -5,12 +5,12 @@
   "roles": ["ride-card", "hero"],
   "tags": ["halloween", "indoor", "night", "photo", "ride", "theming"],
   "alt": {
-    "de": "Eine Darstellerin auf dem Balkon über dem Schild „The Dollhouse“.",
-    "en": "A performer on the balcony above a \"The Dollhouse\" sign.",
-    "es": "Una actriz en el balcón sobre el cartel \"The Dollhouse\".",
+    "de": "Eine Darstellerin auf dem Balkon über dem Schriftzug „The Dollhouse“.",
+    "en": "A performer on the balcony above the \"The Dollhouse\" lettering.",
+    "es": "Una actriz en el balcón sobre el rótulo \"The Dollhouse\".",
     "fr": "Une comédienne sur le balcon au-dessus de l’enseigne « The Dollhouse ».",
     "it": "Un’attrice sul balcone sopra l’insegna \"The Dollhouse\".",
-    "nl": "Een acteur op het balkon boven het bord \"The Dollhouse\"."
+    "nl": "Een acteur op het balkon boven het opschrift \"The Dollhouse\"."
   },
   "caption": {
     "de": "Villa Fiasko heißt in den Halloween Nights „The Dollhouse“.",

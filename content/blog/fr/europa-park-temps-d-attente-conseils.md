@@ -504,7 +504,7 @@ de rails : une promenade en bateau interactive dans la zone grecque, où l’on 
 sur des cibles en chemin. Qui vient avec des enfants la fait deux fois, parce que
 la première fois personne ne fait attention au score.
 
-![Le panneau « Abenteuer Atlantis » et deux têtes sculptées au-dessus de l’entrée | L’entrée se trouve en Grèce, juste derrière Poseidon. | right](/media/europa-park/atlantis-adventure-4x3.jpg)
+![L’enseigne « Abenteuer Atlantis » et deux têtes sculptées au-dessus de l’entrée | L’entrée se trouve en Grèce, juste derrière Poseidon. | right](/media/europa-park/atlantis-adventure-4x3.jpg)
 
 Depuis l’**[Euro-Tower](ref:europa-park/euro-tower)**, à Rust depuis 1983, tu vois
 par temps clair jusqu’aux Vosges. Le train panoramique s’arrête à trois gares,

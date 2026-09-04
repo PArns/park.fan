@@ -48,7 +48,7 @@ seo:
 ---
 
 You round the corner toward your favourite attraction, and there it is, glowing
-on the sign: **“60-minute wait.”** On some days you spin on your heel and
+on the display: **“60-minute wait.”** On some days you spin on your heel and
 inform your companion that the ride is “overrated anyway.” On others you stand
 in that exact same 60-minute line and would swear afterward it was 25 at most.
 

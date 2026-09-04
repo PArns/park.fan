@@ -352,7 +352,7 @@ como la mayor experiencia de Halloween de Europa. Sustituye al veterano
 laberinto de ratas «Trapped». La única regla que cuenta ahí dentro: al que se
 queda quieto, lo pillan.
 
-![El cartel de entrada de Troy convertido en «DesTROY – The Ride», con dos pancartas de Halloween Nights debajo | Troy se convierte en DesTROY. El parque desmonta para ello el cartel de entrada de la montaña rusa. | right](/media/toverland-halloween/03-destroy-schild.jpg)
+![El rótulo de entrada de Troy convertido en «DesTROY – The Ride», con dos pancartas de Halloween Nights debajo | Troy se convierte en DesTROY. El parque desmonta para ello el rótulo de entrada de la montaña rusa. | right](/media/toverland-halloween/03-destroy-schild.jpg)
 
 Para los fans de Troy, sin embargo, lo mejor está aún por llegar. Una de las
 scare zones se llama **«DesTroy»** y está en **Ithaka**, es decir, justo al lado

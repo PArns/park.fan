@@ -5,12 +5,12 @@
   "roles": ["ride-card", "hero"],
   "tags": ["autumn", "coaster", "dusk", "outdoor", "photo", "ride", "signage"],
   "alt": {
-    "de": "Das Schild von Speed of Sound zwischen übergroßen Lautsprechern und einer Gitarre.",
-    "en": "The Speed of Sound sign between oversized speakers and a guitar.",
-    "es": "El cartel de Speed of Sound entre altavoces gigantes y una guitarra.",
+    "de": "Der Schriftzug von Speed of Sound zwischen übergroßen Lautsprechern und einer Gitarre.",
+    "en": "The Speed of Sound lettering between oversized speakers and a guitar.",
+    "es": "El rótulo de Speed of Sound entre altavoces gigantes y una guitarra.",
     "fr": "L’enseigne de Speed of Sound entre des enceintes géantes et une guitare.",
     "it": "L’insegna di Speed of Sound tra altoparlanti giganti e una chitarra.",
-    "nl": "Het bord van Speed of Sound tussen reuzenluidsprekers en een gitaar."
+    "nl": "Het opschrift van Speed of Sound tussen reuzenluidsprekers en een gitaar."
   },
   "caption": {
     "de": "Speed of Sound in Walibi Holland.",

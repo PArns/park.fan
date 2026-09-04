@@ -107,7 +107,7 @@ dat hier ooit is bereikt. Vier jaar later waren ze weer weg. Sinds **2006** is
 het park eigendom van het Franse concern **Compagnie des Alpes**, dat ook
 [Walibi Belgium](ref:walibi-belgium) en [Parc Astérix](ref:parc-asterix) bezit.
 
-![Een oude kever staat op een stalen frame boven het bord "Speed Zone" | De ingang van de Speed Zone. Subtiliteit was nooit het doel. | wide](/media/walibi-holland/background.jpg)
+![Een oude kever staat op een stalen frame boven het opschrift "Speed Zone" | De ingang van de Speed Zone. Subtiliteit was nooit het doel. | wide](/media/walibi-holland/background.jpg)
 
 Vandaag beslaat het park zo’n **40 hectare**, plus 20 hectare vakantiepark
 (Walibi Village) en een **evenemententerrein van 80 hectare** er direct naast.
@@ -226,7 +226,7 @@ rail die zich in vormen laat buigen die met hout onmogelijk zijn. Op **1 juli
 
 ```
 
-![De roestige letters "Untamed" voor de houten constructie van de baan | De roest op het bord is bedoeld. Het hout erachter is echt en stond hier al toen de baan nog Robin Hood heette. | left](/media/walibi-holland/untamed-4x3.jpg)
+![De roestige letters "Untamed" voor de houten constructie van de baan | De roest op het opschrift is bedoeld. Het hout erachter is echt en stond hier al toen de baan nog Robin Hood heette. | left](/media/walibi-holland/untamed-4x3.jpg)
 
 De cijfers: **36,5 meter hoog**, first drop **35,4 meter**, **92 km/u**,
 **1.085 meter** lang, **vijf inversies**, volgens de fabrikant **14
@@ -411,7 +411,7 @@ de verbouwing van 2011 nieuwe treinen kreeg: schouderbanden in plaats van de
 oude beugels. Rijd ze achter elkaar en je weet binnen een seconde hoeveel een
 beveiliging uitmaakt.
 
-![Het bord van Speed of Sound tussen enorme luidsprekers en een gitaar | De gevel belooft een concert. Erachter wacht een Boomerang uit 2000. | wide](/media/walibi-holland/speed-of-sound.jpg)
+![Het opschrift van Speed of Sound tussen enorme luidsprekers en een gitaar | De gevel belooft een concert. Erachter wacht een Boomerang uit 2000. | wide](/media/walibi-holland/speed-of-sound.jpg)
 
 ### De rest
 
@@ -647,7 +647,7 @@ Op **23 april 2026** heeft het park het evenement geschrapt. Zonder
 aankondiging, zonder opvolger. Walibi Holland blijft ’s winters weer helemaal
 dicht.
 
-![De ingang van Walibi Belgium, versierd met kerstballen, daarboven het bord "Walibi Winter" | Walibi Winter in Waver. Het Belgische zusterpark gaat in december door, het Nederlandse niet meer. | wide](/media/walibi-belgium/background.jpg)
+![De ingang van Walibi Belgium, versierd met kerstballen, daarboven de letters "Walibi Winter" | Walibi Winter in Waver. Het Belgische zusterpark gaat in december door, het Nederlandse niet meer. | wide](/media/walibi-belgium/background.jpg)
 
 Officieel heet het dat de korte openingsperiode en de sterke afhankelijkheid van
 het winterweer het moeilijk maakten de gewenste kwaliteit betrouwbaar te

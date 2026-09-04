@@ -498,7 +498,7 @@ en barca por la zona temática griega en el que vas disparando a dianas por el
 camino. Quien va con niños la monta dos veces, porque la primera nadie está
 pendiente del marcador.
 
-![El cartel «Abenteuer Atlantis» con dos cabezas talladas sobre la entrada | La entrada está en Grecia, justo detrás de Poseidon. | right](/media/europa-park/atlantis-adventure-4x3.jpg)
+![El rótulo «Abenteuer Atlantis» con dos cabezas talladas sobre la entrada | La entrada está en Grecia, justo detrás de Poseidon. | right](/media/europa-park/atlantis-adventure-4x3.jpg)
 
 Desde el **[Euro-Tower](ref:europa-park/euro-tower)**, en Rust desde 1983, con
 tiempo despejado se ve hasta los Vosgos. El tren panorámico para en tres

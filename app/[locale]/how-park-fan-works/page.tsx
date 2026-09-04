@@ -48,9 +48,9 @@ interface PageHeader {
    * budget.
    */
   metaTitle: string;
-  /** Unit under the hero's wait-time sign. */
+  /** Unit under the hero's wait-time display. */
   signUnit: string;
-  /** One line under the sign, naming what it is. */
+  /** One line under the display, naming what it is. */
   signCaption: string;
 }
 
@@ -367,7 +367,7 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
           imageAlt={header.heroAlt}
           stats={header.stats}
           scrollLabel={header.scrollLabel}
-          sign={{
+          display={{
             value: TARON_WAIT_NOW,
             unit: header.signUnit,
             caption: header.signCaption,

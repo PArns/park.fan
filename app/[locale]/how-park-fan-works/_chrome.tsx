@@ -10,11 +10,11 @@ import { Reveal, ScrollCue } from '@/components/marketing/scroll-reveal';
  * The shared `Hero` in `components/marketing/editorial-ui.tsx` puts a title over
  * a photo, which is right for the Fancast and best-travel-time pages because
  * their subject is a mood. This page's subject is an object — a number on a
- * sign that means nothing on its own — so the hero shows that object and lets
+ * number that means nothing on its own — so the hero shows that object and lets
  * the headline ask about it. Everything below is then an answer.
  */
 
-// ── The sign ─────────────────────────────────────────────────────────────────
+// ── The wait-time display ─────────────────────────────────────────────────────────────────
 
 /**
  * A park's wait-time display, near enough to be recognised: amber on near-black
@@ -48,7 +48,7 @@ export function WaitSign({
     <div className={cn('relative flex flex-col', fill && 'h-full', className)}>
       {/* The glow. Out of flow and behind, so it can never affect layout. Kept
           tight to the panel — at `-inset-6` on a wide box it stopped reading as
-          a lit sign and became an amber smear across the column. */}
+          a lit panel and became an amber smear across the column. */}
       <div
         aria-hidden
         className="absolute -inset-2 -z-10 rounded-[1.75rem] bg-amber-500/25 blur-2xl"
@@ -110,7 +110,7 @@ export function GuideHero({
   imageAlt,
   stats,
   scrollLabel,
-  sign,
+  display,
 }: {
   kicker: string;
   title: string;
@@ -119,7 +119,7 @@ export function GuideHero({
   imageAlt: string;
   stats: Array<{ value: string; label: string }>;
   scrollLabel: string;
-  sign: { value: number; unit: string; caption: string };
+  display: { value: number; unit: string; caption: string };
 }) {
   return (
     <header className="relative isolate -mt-12 flex min-h-[86vh] items-start overflow-hidden sm:items-end">
@@ -192,9 +192,9 @@ export function GuideHero({
               again at full size anyway. */}
           <Reveal delay={100} className="hidden lg:block">
             <WaitSign
-              value={sign.value}
-              unit={sign.unit}
-              caption={sign.caption}
+              value={display.value}
+              unit={display.unit}
+              caption={display.caption}
               className="ml-auto w-fit"
             />
           </Reveal>

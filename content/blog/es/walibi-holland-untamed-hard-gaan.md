@@ -414,7 +414,7 @@ la reforma de 2011 recibió trenes nuevos: arneses de hombro en lugar de los
 antiguos barrotes. Monta las dos seguidas y en un segundo sabrás cuánto influye
 un sistema de sujeción.
 
-![El cartel de Speed of Sound entre altavoces gigantes y una guitarra | La fachada promete un concierto. Detrás espera un Boomerang del año 2000. | wide](/media/walibi-holland/speed-of-sound.jpg)
+![El rótulo de Speed of Sound entre altavoces gigantes y una guitarra | La fachada promete un concierto. Detrás espera un Boomerang del año 2000. | wide](/media/walibi-holland/speed-of-sound.jpg)
 
 ### El resto
 
@@ -655,7 +655,7 @@ prorrogada a cuatro. La última edición cubrió la Navidad de 2025 y enero de 2
 El **23 de abril de 2026** el parque canceló el evento. Sin previo aviso y sin
 sucesor. Walibi Holland vuelve a estar completamente cerrado en invierno.
 
-![La entrada de Walibi Belgium, decorada con bolas de Navidad, encima el cartel «Walibi Winter» | Walibi Winter en Wavre. El parque hermano belga sigue en diciembre; el neerlandés ya no. | wide](/media/walibi-belgium/background.jpg)
+![La entrada de Walibi Belgium, decorada con bolas de Navidad, encima el rótulo «Walibi Winter» | Walibi Winter en Wavre. El parque hermano belga sigue en diciembre; el neerlandés ya no. | wide](/media/walibi-belgium/background.jpg)
 
 Oficialmente se dice que el corto periodo de apertura y la fuerte dependencia
 del tiempo invernal dificultaban garantizar la calidad deseada. La directora

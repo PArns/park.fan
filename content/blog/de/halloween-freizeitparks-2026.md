@@ -501,7 +501,9 @@ Denn Brühl zündet seine große Saison einfach **später**: Ab **14. November
 2026** läuft **Wintertraum** bis in den Januar (24. Januar 2027), mit Eisbahn,
 Winter-Shows und abendlicher Illumination. Wer im Oktober auf
 Phantasialand-Grusel hofft, plant also um: entweder ein Nachbarpark für den
-Schrecken, oder ein paar Wochen Geduld bis zum Zuckerguss.
+Schrecken, oder ein paar Wochen Geduld bis zum Zuckerguss. Wer in Europa sonst noch
+zwischen November und Januar aufmacht, steht im
+[Winter-Guide](/blog/winter-freizeitparks-2026).
 
 Den Wintertraum nimmt sich der [Phantasialand-Guide](/blog/phantasialand-tipps)
 ausführlich vor, samt dem Quick Pass, der seit der Saison 2025/26 komplett

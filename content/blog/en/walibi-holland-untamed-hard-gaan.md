@@ -225,7 +225,7 @@ the first hybrid coaster in Europe.
 
 ```
 
-![The rusted "Untamed" lettering in front of the coaster’s wooden structure | The rust on the sign is deliberate. The timber behind it is real and was already standing here when the ride was still called Robin Hood. | left](/media/walibi-holland/untamed-4x3.jpg)
+![The rusted "Untamed" lettering in front of the coaster’s wooden structure | The rust on the lettering is deliberate. The timber behind it is real and was already standing here when the ride was still called Robin Hood. | left](/media/walibi-holland/untamed-4x3.jpg)
 
 The numbers: **36.5 metres tall**, a first drop of **35.4 metres**, **92 km/h**,
 **1,085 metres** long, **five inversions**, according to the manufacturer **14
@@ -635,7 +635,7 @@ over Christmas 2025 and into January 2026.
 On **23 April 2026** the park cancelled the event. Without warning, without a
 successor. Walibi Holland is closed all winter again.
 
-![The entrance to Walibi Belgium decorated with baubles, a "Walibi Winter" sign above it | Walibi Winter in Wavre. The Belgian sister park carries on in December, the Dutch one no longer does. | wide](/media/walibi-belgium/background.jpg)
+![The entrance to Walibi Belgium decorated with baubles, the words "Walibi Winter" above it | Walibi Winter in Wavre. The Belgian sister park carries on in December, the Dutch one no longer does. | wide](/media/walibi-belgium/background.jpg)
 
 Officially, the short opening period and the heavy dependence on winter weather
 made it hard to deliver the desired quality reliably. Managing director **Mascha

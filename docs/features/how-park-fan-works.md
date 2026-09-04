@@ -55,7 +55,7 @@ Phantasialand on 2026-08-24, copied into `_fixtures.ts` with the date on it —
 not a shape invented to make the lesson land. That matters twice over: a reader
 who follows the "echte Werte" link must not find different numbers, and the
 lesson itself is better for being real. Taron's Saturday median is exactly 70
-minutes, which is why 70 is the number on the sign.
+minutes, which is why 70 is the number at the entrance.
 
 Frozen rather than fetched, deliberately. The three steps in chapter 02 are
 written around 70 landing above Monday's busy line and on Saturday's median; a
@@ -183,8 +183,8 @@ Three rules these must keep:
    transforming an ancestor — a transform on a `backdrop-blur` element, or any
    ancestor of one, flattens the blur for as long as it runs.
 
-The decorative layers are wide on purpose (the sign's glow, the per-chapter
-`Ambience` tint at 1152 px) and hang off both sides of a phone, which cost the
+The decorative layers are wide on purpose (the glow behind the opening figure,
+the per-chapter `Ambience` tint at 1152 px) and hang off both sides of a phone, which cost the
 document 381 px of horizontal scroll the first time. They are clipped with
 **`overflow-x-clip`**, never `overflow-hidden`: hidden makes the element a scroll
 container and `position: sticky` sticks to the nearest one, so the chapter 02

@@ -482,7 +482,8 @@ Because Brühl fires up its big season simply **later**: from **14 November
 2026**, **Wintertraum** runs into January (24 January 2027), with an ice rink,
 winter shows and evening illumination. If you’re hoping for Phantasialand
 scares in October, replan: either a neighbouring park for the fright, or a few
-weeks' patience until the icing.
+weeks' patience until the icing. Who else in Europe opens between November and
+January is in the [winter guide](/blog/winter-theme-parks-2026).
 
 Wintertraum gets a chapter of its own in the [Phantasialand
 guide](/blog/phantasialand-wait-times-tips), along with the Quick Pass, which

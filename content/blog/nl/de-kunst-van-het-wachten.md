@@ -47,7 +47,7 @@ seo:
     - Disney World wachttijden
 ---
 
-Je slaat de hoek om naar je favoriete attractie, en daar licht het bord op:
+Je slaat de hoek om naar je favoriete attractie, en daar licht de aanduiding op:
 **“60 minuten wachttijd.”** Op sommige dagen draai je je om en leg je je
 gezelschap uit dat de baan “toch overschat” is. Op andere sta je diezelfde 60
 minuten en zou je achteraf zweren dat het er hooguit 25 waren.
@@ -366,17 +366,17 @@ verschillende wachttijden kan betekenen. Rijdt een baan vandaag met twee in
 plaats van drie treinen, dan daalt λ, en stijgt W meteen, zonder dat er ook maar
 één gast extra in het park is.
 
-En dat bord bij de ingang, dat je voorliegt? Boven op het exact berekende getal
-komt daar graag nog een royale veiligheidsmarge. Dat is geen slordigheid, dat
-is psychologie. Het bord moet namelijk twee dingen tegelijk doen die
-elkaar tegenspreken. Het moet je een betrouwbare basis voor een beslissing
-geven, en het mag je niet teleurstellen. Een bord dat te laag schat, levert bij
-de uitgang louter mensen op die zich bekocht voelen; een bord dat te hoog
+En die aanduiding bij de ingang, die je voorliegt? Boven op het exact berekende
+getal komt daar graag nog een royale veiligheidsmarge. Dat is geen slordigheid,
+dat is psychologie. De aanduiding moet namelijk twee dingen tegelijk doen die
+elkaar tegenspreken. Ze moet je een betrouwbare basis voor een beslissing
+geven, en ze mag je niet teleurstellen. Een aanduiding die te laag schat, levert
+bij de uitgang louter mensen op die zich bekocht voelen; een die te hoog
 schat, stuurt een paar gasten weg maar maakt alle anderen blij. Parken kiezen
 systematisch voor de tweede fout. Wie op 60 minuten rekent en na 45 instapt,
 verlaat het station als winnaar. Peak-end-regel, we herinneren het ons: de
-beleving eindigt beter dan verwacht, en precies zo wordt ze opgeslagen. Het
-bord liegt dus echt, maar het liegt in jouw voordeel.
+beleving eindigt beter dan verwacht, en precies zo wordt ze opgeslagen. De
+aanduiding liegt dus echt, maar ze liegt in jouw voordeel.
 
 Even uit de machinekamer, want hier leeft park.fan. Onze live wachttijden laten je elke minuut zien wat L en λ werkelijk doen, en
 wanneer ons AI-model wachttijden tot 365 dagen vooruit voorspelt, modelleert het
@@ -585,7 +585,7 @@ voertuig, en de attractie slikt zo ruim 3.000 gasten per uur op, meer dan
 menige megacoaster, met een voertuigketen die sinds de jaren zestig
 klaglooss haar rondjes draait en nooit om een pauze vraagt.
 
-## Conclusie: het bord vertelt maar het halve verhaal
+## Conclusie: de aanduiding vertelt maar het halve verhaal
 
 Korter wordt de volgende rij van 60 minuten er niet van. Maar hij leest anders.
 Drie vragen blijven over, en voor elk heeft park.fan een antwoord:

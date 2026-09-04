@@ -503,7 +503,8 @@ Perché Brühl accende la sua grande stagione semplicemente **più tardi**: dal
 2027), con pista di ghiaccio, spettacoli invernali e illuminazione serale. Chi a
 ottobre spera nel brivido del Phantasialand deve quindi riorganizzarsi: o un
 parco vicino per lo spavento, o qualche settimana di pazienza fino alla glassa
-di zucchero.
+di zucchero. Chi altro in Europa apre tra novembre e gennaio sta nella
+[guida invernale](/blog/parchi-divertimenti-inverno-2026).
 
 Wintertraum ha un capitolo tutto suo nella [guida al
 Phantasialand](/blog/phantasialand-tempi-di-attesa-consigli), insieme al Quick

@@ -94,7 +94,7 @@ export function WaitScaleBar({
   interactive = false,
 }: {
   step: WaitScaleStep;
-  /** The number on the sign. Fixed across all steps — it is the thing being judged. */
+  /** The number at the entrance. Fixed across all steps — it is the thing being judged. */
   wait: number;
   max: number;
   /** The ride's all-time measured peak. A property of the ride, not of the step. */
@@ -152,7 +152,7 @@ export function WaitScaleBar({
           data-scale-band
         />
 
-        {/* The number on the sign, standing wherever it stands. */}
+        {/* The number at the entrance, standing wherever it stands. */}
         <div
           className="absolute top-2 h-12 w-[3px] -translate-x-1/2 rounded-full bg-amber-500 shadow-[0_0_0_3px] shadow-amber-500/20"
           style={{ left: 'var(--needle)' }}

@@ -6,12 +6,12 @@
   "roles": ["ride-card", "hero"],
   "tags": ["day", "entrance", "outdoor", "photo", "ride", "signage"],
   "alt": {
-    "de": "Das Schild „Abenteuer Atlantis“ mit zwei geschnitzten Köpfen über dem Eingang.",
-    "en": "The \"Abenteuer Atlantis\" sign with two carved heads above the entrance.",
-    "es": "El cartel \"Abenteuer Atlantis\" con dos cabezas talladas sobre la entrada.",
+    "de": "Der Schriftzug „Abenteuer Atlantis“ mit zwei geschnitzten Köpfen über dem Eingang.",
+    "en": "The \"Abenteuer Atlantis\" lettering with two carved heads above the entrance.",
+    "es": "El rótulo \"Abenteuer Atlantis\" con dos cabezas talladas sobre la entrada.",
     "fr": "L’enseigne « Abenteuer Atlantis » et deux têtes sculptées au-dessus de l’entrée.",
     "it": "L’insegna \"Abenteuer Atlantis\" con due teste intagliate sopra l’ingresso.",
-    "nl": "Het bord \"Abenteuer Atlantis\" met twee gesneden koppen boven de ingang."
+    "nl": "Het opschrift \"Abenteuer Atlantis\" met twee gesneden koppen boven de ingang."
   },
   "caption": {
     "de": "Eine interaktive Bootsfahrt im griechischen Themenbereich, bei der unterwegs geschossen wird.",

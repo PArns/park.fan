@@ -452,7 +452,7 @@ it’s the only comfortable way onto that flyer.
 Phantasialand sits in Brühl, right between Cologne and Bonn, easy to reach,
 but tight.
 
-- **By car:** via the A553/A555, then follow the signs. You park in the
+- **By car:** via the A553/A555, and it is signposted from there. You park in the
   _Mystery_ or _China_ lots; the parking fee is around **€7 per day** (cheaper
   for motorcycles). My tip: come early, and your car ends up closer to the
   entrance, and the short walk in the evening, when your feet are burning, is

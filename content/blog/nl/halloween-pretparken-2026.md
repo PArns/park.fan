@@ -490,7 +490,8 @@ Want Brühl steekt zijn grote seizoen gewoon **later** aan: vanaf **14 november
 2026** loopt **Wintertraum** tot in januari (24 januari 2027), met ijsbaan,
 wintershows en avondlijke illuminatie. Wie in oktober op Phantasialand-griezelen
 hoopt, plant dus om: of een buurpark voor de schrik, of een paar weken geduld
-tot het suikerglazuur.
+tot het suikerglazuur. Wie er in Europa verder tussen november en januari
+opengaat, staat in de [wintergids](/blog/winter-pretparken-2026).
 
 Wintertraum krijgt een eigen hoofdstuk in de
 [Phantasialand-gids](/blog/phantasialand-wachttijden-tips), samen met de Quick

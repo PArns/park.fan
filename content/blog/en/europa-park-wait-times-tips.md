@@ -480,7 +480,7 @@ rails as well, an interactive boat ride in the Greek area where you shoot at
 targets along the way. Anyone travelling with children rides it twice, because
 the first time round nobody is watching the score.
 
-![The sign “Abenteuer Atlantis” with two carved heads above the entrance | The entrance is in Greece, just behind Poseidon. | right](/media/europa-park/atlantis-adventure-4x3.jpg)
+![The “Abenteuer Atlantis” lettering with two carved heads above the entrance | The entrance is in Greece, just behind Poseidon. | right](/media/europa-park/atlantis-adventure-4x3.jpg)
 
 From the **[Euro-Tower](ref:europa-park/euro-tower)**, in Rust since 1983, you
 can see as far as the Vosges in clear weather. The panorama railway stops at
