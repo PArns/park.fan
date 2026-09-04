@@ -167,3 +167,23 @@ export function countForPark(state: PlannerState, parkSlug: string): number {
 export function countAll(state: PlannerState): number {
   return Object.keys(state.parks).reduce((sum, slug) => sum + countForPark(state, slug), 0);
 }
+
+/**
+ * The latest minute a PLANNED stop may carry.
+ *
+ * A plan is not bounded by the park's hours and must not be. `optimizeDay`
+ * files a stop it cannot fit before closing PAST the gate on purpose, in the
+ * sequence the day would actually reach it, and `growGridForSpans` widens the
+ * canvas to hold them — so the overflow reads as "and these two do not fit"
+ * rather than as blocks stacked in lanes on the park's last minute. Clamped at
+ * the drag world's 25:00 that is exactly what came back: ten 120-minute queues
+ * in a park open 09:00–22:00 produced 25:30, 26:45 and 28:00, and all three
+ * were stored as 1500. The stacking the optimiser goes out of its way not to
+ * draw was put back by the write.
+ *
+ * 48:00 because a plan is filed under ONE date and read in the park's own
+ * clock: past the end of the day after it, a minute is not a reading of that
+ * clock under any axis this app can draw, and nothing `MAX_STOPS` stops
+ * of the longest queue on record can produce comes near it.
+ */
+export const MAX_PLANNED_MINUTE = 48 * 60;

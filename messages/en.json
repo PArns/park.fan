@@ -2026,9 +2026,13 @@
       "hint": "Orders the rides by their hourly curves, the walk between them and when they open. Breaks and rides you have ticked off stay where they are.",
       "saved": "{minutes} min less queueing",
       "already": "Already in the right order",
+      "fitted": "{count, plural, one {one ride now fits the day} other {# rides now fit the day}}",
+      "sameWait": "Rearranged, same time queueing",
+      "resorted": "The day has been rearranged",
       "added": "{count, plural, one {One ride added} other {# rides added}}",
       "skipped": "{count, plural, one {one is not for your group} other {# are not for your group}}",
       "overflow": "{count, plural, one {one no longer fits the day} other {# no longer fit the day}}",
+      "capped": "{count, plural, one {one ride was left out, the planner sorts at most {max} stops} other {# rides were left out, the planner sorts at most {max} stops}}",
       "undo": "Undo"
     },
     "sheet": {

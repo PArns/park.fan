@@ -2026,9 +2026,13 @@
       "hint": "Ordena las atracciones por sus curvas horarias, el trayecto entre ellas y su hora de apertura. Las pausas y lo ya marcado se quedan donde están.",
       "saved": "{minutes} min menos de cola",
       "already": "Ya está en el orden bueno",
+      "fitted": "{count, plural, one {una atracción ya cabe en el día} other {# atracciones ya caben en el día}}",
+      "sameWait": "Reorganizado, la misma cola",
+      "resorted": "El día se ha reorganizado",
       "added": "{count, plural, one {Una atracción añadida} other {# atracciones añadidas}}",
       "skipped": "{count, plural, one {una no encaja con el grupo} other {# no encajan con el grupo}}",
       "overflow": "{count, plural, one {una ya no cabe en el día} other {# ya no caben en el día}}",
+      "capped": "{count, plural, one {una atracción se quedó fuera, el planificador ordena como mucho {max} paradas} other {# atracciones se quedaron fuera, el planificador ordena como mucho {max} paradas}}",
       "undo": "Deshacer"
     },
     "sheet": {

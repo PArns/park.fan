@@ -2026,9 +2026,13 @@
       "hint": "Sortiert die Bahnen nach ihren Stundenkurven, den Laufwegen und den Öffnungszeiten. Mittagspausen und abgehakte Bahnen bleiben, wo sie sind.",
       "saved": "{minutes} Min. weniger Warten",
       "already": "Passt schon so",
+      "fitted": "{count, plural, one {eine Bahn passt jetzt in den Tag} other {# Bahnen passen jetzt in den Tag}}",
+      "sameWait": "Umgestellt, gleiche Wartezeit",
+      "resorted": "Der Tag ist umgestellt",
       "added": "{count, plural, one {Eine Bahn ergänzt} other {# Bahnen ergänzt}}",
       "skipped": "{count, plural, one {eine passt nicht zur Gruppe} other {# passen nicht zur Gruppe}}",
       "overflow": "{count, plural, one {eine passt nicht mehr in den Tag} other {# passen nicht mehr in den Tag}}",
+      "capped": "{count, plural, one {eine Bahn blieb außen vor, der Planer sortiert höchstens {max} Stopps} other {# Bahnen blieben außen vor, der Planer sortiert höchstens {max} Stopps}}",
       "undo": "Rückgängig"
     },
     "sheet": {

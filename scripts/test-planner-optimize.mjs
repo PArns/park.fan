@@ -13,11 +13,24 @@
  * opens at 11:00 is not queued for at 09:15, pressing the button twice does
  * nothing the second time, and the same day always produces the same plan.
  *
+ * Two of them are here because the assertion they replace was TRUE and proved
+ * nothing. "No ride is laid across the lunch break" ran against a plan that
+ * ended at 11:45 with the break at 13:00, so it held before anything was
+ * scheduled — §4 now uses two fixed blocks and a ride whose block grows across
+ * an hour boundary, which is the case that was actually broken. And
+ * `uncertaintyMinutes` was set on no fixture in this file, so `occupiedMinutes`
+ * was always the bare queue and the "wait plus band" path — the one the
+ * incumbent test measures against — had never run. That is §4b.
+ *
  *     pnpm test:planner-optimize
+ *     BENCH=1 pnpm test:planner-optimize   # plus the timing table for §16
  */
 
 import { buildDayGrid } from '../lib/planner/day-grid.ts';
+import { occupiedMinutes } from '../lib/planner/estimate.ts';
+import { applyPlan } from '../lib/planner/actions.ts';
 import {
+  MAX_STOPS,
   canOptimize,
   headlinersSkipped,
   headlinersToAdd,
@@ -49,8 +62,11 @@ const CLOSE = 20;
  * ride at `+0.004` is ~440 m away — one end of Phantasialand to the other.
  */
 function ride(slug, waits, options = {}) {
+  // Every hour the curve names, rather than the default park's own window: a
+  // fixture about a park open until 22:00 has points out there and they are its
+  // whole point. `waits` decides, so nothing above this changes.
   const hours = [];
-  for (let hour = OPEN; hour <= CLOSE; hour++) {
+  for (let hour = 0; hour < 24; hour++) {
     const wait = waits[hour];
     if (wait !== undefined) hours.push({ hour, wait });
   }
@@ -72,10 +88,15 @@ function ride(slug, waits, options = {}) {
 }
 
 /** A flat curve, so a ride's cost depends only on which hour it lands in. */
-function flat(value) {
+function flat(value, open = OPEN, close = CLOSE) {
   const out = {};
-  for (let hour = OPEN; hour <= CLOSE; hour++) out[hour] = value;
+  for (let hour = open; hour <= close; hour++) out[hour] = value;
   return out;
+}
+
+/** What a block OCCUPIES at a minute — the queue plus the model's own spread. */
+function spanOf(payload, slug, startMinute) {
+  return Math.max(occupiedMinutes(payload, { id: '', attractionSlug: slug, startMinute }), 15);
 }
 
 /** Low early, high after lunch — the shape a headliner actually has. */
@@ -321,33 +342,129 @@ function lex([overflow, wait, end]) {
 }
 
 // ── 4. What it may not touch ────────────────────────────────────────────────
+//
+// TWO fixed blocks, and a ride whose block grows across an hour boundary: 20
+// minutes at 13:00, 90 from 14:00. That shape is the whole case, and the
+// assertion that stood here could not see it — one lunch break at 13:00 against
+// a plan that ended at 11:45, so "no ride is laid across the lunch break" was
+// true before anything had been scheduled. The bug it existed to catch was
+// real: pushed off the 13:00 lunch, the block came back ninety minutes long,
+// was never measured again at its new length, and lay straight across the
+// 15:00 parade.
+//
+// The span comes from the app's own `occupiedMinutes` rather than from a guess
+// in this file, so what is being tested is the height a visitor will see.
 {
+  const growing = {};
+  for (let hour = 13; hour <= CLOSE; hour++) growing[hour] = hour >= 14 ? 90 : 20;
+
   const rides = [
+    ride('afternoon', growing, { land: 'X' }),
     ride('a', morningRide(10, 60), { land: 'X' }),
     ride('b', morningRide(60, 10), { land: 'X' }),
     ride('c', flat(20), { land: 'X' }),
   ];
   const payload = day(rides);
+  const blocks = [
+    { label: 'Mittag', from: 13 * 60, to: 14 * 60 },
+    { label: 'Parade', from: 15 * 60, to: 15 * 60 + 30 },
+  ];
   const entries = [
+    entry('afternoon-1', 'afternoon', 16 * 60),
     entry('a-1', 'a', 15 * 60),
     entry('b-1', 'b', 9 * 60),
     entry('c-1', 'c', 11 * 60),
-    { id: 'lunch-1', startMinute: 13 * 60, custom: { label: 'Mittag', durationMinutes: 60 } },
+    {
+      id: 'lunch-1',
+      startMinute: 13 * 60,
+      custom: { label: 'Mittag', icon: 'food', durationMinutes: 60 },
+    },
+    {
+      id: 'parade-1',
+      startMinute: 15 * 60,
+      custom: { label: 'Parade', icon: 'show', durationMinutes: 30 },
+    },
     entry('done-1', 'a', 10 * 60, { done: true, actualWait: 25 }),
   ];
   const found = optimizeDay({ day: payload, grid: grid(payload), entries });
 
   check(
     'ein Freiblock und eine abgehakte Bahn tauchen im Plan nicht auf',
-    found !== null && found.stops.every((s) => s.entryId !== 'lunch-1' && s.entryId !== 'done-1'),
+    found !== null &&
+      found.stops.every(
+        (s) => s.entryId !== 'lunch-1' && s.entryId !== 'parade-1' && s.entryId !== 'done-1'
+      ),
     found?.stops.map((s) => s.entryId).join(', ') ?? 'kein Plan'
   );
 
-  const overlapsLunch = found.stops.some((stop) => {
-    const span = (stop.waitMinutes ?? 45) + 15;
-    return stop.startMinute < 14 * 60 && stop.startMinute + span > 13 * 60;
-  });
-  check('und keine Bahn wird über die Mittagspause gelegt', !overlapsLunch);
+  const clashes = [];
+  for (const stop of found.stops) {
+    const span = spanOf(payload, stop.attractionSlug, stop.startMinute);
+    for (const block of blocks) {
+      if (stop.startMinute < block.to && stop.startMinute + span > block.from) {
+        clashes.push(`${stop.attractionSlug} ${stop.startMinute}+${span} über ${block.label}`);
+      }
+    }
+  }
+  check(
+    'und keine Bahn wird über einen festen Block gelegt',
+    clashes.length === 0,
+    clashes.join(', ')
+  );
+
+  // Without this the assertion above could be true because nothing came near
+  // either block, which is exactly how the old one passed for a year.
+  const late = found.stops.find((s) => s.attractionSlug === 'afternoon');
+  check(
+    'der wachsende Block liegt auch wirklich im Nachmittag',
+    late !== undefined &&
+      late.startMinute >= 13 * 60 &&
+      spanOf(payload, 'afternoon', late.startMinute) === 90,
+    late
+      ? `${late.startMinute} + ${spanOf(payload, 'afternoon', late.startMinute)}`
+      : 'nicht geplant'
+  );
+}
+
+// ── 4b. A block is as tall as the queue PLUS the model's own spread ─────────
+//
+// `uncertaintyMinutes` was set nowhere in this file, so `occupiedMinutes` was
+// always the bare wait and the whole "wait + band" path was untested — the path
+// the incumbent test measures against, and the one it used to ignore.
+{
+  const rides = [
+    ride('wide-a', flat(30), { land: 'X', uncertainty: 25, lat: 50.8 }),
+    ride('wide-b', flat(30), { land: 'X', uncertainty: 25, lat: 50.8005 }),
+  ];
+  const payload = day(rides);
+  check(
+    'die Unsicherheit macht den Block breiter als die Warteschlange',
+    spanOf(payload, 'wide-a', 10 * 60) === 55,
+    String(spanOf(payload, 'wide-a', 10 * 60))
+  );
+
+  // Two blocks forty minutes apart, each drawn 55 minutes tall: on the axis they
+  // overlap by a quarter of an hour, and nobody stands in two queues at once. It
+  // passed as executable because the gap was measured against the 30-minute
+  // wait, so the bar answered „Passt schon so" in the one case it exists for.
+  const entries = [
+    entry('wide-a-1', 'wide-a', 9 * 60 + 15),
+    entry('wide-b-1', 'wide-b', 9 * 60 + 55),
+  ];
+  const found = optimizeDay({ day: payload, grid: grid(payload), entries });
+  check(
+    'ein Tag, dessen Blöcke einander überlappen, gilt nicht als fertig sortiert',
+    found !== null,
+    'optimizeDay lieferte null'
+  );
+
+  const ordered = [...(found?.stops ?? [])].sort((x, y) => x.startMinute - y.startMinute);
+  const gap = ordered.length === 2 ? ordered[1].startMinute - ordered[0].startMinute : 0;
+  check(
+    'und der neue Plan lässt jedem Block seine volle Höhe',
+    gap >= spanOf(payload, ordered[0]?.attractionSlug ?? 'wide-a', ordered[0]?.startMinute ?? 0),
+    `${gap} Minuten Abstand`
+  );
 }
 
 // ── 5. A ride that opens later is not queued for before it opens ────────────
@@ -524,6 +641,298 @@ function lex([overflow, wait, end]) {
     after !== null && after.totalWaitMinutes < before.totalWaitMinutes,
     `${before?.totalWaitMinutes} → ${after?.totalWaitMinutes}`
   );
+}
+
+// ── 11. A delay is part of the plan, not a fact about it ───────────────────
+//
+// One ride costing 90 minutes before 11:00 and 20 after it, plus a ten-minute
+// filler. Queueing at once finishes at 11:15 for 100 minutes of queue; filling
+// the morning and riding it at 11:00 finishes at 11:20 for 30. The scheduler
+// used to take the first, because it minimised the CLOCK and let the queue
+// decide ties — the second criterion in the module's own list standing behind
+// the third — so the better plan was not in the search space at all and the
+// brute force above could not notice: it varies the order and never the delay.
+{
+  const rides = [
+    ride('cliff', morningRide(90, 20, 11), { land: 'X' }),
+    ride('filler', flat(10), { land: 'X' }),
+  ];
+  const payload = day(rides);
+  const entries = [entry('cliff-1', 'cliff', 9 * 60 + 15), entry('filler-1', 'filler', 11 * 60)];
+  const input = { day: payload, grid: grid(payload), entries };
+
+  const before = scoreCurrent(input);
+  const found = optimizeDay(input);
+  check(
+    'die Verzögerung wird gegen die Warteminuten abgewogen, nicht gegen die Uhr',
+    found !== null && found.totalWaitMinutes === 30,
+    found ? `${before.totalWaitMinutes} → ${found.totalWaitMinutes}` : 'kein Plan'
+  );
+  check(
+    'und der Tag ist dafür nur wenige Minuten länger',
+    found !== null && found.endMinute <= before.endMinute + 15,
+    `${before.endMinute} → ${found?.endMinute}`
+  );
+
+  // `scoreOrder` sees the same choice, which is what makes the brute force above
+  // a statement about the whole plan space rather than about the orders alone.
+  check(
+    'scoreOrder rechnet mit derselben Wahl',
+    scoreOrder(input, ['filler', 'cliff'])?.totalWaitMinutes === 30,
+    JSON.stringify(scoreOrder(input, ['filler', 'cliff']))
+  );
+}
+
+// ── 12. The budget is finite, and the report has to match the plan ─────────
+{
+  const planned = Array.from({ length: 20 }, (_, i) =>
+    ride(`p${i}`, flat(15), { land: 'X', lat: 50.8 + i * 0.0005 })
+  );
+  const heads = Array.from({ length: 8 }, (_, i) =>
+    ride(`h${i}`, flat(45), { land: 'X', lat: 50.81 + i * 0.0005, headliner: true })
+  );
+  const payload = day([...planned, ...heads]);
+  const entries = planned.map((r, i) =>
+    entry(`${r.attractionSlug}-1`, r.attractionSlug, 9 * 60 + i * 15)
+  );
+  const add = headlinersToAdd(payload, entries, undefined);
+  const found = optimizeDay({ day: payload, grid: grid(payload), entries, add });
+
+  const added = found.stops.filter((s) => s.entryId === null).length;
+  check(
+    'mehr Stopps als das Budget: der Plan bleibt bei MAX_STOPS',
+    found.stops.length === MAX_STOPS,
+    String(found.stops.length)
+  );
+  check(
+    'die bestehenden Einträge behalten dabei alle ihren Platz',
+    found.stops.length - added === entries.length,
+    `${found.stops.length - added} von ${entries.length}`
+  );
+  // What the bar prints is `added`, so the two have to be the same number.
+  check(
+    'und die Kappung wird gemeldet statt verschwiegen',
+    found.capped === add.length - added && found.capped === 4,
+    `ergänzt ${added} von ${add.length}, gekappt ${found.capped}`
+  );
+
+  // The other half of the same bug: the before-figure covers every entry and the
+  // after-figure only what fit, so their difference is not a saving. A day too
+  // big for the budget must not produce one.
+  const flatDay = day(
+    Array.from({ length: 30 }, (_, i) =>
+      ride(`q${i}`, flat(15), { land: 'X', lat: 50.8 + i * 0.0005 })
+    )
+  );
+  const flatEntries = Array.from({ length: 30 }, (_, i) =>
+    entry(`q${i}-1`, `q${i}`, 9 * 60 + i * 15)
+  );
+  const flatInput = { day: flatDay, grid: grid(flatDay), entries: flatEntries };
+  const flatPlan = optimizeDay(flatInput);
+  const flatBefore = scoreCurrent(flatInput);
+  check(
+    'ein gekappter Tag liefert keine vergleichbare Ersparnis',
+    flatPlan.capped === 6 &&
+      flatPlan.stops.filter((s) => s.entryId !== null).length !== flatEntries.length &&
+      flatBefore.totalWaitMinutes - flatPlan.totalWaitMinutes === 90,
+    `gekappt ${flatPlan.capped}, Differenz ${flatBefore.totalWaitMinutes - flatPlan.totalWaitMinutes} Min. über ${flatPlan.stops.length} statt ${flatEntries.length} Bahnen`
+  );
+}
+
+// ── 13. Exactly one candidate is a plan, not a refusal ─────────────────────
+{
+  const rides = [
+    ride('solo', flat(40), { land: 'X', headliner: true }),
+    ride('other', flat(20), { land: 'X' }),
+  ];
+  const payload = day(rides);
+  const add = headlinersToAdd(payload, [], undefined);
+  const found = optimizeDay({ day: payload, grid: grid(payload), entries: [], add });
+  check(
+    'ein einzelner fehlender Headliner wird eingeplant',
+    found !== null && found.stops.length === 1 && found.stops[0].attractionSlug === 'solo',
+    found ? found.stops.map((s) => s.attractionSlug).join(', ') : 'kein Plan'
+  );
+  check(
+    'und zwar an seiner eigenen Untergrenze',
+    found?.stops[0]?.startMinute === OPEN * 60 + 15,
+    String(found?.stops[0]?.startMinute)
+  );
+}
+
+// ── 14. The overflow keeps its sequence all the way into the store ─────────
+//
+// `place` files what does not fit PAST closing, in the order the day would
+// reach it, so the canvas can grow and show it as an overrun. The write then
+// clamped every one of those minutes to 1500 — 25:00, the drag world's ceiling
+// — and a park closing at 22:00 stacked three rides on that one minute.
+{
+  const LATE_OPEN = 9;
+  const LATE_CLOSE = 22;
+  const DATE = '2026-09-05';
+  const rides = Array.from({ length: 10 }, (_, i) =>
+    ride(`long-${i}`, flat(120, LATE_OPEN, LATE_CLOSE), { land: 'X', lat: 50.8 + i * 0.004 })
+  );
+  const payload = day(rides, { openHour: LATE_OPEN, closeHour: LATE_CLOSE });
+  const entries = rides.map((r, i) =>
+    entry(`${r.attractionSlug}-1`, r.attractionSlug, LATE_OPEN * 60 + i * 30)
+  );
+  const found = optimizeDay({ day: payload, grid: grid(payload), entries });
+
+  check(
+    'der Überlauf reicht über Minute 1500 hinaus',
+    found.stops.filter((s) => s.startMinute > 1500).length >= 2,
+    found.stops.map((s) => s.startMinute).join(', ')
+  );
+
+  const state = {
+    parks: {
+      'test-park': {
+        slug: 'test-park',
+        name: 'Test',
+        geo: { continent: 'europe', country: 'germany', city: 'test' },
+        days: { [DATE]: { date: DATE, entries } },
+      },
+    },
+    activeParkSlug: 'test-park',
+    activeDate: DATE,
+    version: 1,
+  };
+  const written = applyPlan(state, {
+    parkSlug: 'test-park',
+    parkName: 'Test',
+    geo: state.parks['test-park'].geo,
+    date: DATE,
+    stops: found.stops.map((s) => ({
+      entryId: s.entryId,
+      attractionSlug: s.attractionSlug,
+      attractionName: s.attractionName,
+      startMinute: s.startMinute,
+    })),
+  });
+  const minutes = written.parks['test-park'].days[DATE].entries.map((e) => e.startMinute);
+  const stacked = [...new Set(minutes.filter((m, i) => minutes.indexOf(m) !== i))];
+  check(
+    'und applyPlan stapelt ihn nicht auf einer Minute',
+    stacked.length === 0,
+    `doppelt belegt: ${stacked.join(', ')}`
+  );
+  check(
+    'die Minuten des Plans kommen unverändert im Tag an',
+    minutes.join(',') ===
+      found.stops
+        .map((s) => s.startMinute)
+        .sort((x, y) => x - y)
+        .join(','),
+    minutes.join(', ')
+  );
+}
+
+// ── 15. Fewer queued minutes is not the only way a day gets better ─────────
+//
+// A block dragged past closing carries no figure at all — `estimateFor` answers
+// `outside-hours`, not zero — so it costs the before-total nothing and costs the
+// after-total its real queue. The day gains a ride and the difference goes
+// NEGATIVE, which is why the bar may not read that difference on its own: it
+// printed „Passt schon so" over a plan it had just rebuilt.
+{
+  const rides = [
+    ride('a', morningRide(10, 60), { land: 'X' }),
+    ride('b', morningRide(60, 10), { land: 'X' }),
+  ];
+  const payload = day(rides);
+  const entries = [entry('a-1', 'a', 21 * 60 + 30), entry('b-1', 'b', 9 * 60 + 15)];
+  const input = { day: payload, grid: grid(payload), entries };
+  const before = scoreCurrent(input);
+  const found = optimizeDay(input);
+
+  check(
+    'ein Block hinter der Schließzeit zählt im Vorher-Wert nicht mit',
+    before.overflow === 1 && before.stops.find((s) => s.entryId === 'a-1')?.waitMinutes === null,
+    `overflow ${before.overflow}`
+  );
+  check(
+    'der Plan holt ihn in den Tag zurück und wird dabei teurer',
+    found !== null && found.overflow === 0 && found.totalWaitMinutes > before.totalWaitMinutes,
+    `${before.totalWaitMinutes}/${before.overflow} → ${found?.totalWaitMinutes}/${found?.overflow}`
+  );
+}
+
+// ── 16. The instance the module docstring quotes ───────────────────────────
+//
+// It named a runtime and an optimum for "eight rides across four lands with six
+// different turning points" and the instance was written down nowhere, so the
+// numbers could not be re-measured or disputed. It lives here now. The brute
+// force over all 40,320 orders runs on every pass, because it is the assertion
+// the docstring's claim rests on; the timing table for ten to twenty-four stops
+// is behind `BENCH=1`, since a wall-clock number is not something to assert.
+const BENCH_LANDS = ['A', 'B', 'C', 'D'];
+const BENCH_TURNS = [10, 11, 12, 13, 14, 16];
+
+function benchRides(n) {
+  return Array.from({ length: n }, (_, i) =>
+    ride(
+      `r${i}`,
+      morningRide(10 + ((i * 13) % 50), 20 + ((i * 29) % 60), BENCH_TURNS[i % BENCH_TURNS.length]),
+      {
+        land: BENCH_LANDS[i % BENCH_LANDS.length],
+        lat: 50.8 + ((i * 7) % 11) * 0.0008,
+        lng: 6.87 + ((i * 5) % 13) * 0.0008,
+      }
+    )
+  );
+}
+
+function benchInput(n) {
+  const rides = benchRides(n);
+  const payload = day(rides);
+  return {
+    day: payload,
+    grid: grid(payload),
+    entries: rides.map((r, i) =>
+      entry(`${r.attractionSlug}-1`, r.attractionSlug, 13 * 60 + i * 20)
+    ),
+  };
+}
+
+{
+  const input = benchInput(8);
+  const slugs = input.entries.map((e) => e.attractionSlug);
+
+  const bruteStart = performance.now();
+  const optimum = bruteForce(input, slugs);
+  const bruteMs = performance.now() - bruteStart;
+
+  optimizeDay(input);
+  const heuristicStart = performance.now();
+  const found = optimizeDay(input);
+  const heuristicMs = performance.now() - heuristicStart;
+
+  check(
+    'die Heuristik findet bei acht Bahnen die beste Reihenfolge',
+    found !== null && lex(costOf(found)) <= lex(optimum),
+    `gefunden ${JSON.stringify(costOf(found))} in ${heuristicMs.toFixed(1)} ms, ` +
+      `optimal ${JSON.stringify(optimum)} über 40.320 Reihenfolgen in ${(bruteMs / 1000).toFixed(2)} s`
+  );
+
+  if (process.env.BENCH) {
+    console.log('\nLaufzeit (Median aus 5), BENCH=1:');
+    for (const n of [10, 14, 18, 24]) {
+      const sized = benchInput(n);
+      optimizeDay(sized);
+      const times = [];
+      for (let run = 0; run < 5; run++) {
+        const started = performance.now();
+        optimizeDay(sized);
+        times.push(performance.now() - started);
+      }
+      times.sort((x, y) => x - y);
+      console.log(`  ${String(n).padStart(2)} Stopps: ${times[2].toFixed(1)} ms`);
+    }
+    console.log(
+      `  8 Bahnen: Brute Force ${(bruteMs / 1000).toFixed(2)} s gegen ${heuristicMs.toFixed(1)} ms\n`
+    );
+  }
 }
 
 console.log(`\n${passed}/${passed + failures.length} bestanden`);

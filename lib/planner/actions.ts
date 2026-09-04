@@ -7,6 +7,7 @@ import type {
   PlannerPark,
   PlannerState,
 } from './types';
+import { MAX_PLANNED_MINUTE } from './types';
 import { clampRiderHeight } from './party';
 
 /**
@@ -113,10 +114,20 @@ function withHourMirror(entry: PlannerEntry): PlannerEntry {
   return { ...entry, hour: Math.floor(entry.startMinute / 60) };
 }
 
+/**
+ * The latest minute a block a HAND put somewhere may carry.
+ *
+ * 25:00, an hour past the last midnight a park's own day can end on. It is the
+ * backstop behind `clampStart`, which is what a drag is actually bounded
+ * by, and it comes from that world: a pointer can be anywhere, including a
+ * long way below the canvas.
+ */
+const MAX_DRAGGED_MINUTE = 25 * 60;
+
 /** Park-local minutes, inside a day. Clamped where it can be tested. */
-function clampMinute(minute: number): number {
+function clampMinute(minute: number, ceiling: number = MAX_DRAGGED_MINUTE): number {
   if (!Number.isFinite(minute)) return 0;
-  return Math.max(0, Math.min(1500, Math.round(minute)));
+  return Math.max(0, Math.min(ceiling, Math.round(minute)));
 }
 
 /**
@@ -322,14 +333,14 @@ export function applyPlan(
 
   for (const stop of stops) {
     if (stop.entryId) {
-      moved.set(stop.entryId, clampMinute(stop.startMinute));
+      moved.set(stop.entryId, clampMinute(stop.startMinute, MAX_PLANNED_MINUTE));
       continue;
     }
     const entry = withHourMirror({
       id: makeId(stop.attractionSlug, seen),
       attractionSlug: stop.attractionSlug,
       attractionName: stop.attractionName,
-      startMinute: clampMinute(stop.startMinute),
+      startMinute: clampMinute(stop.startMinute, MAX_PLANNED_MINUTE),
     });
     seen.push(entry);
     added.push(entry);

@@ -272,6 +272,38 @@ async function settleHydration(page, idleRuns = 3, timeoutMs = 15_000) {
   );
 }
 
+// ── The undo belongs to the day it was taken from ───────────────────────────
+//
+// `PlannerOptimizeActions` keeps the snapshot in component state while
+// `parkSlug` and `date` arrive as props, and it is mounted with no `key` — so
+// switching the panel to another day leaves the banner and its "Rückgängig"
+// standing over a snapshot of the day before. `restoreDay` REPLACES a day, so
+// pressing it wrote the 5th's rides into the 6th, and across a park switch a
+// set of foreign slugs into a day that had never been optimised. Both of these
+// are read off the source rather than driven in the browser: reproducing it
+// needs the panel walked onto a SECOND day whose payload also carries a curve,
+// and a check that silently passes because the second day was CLOSED would be
+// worse than no check.
+{
+  const source = readFileSync('components/planner/planner-optimize-actions.tsx', 'utf8');
+  check(
+    'das Rückgängig schreibt in den Tag, aus dem der Schnappschuss stammt',
+    /restoreDay\(\s*shownUndo\.parkSlug,\s*shownUndo\.date,\s*shownUndo\.entries\s*\)/.test(
+      source
+    ) && !/restoreDay\(\s*parkSlug\s*,\s*date\s*,/.test(source),
+    (source.match(/restoreDay\([^)]*\)/) ?? ['keiner'])[0]
+  );
+  // A press that returns no plan has nothing to take back — and clearing the
+  // snapshot there took away the way back from the press BEFORE it: plan the
+  // headliners, press "Tag optimieren" to check, and the undo was gone.
+  const noPlan = source.slice(source.indexOf('if (!plan) {'), source.indexOf('setUndoTo({'));
+  check(
+    'ein Druck ohne Plan fasst den Schnappschuss nicht an',
+    noPlan.length > 0 && !/setUndoTo\(/.test(noPlan),
+    noPlan.slice(0, 120).replace(/\s+/g, ' ')
+  );
+}
+
 // ── Is the backend endpoint live? ────────────────────────────────────────────
 let planStatus;
 try {
@@ -4041,10 +4073,18 @@ if (reachable) {
   const after = await readDay();
   check('ein Druck sortiert den Tag um', after !== before, `${before}  →  ${after}`);
 
+  // „Passt schon so" is the answer to "there was nothing to do", and the
+  // assertion above has just proved there WAS — so accepting it here let the one
+  // real failure through: a day scoring 60 minutes before and 70 after (a block
+  // dragged past closing carries no figure until the optimiser brings it back
+  // inside) printed it over a plan it had just rebuilt. Every other outcome of a
+  // change is named instead, including the ones that gain no minutes.
   const said = (await opt.locator(`${SHEET} [data-planner-optimize-result]`).textContent()) ?? '';
   check(
     'und sagt in Minuten, was es gebracht hat',
-    /\d+\s*Min\.\s*weniger Warten|Passt schon so/.test(said),
+    /\d+\s*Min\.\s*weniger Warten|gleiche Wartezeit|umgestellt|passt jetzt in den Tag|passen jetzt in den Tag/i.test(
+      said
+    ) && !/Passt schon so/.test(said),
     said.slice(0, 80)
   );
 
@@ -4095,6 +4135,20 @@ if (reachable) {
     'die Mittagspause hat auch das überlebt',
     withHeadliners.includes('Mittag@780'),
     withHeadliners
+  );
+  // Planning the headliners and then pressing "Tag optimieren" to check is one
+  // gesture somebody actually makes, and the second press answers "nothing to
+  // do" — which used to throw away the undo for the first.
+  check(
+    'nach dem Einplanen steht ein Rückgängig da',
+    (await opt.locator(`${SHEET} [data-planner-optimize-undo]`).count()) === 1
+  );
+  await opt.locator(`${SHEET} [data-planner-optimize-run]`).click();
+  await opt.waitForTimeout(900);
+  check(
+    'und ein Druck, der nichts ändert, nimmt es nicht weg',
+    (await opt.locator(`${SHEET} [data-planner-optimize-undo]`).count()) === 1,
+    (await opt.locator(`${SHEET} [data-planner-optimize-result]`).textContent()) ?? ''
   );
   // Nothing may be scheduled before the park lets anybody queue.
   const tooEarly = withHeadliners
