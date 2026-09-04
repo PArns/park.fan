@@ -385,6 +385,44 @@ fails on a thumbnail that was never drawn into, and it hovers each control befor
 dispatching the drag, because a synthetic `dragstart` with no pointer anywhere
 near it would measure a chip no mouse can produce.
 
+## Three ways the panel said something it could not know
+
+**A refused drop handed the link back to the browser.** `onDragOver` on the grid
+accepts a bare `text/uri-list` optimistically — deliberately, and its own comment
+says why: that is the channel a ride card from a park page drags on. But it means
+the element has claimed the drop before anyone has seen the payload. `onDrop`
+called `preventDefault()` only _after_ `if (!ride) return`, so any link that is
+not a ride URL — from this page or another tab — fell through the refusal to the
+browser, whose default action for a dropped link is to follow it. The app
+navigated away and took the open panel with it. It is prevented first now, before
+any refusal, in both handlers (the grid's and the flat list's in the flyout).
+
+**Blocks past the lane budget overlapped in silence.** `packLanes` caps a cluster
+at `MAX_LANES` columns — three 112 px columns is the floor at which a name and a
+figure still fit on a phone — and rides everything beyond that in the _last_
+column, where they overlap. The count came back on `LanePlacement.overflow` and
+nothing had ever drawn it, so four rides at one hour rendered as three with the
+fourth underneath the third. A fourth column is not the answer; saying how many
+are under this one is, so the block the count is reported on (the last placed,
+and therefore the one on top) carries a `+N` badge.
+
+**A park nobody measures got an invented wait.** `estimateFor` answers a ride it
+cannot find with `ASSUMED_WAIT_MIN = 5`, which is right for its intended case: a
+ride with no _history_ in a park that is measured. A park with no _source_ lands
+in the same branch and means the opposite — Hansa-Park publishes its wait times
+only in its own app on the park WLAN, so no number will ever arrive. And
+`/plan/day` for it answers with `rides: []` and a drawn 11–21 axis, which is
+byte-for-byte what a measured park with no history looks like.
+
+The distinguishing bit is a property of the park, so it comes from the API:
+`context.liveWaitTimes`, the same curated flag the park payload carries (backend
+PR #226). It is read through the app's one reader, `hasReadableWaitTimes()`,
+which treats an **absent** field as available — this app deploys independently of
+the API, so a response predating the field behaves exactly as it did. Where the
+source is unreadable the estimate is `missing: 'no-source'` with no figure at
+all, and the block says so; `pnpm test:planner-estimate` pins both directions,
+including that a ride the payload _does_ carry still reports its number.
+
 ## The tab is on every page, so it has a phone tier
 
 The edge tab is drawn on **every** page whether or not anything is planned, which

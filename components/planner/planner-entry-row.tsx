@@ -59,7 +59,9 @@ export function PlannerEntryRow({
       ? t('day.closed')
       : estimate.missing === 'no-curve'
         ? t('entry.noCurve')
-        : null;
+        : estimate.missing === 'no-source'
+          ? t('entry.noSource')
+          : null;
 
   return (
     <li

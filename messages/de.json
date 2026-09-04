@@ -1904,6 +1904,8 @@
       "markUndone": "Doch noch nicht gefahren",
       "actual": "tatsächlich {minutes} Min.",
       "noCurve": "Für diese Bahn liegt keine Stundenkurve vor.",
+      "noSource": "Für diesen Park gibt es keine Wartezeiten.",
+      "laneOverflow": "{count, plural, =1 {Ein weiterer Block liegt hier darunter.} other {# weitere Blöcke liegen hier darunter.}}",
       "dragHandle": "Verschieben",
       "range": "{from} bis {to}",
       "resizeHandle": "Dauer ziehen"

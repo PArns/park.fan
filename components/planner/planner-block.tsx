@@ -220,7 +220,13 @@ export function PlannerBlock({
         ? t('day.closed')
         : estimate.missing === 'no-curve'
           ? t('entry.noCurve')
-          : null;
+          : /* Not the same sentence as `no-curve`, and the difference is the
+               point: that one says the model has nothing for THIS ride, this
+               one says nobody can read this park's queues at all, so there is
+               no number coming for any of them, ever. */
+            estimate.missing === 'no-source'
+            ? t('entry.noSource')
+            : null;
 
   const laneWidth = `calc((100% - ${(lane.columns - 1) * 2}px) / ${lane.columns})`;
   const laneLeft = `calc((${laneWidth} + 2px) * ${lane.column})`;
@@ -563,6 +569,25 @@ export function PlannerBlock({
               </p>
             )}
         </div>
+
+        {/* Blocks past the lane budget, said out loud.
+            `packLanes` caps a cluster at MAX_LANES columns and rides everything
+            beyond that in the LAST one — they overlap, and the count came back
+            on `LanePlacement.overflow`, which nothing had ever drawn. So four
+            rides at one hour rendered as three, with the fourth underneath the
+            third and no sign of it anywhere. Three 112 px columns is already
+            the floor at which a name and a figure fit on a phone, so a fourth
+            column is not the answer; saying how many are under this one is.
+            It sits on the block the count is reported on, which is the LAST
+            placed in that column and therefore the one on top. */}
+        {lane.overflow > 0 && (
+          <span
+            className="bg-foreground/75 text-background pointer-events-none absolute right-0.5 bottom-0.5 rounded px-1 font-mono text-[9px] tabular-nums"
+            title={t('entry.laneOverflow', { count: lane.overflow })}
+          >
+            +{lane.overflow}
+          </span>
+        )}
       </div>
     </li>
   );

@@ -1904,6 +1904,8 @@
       "markUndone": "Not ridden after all",
       "actual": "actually {minutes} min",
       "noCurve": "There is no hourly curve for this ride.",
+      "noSource": "This park does not publish wait times.",
+      "laneOverflow": "{count, plural, =1 {One more block sits underneath this one.} other {# more blocks sit underneath this one.}}",
       "dragHandle": "Move",
       "range": "{from} to {to}",
       "resizeHandle": "Drag duration"

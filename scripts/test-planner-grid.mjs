@@ -239,6 +239,40 @@ test(
   true
 );
 
+// ── 15b. The lane budget reports what it could not place ─────────────────────
+// `packLanes` caps a cluster at MAX_LANES columns and rides everything beyond
+// that in the last one, where the blocks overlap. The count came back on
+// `LanePlacement.overflow` and nothing drew it, so a fourth ride at one hour
+// rendered as three with the fourth underneath. These pin the contract the
+// badge now depends on.
+{
+  const at = (id, topMin, bottomMin) => ({ id, topMin, bottomMin });
+  const four = packLanes([
+    at('a', 600, 700),
+    at('b', 610, 700),
+    at('c', 620, 700),
+    at('d', 630, 700),
+  ]);
+  test('vier gleichzeitige Blöcke ergeben drei Spuren', four.get('a').columns, 3);
+  test('der vierte fährt in der letzten mit', four.get('d').column, 2);
+  test('und wird dort gezählt', four.get('d').overflow, 1);
+  test('die anderen zählen nichts', four.get('a').overflow, 0);
+  // Reported ONCE, on the last block of the crowded column — which is also the
+  // one drawn on top, so the badge is never under something else.
+  const six = packLanes([
+    at('a', 600, 700),
+    at('b', 600, 700),
+    at('c', 600, 700),
+    at('d', 600, 700),
+    at('e', 600, 700),
+  ]);
+  test('zwei Überzählige werden zusammen gemeldet', six.get('e').overflow, 2);
+  test('und nicht einzeln', six.get('d').overflow, 0);
+  // Three fit, so nothing is reported at all.
+  const three = packLanes([at('a', 600, 700), at('b', 610, 700), at('c', 620, 700)]);
+  test('drei passen ohne Überlauf', three.get('c').overflow, 0);
+}
+
 // ── 16. The axis grows to contain the plan ───────────────────────────────────
 // `clampStart` lets a block START fifteen minutes before the park shuts, so a
 // sixty-minute free block reaches forty-five minutes past `closeMin` against a
