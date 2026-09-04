@@ -1910,6 +1910,13 @@
       "range": "{from} to {to}",
       "resizeHandle": "Drag duration"
     },
+    "column": {
+      "pickPark": "Choose park",
+      "noPark": "No park",
+      "addPark": "Plan another park",
+      "close": "Close column",
+      "open": "Open a second column"
+    },
     "tier": {
       "observed": "Measured",
       "measured": "Hourly forecast",

@@ -1910,6 +1910,13 @@
       "range": "{from} tot {to}",
       "resizeHandle": "Duur slepen"
     },
+    "column": {
+      "pickPark": "Park kiezen",
+      "noPark": "Geen park",
+      "addPark": "Ander park plannen",
+      "close": "Kolom sluiten",
+      "open": "Tweede kolom openen"
+    },
     "tier": {
       "observed": "Gemeten",
       "measured": "Uurprognose",

@@ -1910,6 +1910,13 @@
       "range": "{from} bis {to}",
       "resizeHandle": "Dauer ziehen"
     },
+    "column": {
+      "pickPark": "Park wählen",
+      "noPark": "Kein Park",
+      "addPark": "Anderen Park planen",
+      "close": "Spalte schließen",
+      "open": "Zweite Spalte öffnen"
+    },
     "tier": {
       "observed": "Gemessen",
       "measured": "Stundenprognose",

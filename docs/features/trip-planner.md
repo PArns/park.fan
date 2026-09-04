@@ -304,6 +304,18 @@ One thing the audit turned up on the way: the headliner band shipped as
 `bg-crowd-high/10 bg-background/70`, two `background-color` declarations on one
 element, so the crowd tint never painted at all.
 
+**And the empty panel had no picture at all**, which is the one screen that
+needed one. The photo arrives on `/plan/day`, and with nothing planned there is
+no active park, so no query and no photo: standing on Toverland's page the panel
+opened as a black rectangle over a park page that had a perfectly good picture.
+So the beacon that already tells the panel which park the route is about
+(`PlannerPageParkBeacon`) carries the photo too — resolved by the **route**,
+because `getParkBackgroundImage` reads `@/lib/media`, a 107 KB catalogue that a
+Client Component in the layout may not import. The panel branches on the
+**active park** rather than falling back field by field, so a day whose query is
+still in flight shows nothing rather than briefly showing a different park's
+façade.
+
 ## A sentence may only point at something that is there
 
 Three strings promised a ride search "unten". `PlannerRideSearch` has exactly one
@@ -552,6 +564,69 @@ Checked by `pnpm test:planner-estimate` (the hour-versus-day rule, pure) and by
 five browser assertions in `check:planner` against a stubbed payload — the
 interesting values are a park past its publication horizon and a date three
 months out, neither of which is reproducible on a given morning.
+
+## Two days side by side
+
+The panel is resizable up to 900 px and a wide one drew **one** column with 500 px
+of empty hour rules beside it. Two columns is what that width is for: "and what
+if we went Saturday instead", side by side, rather than one day hidden behind a
+picker.
+
+**Two, and the number is measured.** Canvas here means the block area right of
+the hour gutter, read off the rendered panel. A default 448 px panel gives one
+column **395 px** of it; at `PANEL_WIDTH_MAX` (900) each of two columns gets
+**397**. So at the top of the range two columns are two whole planners rather
+than two compromises. A third would have to share the hour gutter, and the gutter
+carries the weather rail, the showtime chips and the now pill — all three per
+(park, date) — so a shared one costs the second park its weather and its
+showtimes.
+
+The floor is `TWO_COLUMN_MIN_WIDTH` = `PANEL_WIDTH_MIN * 2 + 1` (681): the same
+minimum a single column has, applied twice. Below it the switch is **not offered
+and the second column is not drawn** — but it is remembered, so narrowing the
+panel puts the arrangement away and widening it brings the same day back rather
+than making somebody build it again. A phone is excluded on its own account
+(`isPhone`), not because its number is small: the sheet is the width of the
+screen there and no drag makes it wider.
+
+**Which chrome moved, and why it is about what a control speaks for.** With one
+column the panel header answered both per-day questions — one park name, one day
+picker — and that stops working the moment there are two, because the header has
+no way to say which of them it means. So the park chooser and the day picker sit
+on the column now (`PlannerColumnHead`), and the rest of the day's chrome came
+with them into `PlannerDayColumn`: the context band, the party chips, the
+showtime strip, the axis, and the action row a selected block docks into. What
+stayed panel-level is what follows the **primary** column — the ride search, the
+headliner band, the free-block row, the totals — because those are how a day gets
+filled and a plan has exactly one active day.
+
+Two things are per column rather than per panel and both would be real bugs
+shared:
+
+- **The selection.** Entry ids are unique only within one (park, date) —
+  `makeId` counts collisions among that day's entries alone — so `taron-1`
+  legitimately exists in a Saturday column and a Sunday column of the same park,
+  which is exactly the case two columns are for. A panel-level `selectedId` would
+  highlight both blocks and delete whichever one the action row was handed. The
+  Delete-key effect moved with it, and is inert in a column with nothing
+  selected, so exactly one listener is ever bound.
+- **The queries.** Each column runs its own `/plan/day` and its own live poll,
+  keyed by (park, date). Two columns of the same park on two dates therefore
+  share the park-level ones — the best-days snapshot has no date in its key and
+  the live poll is gated on `isToday` — and pay twice only for what really is per
+  day.
+
+The state is **not** part of `PlannerState`. `trip-sync.ts` casts the whole plan
+onto the wire in `payloadOf`, so a field added there ships to `PUT /api/trips`
+unasked, and whether somebody has a second column open is a property of this
+browser rather than of their day at Phantasialand — the same reasoning, and the
+same shape, as `panel-width.ts` and `shows-visible.ts`. It is stored rather than
+held in component state because the panel unmounts every time it closes, and an
+arrangement that vanished then would not be an arrangement.
+
+The second column opens on the **day after** the active one, same park: that is
+the move two columns are for, and opening on the same date twice is the one
+arrangement that says nothing. Either column's park is one press away from there.
 
 ## The panel changes the page's width, and four things had to learn that
 

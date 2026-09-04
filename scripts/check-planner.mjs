@@ -3927,6 +3927,252 @@ if (reachable) {
   }
 }
 
+// ── Two day columns ─────────────────────────────────────────────────────────
+// The panel is resizable and a wide one drew ONE column with 500 px of empty
+// hour rules beside it. Two columns is what that width is for — "and what if we
+// went Saturday instead", side by side rather than one behind a picker — and the
+// whole feature is three questions this block asks in order: does it appear only
+// where it fits, does the second column carry its own head, and is the
+// arrangement remembered.
+{
+  const SECOND_DATE = parkDay(2);
+  const cols = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+  noteErrors(cols);
+
+  await cols.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  await cols.evaluate((plan) => {
+    window.localStorage.setItem('parkfan_planner', JSON.stringify(plan));
+    window.localStorage.removeItem('parkfan_planner_column2');
+    document.cookie = 'planner=1; path=/';
+  }, PLAN);
+  await cols.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+  await cols.locator(LAUNCHER).click();
+  await cols.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await cols.waitForTimeout(1500);
+
+  // The default panel is 448 px and two columns need 681 (twice the floor a
+  // single column has, plus the divider). So the switch must not be there —
+  // offering it would mean either two columns below the width one is allowed
+  // to be, or a press that does nothing.
+  check(
+    'schmales Panel bietet keine zweite Spalte an',
+    (await cols.locator(`${SHEET} [data-planner-second-column]`).count()) === 0 &&
+      (await cols.locator(`${SHEET} [data-planner-column]`).count()) === 1
+  );
+
+  // The day picker moved onto the column with the park name: with two columns a
+  // panel-level picker cannot say which of the two days it means.
+  check(
+    'Park und Tag stehen an der Spalte, nicht im Panelkopf',
+    (await cols
+      .locator(`${SHEET} [data-planner-column-head] [data-planner-day-trigger]`)
+      .count()) === 1 &&
+      (await cols
+        .locator(`${SHEET} [data-planner-day-trigger]:not([data-planner-column-head] *)`)
+        .count()) === 0
+  );
+
+  await cols.evaluate(() => window.localStorage.setItem('parkfan_planner_width', '780'));
+  await cols.reload({ waitUntil: 'networkidle' });
+  await cols.locator(LAUNCHER).click();
+  await cols.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await cols.waitForTimeout(1500);
+
+  const toggle = cols.locator(`${SHEET} [data-planner-second-column]`);
+  check(
+    'breites Panel bietet die zweite Spalte an',
+    (await toggle.count()) === 1 &&
+      (await toggle.getAttribute('data-planner-second-column')) === 'off'
+  );
+
+  await toggle.click();
+  await cols.waitForTimeout(2500);
+
+  const columns = cols.locator(`${SHEET} [data-planner-column]`);
+  const keys = await columns.evaluateAll((els) =>
+    els.map((el) => el.getAttribute('data-planner-column'))
+  );
+  // Same park, the day AFTER — a second column showing the same date twice would
+  // open on the one arrangement that says nothing.
+  check(
+    'die zweite Spalte öffnet auf dem Folgetag desselben Parks',
+    keys.length === 2 &&
+      keys[0] === `${PARK.slug}:${DATE}` &&
+      keys[1] === `${PARK.slug}:${SECOND_DATE}`,
+    keys.join(' | ')
+  );
+
+  check(
+    'genau eine Spalte ist die aktive',
+    (await cols.locator(`${SHEET} [data-planner-column-primary]`).count()) === 1
+  );
+  check(
+    'jede Spalte trägt ihren eigenen Kopf',
+    (await cols.locator(`${SHEET} [data-planner-column-head]`).count()) === 2 &&
+      (await cols.locator(`${SHEET} [data-planner-column-park]`).count()) === 2 &&
+      (await cols
+        .locator(`${SHEET} [data-planner-column-head] [data-planner-day-trigger]`)
+        .count()) === 2
+  );
+
+  // Halved, not overflowing: the panel is one box and two columns share it.
+  // `PANEL_WIDTH_MIN` is 340, which is exactly what 780 gives each of them once
+  // the divider is paid for — so a column here is never narrower than a single
+  // one is allowed to be.
+  const boxes = await columns.evaluateAll((els) =>
+    els.map((el) => Math.round(el.getBoundingClientRect().width))
+  );
+  check(
+    'beide Spalten teilen sich das Panel',
+    boxes.length === 2 && Math.abs(boxes[0] - boxes[1]) <= 2 && Math.min(...boxes) >= 330,
+    boxes.join(' / ')
+  );
+
+  // Two grids, not one grid and one empty half: each column runs its own
+  // `/plan/day` and draws its own axis.
+  const grids = await cols.locator(`${SHEET} [data-planner-grid]`).count();
+  check('jede Spalte zeichnet ihre eigene Achse', grids === 2, `${grids} Achsen`);
+
+  // Only the second column may be closed. The first is the plan's active day and
+  // closing it would leave the panel with nothing to be about.
+  check(
+    'nur die zweite Spalte lässt sich schließen',
+    (await cols.locator(`${SHEET} [data-planner-column-close]`).count()) === 1
+  );
+
+  // The park chooser lists the plan's OWN parks — this one holds two — and the
+  // wizard at the foot is where a new one comes from.
+  await cols.locator(`${SHEET} [data-planner-column-park]`).last().click();
+  await cols.waitForTimeout(400);
+  const popover = cols.locator('[data-slot="popover-content"]');
+  const parkList = ((await popover.textContent().catch(() => '')) ?? '').replace(/\s+/g, ' ');
+  check(
+    'die Spalte lässt jeden geplanten Park wählen',
+    /Phantasialand/.test(parkList) && /Europa-Park/.test(parkList),
+    parkList.slice(0, 120)
+  );
+  await cols.keyboard.press('Escape');
+  await cols.waitForTimeout(300);
+
+  // Remembered across a reload, because the panel unmounts every time somebody
+  // looks at the page behind it and an arrangement that vanished then would not
+  // be an arrangement.
+  await cols.reload({ waitUntil: 'networkidle' });
+  await cols.locator(LAUNCHER).click();
+  await cols.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await cols.waitForTimeout(2000);
+  check(
+    'die Anordnung überlebt einen Reload',
+    (await cols.locator(`${SHEET} [data-planner-column]`).count()) === 2
+  );
+
+  // Narrowed below the floor the second column is not DRAWN and not offered —
+  // and it is not forgotten either, so widening the panel brings the same day
+  // back instead of making somebody arrange it again.
+  await cols.evaluate(() => window.localStorage.setItem('parkfan_planner_width', '448'));
+  await cols.reload({ waitUntil: 'networkidle' });
+  await cols.locator(LAUNCHER).click();
+  await cols.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await cols.waitForTimeout(1500);
+  const remembered = await cols.evaluate(() =>
+    window.localStorage.getItem('parkfan_planner_column2')
+  );
+  check(
+    'zu schmal blendet die zweite Spalte aus, ohne sie zu vergessen',
+    (await cols.locator(`${SHEET} [data-planner-column]`).count()) === 1 &&
+      (await cols.locator(`${SHEET} [data-planner-second-column]`).count()) === 0 &&
+      (remembered ?? '').includes(SECOND_DATE),
+    remembered ?? '(nichts gemerkt)'
+  );
+
+  // And back. The stored width is what decides it, so the same press that took
+  // it away brings it back with the day it had.
+  await cols.evaluate(() => window.localStorage.setItem('parkfan_planner_width', '780'));
+  await cols.reload({ waitUntil: 'networkidle' });
+  await cols.locator(LAUNCHER).click();
+  await cols.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await cols.waitForTimeout(2000);
+  check(
+    'wieder breit genug bringt denselben Tag zurück',
+    (await cols.locator(`${SHEET} [data-planner-column]`).count()) === 2 &&
+      (await cols
+        .locator(`${SHEET} [data-planner-column]`)
+        .last()
+        .getAttribute('data-planner-column')) === `${PARK.slug}:${SECOND_DATE}`
+  );
+
+  // Closing it is the toggle's other half, and the switch has to report it.
+  await cols.locator(`${SHEET} [data-planner-column-close]`).click();
+  await cols.waitForTimeout(600);
+  check(
+    'die zweite Spalte lässt sich wieder schließen',
+    (await cols.locator(`${SHEET} [data-planner-column]`).count()) === 1 &&
+      (await cols
+        .locator(`${SHEET} [data-planner-second-column]`)
+        .getAttribute('data-planner-second-column')) === 'off'
+  );
+
+  await cols.close();
+}
+
+// A phone has no second column and must not pretend otherwise: the sheet is the
+// width of the screen there, no drag makes it wider, and two 195 px columns
+// would be two unusable ones. The switch is gated on `isPhone` as well as on the
+// width, so this is a real assertion rather than a restatement of the one above.
+{
+  const phone = await browser.newPage({
+    viewport: { width: 390, height: 844 },
+    isMobile: true,
+    hasTouch: true,
+  });
+  noteErrors(phone);
+  await phone.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  await phone.evaluate(
+    ([plan, second]) => {
+      window.localStorage.setItem('parkfan_planner', JSON.stringify(plan));
+      // Wide enough for two on a desktop, and stored — the phone must refuse on
+      // its own account rather than because the number happens to be small.
+      window.localStorage.setItem('parkfan_planner_width', '780');
+      window.localStorage.setItem(
+        'parkfan_planner_column2',
+        JSON.stringify({ parkSlug: 'phantasialand', date: second })
+      );
+      document.cookie = 'planner=1; path=/';
+    },
+    [PLAN, parkDay(2)]
+  );
+  await phone.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+  await settleHydration(phone);
+  await phone.locator(LAUNCHER).click();
+  await phone.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await phone.waitForTimeout(2000);
+
+  check(
+    'das Telefon zeigt genau eine Spalte und keinen Schalter',
+    (await phone.locator(`${SHEET} [data-planner-column]`).count()) === 1 &&
+      (await phone.locator(`${SHEET} [data-planner-second-column]`).count()) === 0
+  );
+
+  // The column head has to fit a 390 px sheet: park name, day picker, nothing
+  // running off the edge. The head is `min-w-0` and the name truncates, so this
+  // measures the box rather than trusting the classes.
+  const head = phone.locator(`${SHEET} [data-planner-column-head]`).first();
+  const fits = await head.evaluate((el) => {
+    const box = el.getBoundingClientRect();
+    return {
+      over: Math.round(box.right - window.innerWidth),
+      scroll: el.scrollWidth - el.clientWidth,
+    };
+  });
+  check(
+    'der Spaltenkopf passt aufs Telefon',
+    fits.over <= 0 && fits.scroll <= 1,
+    `${fits.over} px über den Rand, ${fits.scroll} px Überlauf`
+  );
+
+  await phone.close();
+}
+
 check(
   'keine unerwarteten Konsolenfehler',
   consoleErrors.length === 0,

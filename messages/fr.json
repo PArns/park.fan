@@ -1910,6 +1910,13 @@
       "range": "{from} à {to}",
       "resizeHandle": "Ajuster la durée"
     },
+    "column": {
+      "pickPark": "Choisir un parc",
+      "noPark": "Aucun parc",
+      "addPark": "Planifier un autre parc",
+      "close": "Fermer la colonne",
+      "open": "Ouvrir une seconde colonne"
+    },
     "tier": {
       "observed": "Mesuré",
       "measured": "Prévision horaire",

@@ -1910,6 +1910,13 @@
       "range": "dalle {from} alle {to}",
       "resizeHandle": "Trascina la durata"
     },
+    "column": {
+      "pickPark": "Scegli il parco",
+      "noPark": "Nessun parco",
+      "addPark": "Pianifica un altro parco",
+      "close": "Chiudi colonna",
+      "open": "Apri una seconda colonna"
+    },
     "tier": {
       "observed": "Misurato",
       "measured": "Previsione oraria",

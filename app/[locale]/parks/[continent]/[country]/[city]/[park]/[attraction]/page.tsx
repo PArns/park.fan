@@ -34,7 +34,11 @@ import { ShareButtons } from '@/components/common/share-buttons';
 import { ContributeBanner } from '@/components/contribute/contribute-banner';
 import { PreferredSourcePrompt } from '@/components/common/preferred-source-prompt';
 import { buildContributeHref } from '@/lib/contribute/prefill';
-import { getAttractionBackgroundImage } from '@/lib/utils/park-assets';
+import {
+  getAttractionBackgroundImage,
+  getCardObjectPosition,
+  getParkBackgroundImage,
+} from '@/lib/utils/park-assets';
 import {
   AttractionStructuredData,
   BreadcrumbStructuredData,
@@ -342,6 +346,8 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
           name={stripNewPrefix(park.name)}
           geo={{ continent, country, city }}
           timezone={park.timezone}
+          backgroundImage={getParkBackgroundImage(park.slug)}
+          backgroundPosition={getCardObjectPosition(park.slug)}
         />
         <AttractionStructuredData
           attraction={attraction}
