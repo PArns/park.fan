@@ -1,4 +1,4 @@
-import type { PlanDay, PlanDayRide } from '@/lib/api/types';
+import type { PlanDay, PlanDayRide, PlanDayTier } from '@/lib/api/types';
 import type { PlannerEntry } from './types';
 
 /**
@@ -29,6 +29,20 @@ export interface PlannerEstimate {
    * and never as an interval that is claimed to contain the answer.
    */
   expectedError: number | null;
+  /**
+   * Which regime THIS hour's figure came from, which is not always the day's.
+   *
+   * `/plan/day` sets `hours[].source` only where an hour departs from the day's
+   * `tier`, and today is exactly that case: 50 of Phantasialand's 254 hourly
+   * points on 2026-09-04 are `composed` under a `measured` day, because the
+   * 24-hour window the model measures does not cover the whole operating day.
+   * The block's lower edge is drawn from this — a hard end for a measurement, a
+   * fade for a composition — so reading the day's tier there would have drawn
+   * fifty composed hours as if somebody had measured them.
+   *
+   * `null` only where there is no day at all.
+   */
+  tier: PlanDayTier | null;
   /**
    * Why there is no number, when there is none. `outside-hours` and `no-curve`
    * are different things to tell a visitor: one is "not while the park is shut",
@@ -68,17 +82,28 @@ const UNKNOWN: PlannerEstimate = {
   wait: null,
   uncertaintyMinutes: null,
   expectedError: null,
+  tier: null,
   missing: 'no-day',
 };
 
-const ASSUMED: PlannerEstimate = {
-  wait: ASSUMED_WAIT_MIN,
-  // No band and no measured error, because there is no model behind this to
-  // have either.
-  uncertaintyMinutes: null,
-  expectedError: null,
-  missing: 'assumed',
-};
+/**
+ * A ride with no curve, at the day's own regime.
+ *
+ * A function rather than a constant because the tier belongs to the day: the
+ * five minutes are an assumption either way, and the edge still says which kind
+ * of day it is standing in.
+ */
+function assumed(day: PlanDay): PlannerEstimate {
+  return {
+    wait: ASSUMED_WAIT_MIN,
+    // No band and no measured error, because there is no model behind this to
+    // have either.
+    uncertaintyMinutes: null,
+    expectedError: null,
+    tier: day.tier ?? null,
+    missing: 'assumed',
+  };
+}
 
 function rideOf(day: PlanDay, slug: string): PlanDayRide | undefined {
   return day.rides.find((r) => r.attractionSlug === slug);
@@ -90,7 +115,13 @@ export function estimateFor(day: PlanDay | null | undefined, entry: PlannerEntry
 
   const { openHour, closeHour } = day.context;
   if (openHour === null || closeHour === null) {
-    return { wait: null, uncertaintyMinutes: null, expectedError: null, missing: 'no-day' };
+    return {
+      wait: null,
+      uncertaintyMinutes: null,
+      expectedError: null,
+      tier: day.tier ?? null,
+      missing: 'no-day',
+    };
   }
   // The grid starts a block at any 15-minute step, and the API is hourly on both
   // tiers, so the figure a block carries is its HOUR's. Interpolating between
@@ -98,28 +129,44 @@ export function estimateFor(day: PlanDay | null | undefined, entry: PlannerEntry
   // 53 and 47 elsewhere in this app.
   const hour = Math.floor(entry.startMinute / 60);
   if (hour < openHour || hour > closeHour) {
-    return { wait: null, uncertaintyMinutes: null, expectedError: null, missing: 'outside-hours' };
+    return {
+      wait: null,
+      uncertaintyMinutes: null,
+      expectedError: null,
+      tier: day.tier ?? null,
+      missing: 'outside-hours',
+    };
   }
 
   // A free block is not a ride and has no forecast — it is a duration the
   // visitor wrote down. `no-curve` would read as "we could not predict this",
   // which is a claim about a queue that does not exist.
   if (entry.custom)
-    return { wait: null, uncertaintyMinutes: null, expectedError: null, missing: 'custom' };
+    return {
+      wait: null,
+      uncertaintyMinutes: null,
+      expectedError: null,
+      tier: day.tier ?? null,
+      missing: 'custom',
+    };
 
   const ride = entry.attractionSlug ? rideOf(day, entry.attractionSlug) : undefined;
   // A ride the API omitted, or an hour it has no point for: no measured shape to
   // scale, so there is no curve rather than a flat one. Both are answered with
   // the assumption rather than with a shrug — see `ASSUMED_WAIT_MIN`.
-  if (!ride) return ASSUMED;
+  if (!ride) return assumed(day);
 
   const point = ride.hours.find((h) => h.hour === hour);
-  if (!point) return ASSUMED;
+  if (!point) return assumed(day);
 
   return {
     wait: point.wait,
     uncertaintyMinutes: ride.uncertaintyMinutes ?? null,
     expectedError: ride.expectedError ?? null,
+    // The HOUR's regime where it names one, the day's otherwise. `source` is set
+    // only on the exceptions, so an absent one means "the day's tier" and never
+    // "unknown".
+    tier: point.source ?? day.tier ?? null,
     missing: 'none',
   };
 }

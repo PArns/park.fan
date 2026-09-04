@@ -228,6 +228,68 @@ today — so sixty of the sixty-one dates the picker offers drew nothing and the
 band had to say „steht erst am Tag selbst fest". That sentence is gone; an empty
 `shows` array is now a statement about the park.
 
+## Where a figure came from, and whether anybody checked it
+
+Four fields on `/plan/day` say how much a number is worth, and each answers a
+different question.
+
+`tier` names the day's regime and has always been drawn: it decides the block's
+lower edge, which ends hard on a measurement and fades over 10 px on a
+composition and 22 on a long-range one. What it does NOT cover is that a day is
+not all one regime. **`hours[].source` names the hours that depart from it**, and
+it is not an edge case: 50 of Phantasialand's 254 hourly points on 2026-09-04
+are `composed` under a `measured` day, because the 24-hour window the model
+measures does not span the whole operating day. So the edge is drawn from
+`PlannerEstimate.tier` — the hour's own source where it names one, the day's
+otherwise — and the ghost under a dragged block reads it too, since dragging out
+of a measured hour into a composed one is exactly the move whose edge has to
+change while the pointer is down. An absent `source` means "the day's tier" and
+never "unknown".
+
+**`accuracy.basis` says whether anybody has ever measured how wrong the forecast
+is at this distance**, and it behaves as documented again. It was typed and left
+unread because on 2026-09-02 and -03 the API answered `unmeasured` for TODAY, so
+applying its own rule — never present an unmeasured day as a plannable day —
+would have refused every day the planner has. Re-measured on 2026-09-04 across
+six lead times at Phantasialand: 0, 1, 3, 16 and 41 days all answer `measured`
+with a `typicalError`; 87 days answers `unmeasured` with none. It is also what
+the `long_range` tier turned into in practice — the same six probes never
+returned that tier, and a day three months out is `tier: 'composed'` with
+`basis: 'unmeasured'` — so the band reads the basis rather than waiting for a
+tier the API has stopped sending.
+
+There is one trap in it, and it fires on the days whose numbers are the best on
+the panel: **a day that has already happened also answers `unmeasured`.** Nothing
+predicted it, so nothing verified a prediction — while its figures are
+measurements. Reading the basis there would put „nobody has checked these
+numbers" under the only numbers in the panel that are facts, so `tier ===
+'observed'` wins and the check pins it.
+
+`accuracy.typicalError` is the day's own typical error in minutes (8.9 for
+today, 14.3 at sixteen days). It is a TYPICAL error and not a bound — half the
+days fall further out — so it is worded as „typisch 9 Min. daneben" and never as
+a `±` interval that contains the answer, which is the rule `expectedError`
+already carries per ride in the selection bar. It is folded INTO the tier's own
+sentence rather than standing beside it, and that is a height decision: a
+separate span measured 60 → 75.5 px on a 390 px phone, i.e. the grid stepping
+down by that much the moment the payload landed. `accuracy.sampleSize` is typed
+and unread — it grows with the lead time (50,759 for today, 1,155,876 at sixteen
+days) because a composed day is scaled from a far wider historical window, so it
+describes the method rather than the day.
+
+**`context.hoursSource: 'observed'`** means the opening hours were derived from
+hours somebody recorded rather than published, which happens past a park's
+publication horizon — Heide Park answers it with 10:00–16:00 and
+`status: UNKNOWN` for 2026-11-30. The window is narrower than the truth by
+construction, so the hours chip carries a „(gemessen)" suffix and a title that
+says the day may be longer. A suffix and not a badge for the same reason as
+above: a badge measured 92 → 120 px in the 448 px panel.
+
+Checked by `pnpm test:planner-estimate` (the hour-versus-day rule, pure) and by
+five browser assertions in `check:planner` against a stubbed payload — the
+interesting values are a park past its publication horizon and a date three
+months out, neither of which is reproducible on a given morning.
+
 ## The panel changes the page's width, and four things had to learn that
 
 Opening the panel sets `--planner-inset` on the document element and the layout
@@ -328,6 +390,7 @@ and a new page does not get the markup in order to try.
 
 ```bash
 pnpm test:planner-actions      # the plan operations, pure
+pnpm test:planner-estimate     # what a block is expected to cost, and from which regime
 pnpm test:planner-grid         # minutes → pixels, and the axis
 pnpm test:planner-leg          # what the chip between two rides says
 pnpm test:planner-park-time    # the zone rules

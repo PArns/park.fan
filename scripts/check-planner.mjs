@@ -1652,6 +1652,196 @@ if (reachable) {
   await drag.close();
 }
 
+// ── Where a figure came from, and whether anybody checked it ────────────────
+// Three fields the API grew and the panel typed without reading: `tier` names
+// the day's regime, `hours[].source` names the hours that DEPART from it,
+// `accuracy.basis` says whether anybody has ever measured how wrong the forecast
+// is this far out, and `context.hoursSource` says whether the opening hours were
+// published or derived. Each is stubbed here rather than fetched, because the
+// interesting values are a park past its publication horizon and a date three
+// months out — neither of which is reproducible on a given morning.
+{
+  const acc = await browser.newPage({ viewport: { width: 1400, height: 1000 } });
+  noteErrors(acc);
+
+  const OPEN = 9;
+  const CLOSE = 18;
+  /**
+   * The day payload, with only the four fields under test varied.
+   *
+   * `context` is merged and re-applied LAST on purpose: a plain `...over` at the
+   * top level clobbers the whole context object, which is what a first version
+   * did — the observed-hours case then rendered "undefined bis undefined Uhr
+   * (gemessen)" and its assertion passed on the suffix alone.
+   */
+  const dayBody = (over = {}) => {
+    const { context: contextOver, ...rest } = over;
+    return {
+      parkSlug: PARK.slug,
+      timezone: 'Europe/Berlin',
+      tier: 'measured',
+      leadDays: 1,
+      accuracy: { basis: 'measured', typicalError: 8.9, sampleSize: 50_759 },
+      rides: [
+        {
+          attractionSlug: 'taron',
+          attractionName: 'Taron',
+          land: 'Mystery',
+          hours: Array.from({ length: CLOSE - OPEN + 1 }, (_, i) => ({
+            hour: OPEN + i,
+            wait: 45,
+            // One hour that is not the day's regime, which is what the field is
+            // for: today's payload really does carry fifty of these.
+            ...(OPEN + i === 17 ? { source: 'composed' } : {}),
+          })),
+          dayPeak: 45,
+          uncertaintyMinutes: null,
+          sampleDays: 400,
+        },
+      ],
+      shows: [],
+      ...rest,
+      context: {
+        date: DATE,
+        status: 'OPERATING',
+        openHour: OPEN,
+        closeHour: CLOSE,
+        crowdLevel: 'moderate',
+        weather: null,
+        isHoliday: false,
+        isBridgeDay: false,
+        isSchoolVacation: false,
+        isWeekend: false,
+        hoursSource: 'schedule',
+        ...contextOver,
+      },
+    };
+  };
+
+  let body = dayBody({});
+  await acc.route('**/plan/day**', (route) =>
+    route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(body) })
+  );
+
+  /** Reopen the panel on a fresh payload. */
+  const reload = async () => {
+    await acc.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+    await acc.locator(LAUNCHER).click();
+    await acc.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+    await acc.waitForTimeout(2200);
+  };
+
+  await acc.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  await acc.evaluate(
+    ([plan, date]) => {
+      const seeded = JSON.parse(JSON.stringify(plan));
+      const park = seeded.parks.phantasialand;
+      park.timezone = 'Europe/Berlin';
+      park.days = {
+        [date]: {
+          date,
+          entries: [
+            { id: 'm', attractionSlug: 'taron', attractionName: 'Taron', startMinute: 600 },
+            { id: 'c', attractionSlug: 'taron', attractionName: 'Taron', startMinute: 1020 },
+          ],
+        },
+      };
+      seeded.activeParkSlug = 'phantasialand';
+      seeded.activeDate = date;
+      window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
+      window.localStorage.setItem('parkfan_planner_dragcoach', '1');
+      document.cookie = 'planner=1; path=/';
+    },
+    [PLAN, DATE]
+  );
+  await reload();
+
+  // The block's lower edge is the whole point of `hours[].source`: a hard end
+  // for a measurement, a fade for a composition. Read off the mask rather than
+  // off a class, because that is what actually draws it.
+  const edges = await acc.locator(`${SHEET} li[data-planner-block]`).evaluateAll((els) =>
+    els.map((el) => ({
+      time: (el.textContent ?? '').match(/\d{1,2}:\d{2}/)?.[0] ?? '?',
+      // ANY layer of the block, not the first one with an inline height: the
+      // uncertainty band above the fill carries one too and is written first,
+      // so picking the first read `none` on both blocks and would have passed
+      // the measured case for the wrong reason.
+      faded: Array.from(el.querySelectorAll('[style]')).some((node) => {
+        const mask = getComputedStyle(node).maskImage;
+        return mask !== 'none' && mask.includes('gradient');
+      }),
+    }))
+  );
+  check(
+    'die gemessene Stunde endet hart',
+    edges.find((e) => e.time === '10:00')?.faded === false,
+    JSON.stringify(edges)
+  );
+  check(
+    'die zusammengesetzte Stunde desselben Tages verläuft',
+    edges.find((e) => e.time === '17:00')?.faded === true,
+    JSON.stringify(edges)
+  );
+
+  const bandText = async () =>
+    ((await acc.locator(`${SHEET} [data-planner-context-band]`).innerText()) ?? '').replace(
+      /\s+/g,
+      ' '
+    );
+  let band = await bandText();
+  check(
+    'der Tag nennt seinen typischen Fehler',
+    /typisch 9 Min\. daneben/.test(band),
+    band.slice(0, 120)
+  );
+  check(
+    'veröffentlichte Zeiten bleiben unkommentiert',
+    /09 bis 18 Uhr/.test(band) && !/\(gemessen\)/.test(band),
+    band.slice(0, 120)
+  );
+
+  // Past the publication horizon: the window is DERIVED from hours somebody
+  // recorded, so it is narrower than the truth by construction and the panel
+  // says where it came from.
+  body = dayBody({ context: { hoursSource: 'observed' } });
+  await reload();
+  band = await bandText();
+  // The hours themselves are asserted with it: without them this passed on the
+  // suffix alone, over a chip reading "undefined bis undefined Uhr".
+  check('abgeleitete Zeiten sagen es', /09 bis 18 Uhr \(gemessen\)/.test(band), band.slice(0, 120));
+
+  // Nobody has ever checked how wrong the forecast is this far out.
+  body = dayBody({ tier: 'composed', accuracy: { basis: 'unmeasured' } });
+  await reload();
+  band = await bandText();
+  check(
+    'ohne geprüfte Genauigkeit sagt der Tag das',
+    /Ohne geprüfte Treffsicherheit/.test(band),
+    band.slice(0, 120)
+  );
+  check(
+    'und nennt dann keinen Fehler',
+    !/typisch \d+ Min\. daneben/.test(band),
+    band.slice(0, 120)
+  );
+
+  // The trap in that field: a day that has already HAPPENED also answers
+  // `unmeasured` — nothing predicted it, so nothing verified a prediction —
+  // while its figures are measurements. Reading the basis there would put
+  // "nobody has checked these numbers" under the only numbers on this panel
+  // that are facts.
+  body = dayBody({ tier: 'observed', accuracy: { basis: 'unmeasured' } });
+  await reload();
+  band = await bandText();
+  check(
+    'ein vergangener Tag bleibt gemessen',
+    /Gemessen/.test(band) && !/Ohne geprüfte Treffsicherheit/.test(band),
+    band.slice(0, 120)
+  );
+
+  await acc.close();
+}
+
 // ── Shows, on a day that HAS them ───────────────────────────────────────────
 // The run above deliberately seeds tomorrow, "so the run is stable" — and
 // showtimes used to exist for today and no other date, so every pass watched the

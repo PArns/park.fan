@@ -1915,10 +1915,14 @@
       "measured": "Hourly forecast",
       "composed": "From the day forecast",
       "longRange": "Rough estimate",
+      "unmeasured": "Accuracy unchecked",
       "observedHint": "This day is over. The figures are what the queues actually did.",
       "measuredHint": "The model works this day out hour by hour.",
+      "measuredHintError": "Worked out hour by hour, typically {minutes} min off.",
       "composedHint": "The day’s level is predicted; the shape comes from earlier days.",
-      "longRangeHint": "This far ahead the day’s level itself gets thin. Read the figures as a direction, not a promise."
+      "composedHintError": "Day’s level predicted, shape from earlier days, typically {minutes} min off.",
+      "longRangeHint": "This far ahead the day’s level itself gets thin. Read the figures as a direction, not a promise.",
+      "unmeasuredHint": "This far ahead nobody has checked yet how close these figures land. Read them as a direction."
     },
     "band": {
       "plusMinus": "± {minutes} min"
@@ -1930,7 +1934,9 @@
       "schoolVacation": "School holidays",
       "weekend": "Weekend",
       "neighborHolidays": "Holidays next door",
-      "hours": "{open} to {close}"
+      "hours": "{open} to {close}",
+      "hoursObserved": "(measured)",
+      "hoursObservedHint": "The park has published nothing for this date. These hours come from hours we recorded, and the real day may be longer."
     },
     "search": {
       "placeholder": "Search rides",

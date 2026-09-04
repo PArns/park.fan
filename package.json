@@ -42,6 +42,7 @@
     "test:weather-chart-axis": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-weather-chart-axis.mjs",
     "test:ride-day-curve": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-ride-day-curve.mjs",
     "test:planner-actions": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-actions.mjs",
+    "test:planner-estimate": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-estimate.mjs",
     "test:planner-grid": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-grid.mjs",
     "test:planner-leg": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-leg.mjs",
     "test:planner-park-time": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-park-time.mjs",

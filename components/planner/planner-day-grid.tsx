@@ -313,6 +313,21 @@ export function PlannerDayGrid({
     [draggingId, layout.rows]
   );
 
+  /**
+   * What the ghost would cost where it currently hovers.
+   *
+   * Hoisted out of the JSX because it is read twice now — the figure inside the
+   * ghost and the tier its lower edge is drawn with — and computing it twice
+   * would be two chances for the two to disagree.
+   */
+  const ghostEstimate = useMemo(
+    () =>
+      ghostRow && ghostMinute !== null
+        ? estimateFor(day, { ...ghostRow.entry, startMinute: ghostMinute })
+        : null,
+    [day, ghostRow, ghostMinute]
+  );
+
   const weatherSegments = useMemo(
     () => (loading ? [] : weatherRailSegments(grid, hourlyWeather?.points)),
     [grid, hourlyWeather, loading]
@@ -875,14 +890,17 @@ export function PlannerDayGrid({
                 It re-renders on the snapped minute, not on the pointer, so a
                 gesture costs a handful of renders. `ghost` makes it translucent
                 and inert; nothing about it can be clicked or dragged. */}
-            {ghostRow && ghostMinute !== null && (
+            {ghostRow && ghostMinute !== null && ghostEstimate && (
               <PlannerBlock
                 key="ghost"
                 ghost
                 entry={{ ...ghostRow.entry, startMinute: ghostMinute }}
-                estimate={estimateFor(day, { ...ghostRow.entry, startMinute: ghostMinute })}
+                estimate={ghostEstimate}
                 grid={grid}
-                tier={tier}
+                /* The hour the ghost would land in, not the day: dragging a
+                   block out of a measured hour and into a composed one is
+                   exactly the move whose edge has to change under the pointer. */
+                tier={ghostEstimate.tier ?? tier}
                 lane={layout.lanes.get(ghostRow.entry.id) ?? { column: 0, columns: 1, overflow: 0 }}
                 land={ghostRow.ride?.land}
                 metresFromPrevious={null}
@@ -919,7 +937,9 @@ export function PlannerDayGrid({
                   entry={row.entry}
                   estimate={row.estimate}
                   grid={grid}
-                  tier={tier}
+                  /* THIS hour's regime, which on a measured day is not always
+                     the day's — see `PlannerEstimate.tier`. */
+                  tier={row.estimate.tier ?? tier}
                   lane={layout.lanes.get(row.entry.id) ?? { column: 0, columns: 1, overflow: 0 }}
                   land={row.ride?.land}
                   metresFromPrevious={previous?.leg.metres ?? null}

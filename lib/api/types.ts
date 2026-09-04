@@ -2140,13 +2140,41 @@ export interface PlanDay {
    * that then happened; `unmeasured` means a prediction exists and nothing has
    * ever verified it. `null` where the API says nothing at all.
    *
-   * NOTE, before this is wired to anything: the API answers `unmeasured` for
-   * TODAY (`leadDays: 0`) as of 2026-09-03, while its own documentation
-   * describes the value as "beyond 60 days". Until that settles, treating
-   * `unmeasured` as "not a plannable day" would refuse every day the planner
-   * has.
+   * It behaves as documented again. Between 2026-09-02 and 2026-09-03 the API
+   * answered `unmeasured` for TODAY (`leadDays: 0`), which is why the note that
+   * stood here said the field could not be wired to anything: applying "never
+   * present an unmeasured day as a plannable day" literally would have refused
+   * every day the planner has. Re-measured on 2026-09-04 across six lead times
+   * at Phantasialand — 0, 1, 3, 16 and 41 days all answer `measured` with a
+   * `typicalError`, 87 days answers `unmeasured` with none. So `unmeasured` is
+   * what it says: past the horizon where anybody has checked.
+   *
+   * This is also the field that replaced the `long_range` tier in practice. The
+   * tier still types it, and the same six probes never returned it: what a day
+   * three months out actually looks like is `tier: 'composed'` with
+   * `basis: 'unmeasured'`, so the band reads the basis rather than waiting for a
+   * tier the API has stopped sending.
    */
-  accuracy?: { basis?: 'measured' | 'unmeasured' | null } | null;
+  accuracy?: {
+    basis?: 'measured' | 'unmeasured' | null;
+    /**
+     * The day's own typical error in minutes, over every ride and hour in it.
+     *
+     * A TYPICAL error and not a bound — half the days are further off — so it
+     * may never be drawn as an interval that contains the answer, which is the
+     * same rule `PlanDayRide.expectedError` carries per ride. Present only
+     * where `basis` is `measured`; 8.9 minutes for today at Phantasialand,
+     * 14.3 at sixteen days.
+     */
+    typicalError?: number | null;
+    /**
+     * Observations behind that figure. It GROWS with the lead time (50,759 for
+     * today, 1,155,876 at sixteen days) because a composed day is scaled from a
+     * far wider historical window than a measured one, so it is a statement
+     * about the method rather than about the day's own quality.
+     */
+    sampleSize?: number | null;
+  } | null;
   /**
    * The park's own photo, added by the proxy route rather than by the API — the
    * media database is a filesystem catalogue in this repo. It is what the

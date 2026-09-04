@@ -1915,10 +1915,14 @@
       "measured": "Previsión por horas",
       "composed": "De la previsión del día",
       "longRange": "Estimación aproximada",
+      "unmeasured": "Precisión sin comprobar",
       "observedHint": "Este día ya pasó. Las cifras son lo que marcaron realmente las colas.",
       "measuredHint": "El modelo calcula este día hora por hora.",
+      "measuredHintError": "Calculado hora por hora, suele fallar {minutes} min.",
       "composedHint": "El nivel del día está previsto; el perfil viene de días anteriores.",
-      "longRangeHint": "Tan lejos, el nivel del día se vuelve fino. Lee las cifras como una dirección, no como una promesa."
+      "composedHintError": "Nivel del día previsto, perfil de días anteriores, suele fallar {minutes} min.",
+      "longRangeHint": "Tan lejos, el nivel del día se vuelve fino. Lee las cifras como una dirección, no como una promesa.",
+      "unmeasuredHint": "Tan lejos nadie ha comprobado todavía lo cerca que quedan estas cifras. Léelas como una dirección."
     },
     "band": {
       "plusMinus": "± {minutes} min"
@@ -1930,7 +1934,9 @@
       "schoolVacation": "Vacaciones escolares",
       "weekend": "Fin de semana",
       "neighborHolidays": "Vacaciones al lado",
-      "hours": "de {open} a {close}"
+      "hours": "de {open} a {close}",
+      "hoursObserved": "(medido)",
+      "hoursObservedHint": "El parque no ha publicado nada para esta fecha. Este horario sale de horas que hemos registrado, y el día puede ser más largo."
     },
     "search": {
       "placeholder": "Buscar atracción",

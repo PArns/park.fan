@@ -1915,10 +1915,14 @@
       "measured": "Stundenprognose",
       "composed": "Aus Tagesprognose",
       "longRange": "Grobe Schätzung",
+      "unmeasured": "Ohne geprüfte Treffsicherheit",
       "observedHint": "Dieser Tag ist vorbei. Die Zahlen sind, was an den Warteschlangen wirklich stand.",
       "measuredHint": "Das Modell rechnet diesen Tag stundengenau.",
+      "measuredHintError": "Stundengenau gerechnet, typisch {minutes} Min. daneben.",
       "composedHint": "Die Tageshöhe ist vorhergesagt, der Verlauf kommt aus früheren Tagen.",
-      "longRangeHint": "So weit im Voraus wird die Tageshöhe selbst dünn. Nimm die Zahlen als Richtung, nicht als Zusage."
+      "composedHintError": "Tageshöhe vorhergesagt, Verlauf aus früheren Tagen, typisch {minutes} Min. daneben.",
+      "longRangeHint": "So weit im Voraus wird die Tageshöhe selbst dünn. Nimm die Zahlen als Richtung, nicht als Zusage.",
+      "unmeasuredHint": "So weit im Voraus hat noch niemand nachgerechnet, wie gut diese Zahlen treffen. Nimm sie als Richtung."
     },
     "band": {
       "plusMinus": "± {minutes} Min."
@@ -1930,7 +1934,9 @@
       "schoolVacation": "Ferien",
       "weekend": "Wochenende",
       "neighborHolidays": "Ferien nebenan",
-      "hours": "{open} bis {close} Uhr"
+      "hours": "{open} bis {close} Uhr",
+      "hoursObserved": "(gemessen)",
+      "hoursObservedHint": "Der Park hat für diesen Tag nichts veröffentlicht. Die Zeiten stammen aus Stunden, die wir gemessen haben, und der Tag kann länger sein."
     },
     "search": {
       "placeholder": "Bahn suchen",

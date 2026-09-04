@@ -1915,10 +1915,14 @@
       "measured": "Uurprognose",
       "composed": "Uit de dagprognose",
       "longRange": "Ruwe schatting",
+      "unmeasured": "Trefzekerheid ongetoetst",
       "observedHint": "Deze dag is voorbij. De cijfers zijn wat er echt bij de rijen stond.",
       "measuredHint": "Het model rekent deze dag per uur uit.",
+      "measuredHintError": "Per uur uitgerekend, meestal {minutes} min ernaast.",
       "composedHint": "De hoogte van de dag is voorspeld, het verloop komt uit eerdere dagen.",
-      "longRangeHint": "Zo ver vooruit wordt de hoogte van de dag zelf dun. Lees de cijfers als richting, niet als toezegging."
+      "composedHintError": "Dagniveau voorspeld, verloop uit eerdere dagen, meestal {minutes} min ernaast.",
+      "longRangeHint": "Zo ver vooruit wordt de hoogte van de dag zelf dun. Lees de cijfers als richting, niet als toezegging.",
+      "unmeasuredHint": "Zo ver vooruit heeft nog niemand nagerekend hoe dicht deze cijfers zitten. Lees ze als richting."
     },
     "band": {
       "plusMinus": "± {minutes} min"
@@ -1930,7 +1934,9 @@
       "schoolVacation": "Schoolvakantie",
       "weekend": "Weekend",
       "neighborHolidays": "Vakantie hiernaast",
-      "hours": "{open} tot {close} uur"
+      "hours": "{open} tot {close} uur",
+      "hoursObserved": "(gemeten)",
+      "hoursObservedHint": "Het park heeft voor deze datum niets gepubliceerd. Deze tijden komen uit uren die wij gemeten hebben, en de dag kan langer zijn."
     },
     "search": {
       "placeholder": "Attractie zoeken",
