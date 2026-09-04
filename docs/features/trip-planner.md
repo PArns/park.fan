@@ -628,6 +628,46 @@ The second column opens on the **day after** the active one, same park: that is
 the move two columns are for, and opening on the same date twice is the one
 arrangement that says nothing. Either column's park is one press away from there.
 
+## Three things move together, and they were on three clocks
+
+Opening the planner moves three boxes at once: the panel slides in from the
+right, the page beside it reflows to `--planner-inset`, and the edge tab rides
+the panel's left edge. They were timed **separately** — the sheet at 500 ms
+(`components/ui/sheet.tsx`), the page at 300 (`--planner-inset-ms`,
+`app/[locale]/layout.tsx`) and the tab at 500-on-open / 300-on-close — and the
+slowest of the three was the one the eye follows.
+
+Traced frame by frame at 1440 px with the page's right edge and the panel's left
+edge sampled in the same `requestAnimationFrame`:
+
+| t      | Seite rechts | Panel links | Lücke  |
+| ------ | ------------ | ----------- | ------ |
+| 283 ms | 1302         | 1402        | 100    |
+| 358 ms | 1065         | 1235        | 170    |
+| 432 ms | 995          | 1075        | **80** |
+| 508 ms | 992          | 1027        | 35     |
+| 668 ms | 992          | 992         | 0      |
+
+The page finished its inset at ~432 ms and the panel arrived at 668, so for a
+quarter of a second there was a strip of bare page background between them, up to
+170 px wide. That is what "die fade in und out animation" was about: there is no
+fade in it at all — the panel is a pure `translateX`, deliberately, because an
+opacity on it would let the page read straight through a panel whose glass is
+already flat while it moves — and what looked wrong was the seam.
+
+One number fixes it: **300 ms both ways, everywhere**. The easing was already
+shared and it is worth knowing why — `tw-animate-css` defines `--animate-in` as
+`enter … var(--tw-ease, ease) …`, and `ease-in-out` on the element sets
+`--tw-ease`, so the one class times the animation and the transition together.
+Re-measured after: `sheet === page === header === tab` on every sampled frame,
+and the whole move takes ~320 ms instead of ~670.
+
+The second column gets a 200 ms `fade-in slide-in-from-right-4` of its own,
+because a 389 px block appearing in one frame is a jump. It is on a **descendant**
+of the panel, which is the one place in here a transform is free: the glass is
+`SheetContent`'s, and a transform on that — or on any ancestor of it — makes it a
+backdrop root and flattens the blur.
+
 ## The panel changes the page's width, and four things had to learn that
 
 Opening the panel sets `--planner-inset` on the document element and the layout

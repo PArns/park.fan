@@ -631,7 +631,17 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 }}
               />
               {secondColumn && (
-                <div className="border-border/60 flex min-w-0 flex-1 border-l">
+                /* It arrives from the side it comes from rather than appearing
+                   in one frame — a 389 px block popping into a panel somebody
+                   is reading is a jump, not a change. On a DESCENDANT, which is
+                   the one place in this panel a transform is free: the glass is
+                   `SheetContent`'s, and a transform on that (or on any ancestor
+                   of it) makes it a backdrop root and flattens the blur. Short,
+                   because the column is already correct the moment it is there
+                   and the animation is only saying where it came from.
+                   `motion-reduce:animate-none` for a reader who has asked for
+                   none of this. */
+                <div className="border-border/60 animate-in fade-in slide-in-from-right-4 flex min-w-0 flex-1 border-l duration-200 ease-out motion-reduce:animate-none">
                   <PlannerDayColumn
                     parkSlug={secondColumn.parkSlug}
                     date={secondColumn.date}
