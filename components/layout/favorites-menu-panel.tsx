@@ -596,29 +596,56 @@ export function FavoritesMenuPanel({
       );
     }
 
+    /*
+     * Der leere Zustand ist DASSELBE Panel, nur ohne Inhalt — und sah aus wie ein anderes.
+     *
+     * Er stand mittig, mit `max-w-3xl` darunter: ein 768-px-Block, der in einem 1248 px breiten
+     * Band bei x=336 anfing und bei 1104 aufhörte, während die Navigationszeile darüber, die
+     * Karten des gefüllten Zustands und die Seite darunter alle bei 96 beginnen. Eine Insel, die
+     * sich an nichts ausrichtet, mit je einem Viertel leerem Glas links und rechts. Dazu eine
+     * andere Kopfzeile als der gefüllte Zustand — dort links „★ Favoriten" und rechts „Alle
+     * anzeigen", hier eine zentrierte Zeile ohne Gegenstück —, sodass ein Besucher ohne
+     * Favoriten nicht dasselbe Menü sieht wie einer mit.
+     *
+     * Die Begründung fürs Zentrieren war „linksbündig bliebe rechts eine leere Hälfte". Die
+     * bleibt zentriert auch — nur in zwei Vierteln statt in einer Hälfte, und dafür an keiner
+     * Kante. Also dieselbe Kopfzeile, dieselben Kanten, und die drei Schritte über die volle
+     * Breite als drei Spalten: bei 1248 px sind das ~400 px pro Schritt für ein bis zwei Zeilen,
+     * was liest, statt quer über den Bildschirm zu laufen.
+     */
     return (
-      /* Der leere Zustand steht mittig, der gefüllte nicht: hier gibt es nichts zu vergleichen,
-         nur eine Anleitung und ein paar Vorschläge, und ein linksbündiger Block in einem
-         1400 px breiten Band hätte rechts eine leere Hälfte. Sobald Favoriten da sind, ordnen
-         sich die Karten wieder an ihrer Kante — dann ist die Spalte die Struktur. */
-      <div data-menu-stagger className="flex flex-col items-center text-center">
-        <p className="text-foreground inline-flex items-center gap-2 text-sm font-semibold">
-          <Star className="text-muted-foreground/60 h-4 w-4" aria-hidden="true" />
-          {t('empty')}
-        </p>
-        {/* `max-w-3xl`: über die volle Bandbreite wäre jeder der drei Schritte 460 px breit für
-            zwei Zeilen Text, und die Anleitung liefe quer durch den Bildschirm statt sich lesen
-            zu lassen. */}
-        <FavoritesHowTo className="mt-4 w-full max-w-3xl text-left" />
+      <div>
+        <div className="mb-4 flex items-center justify-between gap-4">
+          {/* Grau, nicht gold: der Stern im Auslöser ist gefüllt, sobald etwas markiert ist, und
+              diese Zeile sagt das Gegenteil. */}
+          <span className="text-foreground inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase">
+            <Star className="text-muted-foreground/60 h-4 w-4" aria-hidden="true" />
+            {t('empty')}
+          </span>
+          {/* Wo im gefüllten Zustand „Alle anzeigen" steht. Als Knopf unter der Anleitung nahm
+              derselbe Link eine eigene Zeile im Band und stand wieder auf keiner Kante. */}
+          <Link
+            href="/parks"
+            prefetch={false}
+            className="text-primary hover:text-primary/80 text-xs font-medium transition-colors"
+          >
+            {tNav('explore')}
+          </Link>
+        </div>
+
+        <div data-menu-stagger>
+          <FavoritesHowTo cta={false} />
+        </div>
+
         {suggestions.length > 0 && (
-          <div className="border-border/60 mt-5 w-full max-w-3xl border-t pt-4">
+          <div data-menu-stagger className="border-border/60 mt-5 border-t pt-4">
             <span className="text-muted-foreground mb-2.5 block text-[11px] font-semibold tracking-wide uppercase">
               {tNav('nearby')}
             </span>
             {/* Der Stern steht NEBEN dem Link, nicht darin: verschachtelt würde ein Klick darauf
                 zur Parkseite navigieren, statt den Park zu markieren. Genau das ist hier aber der
                 Sinn — ein Tippen, und das Panel füllt sich. */}
-            <ul className="flex flex-wrap justify-center gap-2">
+            <ul className="flex flex-wrap gap-2">
               {suggestions.map((park) => (
                 <SuggestionChip key={park.id} park={park} />
               ))}

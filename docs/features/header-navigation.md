@@ -292,6 +292,24 @@ steckt im leeren Favoritenband der Startseite, damit beide Stellen dieselbe Antw
 nennt **keine** Position für den Stern: auf einer Karte sitzt er in einer Ecke, auf einer Parkseite
 nicht, und eine Angabe wäre auf einer von beiden falsch.
 
+**Der leere Zustand ist dasselbe Panel wie der gefüllte, und sah aus wie ein anderes.** Er stand
+zentriert, mit `max-w-3xl` darunter: ein 768-px-Block, der in einem 1248 px breiten Band bei x=336
+anfing und bei 1104 aufhörte, während die Navigationszeile darüber, die Karten des gefüllten
+Zustands und die Seite darunter alle bei 96 beginnen — eine Insel, die sich an nichts ausrichtet,
+mit je einem Viertel leerem Glas links und rechts. Dazu eine andere Kopfzeile als der gefüllte
+Zustand: dort links „★ Favoriten" und rechts „Alle anzeigen", hier eine zentrierte Zeile ohne
+Gegenstück. Wer nichts markiert hat, bekam damit nicht dasselbe Menü zu sehen wie jemand mit
+Favoriten. Die Begründung fürs Zentrieren war „linksbündig bliebe rechts eine leere Hälfte" — die
+bleibt zentriert auch, nur in zwei Vierteln statt in einer Hälfte und dafür an keiner Kante.
+
+Jetzt: dieselbe Kopfzeile (links „★ Noch keine Favoriten", rechts „Parks entdecken", wo im
+gefüllten Zustand „Alle anzeigen" steht — als Knopf unter der Anleitung nahm derselbe Link eine
+eigene Zeile und stand wieder auf keiner Kante), darunter die drei Schritte als drei Spalten über
+die volle Bandbreite, darunter die Parkvorschläge linksbündig. Bei 1248 px sind das ~405 px pro
+Schritt für ein bis zwei Zeilen. Gemessen bei 1024/1440/1920 px: Überschrift, Schritte und Chips
+beginnen exakt auf der Kante der Navigationszeile, das Panel schrumpft ohne Vorschläge von
+207,5 auf 132 px.
+
 ## Die Spalte des Bandes ist die Spalte der Leiste
 
 Drei Dinge, die alle drei Panels betrafen und am Favoritenmenü zuerst auffielen, weil es das
