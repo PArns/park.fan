@@ -746,11 +746,19 @@ export function PlannerDayGrid({
         }}
         onDragLeave={() => setDropMinute(null)}
         onDrop={(event) => {
+          // FIRST, and before any refusal. `dragover` above accepts a bare
+          // `text/uri-list` optimistically — deliberately, so a ride card from a
+          // park page drags — which means this element has already claimed the
+          // drop by the time `drop` fires. Returning without preventing the
+          // default hands it back to the BROWSER, whose default action for a
+          // dropped link is to follow it: any link that is not a ride URL,
+          // dragged onto the grid from this page or another tab, navigated the
+          // app away and took the open panel with it.
+          event.preventDefault();
           setDropMinute(null);
           if (!onDropRide) return;
           const ride = rideFromTransfer(event.dataTransfer);
           if (!ride) return;
-          event.preventDefault();
           onDropRide(ride.slug, ride.name, minuteAtClientY(event.clientY, floorForSlug(ride.slug)));
         }}
       >

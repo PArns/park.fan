@@ -711,11 +711,15 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 }}
                 onDragLeave={() => setFlatDropActive(false)}
                 onDrop={(event) => {
+                  // Prevented first, like the grid's — a park card writes
+                  // `text/uri-list` beside our own payload, so a refusal that
+                  // returns early leaves the browser holding a link it will
+                  // follow.
+                  event.preventDefault();
                   setFlatDropActive(false);
                   if (grid || !park || !activeDate) return;
                   const dragged = parseRideDrag(event.dataTransfer.getData(PLANNER_RIDE_MIME));
                   if (!dragged || dragged.parkSlug !== park.slug) return;
-                  event.preventDefault();
                   addRide({
                     parkSlug: park.slug,
                     parkName: park.name,
