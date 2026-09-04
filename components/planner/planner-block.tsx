@@ -435,7 +435,22 @@ export function PlannerBlock({
           className="pointer-events-none absolute inset-y-0 left-0 z-20 w-6 cursor-pointer appearance-none bg-transparent opacity-0 focus-visible:pointer-events-auto max-sm:w-11"
         />
 
-        <div className="pointer-events-none relative min-w-0 flex-1 px-1.5 py-0.5 pl-2.5">
+        {/* The text, and a shadow under it wherever a photograph is. A block's
+            name and its figure are coloured by the crowd tier — `text-crowd-*`,
+            a thin orange on a busy hour — and at `opacity-[0.3]` a ride photo
+            still carries enough light behind them to swallow the strokes. The
+            recipe is `WaitTimeValue`'s, which every park and ride card already
+            uses for exactly this: a wait time over a picture.
+            Only where the photo actually renders (`boxPx >= PHOTO_MIN_PX`), so
+            a block on the panel's flat ground pays nothing for it. */}
+        <div
+          className="pointer-events-none relative min-w-0 flex-1 px-1.5 py-0.5 pl-2.5"
+          style={
+            photo && boxPx >= PHOTO_MIN_PX
+              ? { filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.65))' }
+              : undefined
+          }
+        >
           {boxPx < 30 ? (
             /* One row, and the figure sits IN it. It used to escape past the
                block's right edge (`left: 100%`) so a 20 px box would not have to

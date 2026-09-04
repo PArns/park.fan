@@ -186,8 +186,15 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
     onOpenChange(false);
     // The park's own page, where the ride cards are. `@/i18n/navigation`'s
     // router, so the localized path is built rather than guessed.
+    //
+    // With `#attractions`, because landing at the top of the page is landing
+    // three screens above the only thing the panel wants: the cards. The hash
+    // is the park page's own mechanism — `useTabHashRouting` selects that tab
+    // and scrolls it under the sticky header — so this asks for the scroll in
+    // the language the page already speaks instead of reaching for the DOM
+    // after a navigation.
     router.push(
-      `/parks/${park.geo.continent}/${park.geo.country}/${park.geo.city}/${park.slug}` as '/europe/germany/rust/europa-park'
+      `/parks/${park.geo.continent}/${park.geo.country}/${park.geo.city}/${park.slug}#attractions` as '/europe/germany/rust/europa-park'
     );
   };
 
@@ -213,6 +220,13 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
           date={date}
           locale={locale}
           plannedDays={plannedDatesFor(state, park?.slug).length}
+          /* The park's picture for the three ways in that do NOT come through
+             the search — „+ Weiterer Tag", the panel's „+", the in-park CTA —
+             where the park comes out of the plan and a plan stores slugs rather
+             than asset URLs. It is the same photograph, from a payload this
+             dialog already fetches. */
+          dayPhoto={planDay.data?.parkBackgroundImage ?? null}
+          dayPhotoPosition={planDay.data?.parkBackgroundPosition}
         />
         <WizardRail steps={steps} current={index} onJump={(to) => goTo(steps[to])} />
 
@@ -417,25 +431,39 @@ const STEP_MOTION: Record<string, string> = {
  * look different from choosing Efteling.
  *
  * **No photo is a designed state, not a grey box.** The first step has no park
- * yet, and the other way in — another day at a park already in the plan — has
- * no photo at all, because a plan stores slugs rather than asset URLs. Both get
- * a tinted field and the oversized translucent glyph the site's chapter
- * headings use, at the same height, so nothing moves when the picture lands.
+ * yet, so it gets a tinted field and the oversized translucent glyph the site's
+ * chapter headings use, at the same height, so nothing moves when the picture
+ * lands.
  *
- * There is a client-safe media manifest that would fill that second gap
- * (`@/lib/media/hero`, 21 KB) and it is deliberately not used: it holds a
- * picture for eight of 212 parks, and 21 KB of JavaScript for a decorative band
- * on 4 % of the catalogue is the wrong side of this project's payload budget.
+ * The OTHER gap is closed now. Three of the four ways into this dialog skip the
+ * search — „+ Weiterer Tag" in the plan list, the „+" in the panel's header, the
+ * in-park offer — and there the park comes out of the plan, which stores slugs
+ * rather than asset URLs; measured, all three drew the tinted field for a park
+ * whose photograph was on screen behind the dialog. It is filled from
+ * `/plan/day`'s own `parkBackgroundImage`, which this dialog already fetches for
+ * the date step's hours and weather, and which the panel behind it already
+ * paints. So the picture arrives with the day rather than with the park on those
+ * paths — one beat later, in the same fixed-height band, and never a request
+ * that was not already being made.
+ *
+ * The client-safe media manifest (`@/lib/media/hero`, 21 KB) is still not used
+ * and is now not needed: it holds a picture for eight of 212 parks, and the
+ * payload this dialog already has covers every park the API answers for.
  */
 function WizardHero({
   park,
   date,
   locale,
   plannedDays,
+  dayPhoto,
+  dayPhotoPosition,
 }: {
   park: WizardPark | null;
   date: string | null;
   locale: string;
+  /** The park's photo off `/plan/day`, for the paths the search never touched. */
+  dayPhoto?: string | null;
+  dayPhotoPosition?: string;
   /**
    * Days this park already has entries for. It is what the second line says on
    * the one path that has neither a place nor a date yet — "another day at this
@@ -448,7 +476,8 @@ function WizardHero({
   // `common`, because `planner.close` is the day grid's "clear selection" and
   // this is a dialog's close button. The chrome namespace ships on every page.
   const tCommon = useTranslations('common');
-  const photo = park?.imageUrl;
+  const photo = park?.imageUrl ?? dayPhoto ?? undefined;
+  const photoPosition = park?.imageUrl ? park.imagePosition : dayPhotoPosition;
   const place = park ? [park.city, countryLabel(park, locale)].filter(Boolean).join(', ') : '';
 
   return (
@@ -462,7 +491,7 @@ function WizardHero({
             fill
             sizes="(max-width: 640px) 100vw, 512px"
             className="motion-safe:animate-in motion-safe:fade-in motion-safe:duration-500"
-            style={{ objectFit: 'cover', objectPosition: park?.imagePosition }}
+            style={{ objectFit: 'cover', objectPosition: photoPosition }}
           />
           {/* Dark at the bottom because that is where the text is, and only
               there: a scrim over the whole frame turns a photograph into a

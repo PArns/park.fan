@@ -1980,7 +1980,10 @@
       "projected": "Previsto",
       "projectedFrom": "Horarios del {date}, trasladados a este día de la semana.",
       "over": "Ya han pasado todos los espectáculos de hoy.",
-      "more": "{count, plural, =1 {+1 más} other {+# más}}"
+      "more": "{count, plural, =1 {+1 más} other {+# más}}",
+      "hidden": "Horarios ocultos",
+      "hide": "Ocultar los horarios",
+      "show": "Mostrar los horarios"
     },
     "warn": {
       "closedNow": "Ahora mismo indica cerrada.",

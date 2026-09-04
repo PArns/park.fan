@@ -1980,7 +1980,10 @@
       "projected": "Expected",
       "projectedFrom": "Times from {date}, carried over to this weekday.",
       "over": "Today's shows have all finished.",
-      "more": "{count, plural, =1 {+1 more} other {+# more}}"
+      "more": "{count, plural, =1 {+1 more} other {+# more}}",
+      "hidden": "Showtimes hidden",
+      "hide": "Hide showtimes",
+      "show": "Show showtimes"
     },
     "warn": {
       "closedNow": "Reporting closed right now.",

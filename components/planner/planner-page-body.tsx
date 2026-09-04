@@ -61,6 +61,14 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
 
   return (
     <div className="flex flex-col gap-8">
+      {/* The photographs stay, plan or no plan. They used to belong to the empty
+          state alone, so the moment somebody planned their first day the page
+          lost its picture band and opened on a button over a list — the one
+          screen that is meant to say „ein Tag im Park" looked like a settings
+          page. Above the button either way: it is what the page is about, and
+          the button is what to do about it. */}
+      <PlannerPolaroids photos={photos} />
+
       {/* One way in, and it is a button rather than a search field. The field
           asked which park and nothing else, so the two questions that decide
           whether a day works — which day, and who is coming — were left to be
@@ -80,7 +88,7 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
       )}
 
       {parks.length === 0 ? (
-        <PlannerPageIntro photos={photos} onStart={() => setWizardFor({ park: null })} />
+        <PlannerPageIntro onStart={() => setWizardFor({ park: null })} />
       ) : null}
 
       {parks.length > 0 && (
@@ -214,23 +222,17 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
  * steps come from `PlannerHelpSteps`, which the panel's empty state also uses —
  * two copies of the same three sentences would drift on the first edit.
  *
- * The polaroids sit ABOVE the steps rather than beside them: the picture is what
- * says "this is about a day out", and it has to land before the instructions do.
+ * The polaroids used to be part of this and are not any more: they belong to the
+ * PAGE rather than to its empty state, because a visitor who has planned a day
+ * is still looking at a page about days in parks. They are rendered by
+ * `PlannerPageBody` above whatever comes next.
  */
-function PlannerPageIntro({
-  photos,
-  onStart,
-}: {
-  photos: readonly PolaroidPhoto[];
-  onStart: () => void;
-}) {
+function PlannerPageIntro({ onStart }: { onStart: () => void }) {
   const t = useTranslations('planner');
 
   return (
     <section data-planner-page-intro="">
-      <PlannerPolaroids photos={photos} />
-
-      <h2 className="mt-6 mb-2 text-lg font-semibold">{t('page.introTitle')}</h2>
+      <h2 className="mb-2 text-lg font-semibold">{t('page.introTitle')}</h2>
       <p className="text-muted-foreground max-w-2xl text-sm leading-relaxed">
         {t('page.introBody')}
       </p>

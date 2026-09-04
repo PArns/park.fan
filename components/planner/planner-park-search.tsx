@@ -1,11 +1,12 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useId, useMemo, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { MapPin, Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { getCountryName } from '@/lib/utils/region-names';
+import { cn } from '@/lib/utils';
 import type { PlannerGeo } from '@/lib/planner/types';
 
 /** `/api/search` answers an empty set below this, so asking earlier is a lie. */
@@ -70,6 +71,19 @@ export function PlannerParkSearch({ plannedSlugs, onPick }: PlannerParkSearchPro
   const [query, setQuery] = useState('');
   const [hits, setHits] = useState<ParkHit[]>([]);
   const [busy, setBusy] = useState(false);
+  /**
+   * Which result the keyboard is on, held as the park's SLUG rather than as an
+   * index.
+   *
+   * An index would have to be reset every time the results change, and this
+   * file already says why that cannot be done in an effect — React 19 rejects
+   * `setState` in an effect body outright. A slug needs no reset: it is looked
+   * up in the current list at render, and a slug that is no longer in it falls
+   * back to the first row on its own. Which is also the right default — somebody
+   * who types three letters and presses Enter means the top hit.
+   */
+  const [activeSlug, setActiveSlug] = useState<string | null>(null);
+  const listId = useId();
 
   const needle = query.trim();
   // The floor is the SEARCH ROUTE's, not a number picked here: `/api/search`
@@ -111,6 +125,8 @@ export function PlannerParkSearch({ plannedSlugs, onPick }: PlannerParkSearchPro
   }, [needle]);
 
   const results = useMemo(() => (short ? [] : hits.slice(0, 6)), [hits, short]);
+  const found = results.findIndex((park) => park.slug === activeSlug);
+  const active = found === -1 ? 0 : found;
 
   return (
     <div data-planner-park-search="">
@@ -126,29 +142,73 @@ export function PlannerParkSearch({ plannedSlugs, onPick }: PlannerParkSearchPro
           type="search"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
+          onKeyDown={(event) => {
+            // The list is operated from the FIELD, which is where the caret is
+            // and where it stays: the options carry `tabIndex={-1}` and the
+            // highlight travels as `aria-activedescendant`, the combobox
+            // pattern. Moving focus into the list instead would take the caret
+            // out of a field somebody is still typing in.
+            if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+              if (results.length === 0) return;
+              event.preventDefault();
+              const step = event.key === 'ArrowDown' ? 1 : -1;
+              const next = (active + step + results.length) % results.length;
+              setActiveSlug(results[next].slug);
+              return;
+            }
+            if (event.key === 'Enter') {
+              const park = results[active];
+              if (!park) return;
+              // Nothing here submits a form, but the wizard's own „Weiter" is a
+              // button in the same dialog and a stray Enter would reach it.
+              event.preventDefault();
+              onPick(park);
+            }
+          }}
           placeholder={t('parkSearch.placeholder')}
           aria-label={t('parkSearch.placeholder')}
+          /* The first thing this dialog asks is which park, and the answer is
+             typed. Without it Radix parks the focus on the dialog itself and
+             the first keystroke goes nowhere. */
+          autoFocus
+          role="combobox"
+          aria-expanded={results.length > 0}
+          aria-controls={listId}
+          aria-autocomplete="list"
+          aria-activedescendant={results[active] ? `${listId}-${results[active].slug}` : undefined}
           className="pl-9 max-sm:h-11"
         />
       </div>
 
       {!short && (
-        <ul className="mt-2 space-y-1">
+        <ul id={listId} role="listbox" className="mt-2 space-y-1">
           {results.length === 0 ? (
             <li className="text-muted-foreground px-1 py-2 text-xs">
               {busy ? t('parkSearch.searching') : t('parkSearch.noResults')}
             </li>
           ) : (
-            results.map((park) => (
-              <li key={park.slug}>
+            results.map((park, index) => (
+              <li key={park.slug} role="option" aria-selected={index === active}>
                 {/* The photo is a 14:10 STRIP, not a square. Its source is the
                     park's own background picture — a landscape shot of a
                     skyline or a queue line — and a square crop of one is a
                     detail of the middle of it. */}
                 <button
                   type="button"
+                  id={`${listId}-${park.slug}`}
+                  // Out of the tab order on purpose: the field owns the
+                  // keyboard here, and a Tab that walked six results before it
+                  // reached „Weiter" would be a second, contradictory model.
+                  tabIndex={-1}
+                  // Hovering moves the highlight, so the pointer and the
+                  // keyboard cannot end up disagreeing about which row Enter
+                  // would pick.
+                  onMouseEnter={() => setActiveSlug(park.slug)}
                   onClick={() => onPick(park)}
-                  className="hover:bg-accent focus-visible:ring-ring hover:border-border/60 flex w-full items-center gap-3 rounded-xl border border-transparent px-2 py-1.5 text-left transition-colors focus-visible:ring-2 focus-visible:outline-none max-sm:py-2"
+                  className={cn(
+                    'hover:bg-accent hover:border-border/60 flex w-full items-center gap-3 rounded-xl border border-transparent px-2 py-1.5 text-left transition-colors max-sm:py-2',
+                    index === active && 'bg-accent border-border/60'
+                  )}
                 >
                   {park.imageUrl ? (
                     <span className="bg-muted relative h-10 w-14 shrink-0 overflow-hidden rounded-lg">

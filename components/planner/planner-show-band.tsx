@@ -2,7 +2,7 @@
 
 import { useMemo, useSyncExternalStore } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { Theater } from 'lucide-react';
+import { Eye, EyeOff, Theater } from 'lucide-react';
 import type { PlannerShowLine } from '@/lib/planner/shows';
 import {
   getMinuteTick,
@@ -18,6 +18,10 @@ interface PlannerShowBandProps {
   /** The park's IANA zone — the only clock this panel ever reads. */
   timezone: string;
   isToday: boolean;
+  /** `false` while the switch has them hidden; the band still offers the switch. */
+  visible?: boolean;
+  /** Absent where there is nothing to switch — a day with no shows at all. */
+  onToggle?: () => void;
 }
 
 /**
@@ -40,13 +44,19 @@ interface PlannerShowBandProps {
  * The band reserves its height in every state, so the grid below it does not
  * move when the answer arrives.
  */
-export function PlannerShowBand({ lines, timezone, isToday }: PlannerShowBandProps) {
+export function PlannerShowBand({
+  lines,
+  timezone,
+  isToday,
+  visible = true,
+  onToggle,
+}: PlannerShowBandProps) {
   const t = useTranslations('planner');
   const locale = useLocale();
 
   // Only where a showtime can go past: on any other date the strip is a fixed
   // sentence and has no reason to hold the panel's minute timer open.
-  const live = isToday && lines !== null && lines.length > 0;
+  const live = visible && isToday && lines !== null && lines.length > 0;
   const tick = useSyncExternalStore(
     live ? subscribeToMinute : subscribeToNothing,
     live ? getMinuteTick : getZero,
@@ -96,6 +106,11 @@ export function PlannerShowBand({ lines, timezone, isToday }: PlannerShowBandPro
         <span aria-hidden="true">&nbsp;</span>
       ) : lines.length === 0 ? (
         <span className="truncate">{t('shows.none')}</span>
+      ) : !visible ? (
+        /* Hidden, and the band says so rather than disappearing with them: a
+           strip that vanished would take the switch with it, and a reader who
+           turned the shows off by accident would have nothing left to press. */
+        <span className="truncate">{t('shows.hidden')}</span>
       ) : next ? (
         <>
           <span className="shrink-0">{label}</span>
@@ -114,6 +129,29 @@ export function PlannerShowBand({ lines, timezone, isToday }: PlannerShowBandPro
         </>
       ) : (
         <span className="truncate">{t('shows.over')}</span>
+      )}
+
+      {/* The switch. Last in the row and `ml-auto` only where nothing else took
+          the slack, so it never pushes the "+N weitere" count off the strip.
+          It renders only where there is something to switch: on a day the API
+          answered with no shows there is nothing to hide, and a control that
+          toggles an empty set is a control that does nothing. */}
+      {onToggle && lines !== null && lines.length > 0 && (
+        <button
+          type="button"
+          onClick={onToggle}
+          data-planner-shows-toggle={visible ? 'on' : 'off'}
+          aria-pressed={visible}
+          title={visible ? t('shows.hide') : t('shows.show')}
+          className="hover:text-foreground -my-0.5 ml-auto flex size-4 shrink-0 items-center justify-center rounded transition-colors"
+        >
+          {visible ? (
+            <Eye className="size-3" aria-hidden="true" />
+          ) : (
+            <EyeOff className="size-3" aria-hidden="true" />
+          )}
+          <span className="sr-only">{visible ? t('shows.hide') : t('shows.show')}</span>
+        </button>
       )}
     </div>
   );

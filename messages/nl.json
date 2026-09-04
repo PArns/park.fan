@@ -1980,7 +1980,10 @@
       "projected": "Naar verwachting",
       "projectedFrom": "Tijden van {date}, doorgetrokken naar deze weekdag.",
       "over": "Alle voorstellingen van vandaag zijn geweest.",
-      "more": "{count, plural, =1 {+1 meer} other {+# meer}}"
+      "more": "{count, plural, =1 {+1 meer} other {+# meer}}",
+      "hidden": "Speeltijden verborgen",
+      "hide": "Speeltijden verbergen",
+      "show": "Speeltijden tonen"
     },
     "warn": {
       "closedNow": "Meldt nu gesloten.",

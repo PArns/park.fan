@@ -1980,7 +1980,10 @@
       "projected": "Voraussichtlich",
       "projectedFrom": "Zeiten vom {date}, hochgerechnet auf diesen Wochentag.",
       "over": "Alle Vorstellungen für heute gelaufen.",
-      "more": "{count, plural, =1 {+1 weitere} other {+# weitere}}"
+      "more": "{count, plural, =1 {+1 weitere} other {+# weitere}}",
+      "hidden": "Spielzeiten ausgeblendet",
+      "hide": "Spielzeiten ausblenden",
+      "show": "Spielzeiten einblenden"
     },
     "warn": {
       "closedNow": "Meldet gerade geschlossen.",

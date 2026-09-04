@@ -29,6 +29,7 @@ import { buildDayGrid, nextFreeStart } from '@/lib/planner/day-grid';
 import { parkToday, resolveTimeZone } from '@/lib/planner/park-time';
 import { closedNowFor, liveWaitsFor } from '@/lib/planner/live';
 import { showLinesFor } from '@/lib/planner/shows';
+import { plannerShowsVisible } from '@/lib/planner/shows-visible';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import { PlannerShowBand } from './planner-show-band';
 import { PlannerGridActions } from './planner-grid-actions';
@@ -384,6 +385,15 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   // for the rest — so the panel no longer has to say "not knowable". What it
   // does have to say is WHICH of the two it is looking at, which rides along on
   // each line as `source`.
+  /* Whether the day's showtimes are drawn at all — a preference of this
+     browser, remembered, and read here rather than in the band so the grid's
+     lines and the band above them can never disagree. */
+  const showsVisible = useSyncExternalStore(
+    plannerShowsVisible.subscribe,
+    plannerShowsVisible.getSnapshot,
+    plannerShowsVisible.getServerSnapshot
+  );
+
   const showLines = day
     ? showLinesFor(
         day.shows,
@@ -412,6 +422,20 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
       <SheetContent
         modal={isPhone}
         side={isPhone ? 'bottom' : 'right'}
+        /* A click on the page does NOT close the panel on a desktop.
+           `DismissableLayer` fires this for every pointer press outside the
+           sheet, and outside the sheet is exactly where the work is: the panel
+           is deliberately non-modal so a ride card stays grabbable, and the
+           press that starts a drag is an outside press. So the gesture the
+           panel exists to receive was also the gesture that dismissed it —
+           and short of that, every click meant to scroll or read the park page
+           behind it shut the plan.
+           The phone keeps its overlay tap: there the sheet is modal, the page
+           behind is covered and inert, and tapping the shield is the ordinary
+           way out of a bottom sheet. Escape and the × work in both. */
+        onInteractOutside={(event) => {
+          if (!isPhone) event.preventDefault();
+        }}
         // `side="bottom"` ships `h-auto` and no ceiling, so the height is the
         // call site's business. `svh` rather than `vh`: on iOS the address bar
         // makes `vh` taller than what is actually visible, and the summary row
@@ -689,7 +713,13 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 }}
               >
                 {grid && (
-                  <PlannerShowBand lines={showLines} timezone={timezone} isToday={isToday} />
+                  <PlannerShowBand
+                    lines={showLines}
+                    timezone={timezone}
+                    isToday={isToday}
+                    visible={showsVisible}
+                    onToggle={plannerShowsVisible.toggle}
+                  />
                 )}
                 {grid ? (
                   <PlannerDayGrid
@@ -699,7 +729,11 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                     timezone={timezone}
                     isToday={isToday}
                     liveWaits={liveWaits}
-                    showLines={showLines}
+                    /* `[]` rather than `null` while the switch is off: `null`
+                       is this prop's "the day payload has not arrived", and the
+                       grid draws a reserved gap for it. Hidden shows are an
+                       answer, not a wait. */
+                    showLines={showsVisible ? showLines : []}
                     closedNow={closedNow}
                     parkSlug={park?.slug}
                     onDropRide={(attractionSlug, attractionName, startMinute) => {

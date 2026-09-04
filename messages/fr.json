@@ -1980,7 +1980,10 @@
       "projected": "Estimation",
       "projectedFrom": "Horaires du {date}, reportés sur ce jour de la semaine.",
       "over": "Tous les spectacles du jour sont passés.",
-      "more": "{count, plural, =1 {+1 autre} other {+# autres}}"
+      "more": "{count, plural, =1 {+1 autre} other {+# autres}}",
+      "hidden": "Horaires masqués",
+      "hide": "Masquer les horaires",
+      "show": "Afficher les horaires"
     },
     "warn": {
       "closedNow": "Signalée fermée en ce moment.",

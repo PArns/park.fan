@@ -317,7 +317,30 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
            pixel and, worse, centred the in-flow logo on a different box than the corner copy,
            which is absolutely centred in the header itself — the two copies of the same lockup
            sat 0.5 px apart for the whole handoff. */
-        className="container mx-auto flex h-full items-center justify-between px-4 md:px-0"
+        /* The row's own width, and it may NOT come from the viewport. `container`
+           is a media-query utility: its max-width is picked from how wide the
+           WINDOW is, while its parent here is the header, whose box the trip
+           planner shrinks without the window changing at all. The two disagree
+           the moment the panel opens, and the container then fills its parent
+           edge to edge — measured on a park page with the planner open, the
+           lockup sat at x=8 in a 1552 px header and at x=0 in a 992 px one,
+           flush against the screen. `md:px-0` is the other half: the padding is
+           dropped because the max-width is supposed to be providing the inset,
+           so when the max-width stops applying the row loses both at once.
+           Same thresholds, asked of the header instead — `@container` is already
+           on it for the nav switches — so the row insets against the space it
+           actually has.
+
+           And `px-4` is a FLOOR now rather than something the max-width
+           replaces. `md:px-0` assumed the container is always narrower than its
+           parent, which is false at every tier boundary: at a 1024 px window
+           the 1024 tier applies, the row fills the header exactly, and the
+           lockup sat at x=0 — flush against the edge of the screen, planner or
+           no planner. Measured at 768 and 1024 shut, and at 1440 and 2000 with
+           the panel open. Above 768 the bar's contents move 16 px inward; below
+           it nothing changes, which is where the width budget in
+           `design-system.md` is counted. */
+        className="mx-auto flex h-full w-full items-center justify-between px-4 @min-[768px]:max-w-[768px] @min-[1024px]:max-w-[1024px] @min-[1280px]:max-w-[1280px] @min-[1536px]:max-w-[1536px]"
       >
         {/* Corner logo – absolute, visible only when transparent (hero top).
             Same left-6 offset as the hero image info text below. On scroll it hands over to the
