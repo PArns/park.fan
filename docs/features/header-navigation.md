@@ -272,22 +272,71 @@ Vier Entscheidungen sitzen darin:
 - **Der Stern ist immer da, auch bei null Favoriten.** Der Aktionsbereich wird server-gerendert,
   das Cookie ist erst nach dem Mount lesbar, und ein Bedienelement, das nach der Hydration
   auftaucht, schiebt Sprachwahl, Theme-Schalter und Burger zur Seite. 32 px, dafür kein Sprung.
-- **Er öffnet nur auf Klick, nie auf Hover.** Das Band liegt zwischen Suchfeld und Theme-Schalter;
-  eines, das sich beim Vorbeifahren aufrollt, stünde mehrmals pro Sitzung im Weg.
+- **Er liegt in der Navigationszeile und öffnet mit derselben Hysterese wie die Nachbarn**
+  (`useMenuTrigger`). Eine Zeile, in der ein Eintrag anders reagiert als die daneben, muss man
+  zweimal lernen. Er ist der einzige Eintrag ohne Link — siehe `FavoritesMenu`: Favoriten haben
+  kein Ziel, das für alle dasselbe zeigt.
 - **Die Anfrage läuft erst beim Öffnen** (`useFavorites({ enabled, poll })`). Der Header rendert
   auf ~35 000 Seiten; ungebremst wäre das ein `/api/favorites`-Call pro Seite für jeden, der je
   etwas markiert hat. Der Query-Key ist derselbe wie auf der Startseite, dort kostet das Öffnen
   also nichts.
-- **Zeilen, keine Karten.** `ParkCard`/`AttractionCard` lesen die Namespaces `parks` +
+- **Eigene Karten, nicht `ParkCard`/`AttractionCard`.** Die beiden lesen die Namespaces `parks` +
   `attractions`; die müssten dann in die Chrome-Payload jeder Seite. Das Panel liest `favorites`,
   `common`, `geo` und `parks.status` — die letzten drei waren schon Chrome, `favorites` (503 B) ist
-  dazugekommen und dafür aus 20 Route-Deltas verschwunden.
+  dazugekommen und dafür aus 20 Route-Deltas verschwunden. Im Burger-Sheet sind es Zeilen: ein
+  Kartenraster in einer 300-px-Spalte ist eine Karte pro Bildschirm.
 
 Bei null Favoriten steht die Anleitung im Panel: drei Schritte plus der echte Stern in der Größe,
 in der er auf den Karten sitzt (`components/parks/favorites-how-to.tsx`). Dieselbe Komponente
 steckt im leeren Favoritenband der Startseite, damit beide Stellen dieselbe Antwort geben. Sie
 nennt **keine** Position für den Stern: auf einer Karte sitzt er in einer Ecke, auf einer Parkseite
 nicht, und eine Angabe wäre auf einer von beiden falsch.
+
+## Die Spalte des Bandes ist die Spalte der Leiste
+
+Drei Dinge, die alle drei Panels betrafen und am Favoritenmenü zuerst auffielen, weil es das
+einzige mit echten Sätzen darin ist.
+
+**Die Inhaltsspalte des Bandes ist dieselbe wie die der Leiste, und sie war es nicht mehr.** Beide
+standen einmal auf Tailwinds `container mx-auto px-4 md:px-0`. Als der Tagesplaner anfing, die
+Seite einzurücken, bekam die Leiste Container-Queries gegen die Breite des `<header>` und `px-4`
+als Untergrenze statt als etwas, das die Max-Width bei `md` ablöst — das Band behielt die alte
+Klasse, die ihre Max-Width aus dem **Fenster** zieht. Danach lag der Inhalt des Bandes bei jedem
+Viewport 16 px links neben der Navigationszeile, und mit geöffnetem Planer bei 1920 px sogar
+96 px daneben (Leiste 112–1360, Band 16–1456). `MenuBand` trägt jetzt dieselbe Klassenliste;
+gemessen sind beide Kanten auf 0,0 px identisch, mit und ohne Planer.
+
+**`white-space` vererbt sich, und die Navigationszeile ist `whitespace-nowrap`.** Sie muss das
+sein — ein Menüwort darf in einer 48-px-Leiste nie umbrechen —, aber die Panels hängen im selben
+`<nav>`. Beschriftungen und Kartentitel (`truncate`) überleben das; Fließtext nicht. Die
+Blog-Teaser liefen einzeilig aus dem Band heraus und wurden vom `overflow-hidden` abgeschnitten,
+und der leere Favoritenzustand — der Zustand, den fast jeder Besucher sieht — schob seine drei
+Schritte als drei lange Zeilen über den rechten Rand. Die Glasfläche setzt jetzt `whitespace-normal`
+zurück: ein Panel ist eine Seite, keine Zeile in der Leiste.
+
+**Jede Karte im Band ist gleich breit** (`planBand` in `components/layout/favorites-menu-panel.tsx`).
+Vorher bekam jede Gruppe `flexGrow: <ihre Kartenzahl>` und füllte das mit
+`repeat(auto-fill, minmax(10.5rem, 1fr))`: die Breite folgte der Anzahl, die Spaltenzahl der
+Breite, und die Quantisierung dazwischen zerlegte genau das Verhältnis, auf dem das aufbaute. Drei
+markierte Parks neben fünf Bahnen bekamen 336 px — 12 px zu wenig für zwei 168-px-Spalten —, also
+zeichnete die Parkgruppe **eine** Spalte mit 336 px breiten Karten und stapelte alle drei
+untereinander: Parkkarten doppelt so breit wie die Bahnkarten daneben, und ein Band von 868 px
+Höhe, höher als das Fenster, in dem es hängt, für acht Favoriten.
+
+Jetzt werden erst die Spuren gelegt und dann die Gruppen daraus geschnitten. Das Band wird
+gemessen, die Kartenbreite einmal daraus abgeleitet (mindestens 168 px, höchstens 248, sonst wird
+aus einer Karte im Menü ein Plakat), und jede Gruppe bekommt eine ganze Zahl davon — verteilt
+greedy nach `Anzahl / (hat + 1)`, damit fünf Bahnen die vierte Spur gegen drei Parks gewinnen. Was
+in `MAX_CARD_ROWS` Reihen nicht hineinpasst, steht in derselben „+N weitere"-Zeile wie vorher, und
+damit hängt die Höhe des Bandes an der Reihenzahl statt daran, wie viel jemand markiert hat.
+Gemessen bei 1440 px mit 3 Parks + 5 Bahnen + 3 Shows: **868 → 610 px, alle Karten 188 px breit**
+statt 336 neben 179; mit je neun Parks und Bahnen 650 px.
+
+Zwei Nebenwirkungen sind Absicht. Die Gruppen stehen nebeneinander oder untereinander, je nach
+**gemessener** Breite und nicht mehr nach `lg:` — dieselbe Lehre wie bei der Leiste. Und die
+Zeilengruppe (Shows/Restaurants) wächst weiter nicht mit ihrer Anzahl: eine Zeile wird von mehr
+Breite nur länger, nicht besser, also bekommt sie 13 rem und den Rest nur, wenn ihn keine
+Kartengruppe braucht.
 
 ## Das Menü schließt sich beim Seitenwechsel
 

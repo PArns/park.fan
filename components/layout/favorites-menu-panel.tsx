@@ -1,5 +1,6 @@
 'use client';
 
+import { useLayoutEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { Clock, Star } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
@@ -8,7 +9,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { FavoritesHowTo } from '@/components/parks/favorites-how-to';
 import { useFavorites } from '@/lib/hooks/use-favorites';
-import { useFavoriteCounts } from '@/lib/hooks/use-favorite-counts';
+import { useFavoriteCounts, type FavoriteCounts } from '@/lib/hooks/use-favorite-counts';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
@@ -57,14 +58,42 @@ import type { AttractionStatus, CrowdLevel, ParkStatus, ScheduleSummary } from '
  */
 
 /**
- * Cards per group before the rest collapses into a "+N" line.
+ * The most cards a group may ever show, however wide the band is.
  *
- * Two rows of four at the band's widest. The grid below fills as many columns as fit, so this is
- * a cap on how much of the menu one group may take, not a column count.
+ * The band's own limit is `MAX_CARD_ROWS` rows of whatever columns `planBand` gave the group,
+ * which is almost always the smaller of the two; this is the ceiling over it — a cap on how much
+ * of the menu one group may take, not a column count.
  */
 const MAX_CARDS = 8;
 /** Rows per group in the sheet, where they are cheaper. */
 const MAX_ROWS = 5;
+
+/**
+ * The band's card track, in pixels, and the numbers the allocation below is built out of.
+ *
+ * `CARD_MIN` is the width at which a card still says what it is: under it the second line stops
+ * being a place name and becomes an ellipsis. `CARD_MAX` is the other end — two starred parks in
+ * a 1248 px band must not become two 600 px billboards.
+ *
+ * The two gaps differ on purpose: cards inside a group belong together, groups do not.
+ */
+const CARD_MIN = 168; // 10.5rem
+const CARD_MAX = 248; // 15.5rem
+const CARD_GAP = 12; // gap-3
+const GROUP_GAP = 32; // gap-8
+/** Rows are rows: extra width only makes one longer, so this group gets a slice and no more. */
+const VENUE_BASIS = 208; // 13rem
+/** Card rows a group may take before the rest goes behind the "+N" line. */
+const MAX_CARD_ROWS = 2;
+/**
+ * Below this the band is too narrow for two groups beside each other and they stack.
+ *
+ * A floor rather than a breakpoint: the nav row that holds this trigger is itself gone below a
+ * 1024 px header, so the narrowest band anybody can open is 992 px and nothing today reaches
+ * this. It is here so that a future change to the header's tiers degrades into a column instead
+ * of into a row that does not fit.
+ */
+const STACK_BELOW = 2 * CARD_MIN + CARD_GAP + GROUP_GAP + VENUE_BASIS;
 
 /** Parks offered for one-tap starring while the list is still empty. */
 const SUGGESTION_LIMIT = 5;
@@ -102,13 +131,13 @@ function WaitFigure({ minutes, unit }: { minutes: number; unit: string }) {
  * One favorite as a card: picture on top, name and place under it, the figure in the footer.
  *
  * **Every card in this panel is exactly as tall as every other one, and none of that height
- * depends on what the API answered.** Two groups sit side by side in the band, and their columns
- * are NOT the same width — `flexGrow: count` gives the bigger group more of the band, so five
- * starred parks get 231 px columns next to four rides' 183 px. With `aspect-[16/10]` the picture
- * height followed that width, so a park card stood 27 px taller than the ride card beside it
- * before a single line of text was drawn. Hence a FIXED picture height: the crop shape now
- * varies a little with the column width instead of the card height varying with it, which is the
- * cheaper of the two — `object-cover` fills the box either way and the focal point still holds.
+ * depends on what the API answered.** The picture height is FIXED rather than an aspect ratio:
+ * back when the two groups had columns of different widths, `aspect-[16/10]` made the picture
+ * follow that width and a park card stood 27 px taller than the ride card beside it before a
+ * single line of text was drawn. `planBand` gives every group the same card width now, so that
+ * particular fault cannot recur — but a fixed height is still what keeps the band's rows level
+ * when the card width changes between breakpoints, and `object-cover` fills the box either way
+ * with the focal point holding.
  *
  * The text block underneath is reserved rather than conditional, for the same reason and for a
  * second one: within a group it made rows ragged too. A ride with no wait time rendered no
@@ -354,8 +383,10 @@ function GroupHeading({ title, count }: { title: string; count: number }) {
 function CardSkeletons({ count }: { count: number }) {
   return (
     <>
-      {/* Dieselben Kästen wie in `Card`, sonst springt das Band beim Eintreffen der Daten. */}
-      {Array.from({ length: Math.min(count, MAX_CARDS) }).map((_, i) => (
+      {/* Dieselben Kästen wie in `Card`, sonst springt das Band beim Eintreffen der Daten. Die
+          Anzahl kommt fertig gedeckelt herein — das Skelett muss dieselben Reihen belegen wie
+          die Karten danach, und wie viele das sind, weiß nur die Aufteilung des Bandes. */}
+      {Array.from({ length: count }).map((_, i) => (
         <li key={i} className="border-border/60 overflow-hidden rounded-xl border">
           <Skeleton className="h-32 rounded-none" />
           <div className="p-3">
@@ -386,6 +417,120 @@ function RowSkeletons({ count }: { count: number }) {
   );
 }
 
+/**
+ * How the band divides itself up, in pixels, once it has been measured.
+ *
+ * **Every card in the panel is the same width, and that is what this exists to guarantee.** It
+ * used to give each group `flexGrow: <its card count>` and then fill that width with
+ * `repeat(auto-fill, minmax(10.5rem, 1fr))` — the width followed the count, the column count
+ * followed the width, and the quantization in between broke the proportion it was built on.
+ * Three starred parks beside five rides got 336 px, which is 12 px short of two 168 px columns,
+ * so the parks group drew ONE column of 336 px cards and stacked all three: park cards at twice
+ * the width of the ride cards beside them, and a menu band 868 px tall — taller than the window
+ * it hangs in — for eight favorites.
+ *
+ * So the tracks are laid out first and the groups are cut from them. The band is measured, the
+ * card width is derived from it once, and each group gets a whole number of those cards. What a
+ * group cannot show in `MAX_CARD_ROWS` rows goes behind the "+N" line it already had, which is
+ * what keeps the panel's height bounded no matter how much somebody has starred.
+ */
+interface BandPlan {
+  /** Groups under each other instead of beside each other — the band is too narrow for a row. */
+  stacked: boolean;
+  /** The width of one card. The same number in every group. */
+  card: number;
+  /** Card columns per group. */
+  parks: number;
+  attractions: number;
+}
+
+/**
+ * Hands `total` tracks to the groups: one each, then always to whoever is most crowded.
+ *
+ * Greedy on `wanted / (has + 1)`, so five rides outbid three parks for the fourth track and the
+ * split lands on the counts rather than on a rounded percentage. A group never gets more tracks
+ * than it has cards — a spare track would draw an empty column, and the group beside it can use
+ * the room.
+ */
+function shareTracks(total: number, wanted: number[]): number[] {
+  const cols: number[] = wanted.map((w) => (w > 0 ? 1 : 0));
+  let left = total - cols.reduce((a, b) => a + b, 0);
+
+  while (left > 0) {
+    let best = -1;
+    let bestScore = 0;
+    wanted.forEach((want, i) => {
+      if (cols[i] >= want) return;
+      const score = want / (cols[i] + 1);
+      if (score > bestScore) {
+        bestScore = score;
+        best = i;
+      }
+    });
+    if (best < 0) break;
+    cols[best] += 1;
+    left -= 1;
+  }
+
+  return cols;
+}
+
+/** `null` until the band has a width — before the first layout pass there is nothing to divide. */
+function planBand(width: number, counts: FavoriteCounts): BandPlan | null {
+  if (width <= 0) return null;
+
+  const wanted = [Math.min(counts.parks, MAX_CARDS), Math.min(counts.attractions, MAX_CARDS)];
+  const cardGroups = wanted.filter((w) => w > 0).length;
+  const venues = counts.shows + counts.restaurants > 0;
+  const groups = cardGroups + (venues ? 1 : 0);
+  const stacked = groups > 1 && width < STACK_BELOW;
+
+  if (cardGroups === 0) return { stacked, card: 0, parks: 0, attractions: 0 };
+
+  // What the cards may spend. Stacked, each group has the band to itself on its own line, so the
+  // group gaps and the venue slice come out of nothing.
+  const forCards = stacked ? width : width - (groups - 1) * GROUP_GAP - (venues ? VENUE_BASIS : 0);
+  const sharers = stacked ? 1 : cardGroups;
+  const tracks = Math.max(sharers, Math.floor((forCards + CARD_GAP) / (CARD_MIN + CARD_GAP)));
+  const cols = stacked ? wanted.map((w) => (w > 0 ? tracks : 0)) : shareTracks(tracks, wanted);
+
+  // Off the tracks actually handed out, not off the tracks that fit: two favorites should use the
+  // room the other six would have taken rather than leave it blank — up to `CARD_MAX`, past which
+  // a card in a menu turns into a billboard. `floor`, so a rounded-up sub-pixel cannot push the
+  // last column out of a group whose width the same numbers computed.
+  const used = stacked ? tracks : cols.reduce((a, b) => a + b, 0);
+  const card = Math.floor(Math.min(CARD_MAX, (forCards - (used - sharers) * CARD_GAP) / used));
+
+  return { stacked, card, parks: cols[0], attractions: cols[1] };
+}
+
+/**
+ * The band's inner width, measured.
+ *
+ * There is no way around measuring: the number of cards that fit is a function of the width, the
+ * width of the header is a function of the trip planner, and the split between the groups has to
+ * be decided before either grid is drawn. It runs in a LAYOUT effect keyed on `open`, so the
+ * measurement happens in the same commit that drops the panel's `hidden` — the first painted
+ * frame is already the right one, and the observer only catches what changes afterwards (the
+ * planner opening, a window resize).
+ */
+function useBandWidth(active: boolean) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState(0);
+
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el || !active) return;
+    const read = () => setWidth(el.getBoundingClientRect().width);
+    read();
+    const observer = new ResizeObserver(read);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [active]);
+
+  return { ref, width };
+}
+
 export function FavoritesMenuPanel({
   open,
   variant = 'band',
@@ -410,6 +555,8 @@ export function FavoritesMenuPanel({
   const { data, isPending } = useFavorites({ enabled: open && counts.total > 0, poll: false });
   const minuteLabel = tCommon('minuteShort');
   const isSheet = variant === 'sheet';
+  // Band only: the sheet is 300 px wide wherever it is shown and has nothing to divide.
+  const { ref: bandRef, width: bandWidth } = useBandWidth(open && !isSheet && counts.total > 0);
 
   /*
    * Vorschläge für den leeren Zustand.
@@ -492,42 +639,52 @@ export function FavoritesMenuPanel({
    * über ihre Obergrenze läuft oder wenn Shows und Restaurants dabei sind: die rendert dieses
    * Panel als eigene Gruppe, aber ohne Bild und Kennzahl, und die Startseite zeigt sie
    * vollständig.
+   *
+   * Wie viele Karten eine Gruppe zeigt, entscheidet jetzt die Aufteilung des Bandes (`planBand`)
+   * und nicht mehr eine feste Zahl: so viele, wie in `MAX_CARD_ROWS` Reihen ihrer Spalten
+   * passen. Damit hängt die Höhe des Bandes an der Anzahl der REIHEN statt daran, wie viel
+   * jemand markiert hat — der Rest fällt in dieselbe „+N"-Zeile.
    */
-  const hiddenParks = Math.max(0, counts.parks - cap);
-  const hiddenAttractions = Math.max(0, counts.attractions - cap);
+  const plan = isSheet ? null : planBand(bandWidth, counts);
+  const cardCap = (cols: number | undefined, count: number) =>
+    Math.min(count, MAX_CARDS, Math.max(1, cols ?? MAX_CARDS) * MAX_CARD_ROWS);
+  const parkCap = isSheet ? MAX_ROWS : cardCap(plan?.parks, counts.parks);
+  const attractionCap = isSheet ? MAX_ROWS : cardCap(plan?.attractions, counts.attractions);
+
+  const hiddenParks = Math.max(0, counts.parks - parkCap);
+  const hiddenAttractions = Math.max(0, counts.attractions - attractionCap);
   const hiddenVenues = Math.max(0, counts.shows + counts.restaurants - cap);
   const somethingHidden = hiddenParks + hiddenAttractions + hiddenVenues > 0;
-  /*
-   * Die Breite folgt der Anzahl, die Spaltenzahl der Breite.
-   *
-   * Vorher waren es zwei starre Hälften: wer nur Parks markiert hat, sah eine halbleere linke
-   * Spalte neben einer leeren rechten, und wer zwei Parks und zwölf Bahnen hat, bekam für beide
-   * gleich viel Platz. `flex-grow` nach Anzahl teilt das Band proportional auf — eine einzige
-   * Gruppe bekommt damit automatisch die volle Breite —, und das Kartenraster darin füllt mit
-   * `auto-fill` so viele Spalten, wie hineinpassen, und bricht sonst um. Beides zusammen ist das
-   * „mehr Bahnen, mehr Platz, notfalls mehr Zeilen", ohne eine einzige Breakpoint-Regel.
-   */
+
   const listClass = isSheet ? 'space-y-px' : 'grid gap-3';
-  const gridStyle: React.CSSProperties | undefined = isSheet
-    ? undefined
-    : { gridTemplateColumns: 'repeat(auto-fill, minmax(10.5rem, 1fr))' };
-  const groupStyle = (count: number): React.CSSProperties | undefined =>
-    isSheet ? undefined : { flexGrow: count, flexBasis: 0 };
+  /*
+   * Feste Pixelspuren, kein `1fr`: die Kartenbreite ist EINE Zahl für das ganze Band, und ein
+   * `fr` würde sie in jeder Gruppe neu aus deren Breite ableiten — genau der Rückweg zu zwei
+   * Kartengrößen nebeneinander. Ohne Messung fällt es auf `auto-fill` zurück, das ist nur für
+   * den einen Renderdurchgang vor dem ersten Layout da.
+   */
+  const gridStyle = (cols: number | undefined): React.CSSProperties | undefined => {
+    if (isSheet) return undefined;
+    if (!plan || !cols) return { gridTemplateColumns: 'repeat(auto-fill, minmax(10.5rem, 1fr))' };
+    return { gridTemplateColumns: `repeat(${cols}, ${plan.card}px)` };
+  };
+  /* Die Gruppe ist so breit wie ihre Spuren; ihre Breite ist ein Ergebnis, keine Vorgabe mehr. */
+  const groupStyle: React.CSSProperties | undefined = isSheet ? undefined : { flex: '0 0 auto' };
   /*
    * Shows und Restaurants wachsen NICHT mit ihrer Anzahl.
    *
-   * `groupStyle` teilt das Band nach Kartenzahl auf, weil mehr Karten mehr Spalten brauchen.
-   * Diese Gruppe zeichnet aber Zeilen, und eine Zeile wird von zusätzlicher Breite nur länger,
-   * nicht besser: vier Shows hätten sich hier ein Drittel des Bandes genommen und es rechts
-   * leer stehen lassen. Eine feste Grundbreite, die den Rest nur mitnimmt, wenn keine andere
-   * Gruppe ihn braucht — und die volle Breite, wenn sie als einzige da ist.
+   * Karten brauchen mehr Breite, wenn es mehr werden; eine Zeile wird davon nur länger, nicht
+   * besser: vier Shows hätten sich sonst ein Drittel des Bandes genommen und es rechts leer
+   * stehen lassen. Eine feste Grundbreite, die den Rest nur mitnimmt, wenn keine andere Gruppe
+   * ihn braucht — und die volle Breite, wenn sie als einzige da ist.
    */
-  const venueStyle: React.CSSProperties | undefined = isSheet
-    ? undefined
-    : { flexGrow: 1, flexBasis: '13rem' };
+  const venueStyle: React.CSSProperties | undefined =
+    isSheet || !plan || plan.stacked
+      ? undefined
+      : { flexGrow: 1, flexShrink: 1, flexBasis: `${VENUE_BASIS}px`, minWidth: 0 };
 
   return (
-    <div>
+    <div ref={bandRef}>
       <div className="mb-4 flex items-center justify-between gap-4">
         <span className="text-foreground inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase">
           {/* Gold wie der Auslöser im Balken und wie jeder Stern auf einer Park- oder Bahnseite
@@ -546,20 +703,27 @@ export function FavoritesMenuPanel({
         )}
       </div>
 
-      <div className={isSheet ? 'space-y-5' : 'flex flex-col gap-6 lg:flex-row lg:gap-8'}>
+      {/* `plan.stacked` und nicht `lg:flex-row`: die Breite dieses Bandes ist die des Headers,
+          und die schrumpft der Tagesplaner, ohne dass das Fenster sich rührt — eine
+          Viewport-Regel beschreibt hier nicht mehr den Kasten, in dem sie steht. */}
+      <div
+        className={
+          isSheet ? 'space-y-5' : `flex ${plan && !plan.stacked ? 'gap-8' : 'flex-col gap-6'}`
+        }
+      >
         {counts.parks > 0 && (
-          <div data-menu-stagger className="min-w-0" style={groupStyle(counts.parks)}>
+          <div data-menu-stagger className="min-w-0" style={groupStyle}>
             <GroupHeading title={t('parks')} count={counts.parks} />
-            <ul className={listClass} style={gridStyle}>
+            <ul className={listClass} style={gridStyle(plan?.parks)}>
               {loading ? (
                 isSheet ? (
                   <RowSkeletons count={counts.parks} />
                 ) : (
-                  <CardSkeletons count={counts.parks} />
+                  <CardSkeletons count={parkCap} />
                 )
               ) : (
                 <>
-                  {data.parks.slice(0, isSheet ? MAX_ROWS : MAX_CARDS).map((park) => (
+                  {data.parks.slice(0, parkCap).map((park) => (
                     <ParkEntry
                       key={park.id}
                       park={park}
@@ -569,9 +733,7 @@ export function FavoritesMenuPanel({
                     />
                   ))}
                   <MoreLine
-                    hidden={
-                      counts.parks - Math.min(data.parks.length, isSheet ? MAX_ROWS : MAX_CARDS)
-                    }
+                    hidden={counts.parks - Math.min(data.parks.length, parkCap)}
                     label={more}
                   />
                 </>
@@ -581,18 +743,18 @@ export function FavoritesMenuPanel({
         )}
 
         {counts.attractions > 0 && (
-          <div data-menu-stagger className="min-w-0" style={groupStyle(counts.attractions)}>
+          <div data-menu-stagger className="min-w-0" style={groupStyle}>
             <GroupHeading title={t('attractions')} count={counts.attractions} />
-            <ul className={listClass} style={gridStyle}>
+            <ul className={listClass} style={gridStyle(plan?.attractions)}>
               {loading ? (
                 isSheet ? (
                   <RowSkeletons count={counts.attractions} />
                 ) : (
-                  <CardSkeletons count={counts.attractions} />
+                  <CardSkeletons count={attractionCap} />
                 )
               ) : (
                 <>
-                  {data.attractions.slice(0, isSheet ? MAX_ROWS : MAX_CARDS).map((attraction) => (
+                  {data.attractions.slice(0, attractionCap).map((attraction) => (
                     <AttractionEntry
                       key={attraction.id}
                       attraction={attraction}
@@ -601,10 +763,7 @@ export function FavoritesMenuPanel({
                     />
                   ))}
                   <MoreLine
-                    hidden={
-                      counts.attractions -
-                      Math.min(data.attractions.length, isSheet ? MAX_ROWS : MAX_CARDS)
-                    }
+                    hidden={counts.attractions - Math.min(data.attractions.length, attractionCap)}
                     label={more}
                   />
                 </>
