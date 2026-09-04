@@ -1943,6 +1943,65 @@ if (reachable) {
     (await page.locator('[data-planner-page-day]').count()) === 0
   );
 
+  // ── The article under the directory ───────────────────────────────────────
+  // The page used to be a directory and three cards, which is nothing for a
+  // search engine to index and nothing for a first-time reader to learn from.
+  // The six chapters under it explain the thing with the planner's OWN
+  // components drawing a real, dated payload — so this asserts that the demo is
+  // the product rather than a picture of it, and that it writes nothing.
+  const chapters = await page.locator('article h2').allInnerTexts();
+  check('die Seite erklärt sich in sechs Kapiteln', chapters.length === 6, `${chapters.length}`);
+  const numbers = await page
+    .locator('article section')
+    .evaluateAll((sections) =>
+      sections.map((s) => s.querySelector('[aria-hidden="true"]')?.textContent?.trim() ?? '')
+    );
+  check(
+    'die Kapitelnummern laufen ohne Lücke',
+    numbers.slice(0, 6).join('') === '010203040506',
+    JSON.stringify(numbers)
+  );
+  const articleText = (await page.locator('article').innerText()) ?? '';
+  check(
+    'der Text steht auf Deutsch da, nicht in rohen Keys',
+    !/\b(planner|parks)\.[a-z]/i.test(articleText),
+    (articleText.match(/\b(planner|parks)\.[a-zA-Z.]+/) ?? [''])[0]
+  );
+  check(
+    'die Demo ist der echte Planer, kein Bild davon',
+    (await page.locator('article li[data-planner-block]').count()) === 7 &&
+      (await page.locator('article [data-planner-leg]').count()) > 0,
+    `${await page.locator('article li[data-planner-block]').count()} Blöcke`
+  );
+  check(
+    'die Zahlen der Demo sind datiert',
+    /12\. September 2026/.test(articleText),
+    articleText.slice(articleText.indexOf('Echte Werte'), articleText.indexOf('Echte Werte') + 60)
+  );
+  // A reader operating the exhibit must not find a plan in their own planner
+  // afterwards: the demo holds its state in the component, never in the store.
+  await page.locator('article li[data-planner-block]').first().click();
+  await page.waitForTimeout(300);
+  check(
+    'die Demo schreibt nichts in den Plan',
+    (await page.evaluate(() => window.localStorage.getItem('parkfan_planner'))) === null
+  );
+
+  // A second language, because the article is six modules and a missing one is
+  // a build error only for the locale that lost it.
+  await page.goto(`${BASE}/fr/planificateur`, { waitUntil: 'networkidle' });
+  await page.waitForTimeout(1000);
+  const frText = (await page.locator('article').innerText()) ?? '';
+  check(
+    'und auf Französisch genauso',
+    (await page.locator('article h2').count()) === 6 &&
+      (await page.locator('article li[data-planner-block]').count()) === 7 &&
+      /Phantasialand/.test(frText),
+    frText.slice(0, 60).replace(/\s+/g, ' ')
+  );
+  await page.goto(`${BASE}/de/tagesplaner`, { waitUntil: 'networkidle' });
+  await page.waitForTimeout(800);
+
   // ── With plans ────────────────────────────────────────────────────────────
   const PAST = new Date(Date.now() - 6 * 86_400_000).toISOString().slice(0, 10);
   await page.evaluate(

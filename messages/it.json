@@ -2041,6 +2041,9 @@
       "introTitle": "Non c’è ancora niente",
       "introBody": "Il pianificatore mette le tue attrazioni su una linea del tempo e su ognuna scrive l'attesa prevista per quell'ora. In mezzo dice quanto tempo hai per spostarti, e se diventa stretto.",
       "browseParks": "Scegli un parco",
+      "demo": {
+        "caption": "Valori reali: Phantasialand sabato 12 settembre 2026, letti il 4 settembre. La giornata è passata, qui si può comunque spostare tutto."
+      },
       "steps": {
         "find": {
           "title": "Scegli parco e giorno",

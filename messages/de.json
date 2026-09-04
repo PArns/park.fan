@@ -2041,6 +2041,9 @@
       "introTitle": "Noch nichts geplant",
       "introBody": "Der Planer legt deine Bahnen auf eine Zeitleiste und setzt an jede die Wartezeit, die für diese Stunde vorhergesagt ist. Dazwischen steht, wie viel Zeit zum Umsteigen bleibt – und ob das knapp wird.",
       "browseParks": "Park aussuchen",
+      "demo": {
+        "caption": "Echte Werte: Phantasialand am Samstag, 12. September 2026, abgerufen am 4. September. Der Tag ist vorbei, verschieben lässt sich hier trotzdem alles."
+      },
       "steps": {
         "find": {
           "title": "Park und Tag wählen",

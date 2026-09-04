@@ -2041,6 +2041,9 @@
       "introTitle": "Nog niets gepland",
       "introBody": "De planner legt je attracties op een tijdlijn en zet bij elke de wachttijd die voor dat uur voorspeld is. Ertussen staat hoeveel tijd je hebt om over te steken, en of dat krap wordt.",
       "browseParks": "Kies een park",
+      "demo": {
+        "caption": "Echte waarden: Phantasialand op zaterdag 12 september 2026, opgehaald op 4 september. De dag is voorbij, verschuiven kan hier nog steeds."
+      },
       "steps": {
         "find": {
           "title": "Kies een park en een dag",

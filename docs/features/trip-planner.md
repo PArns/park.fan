@@ -18,6 +18,9 @@ plan is theirs.
 | The wizard                      | `components/planner/planner-wizard.tsx`                  |
 | The panel                       | `components/planner/planner-flyout.tsx`                  |
 | The day grid                    | `components/planner/planner-day-grid.tsx`                |
+| The page's article              | `app/[locale]/trip-planner/content/<locale>.tsx`         |
+| Its frozen day                  | `app/[locale]/trip-planner/_fixtures.ts`                 |
+| Its demo wrappers               | `app/[locale]/trip-planner/_demos.tsx`                   |
 
 ## The wizard is the way in
 
@@ -277,6 +280,49 @@ with no plan behind it has nothing to notify about.
 to a push service, so the wiring is written and typechecked and has never
 delivered a notification. `.env.example` documents `VAPID_PUBLIC_KEY`,
 `VAPID_PRIVATE_KEY` and `VAPID_SUBJECT`.
+
+## The page explains itself with the planner's own components
+
+The planner page was a directory and three cards: nothing for a search engine to
+index, and nothing for a first-time reader to learn from. Under the directory
+now sit six numbered chapters — what a block's height is, where its minutes come
+from, that a ride opens later than its park, that the walk between two rides
+costs time, how a showtime differs from a projected one, and what the planner
+does not know.
+
+Two rules decide how the pictures in it are made, and they are the guide page's:
+
+- **The exhibits are the production components.** `PlannerDayGrid`,
+  `PlannerShowBand`, `PlannerGridActions` and `PlannerContextBand` are rendered
+  directly, so a restyle reaches the explanation the same day it reaches the
+  panel. A redrawn lookalike starts lying at the first change, and a screenshot
+  is a lookalike that cannot even be dragged.
+- **Every number is one the API actually returned, and it is dated.**
+  `_fixtures.ts` holds the answer `/plan/day` gave on 4 September 2026 for
+  Saturday 12 September at Phantasialand, verbatim: the hourly curves, the
+  `expectedError` of 15.4 minutes on the headliners and 10.9 on the rest, the
+  `opensAt` of 10:00 on most rides against a park that opens at 09:00, and the
+  projected showtimes with the dates they were observed on. The caption under
+  each figure says which day it is.
+
+The date being in the **past** is deliberate and load-bearing twice. It keeps the
+exhibit honest — the prose can name a figure the demo draws, which the blog's
+live widgets may never do — and it keeps the exhibit inert, because
+`PlannerDayGrid` gates its weather query on the forecast horizon and a day in
+September 2026 is outside it. So the page prerenders, ships no request, and holds
+still.
+
+The demo is genuinely operable and writes nothing: `_demos.tsx` keeps the entries
+in component state instead of the planner's store, so a reader can drag a block
+into another hour, watch its height and both transfers recompute, and still find
+their own plan untouched. `check:planner` asserts exactly that, along with the
+six chapters, their unbroken numbering, seven blocks and at least one leg in the
+figure, no raw message keys, and the same in French — the article is six modules
+and a missing one is only a build error for the locale that lost it.
+
+One thing it deliberately does not carry: `FAQPage` structured data. Google
+retired FAQ rich results for every site on 2026-05-07, so there is none to win,
+and a new page does not get the markup in order to try.
 
 ## Checking it
 

@@ -16,6 +16,26 @@ import { PlannerPageBody } from '@/components/planner/planner-page-body';
 import type { PolaroidPhoto } from '@/components/planner/planner-polaroids';
 import { getParkBackground } from '@/lib/media';
 import { focusToObjectPosition, versionedSrc } from '@/lib/media/focus';
+import { demoEntries, demoPlanDay } from './_fixtures';
+import type { ComponentType } from 'react';
+import type { PlanDay } from '@/lib/api/types';
+import type { PlannerEntry } from '@/lib/planner/types';
+
+/**
+ * The article under the directory, one module per language.
+ *
+ * Lazy loaders so a render evaluates the requested locale's prose and not all
+ * six, which is the guide page's arrangement and for the same reason.
+ */
+type ContentProps = { day: PlanDay; entries: PlannerEntry[] };
+const CONTENT_LOADERS: Record<Locale, () => Promise<ComponentType<ContentProps>>> = {
+  de: () => import('./content/de').then((m) => m.ContentDE),
+  en: () => import('./content/en').then((m) => m.ContentEN),
+  es: () => import('./content/es').then((m) => m.ContentES),
+  fr: () => import('./content/fr').then((m) => m.ContentFR),
+  it: () => import('./content/it').then((m) => m.ContentIT),
+  nl: () => import('./content/nl').then((m) => m.ContentNL),
+};
 
 interface PlannerPageProps {
   params: Promise<{ locale: string }>;
@@ -99,7 +119,12 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
 
   const t = await getTranslations('planner.page');
   const tNav = await getTranslations('navigation');
+  const tPlanner = await getTranslations('planner');
   const photos = polaroidPhotos();
+  const Content = await (CONTENT_LOADERS[locale as Locale] ?? CONTENT_LOADERS.en)();
+  const day = demoPlanDay();
+  // The free block's label is a word, and this page exists in six languages.
+  const entries = demoEntries(tPlanner('custom.icon.food'));
 
   return (
     <RouteMessages route="/trip-planner">
@@ -126,6 +151,14 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
         </header>
 
         <PlannerPageBody photos={photos} />
+
+        {/* What the thing actually does, with the planner's own components
+            drawing a real day. It sits BELOW the directory: somebody who
+            already has a plan came here to open it, and the explanation is for
+            the visit before that one. */}
+        <article className="mt-14 space-y-14 sm:mt-16 sm:space-y-16">
+          <Content day={day} entries={entries} />
+        </article>
       </div>
     </RouteMessages>
   );

@@ -2041,6 +2041,9 @@
       "introTitle": "Rien de planifié pour l’instant",
       "introBody": "Le planificateur place vos attractions sur une frise et inscrit sur chacune l'attente prévue pour cette heure-là. Entre deux, il indique le temps qu'il vous reste pour traverser, et si cela devient juste.",
       "browseParks": "Choisir un parc",
+      "demo": {
+        "caption": "Valeurs réelles : Phantasialand le samedi 12 septembre 2026, relevées le 4 septembre. La journée est passée, tout se déplace quand même ici."
+      },
       "steps": {
         "find": {
           "title": "Choisir un parc et un jour",

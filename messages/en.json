@@ -2041,6 +2041,9 @@
       "introTitle": "Nothing planned yet",
       "introBody": "The planner lays your rides on a timeline and puts the wait forecast for that hour on each one. Between them it says how long you have to get across, and whether that is cutting it fine.",
       "browseParks": "Pick a park",
+      "demo": {
+        "caption": "Real values: Phantasialand on Saturday 12 September 2026, read on 4 September. The day has passed; everything here still moves."
+      },
       "steps": {
         "find": {
           "title": "Pick a park and a day",

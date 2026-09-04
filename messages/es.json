@@ -2041,6 +2041,9 @@
       "introTitle": "Todavía no hay nada planificado",
       "introBody": "El planificador pone tus atracciones en una línea de tiempo y escribe en cada una la espera prevista para esa hora. Entre ellas indica cuánto tiempo tienes para cruzar, y si va justo.",
       "browseParks": "Elegir un parque",
+      "demo": {
+        "caption": "Valores reales: Phantasialand el sábado 12 de septiembre de 2026, consultados el 4 de septiembre. El día ya pasó; aquí todo se sigue pudiendo mover."
+      },
       "steps": {
         "find": {
           "title": "Elige parque y día",
