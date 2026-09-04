@@ -268,6 +268,131 @@ const ride = (startMinute) => ({
   );
 }
 
+// ── A day that ends after midnight ──────────────────────────────────────────
+// `closeHour` is a wall-clock hour, so a park running 16:00–01:00 reports
+// `closeHour: 1`, and `hour < openHour || hour > closeHour` is then true for
+// EVERY hour of that day: 17:00 is not below 16 and is above 1. Every block
+// came back `outside-hours`, the panel's foot totalled zero minutes and the
+// optimizer ranked a whole night by walking distance while believing it was
+// weighing queues. `buildDayGrid` had unfolded this since it was written — the
+// two files simply held one rule in two copies, which is why the fix reads the
+// grid's `unfoldedCloseHour` rather than restating it.
+//
+// Not hypothetical: on 2026-09-04 five of the API's 213 parks answered
+// `/plan/day` with `closeHour < openHour` (La Ronde and Six Flags Mexico
+// 10→0, Six Flags Qiddiya City 16→0), and on 2026-10-31 thirteen did, among
+// them Gardaland, Cedar Point and Six Flags Magic Mountain at 10→1.
+{
+  const nightRide = (hours) => ({
+    attractionSlug: 'taron',
+    attractionName: 'Taron',
+    hours,
+    dayPeak: 60,
+    sampleDays: 142,
+    uncertaintyMinutes: 12,
+    expectedError: 15.4,
+  });
+  // Where `hours[].hour` counts the clock, which is how `context.closeHour`
+  // itself reports a midnight close.
+  const clockNight = dayWith({
+    context: { openHour: 16, closeHour: 1 },
+    rides: [
+      nightRide([
+        { hour: 16, wait: 30 },
+        { hour: 20, wait: 60 },
+        { hour: 0, wait: 20 },
+        { hour: 1, wait: 15 },
+      ]),
+    ],
+  });
+
+  test(
+    'eine Stunde mitten am Abend trägt ihre Zahl',
+    estimateFor(clockNight, ride(20 * 60)).wait,
+    60
+  );
+  test(
+    'und ist nicht außerhalb der Zeiten',
+    estimateFor(clockNight, ride(20 * 60)).missing,
+    'none'
+  );
+  // 00:30 sits at minute 1470 on the grid's axis, i.e. in hour 24.
+  test('nach Mitternacht auch', estimateFor(clockNight, ride(1470)).wait, 20);
+  test('und zwar als Zahl der Bahn', estimateFor(clockNight, ride(1470)).missing, 'none');
+  // Before opening is still before opening.
+  test(
+    'vor der Öffnung bleibt draußen',
+    estimateFor(clockNight, ride(15 * 60)).missing,
+    'outside-hours'
+  );
+
+  // The two edges. `closeHour` is inclusive — the backend loops `h <= closeHour`
+  // — so 01:00 (minute 1500) is the last hour that carries a figure and 02:00
+  // (minute 1560) is the first that does not.
+  test('die Öffnungsstunde selbst zählt', estimateFor(clockNight, ride(16 * 60)).wait, 30);
+  test('die Schlussstunde selbst auch', estimateFor(clockNight, ride(1500)).wait, 15);
+  test(
+    'eine Stunde danach nicht mehr',
+    estimateFor(clockNight, ride(1560)).missing,
+    'outside-hours'
+  );
+
+  // Which of the two readings `hours[].hour` uses past midnight cannot be settled
+  // from the API — on a wrapping day `/plan/day` ships no curve at all (Cedar
+  // Point, 2026-09-12, 11:00–00:00: `rides: []`, against fourteen rides on
+  // 2026-09-13 at 11:00–20:00, same tier, same lead) — so both are read.
+  const axisNight = dayWith({
+    context: { openHour: 16, closeHour: 1 },
+    rides: [
+      nightRide([
+        { hour: 16, wait: 30 },
+        { hour: 24, wait: 20 },
+        { hour: 25, wait: 15 },
+      ]),
+    ],
+  });
+  test(
+    'eine entfaltete Stundennummer wird auch gelesen',
+    estimateFor(axisNight, ride(1470)).wait,
+    20
+  );
+  test('und deren Schlussstunde ebenso', estimateFor(axisNight, ride(1500)).wait, 15);
+
+  // The visible symptom, in the one number a visitor reads off the panel's foot.
+  const totals = totalsFor(clockNight, [ride(20 * 60), { ...ride(1470), id: 'e' }]);
+  test('der Abend summiert sich wieder', totals.expectedMinutes, 80);
+  test('und nichts davon gilt als unbekannt', totals.unknown, 0);
+}
+
+// ── A park with ordinary hours may not move ─────────────────────────────────
+// The regression this fix has to buy nothing at: with `closeHour > openHour`
+// the unfolding is the identity, and `hour` never reaches 24, so the
+// past-midnight lookup cannot fire either.
+{
+  const day = dayWith();
+  test('die Öffnungsstunde trägt ihre Zahl', estimateFor(day, ride(9 * 60)).wait, 25);
+  test('eine Minute davor nicht', estimateFor(day, ride(9 * 60 - 1)).missing, 'outside-hours');
+  test('die Schlussstunde ist noch drin', estimateFor(day, ride(18 * 60)).missing, 'assumed');
+  test('die Stunde danach nicht', estimateFor(day, ride(19 * 60)).missing, 'outside-hours');
+  test(
+    'und Mitternacht davor erst recht nicht',
+    estimateFor(day, ride(0)).missing,
+    'outside-hours'
+  );
+
+  // A stray `hour: 0` in a normal day's curve stays unreachable: it belongs to
+  // an hour this park is shut, and the fallback is gated on the axis hour
+  // rather than on the value in the payload.
+  const strayMidnight = dayWith();
+  strayMidnight.rides[0].hours = [...strayMidnight.rides[0].hours, { hour: 0, wait: 99 }];
+  test(
+    'eine Mitternachtszeile bleibt unerreichbar',
+    estimateFor(strayMidnight, ride(0)).missing,
+    'outside-hours'
+  );
+  test('und färbt keine andere Stunde', estimateFor(strayMidnight, ride(10 * 60)).wait, 45);
+}
+
 // ── Report ───────────────────────────────────────────────────────────────────
 let failed = 0;
 for (const { name, actual, expected } of cases) {

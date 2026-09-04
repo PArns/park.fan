@@ -1,5 +1,6 @@
 import type { PlanDay, PlanDayRide, PlanDayTier } from '@/lib/api/types';
 import type { PlannerEntry } from './types';
+import { unfoldedCloseHour } from './day-grid';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 
 /**
@@ -155,8 +156,17 @@ export function estimateFor(day: PlanDay | null | undefined, entry: PlannerEntry
   // tiers, so the figure a block carries is its HOUR's. Interpolating between
   // two points that are themselves already rounded to five is what printed 51,
   // 53 and 47 elsewhere in this app.
+  //
+  // `entry.startMinute` is a minute on the GRID's axis, which for a park closing
+  // after midnight runs past 1440 — so the hour it falls in runs past 23, and
+  // the day's end has to be unfolded to meet it. Comparing against the raw
+  // `closeHour` made the test true for every hour of a 16:00–01:00 day, so
+  // every block reported `outside-hours`, the panel's total read zero minutes
+  // and the optimizer sorted a night by walking distance alone. Read through
+  // the grid's own rule rather than restated here: a second copy is what let
+  // the two disagree in the first place.
   const hour = Math.floor(entry.startMinute / 60);
-  if (hour < openHour || hour > closeHour) {
+  if (hour < openHour || hour > unfoldedCloseHour(openHour, closeHour)) {
     return {
       wait: null,
       uncertaintyMinutes: null,
@@ -188,7 +198,21 @@ export function estimateFor(day: PlanDay | null | undefined, entry: PlannerEntry
 
   if (!ride) return readable ? assumed(day) : noSource(day);
 
-  const point = ride.hours.find((h) => h.hour === hour);
+  // Past midnight the axis and the clock part company, and which of the two
+  // `hours[].hour` speaks cannot be settled from the API: on a day that wraps,
+  // `/plan/day` currently ships no curve at all. Cedar Point on 2026-09-12
+  // (11:00–00:00) answers `rides: []` where the same park on 2026-09-13
+  // (11:00–20:00) answers with fourteen, at the same tier and the same lead —
+  // the backend's own `h <= closeHour` loop never iterates. So the axis hour is
+  // asked for first because it is exact, and the wall-clock hour after it,
+  // which is the reading `context.closeHour` itself uses when it reports 0 for
+  // a midnight close. Betting on one of them would leave a real park without a
+  // figure the day the backend starts answering. Neither lookup can touch a
+  // park with ordinary hours: the test above has already capped `hour` at
+  // `closeHour` there, so it never reaches 24.
+  const point =
+    ride.hours.find((h) => h.hour === hour) ??
+    (hour >= 24 ? ride.hours.find((h) => h.hour === hour - 24) : undefined);
   if (!point) return readable ? assumed(day) : noSource(day);
 
   return {

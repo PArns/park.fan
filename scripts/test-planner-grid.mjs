@@ -28,6 +28,7 @@ import {
   rideFloor,
   showLinePositions,
   snapTo,
+  unfoldedCloseHour,
   yFor,
 } from '../lib/planner/day-grid.ts';
 
@@ -88,6 +89,17 @@ test('undefined behaves as null', buildDayGrid(undefined, undefined), null);
 
 // ── 6. Degenerate: past-midnight close ───────────────────────────────────────
 test('a past-midnight day is unfolded, not negative', buildDayGrid(16, 0).closeMin, 1500);
+
+// The unfolding is exported because `estimate.ts` needs the same answer, and
+// held the opposite one for as long as both files existed: a 16:00–01:00 park
+// failed `hour > closeHour` at every hour of its evening, so every block read
+// `outside-hours` and the day totalled no queueing at all. The identity case is
+// the one that matters most here — an ordinary day must come back untouched, or
+// the fix costs the other 200 parks something.
+test('a wrapping close is lifted past midnight', unfoldedCloseHour(16, 1), 25);
+test('a midnight close is hour 24', unfoldedCloseHour(10, 0), 24);
+test('an ordinary day is left alone', unfoldedCloseHour(9, 18), 18);
+test('and so is a day that closes on its own opening hour', unfoldedCloseHour(11, 11), 11);
 
 // ── 7-8. Degenerate: one entry, and an entry outside the hours ───────────────
 {
