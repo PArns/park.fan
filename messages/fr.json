@@ -1953,7 +1953,10 @@
       "opensAt": "dès {time}"
     },
     "clearDay": "Vider la journée",
-    "clearDayConfirm": "Supprimer toutes les entrées de cette journée ?",
+    "clearDayTitle": "Vider la journée ?",
+    "clearDayBody": "Toutes les entrées de cette journée disparaissent, y compris celles que vous avez cochées. Les minutes déjà mesurées ne sont conservées nulle part ailleurs.",
+    "clearDayAction": "Vider la journée",
+    "cancel": "Annuler",
     "loading": "Chargement du planning",
     "error": "Le planning n’a pas pu être chargé.",
     "noPlan": "Aucune prévision pour ce jour.",

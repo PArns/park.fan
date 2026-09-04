@@ -1953,7 +1953,10 @@
       "opensAt": "ab {time}"
     },
     "clearDay": "Tag leeren",
-    "clearDayConfirm": "Alle Einträge dieses Tages löschen?",
+    "clearDayTitle": "Tag leeren?",
+    "clearDayBody": "Alle Einträge dieses Tages werden gelöscht, auch die abgehakten. Die Minuten, die dort schon gemessen wurden, lassen sich nicht zurückholen.",
+    "clearDayAction": "Tag leeren",
+    "cancel": "Abbrechen",
     "loading": "Plan wird geladen",
     "error": "Der Plan konnte nicht geladen werden.",
     "noPlan": "Für diesen Tag liegt keine Prognose vor.",

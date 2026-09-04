@@ -1953,7 +1953,10 @@
       "opensAt": "desde {time}"
     },
     "clearDay": "Vaciar el día",
-    "clearDayConfirm": "¿Borrar todas las entradas de este día?",
+    "clearDayTitle": "¿Vaciar el día?",
+    "clearDayBody": "Se borran todas las entradas de este día, también las que ya has marcado. Los minutos medidos en ellas no se guardan en ningún otro sitio.",
+    "clearDayAction": "Vaciar el día",
+    "cancel": "Cancelar",
     "loading": "Cargando el plan",
     "error": "No se pudo cargar el plan.",
     "noPlan": "No hay previsión para este día.",

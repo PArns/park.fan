@@ -1,8 +1,9 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { CalendarPlus, Check, MapPin, Trash2 } from 'lucide-react';
+import { ConfirmDialog } from '@/components/ui/confirm-dialog';
 import { cn } from '@/lib/utils';
 import { addDays, todayInZone } from '@/lib/planner/park-time';
 import type { PlannerState } from '@/lib/planner/types';
@@ -52,6 +53,15 @@ export function PlannerOverview({
 }: PlannerOverviewProps) {
   const t = useTranslations('planner');
   const locale = useLocale();
+  /**
+   * The day whose bin was pressed, or `null`.
+   *
+   * The park and the date rather than a boolean, because the dialog is rendered
+   * ONCE at the bottom of the list instead of per row: a `<ConfirmDialog>` inside
+   * the `map` would mount one Radix portal per planned day, all but one of them
+   * closed, for a question only one row can be asking.
+   */
+  const [pendingClear, setPendingClear] = useState<{ parkSlug: string; date: string } | null>(null);
   // There is no single "today" in this list. A plan may hold Phantasialand and
   // Magic Kingdom at once, and at 23:00 in Berlin those two parks are on
   // different dates — so "Heute" and the greying-out of past days are decided
@@ -160,9 +170,7 @@ export function PlannerOverview({
 
                     <button
                       type="button"
-                      onClick={() => {
-                        if (window.confirm(t('clearDayConfirm'))) onClearDay(park.slug, day.date);
-                      }}
+                      onClick={() => setPendingClear({ parkSlug: park.slug, date: day.date })}
                       aria-label={t('clearDay')}
                       className="text-muted-foreground/40 hover:bg-destructive/15 hover:text-destructive flex size-8 shrink-0 items-center justify-center rounded-md transition-colors max-sm:size-11"
                     >
@@ -175,6 +183,26 @@ export function PlannerOverview({
           </section>
         ))}
       </div>
+
+      {/* Not `window.confirm`: an embedded view or a visitor who once ticked
+          "prevent this page from creating additional dialogs" gets `false` back
+          without seeing anything, and the bin then does nothing with no
+          explanation. See `ConfirmDialog`. */}
+      <ConfirmDialog
+        open={pendingClear !== null}
+        onOpenChange={(next) => {
+          if (!next) setPendingClear(null);
+        }}
+        tone="destructive"
+        icon={Trash2}
+        title={t('clearDayTitle')}
+        description={t('clearDayBody')}
+        confirmLabel={t('clearDayAction')}
+        cancelLabel={t('cancel')}
+        onConfirm={() => {
+          if (pendingClear) onClearDay(pendingClear.parkSlug, pendingClear.date);
+        }}
+      />
     </div>
   );
 }

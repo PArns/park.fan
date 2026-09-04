@@ -1953,7 +1953,10 @@
       "opensAt": "vanaf {time}"
     },
     "clearDay": "Dag leegmaken",
-    "clearDayConfirm": "Alle items van deze dag verwijderen?",
+    "clearDayTitle": "Dag leegmaken?",
+    "clearDayBody": "Alle items van deze dag verdwijnen, ook de afgevinkte. De minuten die daarbij gemeten zijn, staan nergens anders.",
+    "clearDayAction": "Dag leegmaken",
+    "cancel": "Annuleren",
     "loading": "Plan wordt geladen",
     "error": "Het plan kon niet worden geladen.",
     "noPlan": "Voor deze dag is er geen prognose.",

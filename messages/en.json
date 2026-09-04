@@ -1953,7 +1953,10 @@
       "opensAt": "from {time}"
     },
     "clearDay": "Clear the day",
-    "clearDayConfirm": "Delete every entry for this day?",
+    "clearDayTitle": "Clear this day?",
+    "clearDayBody": "Every entry for this day goes, including the ones you have ticked off. The minutes measured against them are not kept anywhere else.",
+    "clearDayAction": "Clear the day",
+    "cancel": "Cancel",
     "loading": "Loading the plan",
     "error": "The plan could not be loaded.",
     "noPlan": "There is no forecast for this day.",

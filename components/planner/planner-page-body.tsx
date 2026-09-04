@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { CalendarDays, CalendarPlus, Check, Compass, MapPin, Plus, Trash2 } from 'lucide-react';
+import { ConfirmDialog } from '@/components/ui/confirm-dialog';
 import { cn } from '@/lib/utils';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { plannerUi } from '@/lib/planner/ui-store';
@@ -37,6 +38,11 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
   // per-park button skips the first step. A second boolean beside a park would
   // be two states for one thing, and they would disagree.
   const [wizardFor, setWizardFor] = useState<{ park: WizardPark | null } | null>(null);
+  /**
+   * The day whose bin was pressed, or `null` — same shape and same reason as the
+   * panel's overview: one dialog under the whole list rather than one per row.
+   */
+  const [pendingClear, setPendingClear] = useState<{ parkSlug: string; date: string } | null>(null);
 
   const parks = useMemo(() => {
     return Object.values(state.parks)
@@ -172,12 +178,10 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
                         </button>
                         <button
                           type="button"
-                          onClick={() => {
-                            // The same confirm the panel asks for. A finished
-                            // day holds measured minutes and nothing restores
-                            // them.
-                            if (window.confirm(t('clearDayConfirm'))) clearDay(park.slug, day.date);
-                          }}
+                          // The same question the panel asks, in the same
+                          // dialog. A finished day holds measured minutes and
+                          // nothing restores them.
+                          onClick={() => setPendingClear({ parkSlug: park.slug, date: day.date })}
                           aria-label={t('clearDay')}
                           className="text-muted-foreground/50 hover:text-destructive px-4 py-3 transition-colors"
                         >
@@ -200,6 +204,22 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
           </div>
         </section>
       )}
+
+      <ConfirmDialog
+        open={pendingClear !== null}
+        onOpenChange={(next) => {
+          if (!next) setPendingClear(null);
+        }}
+        tone="destructive"
+        icon={Trash2}
+        title={t('clearDayTitle')}
+        description={t('clearDayBody')}
+        confirmLabel={t('clearDayAction')}
+        cancelLabel={t('cancel')}
+        onConfirm={() => {
+          if (pendingClear) clearDay(pendingClear.parkSlug, pendingClear.date);
+        }}
+      />
 
       {/* Mounted only while open — that is what resets its answers, see the note
           on `PlannerWizard`'s `open` prop. */}
