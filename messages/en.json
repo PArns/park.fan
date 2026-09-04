@@ -1899,6 +1899,9 @@
     },
     "entry": {
       "expected": "expected",
+      "typicalError": "typically {minutes} min out",
+      "typicalErrorHint": "How far this ride's forecasts have landed from the days that then happened, on average. Half the days fall further out.",
+      "bandHint": "The model reports a spread of plus or minus this many minutes for this hour.",
       "markDone": "Mark as ridden",
       "markUndone": "Not ridden after all",
       "actual": "actually {minutes} min",
@@ -2001,6 +2004,7 @@
       "resize": "Drag to resize"
     },
     "headliners": {
+      "missing": "{count, plural, =1 {1 headliner still missing} other {# headliners still missing}}",
       "label": "Headliner"
     },
     "parkSearch": {

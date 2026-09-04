@@ -18,6 +18,18 @@ export interface PlannerEstimate {
    */
   uncertaintyMinutes: number | null;
   /**
+   * The typical error of this ride's own numbers, in minutes, or `null` where
+   * the backend has not measured one.
+   *
+   * A different statement from {@link uncertaintyMinutes}, and the two must not
+   * be merged or swapped: that one is the model's own spread on this
+   * prediction, this one is how far its predictions have actually landed from
+   * the days that then happened. It is a TYPICAL error and not a bound — half
+   * the days fall further out — so it may be printed as a `±` beside the figure
+   * and never as an interval that is claimed to contain the answer.
+   */
+  expectedError: number | null;
+  /**
    * Why there is no number, when there is none. `outside-hours` and `no-curve`
    * are different things to tell a visitor: one is "not while the park is shut",
    * the other is "we have never measured this ride's day".
@@ -55,13 +67,16 @@ export const ASSUMED_WAIT_MIN = 5;
 const UNKNOWN: PlannerEstimate = {
   wait: null,
   uncertaintyMinutes: null,
+  expectedError: null,
   missing: 'no-day',
 };
 
 const ASSUMED: PlannerEstimate = {
   wait: ASSUMED_WAIT_MIN,
-  // No band, because there is no model behind this to have a spread.
+  // No band and no measured error, because there is no model behind this to
+  // have either.
   uncertaintyMinutes: null,
+  expectedError: null,
   missing: 'assumed',
 };
 
@@ -75,7 +90,7 @@ export function estimateFor(day: PlanDay | null | undefined, entry: PlannerEntry
 
   const { openHour, closeHour } = day.context;
   if (openHour === null || closeHour === null) {
-    return { wait: null, uncertaintyMinutes: null, missing: 'no-day' };
+    return { wait: null, uncertaintyMinutes: null, expectedError: null, missing: 'no-day' };
   }
   // The grid starts a block at any 15-minute step, and the API is hourly on both
   // tiers, so the figure a block carries is its HOUR's. Interpolating between
@@ -83,13 +98,14 @@ export function estimateFor(day: PlanDay | null | undefined, entry: PlannerEntry
   // 53 and 47 elsewhere in this app.
   const hour = Math.floor(entry.startMinute / 60);
   if (hour < openHour || hour > closeHour) {
-    return { wait: null, uncertaintyMinutes: null, missing: 'outside-hours' };
+    return { wait: null, uncertaintyMinutes: null, expectedError: null, missing: 'outside-hours' };
   }
 
   // A free block is not a ride and has no forecast — it is a duration the
   // visitor wrote down. `no-curve` would read as "we could not predict this",
   // which is a claim about a queue that does not exist.
-  if (entry.custom) return { wait: null, uncertaintyMinutes: null, missing: 'custom' };
+  if (entry.custom)
+    return { wait: null, uncertaintyMinutes: null, expectedError: null, missing: 'custom' };
 
   const ride = entry.attractionSlug ? rideOf(day, entry.attractionSlug) : undefined;
   // A ride the API omitted, or an hour it has no point for: no measured shape to
@@ -103,6 +119,7 @@ export function estimateFor(day: PlanDay | null | undefined, entry: PlannerEntry
   return {
     wait: point.wait,
     uncertaintyMinutes: ride.uncertaintyMinutes ?? null,
+    expectedError: ride.expectedError ?? null,
     missing: 'none',
   };
 }

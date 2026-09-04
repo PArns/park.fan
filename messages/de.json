@@ -1899,6 +1899,9 @@
     },
     "entry": {
       "expected": "erwartet",
+      "typicalError": "typisch {minutes} Min. daneben",
+      "typicalErrorHint": "So weit lagen die Prognosen für diese Bahn im Schnitt von dem entfernt, was der Tag dann wirklich brachte. Die Hälfte der Tage liegt weiter daneben.",
+      "bandHint": "Das Modell gibt für diese Stunde eine Streuung von plus/minus so vielen Minuten an.",
       "markDone": "Als gefahren markieren",
       "markUndone": "Doch noch nicht gefahren",
       "actual": "tatsächlich {minutes} Min.",
@@ -2001,6 +2004,7 @@
       "resize": "Breite ziehen"
     },
     "headliners": {
+      "missing": "{count, plural, =1 {1 Headliner fehlt noch} other {# Headliner fehlen noch}}",
       "label": "Headliner"
     },
     "parkSearch": {

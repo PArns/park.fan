@@ -1899,6 +1899,9 @@
     },
     "entry": {
       "expected": "prévu",
+      "typicalError": "écart typique {minutes} min",
+      "typicalErrorHint": "De combien les prévisions pour cette attraction se sont écartées en moyenne de ce que la journée a réellement donné. La moitié des jours s'en écarte davantage.",
+      "bandHint": "Le modèle annonce pour cette heure une dispersion de plus ou moins ce nombre de minutes.",
       "markDone": "Marquer comme faite",
       "markUndone": "Finalement pas faite",
       "actual": "{minutes} min en réalité",
@@ -2001,6 +2004,7 @@
       "resize": "Ajuster la largeur"
     },
     "headliners": {
+      "missing": "{count, plural, =1 {1 attraction phare manque encore} other {# attractions phares manquent encore}}",
       "label": "Attraction phare"
     },
     "parkSearch": {

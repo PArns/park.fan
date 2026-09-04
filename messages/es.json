@@ -1899,6 +1899,9 @@
     },
     "entry": {
       "expected": "previsto",
+      "typicalError": "suele fallar {minutes} min",
+      "typicalErrorHint": "Cuánto se han desviado de media las previsiones de esta atracción respecto a lo que luego dio el día. La mitad de los días se desvía más.",
+      "bandHint": "El modelo indica para esta hora una dispersión de más o menos estos minutos.",
       "markDone": "Marcar como hecha",
       "markUndone": "Al final no",
       "actual": "{minutes} min en realidad",
@@ -2001,6 +2004,7 @@
       "resize": "Ajustar el ancho"
     },
     "headliners": {
+      "missing": "{count, plural, =1 {Falta 1 atracción estrella} other {Faltan # atracciones estrella}}",
       "label": "Atracción estrella"
     },
     "parkSearch": {

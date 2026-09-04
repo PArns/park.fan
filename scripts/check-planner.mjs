@@ -1337,10 +1337,24 @@ if (reachable) {
       listed.find((r) => r.name === 'Black Mamba')?.crown === false,
     JSON.stringify(listed)
   );
-  // And the band itself is gone rather than merely empty.
+  // And the band names what the plan is still missing. It was taken out once,
+  // because the eight rows under it repeated the same rides, and asked for back:
+  // the list is a catalogue of everything the day has, the band a short
+  // statement about THIS plan. It also has to survive the ride search being
+  // `sm:hidden` — it is a sibling of the search now, not a child, or it would
+  // have vanished from the desktop with it.
+  const bandCount = await hl.locator(`${SHEET} [data-planner-headliner-hint]`).count();
+  const bandText = bandCount
+    ? ((await hl.locator(`${SHEET} [data-planner-headliner-hint]`).innerText()) ?? '').replace(
+        /\s+/g,
+        ' '
+      )
+    : '';
+  check('die Headliner-Bande nennt die fehlenden', bandCount === 1, bandText.slice(0, 60));
   check(
-    'die doppelte Headliner-Bande ist weg',
-    (await hl.locator(`${SHEET} [data-planner-headliner-hint]`).count()) === 0
+    'sie zählt nur, was NICHT im Plan steht',
+    /Headliner fehl/.test(bandText) && !/\bTaron\b/.test(bandText),
+    bandText.slice(0, 90)
   );
 
   await hl.close();

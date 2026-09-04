@@ -1899,6 +1899,9 @@
     },
     "entry": {
       "expected": "verwacht",
+      "typicalError": "meestal {minutes} min ernaast",
+      "typicalErrorHint": "Zo ver zaten de voorspellingen voor deze attractie gemiddeld van wat de dag daarna werkelijk bracht. De helft van de dagen zit er verder naast.",
+      "bandHint": "Het model geeft voor dit uur een spreiding van plus of min zoveel minuten aan.",
       "markDone": "Als gedaan markeren",
       "markUndone": "Toch niet gedaan",
       "actual": "werkelijk {minutes} min",
@@ -2001,6 +2004,7 @@
       "resize": "Breedte slepen"
     },
     "headliners": {
+      "missing": "{count, plural, =1 {1 headliner ontbreekt nog} other {# headliners ontbreken nog}}",
       "label": "Headliner"
     },
     "parkSearch": {

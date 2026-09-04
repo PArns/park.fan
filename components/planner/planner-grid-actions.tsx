@@ -10,9 +10,13 @@ import {
   type PlannerEntry,
 } from '@/lib/planner/types';
 import { PLANNER_BLOCK_ICON_COMPONENTS } from './planner-block-icons';
+import { estimateFor } from '@/lib/planner/estimate';
+import type { PlanDay } from '@/lib/api/types';
 
 interface PlannerGridActionsProps {
   entry: PlannerEntry | null;
+  /** The day this block sits in, for the figure the bar states. */
+  day?: PlanDay | null;
   onToggleDone: (entryId: string, done: boolean) => void;
   onRemove: (entryId: string) => void;
   onClose: () => void;
@@ -35,6 +39,7 @@ interface PlannerGridActionsProps {
  */
 export function PlannerGridActions({
   entry,
+  day = null,
   onToggleDone,
   onRemove,
   onClose,
@@ -45,6 +50,11 @@ export function PlannerGridActions({
 
   const done = Boolean(entry.done);
   const custom = entry.custom ?? null;
+  const estimate = estimateFor(day, entry);
+  // Ticked off, the figure that matters is the one that HAPPENED. `actualWait`
+  // is what the visitor recorded by ticking; the forecast beside it would be
+  // this panel arguing with a measurement.
+  const actual = done ? (entry.actualWait ?? null) : null;
 
   return (
     <div className="border-border/60 bg-background/95 absolute inset-x-0 bottom-0 z-40 flex items-center gap-2 border-t px-3 py-1.5 backdrop-blur-sm">
@@ -60,9 +70,43 @@ export function PlannerGridActions({
         ) : (
           <p className={cn('truncate text-sm', done && 'line-through')}>{entry.attractionName}</p>
         )}
-        <p className="text-muted-foreground font-mono text-[11px] tabular-nums">
-          {formatGridTime(entry.startMinute)}
-          {custom && ` · ${t('custom.duration', { minutes: custom.durationMinutes })}`}
+        {/* What the bar is FOR, beside the two buttons: the block's own figure.
+            A selected block is the one a visitor is deciding about, and until
+            now this row said only when it starts — the wait was on the block
+            itself, which at twenty pixels is exactly the block that cannot
+            carry it.
+
+            Three things, and they are three different claims. `~` marks an
+            assumed five minutes, never a forecast. `±` is the MODEL's own
+            spread on this prediction. The typical error is how far its
+            predictions have landed from the days that then happened, which is
+            a statement about the model rather than about today — so it is
+            labelled, and it is never turned into a range around the figure,
+            because half the days fall outside it. Rounded to the minute: the
+            API answers 13.5, and a tenth of a minute on a figure whose own
+            point is that it is approximate reads as precision nobody has. */}
+        <p className="text-muted-foreground flex flex-wrap items-baseline gap-x-1.5 font-mono text-[11px] tabular-nums">
+          <span>{formatGridTime(entry.startMinute)}</span>
+          {custom && <span>· {t('custom.duration', { minutes: custom.durationMinutes })}</span>}
+          {actual !== null && (
+            <span className="text-foreground">· {t('entry.actual', { minutes: actual })}</span>
+          )}
+          {actual === null && estimate.wait !== null && (
+            <span className="text-foreground">
+              · {estimate.missing === 'assumed' && '~'}
+              {estimate.wait} {t('unit.min')}
+            </span>
+          )}
+          {actual === null && estimate.uncertaintyMinutes !== null && (
+            <span title={t('entry.bandHint')}>
+              {t('band.plusMinus', { minutes: estimate.uncertaintyMinutes })}
+            </span>
+          )}
+          {actual === null && estimate.expectedError !== null && (
+            <span className="font-sans" title={t('entry.typicalErrorHint')}>
+              {t('entry.typicalError', { minutes: Math.round(estimate.expectedError) })}
+            </span>
+          )}
         </p>
       </div>
 

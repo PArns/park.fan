@@ -16,6 +16,7 @@ import { PlannerWizard, type WizardPark } from './planner-wizard';
 import { PlannerPartyChips } from './planner-party-chips';
 import { PlannerInParkCta } from './planner-in-park-cta';
 import { PlannerPlanParkCta } from './planner-plan-park-cta';
+import { PlannerMissingHeadliners } from './planner-missing-headliners';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { totalsFor } from '@/lib/planner/estimate';
@@ -744,12 +745,31 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                           answer is that park — not a tour of the panel. It
                           starts the wizard on the CALENDAR, because which park
                           is already settled by the page. */}
-                      {unplannedPagePark && (
+                      {unplannedPagePark ? (
                         <PlannerPlanParkCta
                           parkName={unplannedPagePark.name}
                           onStart={startPagePark}
                           className="mt-2"
                         />
+                      ) : (
+                        /* Off a park page there is no park to name, and until
+                           now that meant no button at all: the header's `+`
+                           renders only once a plan exists, so an empty planner
+                           opened from the homepage offered three lines of prose
+                           and no way to start. The wizard's own first step is
+                           the park picker, so this needs to carry nothing. */
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setWizardPark(null);
+                            setWizardOpen(true);
+                          }}
+                          data-planner-start-wizard=""
+                          className="bg-primary text-primary-foreground hover:bg-primary/90 mt-2 flex w-full items-center justify-center gap-2 rounded-md px-3 py-2.5 text-sm font-semibold transition-colors max-sm:min-h-11"
+                        >
+                          <CalendarPlus className="size-4 shrink-0" aria-hidden="true" />
+                          <span className="truncate">{t('wizard.open')}</span>
+                        </button>
                       )}
 
                       {/* Both sentences, one shown by CSS. The way into a plan
@@ -788,6 +808,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
               {grid && selectedId && (
                 <PlannerGridActions
                   entry={activeEntries.find((e) => e.id === selectedId) ?? null}
+                  day={day ?? null}
                   onToggleDone={toggleDone}
                   onRemove={(entryId) => {
                     if (activeParkSlug && activeDate)
@@ -833,6 +854,23 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   onAddCustom={addFreeBlock}
                 />
               </div>
+            )}
+
+            {/* Which of the park's big rides are still missing from the day.
+                Above the free-block row and outside the `sm:hidden` search,
+                because it is the one thing in the panel's foot that both
+                pointers need: the phone adds by tapping a pill, the desktop
+                drags one onto an hour. */}
+            {park && activeDate && (
+              <PlannerMissingHeadliners
+                parkSlug={park.slug}
+                parkName={park.name}
+                geo={park.geo}
+                date={activeDate}
+                day={day ?? null}
+                timezone={timezone}
+                prefs={prefs}
+              />
             )}
 
             {/* A free block — a lunch break, a show, a meeting point — on its

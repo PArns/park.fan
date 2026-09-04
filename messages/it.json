@@ -1899,6 +1899,9 @@
     },
     "entry": {
       "expected": "previsto",
+      "typicalError": "di norma {minutes} min di scarto",
+      "typicalErrorHint": "Di quanto le previsioni per questa attrazione si sono discostate in media da ciò che la giornata ha poi dato. Metà dei giorni si discosta di più.",
+      "bandHint": "Il modello indica per quest'ora una dispersione di più o meno questi minuti.",
       "markDone": "Segna come fatta",
       "markUndone": "Alla fine no",
       "actual": "{minutes} min in realtà",
@@ -2001,6 +2004,7 @@
       "resize": "Regola la larghezza"
     },
     "headliners": {
+      "missing": "{count, plural, =1 {Manca 1 attrazione di punta} other {Mancano # attrazioni di punta}}",
       "label": "Attrazione di punta"
     },
     "parkSearch": {
