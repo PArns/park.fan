@@ -14,6 +14,8 @@ import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { PlannerPageBody } from '@/components/planner/planner-page-body';
 import type { PolaroidPhoto } from '@/components/planner/planner-polaroids';
+import { Hero, HERO_FLOW_INTO_PULL } from '@/components/marketing/editorial-ui';
+import { cn } from '@/lib/utils';
 import { getParkBackground } from '@/lib/media';
 import { getMediaAlt } from '@/lib/media/text';
 import { focusToObjectPosition, versionedSrc } from '@/lib/media/focus';
@@ -36,6 +38,50 @@ const CONTENT_LOADERS: Record<Locale, () => Promise<ComponentType<ContentProps>>
   fr: () => import('./content/fr').then((m) => m.ContentFR),
   it: () => import('./content/it').then((m) => m.ContentIT),
   nl: () => import('./content/nl').then((m) => m.ContentNL),
+};
+
+/**
+ * The park whose photograph runs behind the hero.
+ *
+ * `disneyland-park` — the Sleeping Beauty castle — for two reasons that were
+ * measured and one about the subject. It is the only park background in the
+ * catalogue wider than 1024 px (2048×1536 against 1024×768 for the six other
+ * landscape ones), and this photo is the LCP element of a `sizes="100vw"` hero:
+ * it covers a 1440 px desktop at 1:1 and still has headroom, where every other
+ * candidate is already stretched 1.4× there and 1.9× on a 1920 px window. And it
+ * is a wide establishing shot of a park on an open day, which is the sentence
+ * this page opens with — and it survives the crop that costs the most: on a
+ * 390×658 phone `object-cover` keeps the middle 44.5 % of the frame and the
+ * castle sits at x = 0.66, inside the 0.28–0.72 band that is left. It has to be
+ * checked rather than assumed, because the shared `Hero` aims nothing: the
+ * sidecar's focal point reaches the polaroids below and not this photo.
+ *
+ * Two alternatives were weighed and lost. `movie-park-germany` (Iron Claw) is the
+ * only landscape background no other hero and no polaroid below already uses, but
+ * it is a night shot taken from the car park after closing, which is the wrong
+ * picture over a page about planning a day. The two remaining backgrounds,
+ * `bobbejaanland` and `walibi-belgium`, are portrait (768×1024) and lose twice:
+ * 768 px of source across a full-bleed desktop hero, and `object-cover` on a 0.75
+ * source in a ~2.06 box (1440×700) scales it 1.875× and shows a 36 % horizontal
+ * band of the frame, centred, with nothing to aim it — the shared `Hero` sets no
+ * `object-position`.
+ */
+const HERO_PARK_SLUG = 'disneyland-park';
+
+/**
+ * The scroll cue's label, one word per language.
+ *
+ * Beside its only consumer rather than in the message catalogue, exactly as the
+ * blog index keeps it: it labels an affordance of this one hero, is never read
+ * anywhere else, and `planner.page` carries the page's copy, not its chrome.
+ */
+const SCROLL_LABELS: Record<Locale, string> = {
+  de: 'Scrollen',
+  en: 'Scroll',
+  es: 'Desliza',
+  fr: 'Défiler',
+  it: 'Scorri',
+  nl: 'Scroll',
 };
 
 interface PlannerPageProps {
@@ -122,6 +168,7 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
   const tNav = await getTranslations('navigation');
   const tPlanner = await getTranslations('planner');
   const photos = polaroidPhotos(locale);
+  const hero = heroPhoto(locale);
   const Content = await (CONTENT_LOADERS[locale as Locale] ?? CONTENT_LOADERS.en)();
   const day = demoPlanDay();
   // The free block's label is a word, and this page exists in six languages.
@@ -139,24 +186,73 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
         currentPage={{ name: t('title'), url: path(locale) }}
         locale={locale}
       />
+      {/* The page opened on a kicker, an H1 and a lead standing on bare page
+          background — the one editorial page on the site with nothing over it,
+          straight into the polaroid band. Same full-bleed hero the blog index,
+          Fancast and the best-time hub use, and the same component rather than a
+          fourth one — the guide and the blog article carry their own because
+          each is a single page. The `-mt-12` that runs it under the
+          floating 48 px header is `Hero`'s own, so the number is not repeated
+          here. Kicker, headline and lead move into it — the H1 keeps the exact
+          text it had (`planner.page.title`), which is the page's strongest
+          on-page signal and is not a thing to redraft for a background. */}
+      {hero && (
+        <Hero
+          kicker={t('kicker')}
+          title={t('title')}
+          tagline={t('lead')}
+          imageSrc={hero.src}
+          imageAlt={hero.alt}
+          stats={[]}
+          scrollLabel={SCROLL_LABELS[locale as Locale] ?? SCROLL_LABELS.en}
+          // The hub's and the blog's scale rather than the default `text-8xl`:
+          // this title is a whole sentence in all six languages and runs 41
+          // characters in German to 54 in French and Italian, against the five
+          // of "Fancast", which is what that scale was picked for.
+          titleClassName="max-w-4xl text-4xl font-black tracking-tight sm:text-6xl"
+          flowInto
+        />
+      )}
+
       {/* The container's width, like every other page on the site. It was a
           `max-w-3xl` column, which is a reasonable measure for an article and
           the wrong box for this page: the directory at the top is a grid of
           park cards and the chapters below it draw the planner's own
           components at their real size, so a 768 px cap left a dead strip
           beside both at any desktop width. Same decision the guide page wrote
-          down — one column at the container's width, no cap of its own. */}
-      <div className="container mx-auto px-4 py-8 sm:py-12">
-        <header className="mb-8">
-          <p className="text-muted-foreground mb-2 flex items-center gap-2 text-xs font-medium tracking-wide uppercase">
-            <CalendarDays className="size-4" aria-hidden="true" />
-            {t('kicker')}
-          </p>
-          <h1 className="text-3xl font-bold sm:text-4xl">{t('title')}</h1>
-          {/* No measure of its own. Capping the lead at 2xl inside a
-              container-wide page is the same dead strip one element down. */}
-          <p className="text-muted-foreground mt-3 text-base leading-relaxed">{t('lead')}</p>
-        </header>
+          down — one column at the container's width, no cap of its own.
+
+          `relative` puts it above the hero's stacking context, and `id="start"`
+          is what the hero's scroll cue points at. */}
+      <div
+        id="start"
+        className={cn(
+          'relative container mx-auto px-4 pb-10 sm:pb-12',
+          // Below `sm` the hero pins its headline to the TOP and this section is
+          // pulled up over the lower part of the photo. `HERO_FLOW_INTO_PULL`
+          // owns that number — 176 px — and pairs with the hero's own mobile
+          // `pb-48` (192 px): 192 − 176 = 16 px of clearance under the lead, in
+          // every language at every width, because the hero is
+          // `max(78vh, content + padding)` tall and the pull is measured from
+          // its bottom edge. With no photo there is no hero and no pull, or the
+          // heading below would slide up under the header.
+          hero ? cn('pt-0 sm:pt-12', HERO_FLOW_INTO_PULL) : 'pt-8 sm:pt-12'
+        )}
+      >
+        {/* No photograph in the database, no hero — and then this page still
+            needs its heading. Exactly the block that stood here before. */}
+        {!hero && (
+          <header className="mb-8">
+            <p className="text-muted-foreground mb-2 flex items-center gap-2 text-xs font-medium tracking-wide uppercase">
+              <CalendarDays className="size-4" aria-hidden="true" />
+              {t('kicker')}
+            </p>
+            <h1 className="text-3xl font-bold sm:text-4xl">{t('title')}</h1>
+            {/* No measure of its own. Capping the lead at 2xl inside a
+                container-wide page is the same dead strip one element down. */}
+            <p className="text-muted-foreground mt-3 text-base leading-relaxed">{t('lead')}</p>
+          </header>
+        )}
 
         <PlannerPageBody photos={photos} />
 
@@ -170,6 +266,32 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
       </div>
     </RouteMessages>
   );
+}
+
+/**
+ * The hero's photograph and its description, or `null` when the database has none.
+ *
+ * Resolved through `@/lib/media` on the server — this page is a Server Component
+ * and the catalogue is 107 KB, the same reason the polaroids below are resolved
+ * here rather than inside their Client Component.
+ *
+ * `null` is a real branch, not a formality: `Hero` requires an `imageSrc` and
+ * `next/image` throws on an empty one, so a retired photograph would take the
+ * whole page down. The alternative the other heroes use — `?? '/media/<park>/…'`
+ * — hard-codes a path that outlives the file it names and skips the content hash
+ * with it, which is the one thing that lets a retargeted crop be cached hard. So
+ * the caller draws its plain heading block instead and the page loses a picture,
+ * not its H1.
+ *
+ * The alt text comes from the sidecar in the reader's language (`getMediaAlt`
+ * falls back de → en → whatever it has). A photo nobody has described gets `''`
+ * rather than a sentence assembled from the slug — an empty alt is the honest
+ * answer, and reading a park out of a filename is what the media rules forbid.
+ */
+function heroPhoto(locale: string): { src: string; alt: string } | null {
+  const image = getParkBackground(HERO_PARK_SLUG);
+  if (!image) return null;
+  return { src: versionedSrc(image), alt: getMediaAlt(image.id, locale) ?? '' };
 }
 
 /**
@@ -195,10 +317,10 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
  */
 function polaroidPhotos(locale: string): PolaroidPhoto[] {
   // Every park the media database has a background for, in the order they are
-  // laid down. Nine exist; six are drawn (see `SLOTS`), and naming all of them
-  // means the fan stays full if one picture is retired rather than silently
-  // losing a card. Slugs are the API's, which is why two of them do not look
-  // like their labels.
+  // laid down. Nine exist, the hero takes one and six are drawn (see `SLOTS`),
+  // and naming all of them means the fan stays full if one picture is retired
+  // rather than silently losing a card. Slugs are the API's, which is why two of
+  // them do not look like their labels.
   const picks: Array<{ slug: string; label: string }> = [
     { slug: 'phantasialand', label: 'Phantasialand' },
     { slug: 'europa-park', label: 'Europa-Park' },
@@ -213,6 +335,12 @@ function polaroidPhotos(locale: string): PolaroidPhoto[] {
 
   const out: PolaroidPhoto[] = [];
   for (const pick of picks) {
+    // The hero's own park sits this one out. Its photograph already runs
+    // full-bleed above, and the same picture twice in one screen — once across
+    // the viewport, once as a ~175 px square in the band under it — reads as a
+    // mistake rather than as a motif. Nine candidates against six slots, so
+    // dropping one still fills the fan; the seventh moves up into the gap.
+    if (pick.slug === HERO_PARK_SLUG) continue;
     const image = getParkBackground(pick.slug);
     if (!image) continue;
     out.push({
