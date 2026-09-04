@@ -1,4 +1,4 @@
-import { CalendarDays, Footprints, Gauge, HelpCircle, Sunrise, Theater } from 'lucide-react';
+import { CalendarDays, Footprints, Gauge, HelpCircle, Sunrise, Theater, Wand2 } from 'lucide-react';
 import { A, P } from '@/components/marketing/editorial-ui';
 import { Chapter, Note } from '../_chrome';
 import { PlannerDayDemo } from '../_demos';
@@ -124,8 +124,66 @@ export function ContentIT({ day, entries }: { day: PlanDay; entries: PlannerEntr
       </Chapter>
 
       <Chapter
-        id="orari-degli-spettacoli"
+        id="ordine-della-giornata"
         index="05"
+        icon={Wand2}
+        kicker="Riordino"
+        title="La giornata può mettersi in ordine da sola"
+      >
+        <P>
+          Ci pensano due pulsanti. «Pianifica tutte le attrazioni principali» aggiunge quelle grandi
+          del parco che ancora non sono nella giornata e poi rimette in fila tutto. «Ottimizza la
+          giornata» non aggiunge nulla e riordina soltanto quello che è già in programma. Dietro
+          entrambi gira lo stesso calcolo; sono due pulsanti perché sono due domande: riempimi la
+          giornata, e l&apos;ordine si può fare meglio.
+        </P>
+        <P>
+          Si ordina secondo tre cose, e la gerarchia fra loro è la decisione vera. Prima di tutto
+          che ci sia ancora tempo prima della chiusura: un piano con un&apos;attrazione in meno che
+          si fa davvero batte un piano con una in più che non si farà. Poi la somma delle attese,
+          che è quello che era stato chiesto. E a parità di costo vince l&apos;ordine che finisce
+          prima. Non c&apos;è nessun cursore che bilanci la coda con il tempo passato ad aspettare:
+          quel numero non lo saprebbe difendere nessuno.
+        </P>
+        <P>
+          Non c&apos;è dentro nessuna regola sul mattino presto. Il pianificatore conosce solo la
+          curva oraria di ogni singola attrazione. Se il punto più basso cade subito dopo
+          l&apos;apertura, «prima l&apos;attrazione grande» esce dal calcolo da sé; se la curva è
+          piatta, esce altro. In una giornata misurata Taron segna ora dopo ora 60, 60, 54, 53 e 59
+          minuti, mentre Chiapas sale di 22. Una regola fissa darebbe a entrambe lo stesso
+          consiglio.
+        </P>
+        <P>
+          A volte la proposta è di aspettare un giro invece di mettersi subito in coda. Succede a
+          una sola condizione: la coda deve calare abbastanza perché, pausa compresa, si torni
+          liberi prima che mettendosi in fila adesso. Stare meno in coda da solo non basta, e da
+          questo conto la giornata non si allunga mai. Più di due ore non fa aspettare nessuno. Quel
+          tetto da solo non entra quasi mai in gioco: una pausa conviene solo se è più corta della
+          coda che fa risparmiare, e due ore di pausa richiederebbero quindi una coda di oltre due
+          ore.
+        </P>
+        <P>
+          Una pausa pranzo all&apos;una resta all&apos;una, e un&apos;attrazione spuntata è già
+          stata fatta e non viene ripianificata; il resto si dispone intorno. Dopo c&apos;è scritto
+          che cosa è successo. «18 min di coda in meno» è la differenza fra due conti fatti allo
+          stesso modo, uno prima del clic e uno dopo; se non c&apos;è niente da guadagnare, c&apos;è
+          scritto che l&apos;ordine va già bene e il piano resta com&apos;era. Il pulsante delle
+          attrazioni principali non annuncia un risparmio, perché con le nuove attrazioni la
+          giornata si allunga; conta invece quante attrazioni sono state aggiunte e quante non fanno
+          per il gruppo. Quello che alla fine non entra più nella giornata viene segnalato dopo
+          entrambi i pulsanti. Insieme arriva un «Annulla» che rimette lo stato di prima del clic,
+          finché il pianificatore resta aperto.
+        </P>
+        <Note>
+          Dove non arriva nessun tempo di attesa, i due pulsanti non compaiono nemmeno.
+          All&apos;Hansa-Park ogni attrazione costa lo stesso zero presunto, quindi un ordine vale
+          l&apos;altro e non c&apos;è niente da riordinare.
+        </Note>
+      </Chapter>
+
+      <Chapter
+        id="orari-degli-spettacoli"
+        index="06"
         icon={Theater}
         kicker="Spettacoli"
         title="Un orario viene dal parco oppure dal nostro calcolo"
@@ -147,7 +205,7 @@ export function ContentIT({ day, entries }: { day: PlanDay; entries: PlannerEntr
 
       <Chapter
         id="limiti"
-        index="06"
+        index="07"
         icon={HelpCircle}
         kicker="Limiti"
         title="Quello che il pianificatore non sa"

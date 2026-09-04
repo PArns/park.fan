@@ -1,4 +1,4 @@
-import { CalendarDays, Footprints, Gauge, HelpCircle, Sunrise, Theater } from 'lucide-react';
+import { CalendarDays, Footprints, Gauge, HelpCircle, Sunrise, Theater, Wand2 } from 'lucide-react';
 import { A, P } from '@/components/marketing/editorial-ui';
 import { Chapter, Note } from '../_chrome';
 import { PlannerDayDemo } from '../_demos';
@@ -129,8 +129,70 @@ export function ContentFR({ day, entries }: { day: PlanDay; entries: PlannerEntr
       </Chapter>
 
       <Chapter
-        id="horaires-de-spectacle"
+        id="ordre-de-la-journee"
         index="05"
+        icon={Wand2}
+        kicker="Tri"
+        title="La journée peut se ranger toute seule"
+      >
+        <P>
+          Deux boutons s&apos;en chargent. «&nbsp;Planifier toutes les attractions phares&nbsp;»
+          ajoute les grandes attractions du parc qui manquent encore à la journée, puis remet le
+          tout dans l&apos;ordre. «&nbsp;Optimiser la journée&nbsp;» n&apos;ajoute rien et se
+          contente de réordonner ce qui est déjà prévu. Le même calcul tourne derrière les deux ; ce
+          sont deux boutons parce que ce sont deux questions : remplis ma journée, et l&apos;ordre
+          peut-il être meilleur.
+        </P>
+        <P>
+          Le tri porte sur trois choses, et leur hiérarchie est la vraie décision. D&apos;abord que
+          tout passe encore avant la fermeture : un plan avec une attraction de moins qui a vraiment
+          lieu vaut mieux qu&apos;un plan avec une de plus qui n&apos;aura pas lieu. Ensuite le
+          total des temps d&apos;attente, ce qui était demandé. Et à coût égal, c&apos;est
+          l&apos;ordre qui se termine le plus tôt qui l&apos;emporte. Aucun curseur ne met
+          l&apos;attente en balance avec le temps passé à patienter : personne ne saurait justifier
+          ce nombre.
+        </P>
+        <P>
+          Aucune règle sur le matin ne s&apos;y cache. Le planificateur ne connaît que la courbe
+          horaire de chaque attraction. Si elle est au plus bas juste après l&apos;ouverture,
+          «&nbsp;la grosse attraction d&apos;abord&nbsp;» sort du calcul tout seul ; si elle est
+          plate, il en sort autre chose. Sur une journée mesurée, Taron affiche heure après heure
+          60, 60, 54, 53 puis 59 minutes, tandis que Chiapas monte de 22 minutes. Une règle fixe
+          donnerait le même conseil pour les deux.
+        </P>
+        <P>
+          Parfois la proposition est d&apos;attendre un moment plutôt que de se mettre tout de suite
+          dans la file. Cela n&apos;arrive qu&apos;à une condition : la file doit descendre assez
+          pour que, pause comprise, vous soyez libre plus tôt qu&apos;en vous mettant dans la file
+          maintenant. Attendre moins longtemps ne suffit pas, et la journée ne s&apos;allonge jamais
+          par ce calcul. Au-delà de deux heures, il ne fait patienter personne. Ce plafond ne joue
+          presque jamais de lui-même : une pause ne vaut le coup que si elle est plus courte que la
+          file qu&apos;elle évite, et deux heures de pause demanderaient donc une file de plus de
+          deux heures.
+        </P>
+        <P>
+          Une pause déjeuner à treize heures reste à treize heures, et une attraction cochée a été
+          faite et n&apos;est pas replanifiée ; le reste se range autour. Ensuite, il est écrit ce
+          qui s&apos;est passé. «&nbsp;18 min d&apos;attente en moins&nbsp;» est la différence entre
+          deux calculs menés de la même façon, l&apos;un avant le clic et l&apos;autre après ;
+          s&apos;il n&apos;y a rien à gagner, il est écrit que l&apos;ordre est déjà le bon et le
+          plan reste tel quel. Le bouton des têtes d&apos;affiche n&apos;annonce pas de gain, la
+          journée s&apos;allongeant avec les attractions ajoutées ; il compte plutôt combien
+          d&apos;attractions sont venues s&apos;ajouter et combien ne conviennent pas au groupe. Ce
+          qui ne tient plus dans la journée est signalé après les deux boutons. Un
+          «&nbsp;Annuler&nbsp;» va avec et rétablit l&apos;état d&apos;avant le clic, tant que le
+          planificateur reste ouvert.
+        </P>
+        <Note>
+          Là où aucun temps d&apos;attente n&apos;arrive, les deux boutons ne sont pas affichés. Au
+          Hansa-Park, chaque attraction coûte le même zéro supposé : un ordre en vaut un autre et il
+          n&apos;y a rien à trier.
+        </Note>
+      </Chapter>
+
+      <Chapter
+        id="horaires-de-spectacle"
+        index="06"
         icon={Theater}
         kicker="Spectacles"
         title="Un horaire vient du parc ou de notre calcul"
@@ -153,7 +215,7 @@ export function ContentFR({ day, entries }: { day: PlanDay; entries: PlannerEntr
 
       <Chapter
         id="limites"
-        index="06"
+        index="07"
         icon={HelpCircle}
         kicker="Limites"
         title="Ce que le planificateur ignore"
