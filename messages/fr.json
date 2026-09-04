@@ -1904,6 +1904,8 @@
       "markUndone": "Finalement pas faite",
       "actual": "{minutes} min en réalité",
       "noCurve": "Aucune courbe horaire pour cette attraction.",
+      "noSource": "Ce parc ne publie pas de temps d'attente.",
+      "laneOverflow": "{count, plural, =1 {Un autre bloc se trouve en dessous.} other {# autres blocs se trouvent en dessous.}}",
       "dragHandle": "Déplacer",
       "range": "{from} à {to}",
       "resizeHandle": "Ajuster la durée"

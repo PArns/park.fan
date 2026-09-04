@@ -385,6 +385,112 @@ fails on a thumbnail that was never drawn into, and it hovers each control befor
 dispatching the drag, because a synthetic `dragstart` with no pointer anywhere
 near it would measure a chip no mouse can produce.
 
+## Three ways the panel said something it could not know
+
+**A refused drop handed the link back to the browser.** `onDragOver` on the grid
+accepts a bare `text/uri-list` optimistically — deliberately, and its own comment
+says why: that is the channel a ride card from a park page drags on. But it means
+the element has claimed the drop before anyone has seen the payload. `onDrop`
+called `preventDefault()` only _after_ `if (!ride) return`, so any link that is
+not a ride URL — from this page or another tab — fell through the refusal to the
+browser, whose default action for a dropped link is to follow it. The app
+navigated away and took the open panel with it. It is prevented first now, before
+any refusal, in both handlers (the grid's and the flat list's in the flyout).
+
+**Blocks past the lane budget overlapped in silence.** `packLanes` caps a cluster
+at `MAX_LANES` columns — three 112 px columns is the floor at which a name and a
+figure still fit on a phone — and rides everything beyond that in the _last_
+column, where they overlap. The count came back on `LanePlacement.overflow` and
+nothing had ever drawn it, so four rides at one hour rendered as three with the
+fourth underneath the third. A fourth column is not the answer; saying how many
+are under this one is, so the block the count is reported on (the last placed,
+and therefore the one on top) carries a `+N` badge.
+
+**A park nobody measures got an invented wait.** `estimateFor` answers a ride it
+cannot find with `ASSUMED_WAIT_MIN = 5`, which is right for its intended case: a
+ride with no _history_ in a park that is measured. A park with no _source_ lands
+in the same branch and means the opposite — Hansa-Park publishes its wait times
+only in its own app on the park WLAN, so no number will ever arrive. And
+`/plan/day` for it answers with `rides: []` and a drawn 11–21 axis, which is
+byte-for-byte what a measured park with no history looks like.
+
+The distinguishing bit is a property of the park, so it comes from the API:
+`context.liveWaitTimes`, the same curated flag the park payload carries (backend
+PR #226). It is read through the app's one reader, `hasReadableWaitTimes()`,
+which treats an **absent** field as available — this app deploys independently of
+the API, so a response predating the field behaves exactly as it did. Where the
+source is unreadable the estimate is `missing: 'no-source'` with no figure at
+all, and the block says so; `pnpm test:planner-estimate` pins both directions,
+including that a ride the payload _does_ carry still reports its number.
+
+## The tab is on every page, so it has a phone tier
+
+The edge tab is drawn on **every** page whether or not anything is planned, which
+is right — the feature has to be findable from a park page — and on a phone it
+was a permanent strip down the right edge at 34 × 130 px in German and 136 in
+French, against a 390 px screen. Below `sm` everything in it steps down one size:
+the padding, the two gaps, the icon and the word. Measured 34 × 130 → **28 × 102**
+(de) and 136 → 107 (fr), with 640 px and up unchanged to the pixel.
+
+It is deliberately not reduced to the icon alone, which would halve it again and
+turn the one control that opens the feature into a glyph nobody has seen before.
+The word is also the button's accessible name, so hiding it would need an
+`aria-label` saying the same thing twice.
+
+## The axis is the park's day, and the canvas is not
+
+`buildDayGrid` answers a question about the **park** — when it opens, when it
+shuts, plus half an hour either side for the arrival and for a queue joined near
+closing. A plan is not bound by that: `clampStart` lets a block START up to
+fifteen minutes before the park shuts, so a sixty-minute free block reaches
+forty-five minutes past `closeMin` against a canvas that ends thirty past it. A
+hotel check-in written at 18:30 for an hour ran off the bottom of the grid, drawn
+over the gutter label that says when the day ends.
+
+`growGridForSpans` widens the canvas until it contains the plan. Three things
+make it honest:
+
+- **`openMin` and `closeMin` never move.** They are what the opening-hours band
+  is drawn from and what every placement rule (`clampStart`, `rideFloor`) reads,
+  so the room that appears is outside opening hours by construction — and is
+  hatched like every other minute out there, which is the right drawing of "you
+  have planned something for a time the park is shut".
+- **Only the extension is rounded**, out to the full hour: the ticks down the
+  gutter stay whole numbers, and the axis grows in steps a reader notices once
+  instead of by the minute. The base canvas already carries a deliberate
+  half-hour pad, and rounding _that_ would add empty axis to every plan that
+  fits.
+- **It is fed from the committed entries, never from a drag in flight.** `yFor`
+  measures from `gridStartMin`, so a canvas that grew mid-gesture would move
+  every other block under the pointer. It settles when the block lands.
+
+## Every ride block carries its photo
+
+There used to be a floor — 48 px first, which at 1.2 px per minute is a
+forty-minute queue, then 28 — and both were the same mistake in two sizes. A plan
+is mostly made of twenty-to-thirty-five-minute blocks, so the picture appeared on
+a headliner's worst hour and nowhere else: a four-ride day with four photographs
+in the payload drew zero of them. A ten-minute block is a thin band of a
+picture, which is a small thing rather than a wrong one; the block beside it
+having none was the actual inconsistency.
+
+Which is why the opacity dropped from 0.30 to **0.20** in the same change — the
+two are one decision. A photo on one block in a column of six is an accent and
+can afford to be strong; a photo on all six is the column's texture, and at 0.30
+a lit wooden track was the loudest thing in a panel whose subject is a number.
+The floor under it is the text, not the picture: the name and the wait are
+`text-crowd-*`, a thin orange on a busy hour, and they keep the drop shadow at
+every height.
+
+The headliner band followed. A pill was a word in a rounded box — which is what a
+_filter chip_ looks like — while these are rides, the same objects the list
+draws with a photograph each. Twenty-four of Phantasialand's thirty-four have no
+picture in the media database, so `PlannerRideThumb`'s coaster mark is the common
+case rather than the exception and the box is the same size either way; a band
+where half the pills carried a thumbnail and half did not would read as a loading
+state. It also fixed the drag: the pill now holds a decoded image, so the chip
+has pixels to copy without asking the network for any.
+
 ## Where a figure came from, and whether anybody checked it
 
 Four fields on `/plan/day` say how much a number is worth, and each answers a

@@ -135,31 +135,42 @@ export function PlannerEdgeTab({
           // when the panel is closed, which is where the page's own scrollbar
           // is, and at `pr-1` the word ran under it.
           'bg-primary text-primary-foreground ring-primary-foreground/25 pointer-events-auto flex flex-col items-center gap-2 rounded-l-xl py-4 pr-2.5 pl-2 shadow-lg ring-1',
+          // A tier below `sm`, because this tab is drawn on EVERY page and on a
+          // phone it is a permanent strip down the right edge: 34 × 130 px in
+          // German, 136 in French, against a 390 px screen. Everything here is
+          // one step down — the padding, the gaps, the icon and the word — for
+          // a tab that still says what it is. It is deliberately not reduced to
+          // the icon alone, which would halve it again and turn the one control
+          // that opens the feature into a glyph nobody has seen before.
+          'max-sm:gap-1 max-sm:py-2.5 max-sm:pr-2 max-sm:pl-1.5',
           'supports-[backdrop-filter]:bg-primary/90 backdrop-blur-md',
           'hover:bg-primary/95 transition-colors',
           open ? 'cursor-col-resize touch-none' : 'cursor-pointer'
         )}
       >
-        <CalendarPlus className="size-4 shrink-0" aria-hidden="true" />
+        <CalendarPlus className="size-4 shrink-0 max-sm:size-3.5" aria-hidden="true" />
         {/* `vertical-rl` plus a half turn, which is the pair that reads
             bottom-to-top — `vertical-rl` alone runs top-to-bottom and puts the
             first letter under the icon rather than beside the panel it names.
             This is also the button's accessible name, so there is no
             `aria-label` duplicating it. */}
-        <span className="[transform:rotate(180deg)] text-[10px] font-semibold tracking-wide whitespace-nowrap uppercase [writing-mode:vertical-rl]">
+        <span className="[transform:rotate(180deg)] text-[10px] font-semibold tracking-wide whitespace-nowrap uppercase [writing-mode:vertical-rl] max-sm:text-[9px] max-sm:tracking-normal">
           {t('planner')}
         </span>
         {/* No badge at zero: opened from the calendar there is nothing planned
             yet, and a "0" beside the label reads as a count that failed. */}
         {total > 0 && (
-          <span className="bg-primary-foreground/20 rounded-full px-1.5 py-0.5 font-mono text-[11px] tabular-nums">
+          <span className="bg-primary-foreground/20 rounded-full px-1.5 py-0.5 font-mono text-[11px] tabular-nums max-sm:px-1 max-sm:text-[10px]">
             {total}
           </span>
         )}
         {/* Only while it is open, because only then is there anything to drag.
             Drawn when closed it would promise a gesture that does nothing. */}
         {open && (
-          <GripVertical className="text-primary-foreground/70 size-4 shrink-0" aria-hidden="true" />
+          <GripVertical
+            className="text-primary-foreground/70 size-4 shrink-0 max-sm:size-3.5"
+            aria-hidden="true"
+          />
         )}
       </button>
     </div>

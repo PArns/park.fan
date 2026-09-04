@@ -1904,6 +1904,8 @@
       "markUndone": "Alla fine no",
       "actual": "{minutes} min in realtà",
       "noCurve": "Per questa attrazione non c’è una curva oraria.",
+      "noSource": "Questo parco non pubblica i tempi di attesa.",
+      "laneOverflow": "{count, plural, =1 {Sotto c'è un altro blocco.} other {Sotto ci sono altri # blocchi.}}",
       "dragHandle": "Sposta",
       "range": "dalle {from} alle {to}",
       "resizeHandle": "Trascina la durata"

@@ -3055,11 +3055,15 @@ if (reachable) {
     taron?.photo === true,
     `${taron?.height} px, Foto: ${taron?.photo}`
   );
-  // The floor still exists and still means something: below it the block is one
-  // line of text and a picture would be a band a few pixels tall behind a name.
+  // And so does the shortest one. There used to be a floor — 48 px first, then
+  // 28 — and both were the same mistake in two sizes: a plan is mostly made of
+  // twenty-to-thirty-five-minute blocks, so the picture appeared on a
+  // headliner's worst hour and nowhere else. The floor is gone; a ten-minute
+  // block is a thin band of a photograph, which is a small thing rather than a
+  // wrong one, and the block beside it having none was the real inconsistency.
   check(
-    'ein sehr kurzer Block trägt keins',
-    winja?.photo === false,
+    'und ein sehr kurzer trägt es auch',
+    winja?.photo === true && (winja?.height ?? 0) < 28,
     `${winja?.height} px, Foto: ${winja?.photo}`
   );
 
@@ -3069,8 +3073,25 @@ if (reachable) {
     .count();
   check('die Suchzeilen tragen ihre Fotos', searchThumbs >= 2, `${searchThumbs}`);
 
-  // The headliner band that carried a second copy of these thumbnails is gone;
-  // the row assertion two lines up is the whole of it now.
+  // The headliner band carries them too, and it did not before: a pill was a
+  // word in a rounded box, which is what a FILTER chip looks like, while these
+  // are rides — the same objects the rows above draw with a photograph each.
+  // Both halves are asserted, because the interesting case is the ride with no
+  // picture: twenty-four of Phantasialand's thirty-four have none, so the
+  // coaster mark is the common case and every pill has to carry one of the two
+  // or the band reads as a loading state.
+  const pills = await photos.locator(`${SHEET} [data-planner-headliner-hint] button`).count();
+  const marked = await photos.evaluate(
+    () =>
+      [...document.querySelectorAll('[data-planner-headliner-hint] button')].filter(
+        (el) => el.querySelector('img') || el.querySelector('svg')
+      ).length
+  );
+  check(
+    'jede Headliner-Pille trägt ein Bild oder das Bahn-Zeichen',
+    pills > 0 && marked === pills,
+    `${marked} von ${pills}`
+  );
 
   await photos.close();
 }

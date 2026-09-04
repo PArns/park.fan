@@ -1904,6 +1904,8 @@
       "markUndone": "Toch niet gedaan",
       "actual": "werkelijk {minutes} min",
       "noCurve": "Voor deze attractie is er geen uurcurve.",
+      "noSource": "Dit park publiceert geen wachttijden.",
+      "laneOverflow": "{count, plural, =1 {Hier ligt nog één blok onder.} other {Hier liggen nog # blokken onder.}}",
       "dragHandle": "Verplaatsen",
       "range": "{from} tot {to}",
       "resizeHandle": "Duur slepen"

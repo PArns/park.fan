@@ -44,26 +44,26 @@ const NO_FIGURE_PX = 40;
  * what carries the warning where the sentence cannot go.
  */
 /**
- * The shortest block that can carry its ride's photo.
- *
- * 28 px is roughly a 23-minute queue. Below it the box holds a single
- * `text-[11px]` line and nothing else, so the picture would be a band a few
- * pixels tall behind a name — which is what "a smear behind text" meant, and
- * the old 48 px floor over-corrected by a factor of two.
- */
-const PHOTO_MIN_PX = 28;
-
-/**
  * How much of the photo shows through.
  *
- * This is a data surface and the tint carries the queue, so the picture is
- * recognition rather than decoration — but 0.18 was below recognition. Swept
- * against three real crops over the crowd tints at 0.18 / 0.30 / 0.45: at 0.18
- * Taron's foliage is a suggestion, at 0.45 the block's own name and its
- * "12:30–13:15 ↑ 0 m" line start losing the fight with a lit wooden track. 0.30
- * is where the ride is recognisable and the text is still the first thing read.
+ * EVERY ride block gets one now, whatever it is tall. There used to be a floor
+ * — 48 px first, which at 1.2 px per minute is a forty-minute queue, then 28 —
+ * and both were the same mistake in two sizes: a plan is mostly made of twenty-
+ * to thirty-five-minute blocks, so the picture appeared on a headliner's worst
+ * hour and nowhere else. A day of four rides with four photographs in the
+ * payload drew zero of them. A ten-minute block is a thin band of a picture,
+ * which is a small thing rather than a wrong one, and the block beside it
+ * having none was the actual inconsistency.
+ *
+ * Which is also why it is 0.20 and not the 0.30 it shipped at. Those two
+ * decisions are one decision: a photo that appears on ONE block in a column of
+ * six reads as an accent and can afford to be strong, while a photo on all six
+ * is the column's texture and 0.30 made a lit wooden track the loudest thing in
+ * a panel whose subject is a number. The floor under it is the text, not the
+ * picture — the name and the wait are `text-crowd-*`, a thin orange on a busy
+ * hour, and they keep the drop shadow below at every height.
  */
-const PHOTO_OPACITY = 'opacity-[0.3]';
+const PHOTO_OPACITY = 'opacity-[0.2]';
 
 /**
  * The box a block needs before it can print its own times.
@@ -220,7 +220,13 @@ export function PlannerBlock({
         ? t('day.closed')
         : estimate.missing === 'no-curve'
           ? t('entry.noCurve')
-          : null;
+          : /* Not the same sentence as `no-curve`, and the difference is the
+               point: that one says the model has nothing for THIS ride, this
+               one says nobody can read this park's queues at all, so there is
+               no number coming for any of them, ever. */
+            estimate.missing === 'no-source'
+            ? t('entry.noSource')
+            : null;
 
   const laneWidth = `calc((100% - ${(lane.columns - 1) * 2}px) / ${lane.columns})`;
   const laneLeft = `calc((${laneWidth} + 2px) * ${lane.column})`;
@@ -319,22 +325,11 @@ export function PlannerBlock({
           lane.column > 0 && 'ring-background ring-1'
         )}
       >
-        {/* The ride's photo, behind everything, and only where there is enough
-            block to see any of it. `background-image` and not `next/image`,
-            because a block is 130–400 px wide, its size changes with the plan,
-            and the crop is already the right one.
-
-            The floor was 48 px, which at 1.2 px per minute is a FORTY-MINUTE
-            queue — so the photo only ever appeared on a headliner's worst hour
-            and never on the twenty-to-thirty-five minute blocks a plan is
-            mostly made of. Measured on a four-ride day where every ride had a
-            picture: 30, 20, 36 and 42 px tall, four photos in the payload and
-            zero on screen. The proxy resolves them per request either way, so
-            that was a lookup nobody saw the result of.
-
-            {@link PHOTO_MIN_PX} is picked from the content instead: below it
-            the block is one `text-[11px]` line and a photo has nowhere to be. */}
-        {photo && boxPx >= PHOTO_MIN_PX && (
+        {/* The ride's photo, behind everything, on every block that has one.
+            `background-image` and not `next/image`, because a block is 130–400
+            px wide, its size changes with the plan, and the crop is already the
+            right one. No height floor — see {@link PHOTO_OPACITY}. */}
+        {photo && (
           <div
             className={cn('absolute inset-0', PHOTO_OPACITY)}
             style={{
@@ -441,15 +436,12 @@ export function PlannerBlock({
             still carries enough light behind them to swallow the strokes. The
             recipe is `WaitTimeValue`'s, which every park and ride card already
             uses for exactly this: a wait time over a picture.
-            Only where the photo actually renders (`boxPx >= PHOTO_MIN_PX`), so
-            a block on the panel's flat ground pays nothing for it. */}
+            Only where there IS a photo, so a block on the panel's flat ground
+            pays nothing for it — which is now the same condition the picture
+            itself is drawn under, at every height. */}
         <div
           className="pointer-events-none relative min-w-0 flex-1 px-1.5 py-0.5 pl-2.5"
-          style={
-            photo && boxPx >= PHOTO_MIN_PX
-              ? { filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.65))' }
-              : undefined
-          }
+          style={photo ? { filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.65))' } : undefined}
         >
           {boxPx < 30 ? (
             /* One row, and the figure sits IN it. It used to escape past the
@@ -577,6 +569,25 @@ export function PlannerBlock({
               </p>
             )}
         </div>
+
+        {/* Blocks past the lane budget, said out loud.
+            `packLanes` caps a cluster at MAX_LANES columns and rides everything
+            beyond that in the LAST one — they overlap, and the count came back
+            on `LanePlacement.overflow`, which nothing had ever drawn. So four
+            rides at one hour rendered as three, with the fourth underneath the
+            third and no sign of it anywhere. Three 112 px columns is already
+            the floor at which a name and a figure fit on a phone, so a fourth
+            column is not the answer; saying how many are under this one is.
+            It sits on the block the count is reported on, which is the LAST
+            placed in that column and therefore the one on top. */}
+        {lane.overflow > 0 && (
+          <span
+            className="bg-foreground/75 text-background pointer-events-none absolute right-0.5 bottom-0.5 rounded px-1 font-mono text-[9px] tabular-nums"
+            title={t('entry.laneOverflow', { count: lane.overflow })}
+          >
+            +{lane.overflow}
+          </span>
+        )}
       </div>
     </li>
   );

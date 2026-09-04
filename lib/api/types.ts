@@ -2116,6 +2116,17 @@ export interface PlanDayContext {
   /** Derived by the API — `CalendarDay` carries no such field. */
   isWeekend: boolean;
   neighborHolidays?: NeighborHoliday[];
+  /**
+   * Whether this park's wait times are readable at all.
+   *
+   * The same curated flag the park payload carries, repeated on this endpoint
+   * because a planner never fetches that payload — and without it `/plan/day`
+   * for a park with no source is byte-for-byte a park whose rides simply have
+   * no history: `rides` is empty and the axis is drawn either way. Read it
+   * through `noLiveWaitTimesReason()`, which treats an absent field as
+   * available so a build predating the API's own is unchanged.
+   */
+  liveWaitTimes?: LiveWaitTimes;
 }
 
 export interface PlanDay {

@@ -20,6 +20,7 @@ import {
   blockBoxFor,
   buildDayGrid,
   clampStart,
+  growGridForSpans,
   heightFor,
   minuteAt,
   nextFreeStart,
@@ -236,6 +237,101 @@ test(
   'a second ride goes after the first',
   nextFreeStart([{ startMinute: 540, spanMinutes: 45 }], g) >= 585,
   true
+);
+
+// ── 15b. The lane budget reports what it could not place ─────────────────────
+// `packLanes` caps a cluster at MAX_LANES columns and rides everything beyond
+// that in the last one, where the blocks overlap. The count came back on
+// `LanePlacement.overflow` and nothing drew it, so a fourth ride at one hour
+// rendered as three with the fourth underneath. These pin the contract the
+// badge now depends on.
+{
+  const at = (id, topMin, bottomMin) => ({ id, topMin, bottomMin });
+  const four = packLanes([
+    at('a', 600, 700),
+    at('b', 610, 700),
+    at('c', 620, 700),
+    at('d', 630, 700),
+  ]);
+  test('vier gleichzeitige Blöcke ergeben drei Spuren', four.get('a').columns, 3);
+  test('der vierte fährt in der letzten mit', four.get('d').column, 2);
+  test('und wird dort gezählt', four.get('d').overflow, 1);
+  test('die anderen zählen nichts', four.get('a').overflow, 0);
+  // Reported ONCE, on the last block of the crowded column — which is also the
+  // one drawn on top, so the badge is never under something else.
+  const six = packLanes([
+    at('a', 600, 700),
+    at('b', 600, 700),
+    at('c', 600, 700),
+    at('d', 600, 700),
+    at('e', 600, 700),
+  ]);
+  test('zwei Überzählige werden zusammen gemeldet', six.get('e').overflow, 2);
+  test('und nicht einzeln', six.get('d').overflow, 0);
+  // Three fit, so nothing is reported at all.
+  const three = packLanes([at('a', 600, 700), at('b', 610, 700), at('c', 620, 700)]);
+  test('drei passen ohne Überlauf', three.get('c').overflow, 0);
+}
+
+// ── 16. The axis grows to contain the plan ───────────────────────────────────
+// `clampStart` lets a block START fifteen minutes before the park shuts, so a
+// sixty-minute free block reaches forty-five minutes past `closeMin` against a
+// canvas that ends thirty past it — a hotel check-in at 18:30 simply ran off the
+// bottom, over the gutter label saying when the day ends.
+//
+// g is 09:00–18:00, so closeMin = 19*60 = 1140 and the canvas is 08:30 → 19:30.
+test('ohne Plan bleibt die Achse, wie sie war', growGridForSpans(g, []), g);
+test(
+  'ein Block innerhalb des Tages ändert nichts',
+  growGridForSpans(g, [{ startMinute: 600, spanMinutes: 45 }]).gridEndMin,
+  g.gridEndMin
+);
+// 18:30 + 60 = 19:30, plus the 30-minute pad is 20:00 — the next full hour is
+// itself, so the canvas ends at 20:00 rather than at 19:30.
+test(
+  'ein Block über das Ende hinaus zieht die Achse mit',
+  growGridForSpans(g, [{ startMinute: 1110, spanMinutes: 60 }]).gridEndMin,
+  20 * 60
+);
+test(
+  'und rundet auf die volle Stunde, damit die Ticks ganz bleiben',
+  growGridForSpans(g, [{ startMinute: 1110, spanMinutes: 75 }]).gridEndMin,
+  21 * 60
+);
+// The park's own day is a statement about the park and may not move with a plan.
+test(
+  'die Öffnungszeit bleibt unberührt',
+  growGridForSpans(g, [{ startMinute: 1110, spanMinutes: 120 }]).closeMin,
+  g.closeMin
+);
+test(
+  'die Schließzeit auch',
+  growGridForSpans(g, [{ startMinute: 0, spanMinutes: 30 }]).openMin,
+  g.openMin
+);
+// Somebody who files a rope-drop block before the pad still gets a canvas for it.
+test(
+  'ein Block vor dem Anfang zieht die Achse nach oben',
+  growGridForSpans(g, [{ startMinute: 7 * 60, spanMinutes: 30 }]).gridStartMin,
+  6 * 60
+);
+test(
+  'und die Höhe folgt der neuen Spanne',
+  growGridForSpans(g, [{ startMinute: 1110, spanMinutes: 60 }]).heightPx,
+  (20 * 60 - g.gridStartMin) * PX_PER_MIN
+);
+// No axis at all is still no axis: a park with no published hours has nothing
+// for a plan to grow.
+test(
+  'ohne Achse gibt es nichts zu erweitern',
+  growGridForSpans(null, [{ startMinute: 600, spanMinutes: 60 }]),
+  null
+);
+// A payload can carry anything; a NaN start must not turn the canvas into NaN.
+test(
+  'ein unbrauchbarer Startwert wird übersprungen',
+  growGridForSpans(g, [{ startMinute: Number.NaN, spanMinutes: 60 }]).gridEndMin,
+  g.gridEndMin
 );
 
 // ── Report ───────────────────────────────────────────────────────────────────

@@ -1,5 +1,6 @@
 import type { PlanDay, PlanDayRide, PlanDayTier } from '@/lib/api/types';
 import type { PlannerEntry } from './types';
+import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 
 /**
  * What a planned entry is expected to cost, and how much that expectation is
@@ -54,7 +55,7 @@ export interface PlannerEstimate {
    * how busy it is, and a queue nobody measured has no business claiming a
    * colour.
    */
-  missing: 'none' | 'assumed' | 'no-day' | 'no-curve' | 'outside-hours' | 'custom';
+  missing: 'none' | 'assumed' | 'no-day' | 'no-curve' | 'no-source' | 'outside-hours' | 'custom';
 }
 
 /**
@@ -102,6 +103,33 @@ function assumed(day: PlanDay): PlannerEstimate {
     expectedError: null,
     tier: day.tier ?? null,
     missing: 'assumed',
+  };
+}
+
+/**
+ * A park whose wait times nobody can read, at the day's own regime.
+ *
+ * The distinction this draws is the whole point. `assumed` and this land in the
+ * same place — a ride the payload has no curve for — and mean opposite things.
+ * `ASSUMED_WAIT_MIN` is for a ride with no HISTORY in a park that is measured:
+ * five minutes is a placeholder for a queue somebody could in principle count.
+ * Here there is no queue to count. Hansa-Park publishes its wait times only in
+ * its own app on the park WLAN, so no number will ever arrive — and `/plan/day`
+ * answers for it with `rides: []` and a drawn 11–21 axis, which is byte-for-byte
+ * what a measured park with no history looks like.
+ *
+ * So the flag is read rather than derived, through the app's one reader
+ * (`noLiveWaitTimesReason`), which treats an absent field as available: this
+ * app deploys independently of the API, and a response predating the field must
+ * behave exactly as it did before.
+ */
+function noSource(day: PlanDay): PlannerEstimate {
+  return {
+    wait: null,
+    uncertaintyMinutes: null,
+    expectedError: null,
+    tier: day.tier ?? null,
+    missing: 'no-source',
   };
 }
 
@@ -153,11 +181,15 @@ export function estimateFor(day: PlanDay | null | undefined, entry: PlannerEntry
   const ride = entry.attractionSlug ? rideOf(day, entry.attractionSlug) : undefined;
   // A ride the API omitted, or an hour it has no point for: no measured shape to
   // scale, so there is no curve rather than a flat one. Both are answered with
-  // the assumption rather than with a shrug — see `ASSUMED_WAIT_MIN`.
-  if (!ride) return assumed(day);
+  // the assumption rather than with a shrug — see `ASSUMED_WAIT_MIN` — EXCEPT
+  // where the park has no readable source at all, which is a different claim
+  // wearing the same shape. See `noSource`.
+  const readable = hasReadableWaitTimes(day.context);
+
+  if (!ride) return readable ? assumed(day) : noSource(day);
 
   const point = ride.hours.find((h) => h.hour === hour);
-  if (!point) return assumed(day);
+  if (!point) return readable ? assumed(day) : noSource(day);
 
   return {
     wait: point.wait,
