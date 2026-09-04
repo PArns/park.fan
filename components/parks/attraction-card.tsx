@@ -196,10 +196,19 @@ export function AttractionCard({
             `PlannerLauncher` sets, and hidden below `sm` because a coarse
             pointer has no drag and drop at all — there the panel's own search
             is the way in, and this badge would name a gesture that does
-            nothing. */}
+            nothing.
+
+            ON HOVER and over the PHOTO, which is two corrections to where it
+            started. It sat at `top-2 left-2` and permanently: that corner holds
+            the ride's name and its headliner crown, so forty cards each covered
+            their own title for as long as the panel was open, to say the same
+            sentence forty times. Centred on the picture it covers nothing that
+            carries information, and appearing under the pointer is what a
+            gesture hint is for — the one that has to reach somebody who is NOT
+            hovering is the coach mark in the panel, which is shown once. */}
         <span
           data-planner-drag-hint=""
-          className="bg-primary/90 text-primary-foreground ring-primary-foreground/20 pointer-events-none absolute top-2 left-2 z-30 hidden items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium shadow-sm ring-1 backdrop-blur-sm sm:[html[data-planner-open]_&]:flex"
+          className="bg-primary/90 text-primary-foreground ring-primary-foreground/20 pointer-events-none absolute top-1/2 left-1/2 z-30 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium opacity-0 shadow-sm ring-1 backdrop-blur-sm transition-opacity duration-150 group-hover:opacity-100 sm:[html[data-planner-open]_&]:flex"
         >
           <GripVertical className="size-3 shrink-0" aria-hidden="true" />
           {t('planner.dragIn')}

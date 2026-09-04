@@ -2007,6 +2007,10 @@
       "missing": "{count, plural, =1 {1 headliner still missing} other {# headliners still missing}}",
       "label": "Headliner"
     },
+    "coach": {
+      "drag": "Drag a ride from the park page onto the timeline — that picks the hour at the same time.",
+      "dismiss": "Dismiss hint"
+    },
     "parkSearch": {
       "placeholder": "Search a park …",
       "searching": "Searching …",

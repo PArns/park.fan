@@ -9,7 +9,11 @@ import {
 import { getParkWeatherNowcastFresh } from '@/lib/api/weather-nowcast';
 import { getParkHistoricalStats, getParkHourlyProfile, getRideDayCurve } from '@/lib/api/stats';
 import { getPlanDay } from '@/lib/api/plan';
-import { enrichAttractionsWithImages } from '@/lib/utils/park-assets';
+import {
+  enrichAttractionsWithImages,
+  getCardObjectPosition,
+  getParkBackgroundImage,
+} from '@/lib/utils/park-assets';
 import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
 import {
   applyNowcastSimulation,
@@ -369,8 +373,16 @@ export async function GET(
       const withImages = enrichAttractionsWithImages(
         data.rides.map((ride) => ({ ...ride, slug: ride.attractionSlug, park: { slug: park } }))
       );
+      // The PARK's own photo, for the panel to sit on. Same reason as the ride
+      // photos one line up — `@/lib/media` is a 107 KB catalogue and the
+      // planner is a Client Component in every page's layout — and the same
+      // helpers, so a focal point curated in the admin decides the crop here
+      // too. `null` where the media database has no picture for the park, which
+      // is 198 of 212 of them, and the panel then simply has no photo.
       const enriched = {
         ...data,
+        parkBackgroundImage: getParkBackgroundImage(park),
+        parkBackgroundPosition: getCardObjectPosition(park),
         rides: withImages.map(({ slug: _slug, park: _park, ...ride }) => ride),
       };
 

@@ -2007,6 +2007,10 @@
       "missing": "{count, plural, =1 {Falta 1 atracción estrella} other {Faltan # atracciones estrella}}",
       "label": "Atracción estrella"
     },
+    "coach": {
+      "drag": "Arrastra una atracción desde la página del parque a la línea de tiempo: así eliges la hora a la vez.",
+      "dismiss": "Ocultar el aviso"
+    },
     "parkSearch": {
       "placeholder": "Buscar un parque …",
       "searching": "Buscando …",

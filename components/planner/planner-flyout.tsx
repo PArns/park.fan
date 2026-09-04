@@ -17,6 +17,8 @@ import { PlannerPartyChips } from './planner-party-chips';
 import { PlannerInParkCta } from './planner-in-park-cta';
 import { PlannerPlanParkCta } from './planner-plan-park-cta';
 import { PlannerMissingHeadliners } from './planner-missing-headliners';
+import { PlannerPanelPhoto } from './planner-panel-photo';
+import { PlannerDragCoach } from './planner-drag-coach';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { totalsFor } from '@/lib/planner/estimate';
@@ -443,6 +445,9 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
         // hold it at 448 px in the middle of a 390 px screen.
         style={isPhone ? undefined : { width: panelWidth }}
       >
+        {/* First child, so everything after it paints over it. */}
+        <PlannerPanelPhoto src={day?.parkBackgroundImage} position={day?.parkBackgroundPosition} />
+
         {/* The grab handle. Phone only, and `sm:hidden` rather than `!isPhone`
             because `useMediaQuery` answers `false` on the server snapshot and a
             control that decides its own existence from that flickers.
@@ -855,6 +860,10 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 />
               </div>
             )}
+
+            {/* Named once, and only where the gesture exists: a fine pointer,
+                and a park page behind the panel to drag a card out of. */}
+            <PlannerDragCoach show={Boolean(pagePark && park && activeDate)} />
 
             {/* Which of the park's big rides are still missing from the day.
                 Above the free-block row and outside the `sm:hidden` search,

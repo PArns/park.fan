@@ -1601,6 +1601,54 @@ if (reachable) {
     `${foreign}`
   );
 
+  // Nobody finds a gesture nobody names. The badge that named it used to sit on
+  // every ride card permanently — forty ride names under a label repeating one
+  // sentence — so it waits for the pointer now, and the sentence is said once in
+  // the panel instead. Both halves are checked here because both are invisible
+  // by default and a broken one looks exactly like a working one.
+  const coach = drag.locator(`${SHEET} [data-planner-drag-coach]`);
+  check('der Hinweis nennt die Geste einmal', (await coach.count()) === 1);
+  const coachText = (await coach.count()) ? await coach.innerText() : '';
+  check(
+    'er sagt sie in Worten, nicht als Schlüssel',
+    /Zieh eine Bahn/.test(coachText) && !/planner\./.test(coachText),
+    coachText.replace(/\s+/g, ' ').slice(0, 80)
+  );
+  await drag.locator(`${SHEET} [data-planner-drag-coach] button`).click();
+  await drag.waitForTimeout(300);
+  check('ausgeblendet bleibt ausgeblendet', (await coach.count()) === 0);
+
+  // The card badge. `a.group`, not the `<article>` around the listing: the page
+  // has one article and it contains every card, so hovering that measured the
+  // wrong box and reported an opacity that never moved.
+  const card = drag.locator('a.group:has([data-planner-drag-hint])').first();
+  await card.scrollIntoViewIfNeeded();
+  await drag.waitForTimeout(400);
+  const badge = card.locator('[data-planner-drag-hint]');
+  const restOpacity = await badge.evaluate((el) => getComputedStyle(el).opacity);
+  await card.hover();
+  await drag.waitForTimeout(300);
+  const hoverOpacity = await badge.evaluate((el) => getComputedStyle(el).opacity);
+  check(
+    'der Anfasser erscheint erst unter dem Zeiger',
+    restOpacity === '0' && hoverOpacity === '1',
+    `ruhend ${restOpacity}, unter dem Zeiger ${hoverOpacity}`
+  );
+  // And it may not sit on the ride's name, which is what put it there in the
+  // first place: it was a corner badge over the title row.
+  const overlaps = await card.evaluate((el) => {
+    const title = el.querySelector('h3, h2')?.getBoundingClientRect();
+    const hint = el.querySelector('[data-planner-drag-hint]')?.getBoundingClientRect();
+    if (!title || !hint) return null;
+    return !(
+      hint.right < title.left ||
+      hint.left > title.right ||
+      hint.bottom < title.top ||
+      hint.top > title.bottom
+    );
+  });
+  check('er verdeckt den Namen der Bahn nicht', overlaps === false, `${overlaps}`);
+
   await drag.close();
 }
 

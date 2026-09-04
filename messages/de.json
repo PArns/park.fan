@@ -2007,6 +2007,10 @@
       "missing": "{count, plural, =1 {1 Headliner fehlt noch} other {# Headliner fehlen noch}}",
       "label": "Headliner"
     },
+    "coach": {
+      "drag": "Zieh eine Bahn von der Parkseite auf die Zeitachse – dabei wählst du gleich die Uhrzeit.",
+      "dismiss": "Hinweis ausblenden"
+    },
     "parkSearch": {
       "placeholder": "Park suchen …",
       "searching": "Suche …",

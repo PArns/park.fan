@@ -2007,6 +2007,10 @@
       "missing": "{count, plural, =1 {1 headliner ontbreekt nog} other {# headliners ontbreken nog}}",
       "label": "Headliner"
     },
+    "coach": {
+      "drag": "Sleep een attractie van de parkpagina op de tijdlijn — daarmee kies je meteen het tijdstip.",
+      "dismiss": "Tip verbergen"
+    },
     "parkSearch": {
       "placeholder": "Park zoeken …",
       "searching": "Zoeken …",

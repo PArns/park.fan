@@ -2007,6 +2007,10 @@
       "missing": "{count, plural, =1 {Manca 1 attrazione di punta} other {Mancano # attrazioni di punta}}",
       "label": "Attrazione di punta"
     },
+    "coach": {
+      "drag": "Trascina un'attrazione dalla pagina del parco sulla linea del tempo: così scegli anche l'orario.",
+      "dismiss": "Nascondi il suggerimento"
+    },
     "parkSearch": {
       "placeholder": "Cerca un parco …",
       "searching": "Ricerca …",

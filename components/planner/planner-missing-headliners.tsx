@@ -96,7 +96,9 @@ export function PlannerMissingHeadliners({
 
   return (
     <div data-planner-headliner-hint="" className="border-border/60 shrink-0 border-t px-2 py-2">
-      <div className="border-crowd-high/30 bg-crowd-high/10 rounded-md border px-2 py-1.5">
+      {/* A solid-enough ground of its own: the panel has a photo behind it now,
+          and at `/10` this band read as a smudge over a lit façade. */}
+      <div className="border-crowd-high/40 bg-crowd-high/10 bg-background/70 rounded-md border px-2 py-1.5 backdrop-blur-sm">
         <p className="text-crowd-high flex items-center gap-1.5 text-[11px] font-medium">
           <Crown className="size-3 shrink-0" aria-hidden="true" />
           {t('headliners.missing', { count: missing.length })}

@@ -2147,6 +2147,15 @@ export interface PlanDay {
    * has.
    */
   accuracy?: { basis?: 'measured' | 'unmeasured' | null } | null;
+  /**
+   * The park's own photo, added by the proxy route rather than by the API — the
+   * media database is a filesystem catalogue in this repo. It is what the
+   * planner panel sits on; `null` where the park has no picture, which is most
+   * of them.
+   */
+  parkBackgroundImage?: string | null;
+  /** `object-position` from the image's curated focal point. */
+  parkBackgroundPosition?: string;
   rides: PlanDayRide[];
   shows: PlanDayShow[];
 }
