@@ -41,6 +41,7 @@ import { noLiveWaitTimesReason } from '@/lib/utils/live-wait-times';
 import { groupAttractionsByLand } from '@/lib/utils/park-utils';
 import { generateParkBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { RouteMessages } from '@/i18n/route-messages';
+import { PlannerPageParkBeacon } from '@/components/planner/planner-page-park-beacon';
 import { getParkFaqGlossary } from '@/lib/faq/park-faq-terms';
 import { applyParkSimulation, parseParkSimulation } from '@/lib/parks/park-simulation';
 import { ParkSimulationNotice } from '@/components/parks/park-simulation-notice';
@@ -334,6 +335,16 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
 
   return (
     <RouteMessages route="/parks/[continent]/[country]/[city]/[park]">
+      {/* Tells the planner which park this route is about — see
+          `lib/planner/page-park.ts`. The panel lives in the layout and
+          otherwise cannot tell one park's page from another's, which is how its
+          header came to name a park the reader was not looking at. */}
+      <PlannerPageParkBeacon
+        slug={park.slug}
+        name={stripNewPrefix(park.name)}
+        geo={{ continent, country, city }}
+        timezone={park.timezone}
+      />
       <ParkPageShell
         park={park}
         seasons={seasons}

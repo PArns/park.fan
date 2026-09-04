@@ -1945,3 +1945,278 @@ export interface PopularPark {
   city: string | null;
   continent: string | null;
 }
+
+// ============================================================================
+// Trip planner — one day, ride by ride
+// ============================================================================
+
+/**
+ * How a plan number was arrived at. It travels with every curve because the
+ * three are not equally trustworthy and nothing about a rendered bar says which
+ * one produced it.
+ *
+ * - `measured` — the model's own hourly prediction. Today and tomorrow only:
+ *   the ML service generates 24 hours ahead (`HOURLY_PREDICTIONS`).
+ * - `composed` — a day-level prediction scaled by the ride's historical hour
+ *   shape. The level is predicted, the shape is historical.
+ * - `long_range` — the same composition past the stored 60-day daily horizon,
+ *   where the day level itself is thinner.
+ *
+ * A surface MUST render the three differently. A composed curve is not a
+ * measured one, and they draw identically unless something is done about it.
+ */
+/**
+ * How a curve was produced. `observed` is the one that points BACKWARDS and is
+ * not a forecast at all: a date in the past is answered from what the queues
+ * actually did, out of the nightly 15-minute rollup, so a day somebody already
+ * walked stops predicting at itself.
+ */
+export type PlanDayTier = 'observed' | 'measured' | 'composed' | 'long_range';
+
+export interface PlanDayHour {
+  /** Park-local hour, 0–23. */
+  hour: number;
+  /** Expected wait in minutes, already rounded to 5. */
+  wait: number;
+  /**
+   * Set only where THIS hour did not come from the day's {@link PlanDay.tier}.
+   *
+   * A day inside the 24-hour window is part measured and part composed — today
+   * has no measurement for the hours before now, tomorrow none for the hours
+   * after it — so the tier names the day's regime and this names the exceptions.
+   * Absent means "the day's tier", never "unknown".
+   */
+  source?: PlanDayTier | null;
+}
+
+export interface PlanDayRide {
+  attractionSlug: string;
+  attractionName: string;
+  land?: string | null;
+  /** One entry per open hour. */
+  hours: PlanDayHour[];
+  /** The day-level prediction this ride's curve was scaled to. */
+  dayPeak: number;
+  /**
+   * Half-width of the model's uncertainty band in minutes (its top trained
+   * quantile minus the served median). `null` where the model reports no
+   * spread — which is NOT a band of width zero and must not be drawn as one.
+   */
+  uncertaintyMinutes?: number | null;
+  /**
+   * When THIS ride starts, park-local `HH:mm`, rounded to the quarter hour.
+   *
+   * A fact the planner had no source for until the API grew it, and the gap it
+   * closes is not small: Phantasialand's gates open at 09:00 and sixteen of its
+   * rides — Taron, F.L.Y., both Winja's, Talocan, Crazy Bats, Mystery Castle,
+   * River Quest, Colorado Adventure, Raik and more — do not run until 10:00, so
+   * the planner offered two hours of queue that did not exist.
+   *
+   * `hours` already begins here, so nothing needs clamping or filtering; this
+   * field is for SAYING it. Absent means the ride opens with the park, or that
+   * too few openings have been observed to tell — the two are the same to a
+   * reader, so absent renders nothing and `hours` is right either way.
+   *
+   * The rounding is deliberate: a raw 10:10 is five-minute polling plus feed
+   * lag on top of a 10:00 opening. There is no `closesAt` and there will not be
+   * one — feeds do not reliably flip back to CLOSED in the evening, so a
+   * closing time would be a guess.
+   */
+  opensAt?: string | null;
+  /** Measured days behind the historical shape. */
+  sampleDays: number;
+  /**
+   * The typical error of this ride's own numbers, in minutes.
+   *
+   * Per RIDE and not per day, because it depends on both the lead time and the
+   * level: a queue that peaks over an hour is typically 21–25 minutes out, one
+   * under half an hour 8–13. It is a TYPICAL error and not a bound — half the
+   * days are further off than this — so it may never be drawn as an interval
+   * that contains the answer. Absent where the backend has not measured one.
+   */
+  expectedError?: number | null;
+  /**
+   * Where the ride is, so the planner can say how far apart two consecutive
+   * entries are without fetching forty attraction payloads.
+   *
+   * A geodesic distance between two of these is a LOWER BOUND on the walk and
+   * nothing more — park paths bend around water, queues and one-way routing, and
+   * Phantasialand stacks two lands vertically. State a floor; never present the
+   * straight line as a walking time.
+   */
+  latitude?: number | null;
+  longitude?: number | null;
+  /**
+   * The ride's photo, added by the proxy route rather than by the API: the media
+   * database is a filesystem catalogue in this repo, not something api.park.fan
+   * knows about. Carries the content hash as a query, because retargeting a
+   * focal point rewrites a crop's bytes at an unchanged URL.
+   */
+  backgroundImage?: string | null;
+  /** `object-position` from the image's curated focal point. */
+  backgroundPosition?: string;
+  /**
+   * The ride was observed all through the previous operating day and was never
+   * OPERATING in any of it — down for the whole day rather than unobserved. A
+   * ride with no observations at all is silence and is not reported here.
+   * Absent past tomorrow: yesterday's downtime says nothing a visitor can act on
+   * for a Tuesday in November.
+   */
+  downYesterday?: boolean;
+
+  /**
+   * Whether the park counts this ride among its headliners.
+   *
+   * The API's CURATED answer, never re-derived here from `dayPeak`: the day's
+   * tallest bars are whatever happens to be busy, and pointing at those would
+   * recommend the queue rather than the ride. Absent on an ordinary ride.
+   */
+  isHeadliner?: boolean;
+  /**
+   * Minimum rider height in centimetres, the curated answer over the synced one.
+   *
+   * Here so the planner can answer "can the six-year-old ride this" for a whole
+   * day at once — the alternative is forty attraction payloads at 425 KB each.
+   * Absent where there is no minimum to state, which covers both "nothing
+   * recorded" and "a curator says there is none", and must never be turned into
+   * a promise that anyone may ride (`canRideAtHeight` treats it that way for
+   * the same reason `isCurrentlyInSeason` uses `!== false`).
+   */
+  minimumHeight?: number | null;
+  /** Whether the ride may soak you. Absent is unknown, never "dry". */
+  mayGetWet?: boolean | null;
+}
+
+export interface PlanDayContext {
+  date: string;
+  status: ParkStatus | string;
+  /** First and last park-local hour the park is open. `null` on a closed day. */
+  openHour: number | null;
+  closeHour: number | null;
+  /**
+   * Where {@link openHour}/{@link closeHour} came from.
+   *
+   * `schedule` is the park's published calendar. `observed` is the window
+   * DERIVED from hours we measured, which is what the API falls back to past the
+   * publication horizon — about 60 days for half the parks — and it is narrower
+   * than the truth by construction: it can only span hours somebody recorded. On
+   * such a day `status` is not a promise either.
+   */
+  hoursSource?: 'schedule' | 'observed' | null;
+  crowdLevel?: CrowdLevel | 'closed' | null;
+  /**
+   * Absent past the forecast's reach (about 14 days). The API does NOT
+   * substitute a climate normal there, so a caller must not present a missing
+   * value as "no rain expected".
+   */
+  weather?: WeatherSummary | null;
+  isHoliday: boolean;
+  isBridgeDay: boolean;
+  isSchoolVacation: boolean;
+  /** Derived by the API — `CalendarDay` carries no such field. */
+  isWeekend: boolean;
+  neighborHolidays?: NeighborHoliday[];
+}
+
+export interface PlanDay {
+  parkSlug: string;
+  timezone: string;
+  context: PlanDayContext;
+  tier: PlanDayTier;
+  /** Whole days from today to this date, in the park's timezone. */
+  leadDays: number;
+  /**
+   * Measured mean absolute error for predictions made this far ahead, in
+   * minutes. `null` until the backend's lead-time archive has been running that
+   * long — and `null` is the honest answer rather than a gap to fill: nothing
+   * measures how wrong the model is at this distance yet. Widen the band with
+   * distance WITHOUT attaching a figure.
+   */
+  leadTimeMae?: number | null;
+  /**
+   * Whether anybody has checked how wrong the forecast is at this distance.
+   *
+   * `measured` means the error at this lead time has been compared against days
+   * that then happened; `unmeasured` means a prediction exists and nothing has
+   * ever verified it. `null` where the API says nothing at all.
+   *
+   * It behaves as documented again. Between 2026-09-02 and 2026-09-03 the API
+   * answered `unmeasured` for TODAY (`leadDays: 0`), which is why the note that
+   * stood here said the field could not be wired to anything: applying "never
+   * present an unmeasured day as a plannable day" literally would have refused
+   * every day the planner has. Re-measured on 2026-09-04 across six lead times
+   * at Phantasialand — 0, 1, 3, 16 and 41 days all answer `measured` with a
+   * `typicalError`, 87 days answers `unmeasured` with none. So `unmeasured` is
+   * what it says: past the horizon where anybody has checked.
+   *
+   * This is also the field that replaced the `long_range` tier in practice. The
+   * tier still types it, and the same six probes never returned it: what a day
+   * three months out actually looks like is `tier: 'composed'` with
+   * `basis: 'unmeasured'`, so the band reads the basis rather than waiting for a
+   * tier the API has stopped sending.
+   */
+  accuracy?: {
+    basis?: 'measured' | 'unmeasured' | null;
+    /**
+     * The day's own typical error in minutes, over every ride and hour in it.
+     *
+     * A TYPICAL error and not a bound — half the days are further off — so it
+     * may never be drawn as an interval that contains the answer, which is the
+     * same rule `PlanDayRide.expectedError` carries per ride. Present only
+     * where `basis` is `measured`; 8.9 minutes for today at Phantasialand,
+     * 14.3 at sixteen days.
+     */
+    typicalError?: number | null;
+    /**
+     * Observations behind that figure. It GROWS with the lead time (50,759 for
+     * today, 1,155,876 at sixteen days) because a composed day is scaled from a
+     * far wider historical window than a measured one, so it is a statement
+     * about the method rather than about the day's own quality.
+     */
+    sampleSize?: number | null;
+  } | null;
+  /**
+   * The park's own photo, added by the proxy route rather than by the API — the
+   * media database is a filesystem catalogue in this repo. It is what the
+   * planner panel sits on; `null` where the park has no picture, which is most
+   * of them.
+   */
+  parkBackgroundImage?: string | null;
+  /** `object-position` from the image's curated focal point. */
+  parkBackgroundPosition?: string;
+  rides: PlanDayRide[];
+  shows: PlanDayShow[];
+}
+
+/**
+ * Where a showtime came from, and the one thing a surface may not blur.
+ *
+ * - `scheduled` — the operator's own listing. Published for today and for days
+ *   already past, and for nothing else: no source anywhere knows showtimes in
+ *   advance.
+ * - `projected` — this app's upstream carrying the last matching weekday
+ *   forward. It is an observation of a different day, not a promise about this
+ *   one, and the API says so explicitly with {@link PlanDayShow.observedOn}.
+ *
+ * The two MUST be drawn differently. They are the same shape and the same
+ * fields, so nothing but a deliberate difference separates them, and a
+ * projection presented as a listing is this app promising a performance that
+ * nobody has scheduled.
+ */
+export type PlanDayShowSource = 'scheduled' | 'projected';
+
+export interface PlanDayShow {
+  showSlug: string;
+  showName: string;
+  /** Park-local `HH:mm`, ascending. */
+  times: string[];
+  source: PlanDayShowSource;
+  /**
+   * `projected` only: the date these times were actually observed on — the most
+   * recent same weekday. Absent on a `scheduled` entry, which speaks for the
+   * date it was asked about.
+   */
+  observedOn?: string | null;
+  /** `projected` only: how many measured days stand behind the projection. */
+  sampleDays?: number | null;
+}

@@ -21,6 +21,8 @@ import {
   Ticket,
 } from 'lucide-react';
 import type { CalendarDay, CrowdLevel } from '@/lib/api/types';
+import { PlanDayButtonLazy } from '@/components/planner/plan-day-button-lazy';
+import type { PlannerGeo } from '@/lib/planner/types';
 import {
   CROWD_DOT_CLASS,
   CROWD_LEVEL_ORDER,
@@ -80,6 +82,12 @@ export interface ParkCalendarDayDetailProps {
    * showing the previous day dimmed (see `lastDay` below) instead of closing.
    */
   onNavigate?: (direction: -1 | 1) => void;
+  /**
+   * The park this calendar belongs to. Supplied by the callers that know it, and
+   * the only thing gating the "plan this day" control — the dialog itself is
+   * given a `CalendarDay`, which names no park.
+   */
+  planner?: { parkSlug: string; parkName: string; geo: PlannerGeo };
 }
 
 /**
@@ -96,7 +104,13 @@ export function ParkCalendarDayDetail({
   open,
   onOpenChange,
   onNavigate,
+  planner,
 }: ParkCalendarDayDetailProps) {
+  // "Today" in the PARK's timezone, not the reader's: the calendar shows a whole
+  // month and a visit cannot be planned for a day that has already happened
+  // where the park is. `en-CA` because it formats as YYYY-MM-DD, which is what
+  // `CalendarDay.date` is and what compares correctly as a string.
+  const todayInPark = new Date().toLocaleDateString('en-CA', { timeZone: parkTimezone });
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
   const locale = useLocale();
@@ -105,6 +119,19 @@ export function ParkCalendarDayDetail({
   // Retain the last non-null day so a nav step (parent fetches the target day → `day` is
   // briefly null) dims the open dialog instead of unmounting it. Render-phase derived-state
   // update (the React-sanctioned pattern) — no effect, no extra frame with stale content.
+  //
+  // NOT retained across the close, and that is measured rather than assumed.
+  // `ParkCalendarGrid` derives `day` and `open` from one `selectedDate`, so both
+  // go in the same commit and this returns `null` before Radix can put
+  // `data-state="closed"` on the content — the dialog is destroyed rather than
+  // closed, and `components/ui/dialog.tsx`'s 200 ms exit never runs, for every
+  // way out of it (the X, Escape and the overlay alike). Keeping `lastDay`
+  // through the close does restore that animation, and it costs far more than
+  // it is worth: the content then re-renders on every commit that follows the
+  // close — the planner panel mounting, the route changing — and the dialog took
+  // 605 ms to leave instead of 147 ungthrottled, 3868 instead of 1116 at 6× CPU
+  // and 20.8 s instead of 4.0 at 20×. A missing fade is a blemish; four extra
+  // seconds on a phone is the bug this was reported as.
   const [lastDay, setLastDay] = useState<CalendarDay | null>(dayProp);
   if (dayProp && dayProp !== lastDay) setLastDay(dayProp);
   const day = dayProp ?? (open ? lastDay : null);
@@ -624,6 +651,35 @@ export function ParkCalendarDayDetail({
                 </div>
               )}
             </section>
+          )}
+          {/* Into the planner from here, and LAST in the column on purpose: the
+              decision this control acts on is made by reading the crowd
+              forecast, the headliner waits and the weather above it. Placed
+              under the opening hours it asked for a commitment before the
+              dialog had said anything.
+
+              The calendar is where a visitor decides WHICH day, and until now
+              that decision had nowhere to go — the planner's own day picker is
+              inside a panel they had no reason to have opened yet. Only on a day
+              the park is actually open: planning a closed day is planning
+              nothing. */}
+          {planner && day.status === 'OPERATING' && day.date >= todayInPark && (
+            <div>
+              <PlanDayButtonLazy
+                parkSlug={planner.parkSlug}
+                parkName={planner.parkName}
+                geo={planner.geo}
+                date={day.date}
+                timezone={parkTimezone}
+                // The dialog closes on the way out, and the visitor lands on the
+                // park's ride overview. Without it the planner opened BEHIND
+                // this dialog — which is a modal, so the panel it just opened
+                // was unreachable — and the reader was left on the calendar,
+                // which is the one page in the park with no ride cards to drag
+                // from. Both halves of the button's promise were missing.
+                onPlanned={() => onOpenChange(false)}
+              />
+            </div>
           )}
         </div>
       </DialogContent>

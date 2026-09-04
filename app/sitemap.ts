@@ -8,6 +8,7 @@ import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { GLOSSARY_CONTENT_DATE } from '@/lib/glossary/content-date';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
+import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import { PARK_CALENDAR_SEGMENTS } from '@/lib/parks/calendar-segments';
 import type { GlossaryTerm } from '@/lib/glossary/types';
 
@@ -107,6 +108,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly',
       priority: 0.8,
       alternates: howtoAlternates,
+    });
+  }
+
+  // ── Trip planner ──────────────────────────────────────────────────────────
+  const plannerAlternates = buildAlternates(
+    (l) => `/${PLANNER_SEGMENTS[l as keyof typeof PLANNER_SEGMENTS]}`
+  );
+
+  for (const locale of locales) {
+    routes.push({
+      url: `${BASE_URL}/${locale}/${PLANNER_SEGMENTS[locale as keyof typeof PLANNER_SEGMENTS]}`,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+      alternates: plannerAlternates,
     });
   }
 

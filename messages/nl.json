@@ -464,6 +464,7 @@
     "api": "API documentatie",
     "impressum": "Colofon",
     "howto": "Wachttijden begrijpen",
+    "planner": "Dagplanner",
     "fancast": "Fancast",
     "bestTime": "Beste bezoektijd",
     "glossaryLink": "Woordenboek",
@@ -518,6 +519,7 @@
     "admin": "Admin",
     "nearbyPark": "In de buurt: {parkName}",
     "howto": "Zo werkt het",
+    "planner": "Dagplanner",
     "glossary": "Woordenboek",
     "blog": "Blog",
     "bestTime": "Beste reistijd",
@@ -1236,6 +1238,9 @@
       "fastPassFrom": "vanaf",
       "rcdbLabel": "{attraction} in de RCDB",
       "rcdbTitle": "Technische gegevens op RCDB (Roller Coaster DataBase)"
+    },
+    "planner": {
+      "dragIn": "Naar het plan slepen"
     }
   },
   "nearby": {
@@ -1861,6 +1866,264 @@
       "openGlossary": "Naslaan in het glossarium",
       "viewerTitle": "3D-weergave: {name}",
       "figureCount": "{count, plural, one {# baanelement} other {# baanelementen}}"
+    }
+  },
+  "planner": {
+    "title": "Dagplanner",
+    "open": "Planner openen",
+    "addRide": "In het plan",
+    "inPlan": "In het plan",
+    "addAgain": "Nogmaals",
+    "plannedTimes": "{count}× in plan",
+    "removeRide": "Uit het plan halen",
+    "empty": {
+      "title": "Nog niets gepland",
+      "bodyGrid": "Zoek hieronder een attractie – die komt op de tijdlijn en is daar te verschuiven.",
+      "planThisPark": "{park} nu plannen"
+    },
+    "day": {
+      "today": "Vandaag",
+      "tomorrow": "Morgen",
+      "pick": "Dag kiezen",
+      "closed": "Het park is die dag dicht.",
+      "noHours": "Voor deze dag zijn geen openingstijden bekend."
+    },
+    "summary": {
+      "rides": "{count, plural, =0 {Geen attractie} one {Eén attractie} other {# attracties}}",
+      "waiting": "Wachttijd bij elkaar",
+      "waitingLabel": "Wachttijd",
+      "done": "{done} van {total} gedaan",
+      "blocks": "{count, plural, one {# blok} other {# blokken}}"
+    },
+    "entry": {
+      "expected": "verwacht",
+      "typicalError": "meestal {minutes} min ernaast",
+      "typicalErrorHint": "Zo ver zaten de voorspellingen voor deze attractie gemiddeld van wat de dag daarna werkelijk bracht. De helft van de dagen zit er verder naast.",
+      "bandHint": "Het model geeft voor dit uur een spreiding van plus of min zoveel minuten aan.",
+      "markDone": "Als gedaan markeren",
+      "markUndone": "Toch niet gedaan",
+      "actual": "werkelijk {minutes} min",
+      "noCurve": "Voor deze attractie is er geen uurcurve.",
+      "dragHandle": "Verplaatsen",
+      "range": "{from} tot {to}",
+      "resizeHandle": "Duur slepen"
+    },
+    "tier": {
+      "observed": "Gemeten",
+      "measured": "Uurprognose",
+      "composed": "Uit de dagprognose",
+      "longRange": "Ruwe schatting",
+      "unmeasured": "Trefzekerheid ongetoetst",
+      "observedHint": "Deze dag is voorbij. De cijfers zijn wat er echt bij de rijen stond.",
+      "measuredHint": "Het model rekent deze dag per uur uit.",
+      "measuredHintError": "Per uur uitgerekend, meestal {minutes} min ernaast.",
+      "composedHint": "De hoogte van de dag is voorspeld, het verloop komt uit eerdere dagen.",
+      "composedHintError": "Dagniveau voorspeld, verloop uit eerdere dagen, meestal {minutes} min ernaast.",
+      "longRangeHint": "Zo ver vooruit wordt de hoogte van de dag zelf dun. Lees de cijfers als richting, niet als toezegging.",
+      "unmeasuredHint": "Zo ver vooruit heeft nog niemand nagerekend hoe dicht deze cijfers zitten. Lees ze als richting."
+    },
+    "band": {
+      "plusMinus": "± {minutes} min"
+    },
+    "context": {
+      "weatherUnknown": "Zo ver vooruit is er geen weersverwachting.",
+      "holiday": "Feestdag",
+      "bridgeDay": "Brugdag",
+      "schoolVacation": "Schoolvakantie",
+      "weekend": "Weekend",
+      "neighborHolidays": "Vakantie hiernaast",
+      "hours": "{open} tot {close} uur",
+      "hoursObserved": "(gemeten)",
+      "hoursObservedHint": "Het park heeft voor deze datum niets gepubliceerd. Deze tijden komen uit uren die wij gemeten hebben, en de dag kan langer zijn."
+    },
+    "search": {
+      "placeholder": "Attractie zoeken",
+      "noResults": "Geen attractie gevonden.",
+      "tapHint": "Tik op een attractie en die landt op het eerstvolgende vrije tijdstip, waar je hem kunt verschuiven.",
+      "opensAt": "vanaf {time}"
+    },
+    "clearDay": "Dag leegmaken",
+    "clearDayConfirm": "Alle items van deze dag verwijderen?",
+    "loading": "Plan wordt geladen",
+    "error": "Het plan kon niet worden geladen.",
+    "noPlan": "Voor deze dag is er geen prognose.",
+    "overview": {
+      "empty": "Nog geen dagen gepland."
+    },
+    "planThisDay": "Attracties voor deze dag inplannen",
+    "unit": {
+      "min": "min"
+    },
+    "grid": {
+      "closesApprox": "tot ~{time}",
+      "now": "Nu"
+    },
+    "transfer": {
+      "tight": "overstap krap",
+      "good": "overstap goed",
+      "generous": "overstap ruim",
+      "broken": "gaat niet",
+      "unknown": "open",
+      "brokenBy": "{minutes} min te kort",
+      "repair": "later zetten",
+      "distance": "{distance} hemelsbreed",
+      "minWalk": "minstens {minutes} min overstap",
+      "allowance": "incl. uitstappen en de rit zelf, geschat",
+      "noSpread": "gerekend zonder de spreiding van de prognose",
+      "gap": "{minutes} min"
+    },
+    "close": "Selectie opheffen",
+    "shows": {
+      "none": "Geen speeltijden bekend.",
+      "next": "Volgende",
+      "first": "Eerste voorstelling",
+      "projected": "Naar verwachting",
+      "projectedFrom": "Tijden van {date}, doorgetrokken naar deze weekdag.",
+      "over": "Alle voorstellingen van vandaag zijn geweest.",
+      "more": "{count, plural, =1 {+1 meer} other {+# meer}}",
+      "hidden": "Speeltijden verborgen",
+      "hide": "Speeltijden verbergen",
+      "show": "Speeltijden tonen"
+    },
+    "warn": {
+      "closedNow": "Meldt nu gesloten.",
+      "downYesterday": "Was gisteren de hele dag buiten bedrijf."
+    },
+    "custom": {
+      "add": "Eigen blok",
+      "defaultLabel": "Pauze",
+      "label": "Label",
+      "duration": "{minutes} min",
+      "shorter": "15 minuten korter",
+      "longer": "15 minuten langer",
+      "icon": {
+        "break": "Pauze",
+        "food": "Eten",
+        "show": "Show",
+        "shop": "Winkelen",
+        "photo": "Foto",
+        "meet": "Ontmoetingspunt",
+        "star": "Overig"
+      }
+    },
+    "sheet": {
+      "handle": "Planner vergroten of sluiten",
+      "resize": "Breedte slepen"
+    },
+    "headliners": {
+      "missing": "{count, plural, =1 {1 headliner ontbreekt nog} other {# headliners ontbreken nog}}",
+      "label": "Headliner"
+    },
+    "coach": {
+      "drag": "Sleep een attractie van de parkpagina op de tijdlijn — daarmee kies je meteen het tijdstip.",
+      "dismiss": "Tip verbergen"
+    },
+    "parkSearch": {
+      "placeholder": "Park zoeken …",
+      "searching": "Zoeken …",
+      "noResults": "Geen park gevonden.",
+      "alreadyPlanned": "al gepland"
+    },
+    "push": {
+      "off": "Meldingen inschakelen",
+      "on": "Meldingen staan aan",
+      "denied": "Je browser blokkeert meldingen voor deze site. Dat verander je alleen in de browserinstellingen.",
+      "storedHint": "Je plan staat daarvoor op de server. Wie de link heeft, kan het lezen en wijzigen – er is geen account en geen wachtwoord.",
+      "topics": {
+        "legend": "Waarover willen we je berichten?",
+        "only": "Je krijgt één soort bericht: {kind}.",
+        "next-up": "Wanneer je naar de volgende attractie moet",
+        "show-times": "Speeltijden van de shows",
+        "ride-status": "Als een geplande attractie sluit of weer opengaat",
+        "wait-change": "Als een geplande wachttijd flink verandert"
+      }
+    },
+    "page": {
+      "kicker": "Dagplanner",
+      "title": "Je dag in het pretpark, vooraf op een rij",
+      "lead": "Zeg welke attracties je wilt, en de planner rekent met de voorspelde wachttijden uit of de dag klopt. Alles blijft in je browser, een account is niet nodig.",
+      "metaTitle": "Pretparkdag plannen rond de wachttijden | park.fan",
+      "metaDescription": "Plan je pretparkdag met de voorspelde wachttijden: attracties op een tijdlijn zetten, overstaptijden bekijken, shows en pauzes ertussen. Zonder account.",
+      "yourPlans": "{count, plural, one {Eén geplande dag} other {# geplande dagen}}",
+      "introTitle": "Nog niets gepland",
+      "introBody": "De planner legt je attracties op een tijdlijn en zet bij elke de wachttijd die voor dat uur voorspeld is. Ertussen staat hoeveel tijd je hebt om over te steken, en of dat krap wordt.",
+      "browseParks": "Kies een park",
+      "demo": {
+        "caption": "Echte waarden: Phantasialand op zaterdag 12 september 2026, opgehaald op 4 september. De dag is voorbij, verschuiven kan hier nog steeds."
+      },
+      "steps": {
+        "find": {
+          "title": "Kies een park en een dag",
+          "body": "In de wachttijdenkalender zie je hoe druk een dag wordt. Vandaar ga je meteen een plan in."
+        },
+        "add": {
+          "title": "Attracties toevoegen",
+          "body": "Op elke attractiepagina staat een knop. In de planner kun je ook zoeken of een attractie erin slepen."
+        },
+        "arrange": {
+          "title": "Schuiven tot het past",
+          "body": "Sleep een blok naar een ander tijdstip. De wachttijd en de kleur gaan mee, want beide horen bij het uur."
+        }
+      }
+    },
+    "calendar": {
+      "prevMonth": "Vorige maand",
+      "nextMonth": "Volgende maand",
+      "prevDay": "Een dag terug",
+      "nextDay": "Een dag verder"
+    },
+    "wizard": {
+      "open": "Nieuwe dag plannen",
+      "addDay": "Nog een dag",
+      "title": "Dag plannen",
+      "step": "Stap {step} van {total}",
+      "steps": {
+        "park": "Park",
+        "date": "Dag",
+        "setup": "Wie gaat mee"
+      },
+      "back": "Terug",
+      "next": "Verder",
+      "finish": "Plan openen",
+      "lunch": {
+        "label": "Lunchpauze inplannen",
+        "hint": "Zet een blok om 12:30 in de dag. In de planner kun je het verslepen."
+      },
+      "kids": {
+        "label": "Er gaan kinderen mee",
+        "hint": "Hoe groot is het kleinste kind? Attracties met een hogere minimumlengte krijgen een markering, ze verdwijnen niet.",
+        "none": "Geen kinderen"
+      },
+      "wet": {
+        "label": "Zo droog mogelijk blijven",
+        "hint": "Waterattracties krijgen een markering in de lijst."
+      },
+      "facts": {
+        "title": "Wat we over deze dag weten",
+        "nothing": "Voor deze dag hebben we nog geen verwachting.",
+        "pickFirst": "Kies een dag, dan staat hier wat we over die dag weten.",
+        "loading": "Verwachting wordt geladen …"
+      },
+      "blocks": {
+        "lunch": "Lunch"
+      },
+      "hero": {
+        "question": "Naar welk park ga je?",
+        "plannedDays": "{count, plural, =0 {Nog geen dag gepland} one {Eén dag is al gepland} other {# dagen zijn al gepland}}"
+      },
+      "progress": "Voortgang",
+      "nextUp": "Daarna naar {park}. Daar sleep je attracties uit de lijst in de dag."
+    },
+    "party": {
+      "add": "Wie gaat mee?",
+      "tooShort": "Minimumlengte hoger dan de kleinste persoon in het plan",
+      "wet": "Waterattractie"
+    },
+    "inPark": {
+      "cta": "Vandaag inplannen bij {park}"
+    },
+    "plans": {
+      "title": "Mijn plannen"
     }
   }
 }

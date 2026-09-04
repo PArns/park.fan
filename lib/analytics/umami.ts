@@ -41,6 +41,7 @@
  * - glossary_category_filtered: category (slug or 'none')
  * - glossary_searched: queryLength
  * - preferred_source_clicked / feedback_opened: (no properties)
+ * - plan_day_started: parkName
  * - web-vital-inp: value, target, phase, path (only for non-`good` samples, see WebVitalsReporter)
  */
 
@@ -93,6 +94,9 @@ export const UMAMI_EVENTS = {
 
   // Feedback (Userback widget — fired when the visitor opens the feedback form)
   FEEDBACK_OPENED: 'feedback_opened',
+
+  // Trip planner (fired once per park+date, when that day gains its first block)
+  PLAN_DAY_STARTED: 'plan_day_started',
 } as const;
 
 // Event property types
@@ -264,6 +268,28 @@ export function trackLocationBannerClicked(): void {
 
 export function trackSearchNoResults(props: SearchNoResultsProps): void {
   trackEvent(UMAMI_EVENTS.SEARCH_NO_RESULTS, props);
+}
+
+/**
+ * Somebody started planning a day, and which park it is for.
+ *
+ * ONE property, which is the whole budget question here: the event already
+ * carries the URL, so the locale and the page it was fired from are free, and
+ * the date is deliberately absent — a `date` would be a second billed row per
+ * planned day and the report it enables ("how far ahead do people plan") is not
+ * the question that was asked.
+ *
+ * `parkName` rather than the slug, matching `tab_changed` and
+ * `nearby_parks_loaded`: a report that groups parks has to group them on one
+ * key, and shipping both would be the same fact twice.
+ *
+ * Fired at the moment a park+date goes from EMPTY to holding its first block —
+ * see `usePlanner`. Not on finishing the wizard, which is a park and a date and
+ * nothing in them yet, and not per added ride, which would bill every lap of a
+ * day somebody is filling in.
+ */
+export function trackPlanDayStarted(parkName: string): void {
+  trackEvent(UMAMI_EVENTS.PLAN_DAY_STARTED, { parkName });
 }
 
 export function trackGlossaryTermViewed(props: GlossaryTermViewedProps): void {

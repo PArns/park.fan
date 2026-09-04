@@ -2,18 +2,13 @@ import { Suspense } from 'react';
 import { Link } from '@/i18n/navigation';
 import { CardPhoto, CardPhotoFrame } from '@/components/parks/card-photo';
 import { useTranslations } from 'next-intl';
-import { Crown, ChartColumn, Clock, MapPin } from 'lucide-react';
+import { Crown, ChartColumn, Clock, GripVertical, MapPin } from 'lucide-react';
 import { cn, stripNewPrefix } from '@/lib/utils';
 import { roundWaitDeltaTo5, roundWaitTo5 } from '@/lib/utils/wait-time';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { formatDistance } from '@/lib/utils/distance-utils';
-import type {
-  ParkAttraction,
-  ParkStatus,
-  BestVisitSlot,
-  RopeDropInfo,
-} from '@/lib/api/types';
+import type { ParkAttraction, ParkStatus, BestVisitSlot, RopeDropInfo } from '@/lib/api/types';
 import type { FavoriteAttraction } from '@/lib/api/favorites';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { AttractionCardBestTime } from '@/components/parks/attraction-card-best-time';
@@ -168,7 +163,23 @@ export function AttractionCard({
     <Link
       href={href as '/europe/germany/rust/europa-park'}
       prefetch={false}
-      className="group row-span-3 grid [grid-template-rows:subgrid]"
+      // `data-planner-open` is set on the document element by `PlannerLauncher`
+      // while the panel is out. Both classes below are inert without it, so a
+      // page with no planner open pays one selector that never matches — and a
+      // card does not re-render when the panel opens, which is the point of
+      // doing this in CSS over forty of them.
+      //
+      // `sm:` on both, because a coarse pointer has no drag and drop at all:
+      // the phone's way into a plan is the panel's own search, and a grab
+      // cursor there would promise a gesture that does nothing.
+      className="group row-span-3 grid [grid-template-rows:subgrid] sm:[html[data-planner-open]_&]:cursor-grab sm:[html[data-planner-open]_&]:active:cursor-grabbing"
+      // Read by the trip planner while a drag is in flight — see
+      // `lib/planner/use-ride-drag-source.ts`, which attaches the payload from
+      // one listener on the document. Two attributes rather than a handler,
+      // because this card is a Server Component in eight places and a wrapper
+      // element between it and its parent grid would break the subgrid chain.
+      data-planner-ride={attraction.slug}
+      data-planner-ride-name={stripNewPrefix(attraction.name)}
     >
       <article
         className={cn(
@@ -179,6 +190,29 @@ export function AttractionCard({
           boxShadow: 'var(--pk-card-shadow)',
         }}
       >
+        {/* The card is a drag source while the planner is out, and it has to say
+            so: a cursor change is only discovered by somebody who already
+            suspects the gesture. Inert without `html[data-planner-open]`, which
+            `PlannerLauncher` sets, and hidden below `sm` because a coarse
+            pointer has no drag and drop at all — there the panel's own search
+            is the way in, and this badge would name a gesture that does
+            nothing.
+
+            ON HOVER and over the PHOTO, which is two corrections to where it
+            started. It sat at `top-2 left-2` and permanently: that corner holds
+            the ride's name and its headliner crown, so forty cards each covered
+            their own title for as long as the panel was open, to say the same
+            sentence forty times. Centred on the picture it covers nothing that
+            carries information, and appearing under the pointer is what a
+            gesture hint is for — the one that has to reach somebody who is NOT
+            hovering is the coach mark in the panel, which is shown once. */}
+        <span
+          data-planner-drag-hint=""
+          className="bg-primary/90 text-primary-foreground ring-primary-foreground/20 pointer-events-none absolute top-1/2 left-1/2 z-30 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium opacity-0 shadow-sm ring-1 backdrop-blur-sm transition-opacity duration-150 group-hover:opacity-100 sm:[html[data-planner-open]_&]:flex"
+        >
+          <GripVertical className="size-3 shrink-0" aria-hidden="true" />
+          {t('planner.dragIn')}
+        </span>
         {/* Photo — hidden below `sm` (cards collapse on phones, matching the `sm:min-h-[220px]`
             spacer below and ParkCard), so only the gradient placeholder shows there. */}
         <div className="absolute inset-0 z-0 overflow-hidden">

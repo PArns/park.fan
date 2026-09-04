@@ -464,6 +464,7 @@
     "api": "API Documentation",
     "impressum": "Imprint",
     "howto": "Understanding wait times",
+    "planner": "Trip planner",
     "fancast": "Fancast",
     "bestTime": "Best time to visit",
     "glossaryLink": "Dictionary",
@@ -518,6 +519,7 @@
     "admin": "Admin",
     "nearbyPark": "Nearby: {parkName}",
     "howto": "How it works",
+    "planner": "Trip planner",
     "glossary": "Dictionary",
     "blog": "Blog",
     "bestTime": "Best Time to Visit",
@@ -1236,6 +1238,9 @@
       "fastPassFrom": "from",
       "rcdbLabel": "{attraction} on RCDB",
       "rcdbTitle": "Technical ride facts on RCDB (Roller Coaster DataBase)"
+    },
+    "planner": {
+      "dragIn": "Drag into the plan"
     }
   },
   "nearby": {
@@ -1861,6 +1866,264 @@
       "openGlossary": "Read up in the glossary",
       "viewerTitle": "3-D view: {name}",
       "figureCount": "{count, plural, one {# track element} other {# track elements}}"
+    }
+  },
+  "planner": {
+    "title": "Day planner",
+    "open": "Open planner",
+    "addRide": "Add to plan",
+    "inPlan": "In the plan",
+    "addAgain": "Ride again",
+    "plannedTimes": "{count}× in plan",
+    "removeRide": "Remove from plan",
+    "empty": {
+      "title": "Nothing planned yet",
+      "bodyGrid": "Find a ride below – it lands on the timeline and can be moved from there.",
+      "planThisPark": "Plan {park} now"
+    },
+    "day": {
+      "today": "Today",
+      "tomorrow": "Tomorrow",
+      "pick": "Pick a day",
+      "closed": "The park is closed that day.",
+      "noHours": "No opening hours are known for this day."
+    },
+    "summary": {
+      "rides": "{count, plural, =0 {No rides} one {One ride} other {# rides}}",
+      "waiting": "Time queuing in total",
+      "waitingLabel": "Wait",
+      "done": "{done} of {total} ridden",
+      "blocks": "{count, plural, one {# block} other {# blocks}}"
+    },
+    "entry": {
+      "expected": "expected",
+      "typicalError": "typically {minutes} min out",
+      "typicalErrorHint": "How far this ride's forecasts have landed from the days that then happened, on average. Half the days fall further out.",
+      "bandHint": "The model reports a spread of plus or minus this many minutes for this hour.",
+      "markDone": "Mark as ridden",
+      "markUndone": "Not ridden after all",
+      "actual": "actually {minutes} min",
+      "noCurve": "There is no hourly curve for this ride.",
+      "dragHandle": "Move",
+      "range": "{from} to {to}",
+      "resizeHandle": "Drag duration"
+    },
+    "tier": {
+      "observed": "Measured",
+      "measured": "Hourly forecast",
+      "composed": "From the day forecast",
+      "longRange": "Rough estimate",
+      "unmeasured": "Accuracy unchecked",
+      "observedHint": "This day is over. The figures are what the queues actually did.",
+      "measuredHint": "The model works this day out hour by hour.",
+      "measuredHintError": "Worked out hour by hour, typically {minutes} min off.",
+      "composedHint": "The day’s level is predicted; the shape comes from earlier days.",
+      "composedHintError": "Day’s level predicted, shape from earlier days, typically {minutes} min off.",
+      "longRangeHint": "This far ahead the day’s level itself gets thin. Read the figures as a direction, not a promise.",
+      "unmeasuredHint": "This far ahead nobody has checked yet how close these figures land. Read them as a direction."
+    },
+    "band": {
+      "plusMinus": "± {minutes} min"
+    },
+    "context": {
+      "weatherUnknown": "No weather forecast reaches this far ahead.",
+      "holiday": "Public holiday",
+      "bridgeDay": "Bridge day",
+      "schoolVacation": "School holidays",
+      "weekend": "Weekend",
+      "neighborHolidays": "Holidays next door",
+      "hours": "{open} to {close}",
+      "hoursObserved": "(measured)",
+      "hoursObservedHint": "The park has published nothing for this date. These hours come from hours we recorded, and the real day may be longer."
+    },
+    "search": {
+      "placeholder": "Search rides",
+      "noResults": "No ride found.",
+      "tapHint": "Tap a ride and it lands on the next free hour, where you can move it.",
+      "opensAt": "from {time}"
+    },
+    "clearDay": "Clear the day",
+    "clearDayConfirm": "Delete every entry for this day?",
+    "loading": "Loading the plan",
+    "error": "The plan could not be loaded.",
+    "noPlan": "There is no forecast for this day.",
+    "overview": {
+      "empty": "No days planned yet."
+    },
+    "planThisDay": "Plan your rides for this day",
+    "unit": {
+      "min": "min"
+    },
+    "grid": {
+      "closesApprox": "until ~{time}",
+      "now": "Now"
+    },
+    "transfer": {
+      "tight": "transfer tight",
+      "good": "transfer fine",
+      "generous": "transfer generous",
+      "broken": "does not work",
+      "unknown": "open",
+      "brokenBy": "{minutes} min short",
+      "repair": "move later",
+      "distance": "{distance} as the crow flies",
+      "minWalk": "at least {minutes} min to change",
+      "allowance": "incl. leaving the station and the ride itself, estimated",
+      "noSpread": "calculated without the forecast’s spread",
+      "gap": "{minutes} min"
+    },
+    "close": "Clear selection",
+    "shows": {
+      "none": "No show times on record.",
+      "next": "Up next",
+      "first": "First show",
+      "projected": "Expected",
+      "projectedFrom": "Times from {date}, carried over to this weekday.",
+      "over": "Today's shows have all finished.",
+      "more": "{count, plural, =1 {+1 more} other {+# more}}",
+      "hidden": "Showtimes hidden",
+      "hide": "Hide showtimes",
+      "show": "Show showtimes"
+    },
+    "warn": {
+      "closedNow": "Reporting closed right now.",
+      "downYesterday": "Was out of service all day yesterday."
+    },
+    "custom": {
+      "add": "Own block",
+      "defaultLabel": "Break",
+      "label": "Label",
+      "duration": "{minutes} min",
+      "shorter": "15 minutes shorter",
+      "longer": "15 minutes longer",
+      "icon": {
+        "break": "Break",
+        "food": "Food",
+        "show": "Show",
+        "shop": "Shopping",
+        "photo": "Photo",
+        "meet": "Meeting point",
+        "star": "Other"
+      }
+    },
+    "sheet": {
+      "handle": "Resize or close the planner",
+      "resize": "Drag to resize"
+    },
+    "headliners": {
+      "missing": "{count, plural, =1 {1 headliner still missing} other {# headliners still missing}}",
+      "label": "Headliner"
+    },
+    "coach": {
+      "drag": "Drag a ride from the park page onto the timeline — that picks the hour at the same time.",
+      "dismiss": "Dismiss hint"
+    },
+    "parkSearch": {
+      "placeholder": "Search a park …",
+      "searching": "Searching …",
+      "noResults": "No park found.",
+      "alreadyPlanned": "already planned"
+    },
+    "push": {
+      "off": "Turn on notifications",
+      "on": "Notifications are on",
+      "denied": "Your browser blocks notifications for this site. Only your browser settings can change that.",
+      "storedHint": "Your plan is stored on the server for this. Whoever has its link can read and change it — there is no account and no password.",
+      "topics": {
+        "legend": "What should we tell you about?",
+        "only": "You will get one kind of message: {kind}.",
+        "next-up": "When it is time to head to the next ride",
+        "show-times": "Show times",
+        "ride-status": "When a planned ride closes or reopens",
+        "wait-change": "When a planned wait changes a lot"
+      }
+    },
+    "page": {
+      "kicker": "Trip planner",
+      "title": "Your day at the theme park, sorted out first",
+      "lead": "Say which rides you want, and the planner works out with the forecast waits whether the day adds up. Everything stays in your browser — no account needed.",
+      "metaTitle": "Theme park day planner: plan around wait times | park.fan",
+      "metaDescription": "Plan a theme park day against the forecast wait times: drop rides onto a timeline, check every transfer, and fit shows and breaks in between. No account.",
+      "yourPlans": "{count, plural, one {One planned day} other {# planned days}}",
+      "introTitle": "Nothing planned yet",
+      "introBody": "The planner lays your rides on a timeline and puts the wait forecast for that hour on each one. Between them it says how long you have to get across, and whether that is cutting it fine.",
+      "browseParks": "Pick a park",
+      "demo": {
+        "caption": "Real values: Phantasialand on Saturday 12 September 2026, read on 4 September. The day has passed; everything here still moves."
+      },
+      "steps": {
+        "find": {
+          "title": "Pick a park and a day",
+          "body": "The wait-time calendar shows how busy a day will be. From there you go straight into a plan."
+        },
+        "add": {
+          "title": "Add rides",
+          "body": "There's a button on every attraction page. Inside the planner you can search, or drag a ride in."
+        },
+        "arrange": {
+          "title": "Move things until it fits",
+          "body": "Drag a block to another time. The wait and the colour move with it, because both belong to the hour."
+        }
+      }
+    },
+    "calendar": {
+      "prevMonth": "Previous month",
+      "nextMonth": "Next month",
+      "prevDay": "One day back",
+      "nextDay": "One day forward"
+    },
+    "wizard": {
+      "open": "Plan a new day",
+      "addDay": "Another day",
+      "title": "Plan a day",
+      "step": "Step {step} of {total}",
+      "steps": {
+        "park": "Park",
+        "date": "Day",
+        "setup": "Who’s coming"
+      },
+      "back": "Back",
+      "next": "Next",
+      "finish": "Open the plan",
+      "lunch": {
+        "label": "Plan a lunch break",
+        "hint": "Puts a block at 12:30 into the day. You can drag it anywhere once the planner is open."
+      },
+      "kids": {
+        "label": "Children are coming",
+        "hint": "How tall is the smallest child? Rides with a higher minimum get a mark, they are not hidden.",
+        "none": "No children"
+      },
+      "wet": {
+        "label": "Stay dry if possible",
+        "hint": "Water rides get a mark in the list."
+      },
+      "facts": {
+        "title": "What we know about the day",
+        "nothing": "We have no forecast for that day yet.",
+        "pickFirst": "Pick a day and what we know about it shows up here.",
+        "loading": "Loading the forecast …"
+      },
+      "blocks": {
+        "lunch": "Lunch"
+      },
+      "hero": {
+        "question": "Which park are you going to?",
+        "plannedDays": "{count, plural, =0 {No day planned yet} one {One day already planned} other {# days already planned}}"
+      },
+      "progress": "Progress",
+      "nextUp": "Then on to {park}, where you drag rides from the list into the day."
+    },
+    "party": {
+      "add": "Who’s coming?",
+      "tooShort": "Minimum height above the smallest person in the plan",
+      "wet": "Water ride"
+    },
+    "inPark": {
+      "cta": "Plan today at {park}"
+    },
+    "plans": {
+      "title": "My plans"
     }
   }
 }

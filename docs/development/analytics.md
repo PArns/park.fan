@@ -81,6 +81,25 @@ shift happened during load or long after — the difference between a late-arriv
 something that only moves once somebody scrolls, which is exactly the open question. Drop it, and
 the event, once the sources are known.
 
+### The trip planner's one event (Sep 2026)
+
+`plan_day_started` — **one** property, `parkName`, fired the moment a park+date goes from holding
+nothing to holding its first block.
+
+Three decisions, each of them the budget rule applied:
+
+- **The transition, not the write.** A day that already holds three rides and gains a fourth is
+  somebody filling one in. Billing every add would put a row in Umami for every lap of every plan;
+  the empty → not-empty edge fires exactly once per park and date, however the block got there —
+  dragged off a park page, added from the panel's list, or a free block somebody wrote themselves.
+- **No `date`.** It would be a second billed row per planned day, and the report it enables ("how
+  far ahead do people plan") is not the question that was asked.
+- **Not on finishing the wizard.** That is a park and a date with nothing in them yet — an
+  intention rather than a plan, and it would count the visitor who set a day up and bounced.
+
+`parkName` rather than the slug, matching `tab_changed` and `nearby_parks_loaded`: a report that
+groups parks has to group them on one key, and shipping both would be the same fact twice.
+
 ---
 
 ## 2. The phantom-pageview trap (`data-exclude-hash`)

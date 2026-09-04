@@ -813,6 +813,7 @@ export function ParkTodayPanel({
           if (!o) setDetailDate(null);
         }}
         onNavigate={handleDetailNavigate}
+        planner={{ parkSlug, parkName: park.name, geo: { continent, country, city } }}
       />
     </>
   );

@@ -16,6 +16,17 @@ A small set of **static, build-time** feature toggles live in **`lib/config/feat
 
 Accepts `1` / `true` / `on` / `yes` (case-insensitive). Use these for product feature gating; use the `?sim=` param below for per-session geo/debug overrides.
 
+**The trip planner had two switches and now has none.** While it was being
+built it carried a Flags-SDK kill switch (`plannerFlag` in `flags.ts`) plus a
+build-time `PLANNER_ENABLED`, and the split was forced rather than chosen:
+reading a Flags-SDK flag reads headers and cookies, and the header, the footer,
+the parks menu and the launcher all render in `app/[locale]/layout.tsx` — the
+layout of 3,109 prerendered routes, every one of which would have turned dynamic.
+A statically rendered nav can only be gated at build time. Both are gone with the
+feature shipped, and with them `flags.ts`, `/.well-known/vercel/flags` and the
+`flags` / `@flags-sdk/vercel` packages. Anything gated per request again wants
+the same two-tier shape, and the layout half of it still cannot be per-request.
+
 ---
 
 ## Nearby in-park simulation (`?sim=`)

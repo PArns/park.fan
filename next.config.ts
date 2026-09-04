@@ -544,6 +544,29 @@ const nextConfig: NextConfig = {
         permanent: true,
       });
     }
+    // Same for the planner: one page, six segments, and a visitor who lands on
+    // the wrong one — a shared link, a guessed URL — is sent to theirs rather
+    // than served a second copy at a URL that then competes with it.
+    const plannerRedirectSegments: Record<string, string> = {
+      en: 'trip-planner',
+      de: 'tagesplaner',
+      fr: 'planificateur',
+      it: 'pianificatore',
+      nl: 'dagplanner',
+      es: 'planificador',
+    };
+    const plannerAll = Object.values(plannerRedirectSegments);
+    for (const [locale, correct] of Object.entries(plannerRedirectSegments)) {
+      for (const wrong of plannerAll) {
+        if (wrong === correct) continue;
+        rules.push({
+          source: `/${locale}/${wrong}`,
+          destination: `/${locale}/${correct}`,
+          permanent: true,
+        });
+      }
+    }
+
     // Bare `/howto` gets no rule of its own on purpose. It names no language, so
     // any fixed destination here would pin a German visitor to the English page.
     // Left alone it goes the same way every unprefixed path goes: the intl
@@ -641,6 +664,24 @@ const nextConfig: NextConfig = {
       rules.push({
         source: `/${locale}/${segment}`,
         destination: `/${locale}/how-park-fan-works`,
+      });
+    }
+
+    // The trip planner's own page (app/[locale]/trip-planner). Same shape as the
+    // guide above. Keep in step with `lib/planner/segments.ts` — that module is
+    // what every link and every canonical URL is built from, this is only what
+    // serves them.
+    const plannerSegments: Record<string, string> = {
+      de: 'tagesplaner',
+      fr: 'planificateur',
+      it: 'pianificatore',
+      nl: 'dagplanner',
+      es: 'planificador',
+    };
+    for (const [locale, segment] of Object.entries(plannerSegments)) {
+      rules.push({
+        source: `/${locale}/${segment}`,
+        destination: `/${locale}/trip-planner`,
       });
     }
 

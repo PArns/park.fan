@@ -464,6 +464,7 @@
     "api": "API Dokumentation",
     "impressum": "Impressum",
     "howto": "Wartezeiten verstehen",
+    "planner": "Tagesplaner",
     "fancast": "Fancast",
     "bestTime": "Beste Reisezeit",
     "glossaryLink": "Wörterbuch",
@@ -518,6 +519,7 @@
     "admin": "Admin",
     "nearbyPark": "In der Nähe: {parkName}",
     "howto": "So funktioniert’s",
+    "planner": "Tagesplaner",
     "glossary": "Wörterbuch",
     "blog": "Blog",
     "bestTime": "Beste Reisezeit",
@@ -1236,6 +1238,9 @@
       "fastPassFrom": "ab",
       "rcdbLabel": "{attraction} in der RCDB",
       "rcdbTitle": "Technische Daten auf RCDB (Roller Coaster DataBase)"
+    },
+    "planner": {
+      "dragIn": "In den Plan ziehen"
     }
   },
   "nearby": {
@@ -1861,6 +1866,264 @@
       "openGlossary": "Im Glossar nachlesen",
       "viewerTitle": "3-D-Ansicht: {name}",
       "figureCount": "{count, plural, one {# Fahrfigur} other {# Fahrfiguren}}"
+    }
+  },
+  "planner": {
+    "title": "Tagesplaner",
+    "open": "Planer öffnen",
+    "addRide": "In den Plan",
+    "inPlan": "Im Plan",
+    "addAgain": "Nochmal",
+    "plannedTimes": "{count}× im Plan",
+    "removeRide": "Aus dem Plan nehmen",
+    "empty": {
+      "title": "Noch nichts geplant",
+      "bodyGrid": "Such dir unten eine Bahn – sie landet auf der Zeitachse und lässt sich dort verschieben.",
+      "planThisPark": "{park} jetzt planen"
+    },
+    "day": {
+      "today": "Heute",
+      "tomorrow": "Morgen",
+      "pick": "Tag wählen",
+      "closed": "An diesem Tag hat der Park zu.",
+      "noHours": "Für diesen Tag sind keine Öffnungszeiten bekannt."
+    },
+    "summary": {
+      "rides": "{count, plural, =0 {Keine Bahn} one {Eine Bahn} other {# Bahnen}}",
+      "waiting": "Wartezeit zusammen",
+      "waitingLabel": "Wartezeit",
+      "done": "{done} von {total} gefahren",
+      "blocks": "{count, plural, one {# Block} other {# Blöcke}}"
+    },
+    "entry": {
+      "expected": "erwartet",
+      "typicalError": "typisch {minutes} Min. daneben",
+      "typicalErrorHint": "So weit lagen die Prognosen für diese Bahn im Schnitt von dem entfernt, was der Tag dann wirklich brachte. Die Hälfte der Tage liegt weiter daneben.",
+      "bandHint": "Das Modell gibt für diese Stunde eine Streuung von plus/minus so vielen Minuten an.",
+      "markDone": "Als gefahren markieren",
+      "markUndone": "Doch noch nicht gefahren",
+      "actual": "tatsächlich {minutes} Min.",
+      "noCurve": "Für diese Bahn liegt keine Stundenkurve vor.",
+      "dragHandle": "Verschieben",
+      "range": "{from} bis {to}",
+      "resizeHandle": "Dauer ziehen"
+    },
+    "tier": {
+      "observed": "Gemessen",
+      "measured": "Stundenprognose",
+      "composed": "Aus Tagesprognose",
+      "longRange": "Grobe Schätzung",
+      "unmeasured": "Ohne geprüfte Treffsicherheit",
+      "observedHint": "Dieser Tag ist vorbei. Die Zahlen sind, was an den Warteschlangen wirklich stand.",
+      "measuredHint": "Das Modell rechnet diesen Tag stundengenau.",
+      "measuredHintError": "Stundengenau gerechnet, typisch {minutes} Min. daneben.",
+      "composedHint": "Die Tageshöhe ist vorhergesagt, der Verlauf kommt aus früheren Tagen.",
+      "composedHintError": "Tageshöhe vorhergesagt, Verlauf aus früheren Tagen, typisch {minutes} Min. daneben.",
+      "longRangeHint": "So weit im Voraus wird die Tageshöhe selbst dünn. Nimm die Zahlen als Richtung, nicht als Zusage.",
+      "unmeasuredHint": "So weit im Voraus hat noch niemand nachgerechnet, wie gut diese Zahlen treffen. Nimm sie als Richtung."
+    },
+    "band": {
+      "plusMinus": "± {minutes} Min."
+    },
+    "context": {
+      "weatherUnknown": "So weit im Voraus gibt es keine Wettervorhersage.",
+      "holiday": "Feiertag",
+      "bridgeDay": "Brückentag",
+      "schoolVacation": "Ferien",
+      "weekend": "Wochenende",
+      "neighborHolidays": "Ferien nebenan",
+      "hours": "{open} bis {close} Uhr",
+      "hoursObserved": "(gemessen)",
+      "hoursObservedHint": "Der Park hat für diesen Tag nichts veröffentlicht. Die Zeiten stammen aus Stunden, die wir gemessen haben, und der Tag kann länger sein."
+    },
+    "search": {
+      "placeholder": "Bahn suchen",
+      "noResults": "Keine Bahn gefunden.",
+      "tapHint": "Tippe eine Bahn an – sie landet auf der nächsten freien Uhrzeit und lässt sich dort verschieben.",
+      "opensAt": "ab {time}"
+    },
+    "clearDay": "Tag leeren",
+    "clearDayConfirm": "Alle Einträge dieses Tages löschen?",
+    "loading": "Plan wird geladen",
+    "error": "Der Plan konnte nicht geladen werden.",
+    "noPlan": "Für diesen Tag liegt keine Prognose vor.",
+    "overview": {
+      "empty": "Noch keine Tage geplant."
+    },
+    "planThisDay": "Bahnen für diesen Tag einplanen",
+    "unit": {
+      "min": "Min."
+    },
+    "grid": {
+      "closesApprox": "bis ~{time}",
+      "now": "Jetzt"
+    },
+    "transfer": {
+      "tight": "Umstieg knapp",
+      "good": "Umstieg gut",
+      "generous": "Umstieg großzügig",
+      "broken": "geht nicht auf",
+      "unknown": "offen",
+      "brokenBy": "fehlen {minutes} Min.",
+      "repair": "später legen",
+      "distance": "{distance} Luftlinie",
+      "minWalk": "mindestens {minutes} Min. Umstieg",
+      "allowance": "inkl. Ausstieg und Fahrt, geschätzt",
+      "noSpread": "ohne Streuung der Prognose gerechnet",
+      "gap": "{minutes} Min."
+    },
+    "close": "Auswahl aufheben",
+    "shows": {
+      "none": "Keine Spielzeiten bekannt.",
+      "next": "Als Nächstes",
+      "first": "Erste Vorstellung",
+      "projected": "Voraussichtlich",
+      "projectedFrom": "Zeiten vom {date}, hochgerechnet auf diesen Wochentag.",
+      "over": "Alle Vorstellungen für heute gelaufen.",
+      "more": "{count, plural, =1 {+1 weitere} other {+# weitere}}",
+      "hidden": "Spielzeiten ausgeblendet",
+      "hide": "Spielzeiten ausblenden",
+      "show": "Spielzeiten einblenden"
+    },
+    "warn": {
+      "closedNow": "Meldet gerade geschlossen.",
+      "downYesterday": "War gestern den ganzen Tag außer Betrieb."
+    },
+    "custom": {
+      "add": "Eigener Block",
+      "defaultLabel": "Pause",
+      "label": "Beschriftung",
+      "duration": "{minutes} Min.",
+      "shorter": "15 Minuten kürzer",
+      "longer": "15 Minuten länger",
+      "icon": {
+        "break": "Pause",
+        "food": "Essen",
+        "show": "Show",
+        "shop": "Shopping",
+        "photo": "Foto",
+        "meet": "Treffpunkt",
+        "star": "Sonstiges"
+      }
+    },
+    "sheet": {
+      "handle": "Planer vergrößern oder schließen",
+      "resize": "Breite ziehen"
+    },
+    "headliners": {
+      "missing": "{count, plural, =1 {1 Headliner fehlt noch} other {# Headliner fehlen noch}}",
+      "label": "Headliner"
+    },
+    "coach": {
+      "drag": "Zieh eine Bahn von der Parkseite auf die Zeitachse – dabei wählst du gleich die Uhrzeit.",
+      "dismiss": "Hinweis ausblenden"
+    },
+    "parkSearch": {
+      "placeholder": "Park suchen …",
+      "searching": "Suche …",
+      "noResults": "Kein Park gefunden.",
+      "alreadyPlanned": "schon im Plan"
+    },
+    "push": {
+      "off": "Benachrichtigungen einschalten",
+      "on": "Benachrichtigungen sind an",
+      "denied": "Dein Browser blockiert Benachrichtigungen für diese Seite. Das lässt sich nur in den Browser-Einstellungen ändern.",
+      "storedHint": "Dein Plan liegt dafür auf dem Server. Wer den Link dazu hat, kann ihn lesen und ändern – es gibt kein Konto und kein Passwort.",
+      "topics": {
+        "legend": "Wobei sollen wir Bescheid sagen?",
+        "only": "Du bekommst eine Nachricht: {kind}.",
+        "next-up": "Wenn du zur nächsten Bahn losmusst",
+        "show-times": "Vorstellungszeiten der Shows",
+        "ride-status": "Wenn eine geplante Bahn schließt oder wieder öffnet",
+        "wait-change": "Wenn sich eine geplante Wartezeit deutlich ändert"
+      }
+    },
+    "page": {
+      "kicker": "Tagesplaner",
+      "title": "Dein Tag im Freizeitpark, vorher sortiert",
+      "lead": "Leg fest, welche Bahnen du fahren willst, und der Planer rechnet mit den vorhergesagten Wartezeiten aus, ob der Tag so aufgeht. Alles liegt in deinem Browser, kein Konto nötig.",
+      "metaTitle": "Freizeitpark-Tag planen: Wartezeiten einrechnen | park.fan",
+      "metaDescription": "Plane deinen Freizeitpark-Tag mit den vorhergesagten Wartezeiten: Bahnen auf eine Zeitleiste ziehen, Umstiege prüfen, Shows und Pausen einplanen. Ohne Konto.",
+      "yourPlans": "{count, plural, one {Ein geplanter Tag} other {# geplante Tage}}",
+      "introTitle": "Noch nichts geplant",
+      "introBody": "Der Planer legt deine Bahnen auf eine Zeitleiste und setzt an jede die Wartezeit, die für diese Stunde vorhergesagt ist. Dazwischen steht, wie viel Zeit zum Umsteigen bleibt – und ob das knapp wird.",
+      "browseParks": "Park aussuchen",
+      "demo": {
+        "caption": "Echte Werte: Phantasialand am Samstag, 12. September 2026, abgerufen am 4. September. Der Tag ist vorbei, verschieben lässt sich hier trotzdem alles."
+      },
+      "steps": {
+        "find": {
+          "title": "Park und Tag wählen",
+          "body": "Im Wartezeiten-Kalender siehst du, wie voll ein Tag wird. Von dort geht es direkt in den Plan."
+        },
+        "add": {
+          "title": "Bahnen dazunehmen",
+          "body": "Auf jeder Attraktionsseite steht ein Knopf. Im Planer selbst kannst du auch suchen oder eine Bahn hineinziehen."
+        },
+        "arrange": {
+          "title": "Verschieben, bis es passt",
+          "body": "Zieh einen Block auf eine andere Uhrzeit. Die Wartezeit und die Farbe ziehen mit, weil beide zur Stunde gehören."
+        }
+      }
+    },
+    "calendar": {
+      "prevMonth": "Vorheriger Monat",
+      "nextMonth": "Nächster Monat",
+      "prevDay": "Ein Tag zurück",
+      "nextDay": "Ein Tag weiter"
+    },
+    "wizard": {
+      "open": "Neuen Tag planen",
+      "addDay": "Weiterer Tag",
+      "title": "Tag planen",
+      "step": "Schritt {step} von {total}",
+      "steps": {
+        "park": "Park",
+        "date": "Tag",
+        "setup": "Wer kommt mit"
+      },
+      "back": "Zurück",
+      "next": "Weiter",
+      "finish": "Plan öffnen",
+      "lunch": {
+        "label": "Mittagessen einplanen",
+        "hint": "Legt einen Block um 12:30 in den Tag. Verschieben kannst du ihn im Planer."
+      },
+      "kids": {
+        "label": "Kinder sind dabei",
+        "hint": "Wie groß ist das kleinste Kind? Bahnen mit höherer Mindestgröße werden markiert, nicht versteckt.",
+        "none": "Keine Kinder"
+      },
+      "wet": {
+        "label": "Möglichst trocken bleiben",
+        "hint": "Wasserbahnen bekommen ein Zeichen in der Liste."
+      },
+      "facts": {
+        "title": "Was wir über den Tag wissen",
+        "nothing": "Für diesen Tag haben wir noch keine Prognose.",
+        "pickFirst": "Wähle einen Tag, dann steht hier, was wir über ihn wissen.",
+        "loading": "Prognose wird geladen …"
+      },
+      "blocks": {
+        "lunch": "Mittagessen"
+      },
+      "hero": {
+        "question": "In welchen Park geht's?",
+        "plannedDays": "{count, plural, =0 {Noch kein Tag geplant} one {Ein Tag ist schon geplant} other {# Tage sind schon geplant}}"
+      },
+      "progress": "Fortschritt",
+      "nextUp": "Danach geht es zu {park}. Dort ziehst du Fahrten aus der Liste in den Tag."
+    },
+    "party": {
+      "add": "Wer kommt mit?",
+      "tooShort": "Mindestgröße höher als die kleinste Person im Plan",
+      "wet": "Wasserbahn"
+    },
+    "inPark": {
+      "cta": "Heute im {park} planen"
+    },
+    "plans": {
+      "title": "Meine Pläne"
     }
   }
 }

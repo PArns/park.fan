@@ -60,6 +60,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'attractions',
     'nearby',
     'parks',
+    'planner',
     'share',
   ],
   '/parks/[continent]/[country]/[city]/[park]/wait-time-calendar/[[...date]]': [
@@ -70,6 +71,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'share',
   ],
   '/search': [],
+  '/trip-planner': ['parks.weather', 'planner'],
   '/ui': ['attractions', 'nearby', 'parkCard', 'parks', 'stats'],
 } as const;
 
@@ -78,6 +80,6 @@ export const ROUTE_MESSAGE_NAMESPACES = {
  * page payload (see `LAZY_MESSAGE_BOUNDARIES` in
  * `lib/i18n/route-namespaces.mjs`).
  */
-export const LAZY_CHUNK_NAMESPACES = ['attractions', 'parks'] as const;
+export const LAZY_CHUNK_NAMESPACES = ['attractions', 'parks', 'parks.weather', 'planner'] as const;
 
 export type RouteMessageKey = keyof typeof ROUTE_MESSAGE_NAMESPACES;

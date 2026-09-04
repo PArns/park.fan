@@ -28,6 +28,7 @@ import { objectPositionForSrc } from '@/lib/media/focus';
 import { getMediaAltBySrc } from '@/lib/media/text';
 import { ParkBackground } from '@/components/parks/park-background';
 import { FavoriteStar } from '@/components/common/favorite-star';
+import { AddToPlannerButton } from '@/components/planner/add-to-planner-button';
 import { ParkDistance } from '@/components/common/park-distance';
 import { ShareButtons } from '@/components/common/share-buttons';
 import { ContributeBanner } from '@/components/contribute/contribute-banner';
@@ -60,6 +61,7 @@ import { generateAttractionBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { stripNewPrefix, cn } from '@/lib/utils';
 import { findRelocatedParkRedirect, findRenamedParkRedirect } from '@/lib/utils/redirect-utils';
 import { RouteMessages } from '@/i18n/route-messages';
+import { PlannerPageParkBeacon } from '@/components/planner/planner-page-park-beacon';
 import { parkArgs } from '@/lib/i18n/park-phrase';
 
 interface AttractionPageProps {
@@ -331,6 +333,16 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   return (
     <RouteMessages route="/parks/[continent]/[country]/[city]/[park]/[attraction]">
       <>
+        {/* Tells the planner which park this route is about — see
+          `lib/planner/page-park.ts`. The panel lives in the layout and
+          otherwise cannot tell one park's page from another's, which is how its
+          header came to name a park the reader was not looking at. */}
+        <PlannerPageParkBeacon
+          slug={park.slug}
+          name={stripNewPrefix(park.name)}
+          geo={{ continent, country, city }}
+          timezone={park.timezone}
+        />
         <AttractionStructuredData
           attraction={attraction}
           park={park}
@@ -424,7 +436,18 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                     </div>
                   </div>
                   {attraction.id && (
-                    <div className="flex items-center">
+                    <div className="flex items-center gap-2">
+                      {/* The planner's real entry point. Its floating launcher only
+                          appears once something is planned, so without a control
+                          here the feature has no first step. */}
+                      <AddToPlannerButton
+                        parkSlug={parkSlug}
+                        parkName={parkName}
+                        geo={{ continent, country, city }}
+                        attractionSlug={attractionSlug}
+                        attractionName={attraction.name}
+                        timezone={park.timezone}
+                      />
                       <FavoriteStar type="attraction" id={attraction.id} size="lg" />
                     </div>
                   )}

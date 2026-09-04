@@ -8,7 +8,12 @@ import {
 } from '@/lib/api/parks';
 import { getParkWeatherNowcastFresh } from '@/lib/api/weather-nowcast';
 import { getParkHistoricalStats, getParkHourlyProfile, getRideDayCurve } from '@/lib/api/stats';
-import { enrichAttractionsWithImages } from '@/lib/utils/park-assets';
+import { getPlanDay } from '@/lib/api/plan';
+import {
+  enrichAttractionsWithImages,
+  getCardObjectPosition,
+  getParkBackgroundImage,
+} from '@/lib/utils/park-assets';
 import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
 import {
   applyNowcastSimulation,
@@ -330,6 +335,65 @@ export async function GET(
       // six parks in a row that "have no curve".
       console.error(`[Ride-Day-Curve API] ${continent}/${country}/${city}/${park}:`, error);
       return NextResponse.json({ error: 'Failed to fetch day curve' }, { status: 502 });
+    }
+  }
+
+  // Handle one day's plan: [continent, country, city, park, 'plan', 'day'] (6 segments)
+  // Per-ride hourly curves for one date, plus that day's context.
+  //
+  // s-maxage is FIFTEEN minutes across the board rather than scaled by distance.
+  // A day in November genuinely does not move and could hold for hours, but the
+  // date is in the CDN key, so a per-distance TTL would mean the same URL is
+  // cached differently depending on when it was first asked for — and today, the
+  // one that does move, is by far the most requested date.
+  if (path && path.length === 6 && path[4] === 'plan' && path[5] === 'day') {
+    const [continent, country, city, park] = path;
+    const { searchParams } = new URL(request.url);
+    // Passed through as-is: the backend validates the shape and 400s a bad one,
+    // and inventing a second validator here would put two answers in the field.
+    const date = searchParams.get('date') ?? undefined;
+
+    try {
+      const data = await getPlanDay(continent, country, city, park, date);
+
+      if (!data) {
+        return NextResponse.json(
+          { error: 'Plan not available' },
+          { status: 404, headers: cdnCacheHeaders(STATS_MISSING_CACHE) }
+        );
+      }
+
+      // The ride's photo, resolved HERE and not in the client. The media
+      // database is a 107 KB filesystem catalogue that `@/lib/media` pulls in
+      // whole, and the planner is a Client Component mounted in every page's
+      // layout — importing it there would ship the catalogue to every visitor.
+      // The same helper the park payload already uses does it server-side, with
+      // the content-hash query the focal-point editor depends on and the
+      // `object-position` a curated focal point resolves to.
+      const withImages = enrichAttractionsWithImages(
+        data.rides.map((ride) => ({ ...ride, slug: ride.attractionSlug, park: { slug: park } }))
+      );
+      // The PARK's own photo, for the panel to sit on. Same reason as the ride
+      // photos one line up — `@/lib/media` is a 107 KB catalogue and the
+      // planner is a Client Component in every page's layout — and the same
+      // helpers, so a focal point curated in the admin decides the crop here
+      // too. `null` where the media database has no picture for the park, which
+      // is 198 of 212 of them, and the panel then simply has no photo.
+      const enriched = {
+        ...data,
+        parkBackgroundImage: getParkBackgroundImage(park),
+        parkBackgroundPosition: getCardObjectPosition(park),
+        rides: withImages.map(({ slug: _slug, park: _park, ...ride }) => ride),
+      };
+
+      return NextResponse.json(enriched, {
+        headers: cdnCacheHeaders('public, s-maxage=900, stale-while-revalidate=1800'),
+      });
+    } catch (error) {
+      // Not a 404: the planner would otherwise read a broken endpoint as "this
+      // park has no plan for that day" and quietly draw an empty timeline.
+      console.error(`[Plan-Day API] ${continent}/${country}/${city}/${park}:`, error);
+      return NextResponse.json({ error: 'Failed to fetch plan' }, { status: 502 });
     }
   }
 

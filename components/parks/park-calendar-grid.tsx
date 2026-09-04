@@ -422,6 +422,7 @@ export function ParkCalendarGrid({
           if (!o) setSelectedDate(null);
         }}
         onNavigate={handleDayNavigate}
+        planner={{ parkSlug, parkName: park.name, geo: { continent, country, city } }}
       />
     </>
   );

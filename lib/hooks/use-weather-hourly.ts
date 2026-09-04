@@ -5,6 +5,15 @@ interface UseWeatherHourlyParams {
   latitude: number | null | undefined;
   longitude: number | null | undefined;
   timezone: string | undefined;
+  /**
+   * The park-local day to fetch, `YYYY-MM-DD`. Omitted means today, computed at
+   * FETCH time — see the note on the rollover below, which is why the default
+   * is not simply "today" filled in here.
+   *
+   * A caller that names a day gets it in the query key as well, or two days of
+   * one park would share a cache entry and the second would read the first.
+   */
+  date?: string;
   /** Gate the fetch (e.g. when static `hourly` data is supplied instead). */
   enabled?: boolean;
 }
@@ -32,21 +41,33 @@ function parkLocalDate(timezone: string): string {
  * after midnight, same as before.
  *
  * The server response is cached 15 min, so polling faster is wasted work.
+ *
+ * The upstream reaches about **fourteen days**, not one — the route has taken an
+ * explicit `date` since it was written and pins `start_date`/`end_date` to it.
+ * The planner's weather rail asks for a day the visitor is planning, which may
+ * be any of those; past the horizon Open-Meteo answers an error and this throws,
+ * so a caller must gate on the horizon rather than rely on an empty result.
  */
 export function useWeatherHourly({
   latitude,
   longitude,
   timezone,
+  date,
   enabled = true,
 }: UseWeatherHourlyParams) {
   const hasCoords = latitude != null && longitude != null && !!timezone;
 
   return useQuery<WeatherHourlyToday | null>({
-    queryKey: ['weather-hourly', latitude, longitude, timezone],
+    // `date` only when a caller named one. Left out otherwise so the existing
+    // consumers keep the key they have — and with it the midnight rollover,
+    // which works precisely BECAUSE today is not in the key.
+    queryKey: date
+      ? ['weather-hourly', latitude, longitude, timezone, date]
+      : ['weather-hourly', latitude, longitude, timezone],
     queryFn: async () => {
-      const date = parkLocalDate(timezone!);
+      const day = date ?? parkLocalDate(timezone!);
       const response = await fetch(
-        `/api/weather/hourly?lat=${latitude}&lon=${longitude}&tz=${encodeURIComponent(timezone!)}&date=${date}`,
+        `/api/weather/hourly?lat=${latitude}&lon=${longitude}&tz=${encodeURIComponent(timezone!)}&date=${day}`,
         { cache: 'no-store' }
       );
 

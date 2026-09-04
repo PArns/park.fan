@@ -15,6 +15,7 @@ import { LAYOUT_MESSAGE_NAMESPACES } from '@/i18n/route-namespaces.generated';
 import { Providers } from '@/lib/providers';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
+import { PlannerLauncher } from '@/components/planner/planner-launcher';
 import { hasPublishedPosts } from '@/lib/blog/listing';
 import { getGeoMenu } from '@/lib/navigation/geo-menu';
 import { getBlogMenu } from '@/lib/navigation/blog-menu';
@@ -281,7 +282,21 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                   term, a 404) was 80–115 px taller than what a phone actually shows — it scrolled
                   for no content and made the browser chrome jitter on the way. The unit is already
                   in the house: app/[locale]/page.tsx uses `lg:min-h-dvh`. */}
-              <div className="flex min-h-dvh flex-col">
+              {/* The open planner's width, so the page beside it reflows rather
+                  than being covered. `--planner-inset` is set on the document
+                  element by `PlannerLauncher` and is `0px` until then, which is
+                  what the server renders and what a visitor who never opens the
+                  panel keeps — so this costs nothing and cannot mismatch on
+                  hydration. Above `sm` only: below it the panel is a modal
+                  bottom sheet, and a right inset there would leave a stripe of
+                  page beside nothing.
+
+                  The DURATION is a property too, because the panel edge is
+                  draggable: 300 ms is right for an open or a close and wrong
+                  under a pointer, where the page would lag a third of a second
+                  behind the edge somebody is holding. The tab sets it to 0 for
+                  the length of a drag. */}
+              <div className="flex min-h-dvh flex-col transition-[padding] [transition-duration:var(--planner-inset-ms,300ms)] ease-in-out sm:pr-[var(--planner-inset,0px)]">
                 {/* Reserves the bar's exact height (h-12 + the 1 px border the header itself draws)
                     so the first paint does not move when the client Header streams in. Both
                     numbers live in components/layout/header.tsx — change them together. */}
@@ -300,6 +315,10 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                   <Footer locale={locale} showBlog={showBlog} />
                 </Suspense>
               </div>
+              {/* Fixed, so it is outside the flow and reserves nothing — and it
+                  renders nothing at all until the visitor has planned something,
+                  which on the server is always. */}
+              <PlannerLauncher />
             </NextIntlClientProvider>
           </Providers>
         </ThemeProvider>

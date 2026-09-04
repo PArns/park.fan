@@ -81,7 +81,19 @@ export function ParkBackground({
         'pointer-events-none overflow-hidden select-none',
         contained
           ? 'absolute inset-0'
-          : 'fixed top-0 right-0 left-0 -z-10 h-[calc(75vh+4rem)] max-h-[850px]'
+          : // `position: fixed` resolves against the VIEWPORT, so this layer is
+            // the one thing on a park page that the planner's inset cannot
+            // reach: the wrapper in `app/[locale]/layout.tsx` insets by padding,
+            // and padding an ancestor does nothing to a fixed descendant.
+            // Measured with a 448 px panel open on a 1440 px window, this hero
+            // still spanned 0→1440 while the page beside it was 992 — and the
+            // panel is glass, so the park photo read straight through it
+            // (average channel delta 19/255 over the panel's own 448×675 box).
+            // The right edge follows the same variable the page does, which is
+            // `0px` while the planner is shut, i.e. unchanged for everybody who
+            // never opens it. No transition on it deliberately: animating the
+            // width would re-rasterize a 1440×739 blurred photo for 300 ms.
+            'fixed top-0 right-0 left-0 -z-10 h-[calc(75vh+4rem)] max-h-[850px] sm:right-[var(--planner-inset,0px)]'
       )}
     >
       <div className="relative h-full w-full">

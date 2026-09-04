@@ -464,6 +464,7 @@
     "api": "Documentation API",
     "impressum": "Mentions légales",
     "howto": "Comprendre les temps d’attente",
+    "planner": "Planificateur",
     "fancast": "Fancast",
     "bestTime": "Meilleure période",
     "glossaryLink": "Dictionnaire",
@@ -518,6 +519,7 @@
     "admin": "Admin",
     "nearbyPark": "À proximité : {parkName}",
     "howto": "Comment ça marche",
+    "planner": "Planificateur",
     "glossary": "Dictionnaire",
     "blog": "Blog",
     "bestTime": "Meilleure période",
@@ -1236,6 +1238,9 @@
       "fastPassFrom": "à partir de",
       "rcdbLabel": "{attraction} sur RCDB",
       "rcdbTitle": "Données techniques sur RCDB (Roller Coaster DataBase)"
+    },
+    "planner": {
+      "dragIn": "Glisser dans le plan"
     }
   },
   "nearby": {
@@ -1861,6 +1866,264 @@
       "openGlossary": "Consulter le glossaire",
       "viewerTitle": "Vue 3-D : {name}",
       "figureCount": "{count, plural, one {# élément du tracé} other {# éléments du tracé}}"
+    }
+  },
+  "planner": {
+    "title": "Planificateur",
+    "open": "Ouvrir le planificateur",
+    "addRide": "Au planning",
+    "inPlan": "Dans le planning",
+    "addAgain": "Encore une fois",
+    "plannedTimes": "{count}× au programme",
+    "removeRide": "Retirer du planning",
+    "empty": {
+      "title": "Rien de prévu pour l’instant",
+      "bodyGrid": "Cherche une attraction ci-dessous – elle se pose sur la frise et se déplace de là.",
+      "planThisPark": "Planifier {park} maintenant"
+    },
+    "day": {
+      "today": "Aujourd’hui",
+      "tomorrow": "Demain",
+      "pick": "Choisir un jour",
+      "closed": "Le parc est fermé ce jour-là.",
+      "noHours": "Aucun horaire d’ouverture connu pour ce jour."
+    },
+    "summary": {
+      "rides": "{count, plural, =0 {Aucune attraction} one {Une attraction} other {# attractions}}",
+      "waiting": "Temps d’attente cumulé",
+      "waitingLabel": "Attente",
+      "done": "{done} sur {total} faites",
+      "blocks": "{count, plural, one {# bloc} other {# blocs}}"
+    },
+    "entry": {
+      "expected": "prévu",
+      "typicalError": "écart typique {minutes} min",
+      "typicalErrorHint": "De combien les prévisions pour cette attraction se sont écartées en moyenne de ce que la journée a réellement donné. La moitié des jours s'en écarte davantage.",
+      "bandHint": "Le modèle annonce pour cette heure une dispersion de plus ou moins ce nombre de minutes.",
+      "markDone": "Marquer comme faite",
+      "markUndone": "Finalement pas faite",
+      "actual": "{minutes} min en réalité",
+      "noCurve": "Aucune courbe horaire pour cette attraction.",
+      "dragHandle": "Déplacer",
+      "range": "{from} à {to}",
+      "resizeHandle": "Ajuster la durée"
+    },
+    "tier": {
+      "observed": "Mesuré",
+      "measured": "Prévision horaire",
+      "composed": "D’après la prévision du jour",
+      "longRange": "Estimation grossière",
+      "unmeasured": "Justesse non vérifiée",
+      "observedHint": "Cette journée est passée. Les chiffres sont ce que les files d'attente ont vraiment affiché.",
+      "measuredHint": "Le modèle calcule cette journée heure par heure.",
+      "measuredHintError": "Calculé heure par heure, écart habituel {minutes} min.",
+      "composedHint": "Le niveau du jour est prévu, le profil vient des jours précédents.",
+      "composedHintError": "Niveau du jour prévu, profil des jours passés, écart habituel {minutes} min.",
+      "longRangeHint": "Aussi loin, le niveau du jour lui-même devient mince. Lis les chiffres comme une direction, pas comme une promesse.",
+      "unmeasuredHint": "Aussi loin, personne n’a encore vérifié à quel point ces chiffres tombent juste. Lis-les comme une direction."
+    },
+    "band": {
+      "plusMinus": "± {minutes} min"
+    },
+    "context": {
+      "weatherUnknown": "Aucune prévision météo ne va aussi loin.",
+      "holiday": "Jour férié",
+      "bridgeDay": "Pont",
+      "schoolVacation": "Vacances scolaires",
+      "weekend": "Week-end",
+      "neighborHolidays": "Vacances à côté",
+      "hours": "{open} à {close}",
+      "hoursObserved": "(relevé)",
+      "hoursObservedHint": "Le parc n’a rien publié pour cette date. Ces horaires viennent d’heures que nous avons relevées, et la journée peut être plus longue."
+    },
+    "search": {
+      "placeholder": "Chercher une attraction",
+      "noResults": "Aucune attraction trouvée.",
+      "tapHint": "Touchez une attraction : elle se pose sur la première heure libre, où vous pouvez la déplacer.",
+      "opensAt": "dès {time}"
+    },
+    "clearDay": "Vider la journée",
+    "clearDayConfirm": "Supprimer toutes les entrées de cette journée ?",
+    "loading": "Chargement du planning",
+    "error": "Le planning n’a pas pu être chargé.",
+    "noPlan": "Aucune prévision pour ce jour.",
+    "overview": {
+      "empty": "Aucune journée planifiée."
+    },
+    "planThisDay": "Planifier vos attractions pour ce jour",
+    "unit": {
+      "min": "min"
+    },
+    "grid": {
+      "closesApprox": "jusqu’à ~{time}",
+      "now": "Maintenant"
+    },
+    "transfer": {
+      "tight": "transfert juste",
+      "good": "transfert correct",
+      "generous": "transfert large",
+      "broken": "ne passe pas",
+      "unknown": "ouvert",
+      "brokenBy": "il manque {minutes} min",
+      "repair": "décaler",
+      "distance": "{distance} à vol d’oiseau",
+      "minWalk": "au moins {minutes} min de transfert",
+      "allowance": "sortie de station et attraction comprises, estimé",
+      "noSpread": "calculé sans la dispersion de la prévision",
+      "gap": "{minutes} min"
+    },
+    "close": "Annuler la sélection",
+    "shows": {
+      "none": "Aucun horaire de spectacle connu.",
+      "next": "Prochain",
+      "first": "Premier spectacle",
+      "projected": "Estimation",
+      "projectedFrom": "Horaires du {date}, reportés sur ce jour de la semaine.",
+      "over": "Tous les spectacles du jour sont passés.",
+      "more": "{count, plural, =1 {+1 autre} other {+# autres}}",
+      "hidden": "Horaires masqués",
+      "hide": "Masquer les horaires",
+      "show": "Afficher les horaires"
+    },
+    "warn": {
+      "closedNow": "Signalée fermée en ce moment.",
+      "downYesterday": "Est restée hors service toute la journée d’hier."
+    },
+    "custom": {
+      "add": "Bloc personnel",
+      "defaultLabel": "Pause",
+      "label": "Intitulé",
+      "duration": "{minutes} min",
+      "shorter": "15 minutes de moins",
+      "longer": "15 minutes de plus",
+      "icon": {
+        "break": "Pause",
+        "food": "Repas",
+        "show": "Spectacle",
+        "shop": "Boutique",
+        "photo": "Photo",
+        "meet": "Point de rendez-vous",
+        "star": "Autre"
+      }
+    },
+    "sheet": {
+      "handle": "Agrandir ou fermer le planificateur",
+      "resize": "Ajuster la largeur"
+    },
+    "headliners": {
+      "missing": "{count, plural, =1 {1 attraction phare manque encore} other {# attractions phares manquent encore}}",
+      "label": "Attraction phare"
+    },
+    "coach": {
+      "drag": "Faites glisser une attraction depuis la page du parc sur la frise — cela choisit l'heure en même temps.",
+      "dismiss": "Masquer l'astuce"
+    },
+    "parkSearch": {
+      "placeholder": "Chercher un parc …",
+      "searching": "Recherche …",
+      "noResults": "Aucun parc trouvé.",
+      "alreadyPlanned": "déjà au planning"
+    },
+    "push": {
+      "off": "Activer les notifications",
+      "on": "Les notifications sont actives",
+      "denied": "Votre navigateur bloque les notifications pour ce site. Seuls ses réglages peuvent le changer.",
+      "storedHint": "Votre plan est stocké sur le serveur pour cela. Qui a le lien peut le lire et le modifier : il n'y a ni compte ni mot de passe.",
+      "topics": {
+        "legend": "Sur quoi devons-nous vous prévenir ?",
+        "only": "Vous recevrez un seul type de message : {kind}.",
+        "next-up": "Quand il est temps de rejoindre la prochaine attraction",
+        "show-times": "Horaires des spectacles",
+        "ride-status": "Quand une attraction prévue ferme ou rouvre",
+        "wait-change": "Quand une attente prévue change nettement"
+      }
+    },
+    "page": {
+      "kicker": "Planificateur",
+      "title": "Votre journée au parc d’attractions, réglée à l’avance",
+      "lead": "Indiquez les attractions que vous voulez faire : le planificateur calcule avec les temps d'attente prévus si la journée tient debout. Tout reste dans votre navigateur, sans compte.",
+      "metaTitle": "Planifier sa journée au parc d’attractions | park.fan",
+      "metaDescription": "Organisez votre journée au parc d’attractions avec les temps d’attente prévus : attractions sur une frise, temps de transfert, spectacles et pauses.",
+      "yourPlans": "{count, plural, one {Une journée planifiée} other {# journées planifiées}}",
+      "introTitle": "Rien de planifié pour l’instant",
+      "introBody": "Le planificateur place vos attractions sur une frise et inscrit sur chacune l'attente prévue pour cette heure-là. Entre deux, il indique le temps qu'il vous reste pour traverser, et si cela devient juste.",
+      "browseParks": "Choisir un parc",
+      "demo": {
+        "caption": "Valeurs réelles : Phantasialand le samedi 12 septembre 2026, relevées le 4 septembre. La journée est passée, tout se déplace quand même ici."
+      },
+      "steps": {
+        "find": {
+          "title": "Choisir un parc et un jour",
+          "body": "Le calendrier des temps d'attente montre l'affluence d'une journée. De là, on passe directement au plan."
+        },
+        "add": {
+          "title": "Ajouter des attractions",
+          "body": "Un bouton figure sur chaque page d'attraction. Dans le planificateur, vous pouvez aussi chercher ou faire glisser une attraction."
+        },
+        "arrange": {
+          "title": "Déplacer jusqu'à ce que ça tombe juste",
+          "body": "Faites glisser un bloc à une autre heure. L'attente et la couleur suivent, car les deux appartiennent à l'heure."
+        }
+      }
+    },
+    "calendar": {
+      "prevMonth": "Mois précédent",
+      "nextMonth": "Mois suivant",
+      "prevDay": "Un jour avant",
+      "nextDay": "Un jour après"
+    },
+    "wizard": {
+      "open": "Planifier une journée",
+      "addDay": "Autre jour",
+      "title": "Planifier la journée",
+      "step": "Étape {step} sur {total}",
+      "steps": {
+        "park": "Parc",
+        "date": "Jour",
+        "setup": "Qui vient"
+      },
+      "back": "Retour",
+      "next": "Suivant",
+      "finish": "Ouvrir le planning",
+      "lunch": {
+        "label": "Prévoir le déjeuner",
+        "hint": "Place un bloc à 12h30 dans la journée. Tu pourras le déplacer dans le planificateur."
+      },
+      "kids": {
+        "label": "Des enfants sont là",
+        "hint": "Quelle taille fait le plus petit enfant ? Les attractions avec une taille minimale plus élevée sont signalées, pas masquées.",
+        "none": "Pas d’enfants"
+      },
+      "wet": {
+        "label": "Rester sec si possible",
+        "hint": "Les attractions aquatiques sont signalées dans la liste."
+      },
+      "facts": {
+        "title": "Ce que nous savons de cette journée",
+        "nothing": "Nous n’avons pas encore de prévision pour ce jour.",
+        "pickFirst": "Choisis un jour et ce que nous savons de lui apparaît ici.",
+        "loading": "Chargement de la prévision …"
+      },
+      "blocks": {
+        "lunch": "Déjeuner"
+      },
+      "hero": {
+        "question": "Dans quel parc vas-tu ?",
+        "plannedDays": "{count, plural, =0 {Aucune journée planifiée} one {Une journée est déjà planifiée} other {# journées sont déjà planifiées}}"
+      },
+      "progress": "Progression",
+      "nextUp": "Ensuite, direction {park}. Là, tu glisses des attractions de la liste dans la journée."
+    },
+    "party": {
+      "add": "Qui vient ?",
+      "tooShort": "Taille minimale supérieure à celle de la plus petite personne du planning",
+      "wet": "Attraction aquatique"
+    },
+    "inPark": {
+      "cta": "Planifier la journée à {park}"
+    },
+    "plans": {
+      "title": "Mes plans"
     }
   }
 }

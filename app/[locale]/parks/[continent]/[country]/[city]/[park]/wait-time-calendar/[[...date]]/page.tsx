@@ -7,6 +7,7 @@ import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
 import type { Locale } from '@/i18n/config';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { RouteMessages } from '@/i18n/route-messages';
+import { PlannerPageParkBeacon } from '@/components/planner/planner-page-park-beacon';
 import { catchNonFatal } from '@/lib/api/client';
 import { getParkByGeoPath, getParkSeasons, leanParkForCalendarShell } from '@/lib/api/parks';
 import { getBestDaysCalendarSeed, getCalendarMonthSeed } from '@/lib/api/integrated-calendar';
@@ -365,6 +366,16 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
 
   return (
     <RouteMessages route="/parks/[continent]/[country]/[city]/[park]/wait-time-calendar/[[...date]]">
+      {/* Tells the planner which park this route is about — see
+          `lib/planner/page-park.ts`. The panel lives in the layout and
+          otherwise cannot tell one park's calendar from another's, which is how
+          its header came to name a park the reader was not looking at. */}
+      <PlannerPageParkBeacon
+        slug={park.slug}
+        name={parkName}
+        geo={{ continent, country, city }}
+        timezone={park.timezone}
+      />
       <ParkPageShell
         park={park}
         seasons={seasons}

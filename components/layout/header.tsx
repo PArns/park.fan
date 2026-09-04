@@ -6,6 +6,7 @@ import { Link, usePathname } from '@/i18n/navigation';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
+import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import type { Locale } from '@/i18n/config';
 import { Menu, MapPin, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -63,6 +64,7 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
   // the hub's hero — and never linked it. Same localized segment, now also a destination.
   const bestTimePath = '/' + BEST_TIME_SEGMENTS[locale as Locale];
   const howtoPath = '/' + HOWTO_SEGMENTS[locale as Locale];
+  const plannerPath = '/' + PLANNER_SEGMENTS[locale as Locale];
   const pathname = usePathname();
   const { data: nearbyData } = useHomeNearbyParks();
   const parks =
@@ -244,7 +246,38 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
          nothing — so the band's 24 px blur blurred an empty backdrop and the glass was simply not
          there. The bar's own material moved into the sibling layer below, which blurs the page
          exactly as before and is nobody's ancestor. */
-      className={`relative sticky top-0 z-50 h-12 border-b transition-[border-color] duration-500 ${
+      /* `@container`, so the four visibility switches below ask how wide THIS BAR
+         is rather than how wide the window is. The two stopped being the same
+         number when the trip planner's panel started insetting the page: the
+         wrapper in `app/[locale]/layout.tsx` pads the page by the panel's width,
+         so with a 448 px panel on a 1440 px window the bar's box is 992 px while
+         `lg:`/`xl:` still read 1440 and kept handing it a desktop's worth of
+         content. Measured then: children summing 1087.9 px in a 992 px box, the
+         °C/°F toggle and the theme switch 95.9 px UNDER the panel in German and
+         171.1 px in French, and worse at 1280 (+255.9) and 1024 (+389.7),
+         because the panel is a fixed width and the box it leaves shrinks with
+         the window.
+
+         On the HEADER and not on the row inside it: `container-type` makes an
+         element the containing block for absolutely positioned descendants, and
+         the corner logo is `absolute left-6` — against the row (which is
+         `container mx-auto`, i.e. 1280 wide and centred in a 1440 window) it
+         would sit 80 px further right and break the handoff the whole lockup
+         geometry is built on. The header is already `relative`, so nothing about
+         that resolution changes here.
+
+         `container-type: inline-size` implies `contain: layout style
+         inline-size` and NOT `contain: paint`, which is what would have made
+         this element a backdrop root — see the note above about why the bar's
+         material lives in a sibling layer. Measured after the change: the menu
+         band's blur is unchanged.
+
+         The thresholds are the old ones on purpose. With the planner shut the
+         header spans the viewport, so 1024 and 1280 as container queries are the
+         same two switches at the same two window widths — the bar keeps every
+         layout it had, and only gains the ones it needs while the panel is
+         open. */
+      className={`@container relative sticky top-0 z-50 h-12 border-b transition-[border-color] duration-500 ${
         isTransparent ? 'border-transparent' : 'border-border/50'
       }`}
     >
@@ -284,7 +317,30 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
            pixel and, worse, centred the in-flow logo on a different box than the corner copy,
            which is absolutely centred in the header itself — the two copies of the same lockup
            sat 0.5 px apart for the whole handoff. */
-        className="container mx-auto flex h-full items-center justify-between px-4 md:px-0"
+        /* The row's own width, and it may NOT come from the viewport. `container`
+           is a media-query utility: its max-width is picked from how wide the
+           WINDOW is, while its parent here is the header, whose box the trip
+           planner shrinks without the window changing at all. The two disagree
+           the moment the panel opens, and the container then fills its parent
+           edge to edge — measured on a park page with the planner open, the
+           lockup sat at x=8 in a 1552 px header and at x=0 in a 992 px one,
+           flush against the screen. `md:px-0` is the other half: the padding is
+           dropped because the max-width is supposed to be providing the inset,
+           so when the max-width stops applying the row loses both at once.
+           Same thresholds, asked of the header instead — `@container` is already
+           on it for the nav switches — so the row insets against the space it
+           actually has.
+
+           And `px-4` is a FLOOR now rather than something the max-width
+           replaces. `md:px-0` assumed the container is always narrower than its
+           parent, which is false at every tier boundary: at a 1024 px window
+           the 1024 tier applies, the row fills the header exactly, and the
+           lockup sat at x=0 — flush against the edge of the screen, planner or
+           no planner. Measured at 768 and 1024 shut, and at 1440 and 2000 with
+           the panel open. Above 768 the bar's contents move 16 px inward; below
+           it nothing changes, which is where the width budget in
+           `design-system.md` is counted. */
+        className="mx-auto flex h-full w-full items-center justify-between px-4 @min-[768px]:max-w-[768px] @min-[1024px]:max-w-[1024px] @min-[1280px]:max-w-[1280px] @min-[1536px]:max-w-[1536px]"
       >
         {/* Corner logo – absolute, visible only when transparent (hero top).
             Same left-6 offset as the hero image info text below. On scroll it hands over to the
@@ -329,9 +385,18 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
             burger — 789 px of content in a 736 px box. German wrapped it onto two lines and the
             document grew a horizontal scrollbar. The trigger is icon-only below `lg` now, and the
             nav starts where the input does; under that width everything lives in the burger,
-            which is the only arrangement that holds in all six languages. */}
+            which is the only arrangement that holds in all six languages.
+
+            `whitespace-nowrap` is the other half and was missing. Without it the
+            flex items shrink and WRAP their labels: measured at 1024 px in all
+            six languages, "Parks entdecken" and "So funktioniert's" came out on
+            two lines each in a 48 px bar, and the first of them painted across
+            the logo. A nav label is never two lines — the row is one line by
+            construction — so the row is allowed to be tighter (`gap-3.5`, and
+            `xl:gap-5` instead of 6) and the search field beside it shrinks
+            before anything here does. */}
         <nav
-          className={`hidden items-center gap-5 lg:flex xl:gap-6 ${fadeClass}`}
+          className={`hidden items-center gap-3.5 whitespace-nowrap @min-[1024px]:flex @min-[1280px]:gap-5 ${fadeClass}`}
           aria-label="Main navigation"
           aria-hidden={isTransparent}
         >
@@ -410,6 +475,19 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
           >
             {t('howto')}
           </Link>
+          {/* Der Tagesplaner. Er stand hier zuerst nicht, weil diese Zeile mit
+              sechs Einträgen schon umbrach — das ist mit `whitespace-nowrap`
+              und der schmaleren Suche oben behoben, und erst dadurch ist Platz
+              für einen siebten. */}
+          <Link
+            href={plannerPath}
+            prefetch={false}
+            className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+            tabIndex={isTransparent ? -1 : 0}
+            data-header-stagger
+          >
+            {t('planner')}
+          </Link>
           {/* Favoriten stehen in dieser Zeile und nicht im Aktionsbereich rechts: sie öffnen
               dasselbe Band wie „Parks entdecken" und „Blog", mit derselben Hover-Hysterese, und
               eine Zeile, in der ein Eintrag anders aufgeht als seine Nachbarn, muss man zweimal
@@ -418,7 +496,12 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
         </nav>
 
         {/* Search Desktop – fades in on scroll */}
-        <div data-header-stagger className={`hidden lg:block lg:w-64 ${fadeClass}`}>
+        {/* The full input from `xl`. Below that the row has no width to spare —
+            see the icon trigger further down, which covers 1024–1279 px. */}
+        <div
+          data-header-stagger
+          className={`hidden @min-[1280px]:block @min-[1280px]:w-64 ${fadeClass}`}
+        >
           <SearchCommand
             trigger="input"
             size="sm"
@@ -454,8 +537,13 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
             bar where it stood before the button existed (18 px over, invisible). Below `sm`
             nothing else in here can give: every control is already at its documented exception. */}
         <div className="flex items-center gap-2 max-sm:gap-1">
-          {/* Search Button Mobile – fades in on scroll */}
-          <div className={`lg:hidden ${fadeClass}`}>
+          {/* The icon trigger, up to `xl` and not just up to `lg`. The nav row
+              is one line by construction now, so it cannot give width back —
+              and at 1024 px it took the document 28 px wide in German and 103
+              in French with a 176 px input beside it. A 36 px icon that opens
+              the same palette costs nobody a search; a horizontal scrollbar on
+              every page costs everybody. */}
+          <div className={`@min-[1280px]:hidden ${fadeClass}`}>
             <SearchCommand trigger="button" size="sm" />
           </div>
 
@@ -487,7 +575,7 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
                   /* `max-sm:size-9` cancels the button scale's 44 px phone tier. The bar is
                      `h-12`; a 44 px burger in it is the mistake the header-geometry requirement
                      names. Third and last opt-out, beside LocaleSwitcher and the search trigger. */
-                  className="max-sm:size-9 lg:hidden"
+                  className="max-sm:size-9 @min-[1024px]:hidden"
                   suppressHydrationWarning
                   tabIndex={isTransparent ? -1 : 0}
                   data-header-stagger
@@ -604,6 +692,14 @@ export function Header({ showBlog = true, geoMenu, blogMenu, featuredParks }: He
                     className="hover:text-primary text-lg font-medium transition-colors"
                   >
                     {t('howto')}
+                  </Link>
+                  <Link
+                    href={plannerPath}
+                    prefetch={false}
+                    data-sheet-stagger
+                    className="hover:text-primary text-lg font-medium transition-colors"
+                  >
+                    {t('planner')}
                   </Link>
                 </nav>
               </SheetContent>

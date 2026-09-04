@@ -183,7 +183,16 @@ export default async function HomePage({ params }: HomePageProps) {
           the hero search dropdown floats out of this section over the content beneath it, and
           `overflow-hidden` keeps the background photo in. The sticky header is z-50, so it still
           wins. */}
-        <section className="hero-entering relative z-10 -mt-12 overflow-visible px-6 pt-24 pb-8 md:pb-10 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-20 lg:pb-12">
+        {/* `suppressHydrationWarning` covers one attribute here: `className`. HeroEntranceGate's
+          inline script removes `hero-entering` 1700 ms in, so on a slow enough load React hydrates
+          against a class list a script has already edited — a development-build warning, and the
+          value that survives is the DOM's, which is the one the gate wanted. That file has the
+          rest. React reads the flag one level deep, on this element's own attributes and text, so
+          a mismatch inside the hero still reports. */}
+        <section
+          suppressHydrationWarning
+          className="hero-entering relative z-10 -mt-12 overflow-visible px-6 pt-24 pb-8 md:pb-10 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-20 lg:pb-12"
+        >
           <HeroRotationProvider>
             <HeroBackground
               imageSrc={randomHeroImage}
