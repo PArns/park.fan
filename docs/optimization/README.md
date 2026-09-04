@@ -10,6 +10,43 @@ und dann `decisions.md`.**
 
 ---
 
+## Was die Rechnung wirklich sagt (2026-09-03)
+
+Die Zahl, um die sich die ganze Arbeit gedreht hat, und sie kam erst am Ende: Vercel-Abrechnung,
+**$18,05 von $20 Inklusivkontingent bei 15 Tagen Restlaufzeit** — hochgerechnet ~$36/Monat,
+also rund $16 über dem Kontingent. On-Demand-Charges zu diesem Zeitpunkt: $0.
+
+| Posten                            | 15 Tage | Anteil | trifft die Cache-Arbeit?            |
+| --------------------------------- | ------: | -----: | ----------------------------------- |
+| Fluid Active CPU                  |   $4,68 |   26 % | **ja**                              |
+| Fast Origin Transfer              |   $4,36 |   24 % | **ja**                              |
+| Build CPU Minutes                 |   $3,63 |   20 % | nein — Deploy-Kadenz                |
+| ISR Writes                        |   $1,80 |   10 % | nein                                |
+| Fluid Provisioned Memory          |   $1,42 |    8 % | teilweise                           |
+| Function Invocations              |   $0,85 |    5 % | **ja**                              |
+| ISR Reads                         |   $0,79 |    4 % | nein                                |
+| Image Optimization (beide Posten) |   $0,33 |    2 % | ja, seit die Bilder CF-gecacht sind |
+
+**Die Cache-Fenster treffen ~55 % der Rechnung** (CPU + Origin Transfer + Invocations = $9,89).
+Das ist der richtige Hebel und er ist gesetzt; die Wirkung braucht Tage, bis sich die Fenster
+füllen.
+
+**Zwei Konsequenzen, beide gegen frühere Empfehlungen auf dieser Seite:**
+
+1. **Cache Reserve lohnt sich bei diesen Zahlen nicht.** Es kostet ~$9/Monat (Cloudflare misst
+   selbst 466.150 Misses und 20,15 GB über 8 Tage → 1,75 Mio Writes/Monat × $4,50) und könnte
+   realistisch $6–10/Monat sparen. Nullsummenspiel mit Zusatzkomplexität.
+2. **`Build CPU Minutes` ist der drittgrößte Posten** und hat mit Traffic nichts zu tun. Am
+   2026-09-03 liefen sieben PRs mit je einem Preview- und einem Produktions-Build. Wer an
+   dieser Zeile sparen will, deployt seltener — nicht anders.
+
+**Ebenfalls abgelehnt: Smart Shield + Argo** ($5/Monat + $0,10/GB). Cloudflares eigene Doku
+sagt, Regional Tiered Cache reduziere die Origin-Requests **nicht**, sondern die Latenz. Bei
+~76 GB/Monat wären das ~$12–13 für schnellere Antworten an einen Traffic, der laut AI Crawl
+Control zu 34.000 Abrufen am Tag aus Crawlern besteht. Latenz für Bots.
+
+---
+
 ## Die echte Trefferquote ist 62 %, nicht 10 %
 
 Abgelesen in **Cloudflare → Caching → Overview**, 30-Minuten-Fenster, 2026-09-03:
