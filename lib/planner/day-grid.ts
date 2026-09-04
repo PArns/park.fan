@@ -102,6 +102,30 @@ export interface DayGrid {
 }
 
 /**
+ * The closing hour on the day's own axis, which is not always the clock's.
+ *
+ * `closeHour` is a wall-clock hour, so a park running 16:00–01:00 reports
+ * `closeHour: 1` and every naive comparison against `openHour: 16` reads it as
+ * a day that ends nine hours before it starts. Unfolded, that day closes in
+ * hour 25, and the axis, the hour test in `estimate.ts` and anything else
+ * asking "is this minute inside the day" all agree again.
+ *
+ * It lives here, exported, rather than inline in `buildDayGrid`, because the
+ * one copy of the rule was the bug: the grid unfolded and `estimateFor` did
+ * not, so every block of a past-midnight park was answered with
+ * `outside-hours` — including the ones in the middle of the evening — and the
+ * planner's totals came out as zero minutes of queueing for a whole night. Two
+ * halves of one statement, in two files, with nothing comparing them.
+ *
+ * Still INCLUSIVE, like the field it reads: the backend loops `h <= closeHour`
+ * and emits a bucket at it. Callers that want an exclusive end add the hour
+ * themselves, which is what `buildDayGrid`'s `+ 60` is.
+ */
+export function unfoldedCloseHour(openHour: number, closeHour: number): number {
+  return closeHour < openHour ? closeHour + 24 : closeHour;
+}
+
+/**
  * The day's axis, or `null` when the park's hours are unknown.
  *
  * `null` is the honest answer and the caller must handle it: inventing
@@ -120,8 +144,9 @@ export function buildDayGrid(
   // `closeHour` is INCLUSIVE: the backend loops `h <= closeHour` and emits a
   // bucket AT it, so the axis has to contain that hour rather than end on it.
   // A close past midnight is unfolded rather than refused — the day is still a
-  // real span even where the API declines to answer for it.
-  const closeMin = (closeHour < openHour ? closeHour + 24 : closeHour) * 60 + 60;
+  // real span even where the API declines to answer for it. See
+  // {@link unfoldedCloseHour}.
+  const closeMin = unfoldedCloseHour(openHour, closeHour) * 60 + 60;
 
   const gridStartMin = openMin - PRE_PAD_MIN;
   const gridEndMin = closeMin + POST_PAD_MIN;

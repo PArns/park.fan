@@ -77,6 +77,25 @@ const LUNCH_START_MINUTE = 12 * 60 + 30;
 const LUNCH_MINUTES = 60;
 
 /**
+ * The elements an Enter already belongs to, as a selector.
+ *
+ * The first four are `PlannerDayColumn`'s guard for its Delete key, copied for
+ * the same reason: a key pressed inside a field is the field's, and the panel
+ * over there carries a search box and an editable block label. What is added
+ * here are the controls the BROWSER itself acts on — Enter on a `<button>` or a
+ * link fires that element's click — so reading the same keystroke as "next
+ * step" would run two actions from one press. In this dialog that is not
+ * hypothetical: every day of the month grid is a `<button>` whose click picks
+ * the date, and the footer's own „Weiter" is one too, which would advance twice.
+ *
+ * `contenteditable` is spelled out in its two truthy forms rather than as a
+ * bare attribute selector, exactly as one file over: `contenteditable="false"`
+ * marks an element that does NOT own the key.
+ */
+const ENTER_BELONGS_TO =
+  'input, textarea, select, button, a[href], [role="button"], [contenteditable=""], [contenteditable="true"]';
+
+/**
  * Planning a day, one question at a time.
  *
  * The feature's way in was a search field: type a park, and a panel opened on
@@ -198,6 +217,82 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
     );
   };
 
+  /**
+   * The footer's primary control, as one object: what it does and whether it
+   * may run.
+   *
+   * There are two callers now — the button and the Enter key — and the whole
+   * point of the shape is that they cannot disagree. The obvious alternative
+   * was a second condition beside the key handler ("Enter advances where there
+   * is a date"), which is the same sentence written twice: the day the
+   * date step grows a second required answer, one of the two copies keeps the
+   * old one and Enter starts skipping a question the button still blocks.
+   *
+   * On the last step `enabled` repeats the condition `finish` itself refuses
+   * on, which is what turned the finish button from always-enabled into a
+   * control that states its own precondition. Nothing changes on screen — the
+   * date step's own button is what gates the way in, and the rail leads
+   * backwards only — but the guard inside `finish` is no longer the only place
+   * that knows.
+   *
+   * `null` on the first step, and that is why the footer is absent there rather
+   * than disabled: picking a park IS the advance, so a „Weiter" beside the list
+   * is a control nobody ever presses, and Enter has nothing to do for the same
+   * reason.
+   */
+  const primary: { run: () => void; enabled: boolean } | null =
+    step === 'park'
+      ? null
+      : step === 'setup'
+        ? { run: finish, enabled: Boolean(park && date) }
+        : { run: () => goTo(steps[Math.min(steps.length - 1, index + 1)]), enabled: Boolean(date) };
+
+  /**
+   * Enter moves the wizard on.
+   *
+   * Three questions on three screens, and until this the only way past each one
+   * was the pointer: the day is answered on a grid the keyboard can reach, and
+   * then the hand has to travel to a button in the corner to do the one thing
+   * that obviously comes next.
+   *
+   * **It hangs on the dialog's content, not on `document`.** `PlannerDayColumn`
+   * binds its Delete key to the document because it has nothing else to bind
+   * to — a block selected with the pointer leaves no element focused, so there
+   * is no node the key is guaranteed to pass through. This dialog is the
+   * opposite case: it is a focus trap, so every keystroke made while it is open
+   * lands on a descendant of the content and bubbles through here by
+   * construction. A document listener would additionally fire for the park page
+   * and the planner panel BEHIND the dialog, and would have to re-derive from
+   * `open` and from the event target what the DOM already knows; it would also
+   * keep listening through the close animation, while Radix still has the
+   * content mounted.
+   *
+   * **What Enter does is the footer's primary button and only that** — see
+   * `primary`, which the button renders off as well. So a step whose question
+   * has no answer yet ignores the key for exactly the reason the button is
+   * grey.
+   *
+   * **A key that belongs to the focused element stays with it** (see
+   * `ENTER_BELONGS_TO`). The park search keeps its own Enter — it picks the
+   * highlighted hit, which is the whole reason that handler exists — and it
+   * keeps it as an `<input>`, by the general rule, not by a name check for that
+   * component. A day cell in the month grid keeps its Enter the same way, so
+   * picking a date and skipping the step can never be one press.
+   * `defaultPrevented` is checked on top of the selector, so a control that
+   * handled the key without being on that list is still believed.
+   *
+   * `event.repeat` is refused because a held key would otherwise walk the last
+   * two steps and finish the wizard while the finger is still down.
+   */
+  const advanceOnEnter = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key !== 'Enter' || event.repeat || event.defaultPrevented) return;
+    const target = event.target as HTMLElement | null;
+    if (target?.closest(ENTER_BELONGS_TO)) return;
+    if (!primary?.enabled) return;
+    event.preventDefault();
+    primary.run();
+  };
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       {/* `flex flex-col` over the grid the dialog ships with, and `p-0` so the
@@ -206,6 +301,7 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
           a phone in landscape. */}
       <DialogContent
         showCloseButton={false}
+        onKeyDown={advanceOnEnter}
         className="flex max-h-[92svh] flex-col gap-0 overflow-hidden p-0 sm:max-w-lg"
       >
         {/* The step, spoken rather than drawn. The rail below says the same
@@ -354,7 +450,9 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
           </div>
         </div>
 
-        {/* No footer on the first step. Picking a park from the list IS the
+        {/* No footer on the first step — which is `primary` being `null` there
+            rather than a second test on `step`, so the row and the Enter key
+            appear and disappear together. Picking a park from the list IS the
             advance, so a `Weiter` button there is a control that never gets
             pressed sitting next to a `Zurück` that leads nowhere.
 
@@ -377,7 +475,7 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
             span the two ends occupy: `justify-between` fills the row whatever
             fits, so that span equals the available width right up to the moment
             it overflows and reads as "exactly right" all the way. */}
-        {step !== 'park' && (
+        {primary && (
           <div className="border-border/60 flex shrink-0 items-center justify-between gap-2 border-t px-3 py-3 sm:px-6">
             <Button
               variant="ghost"
@@ -388,16 +486,16 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
               {t('wizard.back')}
             </Button>
             {step === 'setup' ? (
-              <Button onClick={finish} data-planner-wizard-finish="">
+              <Button
+                onClick={primary.run}
+                disabled={!primary.enabled}
+                data-planner-wizard-finish=""
+              >
                 <Check className="size-4" aria-hidden="true" />
                 {t('wizard.finish')}
               </Button>
             ) : (
-              <Button
-                onClick={() => goTo(steps[Math.min(steps.length - 1, index + 1)])}
-                disabled={!date}
-                data-planner-wizard-next=""
-              >
+              <Button onClick={primary.run} disabled={!primary.enabled} data-planner-wizard-next="">
                 {t('wizard.next')}
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Button>

@@ -42,6 +42,7 @@ import { groupAttractionsByLand } from '@/lib/utils/park-utils';
 import { generateParkBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { RouteMessages } from '@/i18n/route-messages';
 import { PlannerPageParkBeacon } from '@/components/planner/planner-page-park-beacon';
+import { getCardObjectPosition, getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { getParkFaqGlossary } from '@/lib/faq/park-faq-terms';
 import { applyParkSimulation, parseParkSimulation } from '@/lib/parks/park-simulation';
 import { ParkSimulationNotice } from '@/components/parks/park-simulation-notice';
@@ -344,6 +345,8 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
         name={stripNewPrefix(park.name)}
         geo={{ continent, country, city }}
         timezone={park.timezone}
+        backgroundImage={getParkBackgroundImage(park.slug)}
+        backgroundPosition={getCardObjectPosition(park.slug)}
       />
       <ParkPageShell
         park={park}
@@ -436,6 +439,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
             cityName={cityName}
             country={country}
             countryName={countryName}
+            locale={locale}
             suffix={t('h1Suffix')}
             // Keyword-rich, server-rendered intro — gives Google crawlable topical text with the
             // exact "Wartezeiten im {park}" phrase + "heute" that the live (client-streamed) grid

@@ -7,6 +7,7 @@ import type {
   PlannerPark,
   PlannerState,
 } from './types';
+import { MAX_PLANNED_MINUTE } from './types';
 import { clampRiderHeight } from './party';
 
 /**
@@ -113,10 +114,20 @@ function withHourMirror(entry: PlannerEntry): PlannerEntry {
   return { ...entry, hour: Math.floor(entry.startMinute / 60) };
 }
 
+/**
+ * The latest minute a block a HAND put somewhere may carry.
+ *
+ * 25:00, an hour past the last midnight a park's own day can end on. It is the
+ * backstop behind `clampStart`, which is what a drag is actually bounded
+ * by, and it comes from that world: a pointer can be anywhere, including a
+ * long way below the canvas.
+ */
+const MAX_DRAGGED_MINUTE = 25 * 60;
+
 /** Park-local minutes, inside a day. Clamped where it can be tested. */
-function clampMinute(minute: number): number {
+function clampMinute(minute: number, ceiling: number = MAX_DRAGGED_MINUTE): number {
   if (!Number.isFinite(minute)) return 0;
-  return Math.max(0, Math.min(1500, Math.round(minute)));
+  return Math.max(0, Math.min(ceiling, Math.round(minute)));
 }
 
 /**
@@ -274,6 +285,100 @@ export function moveEntry(
       existing.map((e) => (e.id === entryId ? withHourMirror({ ...e, startMinute: target }) : e))
     )
   );
+}
+
+export interface ApplyPlanStop {
+  /** An existing entry to move, or `null` for a ride being added. */
+  entryId: string | null;
+  attractionSlug: string;
+  attractionName: string;
+  startMinute: number;
+}
+
+/**
+ * A whole re-plan, in ONE write.
+ *
+ * What the optimiser's two buttons commit. It has to be a single action rather
+ * than a loop over `moveEntry`/`addEntry` for a reason that is not tidiness:
+ * every `plannerStore.update` stringifies the whole multi-park plan, writes
+ * localStorage, rewrites the cookie and notifies every subscriber on the page,
+ * so re-planning thirteen headliners one at a time would be thirteen of that —
+ * and twelve intermediate states in which the plan is half old and half new,
+ * each of them rendered.
+ *
+ * Everything the caller did not name is KEPT and untouched: a lunch break, a
+ * ticked-off ride, a block the optimiser was not given. This action moves and
+ * adds; it never removes, so a bug in a caller cannot silently shorten
+ * somebody's day.
+ */
+export function applyPlan(
+  state: PlannerState,
+  params: {
+    parkSlug: string;
+    parkName: string;
+    geo: PlannerGeo;
+    timezone?: string;
+    date: string;
+    stops: readonly ApplyPlanStop[];
+  }
+): PlannerState {
+  const { parkSlug, parkName, geo, timezone, date, stops } = params;
+  const existing = state.parks[parkSlug]?.days[date]?.entries ?? [];
+
+  const moved = new Map<string, number>();
+  const added: PlannerEntry[] = [];
+  // Ids are unique within the day, so a new one has to see the ones minted a
+  // moment ago as well as the ones already stored.
+  const seen = [...existing];
+
+  for (const stop of stops) {
+    if (stop.entryId) {
+      moved.set(stop.entryId, clampMinute(stop.startMinute, MAX_PLANNED_MINUTE));
+      continue;
+    }
+    const entry = withHourMirror({
+      id: makeId(stop.attractionSlug, seen),
+      attractionSlug: stop.attractionSlug,
+      attractionName: stop.attractionName,
+      startMinute: clampMinute(stop.startMinute, MAX_PLANNED_MINUTE),
+    });
+    seen.push(entry);
+    added.push(entry);
+  }
+
+  const next = [
+    ...existing.map((entry) => {
+      const minute = moved.get(entry.id);
+      return minute === undefined || minute === entry.startMinute
+        ? entry
+        : withHourMirror({ ...entry, startMinute: minute });
+    }),
+    ...added,
+  ];
+
+  return withDay(state, parkSlug, date, byStart(next), { parkName, geo, timezone });
+}
+
+/**
+ * Put a day back exactly as it was.
+ *
+ * The other half of {@link applyPlan}, and the reason it exists: that action
+ * rewrites a whole day in one press, and "plan every headliner" can turn a
+ * three-ride afternoon into eleven blocks. Undoing that by hand is eleven drags,
+ * which is not an undo.
+ *
+ * It REPLACES rather than merges, because that is what restoring a snapshot
+ * means — an entry added since the snapshot was taken has to go, or pressing
+ * undo would leave the day holding both versions.
+ */
+export function restoreDay(
+  state: PlannerState,
+  parkSlug: string,
+  date: string,
+  entries: readonly PlannerEntry[]
+): PlannerState {
+  if (!state.parks[parkSlug]) return state;
+  return withDay(state, parkSlug, date, byStart(entries.map((entry) => ({ ...entry }))));
 }
 
 /**

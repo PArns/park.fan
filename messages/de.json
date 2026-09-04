@@ -1045,7 +1045,8 @@
         "varHolidays": "Feiertage und Schulferien",
         "varWeather": "Wettervorhersage"
       }
-    }
+    },
+    "planDayCta": "Tag im {park} planen"
   },
   "attractions": {
     "blogPosts": {
@@ -1910,6 +1911,13 @@
       "range": "{from} bis {to}",
       "resizeHandle": "Dauer ziehen"
     },
+    "column": {
+      "pickPark": "Park wählen",
+      "noPark": "Kein Park",
+      "addPark": "Anderen Park planen",
+      "close": "Spalte schließen",
+      "open": "Zweite Spalte öffnen"
+    },
     "tier": {
       "observed": "Gemessen",
       "measured": "Stundenprognose",
@@ -1945,7 +1953,10 @@
       "opensAt": "ab {time}"
     },
     "clearDay": "Tag leeren",
-    "clearDayConfirm": "Alle Einträge dieses Tages löschen?",
+    "clearDayTitle": "Tag leeren?",
+    "clearDayBody": "Alle Einträge dieses Tages werden gelöscht, auch die abgehakten. Die Minuten, die dort schon gemessen wurden, lassen sich nicht zurückholen.",
+    "clearDayAction": "Tag leeren",
+    "cancel": "Abbrechen",
     "loading": "Plan wird geladen",
     "error": "Der Plan konnte nicht geladen werden.",
     "noPlan": "Für diesen Tag liegt keine Prognose vor.",
@@ -2007,6 +2018,22 @@
         "meet": "Treffpunkt",
         "star": "Sonstiges"
       }
+    },
+    "optimize": {
+      "headliners": "Alle Headliner einplanen",
+      "run": "Tag optimieren",
+      "running": "Sortiert …",
+      "hint": "Sortiert die Bahnen nach ihren Stundenkurven, den Laufwegen und den Öffnungszeiten. Mittagspausen und abgehakte Bahnen bleiben, wo sie sind.",
+      "saved": "{minutes} Min. weniger Warten",
+      "already": "Passt schon so",
+      "fitted": "{count, plural, one {eine Bahn passt jetzt in den Tag} other {# Bahnen passen jetzt in den Tag}}",
+      "sameWait": "Umgestellt, gleiche Wartezeit",
+      "resorted": "Der Tag ist umgestellt",
+      "added": "{count, plural, one {Eine Bahn ergänzt} other {# Bahnen ergänzt}}",
+      "skipped": "{count, plural, one {eine passt nicht zur Gruppe} other {# passen nicht zur Gruppe}}",
+      "overflow": "{count, plural, one {eine passt nicht mehr in den Tag} other {# passen nicht mehr in den Tag}}",
+      "capped": "{count, plural, one {eine Bahn blieb außen vor, der Planer sortiert höchstens {max} Stopps} other {# Bahnen blieben außen vor, der Planer sortiert höchstens {max} Stopps}}",
+      "undo": "Rückgängig"
     },
     "sheet": {
       "handle": "Planer vergrößern oder schließen",

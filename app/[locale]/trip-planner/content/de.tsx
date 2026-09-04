@@ -1,4 +1,4 @@
-import { CalendarDays, Footprints, Gauge, HelpCircle, Sunrise, Theater } from 'lucide-react';
+import { CalendarDays, Footprints, Gauge, HelpCircle, Sunrise, Theater, Wand2 } from 'lucide-react';
 import { A, P } from '@/components/marketing/editorial-ui';
 import { Chapter, Note } from '../_chrome';
 import { PlannerDayDemo } from '../_demos';
@@ -133,8 +133,64 @@ export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntr
       </Chapter>
 
       <Chapter
-        id="spielzeiten"
+        id="reihenfolge"
         index="05"
+        icon={Wand2}
+        kicker="Sortieren"
+        title="Der Tag kann sich selbst sortieren"
+      >
+        <P>
+          Zwei Knöpfe übernehmen das. „Alle Headliner einplanen“ holt die großen Bahnen des Parks
+          dazu, die noch nicht im Tag stehen, und sortiert anschließend den ganzen Tag. „Tag
+          optimieren“ ergänzt nichts und ordnet nur um, was schon geplant ist. Dahinter läuft beide
+          Male dieselbe Rechnung; es sind zwei Knöpfe, weil es zwei Fragen sind: füll mir den Tag,
+          und geht die Reihenfolge besser.
+        </P>
+        <P>
+          Sortiert wird nach drei Dingen, und ihre Rangfolge ist die eigentliche Entscheidung.
+          Zuerst zählt, dass alles vor Parkschluss noch drankommt: Ein Plan mit einer Bahn weniger,
+          die wirklich stattfindet, schlägt einen mit einer Bahn mehr, die es nicht mehr wird.
+          Danach zählt die Summe der Wartezeiten, also das, wonach gefragt war. Und wo zwei
+          Reihenfolgen gleich viel kosten, gewinnt die, die früher fertig ist. Einen Regler, der
+          Anstehen gegen Herumstehen abwägt, gibt es nicht: Diese Zahl könnte niemand begründen.
+        </P>
+        <P>
+          Eine Regel über den frühen Morgen steckt darin nicht. Der Planer kennt nur die
+          Stundenkurve jeder einzelnen Bahn. Liegt sie kurz nach der Öffnung am tiefsten, kommt „die
+          große Bahn zuerst“ von selbst heraus; liegt sie flach, kommt etwas anderes heraus. An
+          einem gemessenen Tag steht Taron Stunde für Stunde bei 60, 60, 54, 53 und 59 Minuten,
+          während Chiapas um 22 Minuten steigt. Eine feste Regel würde beiden Bahnen dasselbe raten.
+        </P>
+        <P>
+          Manchmal lautet der Vorschlag, eine Runde zu warten, statt sich sofort anzustellen. Das
+          passiert unter einer einzigen Bedingung: Die Schlange muss so weit einbrechen, dass man
+          mitsamt der Pause früher wieder frei ist als beim sofortigen Anstellen. Kürzer anstehen
+          allein genügt nicht, länger wird der Tag durch diese Rechnung nie. Und länger als zwei
+          Stunden lässt der Planer niemanden warten. Von selbst greift diese Obergrenze so gut wie
+          nie: Eine Pause zahlt sich nur aus, wenn sie kürzer ist als die Schlange, die sie erspart,
+          und zwei Stunden Pause bräuchten dafür eine Schlange von über zwei Stunden.
+        </P>
+        <P>
+          Eine Mittagspause um eins bleibt um eins, und eine abgehakte Bahn ist gefahren und wird
+          nicht neu einsortiert; geplant wird um beide herum. Hinterher steht da, was passiert ist.
+          „18 Min. weniger Warten“ ist die Differenz zwischen zwei Rechnungen desselben Verfahrens,
+          einmal vor und einmal nach dem Klick; ist nichts zu holen, steht dort „Passt schon so“ und
+          der Plan bleibt, wie er war. Beim Headliner-Knopf fehlt die Ersparnis, weil der Tag mit
+          den neuen Bahnen länger wird; gezählt wird stattdessen, wie viele Bahnen dazugekommen sind
+          und wie viele nicht zur Gruppe passen. Was am Ende nicht mehr in den Tag passt, wird nach
+          beiden Knöpfen mitgezählt. Ein „Rückgängig“ gehört dazu und stellt den Stand von vor dem
+          Klick wieder her, solange der Planer offen ist.
+        </P>
+        <Note>
+          Wo keine Wartezeiten ankommen, erscheinen die beiden Knöpfe gar nicht erst. Im Hansa-Park
+          kostet jede Bahn dieselbe angenommene Null, damit ist jede Reihenfolge so gut wie jede
+          andere und es gibt nichts zu sortieren.
+        </Note>
+      </Chapter>
+
+      <Chapter
+        id="spielzeiten"
+        index="06"
         icon={Theater}
         kicker="Shows"
         title="Spielzeiten sind Aushang oder Hochrechnung, nie beides"
@@ -156,7 +212,7 @@ export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntr
 
       <Chapter
         id="grenzen"
-        index="06"
+        index="07"
         icon={HelpCircle}
         kicker="Grenzen"
         title="Was der Planer nicht weiß"

@@ -304,6 +304,18 @@ One thing the audit turned up on the way: the headliner band shipped as
 `bg-crowd-high/10 bg-background/70`, two `background-color` declarations on one
 element, so the crowd tint never painted at all.
 
+**And the empty panel had no picture at all**, which is the one screen that
+needed one. The photo arrives on `/plan/day`, and with nothing planned there is
+no active park, so no query and no photo: standing on Toverland's page the panel
+opened as a black rectangle over a park page that had a perfectly good picture.
+So the beacon that already tells the panel which park the route is about
+(`PlannerPageParkBeacon`) carries the photo too — resolved by the **route**,
+because `getParkBackgroundImage` reads `@/lib/media`, a 107 KB catalogue that a
+Client Component in the layout may not import. The panel branches on the
+**active park** rather than falling back field by field, so a day whose query is
+still in flight shows nothing rather than briefly showing a different park's
+façade.
+
 ## A sentence may only point at something that is there
 
 Three strings promised a ride search "unten". `PlannerRideSearch` has exactly one
@@ -552,6 +564,225 @@ Checked by `pnpm test:planner-estimate` (the hour-versus-day rule, pure) and by
 five browser assertions in `check:planner` against a stubbed payload — the
 interesting values are a park past its publication horizon and a date three
 months out, neither of which is reproducible on a given morning.
+
+## Two days side by side
+
+The panel is resizable up to 900 px and a wide one drew **one** column with 500 px
+of empty hour rules beside it. Two columns is what that width is for: "and what
+if we went Saturday instead", side by side, rather than one day hidden behind a
+picker.
+
+**Two, and the number is measured.** Canvas here means the block area right of
+the hour gutter, read off the rendered panel. A default 448 px panel gives one
+column **395 px** of it; at `PANEL_WIDTH_MAX` (900) each of two columns gets
+**397**. So at the top of the range two columns are two whole planners rather
+than two compromises. A third would have to share the hour gutter, and the gutter
+carries the weather rail, the showtime chips and the now pill — all three per
+(park, date) — so a shared one costs the second park its weather and its
+showtimes.
+
+The floor is `TWO_COLUMN_MIN_WIDTH` = `PANEL_WIDTH_MIN * 2 + 1` (681): the same
+minimum a single column has, applied twice. Below it the switch is **not offered
+and the second column is not drawn** — but it is remembered, so narrowing the
+panel puts the arrangement away and widening it brings the same day back rather
+than making somebody build it again. A phone is excluded on its own account
+(`isPhone`), not because its number is small: the sheet is the width of the
+screen there and no drag makes it wider.
+
+**Which chrome moved, and why it is about what a control speaks for.** With one
+column the panel header answered both per-day questions — one park name, one day
+picker — and that stops working the moment there are two, because the header has
+no way to say which of them it means. So the park chooser and the day picker sit
+on the column now (`PlannerColumnHead`), and the rest of the day's chrome came
+with them into `PlannerDayColumn`: the context band, the party chips, the
+showtime strip, the axis, and the action row a selected block docks into. What
+stayed panel-level is what follows the **primary** column — the ride search, the
+headliner band, the free-block row, the totals — because those are how a day gets
+filled and a plan has exactly one active day.
+
+Two things are per column rather than per panel and both would be real bugs
+shared:
+
+- **The selection.** Entry ids are unique only within one (park, date) —
+  `makeId` counts collisions among that day's entries alone — so `taron-1`
+  legitimately exists in a Saturday column and a Sunday column of the same park,
+  which is exactly the case two columns are for. A panel-level `selectedId` would
+  highlight both blocks and delete whichever one the action row was handed. The
+  Delete-key effect moved with it, and is inert in a column with nothing
+  selected, so exactly one listener is ever bound.
+- **The queries.** Each column runs its own `/plan/day` and its own live poll,
+  keyed by (park, date). Two columns of the same park on two dates therefore
+  share the park-level ones — the best-days snapshot has no date in its key and
+  the live poll is gated on `isToday` — and pay twice only for what really is per
+  day.
+
+The state is **not** part of `PlannerState`. `trip-sync.ts` casts the whole plan
+onto the wire in `payloadOf`, so a field added there ships to `PUT /api/trips`
+unasked, and whether somebody has a second column open is a property of this
+browser rather than of their day at Phantasialand — the same reasoning, and the
+same shape, as `panel-width.ts` and `shows-visible.ts`. It is stored rather than
+held in component state because the panel unmounts every time it closes, and an
+arrangement that vanished then would not be an arrangement.
+
+The second column opens on the **day after** the active one, same park: that is
+the move two columns are for, and opening on the same date twice is the one
+arrangement that says nothing. Either column's park is one press away from there.
+
+## Three things move together, and they were on three clocks
+
+Opening the planner moves three boxes at once: the panel slides in from the
+right, the page beside it reflows to `--planner-inset`, and the edge tab rides
+the panel's left edge. They were timed **separately** — the sheet at 500 ms
+(`components/ui/sheet.tsx`), the page at 300 (`--planner-inset-ms`,
+`app/[locale]/layout.tsx`) and the tab at 500-on-open / 300-on-close — and the
+slowest of the three was the one the eye follows.
+
+Traced frame by frame at 1440 px with the page's right edge and the panel's left
+edge sampled in the same `requestAnimationFrame`:
+
+| t      | Seite rechts | Panel links | Lücke  |
+| ------ | ------------ | ----------- | ------ |
+| 283 ms | 1302         | 1402        | 100    |
+| 358 ms | 1065         | 1235        | 170    |
+| 432 ms | 995          | 1075        | **80** |
+| 508 ms | 992          | 1027        | 35     |
+| 668 ms | 992          | 992         | 0      |
+
+The page finished its inset at ~432 ms and the panel arrived at 668, so for a
+quarter of a second there was a strip of bare page background between them, up to
+170 px wide. That is what "die fade in und out animation" was about: there is no
+fade in it at all — the panel is a pure `translateX`, deliberately, because an
+opacity on it would let the page read straight through a panel whose glass is
+already flat while it moves — and what looked wrong was the seam.
+
+One number fixes it: **300 ms both ways, everywhere**. The easing was already
+shared and it is worth knowing why — `tw-animate-css` defines `--animate-in` as
+`enter … var(--tw-ease, ease) …`, and `ease-in-out` on the element sets
+`--tw-ease`, so the one class times the animation and the transition together.
+Re-measured after: `sheet === page === header === tab` on every sampled frame,
+and the whole move takes ~320 ms instead of ~670.
+
+The second column gets a 200 ms `fade-in slide-in-from-right-4` of its own,
+because a 389 px block appearing in one frame is a jump. It is on a **descendant**
+of the panel, which is the one place in here a transform is free: the glass is
+`SheetContent`'s, and a transform on that — or on any ancestor of it — makes it a
+backdrop root and flattens the blur.
+
+## The day can sort itself, and what it is sorting for is written down
+
+Two buttons under the axis (`PlannerOptimizeActions`): one adds the park's
+headliners and orders the result, the other only re-orders what is already
+there. They run the same engine (`lib/planner/optimize.ts`) and differ in one
+argument, and they are two controls rather than one because they answer
+different questions — "fill my day" and "is this the best order" — which a
+single button would have to guess between.
+
+What the engine minimises is three things in a fixed order, and the order
+between them is the design:
+
+1. **Rides that do not fit before the park closes.** A plan with one ride fewer
+   that actually happens beats a plan with one more that does not.
+2. **Total minutes queued.** That is what the visitor asked for.
+3. **The clock at which the last queue is joined.** Between two plans that cost
+   the same, the one that leaves the evening free wins.
+
+There is no tunable weight in that, deliberately. A λ trading "queue minutes"
+against "hanging about" would be a number nobody could defend, and the first
+person to disagree with it would be right.
+
+**The schedule is contiguous, so the ORDER is the only free variable.** A ride
+starts as soon as the one before it lets go: its start, plus what the block
+occupies, plus the walk. The clock follows from the sequence, which is why the
+search is over permutations rather than over (permutation × start times). The
+one exception is a deliberate wait, and it needs no weight either: idling `d`
+minutes and then queueing `w(t+d)` beats queueing `w(t)` now whenever
+`d + w(t+d) < w(t)` — the same ride, less queueing, and **free earlier**. That
+inequality is the whole rule for sending somebody off for a coffee at 14:00 to
+ride Taron at 15:00, and it can never make the day longer.
+
+**Rope drop is not a special case.** Nothing in the code knows the phrase. "The
+biggest ride first, at opening" is what minimising the sum produces on a park
+where the curve says so — and is not what it produces where the curve says
+otherwise. Taron's day is flat (60/60/54/53/59 by hour) while Chiapas climbs 22
+minutes; a hard-coded rope-drop rule would give both the same advice.
+
+**Free blocks and ticked-off rides are fixed.** A lunch at 13:00 is a decision,
+not a queue to be shuffled, and a ride that is ticked off already happened. Both
+keep their minute and the rides are planned around them; only undone ride
+entries move.
+
+### Why it is a heuristic, and what that cost
+
+The search is a beam of 192 prefixes carrying a small Pareto front per (visited
+set, last ride) — two partial plans over the same rides ending on the same ride
+are only comparable where one is worse at both queued minutes and the clock —
+followed by Or-opt and 2-opt until nothing improves any more. An exact
+enumeration is out because the cost is time-dependent: what a ride costs depends
+on when the rides before it finished, so the subproblems Held–Karp needs do not
+exist.
+
+Which leaves the question of how much the shortcut gives away, and it is
+measured rather than argued. On eight rides across four lands with six different
+turning points, scoring all 40,320 orders through the optimiser's own scheduler
+takes **1.66 s** and settles on 172 queued minutes finishing at 16:05. The beam
+plus the local search reach the same 172 and the same 16:05 in **8.2 ms**.
+`scripts/test-planner-optimize.mjs` keeps that comparison running at five and
+seven rides, where a full enumeration is cheap enough for every run — and it
+brute-forces through `scoreOrder`, the scheduler, never through the search,
+because comparing the search against plans the search produced would be it
+marking its own homework.
+
+At the sizes somebody actually presses the button at, it stays inside a click:
+
+| Stops      | 10    | 14    | 18    | 24 (`MAX_STOPS`) |
+| ---------- | ----- | ----- | ----- | ---------------- |
+| Wall clock | 23 ms | 26 ms | 32 ms | 56 ms            |
+
+Europa-Park, the largest catalogue this is asked about, has thirteen headliners.
+
+### What it says afterwards, and how to take it back
+
+The day is scored before and after by the same function, so "18 Min. weniger
+Warten" is a difference between two figures produced the same way rather than a
+claim. Where a press adds rides no saving is printed at all: the day is longer
+by construction, and reporting the bigger total as a loss would be arithmetic
+answering a question nobody asked.
+
+Three refusals, and each of them is visible:
+
+- **A park whose wait times nobody can read gets no buttons.** At Hansa-Park
+  every ride costs the same assumed nothing, so every order is as good as every
+  other; `canOptimize` says no and the row is not drawn. Offering it there would
+  be a promise that pressing it changes something.
+- **Pressing twice does nothing the second time.** `optimizeDay` scores the plan
+  that is already there the same way and returns `null` for a day it cannot
+  improve, so the panel says so instead of reshuffling to the same total.
+- **An overflow is not silently dropped.** A ride that no longer fits is placed
+  where the sequence puts it, past closing rather than parked on the park's last
+  minute; `growGridForSpans` widens the canvas to hold it and the minutes out
+  there are hatched, so the plan reads as "and these two do not fit".
+
+`applyPlan` commits the whole re-plan in **one** write. Every
+`plannerStore.update` stringifies the entire multi-park plan, writes
+localStorage, rewrites the cookie and notifies every subscriber on the page, so
+re-planning thirteen headliners one at a time would be thirteen of that — plus
+twelve intermediate states in which the day is half old and half new, each of
+them rendered.
+
+The undo beside the result sentence is **one level**, and it exists for the same
+arithmetic: "plan every headliner" can turn a three-ride afternoon into eleven
+blocks, and taking that back by hand is eleven drags. `restoreDay` replaces the
+day rather than merging into it, because an entry added since the snapshot has to
+go — otherwise undo would leave the day holding both versions. The snapshot lives
+in component state, so it lasts exactly as long as the open panel does: an undo
+somebody could still press tomorrow would be a promise about a plan they have
+since edited.
+
+Checked by `pnpm test:planner-optimize` — the brute-force comparison above, plus
+the properties a visitor would notice if they broke: the lunch break stays put,
+the ticked-off ride is not re-planned, a ride that opens at 11:00 is not queued
+for at 09:15, a collapse five hours out is not waited for, and the same day
+produces the same plan twice.
 
 ## The panel changes the page's width, and four things had to learn that
 

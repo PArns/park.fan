@@ -1045,7 +1045,8 @@
         "varHolidays": "Festivos y vacaciones escolares",
         "varWeather": "Previsión meteorológica"
       }
-    }
+    },
+    "planDayCta": "Planificar un día en {park}"
   },
   "attractions": {
     "blogPosts": {
@@ -1910,6 +1911,13 @@
       "range": "{from} a {to}",
       "resizeHandle": "Arrastrar duración"
     },
+    "column": {
+      "pickPark": "Elegir parque",
+      "noPark": "Ningún parque",
+      "addPark": "Planificar otro parque",
+      "close": "Cerrar columna",
+      "open": "Abrir una segunda columna"
+    },
     "tier": {
       "observed": "Medido",
       "measured": "Previsión por horas",
@@ -1945,7 +1953,10 @@
       "opensAt": "desde {time}"
     },
     "clearDay": "Vaciar el día",
-    "clearDayConfirm": "¿Borrar todas las entradas de este día?",
+    "clearDayTitle": "¿Vaciar el día?",
+    "clearDayBody": "Se borran todas las entradas de este día, también las que ya has marcado. Los minutos medidos en ellas no se guardan en ningún otro sitio.",
+    "clearDayAction": "Vaciar el día",
+    "cancel": "Cancelar",
     "loading": "Cargando el plan",
     "error": "No se pudo cargar el plan.",
     "noPlan": "No hay previsión para este día.",
@@ -2007,6 +2018,22 @@
         "meet": "Punto de encuentro",
         "star": "Otro"
       }
+    },
+    "optimize": {
+      "headliners": "Planificar todas las atracciones estrella",
+      "run": "Optimizar el día",
+      "running": "Ordenando …",
+      "hint": "Ordena las atracciones por sus curvas horarias, el trayecto entre ellas y su hora de apertura. Las pausas y lo ya marcado se quedan donde están.",
+      "saved": "{minutes} min menos de cola",
+      "already": "Ya está en el orden bueno",
+      "fitted": "{count, plural, one {una atracción ya cabe en el día} other {# atracciones ya caben en el día}}",
+      "sameWait": "Reorganizado, la misma cola",
+      "resorted": "El día se ha reorganizado",
+      "added": "{count, plural, one {Una atracción añadida} other {# atracciones añadidas}}",
+      "skipped": "{count, plural, one {una no encaja con el grupo} other {# no encajan con el grupo}}",
+      "overflow": "{count, plural, one {una ya no cabe en el día} other {# ya no caben en el día}}",
+      "capped": "{count, plural, one {una atracción se quedó fuera, el planificador ordena como mucho {max} paradas} other {# atracciones se quedaron fuera, el planificador ordena como mucho {max} paradas}}",
+      "undo": "Deshacer"
     },
     "sheet": {
       "handle": "Ampliar o cerrar el planificador",

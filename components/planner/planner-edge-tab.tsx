@@ -110,8 +110,9 @@ export function PlannerEdgeTab({
       className={cn(
         'pointer-events-none fixed inset-y-0 z-[60] flex items-center',
         open && 'max-sm:hidden',
-        !dragging && 'transition-[right] ease-in-out',
-        !dragging && (open ? 'duration-500' : 'duration-300')
+        // One clock for the three things that move together — the panel, the
+        // page's inset and this tab. See the note in `components/ui/sheet.tsx`.
+        !dragging && 'transition-[right] duration-300 ease-in-out'
       )}
       // Above `sm` the panel is a side sheet of exactly this width, so this puts
       // the tab against its edge. Below `sm` it is a bottom sheet and the tab is

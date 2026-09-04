@@ -61,6 +61,11 @@ ${[
     `${EN}/how-park-fan-works`,
     'what the numbers mean and where they come from'
   ),
+  line(
+    'Trip planner',
+    `${EN}/trip-planner`,
+    'lay a day out against the forecast: rides on a timeline, transfers checked, no account'
+  ),
   line('Glossary', `${EN}/glossary`, 'ride types, track elements and the vocabulary of the site'),
   line('Blog', `${EN}/blog`, 'longer pieces, with the wait times in them kept live'),
 ].join('\n')}

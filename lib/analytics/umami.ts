@@ -97,6 +97,8 @@ export const UMAMI_EVENTS = {
 
   // Trip planner (fired once per park+date, when that day gains its first block)
   PLAN_DAY_STARTED: 'plan_day_started',
+  // …and when the visitor lets the day sort itself. A click, not a load.
+  PLAN_OPTIMIZED: 'plan_optimized',
 } as const;
 
 // Event property types
@@ -290,6 +292,23 @@ export function trackSearchNoResults(props: SearchNoResultsProps): void {
  */
 export function trackPlanDayStarted(parkName: string): void {
   trackEvent(UMAMI_EVENTS.PLAN_DAY_STARTED, { parkName });
+}
+
+/**
+ * Somebody let the planner sort their day.
+ *
+ * ONE property, the same `parkName` key its sibling above uses, so a report can
+ * group the two on one column. What is deliberately not sent: how many minutes
+ * it saved, how many rides moved, and which of the two buttons was pressed —
+ * each would be another billed event on the plan's 100k, and none of them
+ * answers a question anybody has asked yet. "Is this feature used, and where"
+ * is the question, and one property answers it.
+ *
+ * Fired on the CLICK and only where the plan actually changed, so a press on an
+ * already-optimal day costs nothing.
+ */
+export function trackPlanOptimized(parkName: string): void {
+  trackEvent(UMAMI_EVENTS.PLAN_OPTIMIZED, { parkName });
 }
 
 export function trackGlossaryTermViewed(props: GlossaryTermViewedProps): void {

@@ -1045,7 +1045,8 @@
         "varHolidays": "Public and school holidays",
         "varWeather": "Weather forecast"
       }
-    }
+    },
+    "planDayCta": "Plan a day at {park}"
   },
   "attractions": {
     "blogPosts": {
@@ -1910,6 +1911,13 @@
       "range": "{from} to {to}",
       "resizeHandle": "Drag duration"
     },
+    "column": {
+      "pickPark": "Choose park",
+      "noPark": "No park",
+      "addPark": "Plan another park",
+      "close": "Close column",
+      "open": "Open a second column"
+    },
     "tier": {
       "observed": "Measured",
       "measured": "Hourly forecast",
@@ -1945,7 +1953,10 @@
       "opensAt": "from {time}"
     },
     "clearDay": "Clear the day",
-    "clearDayConfirm": "Delete every entry for this day?",
+    "clearDayTitle": "Clear this day?",
+    "clearDayBody": "Every entry for this day goes, including the ones you have ticked off. The minutes measured against them are not kept anywhere else.",
+    "clearDayAction": "Clear the day",
+    "cancel": "Cancel",
     "loading": "Loading the plan",
     "error": "The plan could not be loaded.",
     "noPlan": "There is no forecast for this day.",
@@ -2007,6 +2018,22 @@
         "meet": "Meeting point",
         "star": "Other"
       }
+    },
+    "optimize": {
+      "headliners": "Plan every headliner",
+      "run": "Optimise the day",
+      "running": "Sorting …",
+      "hint": "Orders the rides by their hourly curves, the walk between them and when they open. Breaks and rides you have ticked off stay where they are.",
+      "saved": "{minutes} min less queueing",
+      "already": "Already in the right order",
+      "fitted": "{count, plural, one {one ride now fits the day} other {# rides now fit the day}}",
+      "sameWait": "Rearranged, same time queueing",
+      "resorted": "The day has been rearranged",
+      "added": "{count, plural, one {One ride added} other {# rides added}}",
+      "skipped": "{count, plural, one {one is not for your group} other {# are not for your group}}",
+      "overflow": "{count, plural, one {one no longer fits the day} other {# no longer fit the day}}",
+      "capped": "{count, plural, one {one ride was left out, the planner sorts at most {max} stops} other {# rides were left out, the planner sorts at most {max} stops}}",
+      "undo": "Undo"
     },
     "sheet": {
       "handle": "Resize or close the planner",

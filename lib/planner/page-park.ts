@@ -26,6 +26,18 @@ export interface PlannerPagePark {
   name: string;
   geo: PlannerGeo;
   timezone?: string;
+  /**
+   * The park's photo, for the wash behind the panel.
+   *
+   * Resolved by the ROUTE and carried here, because it comes out of
+   * `@/lib/media` — a 107 KB catalogue and server-only, which the panel (a
+   * Client Component in the layout) may not import. `/plan/day` answers with the
+   * same picture from the same place for a park that is being planned; this is
+   * for the panel that has nothing planned yet, which used to open as a black
+   * rectangle on top of a park page.
+   */
+  backgroundImage?: string | null;
+  backgroundPosition?: string;
 }
 
 let current: PlannerPagePark | null = null;

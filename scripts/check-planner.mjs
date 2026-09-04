@@ -74,6 +74,20 @@ function parkDay(offsetDays) {
 
 const DATE = parkDay(1);
 
+/**
+ * The day after {@link DATE}, DERIVED from it rather than counted again.
+ *
+ * The same trap `parkDay` was written for, one level up: a second
+ * `parkDay(2)` evaluated later in the run is a second reading of the clock, and
+ * a run that crosses local midnight between the two gets two dates a day apart
+ * that were meant to be adjacent. It happened — a full run started at 23:5x
+ * Berlin seeded 2026-09-05, asserted against 2026-09-07 and failed three
+ * two-column checks with the DOM showing exactly what had been asked for.
+ */
+const NEXT_DATE = new Date(new Date(`${DATE}T12:00:00Z`).getTime() + 86_400_000)
+  .toISOString()
+  .slice(0, 10);
+
 const PLAN_PATH = `/api/parks/${PARK.geo.continent}/${PARK.geo.country}/${PARK.geo.city}/${PARK.slug}/plan/day?date=${DATE}`;
 
 /** A second park, five days out, so the overview has more than one row to draw. */
@@ -139,6 +153,20 @@ const PLAN = {
 // and it is drawn on every page whether or not anything is planned — so this
 // selector is a data attribute rather than an aria-label: the tab's accessible
 // name is its own visible word, which differs per locale.
+/**
+ * How many chapters the planner's own page explains itself in.
+ *
+ * Three assertions below counted it separately and the number was written into
+ * all three — so a seventh chapter turned two of them red and left the third
+ * quietly passing, because it sliced at six and therefore stopped looking
+ * exactly where the new one begins. The page will get more chapters.
+ */
+const CHAPTER_COUNT = 7;
+/** `010203…`, derived rather than typed, for the no-gap assertion. */
+const CHAPTER_NUMBERS = Array.from({ length: CHAPTER_COUNT }, (_, i) =>
+  String(i + 1).padStart(2, '0')
+).join('');
+
 const LAUNCHER = '[data-planner-edge-tab]';
 const SHEET = '[data-slot="sheet-content"]';
 
@@ -241,6 +269,38 @@ async function settleHydration(page, idleRuns = 3, timeoutMs = 15_000) {
     'every planner image quality is in next.config images.qualities',
     configured.size > 0 && offenders.length === 0,
     offenders.length ? offenders.join(', ') : `configured: ${[...configured].join(', ')}`
+  );
+}
+
+// ── The undo belongs to the day it was taken from ───────────────────────────
+//
+// `PlannerOptimizeActions` keeps the snapshot in component state while
+// `parkSlug` and `date` arrive as props, and it is mounted with no `key` — so
+// switching the panel to another day leaves the banner and its "Rückgängig"
+// standing over a snapshot of the day before. `restoreDay` REPLACES a day, so
+// pressing it wrote the 5th's rides into the 6th, and across a park switch a
+// set of foreign slugs into a day that had never been optimised. Both of these
+// are read off the source rather than driven in the browser: reproducing it
+// needs the panel walked onto a SECOND day whose payload also carries a curve,
+// and a check that silently passes because the second day was CLOSED would be
+// worse than no check.
+{
+  const source = readFileSync('components/planner/planner-optimize-actions.tsx', 'utf8');
+  check(
+    'das Rückgängig schreibt in den Tag, aus dem der Schnappschuss stammt',
+    /restoreDay\(\s*shownUndo\.parkSlug,\s*shownUndo\.date,\s*shownUndo\.entries\s*\)/.test(
+      source
+    ) && !/restoreDay\(\s*parkSlug\s*,\s*date\s*,/.test(source),
+    (source.match(/restoreDay\([^)]*\)/) ?? ['keiner'])[0]
+  );
+  // A press that returns no plan has nothing to take back — and clearing the
+  // snapshot there took away the way back from the press BEFORE it: plan the
+  // headliners, press "Tag optimieren" to check, and the undo was gone.
+  const noPlan = source.slice(source.indexOf('if (!plan) {'), source.indexOf('setUndoTo({'));
+  check(
+    'ein Druck ohne Plan fasst den Schnappschuss nicht an',
+    noPlan.length > 0 && !/setUndoTo\(/.test(noPlan),
+    noPlan.slice(0, 120).replace(/\s+/g, ' ')
   );
 }
 
@@ -2512,11 +2572,15 @@ if (reachable) {
   // ── The article under the directory ───────────────────────────────────────
   // The page used to be a directory and three cards, which is nothing for a
   // search engine to index and nothing for a first-time reader to learn from.
-  // The six chapters under it explain the thing with the planner's OWN
-  // components drawing a real, dated payload — so this asserts that the demo is
-  // the product rather than a picture of it, and that it writes nothing.
+  // The chapters under it explain the thing with the planner's OWN components
+  // drawing a real, dated payload — so this asserts that the demo is the
+  // product rather than a picture of it, and that it writes nothing.
   const chapters = await page.locator('article h2').allInnerTexts();
-  check('die Seite erklärt sich in sechs Kapiteln', chapters.length === 6, `${chapters.length}`);
+  check(
+    `die Seite erklärt sich in ${CHAPTER_COUNT} Kapiteln`,
+    chapters.length === CHAPTER_COUNT,
+    `${chapters.length}`
+  );
   const numbers = await page
     .locator('article section')
     .evaluateAll((sections) =>
@@ -2524,7 +2588,7 @@ if (reachable) {
     );
   check(
     'die Kapitelnummern laufen ohne Lücke',
-    numbers.slice(0, 6).join('') === '010203040506',
+    numbers.slice(0, CHAPTER_COUNT).join('') === CHAPTER_NUMBERS,
     JSON.stringify(numbers)
   );
   const articleText = (await page.locator('article').innerText()) ?? '';
@@ -2560,7 +2624,7 @@ if (reachable) {
   const frText = (await page.locator('article').innerText()) ?? '';
   check(
     'und auf Französisch genauso',
-    (await page.locator('article h2').count()) === 6 &&
+    (await page.locator('article h2').count()) === CHAPTER_COUNT &&
       (await page.locator('article li[data-planner-block]').count()) === 7 &&
       /Phantasialand/.test(frText),
     frText.slice(0, 60).replace(/\s+/g, ' ')
@@ -3925,6 +3989,483 @@ if (reachable) {
     );
     await page.close();
   }
+}
+
+// ── The day sorts itself ────────────────────────────────────────────────────
+// Two buttons over one engine (`lib/planner/optimize.ts`), whose maths is pinned
+// by `pnpm test:planner-optimize` against a brute force over every permutation.
+// What THIS has to prove is the half a unit test cannot see: that pressing them
+// writes the plan, that the sentence underneath says what happened, that the
+// undo puts it back byte for byte, and that a lunch break survives all of it.
+{
+  const opt = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+  noteErrors(opt);
+
+  const seedOptimize = async () => {
+    await opt.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+    await opt.evaluate(
+      ([plan, date]) => {
+        const seeded = JSON.parse(JSON.stringify(plan));
+        const park = seeded.parks.phantasialand;
+        park.timezone = 'Europe/Berlin';
+        // Deliberately the wrong way round — Taron, the headliner whose queue is
+        // shortest at opening, parked at 16:00 — but written in START order,
+        // which is the order the store keeps a day in. The undo assertion below
+        // compares the stored array literally, and a seed that was not already
+        // sorted would fail on `byStart` alone while every minute matched.
+        park.days = {
+          [date]: {
+            date,
+            entries: [
+              {
+                id: 'black-mamba-1',
+                attractionSlug: 'black-mamba',
+                attractionName: 'Black Mamba',
+                startMinute: 600,
+              },
+              {
+                id: 'lunch-1',
+                startMinute: 780,
+                custom: { label: 'Mittag', durationMinutes: 60, icon: 'food' },
+              },
+              { id: 'taron-1', attractionSlug: 'taron', attractionName: 'Taron', startMinute: 960 },
+            ],
+          },
+        };
+        seeded.parks = { phantasialand: park };
+        seeded.activeParkSlug = 'phantasialand';
+        seeded.activeDate = date;
+        window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
+        window.localStorage.setItem('parkfan_planner_width', '520');
+        window.localStorage.removeItem('parkfan_planner_column2');
+        document.cookie = 'planner=1; path=/';
+      },
+      [PLAN, DATE]
+    );
+    await opt.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+    await opt.locator(LAUNCHER).click();
+    await opt.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+    await opt.waitForTimeout(3000);
+  };
+
+  /** The stored day as `slug@minute`, which is what a re-plan actually writes. */
+  const readDay = () =>
+    opt.evaluate(() => {
+      const plan = JSON.parse(window.localStorage.getItem('parkfan_planner') ?? '{}');
+      const day = Object.values(plan.parks?.phantasialand?.days ?? {})[0];
+      return (day?.entries ?? [])
+        .map((e) => `${e.attractionSlug ?? e.custom?.label}@${e.startMinute}`)
+        .join(' | ');
+    });
+
+  await seedOptimize();
+
+  const before = await readDay();
+  check(
+    'die Optimier-Leiste ist da, mit beiden Knöpfen',
+    (await opt.locator(`${SHEET} [data-planner-optimize]`).count()) === 1 &&
+      (await opt.locator(`${SHEET} [data-planner-optimize-run]`).count()) === 1 &&
+      (await opt.locator(`${SHEET} [data-planner-optimize-headliners]`).count()) === 1
+  );
+
+  await opt.locator(`${SHEET} [data-planner-optimize-run]`).click();
+  await opt.waitForTimeout(1200);
+  const after = await readDay();
+  check('ein Druck sortiert den Tag um', after !== before, `${before}  →  ${after}`);
+
+  // „Passt schon so" is the answer to "there was nothing to do", and the
+  // assertion above has just proved there WAS — so accepting it here let the one
+  // real failure through: a day scoring 60 minutes before and 70 after (a block
+  // dragged past closing carries no figure until the optimiser brings it back
+  // inside) printed it over a plan it had just rebuilt. Every other outcome of a
+  // change is named instead, including the ones that gain no minutes.
+  const said = (await opt.locator(`${SHEET} [data-planner-optimize-result]`).textContent()) ?? '';
+  check(
+    'und sagt in Minuten, was es gebracht hat',
+    /\d+\s*Min\.\s*weniger Warten|gleiche Wartezeit|umgestellt|passt jetzt in den Tag|passen jetzt in den Tag/i.test(
+      said
+    ) && !/Passt schon so/.test(said),
+    said.slice(0, 80)
+  );
+
+  // The lunch break is a decision, not a queue. It keeps its minute, and every
+  // ride is scheduled around it.
+  check('die Mittagspause bleibt, wo sie war', after.includes('Mittag@780'), after);
+
+  // Pressing it again must be a no-op, not a reshuffle with the same total —
+  // which is the difference between an optimiser and a dice roll.
+  await opt.locator(`${SHEET} [data-planner-optimize-run]`).click();
+  await opt.waitForTimeout(900);
+  check('ein zweiter Druck ändert nichts mehr', (await readDay()) === after);
+  const twice = (await opt.locator(`${SHEET} [data-planner-optimize-result]`).textContent()) ?? '';
+  check('und sagt das auch', /Passt schon so/.test(twice), twice.slice(0, 80));
+
+  // Back to a day it can improve, so the undo has something to take back.
+  await seedOptimize();
+  await opt.locator(`${SHEET} [data-planner-optimize-run]`).click();
+  await opt.waitForTimeout(1200);
+  check(
+    'nach dem Sortieren steht ein Rückgängig daneben',
+    (await opt.locator(`${SHEET} [data-planner-optimize-undo]`).count()) === 1
+  );
+  await opt.locator(`${SHEET} [data-planner-optimize-undo]`).click();
+  await opt.waitForTimeout(900);
+  check('und es stellt den Tag exakt wieder her', (await readDay()) === before, await readDay());
+  check(
+    'danach ist das Rückgängig weg',
+    (await opt.locator(`${SHEET} [data-planner-optimize-undo]`).count()) === 0
+  );
+
+  // The headliner button: it adds, and then it has nothing left to add.
+  await seedOptimize();
+  const rideCountBefore = (await readDay()).split(' | ').length;
+  await opt.locator(`${SHEET} [data-planner-optimize-headliners]`).click();
+  await opt.waitForTimeout(2000);
+  const withHeadliners = await readDay();
+  check(
+    'alle Headliner einplanen füllt den Tag',
+    withHeadliners.split(' | ').length > rideCountBefore,
+    `${rideCountBefore} → ${withHeadliners.split(' | ').length}`
+  );
+  check(
+    'und der Knopf verschwindet, wenn keiner mehr fehlt',
+    (await opt.locator(`${SHEET} [data-planner-optimize-headliners]`).count()) === 0
+  );
+  check(
+    'die Mittagspause hat auch das überlebt',
+    withHeadliners.includes('Mittag@780'),
+    withHeadliners
+  );
+  // Planning the headliners and then pressing "Tag optimieren" to check is one
+  // gesture somebody actually makes, and the second press answers "nothing to
+  // do" — which used to throw away the undo for the first.
+  check(
+    'nach dem Einplanen steht ein Rückgängig da',
+    (await opt.locator(`${SHEET} [data-planner-optimize-undo]`).count()) === 1
+  );
+  await opt.locator(`${SHEET} [data-planner-optimize-run]`).click();
+  await opt.waitForTimeout(900);
+  check(
+    'und ein Druck, der nichts ändert, nimmt es nicht weg',
+    (await opt.locator(`${SHEET} [data-planner-optimize-undo]`).count()) === 1,
+    (await opt.locator(`${SHEET} [data-planner-optimize-result]`).textContent()) ?? ''
+  );
+  // Nothing may be scheduled before the park lets anybody queue.
+  const tooEarly = withHeadliners
+    .split(' | ')
+    .map((part) => Number(part.split('@')[1]))
+    .filter((minute) => minute < 9 * 60);
+  check('und nichts liegt vor der Parköffnung', tooEarly.length === 0, tooEarly.join(', '));
+
+  await opt.close();
+}
+
+// A park whose wait times nobody can read gets no optimiser: every ride costs
+// the same assumed nothing, so every order is as good as every other and a
+// button that reshuffled them would be a promise about a comparison that cannot
+// be made. Hansa-Park publishes its numbers only in its own app on the park
+// WLAN — the same park `noLiveWaitTimesReason` is asserted against elsewhere in
+// this file.
+{
+  const bare = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+  noteErrors(bare);
+  await bare.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  await bare.evaluate(
+    ([date]) => {
+      window.localStorage.setItem(
+        'parkfan_planner',
+        JSON.stringify({
+          parks: {
+            'hansa-park': {
+              slug: 'hansa-park',
+              name: 'Hansa-Park',
+              geo: { continent: 'europe', country: 'germany', city: 'sierksdorf' },
+              timezone: 'Europe/Berlin',
+              days: {
+                [date]: {
+                  date,
+                  entries: [
+                    {
+                      id: 'a-1',
+                      attractionSlug: 'highlander',
+                      attractionName: 'Highlander',
+                      startMinute: 600,
+                    },
+                    {
+                      id: 'b-1',
+                      attractionSlug: 'der-schwur-des-kaernan',
+                      attractionName: 'Der Schwur des Kärnan',
+                      startMinute: 720,
+                    },
+                  ],
+                },
+              },
+            },
+          },
+          activeParkSlug: 'hansa-park',
+          activeDate: date,
+          version: 2,
+        })
+      );
+      window.localStorage.setItem('parkfan_planner_width', '520');
+      document.cookie = 'planner=1; path=/';
+    },
+    [DATE]
+  );
+  await bare.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+  await bare.locator(LAUNCHER).click();
+  await bare.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await bare.waitForTimeout(3000);
+  check(
+    'ein Park ohne lesbare Wartezeiten bekommt keine Optimier-Leiste',
+    (await bare.locator(`${SHEET} [data-planner-optimize]`).count()) === 0
+  );
+  await bare.close();
+}
+
+// ── Two day columns ─────────────────────────────────────────────────────────
+// The panel is resizable and a wide one drew ONE column with 500 px of empty
+// hour rules beside it. Two columns is what that width is for — "and what if we
+// went Saturday instead", side by side rather than one behind a picker — and the
+// whole feature is three questions this block asks in order: does it appear only
+// where it fits, does the second column carry its own head, and is the
+// arrangement remembered.
+{
+  const cols = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+  noteErrors(cols);
+
+  await cols.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  await cols.evaluate((plan) => {
+    window.localStorage.setItem('parkfan_planner', JSON.stringify(plan));
+    window.localStorage.removeItem('parkfan_planner_column2');
+    document.cookie = 'planner=1; path=/';
+  }, PLAN);
+  await cols.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+  await cols.locator(LAUNCHER).click();
+  await cols.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await cols.waitForTimeout(1500);
+
+  // The default panel is 448 px and two columns need 681 (twice the floor a
+  // single column has, plus the divider). So the switch must not be there —
+  // offering it would mean either two columns below the width one is allowed
+  // to be, or a press that does nothing.
+  check(
+    'schmales Panel bietet keine zweite Spalte an',
+    (await cols.locator(`${SHEET} [data-planner-second-column]`).count()) === 0 &&
+      (await cols.locator(`${SHEET} [data-planner-column]`).count()) === 1
+  );
+
+  // The day picker moved onto the column with the park name: with two columns a
+  // panel-level picker cannot say which of the two days it means.
+  check(
+    'Park und Tag stehen an der Spalte, nicht im Panelkopf',
+    (await cols
+      .locator(`${SHEET} [data-planner-column-head] [data-planner-day-trigger]`)
+      .count()) === 1 &&
+      (await cols
+        .locator(`${SHEET} [data-planner-day-trigger]:not([data-planner-column-head] *)`)
+        .count()) === 0
+  );
+
+  await cols.evaluate(() => window.localStorage.setItem('parkfan_planner_width', '780'));
+  await cols.reload({ waitUntil: 'networkidle' });
+  await cols.locator(LAUNCHER).click();
+  await cols.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await cols.waitForTimeout(1500);
+
+  const toggle = cols.locator(`${SHEET} [data-planner-second-column]`);
+  check(
+    'breites Panel bietet die zweite Spalte an',
+    (await toggle.count()) === 1 &&
+      (await toggle.getAttribute('data-planner-second-column')) === 'off'
+  );
+
+  await toggle.click();
+  await cols.waitForTimeout(2500);
+
+  const columns = cols.locator(`${SHEET} [data-planner-column]`);
+  const keys = await columns.evaluateAll((els) =>
+    els.map((el) => el.getAttribute('data-planner-column'))
+  );
+  // Same park, the day AFTER — a second column showing the same date twice would
+  // open on the one arrangement that says nothing.
+  check(
+    'die zweite Spalte öffnet auf dem Folgetag desselben Parks',
+    keys.length === 2 &&
+      keys[0] === `${PARK.slug}:${DATE}` &&
+      keys[1] === `${PARK.slug}:${NEXT_DATE}`,
+    keys.join(' | ')
+  );
+
+  check(
+    'genau eine Spalte ist die aktive',
+    (await cols.locator(`${SHEET} [data-planner-column-primary]`).count()) === 1
+  );
+  check(
+    'jede Spalte trägt ihren eigenen Kopf',
+    (await cols.locator(`${SHEET} [data-planner-column-head]`).count()) === 2 &&
+      (await cols.locator(`${SHEET} [data-planner-column-park]`).count()) === 2 &&
+      (await cols
+        .locator(`${SHEET} [data-planner-column-head] [data-planner-day-trigger]`)
+        .count()) === 2
+  );
+
+  // Halved, not overflowing: the panel is one box and two columns share it.
+  // `PANEL_WIDTH_MIN` is 340, which is exactly what 780 gives each of them once
+  // the divider is paid for — so a column here is never narrower than a single
+  // one is allowed to be.
+  const boxes = await columns.evaluateAll((els) =>
+    els.map((el) => Math.round(el.getBoundingClientRect().width))
+  );
+  check(
+    'beide Spalten teilen sich das Panel',
+    boxes.length === 2 && Math.abs(boxes[0] - boxes[1]) <= 2 && Math.min(...boxes) >= 330,
+    boxes.join(' / ')
+  );
+
+  // Two grids, not one grid and one empty half: each column runs its own
+  // `/plan/day` and draws its own axis.
+  const grids = await cols.locator(`${SHEET} [data-planner-grid]`).count();
+  check('jede Spalte zeichnet ihre eigene Achse', grids === 2, `${grids} Achsen`);
+
+  // Only the second column may be closed. The first is the plan's active day and
+  // closing it would leave the panel with nothing to be about.
+  check(
+    'nur die zweite Spalte lässt sich schließen',
+    (await cols.locator(`${SHEET} [data-planner-column-close]`).count()) === 1
+  );
+
+  // The park chooser lists the plan's OWN parks — this one holds two — and the
+  // wizard at the foot is where a new one comes from.
+  await cols.locator(`${SHEET} [data-planner-column-park]`).last().click();
+  await cols.waitForTimeout(400);
+  const popover = cols.locator('[data-slot="popover-content"]');
+  const parkList = ((await popover.textContent().catch(() => '')) ?? '').replace(/\s+/g, ' ');
+  check(
+    'die Spalte lässt jeden geplanten Park wählen',
+    /Phantasialand/.test(parkList) && /Europa-Park/.test(parkList),
+    parkList.slice(0, 120)
+  );
+  await cols.keyboard.press('Escape');
+  await cols.waitForTimeout(300);
+
+  // Remembered across a reload, because the panel unmounts every time somebody
+  // looks at the page behind it and an arrangement that vanished then would not
+  // be an arrangement.
+  await cols.reload({ waitUntil: 'networkidle' });
+  await cols.locator(LAUNCHER).click();
+  await cols.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await cols.waitForTimeout(2000);
+  check(
+    'die Anordnung überlebt einen Reload',
+    (await cols.locator(`${SHEET} [data-planner-column]`).count()) === 2
+  );
+
+  // Narrowed below the floor the second column is not DRAWN and not offered —
+  // and it is not forgotten either, so widening the panel brings the same day
+  // back instead of making somebody arrange it again.
+  await cols.evaluate(() => window.localStorage.setItem('parkfan_planner_width', '448'));
+  await cols.reload({ waitUntil: 'networkidle' });
+  await cols.locator(LAUNCHER).click();
+  await cols.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await cols.waitForTimeout(1500);
+  const remembered = await cols.evaluate(() =>
+    window.localStorage.getItem('parkfan_planner_column2')
+  );
+  check(
+    'zu schmal blendet die zweite Spalte aus, ohne sie zu vergessen',
+    (await cols.locator(`${SHEET} [data-planner-column]`).count()) === 1 &&
+      (await cols.locator(`${SHEET} [data-planner-second-column]`).count()) === 0 &&
+      (remembered ?? '').includes(NEXT_DATE),
+    remembered ?? '(nichts gemerkt)'
+  );
+
+  // And back. The stored width is what decides it, so the same press that took
+  // it away brings it back with the day it had.
+  await cols.evaluate(() => window.localStorage.setItem('parkfan_planner_width', '780'));
+  await cols.reload({ waitUntil: 'networkidle' });
+  await cols.locator(LAUNCHER).click();
+  await cols.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await cols.waitForTimeout(2000);
+  check(
+    'wieder breit genug bringt denselben Tag zurück',
+    (await cols.locator(`${SHEET} [data-planner-column]`).count()) === 2 &&
+      (await cols
+        .locator(`${SHEET} [data-planner-column]`)
+        .last()
+        .getAttribute('data-planner-column')) === `${PARK.slug}:${NEXT_DATE}`
+  );
+
+  // Closing it is the toggle's other half, and the switch has to report it.
+  await cols.locator(`${SHEET} [data-planner-column-close]`).click();
+  await cols.waitForTimeout(600);
+  check(
+    'die zweite Spalte lässt sich wieder schließen',
+    (await cols.locator(`${SHEET} [data-planner-column]`).count()) === 1 &&
+      (await cols
+        .locator(`${SHEET} [data-planner-second-column]`)
+        .getAttribute('data-planner-second-column')) === 'off'
+  );
+
+  await cols.close();
+}
+
+// A phone has no second column and must not pretend otherwise: the sheet is the
+// width of the screen there, no drag makes it wider, and two 195 px columns
+// would be two unusable ones. The switch is gated on `isPhone` as well as on the
+// width, so this is a real assertion rather than a restatement of the one above.
+{
+  const phone = await browser.newPage({
+    viewport: { width: 390, height: 844 },
+    isMobile: true,
+    hasTouch: true,
+  });
+  noteErrors(phone);
+  await phone.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  await phone.evaluate(
+    ([plan, second]) => {
+      window.localStorage.setItem('parkfan_planner', JSON.stringify(plan));
+      // Wide enough for two on a desktop, and stored — the phone must refuse on
+      // its own account rather than because the number happens to be small.
+      window.localStorage.setItem('parkfan_planner_width', '780');
+      window.localStorage.setItem(
+        'parkfan_planner_column2',
+        JSON.stringify({ parkSlug: 'phantasialand', date: second })
+      );
+      document.cookie = 'planner=1; path=/';
+    },
+    [PLAN, NEXT_DATE]
+  );
+  await phone.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+  await settleHydration(phone);
+  await phone.locator(LAUNCHER).click();
+  await phone.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await phone.waitForTimeout(2000);
+
+  check(
+    'das Telefon zeigt genau eine Spalte und keinen Schalter',
+    (await phone.locator(`${SHEET} [data-planner-column]`).count()) === 1 &&
+      (await phone.locator(`${SHEET} [data-planner-second-column]`).count()) === 0
+  );
+
+  // The column head has to fit a 390 px sheet: park name, day picker, nothing
+  // running off the edge. The head is `min-w-0` and the name truncates, so this
+  // measures the box rather than trusting the classes.
+  const head = phone.locator(`${SHEET} [data-planner-column-head]`).first();
+  const fits = await head.evaluate((el) => {
+    const box = el.getBoundingClientRect();
+    return {
+      over: Math.round(box.right - window.innerWidth),
+      scroll: el.scrollWidth - el.clientWidth,
+    };
+  });
+  check(
+    'der Spaltenkopf passt aufs Telefon',
+    fits.over <= 0 && fits.scroll <= 1,
+    `${fits.over} px über den Rand, ${fits.scroll} px Überlauf`
+  );
+
+  await phone.close();
 }
 
 check(

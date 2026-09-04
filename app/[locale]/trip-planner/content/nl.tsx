@@ -1,4 +1,4 @@
-import { CalendarDays, Footprints, Gauge, HelpCircle, Sunrise, Theater } from 'lucide-react';
+import { CalendarDays, Footprints, Gauge, HelpCircle, Sunrise, Theater, Wand2 } from 'lucide-react';
 import { A, P } from '@/components/marketing/editorial-ui';
 import { Chapter, Note } from '../_chrome';
 import { PlannerDayDemo } from '../_demos';
@@ -123,8 +123,64 @@ export function ContentNL({ day, entries }: { day: PlanDay; entries: PlannerEntr
       </Chapter>
 
       <Chapter
-        id="speeltijden"
+        id="volgorde"
         index="05"
+        icon={Wand2}
+        kicker="Sorteren"
+        title="De dag kan zichzelf op volgorde zetten"
+      >
+        <P>
+          Twee knoppen nemen dat over. &bdquo;Alle headliners inplannen&rdquo; haalt de grote
+          attracties van het park erbij die nog niet in de dag staan en zet daarna alles op
+          volgorde. &bdquo;Dag optimaliseren&rdquo; voegt niets toe en herschikt alleen wat er al
+          gepland is. Achter allebei draait dezelfde som; het zijn twee knoppen omdat het twee
+          vragen zijn: vul mijn dag, en kan de volgorde beter.
+        </P>
+        <P>
+          Er wordt op drie dingen gesorteerd, en de rangorde daartussen is de eigenlijke keuze.
+          Eerst telt dat alles nog voor sluitingstijd aan de beurt komt: een plan met één attractie
+          minder die echt doorgaat, wint van een plan met er één meer die het niet haalt. Daarna de
+          som van de wachttijden, waar het om gevraagd was. En kosten twee volgordes evenveel, dan
+          wint de volgorde die eerder klaar is. Een schuifje dat wachten tegen rondhangen afweegt is
+          er niet: dat getal zou niemand kunnen verdedigen.
+        </P>
+        <P>
+          Een regel over de vroege ochtend zit er niet in. De planner kent alleen de uurcurve van
+          elke afzonderlijke attractie. Ligt die vlak na opening het laagst, dan rolt &bdquo;eerst
+          de grote attractie&rdquo; er vanzelf uit; ligt hij vlak, dan komt er iets anders uit. Op
+          een gemeten dag staat Taron uur na uur op 60, 60, 54, 53 en 59 minuten, terwijl Chiapas 22
+          minuten stijgt. Een vaste regel zou allebei hetzelfde adviseren.
+        </P>
+        <P>
+          Soms is het voorstel om een rondje te wachten in plaats van meteen in de rij te gaan
+          staan. Dat gebeurt onder één voorwaarde: de rij moet zo ver inzakken dat je, die pauze
+          meegerekend, eerder weer vrij bent dan wanneer je meteen was gaan staan. Korter in de rij
+          staan alleen is niet genoeg, en langer wordt de dag er nooit van. Langer dan twee uur laat
+          de planner niemand wachten. Die bovengrens komt uit zichzelf bijna nooit in beeld: een
+          pauze loont alleen als hij korter is dan de rij die hij bespaart, en twee uur pauze zou
+          dus een rij van meer dan twee uur vragen.
+        </P>
+        <P>
+          Een middagpauze om één uur blijft om één uur, en een afgevinkte attractie is gereden en
+          wordt niet opnieuw ingepland; daar wordt omheen gepland. Achteraf staat er wat er gebeurd
+          is. &bdquo;18 min. minder wachten&rdquo; is het verschil tussen twee sommen van dezelfde
+          rekenwijze, één voor en één na de klik; valt er niets te winnen, dan staat er dat het al
+          goed staat en blijft het plan zoals het was. Bij de headlinerknop ontbreekt die winst,
+          omdat de dag met de nieuwe attracties langer wordt; geteld wordt dan hoeveel attracties
+          erbij zijn gekomen en hoeveel er niet bij het gezelschap passen. Wat er aan het eind niet
+          meer in de dag past, wordt na allebei de knoppen gemeld. Er hoort een &bdquo;Ongedaan
+          maken&rdquo; bij dat de stand van voor de klik terugzet, zolang de planner openstaat.
+        </P>
+        <Note>
+          Waar geen wachttijden binnenkomen, verschijnen de twee knoppen helemaal niet. In het
+          Hansa-Park kost elke attractie dezelfde aangenomen nul, dus is elke volgorde net zo goed
+          als elke andere en valt er niets te sorteren.
+        </Note>
+      </Chapter>
+
+      <Chapter
+        id="speeltijden"
+        index="06"
         icon={Theater}
         kicker="Shows"
         title="Een speeltijd komt van het park of uit onze rekensom"
@@ -146,7 +202,7 @@ export function ContentNL({ day, entries }: { day: PlanDay; entries: PlannerEntr
 
       <Chapter
         id="grenzen"
-        index="06"
+        index="07"
         icon={HelpCircle}
         kicker="Grenzen"
         title="Wat de planner niet weet"

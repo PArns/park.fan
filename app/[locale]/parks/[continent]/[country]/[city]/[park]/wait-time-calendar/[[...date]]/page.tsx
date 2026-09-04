@@ -8,6 +8,7 @@ import type { Locale } from '@/i18n/config';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { RouteMessages } from '@/i18n/route-messages';
 import { PlannerPageParkBeacon } from '@/components/planner/planner-page-park-beacon';
+import { getCardObjectPosition, getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { catchNonFatal } from '@/lib/api/client';
 import { getParkByGeoPath, getParkSeasons, leanParkForCalendarShell } from '@/lib/api/parks';
 import { getBestDaysCalendarSeed, getCalendarMonthSeed } from '@/lib/api/integrated-calendar';
@@ -375,6 +376,8 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
         name={parkName}
         geo={{ continent, country, city }}
         timezone={park.timezone}
+        backgroundImage={getParkBackgroundImage(park.slug)}
+        backgroundPosition={getCardObjectPosition(park.slug)}
       />
       <ParkPageShell
         park={park}
@@ -455,6 +458,7 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
             cityName={cityName}
             country={country}
             countryName={countryName}
+            locale={locale}
             // The H1 is the one thing that must differ between the hub and each of its months,
             // or twelve pages share a heading and a crawler has no reason to tell them apart.
             // The month this page shows — the URL's on a month page, today's on the hub. Same

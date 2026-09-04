@@ -1045,7 +1045,8 @@
         "varHolidays": "Feestdagen en schoolvakanties",
         "varWeather": "Weersverwachting"
       }
-    }
+    },
+    "planDayCta": "Een dag in {park} plannen"
   },
   "attractions": {
     "blogPosts": {
@@ -1910,6 +1911,13 @@
       "range": "{from} tot {to}",
       "resizeHandle": "Duur slepen"
     },
+    "column": {
+      "pickPark": "Park kiezen",
+      "noPark": "Geen park",
+      "addPark": "Ander park plannen",
+      "close": "Kolom sluiten",
+      "open": "Tweede kolom openen"
+    },
     "tier": {
       "observed": "Gemeten",
       "measured": "Uurprognose",
@@ -1945,7 +1953,10 @@
       "opensAt": "vanaf {time}"
     },
     "clearDay": "Dag leegmaken",
-    "clearDayConfirm": "Alle items van deze dag verwijderen?",
+    "clearDayTitle": "Dag leegmaken?",
+    "clearDayBody": "Alle items van deze dag verdwijnen, ook de afgevinkte. De minuten die daarbij gemeten zijn, staan nergens anders.",
+    "clearDayAction": "Dag leegmaken",
+    "cancel": "Annuleren",
     "loading": "Plan wordt geladen",
     "error": "Het plan kon niet worden geladen.",
     "noPlan": "Voor deze dag is er geen prognose.",
@@ -2007,6 +2018,22 @@
         "meet": "Ontmoetingspunt",
         "star": "Overig"
       }
+    },
+    "optimize": {
+      "headliners": "Alle headliners inplannen",
+      "run": "Dag optimaliseren",
+      "running": "Sorteren …",
+      "hint": "Zet de attracties op volgorde van hun uurcurves, de loopafstand ertussen en hun openingstijd. Pauzes en afgevinkte attracties blijven staan.",
+      "saved": "{minutes} min. minder wachten",
+      "already": "Staat al goed",
+      "fitted": "{count, plural, one {één attractie past nu in de dag} other {# attracties passen nu in de dag}}",
+      "sameWait": "Anders ingedeeld, even lang wachten",
+      "resorted": "De dag is anders ingedeeld",
+      "added": "{count, plural, one {Eén attractie toegevoegd} other {# attracties toegevoegd}}",
+      "skipped": "{count, plural, one {één past niet bij het gezelschap} other {# passen niet bij het gezelschap}}",
+      "overflow": "{count, plural, one {één past niet meer in de dag} other {# passen niet meer in de dag}}",
+      "capped": "{count, plural, one {één attractie bleef erbuiten, de planner sorteert hoogstens {max} stops} other {# attracties bleven erbuiten, de planner sorteert hoogstens {max} stops}}",
+      "undo": "Ongedaan maken"
     },
     "sheet": {
       "handle": "Planner vergroten of sluiten",

@@ -1,4 +1,4 @@
-import { CalendarDays, Footprints, Gauge, HelpCircle, Sunrise, Theater } from 'lucide-react';
+import { CalendarDays, Footprints, Gauge, HelpCircle, Sunrise, Theater, Wand2 } from 'lucide-react';
 import { A, P } from '@/components/marketing/editorial-ui';
 import { Chapter, Note } from '../_chrome';
 import { PlannerDayDemo } from '../_demos';
@@ -125,8 +125,64 @@ export function ContentES({ day, entries }: { day: PlanDay; entries: PlannerEntr
       </Chapter>
 
       <Chapter
-        id="horarios-de-espectaculos"
+        id="ordenar-el-dia"
         index="05"
+        icon={Wand2}
+        kicker="Ordenar"
+        title="El día puede ordenarse solo"
+      >
+        <P>
+          De eso se encargan dos botones. «Planificar todas las atracciones estrella» añade las
+          grandes del parque que aún no están en el día y después ordena todo. «Optimizar el día» no
+          añade nada y solo reordena lo que ya está planificado. Detrás de los dos corre el mismo
+          cálculo; son dos botones porque son dos preguntas: lléname el día, y si el orden puede
+          mejorar.
+        </P>
+        <P>
+          Se ordena por tres cosas, y la jerarquía entre ellas es la decisión de fondo. Primero, que
+          todo llegue a tiempo antes del cierre: un plan con una atracción menos que de verdad
+          ocurre gana a otro con una más que ya no cabe. Después, la suma de las esperas, que es lo
+          que se había pedido. Y cuando dos órdenes cuestan lo mismo, gana el que termina antes. No
+          hay ningún control deslizante que ponga la cola frente al rato muerto: ese número no lo
+          podría defender nadie.
+        </P>
+        <P>
+          Ahí dentro no hay ninguna regla sobre la primera hora de la mañana. El planificador solo
+          conoce la curva horaria de cada atracción. Si está en su punto más bajo justo después de
+          abrir, «la grande primero» sale del cálculo por sí solo; si es plana, sale otra cosa. En
+          un día medido, Taron marca hora tras hora 60, 60, 54, 53 y 59 minutos, mientras que
+          Chiapas sube 22. Una regla fija daría el mismo consejo para las dos.
+        </P>
+        <P>
+          A veces la propuesta es esperar un rato en lugar de ponerse ya en la cola. Eso ocurre con
+          una única condición: la cola tiene que bajar lo suficiente para que, contando la pausa,
+          quedes libre antes que si te hubieras puesto de inmediato. Hacer menos cola por sí solo no
+          basta, y el día nunca se alarga por esa cuenta. Más de dos horas no te hace esperar nunca.
+          Ese techo casi nunca entra en juego por sí solo: una pausa solo compensa si es más corta
+          que la cola que ahorra, y dos horas de pausa exigirían por tanto una cola de más de dos
+          horas.
+        </P>
+        <P>
+          Una pausa para comer a la una se queda a la una, y una atracción marcada ya está montada y
+          no se vuelve a planificar; lo demás se ordena alrededor. Después pone lo que ha pasado.
+          «18 min menos de cola» es la diferencia entre dos cuentas hechas igual, una antes del clic
+          y otra después; si no hay nada que ganar, pone que el orden ya es el bueno y el plan se
+          queda como estaba. El botón de las atracciones estrella no anuncia ahorro, porque con las
+          nuevas atracciones el día se alarga; en su lugar cuenta cuántas se han añadido y cuántas
+          no encajan con el grupo. Lo que al final ya no cabe en el día se indica después de
+          cualquiera de los dos botones. Lo acompaña un «Deshacer» que devuelve el estado anterior
+          al clic mientras el planificador siga abierto.
+        </P>
+        <Note>
+          Donde no llega ningún tiempo de espera, los dos botones ni siquiera aparecen. En el
+          Hansa-Park cada atracción cuesta el mismo cero supuesto, así que un orden vale tanto como
+          otro y no hay nada que ordenar.
+        </Note>
+      </Chapter>
+
+      <Chapter
+        id="horarios-de-espectaculos"
+        index="06"
         icon={Theater}
         kicker="Espectáculos"
         title="Un horario viene del parque o de nuestro cálculo"
@@ -148,7 +204,7 @@ export function ContentES({ day, entries }: { day: PlanDay; entries: PlannerEntr
 
       <Chapter
         id="limites"
-        index="06"
+        index="07"
         icon={HelpCircle}
         kicker="Límites"
         title="Lo que el planificador no sabe"

@@ -21,16 +21,21 @@ export function PlannerPageParkBeacon({
   name,
   geo,
   timezone,
+  backgroundImage,
+  backgroundPosition,
 }: {
   slug: string;
   name: string;
   geo: PlannerGeo;
   timezone?: string;
+  /** Resolved by the route — see `PlannerPagePark` for why not here. */
+  backgroundImage?: string | null;
+  backgroundPosition?: string;
 }) {
   useEffect(() => {
-    plannerPagePark.set({ slug, name, geo, timezone });
+    plannerPagePark.set({ slug, name, geo, timezone, backgroundImage, backgroundPosition });
     return () => plannerPagePark.clear(slug);
-  }, [slug, name, geo, timezone]);
+  }, [slug, name, geo, timezone, backgroundImage, backgroundPosition]);
 
   return null;
 }

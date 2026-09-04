@@ -2,42 +2,31 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { CalendarPlus, ChevronDown, Plus } from 'lucide-react';
+import { CalendarPlus, ChevronDown, Columns2, Plus } from 'lucide-react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
-import { PlannerContextBand, type PlannerDayState } from './planner-context-band';
-import { PlannerDayPicker } from './planner-day-picker';
-import { PlannerTimeline } from './planner-timeline';
-import { PlannerDayGrid } from './planner-day-grid';
+import type { PlannerDayState } from './planner-context-band';
+import { PlannerDayColumn } from './planner-day-column';
 import { PlannerRideSearch } from './planner-ride-search';
 import { PlannerOverview } from './planner-overview';
 import { PlannerPushToggle } from './planner-push-toggle';
-import { PlannerHelpSteps } from './planner-help';
 import { PlannerWizard, type WizardPark } from './planner-wizard';
-import { PlannerPartyChips } from './planner-party-chips';
 import { PlannerInParkCta } from './planner-in-park-cta';
-import { PlannerPlanParkCta } from './planner-plan-park-cta';
 import { PlannerMissingHeadliners } from './planner-missing-headliners';
+import { PlannerOptimizeActions } from './planner-optimize-actions';
 import { PlannerPanelPhoto } from './planner-panel-photo';
 import { PlannerDragCoach } from './planner-drag-coach';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
-import { totalsFor } from '@/lib/planner/estimate';
+import { occupiedMinutes, totalsFor } from '@/lib/planner/estimate';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { useRouter } from '@/i18n/navigation';
 import { formatShortDuration } from '@/lib/utils/duration';
 import { buildDayGrid, growGridForSpans, nextFreeStart } from '@/lib/planner/day-grid';
-import { parkToday, resolveTimeZone } from '@/lib/planner/park-time';
-import { closedNowFor, liveWaitsFor } from '@/lib/planner/live';
-import { showLinesFor } from '@/lib/planner/shows';
-import { plannerShowsVisible } from '@/lib/planner/shows-visible';
-import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
-import { PlannerShowBand } from './planner-show-band';
-import { PlannerGridActions } from './planner-grid-actions';
-import { PLANNER_RIDE_MIME, parseRideDrag } from '@/lib/planner/ride-drag';
-import { occupiedMinutes } from '@/lib/planner/estimate';
+import { addDays, resolveTimeZone } from '@/lib/planner/park-time';
 import { useRideDragSource } from '@/lib/planner/use-ride-drag-source';
 import { usePlannerDayFacts } from '@/lib/planner/use-day-facts';
 import { plannerPanelWidth } from '@/lib/planner/panel-width';
+import { maxColumnsFor, plannerSecondColumn } from '@/lib/planner/second-column';
 import { plannerPagePark } from '@/lib/planner/page-park';
 import { cn } from '@/lib/utils';
 
@@ -67,26 +56,20 @@ const SHEET_DISMISS_PX = 90;
 export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   const t = useTranslations('planner');
   const locale = useLocale();
+  // Only what the PANEL itself still uses. Everything that edits a day — the
+  // moves, the ticks, the removals, the party prefs — moved into
+  // `PlannerDayColumn` with the grid it acts on, because with two columns open
+  // each of those verbs needs a park and a date and there are two of each.
   const {
     activeParkSlug,
     activeDate,
     activeEntries,
     state,
-    setDone,
-    removeRide,
     setActive,
     clearDay,
-    moveRide,
-    shiftFrom,
     addCustom,
-    editCustom,
-    addRide,
     learnTimezone,
-    setDayPrefs,
   } = usePlanner();
-
-  const scrollerRef = useRef<HTMLDivElement>(null);
-  const [selectedId, setSelectedId] = useState<string | null>(null);
 
   // Which of the two things the panel is: one day, or everything planned. It
   // resets on close rather than persisting, because the day is what the panel is
@@ -112,42 +95,33 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   const isPhone = useMediaQuery('(max-width: 639px)');
   const router = useRouter();
 
-  /**
-   * Delete removes the selected block.
-   *
-   * A grid you can select an item in and not delete it from is a grid that owes
-   * you a mouse trip to a button — and the action row's own button stays, for
-   * the phone, where there is no Delete key.
-   *
-   * Bound to the DOCUMENT rather than to the block, because a block is not
-   * focused after a pointer selection: the grip takes focus during a drag and a
-   * plain click on the body focuses nothing at all, so a handler on the element
-   * would fire for a keyboard user and for nobody else. Guarded on the three
-   * places a Delete belongs to something else — a text field, a number field,
-   * anything `contenteditable` — since the panel carries a search box and a free
-   * block's label is an `<input>` sitting inside the very row this deletes.
-   */
-  useEffect(() => {
-    if (!selectedId || !activeParkSlug || !activeDate) return;
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key !== 'Delete' && event.key !== 'Backspace') return;
-      const target = event.target as HTMLElement | null;
-      if (
-        target?.closest('input, textarea, select, [contenteditable=""], [contenteditable="true"]')
-      )
-        return;
-      event.preventDefault();
-      removeRide(activeParkSlug, activeDate, selectedId);
-      setSelectedId(null);
-    };
-    document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
-  }, [selectedId, activeParkSlug, activeDate, removeRide]);
   const panelWidth = useSyncExternalStore(
     plannerPanelWidth.subscribe,
     plannerPanelWidth.getSnapshot,
     plannerPanelWidth.getServerSnapshot
   );
+
+  /**
+   * The second column, if there is room for one.
+   *
+   * Two gates, and they mean different things. `maxColumnsFor` is about the
+   * PANEL: below two minimum widths plus a divider, a second column would be
+   * narrower than a single one is ever allowed to be. `isPhone` is about the
+   * screen: there the sheet is the width of the phone and no amount of dragging
+   * makes it wider, so the switch is not offered at all.
+   *
+   * Gated rather than hidden, because a column is not free — it is a
+   * `/plan/day` query, a best-days snapshot and a grid — and a column nobody can
+   * see must not be paid for. The arrangement itself survives: narrowing the
+   * panel puts the second column away and widening it brings the same day back.
+   */
+  const twoColumnsFit = !isPhone && maxColumnsFor(panelWidth) === 2;
+  const storedColumn = useSyncExternalStore(
+    plannerSecondColumn.subscribe,
+    plannerSecondColumn.getSnapshot,
+    plannerSecondColumn.getServerSnapshot
+  );
+  const secondColumn = twoColumnsFit ? storedColumn : null;
 
   const park = activeParkSlug ? state.parks[activeParkSlug] : null;
 
@@ -157,8 +131,6 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   // here rather than by the card.
   useRideDragSource(open);
 
-  /** Whether a ride is currently hovering over the flat list. */
-  const [flatDropActive, setFlatDropActive] = useState(false);
   /** The wizard, which is how another day gets planned from in here. */
   const [wizardOpen, setWizardOpen] = useState(false);
   /** A park to open it on, so the first step can be skipped. */
@@ -218,7 +190,6 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
    * construction, so it is hatched like every other minute out there.
    */
   const grid = growGridForSpans(buildDayGrid(day?.context.openHour, day?.context.closeHour), spans);
-  const isToday = Boolean(activeDate && activeDate === parkToday(timezone));
 
   /**
    * The park the page BEHIND the panel is about, which is a different question
@@ -282,21 +253,9 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
     });
   };
 
-  // The live poll, and it is gated on TODAY for two reasons that point the same
-  // way: a standby reading describes this minute and says nothing about a
-  // Tuesday in November, and on a park page this is a cache hit on the key the
-  // page already holds rather than a second request.
-  const { data: livePark } = useLiveParkData({
-    continent: park?.geo.continent ?? '',
-    country: park?.geo.country ?? '',
-    city: park?.geo.city ?? '',
-    parkSlug: activeParkSlug ?? '',
-    enabled: open && Boolean(park) && isToday,
-  });
-
-  // The park's own three-month forecast, for the day picker's grid. Cheap and
-  // shared: it is the park page's own query key, so on a park page this is a
-  // cache hit rather than a second request.
+  // The park's own three-month forecast. It is here for ONE reason — the zone
+  // the effect below writes back — and it is the same query key the column's
+  // day picker asks for, so the two share a request rather than making two.
   const dayFacts = usePlannerDayFacts(park, open && !showOverview);
 
   // The zone the day payload names, written back into the plan. A park added
@@ -318,22 +277,6 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   /** Who is coming, for this day. The wizard writes it; the chips change it. */
   const prefs = activeDate ? park?.days[activeDate]?.prefs : undefined;
 
-  const liveWaits = liveWaitsFor(livePark);
-  const closedNow = closedNowFor(livePark);
-
-  /**
-   * Ticking a ride off, from either view.
-   *
-   * ONE handler, because there are two of them: the grid's docked action row and
-   * the flat list's row button. The grid's passed the fifth argument and the flat
-   * list's did not — and the flat list is the view every visitor actually gets
-   * while `/plan/day` answers 404, so in production every tick stored `done: true`
-   * with no figure. `setEntryDone` has taken `actualWait` since it was written,
-   * `totalsFor` sums it and the block renders it.
-   *
-   * Only on the way IN: un-ticking drops the figure, because a measured number
-   * must not stay attached to an entry that is a plan again.
-   */
   /**
    * The sheet's own height, on a phone.
    *
@@ -385,15 +328,6 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
     handle.addEventListener('pointercancel', detach);
   };
 
-  const toggleDone = useCallback(
-    (entryId: string, done: boolean) => {
-      if (!activeParkSlug || !activeDate) return;
-      const slug = activeEntries.find((entry) => entry.id === entryId)?.attractionSlug;
-      const actual = done && slug ? liveWaits?.get(slug) : undefined;
-      setDone(activeParkSlug, activeDate, entryId, done, actual ?? undefined);
-    },
-    [activeParkSlug, activeDate, activeEntries, liveWaits, setDone]
-  );
   // `null` only while the day payload is on its way. `/plan/day` answers with
   // showtimes for every date the picker offers — the operator's own listing for
   // today and for days already gone, the last matching weekday carried forward
@@ -403,28 +337,6 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   /* Whether the day's showtimes are drawn at all — a preference of this
      browser, remembered, and read here rather than in the band so the grid's
      lines and the band above them can never disagree. */
-  const showsVisible = useSyncExternalStore(
-    plannerShowsVisible.subscribe,
-    plannerShowsVisible.getSnapshot,
-    plannerShowsVisible.getServerSnapshot
-  );
-
-  const showLines = day
-    ? showLinesFor(
-        day.shows,
-        day.context.openHour !== null && day.context.closeHour !== null
-          ? { openMin: day.context.openHour * 60, closeMin: day.context.closeHour * 60 }
-          : null
-      )
-    : null;
-
-  // Days of THIS park that already have entries — marked in the picker so the
-  // visitor can find them again without remembering the date.
-  const plannedDates = park
-    ? Object.values(park.days)
-        .filter((d) => d.entries.length > 0)
-        .map((d) => d.date)
-    : [];
 
   return (
     // NOT modal on a desktop pointer. Radix's default puts `pointer-events: none`
@@ -492,8 +404,25 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
         // hold it at 448 px in the middle of a 390 px screen.
         style={isPhone ? undefined : { width: panelWidth }}
       >
-        {/* First child, so everything after it paints over it. */}
-        <PlannerPanelPhoto src={day?.parkBackgroundImage} position={day?.parkBackgroundPosition} />
+        {/* First child, so everything after it paints over it.
+
+            The picture is the PANEL's subject, and the subject is the plan's
+            park where there is one and the page's park where there is not. That
+            second half is what was missing: with nothing planned there is no
+            `/plan/day` to answer with a photo, so the panel opened as a black
+            rectangle on top of a park page that had one — and the empty state,
+            the one screen that has to say what this thing is for, was the one
+            screen with no park in it. Branching on the ACTIVE park rather than
+            falling back per field, so a day whose query is still in flight
+            shows nothing rather than briefly showing a different park. */}
+        <PlannerPanelPhoto
+          src={activeParkSlug ? day?.parkBackgroundImage : pagePark?.backgroundImage}
+          position={
+            activeParkSlug
+              ? day?.parkBackgroundPosition
+              : (pagePark?.backgroundPosition ?? undefined)
+          }
+        />
 
         {/* The grab handle. Phone only, and `sm:hidden` rather than `!isPhone`
             because `useMediaQuery` answers `false` on the server snapshot and a
@@ -582,15 +511,46 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 >
                   <Plus className="size-4" aria-hidden="true" />
                 </button>
-                {activeDate && !showOverview && (
-                  <PlannerDayPicker
-                    value={activeDate}
-                    onChange={(date) => setActive(activeParkSlug, date)}
-                    plannedDates={plannedDates}
-                    timezone={timezone}
-                    facts={dayFacts.byDate}
-                    maxDate={dayFacts.lastDate ?? undefined}
-                  />
+                {/* The second column, on and off. The day picker that used to
+                    sit here moved onto the column with the park name, because
+                    with two of them a panel-level picker cannot say which day
+                    it means — see `PlannerColumnHead`.
+
+                    It opens on the day AFTER the active one, same park: "and
+                    the day after" is the move two columns are for, and a second
+                    column showing the same date twice would open on the one
+                    arrangement that says nothing. The park is whatever is
+                    active, so switching either column's park is one press away
+                    and neither is decided here.
+
+                    Only where it fits — see `twoColumnsFit`. */}
+                {activeDate && !showOverview && twoColumnsFit && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (secondColumn) {
+                        plannerSecondColumn.close();
+                        return;
+                      }
+                      if (!activeParkSlug) return;
+                      plannerSecondColumn.open({
+                        parkSlug: activeParkSlug,
+                        date: addDays(activeDate, 1),
+                      });
+                    }}
+                    aria-pressed={Boolean(secondColumn)}
+                    aria-label={secondColumn ? t('column.close') : t('column.open')}
+                    title={secondColumn ? t('column.close') : t('column.open')}
+                    data-planner-second-column={secondColumn ? 'on' : 'off'}
+                    className={cn(
+                      'hover:bg-accent flex size-7 shrink-0 items-center justify-center rounded-md transition-colors',
+                      secondColumn
+                        ? 'bg-accent text-foreground'
+                        : 'text-muted-foreground hover:text-foreground'
+                    )}
+                  >
+                    <Columns2 className="size-4" aria-hidden="true" />
+                  </button>
                 )}
               </>
             )}
@@ -640,254 +600,65 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 guard has to sit on the wrapper: it carries the `border-b`, so a
                 band that returned `null` from inside would leave a hairline
                 under the sheet header with nothing above it. */}
-            {park && activeDate && (
-              <div className="border-border/60 shrink-0 border-b">
-                {/* Who is coming, and changeable — the wizard asks it once and
-                    the ride list flags rides against it all day, so this cannot
-                    be write-only. It rides at the END of the band's own second
-                    row rather than on a line of its own: 30 px of panel for one
-                    22 px pill, in the same type as the row above it, on a
-                    surface whose subject is the axis underneath. */}
-                <PlannerContextBand
-                  day={day ?? null}
-                  state={dayState}
-                  trailing={
-                    <PlannerPartyChips
-                      prefs={prefs}
-                      onChange={(patch) => setDayPrefs(park.slug, activeDate, patch)}
-                    />
-                  }
-                />
-              </div>
-            )}
+            {/* The columns. One is the plan's active day; a second is the day
+                beside it, and both draw the same component so the chrome exists
+                once in the code. `flex-1` with `min-w-0` on each, so two columns
+                halve the canvas rather than overflowing it, and a divider
+                between them because two grids of hour rules need an edge to be
+                told apart by.
 
-            {/* The scroll lives here, not on SheetContent — see the note above.
-                `relative` is load-bearing: `overflow-y-auto` makes a scroll
-                container but NOT a containing block, so without it the grid's
-                absolutely positioned blocks would position against the fixed
-                sheet and stay put while the grid scrolled under them.
-                `overscroll-y-contain` is on every other scroll surface in this
-                repo; a drag past the end of a bottom sheet is otherwise a
-                pull-to-refresh. */}
-            {/* The scroller and its docked action row. The row is ABSOLUTE inside
-                this wrapper, so selecting a block costs no layout at all and cannot
-                resize the grid's box — which is the only arrangement in which the
-                44 px touch tier and an honest 20 px block can both hold. */}
-            {/* A FLOOR under the grid, and it is the difference between a
-                planner and a search box. Every sibling in this column is
-                `shrink-0`, so `flex-1` gave the grid whatever the others left
-                over — on a 390 x 844 phone the ride search alone took 444 px of
-                a 717 px sheet and the grid's scroller was left with a client
-                height of **16 px**. The blocks were still laid out and still
-                reported a box, so nothing looked broken from the outside; they
-                were simply clipped away, which is why no drag worked on a phone
-                at all while both worked on a desktop. 216 px is three hours at
-                the grid's own 1.2 px/min — enough to see a block, grab it and
-                move it somewhere. The ride search below gives way instead. */}
-            <div className="relative flex min-h-0 flex-1 flex-col max-sm:min-h-[216px]">
-              <div
-                ref={scrollerRef}
-                className={cn(
-                  'relative min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-y-contain px-1 py-2',
-                  flatDropActive && 'ring-primary/60 rounded-md ring-2 ring-inset'
-                )}
-                /* The drop target for a day with NO axis. `PlannerDayGrid` owns
-                   the gesture wherever there is a grid — it can name the minute
-                   the pointer is over, which is what a grid is for — but a park
-                   whose hours we do not know draws a flat list, and a ride
-                   dragged onto that was refused with nothing said. The entry
-                   lands after the last one, exactly as the list's own add
-                   button puts it.
-
-                   Only the planner's own payload is accepted here: a bare link
-                   carries no name, and the flat list is drawn precisely when
-                   there is no day payload to look one up in. */
-                onDragOver={(event) => {
-                  if (grid || !park || !activeDate) return;
-                  if (!event.dataTransfer.types.includes(PLANNER_RIDE_MIME)) return;
-                  event.preventDefault();
-                  event.dataTransfer.dropEffect = 'copy';
-                  setFlatDropActive(true);
+                Never on a phone: the sheet is the width of the screen there, and
+                two columns of a 390 px one would be 195 px each against the
+                318 px a single honest column needs. `isPhone` rather than a CSS
+                breakpoint, because a second column also costs a `/plan/day`
+                query and a hidden one must not be paid for. */}
+            <div className="flex min-h-0 flex-1">
+              <PlannerDayColumn
+                parkSlug={activeParkSlug}
+                date={activeDate}
+                primary
+                open={open}
+                onPickPark={(slug) => setActive(slug, activeDate)}
+                onPickDate={(date) => setActive(activeParkSlug, date)}
+                onNewPark={() => {
+                  setWizardPark(pagePark ? { ...pagePark } : null);
+                  setWizardOpen(true);
                 }}
-                onDragLeave={() => setFlatDropActive(false)}
-                onDrop={(event) => {
-                  // Prevented first, like the grid's — a park card writes
-                  // `text/uri-list` beside our own payload, so a refusal that
-                  // returns early leaves the browser holding a link it will
-                  // follow.
-                  event.preventDefault();
-                  setFlatDropActive(false);
-                  if (grid || !park || !activeDate) return;
-                  const dragged = parseRideDrag(event.dataTransfer.getData(PLANNER_RIDE_MIME));
-                  if (!dragged || dragged.parkSlug !== park.slug) return;
-                  addRide({
-                    parkSlug: park.slug,
-                    parkName: park.name,
-                    geo: park.geo,
-                    timezone: day?.timezone ?? park.timezone,
-                    date: activeDate,
-                    attractionSlug: dragged.attractionSlug,
-                    attractionName: dragged.attractionName,
-                  });
+                unplannedPagePark={unplannedPagePark}
+                onStartPagePark={startPagePark}
+                onOpenWizard={() => {
+                  setWizardPark(null);
+                  setWizardOpen(true);
                 }}
-              >
-                {grid && (
-                  <PlannerShowBand
-                    lines={showLines}
-                    timezone={timezone}
-                    isToday={isToday}
-                    visible={showsVisible}
-                    onToggle={plannerShowsVisible.toggle}
-                  />
-                )}
-                {grid ? (
-                  <PlannerDayGrid
-                    entries={activeEntries}
-                    day={day ?? null}
-                    grid={grid}
-                    timezone={timezone}
-                    isToday={isToday}
-                    liveWaits={liveWaits}
-                    /* `[]` rather than `null` while the switch is off: `null`
-                       is this prop's "the day payload has not arrived", and the
-                       grid draws a reserved gap for it. Hidden shows are an
-                       answer, not a wait. */
-                    showLines={showsVisible ? showLines : []}
-                    closedNow={closedNow}
-                    parkSlug={park?.slug}
-                    onDropRide={(attractionSlug, attractionName, startMinute) => {
-                      if (!park || !activeDate) return;
-                      addRide({
-                        parkSlug: park.slug,
-                        parkName: park.name,
-                        geo: park.geo,
-                        timezone: day?.timezone ?? park.timezone,
-                        date: activeDate,
-                        attractionSlug,
-                        attractionName,
-                        startMinute,
-                      });
+              />
+              {secondColumn && (
+                /* It arrives from the side it comes from rather than appearing
+                   in one frame — a 389 px block popping into a panel somebody
+                   is reading is a jump, not a change. On a DESCENDANT, which is
+                   the one place in this panel a transform is free: the glass is
+                   `SheetContent`'s, and a transform on that (or on any ancestor
+                   of it) makes it a backdrop root and flattens the blur. Short,
+                   because the column is already correct the moment it is there
+                   and the animation is only saying where it came from.
+                   `motion-reduce:animate-none` for a reader who has asked for
+                   none of this. */
+                <div className="border-border/60 animate-in fade-in slide-in-from-right-4 flex min-w-0 flex-1 border-l duration-200 ease-out motion-reduce:animate-none">
+                  <PlannerDayColumn
+                    parkSlug={secondColumn.parkSlug}
+                    date={secondColumn.date}
+                    primary={false}
+                    open={open}
+                    onPickPark={(slug) =>
+                      plannerSecondColumn.open({ parkSlug: slug, date: secondColumn.date })
+                    }
+                    onPickDate={(date) => plannerSecondColumn.setDate(date)}
+                    onNewPark={() => {
+                      setWizardPark(null);
+                      setWizardOpen(true);
                     }}
-                    onResize={(entryId, durationMinutes) => {
-                      if (activeParkSlug && activeDate)
-                        editCustom(activeParkSlug, activeDate, entryId, { durationMinutes });
-                    }}
-                    loading={dayState === 'loading'}
-                    /* The same offer, in the branch that is actually on screen.
-                       An axis exists for every open day, so this is where a
-                       reader standing in another park sees it. */
-                    emptyAction={
-                      unplannedPagePark ? (
-                        <PlannerPlanParkCta
-                          parkName={unplannedPagePark.name}
-                          onStart={startPagePark}
-                          className="mt-3"
-                        />
-                      ) : null
-                    }
-                    selectedId={selectedId}
-                    scrollerRef={scrollerRef}
-                    onSelect={setSelectedId}
-                    onMove={(entryId, startMinute) =>
-                      activeParkSlug &&
-                      activeDate &&
-                      moveRide(activeParkSlug, activeDate, entryId, startMinute)
-                    }
-                    onShiftFrom={(entryId, delta) =>
-                      activeParkSlug &&
-                      activeDate &&
-                      shiftFrom(activeParkSlug, activeDate, entryId, delta)
-                    }
+                    onClose={() => plannerSecondColumn.close()}
                   />
-                ) : activeEntries.length === 0 ? (
-                  /* Two lines of prose was what this said before: what to press,
-                     and nothing about what pressing it gets you. The three steps
-                     are the same ones the page shows, from one component, so the
-                     two cannot drift. */
-                  <div className="flex flex-col gap-3 px-4 py-5">
-                    <div>
-                      <p className="text-sm font-medium">{t('empty.title')}</p>
-                      {/* Standing in a park with nothing planned for it, the
-                          answer is that park — not a tour of the panel. It
-                          starts the wizard on the CALENDAR, because which park
-                          is already settled by the page. */}
-                      {unplannedPagePark ? (
-                        <PlannerPlanParkCta
-                          parkName={unplannedPagePark.name}
-                          onStart={startPagePark}
-                          className="mt-2"
-                        />
-                      ) : (
-                        /* Off a park page there is no park to name, and until
-                           now that meant no button at all: the header's `+`
-                           renders only once a plan exists, so an empty planner
-                           opened from the homepage offered three lines of prose
-                           and no way to start. The wizard's own first step is
-                           the park picker, so this needs to carry nothing. */
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setWizardPark(null);
-                            setWizardOpen(true);
-                          }}
-                          data-planner-start-wizard=""
-                          className="bg-primary text-primary-foreground hover:bg-primary/90 mt-2 flex w-full items-center justify-center gap-2 rounded-md px-3 py-2.5 text-sm font-semibold transition-colors max-sm:min-h-11"
-                        >
-                          <CalendarPlus className="size-4 shrink-0" aria-hidden="true" />
-                          <span className="truncate">{t('wizard.open')}</span>
-                        </button>
-                      )}
-
-                      {/* The two sentences that stood here are gone, and they
-                          were wrong rather than merely redundant. Both said
-                          "such dir unten eine Bahn", and this is the branch
-                          with NO axis — the ride search is mounted behind
-                          `park && activeDate` and hidden above `sm`, so in six
-                          of the six states that reach this markup there is
-                          nothing below but the three steps that follow, and on
-                          a phone the search is either absent or, on an error
-                          or a day with no forecast, a field no ride can ever
-                          appear in. The desktop half was worse: it was
-                          displayed at exactly the widths where the search does
-                          not exist at all.
-                          What is true here is the button above and the three
-                          steps below, and both are already on screen. */}
-                    </div>
-                    <PlannerHelpSteps layout="list" />
-                  </div>
-                ) : (
-                  /* No opening hours means no honest axis — not a 24-hour one,
-                     which would assert a park that never closes, and not an
-                     invented 9-to-6. The flat list is what this branch is for,
-                     and why those three components survive. */
-                  <PlannerTimeline
-                    entries={activeEntries}
-                    day={day ?? null}
-                    onToggleDone={toggleDone}
-                    onRemove={(entryId) =>
-                      activeParkSlug &&
-                      activeDate &&
-                      removeRide(activeParkSlug, activeDate, entryId)
-                    }
-                  />
-                )}
-              </div>
-              {grid && selectedId && (
-                <PlannerGridActions
-                  entry={activeEntries.find((e) => e.id === selectedId) ?? null}
-                  day={day ?? null}
-                  onToggleDone={toggleDone}
-                  onRemove={(entryId) => {
-                    if (activeParkSlug && activeDate)
-                      removeRide(activeParkSlug, activeDate, entryId);
-                    setSelectedId(null);
-                  }}
-                  onClose={() => setSelectedId(null)}
-                  onEditCustom={(entryId, patch) => {
-                    if (activeParkSlug && activeDate)
-                      editCustom(activeParkSlug, activeDate, entryId, patch);
-                  }}
-                />
+                </div>
               )}
             </div>
 
@@ -932,6 +703,24 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             <PlannerDragCoach
               show={Boolean(pagePark && park && activeDate && activeEntries.length > 0)}
             />
+
+            {/* Letting the day sort itself, above the band that names what is
+                missing from it — the headliner button is the same question one
+                gesture further on ("and put them in"), so the two belong
+                together and in that order. It follows the PRIMARY column, like
+                everything else in the panel's foot. */}
+            {park && activeDate && (
+              <PlannerOptimizeActions
+                parkSlug={park.slug}
+                parkName={park.name}
+                geo={park.geo}
+                date={activeDate}
+                day={day ?? null}
+                grid={grid}
+                timezone={day?.timezone ?? park.timezone}
+                prefs={prefs}
+              />
+            )}
 
             {/* Which of the park's big rides are still missing from the day.
                 Above the free-block row and outside the `sm:hidden` search,

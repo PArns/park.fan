@@ -1,4 +1,4 @@
-import { CalendarDays, Footprints, Gauge, HelpCircle, Sunrise, Theater } from 'lucide-react';
+import { CalendarDays, Footprints, Gauge, HelpCircle, Sunrise, Theater, Wand2 } from 'lucide-react';
 import { A, P } from '@/components/marketing/editorial-ui';
 import { Chapter, Note } from '../_chrome';
 import { PlannerDayDemo } from '../_demos';
@@ -120,8 +120,63 @@ export function ContentEN({ day, entries }: { day: PlanDay; entries: PlannerEntr
       </Chapter>
 
       <Chapter
-        id="showtimes"
+        id="sorting-the-day"
         index="05"
+        icon={Wand2}
+        kicker="Sorting"
+        title="The day can sort itself"
+      >
+        <P>
+          Two buttons do that. &ldquo;Plan every headliner&rdquo; pulls in the park&apos;s big rides
+          that are not in the day yet and then orders the lot; &ldquo;Optimise the day&rdquo; adds
+          nothing and only reorders what is already planned. The same arithmetic runs behind both,
+          and they are two buttons because they are two questions: fill my day, and is this the best
+          order.
+        </P>
+        <P>
+          It sorts for three things, and the ranking between them is the actual decision. First that
+          everything still happens before the park closes: a plan with one ride fewer that really
+          takes place beats a plan with one more that will not. Then the total time spent queueing,
+          which is what was asked for. And where two orders cost the same, the one that finishes
+          earlier wins. There is no slider weighing queueing against hanging about, because nobody
+          could defend the number on it.
+        </P>
+        <P>
+          No rule about early mornings is hiding in there. The planner knows nothing but each
+          ride&apos;s own hourly curve. Where that curve is lowest just after opening, &ldquo;the
+          big ride first&rdquo; falls out of the arithmetic by itself; where it is flat, something
+          else does. Across one measured day Taron reads 60, 60, 54, 53 and 59 minutes hour by hour
+          while Chiapas climbs 22 minutes. A fixed rule would give both rides the same advice.
+        </P>
+        <P>
+          Sometimes the suggestion is to wait a while rather than join a queue now. That happens
+          under a single condition: the queue has to drop far enough that, break included, you are
+          free again earlier than if you had queued straight away. Queueing less on its own is not
+          enough, and the day never gets longer out of this arithmetic. Nor does it ever leave you
+          waiting more than two hours. That ceiling rarely does any work by itself: a break only
+          pays if it is shorter than the queue it saves, so two hours of waiting would take a queue
+          of over two hours to earn.
+        </P>
+        <P>
+          A lunch break at one stays at one, and a ride you have ticked off has happened and is not
+          re-planned; the rest is arranged around both. Afterwards it says what it did. &ldquo;18
+          min less queueing&rdquo; is the difference between two sums worked the same way, one
+          before the press and one after; where there is nothing to gain it says the order is
+          already right and the plan stays as it was. The headliner button reports no saving, since
+          the day is longer with the new rides in it — it counts instead how many rides came in and
+          how many are not for the group. Anything that no longer fits before closing is reported
+          after either button. An undo comes with it and puts back the state from before the press,
+          for as long as the planner is open.
+        </P>
+        <Note>
+          Where no wait times arrive, neither button is drawn at all. At Hansa-Park every ride costs
+          the same assumed nothing, so one order is as good as another and there is nothing to sort.
+        </Note>
+      </Chapter>
+
+      <Chapter
+        id="showtimes"
+        index="06"
         icon={Theater}
         kicker="Shows"
         title="A showtime is either the operator's or our arithmetic"
@@ -143,7 +198,7 @@ export function ContentEN({ day, entries }: { day: PlanDay; entries: PlannerEntr
 
       <Chapter
         id="limits"
-        index="06"
+        index="07"
         icon={HelpCircle}
         kicker="Limits"
         title="What the planner does not know"

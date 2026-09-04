@@ -10,6 +10,11 @@ export interface PolaroidPhoto {
   position?: string;
   /** The caption written on the frame — a park or ride name. */
   label: string;
+  /**
+   * The photo's authored alt text in the page's language, resolved on the server
+   * from the media database. Empty string where the database holds none.
+   */
+  alt: string;
 }
 
 interface PlannerPolaroidsProps {
@@ -29,7 +34,19 @@ interface PlannerPolaroidsProps {
  * The photos are resolved on the SERVER and passed in. `@/lib/media` is the
  * 107 KB catalogue and this is a Client Component — importing it here would ship
  * the catalogue to every visitor of the page, which is the trap
- * `docs/features/media-database.md` names.
+ * `docs/features/media-database.md` names. The alt text arrives the same way,
+ * out of `@/lib/media/text`, which is the other half of that trap: 37 KB of six
+ * locales of prose that no visitor should be handed either.
+ *
+ * The alt text is AUTHORED, never derived. 26 of this page's 30 `<img>` shipped
+ * without one — eight of them the four theme-paired logo SVGs, where empty is
+ * the correct answer, and six of them these polaroids — so each card now carries
+ * the sidecar's own sentence about that photograph, and a picture the database
+ * has no sentence for keeps `alt=""` rather than a line assembled from its file
+ * name, which is the one thing the media rules forbid inferring anything from.
+ * That is also why the band is no longer `aria-hidden`: a described photograph
+ * under a `figcaption` naming the park is content, and shipping that sentence to
+ * Google Images while hiding it from a screen reader is the wrong way round.
  *
  * The frame is white in both themes on purpose. A polaroid is a physical object
  * and its border is the paper; a `bg-card` version reads as a card with a
@@ -47,7 +64,6 @@ export function PlannerPolaroids({ photos }: PlannerPolaroidsProps) {
       // `use-polaroid-reveal`. `select-none` because these are decoration and a
       // drag-select over them looks like a bug.
       className="pointer-events-none relative mx-auto h-[210px] w-full max-w-md select-none sm:h-[260px] sm:max-w-2xl"
-      aria-hidden="true"
     >
       {photos.slice(0, SLOTS.length).map((photo, index) => (
         /* TWO elements, and that is the whole reason this works. The wrapper
@@ -73,7 +89,7 @@ export function PlannerPolaroids({ photos }: PlannerPolaroidsProps) {
             <span className="relative block aspect-square overflow-hidden bg-neutral-200">
               <Image
                 src={photo.src}
-                alt=""
+                alt={photo.alt}
                 fill
                 // A phone card is 36 % of a 448 px column, a desktop one 26 %
                 // of a 672 px band — ~160 and ~175 px, doubled for a 2× display.

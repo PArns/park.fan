@@ -1045,7 +1045,8 @@
         "varHolidays": "Festività e vacanze scolastiche",
         "varWeather": "Previsioni meteo"
       }
-    }
+    },
+    "planDayCta": "Pianifica una giornata a {park}"
   },
   "attractions": {
     "blogPosts": {
@@ -1910,6 +1911,13 @@
       "range": "dalle {from} alle {to}",
       "resizeHandle": "Trascina la durata"
     },
+    "column": {
+      "pickPark": "Scegli il parco",
+      "noPark": "Nessun parco",
+      "addPark": "Pianifica un altro parco",
+      "close": "Chiudi colonna",
+      "open": "Apri una seconda colonna"
+    },
     "tier": {
       "observed": "Misurato",
       "measured": "Previsione oraria",
@@ -1945,7 +1953,10 @@
       "opensAt": "dalle {time}"
     },
     "clearDay": "Svuota il giorno",
-    "clearDayConfirm": "Eliminare tutte le voci di questo giorno?",
+    "clearDayTitle": "Svuotare il giorno?",
+    "clearDayBody": "Tutte le voci di questo giorno vengono eliminate, comprese quelle già spuntate. I minuti misurati su di esse non sono salvati da nessun'altra parte.",
+    "clearDayAction": "Svuota il giorno",
+    "cancel": "Annulla",
     "loading": "Caricamento del piano",
     "error": "Non è stato possibile caricare il piano.",
     "noPlan": "Per questo giorno non c’è una previsione.",
@@ -2007,6 +2018,22 @@
         "meet": "Punto d’incontro",
         "star": "Altro"
       }
+    },
+    "optimize": {
+      "headliners": "Pianifica tutte le attrazioni principali",
+      "run": "Ottimizza la giornata",
+      "running": "Riordino …",
+      "hint": "Mette in fila le attrazioni secondo le curve orarie, il tragitto fra una e l’altra e l’ora in cui aprono. Pause e attrazioni già fatte restano dove sono.",
+      "saved": "{minutes} min di coda in meno",
+      "already": "L’ordine va già bene",
+      "fitted": "{count, plural, one {una attrazione ora entra nella giornata} other {# attrazioni ora entrano nella giornata}}",
+      "sameWait": "Riorganizzata, stessa coda",
+      "resorted": "La giornata è stata riorganizzata",
+      "added": "{count, plural, one {Una attrazione aggiunta} other {# attrazioni aggiunte}}",
+      "skipped": "{count, plural, one {una non fa per il gruppo} other {# non fanno per il gruppo}}",
+      "overflow": "{count, plural, one {una non entra più nella giornata} other {# non entrano più nella giornata}}",
+      "capped": "{count, plural, one {una attrazione è rimasta fuori, il pianificatore ordina al massimo {max} tappe} other {# attrazioni sono rimaste fuori, il pianificatore ordina al massimo {max} tappe}}",
+      "undo": "Annulla"
     },
     "sheet": {
       "handle": "Ingrandisci o chiudi il pianificatore",

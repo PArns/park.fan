@@ -1,6 +1,7 @@
 import { getCookie, setCookie } from 'cookies-next';
 import {
   EMPTY_PLANNER_STATE,
+  MAX_PLANNED_MINUTE,
   PLANNER_BLOCK_ICONS,
   hasAnyPlan,
   type PlannerBlockIcon,
@@ -130,8 +131,15 @@ function toEntry(value: unknown): PlannerEntry | null {
     ...(typeof e.attractionSlug === 'string' ? { attractionSlug: e.attractionSlug } : {}),
     ...(typeof e.attractionName === 'string' ? { attractionName: e.attractionName } : {}),
     ...(custom ? { custom } : {}),
-    startMinute: Math.max(0, Math.min(1500, Math.round(startMinute))),
-    hour: Math.floor(Math.max(0, Math.min(1500, startMinute)) / 60),
+    // The same ceiling `applyPlan` writes under, and not the drag's 1500. A stop
+    // the optimiser could not fit before closing is filed PAST the gate on
+    // purpose, where the axis grows to hold it and the minutes are hatched —
+    // clamping at 1500 here put the overflow back on one minute the moment the
+    // plan was read again, so it survived the session and not the reload. The
+    // drag keeps its own, tighter ceiling; this is the storage boundary, and it
+    // has to admit everything a writer is allowed to store.
+    startMinute: Math.max(0, Math.min(MAX_PLANNED_MINUTE, Math.round(startMinute))),
+    hour: Math.floor(Math.max(0, Math.min(MAX_PLANNED_MINUTE, startMinute)) / 60),
     ...(e.done === true ? { done: true } : {}),
     ...(typeof e.actualWait === 'number' ? { actualWait: e.actualWait } : {}),
   };

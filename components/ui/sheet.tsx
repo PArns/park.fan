@@ -67,7 +67,18 @@ function SheetContent({
       <SheetPrimitive.Content
         data-slot="sheet-content"
         className={cn(
-          'bg-background data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-[70] flex flex-col gap-4 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500',
+          // 300 ms BOTH ways, and the number is not a taste: the page beside an
+          // open planner reflows on a `transition-[padding]` of its own, at
+          // `--planner-inset-ms` (300 ms, `app/[locale]/layout.tsx`), and the
+          // edge tab tracks the panel on a third. At 500 the panel was the
+          // slowest of the three and lost — traced frame by frame at 1440 px,
+          // the page finished its inset at 432 ms and the panel arrived at 668,
+          // so for a quarter of a second there was a strip of bare background
+          // up to 83 px wide between the page's right edge and a panel still on
+          // its way in. `ease-in-out` is already shared: `--tw-ease` is what
+          // `animate-in` reads for its timing function, so the class below sets
+          // the easing of the animation and of the transition at once.
+          'bg-background data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-[70] flex flex-col gap-4 shadow-lg transition duration-300 ease-in-out',
           side === 'right' &&
             'data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm',
           side === 'left' &&
