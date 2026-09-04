@@ -153,6 +153,20 @@ const PLAN = {
 // and it is drawn on every page whether or not anything is planned — so this
 // selector is a data attribute rather than an aria-label: the tab's accessible
 // name is its own visible word, which differs per locale.
+/**
+ * How many chapters the planner's own page explains itself in.
+ *
+ * Three assertions below counted it separately and the number was written into
+ * all three — so a seventh chapter turned two of them red and left the third
+ * quietly passing, because it sliced at six and therefore stopped looking
+ * exactly where the new one begins. The page will get more chapters.
+ */
+const CHAPTER_COUNT = 7;
+/** `010203…`, derived rather than typed, for the no-gap assertion. */
+const CHAPTER_NUMBERS = Array.from({ length: CHAPTER_COUNT }, (_, i) =>
+  String(i + 1).padStart(2, '0')
+).join('');
+
 const LAUNCHER = '[data-planner-edge-tab]';
 const SHEET = '[data-slot="sheet-content"]';
 
@@ -2526,11 +2540,15 @@ if (reachable) {
   // ── The article under the directory ───────────────────────────────────────
   // The page used to be a directory and three cards, which is nothing for a
   // search engine to index and nothing for a first-time reader to learn from.
-  // The six chapters under it explain the thing with the planner's OWN
-  // components drawing a real, dated payload — so this asserts that the demo is
-  // the product rather than a picture of it, and that it writes nothing.
+  // The chapters under it explain the thing with the planner's OWN components
+  // drawing a real, dated payload — so this asserts that the demo is the
+  // product rather than a picture of it, and that it writes nothing.
   const chapters = await page.locator('article h2').allInnerTexts();
-  check('die Seite erklärt sich in sechs Kapiteln', chapters.length === 6, `${chapters.length}`);
+  check(
+    `die Seite erklärt sich in ${CHAPTER_COUNT} Kapiteln`,
+    chapters.length === CHAPTER_COUNT,
+    `${chapters.length}`
+  );
   const numbers = await page
     .locator('article section')
     .evaluateAll((sections) =>
@@ -2538,7 +2556,7 @@ if (reachable) {
     );
   check(
     'die Kapitelnummern laufen ohne Lücke',
-    numbers.slice(0, 6).join('') === '010203040506',
+    numbers.slice(0, CHAPTER_COUNT).join('') === CHAPTER_NUMBERS,
     JSON.stringify(numbers)
   );
   const articleText = (await page.locator('article').innerText()) ?? '';
@@ -2574,7 +2592,7 @@ if (reachable) {
   const frText = (await page.locator('article').innerText()) ?? '';
   check(
     'und auf Französisch genauso',
-    (await page.locator('article h2').count()) === 6 &&
+    (await page.locator('article h2').count()) === CHAPTER_COUNT &&
       (await page.locator('article li[data-planner-block]').count()) === 7 &&
       /Phantasialand/.test(frText),
     frText.slice(0, 60).replace(/\s+/g, ' ')
