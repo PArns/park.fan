@@ -1045,7 +1045,8 @@
         "varHolidays": "Jours fériés et vacances scolaires",
         "varWeather": "Prévisions météo"
       }
-    }
+    },
+    "planDayCta": "Planifier une journée à {park}"
   },
   "attractions": {
     "blogPosts": {
@@ -2014,6 +2015,18 @@
         "meet": "Point de rendez-vous",
         "star": "Autre"
       }
+    },
+    "optimize": {
+      "headliners": "Planifier toutes les attractions phares",
+      "run": "Optimiser la journée",
+      "running": "Tri en cours …",
+      "hint": "Classe les attractions selon leurs courbes horaires, les trajets entre elles et leurs horaires d’ouverture. Les pauses et les attractions déjà faites ne bougent pas.",
+      "saved": "{minutes} min d’attente en moins",
+      "already": "L’ordre est déjà le bon",
+      "added": "{count, plural, one {Une attraction ajoutée} other {# attractions ajoutées}}",
+      "skipped": "{count, plural, one {une ne convient pas au groupe} other {# ne conviennent pas au groupe}}",
+      "overflow": "{count, plural, one {une n’entre plus dans la journée} other {# n’entrent plus dans la journée}}",
+      "undo": "Annuler"
     },
     "sheet": {
       "handle": "Agrandir ou fermer le planificateur",

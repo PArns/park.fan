@@ -5,11 +5,14 @@ import { plannerStore } from './store';
 import {
   addCustomEntry,
   addEntry,
+  applyPlan as applyPlanAction,
+  type ApplyPlanStop,
   clearDay as clearDayAction,
   learnTimezone as learnTimezoneAction,
   moveEntry,
   openDay as openDayAction,
   removeEntry,
+  restoreDay as restoreDayAction,
   setActive as setActiveAction,
   setCustomBlock,
   setDayPrefs as setDayPrefsAction,
@@ -163,6 +166,37 @@ export function usePlanner() {
     plannerStore.update((s) => clearDayAction(s, parkSlug, date));
   }, []);
 
+  /**
+   * A whole re-plan in one write — what the optimiser commits.
+   *
+   * It counts the day the same way an add does, and for the same reason: a plan
+   * that goes from empty to eight headliners in one press is somebody starting
+   * a day at that park, and it is the only route into a day that would otherwise
+   * never be counted.
+   */
+  const applyPlan = useCallback(
+    (params: {
+      parkSlug: string;
+      parkName: string;
+      geo: PlannerGeo;
+      timezone?: string;
+      date: string;
+      stops: readonly ApplyPlanStop[];
+    }) => {
+      countFirstBlock(params.parkSlug, params.parkName, params.date);
+      plannerStore.update((s) => applyPlanAction(s, params));
+    },
+    []
+  );
+
+  /** Put a day back as it was — what the optimiser's undo commits. */
+  const restoreDay = useCallback(
+    (parkSlug: string, date: string, entries: readonly PlannerEntry[]) => {
+      plannerStore.update((s) => restoreDayAction(s, parkSlug, date, entries));
+    },
+    []
+  );
+
   const activeEntries: PlannerEntry[] = useMemo(
     () => entriesFor(state, state.activeParkSlug, state.activeDate),
     [state]
@@ -188,6 +222,8 @@ export function usePlanner() {
     editCustom,
     setDayPrefs,
     clearDay,
+    applyPlan,
+    restoreDay,
   };
 }
 

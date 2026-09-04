@@ -1045,7 +1045,8 @@
         "varHolidays": "Feestdagen en schoolvakanties",
         "varWeather": "Weersverwachting"
       }
-    }
+    },
+    "planDayCta": "Een dag in {park} plannen"
   },
   "attractions": {
     "blogPosts": {
@@ -2014,6 +2015,18 @@
         "meet": "Ontmoetingspunt",
         "star": "Overig"
       }
+    },
+    "optimize": {
+      "headliners": "Alle headliners inplannen",
+      "run": "Dag optimaliseren",
+      "running": "Sorteren …",
+      "hint": "Zet de attracties op volgorde van hun uurcurves, de loopafstand ertussen en hun openingstijd. Pauzes en afgevinkte attracties blijven staan.",
+      "saved": "{minutes} min. minder wachten",
+      "already": "Staat al goed",
+      "added": "{count, plural, one {Eén attractie toegevoegd} other {# attracties toegevoegd}}",
+      "skipped": "{count, plural, one {één past niet bij het gezelschap} other {# passen niet bij het gezelschap}}",
+      "overflow": "{count, plural, one {één past niet meer in de dag} other {# passen niet meer in de dag}}",
+      "undo": "Ongedaan maken"
     },
     "sheet": {
       "handle": "Planner vergroten of sluiten",

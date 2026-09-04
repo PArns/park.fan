@@ -1045,7 +1045,8 @@
         "varHolidays": "Public and school holidays",
         "varWeather": "Weather forecast"
       }
-    }
+    },
+    "planDayCta": "Plan a day at {park}"
   },
   "attractions": {
     "blogPosts": {
@@ -2014,6 +2015,18 @@
         "meet": "Meeting point",
         "star": "Other"
       }
+    },
+    "optimize": {
+      "headliners": "Plan every headliner",
+      "run": "Optimise the day",
+      "running": "Sorting …",
+      "hint": "Orders the rides by their hourly curves, the walk between them and when they open. Breaks and rides you have ticked off stay where they are.",
+      "saved": "{minutes} min less queueing",
+      "already": "Already in the right order",
+      "added": "{count, plural, one {One ride added} other {# rides added}}",
+      "skipped": "{count, plural, one {one is not for your group} other {# are not for your group}}",
+      "overflow": "{count, plural, one {one no longer fits the day} other {# no longer fit the day}}",
+      "undo": "Undo"
     },
     "sheet": {
       "handle": "Resize or close the planner",

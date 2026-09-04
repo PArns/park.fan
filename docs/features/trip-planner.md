@@ -668,6 +668,122 @@ of the panel, which is the one place in here a transform is free: the glass is
 `SheetContent`'s, and a transform on that — or on any ancestor of it — makes it a
 backdrop root and flattens the blur.
 
+## The day can sort itself, and what it is sorting for is written down
+
+Two buttons under the axis (`PlannerOptimizeActions`): one adds the park's
+headliners and orders the result, the other only re-orders what is already
+there. They run the same engine (`lib/planner/optimize.ts`) and differ in one
+argument, and they are two controls rather than one because they answer
+different questions — "fill my day" and "is this the best order" — which a
+single button would have to guess between.
+
+What the engine minimises is three things in a fixed order, and the order
+between them is the design:
+
+1. **Rides that do not fit before the park closes.** A plan with one ride fewer
+   that actually happens beats a plan with one more that does not.
+2. **Total minutes queued.** That is what the visitor asked for.
+3. **The clock at which the last queue is joined.** Between two plans that cost
+   the same, the one that leaves the evening free wins.
+
+There is no tunable weight in that, deliberately. A λ trading "queue minutes"
+against "hanging about" would be a number nobody could defend, and the first
+person to disagree with it would be right.
+
+**The schedule is contiguous, so the ORDER is the only free variable.** A ride
+starts as soon as the one before it lets go: its start, plus what the block
+occupies, plus the walk. The clock follows from the sequence, which is why the
+search is over permutations rather than over (permutation × start times). The
+one exception is a deliberate wait, and it needs no weight either: idling `d`
+minutes and then queueing `w(t+d)` beats queueing `w(t)` now whenever
+`d + w(t+d) < w(t)` — the same ride, less queueing, and **free earlier**. That
+inequality is the whole rule for sending somebody off for a coffee at 14:00 to
+ride Taron at 15:00, and it can never make the day longer.
+
+**Rope drop is not a special case.** Nothing in the code knows the phrase. "The
+biggest ride first, at opening" is what minimising the sum produces on a park
+where the curve says so — and is not what it produces where the curve says
+otherwise. Taron's day is flat (60/60/54/53/59 by hour) while Chiapas climbs 22
+minutes; a hard-coded rope-drop rule would give both the same advice.
+
+**Free blocks and ticked-off rides are fixed.** A lunch at 13:00 is a decision,
+not a queue to be shuffled, and a ride that is ticked off already happened. Both
+keep their minute and the rides are planned around them; only undone ride
+entries move.
+
+### Why it is a heuristic, and what that cost
+
+The search is a beam of 192 prefixes carrying a small Pareto front per (visited
+set, last ride) — two partial plans over the same rides ending on the same ride
+are only comparable where one is worse at both queued minutes and the clock —
+followed by Or-opt and 2-opt until nothing improves any more. An exact
+enumeration is out because the cost is time-dependent: what a ride costs depends
+on when the rides before it finished, so the subproblems Held–Karp needs do not
+exist.
+
+Which leaves the question of how much the shortcut gives away, and it is
+measured rather than argued. On eight rides across four lands with six different
+turning points, scoring all 40,320 orders through the optimiser's own scheduler
+takes **1.66 s** and settles on 172 queued minutes finishing at 16:05. The beam
+plus the local search reach the same 172 and the same 16:05 in **8.2 ms**.
+`scripts/test-planner-optimize.mjs` keeps that comparison running at five and
+seven rides, where a full enumeration is cheap enough for every run — and it
+brute-forces through `scoreOrder`, the scheduler, never through the search,
+because comparing the search against plans the search produced would be it
+marking its own homework.
+
+At the sizes somebody actually presses the button at, it stays inside a click:
+
+| Stops      | 10    | 14    | 18    | 24 (`MAX_STOPS`) |
+| ---------- | ----- | ----- | ----- | ---------------- |
+| Wall clock | 23 ms | 26 ms | 32 ms | 56 ms            |
+
+Europa-Park, the largest catalogue this is asked about, has thirteen headliners.
+
+### What it says afterwards, and how to take it back
+
+The day is scored before and after by the same function, so "18 Min. weniger
+Warten" is a difference between two figures produced the same way rather than a
+claim. Where a press adds rides no saving is printed at all: the day is longer
+by construction, and reporting the bigger total as a loss would be arithmetic
+answering a question nobody asked.
+
+Three refusals, and each of them is visible:
+
+- **A park whose wait times nobody can read gets no buttons.** At Hansa-Park
+  every ride costs the same assumed nothing, so every order is as good as every
+  other; `canOptimize` says no and the row is not drawn. Offering it there would
+  be a promise that pressing it changes something.
+- **Pressing twice does nothing the second time.** `optimizeDay` scores the plan
+  that is already there the same way and returns `null` for a day it cannot
+  improve, so the panel says so instead of reshuffling to the same total.
+- **An overflow is not silently dropped.** A ride that no longer fits is placed
+  where the sequence puts it, past closing rather than parked on the park's last
+  minute; `growGridForSpans` widens the canvas to hold it and the minutes out
+  there are hatched, so the plan reads as "and these two do not fit".
+
+`applyPlan` commits the whole re-plan in **one** write. Every
+`plannerStore.update` stringifies the entire multi-park plan, writes
+localStorage, rewrites the cookie and notifies every subscriber on the page, so
+re-planning thirteen headliners one at a time would be thirteen of that — plus
+twelve intermediate states in which the day is half old and half new, each of
+them rendered.
+
+The undo beside the result sentence is **one level**, and it exists for the same
+arithmetic: "plan every headliner" can turn a three-ride afternoon into eleven
+blocks, and taking that back by hand is eleven drags. `restoreDay` replaces the
+day rather than merging into it, because an entry added since the snapshot has to
+go — otherwise undo would leave the day holding both versions. The snapshot lives
+in component state, so it lasts exactly as long as the open panel does: an undo
+somebody could still press tomorrow would be a promise about a plan they have
+since edited.
+
+Checked by `pnpm test:planner-optimize` — the brute-force comparison above, plus
+the properties a visitor would notice if they broke: the lunch break stays put,
+the ticked-off ride is not re-planned, a ride that opens at 11:00 is not queued
+for at 09:15, a collapse five hours out is not waited for, and the same day
+produces the same plan twice.
+
 ## The panel changes the page's width, and four things had to learn that
 
 Opening the panel sets `--planner-inset` on the document element and the layout

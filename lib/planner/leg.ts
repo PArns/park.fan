@@ -87,6 +87,62 @@ function coordsOf(ride: PlanDayRide | null | undefined): [number, number] | null
   return [lat, lng];
 }
 
+export interface Transfer {
+  /** Straight-line metres, or null where either ride has no coordinates. */
+  metres: number | null;
+  crossesLand: boolean;
+  /** Certifiable lower bound on the transfer, in minutes. */
+  floorMinutes: number;
+  /** Assumed upper bound. */
+  ceilingMinutes: number;
+}
+
+/**
+ * How long it takes to get from one ride to the next — the geometry alone,
+ * with no clock in it.
+ *
+ * Split out of {@link legBetween} because the optimiser BUILDS against the
+ * ceiling while the leg chip JUDGES against both bounds, and two copies of this
+ * arithmetic would be two answers to one question — the plan and the chip
+ * describing the same walk in different minutes. `legBetween` is unchanged: it
+ * calls this and then does the part that needs a start time.
+ */
+export function transferBetween(
+  from: PlanDayRide | null | undefined,
+  to: PlanDayRide | null | undefined,
+  rideSeconds?: number | null
+): Transfer {
+  const a = coordsOf(from);
+  const b = coordsOf(to);
+  const metres = a && b ? calculateDistance(a[0], a[1], b[0], b[1]) : null;
+
+  const fromLand = from?.land ?? null;
+  const toLand = to?.land ?? null;
+  const crossesLand = Boolean(fromLand && toLand && fromLand !== toLand);
+
+  const rideMin =
+    typeof rideSeconds === 'number' && rideSeconds > 0
+      ? Math.ceil(rideSeconds / 60)
+      : RIDE_FALLBACK_MIN;
+
+  // No coordinates → the floor's walk term is ZERO, so a guess can never produce
+  // the one verdict that calls a plan impossible.
+  const walkFloorMin = metres === null ? 0 : Math.ceil(metres / WALK_FAST_M_PER_MIN);
+  const walkCeilMin =
+    metres === null
+      ? crossesLand
+        ? CROSS_LAND_CEIL_MIN
+        : SAME_LAND_CEIL_MIN
+      : Math.ceil((metres * DETOUR_MAX) / WALK_PARK_M_PER_MIN);
+
+  return {
+    metres,
+    crossesLand,
+    floorMinutes: EXIT_MIN + rideMin + walkFloorMin,
+    ceilingMinutes: EXIT_MIN + rideMin + walkCeilMin,
+  };
+}
+
 /**
  * The transfer between two consecutive entries.
  *
@@ -110,31 +166,11 @@ export function legBetween(
   uncertaintyMinutes: number | null,
   observed = false
 ): Leg {
-  const a = coordsOf(from.ride);
-  const b = coordsOf(to.ride);
-  const metres = a && b ? calculateDistance(a[0], a[1], b[0], b[1]) : null;
-
-  const fromLand = from.ride?.land ?? null;
-  const toLand = to.ride?.land ?? null;
-  const crossesLand = Boolean(fromLand && toLand && fromLand !== toLand);
-
-  const rideMin =
-    typeof from.rideSeconds === 'number' && from.rideSeconds > 0
-      ? Math.ceil(from.rideSeconds / 60)
-      : RIDE_FALLBACK_MIN;
-
-  // No coordinates → the floor's walk term is ZERO, so a guess can never produce
-  // the one verdict that calls a plan impossible.
-  const walkFloorMin = metres === null ? 0 : Math.ceil(metres / WALK_FAST_M_PER_MIN);
-  const walkCeilMin =
-    metres === null
-      ? crossesLand
-        ? CROSS_LAND_CEIL_MIN
-        : SAME_LAND_CEIL_MIN
-      : Math.ceil((metres * DETOUR_MAX) / WALK_PARK_M_PER_MIN);
-
-  const floorMinutes = EXIT_MIN + rideMin + walkFloorMin;
-  const ceilingMinutes = EXIT_MIN + rideMin + walkCeilMin;
+  const { metres, crossesLand, floorMinutes, ceilingMinutes } = transferBetween(
+    from.ride,
+    to.ride,
+    from.rideSeconds
+  );
 
   const base = { metres, crossesLand, floorMinutes, ceilingMinutes };
 

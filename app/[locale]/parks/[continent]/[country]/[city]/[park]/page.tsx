@@ -439,6 +439,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
             cityName={cityName}
             country={country}
             countryName={countryName}
+            locale={locale}
             suffix={t('h1Suffix')}
             // Keyword-rich, server-rendered intro — gives Google crawlable topical text with the
             // exact "Wartezeiten im {park}" phrase + "heute" that the live (client-streamed) grid

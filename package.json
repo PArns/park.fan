@@ -50,6 +50,7 @@
     "test:planner-ride-drag": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-ride-drag.mjs",
     "test:planner-push-topics": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-push-topics.mjs",
     "test:planner-month-grid": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-month-grid.mjs",
+    "test:planner-optimize": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-optimize.mjs",
     "test:rider-height": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-rider-height.mjs",
     "test:opening-hours-schema": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-opening-hours-schema.mjs",
     "test:coordinates": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-coordinates.mjs",

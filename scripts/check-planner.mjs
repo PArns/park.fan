@@ -74,6 +74,20 @@ function parkDay(offsetDays) {
 
 const DATE = parkDay(1);
 
+/**
+ * The day after {@link DATE}, DERIVED from it rather than counted again.
+ *
+ * The same trap `parkDay` was written for, one level up: a second
+ * `parkDay(2)` evaluated later in the run is a second reading of the clock, and
+ * a run that crosses local midnight between the two gets two dates a day apart
+ * that were meant to be adjacent. It happened — a full run started at 23:5x
+ * Berlin seeded 2026-09-05, asserted against 2026-09-07 and failed three
+ * two-column checks with the DOM showing exactly what had been asked for.
+ */
+const NEXT_DATE = new Date(new Date(`${DATE}T12:00:00Z`).getTime() + 86_400_000)
+  .toISOString()
+  .slice(0, 10);
+
 const PLAN_PATH = `/api/parks/${PARK.geo.continent}/${PARK.geo.country}/${PARK.geo.city}/${PARK.slug}/plan/day?date=${DATE}`;
 
 /** A second park, five days out, so the overview has more than one row to draw. */
@@ -3927,6 +3941,216 @@ if (reachable) {
   }
 }
 
+// ── The day sorts itself ────────────────────────────────────────────────────
+// Two buttons over one engine (`lib/planner/optimize.ts`), whose maths is pinned
+// by `pnpm test:planner-optimize` against a brute force over every permutation.
+// What THIS has to prove is the half a unit test cannot see: that pressing them
+// writes the plan, that the sentence underneath says what happened, that the
+// undo puts it back byte for byte, and that a lunch break survives all of it.
+{
+  const opt = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+  noteErrors(opt);
+
+  const seedOptimize = async () => {
+    await opt.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+    await opt.evaluate(
+      ([plan, date]) => {
+        const seeded = JSON.parse(JSON.stringify(plan));
+        const park = seeded.parks.phantasialand;
+        park.timezone = 'Europe/Berlin';
+        // Deliberately the wrong way round — Taron, the headliner whose queue is
+        // shortest at opening, parked at 16:00 — but written in START order,
+        // which is the order the store keeps a day in. The undo assertion below
+        // compares the stored array literally, and a seed that was not already
+        // sorted would fail on `byStart` alone while every minute matched.
+        park.days = {
+          [date]: {
+            date,
+            entries: [
+              {
+                id: 'black-mamba-1',
+                attractionSlug: 'black-mamba',
+                attractionName: 'Black Mamba',
+                startMinute: 600,
+              },
+              {
+                id: 'lunch-1',
+                startMinute: 780,
+                custom: { label: 'Mittag', durationMinutes: 60, icon: 'food' },
+              },
+              { id: 'taron-1', attractionSlug: 'taron', attractionName: 'Taron', startMinute: 960 },
+            ],
+          },
+        };
+        seeded.parks = { phantasialand: park };
+        seeded.activeParkSlug = 'phantasialand';
+        seeded.activeDate = date;
+        window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
+        window.localStorage.setItem('parkfan_planner_width', '520');
+        window.localStorage.removeItem('parkfan_planner_column2');
+        document.cookie = 'planner=1; path=/';
+      },
+      [PLAN, DATE]
+    );
+    await opt.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+    await opt.locator(LAUNCHER).click();
+    await opt.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+    await opt.waitForTimeout(3000);
+  };
+
+  /** The stored day as `slug@minute`, which is what a re-plan actually writes. */
+  const readDay = () =>
+    opt.evaluate(() => {
+      const plan = JSON.parse(window.localStorage.getItem('parkfan_planner') ?? '{}');
+      const day = Object.values(plan.parks?.phantasialand?.days ?? {})[0];
+      return (day?.entries ?? [])
+        .map((e) => `${e.attractionSlug ?? e.custom?.label}@${e.startMinute}`)
+        .join(' | ');
+    });
+
+  await seedOptimize();
+
+  const before = await readDay();
+  check(
+    'die Optimier-Leiste ist da, mit beiden Knöpfen',
+    (await opt.locator(`${SHEET} [data-planner-optimize]`).count()) === 1 &&
+      (await opt.locator(`${SHEET} [data-planner-optimize-run]`).count()) === 1 &&
+      (await opt.locator(`${SHEET} [data-planner-optimize-headliners]`).count()) === 1
+  );
+
+  await opt.locator(`${SHEET} [data-planner-optimize-run]`).click();
+  await opt.waitForTimeout(1200);
+  const after = await readDay();
+  check('ein Druck sortiert den Tag um', after !== before, `${before}  →  ${after}`);
+
+  const said = (await opt.locator(`${SHEET} [data-planner-optimize-result]`).textContent()) ?? '';
+  check(
+    'und sagt in Minuten, was es gebracht hat',
+    /\d+\s*Min\.\s*weniger Warten|Passt schon so/.test(said),
+    said.slice(0, 80)
+  );
+
+  // The lunch break is a decision, not a queue. It keeps its minute, and every
+  // ride is scheduled around it.
+  check('die Mittagspause bleibt, wo sie war', after.includes('Mittag@780'), after);
+
+  // Pressing it again must be a no-op, not a reshuffle with the same total —
+  // which is the difference between an optimiser and a dice roll.
+  await opt.locator(`${SHEET} [data-planner-optimize-run]`).click();
+  await opt.waitForTimeout(900);
+  check('ein zweiter Druck ändert nichts mehr', (await readDay()) === after);
+  const twice = (await opt.locator(`${SHEET} [data-planner-optimize-result]`).textContent()) ?? '';
+  check('und sagt das auch', /Passt schon so/.test(twice), twice.slice(0, 80));
+
+  // Back to a day it can improve, so the undo has something to take back.
+  await seedOptimize();
+  await opt.locator(`${SHEET} [data-planner-optimize-run]`).click();
+  await opt.waitForTimeout(1200);
+  check(
+    'nach dem Sortieren steht ein Rückgängig daneben',
+    (await opt.locator(`${SHEET} [data-planner-optimize-undo]`).count()) === 1
+  );
+  await opt.locator(`${SHEET} [data-planner-optimize-undo]`).click();
+  await opt.waitForTimeout(900);
+  check('und es stellt den Tag exakt wieder her', (await readDay()) === before, await readDay());
+  check(
+    'danach ist das Rückgängig weg',
+    (await opt.locator(`${SHEET} [data-planner-optimize-undo]`).count()) === 0
+  );
+
+  // The headliner button: it adds, and then it has nothing left to add.
+  await seedOptimize();
+  const rideCountBefore = (await readDay()).split(' | ').length;
+  await opt.locator(`${SHEET} [data-planner-optimize-headliners]`).click();
+  await opt.waitForTimeout(2000);
+  const withHeadliners = await readDay();
+  check(
+    'alle Headliner einplanen füllt den Tag',
+    withHeadliners.split(' | ').length > rideCountBefore,
+    `${rideCountBefore} → ${withHeadliners.split(' | ').length}`
+  );
+  check(
+    'und der Knopf verschwindet, wenn keiner mehr fehlt',
+    (await opt.locator(`${SHEET} [data-planner-optimize-headliners]`).count()) === 0
+  );
+  check(
+    'die Mittagspause hat auch das überlebt',
+    withHeadliners.includes('Mittag@780'),
+    withHeadliners
+  );
+  // Nothing may be scheduled before the park lets anybody queue.
+  const tooEarly = withHeadliners
+    .split(' | ')
+    .map((part) => Number(part.split('@')[1]))
+    .filter((minute) => minute < 9 * 60);
+  check('und nichts liegt vor der Parköffnung', tooEarly.length === 0, tooEarly.join(', '));
+
+  await opt.close();
+}
+
+// A park whose wait times nobody can read gets no optimiser: every ride costs
+// the same assumed nothing, so every order is as good as every other and a
+// button that reshuffled them would be a promise about a comparison that cannot
+// be made. Hansa-Park publishes its numbers only in its own app on the park
+// WLAN — the same park `noLiveWaitTimesReason` is asserted against elsewhere in
+// this file.
+{
+  const bare = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+  noteErrors(bare);
+  await bare.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  await bare.evaluate(
+    ([date]) => {
+      window.localStorage.setItem(
+        'parkfan_planner',
+        JSON.stringify({
+          parks: {
+            'hansa-park': {
+              slug: 'hansa-park',
+              name: 'Hansa-Park',
+              geo: { continent: 'europe', country: 'germany', city: 'sierksdorf' },
+              timezone: 'Europe/Berlin',
+              days: {
+                [date]: {
+                  date,
+                  entries: [
+                    {
+                      id: 'a-1',
+                      attractionSlug: 'highlander',
+                      attractionName: 'Highlander',
+                      startMinute: 600,
+                    },
+                    {
+                      id: 'b-1',
+                      attractionSlug: 'der-schwur-des-kaernan',
+                      attractionName: 'Der Schwur des Kärnan',
+                      startMinute: 720,
+                    },
+                  ],
+                },
+              },
+            },
+          },
+          activeParkSlug: 'hansa-park',
+          activeDate: date,
+          version: 2,
+        })
+      );
+      window.localStorage.setItem('parkfan_planner_width', '520');
+      document.cookie = 'planner=1; path=/';
+    },
+    [DATE]
+  );
+  await bare.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+  await bare.locator(LAUNCHER).click();
+  await bare.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await bare.waitForTimeout(3000);
+  check(
+    'ein Park ohne lesbare Wartezeiten bekommt keine Optimier-Leiste',
+    (await bare.locator(`${SHEET} [data-planner-optimize]`).count()) === 0
+  );
+  await bare.close();
+}
+
 // ── Two day columns ─────────────────────────────────────────────────────────
 // The panel is resizable and a wide one drew ONE column with 500 px of empty
 // hour rules beside it. Two columns is what that width is for — "and what if we
@@ -3935,7 +4159,6 @@ if (reachable) {
 // where it fits, does the second column carry its own head, and is the
 // arrangement remembered.
 {
-  const SECOND_DATE = parkDay(2);
   const cols = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
   noteErrors(cols);
 
@@ -3998,7 +4221,7 @@ if (reachable) {
     'die zweite Spalte öffnet auf dem Folgetag desselben Parks',
     keys.length === 2 &&
       keys[0] === `${PARK.slug}:${DATE}` &&
-      keys[1] === `${PARK.slug}:${SECOND_DATE}`,
+      keys[1] === `${PARK.slug}:${NEXT_DATE}`,
     keys.join(' | ')
   );
 
@@ -4081,7 +4304,7 @@ if (reachable) {
     'zu schmal blendet die zweite Spalte aus, ohne sie zu vergessen',
     (await cols.locator(`${SHEET} [data-planner-column]`).count()) === 1 &&
       (await cols.locator(`${SHEET} [data-planner-second-column]`).count()) === 0 &&
-      (remembered ?? '').includes(SECOND_DATE),
+      (remembered ?? '').includes(NEXT_DATE),
     remembered ?? '(nichts gemerkt)'
   );
 
@@ -4098,7 +4321,7 @@ if (reachable) {
       (await cols
         .locator(`${SHEET} [data-planner-column]`)
         .last()
-        .getAttribute('data-planner-column')) === `${PARK.slug}:${SECOND_DATE}`
+        .getAttribute('data-planner-column')) === `${PARK.slug}:${NEXT_DATE}`
   );
 
   // Closing it is the toggle's other half, and the switch has to report it.
@@ -4139,7 +4362,7 @@ if (reachable) {
       );
       document.cookie = 'planner=1; path=/';
     },
-    [PLAN, parkDay(2)]
+    [PLAN, NEXT_DATE]
   );
   await phone.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
   await settleHydration(phone);

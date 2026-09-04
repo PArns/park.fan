@@ -1045,7 +1045,8 @@
         "varHolidays": "Feiertage und Schulferien",
         "varWeather": "Wettervorhersage"
       }
-    }
+    },
+    "planDayCta": "Tag im {park} planen"
   },
   "attractions": {
     "blogPosts": {
@@ -2014,6 +2015,18 @@
         "meet": "Treffpunkt",
         "star": "Sonstiges"
       }
+    },
+    "optimize": {
+      "headliners": "Alle Headliner einplanen",
+      "run": "Tag optimieren",
+      "running": "Sortiert …",
+      "hint": "Sortiert die Bahnen nach ihren Stundenkurven, den Laufwegen und den Öffnungszeiten. Mittagspausen und abgehakte Bahnen bleiben, wo sie sind.",
+      "saved": "{minutes} Min. weniger Warten",
+      "already": "Passt schon so",
+      "added": "{count, plural, one {Eine Bahn ergänzt} other {# Bahnen ergänzt}}",
+      "skipped": "{count, plural, one {eine passt nicht zur Gruppe} other {# passen nicht zur Gruppe}}",
+      "overflow": "{count, plural, one {eine passt nicht mehr in den Tag} other {# passen nicht mehr in den Tag}}",
+      "undo": "Rückgängig"
     },
     "sheet": {
       "handle": "Planer vergrößern oder schließen",

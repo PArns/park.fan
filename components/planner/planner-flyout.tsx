@@ -12,6 +12,7 @@ import { PlannerPushToggle } from './planner-push-toggle';
 import { PlannerWizard, type WizardPark } from './planner-wizard';
 import { PlannerInParkCta } from './planner-in-park-cta';
 import { PlannerMissingHeadliners } from './planner-missing-headliners';
+import { PlannerOptimizeActions } from './planner-optimize-actions';
 import { PlannerPanelPhoto } from './planner-panel-photo';
 import { PlannerDragCoach } from './planner-drag-coach';
 import { usePlanner } from '@/lib/planner/use-planner';
@@ -702,6 +703,24 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
             <PlannerDragCoach
               show={Boolean(pagePark && park && activeDate && activeEntries.length > 0)}
             />
+
+            {/* Letting the day sort itself, above the band that names what is
+                missing from it — the headliner button is the same question one
+                gesture further on ("and put them in"), so the two belong
+                together and in that order. It follows the PRIMARY column, like
+                everything else in the panel's foot. */}
+            {park && activeDate && (
+              <PlannerOptimizeActions
+                parkSlug={park.slug}
+                parkName={park.name}
+                geo={park.geo}
+                date={activeDate}
+                day={day ?? null}
+                grid={grid}
+                timezone={day?.timezone ?? park.timezone}
+                prefs={prefs}
+              />
+            )}
 
             {/* Which of the park's big rides are still missing from the day.
                 Above the free-block row and outside the `sm:hidden` search,

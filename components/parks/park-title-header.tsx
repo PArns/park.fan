@@ -3,7 +3,9 @@ import { getTranslations } from 'next-intl/server';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { ParkDistance } from '@/components/common/park-distance';
 import { ParkFavoriteButton } from '@/components/parks/park-favorite-button';
+import { ParkPlannerLink } from '@/components/parks/park-planner-link';
 import { ParkQuickLinks } from '@/components/parks/park-quick-links';
+import type { Locale } from '@/i18n/config';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
 interface ParkTitleHeaderProps {
@@ -13,6 +15,8 @@ interface ParkTitleHeaderProps {
   /** Country slug + its already-translated name, for the address line. */
   country: string;
   countryName: string;
+  /** For the planner link's localized path. */
+  locale: Locale | string;
   /**
    * What follows the park name in the H1, in lighter weight. Every page of a park has its own —
    * "Wartezeiten live" on the park page, "Wartezeiten-Kalender" on the calendar — and it is the only
@@ -44,6 +48,7 @@ export async function ParkTitleHeader({
   cityName,
   country,
   countryName,
+  locale,
   suffix,
   intro,
   children,
@@ -82,11 +87,19 @@ export async function ParkTitleHeader({
 
       <p className="text-muted-foreground mt-5 max-w-2xl text-sm leading-relaxed">{intro}</p>
 
+      {/* The way into the planner, BEFORE the park's own links and visually apart from them: what
+        follows is a row of outbound links (website, tickets, Wikipedia) and this is the one thing
+        in the header that stays on the site. It was also the planner's only missing inbound link
+        that carries any intent — see `ParkPlannerLink`. */}
+      <div className="mt-4">
+        <ParkPlannerLink parkName={parkName} locale={locale} />
+      </div>
+
       {/* The park's own site and ticket shop, right under the intro. They used to be the bottom
         row of a titled "Infos zum Park" section far down the page — which on most parks was a
         heading and a frame around exactly these two buttons. Renders nothing for a park nobody
         has curated. */}
-      <ParkQuickLinks info={park.info} className="mt-4" />
+      <ParkQuickLinks info={park.info} className="mt-3" />
 
       {children}
     </>

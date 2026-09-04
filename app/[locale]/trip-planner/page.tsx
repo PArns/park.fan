@@ -15,6 +15,7 @@ import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { PlannerPageBody } from '@/components/planner/planner-page-body';
 import type { PolaroidPhoto } from '@/components/planner/planner-polaroids';
 import { getParkBackground } from '@/lib/media';
+import { getMediaAlt } from '@/lib/media/text';
 import { focusToObjectPosition, versionedSrc } from '@/lib/media/focus';
 import { demoEntries, demoPlanDay } from './_fixtures';
 import type { ComponentType } from 'react';
@@ -120,7 +121,7 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
   const t = await getTranslations('planner.page');
   const tNav = await getTranslations('navigation');
   const tPlanner = await getTranslations('planner');
-  const photos = polaroidPhotos();
+  const photos = polaroidPhotos(locale);
   const Content = await (CONTENT_LOADERS[locale as Locale] ?? CONTENT_LOADERS.en)();
   const day = demoPlanDay();
   // The free block's label is a word, and this page exists in six languages.
@@ -184,8 +185,15 @@ export default async function PlannerPage({ params }: PlannerPageProps) {
  * project's own homepage already leads with. Any that has lost its photo simply
  * drops out — the component draws what it is given and nothing if that is empty,
  * so a picture disappearing from the catalogue cannot leave a hole here.
+ *
+ * The LOCALE is threaded through for the alt text alone. `getMediaAlt` answers in
+ * the reader's language and falls back de → en → whatever the sidecar has, and a
+ * photo it has nothing for gets `''` — an empty alt is the honest answer for a
+ * picture nobody has described, and the alternative would be a sentence built out
+ * of the slug, which is exactly what the media rules say never to read a park, a
+ * ride or a role out of.
  */
-function polaroidPhotos(): PolaroidPhoto[] {
+function polaroidPhotos(locale: string): PolaroidPhoto[] {
   // Every park the media database has a background for, in the order they are
   // laid down. Nine exist; six are drawn (see `SLOTS`), and naming all of them
   // means the fan stays full if one picture is retired rather than silently
@@ -211,6 +219,7 @@ function polaroidPhotos(): PolaroidPhoto[] {
       src: versionedSrc(image),
       position: focusToObjectPosition(image.focus),
       label: pick.label,
+      alt: getMediaAlt(image.id, locale) ?? '',
     });
   }
   return out;

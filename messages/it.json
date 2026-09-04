@@ -1045,7 +1045,8 @@
         "varHolidays": "Festività e vacanze scolastiche",
         "varWeather": "Previsioni meteo"
       }
-    }
+    },
+    "planDayCta": "Pianifica una giornata a {park}"
   },
   "attractions": {
     "blogPosts": {
@@ -2014,6 +2015,18 @@
         "meet": "Punto d’incontro",
         "star": "Altro"
       }
+    },
+    "optimize": {
+      "headliners": "Pianifica tutte le attrazioni principali",
+      "run": "Ottimizza la giornata",
+      "running": "Riordino …",
+      "hint": "Mette in fila le attrazioni secondo le curve orarie, il tragitto fra una e l’altra e l’ora in cui aprono. Pause e attrazioni già fatte restano dove sono.",
+      "saved": "{minutes} min di coda in meno",
+      "already": "L’ordine va già bene",
+      "added": "{count, plural, one {Una attrazione aggiunta} other {# attrazioni aggiunte}}",
+      "skipped": "{count, plural, one {una non fa per il gruppo} other {# non fanno per il gruppo}}",
+      "overflow": "{count, plural, one {una non entra più nella giornata} other {# non entrano più nella giornata}}",
+      "undo": "Annulla"
     },
     "sheet": {
       "handle": "Ingrandisci o chiudi il pianificatore",

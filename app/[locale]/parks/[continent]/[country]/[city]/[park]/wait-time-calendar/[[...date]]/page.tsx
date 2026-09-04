@@ -458,6 +458,7 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
             cityName={cityName}
             country={country}
             countryName={countryName}
+            locale={locale}
             // The H1 is the one thing that must differ between the hub and each of its months,
             // or twelve pages share a heading and a crawler has no reason to tell them apart.
             // The month this page shows — the URL's on a month page, today's on the hub. Same
