@@ -7,7 +7,7 @@ import { usePlanner } from '@/lib/planner/use-planner';
 import { partyFlags } from '@/lib/planner/party';
 import { buildDayGrid, nextFreeStart, rideFloor } from '@/lib/planner/day-grid';
 import { occupiedMinutes } from '@/lib/planner/estimate';
-import { startRideDrag } from '@/lib/planner/ride-drag';
+import { startRideDrag, warmRideDragThumb } from '@/lib/planner/ride-drag';
 import type { PlannerDayPrefs, PlannerGeo } from '@/lib/planner/types';
 import type { PlanDay, PlanDayRide } from '@/lib/api/types';
 
@@ -125,6 +125,13 @@ export function PlannerMissingHeadliners({
                 })
               }
               draggable
+              /* A pill draws no picture, so there is nothing decoded for the
+                 drag chip to copy — and a drag image is snapshotted inside
+                 `dragstart`, which is far too late to ask for one. The pointer
+                 arriving is the earliest honest moment: it always precedes the
+                 press that starts a mouse drag, and a band of headliners nobody
+                 points at costs nothing. */
+              onPointerEnter={() => warmRideDragThumb(ride.backgroundImage)}
               onDragStart={(event) =>
                 startRideDrag(
                   event.dataTransfer,
@@ -133,8 +140,8 @@ export function PlannerMissingHeadliners({
                     attractionSlug: ride.attractionSlug,
                     attractionName: ride.attractionName,
                   },
-                  // A pill carries no picture, so the chip is given the URL the
-                  // day payload already holds.
+                  // The URL the day payload already holds — the same one the
+                  // hover above warmed.
                   { photo: ride.backgroundImage, photoPosition: ride.backgroundPosition }
                 )
               }

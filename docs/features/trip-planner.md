@@ -127,6 +127,19 @@ so switching the question on showed six chips with none of them marked while the
 plan already held an answer. `pnpm test:planner-actions` asserts the membership;
 the type annotation is what enforces it.
 
+**The first question is typed, so the field takes the focus.** Without
+`autoFocus` Radix parks it on the dialog and the first keystroke goes nowhere.
+The result list is operated **from the field** — the options carry `tabIndex={-1}`
+and the highlight travels as `aria-activedescendant`, the combobox pattern —
+because moving focus into the list would take the caret out of a field somebody
+is still typing in; Enter picks the highlighted park, and a stray one would
+otherwise reach the step's own „Weiter" button. The highlight is held as the
+park's **slug**, never an index: an index would have to be reset on every new
+result set, which React 19 forbids in an effect body outright, while a slug that
+is no longer in the list falls back to the first row on its own — which is also
+the right default, since somebody who types three letters and presses Enter means
+the top hit.
+
 ### What the day card may say
 
 `WizardDayCard` renders only fields of the park's **best-days snapshot** — the
@@ -143,6 +156,16 @@ keine Prognose", a claim about a day nobody had named.
 Hours render **only where the snapshot named the park's timezone**. A clock time
 with no zone behind it is this feature's one unforgivable mistake: every minute
 in a plan is park-local by construction.
+
+### The panel is a column, not a dialog
+
+A click on the page behind it used to close it. That is right for a modal and
+wrong for this: the panel sits **beside** the page — the layout is inset by its
+width, the hero and the header respect it — and the whole point is reading the
+park on the left while the plan stands on the right. Every click into the text
+folded it away. `onInteractOutside` is prevented on the desktop and left alone on
+a phone, where the panel really does lie over everything and the tap outside it
+is the only way back.
 
 ## Everything is park-local
 
@@ -228,6 +251,16 @@ today — so sixty of the sixty-one dates the picker offers drew nothing and the
 band had to say „steht erst am Tag selbst fest". That sentence is gone; an empty
 `shows` array is now a statement about the park.
 
+**They switch off, and the band stays.** Shows are the one thing on the grid
+nobody put there — a plan is what somebody dragged in, and four dotted rules
+across it are context. The switch lives in the band (`lib/planner/shows-visible.ts`,
+an external store on `localStorage` so the decision survives a reload) and hides
+the rules; the band then says so instead of disappearing with them, because a
+strip that vanished would take the switch with it and somebody who turned the
+shows off by accident would have nothing left to press. It renders only where
+there is something to switch: on a day the API answered with no shows, a control
+that toggles an empty set is a control that does nothing.
+
 ## The photo behind the panel sits in a NEGATIVE layer
 
 The panel carries the park's own picture — resolved server-side by the
@@ -307,17 +340,50 @@ started on and the ways into a plan looked like three different features: a
 from a park page, and a bare pill from the headliner band.
 
 `setRideDragImage` (`lib/planner/ride-drag.ts`) draws one chip — the ride's photo
-at 32 px and its name — and all three call it. Two details are what make it work
-rather than flicker: the thumbnail is **cloned** from the element being dragged
-and pinned to its `currentSrc` with the `srcset` dropped (a fresh
-`background-image` starts a load the snapshot does not wait for, and a
-`next/image` `srcset` re-evaluated at 32 px picks a candidate the page never
-fetched), and the chip is appended **off-screen rather than hidden** and removed
-two frames later (`display: none` produces no snapshot at all).
+at 32 px and its name — and all three call it. It is appended **off-screen rather
+than hidden** and removed two frames later: `display: none` produces no snapshot
+at all, and removing it in the same tick races WebKit.
+
+**The thumbnail is painted, never loaded.** A drag image is snapshotted
+synchronously inside `dragstart`; whatever has not arrived by then is not in the
+picture, and the browser never redraws it. The first version cloned the source
+`<img>` and set `clone.src = found.currentSrc || found.src`, which is two bugs in
+one line. The clone is a request — same URL, warm cache, almost always instant,
+and „almost" is the whole story when nothing waits. And `currentSrc` is empty
+until an image has actually loaded, so the fallback reached `src`, which on a
+`next/image` element is the **last srcset candidate**: `w=3840`, 147 KB, a
+rendition the page never asked for. Every card whose photo was still in flight
+therefore started a fresh download of the largest copy in existence and drew the
+chip with a hole in it.
+
+So the picture is copied into a `<canvas>` with `drawImage` from pixels that are
+already decoded — zero network at the call — and the source has to pass
+`complete && naturalWidth > 0` or there is no picture at all. The cover geometry
+and the curator's focal point are computed here (`coverOffset`) rather than left
+to `object-fit`, because a canvas's content _is_ what was drawn onto it. The
+backing store is at the device pixel ratio: the OS composites a drag image at the
+screen's real resolution, and a 32 px canvas blown up on a retina display is the
+one place the seam would show.
+
+**A source with no picture of its own has to ask before the gesture.** The
+headliner pill is a bare pill, so there is nothing decoded to copy — it warms the
+thumbnail on `pointerenter` (`warmRideDragThumb`), which always precedes the
+press that starts a mouse drag and costs nothing for a band nobody points at. The
+URL is the optimizer's `w=96&q=75`, which is exactly what `PlannerRideThumb` asks
+for at `size={8}`, so a ride that is also a row in the list shares that
+rendition's cache entry. Where there is still nothing to draw — a card below
+`sm`, which renders no photo at all — the chip is the ride's name and the drag
+warms the rendition for next time. An empty grey square would claim a picture
+that is not coming.
 
 `check:planner` reads it off `setDragImage` rather than off a screenshot — an
-OS-level drag image is not in the page to capture — and asserts the three
-sources hand over the same class, the same height and one image each.
+OS-level drag image is not in the page to capture — and asserts the three sources
+hand over the same class, the same height and one image each. The count alone was
+never the assertion it looked like: the version this replaced also appended
+exactly one element per chip. So it walks the canvas's **alpha channel** and
+fails on a thumbnail that was never drawn into, and it hovers each control before
+dispatching the drag, because a synthetic `dragstart` with no pointer anywhere
+near it would measure a chip no mouse can produce.
 
 ## Where a figure came from, and whether anybody checked it
 
@@ -389,7 +455,11 @@ smaller, and each of these found that out separately:
 
 - **The header's breakpoints** were viewport queries in a box that had shrunk —
   see the header-geometry requirement in `CLAUDE.md`. `@container` on the
-  `<header>`, same two thresholds.
+  `<header>`, same two thresholds. Its inner ROW was the same bug one level down
+  and outlived the fix: Tailwind's `container` utility is a set of **viewport**
+  media queries, so with the panel open it held a 1536 px max-width inside a
+  992 px box and the logo sat flush against the edge. The row carries the same
+  four thresholds as container queries now.
 - **The park hero** is `position: fixed`, which resolves against the viewport, so
   the padding never reached it: the photo spanned the full 1440 px behind a glass
   panel and read straight through it. Its right edge follows the same variable

@@ -230,9 +230,16 @@ export function PlannerRideSearch({
                       attractionSlug: ride.attractionSlug,
                       attractionName: ride.attractionName,
                     },
-                    // The row's own thumbnail, cloned — it is already decoded,
-                    // which a freshly built one would not be.
-                    { element: event.currentTarget }
+                    // The row's own thumbnail — already decoded, which is the
+                    // only kind the chip can draw. `photo` is the fallback for
+                    // the row whose picture is still in flight: it costs no
+                    // request while the thumbnail is there, and warms the same
+                    // rendition for the next drag when it is not.
+                    {
+                      element: event.currentTarget,
+                      photo: ride.backgroundImage,
+                      photoPosition: ride.backgroundPosition,
+                    }
                   )
                 }
                 className="hover:bg-accent flex w-full cursor-grab items-center gap-2 rounded-md px-2 py-1.5 text-left transition-colors active:cursor-grabbing max-sm:py-2.5"

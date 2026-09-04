@@ -19,6 +19,7 @@ import {
   rideFromPath,
   rideFromUrl,
   serializeRideDrag,
+  coverOffset,
 } from '../lib/planner/ride-drag.ts';
 
 const cases = [];
@@ -158,6 +159,31 @@ test(
   }),
   null
 );
+
+// ── 5. The chip's thumbnail, framed like the card it came from ──────────────
+// The drag chip draws its picture into a canvas, so `object-fit: cover` and
+// `object-position` are not doing the framing any more — this pair is. A focal
+// point a curator set on a ride's photograph has to survive into a 32 px box,
+// or the chip shows the middle of a picture that was aimed at a coaster.
+const offset = (value) => coverOffset(value).join(',');
+
+test('nothing named is the centre', offset(undefined), '0.5,0.5');
+test('an empty string is the centre', offset(''), '0.5,0.5');
+test('the top edge', offset('50% 0%'), '0.5,0');
+test('the bottom right', offset('100% 100%'), '1,1');
+test('a curated focal point', offset('30% 20%'), '0.3,0.2');
+// `getComputedStyle` normalises a keyword pair to percentages, so a keyword
+// arriving here means somebody passed a raw authored value.
+test('a keyword is not a percentage and does not guess', offset('center top'), '0.5,0.5');
+// A LENGTH is an offset in the source element's own box and means something
+// else entirely in a 32 px one, so it falls back rather than being reused.
+test('a length falls back to the centre', offset('12px 4px'), '0.5,0.5');
+test('one value applies to both axes', offset('25%'), '0.25,0.25');
+// Nothing on the page should produce these, but the value is a string off the
+// CSSOM and a negative or over-100 % offset would draw the picture off the box.
+test('past the right edge is clamped', offset('140% 50%'), '1,0.5');
+test('a negative offset is clamped', offset('-30% 50%'), '0,0.5');
+test('a value that is not a number is the centre', offset('abc% 50%'), '0.5,0.5');
 
 // ── Report ───────────────────────────────────────────────────────────────────
 let failed = 0;

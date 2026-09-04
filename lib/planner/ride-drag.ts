@@ -168,12 +168,75 @@ export function startRideDrag(
 
 /** Where the chip's thumbnail comes from, if it has one. */
 export interface RideDragImageSource {
-  /** The element being dragged. Its `<img>`, where it has one, is cloned. */
+  /** The element being dragged. Its `<img>`, where it has a decoded one, is drawn. */
   element?: Element | null;
   /** A photo URL, for a control that carries no picture of its own. */
   photo?: string | null;
   /** `object-position` for that photo. */
   photoPosition?: string | null;
+}
+
+/** The chip's picture, in CSS pixels. A list row's thumbnail, deliberately. */
+const THUMB_PX = 32;
+
+/**
+ * The optimizer URL for a chip-sized thumbnail.
+ *
+ * `w=96` and `q=75` are not free numbers: they are exactly what
+ * `PlannerRideThumb` asks for at `size={8}`, so a ride that is also in the
+ * panel's list shares that rendition's cache entry and the warm costs nothing
+ * at all. Both values have to be listed in `next.config`'s `imageSizes` and
+ * `qualities` or the optimizer answers 400.
+ */
+function thumbUrl(src: string | null | undefined): string | null {
+  if (!src) return null;
+  // Nothing the optimizer would take, and nothing it needs to.
+  if (src.startsWith('data:') || src.startsWith('blob:') || src.endsWith('.svg')) return src;
+  return `/_next/image?url=${encodeURIComponent(src)}&w=96&q=75`;
+}
+
+/**
+ * Thumbnails this session has already decoded, keyed by their optimizer URL.
+ *
+ * A drag image is snapshotted SYNCHRONOUSLY inside `dragstart`: whatever has
+ * not arrived by then is not in the picture, and there is no second chance —
+ * the browser does not redraw it when the load finishes. So a source that
+ * carries no picture of its own has to have asked for one BEFORE the gesture,
+ * which is what {@link warmRideDragThumb} is for, and this map is where the
+ * decoded element waits.
+ *
+ * Module-level rather than per-component: the same ride is a pill in one band
+ * and a row in a list, and a plan is opened and closed all day.
+ */
+const warmed = new Map<string, HTMLImageElement>();
+
+/**
+ * How many decoded thumbnails are kept. A 96 px picture is ~2 KB on the wire and
+ * ~37 KB decoded, so an unbounded map is a slow leak in a tab somebody leaves
+ * open — and the useful set is tiny anyway: the rides visible in one band.
+ * Insertion order is a `Map`'s own, so the oldest key is the first one.
+ */
+const WARM_LIMIT = 32;
+
+/**
+ * Ask for a ride's thumbnail now, so a drag that starts later has one.
+ *
+ * Called from a control's `pointerenter` — not on mount. A mouse drag is always
+ * preceded by the pointer arriving on the control, which buys the fetch the
+ * whole time between hovering and pressing, and a band of eight headliner pills
+ * that nobody points at costs nothing.
+ */
+export function warmRideDragThumb(src: string | null | undefined): void {
+  const url = thumbUrl(src);
+  if (!url || warmed.has(url) || typeof window === 'undefined') return;
+  const img = new window.Image();
+  img.decoding = 'async';
+  img.src = url;
+  warmed.set(url, img);
+  if (warmed.size > WARM_LIMIT) {
+    const oldest = warmed.keys().next();
+    if (!oldest.done) warmed.delete(oldest.value);
+  }
 }
 
 /**
@@ -193,12 +256,7 @@ export interface RideDragImageSource {
  *
  * Two details are what make it work rather than flicker:
  *
- * - The thumbnail is CLONED from the element being dragged, and the clone is
- *   pinned to `currentSrc` with its `srcset` dropped. A fresh `background-image`
- *   would start a load the snapshot does not wait for, and a `next/image`
- *   `srcset` re-evaluated at 32 px picks a candidate the page never fetched —
- *   either way the chip is drawn before the picture arrives and the thumbnail
- *   is blank.
+ * - The thumbnail is PAINTED, never loaded. See {@link dragThumb}.
  * - The element must be IN the document and rendered when `setDragImage` is
  *   called, so it is appended off-screen rather than hidden, and removed two
  *   frames later: `display: none` produces no snapshot at all, and removing it
@@ -236,24 +294,99 @@ export function setRideDragImage(
   requestAnimationFrame(() => requestAnimationFrame(() => chip.remove()));
 }
 
-/** The chip's 32 px picture, cloned from the drag source or built from a URL. */
+/**
+ * The chip's picture — drawn into a canvas, or nothing.
+ *
+ * It used to be an `<img>` clone pinned to the source's `currentSrc`, and that
+ * is a REQUEST: same URL, warm cache, almost always instant — but "almost" is
+ * the whole story here, because the snapshot is taken in the same tick and does
+ * not wait. Worse was the fallback beside it. `currentSrc` is empty until an
+ * image has actually loaded, so `currentSrc || src` fell through to `src`, and
+ * on a `next/image` element `src` is the LAST srcset candidate — `w=3840`, 147
+ * KB, a rendition the page never asked for. Every card whose photo had not
+ * finished loading therefore started a fresh download of the largest copy in
+ * existence and drew the chip with a hole in it.
+ *
+ * A canvas has neither problem: `drawImage` copies pixels that are already
+ * decoded, so the thumbnail is finished before `setDragImage` is reached and
+ * nothing goes over the network at all. The cover geometry is done here rather
+ * than left to `object-fit`, because a canvas has no `object-fit` to speak of —
+ * its content IS what was drawn — and that is also what lets the curator's
+ * focal point survive into a 32 px box.
+ *
+ * Where there are no decoded pixels — a card below `sm`, which renders no photo
+ * at all, or a pill nobody hovered — the answer is `null` and the chip is the
+ * ride's name. An empty grey square would claim a picture that is not coming.
+ */
 function dragThumb(image?: RideDragImageSource): HTMLElement | null {
   const found = image?.element?.querySelector?.('img');
-  if (found instanceof HTMLImageElement && (found.currentSrc || found.src)) {
-    const clone = document.createElement('img');
-    clone.src = found.currentSrc || found.src;
-    clone.alt = '';
-    clone.className = 'size-8 shrink-0 rounded object-cover';
-    clone.style.objectPosition = getComputedStyle(found).objectPosition;
-    return clone;
+  if (isPainted(found)) {
+    return canvasThumb(found, getComputedStyle(found).objectPosition);
   }
-  if (image?.photo) {
-    const box = document.createElement('img');
-    box.src = image.photo;
-    box.alt = '';
-    box.className = 'size-8 shrink-0 rounded object-cover';
-    if (image.photoPosition) box.style.objectPosition = image.photoPosition;
-    return box;
+
+  const url = thumbUrl(image?.photo);
+  const ready = url ? warmed.get(url) : null;
+  if (isPainted(ready)) {
+    return canvasThumb(ready, image?.photoPosition ?? undefined);
   }
+
+  // Nothing to draw this time. Asking now is what makes the NEXT drag from the
+  // same control work — a pill somebody grabbed without hovering first, or a
+  // card whose photo was still in flight.
+  warmRideDragThumb(image?.photo);
   return null;
+}
+
+/** Decoded and non-empty, which is the only state `drawImage` accepts. */
+function isPainted(img: unknown): img is HTMLImageElement {
+  return img instanceof HTMLImageElement && img.complete && img.naturalWidth > 0;
+}
+
+/**
+ * The source, drawn into a square the way `object-fit: cover` would.
+ *
+ * Backed at the device's pixel ratio rather than at 32 × 32: the drag image is
+ * composited by the OS at the screen's real resolution, and a 32 px canvas
+ * blown up to a retina display is the one place in this chip where the seam
+ * would show.
+ */
+function canvasThumb(source: HTMLImageElement, position?: string): HTMLElement | null {
+  const canvas = document.createElement('canvas');
+  const ratio = Math.min(Math.max(window.devicePixelRatio || 1, 1), 3);
+  canvas.width = Math.round(THUMB_PX * ratio);
+  canvas.height = Math.round(THUMB_PX * ratio);
+  // The CSS box stays 32 px; only the backing store is denser.
+  canvas.className = 'size-8 shrink-0 rounded';
+
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return null;
+
+  // `cover`: scale to the LARGER of the two ratios, so the box is filled and
+  // the overflow happens on one axis.
+  const scale = Math.max(canvas.width / source.naturalWidth, canvas.height / source.naturalHeight);
+  const width = source.naturalWidth * scale;
+  const height = source.naturalHeight * scale;
+  const [x, y] = coverOffset(position);
+  ctx.drawImage(source, (canvas.width - width) * x, (canvas.height - height) * y, width, height);
+  return canvas;
+}
+
+/**
+ * `object-position` as a pair of fractions of the leftover space.
+ *
+ * Percentages only, which is what the media database stores and what
+ * `getComputedStyle` normalises a keyword to (`center top` comes back as
+ * `50% 0%`). A length would be an offset in the SOURCE element's box and means
+ * something else in a 32 px one, so it falls back to the centre rather than
+ * being reinterpreted.
+ */
+export function coverOffset(position?: string): [number, number] {
+  const parts = (position ?? '').trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return [0.5, 0.5];
+  const axis = (raw: string | undefined): number => {
+    if (!raw?.endsWith('%')) return 0.5;
+    const value = Number.parseFloat(raw);
+    return Number.isFinite(value) ? Math.min(Math.max(value / 100, 0), 1) : 0.5;
+  };
+  return [axis(parts[0]), axis(parts[1] ?? parts[0])];
 }

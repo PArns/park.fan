@@ -1671,21 +1671,58 @@ if (reachable) {
   // screenshot, because an OS-level drag image is not in the page to capture.
   await drag.evaluate(() => {
     window.__plannerChips = [];
+    const painted = (canvas) => {
+      if (!canvas.width || !canvas.height) return false;
+      try {
+        const data = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data;
+        for (let i = 3; i < data.length; i += 4) if (data[i] > 0) return true;
+        return false;
+      } catch {
+        // A tainted canvas cannot be read back — which only happens when
+        // something WAS drawn onto it from another origin.
+        return true;
+      }
+    };
     const real = DataTransfer.prototype.setDragImage;
     DataTransfer.prototype.setDragImage = function (el, x, y) {
       const box = el.getBoundingClientRect();
+      // `canvas`, not `img`: the thumbnail is DRAWN from pixels the page
+      // already holds, because a drag image is snapshotted in this very tick
+      // and an `<img>` given a fresh `src` would not have arrived. Which is
+      // also why the count alone is not the assertion — a canvas that was
+      // never drawn into is the same element with nothing in it, so the
+      // painted flag walks its alpha channel and says whether anything is
+      // actually on it.
+      const art = el.querySelector('canvas');
       window.__plannerChips.push({
         marked: el.getAttribute('data-planner-drag-chip') !== null,
         cls: el.className,
         text: (el.textContent ?? '').trim(),
         height: Math.round(box.height),
-        images: el.querySelectorAll('img').length,
+        images: el.querySelectorAll('canvas, img').length,
+        painted: art ? painted(art) : false,
       });
       return real.call(this, el, x, y);
     };
   });
-  const fireDrag = (selector) =>
-    drag.evaluate((sel) => {
+  // Hovered before it is dragged, which is not decoration: the headliner pill
+  // has no picture of its own and asks for one on `pointerenter`, exactly as a
+  // mouse always does on its way to pressing the control. A synthetic
+  // `dragstart` with no pointer anywhere near it would measure a chip nobody
+  // can produce with a mouse.
+  const fireDrag = async (selector) => {
+    const target = drag.locator(selector).first();
+    if ((await target.count()) === 0) return false;
+    await target.scrollIntoViewIfNeeded();
+    // A real pointer, not a synthetic `pointerover`: React derives enter/leave
+    // from the pointer's own path, so a dispatched event is a different thing.
+    // Guarded because a control the panel overlaps cannot be hovered, and that
+    // is a worse chip rather than a failed run.
+    try {
+      await target.hover({ timeout: 3000 });
+    } catch {}
+    await drag.waitForTimeout(600);
+    return drag.evaluate((sel) => {
       const el = document.querySelector(sel);
       if (!el) return false;
       el.scrollIntoView({ block: 'center' });
@@ -1698,6 +1735,7 @@ if (reachable) {
       );
       return true;
     }, selector);
+  };
 
   // A card WITH a picture: a ride the media database has none for would produce
   // an honest name-only chip and make this compare two different things.
@@ -1723,6 +1761,14 @@ if (reachable) {
     'mit dem Namen und dem Bild der Bahn',
     chips.length === 3 && chips.every((c) => c.text.length > 0 && c.images === 1),
     chips.map((c) => `${c.text}/${c.images}`).join(' · ')
+  );
+  // The whole point of the canvas. `images === 1` was true of the version this
+  // replaced as well — it appended an `<img>` whose picture had not arrived and
+  // never would, so the chip counted one image and showed a hole.
+  check(
+    'und das Bild ist gezeichnet, nicht angefordert',
+    chips.length === 3 && chips.every((c) => c.painted),
+    chips.map((c) => `${c.text}: ${c.painted}`).join(' · ')
   );
   // It is appended to draw and taken away again; one left behind is a chip
   // sitting off-screen in the document for the rest of the session. Polled
