@@ -1230,6 +1230,19 @@
     },
     "sectionLiveNow": "Wartezeit jetzt",
     "sectionPlanVisit": "Beste Besuchszeit planen",
+    "todayAtRide": "Heute an dieser Bahn",
+    "todayRange": "Spanne heute",
+    "peakToday": "Tagespeak",
+    "parkToday": "Park heute",
+    "bestTimesToday": "Beste Zeiten heute",
+    "noBestTimesLeft": "Heute keine Empfehlung mehr",
+    "typicalToday": "Typisch heute",
+    "tiles": {
+      "live": "Jetzt <b>{min}</b> Min.",
+      "liveClosed": "Zurzeit geschlossen",
+      "plan": "Beste Zeit <b>{time}</b> Uhr",
+      "history": "<b>{days}</b> Tage · Spitze <b>{max}</b> Min."
+    },
     "meta": {
       "minHeightLabel": "Ab",
       "maxHeightLabel": "Bis",

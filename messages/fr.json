@@ -1230,6 +1230,19 @@
     },
     "sectionLiveNow": "Temps d’attente en ce moment",
     "sectionPlanVisit": "Planifier le meilleur moment pour visiter",
+    "todayAtRide": "Aujourd'hui sur cette attraction",
+    "todayRange": "Amplitude du jour",
+    "peakToday": "Pic du jour",
+    "parkToday": "Le parc aujourd'hui",
+    "bestTimesToday": "Meilleurs moments aujourd'hui",
+    "noBestTimesLeft": "Plus rien aujourd'hui",
+    "typicalToday": "Habituel aujourd'hui",
+    "tiles": {
+      "live": "<b>{min}</b> min en ce moment",
+      "liveClosed": "Actuellement fermée",
+      "plan": "Meilleur moment <b>{time}</b>",
+      "history": "<b>{days}</b> jours · pic <b>{max}</b> min"
+    },
     "meta": {
       "minHeightLabel": "Dès",
       "maxHeightLabel": "Jusqu’à",

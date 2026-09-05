@@ -441,9 +441,6 @@ const MOCK_ATTRACTION_FAVORITES = {
 // AttractionHistoryDay mocks
 const MOCK_HISTORY_DAY_OPEN: DayDataProps = {
   dateStr: '2026-03-07',
-  dayOfWeek: 'Sa',
-  dayOfMonth: '7',
-  month: 'Mar',
   attractionStatus: 'OPEN',
   isToday: true,
   historyData: {
@@ -459,9 +456,6 @@ const MOCK_HISTORY_DAY_OPEN: DayDataProps = {
 };
 const MOCK_HISTORY_DAY_HOLIDAY: DayDataProps = {
   dateStr: '2026-04-05',
-  dayOfWeek: 'So',
-  dayOfMonth: '5',
-  month: 'Apr',
   attractionStatus: 'OPEN',
   isToday: false,
   historyData: {
@@ -478,9 +472,6 @@ const MOCK_HISTORY_DAY_HOLIDAY: DayDataProps = {
 };
 const MOCK_HISTORY_DAY_SCHOOL: DayDataProps = {
   dateStr: '2026-07-18',
-  dayOfWeek: 'Sa',
-  dayOfMonth: '18',
-  month: 'Jul',
   attractionStatus: 'OPEN',
   isToday: false,
   historyData: {
@@ -497,18 +488,12 @@ const MOCK_HISTORY_DAY_SCHOOL: DayDataProps = {
 };
 const MOCK_HISTORY_DAY_PARK_CLOSED: DayDataProps = {
   dateStr: '2026-03-10',
-  dayOfWeek: 'Di',
-  dayOfMonth: '10',
-  month: 'Mar',
   attractionStatus: 'PARK_CLOSED',
   isToday: false,
   scheduleData: { scheduleType: 'CLOSED' } as unknown as ScheduleItem,
 };
 const MOCK_HISTORY_DAY_CLOSED_RIDE: DayDataProps = {
   dateStr: '2026-03-08',
-  dayOfWeek: 'So',
-  dayOfMonth: '8',
-  month: 'Mar',
   attractionStatus: 'CLOSED_RIDE',
   isToday: false,
   scheduleData: {

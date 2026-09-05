@@ -1230,6 +1230,19 @@
     },
     "sectionLiveNow": "Wait time right now",
     "sectionPlanVisit": "Plan the best time to visit",
+    "todayAtRide": "Today at this ride",
+    "todayRange": "Range today",
+    "peakToday": "Peak today",
+    "parkToday": "Park today",
+    "bestTimesToday": "Best times today",
+    "noBestTimesLeft": "Nothing left today",
+    "typicalToday": "Typical today",
+    "tiles": {
+      "live": "<b>{min}</b> min right now",
+      "liveClosed": "Currently closed",
+      "plan": "Best time <b>{time}</b>",
+      "history": "<b>{days}</b> days · peak <b>{max}</b> min"
+    },
     "meta": {
       "minHeightLabel": "From",
       "maxHeightLabel": "Up to",

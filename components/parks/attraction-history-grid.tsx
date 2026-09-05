@@ -1,184 +1,182 @@
 'use client';
 
+import { useEffect, useMemo, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { format, eachDayOfInterval } from 'date-fns';
+import { format, eachDayOfInterval, startOfWeek } from 'date-fns';
 import { de, enUS, es, fr, it, nl, type Locale } from 'date-fns/locale';
-import { Ban, PartyPopper, Backpack, Calendar, Luggage } from 'lucide-react';
 import type { AttractionHistoryDay, ScheduleItem } from '@/lib/api/types';
-import { Card } from '@/components/ui/card';
-import { SectionHeading } from '@/components/common/section-heading';
-import { AttractionHistoryDay as HistoryDay, DayDataProps } from './attraction-history-day';
+import { AttractionHistoryDay as HistoryDay, type DayDataProps } from './attraction-history-day';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
+import { HISTORY_WINDOW_DAYS } from '@/lib/parks/attraction-history-geometry';
 
 interface AttractionHistoryGridProps {
-  attraction: {
-    name: string;
-    history?: AttractionHistoryDay[];
-    schedule?: ScheduleItem[];
-  };
+  history?: AttractionHistoryDay[];
+  schedule?: ScheduleItem[];
 }
 
-interface GridDayData extends DayDataProps {
-  date: Date;
-}
-
-export function AttractionHistoryGrid({ attraction }: AttractionHistoryGridProps) {
+/**
+ * The ride's 30-day wait-time history, drawn as a calendar.
+ *
+ * Same two layouts as the park's crowd calendar and for the same reasons: weekday-aligned week
+ * rows from `lg` up, a two-column list below it. That alignment is the point of putting this in a
+ * grid at all — the finding a reader comes here for is „Samstag ist immer voll", and a strip of
+ * thirty cells in a row cannot show it. It used to run seven-per-row from today backwards, which
+ * puts a different weekday in each column every month.
+ *
+ * The list below `lg` runs newest first, because there it is a list and not a calendar, and the
+ * day a reader wants first is today.
+ *
+ * One `yMax` across every cell. `Sparkline` fits each instance to its own maximum, so without it
+ * a flat twenty-minute Tuesday is drawn exactly as dramatically as a hundred-minute Saturday and
+ * the grid says the opposite of what the data says.
+ */
+export function AttractionHistoryGrid({ history, schedule }: AttractionHistoryGridProps) {
   const locale = useLocale();
   const t = useTranslations('attractions');
-  const tParks = useTranslations('parks');
   // "today" is derived from the browser clock (null until mount) so the static shell never reads
   // the server clock — previously getServerNowMs() here pinned the attraction shell's revalidate.
   const browserNow = useBrowserNow(null);
 
-  const dateLocaleMap: Record<string, Locale> = { de, en: enUS, fr, it, nl, es };
-  const dateLocale: Locale = dateLocaleMap[locale] ?? enUS;
+  const dateLocale: Locale =
+    ({ de, en: enUS, fr, it, nl, es } as Record<string, Locale>)[locale] ?? enUS;
 
-  if (!attraction.history || attraction.history.length === 0) {
-    return (
-      <Card className="relative p-6">
-        <div className="space-y-4">
-          <SectionHeading
-            icon={Calendar}
-            title={t('historyCalendar')}
-            variant="plain"
-            as="h3"
-            className="mb-0"
-          />
-          <p className="text-muted-foreground">{t('noHistoryData')}</p>
-        </div>
-      </Card>
-    );
-  }
+  /**
+   * Which of the two layouts to build, read off the live viewport.
+   *
+   * Both used to sit in the DOM behind `lg:hidden` / `hidden lg:block`, and `display: none` skips
+   * neither render nor hydration — so every day mounted twice and the grid drew 62 sparklines to
+   * show 31. Safe to read the viewport here because nothing in this grid renders on the server at
+   * all: `days` is empty until `browserNow` lands. Same solution, same reason, as
+   * `ParkCalendarGrid`.
+   */
+  const [isDesktop, setIsDesktop] = useState(() =>
+    typeof window === 'undefined' ? false : window.matchMedia('(min-width: 1024px)').matches
+  );
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 1024px)');
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
 
-  // Before mount we have no "today" yet — render the static frame (heading + legend) but defer the
-  // day grid so SSR and the first client render match (no hydration mismatch). The grid fills in
-  // right after hydration.
-  const today = browserNow ? new Date(browserNow) : null;
-  if (today) today.setHours(0, 0, 0, 0);
+  const { days, weeks, weekdayHeaders, yMax } = useMemo(() => {
+    const headers: string[] = [];
+    const monday = new Date(2024, 0, 1);
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(monday);
+      d.setDate(monday.getDate() + i);
+      headers.push(format(d, 'EEE', { locale: dateLocale }));
+    }
 
-  // Calculate date range: today to 30 days ago.
-  const days: GridDayData[] = (() => {
-    if (!today) return [];
-    const thirtyDaysAgo = new Date(today);
-    thirtyDaysAgo.setDate(today.getDate() - 30);
-    const dateRange = { start: thirtyDaysAgo, end: today };
+    if (!browserNow) {
+      return {
+        days: [] as DayDataProps[],
+        weeks: [] as (DayDataProps | null)[][],
+        weekdayHeaders: headers,
+        yMax: undefined,
+      };
+    }
 
-    // Create a map of history data by date for quick lookup
-    const historyMap = new Map<string, AttractionHistoryDay>();
-    attraction.history?.forEach((day) => {
-      historyMap.set(day.date, day);
-    });
+    const today = new Date(browserNow);
+    today.setHours(0, 0, 0, 0);
+    const start = new Date(today);
+    start.setDate(today.getDate() - HISTORY_WINDOW_DAYS);
 
-    // Create a map of schedule data by date for quick lookup
-    const scheduleMap = new Map<string, ScheduleItem>();
-    attraction.schedule?.forEach((item) => {
-      scheduleMap.set(item.date, item);
-    });
+    const historyMap = new Map((history ?? []).map((d) => [d.date, d]));
+    const scheduleMap = new Map((schedule ?? []).map((s) => [s.date, s]));
 
-    const allDays = eachDayOfInterval(dateRange);
-
-    return allDays.map((date) => {
+    const computed: DayDataProps[] = eachDayOfInterval({ start, end: today }).map((date) => {
       const dateStr = format(date, 'yyyy-MM-dd');
       const historyData = historyMap.get(dateStr);
       const scheduleData = scheduleMap.get(dateStr);
+      const hasHistory = !!historyData?.hourlyP90 && historyData.hourlyP90.length > 1;
+      const isToday = dateStr === format(today, 'yyyy-MM-dd');
 
-      const hasHistory = historyData && historyData.hourlyP90 && historyData.hourlyP90.length > 1;
-      const isToday =
-        date.getFullYear() === today.getFullYear() &&
-        date.getMonth() === today.getMonth() &&
-        date.getDate() === today.getDate();
-
-      let attractionStatus: GridDayData['attractionStatus'] = 'UNKNOWN';
-
+      let attractionStatus: DayDataProps['attractionStatus'] = 'UNKNOWN';
       if (hasHistory) {
         attractionStatus = 'OPEN';
-      } else {
-        // No history data
-        if (scheduleData) {
-          if (scheduleData.scheduleType !== 'OPERATING') {
-            attractionStatus = 'PARK_CLOSED';
-          } else {
-            // Park is open, but no history
-            if (isToday) {
-              attractionStatus = 'NOT_YET_OPEN';
-            } else if (date < today) {
-              attractionStatus = 'CLOSED_RIDE';
-            }
-          }
+      } else if (scheduleData) {
+        if (scheduleData.scheduleType !== 'OPERATING') {
+          attractionStatus = 'PARK_CLOSED';
+        } else if (isToday) {
+          attractionStatus = 'NOT_YET_OPEN';
+        } else if (date < today) {
+          attractionStatus = 'CLOSED_RIDE';
         }
       }
 
-      return {
-        date,
-        dateStr,
-        dayOfWeek: format(date, 'EEE', { locale: dateLocale }),
-        dayOfMonth: format(date, 'd'),
-        month: format(date, 'MMM', { locale: dateLocale }),
-        historyData,
-        scheduleData,
-        attractionStatus,
-        isToday,
-      };
+      return { dateStr, historyData, scheduleData, attractionStatus, isToday };
     });
-  })();
+
+    // Weekday-aligned rows: pad the first week to Monday and the last one out to seven, so every
+    // column is one weekday down the whole grid.
+    const first = new Date(start);
+    const lead = Math.round(
+      (first.getTime() - startOfWeek(first, { weekStartsOn: 1 }).getTime()) / 86_400_000
+    );
+    const cells: (DayDataProps | null)[] = [
+      ...Array.from({ length: lead }, () => null),
+      ...computed,
+    ];
+    while (cells.length % 7 !== 0) cells.push(null);
+    const computedWeeks: (DayDataProps | null)[][] = [];
+    for (let i = 0; i < cells.length; i += 7) computedWeeks.push(cells.slice(i, i + 7));
+
+    const peak = computed.reduce((max, d) => {
+      for (const p of d.historyData?.hourlyP90 ?? []) if (p.value > max) max = p.value;
+      return max;
+    }, 0);
+
+    return {
+      days: computed,
+      weeks: computedWeeks,
+      weekdayHeaders: headers,
+      yMax: peak > 0 ? peak : undefined,
+    };
+  }, [browserNow, history, schedule, dateLocale]);
+
+  // Thirty days in which the ride never once ran. The grid would be a wall of grey tiles saying
+  // the same thing thirty-one times, so it says it once.
+  if (browserNow && days.length > 0 && !days.some((d) => d.attractionStatus === 'OPEN')) {
+    return <p className="text-muted-foreground text-sm">{t('noHistoryData')}</p>;
+  }
 
   return (
-    <Card className="relative p-4 md:p-6">
-      <div className="space-y-4">
-        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          {/* Card title inside the "plan your visit" chapter — icon + h3 like every
-              other card title on the page (it was the one bare heading left). */}
-          <SectionHeading
-            icon={Calendar}
-            title={t('historyCalendar')}
-            variant="plain"
-            as="h3"
-            className="mb-0"
-          />
-
-          {/* Legend */}
-          <div className="flex flex-wrap items-center gap-2 text-sm">
-            {/* Closed */}
-            <div className="flex items-center gap-1.5 rounded-md border border-red-500 bg-red-50/50 px-2 py-1 dark:bg-red-950/20">
-              <Ban className="h-3.5 w-3.5 text-red-500 dark:text-red-400" />
-              <span className="text-xs">{t('historyLegend.closed')}</span>
-            </div>
-            {/* Holiday */}
-            <div className="flex items-center gap-1.5 rounded-md border border-orange-500 bg-white px-2 py-1 dark:bg-gray-900/50">
-              <PartyPopper className="h-3.5 w-3.5 text-orange-500 dark:text-orange-400" />
-              <span className="text-xs">{t('historyLegend.holiday')}</span>
-            </div>
-            {/* School Vacation */}
-            <div className="flex items-center gap-1.5 rounded-md border border-yellow-500 bg-white px-2 py-1 dark:bg-gray-900/50">
-              <Backpack className="h-3.5 w-3.5 text-yellow-500 dark:text-yellow-400" />
-              <span className="text-xs">{t('historyLegend.schoolVacation')}</span>
-            </div>
-            {/* Bridge Day */}
-            <div className="flex items-center gap-1.5 rounded-md border border-blue-500 bg-white px-2 py-1 dark:bg-gray-900/50">
-              <Calendar className="h-3.5 w-3.5 text-blue-500 dark:text-blue-400" />
-              <span className="text-xs">{t('historyLegend.bridgeDay')}</span>
-            </div>
-            {/* Neighbouring-region school breaks. No border colour of its own — the day's
-                border is already spoken for by the local markers, so this one lives only as
-                the amber corner icon, exactly as on the park calendar. */}
-            <div className="border-border/60 flex items-center gap-1.5 rounded-md border bg-white px-2 py-1 dark:bg-gray-900/50">
-              <Luggage className="h-3.5 w-3.5 text-amber-500 dark:text-amber-400" />
-              <span className="text-xs">{tParks('influencingHolidays')}</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Reversed List (Today -> Past) */}
-        <div className="grid grid-cols-2 gap-2 md:grid-cols-7">
-          {days
+    <>
+      {/* List below `lg`: newest first. */}
+      <div className="grid grid-cols-2 gap-2 lg:hidden">
+        {!isDesktop &&
+          days
             .slice()
             .reverse()
-            .map((day) => {
-              const { date: _date, ...dayProps } = day;
-              return <HistoryDay key={day.dateStr} day={dayProps} />;
-            })}
+            .map((day) => <HistoryDay key={day.dateStr} day={day} yMax={yMax} />)}
+      </div>
+
+      {/* Calendar from `lg` up: one weekday per column, oldest week first, today in the last row. */}
+      <div className="hidden lg:block">
+        <div className="mb-2 grid grid-cols-7 gap-2">
+          {weekdayHeaders.map((header) => (
+            <div key={header} className="text-muted-foreground text-center text-sm font-medium">
+              {header}
+            </div>
+          ))}
+        </div>
+        <div className="space-y-2">
+          {isDesktop &&
+            weeks.map((week, weekIdx) => (
+              <div key={weekIdx} className="grid grid-cols-7 items-stretch gap-2">
+                {week.map((day, dayIdx) =>
+                  day ? (
+                    <HistoryDay key={day.dateStr} day={day} yMax={yMax} />
+                  ) : (
+                    <div key={`empty-${weekIdx}-${dayIdx}`} className="h-full" />
+                  )
+                )}
+              </div>
+            ))}
         </div>
       </div>
-    </Card>
+    </>
   );
 }
