@@ -11,6 +11,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { GameStore } from './store';
 import { useGameStore } from './use-game-store';
 import { GameShell } from './game-shell';
+import { GameBrandMark } from './game-brand';
 import { GameErrorBoundary } from './error-boundary';
 import { createTranslator, type GameLocale, type GameStringKey } from '../i18n';
 import type { GameHandle } from './host';
@@ -84,6 +85,9 @@ export function GameApp({ locale }: GameAppProps) {
           onRetry={() => setAttempt((a) => a + 1)}
         />
       ) : null}
+      {/* Core chrome, deliberately outside the HUD's error boundary and outside the `ui` module:
+          a mark that identifies the product should still be there on the frame where the HUD threw. */}
+      <GameBrandMark hidden={phase === 'booting' || phase === 'failed'} label={t('app.title')} />
       <GameErrorBoundary
         fallback={(err) => (
           <div className="pointer-events-none absolute inset-x-0 top-0 z-30 flex justify-center p-3">
