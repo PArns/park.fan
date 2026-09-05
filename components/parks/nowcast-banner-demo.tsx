@@ -202,7 +202,7 @@ export function NowcastBannerDemo({ single = false }: { single?: boolean } = {})
   }
 
   return (
-    <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+    <div className="grid grid-cols-1 gap-3 @min-[1024px]/page:grid-cols-2">
       <WeatherNowcastBanner
         continent="demo"
         country="demo"

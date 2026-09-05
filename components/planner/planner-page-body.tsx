@@ -60,7 +60,7 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
 
   const open = (parkSlug: string, date: string) => {
     setActive(parkSlug, date);
-    plannerUi.requestOpen();
+    plannerUi.requestOpen('plan-list');
   };
 
   const total = parks.reduce((sum, park) => sum + park.days.length, 0);

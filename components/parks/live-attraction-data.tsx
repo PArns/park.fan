@@ -237,7 +237,11 @@ export function LiveAttractionData({
             (title 28 + explainer 20 + legend 17 + plot 145/160/189 + best-slot lines + the
             Fancast link, plus p-4/sm:p-6) — the plot grows at `sm` with the taller bars and again
             at `md`, where the hour-label row appears. Reserved at the one-line best-slot variant,
-            so a ride that renders two of them still settles within ~20px instead of 208. */}
+            so a ride that renders two of them still settles within ~20px instead of 208.
+
+            Window breakpoints, not `@container/page`: the row this reserves for is itself gated on
+            the window (see <DailyWaitTimeChart>), and a reservation that asks a different question
+            from the thing it reserves for is how a box comes out 200 px short. */}
         {!mounted || isDetailLoading ? (
           <div className="border-border/60 min-h-[352px] border-t p-4 sm:min-h-[372px] sm:p-6 md:min-h-[401px]">
             <div className="space-y-3" aria-hidden="true">
@@ -293,7 +297,7 @@ export function LiveAttractionData({
           {/* Sub-section of the live chapter, not a chapter of its own — plain h3
               so the outline reads live wait time › other queues. */}
           <SectionHeading icon={Layers} title={t('otherQueues')} variant="plain" as="h3" />
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
             {attraction.queues
               .filter((q) => q.queueType !== 'STANDBY')
               .map((queue, i) => (

@@ -5,6 +5,7 @@ import { PlannerFlyoutHost } from './planner-launcher-button';
 import { PlannerEdgeTab } from './planner-edge-tab';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { plannerUi } from '@/lib/planner/ui-store';
+import { trackPlannerOpened } from '@/lib/analytics/umami';
 import { plannerPanelWidth } from '@/lib/planner/panel-width';
 import { useLazyMessages } from '@/i18n/use-lazy-messages';
 import { RouteMessagesProvider } from '@/i18n/route-messages-provider';
@@ -69,6 +70,52 @@ export function PlannerLauncher() {
   }, [openRequests]);
 
   /**
+   * One `planner_opened` per opening, with the way in that produced it.
+   *
+   * An effect OF ITS OWN, watching `open` rather than the request counter, and
+   * both halves of that are load-bearing. The counter moves on every request
+   * including the ones that arrive while the panel is already up — a second day
+   * pressed in the calendar, the wizard finishing inside the panel — where
+   * `setOpen(true)` above is a no-op and nothing opens; counting there would
+   * bill those as openings. The closed → open edge is the event.
+   *
+   * So it is a second effect for a reason of arithmetic and not of lint. The
+   * note on `plannerUi.getWizardSnapshot` warns that a call React cannot see
+   * through, added beside the `setOpen` above, can take
+   * `react-hooks/set-state-in-effect` down with it; putting
+   * `trackPlannerOpened(plannerUi.getOpenSource())` there was tried here and
+   * stayed green (the guarded early return is what the rule accepts), so that is
+   * not what forced the split — the over-counting is. This effect holds no
+   * `setState` either way, so the question cannot come back.
+   */
+  // The panel is worth loading once it has been opened, once there is something
+  // in it, or once something has asked for it. Closing it again does not unload
+  // the chunk: it is already in the browser, and unmounting the panel on close
+  // is what resets the wizard.
+  const wanted = open || total > 0 || openRequests > 0;
+  const messages = useLazyMessages(PLANNER_NAMESPACES, wanted);
+  /**
+   * The panel is on screen — which is NOT the same as `open`.
+   *
+   * The `planner` namespace is 15 KB and arrives as its own chunk, so between
+   * the press and the panel there is a fetch. `open` flips at the press; the
+   * panel is drawn when the chunk lands. Billing the press counts an opening
+   * the visitor never saw — and `useLazyMessages` does not retry a failed
+   * fetch, so on a blocked asset it is an opening that never happens at all,
+   * followed by a second and a third as somebody presses again because nothing
+   * did. The edge tab already draws its own state off this composite rather
+   * than off `open`; the event now agrees with it.
+   */
+  const panelVisible = wanted && messages.ready && open;
+
+  const reported = useRef(false);
+  useEffect(() => {
+    if (panelVisible === reported.current) return;
+    reported.current = panelVisible;
+    if (panelVisible) trackPlannerOpened(plannerUi.getOpenSource());
+  }, [panelVisible]);
+
+  /**
    * How much of the window the panel is holding, for the page beside it.
    *
    * A CSS custom property on the document element rather than a prop, because
@@ -103,13 +150,9 @@ export function PlannerLauncher() {
     };
   }, [open, panelWidth]);
 
-  // The panel is worth loading once it has been opened, once there is something
-  // in it, or once something has asked for it. Closing it again does not unload
-  // the chunk: it is already in the browser, and unmounting the panel on close
-  // is what resets the wizard.
-  const wanted = open || total > 0 || openRequests > 0;
-  const messages = useLazyMessages(PLANNER_NAMESPACES, wanted);
-
+  // MOUNTED as soon as the chunk is there, not only while open: the sheet plays
+  // its own close animation and the wizard resets by unmounting with the panel,
+  // so tying this to `open` would cut both.
   const panel =
     wanted && messages.ready ? <PlannerFlyoutHost open={open} onOpenChange={setOpen} /> : null;
 
@@ -119,7 +162,15 @@ export function PlannerLauncher() {
         open={open && panel !== null}
         total={total}
         panelWidth={panelWidth}
-        onToggle={() => setOpen((value) => !value)}
+        // The tab is the one way in that never goes through the store, so it
+        // names itself here — before the flip, because the transition effect
+        // reads the source in the very next commit. Noted on the way out as well as
+        // the way in, which costs nothing and keeps a close from leaving the
+        // previous opener's name standing for whatever opens next.
+        onToggle={() => {
+          plannerUi.noteOpenSource('tab');
+          setOpen((value) => !value);
+        }}
       />
       {/* Until the chunk resolves — a same-origin module, a few milliseconds —
           nothing is drawn rather than raw message keys. */}

@@ -82,7 +82,7 @@ export function PlanDayButton({
         if (onPlanned) flushSync(onPlanned);
         const rest = () => {
           openDay({ slug: parkSlug, name: parkName, geo, timezone }, date);
-          plannerUi.requestOpen();
+          plannerUi.requestOpen('calendar-day');
           // The park's own page, where the ride cards are. The calendar is the
           // one park page with none, so a button that says "plan the rides for
           // this day" and leaves the reader there has not finished its

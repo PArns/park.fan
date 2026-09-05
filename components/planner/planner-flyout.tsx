@@ -18,7 +18,7 @@ import { usePlanner } from '@/lib/planner/use-planner';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { occupiedMinutes } from '@/lib/planner/estimate';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
-import { useRouter } from '@/i18n/navigation';
+import { usePathname, useRouter } from '@/i18n/navigation';
 import { buildDayGrid, growGridForSpans, nextFreeStart } from '@/lib/planner/day-grid';
 import { addDays, resolveTimeZone } from '@/lib/planner/park-time';
 import { useRideDragSource } from '@/lib/planner/use-ride-drag-source';
@@ -31,6 +31,7 @@ import {
   plannerSecondColumn,
 } from '@/lib/planner/second-column';
 import { plannerPagePark } from '@/lib/planner/page-park';
+import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import { plannerUi } from '@/lib/planner/ui-store';
 import { cn } from '@/lib/utils';
 
@@ -51,6 +52,9 @@ interface PlannerFlyoutProps {
  * button off screen. `components/ui/sheet.tsx` says so at the button, and the
  * burger menu solves it the same way.
  */
+/** The planner's own route, in all six localized spellings. See `isPlannerPage`. */
+const PLANNER_PATHS = new Set(Object.values(PLANNER_SEGMENTS).map((segment) => `/${segment}`));
+
 /** Far enough that it cannot be a tap; short enough for a thumb. */
 const SHEET_EXPAND_PX = 24;
 /** Under this, the gesture was a tap and the tap handler owns it. */
@@ -97,6 +101,24 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
 
   const isPhone = useMediaQuery('(max-width: 639px)');
   const router = useRouter();
+  /**
+   * Whether the page behind the panel is the planner's own.
+   *
+   * `usePathname` from `@/i18n/navigation` strips the LOCALE and keeps the
+   * localized SEGMENT — the two are different things, and reading it as the
+   * first was a bug that shipped: matching `/trip-planner` alone left the guard
+   * dead on `/de/tagesplaner`, `/fr/planificateur` and three more, i.e. in five
+   * of six languages, on the one route it exists to protect. The rewrites in
+   * `next.config.ts` serve all six on the English route folder, but a rewrite
+   * does not change what the browser asked for and `usePathname` answers that.
+   *
+   * So: every segment, compared exactly. `header.tsx` matches
+   * `BEST_TIME_SEGMENTS` the same way for the same reason, and `PLANNER_SEGMENTS`
+   * is the one place those slugs are written down — a seventh locale adds itself
+   * here. Exact rather than a prefix, or `/trip-planner-anything` would count.
+   */
+  const pathname = usePathname();
+  const isPlannerPage = PLANNER_PATHS.has(pathname);
 
   const panelWidth = useSyncExternalStore(
     plannerPanelWidth.subscribe,
@@ -277,22 +299,34 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
    * Europa-Park in front of Phantasialand's rides is a drag gesture with no
    * valid target — the grid refuses a ride whose park is not its own.
    *
-   * Two guards, and both are about not moving a reader who did not ask to be
-   * moved. `pagePark` is `null` on every route that is not park-scoped (the
-   * planner's own page, the blog, the homepage), and there is no park page to
-   * "return" from there. And a target that IS the page's park is a no-op rather
-   * than a reload.
+   * It used to refuse wherever `plannerPagePark` was `null` — every route that
+   * is not park-scoped — on the reasoning that there is no park page to return
+   * from. That was the wrong half of the question and it was reported from the
+   * homepage: two columns open, Toverland in the right one, and clicking it did
+   * nothing at all. Whether the page in front of the reader is a park page has
+   * no bearing on whether they want the park they just clicked; what decides it
+   * is that the columns are the subject and the page is where the rides come
+   * from.
+   *
+   * Two guards are left. A target that is already the page's park is a no-op
+   * rather than a reload. And the planner's own page is not left at all — see
+   * `isPlannerPage`.
    */
   const goToPark = useCallback(
     (slug: string | null) => {
-      if (!slug || !pagePark || pagePark.slug === slug) return;
+      if (!slug || pagePark?.slug === slug) return;
+      // The planner's OWN page is the one route this may not leave. Everywhere
+      // else the page is a place to drag rides out of and following the panel
+      // is the point; there, the page IS the panel's subject and navigating
+      // away would close the thing somebody just opened.
+      if (isPlannerPage) return;
       const target = state.parks[slug];
       if (!target) return;
       router.push(
         `/parks/${target.geo.continent}/${target.geo.country}/${target.geo.city}/${target.slug}` as '/europe/germany/rust/europa-park'
       );
     },
-    [pagePark, router, state.parks]
+    [pagePark?.slug, isPlannerPage, router, state.parks]
   );
 
   /**
@@ -310,22 +344,35 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
    */
   const [focusSecond, setFocusSecond] = useState(false);
   /**
-   * Focus a column, and take the page with it.
+   * Focus a column, and — where the gesture was a plain one — take the page.
    *
-   * The navigation hangs on the CHANGE, never on the click. With one column
+   * The navigation hangs on the CHANGE, never on the press. With one column
    * open the focus can never change, so reading Toverland's page with a
-   * Phantasialand plan open and touching the panel does not navigate anywhere —
-   * which is the behaviour that existed before this and had to survive it.
+   * Phantasialand plan open and touching the panel navigates nowhere.
+   *
+   * **`navigate` is what keeps a control from relocating the reader.** The
+   * column arms this from `onPointerDownCapture` on its own root, so it fires
+   * before the press reaches anything inside — including that column's close
+   * button, its optimise bar, its free-block row and the grip of a block
+   * somebody is starting to drag. Marking the column is right in all of those
+   * (it IS the one being worked in); pushing a new route under a half-finished
+   * drag, or moving the whole page as the answer to "close this column", is
+   * not. The column decides which kind of press it was; see its capture
+   * handler.
+   *
+   * **The push is outside the updater**, which is not a style question: React
+   * may call an updater more than once — it does in StrictMode — and a
+   * `router.push` in there is two history entries and two RSC fetches for one
+   * press. The comparison it replaced is done against `focusSecond` here, where
+   * a dependency covers it.
    */
   const focusColumn = useCallback(
-    (second: boolean) => {
-      setFocusSecond((was) => {
-        if (was === second) return was;
-        goToPark(second ? (secondColumn?.parkSlug ?? null) : activeParkSlug);
-        return second;
-      });
+    (second: boolean, navigate: boolean) => {
+      if (second === focusSecond) return;
+      setFocusSecond(second);
+      if (navigate) goToPark(second ? (secondColumn?.parkSlug ?? null) : activeParkSlug);
     },
-    [goToPark, secondColumn?.parkSlug, activeParkSlug]
+    [focusSecond, goToPark, secondColumn?.parkSlug, activeParkSlug]
   );
   // A closed second column cannot be the focused one. Adjusted during render
   // rather than in an effect — the state is derived from `secondColumn`, and an
@@ -336,7 +383,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
    * The park page's own button, answered.
    *
    * `ParkPlannerLink` in the park header asks for the panel AND for the wizard
-   * on the park the route is about — `plannerUi.requestOpen('page-park-wizard')`
+   * on the park the route is about — `requestOpen(source, 'page-park-wizard')`
    * — and until this it only got the first half: the panel opened on whatever
    * it had been showing, with „Tag im Phantasialand planen" as a second button
    * inside it. The panel is the only place that can answer, because
@@ -350,7 +397,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
    * is lazily mounted, so on a page that has never opened it this effect first
    * runs with the counter already at 1, which is the press that mounted it.
    *
-   * It is the store's WIZARD counter, so a plain `requestOpen()` from the park
+   * It is the store's WIZARD counter, so a plain panel request from the park
    * calendar or a ride button never reaches here at all — see
    * `plannerUi.getWizardSnapshot`, which explains why that question is answered
    * by a second subscription rather than by an intent read inside this effect.
@@ -780,7 +827,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 date={activeDate}
                 primary
                 active={Boolean(secondColumn) && !focusSecond}
-                onActivate={() => focusColumn(false)}
+                onActivate={(navigate) => focusColumn(false, navigate)}
                 open={open}
                 withFoot={!isPhone}
                 className="row-span-3 grid grid-rows-subgrid"
@@ -818,7 +865,7 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   date={secondColumn.date}
                   primary={false}
                   active={focusSecond}
-                  onActivate={() => focusColumn(true)}
+                  onActivate={(navigate) => focusColumn(true, navigate)}
                   open={open}
                   withFoot={!isPhone}
                   className="border-border/60 animate-in fade-in slide-in-from-right-4 row-span-3 grid grid-rows-subgrid border-l duration-200 ease-out motion-reduce:animate-none"

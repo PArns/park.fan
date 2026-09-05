@@ -342,7 +342,8 @@ function BestDaysContent({
           drift between the two panels.
 
           The count is computed: a park with no quiet weekday and no quiet weekend day renders one
-          column, and a fixed `lg:grid-cols-3` would leave two empty tracks inside the border. */}
+          column, and a fixed three-column track set would leave two empty tracks inside the
+          border. */}
         <div
           className={cn(
             TILE_GLASS,

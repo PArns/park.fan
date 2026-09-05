@@ -66,7 +66,7 @@ export const LandSection = memo(function LandSection({
         </div>
       </div>
 
-      <ul className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
         {attractions.map((attraction) => {
           // The photo and its focal point ride along on the attraction itself,
           // attached by `enrichAttractionsWithImages` in the park API proxy. Looking

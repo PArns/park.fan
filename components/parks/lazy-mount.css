@@ -1,12 +1,18 @@
 /* Breakpoint-aware placeholder height for <LazyMount grid={…}>.
  *
  * The reserved height must follow the card grid's column count
- * (`grid-cols-1 sm:grid-cols-2 lg:grid-cols-3`), otherwise a desktop visitor gets ~3x the
- * space the content will actually occupy and the scrollbar jumps when the section mounts.
- * The three candidate heights are computed in JS and handed over as custom properties;
- * only the media queries live here, since inline styles can't carry them.
+ * (`grid-cols-1 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3`), otherwise a desktop visitor
+ * gets ~3x the space the content will actually occupy and the scrollbar jumps when the section
+ * mounts. The three candidate heights are computed in JS and handed over as custom properties;
+ * only the queries live here, since inline styles can't carry them.
  *
- * Breakpoints mirror Tailwind v4's defaults (`sm` = 40rem, `lg` = 64rem) — the project
+ * The third one asks the PAGE, not the window, because the grid it stands in does: with the trip
+ * planner open the window can say 1440 while the page has 900, and a reservation still cut for
+ * three columns is a third too short the moment the section mounts. `page` is the named container
+ * on the locale layout (app/[locale]/layout.tsx). The `sm` step stays a media query — below it
+ * the planner is a modal sheet and the page is not inset, so the two questions have one answer.
+ *
+ * Thresholds mirror Tailwind v4's defaults (`sm` = 40rem, `lg` = 64rem) — the project
  * doesn't override them in `@theme`.
  */
 .lazy-mount-reserve {
@@ -19,7 +25,7 @@
   }
 }
 
-@media (min-width: 64rem) {
+@container page (min-width: 64rem) {
   .lazy-mount-reserve {
     min-height: var(--lm-h-3);
   }

@@ -241,7 +241,7 @@ export function PlannerWizard({ open, onOpenChange, initialPark = null }: Planne
         durationMinutes: LUNCH_MINUTES,
       });
     }
-    plannerUi.requestOpen();
+    plannerUi.requestOpen('wizard');
     onOpenChange(false);
     // The park's own page, where the ride cards are. `@/i18n/navigation`'s
     // router, so the localized path is built rather than guessed.

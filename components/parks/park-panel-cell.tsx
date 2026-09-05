@@ -16,9 +16,9 @@ export const PANEL_CELL = 'border-border/50 flex flex-col gap-3 border-r border-
  *
  * `-mr-px -mb-px` plus the caller's `overflow-hidden` clip the trailing hairlines, so the rules
  * stay correct at every column count. The count is passed rather than written into a class because
- * columns are conditional on both panels that use this: at a fixed `lg:grid-cols-4` a park with no
- * headliners and no showtimes left two empty tracks sitting inside the panel's border, which is
- * exactly what shipped once.
+ * columns are conditional on both panels that use this: at a fixed four-column track set a park
+ * with no headliners and no showtimes left two empty tracks sitting inside the panel's border,
+ * which is exactly what shipped once.
  *
  * `sm:grid-cols-2` is part of that count and not a floor. It used to be unconditional, so a single
  * cell sat in the first of two tracks from 640 px up and drew its own right-hand hairline down the
@@ -40,9 +40,9 @@ export function PanelGrid({
       className={cn(
         '-mr-px -mb-px grid grid-cols-1',
         columnCount >= 2 && 'sm:grid-cols-2',
-        columnCount >= 4 && 'lg:grid-cols-4',
-        columnCount === 3 && 'lg:grid-cols-3',
-        columnCount === 2 && 'lg:grid-cols-2',
+        columnCount >= 4 && '@min-[1024px]/page:grid-cols-4',
+        columnCount === 3 && '@min-[1024px]/page:grid-cols-3',
+        columnCount === 2 && '@min-[1024px]/page:grid-cols-2',
         className
       )}
     >

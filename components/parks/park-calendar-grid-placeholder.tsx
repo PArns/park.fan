@@ -23,6 +23,10 @@ import { Skeleton } from '@/components/ui/skeleton';
  * `--cal-grid-h*` custom properties `ParkCalendarPanel` sets on the wrapper, so all three states
  * — chunk pending, data pending, drawn — agree to within the content variance documented in
  * `calendar-grid-geometry.ts`.
+ *
+ * The two steps ask the window rather than `@container/page`, because what they measure is the
+ * layout <ParkCalendarGrid> picks — and that pick is a `matchMedia` in JS, which the container
+ * query cannot reach. The reservation follows the grid; it does not get to disagree with it.
  */
 export function ParkCalendarGridPlaceholder() {
   return (

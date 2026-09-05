@@ -18,8 +18,23 @@
  * upper edge is `H - 64`, which clears by `(H - 944) / 2`. 980 is what buys ~18 px of it and
  * still catches the 14-inch laptop at 1512x982; at 900 the plate fills the section and the pill
  * lands on the nearby-park bubbles.
+ *
+ * The WIDTH half asks `@container/page` (app/[locale]/layout.tsx) and the HEIGHT half stays a
+ * media query, because the two questions have different subjects: the pill and the caption share
+ * a line inside the hero section, whose width the trip planner takes from — while the height they
+ * clear in is the window's, which no panel changes. Measured with a 900 px panel on a 2000 px
+ * window: the media query still matched, so the pill went absolute and centred over a 1100 px
+ * section at x=301.3..798.6 while the caption sat at x=762.5..1084 — 36.1 px of the German pill
+ * under the image credit, on the same baseline. At 1100 px as a window the pill stays in flow and
+ * they never meet. Nesting is what expresses "both": Tailwind's block form wraps `@slot` in each.
  */
-@variant hero-bottom-line (@media (min-width: 1440px) and (min-height: 980px));
+@variant hero-bottom-line {
+  @container page (min-width: 1440px) {
+    @media (min-height: 980px) {
+      @slot;
+    }
+  }
+}
 
 @theme inline {
   --color-background: var(--background);

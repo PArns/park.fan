@@ -174,7 +174,7 @@ export function GlossaryTermDetail({
         /* ── Player layout: the 3-D player sits full-bleed on top of one
               cohesive card, with the title + definition below it; related
               terms go in the sidebar. ── */
-        <div className="grid gap-5 lg:grid-cols-[1fr_260px]">
+        <div className="grid gap-5 @min-[1024px]/page:grid-cols-[1fr_260px]">
           <div className="flex flex-col gap-4">
             <Card className="border-primary/20 gap-0 overflow-hidden py-0 shadow-md">
               <CoasterPlayer
@@ -194,7 +194,7 @@ export function GlossaryTermDetail({
         </div>
       ) : (
         /* ── Default layout: combined header + definition card with sidebar ── */
-        <div className="grid gap-5 lg:grid-cols-[1fr_260px]">
+        <div className="grid gap-5 @min-[1024px]/page:grid-cols-[1fr_260px]">
           <div className="flex flex-col gap-4">
             <Card className="border-primary/20 gap-0 py-0 shadow-md">
               <div className="px-6 pt-5 pb-4">{headerBlock}</div>

@@ -28,10 +28,14 @@ export function HeroTextPanel({ children, className, ...rest }: React.ComponentP
       className={cn(
         // min-w-0: the scrollable pill row inside must not widen this box past its grid column.
         'w-full min-w-0 rounded-3xl border p-6 shadow-xl sm:p-8',
-        // Below xl there is no map panel beside it, so the plate would otherwise sit narrow and
-        // left-aligned against a wide empty half. It gets more width AND centres itself there;
-        // from xl it goes back to hugging the left column next to the map.
-        'mx-auto max-w-3xl xl:mx-0 xl:max-w-2xl',
+        // Below 1280 px there is no map panel beside it, so the plate would otherwise sit narrow
+        // and left-aligned against a wide empty half. It gets more width AND centres itself
+        // there; from 1280 it goes back to hugging the left column next to the map.
+        // The threshold is `@container/page` (app/[locale]/layout.tsx) and not `xl:`, because it
+        // has to agree with the grid that puts the map beside it: with the planner open the
+        // window said 2000 and the page had 1100, so the plate took the two-column branch
+        // (`max-w-2xl`, left-aligned) in a single-column grid and came out 356 px wide.
+        'mx-auto max-w-3xl @min-[1280px]/page:mx-0 @min-[1280px]/page:max-w-2xl',
         // While the search field has focus its dropdown covers the nearby pills. Fading them
         // out is what lets that dropdown be real glass: through 75% translucency the pills'
         // high-contrast text ghosts straight through the blur, and the only alternative was to

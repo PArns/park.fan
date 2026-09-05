@@ -353,8 +353,8 @@ export function useParkTileItems({
       : []),
   ];
 
-  // Counted, never written down: three of the six cells are optional, and at a fixed
-  // `lg:grid-cols-6` a park without shows or restaurants leaves two empty tracks in the row.
+  // Counted, never written down: three of the six cells are optional, and at a fixed six-column
+  // track set a park without shows or restaurants leaves two empty tracks in the row.
   return { items, tileCount: items.length };
 }
 
@@ -393,10 +393,10 @@ export function ParkTileGrid({
         // the panel's own column band does one row up. No `gap`: the cells touch and the rules
         // between them are the separation.
         '-mr-px -mb-px grid w-full auto-rows-fr grid-cols-2 items-stretch sm:grid-cols-3',
-        tileCount === 6 && 'lg:grid-cols-6',
-        tileCount === 5 && 'lg:grid-cols-5',
-        tileCount === 4 && 'lg:grid-cols-4',
-        tileCount === 3 && 'lg:grid-cols-3'
+        tileCount === 6 && '@min-[1024px]/page:grid-cols-6',
+        tileCount === 5 && '@min-[1024px]/page:grid-cols-5',
+        tileCount === 4 && '@min-[1024px]/page:grid-cols-4',
+        tileCount === 3 && '@min-[1024px]/page:grid-cols-3'
       )}
     >
       {children}

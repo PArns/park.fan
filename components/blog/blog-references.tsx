@@ -103,7 +103,7 @@ export async function BlogReferences({ post }: BlogReferencesProps) {
               {t('references.parks', { count: parks.length })}
             </h2>
           </div>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-5 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
             {parks.map((park) => (
               <div
                 key={park.slug}
@@ -142,7 +142,7 @@ export async function BlogReferences({ post }: BlogReferencesProps) {
               {t('references.attractions', { count: attractions.length })}
             </h2>
           </div>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-5 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
             {attractions.map(({ park, attraction }) => (
               <div
                 key={`${park.slug}/${attraction.attractionSlug}`}

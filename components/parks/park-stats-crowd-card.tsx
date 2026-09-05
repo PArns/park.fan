@@ -82,7 +82,7 @@ export function ParkStatsCrowdCard({
               </span>
               {labelDays && row.days != null && (
                 <span
-                  className="text-muted-foreground/50 hidden text-xs tabular-nums md:inline"
+                  className="text-muted-foreground/50 hidden text-xs tabular-nums @min-[768px]/page:inline"
                   title={`${row.days}`}
                 >
                   {row.days}&nbsp;{labelDays}

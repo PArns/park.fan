@@ -4440,8 +4440,7 @@ if (reachable) {
   // A fact about the pointer, not about the plan: the primary column IS the
   // plan's active day, so a click that moved THAT would put the same day in both
   // halves. What hangs on the focus is the marker and the park the page behind
-  // the panel shows — and this run is on `/de`, which is not a park page, so
-  // here it may only move the marker.
+  // the panel shows.
   const activeColumn = () =>
     cols.evaluate(
       () =>
@@ -4455,14 +4454,13 @@ if (reachable) {
     firstActive === `${PARK.slug}:${DATE}`,
     String(firstActive)
   );
-  const urlBeforeFocus = cols.url();
   await cols
     .locator(`${SHEET} [data-planner-column]`)
     .nth(1)
     .locator('[data-planner-grid]')
     .first()
     .click({ position: { x: 30, y: 30 } });
-  await cols.waitForTimeout(600);
+  await cols.waitForTimeout(1500);
   const secondActive = await activeColumn();
   check(
     'ein Klick in die zweite macht sie zur aktiven',
@@ -4473,10 +4471,23 @@ if (reachable) {
     'genau eine trägt die Markierung',
     (await cols.locator(`${SHEET} [data-planner-column-active]`).count()) === 1
   );
+  // …and the page follows. This said the opposite until it was reported from
+  // the homepage: the navigation was gated on `plannerPagePark`, which is
+  // `null` on every route that is not park-scoped, so on `/de` the click moved
+  // the marker and nothing else. That gate asked the wrong question — the
+  // columns are the subject and the page is where rides are dragged out of, and
+  // a panel about Phantasialand in front of the homepage is a drag gesture with
+  // no valid target just as it would be in front of Toverland's page. Both
+  // columns here are the SAME park on two dates, so one navigation settles it
+  // and a second click is the no-op below.
   check(
-    'ohne Parkseite dahinter wird nirgendwohin navigiert',
-    cols.url() === urlBeforeFocus,
+    'und die Seite dahinter folgt dem Park der Spalte',
+    cols.url().includes(`/${PARK.geo.city}/${PARK.slug}`),
     cols.url()
+  );
+  check(
+    'das Panel überlebt die Navigation',
+    (await cols.locator(`${SHEET} [data-planner-column]`).count()) === 2
   );
   // Back, so the assertions below find the arrangement they were written for.
   await cols

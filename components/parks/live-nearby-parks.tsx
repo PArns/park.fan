@@ -38,7 +38,7 @@ export function LiveNearbyParks({
   const { liveByParkId } = useParkNeighbors(lat, lng, parkId);
 
   return (
-    <ul className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <ul className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
       {parks.map((park) => {
         const live = liveByParkId?.[park.id];
         return (
