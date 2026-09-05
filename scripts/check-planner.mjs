@@ -685,6 +685,21 @@ if (await reopen.count()) {
           rowText.trim()
         );
 
+        // The park's own best-days snapshot, which is where the zone below comes
+        // from — registered BEFORE the click that starts it. The wizard reads
+        // `facts.timezone` when it finishes, so a fixed sleep asserts nothing
+        // about the zone and everything about how warm the backend's cache is:
+        // a run made while the snapshot was being recomputed took longer than
+        // the three seconds of sleeps between here and the finish, and reported
+        // a zone that was simply not there yet.
+        const snapshot = page
+          .waitForResponse(
+            (response) =>
+              /attractiepark-toverland\/best-days/.test(response.url()) && response.ok(),
+            { timeout: 30_000 }
+          )
+          .then(() => true)
+          .catch(() => false);
         await hit.first().click();
         await page.waitForTimeout(2500);
 
@@ -721,6 +736,13 @@ if (await reopen.count()) {
           await page.waitForTimeout(400);
           await wizard.locator('[data-planner-wizard-next]').click();
           await page.waitForTimeout(400);
+          // See `snapshot` above: the zone has to have ARRIVED before the wizard
+          // writes the park into the plan, and waiting for it is the assertion.
+          check('der Assistent hat die Tagesdaten des Parks', await snapshot);
+          // A response is not yet a render: the zone travels through React
+          // Query's cache into the wizard's own state, and the finish reads that
+          // state rather than the network.
+          await page.waitForTimeout(300);
           await wizard.locator('[data-planner-wizard-finish]').click();
           // Waited FOR rather than slept through: the wizard ends on the park's
           // own page, and under `next dev` that route is compiled on first
@@ -4107,7 +4129,30 @@ if (reachable) {
     (await opt.locator(`${SHEET} [data-planner-optimize-undo]`).count()) === 0
   );
 
-  // The headliner button: it adds, and then it has nothing left to add.
+  // The park's own gate, out of the payload the panel plans against. Read
+  // rather than written down: this park shuts at 18:00 today and the assertion
+  // below is about the RULE, not about that number, so a hard-coded 1140 would
+  // stop testing anything the season the hours move.
+  const context = await fetch(
+    `${BASE}/api/parks/europe/germany/bruehl/phantasialand/plan/day?date=${DATE}`
+  )
+    .then((response) => (response.ok ? response.json() : null))
+    .catch(() => null);
+  // `buildDayGrid`'s own arithmetic: `closeHour` is INCLUSIVE, so the axis ends
+  // an hour past it. Everything from here on is the hatched part of the day.
+  const closeMinute =
+    typeof context?.context?.closeHour === 'number' ? (context.context.closeHour + 1) * 60 : null;
+  check('die Öffnungszeiten des Parks sind bekannt', closeMinute !== null, `${closeMinute}`);
+
+  /** Every ride block's start, as the store holds it. The lunch break is not one. */
+  const startsOf = (stored) =>
+    stored
+      .split(' | ')
+      .filter((cell) => !cell.startsWith('Mittag@'))
+      .map((cell) => Number(cell.split('@')[1]));
+
+  // The headliner button: it adds what the day has room for, and never a ride
+  // past the gate.
   await seedOptimize();
   const rideCountBefore = (await readDay()).split(' | ').length;
   await opt.locator(`${SHEET} [data-planner-optimize-headliners]`).click();
@@ -4118,9 +4163,53 @@ if (reachable) {
     withHeadliners.split(' | ').length > rideCountBefore,
     `${rideCountBefore} → ${withHeadliners.split(' | ').length}`
   );
+  // The bug this replaced an assertion for, and both halves of it. "Plan every
+  // headliner" filed what did not fit BEYOND closing: Black Mamba at 19:00 and
+  // Taron at 20:00 in a park that shuts at 18:00 — and those two were the rides
+  // the day already held, because overflow was a plain count and the coin toss
+  // went against the visitor's own plan. Now an entry keeps its slot and a ride
+  // being ADDED that has nowhere to go is left out instead, so nothing at all
+  // lands out there.
   check(
-    'und der Knopf verschwindet, wenn keiner mehr fehlt',
-    (await opt.locator(`${SHEET} [data-planner-optimize-headliners]`).count()) === 0
+    'kein Block liegt nach Feierabend',
+    closeMinute !== null && startsOf(withHeadliners).every((minute) => minute < closeMinute),
+    `${JSON.stringify(startsOf(withHeadliners))} gegen ${closeMinute}`
+  );
+  // Specifically: the two the day was seeded with are still in it, and still
+  // inside the park's hours. They are the two the screenshot showed out there.
+  check(
+    'die beiden gesetzten Bahnen stehen noch im Tag',
+    /black-mamba@(\d+)/.test(withHeadliners) &&
+      /taron@(\d+)/.test(withHeadliners) &&
+      Number(withHeadliners.match(/black-mamba@(\d+)/)[1]) < closeMinute &&
+      Number(withHeadliners.match(/taron@(\d+)/)[1]) < closeMinute,
+    withHeadliners
+  );
+  // So the button does NOT have to be gone: ten headliners do not fit in a
+  // nine-hour day, and the one left over is a real offer — delete a ride and it
+  // goes in. What must be true either way is that nothing the day had room for
+  // is still missing, and the press that proves it is the second one: it adds
+  // nothing, because there is nothing left it can add.
+  const stillOffered = await opt.locator(`${SHEET} [data-planner-optimize-headliners]`).count();
+  if (stillOffered) {
+    await opt.locator(`${SHEET} [data-planner-optimize-headliners]`).click();
+    await opt.waitForTimeout(1500);
+  }
+  const twiceHeadliners = await readDay();
+  check(
+    'ein zweiter Druck plant keinen Headliner mehr ein',
+    twiceHeadliners.split(' | ').length === withHeadliners.split(' | ').length,
+    `${withHeadliners.split(' | ').length} → ${twiceHeadliners.split(' | ').length}`
+  );
+  // And it says so rather than claiming the day is finished: "Passt schon so" is
+  // the answer to "there was nothing to do", and a headliner that cannot fit is
+  // not nothing.
+  const leftOver =
+    (await opt.locator(`${SHEET} [data-planner-optimize-result]`).textContent()) ?? '';
+  check(
+    'und die Leiste nennt die, für die kein Platz ist',
+    !stillOffered || /nicht mehr in den Tag/i.test(leftOver),
+    leftOver.slice(0, 80)
   );
   check(
     'die Mittagspause hat auch das überlebt',

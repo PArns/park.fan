@@ -13,6 +13,7 @@ import {
   scoreCurrent,
 } from '@/lib/planner/optimize';
 import { trackPlanOptimized } from '@/lib/analytics/umami';
+import { parkMinuteNow, parkToday, resolveTimeZone } from '@/lib/planner/park-time';
 import type { DayGrid } from '@/lib/planner/day-grid';
 import type { PlanDay } from '@/lib/api/types';
 import type { PlannerDayPrefs, PlannerEntry, PlannerGeo } from '@/lib/planner/types';
@@ -63,6 +64,13 @@ interface PlannerOptimizeActionsProps {
  * the headliner button is gone once they are all in, like the band above it. It
  * is NOT gone where exactly one headliner is missing, which the engine used to
  * refuse to plan — the button was there, and pressing it did nothing.
+ *
+ * **And it stays where a headliner simply does not fit**, which is not the same
+ * fault. Phantasialand has ten of them and a nine-hour day, so the last one has
+ * nowhere to go; the optimiser leaves it out rather than drawing it in the
+ * closed hours, and `optimize.overflow` says so under the button every time it
+ * is pressed. That is a standing offer rather than a dead control — delete a
+ * ride and it goes in — and the sentence is what keeps it from reading as one.
  */
 export function PlannerOptimizeActions({
   parkSlug,
@@ -121,7 +129,26 @@ export function PlannerOptimizeActions({
   const shownUndo = undoTo?.parkSlug === parkSlug && undoTo?.date === date ? undoTo : null;
 
   const run = (add: typeof missing) => {
-    const input = { day, grid, entries, add };
+    /**
+     * The clock, and only for a day that is TODAY.
+     *
+     * Reported from a park page at 09:43: pressing "optimise" came back with a
+     * ride at 10:00 and the one before it at 09:15 — a queue the visitor cannot
+     * join, because the morning has already happened. `optimizeDay` had no
+     * clock; it has one now, and it raises every candidate's floor.
+     *
+     * Read HERE rather than inside the optimiser, which is pure: the tests set
+     * this by argument, which is what makes "at 09:43 nothing lands before
+     * 09:45" an assertion instead of something that passes until midnight.
+     *
+     * Deliberately NOT handed to `scoreCurrent`. That one scores the day where
+     * the blocks actually are, so it can say whether the new plan is an
+     * improvement; a floor would be a claim about where they should be, which
+     * is the other function's job.
+     */
+    const zone = resolveTimeZone(timezone);
+    const nowMinute = date === parkToday(zone) ? parkMinuteNow(zone) : null;
+    const input = { day, grid, entries, add, nowMinute };
     const before = scoreCurrent({ day, grid, entries });
     const plan = optimizeDay(input);
 

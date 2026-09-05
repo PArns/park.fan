@@ -747,9 +747,16 @@ function idleOfPlan(payload, stops) {
   const found = optimizeDay({ day: payload, grid: grid(payload), entries, add });
 
   const added = found.stops.filter((s) => s.entryId === null).length;
+  const homeless = found.stops.filter((s) => !s.fits);
+  // MAX_STOPS is the CEILING, not the count. Twenty-four candidates reach the
+  // search — twenty entries plus four of the eight headliners — and two of
+  // those four then find no minute before closing, so they are not added at
+  // all: a ride the optimiser was ADDING is never filed past the gate, because
+  // "plan every headliner" drew Black Mamba at 19:00 and Taron at 20:00 in a
+  // park that shuts at 18:00. That leaves 22.
   check(
-    'mehr Stopps als das Budget: der Plan bleibt bei MAX_STOPS',
-    found.stops.length === MAX_STOPS,
+    'mehr Stopps als das Budget: der Plan bleibt darunter',
+    found.stops.length === 22 && found.stops.length <= MAX_STOPS,
     String(found.stops.length)
   );
   check(
@@ -757,11 +764,24 @@ function idleOfPlan(payload, stops) {
     found.stops.length - added === entries.length,
     `${found.stops.length - added} von ${entries.length}`
   );
-  // What the bar prints is `added`, so the two have to be the same number.
+  // The tier order, on a day where two rides cannot fit whatever is done. Both
+  // of them are entries the visitor already had, and that is not a failure of
+  // the rule but the rule's own arithmetic: twenty of those do not fit either,
+  // so the plan minimises THEM first and then adds only the headliners the
+  // remaining minutes hold. What must never happen is the other shape — two
+  // added headliners in the hatched hours while two planned rides make room for
+  // them — which is exactly what the screenshot showed.
+  check(
+    'kein hinzugefügter Headliner landet hinter dem Tor',
+    added === 2 && homeless.every((s) => s.entryId !== null),
+    `ergänzt ${added}, davon ohne Platz ${homeless.filter((s) => s.entryId === null).length}`
+  );
+  // What is left over is still reported rather than swallowed: four never
+  // reached the search at all, and `overflow` counts what did not fit once there.
   check(
     'und die Kappung wird gemeldet statt verschwiegen',
-    found.capped === add.length - added && found.capped === 4,
-    `ergänzt ${added} von ${add.length}, gekappt ${found.capped}`
+    found.capped === 4 && found.overflow === 2,
+    `gekappt ${found.capped}, passt nicht ${found.overflow}`
   );
 
   // The other half of the same bug: the before-figure covers every entry and the
@@ -784,6 +804,132 @@ function idleOfPlan(payload, stops) {
       flatPlan.stops.filter((s) => s.entryId !== null).length !== flatEntries.length &&
       flatBefore.totalWaitMinutes - flatPlan.totalWaitMinutes === 90,
     `gekappt ${flatPlan.capped}, Differenz ${flatBefore.totalWaitMinutes - flatPlan.totalWaitMinutes} Min. über ${flatPlan.stops.length} statt ${flatEntries.length} Bahnen`
+  );
+}
+
+// ── 12b. The clock, for a day that is today ────────────────────────────────
+// Reported from a park page at 09:43: the day was sorted and came back with a
+// ride at 10:00 and the one before it at 09:15 — a queue nobody can join, since
+// the visitor is standing in the park with the morning already gone. The
+// optimiser had no clock at all; `nowMinute` is one, and only for TODAY.
+{
+  const rides = [
+    ride('a', flat(10), { land: 'X', lat: 50.8 }),
+    ride('b', flat(10), { land: 'X', lat: 50.8005 }),
+    ride('c', flat(10), { land: 'X', lat: 50.801 }),
+  ];
+  const payload = day(rides);
+  // Spread across the day with two holes in it, so there is something to tidy:
+  // a day that is already compact comes back `null` and would prove nothing
+  // about where the clock puts the first block.
+  const entries = [
+    entry('a-1', 'a', 9 * 60),
+    entry('b-1', 'b', 13 * 60),
+    entry('c-1', 'c', 16 * 60),
+  ];
+  const base = { day: payload, grid: grid(payload), entries };
+
+  const withoutClock = optimizeDay(base);
+  const withClock = optimizeDay({ ...base, nowMinute: 9 * 60 + 43 });
+
+  check(
+    'ohne heutigen Tag plant der Optimierer wie bisher in den Morgen',
+    withoutClock !== null &&
+      Math.min(...withoutClock.stops.map((s) => s.startMinute)) < 9 * 60 + 43,
+    JSON.stringify(withoutClock?.stops.map((s) => s.startMinute))
+  );
+  check(
+    'mit Uhrzeit liegt kein Stopp vor jetzt',
+    withClock !== null && withClock.stops.every((s) => s.startMinute >= 9 * 60 + 43),
+    JSON.stringify(withClock?.stops.map((s) => s.startMinute))
+  );
+  // Snapped UP to the grid's step: every start in this app sits on a quarter
+  // hour, so 09:43 becomes 09:45 rather than seeding a front 15 minutes apart
+  // from an off-grid minute.
+  check(
+    'und der früheste sitzt auf dem Viertelstundenraster',
+    withClock !== null && Math.min(...withClock.stops.map((s) => s.startMinute)) === 9 * 60 + 45,
+    JSON.stringify(withClock?.stops.map((s) => s.startMinute))
+  );
+  // A clock past closing produces placements that do not fit rather than a
+  // crash or an empty plan — not fitting is a thing this plan can say.
+  const afterClose = optimizeDay({ ...base, nowMinute: 23 * 60 });
+  check(
+    'eine Uhrzeit nach Feierabend liefert einen Plan, der nicht passt',
+    afterClose === null || afterClose.overflow === afterClose.stops.length,
+    afterClose ? `${afterClose.overflow} von ${afterClose.stops.length}` : 'null'
+  );
+}
+
+// ── 12c. Added rides never land in the closed hours ────────────────────────
+// The asymmetry is the point: an entry the visitor already has keeps its
+// overflow block, because deleting somebody's own plan behind their back is
+// worse than a hatched block that says "this does not fit". A ride the button
+// is ADDING has no such claim on the day and is simply not added.
+{
+  const rides = [
+    ride('own', flat(30), { land: 'X', lat: 50.8 }),
+    ride('head', flat(200), { land: 'X', lat: 50.9, headliner: true }),
+  ];
+  const payload = day(rides, { openHour: 9, closeHour: 10 });
+  const entries = [entry('own-1', 'own', 9 * 60 + 30)];
+  const add = headlinersToAdd(payload, entries, undefined);
+  const found = optimizeDay({ day: payload, grid: grid(payload), entries, add });
+
+  check(
+    'eine hinzugefügte Bahn, die nicht mehr passt, wird nicht eingeplant',
+    found !== null && found.stops.every((s) => s.entryId !== null),
+    JSON.stringify(found?.stops.map((s) => [s.attractionSlug, s.entryId, s.fits]))
+  );
+  check(
+    'sie wird aber gezählt, damit die Leiste die Wahrheit sagt',
+    found !== null && found.overflow >= 1,
+    String(found?.overflow)
+  );
+}
+
+// ── 12d. Adding headliners must not evict what was already planned ─────────
+// The reported shape, with a screenshot: a day holding Black Mamba and Taron,
+// "plan every headliner" pressed, and the two rides that came back in the
+// hatched hours past 19:00 and 20:00 were those two. Ten headliners do not fit
+// in a nine-hour day, every plan was scored on a plain COUNT of what did not
+// fit, and the coin toss went against the plan the visitor had already made.
+// The first tier of `OVERFLOW_STRIDE` is what decides it now.
+{
+  const rides = [
+    ride('own-a', flat(60), { land: 'X', lat: 50.8, headliner: true }),
+    ride('own-b', flat(60), { land: 'X', lat: 50.8005, headliner: true }),
+    ride('add-a', flat(60), { land: 'X', lat: 50.801, headliner: true }),
+    ride('add-b', flat(60), { land: 'X', lat: 50.8015, headliner: true }),
+    ride('add-c', flat(60), { land: 'X', lat: 50.802, headliner: true }),
+  ];
+  const payload = day(rides, { openHour: 9, closeHour: 12 });
+  const entries = [entry('own-a-1', 'own-a', 9 * 60), entry('own-b-1', 'own-b', 11 * 60)];
+  const add = headlinersToAdd(payload, entries, undefined);
+  const found = optimizeDay({ day: payload, grid: grid(payload), entries, add });
+  const shape = JSON.stringify(found?.stops.map((s) => [s.attractionSlug, s.startMinute, s.fits]));
+
+  // The premise: three headliners are offered and the day cannot hold five
+  // hour-long queues, so somebody has to lose. Asserted, because a day that
+  // happened to fit everything would make the two checks below pass for the
+  // wrong reason.
+  check('drei Headliner stehen zum Ergänzen an', add.length === 3, String(add.length));
+  check(
+    'der Tag ist zu kurz für alle fünf',
+    found !== null && found.stops.length < rides.length,
+    `${found?.stops.length} von ${rides.length}`
+  );
+
+  const kept = found?.stops.filter((s) => s.entryId !== null) ?? [];
+  check(
+    'die eigenen Bahnen behalten ihren Platz im Tag',
+    kept.length === entries.length && kept.every((s) => s.fits),
+    shape
+  );
+  check(
+    'und was nicht mehr passt, wird gar nicht erst ergänzt',
+    found !== null && found.stops.every((s) => s.fits),
+    shape
   );
 }
 
