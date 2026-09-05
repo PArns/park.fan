@@ -93,11 +93,12 @@
     "game:shot": "node scripts/game-shot.mjs",
     "game:soak": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/game-soak.mjs",
     "game:assets": "node scripts/fetch-game-assets.mjs",
-    "test:game": "pnpm test:game-save-roundtrip && pnpm test:game-registry && pnpm test:game-lint && pnpm test:game-i18n",
+    "test:game": "pnpm test:game-save-roundtrip && pnpm test:game-registry && pnpm test:game-lint && pnpm test:game-i18n && pnpm test:game-soak",
     "test:game-save-roundtrip": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-game-save-roundtrip.mjs",
     "test:game-registry": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-game-registry.mjs",
     "test:game-lint": "node scripts/test-game-lint.mjs",
     "test:game-i18n": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-game-i18n.mjs",
+    "test:game-soak": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/game-soak.mjs",
     "test:stats-fetchers": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-stats-fetchers.mjs"
   },
   "dependencies": {

@@ -48,9 +48,11 @@ cannot come from a kit — a kit asset can never match a spline.
 
 ## Ledger
 
-| File | Source | Author | Licence | SHA-256 | Used by |
-| --- | --- | --- | --- | --- | --- |
-| _(populated by `pnpm fetch:game-assets` — the script writes this table back into this file so it cannot drift from what is on disk)_ | | | | | |
+| File | Source | Author | Licence | SHA-256 | Used by | State |
+| --- | --- | --- | --- | --- | --- | --- |
+| `polyhaven/hdri/day-clear-1k.hdr` | Poly Haven | Greg Zaal / Jarod Guest | CC0-1.0 | `de7ba9d0b070470d…` | environment (IBL, day) | on disk |
+| `polyhaven/hdri/dusk-1k.hdr` | Poly Haven | Greg Zaal | CC0-1.0 | `92fe2b29b1957828…` | environment (IBL, golden hour) | on disk |
+| `polyhaven/hdri/night-1k.hdr` | Poly Haven | Greg Zaal | CC0-1.0 | `6861489f983cdc0c…` | environment (IBL, night) | on disk |
 
 ## Audio
 
