@@ -141,10 +141,17 @@ export function PlannerEdgeTab({
           // the one control that opens the feature, and a glass tab over a park
           // photo read as another panel edge rather than as a way in.
           //
-          // `pr-2.5` is clearance, not padding taste: the tab sits at `right: 0`
+          // The WIDTH is the sum of the two paddings and the widest child, and
+          // it was 36.6 px because the count badge — a padded pill at 18.6 px —
+          // was wider than both the icon (16) and the rotated word (15). That
+          // is a permanent strip down the right edge of every page, so the badge
+          // is a circle the size of the icon now and the icon is the floor.
+          //
+          // `pr-2` is clearance, not padding taste: the tab sits at `right: 0`
           // when the panel is closed, which is where the page's own scrollbar
-          // is, and at `pr-1` the word ran under it.
-          'bg-primary text-primary-foreground ring-primary-foreground/25 pointer-events-auto flex flex-col items-center gap-2 rounded-l-xl py-4 pr-2.5 pl-2 shadow-lg ring-1',
+          // is, and at `pr-1` the word ran under it. The left has no scrollbar
+          // to clear and gives its 2 px. 6 + 16 + 8 = 30 px, measured.
+          'bg-primary text-primary-foreground ring-primary-foreground/25 pointer-events-auto flex flex-col items-center gap-2 rounded-l-xl py-4 pr-2 pl-1.5 shadow-lg ring-1',
           // A tier below `sm`, because this tab is drawn on EVERY page and on a
           // phone it is a permanent strip down the right edge: 34 × 130 px in
           // German, 136 in French, against a 390 px screen. Everything here is
@@ -152,7 +159,7 @@ export function PlannerEdgeTab({
           // a tab that still says what it is. It is deliberately not reduced to
           // the icon alone, which would halve it again and turn the one control
           // that opens the feature into a glyph nobody has seen before.
-          'max-sm:gap-1 max-sm:py-2.5 max-sm:pr-2 max-sm:pl-1.5',
+          'max-sm:gap-1 max-sm:py-2.5 max-sm:pr-1.5 max-sm:pl-1',
           'supports-[backdrop-filter]:bg-primary/90 backdrop-blur-md',
           'hover:bg-primary/95 transition-colors',
           open ? 'cursor-col-resize touch-none' : 'cursor-pointer'
@@ -170,7 +177,13 @@ export function PlannerEdgeTab({
         {/* No badge at zero: opened from the calendar there is nothing planned
             yet, and a "0" beside the label reads as a count that failed. */}
         {total > 0 && (
-          <span className="bg-primary-foreground/20 rounded-full px-1.5 py-0.5 font-mono text-[11px] tabular-nums max-sm:px-1 max-sm:text-[10px]">
+          /* A circle the size of the icon rather than a padded pill, because this
+             is what the tab's width was: at `px-1.5` it measured 18.6 px and set
+             the box for the icon (16) and the word (15) both. `min-w-*` rather
+             than a fixed size, so a three-digit total still gets its room — one
+             and two digits, which is every plan anybody has, fit the circle with
+             none to spare and cost nothing. */
+          <span className="bg-primary-foreground/20 flex min-w-4 items-center justify-center rounded-full px-0.5 py-0.5 font-mono text-[10px] tabular-nums max-sm:min-w-3.5 max-sm:text-[9px]">
             {total}
           </span>
         )}
