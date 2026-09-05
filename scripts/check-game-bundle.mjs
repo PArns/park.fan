@@ -23,13 +23,19 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const next = path.join(root, '.next');
 const args = Object.fromEntries(
   process.argv.slice(2).map((a) => {
     const m = /^--([^=]+)=(.*)$/.exec(a);
     return m ? [m[1], m[2]] : [a.replace(/^--/, ''), '1'];
   })
 );
+/**
+ * Which build to measure. It defaults to this checkout's, and it is overridable because the
+ * "before" half of the comparison is a build of a DIFFERENT tree (a worktree at main) — and
+ * without this the script resolved `.next` from its own file's location and cheerfully measured
+ * this tree twice, printing two identical numbers that looked like a proof.
+ */
+const next = path.resolve(args.next ? args.next : path.join(root, '.next'));
 
 /**
  * Markers, not the package name.
@@ -44,7 +50,7 @@ let manifest;
 try {
   manifest = JSON.parse(await readFile(path.join(next, 'build-manifest.json'), 'utf8'));
 } catch {
-  console.error('No .next/build-manifest.json — run `pnpm build` first.');
+  console.error(`No build-manifest.json under ${next} — run \`pnpm build\` there first.`);
   process.exit(1);
 }
 
@@ -116,14 +122,19 @@ const report = {
 };
 
 const fmt = (n) => `${(n / 1024).toFixed(1)} KB`;
+console.log(`measuring ${next}`);
 console.log(`shared bundle (rootMainFiles): ${shared.length} chunks, ${fmt(sharedBytes)}`);
 console.log(`all chunks:                    ${allChunks.length} chunks, ${fmt(totalBytes)}`);
 console.log(`chunks carrying Babylon:       ${babylonChunks.length}, ${fmt(babylonBytes)}`);
 
 let ok = true;
-if (babylonChunks.length === 0) {
+if (babylonChunks.length === 0 && !args['baseline-build']) {
   console.error('✗ Babylon is not in the build at all — this check would pass for the wrong reason.');
   ok = false;
+} else if (babylonChunks.length === 0) {
+  // `--baseline-build` is the "before" half of the comparison: a tree with no game in it, where
+  // finding no Babylon is the expected answer rather than a broken guard.
+  console.log('· baseline build: no Babylon, as expected');
 } else {
   console.log('✓ Babylon is in the build (so the next assertion means something)');
 }
@@ -142,7 +153,8 @@ if (report.baseline) {
   );
 }
 
-await mkdir(path.join(root, '.game-render'), { recursive: true });
-await writeFile(path.join(root, '.game-render', 'bundle.json'), JSON.stringify(report, null, 2));
-console.log('  → .game-render/bundle.json');
+const outFile = path.join(root, '.game-render', args.out ?? 'bundle.json');
+await mkdir(path.dirname(outFile), { recursive: true });
+await writeFile(outFile, JSON.stringify({ ...report, measured: next }, null, 2));
+console.log(`  → ${path.relative(root, outFile)}`);
 process.exit(ok ? 0 : 1);
