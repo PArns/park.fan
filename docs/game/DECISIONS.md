@@ -1,102 +1,24 @@
-# Decisions
+# park.fan Coaster — Decisions
 
-Routine calls made without asking, each with the reason and what would reverse it.
+Routine decisions taken without asking, with the assumption behind each. Newest at the bottom.
+A decision is reversible by editing the code it names; it is written down so the next session does
+not re-litigate it.
 
----
-
-**D-001 — Feature root is `app/game/_game/**`, not `src/features/park-coaster/**`.**
-The repo has no `src/` and no `features/`. It *does* have `app/admin/_app|_lib|_ui`: a top-level
-non-localized route that keeps its private code beside itself in underscore folders Next will not
-route. `_game/` is that convention with one folder per subsystem. Blast radius ends up smaller than
-the brief's own suggestion, because the feature folder and the route folder are one tree.
-*Reversed by:* the repo growing a real `features/` convention.
-
-**D-002 — `/game` sits outside `app/[locale]`, with its own `<html>`.**
-Same reason `app/admin` does. Localizing it would pull in `RouteMessages`, a generated
-namespace-map entry and a `check:client-messages` failure mode, for a surface that ships in one
-language on day one. HUD strings live in `_game/ui/strings.ts` as a typed record keyed by locale,
-so becoming a next-intl namespace later is a mechanical change, not a rewrite.
-*Reversed by:* the game shipping in six languages.
-
-**D-003 — One token added to `proxy.ts`'s matcher.**
-`game` joins `api|admin|dev|_next|_vercel` in the negative lookahead. Without it next-intl redirects
-`/game` to `/en/game`, which does not exist. This is the additive entry the brief allows and the
-same one `admin` already has.
-
-**D-004 — No Havok.**
-The brief names Havok only as a chunk-isolation constraint. Coaster motion is an energy integration
-along an arclength-parameterized spline — a rigid-body solver would fight that, not help it — and
-guests navigate a path graph, not a physics world. A ~1.5 MB WASM download for props that never
-tumble is cost with no customer. *Reversed by:* crash debris, ragdolls, or free-standing physics
-props becoming a feature. The chunk-isolation rule still applies to anything we add.
-
-**D-005 — Babylon.js 9.25.0, pinned exact, four packages.**
-`@babylonjs/core`, `/materials`, `/loaders`, `/gui`. Exact rather than caret because a renderer's
-patch releases move shader code, and a screenshot-graded feature that silently re-renders on a
-`pnpm install` is a debugging session nobody budgeted. `/gui` is used **only** for world-space
-labels and 3D gizmos, per the brief; every panel is React + Tailwind.
-
-**D-006 — three.js stays where it is.**
-The glossary coaster player and the park hero scene ship on three.js 0.184 and are out of scope.
-The two engines never load on the same route — both are behind `next/dynamic({ ssr: false })` on
-disjoint routes — so neither reaches a shared chunk. Rewriting a working, screenshot-verified
-feature to unify engines is a change with real risk and no user-visible benefit.
-
-**D-007 — The worker owns the world; the main thread owns a read-only view.**
-The alternative (shared state via `SharedArrayBuffer`) needs COOP/COEP headers site-wide, which
-would change the caching and embedding behaviour of every other park.fan route. Transferable
-snapshot buffers cost one copy per tick — measured against the 6 ms budget — and cost the rest of
-the site nothing.
-
-**D-008 — Snapshots are `f32`, the sim is `f64`.**
-Halves the transfer and is below the visible threshold at park scale. The sim never reads back from
-a snapshot, so precision loss cannot accumulate.
-
-**D-009 — Determinism is enforced by grep, not by discipline.**
-`Math.random`, `Date.now`, `new Date()`, `performance.now()` and `Set`/`Map` iteration over
-identity keys are banned inside the sim and checked by `pnpm test:game-determinism`. A rule written
-down is not a rule applied — this repo's own CLAUDE.md says so about `revalidate` literals, and the
-same failure mode applies here.
-
-**D-010 — Manifest validation is strict zod, unknown keys are errors.**
-`zod` is already a dependency. A typo'd key that silently becomes `undefined` is exactly the bug a
-manifest format exists to prevent, so `.strict()` everywhere and a named error per rejected
-definition.
-
-**D-011 — Guests are struct-of-arrays; everything else is records.**
-The readable shape wins by default. Guests are the one place where 2000 objects re-touched 20× a
-second put a garbage collector inside a coaster launch, so they get typed arrays and a comment
-saying why.
-
-**D-012 — No new UI kit, no new state library.**
-HUD panels are shadcn primitives on `HEAVY_GLASS`. Engine state reaches React through one
-`useSyncExternalStore` over the snapshot store, throttled to 4 Hz. Adding Zustand for a store with
-one writer would be a second state system in a repo that has none.
-
-**D-013 — Assets are fetched by a pinned script into a gitignored folder.**
-`public/game/assets/` is not committed. `scripts/fetch-game-assets.mjs` pins every URL and its
-SHA-256, `docs/game/ASSETS.md` records source + licence per file, and **every consumer has a
-procedural fallback that logs when it fires**. The game is playable with the asset folder empty —
-that is the acceptance criterion, not a nice-to-have, because a network-flaky first load must not
-be a white screen.
-
-**D-014 — `world:ready` is the harness contract, and it fires in the degraded case too.**
-If it only fired on a perfect boot, every screenshot of a broken state would be a timeout instead of
-a picture of the bug.
-
-**D-015 — Quality preset is auto-picked and stated.**
-A phone gets `low` and one honest line of copy. Silently rendering a worse scene and letting a
-critic score it is how a mobile fallback becomes an unreported regression.
-
-**D-016 — The demo park is content, not code.**
-"park.fan Resort" is a scenario manifest plus blueprints inside a pack. If the showcase needs an
-escape hatch into a module, the registry is not finished.
-
-**D-017 — The optional live-park adapter is mock-first and flag-off.**
-`GAME_LIVE_SEED=0` by default. It reads park.fan's own public API through the existing
-`lib/api` conventions when on, and a checked-in fixture when off. Boot never awaits it: it seeds a
-park *after* `world:ready`, as a command, so a slow or failing fetch costs a notification and
-nothing else.
-
-**D-018 — Scores in `STATUS.json` are the critics' real numbers.**
-Including the failed rounds. A gauntlet that only records passes measures nothing.
+| #   | Decision                                                                                                                                                                 | Assumption / reason                                                                                                                                                                                                                                                                                                                  |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1   | Route is `app/game/**`, outside `app/[locale]`, excluded from the proxy matcher                                                                                          | The brief says "reachable at `/game`". The repo's only precedent for an unprefixed route is `/admin` and `/dev`, both excluded in `proxy.ts`. A localized `/de/game` would need 6× metadata, hreflang and the routed-messages map for a page that is one canvas.                                                                     |
+| 2   | Feature root is `lib/game/**`                                                                                                                                            | No `src/` in the repo; engines live under `lib/` (`lib/three`, `lib/planner`). One folder keeps the blast radius auditable with a single `git diff --stat lib/game`.                                                                                                                                                                 |
+| 3   | No Havok                                                                                                                                                                 | Trains run on an arclength-parameterised spline with an energy model; guests walk a path graph; nothing needs rigid bodies. Havok is WASM, 2 MB, non-deterministic across platforms, and would have to live in the worker where the render thread cannot see it anyway. Splash/foam/particles are visual and run on the main thread. |
+| 4   | Right-handed Babylon scene (`scene.useRightHandedSystem = true`), metres, +Y up                                                                                          | The brief fixes the units; glTF is right-handed, so loaded kit assets need no mirroring. Every module's maths assumes it; `docs/game/ARCHITECTURE.md` §2.                                                                                                                                                                            |
+| 5   | Two content packs are bundled as JSON modules, not fetched                                                                                                               | "Never block boot on a fetch". `core-classic` and `neon-lagoon` manifests are imported inside the game chunk. Extra packs can still be fetched from `public/game/packs/*.json` through `registry.loadPackFromUrl()`.                                                                                                                 |
+| 6   | Simulation clock: 1 real second = 1 park minute at speed 1; speeds 1/2/3/5 in the HUD, 100 in the soak harness; 20 Hz fixed tick                                         | Planet-Coaster-class pacing; 20 Hz at 100× means one tick advances 5 park minutes, which the guest AI tolerates because movement is arclength-based, not per-frame.                                                                                                                                                                  |
+| 7   | Game UI strings in `lib/game/i18n/`, EN + DE complete, NL/FR/ES/IT fall back to EN                                                                                       | See `INTEGRATION.md` §3. A game vocabulary of ~300 strings translated six ways by a machine would violate the "no text may read as AI-generated" rule; two languages written with care beat six written badly. The other four are a follow-up.                                                                                       |
+| 8   | The HUD is dark-only                                                                                                                                                     | Glass over a rendered world reads as glass only against a dark HUD; the light theme would put white panels over a night scene. Same call `/admin` made.                                                                                                                                                                              |
+| 9   | Quality presets `low/medium/high/ultra`, picked from `navigator.gpu`, `hardwareConcurrency`, `devicePixelRatio` and a 2 s frame-time probe; overridable with `?quality=` | The brief: degrade, never crash. Mobile (`pointer: coarse` + narrow viewport) gets `low` and a one-line notice in the HUD, not a blocking dialog.                                                                                                                                                                                    |
+| 10  | Saves: IndexedDB database `parkfan-coaster`, store `saves`, JSON world + version; export is the same JSON                                                                | Round-trip determinism is asserted by `scripts/test-game-save-roundtrip.mjs`: `serialize(load(serialize(w))) === serialize(w)`.                                                                                                                                                                                                      |
+| 11  | Terrain heights travel as `Float32Array` inside the worker protocol and as base64 in JSON saves                                                                          | A 256×256 heightmap is 262 KB as floats and ~350 KB as base64, against 1.4 MB as a JSON number array.                                                                                                                                                                                                                                |
+| 12  | The build-tool command stack lives on the main thread; the worker only ever receives applied commands                                                                    | Undo/redo is a UI concern and must be instant; the worker applies `command` messages in tick order, so determinism holds as long as the command log is part of the save (it is).                                                                                                                                                     |
+| 13  | Kit assets: procedural fallback is the **default in this repository**; fetched CC0 assets are an upgrade                                                                 | `scripts/fetch-game-assets.mjs` downloads Poly Haven / ambientCG / Kenney / Quaternius / KayKit files into the gitignored `public/game/assets/`. When a file is missing the module logs once and draws procedural geometry. The showcases and the harness therefore work on a fresh clone with no network.                           |
+| 14  | Fan-out uses the Agent tool with one builder per module and one critic per round, coordinated from this session; scores go to `docs/game/STATUS.json`                    | The brief asks for it ("ultracode"). Each builder is told the folder it owns and is refused anything outside it; the integrator (this session) is the only writer of `lib/game/core`, `app/game` and shared files.                                                                                                                   |
+| 15  | Mobile: the game loads on phones with the `low` preset and touch camera controls, but the build tools are desktop-first                                                  | The brief asks for an honest warning rather than a white screen; a full touch build UI is not in scope for round one.                                                                                                                                                                                                                |
+| 16  | Babylon `@babylonjs/core` 9.25.0, `@babylonjs/loaders` (glTF), `@babylonjs/gui` (world-space labels only)                                                                | Latest 9.x on 2026-09-05. `@babylonjs/materials` is not used: water, terrain and glass are custom `ShaderMaterial`/`NodeMaterial`-free GLSL+WGSL-compatible materials via `CustomMaterial`/`PBRCustomMaterial` where possible so WebGPU and WebGL2 share one source.                                                                 |
