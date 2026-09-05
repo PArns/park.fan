@@ -9,7 +9,7 @@ costs and decide whether the change is worth it.
 the cascaded shadow generator and the `DefaultRenderingPipeline`, and it finds all four by name:
 
 ```ts
-scene.getLightByName('sun');            // lighting.ts
+scene.getLightByName('sun'); // lighting.ts
 scene.getLightByName('sky');
 sun.getShadowGenerator();
 scene.postProcessRenderPipelineManager.supportedPipelines.find((p) => p.name === 'default');
@@ -31,12 +31,12 @@ shower from a downpour. They are exposed today on this module's own `api` (`inte
 Suggested addition to `EnvironmentState` in `core/types.ts`:
 
 ```ts
-  /** 0..1 how hard the current weather is doing whatever it does. */
-  intensity: number;
-  /** Metres per second. */
-  windMs: number;
-  /** What is falling, if anything. */
-  precipitation: 'none' | 'rain' | 'snow';
+/** 0..1 how hard the current weather is doing whatever it does. */
+intensity: number;
+/** Metres per second. */
+windMs: number;
+/** What is falling, if anything. */
+precipitation: 'none' | 'rain' | 'snow';
 ```
 
 `computeEnvironment` can default them (`0`, `2`, and `'rain'` when `weather` is rain/storm) so

@@ -169,11 +169,11 @@ season and darkens surfaces in the rain, owns no materials itself, and was falli
 `/grass|foliage|leaf|tree|hedge|shrub|bush|lawn|canopy|planting/i` — which eventually tints
 something called `treehouse-roof`.
 
-| Flag | Meaning |
-| --- | --- |
-| `material.metadata.foliage = true` | takes the seasonal tint and the wind response |
+| Flag                                 | Meaning                                                                                                                       |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| `material.metadata.foliage = true`   | takes the seasonal tint and the wind response                                                                                 |
 | `material.metadata.envExempt = true` | owns its own look; no wetness, no tint, no exposure fiddling (water, emissive signage, anything already animating its albedo) |
-| `material.metadata.envOwned = true` | the environment module made this one; it modulates it directly and must not also capture it |
+| `material.metadata.envOwned = true`  | the environment module made this one; it modulates it directly and must not also capture it                                   |
 
 A module that creates a material and does not set one of these is agreeing to be modulated, which
 is the right default for scenery, buildings and track.
@@ -246,7 +246,7 @@ live GPU contexts**: browsers cap them at 8–16, and a leaked one is not an err
 the fourth navigation returns a blank canvas.
 
 **The order is load-bearing, not incidental.** `host.dispose()` disposes the module handles and
-*then* the scene, so a module's cleanup still has the objects it is cleaning up: the environment
+_then_ the scene, so a module's cleanup still has the objects it is cleaning up: the environment
 module's `surfaces.restore()` writes captured albedo and roughness back onto materials, and flipping
 those two lines would make that pass silently pointless rather than fail. Anything that reads the
 scene during teardown depends on it.

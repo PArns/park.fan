@@ -4,12 +4,7 @@
   "gate": {
     "pass": 8.5,
     "maxRounds": 4,
-    "requires": [
-      "score >= 8.5",
-      "zero console errors",
-      "budget met",
-      "extensibility check passed"
-    ]
+    "requires": ["score >= 8.5", "zero console errors", "budget met", "extensibility check passed"]
   },
   "bundle": {
     "command": "pnpm build && pnpm game:bundle",

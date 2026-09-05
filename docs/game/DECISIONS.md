@@ -34,15 +34,15 @@ A sharing endpoint needs that, plus a size cap, a shape validation that never ex
 parses (a blueprint is a recorded command list), a rate limit, and a decision about who can delete
 what. Shipping a version without them because the flag defaults to off would put an unauthenticated
 blob upload one environment variable away from being live.
-*What it would look like:* `POST /api/game/blueprints` and `GET /api/game/blueprints/[id]`, storage
+_What it would look like:_ `POST /api/game/blueprints` and `GET /api/game/blueprints/[id]`, storage
 in Vercel Blob (already a dependency, no new runtime service), Turnstile with its own
 `TURNSTILE_ACTIONS` entry, a zod-validated command list capped at a few hundred KB, and 404 on
-every verb while `GAME_SHARING_ENABLED` is false. *Reversed by:* somebody wanting the feature
+every verb while `GAME_SHARING_ENABLED` is false. _Reversed by:_ somebody wanting the feature
 enough to review that surface.
 
 **D-020 — The live-park seed adapter is deferred on the same grounds, minus the security half.**
 It is optional, flag-gated (`GAME_LIVE_SEED_ENABLED`), and must never block boot — so it is a
-command sent *after* `world:ready`, never an await in the boot path. The reason it is not built yet
+command sent _after_ `world:ready`, never an await in the boot path. The reason it is not built yet
 is ordering rather than risk: seeding a park from real park.fan data means placing rides, paths and
 shops, and the modules that own those are still being written. Building the adapter against
 placeholder modules would mean writing it twice.
@@ -59,5 +59,5 @@ What ships instead is honest about being less: `surfaces.ts` captures each mater
 `albedoColor`/`roughness` the first time it sees it and writes a modulation of the captured values
 back, reversibly. It is a multiply, not a shader, and it says so. The two `metadata` conventions in
 ARCHITECTURE §4 replace the name-matching fallback that would otherwise have decided a
-`treehouse-roof` is foliage. *Reversed by:* somebody wanting per-pixel wet and willing to write and
+`treehouse-roof` is foliage. _Reversed by:_ somebody wanting per-pixel wet and willing to write and
 verify both shader languages against the render harness.

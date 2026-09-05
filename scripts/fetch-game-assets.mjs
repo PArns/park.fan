@@ -113,7 +113,9 @@ for (const entry of manifest.files) {
   if (present) {
     const have = await digestOf(target);
     if (entry.sha256 && have !== entry.sha256) {
-      console.error(`✗ ${entry.target} — digest drift\n    expected ${entry.sha256}\n    got      ${have}`);
+      console.error(
+        `✗ ${entry.target} — digest drift\n    expected ${entry.sha256}\n    got      ${have}`
+      );
       drift++;
     } else if (!entry.sha256 && record) {
       entry.sha256 = have;
@@ -143,7 +145,9 @@ for (const entry of manifest.files) {
     await writeFile(target, buffer);
     if (!entry.sha256) entry.sha256 = have;
     fetched++;
-    console.log(`↓ ${entry.target} — ${(buffer.length / 1024).toFixed(0)} KB, ${have.slice(0, 16)}…`);
+    console.log(
+      `↓ ${entry.target} — ${(buffer.length / 1024).toFixed(0)} KB, ${have.slice(0, 16)}…`
+    );
     results.push({ ...entry, present: true, sha256: have });
   } catch (error) {
     // A failed fetch is not a failed build. It is a plainer park, and the module that wanted the
@@ -164,8 +168,8 @@ const rows = results
   .map(
     (r) =>
       `| \`${r.target}\` | ${r.source} | ${r.author} | ${r.license} | ${
-        r.sha256 ? '`' + r.sha256.slice(0, 16) + '…`' : '—' } | ${r.usedBy} | ${
-        r.present ? 'on disk' : 'not fetched (procedural fallback)' } |`
+        r.sha256 ? '`' + r.sha256.slice(0, 16) + '…`' : '—'
+      } | ${r.usedBy} | ${r.present ? 'on disk' : 'not fetched (procedural fallback)'} |`
   )
   .join('\n');
 const table = `| File | Source | Author | Licence | SHA-256 | Used by | State |\n| --- | --- | --- | --- | --- | --- | --- |\n${rows}`;

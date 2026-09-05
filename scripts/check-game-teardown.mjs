@@ -120,7 +120,8 @@ async function readCtx(expect = {}) {
 function sample() {
   return page.evaluate(() => {
     const list = globalThis.__ctx ?? [];
-    const isLost = (c) => (typeof c.gl?.isContextLost === 'function' ? c.gl.isContextLost() : false);
+    const isLost = (c) =>
+      typeof c.gl?.isContextLost === 'function' ? c.gl.isContextLost() : false;
     const live = (owner) => list.filter((c) => c.owner === owner && !isLost(c)).length;
     return {
       total: list.length,
@@ -134,7 +135,9 @@ function sample() {
 
 const url = `${base}/game?harness=1&speed=0&engine=webgl2`;
 await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 90_000 });
-await page.waitForFunction(() => globalThis.__parkfan_game?.ready === true, null, { timeout: 120_000 });
+await page.waitForFunction(() => globalThis.__parkfan_game?.ready === true, null, {
+  timeout: 120_000,
+});
 
 const samples = [{ phase: 'first boot', ...(await readCtx({ liveProbe: 0 })) }];
 
@@ -159,10 +162,15 @@ for (let i = 0; i < cycles; i++) {
     game.handle.dispose();
   });
   await page.waitForTimeout(600);
-  samples.push({ phase: `after dispose ${i + 1}`, ...(await readCtx({ liveEngine: 0, liveProbe: 0 })) });
+  samples.push({
+    phase: `after dispose ${i + 1}`,
+    ...(await readCtx({ liveEngine: 0, liveProbe: 0 })),
+  });
 
   await page.reload({ waitUntil: 'domcontentloaded', timeout: 90_000 });
-  await page.waitForFunction(() => globalThis.__parkfan_game?.ready === true, null, { timeout: 120_000 });
+  await page.waitForFunction(() => globalThis.__parkfan_game?.ready === true, null, {
+    timeout: 120_000,
+  });
   samples.push({ phase: `after reboot ${i + 1}`, ...(await readCtx({ liveProbe: 0 })) });
 }
 

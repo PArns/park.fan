@@ -5,9 +5,7 @@
     "en": "Neon Lagoon",
     "de": "Neon-Lagune"
   },
-  "requires": [
-    "core-classic"
-  ],
+  "requires": ["core-classic"],
   "needs": [
     {
       "id": "cooling",
@@ -42,11 +40,7 @@
         "trim": "#ff2fa0",
         "accent": "#7c4dff"
       },
-      "materials": [
-        "concrete-teal",
-        "tile-aqua",
-        "steel-black"
-      ],
+      "materials": ["concrete-teal", "tile-aqua", "steel-black"],
       "ambience": "ambience-lagoon"
     }
   ],
@@ -97,10 +91,7 @@
         "de": "Neon-Palme"
       },
       "category": "signage",
-      "footprint": [
-        1,
-        1
-      ],
+      "footprint": [1, 1],
       "height": 6,
       "cost": 9000,
       "procedural": "neon-palm",
@@ -111,11 +102,7 @@
           "height": 5,
           "range": 14,
           "mode": "cycle",
-          "colors": [
-            "#16e0c8",
-            "#ff2fa0",
-            "#7c4dff"
-          ]
+          "colors": ["#16e0c8", "#ff2fa0", "#7c4dff"]
         }
       }
     },
@@ -126,10 +113,7 @@
         "de": "Lichtleiste"
       },
       "category": "lighting",
-      "footprint": [
-        4,
-        0.1
-      ],
+      "footprint": [4, 0.1],
       "height": 0.1,
       "cost": 2000,
       "procedural": "light-strip",
@@ -140,10 +124,7 @@
           "height": 0.1,
           "range": 6,
           "mode": "chase",
-          "colors": [
-            "#ff2fa0",
-            "#16e0c8"
-          ]
+          "colors": ["#ff2fa0", "#16e0c8"]
         }
       }
     },
@@ -154,10 +135,7 @@
         "de": "Sonnenliege"
       },
       "category": "path-furniture",
-      "footprint": [
-        2,
-        0.7
-      ],
+      "footprint": [2, 0.7],
       "height": 0.5,
       "cost": 2200,
       "procedural": "lounger",
@@ -170,10 +148,7 @@
         "de": "Sonnenschirm"
       },
       "category": "path-furniture",
-      "footprint": [
-        2.4,
-        2.4
-      ],
+      "footprint": [2.4, 2.4],
       "height": 2.6,
       "cost": 1800,
       "procedural": "parasol"
@@ -185,10 +160,7 @@
         "de": "Lichts\u00e4ule"
       },
       "category": "path-furniture",
-      "footprint": [
-        0.4,
-        0.4
-      ],
+      "footprint": [0.4, 0.4],
       "height": 3.5,
       "cost": 9000,
       "procedural": "lamp-modern",
@@ -214,11 +186,7 @@
       "kind": "palm",
       "procedural": "tree-palm",
       "mesh": "quaternius/trees/palm.glb",
-      "lod": [
-        40,
-        120,
-        300
-      ],
+      "lod": [40, 120, 300],
       "height": 9,
       "cost": 5000
     },
@@ -230,11 +198,7 @@
       },
       "kind": "grass",
       "procedural": "grass-tuft",
-      "lod": [
-        15,
-        35,
-        70
-      ],
+      "lod": [15, 35, 70],
       "height": 0.6,
       "cost": 100
     }
@@ -251,10 +215,7 @@
       "price": 450,
       "cost": 26000,
       "upkeep": 180,
-      "footprint": [
-        3,
-        3
-      ],
+      "footprint": [3, 3],
       "throughput": 7,
       "power": 4,
       "theme": "neon",
@@ -274,10 +235,7 @@
       "price": 0,
       "cost": 45000,
       "upkeep": 260,
-      "footprint": [
-        8,
-        5
-      ],
+      "footprint": [8, 5],
       "throughput": 12,
       "power": 3,
       "water": 1,
@@ -295,10 +253,7 @@
       "price": 700,
       "cost": 42000,
       "upkeep": 320,
-      "footprint": [
-        5,
-        4
-      ],
+      "footprint": [5, 4],
       "throughput": 4,
       "power": 7,
       "theme": "neon",
@@ -319,10 +274,7 @@
       "price": 190,
       "cost": 2800000,
       "upkeep": 4500,
-      "footprint": [
-        4,
-        4
-      ],
+      "footprint": [4, 4],
       "throughput": 9,
       "power": 9,
       "water": 6,
@@ -375,11 +327,7 @@
           "height": 2,
           "range": 12,
           "mode": "chase",
-          "colors": [
-            "#7c4dff",
-            "#16e0c8",
-            "#ff2fa0"
-          ]
+          "colors": ["#7c4dff", "#16e0c8", "#ff2fa0"]
         }
       }
     },
@@ -423,10 +371,7 @@
           "height": 0.5,
           "range": 6,
           "mode": "cycle",
-          "colors": [
-            "#16e0c8",
-            "#7c4dff"
-          ]
+          "colors": ["#16e0c8", "#7c4dff"]
         }
       }
     },
@@ -462,10 +407,7 @@
       "nausea": 2.6,
       "cost": 36000000,
       "upkeep": 1500,
-      "footprint": [
-        18,
-        18
-      ],
+      "footprint": [18, 18],
       "power": 80,
       "minHeightCm": 120,
       "theme": "neon",
@@ -477,12 +419,7 @@
           "height": 8,
           "range": 22,
           "mode": "chase",
-          "colors": [
-            "#16e0c8",
-            "#ff2fa0",
-            "#7c4dff",
-            "#ffffff"
-          ]
+          "colors": ["#16e0c8", "#ff2fa0", "#7c4dff", "#ffffff"]
         }
       }
     }
@@ -498,29 +435,19 @@
         {
           "id": "crown",
           "parent": "base",
-          "offset": [
-            0,
-            8,
-            0
-          ],
+          "offset": [0, 8, 0],
           "procedural": "wave-crown",
           "animate": {
             "yaw": {
               "curve": "ease-in-out",
               "revolutions": 14,
-              "window": [
-                0.05,
-                0.95
-              ]
+              "window": [0.05, 0.95]
             },
             "tilt": {
               "curve": "sine",
               "amplitude": 0.22,
               "revolutions": 1,
-              "window": [
-                0.25,
-                0.8
-              ]
+              "window": [0.25, 0.8]
             }
           }
         },
@@ -609,11 +536,7 @@
         "de": "Betonwand"
       },
       "category": "wall",
-      "size": [
-        4,
-        4,
-        0.3
-      ],
+      "size": [4, 4, 0.3],
       "cost": 2200,
       "material": "concrete-teal",
       "procedural": "wall"
@@ -625,11 +548,7 @@
         "de": "Flachdach"
       },
       "category": "roof",
-      "size": [
-        4,
-        0.4,
-        4
-      ],
+      "size": [4, 0.4, 4],
       "cost": 2600,
       "material": "concrete-teal",
       "procedural": "roof-flat"
@@ -641,11 +560,7 @@
         "de": "Panoramafenster"
       },
       "category": "window",
-      "size": [
-        4,
-        4,
-        0.3
-      ],
+      "size": [4, 4, 0.3],
       "cost": 4200,
       "material": "steel-black",
       "procedural": "wall-window-wide"

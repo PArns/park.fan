@@ -91,7 +91,10 @@ for (const file of files) {
      * is a false positive nobody has written yet, and tracking comment state across lines is more
      * machinery than the miss is worth.
      */
-    const code = line.replace(/\/\*.*?\*\//g, '').replace(/\/\/.*$/, '').replace(/^\s*\*.*$/, '');
+    const code = line
+      .replace(/\/\*.*?\*\//g, '')
+      .replace(/\/\/.*$/, '')
+      .replace(/^\s*\*.*$/, '');
     for (const rule of SIDE_EFFECT_APIS) {
       if (!rule.call.test(code)) continue;
       if (rule.imports.some((mod) => src.includes(mod))) continue;

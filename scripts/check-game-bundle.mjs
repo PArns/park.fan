@@ -129,7 +129,9 @@ console.log(`chunks carrying Babylon:       ${babylonChunks.length}, ${fmt(babyl
 
 let ok = true;
 if (babylonChunks.length === 0 && !args['baseline-build']) {
-  console.error('✗ Babylon is not in the build at all — this check would pass for the wrong reason.');
+  console.error(
+    '✗ Babylon is not in the build at all — this check would pass for the wrong reason.'
+  );
   ok = false;
 } else if (babylonChunks.length === 0) {
   // `--baseline-build` is the "before" half of the comparison: a tree with no game in it, where
