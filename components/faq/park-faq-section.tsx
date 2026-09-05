@@ -5,7 +5,6 @@ import { ParkWithAttractions } from '@/lib/api/types';
 import { useTranslations } from 'next-intl';
 import { CrowdCalendarFaqLink } from '@/components/faq/crowd-calendar-faq-link';
 import {
-  ChevronDown,
   HelpCircle,
   Calendar,
   MapPin,
@@ -15,10 +14,10 @@ import {
   UtensilsCrossed,
   Clock2,
 } from 'lucide-react';
-import { Card } from '@/components/ui/card';
 import { stripNewPrefix } from '@/lib/utils';
 import type { LucideIcon } from 'lucide-react';
-import { ChapterHeading } from '@/components/common/chapter-heading';
+import { ChapterPanel } from '@/components/common/chapter-panel';
+import { FaqAccordion } from '@/components/faq/faq-accordion';
 import { GlossaryInjectClient } from '@/components/glossary/glossary-inject-client';
 import {
   GlossaryInjectProvider,
@@ -123,7 +122,13 @@ export function ParkFAQSection({
     nowMs
   );
 
-  const { parkNom, parkNomCap, parkLoc } = getParkArticleForms(park, locale);
+  const {
+    parkNom,
+    parkNomCap,
+    parkAcc,
+    parkLoc,
+    args: parkArgs,
+  } = getParkArticleForms(park, locale);
   const parkName = stripNewPrefix(park.name);
 
   const crowdCalendarLink = (chunks: ReactNode) => (
@@ -161,6 +166,27 @@ export function ParkFAQSection({
     }
   }
 
+  /**
+   * The crowd-calendar question, which the `FAQPage` markup has always carried and no visitor
+   * could ever read.
+   *
+   * `faq-structured-data.tsx` pushes it unconditionally — its own comment says "always included
+   * in structured data" — while this section never built it, so every park page shipped a
+   * `FAQPage` claiming a question the page does not answer. That is the failure mode the
+   * agent-readiness rules name (two copies of one claim, one of them invisible), and for a
+   * `FAQPage` it is also what the format asks not to do: the content has to be on the page.
+   *
+   * It needs no data — a yes and a sentence — so it renders here from the same two keys and the
+   * same arguments the markup uses. Deliberately `t` and not `t.rich`: the message carries no
+   * `<calendar>` tag, and the point of this fix is that the visible answer and the one in the
+   * `FAQPage` are the same string.
+   */
+  faqs.push({
+    iconName: 'Calendar' as ParkFaqIconName,
+    question: t('crowdCalendarQ', { park: parkNom }),
+    answer: t('crowdCalendarA', { ...parkArgs, park: parkAcc }),
+  });
+
   if (faqs.length === 0) return null;
 
   return (
@@ -169,44 +195,37 @@ export function ParkFAQSection({
       locale={locale as Locale}
       segment={glossarySegment}
     >
-      <section className="space-y-4">
-        <ChapterHeading icon={HelpCircle} title={t('title', { park: parkName })} frosted />
-        <div className="space-y-3">
-          {faqs.map((faq, index) => {
-            const Icon = ICON_MAP[faq.iconName as keyof typeof ICON_MAP];
+      {/* One box, and the questions are rows in it — the same `FaqAccordion` the ride page draws,
+        inside the same `ChapterPanel`. This was a chapter band floating over a stack of separate
+        `Card`s, each drawing its own border over the park photo: five boxes for one chapter, on
+        the page a visitor lands on from „<Park> Wartezeiten".
 
-            return (
-              <Card key={index} className="overflow-hidden">
-                <details className="group">
-                  <summary className="hover:bg-muted/50 flex cursor-pointer list-none items-center justify-between p-4 transition-colors">
-                    <div className="flex items-center gap-3">
-                      <Icon className="text-primary h-5 w-5 flex-shrink-0" />
-                      <span className="text-left font-medium">{faq.question}</span>
-                    </div>
-                    <ChevronDown className="text-muted-foreground h-5 w-5 flex-shrink-0 transition-transform group-open:rotate-180" />
-                  </summary>
-                  <div className="text-muted-foreground border-t px-4 pt-2 pb-4">
-                    {typeof faq.answer === 'string' ? (
-                      <GlossaryInjectClient>{faq.answer}</GlossaryInjectClient>
-                    ) : isFaqListAnswer(faq.answer) ? (
-                      <>
-                        <p className="mb-2">{faq.answer.text}</p>
-                        <ul className="list-disc space-y-1 pl-5">
-                          {faq.answer.list.map((item, i) => (
-                            <li key={i}>{item}</li>
-                          ))}
-                        </ul>
-                      </>
-                    ) : (
-                      <>{faq.answer as ReactNode}</>
-                    )}
-                  </div>
-                </details>
-              </Card>
-            );
-          })}
-        </div>
-      </section>
+        Nothing left the served HTML. A collapsed `<details>` is in the DOM, and this section
+        emits no structured data of its own — the park page's `FAQStructuredData` does, from the
+        same `buildParkFaqItems` array, so the two cannot drift apart. */}
+      <ChapterPanel icon={HelpCircle} title={t('title', { park: parkName })} bodyClassName="p-0">
+        <FaqAccordion
+          items={faqs.map((faq) => ({
+            icon: ICON_MAP[faq.iconName as keyof typeof ICON_MAP],
+            question: faq.question,
+            answer:
+              typeof faq.answer === 'string' ? (
+                <GlossaryInjectClient>{faq.answer}</GlossaryInjectClient>
+              ) : isFaqListAnswer(faq.answer) ? (
+                <>
+                  <p className="mb-2">{faq.answer.text}</p>
+                  <ul className="list-disc space-y-1 pl-5">
+                    {faq.answer.list.map((item, i) => (
+                      <li key={i}>{item}</li>
+                    ))}
+                  </ul>
+                </>
+              ) : (
+                (faq.answer as ReactNode)
+              ),
+          }))}
+        />
+      </ChapterPanel>
     </GlossaryInjectProvider>
   );
 }
