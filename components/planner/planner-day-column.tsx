@@ -18,10 +18,10 @@ import { entriesFor, type PlannerEntry } from '@/lib/planner/types';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { usePlannerDayFacts } from '@/lib/planner/use-day-facts';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
-import { buildDayGrid, growGridForSpans, nextFreeStart } from '@/lib/planner/day-grid';
+import { buildDayGrid, growGridForSpans, nextFreeStart, nowFloor } from '@/lib/planner/day-grid';
 import { occupiedMinutes } from '@/lib/planner/estimate';
 import { closedNowFor, liveWaitsFor } from '@/lib/planner/live';
-import { parkToday, resolveTimeZone } from '@/lib/planner/park-time';
+import { dayClock, parkToday, resolveTimeZone } from '@/lib/planner/park-time';
 import { showLinesFor } from '@/lib/planner/shows';
 import { plannerShowsVisible } from '@/lib/planner/shows-visible';
 import { PLANNER_RIDE_MIME, parseRideDrag } from '@/lib/planner/ride-drag';
@@ -195,6 +195,9 @@ export function PlannerDayColumn({
 
   const timezone = resolveTimeZone(day?.timezone ?? park?.timezone);
   const isToday = Boolean(date && date === parkToday(timezone));
+  // Where this day stands against the park's clock, for the one thing in this
+  // component that picks a minute by itself (see `addFreeBlock`).
+  const clock = date ? dayClock(date, timezone) : undefined;
 
   const spans = useMemo(
     () =>
@@ -321,7 +324,10 @@ export function PlannerDayColumn({
       date,
       label: t('custom.defaultLabel'),
       icon: 'break',
-      startMinute: grid ? nextFreeStart(spans, grid) : undefined,
+      // Never before now: a break filed into a morning that has gone is the
+      // same fault as a queue filed there. `nowFloor` is `openMin` on every
+      // other date, so nothing about a future plan moves.
+      startMinute: grid ? nextFreeStart(spans, grid, undefined, nowFloor(grid, clock)) : undefined,
     });
   };
 

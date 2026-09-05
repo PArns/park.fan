@@ -172,10 +172,12 @@ export function countAll(state: PlannerState): number {
  * The latest minute a PLANNED stop may carry.
  *
  * A plan is not bounded by the park's hours and must not be. `optimizeDay`
- * files a stop it cannot fit before closing PAST the gate on purpose, in the
+ * files an ENTRY it cannot fit before closing PAST the gate on purpose, in the
  * sequence the day would actually reach it, and `growGridForSpans` widens the
  * canvas to hold them — so the overflow reads as "and these two do not fit"
- * rather than as blocks stacked in lanes on the park's last minute. Clamped at
+ * rather than as blocks stacked in lanes on the park's last minute. (A ride it
+ * is ADDING gets the opposite answer and is left out; the asymmetry is that
+ * nobody's own plan is deleted behind their back.) Clamped at
  * the drag world's 25:00 that is exactly what came back: ten 120-minute queues
  * in a park open 09:00–22:00 produced 25:30, 26:45 and 28:00, and all three
  * were stored as 1500. The stacking the optimiser goes out of its way not to

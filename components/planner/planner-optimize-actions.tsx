@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
 import { Crown, Undo2, Wand2 } from 'lucide-react';
 import { usePlanner } from '@/lib/planner/use-planner';
@@ -9,10 +9,18 @@ import {
   canOptimize,
   headlinersSkipped,
   headlinersToAdd,
+  movableEntries,
   optimizeDay,
   scoreCurrent,
 } from '@/lib/planner/optimize';
 import { trackPlanOptimized } from '@/lib/analytics/umami';
+import { dayClock, parkToday, resolveTimeZone } from '@/lib/planner/park-time';
+import {
+  getMinuteTick,
+  getZero,
+  subscribeToMinute,
+  subscribeToNothing,
+} from '@/lib/planner/minute-tick';
 import type { DayGrid } from '@/lib/planner/day-grid';
 import type { PlanDay } from '@/lib/api/types';
 import type { PlannerDayPrefs, PlannerEntry, PlannerGeo } from '@/lib/planner/types';
@@ -63,6 +71,22 @@ interface PlannerOptimizeActionsProps {
  * the headliner button is gone once they are all in, like the band above it. It
  * is NOT gone where exactly one headliner is missing, which the engine used to
  * refuse to plan — the button was there, and pressing it did nothing.
+ *
+ * **And it stays where a headliner simply does not fit**, which is not the same
+ * fault. Phantasialand has ten of them and a nine-hour day, so the last one has
+ * nowhere to go; the optimiser leaves it out rather than drawing it in the
+ * closed hours, and `optimize.overflow` says so under the button every time it
+ * is pressed. That is a standing offer rather than a dead control — delete a
+ * ride and it goes in — and the sentence is what keeps it from reading as one.
+ *
+ * **Two more cases where nothing is drawn, and both are about the clock.** A day
+ * that has been walked is a record: sorting yesterday would rewrite what
+ * happened, so on a past date this renders nothing at all — the hand controls
+ * beside it stay, because writing the record down is why the day is kept. And a
+ * day whose remaining rides are one or none has no order left to choose, which
+ * is why `movable` is counted with the engine's own filter rather than a copy of
+ * it: at 18:40 in a park shutting at 19:00 the button is gone rather than
+ * answering "Passt schon so".
  */
 export function PlannerOptimizeActions({
   parkSlug,
@@ -108,11 +132,40 @@ export function PlannerOptimizeActions({
 
   const entries = state.parks[parkSlug]?.days[date]?.entries ?? [];
 
+  /**
+   * Where this day stands against the park's clock, re-read every minute.
+   *
+   * Subscribed rather than read once, and that is not tidiness: the buttons
+   * below have to DISAPPEAR as the day runs out — at 18:40 in a park shutting
+   * at 19:00 there is nothing left to sort — and a value taken at mount would
+   * keep them on screen for as long as the panel is open. It is the same shape
+   * `PlannerDayGrid` uses for its now line, including why: `getZero` as the
+   * server snapshot keeps a clock out of server markup, and `subscribeToNothing`
+   * means no 60-second timer on a date that is not today.
+   */
+  const zone = resolveTimeZone(timezone);
+  const isToday = date === parkToday(zone);
+  // Subscribed for the re-render alone — the value is a counter nobody reads
+  // here. `subscribeToNothing` on any other date, so a plan for next Saturday
+  // installs no 60-second interval.
+  useSyncExternalStore(
+    isToday ? subscribeToMinute : subscribeToNothing,
+    isToday ? getMinuteTick : getZero,
+    getZero
+  );
+  const clock = dayClock(date, zone);
+
   if (!grid || !canOptimize(day, grid) || !day) return null;
+  // A day that has been walked is a record. Both buttons plan FOR the visitor,
+  // and there is nothing left to plan — the engine refuses it too, so this is
+  // about not drawing a control that could only answer "Passt schon so".
+  if (clock.phase === 'past') return null;
 
   const missing = headlinersToAdd(day, entries, prefs);
   const skipped = headlinersSkipped(day, entries, prefs);
-  const movable = entries.filter((entry) => !entry.done && !entry.custom && entry.attractionSlug);
+  // The same set the engine will work on. Counted with the bare filter, this
+  // offers "Tag optimieren" for a day whose two rides are both behind us.
+  const movable = movableEntries(entries, clock);
 
   const canSort = movable.length >= 2;
   if (!canSort && missing.length === 0) return null;
@@ -121,8 +174,14 @@ export function PlannerOptimizeActions({
   const shownUndo = undoTo?.parkSlug === parkSlug && undoTo?.date === date ? undoTo : null;
 
   const run = (add: typeof missing) => {
-    const input = { day, grid, entries, add };
-    const before = scoreCurrent({ day, grid, entries });
+    // The clock goes to BOTH, and for two different reasons. `optimizeDay` uses
+    // it as a floor and as a membership rule; `scoreCurrent` only as the second
+    // — it scores the day where the blocks actually are, so a floor there would
+    // be a claim about where they should be. Withholding it from the incumbent
+    // is what made the before-figure cover a morning the plan never saw, so
+    // "45 Min. weniger Warten" was a ride that had already been queued for.
+    const input = { day, grid, entries, add, clock };
+    const before = scoreCurrent({ day, grid, entries, clock });
     const plan = optimizeDay(input);
 
     if (!plan) {

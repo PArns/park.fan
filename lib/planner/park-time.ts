@@ -113,3 +113,35 @@ export function addDays(isoDate: string, days: number): string {
   d.setUTCDate(d.getUTCDate() + days);
   return d.toISOString().slice(0, 10);
 }
+
+/**
+ * Where a planned day sits against the park's own clock.
+ *
+ * One value rather than a date plus a minute, because the two decide the same
+ * things and a caller that sets one and forgets the other is the bug this
+ * replaces: the optimiser was handed `nowMinute` for today and nothing at all
+ * for yesterday, so it re-planned a day that had already been walked.
+ *
+ * `future` is the default everywhere it is optional, and every rule keyed to
+ * this reduces to its pre-clock form there exactly — which is what keeps a
+ * plan made for next Saturday reckoned the way it always was.
+ */
+export type DayClock =
+  | { phase: 'past' }
+  /** Park-local minutes since midnight, on the day being looked at. */
+  | { phase: 'today'; nowMinute: number }
+  | { phase: 'future' };
+
+/**
+ * The clock for one planned date, read in the PARK's zone.
+ *
+ * `now` is a defaulted parameter rather than a read inside, so a test can put
+ * the day at 09:43 and assert what happens there — the same reason
+ * `parkToday` and `parkMinuteNow` take one.
+ */
+export function dayClock(date: string, timeZone: string, now: number = Date.now()): DayClock {
+  const today = parkToday(timeZone, now);
+  if (date < today) return { phase: 'past' };
+  if (date > today) return { phase: 'future' };
+  return { phase: 'today', nowMinute: parkMinuteNow(timeZone, now) };
+}
