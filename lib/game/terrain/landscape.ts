@@ -39,9 +39,22 @@ function shoreZ(x: number, seed: number): number {
   return 100 + 26 * Math.sin(x * 0.0112) + 14 * (fbm2(x, 77, 1 / 130, 3, seed) - 0.5);
 }
 
-/** Where the escarpment runs, as a function of x. */
-function scarpZ(x: number, seed: number): number {
-  return -66 + 16 * Math.sin(x * 0.017) + 44 * (fbm2(x, -400, 1 / 170, 2, seed + 5) - 0.5);
+/**
+ * Where the escarpment runs, as a function of z — it is a north-south line with the high ground
+ * to the WEST, so its face looks east.
+ *
+ * That direction is the whole point and it was wrong first time round. Core's fixed camera presets
+ * all sit east of the park and look west-ish: `overview` from (104, 156, -180), `close` from
+ * (27, 12, -27). An east-west scarp with its face to the south showed those cameras its back and
+ * its top edge, and a 24 m cliff collapsed to a pale line one pixel wide in the overview.
+ */
+function scarpX(z: number, seed: number): number {
+  return (
+    -52 +
+    16 * Math.sin(z * 0.012) +
+    36 * (fbm2(z, -400, 1 / 170, 2, seed + 5) - 0.5) -
+    0.06 * Math.max(0, z)
+  );
 }
 
 /**
@@ -76,8 +89,8 @@ function trailDistance(x: number, z: number): number {
   let best = 1e9;
   for (let k = 0; k <= 24; k++) {
     const s = k / 24;
-    const px = -58 + 96 * s + 24 * Math.sin(s * 4.1);
-    const pz = -44 + 92 * s;
+    const px = -28 + 56 * s + 20 * Math.sin(s * 4.1);
+    const pz = -44 + 128 * s;
     const d = Math.hypot(x - px, z - pz);
     if (d < best) best = d;
   }
@@ -94,21 +107,20 @@ function heightAt(x: number, z: number, seed: number): number {
   const coast = smoothstep(-70, 12, z - zs);
   h = h * (1 - coast) + 1.7 * coast;
 
-  // The escarpment: a step of 13-27 m over 6-13 m of ground, which is 50-75° and well past the
-  // cliff threshold the material paints rock at. Both the height and the width vary along x —
-  // the first version held both constant and the result read as a retaining wall rather than as
-  // a cliff, most obviously from the `ground` preset where the scarp spans the whole frame.
-  const zc = scarpZ(x, seed);
-  const width = 6 + 7 * fbm2(x, 900, 1 / 90, 2, seed + 3);
-  const rise = 13 + 14 * fbm2(x, 1500, 1 / 145, 3, seed + 4);
-  h += rise * smoothstep(zc + width, zc - width, z);
+  // The escarpment: a step of 14-27 m over 6-13 m of ground, which is 50-75° and well past the
+  // cliff threshold the material paints rock at. Height and width both vary along the line — held
+  // constant they read as a retaining wall rather than as a cliff.
+  const xc = scarpX(z, seed);
+  const width = 6 + 7 * fbm2(z, 900, 1 / 90, 2, seed + 3);
+  const rise = 14 + 13 * fbm2(z, 1500, 1 / 145, 3, seed + 4);
+  h += rise * smoothstep(xc + width, xc - width, x);
 
-  // Two hills on the plateau above the scarp, and one steep outcrop south-west of the origin,
-  // which is the direction the `close` preset looks — that shot has to contain a rock face and a
-  // meadow at once or nothing in it says the splat is doing anything.
-  h += bump(x, z, -74, -168, 108, 33, 1.7, 11);
-  h += bump(x, z, 96, -196, 82, 21, 1.8, 29);
-  h += bump(x, z, -34, 40, 16, 10.5, 1.55, 53);
+  // Two hills on the plateau behind the scarp, and one steep outcrop on the terrace inside the
+  // `close` preset's cone — that shot has to contain a rock face and a meadow at once or nothing
+  // in it says the splat is doing anything.
+  h += bump(x, z, -168, -74, 105, 34, 1.7, 11);
+  h += bump(x, z, -186, 96, 86, 24, 1.8, 29);
+  h += bump(x, z, 5, 35, 16, 10.5, 1.55, 53);
 
   h -= smoothstep(-14, 130, z - zs) * 13;
 
@@ -198,7 +210,9 @@ export function generateShowcaseLandscape(t: TerrainData, options: LandscapeOpti
       // instead of leaving a ring of grass on a 30° slope.
       if (slope > 0.16) layer = LAYER_ROCK;
 
-      if (trailDistance(x, z) < 3.1 && above > 0.4) layer = LAYER_DIRT;
+      // 4.4 m of half-width, not 3.1: at 2 m cells and a splat that jitters the boundary by half a
+      // cell, a narrower path came out as a dotted line of separate brown patches in the overview.
+      if (trailDistance(x, z) < 4.4 && above > 0.4) layer = LAYER_DIRT;
 
       const padD = Math.max(Math.abs(x - PAD_X) - PAD_HALF_X, Math.abs(z - PAD_Z) - PAD_HALF_Z);
       if (padD < 0) layer = LAYER_CONCRETE;
