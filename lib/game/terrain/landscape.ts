@@ -36,7 +36,7 @@ const PAD_HALF_Z = 8;
 
 /** Where the coast runs, as a function of x. */
 function shoreZ(x: number, seed: number): number {
-  return 104 + 30 * Math.sin(x * 0.0112) + 44 * (fbm2(x, 77, 1 / 130, 3, seed) - 0.5);
+  return 100 + 26 * Math.sin(x * 0.0112) + 14 * (fbm2(x, 77, 1 / 130, 3, seed) - 0.5);
 }
 
 /** Where the escarpment runs, as a function of x. */
@@ -83,7 +83,7 @@ function heightAt(x: number, z: number, seed: number): number {
   // preset has a cliff of its own without leaving the meadow.
   h += bump(x, z, -74, -168, 108, 33, 1.7);
   h += bump(x, z, 96, -196, 82, 21, 1.8);
-  h += bump(x, z, 34, -26, 17, 11.5, 1.55);
+  h += bump(x, z, -38, -30, 17, 11.5, 1.55);
 
   h -= smoothstep(-14, 130, z - zs) * 13;
 
@@ -98,11 +98,8 @@ function heightAt(x: number, z: number, seed: number): number {
 
   // The causeway out into the lake: a level deck with sloped flanks the cliff rule turns to stone.
   if (z > JETTY_FROM_Z - 6 && z < JETTY_TO_Z + 6) {
-    const alongEnd = smoothstep(JETTY_TO_Z, JETTY_TO_Z - 7, z) * smoothstep(
-      JETTY_FROM_Z - 6,
-      JETTY_FROM_Z + 3,
-      z
-    );
+    const alongEnd =
+      smoothstep(JETTY_TO_Z, JETTY_TO_Z - 7, z) * smoothstep(JETTY_FROM_Z - 6, JETTY_FROM_Z + 3, z);
     const across = 1 - smoothstep(JETTY_HALF_WIDTH, JETTY_HALF_WIDTH + 4.5, Math.abs(x - JETTY_X));
     const deck = JETTY_DECK + 0.9 * smoothstep(JETTY_TO_Z, JETTY_FROM_Z, z);
     const w = alongEnd * across;

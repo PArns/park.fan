@@ -19,7 +19,6 @@ import { VertexData } from '@babylonjs/core/Meshes/mesh.vertexData';
 import { PBRMaterial } from '@babylonjs/core/Materials/PBR/pbrMaterial';
 import { Material } from '@babylonjs/core/Materials/material';
 import { Color3 } from '@babylonjs/core/Maths/math.color';
-import { Texture } from '@babylonjs/core/Materials/Textures/texture';
 import type { RawTexture } from '@babylonjs/core/Materials/Textures/rawTexture';
 import type { Scene } from '@babylonjs/core/scene';
 import type { EnvironmentState, TerrainData } from '../core/types';

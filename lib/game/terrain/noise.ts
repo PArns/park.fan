@@ -28,8 +28,8 @@ export function valueNoise(x: number, y: number, wrap: number, seed: number): nu
   const yf = y - yi;
   const u = xf * xf * (3 - 2 * xf);
   const v = yf * yf * (3 - 2 * yf);
-  const x0 = wrap > 0 ? (((xi % wrap) + wrap) % wrap) : xi;
-  const y0 = wrap > 0 ? (((yi % wrap) + wrap) % wrap) : yi;
+  const x0 = wrap > 0 ? ((xi % wrap) + wrap) % wrap : xi;
+  const y0 = wrap > 0 ? ((yi % wrap) + wrap) % wrap : yi;
   const x1 = wrap > 0 ? (x0 + 1) % wrap : xi + 1;
   const y1 = wrap > 0 ? (y0 + 1) % wrap : yi + 1;
   const a = hash2(x0, y0, seed);

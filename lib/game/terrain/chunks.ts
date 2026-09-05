@@ -226,7 +226,11 @@ function buildSurroundData(t: TerrainData, noise: (x: number, z: number) => numb
       pointOnSquare(k, h, p);
       const x = p[0];
       const z = p[1];
-      const edge = sampleHeight(t, Math.max(-half, Math.min(half, x)), Math.max(-half, Math.min(half, z)));
+      const edge = sampleHeight(
+        t,
+        Math.max(-half, Math.min(half, x)),
+        Math.max(-half, Math.min(half, z))
+      );
       const blend = Math.min(1, dist / 260);
       const y = edge * (1 - blend * 0.55) + noise(x, z) * blend - blend * blend * 22;
       const at = (r * perimeter + k) * 3;

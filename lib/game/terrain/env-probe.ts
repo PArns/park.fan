@@ -72,9 +72,9 @@ function renderFaces(env: EnvironmentState): Uint8Array[] {
   for (let f = 0; f < 6; f++) {
     const data = new Uint8Array(FACE * FACE * 4);
     for (let j = 0; j < FACE; j++) {
-      const v = (j + 0.5) / FACE * 2 - 1;
+      const v = ((j + 0.5) / FACE) * 2 - 1;
       for (let i = 0; i < FACE; i++) {
-        const u = (i + 0.5) / FACE * 2 - 1;
+        const u = ((i + 0.5) / FACE) * 2 - 1;
         faceDirection(f, u, v, dir);
         const up = dir[1];
         const t = clamp01(up * 1.6);

@@ -172,7 +172,7 @@ function shadeLayer(
       // concrete — float-finished slab: fine aggregate, a hairline crack network from the mid
       // field's zero crossing, and stains that only touch the colour
       const aggregate = smoothstep(0.88, 0.97, high);
-      const crack = smoothstep(0.030, 0.004, Math.abs(mid - 0.5));
+      const crack = smoothstep(0.03, 0.004, Math.abs(mid - 0.5));
       const h = clamp01(0.55 + aggregate * 0.35 - crack * 0.6);
       let c = lerpRgb(CONCRETE_DARK, CONCRETE_LIGHT, clamp01(0.45 + low * 0.55));
       c = lerpRgb(c, CONCRETE_DARK, crack * 0.9);

@@ -88,7 +88,11 @@ export function createTerrainMain(ctx: MainContext): MainHandle {
 
   let textures: TerrainTextureSet;
   try {
-    textures = createTerrainTextures(scene, ctx.rng.int(1, 1 << 28), TEXTURE_RESOLUTION[ctx.quality.preset]);
+    textures = createTerrainTextures(
+      scene,
+      ctx.rng.int(1, 1 << 28),
+      TEXTURE_RESOLUTION[ctx.quality.preset]
+    );
   } catch (error) {
     console.warn('[game/terrain] procedural textures unavailable', error);
     throw error;
@@ -111,7 +115,12 @@ export function createTerrainMain(ctx: MainContext): MainHandle {
     surroundNoise: (x, z) => surroundRelief(x, z, seed),
   });
 
-  const water: WaterSurface = createWaterSurface(scene, terrain, textures.water, textures.waterDetail);
+  const water: WaterSurface = createWaterSurface(
+    scene,
+    terrain,
+    textures.water,
+    textures.waterDetail
+  );
   let waterTriangles = water.rebuild();
 
   // Cast the sun's shadow from the proxy rather than from the 64 drawn chunks: one mesh per
@@ -120,8 +129,9 @@ export function createTerrainMain(ctx: MainContext): MainHandle {
   const sun = scene.getLightByName('sun') as IShadowLight | null;
   const shadowGenerator = sun?.getShadowGenerator?.();
   if (meshes.shadowProxy && shadowGenerator && 'addShadowCaster' in shadowGenerator) {
-    (shadowGenerator as { addShadowCaster(m: Mesh, includeChildren?: boolean): unknown })
-      .addShadowCaster(meshes.shadowProxy, false);
+    (
+      shadowGenerator as { addShadowCaster(m: Mesh, includeChildren?: boolean): unknown }
+    ).addShadowCaster(meshes.shadowProxy, false);
   }
 
   let probe: EnvProbe | null = null;

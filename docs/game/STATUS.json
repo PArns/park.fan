@@ -264,12 +264,34 @@
     "Wave 1 has not landed: the baseline screenshot is an untextured terrain edge under the HUD.",
     "No glTF assets are fetched by default; every module must look good procedurally and that is graded, not assumed.",
     "demo-park is a terrain shaper, not yet a park.",
-    "The 48-park-hour soak runs 576 ticks at 100x; once guests exist it should also run at a lower speed for more integration steps per park-hour."
+    "The 48-park-hour soak runs 576 ticks at 100x; once guests exist it should also run at a lower speed for more integration steps per park-hour.",
+    "HUD overflows a phone: measured at 390x844 the top-right cash pill runs off the right edge and 'Day 1' wraps to two lines. Belongs to the ui module.",
+    "The graphics-preset notice is clipped at both ends at 390 px, between the feedback widget and the bottom-right corner. The brand mark stepped out of that row (hidden below sm); the notice itself is still the ui module's to place.",
+    "Terrain chunks render with gaps between them at 45 draw calls — visible as a grid of floating tiles. Wave 1, in progress."
   ],
   "history": [
     {
       "commit": "e823ece",
       "what": "merged PR #409's foundation, added the simulation core, soak, bundle proof, pack-declared guest needs, brand mark"
     }
-  ]
+  ],
+  "mobile": {
+    "command": "node scripts/game-shot.mjs --w=390 --h=844 --cam=overview --tod=12:00",
+    "readFrom": ".game-render/mobile/report.json",
+    "viewport": "390x844",
+    "preset": "medium",
+    "consoleErrors": 0,
+    "verdict": "boots and renders — no white screen, honest preset notice present — but the HUD does not fit the width yet"
+  },
+  "teardown": {
+    "command": "pnpm game:teardown",
+    "readFrom": ".game-render/teardown.json",
+    "cycles": 3,
+    "assertionsPassed": 5,
+    "assertionsTotal": 5,
+    "fixed": [
+      "capabilities.ts held the WebGL2 probe's context for the life of the document",
+      "renderer.ts left the engine's context to the garbage collector on dispose"
+    ]
+  }
 }

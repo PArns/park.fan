@@ -23,6 +23,13 @@
  * Placement is bottom-**right**. Bottom-left is where the browser puts a link target preview and
  * where the site's feedback widget sits, top-left and top-right are the HUD's, and the bottom
  * centre is the notice line. It is also the corner a build tool is least likely to want.
+ *
+ * And it is **not drawn below `sm`**. Measured at 390×844: the bottom row holds the feedback
+ * widget on the left, the graphics-preset notice in the middle and this mark on the right, and
+ * there is not room for the three of them — the notice came out clipped at both ends with the
+ * wordmark sitting on its last word. On a phone the screen IS the game, and a watermark that
+ * collides with a message the reader needs is worse than no watermark. Same instinct as the blog
+ * card, which drops its photo below `sm` rather than squeezing it.
  */
 
 import Link from 'next/link';
@@ -41,7 +48,7 @@ export function GameBrandMark({ hidden = false, label }: GameBrandMarkProps) {
     // The wrapper is pointer-transparent so a drag that ends over the mark still reaches the
     // canvas; only the link itself takes the pointer back.
     <div
-      className="pointer-events-none absolute right-3 bottom-3 z-20 select-none"
+      className="pointer-events-none absolute right-3 bottom-3 z-20 hidden select-none sm:block"
       data-game-chrome="brand"
     >
       <Link
