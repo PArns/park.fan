@@ -58,6 +58,19 @@ interface PlannerDayColumnProps {
    */
   withFoot: boolean;
   /**
+   * The column the reader is working in, where there is more than one.
+   *
+   * NOT {@link primary}, which is a fact about the plan — its active day, the
+   * column that cannot be closed. This is a fact about the pointer, and what
+   * hangs on it is the marker and the park the page behind the panel shows.
+   *
+   * `false` for a lone column, because a marker saying "this one" over the only
+   * one there is says nothing. The panel decides; see `focusColumn`.
+   */
+  active: boolean;
+  /** The reader touched this column. See `focusColumn` in `PlannerFlyout`. */
+  onActivate?: () => void;
+  /**
    * The column's place in the panel's grid, from the flyout.
    *
    * The panel lays the columns out as a CSS grid whose first two rows are the
@@ -104,6 +117,8 @@ export function PlannerDayColumn({
   onStartPagePark,
   onOpenWizard,
   withFoot,
+  active,
+  onActivate,
   className,
 }: PlannerDayColumnProps) {
   const t = useTranslations('planner');
@@ -295,8 +310,32 @@ export function PlannerDayColumn({
     <div
       data-planner-column={parkSlug && date ? `${parkSlug}:${date}` : ''}
       data-planner-column-primary={primary ? '' : undefined}
-      className={cn('flex min-w-0 flex-col', className)}
+      data-planner-column-active={active ? '' : undefined}
+      /* CAPTURE, and `pointerdown` rather than `click`: a drag inside a column
+         never produces a click, and a click that starts on a block is handled by
+         the block. Focus covers the keyboard, which reaches a column through its
+         head. Both are cheap and idempotent — `focusColumn` returns early when
+         the focus does not actually change, which is what keeps a single-column
+         panel from navigating anywhere. */
+      onPointerDownCapture={onActivate}
+      onFocusCapture={onActivate}
+      className={cn('relative flex min-w-0 flex-col', className)}
     >
+      {/* The marker. A 2 px rule along the column's own top edge rather than a
+          tint over the column: everything in here is data a reader is comparing
+          across the two, and dimming the other one to say "not this one" makes
+          the comparison harder for a fact about the pointer.
+
+          `absolute`, so it takes no grid row of the subgrid — see the panel's
+          note — and `-top-px` to sit on the panel's own upper border rather than
+          under it. Drawn only where a second column exists to be told apart
+          from: with one column there is nothing to distinguish. */}
+      {active && (
+        <div
+          className="bg-primary/70 pointer-events-none absolute inset-x-0 -top-px z-20 h-0.5"
+          aria-hidden="true"
+        />
+      )}
       {/* ROW 1 of the panel's subgrid, and it is always an element even where
           it draws nothing: `grid-rows-subgrid` counts CHILDREN, so a column
           that renders `false` here would hand its band to the head's row and

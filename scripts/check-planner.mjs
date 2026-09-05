@@ -4407,6 +4407,57 @@ if (reachable) {
     (await cols.locator(`${SHEET} [data-planner-push]`).count()) <= 1
   );
 
+  // ── The column the reader is working in ────────────────────────────────────
+  // A fact about the pointer, not about the plan: the primary column IS the
+  // plan's active day, so a click that moved THAT would put the same day in both
+  // halves. What hangs on the focus is the marker and the park the page behind
+  // the panel shows — and this run is on `/de`, which is not a park page, so
+  // here it may only move the marker.
+  const activeColumn = () =>
+    cols.evaluate(
+      () =>
+        document
+          .querySelector('[data-planner-column-active]')
+          ?.getAttribute('data-planner-column') ?? null
+    );
+  const firstActive = await activeColumn();
+  check(
+    'die erste Spalte ist zuerst die aktive',
+    firstActive === `${PARK.slug}:${DATE}`,
+    String(firstActive)
+  );
+  const urlBeforeFocus = cols.url();
+  await cols
+    .locator(`${SHEET} [data-planner-column]`)
+    .nth(1)
+    .locator('[data-planner-grid]')
+    .first()
+    .click({ position: { x: 30, y: 30 } });
+  await cols.waitForTimeout(600);
+  const secondActive = await activeColumn();
+  check(
+    'ein Klick in die zweite macht sie zur aktiven',
+    secondActive === `${PARK.slug}:${NEXT_DATE}`,
+    String(secondActive)
+  );
+  check(
+    'genau eine trägt die Markierung',
+    (await cols.locator(`${SHEET} [data-planner-column-active]`).count()) === 1
+  );
+  check(
+    'ohne Parkseite dahinter wird nirgendwohin navigiert',
+    cols.url() === urlBeforeFocus,
+    cols.url()
+  );
+  // Back, so the assertions below find the arrangement they were written for.
+  await cols
+    .locator(`${SHEET} [data-planner-column]`)
+    .first()
+    .locator('[data-planner-grid]')
+    .first()
+    .click({ position: { x: 30, y: 30 } });
+  await cols.waitForTimeout(400);
+
   // Only the second column may be closed. The first is the plan's active day and
   // closing it would leave the panel with nothing to be about.
   check(

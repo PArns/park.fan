@@ -248,6 +248,69 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
   }, [unplannedPagePark]);
 
   /**
+   * Take the page behind the panel to a park's own page.
+   *
+   * Switching subject in the panel is switching subject on the page: the ride
+   * cards a plan is filled from are on the park's own page, and a panel about
+   * Europa-Park in front of Phantasialand's rides is a drag gesture with no
+   * valid target — the grid refuses a ride whose park is not its own.
+   *
+   * Two guards, and both are about not moving a reader who did not ask to be
+   * moved. `pagePark` is `null` on every route that is not park-scoped (the
+   * planner's own page, the blog, the homepage), and there is no park page to
+   * "return" from there. And a target that IS the page's park is a no-op rather
+   * than a reload.
+   */
+  const goToPark = useCallback(
+    (slug: string | null) => {
+      if (!slug || !pagePark || pagePark.slug === slug) return;
+      const target = state.parks[slug];
+      if (!target) return;
+      router.push(
+        `/parks/${target.geo.continent}/${target.geo.country}/${target.geo.city}/${target.slug}` as '/europe/germany/rust/europa-park'
+      );
+    },
+    [pagePark, router, state.parks]
+  );
+
+  /**
+   * Which of the two columns the reader is working in.
+   *
+   * Not the plan's active day, and the difference is the whole point: the
+   * primary column IS `activeParkSlug`, so making a click there change it would
+   * put the same day in both columns. This is a lighter thing — where the
+   * pointer last was — and it decides two things: which column is marked, and
+   * which park the page behind the panel shows.
+   *
+   * Local state rather than the store, so it lives exactly as long as the panel
+   * does. A remembered focus would be a claim about what somebody was doing
+   * yesterday.
+   */
+  const [focusSecond, setFocusSecond] = useState(false);
+  /**
+   * Focus a column, and take the page with it.
+   *
+   * The navigation hangs on the CHANGE, never on the click. With one column
+   * open the focus can never change, so reading Toverland's page with a
+   * Phantasialand plan open and touching the panel does not navigate anywhere —
+   * which is the behaviour that existed before this and had to survive it.
+   */
+  const focusColumn = useCallback(
+    (second: boolean) => {
+      setFocusSecond((was) => {
+        if (was === second) return was;
+        goToPark(second ? (secondColumn?.parkSlug ?? null) : activeParkSlug);
+        return second;
+      });
+    },
+    [goToPark, secondColumn?.parkSlug, activeParkSlug]
+  );
+  // A closed second column cannot be the focused one. Adjusted during render
+  // rather than in an effect — the state is derived from `secondColumn`, and an
+  // effect would leave one render with the marker on a column that is gone.
+  if (focusSecond && !secondColumn) setFocusSecond(false);
+
+  /**
    * The park page's own button, answered.
    *
    * `ParkPlannerLink` in the park header asks for the panel AND for the wizard
@@ -617,16 +680,9 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 setActive(slug, date);
                 setShowOverview(false);
                 // …and go to that park's page, because switching plans is
-                // switching subject: the ride cards a plan is filled from are
-                // on the park's own page, and staying on a different park's
-                // left the panel and the page disagreeing about which park was
-                // being planned. Skipped when it is already the page's park, so
-                // picking another DAY of the park on screen does not reload it.
-                const target = state.parks[slug];
-                if (!target || pagePark?.slug === slug) return;
-                router.push(
-                  `/parks/${target.geo.continent}/${target.geo.country}/${target.geo.city}/${target.slug}` as '/europe/germany/rust/europa-park'
-                );
+                // switching subject — see `goToPark`, which the column focus
+                // uses for the same reason.
+                goToPark(slug);
               }}
               onClearDay={clearDay}
               onNewDay={() => setWizardOpen(true)}
@@ -685,6 +741,8 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                 parkSlug={activeParkSlug}
                 date={activeDate}
                 primary
+                active={Boolean(secondColumn) && !focusSecond}
+                onActivate={() => focusColumn(false)}
                 open={open}
                 withFoot={!isPhone}
                 className="row-span-3 grid grid-rows-subgrid"
@@ -721,6 +779,8 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
                   parkSlug={secondColumn.parkSlug}
                   date={secondColumn.date}
                   primary={false}
+                  active={focusSecond}
+                  onActivate={() => focusColumn(true)}
                   open={open}
                   withFoot={!isPhone}
                   className="border-border/60 animate-in fade-in slide-in-from-right-4 row-span-3 grid grid-rows-subgrid border-l duration-200 ease-out motion-reduce:animate-none"
