@@ -343,7 +343,9 @@ export function createSkyDome(scene: Scene, quality: QualitySettings, rng: Rng):
       );
     }
 
-    starMaterial.alpha = clamp01(state.night * 1.05 - 0.06) * (1 - clamp01(state.cloud * 1.15));
+    // Steeper than `night` itself: core calls it night from about 1.5° below the horizon, where
+    // the western sky is still bright enough that a star field over it reads as dirt on the lens.
+    starMaterial.alpha = clamp01(state.night * 1.7 - 0.62) * (1 - clamp01(state.cloud * 1.15));
     stars.setEnabled(starMaterial.alpha > 0.01);
     if (stars.isEnabled()) {
       // The field turns about the celestial pole with the sun's own azimuth, so it tracks park

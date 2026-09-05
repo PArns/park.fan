@@ -26,16 +26,23 @@ import type { Vec3, WeatherKind } from '../core/types';
 
 // ── Tuning ──────────────────────────────────────────────────────────────────────────────────
 /**
- * Scene-linear gain and desaturation.
+ * Scene-linear gain, shoulder and desaturation.
  *
- * The scattering integral is written in the units the reference shader used, which then applied
- * its own Uncharted2 tone map; this pipeline tone-maps with ACES in `DefaultRenderingPipeline`,
- * so the raw values are rescaled here instead. The desaturation is not a taste knob: the `^1.5`
- * in the in-scattering term stretches the blue/green ratio to about 3.3 where a real clear sky
- * measures 1.4–1.8, and pulling 24 % towards luminance lands it at 1.9.
+ * The scattering integral is written in the units the reference shader used, which then ran its
+ * own Uncharted2 tone map over them; this pipeline tone-maps with ACES in
+ * `DefaultRenderingPipeline`, so without a replacement the raw ratios arrive intact and the sky
+ * is not a sky. Measured at noon before this: zenith 0.31/0.62/1.38 against a horizon of
+ * 5.07/6.25/6.43 — a 6:1 horizon-to-zenith ratio where a real clear sky is nearer 2:1, and every
+ * pixel above the treeline blown to white.
+ *
+ * `SKY_WHITE` is the shoulder: `c / (1 + c/W)` compresses the horizon far more than the zenith
+ * and asymptotes at W, which is the job the reference tone map was doing. The desaturation is not
+ * a taste knob either — the `^1.5` in the in-scattering term stretches blue/green to about 2.2
+ * where a real clear sky measures 1.4–1.8.
  */
-const SKY_GAIN = 0.62;
-const SKY_DESATURATE = 0.24;
+const SKY_GAIN = 0.2;
+const SKY_WHITE = 6;
+const SKY_DESATURATE = 0.3;
 
 const RAYLEIGH_ZENITH_LENGTH = 8.4e3;
 const MIE_ZENITH_LENGTH = 1.25e3;
@@ -44,7 +51,13 @@ const MIE_COEFFICIENT = 0.0053;
 const RAYLEIGH_STRENGTH = 2.0;
 /** Reference solar irradiance of the source model; the gain above rescales it. */
 const SUN_E = 1000;
-const SUN_CUTOFF_ANGLE = Math.PI / 1.95;
+/**
+ * Zenith angle past which the sun contributes nothing — 104.6°, i.e. the sun 14.6° under the
+ * horizon. The reference model's π/1.95 puts it at 92.3°, which switches the whole sky off within
+ * a degree and a half of sunset: measured at 18:30 on day 1 the zenith came out at 0.004/0.005/
+ * 0.007, a black sky at the exact moment a park looks its best.
+ */
+const SUN_CUTOFF_ANGLE = Math.PI / 1.72;
 const SUN_STEEPNESS = 1.5;
 
 /** Rayleigh scattering coefficients per metre for 680/550/450 nm, standard air. */
@@ -158,13 +171,12 @@ export function makeSkyState(input: SkyInputs): SkyState {
   const daylight = 1 - input.night;
   // The ground half of the sphere is not sky and must not be: a cube whose lower faces are blue
   // lights everything from underneath, and the difference between "ambient" and "ambient with a
-  // direction" is exactly this split. Grass-ish albedo, lit by the sky and a slice of the sun.
-  const groundAlbedo: Vec3 = [0.13, 0.15, 0.1];
-  const skyLift = 0.55 * daylight + 0.02;
+  // direction" is exactly this split. These are grass radiances in the same post-gain units the
+  // sky ends up in, not albedos — everything below is added after the shoulder.
   const ground: Vec3 = [
-    groundAlbedo[0] * skyLift * (1 + 0.6 * (1 - input.cloud)),
-    groundAlbedo[1] * skyLift * (1 + 0.5 * (1 - input.cloud)),
-    groundAlbedo[2] * skyLift,
+    mix(0.0045, 0.082, daylight) * (1 - 0.25 * input.cloud),
+    mix(0.005, 0.094, daylight) * (1 - 0.25 * input.cloud),
+    mix(0.006, 0.058, daylight) * (1 - 0.2 * input.cloud),
   ];
 
   return {
@@ -179,10 +191,10 @@ export function makeSkyState(input: SkyInputs): SkyState {
     sunE,
     sunUpMix,
     ground,
-    haze: [0.62, 0.66, 0.72],
-    hazeStrength: 0.05 + 0.34 * input.cloud,
-    nightZenith: [0.0055, 0.0092, 0.0224],
-    nightHorizon: [0.019, 0.026, 0.045],
+    haze: [mix(0.02, 0.5, daylight), mix(0.024, 0.53, daylight), mix(0.032, 0.58, daylight)],
+    hazeStrength: 0.06 + 0.36 * input.cloud,
+    nightZenith: [0.016, 0.026, 0.058],
+    nightHorizon: [0.04, 0.052, 0.09],
     moonGlow: [0.62, 0.7, 0.95],
     overcastTint: [0.9, 0.93, 0.99],
     gain: SKY_GAIN,
@@ -238,14 +250,29 @@ export function evalSky(
   const hgDenom = Math.max(1e-4, 1 - 2 * MIE_G * cosTheta + G2);
   const mPhase = (HG_K * (1 - G2)) / (hgDenom * Math.sqrt(hgDenom));
 
+  let raw0 = 0;
+  let raw1 = 0;
+  let raw2 = 0;
   for (let i = 0; i < 3; i++) {
     const num = (state.betaR[i] * rPhase + state.betaM[i] * mPhase) / state.betaSum[i];
     const a = state.sunE * num * row.oneMinusFex[i];
     const inscatter = a * Math.sqrt(a);
     const b = state.sunE * num * row.fex[i];
     const horizonMix = 1 + (Math.sqrt(b) - 1) * state.sunUpMix;
-    out[i] = (inscatter * horizonMix + 0.1 * row.fex[i]) * 0.04;
+    const value = (inscatter * horizonMix + 0.1 * row.fex[i]) * 0.04;
+    if (i === 0) raw0 = value;
+    else if (i === 1) raw1 = value;
+    else raw2 = value;
   }
+  // Shoulder, desaturation and gain, in that order. Everything added after this — night, haze,
+  // ground — is already written in the compressed units, so it is not squashed twice.
+  const rawLum = raw0 * 0.2126 + raw1 * 0.7152 + raw2 * 0.0722;
+  const c0 = mix(raw0, rawLum, SKY_DESATURATE);
+  const c1 = mix(raw1, rawLum, SKY_DESATURATE);
+  const c2 = mix(raw2, rawLum, SKY_DESATURATE);
+  out[0] = (c0 / (1 + c0 / SKY_WHITE)) * state.gain;
+  out[1] = (c1 / (1 + c1 / SKY_WHITE)) * state.gain;
+  out[2] = (c2 / (1 + c2 / SKY_WHITE)) * state.gain;
 
   // Night. The scattering term is ~0 once the sun is under the horizon, and a park at 03:00 that
   // renders black is a bug report, not a night. Deep blue with a moon halo, faded in by `night`.
@@ -268,10 +295,8 @@ export function evalSky(
   // Horizon haze. Real air is not clear at 20 km, and without this the dome meets the terrain at
   // a hard line that no amount of distance fog hides.
   const hazeBand = Math.pow(1 - Math.min(1, Math.abs(dy)), 7);
-  const hazeAmount = hazeBand * state.hazeStrength * (0.15 + 0.85 * (1 - state.night));
-  for (let i = 0; i < 3; i++) {
-    out[i] = mix(out[i], state.haze[i] * (0.35 + 0.65 * (1 - state.night)), hazeAmount);
-  }
+  const hazeAmount = hazeBand * state.hazeStrength;
+  for (let i = 0; i < 3; i++) out[i] = mix(out[i], state.haze[i], hazeAmount);
 
   // Cloud cover flattens the sky towards a bright grey long before a single cloud is drawn.
   if (state.cloud > 0.01) {
@@ -289,10 +314,9 @@ export function evalSky(
     for (let i = 0; i < 3; i++) out[i] = mix(out[i], state.ground[i], g);
   }
 
-  const lum = out[0] * 0.2126 + out[1] * 0.7152 + out[2] * 0.0722;
-  for (let i = 0; i < 3; i++) {
-    out[i] = Math.max(0, mix(out[i], lum, SKY_DESATURATE) * state.gain);
-  }
+  out[0] = Math.max(0, out[0]);
+  out[1] = Math.max(0, out[1]);
+  out[2] = Math.max(0, out[2]);
 }
 
 /** One-off evaluation for callers that need a single direction (fog colour, ambient probes). */

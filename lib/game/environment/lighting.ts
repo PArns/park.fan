@@ -4,7 +4,8 @@
  * `core/renderer.ts` creates a directional sun, a `HemisphericLight` at 0.5 and a cascaded shadow
  * generator, and `applyEnvironment` writes to all three every time the clock moves. This module's
  * `onEnvironment` runs immediately after that call (see the loop in `core/host.ts`), which is what
- * makes it possible to own these numbers without owning the file.
+ * makes it possible to own these numbers without owning the file. The four objects arrive through
+ * `ctx.lights`; they used to be found by name, which was a contract in string literals.
  *
  * The hemispheric light is not removed, it is turned down to a fill of 0.10–0.25 with the sky's
  * own zenith and ground colours. The ambient proper comes from the IBL cube; what the hemisphere
@@ -16,27 +17,30 @@
  * screenshot harness) snaps instead, since nothing is adapting to that.
  */
 
-// `camera.getForwardRay()` below is one of Babylon's side-effect APIs: with deep imports the Ray
-// class is not linked unless something imports it, and the call throws "Ray needs to be imported
-// before as it contains a side-effect required by your code" — at 60 Hz, from inside onRender, so
-// it is thirteen console errors a second and a scene nobody else can screenshot against.
-// Added by the integrator to unblock the branch; the allocation it implies is STATUS.json's.
-import '@babylonjs/core/Culling/ray';
 import { DirectionalLight } from '@babylonjs/core/Lights/directionalLight';
 import { ShadowGenerator } from '@babylonjs/core/Lights/Shadows/shadowGenerator';
 import { Color3 } from '@babylonjs/core/Maths/math.color';
 import { Vector3 } from '@babylonjs/core/Maths/math.vector';
 import type { HemisphericLight } from '@babylonjs/core/Lights/hemisphericLight';
 import type { CascadedShadowGenerator } from '@babylonjs/core/Lights/Shadows/cascadedShadowGenerator';
+import type { DefaultRenderingPipeline } from '@babylonjs/core/PostProcesses/RenderPipeline/Pipelines/defaultRenderingPipeline';
 import type { Scene } from '@babylonjs/core/scene';
-import type { EnvironmentState, QualitySettings, Vec3 } from '../core/types';
+import type { EnvironmentState, MainContext, QualitySettings, Vec3 } from '../core/types';
 import { sampleSky, type SkyState } from './sky-model';
 import { clamp01, mix, smoothstep } from './noise';
 
-/** Middle-grey target for the auto exposure; the rest of the curve hangs off it. */
-const EXPOSURE_KEY = 0.6;
+/**
+ * Auto exposure.
+ *
+ * The key is measured against a scene estimate, not against the sky alone: a sunlit park is lit
+ * mostly by the sun, and metering off the sky's mean luminance opened up two stops at noon and
+ * blew the whole upper half of the frame to white. `0.18` is the grey card, `1.6` turns the sky's
+ * mean radiance into a rough irradiance, and `0.55` is the average cosine over surfaces that are
+ * not all facing the sun. The `^0.7` is what stops a dusk sky from metering as if it were night.
+ */
+const EXPOSURE_KEY = 0.364;
 const EXPOSURE_MIN = 0.55;
-const EXPOSURE_MAX = 3.1;
+const EXPOSURE_MAX = 2.8;
 /** Seconds to cross most of an exposure change. */
 const EXPOSURE_TAU = 0.55;
 
@@ -56,10 +60,15 @@ export interface LightingHandle {
   dispose(): void;
 }
 
-export function createLighting(scene: Scene, quality: QualitySettings): LightingHandle {
-  const sun = scene.getLightByName('sun') as DirectionalLight | null;
-  const hemi = scene.getLightByName('sky') as HemisphericLight | null;
-  const shadow = (sun?.getShadowGenerator?.() ?? null) as CascadedShadowGenerator | null;
+export function createLighting(
+  scene: Scene,
+  quality: QualitySettings,
+  lights: MainContext['lights']
+): LightingHandle {
+  const sun = (lights.sun ?? null) as DirectionalLight | null;
+  const hemi = (lights.hemi ?? null) as HemisphericLight | null;
+  const shadow = (lights.shadow ?? null) as CascadedShadowGenerator | null;
+  const pipeline = (lights.pipeline ?? null) as DefaultRenderingPipeline | null;
 
   // A second directional light for the moon. Without it a clear night is lit from nowhere: the
   // IBL alone gives shape but no direction, and moonlight is directional enough to read.
@@ -94,7 +103,6 @@ export function createLighting(scene: Scene, quality: QualitySettings): Lighting
     }
   }
 
-  const pipeline = findPipeline(scene);
   const imageProcessing = scene.imageProcessingConfiguration;
   let exposure = imageProcessing.exposure || 1;
   let exposureTarget = exposure;
@@ -155,8 +163,12 @@ export function createLighting(scene: Scene, quality: QualitySettings): Lighting
       pipeline.bloomWeight = 0.24 + 0.3 * env.night;
     }
 
+    const sunLuminance =
+      env.sunIntensity *
+      (env.sunColor[0] * 0.2126 + env.sunColor[1] * 0.7152 + env.sunColor[2] * 0.0722);
+    const sceneKey = 0.18 * (meanLuminance * 1.6 + sunLuminance * 0.55);
     exposureTarget = clamp(
-      EXPOSURE_KEY / Math.pow(Math.max(0.006, meanLuminance) + 0.02, 0.62),
+      EXPOSURE_KEY / Math.pow(Math.max(0.0035, sceneKey), 0.7),
       EXPOSURE_MIN,
       EXPOSURE_MAX
     );
@@ -217,25 +229,4 @@ export function createLighting(scene: Scene, quality: QualitySettings): Lighting
 
 function clamp(v: number, lo: number, hi: number): number {
   return v < lo ? lo : v > hi ? hi : v;
-}
-
-interface BloomPipeline {
-  name: string;
-  bloomThreshold: number;
-  bloomWeight: number;
-}
-
-/**
- * `DefaultRenderingPipeline` lives in `core/renderer.ts` and is not handed to modules, but it is
- * registered on the scene by name, which is a public lookup and not a reach into another module's
- * internals.
- */
-function findPipeline(scene: Scene): BloomPipeline | null {
-  try {
-    const manager = scene.postProcessRenderPipelineManager;
-    const found = manager?.supportedPipelines?.find((p) => p.name === 'default');
-    return (found as unknown as BloomPipeline) ?? null;
-  } catch {
-    return null;
-  }
 }

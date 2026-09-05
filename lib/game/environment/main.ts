@@ -80,7 +80,7 @@ export function createEnvironmentMain(ctx: MainContext): MainHandle {
 
   const dome: SkyDomeHandle = createSkyDome(scene, ctx.quality, ctx.rng.fork('sky'));
   const ibl = createIbl(scene, ctx.quality);
-  const lighting = createLighting(scene, ctx.quality);
+  const lighting = createLighting(scene, ctx.quality, ctx.lights);
   const precipitation = createPrecipitation(scene, ctx.quality);
   const surfaces = createSurfaces(scene);
 
@@ -160,6 +160,8 @@ export function createEnvironmentMain(ctx: MainContext): MainHandle {
       cloud: view.cloud,
       wetness: view.wetness,
       temperatureC: view.temperatureC,
+      intensity: view.intensity,
+      windMs: view.windMs,
     });
   }
 

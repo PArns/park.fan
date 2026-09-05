@@ -267,8 +267,7 @@
     "demo-park is a terrain shaper, not yet a park.",
     "The 48-park-hour soak runs 576 ticks at 100x; once guests exist it should also run at a lower speed for more integration steps per park-hour.",
     "HUD overflows a phone: measured at 390x844 the top-right cash pill runs off the right edge and 'Day 1' wraps to two lines. Belongs to the ui module.",
-    "The graphics-preset notice is clipped at both ends at 390 px, between the feedback widget and the bottom-right corner. The brand mark stepped out of that row (hidden below sm); the notice itself is still the ui module's to place.",
-    "environment/lighting.ts calls camera.getForwardRay(1) once per frame, which allocates a Ray every frame inside onRender. The integrator added the missing '@babylonjs/core/Culling/ray' side-effect import to unblock the branch (it threw 13 console errors a second and poisoned every other builder's screenshots); the allocation is the environment module's to remove — getDirectionToRef into a hoisted ref needs neither the import nor the garbage."
+    "The graphics-preset notice is clipped at both ends at 390 px, between the feedback widget and the bottom-right corner. The brand mark stepped out of that row (hidden below sm); the notice itself is still the ui module's to place."
   ],
   "history": [
     {
