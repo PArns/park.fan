@@ -123,16 +123,43 @@ export function createTerrainMain(ctx: MainContext): MainHandle {
   );
   let waterTriangles = water.rebuild();
 
-  // Cast the sun's shadow from the proxy rather than from the 64 drawn chunks: one mesh per
-  // cascade instead of 64, and the proxy is stride 2, so a hillside shadows the valley behind it
-  // without the shadow map paying for every ridge the camera can see.
-  const sun = scene.getLightByName('sun') as IShadowLight | null;
-  const shadowGenerator = sun?.getShadowGenerator?.();
-  if (meshes.shadowProxy && shadowGenerator && 'addShadowCaster' in shadowGenerator) {
-    (
-      shadowGenerator as { addShadowCaster(m: Mesh, includeChildren?: boolean): unknown }
-    ).addShadowCaster(meshes.shadowProxy, false);
+  /**
+   * The `environment` module owns the sun and its cascades, and is created after this one — its
+   * api does not exist yet at `main()` time, so the wiring waits for the first `onEnvironment`,
+   * which core sends once every module is up. Falling back to the light core itself created keeps
+   * the terrain lit and shadowed when environment is a stub.
+   */
+  interface EnvironmentApi {
+    addShadowCaster?(mesh: unknown, includeDescendants?: boolean): void;
+    excludeMaterial?(material: unknown): void;
   }
+  let wired = false;
+  const wireEnvironment = () => {
+    if (wired) return;
+    wired = true;
+    const env = ctx.module<EnvironmentApi>('environment');
+    // Cast the sun's shadow from the proxy rather than from the 64 drawn chunks: one mesh per
+    // cascade instead of 64, and the proxy is stride 2, so a hillside shadows the valley behind
+    // it without the shadow map paying for every ridge the camera can see.
+    if (meshes.shadowProxy) {
+      if (env?.addShadowCaster) {
+        env.addShadowCaster(meshes.shadowProxy, false);
+      } else {
+        const sun = scene.getLightByName('sun') as IShadowLight | null;
+        const generator = sun?.getShadowGenerator?.();
+        if (generator && 'addShadowCaster' in generator) {
+          (
+            generator as { addShadowCaster(m: Mesh, includeChildren?: boolean): unknown }
+          ).addShadowCaster(meshes.shadowProxy, false);
+        }
+      }
+    }
+    // The wet-surface pass raises roughness on every material it can reach; the splat writes
+    // roughness per pixel, so that pass would be overwritten on the ground and doubled on the
+    // lake. The terrain applies `env.wetness` itself, in the shader, and opts out here.
+    env?.excludeMaterial?.(ground.material);
+    env?.excludeMaterial?.(water.material);
+  };
 
   let probe: EnvProbe | null = null;
   const applyProbe = (env: EnvironmentState) => {
@@ -218,6 +245,7 @@ export function createTerrainMain(ctx: MainContext): MainHandle {
   return {
     api,
     onEnvironment(env) {
+      wireEnvironment();
       ground.setWetness(env.wetness);
       water.applyEnvironment(env);
       applyProbe(env);

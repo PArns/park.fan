@@ -1,48 +1,23 @@
 /**
- * Environment module: sun cycle, sky, IBL, weather, seasons, fog.
- * PLACEHOLDER owned by the environment builder — the sim half already carries weather state so
- * the rest of the game can read it; the renderer half is the builder's.
+ * Environment module: sun, procedural sky, IBL, weather, seasons, fog, shadows, exposure.
+ *
+ * Import-safe on the worker — the sim half is a plain function over pure files, and every line
+ * that touches Babylon sits behind a dynamic import.
  */
 
-import type { GameModule, SimContext, SimHandle, WeatherKind } from '../core/types';
-import { computeEnvironment } from '../core/sun';
-
-interface EnvironmentSlot {
-  weather: WeatherKind;
-  forced?: boolean;
-}
+import type { GameModule } from '../core/types';
+import { createEnvironmentSim } from './sim';
 
 export const environmentModule: GameModule = {
   id: 'environment',
   deps: ['core'],
-  sim(ctx: SimContext): SimHandle {
-    const slot = (): EnvironmentSlot => {
-      const s = ctx.world.modules.environment as EnvironmentSlot | undefined;
-      if (s) return s;
-      const fresh: EnvironmentSlot = { weather: 'clear' };
-      ctx.world.modules.environment = fresh;
-      return fresh;
-    };
-    return {
-      api: {
-        current: () =>
-          computeEnvironment({
-            minute: ctx.world.clock.minute,
-            day: ctx.world.clock.day,
-            weather: slot().weather,
-          }),
-      },
-      tick() {},
-      command(cmd) {
-        if (cmd.type === 'environment:weather') {
-          slot().weather = (cmd.payload as { weather: WeatherKind }).weather;
-          slot().forced = true;
-          return true;
-        }
-        return false;
-      },
-      serialize: () => slot(),
-    };
-  },
+  sim: createEnvironmentSim,
   main: async (ctx) => (await import('./main')).createEnvironmentMain(ctx),
+  showcase: async (ctx) => (await import('./showcase')).stageEnvironmentShowcase(ctx),
 };
+
+export type { EnvironmentSimApi, WeatherChangedEvent } from './sim';
+export type { EnvironmentMainApi } from './main';
+export type { WeatherSlot } from './weather-model';
+export { WEATHER_KINDS, cloudFor, isSnowing, SNOW_TEMPERATURE_C } from './weather-model';
+export { seasonFoliageTint, turbidityFor } from './sky-model';

@@ -103,14 +103,15 @@ export function createLighting(scene: Scene, quality: QualitySettings): Lighting
   ): void {
     const day = 1 - env.night;
     if (sun) {
-      // Core has already written direction, colour and intensity from the state this module
-      // returned; what is left is the specular, which should not be the sun's full power on a
-      // clear noon or every kerb edge gets a highlight.
-      sun.specular.set(
-        env.sunColor[0] * 0.65,
-        env.sunColor[1] * 0.65,
-        env.sunColor[2] * 0.65
-      );
+      // The sun is written here in full rather than left to core's `applyEnvironment`, because a
+      // weather change arrives as an event and does not re-run that call: a shower would darken
+      // the sky and leave the light at its clear-sky intensity until the clock ticked again.
+      sun.direction.set(env.sunDirection[0], env.sunDirection[1], env.sunDirection[2]);
+      sun.diffuse.set(env.sunColor[0], env.sunColor[1], env.sunColor[2]);
+      // Specular is held under diffuse: at full strength every kerb edge on a clear noon becomes
+      // a highlight, and the IBL is already supplying the sky's share of the reflection.
+      sun.specular.set(env.sunColor[0] * 0.65, env.sunColor[1] * 0.65, env.sunColor[2] * 0.65);
+      sun.intensity = env.sunIntensity;
       sun.shadowEnabled = env.sunElevation > 0.035 && env.sunIntensity > 0.05;
     }
     if (hemi) {
