@@ -30,7 +30,6 @@ import { stripNewPrefix } from '@/lib/utils';
 import { LiveParkData } from '@/components/parks/live-park-data';
 import { ParkBlogPostsSection } from '@/components/parks/blog-posts-sections';
 import { ParkFAQSection } from '@/components/faq/park-faq-section';
-import { Separator } from '@/components/ui/separator';
 import type { Locale } from '@/i18n/config';
 import { ParkPageShell } from '@/components/parks/park-page-shell';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
@@ -374,21 +373,21 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
           />
         }
         faqSection={
-          <>
-            <Separator className="my-8" />
-            <ParkFAQSection
-              park={park}
-              locale={locale}
-              continent={continent}
-              country={country}
-              city={city}
-              parkSlug={parkSlug}
-              glossaryTerms={faqGlossaryTerms}
-              glossarySegment={glossarySegment}
-              initialCalendar={null}
-              seedNowMs={seedNowMs}
-            />
-          </>
+          /* No `<Separator>` in front of it any more: the FAQ is a `ChapterPanel` now, so it
+             carries its own box and the chapter rhythm every other chapter on the page uses. A
+             rule above a box is a rule drawn against nothing. */
+          <ParkFAQSection
+            park={park}
+            locale={locale}
+            continent={continent}
+            country={country}
+            city={city}
+            parkSlug={parkSlug}
+            glossaryTerms={faqGlossaryTerms}
+            glossarySegment={glossarySegment}
+            initialCalendar={null}
+            seedNowMs={seedNowMs}
+          />
         }
         head={
           <>

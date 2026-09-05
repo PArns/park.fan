@@ -1,8 +1,9 @@
 import { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
 import type { Locale } from '@/i18n/config';
 import { getLocale, getTranslations } from 'next-intl/server';
-import { ChevronDown, MapPin, Clock, Users, Zap, HelpCircle } from 'lucide-react';
+import { MapPin, Clock, Users, Zap, HelpCircle } from 'lucide-react';
 import { ChapterPanel } from '@/components/common/chapter-panel';
+import { FaqAccordion } from '@/components/faq/faq-accordion';
 import { stripNewPrefix } from '@/lib/utils';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { buildAttractionFaqItems, type AttractionFaqIconName } from '@/lib/faq/attraction-faq';
@@ -34,37 +35,22 @@ export async function AttractionFAQSection({ attraction, park }: AttractionFAQSe
   if (faqs.length === 0) return null;
 
   return (
-    /* One box, and the questions are rows in it. They were a band with a stack of separate
-       `Card`s under it — a chapter title floating over five smaller boxes, each drawing its own
-       border over the ride's hero photo. `divide-y` gives the same separation the panel grids
-       use, and the whole row stays the summary's click target. The id is what the chapter row at
-       the top of the page jumps to; `ChapterPanel` brings the sticky-header scroll offset. */
+    /* One box, and the questions are rows in it — see `FaqAccordion`, which every FAQ on the site
+       now draws. The id is what the chapter row at the top of the page jumps to; `ChapterPanel`
+       brings the sticky-header scroll offset with it. */
     <ChapterPanel
       icon={HelpCircle}
       title={t('title', { attraction: attractionName })}
       id="faq"
-      bodyClassName="divide-border/50 divide-y p-0"
+      bodyClassName="p-0"
     >
-      {faqs.map((faq, index) => {
-        const Icon = ICON_MAP[faq.iconName];
-        return (
-          <details key={index} className="group">
-            <summary className="hover:bg-muted/40 flex cursor-pointer list-none items-center justify-between gap-3 p-4 transition-colors @min-[768px]/page:px-6">
-              <div className="flex items-center gap-3">
-                <Icon className="text-primary h-5 w-5 shrink-0" aria-hidden="true" />
-                <span className="text-left font-medium">{faq.question}</span>
-              </div>
-              <ChevronDown
-                className="text-muted-foreground h-5 w-5 shrink-0 transition-transform group-open:rotate-180"
-                aria-hidden="true"
-              />
-            </summary>
-            <div className="text-muted-foreground border-border/50 border-t px-4 pt-3 pb-4 @min-[768px]/page:px-6">
-              <GlossaryInject>{faq.answer}</GlossaryInject>
-            </div>
-          </details>
-        );
-      })}
+      <FaqAccordion
+        items={faqs.map((faq) => ({
+          icon: ICON_MAP[faq.iconName],
+          question: faq.question,
+          answer: <GlossaryInject>{faq.answer}</GlossaryInject>,
+        }))}
+      />
     </ChapterPanel>
   );
 }
