@@ -18,7 +18,7 @@ import { usePlanner } from '@/lib/planner/use-planner';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { occupiedMinutes } from '@/lib/planner/estimate';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
-import { useRouter } from '@/i18n/navigation';
+import { usePathname, useRouter } from '@/i18n/navigation';
 import { buildDayGrid, growGridForSpans, nextFreeStart } from '@/lib/planner/day-grid';
 import { addDays, resolveTimeZone } from '@/lib/planner/park-time';
 import { useRideDragSource } from '@/lib/planner/use-ride-drag-source';
@@ -31,6 +31,7 @@ import {
   plannerSecondColumn,
 } from '@/lib/planner/second-column';
 import { plannerPagePark } from '@/lib/planner/page-park';
+import { PLANNER_CANONICAL_SEGMENT } from '@/lib/planner/segments';
 import { plannerUi } from '@/lib/planner/ui-store';
 import { cn } from '@/lib/utils';
 
@@ -97,6 +98,16 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
 
   const isPhone = useMediaQuery('(max-width: 639px)');
   const router = useRouter();
+  /**
+   * Whether the page behind the panel is the planner's own.
+   *
+   * `usePathname` from `@/i18n/navigation` answers WITHOUT the locale prefix, so
+   * one comparison covers all six — and it is the canonical segment that comes
+   * back even on `/de/tagesplaner`, because the localized paths are rewrites
+   * onto the English route folder.
+   */
+  const pathname = usePathname();
+  const isPlannerPage = pathname.startsWith(`/${PLANNER_CANONICAL_SEGMENT}`);
 
   const panelWidth = useSyncExternalStore(
     plannerPanelWidth.subscribe,
@@ -277,22 +288,34 @@ export function PlannerFlyout({ open, onOpenChange }: PlannerFlyoutProps) {
    * Europa-Park in front of Phantasialand's rides is a drag gesture with no
    * valid target — the grid refuses a ride whose park is not its own.
    *
-   * Two guards, and both are about not moving a reader who did not ask to be
-   * moved. `pagePark` is `null` on every route that is not park-scoped (the
-   * planner's own page, the blog, the homepage), and there is no park page to
-   * "return" from there. And a target that IS the page's park is a no-op rather
-   * than a reload.
+   * It used to refuse wherever `plannerPagePark` was `null` — every route that
+   * is not park-scoped — on the reasoning that there is no park page to return
+   * from. That was the wrong half of the question and it was reported from the
+   * homepage: two columns open, Toverland in the right one, and clicking it did
+   * nothing at all. Whether the page in front of the reader is a park page has
+   * no bearing on whether they want the park they just clicked; what decides it
+   * is that the columns are the subject and the page is where the rides come
+   * from.
+   *
+   * Two guards are left. A target that is already the page's park is a no-op
+   * rather than a reload. And the planner's own page is not left at all — see
+   * `isPlannerPage`.
    */
   const goToPark = useCallback(
     (slug: string | null) => {
-      if (!slug || !pagePark || pagePark.slug === slug) return;
+      if (!slug || pagePark?.slug === slug) return;
+      // The planner's OWN page is the one route this may not leave. Everywhere
+      // else the page is a place to drag rides out of and following the panel
+      // is the point; there, the page IS the panel's subject and navigating
+      // away would close the thing somebody just opened.
+      if (isPlannerPage) return;
       const target = state.parks[slug];
       if (!target) return;
       router.push(
         `/parks/${target.geo.continent}/${target.geo.country}/${target.geo.city}/${target.slug}` as '/europe/germany/rust/europa-park'
       );
     },
-    [pagePark, router, state.parks]
+    [pagePark?.slug, isPlannerPage, router, state.parks]
   );
 
   /**
