@@ -114,13 +114,17 @@ function buildChunkData(
       const v10 = v00 + 1;
       const v01 = v00 + w;
       const v11 = v01 + 1;
-      // Counter-clockwise seen from +Y, which is front-facing in the right-handed scene core sets.
+      // Same winding Babylon's own `CreateGround` emits. In this scene (`useRightHandedSystem`
+      // with a right-handed projection) an up-facing triangle's cross(v1-v0, v2-v0) points DOWN,
+      // which is the opposite of the intuition and is what the first version got wrong: every
+      // chunk top was back-face culled and the park rendered as a grid of black holes with the
+      // skirts still standing.
       indices[at++] = v00;
-      indices[at++] = v01;
-      indices[at++] = v10;
       indices[at++] = v10;
       indices[at++] = v01;
+      indices[at++] = v10;
       indices[at++] = v11;
+      indices[at++] = v01;
     }
   }
 
@@ -151,12 +155,13 @@ function buildChunkData(
       const t1 = edge.get(n + 1);
       const s0 = first + n;
       const s1 = first + n + 1;
-      // cross(T1 - T0, S0 - T0) with S0 = T0 - (0, D, 0) is (ez·D, 0, -ex·D): the face normal of
-      // (t0, t1, s0). Flip the pair when it points into the chunk instead of out of it.
+      // cross(T1 - T0, S0 - T0) with S0 = T0 - (0, D, 0) is (ez·D, 0, -ex·D). Front faces in this
+      // scene are the ones whose cross points AWAY from the visible side (see the grid above), so
+      // the pair to emit is the one whose cross points back INTO the chunk.
       const ex = positions[t1 * 3] - positions[t0 * 3];
       const ez = positions[t1 * 3 + 2] - positions[t0 * 3 + 2];
-      const outward = ez * edge.outward[0] - ex * edge.outward[1] >= 0;
-      if (outward) {
+      const crossPointsOut = ez * edge.outward[0] - ex * edge.outward[1] >= 0;
+      if (!crossPointsOut) {
         indices[at++] = t0;
         indices[at++] = t1;
         indices[at++] = s0;
@@ -289,11 +294,11 @@ function buildProxyData(t: TerrainData, stride: number): Surface {
     for (let a = 0; a < perSide; a++) {
       const v00 = b * w + a;
       indices[at++] = v00;
-      indices[at++] = v00 + w;
-      indices[at++] = v00 + 1;
       indices[at++] = v00 + 1;
       indices[at++] = v00 + w;
+      indices[at++] = v00 + 1;
       indices[at++] = v00 + w + 1;
+      indices[at++] = v00 + w;
     }
   }
   return { positions, normals, indices };

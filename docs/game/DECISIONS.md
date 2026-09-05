@@ -22,3 +22,27 @@ not re-litigate it.
 | 14  | Fan-out uses the Agent tool with one builder per module and one critic per round, coordinated from this session; scores go to `docs/game/STATUS.json`                    | The brief asks for it ("ultracode"). Each builder is told the folder it owns and is refused anything outside it; the integrator (this session) is the only writer of `lib/game/core`, `app/game` and shared files.                                                                                                                   |
 | 15  | Mobile: the game loads on phones with the `low` preset and touch camera controls, but the build tools are desktop-first                                                  | The brief asks for an honest warning rather than a white screen; a full touch build UI is not in scope for round one.                                                                                                                                                                                                                |
 | 16  | Babylon `@babylonjs/core` 9.25.0, `@babylonjs/loaders` (glTF), `@babylonjs/gui` (world-space labels only)                                                                | Latest 9.x on 2026-09-05. `@babylonjs/materials` is not used: water, terrain and glass are custom `ShaderMaterial`/`NodeMaterial`-free GLSL+WGSL-compatible materials via `CustomMaterial`/`PBRCustomMaterial` where possible so WebGPU and WebGL2 share one source.                                                                 |
+
+**D-019 — `app/api/game/**` is not built yet, and the flag stays off.**
+The brief calls blueprint sharing optional and flag-gated, and the game is fully playable without
+it: IndexedDB saves plus JSON export/import need no server at all. What it would take to do
+properly is the reason it is not a side quest — a `POST` that accepts a blueprint is a **public
+write endpoint**, and this repo already knows what one costs. `/contribute` is behind a Turnstile
+challenge whose **action and hostname** are checked rather than just `success: true`, because a
+token solved on one form is otherwise a vending machine for another (CLAUDE.md → the admin rule).
+A sharing endpoint needs that, plus a size cap, a shape validation that never executes what it
+parses (a blueprint is a recorded command list), a rate limit, and a decision about who can delete
+what. Shipping a version without them because the flag defaults to off would put an unauthenticated
+blob upload one environment variable away from being live.
+*What it would look like:* `POST /api/game/blueprints` and `GET /api/game/blueprints/[id]`, storage
+in Vercel Blob (already a dependency, no new runtime service), Turnstile with its own
+`TURNSTILE_ACTIONS` entry, a zod-validated command list capped at a few hundred KB, and 404 on
+every verb while `GAME_SHARING_ENABLED` is false. *Reversed by:* somebody wanting the feature
+enough to review that surface.
+
+**D-020 — The live-park seed adapter is deferred on the same grounds, minus the security half.**
+It is optional, flag-gated (`GAME_LIVE_SEED_ENABLED`), and must never block boot — so it is a
+command sent *after* `world:ready`, never an await in the boot path. The reason it is not built yet
+is ordering rather than risk: seeding a park from real park.fan data means placing rides, paths and
+shops, and the modules that own those are still being written. Building the adapter against
+placeholder modules would mean writing it twice.

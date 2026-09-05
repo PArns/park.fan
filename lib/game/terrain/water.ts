@@ -170,11 +170,11 @@ export function createWaterSurface(
       const v01 = used[quads[q + 2]];
       const v11 = used[quads[q + 3]];
       indices[ix++] = v00;
-      indices[ix++] = v01;
-      indices[ix++] = v10;
       indices[ix++] = v10;
       indices[ix++] = v01;
+      indices[ix++] = v10;
       indices[ix++] = v11;
+      indices[ix++] = v01;
     }
 
     const data = new VertexData();
