@@ -1,46 +1,275 @@
 {
-  "updatedAt": "2026-09-05T12:10:00Z",
-  "wave": 1,
-  "gate": { "pass": 8.5, "maxRounds": 4 },
-  "baseline": {
-    "build": { "commit": "f0c2754", "chunksBytes": 6873094, "compileSeconds": 24.4 },
-    "note": "pnpm build on the clean tree before any game code; .next/static/chunks total"
+  "_note": "The scoreboard. Scores are the critics' real numbers including failed rounds; a module with score null has not been graded yet. Numbers here are measured, never estimated — the commands that produced each one are named.",
+  "updatedAtCommit": "e823ece",
+  "gate": {
+    "pass": 8.5,
+    "maxRounds": 4,
+    "requires": [
+      "score >= 8.5",
+      "zero console errors",
+      "budget met",
+      "extensibility check passed"
+    ]
+  },
+  "bundle": {
+    "command": "pnpm build && pnpm game:bundle",
+    "before": {
+      "tree": "main (clean, no game)",
+      "sharedChunks": 6,
+      "sharedBytes": 442012,
+      "totalChunkBytes": 6416830,
+      "babylonChunks": 0
+    },
+    "after": {
+      "tree": "this branch",
+      "sharedChunks": 6,
+      "sharedBytes": 442012,
+      "totalChunkBytes": 10773484,
+      "babylonChunks": 5,
+      "babylonBytes": 853503
+    },
+    "claim": "the shared bundle is byte-identical; every route outside /game pays nothing",
+    "sharedDelta": 0
+  },
+  "soak": {
+    "command": "pnpm game:soak",
+    "hours": 48,
+    "speed": 100,
+    "ticks": 576,
+    "meanTickMs": 0.005,
+    "maxTickMs": 0.341,
+    "budgetTickMs": 6,
+    "assertionsPassed": 9,
+    "assertionsTotal": 9,
+    "notMeasured": [
+      "stuckGuests / guests — no guests module api yet",
+      "unreachableQueues — no paths module api yet"
+    ]
+  },
+  "harness": {
+    "command": "node scripts/game-shot.mjs --cam=overview --tod=12:00",
+    "readFrom": ".game-render/logo/report.json",
+    "bootMs": 3077,
+    "consoleErrors": 0,
+    "hydrationWarnings": 0,
+    "drawCalls": 7,
+    "triangles": 32768,
+    "activeMeshes": 1,
+    "engine": "webgl2",
+    "preset": "medium",
+    "note": "7 draw calls and 1 active mesh is terrain and nothing else — the honest baseline before wave 1 lands. fps in headless Chromium is SwiftShader and means nothing; draw calls and triangles are what the budget is read from."
+  },
+  "budget": {
+    "fps": 50,
+    "drawCalls": 1200,
+    "simTickMs": 6,
+    "coldRouteToInteractiveSeconds": 8
   },
   "modules": {
     "core": {
       "wave": 1,
-      "owner": "integrator",
-      "round": 1,
-      "score": null,
       "status": "built",
-      "notes": "engine, worker sim, protocol, registry, save/load, harness"
+      "round": 0,
+      "score": null,
+      "consoleErrors": null,
+      "extensibilityPass": null,
+      "owner": "integrator"
     },
-    "terrain": { "wave": 1, "round": 1, "score": null, "status": "building" },
-    "environment": { "wave": 1, "round": 1, "score": null, "status": "building" },
-    "ui": { "wave": 1, "round": 1, "score": null, "status": "building" },
-    "audio": { "wave": 1, "round": 1, "score": null, "status": "building" },
-    "effects": { "wave": 1, "round": 1, "score": null, "status": "building" },
-    "paths": { "wave": 2, "status": "pending" },
-    "pools": { "wave": 2, "status": "pending" },
-    "track": { "wave": 2, "status": "pending" },
-    "buildings": { "wave": 2, "status": "pending" },
-    "scenery": { "wave": 2, "status": "pending" },
-    "shops": { "wave": 2, "status": "pending" },
-    "rides": { "wave": 3, "status": "pending" },
-    "flumes": { "wave": 3, "status": "pending" },
-    "trains": { "wave": 3, "status": "pending" },
-    "guests": { "wave": 3, "status": "pending" },
-    "staff": { "wave": 3, "status": "pending" },
-    "management": { "wave": 3, "status": "pending" },
-    "overlays": { "wave": 3, "status": "pending" },
-    "tools": { "wave": 4, "status": "pending" },
-    "camera": { "wave": 4, "status": "placeholder" },
-    "scenarios": { "wave": 4, "status": "pending" },
-    "persistence": { "wave": 4, "status": "pending" },
-    "demo-park": { "wave": 5, "status": "placeholder" }
+    "terrain": {
+      "wave": 1,
+      "status": "built",
+      "round": 0,
+      "score": null,
+      "consoleErrors": null,
+      "extensibilityPass": null
+    },
+    "environment": {
+      "wave": 1,
+      "status": "built",
+      "round": 0,
+      "score": null,
+      "consoleErrors": null,
+      "extensibilityPass": null
+    },
+    "ui": {
+      "wave": 1,
+      "status": "built",
+      "round": 0,
+      "score": null,
+      "consoleErrors": null,
+      "extensibilityPass": null
+    },
+    "camera": {
+      "wave": 1,
+      "status": "built",
+      "round": 0,
+      "score": null,
+      "consoleErrors": null,
+      "extensibilityPass": null
+    },
+    "audio": {
+      "wave": 4,
+      "status": "scaffolded",
+      "round": 0,
+      "score": null,
+      "consoleErrors": null,
+      "extensibilityPass": null
+    },
+    "effects": {
+      "wave": 4,
+      "status": "scaffolded",
+      "round": 0,
+      "score": null,
+      "consoleErrors": null,
+      "extensibilityPass": null
+    },
+    "paths": {
+      "wave": 2,
+      "status": "scaffolded",
+      "round": 0,
+      "score": null,
+      "consoleErrors": null,
+      "extensibilityPass": null
+    },
+    "pools": {
+      "wave": 2,
+      "status": "scaffolded",
+      "round": 0,
+      "score": null,
+      "consoleErrors": null,
+      "extensibilityPass": null
+    },
+    "track": {
+      "wave": 2,
+      "status": "scaffolded",
+      "round": 0,
+      "score": null,
+      "consoleErrors": null,
+      "extensibilityPass": null
+    },
+    "buildings": {
+      "wave": 2,
+      "status": "scaffolded",
+      "round": 0,
+      "score": null,
+      "consoleErrors": null,
+      "extensibilityPass": null
+    },
+    "scenery": {
+      "wave": 2,
+      "status": "scaffolded",
+      "round": 0,
+      "score": null,
+      "consoleErrors": null,
+      "extensibilityPass": null
+    },
+    "shops": {
+      "wave": 2,
+      "status": "scaffolded",
+      "round": 0,
+      "score": null,
+      "consoleErrors": null,
+      "extensibilityPass": null
+    },
+    "rides": {
+      "wave": 3,
+      "status": "scaffolded",
+      "round": 0,
+      "score": null,
+      "consoleErrors": null,
+      "extensibilityPass": null
+    },
+    "flumes": {
+      "wave": 3,
+      "status": "scaffolded",
+      "round": 0,
+      "score": null,
+      "consoleErrors": null,
+      "extensibilityPass": null
+    },
+    "trains": {
+      "wave": 3,
+      "status": "scaffolded",
+      "round": 0,
+      "score": null,
+      "consoleErrors": null,
+      "extensibilityPass": null
+    },
+    "guests": {
+      "wave": 3,
+      "status": "scaffolded",
+      "round": 0,
+      "score": null,
+      "consoleErrors": null,
+      "extensibilityPass": null
+    },
+    "staff": {
+      "wave": 3,
+      "status": "scaffolded",
+      "round": 0,
+      "score": null,
+      "consoleErrors": null,
+      "extensibilityPass": null
+    },
+    "management": {
+      "wave": 3,
+      "status": "scaffolded",
+      "round": 0,
+      "score": null,
+      "consoleErrors": null,
+      "extensibilityPass": null
+    },
+    "overlays": {
+      "wave": 3,
+      "status": "scaffolded",
+      "round": 0,
+      "score": null,
+      "consoleErrors": null,
+      "extensibilityPass": null
+    },
+    "tools": {
+      "wave": 4,
+      "status": "scaffolded",
+      "round": 0,
+      "score": null,
+      "consoleErrors": null,
+      "extensibilityPass": null
+    },
+    "scenarios": {
+      "wave": 4,
+      "status": "scaffolded",
+      "round": 0,
+      "score": null,
+      "consoleErrors": null,
+      "extensibilityPass": null
+    },
+    "persistence": {
+      "wave": 4,
+      "status": "scaffolded",
+      "round": 0,
+      "score": null,
+      "consoleErrors": null,
+      "extensibilityPass": null
+    },
+    "demo-park": {
+      "wave": 5,
+      "status": "placeholder",
+      "round": 0,
+      "score": null,
+      "consoleErrors": null,
+      "extensibilityPass": null
+    }
   },
-  "perf": { "demoPark": null, "budget": { "fps": 50, "drawCalls": 1200, "simTickMs": 6 } },
-  "bundle": { "before": null, "after": null },
-  "openIssues": [],
-  "history": []
+  "openIssues": [
+    "Wave 1 has not landed: the baseline screenshot is an untextured terrain edge under the HUD.",
+    "No glTF assets are fetched by default; every module must look good procedurally and that is graded, not assumed.",
+    "demo-park is a terrain shaper, not yet a park.",
+    "The 48-park-hour soak runs 576 ticks at 100x; once guests exist it should also run at a lower speed for more integration steps per park-hour."
+  ],
+  "history": [
+    {
+      "commit": "e823ece",
+      "what": "merged PR #409's foundation, added the simulation core, soak, bundle proof, pack-declared guest needs, brand mark"
+    }
+  ]
 }
