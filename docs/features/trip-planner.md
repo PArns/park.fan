@@ -700,8 +700,20 @@ single button would have to guess between.
 What the engine minimises is three things in a fixed order, and the order
 between them is the design:
 
-1. **Rides that do not fit before the park closes.** A plan with one ride fewer
-   that actually happens beats a plan with one more that does not.
+1. **Rides that do not fit before the park closes, in three tiers.** A plan with
+   one ride fewer that actually happens beats a plan with one more that does
+   not, and _which_ ride is left out is decided worst-first: an entry the
+   visitor already had, then a headliner being added, then anything else.
+   Overflow used to be a plain count, so which rides ended up in the hatched
+   hours was a coin toss — and on a day holding Black Mamba and Taron, pressing
+   "plan every headliner" lost that toss for both of them, which is the
+   screenshot this rule came from. The tiers are disjoint (an existing headliner
+   counts once, in the first), so what the second decides is who gets the good
+   slots among the rides being **added**, which is the question the button asks.
+   Packed into one comparable number
+   (`(entries × 100 + headliners) × 100 + total`, `MAX_STOPS` being 24) rather
+   than added as Pareto axes, because a new axis is a bigger change to the
+   search than to the ordering, and it was the ordering that was wrong.
 2. **Total minutes queued.** That is what the visitor asked for.
 3. **The clock at which the last queue is joined.** Between two plans that cost
    the same, the one that leaves the evening free wins.
@@ -777,10 +789,29 @@ Three refusals, and each of them is visible:
 - **Pressing twice does nothing the second time.** `optimizeDay` scores the plan
   that is already there the same way and returns `null` for a day it cannot
   improve, so the panel says so instead of reshuffling to the same total.
-- **An overflow is not silently dropped.** A ride that no longer fits is placed
-  where the sequence puts it, past closing rather than parked on the park's last
-  minute; `growGridForSpans` widens the canvas to hold it and the minutes out
-  there are hatched, so the plan reads as "and these two do not fit".
+- **An entry that no longer fits is not silently dropped.** A ride the visitor
+  put there themselves is placed where the sequence puts it, past closing rather
+  than parked on the park's last minute; `growGridForSpans` widens the canvas to
+  hold it and the minutes out there are hatched, so the plan reads as "and these
+  two do not fit". Deleting somebody's own plan behind their back would be the
+  worse answer.
+- **A ride the button ADDS is never filed out there.** The same placement is
+  wrong for a ride nobody asked for individually. Those are left out instead —
+  still counted in `overflow`, which is taken before the filter, so the sentence
+  under the button says how many, and one press away if a ride is deleted to
+  make room.
+  Which is why the headliner button does **not** always disappear after a press:
+  Phantasialand has ten headliners and a nine-hour day, so the last one has
+  nowhere to go, and the button stays as a standing offer with `optimize.overflow`
+  underneath it saying why.
+- **Nothing is planned before now, on a day that is today.** The optimiser had
+  no clock at all, so a day sorted from a park page at 09:43 came back with a
+  ride at 10:00 and the one before it at 09:15 — a queue nobody can join.
+  `nowMinute` raises every candidate's floor, snapped up to the quarter hour,
+  which is the same lever a ride's own published opening pulls. It is passed in
+  rather than read inside the module, so the tests set the clock by argument;
+  `scoreCurrent` deliberately does not get it, because it scores the day where
+  the blocks actually are.
 
 `applyPlan` commits the whole re-plan in **one** write. Every
 `plannerStore.update` stringifies the entire multi-park plan, writes
@@ -802,9 +833,13 @@ Checked by `pnpm test:planner-optimize` — the brute-force comparison above, pl
 the properties a visitor would notice if they broke: the lunch break stays put,
 the ticked-off ride is not re-planned, a ride that opens at 11:00 is not queued
 for at 09:15, a collapse five hours out is not waited for, and the same day
-produces the same plan twice.
+produces the same plan twice. The three rules above have their own blocks there
+(§12b for the clock, §12c for the added ride that does not fit, §12 for the
+headliners taking the slots), and `pnpm check:planner` asserts the closing-time
+half in a browser: after pressing "alle Headliner einplanen" on Phantasialand,
+no block starts past the gate, and a second press adds nothing more.
 
-## The panel changes the page's width, and four things had to learn that
+## The panel changes the page's width, and five things had to learn that
 
 Opening the panel sets `--planner-inset` on the document element and the layout
 wrapper pads by it. Padding an ancestor is not the same as making the window
@@ -828,6 +863,32 @@ smaller, and each of these found that out separately:
 - **The attraction cards** were the reported symptom and were never the problem:
   measured across the whole scrolled page at five widths, the rightmost card is
   always exactly 16 px inside the panel's edge.
+
+And then the same bug once more, on **every page in the app**. Tailwind's
+`container` utility is `width: 100%` plus a max-width tier picked from how wide
+the WINDOW is, and 69 call sites use it — nearly all of them the bare
+`container mx-auto`. So it is answered once, in `app/globals.css`, by an
+`@utility container` that keeps the five media tiers and adds the same five as
+`@container page (…)` queries after them: same specificity, later declaration,
+so the page's own box wins wherever it is narrower. Measured on a park page,
+`.container` against the page column it sits in:
+
+| Window | Panel | Page column | `.container` before | after |
+| ------ | ----- | ----------- | ------------------- | ----- |
+| 1920   | 900   | 1020        | 1020                | 768   |
+| 1720   | 448   | 1272        | 1272                | 1024  |
+| 1440   | 448   | 992         | 992                 | 768   |
+
+Every "after" is what the same number would get as a window width, and with the
+panel shut all three are unchanged (1536 / 1536 / 1280). The media tiers stay,
+and they go first, as the answer for a document with **no** `page` container:
+`/admin` and `/dev/blog-editor` render their own `<html>` outside
+`app/[locale]/layout.tsx`, and a container query with no matching container is
+false rather than unbounded — a container-only utility would put every
+`.container` there full-bleed. `rem` in both halves, because Tailwind's
+breakpoints are rem and an `@min-[1024px]` would quietly stop agreeing with the
+`sm:`/`lg:` utilities beside it for a reader who has raised their default font
+size.
 
 ## Standing in a park, planning that park
 
