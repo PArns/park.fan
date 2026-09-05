@@ -280,7 +280,7 @@
     }
   },
   "openIssues": [
-    "NOTHING HAS PASSED A GATE. The critic never ran for any module; every number in this file is a budget measurement, not a quality verdict.",
+    "The sky dome renders a flat achromatic grey, not a sky: the emissive texture is bound, its defines are compiled (EMISSIVE, UV1, EMISSIVEDIRECTUV 1), its UVs span 0..1, its GPU content is correct (readPixels mean 0.117), and overwriting it with a known blue changes the frame by nothing — the sampler returns 1.0. Full measurement trail in the sky-dome.ts docblock. Suggested next move recorded there: drive the dome from vertex colours (2,993 vertices for a smooth gradient) instead of a half-float RawTexture, and keep the texture for the IBL cube, which works.",
     "The sky renders now but is WASHED OUT: a flat pale grey at noon instead of blue. The emissive path clamps the HDR sky to white — emissiveTexture.level made no difference in the probe, so the clamp happens before it. Next step is measured tuning of the emissive term, not another guess.",
     "The camera fallback presets were wrong and are fixed: overview looked 37 degrees down with a 25.8-degree half-FOV, so the horizon was 11.3 degrees out of frame and NO screenshot of that preset could ever contain sky. Several rounds of 'the sky is black' were partly this.",
     "20 of 24 modules are scaffolds: paths, pools, track, buildings, scenery, shops, rides, flumes, trains, guests, staff, management, overlays, tools, camera, scenarios, persistence, audio, effects, demo-park.",

@@ -121,7 +121,28 @@ export function createSkyDome(scene: Scene, quality: QualitySettings, rng: Rng):
    *   emissiveTexture .................. (218, 218, 218)
    *
    * The GPU texture was correct throughout — `readPixels` gave mean 0.117, max 0.298, which are
-   * the sky model's own numbers. Everything was right except which slot the texture sat in.
+   * the sky model's own numbers.
+   *
+   * **The dome is visible now and it is still wrong: a flat achromatic grey, not a sky.** The
+   * texture is bound and is not contributing — the frame is `emissiveColor` alone, and the next
+   * person should start from these measurements rather than repeat them:
+   *
+   *   - the output is exactly neutral (R = G = B) while the texture is blue at the zenith, and it
+   *     scales linearly with `emissiveColor` (1.0 -> 218, 0.25 -> 41), which is what a sampler
+   *     returning 1.0 looks like;
+   *   - `#define EMISSIVE`, `#define UV1`, `#define MAINUV1` and `EMISSIVEDIRECTUV 1` are all in
+   *     the compiled effect, and `isReadyForSubMesh` is true;
+   *   - the mesh's `uv` data is present, full length, and spans 0..1 on both axes;
+   *   - overwriting the texture with a known flat blue through `update()` changes the frame by
+   *     nothing at all;
+   *   - `useEmissiveAsIllumination`, `linkEmissiveWithDiffuse` and turning `disableLighting` off
+   *     each change which branch runs and none of them make the texture appear.
+   *
+   * So it is the RawTexture's sampler rather than the material wiring. The obvious next move is to
+   * stop fighting it: the dome has 2,993 vertices for what is a smooth gradient, `VERTEXCOLOR` is
+   * already defined on this material and already works, and evaluating the sky per vertex is 2,993
+   * evaluations against 32,768 texels. The texture stays worth having for the IBL cube, which is a
+   * different object on a different path and is demonstrably lighting the terrain.
    */
   domeMaterial.emissiveTexture = domeTexture;
   domeMaterial.emissiveColor = new Color3(1, 1, 1);
