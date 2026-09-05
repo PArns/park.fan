@@ -17,7 +17,28 @@
 
 type Listener = () => void;
 
+/**
+ * What a request asks the panel to do once it is on screen.
+ *
+ * `panel` is the old signal unchanged and stays the default, so every caller
+ * that just wants the panel reads exactly as before. `page-park-wizard` is the
+ * one thing a park page's own header button could not say: open the panel AND
+ * start the wizard on the park the route is about, so the reader lands on the
+ * date step instead of on a panel with another button in it.
+ *
+ * It carries no park, deliberately. `plannerPagePark` already publishes which
+ * park the route behind the panel is about, and the panel already reads it —
+ * a park passed through here would be a second copy of that answer, free to
+ * disagree with the beacon's the moment the reader walks to another park.
+ *
+ * The reader is the panel: `PlannerFlyout`'s `startPagePark` is exactly this
+ * action, and it has only ever been reachable from a button drawn inside the
+ * panel. This is what lets something outside ask for it.
+ */
+export type PlannerOpenIntent = 'panel' | 'page-park-wizard';
+
 let requests = 0;
+let wizardRequests = 0;
 const listeners = new Set<Listener>();
 
 export const plannerUi = {
@@ -32,9 +53,39 @@ export const plannerUi = {
   getServerSnapshot(): number {
     return 0;
   },
-  /** Ask for the panel. The caller has usually just set the active park and day. */
-  requestOpen(): void {
+  /**
+   * The subset of {@link getSnapshot}'s requests that asked for the wizard too.
+   *
+   * A SECOND COUNTER rather than an intent the panel reads back, and that is
+   * not a style choice. The panel's reader is an effect of the same shape the
+   * launcher's is — compare the count against the last one seen, act once — and
+   * an effect like that may hold nothing but a `setState`: reading the intent
+   * inside it is a call React cannot see through, and the React 19 lint refuses
+   * the whole effect over it (`react-hooks/set-state-in-effect`, measured on
+   * exactly this code). Two counters put the question in the subscription
+   * instead, where each subscriber compares its own number and a `panel`
+   * request cannot be mistaken for a wizard one by a reader that forgot to ask.
+   *
+   * Both are plain numbers, which is what `useSyncExternalStore` wants: an
+   * object snapshot would have to be memoized to keep it from looping.
+   */
+  getWizardSnapshot(): number {
+    return wizardRequests;
+  },
+  /** Zero on the server, for the same reason {@link getServerSnapshot} is. */
+  getWizardServerSnapshot(): number {
+    return 0;
+  },
+  /**
+   * Ask for the panel. The caller has usually just set the active park and day.
+   *
+   * A wizard request is ALSO a panel request — the panel has to be on screen
+   * for the dialog to open over it — so it moves both counters and the panel's
+   * own subscriber needs no special case for it.
+   */
+  requestOpen(next: PlannerOpenIntent = 'panel'): void {
     requests += 1;
+    if (next === 'page-park-wizard') wizardRequests += 1;
     for (const listener of listeners) listener();
   },
 };

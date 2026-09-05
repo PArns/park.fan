@@ -12,12 +12,13 @@ import { PlannerGridActions } from './planner-grid-actions';
 import { PlannerTimeline } from './planner-timeline';
 import { PlannerHelpSteps } from './planner-help';
 import { PlannerPlanParkCta } from './planner-plan-park-cta';
+import { PlannerDayFoot } from './planner-day-foot';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { entriesFor, type PlannerEntry } from '@/lib/planner/types';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { usePlannerDayFacts } from '@/lib/planner/use-day-facts';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
-import { buildDayGrid, growGridForSpans } from '@/lib/planner/day-grid';
+import { buildDayGrid, growGridForSpans, nextFreeStart } from '@/lib/planner/day-grid';
 import { occupiedMinutes } from '@/lib/planner/estimate';
 import { closedNowFor, liveWaitsFor } from '@/lib/planner/live';
 import { parkToday, resolveTimeZone } from '@/lib/planner/park-time';
@@ -47,6 +48,38 @@ interface PlannerDayColumnProps {
   unplannedPagePark?: { slug: string; name: string } | null;
   onStartPagePark?: () => void;
   onOpenWizard?: () => void;
+  /**
+   * Whether this column draws its own foot — optimise, the missing headliners,
+   * a free block, the totals.
+   *
+   * The panel decides, because the answer is about the SHEET rather than about
+   * the column: on a phone the foot does not fit inside a column and the panel
+   * draws it once for the active day instead. See {@link PlannerDayFoot}.
+   */
+  withFoot: boolean;
+  /**
+   * The column the reader is working in, where there is more than one.
+   *
+   * NOT {@link primary}, which is a fact about the plan — its active day, the
+   * column that cannot be closed. This is a fact about the pointer, and what
+   * hangs on it is the marker and the park the page behind the panel shows.
+   *
+   * `false` for a lone column, because a marker saying "this one" over the only
+   * one there is says nothing. The panel decides; see `focusColumn`.
+   */
+  active: boolean;
+  /** The reader touched this column. See `focusColumn` in `PlannerFlyout`. */
+  onActivate?: () => void;
+  /**
+   * The column's place in the panel's grid, from the flyout.
+   *
+   * The panel lays the columns out as a CSS grid whose first two rows are the
+   * head and the context band, and each column takes those rows as a
+   * `subgrid` — which is why this arrives as a class rather than being written
+   * here: only the parent knows how many columns there are, and only the parent
+   * can own the row template both of them measure against.
+   */
+  className?: string;
 }
 
 /**
@@ -83,10 +116,23 @@ export function PlannerDayColumn({
   unplannedPagePark = null,
   onStartPagePark,
   onOpenWizard,
+  withFoot,
+  active,
+  onActivate,
+  className,
 }: PlannerDayColumnProps) {
   const t = useTranslations('planner');
-  const { state, addRide, moveRide, removeRide, shiftFrom, editCustom, setDone, setDayPrefs } =
-    usePlanner();
+  const {
+    state,
+    addRide,
+    addCustom,
+    moveRide,
+    removeRide,
+    shiftFrom,
+    editCustom,
+    setDone,
+    setDayPrefs,
+  } = usePlanner();
 
   const park = parkSlug ? state.parks[parkSlug] : null;
   const entries = useMemo(() => entriesFor(state, parkSlug, date), [state, parkSlug, date]);
@@ -239,40 +285,99 @@ export function PlannerDayColumn({
     setDone(parkSlug, date, entryId, done, actual ?? undefined);
   };
 
+  /**
+   * A block the visitor writes themselves — a lunch break, a show, a meeting
+   * point. It files itself at the first minute none of this column's blocks
+   * occupies, which is why it belongs to the COLUMN: `nextFreeStart` reads this
+   * day's spans and this day's axis, and the panel used to hand it the active
+   * day's while the button sat under both.
+   */
+  const addFreeBlock = () => {
+    if (!park || !date) return;
+    addCustom({
+      parkSlug: park.slug,
+      parkName: park.name,
+      geo: park.geo,
+      timezone: day?.timezone ?? park.timezone,
+      date,
+      label: t('custom.defaultLabel'),
+      icon: 'break',
+      startMinute: grid ? nextFreeStart(spans, grid) : undefined,
+    });
+  };
+
   return (
     <div
       data-planner-column={parkSlug && date ? `${parkSlug}:${date}` : ''}
       data-planner-column-primary={primary ? '' : undefined}
-      className="flex min-w-0 flex-1 flex-col"
+      data-planner-column-active={active ? '' : undefined}
+      /* CAPTURE, and `pointerdown` rather than `click`: a drag inside a column
+         never produces a click, and a click that starts on a block is handled by
+         the block. Focus covers the keyboard, which reaches a column through its
+         head. Both are cheap and idempotent — `focusColumn` returns early when
+         the focus does not actually change, which is what keeps a single-column
+         panel from navigating anywhere. */
+      onPointerDownCapture={onActivate}
+      onFocusCapture={onActivate}
+      className={cn('relative flex min-w-0 flex-col', className)}
     >
-      {/* Only once the plan holds a park. With none, the head would be a
-          chooser over an empty list under the words "kein Park" — a control
-          asking a question the visitor has no way to answer — and it would sit
-          above the empty state, which is the one screen that has to say what
-          this thing is for and already carries the button that starts it. */}
-      {parks.length > 0 && (
-        <PlannerColumnHead
-          parks={parks}
-          parkSlug={parkSlug}
-          date={date}
-          onPickPark={onPickPark}
-          onPickDate={onPickDate}
-          onNewPark={onNewPark}
-          onClose={onClose}
-          plannedDates={plannedDates}
-          timezone={timezone}
-          facts={dayFacts.byDate}
-          maxDate={dayFacts.lastDate ?? undefined}
+      {/* The marker. A 2 px rule along the column's own top edge rather than a
+          tint over the column: everything in here is data a reader is comparing
+          across the two, and dimming the other one to say "not this one" makes
+          the comparison harder for a fact about the pointer.
+
+          `absolute`, so it takes no grid row of the subgrid — see the panel's
+          note — and `-top-px` to sit on the panel's own upper border rather than
+          under it. Drawn only where a second column exists to be told apart
+          from: with one column there is nothing to distinguish. */}
+      {active && (
+        <div
+          className="bg-primary/70 pointer-events-none absolute inset-x-0 -top-px z-20 h-0.5"
+          aria-hidden="true"
         />
       )}
+      {/* ROW 1 of the panel's subgrid, and it is always an element even where
+          it draws nothing: `grid-rows-subgrid` counts CHILDREN, so a column
+          that renders `false` here would hand its band to the head's row and
+          the two columns would be one row out of step with each other.
 
-      {/* Only where a day has been CHOSEN. `dayState` ends in a fall-through
-          `empty`, and with no park or date the query is disabled — so the band
-          cannot tell "nobody ever asked" from a real 404 and would print "keine
-          Prognose" over an empty planner. The guard sits on the wrapper because
-          it carries the `border-b`. */}
-      {park && date && (
-        <div className="border-border/60 shrink-0 border-b">
+          The head itself waits for the plan to hold a park. With none it would
+          be a chooser over an empty list under the words "kein Park" — a control
+          asking a question the visitor has no way to answer — above the empty
+          state, which is the one screen that has to say what this thing is for
+          and already carries the button that starts it. */}
+      <div className="min-w-0">
+        {parks.length > 0 && (
+          <PlannerColumnHead
+            parks={parks}
+            parkSlug={parkSlug}
+            date={date}
+            onPickPark={onPickPark}
+            onPickDate={onPickDate}
+            onNewPark={onNewPark}
+            onClose={onClose}
+            plannedDates={plannedDates}
+            timezone={timezone}
+            facts={dayFacts.byDate}
+            maxDate={dayFacts.lastDate ?? undefined}
+          />
+        )}
+      </div>
+
+      {/* ROW 2, always an element for the same reason — and this is the row the
+          subgrid was introduced FOR: the band's height is data, not layout.
+          Europa-Park on a Sunday in the holidays carries a "Ferien nebenan"
+          chip that Phantasialand does not, so the two bands came out 28 px
+          apart and every hour rule of the right column sat 28 px below the same
+          hour on the left. Two axes of one panel disagreeing about where 09:00
+          is reads as broken however good each of them is alone.
+
+          The band draws only where a day has been CHOSEN. `dayState` ends in a
+          fall-through `empty`, and with no park or date the query is disabled —
+          so the band cannot tell "nobody ever asked" from a real 404 and would
+          print "keine Prognose" over an empty planner. */}
+      <div className={cn('min-w-0', park && date && 'border-border/60 border-b')}>
+        {park && date && (
           <PlannerContextBand
             day={day ?? null}
             state={dayState}
@@ -283,155 +388,196 @@ export function PlannerDayColumn({
               />
             }
           />
-        </div>
-      )}
+        )}
+      </div>
 
-      {/* A FLOOR under the grid, and it is the difference between a planner and
-          a search box — see the phone note in the flyout. */}
-      <div className="relative flex min-h-0 flex-1 flex-col max-sm:min-h-[216px]">
-        <div
-          ref={scrollerRef}
-          className={cn(
-            'relative min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-y-contain px-1 py-2',
-            flatDropActive && 'ring-primary/60 rounded-md ring-2 ring-inset'
-          )}
-          onDragOver={(event) => {
-            if (grid || !park || !date) return;
-            if (!event.dataTransfer.types.includes(PLANNER_RIDE_MIME)) return;
-            event.preventDefault();
-            event.dataTransfer.dropEffect = 'copy';
-            setFlatDropActive(true);
-          }}
-          onDragLeave={() => setFlatDropActive(false)}
-          onDrop={(event) => {
-            // Prevented FIRST, before any refusal: a park card writes
-            // `text/uri-list` beside our own payload, so an early return leaves
-            // the browser holding a link it will follow.
-            event.preventDefault();
-            setFlatDropActive(false);
-            if (grid || !park || !date) return;
-            const dragged = parseRideDrag(event.dataTransfer.getData(PLANNER_RIDE_MIME));
-            if (!dragged || dragged.parkSlug !== park.slug) return;
-            addRide({
-              parkSlug: park.slug,
-              parkName: park.name,
-              geo: park.geo,
-              timezone: day?.timezone ?? park.timezone,
-              date,
-              attractionSlug: dragged.attractionSlug,
-              attractionName: dragged.attractionName,
-            });
-          }}
-        >
-          {grid && (
-            <PlannerShowBand
-              lines={showLines}
-              timezone={timezone}
-              isToday={isToday}
-              visible={showsVisible}
-              onToggle={plannerShowsVisible.toggle}
+      {/* ROW 3: the axis and everything under it. `flex flex-col` inside one
+          grid row rather than five more subgrid rows — the feet differ in how
+          many rows they have (a column with every headliner in has no band, one
+          with nothing planned has no summary), so aligning them would mean each
+          column rendering placeholders for the other's. What has to line up is
+          the axis, and that is what rows 1 and 2 buy. */}
+      <div className="flex min-h-0 flex-col overflow-hidden">
+        {/* A FLOOR under the grid, and it is the difference between a planner
+            and a search box — see the phone note in the flyout.
+
+            140 rather than the 216 it was, and the number is the sheet's
+            arithmetic rather than a preference: at 390x844 the sheet is 716 px,
+            of which the handle, the header and the push toggle take 122, the
+            active day's foot 182 and this column's own chrome (head, context
+            band, showtime strip) 163 — leaving about 250 for the axis and the
+            ride search together. A floor above ~150 spends all of that here and
+            leaves the search a text field with nothing under it. At 1.2 px per
+            minute this is still two hours of day, and it scrolls. */}
+        <div className="relative flex min-h-0 flex-1 flex-col max-sm:min-h-[140px]">
+          <div
+            ref={scrollerRef}
+            className={cn(
+              'relative min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-y-contain px-1 py-2',
+              flatDropActive && 'ring-primary/60 rounded-md ring-2 ring-inset'
+            )}
+            onDragOver={(event) => {
+              if (grid || !park || !date) return;
+              if (!event.dataTransfer.types.includes(PLANNER_RIDE_MIME)) return;
+              event.preventDefault();
+              event.dataTransfer.dropEffect = 'copy';
+              setFlatDropActive(true);
+            }}
+            onDragLeave={() => setFlatDropActive(false)}
+            onDrop={(event) => {
+              // Prevented FIRST, before any refusal: a park card writes
+              // `text/uri-list` beside our own payload, so an early return leaves
+              // the browser holding a link it will follow.
+              event.preventDefault();
+              setFlatDropActive(false);
+              if (grid || !park || !date) return;
+              const dragged = parseRideDrag(event.dataTransfer.getData(PLANNER_RIDE_MIME));
+              if (!dragged || dragged.parkSlug !== park.slug) return;
+              addRide({
+                parkSlug: park.slug,
+                parkName: park.name,
+                geo: park.geo,
+                timezone: day?.timezone ?? park.timezone,
+                date,
+                attractionSlug: dragged.attractionSlug,
+                attractionName: dragged.attractionName,
+              });
+            }}
+          >
+            {grid && (
+              <PlannerShowBand
+                lines={showLines}
+                timezone={timezone}
+                isToday={isToday}
+                visible={showsVisible}
+                onToggle={plannerShowsVisible.toggle}
+              />
+            )}
+            {grid ? (
+              <PlannerDayGrid
+                entries={entries}
+                day={day ?? null}
+                grid={grid}
+                timezone={timezone}
+                isToday={isToday}
+                liveWaits={liveWaits}
+                /* `[]` rather than `null` while the switch is off: `null` is this
+                 prop's "the day payload has not arrived". */
+                showLines={showsVisible ? showLines : []}
+                closedNow={closedNow}
+                parkSlug={park?.slug}
+                onDropRide={(attractionSlug, attractionName, startMinute) => {
+                  if (!park || !date) return;
+                  addRide({
+                    parkSlug: park.slug,
+                    parkName: park.name,
+                    geo: park.geo,
+                    timezone: day?.timezone ?? park.timezone,
+                    date,
+                    attractionSlug,
+                    attractionName,
+                    startMinute,
+                  });
+                }}
+                onResize={(entryId, durationMinutes) => {
+                  if (parkSlug && date) editCustom(parkSlug, date, entryId, { durationMinutes });
+                }}
+                loading={dayState === 'loading'}
+                emptyAction={
+                  unplannedPagePark && onStartPagePark ? (
+                    <PlannerPlanParkCta
+                      parkName={unplannedPagePark.name}
+                      onStart={onStartPagePark}
+                      className="mt-3"
+                    />
+                  ) : null
+                }
+                selectedId={selectedId}
+                scrollerRef={scrollerRef}
+                onSelect={setSelectedId}
+                onMove={(entryId, startMinute) =>
+                  parkSlug && date && moveRide(parkSlug, date, entryId, startMinute)
+                }
+                onShiftFrom={(entryId, delta) =>
+                  parkSlug && date && shiftFrom(parkSlug, date, entryId, delta)
+                }
+              />
+            ) : entries.length === 0 ? (
+              <div className="flex flex-col gap-3 px-4 py-5">
+                <div>
+                  <p className="text-sm font-medium">{t('empty.title')}</p>
+                  {unplannedPagePark && onStartPagePark ? (
+                    <PlannerPlanParkCta
+                      parkName={unplannedPagePark.name}
+                      onStart={onStartPagePark}
+                      className="mt-2"
+                    />
+                  ) : (
+                    onOpenWizard && (
+                      <button
+                        type="button"
+                        onClick={onOpenWizard}
+                        data-planner-start-wizard=""
+                        className="bg-primary text-primary-foreground hover:bg-primary/90 mt-2 flex w-full items-center justify-center gap-2 rounded-md px-3 py-2.5 text-sm font-semibold transition-colors max-sm:min-h-11"
+                      >
+                        <CalendarPlus className="size-4 shrink-0" aria-hidden="true" />
+                        <span className="truncate">{t('wizard.open')}</span>
+                      </button>
+                    )
+                  )}
+                </div>
+                <PlannerHelpSteps layout="list" />
+              </div>
+            ) : (
+              /* No opening hours means no honest axis — not a 24-hour one, which
+               would assert a park that never closes, and not an invented 9-to-6. */
+              <PlannerTimeline
+                entries={entries}
+                day={day ?? null}
+                onToggleDone={toggleDone}
+                onRemove={(entryId) => parkSlug && date && removeRide(parkSlug, date, entryId)}
+              />
+            )}
+          </div>
+          {grid && selectedId && (
+            <PlannerGridActions
+              entry={entries.find((e: PlannerEntry) => e.id === selectedId) ?? null}
+              day={day ?? null}
+              onToggleDone={toggleDone}
+              onRemove={(entryId) => {
+                if (parkSlug && date) removeRide(parkSlug, date, entryId);
+                setSelectedId(null);
+              }}
+              onClose={() => setSelectedId(null)}
+              onEditCustom={(entryId, patch) => {
+                if (parkSlug && date) editCustom(parkSlug, date, entryId, patch);
+              }}
             />
           )}
-          {grid ? (
-            <PlannerDayGrid
-              entries={entries}
+        </div>
+
+        {/* The column's foot — see {@link PlannerDayFoot} for why it is a
+            component and why a phone renders the panel's copy instead. A branch
+            rather than a `hidden sm:contents` wrapper: the panel is mounted
+            client-side and never server-rendered, so `useMediaQuery` is right
+            on its first render here, and two copies in the DOM would be two of
+            every `data-planner-optimize` for a selector to pick the wrong one
+            of. */}
+        {withFoot && park && date && (
+          <>
+            <PlannerDayFoot
+              parkSlug={park.slug}
+              parkName={park.name}
+              geo={park.geo}
+              date={date}
               day={day ?? null}
               grid={grid}
               timezone={timezone}
-              isToday={isToday}
-              liveWaits={liveWaits}
-              /* `[]` rather than `null` while the switch is off: `null` is this
-                 prop's "the day payload has not arrived". */
-              showLines={showsVisible ? showLines : []}
-              closedNow={closedNow}
-              parkSlug={park?.slug}
-              onDropRide={(attractionSlug, attractionName, startMinute) => {
-                if (!park || !date) return;
-                addRide({
-                  parkSlug: park.slug,
-                  parkName: park.name,
-                  geo: park.geo,
-                  timezone: day?.timezone ?? park.timezone,
-                  date,
-                  attractionSlug,
-                  attractionName,
-                  startMinute,
-                });
-              }}
-              onResize={(entryId, durationMinutes) => {
-                if (parkSlug && date) editCustom(parkSlug, date, entryId, { durationMinutes });
-              }}
-              loading={dayState === 'loading'}
-              emptyAction={
-                unplannedPagePark && onStartPagePark ? (
-                  <PlannerPlanParkCta
-                    parkName={unplannedPagePark.name}
-                    onStart={onStartPagePark}
-                    className="mt-3"
-                  />
-                ) : null
-              }
-              selectedId={selectedId}
-              scrollerRef={scrollerRef}
-              onSelect={setSelectedId}
-              onMove={(entryId, startMinute) =>
-                parkSlug && date && moveRide(parkSlug, date, entryId, startMinute)
-              }
-              onShiftFrom={(entryId, delta) =>
-                parkSlug && date && shiftFrom(parkSlug, date, entryId, delta)
-              }
-            />
-          ) : entries.length === 0 ? (
-            <div className="flex flex-col gap-3 px-4 py-5">
-              <div>
-                <p className="text-sm font-medium">{t('empty.title')}</p>
-                {unplannedPagePark && onStartPagePark ? (
-                  <PlannerPlanParkCta
-                    parkName={unplannedPagePark.name}
-                    onStart={onStartPagePark}
-                    className="mt-2"
-                  />
-                ) : (
-                  onOpenWizard && (
-                    <button
-                      type="button"
-                      onClick={onOpenWizard}
-                      data-planner-start-wizard=""
-                      className="bg-primary text-primary-foreground hover:bg-primary/90 mt-2 flex w-full items-center justify-center gap-2 rounded-md px-3 py-2.5 text-sm font-semibold transition-colors max-sm:min-h-11"
-                    >
-                      <CalendarPlus className="size-4 shrink-0" aria-hidden="true" />
-                      <span className="truncate">{t('wizard.open')}</span>
-                    </button>
-                  )
-                )}
-              </div>
-              <PlannerHelpSteps layout="list" />
-            </div>
-          ) : (
-            /* No opening hours means no honest axis — not a 24-hour one, which
-               would assert a park that never closes, and not an invented 9-to-6. */
-            <PlannerTimeline
+              prefs={prefs}
               entries={entries}
-              day={day ?? null}
-              onToggleDone={toggleDone}
-              onRemove={(entryId) => parkSlug && date && removeRide(parkSlug, date, entryId)}
+              onAddFreeBlock={addFreeBlock}
             />
-          )}
-        </div>
-        {grid && selectedId && (
-          <PlannerGridActions
-            entry={entries.find((e: PlannerEntry) => e.id === selectedId) ?? null}
-            day={day ?? null}
-            onToggleDone={toggleDone}
-            onRemove={(entryId) => {
-              if (parkSlug && date) removeRide(parkSlug, date, entryId);
-              setSelectedId(null);
-            }}
-            onClose={() => setSelectedId(null)}
-            onEditCustom={(entryId, patch) => {
-              if (parkSlug && date) editCustom(parkSlug, date, entryId, patch);
-            }}
-          />
+          </>
         )}
       </div>
     </div>

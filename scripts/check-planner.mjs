@@ -181,7 +181,6 @@ async function seed(page) {
   await page.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
   await page.evaluate((plan) => {
     window.localStorage.setItem('parkfan_planner', JSON.stringify(plan));
-    document.cookie = 'planner=1; path=/';
   }, PLAN);
   await page.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
 }
@@ -331,6 +330,16 @@ const browser = await chromium.launch(
 );
 
 const consoleErrors = [];
+/**
+ * Pages that ask `/plan/day` for a 404 ON PURPOSE.
+ *
+ * The waiver below covers the run's own stubbed pages, and only while the
+ * backend is not answering (`!live`). One check needs the opposite: it routes a
+ * 404 deliberately, to see what the wizard's photo band does when a day has no
+ * answer — and the browser logs a failed resource for it either way. Keyed by
+ * the page, so the waiver stops at that flow instead of covering the run.
+ */
+const allowPlanDay404 = new Set();
 const noteErrors = (page) =>
   page.on('console', async (msg) => {
     // ARGUMENTS, not just `msg.text()`. The text is the FORMATTED message, and
@@ -357,6 +366,8 @@ const noteErrors = (page) =>
     if (msg.type() !== 'error' && !/MISSING_MESSAGE/.test(text)) return;
     // The one 404 the probe above already established. Everything else counts.
     if (!live && /404/.test(text) && /plan\/day|Failed to load resource/.test(text)) return;
+    // …and the one a check asks for itself — see {@link allowPlanDay404}.
+    if (allowPlanDay404.has(page) && /404|Failed to load resource/.test(text)) return;
     // WHERE it happened, because this array is fed by every page in the run —
     // desktop, phone, the stubbed grid, the drag pair, the locale sweep — and a
     // failure that only prints the message sends the next reader hunting
@@ -913,7 +924,6 @@ await cal.goto(CAL_URL, { waitUntil: 'domcontentloaded' });
 // No plan at all: the point is that this works from nothing.
 await cal.evaluate(() => {
   window.localStorage.removeItem('parkfan_planner');
-  document.cookie = 'planner=0; path=/';
 });
 await cal.reload({ waitUntil: 'networkidle' });
 await cal.waitForTimeout(4000);
@@ -1348,7 +1358,6 @@ if (reachable) {
       seeded.activeParkSlug = 'phantasialand';
       seeded.activeDate = date;
       window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
-      document.cookie = 'planner=1; path=/';
     },
     [PLAN, DATE]
   );
@@ -1942,7 +1951,6 @@ if (reachable) {
       seeded.activeDate = date;
       window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
       window.localStorage.setItem('parkfan_planner_dragcoach', '1');
-      document.cookie = 'planner=1; path=/';
     },
     [PLAN, DATE]
   );
@@ -2096,7 +2104,6 @@ if (reachable) {
         seeded.activeDate = date;
         window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
         window.localStorage.removeItem('parkfan_planner_dragcoach');
-        document.cookie = 'planner=1; path=/';
       },
       [PLAN, DATE]
     );
@@ -2177,7 +2184,6 @@ if (reachable) {
     await bare.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
     await bare.evaluate(() => {
       window.localStorage.removeItem('parkfan_planner');
-      document.cookie = 'planner=1; path=/';
     });
     await bare.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
     await bare.locator(LAUNCHER).click();
@@ -2402,7 +2408,6 @@ if (reachable) {
       seeded.activeParkSlug = 'phantasialand';
       seeded.activeDate = date;
       window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
-      document.cookie = 'planner=1; path=/';
     },
     [PLAN, todayInPark]
   );
@@ -2525,7 +2530,6 @@ if (reachable) {
   // ── Empty ─────────────────────────────────────────────────────────────────
   await page.evaluate(() => {
     window.localStorage.removeItem('parkfan_planner');
-    document.cookie = 'planner=1; path=/';
   });
   await page.goto(`${BASE}/de/tagesplaner`, { waitUntil: 'networkidle' });
   await page.waitForTimeout(1200);
@@ -2654,7 +2658,6 @@ if (reachable) {
       seeded.activeParkSlug = null;
       seeded.activeDate = null;
       window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
-      document.cookie = 'planner=1; path=/';
     },
     [PLAN, DATE, PAST]
   );
@@ -2803,7 +2806,6 @@ if (reachable) {
       seeded.activeParkSlug = 'phantasialand';
       seeded.activeDate = date;
       window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
-      document.cookie = 'planner=1; path=/';
     },
     [PLAN, DATE]
   );
@@ -2934,7 +2936,6 @@ if (reachable) {
       seeded.activeParkSlug = 'phantasialand';
       seeded.activeDate = future;
       window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
-      document.cookie = 'planner=1; path=/';
     },
     [PLAN, DATE, YESTERDAY, LAST_WEEK]
   );
@@ -3095,7 +3096,6 @@ if (reachable) {
       seeded.activeParkSlug = 'phantasialand';
       seeded.activeDate = date;
       window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
-      document.cookie = 'planner=1; path=/';
     },
     [PLAN, DATE]
   );
@@ -3193,7 +3193,6 @@ if (reachable) {
         seeded.activeParkSlug = 'phantasialand';
         seeded.activeDate = date;
         window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
-        document.cookie = 'planner=1; path=/';
       },
       [PLAN, DATE]
     );
@@ -3258,7 +3257,6 @@ if (reachable) {
       seeded.activeParkSlug = 'phantasialand';
       seeded.activeDate = date;
       window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
-      document.cookie = 'planner=1; path=/';
     },
     [PLAN, DATE]
   );
@@ -3330,7 +3328,6 @@ if (reachable) {
       seeded.activeParkSlug = 'phantasialand';
       seeded.activeDate = date;
       window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
-      document.cookie = 'planner=1; path=/';
     },
     [PLAN, DATE]
   );
@@ -3425,7 +3422,6 @@ if (reachable) {
       seeded.activeParkSlug = 'phantasialand';
       seeded.activeDate = date;
       window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
-      document.cookie = 'planner=1; path=/';
     },
     [PLAN, DATE]
   );
@@ -3566,7 +3562,6 @@ if (reachable) {
       seeded.activeParkSlug = 'phantasialand';
       seeded.activeDate = date;
       window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
-      document.cookie = 'planner=1; path=/';
     },
     [PLAN, YESTERDAY]
   );
@@ -3718,7 +3713,6 @@ if (reachable) {
         seeded.activeParkSlug = 'phantasialand';
         seeded.activeDate = date;
         window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
-        document.cookie = 'planner=1; path=/';
       },
       [PLAN, DATE]
     );
@@ -3889,7 +3883,6 @@ if (reachable) {
       seeded.activeParkSlug = 'phantasialand';
       seeded.activeDate = date;
       window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
-      document.cookie = 'planner=1; path=/';
     },
     [PLAN, DATE]
   );
@@ -3944,7 +3937,6 @@ if (reachable) {
     await page.goto(`${BASE}/${locale}`, { waitUntil: 'domcontentloaded' });
     await page.evaluate((plan) => {
       window.localStorage.setItem('parkfan_planner', JSON.stringify(plan));
-      document.cookie = 'planner=1; path=/';
     }, PLAN);
     await page.goto(`${BASE}/${locale}`, { waitUntil: 'networkidle' });
 
@@ -4038,7 +4030,6 @@ if (reachable) {
         window.localStorage.setItem('parkfan_planner', JSON.stringify(seeded));
         window.localStorage.setItem('parkfan_planner_width', '520');
         window.localStorage.removeItem('parkfan_planner_column2');
-        document.cookie = 'planner=1; path=/';
       },
       [PLAN, DATE]
     );
@@ -4208,7 +4199,6 @@ if (reachable) {
         })
       );
       window.localStorage.setItem('parkfan_planner_width', '520');
-      document.cookie = 'planner=1; path=/';
     },
     [DATE]
   );
@@ -4238,21 +4228,34 @@ if (reachable) {
   await cols.evaluate((plan) => {
     window.localStorage.setItem('parkfan_planner', JSON.stringify(plan));
     window.localStorage.removeItem('parkfan_planner_column2');
-    document.cookie = 'planner=1; path=/';
   }, PLAN);
   await cols.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
   await cols.locator(LAUNCHER).click();
   await cols.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
   await cols.waitForTimeout(1500);
 
-  // The default panel is 448 px and two columns need 681 (twice the floor a
-  // single column has, plus the divider). So the switch must not be there —
-  // offering it would mean either two columns below the width one is allowed
-  // to be, or a press that does nothing.
+  /** The panel's real box, because the stored number is not what is on screen. */
+  const panelBox = () =>
+    cols.locator(SHEET).evaluate((el) => Math.round(el.getBoundingClientRect().width));
+
+  // This used to assert the opposite — "schmales Panel bietet keine zweite
+  // Spalte an" — on the grounds that the default panel is 448 px, two columns
+  // need 681, and a switch offering what the panel cannot hold would either draw
+  // a column below the floor or do nothing when pressed. What that reasoning
+  // missed is that 448 is the width EVERY visitor starts on: the switch was
+  // invisible until somebody dragged the edge past 681 for reasons of their own,
+  // so the feature announced itself to nobody. The switch is now gated on the
+  // WINDOW and the press is what widens the panel, so at 1440 px it is here at
+  // 448 px too — off, over a single column.
+  const narrowPanel = await panelBox();
+  const toggle = cols.locator(`${SHEET} [data-planner-second-column]`);
   check(
-    'schmales Panel bietet keine zweite Spalte an',
-    (await cols.locator(`${SHEET} [data-planner-second-column]`).count()) === 0 &&
-      (await cols.locator(`${SHEET} [data-planner-column]`).count()) === 1
+    'schmales Panel bietet die zweite Spalte trotzdem an',
+    (await toggle.count()) === 1 &&
+      (await toggle.getAttribute('data-planner-second-column')) === 'off' &&
+      (await cols.locator(`${SHEET} [data-planner-column]`).count()) === 1 &&
+      narrowPanel < 681,
+    `${narrowPanel} px`
   );
 
   // The day picker moved onto the column with the park name: with two columns a
@@ -4267,21 +4270,59 @@ if (reachable) {
         .count()) === 0
   );
 
+  // The other half of the promise, and the reason the switch may be offered at
+  // all: pressing it at 448 px widens the panel to at least the 681 two columns
+  // need and draws them. Measured off the DOM rather than off
+  // `parkfan_planner_width`, because the stored number is capped against the
+  // window on the way out (`fitToViewport`) and a check that believed storage
+  // would pass on a panel nobody can see.
+  await toggle.click();
+  await cols.waitForTimeout(2500);
+  const widenedPanel = await panelBox();
+  check(
+    'ein Klick verbreitert das schmale Panel auf zwei Spalten',
+    widenedPanel >= 681 && (await cols.locator(`${SHEET} [data-planner-column]`).count()) === 2,
+    `${narrowPanel} → ${widenedPanel} px`
+  );
+
+  // And closing it again leaves the width where the press put it. Somebody who
+  // has a 681 px panel asked for one; snapping back to 448 would undo a gesture
+  // nobody made.
+  await toggle.click();
+  await cols.waitForTimeout(800);
+  const afterClose = await panelBox();
+  check(
+    'das Schließen setzt die Breite nicht zurück',
+    afterClose === widenedPanel &&
+      (await cols.locator(`${SHEET} [data-planner-column]`).count()) === 1,
+    `${afterClose} px`
+  );
+
   await cols.evaluate(() => window.localStorage.setItem('parkfan_planner_width', '780'));
   await cols.reload({ waitUntil: 'networkidle' });
   await cols.locator(LAUNCHER).click();
   await cols.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
   await cols.waitForTimeout(1500);
 
-  const toggle = cols.locator(`${SHEET} [data-planner-second-column]`);
   check(
     'breites Panel bietet die zweite Spalte an',
     (await toggle.count()) === 1 &&
       (await toggle.getAttribute('data-planner-second-column')) === 'off'
   );
 
+  const widePanel = await panelBox();
   await toggle.click();
   await cols.waitForTimeout(2500);
+
+  // A panel that is ALREADY wide enough keeps the width it was dragged to. The
+  // press only ever raises it to the floor two columns need — somebody who set
+  // 780 px does not want to be thrown back to 681 for pressing a switch.
+  const wideAfterOpen = await panelBox();
+  check(
+    'ein schon breites Panel behält seine Breite',
+    wideAfterOpen === widePanel && widePanel >= 780,
+    `${widePanel} → ${wideAfterOpen} px`
+  );
 
   const columns = cols.locator(`${SHEET} [data-planner-column]`);
   const keys = await columns.evaluateAll((els) =>
@@ -4328,6 +4369,124 @@ if (reachable) {
   const grids = await cols.locator(`${SHEET} [data-planner-grid]`).count();
   check('jede Spalte zeichnet ihre eigene Achse', grids === 2, `${grids} Achsen`);
 
+  // The two axes start on the same pixel, which is what the subgrid is for.
+  // Before it, each column stacked its own head and its own context band and the
+  // band's height is DATA — Europa-Park on a Sunday in the holidays carries a
+  // "Ferien nebenan" chip that Phantasialand does not — so the right column's
+  // 09:00 sat 28 px below the left column's 09:00 and every rule after it was
+  // out of step.
+  const gridTops = await cols
+    .locator(`${SHEET} [data-planner-grid]`)
+    .evaluateAll((els) => els.map((el) => Math.round(el.getBoundingClientRect().top)));
+  check(
+    'und beide Achsen fangen auf demselben Pixel an',
+    gridTops.length === 2 && Math.abs(gridTops[0] - gridTops[1]) <= 1,
+    gridTops.join(' / ')
+  );
+
+  // ── The foot belongs to the column, not to the panel ────────────────────────
+  // Reported as "die eigener Block Buttons sowie optimieren gehen nur auf die
+  // linke Spalte", and it was worse than that: the row said nothing about which
+  // day it meant, so the headliner band listed Phantasialand's missing rides
+  // under a panel whose right half was Europa-Park.
+  const optimizeBars = await cols.locator(`${SHEET} [data-planner-optimize]`).count();
+  check('jede Spalte hat ihre eigene Optimier-Leiste', optimizeBars === 2, `${optimizeBars}`);
+  const customButtons = await cols.locator(`${SHEET} [data-planner-add-custom]`).count();
+  check('und ihren eigenen Eigener-Block-Knopf', customButtons === 2, `${customButtons}`);
+
+  // The headliner bands name DIFFERENT parks' rides, which is the assertion that
+  // a second copy of the same component is not the same claim twice.
+  const bands = await cols
+    .locator(`${SHEET} [data-planner-headliner-hint]`)
+    .evaluateAll((els) => els.map((el) => (el.textContent ?? '').replace(/\s+/g, ' ').trim()));
+  check(
+    'und jede Bande nennt die Bahnen ihres eigenen Parks',
+    bands.length === 2 && bands[0] !== bands[1],
+    bands.map((b) => b.slice(0, 40)).join('  |  ')
+  );
+
+  // The summary counts the COLUMN's day. The second column here is the same
+  // park on the next date and holds nothing, so exactly one row is drawn — and
+  // it is the primary's. Panel-level, that row said "3 Bahnen" under both
+  // halves; the assertion is that it is now inside the column it counts.
+  const summaryOwners = await cols.locator(`${SHEET} [data-planner-summary]`).evaluateAll((els) =>
+    els.map((el) => ({
+      column: el.closest('[data-planner-column]')?.getAttribute('data-planner-column') ?? null,
+      text: (el.textContent ?? '').replace(/\s+/g, ' ').trim(),
+    }))
+  );
+  check(
+    'die Zusammenfassung sitzt in der Spalte, die sie zählt',
+    summaryOwners.length === 1 && summaryOwners[0].column === `${PARK.slug}:${DATE}`,
+    summaryOwners.map((row) => `${row.column} → ${row.text}`).join('  |  ')
+  );
+  check(
+    'und die leere zweite Spalte zählt gar nichts',
+    (await cols
+      .locator(
+        `${SHEET} [data-planner-column]:not([data-planner-column-primary]) [data-planner-summary]`
+      )
+      .count()) === 0
+  );
+
+  // What stays panel-level has exactly one of: the push toggle subscribes for
+  // the trip rather than for a day, and the drag hint is about the gesture.
+  check(
+    'der Push-Schalter bleibt einmal im Panel',
+    (await cols.locator(`${SHEET} [data-planner-push]`).count()) <= 1
+  );
+
+  // ── The column the reader is working in ────────────────────────────────────
+  // A fact about the pointer, not about the plan: the primary column IS the
+  // plan's active day, so a click that moved THAT would put the same day in both
+  // halves. What hangs on the focus is the marker and the park the page behind
+  // the panel shows — and this run is on `/de`, which is not a park page, so
+  // here it may only move the marker.
+  const activeColumn = () =>
+    cols.evaluate(
+      () =>
+        document
+          .querySelector('[data-planner-column-active]')
+          ?.getAttribute('data-planner-column') ?? null
+    );
+  const firstActive = await activeColumn();
+  check(
+    'die erste Spalte ist zuerst die aktive',
+    firstActive === `${PARK.slug}:${DATE}`,
+    String(firstActive)
+  );
+  const urlBeforeFocus = cols.url();
+  await cols
+    .locator(`${SHEET} [data-planner-column]`)
+    .nth(1)
+    .locator('[data-planner-grid]')
+    .first()
+    .click({ position: { x: 30, y: 30 } });
+  await cols.waitForTimeout(600);
+  const secondActive = await activeColumn();
+  check(
+    'ein Klick in die zweite macht sie zur aktiven',
+    secondActive === `${PARK.slug}:${NEXT_DATE}`,
+    String(secondActive)
+  );
+  check(
+    'genau eine trägt die Markierung',
+    (await cols.locator(`${SHEET} [data-planner-column-active]`).count()) === 1
+  );
+  check(
+    'ohne Parkseite dahinter wird nirgendwohin navigiert',
+    cols.url() === urlBeforeFocus,
+    cols.url()
+  );
+  // Back, so the assertions below find the arrangement they were written for.
+  await cols
+    .locator(`${SHEET} [data-planner-column]`)
+    .first()
+    .locator('[data-planner-grid]')
+    .first()
+    .click({ position: { x: 30, y: 30 } });
+  await cols.waitForTimeout(400);
+
   // Only the second column may be closed. The first is the plan's active day and
   // closing it would leave the panel with nothing to be about.
   check(
@@ -4361,9 +4520,12 @@ if (reachable) {
     (await cols.locator(`${SHEET} [data-planner-column]`).count()) === 2
   );
 
-  // Narrowed below the floor the second column is not DRAWN and not offered —
-  // and it is not forgotten either, so widening the panel brings the same day
-  // back instead of making somebody arrange it again.
+  // Narrowed below the floor the second column is not DRAWN — and it is not
+  // forgotten either, so widening the panel brings the same day back instead of
+  // making somebody arrange it again. This used to assert that the switch was
+  // gone as well; it is not, because it is gated on the window now, and the
+  // press is exactly what makes the room. So the assertion is about the two
+  // things that still hold: one column on screen, and the day still in storage.
   await cols.evaluate(() => window.localStorage.setItem('parkfan_planner_width', '448'));
   await cols.reload({ waitUntil: 'networkidle' });
   await cols.locator(LAUNCHER).click();
@@ -4375,9 +4537,26 @@ if (reachable) {
   check(
     'zu schmal blendet die zweite Spalte aus, ohne sie zu vergessen',
     (await cols.locator(`${SHEET} [data-planner-column]`).count()) === 1 &&
-      (await cols.locator(`${SHEET} [data-planner-second-column]`).count()) === 0 &&
+      (await toggle.getAttribute('data-planner-second-column')) === 'off' &&
       (remembered ?? '').includes(NEXT_DATE),
     remembered ?? '(nichts gemerkt)'
+  );
+
+  // Pressed at a narrow panel with something remembered, the switch widens and
+  // brings THAT day back — it does not open tomorrow. Opening tomorrow here
+  // would quietly discard an arrangement somebody made, and the only sign of it
+  // would be a date they did not choose.
+  await toggle.click();
+  await cols.waitForTimeout(2500);
+  const revivedWidth = await panelBox();
+  const revived = await cols
+    .locator(`${SHEET} [data-planner-column]`)
+    .last()
+    .getAttribute('data-planner-column');
+  check(
+    'der Schalter holt am schmalen Panel den gemerkten Tag zurück',
+    revived === `${PARK.slug}:${NEXT_DATE}` && revivedWidth >= 681,
+    `${revived} @ ${revivedWidth} px`
   );
 
   // And back. The stored width is what decides it, so the same press that took
@@ -4410,10 +4589,42 @@ if (reachable) {
   await cols.close();
 }
 
+// The switch is offered on the WINDOW, and this is where that stops. Two columns
+// need 681 px of panel and the page keeps 360 of the window whatever the stored
+// width says (`fitToViewport` caps at `innerWidth - PAGE_MIN_PX`), so under
+// 1041 px the widest panel anybody can have is too narrow: at 900 px it is 540.
+// A switch here would promise a width the cap takes back in the same frame.
+// Deliberately a desktop viewport and not a phone — `isPhone` stops at 639 px
+// and would make this pass for the other reason.
+{
+  const tight = await browser.newPage({ viewport: { width: 900, height: 900 } });
+  noteErrors(tight);
+  await tight.goto(`${BASE}/de`, { waitUntil: 'domcontentloaded' });
+  await tight.evaluate((plan) => {
+    window.localStorage.setItem('parkfan_planner', JSON.stringify(plan));
+    window.localStorage.removeItem('parkfan_planner_column2');
+    // Stored wide, so the refusal is the window's and not the number's.
+    window.localStorage.setItem('parkfan_planner_width', '780');
+  }, PLAN);
+  await tight.goto(`${BASE}/de`, { waitUntil: 'networkidle' });
+  await tight.locator(LAUNCHER).click();
+  await tight.locator(SHEET).waitFor({ state: 'visible', timeout: 10_000 });
+  await tight.waitForTimeout(1500);
+  check(
+    'ein Fenster unter 1041 px bietet keine zweite Spalte an',
+    (await tight.locator(`${SHEET} [data-planner-second-column]`).count()) === 0 &&
+      (await tight.locator(`${SHEET} [data-planner-column]`).count()) === 1
+  );
+  await tight.close();
+}
+
 // A phone has no second column and must not pretend otherwise: the sheet is the
 // width of the screen there, no drag makes it wider, and two 195 px columns
-// would be two unusable ones. The switch is gated on `isPhone` as well as on the
-// width, so this is a real assertion rather than a restatement of the one above.
+// would be two unusable ones. Since the switch moved onto the window, 390 px is
+// below the 1041 the check above uses too — so this no longer isolates
+// `isPhone`. It is kept because a phone refuses for its own reason, and because
+// everything below it (one foot, nothing painting over anything) is only ever
+// asserted here.
 {
   const phone = await browser.newPage({
     viewport: { width: 390, height: 844 },
@@ -4432,7 +4643,6 @@ if (reachable) {
         'parkfan_planner_column2',
         JSON.stringify({ parkSlug: 'phantasialand', date: second })
       );
-      document.cookie = 'planner=1; path=/';
     },
     [PLAN, NEXT_DATE]
   );
@@ -4446,6 +4656,57 @@ if (reachable) {
     'das Telefon zeigt genau eine Spalte und keinen Schalter',
     (await phone.locator(`${SHEET} [data-planner-column]`).count()) === 1 &&
       (await phone.locator(`${SHEET} [data-planner-second-column]`).count()) === 0
+  );
+
+  // The foot is drawn ONCE, and on a phone it is the panel that draws it — the
+  // column's box is 295 px of a 716 px sheet there and this row measures 195, so
+  // inside the column it would leave the axis 100 px. Two copies in the DOM
+  // would also be two of every selector below.
+  check(
+    'der Fuß wird auf dem Telefon genau einmal gezeichnet',
+    (await phone.locator(`${SHEET} [data-planner-optimize]`).count()) === 1 &&
+      (await phone.locator(`${SHEET} [data-planner-summary]`).count()) === 1
+  );
+
+  // Nothing in the sheet paints over anything else. It did: with the foot inside
+  // the column, the column's content ran 98 px past its box and the headliner
+  // band and the totals were drawn across the ride search under them.
+  const stack = await phone.locator(SHEET).evaluate((sheet) =>
+    [...sheet.children]
+      .map((el) => {
+        const box = el.getBoundingClientRect();
+        return {
+          cls: el.className.slice(0, 40),
+          top: Math.round(box.top),
+          bottom: Math.round(box.bottom),
+          // `display: contents` and hidden rows have no box and cannot overlap.
+          real: box.height > 0 && getComputedStyle(el).position !== 'absolute',
+        };
+      })
+      .filter((row) => row.real)
+  );
+  const overlaps = stack
+    .slice(1)
+    .map((row, i) => ({ a: stack[i], b: row }))
+    .filter((pair) => pair.b.top < pair.a.bottom - 1);
+  check(
+    'und keine Zeile des Telefon-Panels malt über die nächste',
+    overlaps.length === 0,
+    overlaps.map((pair) => `${pair.a.cls} ${pair.a.bottom} > ${pair.b.top}`).join(' | ') ||
+      stack.map((row) => `${row.top}-${row.bottom}`).join(' ')
+  );
+
+  // …and the column itself fits its box, which is the same defect one level in:
+  // a column whose content is taller than its grid row overflows into the row
+  // below rather than shrinking its axis.
+  const colFit = await phone
+    .locator(`${SHEET} [data-planner-column]`)
+    .first()
+    .evaluate((el) => ({ h: Math.round(el.getBoundingClientRect().height), sh: el.scrollHeight }));
+  check(
+    'die Spalte läuft nicht über ihren Kasten hinaus',
+    colFit.sh <= colFit.h + 1,
+    `${colFit.sh} px Inhalt in ${colFit.h} px`
   );
 
   // The column head has to fit a 390 px sheet: park name, day picker, nothing
@@ -4466,6 +4727,170 @@ if (reachable) {
   );
 
   await phone.close();
+}
+
+// ---------------------------------------------------------------------------
+// The park header's button, and the photograph it opens the wizard on.
+//
+// Two halves of one press. `ParkPlannerLink` cancels its own navigation and
+// asks `plannerUi` for the panel AND the wizard; the panel is the only place
+// that can answer, because the action reads the page beacon to decide which
+// park "this one, unplanned" is. Half of that shipped once with nothing reading
+// the request, so the press opened a panel with a second button in it.
+//
+// The photo is the other report. `parkBackgroundImage` is a property of the
+// PARK and rides on a payload keyed by the DATE, so every arrow press in the
+// calendar emptied `planDay.data` for as long as the next answer was in flight
+// and the band fell back to its no-photo state — a photograph blinking once per
+// press, on the screen whose whole job is pressing them. The mock below holds
+// each answer for 700 ms on purpose: that window IS the bug, and without it the
+// old code would pass.
+{
+  const wiz = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
+  noteErrors(wiz);
+
+  const PARK_PHOTO = '/media/phantasialand/taron.jpg?v=04eb2f11';
+  /** Days off {@link DATE} by string arithmetic — see the note on `NEXT_DATE`. */
+  const dayFrom = (offset) =>
+    new Date(new Date(`${DATE}T12:00:00Z`).getTime() + offset * 86_400_000)
+      .toISOString()
+      .slice(0, 10);
+
+  let planDayCalls = 0;
+  await wiz.route('**/plan/day**', async (route) => {
+    planDayCalls += 1;
+    const date = new URL(route.request().url()).searchParams.get('date') ?? DATE;
+    await new Promise((resolve) => setTimeout(resolve, 700));
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        parkSlug: PARK.slug,
+        parkName: PARK.name,
+        timezone: 'Europe/Berlin',
+        parkBackgroundImage: PARK_PHOTO,
+        parkBackgroundPosition: '50% 30%',
+        context: {
+          date,
+          status: 'OPERATING',
+          openHour: 9,
+          closeHour: 18,
+          crowdLevel: 'moderate',
+          weather: null,
+          isHoliday: false,
+          isBridgeDay: false,
+          isSchoolVacation: false,
+          isWeekend: false,
+        },
+        tier: 'measured',
+        leadDays: 1,
+        leadTimeMae: 7,
+        rides: [],
+      }),
+    });
+  });
+
+  const parkUrl = `${BASE}/de/parks/${PARK.geo.continent}/${PARK.geo.country}/${PARK.geo.city}/${PARK.slug}`;
+  await wiz.goto(parkUrl, { waitUntil: 'networkidle' });
+
+  const link = wiz.locator('[data-park-planner-link]');
+  check('der Parkkopf trägt den Planer-Knopf', (await link.count()) === 1);
+
+  await link.first().click();
+  await wiz.waitForTimeout(1500);
+
+  check('und der Klick navigiert nicht weg', wiz.url().startsWith(parkUrl), wiz.url());
+
+  // The PANEL is a dialog too. The wizard is the one holding the month grid,
+  // which is also the assertion that the press landed on the date step rather
+  // than on the park search.
+  const wizard = wiz
+    .locator('[role="dialog"]')
+    .filter({ has: wiz.locator('[data-planner-day]') })
+    .first();
+  check('er öffnet den Assistenten auf der Tagesauswahl', (await wizard.count()) === 1);
+
+  const heroTitle =
+    (await wizard.locator('[data-slot="dialog-title"], h2').first().textContent()) ?? '';
+  check('auf dem Park, um den es auf der Seite geht', heroTitle.includes(PARK.name), heroTitle);
+
+  await wizard.locator(`button[data-planner-day="${dayFrom(1)}"]`).click();
+  await wizard
+    .locator('img')
+    .first()
+    .waitFor({ state: 'attached', timeout: 8000 })
+    .catch(() => {});
+  await wiz.waitForTimeout(400);
+  const firstSrc = await wizard
+    .locator('img')
+    .first()
+    .getAttribute('src')
+    .catch(() => null);
+  check(
+    'nach der ersten Tageswahl steht das Foto des Parks im Kopf',
+    Boolean(firstSrc && firstSrc.includes('taron')),
+    String(firstSrc).slice(0, 56)
+  );
+
+  // Walk three more days, sampling the band the whole way. The samples fall
+  // INSIDE the 700 ms each answer is held for, which is where the picture used
+  // to be gone.
+  const samples = [];
+  const sampler = setInterval(async () => {
+    try {
+      samples.push(await wizard.locator('img').count());
+    } catch {
+      /* the dialog is mid-render — not a reading */
+    }
+  }, 40);
+  const before = planDayCalls;
+  for (const offset of [2, 3, 4]) {
+    await wizard.locator(`button[data-planner-day="${dayFrom(offset)}"]`).click();
+    await wiz.waitForTimeout(350);
+  }
+  await wiz.waitForTimeout(1500);
+  clearInterval(sampler);
+
+  check(
+    'jeder Tageswechsel fragt den Tag neu an',
+    planDayCalls - before >= 3,
+    `${before} → ${planDayCalls}`
+  );
+  const missing = samples.filter((count) => count === 0).length;
+  check(
+    'und das Foto verschwindet dabei in keiner Messung',
+    samples.length > 20 && missing === 0,
+    `${samples.length} Messungen, ${missing} ohne Bild`
+  );
+  const lastSrc = await wizard
+    .locator('img')
+    .first()
+    .getAttribute('src')
+    .catch(() => null);
+  check('es ist dieselbe Datei geblieben', lastSrc === firstSrc, `${firstSrc} → ${lastSrc}`);
+
+  // A day the park is shut answers 404, which the hook resolves to `null`. That
+  // is a statement about the day, never about the park's photograph.
+  allowPlanDay404.add(wiz);
+  await wiz.route('**/plan/day**', (route) => route.fulfill({ status: 404, body: '' }));
+  const shut = [];
+  const sampler2 = setInterval(async () => {
+    try {
+      shut.push(await wizard.locator('img').count());
+    } catch {
+      /* mid-render */
+    }
+  }, 40);
+  await wizard.locator(`button[data-planner-day="${dayFrom(5)}"]`).click();
+  await wiz.waitForTimeout(1200);
+  clearInterval(sampler2);
+  check(
+    'und ein Tag ohne Antwort nimmt es auch nicht weg',
+    shut.length > 10 && shut.filter((count) => count === 0).length === 0,
+    `${shut.length} Messungen, ${shut.filter((count) => count === 0).length} ohne Bild`
+  );
+
+  await wiz.close();
 }
 
 check(

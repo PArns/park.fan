@@ -82,6 +82,27 @@
   --color-element-inversion: var(--element-inversion);
   --color-element-turn: var(--element-turn);
   --color-element-brake: var(--element-brake);
+  /* Park accent and the semantic pair, as Tailwind colors rather than as
+     hand-written utility classes.
+
+     They were the latter, and the difference is invisible until somebody writes
+     an opacity modifier: a `.bg-park-primary` rule in `@utility` is a class
+     name, so `bg-park-primary/5` matches nothing at all and compiles to no
+     declaration — no error, no warning, a `div` with no background. Four call
+     sites had been shipping that way. `bg-park-primary/5` on the nearby-parks
+     band (`nearby-in-park-view`), `from-park-primary/10` on the hero wash and on
+     the homepage's announce band — where a gradient stop that resolves to
+     nothing takes the whole `radial-gradient` with it — and `bg-success/10`,
+     `bg-error/10` and `bg-warning/10` on every `IconContainer` in those three
+     tones, which drew their icon on the panel's own ground.
+
+     Registered here, Tailwind generates the whole family — `bg-`, `text-`,
+     `border-`, the gradient stops and every `/opacity` — from one line each. */
+  --color-park-primary: var(--park-primary);
+  --color-park-primary-foreground: var(--park-primary-foreground);
+  --color-success: var(--success);
+  --color-error: var(--error);
+  --color-warning: var(--warning);
   /* Trend colors — enables opacity modifiers like bg-trend-up/65, border-trend-down/80 */
   --color-trend-up: var(--trend-up);
   --color-trend-down: var(--trend-down);
@@ -870,47 +891,10 @@
     @apply min-h-[44px] min-w-[44px];
   }
 
-  /* Park Primary Colors */
-  .bg-park-primary {
-    background-color: var(--park-primary);
-  }
-  .text-park-primary {
-    color: var(--park-primary);
-  }
-  .border-park-primary {
-    border-color: var(--park-primary);
-  }
-
-  /* Semantic Colors */
-  .bg-success {
-    background-color: var(--success);
-  }
-  .text-success {
-    color: var(--success);
-  }
-  .border-success {
-    border-color: var(--success);
-  }
-
-  .bg-error {
-    background-color: var(--error);
-  }
-  .text-error {
-    color: var(--error);
-  }
-  .border-error {
-    border-color: var(--error);
-  }
-
-  .bg-warning {
-    background-color: var(--warning);
-  }
-  .text-warning {
-    color: var(--warning);
-  }
-  .border-warning {
-    border-color: var(--warning);
-  }
+  /* `.bg-park-primary`, `.bg-success`, `.bg-error`, `.bg-warning` and their
+     `text-`/`border-` twins used to be written out here by hand. They are
+     generated from `@theme inline` now — see the note there for what the
+     hand-written version silently could not do. */
 
   /* Trend Colors */
   .text-trend-up {

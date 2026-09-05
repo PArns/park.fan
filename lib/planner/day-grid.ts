@@ -79,6 +79,25 @@ export const LANE_GUTTER_PX = 2;
 export const SHOW_LABEL_MIN_GAP_PX = 14;
 
 /**
+ * The most show lines an axis may carry, however many the park runs.
+ *
+ * {@link SHOW_LABEL_MIN_GAP_PX} keeps two LABELS from overlapping and is a
+ * statement about text; this is a statement about the drawing. Europa-Park on a
+ * Sunday returns 33 shows, whose times land roughly every quarter hour — far
+ * enough apart that nothing folded, so a nine-hour axis carried 28 dashed rules
+ * and 28 centred pills, and the two blocks somebody had actually planned sat
+ * behind them. Measured on that day at a 389 px column: the grid was 756 px and
+ * every 27 px of it had a line in it.
+ *
+ * The cap is spent on the fold that already exists rather than on dropping
+ * anything: the extra times keep their place inside the line they fold into and
+ * are still counted in its "+n", which is what makes this a density limit and
+ * not a promise the panel breaks. Twelve leaves ~60 px between lines on a
+ * nine-hour day, which is two blocks' worth of room.
+ */
+export const MAX_SHOW_LINES = 12;
+
+/**
  * Days of measurement below which a missing early hour says more about our
  * sampling than about the ride.
  */
@@ -479,18 +498,32 @@ export interface ShowLinePosition {
   collapsedWith: number[];
 }
 
-/** Show lines with labels closer than {@link SHOW_LABEL_MIN_GAP_PX} folded together. */
+/**
+ * Show lines with labels closer than {@link SHOW_LABEL_MIN_GAP_PX} folded
+ * together — and no more than {@link MAX_SHOW_LINES} of them, whatever that
+ * takes.
+ *
+ * The gap widens rather than the tail being cut, so the park with 33 shows and
+ * the park with four are drawn by one rule: a line always stands for every
+ * showtime around it, and `collapsedWith` says how many. `heightPx / MAX` is
+ * the gap that would leave exactly the cap on a full axis; the real count comes
+ * out at or under it because folding is greedy from the top.
+ */
 export function showLinePositions(
   grid: DayGrid,
   showMinutes: readonly number[]
 ): ShowLinePosition[] {
   const sorted = [...new Set(showMinutes)].sort((a, b) => a - b);
+  const gap =
+    sorted.length > MAX_SHOW_LINES
+      ? Math.max(SHOW_LABEL_MIN_GAP_PX, grid.heightPx / MAX_SHOW_LINES)
+      : SHOW_LABEL_MIN_GAP_PX;
   const out: ShowLinePosition[] = [];
 
   for (const minute of sorted) {
     const y = yFor(grid, minute);
     const previous = out.at(-1);
-    if (previous && y - previous.y < SHOW_LABEL_MIN_GAP_PX) {
+    if (previous && y - previous.y < gap) {
       previous.collapsedWith.push(minute);
       continue;
     }
