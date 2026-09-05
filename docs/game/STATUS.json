@@ -1,0 +1,46 @@
+{
+  "updatedAt": "2026-09-05T12:10:00Z",
+  "wave": 1,
+  "gate": { "pass": 8.5, "maxRounds": 4 },
+  "baseline": {
+    "build": { "commit": "f0c2754", "chunksBytes": 6873094, "compileSeconds": 24.4 },
+    "note": "pnpm build on the clean tree before any game code; .next/static/chunks total"
+  },
+  "modules": {
+    "core": {
+      "wave": 1,
+      "owner": "integrator",
+      "round": 1,
+      "score": null,
+      "status": "built",
+      "notes": "engine, worker sim, protocol, registry, save/load, harness"
+    },
+    "terrain": { "wave": 1, "round": 1, "score": null, "status": "building" },
+    "environment": { "wave": 1, "round": 1, "score": null, "status": "building" },
+    "ui": { "wave": 1, "round": 1, "score": null, "status": "building" },
+    "audio": { "wave": 1, "round": 1, "score": null, "status": "building" },
+    "effects": { "wave": 1, "round": 1, "score": null, "status": "building" },
+    "paths": { "wave": 2, "status": "pending" },
+    "pools": { "wave": 2, "status": "pending" },
+    "track": { "wave": 2, "status": "pending" },
+    "buildings": { "wave": 2, "status": "pending" },
+    "scenery": { "wave": 2, "status": "pending" },
+    "shops": { "wave": 2, "status": "pending" },
+    "rides": { "wave": 3, "status": "pending" },
+    "flumes": { "wave": 3, "status": "pending" },
+    "trains": { "wave": 3, "status": "pending" },
+    "guests": { "wave": 3, "status": "pending" },
+    "staff": { "wave": 3, "status": "pending" },
+    "management": { "wave": 3, "status": "pending" },
+    "overlays": { "wave": 3, "status": "pending" },
+    "tools": { "wave": 4, "status": "pending" },
+    "camera": { "wave": 4, "status": "placeholder" },
+    "scenarios": { "wave": 4, "status": "pending" },
+    "persistence": { "wave": 4, "status": "pending" },
+    "demo-park": { "wave": 5, "status": "placeholder" }
+  },
+  "perf": { "demoPark": null, "budget": { "fps": 50, "drawCalls": 1200, "simTickMs": 6 } },
+  "bundle": { "before": null, "after": null },
+  "openIssues": [],
+  "history": []
+}
