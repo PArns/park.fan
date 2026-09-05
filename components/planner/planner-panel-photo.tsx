@@ -128,10 +128,12 @@ const LIGHT_STOP_PCT = ((MARK_TOP_PCT - LIGHT_CENTER_Y_PCT) / LIGHT_HEIGHT_PCT) 
  * utility anywhere: the token is what flips, which is the rule
  * `PlannerGridGround` already works to one file over.
  *
- * (`--park-primary` has no Tailwind opacity modifier — it is a hand-written
- * utility in `globals.css`, not a `@theme` colour, so `bg-park-primary/5`
- * compiles to nothing at all. That is why the magnitude is an `opacity` on the
- * layer, which is also how `app/admin/layout.tsx` spends its glow.)
+ * (The magnitude is an `opacity` on the layer rather than a `/8.5` on the
+ * colour, which is also how `app/admin/layout.tsx` spends its glow. It had to
+ * be: `--park-primary` was a hand-written utility in `globals.css` rather than
+ * a `@theme` colour, so `bg-park-primary/5` matched no rule and compiled to
+ * nothing at all. It is registered in `@theme inline` now and the modifier
+ * works — these three layers keep the `opacity` they were measured with.)
  *
  * ## The budget
  *
