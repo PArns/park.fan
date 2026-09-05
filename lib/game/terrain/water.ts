@@ -56,7 +56,7 @@ export function createWaterSurface(
 ): WaterSurface {
   const material = new PBRMaterial('terrain-water', scene);
   material.metallic = 0;
-  material.roughness = 0.055;
+  material.roughness = 0.085;
   material.albedoColor = new Color3(1, 1, 1);
   material.alpha = 1;
   material.transparencyMode = Material.MATERIAL_ALPHABLEND;
@@ -158,7 +158,10 @@ export function createWaterSurface(
         colors[at * 4] = mix(mix(SHALLOW.r, DEEP.r, t), FOAM.r, foam * 0.7);
         colors[at * 4 + 1] = mix(mix(SHALLOW.g, DEEP.g, t), FOAM.g, foam * 0.7);
         colors[at * 4 + 2] = mix(mix(SHALLOW.b, DEEP.b, t), FOAM.b, foam * 0.7);
-        colors[at * 4 + 3] = clamp01(smoothstep(-0.05, 0.85, depth) * 0.84 + 0.05);
+        // Opacity over three metres, not over one: a metre of clear water still shows the sand,
+        // and the `ground` preset stands in 1.2 m of it. At the old ramp that was 0.89 alpha and
+        // the lake read as poured resin.
+        colors[at * 4 + 3] = clamp01(smoothstep(-0.05, 3.1, depth) * 0.8 + 0.07);
       }
     }
 

@@ -73,11 +73,14 @@ function heightAt(x: number, z: number, seed: number): number {
   const coast = smoothstep(-70, 12, z - zs);
   h = h * (1 - coast) + 1.7 * coast;
 
-  // The escarpment: a 21 m step over 7-12 m of ground, which is 60-70° and well past the cliff
-  // threshold the material paints rock at.
+  // The escarpment: a step of 13-27 m over 6-13 m of ground, which is 50-75° and well past the
+  // cliff threshold the material paints rock at. Both the height and the width vary along x —
+  // the first version held both constant and the result read as a retaining wall rather than as
+  // a cliff, most obviously from the `ground` preset where the scarp spans the whole frame.
   const zc = scarpZ(x, seed);
-  const width = 7 + 5 * fbm2(x, 900, 1 / 90, 2, seed + 3);
-  h += 21 * smoothstep(zc + width, zc - width, z);
+  const width = 6 + 7 * fbm2(x, 900, 1 / 90, 2, seed + 3);
+  const rise = 13 + 14 * fbm2(x, 1500, 1 / 145, 3, seed + 4);
+  h += rise * smoothstep(zc + width, zc - width, z);
 
   // Two hills on the plateau above the scarp, and one steep outcrop south-west of the origin,
   // which is the direction the `close` preset looks — that shot has to contain a rock face and a
@@ -87,6 +90,14 @@ function heightAt(x: number, z: number, seed: number): number {
   h += bump(x, z, -34, 40, 16, 10.5, 1.55);
 
   h -= smoothstep(-14, 130, z - zs) * 13;
+
+  // Relief at the scale of the sample grid itself (cells are 2 m). Without it a hill is an
+  // analytic dome and reads as a cone; with it the slope wanders, which is also what gives the
+  // cliff rule ragged edges instead of a clean contour ring.
+  // Damped right at the waterline (the showcase floods at 0): a noisy shore turns the lake edge
+  // into a fringe of puddles and islands rather than a beach.
+  const nearWater = 1 - smoothstep(1.0, 3.5, Math.abs(h));
+  h += (fbm2(x, z, 1 / 17, 2, seed + 6) - 0.5) * 1.35 * (1 - 0.75 * nearWater);
 
   // The lakeside terrace is level, or nothing placed on it later would stand straight.
   const padX = Math.abs(x - PAD_X) - PAD_HALF_X;

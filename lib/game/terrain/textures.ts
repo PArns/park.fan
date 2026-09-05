@@ -107,9 +107,13 @@ function shadeLayer(
     case 0: {
       // grass — clumps at two scales, dried patches where the low field peaks
       const clump = high * 0.62 + mid * 0.38;
-      const dry = smoothstep(0.62, 0.86, low);
+      // Dried patches are driven by the MID field and kept faint. Anything with a feature larger
+      // than about a metre inside a 3.2 m tile is a feature that repeats every 3.2 m, and on open
+      // grass that repeat is the most visible thing on the screen — the large-scale variation is
+      // the macro map's job, not the tile's.
+      const dry = smoothstep(0.58, 0.9, mid);
       const c = lerpRgb(GRASS_DARK, GRASS_LIGHT, clamp01(clump * 1.15 - 0.05));
-      const withDry = lerpRgb(c, GRASS_DRY, dry * 0.75);
+      const withDry = lerpRgb(c, GRASS_DRY, dry * 0.3);
       const shade = 0.82 + 0.32 * high;
       out.r = withDry.r * shade;
       out.g = withDry.g * shade;
@@ -121,7 +125,7 @@ function shadeLayer(
       const ripple = 0.5 + 0.5 * Math.sin((v * 26 + mid * 6.2 + low * 2.0) * Math.PI * 2);
       const grain = high;
       const h = ripple * 0.45 + grain * 0.4 + low * 0.15;
-      const c = lerpRgb(SAND_DARK, SAND_LIGHT, clamp01(h * 1.2));
+      const c = lerpRgb(SAND_DARK, SAND_LIGHT, clamp01(0.25 + h * 0.9));
       const shade = 0.9 + 0.18 * grain;
       out.r = c.r * shade;
       out.g = c.g * shade;
@@ -130,11 +134,11 @@ function shadeLayer(
     }
     case 2: {
       // rock — ridged creases at the large scale, grit on top, warm oxidation from the low field
-      const h = clamp01(ridge * 0.72 + high * 0.28);
-      const crease = smoothstep(0.42, 0.0, h);
+      const h = clamp01(ridge * 0.55 + mid * 0.2 + high * 0.25);
+      const crease = smoothstep(0.38, 0.0, h);
       let c = lerpRgb(ROCK_MID, ROCK_LIGHT, clamp01(h * 1.35 - 0.25));
-      c = lerpRgb(c, ROCK_DARK, crease * 0.85);
-      c = lerpRgb(c, ROCK_WARM, smoothstep(0.55, 0.95, low) * 0.55);
+      c = lerpRgb(c, ROCK_DARK, crease * 0.8);
+      c = lerpRgb(c, ROCK_WARM, smoothstep(0.6, 0.95, mid) * 0.4);
       const shade = 0.88 + 0.22 * high;
       out.r = c.r * shade;
       out.g = c.g * shade;
@@ -145,7 +149,7 @@ function shadeLayer(
       // dirt — clods, with pebbles standing proud where the high field spikes
       const pebble = smoothstep(0.84, 0.93, high);
       const h = clamp01(mid * 0.6 + high * 0.3 + pebble * 0.5);
-      let c = lerpRgb(DIRT_DARK, DIRT_LIGHT, clamp01(low * 0.7 + mid * 0.5));
+      let c = lerpRgb(DIRT_DARK, DIRT_LIGHT, clamp01(mid * 0.8 + high * 0.4));
       c = lerpRgb(c, PEBBLE, pebble);
       const shade = 0.86 + 0.26 * mid;
       out.r = c.r * shade;
@@ -159,7 +163,7 @@ function shadeLayer(
       const clump = high * 0.55 + mid * 0.45;
       let c = lerpRgb(MEADOW_DARK, MEADOW_LIGHT, clamp01(clump * 1.2));
       const white = smoothstep(0.955, 0.985, high);
-      const yellow = smoothstep(0.94, 0.97, high * 0.6 + low * 0.4);
+      const yellow = smoothstep(0.94, 0.97, high * 0.62 + mid * 0.38);
       c = lerpRgb(c, FLOWER_YELLOW, yellow * 0.7);
       c = lerpRgb(c, FLOWER_WHITE, white);
       const shade = 0.84 + 0.3 * high;
@@ -174,7 +178,7 @@ function shadeLayer(
       const aggregate = smoothstep(0.88, 0.97, high);
       const crack = smoothstep(0.03, 0.004, Math.abs(mid - 0.5));
       const h = clamp01(0.55 + aggregate * 0.35 - crack * 0.6);
-      let c = lerpRgb(CONCRETE_DARK, CONCRETE_LIGHT, clamp01(0.45 + low * 0.55));
+      let c = lerpRgb(CONCRETE_DARK, CONCRETE_LIGHT, clamp01(0.5 + mid * 0.45));
       c = lerpRgb(c, CONCRETE_DARK, crack * 0.9);
       const shade = 0.94 + 0.12 * high - 0.08 * smoothstep(0.3, 0.8, low);
       out.r = c.r * shade;

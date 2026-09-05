@@ -43,6 +43,12 @@ import {
 
 /** Metres the second macro sample tiles over — the one that breaks painted boundaries. */
 const MACRO_FINE_METRES = 11;
+/**
+ * Metres the third sample tiles over. Three scales, because two left a hole: the layer tile is
+ * 3.2 m and the coarse macro is 190 m, and everything between read as one flat colour with a
+ * texture on it. 44 m is the scale a hillside's dry and damp patches actually vary at.
+ */
+const MACRO_MID_METRES = 44;
 
 const DEFINITIONS = `
 uniform sampler2D terrainSplatSampler;
@@ -56,6 +62,7 @@ float terrainRoughness = 0.85;
  * `vTerrainInfo`  = (worldSize, splatResolution, cliffStart, cliffFull)
  * `vTerrainInfo2` = (1/splatTile, 1/cliffTile, 1/macroTile, rockLayerIndex)
  * `vTerrainInfo3` = (normalStrength, macroStrength, wetness, 1/macroFineTile)
+ * `vTerrainInfo4` = (1/macroMidTile, 0, 0, 0)
  */
 const BEFORE_LIGHTS = `
 vec2 tWorld = vPositionW.xz;
@@ -63,10 +70,13 @@ float tSize = vTerrainInfo.x;
 float tRes = vTerrainInfo.y;
 vec4 tMacro = texture2D(terrainMacroSampler, tWorld * vTerrainInfo2.z);
 vec4 tMacroFine = texture2D(terrainMacroSampler, tWorld * vTerrainInfo3.w);
+vec4 tMacroMid = texture2D(terrainMacroSampler, tWorld * vTerrainInfo4.x);
 
 vec2 tTexel = ((tWorld + tSize * 0.5) / tSize) * tRes - 0.5;
 vec2 tCell = floor(tTexel);
-vec2 tF = clamp(tTexel - tCell + (vec2(tMacroFine.b, tMacroFine.g) - 0.5) * 0.85, 0.0, 1.0);
+// The jitter breaks a painted boundary into a natural edge; at 0.85 of a cell (1.7 m here) it
+// broke a 6 m trail into dashes instead, so it is under half a cell.
+vec2 tF = clamp(tTexel - tCell + (vec2(tMacroFine.b, tMacroFine.g) - 0.5) * 0.42, 0.0, 1.0);
 tF = tF * tF * (3.0 - 2.0 * tF);
 vec2 tInv = vec2(1.0 / tRes);
 float tL00 = floor(texture2D(terrainSplatSampler, (tCell + vec2(0.5, 0.5)) * tInv).r * 255.0 + 0.5);
@@ -111,11 +121,12 @@ if (tCliff > 0.003) {
 }
 
 vec3 tColor = pow(tAlbedo.rgb, vec3(2.2));
-float tBright = mix(1.0, 0.74 + 0.52 * tMacro.r, vTerrainInfo3.y);
-float tFine = mix(1.0, 0.86 + 0.28 * tMacroFine.r, vTerrainInfo3.y);
-vec3 tTint = mix(vec3(1.04, 0.99, 0.90), vec3(0.93, 1.02, 1.01), tMacro.g);
+float tBright = mix(1.0, 0.78 + 0.44 * tMacro.r, vTerrainInfo3.y);
+float tMidVar = mix(1.0, 0.80 + 0.40 * tMacroMid.g, vTerrainInfo3.y);
+float tFine = mix(1.0, 0.88 + 0.24 * tMacroFine.r, vTerrainInfo3.y);
+vec3 tTint = mix(vec3(1.05, 0.99, 0.88), vec3(0.91, 1.02, 1.02), tMacroMid.r);
 float tAo = mix(1.0, tSurface.b, 0.65);
-tColor *= tBright * tFine * tAo;
+tColor *= tBright * tMidVar * tFine * tAo;
 tColor *= mix(vec3(1.0), tTint, vTerrainInfo3.y);
 tColor *= mix(1.0, 0.58, vTerrainInfo3.z);
 surfaceAlbedo = tColor;
@@ -191,6 +202,7 @@ class TerrainSplatPlugin extends MaterialPluginBase {
         { name: 'vTerrainInfo', size: 4, type: 'vec4' },
         { name: 'vTerrainInfo2', size: 4, type: 'vec4' },
         { name: 'vTerrainInfo3', size: 4, type: 'vec4' },
+        { name: 'vTerrainInfo4', size: 4, type: 'vec4' },
       ],
     };
   }
@@ -219,6 +231,7 @@ class TerrainSplatPlugin extends MaterialPluginBase {
       this.wetness,
       1 / MACRO_FINE_METRES
     );
+    uniformBuffer.updateFloat4('vTerrainInfo4', 1 / MACRO_MID_METRES, 0, 0, 0);
     if (scene.texturesEnabled) {
       uniformBuffer.setTexture('terrainSplatSampler', this.splat);
       uniformBuffer.setTexture('terrainMacroSampler', set.macro);

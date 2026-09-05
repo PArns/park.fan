@@ -26,8 +26,12 @@ export function valueNoise(x: number, y: number, wrap: number, seed: number): nu
   const yi = Math.floor(y);
   const xf = x - xi;
   const yf = y - yi;
-  const u = xf * xf * (3 - 2 * xf);
-  const v = yf * yf * (3 - 2 * yf);
+  // Quintic, not smoothstep. The layer normal maps are the derivative of this field, and
+  // smoothstep's second derivative jumps at every lattice line: with the cubic in here the grass
+  // rendered a visible square grid at the 3.2 m tile in the `close` shot, straight out of the
+  // normal map rather than out of the colour.
+  const u = xf * xf * xf * (xf * (xf * 6 - 15) + 10);
+  const v = yf * yf * yf * (yf * (yf * 6 - 15) + 10);
   const x0 = wrap > 0 ? ((xi % wrap) + wrap) % wrap : xi;
   const y0 = wrap > 0 ? ((yi % wrap) + wrap) % wrap : yi;
   const x1 = wrap > 0 ? (x0 + 1) % wrap : xi + 1;
