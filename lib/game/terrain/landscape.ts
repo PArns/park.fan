@@ -29,9 +29,9 @@ const JETTY_HALF_WIDTH = 3;
 const JETTY_FROM_Z = 98;
 const JETTY_TO_Z = 141;
 
-const PAD_X = -15;
-const PAD_Z = 33;
-const PAD_HALF_X = 12;
+const PAD_X = 12;
+const PAD_Z = 79;
+const PAD_HALF_X = 13;
 const PAD_HALF_Z = 8;
 
 /** Where the coast runs, as a function of x. */
@@ -79,20 +79,23 @@ function heightAt(x: number, z: number, seed: number): number {
   const width = 7 + 5 * fbm2(x, 900, 1 / 90, 2, seed + 3);
   h += 21 * smoothstep(zc + width, zc - width, z);
 
-  // Two hills on the plateau above the scarp, and one steep knoll near the origin so the `close`
-  // preset has a cliff of its own without leaving the meadow.
+  // Two hills on the plateau above the scarp, and one steep outcrop south-west of the origin,
+  // which is the direction the `close` preset looks — that shot has to contain a rock face and a
+  // meadow at once or nothing in it says the splat is doing anything.
   h += bump(x, z, -74, -168, 108, 33, 1.7);
   h += bump(x, z, 96, -196, 82, 21, 1.8);
-  h += bump(x, z, -38, -30, 17, 11.5, 1.55);
+  h += bump(x, z, -34, 40, 16, 10.5, 1.55);
 
   h -= smoothstep(-14, 130, z - zs) * 13;
 
-  // The concrete terrace is level, or the cards standing on it later would not be.
+  // The lakeside terrace is level, or nothing placed on it later would stand straight.
   const padX = Math.abs(x - PAD_X) - PAD_HALF_X;
   const padZ = Math.abs(z - PAD_Z) - PAD_HALF_Z;
   const padD = Math.max(padX, padZ);
   if (padD < 5) {
-    const level = fbm2(PAD_X, PAD_Z, 1 / 230, 4, seed + 1) * 11 - 3.4 + 1.1;
+    // Fixed, not sampled: the coast pass has already flattened this stretch towards 1.7 m, so a
+    // level read off the raw base field would stand two metres proud of its own beach.
+    const level = 2.6;
     h += (level - h) * (1 - smoothstep(0, 5, Math.max(0, padD)));
   }
 
@@ -146,9 +149,11 @@ export function generateShowcaseLandscape(t: TerrainData, options: LandscapeOpti
       // Meadow in patches on the terrace — never uniform, never everywhere.
       if (h > 2 && fbm2(x, z, 1 / 74, 3, seed + 21) > 0.56) layer = LAYER_MEADOW;
 
-      // Beach: the band the waterline moves through, above and below.
+      // Below the shallows the bed is silt, not the grass the default would leave there: the
+      // water is see-through and a green lake floor is the first thing anyone notices.
       const above = h - t.waterLevel;
-      if (above > -3.2 && above < 2.1 + 1.4 * fbm2(x, z, 1 / 33, 2, seed + 31)) layer = LAYER_SAND;
+      if (above < -2.6) layer = LAYER_DIRT;
+      if (above > -3.0 && above < 1.3 + 1.2 * fbm2(x, z, 1 / 33, 2, seed + 31)) layer = LAYER_SAND;
 
       // Rock a little before the material's own cliff threshold, so the two agree at the seam
       // instead of leaving a ring of grass on a 30° slope.

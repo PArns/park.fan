@@ -20,7 +20,6 @@
 
 import { PBRMaterial } from '@babylonjs/core/Materials/PBR/pbrMaterial';
 import { StandardMaterial } from '@babylonjs/core/Materials/standardMaterial';
-import { Color3 } from '@babylonjs/core/Maths/math.color';
 import type { Material } from '@babylonjs/core/Materials/material';
 import type { Scene } from '@babylonjs/core/scene';
 import type { Season, Vec3 } from '../core/types';
@@ -55,7 +54,11 @@ export function createSurfaces(scene: Scene): SurfaceHandle {
     const existing = captured.get(material);
     if (existing) return existing;
     if (excluded.has(material)) return null;
-    const meta = material.metadata as { envOwned?: boolean; envExempt?: boolean; foliage?: boolean } | null;
+    const meta = material.metadata as {
+      envOwned?: boolean;
+      envExempt?: boolean;
+      foliage?: boolean;
+    } | null;
     if (meta?.envOwned || meta?.envExempt) return null;
     const foliage = meta?.foliage === true || FOLIAGE_NAME.test(material.name);
     let entry: Captured | null = null;
@@ -133,10 +136,4 @@ export function createSurfaces(scene: Scene): SurfaceHandle {
       touched.length = 0;
     },
   };
-}
-
-/** Exported so the showcase can label its own props without importing `Color3` twice. */
-export function tintOf(season: Season): Color3 {
-  const t = seasonFoliageTint(season);
-  return new Color3(t[0], t[1], t[2]);
 }

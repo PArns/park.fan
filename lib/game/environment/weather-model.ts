@@ -176,9 +176,7 @@ export function stepWeather(
             ? rng.range(0.7, 1)
             : rng.range(0.25, 0.85);
       slot.windMs =
-        slot.kind === 'storm'
-          ? rng.range(12, 22)
-          : rng.range(0.5, 7) * (1 + slot.intensity);
+        slot.kind === 'storm' ? rng.range(12, 22) : rng.range(0.5, 7) * (1 + slot.intensity);
     }
   }
 
@@ -203,7 +201,5 @@ export function stepWeather(
 
 /** Precipitation falls in `rain` and `storm` only; below freezing it falls as snow. */
 export function isSnowing(slot: WeatherSlot): boolean {
-  return (
-    (slot.kind === 'rain' || slot.kind === 'storm') && slot.temperatureC <= SNOW_TEMPERATURE_C
-  );
+  return (slot.kind === 'rain' || slot.kind === 'storm') && slot.temperatureC <= SNOW_TEMPERATURE_C;
 }

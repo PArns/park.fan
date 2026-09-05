@@ -32,10 +32,7 @@ export interface PrecipitationHandle {
   dispose(): void;
 }
 
-export function createPrecipitation(
-  scene: Scene,
-  quality: QualitySettings
-): PrecipitationHandle {
+export function createPrecipitation(scene: Scene, quality: QualitySettings): PrecipitationHandle {
   const emitter = new Vector3(0, 0, 0);
   const rainTexture = rainStreak(scene);
   const snowTexture = softDot(scene, 'env-snowflake', 32, 1.5);

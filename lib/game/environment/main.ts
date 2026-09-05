@@ -126,11 +126,7 @@ export function createEnvironmentMain(ctx: MainContext): MainHandle {
     lighting.apply(next, sky, ibl.meanLuminance(), force);
     surfaces.apply(next.wetness, next.season, force);
     precipitation.set(
-      view.weather === 'rain' || view.weather === 'storm'
-        ? view.snowing
-          ? 'snow'
-          : 'rain'
-        : null,
+      view.weather === 'rain' || view.weather === 'storm' ? (view.snowing ? 'snow' : 'rain') : null,
       view.intensity || (view.weather === 'storm' ? 0.85 : 0.5),
       view.windMs
     );
@@ -220,7 +216,8 @@ export function createEnvironmentMain(ctx: MainContext): MainHandle {
 function initialView(ctx: MainContext): WeatherView {
   const slot = ctx.world.modules.environment as Partial<WeatherSlot> | undefined;
   const weather: WeatherKind = slot?.kind ?? 'clear';
-  const intensity = typeof slot?.intensity === 'number' ? slot.intensity : weather === 'clear' ? 0 : 0.55;
+  const intensity =
+    typeof slot?.intensity === 'number' ? slot.intensity : weather === 'clear' ? 0 : 0.55;
   const full: WeatherSlot = {
     kind: weather,
     minutesLeft: 60,

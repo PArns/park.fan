@@ -123,17 +123,23 @@ export function createSkyDome(scene: Scene, quality: QualitySettings, rng: Rng):
     { kind: 'cumulus' as const, k: 0.1, scale: 0.42, speed: 0.0042, seed: 11 },
     { kind: 'cirrus' as const, k: 0.16, scale: 0.24, speed: 0.0019, seed: 47 },
   ]) {
-    const mesh = buildDome(scene, `env-cloud-${spec.kind}`, CLOUD_RADIUS, 96, 34, Math.PI / 2, (
-      dir
-    ) => {
-      const denom = dir[1] + spec.k;
-      return {
-        u: (dir[0] / denom) * spec.scale,
-        v: (dir[2] / denom) * spec.scale,
-        alpha: smoothstep(0.012, 0.115, dir[1]),
-        dir,
-      };
-    });
+    const mesh = buildDome(
+      scene,
+      `env-cloud-${spec.kind}`,
+      CLOUD_RADIUS,
+      96,
+      34,
+      Math.PI / 2,
+      (dir) => {
+        const denom = dir[1] + spec.k;
+        return {
+          u: (dir[0] / denom) * spec.scale,
+          v: (dir[2] / denom) * spec.scale,
+          alpha: smoothstep(0.012, 0.115, dir[1]),
+          dir,
+        };
+      }
+    );
     const texture = cloudSheet(scene, spec.kind, spec.seed);
     const material = new StandardMaterial(`env-cloud-${spec.kind}`, scene);
     material.diffuseTexture = texture;
@@ -200,7 +206,6 @@ export function createSkyDome(scene: Scene, quality: QualitySettings, rng: Rng):
   stars.rotationQuaternion = Quaternion.Identity();
 
   // ── Refill state ──────────────────────────────────────────────────────────────────────────
-  let current: SkyState | null = null;
   let fillState: SkyState | null = null;
   let fillRow = height;
   let lastKey = '';
@@ -219,7 +224,6 @@ export function createSkyDome(scene: Scene, quality: QualitySettings, rng: Rng):
   }
 
   function setState(state: SkyState, force: boolean): void {
-    current = state;
     const key = stateKey(state);
     if (!force && key === lastKey) return;
     lastKey = key;
@@ -325,7 +329,10 @@ export function createSkyDome(scene: Scene, quality: QualitySettings, rng: Rng):
     const moonVisible = state.moon[1] > -0.04 && state.night > 0.02 && state.cloud < 0.9;
     moonMesh.setEnabled(moonVisible);
     if (moonVisible) {
-      tmp.set(state.moon[0], state.moon[1], state.moon[2]).scaleInPlace(BODY_RADIUS).addInPlace(eye);
+      tmp
+        .set(state.moon[0], state.moon[1], state.moon[2])
+        .scaleInPlace(BODY_RADIUS)
+        .addInPlace(eye);
       moonMesh.position.copyFrom(tmp);
       const brightness =
         1.15 * state.night * (0.2 + 0.8 * state.moonPhase) * (1 - clamp01(state.cloud * 1.1));

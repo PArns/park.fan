@@ -10,13 +10,7 @@
  */
 
 import { computeEnvironment } from '../core/sun';
-import type {
-  Command,
-  EnvironmentState,
-  SimContext,
-  SimHandle,
-  WeatherKind,
-} from '../core/types';
+import type { Command, EnvironmentState, SimContext, SimHandle, WeatherKind } from '../core/types';
 import { cloudFor, freshSlot, isSnowing, stepWeather, type WeatherSlot } from './weather-model';
 
 export interface EnvironmentSimApi {

@@ -48,16 +48,16 @@
   },
   "harness": {
     "command": "node scripts/game-shot.mjs --cam=overview --tod=12:00",
-    "readFrom": ".game-render/logo/report.json",
-    "bootMs": 3077,
+    "readFrom": ".game-render/env4/report.json",
+    "bootMs": 5729,
     "consoleErrors": 0,
     "hydrationWarnings": 0,
-    "drawCalls": 7,
-    "triangles": 32768,
+    "drawCalls": 66,
+    "triangles": 128626,
     "activeMeshes": 1,
     "engine": "webgl2",
     "preset": "medium",
-    "note": "7 draw calls and 1 active mesh is terrain and nothing else — the honest baseline before wave 1 lands. fps in headless Chromium is SwiftShader and means nothing; draw calls and triangles are what the budget is read from."
+    "note": "Read from .game-render/env4/report.json at this commit: 66 draw calls, 128,626 triangles, 0 console errors — but the picture is not passable and STATUS.openIssues says why. fps in headless Chromium is SwiftShader and means nothing; draw calls and triangles are what the budget is read from."
   },
   "budget": {
     "fps": 50,
@@ -267,7 +267,8 @@
     "The 48-park-hour soak runs 576 ticks at 100x; once guests exist it should also run at a lower speed for more integration steps per park-hour.",
     "HUD overflows a phone: measured at 390x844 the top-right cash pill runs off the right edge and 'Day 1' wraps to two lines. Belongs to the ui module.",
     "The graphics-preset notice is clipped at both ends at 390 px, between the feedback widget and the bottom-right corner. The brand mark stepped out of that row (hidden below sm); the notice itself is still the ui module's to place.",
-    "Terrain chunks render with gaps between them at 45 draw calls — visible as a grid of floating tiles. Wave 1, in progress."
+    "Terrain chunks render BLACK with bright seams between them (66 draw calls, 128k tris) and the exposure is blown out to white at noon — terrain and environment are both mid-round and their materials are currently fighting. Wave 1 gate has not run.",
+    "environment/lighting.ts calls camera.getForwardRay(1) once per frame, which allocates a Ray every frame inside onRender. The integrator added the missing '@babylonjs/core/Culling/ray' side-effect import to unblock the branch (it threw 13 console errors a second and poisoned every other builder's screenshots); the allocation is the environment module's to remove — getDirectionToRef into a hoisted ref needs neither the import nor the garbage."
   ],
   "history": [
     {

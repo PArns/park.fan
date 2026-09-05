@@ -16,6 +16,12 @@
  * screenshot harness) snaps instead, since nothing is adapting to that.
  */
 
+// `camera.getForwardRay()` below is one of Babylon's side-effect APIs: with deep imports the Ray
+// class is not linked unless something imports it, and the call throws "Ray needs to be imported
+// before as it contains a side-effect required by your code" — at 60 Hz, from inside onRender, so
+// it is thirteen console errors a second and a scene nobody else can screenshot against.
+// Added by the integrator to unblock the branch; the allocation it implies is STATUS.json's.
+import '@babylonjs/core/Culling/ray';
 import { DirectionalLight } from '@babylonjs/core/Lights/directionalLight';
 import { ShadowGenerator } from '@babylonjs/core/Lights/Shadows/shadowGenerator';
 import { Color3 } from '@babylonjs/core/Maths/math.color';
@@ -95,12 +101,7 @@ export function createLighting(scene: Scene, quality: QualitySettings): Lighting
   const fogSample: Vec3 = [0, 0, 0];
   const forward = new Vector3(0, 0, 1);
 
-  function apply(
-    env: EnvironmentState,
-    sky: SkyState,
-    meanLuminance: number,
-    snap: boolean
-  ): void {
+  function apply(env: EnvironmentState, sky: SkyState, meanLuminance: number, snap: boolean): void {
     const day = 1 - env.night;
     if (sun) {
       // The sun is written here in full rather than left to core's `applyEnvironment`, because a
@@ -169,13 +170,23 @@ export function createLighting(scene: Scene, quality: QualitySettings): Lighting
 
     // Fog takes the colour of the sky the camera is actually facing, sampled just above the
     // horizon. A fixed grey turns every sunset into a grey sunset at 400 m.
-    const camera = scene.activeCamera;
-    if (camera) {
-      camera.getForwardRay(1).direction.normalizeToRef(forward);
-      const len = Math.hypot(forward.x, forward.z) || 1;
-      sampleSky(sky, [forward.x / len, 0.045, forward.z / len], fogSample);
-      scene.fogColor.set(fogSample[0] * 1.04, fogSample[1] * 1.04, fogSample[2] * 1.06);
-      scene.clearColor.set(fogSample[0], fogSample[1], fogSample[2], 1);
+    //
+    // The heading comes from the camera's own target rather than `getForwardRay`, which needs the
+    // `Culling/ray` side-effect module — pulling in the whole ray/picking path to read a direction
+    // costs bundle size the game budget does not have, and without it every frame logs an error.
+    const camera = scene.activeCamera as unknown as {
+      position?: Vector3;
+      getTarget?: () => Vector3;
+    } | null;
+    const target = camera?.getTarget?.();
+    if (camera?.position && target) {
+      target.subtractToRef(camera.position, forward);
+      const len = Math.hypot(forward.x, forward.z);
+      if (len > 1e-4) {
+        sampleSky(sky, [forward.x / len, 0.045, forward.z / len], fogSample);
+        scene.fogColor.set(fogSample[0] * 1.04, fogSample[1] * 1.04, fogSample[2] * 1.06);
+        scene.clearColor.set(fogSample[0], fogSample[1], fogSample[2], 1);
+      }
     }
   }
 

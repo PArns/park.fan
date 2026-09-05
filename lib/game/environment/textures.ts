@@ -283,7 +283,8 @@ function heightAt(recipe: PbrRecipe, u: number, v: number): number {
     return clamp01(smoothstep(0.0, 0.35, edge) * 0.85 + grain * 0.15);
   }
   if (recipe.pattern === 'metal') {
-    const brush = valueNoise(u * 220, v * 6, 220, s) * 0.6 + valueNoise(u * 40, v * 3, 40, s + 7) * 0.4;
+    const brush =
+      valueNoise(u * 220, v * 6, 220, s) * 0.6 + valueNoise(u * 40, v * 3, 40, s + 7) * 0.4;
     const dents = fbm(u, v, { octaves: 3, period: 5, seed: s + 19 });
     return clamp01(brush * 0.75 + dents * 0.25);
   }
@@ -316,26 +317,28 @@ export function pbrSet(scene: Scene, recipe: PbrRecipe): PbrSet {
     for (let x = 0; x < size; x++) {
       const i = (y * size + x) * 4;
       const h = height[y * size + x];
-      const t = clamp01(h * 0.75 + fbm((x + 0.5) / size, (y + 0.5) / size, {
-        octaves: 3,
-        period: 3,
-        seed: recipe.seed + 101,
-      }) * 0.45);
+      const t = clamp01(
+        h * 0.75 +
+          fbm((x + 0.5) / size, (y + 0.5) / size, {
+            octaves: 3,
+            period: 3,
+            seed: recipe.seed + 101,
+          }) *
+            0.45
+      );
       // Ambient occlusion in the crevices; without it the cobbles read as a printed pattern.
       const ao = 0.55 + 0.45 * Math.pow(h, 0.6);
       for (let c = 0; c < 3; c++) {
-        albedo[i + c] = Math.round(
-          255 * clamp01(mix(recipe.accent[c], recipe.base[c], t) * ao)
-        );
+        albedo[i + c] = Math.round(255 * clamp01(mix(recipe.accent[c], recipe.base[c], t) * ao));
       }
       albedo[i + 3] = 255;
 
       const dx = (at(x + 1, y) - at(x - 1, y)) * strength;
       const dy = (at(x, y + 1) - at(x, y - 1)) * strength;
       const len = Math.sqrt(dx * dx + dy * dy + 1);
-      normal[i] = Math.round(255 * (-dx / len * 0.5 + 0.5));
-      normal[i + 1] = Math.round(255 * (-dy / len * 0.5 + 0.5));
-      normal[i + 2] = Math.round(255 * (1 / len * 0.5 + 0.5));
+      normal[i] = Math.round(255 * ((-dx / len) * 0.5 + 0.5));
+      normal[i + 1] = Math.round(255 * ((-dy / len) * 0.5 + 0.5));
+      normal[i + 2] = Math.round(255 * ((1 / len) * 0.5 + 0.5));
       normal[i + 3] = 255;
 
       const rough = clamp01(mix(recipe.roughness[0], recipe.roughness[1], 1 - h));

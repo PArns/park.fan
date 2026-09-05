@@ -169,9 +169,8 @@ export function createIbl(scene: Scene, quality: QualitySettings): IblHandle {
         gammaSpace: false,
       } as Record<string, unknown>;
       for (let f = 0; f < 6; f++) info[FACE_NAMES[f]] = float[f];
-      texture.sphericalPolynomial = CubeMapToSphericalPolynomialTools.ConvertCubeMapToSphericalPolynomial(
-        info as never
-      );
+      texture.sphericalPolynomial =
+        CubeMapToSphericalPolynomialTools.ConvertCubeMapToSphericalPolynomial(info as never);
     } catch (error) {
       // A missing polynomial is a dimmer, flatter ambient — not a broken frame. Say so once.
       console.warn('[game/environment] irradiance projection failed', error);
