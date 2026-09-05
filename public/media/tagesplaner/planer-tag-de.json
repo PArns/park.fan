@@ -1,0 +1,16 @@
+{
+  "title": "Tagesplaner, geplanter Tag",
+  "tags": [
+    "diagram"
+  ],
+  "alt": {
+    "de": "Der Tagesplaner mit einem geplanten Phantasialand-Tag: sieben Blöcke auf einer Zeitachse von 9 bis 18 Uhr, dazwischen Umstiege mit Entfernung und Gehzeit."
+  },
+  "caption": {
+    "de": "Ein Samstag im Phantasialand, wie ihn der Planer zeigt. Die Höhe eines Blocks ist die Wartezeit, die für seine Stunde vorhergesagt ist."
+  },
+  "credit": {
+    "author": "park.fan",
+    "license": "all-rights-reserved"
+  }
+}
