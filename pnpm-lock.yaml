@@ -15,6 +15,15 @@ importers:
 
   .:
     dependencies:
+      '@babylonjs/core':
+        specifier: 9.25.0
+        version: 9.25.0
+      '@babylonjs/gui':
+        specifier: 9.25.0
+        version: 9.25.0(@babylonjs/core@9.25.0)
+      '@babylonjs/loaders':
+        specifier: 9.25.0
+        version: 9.25.0(@babylonjs/core@9.25.0)(babylonjs-gltf2interface@9.25.0)
       '@octokit/rest':
         specifier: ^22.0.1
         version: 22.0.1
@@ -335,6 +344,20 @@ packages:
   '@babel/types@7.29.8':
     resolution: {integrity: sha512-Vj1jF3cPfxg7OAfoI7QnVKLoILlm2JF9pnVHrX8qx7AHMiYWT+NDAA7jChlNgRS4WTLc/fD1lXLmPixluj+3Gg==}
     engines: {node: '>=6.9.0'}
+
+  '@babylonjs/core@9.25.0':
+    resolution: {integrity: sha512-PflCKhM0ZRQ1o/7fRsYic4r1ogBpE/ZxA/8wJ2K2C9wg7rc0rIkXMVTUAcAypAFeVtE0ix6sp3Bd4zbz/rfHBQ==}
+
+  '@babylonjs/gui@9.25.0':
+    resolution: {integrity: sha512-wEulEcZFuJ4H8lsmiwr0FGN03C8niw53d179ITDphoYy+ywqtlL7pl4yhxXow5h1/JE0uSGLBxhaQcGmqkiu3w==}
+    peerDependencies:
+      '@babylonjs/core': ^9.0.0
+
+  '@babylonjs/loaders@9.25.0':
+    resolution: {integrity: sha512-K0R+ehftbe+kzf9cDtUERc57B5G/bdTbi6Kb3dF0dnUi1OVTJtRWs1Kxon/nVeUtQjuoe/nmEt7qjcUWnqyxDg==}
+    peerDependencies:
+      '@babylonjs/core': ^9.0.0
+      babylonjs-gltf2interface: ^9.0.0
 
   '@date-fns/tz@1.5.0':
     resolution: {integrity: sha512-lwYN/vDPeNRULcepoE/LO2Pgx+7/RV+S9ARfbc9lr2DtGkOD7pAiruHvbR1RX3Qyf6ja47EWJDMsNK5vK08DJg==}
@@ -2355,6 +2378,9 @@ packages:
   axobject-query@4.1.0:
     resolution: {integrity: sha512-qIj0G9wZbMGNLjLmg1PT6v2mE9AH2zlnADJD/2tC6E00hgmhUOfEB6greHPAfLRSufHqROIUTkw6E+M3lH0PTQ==}
     engines: {node: '>= 0.4'}
+
+  babylonjs-gltf2interface@9.25.0:
+    resolution: {integrity: sha512-yi+Gh+rqEghH5T9jdpp0W+be4HRh13+0N4xCPazMyElNbwqtEYoWoFLE3Q3CrA1aY4H5dMOVRXYcspWwo15crg==}
 
   bail@2.0.2:
     resolution: {integrity: sha512-0xO6mYd7JB2YesxDKplafRpsiOzPt9V02ddPCLbY1xYGPOX24NTyN50qnUxgCPcSoYMhKpAuBTjQoRZCAkUDRw==}
@@ -4519,6 +4545,17 @@ snapshots:
       '@babel/helper-string-parser': 7.29.7
       '@babel/helper-validator-identifier': 7.29.7
 
+  '@babylonjs/core@9.25.0': {}
+
+  '@babylonjs/gui@9.25.0(@babylonjs/core@9.25.0)':
+    dependencies:
+      '@babylonjs/core': 9.25.0
+
+  '@babylonjs/loaders@9.25.0(@babylonjs/core@9.25.0)(babylonjs-gltf2interface@9.25.0)':
+    dependencies:
+      '@babylonjs/core': 9.25.0
+      babylonjs-gltf2interface: 9.25.0
+
   '@date-fns/tz@1.5.0': {}
 
   '@dimforge/rapier3d-compat@0.12.0': {}
@@ -6292,6 +6329,8 @@ snapshots:
   axe-core@4.13.0: {}
 
   axobject-query@4.1.0: {}
+
+  babylonjs-gltf2interface@9.25.0: {}
 
   bail@2.0.2: {}
 

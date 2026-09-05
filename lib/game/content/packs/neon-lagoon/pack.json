@@ -1,0 +1,446 @@
+{
+  "id": "neon-lagoon",
+  "version": 1,
+  "name": { "en": "Neon Lagoon", "de": "Neon-Lagune" },
+  "requires": ["core-classic"],
+  "themes": [
+    {
+      "id": "neon",
+      "name": { "en": "Neon Lagoon", "de": "Neon-Lagune" },
+      "palette": {
+        "primary": "#0f2a3a",
+        "secondary": "#16e0c8",
+        "trim": "#ff2fa0",
+        "accent": "#7c4dff"
+      },
+      "materials": ["concrete-teal", "tile-aqua", "steel-black"],
+      "ambience": "ambience-lagoon"
+    }
+  ],
+  "materials": [
+    {
+      "id": "concrete-teal",
+      "pbr": {
+        "albedo": "ambientcg/Concrete034/Color_1k.ktx2",
+        "normal": "ambientcg/Concrete034/NormalGL_1k.ktx2"
+      },
+      "procedural": "concrete",
+      "tiling": 2,
+      "baseColor": "#2a4a52",
+      "roughness": 0.8
+    },
+    {
+      "id": "tile-aqua",
+      "pbr": {
+        "albedo": "ambientcg/Tiles074/Color_1k.ktx2",
+        "normal": "ambientcg/Tiles074/NormalGL_1k.ktx2"
+      },
+      "procedural": "pool-tile",
+      "tiling": 6,
+      "baseColor": "#3fb7c9",
+      "roughness": 0.25
+    },
+    {
+      "id": "steel-black",
+      "procedural": "painted-steel",
+      "tiling": 1,
+      "baseColor": "#141a20",
+      "roughness": 0.3,
+      "metallic": 0.8
+    },
+    {
+      "id": "fiberglass-white",
+      "procedural": "fiberglass",
+      "tiling": 1,
+      "baseColor": "#eef3f5",
+      "roughness": 0.2
+    }
+  ],
+  "scenery": [
+    {
+      "id": "neon-palm",
+      "name": { "en": "Neon palm", "de": "Neon-Palme" },
+      "category": "signage",
+      "footprint": [1, 1],
+      "height": 6,
+      "cost": 9000,
+      "procedural": "neon-palm",
+      "night": {
+        "light": {
+          "color": "#16e0c8",
+          "intensity": 12,
+          "height": 5,
+          "range": 14,
+          "mode": "cycle",
+          "colors": ["#16e0c8", "#ff2fa0", "#7c4dff"]
+        }
+      }
+    },
+    {
+      "id": "light-strip",
+      "name": { "en": "Light strip", "de": "Lichtleiste" },
+      "category": "lighting",
+      "footprint": [4, 0.1],
+      "height": 0.1,
+      "cost": 2000,
+      "procedural": "light-strip",
+      "night": {
+        "light": {
+          "color": "#ff2fa0",
+          "intensity": 6,
+          "height": 0.1,
+          "range": 6,
+          "mode": "chase",
+          "colors": ["#ff2fa0", "#16e0c8"]
+        }
+      }
+    },
+    {
+      "id": "lounger",
+      "name": { "en": "Sun lounger", "de": "Sonnenliege" },
+      "category": "path-furniture",
+      "footprint": [2, 0.7],
+      "height": 0.5,
+      "cost": 2200,
+      "procedural": "lounger",
+      "furniture": "bench"
+    },
+    {
+      "id": "parasol",
+      "name": { "en": "Parasol", "de": "Sonnenschirm" },
+      "category": "path-furniture",
+      "footprint": [2.4, 2.4],
+      "height": 2.6,
+      "cost": 1800,
+      "procedural": "parasol"
+    },
+    {
+      "id": "lamp-modern",
+      "name": { "en": "Column light", "de": "Lichtsäule" },
+      "category": "path-furniture",
+      "footprint": [0.4, 0.4],
+      "height": 3.5,
+      "cost": 9000,
+      "procedural": "lamp-modern",
+      "furniture": "lamp",
+      "night": {
+        "light": {
+          "color": "#dff6ff",
+          "intensity": 9,
+          "height": 3.3,
+          "range": 14,
+          "mode": "steady"
+        }
+      }
+    }
+  ],
+  "foliage": [
+    {
+      "id": "palm",
+      "name": { "en": "Palm", "de": "Palme" },
+      "kind": "palm",
+      "procedural": "tree-palm",
+      "mesh": "quaternius/trees/palm.glb",
+      "lod": [40, 120, 300],
+      "height": 9,
+      "cost": 5000
+    },
+    {
+      "id": "grass-tall",
+      "name": { "en": "Tall grass", "de": "Hohes Gras" },
+      "kind": "grass",
+      "procedural": "grass-tuft",
+      "lod": [15, 35, 70],
+      "height": 0.6,
+      "cost": 100
+    }
+  ],
+  "shops": [
+    {
+      "id": "smoothie",
+      "kind": "drink",
+      "name": { "en": "Smoothie bar", "de": "Smoothie-Bar" },
+      "need": "thirst",
+      "price": 450,
+      "cost": 26000,
+      "upkeep": 180,
+      "footprint": [3, 3],
+      "throughput": 7,
+      "power": 4,
+      "theme": "neon",
+      "procedural": "kiosk-round",
+      "night": { "signage": "#16e0c8" }
+    },
+    {
+      "id": "changing-rooms",
+      "kind": "changing-room",
+      "name": { "en": "Changing rooms", "de": "Umkleiden" },
+      "need": "none",
+      "price": 0,
+      "cost": 45000,
+      "upkeep": 260,
+      "footprint": [8, 5],
+      "throughput": 12,
+      "power": 3,
+      "water": 1,
+      "theme": "neon",
+      "procedural": "changing-block"
+    },
+    {
+      "id": "beach-food",
+      "kind": "food",
+      "name": { "en": "Beach grill", "de": "Strandgrill" },
+      "need": "hunger",
+      "price": 700,
+      "cost": 42000,
+      "upkeep": 320,
+      "footprint": [5, 4],
+      "throughput": 4,
+      "power": 7,
+      "theme": "neon",
+      "procedural": "kiosk-a",
+      "night": { "signage": "#ff2fa0" }
+    }
+  ],
+  "rides": [
+    {
+      "id": "neon-launch",
+      "kind": "coaster",
+      "name": { "en": "Neon launch coaster", "de": "Neon-Launch-Coaster" },
+      "trackStyle": "steel-black-tube",
+      "trainStyle": "launch-4",
+      "carsPerTrain": 4,
+      "seatsPerCar": 4,
+      "trainsMax": 2,
+      "maxSpeed": 32,
+      "liftSpeed": 3,
+      "launch": { "speed": 28, "lengthM": 60 },
+      "cost": 220000000,
+      "upkeep": 6200,
+      "trackCostPerM": 240000,
+      "power": 320,
+      "minHeightCm": 130,
+      "theme": "neon",
+      "limits": { "vertical": 5.2, "lateral": 2.8, "negative": -1.8 },
+      "night": {
+        "light": {
+          "color": "#7c4dff",
+          "intensity": 8,
+          "height": 2,
+          "range": 12,
+          "mode": "chase",
+          "colors": ["#7c4dff", "#16e0c8", "#ff2fa0"]
+        }
+      }
+    },
+    {
+      "id": "body-slide",
+      "kind": "flume",
+      "name": { "en": "Body slide", "de": "Körperrutsche" },
+      "flumeStyle": "body",
+      "trackStyle": "fiberglass-open",
+      "riderKind": "body",
+      "cost": 12000000,
+      "upkeep": 900,
+      "trackCostPerM": 90000,
+      "power": 12,
+      "water": 14,
+      "theme": "neon"
+    },
+    {
+      "id": "tube-slide",
+      "kind": "flume",
+      "name": { "en": "Tube slide", "de": "Reifenrutsche" },
+      "flumeStyle": "tube",
+      "trackStyle": "fiberglass-closed",
+      "riderKind": "tube",
+      "cost": 16000000,
+      "upkeep": 1100,
+      "trackCostPerM": 110000,
+      "power": 16,
+      "water": 18,
+      "theme": "neon",
+      "night": {
+        "light": {
+          "color": "#16e0c8",
+          "intensity": 5,
+          "height": 0.5,
+          "range": 6,
+          "mode": "cycle",
+          "colors": ["#16e0c8", "#7c4dff"]
+        }
+      }
+    },
+    {
+      "id": "raft-slide",
+      "kind": "flume",
+      "name": { "en": "Family raft", "de": "Familien-Raft" },
+      "flumeStyle": "raft",
+      "trackStyle": "fiberglass-wide",
+      "riderKind": "raft",
+      "cost": 24000000,
+      "upkeep": 1600,
+      "trackCostPerM": 160000,
+      "power": 24,
+      "water": 30,
+      "theme": "neon"
+    },
+    {
+      "id": "wave-swinger",
+      "kind": "flat",
+      "name": { "en": "Wave swinger", "de": "Wellenflug" },
+      "rig": "rig-wave",
+      "capacity": 24,
+      "cycleMinutes": 2.5,
+      "excitement": 4.4,
+      "fear": 2.8,
+      "nausea": 2.6,
+      "cost": 36000000,
+      "upkeep": 1500,
+      "footprint": [18, 18],
+      "power": 80,
+      "minHeightCm": 120,
+      "theme": "neon",
+      "procedural": "wave-swinger",
+      "night": {
+        "light": {
+          "color": "#16e0c8",
+          "intensity": 10,
+          "height": 8,
+          "range": 22,
+          "mode": "chase",
+          "colors": ["#16e0c8", "#ff2fa0", "#7c4dff", "#ffffff"]
+        }
+      }
+    }
+  ],
+  "rigs": [
+    {
+      "id": "rig-wave",
+      "parts": [
+        { "id": "base", "procedural": "wave-base" },
+        {
+          "id": "crown",
+          "parent": "base",
+          "offset": [0, 8, 0],
+          "procedural": "wave-crown",
+          "animate": {
+            "yaw": { "curve": "ease-in-out", "revolutions": 14, "window": [0.05, 0.95] },
+            "tilt": { "curve": "sine", "amplitude": 0.22, "revolutions": 1, "window": [0.25, 0.8] }
+          }
+        },
+        {
+          "id": "chairs",
+          "parent": "crown",
+          "procedural": "swing-chair",
+          "count": 24,
+          "radius": 6.5,
+          "seats": 1
+        }
+      ]
+    }
+  ],
+  "trackStyles": [
+    {
+      "id": "steel-black-tube",
+      "rail": { "profile": "round", "radius": 0.065, "gauge": 1.2 },
+      "spine": { "profile": "round", "size": 0.45 },
+      "ties": { "every": 1.3 },
+      "supports": "steel",
+      "material": "steel-black",
+      "color": "#16e0c8"
+    },
+    {
+      "id": "fiberglass-open",
+      "rail": { "profile": "tube", "radius": 0.5, "gauge": 1.0 },
+      "supports": "steel",
+      "material": "fiberglass-white",
+      "color": "#16e0c8"
+    },
+    {
+      "id": "fiberglass-closed",
+      "rail": { "profile": "tube", "radius": 0.6, "gauge": 1.2 },
+      "supports": "steel",
+      "material": "fiberglass-white",
+      "color": "#7c4dff"
+    },
+    {
+      "id": "fiberglass-wide",
+      "rail": { "profile": "tube", "radius": 1.2, "gauge": 2.4 },
+      "supports": "steel",
+      "material": "fiberglass-white",
+      "color": "#ff2fa0"
+    }
+  ],
+  "trainStyles": [
+    {
+      "id": "launch-4",
+      "car": { "length": 3.2, "width": 1.9, "height": 1.0, "seats": 4, "procedural": "car-launch" },
+      "color": "#16e0c8"
+    }
+  ],
+  "buildings": [
+    {
+      "id": "wall-concrete",
+      "name": { "en": "Concrete wall", "de": "Betonwand" },
+      "category": "wall",
+      "size": [4, 4, 0.3],
+      "cost": 2200,
+      "material": "concrete-teal",
+      "procedural": "wall"
+    },
+    {
+      "id": "roof-flat",
+      "name": { "en": "Flat roof", "de": "Flachdach" },
+      "category": "roof",
+      "size": [4, 0.4, 4],
+      "cost": 2600,
+      "material": "concrete-teal",
+      "procedural": "roof-flat"
+    },
+    {
+      "id": "window-panorama",
+      "name": { "en": "Panorama window", "de": "Panoramafenster" },
+      "category": "window",
+      "size": [4, 4, 0.3],
+      "cost": 4200,
+      "material": "steel-black",
+      "procedural": "wall-window-wide"
+    }
+  ],
+  "audio": [
+    {
+      "id": "ambience-lagoon",
+      "src": "audio/lagoon.ogg",
+      "bus": "ambience",
+      "loop": true,
+      "gain": 0.6,
+      "procedural": "water-lap"
+    },
+    {
+      "id": "slide-splash",
+      "src": "audio/splash.ogg",
+      "bus": "rides",
+      "gain": 0.8,
+      "procedural": "splash"
+    },
+    {
+      "id": "launch-whoosh",
+      "src": "audio/launch.ogg",
+      "bus": "rides",
+      "gain": 1.0,
+      "procedural": "whoosh"
+    }
+  ],
+  "icons": {
+    "neon-launch": "lucide:zap",
+    "body-slide": "lucide:waves",
+    "tube-slide": "lucide:waves",
+    "raft-slide": "lucide:waves",
+    "wave-swinger": "lucide:wind",
+    "smoothie": "lucide:cup-soda",
+    "changing-rooms": "lucide:shirt",
+    "beach-food": "lucide:flame"
+  },
+  "scenarios": []
+}

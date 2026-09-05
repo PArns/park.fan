@@ -142,3 +142,7 @@ scripts/_shot2.mjs
 # `skills-lock.json` is the reproducible record and IS committed.
 .claude/skills/
 .agents/
+
+# park.fan Coaster: fetched CC0 assets (scripts/fetch-game-assets.mjs) and harness output
+/public/game/assets/
+/.game-render/
